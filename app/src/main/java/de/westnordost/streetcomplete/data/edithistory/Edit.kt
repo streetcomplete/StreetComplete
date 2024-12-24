@@ -4,6 +4,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.quest.OsmNoteQuestKey
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import de.westnordost.streetcomplete.data.quest.ExternalSourceQuestKey
+import kotlinx.serialization.Serializable
 
 interface Edit {
     val key: EditKey
@@ -13,10 +14,16 @@ interface Edit {
     val isSynced: Boolean?
 }
 
+@Serializable
 sealed class EditKey
 
+@Serializable
 data class ElementEditKey(val id: Long) : EditKey()
+@Serializable
 data class NoteEditKey(val id: Long) : EditKey()
+@Serializable
 data class OsmQuestHiddenKey(val osmQuestKey: OsmQuestKey) : EditKey()
+@Serializable
 data class OsmNoteQuestHiddenKey(val osmNoteQuestKey: OsmNoteQuestKey) : EditKey()
+@Serializable
 data class ExternalSourceQuestHiddenKey(val externalSourceQuestKey: ExternalSourceQuestKey) : EditKey()

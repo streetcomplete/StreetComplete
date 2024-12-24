@@ -1,120 +1,98 @@
 package de.westnordost.streetcomplete.screens.main.controls
 
-import android.content.Context
-import android.content.res.ColorStateList
-import android.content.res.TypedArray
-import android.graphics.drawable.Animatable
-import android.os.Bundle
-import android.os.Parcelable
-import android.util.AttributeSet
-import android.view.View
-import androidx.appcompat.widget.AppCompatImageButton
-import androidx.core.os.bundleOf
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.material.Icon
+import androidx.compose.material.LocalContentColor
+import androidx.compose.material.MaterialTheme
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.util.ktx.parcelable
-import de.westnordost.streetcomplete.util.ktx.serializable
+import kotlinx.coroutines.delay
 
-/**
- * An image button which shows the current location state
- */
-class LocationStateButton @JvmOverloads constructor(
-    context: Context,
-    attrs: AttributeSet? = null,
-    defStyle: Int = 0
-) : AppCompatImageButton(context, attrs, defStyle) {
+/** State of location updates */
+enum class LocationState {
+    /** user declined to give this app access to location */
+    DENIED,
+    /** user allowed this app to access location (but location disabled) */
+    ALLOWED,
+    /** location service is turned on (but no location request active) */
+    ENABLED,
+    /** requested location updates and waiting for first fix */
+    SEARCHING,
+    /** receiving location updates */
+    UPDATING;
 
-    var state: LocationState
-        get() = _state ?: LocationState.DENIED
-        set(value) { _state = value }
+    val isEnabled: Boolean get() = ordinal >= ENABLED.ordinal
+}
 
-    // this is necessary because state is accessed before it is initialized (in constructor of super)
-    private var _state: LocationState? = null
-        set(value) {
-            if (field != value) {
-                field = value
-                refreshDrawableState()
+/** Map button that shows the current state of location updates and map mode */
+@Composable
+fun LocationStateButton(
+    onClick: () -> Unit,
+    state: LocationState,
+    modifier: Modifier = Modifier,
+    isNavigationMode: Boolean = false,
+    isFollowing: Boolean = false,
+    enabled: Boolean = true
+) {
+    var iconResource by remember(state) { mutableStateOf(getIcon(state, isNavigationMode)) }
+
+    MapButton(
+        onClick = onClick,
+        modifier = modifier,
+        enabled = enabled
+    ) {
+        LaunchedEffect(state) {
+            if (state == LocationState.SEARCHING) {
+                while (true) {
+                    delay(750)
+                    iconResource = getIcon(LocationState.UPDATING, isNavigationMode)
+                    delay(750)
+                    iconResource = getIcon(LocationState.ENABLED, isNavigationMode)
+                }
             }
         }
+        Icon(
+            painter = painterResource(iconResource),
+            contentDescription = stringResource(R.string.map_btn_gps_tracking),
+            tint = if (isFollowing) MaterialTheme.colors.secondary else LocalContentColor.current
+        )
+    }
+}
 
-    private val tint: ColorStateList?
+private fun getIcon(state: LocationState, isNavigationMode: Boolean) = when (state) {
+    LocationState.DENIED,
+    LocationState.ALLOWED ->
+        R.drawable.ic_location_disabled_24dp
+    LocationState.ENABLED,
+    LocationState.SEARCHING ->
+        if (isNavigationMode) R.drawable.ic_location_navigation_no_location_24dp
+        else R.drawable.ic_location_no_location_24dp
+    LocationState.UPDATING ->
+        if (isNavigationMode) R.drawable.ic_location_navigation_24dp
+        else R.drawable.ic_location_24dp
+}
 
-    var isNavigation: Boolean = false
-        set(value) {
-            if (field != value) {
-                field = value
-                refreshDrawableState()
+@Preview
+@Composable
+private fun PreviewLocationButton() {
+    Column {
+        for (state in LocationState.entries) {
+            Row {
+                LocationStateButton(onClick = {}, state = state)
+                LocationStateButton(onClick = {}, state = state, isNavigationMode = true)
+                LocationStateButton(onClick = {}, state = state, isFollowing = true)
+                LocationStateButton(onClick = {}, state = state, isNavigationMode = true, isFollowing = true)
             }
         }
-
-    init {
-        val a = context.obtainStyledAttributes(attrs, R.styleable.LocationStateButton)
-        state = determineStateFrom(a)
-        tint = a.getColorStateList(R.styleable.LocationStateButton_tint)
-        isNavigation = a.getBoolean(R.styleable.LocationStateButton_is_navigation, false)
-
-        a.recycle()
-    }
-
-    private fun determineStateFrom(a: TypedArray): LocationState = when {
-        a.getBoolean(R.styleable.LocationStateButton_state_updating, false) ->  LocationState.UPDATING
-        a.getBoolean(R.styleable.LocationStateButton_state_searching, false) -> LocationState.SEARCHING
-        a.getBoolean(R.styleable.LocationStateButton_state_enabled, false) ->   LocationState.ENABLED
-        a.getBoolean(R.styleable.LocationStateButton_state_allowed, false) ->   LocationState.ALLOWED
-        else -> LocationState.DENIED
-    }
-
-    override fun drawableStateChanged() {
-        super.drawableStateChanged()
-        // autostart
-        val current = drawable.current
-        if (current is Animatable) {
-            if (!current.isRunning) current.start()
-        }
-        if (tint != null && tint.isStateful) {
-            setColorFilter(tint.getColorForState(drawableState, 0))
-        }
-    }
-
-    override fun onCreateDrawableState(extraSpace: Int): IntArray {
-        val attributes = ArrayList<Int>()
-        attributes += state.styleableAttributes
-        if (isNavigation) attributes += R.attr.is_navigation
-
-        val drawableState = super.onCreateDrawableState(extraSpace + attributes.size)
-
-        View.mergeDrawableStates(drawableState, attributes.toIntArray())
-        return drawableState
-    }
-
-    override fun onSaveInstanceState() = bundleOf(
-        KEY_SUPER_STATE to super.onSaveInstanceState(),
-        KEY_STATE to state,
-        KEY_IS_ACTIVATED to isActivated,
-        KEY_IS_NAVIGATION to isNavigation,
-    )
-
-    override fun onRestoreInstanceState(state: Parcelable?) {
-        if (state is Bundle) {
-            super.onRestoreInstanceState(state.parcelable(KEY_SUPER_STATE))
-            this.state = state.serializable(KEY_STATE)!!
-            isActivated = state.getBoolean(KEY_IS_ACTIVATED)
-            isNavigation = state.getBoolean(KEY_IS_NAVIGATION)
-            requestLayout()
-        }
-    }
-
-    private val LocationState.styleableAttributes: List<Int> get() =
-        listOf(
-            R.attr.state_allowed,
-            R.attr.state_enabled,
-            R.attr.state_searching,
-            R.attr.state_updating
-        ).subList(0, ordinal)
-
-    companion object {
-        private const val KEY_SUPER_STATE = "superState"
-        private const val KEY_STATE = "state"
-        private const val KEY_IS_ACTIVATED = "isActivated"
-        private const val KEY_IS_NAVIGATION = "isNavigation"
     }
 }

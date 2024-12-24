@@ -55,7 +55,7 @@
     <string name="confirmation_authorize_now">"Vi necesas rajtigi per via OSM uzantkonto publikadon de viaj respondoj. Ĉu rajtigi nun?"</string>
     <string name="not_authorized">"Ne rajtigita"</string>
     <string name="version_banned_message">"Ĉi tiu versio de StreetComplete estas tro malnova. Bonvolu ĝisdatigi!"</string>
-    <string name="no_gps_no_quests">"Por aŭtomate serĉi taskoj ĉirkaŭ vi, ŝaltu loktrovilon"</string>
+    <string name="no_gps_no_quests">"Por aŭtomate serĉi taskojn ĉirkaŭ vi, ŝaltu loktrovilon"</string>
     <string name="later">"Poste"</string>
     <string name="quest_streetName_answer_noProperStreet_link">"Ĝi nur ligas du vojojn"</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">"Io alia (lasu noton)"</string>
@@ -286,7 +286,7 @@ Alie, vi povas alŝuti alian klavaron de aplikaĵvendejo. Popularaj klavaroj, ki
     <string name="quest_powerPolesMaterial_concrete">"Betono"</string>
     <string name="quest_maxspeed_answer_advisory_speed_limit">"Nur konsila rapidlimo…"</string>
     <string name="quest_address_house_name_label">"Nomo de domo:"</string>
-    <string name="quest_buildingLevels_roofLevelsLabel2">"Tegmentaj etaĝoj"</string>
+    <string name="quest_buildingLevels_roofLevelsLabel2">"Tegmentaj etaĝoj (mansardoj)"</string>
     <string name="quest_buildingLevels_levelsLabel2">"Maltegmentaj etaĝoj"</string>
     <string name="quest_buildingLevels_answer_multipleLevels">"Diferencas per konstrua parto"</string>
     <string name="quest_buildingLevels_answer_description">"En ĉi tiu kazo, simple enigu la valorojn de la plej alta konstrua parto."</string>
@@ -365,7 +365,7 @@ Parte signifas, ke rulseĝo povas eniri kaj uzi la ripozejon, sed neniu manplato
     <string name="quest_housenumber_multiple_numbers">"Ĝi havas plurajn domnumerojn"</string>
     <string name="quest_housenumber_multiple_numbers_description">"Vi povas simple enigi domnumerojn disigitajn per komoj aŭ intervalojn.\nEkzemple 1,3 aŭ 2–6."</string>
     <string name="quest_bicycle_parking_type_stand">"Arko (kiu subtenas biciklan kadron)"</string>
-    <string name="quest_bicycle_parking_type_wheelbender">"Ringo (kiu nur tenas radon)"</string>
+    <string name="quest_bicycle_parking_type_wheelbender">"Ringo (kiu nur tenas la antaŭradon)"</string>
     <string name="quest_bicycle_parking_type_shed">"Ŝedo"</string>
     <string name="quest_bicycle_parking_type_locker">"Ŝlosilita"</string>
     <string name="quest_bicycle_parking_type_building">"Konstruaĵo"</string>
@@ -381,6 +381,7 @@ Parte signifas, ke rulseĝo povas eniri kaj uzi la ripozejon, sed neniu manplato
     <string name="questList_disabled_in_country">"Neniam montrita en %s"</string>
     <string name="quest_select_hint_most_specific">"Elektu la plej specifan, kiu taŭgas:"</string>
     <string name="quest_generic_item_confirmation">"Ĉu vi certas ne povi identifigi ĝin pli precize?"</string>
+    <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;Por kelkaj taskoj, aldona datumo de eksteraj liverantoj elŝutigas.&lt;/p&gt;"</string>
     <string name="quest_generic_hasFeature_no_leave_note">"Ne (lasi noton)"</string>
     <string name="pref_quests_reset">"Restarigi ambaŭ taska ebligon kaj ordon al la defaŭlta?"</string>
     <string name="quest_generic_item_invalid_value">"Bonvolu elekti pli specifan valoron."</string>
@@ -689,7 +690,7 @@ aktiva"</string>
     <string name="quest_board_type_title">"Kio estas la temo de ĉi tiu informa tabulo?"</string>
     <string name="quest_board_type_map">"Ĝi estas mapo"</string>
     <string name="quest_board_type_map_title">"Ĉu ĝi estas nur mapo?"</string>
-    <string name="quest_surface_detailed_answer_impossible">"Pluraj surfacoj"</string>
+    <string name="quest_board_type_map_description">"Se la tabulo havus apartan temon, bonvole specifu ĝin, sendepende ĉu ĝi ankaŭ montrus mapon. Ekzemple publika transporto tabulo montrus mapon de la itineroj de la aŭtobusoj. Se la temo ne estas en la listo de la elektablajn respondojn, bonvole konsideru fari noton."</string>
     <string name="quest_streetName_menuItem_international">"internacia"</string>
     <string name="quest_buildingType_terrace2">"Vicdomoj"</string>
     <string name="at_housename">"Nomo de domo %s"</string>
@@ -738,7 +739,6 @@ aktiva"</string>
     <string name="quest_steps_ramp_separate_wheelchair_confirm">"aparta"</string>
     <string name="quest_steps_ramp_separate_wheelchair_decline">"ne aparta"</string>
     <string name="pref_title_sync2">"Alŝutu respondojn aŭtomate"</string>
-    <string name="quest_surface_detailed_answer_impossible_title">"Priskribi surfacon"</string>
     <string name="open_url">"Malfermi URL"</string>
     <string name="quest_buildingType_silo">"Silo"</string>
     <string name="quest_buildingType_historic">"Historia"</string>
@@ -790,7 +790,6 @@ Kontrolu ĉiujn opciojn: kelkaj kazoj ne estas evidentaj, kiel unudirekta vojo k
     <string name="quest_construction_completion_date_title">"Kiam ĝi estos kompleta?"</string>
     <string name="quest_surface_value_clay">"Skorio"</string>
     <string name="quest_surface_value_artificial_turf">"Artefarita herbo"</string>
-    <string name="quest_surface_value_tartan">"Tartano"</string>
     <string name="quest_bicycle_parking_fee_title">"Ĉu oni devas pagi por parki biciklon ĉi tie?"</string>
     <string name="quest_buildingType_house_description2">"nesendependa unufamilia hejmo, ekz. unua envica domo"</string>
     <string name="quest_drinking_water_potable_signed">"Sekure trinkebla (signita)"</string>
@@ -806,7 +805,6 @@ Kontrolu ĉiujn opciojn: kelkaj kazoj ne estas evidentaj, kiel unudirekta vojo k
     <string name="team_mode">"Teama Reĝimo"</string>
     <string name="team_mode_exit">"Eliri Teama Reĝimo"</string>
     <string name="team_mode_description">"Kiam vi mapas la saman areon kune en grupo, vi povas eniri teamreĝimon por dividi taskojn inter ĉiuj grupanoj."</string>
-    <string name="team_mode_team_size_hint">"Teama reĝimo funkcias por grupoj de 2 ĝis 12 homoj."</string>
     <string name="team_mode_active">"Teama Reĝimo estas aktiva"</string>
     <string name="team_mode_deactivated">"Teama reĝimo estas malaktiva"</string>
     <string name="undo_confirm_title2">"Ĉu malfari la sekvan redakton?"</string>
@@ -867,8 +865,8 @@ Datumoj estas refreŝigitaj post %1$s tagoj kaj neuzataj datumoj aŭtomate estas
     <string name="quest_camera_type_fixed">"Fiksita"</string>
     <string name="quest_camera_type_panning">"Movebla"</string>
     <string name="about_title_faq">"Oftaj Demandoj"</string>
-    <string name="quest_buildingLevels_title2">"Kiom da niveloj super la kelo havas ĉi tiu konstruaĵo?"</string>
-    <string name="quest_buildingLevels_title_buildingPart2">"Kiom da niveloj super la kelo havas ĉi tiu konstruaĵparto?"</string>
+    <string name="quest_buildingLevels_title2">"Kiom da etaĝoj super la kelo havas ĉi tiu konstruaĵo?"</string>
+    <string name="quest_buildingLevels_title_buildingPart2">"Kiom da etaĝoj super la kelo havas ĉi tiu konstruaĵparto?"</string>
     <string name="pref_subtitle_quests_preset_name">"Antaŭdifino: %s"</string>
     <string name="default_disabled_msg_roofShape">"Ĉi tia tasko estas malebiligita defaŭlte ĉar la tipoj de tegmentoj estas malfacile videblaj de la strato. Tia tasko ankaŭ estas temporaba. Plejofte estas plifacila mapi tion de aeraj bildaroj hejme."</string>
     <string name="quest_religion_animist">"Animismo"</string>
@@ -1115,7 +1113,6 @@ Faru la samon por la alia flanko, se ĝi ĉeestas."</string>
     <string name="quest_building_entrance_dead_end">"Neniu eniro"</string>
     <string name="ar_core_tracking_hint_tap_to_measure">"Frapu ekranon por komenci mezuri"</string>
     <string name="quest_air_pump_bicycle_shop_title">"Ĉu estas publike alirebla bicikla pumpilo tie (almenaŭ dum ĝi malfermas)?"</string>
-    <string name="quest_air_pump_bicycle_repair_station_title">"Ĉu estas bicikla pumpilo kiu funkcias tie?"</string>
     <string name="action_overlays">"Supertavoloj"</string>
     <string name="split_way">"Disigi vojon"</string>
     <string name="quest_memorialType_title">"Kia memorigaĵo estas tiu?"</string>
@@ -1149,7 +1146,7 @@ Faru la samon por la alia flanko, se ĝi ĉeestas."</string>
     <string name="quest_camp_drinking_water_title">"Ĉu trinkakvo estas libere havebla al kamploĝantoj ĉi tie?"</string>
     <string name="quest_camp_shower_title">"Ĉu estas duŝoj ĉi tie?"</string>
     <string name="quest_camp_power_supply_title">"Ĉu ekzistas iu maniero por klientoj ŝarĝi sian telefonon, tekkomputilon ktp ĉi tie?"</string>
-    <string name="quest_camp_type_title">"Kiu eble tendumos ĉi tie?"</string>
+    <string name="quest_camp_type_title">"Kiu tendumus ĉi tie?"</string>
     <string name="quest_camp_type_tents_and_caravans">"Kaj tendoj kaj kampadveturiloj, ruldomoj, …"</string>
     <string name="quest_camp_type_caravans_only">"Nur kampadveturiloj, ruldomoj, …"</string>
     <string name="quest_camp_type_tents_only">"Nur tendoj"</string>
@@ -1198,10 +1195,10 @@ Faru la samon por la alia flanko, se ĝi ĉeestas."</string>
     <string name="urlconfig_apply_message">"Ĉu apliku kaj elektu antaŭagordojn %1$s?"</string>
     <string name="urlconfig_apply_message_overwrite">"Atentu: Via samnoma antaŭagordo anstataŭiĝos!"</string>
     <string name="urlconfig_switch_hint">"Vi ĉiam povas ŝanĝi antaŭagordojn ĉe la argorda menuo."</string>
-    <string name="quest_bicycle_parking_type_two_tier">"Du etaĝa bicikla parkejo"</string>
+    <string name="quest_bicycle_parking_type_two_tier">"Duetaĝa bicikla parkejo"</string>
     <string name="user_profile_current_week_title">"Ĉi semajno"</string>
     <string name="user_profile_dates_mapped">"Tagoj dum tiuj vi mapis lastatempe"</string>
-    <string name="quest_cycleway_value_advisory_lane">"surstrate markita biciklovojo"</string>
+    <string name="quest_cycleway_value_advisory_lane">"Surstrate markita biciklovojo"</string>
     <string name="urlconfig_scan_qr_code_again2">"Post instali la aplikaĵon, skanu la QR-kodon denove aŭ alklaku &lt;a href=\"%s\"&gt;ĉi tiun ligilon&lt;/a&gt; por apliki antaŭagordojn."</string>
     <string name="confirmation_replace_shop_title">"Ĉu tio nun estas alia vendejo?"</string>
     <string name="confirmation_replace_shop_message">"Tiukaze ankaŭ la malfermhoroj, kontaktdatumo, ktp. ŝanĝiĝus."</string>
@@ -1225,7 +1222,7 @@ Movu ĝin nun?"</string>
     <string name="separate_cycleway_no_or_allowed">"Ne farita por biciklistoj (sed eblas ke oni tamen povu biciklumi)"</string>
     <string name="separate_cycleway_non_segregated">"Sendivida vojo por biciklistoj kaj piedpaŝantoj"</string>
     <string name="separate_cycleway_segregated">"Dividita vojo por biciklistoj kaj piedpaŝantoj"</string>
-    <string name="separate_cycleway_exclusive">"Vojo nur por biciklistoj"</string>
+    <string name="separate_cycleway_exclusive">"Vojo por biciklistoj"</string>
     <string name="separate_cycleway_with_sidewalk">"Nurbicikla vojo kun apuda trotuaro (dividita per videbla limo)"</string>
     <string name="cycleway_reverse_direction">"Inversdirekta biciklovojo"</string>
     <string name="cycleway_reverse_direction_warning">"Biciklovojoj sur kiuj oni iras kontraŭ la ĉefa veturdirekto malofte troveblas."</string>
@@ -1257,7 +1254,10 @@ Movu ĝin nun?"</string>
     <string name="quest_hairdresser_not_signed">"Ne estas indikita"</string>
     <string name="quest_amenityCover_title">"Ĉu ĝi estas kovrita (protektita kontraŭ pluvo)?"</string>
     <string name="lane_narrowing_traffic_calming_choker">"Trotuarrandvastaĵo"</string>
-    <string name="lane_narrowing_traffic_calming_choked_island">"Trotuarrandvastaĵo + insulo"</string>
+    <string name="lane_narrowing_traffic_calming_island">"Trafikinsulo"</string>
+    <string name="lane_narrowing_traffic_calming_chicane">"Trafikĉikano"</string>
+    <string name="lane_narrowing_traffic_calming_choked_island">"Trotuarrandvastaĵo + trafikinsulo"</string>
+    <string name="lane_narrowing_traffic_calming_none">"Nenio malvastigita leno ĉi tie"</string>
     <string name="quest_tactilePaving_title_steps">"Ĉu estas taktila pavimo ĉe la supro kaj malsupro la de ŝtuparo?"</string>
     <string name="quest_tactilePaving_steps_top">"Sole ĉe la supro"</string>
     <string name="quest_tactilePaving_steps_bottom">"Sole ĉe la malsupro"</string>
@@ -1274,6 +1274,7 @@ Mankanta datumo ĉiam estas indikita per ruĝa."</string>
 
 Aldone kelkaj supertavoloj ebligas aldoni novajn datumojn ĉe la pozicio de la celilo, ekzemple la adresoj-supertavolo."</string>
     <string name="quest_crossing_kerb_height_title">"Kiom alta estas la trotuarrando ĉe tiu transirejo?"</string>
+    <string name="quest_maxheight_sign_title">"Kio estas la altlimo indikita ĉi tie?"</string>
     <string name="quest_leave_new_note_as_answer">"Tiuokaze, krei noton per kiu vi priskribas la situacion."</string>
     <string name="quest_drinking_water_type_title2">"Ĉu trinkebla akvo estas havebla ĉi tie? Ĉu jes, kia fonto ĝi havas?"</string>
     <string name="quest_is_amenity_inside_title">"Ĉu ĉi tio estas interne de konstruaĵo?"</string>
@@ -1286,11 +1287,13 @@ Aldone kelkaj supertavoloj ebligas aldoni novajn datumojn ĉe la pozicio de la c
     <string name="quest_recycling_type_food_waste">"Manĝresto"</string>
     <string name="quest_defibrillator_location">"Kie troviĝas tio defibrililo?"</string>
     <string name="quest_defibrillator_location_description">"Bonvole priskribu la ejo mallonge kaj akurate (ekz. \"en la akceptejo\")."</string>
+    <string name="quest_sanitary_dump_station_title">"Ĉu ĉi tie estas kloak-stacio?"</string>
+    <string name="quest_sanitary_dump_station_description">"Kloak-stacio estas ejo kie oni povas malplenigi la poluakvujo de loĝaŭtoj aŭ similaj veturiloj. Indikita per indikoj kiel tiu:"</string>
     <string name="quest_generalFee_title">"Ĉu oni devas pagi por uzi ĝin?"</string>
     <string name="quest_bbq_fuel_not_a_bbq">"Ĉi tie nur estas fajrejo"</string>
-    <string name="quest_bbq_fuel_not_a_bbq_confirmation">"Kontraste al kradrostejo fajrejo ne havas aparaton por kuiri super fajro."</string>
+    <string name="quest_bbq_fuel_not_a_bbq_confirmation">"Kontraste al kradrostejo, fajrejo ne havas aparaton por kuiri super fajro."</string>
     <string name="about_title_logs">"Protokoloj (%1$d)"</string>
-    <string name="about_summary_logs">"uzata en eraroraportoj"</string>
+    <string name="about_summary_logs">"Uzata en eraroraportoj."</string>
     <string name="action_filter">"Filtrilo"</string>
     <string name="action_share">"Kunhavigi protokolojn"</string>
     <string name="about_title_show_logs">"Montri protokolojn"</string>
@@ -1312,12 +1315,12 @@ Aldone kelkaj supertavoloj ebligas aldoni novajn datumojn ĉe la pozicio de la c
     <string name="quest_buildingType_tomb">"Tombo"</string>
     <string name="quest_buildingType_tower">"Turo"</string>
     <string name="quest_buildingType_tower_description">"ia speco de turo"</string>
-    <string name="quest_buildingType_under_construction">"konstruanta"</string>
+    <string name="quest_buildingType_under_construction">"Konstruanta"</string>
     <string name="overlay_buildings">"Konstruaĵoj"</string>
     <string name="quest_pedestrian_crossing_markings">"Ĉu tiu transirejo estas markita surstrate?"</string>
     <string name="overlay_places">"Lokoj"</string>
     <string name="overlay_things">"Aferoj"</string>
-    <string name="disused">"malzorgata"</string>
+    <string name="disused">"Malzorgata"</string>
     <string name="unknown_object">"Nekonata objekto"</string>
     <string name="quest_leafType_tree_title">"Ĉu tio arbo havas pinglojn aŭ foliojn?"</string>
     <string name="quest_bbq_fuel_gas">"Per gaso"</string>
@@ -1332,10 +1335,12 @@ Aldone kelkaj supertavoloj ebligas aldoni novajn datumojn ĉe la pozicio de la c
     <string name="info">"Pluaj informoj"</string>
     <string name="quest_accessible_for_pedestrians_prohibited">"Malpermesata."</string>
     <string name="quest_accessible_for_pedestrians_allowed">"Permesata."</string>
-    <string name="quest_accessible_for_pedestrians_separate_sidewalk">"Estas trotuaro ĉi tie sed ĝi estas pentrita dise sur la mapo"</string>
+    <string name="quest_buildingLevels_hint">"Por konstruaĵoj ĉe deklivo, oni komencas kalkuli la etaĝojn ĉe la malpli alta teretaĝo.
+
+Etaĝo estas tegmenta etaĝo (mansardo) se la fenestroj de ĝi estus en la tegmento. Sekve tegmentoj sen etaĝoj ne necese estas plata, nur ne sufiĉe alta por kompleta etaĝo."</string>
     <string name="quest_parcel_locker_brand">"De kiu firmao estas ĉi tiu paketo-ŝranko?"</string>
     <string name="quest_powerPolesMaterial_is_terminal">"La konduktlineo estas fiksita ĉe la konstruaĵo"</string>
-    <string name="quest_cycleway_value_sidewalk_ok">"nenio, sed signo permesas bicikladon sur la trotuaro"</string>
+    <string name="quest_cycleway_value_sidewalk_ok">"Nenio, sed signo permesas bicikladon sur la trotuaro"</string>
     <string name="separate_cycleway_no_signed">"Signo eksplicite malpermesas bicikladon"</string>
     <string name="separate_cycleway_footway_allowed_sign">"Piediranta vojo, sed signo permesas bicikladon"</string>
     <string name="quest_bicycle_parking_type_floor">"Markita areo"</string>
@@ -1347,4 +1352,52 @@ Aldone kelkaj supertavoloj ebligas aldoni novajn datumojn ĉe la pozicio de la c
     <string name="pref_category_quests">"Tasko"</string>
     <string name="pref_title_language_select2">"Lingvo"</string>
     <string name="questList_disabled_by_default">"Defaŭlte malebiligita"</string>
+    <string name="action_manage_presets_summary">"La nomo per kiu la taskelekto sube konserviĝas."</string>
+    <string name="quest_multiselect_hint">"Elektu ĉion kongruan:"</string>
+    <string name="quest_barrier_opening_width_gate">"Kiom larĝa estas la apertaĵo ĉi tie?"</string>
+    <string name="bridge">"sur ponto"</string>
+    <string name="about_title_intro">"Montru enkondukon"</string>
+    <string name="about_category_help">"Helpo"</string>
+    <string name="quest_camp_power_supply_hint">"Tiu estus ŝtopilingoj ĉe la tendejoj, ŝtopilingoj ĉe la servkonstruaĵo por la gastoj, destinata ŝargstacio por poŝtelefonoj, tekkomputiloj, ktp."</string>
+    <string name="quest_barrier_opening_width_bollard">"Kio estas la plej larĝa apertaĵo kiu estas trairebla ĉi tie?"</string>
+    <string name="user_profile_all_time_title">"Entute"</string>
+    <string name="user_statistics_country_rank2">"Rango en %s"</string>
+    <string name="quest_leafType_tree_is_just_a_stump">"Nur estas stumpo de trunko"</string>
+    <string name="quest_board_name_title">"Kio estas la surskribo de tiu informtabulo?"</string>
+    <string name="quest_crossing_hint">"Pado kiu kruciĝas straton:"</string>
+    <string name="note_for_object">"Iu rimarkis:"</string>
+    <string name="quest_bicycle_parking_type_safeloops">"Sekura ringo (apogas radon kaj kadron)"</string>
+    <string name="quest_cycleway_value_sidewalk_ok_dual">"Nenio, sed signo permesas bicikli sur la trotuaro, ambaŭdirekte"</string>
+    <string name="quest_surface_value_rubber">"Kaŭĉukaj grajnoj"</string>
+    <string name="quest_surface_value_acrylic">"Sinteza rezino"</string>
+    <string name="action_messages">"Montru mesaĝojn"</string>
+    <string name="action_create_new_poi">"Krei novan"</string>
+    <string name="auth_error">"Rajtiga eraro. Bonvle provu ensaluti denove."</string>
+    <string name="quest_accessible_for_pedestrians_sidewalk">"Fakte, tie estas trotuaro."</string>
+    <string name="quest_bicycle_repair_station_services_title">"Kiaj bicikloripariloj estas ĉi tie?"</string>
+    <string name="quest_bicycle_repair_station_pump">"Pumpilo"</string>
+    <string name="quest_bicycle_repair_station_tools">"Diversaj iloj"</string>
+    <string name="quest_bicycle_repair_station_stand">"Tenilo"</string>
+    <string name="quest_bicycle_repair_station_chain_tool">"Ĉenilo"</string>
+    <string name="quest_boat_rental_title">"Kiaj akvoveturiloj lueblas ĉi tie?"</string>
+    <string name="quest_boat_rental_motorboat">"Motorboato"</string>
+    <string name="quest_boat_rental_jetski">"Akvoskotero"</string>
+    <string name="quest_boat_rental_sailboat">"Velŝipo"</string>
+    <string name="quest_boat_rental_pedalboat">"Pedalboato"</string>
+    <string name="quest_boat_rental_kayak">"Kajako"</string>
+    <string name="quest_boat_rental_canoe">"Kanuo"</string>
+    <string name="quest_boat_rental_houseboat">"Domboato"</string>
+    <string name="quest_boat_rental_rowboat">"Remboato"</string>
+    <string name="quest_boat_rental_raft">"Rafto"</string>
+    <string name="quest_boat_rental_surfboard">"Surfotabulo"</string>
+    <string name="quest_boat_rental_sailboard">"Veltabulo"</string>
+    <string name="quest_boat_rental_yacht">"Jaĥto"</string>
+    <string name="quest_boat_rental_standup_paddleboard">"Pagajsurfado"</string>
+    <string name="quest_powerAttachment_title">"Kiel la konduktlineoj estas fiksita?"</string>
+    <string name="quest_powerAttachment_suspension">"Tenita de supre"</string>
+    <string name="quest_powerAttachment_anchor">"Fiksita horizontale"</string>
+    <string name="quest_powerAttachment_pin">"Tenita de sube"</string>
+    <string name="pedestrian_zone_designated">"Destinita por bicikli"</string>
+    <string name="pedestrian_zone_allowed_sign">"Signo permesas bicikli ĉi tie."</string>
+    <string name="pedestrian_zone_no_sign">"Ne estas eksplicita signo pri biciklado ĉi tie"</string>
 </resources>

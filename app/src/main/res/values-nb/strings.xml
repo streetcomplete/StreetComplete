@@ -698,9 +698,6 @@ nivåer"</string>
     <string name="quest_board_type_map">"Et kart"</string>
     <string name="quest_board_type_map_title">"Er det bare et kart, og kun et kart?"</string>
     <string name="quest_board_type_map_description">"Oppgi om en informasjonstavle omhandler et spesifikt emne, uavhengig av om den også viser et kart. For eksempel kan en informasjonstavle for offentlig transport inneholde et kart over bussrutene. Hvis du ikke finner emnet blant alternativene kan du lage en merknad i stedet."</string>
-    <string name="quest_surface_detailed_answer_impossible">"Flere overflater…"</string>
-    <string name="quest_surface_detailed_answer_impossible_confirmation">"Er du sikker på at det er umulig å spesifisere overflaten? Husk alternativet “Varierer…” som kan dele opp veien der overflaten endres. Vennligst bruk “Vanskelig å si…” hvis strekningen har samme overflate, men den ikke finnes blant alternativene."</string>
-    <string name="quest_surface_detailed_answer_impossible_description">"Vennligst gi en kort beskrivelse av overflaten her, for eksempel “sandete med områder med brostein”. Teksten er begrenset til 255 tegn."</string>
     <string name="quest_streetName_menuItem_international">"internasjonal"</string>
     <string name="quest_buildingType_terrace2">"Rekkehus"</string>
     <string name="at_housename">"Husnavn %s"</string>
@@ -749,7 +746,6 @@ nivåer"</string>
     <string name="quest_steps_ramp_separate_wheelchair_confirm">"Adskilt"</string>
     <string name="quest_steps_ramp_separate_wheelchair_decline">"Ikke adskilt"</string>
     <string name="pref_title_sync2">"Last opp endringer automatisk"</string>
-    <string name="quest_surface_detailed_answer_impossible_title">"Beskriv overflate"</string>
     <string name="open_url">"Åpne URL"</string>
     <string name="quest_buildingType_silo">"Silo"</string>
     <string name="quest_buildingType_historic">"Historisk"</string>
@@ -803,7 +799,6 @@ Legg merke til alle tilgjengelige alternativer! Noen tilfeller er ikke åpenbare
     <string name="quest_construction_completion_date_title">"Når blir det ferdig?"</string>
     <string name="quest_surface_value_clay">"Leire"</string>
     <string name="quest_surface_value_artificial_turf">"Kunstgress"</string>
-    <string name="quest_surface_value_tartan">"Tartan"</string>
     <string name="quest_bicycle_parking_fee_title">"Må du betale for å parkere sykkel her?"</string>
     <string name="quest_buildingType_house_description2">"Enebolig"</string>
     <string name="quest_drinking_water_potable_signed">"Drikkevann (merket)"</string>
@@ -819,7 +814,6 @@ Legg merke til alle tilgjengelige alternativer! Noen tilfeller er ikke åpenbare
     <string name="team_mode">"Gruppemodus"</string>
     <string name="team_mode_exit">"Avslutt gruppemodus"</string>
     <string name="team_mode_description">"Når du kartlegger det samme området sammen med en gruppe kan du starte gruppemodus for å dele oppgavene mellom dere."</string>
-    <string name="team_mode_team_size_hint">"Gruppemodus fungerer for grupper på 2-12 personer."</string>
     <string name="team_mode_active">"Gruppemodus er aktivt"</string>
     <string name="team_mode_deactivated">"Gruppemodus er deaktivert"</string>
     <string name="undo_confirm_title2">"Angre følgende endring?"</string>
@@ -1135,7 +1129,6 @@ Om mulig, gjør det samme for den andre siden."</string>
     <string name="quest_building_entrance_dead_end">"Blindvei, ingen inngang"</string>
     <string name="ar_core_tracking_hint_tap_to_measure">"Trykk på skjermen for å begynne å måle"</string>
     <string name="quest_air_pump_bicycle_shop_title">"Er det en offentilg tilgjengelig sykkelpumpe her (i hverfall når det er åpent)?"</string>
-    <string name="quest_air_pump_bicycle_repair_station_title">"Er det en fungerende sykkelpumpe her?"</string>
     <string name="action_overlays">"Kartlag"</string>
     <string name="split_way">"Del veien"</string>
     <string name="quest_memorialType_title">"Hva slags minnesmerke er dette?"</string>
@@ -1175,7 +1168,6 @@ Om mulig, gjør det samme for den andre siden."</string>
     <string name="quest_camp_type_tents_only">"Kun telt"</string>
     <string name="quest_camp_type_backcountry">"Friluftscamping (ingen fasiliteter)"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Diameteren virker usannsynlig da den vanligvis er mellom %1$d og %2$d."</string>
-    <string name="quest_surface_tractypeMismatchInput_confirmation_description">"Dette svarer passer ikke med det som allerede er registrert for denne veien. Er du sikker på at du legger inn svar for riktig vei? Har du undersøkt hele veistrekket selv, slik du alltid skal?"</string>
     <string name="quest_recycling_type_pet">"Kun PET"</string>
     <string name="street_parking_street_width">"Gatebredde: %s"</string>
     <string name="overlay_street_parking">"Gateparkering"</string>
@@ -1247,7 +1239,7 @@ Vil du flytte den nå?"</string>
     <string name="separate_cycleway_no_or_allowed">"Ikke tilrettelagt for sykling (men kan likevel være tillatt)"</string>
     <string name="separate_cycleway_non_segregated">"Delt gang- og sykkelvei"</string>
     <string name="separate_cycleway_segregated">"Adskilt gang og sykkelvei"</string>
-    <string name="separate_cycleway_exclusive">"Kun for sykkel"</string>
+    <string name="separate_cycleway_exclusive">"Sykkelsti"</string>
     <string name="separate_cycleway_with_sidewalk">"Sykkelvei med fortau (adskilt med fortauskant)"</string>
     <string name="cycleway_reverse_direction">"Snu retningen på sykkelveien"</string>
     <string name="cycleway_reverse_direction_warning">"En sykkelvei som går inn i motsatt retning er veldig sjelden."</string>
@@ -1363,17 +1355,17 @@ I tillegg tillater noen typer kartlag at du legger til nye data der trådkorset 
     <string name="about_description_donate_google_play3">"Takk for at du vurderer å støtte denne appen! Du kan finne informasjon om donasjon på våre nettsider eller \"project home\", Google Play tillater ikke at vi gir linken inne i appen."</string>
     <string name="quest_isAmenityIndoor_outside_covered">"Utendørs, men tildekket"</string>
     <string name="lit_value_unsupported">"Spesiell belysningsstatus som ikke kan velges i denne appen"</string>
-    <string name="quest_generic_otherAnswers2">"Uh…"</string>
+    <string name="quest_generic_otherAnswers2">"Eeh…"</string>
     <string name="quest_pedestrian_crossing_signals2">"Er det trafikklys som indikerer når man kan krysse her?"</string>
     <string name="quest_moped_access_title">"Er det et skilt som indikerer tilgang for mopeder på denne sykkelstien?"</string>
     <string name="quest_moped_access_allowed">"Det er ikke skilt"</string>
     <string name="quest_moped_access_designated">"Det er et skilt som betegner dette sykkelfeltet for mopeder"</string>
     <string name="quest_moped_access_forbidden">"Det er et skilt som forbyr mopeder"</string>
     <string name="default_disabled_msg_visible_sign_moped">"Denne oppgavetypen er deaktivert som standard siden mopedtilgang kun er markert ved et spesielt skilt på starten/slutten av sykkelfeltet."</string>
+    <string name="quest_arrow_tutorial">"Pilene i illustrasjonen peker i retningen veien går på kartet. Prøv å rotere kartet, og du vil skjønne det."</string>
     <string name="info">"Mer informasjon"</string>
     <string name="quest_accessible_for_pedestrians_prohibited">"Det er forbudt."</string>
     <string name="quest_accessible_for_pedestrians_allowed">"Det er tillatt."</string>
-    <string name="quest_accessible_for_pedestrians_separate_sidewalk">"Egentlig, er det et fortau, men det er vist annerledes på kartet."</string>
     <string name="quest_buildingLevels_hint">"For byggninger i skråning, starter man tellingen fra første etasje på den laveste siden.
 
 En etasje regnes som taketasje når vinduene er i taket. Deretter er tak med null taketasjer nødvendigvis flate, bare ikke høye nok for en hel etasje."</string>
@@ -1391,7 +1383,9 @@ En etasje regnes som taketasje når vinduene er i taket. Deretter er tak med nul
     <string name="about_category_contribute">"Bidra"</string>
     <string name="pref_category_quests">"Oppdrag"</string>
     <string name="pref_title_language_select2">"Språk"</string>
+    <string name="pref_title_resurvey_intervals_summary">"Hvor ofte du blir bedt om å bekrefte om tidligere kartlagte opplysninger er riktige."</string>
     <string name="questList_disabled_by_default">"Avslått som standard"</string>
+    <string name="action_manage_presets_summary">"Hvilket navn de valgte oppdragene nedenfor er lagret under."</string>
     <string name="quest_multiselect_hint">"Velg alle som stemmer:"</string>
     <string name="quest_barrier_opening_width_gate">"Hvor stor er åpningens bredde her?"</string>
     <string name="bridge">"på bro"</string>
@@ -1401,4 +1395,38 @@ En etasje regnes som taketasje når vinduene er i taket. Deretter er tak med nul
     <string name="user_profile_all_time_title">"Totalt"</string>
     <string name="user_statistics_country_rank2">"Rangering i %s"</string>
     <string name="quest_leafType_tree_is_just_a_stump">"Kun en stubbe"</string>
+    <string name="quest_board_name_title">"Hva er overskriften på dette infomasjonsskiltet?"</string>
+    <string name="note_for_object">"En annen person bemerket:"</string>
+    <string name="quest_bicycle_parking_type_safeloops">"Sikkerhetsbøyler (støtter hjul og ramme)"</string>
+    <string name="quest_cycleway_value_sidewalk_ok_dual">"ingen, men skilting tillater sykling på fortauet, i begge retninger"</string>
+    <string name="quest_surface_value_rubber">"Gummigranulat"</string>
+    <string name="action_messages">"Vis melding"</string>
+    <string name="action_create_new_poi">"Lag ny"</string>
+    <string name="auth_error">"Autorisasjonsfeil. Prøv å logge inn igjen."</string>
+    <string name="quest_accessible_for_pedestrians_sidewalk">"Det er et fortau, faktisk."</string>
+    <string name="quest_bicycle_repair_station_services_title">"Hva slags sykkelutstyr er tilgjengelig her?"</string>
+    <string name="quest_bicycle_repair_station_pump">"Pumpe"</string>
+    <string name="quest_bicycle_repair_station_tools">"Ulike verktøy"</string>
+    <string name="quest_bicycle_repair_station_stand">"Stativ"</string>
+    <string name="quest_bicycle_repair_station_chain_tool">"Kjedevertkøy"</string>
+    <string name="quest_boat_rental_title">"Hva slags båter leies ut her?"</string>
+    <string name="quest_boat_rental_motorboat">"Motorbåt"</string>
+    <string name="quest_boat_rental_jetski">"Vannskuter"</string>
+    <string name="quest_boat_rental_sailboat">"Seilbåt"</string>
+    <string name="quest_boat_rental_pedalboat">"Pedalbåt"</string>
+    <string name="quest_boat_rental_kayak">"Kajakk"</string>
+    <string name="quest_boat_rental_canoe">"Kano"</string>
+    <string name="quest_boat_rental_houseboat">"Husbåt"</string>
+    <string name="quest_boat_rental_rowboat">"Robåt"</string>
+    <string name="quest_boat_rental_raft">"Flåte"</string>
+    <string name="quest_boat_rental_surfboard">"Surfebrett"</string>
+    <string name="quest_boat_rental_sailboard">"Seilbrett"</string>
+    <string name="quest_boat_rental_yacht">"Yacht"</string>
+    <string name="quest_boat_rental_standup_paddleboard">"Padlebrett (SUP)"</string>
+    <string name="quest_powerAttachment_title">"Hvordan er strømkabelen festet?"</string>
+    <string name="quest_powerAttachment_suspension">"Festet ovenfra"</string>
+    <string name="quest_powerAttachment_anchor">"Festet horisontalt"</string>
+    <string name="quest_powerAttachment_pin">"Støttet nedenfra"</string>
+    <string name="pedestrian_zone_allowed_sign">"Et skilt tillater sykling her"</string>
+    <string name="pedestrian_zone_no_sign">"Ingen skilting om sykling her"</string>
 </resources>

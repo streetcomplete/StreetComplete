@@ -11,6 +11,7 @@ import de.westnordost.streetcomplete.data.osm.edits.upload.ElementEditsUploader
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsUploader
 import de.westnordost.streetcomplete.data.externalsource.ExternalSourceQuestController
+import de.westnordost.streetcomplete.data.user.UserLoginController
 import de.westnordost.streetcomplete.data.user.UserLoginSource
 import de.westnordost.streetcomplete.util.Listeners
 import de.westnordost.streetcomplete.util.logs.Log
@@ -24,6 +25,7 @@ class Uploader(
     private val downloadedTilesController: DownloadedTilesController,
     private val userLoginSource: UserLoginSource,
     private val versionIsBannedChecker: VersionIsBannedChecker,
+    private val userLoginController: UserLoginController,
     private val mutex: Mutex,
     private val externalSourceQuestController: ExternalSourceQuestController,
     private val prefs: ObservableSettings,
@@ -95,6 +97,9 @@ class Uploader(
             Log.i(TAG, "Upload cancelled")
         } catch (e: Exception) {
             Log.e(TAG, "Unable to upload", e)
+            if (e is AuthorizationException) {
+                userLoginController.logOut()
+            }
             listeners.forEach { it.onError(e) }
             throw e
         } finally {

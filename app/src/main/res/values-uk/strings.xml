@@ -131,7 +131,7 @@
     <string name="crash_title">"О ні, StreetComplete «крашнувся» останнього разу!"</string>
     <string name="crash_compose_email">"Написати лист"</string>
     <string name="no_email_client">"У вас немає встановленого поштового клієнта."</string>
-    <string name="pref_title_keep_screen_on">"Не блоковувати екран"</string>
+    <string name="pref_title_keep_screen_on">"Не блокувати екран"</string>
     <string name="download_server_error">"Помилка з'єднання під час пошуку завдань. Спробуйте пізніше."</string>
     <string name="upload_server_error">"Помилка з'єднання під час завантаження відповідей. Спробуйте пізніше."</string>
     <string name="quest_generic_hasFeature_yes">"Так"</string>
@@ -594,7 +594,7 @@
     <string name="link_category_intro_title">"Вступ"</string>
     <string name="link_category_intro_description">"Дізнайтеся більше про OSM та його спільноту"</string>
     <string name="link_category_editors_title">"Внесок"</string>
-    <string name="link_category_editors_description">"Родактори та інші шляхи допомогти OpenStreetMap"</string>
+    <string name="link_category_editors_description">"Редактори та інші шляхи допомогти OpenStreetMap"</string>
     <string name="link_category_maps_title">"Мапи"</string>
     <string name="link_category_maps_description">"Мапи на основі OpenStreetMap"</string>
     <string name="link_category_showcase_title">"Вітрина"</string>
@@ -693,9 +693,6 @@
     <string name="quest_board_type_map">"Це мапа"</string>
     <string name="quest_board_type_map_title">"Чи це просто мапа і лише мапа?"</string>
     <string name="quest_board_type_map_description">"Якщо дошка стосується певної теми, будь ласка, вкажіть її, незалежно від того, чи містить вона також мапу. Наприклад, дошка громадського транспорту може мати мапу автобусних маршрутів. Якщо тема не вказана серед доступних відповідей, залиште нотатку."</string>
-    <string name="quest_surface_detailed_answer_impossible">"Різне покриття…"</string>
-    <string name="quest_surface_detailed_answer_impossible_confirmation">"Ви впевнені, що не можна визначити покриття? Зазначте, що варіант відповіді \"Різне вздовж шляху\" дозволить Вам розрізати шлях там, де змінюється покриття. Будь ласка виберіть \"Важко сказати\", якщо покриття суцільне, але такого типу покриття немає серед варіантів."</string>
-    <string name="quest_surface_detailed_answer_impossible_description">"Будь ласка, коротко опишіть характер покриття, наприклад \"глина з виступаючим камінням\". Довжина тексту має обмеження у 255 символів."</string>
     <string name="quest_streetName_menuItem_international">"міжнародна"</string>
     <string name="quest_buildingType_terrace2">"Ряд будинків"</string>
     <string name="at_housename">"Назва дому %s"</string>
@@ -744,7 +741,6 @@
     <string name="quest_steps_ramp_separate_wheelchair_confirm">"Окремо"</string>
     <string name="quest_steps_ramp_separate_wheelchair_decline">"Не окремо"</string>
     <string name="pref_title_sync2">"Надсилати відповіді автоматично"</string>
-    <string name="quest_surface_detailed_answer_impossible_title">"Опишіть покриття"</string>
     <string name="open_url">"Відкрити URL"</string>
     <string name="quest_buildingType_silo">"Силос"</string>
     <string name="quest_buildingType_historic">"Історична"</string>
@@ -796,7 +792,6 @@
     <string name="quest_construction_completion_date_title">"Коли буде завершено?"</string>
     <string name="quest_surface_value_clay">"Глина"</string>
     <string name="quest_surface_value_artificial_turf">"Штучна трава"</string>
-    <string name="quest_surface_value_tartan">"Тартан (гумове покриття)"</string>
     <string name="quest_bicycle_parking_fee_title">"Тут потрібно платити за паркування велосипеда?"</string>
     <string name="quest_buildingType_house_description2">"Не окремий односімейний будинок"</string>
     <string name="quest_drinking_water_potable_signed">"Безпечно для пиття (вказівник)"</string>
@@ -812,7 +807,6 @@
     <string name="team_mode">"Командний режим"</string>
     <string name="team_mode_exit">"Вийти з командного режиму"</string>
     <string name="team_mode_description">"При картографуванні однієї місцевості у групі, ви можете увійти в командний режим, щоб поділити квести між усіма членами команди."</string>
-    <string name="team_mode_team_size_hint">"Командний режим для груп від 2 до 12 людей."</string>
     <string name="team_mode_active">"Командний режим активний"</string>
     <string name="team_mode_deactivated">"Командний режим вимкнений"</string>
     <string name="undo_confirm_title2">"Скасувати обрані правки?"</string>
@@ -1127,7 +1121,6 @@
     <string name="quest_building_entrance_dead_end">"Глухий кут, входу немає"</string>
     <string name="ar_core_tracking_hint_tap_to_measure">"Торкніться екрану, щоб почати вимірювання"</string>
     <string name="quest_air_pump_bicycle_shop_title">"Чи є тут загальнодоступний велонасос (принаймні коли відчинено)?"</string>
-    <string name="quest_air_pump_bicycle_repair_station_title">"Чи є тут велонасос?"</string>
     <string name="action_overlays">"Накладні шари"</string>
     <string name="split_way">"Розділити лінію"</string>
     <string name="quest_memorialType_title">"Який це памʼятник?"</string>
@@ -1167,7 +1160,6 @@
     <string name="quest_camp_type_tents_only">"Лише намети"</string>
     <string name="quest_camp_type_backcountry">"Кемпінг без облаштунків"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Діаметр виглядає помилковим, зазвичай він від %1$d до %2$d."</string>
-    <string name="quest_surface_tractypeMismatchInput_confirmation_description">"Ця відповідь не підходить до того, що вже нанесено на мапу для цієї дороги. Ви впевнені, що відповідаєте саме про цю дорогу? Ви впевнені, що особисто бачили всю дорогу від початку до кінця?"</string>
     <string name="quest_recycling_type_pet">"Лише ПЕТ"</string>
     <string name="street_parking_street_width">"Ширина дороги: %s"</string>
     <string name="overlay_street_parking">"Вуличне паркування"</string>
@@ -1239,7 +1231,7 @@
     <string name="separate_cycleway_no_or_allowed">"Не призначено для велосипедистів (їзда на велосипеді все одно може бути дозволена)"</string>
     <string name="separate_cycleway_non_segregated">"Вело- та пішохідна доріжка без роздільника"</string>
     <string name="separate_cycleway_segregated">"Окремі вело- та пішохідна доріжка"</string>
-    <string name="separate_cycleway_exclusive">"Доріжка лише для велосипедів"</string>
+    <string name="separate_cycleway_exclusive">"велосипедна доріжка"</string>
     <string name="separate_cycleway_with_sidewalk">"Велодоріжка з прилеглим тротуаром (відокремлений бордюром)"</string>
     <string name="cycleway_reverse_direction">"Зворотній напрямок велосипедної доріжки"</string>
     <string name="cycleway_reverse_direction_warning">"Велодоріжка, яка йде в інший бік, зустрічається вкрай рідко."</string>
@@ -1367,7 +1359,6 @@
     <string name="info">"Більше інформації"</string>
     <string name="quest_accessible_for_pedestrians_prohibited">"Це заборонено."</string>
     <string name="quest_accessible_for_pedestrians_allowed">"Це дозволено."</string>
-    <string name="quest_accessible_for_pedestrians_separate_sidewalk">"Тут є тротуар, але на мапі він позначений окремо."</string>
     <string name="quest_buildingLevels_hint">"Для будівель на схилі підрахунок поверхів починається від наземного поверху з найнижчого боку.
 
 Поверх вважається поверхом даху, якщо його вікна знаходяться в даху. Тому дахи з 0 поверхів не обов’язково є плоскими, просто недостатньо високими щоб вмістити поверх.
@@ -1400,4 +1391,6 @@
     <string name="user_statistics_country_rank2">"Місце в %s"</string>
     <string name="quest_leafType_tree_is_just_a_stump">"Це просто пень"</string>
     <string name="quest_board_name_title">"Яка назва цієї інформаційної дошки?"</string>
+    <string name="quest_crossing_hint">"Неформальна стежка, що перетинає дорогу:"</string>
+    <string name="note_for_object">"Нотатка іншої особи:"</string>
 </resources>

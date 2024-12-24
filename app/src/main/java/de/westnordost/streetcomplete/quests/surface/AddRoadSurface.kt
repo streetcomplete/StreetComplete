@@ -10,14 +10,14 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.surface.INVALID_SURFACES
 import de.westnordost.streetcomplete.osm.surface.INVALID_SURFACES_FOR_TRACKTYPES
-import de.westnordost.streetcomplete.osm.surface.SurfaceAndNote
+import de.westnordost.streetcomplete.osm.surface.Surface
 import de.westnordost.streetcomplete.osm.surface.UNPAVED_SURFACES
 import de.westnordost.streetcomplete.osm.surface.applyTo
 import de.westnordost.streetcomplete.quests.booleanQuestSettingsDialog
 import de.westnordost.streetcomplete.quests.fullElementSelectionDialog
 import de.westnordost.streetcomplete.quests.questPrefix
 
-class AddRoadSurface : OsmFilterQuestType<SurfaceAndNote>() {
+class AddRoadSurface : OsmFilterQuestType<Surface>() {
 
     override val elementFilter = """
         ways with (
@@ -25,13 +25,15 @@ class AddRoadSurface : OsmFilterQuestType<SurfaceAndNote>() {
         )
         and (
           !surface
-          or surface ~ ${UNPAVED_SURFACES.joinToString("|")} and surface older today -6 years
-          or surface older today -12 years
+          or surface ~ ${INVALID_SURFACES.joinToString("|")}
           or (
-            surface ~ ${if (prefs.getBoolean(questPrefix(prefs) + ALLOW_GENERIC_ROAD, false)) "" else "paved|unpaved|"}${INVALID_SURFACES.joinToString("|")}
+            surface ~ paved|unpaved
             and !surface:note
             and !note:surface
+            and !check_date:surface
           )
+          or surface ~ ${UNPAVED_SURFACES.joinToString("|")} and surface older today -6 years
+          or surface older today -12 years
           ${INVALID_SURFACES_FOR_TRACKTYPES.entries.joinToString("\n") { (tracktype, surfaces) ->
               "or tracktype = $tracktype and surface ~ ${surfaces.joinToString("|")}"
           }}
@@ -53,31 +55,15 @@ class AddRoadSurface : OsmFilterQuestType<SurfaceAndNote>() {
 
     override fun createForm() = AddRoadSurfaceForm()
 
-    override fun applyAnswerTo(answer: SurfaceAndNote, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: Surface, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         answer.applyTo(tags)
     }
 
     override val hasQuestSettings = true
 
     override fun getQuestSettingsDialog(context: Context): AlertDialog =
-        AlertDialog.Builder(context)
-            .setTitle(R.string.quest_settings_what_to_edit)
-            .setPositiveButton(R.string.quest_generic_surface_button) { _, _ ->
-                booleanQuestSettingsDialog(context, prefs, questPrefix(prefs) + ALLOW_GENERIC_ROAD,
-                    R.string.quest_generic_surface_message,
-                    R.string.quest_generic_surface_yes,
-                    R.string.quest_generic_surface_no
-                ).show()
-            }
-            .setNeutralButton(android.R.string.cancel, null)
-            .setNegativeButton(R.string.element_selection_button) { _, _ ->
-                fullElementSelectionDialog(context, prefs, "${questPrefix(prefs)}qs_${name}_element_selection", R.string.quest_settings_element_selection, highwaySelection)
-                    .show()
-            }
-            .create()
+        fullElementSelectionDialog(context, prefs, "${questPrefix(prefs)}qs_${name}_element_selection", R.string.quest_settings_element_selection, highwaySelection)
 }
-
-const val ALLOW_GENERIC_ROAD = "qs_AddRoadSurface_allow_generic"
 
 private val highwaySelection = """
     highway ~ ${listOf(

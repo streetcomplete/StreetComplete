@@ -15,7 +15,7 @@ import de.westnordost.streetcomplete.data.quest.ExternalSourceQuestKey
 import de.westnordost.streetcomplete.databinding.QuestOsmoseCustomQuestBinding
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.questPrefix
-import de.westnordost.streetcomplete.screens.main.MainFragment
+import de.westnordost.streetcomplete.screens.main.MainActivity
 import de.westnordost.streetcomplete.screens.main.map.MainMapFragment
 import de.westnordost.streetcomplete.screens.main.map.Marker
 import de.westnordost.streetcomplete.screens.main.map.ShowsGeometryMarkers
@@ -115,11 +115,11 @@ class OsmoseForm : AbstractExternalSourceQuestForm() {
             //  normal one contains way labels, which are necessary for editing
             //  this here contains the arrows
             // and adding arrows to "normal" highlighted ways in special cases only is maybe work for later
-            val mapFragment = (parentFragment as? MainFragment)?.childFragmentManager?.fragments?.filterIsInstance<MainMapFragment>()?.singleOrNull()
+            val mapFragment = (activity as? MainActivity)?.supportFragmentManager?.fragments?.filterIsInstance<MainMapFragment>()?.singleOrNull()
             mapFragment?.highlightGeometries(elementsAndGeometry.map { it.second })
         }
 
-        val showsGeometryMarkersListener = parentFragment as? ShowsGeometryMarkers ?: activity as? ShowsGeometryMarkers ?: return
+        val showsGeometryMarkersListener = activity as? ShowsGeometryMarkers ?: return
         showsGeometryMarkersListener.putMarkersForCurrentHighlighting(elementsAndGeometry.map {
             Marker(it.second, null, "${it.first.type} ${it.first.id}")
         })

@@ -98,7 +98,9 @@ class AddOpeningHours(
             "craft" to arrayOf(
                 // common
                 "carpenter", "shoemaker", "tailor", "photographer", "dressmaker",
-                "electronics_repair", "key_cutter", "stonemason"
+                "electronics_repair", "key_cutter", "stonemason", "bookbinder",
+                "jeweller", "sailmaker", "jeweller", "watchmaker", "clockmaker",
+                "locksmith",  "window_construction",
             ),
             "healthcare" to arrayOf(
                 // common

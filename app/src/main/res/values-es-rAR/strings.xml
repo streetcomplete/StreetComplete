@@ -690,9 +690,6 @@ Tené en cuenta que esta aplicación solo pide el número de puerta de un edific
     <string name="quest_board_type_map">"Es un mapa"</string>
     <string name="quest_board_type_map_title">"¿Es solo un mapa, sin nada más?"</string>
     <string name="quest_board_type_map_description">"Si el cartel es sobre un tema en particular, dejalo claro y afiná tu selección, sin importar el mapa que pueda tener. Por ejemplo; un cartel de transporte público puede tener un mapa con una ruta de autobús. Si el tema no aparece en la lista dejá una nota."</string>
-    <string name="quest_surface_detailed_answer_impossible">"Varios tipos de superficie…"</string>
-    <string name="quest_surface_detailed_answer_impossible_confirmation">"¿Seguro que no podés poner el tipo exacto de superficie? Tené en cuenta que responder «difiere a lo largo del camino» te permite partir el camino en dos en el punto donde cambia. Podés pulsar en «no sabría decir» si hay un solo tipo de superficie pero no aparece en la lista."</string>
-    <string name="quest_surface_detailed_answer_impossible_description">"Explicá brevemente el tipo de superficie, por ejemplo; «arenoso con algún adoquín». Podés escribir hasta 255 caracteres como máximo."</string>
     <string name="quest_streetName_menuItem_international">"internacional"</string>
     <string name="quest_buildingType_terrace2">"Casas adosadas"</string>
     <string name="at_housename">"Nombre de la casa %s"</string>
@@ -741,7 +738,6 @@ Tené en cuenta que esta aplicación solo pide el número de puerta de un edific
     <string name="quest_steps_ramp_separate_wheelchair_confirm">"separada"</string>
     <string name="quest_steps_ramp_separate_wheelchair_decline">"sin separar"</string>
     <string name="pref_title_sync2">"Subir respuestas automáticamente"</string>
-    <string name="quest_surface_detailed_answer_impossible_title">"Describí la superficie"</string>
     <string name="open_url">"Abrir URL"</string>
     <string name="quest_buildingType_silo">"Silo"</string>
     <string name="quest_buildingType_historic">"Histórico"</string>
@@ -792,7 +788,6 @@ Tené en cuenta que esta aplicación solo pide el número de puerta de un edific
     <string name="quest_construction_completion_date_title">"¿Cuándo estará terminado?"</string>
     <string name="quest_surface_value_clay">"Arcillosa o con barro"</string>
     <string name="quest_surface_value_artificial_turf">"Césped artificial"</string>
-    <string name="quest_surface_value_tartan">"Tartán"</string>
     <string name="quest_bicycle_parking_fee_title">"¿Hay que pagar para estacionar una bici acá?"</string>
     <string name="quest_buildingType_house_description2">"Vivienda unifamiliar no independiente"</string>
     <string name="quest_drinking_water_potable_signed">"Potable (señalizado)"</string>
@@ -808,7 +803,6 @@ Tené en cuenta que esta aplicación solo pide el número de puerta de un edific
     <string name="team_mode">"Modo equipo"</string>
     <string name="team_mode_exit">"Salir del modo equipo"</string>
     <string name="team_mode_description">"Cuando estén varios mejorando una zona a la vez, pueden usar el modo «en equipo» y así dividir las tareas entre los miembros."</string>
-    <string name="team_mode_team_size_hint">"El modo equipo funciona para grupos de 2 a 12 personas."</string>
     <string name="team_mode_active">"El modo equipo está activo"</string>
     <string name="team_mode_deactivated">"El modo equipo está desactivado"</string>
     <string name="undo_confirm_title2">"¿Deshacer la siguiente edición?"</string>
@@ -1123,7 +1117,6 @@ También podés dejar una nota (con foto)."</string>
     <string name="quest_building_entrance_dead_end">"Entrada sin salida"</string>
     <string name="ar_core_tracking_hint_tap_to_measure">"Tocá la pantalla para empezar a medir"</string>
     <string name="quest_air_pump_bicycle_shop_title">"¿Acá hay alguna bomba para inflar bicis que se pueda usar gratis (al menos en horario laboral)?"</string>
-    <string name="quest_air_pump_bicycle_repair_station_title">"¿Acá hay alguna bomba para inflar bicis que se pueda usar gratis?"</string>
     <string name="action_overlays">"Capas de datos"</string>
     <string name="split_way">"Dividir el camino"</string>
     <string name="quest_memorialType_title">"¿Qué clase de monumento es este?"</string>
@@ -1163,7 +1156,6 @@ También podés dejar una nota (con foto)."</string>
     <string name="quest_camp_type_tents_only">"Solo carpas"</string>
     <string name="quest_camp_type_backcountry">"Campamento al aire libre (sin instalaciones)"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Este diámetro no parece muy realista, suele estar entre %1$d y %2$d."</string>
-    <string name="quest_surface_tractypeMismatchInput_confirmation_description">"Esta respuesta no coincide con lo que ya está puesto en el resto del camino. ¿Seguro que no te equivocaste de lugar? Asegurate de haberlo recorrido por varios puntos para tener una buena idea general."</string>
     <string name="quest_recycling_type_pet">"Solo polietileno"</string>
     <string name="street_parking_street_width">"Anchura de la calle: %s"</string>
     <string name="overlay_street_parking">"Estacionamiento"</string>
@@ -1234,7 +1226,7 @@ También podés dejar una nota (con foto)."</string>
     <string name="separate_cycleway_no_or_allowed">"No pensado para ciclistas (no significa que esté prohibido)"</string>
     <string name="separate_cycleway_non_segregated">"Camino de uso compartido"</string>
     <string name="separate_cycleway_segregated">"Camino peatonal y ciclista por separado"</string>
-    <string name="separate_cycleway_exclusive">"Camino exclusivamente ciclista"</string>
+    <string name="separate_cycleway_exclusive">"Camino ciclista"</string>
     <string name="separate_cycleway_with_sidewalk">"Carril exclusivo para bicicletas con vereda adyacente (separada por un cordón)"</string>
     <string name="cycleway_reverse_direction">"Carril bici en sentido contrario"</string>
     <string name="cycleway_reverse_direction_warning">"Un carril bici que circule en sentido opuesto no es para nada normal"</string>
@@ -1360,7 +1352,6 @@ Algunas capas también permiten meter datos que faltan a través del marcador co
     <string name="info">"Más información"</string>
     <string name="quest_accessible_for_pedestrians_prohibited">"Está prohibido."</string>
     <string name="quest_accessible_for_pedestrians_allowed">"Está permitido."</string>
-    <string name="quest_accessible_for_pedestrians_separate_sidewalk">"Realmente hay una vereda, pero está representada separadamente en el mapa."</string>
     <string name="quest_buildingLevels_hint">"Para los edificios en pendiente, la numeración de niveles comienza a partir del nivel del suelo del lado más bajo.
 
 Un nivel cuenta como altura del techo cuando sus ventanas están en el techo. Por lo que los techos con nivel cero no son necesariamente planos, sino que no son suficientemente altos para un nivel entero."</string>
@@ -1394,4 +1385,12 @@ Un nivel cuenta como altura del techo cuando sus ventanas están en el techo. Po
     <string name="quest_board_name_title">"¿Cuál es el título de este panel informativo?"</string>
     <string name="quest_crossing_hint">"Un sendero informal que cruza un camino:"</string>
     <string name="note_for_object">"Otra persona señaló:"</string>
+    <string name="quest_bicycle_parking_type_safeloops">"Bicicletero tipo «Safe Loops» (de cuadro y rueda)"</string>
+    <string name="quest_cycleway_value_sidewalk_ok_dual">"No hay nada, pero hay señales que permiten ir en bici por la vereda en ambos sentidos"</string>
+    <string name="quest_surface_value_rubber">"Gránulos de goma"</string>
+    <string name="quest_surface_value_acrylic">"Resina sintética"</string>
+    <string name="action_messages">"Show messages"</string>
+    <string name="action_create_new_poi">"Create new"</string>
+    <string name="auth_error">"Authorization error. Try logging in again."</string>
+    <string name="quest_accessible_for_pedestrians_sidewalk">"Actually, there is a sidewalk."</string>
 </resources>

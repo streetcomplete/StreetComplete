@@ -698,9 +698,6 @@ conquista"</string>
     <string name="quest_board_type_map">"É um mapa"</string>
     <string name="quest_board_type_map_title">"É apenas um mapa e apenas um mapa?"</string>
     <string name="quest_board_type_map_description">"Se o quadro for sobre um determinado tópico, especifique-o, independentemente de também incluir um mapa. Por exemplo, uma placa de transporte público pode ter um mapa de rotas de ônibus. Se o tópico não estiver listado entre as respostas disponíveis, considere deixar uma nota."</string>
-    <string name="quest_surface_detailed_answer_impossible">"Múltiplas superfícies…"</string>
-    <string name="quest_surface_detailed_answer_impossible_confirmation">"Tem certeza de que é impossível especificar a superfície? Observe a opção de resposta “Difere ao longo do caminho”, que permite cortar a via onde a superfície muda. Use “Não posso dizer” se houver uma única superfície, mas não estiver disponível como uma resposta."</string>
-    <string name="quest_surface_detailed_answer_impossible_description">"Especifique resumidamente a natureza da superfície aqui, por exemplo “arenosa com remendos de paralelepípedos”. O comprimento do texto é limitado a 255 caracteres."</string>
     <string name="quest_streetName_menuItem_international">"internacional"</string>
     <string name="quest_buildingType_terrace2">"Casas geminadas"</string>
     <string name="at_housename">"nome da casa %s"</string>
@@ -749,7 +746,6 @@ conquista"</string>
     <string name="quest_steps_ramp_separate_wheelchair_confirm">"separado"</string>
     <string name="quest_steps_ramp_separate_wheelchair_decline">"não separado"</string>
     <string name="pref_title_sync2">"Enviar respostas automaticamente"</string>
-    <string name="quest_surface_detailed_answer_impossible_title">"Descreva a superfície"</string>
     <string name="open_url">"Abrir URL"</string>
     <string name="quest_buildingType_silo">"Silo"</string>
     <string name="quest_buildingType_historic">"Histórico"</string>
@@ -803,7 +799,6 @@ Observe todas as opções disponíveis: alguns casos não são óbvios, como uma
     <string name="quest_construction_completion_date_title">"Quando será completo?"</string>
     <string name="quest_surface_value_clay">"Argila"</string>
     <string name="quest_surface_value_artificial_turf">"Relva artificial"</string>
-    <string name="quest_surface_value_tartan">"Tartan"</string>
     <string name="quest_bicycle_parking_fee_title">"Precisa pagar para estacionar uma bicicleta aqui?"</string>
     <string name="quest_buildingType_house_description2">"casa unifamiliar não independente, p. ex. uma casa geminada singular"</string>
     <string name="quest_drinking_water_potable_signed">"Seguro para beber (assinado)"</string>
@@ -819,7 +814,6 @@ Observe todas as opções disponíveis: alguns casos não são óbvios, como uma
     <string name="team_mode">"Entrar no Modo de Equipe"</string>
     <string name="team_mode_exit">"Sair do modo de equipe"</string>
     <string name="team_mode_description">"Ao mapear a mesma área juntos em um grupo, você pode entrar no modo de equipe para dividir as missões entre todos os membros da equipe."</string>
-    <string name="team_mode_team_size_hint">"O modo equipe funciona para grupos de 2 a 12 pessoas."</string>
     <string name="team_mode_active">"O Modo de equipe está ativo"</string>
     <string name="team_mode_deactivated">"O Modo de equipe desativado"</string>
     <string name="undo_confirm_title2">"Desfazer a seguinte edição?"</string>
@@ -1135,7 +1129,6 @@ Faça o mesmo para o outro lado, se houver."</string>
     <string name="quest_building_entrance_dead_end">"Sem saída, sem entrada"</string>
     <string name="ar_core_tracking_hint_tap_to_measure">"Toque na tela para começar a medir"</string>
     <string name="quest_air_pump_bicycle_shop_title">"Há uma bomba de bicicleta pública aqui (pelo menos quando está aberta)?"</string>
-    <string name="quest_air_pump_bicycle_repair_station_title">"Há uma bomba de ar para bicicleta aqui?"</string>
     <string name="action_overlays">"Sobreposições"</string>
     <string name="split_way">"Dividir via"</string>
     <string name="quest_memorialType_title">"Que tipo de memorial é este?"</string>
@@ -1175,7 +1168,6 @@ Faça o mesmo para o outro lado, se houver."</string>
     <string name="quest_camp_type_tents_only">"Apenas barracas"</string>
     <string name="quest_camp_type_backcountry">"Camping no interior (sem instalações)"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Este diâmetro parece implausível, geralmente está entre %1$d e %2$d."</string>
-    <string name="quest_surface_tractypeMismatchInput_confirmation_description">"Esta resposta não está de acordo com o que já está mapeado sobre esta estrada. Tem certeza de que está respondendo sobre a estrada correta? Tem certeza de que vistoriou pessoalmente ao longo de todo o comprimento, como sempre necessário?"</string>
     <string name="quest_recycling_type_pet">"Apenas PET"</string>
     <string name="street_parking_street_width">"Largura da rua: %s"</string>
     <string name="overlay_street_parking">"Estacionamento na rua"</string>
@@ -1247,7 +1239,7 @@ Movê-lo agora?"</string>
     <string name="separate_cycleway_no_or_allowed">"Não designado para ciclistas (o ciclismo ainda pode ser permitido)"</string>
     <string name="separate_cycleway_non_segregated">"Caminho de uso compartilhado"</string>
     <string name="separate_cycleway_segregated">"Bicicleta e caminhos separados"</string>
-    <string name="separate_cycleway_exclusive">"Caminho somente para bicicletas"</string>
+    <string name="separate_cycleway_exclusive">"Caminho para bicicletas"</string>
     <string name="separate_cycleway_with_sidewalk">"Caminho apenas para bicicleta com calçada adjacente (separados por meio-fio)"</string>
     <string name="cycleway_reverse_direction">"Direção invertida da ciclovia"</string>
     <string name="cycleway_reverse_direction_warning">"Um caminho de bicicleta que vai na outra direção é extremamente raro."</string>

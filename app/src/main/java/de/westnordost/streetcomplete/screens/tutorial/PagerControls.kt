@@ -35,18 +35,18 @@ fun PagerControls(
     onLastPageFinished: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    val coroutineScope = rememberCoroutineScope()
+    val scope = rememberCoroutineScope()
 
     fun onClickNext() {
         if (state.isOnLastPage()) {
             onLastPageFinished()
         } else {
-            coroutineScope.launch { state.animateScrollToPage(state.currentPage + 1) }
+            scope.launch { state.animateScrollToPage(state.currentPage + 1) }
         }
     }
 
     fun onClickPager(page: Int) {
-        coroutineScope.launch { state.animateScrollToPage(page) }
+        scope.launch { state.animateScrollToPage(page) }
     }
 
     Column(

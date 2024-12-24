@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.screens.user.login
 
+import androidx.compose.runtime.Stable
 import androidx.lifecycle.ViewModel
 import de.westnordost.streetcomplete.data.UnsyncedChangesCountSource
 import de.westnordost.streetcomplete.data.user.OAUTH2_AUTHORIZATION_URL
@@ -20,6 +21,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
 
+@Stable
 abstract class LoginViewModel : ViewModel() {
     abstract val unsyncedChangesCount: StateFlow<Int>
 
@@ -53,6 +55,7 @@ enum class LoginError : LoginState {
 }
 data object LoggedIn : LoginState
 
+@Stable
 class LoginViewModelImpl(
     private val unsyncedChangesCountSource: UnsyncedChangesCountSource,
     private val userLoginController: UserLoginController,

@@ -643,7 +643,6 @@ Note that this app asks for the address number of a building only after its type
     <string name="quest_board_type_public_transport">"Public transport"</string>
     <string name="quest_board_type_title">"What is the topic of this information board?"</string>
     <string name="quest_board_type_map">"It is a map"</string>
-    <string name="quest_surface_detailed_answer_impossible">"Multiple surfaces…"</string>
     <string name="quest_buildingType_terrace2">"Terrace houses"</string>
     <string name="at_housename">"house or building name %s"</string>
     <string name="at_housenumber">"address number %s"</string>

@@ -57,6 +57,11 @@ bicycle_rental_dropoff_poin... CC-BY-SA 4.0      Alexander Migl https://commons.
 bicycle_rental_human.jpg       CC-BY-SA 2.0      TijsB https://commons.wikimedia.org/wiki/File:Tel_Aviv-_bike_rental_(5889990605).jpg
 bicycle_rental_shop_with_re... CC-BY-SA 2.0      Darb02 https://commons.wikimedia.org/wiki/File:Rydjor_Bike_Shop_and_Antique_Bike_Museum.jpg
 
+bicycle_repair_station_pump    CC-BY-SA 4.0      Richard Huber https://commons.wikimedia.org/wiki/File:Station%C3%A4re_Fahrradpumpe.jpg
+bicycle_repair_station_tools   CC-BY-SA 4.0      Runner1928 https://commons.wikimedia.org/wiki/File:Bicycle_repair_stand_at_Fairview_Community_Center_02.jpg
+bicycle_repair_station_stand   CC-BY-SA 2.0      Takerlamar https://commons.wikimedia.org/wiki/File:Bicycle_repair_stand,_North_Balwyn_(30998499100).jpg
+bicycle_repair_station_chai... CC-BY-SA 3.0      Magnus Manske https://commons.wikimedia.org/wiki/File:Kettennieter-3-g.jpg
+
 bicycleway_moped.svg           PD                Ionutneagu https://www.svgrepo.com/download/490323/scooter-2.svg
 
 bollard_fixed.jpg              CC-BY-SA 4.0      Matija Nalis https://github.com/streetcomplete/StreetComplete/issues/3657#issuecomment-1020666101
@@ -186,6 +191,10 @@ power_pole_concrete.jpg        CC-BY-SA 3.0      https://commons.wikimedia.org/w
 power_pole_steel.jpg           Public Domain     https://commons.wikimedia.org/wiki/File:Steel_tube_pylon.JPG
 power_pole_wood.jpg            CC-BY 3.0         https://commons.wikimedia.org/wiki/File:Two_armed_power_pole_1.jpg
 
+power_attachment_anchor.jpg    CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Power_pole_anchor.jpg
+power_attachment_pin.jpg       CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Power_pole_pin.jpg
+power_attachment_suspension... CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Power_pole_suspension.jpg
+
 produce_agave.jpg              CC-BY-SA 3.0      Marc Ryckaert, under username MJJR https://commons.wikimedia.org/wiki/File:Agave_americana_R01.jpg
 produce_almond.jpg             CC-BY-SA 2.0      antcaesar https://commons.wikimedia.org/wiki/File:Madrigueras_(20578932389)_(cropped).jpg
 produce_apple.jpg              CC0               https://www.pexels.com/photo/close-up-of-fruits-hanging-on-tree-257840/ - archived at https://web.archive.org/web/20210507233404/https://www.pexels.com/photo/close-up-of-fruits-hanging-on-tree-257840/
@@ -270,6 +279,7 @@ shelter_type_rock_shelter.jpg  CC-BY 2.0         Bureau of Land Management Orego
 sliding_envelope.wav           CC0               https://freesound.org/people/MTJohnson/sounds/444431/
 snip.wav                       CC0               https://freesound.org/people/Godowan/sounds/240473/
 
+surface_acrylic.jpg            CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Tennis_Court_Phoenix.jpg (NWSPhoenix)
 surface_asphalt.jpg            Public Domain     https://commons.wikimedia.org/wiki/File:Ground_frost_damages.JPG (SeppVei)
 surface_cobblestone.jpg        CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Bad_Radkersburg_Murgasse_IMG_0583.jpg (E.mil.mil)
 surface_compacted.jpg          CC-BY 2.0         https://commons.wikimedia.org/wiki/File:Dirt_road_in_countryside.jpg (Ian Munroe)
@@ -287,8 +297,8 @@ surface_paved.jpg              CC0               https://www.goodfreephotos.com/
 surface_paving_stones.jpg      CC-BY-SA 4.0      Tobias Zwick with modifications by Mateusz Konieczny
 surface_rock.jpg               CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Rock_Trail_Surface_at_Patapsco_Valley_State_Park.jpg
 surface_tennis_clay.jpg        CC-BY-SA 2.0      https://commons.wikimedia.org/wiki/File:Rafael_Nadal%2C_2011_Roland_Garros_(3).jpg (Yann Caradec)
-surface_artificial_turf.jpg    CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Meltingout.jpg
-surface_tartan.jpg             CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:200_metres_track_running_start_line.jpg (Santeri Viinamäki)
+surface_artificial_turf.jpg    CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Artificial_turf.jpg
+surface_tartan.jpg             CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:4_%C3%97_100_metres_relay_start_line.jpg (Santeri Viinamäki)
 surface_paved_area.jpg         CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:2014-08-27_13_01_48_View_across_Parkway_Avenue_(Mercer_County_Route_634)_near_the_Delaware_and_Bound_Brook_Railroad_underpass,_with_concrete_pavement_likely_dating_to_the_1950s.JPG (Famartin)
 surface_unpaved_area.jpg       CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Art_earthwork_landscape_sculpture_Woodland_Trust_Theydon_Bois_Essex_08.JPG (Acabashi)
 surface_ground_area.jpg        CC-BY 2.0         https://commons.wikimedia.org/wiki/File:Bend_It_Like_Beckham_(3734770583).jpg (Danumurthi Mahendra)

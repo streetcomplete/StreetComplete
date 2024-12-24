@@ -104,7 +104,7 @@
         app:layout_constraintBottom_toBottomOf="@id/remove_restriction"
         app:layout_constraintTop_toTopOf="@id/remove_restriction"
         android:padding="10dp"
-        android:src="@drawable/ic_add_48dp"
+        android:src="@drawable/ic_add_24dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 

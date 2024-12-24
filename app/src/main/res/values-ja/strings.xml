@@ -700,9 +700,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_board_type_map">"それは地図です"</string>
     <string name="quest_board_type_map_title">"それは地図のみの地図ですか？"</string>
     <string name="quest_board_type_map_description">"ボードが特定のトピックに関するものである場合は、マップも含まれているかどうかに関係なく、それを指定してください。例えば、公共交通局にはバス路線のマップがあるかもしれません。トピックが利用可能な回答にリストされていない場合は、代わりにメモを残すことを検討してください。"</string>
-    <string name="quest_surface_detailed_answer_impossible">"複数の路面…"</string>
-    <string name="quest_surface_detailed_answer_impossible_confirmation">"表面を指定することができないことに間違いありませんか? \"区間によって異なる\" と回答すると、表面が変わる地点でウェイを分割できます。単一の表面であるが、回答を選ぶことができない場合に \"言えない\" と答えてください。"</string>
-    <string name="quest_surface_detailed_answer_impossible_description">"簡潔に表面の特徴を記してください。例えば \"ところどころ丸石混じりの砂\" など。文の長さは255文字に制限されています。"</string>
     <string name="quest_streetName_menuItem_international">"国際的"</string>
     <string name="quest_buildingType_terrace2">"連棟住宅"</string>
     <string name="at_housename">"住居名 %s"</string>
@@ -751,7 +748,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_steps_ramp_separate_wheelchair_confirm">"はい"</string>
     <string name="quest_steps_ramp_separate_wheelchair_decline">"いいえ"</string>
     <string name="pref_title_sync2">"回答の自動アップロード"</string>
-    <string name="quest_surface_detailed_answer_impossible_title">"表面の説明"</string>
     <string name="open_url">"URLを開く"</string>
     <string name="quest_buildingType_silo">"サイロ"</string>
     <string name="quest_buildingType_historic">"歴史的"</string>
@@ -805,7 +801,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_construction_completion_date_title">"いつ完成しますか?"</string>
     <string name="quest_surface_value_clay">"クレー"</string>
     <string name="quest_surface_value_artificial_turf">"人工芝"</string>
-    <string name="quest_surface_value_tartan">"全天候型"</string>
     <string name="quest_bicycle_parking_fee_title">"有料の駐輪場ですか?"</string>
     <string name="quest_buildingType_house_description2">"独立していない１世帯の住宅"</string>
     <string name="quest_drinking_water_potable_signed">"飲用 (水質検査を受けている)"</string>
@@ -821,7 +816,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="team_mode">"チームモード"</string>
     <string name="team_mode_exit">"チームモードを終了"</string>
     <string name="team_mode_description">"同じ範囲を複数人で一緒にマッピングする場合、チームモードを使うことでクエストを参加者全員で分担できます。"</string>
-    <string name="team_mode_team_size_hint">"チームモードは2人から12人で利用できます。"</string>
     <string name="team_mode_active">"チームモードが有効"</string>
     <string name="team_mode_deactivated">"チームモードを無効化"</string>
     <string name="undo_confirm_title2">"下記の編集を元に戻しますか？"</string>
@@ -1137,7 +1131,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_building_entrance_dead_end">"行き止まり、入り口なし"</string>
     <string name="ar_core_tracking_hint_tap_to_measure">"画面をタップして測定を開始します"</string>
     <string name="quest_air_pump_bicycle_shop_title">"ここに公共の自転車用ポンプはありますか(少なくとも開いているときは)?"</string>
-    <string name="quest_air_pump_bicycle_repair_station_title">"ここに自転車用ポンプはありますか?"</string>
     <string name="action_overlays">"オーバーレイ"</string>
     <string name="split_way">"ウェイを分割"</string>
     <string name="quest_memorialType_title">"この場所にある記念碑はどのような種類ですか？"</string>
@@ -1177,7 +1170,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_camp_type_tents_only">"テントのみ"</string>
     <string name="quest_camp_type_backcountry">"バックカントリーキャンプ(施設なし)"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"この直径は信じがたいように見えます。通常は%1$dから%2$dの間です。"</string>
-    <string name="quest_surface_tractypeMismatchInput_confirmation_description">"この回答は、この道路についてすでにマッピングされているものと一致しません。正しい道について答えていますか?いつものように、全長に沿って個人的に調査したと確信していますか?"</string>
     <string name="quest_recycling_type_pet">"ペットのみ"</string>
     <string name="street_parking_street_width">"通りの幅: %s"</string>
     <string name="overlay_street_parking">"路上駐車"</string>
@@ -1249,7 +1241,7 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="separate_cycleway_no_or_allowed">"サイクリストには指定されていません(サイクリングは引き続き許可される場合があります)"</string>
     <string name="separate_cycleway_non_segregated">"歩行者と共用自転車通路"</string>
     <string name="separate_cycleway_segregated">"分離された自転車と歩道"</string>
-    <string name="separate_cycleway_exclusive">"自転車専用道路"</string>
+    <string name="separate_cycleway_exclusive">"自転車道"</string>
     <string name="separate_cycleway_with_sidewalk">"歩道が隣接する自転車専用道路(縁石で分離)"</string>
     <string name="cycleway_reverse_direction">"自転車道の方向を逆にする"</string>
     <string name="cycleway_reverse_direction_warning">"反対方向に行く自転車道は非常にまれです。"</string>

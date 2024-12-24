@@ -1,6 +1,8 @@
 package de.westnordost.streetcomplete.screens.user.edits
 
 import android.content.res.Resources
+import androidx.compose.runtime.Immutable
+import androidx.compose.runtime.Stable
 import androidx.lifecycle.ViewModel
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.AllEditTypes
@@ -13,6 +15,7 @@ import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 
+@Stable
 abstract class EditStatisticsViewModel : ViewModel() {
 
     abstract val isSynchronizingStatistics: StateFlow<Boolean>
@@ -31,8 +34,10 @@ abstract class EditStatisticsViewModel : ViewModel() {
     abstract val flagAlignments: StateFlow<Map<String, FlagAlignment>?>
 }
 
+@Immutable
 data class EditTypeStatistics(val type: EditType, val count: Int)
 
+@Stable
 class EditStatisticsViewModelImpl(
     private val statisticsSource: StatisticsSource,
     private val allEditTypes: AllEditTypes,

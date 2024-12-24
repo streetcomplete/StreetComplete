@@ -17,9 +17,11 @@
     <dimen name="quest_form_leftOffset">0dp</dimen>
     <dimen name="quest_form_topOffset">0dp</dimen>
     <dimen name="quest_form_rightOffset">0dp</dimen>
-    <dimen name="quest_form_bottomOffset">@dimen/quest_form_peekHeight</dimen>
+    <!-- quest_form_peekHeight but push it down a little (80dp) because there are also buttons
+         at the top, plus the system bar -->
+    <dimen name="quest_form_bottomOffset">320dp</dimen>
 
-    <dimen name="quest_form_peekHeight">352dp</dimen>
+    <dimen name="quest_form_peekHeight">400dp</dimen>
     <dimen name="quest_form_width">@dimen/match_parent</dimen>
 
     <dimen name="quest_form_speech_bubble_top_margin">-27dp</dimen>

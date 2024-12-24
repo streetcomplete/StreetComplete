@@ -41,7 +41,7 @@
     <string name="action_upload">"Antworten hochladen"</string>
     <string name="no_changes">"Die Frage wurde nicht beantwortet"</string>
     <string name="download_error">"Fehler beim Herunterladen"</string>
-    <string name="upload_error">"Fehler beim Hochladen der Antworten"</string>
+    <string name="upload_error">"Fehler beim Hochladen"</string>
     <string name="download_area_too_big">"Zoome weiter hinein"</string>
     <string name="confirmation_cancel_prev_download_title">"Aktuellen Download abbrechen und stattdessen hier herunterladen?"</string>
     <string name="turn_on_location_request">"Standort ist aus. Jetzt in die Einstellungen gehen, um ihn einzuschalten?"</string>
@@ -294,7 +294,7 @@ Andernfalls kannst du eine alternative Tastatur im App Store herunterladen. Beli
     <string name="about_category_feedback">"Feedback"</string>
     <string name="quest_leave_new_note_photo">"Foto anhängen"</string>
     <string name="quest_leave_new_note_photo_delete_title">"Dieses Foto löschen?"</string>
-    <string name="quest_cycleway_value_track">"Radweg"</string>
+    <string name="quest_cycleway_value_track">"Radweg oder geschützter Radfahrstreifen"</string>
     <string name="quest_cycleway_value_lane">"Radfahrstreifen"</string>
     <string name="quest_cycleway_value_none">"keiner"</string>
     <string name="quest_cycleway_value_shared">"explizit gemeinsamer Fahrstreifen mit Autos"</string>
@@ -698,9 +698,6 @@ Erfolge"</string>
     <string name="quest_board_type_map">"Es ist eine Karte"</string>
     <string name="quest_board_type_map_title">"Ist es einzig eine Karte?"</string>
     <string name="quest_board_type_map_description">"Wenn es auf der Tafel um ein bestimmtes Thema geht, bitte gib es an, egal ob da auch eine Karte mit dabei ist. Zum Beispiel mag eine Tafel zum öffentlichen Nahverkehr auch eine Verkehrsnetzkarte beinhalten. Wenn das Thema nicht bei den zur Verfügung stehenden Antworten dabei ist, hinterlasse bitte stattdessen einen Hinweis."</string>
-    <string name="quest_surface_detailed_answer_impossible">"Mehrere Oberflächen …"</string>
-    <string name="quest_surface_detailed_answer_impossible_confirmation">"Bist du dir sicher, dass man die genaue Oberfläche nicht angeben kann? Du kannst auch „Entlang des Weges unterschiedlich …“ antworten, um den Weg dort aufzuspalten, wo sich die Oberfläche ändert. Bitte nutze „Nicht beantwortbar …“, wenn es eine Oberfläche hat, die nicht als Antwort zur Verfügung steht."</string>
-    <string name="quest_surface_detailed_answer_impossible_description">"Bitte beschreibe kurz die Beschaffenheit der Oberfläche, zum Beispiel „sandig mit vereinzeltem Kopfsteinpflaster“. Der Text hat eine maximale Länge von 255 Zeichen."</string>
     <string name="quest_streetName_menuItem_international">"international"</string>
     <string name="quest_buildingType_terrace2">"Mehrere Reihenhäuser"</string>
     <string name="at_housename">"Hausname %s"</string>
@@ -749,7 +746,6 @@ Erfolge"</string>
     <string name="quest_steps_ramp_separate_wheelchair_confirm">"Ja, separat"</string>
     <string name="quest_steps_ramp_separate_wheelchair_decline">"Nicht separat"</string>
     <string name="pref_title_sync2">"Antworten automatisch hochladen"</string>
-    <string name="quest_surface_detailed_answer_impossible_title">"Oberfläche beschreiben"</string>
     <string name="open_url">"URL öffnen"</string>
     <string name="quest_buildingType_silo">"Silo"</string>
     <string name="quest_buildingType_historic">"Historisches Gebäude"</string>
@@ -766,8 +762,8 @@ Erfolge"</string>
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">"Hat eine gemeinsame Linksabbiegerspur für beide Richtungen"</string>
     <string name="quest_address_answer_no_housenumber_message2b">"Ist das korrekt?"</string>
     <string name="quest_maxheight_below_bridge_title">"Was ist die Durchfahrtshöhe unter dieser Brücke?"</string>
-    <string name="quest_maxheight_split_way_hint">"Diese Frage wird auch für Straßen gestellt, die unter Brücken, Dächern, usw. verlaufen.
-Wenn die Maximalhöhe nicht für die gesamte Strecke zutrifft, erwäge, mit „%s“ zu antworten."</string>
+    <string name="quest_maxheight_split_way_hint">"Diese Frage wird auch für Straßen gestellt, die unter Brücken, Dächern usw. verlaufen.
+Wenn die Maximalhöhe nicht für die gesamte Strecke gilt, kannst du auch mit „%s“ antworten."</string>
     <string name="quest_tactile_paving_kerb_title">"Hat dieser Bordstein eine taktile Pflasterung für Blinde?"</string>
     <string name="quest_kerb_height_title">"Wie hoch ist dieser Bordstein?"</string>
     <string name="quest_kerb_height_flush">"bildet eine Ebene mit der Fahrbahn"</string>
@@ -804,7 +800,6 @@ Beachte alle Auswahlmöglichkeiten: manche Kombinationen sind nicht offensichtli
     <string name="quest_construction_completion_date_title">"Wann wird es fertig?"</string>
     <string name="quest_surface_value_clay">"Sandplatz (Lehm)"</string>
     <string name="quest_surface_value_artificial_turf">"Kunstrasen"</string>
-    <string name="quest_surface_value_tartan">"Tartanbahn"</string>
     <string name="quest_bicycle_parking_fee_title">"Fallen hier Parkgebühren für Fahrräder an?"</string>
     <string name="quest_buildingType_house_description2">"nicht freistehendes Einfamilienhaus, z. B. einzelnes Reihenhaus"</string>
     <string name="quest_drinking_water_potable_signed">"Trinkwasser (beschildert)"</string>
@@ -819,9 +814,7 @@ Beachte alle Auswahlmöglichkeiten: manche Kombinationen sind nicht offensichtli
     <string name="quest_recycling_type_plastic_bottles_and_cartons">"Nur Plastikflaschen und Getränkekartons"</string>
     <string name="team_mode">"Team-Modus starten"</string>
     <string name="team_mode_exit">"Team-Modus beenden"</string>
-    <string name="team_mode_description">"Wenn ihr als Gruppe zusammen in der gleichen Gegend mappen wollt, könnt ihr den Team-Modus nutzen, um die Aufgaben untereinander aufzuteilen.
-Jeder von euch sieht dann unterschiedliche Aufgaben."</string>
-    <string name="team_mode_team_size_hint">"Der Team-Modus ist für Gruppen zwischen 2 und 12 Personen gemacht."</string>
+    <string name="team_mode_description">"Wenn ihr als Gruppe zusammen in der gleichen Gegend mappen wollt, könnt ihr den Team-Modus nutzen, um die Aufgaben untereinander aufzuteilen. Jeder von euch sieht dann unterschiedliche Aufgaben."</string>
     <string name="team_mode_active">"Team-Modus ist aktiv"</string>
     <string name="team_mode_deactivated">"Team-Modus deaktiviert"</string>
     <string name="undo_confirm_title2">"Folgende Bearbeitung rückgängig machen?"</string>
@@ -894,7 +887,7 @@ Die Daten werden nach %1$s Tagen aktualisiert und ungenutzte Daten werden nach %
     <string name="quest_buildingType_grandstand">"Tribüne"</string>
     <string name="action_search">"Suche"</string>
     <string name="action_manage_presets">"Voreinstellungen verwalten"</string>
-    <string name="team_mode_team_size_label2">"Wie viele Personen seid ihr? Gebt auf jedem Gerät die gleiche Zahl ein."</string>
+    <string name="team_mode_team_size_label2">"Wie viele Personen seid ihr? Wählt auf jedem Gerät die gleiche Zahl aus."</string>
     <string name="team_mode_choose_color2">"Als nächstes wählt jede Person eine andere Farbe aus. Wähle deine:"</string>
     <string name="link_organic_maps_description">"Karten-App für Reisende, Wanderer und Radfahrer, die offline funktioniert"</string>
     <string name="quest_kerb_height_no">"Gar keine Bordsteine"</string>
@@ -1137,7 +1130,6 @@ Wiederhole dies für die andere Seite, wenn sie existiert."</string>
     <string name="quest_building_entrance_dead_end">"Sackgasse, kein Eingang"</string>
     <string name="ar_core_tracking_hint_tap_to_measure">"Beginne mit dem Messen per Tipp auf den Bildschirm"</string>
     <string name="quest_air_pump_bicycle_shop_title">"Gibt es hier eine öffentliche Fahrradpumpe (zumindest während der Öffnungszeiten)?"</string>
-    <string name="quest_air_pump_bicycle_repair_station_title">"Gibt es hier eine funktionierende Fahrradpumpe?"</string>
     <string name="action_overlays">"Overlays"</string>
     <string name="split_way">"Weg aufspalten"</string>
     <string name="quest_memorialType_title">"Was für ein Denkmal ist das?"</string>
@@ -1177,7 +1169,6 @@ Wiederhole dies für die andere Seite, wenn sie existiert."</string>
     <string name="quest_camp_type_tents_only">"Nur Zelte"</string>
     <string name="quest_camp_type_backcountry">"Wildcamping (keine Sanitäreinrichtungen)"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Dieser Durchmesser sieht ungewöhnlich aus, er liegt normalerweise zwischen %1$d und %2$d."</string>
-    <string name="quest_surface_tractypeMismatchInput_confirmation_description">"Diese Antwort stimmt nicht mit dem überein, was bereits für diese Straße kartiert ist. Bist du sicher, dass du zur richtigen Straße antwortest? Bist du sicher, dass du die Lage über die gesamte Länge hinweg überprüft hast?"</string>
     <string name="quest_recycling_type_pet">"Nur PET"</string>
     <string name="street_parking_street_width">"Fahrbahnbreite: %s"</string>
     <string name="overlay_street_parking">"Parkstreifen"</string>
@@ -1249,8 +1240,8 @@ Jetzt verschieben?"</string>
     <string name="separate_cycleway_no_or_allowed">"Fußweg ohne explizites Schild zum Radfahren (ob es erlaubt ist, hängt von Verkehrsvorschriften ab)"</string>
     <string name="separate_cycleway_non_segregated">"Gekennzeichnet als gemeinsamer Geh- und Radweg"</string>
     <string name="separate_cycleway_segregated">"Getrennter Geh- und Radweg"</string>
-    <string name="separate_cycleway_exclusive">"Ausschließlicher Radweg"</string>
-    <string name="separate_cycleway_with_sidewalk">"Ausschließlicher Radweg mit Bürgersteig für Fußverkehr (getrennt durch Bordstein)"</string>
+    <string name="separate_cycleway_exclusive">"Radweg"</string>
+    <string name="separate_cycleway_with_sidewalk">"Radweg mit Bürgersteig für Fußverkehr (getrennt durch Bordstein)"</string>
     <string name="cycleway_reverse_direction">"Richtung des Radweges umdrehen"</string>
     <string name="cycleway_reverse_direction_warning">"Dass ein Radweg in die andere Richtung geht, ist extrem selten."</string>
     <string name="cycleway_reverse_direction_toast">"Tippe auf die Seite, die umgedreht werden soll"</string>
@@ -1277,7 +1268,7 @@ Jetzt verschieben?"</string>
     <string name="overlay_path_surface_segregated">"Aufspalten in getrennten Rad- und Gehweg"</string>
     <string name="quest_crossing_title2">"Ist hier ein Fußgängerüberweg?"</string>
     <string name="quest_crossing_yes">"Ja, als Überweg vorgesehen"</string>
-    <string name="quest_crossing_no">"Nicht als Überweg vorgesehen, trotzdem kann man hier rüber (z.B. Trampelpfade)"</string>
+    <string name="quest_crossing_no">"Nicht als Überweg vorgesehen, trotzdem kann man hier rüber (z. B. Trampelpfade)"</string>
     <string name="quest_crossing_prohibited">"Nein, das Überqueren ist hier verboten oder unmöglich"</string>
     <string name="quest_hairdresser_title">"Wer sind die Kunden dieses Friseurs?"</string>
     <string name="quest_hairdresser_male_and_female">"Alle"</string>
@@ -1377,7 +1368,6 @@ Du kannst Informationen zu Spenden auf unserer Website oder Projektseite finden.
     <string name="info">"Weitere Informationen"</string>
     <string name="quest_accessible_for_pedestrians_prohibited">"Es ist verboten."</string>
     <string name="quest_accessible_for_pedestrians_allowed">"Es ist erlaubt."</string>
-    <string name="quest_accessible_for_pedestrians_separate_sidewalk">"Es gibt zwar einen Gehweg, aber er wird auf der Karte separat angezeigt."</string>
     <string name="quest_buildingLevels_hint">"Bei Gebäuden in Hanglage beginnt die Zählung der Stockwerke mit dem Bodenniveau der untersten Ebene.
 
 Eine Ebene zählt als Dachebene, wenn sich die Fenster im Dach befinden. Dächer mit null Dachebenen sind also nicht unbedingt flach, sondern nur nicht hoch genug für eine ganze Ebene."</string>
@@ -1411,4 +1401,39 @@ Eine Ebene zählt als Dachebene, wenn sich die Fenster im Dach befinden. Dächer
     <string name="quest_board_name_title">"Wie lautet der Titel dieser Informationstafel?"</string>
     <string name="quest_crossing_hint">"Ein Trampelpfad, der eine Straße kreuzt:"</string>
     <string name="note_for_object">"Jemand merkte an:"</string>
+    <string name="quest_bicycle_parking_type_safeloops">"Felgenklemmer mit Stützbügel (unterstützt Rad und Rahmen)"</string>
+    <string name="quest_cycleway_value_sidewalk_ok_dual">"Keiner, aber ein Schild erlaubt Radfahren auf dem Bürgersteig, beide Richtungen"</string>
+    <string name="quest_surface_value_rubber">"Gummigranulat"</string>
+    <string name="quest_surface_value_acrylic">"Kunstharz"</string>
+    <string name="action_messages">"Nachrichten anzeigen"</string>
+    <string name="action_create_new_poi">"Neu erstellen"</string>
+    <string name="auth_error">"Autorisierungsfehler. Versuche, dich erneut anzumelden."</string>
+    <string name="quest_accessible_for_pedestrians_sidewalk">"Es gibt einen Bürgersteig."</string>
+    <string name="quest_bicycle_repair_station_services_title">"Welche Fahrradausstattung gibt es hier?"</string>
+    <string name="quest_bicycle_repair_station_pump">"Pumpe"</string>
+    <string name="quest_bicycle_repair_station_tools">"Verschiedene Werkzeuge"</string>
+    <string name="quest_bicycle_repair_station_stand">"Stativ"</string>
+    <string name="quest_bicycle_repair_station_chain_tool">"Kettenwerkzeug"</string>
+    <string name="quest_boat_rental_title">"Welche Art von Booten kann man hier mieten?"</string>
+    <string name="quest_boat_rental_motorboat">"Motorboot"</string>
+    <string name="quest_boat_rental_jetski">"Jetski"</string>
+    <string name="quest_boat_rental_sailboat">"Segelboot"</string>
+    <string name="quest_boat_rental_pedalboat">"Tretboot"</string>
+    <string name="quest_boat_rental_kayak">"Kajak"</string>
+    <string name="quest_boat_rental_canoe">"Kanu"</string>
+    <string name="quest_boat_rental_houseboat">"Hausboot"</string>
+    <string name="quest_boat_rental_rowboat">"Ruderboot"</string>
+    <string name="quest_boat_rental_raft">"Floß"</string>
+    <string name="quest_boat_rental_surfboard">"Surfbrett"</string>
+    <string name="quest_boat_rental_sailboard">"Segelbrett"</string>
+    <string name="quest_boat_rental_yacht">"Yacht"</string>
+    <string name="quest_boat_rental_standup_paddleboard">"Stand-up-Paddle-Board (SUP)"</string>
+    <string name="quest_powerAttachment_title">"Wie ist diese Stromleitung befestigt?"</string>
+    <string name="quest_powerAttachment_suspension">"Von oben gehalten"</string>
+    <string name="quest_powerAttachment_anchor">"Horizontal befestigt"</string>
+    <string name="quest_powerAttachment_pin">"Von unten gehalten"</string>
+    <string name="pedestrian_zone_designated">"Hier zum Radfahren ausgewiesen"</string>
+    <string name="pedestrian_zone_allowed_sign">"Ein Schild erlaubt hier das Radfahren"</string>
+    <string name="pedestrian_zone_no_sign">"Kein ausdrückliches Schild zum Radfahren hier"</string>
+    <string name="team_mode_description_overlay_hint">"Wenn ihr Overlays nutzt, sollte jeder von euch jeweils ein anderes nutzen, da nur die Aufgaben aufgeteilt werden."</string>
 </resources>

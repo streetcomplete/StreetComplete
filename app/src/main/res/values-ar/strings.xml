@@ -699,9 +699,6 @@
     <string name="quest_board_type_map">"إنها خريطة"</string>
     <string name="quest_board_type_map_title">"هل هي مجرد خريطة وبالتأكيد خريطة فقط؟"</string>
     <string name="quest_board_type_map_description">"إذا كانت اللوحة تدور حول موضوع معين، فيرجى تحديده، بغض النظر عما إذا كان يتضمن أيضًا خريطة. على سبيل المثال، قد تحتوي لوحة النقل العام على خريطة طريق للحافلات. إذا لم يكن الموضوع مدرجًا ضمن الإجابات المتاحة، فيرجى التفكير في ترك ملاحظة بدلاً من ذلك."</string>
-    <string name="quest_surface_detailed_answer_impossible">"أسطح متعددة …"</string>
-    <string name="quest_surface_detailed_answer_impossible_confirmation">"هل أنت متأكد من أنه من المستحيل تحديد المنطقة؟ لاحظ أن الإجابة بـ\"التغيير على طول الطريق\" تسمح لك بتجزئة المسار كلما تغير نوع السطح. إذا كان هذا سطحًا واحدًا غير مدرج ، فالرجاء استخدام \"لا يمكن الإجابة\"."</string>
-    <string name="quest_surface_detailed_answer_impossible_description">"يرجى وصف نوع السطح باختصار هنا، على سبيل المثال \"رملي مرصوف بالحصى في بعض الأماكن\". طول النص محدد بـ 255 حرفًا."</string>
     <string name="quest_streetName_menuItem_international">"عالمي"</string>
     <string name="quest_buildingType_terrace2">"منازل متجاورة على شكل صف"</string>
     <string name="at_housename">"اسم المنزل %s"</string>
@@ -750,7 +747,6 @@
     <string name="quest_steps_ramp_separate_wheelchair_confirm">"منفصل"</string>
     <string name="quest_steps_ramp_separate_wheelchair_decline">"غير منفصل"</string>
     <string name="pref_title_sync2">"تحميل الإجابات تلقائيًا"</string>
-    <string name="quest_surface_detailed_answer_impossible_title">"صِف السطح"</string>
     <string name="open_url">"رابط مفتوح"</string>
     <string name="quest_buildingType_silo">"صومعة"</string>
     <string name="quest_buildingType_historic">"تاريخي/قديم"</string>
@@ -802,7 +798,6 @@
     <string name="quest_construction_completion_date_title">"متى سيكتمل؟"</string>
     <string name="quest_surface_value_clay">"طين/وحل"</string>
     <string name="quest_surface_value_artificial_turf">"عشب صناعي"</string>
-    <string name="quest_surface_value_tartan">"ترتان/كروهات"</string>
     <string name="quest_bicycle_parking_fee_title">"هل عليك أن تدفع مقابل ركن دراجة هنا؟"</string>
     <string name="quest_buildingType_house_description2">"منزل أسرة واحدة غير منفصل"</string>
     <string name="quest_drinking_water_potable_signed">"آمن للشرب (توقيع)"</string>
@@ -818,7 +813,6 @@
     <string name="team_mode">"وضع الفريق"</string>
     <string name="team_mode_exit">"الخروج من وضع الفريق"</string>
     <string name="team_mode_description">"عند تعيين نفس المنطقة معًا في مجموعة، يمكنك الدخول في وضع الفريق لتقسيم المهام بين جميع أعضاء الفريق."</string>
-    <string name="team_mode_team_size_hint">"يعمل وضع الفريق لمجموعات من 2 إلى 12 شخصًا."</string>
     <string name="team_mode_active">"وضع الفريق نشط"</string>
     <string name="team_mode_deactivated">"تم إيقاف وضع الفريق"</string>
     <string name="undo_confirm_title2">"التراجع عن التعديل التالي؟"</string>
@@ -1138,7 +1132,6 @@
     <string name="quest_building_entrance_dead_end">"طريق مسدود، ليس بمدخل"</string>
     <string name="ar_core_tracking_hint_tap_to_measure">"اضغط على الشاشة لبدء القياس"</string>
     <string name="quest_air_pump_bicycle_shop_title">"هل توجد هنا مضخة هواء عامة للدراجات (على الأقل عندما يكون المكان مفتوح)؟"</string>
-    <string name="quest_air_pump_bicycle_repair_station_title">"هل توجد مضخة هواء للدراجات هنا؟"</string>
     <string name="action_overlays">"الطبقات"</string>
     <string name="split_way">"تقسيم الطريق"</string>
     <string name="quest_memorialType_title">"ما نوع هذا النصب التذكاري؟"</string>
@@ -1179,7 +1172,6 @@
     <string name="quest_camp_type_tents_only">"خيام فقط"</string>
     <string name="quest_camp_type_backcountry">"التخييم في Backcountry (لا توجد مرافق)"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"هذا القطر يبدو غير صحيح، إنه عادةً بين %1$d و %2$d."</string>
-    <string name="quest_surface_tractypeMismatchInput_confirmation_description">"هذه الإجابة لا تتطابق مع ما تم تعيينه بالفعل حول هذا الطريق. هل أنت متأكد أنك تجيب عن الطريق الصحيح؟ هل أنت متأكد من أنك استطلعت رأيًا شخصيًا بطول كامل ، كما هو مطلوب دائمًا؟"</string>
     <string name="quest_recycling_type_pet">"PET فقط"</string>
     <string name="street_parking_street_width">"عرض الشارع: %s"</string>
     <string name="overlay_street_parking">"وقوف السيارات في الشارع"</string>

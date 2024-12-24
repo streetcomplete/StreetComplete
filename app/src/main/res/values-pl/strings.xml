@@ -40,10 +40,10 @@
     <string name="action_download">"Szukaj zadań w okolicy"</string>
     <string name="action_upload">"Prześlij odpowiedzi"</string>
     <string name="no_changes">"Nie udzielono odpowiedzi"</string>
-    <string name="download_error">"Błąd podczas szukania zadań"</string>
+    <string name="download_error">"Błąd podczas pobierania zadań"</string>
     <string name="upload_error">"Błąd podczas przesyłania odpowiedzi"</string>
     <string name="download_area_too_big">"Przybliż bardziej"</string>
-    <string name="confirmation_cancel_prev_download_title">"Chcesz zatrzymać trwające wyszukiwanie i rozpocząć w tej okolicy?"</string>
+    <string name="confirmation_cancel_prev_download_title">"Chcesz zatrzymać trwające wyszukiwanie i pobrać w tej okolicy?"</string>
     <string name="turn_on_location_request">"Dostęp do lokalizacji jest wyłączony. Otworzyć ustawienia by to zmienić?"</string>
     <string name="no_location_permission_warning">"Aby wyświetlić swoją pozycję na mapie i zadania dostępne w okolicy, potrzebna jest zgoda na lokalizację."</string>
     <string name="about_title_authors">"Autorzy"</string>
@@ -102,13 +102,13 @@ Niemniej przed każdym wysłaniem zmian aplikacja sprawdza &lt;a href=\"https://
     <string name="quest_surface_value_unpaved">"Nieutwardzona (ogólnie)"</string>
     <string name="quest_surface_value_ground">"Gruntowa (ogólnie)"</string>
     <string name="quest_surface_value_asphalt">"Asfalt"</string>
-    <string name="quest_surface_value_compacted">"Tłuczeń"</string>
+    <string name="quest_surface_value_compacted">"Rolowany i mocno ubity żwir"</string>
     <string name="quest_surface_value_concrete">"Beton"</string>
     <string name="quest_surface_value_dirt">"Ziemia / Gleba / Pył"</string>
     <string name="quest_surface_value_fine_gravel">"Drobny żwir"</string>
     <string name="quest_surface_value_grass">"Trawa"</string>
     <string name="quest_surface_value_grass_paver">"Kratka trawnikowa"</string>
-    <string name="quest_surface_value_gravel">"Żwir"</string>
+    <string name="quest_surface_value_gravel">"Gruby żwir"</string>
     <string name="quest_surface_value_paving_stones">"Kostka brukowa / Płyta chodnikowa"</string>
     <string name="quest_surface_value_pebblestone">"Otoczaki / Kamyki"</string>
     <string name="quest_surface_value_sand">"Piasek"</string>
@@ -132,7 +132,7 @@ Udzielone odpowiedzi zostają potem umieszczone na OpenStreetMap w Twoim imieniu
     <string name="crash_compose_email">"Napisz email"</string>
     <string name="no_email_client">"Nie masz zainstalowanego żadnego klienta poczty."</string>
     <string name="pref_title_keep_screen_on">"Pozostaw ekran włączony"</string>
-    <string name="download_server_error">"Błąd połączenia podczas szukania zadań. Spróbuj później."</string>
+    <string name="download_server_error">"Błąd połączenia podczas pobierania zadań. Spróbuj później."</string>
     <string name="upload_server_error">"Błąd połączenia podczas wysyłania odpowiedzi. Spróbuj później."</string>
     <string name="quest_generic_hasFeature_yes">"Tak"</string>
     <string name="quest_generic_hasFeature_no">"Nie"</string>
@@ -174,7 +174,7 @@ Udzielone odpowiedzi zostają potem umieszczone na OpenStreetMap w Twoim imieniu
     <string name="quest_toiletsFee_title">"Czy te toalety są płatne?"</string>
     <string name="quest_tactilePaving_title_crosswalk">"Czy to przejście ma wypustki dotykowe dla niewidomych po obu stronach?"</string>
     <string name="quest_source_dialog_title">"Na pewno masz to sprawdzone w terenie?"</string>
-    <string name="quest_source_dialog_note">"Należy wprowadzać tylko informacje, które zostały sprawdzone w terenie."</string>
+    <string name="quest_source_dialog_note">"Należy wprowadzać tylko informacje, które zostały osobiście sprawdzone w terenie."</string>
     <string name="quest_bicycleParkingCoveredStatus_title">"Czy ten parking dla rowerów jest zakryty (przed deszczem)?"</string>
     <string name="dialog_session_dont_show_again">"Nie pokazuj ponownie podczas tej sesji"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"To ograniczenie prędkości wygląda podejrzanie."</string>
@@ -257,7 +257,7 @@ W przeciwnym wypadku możesz ściągnąć dodatkowe aplikacje klawiatury ze skle
     <string name="produce_peaches">"Brzoskwinie"</string>
     <string name="produce_pears">"Gruszki"</string>
     <string name="produce_chili">"Chilli"</string>
-    <string name="produce_persimmons">"Hurmy / Kaki"</string>
+    <string name="produce_persimmons">"Kaki / Hurmy"</string>
     <string name="produce_pineapples">"Ananasy"</string>
     <string name="produce_pepper">"Papryki"</string>
     <string name="produce_pistachios">"Pistacje"</string>
@@ -295,7 +295,7 @@ W przeciwnym wypadku możesz ściągnąć dodatkowe aplikacje klawiatury ze skle
     <string name="about_category_feedback">"Opinia"</string>
     <string name="quest_leave_new_note_photo">"Załącz zdjęcie"</string>
     <string name="quest_leave_new_note_photo_delete_title">"Czy chcesz usunąć ten obrazek?"</string>
-    <string name="quest_cycleway_value_track">"droga dla rowerów lub fizycznie oddzielony pas rowerowey"</string>
+    <string name="quest_cycleway_value_track">"droga dla rowerów lub fizycznie oddzielony pas rowerowy"</string>
     <string name="quest_cycleway_value_lane">"pas dla rowerów"</string>
     <string name="quest_cycleway_value_none">"brak"</string>
     <string name="quest_cycleway_value_shared">"pas dzielony z innymi uczestnikami ruchu"</string>
@@ -365,7 +365,7 @@ Oznacza to, że osoba na wózku jest w stanie z niej skorzystać, ale nie ma por
     <string name="quest_fee_add_times">"Dodaj godziny"</string>
     <string name="quest_housenumber_multiple_numbers">"Ma wiele numerów domu"</string>
     <string name="quest_housenumber_multiple_numbers_description">"Możesz wypisać wszystkie numery, oddzielając je przecinkami, lub podać ich zakres. Na przykład 1,3 lub 2–6."</string>
-    <string name="quest_bicycle_parking_type_stand">"Barierka / Stojak (przytrzymuje ramę roweru)"</string>
+    <string name="quest_bicycle_parking_type_stand">"Stojak (przytrzymuje ramę roweru)"</string>
     <string name="quest_bicycle_parking_type_wheelbender">"Wyrwikółka (przytrzymuje tylko koło)"</string>
     <string name="quest_bicycle_parking_type_shed">"Wiata"</string>
     <string name="quest_bicycle_parking_type_locker">"Schowek"</string>
@@ -410,13 +410,13 @@ Oznacza to, że osoba na wózku jest w stanie z niej skorzystać, ale nie ma por
     <string name="quest_buildingType_office">"Budynek biurowy"</string>
     <string name="quest_buildingType_retail">"Budynek sklepowy"</string>
     <string name="quest_buildingType_warehouse">"Budynek magazynu"</string>
-    <string name="quest_buildingType_kiosk">"Kiosk"</string>
+    <string name="quest_buildingType_kiosk">"Budynek typu kiosk"</string>
     <string name="quest_buildingType_storage_tank">"Zbiornik"</string>
     <string name="quest_buildingType_religious">"Budynek religijny"</string>
-    <string name="quest_buildingType_church">"Kościół"</string>
-    <string name="quest_buildingType_chapel">"Kaplica"</string>
+    <string name="quest_buildingType_church">"Budynek typu kościół"</string>
+    <string name="quest_buildingType_chapel">"Budynek typu kaplica"</string>
     <string name="quest_buildingType_cathedral">"Katedra"</string>
-    <string name="quest_buildingType_mosque">"Meczet"</string>
+    <string name="quest_buildingType_mosque">"Budynek typu meczet"</string>
     <string name="quest_buildingType_temple">"Budynek świątyni"</string>
     <string name="quest_buildingType_pagoda">"Pagoda"</string>
     <string name="quest_buildingType_synagogue">"Budynek synagogi"</string>
@@ -424,7 +424,7 @@ Oznacza to, że osoba na wózku jest w stanie z niej skorzystać, ale nie ma por
     <string name="quest_buildingType_civic_description">"zbudowany w celu pomieszczenia obiektu o przeznaczeniu wspólnym"</string>
     <string name="quest_buildingType_kindergarten">"Przedszkole"</string>
     <string name="quest_buildingType_school">"Szkoła"</string>
-    <string name="quest_buildingType_college">"Budynek Szkoły Wyższej"</string>
+    <string name="quest_buildingType_college">"Budynek szkoły wyższej"</string>
     <string name="quest_buildingType_hospital">"Budynek szpitala"</string>
     <string name="quest_buildingType_stadium">"Stadion"</string>
     <string name="quest_buildingType_train_station">"Stacja kolejowa"</string>
@@ -440,7 +440,7 @@ Oznacza to, że osoba na wózku jest w stanie z niej skorzystać, ale nie ma por
     <string name="quest_buildingType_farmhouse">"Dom w gospodarstwie rolnym"</string>
     <string name="quest_buildingType_farmhouse_description">"budynek mieszkalny na gospodarstwie"</string>
     <string name="quest_buildingType_farm_auxiliary">"Budynek gospodarczy"</string>
-    <string name="quest_buildingType_farm_auxiliary_description">"niemieszkalny budynek w gospodarstwie"</string>
+    <string name="quest_buildingType_farm_auxiliary_description">"niemieszkalny budynek w gospodarstwie rolnym"</string>
     <string name="quest_buildingType_greenhouse">"Szklarnia"</string>
     <string name="quest_buildingType_other">"Inny"</string>
     <string name="quest_buildingType_shed">"Szopa/wiata/budka"</string>
@@ -697,9 +697,6 @@ osiągnięć"</string>
     <string name="quest_board_type_map">"To jest mapa"</string>
     <string name="quest_board_type_map_title">"Czy to jest mapa i tylko mapa?"</string>
     <string name="quest_board_type_map_description">"Jeśli tablica jest o konkretnym temacie, wybierz go - niezależnie od tego czy pojawia się też mapa. Na przykład tablica o transporcie publicznym może zawierać też mapę tras autobusowych. Jeśli temat nie jest na liście możliwych odpowiedzi, wybierz raczej \"odpowiedź niemożliwa\" i zostaw notatkę."</string>
-    <string name="quest_surface_detailed_answer_impossible">"Różne nawierzchnie…"</string>
-    <string name="quest_surface_detailed_answer_impossible_confirmation">"Czy jesteś pewien że nie jest możliwe podanie nawierzchni? Zauważ że jest opcja \"Zmienia się\" która pozwala na podzielenie na odcinki z różną nawierzchnią. Wybierz \"Odpowiedź niemozliwa\" jeśli jest jedna nawierzchnia która nie jest możliwa do wybrania jako odpowiedź."</string>
-    <string name="quest_surface_detailed_answer_impossible_description">"Proszę krótko opisz nawierzchnię, na przykład \"piaszczysta z fragmentami kocich łbów\" (jeśli możesz, możesz użyć angielskiego, np \"sandy with patches of cobblestone\"). Długość tekstu ograniczona jest do 255 znaków."</string>
     <string name="quest_streetName_menuItem_international">"międzynarodowa"</string>
     <string name="quest_buildingType_terrace2">"wiele domów szeregowych"</string>
     <string name="at_housename">"Nazwa budynku %s"</string>
@@ -748,7 +745,6 @@ osiągnięć"</string>
     <string name="quest_steps_ramp_separate_wheelchair_confirm">"osobno"</string>
     <string name="quest_steps_ramp_separate_wheelchair_decline">"nie jest pokazana osobno"</string>
     <string name="pref_title_sync2">"Automatycznie wysyłaj zmiany"</string>
-    <string name="quest_surface_detailed_answer_impossible_title">"Opisz nawierzchnię"</string>
     <string name="open_url">"Otwórz link"</string>
     <string name="quest_buildingType_silo">"Silos"</string>
     <string name="quest_buildingType_historic">"Historyczny"</string>
@@ -792,7 +788,7 @@ Jeśli jakieś pasy są zarezerwowane dla autobusów, utwórz notatkę."</string
     <string name="quest_shop_gone_replaced_answer_hint">"Wpisz jaki rodzaj obiektu jest teraz tutaj"</string>
     <string name="quest_shop_vacant_type_title">"Ten sklep został zlikwidowany. Co tu teraz jest?"</string>
     <string name="quest_lanes_answer_lanes_odd2">"Liczba pasów nie jest ta sama po obu stronach"</string>
-    <string name="default_disabled_msg_go_inside_regional_warning">"To zadanie jest domyślnie nieaktywne, ponieważ nie w każdym miejscu jest to  przydatna informacja a odpowiedź jest często niemożliwa bez wejścia do danego miejsca."</string>
+    <string name="default_disabled_msg_go_inside_regional_warning">"To zadanie jest domyślnie nieaktywne, ponieważ nie w każdym miejscu jest to przydatna informacja, a odpowiedź jest często niemożliwa bez wejścia do danego miejsca."</string>
     <string name="quest_dietType_explanation_kosher">"Produkty koszerne są przygotowane według specjalnych zasad, z specjalnym proces certyfikacji potwierdzającego ich zachowanie."</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">"Brak drogi rowerowej"</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">"Jak zazwyczaj, dotknij jednej z stron drogi, wybierz odpowiednią odpowiedź i zrób to samo z drugą stronę.
@@ -803,7 +799,6 @@ Zwróć uwagę na wszystkie opcje: nie wszystkie przypadki są oczywiste, na prz
     <string name="quest_construction_completion_date_title">"Kiedy będzie oddane do użytku?"</string>
     <string name="quest_surface_value_clay">"Glina"</string>
     <string name="quest_surface_value_artificial_turf">"Sztuczna trawa"</string>
-    <string name="quest_surface_value_tartan">"Tartan"</string>
     <string name="quest_bicycle_parking_fee_title">"Czy parkując tutaj rower, musisz uiścić opłatę?"</string>
     <string name="quest_buildingType_house_description2">"inny dom jednorodzinny (niebędący wolnostojącym)"</string>
     <string name="quest_drinking_water_potable_signed">"Zdatne do picia (oznaczone)"</string>
@@ -819,7 +814,6 @@ Zwróć uwagę na wszystkie opcje: nie wszystkie przypadki są oczywiste, na prz
     <string name="team_mode">"Tryb drużynowy"</string>
     <string name="team_mode_exit">"Wyjdź z trybu drużynowego"</string>
     <string name="team_mode_description">"W trybie drużynowym możesz podzielić się zadaniami z grupą osób i wspólnie pracować na jednym obszarze."</string>
-    <string name="team_mode_team_size_hint">"Można wybrać od 2 do 12 osób."</string>
     <string name="team_mode_active">"Tryb zespołowy aktywny"</string>
     <string name="team_mode_deactivated">"Tryb zespołowy nieaktywny"</string>
     <string name="undo_confirm_title2">"Cofnąć następującą edycję?"</string>
@@ -1004,7 +998,7 @@ Dane są odświeżane automatycznie po %1$s dniach a nieużyte kasowane automaty
     <string name="quest_smoothness_description_very_bad_compacted_gravel">"Niektóre duże kamienie, głębokie dziury, wyboje, erozja czy inne niebezpieczne uszkodzenia"</string>
     <string name="quest_smoothness_description_horrible">"Poprawnie użytkowane tylko przez pojazdy terenowe lub na pieszo"</string>
     <string name="quest_smoothness_description_very_horrible">"Poprawnie użytkowane tylko przez specjalistyczne pojazdy terenowe lub na pieszo"</string>
-    <string name="quest_smoothness_description_impassable">"Nie przejezdne przez żaden pojazd, dostępne tylko na pieszo"</string>
+    <string name="quest_smoothness_description_impassable">"Nieprzejezdne dla żadnego pojazdu, dostępne tylko pieszo"</string>
     <string name="quest_smoothness_wrong_surface">"Nawierzchnia jest inna"</string>
     <string name="quest_smoothness_surface_value">"Nawierzchnia została oznaczona jako:"</string>
     <string name="quest_smoothness_obstacle">"Jest tu przeszkoda"</string>
@@ -1016,8 +1010,8 @@ Dane są odświeżane automatycznie po %1$s dniach a nieużyte kasowane automaty
     <string name="quest_fuelSelfService_title">"Czy możesz samodzielnie tankować na tej stacji benzynowej?"</string>
     <string name="default_disabled_msg_difficult_and_time_consuming">"Ten typ zadania jest domyślnie wyłączony, ponieważ jest dość czasochłonny i często trudno dokonać właściwego wyboru. Powinieneś włączyć ten typ zadania tylko wtedy, gdy naprawdę zależy Ci na dodaniu tego typu danych."</string>
     <string name="quest_smoothness_description_good_compacted_gravel">"Ubita, bardzo mało luźnego żwiru lub piasku"</string>
-    <string name="quest_barrier_path_intersection">"W jaki sposób ta ścieżka przekracza barierę tutaj?"</string>
-    <string name="quest_barrier_road_intersection">"W jaki sposób droga przekracza barierę tutaj?"</string>
+    <string name="quest_barrier_path_intersection">"W jaki sposób ścieżka przekracza tutaj barierę?"</string>
+    <string name="quest_barrier_road_intersection">"W jaki sposób droga przekracza tutaj barierę?"</string>
     <string name="quest_sidewalk_value_separate">"pokazane osobno na mapie"</string>
     <string name="no_camera_permission_warning_title">"Dostęp do aparatu"</string>
     <string name="no_camera_permission_warning">"To uprawnienie jest niezbędne do mierzenia odległości aparatem."</string>
@@ -1135,7 +1129,6 @@ Zrób to samo dla drugiej strony, jeśli jest obecna."</string>
     <string name="quest_building_entrance_dead_end">"Ślepa ścieżka, brak wejścia"</string>
     <string name="ar_core_tracking_hint_tap_to_measure">"Dotknij ekranu, aby rozpocząć pomiar"</string>
     <string name="quest_air_pump_bicycle_shop_title">"Czy jest tu publiczna pompka rowerowa?"</string>
-    <string name="quest_air_pump_bicycle_repair_station_title">"Czy jest tu działająca pompka rowerowa?"</string>
     <string name="action_overlays">"Nakładki"</string>
     <string name="split_way">"Podziel linię"</string>
     <string name="quest_memorialType_title">"Co to za pomnik?"</string>
@@ -1175,14 +1168,13 @@ Zrób to samo dla drugiej strony, jeśli jest obecna."</string>
     <string name="quest_camp_type_tents_only">"Tylko namioty"</string>
     <string name="quest_camp_type_backcountry">"Kemping bez udogodnień"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Ta średnica wygląda nieprawdopodobnie, zwykle wynosi od %1$d do %2$d."</string>
-    <string name="quest_surface_tractypeMismatchInput_confirmation_description">"Ta odpowiedź nie pasuje do tego, jak droga została zmapowana. Czy na pewno odpowiadasz na temat właściwej drogi? Czy jesteś pewien, że osobiście sprawdziłeś na całej długości?"</string>
     <string name="quest_recycling_type_pet">"Tylko PET"</string>
     <string name="street_parking_street_width">"Szerokość ulicy: %s"</string>
     <string name="overlay_street_parking">"Parkowanie na ulicy"</string>
     <string name="link_ohsomehex_description">"Przeglądaj dane OSM w różnych skalach, od dużego obrazu po pojedyncze obiekty w przestrzeni i czasie"</string>
     <string name="link_opencampingmap_description">"Mapa kempingów i pól namiotowych"</string>
     <string name="quest_atm_cashin_title">"Czy możesz wpłacić gotówkę w tym bankomacie?"</string>
-    <string name="create_node_action_description">"Utworzono węzeł z …"</string>
+    <string name="create_node_action_description">"Utworzono punk z …"</string>
     <string name="quest_accessPointRef_answer_assembly_point">"To miejsce zbiórki"</string>
     <string name="quest_accessPointRef_detailed_answer_impossible_confirmation">"Miejsce zbiórki do ewakuacji - tam ludzie gromadzą się w nagłych wypadkach. Zwykle wygląda to tak:"</string>
     <string name="quest_address_answer_house_name2">"Adres zawiera nazwę budynku…"</string>
@@ -1247,7 +1239,7 @@ Przesunąć go teraz?"</string>
     <string name="separate_cycleway_no_or_allowed">"Nieprzeznaczony dla rowerzystów (jazda na rowerze może być nadal dozwolona)"</string>
     <string name="separate_cycleway_non_segregated">"Ścieżka do wspólnego użytku"</string>
     <string name="separate_cycleway_segregated">"Rozdzielona ścieżka dla rowerów i pieszych"</string>
-    <string name="separate_cycleway_exclusive">"Ścieżka tylko dla rowerów"</string>
+    <string name="separate_cycleway_exclusive">"Droga dla rowerów"</string>
     <string name="separate_cycleway_with_sidewalk">"Ścieżka tylko dla rowerów z przylegającym chodnikiem (oddzielone krawężnikiem)"</string>
     <string name="cycleway_reverse_direction">"Odwróć kierunek ścieżki rowerowej"</string>
     <string name="cycleway_reverse_direction_warning">"Bardzo rzadko zdarza się, że ścieżka rowerowa biegnie w drugą stronę."</string>
@@ -1304,7 +1296,7 @@ Brakujące dane są zawsze wyświetlane na czerwono."</string>
 
 Dodatkowo, niektóre nakładki pozwalają na dodanie nowych danych na zaznaczonym punkcie, na przykład warstwa sklepów."</string>
     <string name="quest_crossing_kerb_height_title">"Jaka jest wysokość krawężników na tym przejściu?"</string>
-    <string name="quest_maxheight_sign_title">"Jakie jest ograniczenie wysokości tutaj?"</string>
+    <string name="quest_maxheight_sign_title">"Jaki jest tutaj znak ograniczenie wysokości?"</string>
     <string name="quest_leave_new_note_as_answer">"W takim przypadku musisz zostawić notatkę, w której wyjaśnisz sytuację."</string>
     <string name="quest_drinking_water_type_title2">"Czy woda pitna jest tu dostępna? Jeśli tak jakie jest jej źródło?"</string>
     <string name="quest_is_amenity_inside_title">"Czy jest to w środku budynku?"</string>
@@ -1323,7 +1315,7 @@ Dodatkowo, niektóre nakładki pozwalają na dodanie nowych danych na zaznaczony
     <string name="quest_bbq_fuel_not_a_bbq">"To jest obudowa przeciwpożarowa"</string>
     <string name="quest_bbq_fuel_not_a_bbq_confirmation">"Obudowy przeciwpożarowe nie mają powierzchni do gotowania (np. rusztu/płyty), w przeciwieństwie do grilli."</string>
     <string name="about_title_logs">"Logi (%1$d)"</string>
-    <string name="about_summary_logs">"do użycia w raportach o błędach"</string>
+    <string name="about_summary_logs">"Do użycia w raportach o błędach."</string>
     <string name="action_filter">"Filtruj"</string>
     <string name="action_share">"Udostępnij logi"</string>
     <string name="about_title_show_logs">"Pokaż logi"</string>
@@ -1353,7 +1345,7 @@ Dodatkowo, niektóre nakładki pozwalają na dodanie nowych danych na zaznaczony
     <string name="quest_buildingType_tower_description">"dowolny rodzaj wieży"</string>
     <string name="quest_buildingType_under_construction">"W trakcie budowy"</string>
     <string name="overlay_buildings">"Budynki"</string>
-    <string name="quest_pedestrian_crossing_markings">"Czy to skrzyżowanie ma oznaczenia na ziemi?"</string>
+    <string name="quest_pedestrian_crossing_markings">"Czy to skrzyżowanie ma oznaczenia na nawierzchni?"</string>
     <string name="overlay_places">"Miejsca"</string>
     <string name="overlay_things">"Obiekty"</string>
     <string name="disused">"już nieużywane"</string>
@@ -1375,7 +1367,6 @@ Informacje o darowiznach można znaleźć na naszej stronie internetowej lub na 
     <string name="info">"Więcej informacji"</string>
     <string name="quest_accessible_for_pedestrians_prohibited">"To jest zabronione."</string>
     <string name="quest_accessible_for_pedestrians_allowed">"To jest dozwolone."</string>
-    <string name="quest_accessible_for_pedestrians_separate_sidewalk">"Tu jest chodnik, ale pokazany osobno na mapie."</string>
     <string name="quest_buildingLevels_hint">"W przypadku budynków na zboczu licznik poziomów zaczyna się od poziomu gruntu najniższej strony. 
 
 Poziom liczy się jako poziom dachu, gdy jego okna znajdują się w dachu, w związku z tym dachy o zerowych poziomach dachu niekoniecznie są płaskie, po prostu nie są wystarczająco wysokie dla całego poziomu."</string>
@@ -1403,6 +1394,18 @@ Poziom liczy się jako poziom dachu, gdy jego okna znajdują się w dachu, w zwi
     <string name="about_category_help">"Pomoc"</string>
     <string name="quest_camp_power_supply_hint">"Mogą to być gniazdka znajdujące się bezpośrednio na polu namiotowym, gniazdka zlokalizowane w budynkach usługowych dostępnych dla gości, lub dedykowane stacje ładowania telefonów, laptopów itp."</string>
     <string name="quest_barrier_opening_width_bollard">"Jaka jest najszersza luka, którą można się tędy przedostać?"</string>
+    <string name="user_profile_all_time_title">"Całkowicie"</string>
     <string name="user_statistics_country_rank2">"Ranga w %s"</string>
     <string name="quest_leafType_tree_is_just_a_stump">"To tylko pień drzewa"</string>
+    <string name="quest_board_name_title">"Jaki jest tytuł tej tablicy informacyjnej?"</string>
+    <string name="quest_crossing_hint">"Nieformalny szlak przecinający drogę:"</string>
+    <string name="note_for_object">"Ktoś utworzył notkę:"</string>
+    <string name="quest_bicycle_parking_type_safeloops">"Bezpieczne pętle (obsługują koło i ramę)"</string>
+    <string name="quest_cycleway_value_sidewalk_ok_dual">"brak, ale znak pozwala na jazdę rowerem po chodniku w obu kierunkach"</string>
+    <string name="quest_surface_value_rubber">"Ziarnista guma"</string>
+    <string name="quest_surface_value_acrylic">"Żywica syntetyczna"</string>
+    <string name="action_messages">"Pokaż wiadomości"</string>
+    <string name="action_create_new_poi">"Utwórz nowy"</string>
+    <string name="auth_error">"Błąd autoryzacji. Spróbuj zalogować się ponownie."</string>
+    <string name="quest_accessible_for_pedestrians_sidewalk">"Tak naprawdę chodnik jest."</string>
 </resources>

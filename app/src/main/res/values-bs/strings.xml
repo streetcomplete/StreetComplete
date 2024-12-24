@@ -697,9 +697,6 @@ Imajte na umu da ova aplikacija pita za kućni broj zgrade tek nakon što se utv
     <string name="quest_board_type_map">"To je karta"</string>
     <string name="quest_board_type_map_title">"Je li to samo karta i jedino karta?"</string>
     <string name="quest_board_type_map_description">"Ako je ploča o određenoj temi, navedite je, bez obzira na to uključuje li i kartu. Na primjer, tabla javnog prijevoza može imati kartu autobusne rute. Ako tema nije navedena među dostupnim odgovorima, razmislite o tome da umjesto nje ostavite bilješku."</string>
-    <string name="quest_surface_detailed_answer_impossible">"Višestruke površine…"</string>
-    <string name="quest_surface_detailed_answer_impossible_confirmation">"Jeste li sigurni da je nemoguće odrediti površinu? Obratite pažnju na odgovor \"Razlikuje se putem\" koji vam omogućuje da označite mjesto na kojem se površina mijenja. Molimo da koristite \"Ne mogu reći\" ako postoji jedna površina, ali ona nije dostupna kao odgovor."</string>
-    <string name="quest_surface_detailed_answer_impossible_description">"Molimo ukratko opišite vrstu površine ovdje, na primjer \"pjeskovita s kaldrmom mjestimice\". Duljina teksta ograničena je na 255 znakova."</string>
     <string name="quest_streetName_menuItem_international">"međunarodni"</string>
     <string name="quest_buildingType_terrace2">"Kuće u nizu"</string>
     <string name="at_housename">"ime kuće %s"</string>
@@ -748,7 +745,6 @@ Imajte na umu da ova aplikacija pita za kućni broj zgrade tek nakon što se utv
     <string name="quest_steps_ramp_separate_wheelchair_confirm">"zaseban"</string>
     <string name="quest_steps_ramp_separate_wheelchair_decline">"nije zaseban"</string>
     <string name="pref_title_sync2">"Automatsko slanje odgovora"</string>
-    <string name="quest_surface_detailed_answer_impossible_title">"Opišite površinu"</string>
     <string name="open_url">"Otvori link"</string>
     <string name="quest_buildingType_silo">"Silos"</string>
     <string name="quest_buildingType_historic">"Historijska zgrada"</string>
@@ -800,7 +796,6 @@ Ako su neke trake rezervirane za autobuse, umjesto toga ostavite bilješku."</st
     <string name="quest_construction_completion_date_title">"Kada će biti dovršeno?"</string>
     <string name="quest_surface_value_clay">"Glina"</string>
     <string name="quest_surface_value_artificial_turf">"Umjetna trava"</string>
-    <string name="quest_surface_value_tartan">"Tartan"</string>
     <string name="quest_bicycle_parking_fee_title">"Naplaćuje li se parkiranje bicikla ovdje?"</string>
     <string name="quest_buildingType_house_description2">"Obiteljska kuća (bez okućnice)"</string>
     <string name="quest_drinking_water_potable_signed">"Sigurno za piće (s oznakom)"</string>
@@ -816,7 +811,6 @@ Ako su neke trake rezervirane za autobuse, umjesto toga ostavite bilješku."</st
     <string name="team_mode">"Timski način rada"</string>
     <string name="team_mode_exit">"Ugasi timski način rada"</string>
     <string name="team_mode_description">"Kada kartirate isto područje zajedno u grupi, možete ući u timski način rada da podijelite zadatke između svih članova tima."</string>
-    <string name="team_mode_team_size_hint">"Timski način rada podržava grupe od 2 do 12 osoba."</string>
     <string name="team_mode_active">"Timski način rada je aktivan"</string>
     <string name="team_mode_deactivated">"Timski način rada je deaktiviran"</string>
     <string name="undo_confirm_title2">"Poništi ovo uređivanje?"</string>

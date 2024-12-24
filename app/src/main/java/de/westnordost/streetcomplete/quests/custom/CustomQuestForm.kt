@@ -9,7 +9,7 @@ import de.westnordost.streetcomplete.data.externalsource.ExternalSourceQuestCont
 import de.westnordost.streetcomplete.data.quest.ExternalSourceQuestKey
 import de.westnordost.streetcomplete.quests.AbstractExternalSourceQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
-import de.westnordost.streetcomplete.screens.main.MainFragment
+import de.westnordost.streetcomplete.screens.main.MainActivity
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.CreatePoiFragment
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.toTags
 import de.westnordost.streetcomplete.util.ktx.toast
@@ -39,7 +39,7 @@ class CustomQuestForm : AbstractExternalSourceQuestForm() {
                         replace(id, f, "bottom_sheet")
                         addToBackStack("bottom_sheet")
                     }
-                    (parentFragment as? MainFragment)?.offsetPos(p)
+                    (activity as? MainActivity)?.offsetPos(p)
                 }
             else null
         )

@@ -694,9 +694,6 @@ mailak"</string>
     <string name="quest_board_type_map">"Mapa bat da"</string>
     <string name="quest_board_type_map_title">"Mapa bat da eta besterik ez?"</string>
     <string name="quest_board_type_map_description">"Argibide-taula gai konkretu bati buruzkoa bada, zehaztu mesedez, ez du axola mapa bat ere baduen ala ez. Adibidez, garraio publikoko argibide-taula batek autobus mapa bat izan dezake. Gaia ez badago hemen zerrendatuta, agian utzi mezu bat horren ordez."</string>
-    <string name="quest_surface_detailed_answer_impossible">"Hainbat zoladura…"</string>
-    <string name="quest_surface_detailed_answer_impossible_confirmation">"Ziur zaude ezinezkoa dela zoladura zehaztea? Kontuan izan \"Bidean zehar aldatzen da\" erantzunak zoladura aldatzen den bidea mozteko aukera ematen duena. Erabili \"Ez dakit\" zoladura bakarra badago, baina erantzuteko gai ez bazara."</string>
-    <string name="quest_surface_detailed_answer_impossible_description">"Mesedez, azaldu laburki nolako gainazala dagoen hemen, adibidez \"hondarra, harrikoxkor zatiekin\". Testuaren luzeera gehienez 255 karakterekoa da."</string>
     <string name="quest_streetName_menuItem_international">"internazionala"</string>
     <string name="quest_buildingType_terrace2">"Etxe elkarri atxikiak"</string>
     <string name="at_housename">"etxearen izena %s"</string>
@@ -745,7 +742,6 @@ mailak"</string>
     <string name="quest_steps_ramp_separate_wheelchair_confirm">"bereizia"</string>
     <string name="quest_steps_ramp_separate_wheelchair_decline">"bereizi gabea"</string>
     <string name="pref_title_sync2">"Igo erantzunak automatikoki"</string>
-    <string name="quest_surface_detailed_answer_impossible_title">"Gainazala deskribatu"</string>
     <string name="open_url">"URLa ireki"</string>
     <string name="quest_buildingType_silo">"Siloa"</string>
     <string name="quest_buildingType_historic">"Historikoa"</string>
@@ -799,7 +795,6 @@ Ikus itzazu aukera posible guztiak: batzuetan ez da oso argia, adibidez errepide
     <string name="quest_construction_completion_date_title">"Noiz amaituko da?"</string>
     <string name="quest_surface_value_clay">"Buztina"</string>
     <string name="quest_surface_value_artificial_turf">"Belar artifiziala"</string>
-    <string name="quest_surface_value_tartan">"Tartana"</string>
     <string name="quest_bicycle_parking_fee_title">"Ordaindu behar al da bizikleta bat hemen aparkatzeko?"</string>
     <string name="quest_buildingType_house_description2">"bereizi gabeko familia bakarrarentzako etxea"</string>
     <string name="quest_drinking_water_potable_signed">"Ur edangarria (seinaleztatua)"</string>
@@ -815,7 +810,6 @@ Ikus itzazu aukera posible guztiak: batzuetan ez da oso argia, adibidez errepide
     <string name="team_mode">"Talde Modua"</string>
     <string name="team_mode_exit">"Talde Modutik atera"</string>
     <string name="team_mode_description">"Talde gisa eremu berdina mapeatzen ari bazarete, talde moduan sar zaitezke eta guztien artean lana banatu."</string>
-    <string name="team_mode_team_size_hint">"Talde Modua erabil daiteke 2 eta 12 pertsona artean."</string>
     <string name="team_mode_active">"Talde modua gaituta dago"</string>
     <string name="team_mode_deactivated">"Talde modua ezgaitu da"</string>
     <string name="undo_confirm_title2">"Aldaketa hau ezeztatu?"</string>
@@ -1133,7 +1127,6 @@ Egin gauza bera beste aldean egonez gero."</string>
     <string name="quest_building_entrance_dead_end">"Irteerarik gabeko kalea"</string>
     <string name="ar_core_tracking_hint_tap_to_measure">"Sakatu pantaila hasteko idazten"</string>
     <string name="quest_air_pump_bicycle_shop_title">"Badago hemen bizikleta-ponpa publikorik (irekita dagoenean behintzat)?"</string>
-    <string name="quest_air_pump_bicycle_repair_station_title">"Badago hemen funtzionatzen duen bizikleta ponparik?"</string>
     <string name="action_overlays">"Gainjartzeak"</string>
     <string name="split_way">"Bide zatitua"</string>
     <string name="quest_memorialType_title">"Nolako oroigarria da hau?"</string>
@@ -1173,7 +1166,6 @@ Egin gauza bera beste aldean egonez gero."</string>
     <string name="quest_camp_type_tents_only">"Bakarrik kanpin-dendak"</string>
     <string name="quest_camp_type_backcountry">"Kanpina (instalaziorik gabe)"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Diametro honek sinesgaitza dirudi, %1$d eta %2$d artean egon ohi da."</string>
-    <string name="quest_surface_tractypeMismatchInput_confirmation_description">"Erantzun hau ez dator bat errepide honi buruz jada mapatutakoarekin. Ziur errepide zuzenari buruz erantzuten ari zarela? Ziur al zaude pertsonalki inkesta luze osoan zehar egin duzula, beti behar bezala?"</string>
     <string name="quest_recycling_type_pet">"PET bakarrik"</string>
     <string name="street_parking_street_width">"Kalearen zabalera: %s"</string>
     <string name="overlay_street_parking">"Kaleko aparkalekua"</string>
@@ -1245,7 +1237,7 @@ Orain mugitu?"</string>
     <string name="separate_cycleway_no_or_allowed">"Ez dago txirrindularientzat egokituta (baliteke bizikletaz ibiltzea baimenduta)"</string>
     <string name="separate_cycleway_non_segregated">"Erabilera partekatuko bidea"</string>
     <string name="separate_cycleway_segregated">"Bizikleta eta oinezko bidea bereizita"</string>
-    <string name="separate_cycleway_exclusive">"Bizikletentzako bide esklusiboa"</string>
+    <string name="separate_cycleway_exclusive">"Bizikletentzako bide"</string>
     <string name="separate_cycleway_with_sidewalk">"Bidegorria aldamenean espaloia duena (zintarri batek bereizita)"</string>
     <string name="cycleway_reverse_direction">"Alderantzikatu bizikleta bidearen norabidea"</string>
     <string name="cycleway_reverse_direction_warning">"Beste norabidean doan bidegorria oso arraroa da."</string>

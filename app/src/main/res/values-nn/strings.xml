@@ -676,9 +676,6 @@ Appen kommuniserer direkte med OSM-tenarane.&lt;br/&gt;Før appen lastar opp end
     <string name="quest_board_type_map">"Det er eit kart"</string>
     <string name="quest_board_type_map_title">"Er det eit kart og berre eit kart?"</string>
     <string name="quest_board_type_map_description">"Om tavla handlar om eit spesifikt emne, oppgje emnet, uavhengig av om ho òg inneheld eit kart. For eksempel har tavler som viser kollektiv­tilbod, ofte òg eit kart over bussruter. Viss det ikkje finst eit val for emnet til tavla, kan du vurdera å heller leggja att ein merknad."</string>
-    <string name="quest_surface_detailed_answer_impossible">"Fleire vegdekke …"</string>
-    <string name="quest_surface_detailed_answer_impossible_confirmation">"Er du sikker på at det er umogleg å fastsetja kva vegdekke det er her? Merk at det finst eit «Forskjellig på ulike delar av vegen»-alternativ, der du kan dela opp vegen der han skiftar vegdekke. Bruk «Vanskeleg å seia» viss det finst eitt vegdekke, men dette vegdekket ikkje er tilgjengeleg som eit alternativ."</string>
-    <string name="quest_surface_detailed_answer_impossible_description">"Skildra kort vegdekket her, for eksempel «hovudsakleg sand, men med nokre brusteinar». Tekstgrensa er på 255 teikn."</string>
     <string name="quest_streetName_menuItem_international">"internasjonalt"</string>
     <string name="quest_buildingType_terrace2">"Rekkjehus"</string>
     <string name="at_housename">"husnamn %s"</string>
@@ -727,7 +724,6 @@ Appen kommuniserer direkte med OSM-tenarane.&lt;br/&gt;Før appen lastar opp end
     <string name="quest_steps_ramp_separate_wheelchair_confirm">"åtskild"</string>
     <string name="quest_steps_ramp_separate_wheelchair_decline">"ikkje åtskild"</string>
     <string name="pref_title_sync2">"Last automatisk opp svar"</string>
-    <string name="quest_surface_detailed_answer_impossible_title">"Skildra vegdekket"</string>
     <string name="open_url">"Opna nettadressa"</string>
     <string name="quest_buildingType_silo">"Silo"</string>
     <string name="quest_buildingType_historic">"Historisk"</string>
@@ -777,7 +773,6 @@ Appen kommuniserer direkte med OSM-tenarane.&lt;br/&gt;Før appen lastar opp end
     <string name="quest_construction_completion_date_title">"Når vert han ferdigstilt?"</string>
     <string name="quest_surface_value_clay">"Leire"</string>
     <string name="quest_surface_value_artificial_turf">"Kunst­gras"</string>
-    <string name="quest_surface_value_tartan">"Tartan"</string>
     <string name="quest_bicycle_parking_fee_title">"Kostar det noko å parkera syklar her?"</string>
     <string name="quest_buildingType_house_description2">"Einebustad"</string>
     <string name="quest_drinking_water_potable_signed">"Trygt å drikke (signert)"</string>
@@ -793,7 +788,6 @@ Appen kommuniserer direkte med OSM-tenarane.&lt;br/&gt;Før appen lastar opp end
     <string name="team_mode">"Lag­modus"</string>
     <string name="team_mode_exit">"Avslutt lagmodus"</string>
     <string name="team_mode_description">"Når fleire kartleggjer eit område saman, kan de bruka lagmodus for å fordela oppdraga mellom dykk."</string>
-    <string name="team_mode_team_size_hint">"Lagmodus verkar for grupper på 2–12 personar."</string>
     <string name="team_mode_active">"Lagmodus er på"</string>
     <string name="team_mode_deactivated">"Lagmodus er av"</string>
     <string name="undo_confirm_title2">"Vil du angra denne endringa?"</string>
@@ -1011,7 +1005,6 @@ Appen kommuniserer direkte med OSM-tenarane.&lt;br/&gt;Før appen lastar opp end
     <string name="quest_building_entrance_shop">"Kundeinngang"</string>
     <string name="quest_building_entrance_yes">"Annan type inngang"</string>
     <string name="quest_building_entrance_dead_end">"Blindgang (ingen inngang)"</string>
-    <string name="quest_air_pump_bicycle_repair_station_title">"Er det ei sykkelpumpe her?"</string>
     <string name="quest_memorialType_bust">"Byste"</string>
     <string name="quest_memorialType_plaque">"Plakett"</string>
     <string name="quest_memorialType_war_memorial">"Krigsminne"</string>
@@ -1033,7 +1026,7 @@ Appen kommuniserer direkte med OSM-tenarane.&lt;br/&gt;Før appen lastar opp end
     <string name="user_profile_current_week_title">"Siste 7 dagar"</string>
     <string name="move_node">"På ein litt annan stad…"</string>
     <string name="node_moved_too_far">"For langt. Legg heller til ein merknad"</string>
-    <string name="separate_cycleway_exclusive">"Sykkelfelt"</string>
+    <string name="separate_cycleway_exclusive">"Sykkelsti"</string>
     <string name="quest_fireHydrant_type_pipe">"Røyr"</string>
     <string name="quest_surface_value_mud">"Gjørme"</string>
     <string name="overlay_surface">"Overflate"</string>

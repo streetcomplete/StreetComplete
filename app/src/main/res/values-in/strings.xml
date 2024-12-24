@@ -699,10 +699,6 @@ Harap ingat bahwa aplikasi ini menanyakan nomor rumah pada bangunan setelah jeni
     <string name="quest_board_type_map">"Itu sebuah peta"</string>
     <string name="quest_board_type_map_title">"Apakah ini sebuah peta dan hanya sebuah peta?"</string>
     <string name="quest_board_type_map_description">"Jika papan adalah tentang topik tertentu, silakan tentukan, terlepas dari apakah itu juga termasuk peta. Misalnya, papan transportasi umum mungkin memiliki peta rute bus. Jika topik tidak tercantum di antara jawaban yang tersedia, harap pertimbangkan untuk meninggalkan catatan sebagai gantinya."</string>
-    <string name="quest_surface_detailed_answer_impossible">"Beberapa permukaan..."</string>
-    <string name="quest_surface_detailed_answer_impossible_confirmation">"Apakah kamu yakin bahwa tidak mungkin untuk menentukan permukaan? Perhatikan opsi jawaban \"Berbeda sepanjang jalan\" yang memungkinkan kamu memotong jalan di mana permukaan berubah. Silakan gunakan \"Tidak bisa mengatakan\" jika ada satu permukaan tetapi tidak tersedia sebagai jawaban.
-"</string>
-    <string name="quest_surface_detailed_answer_impossible_description">"Harap tentukan secara singkat sifat permukaan di sini, misalnya \"berpasir dengan tambalan batu besar\". Panjang teks dibatasi hingga 255 karakter."</string>
     <string name="quest_streetName_menuItem_international">"internasional"</string>
     <string name="quest_buildingType_terrace2">"Rumah susun"</string>
     <string name="at_housename">"Nama rumah %s"</string>
@@ -751,7 +747,6 @@ Harap ingat bahwa aplikasi ini menanyakan nomor rumah pada bangunan setelah jeni
     <string name="quest_steps_ramp_separate_wheelchair_confirm">"terpisah"</string>
     <string name="quest_steps_ramp_separate_wheelchair_decline">"tidak terpisah"</string>
     <string name="pref_title_sync2">"Unggah jawaban secara otomatis"</string>
-    <string name="quest_surface_detailed_answer_impossible_title">"Jelaskan permukaan"</string>
     <string name="open_url">"Buka URL"</string>
     <string name="quest_buildingType_silo">"Silo"</string>
     <string name="quest_buildingType_historic">"Bersejarah"</string>
@@ -805,7 +800,6 @@ Catat semua opsi yang tersedia: beberapa kasus tidak terlihat jelas, seperti jal
     <string name="quest_construction_completion_date_title">"Kapan ini akan selesai?"</string>
     <string name="quest_surface_value_clay">"Tanah liat"</string>
     <string name="quest_surface_value_artificial_turf">"Rumput palsu"</string>
-    <string name="quest_surface_value_tartan">"Tartan"</string>
     <string name="quest_bicycle_parking_fee_title">"Apakah kamu harus membayar untuk memarkir sepeda di sini?"</string>
     <string name="quest_buildingType_house_description2">"rumah keluarga tunggal yang tidak terpisah, mis. rumah satu baris"</string>
     <string name="quest_drinking_water_potable_signed">"Aman untuk diminum (tertanda)"</string>
@@ -821,7 +815,6 @@ Catat semua opsi yang tersedia: beberapa kasus tidak terlihat jelas, seperti jal
     <string name="team_mode">"Masuk ke Mode Kelompok"</string>
     <string name="team_mode_exit">"Keluar dari Mode Kelompok"</string>
     <string name="team_mode_description">"Ketika memetakan daerah yang sama bersama-sama dalam sebuah kelompok, kamu bisa masuk ke mode kelompok untuk membagi pencarian ke semua anggota kelompok."</string>
-    <string name="team_mode_team_size_hint">"Mode kelompok bekerja untuk kelompok dengan 2 sampai 12 orang."</string>
     <string name="team_mode_active">"Mode kelompok aktif"</string>
     <string name="team_mode_deactivated">"Mode kelompok nonaktif"</string>
     <string name="undo_confirm_title2">"Batalkan suntingan berikut?"</string>
@@ -1136,7 +1129,6 @@ Sebagai alternatif, kamu bisa menambahkan catatan (dengan foto)."</string>
     <string name="quest_building_entrance_dead_end">"Buntu, tak ada pintu masuk"</string>
     <string name="ar_core_tracking_hint_tap_to_measure">"Ketuk layar untuk mulai mengukur"</string>
     <string name="quest_air_pump_bicycle_shop_title">"Apakah ada pompa sepeda umum di sini (setidaknya saat buka)?"</string>
-    <string name="quest_air_pump_bicycle_repair_station_title">"Apa ada pompa sepeda yang bekerja di sini?"</string>
     <string name="action_overlays">"Hamparan"</string>
     <string name="split_way">"Jalur terpisah"</string>
     <string name="quest_memorialType_title">"Monumen apa ini?"</string>
@@ -1176,7 +1168,6 @@ Sebagai alternatif, kamu bisa menambahkan catatan (dengan foto)."</string>
     <string name="quest_camp_type_tents_only">"Hanya tenda"</string>
     <string name="quest_camp_type_backcountry">"Berkemah di pedalaman (tidak ada fasilitas)"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Diameter ini terlihat tidak mungkin, biasanya antara %1$d hingga %2$d."</string>
-    <string name="quest_surface_tractypeMismatchInput_confirmation_description">"Jawaban ini tidak sesuai dengan apa yang sudah dipetakan mengenai jalan ini. Apakah Anda yakin menjawab tentang jalan yang benar? Apakah Anda yakin telah melakukan survei secara pribadi sepanjang survei, seperti yang selalu diperlukan?"</string>
     <string name="quest_recycling_type_pet">"Hanya PET"</string>
     <string name="street_parking_street_width">"Lebar jalan: %s"</string>
     <string name="overlay_street_parking">"Parkir jalanan"</string>
@@ -1375,7 +1366,6 @@ Anda dapat menemukan informasi donasi di situs web atau beranda proyek kami, Goo
     <string name="info">"Informasi lebih lanjut"</string>
     <string name="quest_accessible_for_pedestrians_prohibited">"Itu dilarang."</string>
     <string name="quest_accessible_for_pedestrians_allowed">"Di perbolehkan"</string>
-    <string name="quest_accessible_for_pedestrians_separate_sidewalk">"Sebenarnya ada trotoar, tetapi ditampilkan terpisah di peta."</string>
     <string name="quest_buildingLevels_hint">"Untuk bangunan di lereng, hitungan level dimulai dari permukaan tanah sisi terendah.
 
 Level dihitung sebagai level atap jika jendelanya berada di atap. Selanjutnya, atap dengan level atap nol belum tentu datar, hanya saja tidak cukup tinggi untuk satu level penuh."</string>

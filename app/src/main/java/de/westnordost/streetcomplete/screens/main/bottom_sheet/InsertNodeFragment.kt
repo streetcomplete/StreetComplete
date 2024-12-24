@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.screens.main.bottom_sheet
 import android.content.res.Configuration
 import android.graphics.Color
 import android.graphics.PointF
-import android.graphics.Rect
 import android.os.Bundle
 import android.text.method.ScrollingMovementMethod
 import android.view.LayoutInflater
@@ -12,10 +11,8 @@ import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import androidx.annotation.UiThread
 import androidx.core.graphics.Insets
-import androidx.core.graphics.toRectF
 import androidx.core.os.bundleOf
 import androidx.core.view.doOnLayout
-import androidx.core.view.isGone
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import androidx.core.view.updateLayoutParams
@@ -38,7 +35,7 @@ import de.westnordost.streetcomplete.data.visiblequests.LevelFilter
 import de.westnordost.streetcomplete.databinding.FragmentInsertNodeBinding
 import de.westnordost.streetcomplete.databinding.RowInsertNodeElementBinding
 import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
-import de.westnordost.streetcomplete.screens.main.MainFragment
+import de.westnordost.streetcomplete.screens.main.MainActivity
 import de.westnordost.streetcomplete.screens.main.map.MainMapFragment
 import de.westnordost.streetcomplete.screens.main.map.Marker
 import de.westnordost.streetcomplete.screens.main.map.ShowsGeometryMarkers
@@ -94,7 +91,7 @@ class InsertNodeFragment :
         movementMethod = ScrollingMovementMethod()
     } }
     private val mapFragment by lazy {
-        (parentFragment as? MainFragment)?.childFragmentManager?.fragments?.filterIsInstance<MainMapFragment>()?.singleOrNull()
+        (activity as? MainActivity)?.supportFragmentManager?.fragments?.filterIsInstance<MainMapFragment>()?.singleOrNull()
     }
     private lateinit var mapData: MapDataWithGeometry
     private lateinit var ways: List<Pair<Way, List<LatLon>>>

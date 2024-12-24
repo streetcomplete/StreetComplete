@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.screens.main.edithistory
 
+import androidx.compose.runtime.Stable
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import de.westnordost.osmfeatures.FeatureDictionary
@@ -18,15 +19,18 @@ import de.westnordost.streetcomplete.util.ktx.launch
 import de.westnordost.streetcomplete.util.ktx.toLocalDateTime
 import de.westnordost.streetcomplete.util.logs.Log
 import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.flow.transformLatest
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.withContext
 import kotlinx.datetime.Instant
+import kotlinx.datetime.LocalDateTime
 
+@Stable
 abstract class EditHistoryViewModel : ViewModel() {
     abstract val editItems: StateFlow<List<EditItem>>
     abstract val selectedEdit: StateFlow<Edit?>
@@ -40,15 +44,22 @@ abstract class EditHistoryViewModel : ViewModel() {
     abstract fun updateEdits()
 
     abstract val featureDictionaryLazy: Lazy<FeatureDictionary>
+
+    /* edit sidebar */
+    // TODO could maybe be just a boolean in the composable when there's no communication between
+    //      compose <-> fragment communication necessary anymore
+    abstract fun showSidebar()
+    abstract fun hideSidebar()
+    abstract val isShowingSidebar: StateFlow<Boolean>
 }
 
 data class EditItem(
     val edit: Edit,
     val showDate: Boolean,
     val showTime: Boolean,
-    val isSelected: Boolean
 )
 
+@Stable
 class EditHistoryViewModelImpl(
     private val mapDataSource: MapDataWithEditsSource,
     private val editHistoryController: EditHistoryController,
@@ -59,23 +70,10 @@ class EditHistoryViewModelImpl(
 
     override val selectedEdit = MutableStateFlow<Edit?>(null)
 
-    override val editItems = combine(edits, selectedEdit) { edits, selection ->
-        edits.mapIndexed { index, edit ->
-            val editAbove = if (index < edits.indices.last) edits[index + 1] else null
-
-            val editDateTime = Instant.fromEpochMilliseconds(edit.createdTimestamp).toLocalDateTime()
-            val editAboveDateTime = editAbove?.let { Instant.fromEpochMilliseconds(it.createdTimestamp).toLocalDateTime() }
-            val sameDate = editDateTime.date == editAboveDateTime?.date
-            val sameTime = editDateTime.time.hour == editAboveDateTime?.time?.hour &&
-                           editDateTime.time.minute == editAboveDateTime.time.minute
-
-            EditItem(edit,
-                showDate = !sameDate,
-                showTime = !sameTime || !sameDate,
-                isSelected = selection?.key == edit.key
-            )
-        }
-    }.stateIn(viewModelScope, SharingStarted.Lazily, emptyList())
+    @OptIn(ExperimentalCoroutinesApi::class)
+    override val editItems = edits
+        .transformLatest { emit(it.toEditItems()) }
+        .stateIn(viewModelScope, SharingStarted.Lazily, emptyList())
 
     override suspend fun getEditElement(edit: Edit): Element? {
         val key = edit.primaryElementKey ?: return null
@@ -103,10 +101,22 @@ class EditHistoryViewModelImpl(
         }
     }
 
+    override fun showSidebar() {
+        selectedEdit.value = edits.value.lastOrNull()
+        isShowingSidebar.value = true
+    }
+
+    override fun hideSidebar() {
+        selectedEdit.value = null
+        isShowingSidebar.value = false
+    }
+
+    override val isShowingSidebar = MutableStateFlow<Boolean>(false)
+
     private val editHistoryListener = object : EditHistorySource.Listener {
         override fun onAdded(added: Edit) {
             edits.update { edits ->
-                var insertIndex = edits.indexOfFirst { it.createdTimestamp < added.createdTimestamp }
+                var insertIndex = edits.indexOfLast { it.createdTimestamp > added.createdTimestamp }
                 if (insertIndex == -1) insertIndex = edits.size
                 edits.toMutableList().also { it.add(insertIndex, added) }
             }
@@ -117,7 +127,7 @@ class EditHistoryViewModelImpl(
                 selectedEdit.value = synced
             }
             edits.update { edits ->
-                val editIndex = edits.indexOfFirst { it.key == synced.key }
+                val editIndex = edits.indexOfLast { it.key == synced.key }
                 if (editIndex != -1) {
                     edits.toMutableList().also { it[editIndex] = synced }
                 } else {
@@ -134,6 +144,7 @@ class EditHistoryViewModelImpl(
             edits.update { edits ->
                 edits.filter { it.key !in deletedKeys }
             }
+            if (edits.value.isEmpty()) hideSidebar()
         }
 
         override fun onInvalidated() {
@@ -152,7 +163,26 @@ class EditHistoryViewModelImpl(
 
     override fun updateEdits() {
         launch(IO) {
-            edits.value = editHistoryController.getAll(allHidden).sortedByDescending { it.createdTimestamp }
+            edits.value = editHistoryController.getAll(allHidden).sortedBy { it.createdTimestamp }
+            if (edits.value.isEmpty()) hideSidebar()
+        }
+    }
+
+    private fun List<Edit>.toEditItems(): List<EditItem> {
+        var editAboveDateTime: LocalDateTime? = null
+        return map { edit ->
+            val editDateTime = Instant.fromEpochMilliseconds(edit.createdTimestamp).toLocalDateTime()
+            val sameDate = editDateTime.date == editAboveDateTime?.date
+            val sameTime =
+                editDateTime.time.hour == editAboveDateTime?.time?.hour &&
+                editDateTime.time.minute == editAboveDateTime?.time?.minute
+            editAboveDateTime = editDateTime
+
+            EditItem(
+                edit = edit,
+                showDate = !sameDate,
+                showTime = !sameTime || !sameDate,
+            )
         }
     }
 }

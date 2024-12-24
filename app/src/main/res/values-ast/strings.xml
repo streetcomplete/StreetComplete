@@ -693,9 +693,6 @@ Repara en qu'esta aplicación solo pide'l númberu de portal d'un edificiu en sa
     <string name="quest_board_type_map">"Ye un mapa"</string>
     <string name="quest_board_type_map_title">"¿Ye sólo un mapa y más nada?"</string>
     <string name="quest_board_type_map_description">"Si'l cartel ye sobre un tema en particular déxalo claro y afina la selección, ensin importar el mapa que pueda tener. Por casu; un cartel de tresporte públicu puede tener un mapa con una ruta d'autobús. Si'l tema nun apaez na llista dexa una nota."</string>
-    <string name="quest_surface_detailed_answer_impossible">"Dellos tipos de superficie..."</string>
-    <string name="quest_surface_detailed_answer_impossible_confirmation">"¿Seguro que nun puedes poner el tipu exactu de superficie? Repara en que responder «diferente a lo llargo de la vía» dexa partir en dos el puntu onde cambia. Puedes calcar en «nun sabría dicir» si hai un solu tipu de superficie pero nun apaez na llista."</string>
-    <string name="quest_surface_detailed_answer_impossible_description">"Esplica'l tipu de superficie de manera breve, por exemplu; «arenoso con dalgún adoquín». Puedes escribir hasta un máximu de 255 carácteres."</string>
     <string name="quest_streetName_menuItem_international">"internacional"</string>
     <string name="quest_buildingType_terrace2">"Cases adosaes"</string>
     <string name="at_housename">"nome de la casa %s"</string>
@@ -744,7 +741,6 @@ Repara en qu'esta aplicación solo pide'l númberu de portal d'un edificiu en sa
     <string name="quest_steps_ramp_separate_wheelchair_confirm">"separtada"</string>
     <string name="quest_steps_ramp_separate_wheelchair_decline">"ensin separtar"</string>
     <string name="pref_title_sync2">"Xubir respuestes de manera automática"</string>
-    <string name="quest_surface_detailed_answer_impossible_title">"Describi la superficie"</string>
     <string name="open_url">"Abrir URL"</string>
     <string name="quest_buildingType_silo">"Silu"</string>
     <string name="quest_buildingType_historic">"Históricu"</string>
@@ -893,7 +889,6 @@ Repara en qu'esta aplicación solo pide'l númberu de portal d'un edificiu en sa
     <string name="quest_building_entrance_dead_end">"Entrada ensin salida"</string>
     <string name="ar_core_tracking_hint_tap_to_measure">"Toca la pantalla pa empezar a midir"</string>
     <string name="quest_air_pump_bicycle_shop_title">"¿Hai bomba de bicicleta pública (mientres ta abierto)?"</string>
-    <string name="quest_air_pump_bicycle_repair_station_title">"¿Hai bomba pa hinchar bicis?"</string>
     <string name="action_overlays">"Capes de datos"</string>
     <string name="split_way">"Dividir la vía"</string>
     <string name="quest_memorialType_title">"¿Qué tipu de monumentu ye?"</string>
@@ -933,7 +928,6 @@ Repara en qu'esta aplicación solo pide'l númberu de portal d'un edificiu en sa
     <string name="quest_camp_type_tents_only">"Namás tiendes de campaña"</string>
     <string name="quest_camp_type_backcountry">"Campamentu al aire llibre (ensin instalaciones)"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Esti diámetru nun paez mui realista, suel tar ente %1$d y %2$d."</string>
-    <string name="quest_surface_tractypeMismatchInput_confirmation_description">"Esta respuesta nun coincide colo que ya ta puesto nel restu de la vía. ¿Seguro que nun t'equivocasti de llugar? Asegúrate de que la percorristi dafechu pa tener una bona idea xeneral."</string>
     <string name="quest_recycling_type_pet">"Namás polietilenu"</string>
     <string name="street_parking_street_width">"Anchor de la cai: %s"</string>
     <string name="overlay_street_parking">"Aparcaderu"</string>

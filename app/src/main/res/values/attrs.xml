@@ -18,8 +18,4 @@
     <declare-styleable name="CircularMaskFrameLayout">
         <attr name="circularity" format="float"/>
     </declare-styleable>
-    <declare-styleable name="PointerPinView">
-        <attr name="pinRotation" format="float"/>
-        <attr name="iconSrc" format="reference"/>
-    </declare-styleable>
 </resources>

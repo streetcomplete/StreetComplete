@@ -670,9 +670,6 @@
     <string name="quest_board_type_map">"זוהי מפה"</string>
     <string name="quest_board_type_map_title">"האם זו אך ורק מפה?"</string>
     <string name="quest_board_type_map_description">"אם השלט הוא לגבי נושא ספציפי, נא לציין אותו, גם אם השלט כולל גם מפה. לדוגמא שלט לגבי תחבורה ציבורית עשוי לכלול גם מפת נתיבי אוטובוסים. אם הנושא איננו מופיע בתשובות האפשריות, נא לשקול להשאיר הערה במקום."</string>
-    <string name="quest_surface_detailed_answer_impossible">"משטחים מרובים…"</string>
-    <string name="quest_surface_detailed_answer_impossible_confirmation">"האם בטוח שלא ניתן לציין סוג משטח ספציפי? נא לשים לב שקיימת אופציה של \"משתנה לאורך הדרך\" שמאפשרת לחתוך את הדרך במקום שבו סוג המשטח משתנה. נא להשתמש ב\"לא ניתן לומר\" אם יש סוג משטח אחד אבל הוא לא מופיע כתשובה אפשרית."</string>
-    <string name="quest_surface_detailed_answer_impossible_description">"נא לתאר בקצרה את אופי המשטח כאן, לדוגמא \"חולי עם כתמי אבן מרוצפת\". מגבלת אורך הטקסט היא 255 תווים."</string>
     <string name="quest_streetName_menuItem_international">"בינלאומי"</string>
     <string name="quest_buildingType_terrace2">"בתי שורות"</string>
     <string name="at_housename">"שם בית %s"</string>
@@ -719,7 +716,6 @@
     <string name="quest_steps_ramp_separate_wheelchair_confirm">"נפרדת"</string>
     <string name="quest_steps_ramp_separate_wheelchair_decline">"לא נפרדת"</string>
     <string name="pref_title_sync2">"העלה תשובות אוטומטית"</string>
-    <string name="quest_surface_detailed_answer_impossible_title">"תאר את המשטח"</string>
     <string name="open_url">"פתח/י URL"</string>
     <string name="quest_buildingType_silo">"סילו (ממגורה)"</string>
     <string name="quest_buildingType_historic">"היסטורי"</string>
@@ -782,7 +778,6 @@
     <string name="team_mode">"כניסה למוד קבוצתי"</string>
     <string name="team_mode_exit">"יציאה ממוד קבוצתי"</string>
     <string name="team_mode_description">"כאשר מבצעים מיפוי של אותו אזור ביחד כקבוצה, ניתן להיכנס למוד קבוצתי על מנת לחלק את משימות המחקר בין חברי הקבוצה."</string>
-    <string name="team_mode_team_size_hint">"מוד קבוצתי פועל לקבוצות של 2 עד 12 אנשים."</string>
     <string name="team_mode_active">"מוד קבוצתי פעיל"</string>
     <string name="team_mode_deactivated">"מוד קבוצתי לא פעיל"</string>
     <string name="undo_confirm_title2">"לבטל את השינוי הזה?"</string>
@@ -1043,7 +1038,6 @@
     <string name="quest_building_entrance_dead_end">"ללא מוצא, אין כניסה"</string>
     <string name="ar_core_tracking_hint_tap_to_measure">"יש להקיש על המסך כדי להתחיל מדידה"</string>
     <string name="quest_air_pump_bicycle_shop_title">"האם יש כאן משאבת ניפוח אופניים ציבורית (לפחות כשהמקום פתוח)?"</string>
-    <string name="quest_air_pump_bicycle_repair_station_title">"האם יש כאן משאבת ניפוח אופניים פעילה?"</string>
     <string name="split_way">"פיצול דרך"</string>
     <string name="quest_memorialType_title">"איזה סוג של אנדרטה זו?"</string>
     <string name="quest_memorialType_statue">"פסל"</string>

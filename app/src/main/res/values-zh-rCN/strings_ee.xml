@@ -198,15 +198,15 @@
     <string name="quest_osmose_message_for_element">项目类型 %1$s: %2$s</string>
     <string name="pref_read_reverse_button">反转</string>
     <string name="pref_delete_old_data_after_message">如果下载的 OSM 数据超过此天数，则将其删除</string>
-    <string name="pref_expert_mode_message">这将允许在 SCEE 中使用添加的任务，以及 
-\n <li>编辑原始标签</li> 
-\n <li>移动属于路径或关系的节点</li> 
-\n <li>删除任意自由浮动的节点</li> 
-\n <li>编辑应由注释屏蔽的要素</li> 
-\n <li>在任何地方添加自由浮动节点</li> 
-\n <li>改变任务的要素选择</li> 
-\n 
-\n 这仍然小于大多数其他编辑器所允许的范围，但不当使用可能会导致损坏数据，而这在 StreetComplete 中是可以避免的。请注意，启用专家模式后，您需要为自己的编辑显著承担更多责任。 
+    <string name="pref_expert_mode_message">这将允许在 SCEE 中使用添加的任务，以及
+\n <li>编辑原始标签</li>
+\n <li>移动属于路径或关系的节点</li>
+\n <li>删除任意自由浮动的节点</li>
+\n <li>编辑应由注释屏蔽的要素</li>
+\n <li>在任何地方添加自由浮动节点</li>
+\n <li>改变任务的要素选择</li>
+\n
+\n 这仍然小于大多数其他编辑器所允许的范围，但不当使用可能会导致损坏数据，而这在 StreetComplete 中是可以避免的。请注意，启用专家模式后，您需要为自己的编辑显著承担更多责任。
 \n请在当您拥有除 StreetComplete 之外的 OSM 经验并了解自己在做什么时，再启用此设置。 \u0020</string>
     <string name="quest_is_pharmacy_dispensing_title">这家药房是否配发所有处方药？</string>
     <string name="import_error_db_version">导入错误：未知版本</string>
@@ -615,5 +615,4 @@
     <string name="quest_street_cabinet_transport_management">运输管理</string>
     <string name="quest_bicycle_parking_type_saddleholder">自行车鞍座</string>
     <string name="quest_saunaAvailability_title">这里有桑拿吗？</string>
-    <string name="quest_bicycle_parking_type_safeloops">停车架（支撑车轮和车架）</string>
 </resources>

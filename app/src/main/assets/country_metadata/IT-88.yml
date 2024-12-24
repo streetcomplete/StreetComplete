@@ -2,3 +2,4 @@
 additionalStreetsignLanguages: [sc]
 atmOperators: [Poste Italiane, Banco di Sardegna, Euronet, Bancomat, UniCredit Bank]
 chargingStationOperators: [Enel X, GaraGeeks, Enel, DriWe, evWay, 'Tesla, Inc.', Repower, ChargePoint]
+parcelLockerBrand: [Amazon Locker]

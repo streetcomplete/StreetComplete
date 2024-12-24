@@ -10,7 +10,7 @@ import org.koin.dsl.module
 val uploadModule = module {
     factory { VersionIsBannedChecker(get(), BANNED_VERSION_URL, ApplicationConstants.USER_AGENT) }
 
-    single { Uploader(get(), get(), get(), get(), get(), get(named("SerializeSync")), get(), get()) }
+    single { Uploader(get(), get(), get(), get(), get(), get(), get(named("SerializeSync")), get(), get()) }
     /* uploading and downloading should be serialized, i.e. may not run in parallel, to avoid
      * certain race-condition.
      *

@@ -118,7 +118,7 @@ private fun CyclewayAndDirection.applyTo(tags: Tags, isRight: Boolean, isLeftHan
         }
         UNSPECIFIED_LANE -> {
             tags[cyclewayKey] = "lane"
-            // does not remove any cycleway:lane tag because this value is not considered explicit
+            tags.remove("$cyclewayKey:lane")
         }
         ADVISORY_LANE -> {
             tags[cyclewayKey] = "lane"

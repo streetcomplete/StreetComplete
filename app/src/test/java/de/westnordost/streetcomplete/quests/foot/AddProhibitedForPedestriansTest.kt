@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.quests.foot
 
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
 import de.westnordost.streetcomplete.quests.answerApplied
 import de.westnordost.streetcomplete.quests.answerAppliedTo
 import de.westnordost.streetcomplete.quests.foot.ProhibitedForPedestriansAnswer.*
@@ -27,22 +26,15 @@ class AddProhibitedForPedestriansTest {
         )
     }
 
-    @Test fun `apply separate sidewalk answer`() {
-        assertEquals(
-            setOf(StringMapEntryAdd("sidewalk:both", "separate")),
-            questType.answerApplied(HAS_SEPARATE_SIDEWALK)
-        )
-    }
-
-    @Test fun `remove wrong sidewalk tagging`() {
+    @Test fun `apply actually sidewalk answer clears all sidewalk tagging`() {
         assertEquals(
             setOf(
-                StringMapEntryModify("sidewalk:both", "yes", "separate"),
+                StringMapEntryDelete("sidewalk:both", "yes"),
                 StringMapEntryDelete("sidewalk:left", "yes"),
                 StringMapEntryDelete("sidewalk:right", "yes"),
                 StringMapEntryDelete("sidewalk", "both"),
             ),
-            questType.answerAppliedTo(HAS_SEPARATE_SIDEWALK, mapOf(
+            questType.answerAppliedTo(ACTUALLY_HAS_SIDEWALK, mapOf(
                 "sidewalk" to "both",
                 "sidewalk:left" to "yes",
                 "sidewalk:right" to "yes",

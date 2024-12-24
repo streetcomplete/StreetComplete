@@ -94,15 +94,34 @@ private fun SeparateCycleway?.getColor() = when (this) {
 private fun getStreetCyclewayStyle(element: Element, countryInfo: CountryInfo): PolylineStyle {
     val isLeftHandTraffic = countryInfo.isLeftHandTraffic
     val cycleways = parseCyclewaySides(element.tags, isLeftHandTraffic)
-    val isBicycleBoulevard = parseBicycleBoulevard(element.tags) == BicycleBoulevard.YES
     val isNoCyclewayExpectedLeft = { cyclewayTaggingNotExpected(element, false, isLeftHandTraffic) }
     val isNoCyclewayExpectedRight = { cyclewayTaggingNotExpected(element, true, isLeftHandTraffic) }
 
     return PolylineStyle(
-        stroke = if (isBicycleBoulevard) StrokeStyle(Color.GOLD, dashed = true) else null,
+        stroke = getStreetStrokeStyle(element.tags),
         strokeLeft = cycleways?.left?.cycleway.getStyle(countryInfo, isNoCyclewayExpectedLeft),
         strokeRight = cycleways?.right?.cycleway.getStyle(countryInfo, isNoCyclewayExpectedRight)
     )
+}
+
+private fun getStreetStrokeStyle(tags: Map<String, String>): StrokeStyle? {
+    val isBicycleBoulevard = parseBicycleBoulevard(tags) == BicycleBoulevard.YES
+    val isPedestrian = tags["highway"] == "pedestrian"
+    val isBicycleDesignated = tags["bicycle"] == "designated"
+    val isBicycleOk = tags["bicycle"] == "yes" && tags["bicycle:signed"] == "yes"
+
+    return when {
+        isBicycleBoulevard ->
+            StrokeStyle(Color.GOLD, dashed = true)
+        isPedestrian && isBicycleDesignated ->
+            StrokeStyle(Color.CYAN)
+        isPedestrian && isBicycleOk ->
+            StrokeStyle(Color.AQUAMARINE)
+        isPedestrian ->
+            StrokeStyle(Color.BLACK)
+        else ->
+            null
+    }
 }
 
 private val cyclewayTaggingNotExpectedFilter by lazy { """
@@ -177,7 +196,7 @@ private fun Cycleway?.getStyle(
         StrokeStyle(Color.INVISIBLE)
 
     SIDEWALK_OK ->
-        StrokeStyle(Color.CYAN, dashed = true)
+        StrokeStyle(Color.AQUAMARINE, dashed = true)
 
     UNKNOWN, INVALID, UNKNOWN_LANE, UNKNOWN_SHARED_LANE ->
         StrokeStyle(Color.DATA_REQUESTED)

@@ -51,7 +51,7 @@ class AddDestinationForm : AbstractOsmQuestForm<Pair<DestinationLanes?, Destinat
     /* // todo: add later, once more lanes are allowed
     override val otherAnswers get() = listOf(AnswerItem(R.string.quest_lanes_title) { // todo: text
         // show lanes quest, because just removing lanes doesn't necessarily show lanes quest!
-        (parentFragment as? MainFragment)
+        (activity as? MainActivity)
         val lanesQuestType = questTypeRegistry.getByName("AddLanes")!!
         val key = (questKey as OsmQuestKey).copy(questTypeName = lanesQuestType.name)
         val f = AddLanesForm()

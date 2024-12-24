@@ -22,6 +22,7 @@ import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.app.PendingIntentCompat
 import androidx.core.content.getSystemService
+import androidx.core.net.toUri
 import com.russhwolf.settings.ObservableSettings
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.Prefs
@@ -33,7 +34,6 @@ import de.westnordost.streetcomplete.data.download.tiles.enclosingTilePos
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.quest.Quest
 import de.westnordost.streetcomplete.data.quest.VisibleQuestsSource
-import de.westnordost.streetcomplete.screens.MainActivity
 import de.westnordost.streetcomplete.util.buildGeoUri
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.ktx.toLatLon
@@ -71,7 +71,7 @@ class NearbyQuestMonitor : Service(), LocationListener, KoinComponent {
         val intent = Intent(this, MainActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_SINGLE_TOP or Intent.FLAG_ACTIVITY_CLEAR_TOP
         intent.action = Intent.ACTION_VIEW
-        intent.data = buildGeoUri(position.latitude, position.longitude)
+        intent.data = buildGeoUri(position.latitude, position.longitude).toUri()
         return PendingIntentCompat.getActivity(applicationContext, 1, intent, PendingIntent.FLAG_UPDATE_CURRENT, true)
     }
 

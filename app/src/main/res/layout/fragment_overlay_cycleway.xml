@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <include layout="@layout/fragment_overlay_street_side_puzzle_with_last_answer_button"/>
+
+    <FrameLayout
+        android:id="@+id/signContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:scaleX="0.5"
+        android:scaleY="0.5"
+        android:alpha="0.75"/>
+
+</RelativeLayout>

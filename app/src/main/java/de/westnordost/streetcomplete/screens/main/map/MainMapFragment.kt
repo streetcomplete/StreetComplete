@@ -35,6 +35,7 @@ import de.westnordost.streetcomplete.screens.main.map.components.PinsMapComponen
 import de.westnordost.streetcomplete.screens.main.map.components.SelectedPinsMapComponent
 import de.westnordost.streetcomplete.screens.main.map.components.StyleableOverlayMapComponent
 import de.westnordost.streetcomplete.screens.main.map.components.TracksMapComponent
+import de.westnordost.streetcomplete.screens.main.map.maplibre.CameraPosition
 import de.westnordost.streetcomplete.screens.main.map.maplibre.MapImages
 import de.westnordost.streetcomplete.screens.main.map.maplibre.camera
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toLatLon
@@ -370,8 +371,8 @@ class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
         listener?.onDisplayedLocationDidChange()
     }
 
-    override fun onMapIsChanging(position: LatLon, rotation: Double, tilt: Double, zoom: Double) {
-        super.onMapIsChanging(position, rotation, tilt, zoom)
+    override fun onMapIsChanging(camera: CameraPosition) {
+        super.onMapIsChanging(camera)
         questPinsManager?.onNewScreenPosition()
         styleableOverlayManager?.onNewScreenPosition()
     }

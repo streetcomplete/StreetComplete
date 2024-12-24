@@ -1,5 +1,5 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [OTP Bank, Banca Intesa, Raiffeisen bank, Erste Bank, Поштанска штедионица, UniCredit Bank, OTP banka, NLB, Eurobank, AIK banka, Банка Поштанска штедионица, Société Générale, NLB Komercijalna banka, Mobi banka, Halkbank, Addiko Bank, AIK Banka]
+atmOperators: [Erste Bank, Banca Intesa, Raiffeisen bank, Поштанска штедионица, OTP banka, OTP Bank, UniCredit Bank, NLB, Eurobank, AIK banka, Банка Поштанска штедионица, Société Générale, NLB Komercijalna banka, Mobi banka, Halkbank, Addiko Bank]
 chargingStationOperators: [Газпром]
 officialLanguages: [sr, hu, hr, sk, ro, rsk]
 parcelLockerBrand: [Поштин пакетомат]

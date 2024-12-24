@@ -40,6 +40,7 @@ private fun isAreaExpressionFragment(prefix: String? = null): String {
         or ${p}cemetery ~ sector|grave
         or (${p}military and ${p}military != trench)
         or ${p}aerialway = station
+        or ${p}playground
         or ${p}allotments
         or ${p}healthcare
         or ${p}highway = services

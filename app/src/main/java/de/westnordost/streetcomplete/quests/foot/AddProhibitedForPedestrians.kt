@@ -8,7 +8,7 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.osm.ROADS_ASSUMED_TO_BE_PAVED
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.surface.PAVED_SURFACES
-import de.westnordost.streetcomplete.quests.foot.ProhibitedForPedestriansAnswer.HAS_SEPARATE_SIDEWALK
+import de.westnordost.streetcomplete.quests.foot.ProhibitedForPedestriansAnswer.ACTUALLY_HAS_SIDEWALK
 import de.westnordost.streetcomplete.quests.foot.ProhibitedForPedestriansAnswer.NO
 import de.westnordost.streetcomplete.quests.foot.ProhibitedForPedestriansAnswer.YES
 
@@ -59,9 +59,9 @@ class AddProhibitedForPedestrians : OsmFilterQuestType<ProhibitedForPedestriansA
             // the question is whether it is prohibited, so YES -> foot=no etc
             YES -> tags["foot"] = "no"
             NO -> tags["foot"] = "yes"
-            HAS_SEPARATE_SIDEWALK -> {
-                tags["sidewalk:both"] = "separate"
-                // wrong tagging may exist, it should be removed to prevent quest from reappearing
+            // but we did not specify on which side. So, clear it, sidewalk is added separately
+            ACTUALLY_HAS_SIDEWALK -> {
+                tags.remove("sidewalk:both")
                 tags.remove("sidewalk")
                 tags.remove("sidewalk:left")
                 tags.remove("sidewalk:right")

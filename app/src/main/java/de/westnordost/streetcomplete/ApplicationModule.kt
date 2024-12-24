@@ -15,7 +15,7 @@ val appModule = module {
     factory<AssetManager> { androidContext().assets }
     factory<Resources> { androidContext().resources }
 
-    single { CrashReportExceptionHandler(androidContext(), get(), get(), "helium@vivaldi.net", "crashreport.txt") }
+    single { CrashReportExceptionHandler(androidContext(), get(), get(), "crashreport.txt") }
     single { DatabaseLogger(get()) }
     single { SoundFx(androidContext()) }
     single { HttpClient {

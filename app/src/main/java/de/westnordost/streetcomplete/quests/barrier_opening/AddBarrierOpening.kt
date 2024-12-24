@@ -8,6 +8,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.WHEELCHAIR
+import de.westnordost.streetcomplete.osm.ALL_PATHS
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.quests.width.AddWidthForm
 import de.westnordost.streetcomplete.quests.width.WidthAnswer
@@ -27,11 +28,11 @@ class AddBarrierOpening(
             and (!width or source:width ~ ".*estimat.*")
             and (!maxwidth or source:maxwidth ~ ".*estimat.*")
             and access !~ private|no|customers|agricultural
-        """.toElementFilterExpression() }
+    """.toElementFilterExpression() }
 
     private val waysFilter by lazy { """
         ways with
-            highway
+            highway ~ ${ALL_PATHS.joinToString("|")}
             and area != yes
             and (access !~ private|no or (foot and foot !~ private|no))
     """.toElementFilterExpression() }
@@ -40,6 +41,7 @@ class AddBarrierOpening(
     override val wikiLink = "Key:barrier"
     override val icon = R.drawable.ic_quest_wheelchair_width
     override val achievements = listOf(BICYCLIST, WHEELCHAIR)
+    override val isDeleteElementEnabled = true
     override val defaultDisabledMessage: Int
         get() = if (!checkArSupport()) R.string.default_disabled_msg_no_ar else 0
 

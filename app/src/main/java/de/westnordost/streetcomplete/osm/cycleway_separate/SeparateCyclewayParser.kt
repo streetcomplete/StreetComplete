@@ -47,10 +47,11 @@ fun parseSeparateCycleway(tags: Map<String, String>): SeparateCycleway? {
     val hasSidewalk = parseSidewalkSides(tags)?.any { it == Sidewalk.YES } == true || tags["sidewalk"] == "yes"
     if (hasSidewalk) return EXCLUSIVE_WITH_SIDEWALK
 
-    if (foot in noFoot || foot == null) return EXCLUSIVE
+    if (tags["segregated"] == "yes") return SEGREGATED
 
-    val segregated = tags["segregated"] == "yes"
-    return if (segregated) SEGREGATED else NON_SEGREGATED
+    if (foot != "designated") return EXCLUSIVE
+
+    return NON_SEGREGATED
 }
 
 private val noCycling = setOf(

@@ -1,4 +1,40 @@
 <!-- Do not edit! This file was generated automatically from CHANGELOG.md via UpdateChangelogTask -->
+<h2>v60.0</h2>
+<p>Redesigned the main screen a little. Here and there you'll notice small differences. The dialog to
+start the team mode from the menu is more descriptive now, for example. (<a href="https://github.com/streetcomplete/StreetComplete/issues/5799">#5799</a>)</p>
+<p>Also, added Estonian language by Priit Jõerüüt.</p>
+<h3>New quests</h3>
+<ul>
+<li><em>&quot;How is this power line attached?&quot;</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/4825">#4825</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/5382">#5382</a>), by <a href="https://github.com/Jean-BaptisteC">Jean-BaptisteC</a></li>
+<li><em>&quot;What bicycle equipment is available here?&quot;</em>, asked for bicycle repair stations (<a href="https://github.com/streetcomplete/StreetComplete/issues/5910">#5910</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/6008">#6008</a>)</li>
+<li><em>&quot;Which type of boats are for rent here?&quot;</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/5741">#5741</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/5426">#5426</a>), thanks <a href="https://github.com/kmpoppe">kmpoppe</a></li>
+</ul>
+<h3>Quest and Overlay improvements</h3>
+<ul>
+<li>Cycleway overlay: Can now specify signs on bicycle access for pedestrian roads (<a href="https://github.com/streetcomplete/StreetComplete/issues/6016">#6016</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/6020">#6020</a>)</li>
+<li>Show overlays already at lower zoom levels (<a href="https://github.com/streetcomplete/StreetComplete/issues/5986">#5986</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/6010">#6010</a>)</li>
+<li>Other small improvements (<a href="https://github.com/streetcomplete/StreetComplete/issues/6015">#6015</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/6002">#6002</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/5996">#5996</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/6021">#6021</a> ...)</li>
+</ul>
+<h3>Fixes</h3>
+<ul>
+<li>Cycleway: Fix selecting &quot;unspecified lane&quot; didn't do anything in edge cases (<a href="https://github.com/streetcomplete/StreetComplete/issues/5988">#5988</a>)</li>
+<li>Cycleway: Don't assume a default pedestrian access on bike paths (because that depends on legislation) (<a href="https://github.com/streetcomplete/StreetComplete/issues/5991">#5991</a>)</li>
+<li>Max vehicle height: Fix wasn't shown below roofs (<a href="https://github.com/streetcomplete/StreetComplete/issues/5912">#5912</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/5915">#5915</a>), thanks <a href="https://github.com/RubenKelevra">RubenKelevra</a></li>
+<li>Fix app sometimes went back to system default locale on screen rotate (<a href="https://github.com/streetcomplete/StreetComplete/issues/5942">#5942</a>)</li>
+</ul>
+<h2>v59.3</h2>
+<ul>
+<li>Things overlay: Mailboxes and street cabinets are now selectable (<a href="https://github.com/streetcomplete/StreetComplete/issues/4916">#4916</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/5970">#5970</a>)</li>
+<li>Bike parking type: Add &quot;safe loops&quot; as selectable option (<a href="https://github.com/streetcomplete/StreetComplete/issues/5774">#5774</a>), by <a href="https://github.com/mcliquid">mcliquid</a></li>
+<li>Bike paths: Add &quot;cycling on sidewalk is allowed in both directions&quot; as selectable option (<a href="https://github.com/streetcomplete/StreetComplete/issues/5888">#5888</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/5931">#5931</a>), by <a href="https://github.com/wielandb">wielandb</a></li>
+<li>Bike paths overlay: Don't show the inner side of roundabouts etc. as missing, even if there's no data (<a href="https://github.com/streetcomplete/StreetComplete/issues/5959">#5959</a>)</li>
+<li>Bike paths: Improve some wordings (<a href="https://github.com/streetcomplete/StreetComplete/issues/5963">#5963</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/5964">#5964</a>)</li>
+<li>Surfaces: Simplified interface for edge cases (<a href="https://github.com/streetcomplete/StreetComplete/issues/5984">#5984</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/5330">#5330</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/5980">#5980</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/5951">#5951</a>)</li>
+<li>Pitch surface: Add &quot;synthetic resin&quot; as selectable option and improve some pictures (<a href="https://github.com/streetcomplete/StreetComplete/issues/5965">#5965</a>)</li>
+<li>Prohibited for pedestrians: Clear any sidewalk info when user objected that the sidewalk info is wrong (<a href="https://github.com/streetcomplete/StreetComplete/issues/5952">#5952</a>)</li>
+<li>Improved handling of deleting POIs that are part of relations (<a href="https://github.com/streetcomplete/StreetComplete/issues/5851">#5851</a>)</li>
+<li>Other small quest improvements, thanks <a href="https://github.com/matkoniecz">matkoniecz</a></li>
+</ul>
 <h2>v59.2</h2>
 <ul>
 <li>Second try: Crash issue on subsequent app starts is maybe fixed in MapLibre (<a href="https://github.com/streetcomplete/StreetComplete/issues/5850">#5850</a>)</li>
@@ -213,7 +249,7 @@ Sponsored by <a href="https://www.suse.com/esg/">SUSE Open Source Community Citi
 </ul>
 <h3>New Quests</h3>
 <ul>
-<li><em>Is there a sanitary dump station?</em> asked for caravan sites (<a href="https://github.com/streetcomplete/StreetComplete/issues/5363">#5363</a>), by <a href="https://github.com/qugebert">qugebert</a>, (<a href="https://github.com/streetcomplete/StreetComplete/issues/5407">#5407</a>) thanks <a href="https://github.com/sun-geo">sun-geo</a></li>
+<li><em>&quot;Is there a sanitary dump station?&quot;</em>, asked for caravan sites (<a href="https://github.com/streetcomplete/StreetComplete/issues/5363">#5363</a>), by <a href="https://github.com/qugebert">qugebert</a>, (<a href="https://github.com/streetcomplete/StreetComplete/issues/5407">#5407</a>) thanks <a href="https://github.com/sun-geo">sun-geo</a></li>
 </ul>
 <h3>Quest Enhancements and Fixes</h3>
 <ul>
@@ -238,9 +274,9 @@ Sponsored by <a href="https://www.suse.com/esg/">SUSE Open Source Community Citi
 <h2>v55.0</h2>
 <h3>New Quests</h3>
 <ul>
-<li><em>What is this grill powered by?</em> for bbq places (<a href="https://github.com/streetcomplete/StreetComplete/issues/5211">#5211</a>), by <a href="https://github.com/qugebert">qugebert</a></li>
-<li><em>Is this inside a building?</em> for small amenities such as parcel lockers, vending machines, defibrillators, ... (<a href="https://github.com/streetcomplete/StreetComplete/issues/5278">#5278</a>), by <a href="https://github.com/qugebert">qugebert</a></li>
-<li><em>Where is this defibrillator located?</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/2146">#2146</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/5328">#5328</a>), by <a href="https://github.com/qugebert">qugebert</a></li>
+<li><em>&quot;What is this grill powered by?&quot;</em> for bbq places (<a href="https://github.com/streetcomplete/StreetComplete/issues/5211">#5211</a>), by <a href="https://github.com/qugebert">qugebert</a></li>
+<li><em>&quot;Is this inside a building?&quot;</em> for small amenities such as parcel lockers, vending machines, defibrillators, ... (<a href="https://github.com/streetcomplete/StreetComplete/issues/5278">#5278</a>), by <a href="https://github.com/qugebert">qugebert</a></li>
+<li><em>&quot;Where is this defibrillator located?&quot;</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/2146">#2146</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/5328">#5328</a>), by <a href="https://github.com/qugebert">qugebert</a></li>
 </ul>
 <h3>Quest Enhancements</h3>
 <ul>
@@ -286,7 +322,7 @@ Sponsored by <a href="https://www.suse.com/esg/">SUSE Open Source Community Citi
 <h2>v54.0</h2>
 <h3>New Quests</h3>
 <ul>
-<li><em>What’s the height of the curbs at this crossing?</em> (asked even if the curbs have been mapped separately, too) (<a href="https://github.com/streetcomplete/StreetComplete/issues/5104">#5104</a>)</li>
+<li><em>&quot;What’s the height of the curbs at this crossing?&quot;</em> (asked even if the curbs have been mapped separately, too) (<a href="https://github.com/streetcomplete/StreetComplete/issues/5104">#5104</a>)</li>
 </ul>
 <h3>Quest Enhancements</h3>
 <ul>
@@ -345,8 +381,8 @@ Sponsored by <a href="https://www.suse.com/esg/">SUSE Open Source Community Citi
 </ul>
 <h3>New Quests</h3>
 <ul>
-<li><em>Which customers visit this hairdresser?</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/4833">#4833</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/4909">#4909</a>), by <a href="https://github.com/mnalis">mnalis</a></li>
-<li><em>Is there tactile paving at the top and bottom of these steps?</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/3534">#3534</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/5003">#5003</a>), by <a href="https://github.com/arrival-spring">arrival-spring</a></li>
+<li><em>&quot;Which customers visit this hairdresser?&quot;</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/4833">#4833</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/4909">#4909</a>), by <a href="https://github.com/mnalis">mnalis</a></li>
+<li><em>&quot;Is there tactile paving at the top and bottom of these steps?&quot;</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/3534">#3534</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/5003">#5003</a>), by <a href="https://github.com/arrival-spring">arrival-spring</a></li>
 </ul>
 <h3>General Enhancements</h3>
 <ul>
@@ -378,7 +414,7 @@ Sponsored by <a href="https://www.suse.com/esg/">SUSE Open Source Community Citi
 <p>Now you can comprehensively map and verify surfaces mapped for roads and paths (<a href="https://github.com/streetcomplete/StreetComplete/issues/4378">#4378</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/4642">#4642</a>), thanks <a href="https://github.com/matkoniecz">matkoniecz</a></p>
 <h3>New Quests</h3>
 <ul>
-<li><em>Is this still here?</em>, asked for shops every 2 years (<a href="https://github.com/streetcomplete/StreetComplete/issues/4232">#4232</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/4843">#4843</a>), by <a href="https://github.com/matkoniecz">matkoniecz</a></li>
+<li><em>&quot;Is this still here?&quot;</em>, asked for shops every 2 years (<a href="https://github.com/streetcomplete/StreetComplete/issues/4232">#4232</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/4843">#4843</a>), by <a href="https://github.com/matkoniecz">matkoniecz</a></li>
 </ul>
 <h3>Enhancements &amp; Fixes</h3>
 <ul>
@@ -548,11 +584,11 @@ You can add addresses to buildings, edit existing ones and also add them at any 
 </ul>
 <h4>New Quests</h4>
 <ul>
-<li><em>How is drinking water provided here?</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/4423">#4423</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/4390">#4390</a>), by <a href="https://github.com/matkoniecz">matkoniecz</a></li>
-<li><em>Which direction leads upwards here?</em>, asked for mountainbike tracks (<a href="https://github.com/streetcomplete/StreetComplete/issues/4385">#4385</a>), by <a href="https://github.com/matkoniecz">matkoniecz</a></li>
-<li><em>What’s the identification number here?</em>, asked for emergency access points (<a href="https://github.com/streetcomplete/StreetComplete/issues/4384">#4384</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/4386">#4386</a>), by <a href="https://github.com/mcliquid">mcliquid</a></li>
-<li><em>What’s the identification number here?</em>, asked for fire hydrants (<a href="https://github.com/streetcomplete/StreetComplete/issues/3059">#3059</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/4440">#4440</a>), by <a href="https://github.com/mcliquid">mcliquid</a></li>
-<li><em>Can this cycle barrier be opened?</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/4293">#4293</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/4406">#4406</a>), by <a href="https://github.com/mnalis">mnalis</a></li>
+<li><em>&quot;How is drinking water provided here?&quot;</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/4423">#4423</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/4390">#4390</a>), by <a href="https://github.com/matkoniecz">matkoniecz</a></li>
+<li><em>&quot;Which direction leads upwards here?&quot;</em>, asked for mountainbike tracks (<a href="https://github.com/streetcomplete/StreetComplete/issues/4385">#4385</a>), by <a href="https://github.com/matkoniecz">matkoniecz</a></li>
+<li><em>&quot;What’s the identification number here?&quot;</em>, asked for emergency access points (<a href="https://github.com/streetcomplete/StreetComplete/issues/4384">#4384</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/4386">#4386</a>), by <a href="https://github.com/mcliquid">mcliquid</a></li>
+<li><em>&quot;What’s the identification number here?&quot;</em>, asked for fire hydrants (<a href="https://github.com/streetcomplete/StreetComplete/issues/3059">#3059</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/4440">#4440</a>), by <a href="https://github.com/mcliquid">mcliquid</a></li>
+<li><em>&quot;Can this cycle barrier be opened?&quot;</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/4293">#4293</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/4406">#4406</a>), by <a href="https://github.com/mnalis">mnalis</a></li>
 </ul>
 <h4>Enhanced Quests</h4>
 <ul>
@@ -593,7 +629,7 @@ You can add addresses to buildings, edit existing ones and also add them at any 
  Be warned, of the overlays so far, this is the most complex one and the first that does not replace a pre-existing quest 🙂</p>
 <h3>New Quests</h3>
 <ul>
-<li><em>Can you deposit cash at this ATM?</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/4292">#4292</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/4333">#4333</a>), by <a href="https://github.com/mnalis">mnalis</a></li>
+<li><em>&quot;Can you deposit cash at this ATM?&quot;</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/4292">#4292</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/4333">#4333</a>), by <a href="https://github.com/mnalis">mnalis</a></li>
 </ul>
 <h3>Other enhancements</h3>
 <ul>
@@ -620,10 +656,10 @@ You can add addresses to buildings, edit existing ones and also add them at any 
 <h3>New Quests</h3>
 <p>Asked for campsites (<a href="https://github.com/streetcomplete/StreetComplete/issues/4213">#4213</a>), by <a href="https://github.com/mnalis">mnalis</a>:</p>
 <ul>
-<li><em>Who may camp here?</em></li>
-<li><em>Are there showers here?</em></li>
-<li><em>Is drinking water available here?</em></li>
-<li><em>Is there any power supply here?</em></li>
+<li><em>&quot;Who may camp here?&quot;</em></li>
+<li><em>&quot;Are there showers here?&quot;</em></li>
+<li><em>&quot;Is drinking water available here?&quot;</em></li>
+<li><em>&quot;Is there any power supply here?&quot;</em></li>
 </ul>
 <h3>Disabled Quests</h3>
 <p><em>Orchard produce</em>, <em>Building levels</em>, <em>Sidewalks</em> and <em>Lit roads</em> are now disabled by default because either they are replaced by designated overlays or they overwhelm users (<a href="https://github.com/streetcomplete/StreetComplete/issues/4264">#4264</a>,...).<br />
@@ -679,9 +715,9 @@ You can enable them again in the settings at any time.</p>
 <p>For now, there are only overlays for <em>street lighting</em> and for <em>sidewalks</em>, more will be added over time. 🎉 (<a href="https://github.com/streetcomplete/StreetComplete/issues/2461">#2461</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/2506">#2506</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/3920">#3920</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/3644">#3644</a>)</p>
 <h3>New Quests</h3>
 <ul>
-<li><em>What kind of memorial is this?</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/4102">#4102</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/1572">#1572</a>), by <a href="https://github.com/matkoniecz">matkoniecz</a>, thanks <a href="https://github.com/kmpoppe">kmpoppe</a>, <a href="https://github.com/naposm">naposm</a>, <a href="https://github.com/FloEdelmann">FloEdelmann</a>, <a href="https://github.com/mnalis">mnalis</a></li>
-<li><em>Is there a summit cross here?</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/4111">#4111</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/4095">#4095</a>), by <a href="https://github.com/FloEdelmann">FloEdelmann</a></li>
-<li><em>What is signed at this entrance?</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/4066">#4066</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/3064">#3064</a>), by <a href="https://github.com/matkoniecz">matkoniecz</a></li>
+<li><em>&quot;What kind of memorial is this?&quot;</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/4102">#4102</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/1572">#1572</a>), by <a href="https://github.com/matkoniecz">matkoniecz</a>, thanks <a href="https://github.com/kmpoppe">kmpoppe</a>, <a href="https://github.com/naposm">naposm</a>, <a href="https://github.com/FloEdelmann">FloEdelmann</a>, <a href="https://github.com/mnalis">mnalis</a></li>
+<li><em>&quot;Is there a summit cross here?&quot;</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/4111">#4111</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/4095">#4095</a>), by <a href="https://github.com/FloEdelmann">FloEdelmann</a></li>
+<li><em>&quot;What is signed at this entrance?&quot;</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/4066">#4066</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/3064">#3064</a>), by <a href="https://github.com/matkoniecz">matkoniecz</a></li>
 </ul>
 <h3>Enhancements and Fixes</h3>
 <ul>
@@ -707,11 +743,11 @@ Note that the track can only be recorded while the app is in foreground. So, it 
 (<a href="https://github.com/streetcomplete/StreetComplete/issues/3573">#3573</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/2209">#2209</a>), by <a href="https://github.com/goldbattle">goldbattle</a></p>
 <h3>New Quests</h3>
 <ul>
-<li><em>What type of bicycle rental is this?</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/3995">#3995</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/4010">#4010</a>), by <a href="https://github.com/FloEdelmann">FloEdelmann</a></li>
-<li><em>How many rental bike spaces are here?</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/2129">#2129</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/4008">#4008</a>), by <a href="https://github.com/FloEdelmann">FloEdelmann</a></li>
-<li><em>Are bicycle repair services offered here?</em>, disabled by default (<a href="https://github.com/streetcomplete/StreetComplete/issues/4012">#4012</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/4038">#4038</a>), by <a href="https://github.com/matkoniecz">matkoniecz</a></li>
-<li><em>Are second-hand bicycles sold here?, disabled by default</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/4012">#4012</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/4038">#4038</a>), by <a href="https://github.com/matkoniecz">matkoniecz</a></li>
-<li><em>What kind of building entrance is this?</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/3941">#3941</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/3949">#3949</a>), by <a href="https://github.com/matkoniecz">matkoniecz</a></li>
+<li><em>&quot;What type of bicycle rental is this?&quot;</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/3995">#3995</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/4010">#4010</a>), by <a href="https://github.com/FloEdelmann">FloEdelmann</a></li>
+<li><em>&quot;How many rental bike spaces are here?&quot;</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/2129">#2129</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/4008">#4008</a>), by <a href="https://github.com/FloEdelmann">FloEdelmann</a></li>
+<li><em>&quot;Are bicycle repair services offered here?&quot;</em>, disabled by default (<a href="https://github.com/streetcomplete/StreetComplete/issues/4012">#4012</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/4038">#4038</a>), by <a href="https://github.com/matkoniecz">matkoniecz</a></li>
+<li><em>&quot;Are second-hand bicycles sold here?&quot;</em>, disabled by default (<a href="https://github.com/streetcomplete/StreetComplete/issues/4012">#4012</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/4038">#4038</a>), by <a href="https://github.com/matkoniecz">matkoniecz</a></li>
+<li><em>&quot;What kind of building entrance is this?&quot;</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/3941">#3941</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/3949">#3949</a>), by <a href="https://github.com/matkoniecz">matkoniecz</a></li>
 </ul>
 <h3>Enhancements and Fixes</h3>
 <ul>
@@ -738,10 +774,10 @@ Note that the track can only be recorded while the app is in foreground. So, it 
 <h2>v43.0</h2>
 <h3>New Quests</h3>
 <ul>
-<li><em>How many steps are here?</em>, asked for stiles (<a href="https://github.com/streetcomplete/StreetComplete/issues/3932">#3932</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/3141">#3141</a>), by <a href="https://github.com/matkoniecz">matkoniecz</a></li>
-<li><em>Is there a working bicycle pump available for everyone here?</em>, asked for bicycle shops etc. (<a href="https://github.com/streetcomplete/StreetComplete/issues/3934">#3934</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/3053">#3053</a>), by <a href="https://github.com/mnalis">mnalis</a></li>
-<li><em>Is there an air compressor available here?</em>, asked for fuel stations (<a href="https://github.com/streetcomplete/StreetComplete/issues/3934">#3934</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/3053">#3053</a>), by <a href="https://github.com/mnalis">mnalis</a></li>
-<li><em>Are credit or debit cards accepted here?</em>, disabled by default (<a href="https://github.com/streetcomplete/StreetComplete/issues/3953">#3953</a>), by <a href="https://github.com/matkoniecz">matkoniecz</a></li>
+<li><em>&quot;How many steps are here?&quot;</em>, asked for stiles (<a href="https://github.com/streetcomplete/StreetComplete/issues/3932">#3932</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/3141">#3141</a>), by <a href="https://github.com/matkoniecz">matkoniecz</a></li>
+<li><em>&quot;Is there a working bicycle pump available for everyone here?&quot;</em>, asked for bicycle shops etc. (<a href="https://github.com/streetcomplete/StreetComplete/issues/3934">#3934</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/3053">#3053</a>), by <a href="https://github.com/mnalis">mnalis</a></li>
+<li><em>&quot;Is there an air compressor available here?&quot;</em>, asked for fuel stations (<a href="https://github.com/streetcomplete/StreetComplete/issues/3934">#3934</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/3053">#3053</a>), by <a href="https://github.com/mnalis">mnalis</a></li>
+<li><em>&quot;Are credit or debit cards accepted here?&quot;</em>, disabled by default (<a href="https://github.com/streetcomplete/StreetComplete/issues/3953">#3953</a>), by <a href="https://github.com/matkoniecz">matkoniecz</a></li>
 </ul>
 <h3>Other Enhancements and Fixes</h3>
 <ul>
@@ -764,9 +800,9 @@ Note that the track can only be recorded while the app is in foreground. So, it 
 </ul>
 <h3>New Quests</h3>
 <ul>
-<li><em>Is smoking allowed anywhere in this place?</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/539">#539</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/3784">#3784</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/3856">#3856</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/3865">#3865</a>), by <a href="https://github.com/mnalis">mnalis</a></li>
-<li><em>What is the surface of the sidewalk here?</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/1593">#1593</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/3735">#3735</a>), by <a href="https://github.com/arrival-spring">arrival-spring</a></li>
-<li><em>What kind of seating does this place have?</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/1176">#1176</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/3758">#3758</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/3911">#3911</a>), thanks <a href="https://github.com/fatal69100">fatal69100</a></li>
+<li><em>&quot;Is smoking allowed anywhere in this place?&quot;</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/539">#539</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/3784">#3784</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/3856">#3856</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/3865">#3865</a>), by <a href="https://github.com/mnalis">mnalis</a></li>
+<li><em>&quot;What is the surface of the sidewalk here?&quot;</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/1593">#1593</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/3735">#3735</a>), by <a href="https://github.com/arrival-spring">arrival-spring</a></li>
+<li><em>&quot;What kind of seating does this place have?&quot;</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/1176">#1176</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/3758">#3758</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/3911">#3911</a>), thanks <a href="https://github.com/fatal69100">fatal69100</a></li>
 </ul>
 <h3>Quest enhancements</h3>
 <ul>
@@ -805,9 +841,9 @@ Note that the track can only be recorded while the app is in foreground. So, it 
 <p>Measuring with AR is only supported <a href="https://developers.google.com/ar/devices#google%5Fplay%5Fdevices">on certain devices</a> and you need to have the Google Play Services on your phone. If AR is not available, the new quests are disabled by default because you'd need to use a tape measure instead. (<a href="https://github.com/streetcomplete/StreetComplete/issues/3709">#3709</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/879">#879</a>)</p>
 <h3>New Quests</h3>
 <ul>
-<li><em>What’s the width of this cycleway here?</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/698">#698</a>)</li>
-<li><em>What’s the width of this road here?</em></li>
-<li><em>What is the height limit here?</em></li>
+<li><em>&quot;What’s the width of this cycleway here?&quot;</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/698">#698</a>)</li>
+<li><em>&quot;What’s the width of this road here?&quot;</em></li>
+<li><em>&quot;What is the height limit here?&quot;</em></li>
 </ul>
 <h3>Quest enhancements</h3>
 <ul>
@@ -834,10 +870,10 @@ Note that the track can only be recorded while the app is in foreground. So, it 
 <p>Google Play / F-Droid will not update to the next major version v41 automatically because the app will ask for an additional permission. In v41, you'll be able to measure widths and heights with the camera!</p>
 <h3>New Quests</h3>
 <ul>
-<li><em>How does this road cross the barrier here?</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/3372">#3372</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/3515">#3515</a>), by <a href="https://github.com/matkoniecz">matkoniecz</a></li>
-<li><em>Can you pump gas yourself at this fuel station?</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/2822">#2822</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/1827">#1827</a>), by <a href="https://github.com/naposm">naposm</a></li>
-<li><em>Does this place have air conditioning?</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/3641">#3641</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/3127">#3127</a>), by <a href="https://github.com/coolultra1">coolultra1</a></li>
-<li><em>Are the opening hours signed for this place?</em>, asked at intervals for places that have previously been tagged as having no signed opening hours (<a href="https://github.com/streetcomplete/StreetComplete/issues/3682">#3682</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/3130">#3130</a>)</li>
+<li><em>&quot;How does this road cross the barrier here?&quot;</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/3372">#3372</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/3515">#3515</a>), by <a href="https://github.com/matkoniecz">matkoniecz</a></li>
+<li><em>&quot;Can you pump gas yourself at this fuel station?&quot;</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/2822">#2822</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/1827">#1827</a>), by <a href="https://github.com/naposm">naposm</a></li>
+<li><em>&quot;Does this place have air conditioning?&quot;</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/3641">#3641</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/3127">#3127</a>), by <a href="https://github.com/coolultra1">coolultra1</a></li>
+<li><em>&quot;Are the opening hours signed for this place?&quot;</em>, asked at intervals for places that have previously been tagged as having no signed opening hours (<a href="https://github.com/streetcomplete/StreetComplete/issues/3682">#3682</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/3130">#3130</a>)</li>
 </ul>
 <h3>Quest enhancements</h3>
 <ul>
@@ -862,10 +898,10 @@ Note that the track can only be recorded while the app is in foreground. So, it 
 <h2>v39.0</h2>
 <h3>New Quests</h3>
 <ul>
-<li><em>Does this road have a shoulder?</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/2444">#2444</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/3613">#3613</a>)</li>
-<li><em>What is the surface quality of this road here?</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/3617">#3617</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/3257">#3257</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/1630">#1630</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/3633">#3633</a>), special thanks to <a href="https://github.com/Helium314">Helium314</a> but also to <a href="https://github.com/FloEdelmann">FloEdelmann</a>, <a href="https://github.com/mcliquid">mcliquid</a>, <a href="https://github.com/NicoHood">NicoHood</a>, <a href="https://github.com/rhhsm">rhhsm</a>, <a href="https://github.com/mnalis">mnalis</a>, <a href="https://github.com/1ec5">1ec5</a> and many more<br />
+<li><em>&quot;Does this road have a shoulder?&quot;</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/2444">#2444</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/3613">#3613</a>)</li>
+<li><em>&quot;What is the surface quality of this road here?&quot;</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/3617">#3617</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/3257">#3257</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/1630">#1630</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/3633">#3633</a>), special thanks to <a href="https://github.com/Helium314">Helium314</a> but also to <a href="https://github.com/FloEdelmann">FloEdelmann</a>, <a href="https://github.com/mcliquid">mcliquid</a>, <a href="https://github.com/NicoHood">NicoHood</a>, <a href="https://github.com/rhhsm">rhhsm</a>, <a href="https://github.com/mnalis">mnalis</a>, <a href="https://github.com/1ec5">1ec5</a> and many more<br />
   It is disabled by default, enable it in the settings to try it out!</li>
-<li><em>Where is this fire hydrant located?</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/3368">#3368</a>), by <a href="https://github.com/thefeiter">thefeiter</a></li>
+<li><em>&quot;Where is this fire hydrant located?&quot;</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/3368">#3368</a>), by <a href="https://github.com/thefeiter">thefeiter</a></li>
 </ul>
 <h3>Other enhancements</h3>
 <ul>
@@ -903,8 +939,8 @@ Note that the track can only be recorded while the app is in foreground. So, it 
 <h2>v38.0</h2>
 <h3>New Quests</h3>
 <ul>
-<li><em>What type of bicycle barrier is this?</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/3361">#3361</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/3487">#3487</a>), by <a href="https://github.com/matkoniecz">matkoniecz</a></li>
-<li><em>On which level is ... located?</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/1487">#1487</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/3509">#3509</a>)</li>
+<li><em>&quot;What type of bicycle barrier is this?&quot;</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/3361">#3361</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/3487">#3487</a>), by <a href="https://github.com/matkoniecz">matkoniecz</a></li>
+<li><em>&quot;On which level is ... located?&quot;</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/1487">#1487</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/3509">#3509</a>)</li>
 </ul>
 <h3>Quest Enhancements</h3>
 <ul>
@@ -939,8 +975,8 @@ Note that the track can only be recorded while the app is in foreground. So, it 
 <h2>v37.0</h2>
 <h3>New Quests</h3>
 <ul>
-<li><em>What diameter is on this fire hydrant’s sign?</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/3342">#3342</a>), by <a href="https://github.com/thefeiter">thefeiter</a></li>
-<li><em>What type of traffic calming is this?</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/2742">#2742</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/3380">#3380</a>), by <a href="https://github.com/matkoniecz">matkoniecz</a></li>
+<li><em>&quot;What diameter is on this fire hydrant’s sign?&quot;</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/3342">#3342</a>), by <a href="https://github.com/thefeiter">thefeiter</a></li>
+<li><em>&quot;What type of traffic calming is this?&quot;</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/2742">#2742</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/3380">#3380</a>), by <a href="https://github.com/matkoniecz">matkoniecz</a></li>
 </ul>
 <h3>Quest Enhancements</h3>
 <ul>
@@ -985,8 +1021,8 @@ Note that the track can only be recorded while the app is in foreground. So, it 
 <p>Furthermore, the only thing the compass button now does is to rotate the view back to north-up and it is only displayed if the map is not displayed north-up.</p>
 <h3>New Quests</h3>
 <ul>
-<li><em>Is this picnic table covered (protected from rain)?</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/3311">#3311</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/3142">#3142</a>), by <a href="https://github.com/FloEdelmann">FloEdelmann</a></li>
-<li><em>Does ... offer halal products?</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/2990">#2990</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/3331">#3331</a>), by <a href="https://github.com/SMUsamaShah">SMUsamaShah</a></li>
+<li><em>&quot;Is this picnic table covered (protected from rain)?&quot;</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/3311">#3311</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/3142">#3142</a>), by <a href="https://github.com/FloEdelmann">FloEdelmann</a></li>
+<li><em>&quot;Does ... offer halal products?&quot;</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/2990">#2990</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/3331">#3331</a>), by <a href="https://github.com/SMUsamaShah">SMUsamaShah</a></li>
 </ul>
 <h3>Quest Enhancements</h3>
 <ul>
@@ -1058,7 +1094,7 @@ Note that the track can only be recorded while the app is in foreground. So, it 
 </ul>
 <h3>New Quests</h3>
 <ul>
-<li><em>Are there curbs where this way meets this road here? What kind?</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/398">#398</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/2999">#2999</a>)</li>
+<li><em>&quot;Are there curbs where this way meets this road here? What kind?&quot;</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/398">#398</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/2999">#2999</a>)</li>
 </ul>
 <h3>Enhancements</h3>
 <ul>
@@ -1118,9 +1154,9 @@ Note that the track can only be recorded while the app is in foreground. So, it 
 <h2>v33.0</h2>
 <h3>New Quests</h3>
 <ul>
-<li><em>What type of surveillance camera is this?</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/87">#87</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/299">#299</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/2856">#2856</a>), by <a href="https://github.com/Helium314">Helium314</a>, thanks <a href="https://github.com/Binnette">Binnette</a></li>
-<li><em>Does this bus stop have a waste basket?</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/2760">#2760</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/2898">#2898</a>), by <a href="https://github.com/FloEdelmann">FloEdelmann</a></li>
-<li><em>What type of bollard is this?</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/2128">#2128</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/2915">#2915</a>), by <a href="https://github.com/FloEdelmann">FloEdelmann</a>, thanks <a href="https://github.com/RubenKelevra">RubenKelevra</a></li>
+<li><em>&quot;What type of surveillance camera is this?&quot;</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/87">#87</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/299">#299</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/2856">#2856</a>), by <a href="https://github.com/Helium314">Helium314</a>, thanks <a href="https://github.com/Binnette">Binnette</a></li>
+<li><em>&quot;Does this bus stop have a waste basket?&quot;</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/2760">#2760</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/2898">#2898</a>), by <a href="https://github.com/FloEdelmann">FloEdelmann</a></li>
+<li><em>&quot;What type of bollard is this?&quot;</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/2128">#2128</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/2915">#2915</a>), by <a href="https://github.com/FloEdelmann">FloEdelmann</a>, thanks <a href="https://github.com/RubenKelevra">RubenKelevra</a></li>
 </ul>
 <h3>Quest Enhancements</h3>
 <ul>
@@ -1183,12 +1219,12 @@ Special thanks to <a href="https://github.com/FloEdelmann">FloEdelmann</a> for h
 </ul>
 <h3>New Quests</h3>
 <ul>
-<li><em>Is this sport field lit?</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/2639">#2639</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/2737">#2737</a>), by <a href="https://github.com/eginhard">eginhard</a></li>
-<li><em>What type of barrier is this?</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/2739">#2739</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/2753">#2753</a>), by <a href="https://github.com/matkoniecz">matkoniecz</a></li>
-<li><em>What type of stile is this?</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/2749">#2749</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/2766">#2766</a>), by <a href="https://github.com/matkoniecz">matkoniecz</a></li>
-<li><em>What type of shop is this?</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/2391">#2391</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/2759">#2759</a>), by <a href="https://github.com/matkoniecz">matkoniecz</a></li>
-<li>Italy only: <em>Which type of police station is this?</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/2456">#2456</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/2675">#2675</a>), by <a href="https://github.com/naposm">naposm</a></li>
-<li><em>Is this bus stop lit?</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/2383">#2383</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/2846">#2846</a>), by <a href="https://github.com/TurnrDev">TurnrDev</a></li>
+<li><em>&quot;Is this sport field lit?&quot;</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/2639">#2639</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/2737">#2737</a>), by <a href="https://github.com/eginhard">eginhard</a></li>
+<li><em>&quot;What type of barrier is this?&quot;</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/2739">#2739</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/2753">#2753</a>), by <a href="https://github.com/matkoniecz">matkoniecz</a></li>
+<li><em>&quot;What type of stile is this?&quot;</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/2749">#2749</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/2766">#2766</a>), by <a href="https://github.com/matkoniecz">matkoniecz</a></li>
+<li><em>&quot;What type of shop is this?&quot;</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/2391">#2391</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/2759">#2759</a>), by <a href="https://github.com/matkoniecz">matkoniecz</a></li>
+<li>Italy only: <em>&quot;Which type of police station is this?&quot;</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/2456">#2456</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/2675">#2675</a>), by <a href="https://github.com/naposm">naposm</a></li>
+<li><em>&quot;Is this bus stop lit?&quot;</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/2383">#2383</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/2846">#2846</a>), by <a href="https://github.com/TurnrDev">TurnrDev</a></li>
 </ul>
 <h3>Quest Enhancements</h3>
 <ul>
@@ -1275,7 +1311,7 @@ Due to big changes under the hood, when you upgrade to the next major version, l
 <p>It also works for groups of up to twelve people, but maybe wait with that until the pandemic is over 😷. Happy mapping!</p>
 <h3>New quests</h3>
 <ul>
-<li>👑 <em>What is the royal cypher on this postbox?</em>, only in the UK (<a href="https://github.com/streetcomplete/StreetComplete/issues/2563">#2563</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/2583">#2583</a>), by <a href="https://github.com/arrival-spring">arrival-spring</a></li>
+<li>👑 <em>&quot;What is the royal cypher on this postbox?&quot;</em>, only in the UK (<a href="https://github.com/streetcomplete/StreetComplete/issues/2563">#2563</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/2583">#2583</a>), by <a href="https://github.com/arrival-spring">arrival-spring</a></li>
 </ul>
 <h3>Enhanced Quests</h3>
 <ul>
@@ -1303,9 +1339,9 @@ Due to big changes under the hood, when you upgrade to the next major version, l
 <p>Did you already <a href="https://osmf.limequery.org/281662">take the survey</a> of the OpenStreetMap Foundation? It's open only till Feb 14.</p>
 <h3>New Quests</h3>
 <ul>
-<li><em>Is the water potable here?</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/549">#549</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/2509">#2509</a>), by <a href="https://github.com/FloEdelmann">FloEdelmann</a></li>
-<li><em>Do you have to pay to park a bike here?</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/2507">#2507</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/2517">#2517</a>), by <a href="https://github.com/FloEdelmann">FloEdelmann</a></li>
-<li><em>Is it restricted who may park a bike here?</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/2496">#2496</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/2517">#2517</a>), by <a href="https://github.com/FloEdelmann">FloEdelmann</a></li>
+<li><em>&quot;Is the water potable here?&quot;</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/549">#549</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/2509">#2509</a>), by <a href="https://github.com/FloEdelmann">FloEdelmann</a></li>
+<li><em>&quot;Do you have to pay to park a bike here?&quot;</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/2507">#2507</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/2517">#2517</a>), by <a href="https://github.com/FloEdelmann">FloEdelmann</a></li>
+<li><em>&quot;Is it restricted who may park a bike here?&quot;</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/2496">#2496</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/2517">#2517</a>), by <a href="https://github.com/FloEdelmann">FloEdelmann</a></li>
 </ul>
 <h3>Enhanced Quests</h3>
 <ul>
@@ -1350,8 +1386,8 @@ Due to big changes under the hood, when you upgrade to the next major version, l
 <p>To download not at your current GPS location but somewhere else, just pan and zoom to that location and tap &quot;search for quests here&quot; in the menu.</p>
 <h3>New Quests</h3>
 <ul>
-<li><em>What surface does this sport field have?</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/1170">#1170</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/2377">#2377</a>), by <a href="https://github.com/matkoniecz">matkoniecz</a></li>
-<li><em>Does ... offer kosher products?</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/639">#639</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/2244">#2244</a>), disabled by default, by <a href="https://github.com/matkoniecz">matkoniecz</a></li>
+<li><em>&quot;What surface does this sport field have?&quot;</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/1170">#1170</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/2377">#2377</a>), by <a href="https://github.com/matkoniecz">matkoniecz</a></li>
+<li><em>&quot;Does ... offer kosher products?&quot;</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/639">#639</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/2244">#2244</a>), disabled by default, by <a href="https://github.com/matkoniecz">matkoniecz</a></li>
 </ul>
 <h3>Enhanced Quests</h3>
 <ul>
@@ -1393,8 +1429,8 @@ Due to big changes under the hood, when you upgrade to the next major version, l
 <p>This update is devoted to checking whether things still exist the way they are mapped since keeping data up-to-date is at least as important as contributing new data.</p>
 <h3>New Quests</h3>
 <ul>
-<li><em>This shop has been vacant. What's here now?</em></li>
-<li><em>Is this still here?</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/2074">#2074</a>), asked periodically for benches, telephones, post boxes etc.</li>
+<li><em>&quot;This shop has been vacant. What's here now?&quot;</em></li>
+<li><em>&quot;Is this still here?&quot;</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/2074">#2074</a>), asked periodically for benches, telephones, post boxes etc.</li>
 </ul>
 <h3>Enhanced Quests</h3>
 <ul>
@@ -1437,9 +1473,9 @@ Due to big changes under the hood, when you upgrade to the next major version, l
 <h2>v27.0</h2>
 <h3>New Quests</h3>
 <ul>
-<li><em>Is there tactile paving on this curb here?</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/1305">#1305</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/2183">#2183</a>), by <a href="https://github.com/matkoniecz">matkoniecz</a></li>
-<li><em>What is the height of this curb?</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/1305">#1305</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/2183">#2183</a>), by <a href="https://github.com/matkoniecz">matkoniecz</a></li>
-<li><em>How many lanes for cars does this road have?</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/856">#856</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/2269">#2269</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/2305">#2305</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/2299">#2299</a> ...)</li>
+<li><em>&quot;Is there tactile paving on this curb here?&quot;</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/1305">#1305</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/2183">#2183</a>), by <a href="https://github.com/matkoniecz">matkoniecz</a></li>
+<li><em>&quot;What is the height of this curb?&quot;</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/1305">#1305</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/2183">#2183</a>), by <a href="https://github.com/matkoniecz">matkoniecz</a></li>
+<li><em>&quot;How many lanes for cars does this road have?&quot;</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/856">#856</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/2269">#2269</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/2305">#2305</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/2299">#2299</a> ...)</li>
 </ul>
 <h3>Enhanced Quests</h3>
 <ul>
@@ -1468,7 +1504,7 @@ Due to big changes under the hood, when you upgrade to the next major version, l
 <p>Reworked it completely. Quest download is now substantially faster and the pins for all quest types appear immediately at the same time! (<a href="https://github.com/streetcomplete/StreetComplete/issues/1874">#1874</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/1901">#1901</a>)</p>
 <h3>New Quests</h3>
 <ul>
-<li><em>How many cars can be charged at this charging station at the same time?</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/900">#900</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/2242">#2242</a>)</li>
+<li><em>&quot;How many cars can be charged at this charging station at the same time?&quot;</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/900">#900</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/2242">#2242</a>)</li>
 </ul>
 <h3>Enhanced Quests</h3>
 <ul>
@@ -1487,12 +1523,12 @@ Due to big changes under the hood, when you upgrade to the next major version, l
 <h2>v25.1</h2>
 <h3>New Quests</h3>
 <ul>
-<li><em>What is the reference number of this bus stop?</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/2126">#2126</a>)</li>
-<li><em>Do these steps have a ramp? What kind?</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/2036">#2036</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/2168">#2168</a>)</li>
-<li><em>Does this pedestrian crossing have an island?</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/1961">#1961</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/2030">#2030</a>), by <a href="https://github.com/kmpoppe">kmpoppe</a></li>
-<li><em>What's the name of the bank for this ATM?</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/203">#203</a>)</li>
-<li><em>Who is the operator of this charging station?</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/911">#911</a>)</li>
-<li><em>Who accepts donations for this clothing bin?</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/570">#570</a>)</li>
+<li><em>&quot;What is the reference number of this bus stop?&quot;</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/2126">#2126</a>)</li>
+<li><em>&quot;Do these steps have a ramp? What kind?&quot;</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/2036">#2036</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/2168">#2168</a>)</li>
+<li><em>&quot;Does this pedestrian crossing have an island?&quot;</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/1961">#1961</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/2030">#2030</a>), by <a href="https://github.com/kmpoppe">kmpoppe</a></li>
+<li><em>&quot;What's the name of the bank for this ATM?&quot;</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/203">#203</a>)</li>
+<li><em>&quot;Who is the operator of this charging station?&quot;</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/911">#911</a>)</li>
+<li><em>&quot;Who accepts donations for this clothing bin?&quot;</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/570">#570</a>)</li>
 </ul>
 <h3>Enhanced Quests</h3>
 <ul>
@@ -1528,10 +1564,10 @@ Due to big changes under the hood, when you upgrade to the next major version, l
 <p>Good News! StreetComplete received a grant from the <a href="https://www.bmbf.de/">German Federal Ministry of Education and Research</a> within the frame of the <a href="https://prototypefund.de/en/project/streetcomplete/">Prototype Fund</a>, spanning over a period of 6 months! For the next few months, my focus is on adding new quest types, starting with this update!</p>
 <h3>New Quests</h3>
 <ul>
-<li><em>Is this a one-way street? In which direction?</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/1982">#1982</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/2122">#2122</a>)</li>
-<li><em>Do these traffic lights have a tactile indication for blind people for when it's safe to cross?</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/1330">#1330</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/2127">#2127</a>)</li>
-<li><em>Which direction leads upwards for these steps?</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/1817">#1817</a>)</li>
-<li><em>How may steps are here?</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/875">#875</a>)</li>
+<li><em>&quot;Is this a one-way street? In which direction?&quot;</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/1982">#1982</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/2122">#2122</a>)</li>
+<li><em>&quot;Do these traffic lights have a tactile indication for blind people for when it's safe to cross?&quot;</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/1330">#1330</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/2127">#2127</a>)</li>
+<li><em>&quot;Which direction leads upwards for these steps?&quot;</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/1817">#1817</a>)</li>
+<li><em>&quot;How may steps are here?&quot;</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/875">#875</a>)</li>
 </ul>
 <h3>Enhanced Quests</h3>
 <ul>
@@ -1552,9 +1588,9 @@ Due to big changes under the hood, when you upgrade to the next major version, l
 <p>This feature has been sponsored by the OpenStreetMap Foundation (OSMF) as part of their new <a href="https://blog.openstreetmap.org/2020/07/01/osmf-microgrants-program-congratulations-to-selected-projects/">microgrants</a> program. You can support the OSMF and other initiatives like these and have a say by <a href="https://join.osmfoundation.org/">becoming a member</a>, if you like.</p>
 <h3>New Quests</h3>
 <ul>
-<li><em>Is there a summit register at this peak?</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/561">#561</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/2065">#2065</a>) by <a href="https://github.com/matkoniecz">matkoniecz</a></li>
-<li><em>Is this defibrillator (AED) inside a building?</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/2068">#2068</a>) by <a href="https://github.com/matkoniecz">matkoniecz</a></li>
-<li><em>Does this bus stop have a bench?</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/1079">#1079</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/2073">#2073</a>) by <a href="https://github.com/matkoniecz">matkoniecz</a></li>
+<li><em>&quot;Is there a summit register at this peak?&quot;</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/561">#561</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/2065">#2065</a>) by <a href="https://github.com/matkoniecz">matkoniecz</a></li>
+<li><em>&quot;Is this defibrillator (AED) inside a building?&quot;</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/2068">#2068</a>) by <a href="https://github.com/matkoniecz">matkoniecz</a></li>
+<li><em>&quot;Does this bus stop have a bench?&quot;</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/1079">#1079</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/2073">#2073</a>) by <a href="https://github.com/matkoniecz">matkoniecz</a></li>
 </ul>
 <h3>Enhanced Quests</h3>
 <ul>
@@ -1598,8 +1634,8 @@ Due to big changes under the hood, when you upgrade to the next major version, l
 </ul>
 <h3>New and enhanced Quests</h3>
 <ul>
-<li>Board Type: <em>What is the topic of this information board?</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/1226">#1226</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/1920">#1920</a>), by <a href="https://github.com/matkoniecz">matkoniecz</a></li>
-<li>Detailed Road Surface: <em>What specific surface does the road ... have here?</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/279">#279</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/1915">#1915</a>), by <a href="https://github.com/matkoniecz">matkoniecz</a></li>
+<li>Board Type: <em>&quot;What is the topic of this information board?&quot;</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/1226">#1226</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/1920">#1920</a>), by <a href="https://github.com/matkoniecz">matkoniecz</a></li>
+<li>Detailed Road Surface: <em>&quot;What specific surface does the road ... have here?&quot;</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/279">#279</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/1915">#1915</a>), by <a href="https://github.com/matkoniecz">matkoniecz</a></li>
 <li>Street Names: Allow to specify the romanized/international name of a street name in another script, such as Greek (<a href="https://github.com/streetcomplete/StreetComplete/issues/1765">#1765</a>)</li>
 <li>Sidewalks: Add answer that the sidewalk is already displayed separately on the map (<a href="https://github.com/streetcomplete/StreetComplete/issues/1958">#1958</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/1925">#1925</a>), by <a href="https://github.com/matkoniecz">matkoniecz</a></li>
 <li>Handrails: Do not ask for private stairways (<a href="https://github.com/streetcomplete/StreetComplete/issues/1976">#1976</a>)</li>
@@ -1762,8 +1798,8 @@ You can also read this list of changes later in that screen if you are impatient
 <h2>v18.0</h2>
 <h3>New Quests</h3>
 <ul>
-<li><strong>Does ... accept cash payment?</strong> (<a href="https://github.com/streetcomplete/StreetComplete/issues/1743">#1743</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/1573">#1573</a>), by <a href="https://github.com/quite">quite</a>. Enabled only in Sweden because it cannot be taken for granted that cash is accepted there.</li>
-<li><strong>What type of tourist information is this?</strong> (<a href="https://github.com/streetcomplete/StreetComplete/issues/1722">#1722</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/1115">#1115</a>), by <a href="https://github.com/Dosenpfand">Dosenpfand</a></li>
+<li><em>&quot;Does ... accept cash payment?&quot;</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/1743">#1743</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/1573">#1573</a>), by <a href="https://github.com/quite">quite</a>. Enabled only in Sweden because it cannot be taken for granted that cash is accepted there.</li>
+<li><em>&quot;What type of tourist information is this?&quot;</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/1722">#1722</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/1115">#1115</a>), by <a href="https://github.com/Dosenpfand">Dosenpfand</a></li>
 </ul>
 <h3>New Translation</h3>
 <p>Indonesian by Froyobread, Agha Pradipta, Wijayaa16d and Suryamudti0128</p>
@@ -1874,10 +1910,10 @@ You can also read this list of changes later in that screen if you are impatient
 <p>Norwegian Bokmål by Mats Randgaard and Simen Heggestøyl</p>
 <h3>New Quests</h3>
 <ul>
-<li><strong>Does it cost a fee to enter ...?</strong> (<a href="https://github.com/streetcomplete/StreetComplete/issues/873">#873</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/1600">#1600</a>) by <a href="https://github.com/matkoniecz">matkoniecz</a></li>
-<li><strong>Is this laundry a self service laundry?</strong> (<a href="https://github.com/streetcomplete/StreetComplete/issues/1385">#1385</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/1608">#1608</a>) by <a href="https://github.com/matkoniecz">matkoniecz</a></li>
-<li><strong>Do these steps have a handrail?</strong> (<a href="https://github.com/streetcomplete/StreetComplete/issues/1390">#1390</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/1616">#1616</a>) by <a href="https://github.com/xuiqzy">xuiqzy</a></li>
-<li><strong>What is the weight limit here?</strong> (<a href="https://github.com/streetcomplete/StreetComplete/issues/1622">#1622</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/1467">#1467</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/361">#361</a>) thanks <a href="https://github.com/matkoniecz">matkoniecz</a></li>
+<li><em>&quot;Does it cost a fee to enter ...?&quot;</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/873">#873</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/1600">#1600</a>) by <a href="https://github.com/matkoniecz">matkoniecz</a></li>
+<li><em>&quot;Is this laundry a self service laundry?&quot;</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/1385">#1385</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/1608">#1608</a>) by <a href="https://github.com/matkoniecz">matkoniecz</a></li>
+<li><em>&quot;Do these steps have a handrail?&quot;</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/1390">#1390</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/1616">#1616</a>) by <a href="https://github.com/xuiqzy">xuiqzy</a></li>
+<li><em>&quot;What is the weight limit here?&quot;</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/1622">#1622</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/1467">#1467</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/361">#361</a>) thanks <a href="https://github.com/matkoniecz">matkoniecz</a></li>
 </ul>
 <h3>Enhanced Quests</h3>
 <ul>
@@ -1929,10 +1965,10 @@ You can also read this list of changes later in that screen if you are impatient
 </ul>
 <h3>New Quests</h3>
 <ul>
-<li><strong>Do the trees here have needles or leaves?</strong> (<a href="https://github.com/streetcomplete/StreetComplete/issues/366">#366</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/1465">#1465</a>) by <a href="https://github.com/matkoniecz">matkoniecz</a></li>
-<li><strong>What's the surface of the cycleway here?</strong> - asked for segregated paved foot- and cycleways (<a href="https://github.com/streetcomplete/StreetComplete/issues/1493">#1493</a>) by <a href="https://github.com/matkoniecz">matkoniecz</a></li>
-<li><strong>What's the surface of the footway here?</strong> - asked for segregated paved foot- and cycleways (<a href="https://github.com/streetcomplete/StreetComplete/issues/1544">#1544</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/1489">#1489</a>) by <a href="https://github.com/matkoniecz">matkoniecz</a></li>
-<li><strong>Is the restroom at ... wheelchair accessible?</strong> - asked for places that have toilets (<a href="https://github.com/streetcomplete/StreetComplete/issues/1391">#1391</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/1547">#1547</a>) by <a href="https://github.com/matkoniecz">matkoniecz</a></li>
+<li><em>&quot;Do the trees here have needles or leaves?&quot;</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/366">#366</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/1465">#1465</a>) by <a href="https://github.com/matkoniecz">matkoniecz</a></li>
+<li><em>&quot;What's the surface of the cycleway here?&quot;</em>, asked for segregated paved foot- and cycleways (<a href="https://github.com/streetcomplete/StreetComplete/issues/1493">#1493</a>) by <a href="https://github.com/matkoniecz">matkoniecz</a></li>
+<li><em>&quot;What's the surface of the footway here?&quot;</em>, asked for segregated paved foot- and cycleways (<a href="https://github.com/streetcomplete/StreetComplete/issues/1544">#1544</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/1489">#1489</a>) by <a href="https://github.com/matkoniecz">matkoniecz</a></li>
+<li><em>&quot;Is the restroom at ... wheelchair accessible?&quot;</em>, asked for places that have toilets (<a href="https://github.com/streetcomplete/StreetComplete/issues/1391">#1391</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/1547">#1547</a>) by <a href="https://github.com/matkoniecz">matkoniecz</a></li>
 </ul>
 <h3>Enhanced Quests</h3>
 <ul>
@@ -1959,8 +1995,8 @@ You can also read this list of changes later in that screen if you are impatient
 <h2>v13.0</h2>
 <h3>New Quests</h3>
 <ul>
-<li><strong>Does this ferry route transport pedestrians?</strong> (<a href="https://github.com/streetcomplete/StreetComplete/issues/39">#39</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/1432">#1432</a>) by <a href="https://github.com/matkoniecz">matkoniecz</a></li>
-<li><strong>Does this ferry route transport motor vehicles?</strong> (<a href="https://github.com/streetcomplete/StreetComplete/issues/39">#39</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/1432">#1432</a>) by <a href="https://github.com/matkoniecz">matkoniecz</a></li>
+<li><em>&quot;Does this ferry route transport pedestrians?&quot;</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/39">#39</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/1432">#1432</a>) by <a href="https://github.com/matkoniecz">matkoniecz</a></li>
+<li><em>&quot;Does this ferry route transport motor vehicles?&quot;</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/39">#39</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/1432">#1432</a>) by <a href="https://github.com/matkoniecz">matkoniecz</a></li>
 </ul>
 <h3>Enhanced Quests</h3>
 <ul>
@@ -2025,7 +2061,7 @@ You can also read this list of changes later in that screen if you are impatient
 <h2>v12.0</h2>
 <h3>New Quest</h3>
 <ul>
-<li><strong>What is the name of this place?</strong> Asked for unnamed shops, amenities etc. (<a href="https://github.com/streetcomplete/StreetComplete/issues/309">#309</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/1376">#1376</a>)</li>
+<li><em>&quot;What is the name of this place?&quot;</em>, asked for unnamed shops, amenities etc. (<a href="https://github.com/streetcomplete/StreetComplete/issues/309">#309</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/1376">#1376</a>)</li>
 </ul>
 <h3>Minor fixes and Enhancements</h3>
 <ul>
@@ -2224,7 +2260,7 @@ You can also read this list of changes later in that screen if you are impatient
 </ul>
 <h3>Quests</h3>
 <ul>
-<li><strong>new</strong> Railway crossing: <em>How is this railway crossing protected?</em></li>
+<li><strong>new</strong> Railway crossing: <em>&quot;How is this railway crossing protected?&quot;</em></li>
 <li>Redesign note discussion quest (new: avatars displayed also) to make it look like a chat</li>
 <li>Surface and building type quest: When tapping to expand a category, the view scrolls down to show the expanded items</li>
 <li>Cycleway quest: Exclude motorroads</li>
@@ -2244,8 +2280,8 @@ You can also read this list of changes later in that screen if you are impatient
 </ul>
 <h3>New Quests</h3>
 <ul>
-<li>Playground access: <em>Is this playground publicly accessible?</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/1134">#1134</a>) by <a href="https://github.com/matkoniecz">matkoniecz</a></li>
-<li>Max height: <em>What is the height limit of this tunnel/parking entrance/height restrictor?</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/960">#960</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/399">#399</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/421">#421</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/447">#447</a>) by <a href="https://github.com/ENT8R">ENT8R</a></li>
+<li>Playground access: <em>&quot;Is this playground publicly accessible?&quot;</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/1134">#1134</a>) by <a href="https://github.com/matkoniecz">matkoniecz</a></li>
+<li>Max height: <em>&quot;What is the height limit of this tunnel/parking entrance/height restrictor?&quot;</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/960">#960</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/399">#399</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/421">#421</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/447">#447</a>) by <a href="https://github.com/ENT8R">ENT8R</a></li>
 <li>Cycleway segregation: <em>&quot;How are the footway and cycleway laid out here?&quot;</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/527">#527</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/1135">#1135</a>) by <a href="https://github.com/matkoniecz">matkoniecz</a></li>
 </ul>
 <h3>Enhanced Quests</h3>
@@ -2344,7 +2380,7 @@ You can also read this list of changes later in that screen if you are impatient
 <h3>New Quests</h3>
 <ul>
 <li>Bicycle parking type: <em>&quot;What is the type of this bicycle parking?&quot;</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/923">#923</a>) by <a href="https://github.com/matkoniecz">matkoniecz</a></li>
-<li>Bus stop names: <em>&quot;What is the name of this bus stop?</em>&quot; (<a href="https://github.com/streetcomplete/StreetComplete/issues/986">#986</a> / <a href="https://github.com/streetcomplete/StreetComplete/issues/551">#551</a>) by <a href="https://github.com/PanierAvide">PanierAvide</a></li>
+<li>Bus stop names: <em>&quot;What is the name of this bus stop?&quot;</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/986">#986</a> / <a href="https://github.com/streetcomplete/StreetComplete/issues/551">#551</a>) by <a href="https://github.com/PanierAvide">PanierAvide</a></li>
 <li>Postbox collection times: <em>&quot;What are the collection times of this postbox?&quot;</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/85">#85</a>)</li>
 <li>Construction Site complete: <em>&quot;Is this road completed?&quot;</em> and <em>&quot;Is this building completed?&quot;</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/920">#920</a>) by <a href="https://github.com/matkoniecz">matkoniecz</a></li>
 </ul>

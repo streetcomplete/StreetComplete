@@ -696,9 +696,6 @@ activitate"</string>
     <string name="quest_board_type_map">"Este o hartă"</string>
     <string name="quest_board_type_map_title">"Este o hartă și nimic mai mult?"</string>
     <string name="quest_board_type_map_description">"Dacă plăcuța este despre un anumit subiect, vă rugăm să îl specificați, indiferent dacă acesta include și o hartă. De exemplu, o placă de transport public poate avea o hartă a rutelor de autobuz. Dacă subiectul nu este listat printre răspunsurile disponibile, vă recomandăm să lăsați o notă."</string>
-    <string name="quest_surface_detailed_answer_impossible">"Suprafețe multiple …"</string>
-    <string name="quest_surface_detailed_answer_impossible_confirmation">"Sunteți sigur că este imposibil să specificați suprafața? Rețineți opțiunea de răspuns \"Diferă pe parcurs\" care vă permite să împărțiți pe secțiuni pe parcurs ce se schimbă suprafața. Vă rugăm să folosiți  \"Nu pot spune\" dacă există o singură suprafață, dar nu este disponibilă ca răspuns."</string>
-    <string name="quest_surface_detailed_answer_impossible_description">"Vă rugăm să specificați pe scurt natura suprafeței de aici, de exemplu \"nisipos cu porțiuni de pietriș\". Lungimea textului este limitată la 255 de caractere."</string>
     <string name="quest_streetName_menuItem_international">"internațional"</string>
     <string name="quest_buildingType_terrace2">"Case așezate pe rânduri"</string>
     <string name="at_housename">"numele casei %s"</string>
@@ -747,7 +744,6 @@ activitate"</string>
     <string name="quest_steps_ramp_separate_wheelchair_confirm">"separată"</string>
     <string name="quest_steps_ramp_separate_wheelchair_decline">"nu este separată"</string>
     <string name="pref_title_sync2">"Trimite răspunsurile automat"</string>
-    <string name="quest_surface_detailed_answer_impossible_title">"Descrieți suprafața"</string>
     <string name="open_url">"Accesați URL"</string>
     <string name="quest_buildingType_silo">"Siloz"</string>
     <string name="quest_buildingType_historic">"Clădire istorică"</string>
@@ -799,7 +795,6 @@ Dacă există benzi rezervate autobuzelor, vă rugăm să lăsați o notă."</st
     <string name="quest_construction_completion_date_title">"Când va fi finalizată?"</string>
     <string name="quest_surface_value_clay">"Zgură"</string>
     <string name="quest_surface_value_artificial_turf">"Gazon artificial"</string>
-    <string name="quest_surface_value_tartan">"Tartan"</string>
     <string name="quest_bicycle_parking_fee_title">"Este o parcare de biciclete cu plată? "</string>
     <string name="quest_buildingType_house_description2">"casă unifamilială neseparată (e.g. încadrată de alte clădiri)"</string>
     <string name="quest_drinking_water_potable_signed">"Potabilă (semnalat)"</string>
@@ -815,7 +810,6 @@ Dacă există benzi rezervate autobuzelor, vă rugăm să lăsați o notă."</st
     <string name="team_mode">"Intră în modul echipă"</string>
     <string name="team_mode_exit">"Ieși din modul echipă"</string>
     <string name="team_mode_description">"Atunci când cartografiați aceeași zonă ca un grup, puteți intra în modul echipă pentru a împărți misiunile între toți membrii echipei."</string>
-    <string name="team_mode_team_size_hint">"Modul de echipă funcționează pentru grupuri de 2 până la 12 persoane."</string>
     <string name="team_mode_active">"Modul echipă este activat"</string>
     <string name="team_mode_deactivated">"Modul echipă este dezactivat"</string>
     <string name="undo_confirm_title2">"Anulați următoarea editare?"</string>
@@ -1131,7 +1125,6 @@ Faceți același lucru și pentru partea cealaltă, dacă este prezentă."</stri
     <string name="quest_building_entrance_dead_end">"Drum înfundat, nicio intrare"</string>
     <string name="ar_core_tracking_hint_tap_to_measure">"Atingeți ecranul pentru a începe măsurarea"</string>
     <string name="quest_air_pump_bicycle_shop_title">"Există pompă pentru biciclete, publică (măcar când este deschis)?"</string>
-    <string name="quest_air_pump_bicycle_repair_station_title">"Există pompă pentru biciclete, funcțională?"</string>
     <string name="action_overlays">"Suprapuneri"</string>
     <string name="split_way">"Împarte calea"</string>
     <string name="quest_memorialType_title">"Ce fel de monument este?"</string>
@@ -1171,7 +1164,6 @@ Faceți același lucru și pentru partea cealaltă, dacă este prezentă."</stri
     <string name="quest_camp_type_tents_only">"Doar corturi"</string>
     <string name="quest_camp_type_backcountry">"Campare (fără facilități)"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Acest diametru pare implauzibil, este de obicei între %1$d și %2$d."</string>
-    <string name="quest_surface_tractypeMismatchInput_confirmation_description">"Răspunsul nu se potrivește cu ceea ce este deja cartografiat despre acest drum. Sunteți sigur că răspundeți despre drumul corect?"</string>
     <string name="quest_recycling_type_pet">"Doar PET"</string>
     <string name="street_parking_street_width">"Lățimea străzii: %s"</string>
     <string name="overlay_street_parking">"Parcare pe stradă"</string>
@@ -1243,7 +1235,7 @@ Doriți să îl mutați acum?"</string>
     <string name="separate_cycleway_no_or_allowed">"Nu este special făcută pentru bicicliști (dar ciclismul poate fi în continuare permis)"</string>
     <string name="separate_cycleway_non_segregated">"Pistă comună"</string>
     <string name="separate_cycleway_segregated">"Piste separate pentru bicicliști și pietoni"</string>
-    <string name="separate_cycleway_exclusive">"Pistă doar pentru biciclete"</string>
+    <string name="separate_cycleway_exclusive">"pista de biciclete"</string>
     <string name="separate_cycleway_with_sidewalk">"Pistă doar pentru biciclete, cu trotuar adiacent (separat prin bordură)"</string>
     <string name="cycleway_reverse_direction">"Inversează direcția pistei pentru biciclete"</string>
     <string name="cycleway_reverse_direction_warning">"O pistă pentru biciclete care merge în sens opus este foarte rară."</string>

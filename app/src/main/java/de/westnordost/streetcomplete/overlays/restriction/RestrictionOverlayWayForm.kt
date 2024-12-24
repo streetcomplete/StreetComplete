@@ -50,7 +50,7 @@ import de.westnordost.streetcomplete.quests.max_weight.ShortTons
 import de.westnordost.streetcomplete.quests.max_weight.asItem
 import de.westnordost.streetcomplete.quests.max_weight.getLayoutResourceId
 import de.westnordost.streetcomplete.quests.max_weight.osmKey
-import de.westnordost.streetcomplete.screens.main.MainFragment
+import de.westnordost.streetcomplete.screens.main.MainActivity
 import de.westnordost.streetcomplete.screens.main.map.MainMapFragment
 import de.westnordost.streetcomplete.screens.main.map.Marker
 import de.westnordost.streetcomplete.util.ktx.containsAny
@@ -89,7 +89,7 @@ class RestrictionOverlayWayForm : AbstractOverlayForm() {
 
     private val mapDataSource: MapDataWithEditsSource by inject()
     private val mapFragment by lazy {
-        (parentFragment as? MainFragment)?.childFragmentManager?.fragments?.filterIsInstance<MainMapFragment>()?.singleOrNull()
+        (activity as? MainActivity)?.supportFragmentManager?.fragments?.filterIsInstance<MainMapFragment>()?.singleOrNull()
     }
     override val contentLayoutResId = R.layout.fragment_overlay_restriction_way
     private val binding by contentViewBinding(FragmentOverlayRestrictionWayBinding::bind)

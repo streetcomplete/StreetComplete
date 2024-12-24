@@ -24,6 +24,7 @@ fun QuestSelectionScreen(
     onClickBack: () -> Unit,
 ) {
     val quests by viewModel.quests.collectAsState()
+    val selectedQuestPresetName by viewModel.selectedQuestPresetName.collectAsState()
 
     var searchText by remember { mutableStateOf(TextFieldValue()) }
 
@@ -33,7 +34,7 @@ fun QuestSelectionScreen(
 
     Column(Modifier.fillMaxSize()) {
         QuestSelectionTopAppBar(
-            currentPresetName = viewModel.selectedQuestPresetName ?: stringResource(R.string.quest_presets_default_name),
+            currentPresetName = selectedQuestPresetName ?: stringResource(R.string.quest_presets_default_name),
             onClickBack = onClickBack,
             onUnselectAll = { viewModel.unselectAllQuests() },
             onReset = { viewModel.resetQuestSelectionsAndOrder() },

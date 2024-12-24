@@ -686,9 +686,6 @@
     <string name="quest_board_type_map">"Това е карта"</string>
     <string name="quest_board_type_map_title">"Това е само карта и нищо друго?"</string>
     <string name="quest_board_type_map_description">"Ако табелата има определена тема, укажете я, независимо от това дали съдържа карта или не. Например, таблата за обществен транспорт могат да съдържат карта на автобусните линии. Ако темата не е в списъка, по-добре оставете бележка."</string>
-    <string name="quest_surface_detailed_answer_impossible">"Различни повърхности…"</string>
-    <string name="quest_surface_detailed_answer_impossible_confirmation">"Сигурни ли сте, че е невъзможно да се определи повърхността? Отговорът \"Различна по протежението\" ви дава възможност да разделите пътя, там където повърхността се променя. Използвайте \"Не мога да отговоря\", ако повърхността е еднородна, но не фигурира като отговор тук."</string>
-    <string name="quest_surface_detailed_answer_impossible_description">"Моля, опишете накратко повърхността, напр. \"пясък, на места чакъл\". Дължината на текста е ограничена до 255 знака."</string>
     <string name="quest_streetName_menuItem_international">"международен"</string>
     <string name="quest_buildingType_terrace2">"Редица от къщи"</string>
     <string name="at_housename">"име на къща %s"</string>
@@ -737,7 +734,6 @@
     <string name="quest_steps_ramp_separate_wheelchair_confirm">"отделен път"</string>
     <string name="quest_steps_ramp_separate_wheelchair_decline">"не е отделен път"</string>
     <string name="pref_title_sync2">"Автоматично качване на отговорите"</string>
-    <string name="quest_surface_detailed_answer_impossible_title">"Опишете повърхността"</string>
     <string name="open_url">"Open URL"</string>
     <string name="quest_buildingType_silo">"Силоз"</string>
     <string name="quest_buildingType_historic">"Исторически"</string>
@@ -787,7 +783,6 @@
     <string name="quest_construction_completion_date_title">"Кога ще бъде готово?"</string>
     <string name="quest_surface_value_clay">"Глина"</string>
     <string name="quest_surface_value_artificial_turf">"Изкуствена трева"</string>
-    <string name="quest_surface_value_tartan">"Тартан"</string>
     <string name="quest_bicycle_parking_fee_title">"Плаща ли се паркингът за велосипеди?"</string>
     <string name="quest_buildingType_house_description2">"Еднофамилна къща прилепена за друга"</string>
     <string name="quest_drinking_water_potable_signed">"Добра е за пиене (има табела)"</string>
@@ -803,7 +798,6 @@
     <string name="team_mode">"Работа в екип"</string>
     <string name="team_mode_exit">"Прекратяване на работа в екип"</string>
     <string name="team_mode_description">"Когато няколко човека работещи с приложението са близо, можете да включите \"работа в екип\" за да разделите работата между участниците."</string>
-    <string name="team_mode_team_size_hint">"Работа в екип за група от 2 до 12 човека"</string>
     <string name="team_mode_active">"Работата в екип е активирана"</string>
     <string name="team_mode_deactivated">"Работата в екип е прекратена"</string>
     <string name="undo_confirm_title2">"Връщане на последната редакция?"</string>
@@ -1119,7 +1113,6 @@
     <string name="quest_building_entrance_dead_end">"Не е вход"</string>
     <string name="ar_core_tracking_hint_tap_to_measure">"Докоснете екрана за да започнете измерване"</string>
     <string name="quest_air_pump_bicycle_shop_title">"Има ли достъпна помпа за велосипеди (или поне докато е отворено)?"</string>
-    <string name="quest_air_pump_bicycle_repair_station_title">"Тук има ли работеща помпа за велосипеди?"</string>
     <string name="action_overlays">"Слоеве"</string>
     <string name="split_way">"Разделяне на път"</string>
     <string name="quest_memorialType_title">"Какъв паметник е това?"</string>
@@ -1159,7 +1152,6 @@
     <string name="quest_camp_type_tents_only">"Само на палатки"</string>
     <string name="quest_camp_type_backcountry">"Няма удобства"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Този диаметър изглежда неправдоподобен, обикновено е между %1$d и %2$d."</string>
-    <string name="quest_surface_tractypeMismatchInput_confirmation_description">"Вашият отговор не съответства на съществуващите данни за този път. Сигурни ли сте, че въвеждате за съответния път? Сигурни ли сте, че лично сте проверили по цялата дължина на пътя, както се изисква?"</string>
     <string name="quest_recycling_type_pet">"Само PET"</string>
     <string name="street_parking_street_width">"Ширина на пътя: %s"</string>
     <string name="overlay_street_parking">"Паркиране на улицата"</string>
@@ -1359,11 +1351,9 @@
     <string name="info">"Повече информация"</string>
     <string name="quest_accessible_for_pedestrians_prohibited">"Това е забранено."</string>
     <string name="quest_accessible_for_pedestrians_allowed">"Това е разрешено."</string>
-    <string name="quest_accessible_for_pedestrians_separate_sidewalk">"Има тротоар, но на картата е изобразен отделно."</string>
     <string name="quest_buildingLevels_hint">"За сгради под наклон, отчитането на нивата започва от нивото на земята на най-ниската страна.
 
-Едно ниво се счита за ниво на покрива, когато прозорците му са в покрива. Впоследствие покривите с нулеви нива на покрива не са непременно плоски, просто не са достатъчно високи за цяло ниво.
-    "</string>
+Едно ниво се счита за ниво на покрива, когато прозорците му са в покрива. Впоследствие покривите с нулеви нива на покрива не са непременно плоски, просто не са достатъчно високи за цяло ниво."</string>
     <string name="quest_parcel_locker_brand">"Коя компания поддържа това шкафче за пратки?"</string>
     <string name="quest_powerPolesMaterial_is_terminal">"Електропроводът е анкериран към сградата"</string>
     <string name="quest_cycleway_value_sidewalk_ok">"няма, но знакът позволява карането на велосипед по тротоара"</string>

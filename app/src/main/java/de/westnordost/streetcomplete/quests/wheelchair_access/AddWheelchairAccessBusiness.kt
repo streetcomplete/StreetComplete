@@ -24,7 +24,8 @@ class AddWheelchairAccessBusiness : OsmFilterQuestType<WheelchairAccess>() {
             or tourism = information and information = office
             or """ +
 
-        // The common list is shared by the name quest, the opening hours quest and the wheelchair quest.
+        // The common list is shared by the opening hours quest and the wheelchair quest.
+        // It is also mostly shared by the name quest, that has some wildcards (for say craft and office)
         // So when adding other tags to the common list keep in mind that they need to be appropriate for all those quests.
         // Independent tags can by added in the "wheelchair only" tab.
 
@@ -88,7 +89,9 @@ class AddWheelchairAccessBusiness : OsmFilterQuestType<WheelchairAccess>() {
             "craft" to arrayOf(
                 // common
                 "carpenter", "shoemaker", "tailor", "photographer", "dressmaker",
-                "electronics_repair", "key_cutter", "stonemason",
+                "electronics_repair", "key_cutter", "stonemason", "bookbinder",
+                "jeweller", "sailmaker", "jeweller", "watchmaker", "clockmaker",
+                "locksmith",  "window_construction",
 
                 // name & wheelchair
                 "winery"

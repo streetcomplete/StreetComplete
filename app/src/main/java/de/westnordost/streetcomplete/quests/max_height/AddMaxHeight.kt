@@ -118,7 +118,7 @@ class AddMaxHeight : OsmElementQuestType<MaxHeightAnswer> {
 
             // applicable if with any bridge...
             geometry != null && bridges.any { bridge ->
-                val bridgeGeometry = mapData.getWayGeometry(bridge.id) as? ElementPolylinesGeometry
+                val bridgeGeometry = mapData.getWayGeometry(bridge.id)
                 val bridgeLayer = bridge.tags["layer"]?.toIntOrNull() ?: 0
 
                 // , that is in a layer above this way

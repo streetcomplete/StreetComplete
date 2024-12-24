@@ -52,7 +52,7 @@ boat_rental/
     jetski.svg                  Australian Water Safety Council, License: PD
     kayak.svg                   Australian Water Safety Council, License: PD
     motorboat.svg               modified images from Australian Water Safety Council, License: PD
-    pedalboat.svg               
+    pedalboat.svg
     rowboat.svg                 mashup of different images from Australian Water Safety Council, License: PD
     sailboard.svg               Australian Water Safety Council, License: PD
     sailboat.svg                Australian Water Safety Council, License: PD
@@ -262,6 +262,7 @@ quest/
     bicycle_rental.svg
     bicycle_rental_capacity.svg      Flo Edelmann edited bicycle_rental.svg made by Tobias Zwick (CC-BY-SA 4.0)
     bicycle_repair.svg
+    bicycle_repair_amenity.svg
     bicycle_second_hand.svg
     bicycleway.svg
     bicycleway_surface.svg
@@ -673,6 +674,7 @@ tutorial/
                                                   (c) 2011 Ken Vermette, License: CC-BY.SA 3.0
     logo_osm_map_lighting.svg           modified from https://wiki.openstreetmap.org/wiki/File:Public-images-osm_logo.svg
                                                   (c) 2011 Ken Vermette, License: CC-BY.SA 3.0
+    team_size.svg                       Judith Gastell, License: CC-BY-SA 4.0
 
 note/
     create_note_black_24dp.svg

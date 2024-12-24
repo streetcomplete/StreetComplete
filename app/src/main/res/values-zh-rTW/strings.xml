@@ -696,9 +696,6 @@
     <string name="quest_board_type_map">"這是地圖"</string>
     <string name="quest_board_type_map_title">"這是地圖而且就只是地圖嗎？"</string>
     <string name="quest_board_type_map_description">"當此資訊看板是指特定主題的話請描述它，無論是否有包含地圖。例如大眾運輸的資訊看板也許會包含公車路線地圖。當包含解答的主題並沒被列出來，取而代之請考慮留下註記。"</string>
-    <string name="quest_surface_detailed_answer_impossible">"多種的表面材質"</string>
-    <string name="quest_surface_detailed_answer_impossible_confirmation">"你確定描述此鋪面是不可能的嗎？註記「在線段上皆不同」允許你切斷鋪面改變的線段的解答選項。當這裡只有一種鋪面但不可作為解答的話，請使用「無法說明」。"</string>
-    <string name="quest_surface_detailed_answer_impossible_description">"在此請簡述此表面的自然材質，例如：包含鵝卵石補丁的砂質鋪面。此字串長度僅限255個字元。"</string>
     <string name="quest_streetName_menuItem_international">"國際"</string>
     <string name="quest_buildingType_terrace2">"排屋"</string>
     <string name="at_housename">"房屋名稱 %s"</string>
@@ -747,7 +744,6 @@
     <string name="quest_steps_ramp_separate_wheelchair_confirm">"分開的"</string>
     <string name="quest_steps_ramp_separate_wheelchair_decline">"不是分開的"</string>
     <string name="pref_title_sync2">"自動上傳答案"</string>
-    <string name="quest_surface_detailed_answer_impossible_title">"描述路面材質"</string>
     <string name="open_url">"開啟網址"</string>
     <string name="quest_buildingType_silo">"筒倉"</string>
     <string name="quest_buildingType_historic">"歷史建築"</string>
@@ -801,7 +797,6 @@
     <string name="quest_construction_completion_date_title">"預計什麼時候竣工呢？"</string>
     <string name="quest_surface_value_clay">"黏土"</string>
     <string name="quest_surface_value_artificial_turf">"人工草皮"</string>
-    <string name="quest_surface_value_tartan">"聚氨酯(PU)表面"</string>
     <string name="quest_bicycle_parking_fee_title">"請問這裡需要付費才能停腳踏車嗎？"</string>
     <string name="quest_buildingType_house_description2">"無連接的單一家庭房屋"</string>
     <string name="quest_drinking_water_potable_signed">"可以飲用（有標誌）"</string>
@@ -817,7 +812,6 @@
     <string name="team_mode">"協作模式"</string>
     <string name="team_mode_exit">"離開協作模式"</string>
     <string name="team_mode_description">"當一群人在同一地點mapping時，您可以開啟協作模式來分配任務。"</string>
-    <string name="team_mode_team_size_hint">"協作模式適用於2～12位成員"</string>
     <string name="team_mode_active">"協作模式已啟用"</string>
     <string name="team_mode_deactivated">"協作模式已停用"</string>
     <string name="undo_confirm_title2">"要復原接下來的編輯嗎？"</string>
@@ -1133,7 +1127,6 @@
     <string name="quest_building_entrance_dead_end">"死路，沒有出入品"</string>
     <string name="ar_core_tracking_hint_tap_to_measure">"點一下螢幕來開始測量"</string>
     <string name="quest_air_pump_bicycle_shop_title">"這裡有公共的單車打氣筒嗎 (至少開放的時候有)？"</string>
-    <string name="quest_air_pump_bicycle_repair_station_title">"這裡有可能用的單車打氣筒嗎？"</string>
     <string name="action_overlays">"重疊"</string>
     <string name="split_way">"分割路徑"</string>
     <string name="quest_memorialType_title">"這裡是那種類型的紀念碑？"</string>
@@ -1173,7 +1166,6 @@
     <string name="quest_camp_type_tents_only">"只有帳篷"</string>
     <string name="quest_camp_type_backcountry">"野外露營 (沒有設施)"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"這個直徑看起來不可能，通常是 %1$d 與 %2$d 之間。"</string>
-    <string name="quest_surface_tractypeMismatchInput_confirmation_description">"這個答案並不符合原先有關道路的資訊，你確定你在回答正確的道路嗎？你確定你親身踏查整個道路長度，而且真的有踏查？"</string>
     <string name="quest_recycling_type_pet">"只有 PET"</string>
     <string name="street_parking_street_width">"道路寬度：%s"</string>
     <string name="overlay_street_parking">"路邊停車"</string>
@@ -1245,7 +1237,7 @@
     <string name="separate_cycleway_no_or_allowed">"不是設計給單車騎士(仍然能夠騎單車)"</string>
     <string name="separate_cycleway_non_segregated">"共享車道"</string>
     <string name="separate_cycleway_segregated">"分開的單車與行人路徑"</string>
-    <string name="separate_cycleway_exclusive">"只允許單車的路徑"</string>
+    <string name="separate_cycleway_exclusive">"自行車道"</string>
     <string name="separate_cycleway_with_sidewalk">"只允許單車的路徑旁邊有人行道 (有實體分隔開)"</string>
     <string name="cycleway_reverse_direction">"反轉單車道方向"</string>
     <string name="cycleway_reverse_direction_warning">"逆向的單車道通常很少見。"</string>
@@ -1372,7 +1364,6 @@
     <string name="info">"更多資訊"</string>
     <string name="quest_accessible_for_pedestrians_prohibited">"禁止"</string>
     <string name="quest_accessible_for_pedestrians_allowed">"允許"</string>
-    <string name="quest_accessible_for_pedestrians_separate_sidewalk">"事實上，這裡有路邊人行道，但是以分開的方式顯示在地圖上。"</string>
     <string name="quest_buildingLevels_hint">"對於斜坡上的建築，從離地面最近的最低樓層開始起算樓層數。
 
 有天花板的屋頂如果有窗戶算是一層樓。再來屋頂是零樓層不意味著平的，只是沒有足夠一整層的高度。
@@ -1384,4 +1375,8 @@
     <string name="separate_cycleway_footway_allowed_sign">"人行道，但標誌允許騎自行車"</string>
     <string name="quest_bicycle_parking_type_floor">"指定區域"</string>
     <string name="link_osmapp_description">"有多個不同圖層的地圖，例如爬山或是滑雪用途"</string>
+    <string name="action_back">"返回"</string>
+    <string name="action_clear">"清除"</string>
+    <string name="action_open_in_browser">"在瀏覽器中打開"</string>
+    <string name="auth_error">"授權失敗，請嘗試重新登入。"</string>
 </resources>

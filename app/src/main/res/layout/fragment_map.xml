@@ -1,46 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<org.maplibre.android.maps.MapView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/map"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <org.maplibre.android.maps.MapView
-        android:id="@+id/map"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
-    <RelativeLayout
-        android:id="@+id/attributionContainer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:padding="8dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/openstreetmapLink"
-            android:textColor="@color/attribution_text"
-            android:textSize="12sp"
-            android:shadowColor="@color/background"
-            android:shadowRadius="6"
-            android:text="@string/map_attribution_osm"
-            android:layout_alignParentLeft="true"
-            tools:ignore="RtlHardcoded" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/mapTileProviderLink"
-            android:textColor="@color/attribution_text"
-            android:textSize="12sp"
-            android:shadowColor="@color/background"
-            android:shadowRadius="6"
-            android:text="© JawgMaps"
-            android:paddingLeft="8dp"
-            android:layout_toRightOf="@id/openstreetmapLink"
-            tools:ignore="RtlHardcoded,RtlSymmetry" />
-
-    </RelativeLayout>
-
-</RelativeLayout>
+    android:layout_height="match_parent" />

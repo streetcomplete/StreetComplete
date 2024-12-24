@@ -615,6 +615,5 @@
     <string name="quest_valves_schrader">AV: Schrader / Auto-ventil</string>
     <string name="quest_valves_regina">RV: Regina / Italiensk</string>
     <string name="quest_saunaAvailability_title">Er der en sauna her?</string>
-    <string name="quest_bicycle_parking_type_safeloops">Hjul- og låsebøjle (støtter hjul og ramme)</string>
     <string name="quest_bicycle_parking_type_saddleholder">Sadelholder</string>
 </resources>

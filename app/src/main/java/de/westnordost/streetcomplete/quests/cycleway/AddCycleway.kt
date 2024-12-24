@@ -14,8 +14,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.osm.cycleway.Cycleway.UNSPECIFIED_LANE
-import de.westnordost.streetcomplete.osm.cycleway.Cycleway.UNSPECIFIED_SHARED_LANE
+import de.westnordost.streetcomplete.osm.cycleway.Cycleway
 import de.westnordost.streetcomplete.osm.cycleway.LeftAndRightCycleway
 import de.westnordost.streetcomplete.osm.cycleway.any
 import de.westnordost.streetcomplete.osm.cycleway.applyTo
@@ -83,9 +82,8 @@ class AddCycleway(
         val eligibleRoads = mapData.ways.filter { roadsFilter.matches(it) }
         val roadsWithMissingCycleway = eligibleRoads.filter { untaggedRoadsFilter.matches(it) }
         val oldRoadsWithKnownCycleways = eligibleRoads.filter { way ->
-            val countryInfo = mapData.getWayGeometry(way.id)?.center?.let {
-                getCountryInfoByLocation(it)
-            }
+            val position = mapData.getWayGeometry(way.id)?.center
+            val countryInfo = position?.let { getCountryInfoByLocation(it) }
             way.hasOldInvalidOrAmbiguousCyclewayTags(countryInfo) == true
         }
 
@@ -163,15 +161,18 @@ private fun Element.hasOldInvalidOrAmbiguousCyclewayTags(countryInfo: CountryInf
     if (sides.any { it.cycleway.isUnknown }) return false
     // has any invalid cycleway tags
     if (sides.any { it.cycleway.isInvalid }) return true
+    // cycleway:<side> = separate is never considered old, because the information about cycleways
+    // has moved somewhere else -> to the separately mapped way
+    if (sides.any { it.cycleway == Cycleway.SEPARATE }) return false
     // or it is older than x years
     if (olderThan4Years.matches(this)) return true
     // has any ambiguous cycleway tags
     if (countryInfo != null) {
         if (sides.any { it.cycleway.isAmbiguous(countryInfo) }) return true
     } else {
-        if (sides.any { it.cycleway == UNSPECIFIED_SHARED_LANE }) return true
+        if (sides.any { it.cycleway == Cycleway.UNSPECIFIED_SHARED_LANE }) return true
         // for this, a countryCode is necessary, thus return null if no country code is available
-        if (sides.any { it.cycleway == UNSPECIFIED_LANE }) return null
+        if (sides.any { it.cycleway == Cycleway.UNSPECIFIED_LANE }) return null
     }
     return false
 }

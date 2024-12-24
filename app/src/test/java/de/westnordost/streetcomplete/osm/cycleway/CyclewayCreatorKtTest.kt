@@ -64,11 +64,11 @@ class CyclewayCreatorKtTest {
         )
     }
 
-    @Test fun `apply unspecified cycle lane answer does not remove previous specific lane answer`() {
+    @Test fun `apply unspecified cycle lane answer does remove previous specific lane answer`() {
         assertEquals(
             setOf(
                 StringMapEntryAdd("cycleway:both", "lane"),
-                StringMapEntryModify("cycleway:both:lane", "exclusive", "exclusive"),
+                StringMapEntryDelete("cycleway:both:lane", "exclusive"),
             ),
             cycleway(UNSPECIFIED_LANE, UNSPECIFIED_LANE).appliedTo(mapOf(
                 "cycleway:both:lane" to "exclusive"
@@ -880,7 +880,6 @@ class CyclewayCreatorKtTest {
             ))
         )
     }
-
 }
 
 private fun LeftAndRightCycleway.appliedTo(tags: Map<String, String>, isLeftHandTraffic: Boolean = false): Set<StringMapEntryChange> {

@@ -53,6 +53,10 @@ The info you enter is directly added to OpenStreetMap in your name, without the 
 
     <string name="action_upload">"Upload answers"</string>
 
+    <string name="action_messages">"Show messages"</string>
+
+    <string name="action_create_new_poi">"Create new"</string>
+
     <string name="action_open_location">Open location in another app</string>
     <string name="map_application_missing">No other map application installed</string>
 
@@ -265,10 +269,9 @@ If you are overwhelmed by the number of quests, you can always fine-tune which q
     <!-- Team mode -->
 
     <string name="team_mode_exit">Exit Team Mode</string>
-    <string name="team_mode_description">"When mapping the same area together in a group, you can enter team mode to split up quests between all team members.
-Each of you will then see different quests."</string>
-    <string name="team_mode_team_size_label2">How many people are mapping? Enter the same number on everyone’s phone.</string>
-    <string name="team_mode_team_size_hint">Team mode works for groups of 2 to 12 people.</string>
+    <string name="team_mode_description">"When mapping the same area together in a group, you can enter team mode to split up quests between all team members. Each of you will then see different quests."</string>
+    <string name="team_mode_description_overlay_hint">"If you use overlays, each of you should use a different one, as only quests are split up."</string>
+    <string name="team_mode_team_size_label2">How many people are mapping? Select the same number on everyone’s phone.</string>
     <string name="team_mode_choose_color2">Next, each person must pick a different color. Choose yours:</string>
     <string name="team_mode_active">Team mode is active</string>
     <string name="team_mode_deactivated">Team mode deactivated</string>
@@ -290,8 +293,10 @@ Each of you will then see different quests."</string>
     <string name="download_server_error">"Connection error while downloading data. Try again later."</string>
     <string name="upload_server_error">"Connection error while uploading answers. Try again later."</string>
 
-    <string name="download_error">"Error while downloading data"</string>
-    <string name="upload_error">"Error while uploading answers"</string>
+    <string name="auth_error">"Authorization error. Try logging in again."</string>
+
+    <string name="download_error">"Download error"</string>
+    <string name="upload_error">"Upload error"</string>
 
     <string name="crash_title">"Oh no, StreetComplete crashed last time!"</string>
     <string name="crash_message">"Send an error report to the developer?"</string>
@@ -666,7 +671,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_accessible_for_pedestrians_title_prohibited">Are pedestrians forbidden to walk on this road without sidewalk here?</string>
     <string name="quest_accessible_for_pedestrians_prohibited">It is forbidden.</string>
     <string name="quest_accessible_for_pedestrians_allowed">It is allowed.</string>
-    <string name="quest_accessible_for_pedestrians_separate_sidewalk">Actually, there is a sidewalk, but it is displayed separately on the map.</string>
+    <string name="quest_accessible_for_pedestrians_sidewalk">Actually, there is a sidewalk.</string>
 
     <string name="quest_address_title">"What’s the house number of this building?"</string>
     <string name="quest_address_house_number_label">House number:</string>
@@ -764,6 +769,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_bicycle_parking_type_title">What type of bicycle parking is this?</string>
     <string name="quest_bicycle_parking_type_stand">Stand (supports bicycle frame)</string>
     <string name="quest_bicycle_parking_type_wheelbender">Wheelbender (supports wheel only)</string>
+    <string name="quest_bicycle_parking_type_safeloops">Safe Loops (supports wheel and frame)</string>
     <string name="quest_bicycle_parking_type_shed">Shed</string>
     <string name="quest_bicycle_parking_type_locker">Locker</string>
     <string name="quest_bicycle_parking_type_building">Building</string>
@@ -779,6 +785,12 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_bicycle_rental_type_human">Staffed bicycle rental</string>
     <string name="quest_bicycle_rental_type_shop_with_rental">Bicycle store that also rents bicycles</string>
 
+    <string name="quest_bicycle_repair_station_services_title">What bicycle equipment is available here?</string>
+    <string name="quest_bicycle_repair_station_pump">Pump</string>
+    <string name="quest_bicycle_repair_station_tools">Various tools</string>
+    <string name="quest_bicycle_repair_station_stand">Work stand</string>
+    <string name="quest_bicycle_repair_station_chain_tool">Chain tool</string>
+
     <string name="quest_bicycle_shop_repair_title">Are bicycle repair services offered here?</string>
 
     <string name="quest_bicycle_shop_second_hand_title">Are second-hand bicycles sold here?</string>
@@ -791,7 +803,6 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_bikeParkingCapacity_hint">"Note that you can usually park one bicycle on each side of a stand."</string>
 
     <string name="quest_air_pump_bicycle_shop_title">Is there a public bicycle pump here (at least when it’s open)?</string>
-    <string name="quest_air_pump_bicycle_repair_station_title">Is there a working bicycle pump here?</string>
     <string name="quest_air_pump_compressor_title">Is there an air compressor available here?</string>
 
     <string name="quest_board_name_title">"What’s the title of this information board?"</string>
@@ -808,6 +819,21 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_board_type_map">It is a map</string>
     <string name="quest_board_type_map_title">Is it just a map and only a map?</string>
     <string name="quest_board_type_map_description">If the board is about a particular topic, please specify it, regardless of whether it also includes a map. For example a public transport board may have a bus route map. If the topic is not listed among the available answers, please consider leaving a note instead.</string>
+
+    <string name="quest_boat_rental_title">Which type of boats are for rent here?</string>
+    <string name="quest_boat_rental_motorboat">Motorboat</string>
+    <string name="quest_boat_rental_jetski">Jetski</string>
+    <string name="quest_boat_rental_sailboat">Sailboat</string>
+    <string name="quest_boat_rental_pedalboat">Pedalboat</string>
+    <string name="quest_boat_rental_kayak">Kayak</string>
+    <string name="quest_boat_rental_canoe">Canoe</string>
+    <string name="quest_boat_rental_houseboat">Houseboat</string>
+    <string name="quest_boat_rental_rowboat">Rowboat</string>
+    <string name="quest_boat_rental_raft">Raft</string>
+    <string name="quest_boat_rental_surfboard">Surfboard</string>
+    <string name="quest_boat_rental_sailboard">Sailboard</string>
+    <string name="quest_boat_rental_yacht">Yacht</string>
+    <string name="quest_boat_rental_standup_paddleboard">Standup Paddleboard (SUP)</string>
 
     <string name="quest_bollard_type_title">What type of bollard is this?</string>
     <string name="quest_bollard_type_rising">Rising</string>
@@ -1006,7 +1032,7 @@ A level counts as a roof level when its windows are in the roof. Subsequently, r
 
     <string name="quest_cycleway_title2">"Is there a bicycle lane or path here? What type?"</string>
     <string name="quest_cycleway_resurvey_title">"Is this still the cycling situation here?"</string>
-    <string name="quest_cycleway_value_track">sidepath or protected bicycle lane</string>
+    <string name="quest_cycleway_value_track">protected bicycle lane or bicycle path</string>
     <string name="quest_cycleway_value_lane">bicycle lane</string>
     <string name="quest_cycleway_value_none">none</string>
     <string name="quest_cycleway_value_shared">lane shared explicitly with other traffic</string>
@@ -1014,14 +1040,15 @@ A level counts as a roof level when its windows are in the roof. Subsequently, r
     <string name="quest_cycleway_value_advisory_lane">advisory bicycle lane</string>
     <string name="quest_cycleway_value_bus_lane">on bus lane</string>
     <string name="quest_cycleway_value_separate">displayed separately on the map</string>
-    <string name="quest_cycleway_value_sidewalk2">shared-use path</string>
-    <string name="quest_cycleway_value_sidewalk_dual2">shared-use path, both directions</string>
+    <string name="quest_cycleway_value_sidewalk2">shared-use sidewalk</string>
+    <string name="quest_cycleway_value_sidewalk_dual2">shared-use sidewalk, both directions</string>
     <string name="quest_cycleway_value_lane_dual">bicycle lane, both directions</string>
     <string name="quest_cycleway_value_track_dual">sidepath or protected bicycle lane, both directions</string>
     <string name="quest_cycleway_value_none_but_no_oneway">none, but cyclists may use road in both directions</string>
     <string name="quest_cycleway_value_none_and_oneway">none, no cycling allowed in this direction</string>
     <string name="quest_cycleway_value_shoulder">none, but shoulder is usable for cyclists</string>
     <string name="quest_cycleway_value_sidewalk_ok">none, but sign allows cycling on sidewalk</string>
+    <string name="quest_cycleway_value_sidewalk_ok_dual">none, but sign allows cycling on sidewalk, both directions</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">Also bicycle path on the other side…</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">No bicycle lane or path at all</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">As usual, tap on one side of the illustration, select a proper answer and do the same for the other side.\n\nNote all the available options: some cases are not obvious, like a oneway road that allows cyclists in both directions!</string>
@@ -1351,6 +1378,11 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_postboxRoyalCypher_type_none">No royal cypher is visible</string>
     <string name="quest_postboxRoyalCypher_type_scottish_crown">The Crown of Scotland</string>
 
+    <string name="quest_powerAttachment_title">How is this power line attached?</string>
+    <string name="quest_powerAttachment_suspension">Supported from above</string>
+    <string name="quest_powerAttachment_anchor">Fixed horizontally</string>
+    <string name="quest_powerAttachment_pin">Supported from below</string>
+
     <!-- I.e. which material. Pole as in "power pole" or "utility pole" -->
     <string name="quest_powerPolesMaterial_title">What’s this pole made of?</string>
     <string name="quest_powerPolesMaterial_wood">Wood</string>
@@ -1615,12 +1647,8 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_surface_value_unhewn_cobblestone">Unhewn cobblestone</string>
     <string name="quest_surface_value_clay">Clay</string>
     <string name="quest_surface_value_artificial_turf">Artificial turf</string>
-    <string name="quest_surface_value_tartan">Tartan</string>
-    <string name="quest_surface_detailed_answer_impossible">Multiple surfaces…</string>
-    <string name="quest_surface_detailed_answer_impossible_confirmation">Are you sure that it is impossible to specify the surface? Note the “Differs along the way” answer option that allows you to cut the way where the surface changes. Please use “Can’t say” if there is a single surface but it is not available as an answer.</string>
-    <string name="quest_surface_detailed_answer_impossible_description">Please briefly specify the nature of the surface here, for example “sandy with patches of cobblestone”. The text length is limited to 255 characters.</string>
-    <string name="quest_surface_detailed_answer_impossible_title">Describe surface</string>
-    <string name="quest_surface_tractypeMismatchInput_confirmation_description">This answer does not match what is already mapped about this road. Are you sure that you are answering about the correct road? Are you sure that you personally surveyed along entire length, as always needed?</string>
+    <string name="quest_surface_value_rubber">Rubber granules</string>
+    <string name="quest_surface_value_acrylic">Synthetic resin</string>
 
     <string name="quest_tactilePaving_title_crosswalk">"Does this crosswalk have tactile paving on both ends?"</string>
     <string name="quest_tactilePaving_incorrect">"Only on one side"</string>
@@ -1691,6 +1719,9 @@ Partially means that a wheelchair can enter and use the restroom, but no handrai
     <string name="bicycle_boulevard_is_a">It’s a %1$s</string>
     <string name="bicycle_boulevard_is_not_a">It’s not a %1$s</string>
     <string name="bicycle_boulevard">Bicycle boulevard</string>
+    <string name="pedestrian_zone_designated">Designated for cycling here</string>
+    <string name="pedestrian_zone_allowed_sign">A sign allows cycling here</string>
+    <string name="pedestrian_zone_no_sign">No explicit sign about cycling here</string>
     <!-- Focus on cycling being the thing that is explicitly disallowed -->
     <string name="separate_cycleway_no_signed">A sign explicitly prohibits cycling</string>
     <string name="separate_cycleway_footway_allowed_sign">Footway, but a sign allows cycling</string>
@@ -1703,9 +1734,9 @@ Partially means that a wheelchair can enter and use the restroom, but no handrai
     <!-- foot=designated + bicycle=designated + segregated=yes -->
     <string name="separate_cycleway_segregated">Separated bike and foot path</string>
     <!-- highway=cycleway / bicycle=designated -->
-    <string name="separate_cycleway_exclusive">Bike-only path</string>
+    <string name="separate_cycleway_exclusive">Bike path</string>
     <!-- highway=cycleway + sidewalk=* -->
-    <string name="separate_cycleway_with_sidewalk">Bike-only path with adjacent sidewalk (separated by a curb)</string>
+    <string name="separate_cycleway_with_sidewalk">Bike path with adjacent sidewalk (separated by a curb)</string>
     <string name="cycleway_reverse_direction">Reverse bike path direction</string>
     <string name="cycleway_reverse_direction_warning">A bike path that goes into the other direction is extremely rare.</string>
     <string name="cycleway_reverse_direction_toast">Tap which side to reverse</string>

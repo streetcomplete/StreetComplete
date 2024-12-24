@@ -1,4 +1,4 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [TD Bank, Kennebec Savings Bank]
+atmOperators: [TD Bank, Kennebec Savings Bank, Camden National Bank]
 chargingStationOperators: ['Tesla, Inc.', ChargePoint, Electrify America]
 defaultSpeedLimitHasUrbanOrRural: true

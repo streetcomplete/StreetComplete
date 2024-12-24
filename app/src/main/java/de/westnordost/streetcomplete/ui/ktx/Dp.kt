@@ -14,6 +14,12 @@ fun Int.pxToDp() = with(LocalDensity.current) {
 
 @Composable
 @ReadOnlyComposable
+fun Float.pxToDp() = with(LocalDensity.current) {
+    this@pxToDp.toDp()
+}
+
+@Composable
+@ReadOnlyComposable
 fun Int.pxToSp() = with(LocalDensity.current) {
     this@pxToSp.toSp()
 }
@@ -28,4 +34,10 @@ fun TextUnit.toDp() = with(LocalDensity.current) {
 @ReadOnlyComposable
 fun Dp.dpToSp() = with(LocalDensity.current) {
     this@dpToSp.toSp()
+}
+
+@Composable
+@ReadOnlyComposable
+fun Dp.toPx() = with(LocalDensity.current) {
+    this@toPx.toPx()
 }

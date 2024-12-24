@@ -20,12 +20,16 @@ val FULLY_PAVED_SURFACES = setOf(
     "metal", "wood", "plastic", "acrylic", "tartan", "rubber",
 )
 
-val NATURAL_SURFACES = setOf(
-    "ground",
+private val SOFT_NATURAL_SURFACES = setOf(
     // earthy
     "earth", "dirt", "soil", "grass", "sand", "mud",
     // other
-    "ice", "salt", "snow", "rock", "stone", "stepping_stones",
+    "snow",
+)
+
+val NATURAL_SURFACES = SOFT_NATURAL_SURFACES + setOf(
+    "ground",
+    "ice", "salt", "rock", "stone", "stepping_stones",
 )
 
 val UNPAVED_SURFACES = NATURAL_SURFACES + setOf(
@@ -40,42 +44,14 @@ val PAVED_SURFACES = FULLY_PAVED_SURFACES + setOf(
     "metal_grid",
 )
 
-private val SOFT_TRACK_SURFACES = setOf(
-    "earth", "dirt", "soil", "grass", "sand", "mud", "snow", "woodchips",
-)
-
+// very lenient, to not flag surface+trackype combinations as invalid in edge cases
 val INVALID_SURFACES_FOR_TRACKTYPES = mapOf(
-    "grade1" to SOFT_TRACK_SURFACES, // could be compacted, as long as it is "solid"
-    "grade2" to SOFT_TRACK_SURFACES,
+    "grade1" to SOFT_NATURAL_SURFACES, // could be compacted, as long as it is "solid"
+    "grade2" to SOFT_NATURAL_SURFACES,
     "grade3" to FULLY_PAVED_SURFACES,
     "grade4" to FULLY_PAVED_SURFACES,
     "grade5" to FULLY_PAVED_SURFACES,
 )
-
-/** @return whether the given tag value for [surface] contradicts the tag value for [tracktype].
- *  E.g. surface=asphalt but tracktype=grade5. */
-fun isSurfaceAndTracktypeConflicting(surface: String, tracktype: String?): Boolean =
-    INVALID_SURFACES_FOR_TRACKTYPES[tracktype]?.contains(surface) == true
-
-private val EXPECTED_SURFACES_FOR_TRACKTYPES = mapOf(
-    // natural solid surfaces are fine too
-    "grade1" to PAVED_SURFACES + setOf("stone", "rock", "ice"),
-    // anything not soft or not fully paved
-    "grade2" to UNPAVED_SURFACES + PAVED_SURFACES - SOFT_TRACK_SURFACES - FULLY_PAVED_SURFACES,
-    "grade3" to UNPAVED_SURFACES,
-    "grade4" to UNPAVED_SURFACES,
-    "grade5" to SOFT_TRACK_SURFACES,
-)
-
-/** @return whether the given tag value for [surface] likely contradicts the tag value for [tracktype].
- *  E.g. surface=asphalt but tracktype=grade2.
- *  some such combinations may be actually valid, so should not be assumed to be always be wrong
- *  but if someone edits surface it is preferable to remove suspicious tracktype and trigger resurvey
- *  see https://github.com/streetcomplete/StreetComplete/issues/5236
- */
-fun isSurfaceAndTracktypeCombinationSuspicious(surface: String, tracktype: String?): Boolean =
-    tracktype != null && EXPECTED_SURFACES_FOR_TRACKTYPES[tracktype]?.contains(surface) != true
-
 /** Sets the common surface of the foot- and cycleway parts into the surface tag, if any. If the
  *  surfaces of the foot- and cycleway parts have nothing in common, removes the surface tag */
 fun updateCommonSurfaceFromFootAndCyclewaySurface(tags: Tags) {
@@ -84,7 +60,7 @@ fun updateCommonSurfaceFromFootAndCyclewaySurface(tags: Tags) {
     if (cyclewaySurface != null && footwaySurface != null) {
         val commonSurface = getCommonSurface(footwaySurface, cyclewaySurface)
         if (commonSurface != null) {
-            SurfaceAndNote(parseSurface(commonSurface), tags["surface:note"]).applyTo(tags)
+            parseSurface(commonSurface)?.applyTo(tags)
         } else {
             tags.remove("surface")
             tags.remove("surface:note")

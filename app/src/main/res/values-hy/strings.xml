@@ -671,9 +671,6 @@
     <string name="quest_board_type_map">"Դա քարտեզ է"</string>
     <string name="quest_board_type_map_title">"Դա պարզապես քարտեզ է եւ միայն քարտեզ:"</string>
     <string name="quest_board_type_map_description">"Եթե ​​խորհուրդը որոշակի թեմայի մասին է, ապա նշեք այն, անկախ նրանից, թե արդյոք այն նույնպես ներառում է քարտեզ: Օրինակ, հասարակական տրանսպորտի խորհուրդը կարող է ունենալ ավտոբուսի երթուղու քարտեզ: Եթե ​​թեման նշված չէ առկա պատասխանների մեջ, փոխարենը հաշվի առեք գրությունը թողնելը:"</string>
-    <string name="quest_surface_detailed_answer_impossible">"Բազմաթիվ մակերեսներ…"</string>
-    <string name="quest_surface_detailed_answer_impossible_confirmation">"Համոզված եք, որ մակերեսը նշել հնարավոր չէ: Նկատի ունեցեք «տարբերվում է ճանապարհին» պատասխանը, որը թույլ է տալիս կտրել այն ճանապարհը, որտեղ մակերեսը փոխվում է: Խնդրում ենք օգտագործել «Չեմ կարող ասել», եթե կա մեկ մակերես, բայց այն մատչելի չէ որպես պատասխան:"</string>
-    <string name="quest_surface_detailed_answer_impossible_description">"Խնդրում ենք հակիրճ նշել այստեղ մակերեւույթի բնույթը, օրինակ, «Sandy- ը ճարմանդով ճարմանդով»: Տեքստի երկարությունը սահմանափակվում է 255 նիշով:"</string>
     <string name="quest_streetName_menuItem_international">"միջազգային"</string>
     <string name="quest_buildingType_terrace2">"Տող տներ"</string>
     <string name="at_housename">"Տան անուն %s"</string>
@@ -722,7 +719,6 @@
     <string name="quest_steps_ramp_separate_wheelchair_confirm">"առանձին"</string>
     <string name="quest_steps_ramp_separate_wheelchair_decline">"Առանձնացված չէ"</string>
     <string name="pref_title_sync2">"Վերբեռնեք պատասխանները ինքնաբերաբար"</string>
-    <string name="quest_surface_detailed_answer_impossible_title">"Նկարագրեք մակերեսը"</string>
     <string name="open_url">"Բաց URL"</string>
     <string name="quest_buildingType_silo">"Սիլոս"</string>
     <string name="quest_buildingType_historic">"Պատմական"</string>
@@ -776,7 +772,6 @@
     <string name="quest_construction_completion_date_title">"Երբ է այն ամբողջական:"</string>
     <string name="quest_surface_value_clay">"Կավ"</string>
     <string name="quest_surface_value_artificial_turf">"Արհեստական ​​տորֆ"</string>
-    <string name="quest_surface_value_tartan">"Թաթան"</string>
     <string name="quest_bicycle_parking_fee_title">"Դուք պետք է վճարեք այստեղ հեծանիվ կայանելու համար:"</string>
     <string name="quest_buildingType_house_description2">"Ոչ առանձնացված միայնակ ընտանիքի տուն, օրինակ. Մեկ շարքի տուն"</string>
     <string name="quest_drinking_water_potable_signed">"Ապահով խմել (ստորագրված)"</string>
@@ -792,7 +787,6 @@
     <string name="team_mode">"Թիմային ռեժիմ"</string>
     <string name="team_mode_exit">"Ելքի թիմային ռեժիմ"</string>
     <string name="team_mode_description">"Միեւնույն տարածքը խմբով քարտեզագրելու համար կարող եք մուտքագրել թիմային ռեժիմ` թիմի բոլոր անդամների միջեւ որոնումները բաժանելու համար:"</string>
-    <string name="team_mode_team_size_hint">"Թիմային ռեժիմն աշխատում է 2-ից 12 հոգու խմբերի համար:"</string>
     <string name="team_mode_active">"Թիմային ռեժիմը ակտիվ է"</string>
     <string name="team_mode_deactivated">"Թիմային ռեժիմը անջատված է"</string>
     <string name="undo_confirm_title2">"Վերացրեք հետեւյալ խմբագրումը:"</string>
@@ -1113,7 +1107,6 @@
     <string name="quest_camp_power_supply_title">"Այստեղ կարելի՞ է լիցքավորել հեռախոս կամ այլ բաներ։"</string>
     <string name="quest_camp_type_tents_only">"Միայն վրաններ"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Տրամագիծը սովորաբար լինում է %1$d-ի և %2$d-ի միջև։"</string>
-    <string name="quest_surface_tractypeMismatchInput_confirmation_description">"Պատասխանը չի համապատասխանում փողոցի մասին տվյալներին։ Վստա՞հ եք, որ ճիշտ փողոցի մասին եք պատասխանում։ Վստա՞հ եք, որ փողոցի ամբողջ երկարությամբ եք չափում, ինչպես պահանջվում է:"</string>
     <string name="quest_recycling_type_pet">"Միայն PET"</string>
     <string name="street_parking_street_width">"Փողոցի լայնություն` %s"</string>
     <string name="overlay_street_parking">"Կայանատեղիներ"</string>

@@ -526,7 +526,7 @@ Parcialment significa que una cadira de rodes pot entrar i utilitzar els lavabos
     <string name="quest_maxweight_unsupported_sign_request_photo">"Voleu deixar una nota? Una nota amb una fotografia permetrà a altres cartògrafs de fer-se'n càrrec."</string>
     <string name="quest_handrail_title">"Aquestes escales tenen barana?"</string>
     <string name="quest_ref_answer_noRef">"No hi ha cap número de referència visible…"</string>
-    <string name="quest_street_side_puzzle_tutorial">"En el dibuix, la via segueix la direcció que té en el mapa en el punt marcat. Prova de girar el mapa i ho entendràs millor."</string>
+    <string name="quest_street_side_puzzle_tutorial">"En la il·lustració, la via segueix la direcció que té en el mapa en el punt marcat. Prova de girar el mapa i ho entendràs millor."</string>
     <string name="quest_recycling_materials_title">"Què es pot deixar aquí per a reciclar?"</string>
     <string name="quest_recycling_materials_note">"Si hi ha res que s'hi pot reciclar, diferent del que es pot seleccionar, aleshores deixeu una nota."</string>
     <string name="quest_recycling_type_batteries">"Bateries"</string>
@@ -552,8 +552,8 @@ Parcialment significa que una cadira de rodes pot entrar i utilitzar els lavabos
     <string name="about_title_donate">"Feu un donatiu"</string>
     <string name="about_summary_donate">"Mostreu el vostre agraïment! ❤️"</string>
     <string name="about_description_donate">"Gràcies per considerar de donar suport a aquesta aplicació! Per a veure els donatius actuals i fer-ne un vós mateix, feu un toc a la plataforma corresponent:"</string>
-    <string name="confirmation_cancel_prev_download_confirmed">"Alternativament, escaneja aquí"</string>
-    <string name="confirmation_cancel_prev_download_cancel">"Continua amb l'escaneig actual"</string>
+    <string name="confirmation_cancel_prev_download_confirmed">"En canvi, descarregueu aquí"</string>
+    <string name="confirmation_cancel_prev_download_cancel">"Continua amb la descàrrega actual"</string>
     <string name="quest_buildingType_garages_description">"Espais separats per a diferents propietaris o usuaris"</string>
     <string name="quest_tourism_information_title">"Quin tipus d'informació turística és?"</string>
     <string name="quest_tourism_information_office">"Oficina d'informació turística"</string>
@@ -695,9 +695,6 @@ d'acompliment"</string>
     <string name="quest_board_type_map">"És un mapa"</string>
     <string name="quest_board_type_map_title">"És un mapa i només un mapa?"</string>
     <string name="quest_board_type_map_description">"Si el tauler tracta sobre un tema en particular, especifiqueu-ho, independentment de si també inclou un mapa. Per exemple, un consell de transport públic pot tenir un mapa de ruta d'autobús. Si el tema no està llistat entre les respostes disponibles, considereu deixar una nota en el seu lloc."</string>
-    <string name="quest_surface_detailed_answer_impossible">"Superfícies múltiples…"</string>
-    <string name="quest_surface_detailed_answer_impossible_confirmation">"Esteu segur que és impossible especificar la superfície? Tingueu en compte l'opció de resposta \"Diferències al llarg del camí\" que permet tallar el camí on canvia la superfície. Si us plau, useu \"No ho sé\" si hi ha una sola superfície però no està disponible com a resposta."</string>
-    <string name="quest_surface_detailed_answer_impossible_description">"Especifiqueu breument la naturalesa de la superfície aquí, per exemple, \"sorrenca amb pedaços de còdol\". La longitud del text està limitada a 255 caràcters."</string>
     <string name="quest_streetName_menuItem_international">"internacional"</string>
     <string name="quest_buildingType_terrace2">"Files de cases"</string>
     <string name="at_housename">"Nom de la casa %s"</string>
@@ -746,7 +743,6 @@ d'acompliment"</string>
     <string name="quest_steps_ramp_separate_wheelchair_confirm">"separada"</string>
     <string name="quest_steps_ramp_separate_wheelchair_decline">"no separada"</string>
     <string name="pref_title_sync2">"Puja les respostes automàticament"</string>
-    <string name="quest_surface_detailed_answer_impossible_title">"Descriviu la superfície"</string>
     <string name="open_url">"Obre l'URL"</string>
     <string name="quest_buildingType_silo">"Sitja"</string>
     <string name="quest_buildingType_historic">"Històric"</string>
@@ -800,7 +796,6 @@ Fixeu-vos en totes les opcions disponibles: alguns  casos no són obvis, com una
     <string name="quest_construction_completion_date_title">"Quan estarà enllestit?"</string>
     <string name="quest_surface_value_clay">"Argila"</string>
     <string name="quest_surface_value_artificial_turf">"Gespa artificial"</string>
-    <string name="quest_surface_value_tartan">"Tartán"</string>
     <string name="quest_bicycle_parking_fee_title">"S'ha de pagar per aparcar una bicicleta aquí?"</string>
     <string name="quest_buildingType_house_description2">"llar monofamília no desconectada"</string>
     <string name="quest_drinking_water_potable_signed">"És segur beure (senyalat)"</string>
@@ -816,7 +811,6 @@ Fixeu-vos en totes les opcions disponibles: alguns  casos no són obvis, com una
     <string name="team_mode">"Mode d'equip"</string>
     <string name="team_mode_exit">"Sortir del mode d'equip"</string>
     <string name="team_mode_description">"Quan mapegeu la mateixa àrea en un grup, podeu entrar en el mode equip per dividir les cerques entre tots els membres de l'equip."</string>
-    <string name="team_mode_team_size_hint">"El mode equip funciona per a grups de 2 a 12 persones."</string>
     <string name="team_mode_active">"El mode d'equip està activat"</string>
     <string name="team_mode_deactivated">"S'ha desactivat el mode d'equip"</string>
     <string name="undo_confirm_title2">"Desfer aquesta edició?"</string>
@@ -1137,7 +1131,6 @@ Feu el mateix per a l'altre costat."</string>
     <string name="quest_building_entrance_dead_end">"Cul de sac, no hi ha entrada"</string>
     <string name="ar_core_tracking_hint_tap_to_measure">"Toca la pantalla per iniciar el mesurament"</string>
     <string name="quest_air_pump_bicycle_shop_title">"Hi ha una manxa d'inflar bicicletes pública aquí? (almenys quan és obert)"</string>
-    <string name="quest_air_pump_bicycle_repair_station_title">"Hi ha una manxa de bicicletes que funcioni aquí?"</string>
     <string name="action_overlays">"Superposicions"</string>
     <string name="split_way">"Divideix la via"</string>
     <string name="quest_memorialType_title">"Quin tipus de memorial és?"</string>
@@ -1177,7 +1170,6 @@ Feu el mateix per a l'altre costat."</string>
     <string name="quest_camp_type_tents_only">"Només tendes"</string>
     <string name="quest_camp_type_backcountry">"Zona d'acampada lliure (sense instal·lacions)"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Aquest diàmetre sembla inversemblant, normalment es troba entre %1$d i %2$d."</string>
-    <string name="quest_surface_tractypeMismatchInput_confirmation_description">"Aquesta resposta no concorda amb el que ja està mapejat sobre aquesta carretera. Està segur que està responent sobre la via correcta? Estàs segur que has recorregut tota la via, com sempre cal?"</string>
     <string name="quest_recycling_type_pet">"Només PET"</string>
     <string name="street_parking_street_width">"Amplada del carrer: %s"</string>
     <string name="overlay_street_parking">"Aparcament al carrer
@@ -1254,7 +1246,7 @@ Menejar ara?"</string>
     <string name="separate_cycleway_no_or_allowed">"No designat per a anar en bicicleta (però podria estar-hi permés)"</string>
     <string name="separate_cycleway_non_segregated">"Via d'us compartit"</string>
     <string name="separate_cycleway_segregated">"Ciclovia i camí per a vianants segregats"</string>
-    <string name="separate_cycleway_exclusive">"Ciclovia exclusiva"</string>
+    <string name="separate_cycleway_exclusive">"Ciclovia"</string>
     <string name="separate_cycleway_with_sidewalk">"Carril bici amb una vorera adjacent (separts per una vorada)"</string>
     <string name="cycleway_reverse_direction">"Inverteix la direcció de la ciclovia"</string>
     <string name="cycleway_reverse_direction_warning">"Que una ciclovia vaja en direcció contrària és extremadament estrany."</string>
@@ -1328,7 +1320,7 @@ A més, algunes superposicions us permeten afegir dades noves a la posició d'un
     <string name="quest_sanitary_dump_station_description">"Instal·lació per dipositar els residus humans d'un vàter d'una autocaravana, camió de llarg recorregut, etc. Normalment s'indica amb un senyal com aquest:"</string>
     <string name="quest_generalFee_title">"Cal pagar per utilitzar-lo?"</string>
     <string name="quest_bbq_fuel_not_a_bbq">"És una foguera"</string>
-    <string name="quest_bbq_fuel_not_a_bbq_confirmation">"Si no hi ha cap superfície per a cuinar (per exemple: no hi ha cap placa ni cap grill), aleshores és una foguera."</string>
+    <string name="quest_bbq_fuel_not_a_bbq_confirmation">"Si no hi ha cap superfície per a cuinar (per exemple: no hi ha cap placa ni cap graella), aleshores és una foguera."</string>
     <string name="about_title_logs">"Registres (%1$d)"</string>
     <string name="about_summary_logs">"per utilitzar-los en informes d'errors"</string>
     <string name="action_filter">"Filtre"</string>
@@ -1378,16 +1370,15 @@ Podeu trobar informació sobre les donacions a la nostra web o al portal del pro
     <string name="quest_moped_access_designated">"Hi ha un senyal que permet la circulació de ciclomotors per aquest carril bici"</string>
     <string name="quest_moped_access_forbidden">"Hi ha un senyal que prohibeix la circulació de ciclomotors"</string>
     <string name="default_disabled_msg_visible_sign_moped">"Aquest grup de missions està desactivat per defecte perquè l'accés de ciclomotors sols s'especifica en senyals al principi o al final del carril bici."</string>
-    <string name="quest_arrow_tutorial">"Les fletxes estan orientades cap a les dues direccions dol via sortint des del punt central dol missió. Prova de girar el mapa i ho entendràs millor."</string>
+    <string name="quest_arrow_tutorial">"Les fletxes de la il·lustració estan orientades cap a les dues direccions de la via sortint des del punt central de la missió. Prova de girar el mapa i ho entendràs millor."</string>
     <string name="info">"Més informació"</string>
     <string name="quest_accessible_for_pedestrians_prohibited">"És prohibit."</string>
     <string name="quest_accessible_for_pedestrians_allowed">"és permès."</string>
-    <string name="quest_accessible_for_pedestrians_separate_sidewalk">"De fet, hi ha vorera, però es mostra separadament en el mapa."</string>
     <string name="quest_buildingLevels_hint">"Per edificis en un pendent, el recompte de pisos comença des del nivell de terra en el costat més baix.
 
 Un pis compta com a teulada quan les seves finestres són a la teulada. En conseqüència, les teulades amb zero nivells de teulada no són necessàriament planes, simplement no són prou alts per un pis sencer.
     "</string>
-    <string name="quest_parcel_locker_brand">"De quina marca és aquest armari de paquets?"</string>
+    <string name="quest_parcel_locker_brand">"De quina marca és aquesta bústia intel·ligent?"</string>
     <string name="quest_powerPolesMaterial_is_terminal">"La línia elèctrica està ancorada a l'edifici"</string>
     <string name="quest_cycleway_value_sidewalk_ok">"Cap, però una senyal permet als ciclistes usar la vorera"</string>
     <string name="separate_cycleway_no_signed">"Un senyal prohibeix explícitament anar en bicicleta"</string>
@@ -1405,14 +1396,50 @@ Un pis compta com a teulada quan les seves finestres són a la teulada. En conse
     <string name="questList_disabled_by_default">"Desactivat per defecte"</string>
     <string name="action_manage_presets_summary">"El nom amb el qual vols guardar aquesta selecció de missions."</string>
     <string name="quest_multiselect_hint">"Selecciona totes les opcions correctes:"</string>
-    <string name="quest_barrier_opening_width_gate">"Quina és l'amplada de l'obertura dol barrera aquí?"</string>
-    <string name="bridge">"En un pont"</string>
+    <string name="quest_barrier_opening_width_gate">"Quina és l'amplada de l'obertura de la barrera aquí?"</string>
+    <string name="bridge">"en un pont"</string>
     <string name="about_title_intro">"Mostrar introducció"</string>
     <string name="about_category_help">"Ajuda"</string>
-    <string name="quest_camp_power_supply_hint">"Poden ser endolls disponibles en càmpings, en una zona de servei perquè els clients els usin, zones específiques per a la recàrrega d'aparells electrònics (com telèfens mòbils, ordinadors portàtils), etc."</string>
+    <string name="quest_camp_power_supply_hint">"Poden ser endolls disponibles en càmpings, en una zona de servei perquè els clients els usin, zones específiques per a la recàrrega d'aparells electrònics (com telèfons mòbils, ordinadors portàtils), etc."</string>
     <string name="quest_barrier_opening_width_bollard">"Quin és el forat més gran pel qual es pot passar per aquí?"</string>
     <string name="user_profile_all_time_title">"En general"</string>
     <string name="user_statistics_country_rank2">"Rang en %s"</string>
     <string name="quest_leafType_tree_is_just_a_stump">"És només una soca d'arbre"</string>
     <string name="quest_board_name_title">"Quin és el títol d'aquest tauler informatiu?"</string>
+    <string name="quest_crossing_hint">"Una pista informal que creua una carretera:"</string>
+    <string name="note_for_object">"Una altra persona va anotar:"</string>
+    <string name="quest_bicycle_parking_type_safeloops">"Suports segurs (per lligar roda i quadre)"</string>
+    <string name="quest_cycleway_value_sidewalk_ok_dual">"no n'hi ha, però els senyals permeten circular per la vorera, en ambdós sentits"</string>
+    <string name="quest_surface_value_rubber">"Pneumàtic triturat"</string>
+    <string name="quest_surface_value_acrylic">"Resina acrílica"</string>
+    <string name="action_messages">"Mostra els missatges"</string>
+    <string name="action_create_new_poi">"Crea'n un de nou"</string>
+    <string name="auth_error">"Error en l'autorització. Inicieu sessió de nou."</string>
+    <string name="quest_accessible_for_pedestrians_sidewalk">"Realment hi ha una vorera."</string>
+    <string name="quest_bicycle_repair_station_services_title">"Quin equipament de bicicletes hi ha aquí?"</string>
+    <string name="quest_bicycle_repair_station_pump">"Manxa d'aire"</string>
+    <string name="quest_bicycle_repair_station_tools">"Varies eines"</string>
+    <string name="quest_bicycle_repair_station_stand">"Suport de treball"</string>
+    <string name="quest_bicycle_repair_station_chain_tool">"Eina per a la cadena"</string>
+    <string name="quest_boat_rental_title">"Quins tipus d'embarcacions es lloguen aquí?"</string>
+    <string name="quest_boat_rental_motorboat">"Llanxa motora"</string>
+    <string name="quest_boat_rental_jetski">"Moto d'aigua"</string>
+    <string name="quest_boat_rental_sailboat">"Barca de vela"</string>
+    <string name="quest_boat_rental_pedalboat">"Barca de pedals"</string>
+    <string name="quest_boat_rental_kayak">"Caiac"</string>
+    <string name="quest_boat_rental_canoe">"Canoa"</string>
+    <string name="quest_boat_rental_houseboat">"Casa flotant"</string>
+    <string name="quest_boat_rental_rowboat">"Bot de rem"</string>
+    <string name="quest_boat_rental_raft">"Rai"</string>
+    <string name="quest_boat_rental_surfboard">"Planxa de surf"</string>
+    <string name="quest_boat_rental_sailboard">"Planxa de vela (windsurf)"</string>
+    <string name="quest_boat_rental_yacht">"Iot"</string>
+    <string name="quest_boat_rental_standup_paddleboard">"Planxa de rem (SUP)"</string>
+    <string name="quest_powerAttachment_title">"Com està connectada aquesta línia elèctrica?"</string>
+    <string name="quest_powerAttachment_suspension">"Suportat des de dalt"</string>
+    <string name="quest_powerAttachment_anchor">"Fixat horitzontalment"</string>
+    <string name="quest_powerAttachment_pin">"Suportat des de baix"</string>
+    <string name="pedestrian_zone_designated">"Espai habilitat per a bicicletes"</string>
+    <string name="pedestrian_zone_allowed_sign">"Hi ha un senyal que permet anar en bicicleta"</string>
+    <string name="pedestrian_zone_no_sign">"No hi ha cap senyal explícit sobre anar en bicicleta"</string>
 </resources>

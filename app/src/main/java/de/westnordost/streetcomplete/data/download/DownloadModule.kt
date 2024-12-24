@@ -15,7 +15,7 @@ val downloadModule = module {
     factory { MobileDataAutoDownloadStrategy(get(), get()) }
     factory { WifiAutoDownloadStrategy(get(), get()) }
 
-    single { Downloader(get(), get(), get(), get(), get(named("SerializeSync")), get()) }
+    single { Downloader(get(), get(), get(), get(), get(), get(named("SerializeSync")), get()) }
 
     single<DownloadProgressSource> { get<Downloader>() }
     single { DownloadController(get()) }
