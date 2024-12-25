@@ -100,9 +100,9 @@
     <string name="quest_service_building_type_pump">Station de pompage</string>
     <string name="quest_seating_pedestrian_zone">Dans une zone piétonne</string>
     <string name="quest_seating_sidewalk">Sur le trottoir</string>
-    <string name="quest_seating_patio">Dans un patio</string>
-    <string name="quest_seating_terrace">Sur une terrasse</string>
-    <string name="quest_seating_balcony">Sur un balcon</string>
+    <string name="quest_seating_patio">Dans un patio (non couvert, cour)</string>
+    <string name="quest_seating_terrace">Sur une terrasse (non couverte, pas de cour)</string>
+    <string name="quest_seating_balcony">Sur un balcon (pas au rez-de-chaussée)</string>
     <string name="quest_seating_roof">Sur un toit</string>
     <string name="quest_seating_beach">À la plage</string>
     <string name="quest_artwork_mural">Œuvre d\'art murale</string>
@@ -256,7 +256,7 @@
     <string name="quest_seating_parklet">A côté du trottoir, ou à l\'endroit où se trouvait le parking</string>
     <string name="quest_seating_garden">Dans un espace vert</string>
     <string name="quest_outdoor_seating_name_title">Quel genre de places assises en extérieur y a-t-il dans cet établissement \?</string>
-    <string name="quest_seating_veranda">Sous une véranda/un porche</string>
+    <string name="quest_seating_veranda">Sur une véranda/porche (couverte, peut être légèrement au-dessus du sol)</string>
     <string name="ban_check_fails">La vérification des versions non autorisées continue d\'échouer. Il se peut que vous utilisiez une version obsolète, pensez à mettre à jour.</string>
     <string name="hide_button">Cacher</string>
     <string name="time_limited_from">De</string>
@@ -616,4 +616,9 @@
     <string name="quest_caravanSiteType_restaurant">Restaurant - dans un restaurant ou un café, souvent sur le parking.</string>
     <string name="quest_saunaAvailability_title">Y a-t-il un sauna ici ?</string>
     <string name="quest_bicycle_parking_type_saddleholder">Porte-selle</string>
+    <string name="quest_swimming_pool_outdoor_only">Uniquement à l\'extérieur</string>
+    <string name="quest_swimming_pool_no">Pas de piscine</string>
+    <string name="quest_swimming_pool_indoor_and_outdoor">Les deux (intérieur et extérieur)</string>
+    <string name="quest_swimmingPoolAvailability_title">Y a-t-il une piscine ici ?</string>
+    <string name="quest_swimming_pool_indoor_only">Uniquement à l\'intérieur</string>
 </resources>

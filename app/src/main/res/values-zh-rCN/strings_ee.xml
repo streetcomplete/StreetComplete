@@ -10,7 +10,7 @@
     <string name="quest_settings_osmose_level_low">低</string>
     <string name="pref_import">导入设置</string>
     <string name="pref_update_local_statistics">更新上传的统计数据</string>
-    <string name="pref_hide_notes_title">隐藏特定用户的笔记</string>
+    <string name="pref_hide_notes_title">隐藏特定用户的注释</string>
     <string name="quest_contact_website">该场所的网站是什么？</string>
     <string name="quest_service_building_type_well">水井</string>
     <string name="pref_main_menu_switch_presets_title">主菜单中的切换预设按钮</string>
@@ -24,7 +24,7 @@
     <string name="quest_seating_street">在街道区域</string>
     <string name="quest_custom_quest_message">用于检查特定的预先定义元素或位置。您还可以指定标签，并将其添加到节点中。要使用它，请在主设置菜单中加载一个文件，其中包含类型、ID、消息（例如：NODE,1234,检查位置）或经度、纬度、信息。添加节点时，将消息中的标签放在 \"addNode \"之后，例如 addNode amenity=restaurant, wheelchair=no,diet:vegetarian=yes</string>
     <string name="quest_artwork_mural">壁画</string>
-    <string name="pref_recent_answers_first_min_lines_message">如果任务回答表格的图像行数超过此数，则将近期的答案排列至最前</string>
+    <string name="pref_recent_answers_first_min_lines_message">如果任务回答表格的图像行数超过此数，则将最近的答案移至最前</string>
     <string name="pref_network_interval_title">网络位置更新间隔</string>
     <string name="pref_custom_title">加载自定义任务文件</string>
     <string name="quest_benchMaterial_concrete">水泥</string>
@@ -47,24 +47,24 @@
     <string name="pref_3d_buildings_title">显示 3D 建筑</string>
     <string name="pref_recent_answers_first_min_lines_summary">如果表格超过 %d 行</string>
     <string name="pref_main_menu_grid">以网格形式显示所有主菜单项目</string>
-    <string name="quest_settings_sidewalk_cycleway_distance_message">设置独立小径的最小距离，如果距离较小，则不会显示任务</string>
-    <string name="quest_service_building_type_pump">泵站</string>
+    <string name="quest_settings_sidewalk_cycleway_distance_message">设置单独路径的最小距离，如果距离较小，则不会显示任务</string>
+    <string name="quest_service_building_type_pump">水泵站</string>
     <string name="import_presets_overlays_add">添加</string>
     <string name="quest_railwayPlatformRef_message">该站台可使用的轨道应使用哪个标签？根据 OSM wiki，local_ref 可能更合适，但实际使用中大多是 ref。</string>
-    <string name="pref_trees_title">加载任务树文件</string>
-    <string name="pref_save_gpx">获取 GPX 注记以及附加的照片和轨迹</string>
+    <string name="pref_trees_title">加载树任务文件</string>
+    <string name="pref_save_gpx">获取 GPX 注释以及附加的照片和轨迹</string>
     <string name="quest_artwork_relief">浮雕</string>
-    <string name="pref_save_photos_title">保存用于注记的照片</string>
+    <string name="pref_save_photos_title">保存用于注释的照片</string>
     <string name="level_filter">楼层过滤器</string>
     <string name="quest_contact_phone">该场所的电话号码是多少？</string>
     <string name="default_disabled_msg_poi_bench">该 “任务”将长椅或野餐桌等兴趣点显示为棕色圆点。点击圆点可显示详细信息和其他回答。</string>
     <string name="pref_hide_notes_hint">使用英文逗号分隔用户名或 ID</string>
-    <string name="quest_traffic_stuff_raised">这是个加高的路口</string>
+    <string name="quest_traffic_stuff_raised">这是高架人行横道</string>
     <string name="pref_hide_overlay_quests">隐藏特定覆盖层任务</string>
     <string name="default_disabled_msg_poi_other">这个“任务”将消防栓、观景点或厕所等杂项兴趣点显示为黄点。点击圆点可显示详细信息和其他回答。</string>
     <string name="day_night_priority">提高适合当前日间任务的优先级</string>
     <string name="quest_settings_fixme_title">选择要忽略的 fixme 值</string>
-    <string name="pref_hide_keyboard_summary">在注记被实际创建之前隐藏将要打开的键盘（以便重新查看位置）</string>
+    <string name="pref_hide_keyboard_summary">在实际创建注释之前隐藏要打开键盘（以便重新查看位置）</string>
     <string name="quest_settings_resurvey_all_opening_hours_message">重新调查所有开放时间，包括 SCEE 无法理解的值？您可能需要使用标签编辑器输入正确的值。</string>
     <string name="quest_service_building_type_reservoir">储水容器</string>
     <string name="quest_osmose_message">这些任务是从 Osmose 服务下载的，以表示 OSM 数据的潜在问题。只有在任务设置中选择了至少一个严重等级时，才会下载。
@@ -90,18 +90,18 @@
     <string name="quest_custom_quest_add_node">添加节点</string>
     <string name="quest_service_building_operator_title">谁是这座服务性建筑的运营商？</string>
     <string name="quest_osmose_title">Osmose 任务： </string>
-    <string name="pref_create_custom_quest_summary">...作为留下注记的替代方法。这可以用作本地存储的笔记，使其在地图上可见。前提是您需要启用自定义任务。</string>
-    <string name="pref_show_nearby_quests_summary">当显示任务表单时，允许切换附近的任务</string>
+    <string name="pref_create_custom_quest_summary">…作为留下注释的替代方法。这可以用作地图上可见的本地存储注释。请注意，您需要启用自定义任务。</string>
+    <string name="pref_show_nearby_quests_summary">当显示任务表格时，允许切换附近的任务</string>
     <string name="import_export_hidden_quests">隐藏任务</string>
     <string name="advanced_resurvey_title">设定重新调查日期和键值</string>
-    <string name="quest_tree_disabled_msg">这个任务默认为禁用，因为它不容易回答。必须从建议中选择物种/种属，建议取自最常用的值。您可以在数据管理设置菜单中提供一个包含 &lt;species&gt; (&lt;name&gt;) 的文件，从您自己的物种列表中提供可搜索名称的建议。</string>
+    <string name="quest_tree_disabled_msg">此任务默认禁用，因为它不容易回答。必须从建议中选择物种/种属，建议取自最常用的值。您可以在数据管理设置菜单中提供一个包含 &lt;species&gt; (&lt;name&gt;) 的文件，从您自己的物种列表中提供可搜索名称的建议。</string>
     <string name="quest_artwork_statue">雕像</string>
     <string name="show_nearby_quests_distance">显示该距离内的任务（限制为 10 米）</string>
     <string name="pref_quest_monitor_summary">应用在后台运行时监测位置，使用返回按钮的后台运行时除外</string>
     <string name="quest_seating_parklet">路边，或曾经停车的地方</string>
     <string name="quest_poi_traffic_title">兴趣点：交通</string>
     <string name="quest_settings_element_selection">设置符合本任务条件的元素。<a href="https://github.com/Helium314/SCEE/blob/modified/CONTRIBUTING_A_NEW_QUEST.md#element-selection">单击此处</a>可在浏览器中打开有关元素选择语法的信息。</string>
-    <string name="pref_tree_custom_quest_summary">有关详情，请参阅启用任务时的信息</string>
+    <string name="pref_tree_custom_quest_summary">有关详情，请参阅启用任务时的消息</string>
     <string name="quest_healthcare_speciality_switch_ui">切换用户界面</string>
     <string name="quest_osmose_remove_checked">移除</string>
     <string name="action_scee_quests">只显示 SCEE 任务</string>
@@ -161,7 +161,7 @@
     <string name="pref_tile_source_hide_labels">隐藏标签</string>
     <string name="quest_healthcare_speciality_disabled_message">该任务需要 healthcare:speciality 标签的相关知识。如果不了解这些知识，任务可能将难以回答。</string>
     <string name="quest_settings_level_more">多层建筑内的医生和更多节点</string>
-    <string name="quest_generic_surface_no">仅有注记（默认）</string>
+    <string name="quest_generic_surface_no">仅带注释（默认）</string>
     <string name="quest_seating_garden">在花园区域</string>
     <string name="pref_get_photos_title">获取全尺寸照片</string>
     <string name="pref_select_first_edit_title">在打开历史记录时选择首次编辑</string>
@@ -178,11 +178,11 @@
     <string name="pref_hide_button_summary">单击可暂时隐藏任务，长按可永久隐藏任务</string>
     <string name="quest_settings_max_steps_length">显示任务的最大台阶长度，以米为单位</string>
     <string name="pref_recent_answers_first_min_lines">将近期的回答排列至最前</string>
-    <string name="pref_dynamic_quest_creation_summary">加载当前查看区域时会创建任务。速度稍慢，但会立即应用更改后的任务设置。</string>
+    <string name="pref_dynamic_quest_creation_summary">加载查看区域时会创建任务。速度稍慢，但会立即应用更改后的任务设置。</string>
     <string name="quest_settings_max_roof_levels">要显示的任务（建筑物高度）减去（屋顶高度）的最大值</string>
     <string name="tree_custom_quest_import_export_message">获取当前使用的文件还是提供新文件？详情请查看相应的任务启用信息。</string>
     <string name="quest_osmose_hide_type">忽略相同的问题…</string>
-    <string name="default_disabled_msg_poi_fixme">此“任务”以红点显示 FixMes （默认情况下\"yes\"和 \"continue\"除外）。点击圆点可显示详细信息和其他回答。</string>
+    <string name="default_disabled_msg_poi_fixme">此“任务”以红点显示 FixMes （默认情况下“是”和“继续”除外）。点击圆点可显示详细信息和其他回答。</string>
     <string name="show_nearby_quests_all_types">显示所有任务类型</string>
     <string name="quest_artwork_land_art">地景艺术</string>
     <string name="import_export_presets_select">选择要导出的预设</string>
@@ -228,10 +228,10 @@
     <string name="pref_export">导出设置</string>
     <string name="quest_benchMaterial_brick">砖块</string>
     <string name="default_disabled_msg_poi_vacant">这个“任务”以灰点的形式显示空置的店铺。点击圆点可显示详细信息和其他回答。</string>
-    <string name="quest_generic_surface_yes">允许不带注记</string>
+    <string name="quest_generic_surface_yes">允许无注释</string>
     <string name="quest_recycling_excrement_bag_dispenser">它有一个粪便袋自助机</string>
-    <string name="quest_generic_surface_message">允许通用的表面答案而不需要注记？</string>
-    <string name="pref_save_photos_summary">存储创建注记时拍摄的全尺寸照片，而不清除 EXIF 数据</string>
+    <string name="quest_generic_surface_message">允许通用的表面答案而不需要注释？</string>
+    <string name="pref_save_photos_summary">存储创建注释时拍摄的全尺寸照片，而不清除 EXIF 数据</string>
     <string name="pref_search_more_languages_title">以更多语言提供搜索功能</string>
     <string name="pref_caps_word_name_input">输入名称时所有单词的首字母大写</string>
     <string name="quest_osmose_false_positive">报告误报</string>
@@ -240,19 +240,19 @@
     <string name="default_disabled_msg_poi_bike">该“任务”将与自行车相关的兴趣点显示为紫色圆点。点击圆点可显示详细信息和其他回答。</string>
     <string name="quest_monitor_search_radius_text">设置附近任务的搜索半径。注意，距离稍远的任务也可能被找到。精度低于此值的地点将被忽略。</string>
     <string name="quest_osmose_settings_items">变更要忽略的项目类型</string>
-    <string name="pref_hide_keyboard_title">创建笔记前隐藏键盘</string>
+    <string name="pref_hide_keyboard_title">创建注释前隐藏键盘</string>
     <string name="pref_auto_download_summary">自动下载附近区域的数据</string>
-    <string name="pref_screen_notes">笔记</string>
+    <string name="pref_screen_notes">注释</string>
     <string name="quest_benchMaterial_wood">木材</string>
     <string name="quest_buildingColour_title">这座建筑的整体颜色是？</string>
     <string name="tree_custom_quest_import">提供</string>
-    <string name="quest_tree_error">不被识别。请尝试输入树木的属、种或英文名称。否则，请考虑留下备注。</string>
+    <string name="quest_tree_error">不被识别。请尝试输入树木的属、种或英文名称。否则，请考虑留下注释。</string>
     <string name="show_nearby_quests_disable">不显示附近的任务</string>
     <string name="quest_buildingPartColour_title">该建筑部分的整体颜色是？</string>
     <string name="pref_quest_monitor_title">通报关于附近的任务</string>
     <string name="pref_read_log_save">将完整日志保存为文件</string>
     <string name="pref_way_direction_summary">打开任务时，在高亮的线条上显示箭头。例如，在添加单行道时非常有用。</string>
-    <string name="quest_settings_dot_labels_message">设置标签应按给定顺序使用的标记。空字符串将不会显示任何标记，\"label \"将使用名称、品牌、参考编号、本地参考编号和运营商显示默认的 StreetComplete 名称标记。</string>
+    <string name="quest_settings_dot_labels_message">设置标签应按给定顺序使用的标记。空字符串将不会显示任何标记，“标签”将使用名称、品牌、参考编号、本地参考编号和运营商显示默认的 StreetComplete 名称标记。</string>
     <string name="quest_poi_camera_title">兴趣点：监控摄像头</string>
     <string name="pref_gpx_track_provide">选择 GPX 文件</string>
     <string name="pref_screen_quests">任务</string>
@@ -316,7 +316,7 @@
     <string name="quest_buildingType_sports_hall">体育馆</string>
     <string name="time_limited_from">从</string>
     <string name="quest_guidepost_sports_title">该路标适用于哪些运动？</string>
-    <string name="quest_guidepost_sports_note">如果列出的特征均未涵盖，请留下注记以说明。</string>
+    <string name="quest_guidepost_sports_note">如果有任何未包含在所列功能中的内容，请留下注释。</string>
     <string name="quest_guidepost_sports_answer_simple">这只是个简单的路标</string>
     <string name="quest_guidepost_sports_hiking">徒步旅行</string>
     <string name="quest_guidepost_sports_bicycle">单车骑行</string>
@@ -359,7 +359,7 @@
     <string name="move_node_with_geometry">移动此节点将修改以下路径或多边形关系的几何形状：%s。
 \n请注意：任何更改都不会在背景地图上立刻显现。</string>
     <string name="move_node_message_external_source_addition">请注意，该任务的位置可能不会随节点移动。</string>
-    <string name="close_note_checkbox">关闭注记（只有当你真正解决了注记中的问题时才能这么做！）</string>
+    <string name="close_note_checkbox">关闭注释（只有当您真正解决了注释中的问题时才能这么做！）</string>
     <string name="access_manager_message">选择通行限制标签。切记只添加已标识过的通行限制，并尽可能避免一般性的“access”标签</string>
     <string name="access_manager_button_add_conditional">添加条件</string>
     <string name="access_length_limit">长度</string>
@@ -370,14 +370,14 @@
     <string name="quest_settings_leaf_type_single_tree_message">同时询问单棵树的树叶类型？</string>
     <string name="quest_guidepost_sports_winter_hiking">冬季徒步</string>
     <string name="dialog_button_understood">了解</string>
-    <string name="quest_destination_title">这条路上有哪些目的地的标志？</string>
+    <string name="quest_destination_title">这条路上有哪些方向路标？</string>
     <string name="quest_surface_value_metal_grid">金属格栅</string>
     <string name="quest_building_demolished">已被拆除（痕迹可见）</string>
     <string name="quest_generic_answer_show_edit_tags">显示/编辑标签</string>
     <string name="quest_barrier_locked_title">这道屏障（通常）是锁着的吗？</string>
     <string name="quest_guidepost_sports_answer_simple_description">这只是个简单的路标，不含具体的运动项目。</string>
     <string name="quest_seating_veranda">在阳台/门廊上（有屋顶，可以略高于地面）</string>
-    <string name="quest_disabled_msg_railway_platform_ref">请注意，维基中并没有明确说明使用哪个标签最好，因此要由用户自己决定。请在任务设置中选择 \"ref\"（默认）或 \"local_ref\"。
+    <string name="quest_disabled_msg_railway_platform_ref">请注意，维基中并没有明确说明使用哪个标签最好，因此要由用户自己决定。在任务设置中选择“ref”（默认）和“local_ref”。
 \n 如果一个站台上有两条轨道，则使用分号分隔开数值，例如：2;3</string>
     <string name="custom_overlay_highlight_missing">高亮显示缺少的数据</string>
     <string name="restriction_overlay_relation_incomplete">限制关系不完整，需要下载周边区域</string>
@@ -392,7 +392,7 @@
     <string name="tutorial_info_fork_message"><b>SCEE</b>
 \n
 \n这是 StreetComplete 的修改版本。它适用于具有 OSM 进阶知识，经验丰富的用户。它为您提供更多控制权，同时也将承载更多<i>责任</i>。
-\n这尤其适用于编辑原始标签和删除节点的可能性，也适用于修改任务的元素选择。在 SCEE 中添加的任务，在所有情况下<i>可能都无法回答</i>，并且默认情况下处于禁用状态。，如果您无法回答，请隐藏它们。同时请<i>不要滥发注记</i>。
+\n这尤其适用于编辑原始标签和删除节点的可能性，也适用于修改任务的元素选择。在 SCEE 中添加的任务，可能并非在所有情况下<i>都可回答</i>，并且默认情况下处于禁用状态。请隐藏它们，以防您无法回答。同时请<i>不要滥发注释</i>。
 \n
 \n开箱即用， SCEE 被设定为与 StreetComplete 高度相似。</string>
     <string name="insert_node">将节点插入到路径</string>
@@ -402,10 +402,10 @@
     <string name="add_access">添加通行限制……</string>
     <string name="access_weight_limit">重量</string>
     <string name="create_relation_action_description">您已建立了关系，与 …</string>
-    <string name="custom_overlay_filter_message">单击下面的链接可在浏览器中打开有关元素选择语法的信息。请注意，按年份选择元素时，重新调查间隔设置可能会影响结果。
+    <string name="custom_overlay_filter_message">单击下面的链接可在浏览器中打开有关元素选择语法的信息。请注意，按年龄选择元素时，重新调查间隔设置可能会影响结果。
 \n复选框取代了“节点、路径”部分。</string>
     <string name="quest_construction_value">设置 \"construction=...\"，如果未知则留空</string>
-    <string name="default_disabled_msg_viaFerrataScale">默认情况下，此任务类型处于禁用状态。因为铁索攀岩路线的评级非常主观，需要对其所使用的分级系统以及进行铁索攀岩时的专业知识。而这需要高级的登山技能。由于铁索攀岩难度没有全球通用的评级，因此这里使用德国的Huesler 评级。</string>
+    <string name="default_disabled_msg_viaFerrataScale">默认禁用此任务类型。因为铁索攀岩路线的评级非常主观，需要对其所使用的分级系统以及进行铁索攀岩时的专业知识。而这需要高级的登山技能。由于铁索攀岩难度没有全球通用的评级，因此这里使用德国的 Huesler 评级。</string>
     <string name="quest_service_building_oil_pumping_station_description">设施包括用于将油从一处抽送到另一处的泵</string>
     <string name="quest_service_building_sewerage_description">与污水收集、输送或处理相关的服务建筑</string>
     <string name="quest_service_building_gas_pumping_station">燃气泵站</string>
@@ -423,7 +423,7 @@
     <string name="quest_service_building_telecom_exchange_description">将固定电话用户连接到电信服务设备的场所</string>
     <string name="quest_service_building_internet_exchange_description">将互联网用户连接到互联网服务设备的场所</string>
     <string name="quest_service_building_internet_exchange">互联网交换</string>
-    <string name="default_disabled_msg_trail_visibility">默认情况下禁用此任务类型，因为路径可见性的评级非常主观，并且需要其所使用的评级系统的专业知识。</string>
+    <string name="default_disabled_msg_trail_visibility">默认禁用此任务类型，因为路径可见性的评级非常主观，并且需要所使用的评级系统的专业知识。</string>
     <string name="quest_service_building_type_well_description">通过挖掘或钻探获得地下水的结构设施</string>
     <string name="quest_service_building_type_reservoir_description">用于储存淡水的大型人工水箱</string>
     <string name="quest_service_building_oil_pumping_station">油泵站</string>
@@ -615,4 +615,9 @@
     <string name="quest_street_cabinet_transport_management">运输管理</string>
     <string name="quest_bicycle_parking_type_saddleholder">自行车鞍座</string>
     <string name="quest_saunaAvailability_title">这里有桑拿吗？</string>
+    <string name="quest_swimming_pool_indoor_and_outdoor">两者（室内和室外）</string>
+    <string name="quest_swimming_pool_indoor_only">仅室内</string>
+    <string name="quest_swimming_pool_outdoor_only">仅室外</string>
+    <string name="quest_swimming_pool_no">没有游泳池</string>
+    <string name="quest_swimmingPoolAvailability_title">这里有游泳池吗？</string>
 </resources>

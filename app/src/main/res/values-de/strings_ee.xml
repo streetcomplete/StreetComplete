@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="pref_hide_notes_title">Hinweise bestimmter Benutzer ausblenden</string>
-    <string name="pref_category_mods">SCEE-Einstellungen</string>
+    <string name="pref_category_mods">SCEE Einstellungen</string>
     <string name="pref_screen_notes">Hinweise</string>
     <string name="pref_save_file_error">Fehler beim Speichern der Datei</string>
     <string name="pref_expert_mode_title">Expertenmodus</string>
@@ -297,16 +297,7 @@
 \n%s</string>
     <string name="pref_read_reverse_button">Umkehren</string>
     <string name="pref_delete_old_data_after_message">Entferne heruntergeladene OSM-Daten, wenn sie älter als diese Anzahl von Tagen sind</string>
-    <string name="pref_expert_mode_message">Dies wird die Verwendung von Aufgaben ermöglichen, die in SCEE hinzugefügt wurden, sowie Möglichkeiten zum
-\n \u0020<li>Direkten Bearbeiten von Tags</li>
-\n \u0020<li>Verschieben von Knoten, die Teil von Wegen oder Relationen sind</li>
-\n \u0020<li>Löschen von alleinstehenden Knoten</li>
-\n \u0020<li>Bearbeiten von Elementen, die durch einen Hinweis blockiert sein sollten</li>
-\n \u0020<li>Hinzufügen von alleinstehenden Knoten an beliebigen Stellen</li>
-\n \u0020<li>Ändern der Elementauswahl von Aufgaben</li>
-\n
-\n \u0020Dies ist immer noch weniger als die meisten anderen Editoren zulassen, aber unvorsichtige Verwendung kann zu Schäden an Daten führen, die in StreetComplete nicht möglich sind. Beachte, dass du durch das Aktivieren des Expertenmodus eine deutlich größere Verantwortung für deine Bearbeitungen trägst.
-\n \u0020Aktiviere diese Einstellung nur, wenn du Erfahrung mit OSM außerhalb von StreetComplete hast und verstehst, was du tust. \u0020</string>
+    <string name="pref_expert_mode_message">Dies wird die Verwendung von Aufgaben ermöglichen, die in SCEE hinzugefügt wurden, sowie Möglichkeiten zum \n <li>Direkten Bearbeiten von Tags</li> \n <li>Verschieben von Knoten, die Teil von Wegen oder Relationen sind</li> \n <li>Löschen von alleinstehenden Knoten</li> \n <li>Bearbeiten von Elementen, die durch einen Hinweis blockiert sein sollten</li> \n <li>Hinzufügen von alleinstehenden Knoten an beliebigen Stellen</li> \n <li>Ändern der Elementauswahl von Aufgaben</li> \n\n Dies ist immer noch weniger als die meisten anderen Editoren zulassen, aber unvorsichtige Verwendung kann zu Schäden an Daten führen, die in StreetComplete nicht möglich sind. Beachte, dass du durch das Aktivieren des Expertenmodus eine deutlich größere Verantwortung für deine Bearbeitungen trägst. \n Aktiviere diese Einstellung nur, wenn du Erfahrung mit OSM außerhalb von StreetComplete hast und verstehst, was du tust.</string>
     <string name="access_manager_message">Wähle Zugangs-Tags aus. Denke daran, nur ausgeschilderten Zugang zu kennzeichnen, und vermeide möglichst das allgemeine Tag „access“</string>
     <string name="quest_is_pharmacy_dispensing_title">Gibt diese Apotheke alle verschreibungspflichtigen Arzneimittel ab\?</string>
     <string name="custom_overlay_dash_filter_hint">Filter mit gestricheltem Element</string>
@@ -616,6 +607,24 @@
     <string name="quest_valves_dunlop">DV/NV: Dunlop / Woods</string>
     <string name="quest_valves_schrader">AV: Schrader / Autoventil</string>
     <string name="quest_valves_regina">RV: Regina / Italienisches Ventil</string>
-    <string name="quest_saunaAvailability_title">Gibe es hier eine Sauna?</string>
+    <string name="quest_saunaAvailability_title">Gibt es hier eine Sauna?</string>
     <string name="quest_bicycle_parking_type_saddleholder">Sattelhalter</string>
+    <string name="quest_swimming_pool_indoor_and_outdoor">Beides (innen und außen)</string>
+    <string name="quest_swimming_pool_indoor_only">Nur innen</string>
+    <string name="quest_swimming_pool_outdoor_only">Nur außen</string>
+    <string name="quest_swimmingPoolAvailability_title">Gibt es hier ein Schwimmbecken?</string>
+    <string name="quest_swimming_pool_no">Kein Schwimmbecken</string>
+    <string name="quest_sacScale_strolling">Spazieren</string>
+    <string name="quest_sacScale_strolling_description">Ein flacher, hindernisfreier Weg, der für alle Schuharten, Kinderwagen oder Krücken geeignet ist und keine Orientierungsfähigkeiten erfordert.</string>
+    <string name="quest_lampType_title">Was für eine Lampe ist das?</string>
+    <string name="quest_lampType_led">LED-Lampe</string>
+    <string name="quest_lampType_highPressureSodium">Natriumdampf-Hochdrucklampe</string>
+    <string name="quest_lampType_lowPressureSodium">Natriumdampf-Niederdrucklampe</string>
+    <string name="quest_lampType_gaslight">Gaslaterne</string>
+    <string name="quest_lampType_fluorescent">Leuchtstofflampe</string>
+    <string name="quest_lampType_incandescent">Glühlampe</string>
+    <string name="quest_lampType_metalHalide">Halogen-Metalldampflampe</string>
+    <string name="quest_lampType_halogen">Halogenlampe</string>
+    <string name="quest_lampType_mercury">Quecksilberdampflampe</string>
+    <string name="quest_lampType_disabled_msg">Diese Suche ist standardmäßig deaktiviert, da sie nicht einfach zu beantworten ist und je nach Region als Spam eingestuft werden könnte.</string>
 </resources>

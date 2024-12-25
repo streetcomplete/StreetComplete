@@ -53,7 +53,7 @@
     <string name="show_nearby_quests_visible">Zobrazit pouze zapnuté úkoly</string>
     <string name="show_nearby_quests_all_types">Zobrazit všechny úkoly</string>
     <string name="show_nearby_quests_even_hidden">Zobrazit všechny, i skryté úkoly</string>
-    <string name="pref_search_more_languages_title">Vyhledávst úkoly ve více jazycích</string>
+    <string name="pref_search_more_languages_title">Vyhledávat úkoly ve více jazycích</string>
     <string name="import_error">Chyba při importu</string>
     <string name="tree_custom_quest_import_export_message">Získat momentálně používaný soubor nebo nahrát nový?</string>
     <string name="tree_custom_quest_import">Nahrát</string>
@@ -115,7 +115,7 @@
     <string name="quest_seating_pedestrian_zone">V pěší zóně</string>
     <string name="quest_seating_street">Na ulici</string>
     <string name="quest_seating_sidewalk">Na chodníku</string>
-    <string name="quest_seating_balcony">Na balkoně</string>
+    <string name="quest_seating_balcony">Na balkoně (ne v přízemí)</string>
     <string name="quest_seating_roof">Na střeše</string>
     <string name="quest_seating_garden">V zahradě</string>
     <string name="quest_seating_beach">Na pláži</string>
@@ -229,7 +229,7 @@
     <string name="quest_benchMaterial_concrete">Beton</string>
     <string name="quest_piste_ref_title">Jaké je číslo této sjezdovky?</string>
     <string name="quest_utility_power">Elektřina</string>
-    <string name="quest_seating_veranda">Na verandě</string>
+    <string name="quest_seating_veranda">Na verandě (zastřešené, může být lehce vyvýšené)</string>
     <string name="quest_shelter_type_title">Jaký druh přístřešku je toto?</string>
     <string name="quest_guidepostEle_hint">Nepoužívejte výškový údaj z GPS, ten je typicky nepřesný a nepoužívá správný výškový referenční systém.</string>
     <string name="import_error_db_version">Chyba při importu: neznámá verze</string>
@@ -268,17 +268,7 @@
     <string name="day_night_visibility">Nezobrazovat úkoly nevhodné pro momentální denní dobu</string>
     <string name="pref_quest_monitor_title">Upozornit na úkoly v okolí</string>
     <string name="pref_quest_monitor_summary">Sledovat polohu, když je aplikace v pozadí, vyjma toho, když je ukončena tlačítkem zpět</string>
-    <string name="pref_expert_mode_message">Toto vám umožní zobrazit úkoly přidané v SCEE a způsoby
-\n<li>přímé úpravy tagů</li>
-\n<li>přesouvat body které jsou součástí cest nebo relací</li>
-\n<li>mazat libovolné volné body</li>
-\n<li>uprovovat prvky, které měly být blokovány poznámkou</li>
-\n<li>přidávat volné body kamkoliv</li>
-\n<li>měnit výběr prvků u úkolů</li>
-\n
-\nTo je stále méně než co vám umožní jiné editory, ale při nepozornosti může dojít k rozbití dat způsoby, kterými to ve StreetComplete nejde. Prosím dbejte na to, že zapnutím pokročilého režimu na vás padá mnohem větší zodpovědnost za vaše změny.
-\n
-\nProsím, zapněte toto nastavení pouze pokud máte s OSM zkušenost i mimo StreetComplete a uvědomujete si, co děláte. \u0020</string>
+    <string name="pref_expert_mode_message">Toto vám umožní zobrazit úkoly přidané v SCEE a způsoby \n<li>přímé úpravy tagů</li> \n<li>přesouvat body které jsou součástí cest nebo relací</li> \n<li>mazat libovolné volné body</li> \n<li>uprovovat prvky, které měly být blokovány poznámkou</li> \n<li>přidávat volné body kamkoliv</li> \n<li>měnit výběr prvků u úkolů</li> \n \nTo je stále méně než co vám umožní jiné editory, ale při nepozornosti může dojít k rozbití dat způsoby, kterými to ve StreetComplete nejde. Prosím dbejte na to, že zapnutím pokročilého režimu na vás padá mnohem větší zodpovědnost za vaše změny. \n \nProsím, zapněte toto nastavení pouze pokud máte s OSM zkušenost i mimo StreetComplete a uvědomujete si, co děláte. \u0020</string>
     <string name="import_export_custom_overlays">Vlastní překryvné vrstvy</string>
     <string name="pref_advanced_resurvey_title">Pokročilý opakovaný průzkum</string>
     <string name="quest_settings_sidewalk_distance_button">Vzdálenost</string>
@@ -324,4 +314,50 @@
     <string name="quest_service_building_railway_wash">Myčka železničních vozů</string>
     <string name="quest_generic_surface_yes">Povolit bez vyžadování poznámky</string>
     <string name="quest_generic_surface_no">Pouze s poznámkou (základní)</string>
+    <string name="advanced_resurvey_message_date">Namísto použití intervalů budou úkoly zobrazeny pokud jsou jejich data kontroly starší než:</string>
+    <string name="pref_quest_settings_preset_title">Nastavení úkolu zvlášť pro každou předvolbu</string>
+    <string name="quest_mapSize_site">Nějaké místo, např. park nebo zoo</string>
+    <string name="quest_mapSize_city">Celé město</string>
+    <string name="quest_mapSize_landscape">Celá krajina</string>
+    <string name="quest_caravanSiteType_harbour">Přístav - v přístavu.</string>
+    <string name="custom_overlay_title">Vlastní překryvná vrstva</string>
+    <string name="quest_caravanSiteType_village">Vesnice - stání poblíž menší vesnice.</string>
+    <string name="quest_caravanSiteType_parking_lot">Parkoviště - přímo na parkovišti.</string>
+    <string name="quest_caravanSiteType_farm">Farma</string>
+    <string name="quest_caravanSiteType_title">Kde se tato karavanová oblast nachází?</string>
+    <string name="quest_caravanSiteType_town">Město - stání poblíž většího města.</string>
+    <string name="quest_cuisine_title">Jaké kuchyně toto místo má? Použijte doporučené OSM hodnoty!</string>
+    <string name="quest_tree_error">Nerozpoznáno. Zkuste zadat rod, druh nebo anglický název stromu. Jinak zvažte zanechání poznámky.</string>
+    <string name="quest_tree_genus_title">Jakého biologického rodu nebo druhu je tento strom?</string>
+    <string name="quest_valves_title">Jaké druhy ventilů jsou zde dostupné?</string>
+    <string name="quest_mapSize_region">Větší oblast s např. několika vesnicema</string>
+    <string name="quest_artwork_statue">Socha člověka nebo zvířete</string>
+    <string name="quest_artwork_sculpture">Jiná socha</string>
+    <string name="quest_artwork_bust">Busta (bysta)</string>
+    <string name="quest_destination_title">Jaké destinace jsou uvedené na značce pro tuto silnici?</string>
+    <string name="quest_destination_add_more">Přidat další destinaci</string>
+    <string name="quest_destination_all_lanes_button">Všechny
+\npruhy</string>
+    <string name="quest_seating_no">Bez sezení, ale jen s sebou taky ne</string>
+    <string name="custom_overlay_color_hint">Nechte políčko prázdné pro zobrazení všech prvků stejnou barvou</string>
+    <string name="custom_overlay_highlight_missing">Zvýraznit chybějící data</string>
+    <string name="custom_overlay_color_info">Detaily barvení</string>
+    <string name="quest_maxheight_answer_noSign_question">Je zde místo na jednoduchý průjezd i pro ty největší náklaďáky (aspoň 4.5 metrů)?</string>
+    <string name="quest_maxheight_answer_noSign_question_yes">Vysoké náklaďáky mohou projet</string>
+    <string name="quest_maxheight_answer_noSign_question_no">Vysoké náklaďáky se nevejdou</string>
+    <string name="quest_maxheight_answer_noSign_question_unclear">Není jasné</string>
+    <string name="quest_mapSize_title">Jaká oblast je pokryta touto mapou?</string>
+    <string name="quest_caravanSiteType_winery">Vinárna - stání ve vinárně, běžně přímo u vinných sadů.</string>
+    <string name="quest_roofColour_title">Jakou celkovou barvu má střecha této budovy?</string>
+    <string name="quest_caravanSiteType_river">Řeka - tato oblast se nachází přímo na řece.</string>
+    <string name="quest_caravanSiteType_lake">Jezero - tato oblast se nachází přímo na jezeře.</string>
+    <string name="quest_caravanSiteType_museum">Muzeum</string>
+    <string name="quest_caravanSiteType_restaurant">Restaurace</string>
+    <string name="quest_caravanSiteType_beach">Pláž</string>
+    <string name="quest_cuisine_add_more">Přidat další kuchyň</string>
+    <string name="custom_overlay_filter_info">Detaily filtrování</string>
+    <string name="custom_overlay_add_button">Nový vlastní</string>
+    <string name="quest_railwayPlatformRef_abc">ABC</string>
+    <string name="quest_name_brand">Je to název značky (brand)…</string>
+    <string name="custom_overlay_filter_message">Po kliknutí na odkaz dole se vám zobrazí informace o syntaxi vybírání prvků (v angličtině). Mějte na mysli že při vybírání prvků dle stáří bude mít na výsledek vliv nastavení intervalu dotazování se na úkoly. Zaškrtávací pole nahrazují tu část \"nodes, ways with\".</string>
 </resources>

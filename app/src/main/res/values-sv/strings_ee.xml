@@ -144,16 +144,7 @@
     <string name="quick_switch_preset">Byt förinställning</string>
     <string name="quest_crossing_type_signals_controlled_zebra">Trafikljus och markerat övergångsställe</string>
     <string name="quest_crossing_type_zebra">Markerat övergångsställe</string>
-    <string name="pref_expert_mode_message">Detta kommer att tillåta uppdrag som lagts till i SCEE och sätt att
-\n \u0020<li>redigera taggar</li>
-\n \u0020<li>flytta noder som är delar av vägar eller relationer</li>
-\n \u0020<li>ta bort lösa noder</li>
-\n \u0020<li>redigera element som skulle ha varit blockerade av en anteckning</li>
-\n \u0020<li>lägga till lösa noder var som helst</li>
-\n \u0020<li>ändra på hur uppdrag väljer ut element</li>
-\n
-\n \u0020Detta är fortfarande mindre än de flesta redigeringsverktyg tillåter, men oförsiktigt användande kan resultera i förstörelse av data på sätt som inte är möjliga med StreetComplete. Var medveten om att du genom att aktivera expertläge bär ett mycket större ansvar för dina redigeringar.
-\n \u0020Vänligen aktivera denna inställning bara om du har OSM-erfarenhet utanför StreetComplete och vet vad du håller på med. \u0020</string>
+    <string name="pref_expert_mode_message">Detta kommer att tillåta uppdrag som lagts till i SCEE och sätt att \n \u0020<li>redigera taggar</li> \n \u0020<li>flytta noder som är delar av vägar eller relationer</li> \n \u0020<li>ta bort lösa noder</li> \n \u0020<li>redigera element som skulle ha varit blockerade av en anteckning</li> \n \u0020<li>lägga till lösa noder var som helst</li> \n \u0020<li>ändra på hur uppdrag väljer ut element</li> \n \n \u0020Detta är fortfarande mindre än de flesta redigeringsverktyg tillåter, men oförsiktigt användande kan resultera i förstörelse av data på sätt som inte är möjliga med StreetComplete. Var medveten om att du genom att aktivera expertläge bär ett mycket större ansvar för dina redigeringar. \n \u0020Vänligen aktivera denna inställning bara om du har OSM-erfarenhet utanför StreetComplete och vet vad du håller på med. \u0020</string>
     <string name="pref_dynamic_quest_creation_summary">Uppdrag skapas när det visade området laddas. Något långsamt, men tillämpar omedelbart ändrade uppdragsinställningar.</string>
     <string name="quest_fixme_remove">Tag bort denna fixme</string>
     <string name="quest_service_building_type_title">Vilken typ av servicebyggnad är detta?</string>

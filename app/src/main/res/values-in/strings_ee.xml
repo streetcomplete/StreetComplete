@@ -99,16 +99,7 @@
     <string name="pref_create_custom_quest_summary">... sebagai alternatif untuk meninggalkan catatan. Ini dapat digunakan sebagai catatan yang tersimpan secara lokal dan terlihat di peta. Perhatikan bahwa Anda harus mengaktifkan misi khusus.</string>
     <string name="pref_way_direction_summary">Tampilkan panah pada garis yang disorot saat membuka pencarian. Berguna, misalnya saat menambahkan jalur.</string>
     <string name="pref_save_photos_summary">Simpan foto versi ukuran penuh yang diambil sewaktu membuat catatan, tanpa menghapus data EXIF</string>
-    <string name="pref_expert_mode_message">Ini akan memungkinkan penggunaan pencarian yang ditambahkan di SCEE, dan cara
-\n \u0020<li>menyunting tag mentah</li>
-\n \u0020<li>memindahkan node yang merupakan bagian dari cara atau relasi</li>
-\n \u0020<li>menghapus node bebas</li>
-\n \u0020<li>menyunting elemen yang harus diblokir oleh catatan</li>
-\n \u0020<li>menambahkan node bebas di mana pun</li>
-\n \u0020<li>mengubah pilihan elemen pencarian</li>
-\n
-\n \u0020Ini masih lebih sedikit daripada yang diizinkan oleh sebagian besar editor lain, tetapi penggunaan yang tidak hati-hati dapat menyebabkan kerusakan data yang tidak mungkin terjadi di StreetComplete. \u0020Perlu diketahui bahwa dengan mengaktifkan mode ahli, Anda memikul tanggung jawab yang lebih besar terhadap hasil suntingan Anda.
-\n \u0020Harap hanya aktifkan pengaturan ini jika Anda berpengalaman menggunakan OSM di luar StreetComplete dan memahami apa yang Anda lakukan. \u0020</string>
+    <string name="pref_expert_mode_message">Ini akan memungkinkan penggunaan pencarian yang ditambahkan di SCEE, dan cara \n \u0020<li>menyunting tag mentah</li> \n \u0020<li>memindahkan node yang merupakan bagian dari cara atau relasi</li> \n \u0020<li>menghapus node bebas</li> \n \u0020<li>menyunting elemen yang harus diblokir oleh catatan</li> \n \u0020<li>menambahkan node bebas di mana pun</li> \n \u0020<li>mengubah pilihan elemen pencarian</li> \n \n \u0020Ini masih lebih sedikit daripada yang diizinkan oleh sebagian besar editor lain, tetapi penggunaan yang tidak hati-hati dapat menyebabkan kerusakan data yang tidak mungkin terjadi di StreetComplete. \u0020Perlu diketahui bahwa dengan mengaktifkan mode ahli, Anda memikul tanggung jawab yang lebih besar terhadap hasil suntingan Anda. \n \u0020Harap hanya aktifkan pengaturan ini jika Anda berpengalaman menggunakan OSM di luar StreetComplete dan memahami apa yang Anda lakukan. \u0020</string>
     <string name="import_presets_overlays_add">Tambahkan</string>
     <string name="export_warning_db_version">Peringatan: versi database tidak diketahui, impor mungkin tidak dapat dilakukan. Mohon minta agar aplikasi diperbarui.</string>
     <string name="tree_custom_quest_import_export_message">Dapatkan file yang sedang digunakan atau berikan file baru? Periksa pesan pengaktifan pencarian yang sesuai untuk detailnya.</string>

@@ -340,16 +340,7 @@
     <string name="custom_overlay_filter_message">Haga clic en el enlace a continuación para abrir información sobre la sintaxis de selección de elementos en un navegador. Tenga en cuenta que al seleccionar elementos por edad, la configuración del intervalo de repregunta puede influir en el resultado.
 \nLas casillas de verificación reemplazan la parte \"nodos, vías con\".</string>
     <string name="restriction_overlay_title">Restricciones de tráfico</string>
-    <string name="pref_expert_mode_message">Esto permitirá usar las misiones añadidas en SCEE, y las formas de
-\n \u0020<li>Edición de etiquetas sin procesar</li>
-\n \u0020<li>Nodos móviles que forman parte de vías o relaciones</li>
-\n \u0020<li>Eliminación de cualquier nodo flotante</li>
-\n \u0020<li>Editar elementos que deben ser bloqueados por una nota</li>
-\n \u0020<li>Adición de nodos flotantes libres en cualquier lugar</li>
-\n \u0020<li>Cambiar la selección de elementos de las misiones</li>
-\n
-\n \u0020Esto sigue siendo menos de lo que la mayoría de los otros editores permiten, pero el uso imprudente puede dañar los datos de formas que no son posibles en StreetComplete. \u0020Tenga en cuenta que al habilitar el modo experto, tiene una responsabilidad significativamente mayor por sus ediciones.
-\n \u0020Por favor, solo habilite esta configuración si tiene experiencia en OSM fuera de StreetComplete y entiende lo que está haciendo. \u0020</string>
+    <string name="pref_expert_mode_message">Esto permitirá usar las misiones añadidas en SCEE, y las formas de \n \u0020<li>Edición de etiquetas sin procesar</li> \n \u0020<li>Nodos móviles que forman parte de vías o relaciones</li> \n \u0020<li>Eliminación de cualquier nodo flotante</li> \n \u0020<li>Editar elementos que deben ser bloqueados por una nota</li> \n \u0020<li>Adición de nodos flotantes libres en cualquier lugar</li> \n \u0020<li>Cambiar la selección de elementos de las misiones</li> \n \n \u0020Esto sigue siendo menos de lo que la mayoría de los otros editores permiten, pero el uso imprudente puede dañar los datos de formas que no son posibles en StreetComplete. \u0020Tenga en cuenta que al habilitar el modo experto, tiene una responsabilidad significativamente mayor por sus ediciones. \n \u0020Por favor, solo habilite esta configuración si tiene experiencia en OSM fuera de StreetComplete y entiende lo que está haciendo. \u0020</string>
     <string name="restriction_overlay_relation_incomplete">La relación de restricción está incompleta, se requiere la descarga del área circundante</string>
     <string name="show_nearby_quests_distance">Mostrar tareas dentro de esta distancia (limitado a 10 metros)</string>
     <string name="import_presets_overlays_message">¿Añadir importado o reemplazar el existente\? Si elige reemplazar, se eliminarán todos los existentes actualmente.</string>

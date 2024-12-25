@@ -77,16 +77,7 @@
     <string name="import_export_custom_overlays_select">Vyber prekrytia na exportovanie</string>
     <string name="import_export_settings">Ostatné nastavenia aplikácie</string>
     <string name="import_export_hidden_quests">Skryté úlohy</string>
-    <string name="pref_expert_mode_message">Toto povolí používanie úloh pridaných v SCEE, a možnosti
-\n \u0020<li>upravovať značky</li>
-\n \u0020<li>posúvať body, ktoré sú súčasťou čiar alebo relácií</li>
-\n \u0020<li>mazanie voľných bodov</li>
-\n \u0020<li>upravovanie objektov, ktoré sú blokované poznámkou</li>
-\n \u0020<li>pridanie voľných bodov kdekoľvek</li>
-\n \u0020<li>úpravu výberu objektových úloh</li>
-\n
-\n \u0020Toto je stále menej ako ponúka väčšina editorov, ale nepozornosť môže viesť k poškodzovaniu dát tak, ako to v StreetComplete možné nie je. Maj na pamäti, že povolením režimu pre expertov budeš oveľa viac zodpovedný za svoje úpravy.
-\n \u0020Prosím povoľ toto nastavenie len keď máš skúsenosti s OSM mimo \u0020StreetComplete a vieš čo robíš. \u0020</string>
+    <string name="pref_expert_mode_message">Toto povolí používanie úloh pridaných v SCEE, a možnosti \n \u0020<li>upravovať značky</li> \n \u0020<li>posúvať body, ktoré sú súčasťou čiar alebo relácií</li> \n \u0020<li>mazanie voľných bodov</li> \n \u0020<li>upravovanie objektov, ktoré sú blokované poznámkou</li> \n \u0020<li>pridanie voľných bodov kdekoľvek</li> \n \u0020<li>úpravu výberu objektových úloh</li> \n \n \u0020Toto je stále menej ako ponúka väčšina editorov, ale nepozornosť môže viesť k poškodzovaniu dát tak, ako to v StreetComplete možné nie je. Maj na pamäti, že povolením režimu pre expertov budeš oveľa viac zodpovedný za svoje úpravy. \n \u0020Prosím povoľ toto nastavenie len keď máš skúsenosti s OSM mimo \u0020StreetComplete a vieš čo robíš. \u0020</string>
     <string name="pref_show_solved_animation_summary">Toto taktiež upravuje zvuk splnenia úlohy</string>
     <string name="pref_disable_navigation_mode_summary">Zakáže mód, ktorý automaticky nakláňa a rotuje mapu</string>
     <string name="pref_auto_download_summary">Automaticky stiahne dáta v okolí</string>

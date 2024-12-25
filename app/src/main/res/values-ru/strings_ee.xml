@@ -515,4 +515,17 @@
     <string name="quest_parking_capacity_disabled_answer_yes">Есть, но количество неясно</string>
     <string name="quest_parking_capacity_hint">Это также включает в себя специальные места, например, для людей с ограниченными возможностями, семей, для зарядки и т.д. Скройте задание, если парковочные места не отмечены и, следовательно, не поддаются подсчету</string>
     <string name="quest_parking_capacity_disabled_title">Сколько здесь парковочных мест для инвалидов?</string>
+    <string name="quest_swimmingPoolAvailability_title">Есть ли здесь бассейн?</string>
+    <string name="quest_saunaAvailability_title">Есть ли здесь сауна?</string>
+    <string name="pref_offset_fix_title2">Удалить смещения для белых точек</string>
+    <string name="quest_swimming_pool_indoor_only">Только в помещении</string>
+    <string name="quest_swimming_pool_outdoor_only">Только на открытом воздухе</string>
+    <string name="quest_swimming_pool_no">Нет бассейна</string>
+    <string name="quest_shelter_type_lean_to">Лабаз</string>
+    <string name="quest_guidepost_sports_inline_skating">Катание на роликах</string>
+    <string name="quest_service_building_telecom_exchange">Телекоммуникационная станция</string>
+    <string name="quest_service_building_internet_exchange">Точка обмена интернет-трафиком</string>
+    <string name="close">Закрыть</string>
+    <string name="quest_mapType_toposcope_title">Топоскоп</string>
+    <string name="quest_swimming_pool_indoor_and_outdoor">И в помещении и на открытом воздухе</string>
 </resources>
