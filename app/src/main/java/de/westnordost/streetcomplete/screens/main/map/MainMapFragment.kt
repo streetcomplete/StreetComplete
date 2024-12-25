@@ -500,11 +500,9 @@ class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
         }
     }
 
-    fun reverseQuests() {
-        questPinsManager?.reverseQuestOrder()
+    fun setQuestOrder(reverse: Boolean) {
+        questPinsManager?.setQuestOrder(reverse)
     }
-
-    fun isOrderReversed() = questPinsManager?.reversedOrder
 
     @UiThread override fun deleteMarkerForCurrentHighlighting(geometry: ElementGeometry) {
         geometryMarkersMapComponent?.delete(geometry)

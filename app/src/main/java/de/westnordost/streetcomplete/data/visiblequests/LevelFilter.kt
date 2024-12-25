@@ -19,7 +19,8 @@ import de.westnordost.streetcomplete.data.quest.VisibleQuestsSource
 import de.westnordost.streetcomplete.databinding.DialogLevelFilterBinding
 import de.westnordost.streetcomplete.osm.level.LevelTypes
 import de.westnordost.streetcomplete.osm.level.parseSelectableLevels
-import de.westnordost.streetcomplete.screens.main.map.MapFragment
+import de.westnordost.streetcomplete.screens.main.map.maplibre.CameraPosition
+import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 import kotlin.math.ceil
@@ -82,7 +83,7 @@ class LevelFilter internal constructor(private val prefs: ObservableSettings) : 
         return false
     }
 
-    fun showLevelFilterDialog(context: Context, mapFragment: MapFragment?) {
+    fun showLevelFilterDialog(context: Context, camera: CameraPosition?) {
         val builder = AlertDialog.Builder(context)
         val binding = DialogLevelFilterBinding.inflate(LayoutInflater.from(context))
         builder.setTitle(R.string.level_filter_title)
@@ -91,7 +92,7 @@ class LevelFilter internal constructor(private val prefs: ObservableSettings) : 
         val levelTags = prefs.getString(Prefs.ALLOWED_LEVEL_TAGS, "level,repeat_on,level:ref").split(",")
         val allowedLevelTypes = LevelTypes.entries.filter { levelTags.contains(it.tag) }
         binding.plus.setOnClickListener {
-            val selectableLevels = getLevelsInView(mapFragment?.getDisplayedArea(), allowedLevelTypes)
+            val selectableLevels = getLevelsInView(camera?.position?.enclosingBoundingBox(50.0), allowedLevelTypes)
             val oldText = binding.level.text?.toString()
             val currentLevel = oldText?.let { "[\\d.+-]+".toRegex().find(it)?.value }
             val currentLevelNumber = currentLevel?.toDoubleOrNull()
@@ -104,7 +105,7 @@ class LevelFilter internal constructor(private val prefs: ObservableSettings) : 
             binding.level.setText(oldText?.replace(currentLevel ?: oldText, newLevel.toNiceString()) ?: newLevel.toNiceString())
         }
         binding.minus.setOnClickListener {
-            val selectableLevels = getLevelsInView(mapFragment?.getDisplayedArea(), allowedLevelTypes)
+            val selectableLevels = getLevelsInView(camera?.position?.enclosingBoundingBox(50.0), allowedLevelTypes)
             val oldText = binding.level.text?.toString()
             val currentLevel = oldText?.let { "[\\d.+-]+".toRegex().find(it)?.value }
             val currentLevelNumber = currentLevel?.toDoubleOrNull()

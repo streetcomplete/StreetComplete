@@ -47,6 +47,9 @@ class Preferences(val prefs: ObservableSettings) {
     fun getFloat(key: String, default: Float) = prefs.getFloat(key, default)
 
     var expertMode: Boolean by prefs.boolean(Prefs.EXPERT_MODE, false)
+    var showQuickSettings: Boolean by prefs.boolean(Prefs.QUICK_SETTINGS, false)
+    fun onShowQuickSettingsChanged(callback: (Boolean) -> Unit): SettingsListener =
+        prefs.addBooleanListener(Prefs.QUICK_SETTINGS, false, callback)
 
     fun onLanguageChanged(callback: (String?) -> Unit): SettingsListener =
         prefs.addStringOrNullListener(LANGUAGE_SELECT, callback)

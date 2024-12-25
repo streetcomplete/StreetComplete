@@ -381,6 +381,14 @@ class MainViewModelImpl(
     override val isNavigationMode = MutableStateFlow(false)
 
     override val isRecordingTracks = MutableStateFlow(false)
+
+    override val showQuickSettings = callbackFlow {
+        send(prefs.showQuickSettings)
+        val listener = prefs.onShowQuickSettingsChanged { trySend(it) }
+        awaitClose { listener.deactivate() }
+    }.stateIn(viewModelScope, SharingStarted.Eagerly, prefs.showQuickSettings)
+    override val reverseQuestOrder = MutableStateFlow(false)
+
     // ---------------------------------------------------------------------------------------
 
     init {

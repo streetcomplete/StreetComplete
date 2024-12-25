@@ -1,7 +1,10 @@
 package de.westnordost.streetcomplete.ui.common
 
+import androidx.compose.foundation.magnifier
 import androidx.compose.material.Icon
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.scale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import de.westnordost.streetcomplete.R
@@ -79,6 +82,11 @@ fun ZoomOutIcon() {
 @Composable
 fun StopRecordingIcon() {
     Icon(painterResource(R.drawable.ic_stop_recording_24dp), stringResource(R.string.map_btn_stop_track))
+}
+
+@Composable
+fun QuickSettingsIcon() {
+    Icon(painterResource(R.drawable.ic_settings_48dp), stringResource(R.string.action_settings))
 }
 
 @Composable

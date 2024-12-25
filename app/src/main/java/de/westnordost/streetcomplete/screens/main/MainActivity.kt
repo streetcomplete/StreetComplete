@@ -158,6 +158,7 @@ import de.westnordost.streetcomplete.view.dialogs.SearchFeaturesDialog
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
@@ -346,16 +347,14 @@ class MainActivity :
                 mapFragment?.setInitialCameraPosition(geoUri)
             }
         }
+        observe(viewModel.reverseQuestOrder) {
+            mapFragment?.setQuestOrder(it)
+        }
     }
 
     override fun onResume() {
         super.onResume()
         Log.i(TAG, "onResume")
-        // todo: maybe not necessary any more with compose
-        binding.quickSettingsButton.visibility = if (prefs.getBoolean(Prefs.QUICK_SETTINGS, false))
-            View.VISIBLE
-        else
-            View.GONE
         if (DisplaySettingsFragment.gpx_track_changed) {
             mapFragment?.loadGpxTrack()
             DisplaySettingsFragment.gpx_track_changed = false
@@ -874,24 +873,6 @@ class MainActivity :
         } else {
             toast(R.string.offline)
         }
-    }
-
-    private fun onClickQuickSettings() {
-        val popupMenu = PopupMenu(this, binding.quickSettingsButton)
-        popupMenu.menu.add(Menu.NONE, 1, Menu.NONE, R.string.quick_switch_preset)
-        popupMenu.menu.add(Menu.NONE, 2, Menu.NONE, R.string.level_filter)
-        popupMenu.menu.add(Menu.NONE, 3, Menu.NONE, R.string.quick_switch_map_background)
-        popupMenu.menu.add(Menu.NONE, 4, Menu.NONE, if (mapFragment?.isOrderReversed() == true) R.string.quest_order_normal else R.string.quest_order_reverse)
-        popupMenu.setOnMenuItemClickListener { item ->
-            when(item.itemId) {
-                1 -> showProfileSelectionDialog(this, questPresetsController, prefs)
-                2 -> levelFilter.showLevelFilterDialog(this, mapFragment)
-                3 -> prefs.putString(Prefs.THEME_BACKGROUND, if (prefs.getString(Prefs.THEME_BACKGROUND, "MAP") == "MAP") "AERIAL" else "MAP")
-                4 -> { lifecycleScope.launch { mapFragment?.reverseQuests() } }
-            }
-            true
-        }
-        popupMenu.show()
     }
 
     fun onClickZoomOut() {

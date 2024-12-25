@@ -18,8 +18,10 @@ import androidx.compose.foundation.layout.absoluteOffset
 import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.systemBars
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.MaterialTheme
@@ -46,6 +48,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.messages.Message
+import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.screens.about.AboutActivity
 import de.westnordost.streetcomplete.screens.main.controls.CompassButton
 import de.westnordost.streetcomplete.screens.main.controls.Crosshair
@@ -56,6 +59,7 @@ import de.westnordost.streetcomplete.screens.main.controls.MapButton
 import de.westnordost.streetcomplete.screens.main.controls.MessagesButton
 import de.westnordost.streetcomplete.screens.main.controls.OverlaySelectionButton
 import de.westnordost.streetcomplete.screens.main.controls.PointerPinButton
+import de.westnordost.streetcomplete.screens.main.controls.QuickSettingsDropdown
 import de.westnordost.streetcomplete.screens.main.controls.StarsCounter
 import de.westnordost.streetcomplete.screens.main.controls.UploadButton
 import de.westnordost.streetcomplete.screens.main.controls.findClosestIntersection
@@ -74,6 +78,7 @@ import de.westnordost.streetcomplete.screens.tutorial.OverlaysTutorialScreen
 import de.westnordost.streetcomplete.screens.user.UserActivity
 import de.westnordost.streetcomplete.ui.common.AnimatedScreenVisibility
 import de.westnordost.streetcomplete.ui.common.LargeCreateIcon
+import de.westnordost.streetcomplete.ui.common.QuickSettingsIcon
 import de.westnordost.streetcomplete.ui.common.StopRecordingIcon
 import de.westnordost.streetcomplete.ui.common.UndoIcon
 import de.westnordost.streetcomplete.ui.common.ZoomInIcon
@@ -142,6 +147,9 @@ fun MainScreen(
     val hasEdits by remember { derivedStateOf { editItems.isNotEmpty() } }
 
     val isRequestingLogin by viewModel.isRequestingLogin.collectAsState()
+
+    val showQuickSettings by viewModel.showQuickSettings.collectAsState()
+    var showQuickSettingsMenu by remember { mutableStateOf(false) }
 
     var showOverlaysDropdown by remember { mutableStateOf(false) }
     var showOverlaysTutorial by remember { mutableStateOf(false) }
@@ -342,6 +350,22 @@ fun MainScreen(
                         },
                     verticalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
+                    if (showQuickSettings) {
+                        Box{
+                            MapButton(
+                                onClick = { showQuickSettingsMenu = !showQuickSettingsMenu },
+                                modifier = Modifier.height(48.dp).width(48.dp)
+                            ) {
+                                QuickSettingsIcon()
+                            }
+                            QuickSettingsDropdown(
+                                expanded = showQuickSettingsMenu,
+                                onDismissRequest = { showQuickSettingsMenu = false },
+                                viewModel = viewModel
+                            )
+                        }
+                    }
+
                     if (isRecordingTracks) {
                         MapButton(
                             onClick = onClickStopTrackRecording,

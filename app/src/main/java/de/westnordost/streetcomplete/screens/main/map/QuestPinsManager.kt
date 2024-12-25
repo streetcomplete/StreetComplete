@@ -239,8 +239,8 @@ class QuestPinsManager(
         pinsMapComponent.set(pins)
     }
 
-    fun reverseQuestOrder() {
-        reversedOrder = !reversedOrder
+    fun setQuestOrder(reverse: Boolean) {
+        reversedOrder = reverse
         reinitializeQuestTypeOrders()
     }
 

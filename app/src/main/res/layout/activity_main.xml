@@ -71,15 +71,4 @@
 
     </ScrollView>
 
-    <!-- todo: move to MainScreen -->
-    <ImageButton
-        android:id="@+id/quickSettingsButton"
-        android:layout_width="@dimen/map_button_size"
-        android:layout_height="@dimen/map_button_size"
-        android:scaleType="center"
-        style="@style/RoundWhiteButton"
-        app:layout_constraintBottom_toTopOf="@id/undoButton"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:src="@drawable/ic_settings_48dp"/>
-
 </de.westnordost.streetcomplete.view.RelativeLayoutFix >

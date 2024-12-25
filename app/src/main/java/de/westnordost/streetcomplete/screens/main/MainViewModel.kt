@@ -84,6 +84,9 @@ abstract class MainViewModel : ViewModel() {
     abstract val isNavigationMode: MutableStateFlow<Boolean>
 
     abstract val isRecordingTracks: MutableStateFlow<Boolean>
+
+    abstract val showQuickSettings: StateFlow<Boolean>
+    abstract val reverseQuestOrder: MutableStateFlow<Boolean>
 }
 
 data class ShownUrlConfig(val urlConfig: UrlConfig, val alreadyExists: Boolean)
