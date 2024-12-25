@@ -1,5 +1,7 @@
 package de.westnordost.streetcomplete.screens.main
 
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.geometry.Offset
 import androidx.lifecycle.viewModelScope
 import de.westnordost.streetcomplete.data.UnsyncedChangesCountSource
@@ -388,6 +390,7 @@ class MainViewModelImpl(
         awaitClose { listener.deactivate() }
     }.stateIn(viewModelScope, SharingStarted.Eagerly, prefs.showQuickSettings)
     override val reverseQuestOrder = MutableStateFlow(false)
+    override val showMainMenuDialog = mutableStateOf(false)
 
     // ---------------------------------------------------------------------------------------
 

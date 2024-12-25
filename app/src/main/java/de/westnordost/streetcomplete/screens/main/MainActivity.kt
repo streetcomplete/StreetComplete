@@ -1485,7 +1485,7 @@ class MainActivity :
     override fun dispatchKeyEvent(event: KeyEvent): Boolean {
         if (event.keyCode == KeyEvent.KEYCODE_MENU) {
             if (event.action == KeyEvent.ACTION_UP) {
-                // todo: something like viewModel.isShowingMainMenu.value
+                viewModel.showMainMenuDialog.value = true
             }
             return true
         }

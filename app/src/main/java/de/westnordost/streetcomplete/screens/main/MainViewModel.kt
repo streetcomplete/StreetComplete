@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.screens.main
 
+import androidx.compose.runtime.MutableState
 import androidx.compose.ui.geometry.Offset
 import androidx.lifecycle.ViewModel
 import de.westnordost.streetcomplete.data.messages.Message
@@ -87,6 +88,7 @@ abstract class MainViewModel : ViewModel() {
 
     abstract val showQuickSettings: StateFlow<Boolean>
     abstract val reverseQuestOrder: MutableStateFlow<Boolean>
+    abstract val showMainMenuDialog: MutableState<Boolean>
 }
 
 data class ShownUrlConfig(val urlConfig: UrlConfig, val alreadyExists: Boolean)
