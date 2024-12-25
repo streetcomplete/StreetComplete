@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="pref_category_mods">Impostazioni SCEE</string>
+    <string name="pref_expert_mode_title">Modalità esperto</string>
+    <string name="pref_read_log_save">Salva log completo su file</string>
+    <string name="pref_read_filter_hint">Filtra…</string>
+    <string name="pref_screen_notes">Note</string>
+    <string name="pref_hide_notes_title">Nascondi note di un certo utente</string>
+    <string name="pref_hide_notes_hint">Usa la virgola per separare i nomi utente o gli ID</string>
+    <string name="pref_expert_mode_summary">Abilita capacità di modifica avanzate</string>
+    <string name="pref_hide_notes_message">Inserisci il nome utente o l\'ID per ignorare</string>
+</resources>

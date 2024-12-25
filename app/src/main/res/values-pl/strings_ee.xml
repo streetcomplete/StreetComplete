@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="pref_category_mods">Ustawienia</string>
+    <string name="pref_expert_mode_title">Tryb ekspercki</string>
+    <string name="pref_read_log_title">Dziennik aktywności</string>
+    <string name="pref_read_log_save">Zapisz całe logi do pliku</string>
+    <string name="pref_read_filter_hint">Filtruj…</string>
+    <string name="pref_screen_notes">Notatki</string>
+    <string name="pref_hide_notes_title">Ukryj notatki od użytkowników</string>
+    <string name="pref_hide_notes_message">Wpisz nazwy użytkownika albo ID, aby zignorować</string>
+    <string name="pref_show_gpx_button_title">Przycisk pokaż notatkę GPX</string>
+    <string name="pref_swap_gpx_note_button">Zamień przyciski OSM i notatki GPX</string>
+    <string name="pref_hide_keyboard_title">Ukryj klawiaturę przed utworzeniem notatki</string>
+    <string name="pref_save_gpx">Pobierz notatkę GPX, załączone pliki oraz trasy</string>
+    <string name="pref_save_file_error">Błąd zapisywania plików</string>
+    <string name="pref_hide_notes_hint">Użyj symbolu przecinka do oddzielenia nazw użytkownika albo ID</string>
+    <string name="pref_files_not_found">Nie znaleziono żadnych plików</string>
+</resources>
