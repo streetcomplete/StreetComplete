@@ -49,7 +49,7 @@ class SceneMapComponent(
                     Log.i("SceneMapComponent", "different-n: ${createdLightTheme[i]}")
                 }
             }
-//            require(lightTheme == createdLightTheme) { "Created light theme is not the same as the file in assets. Please update MapStyles or MapStyleCreator." }
+            require(lightTheme == createdLightTheme) { "Created light theme is not the same as the file in assets. Please update MapStyles or MapStyleCreator." }
         }
         val styleJsonString = when {
             prefs.prefs.getString(Prefs.THEME_BACKGROUND, "MAP") != "MAP" ->

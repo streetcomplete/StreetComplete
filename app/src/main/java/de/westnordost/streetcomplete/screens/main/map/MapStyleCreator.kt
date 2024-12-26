@@ -349,7 +349,7 @@ fun createMapStyle(name: String, accessToken: String, languages: List<String>, c
             width = byZoom(16.0 to 1.0, 24.0 to 128.0),
             offset = byZoom(16.0 to -0.5, 24.0 to -64.0),
             opacity = byZoom(16.0 to 0.0, 17.0 to 1.0),
-            dashes = if (structure == Structure.Tunnel) "[4, 4]" else null,
+            dashes = null,
         )
     )
 
@@ -359,8 +359,6 @@ fun createMapStyle(name: String, accessToken: String, languages: List<String>, c
         // for roads, first draw the casing (= outline) of all roads
 
         *roads.map { it.toCasingLayer(structure) }.toTypedArray(),
-        // pedestrian area tunnels are not drawn
-        if (structure != Structure.Tunnel) pedestrianAreaCasingLayer(structure) else null,
 
         // , then draw the road color...
 
@@ -368,7 +366,6 @@ fun createMapStyle(name: String, accessToken: String, languages: List<String>, c
         // these are kind of "virtual", do only exist for connectivity
         paths.toLayer(structure), // paths do not have a casing
         stepsOverlayLayer(structure),
-        if (structure != Structure.Tunnel)  pedestrianAreaLayer(structure) else null,
         *roads.map { it.toLayer(structure) }.toTypedArray(),
         // pedestrian area tunnels are not drawn
 
@@ -485,6 +482,9 @@ fun createMapStyle(name: String, accessToken: String, languages: List<String>, c
             )
         ),
 
+        pedestrianAreaCasingLayer(Structure.None),
+        pedestrianAreaLayer(Structure.None),
+
         *allRoadLayers(Structure.Tunnel).toTypedArray(),
 
         *allRoadLayers(Structure.None).toTypedArray(),
@@ -534,6 +534,9 @@ fun createMapStyle(name: String, accessToken: String, languages: List<String>, c
         rivers.toLayer(Structure.Bridge),
         streams.toLayer(Structure.Bridge),
 
+        pedestrianAreaCasingLayer(Structure.Bridge),
+        pedestrianAreaLayer(Structure.Bridge),
+
         *allRoadLayers(Structure.Bridge).toTypedArray(),
 
         Layer("oneway-arrows",
@@ -572,7 +575,7 @@ fun createMapStyle(name: String, accessToken: String, languages: List<String>, c
 
         Layer("labels-housenumbers",
             src = "housenum_label",
-            minZoom = 19.0,
+            minZoom = 18.0,
             paint = defaultTextStyle.copy(
                 text = "[\"get\", \"house_num\"]",
                 sortKey = "15",
@@ -665,7 +668,7 @@ private fun partBeforeLayers(name: String, accessToken: String, rasterSource: St
   "sprite": "asset://map_theme/sprites",
   "layers": [${if (rasterSource == null) "" else "\n"+"""{ "id": "raster-layer", "source": "raster-source", "type": "raster" },"""}"""
 
-data class Waterway(
+private data class Waterway(
     val id: String,
     val filters: List<String>,
     val color: String,
