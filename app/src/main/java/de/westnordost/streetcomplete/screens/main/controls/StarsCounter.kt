@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.screens.main.controls
 
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -10,12 +11,14 @@ import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.Icon
 import androidx.compose.material.LocalElevationOverlay
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Text
 import androidx.compose.material.contentColorFor
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.R
@@ -31,6 +34,7 @@ fun StarsCounter(
     modifier: Modifier = Modifier,
     isCurrentWeek: Boolean = false,
     showProgress: Boolean = false,
+    hasUnsyncedChanges: Boolean
 ) {
     val surfaceColor = MaterialTheme.colors.surface
     val haloColor = LocalElevationOverlay.current?.apply(surfaceColor, 4.dp) ?: surfaceColor
@@ -60,8 +64,12 @@ fun StarsCounter(
                 contentDescription = null,
                 tint = contentColorFor(surfaceColor)
             )
+            if (hasUnsyncedChanges)
+                MapButtonNotification {
+                    Text("+", textAlign = TextAlign.Center)
+                }
         }
-
+/*
         if (isCurrentWeek) {
             Column {
                 TextWithHalo(
@@ -85,7 +93,7 @@ fun StarsCounter(
                 elevation = 4.dp,
                 style = MaterialTheme.typography.titleLarge,
             )
-        }
+        }*/
     }
 }
 
@@ -95,6 +103,7 @@ private fun PreviewStarsCounter() {
     StarsCounter(
         count = 123,
         isCurrentWeek = true,
-        showProgress = true
+        showProgress = true,
+        hasUnsyncedChanges = true
     )
 }

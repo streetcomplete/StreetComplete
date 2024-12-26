@@ -247,7 +247,8 @@ fun MainScreen(
                             .defaultMinSize(minWidth = 96.dp)
                             .clickable(null, null) { viewModel.toggleShowingCurrentWeek() },
                         isCurrentWeek = isShowingStarsCurrentWeek,
-                        showProgress = isUploadingOrDownloading
+                        showProgress = isUploadingOrDownloading,
+                        hasUnsyncedChanges = unsyncedEditsCount != 0
                     )
                 }
 
