@@ -458,16 +458,10 @@ class MainActivity :
                 val oldOverlay = selectedOverlaySource.selectedOverlay
 
                 // if active overlay was tapped, disable it
-                if (oldOverlay == overlay || (oldOverlay is CustomOverlay && index == prefs.getInt(Prefs.CUSTOM_OVERLAY_SELECTED_INDEX, 0))) {
+                if (oldOverlay == overlay || (oldOverlay is CustomOverlay && index == prefs.getInt(Prefs.CUSTOM_OVERLAY_SELECTED_INDEX, 0)))
                     selectedOverlaySource.selectedOverlay = null
-                } else {
-                    // if other overlay was tapped, enable it
-                    if (overlay.title == 0) {
-                        prefs.putInt(Prefs.CUSTOM_OVERLAY_SELECTED_INDEX, index!!)
-                        selectedOverlaySource.selectedOverlay = overlayRegistry.getByName(CustomOverlay::class.simpleName!!)
-                    } else
-                        selectedOverlaySource.selectedOverlay = overlay
-                }
+                else
+                    selectedOverlaySource.selectedOverlay = overlay
                 reloadOverlaySelector()
             }
             view.layoutParams = params
