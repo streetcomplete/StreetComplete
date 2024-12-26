@@ -1,5 +1,8 @@
 package de.westnordost.streetcomplete.screens.main
 
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
 import android.content.Intent
 import android.view.KeyEvent
 import android.widget.Toast
@@ -473,6 +476,9 @@ fun MainScreen(
         LastUploadErrorEffect(lastError = error, onReportError = ::sendErrorReport)
     }
     lastCrashReport?.let { report ->
+        val clip = ClipData.newPlainText("SCEE error message", report)
+        (context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager).setPrimaryClip(clip)
+        context.toast("crash report copied to clipboard")
         LastCrashEffect(lastReport = report, onReport = { context.sendErrorReportEmail(it) })
     }
 
