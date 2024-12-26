@@ -1,6 +1,8 @@
 package de.westnordost.streetcomplete.screens.main.overlays
 
+import android.content.Context
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
@@ -10,22 +12,31 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.preferences.Preferences
+import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.overlays.Overlay
 import de.westnordost.streetcomplete.ui.common.DropdownMenuItem
+import de.westnordost.streetcomplete.util.showOverlayCustomizer
+import org.koin.compose.koinInject
 
 /** Dropdown menu for selecting an overlay */
 @Composable
 fun OverlaySelectionDropdownMenu(
     expanded: Boolean,
     onDismissRequest: () -> Unit,
-    overlays: List<Overlay>,
+    getOverlays: (Context) -> List<Overlay>,
     onSelect: (Overlay?) -> Unit,
     modifier: Modifier = Modifier
 ) {
+    val ctx = LocalContext.current
+    val questTypeRegistry: QuestTypeRegistry = koinInject()
+    val prefs: Preferences = koinInject()
+
     DropdownMenu(
         expanded = expanded,
         onDismissRequest = onDismissRequest,
@@ -37,7 +48,7 @@ fun OverlaySelectionDropdownMenu(
                 modifier = Modifier.padding(start = 48.dp)
             )
         }
-        for (overlay in overlays) {
+        for (overlay in getOverlays(LocalContext.current)) {
             DropdownMenuItem(onClick = { onDismissRequest(); onSelect(overlay) }) {
                 Row(
                     horizontalArrangement = Arrangement.spacedBy(16.dp),
@@ -48,7 +59,25 @@ fun OverlaySelectionDropdownMenu(
                         contentDescription = null,
                         modifier = Modifier.size(36.dp)
                     )
-                    Text(stringResource(overlay.title))
+                    Text(
+                        text = if (overlay.title != 0) stringResource(overlay.title) else overlay.changesetComment,
+                        modifier = Modifier.weight(1f)
+                    )
+                    if (overlay.title == 0) {
+                        Image(
+                            painter = painterResource(R.drawable.ic_settings_48dp),
+                            contentDescription = null,
+                            modifier = Modifier
+                                .size(36.dp)
+                                .clickable {
+                                    onDismissRequest()
+                                    showOverlayCustomizer(overlay.wikiLink!!.toInt(), ctx, prefs, questTypeRegistry,
+                                        { onSelect(overlay) },
+                                        { if (it) onSelect(null) }
+                                    )
+                                }
+                        )
+                    }
                 }
             }
         }

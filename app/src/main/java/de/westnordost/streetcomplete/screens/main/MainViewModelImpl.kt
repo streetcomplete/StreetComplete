@@ -1,9 +1,11 @@
 package de.westnordost.streetcomplete.screens.main
 
-import androidx.compose.runtime.MutableState
+import android.content.Context
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.geometry.Offset
 import androidx.lifecycle.viewModelScope
+import de.westnordost.streetcomplete.ApplicationConstants
+import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.UnsyncedChangesCountSource
 import de.westnordost.streetcomplete.data.download.DownloadController
 import de.westnordost.streetcomplete.data.download.DownloadProgressSource
@@ -36,10 +38,12 @@ import de.westnordost.streetcomplete.overlays.custom.CustomOverlay
 import de.westnordost.streetcomplete.screens.main.controls.LocationState
 import de.westnordost.streetcomplete.screens.main.map.maplibre.CameraPosition
 import de.westnordost.streetcomplete.util.CrashReportExceptionHandler
+import de.westnordost.streetcomplete.util.getFakeCustomOverlays
 import de.westnordost.streetcomplete.util.ktx.launch
 import de.westnordost.streetcomplete.util.parseGeoUri
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.channels.awaitClose
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
@@ -48,6 +52,7 @@ import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.plus
 import kotlinx.coroutines.withContext
 
@@ -157,16 +162,20 @@ class MainViewModelImpl(
 
     /* overlays */
 
-    override val overlays: List<Overlay> get() = overlayRegistry
+    override fun getOverlays(context: Context): List<Overlay> = overlayRegistry.filter {
+        val eeAllowed = if (prefs.getBoolean(Prefs.EXPERT_MODE, false)) true
+        else overlayRegistry.getOrdinalOf(it)!! < ApplicationConstants.EE_QUEST_OFFSET
+        eeAllowed && it !is CustomOverlay
+    } + getFakeCustomOverlays(prefs, context)
 
     override val selectedOverlay: StateFlow<Overlay?> = callbackFlow {
         send(selectedOverlayController.selectedOverlay)
         val listener = object : SelectedOverlaySource.Listener {
             override fun onSelectedOverlayChanged() {
                 if (selectedOverlayController.selectedOverlay is CustomOverlay) {
-                    trySend(null) // todo: sometimes this is not helping, button stays the same
-                }
-                trySend(selectedOverlayController.selectedOverlay)
+                    trySend(null) // necessary for button reload when switching between custom overlays
+                    viewModelScope.launch { delay(50); trySend(selectedOverlayController.selectedOverlay) }
+                } else trySend(selectedOverlayController.selectedOverlay)
             }
         }
         selectedOverlayController.addListener(listener)

@@ -20,10 +20,9 @@ import androidx.compose.foundation.layout.absoluteOffset
 import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.systemBars
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.MaterialTheme
@@ -281,7 +280,7 @@ fun MainScreen(
                         OverlaySelectionDropdownMenu(
                             expanded = showOverlaysDropdown,
                             onDismissRequest = { showOverlaysDropdown = false },
-                            overlays = viewModel.overlays,
+                            getOverlays = { viewModel.getOverlays(it) },
                             onSelect = { viewModel.selectOverlay(it) }
                         )
                     }
@@ -358,7 +357,7 @@ fun MainScreen(
                         Box{
                             MapButton(
                                 onClick = { showQuickSettingsMenu = !showQuickSettingsMenu },
-                                modifier = Modifier.height(48.dp).width(48.dp)
+                                modifier = Modifier.size(48.dp)
                             ) {
                                 QuickSettingsIcon()
                             }
