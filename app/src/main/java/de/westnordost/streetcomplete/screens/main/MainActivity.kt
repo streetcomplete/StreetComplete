@@ -2,10 +2,12 @@ package de.westnordost.streetcomplete.screens.main
 
 import android.annotation.SuppressLint
 import android.content.BroadcastReceiver
+import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.content.IntentFilter
+import android.content.ServiceConnection
 import android.content.pm.PackageManager
 import android.content.res.Configuration
 import android.graphics.Color
@@ -15,6 +17,7 @@ import android.graphics.PorterDuffColorFilter
 import android.graphics.drawable.LayerDrawable
 import android.location.Location
 import android.os.Bundle
+import android.os.IBinder
 import android.view.KeyEvent
 import android.view.Menu
 import android.view.View
@@ -153,6 +156,7 @@ import de.westnordost.streetcomplete.util.math.enlargedBy
 import de.westnordost.streetcomplete.util.showOverlayCustomizer
 import de.westnordost.streetcomplete.view.dialogs.SearchFeaturesDialog
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.async
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -236,6 +240,8 @@ class MainActivity :
     private val bottomSheetFragment: Fragment? get() =
         supportFragmentManager.findFragmentByTag(BOTTOM_SHEET)
 
+    private var questMonitorJob: Job? = null
+
     /* +++++++++++++++++++++++++++++++++++++++ CALLBACKS ++++++++++++++++++++++++++++++++++++++++ */
 
     private val sheetBackPressedCallback = object : OnBackPressedCallback(false) {
@@ -273,6 +279,9 @@ class MainActivity :
     override fun onDestroy() {
         super.onDestroy()
         Log.i(TAG, "onDestroy")
+        questMonitorJob?.cancel()
+        try { applicationContext.unbindService(questMonitorConnection) }
+        catch (_: IllegalArgumentException) {}
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -369,6 +378,7 @@ class MainActivity :
         updateLocationAvailability(isLocationAvailable)
         StreetCompleteApplication.preferences.registerOnSharedPreferenceChangeListener(this)
         reloadOverlaySelector()
+        stopQuestMonitor()
     }
 
     override fun onNewIntent(intent: Intent) {
@@ -397,6 +407,7 @@ class MainActivity :
         locationManager.removeUpdates()
         StreetCompleteApplication.preferences.unregisterOnSharedPreferenceChangeListener(this)
         clearOverlaySelector()
+        startQuestMonitor()
     }
 
     //endregion
@@ -1492,10 +1503,44 @@ class MainActivity :
         }
         return super.dispatchKeyEvent(event)
     }
+
+    private fun startQuestMonitor() {
+        if (prefs.getBoolean(Prefs.QUEST_MONITOR, false) && !NearbyQuestMonitor.running) {
+            questMonitorJob?.cancel()
+            questMonitorJob = lifecycleScope.launch {
+                delay(1000) // wait, as we don't want do start the monitor if onDestroy follows
+                applicationContext.bindService(Intent(this@MainActivity, NearbyQuestMonitor::class.java), questMonitorConnection, BIND_AUTO_CREATE)
+            }
+        }
+    }
+
+    private fun stopQuestMonitor() {
+        // try to stop quest monitor more often than it seems necessary, because sometime android
+        // is slow to react, e.g. when quickly switching between SC and other app
+        if (prefs.getBoolean(Prefs.QUEST_MONITOR, false) || NearbyQuestMonitor.running) {
+            try { applicationContext.unbindService(questMonitorConnection) }
+            catch (_: IllegalArgumentException) { } // happens on first start, and maybe if there is some issue
+            questMonitorJob?.cancel()
+            questMonitorJob = lifecycleScope.launch {
+                delay(5000)
+                // sometimes it just doesn't stop, or is started with considerable delay for some reason
+                // try to catch this here
+                try { applicationContext.unbindService(questMonitorConnection) }
+                catch (_: IllegalArgumentException) { }
+            }
+        }
+    }
+
     companion object {
         private const val BOTTOM_SHEET = "bottom_sheet"
 
         private const val TAG_LOCATION_REQUEST = "LocationRequestFragment"
+
+        // quest monitor connection needs to work with multiple main activities
+        private val questMonitorConnection: ServiceConnection by lazy { object : ServiceConnection {
+            override fun onServiceConnected(p0: ComponentName?, p1: IBinder?) {}
+            override fun onServiceDisconnected(p0: ComponentName?) {}
+        } }
     }
 }
 
