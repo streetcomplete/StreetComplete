@@ -353,6 +353,9 @@ class MainActivity :
         observe(viewModel.reverseQuestOrder) {
             mapFragment?.setQuestOrder(it)
         }
+        observe(viewModel.selectedOverlay) {
+            reloadOverlaySelector()
+        }
     }
 
     override fun onResume() {
@@ -453,13 +456,11 @@ class MainActivity :
                                     delay(100) // need a rather long delay for this to work...
                                     selectedOverlaySource.selectedOverlay = overlayRegistry.getByName(CustomOverlay::class.simpleName!!)
                                 }
-                                reloadOverlaySelector()
                             }
                         },
                         { wasCurrentOverlay ->
                             if (wasCurrentOverlay && selectedOverlaySource.selectedOverlay is CustomOverlay)
                                 selectedOverlaySource.selectedOverlay = null
-                            reloadOverlaySelector()
                         },
                     )
                     true
