@@ -54,7 +54,6 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.osmfeatures.GeometryType
 import de.westnordost.streetcomplete.ApplicationConstants
-import de.westnordost.streetcomplete.BuildConfig
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.StreetCompleteApplication
@@ -1543,12 +1542,5 @@ class MainActivity :
         } }
     }
 }
-
-private data class Marker(
-    val geometry: ElementGeometry,
-    val drawableResId: Int? = null,
-    val title: String? = null,
-    val color: Int? = null,
-)
 
 private const val TAG = "MainActivity"
