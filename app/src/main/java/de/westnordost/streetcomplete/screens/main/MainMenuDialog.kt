@@ -17,7 +17,6 @@ import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.material.contentColorFor
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.currentCompositionLocalContext
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -29,8 +28,13 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
+import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.preferences.Preferences
+import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsController
 import de.westnordost.streetcomplete.screens.main.teammode.TeamModeColorCircle
+import de.westnordost.streetcomplete.util.dialogs.showProfileSelectionDialog
+import org.koin.compose.koinInject
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
@@ -49,6 +53,9 @@ fun MainMenuDialog(
     backgroundColor: Color = MaterialTheme.colors.surface,
     contentColor: Color = contentColorFor(backgroundColor),
 ) {
+    val prefs: Preferences = koinInject()
+    val questPresetsController: QuestPresetsController = koinInject()
+    val ctx = LocalContext.current
     Dialog(onDismissRequest = onDismissRequest) {
         Surface(
             modifier = modifier,
@@ -57,51 +64,111 @@ fun MainMenuDialog(
             contentColor = contentColor
         ) {
             Column {
-                FlowRow(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.Center
-                ) {
-                    BigMenuButton(
-                        onClick = { onDismissRequest(); onClickProfile() },
-                        icon = { Icon(painterResource(R.drawable.ic_profile_48dp), null) },
-                        text = stringResource(
-                            if (isLoggedIn) R.string.user_profile else R.string.user_login
-                        ),
-                    )
-                    BigMenuButton(
-                        onClick = { onDismissRequest(); onClickSettings() },
-                        icon = { Icon(painterResource(R.drawable.ic_settings_48dp), null) },
-                        text = stringResource(R.string.action_settings),
-                    )
-                    BigMenuButton(
-                        onClick = { onDismissRequest(); onClickAbout() },
-                        icon = { Icon(painterResource(R.drawable.ic_info_outline_48dp), null) },
-                        text = LocalContext.current.getString(R.string.action_about2) + " SCEE",
-                    )
-                }
-                Divider()
-                CompactMenuButton(
-                    onClick = { onDismissRequest(); onClickDownload() },
-                    icon = { Icon(painterResource(R.drawable.ic_file_download_24dp), null) },
-                    text = stringResource(R.string.action_download),
-                )
-                if (indexInTeam == null) {
+                if (!prefs.getBoolean(Prefs.MAIN_MENU_FULL_GRID, false)) {
+                    FlowRow(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.Center
+                    ) {
+                        BigMenuButton(
+                            onClick = { onDismissRequest(); onClickProfile() },
+                            icon = { Icon(painterResource(R.drawable.ic_profile_48dp), null) },
+                            text = stringResource(
+                                if (isLoggedIn) R.string.user_profile else R.string.user_login
+                            ),
+                        )
+                        BigMenuButton(
+                            onClick = { onDismissRequest(); onClickSettings() },
+                            icon = { Icon(painterResource(R.drawable.ic_settings_48dp), null) },
+                            text = stringResource(R.string.action_settings),
+                        )
+                        BigMenuButton(
+                            onClick = { onDismissRequest(); onClickAbout() },
+                            icon = { Icon(painterResource(R.drawable.ic_info_outline_48dp), null) },
+                            text = LocalContext.current.getString(R.string.action_about2) + " SCEE",
+                        )
+                    }
+                    Divider()
                     CompactMenuButton(
-                        onClick = { onDismissRequest(); onClickEnterTeamMode() },
-                        icon = { Icon(painterResource(R.drawable.ic_team_mode_24dp), null) },
-                        text = stringResource(R.string.team_mode)
+                        onClick = { onDismissRequest(); onClickDownload() },
+                        icon = { Icon(painterResource(R.drawable.ic_file_download_24dp), null) },
+                        text = stringResource(R.string.action_download),
                     )
+                    if (indexInTeam == null) {
+                        CompactMenuButton(
+                            onClick = { onDismissRequest(); onClickEnterTeamMode() },
+                            icon = { Icon(painterResource(R.drawable.ic_team_mode_24dp), null) },
+                            text = stringResource(R.string.team_mode)
+                        )
+                    } else {
+                        CompactMenuButton(
+                            onClick = { onDismissRequest(); onClickExitTeamMode() },
+                            icon = {
+                                TeamModeColorCircle(
+                                    index = indexInTeam,
+                                    modifier = Modifier.size(24.dp)
+                                )
+                            },
+                            text = stringResource(R.string.team_mode_exit)
+                        )
+                    }
+                    if (prefs.getBoolean(Prefs.MAIN_MENU_SWITCH_PRESETS, false))
+                        CompactMenuButton(
+                            onClick = { onDismissRequest(); showProfileSelectionDialog(ctx, questPresetsController, prefs) },
+                            icon = { },
+                            text = stringResource(R.string.quick_switch_preset)
+                        )
                 } else {
-                    CompactMenuButton(
-                        onClick = { onDismissRequest(); onClickExitTeamMode() },
-                        icon = {
-                            TeamModeColorCircle(
-                                index = indexInTeam,
-                                modifier = Modifier.size(24.dp)
+                    FlowRow(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.Center
+                    ) {
+                        BigMenuButton(
+                            onClick = { onDismissRequest(); onClickProfile() },
+                            icon = { Icon(painterResource(R.drawable.ic_profile_48dp), null) },
+                            text = stringResource(
+                                if (isLoggedIn) R.string.user_profile else R.string.user_login
+                            ),
+                        )
+                        BigMenuButton(
+                            onClick = { onDismissRequest(); onClickSettings() },
+                            icon = { Icon(painterResource(R.drawable.ic_settings_48dp), null) },
+                            text = stringResource(R.string.action_settings),
+                        )
+                        BigMenuButton(
+                            onClick = { onDismissRequest(); onClickAbout() },
+                            icon = { Icon(painterResource(R.drawable.ic_info_outline_48dp), null) },
+                            text = LocalContext.current.getString(R.string.action_about2) + " SCEE",
+                        )
+                        BigMenuButton(
+                            onClick = { onDismissRequest(); onClickDownload() },
+                            icon = { Icon(painterResource(R.drawable.ic_file_download_24dp), null) },
+                            text = stringResource(R.string.action_download),
+                        )
+                        if (indexInTeam == null) {
+                            BigMenuButton(
+                                onClick = { onDismissRequest(); onClickEnterTeamMode() },
+                                icon = { Icon(painterResource(R.drawable.ic_team_mode_24dp), null) },
+                                text = stringResource(R.string.team_mode)
                             )
-                        },
-                        text = stringResource(R.string.team_mode_exit)
-                    )
+                        } else {
+                            BigMenuButton(
+                                onClick = { onDismissRequest(); onClickExitTeamMode() },
+                                icon = {
+                                    TeamModeColorCircle(
+                                        index = indexInTeam,
+                                        modifier = Modifier.size(24.dp)
+                                    )
+                                },
+                                text = stringResource(R.string.team_mode_exit)
+                            )
+                        }
+                        if (prefs.getBoolean(Prefs.MAIN_MENU_SWITCH_PRESETS, false))
+                            BigMenuButton(
+                                onClick = { onDismissRequest(); showProfileSelectionDialog(ctx, questPresetsController, prefs) },
+                                icon = { },
+                                text = stringResource(R.string.quick_switch_preset)
+                            )
+                    }
                 }
             }
         }
