@@ -330,7 +330,7 @@ class MainActivity :
                 mapFragment?.highlightPins(edit.icon, listOf(edit.position))
                 mapFragment?.hideOverlay()
             } else if (editHistoryViewModel.isShowingSidebar.value) {
-                mapFragment?.clearFocus()
+                mapFragment?.endFocus()
                 mapFragment?.clearHighlighting()
             }
         }
