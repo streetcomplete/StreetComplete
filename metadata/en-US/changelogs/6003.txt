@@ -1,0 +1,4 @@
+- Add lamp type quest (#681), by @FloEdelmann
+- Add sac_scale=strolling to sac_scale quest (#693), by @mcliquid
+- Fix malformed hdop tag in GPX track file (#685), by @GideonBear
+- Fix link to SCEE project page (#690), by @mnalis
