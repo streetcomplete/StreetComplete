@@ -4,7 +4,7 @@ about: Suggest an idea for this project
 ---
 
 <!--
-Before starting a feature request you might want to check existing issues (both open and closed) whether the feature has alredy been requested by someone else.
+Before starting a feature request you might want to check existing issues (both open and closed) whether the feature has already been requested by someone else.
 
 Attaching screenshots / videos:
 Large images / videos can be very disturbing when reading, so please avoid attaching unnecessary screenshots and videos.
