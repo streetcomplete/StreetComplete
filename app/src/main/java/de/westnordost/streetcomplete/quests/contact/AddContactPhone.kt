@@ -54,7 +54,7 @@ val PLACES_FOR_CONTACT_QUESTS = mapOf(
         "computer", "electronics", "hifi", "bicycle", "outdoor", "sports", "art", "craft", "model",
         "musical_instrument", "camera", "books", "travel_agency", "cheese", "chocolate", "coffee", "health_food"
     ),
-    "leisure" to arrayOf("fitness_centre", "bowling_alley", "sports_centre"),
+    "leisure" to arrayOf("fitness_centre", "bowling_alley", "sports_centre", "escape_game"),
     "office" to arrayOf(
         "insurance", "government", "travel_agent", "tax_advisor", "religion", "employment_agency",
         "lawyer", "estate_agent", "therapist", "notary"
