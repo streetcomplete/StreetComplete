@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.data.overlays
 
-import android.content.Context
 import com.russhwolf.settings.SettingsListener
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.preferences.Preferences

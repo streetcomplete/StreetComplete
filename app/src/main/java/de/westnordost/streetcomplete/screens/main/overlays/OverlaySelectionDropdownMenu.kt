@@ -20,6 +20,8 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.overlays.Overlay
+import de.westnordost.streetcomplete.overlays.custom.CustomOverlay
+import de.westnordost.streetcomplete.overlays.custom.getCustomOverlayIndices
 import de.westnordost.streetcomplete.ui.common.DropdownMenuItem
 import de.westnordost.streetcomplete.util.showOverlayCustomizer
 import org.koin.compose.koinInject
@@ -78,6 +80,30 @@ fun OverlaySelectionDropdownMenu(
                                 }
                         )
                     }
+                }
+            }
+        }
+        if (prefs.expertMode) {
+            DropdownMenuItem(onClick = {
+                onDismissRequest()
+                showOverlayCustomizer(getCustomOverlayIndices(prefs).max() + 1, ctx, prefs, questTypeRegistry,
+                    { prefs.selectedOverlayName = CustomOverlay::class.simpleName }, // not great, as it relies on onSelected not changing
+                    { onSelect(null) }
+                )
+            }) {
+                Row(
+                    horizontalArrangement = Arrangement.spacedBy(16.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Image(
+                        painter = painterResource(R.drawable.ic_add_24dp),
+                        contentDescription = null,
+                        modifier = Modifier.size(36.dp)
+                    )
+                    Text(
+                        text = stringResource(R.string.custom_overlay_add_button),
+                        modifier = Modifier.weight(1f)
+                    )
                 }
             }
         }
