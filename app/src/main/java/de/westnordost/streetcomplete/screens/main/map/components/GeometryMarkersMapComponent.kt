@@ -90,7 +90,7 @@ class GeometryMarkersMapComponent(
             createIconBitmap(context, it, sdf) to sdf
         }
         for (marker in markers) {
-            featuresByGeometry[marker.geometry] = marker.toFeatures(context.resources)
+            synchronized(this) {featuresByGeometry[marker.geometry] = marker.toFeatures(context.resources) }
         }
         withContext(Dispatchers.Main) { update() }
     }
@@ -105,7 +105,7 @@ class GeometryMarkersMapComponent(
         geometrySource.clear()
     }
 
-    private fun update() {
+    private fun update() = synchronized(this) {
         geometrySource.setGeoJson(FeatureCollection.fromFeatures(featuresByGeometry.values.flatten()))
     }
 
