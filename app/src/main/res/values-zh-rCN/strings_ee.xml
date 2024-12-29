@@ -522,7 +522,7 @@
     <string name="quest_valves_schrader">AV：美式气门嘴/美式嘴</string>
     <string name="quest_valves_regina">RV：意式气门嘴/意式嘴</string>
     <string name="quest_trail_visibility_title">此路线的路径可见性如何？</string>
-    <string name="quest_trail_visibility_excellent_description">到处都有明确的路径或标记。方向没有问题，不需要地图。</string>
+    <string name="quest_trail_visibility_excellent_description">到处都有明确的路径或标记。定位没有问题，不需要地图。</string>
     <string name="quest_trail_visibility_intermediate">中等</string>
     <string name="quest_trail_visibility_intermediate_description">路径基本可见，无标记。需要良好的方向感，需要地图。</string>
     <string name="quest_trail_visibility_bad">差</string>
@@ -620,4 +620,17 @@
     <string name="quest_swimming_pool_outdoor_only">仅室外</string>
     <string name="quest_swimming_pool_no">没有游泳池</string>
     <string name="quest_swimmingPoolAvailability_title">这里有游泳池吗？</string>
+    <string name="quest_lampType_led">LED 灯</string>
+    <string name="quest_lampType_disabled_msg">此任务默认禁用，因为不容易回答，并且根据地区的不同可能会被视为垃圾信息。</string>
+    <string name="quest_lampType_title">这是什么灯？</string>
+    <string name="quest_lampType_highPressureSodium">高压钠灯</string>
+    <string name="quest_lampType_lowPressureSodium">低压钠灯</string>
+    <string name="quest_lampType_gaslight">煤气灯</string>
+    <string name="quest_lampType_fluorescent">荧光灯</string>
+    <string name="quest_lampType_incandescent">白炽灯</string>
+    <string name="quest_lampType_metalHalide">金属卤化物灯</string>
+    <string name="quest_lampType_mercury">汞蒸气灯</string>
+    <string name="quest_lampType_halogen">卤素灯</string>
+    <string name="quest_sacScale_strolling">漫步</string>
+    <string name="quest_sacScale_strolling_description">无障碍的平坦小路，适合所有鞋类、婴儿车或拐杖，并且不需要任何定位技能。</string>
 </resources>
