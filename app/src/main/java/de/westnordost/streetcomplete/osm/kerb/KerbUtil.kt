@@ -70,20 +70,18 @@ fun Node.couldBeAKerb(): Boolean = tags.keys.all { key ->
  *  3. certain shared nodes between a footway=sidewalk and a footway=crossing */
 fun MapData.findAllKerbNodes(): Iterable<Node> {
     val footwayNodes = hashSetOf<Node>()
-    val kerbBarrierNodeIds = hashSetOf<Long>()
-    val anyWays = mutableListOf<Way>()
-    ways.forEach { way ->
-        if (way.tags["barrier"] == "kerb")
-            kerbBarrierNodeIds.addAll(way.nodeIds)
-        if (!way.tags.containsKey("highway") && !way.tags.containsKey("construction")) return@forEach
-        if (footwaysFilter.matches(way))
-            way.nodeIds.forEach inner@{
-                val n = getNode(it) ?: return@inner
-                if (n.couldBeAKerb()) footwayNodes.add(n)
-            }
-        if (waysFilter.matches(way))
-            anyWays.add(way)
-    }
+    ways.asSequence()
+        .filter { footwaysFilter.matches(it) }
+        .flatMap { it.nodeIds }
+        .mapNotNullTo(footwayNodes) { nodeId ->
+            getNode(nodeId)?.takeIf { it.couldBeAKerb() }
+        }
+
+    val kerbBarrierNodeIds = ways.asSequence()
+        .filter { it.tags["barrier"] == "kerb" }
+        .flatMapTo(HashSet()) { it.nodeIds }
+
+    val anyWays = ways.filter { waysFilter.matches(it) }
     val crossingEndNodeIds = findCrossingKerbEndNodeIds(anyWays)
 
     // Kerbs can be defined in three ways (see https://github.com/streetcomplete/StreetComplete/issues/1305#issuecomment-688333976):
