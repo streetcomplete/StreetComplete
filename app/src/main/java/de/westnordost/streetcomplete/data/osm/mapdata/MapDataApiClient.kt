@@ -64,7 +64,9 @@ class MapDataApiClient(
                 HttpStatusCode.Conflict,
                 // an element referred to by another element does not exist (anymore) or was redacted
                 HttpStatusCode.PreconditionFailed,
-                // some elements do not exist (anymore)
+                // some elements do not exist anymore as it was deleted
+                HttpStatusCode.Gone,
+                // some elements do not exist and never existed
                 HttpStatusCode.NotFound -> {
                     throw ConflictException(e.message, e)
                 }
