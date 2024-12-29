@@ -16,6 +16,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.NODE
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.RELATION
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.WAY
 import de.westnordost.streetcomplete.data.osm.mapdata.MapData
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataApiClient
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataChanges
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataController
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
@@ -27,10 +28,14 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MutableMapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.Relation
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
+import de.westnordost.streetcomplete.data.platform.InternetConnectionState
 import de.westnordost.streetcomplete.util.Listeners
 import de.westnordost.streetcomplete.util.logs.Log
 import de.westnordost.streetcomplete.util.math.contains
 import de.westnordost.streetcomplete.util.math.intersect
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.withContext
 
 /** Source for map data. It combines the original data downloaded with the edits made.
  *
@@ -39,7 +44,9 @@ import de.westnordost.streetcomplete.util.math.intersect
 class MapDataWithEditsSource internal constructor(
     private val mapDataController: MapDataController,
     private val elementEditsController: ElementEditsController,
-    private val elementGeometryCreator: ElementGeometryCreator
+    private val elementGeometryCreator: ElementGeometryCreator,
+    private val mapDataApiClient: MapDataApiClient,
+    private val internetConnectionState: InternetConnectionState
 ) : MapDataRepository {
 
     /** Interface to be notified of new or updated OSM elements */
@@ -288,15 +295,27 @@ class MapDataWithEditsSource internal constructor(
 
         // If the way is (now) not complete, this is not acceptable
         if (nodes.size < ids.size) {
-            Log.w(TAG, "could not find nodes ${ids - nodes.map { it.id }} for way $way")
+            val missingIds = ids - nodes.map { it.id }
+            try {
+                // related error reports often come while uploading
+                // not sure what is wrong, but maybe getting the nodes from "somewhere" works better
+                // (probably the BG persisting + cache reading from db cause this EE-only bug)
+                val downloadedNodes = getNodes(missingIds)
+                Log.w(TAG, "downloaded nodes $missingIds for way $way because they were not available using getNodes")
+                return nodes + downloadedNodes
+            } catch (_: Exception) { }
+            Log.w(TAG, "could not find nodes $missingIds for way $way")
             return null
         }
 
         return nodes
     }
 
-    private fun getNodes(ids: Set<Long>): Collection<Node> = synchronized(this) {
-        val nodes = mapDataController.getNodes(ids)
+    private fun getNodes(ids: Set<Long>, download: Boolean = false): Collection<Node> = synchronized(this) {
+        val nodes = if (download && internetConnectionState.isConnected)
+            runBlocking { withContext(Dispatchers.IO) { ids.map { mapDataApiClient.getNode(it)!! } } }
+        else
+            mapDataController.getNodes(ids)
         val nodesById = HashMap<Long, Node>()
         nodes.associateByTo(nodesById) { it.id }
 
