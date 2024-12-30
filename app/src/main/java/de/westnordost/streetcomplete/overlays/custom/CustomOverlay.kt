@@ -21,6 +21,7 @@ import de.westnordost.streetcomplete.overlays.Color
 import de.westnordost.streetcomplete.overlays.StrokeStyle
 import de.westnordost.streetcomplete.util.getNameLabel
 import de.westnordost.streetcomplete.util.ktx.isArea
+import kotlin.math.abs
 
 class CustomOverlay(val prefs: ObservableSettings) : Overlay {
 
@@ -124,7 +125,7 @@ private fun getStyle(element: Element, colorKeySelector: Regex?, dashFilter: Ele
 }
 
 private fun createColorFromString(string: String): String {
-    val c = string.hashCode().toString(16)
+    val c = abs(string.hashCode()).toString(16)
     return when {
         c.length >= 6 -> "#${c.subSequence(c.length - 6, c.length)}"
         else -> createColorFromString("${c}1") // the 1 is there to avoid very similar colors for numbers
