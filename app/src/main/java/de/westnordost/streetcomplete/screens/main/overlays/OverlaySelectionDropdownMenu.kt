@@ -86,7 +86,7 @@ fun OverlaySelectionDropdownMenu(
         if (prefs.expertMode) {
             DropdownMenuItem(onClick = {
                 onDismissRequest()
-                showOverlayCustomizer(getCustomOverlayIndices(prefs).max() + 1, ctx, prefs, questTypeRegistry,
+                showOverlayCustomizer((getCustomOverlayIndices(prefs).maxOrNull() ?: 0) + 1, ctx, prefs, questTypeRegistry,
                     { prefs.selectedOverlayName = CustomOverlay::class.simpleName }, // not great, as it relies on onSelected not changing
                     { onSelect(null) }
                 )
