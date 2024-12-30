@@ -231,6 +231,7 @@ private fun Note.probablyContainsQuestion(): Boolean {
      */
     val questionMarksAroundTheWorld = listOf(
         "?", // Latin question mark
+        "¿", // Spanish question mark in case the closing latin one was omitted
         ";", // Greek question mark (a different character than semicolon, though same appearance)
         ";", // semicolon (often used instead of proper greek question mark)
         "؟", // mirrored question mark (used in script written from right to left, like Arabic)
