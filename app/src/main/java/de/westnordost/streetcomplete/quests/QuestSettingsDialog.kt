@@ -26,6 +26,12 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestController
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.util.dialogs.setViewWithDefaultPadding
 import de.westnordost.streetcomplete.util.ktx.dpToPx
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.util.regex.PatternSyntaxException
 
 // restarts are typically necessary on changes of element selection because the filter is created by lazy
@@ -129,12 +135,13 @@ fun fullElementSelectionDialog(context: Context, prefs: SharedPreferences, pref:
         val isValidFilterExpression by lazy {
             try {
                 (checkPrefix + it).toElementFilterExpression()
+                toastyJob?.cancel()
                 true
             } catch(e: ParseException) {
-                Toast.makeText(context, "Error: ${e.message}", Toast.LENGTH_LONG).show()
+                delayedToast(e.message, context)
                 false
             } catch(e: PatternSyntaxException) {
-                Toast.makeText(context, "Error: ${e.message}", Toast.LENGTH_LONG).show()
+                delayedToast(e.message, context)
                 false
             }
         }
@@ -151,6 +158,15 @@ fun fullElementSelectionDialog(context: Context, prefs: SharedPreferences, pref:
         dialog.findViewById<TextView>(android.R.id.message)?.movementMethod = LinkMovementMethod.getInstance() // make the link actually open a browser
     }
     return dialog
+}
+
+private var toastyJob: Job? = null
+private fun delayedToast(message: String?, context: Context) {
+    toastyJob?.cancel()
+    toastyJob = GlobalScope.launch(Dispatchers.IO) {
+        delay(3000)
+        withContext(Dispatchers.Main) { Toast.makeText(context, "Error: $message", Toast.LENGTH_LONG).show() }
+    }
 }
 
 private fun getDiffButton(context: Context, defaultText: String, getCurrentText: () -> String) =
