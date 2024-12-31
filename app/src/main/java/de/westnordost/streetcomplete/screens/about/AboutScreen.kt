@@ -92,6 +92,11 @@ fun AboutScreen(
                 ) { OpenInBrowserIcon() }
 
                 Preference(
+                    name = "SCEE: " + stringResource(R.string.about_title_faq),
+                    onClick = { uriHandler.openUri("https://wiki.openstreetmap.org/wiki/SCEE/FAQ") },
+                ) { OpenInBrowserIcon() }
+
+                Preference(
                     name = stringResource(R.string.about_title_report_error),
                     onClick = { uriHandler.openUri("https://github.com/helium314/SCEE/issues") },
                 ) { OpenInBrowserIcon() }

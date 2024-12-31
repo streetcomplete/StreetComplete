@@ -15,6 +15,8 @@ Functionality added in SCEE is considerably less tested than what you might be u
 
 [StreetComplete readme](README_StreetComplete.md)
 
+[SCEE FAQ](https://wiki.openstreetmap.org/wiki/SCEE/FAQ)
+
 ## Download SCEE
 
 [<img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png" alt="Get it on F-Droid" height="80">](https://f-droid.org/packages/de.westnordost.streetcomplete.expert/)
