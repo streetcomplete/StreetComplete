@@ -28,6 +28,7 @@ import de.westnordost.streetcomplete.data.quest.VisibleQuestsSource
 import de.westnordost.streetcomplete.data.visiblequests.LevelFilter
 import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderSource
 import de.westnordost.streetcomplete.screens.main.map.components.CurrentLocationMapComponent
+import de.westnordost.streetcomplete.screens.main.map.components.CustomGeometryMapComponent
 import de.westnordost.streetcomplete.screens.main.map.components.DownloadedAreaMapComponent
 import de.westnordost.streetcomplete.screens.main.map.components.FocusGeometryMapComponent
 import de.westnordost.streetcomplete.screens.main.map.components.GeometryMarkersMapComponent
@@ -39,6 +40,7 @@ import de.westnordost.streetcomplete.screens.main.map.maplibre.CameraPosition
 import de.westnordost.streetcomplete.screens.main.map.maplibre.MapImages
 import de.westnordost.streetcomplete.screens.main.map.maplibre.camera
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toLatLon
+import de.westnordost.streetcomplete.screens.settings.loadCustomGeometryText
 import de.westnordost.streetcomplete.screens.settings.loadGpxTrackPoints
 import de.westnordost.streetcomplete.util.ktx.currentDisplay
 import de.westnordost.streetcomplete.util.ktx.dpToPx
@@ -91,6 +93,7 @@ class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
     private var downloadedAreaManager: DownloadedAreaManager? = null
     private var locationMapComponent: CurrentLocationMapComponent? = null
     private var tracksMapComponent: TracksMapComponent? = null
+    private var customGeometryMapComponent: CustomGeometryMapComponent? = null
 
     interface Listener {
         fun onClickedQuest(questKey: QuestKey)
@@ -219,6 +222,8 @@ class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
 
         selectedPinsMapComponent = SelectedPinsMapComponent(context, map, mapImages!!)
         viewLifecycleOwner.lifecycle.addObserver(selectedPinsMapComponent!!)
+
+        customGeometryMapComponent = CustomGeometryMapComponent(context, map)
     }
 
     private fun setupLayers(style: Style) {
@@ -251,7 +256,8 @@ class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
             geometryMapComponent?.layers,
             locationMapComponent?.layers,
             pinsMapComponent?.layers,
-            selectedPinsMapComponent?.layers
+            selectedPinsMapComponent?.layers,
+            customGeometryMapComponent?.layers
         ).flatten()) {
             style.addLayer(layer)
         }
@@ -282,6 +288,7 @@ class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
         onSelectedOverlayChanged()
         selectedOverlaySource.addListener(overlayListener)
         loadGpxTrack()
+        loadCustomGeometry()
 
         locationMapComponent?.targetLocation = displayedLocation
 
@@ -317,6 +324,11 @@ class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
         tracksMapComponent?.setGpxTrack(gpxPoints)
     }
 
+    fun loadCustomGeometry() {
+        val text = context?.let { loadCustomGeometryText(it) }
+        if (text == null || !prefs.getBoolean(Prefs.SHOW_CUSTOM_GEOMETRY, false)) customGeometryMapComponent?.clear()
+        else customGeometryMapComponent?.set(text)
+    }
 
     //region Tracking GPS, Rotation, location availability, pin mode, click ...
 

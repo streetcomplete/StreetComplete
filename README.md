@@ -128,6 +128,7 @@ SCEE asks for two more permissions than StreetComplete: `ACCESS_BACKGROUND_LOCAT
     * Highlight geometries for nearby quests
     * Disable quest solved animation
     * Provide GPX track and have it always shown on the map
+    * Provide GeoJson file and have geometries shown on the map (and text from _name_ property)
   * Quest settings
     * Hide or increase priority of quests depending on time of day
     * Force resurvey for specific tags

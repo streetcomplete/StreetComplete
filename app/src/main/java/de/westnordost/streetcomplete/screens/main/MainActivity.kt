@@ -365,6 +365,10 @@ class MainActivity :
             mapFragment?.loadGpxTrack()
             DisplaySettingsFragment.gpx_track_changed = false
         }
+        if (DisplaySettingsFragment.custom_geometry_changed) {
+            mapFragment?.loadCustomGeometry()
+            DisplaySettingsFragment.custom_geometry_changed = false
+        }
     }
 
     override fun onStart() {

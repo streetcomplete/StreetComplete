@@ -45,4 +45,9 @@
         android:key="display_gpx_track"
         android:title="@string/pref_gpx_track_title" />
 
+    <Preference
+        app:iconSpaceReserved="false"
+        android:key="display_custom_geometry"
+        android:title="@string/pref_custom_geometry_title" />
+
 </PreferenceScreen>

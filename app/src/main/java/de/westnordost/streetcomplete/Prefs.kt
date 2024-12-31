@@ -64,6 +64,7 @@ object Prefs {
     const val MAIN_MENU_SWITCH_PRESETS = "main_menu_switch_presets"
     const val DISABLE_NAVIGATION_MODE = "disable_navigation_mode"
     const val TEMP_LOGGER = "temp_logger"
+    const val SHOW_CUSTOM_GEOMETRY = "show_custom_geometry"
     const val THEME_BACKGROUND = "theme.background_type"
 
     enum class DayNightBehavior {
