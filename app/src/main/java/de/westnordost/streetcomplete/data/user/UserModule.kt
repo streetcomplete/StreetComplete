@@ -1,12 +1,13 @@
 package de.westnordost.streetcomplete.data.user
 
+import de.westnordost.streetcomplete.ApplicationConstants.USE_TEST_API
 import de.westnordost.streetcomplete.data.user.oauth.OAuthApiClient
 import org.koin.dsl.module
 
-const val OAUTH2_TOKEN_URL = "https://www.openstreetmap.org/oauth2/token"
-const val OAUTH2_AUTHORIZATION_URL = "https://www.openstreetmap.org/oauth2/authorize"
+var OAUTH2_TOKEN_URL = "https://www.openstreetmap.org/oauth2/token"
+var OAUTH2_AUTHORIZATION_URL = "https://www.openstreetmap.org/oauth2/authorize"
 
-const val OAUTH2_CLIENT_ID = "Yyk4PmTopczrr3BWZYvLK_M-KBloCQwXgPGEzqUYTc8"
+var OAUTH2_CLIENT_ID = "Yyk4PmTopczrr3BWZYvLK_M-KBloCQwXgPGEzqUYTc8"
 
 const val OAUTH2_CALLBACK_SCHEME = "streetcomplete"
 const val OAUTH2_CALLBACK_HOST = "oauth"
@@ -35,6 +36,12 @@ val OAUTH2_REQUIRED_SCOPES = listOf(
 )
 
 val userModule = module {
+
+    if (USE_TEST_API) {
+        OAUTH2_TOKEN_URL = "https://master.apis.dev.openstreetmap.org/oauth2/token"
+        OAUTH2_AUTHORIZATION_URL = "https://master.apis.dev.openstreetmap.org/oauth2/authorize"
+        OAUTH2_CLIENT_ID = "ObZ7yPf4lfs4XJ3NWysI3ukJMN0SHey1oPnNQnLmvw8"
+    }
 
     single<UserDataSource> { get<UserDataController>() }
     single { UserDataController(get()) }

@@ -79,4 +79,11 @@ object ApplicationConstants {
            locally for performance reasons */
         SplitWayAction::class
     )
+
+    /*
+    During development it might be better to work against the Test-API, rather than the
+    Live-API. Developers are reminded that they need a separate login for the Test-API and
+    can register/logon via https://master.apis.dev.openstreetmap.org/
+     */
+    const val USE_TEST_API = false
 }
