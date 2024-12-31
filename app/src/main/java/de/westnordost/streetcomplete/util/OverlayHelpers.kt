@@ -17,7 +17,6 @@ import androidx.appcompat.widget.SwitchCompat
 import androidx.core.content.ContextCompat
 import androidx.core.net.toUri
 import androidx.core.widget.doAfterTextChanged
-import com.russhwolf.settings.ObservableSettings
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
@@ -32,6 +31,12 @@ import de.westnordost.streetcomplete.overlays.custom.getIndexedCustomOverlayPref
 import de.westnordost.streetcomplete.util.dialogs.setViewWithDefaultPadding
 import de.westnordost.streetcomplete.util.ktx.dpToPx
 import de.westnordost.streetcomplete.view.ArrayImageAdapter
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 @SuppressLint("SetTextI18n") // this is about element type, don't want translation here
 @Suppress("KotlinConstantConditions") // because this is simply incorrect...
@@ -46,6 +51,14 @@ fun showOverlayCustomizer(
     var d: AlertDialog? = null
     val padding = ctx.resources.dpToPx(4).toInt()
 
+    var toastyJob: Job? = null
+    fun delayedToast(message: String?, context: Context) {
+        toastyJob?.cancel()
+        toastyJob = GlobalScope.launch(Dispatchers.IO) {
+            delay(3000)
+            withContext(Dispatchers.Main) { Toast.makeText(context, "Error: $message", Toast.LENGTH_LONG).show() }
+        }
+    }
 
     val title = EditText(ctx).apply {
         setHint(R.string.name_label)
@@ -117,9 +130,10 @@ fun showOverlayCustomizer(
         try {
             filterString().toElementFilterExpression()
             d?.getButton(AlertDialog.BUTTON_POSITIVE)?.isEnabled = true
+            toastyJob?.cancel()
         }
         catch (e: Exception) { // for some reason catching import de.westnordost.streetcomplete.data.elementfilter.ParseException is not enough (#386), though I cannot reproduce it
-            Toast.makeText(ctx, "Error: ${e.message}", Toast.LENGTH_LONG).show()
+            delayedToast(e.message, ctx)
             d?.getButton(AlertDialog.BUTTON_POSITIVE)?.isEnabled = tag.text.isEmpty()
         }
     }
@@ -147,9 +161,10 @@ fun showOverlayCustomizer(
             try {
                 text.toString().toRegex()
                 d?.getButton(AlertDialog.BUTTON_POSITIVE)?.isEnabled = true
+                toastyJob?.cancel()
             }
             catch (e: Exception) {
-                Toast.makeText(ctx, "Error: ${e.message}", Toast.LENGTH_LONG).show()
+                delayedToast(e.message, ctx)
                 d?.getButton(AlertDialog.BUTTON_POSITIVE)?.isEnabled = false
             }
         }
@@ -174,9 +189,10 @@ fun showOverlayCustomizer(
             try {
                 "ways with $text".toElementFilterExpression()
                 d?.getButton(AlertDialog.BUTTON_POSITIVE)?.isEnabled = true
+                toastyJob?.cancel()
             }
             catch (e: Exception) {
-                Toast.makeText(ctx, "Error: ${e.message}", Toast.LENGTH_LONG).show()
+                delayedToast(e.message, ctx)
                 d?.getButton(AlertDialog.BUTTON_POSITIVE)?.isEnabled = tag.text.isEmpty()
             }
         }
