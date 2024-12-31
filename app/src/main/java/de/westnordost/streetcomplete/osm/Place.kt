@@ -249,7 +249,7 @@ fun StringMapChangesBuilder.replacePlace(tags: Map<String, String>) {
     removeCheckDates()
 
     for (key in keys) {
-        if (KEYS_THAT_SHOULD_BE_REMOVED_WHEN_PLACE_IS_REPLACED.any { it.matches(key) }) {
+        if (KEYS_THAT_SHOULD_BE_REMOVED_WHEN_PLACE_IS_REPLACED.any { it.matches(key) || it.matches("source:" + key) }) {
             remove(key)
         }
     }
