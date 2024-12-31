@@ -249,8 +249,8 @@ fun StringMapChangesBuilder.replacePlace(tags: Map<String, String>) {
     removeCheckDates()
 
     val REMOVABLE_KEYS = KEYS_THAT_SHOULD_BE_REMOVED_WHEN_PLACE_IS_REPLACED +
-                         KEYS_THAT_SHOULD_BE_REMOVED_WHEN_PLACE_IS_REPLACED.map { "source:$it" } +
-                         KEYS_THAT_SHOULD_BE_REMOVED_WHEN_PLACE_IS_REPLACED.map { "check_date:$it" }
+                         KEYS_THAT_SHOULD_BE_REMOVED_WHEN_PLACE_IS_REPLACED.map { "source:$it".toRegex() } +
+                         KEYS_THAT_SHOULD_BE_REMOVED_WHEN_PLACE_IS_REPLACED.map { "check_date:$it".toRegex() }
 
     for (key in keys) {
         if (REMOVABLE_KEYS.any { it.matches(key) }) {
