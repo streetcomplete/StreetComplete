@@ -248,9 +248,9 @@ val POPULAR_PLACE_FEATURE_IDS = listOf(
 fun StringMapChangesBuilder.replacePlace(tags: Map<String, String>) {
     removeCheckDates()
 
-    private val REMOVABLE_KEYS = KEYS_THAT_SHOULD_BE_REMOVED_WHEN_PLACE_IS_REPLACED +
-                                 KEYS_THAT_SHOULD_BE_REMOVED_WHEN_PLACE_IS_REPLACED.map { "source:$it" } +
-                                 KEYS_THAT_SHOULD_BE_REMOVED_WHEN_PLACE_IS_REPLACED.map { "check_date:$it" }
+    val REMOVABLE_KEYS = KEYS_THAT_SHOULD_BE_REMOVED_WHEN_PLACE_IS_REPLACED +
+                         KEYS_THAT_SHOULD_BE_REMOVED_WHEN_PLACE_IS_REPLACED.map { "source:$it" } +
+                         KEYS_THAT_SHOULD_BE_REMOVED_WHEN_PLACE_IS_REPLACED.map { "check_date:$it" }
 
     for (key in keys) {
         if (REMOVABLE_KEYS.any { it.matches(key) }) {
