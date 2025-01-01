@@ -1,5 +1,12 @@
 # Changelog
 
+## v60.1
+
+- fix display of non-latin characters in undo dialog (#6043)
+- fix handling of conflicts of element deletions (#6060), by @matkoniecz
+- fix message notification didn't show, by @matkoniecz
+- other small stuff, thanks @kmpoppe, @mnalis
+
 ## v60.0
 
 Redesigned the main screen a little. Here and there you'll notice small differences. The dialog to
