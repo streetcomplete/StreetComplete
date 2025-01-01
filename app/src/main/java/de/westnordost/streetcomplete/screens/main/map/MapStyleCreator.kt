@@ -208,7 +208,7 @@ private data class Text(
     ).joinToString()
 }
 
-fun createMapStyle(name: String, accessToken: String, languages: List<String>, colors: MapColors, rasterSource: String? = null): String {
+fun createMapStyle(name: String, accessToken: String, languages: List<String>, colors: MapColors, rasterSource: String? = null, rasterMaxZoom: Int = 25): String {
 
     val pathWidth = listOf(14.0 to 0.5, 16.0 to 1.0, 24.0 to 256.0)  // ~1m
 
@@ -638,7 +638,7 @@ fun createMapStyle(name: String, accessToken: String, languages: List<String>, c
          */
     )
 
-    return """${partBeforeLayers(name, accessToken, rasterSource)}
+    return """${partBeforeLayers(name, accessToken, rasterSource, rasterMaxZoom)}
     { "id": "background", "type": "background", "paint": {"background-color": "${colors.earth}"}},
     ${layers.joinToString(",\n    ") { it.toJson() }}
   ]
@@ -646,7 +646,7 @@ fun createMapStyle(name: String, accessToken: String, languages: List<String>, c
 """
 }
 
-private fun partBeforeLayers(name: String, accessToken: String, rasterSource: String?) = """{
+private fun partBeforeLayers(name: String, accessToken: String, rasterSource: String?, rasterMaxZoom: Int) = """{
   "version": 8,
   "name": "$name",
   "sources": {
@@ -659,7 +659,7 @@ private fun partBeforeLayers(name: String, accessToken: String, rasterSource: St
     "raster-source": {
       "type": "raster",
       "tiles": ["$rasterSource"],
-      "maxzoom": 16
+      "maxzoom": $rasterMaxZoom
     }"""}
   },
   "transition": { "duration": 300, "delay": 0 },

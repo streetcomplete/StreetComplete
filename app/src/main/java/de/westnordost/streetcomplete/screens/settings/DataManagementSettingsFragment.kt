@@ -6,6 +6,7 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.net.Uri
 import android.os.Bundle
+import android.text.InputType
 import android.view.View
 import android.widget.EditText
 import android.widget.LinearLayout
@@ -21,6 +22,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.PreferenceManager
+import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.StreetCompleteApplication
@@ -155,10 +157,16 @@ class DataManagementSettingsFragment :
                 setText(R.string.pref_tile_source_hide_labels)
                 isChecked = prefs.getBoolean(Prefs.NO_SATELLITE_LABEL, false)
             }
+            val maxZoom = EditText(requireContext()).apply {
+                inputType = InputType.TYPE_CLASS_NUMBER
+                setText(prefs.getInt(Prefs.RASTER_TILE_MAXZOOM, ApplicationConstants.RASTER_DEFAULT_MAXZOOM).toString())
+            }
             val layout = LinearLayout(requireContext()).apply {
                 orientation = LinearLayout.VERTICAL
                 addView(TextView(requireContext()).apply { setText(R.string.pref_tile_source_message) })
                 addView(urlText)
+                addView(TextView(requireContext()).apply { setText(R.string.pref_tile_maxzoom) })
+                addView(maxZoom)
                 addView(hideLabelsSwitch)
             }
             d = AlertDialog.Builder(requireContext())
@@ -168,12 +176,14 @@ class DataManagementSettingsFragment :
                 .setNeutralButton(R.string.action_reset) { _, _ ->
                     prefs.edit {
                         remove(Prefs.RASTER_TILE_URL)
+                        remove(Prefs.RASTER_TILE_MAXZOOM)
                         remove(Prefs.NO_SATELLITE_LABEL)
                     }
                 }
                 .setPositiveButton(android.R.string.ok) { _, _ ->
                     prefs.edit {
                         putString(Prefs.RASTER_TILE_URL, urlText.text.toString())
+                        putInt(Prefs.RASTER_TILE_MAXZOOM, maxZoom.text.toString().toInt())
                         putBoolean(Prefs.NO_SATELLITE_LABEL, hideLabelsSwitch.isChecked)
                     }
 

@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.res.Configuration
 import android.provider.Settings
 import androidx.annotation.UiThread
+import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.BuildConfig
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.preferences.Preferences
@@ -53,7 +54,7 @@ class SceneMapComponent(
         }
         val styleJsonString = when {
             prefs.prefs.getString(Prefs.THEME_BACKGROUND, "MAP") != "MAP" ->
-                createMapStyle("StreetComplete-Raster", token, emptyList(), rasterBackground(prefs.prefs.getBoolean(Prefs.NO_SATELLITE_LABEL, false)), prefs.prefs.getString(Prefs.RASTER_TILE_URL, "https://server.arcgisonline.com/arcgis/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"))
+                createMapStyle("StreetComplete-Raster", token, emptyList(), rasterBackground(prefs.prefs.getBoolean(Prefs.NO_SATELLITE_LABEL, false)), prefs.prefs.getString(Prefs.RASTER_TILE_URL, "https://server.arcgisonline.com/arcgis/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"), prefs.prefs.getInt(Prefs.RASTER_TILE_MAXZOOM, ApplicationConstants.RASTER_DEFAULT_MAXZOOM))
             prefs.theme == Theme.DARK_CONTRAST -> createMapStyle("StreetComplete-Dark_Contrast", token, emptyList(), themeDarkContrast)
             isNightMode -> context.resources.assets.open("map_theme/streetcomplete-night.json").bufferedReader().use { it.readText() }
             else -> context.resources.assets.open("map_theme/streetcomplete.json").bufferedReader().use { it.readText() }

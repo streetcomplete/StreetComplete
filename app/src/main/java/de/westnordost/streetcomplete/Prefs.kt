@@ -48,6 +48,7 @@ object Prefs {
     const val QUEST_MONITOR_DOWNLOAD = "quest_monitor_download"
     const val SHOW_GPX_TRACK = "show_gpx_track"
     const val RASTER_TILE_URL = "raster_tile_url"
+    const val RASTER_TILE_MAXZOOM = "raster_tile_maxzoom"
     const val CREATE_EXTERNAL_QUESTS = "create_external_quests"
     const val SAVE_PHOTOS = "save_photos"
     const val EXPERT_MODE = "expert_mode"
