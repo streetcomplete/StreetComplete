@@ -14,7 +14,7 @@ class AddBuildingLevelsTest {
     @Test fun `apply building levels answer`() {
         assertEquals(
             setOf(StringMapEntryAdd("building:levels", "5")),
-            questType.answerApplied(BuildingLevelsAnswer(5, null))
+            questType.answerApplied(BuildingLevels(5, null))
         )
     }
 
@@ -24,7 +24,7 @@ class AddBuildingLevelsTest {
                 StringMapEntryAdd("building:levels", "5"),
                 StringMapEntryAdd("roof:levels", "0")
             ),
-            questType.answerApplied(BuildingLevelsAnswer(5, 0))
+            questType.answerApplied(BuildingLevels(5, 0))
         )
     }
 
