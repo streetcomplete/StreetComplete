@@ -16,13 +16,13 @@ import org.koin.androidx.workmanager.dsl.worker
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
-private var OSM_API_URL = "https://api.openstreetmap.org/api/0.6/"
+private const val OSM_API_URL_LIVE = "https://api.openstreetmap.org/api/0.6/"
+private const val OSM_API_URL_TEST = "https://master.apis.dev.openstreetmap.org/api/0.6/"
+
+val OSM_API_URL =
+    if (USE_TEST_API) OSM_API_URL_TEST else OSM_API_URL_LIVE
 
 val osmApiModule = module {
-
-    if (USE_TEST_API) {
-        OSM_API_URL = "https://master.apis.dev.openstreetmap.org/api/0.6/"
-    }
 
     factory { Cleaner(get(), get(), get(), get(), get(), get()) }
     factory { CacheTrimmer(get(), get()) }
