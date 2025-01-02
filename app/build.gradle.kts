@@ -141,8 +141,8 @@ dependencies {
 
     // Jetpack Compose
     val composeBom = platform("androidx.compose:compose-bom:2024.10.01")
-    implementation(platform("androidx.compose:compose-bom:2024.12.01"))
-    androidTestImplementation(platform("androidx.compose:compose-bom:2024.12.01"))
+    implementation(composeBom)
+    androidTestImplementation(composeBom)
     implementation("androidx.compose.material:material")
     implementation("androidx.activity:activity-compose")
     // Jetpack Compose Previews
