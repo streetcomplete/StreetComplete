@@ -256,7 +256,7 @@ private fun Note.containsSurveyRequiredMarker(): Boolean =
     comments.any { it.containsSurveyRequiredMarker() }
 
 private fun NoteComment.containsSurveyRequiredMarker(): Boolean =
-    text?.matches(".*#surveyme.*".toRegex(setOf(RegexOption.DOT_MATCHES_ALL, RegexOption.IGNORE_CASE))) == true
+    text?.contains("#surveyme", ignoreCase = true) == true
 
 private fun Note.probablyCreatedByUserInThisApp(userId: Long): Boolean {
     val firstComment = comments.first()
