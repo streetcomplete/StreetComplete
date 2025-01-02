@@ -17,6 +17,22 @@ class StringMapChangesBuilderTest {
         )
     }
 
+    @Test fun `remove one related key`() {
+        val builder = builder()
+        builder["a"] = "1"
+        builder["source:a"] = "2"
+        builder["b"] = "3"
+
+        builder.remove("a")
+        assertEquals(
+            setOf(
+               StringMapEntryDelete("a", "1"),
+               StringMapEntryDelete("source:a", "2")
+            ),
+            builder.changes.single()
+        )
+    }
+
     @Test fun `delete non-existing does nothing`() {
         val builder = builder("exists" to "like this")
         builder.remove("does not exist")
