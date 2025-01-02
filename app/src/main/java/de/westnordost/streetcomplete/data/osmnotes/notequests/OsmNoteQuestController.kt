@@ -196,15 +196,21 @@ private fun Note.shouldShowAsQuest(
     // don't show notes hidden by user
     if (id in blockedNoteIds) return false
 
-    // don't show notes where user replied last unless he wrote a survey required marker
-    if (comments.last().isReplyFromUser(userId)
+    /*
+        We usually don't show notes where either the user is the last responder, or the
+        note was created with the app and has no replies.
+        If the most recent comment contains "#surveyme", we want to show the note regardless.
+        See https://github.com/streetcomplete/StreetComplete/issues/6052#issuecomment-2567163451
+     */
+    if (
+        (
+            comments.last().isReplyFromUser(userId) ||
+            (probablyCreatedByUserInThisApp(userId) && !hasReplies)
+        )
         && !comments.last().containsSurveyRequiredMarker()
     ) {
         return false
     }
-
-    // newly created notes by user should not be shown if it was both created in this app and has no replies yet
-    if (probablyCreatedByUserInThisApp(userId) && !hasReplies) return false
 
     /*
         many notes are created to report problems on the map that cannot be resolved
@@ -250,7 +256,7 @@ private fun Note.containsSurveyRequiredMarker(): Boolean =
     comments.any { it.containsSurveyRequiredMarker() }
 
 private fun NoteComment.containsSurveyRequiredMarker(): Boolean =
-    text?.matches(".*#surveyme.*".toRegex()) == true
+    text?.contains("#surveyme", ignoreCase = true) == true
 
 private fun Note.probablyCreatedByUserInThisApp(userId: Long): Boolean {
     val firstComment = comments.first()
