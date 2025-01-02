@@ -26,6 +26,7 @@ fun CountryStatisticsColumn(
     flagAlignments: Map<String, FlagAlignment>,
     isCurrentWeek: Boolean,
     modifier: Modifier = Modifier,
+    contentPadding: PaddingValues = PaddingValues(0.dp),
 ) {
     var showInfo by remember { mutableStateOf<CountryStatistics?>(null) }
 
@@ -38,7 +39,7 @@ fun CountryStatisticsColumn(
     val maxCount = statistics.firstOrNull()?.count ?: 0
     LazyColumn(
         modifier = modifier,
-        contentPadding = PaddingValues(top = 16.dp)
+        contentPadding = contentPadding
     ) {
         items(statistics) { item ->
             BarChartRow(

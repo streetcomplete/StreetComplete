@@ -2,13 +2,22 @@ package de.westnordost.streetcomplete.screens.settings.quest_presets
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.WindowInsetsSides
+import androidx.compose.foundation.layout.asPaddingValues
+import androidx.compose.foundation.layout.consumeWindowInsets
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.safeDrawingPadding
+import androidx.compose.foundation.layout.systemBars
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.material.AppBarDefaults
 import androidx.compose.material.Divider
 import androidx.compose.material.FloatingActionButton
 import androidx.compose.material.Icon
@@ -42,13 +51,26 @@ import de.westnordost.streetcomplete.ui.theme.titleMedium
     Column(Modifier.fillMaxSize()) {
         TopAppBar(
             title = { Text(stringResource(R.string.action_manage_presets)) },
+            windowInsets = AppBarDefaults.topAppBarWindowInsets,
             navigationIcon = { IconButton(onClick = onClickBack) { BackIcon() } },
         )
-        Box(Modifier.fillMaxHeight()) {
-            QuestPresetsList(viewModel)
+        val insets = WindowInsets.systemBars.only(
+            WindowInsetsSides.Horizontal + WindowInsetsSides.Bottom
+        ).asPaddingValues()
+        Box(Modifier
+            .fillMaxHeight()
+            .consumeWindowInsets(insets)
+        ) {
+            QuestPresetsList(
+                viewModel = viewModel,
+                contentPadding = insets,
+            )
             FloatingActionButton(
                 onClick = { showAddDialog = true },
-                modifier = Modifier.align(Alignment.BottomEnd).padding(16.dp)
+                modifier = Modifier
+                    .align(Alignment.BottomEnd)
+                    .padding(16.dp)
+                    .padding(insets)
             ) {
                 Icon(
                     painter = painterResource(R.drawable.ic_add_24dp),
@@ -69,12 +91,18 @@ import de.westnordost.streetcomplete.ui.theme.titleMedium
 }
 
 @Composable
-private fun QuestPresetsList(viewModel: QuestPresetsViewModel) {
+private fun QuestPresetsList(
+    viewModel: QuestPresetsViewModel,
+    modifier: Modifier = Modifier,
+    contentPadding: PaddingValues = PaddingValues(0.dp)
+) {
     val presets by viewModel.presets.collectAsState()
 
-    Column {
+    Column(modifier) {
         QuestPresetsHeader()
-        LazyColumn {
+        LazyColumn(
+            contentPadding = contentPadding,
+        ) {
             itemsIndexed(presets, key = { _, it -> it.id }) { index, item ->
                 Column {
                     if (index > 0) Divider()

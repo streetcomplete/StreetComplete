@@ -2,7 +2,15 @@ package de.westnordost.streetcomplete.screens.user.edits
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.WindowInsetsSides
+import androidx.compose.foundation.layout.asPaddingValues
+import androidx.compose.foundation.layout.consumeWindowInsets
+import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.systemBars
+import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.material.AppBarDefaults
@@ -25,6 +33,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.ui.common.CenteredLargeTitleHint
+import de.westnordost.streetcomplete.ui.ktx.plus
 import kotlinx.coroutines.launch
 
 /** Shows the user's edit statistics, alternatively either grouped by edit type or by country */
@@ -57,7 +66,11 @@ fun EditStatisticsScreen(
 
                 TabRow(
                     selectedTabIndex = page,
-                    modifier = Modifier.shadow(AppBarDefaults.TopAppBarElevation)
+                    modifier = Modifier
+                        .windowInsetsPadding(
+                            WindowInsets.systemBars.only(WindowInsetsSides.Horizontal)
+                        )
+                        .shadow(AppBarDefaults.TopAppBarElevation)
                 ) {
                     for (tab in EditStatisticsTab.entries) {
                         val index = tab.ordinal
@@ -69,17 +82,24 @@ fun EditStatisticsScreen(
                     }
                 }
 
+                val insets = WindowInsets.systemBars.only(
+                    WindowInsetsSides.Horizontal + WindowInsetsSides.Bottom
+                ).asPaddingValues()
+
                 HorizontalPager(
                     state = pagerState,
                     userScrollEnabled = false,
                     verticalAlignment = Alignment.Top,
-                    modifier = Modifier.weight(1f)
+                    modifier = Modifier.weight(1f).consumeWindowInsets(insets)
                 ) { p ->
                     when (EditStatisticsTab.entries[p]) {
                         EditStatisticsTab.ByType -> {
                             LaunchedEffect(Unit) { viewModel.queryEditTypeStatistics() }
                             if (editTypeStatistics != null) {
-                                EditTypeStatisticsColumn(editTypeStatistics)
+                                EditTypeStatisticsColumn(
+                                    statistics = editTypeStatistics,
+                                    contentPadding = insets + PaddingValues(top = 16.dp)
+                                )
                             }
                         }
                         EditStatisticsTab.ByCountry -> {
@@ -89,12 +109,25 @@ fun EditStatisticsScreen(
                                 CountryStatisticsColumn(
                                     statistics = countryStatistics,
                                     flagAlignments = alignments,
-                                    isCurrentWeek = isCurrentWeek
+                                    isCurrentWeek = isCurrentWeek,
+                                    contentPadding = insets + PaddingValues(top = 16.dp)
                                 )
                             }
                         }
                     }
                 }
+            }
+            OutlinedButton(
+                onClick = { isCurrentWeek = !isCurrentWeek },
+                modifier = Modifier
+                    .align(Alignment.BottomEnd)
+                    .padding(16.dp)
+                    .windowInsetsPadding(WindowInsets.systemBars)
+            ) {
+                Text(stringResource(
+                    if (isCurrentWeek) R.string.user_profile_current_week_title
+                    else R.string.user_profile_all_time_title
+                ))
             }
         } else {
             val isSynchronizingStatistics by viewModel.isSynchronizingStatistics.collectAsState()
@@ -104,18 +137,6 @@ fun EditStatisticsScreen(
                     else R.string.quests_empty
                 )
             )
-        }
-
-        OutlinedButton(
-            onClick = { isCurrentWeek = !isCurrentWeek },
-            modifier = Modifier
-                .align(Alignment.BottomEnd)
-                .padding(16.dp)
-        ) {
-            Text(stringResource(
-                if (isCurrentWeek) R.string.user_profile_current_week_title
-                else R.string.user_profile_all_time_title
-            ),)
         }
     }
 }

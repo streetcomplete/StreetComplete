@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.screens.settings.quest_selection
 
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -40,6 +41,8 @@ fun QuestSelectionList(
     displayCountry: String,
     onSelectQuest: (questType: QuestType, selected: Boolean) -> Unit,
     onReorderQuest: (questType: QuestType, toAfter: QuestType) -> Unit,
+    modifier: Modifier = Modifier,
+    contentPadding: PaddingValues = PaddingValues(0.dp),
 ) {
     var showEnableQuestDialog by remember { mutableStateOf<QuestType?>(null) }
 
@@ -64,12 +67,15 @@ fun QuestSelectionList(
         dragItem = null
     }
 
-    Column {
+    Column(modifier) {
         QuestSelectionHeader()
         // TODO Compose: scrollbars would be nice here (not supported yet by compose)
         //      When they are available: Check other places too, don't want to add a todo in every
         //      single place that could have a scrollbar
-        LazyColumn(state = listState) {
+        LazyColumn(
+            state = listState,
+            contentPadding = contentPadding,
+        ) {
             itemsIndexed(reorderableItems, key = { _, it -> it.questType.name }) { index, item ->
                 ReorderableItem(
                     state = dragDropState,
