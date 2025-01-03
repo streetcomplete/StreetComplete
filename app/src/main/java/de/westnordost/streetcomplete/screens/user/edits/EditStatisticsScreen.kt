@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.screens.user.edits
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -9,15 +10,17 @@ import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.consumeWindowInsets
 import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.systemBars
+import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.material.AppBarDefaults
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.OutlinedButton
 import androidx.compose.material.Tab
 import androidx.compose.material.TabRow
 import androidx.compose.material.Text
+import androidx.compose.material.primarySurface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -64,25 +67,24 @@ fun EditStatisticsScreen(
                 val pagerState = rememberPagerState(pageCount = { EditStatisticsTab.entries.size })
                 val page = pagerState.targetPage
 
-                TabRow(
-                    selectedTabIndex = page,
-                    modifier = Modifier
-                        .windowInsetsPadding(
-                            WindowInsets.systemBars.only(WindowInsetsSides.Horizontal)
-                        )
-                        .shadow(AppBarDefaults.TopAppBarElevation)
-                ) {
-                    for (tab in EditStatisticsTab.entries) {
-                        val index = tab.ordinal
-                        Tab(
-                            selected = page == index,
-                            onClick = { scope.launch { pagerState.animateScrollToPage(index) } },
-                            text = { Text(stringResource(tab.textId)) }
-                        )
+                Box(Modifier.background(MaterialTheme.colors.primarySurface)) {
+                    TabRow(
+                        selectedTabIndex = page,
+                        modifier = Modifier
+                            .windowInsetsPadding(WindowInsets.safeDrawing.only(WindowInsetsSides.Horizontal))
+                    ) {
+                        for (tab in EditStatisticsTab.entries) {
+                            val index = tab.ordinal
+                            Tab(
+                                selected = page == index,
+                                onClick = { scope.launch { pagerState.animateScrollToPage(index) } },
+                                text = { Text(stringResource(tab.textId)) }
+                            )
+                        }
                     }
                 }
 
-                val insets = WindowInsets.systemBars.only(
+                val insets = WindowInsets.safeDrawing.only(
                     WindowInsetsSides.Horizontal + WindowInsetsSides.Bottom
                 ).asPaddingValues()
 
@@ -117,18 +119,6 @@ fun EditStatisticsScreen(
                     }
                 }
             }
-            OutlinedButton(
-                onClick = { isCurrentWeek = !isCurrentWeek },
-                modifier = Modifier
-                    .align(Alignment.BottomEnd)
-                    .padding(16.dp)
-                    .windowInsetsPadding(WindowInsets.systemBars)
-            ) {
-                Text(stringResource(
-                    if (isCurrentWeek) R.string.user_profile_current_week_title
-                    else R.string.user_profile_all_time_title
-                ))
-            }
         } else {
             val isSynchronizingStatistics by viewModel.isSynchronizingStatistics.collectAsState()
             CenteredLargeTitleHint(
@@ -137,6 +127,18 @@ fun EditStatisticsScreen(
                     else R.string.quests_empty
                 )
             )
+        }
+        OutlinedButton(
+            onClick = { isCurrentWeek = !isCurrentWeek },
+            modifier = Modifier
+                .align(Alignment.BottomEnd)
+                .padding(16.dp)
+                .windowInsetsPadding(WindowInsets.safeDrawing)
+        ) {
+            Text(stringResource(
+                if (isCurrentWeek) R.string.user_profile_current_week_title
+                else R.string.user_profile_all_time_title
+            ))
         }
     }
 }

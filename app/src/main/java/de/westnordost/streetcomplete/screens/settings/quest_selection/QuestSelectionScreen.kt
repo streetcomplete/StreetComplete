@@ -7,7 +7,7 @@ import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.consumeWindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.only
-import androidx.compose.foundation.layout.systemBars
+import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.ReadOnlyComposable
 import androidx.compose.runtime.collectAsState
@@ -61,7 +61,7 @@ fun QuestSelectionScreen(
         if (filteredQuests.isEmpty()) {
             CenteredLargeTitleHint(stringResource(R.string.no_search_results))
         } else {
-            val insets = WindowInsets.systemBars.only(
+            val insets = WindowInsets.safeDrawing.only(
                 WindowInsetsSides.Horizontal + WindowInsetsSides.Bottom
             ).asPaddingValues()
             QuestSelectionList(

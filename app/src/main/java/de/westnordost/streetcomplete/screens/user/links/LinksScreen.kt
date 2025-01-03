@@ -7,7 +7,7 @@ import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.consumeWindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.only
-import androidx.compose.foundation.layout.systemBars
+import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.derivedStateOf
@@ -27,7 +27,7 @@ fun LinksScreen(viewModel: LinksViewModel) {
     val hasNoLinks by remember { derivedStateOf { links?.isNotEmpty() != true } }
 
     links?.let {
-        val insets = WindowInsets.systemBars.only(
+        val insets = WindowInsets.safeDrawing.only(
             WindowInsetsSides.Horizontal + WindowInsetsSides.Bottom
         ).asPaddingValues()
         LazyGroupedLinksColumn(

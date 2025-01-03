@@ -10,7 +10,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.systemBars
+import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.material.AppBarDefaults
 import androidx.compose.material.Button
@@ -128,7 +128,7 @@ fun LoginScreen(
 
             Box(Modifier
                 .fillMaxSize()
-                .windowInsetsPadding(WindowInsets.systemBars.only(
+                .windowInsetsPadding(WindowInsets.safeDrawing.only(
                     WindowInsetsSides.Horizontal + WindowInsetsSides.Bottom
                 ))
             ) {

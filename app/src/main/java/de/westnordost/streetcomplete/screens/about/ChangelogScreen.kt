@@ -9,7 +9,7 @@ import androidx.compose.foundation.layout.consumeWindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.systemBars
+import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.text.selection.SelectionContainer
@@ -48,7 +48,7 @@ fun ChangelogScreen(
         )
         changelog?.let { changelog ->
             SelectionContainer {
-                val insets = WindowInsets.systemBars.only(
+                val insets = WindowInsets.safeDrawing.only(
                     WindowInsetsSides.Horizontal + WindowInsetsSides.Bottom
                 ).asPaddingValues()
                 ChangelogList(
@@ -76,7 +76,10 @@ fun ChangelogList(
             key = { index, _ -> index }
         ) { index, (version, html) ->
             if (index > 0) Divider(modifier = Modifier.padding(vertical = 16.dp))
-            Text(text = version, style = MaterialTheme.typography.titleLarge)
+            Text(
+                text = version,
+                style = MaterialTheme.typography.titleLarge
+            )
             HtmlText(
                 html = html,
                 style = MaterialTheme.typography.body2,
