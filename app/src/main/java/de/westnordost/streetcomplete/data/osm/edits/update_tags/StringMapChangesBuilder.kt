@@ -3,13 +3,21 @@ package de.westnordost.streetcomplete.data.osm.edits.update_tags
 class StringMapChangesBuilder(private val source: Map<String, String>) : Map<String, String> {
     private val changes: MutableMap<String, StringMapEntryChange> = mutableMapOf()
 
-    /** Remove the given key from the map */
-    fun remove(key: String) {
+    /** Remove only the given key from the map */
+    fun removeOne(key: String) {
         changes.remove(key)
         val valueBefore = source[key]
         if (valueBefore != null) {
             addChange(StringMapEntryDelete(key, valueBefore))
         }
+    }
+
+    /** Remove the given key (and related keys with metadata) from the map */
+    fun remove(key: String) {
+        removeOne(key)
+        // removeCheckDatesForKey(key)     // FIXME: this one would be better as it remove other check_date keys too, but triggers infinite recursion, so should be done in some other way
+        // removeOne("check_date:" + key)  // FIXME: this seems to break test that modify existing tag xxx and thus create check_date:xxx (like `updates check_date` in SidewalkSurfaceCreatorKtTest.kt)
+        removeOne("source:" + key)
     }
 
     /** put the given value for the given key */
