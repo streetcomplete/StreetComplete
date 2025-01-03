@@ -1,7 +1,13 @@
 package de.westnordost.streetcomplete.screens.settings.quest_selection
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.WindowInsetsSides
+import androidx.compose.foundation.layout.asPaddingValues
+import androidx.compose.foundation.layout.consumeWindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.only
+import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.ReadOnlyComposable
 import androidx.compose.runtime.collectAsState
@@ -55,6 +61,9 @@ fun QuestSelectionScreen(
         if (filteredQuests.isEmpty()) {
             CenteredLargeTitleHint(stringResource(R.string.no_search_results))
         } else {
+            val insets = WindowInsets.safeDrawing.only(
+                WindowInsetsSides.Horizontal + WindowInsetsSides.Bottom
+            ).asPaddingValues()
             QuestSelectionList(
                 items = filteredQuests,
                 displayCountry = displayCountry,
@@ -63,7 +72,9 @@ fun QuestSelectionScreen(
                 },
                 onReorderQuest = { questType, toAfter ->
                     viewModel.orderQuest(questType, toAfter)
-                }
+                },
+                modifier =  Modifier.consumeWindowInsets(insets),
+                contentPadding = insets,
             )
         }
     }

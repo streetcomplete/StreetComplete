@@ -1,7 +1,13 @@
 package de.westnordost.streetcomplete.screens.user.links
 
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.WindowInsetsSides
+import androidx.compose.foundation.layout.asPaddingValues
+import androidx.compose.foundation.layout.consumeWindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.only
+import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.derivedStateOf
@@ -12,6 +18,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.ui.common.CenteredLargeTitleHint
+import de.westnordost.streetcomplete.ui.ktx.plus
 
 /** Shows the user's unlocked links */
 @Composable
@@ -20,10 +27,13 @@ fun LinksScreen(viewModel: LinksViewModel) {
     val hasNoLinks by remember { derivedStateOf { links?.isNotEmpty() != true } }
 
     links?.let {
+        val insets = WindowInsets.safeDrawing.only(
+            WindowInsetsSides.Horizontal + WindowInsetsSides.Bottom
+        ).asPaddingValues()
         LazyGroupedLinksColumn(
             allLinks = it,
-            modifier = Modifier.fillMaxSize(),
-            contentPadding = PaddingValues(16.dp)
+            modifier = Modifier.fillMaxSize().consumeWindowInsets(insets),
+            contentPadding = insets + PaddingValues(16.dp)
         )
     }
     if (hasNoLinks) {

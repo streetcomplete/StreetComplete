@@ -2,8 +2,13 @@ package de.westnordost.streetcomplete.screens.user
 
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.WindowInsetsSides
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.only
+import androidx.compose.foundation.layout.safeDrawing
+import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.PagerState
 import androidx.compose.foundation.pager.rememberPagerState
@@ -82,6 +87,7 @@ private fun UserScreenTopAppBar(
         Column {
             TopAppBar(
                 title = { Text(stringResource(R.string.user_profile)) },
+                windowInsets = AppBarDefaults.topAppBarWindowInsets,
                 navigationIcon = { IconButton(onClick = onClickBack) { BackIcon() } },
                 elevation = 0.dp
             )
@@ -90,7 +96,12 @@ private fun UserScreenTopAppBar(
             val page = pagerState.targetPage
 
             BoxWithConstraints {
-                TabRow(selectedTabIndex = page) {
+                TabRow(
+                    selectedTabIndex = page,
+                    modifier = Modifier.windowInsetsPadding(
+                        WindowInsets.safeDrawing.only(WindowInsetsSides.Horizontal)
+                    )
+                ) {
                     for (tab in UserTab.entries) {
                         val icon = painterResource(tab.iconId)
                         val text = stringResource(tab.textId)

@@ -4,10 +4,17 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.WindowInsetsSides
+import androidx.compose.foundation.layout.asPaddingValues
+import androidx.compose.foundation.layout.consumeWindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
@@ -62,9 +69,14 @@ fun ShowQuestFormsScreen(
         if (filteredQuests.isEmpty()) {
             CenteredLargeTitleHint(stringResource(R.string.no_search_results))
         } else {
+            val insets = WindowInsets.safeDrawing.only(
+                WindowInsetsSides.Horizontal + WindowInsetsSides.Bottom
+            ).asPaddingValues()
             QuestList(
                 items = filteredQuests,
-                onClickQuestType = onClickQuestType
+                onClickQuestType = onClickQuestType,
+                contentPadding = insets,
+                modifier = Modifier.consumeWindowInsets(insets)
             )
         }
     }
@@ -92,6 +104,7 @@ private fun ShowQuestFormsTopAppBar(
         Column {
             TopAppBar(
                 title = { Text("Show Quest Forms") },
+                windowInsets = AppBarDefaults.topAppBarWindowInsets,
                 navigationIcon = { IconButton(onClick = onClickBack) { BackIcon() } },
                 actions = { IconButton(onClick = { setShowSearch(!showSearch) }) { SearchIcon() } },
                 elevation = 0.dp
@@ -118,8 +131,12 @@ private fun QuestList(
     items: List<QuestType>,
     onClickQuestType: (QuestType) -> Unit,
     modifier: Modifier = Modifier,
+    contentPadding: PaddingValues = PaddingValues(0.dp)
 ) {
-    LazyColumn(modifier) {
+    LazyColumn(
+        modifier = modifier,
+        contentPadding = contentPadding,
+    ) {
         itemsIndexed(items, key = { _, it -> it.name }) { index, item ->
             Column(Modifier.clickable { onClickQuestType(item) }) {
                 if (index > 0) Divider()

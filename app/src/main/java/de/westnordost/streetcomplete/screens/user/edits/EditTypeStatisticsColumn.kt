@@ -25,6 +25,7 @@ import de.westnordost.streetcomplete.ui.theme.GrassGreen
 fun EditTypeStatisticsColumn(
     statistics: List<EditTypeStatistics>,
     modifier: Modifier = Modifier,
+    contentPadding: PaddingValues = PaddingValues(0.dp),
 ) {
     var showInfo by remember { mutableStateOf<EditTypeStatistics?>(null) }
 
@@ -37,7 +38,7 @@ fun EditTypeStatisticsColumn(
     val maxCount = statistics.firstOrNull()?.count ?: 0
     LazyColumn(
         modifier = modifier,
-        contentPadding = PaddingValues(top = 16.dp)
+        contentPadding = contentPadding,
     ) {
         items(statistics) { item ->
             BarChartRow(
