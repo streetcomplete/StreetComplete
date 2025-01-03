@@ -10,16 +10,11 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.WindowInsets
-import androidx.compose.foundation.layout.WindowInsetsSides
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.safeDrawingPadding
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.rememberScrollState
@@ -117,7 +112,7 @@ private fun TutorialScreenLayout(
     pageContent: @Composable () -> Unit,
     controls: @Composable () -> Unit,
 ) {
-    BoxWithConstraints(modifier) {
+    BoxWithConstraints(modifier.safeDrawingPadding()) {
         if (maxHeight > maxWidth) {
             Column(
                 modifier = Modifier.fillMaxSize(),
@@ -134,11 +129,7 @@ private fun TutorialScreenLayout(
                     illustration()
                 }
                 Box(
-                    modifier = Modifier
-                        .weight(0.6f)
-                        .windowInsetsPadding(WindowInsets.safeDrawing.only(
-                            WindowInsetsSides.End + WindowInsetsSides.Vertical
-                        )),
+                    modifier = Modifier.weight(0.6f),
                     contentAlignment = Alignment.Center
                 ) {
                     pageContent()
@@ -164,18 +155,14 @@ private fun TutorialScreenLayout(
                         illustration()
                     }
                     Box(
-                        modifier = Modifier
-                            .weight(0.6f)
-                            .windowInsetsPadding(WindowInsets.safeDrawing.only(WindowInsetsSides.Horizontal)),
+                        modifier = Modifier.weight(0.6f),
                         contentAlignment = Alignment.Center
                     ) {
                         pageContent()
                     }
                 }
                 Row(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .windowInsetsPadding(WindowInsets.safeDrawing.only(WindowInsetsSides.Bottom)),
+                    modifier = Modifier.fillMaxSize(),
                     horizontalArrangement = Arrangement.spacedBy(16.dp)
                 ) {
                     Spacer(Modifier.weight(0.4f))

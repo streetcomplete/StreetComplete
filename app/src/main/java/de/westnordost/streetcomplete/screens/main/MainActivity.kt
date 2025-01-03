@@ -201,8 +201,7 @@ class MainActivity :
     //region Lifecycle - Android Lifecycle Callbacks
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        val systemBarStyle = SystemBarStyle.dark(Color.argb(0x80, 0x1b, 0x1b, 0x1b))
-        enableEdgeToEdge(systemBarStyle, systemBarStyle)
+        enableEdgeToEdge()
         super.onCreate(savedInstanceState)
 
         LocalBroadcastManager.getInstance(this).registerReceiver(
