@@ -100,8 +100,7 @@ fun TutorialScreen(
                         )
                         .padding(bottom = 16.dp)
                 )
-            },
-            modifier = Modifier.safeDrawingPadding()
+            }
         )
     }
 }
@@ -113,7 +112,7 @@ private fun TutorialScreenLayout(
     pageContent: @Composable () -> Unit,
     controls: @Composable () -> Unit,
 ) {
-    BoxWithConstraints(modifier) {
+    BoxWithConstraints(modifier.safeDrawingPadding()) {
         if (maxHeight > maxWidth) {
             Column(
                 modifier = Modifier.fillMaxSize(),

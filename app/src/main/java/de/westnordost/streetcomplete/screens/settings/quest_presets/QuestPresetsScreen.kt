@@ -2,13 +2,23 @@ package de.westnordost.streetcomplete.screens.settings.quest_presets
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.WindowInsetsSides
+import androidx.compose.foundation.layout.asPaddingValues
+import androidx.compose.foundation.layout.calculateEndPadding
+import androidx.compose.foundation.layout.calculateStartPadding
+import androidx.compose.foundation.layout.consumeWindowInsets
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.material.AppBarDefaults
 import androidx.compose.material.Divider
 import androidx.compose.material.FloatingActionButton
 import androidx.compose.material.Icon
@@ -24,6 +34,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
@@ -42,13 +53,26 @@ import de.westnordost.streetcomplete.ui.theme.titleMedium
     Column(Modifier.fillMaxSize()) {
         TopAppBar(
             title = { Text(stringResource(R.string.action_manage_presets)) },
+            windowInsets = AppBarDefaults.topAppBarWindowInsets,
             navigationIcon = { IconButton(onClick = onClickBack) { BackIcon() } },
         )
-        Box(Modifier.fillMaxHeight()) {
-            QuestPresetsList(viewModel)
+        val insets = WindowInsets.safeDrawing.only(
+            WindowInsetsSides.Horizontal + WindowInsetsSides.Bottom
+        ).asPaddingValues()
+        Box(Modifier
+            .fillMaxHeight()
+            .consumeWindowInsets(insets)
+        ) {
+            QuestPresetsList(
+                viewModel = viewModel,
+                contentPadding = insets,
+            )
             FloatingActionButton(
                 onClick = { showAddDialog = true },
-                modifier = Modifier.align(Alignment.BottomEnd).padding(16.dp)
+                modifier = Modifier
+                    .align(Alignment.BottomEnd)
+                    .padding(16.dp)
+                    .padding(insets)
             ) {
                 Icon(
                     painter = painterResource(R.drawable.ic_add_24dp),
@@ -69,12 +93,27 @@ import de.westnordost.streetcomplete.ui.theme.titleMedium
 }
 
 @Composable
-private fun QuestPresetsList(viewModel: QuestPresetsViewModel) {
+private fun QuestPresetsList(
+    viewModel: QuestPresetsViewModel,
+    modifier: Modifier = Modifier,
+    contentPadding: PaddingValues = PaddingValues(0.dp)
+) {
     val presets by viewModel.presets.collectAsState()
 
-    Column {
-        QuestPresetsHeader()
-        LazyColumn {
+    Column(modifier) {
+        val layoutDirection = LocalLayoutDirection.current
+        QuestPresetsHeader(Modifier.padding(
+            start = contentPadding.calculateStartPadding(layoutDirection),
+            top = contentPadding.calculateTopPadding(),
+            end = contentPadding.calculateEndPadding(layoutDirection)
+        ))
+        LazyColumn(
+            contentPadding = PaddingValues(
+                start = contentPadding.calculateStartPadding(layoutDirection),
+                end = contentPadding.calculateEndPadding(layoutDirection),
+                bottom = contentPadding.calculateBottomPadding()
+            ),
+        ) {
             itemsIndexed(presets, key = { _, it -> it.id }) { index, item ->
                 Column {
                     if (index > 0) Divider()
@@ -94,8 +133,8 @@ private fun QuestPresetsList(viewModel: QuestPresetsViewModel) {
 }
 
 @Composable
-private fun QuestPresetsHeader() {
-    Column {
+private fun QuestPresetsHeader(modifier: Modifier = Modifier) {
+    Column(modifier) {
         Row(
             Modifier
                 .fillMaxWidth()

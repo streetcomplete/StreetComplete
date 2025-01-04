@@ -5,13 +5,20 @@ import android.content.Intent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.WindowInsetsSides
+import androidx.compose.foundation.layout.asPaddingValues
+import androidx.compose.foundation.layout.consumeWindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.AppBarDefaults
 import androidx.compose.material.Divider
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
@@ -61,6 +68,7 @@ fun LogsScreen(
     Column(Modifier.fillMaxSize()) {
         TopAppBar(
             title = { Text(stringResource(R.string.about_title_logs, logs.size)) },
+            windowInsets = AppBarDefaults.topAppBarWindowInsets,
             navigationIcon = { IconButton(onClick = onClickBack) { BackIcon() } },
             actions = {
                 IconButton(onClick = { showFiltersDialog = true }) {
@@ -86,7 +94,14 @@ fun LogsScreen(
         if (logs.isEmpty()) {
             CenteredLargeTitleHint(stringResource(R.string.no_search_results))
         } else {
-            LazyColumn(state = listState) {
+            val insets = WindowInsets.safeDrawing.only(
+                WindowInsetsSides.Horizontal + WindowInsetsSides.Bottom
+            ).asPaddingValues()
+            LazyColumn(
+                state = listState,
+                contentPadding = insets,
+                modifier = Modifier.consumeWindowInsets(insets)
+            ) {
                 itemsIndexed(logs) { index, item ->
                     if (index > 0) Divider()
                     LogsRow(item, modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp))
