@@ -75,8 +75,7 @@ class CheckOpeningHoursSignedTest {
                 "name" to "rundumdieuhr kiosk",
                 "opening_hours:signed" to "no",
                 "check_date:opening_hours" to "2021-03-01"
-            ),
-            timestamp = "2000-11-11".toCheckDate()?.toEpochMilli()
+            )
         )))
     }
 
