@@ -107,7 +107,7 @@ repositories {
 }
 
 dependencies {
-    val mockitoVersion = "3.12.4"
+    val mockitoVersion = "5.14.2"
 
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.4")
 
