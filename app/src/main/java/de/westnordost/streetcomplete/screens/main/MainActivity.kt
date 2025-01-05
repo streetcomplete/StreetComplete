@@ -7,7 +7,6 @@ import android.content.Intent
 import android.content.IntentFilter
 import android.content.pm.PackageManager
 import android.content.res.Configuration
-import android.graphics.Color
 import android.graphics.PointF
 import android.location.Location
 import android.os.Bundle
@@ -18,7 +17,6 @@ import android.view.animation.AccelerateInterpolator
 import android.view.animation.OvershootInterpolator
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
-import androidx.activity.SystemBarStyle
 import androidx.activity.enableEdgeToEdge
 import androidx.annotation.AnyThread
 import androidx.annotation.DrawableRes
