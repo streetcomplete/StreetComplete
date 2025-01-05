@@ -113,7 +113,6 @@ dependencies {
 
     // tests
     testImplementation("org.mockito:mockito-core:$mockitoVersion")
-    testImplementation("org.mockito:mockito-inline:$mockitoVersion")
     testImplementation(kotlin("test"))
 
     androidTestImplementation("androidx.test:runner:1.6.2")
