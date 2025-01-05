@@ -29,27 +29,27 @@ class ElementIdProviderDaoTest : ApplicationDbTestCase() {
 
         nodeIdSet.add(p1.nextNodeId())
         nodeIdSet.add(p1.nextNodeId())
-        assertFailsWith<NoSuchElementException> { p1.nextNodeId() }
+        assertFailsWith<IndexOutOfBoundsException> { p1.nextNodeId() }
 
         wayIdSet.add(p1.nextWayId())
         wayIdSet.add(p1.nextWayId())
         wayIdSet.add(p1.nextWayId())
-        assertFailsWith<NoSuchElementException> { p1.nextWayId() }
+        assertFailsWith<IndexOutOfBoundsException> { p1.nextWayId() }
 
-        assertFailsWith<NoSuchElementException> { p1.nextRelationId() }
+        assertFailsWith<IndexOutOfBoundsException> { p1.nextRelationId() }
 
         dao.assign(2L, 1, 1, 2)
         val p2 = dao.get(2L)
 
         nodeIdSet.add(p2.nextNodeId())
-        assertFailsWith<NoSuchElementException> { p2.nextNodeId() }
+        assertFailsWith<IndexOutOfBoundsException> { p2.nextNodeId() }
 
         wayIdSet.add(p2.nextWayId())
-        assertFailsWith<NoSuchElementException> { p2.nextWayId() }
+        assertFailsWith<IndexOutOfBoundsException> { p2.nextWayId() }
 
         relationIdSet.add(p2.nextRelationId())
         relationIdSet.add(p2.nextRelationId())
-        assertFailsWith<NoSuchElementException> { p2.nextRelationId() }
+        assertFailsWith<IndexOutOfBoundsException> { p2.nextRelationId() }
 
         // test if ids are unique
         assertEquals(3, nodeIdSet.size)
