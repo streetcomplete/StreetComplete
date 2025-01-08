@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.quests.postbox_royal_cypher
 
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
-import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.quests.answerApplied
 import de.westnordost.streetcomplete.testutils.node
 import kotlin.test.Test
