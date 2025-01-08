@@ -19,8 +19,6 @@
 - Postbox royal cypher: Don't anymore in some countries (#6084), by @kmpoppe
 - Bus stop ref: Also ask in Korea (#6080, #6076), by @kmpoppe
 
-
-
 ## v60.0
 
 Redesigned the main screen a little. Here and there you'll notice small differences. The dialog to
