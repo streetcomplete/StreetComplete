@@ -25,7 +25,7 @@ import de.westnordost.streetcomplete.util.ktx.format
 import de.westnordost.streetcomplete.util.ktx.intersects
 import de.westnordost.streetcomplete.util.ktx.isInAny
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
-import de.westnordost.streetcomplete.util.ktx.truncateTo5Decimals
+import de.westnordost.streetcomplete.util.ktx.truncateTo6Decimals
 import de.westnordost.streetcomplete.util.logs.Log
 import de.westnordost.streetcomplete.util.math.contains
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
@@ -272,7 +272,7 @@ class OsmQuestController internal constructor(
         val hiddenQuestKeys = getHiddenQuests()
         val hiddenPositions = getBlacklistedPositions(bbox)
         val entries = db.getAllInBBox(bbox, questTypes).filter { entry ->
-            entry.key !in hiddenQuestKeys && entry.position.truncateTo5Decimals() !in hiddenPositions
+            entry.key !in hiddenQuestKeys && entry.position.truncateTo6Decimals() !in hiddenPositions
         }
 
         val elementKeys = HashSet<ElementKey>()
@@ -296,12 +296,12 @@ class OsmQuestController internal constructor(
 
     private fun getBlacklistedPositions(bbox: BoundingBox): Set<LatLon> =
         notesSource
-            .getAllPositions(bbox.enlargedBy(1.2))
-            .map { it.truncateTo5Decimals() }
+            .getAllPositions(bbox.enlargedBy(0.2))
+            .map { it.truncateTo6Decimals() }
             .toSet()
 
     private fun isBlacklistedPosition(pos: LatLon): Boolean =
-        pos.truncateTo5Decimals() in getBlacklistedPositions(BoundingBox(pos, pos))
+        pos.truncateTo6Decimals() in getBlacklistedPositions(BoundingBox(pos, pos))
 
     private fun getHiddenQuests(): Set<OsmQuestKey> =
         hiddenDB.getAllIds().toSet()
@@ -380,7 +380,7 @@ class OsmQuestController internal constructor(
             val hiddenIds = getHiddenQuests()
             val bbox = added.map { it.position }.enclosingBoundingBox()
             val hiddenPositions = getBlacklistedPositions(bbox)
-            added.filter { it.key !in hiddenIds && it.position.truncateTo5Decimals() !in hiddenPositions }
+            added.filter { it.key !in hiddenIds && it.position.truncateTo6Decimals() !in hiddenPositions }
         } else {
             added
         }

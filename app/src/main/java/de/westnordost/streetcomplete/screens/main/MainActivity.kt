@@ -101,7 +101,7 @@ import de.westnordost.streetcomplete.util.ktx.isLocationAvailable
 import de.westnordost.streetcomplete.util.ktx.observe
 import de.westnordost.streetcomplete.util.ktx.toLatLon
 import de.westnordost.streetcomplete.util.ktx.toast
-import de.westnordost.streetcomplete.util.ktx.truncateTo5Decimals
+import de.westnordost.streetcomplete.util.ktx.truncateTo6Decimals
 import de.westnordost.streetcomplete.util.location.FineLocationManager
 import de.westnordost.streetcomplete.util.location.LocationAvailabilityReceiver
 import de.westnordost.streetcomplete.util.location.LocationRequestFragment
@@ -900,8 +900,8 @@ class MainActivity :
         val center = geometry.center
         val note = withContext(Dispatchers.IO) {
             notesSource
-                .getAll(BoundingBox(center, center).enlargedBy(1.2))
-                .firstOrNull { it.position.truncateTo5Decimals() == center.truncateTo5Decimals() }
+                .getAll(BoundingBox(center, center).enlargedBy(0.2))
+                .firstOrNull { it.position.truncateTo6Decimals() == center.truncateTo6Decimals() }
                 ?.takeIf { noteQuestsHiddenSource.getHidden(it.id) == null }
         }
         if (note != null) {
