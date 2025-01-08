@@ -2,10 +2,24 @@
 
 ## v60.1
 
+### Improvements
+
+- Improved Android 15 edge-to-edge display (#6074)
+- Always show notes you created yourself if you added the text "#surveyme" (#6075, #6052), by @kmpoppe
+
+### Fixes
+
 - fix display of non-latin characters in undo dialog (#6043)
 - fix handling of conflicts of element deletions (#6060), by @matkoniecz
 - fix message notification didn't show, by @matkoniecz
 - other small stuff, thanks @kmpoppe, @mnalis
+
+### Quest Improvements
+
+- Postbox royal cypher: Don't anymore in some countries (#6084), by @kmpoppe
+- Bus stop ref: Also ask in Korea (#6080, #6076), by @kmpoppe
+
+
 
 ## v60.0
 
