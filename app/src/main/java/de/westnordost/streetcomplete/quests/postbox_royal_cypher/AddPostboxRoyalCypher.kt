@@ -20,9 +20,10 @@ class AddPostboxRoyalCypher : OsmFilterQuestType<PostboxRoyalCypher>() {
     override val achievements = listOf(POSTMAN)
     override val enabledInCountries = NoCountriesExcept(
         // United Kingdom and some former nations of the British Empire, members of the Commonwealth of Nations and British overseas territories etc.
-        "GB", "GI", "CY", "HK", "MT", "LK",
+        "GB", "GI", "CY", "HK", "MT",
         // territories with agency postal services provided by the British Post Office
-        "KW", "BH", "MA"
+        // "LK", "KW", "BH", "MA"
+        // removed as per https://github.com/streetcomplete/StreetComplete/issues/6084
         // Not New Zealand: https://wiki.openstreetmap.org/w/index.php?title=Talk:StreetComplete/Quests&oldid=2599288#Quests_in_New_Zealand
     )
 
