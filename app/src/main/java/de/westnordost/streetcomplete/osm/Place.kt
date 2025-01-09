@@ -383,4 +383,6 @@ private val KEYS_THAT_SHOULD_BE_REMOVED_WHEN_PLACE_IS_REPLACED = listOf(
     "engineering", "forestry", "foundation", "lawyer", "logistics", "military", "community_centre",
     "bank", "operational", "users_(PLWD|boy|elderly|female|girl|men)",
     "Comments?", "comments?", "entrance:(width|step_count|kerb:height)", "fenced", "motor_vehicle",
-).map { it.toRegex() }
+)
+    .flatMap { listOf(it, "source:$it", "check_date:$it") }
+    .map { it.toRegex() }
