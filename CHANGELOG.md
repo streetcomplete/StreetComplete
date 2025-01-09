@@ -1011,7 +1011,7 @@ Google Play / F-Droid will not update to the next major version v41 automaticall
 
 - Fix housenumbers, road names etc. were not visible on the map on Android 12 (by @matteblair)
 - Fix build for F-Droid (#3667)
-- Fix recycling materials quest would delete also tags that don't start with "recycling:" but have "yes" as value
+- Fix recycling materials quest would delete also tags that don't start with `recycling:` but have `yes` as value
 
 ## v39.0
 
@@ -2716,7 +2716,7 @@ Otherwise identical to v5.1.
 - Improve street surface quest UI (#76)
 - Clearer wording for pedestrian streets (#862) by @ENT8R
 - Add "metal" as answer option (#568)
-- tag either sett or unhewn_cobblestone, not cobblestone
+- tag either `sett` or `unhewn_cobblestone`, not `cobblestone`
 
 #### Road name quest
 
@@ -2853,7 +2853,7 @@ Just a few bugfixes and a translation update
 - bugfixes (#628, #624, #638, #593, #627, #645, #640 and crash bugs) thanks @dbdean
 - lit quest is now shown also for steps (#631) by @dbdean
 - reorder the importance of bus stop shelters (#637) and bicycle parkings up (#641), because this data is actually used
-- use maxspeed:type to tag implicit speed limits and properly ask for single/dual carriageways in GB (#492)
+- use `maxspeed:type` to tag implicit speed limits and properly ask for single/dual carriageways in GB (#492)
 
 ## v2.1
 
