@@ -16,7 +16,7 @@
 
 ### Quest Improvements
 
-- Postbox royal cypher: Don't anymore in some countries (#6084), by @kmpoppe
+- Postbox royal cypher: Don't ask anymore in some countries (#6084), by @kmpoppe
 - Bus stop ref: Also ask in Korea (#6080, #6076), by @kmpoppe
 
 ## v60.0
