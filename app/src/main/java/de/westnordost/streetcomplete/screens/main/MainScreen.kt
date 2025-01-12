@@ -24,6 +24,7 @@ import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.systemBars
 import androidx.compose.foundation.layout.windowInsetsPadding
@@ -231,7 +232,7 @@ fun MainScreen(
 
         Column(Modifier
             .fillMaxSize()
-            .windowInsetsPadding(WindowInsets.systemBars)
+            .windowInsetsPadding(WindowInsets.safeDrawing)
             .onGloballyPositioned { pointerPinRects["frame"] = it.boundsInRoot() }
         ) {
             Box(Modifier
@@ -301,7 +302,8 @@ fun MainScreen(
                         .align(Alignment.BottomEnd)
                         .padding(4.dp)
                         .onGloballyPositioned { pointerPinRects["bottom-end"] = it.boundsInRoot() },
-                    verticalArrangement = Arrangement.spacedBy(8.dp)
+                    verticalArrangement = Arrangement.spacedBy(8.dp),
+                    horizontalAlignment = Alignment.End,
                 ) {
                     val isCompassVisible = abs(mapRotation) >= 1.0 || abs(mapTilt) >= 1.0
                     AnimatedVisibility(
@@ -338,6 +340,7 @@ fun MainScreen(
                         },
                         modifier = Modifier
                             .align(BiasAlignment(0.333f, 1f))
+                            .onGloballyPositioned { pointerPinRects["create-node"] = it.boundsInRoot() }
                             .padding(4.dp),
                         colors = ButtonDefaults.buttonColors(
                             backgroundColor = MaterialTheme.colors.secondaryVariant,

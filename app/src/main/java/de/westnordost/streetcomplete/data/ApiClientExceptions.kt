@@ -34,6 +34,7 @@ inline fun <T> wrapApiClientExceptions(block: () -> T): T =
                 throw ConnectionException(e.message, e)
             }
             // authorization is something we can handle (by requiring (re-)login of the user)
+            // note that on 403 error code (Unauthorized) user may be also blocked, this may require special handling
             HttpStatusCode.Forbidden, HttpStatusCode.Unauthorized -> {
                 throw AuthorizationException(e.message, e)
             }

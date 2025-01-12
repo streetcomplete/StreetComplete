@@ -1082,7 +1082,7 @@ Egin gauza bera beste aldean egonez gero."</string>
     <string name="quest_openingHours_signed_title">"Irekitzeko ordutegia agerian dago?"</string>
     <string name="quest_openingHours_resurvey_title">"Ordutegia zuzena da oraindik?"</string>
     <string name="quest_placeName_title">"Zein da toki honen izena?"</string>
-    <string name="quest_shop_type_title2">"Erre daiteke bertan?"</string>
+    <string name="quest_shop_type_title2">"Zein da denda mota hau?"</string>
     <string name="quest_smoking_title2">"Ba al dago erretzerik hemen?"</string>
     <string name="quest_smoothness_title">"Zein da bertako zoladuraren kalitatea?"</string>
     <string name="quest_summit_register_title2">"Badago erregistrorik gailurrean?"</string>
@@ -1218,7 +1218,7 @@ Egin gauza bera beste aldean egonez gero."</string>
     <string name="confirmation_replace_shop_title">"Leku desberdin batean al dago orain?"</string>
     <string name="confirmation_replace_shop_message">"Kasu horretan, ordutegiak, harremanetarako informazioa eta abar ere aldatuko dira."</string>
     <string name="confirmation_replace_shop_yes">"Leku desberdin bat da orain"</string>
-    <string name="confirmation_replace_shop_no">"Oraindik leku berean"</string>
+    <string name="confirmation_replace_shop_no">"Oraindik leku berbera"</string>
     <string name="move_node">"Posizio apur bat desberdina da"</string>
     <string name="quest_move_node_message">"Posizioa zuzendu dezakezu funtzioa mugituz.
 Orain mugitu?"</string>
@@ -1322,4 +1322,47 @@ Gainera, geruza batzuek datu berriak gehitzeko aukera ematen dute bistaratzen de
     <string name="label_log_older_than">"-ra"</string>
     <string name="label_log_message_contains">"Mezua hau dauka"</string>
     <string name="title_logs_filters">"Mezuak iragazi"</string>
+    <string name="pref_title_quests_restore_hidden_summary">"Ezkutatutako erronkak: %d"</string>
+    <string name="link_every_door_description">"Android/iOSerako POI editore indartsua"</string>
+    <string name="link_mapcomplete_description">"OSM mapa tematikoen bilduma, bakoitzak ezaugarri mota bat editatzen uzten dizutenak"</string>
+    <string name="link_forum_description">"Laguntza behar? Irakurri nahi duzu zer gertatzen ari den? Etorri eta ekin, mundu osoko komunitateak ekintza mordo egiten ari dira!"</string>
+    <string name="link_calendar_description">"Bada OSMeko ekitaldi edo komunitate topaketarik zugandik hurbil? (Bestela, gehitu zeurea!)"</string>
+    <string name="link_prettymapp_description">"Sortu auzoen kolore anitzeko mapa posterrak"</string>
+    <string name="quest_disable_action">"Ezgaitu"</string>
+    <string name="quest_disable_title">"Desgaitu erronka mota"</string>
+    <string name="quest_disable_message_not_installed">"StreetMeasure ez dago instalatuta"</string>
+    <string name="quest_disable_message_not_working">"StreetMeasure-k ez du neurririk eman."</string>
+    <string name="quest_disable_message_tape_measure">"Neurketa-zinta erabili ahal duzu honen ordez, baina arraro gerta daiteke."</string>
+    <string name="quest_buildingType_outbuilding">"Dependentzi"</string>
+    <string name="quest_buildingType_outbuilding_description">"Jabetza bateko menpeko eraikina"</string>
+    <string name="quest_buildingType_other_description">"App honetan ezin hauta daitekeen eraikin mota"</string>
+    <string name="quest_buildingType_container">"Kontainer"</string>
+    <string name="quest_buildingType_tent">"Dend"</string>
+    <string name="quest_buildingType_tomb">"Hobi"</string>
+    <string name="quest_buildingType_tower">"Dorre"</string>
+    <string name="quest_buildingType_tower_description">"Edozein dorre"</string>
+    <string name="quest_buildingType_under_construction">"Eraikitzen"</string>
+    <string name="overlay_buildings">"Eraikinak"</string>
+    <string name="quest_pedestrian_crossing_markings">"Gurutzebide honek ikurrak ditu errepidean?"</string>
+    <string name="overlay_places">"Lekuak"</string>
+    <string name="overlay_things">"Gauzak"</string>
+    <string name="unknown_object">"Ezezaguna"</string>
+    <string name="quest_leafType_tree_title">"Zuhaitz honek orratz edo hostoak ditu?"</string>
+    <string name="quest_bbq_fuel_gas">"Gas"</string>
+    <string name="about_description_donate_google_play3">"Eskerrik asko app hau laguntzeaz pentsatzeagatik!
+Diru-emateko informazioa gure web horrian aurki dezakezu, Google Play-k ez digu loturak ipintzen uzten."</string>
+    <string name="quest_isAmenityIndoor_outside_covered">"Kanpoan baina estalita"</string>
+    <string name="quest_generic_otherAnswers2">"Eh…"</string>
+    <string name="quest_pedestrian_crossing_signals2">"Badago trafiko ikurrik hemen non zeharkatu azaltzeko?"</string>
+    <string name="quest_moped_access_allowed">"Ez dago ikurrik"</string>
+    <string name="info">"Informazio gehio"</string>
+    <string name="quest_accessible_for_pedestrians_prohibited">"Debekatuta."</string>
+    <string name="quest_accessible_for_pedestrians_allowed">"Baimenduta."</string>
+    <string name="quest_cycleway_value_sidewalk_ok">"Ez, baina bizikletak espreski baimenduta"</string>
+    <string name="separate_cycleway_no_signed">"Ikurrak bizikletak debekatzen ditu"</string>
+    <string name="separate_cycleway_footway_allowed_sign">"Oinezkoa, bizikletak baimenduta"</string>
+    <string name="quest_multiselect_hint">"Hauta ondo datozenak:"</string>
+    <string name="bridge">"Zubian"</string>
+    <string name="about_title_intro">"Erakutsi sarrera"</string>
+    <string name="note_for_object">"Batek oharra utzi du:"</string>
 </resources>

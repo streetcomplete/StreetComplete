@@ -57,6 +57,7 @@ import de.westnordost.streetcomplete.ui.common.dialogs.ConfirmationDialog
         Column {
             TopAppBar(
                 title = { QuestSelectionTitle(currentPresetName) },
+                windowInsets = AppBarDefaults.topAppBarWindowInsets,
                 navigationIcon = { IconButton(onClick = onClickBack) { BackIcon() } },
                 actions = {
                     QuestSelectionTopBarActions(

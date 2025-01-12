@@ -232,16 +232,21 @@ private fun Note.shouldShowAsQuest(
         if (blockedNames.contains(it.user?.displayName?.lowercase())) return false
     }
 
-    // don't show notes where user replied last unless he wrote a survey required marker
-    if (showOnlyNotesPhrasedAsQuestions
-        && comments.last().isReplyFromUser(userId)
+    /*
+        We usually don't show notes where either the user is the last responder, or the
+        note was created with the app and has no replies.
+        If the most recent comment contains "#surveyme", we want to show the note regardless.
+        See https://github.com/streetcomplete/StreetComplete/issues/6052#issuecomment-2567163451
+     */
+    if (
+        (
+            comments.last().isReplyFromUser(userId) ||
+            (probablyCreatedByUserInThisApp(userId) && !hasReplies)
+        )
         && !comments.last().containsSurveyRequiredMarker()
     ) {
         return false
     }
-
-    // newly created notes by user should not be shown if it was both created in this app and has no replies yet
-    if (probablyCreatedByUserInThisApp(userId, !showOnlyNotesPhrasedAsQuestions) && !hasReplies) return false
 
     /*
         many notes are created to report problems on the map that cannot be resolved
@@ -268,6 +273,7 @@ private fun Note.probablyContainsQuestion(): Boolean {
      */
     val questionMarksAroundTheWorld = listOf(
         "?", // Latin question mark
+        "¿", // Spanish question mark in case the closing latin one was omitted
         ";", // Greek question mark (a different character than semicolon, though same appearance)
         ";", // semicolon (often used instead of proper greek question mark)
         "؟", // mirrored question mark (used in script written from right to left, like Arabic)
@@ -286,7 +292,7 @@ private fun Note.containsSurveyRequiredMarker(): Boolean =
     comments.any { it.containsSurveyRequiredMarker() }
 
 private fun NoteComment.containsSurveyRequiredMarker(): Boolean =
-    text?.matches(".*#surveyme.*".toRegex()) == true
+    text?.contains("#surveyme", ignoreCase = true) == true
 
 private fun Note.probablyCreatedByUserInThisApp(userId: Long, requireMatchingVersion: Boolean): Boolean {
     val firstComment = comments.first()

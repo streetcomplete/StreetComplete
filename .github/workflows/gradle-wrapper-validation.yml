@@ -1,4 +1,5 @@
 name: "Validate Gradle Wrapper"
+
 on:
   push:
     paths:

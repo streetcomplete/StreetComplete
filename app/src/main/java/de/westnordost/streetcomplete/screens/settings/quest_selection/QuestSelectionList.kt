@@ -2,7 +2,10 @@ package de.westnordost.streetcomplete.screens.settings.quest_selection
 
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.calculateEndPadding
+import androidx.compose.foundation.layout.calculateStartPadding
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -20,6 +23,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.platform.LocalHapticFeedback
+import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -41,6 +45,8 @@ fun QuestSelectionList(
     displayCountry: String,
     onSelectQuest: (questType: QuestType, selected: Boolean) -> Unit,
     onReorderQuest: (questType: QuestType, toAfter: QuestType) -> Unit,
+    modifier: Modifier = Modifier,
+    contentPadding: PaddingValues = PaddingValues(0.dp),
 ) {
     var showEnableQuestDialog by remember { mutableStateOf<QuestType?>(null) }
 
@@ -65,12 +71,24 @@ fun QuestSelectionList(
         dragItem = null
     }
 
-    Column {
-        QuestSelectionHeader()
+    Column(modifier) {
+        val layoutDirection = LocalLayoutDirection.current
+        QuestSelectionHeader(Modifier.padding(
+            start = contentPadding.calculateStartPadding(layoutDirection),
+            top = contentPadding.calculateTopPadding(),
+            end = contentPadding.calculateEndPadding(layoutDirection)
+        ))
         // TODO Compose: scrollbars would be nice here (not supported yet by compose)
         //      When they are available: Check other places too, don't want to add a todo in every
         //      single place that could have a scrollbar
-        LazyColumn(state = listState) {
+        LazyColumn(
+            state = listState,
+            contentPadding = PaddingValues(
+                start = contentPadding.calculateStartPadding(layoutDirection),
+                end = contentPadding.calculateEndPadding(layoutDirection),
+                bottom = contentPadding.calculateBottomPadding()
+            ),
+        ) {
             itemsIndexed(reorderableItems, key = { _, it -> it.questType.name }) { index, item ->
                 ReorderableItem(
                     state = dragDropState,
@@ -122,8 +140,8 @@ fun QuestSelectionList(
 }
 
 @Composable
-private fun QuestSelectionHeader() {
-    Column {
+private fun QuestSelectionHeader(modifier: Modifier = Modifier) {
+    Column(modifier) {
         Row(
             Modifier
                 .fillMaxWidth()

@@ -84,4 +84,14 @@ object ApplicationConstants {
     )
 
     const val EE_QUEST_OFFSET = 2222 // must be larger than the largest SC ordinal, and should not be changed to allow preset transfer
+
+    /*
+    During development it might be better to work against the Test-API, rather than the
+    Live-API. Developers are reminded that they need a separate login for the Test-API and
+    can register/logon via https://master.apis.dev.openstreetmap.org/
+    Note that test actions not applied to the database do not require test API (test edits that are reverted
+    locally before an upload etc) and that test API has a separate database that is mostly empty
+    (test data needs to be created there).
+     */
+    const val USE_TEST_API = false
 }

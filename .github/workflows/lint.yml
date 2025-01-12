@@ -1,4 +1,5 @@
 name: "Lint"
+
 on:
   workflow_dispatch:
 
@@ -11,6 +12,7 @@ jobs:
     steps:
       - name: Checkout the source code
         uses: actions/checkout@v4
+
       - name: Run Kotlin linter
         id: ktlint-check
         uses: musichin/ktlint-check@v3.0.0
@@ -19,6 +21,7 @@ jobs:
           reporter: plain?group_by_file,output=${{ env.lintResultFilename }}
           relative: true
         continue-on-error: true
+
       - name: Kotlin linter result
         run: |
           cat ${{ env.lintResultFilename }}

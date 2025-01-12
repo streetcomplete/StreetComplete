@@ -1,4 +1,4 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [Cajamar, Banco Sabadell, Shitcoins.club, Sabadell, Caixabank, BitBase, BBVA]
-chargingStationOperators: [Iberdrola, Feníe Energía, Endesa, Wenea, Repsol, Atlante, 'Tesla, Inc.', Lidl, Eranovum]
+atmOperators: [Cajamar, Banco Sabadell, Sabadell, Shitcoins.club, Caixabank, BitBase, BBVA]
+chargingStationOperators: [Iberdrola, Powerdot, Feníe Energía, Endesa, Wenea, Repsol, Atlante, 'Tesla, Inc.', Mercadona, Lidl, Eranovum, Endesa X]
 parcelLockerBrand: [Amazon Hub]

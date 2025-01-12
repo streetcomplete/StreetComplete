@@ -1,7 +1,7 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [Batopin, bpost, Belfius, BNP Paribas Fortis, Crelan, ING, Bpost, BNP Paribas, bpost banque, Cash, Bancontact, Argenta, AXA]
-chargingStationOperators: [Lidl, Ionity, Allego, DATS 24, 'Tesla, Inc.', ZE-MO, Ville de Mons, Luminus, TotalEnergies, Q8, Electra, Ores, D'Ieteren, Blue Corner, Administration communale, ecotap, ZeBorne, TEC, Maison du Tourisme du Pays de Herve, Last Mile Solutions, Eoly, Emyon, EVBox, Audi]
-clothesContainerOperators: [Terre, IDELUX-Environnement, Terre ASBL, Oxfam, Les Petits Riens - Spullenhulp, Les Petits Riens, Terre asbl, Oxfam-Solidarité, Caritas n.v., A.S.B.L. La Chaîne du Cœur, ASBL Terre, Les Petits Riens-Spullenhulp, Curitas, BEP, ASBL la chaîne du cœur]
+atmOperators: [Batopin, bpost, Belfius, BNP Paribas Fortis, Crelan, Bpost, ING, BNP Paribas, Bancontact, bpost banque, Cash, Argenta, AXA]
+chargingStationOperators: [Lidl, Ionity, Allego, DATS 24, 'Tesla, Inc.', ZE-MO, Ville de Mons, Luminus, Electra, TotalEnergies, Q8, Ores, D'Ieteren, Blue Corner, Administration communale, ecotap, ZeBorne, TEC, Maison du Tourisme du Pays de Herve, Last Mile Solutions, Fastned, Eoly, Emyon, EVBox, Audi]
+clothesContainerOperators: [Terre, IDELUX-Environnement, Terre ASBL, Oxfam, Les Petits Riens - Spullenhulp, Les Petits Riens, Terre asbl, Oxfam-Solidarité, Curitas S.A., Caritas n.v., A.S.B.L. La Chaîne du Cœur, ASBL Terre, Les Petits Riens-Spullenhulp, Curitas, BEP, ASBL la chaîne du cœur]
 defaultSpeedLimitHasUrbanOrRural: true
 officialLanguages: [fr, de]
 parcelLockerBrand: [bpost, Mondial Relay]

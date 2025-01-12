@@ -1,7 +1,7 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 additionalStreetsignLanguages: [international]
-atmOperators: [Euronet, Τράπεζα Πειραιώς, Alpha Bank, Eurobank, Εθνική Τράπεζα, Euronet Worldwide, Piraeus Bank, Εθνική Τράπεζα της Ελλάδος, Bcash, Cashzone, ATM, National Bank, Attica Bank, Εθνική, Πειραιώς, Εθνική Τράπεζα της Ελλάδος - National Bank of Greece NBG, Citibank, ΤΡΑΠΕΖΑ ΠΕΙΡΑΙΩΣ, Πειραιώς / Piraeus, Bank of Chania, Τράπεζα Eurobank, Shitcoins.club, Piräus Bank, NBG GROUP, NBG, HSBC, Bitcoinmat, Alpha, Τράπεζας Πειραιώς, Εθνική Τράπεζα | National Bank of Greece, i-bank, Pyraeus Bank, Pireus Bank, Pireaus Bank, Piraeus bank, Hellenic Post, EuroNet, Ethniki Bank, Cooperative Bank of Dodecanese, ATM Τράπεζας Πειραιώς]
-chargingStationOperators: [ΔΕΗ blue, ΔΕΗ, Protergia, Chargespot, blink, Lidl, WATT AND VOLT, 'Tesla, Inc.', Peugeot, Δήμος Αλίμου, nrg incharge, DEI, incharge, NRG, Joltie, Fortizo, ΔΕΗblue, 'https://mythicalpeloponnese.gr', WATT+VOLT, Evziiin, DEI Blue, ChargePoint, Blue, Blink]
+atmOperators: [Euronet, Τράπεζα Πειραιώς, Alpha Bank, Eurobank, Εθνική Τράπεζα, Euronet Worldwide, Piraeus Bank, Εθνική Τράπεζα της Ελλάδος, Bcash, Cashzone, ATM, National Bank, Attica Bank, Εθνική, ΤΡΑΠΕΖΑ ΠΕΙΡΑΙΩΣ, Πειραιώς / Piraeus, Πειραιώς, Εθνική Τράπεζα της Ελλάδος - National Bank of Greece NBG, Citibank, Bank of Chania, Τράπεζα Eurobank, Shitcoins.club, Piräus Bank, NBG GROUP, NBG, EuroNet, Bitcoinmat, Alpha, Τράπεζας Πειραιώς, Εθνική Τράπεζα | National Bank of Greece, i-bank, Pyraeus Bank, Pireus Bank, Pireaus Bank, Piraeus bank, Hellenic Post, HSBC, Ethniki Bank, Cooperative Bank of Dodecanese, ATM Τράπεζας Πειραιώς]
+chargingStationOperators: [ΔΕΗ blue, ΔΕΗ, Protergia, Lidl, Chargespot, blink, WATT AND VOLT, 'Tesla, Inc.', Peugeot, Δήμος Αλίμου, nrg incharge, DEI, incharge, NRG, Joltie, Fortizo, ΔΕΗblue, 'https://mythicalpeloponnese.gr', WATT+VOLT, Evziiin, DEI Blue, ChargePoint, Blue, Blink]
 clothesContainerOperators: [Recycom, RECYCOM, Δήμος Αθηναίων, Texcycle, Δήμος Κέρκυρας, Δήμος Ζωγράφου, Δήμος Γαλατσίου]
 defaultSpeedLimitHasUrbanOrRural: true
 hasAdvisorySpeedLimitSign: true
@@ -16,7 +16,7 @@ noStoppingLineStyle: yellow
 noStoppingSignStyle: vienna
 officialLanguages: [el]
 orchardProduces: [olive, grape, peach, orange, almond, walnut, tomato, apple, kiwi, apricot, chestnut, pear, fig, lemon, lime, chilli_pepper, sweet_pepper]
-parcelLockerBrand: [Box Now, BoxNow, Skroutz, Skroutz Point]
+parcelLockerBrand: [Box Now, Skroutz, BoxNow, Skroutz Point]
 postboxesHaveCollectionTimes: true
 slowZoneLabelPosition: top
 slowZoneLabelText: ΠΕΡΙΟΧΗ

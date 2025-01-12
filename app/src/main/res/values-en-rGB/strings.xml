@@ -814,8 +814,7 @@ Note all the available options: some cases are not obvious, like a one way road 
     <string name="quest_recycling_type_plastic_bottles_and_cartons">"Plastic bottles and cartons only"</string>
     <string name="team_mode">"Enter Team Mode"</string>
     <string name="team_mode_exit">"Exit Team Mode"</string>
-    <string name="team_mode_description">"When mapping the same area together in a group, you can enter team mode to split up quests between all team members.
-Each of you will then see different quests."</string>
+    <string name="team_mode_description">"When mapping the same area together in a group, you can enter team mode to split up quests between all team members. Each of you will then see different quests."</string>
     <string name="team_mode_active">"Team mode is active"</string>
     <string name="team_mode_deactivated">"Team mode deactivated"</string>
     <string name="undo_confirm_title2">"Undo the following edit?"</string>
@@ -1436,4 +1435,5 @@ A level counts as a roof level when its windows are in the roof. Subsequently, r
     <string name="pedestrian_zone_designated">"Designated for cycling here"</string>
     <string name="pedestrian_zone_allowed_sign">"A sign allows cycling here"</string>
     <string name="pedestrian_zone_no_sign">"No explicit sign about cycling here"</string>
+    <string name="team_mode_description_overlay_hint">"If you use overlays, each of you should use a different one, as only quests are split up."</string>
 </resources>

@@ -1,4 +1,23 @@
 <!-- Do not edit! This file was generated automatically from CHANGELOG.md via UpdateChangelogTask -->
+<h2>v60.1</h2>
+<h3>Improvements</h3>
+<ul>
+<li>Improved Android 15 edge-to-edge display (<a href="https://github.com/streetcomplete/StreetComplete/issues/6074">#6074</a>)</li>
+<li>Always show notes you created yourself if you added the text &quot;#surveyme&quot; (<a href="https://github.com/streetcomplete/StreetComplete/issues/6075">#6075</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/6052">#6052</a>), by <a href="https://github.com/kmpoppe">kmpoppe</a></li>
+<li>other small stuff (<a href="https://github.com/streetcomplete/StreetComplete/issues/6092">#6092</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/6089">#6089</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/6057">#6057</a>...), thanks <a href="https://github.com/kmpoppe">kmpoppe</a>, <a href="https://github.com/mnalis">mnalis</a></li>
+</ul>
+<h3>Fixes</h3>
+<ul>
+<li>fix display of non-latin characters in undo dialog (<a href="https://github.com/streetcomplete/StreetComplete/issues/6043">#6043</a>)</li>
+<li>fix handling of conflicts of element deletions (<a href="https://github.com/streetcomplete/StreetComplete/issues/6060">#6060</a>), by <a href="https://github.com/matkoniecz">matkoniecz</a></li>
+<li>fix message notification didn't show, by <a href="https://github.com/matkoniecz">matkoniecz</a></li>
+</ul>
+<h3>Quest Improvements</h3>
+<ul>
+<li>Postbox royal cypher: Don't ask anymore in some countries (<a href="https://github.com/streetcomplete/StreetComplete/issues/6084">#6084</a>), by <a href="https://github.com/kmpoppe">kmpoppe</a></li>
+<li>Bus stop ref: Also ask in Korea (<a href="https://github.com/streetcomplete/StreetComplete/issues/6080">#6080</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/6076">#6076</a>), by <a href="https://github.com/kmpoppe">kmpoppe</a></li>
+<li>Post box ref: Also ask in Liechtenstein (<a href="https://github.com/streetcomplete/StreetComplete/issues/6096">#6096</a>), by <a href="https://github.com/dokutan">dokutan</a></li>
+</ul>
 <h2>v60.0</h2>
 <p>Redesigned the main screen a little. Here and there you'll notice small differences. The dialog to
 start the team mode from the menu is more descriptive now, for example. (<a href="https://github.com/streetcomplete/StreetComplete/issues/5799">#5799</a>)</p>
@@ -893,7 +912,7 @@ Note that the track can only be recorded while the app is in foreground. So, it 
 <ul>
 <li>Fix housenumbers, road names etc. were not visible on the map on Android 12 (by <a href="https://github.com/matteblair">matteblair</a>)</li>
 <li>Fix build for F-Droid (<a href="https://github.com/streetcomplete/StreetComplete/issues/3667">#3667</a>)</li>
-<li>Fix recycling materials quest would delete also tags that don't start with &quot;recycling:&quot; but have &quot;yes&quot; as value</li>
+<li>Fix recycling materials quest would delete also tags that don't start with <code>recycling:</code> but have <code>yes</code> as value</li>
 </ul>
 <h2>v39.0</h2>
 <h3>New Quests</h3>
@@ -1237,7 +1256,7 @@ Special thanks to <a href="https://github.com/FloEdelmann">FloEdelmann</a> for h
 <li>Periodically ask for the existence of BBQ spots, ticket validators, emergency life rings and emergency phones (<a href="https://github.com/streetcomplete/StreetComplete/issues/2679">#2679</a>), thanks <a href="https://github.com/arrival-spring">arrival-spring</a></li>
 <li>Also ask for the surface of service roads as long as they are not driveways (<a href="https://github.com/streetcomplete/StreetComplete/issues/2783">#2783</a>)</li>
 <li>Don't remove the check_date tag if it is already tagged, instead, update it (<a href="https://github.com/streetcomplete/StreetComplete/issues/2861">#2861</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/2883">#2883</a>)</li>
-<li>Don't tag foot=use_sidepath on the road if there is a separate sidewalk (<a href="https://github.com/streetcomplete/StreetComplete/issues/2895">#2895</a>)</li>
+<li>Don't tag <code>foot=use_sidepath</code> on the road if there is a separate sidewalk (<a href="https://github.com/streetcomplete/StreetComplete/issues/2895">#2895</a>)</li>
 </ul>
 <h3>Other Enhancements</h3>
 <ul>
@@ -1438,7 +1457,7 @@ Due to big changes under the hood, when you upgrade to the next major version, l
 <li>Tracktypes: Better wording and pictures (<a href="https://github.com/streetcomplete/StreetComplete/issues/2294">#2294</a>)</li>
 <li>Parking type: Added lane and off-street parking (<a href="https://github.com/streetcomplete/StreetComplete/issues/2346">#2346</a>)</li>
 <li>Ask for roof shape even if roof levels is 0 - but only in countries where flat roofs are not the norm (<a href="https://github.com/streetcomplete/StreetComplete/issues/1929">#1929</a>)</li>
-<li>Kerb quests: Tag barrier=kerb if it is missing (<a href="https://github.com/streetcomplete/StreetComplete/issues/2348">#2348</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/2393">#2393</a>)</li>
+<li>Kerb quests: Tag <code>barrier=kerb</code> if it is missing (<a href="https://github.com/streetcomplete/StreetComplete/issues/2348">#2348</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/2393">#2393</a>)</li>
 <li>Do not ask for the bench backrest if the bench type is already recorded (<a href="https://github.com/streetcomplete/StreetComplete/issues/2365">#2365</a>)</li>
 <li>Lanes quest: Move &quot;differs for each side&quot; option to main UI (<a href="https://github.com/streetcomplete/StreetComplete/issues/2350">#2350</a>)</li>
 <li>Other small enhancements (<a href="https://github.com/streetcomplete/StreetComplete/issues/2382">#2382</a>)</li>
@@ -1482,7 +1501,7 @@ Due to big changes under the hood, when you upgrade to the next major version, l
 <li>Ask for the max height also below bridges (<a href="https://github.com/streetcomplete/StreetComplete/issues/1882">#1882</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/2234">#2234</a>)</li>
 <li>Building type: fix wrong name for a silo (<a href="https://github.com/streetcomplete/StreetComplete/issues/2303">#2303</a>)</li>
 <li>Surface: Add &quot;rock&quot; as an answer option (<a href="https://github.com/streetcomplete/StreetComplete/issues/2298">#2298</a>)</li>
-<li>Cycleway resurvey: Interpret a road with oneway:bicycle=no to have no cycleway unless it is tagged explicitly (<a href="https://github.com/streetcomplete/StreetComplete/issues/2310">#2310</a>)</li>
+<li>Cycleway resurvey: Interpret a road with <code>oneway:bicycle=no</code> to have no cycleway unless it is tagged explicitly (<a href="https://github.com/streetcomplete/StreetComplete/issues/2310">#2310</a>)</li>
 <li>A few minor enhancements (<a href="https://github.com/streetcomplete/StreetComplete/issues/2280">#2280</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/2276">#2276</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/2221">#2221</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/2160">#2160</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/2315">#2315</a>, ...)</li>
 </ul>
 <h2>v26.2</h2>
@@ -2477,7 +2496,7 @@ You can also read this list of changes later in that screen if you are impatient
 <li>Improve street surface quest UI (<a href="https://github.com/streetcomplete/StreetComplete/issues/76">#76</a>)</li>
 <li>Clearer wording for pedestrian streets (<a href="https://github.com/streetcomplete/StreetComplete/issues/862">#862</a>) by <a href="https://github.com/ENT8R">ENT8R</a></li>
 <li>Add &quot;metal&quot; as answer option (<a href="https://github.com/streetcomplete/StreetComplete/issues/568">#568</a>)</li>
-<li>tag either sett or unhewn_cobblestone, not cobblestone</li>
+<li>tag either <code>sett</code> or <code>unhewn_cobblestone</code>, not <code>cobblestone</code></li>
 </ul>
 <h4>Road name quest</h4>
 <ul>
@@ -2554,7 +2573,7 @@ You can also read this list of changes later in that screen if you are impatient
 <li>fix crash when inputting certain values for cycleways (<a href="https://github.com/streetcomplete/StreetComplete/issues/740">#740</a>)</li>
 <li>fix rare crash when rotating the map while specifying the cycleway</li>
 <li>don't display the quest for Android &lt;4.4 users (<a href="https://github.com/streetcomplete/StreetComplete/issues/713">#713</a>)</li>
-<li>always tag oneway:bicycle=no for oneways with bicycle infrastructure for contraflow direction (<a href="https://github.com/streetcomplete/StreetComplete/issues/717">#717</a>)</li>
+<li>always tag <code>oneway:bicycle=no</code> for oneways with bicycle infrastructure for contraflow direction (<a href="https://github.com/streetcomplete/StreetComplete/issues/717">#717</a>)</li>
 <li>for oneways in contraflow, replace &quot;sharrows&quot; option with option to state that a oneway road is not oneway for cyclists (but has still no dedicated cycleway) (<a href="https://github.com/streetcomplete/StreetComplete/issues/717">#717</a>)</li>
 <li>show compass needle in cycleway form (<a href="https://github.com/streetcomplete/StreetComplete/issues/723">#723</a>)</li>
 <li>limit cycleway quests to a few countries which are likely to have any bicycle infrastructure (<a href="https://github.com/streetcomplete/StreetComplete/issues/749">#749</a>)</li>
@@ -2606,7 +2625,7 @@ You can also read this list of changes later in that screen if you are impatient
 <li>bugfixes (<a href="https://github.com/streetcomplete/StreetComplete/issues/628">#628</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/624">#624</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/638">#638</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/593">#593</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/627">#627</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/645">#645</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/640">#640</a> and crash bugs) thanks <a href="https://github.com/dbdean">dbdean</a></li>
 <li>lit quest is now shown also for steps (<a href="https://github.com/streetcomplete/StreetComplete/issues/631">#631</a>) by <a href="https://github.com/dbdean">dbdean</a></li>
 <li>reorder the importance of bus stop shelters (<a href="https://github.com/streetcomplete/StreetComplete/issues/637">#637</a>) and bicycle parkings up (<a href="https://github.com/streetcomplete/StreetComplete/issues/641">#641</a>), because this data is actually used</li>
-<li>use maxspeed:type to tag implicit speed limits and properly ask for single/dual carriageways in GB (<a href="https://github.com/streetcomplete/StreetComplete/issues/492">#492</a>)</li>
+<li>use <code>maxspeed:type</code> to tag implicit speed limits and properly ask for single/dual carriageways in GB (<a href="https://github.com/streetcomplete/StreetComplete/issues/492">#492</a>)</li>
 </ul>
 <h2>v2.1</h2>
 <p>only bugfixes and translations updates</p>

@@ -812,8 +812,7 @@ Veja todas as opções disponíveis: alguns casos não são óbvios, como uma es
     <string name="quest_recycling_type_plastic_bottles_and_cartons">"Apenas garrafas de plástico e pacotes"</string>
     <string name="team_mode">"Modo de equipa"</string>
     <string name="team_mode_exit">"Sair do modo de equipa"</string>
-    <string name="team_mode_description">"Ao mapear a mesma área em grupo, pode entrar no modo de equipa para dividir as missões entre todos os membros da equipa.
-Cada um verá missões diferentes."</string>
+    <string name="team_mode_description">"Ao mapear a mesma área em grupo, pode entrar no modo de equipa para dividir as missões entre todos os membros da equipa. Cada um de vós verá missões diferentes."</string>
     <string name="team_mode_active">"O modo de equipa está ativo"</string>
     <string name="team_mode_deactivated">"Modo de equipa desativado"</string>
     <string name="undo_confirm_title2">"Desfazer a seguinte edição?"</string>
@@ -1239,8 +1238,8 @@ Faça o mesmo para o outro lado, se existir."</string>
     <string name="separate_cycleway_no_or_allowed">"Via pedonal, sem sinalização explícita sobre o uso da bicicleta (se é permitido depende da legislação)"</string>
     <string name="separate_cycleway_non_segregated">"Via para ciclistas e pedestres partilhada"</string>
     <string name="separate_cycleway_segregated">"Via pedonal e de bicicleta separadas"</string>
-    <string name="separate_cycleway_exclusive">"Via para ciclistas"</string>
-    <string name="separate_cycleway_with_sidewalk">"Apenas para bicicleta com um passeio adjacente ou separado por lancil"</string>
+    <string name="separate_cycleway_exclusive">"Ciclovia"</string>
+    <string name="separate_cycleway_with_sidewalk">"Ciclovia com passeio adjacente (separado por um lancil)"</string>
     <string name="cycleway_reverse_direction">"Inverter direção da ciclovia"</string>
     <string name="cycleway_reverse_direction_warning">"É extremamente raro que uma ciclovia siga noutra direção."</string>
     <string name="cycleway_reverse_direction_toast">"Toque no lado que pretende inverter"</string>
@@ -1408,4 +1407,31 @@ Um andar conta como um andar de telhado quando as suas janelas estão no telhado
     <string name="action_create_new_poi">"Criar um novo"</string>
     <string name="auth_error">"Erro de autorização. Tente iniciar sessão novamente."</string>
     <string name="quest_accessible_for_pedestrians_sidewalk">"Na verdade, existe um passeio."</string>
+    <string name="quest_bicycle_repair_station_services_title">"Que equipamento para bicicletas existe aqui?"</string>
+    <string name="quest_bicycle_repair_station_pump">"Bomba de ar"</string>
+    <string name="quest_bicycle_repair_station_tools">"Várias ferramentas"</string>
+    <string name="quest_bicycle_repair_station_stand">"Bancada de trabalho"</string>
+    <string name="quest_bicycle_repair_station_chain_tool">"Ferramenta para correntes"</string>
+    <string name="quest_boat_rental_title">"Que tipo de barcos podem ser alugados aqui?"</string>
+    <string name="quest_boat_rental_motorboat">"Barco a motor"</string>
+    <string name="quest_boat_rental_jetski">"Mota de água"</string>
+    <string name="quest_boat_rental_sailboat">"Barco à vela"</string>
+    <string name="quest_boat_rental_pedalboat">"Barco a pedais"</string>
+    <string name="quest_boat_rental_kayak">"Caiaque"</string>
+    <string name="quest_boat_rental_canoe">"Canoa"</string>
+    <string name="quest_boat_rental_houseboat">"Barco-casa"</string>
+    <string name="quest_boat_rental_rowboat">"Barco a remos"</string>
+    <string name="quest_boat_rental_raft">"Jangada"</string>
+    <string name="quest_boat_rental_surfboard">"Prancha de surfe"</string>
+    <string name="quest_boat_rental_sailboard">"Prancha à vela"</string>
+    <string name="quest_boat_rental_yacht">"Iate"</string>
+    <string name="quest_boat_rental_standup_paddleboard">"Prancha de remo em pé (SUP)"</string>
+    <string name="quest_powerAttachment_title">"Como é que esta linha elétrica está ligada?"</string>
+    <string name="quest_powerAttachment_suspension">"Apoiada a partir de cima"</string>
+    <string name="quest_powerAttachment_anchor">"Fixa na horizontal"</string>
+    <string name="quest_powerAttachment_pin">"Apoiada a partir de baixo"</string>
+    <string name="pedestrian_zone_designated">"Assinalado para ciclismo aqui"</string>
+    <string name="pedestrian_zone_allowed_sign">"Um sinal permite andar de bicicleta aqui"</string>
+    <string name="pedestrian_zone_no_sign">"Não há sinalização explícita sobre ciclismo aqui"</string>
+    <string name="team_mode_description_overlay_hint">"Se utilizarem sobreposições, cada um de vós deve utilizar uma diferente, pois só as missões são divididas entre pessoas."</string>
 </resources>

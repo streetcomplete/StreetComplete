@@ -176,6 +176,33 @@ class OsmNoteQuestControllerTest {
         assertNotNull(ctrl.getVisible(1))
     }
 
+    @Test fun `get note quest created in app without comments and without survey required marker returns null`() {
+        on(noteSource.get(1)).thenReturn(note(comments = listOf(
+            comment(text = "this is a non-question test note\n\nCreated via StreetComplete 60.1", user = User(id = 100, "Blaubär")),
+        )))
+        on(userDataSource.userId).thenReturn(1)
+
+        assertNull(ctrl.getVisible(1))
+    }
+
+    @Test fun `get note quest created in app without comments and with survey required marker returns non-null`() {
+        on(noteSource.get(1)).thenReturn(note(comments = listOf(
+            comment(text = "this is a non-question test note #surveyme\n\nCreated via StreetComplete 60.1", user = User(id = 100, "Blaubär")),
+        )))
+        on(userDataSource.userId).thenReturn(1)
+
+        assertNotNull(ctrl.getVisible(1))
+    }
+
+    @Test fun `get note quest created in app without comments and with survey required marker (ignore case) returns non-null`() {
+        on(noteSource.get(1)).thenReturn(note(comments = listOf(
+            comment(text = "this is a non-question test note #SurVEyMe\n\nCreated via StreetComplete 60.1", user = User(id = 100, "Blaubär")),
+        )))
+        on(userDataSource.userId).thenReturn(1)
+
+        assertNotNull(ctrl.getVisible(1))
+    }
+
     @Test fun `get quest not phrased as question returns null`() {
         on(noteSource.get(1)).thenReturn(note(comments = listOf(
             comment(text = "test")

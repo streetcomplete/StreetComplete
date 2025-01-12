@@ -60,8 +60,8 @@
     <string name="quest_streetName_answer_noProperStreet_link">"صرفاً این دو مسیر را به هم وصل می‌نماید"</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">"مورد دیگری است (یادداشت بگذارید)"</string>
     <string name="about_title_privacy_statement">"بیانیهٔ حریم شخصی"</string>
-    <string name="quest_openingHours_public_holidays">"تعطیلات عمومی"</string>
-    <string name="quest_openingHours_public_holidays_short">"تعطیلات عمومی"</string>
+    <string name="quest_openingHours_public_holidays">"تعطیلات رسمی"</string>
+    <string name="quest_openingHours_public_holidays_short">"تعطیلات رسمی"</string>
     <string name="quest_openingHours_open_end">"پایان کار"</string>
     <string name="quest_openingHours_answer_247">"همیشه باز"</string>
     <string name="quest_openingHours_answer_seasonal_opening_hours">"ماهیانه یا فصلی …"</string>
@@ -321,7 +321,7 @@
     <string name="quest_housenumber_street_number_optional">"شماره جهت‌یابی (اختیاری)"</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">"مسیر رفت و برگشت دوچرخه سواری مجزا است…"</string>
     <string name="quest_openingHours_emptyAnswer">"آنچه را که روی علائم نگاشته شده درج کنید. اگر علائمی وجود ندارد، ساعت کاری را از داخل بپرسید."</string>
-    <string name="quest_cycleway_value_none_but_no_oneway">"هیچ‌کدام، اما دوچرخه‌سواران ممکن است ازهر دو جهت جاده استفاده کنند"</string>
+    <string name="quest_cycleway_value_none_but_no_oneway">"هیچ‌کدام، اما دوچرخه‌سواران می‌توانند از جاده در هر دو جهت استفاده کنند"</string>
     <string name="quest_streetName_answer_noName_question">"چرا نام ندارد؟"</string>
     <string name="quest_streetName_answer_noProperStreet_service2">"چیزی شبیه به راه اختصاصی یا مسیر پارکینگ است"</string>
     <string name="quest_streetName_answer_noProperStreet_track2">"جادهٔ کشاورزی یا جنگلی است"</string>
@@ -1099,7 +1099,7 @@
     <string name="quest_barrier_type_gate_any_size">"ورودی، هر اندازه"</string>
     <string name="quest_air_pump_compressor_title">"آیا تنظیم باد چرخ خودرو در اینجا هست؟"</string>
     <string name="quest_step_count_stile_hint">"فقط درج تعداد پله‌ها برای رسیدن به بالا. اگر تعداد پله‌ها در هر طرف تفاوت دارد، عدد بزرگ‌تر را وارد کنید."</string>
-    <string name="quest_cycleway_value_none_and_oneway">"ممنوع، دوچرخه‌سواری در این جهت مجاز نیست"</string>
+    <string name="quest_cycleway_value_none_and_oneway">"هیچ‌کدام، دوچرخه‌سواری در این جهت مجاز نیست"</string>
     <string name="map_btn_create_track">"ضبط رد جدید"</string>
     <string name="map_btn_stop_track">"توقف ضبط رد"</string>
     <string name="quest_bicycle_rental_capacity_title">"چند مکان دوچرخه کرایه‌ای در اینجا وجود دارد؟"</string>
@@ -1211,7 +1211,7 @@
     <string name="quest_bicycle_parking_type_two_tier">"نگهدارندهٔ دوتایرهٔ دوچرخه"</string>
     <string name="user_profile_current_week_title">"در 7 روز گذشته"</string>
     <string name="user_profile_dates_mapped">"روزهایی که اخیراً نقشه‌‌کشی کرده‌اید"</string>
-    <string name="quest_cycleway_value_advisory_lane">"خط دوچرخه مورد ادعا"</string>
+    <string name="quest_cycleway_value_advisory_lane">"خط دوچرخه پیشنهادی"</string>
     <string name="urlconfig_scan_qr_code_again2">"بعد از نصب برنامه، کد QR را اسکن کنید یا روی &lt;a href=\"%s\"&gt;این لینک&lt;/a&gt; کلیک کنید تا پیش‌تنظیم اعمال گردد."</string>
     <string name="confirmation_replace_shop_title">"حالا مکان دیگری است؟"</string>
     <string name="confirmation_replace_shop_message">"در این صورت، ساعات کار، اطلاعات تماس و غیره هم تغییر می‌کند."</string>
@@ -1225,7 +1225,7 @@
     <string name="node_moved">"توسط %s منتقل شد"</string>
     <string name="move_node_description">"نقشه را بکشید تا نشانه در مکان صحیح قرار گیرد. از بزرگنمایی استفاده کنید و سعی کنید تا حد امکان دقیق باشید. لطفاً توجه داشته باشید که مکان نمایش داده شده شما ممکن است دقیق تر از چیزی باشد که نشان داده شده است."</string>
     <string name="move_node_action_description">"شما گره را جابجا کردید"</string>
-    <string name="quest_cycleway_value_shoulder">"هیچ، ولی شانه مسیر برای دوچرخه‌سواران قابل استفاده است"</string>
+    <string name="quest_cycleway_value_shoulder">"هیچ‌کدام، ولی شانه مسیر برای دوچرخه‌سواران قابل استفاده است"</string>
     <string name="quest_placeName_no_name_answer">"هیچ تابلویی وجود ندارد"</string>
     <string name="quest_road_width_unusualInput_confirmation_description">"این عرض غیر قابل قبول به نظر می‌رسد. خاطر یاد داشته باشید، عرض مذکور از جدول تا جدول باشد، شامل پارکینگ در خیابان، خطوط دوچرخه و غیره."</string>
     <string name="overlay_cycleway">"مسیرهای دوچرخه‌سواری"</string>
@@ -1369,7 +1369,7 @@
 ␣␣␣␣"</string>
     <string name="quest_parcel_locker_brand">"مارک این بسته‌بندی چیست؟"</string>
     <string name="quest_powerPolesMaterial_is_terminal">"خط برق به ساختمان متصل است"</string>
-    <string name="quest_cycleway_value_sidewalk_ok">"هیچ، اما علامت دوچرخه‌سواری در پیاده‌رو را مجاز می‌کند"</string>
+    <string name="quest_cycleway_value_sidewalk_ok">"هیچ‌کدام، اما تابلو اجازه دوچرخه‌سواری در پیاده‌رو را می‌دهد"</string>
     <string name="separate_cycleway_no_signed">"یک علامت (تابلو) به صراحت دوچرخه‌سواری را ممنوع می‌کند"</string>
     <string name="separate_cycleway_footway_allowed_sign">"پیاده‌رو، اما یک تابلو اجازه دوچرخه‌سواری را می‌دهد"</string>
     <string name="quest_bicycle_parking_type_floor">"ناحیه تعیین شده"</string>
@@ -1387,17 +1387,29 @@
     <string name="quest_multiselect_hint">"همه مواردی را که صدق می‌کند انتخاب کنید:"</string>
     <string name="quest_barrier_opening_width_gate">"عرض افتتاحیه در اینجا چقدر است؟"</string>
     <string name="bridge">"روی پل"</string>
-    <string name="about_title_intro">"نمایش مقدمه"</string>
+    <string name="about_title_intro">"نمایش معرفی"</string>
     <string name="about_category_help">"راهنما"</string>
     <string name="quest_camp_power_supply_hint">"این می تواند پریزهایی مستقیماً در اردوگاه، پریزهایی در یک ساختمان خدماتی قابل دسترسی برای مهمانان، یک ایستگاه شارژ اختصاصی برای تلفن، لپ تاپ و غیره باشد."</string>
     <string name="quest_barrier_opening_width_bollard">"عریض ترین شکافی که در اینجا می توان از آن عبور کرد چیست؟"</string>
     <string name="user_profile_all_time_title">"به طور کلی"</string>
     <string name="user_statistics_country_rank2">"رتبه‌بندی در %s"</string>
-    <string name="quest_leafType_tree_is_just_a_stump">"این فقط یک کنده درخت است"</string>
+    <string name="quest_leafType_tree_is_just_a_stump">"فقط یک کُنده درخت است"</string>
     <string name="quest_board_name_title">"عنوان این تابلوی اطلاعات چیست؟"</string>
-    <string name="quest_crossing_hint">"یک مسیر غیررسمی که از یک جاده عبور می کند:"</string>
+    <string name="quest_crossing_hint">"یک مسیر غیررسمی که از جاده عبور می‌کند:"</string>
     <string name="note_for_object">"شخص دیگری یادداشت گذاشت:"</string>
+    <string name="quest_bicycle_parking_type_safeloops">"حلقه‌های ایمن (چرخ و بدنه را نگه می‌دارد)"</string>
+    <string name="quest_cycleway_value_sidewalk_ok_dual">"هیچ‌کدام، اما تابلو اجازه دوچرخه‌سواری روی پیاده‌رو در هر دو جهت را می‌دهد"</string>
+    <string name="quest_surface_value_rubber">"کفپوش خرده لاستیکی"</string>
+    <string name="quest_surface_value_acrylic">"رزین مصنوعی"</string>
     <string name="action_messages">"نمایش پیام‌ها"</string>
+    <string name="action_create_new_poi">"ایجاد جدید"</string>
+    <string name="auth_error">"خطای مجوز. لطفاً دوباره وارد شوید."</string>
+    <string name="quest_accessible_for_pedestrians_sidewalk">"واقعاً، یک پیاده رو اینجاست."</string>
+    <string name="quest_bicycle_repair_station_services_title">"چه نوع لوازم دوچرخه در اینجا موجود است؟"</string>
+    <string name="quest_bicycle_repair_station_pump">"پمپ"</string>
+    <string name="quest_bicycle_repair_station_tools">"ابزارهای مختلف"</string>
+    <string name="quest_bicycle_repair_station_stand">"میز تجهیزات"</string>
+    <string name="quest_bicycle_repair_station_chain_tool">"آچار زنجیر"</string>
     <string name="quest_boat_rental_title">"کدام نوع قایق در اینجا اجاره داده می‌شود؟"</string>
     <string name="quest_boat_rental_motorboat">"قایق موتوری"</string>
     <string name="quest_boat_rental_jetski">"جت اسکی"</string>
@@ -1405,4 +1417,19 @@
     <string name="quest_boat_rental_pedalboat">"قایق پدالی"</string>
     <string name="quest_boat_rental_kayak">"قایق کایاک"</string>
     <string name="quest_boat_rental_canoe">"قایق بلم"</string>
+    <string name="quest_boat_rental_houseboat">"خانه قایقی"</string>
+    <string name="quest_boat_rental_rowboat">"قایق پاروئی"</string>
+    <string name="quest_boat_rental_raft">"قایق"</string>
+    <string name="quest_boat_rental_surfboard">"تخته موج سواری"</string>
+    <string name="quest_boat_rental_sailboard">"تخته بادبان دار"</string>
+    <string name="quest_boat_rental_yacht">"قایق تفریحی"</string>
+    <string name="quest_boat_rental_standup_paddleboard">"تخته بادی پارویی"</string>
+    <string name="quest_powerAttachment_title">"این خط برق چطور متصل است ؟ "</string>
+    <string name="quest_powerAttachment_suspension">"پشتیبانی از بالا"</string>
+    <string name="quest_powerAttachment_anchor">"به صورت افقی ثابت"</string>
+    <string name="quest_powerAttachment_pin">"پشتیبانی از پائین"</string>
+    <string name="pedestrian_zone_designated">"دوچرخه سواری در این مسیر مشخص شده است"</string>
+    <string name="pedestrian_zone_allowed_sign">"علامت اجازه دوچرخه سواری در این مسیر"</string>
+    <string name="pedestrian_zone_no_sign">"در این محل هیچ علامتی برای مسیر اختصاصی دوچرخه سواری وجود ندارد"</string>
+    <string name="team_mode_description_overlay_hint">"اگر از پوشش ها استفاده می کنید ، هر یک از شما باید از یک پوشش متفاوت استفاده کنید ، زیرا فقط جُستارها تقسیم می شوند."</string>
 </resources>
