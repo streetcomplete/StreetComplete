@@ -54,6 +54,7 @@ import de.westnordost.streetcomplete.quests.bus_stop_bench.AddBenchStatusOnBusSt
 import de.westnordost.streetcomplete.quests.bus_stop_bin.AddBinStatusOnBusStop
 import de.westnordost.streetcomplete.quests.bus_stop_lit.AddBusStopLit
 import de.westnordost.streetcomplete.quests.bus_stop_name.AddBusStopName
+import de.westnordost.streetcomplete.quests.bus_stop_name.BusStopNameSuggestionsSource
 import de.westnordost.streetcomplete.quests.bus_stop_ref.AddBusStopRef
 import de.westnordost.streetcomplete.quests.bus_stop_shelter.AddBusStopShelter
 import de.westnordost.streetcomplete.quests.camera_type.AddCameraType
@@ -187,6 +188,7 @@ import org.koin.dsl.module
 
 val questsModule = module {
     factory { RoadNameSuggestionsSource(get()) }
+    factory { BusStopNameSuggestionsSource(get()) }
 
     single {
         questTypeRegistry(
