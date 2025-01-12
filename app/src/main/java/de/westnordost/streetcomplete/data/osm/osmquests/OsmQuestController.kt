@@ -22,9 +22,20 @@ import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.quests.address.AddHousenumber
+import de.westnordost.streetcomplete.quests.barrier_type.AddBarrierOnPath
+import de.westnordost.streetcomplete.quests.barrier_type.AddBarrierOnRoad
+import de.westnordost.streetcomplete.quests.building_entrance.AddEntrance
+import de.westnordost.streetcomplete.quests.building_entrance_reference.AddEntranceReference
+import de.westnordost.streetcomplete.quests.crossing.AddCrossing
 import de.westnordost.streetcomplete.quests.cycleway.AddCycleway
+import de.westnordost.streetcomplete.quests.destination.AddDestination
 import de.westnordost.streetcomplete.quests.existence.CheckExistence
+import de.westnordost.streetcomplete.quests.kerb_height.AddKerbHeight
+import de.westnordost.streetcomplete.quests.max_height.AddMaxHeight
 import de.westnordost.streetcomplete.quests.opening_hours.AddOpeningHours
+import de.westnordost.streetcomplete.quests.piste_difficulty.AddPisteDifficulty
+import de.westnordost.streetcomplete.quests.piste_lit.AddPisteLit
+import de.westnordost.streetcomplete.quests.piste_ref.AddPisteRef
 import de.westnordost.streetcomplete.quests.place_name.AddPlaceName
 import de.westnordost.streetcomplete.util.Listeners
 import de.westnordost.streetcomplete.util.ktx.format
@@ -78,11 +89,21 @@ class OsmQuestController internal constructor(
             .map { it.name }.toHashSet()
     }
 
-    // must be valid names!
-    // todo: use actual class names, or better re-evaluate whether this is worth it and maybe invert to blacklist
-    private val questsRequiringElementsWithoutTags = hashSetOf("AddBarrierOnRoad", "AddBarrierOnPath", "AddCrossing",
-        "AddMaxHeight", "AddEntrance", "AddEntranceReference", "AddHousenumber", "AddDestination", "AddPisteDifficulty",
-        "AddKerbHeight", "AddPisteRef", "AddPisteLit")
+    // todo: re-evaluate whether this is worth it and maybe invert to blacklist
+    private val questsRequiringElementsWithoutTags = hashSetOf(
+        AddBarrierOnRoad::class.simpleName!!,
+        AddBarrierOnPath::class.simpleName!!,
+        AddCrossing::class.simpleName!!,
+        AddMaxHeight::class.simpleName!!,
+        AddEntrance::class.simpleName!!,
+        AddEntranceReference::class.simpleName!!,
+        AddHousenumber::class.simpleName!!,
+        AddDestination::class.simpleName!!,
+        AddPisteDifficulty::class.simpleName!!,
+        AddKerbHeight::class.simpleName!!,
+        AddPisteRef::class.simpleName!!,
+        AddPisteLit::class.simpleName!!,
+    )
 
     private val hiddenCache by lazy { synchronized(this) { hiddenDB.getAllIds().toHashSet() } }
 

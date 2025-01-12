@@ -59,7 +59,7 @@ import de.westnordost.streetcomplete.screens.about.aboutScreenModule
 import de.westnordost.streetcomplete.screens.main.mainModule
 import de.westnordost.streetcomplete.screens.measure.arModule
 import de.westnordost.streetcomplete.screens.settings.LAST_KNOWN_DB_VERSION
-import de.westnordost.streetcomplete.screens.settings.oldQuestNames
+import de.westnordost.streetcomplete.screens.settings.renamedQuests
 import de.westnordost.streetcomplete.screens.settings.renameUpdatedQuests
 import de.westnordost.streetcomplete.screens.settings.settingsModule
 import de.westnordost.streetcomplete.screens.user.userScreenModule
@@ -190,7 +190,7 @@ class StreetCompleteApplication : Application() {
             // update prefs referring to renamed quests
             val prefsToRename = preferences.all.filter { pref ->
                 val v = pref.value
-                oldQuestNames.any { pref.key.contains(it) || (v is String && v.contains(it)) }
+                renamedQuests.keys.any { pref.key.contains(it) || (v is String && v.contains(it)) }
             }
             val e = preferences.edit()
             prefsToRename.forEach {
