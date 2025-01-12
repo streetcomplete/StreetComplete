@@ -1377,6 +1377,18 @@
     <string name="link_osmapp_description">"有多個不同圖層的地圖，例如爬山或是滑雪用途"</string>
     <string name="action_back">"返回"</string>
     <string name="action_clear">"清除"</string>
+    <string name="action_more">"更多"</string>
     <string name="action_open_in_browser">"在瀏覽器中打開"</string>
+    <string name="pref_title_language_select2">"語言"</string>
+    <string name="bridge">"在橋上"</string>
+    <string name="about_category_help">"幫助"</string>
+    <string name="user_statistics_country_rank2">"在%s的排名"</string>
+    <string name="quest_board_name_title">"這個資訊看板的主題是什麼？"</string>
+    <string name="note_for_object">"另一位使用者註記："</string>
+    <string name="quest_cycleway_value_sidewalk_ok_dual">"沒有，但是有標誌允許在人行道雙向騎車"</string>
     <string name="auth_error">"授權失敗，請嘗試重新登入。"</string>
+    <string name="quest_accessible_for_pedestrians_sidewalk">"事實上，這是一條人行道"</string>
+    <string name="pedestrian_zone_designated">"自行車專用道"</string>
+    <string name="pedestrian_zone_allowed_sign">"標誌允許自行車進入"</string>
+    <string name="pedestrian_zone_no_sign">"沒有明確的標誌來規範自行車"</string>
 </resources>

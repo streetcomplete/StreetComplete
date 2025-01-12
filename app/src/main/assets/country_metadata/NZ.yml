@@ -2,7 +2,7 @@
 advisorySpeedLimitSignStyle: yellow
 atmOperators: [ANZ, Westpac, Bank of New Zealand, Kiwibank, ASB Bank, ASB, Quick Cash, TSB, Quickcash, BNZ, Allpoint, NBS, Next, NZCU]
 centerLineStyle: white
-chargingStationOperators: [ChargeNet NZ, Meridian Energy, Jolt, BP, Z Energy, 'Tesla, Inc.', Vector, Orion, OpenLoop, Hikotron, NZ Bus, charge.net.nz, WEL Networks, BP Pulse, Bayfair, AT, Unison Networks, Todd Property Ormiston Town Centre Limited, Thundergrid, Network Waitaki, Network Tasman, Metlink, Chargefox, ChargeNet]
+chargingStationOperators: [ChargeNet NZ, Meridian Energy, Jolt, BP, Z Energy, 'Tesla, Inc.', Vector, Orion, OpenLoop, Hikotron, NZ Bus, BP Pulse, charge.net.nz, WEL Networks, Bayfair, AT, Unison Networks, Todd Property Ormiston Town Centre Limited, Thundergrid, Network Waitaki, Network Tasman, Metlink, Chargefox]
 clothesContainerOperators: [Child Cancer Foundation]
 defaultSpeedLimitHasUrbanOrRural: true
 hasAdvisorySpeedLimitSign: true

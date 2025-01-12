@@ -1244,7 +1244,7 @@ Vil du flytte den nå?"</string>
     <string name="cycleway_reverse_direction">"Snu retningen på sykkelveien"</string>
     <string name="cycleway_reverse_direction_warning">"En sykkelvei som går inn i motsatt retning er veldig sjelden."</string>
     <string name="cycleway_reverse_direction_toast">"Trykk på den som skal reverseres"</string>
-    <string name="separate_cycleway_path">"Sti eller vei"</string>
+    <string name="separate_cycleway_path">"Generell sti eller løype (Delt mellom alle brukergrupper)"</string>
     <string name="quest_fireHydrant_type_pipe">"Rør"</string>
     <string name="measure_info_title">"Oppnå optimal presisjon"</string>
     <string name="measure_info_html_description">"&lt;p&gt;ARCore vil noen ganger (rett etter oppstart) anta at bakken er litt lavere eller høyere enn den faktisk er.  Dette fører til en målefeil som blir større jo mer du telefonen vris mot horisonten.&lt;/p&gt;
@@ -1267,7 +1267,7 @@ Vil du flytte den nå?"</string>
     <string name="overlay_path_surface_segregated">"Adskill område for sykling og gåing"</string>
     <string name="quest_crossing_title2">"Er det fotgjengerovergang her?"</string>
     <string name="quest_crossing_yes">"Ja (f.eks. at fortauskanten er senket eller det er markeringer)"</string>
-    <string name="quest_crossing_no">"Nei, men det er mulig å krysse"</string>
+    <string name="quest_crossing_no">"Ikke tilrettelagt for kryssing, men likevel mulig å krysse (f.eks. en sti)"</string>
     <string name="quest_crossing_prohibited">"Nei, det er forbudt eller umulig å krysse"</string>
     <string name="quest_hairdresser_title">"Hvilke kunder bruker denne frisøren?"</string>
     <string name="quest_hairdresser_male_and_female">"Alle"</string>
@@ -1396,10 +1396,12 @@ En etasje regnes som taketasje når vinduene er i taket. Deretter er tak med nul
     <string name="user_statistics_country_rank2">"Rangering i %s"</string>
     <string name="quest_leafType_tree_is_just_a_stump">"Kun en stubbe"</string>
     <string name="quest_board_name_title">"Hva er overskriften på dette infomasjonsskiltet?"</string>
+    <string name="quest_crossing_hint">"En sti som krysser en vei:"</string>
     <string name="note_for_object">"En annen person bemerket:"</string>
     <string name="quest_bicycle_parking_type_safeloops">"Sikkerhetsbøyler (støtter hjul og ramme)"</string>
     <string name="quest_cycleway_value_sidewalk_ok_dual">"ingen, men skilting tillater sykling på fortauet, i begge retninger"</string>
     <string name="quest_surface_value_rubber">"Gummigranulat"</string>
+    <string name="quest_surface_value_acrylic">"Syntetisk harpiks"</string>
     <string name="action_messages">"Vis melding"</string>
     <string name="action_create_new_poi">"Lag ny"</string>
     <string name="auth_error">"Autorisasjonsfeil. Prøv å logge inn igjen."</string>
@@ -1427,6 +1429,7 @@ En etasje regnes som taketasje når vinduene er i taket. Deretter er tak med nul
     <string name="quest_powerAttachment_suspension">"Festet ovenfra"</string>
     <string name="quest_powerAttachment_anchor">"Festet horisontalt"</string>
     <string name="quest_powerAttachment_pin">"Støttet nedenfra"</string>
+    <string name="pedestrian_zone_designated">"Sykling er tillatt"</string>
     <string name="pedestrian_zone_allowed_sign">"Et skilt tillater sykling her"</string>
     <string name="pedestrian_zone_no_sign">"Ingen skilting om sykling her"</string>
 </resources>

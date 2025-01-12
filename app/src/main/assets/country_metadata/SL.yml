@@ -1,5 +1,5 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [UBA]
+atmOperators: [UBA, Ecobank]
 mobileCountryCode: 619
 noParkingSignStyle: vienna
 noStoppingSignStyle: vienna

@@ -1431,9 +1431,9 @@ Podlaží se počítají jako střešní, pokud jejich okna jsou ve střeše. Te
     <string name="quest_boat_rental_yacht">"Jachta"</string>
     <string name="quest_boat_rental_standup_paddleboard">"Paddleboard (SUP)"</string>
     <string name="quest_powerAttachment_title">"Jak je toto silové vedení připojeno?"</string>
-    <string name="quest_powerAttachment_suspension">"Podepřené shora"</string>
-    <string name="quest_powerAttachment_anchor">"Upevněné vodorovně"</string>
-    <string name="quest_powerAttachment_pin">"Podepřené zdola"</string>
+    <string name="quest_powerAttachment_suspension">"Zavěšeno shora"</string>
+    <string name="quest_powerAttachment_anchor">"Upevněno vodorovně"</string>
+    <string name="quest_powerAttachment_pin">"Podepřeno zdola"</string>
     <string name="pedestrian_zone_designated">"Určeno pro jízdu na kole"</string>
     <string name="pedestrian_zone_allowed_sign">"Značka tu povoluje jízdu na kole"</string>
     <string name="pedestrian_zone_no_sign">"Žádná značka ohledně jízdy na kole"</string>

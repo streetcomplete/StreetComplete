@@ -1364,7 +1364,7 @@ Podeu trobar informació sobre les donacions a la nostra web o al portal del pro
     <string name="quest_isAmenityIndoor_outside_covered">"No és interior, però està cobert"</string>
     <string name="lit_value_unsupported">"Un tipus d'il·luminació no disponible en aquesta aplicació"</string>
     <string name="quest_generic_otherAnswers2">"Bufa…"</string>
-    <string name="quest_pedestrian_crossing_signals2">"Hi ha senyals de trànsit que indiquen quan creuar aquí?"</string>
+    <string name="quest_pedestrian_crossing_signals2">"Hi ha semàfors que indiquen quan creuar aquí?"</string>
     <string name="quest_moped_access_title">"Hi ha senyals de trànsit que indiquen si els ciclomotors poden circular per aquest carril bici?"</string>
     <string name="quest_moped_access_allowed">"No hi ha cap senyal"</string>
     <string name="quest_moped_access_designated">"Hi ha un senyal que permet la circulació de ciclomotors per aquest carril bici"</string>

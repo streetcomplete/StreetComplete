@@ -1351,4 +1351,16 @@ Geralmente indicado por uma placa como esta:"</string>
     <string name="overlay_things">"Coisas"</string>
     <string name="disused">"não está mais em uso"</string>
     <string name="unknown_object">"Objeto desconhecido"</string>
+    <string name="quest_moped_access_allowed">"Não existe sinalização"</string>
+    <string name="info">"Mais informações"</string>
+    <string name="quest_accessible_for_pedestrians_prohibited">"Não é permitido"</string>
+    <string name="quest_accessible_for_pedestrians_allowed">"É permitido"</string>
+    <string name="action_back">"Voltar"</string>
+    <string name="action_clear">"Limpar"</string>
+    <string name="action_more">"Mais"</string>
+    <string name="action_open_in_browser">"Abrir no navegador"</string>
+    <string name="about_category_contribute">"Contribua"</string>
+    <string name="pref_title_language_select2">"Linguagem"</string>
+    <string name="questList_disabled_by_default">"Desativado por padrão"</string>
+    <string name="about_category_help">"Ajuda"</string>
 </resources>

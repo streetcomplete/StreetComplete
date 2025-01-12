@@ -16,7 +16,7 @@
     <string name="quest_generic_confirmation_yes">"Jah, ma olen kindel"</string>
     <string name="quest_generic_confirmation_no">"Ma vaatan üle"</string>
     <string name="quest_leave_new_note_title">"Jätad hoopis märkuse?"</string>
-    <string name="quest_leave_new_note_description">"Sa võid lisada märkuse, mida teised parandada saavad või lihtsalt ülesande enda jaoks peita"</string>
+    <string name="quest_leave_new_note_description">"Sa võid lisada märkuse, mida teised saavad parandada või lihtsalt ülesande enda jaoks peita"</string>
     <string name="quest_leave_new_note_yes">"Jäta märkus"</string>
     <string name="quest_leave_new_note_no">"Ei, lihtsalt peida"</string>
     <string name="quest_streetName_title">"Mis on selle tee nimi?"</string>
@@ -47,9 +47,9 @@
     <string name="turn_on_location_request">"Asukoht pole saadaval. Ava Seaded, et lülitada sisse?"</string>
     <string name="no_location_permission_warning">"Asukoha näitamiseks kaardil ja andmete allalaadimiseks ümbruskonnas palun anna rakendusele õigus asukoha tuvastamiseks."</string>
     <string name="about_title_authors">"Autorid"</string>
-    <string name="about_title_repository">"Projektist"</string>
+    <string name="about_title_repository">"Projekti teave"</string>
     <string name="about_title_report_error">"Teata veast"</string>
-    <string name="about_title_feedback">"Anna tagasisidet"</string>
+    <string name="about_title_feedback">"Jaga tagasisidet"</string>
     <string name="about_title_license">"Litsents"</string>
     <string name="offline">"Sa oled vallasrežiimis"</string>
     <string name="confirmation_authorize_now">"Vastuste avaldamiseks pead sa olema sisselogitud oma OSM kasutajakontoga. Kas logid sisse?"</string>
@@ -194,7 +194,7 @@ Kui esiletõstetud teelõigul pole kogu tee ulatuses piirkiiruse liiklusmärke, 
     <string name="quest_wheelchairAccess_limited">"Osaliselt"</string>
     <string name="quest_bikeParkingCapacity_hint">"Arvesta, et üldjuhul saab ratta panna tugiraami mõlemale küljele."</string>
     <string name="quest_sport_roller_skating">"Rulluisutamine"</string>
-    <string name="quest_wheelchairAccess_limited_description_business">"Osaliselt tähendab, et sissepääsu juures pole rohkem kui üks aste ning suurem osa ruumidest on ratastooliga ligipääsetav."</string>
+    <string name="quest_wheelchairAccess_limited_description_business">"Osaliselt tähendab, et sissepääsu juures pole rohkem kui üks kuni pahkluu-kõrgune aste ning suurem osa ruumidest on ratastooliga ligipääsetavad."</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">"Osaliselt tähendab, et ligipääsu juures pole rohkem kui üks kuni pahkluu-kõrgune aste."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"Lühend nimes %s?"</string>
     <string name="quest_recycling_type_title">"Missugune jäätme- ja taaskasutusteenus see on?"</string>
@@ -489,7 +489,7 @@ Osaline juurdepääs tähendab, et ratastooliga on võimalik tualettruumi sisse 
     <string name="quest_motorcycleParkingCoveredStatus_title">"Kas sel mootorrattaparklal on katus (mis kaitseb vihma eest)?"</string>
     <string name="default_disabled_msg_maxspeed">"Kuna sa peaksid ülesande lahendamiseks mitte selle esiletõstetud lõigu, vaid kogu tänava kiiruspiirangute märkide leidmiseks üle vaatama, siis see ülesande tüüp pole vaikimisi kasutusel. Tegemist võib olla väga ajamahuka tegevusega ühe ülesande lahendamiseks."</string>
     <string name="pref_title_quests_restore_hidden">"Taasta peidetud ülesanded"</string>
-    <string name="on_level">"korrusel %s"</string>
+    <string name="on_level">"%s. korrusel"</string>
     <string name="underground">"Maa all"</string>
     <string name="quest_sidewalk_value_yes">"kõnnitee"</string>
     <string name="quest_sidewalk_value_no">"kõnnitee puudub"</string>
@@ -643,7 +643,8 @@ Ning lõpuks, palun tegutse turvaliselt - palun jälgi oma ümbruskonda ja liikl
     <string name="achievement_wheelchair_title">"Liikuvus"</string>
     <string name="achievement_wheelchair_solved_X">"Sa oled lahendanud %d ülesannet, mis on abiks ratastooli kasutajatele!"</string>
     <string name="achievement_postman_title">"Postiljon"</string>
-    <string name="achievement_postman_solved_X">"Sa oled lisanud %d aadressi! See on väga abiks erinevatele navigatsioonisüsteemidele."</string>
+    <string name="achievement_postman_solved_X">"Sa oled tuvastanud %d aadressi!
+See on väga abiks erinevatele navigatsioonisüsteemidele ning posti- ja kulleriteenuste pakkujatele."</string>
     <string name="achievement_building_title">"Kõrghoone"</string>
     <string name="achievement_building_solved_X">"Sa oled lahendanud %d ehitistega seotud ülesannet.
 Palun arvesta, et rakendus küsib majanumbrit alles peale hoone tüübi tuvastamist."</string>
@@ -1407,4 +1408,31 @@ Korrust loetakse katusekorruseks, kui tema aknad on katuse sees. Ning katused ü
     <string name="action_create_new_poi">"Loo uus huvipunkt"</string>
     <string name="auth_error">"Autentimise viga. Proovi uuesti sisse logida."</string>
     <string name="quest_accessible_for_pedestrians_sidewalk">"Tegelikult on kõnnitee olemas."</string>
+    <string name="quest_bicycle_repair_station_services_title">"Mis jalgrattahooldustarvikud on siin saadaval?"</string>
+    <string name="quest_bicycle_repair_station_pump">"Punp"</string>
+    <string name="quest_bicycle_repair_station_tools">"Erinevad tööriistad"</string>
+    <string name="quest_bicycle_repair_station_stand">"Töölaud või rattahoidja"</string>
+    <string name="quest_bicycle_repair_station_chain_tool">"Ketiparandustarvikud"</string>
+    <string name="quest_boat_rental_title">"Missuguseid paade saab siin rentida?"</string>
+    <string name="quest_boat_rental_motorboat">"Mootorpaate"</string>
+    <string name="quest_boat_rental_jetski">"Jette"</string>
+    <string name="quest_boat_rental_sailboat">"Purjepaate"</string>
+    <string name="quest_boat_rental_pedalboat">"Vesijalgrattaid"</string>
+    <string name="quest_boat_rental_kayak">"Kajakeid"</string>
+    <string name="quest_boat_rental_canoe">"Kanuusid"</string>
+    <string name="quest_boat_rental_houseboat">"Paatmaju"</string>
+    <string name="quest_boat_rental_rowboat">"Sõudepaate"</string>
+    <string name="quest_boat_rental_raft">"Parvesid"</string>
+    <string name="quest_boat_rental_surfboard">"Surfilaudu"</string>
+    <string name="quest_boat_rental_sailboard">"Purjelaudu"</string>
+    <string name="quest_boat_rental_yacht">"Jahte"</string>
+    <string name="quest_boat_rental_standup_paddleboard">"Aerulaudu (SUP)"</string>
+    <string name="quest_powerAttachment_title">"Kuidas on see elektriliin ühendatud?"</string>
+    <string name="quest_powerAttachment_suspension">"Toetatud ülalt"</string>
+    <string name="quest_powerAttachment_anchor">"Fikseeritud rõhtloodis"</string>
+    <string name="quest_powerAttachment_pin">"Toetatud alt"</string>
+    <string name="pedestrian_zone_designated">"Jalgrattasõiduks määratud"</string>
+    <string name="pedestrian_zone_allowed_sign">"Silt lubab siin jalgrattaga sõitmist"</string>
+    <string name="pedestrian_zone_no_sign">"Pole ühest silti, mis kirjeldaks jalgrattasõidu lubatust"</string>
+    <string name="team_mode_description_overlay_hint">"Kui kasutate ülekatteid, siis kõik peaks kasutama erinevaid, sest nimelt ülesanded on kõigil erinevad."</string>
 </resources>

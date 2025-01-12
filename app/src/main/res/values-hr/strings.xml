@@ -1435,4 +1435,5 @@ Kat se računa kao kat u potkrovlju samo kada ima prozore unutar krova. Stoga, k
     <string name="pedestrian_zone_designated">"Predviđeno za bicikliste ovdje"</string>
     <string name="pedestrian_zone_allowed_sign">"Znakom dozvoljena vožnja biciklom ovdje"</string>
     <string name="pedestrian_zone_no_sign">"Nema izričitog prometnog znaka o vožnji biciklom ovdje"</string>
+    <string name="team_mode_description_overlay_hint">"Ako koristite Nadslojeve, svatko od vas trebao bi koristiti različiti Nadsloj, jer su samo Zadatci podijeljeni."</string>
 </resources>

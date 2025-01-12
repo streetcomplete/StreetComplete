@@ -813,8 +813,7 @@ Vedd figyelembe az összes lehetséges választ: néhány esetben nem egyértelm
     <string name="quest_recycling_type_plastic_bottles_and_cartons">"Kizárólag műanyag palack és karton"</string>
     <string name="team_mode">"Belépés csapatmódba"</string>
     <string name="team_mode_exit">"Kilépés a csapatmódból"</string>
-    <string name="team_mode_description">"Ha egy területen egyszerre többen szeretnétek térképezni, lehetőség van csapatmódban felosztani a feladatokat.
-Ezután mindegyikőtök különböző kérdéseket fog látni."</string>
+    <string name="team_mode_description">"Ha egy területen csoportosan szeretnétek térképezni, lehetőség van csapatmódban felosztani a feladatokat a csapattagok között. Ezután mindegyikőtök különböző kérdéseket fog látni."</string>
     <string name="team_mode_active">"Csapatmód aktív"</string>
     <string name="team_mode_deactivated">"Csapatmód kikapcsolva"</string>
     <string name="undo_confirm_title2">"Visszavonod a következő szerkesztést?"</string>
@@ -1346,7 +1345,7 @@ Ezenkívül egyes rétegek, például a cím réteg, új adatok hozzáadását i
     <string name="quest_buildingType_tower_description">"bármilyen torony"</string>
     <string name="quest_buildingType_under_construction">"Építés alatt"</string>
     <string name="overlay_buildings">"Épületek"</string>
-    <string name="quest_pedestrian_crossing_markings">"Fel van festve az átkelőhely van az útburkolatra?"</string>
+    <string name="quest_pedestrian_crossing_markings">"Fel van festve az átkelőhely az útburkolatra?"</string>
     <string name="overlay_places">"Helyek"</string>
     <string name="overlay_things">"Dolgok"</string>
     <string name="disused">"használaton kívül"</string>
@@ -1435,4 +1434,5 @@ Egy szint akkor számít tetőszintnek, ha az ablakai a tetőben vannak. A nulla
     <string name="pedestrian_zone_designated">"Kerékpározásra kijelölt"</string>
     <string name="pedestrian_zone_allowed_sign">"Jelzés engedi a kerékpározást"</string>
     <string name="pedestrian_zone_no_sign">"Nincs kifejezett jelzés kerékpározásról"</string>
+    <string name="team_mode_description_overlay_hint">"Ha rátéteket használtok, mindegyikőtöknek másikat kell használnia, mivel csak a küldetések vannak felosztva."</string>
 </resources>

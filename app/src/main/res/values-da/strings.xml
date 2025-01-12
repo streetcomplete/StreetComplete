@@ -1422,7 +1422,7 @@ En etage tæller som en tagetage, når dens vinduer er i taget. Derfor er tage m
     <string name="quest_boat_rental_rowboat">"Robåd"</string>
     <string name="quest_boat_rental_raft">"Tømmerflåde"</string>
     <string name="quest_boat_rental_surfboard">"Surfbræt"</string>
-    <string name="quest_boat_rental_sailboard">"Windsurfingbræt"</string>
+    <string name="quest_boat_rental_sailboard">"Windsurfing"</string>
     <string name="quest_boat_rental_yacht">"Lystyacht"</string>
     <string name="quest_boat_rental_standup_paddleboard">"Paddleboard (SUP)"</string>
     <string name="quest_powerAttachment_title">"Hvordan er denne elledning fastgjort?"</string>
@@ -1432,4 +1432,5 @@ En etage tæller som en tagetage, når dens vinduer er i taget. Derfor er tage m
     <string name="pedestrian_zone_designated">"Udpeget til cykling her"</string>
     <string name="pedestrian_zone_allowed_sign">"Et skilt tillader cykling her"</string>
     <string name="pedestrian_zone_no_sign">"Ingen eksplicit skiltning om cykling her"</string>
+    <string name="team_mode_description_overlay_hint">"Hvis I bruger overlejringer, bør I bruge hver jeres, da det kun er opgaver, der er delt op."</string>
 </resources>

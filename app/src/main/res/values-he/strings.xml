@@ -426,7 +426,10 @@
     <string name="quest_buildingType_transportation">"מבנה תחבורה ציבורית"</string>
     <string name="quest_buildingType_university">"מבנה אוניברסיטה"</string>
     <string name="quest_buildingType_government">"מבנה ממשל"</string>
+    <string name="quest_buildingType_carport">"חניון עם סוכך"</string>
     <string name="quest_buildingType_carport_description">"גג עבור מכונית"</string>
+    <string name="quest_buildingType_garage">"מוסך"</string>
+    <string name="quest_buildingType_garages">"מוסכים"</string>
     <string name="quest_buildingType_parking">"חניון במבנה"</string>
     <string name="quest_buildingType_farm">"בחווה"</string>
     <string name="quest_buildingType_farmhouse">"בית חווה"</string>
@@ -586,6 +589,7 @@
     <string name="link_category_editors_description">"עורכים ודרכים נוספות לתרום ל-OpenStreetMap"</string>
     <string name="link_category_maps_title">"מפות"</string>
     <string name="link_category_maps_description">"מפות מבוססות OpenStreetMap"</string>
+    <string name="link_category_showcase_title">"תצוגה"</string>
     <string name="link_category_showcase_description">"שירותים ויישומים מבוססי OpenStreetMap "</string>
     <string name="link_category_goodies_title">"הטבות"</string>
     <string name="link_category_goodies_description">"חומר מעניין שקשור למפות שתוכל/י לנסות"</string>
@@ -628,6 +632,7 @@
     <string name="achievement_bicyclist_solved_X">"פתרת %d משימות מחקר שעוזרות לרוכבי אופניים!"</string>
     <string name="achievement_wheelchair_title">"ניידות"</string>
     <string name="achievement_wheelchair_solved_X">"פתרת %d משימות מחקר שעוזרות למשתמשי כיסאות גלגלים להתנייד ברחבי העיר!"</string>
+    <string name="achievement_postman_title">"דוור"</string>
     <string name="achievement_postman_solved_X">"עזרת לאתר %d כתובות!
 מידע זה חיוני לא רק לדוורים אלא גם למערכות ניווט."</string>
     <string name="achievement_building_solved_X">"פתרת %d משימות מחקר שקשורות לבניינים.
@@ -752,6 +757,7 @@
     <string name="leave_note">"השארת הערה"</string>
     <string name="quest_shop_gone_title">"מה קיים כאן במקום?"</string>
     <string name="quest_shop_gone_vacant_answer">"זה ריק..."</string>
+    <string name="quest_shop_gone_replaced_answer">"..."</string>
     <string name="quest_shop_gone_replaced_answer_hint">"נא להקליד את סוג המקום כאן"</string>
     <string name="quest_shop_vacant_type_title">"החנות הזאת פונתה. מה יש כאן עכשיו?"</string>
     <string name="quest_lanes_answer_lanes_odd2">"יש מספר שונה של נתיבים בכל כיוון"</string>
@@ -805,6 +811,7 @@
     <string name="quest_barrier_type_block">"אובייקט גדול קבוע"</string>
     <string name="quest_barrier_jersey_barrier">"מחסום הפרדה (Jersey)"</string>
     <string name="quest_barrier_type_log">"גזע עץ"</string>
+    <string name="quest_barrier_type_kerb">"אבן שבה"</string>
     <string name="quest_barrier_full_height_turnstile">"קרוסלה בגובה מלא"</string>
     <string name="quest_barrier_type_turnstile">"קרוסלה"</string>
     <string name="quest_barrier_type_passage">"מעבר דרך קיר/גדר/כד'"</string>
@@ -831,7 +838,9 @@
     <string name="quest_buildingLevels_title2">"כמה קומות מעל קומת המרתף יש לבניין זה?"</string>
     <string name="quest_buildingLevels_title_buildingPart2">"כמה קומות מעל קומת המרתף יש לחלק זה של הבניין?"</string>
     <string name="default_disabled_msg_roofShape">"סוג משימת מחקר זה מנוטרל כברירת מחדל מכיוון שבדרך כלל צורת הגג איננה נצפית בקלות מהרחוב. סוג משימת מחקר זו גם גוזלת זמן רב; ברוב המקרים קל יותר ויעיל יותר למפות זאת מתצלום אוויר בבית."</string>
+    <string name="quest_religion_animist">"אנימיסטי"</string>
     <string name="quest_construction_steps_title">"האם מדרגות אלו הושלמו?"</string>
+    <string name="quest_buildingType_grandstand">"יציע"</string>
     <string name="action_search">"חיפוש"</string>
     <string name="team_mode_team_size_label2">"כמה אנשים עוסקים במיפוי? יש להזין מספר זהה לטלפון של כולם."</string>
     <string name="team_mode_choose_color2">"כעת, כל אחד צריך לבחור צבע שונה. בחר/י את שלך:"</string>
@@ -1164,4 +1173,28 @@
     <string name="overlay_addresses_no_entrance">"זאת לא כניסה..."</string>
     <string name="overlays_tutorial_intro">"מצאת דרך חדשה לערוך מידע!"</string>
     <string name="quest_crossing_kerb_height_title">"מה גובה המדרכות במעבר זה?"</string>
+    <string name="quest_bbq_fuel_wood">"עץ"</string>
+    <string name="quest_bbq_fuel_electric">"חשמל"</string>
+    <string name="quest_buildingType_tent">"אוהל"</string>
+    <string name="quest_buildingType_tower">"מגדל"</string>
+    <string name="overlay_buildings">"בניינים"</string>
+    <string name="quest_bbq_fuel_gas">"גז"</string>
+    <string name="action_back">"אחורה"</string>
+    <string name="action_more">"עוד"</string>
+    <string name="action_open_in_browser">"פתח בדפדפן"</string>
+    <string name="pref_title_language_select2">"שפה"</string>
+    <string name="bridge">"על הגשר"</string>
+    <string name="about_category_help">"עזרה"</string>
+    <string name="quest_bicycle_repair_station_pump">"משאבה"</string>
+    <string name="quest_boat_rental_motorboat">"סירת מנוע"</string>
+    <string name="quest_boat_rental_jetski">"אופנוע ים"</string>
+    <string name="quest_boat_rental_sailboat">"מפרשית"</string>
+    <string name="quest_boat_rental_pedalboat">"סירת פדלים"</string>
+    <string name="quest_boat_rental_kayak">"קיאק"</string>
+    <string name="quest_boat_rental_canoe">"קאנוּ"</string>
+    <string name="quest_boat_rental_rowboat">"סירת המשוטים"</string>
+    <string name="quest_boat_rental_raft">"רפסודה"</string>
+    <string name="quest_boat_rental_surfboard">"גלשן"</string>
+    <string name="quest_boat_rental_sailboard">"גלשן רוח"</string>
+    <string name="quest_boat_rental_yacht">"יאכטה"</string>
 </resources>

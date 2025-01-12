@@ -1408,4 +1408,16 @@ Poziom liczy się jako poziom dachu, gdy jego okna znajdują się w dachu, w zwi
     <string name="action_create_new_poi">"Utwórz nowy"</string>
     <string name="auth_error">"Błąd autoryzacji. Spróbuj zalogować się ponownie."</string>
     <string name="quest_accessible_for_pedestrians_sidewalk">"Tak naprawdę chodnik jest."</string>
+    <string name="quest_bicycle_repair_station_pump">"Pompka"</string>
+    <string name="quest_boat_rental_title">"Jakie rodzaje łodzi można tu wynająć?"</string>
+    <string name="quest_boat_rental_motorboat">"Motorówka"</string>
+    <string name="quest_boat_rental_jetski">"Skuter wodny"</string>
+    <string name="quest_boat_rental_sailboat">"Żaglówka"</string>
+    <string name="quest_boat_rental_pedalboat">"Rower wodny"</string>
+    <string name="quest_boat_rental_houseboat">"Łódź mieszkalna"</string>
+    <string name="quest_boat_rental_rowboat">"Łódź wiosłowa"</string>
+    <string name="quest_boat_rental_raft">"Tratwa"</string>
+    <string name="quest_boat_rental_surfboard">"Deska surfingowa"</string>
+    <string name="quest_boat_rental_sailboard">"Deska windsurfingowa"</string>
+    <string name="quest_boat_rental_yacht">"Jacht"</string>
 </resources>
