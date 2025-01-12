@@ -241,7 +241,7 @@ private fun Note.shouldShowAsQuest(
     if (
         (
             comments.last().isReplyFromUser(userId) ||
-            (probablyCreatedByUserInThisApp(userId) && !hasReplies)
+            (probablyCreatedByUserInThisApp(userId, !showOnlyNotesPhrasedAsQuestions) && !hasReplies)
         )
         && !comments.last().containsSurveyRequiredMarker()
     ) {
