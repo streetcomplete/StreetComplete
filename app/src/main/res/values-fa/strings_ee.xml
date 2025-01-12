@@ -1,2 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="quest_piste_difficulty_easy">آسان</string>
+    <string name="quest_piste_difficulty_intermediate">متوسط</string>
+    <string name="quest_piste_difficulty_advanced">پیشرفته</string>
+    <string name="quest_piste_difficulty_expert">حرفه‌ای</string>
+    <string name="quest_piste_difficulty_freeride">سواری مجانی</string>
+    <string name="quest_piste_difficulty_extreme">شدید</string>
+    <string name="quest_parking_capacity_title">چند ماشین می تواند اینجا پارک کند؟</string>
+    <string name="pref_custom_geometry_title">نمایش ویژگی های نقشه از فایل GeoJson</string>
+</resources>

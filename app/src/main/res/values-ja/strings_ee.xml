@@ -197,7 +197,7 @@
     <string name="pref_search_more_languages_summary">地物検索は全てのシステムと地域の言語で表示されます</string>
     <string name="pref_manual_download_cache_summary">無効の場合、12時間以上経過していない限り、手動ダウンロード時にデータは再ダウンロードされません</string>
     <string name="pref_expert_mode_title">上級者方式</string>
-    <string name="pref_expert_mode_message">これはSCEE内で追加クエストの使用と、次の方法を有効化します。 \n \u0020<li>生のタグの編集</li> \n \u0020<li>ウェイもしくはリレーションの一部を成すノードの移動</li> \n \u0020<li>束縛されていないあらゆるノードの削除</li> \n \u0020<li>メモによって凍結されるべき要素の編集</li> \n \u0020<li>どこにでも、束縛されていないノードを追加</li> \n \u0020<li>クエストの要素選択の変更</li> \n \n \u0020これは、多くの他の編集アプリより少ないままですが、軽率な使用はStreetCompleteに不可能な方法でデータを損傷する結果となり得ます。上級者方式を有効にすると、編集にはより大きなかなりの責任を負うと心得なければなりません。 \nStreetComplete外でOSMの経験があり、何を行うか把握している場合に限って、この設定を有効化してください。 \u0020</string>
+    <string name="pref_expert_mode_message">これはSCEE内で追加クエストの使用と、次の方法を有効化します。\n <li>生のタグの編集</li>\n <li>ウェイもしくはリレーションの一部を成すノードの移動</li>\n <li>束縛されていないあらゆるノードの削除</li>\n <li>メモによって凍結されるべき要素の編集</li>\n <li>どこにでも、束縛されていないノードを追加</li>\n <li>クエストの要素選択の変更</li>\n\n　これは、多くの他の編集アプリより少ないままですが、軽率な使用はStreetCompleteに不可能な方法でデータを損傷する結果となり得ます。上級者方式を有効にすると、編集にはより大きなかなりの責任を負うと心得なければなりません。\n　StreetComplete外でOSMの経験があり、何を行うか把握している場合に限って、この設定を有効化してください。</string>
     <string name="pref_show_next_quest_summary">解決した直後に、同じ要素の更なるクエストを表示する</string>
     <string name="pref_disable_navigation_mode_summary">地図を傾けて自動回転させる方式を無効化する</string>
     <string name="pref_custom_title">任意クエストのファイルを読み込み</string>
@@ -527,4 +527,8 @@
     <string name="quest_swimming_pool_indoor_only">屋内のみ</string>
     <string name="quest_swimming_pool_outdoor_only">屋外のみ</string>
     <string name="quest_swimming_pool_no">水泳プールがない</string>
+    <string name="pref_tile_maxzoom">対応する最大尺度</string>
+    <string name="pref_custom_geometry_title">GeoJsonファイルからの地物を表示</string>
+    <string name="file_provide">ファイルを選択</string>
+    <string name="file_loading_error">ファイルの読み込みエラー</string>
 </resources>

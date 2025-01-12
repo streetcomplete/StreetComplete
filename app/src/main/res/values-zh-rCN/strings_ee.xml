@@ -633,4 +633,8 @@
     <string name="quest_lampType_halogen">卤素灯</string>
     <string name="quest_sacScale_strolling">漫步</string>
     <string name="quest_sacScale_strolling_description">无障碍的平坦小路，适合所有鞋类、婴儿车或拐杖，并且不需要任何定位技能。</string>
+    <string name="pref_custom_geometry_title">显示 GeoJson 文件中的地图特征</string>
+    <string name="file_provide">选择文件</string>
+    <string name="file_loading_error">加载文件时出错</string>
+    <string name="pref_tile_maxzoom">最大支持的缩放</string>
 </resources>

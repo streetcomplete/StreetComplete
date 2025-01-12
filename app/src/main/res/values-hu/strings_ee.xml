@@ -589,5 +589,23 @@
     <string name="quest_viaFerrataScale_two_description">A meredek vagy függőleges átjárók létrával vagy acéllépcsővel vannak ellátva. Acélkábelek és láncok biztosítják a mászót, még a kevésbé nehéz terepen is. Ferrata szett erősen ajánlott.</string>
     <string name="quest_viaFerrataScale_one_description">Jó természetes vagy faragott lépcsők, rövid létrák vagy acéllépcsők. A kitett átjárókon kábelek, láncok vagy kötelek vannak felszerelve a kapaszkodáshoz. A tapasztalt hegymászók dönthetnek úgy, hogy nem csatolják be magukat.</string>
     <string name="quest_viaFerrataScale_four_description">Meredek terep, végig acélkábelekkel a rögzítéshez. Karerő szükséges. Kiépítés (acéllépcsők, kapaszkodók) a legnehezebb szakaszokon.</string>
-    <string name="quest_viaFerrataScale_six_description">Hosszú, ritkásan biztosított tornakörök, amelyek igazi állóképességet igényelnek. A mászócipő hasznos lehet. Ajánlott a kötélbiztosítás használata.</string>
+    <string name="quest_viaFerrataScale_six_description">Hosszú, ritkásan biztosított tornakörök, amelyek igazi állóképességet igényelnek. A mászócipő hasznos lehet. Ajánlott a kötélbiztosítás használata</string>
+    <string name="quest_sacScale_strolling">Sétaút</string>
+    <string name="quest_lampType_title">Milyen lámpa ez?</string>
+    <string name="quest_lampType_led">LED lámpa</string>
+    <string name="quest_lampType_highPressureSodium">Nagynyomású nátriumlámpa</string>
+    <string name="quest_lampType_lowPressureSodium">Kisnyomású nátriumlámpa</string>
+    <string name="quest_lampType_gaslight">Gázlámpa</string>
+    <string name="quest_lampType_fluorescent">Fénycső</string>
+    <string name="quest_lampType_incandescent">Izzólámpa</string>
+    <string name="quest_lampType_metalHalide">Fémhalogénlámpa</string>
+    <string name="quest_lampType_mercury">Higanygőzlámpa</string>
+    <string name="quest_lampType_halogen">Halogénlámpa</string>
+    <string name="quest_lampType_disabled_msg">Ez a kérdés alapértelmezés szerint le van tiltva, mert nem könnyű megválaszolni, és a régiótól függően zavaró lehet.</string>
+    <string name="quest_sacScale_strolling_description">Sima, sík, akadályok nélküli út, ami bármilyen lábbeliben járható, akár babakocsival vagy mankóval is, és nem igényel tájékozódási készséget.</string>
+    <string name="pref_tile_maxzoom">Legnagyobb támogatott nagyítás</string>
+    <string name="pref_custom_geometry_title">Térképelemek megjelenítése GeoJson fájlból</string>
+    <string name="file_provide">Fájl választása</string>
+    <string name="file_loading_error">Nem sikerült betölteni a fájlt</string>
+    <string name="pref_custom_geometry_info">Ha szöveget szeretnél megjeleníteni, az benne \nkell legyen a name tulajdonságban</string>
 </resources>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="pref_hide_notes_title">Hinweise bestimmter Benutzer ausblenden</string>
-    <string name="pref_category_mods">SCEE Einstellungen</string>
+    <string name="pref_category_mods">SCEE-Einstellungen</string>
     <string name="pref_screen_notes">Hinweise</string>
     <string name="pref_save_file_error">Fehler beim Speichern der Datei</string>
     <string name="pref_expert_mode_title">Expertenmodus</string>
@@ -68,7 +68,7 @@
     <string name="quest_benchMaterial_concrete">Beton</string>
     <string name="level_filter_hint">Leer lassen, um nicht getaggt anzuzeigen</string>
     <string name="quest_railwayPlatformRef_abc">ABC</string>
-    <string name="closed_note_action_title">Du hast sie geschlossen</string>
+    <string name="closed_note_action_title">Du hast ihn geschlossen</string>
     <string name="quest_benchMaterial_plastic">Kunststoff</string>
     <string name="pref_show_next_quest_summary">Weitere Aufgabe für dasselbe Element direkt nach dem Lösen anzeigen</string>
     <string name="insert_node">Knoten in Weg einfügen</string>
@@ -626,5 +626,10 @@
     <string name="quest_lampType_metalHalide">Halogen-Metalldampflampe</string>
     <string name="quest_lampType_halogen">Halogenlampe</string>
     <string name="quest_lampType_mercury">Quecksilberdampflampe</string>
-    <string name="quest_lampType_disabled_msg">Diese Suche ist standardmäßig deaktiviert, da sie nicht einfach zu beantworten ist und je nach Region als Spam eingestuft werden könnte.</string>
+    <string name="quest_lampType_disabled_msg">Diese Aufgabe ist standardmäßig deaktiviert, da sie nicht einfach zu beantworten ist und je nach Region als Spam eingestuft werden könnte.</string>
+    <string name="file_provide">Datei auswählen</string>
+    <string name="file_loading_error">Fehler beim Laden der Datei</string>
+    <string name="pref_custom_geometry_title">Zeige Map-Features aus GeoJson-Datei an</string>
+    <string name="pref_custom_geometry_info">Wenn du Text anzeigen möchtest, muss er in der Eigenschaft \"name\" enthalten sein</string>
+    <string name="pref_tile_maxzoom">Maximal unterstützter Zoom</string>
 </resources>
