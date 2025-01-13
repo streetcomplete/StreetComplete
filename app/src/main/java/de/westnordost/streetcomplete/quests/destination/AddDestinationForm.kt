@@ -38,7 +38,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
-import kotlin.math.PI
 
 class AddDestinationForm : AbstractOsmQuestForm<Pair<DestinationLanes?, DestinationLanes?>>() {
 
@@ -241,11 +240,11 @@ class AddDestinationForm : AbstractOsmQuestForm<Pair<DestinationLanes?, Destinat
 
     @AnyThread
     override fun onMapOrientation(rotation: Double, tilt: Double) {
-        val mapRotation = (rotation * 180 / PI).toFloat()
-        val mapTilt = (tilt * 180 / PI).toFloat()
+        val mapRotation = rotation.toFloat()
+        val mapTilt = tilt.toFloat()
 
-        binding.sideSelect.puzzleViewRotateContainer.streetRotation = wayRotation + mapRotation
-        binding.sideSelect.littleCompass.root.rotation = mapRotation
+        binding.sideSelect.puzzleViewRotateContainer.streetRotation = wayRotation - mapRotation
+        binding.sideSelect.littleCompass.root.rotation = -mapRotation
         binding.sideSelect.littleCompass.root.rotationX = mapTilt
     }
 
