@@ -63,19 +63,13 @@ class BusStopNameSuggestionsSource(
         return result.entries.sortedBy { it.value }.map { it.key }
     }
 
-    private fun busStopFilter(tags: Map<String, String>): Boolean {
-        return (
-            tags.containsKey("name") &&
-            (
-                (
-                    (tags["highway"].equals("bus_stop") && !tags["public_transport"].equals("stop_position"))
-                    || (tags["public_transport"].equals("platform") && tags["bus"].equals("yes"))
-                    || tags["railway"].equals("halt")
-                    || tags["railway"].equals("station")
-                    || tags["railway"].equals("tram_stop")
-                )
-            )
+    private fun busStopFilter(tags: Map<String, String>) =
+        tags.containsKey("name")
+        && (
+            (tags["highway"] == "bus_stop" && tags["public_transport"] != "stop_position")
+            || (tags["public_transport"] == "platform" && tags["bus"] == "yes")
+            || tags["railway"] == "halt"
+            || tags["railway"] == "station"
+            || tags["railway"] == "tram_stop"
         )
-    }
-
 }
