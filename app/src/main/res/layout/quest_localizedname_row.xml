@@ -40,8 +40,6 @@
             android:textAlignment="center"
             android:maxLines="1"
             android:inputType="text|textNoSuggestions|textCapSentences"
-            android:textColor="@color/traffic_black"
-            android:background="@color/traffic_white"
             tools:text="Sesame Street"
             tools:ignore="RtlCompat,SpUsage" />
 
@@ -52,12 +50,10 @@
         android:layout_width="50dp"
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/ic_arrow_expand_down_24dp"
-        app:tint="@color/traffic_black"
         android:layout_toStartOf="@+id/deleteButton"
         android:layout_centerVertical="true"
         android:layout_marginEnd="8dp"
-        style="@style/Base.Widget.AppCompat.Button.Borderless"
-        android:background="@color/background" />
+        style="@style/Base.Widget.AppCompat.Button.Borderless" />
 
     <ImageView
         android:id="@+id/deleteButton"
