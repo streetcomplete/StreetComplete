@@ -8,7 +8,7 @@ data class DummyFeature(
     override val id: String,
     override val name: String,
     override val icon: String?,
-    override val tags: Map<String, String>
+    override val tags: Map<String, String>,
 ) : Feature {
     override val geometry = listOf(GeometryType.POINT, GeometryType.AREA)
     override val imageURL = null
@@ -20,6 +20,7 @@ data class DummyFeature(
     override val matchScore = 1.0f
     override val addTags = tags
     override val removeTags = emptyMap<String, String>()
+    override val preserveTags = emptyList<Regex>()
     override val canonicalNames = emptyList<String>()
     override val canonicalTerms = emptyList<String>()
     override val isSuggestion = false
