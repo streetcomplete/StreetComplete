@@ -147,7 +147,7 @@ class DataManagementSettingsFragment :
 
         findPreference<Preference>("raster_tile_url")?.setOnPreferenceClickListener {
             var d: AlertDialog? = null
-            val currentUrl = prefs.getString(Prefs.RASTER_TILE_URL, "https://server.arcgisonline.com/arcgis/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}")!!
+            val currentUrl = prefs.getString(Prefs.RASTER_TILE_URL, ApplicationConstants.RASTER_DEFAULT_URL)!!
             val urlText = EditText(requireContext()).apply {
                 setText(currentUrl)
                 doAfterTextChanged {

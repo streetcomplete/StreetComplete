@@ -34,7 +34,8 @@ object ApplicationConstants {
     const val NOTE_MIN_ZOOM = 15
 
     /** default maximum zoom for satellite imagery */
-    const val RASTER_DEFAULT_MAXZOOM = 18
+    const val RASTER_DEFAULT_MAXZOOM = 21
+    const val RASTER_DEFAULT_URL = "https://server.arcgisonline.com/arcgis/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}?blankTile=false"
 
     /** when new quests that are appearing due to download of an area, show the hint that he can
      *  disable quests in the settings if more than X quests did appear */
