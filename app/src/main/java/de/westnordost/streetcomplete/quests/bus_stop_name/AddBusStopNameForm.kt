@@ -2,13 +2,11 @@ package de.westnordost.streetcomplete.quests.bus_stop_name
 
 import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
-import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
-import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.databinding.QuestLocalizednameBinding
 import de.westnordost.streetcomplete.osm.LocalizedName
 import de.westnordost.streetcomplete.quests.AAddLocalizedNameForm
 import de.westnordost.streetcomplete.quests.AnswerItem
+import de.westnordost.streetcomplete.quests.NameSuggestionsSource
 import org.koin.android.ext.android.inject
 
 class AddBusStopNameForm : AAddLocalizedNameForm<BusStopNameAnswer>() {
@@ -23,13 +21,27 @@ class AddBusStopNameForm : AAddLocalizedNameForm<BusStopNameAnswer>() {
         AnswerItem(R.string.quest_placeName_no_name_answer) { confirmNoName() },
         AnswerItem(R.string.quest_streetName_answer_cantType) { showKeyboardInfo() }
     )
-    private val busStopNameSuggestionsSource: BusStopNameSuggestionsSource by inject()
+    private val nameSuggestionsSource: NameSuggestionsSource by inject()
 
     override fun getLocalizedNameSuggestions(): List<List<LocalizedName>> {
-        return busStopNameSuggestionsSource.getNames(
+        val elementFilter = """
+            nodes, ways with
+            (
+              public_transport = platform and bus = yes
+              or (highway = bus_stop and public_transport != stop_position)
+              or railway = halt
+              or railway = station
+              or railway = tram_stop
+            )
+            and name
+        """
+
+        return nameSuggestionsSource.getNames(
             listOf(geometry.center),
-            MAX_DIST_FOR_BUS_STOP_NAME_SUGGESTION
+            MAX_DIST_FOR_BUS_STOP_NAME_SUGGESTION,
+            elementFilter
         )
+
     }
     override fun onClickOk(names: List<LocalizedName>) {
         applyAnswer(BusStopName(names))

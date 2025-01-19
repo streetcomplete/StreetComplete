@@ -12,7 +12,7 @@ import de.westnordost.streetcomplete.osm.address.StreetOrPlaceName
 import de.westnordost.streetcomplete.osm.address.StreetOrPlaceNameViewController
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
-import de.westnordost.streetcomplete.quests.road_name.RoadNameSuggestionsSource
+import de.westnordost.streetcomplete.quests.NameSuggestionsSource
 import de.westnordost.streetcomplete.util.getNameAndLocationSpanned
 import org.koin.android.ext.android.inject
 
@@ -21,7 +21,7 @@ class AddAddressStreetForm : AbstractOsmQuestForm<StreetOrPlaceName>() {
     private val binding by contentViewBinding(ViewStreetOrPlaceNameInputBinding::bind)
 
     private val abbreviationsByLocale: AbbreviationsByLocale by inject()
-    private val roadNameSuggestionsSource: RoadNameSuggestionsSource by inject()
+    private val nameSuggestionsSource: NameSuggestionsSource by inject()
 
     private lateinit var streetOrPlaceCtrl: StreetOrPlaceNameViewController
 
@@ -51,7 +51,7 @@ class AddAddressStreetForm : AbstractOsmQuestForm<StreetOrPlaceName>() {
             placeNameInput = binding.placeNameInput,
             streetNameInputContainer = binding.streetNameInputContainer,
             streetNameInput = binding.streetNameInput,
-            roadNameSuggestionsSource = roadNameSuggestionsSource,
+            nameSuggestionsSource = nameSuggestionsSource,
             abbreviationsByLocale = abbreviationsByLocale,
             countryLocale = countryInfo.locale,
             startWithPlace = isShowingPlaceName

@@ -4,7 +4,8 @@ import android.widget.EditText
 import androidx.core.widget.doAfterTextChanged
 import de.westnordost.streetcomplete.data.meta.AbbreviationsByLocale
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
-import de.westnordost.streetcomplete.quests.road_name.RoadNameSuggestionsSource
+import de.westnordost.streetcomplete.quests.NameSuggestionsSource
+import de.westnordost.streetcomplete.quests.road_name.AddRoadNameForm
 import de.westnordost.streetcomplete.util.ktx.nonBlankTextOrNull
 import de.westnordost.streetcomplete.view.controller.AutoCorrectAbbreviationsViewController
 import java.util.Locale
@@ -14,7 +15,7 @@ import java.util.Locale
  *  automatically expanded, e.g. "Main st" becomes "Main street" */
 class AddressStreetNameInputViewController(
     private val streetNameInput: EditText,
-    private val roadNameSuggestionsSource: RoadNameSuggestionsSource,
+    private val nameSuggestionsSource: NameSuggestionsSource,
     abbreviationsByLocale: AbbreviationsByLocale,
     private val countryLocale: Locale
 ) {
@@ -37,8 +38,8 @@ class AddressStreetNameInputViewController(
      *  instead of typing it in the edit text */
     fun selectStreetAt(position: LatLon, radiusInMeters: Double): Boolean {
         val dist = radiusInMeters + 5
-        val namesByLocale = roadNameSuggestionsSource
-            .getNames(listOf(position), dist)
+        val namesByLocale = nameSuggestionsSource
+            .getNames(listOf(position), dist, AddRoadNameForm.elementFilter)
             .firstOrNull()
             ?.associate { it.languageTag to it.name }?.toMutableMap()
             ?: return false

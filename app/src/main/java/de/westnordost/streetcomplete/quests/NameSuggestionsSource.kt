@@ -8,24 +8,33 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.Relation
+import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.osm.LocalizedName
 import de.westnordost.streetcomplete.osm.parseLocalizedNames
 import de.westnordost.streetcomplete.util.math.distanceTo
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import de.westnordost.streetcomplete.util.math.enlargedBy
 
-class NameSuggestionSource(
+class NameSuggestionsSource(
     private val mapDataSource: MapDataWithEditsSource
 ) {
 
-    fun getNames(
+    fun getNames(points: List<LatLon>, maxDistance: Double, elementFilter: String): List<List<LocalizedName>> {
+        return getNamesFiltered(
+            points,
+            maxDistance,
+            expandedMapData(points, maxDistance).filter(elementFilter)
+        )
+    }
+
+    private fun getNamesFiltered(
         points: List<LatLon>,
         maxDistance: Double,
-        mapData: MapDataWithGeometry,
         filteredElements: Sequence<Element>
     ): List<List<LocalizedName>> {
         if (points.isEmpty()) return emptyList()
 
+        val mapData = expandedMapData(points, maxDistance)
         val result = mutableMapOf<List<LocalizedName>, Double>()
 
         for (elem in filteredElements) {
@@ -62,7 +71,7 @@ class NameSuggestionSource(
         return result.entries.sortedBy { it.value }.map { it.key }
     }
 
-    fun expandedMapData(points: List<LatLon>, maxDistance: Double): MapDataWithGeometry {
+    private fun expandedMapData(points: List<LatLon>, maxDistance: Double): MapDataWithGeometry {
         /* add 100m radius for bbox query because roads will only be included in the result that have
            at least one node in the bounding box around the tap position. This is a problem for long
            straight roads (#3797). This doesn't completely solve this issue but mitigates it */

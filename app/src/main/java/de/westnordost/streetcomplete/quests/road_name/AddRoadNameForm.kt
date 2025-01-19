@@ -8,9 +8,12 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.databinding.QuestRoadnameBinding
+import de.westnordost.streetcomplete.osm.ALL_PATHS
+import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.osm.LocalizedName
 import de.westnordost.streetcomplete.quests.AAddLocalizedNameForm
 import de.westnordost.streetcomplete.quests.AnswerItem
+import de.westnordost.streetcomplete.quests.NameSuggestionsSource
 import org.koin.android.ext.android.inject
 import java.lang.IllegalStateException
 import java.util.LinkedList
@@ -32,7 +35,7 @@ class AddRoadNameForm : AAddLocalizedNameForm<RoadNameAnswer>() {
     )
 
     private val abbrByLocale: AbbreviationsByLocale by inject()
-    private val roadNameSuggestionsSource: RoadNameSuggestionsSource by inject()
+    private val nameSuggestionsSource: NameSuggestionsSource by inject()
 
     override fun getAbbreviationsByLocale(): AbbreviationsByLocale = abbrByLocale
 
@@ -42,9 +45,11 @@ class AddRoadNameForm : AAddLocalizedNameForm<RoadNameAnswer>() {
             is ElementPolygonsGeometry -> geom.polygons.first()
             is ElementPointGeometry -> listOf(geom.center)
         }
-        return roadNameSuggestionsSource.getNames(
+
+        return nameSuggestionsSource.getNames(
             listOf(polyline.first(), polyline.last()),
-            MAX_DIST_FOR_ROAD_NAME_SUGGESTION
+            MAX_DIST_FOR_ROAD_NAME_SUGGESTION,
+            elementFilter
         )
     }
 
@@ -137,5 +142,11 @@ class AddRoadNameForm : AAddLocalizedNameForm<RoadNameAnswer>() {
 
     companion object {
         const val MAX_DIST_FOR_ROAD_NAME_SUGGESTION = 30.0 // m
+
+        val elementFilter = """
+            ways with
+                highway ~ ${(ALL_ROADS + ALL_PATHS).joinToString("|")}
+                and name
+        """
     }
 }
