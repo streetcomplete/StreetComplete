@@ -166,6 +166,17 @@ class OsmNoteQuestControllerTest {
         assertNull(ctrl.getVisible(1))
     }
 
+    @Test fun `get note quest with comment from user returns non-null if reallyAllNotes`() {
+        on(prefs.reallyAllNotes).thenReturn(true)
+        on(noteSource.get(1)).thenReturn(note(comments = listOf(
+            comment(text = "test?", user = User(id = 100, "Blaubär")),
+            comment(text = "test", user = User(id = 1, "Blubbi"))
+        )))
+        on(userDataSource.userId).thenReturn(1)
+
+        assertNotNull(ctrl.getVisible(1))
+    }
+
     @Test fun `get note quest with comment from user that contains a survey required marker returns non-null`() {
         on(noteSource.get(1)).thenReturn(note(comments = listOf(
             comment(text = "test?", user = User(id = 100, "Blaubär")),

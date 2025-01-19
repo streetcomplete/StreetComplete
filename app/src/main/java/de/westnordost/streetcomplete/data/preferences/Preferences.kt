@@ -36,6 +36,7 @@ class Preferences(val prefs: ObservableSettings) {
             ?: DEFAULT_RESURVEY_INTERVALS
 
     var showAllNotes: Boolean by prefs.boolean(SHOW_ALL_NOTES, false)
+    var reallyAllNotes: Boolean by prefs.boolean(Prefs.REALLY_ALL_NOTES, false)
 
     fun getBoolean(key: String, default: Boolean) = prefs.getBoolean(key, default)
     fun putBoolean(key: String, value: Boolean) = prefs.putBoolean(key, value)

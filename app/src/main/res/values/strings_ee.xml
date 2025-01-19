@@ -43,6 +43,8 @@
     <string name="pref_swap_gpx_note_button">Swap OSM and GPX note buttons</string>
     <string name="pref_hide_keyboard_title">Hide keyboard before creating note</string>
     <string name="pref_hide_keyboard_summary">Hides the keyboard when open before the note is actually created (to allow re-view of position)</string>
+    <string name="pref_really_all_notes_title">“Show all notes“ means ALL notes</string>
+    <string name="pref_really_all_notes_summary">When requesting to show all notes, show even notes created (or commented on) by yourself</string>
     <string name="pref_save_gpx">Get GPX notes and attached photos and tracks</string>
     <string name="pref_save_file_error">Error saving file</string>
     <string name="pref_files_not_found">No files found</string>

@@ -31,6 +31,9 @@ class OsmNoteQuestController(
     private val showOnlyNotesPhrasedAsQuestions: Boolean get() =
         !prefs.showAllNotes
 
+    private val reallyAllNotes: Boolean get() =
+        prefs.reallyAllNotes
+
     private val settingsListener: SettingsListener
 
     private val blockedUserIds = hashSetOf<Long>()
@@ -109,7 +112,7 @@ class OsmNoteQuestController(
     }
 
     private fun createQuestForNote(note: Note, blockedNoteIds: Set<Long> = setOf()): OsmNoteQuest? =
-        if (note.shouldShowAsQuest(userDataSource.userId, showOnlyNotesPhrasedAsQuestions, blockedNoteIds, blockedUserIds, blockedUserNames)) {
+        if (note.shouldShowAsQuest(userDataSource.userId, showOnlyNotesPhrasedAsQuestions, reallyAllNotes, blockedNoteIds, blockedUserIds, blockedUserNames)) {
             OsmNoteQuest(note.id, note.position)
         } else {
             null
@@ -218,6 +221,7 @@ class OsmNoteQuestController(
 private fun Note.shouldShowAsQuest(
     userId: Long,
     showOnlyNotesPhrasedAsQuestions: Boolean,
+    reallyAllNotes: Boolean,
     blockedNoteIds: Set<Long>,
     blockedIds: Collection<Long>,
     blockedNames: Collection<String>,
@@ -231,6 +235,9 @@ private fun Note.shouldShowAsQuest(
         if (blockedIds.contains(it.user?.id)) return false
         if (blockedNames.contains(it.user?.displayName?.lowercase())) return false
     }
+
+    // If we've chosen that "all notes" means "ALL notes", then show this note too (we need no further checks, as it is not blocked nor closed)
+    if (reallyAllNotes && !showOnlyNotesPhrasedAsQuestions) return true
 
     /*
         We usually don't show notes where either the user is the last responder, or the

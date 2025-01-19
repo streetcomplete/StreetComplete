@@ -67,6 +67,7 @@ object Prefs {
     const val TEMP_LOGGER = "temp_logger"
     const val SHOW_CUSTOM_GEOMETRY = "show_custom_geometry"
     const val THEME_BACKGROUND = "theme.background_type"
+    const val REALLY_ALL_NOTES = "really_all_notes"
 
     enum class DayNightBehavior {
         IGNORE,
