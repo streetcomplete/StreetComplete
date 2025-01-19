@@ -7,7 +7,6 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
-import androidx.lifecycle.lifecycleScope
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.preferences.Preferences
@@ -16,7 +15,6 @@ import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsController
 import de.westnordost.streetcomplete.screens.main.MainViewModel
 import de.westnordost.streetcomplete.ui.common.DropdownMenuItem
 import de.westnordost.streetcomplete.util.dialogs.showProfileSelectionDialog
-import kotlinx.coroutines.launch
 import org.koin.compose.koinInject
 
 @Composable
@@ -64,8 +62,8 @@ fun QuickSettingsDropdown(
             viewModel.reverseQuestOrder.value = !viewModel.reverseQuestOrder.value
         }) {
             val textResId = if (viewModel.reverseQuestOrder.collectAsState().value)
-                R.string.quest_order_reverse
-            else R.string.quest_order_normal
+                R.string.quest_order_normal
+            else R.string.quest_order_reverse
             Text(text = stringResource(textResId))
         }
     }
