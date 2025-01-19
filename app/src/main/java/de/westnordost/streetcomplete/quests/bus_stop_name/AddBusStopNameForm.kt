@@ -19,8 +19,6 @@ class AddBusStopNameForm : AAddLocalizedNameForm<BusStopNameAnswer>() {
     override val addLanguageButton get() = binding.addLanguageButton
     override val namesList get() = binding.namesList
 
-    override val adapterRowLayoutResId = R.layout.quest_localizedname_row
-
     override val otherAnswers = listOf(
         AnswerItem(R.string.quest_placeName_no_name_answer) { confirmNoName() },
         AnswerItem(R.string.quest_streetName_answer_cantType) { showKeyboardInfo() }
@@ -28,13 +26,8 @@ class AddBusStopNameForm : AAddLocalizedNameForm<BusStopNameAnswer>() {
     private val busStopNameSuggestionsSource: BusStopNameSuggestionsSource by inject()
 
     override fun getLocalizedNameSuggestions(): List<List<LocalizedName>> {
-        val polyline = when (val geom = geometry) {
-            is ElementPolylinesGeometry -> geom.polylines.first()
-            is ElementPolygonsGeometry -> geom.polygons.first()
-            is ElementPointGeometry -> listOf(geom.center)
-        }
         return busStopNameSuggestionsSource.getNames(
-            listOf(polyline.first(), polyline.last()),
+            listOf(geometry.center),
             MAX_DIST_FOR_BUS_STOP_NAME_SUGGESTION
         )
     }
