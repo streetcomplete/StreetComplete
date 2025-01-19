@@ -168,6 +168,7 @@ class OsmNoteQuestControllerTest {
 
     @Test fun `get note quest with comment from user returns non-null if reallyAllNotes`() {
         on(prefs.reallyAllNotes).thenReturn(true)
+        on(prefs.showAllNotes).thenReturn(true)
         on(noteSource.get(1)).thenReturn(note(comments = listOf(
             comment(text = "test?", user = User(id = 100, "Blaubär")),
             comment(text = "test", user = User(id = 1, "Blubbi"))
