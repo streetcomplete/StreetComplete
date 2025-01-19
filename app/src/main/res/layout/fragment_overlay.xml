@@ -62,6 +62,23 @@
                     android:autoLink="web"
                     android:textIsSelectable="true" />
 
+                <TextView
+                    android:id="@+id/titleFixmeLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@style/TextAppearance.TitleMedium"
+                    android:text="@string/fixme_for_object" />
+
+                <TextView
+                    android:id="@+id/fixmeLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@style/TextAppearance.Body"
+                    android:textStyle="italic"
+                    android:textColor="@color/hint_text"
+                    android:autoLink="web"
+                    android:textIsSelectable="true" />
+
             </LinearLayout>
 
         </de.westnordost.streetcomplete.view.MaskSpeechbubbleCornersFrameLayout>

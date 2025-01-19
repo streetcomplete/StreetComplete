@@ -69,6 +69,7 @@ abstract class AbstractExternalSourceQuestForm : AbstractQuestForm(), IsShowingQ
         otherQuestController.getVisible(questKey as ExternalSourceQuestKey)?.elementKey?.let { key ->
             element = mapDataSource.get(key.type, key.id)
         }
+        setObjNote(element?.tags?.get("note"), element?.tags?.get("fixme") ?: element?.tags?.get("FIXME"))
         element?.let { setTitleHintLabel(getNameAndLocationSpanned(it, resources, featureDictionary.value)) }
     }
 

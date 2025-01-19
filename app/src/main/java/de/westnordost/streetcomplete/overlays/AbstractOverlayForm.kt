@@ -22,7 +22,6 @@ import androidx.core.view.isInvisible
 import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
-import com.russhwolf.settings.ObservableSettings
 import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.Prefs
@@ -49,6 +48,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
+import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.databinding.FragmentOverlayBinding
 import de.westnordost.streetcomplete.osm.ALL_PATHS
@@ -110,7 +110,7 @@ abstract class AbstractOverlayForm :
     private val recentLocationStore: RecentLocationStore by inject()
     private val featureDictionaryLazy: Lazy<FeatureDictionary> by inject(named("FeatureDictionaryLazy"))
     protected val featureDictionary: FeatureDictionary get() = featureDictionaryLazy.value
-    private val prefs: ObservableSettings by inject()
+    private val prefs: Preferences by inject()
     private var _countryInfo: CountryInfo? = null // lazy but resettable because based on lateinit var
         get() {
             if (field == null) {
@@ -234,7 +234,7 @@ abstract class AbstractOverlayForm :
         setTitleHintLabel(
             element?.let { getNameAndLocationSpanned(it, resources, featureDictionary) }
         )
-        setObjNote(element?.tags?.get("note"))
+        setObjNote(element?.tags?.get("note"), element?.tags?.get("fixme") ?: element?.tags?.get("FIXME"))
 
         binding.moreButton.setOnClickListener {
             showOtherAnswers()
@@ -283,17 +283,22 @@ abstract class AbstractOverlayForm :
         _binding = null
     }
 
-    protected fun setObjNote(text: CharSequence?) {
+    protected fun setObjNote(text: CharSequence?, fixmeText: CharSequence?) {
         binding.noteLabel.text = text
+        binding.fixmeLabel.text = if (prefs.expertMode) fixmeText else null
         val titleHintLayout = (binding.titleHintLabelContainer.layoutParams as? RelativeLayout.LayoutParams)
         titleHintLayout?.removeRule(RelativeLayout.ABOVE)
         titleHintLayout?.addRule(RelativeLayout.ABOVE,
-            if (binding.noteLabel.text.isEmpty())
+            if (binding.noteLabel.text.isEmpty() && binding.fixmeLabel.text.isEmpty())
                 binding.speechbubbleContentContainer.id
             else
                 binding.speechbubbleNoteContainer.id
         )
-        binding.speechbubbleNoteContainer.isGone = binding.noteLabel.text.isEmpty()
+        binding.titleNoteLabel.isGone = binding.noteLabel.text.isEmpty()
+        binding.noteLabel.isGone = binding.noteLabel.text.isEmpty()
+        binding.titleFixmeLabel.isGone = binding.fixmeLabel.text.isEmpty()
+        binding.fixmeLabel.isGone = binding.fixmeLabel.text.isEmpty()
+        binding.speechbubbleNoteContainer.isGone = binding.noteLabel.text.isEmpty() && binding.fixmeLabel.text.isEmpty()
     }
 
     /* --------------------------------- IsCloseableBottomSheet  ------------------------------- */

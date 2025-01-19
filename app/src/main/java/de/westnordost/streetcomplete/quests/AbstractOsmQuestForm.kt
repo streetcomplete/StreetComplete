@@ -148,7 +148,7 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
 
         setTitle(getString(osmElementQuestType.getTitle(element.tags)))
         setTitleHintLabel(getNameAndLocationSpanned(element, resources, featureDictionary))
-        setObjNote(element.tags["note"])
+        setObjNote(element.tags["note"], element.tags["fixme"] ?: element.tags["FIXME"])
 
         if (!TagEditor.showingTagEditor && prefs.getBoolean(Prefs.SHOW_HIDE_BUTTON, false)) {
             floatingBottomView2.popIn()

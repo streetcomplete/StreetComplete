@@ -175,9 +175,14 @@ abstract class AbstractQuestForm :
         updateInfoButtonVisibility()
     }
 
-    protected fun setObjNote(text: CharSequence?) {
+    protected fun setObjNote(text: CharSequence?, fixmeText: CharSequence?) {
         binding.noteLabel.text = text
-        binding.speechbubbleNoteContainer.isGone = binding.noteLabel.text.isEmpty()
+        binding.fixmeLabel.text = if (prefs.expertMode) fixmeText else null
+        binding.titleNoteLabel.isGone = binding.noteLabel.text.isEmpty()
+        binding.noteLabel.isGone = binding.noteLabel.text.isEmpty()
+        binding.titleFixmeLabel.isGone = binding.fixmeLabel.text.isEmpty()
+        binding.fixmeLabel.isGone = binding.fixmeLabel.text.isEmpty()
+        binding.speechbubbleNoteContainer.isGone = binding.noteLabel.text.isEmpty() && binding.fixmeLabel.text.isEmpty()
     }
     protected fun setHintImages(images: List<Drawable>) {
         binding.infoPictures.isGone = images.isEmpty()
