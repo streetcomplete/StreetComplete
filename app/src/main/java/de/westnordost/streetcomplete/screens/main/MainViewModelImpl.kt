@@ -105,8 +105,6 @@ class MainViewModelImpl(
                 val zoom = if (geo.zoom == null || geo.zoom < 14) 18.0 else geo.zoom
                 val pos = LatLon(geo.latitude, geo.longitude)
 
-                isFollowingPosition.value = false
-                isNavigationMode.value = false
                 geoUri.value = CameraPosition(pos, 0.0, 0.0, zoom)
             }
         }

@@ -266,6 +266,8 @@ class MainActivity :
         observe(viewModel.geoUri) { geoUri ->
             if (geoUri != null) {
                 mapFragment?.setInitialCameraPosition(geoUri)
+                viewModel.isFollowingPosition.value = mapFragment?.isFollowingPosition ?: false
+                viewModel.isNavigationMode.value = mapFragment?.isNavigationMode ?: false
             }
         }
     }

@@ -221,7 +221,7 @@ open class MapFragment : Fragment(R.layout.fragment_map) {
         map?.updateCamera(duration, requireContext().contentResolver, builder)
     }
 
-    fun setInitialCameraPosition(camera: CameraPosition) {
+    open fun setInitialCameraPosition(camera: CameraPosition) {
         if (map != null) {
             map?.camera = camera
         } else {
