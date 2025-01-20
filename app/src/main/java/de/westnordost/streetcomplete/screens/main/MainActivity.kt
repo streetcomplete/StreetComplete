@@ -171,6 +171,7 @@ class MainActivity :
 
     private lateinit var binding: ActivityMainBinding
 
+    // for freezing the map while sidebar is open
     private var wasFollowingPosition: Boolean? = null
     private var wasNavigationMode: Boolean? = null
 
@@ -303,9 +304,6 @@ class MainActivity :
         visibleQuestsSource.removeListener(this)
         mapDataWithEditsSource.removeListener(this)
         locationAvailabilityReceiver.removeListener(::updateLocationAvailability)
-
-        wasFollowingPosition = mapFragment?.isFollowingPosition
-        wasNavigationMode = mapFragment?.isNavigationMode
 
         locationManager.removeUpdates()
     }
@@ -614,7 +612,7 @@ class MainActivity :
         mapFragment?.startPositionTracking()
         questAutoSyncer.startPositionTracking()
 
-        setIsFollowingPosition(wasFollowingPosition ?: true)
+        mapFragment?.centerCurrentPositionIfFollowing()
         locationManager.getCurrentLocation()
     }
 
