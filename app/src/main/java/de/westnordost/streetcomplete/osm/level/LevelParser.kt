@@ -47,7 +47,7 @@ private fun String.toLevelOrNull(): Level? {
 private val levelRegex = Regex("([+-]?\\d+(?:\\.\\d+)?)(?:-([+-]?\\d+(?:\\.\\d+)?))?")
 
 enum class LevelTypes(val tag: String) {
-    LEVEL("level"), REPEAT_ON("repeat_on"), LEVEL_REF("level:ref"), ADDR_FLOOR("addr:floor)")
+    LEVEL("level"), REPEAT_ON("repeat_on"), LEVEL_REF("level:ref"), ADDR_FLOOR("addr:floor")
 }
 
 private val defaultTypes = listOf(LevelTypes.LEVEL, LevelTypes.REPEAT_ON)
