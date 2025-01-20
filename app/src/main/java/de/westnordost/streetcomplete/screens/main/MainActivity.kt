@@ -202,6 +202,10 @@ class MainActivity :
         enableEdgeToEdge()
         super.onCreate(savedInstanceState)
 
+        if (savedInstanceState == null) {
+            handleIntent(intent)
+        }
+
         LocalBroadcastManager.getInstance(this).registerReceiver(
             requestLocationPermissionResultReceiver,
             IntentFilter(LocationRequestFragment.REQUEST_LOCATION_PERMISSION_RESULT)
@@ -279,6 +283,10 @@ class MainActivity :
 
     override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
+        handleIntent(intent)
+    }
+
+    private fun handleIntent(intent: Intent) {
         if (intent.action != Intent.ACTION_VIEW) return
         val data = intent.data?.toString() ?: return
         viewModel.setUri(data)
