@@ -25,21 +25,10 @@ class NameSuggestionsSource(
      *  roads with names.
      */
     fun getNames(points: List<LatLon>, maxDistance: Double, elementFilter: String): List<List<LocalizedName>> {
-        return getNamesFiltered(
-            points,
-            maxDistance,
-            expandedMapData(points, maxDistance).filter(elementFilter)
-        )
-    }
-
-    private fun getNamesFiltered(
-        points: List<LatLon>,
-        maxDistance: Double,
-        filteredElements: Sequence<Element>
-    ): List<List<LocalizedName>> {
         if (points.isEmpty()) return emptyList()
 
         val mapData = expandedMapData(points, maxDistance)
+        val filteredElements = mapData.filter(elementFilter)
         val result = mutableMapOf<List<LocalizedName>, Double>()
 
         for (elem in filteredElements) {
