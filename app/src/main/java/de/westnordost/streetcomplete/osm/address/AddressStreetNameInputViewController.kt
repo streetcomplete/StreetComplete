@@ -2,8 +2,11 @@ package de.westnordost.streetcomplete.osm.address
 
 import android.widget.EditText
 import androidx.core.widget.doAfterTextChanged
+import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.meta.AbbreviationsByLocale
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.osm.ALL_PATHS
+import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.quests.NameSuggestionsSource
 import de.westnordost.streetcomplete.quests.road_name.AddRoadNameForm
 import de.westnordost.streetcomplete.util.ktx.nonBlankTextOrNull
@@ -21,6 +24,10 @@ class AddressStreetNameInputViewController(
 ) {
     private val autoCorrectAbbreviationsViewController: AutoCorrectAbbreviationsViewController
 
+    private val roadsWithNamesFilter =
+        "ways with highway ~ ${(ALL_ROADS + ALL_PATHS).joinToString("|")} and name"
+            .toElementFilterExpression()
+
     var onInputChanged: (() -> Unit)? = null
 
     var streetName: String?
@@ -34,12 +41,15 @@ class AddressStreetNameInputViewController(
         streetNameInput.doAfterTextChanged { onInputChanged?.invoke() }
     }
 
-    /** select the name of the street near the given [position] (ast most [radiusInMeters] from it)
+    /** select the name of the street near the given [position] (at most [radiusInMeters] from it)
      *  instead of typing it in the edit text */
     fun selectStreetAt(position: LatLon, radiusInMeters: Double): Boolean {
-        val dist = radiusInMeters + 5
         val namesByLocale = nameSuggestionsSource
-            .getNames(listOf(position), dist, AddRoadNameForm.elementFilter)
+            .getNames(
+                points = listOf(position),
+                maxDistance = radiusInMeters,
+                filter = roadsWithNamesFilter
+            )
             .firstOrNull()
             ?.associate { it.languageTag to it.name }?.toMutableMap()
             ?: return false

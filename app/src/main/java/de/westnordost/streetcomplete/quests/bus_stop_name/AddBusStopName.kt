@@ -10,6 +10,7 @@ import de.westnordost.streetcomplete.osm.applyTo
 
 class AddBusStopName : OsmFilterQuestType<BusStopNameAnswer>() {
 
+    // this filter needs to be kept somewhat in sync with the filter in AddBusStopNameForm
     override val elementFilter = """
         nodes, ways, relations with
         (

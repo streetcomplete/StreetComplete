@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests.road_name
 import android.content.DialogInterface
 import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.meta.AbbreviationsByLocale
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
@@ -37,19 +38,26 @@ class AddRoadNameForm : AAddLocalizedNameForm<RoadNameAnswer>() {
     private val abbrByLocale: AbbreviationsByLocale by inject()
     private val nameSuggestionsSource: NameSuggestionsSource by inject()
 
+    private val roadsWithNamesFilter =
+        "ways with highway ~ ${(ALL_ROADS + ALL_PATHS).joinToString("|")} and name"
+            .toElementFilterExpression()
+
     override fun getAbbreviationsByLocale(): AbbreviationsByLocale = abbrByLocale
 
     override fun getLocalizedNameSuggestions(): List<List<LocalizedName>> {
-        val polyline = when (val geom = geometry) {
+        val firstAndLast = when (val geom = geometry) {
             is ElementPolylinesGeometry -> geom.polylines.first()
             is ElementPolygonsGeometry -> geom.polygons.first()
             is ElementPointGeometry -> listOf(geom.center)
-        }
+        }.let { listOf(it.first(), it.last()) }
 
         return nameSuggestionsSource.getNames(
-            listOf(polyline.first(), polyline.last()),
-            MAX_DIST_FOR_ROAD_NAME_SUGGESTION,
-            elementFilter
+            // only first and last point of polyline because a still unnamed section of road is
+            //  usually (if at all) a continuation of a neighbouring road section
+            points = firstAndLast,
+            // and hence we can also search only in a very small area only
+            maxDistance = 30.0,
+            filter = roadsWithNamesFilter
         )
     }
 
@@ -138,15 +146,5 @@ class AddRoadNameForm : AAddLocalizedNameForm<RoadNameAnswer>() {
             .setPositiveButton(R.string.quest_name_noName_confirmation_positive) { _, _ -> applyAnswer(NoRoadName) }
             .setNegativeButton(R.string.quest_generic_confirmation_no, null)
             .show()
-    }
-
-    companion object {
-        const val MAX_DIST_FOR_ROAD_NAME_SUGGESTION = 30.0 // m
-
-        val elementFilter = """
-            ways with
-                highway ~ ${(ALL_ROADS + ALL_PATHS).joinToString("|")}
-                and name
-        """
     }
 }

@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.bus_stop_name
 
 import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.databinding.QuestLocalizednameBinding
 import de.westnordost.streetcomplete.osm.LocalizedName
 import de.westnordost.streetcomplete.quests.AAddLocalizedNameForm
@@ -24,8 +25,9 @@ class AddBusStopNameForm : AAddLocalizedNameForm<BusStopNameAnswer>() {
         AnswerItem(R.string.quest_streetName_answer_cantType) { showKeyboardInfo() }
     )
 
+    // this filter needs to be kept somewhat in sync with the filter in AddBusStopName
     private val busStopsWithNamesFilter = """
-        nodes, ways with
+        nodes, ways, relations with
         (
           public_transport = platform and bus = yes
           or (highway = bus_stop and public_transport != stop_position)
@@ -34,13 +36,14 @@ class AddBusStopNameForm : AAddLocalizedNameForm<BusStopNameAnswer>() {
           or railway = tram_stop
         )
         and name
-    """
+    """.toElementFilterExpression()
 
     override fun getLocalizedNameSuggestions(): List<List<LocalizedName>> =
         nameSuggestionsSource.getNames(
-            listOf(geometry.center),
-            MAX_DIST_FOR_BUS_STOP_NAME_SUGGESTION,
-            busStopsWithNamesFilter
+            // bus stops are usually not that large, we can just take the center for the dist check
+            points = listOf(geometry.center),
+            maxDistance = 250.0,
+            filter = busStopsWithNamesFilter
         )
 
     override fun onClickOk(names: List<LocalizedName>) {
@@ -53,9 +56,5 @@ class AddBusStopNameForm : AAddLocalizedNameForm<BusStopNameAnswer>() {
             .setPositiveButton(R.string.quest_name_noName_confirmation_positive) { _, _ -> applyAnswer(NoBusStopName) }
             .setNegativeButton(R.string.quest_generic_confirmation_no, null)
             .show()
-    }
-
-    companion object {
-        const val MAX_DIST_FOR_BUS_STOP_NAME_SUGGESTION = 250.0 // m
     }
 }

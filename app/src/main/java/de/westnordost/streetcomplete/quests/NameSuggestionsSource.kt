@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.quests
 
+import de.westnordost.streetcomplete.data.elementfilter.ElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
@@ -9,16 +10,18 @@ import de.westnordost.streetcomplete.util.math.distance
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import de.westnordost.streetcomplete.util.math.enlargedBy
 
-class NameSuggestionsSource(
-    private val mapDataSource: MapDataWithEditsSource
-) {
+class NameSuggestionsSource(private val mapDataSource: MapDataWithEditsSource) {
     /**
      *  Return a list of [LocalizedName]s of elements with name(s), sorted by distance ascending to
-     *  any of the given [points] that have at most a distance of [maxDistance] to those. The
-     *  elements can be filtered with the given [elementFilter] expression, to e.g. only find
+     *  any of the given [points] that have at most a distance of [maxDistance] in m to those. The
+     *  elements can be filtered with the given [filter] expression, to e.g. only find
      *  roads with names.
      */
-    fun getNames(points: List<LatLon>, maxDistance: Double, elementFilter: String): List<List<LocalizedName>> {
+    fun getNames(
+        points: List<LatLon>,
+        maxDistance: Double,
+        filter: ElementFilterExpression
+    ): List<List<LocalizedName>> {
         if (points.isEmpty()) return emptyList()
 
         /* add 100m radius for bbox query because roads will only be included in the result that
@@ -26,17 +29,17 @@ class NameSuggestionsSource(
            long straight roads (#3797). This doesn't completely solve this issue but mitigates it */
         val bbox = points.enclosingBoundingBox().enlargedBy(maxDistance + 100)
         val mapData = mapDataSource.getMapDataWithGeometry(bbox)
-        val filteredElements = mapData.filter(elementFilter)
+        val filteredElements = mapData.filter(filter)
         // map of localized names -> min distance
         val result = mutableMapOf<List<LocalizedName>, Double>()
 
-        for (elem in filteredElements) {
-            val geometry = mapData.getGeometry(elem.type, elem.id) ?: continue
+        for (element in filteredElements) {
+            val geometry = mapData.getGeometry(element.type, element.id) ?: continue
 
             val minDistance = points.minOf { geometry.distance(it) }
             if (minDistance > maxDistance) continue
 
-            val names = parseLocalizedNames(elem.tags) ?: continue
+            val names = parseLocalizedNames(element.tags) ?: continue
 
             // eliminate duplicates (e.g. same road, different segments, different distances)
             val prev = result[names]
