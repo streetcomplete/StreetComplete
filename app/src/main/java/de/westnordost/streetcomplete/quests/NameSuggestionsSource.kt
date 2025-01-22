@@ -1,15 +1,11 @@
 package de.westnordost.streetcomplete.quests
 
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
-import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
-import de.westnordost.streetcomplete.data.osm.mapdata.Way
-import de.westnordost.streetcomplete.data.osm.mapdata.Node
-import de.westnordost.streetcomplete.data.osm.mapdata.Relation
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.osm.LocalizedName
 import de.westnordost.streetcomplete.osm.parseLocalizedNames
-import de.westnordost.streetcomplete.util.math.distanceTo
+import de.westnordost.streetcomplete.util.math.distance
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import de.westnordost.streetcomplete.util.math.enlargedBy
 
@@ -35,28 +31,14 @@ class NameSuggestionsSource(
         val result = mutableMapOf<List<LocalizedName>, Double>()
 
         for (elem in filteredElements) {
+            val geometry = mapData.getGeometry(elem.type, elem.id) ?: continue
 
-            var minDistance = 0.0
-
-            if (elem is Way) {
-                val geometry = mapData.getWayGeometry(elem.id) as? ElementPolylinesGeometry ?: continue
-
-                val polyline = geometry.polylines.firstOrNull() ?: continue
-                if (polyline.isEmpty()) continue
-
-                minDistance = points.distanceTo(polyline)
-            }
-
-            if (elem is Node) {
-                minDistance = points.minOf { elem.position.distanceTo(it) }
-            }
-
-            if (elem is Relation) continue
-
+            val minDistance = points.minOf { geometry.distance(it) }
             if (minDistance > maxDistance) continue
+
             val names = parseLocalizedNames(elem.tags) ?: continue
 
-            // eliminate duplicates
+            // eliminate duplicates (e.g. same road, different segments, different distances)
             val prev = result[names]
             if (prev != null && prev < minDistance) continue
 
