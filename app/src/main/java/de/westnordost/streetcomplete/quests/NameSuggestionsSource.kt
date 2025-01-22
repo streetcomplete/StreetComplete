@@ -18,7 +18,12 @@ import de.westnordost.streetcomplete.util.math.enlargedBy
 class NameSuggestionsSource(
     private val mapDataSource: MapDataWithEditsSource
 ) {
-
+    /**
+     *  Return a list of [LocalizedName]s of elements with name(s), sorted by distance ascending to
+     *  any of the given [points] that have at most a distance of [maxDistance] to those. The
+     *  elements can be filtered with the given [elementFilter] expression, to e.g. only find
+     *  roads with names.
+     */
     fun getNames(points: List<LatLon>, maxDistance: Double, elementFilter: String): List<List<LocalizedName>> {
         return getNamesFiltered(
             points,
