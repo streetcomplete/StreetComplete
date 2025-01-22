@@ -45,8 +45,7 @@ class NameSuggestionsSource(
             }
 
             if (elem is Node) {
-                val geometry = mapData.getNodeGeometry(elem.id) ?: continue
-                minDistance = points.distanceTo(listOf(geometry.center))
+                minDistance = points.minOf { elem.position.distanceTo(it) }
             }
 
             if (elem is Relation) continue
