@@ -11,6 +11,8 @@ import org.koin.android.ext.android.inject
 
 class AddBusStopNameForm : AAddLocalizedNameForm<BusStopNameAnswer>() {
 
+    private val nameSuggestionsSource: NameSuggestionsSource by inject()
+
     override val contentLayoutResId = R.layout.quest_localizedname
     private val binding by contentViewBinding(QuestLocalizednameBinding::bind)
 
@@ -21,28 +23,26 @@ class AddBusStopNameForm : AAddLocalizedNameForm<BusStopNameAnswer>() {
         AnswerItem(R.string.quest_placeName_no_name_answer) { confirmNoName() },
         AnswerItem(R.string.quest_streetName_answer_cantType) { showKeyboardInfo() }
     )
-    private val nameSuggestionsSource: NameSuggestionsSource by inject()
 
-    override fun getLocalizedNameSuggestions(): List<List<LocalizedName>> {
-        val elementFilter = """
-            nodes, ways with
-            (
-              public_transport = platform and bus = yes
-              or (highway = bus_stop and public_transport != stop_position)
-              or railway = halt
-              or railway = station
-              or railway = tram_stop
-            )
-            and name
-        """
+    private val busStopsWithNamesFilter = """
+        nodes, ways with
+        (
+          public_transport = platform and bus = yes
+          or (highway = bus_stop and public_transport != stop_position)
+          or railway = halt
+          or railway = station
+          or railway = tram_stop
+        )
+        and name
+    """
 
-        return nameSuggestionsSource.getNames(
+    override fun getLocalizedNameSuggestions(): List<List<LocalizedName>> =
+        nameSuggestionsSource.getNames(
             listOf(geometry.center),
             MAX_DIST_FOR_BUS_STOP_NAME_SUGGESTION,
-            elementFilter
+            busStopsWithNamesFilter
         )
 
-    }
     override fun onClickOk(names: List<LocalizedName>) {
         applyAnswer(BusStopName(names))
     }
