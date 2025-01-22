@@ -2,9 +2,7 @@ package de.westnordost.streetcomplete.quests
 
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
-import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
-import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.Relation
@@ -27,8 +25,13 @@ class NameSuggestionsSource(
     fun getNames(points: List<LatLon>, maxDistance: Double, elementFilter: String): List<List<LocalizedName>> {
         if (points.isEmpty()) return emptyList()
 
-        val mapData = expandedMapData(points, maxDistance)
+        /* add 100m radius for bbox query because roads will only be included in the result that
+           have at least one node in the bounding box around the tap position. This is a problem for
+           long straight roads (#3797). This doesn't completely solve this issue but mitigates it */
+        val bbox = points.enclosingBoundingBox().enlargedBy(maxDistance + 100)
+        val mapData = mapDataSource.getMapDataWithGeometry(bbox)
         val filteredElements = mapData.filter(elementFilter)
+        // map of localized names -> min distance
         val result = mutableMapOf<List<LocalizedName>, Double>()
 
         for (elem in filteredElements) {
@@ -62,14 +65,5 @@ class NameSuggestionsSource(
 
         // return only the road names, sorted by distance ascending
         return result.entries.sortedBy { it.value }.map { it.key }
-    }
-
-    private fun expandedMapData(points: List<LatLon>, maxDistance: Double): MapDataWithGeometry {
-        /* add 100m radius for bbox query because roads will only be included in the result that have
-           at least one node in the bounding box around the tap position. This is a problem for long
-           straight roads (#3797). This doesn't completely solve this issue but mitigates it */
-        return mapDataSource.getMapDataWithGeometry(
-            points.enclosingBoundingBox().enlargedBy(maxDistance + 100)
-        )
     }
 }
