@@ -33,7 +33,7 @@ class NameSuggestionsSource(
 
         for (elem in filteredElements) {
 
-            var minDistanceToRoad = 0.0
+            var minDistance = 0.0
 
             if (elem is Way) {
                 val geometry = mapData.getWayGeometry(elem.id) as? ElementPolylinesGeometry ?: continue
@@ -41,24 +41,24 @@ class NameSuggestionsSource(
                 val polyline = geometry.polylines.firstOrNull() ?: continue
                 if (polyline.isEmpty()) continue
 
-                minDistanceToRoad = points.distanceTo(polyline)
+                minDistance = points.distanceTo(polyline)
             }
 
             if (elem is Node) {
                 val geometry = mapData.getNodeGeometry(elem.id) ?: continue
-                minDistanceToRoad = points.distanceTo(listOf(geometry.center))
+                minDistance = points.distanceTo(listOf(geometry.center))
             }
 
             if (elem is Relation) continue
 
-            if (minDistanceToRoad > maxDistance) continue
+            if (minDistance > maxDistance) continue
             val names = parseLocalizedNames(elem.tags) ?: continue
 
             // eliminate duplicates
             val prev = result[names]
-            if (prev != null && prev < minDistanceToRoad) continue
+            if (prev != null && prev < minDistance) continue
 
-            result[names] = minDistanceToRoad
+            result[names] = minDistance
         }
 
         // return only the road names, sorted by distance ascending
