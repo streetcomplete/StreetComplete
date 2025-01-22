@@ -15,10 +15,8 @@ class AddBusStopName : OsmFilterQuestType<BusStopNameAnswer>() {
         nodes, ways, relations with
         (
           public_transport = platform and bus = yes
-          or (highway = bus_stop and public_transport != stop_position)
-          or railway = halt
-          or railway = station
-          or railway = tram_stop
+          or highway = bus_stop and public_transport != stop_position
+          or railway ~ halt|station|tram_stop
         )
         and !name and noname != yes and name:signed != no
     """
