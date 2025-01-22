@@ -8,7 +8,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.osm.ALL_PATHS
 import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.quests.NameSuggestionsSource
-import de.westnordost.streetcomplete.quests.road_name.AddRoadNameForm
 import de.westnordost.streetcomplete.util.ktx.nonBlankTextOrNull
 import de.westnordost.streetcomplete.view.controller.AutoCorrectAbbreviationsViewController
 import java.util.Locale
