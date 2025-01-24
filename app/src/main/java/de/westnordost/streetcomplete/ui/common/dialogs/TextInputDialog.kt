@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.ui.common.dialogs
 
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.AlertDialog
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.OutlinedTextField
@@ -10,6 +11,7 @@ import androidx.compose.material.contentColorFor
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.key
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -20,6 +22,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextRange
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.window.DialogProperties
 
@@ -36,6 +39,8 @@ fun TextInputDialog(
     backgroundColor: Color = MaterialTheme.colors.surface,
     contentColor: Color = contentColorFor(backgroundColor),
     properties: DialogProperties = DialogProperties(),
+    keyboardType: KeyboardType = KeyboardType.Unspecified,
+    checkTextValid: (text: String) -> Boolean = { true }
 ) {
     val focusRequester = remember { FocusRequester() }
 
@@ -49,7 +54,7 @@ fun TextInputDialog(
         onDismissRequest = onDismissRequest,
         confirmButton = {
             TextButton(
-                enabled = value.text.isNotBlank(),
+                enabled = value.text.isNotBlank() && checkTextValid(value.text),
                 onClick = { onDismissRequest(); onConfirmed(value.text) }
             ) {
                 Text(stringResource(android.R.string.ok))
@@ -66,6 +71,7 @@ fun TextInputDialog(
                 onValueChange = { value = it },
                 modifier = Modifier.fillMaxWidth().focusRequester(focusRequester),
                 label = textInputLabel,
+                keyboardOptions = KeyboardOptions(keyboardType = keyboardType),
                 singleLine = true
             )
         },

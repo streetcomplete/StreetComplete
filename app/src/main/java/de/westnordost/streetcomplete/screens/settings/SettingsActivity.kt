@@ -190,7 +190,6 @@ class SettingsActivity : BaseActivity(), AbstractOsmQuestForm.Listener {
     private fun loadSceeSettingsFragment(screenId: Int) {
         supportFragmentManager.commit {
             val f = when (screenId) {
-                1 -> UiSettingsFragment()
                 2 -> DisplaySettingsFragment()
                 4 -> NoteSettingsFragment()
                 else -> DataManagementSettingsFragment()

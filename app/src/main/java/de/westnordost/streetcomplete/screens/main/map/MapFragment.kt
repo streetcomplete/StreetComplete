@@ -165,7 +165,7 @@ open class MapFragment : Fragment(R.layout.fragment_map) {
 
         // workaround for https://github.com/maplibre/maplibre-native/issues/2792
         map.gesturesManager.moveGestureDetector.moveThreshold = resources.dpToPx(5f)
-        map.gesturesManager.rotateGestureDetector.angleThreshold = prefs.getString(Prefs.ROTATE_ANGLE_THRESHOLD, "1.5")?.toFloatOrNull() ?: 0.0f
+        map.gesturesManager.rotateGestureDetector.angleThreshold = prefs.getFloat(Prefs.ROTATE_ANGLE_THRESHOLD, 1.5f)
         map.gesturesManager.shoveGestureDetector.pixelDeltaThreshold = resources.dpToPx(8f)
 
         map.addOnMoveListener(object : MapLibreMap.OnMoveListener {

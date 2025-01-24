@@ -72,6 +72,7 @@ fun SettingsScreen(
     onClickBack: () -> Unit,
     onClickSceeFragment: (Int) -> Unit,
     onClickQuestSettings: () -> Unit,
+    onClickUiSettings: () -> Unit,
 ) {
     val hiddenQuestCount by viewModel.hiddenQuestCount.collectAsState()
     val questTypeCount by viewModel.questTypeCount.collectAsState()
@@ -244,7 +245,7 @@ fun SettingsScreen(
 
                 Preference(
                     name = stringResource(R.string.pref_screen_ui),
-                    onClick = { onClickSceeFragment(1) },
+                    onClick = onClickUiSettings,
                 )
 
                 Preference(
