@@ -192,7 +192,6 @@ class SettingsActivity : BaseActivity(), AbstractOsmQuestForm.Listener {
             val f = when (screenId) {
                 1 -> UiSettingsFragment()
                 2 -> DisplaySettingsFragment()
-                3 -> QuestsSettingsFragment()
                 4 -> NoteSettingsFragment()
                 else -> DataManagementSettingsFragment()
             }

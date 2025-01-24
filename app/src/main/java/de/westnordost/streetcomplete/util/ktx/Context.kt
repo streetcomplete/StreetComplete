@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.util.ktx
 import android.Manifest.permission.ACCESS_FINE_LOCATION
 import android.content.ActivityNotFoundException
 import android.content.Context
+import android.content.ContextWrapper
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.LocationManager
@@ -10,6 +11,7 @@ import android.os.Build
 import android.view.Display
 import android.view.WindowManager
 import android.widget.Toast
+import androidx.activity.ComponentActivity
 import androidx.annotation.StringRes
 import androidx.core.content.ContextCompat
 import androidx.core.content.getSystemService
@@ -74,3 +76,12 @@ fun Context.openUri(uri: String): Boolean =
     } catch (e: ActivityNotFoundException) {
         false
     }
+
+fun Context.getActivity(): ComponentActivity? {
+    val componentActivity = when (this) {
+        is ComponentActivity -> this
+        is ContextWrapper -> baseContext.getActivity()
+        else -> null
+    }
+    return componentActivity
+}

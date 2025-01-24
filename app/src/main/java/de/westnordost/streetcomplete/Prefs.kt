@@ -69,9 +69,9 @@ object Prefs {
     const val THEME_BACKGROUND = "theme.background_type"
     const val REALLY_ALL_NOTES = "really_all_notes"
 
-    enum class DayNightBehavior {
-        IGNORE,
-        PRIORITY,
-        VISIBILITY
+    enum class DayNightBehavior(val titleResId: Int) {
+        IGNORE(R.string.day_night_ignore),
+        PRIORITY(R.string.day_night_priority),
+        VISIBILITY(R.string.day_night_visibility)
     }
 }

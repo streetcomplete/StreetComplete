@@ -42,7 +42,8 @@ import org.koin.androidx.compose.koinViewModel
                 onClickPresetSelection = { navController.navigate(SettingsDestination.QuestPresets) },
                 onClickQuestSelection = { navController.navigate(SettingsDestination.QuestSelection) },
                 onClickBack = ::goBack,
-                onClickSceeFragment = onClickSceeFragment
+                onClickSceeFragment = onClickSceeFragment,
+                onClickQuestSettings = { navController.navigate(SettingsDestination.QuestSettings) },
             )
         }
         composable(SettingsDestination.QuestPresets) {
@@ -64,6 +65,11 @@ import org.koin.androidx.compose.koinViewModel
                 onClickBack = ::goBack,
             )
         }
+        composable(SettingsDestination.QuestSettings) {
+            QuestSettingsScreen(
+                onClickBack = ::goBack
+            )
+        }
     }
 }
 
@@ -72,4 +78,5 @@ object SettingsDestination {
     const val QuestPresets = "quest_presets"
     const val QuestSelection = "quest_selection"
     const val ShowQuestForms = "show_quest_forms"
+    const val QuestSettings = "scee_quest_settings"
 }
