@@ -15,6 +15,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.preference.DialogPreference
+import androidx.preference.EditTextPreference
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.PreferenceManager
@@ -94,6 +95,10 @@ class UiSettingsFragment : PreferenceFragmentCompat(), HasTitle {
             }
             builder.show()
             true
+        }
+
+        findPreference<EditTextPreference>(Prefs.ROTATE_ANGLE_THRESHOLD)?.setOnBindEditTextListener {
+            editText -> editText.inputType = InputType.TYPE_CLASS_NUMBER or InputType.TYPE_NUMBER_FLAG_DECIMAL
         }
     }
 

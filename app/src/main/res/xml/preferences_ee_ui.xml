@@ -113,4 +113,18 @@
         android:defaultValue="false"
         android:persistent="true" />
 
+    <SwitchPreference
+        app:iconSpaceReserved="false"
+        android:key="rotate_while_zooming"
+        android:title="@string/pref_rotate_while_zooming_title"
+        android:defaultValue="false"
+        android:persistent="true" />
+
+    <EditTextPreference
+        app:iconSpaceReserved="false"
+        android:key="rotate_angle_threshold"
+        android:title="@string/pref_rotate_angle_threshold_title"
+        android:defaultValue="1.5"
+        android:persistent="true" />
+
 </PreferenceScreen>

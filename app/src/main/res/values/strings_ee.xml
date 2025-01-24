@@ -80,6 +80,8 @@
     <string name="pref_screen_ui">UI</string>
     <string name="pref_volume_zoom_title">Volume button zoom</string>
     <string name="pref_volume_zoom_summary">Zoom using volume buttons</string>
+    <string name="pref_rotate_while_zooming_title">Allow rotate while zooming</string>
+    <string name="pref_rotate_angle_threshold_title">Threshold for rotate gesture</string>
     <string name="pref_show_quick_settings_title">Show quick settings button</string>
     <string name="pref_select_first_edit_title">Select first edit on opening history</string>
     <string name="pref_select_first_edit_summary">Allows for quicker undo, but moves camera automatically</string>
