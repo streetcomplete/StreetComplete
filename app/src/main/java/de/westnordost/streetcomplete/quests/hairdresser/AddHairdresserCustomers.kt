@@ -15,6 +15,7 @@ class AddHairdresserCustomers : OsmFilterQuestType<HairdresserCustomers>() {
         nodes, ways with
           (
               shop = hairdresser
+              and hairdresser != barber
               and !female and !male
               and !male:signed and !female:signed
           )
