@@ -11,7 +11,21 @@ import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeSource
 import de.westnordost.streetcomplete.util.Listeners
 import de.westnordost.streetcomplete.util.SpatialCache
 
-/** Access and listen to quests visible on the map */
+/**
+ *  Access and listen to quests visible on the map.
+ *
+ *  This class unifies quests from all sources, i.e. currently OpenStreetMap quests
+ *  (see [OsmQuestSource]) and OpenStreetMap note quests (see [OsmNoteQuestSource]).
+ *
+ *  Quests can be not visible for a user for the following reasons:
+ *  - when the type of the quest is disabled in the user settings, see [VisibleQuestTypeSource]
+ *  - when the team mode is activated, only every Xth quest is visible, see [TeamModeQuestFilter]
+ *  - when the selected overlay disables the quest type because the overlay lets the user edit
+ *   the same info as the quest, see [SelectedOverlaySource] / [Overlay][de.westnordost.streetcomplete.overlays.Overlay]
+ *
+ *  Note that quests can also be not visible because they are hidden by the user, this is managed
+ *  by the individual sources of quests, though.
+ *  */
 class VisibleQuestsSource(
     private val questTypeRegistry: QuestTypeRegistry,
     private val osmQuestSource: OsmQuestSource,
