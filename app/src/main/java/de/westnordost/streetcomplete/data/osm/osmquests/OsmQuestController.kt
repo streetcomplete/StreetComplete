@@ -85,6 +85,7 @@ class OsmQuestController internal constructor(
             }
 
             val obsoleteQuestKeys: List<OsmQuestKey>
+            val visibleQuests: Collection<OsmQuest>
             synchronized(this) {
                 val previousQuests = db.getAllForElements(updated.map { it.key })
                 // quests that refer to elements that have been deleted shall be deleted
@@ -95,9 +96,10 @@ class OsmQuestController internal constructor(
 
                 obsoleteQuestKeys = getObsoleteQuestKeys(quests, previousQuests, deleteQuestKeys)
                 updateQuests(quests, obsoleteQuestKeys)
+                visibleQuests = quests.filterVisible()
             }
 
-            onUpdated(added = quests, deletedKeys = obsoleteQuestKeys)
+            onUpdated(added = visibleQuests, deletedKeys = obsoleteQuestKeys)
         }
 
         /** Replace all quests of the given types in the given bounding box with the given quests.
@@ -105,13 +107,15 @@ class OsmQuestController internal constructor(
         override fun onReplacedForBBox(bbox: BoundingBox, mapDataWithGeometry: MapDataWithGeometry) {
             val quests = createQuestsForBBox(bbox, mapDataWithGeometry, allQuestTypes)
             val obsoleteQuestKeys: List<OsmQuestKey>
+            val visibleQuests: Collection<OsmQuest>
             synchronized(this) {
                 val previousQuests = db.getAllInBBox(bbox)
                 obsoleteQuestKeys = getObsoleteQuestKeys(quests, previousQuests, emptyList())
                 updateQuests(quests, obsoleteQuestKeys)
+                visibleQuests = quests.filterVisible()
             }
 
-            onUpdated(added = quests, deletedKeys = obsoleteQuestKeys)
+            onUpdated(added = visibleQuests, deletedKeys = obsoleteQuestKeys)
         }
 
         override fun onCleared() {
@@ -378,17 +382,20 @@ class OsmQuestController internal constructor(
     ) {
         if (added.isEmpty() && deletedKeys.isEmpty()) return
 
-        val visibleAdded = if (added.isNotEmpty()) {
+        listeners.forEach { it.onUpdated(added, deletedKeys) }
+    }
+
+    private fun Collection<OsmQuest>.filterVisible(): Collection<OsmQuest> =
+        if (isNotEmpty()) {
             val hiddenIds = getHiddenQuests()
-            val bbox = added.map { it.position }.enclosingBoundingBox()
+            val bbox = map { it.position }.enclosingBoundingBox()
             val hiddenPositions = getBlacklistedPositions(bbox)
-            added.filter { it.key !in hiddenIds && it.position.truncateTo6Decimals() !in hiddenPositions }
+            filter { it.key !in hiddenIds && it.position.truncateTo6Decimals() !in hiddenPositions }
         } else {
-            added
+            this
         }
 
-        listeners.forEach { it.onUpdated(visibleAdded, deletedKeys) }
-    }
+
     private fun onInvalidated() {
         listeners.forEach { it.onInvalidated() }
     }
