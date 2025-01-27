@@ -5,7 +5,7 @@ import de.westnordost.streetcomplete.util.ktx.format
 fun parseGeoUri(uri: String): GeoLocation? {
     if (!uri.startsWith("geo:")) return null
 
-    val geoUriRegex = Regex("(-?[0-9]*\\.?[0-9]+),(-?[0-9]*\\.?[0-9]+).*?(?:\\?z=([0-9]*\\.?[0-9]+))?")
+    val geoUriRegex = Regex("(-?[0-9]*\\.?[0-9]+),(-?[0-9]*\\.?[0-9]+).*?(?:\\?z=([0-9]*\\.?[0-9]+))?.*")
     val match = geoUriRegex.matchEntire(uri.substringAfter("geo:")) ?: return null
 
     val latitude = match.groupValues[1].toDoubleOrNull() ?: return null
