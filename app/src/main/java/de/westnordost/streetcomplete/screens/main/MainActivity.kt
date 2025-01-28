@@ -535,7 +535,7 @@ class MainActivity :
     /* ---------------------------------- VisibleQuestListener ---------------------------------- */
 
     @AnyThread
-    override fun onUpdatedVisibleQuests(added: Collection<Quest>, removed: Collection<QuestKey>) {
+    override fun onUpdated(added: Collection<Quest>, removed: Collection<QuestKey>) {
         lifecycleScope.launch {
             val f = bottomSheetFragment
             // open quest has been deleted
@@ -546,7 +546,7 @@ class MainActivity :
     }
 
     @AnyThread
-    override fun onVisibleQuestsInvalidated() {
+    override fun onInvalidated() {
         lifecycleScope.launch {
             val f = bottomSheetFragment
             if (f is IsShowingQuestDetails) {
@@ -910,7 +910,7 @@ class MainActivity :
             notesSource
                 .getAll(BoundingBox(center, center).enlargedBy(0.2))
                 .firstOrNull { it.position.truncateTo6Decimals() == center.truncateTo6Decimals() }
-                ?.takeIf { noteQuestsHiddenSource.getHidden(it.id) == null }
+                ?.takeIf { noteQuestsHiddenSource.get(it.id) == null }
         }
         if (note != null) {
             showQuestDetails(OsmNoteQuest(note.id, note.position))

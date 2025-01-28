@@ -10,7 +10,8 @@ data class OsmNoteQuestHidden(
     val note: Note,
     override val createdTimestamp: Long
 ) : Edit {
-    override val key: OsmNoteQuestHiddenKey get() = OsmNoteQuestHiddenKey(OsmNoteQuestKey(note.id))
+    val questKey get() = OsmNoteQuestKey(note.id)
+    override val key: OsmNoteQuestHiddenKey get() = OsmNoteQuestHiddenKey(questKey)
     override val isUndoable: Boolean get() = true
     override val position: LatLon get() = note.position
     override val isSynced: Boolean? get() = null

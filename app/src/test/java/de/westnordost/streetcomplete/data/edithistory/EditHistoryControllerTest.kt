@@ -81,8 +81,8 @@ class EditHistoryControllerTest {
 
         on(elementEditsController.getAll()).thenReturn(listOf(edit1, edit3))
         on(noteEditsController.getAll()).thenReturn(listOf(edit2, edit4))
-        on(osmQuestsHiddenController.getAllHiddenNewerThan(anyLong())).thenReturn(listOf(edit5))
-        on(osmNoteQuestsHiddenController.getAllHiddenNewerThan(anyLong())).thenReturn(listOf(edit6))
+        on(osmQuestsHiddenController.getAllNewerThan(anyLong())).thenReturn(listOf(edit5))
+        on(osmNoteQuestsHiddenController.getAllNewerThan(anyLong())).thenReturn(listOf(edit6))
 
         assertEquals(
             listOf(edit6, edit5, edit4, edit3, edit2, edit1),
@@ -106,14 +106,14 @@ class EditHistoryControllerTest {
 
     @Test fun `undo hid quest`() {
         val e = questHidden(ElementType.NODE, 1L, TestQuestTypeA())
-        on(osmQuestsHiddenController.getHidden(e.questKey)).thenReturn(e)
+        on(osmQuestsHiddenController.get(e.questKey)).thenReturn(e)
         ctrl.undo(e.key)
         verify(osmQuestsHiddenController).unhide(e.questKey)
     }
 
     @Test fun `undo hid note quest`() {
         val e = noteQuestHidden()
-        on(osmNoteQuestsHiddenController.getHidden(e.note.id)).thenReturn(e)
+        on(osmNoteQuestsHiddenController.get(e.note.id)).thenReturn(e)
         ctrl.undo(e.key)
         verify(osmNoteQuestsHiddenController).unhide(e.note.id)
     }

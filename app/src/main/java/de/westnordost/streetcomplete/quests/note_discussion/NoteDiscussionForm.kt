@@ -72,7 +72,7 @@ class NoteDiscussionForm : AbstractQuestForm() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val alreadyHidden = osmNoteQuestsHiddenController.getHidden(noteId) != null
+        val alreadyHidden = osmNoteQuestsHiddenController.isHidden(noteId)
         setButtonPanelAnswers(listOf(
             if (alreadyHidden) {
                 AnswerItem(R.string.short_no_answer_on_button) { closeQuest() }

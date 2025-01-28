@@ -3,11 +3,12 @@ package de.westnordost.streetcomplete.data.quest
 import de.westnordost.streetcomplete.data.download.tiles.asBoundingBoxOfEnclosingTiles
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
-import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestSource
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestsHiddenSource
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuest
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestSource
+import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestsHiddenSource
 import de.westnordost.streetcomplete.data.overlays.SelectedOverlaySource
 import de.westnordost.streetcomplete.data.visiblequests.TeamModeQuestFilter
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeSource
@@ -20,7 +21,9 @@ import de.westnordost.streetcomplete.testutils.on
 import de.westnordost.streetcomplete.testutils.osmNoteQuest
 import de.westnordost.streetcomplete.testutils.osmQuest
 import de.westnordost.streetcomplete.testutils.osmQuestKey
+import de.westnordost.streetcomplete.testutils.p
 import de.westnordost.streetcomplete.testutils.pGeom
+import org.mockito.Mockito.anyLong
 import org.mockito.Mockito.verify
 import org.mockito.Mockito.verifyNoInteractions
 import kotlin.test.BeforeTest
@@ -31,8 +34,10 @@ import kotlin.test.assertTrue
 class VisibleQuestsSourceTest {
 
     private lateinit var osmQuestSource: OsmQuestSource
+    private lateinit var osmQuestsHiddenSource: OsmQuestsHiddenSource
     private lateinit var questTypeRegistry: QuestTypeRegistry
     private lateinit var osmNoteQuestSource: OsmNoteQuestSource
+    private lateinit var osmNoteQuestsHiddenSource: OsmNoteQuestsHiddenSource
     private lateinit var visibleQuestTypeSource: VisibleQuestTypeSource
     private lateinit var teamModeQuestFilter: TeamModeQuestFilter
     private lateinit var selectedOverlaySource: SelectedOverlaySource
@@ -40,6 +45,8 @@ class VisibleQuestsSourceTest {
 
     private lateinit var noteQuestListener: OsmNoteQuestSource.Listener
     private lateinit var questListener: OsmQuestSource.Listener
+    private lateinit var questsHiddenListener: OsmQuestsHiddenSource.Listener
+    private lateinit var noteQuestsHiddenListener: OsmNoteQuestsHiddenSource.Listener
     private lateinit var visibleQuestTypeListener: VisibleQuestTypeSource.Listener
     private lateinit var teamModeListener: TeamModeQuestFilter.TeamModeChangeListener
     private lateinit var selectedOverlayListener: SelectedOverlaySource.Listener
@@ -53,6 +60,8 @@ class VisibleQuestsSourceTest {
     @BeforeTest fun setUp() {
         osmNoteQuestSource = mock()
         osmQuestSource = mock()
+        osmQuestsHiddenSource = mock()
+        osmNoteQuestsHiddenSource = mock()
         visibleQuestTypeSource = mock()
         teamModeQuestFilter = mock()
         selectedOverlaySource = mock()
@@ -69,6 +78,14 @@ class VisibleQuestsSourceTest {
             questListener = (invocation.arguments[0] as OsmQuestSource.Listener)
             Unit
         }
+        on(osmQuestsHiddenSource.addListener(any())).then { invocation ->
+            questsHiddenListener = (invocation.arguments[0] as OsmQuestsHiddenSource.Listener)
+            Unit
+        }
+        on(osmNoteQuestsHiddenSource.addListener(any())).then { invocation ->
+            noteQuestsHiddenListener = (invocation.arguments[0] as OsmNoteQuestsHiddenSource.Listener)
+            Unit
+        }
         on(visibleQuestTypeSource.addListener(any())).then { invocation ->
             visibleQuestTypeListener = (invocation.arguments[0] as VisibleQuestTypeSource.Listener)
             Unit
@@ -82,45 +99,67 @@ class VisibleQuestsSourceTest {
             Unit
         }
 
-        source = VisibleQuestsSource(questTypeRegistry, osmQuestSource, osmNoteQuestSource, visibleQuestTypeSource, teamModeQuestFilter, selectedOverlaySource)
+        source = VisibleQuestsSource(
+            questTypeRegistry, osmQuestSource, osmQuestsHiddenSource, osmNoteQuestSource,
+            osmNoteQuestsHiddenSource, visibleQuestTypeSource, teamModeQuestFilter,
+            selectedOverlaySource
+        )
 
         listener = mock()
         source.addListener(listener)
     }
 
-    @Test fun getAllVisible() {
+    @Test fun getAll() {
         val bboxCacheWillRequest = bbox.asBoundingBoxOfEnclosingTiles(16)
         val osmQuests = questTypes.map { OsmQuest(it, ElementType.NODE, 1L, pGeom()) }
-        val noteQuests = listOf(OsmNoteQuest(0L, LatLon(0.0, 0.0)), OsmNoteQuest(1L, LatLon(1.0, 1.0)))
-        on(osmQuestSource.getAllVisibleInBBox(bboxCacheWillRequest, questTypeNames)).thenReturn(osmQuests)
-        on(osmNoteQuestSource.getAllVisibleInBBox(bboxCacheWillRequest)).thenReturn(noteQuests)
+        val noteQuests = listOf(OsmNoteQuest(0L, p(0.0, 0.0)), OsmNoteQuest(1L, p(1.0, 1.0)))
+        on(osmQuestSource.getAllInBBox(bboxCacheWillRequest, questTypeNames)).thenReturn(osmQuests)
+        on(osmNoteQuestSource.getAllInBBox(bboxCacheWillRequest)).thenReturn(noteQuests)
 
-        val quests = source.getAllVisible(bbox)
+        val quests = source.getAll(bbox)
         assertEquals(5, quests.size)
         assertEquals(3, quests.filterIsInstance<OsmQuest>().size)
         assertEquals(2, quests.filterIsInstance<OsmNoteQuest>().size)
     }
 
-    @Test fun `getAllVisible does not return those that are invisible in team mode`() {
-        on(osmQuestSource.getAllVisibleInBBox(bbox, questTypeNames)).thenReturn(listOf(mock()))
-        on(osmNoteQuestSource.getAllVisibleInBBox(bbox)).thenReturn(listOf(mock()))
-        on(teamModeQuestFilter.isVisible(any())).thenReturn(false)
-        on(teamModeQuestFilter.isEnabled).thenReturn(true)
+    @Test fun `getAll does not return those that are hidden by user`() {
+        val bboxCacheWillRequest = bbox.asBoundingBoxOfEnclosingTiles(16)
+        val osmQuests = questTypes.map { OsmQuest(it, ElementType.NODE, 1L, pGeom()) }
+        val noteQuests = listOf(OsmNoteQuest(0L, p(0.0, 0.0)), OsmNoteQuest(1L, p(1.0, 1.0)))
+        on(osmQuestSource.getAllInBBox(bboxCacheWillRequest)).thenReturn(osmQuests)
+        on(osmNoteQuestSource.getAllInBBox(bboxCacheWillRequest)).thenReturn(noteQuests)
 
-        val quests = source.getAllVisible(bbox)
+        on(osmQuestsHiddenSource.isHidden(any())).thenReturn(true)
+        on(osmNoteQuestsHiddenSource.isHidden(anyLong())).thenReturn(true)
+
+        val quests = source.getAll(bbox)
         assertTrue(quests.isEmpty())
     }
 
-    @Test fun `getAllVisible does not return those that are invisible because of an overlay`() {
-        on(osmQuestSource.getAllVisibleInBBox(bbox.asBoundingBoxOfEnclosingTiles(16), listOf("TestQuestTypeA")))
+    @Test fun `getAll does not return those that are invisible in team mode`() {
+        val bboxCacheWillRequest = bbox.asBoundingBoxOfEnclosingTiles(16)
+        val osmQuest = OsmQuest(questTypes.first(), ElementType.NODE, 1L, pGeom())
+        val noteQuest = OsmNoteQuest(0L, p(0.0, 0.0))
+        on(osmQuestSource.getAllInBBox(bboxCacheWillRequest, questTypeNames)).thenReturn(listOf(osmQuest))
+        on(osmNoteQuestSource.getAllInBBox(bboxCacheWillRequest)).thenReturn(listOf(noteQuest))
+        on(teamModeQuestFilter.isVisible(any())).thenReturn(false)
+        on(teamModeQuestFilter.isEnabled).thenReturn(true)
+
+        val quests = source.getAll(bbox)
+        assertTrue(quests.isEmpty())
+    }
+
+    @Test fun `getAll does not return those that are invisible because of an overlay`() {
+        val bboxCacheWillRequest = bbox.asBoundingBoxOfEnclosingTiles(16)
+        on(osmQuestSource.getAllInBBox(bboxCacheWillRequest, listOf("TestQuestTypeA")))
             .thenReturn(listOf(OsmQuest(TestQuestTypeA(), ElementType.NODE, 1, ElementPointGeometry(bbox.min))))
-        on(osmNoteQuestSource.getAllVisibleInBBox(bbox.asBoundingBoxOfEnclosingTiles(16))).thenReturn(listOf())
+        on(osmNoteQuestSource.getAllInBBox(bboxCacheWillRequest)).thenReturn(listOf())
 
         val overlay: Overlay = mock()
         on(overlay.hidesQuestTypes).thenReturn(setOf("TestQuestTypeB", "TestQuestTypeC"))
         on(selectedOverlaySource.selectedOverlay).thenReturn(overlay)
 
-        val quests = source.getAllVisible(bbox)
+        val quests = source.getAll(bbox)
         assertEquals(1, quests.size)
     }
 
@@ -128,7 +167,7 @@ class VisibleQuestsSourceTest {
         val quests = listOf(osmQuest(elementId = 1), osmQuest(elementId = 2))
         val deleted = listOf(osmQuestKey(elementId = 3), osmQuestKey(elementId = 4))
         questListener.onUpdated(quests, deleted)
-        verify(listener).onUpdatedVisibleQuests(eq(quests), eq(deleted))
+        verify(listener).onUpdated(eq(quests), eq(deleted))
     }
 
     @Test fun `osm quests added of invisible type does not trigger listener`() {
@@ -142,7 +181,7 @@ class VisibleQuestsSourceTest {
         val quests = listOf(osmNoteQuest(1L), osmNoteQuest(2L))
         val deleted = listOf(OsmNoteQuestKey(3), OsmNoteQuestKey(4))
         noteQuestListener.onUpdated(quests, listOf(3L, 4L))
-        verify(listener).onUpdatedVisibleQuests(eq(quests), eq(deleted))
+        verify(listener).onUpdated(eq(quests), eq(deleted))
     }
 
     @Test fun `osm note quests added of invisible type does not trigger listener`() {
@@ -154,11 +193,37 @@ class VisibleQuestsSourceTest {
 
     @Test fun `trigger invalidate listener if quest type visibilities changed`() {
         visibleQuestTypeListener.onQuestTypeVisibilitiesChanged()
-        verify(listener).onVisibleQuestsInvalidated()
+        verify(listener).onInvalidated()
     }
 
     @Test fun `trigger invalidate listener if visible note quests were invalidated`() {
         noteQuestListener.onInvalidated()
-        verify(listener).onVisibleQuestsInvalidated()
+        verify(listener).onInvalidated()
+    }
+
+    @Test fun `trigger invalidate when all osm quests have been unhid`() {
+        questsHiddenListener.onUnhidAll()
+        verify(listener).onInvalidated()
+    }
+
+    @Test fun `trigger update when osm quest is hidden`() {
+        // TODO
+    }
+
+    @Test fun `trigger update when osm quest is unhidden`() {
+        // TODO
+    }
+
+    @Test fun `trigger invalidate when all osm note quests have been unhid`() {
+        noteQuestsHiddenListener.onUnhidAll()
+        verify(listener).onInvalidated()
+    }
+
+    @Test fun `trigger update when osm note quest is hidden`() {
+        // TODO
+    }
+
+    @Test fun `trigger update when osm note quest is unhidden`() {
+        // TODO
     }
 }

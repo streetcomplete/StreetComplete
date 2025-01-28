@@ -81,8 +81,8 @@ class EditHistoryController(
     override fun get(key: EditKey): Edit? = when (key) {
         is ElementEditKey -> elementEditsController.get(key.id)
         is NoteEditKey -> noteEditsController.get(key.id)
-        is OsmNoteQuestHiddenKey -> osmNoteQuestsHiddenController.getHidden(key.osmNoteQuestKey.noteId)
-        is OsmQuestHiddenKey -> osmQuestsHiddenController.getHidden(key.osmQuestKey)
+        is OsmNoteQuestHiddenKey -> osmNoteQuestsHiddenController.get(key.osmNoteQuestKey.noteId)
+        is OsmQuestHiddenKey -> osmQuestsHiddenController.get(key.osmQuestKey)
     }
 
     override fun getAll(): List<Edit> {
@@ -91,8 +91,8 @@ class EditHistoryController(
         val result = ArrayList<Edit>()
         result += elementEditsController.getAll().filter { it.action !is IsRevertAction }
         result += noteEditsController.getAll()
-        result += osmNoteQuestsHiddenController.getAllHiddenNewerThan(maxAge)
-        result += osmQuestsHiddenController.getAllHiddenNewerThan(maxAge)
+        result += osmNoteQuestsHiddenController.getAllNewerThan(maxAge)
+        result += osmQuestsHiddenController.getAllNewerThan(maxAge)
 
         result.sortByDescending { it.createdTimestamp }
         return result

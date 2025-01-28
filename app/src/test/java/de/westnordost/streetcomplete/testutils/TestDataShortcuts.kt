@@ -128,9 +128,9 @@ fun questHidden(
     elementType: ElementType = ElementType.NODE,
     elementId: Long = 1L,
     questType: OsmElementQuestType<*> = QUEST_TYPE,
-    pos: LatLon = p(),
+    geometry: ElementGeometry = pGeom(),
     timestamp: Long = 123L
-) = OsmQuestHidden(elementType, elementId, questType, pos, timestamp)
+) = OsmQuestHidden(elementType, elementId, questType, geometry, timestamp)
 
 fun noteQuestHidden(
     note: Note = note(),

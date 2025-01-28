@@ -10,12 +10,15 @@ interface OsmQuestsHiddenSource {
         fun onUnhidAll()
     }
 
+    /** Returns whether the given osm quest is hidden by the user */
+    fun isHidden(key: OsmQuestKey): Boolean
+
     /** Get information about an osm quest hidden by the user or null if it does not exist / has not
      *  been hidden */
-    fun getHidden(key: OsmQuestKey): OsmQuestHidden?
+    fun get(key: OsmQuestKey): OsmQuestHidden?
 
     /** Get information about all osm quests hidden by the user after the given [timestamp] */
-    fun getAllHiddenNewerThan(timestamp: Long): List<OsmQuestHidden>
+    fun getAllNewerThan(timestamp: Long): List<OsmQuestHidden>
 
     /** Get number of osm quests hidden by the user */
     fun countAll(): Long
