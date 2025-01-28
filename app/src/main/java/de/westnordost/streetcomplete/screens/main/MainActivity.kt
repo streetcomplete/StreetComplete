@@ -130,7 +130,8 @@ import de.westnordost.streetcomplete.screens.main.map.getTitle
 import de.westnordost.streetcomplete.screens.main.map.maplibre.CameraPosition
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toPadding
 import de.westnordost.streetcomplete.ui.util.content
-import de.westnordost.streetcomplete.screens.settings.DisplaySettingsFragment
+import de.westnordost.streetcomplete.screens.settings.custom_geometry_changed
+import de.westnordost.streetcomplete.screens.settings.gpx_track_changed
 import de.westnordost.streetcomplete.util.SoundFx
 import de.westnordost.streetcomplete.util.buildGeoUri
 import de.westnordost.streetcomplete.util.getFakeCustomOverlays
@@ -359,13 +360,13 @@ class MainActivity :
     override fun onResume() {
         super.onResume()
         Log.i(TAG, "onResume")
-        if (DisplaySettingsFragment.gpx_track_changed) {
+        if (gpx_track_changed) {
             mapFragment?.loadGpxTrack()
-            DisplaySettingsFragment.gpx_track_changed = false
+            gpx_track_changed = false
         }
-        if (DisplaySettingsFragment.custom_geometry_changed) {
+        if (custom_geometry_changed) {
             mapFragment?.loadCustomGeometry()
-            DisplaySettingsFragment.custom_geometry_changed = false
+            custom_geometry_changed = false
         }
     }
 

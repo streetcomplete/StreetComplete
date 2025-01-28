@@ -7,13 +7,7 @@ import android.location.LocationManager
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.widget.Toolbar
-import androidx.compose.material.IconButton
 import androidx.compose.material.Surface
-import androidx.compose.material.Text
-import androidx.compose.material.TopAppBar
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.res.stringResource
 import androidx.core.app.ActivityCompat
 import androidx.core.os.bundleOf
 import androidx.core.view.isGone
@@ -41,7 +35,6 @@ import de.westnordost.streetcomplete.databinding.ActivitySettingsBinding
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AbstractQuestForm
 import de.westnordost.streetcomplete.screens.BaseActivity
-import de.westnordost.streetcomplete.ui.common.BackIcon
 import de.westnordost.streetcomplete.ui.theme.AppTheme
 import de.westnordost.streetcomplete.util.math.translate
 import de.westnordost.streetcomplete.util.viewBinding
@@ -190,7 +183,6 @@ class SettingsActivity : BaseActivity(), AbstractOsmQuestForm.Listener {
     private fun loadSceeSettingsFragment(screenId: Int) {
         supportFragmentManager.commit {
             val f = when (screenId) {
-                2 -> DisplaySettingsFragment()
                 4 -> NoteSettingsFragment()
                 else -> DataManagementSettingsFragment()
             }
