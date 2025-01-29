@@ -41,7 +41,7 @@ class OsmQuestsHiddenDao(private val db: Database) {
             )
         ) == 1
 
-    fun getNewerThan(timestamp: Long): List<OsmQuestKeyWithTimestamp> =
+    fun getNewerThan(timestamp: Long): List<OsmQuestHiddenAt> =
         db.query(NAME, where = "$TIMESTAMP > $timestamp") { it.toHiddenOsmQuest() }
 
     fun getAllIds(): List<OsmQuestKey> =
@@ -67,6 +67,6 @@ private fun CursorPosition.toOsmQuestKey() = OsmQuestKey(
     getString(QUEST_TYPE)
 )
 
-private fun CursorPosition.toHiddenOsmQuest() = OsmQuestKeyWithTimestamp(toOsmQuestKey(), getLong(TIMESTAMP))
+private fun CursorPosition.toHiddenOsmQuest() = OsmQuestHiddenAt(toOsmQuestKey(), getLong(TIMESTAMP))
 
-data class OsmQuestKeyWithTimestamp(val osmQuestKey: OsmQuestKey, val timestamp: Long)
+data class OsmQuestHiddenAt(val osmQuestKey: OsmQuestKey, val timestamp: Long)

@@ -6,16 +6,13 @@ import androidx.lifecycle.ViewModel
 import com.russhwolf.settings.SettingsListener
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.Cleaner
-import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestHidden
-import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestsHiddenController
-import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestsHiddenSource
-import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestHidden
-import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestsHiddenController
-import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestsHiddenSource
+import de.westnordost.streetcomplete.data.visiblequests.QuestsHiddenController
+import de.westnordost.streetcomplete.data.visiblequests.QuestsHiddenSource
 import de.westnordost.streetcomplete.data.preferences.Autosync
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.data.preferences.ResurveyIntervals
 import de.westnordost.streetcomplete.data.preferences.Theme
+import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.visiblequests.QuestPreset
@@ -60,8 +57,7 @@ class SettingsViewModelImpl(
     private val prefs: Preferences,
     private val resources: Resources,
     private val cleaner: Cleaner,
-    private val osmQuestsHiddenController: OsmQuestsHiddenController,
-    private val osmNoteQuestsHiddenController: OsmNoteQuestsHiddenController,
+    private val hiddenQuestsController: QuestsHiddenController,
     private val questTypeRegistry: QuestTypeRegistry,
     private val visibleQuestTypeSource: VisibleQuestTypeSource,
     private val questPresetsSource: QuestPresetsSource,
@@ -79,15 +75,9 @@ class SettingsViewModelImpl(
         override fun onDeletedQuestPreset(presetId: Long) { updateSelectedQuestPreset() }
     }
 
-    private val osmQuestsHiddenListener = object : OsmQuestsHiddenSource.Listener {
-        override fun onHid(edit: OsmQuestHidden) { updateHiddenQuests() }
-        override fun onUnhid(edit: OsmQuestHidden) { updateHiddenQuests() }
-        override fun onUnhidAll() { updateHiddenQuests() }
-    }
-
-    private val osmNoteQuestsHiddenListener = object : OsmNoteQuestsHiddenSource.Listener {
-        override fun onHid(edit: OsmNoteQuestHidden) { updateHiddenQuests() }
-        override fun onUnhid(edit: OsmNoteQuestHidden) { updateHiddenQuests() }
+    private val hiddenQuestsListener = object : QuestsHiddenSource.Listener {
+        override fun onHid(key: QuestKey, timestamp: Long) { updateHiddenQuests() }
+        override fun onUnhid(key: QuestKey, timestamp: Long) { updateHiddenQuests() }
         override fun onUnhidAll() { updateHiddenQuests() }
     }
 
@@ -108,8 +98,7 @@ class SettingsViewModelImpl(
     init {
         visibleQuestTypeSource.addListener(visibleQuestTypeListener)
         questPresetsSource.addListener(questPresetsListener)
-        osmNoteQuestsHiddenController.addListener(osmNoteQuestsHiddenListener)
-        osmQuestsHiddenController.addListener(osmQuestsHiddenListener)
+        hiddenQuestsController.addListener(hiddenQuestsListener)
 
         listeners += prefs.onResurveyIntervalsChanged { resurveyIntervals.value = it }
         listeners += prefs.onAutosyncChanged { autosync.value = it }
@@ -127,8 +116,7 @@ class SettingsViewModelImpl(
     override fun onCleared() {
         visibleQuestTypeSource.removeListener(visibleQuestTypeListener)
         questPresetsSource.removeListener(questPresetsListener)
-        osmNoteQuestsHiddenController.removeListener(osmNoteQuestsHiddenListener)
-        osmQuestsHiddenController.removeListener(osmQuestsHiddenListener)
+        hiddenQuestsController.removeListener(hiddenQuestsListener)
 
         listeners.forEach { it.deactivate() }
         listeners.clear()
@@ -147,8 +135,7 @@ class SettingsViewModelImpl(
 
     override fun unhideQuests() {
         launch(IO) {
-            osmQuestsHiddenController.unhideAll()
-            osmNoteQuestsHiddenController.unhideAll()
+            hiddenQuestsController.unhideAll()
         }
     }
 
@@ -166,8 +153,7 @@ class SettingsViewModelImpl(
 
     private fun updateHiddenQuests() {
         launch(IO) {
-            hiddenQuestCount.value =
-                osmQuestsHiddenController.countAll() + osmNoteQuestsHiddenController.countAll()
+            hiddenQuestCount.value = hiddenQuestsController.countAll()
         }
     }
 

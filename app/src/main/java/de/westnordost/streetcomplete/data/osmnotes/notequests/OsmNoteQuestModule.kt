@@ -6,7 +6,6 @@ val osmNoteQuestModule = module {
     factory { NoteQuestsHiddenDao(get()) }
 
     single<OsmNoteQuestSource> { get<OsmNoteQuestController>() }
-    single<OsmNoteQuestsHiddenSource> { get<OsmNoteQuestsHiddenController>() }
 
     single { OsmNoteQuestController(get(), get(), get(), get()) }
 }
