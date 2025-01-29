@@ -17,7 +17,7 @@ interface QuestsHiddenSource {
     fun getAllNewerThan(timestamp: Long): List<Pair<QuestKey, Long>>
 
     /** Get number of quests hidden by the user */
-    fun countAll(): Long
+    fun countAll(): Int
 
     fun addListener(listener: Listener)
     fun removeListener(listener: Listener)

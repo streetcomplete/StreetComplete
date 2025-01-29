@@ -28,7 +28,7 @@ import kotlinx.coroutines.flow.StateFlow
 abstract class SettingsViewModel : ViewModel() {
     abstract val selectableLanguageCodes: StateFlow<List<String>?>
     abstract val selectedQuestPresetName: StateFlow<String?>
-    abstract val hiddenQuestCount: StateFlow<Long>
+    abstract val hiddenQuestCount: StateFlow<Int>
     abstract val questTypeCount: StateFlow<QuestTypeCount?>
 
     abstract val resurveyIntervals: StateFlow<ResurveyIntervals>
@@ -81,7 +81,7 @@ class SettingsViewModelImpl(
         override fun onUnhidAll() { updateHiddenQuests() }
     }
 
-    override val hiddenQuestCount = MutableStateFlow(0L)
+    override val hiddenQuestCount = MutableStateFlow(0)
     override val questTypeCount = MutableStateFlow<QuestTypeCount?>(null)
     override val selectedQuestPresetName = MutableStateFlow<String?>(null)
     override val selectableLanguageCodes = MutableStateFlow<List<String>?>(null)

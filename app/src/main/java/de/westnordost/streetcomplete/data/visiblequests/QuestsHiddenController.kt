@@ -18,49 +18,72 @@ class QuestsHiddenController(
 
     private val listeners = Listeners<QuestsHiddenSource.Listener>()
 
+    private val cache: MutableMap<QuestKey, Long> by lazy {
+        val allOsmHidden = osmDb.getAll()
+        val allNotesHidden = notesDb.getAll()
+        val result = HashMap<QuestKey, Long>(allOsmHidden.size + allNotesHidden.size)
+        allOsmHidden.forEach { result[it.key] = it.timestamp }
+        allNotesHidden.forEach { result[OsmNoteQuestKey(it.noteId)] = it.timestamp }
+        result
+    }
+
     /** Mark the quest as hidden by user interaction */
     override fun hide(key: QuestKey) {
-        when (key) {
-            is OsmQuestKey -> osmDb.add(key)
-            is OsmNoteQuestKey -> notesDb.add(key.noteId)
+        val timestamp: Long
+        synchronized(this) {
+            when (key) {
+                is OsmQuestKey -> osmDb.add(key)
+                is OsmNoteQuestKey -> notesDb.add(key.noteId)
+            }
+            timestamp = getTimestamp(key) ?: return
+            cache[key] = timestamp
         }
-        val timestamp = get(key) ?: return
         listeners.forEach { it.onHid(key, timestamp) }
     }
 
     /** Un-hide the given quest. Returns whether it was hid before */
     fun unhide(key: QuestKey): Boolean {
-        val result = when (key) {
-            is OsmQuestKey -> osmDb.delete(key)
-            is OsmNoteQuestKey -> notesDb.delete(key.noteId)
+        val timestamp: Long
+        synchronized(this) {
+            val result = when (key) {
+                is OsmQuestKey -> osmDb.delete(key)
+                is OsmNoteQuestKey -> notesDb.delete(key.noteId)
+            }
+            if (!result) return false
+            timestamp = getTimestamp(key) ?: return false
+            cache.remove(key)
         }
-        if (!result) return false
-        val timestamp = get(key) ?: return false
         listeners.forEach { it.onUnhid(key, timestamp) }
         return true
     }
 
-    /** Un-hides all previously hidden quests by user interaction */
-    fun unhideAll(): Int {
-        val unhidCount = osmDb.deleteAll() + notesDb.deleteAll()
-        listeners.forEach { it.onUnhidAll() }
-        return unhidCount
-    }
-
-    override fun get(key: QuestKey): Long? =
+    private fun getTimestamp(key: QuestKey): Long? =
         when (key) {
             is OsmQuestKey -> osmDb.getTimestamp(key)
             is OsmNoteQuestKey -> notesDb.getTimestamp(key.noteId)
         }
 
-    override fun getAllNewerThan(timestamp: Long): List<Pair<QuestKey, Long>> =
-        (
-            osmDb.getNewerThan(timestamp).map { it.osmQuestKey to it.timestamp } +
-            notesDb.getNewerThan(timestamp).map { OsmNoteQuestKey(it.noteId) to it.timestamp }
-        ).sortedByDescending { it.second }
+    /** Un-hides all previously hidden quests by user interaction */
+    fun unhideAll(): Int {
+        val unhidCount: Int
+        synchronized(this) {
+            unhidCount = osmDb.deleteAll() + notesDb.deleteAll()
+            cache.clear()
+        }
+        listeners.forEach { it.onUnhidAll() }
+        return unhidCount
+    }
 
-    override fun countAll(): Long =
-        osmDb.countAll() + notesDb.countAll()
+    override fun get(key: QuestKey): Long? =
+        synchronized(this) { cache[key] }
+
+    override fun getAllNewerThan(timestamp: Long): List<Pair<QuestKey, Long>> {
+        val pairs = synchronized(this) { cache.toList() }
+        return pairs.filter { it.second > timestamp }.sortedByDescending { it.second }
+    }
+
+    override fun countAll(): Int =
+        synchronized(this) { cache.size }
 
     override fun addListener(listener: QuestsHiddenSource.Listener) {
         listeners.add(listener)
