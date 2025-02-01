@@ -15,7 +15,7 @@ class AddBabyChangingTable : OsmFilterQuestType<Boolean>() {
         (
           amenity ~ restaurant|cafe|toilets
           or amenity = fuel or shop ~ mall|department_store and toilets = yes
-          or amenity = fast_food and ~toilets|indoor_seating|outdoor_seating = yes
+          or amenity = fast_food and (toilets = yes or indoor_seating = yes or outdoor_seating = yes)
         )
         and !diaper and !changing_table
     """
