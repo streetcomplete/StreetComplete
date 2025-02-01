@@ -272,10 +272,11 @@ private val KEYS_THAT_SHOULD_BE_REMOVED_WHEN_PLACE_IS_REPLACED = listOf(
     "vacant", "insurance(:.*)?", "caravan", "gift", "bicycle", "bicycle_rental", "insulation",
     "communication", "mall", "model", "empty", "wood", "hunting", "motorcycle", "trailer",
     "camera", "water", "fireplace", "outdoor", "blacksmith", "electronics", "fan", "piercing",
+    "stationery",
     // obsoleted information
-    "abandoned(:.*)?", "disused(:.*)?", "was:.*", "not:.*", "damage", "source:damage",
-    "created_by", "check_date", "opening_date", "last_checked", "checked_exists:date",
-    "pharmacy_survey", "old_ref", "update", "import_uuid", "review", "fixme:atp",
+    "abandoned(:.*)?", "disused(:.*)?", "was:.*", "not:.*", "damage", "created_by", "check_date",
+    "opening_date", "last_checked", "checked_exists:date", "pharmacy_survey", "old_ref", "update",
+    "import_uuid", "review", "fixme:atp",
     // classifications / links to external databases
     "fhrs:.*", "old_fhrs:.*", "fvst:.*", "ncat", "nat_ref", "gnis:.*", "winkelnummer",
     "type:FR:FINESS", "type:FR:APE", "kvl_hro:amenity", "ref:DK:cvr(:.*)?", "certifications?",
@@ -292,21 +293,20 @@ private val KEYS_THAT_SHOULD_BE_REMOVED_WHEN_PLACE_IS_REPLACED = listOf(
     "website_?[1-9]?(:.*)?", "app:.*", "ownership",
     "url", "url:official", "source_ref:url", "owner",
     // payments
-    "payment(:.*)?", "payment_multi_fee", "currency:.*", "check_date:currency:.*",
-    "cash_withdrawal(:.*)?", "fee", "charge", "charge_fee", "money_transfer",
-    "donation:compensation",
+    "payment(:.*)?", "payment_multi_fee", "currency(:.*)?", "cash_withdrawal(:.*)?", "fee",
+    "charge", "charge_fee", "money_transfer", "donation:compensation",
     // generic shop/craft attributes
-    "seasonal", "time", "opening_hours(:.*)?", "check_date:opening_hours", "check_(in|out)",
-    "wifi", "internet", "internet_access(:.*)?", "second_hand", "self_service", "automated",
-    "license:.*", "bulk_purchase", ".*:covid19", "language:.*", "baby_feeding",
-    "description(:.*)?", "description[0-9]", "min_age", "max_age", "supermarket(:.*)?",
-    "social_facility(:.*)?", "functional", "trade", "wholesale", "sale", "smoking(:outside)?",
-    "zero_waste", "origin", "attraction", "strapline", "dog", "showroom", "toilets?(:.*)?",
-    "sanitary_dump_station", "changing_table(:.*)?", "wheelchair(.*)?", "blind", "company(:.*)?",
-    "stroller", "walk-in", "webshop", "operational_status.*", "status", "drive_through",
-    "surveillance(:.*)?", "outdoor_seating", "indoor_seating", "colour", "access_simple", "floor",
-    "product_category", "source_url", "category", "kids_area", "kids_area:indoor", "resort",
-    "since", "state", "temporary", "self_checkout", "audio_loop",
+    "seasonal", "time", "opening_hours(:.*)?", "check_(in|out)", "wifi", "internet",
+    "internet_access(:.*)?", "second_hand", "self_service", "automated", "license:.*",
+    "bulk_purchase", ".*:covid19", "language:.*", "baby_feeding", "description(:.*)?",
+    "description[0-9]", "min_age", "max_age", "supermarket(:.*)?", "social_facility(:.*)?",
+    "functional", "trade", "wholesale", "sale", "smoking(:outside)?", "zero_waste", "origin",
+    "attraction", "strapline", "dog", "showroom", "toilets?(:.*)?", "sanitary_dump_station",
+    "changing_table(:.*)?", "wheelchair(.*)?", "blind", "company(:.*)?", "stroller", "walk-in",
+    "webshop", "operational_status.*", "status", "drive_through", "surveillance(:.*)?",
+    "outdoor_seating", "indoor_seating", "colour", "access_simple", "floor", "product_category",
+    "guide", "source_url", "category", "kids_area", "kids_area:indoor", "resort", "since", "state",
+    "temporary", "self_checkout", "audio_loop",
     // food and drink details
     "bar", "cafe", "coffee", "microroasting", "microbrewery", "brewery", "real_ale", "taproom",
     "training", "distillery", "drink(:.*)?", "cocktails", "alcohol", "wine([:_].*)?",
@@ -383,4 +383,6 @@ private val KEYS_THAT_SHOULD_BE_REMOVED_WHEN_PLACE_IS_REPLACED = listOf(
     "engineering", "forestry", "foundation", "lawyer", "logistics", "military", "community_centre",
     "bank", "operational", "users_(PLWD|boy|elderly|female|girl|men)",
     "Comments?", "comments?", "entrance:(width|step_count|kerb:height)", "fenced", "motor_vehicle",
-).map { it.toRegex() }
+)
+    .flatMap { listOf(it, "source:$it", "check_date:$it") }
+    .map { it.toRegex() }

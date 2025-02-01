@@ -11,7 +11,21 @@ import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeSource
 import de.westnordost.streetcomplete.util.Listeners
 import de.westnordost.streetcomplete.util.SpatialCache
 
-/** Access and listen to quests visible on the map */
+/**
+ *  Access and listen to quests visible on the map.
+ *
+ *  This class unifies quests from all sources, i.e. currently OpenStreetMap quests
+ *  (see [OsmQuestSource]) and OpenStreetMap note quests (see [OsmNoteQuestSource]).
+ *
+ *  Quests can be not visible for a user for the following reasons:
+ *  - when the type of the quest is disabled in the user settings, see [VisibleQuestTypeSource]
+ *  - when the team mode is activated, only every Xth quest is visible, see [TeamModeQuestFilter]
+ *  - when the selected overlay disables the quest type because the overlay lets the user edit
+ *   the same info as the quest, see [SelectedOverlaySource] / [Overlay][de.westnordost.streetcomplete.overlays.Overlay]
+ *
+ *  Note that quests can also be not visible because they are hidden by the user, this is managed
+ *  by the individual sources of quests, though.
+ *  */
 class VisibleQuestsSource(
     private val questTypeRegistry: QuestTypeRegistry,
     private val osmQuestSource: OsmQuestSource,
@@ -31,7 +45,7 @@ class VisibleQuestsSource(
 
     private val osmQuestSourceListener = object : OsmQuestSource.Listener {
         override fun onUpdated(addedQuests: Collection<OsmQuest>, deletedQuestKeys: Collection<OsmQuestKey>) {
-            updateVisibleQuests(addedQuests.filter(::isVisible), deletedQuestKeys)
+            updateVisibleQuests(addedQuests, deletedQuestKeys)
         }
         override fun onInvalidated() {
             // apparently the visibility of many different quests have changed
@@ -41,7 +55,7 @@ class VisibleQuestsSource(
 
     private val osmNoteQuestSourceListener = object : OsmNoteQuestSource.Listener {
         override fun onUpdated(addedQuests: Collection<OsmNoteQuest>, deletedQuestIds: Collection<Long>) {
-            updateVisibleQuests(addedQuests.filter(::isVisible), deletedQuestIds.map { OsmNoteQuestKey(it) })
+            updateVisibleQuests(addedQuests, deletedQuestIds.map { OsmNoteQuestKey(it) })
         }
         override fun onInvalidated() {
             // apparently the visibility of many different notes have changed
@@ -133,14 +147,21 @@ class VisibleQuestsSource(
     fun trimCache() = cache.trim(SPATIAL_CACHE_TILES / 3)
 
     private fun updateVisibleQuests(addedQuests: Collection<Quest>, deletedQuestKeys: Collection<QuestKey>) {
-        if (addedQuests.isEmpty() && deletedQuestKeys.isEmpty()) return
-        cache.update(addedQuests, deletedQuestKeys)
-        listeners.forEach { it.onUpdatedVisibleQuests(addedQuests, deletedQuestKeys) }
+        synchronized(this) {
+            val addedVisibleQuests = addedQuests.filter(::isVisible)
+            if (addedVisibleQuests.isEmpty() && deletedQuestKeys.isEmpty()) return
+
+            cache.update(addedVisibleQuests, deletedQuestKeys)
+
+            listeners.forEach { it.onUpdatedVisibleQuests(addedVisibleQuests, deletedQuestKeys) }
+        }
     }
 
     private fun invalidate() {
-        clearCache()
-        listeners.forEach { it.onVisibleQuestsInvalidated() }
+        synchronized(this) {
+            clearCache()
+            listeners.forEach { it.onVisibleQuestsInvalidated() }
+        }
     }
 }
 

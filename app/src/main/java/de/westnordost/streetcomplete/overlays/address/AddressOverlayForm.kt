@@ -40,7 +40,7 @@ import de.westnordost.streetcomplete.osm.address.streetHouseNumber
 import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 import de.westnordost.streetcomplete.overlays.AnswerItem
 import de.westnordost.streetcomplete.overlays.IAnswerItem
-import de.westnordost.streetcomplete.quests.road_name.RoadNameSuggestionsSource
+import de.westnordost.streetcomplete.quests.NameSuggestionsSource
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsMapPositionAware
 import de.westnordost.streetcomplete.util.getNameAndLocationSpanned
 import de.westnordost.streetcomplete.util.ktx.dpToPx
@@ -57,7 +57,7 @@ class AddressOverlayForm : AbstractOverlayForm(), IsMapPositionAware {
 
     private val mapDataWithEditsSource: MapDataWithEditsSource by inject()
     private val abbreviationsByLocale: AbbreviationsByLocale by inject()
-    private val roadNameSuggestionsSource: RoadNameSuggestionsSource by inject()
+    private val nameSuggestionsSource: NameSuggestionsSource by inject()
 
     private lateinit var numberOrNameInputCtrl: AddressNumberAndNameInputViewController
     private lateinit var streetOrPlaceCtrl: StreetOrPlaceNameViewController
@@ -149,7 +149,7 @@ class AddressOverlayForm : AbstractOverlayForm(), IsMapPositionAware {
             placeNameInput = streetOrPlaceBinding.placeNameInput.apply { hint = lastPlaceName },
             streetNameInputContainer = streetOrPlaceBinding.streetNameInputContainer,
             streetNameInput = streetOrPlaceBinding.streetNameInput.apply { hint = lastStreetName },
-            roadNameSuggestionsSource = roadNameSuggestionsSource,
+            nameSuggestionsSource = nameSuggestionsSource,
             abbreviationsByLocale = abbreviationsByLocale,
             countryLocale = countryInfo.locale,
             startWithPlace = isShowingPlaceName

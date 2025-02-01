@@ -10,6 +10,6 @@ fun LatLon.equalsInOsm(other: LatLon) =
 
 private fun Double.isDifferent(other: Double, delta: Double) = abs(this - other) >= delta
 
-// the resulting precision is about ~1 meter (see #1089):
-// earth circumference / 360° / 10^5 => 40075017m / 360 / 100000 = 1.11m
-fun LatLon.truncateTo5Decimals() = LatLon(latitude.truncateTo5Decimals(), longitude.truncateTo5Decimals())
+// the resulting precision is about ~0.1 meter (see #1089, #6089):
+// earth circumference / 360° / 10^6 => 40075017m / 360 / 100000 = 0.111m (at equator)
+fun LatLon.truncateTo6Decimals() = LatLon(latitude.truncateTo6Decimals(), longitude.truncateTo6Decimals())

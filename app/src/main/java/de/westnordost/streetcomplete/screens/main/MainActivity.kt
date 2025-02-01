@@ -101,7 +101,7 @@ import de.westnordost.streetcomplete.util.ktx.isLocationAvailable
 import de.westnordost.streetcomplete.util.ktx.observe
 import de.westnordost.streetcomplete.util.ktx.toLatLon
 import de.westnordost.streetcomplete.util.ktx.toast
-import de.westnordost.streetcomplete.util.ktx.truncateTo5Decimals
+import de.westnordost.streetcomplete.util.ktx.truncateTo6Decimals
 import de.westnordost.streetcomplete.util.location.FineLocationManager
 import de.westnordost.streetcomplete.util.location.LocationAvailabilityReceiver
 import de.westnordost.streetcomplete.util.location.LocationRequestFragment
@@ -171,6 +171,7 @@ class MainActivity :
 
     private lateinit var binding: ActivityMainBinding
 
+    // for freezing the map while sidebar is open
     private var wasFollowingPosition: Boolean? = null
     private var wasNavigationMode: Boolean? = null
 
@@ -201,6 +202,10 @@ class MainActivity :
     override fun onCreate(savedInstanceState: Bundle?) {
         enableEdgeToEdge()
         super.onCreate(savedInstanceState)
+
+        if (savedInstanceState == null) {
+            handleIntent(intent)
+        }
 
         LocalBroadcastManager.getInstance(this).registerReceiver(
             requestLocationPermissionResultReceiver,
@@ -261,6 +266,8 @@ class MainActivity :
         observe(viewModel.geoUri) { geoUri ->
             if (geoUri != null) {
                 mapFragment?.setInitialCameraPosition(geoUri)
+                viewModel.isFollowingPosition.value = mapFragment?.isFollowingPosition ?: false
+                viewModel.isNavigationMode.value = mapFragment?.isNavigationMode ?: false
             }
         }
     }
@@ -279,6 +286,10 @@ class MainActivity :
 
     override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
+        handleIntent(intent)
+    }
+
+    private fun handleIntent(intent: Intent) {
         if (intent.action != Intent.ACTION_VIEW) return
         val data = intent.data?.toString() ?: return
         viewModel.setUri(data)
@@ -295,9 +306,6 @@ class MainActivity :
         visibleQuestsSource.removeListener(this)
         mapDataWithEditsSource.removeListener(this)
         locationAvailabilityReceiver.removeListener(::updateLocationAvailability)
-
-        wasFollowingPosition = mapFragment?.isFollowingPosition
-        wasNavigationMode = mapFragment?.isNavigationMode
 
         locationManager.removeUpdates()
     }
@@ -606,7 +614,7 @@ class MainActivity :
         mapFragment?.startPositionTracking()
         questAutoSyncer.startPositionTracking()
 
-        setIsFollowingPosition(wasFollowingPosition ?: true)
+        mapFragment?.centerCurrentPositionIfFollowing()
         locationManager.getCurrentLocation()
     }
 
@@ -900,8 +908,8 @@ class MainActivity :
         val center = geometry.center
         val note = withContext(Dispatchers.IO) {
             notesSource
-                .getAll(BoundingBox(center, center).enlargedBy(1.2))
-                .firstOrNull { it.position.truncateTo5Decimals() == center.truncateTo5Decimals() }
+                .getAll(BoundingBox(center, center).enlargedBy(0.2))
+                .firstOrNull { it.position.truncateTo6Decimals() == center.truncateTo6Decimals() }
                 ?.takeIf { noteQuestsHiddenSource.getHidden(it.id) == null }
         }
         if (note != null) {

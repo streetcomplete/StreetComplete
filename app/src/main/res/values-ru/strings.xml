@@ -1390,6 +1390,7 @@
     <string name="action_manage_presets_summary">"Под каким именем будет сохранен приведенный ниже квест."</string>
     <string name="quest_multiselect_hint">"Выберите все, что подходит:"</string>
     <string name="quest_barrier_opening_width_gate">"Какая здесь ширина проема?"</string>
+    <string name="bridge">"на мосту"</string>
     <string name="about_title_intro">"Показать введение"</string>
     <string name="about_category_help">"Помощь"</string>
     <string name="quest_camp_power_supply_hint">"Это могут быть розетки непосредственно на территории лагеря, розетки в служебном здании, доступном для гостей, специальная зарядная станция для телефонов, ноутбуков и т. д."</string>
@@ -1416,6 +1417,7 @@
     <string name="quest_boat_rental_rowboat">"Гребная лодка"</string>
     <string name="quest_boat_rental_raft">"Плот"</string>
     <string name="quest_boat_rental_surfboard">"Доска для серфинга"</string>
+    <string name="quest_boat_rental_sailboard">"Виндсёрф"</string>
     <string name="quest_boat_rental_yacht">"Яхта"</string>
     <string name="quest_powerAttachment_title">"Как подключена эта линия электропередачи?"</string>
     <string name="quest_powerAttachment_suspension">"Поддерживается сверху"</string>

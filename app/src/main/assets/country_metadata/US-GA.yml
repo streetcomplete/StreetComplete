@@ -1,6 +1,6 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [Bank of America, Wells Fargo, Publix, Truist, PNC Bank, Synovus, SunTrust, United Community Bank, Chase, Athena Bitcoin, iTHINK Financial, Regions Bank, BB&T, Ameris Bank, USAA, Fifth Third Bank, Delta Community Credit Union, Bank OZK, Western Union, Presto!, LGE Community Credit Union, Allpoint, SRP Federal Credit Union, RockItCoin, Georgia's Own Credit Union, First Citizens Bank, Community Bank of the South, Associated Credit Union]
-chargingStationOperators: [Electrify America, ChargePoint, Georgia Power, 'Tesla, Inc.', Tesla, eVgo, Volta, Blink, Whole Foods, Shell Recharge, NRG Energy, Middle Georgia State University, Indigo Energy, Hampton Inn, Georgia College, EVgo, Cobb EMC, City of Thomasville]
-clothesContainerOperators: [Green Zone Recycling]
+atmOperators: [Bank of America, Wells Fargo, Publix, Truist, PNC Bank, Synovus, SunTrust, United Community Bank, Chase, Athena Bitcoin, Western Union, iTHINK Financial, Regions Bank, BB&T, Ameris Bank, Bank OZK, USAA, Fifth Third Bank, Delta Community Credit Union, Presto!, LGE Community Credit Union, Allpoint, SouthState Bank, SRP Federal Credit Union, RockItCoin, Georgia's Own Credit Union, First Citizens Bank, Community Bank of the South, Associated Credit Union]
+chargingStationOperators: [Electrify America, ChargePoint, Georgia Power, 'Tesla, Inc.', Tesla, Rivian, eVgo, Volta, Blink, Whole Foods, Shell Recharge, NRG Energy, Middle Georgia State University, Indigo Energy, Hampton Inn, Georgia College, EVgo, Cobb EMC, City of Thomasville]
+clothesContainerOperators: [New Hope Recycling, Green Zone Recycling]
 defaultSpeedLimitHasUrbanOrRural: true
 parcelLockerBrand: [Amazon Hub, Amazon Locker]

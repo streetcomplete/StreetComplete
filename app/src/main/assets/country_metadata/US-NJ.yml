@@ -1,6 +1,6 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [Pay Depot, Chase, PNC Bank, Bank of America, Wells Fargo, Valley Bank ATM, Access to Money, ATM, TD Bank, Santander, LibertyX Bitcoin ATM, Citibank, PNC Bank ATM, LibertyX, Cardtronics, Valley National Bank ATM, Citibank ATM, Cardtronics ATM, Bitcoin Depot, BTMmachines.com, ATM Express, ATM (Wells Fargo Bank), ATM (TD Bank)]
+atmOperators: [Pay Depot, Chase, PNC Bank, Bank of America, Wells Fargo, Valley Bank ATM, Access to Money, ATM, TD Bank, LibertyX Bitcoin ATM, Citibank, Santander, PNC Bank ATM, LibertyX, Cardtronics, Valley National Bank ATM, M&T Bank, Citibank ATM, Cardtronics ATM, Bitcoin Depot, BTMmachines.com, ATM Express, ATM (Wells Fargo Bank), ATM (TD Bank)]
 chargingStationOperators: ['Tesla, Inc.', ChargePoint, Tesla Motors, EVgo, Blink, Electrify America, Volta, Glen Rock]
-clothesContainerOperators: [The ClothesLine, Jersey City PSOA, 'Hoboken PBA #2']
+clothesContainerOperators: [The ClothesLine, Jersey City PSOA, 'Hoboken PBA #2', Better World Recycling]
 defaultSpeedLimitHasUrbanOrRural: true
-parcelLockerBrand: [Amazon Hub, Amazon Locker, Amazon Hub Locker]
+parcelLockerBrand: [Amazon Locker, Amazon Hub, Amazon Hub Locker]

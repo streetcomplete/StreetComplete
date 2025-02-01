@@ -813,7 +813,7 @@ Prenez garde de voire toutes les options, certains cas sont non triviaux, comme 
     <string name="quest_recycling_type_plastic_bottles_and_cartons">"Seulement des bouteilles en plastique et des cartons"</string>
     <string name="team_mode">"Entrez le mode équipe"</string>
     <string name="team_mode_exit">"Quitter le mode par équipe"</string>
-    <string name="team_mode_description">"Quand vous cartographiez la même zone avec un groupe, vous pouvez vous répartir les quêtes entre les différents membres de ce groupe."</string>
+    <string name="team_mode_description">"Quand vous cartographiez la même zone avec un groupe, vous pouvez entrer le mode équipe pour répartir les quêtes entre tous les membres de l’équipe. Chacun d’entre vous verra alors des quêtes différentes."</string>
     <string name="team_mode_active">"Le mode par équipe est activé"</string>
     <string name="team_mode_deactivated">"Le mode par équipe est désactivé"</string>
     <string name="undo_confirm_title2">"Annuler cette contribution ?"</string>
@@ -1426,11 +1426,12 @@ Un niveau compte comme un niveau de toit lorsque ses fenêtres se trouvent dans 
     <string name="quest_boat_rental_sailboard">"Planche à voile"</string>
     <string name="quest_boat_rental_yacht">"Yacht"</string>
     <string name="quest_boat_rental_standup_paddleboard">"Paddle debout"</string>
-    <string name="quest_powerAttachment_title">"Comment cette ligne de courant est attachée ?"</string>
-    <string name="quest_powerAttachment_suspension">"Supporté à partir de"</string>
-    <string name="quest_powerAttachment_anchor">"Fixé horizontalement"</string>
-    <string name="quest_powerAttachment_pin">"Supporté en dessous de"</string>
+    <string name="quest_powerAttachment_title">"Comment cette ligne électrique est attachée ?"</string>
+    <string name="quest_powerAttachment_suspension">"Fixée par dessus"</string>
+    <string name="quest_powerAttachment_anchor">"Fixée horizontalement"</string>
+    <string name="quest_powerAttachment_pin">"Fixée par dessous"</string>
     <string name="pedestrian_zone_designated">"Conçu pour les vélos"</string>
     <string name="pedestrian_zone_allowed_sign">"Un panneau autorise les vélos ici"</string>
     <string name="pedestrian_zone_no_sign">"Aucune indication panticulière concernant les vélos"</string>
+    <string name="team_mode_description_overlay_hint">"Si vous utilisez des overlays, chacun d’entre vous doit en utiliser un différent, car seules les quêtes sont réparties."</string>
 </resources>

@@ -1,16 +1,16 @@
 - name: "Tobias Zwick"
   githubUsername: "westnordost"
-  linesOfCodeChanged: 499975
-  linesOfInterfaceMarkupChanged: 155459
-  assetFilesChanged: 2186
+  linesOfCodeChanged: 500474
+  linesOfInterfaceMarkupChanged: 155481
+  assetFilesChanged: 2187
 - name: "Mateusz Konieczny"
   githubUsername: "matkoniecz"
-  linesOfCodeChanged: 22190
+  linesOfCodeChanged: 22201
   linesOfInterfaceMarkupChanged: 5233
   assetFilesChanged: 636
 - name: "Flo Edelmann"
   githubUsername: "FloEdelmann"
-  linesOfCodeChanged: 21441
+  linesOfCodeChanged: 21468
   linesOfInterfaceMarkupChanged: 3733
   assetFilesChanged: 152
 - name: "Helium314"
@@ -30,7 +30,7 @@
   assetFilesChanged: 4
 - name: "Matija Nalis"
   githubUsername: "mnalis"
-  linesOfCodeChanged: 3512
+  linesOfCodeChanged: 3574
   linesOfInterfaceMarkupChanged: 523
   assetFilesChanged: 70
 - name: "arrival-spring"
@@ -92,6 +92,11 @@
 - name: "Krzysztof Krason"
   linesOfCodeChanged: 738
   assetFilesChanged: 22
+- name: "Kai Michael Poppe"
+  githubUsername: "kmpoppe"
+  linesOfCodeChanged: 635
+  linesOfInterfaceMarkupChanged: 869
+  assetFilesChanged: 44
 - name: "Enno Hermann"
   githubUsername: "eginhard"
   linesOfCodeChanged: 524
@@ -100,11 +105,6 @@
   linesOfCodeChanged: 444
   linesOfInterfaceMarkupChanged: 165
   assetFilesChanged: 1
-- name: "Kai Michael Poppe"
-  githubUsername: "kmpoppe"
-  linesOfCodeChanged: 414
-  linesOfInterfaceMarkupChanged: 869
-  assetFilesChanged: 44
 - name: "naposm"
   githubUsername: "naposm"
   linesOfCodeChanged: 399
@@ -312,6 +312,9 @@
 - name: "Guillaume Rischard"
   githubUsername: "grischard"
   linesOfCodeChanged: 3
+- name: "dokutan"
+  githubUsername: "dokutan"
+  linesOfCodeChanged: 2
 - name: "mpol"
   githubUsername: "mpol"
   linesOfCodeChanged: 2

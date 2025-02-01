@@ -1413,6 +1413,7 @@ En våning räknas som en takvåning när dess fönster finns i taket. Det följ
     <string name="quest_bicycle_repair_station_services_title">"Vilken cykelutrustning finns tillgänglig här?"</string>
     <string name="quest_bicycle_repair_station_pump">"Pump"</string>
     <string name="quest_bicycle_repair_station_tools">"Diverse verktyg"</string>
+    <string name="quest_bicycle_repair_station_stand">"Arbetsställ"</string>
     <string name="quest_bicycle_repair_station_chain_tool">"Kedjeverktyg"</string>
     <string name="quest_boat_rental_title">"Vilka typer av båtar finns att hyra här?"</string>
     <string name="quest_boat_rental_motorboat">"Motorbåt"</string>

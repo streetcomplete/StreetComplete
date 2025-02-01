@@ -1,6 +1,6 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 additionalStreetsignLanguages: [en]
-atmOperators: [Emirates NBD, ADIB, Al Masraf Bank ATM, ADCB, Dubai Islamic Bank, HSBC, Mashreq, FAB, Al Hilal, Union National Bank, NBAD, UNION NATIONAL BANK, RAKBANK, mashreq, Sharjah Islamic Bank, RAK Bank, RAK BANK, Commercial Bank of Dubai, al hilal bank, Abu Dhabi Commercial Bank, Rak Bank, Mashreq Bank, National Bank of Abu Dhabi, EMIRATES ISLAMIC, CBI, union national bank, nbf, Standard Chartered, RAK Bank ATM, FGB, Emirates islamic atm, Emirates Islamic Bank, Emirates Islamic, Dubai Islamic bank, Dubai Islamic Bank ATM, City Bank, Bank of Sharjah, Abu Dhabi Islamic Bank, Abu Dhabi Distribution Co.]
+atmOperators: [Emirates NBD, ADIB, Al Masraf Bank ATM, Dubai Islamic Bank, ADCB, HSBC, Mashreq, FAB, Al Hilal, Union National Bank, NBAD, UNION NATIONAL BANK, RAKBANK, mashreq, Abu Dhabi Commercial Bank, RAK Bank, RAK BANK, Commercial Bank of Dubai, al hilal bank, Sharjah Islamic Bank, Rak Bank, Mashreq Bank, National Bank of Abu Dhabi, Emirates Islamic, EMIRATES ISLAMIC, CBI, union national bank, nbf, Standard Chartered, RAK Bank ATM, FGB, Emirates islamic atm, Emirates Islamic Bank, Dubai Islamic bank, Dubai Islamic Bank ATM, City Bank, Bank of Sharjah, Abu Dhabi Islamic Bank, Abu Dhabi Distribution Co.]
 centerLineStyle: yellow
 chargingStationOperators: [DEWA, Wifi UAE, 'Tesla, Inc.']
 defaultSpeedLimitHasUrbanOrRural: true
