@@ -12,10 +12,13 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        include:
-          - api-level: 34
-            jdk-version: 21
-            arch: x86_64
+        api-level:
+          - 21 # minSdk
+          - 35 # targetSdk
+        jdk-version:
+          - 21
+        arch:
+          - x86_64
     steps:
       - uses: actions/checkout@v4
 
