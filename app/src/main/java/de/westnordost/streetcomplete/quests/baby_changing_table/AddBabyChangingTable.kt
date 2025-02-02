@@ -13,9 +13,11 @@ class AddBabyChangingTable : OsmFilterQuestType<Boolean>() {
     override val elementFilter = """
         nodes, ways with
         (
-          amenity ~ restaurant|cafe|toilets
-          or (amenity = fuel or shop ~ mall|department_store) and toilets = yes
-          or amenity = fast_food and (toilets = yes or indoor_seating = yes or outdoor_seating = yes)
+          (
+            (amenity ~ restaurant|cafe|fuel|fast_food or shop ~ mall|department_store)
+            and toilets != no
+          )
+          or amenity = toilets
         )
         and !diaper and !changing_table
     """
