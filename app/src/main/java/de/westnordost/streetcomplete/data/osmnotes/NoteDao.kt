@@ -68,7 +68,7 @@ class NoteDao(private val db: Database) {
             db.query(NAME,
                 columns = arrayOf(ID),
                 where = "$LAST_SYNC < $timestamp",
-                limit = limit?.toString()
+                limit = limit
             ) { it.getLong(ID) }
         }
 

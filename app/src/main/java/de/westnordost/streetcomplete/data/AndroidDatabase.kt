@@ -64,12 +64,12 @@ class AndroidDatabase(private val db: SQLiteDatabase) : Database {
         groupBy: String?,
         having: String?,
         orderBy: String?,
-        limit: String?,
+        limit: Int?,
         distinct: Boolean,
         transform: (CursorPosition) -> T
     ): List<T> {
         val strArgs = args?.primitivesArrayToStringArray()
-        return db.query(false, table, columns, where, strArgs, groupBy, having, orderBy, limit).toSequence(transform).toList()
+        return db.query(false, table, columns, where, strArgs, groupBy, having, orderBy, limit?.toString()).toSequence(transform).toList()
     }
 
     override fun insert(
