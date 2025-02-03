@@ -34,18 +34,22 @@ interface Database {
         transform: (CursorPosition) -> T
     ): List<T>
 
+    /** @return Inserted row ID */
     fun insert(
         table: String,
         values: Collection<Pair<String, Any?>>,
         conflictAlgorithm: ConflictAlgorithm? = null
     ): Long
 
+    /** @return Inserted row ID */
     fun insertOrIgnore(table: String, values: Collection<Pair<String, Any?>>): Long =
         insert(table, values, ConflictAlgorithm.IGNORE)
 
+    /** @return Inserted row ID */
     fun replace(table: String, values: Collection<Pair<String, Any?>>): Long =
         insert(table, values, ConflictAlgorithm.REPLACE)
 
+    /** @return Inserted row IDs */
     fun insertMany(
         table: String,
         columnNames: Array<String>,
@@ -53,12 +57,15 @@ interface Database {
         conflictAlgorithm: ConflictAlgorithm? = null
     ): List<Long>
 
+    /** @return Inserted row IDs */
     fun insertOrIgnoreMany(table: String, columnNames: Array<String>, valuesList: Iterable<Array<Any?>>) =
         insertMany(table, columnNames, valuesList, ConflictAlgorithm.IGNORE)
 
+    /** @return Inserted row IDs */
     fun replaceMany(table: String, columnNames: Array<String>, valuesList: Iterable<Array<Any?>>) =
         insertMany(table, columnNames, valuesList, ConflictAlgorithm.REPLACE)
 
+    /** @return Number of updated rows */
     fun update(
         table: String,
         values: Collection<Pair<String, Any?>>,
@@ -67,6 +74,7 @@ interface Database {
         conflictAlgorithm: ConflictAlgorithm? = null
     ): Int
 
+    /** @return Number of deleted rows */
     fun delete(
         table: String,
         where: String? = null,
