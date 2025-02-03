@@ -36,7 +36,6 @@ import kotlinx.datetime.LocalDateTime
 abstract class EditHistoryViewModel : ViewModel() {
     abstract val editItems: StateFlow<List<EditItem>>
     abstract val selectedEdit: StateFlow<Edit?>
-    var allHidden = false
 
     abstract suspend fun getEditElement(edit: Edit): Element?
     abstract suspend fun getEditGeometry(edit: Edit): ElementGeometry
@@ -166,7 +165,7 @@ class EditHistoryViewModelImpl(
 
     override fun updateEdits() {
         launch(IO) {
-            edits.value = editHistoryController.getAll(allHidden).sortedBy { it.createdTimestamp }
+            edits.value = editHistoryController.getAll().sortedBy { it.createdTimestamp }
             if (edits.value.isEmpty()) hideSidebar()
         }
     }

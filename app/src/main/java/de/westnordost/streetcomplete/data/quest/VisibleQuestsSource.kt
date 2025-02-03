@@ -89,6 +89,7 @@ class VisibleQuestsSource(
             val quest = when (key) {
                 is OsmQuestKey -> osmQuestSource.get(key)
                 is OsmNoteQuestKey -> osmNoteQuestSource.get(key.noteId)
+                is ExternalSourceQuestKey -> externalSourceQuestController.get(key)
             } ?: return
             updateVisibleQuests(added = listOf(quest))
         }
@@ -160,6 +161,8 @@ class VisibleQuestsSource(
         // currently visible
         val hideOverlayQuests = prefs.getBoolean(Prefs.HIDE_OVERLAY_QUESTS, true)
         val visibleQuestTypes = questTypeRegistry.filter { isVisible(it, hideOverlayQuests) }
+        println(hideOverlayQuests)
+        println(visibleQuestTypes)
         if (visibleQuestTypes.isEmpty()) return emptyList()
 
         val quests =
@@ -167,25 +170,19 @@ class VisibleQuestsSource(
             osmNoteQuestSource.getAllInBBox(bbox) +
             externalSourceQuestController.getAllInBBox(bbox, visibleQuestTypes)
 
+        println(quests)
         return quests.filter { isVisible(it.key) && isVisibleInTeamMode(it) }
-        // todo: old code below, not sure about levelFilter and dayNightQuestFilter
-//        return if (teamModeQuestFilter.isEnabled || levelFilter.isEnabled || dayNightQuestFilter.isEnabled) {
-//            quests.filter(::isVisibleInTeamMode)
-//        } else {
-//            quests
-//        }
     }
 
     fun get(questKey: QuestKey): Quest? {
         val quest = cache.get(questKey) ?: when (questKey) {
             is OsmNoteQuestKey -> osmNoteQuestSource.get(questKey.noteId)
             is OsmQuestKey -> osmQuestSource.get(questKey)
-            is ExternalSourceQuestKey -> externalSourceQuestController.getVisible(questKey)
+            is ExternalSourceQuestKey -> externalSourceQuestController.get(questKey)
         } ?: return null
         return if (isVisible(quest, prefs.getBoolean(Prefs.HIDE_OVERLAY_QUESTS, true))) quest else null
     }
 
-    // todo: need to consider level and daytime filter here?
     private fun isVisible(quest: Quest, hideOverlayQuests: Boolean): Boolean =
         isVisible(quest.key) && isVisibleInTeamMode(quest) && isVisible(quest.type, hideOverlayQuests)
 
@@ -194,23 +191,22 @@ class VisibleQuestsSource(
         selectedOverlaySource.selectedOverlay?.let { !hideOverlayQuests || questType.name !in it.hidesQuestTypes } ?: true
 
     private fun isVisible(questKey: QuestKey): Boolean =
-        questsHiddenSource.get(questKey) == null // todo: what about hideOverlayQuests? is it necessary in this place?
+        questsHiddenSource.get(questKey) == null
 
     private fun isVisibleInTeamMode(quest: Quest): Boolean =
         teamModeQuestFilter.isVisible(quest) && levelFilter.isVisible(quest) && dayNightQuestFilter.isVisible(quest)
 
-    // todo: needs to be adjusted to work with new hidden controller
     fun getNearbyQuests(quest: Quest, distance: Double): Collection<Quest> {
         val bbox = quest.position.enclosingBoundingBox(distance)
         return when (prefs.getInt(Prefs.SHOW_NEARBY_QUESTS, 0)) {
-            1 -> getAllVisible(bbox)
-            2 -> (osmQuestSource.getAllVisibleInBBox(bbox) +
+            1 -> getAll(bbox)
+            2 -> (osmQuestSource.getAllInBBox(bbox) +
                     externalSourceQuestController.getAllInBBox(bbox) +
-                    osmNoteQuestSource.getAllVisibleInBBox(bbox)
-                ).filter { isVisibleInTeamMode(it) }
-            3 -> (osmQuestSource.getAllVisibleInBBox(bbox, getHidden = true) +
-                    externalSourceQuestController.getAllInBBox(bbox, getHidden = true) +
-                    osmNoteQuestSource.getAllVisibleInBBox(bbox, getHidden = true)
+                    osmNoteQuestSource.getAllInBBox(bbox)
+                ).filter { isVisible(it.key) && isVisibleInTeamMode(it) }
+            3 -> (osmQuestSource.getAllInBBox(bbox) +
+                    externalSourceQuestController.getAllInBBox(bbox) +
+                    osmNoteQuestSource.getAllInBBox(bbox)
                 ).filter { isVisibleInTeamMode(it) }
             else -> emptyList()
         }

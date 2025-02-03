@@ -141,8 +141,8 @@ private fun Edit.toProperties(): List<Pair<String, String>> = when (this) {
     )
     is ExternalSourceQuestHidden -> listOf(
         MARKER_EDIT_TYPE to EDIT_TYPE_HIDE_OTHER_SOURCE_QUEST,
-        MARKER_OTHER_SOURCE to key.externalSourceQuestKey.source,
-        MARKER_OTHER_SOURCE_ID to key.externalSourceQuestKey.id,
+        MARKER_OTHER_SOURCE to questType.source,
+        MARKER_OTHER_SOURCE_ID to id,
         MARKER_QUEST_TYPE to questType.name
     )
     else -> throw IllegalArgumentException()
@@ -162,6 +162,6 @@ private fun Map<String, String>.toEditKey(): EditKey? = when (get(MARKER_EDIT_TY
     EDIT_TYPE_HIDE_OSM_NOTE_QUEST ->
         QuestHiddenKey(OsmNoteQuestKey(getValue(MARKER_NOTE_ID).toLong()))
     EDIT_TYPE_HIDE_OTHER_SOURCE_QUEST ->
-        ExternalSourceQuestHiddenKey(ExternalSourceQuestKey(getValue(MARKER_OTHER_SOURCE), getValue(MARKER_OTHER_SOURCE_ID)))
+        QuestHiddenKey(ExternalSourceQuestKey(getValue(MARKER_OTHER_SOURCE), getValue(MARKER_OTHER_SOURCE_ID)))
     else -> null
 }

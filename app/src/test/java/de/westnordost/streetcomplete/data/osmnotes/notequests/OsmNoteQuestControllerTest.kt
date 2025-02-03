@@ -81,7 +81,7 @@ class OsmNoteQuestControllerTest {
         )))
         on(userDataSource.userId).thenReturn(1)
 
-        assertNotNull(ctrl.getVisible(1))
+        assertNotNull(ctrl.get(1))
     }
 
     @Test fun `get note quest with comment from user that contains a survey required marker returns non-null`() {

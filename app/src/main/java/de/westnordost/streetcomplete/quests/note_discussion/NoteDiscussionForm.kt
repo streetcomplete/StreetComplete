@@ -146,7 +146,7 @@ class NoteDiscussionForm : AbstractQuestForm() {
 
     private fun tempHideQuest() {
         viewLifecycleScope.launch {
-            withContext(Dispatchers.IO) { osmNoteQuestsHiddenController.tempHide(noteId) }
+            withContext(Dispatchers.IO) { hiddenQuestsController.tempHide(questKey) }
         }
     }
 

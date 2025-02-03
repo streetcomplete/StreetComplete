@@ -6,6 +6,7 @@ import org.koin.dsl.module
 val externalSourceModule = module {
     single { ExternalSourceQuestController(get(named("CountryBoundariesLazy")), get(), get(), get()) }
     single { ExternalSourceDao(get()) }
+    single { ExternalSourceHiddenDao(get()) }
 }
 
 // todo: if a quest doesn't lead to an elementEdit, currently there is no way to undo

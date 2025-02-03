@@ -29,8 +29,11 @@ class ExternalSourceDao(private val db: Database) {
 
     fun deleteAllExceptForElementEdits(elementEditIds: Collection<Long>) =
         db.delete(NAME_EDITS, where = "$EDIT_ID not in (${elementEditIds.joinToString(",")})") > 0
+}
 
-    fun hide(key: ExternalSourceQuestKey): Long {
+class ExternalSourceHiddenDao(private val db: Database) {
+
+    fun add(key: ExternalSourceQuestKey): Long {
         val timestamp = nowAsEpochMilliseconds()
         val inserted = db.insert(NAME_HIDDEN, listOf(
             ID to key.id,
@@ -40,22 +43,22 @@ class ExternalSourceDao(private val db: Database) {
         return if (inserted) timestamp else 0L
     }
 
-    fun getHiddenTimestamp(key: ExternalSourceQuestKey): Long? =
+    fun getTimestamp(key: ExternalSourceQuestKey): Long? =
         db.queryOne(NAME_HIDDEN,
             where = "$ID = '${key.id}' AND $SOURCE = '${key.source}'",
             columns = arrayOf(TIMESTAMP)
         ) { it.getLong(TIMESTAMP) }
 
-    fun unhide(key: ExternalSourceQuestKey) =
+    fun delete(key: ExternalSourceQuestKey) =
         db.delete(NAME_HIDDEN, where = "$ID = '${key.id}' AND $SOURCE = '${key.source}'") > 0
 
     fun getAllHiddenNewerThan(timestamp: Long): List<Pair<ExternalSourceQuestKey, Long>> =
         db.query(NAME_HIDDEN, where = "$TIMESTAMP > $timestamp") { it.toKey() to it.getLong(TIMESTAMP) }
 
-    fun getAllHidden(): List<ExternalSourceQuestKey> =
-        db.query(NAME_HIDDEN, columns = arrayOf(ID, SOURCE)) { it.toKey() }
+    fun getAll(): List<Pair<ExternalSourceQuestKey, Long>> =
+        db.query(NAME_HIDDEN, columns = arrayOf(ID, SOURCE, TIMESTAMP)) { it.toKey() to it.getLong(TIMESTAMP) }
 
-    fun unhideAll() = db.delete(NAME_HIDDEN)
+    fun deleteAll() = db.delete(NAME_HIDDEN)
 }
 
 private fun CursorPosition.toKey() = ExternalSourceQuestKey(getString(ID), getString(SOURCE))

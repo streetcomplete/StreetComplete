@@ -153,7 +153,7 @@ class LevelFilter internal constructor(private val prefs: ObservableSettings) : 
 
     private fun getLevelsInView(displayedArea: BoundingBox?, allowed: List<LevelTypes>): List<Double> {
         val tags = if (displayedArea != null) {
-            visibleQuestsSource.getAllVisible(displayedArea).mapNotNull {
+            visibleQuestsSource.getAll(displayedArea).mapNotNull {
                 when (it) {
                     is OsmQuest -> mapDataSource.get(it.elementType, it.elementId)
                     is ExternalSourceQuest -> it.elementKey?.let { mapDataSource.get(it.type, it.id) }

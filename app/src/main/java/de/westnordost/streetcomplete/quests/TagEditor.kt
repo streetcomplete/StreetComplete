@@ -154,7 +154,7 @@ open class TagEditor : Fragment(), IsCloseableBottomSheet {
             if (prefs.getBoolean(Prefs.DYNAMIC_QUEST_CREATION, false) || element.id == 0L)
                 osmQuestController.createNonPoiQuestsForElement(element, geometry)
             else
-                osmQuestController.getAllVisibleInBBox(geometry.center.enclosingBoundingBox(0.01), null, true)
+                osmQuestController.getAllInBBox(geometry.center.enclosingBoundingBox(0.01))
                 .filter { it.elementType == element.type && it.elementId == element.id && it.type.dotColor == null }
         }
         _binding = EditTagsBinding.inflate(inflater, container, false)

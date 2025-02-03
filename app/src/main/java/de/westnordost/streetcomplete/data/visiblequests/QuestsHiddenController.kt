@@ -1,16 +1,20 @@
 package de.westnordost.streetcomplete.data.visiblequests
 
+import de.westnordost.streetcomplete.data.externalsource.ExternalSourceHiddenDao
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestsHiddenDao
 import de.westnordost.streetcomplete.data.osmnotes.notequests.NoteQuestsHiddenDao
+import de.westnordost.streetcomplete.data.quest.ExternalSourceQuestKey
 import de.westnordost.streetcomplete.data.quest.OsmNoteQuestKey
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.util.Listeners
+import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 
 /** Controller for managing which quests have been hidden by user interaction. */
 class QuestsHiddenController(
     private val osmDb: OsmQuestsHiddenDao,
     private val notesDb: NoteQuestsHiddenDao,
+    private val externalDb: ExternalSourceHiddenDao,
 ) : QuestsHiddenSource, HideQuestController {
 
     /* Must be a singleton because there is a listener that should respond to a change in the
@@ -21,9 +25,11 @@ class QuestsHiddenController(
     private val cache: MutableMap<QuestKey, Long> by lazy {
         val allOsmHidden = osmDb.getAll()
         val allNotesHidden = notesDb.getAll()
+        val allExternalHidden = externalDb.getAll()
         val result = HashMap<QuestKey, Long>(allOsmHidden.size + allNotesHidden.size)
         allOsmHidden.forEach { result[it.key] = it.timestamp }
         allNotesHidden.forEach { result[OsmNoteQuestKey(it.noteId)] = it.timestamp }
+        allExternalHidden.forEach { result[it.first] = it.second }
         result
     }
 
@@ -34,10 +40,17 @@ class QuestsHiddenController(
             when (key) {
                 is OsmQuestKey -> osmDb.add(key)
                 is OsmNoteQuestKey -> notesDb.add(key.noteId)
+                is ExternalSourceQuestKey -> externalDb.add(key)
             }
             timestamp = getTimestamp(key) ?: return
             cache[key] = timestamp
         }
+        listeners.forEach { it.onHid(key, timestamp) }
+    }
+
+    override fun tempHide(key: QuestKey) {
+        val timestamp = nowAsEpochMilliseconds()
+        //synchronized(this) { cache[key] = timestamp } // would hide until app restart or unhide all, maybe wanted?
         listeners.forEach { it.onHid(key, timestamp) }
     }
 
@@ -48,6 +61,7 @@ class QuestsHiddenController(
             val result = when (key) {
                 is OsmQuestKey -> osmDb.delete(key)
                 is OsmNoteQuestKey -> notesDb.delete(key.noteId)
+                is ExternalSourceQuestKey -> externalDb.delete(key)
             }
             if (!result) return false
             timestamp = getTimestamp(key) ?: return false
@@ -61,13 +75,14 @@ class QuestsHiddenController(
         when (key) {
             is OsmQuestKey -> osmDb.getTimestamp(key)
             is OsmNoteQuestKey -> notesDb.getTimestamp(key.noteId)
+            is ExternalSourceQuestKey -> externalDb.getTimestamp(key)
         }
 
     /** Un-hides all previously hidden quests by user interaction */
     fun unhideAll(): Int {
         val unhidCount: Int
         synchronized(this) {
-            unhidCount = osmDb.deleteAll() + notesDb.deleteAll()
+            unhidCount = osmDb.deleteAll() + notesDb.deleteAll() + externalDb.deleteAll()
             cache.clear()
         }
         listeners.forEach { it.onUnhidAll() }

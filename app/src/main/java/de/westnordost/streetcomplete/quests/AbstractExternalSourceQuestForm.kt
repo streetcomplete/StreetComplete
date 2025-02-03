@@ -24,6 +24,7 @@ import de.westnordost.streetcomplete.data.externalsource.ExternalSourceQuestCont
 import de.westnordost.streetcomplete.data.externalsource.ExternalSourceQuestType
 import de.westnordost.streetcomplete.data.location.RecentLocationStore
 import de.westnordost.streetcomplete.data.quest.ExternalSourceQuestKey
+import de.westnordost.streetcomplete.data.visiblequests.QuestsHiddenController
 import de.westnordost.streetcomplete.util.getNameAndLocationSpanned
 import de.westnordost.streetcomplete.util.ktx.isSplittable
 import de.westnordost.streetcomplete.util.ktx.popIn
@@ -45,6 +46,7 @@ abstract class AbstractExternalSourceQuestForm : AbstractQuestForm(), IsShowingQ
     protected val mapDataSource: MapDataWithEditsSource by inject()
     private val featureDictionary: Lazy<FeatureDictionary> by inject(named("FeatureDictionaryLazy"))
     private val recentLocationStore: RecentLocationStore by inject()
+    private val questsHiddenController: QuestsHiddenController by inject()
 
     protected var element: Element? = null
     private val dummyElement by lazy { Node(0, LatLon(0.0, 0.0)) }
@@ -66,7 +68,7 @@ abstract class AbstractExternalSourceQuestForm : AbstractQuestForm(), IsShowingQ
             }
         }
         // set element if available
-        otherQuestController.getVisible(questKey as ExternalSourceQuestKey)?.elementKey?.let { key ->
+        otherQuestController.get(questKey as ExternalSourceQuestKey)?.elementKey?.let { key ->
             element = mapDataSource.get(key.type, key.id)
         }
         setObjNote(element?.tags?.get("note"), element?.tags?.get("fixme") ?: element?.tags?.get("FIXME"))
@@ -180,14 +182,14 @@ abstract class AbstractExternalSourceQuestForm : AbstractQuestForm(), IsShowingQ
 
     protected fun tempHideQuest() {
         viewLifecycleScope.launch {
-            withContext(Dispatchers.IO) { otherQuestController.tempHide(questKey as ExternalSourceQuestKey) }
+            withContext(Dispatchers.IO) { questsHiddenController.tempHide(questKey) }
             listener?.onQuestHidden(questKey)
         }
     }
 
     protected fun hideQuest() {
         viewLifecycleScope.launch {
-            withContext(Dispatchers.IO) { otherQuestController.hide(questKey as ExternalSourceQuestKey) }
+            withContext(Dispatchers.IO) { questsHiddenController.hide(questKey as ExternalSourceQuestKey) }
             listener?.onQuestHidden(questKey)
         }
     }

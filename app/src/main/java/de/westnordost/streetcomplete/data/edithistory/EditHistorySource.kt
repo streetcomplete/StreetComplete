@@ -10,7 +10,7 @@ interface EditHistorySource {
 
     fun get(key: EditKey): Edit?
 
-    fun getAll(allHidden: Boolean = false): List<Edit>
+    fun getAll(): List<Edit>
     fun getCount(): Int
 
     fun addListener(listener: Listener)

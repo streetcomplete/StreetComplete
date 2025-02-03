@@ -154,9 +154,9 @@ class VisibleQuestsSourceTest {
     }
 
     @Test fun `getAll does not return those that are invisible because of an overlay`() {
-        val qta = questTypes.first() // we need the same instance as in the registry, todo:really still?
+        val qta = questTypes.first() // we need the same instance as in the registry
         val bboxCacheWillRequest = bbox.asBoundingBoxOfEnclosingTiles(16)
-        on(osmQuestSource.getAllInBBox(bboxCacheWillRequest, listOf(qta)))
+        on(osmQuestSource.getAllInBBox(bboxCacheWillRequest, listOf(qta, OsmNoteQuestType)))
             .thenReturn(listOf(OsmQuest(TestQuestTypeA(), ElementType.NODE, 1, ElementPointGeometry(bbox.min))))
         on(osmNoteQuestSource.getAllInBBox(bboxCacheWillRequest)).thenReturn(listOf())
         on(questsHiddenSource.get(any())).thenReturn(null)

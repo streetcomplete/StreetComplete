@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.data.externalsource
 
 import de.westnordost.streetcomplete.data.edithistory.Edit
-import de.westnordost.streetcomplete.data.edithistory.ExternalSourceQuestHiddenKey
+import de.westnordost.streetcomplete.data.edithistory.QuestHiddenKey
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
@@ -30,8 +30,7 @@ data class ExternalSourceQuestHidden(
     override val createdTimestamp: Long
 ) : Edit {
     val questKey get() = ExternalSourceQuestKey(id, questType.source)
-    override val key: ExternalSourceQuestHiddenKey get() = ExternalSourceQuestHiddenKey(questKey)
+    override val key: QuestHiddenKey get() = QuestHiddenKey(questKey)
     override val isUndoable: Boolean get() = true
     override val isSynced: Boolean? get() = null
 }
-

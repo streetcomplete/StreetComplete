@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.data.visiblequests
 
+import de.westnordost.streetcomplete.data.externalsource.ExternalSourceHiddenDao
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestHiddenAt
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestsHiddenDao
 import de.westnordost.streetcomplete.data.osmnotes.notequests.NoteQuestHiddenAt
@@ -21,6 +22,7 @@ class QuestsHiddenControllerTest {
 
     private lateinit var osmDb: OsmQuestsHiddenDao
     private lateinit var notesDb: NoteQuestsHiddenDao
+    private lateinit var externalDb: ExternalSourceHiddenDao
 
     private lateinit var ctrl: QuestsHiddenController
 
@@ -29,8 +31,9 @@ class QuestsHiddenControllerTest {
     @BeforeTest fun setUp() {
         osmDb = mock()
         notesDb = mock()
+        externalDb = mock()
         listener = mock()
-        ctrl = QuestsHiddenController(osmDb, notesDb)
+        ctrl = QuestsHiddenController(osmDb, notesDb, externalDb)
         ctrl.addListener(listener)
     }
 

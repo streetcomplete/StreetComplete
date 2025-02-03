@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.data.edithistory
 
 import de.westnordost.streetcomplete.ApplicationConstants.MAX_UNDO_HISTORY_AGE
+import de.westnordost.streetcomplete.data.externalsource.ExternalSourceQuestController
 import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsController
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsSource
@@ -22,6 +23,7 @@ import de.westnordost.streetcomplete.data.visiblequests.QuestsHiddenSource
 import de.westnordost.streetcomplete.util.Listeners
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.data.externalsource.ExternalSourceQuestHidden
+import de.westnordost.streetcomplete.data.quest.ExternalSourceQuestKey
 import de.westnordost.streetcomplete.util.logs.Log
 
 /** All edits done by the user in one place: Edits made on notes, on map data, hidings of quests */
@@ -32,6 +34,7 @@ class EditHistoryController(
     private val notesSource: NotesWithEditsSource,
     private val mapDataSource: MapDataWithEditsSource,
     private val questTypeRegistry: QuestTypeRegistry,
+    private val externalSourceQuestController: ExternalSourceQuestController,
 ) : EditHistorySource {
     private val listeners = Listeners<EditHistorySource.Listener>()
 
@@ -78,6 +81,11 @@ class EditHistoryController(
                 val geometry = mapDataSource.getGeometry(key.elementType, key.elementId) ?: return null
                 val questType = questTypeRegistry.getByName(key.questTypeName) as? OsmElementQuestType<*> ?: return null
                 OsmQuestHidden(key.elementType, key.elementId, questType, geometry, timestamp)
+            }
+            is ExternalSourceQuestKey -> {
+                val type = externalSourceQuestController.getQuestType(key) ?: return null
+                val quest = externalSourceQuestController.get(key) ?: return null
+                ExternalSourceQuestHidden(key.id, type, quest.position, timestamp)
             }
         }
     }
