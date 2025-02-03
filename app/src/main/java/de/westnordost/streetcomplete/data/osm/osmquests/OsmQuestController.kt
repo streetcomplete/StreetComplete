@@ -37,6 +37,7 @@ import de.westnordost.streetcomplete.quests.piste_difficulty.AddPisteDifficulty
 import de.westnordost.streetcomplete.quests.piste_lit.AddPisteLit
 import de.westnordost.streetcomplete.quests.piste_ref.AddPisteRef
 import de.westnordost.streetcomplete.quests.place_name.AddPlaceName
+import de.westnordost.streetcomplete.quests.shop_type.CheckShopExistence
 import de.westnordost.streetcomplete.util.Listeners
 import de.westnordost.streetcomplete.util.ktx.format
 import de.westnordost.streetcomplete.util.ktx.intersects
@@ -128,6 +129,7 @@ class OsmQuestController internal constructor(
             }
 
             val obsoleteQuestKeys: List<OsmQuestKey>
+            val visibleQuests: Collection<OsmQuest>
             synchronized(this) {
                 val previousQuests = db.getAllForElements(updated.map { it.key })
                 // quests that refer to elements that have been deleted shall be deleted
@@ -137,17 +139,15 @@ class OsmQuestController internal constructor(
                 Log.i(TAG, "Created ${quests.size} quests for ${updated.size} updated elements in ${millis}ms")
 
                 obsoleteQuestKeys = getObsoleteQuestKeys(quests, previousQuests, deleteQuestKeys)
-                val questKeysToDelete = lastAnsweredQuestKey?.let {
-                    lastAnsweredQuestKey = null
-                    obsoleteQuestKeys + it
-                } ?: obsoleteQuestKeys
-                // run onUpdated on a different thread, no need to do it synchronized
-                scope.launch { onUpdated(added = quests, deletedKeys = questKeysToDelete) }
-                // write quests to db only after onUpdated
-                // this might reduce the time the app app is blocked during download / map data persist
-                // on answering the second quest during a download or persist phase, it's still blocked (but shorter of course)
                 updateQuests(quests, obsoleteQuestKeys)
+                visibleQuests = quests.filterVisible()
             }
+
+            val questKeysToDelete = lastAnsweredQuestKey?.let {
+                lastAnsweredQuestKey = null
+                obsoleteQuestKeys + it
+            } ?: obsoleteQuestKeys
+            onUpdated(added = visibleQuests, deletedKeys = questKeysToDelete)
         }
 
         /** Replace all quests of the given types in the given bounding box with the given quests.
@@ -155,13 +155,15 @@ class OsmQuestController internal constructor(
         override fun onReplacedForBBox(bbox: BoundingBox, mapDataWithGeometry: MapDataWithGeometry) {
             val quests = createQuestsForBBox(bbox, mapDataWithGeometry, allQuestTypes)
             val obsoleteQuestKeys: List<OsmQuestKey>
+            val visibleQuests: Collection<OsmQuest>
             synchronized(this) {
                 val previousQuests = db.getAllInBBox(bbox)
                 obsoleteQuestKeys = getObsoleteQuestKeys(quests, previousQuests, emptyList())
                 updateQuests(quests, obsoleteQuestKeys)
+                visibleQuests = quests.filterVisible()
             }
 
-            onUpdated(added = quests, deletedKeys = obsoleteQuestKeys)
+            onUpdated(added = visibleQuests, deletedKeys = obsoleteQuestKeys)
         }
 
         override fun onCleared() {
@@ -453,19 +455,20 @@ class OsmQuestController internal constructor(
     ) {
         if (added.isEmpty() && deletedKeys.isEmpty()) return
 
-        val visibleAdded = if (added.isNotEmpty()) {
-            val bbox = added.map { it.position }.enclosingBoundingBox()
+        listeners.forEach { it.onUpdated(added, deletedKeys) }
+    }
+
+    private fun Collection<OsmQuest>.filterVisible(): Collection<OsmQuest> =
+        if (isNotEmpty()) {
+            val hiddenIds = getHiddenQuests()
+            val bbox = map { it.position }.enclosingBoundingBox()
             val hiddenPositions = getBlacklistedPositions(bbox)
-            if (hiddenPositions.isEmpty())
-                synchronized(hiddenCache) { added.filter { it.key !in hiddenCache } }
-            else
-                synchronized(hiddenCache) { added.filter { it.key !in hiddenCache && it.position.truncateTo6Decimals() !in hiddenPositions } }
+            filter { it.key !in hiddenIds && it.position.truncateTo6Decimals() !in hiddenPositions }
         } else {
-            added
+            this
         }
 
-        listeners.forEach { it.onUpdated(visibleAdded, deletedKeys) }
-    }
+
     private fun onInvalidated() {
         listeners.forEach { it.onInvalidated() }
     }
@@ -509,7 +512,9 @@ class OsmQuestController internal constructor(
 private val OsmElementQuestType<*>.chonkerIndex: Int get() = when (this) {
     is AddOpeningHours -> 0 // OpeningHoursParser, extensive filter
     is CheckExistence -> 1 // FeatureDictionary, extensive filter
+    is CheckShopExistence -> 1 // FeatureDictionary, extensive filter
     is AddHousenumber -> 1 // complex filter
+    is AddMaxHeight -> 1 // complex filter
     is AddCycleway -> 2 // complex filter
     is AddPlaceName -> 2 // FeatureDictionary, extensive filter
     else -> 10

@@ -21,15 +21,21 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
+      - name: Set env
+        run: echo "COMMIT_SHA=$(git log -n 1 --format='%h')" >> $GITHUB_ENV
+
+      - name: Encode git revision
+        run: sed -i -e "s/versionName = \"\([^ ]*\).*\"/versionName = \"\1 (git $COMMIT_SHA)\"/"  app/build.gradle.kts
+
       - name: Build with Gradle
         run: ./gradlew assembleDebug
 
       - name: Rename APK
-        run: mv app/build/outputs/apk/debug/app-debug.apk app/build/outputs/apk/debug/SCEE-debug-$(git log -n 1 --format='%h').apk
+        run: mv app/build/outputs/apk/debug/app-debug.apk app/build/outputs/apk/debug/SCEE-debug-$COMMIT_SHA.apk
 
       - name: Archive APK
         uses: actions/upload-artifact@v4
         with:
-          name: debug-apk
+          name: StreetComplete-debug-apk-${{ env.COMMIT_SHA }}
           path: app/build/outputs/apk/debug/*.apk
           retention-days: 30

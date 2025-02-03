@@ -20,7 +20,21 @@ import de.westnordost.streetcomplete.util.logs.Log
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import de.westnordost.streetcomplete.util.SpatialCache
 
-/** Access and listen to quests visible on the map */
+/**
+ *  Access and listen to quests visible on the map.
+ *
+ *  This class unifies quests from all sources, i.e. currently OpenStreetMap quests
+ *  (see [OsmQuestSource]) and OpenStreetMap note quests (see [OsmNoteQuestSource]).
+ *
+ *  Quests can be not visible for a user for the following reasons:
+ *  - when the type of the quest is disabled in the user settings, see [VisibleQuestTypeSource]
+ *  - when the team mode is activated, only every Xth quest is visible, see [TeamModeQuestFilter]
+ *  - when the selected overlay disables the quest type because the overlay lets the user edit
+ *   the same info as the quest, see [SelectedOverlaySource] / [Overlay][de.westnordost.streetcomplete.overlays.Overlay]
+ *
+ *  Note that quests can also be not visible because they are hidden by the user, this is managed
+ *  by the individual sources of quests, though.
+ *  */
 class VisibleQuestsSource(
     private val questTypeRegistry: QuestTypeRegistry,
     private val osmQuestSource: OsmQuestSource,
@@ -44,8 +58,7 @@ class VisibleQuestsSource(
 
     private val osmQuestSourceListener = object : OsmQuestSource.Listener {
         override fun onUpdated(addedQuests: Collection<OsmQuest>, deletedQuestKeys: Collection<OsmQuestKey>) {
-            val hideOverlayQuests = prefs.getBoolean(Prefs.HIDE_OVERLAY_QUESTS, true)
-            updateVisibleQuests(addedQuests.filter { isVisible(it, hideOverlayQuests) }, deletedQuestKeys)
+            updateVisibleQuests(addedQuests, deletedQuestKeys)
         }
         override fun onInvalidated() {
             // apparently the visibility of many different quests have changed
@@ -55,8 +68,7 @@ class VisibleQuestsSource(
 
     private val osmNoteQuestSourceListener = object : OsmNoteQuestSource.Listener {
         override fun onUpdated(addedQuests: Collection<OsmNoteQuest>, deletedQuestIds: Collection<Long>) {
-            val hideOverlayQuests = prefs.getBoolean(Prefs.HIDE_OVERLAY_QUESTS, true)
-            updateVisibleQuests(addedQuests.filter { isVisible(it, hideOverlayQuests) }, deletedQuestIds.map { OsmNoteQuestKey(it) })
+            updateVisibleQuests(addedQuests, deletedQuestIds.map { OsmNoteQuestKey(it) })
         }
         override fun onInvalidated() {
             // apparently the visibility of many different notes have changed
@@ -183,16 +195,25 @@ class VisibleQuestsSource(
     fun trimCache() = cache.trim(SPATIAL_CACHE_TILES / 3)
 
     private fun updateVisibleQuests(addedQuests: Collection<Quest>, deletedQuestKeys: Collection<QuestKey>) {
-        if (addedQuests.isEmpty() && deletedQuestKeys.isEmpty()) return
-        if (addedQuests.size > 10 || deletedQuestKeys.size > 10) Log.i(TAG, "added ${addedQuests.size}, deleted ${deletedQuestKeys.size}")
-            else Log.i(TAG, "added ${addedQuests.map { it.key }}, deleted: $deletedQuestKeys")
-        cache.update(addedQuests, deletedQuestKeys)
-        listeners.forEach { it.onUpdatedVisibleQuests(addedQuests, deletedQuestKeys) }
+        synchronized(this) {
+            val hideOverlayQuests = prefs.getBoolean(Prefs.HIDE_OVERLAY_QUESTS, true)
+            val addedVisibleQuests = addedQuests.filter { isVisible(it, hideOverlayQuests) }
+            if (addedVisibleQuests.isEmpty() && deletedQuestKeys.isEmpty()) return
+
+            if (addedVisibleQuests.size > 10 || deletedQuestKeys.size > 10) Log.i(TAG, "added ${addedVisibleQuests.size}, deleted ${deletedQuestKeys.size}")
+            else Log.i(TAG, "added ${addedVisibleQuests.map { it.key }}, deleted: $deletedQuestKeys")
+
+            cache.update(addedVisibleQuests, deletedQuestKeys)
+
+            listeners.forEach { it.onUpdatedVisibleQuests(addedVisibleQuests, deletedQuestKeys) }
+        }
     }
 
     private fun invalidate() {
-        clearCache()
-        listeners.forEach { it.onVisibleQuestsInvalidated() }
+        synchronized(this) {
+            clearCache()
+            listeners.forEach { it.onVisibleQuestsInvalidated() }
+        }
     }
 }
 

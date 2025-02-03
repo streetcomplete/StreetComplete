@@ -114,7 +114,7 @@ repositories {
 }
 
 dependencies {
-    val mockitoVersion = "5.14.2"
+    val mockitoVersion = "5.15.2"
 
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.4")
 
@@ -195,7 +195,7 @@ dependencies {
     // finding in which country we are for country-specific logic
     implementation("de.westnordost:countryboundaries:2.1")
     // finding a name for a feature without a name tag
-    implementation("de.westnordost:osmfeatures:6.2")
+    implementation("de.westnordost:osmfeatures:6.3")
 
     // widgets
     implementation("androidx.viewpager2:viewpager2:1.1.0")
@@ -208,12 +208,12 @@ dependencies {
     implementation("com.ionspin.kotlin:bignum:0.3.10")
 
     // serialization
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.3")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.8.0")
     implementation("com.charleskorn.kaml:kaml:0.67.0")
     implementation("io.github.pdvrieze.xmlutil:core:0.90.3")
 
     // map and location
-    implementation("org.maplibre.gl:android-sdk:11.7.1")
+    implementation("org.maplibre.gl:android-sdk:11.8.0")
 
     // opening hours parser
     implementation("de.westnordost:osm-opening-hours:0.1.0")

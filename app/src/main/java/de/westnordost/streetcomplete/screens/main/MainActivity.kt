@@ -230,6 +230,7 @@ class MainActivity :
 
     private lateinit var binding: ActivityMainBinding
 
+    // for freezing the map while sidebar is open
     private var wasFollowingPosition: Boolean? = null
     private var wasNavigationMode: Boolean? = null
 
@@ -287,6 +288,10 @@ class MainActivity :
         enableEdgeToEdge()
         super.onCreate(savedInstanceState)
         Log.i(TAG, "onCreate")
+
+        if (savedInstanceState == null) {
+            handleIntent(intent)
+        }
 
         LocalBroadcastManager.getInstance(this).registerReceiver(
             requestLocationPermissionResultReceiver,
@@ -347,6 +352,8 @@ class MainActivity :
         observe(viewModel.geoUri) { geoUri ->
             if (geoUri != null) {
                 mapFragment?.setInitialCameraPosition(geoUri)
+                viewModel.isFollowingPosition.value = mapFragment?.isFollowingPosition ?: false
+                viewModel.isNavigationMode.value = mapFragment?.isNavigationMode ?: false
             }
         }
         observe(viewModel.reverseQuestOrder) {
@@ -388,6 +395,10 @@ class MainActivity :
 
     override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
+        handleIntent(intent)
+    }
+
+    private fun handleIntent(intent: Intent) {
         if (intent.action != Intent.ACTION_VIEW) return
         val data = intent.data?.toString() ?: return
         viewModel.setUri(data)
@@ -405,9 +416,6 @@ class MainActivity :
         visibleQuestsSource.removeListener(this)
         mapDataWithEditsSource.removeListener(this)
         locationAvailabilityReceiver.removeListener(::updateLocationAvailability)
-
-        wasFollowingPosition = mapFragment?.isFollowingPosition
-        wasNavigationMode = mapFragment?.isNavigationMode
 
         locationManager.removeUpdates()
         StreetCompleteApplication.preferences.unregisterOnSharedPreferenceChangeListener(this)
@@ -832,7 +840,7 @@ class MainActivity :
         mapFragment?.startPositionTracking()
         questAutoSyncer.startPositionTracking()
 
-        setIsFollowingPosition(wasFollowingPosition ?: true)
+        mapFragment?.centerCurrentPositionIfFollowing()
         locationManager.getCurrentLocation()
     }
 
