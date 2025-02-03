@@ -7,9 +7,7 @@ import de.westnordost.streetcomplete.data.edithistory.EditHistorySource
 import de.westnordost.streetcomplete.data.edithistory.EditKey
 import de.westnordost.streetcomplete.data.edithistory.ElementEditKey
 import de.westnordost.streetcomplete.data.edithistory.NoteEditKey
-import de.westnordost.streetcomplete.data.edithistory.OsmNoteQuestHiddenKey
-import de.westnordost.streetcomplete.data.edithistory.OsmQuestHiddenKey
-import de.westnordost.streetcomplete.data.edithistory.ExternalSourceQuestHiddenKey
+import de.westnordost.streetcomplete.data.edithistory.QuestHiddenKey
 import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestHidden
@@ -38,14 +36,13 @@ class EditHistoryPinsManager(
     private val viewLifecycleScope: CoroutineScope = CoroutineScope(SupervisorJob())
 
     /** Switch visibility of edit history pins layer */
-    var isVisible: Int = 0
+    var isVisible: Boolean = false
         set(value) {
             if (field == value) return
             field = value
-            if (value != 0) show(value == 2) else hide()
+            if (value) show() else hide()
         }
 
-    private var showAllHiddenQuests = false
     private var isStarted: Boolean = false
 
 
@@ -59,7 +56,7 @@ class EditHistoryPinsManager(
     override fun onStart(owner: LifecycleOwner) {
         super.onStart(owner)
         isStarted = true
-        show(showAllHiddenQuests)
+        show()
     }
 
     override fun onStop(owner: LifecycleOwner) {
@@ -72,9 +69,8 @@ class EditHistoryPinsManager(
         viewLifecycleScope.cancel()
     }
 
-    private fun show(allHidden: Boolean) {
-        if (!isStarted || isVisible == 0) return
-        showAllHiddenQuests = allHidden
+    private fun show() {
+        if (!isStarted || !isVisible) return
         updatePins()
         editHistorySource.addListener(editHistoryListener)
     }
@@ -89,9 +85,9 @@ class EditHistoryPinsManager(
         properties.toEditKey()
 
     private fun updatePins() {
-        if (isVisible == 0) return
+        if (!isVisible) return
         viewLifecycleScope.launch {
-            val edits = withContext(Dispatchers.IO) { editHistorySource.getAll(isVisible == 2) }
+            val edits = withContext(Dispatchers.IO) { editHistorySource.getAll() }
             val pins = createEditPins(edits)
             pinsMapComponent.set(pins)
         }
@@ -158,13 +154,13 @@ private fun Map<String, String>.toEditKey(): EditKey? = when (get(MARKER_EDIT_TY
     EDIT_TYPE_NOTE ->
         NoteEditKey(getValue(MARKER_ID).toLong())
     EDIT_TYPE_HIDE_OSM_QUEST ->
-        OsmQuestHiddenKey(OsmQuestKey(
+        QuestHiddenKey(OsmQuestKey(
             ElementType.valueOf(getValue(MARKER_ELEMENT_TYPE)),
             getValue(MARKER_ELEMENT_ID).toLong(),
             getValue(MARKER_QUEST_TYPE)
         ))
     EDIT_TYPE_HIDE_OSM_NOTE_QUEST ->
-        OsmNoteQuestHiddenKey(OsmNoteQuestKey(getValue(MARKER_NOTE_ID).toLong()))
+        QuestHiddenKey(OsmNoteQuestKey(getValue(MARKER_NOTE_ID).toLong()))
     EDIT_TYPE_HIDE_OTHER_SOURCE_QUEST ->
         ExternalSourceQuestHiddenKey(ExternalSourceQuestKey(getValue(MARKER_OTHER_SOURCE), getValue(MARKER_OTHER_SOURCE_ID)))
     else -> null

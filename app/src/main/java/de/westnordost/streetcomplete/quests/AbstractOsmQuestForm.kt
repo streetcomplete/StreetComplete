@@ -33,14 +33,14 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
-import de.westnordost.streetcomplete.data.osm.osmquests.HideOsmQuestController
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestController
-import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestsHiddenController
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsController
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import de.westnordost.streetcomplete.data.quest.QuestKey
+import de.westnordost.streetcomplete.data.visiblequests.HideQuestController
+import de.westnordost.streetcomplete.data.visiblequests.QuestsHiddenController
 import de.westnordost.streetcomplete.osm.isPlaceOrDisusedPlace
 import de.westnordost.streetcomplete.osm.ALL_PATHS
 import de.westnordost.streetcomplete.osm.replacePlace
@@ -83,7 +83,7 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
     // dependencies
     private val elementEditsController: ElementEditsController by inject()
     private val noteEditsController: NoteEditsController by inject()
-    private val osmQuestsHiddenController: OsmQuestsHiddenController by inject()
+    private val hiddenQuestsController: QuestsHiddenController by inject()
     private val featureDictionaryLazy: Lazy<FeatureDictionary> by inject(named("FeatureDictionaryLazy"))
     private val mapDataWithEditsSource: MapDataWithEditsSource by inject()
     private val recentLocationStore: RecentLocationStore by inject()
@@ -94,7 +94,7 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
 
     // only used for testing / only used for ShowQuestFormsScreen! Found no better way to do this
     var addElementEditsController: AddElementEditsController = elementEditsController
-    var hideOsmQuestController: HideOsmQuestController = osmQuestsHiddenController
+    var hideQuestController: HideQuestController = hiddenQuestsController
 
     // passed in parameters
     private val osmElementQuestType: OsmElementQuestType<T> get() = questType as OsmElementQuestType<T>
@@ -322,15 +322,15 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
 
     protected fun tempHideQuest() {
         viewLifecycleScope.launch {
-            withContext(Dispatchers.IO) { hideOsmQuestController.tempHide(questKey as OsmQuestKey) }
-            listener?.onQuestHidden(questKey as OsmQuestKey)
+            withContext(Dispatchers.IO) { hideQuestController.tempHide(questKey) }
+            listener?.onQuestHidden(questKey)
         }
     }
 
     protected fun hideQuest() {
         viewLifecycleScope.launch {
-            withContext(Dispatchers.IO) { hideOsmQuestController.hide(questKey as OsmQuestKey) }
-            listener?.onQuestHidden(questKey as OsmQuestKey)
+            withContext(Dispatchers.IO) { hideQuestController.hide(questKey) }
+            listener?.onQuestHidden(questKey)
         }
     }
 

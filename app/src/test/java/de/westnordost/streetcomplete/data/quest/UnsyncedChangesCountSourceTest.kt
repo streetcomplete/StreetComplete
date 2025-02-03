@@ -3,9 +3,7 @@ package de.westnordost.streetcomplete.data.quest
 import de.westnordost.streetcomplete.data.UnsyncedChangesCountSource
 import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsSource
-import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestSource
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsSource
-import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestSource
 import de.westnordost.streetcomplete.testutils.any
 import de.westnordost.streetcomplete.testutils.mock
 import de.westnordost.streetcomplete.testutils.noteEdit
@@ -19,13 +17,9 @@ import kotlin.test.Test
 import kotlin.test.assertEquals
 
 class UnsyncedChangesCountSourceTest {
-    private lateinit var osmQuestSource: OsmQuestSource
-    private lateinit var osmNoteQuestSource: OsmNoteQuestSource
     private lateinit var noteEditsSource: NoteEditsSource
     private lateinit var elementEditsSource: ElementEditsSource
 
-    private lateinit var noteQuestListener: OsmNoteQuestSource.Listener
-    private lateinit var questListener: OsmQuestSource.Listener
     private lateinit var noteEditsListener: NoteEditsSource.Listener
     private lateinit var elementEditsListener: ElementEditsSource.Listener
 
@@ -36,18 +30,6 @@ class UnsyncedChangesCountSourceTest {
     private val baseCount = 3 + 4
 
     @BeforeTest fun setUp() {
-        osmQuestSource = mock()
-        on(osmQuestSource.addListener(any())).then { invocation: InvocationOnMock ->
-            questListener = invocation.arguments[0] as OsmQuestSource.Listener
-            Unit
-        }
-
-        osmNoteQuestSource = mock()
-        on(osmNoteQuestSource.addListener(any())).then { invocation: InvocationOnMock ->
-            noteQuestListener = invocation.arguments[0] as OsmNoteQuestSource.Listener
-            Unit
-        }
-
         noteEditsSource = mock()
         on(noteEditsSource.addListener(any())).then { invocation: InvocationOnMock ->
             noteEditsListener = invocation.arguments[0] as NoteEditsSource.Listener

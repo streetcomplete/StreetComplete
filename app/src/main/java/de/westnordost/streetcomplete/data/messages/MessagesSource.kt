@@ -55,7 +55,7 @@ class MessagesSource(
             }
         })
         visibleQuestsSource.addListener(object : VisibleQuestsSource.Listener {
-            override fun onUpdatedVisibleQuests(added: Collection<Quest>, removed: Collection<QuestKey>) {
+            override fun onUpdated(added: Collection<Quest>, removed: Collection<QuestKey>) {
                 if (prefs.questSelectionHintState == QuestSelectionHintState.NOT_SHOWN) {
                     if (added.size >= QUEST_COUNT_AT_WHICH_TO_SHOW_QUEST_SELECTION_HINT) {
                         prefs.questSelectionHintState = QuestSelectionHintState.SHOULD_SHOW
@@ -63,7 +63,7 @@ class MessagesSource(
                 }
             }
 
-            override fun onVisibleQuestsInvalidated() {}
+            override fun onInvalidated() {}
         })
 
         // must hold a reference because the listener is a weak reference

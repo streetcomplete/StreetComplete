@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.data.osmnotes.notequests
 
 import de.westnordost.streetcomplete.data.ApplicationDbTestCase
-import de.westnordost.streetcomplete.util.ktx.containsExactlyInAnyOrder
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
@@ -9,6 +8,8 @@ import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
+import kotlin.test.assertNotNull
+import kotlin.test.assertNull
 import kotlin.test.assertTrue
 
 class NoteQuestsHiddenDaoTest : ApplicationDbTestCase() {
@@ -18,26 +19,21 @@ class NoteQuestsHiddenDaoTest : ApplicationDbTestCase() {
         dao = NoteQuestsHiddenDao(database)
     }
 
-    @Test fun getButNothingIsThere() {
-        assertFalse(dao.contains(123L))
-    }
-
-    @Test fun addAndGet() {
-        dao.add(123L)
-        assertTrue(dao.contains(123L))
-    }
-
     @Test fun addGetDelete() {
         assertFalse(dao.delete(123L))
         dao.add(123L)
+        assertNotNull(dao.getTimestamp(123L))
         assertTrue(dao.delete(123L))
-        assertFalse(dao.contains(123L))
+        assertNull(dao.getTimestamp(123L))
     }
 
-    @Test fun getAllIds() {
+    @Test fun getAll() {
         dao.add(1L)
         dao.add(2L)
-        assertTrue(dao.getAllIds().containsExactlyInAnyOrder(listOf(1L, 2L)))
+        assertEquals(
+            setOf(1L, 2L),
+            dao.getAll().map { it.noteId }.toSet()
+        )
     }
 
     @Test fun getNewerThan() = runBlocking {
@@ -54,8 +50,8 @@ class NoteQuestsHiddenDaoTest : ApplicationDbTestCase() {
         dao.add(1L)
         dao.add(2L)
         assertEquals(2, dao.deleteAll())
-        assertFalse(dao.contains(1L))
-        assertFalse(dao.contains(2L))
+        assertNull(dao.getTimestamp(1L))
+        assertNull(dao.getTimestamp(2L))
     }
 
     @Test fun countAll() {

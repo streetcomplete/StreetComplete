@@ -39,7 +39,6 @@ import de.westnordost.streetcomplete.view.controller.FeatureViewController
 import de.westnordost.streetcomplete.view.dialogs.SearchFeaturesDialog
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.suspendCancellableCoroutine
-import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import org.koin.android.ext.android.inject
 import kotlin.coroutines.resume
@@ -122,9 +121,14 @@ class PlacesOverlayForm : AbstractOverlayForm() {
 
         originalNames = parseLocalizedNames(element?.tags.orEmpty()).orEmpty()
 
-        val persistedNames = savedInstanceState?.getString(LOCALIZED_NAMES_DATA)?.let { Json.decodeFromString<List<LocalizedName>>(it) }
+        val persistedNames = savedInstanceState?.getString(LOCALIZED_NAMES_DATA)?.let {
+            Json.decodeFromString<List<LocalizedName>>(it)
+        }
 
-        val selectableLanguages = (countryInfo.officialLanguages + countryInfo.additionalStreetsignLanguages).distinct().toMutableList()
+        val selectableLanguages = (
+            countryInfo.officialLanguages + countryInfo.additionalStreetsignLanguages
+        ).distinct().toMutableList()
+
         val preferredLanguage = prefs.preferredLanguageForNames
         if (preferredLanguage != null) {
             if (selectableLanguages.remove(preferredLanguage)) {
@@ -164,12 +168,8 @@ class PlacesOverlayForm : AbstractOverlayForm() {
 
     private fun onSelectedFeature(feature: Feature) {
         featureCtrl.feature = feature
-        // clear (previous) names if selected feature contains already a name (i.e. is a brand feature)
-        // or is vacant
-        if (feature.addTags["name"] != null || feature.id == "shop/vacant") {
-            namesAdapter?.names = emptyList()
-        }
-
+        // clear previous names (if necessary, and if any)
+        if (feature.hasFixedName) namesAdapter?.names = emptyList()
         updateNameContainerVisibility()
         checkIsFormComplete()
     }
@@ -178,12 +178,14 @@ class PlacesOverlayForm : AbstractOverlayForm() {
         onSelectedFeature(featureDictionary.getById("shop/vacant")!!)
     }
 
-    private fun createNoNameAnswer(): AnswerItem? =
-        if (featureCtrl.feature == null || isNoName) {
+    private fun createNoNameAnswer(): AnswerItem? {
+        val feature = featureCtrl.feature
+        return if (feature == null || isNoName || feature.hasFixedName) {
             null
         } else {
             AnswerItem(R.string.quest_placeName_no_name_answer) { setNoName() }
         }
+    }
 
     private fun setNoName() {
         isNoName = true
@@ -192,13 +194,8 @@ class PlacesOverlayForm : AbstractOverlayForm() {
     }
 
     private fun updateNameContainerVisibility() {
-        val selectedFeature = featureCtrl.feature
-        /* the name input is only visible if the place is not vacant, if a feature has been selected
-           and if that feature doesn't already set a name (i.e. is a brand)
-         */
-        val isNameInputInvisible = selectedFeature == null ||
-            selectedFeature.addTags["name"] != null ||
-            selectedFeature.id == "shop/vacant"
+        val feature = featureCtrl.feature
+        val isNameInputInvisible = feature == null || feature.hasFixedName
 
         binding.nameContainer.root.isGone = isNameInputInvisible
         binding.nameLabel.isGone = isNameInputInvisible
@@ -210,7 +207,8 @@ class PlacesOverlayForm : AbstractOverlayForm() {
     }
 
     override fun hasChanges(): Boolean =
-        originalFeature != featureCtrl.feature || originalNames != namesAdapter?.names
+        originalFeature != featureCtrl.feature
+        || originalNames != namesAdapter?.names
         || originalNoName != isNoName
 
     override fun isFormComplete(): Boolean =
@@ -251,10 +249,16 @@ class PlacesOverlayForm : AbstractOverlayForm() {
 /** return the id of the feature, without any brand stuff */
 private val Feature.featureId get() = if (isSuggestion) id.substringBeforeLast("/") else id
 
+/** return whether the feature has a fixed name which cannot be changed */
+private val Feature.hasFixedName get() =
+    addTags.containsKey("name") && preserveTags.none { it.containsMatchIn("name") }
+    || id == "shop/vacant"
+    || id == "shop/unknown"
+
 private suspend fun createEditAction(
     element: Element?,
     geometry: ElementGeometry,
-    newNames: List<LocalizedName>,
+    inputNames: List<LocalizedName>,
     previousNames: List<LocalizedName>,
     newFeature: Feature,
     previousFeature: Feature?,
@@ -263,33 +267,32 @@ private suspend fun createEditAction(
 ): ElementEditAction {
     val tagChanges = StringMapChangesBuilder(element?.tags ?: emptyMap())
 
-    val hasAddedNames = previousNames.isEmpty() && newNames.isNotEmpty()
-    var hasChangedNames = previousNames != newNames
+    // new names could either be input by the user, or added by applying a (brand) preset
+    val newNames = inputNames.takeIf { it.isNotEmpty() }
+        ?: parseLocalizedNames(newFeature.addTags).orEmpty()
+
+    val hasAddedNames = newNames.isNotEmpty() && newNames.containsAll(previousNames)
+    val hasChangedNames = previousNames != newNames
     val hasChangedFeature = newFeature != previousFeature
     val hasChangedFeatureType = previousFeature?.featureId != newFeature.featureId
-    val isFeatureWithName = newFeature.addTags.get("name") != null
-    val wasFeatureWithName = previousFeature?.addTags?.get("name") != null
     val wasVacant = element != null && element.isDisusedPlace()
     val isVacant = newFeature.id == "shop/vacant"
-
-    if (newFeature.isSuggestion) {
-        // selecting NSI preset will always return empty newNames, even if NSI does set new name=* tag
-        hasChangedNames = parseLocalizedNames(newFeature.addTags) != previousNames
-    }
+    val wasBrand =  previousFeature?.isSuggestion == true
+    val isBrand =  newFeature.isSuggestion
 
     val shouldNotReplaceShop =
-        // if NSI added e.g. wikidata details, but neither names nor types changed (see #5940)
+        // a brand preset was applied, but neither names nor feature type changed (see #5940)
         !hasChangedNames && !hasChangedFeatureType
-        // only a name was added (name was missing before; user wouldn't be able to answer
-        // if the place changed or not anyway, so rather keep previous information)
+        // name(s) were added but feature wasn't changed at all; user wouldn't be able to answer if
+        // the place changed or not anyway, so rather keep previous information
         || hasAddedNames && !hasChangedFeature
-        // previously: only the feature was changed, the non-empty name did not change
-        // - see #5195
         // place has been added, nothing to replace
         || element == null
     val shouldAlwaysReplaceShop =
-        // the feature is or was a brand feature (i.e. overwrites the name) and the type has changed
-        (isFeatureWithName || wasFeatureWithName) && hasChangedFeatureType
+        // the feature is or was a brand feature and the type has changed -> definitely different
+        // place now; If the name and/or feature changed, the user might just have corrected the
+        // spelling or corrected the type (e.g. kindergarten -> childcare), so it is better to ask
+        (isBrand || wasBrand) && hasChangedFeatureType
         // was vacant before but not anymore (-> cleans up any previous tags that may be
         // associated with the old place)
         || wasVacant && hasChangedFeature
@@ -302,9 +305,6 @@ private suspend fun createEditAction(
         } else if (shouldAlwaysReplaceShop) {
             true
         } else {
-            // ask whether it is still the same shop if:
-            // + the name was changed
-            // + the feature was changed and the name was empty before
             confirmReplaceShop()
         }
 
@@ -319,16 +319,18 @@ private suspend fun createEditAction(
             tagChanges.remove(key)
         }
         for ((key, value) in newFeature.addTags) {
-            tagChanges[key] = value
+            if (key !in tagChanges || newFeature.preserveTags.none { it.containsMatchIn(key) }) {
+                tagChanges[key] = value
+            }
         }
     }
 
-    if (!isFeatureWithName) {
+    if (!newFeature.hasFixedName) {
         // in this case name input was not even shown so newNames will be empty
         // newNames should not be applied as it will erase names provided by NSI
-        newNames.applyTo(tagChanges)
+        inputNames.applyTo(tagChanges)
     }
-    if (newNames.isEmpty() && isNoName) {
+    if (inputNames.isEmpty() && isNoName) {
         tagChanges["name:signed"] = "no"
     }
 

@@ -5,29 +5,33 @@ import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsController
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsSource
 import de.westnordost.streetcomplete.data.osm.edits.IsRevertAction
+import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestHidden
-import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestsHiddenController
-import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestsHiddenSource
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEdit
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsController
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsSource
+import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestHidden
-import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestsHiddenController
-import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestsHiddenSource
+import de.westnordost.streetcomplete.data.quest.OsmNoteQuestKey
+import de.westnordost.streetcomplete.data.quest.OsmQuestKey
+import de.westnordost.streetcomplete.data.quest.QuestKey
+import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
+import de.westnordost.streetcomplete.data.visiblequests.QuestsHiddenController
+import de.westnordost.streetcomplete.data.visiblequests.QuestsHiddenSource
 import de.westnordost.streetcomplete.util.Listeners
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
-import de.westnordost.streetcomplete.data.externalsource.ExternalSourceQuestController
 import de.westnordost.streetcomplete.data.externalsource.ExternalSourceQuestHidden
 import de.westnordost.streetcomplete.util.logs.Log
-import java.util.TreeSet
 
 /** All edits done by the user in one place: Edits made on notes, on map data, hidings of quests */
 class EditHistoryController(
     private val elementEditsController: ElementEditsController,
     private val noteEditsController: NoteEditsController,
-    private val osmNoteQuestsHiddenController: OsmNoteQuestsHiddenController,
-    private val osmQuestsHiddenController: OsmQuestsHiddenController,
-    private val externalSourceQuestController: ExternalSourceQuestController,
+    private val hiddenQuestsController: QuestsHiddenController,
+    private val notesSource: NotesWithEditsSource,
+    private val mapDataSource: MapDataWithEditsSource,
+    private val questTypeRegistry: QuestTypeRegistry,
 ) : EditHistorySource {
     private val listeners = Listeners<EditHistorySource.Listener>()
 
@@ -36,7 +40,7 @@ class EditHistoryController(
             if (edit.action !is IsRevertAction) onAdded(edit)
         }
         override fun onSyncedEdit(edit: ElementEdit, updatedEditIds: Collection<Long>) {
-            if (edit.action !is IsRevertAction) onSynced(edit, updatedEditIds)
+            if (edit.action !is IsRevertAction) onSynced(edit)
         }
         override fun onSyncedEdit(edit: ElementEdit) {
             if (edit.action !is IsRevertAction) onSynced(edit)
@@ -52,34 +56,36 @@ class EditHistoryController(
         override fun onDeletedEdits(edits: List<NoteEdit>) { onDeleted(edits) }
     }
 
-    private val osmNoteQuestHiddenListener = object : OsmNoteQuestsHiddenSource.Listener {
-        override fun onHid(edit: OsmNoteQuestHidden) { onAdded(edit) }
-        override fun onUnhid(edit: OsmNoteQuestHidden) { onDeleted(listOf(edit)) }
-        override fun onUnhidAll() { onInvalidated() }
-    }
-    private val osmQuestHiddenListener = object : OsmQuestsHiddenSource.Listener {
-        override fun onHid(edit: OsmQuestHidden) { onAdded(edit) }
-        override fun onUnhid(edit: OsmQuestHidden) { onDeleted(listOf(edit)) }
-        override fun onUnhidAll() { onInvalidated() }
-    }
-    private val externalSourceQuestHiddenListener = object : ExternalSourceQuestController.HideQuestListener {
-        override fun onHid(edit: ExternalSourceQuestHidden) { onAdded(edit) }
-        override fun onUnhid(edit: ExternalSourceQuestHidden) { onDeleted(listOf(edit)) }
+    private val questHiddenListener = object : QuestsHiddenSource.Listener {
+        override fun onHid(key: QuestKey, timestamp: Long) {
+            val edit = createQuestHiddenEdit(key, timestamp)
+            if (edit != null) onAdded(edit)
+        }
+        override fun onUnhid(key: QuestKey, timestamp: Long) {
+            val edit = createQuestHiddenEdit(key, timestamp)
+            if (edit != null) onDeleted(listOf(edit))
+        }
         override fun onUnhidAll() { onInvalidated() }
     }
 
-    private val cache by lazy {
-        TreeSet<Edit> { t, t2 ->
-            t2.createdTimestamp.compareTo(t.createdTimestamp)
-        }.apply { addAll(fetchAll()) }
+    private fun createQuestHiddenEdit(key: QuestKey, timestamp: Long): Edit? {
+        return when (key) {
+            is OsmNoteQuestKey -> {
+                val note = notesSource.get(key.noteId) ?: return null
+                OsmNoteQuestHidden(note, timestamp)
+            }
+            is OsmQuestKey -> {
+                val geometry = mapDataSource.getGeometry(key.elementType, key.elementId) ?: return null
+                val questType = questTypeRegistry.getByName(key.questTypeName) as? OsmElementQuestType<*> ?: return null
+                OsmQuestHidden(key.elementType, key.elementId, questType, geometry, timestamp)
+            }
+        }
     }
 
     init {
         elementEditsController.addListener(osmElementEditsListener)
         noteEditsController.addListener(osmNoteEditsListener)
-        osmNoteQuestsHiddenController.addListener(osmNoteQuestHiddenListener)
-        osmQuestsHiddenController.addListener(osmQuestHiddenListener)
-        externalSourceQuestController.addHideListener(externalSourceQuestHiddenListener)
+        hiddenQuestsController.addListener(questHiddenListener)
     }
 
     fun undo(editKey: EditKey): Boolean {
@@ -88,58 +94,43 @@ class EditHistoryController(
         return when (edit) {
             is ElementEdit -> elementEditsController.undo(edit)
             is NoteEdit -> noteEditsController.undo(edit)
-            is OsmNoteQuestHidden -> osmNoteQuestsHiddenController.unhide(edit.note.id)
-            is OsmQuestHidden -> osmQuestsHiddenController.unhide(edit.questKey)
-            is ExternalSourceQuestHidden -> externalSourceQuestController.unhide(edit.questKey)
+            is OsmNoteQuestHidden -> hiddenQuestsController.unhide(edit.questKey)
+            is OsmQuestHidden -> hiddenQuestsController.unhide(edit.questKey)
+            is ExternalSourceQuestHidden -> hiddenQuestsController.unhide(edit.questKey)
             else -> throw IllegalArgumentException()
         }
     }
 
-    private fun fetchAll(): List<Edit> {
+    fun deleteSyncedOlderThan(timestamp: Long): Int =
+        elementEditsController.deleteSyncedOlderThan(timestamp) +
+        noteEditsController.deleteSyncedOlderThan(timestamp)
+
+    override fun get(key: EditKey): Edit? = when (key) {
+        is ElementEditKey -> elementEditsController.get(key.id)
+        is NoteEditKey -> noteEditsController.get(key.id)
+        is QuestHiddenKey -> {
+            val timestamp = hiddenQuestsController.get(key.questKey)
+            if (timestamp != null) createQuestHiddenEdit(key.questKey, timestamp) else null
+        }
+    }
+
+    override fun getAll(): List<Edit> {
         val maxAge = nowAsEpochMilliseconds() - MAX_UNDO_HISTORY_AGE
 
         val result = ArrayList<Edit>()
         result += elementEditsController.getAll().filter { it.action !is IsRevertAction }
         result += noteEditsController.getAll()
-        result += osmNoteQuestsHiddenController.getAllHiddenNewerThan(maxAge)
-        result += osmQuestsHiddenController.getAllHiddenNewerThan(maxAge)
-        result += externalSourceQuestController.getAllHiddenNewerThan(maxAge)
+        result += hiddenQuestsController.getAllNewerThan(maxAge).mapNotNull { (key, timestamp) ->
+            createQuestHiddenEdit(key, timestamp)
+        }
+
+        result.sortByDescending { it.createdTimestamp }
         return result
     }
 
-    fun deleteSyncedOlderThan(timestamp: Long): Int {
-        val r = elementEditsController.deleteSyncedOlderThan(timestamp) +
-            noteEditsController.deleteSyncedOlderThan(timestamp)
-        synchronized(cache) { // just reset the cache, this doesn't happen often anyway
-            cache.clear()
-            cache.addAll(fetchAll())
-        }
-        externalSourceQuestController.cleanElementEdits(cache.mapNotNull { (it as? ElementEdit)?.id })
-        return r
-    }
-
-    override fun get(key: EditKey): Edit? {
-        val edit = getAll().firstOrNull { it.key == key }
-        if (edit != null) return edit
-        return when (key) {
-            is OsmQuestHiddenKey -> osmQuestsHiddenController.getHidden(key.osmQuestKey)
-            is OsmNoteQuestHiddenKey -> osmNoteQuestsHiddenController.getHidden(key.osmNoteQuestKey.noteId)
-            is ExternalSourceQuestHiddenKey -> externalSourceQuestController.getHidden(key.externalSourceQuestKey)
-            else -> null
-        }
-    }
-
-    // difference to upstream: may contain older hidden quests
-    // but that really doesn't matter
-    override fun getAll(allHidden: Boolean): List<Edit> =
-        if (allHidden)
-            (osmNoteQuestsHiddenController.getAllHiddenNewerThan(0L)
-                + osmQuestsHiddenController.getAllHiddenNewerThan(0L)
-                + externalSourceQuestController.getAllHiddenNewerThan(0L)
-            ).sortedByDescending { it.createdTimestamp }
-        else synchronized(cache) { cache.toList() }
-
-    override fun getCount(): Int = cache.size
+    override fun getCount(): Int =
+        // could be optimized later too...
+        getAll().size
 
     override fun addListener(listener: EditHistorySource.Listener) {
         listeners.add(listener)
@@ -151,31 +142,15 @@ class EditHistoryController(
     private fun onAdded(edit: Edit) {
         if (edit is ElementEdit) Log.i(TAG, "history: add edit ${edit.type.name} for ${edit.action.elementKeys}")
         else Log.i(TAG, "history: add edit ${edit.key}")
-        synchronized(cache) { cache.add(edit) }
         listeners.forEach { it.onAdded(edit) }
     }
-    private fun onSynced(edit: Edit, updatedEditIds: Collection<Long> = emptyList()) {
-        synchronized(cache) {
-            if (edit is ElementEdit && updatedEditIds.isNotEmpty()) {
-                // reload all ElementEdits, because when updating element ids, new edits are created in elementEditsController
-                cache.removeAll { it is ElementEdit && it.id in updatedEditIds }
-                cache.addAll(updatedEditIds.map { elementEditsController.get(it)!! })
-            }
-            if (!cache.remove(edit)) // remove first is really important!
-                cache.removeAll { it.key == edit.key } // fallback, never found it triggered
-            if (edit is ElementEdit) cache.add(edit.copy(isSynced = true))
-            if (edit is NoteEdit) cache.add(edit.copy(isSynced = true))
-            // can't be called for (un)hiding, so no need to care about it
-        }
+    private fun onSynced(edit: Edit) {
         listeners.forEach { it.onSynced(edit) }
     }
     private fun onDeleted(edits: List<Edit>) {
-        val keys = edits.map { it.key }.toHashSet()
-        synchronized(cache) { cache.removeAll { it.key in keys } }
         listeners.forEach { it.onDeleted(edits) }
     }
     private fun onInvalidated() {
-        synchronized(cache) { cache.clear() }
         listeners.forEach { it.onInvalidated() }
     }
 }
