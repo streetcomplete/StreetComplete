@@ -34,7 +34,6 @@ fun <T> Database.queryIn(
     having: String? = null,
     orderBy: String? = null,
     limit: Int? = null,
-    distinct: Boolean = false,
     transform: (CursorPosition) -> T
 ): List<T> {
     val lookupTable = table + "_lookup"
@@ -71,7 +70,7 @@ fun <T> Database.queryIn(
         """)
 
         insertOrIgnoreMany(lookupTable, whereColumns, whereArgs)
-        val result = query(lookupTableMergedView, columns, null, null, groupBy, having, orderBy, limit, distinct, transform)
+        val result = query(lookupTableMergedView, columns, null, null, groupBy, having, orderBy, limit, transform)
         exec("DROP VIEW $lookupTableMergedView")
         exec("DROP TABLE $lookupTable")
         result

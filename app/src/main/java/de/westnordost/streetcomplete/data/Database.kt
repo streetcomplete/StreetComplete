@@ -30,7 +30,6 @@ interface Database {
         having: String? = null,
         orderBy: String? = null,
         limit: Int? = null,
-        distinct: Boolean = false,
         transform: (CursorPosition) -> T
     ): List<T>
 
