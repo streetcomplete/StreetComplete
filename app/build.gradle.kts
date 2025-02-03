@@ -277,6 +277,12 @@ tasks.register<DownloadAndConvertPresetIconsTask>("downloadAndConvertPresetIcons
     indexFile = "$projectDir/src/main/java/de/westnordost/streetcomplete/view/PresetIconIndex.kt"
 }
 
+tasks.register<UpdateTreeTaxonsTask>("updateTreeTaxons") {
+    group = "streetcomplete"
+    languageCodes = bcp47ExportLanguages
+    targetDir = "$projectDir/src/main/assets/tree_taxons"
+}
+
 tasks.register<UpdateAppTranslationsTask>("updateTranslations") {
     group = "streetcomplete"
     languageCodes = bcp47ExportLanguages
