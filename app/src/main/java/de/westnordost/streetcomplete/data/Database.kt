@@ -89,14 +89,12 @@ interface CursorPosition {
     /* It would be really nice if the interface would be just
        operator fun <T> get(columnName: String): T
        if T is one of the below types. But this is not possible right now in Kotlin AFAIK */
-    fun getShort(columnName: String): Short
     fun getInt(columnName: String): Int
     fun getLong(columnName: String): Long
     fun getDouble(columnName: String): Double
     fun getFloat(columnName: String): Float
     fun getBlob(columnName: String): ByteArray
     fun getString(columnName: String): String
-    fun getShortOrNull(columnName: String): Short?
     fun getIntOrNull(columnName: String): Int?
     fun getLongOrNull(columnName: String): Long?
     fun getDoubleOrNull(columnName: String): Double?
