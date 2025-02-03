@@ -106,8 +106,6 @@ class OsmQuestController internal constructor(
         AddPisteLit::class.simpleName!!,
     )
 
-    private val hiddenCache by lazy { synchronized(this) { hiddenDB.getAllIds().toHashSet() } }
-
     private val mapDataSourceListener = object : MapDataWithEditsSource.Listener {
 
         /** For the given elements, replace the current quests with the given ones. Called when
@@ -338,16 +336,19 @@ class OsmQuestController internal constructor(
     }
 
     override fun getAllVisibleInBBox(bbox: BoundingBox, questTypes: Collection<QuestType>?, getHidden: Boolean): Collection<OsmQuest> {
+        val hiddenQuestKeys = getHiddenQuests()
         val hiddenPositions = getBlacklistedPositions(bbox)
         if (prefs.getBoolean(Prefs.DYNAMIC_QUEST_CREATION, false)) {
             val mapData = mapDataSource.getMapDataWithGeometry(bbox.enlargedBy(ApplicationConstants.QUEST_FILTER_PADDING))
             val quests = createQuestsForBBox(bbox, mapData, questTypes?.filterIsInstance<OsmElementQuestType<*>>() ?: allQuestTypes)
-            return if (getHidden) quests else quests.filterNot { it.key in hiddenCache || it.position.truncateTo6Decimals() in hiddenPositions }
+            return if (getHidden) quests else quests.filter { entry ->
+                entry.key !in hiddenQuestKeys && entry.position.truncateTo6Decimals() !in hiddenPositions
+            }
         }
         val allEntries = db.getAllInBBox(bbox, questTypes?.map { it.name })
         val entries = if (getHidden) allEntries
             else allEntries.filter { entry ->
-                entry.key !in hiddenCache && entry.position.truncateTo6Decimals() !in hiddenPositions
+                entry.key !in hiddenQuestKeys && entry.position.truncateTo6Decimals() !in hiddenPositions
             }
 
         val elementKeys = HashSet<ElementKey>(entries.size)
@@ -378,9 +379,13 @@ class OsmQuestController internal constructor(
     private fun isBlacklistedPosition(pos: LatLon): Boolean =
         pos.truncateTo6Decimals() in getBlacklistedPositions(BoundingBox(pos, pos))
 
+    private fun getHiddenQuests(): Set<OsmQuestKey> =
+        hiddenDB.getAllIds().toSet()
+
     override fun hide(key: OsmQuestKey) {
-        if (synchronized(hiddenCache) { hiddenCache.add(key) })
-            synchronized(this) { hiddenDB.add(key) } // we may already have it hidden, as nearby quests may allow answering hidden quests
+        // todo: we may already have it hidden, as nearby quests may allow answering hidden quests
+        //  in that case an exception is thrown (but don't care for now, changes are imminent)
+        synchronized(this) { hiddenDB.add(key) }
 
         val hidden = getHidden(key)
         if (hidden != null) onHid(hidden)
@@ -393,9 +398,8 @@ class OsmQuestController internal constructor(
 
     override fun unhide(key: OsmQuestKey): Boolean {
         val hidden = getHidden(key)
-        if (!synchronized(hiddenCache) { hiddenCache.remove(key) }) return false
         synchronized(this) {
-            hiddenDB.delete(key)
+            if (!hiddenDB.delete(key)) return false
         }
         if (hidden != null) onUnhid(hidden)
         val quest = getVisible(key)
@@ -404,7 +408,6 @@ class OsmQuestController internal constructor(
     }
 
     override fun unhideAll(): Int {
-        synchronized(hiddenCache) { hiddenCache.clear() }
         val unhidCount = synchronized(this) { hiddenDB.deleteAll() }
         onUnhidAll()
         onInvalidated()
