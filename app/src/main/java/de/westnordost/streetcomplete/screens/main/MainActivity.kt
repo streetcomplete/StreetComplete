@@ -51,15 +51,15 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
 import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuest
-import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestsHiddenSource
 import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
 import de.westnordost.streetcomplete.data.preferences.Preferences
-import de.westnordost.streetcomplete.data.quest.OsmQuestKey
+import de.westnordost.streetcomplete.data.quest.OsmNoteQuestKey
 import de.westnordost.streetcomplete.data.quest.Quest
 import de.westnordost.streetcomplete.data.quest.QuestAutoSyncer
 import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.VisibleQuestsSource
+import de.westnordost.streetcomplete.data.visiblequests.QuestsHiddenSource
 import de.westnordost.streetcomplete.databinding.ActivityMainBinding
 import de.westnordost.streetcomplete.databinding.EffectQuestPlopBinding
 import de.westnordost.streetcomplete.osm.level.levelsIntersect
@@ -160,7 +160,7 @@ class MainActivity :
     private val visibleQuestsSource: VisibleQuestsSource by inject()
     private val mapDataWithEditsSource: MapDataWithEditsSource by inject()
     private val notesSource: NotesWithEditsSource by inject()
-    private val noteQuestsHiddenSource: OsmNoteQuestsHiddenSource by inject()
+    private val questsHiddenSource: QuestsHiddenSource by inject()
     private val featureDictionary: Lazy<FeatureDictionary> by inject(named("FeatureDictionaryLazy"))
     private val soundFx: SoundFx by inject()
 
@@ -443,7 +443,7 @@ class MainActivity :
         mapFragment.hideOverlay()
     }
 
-    override fun onQuestHidden(osmQuestKey: OsmQuestKey) {
+    override fun onQuestHidden(questKey: QuestKey) {
         closeBottomSheet()
     }
 
@@ -535,7 +535,7 @@ class MainActivity :
     /* ---------------------------------- VisibleQuestListener ---------------------------------- */
 
     @AnyThread
-    override fun onUpdatedVisibleQuests(added: Collection<Quest>, removed: Collection<QuestKey>) {
+    override fun onUpdated(added: Collection<Quest>, removed: Collection<QuestKey>) {
         lifecycleScope.launch {
             val f = bottomSheetFragment
             // open quest has been deleted
@@ -546,7 +546,7 @@ class MainActivity :
     }
 
     @AnyThread
-    override fun onVisibleQuestsInvalidated() {
+    override fun onInvalidated() {
         lifecycleScope.launch {
             val f = bottomSheetFragment
             if (f is IsShowingQuestDetails) {
@@ -910,7 +910,7 @@ class MainActivity :
             notesSource
                 .getAll(BoundingBox(center, center).enlargedBy(0.2))
                 .firstOrNull { it.position.truncateTo6Decimals() == center.truncateTo6Decimals() }
-                ?.takeIf { noteQuestsHiddenSource.getHidden(it.id) == null }
+                ?.takeIf { questsHiddenSource.get(OsmNoteQuestKey(it.id)) == null }
         }
         if (note != null) {
             showQuestDetails(OsmNoteQuest(note.id, note.position))

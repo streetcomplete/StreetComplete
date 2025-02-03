@@ -79,7 +79,7 @@ class EditHistoryViewModelImpl(
 
     override suspend fun getEditGeometry(edit: Edit): ElementGeometry = when (edit) {
         is ElementEdit -> edit.originalGeometry
-        is OsmQuestHidden -> withContext(IO) { mapDataSource.getGeometry(edit.elementType, edit.elementId) }
+        is OsmQuestHidden -> edit.geometry
         else -> null
     } ?: ElementPointGeometry(edit.position)
 
