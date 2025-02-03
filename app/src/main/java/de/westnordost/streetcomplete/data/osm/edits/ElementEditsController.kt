@@ -1,5 +1,7 @@
 package de.westnordost.streetcomplete.data.osm.edits
 
+import de.westnordost.streetcomplete.data.externalsource.ExternalSourceQuestController
+import de.westnordost.streetcomplete.data.externalsource.ExternalSourceQuestType
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
@@ -13,16 +15,19 @@ import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.util.Listeners
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.logs.Log
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
 
 class ElementEditsController(
     private val editsDB: ElementEditsDao,
     private val editElementsDB: EditElementsDao,
     private val elementIdProviderDB: ElementIdProviderDao,
-    private val prefs: Preferences
-) : ElementEditsSource, AddElementEditsController {
+    private val prefs: Preferences,
+//    private val externalSourceQuestController: ExternalSourceQuestController,
+) : ElementEditsSource, AddElementEditsController, KoinComponent {
     /* Must be a singleton because there is a listener that should respond to a change in the
      * database table */
-
+    private val externalSourceQuestController: ExternalSourceQuestController by inject()
     private val listeners = Listeners<ElementEditsSource.Listener>()
 
     private val editCache by lazy {
@@ -87,12 +92,15 @@ class ElementEditsController(
         val deletedCount: Int
         val deleteEdits: List<ElementEdit>
         synchronized(this) {
-            deleteEdits = editsDB.getSyncedOlderThan(timestamp)
+            val allEdits = editsDB.getAll()
+            deleteEdits = allEdits.filter { it.createdTimestamp < timestamp && it.isSynced }
             if (deleteEdits.isEmpty()) return 0
             val ids = deleteEdits.map { it.id }
             editCache.keys.removeAll(ids)
             deletedCount = editsDB.deleteAll(ids)
             editElementsDB.deleteAll(ids)
+            val keep = allEdits.filter { it.type is ExternalSourceQuestType && (it.isSynced || it.createdTimestamp >= timestamp) }
+            externalSourceQuestController.cleanElementEdits(keep.map { it.id })
         }
         onDeletedEdits(deleteEdits)
         /* must be deleted after the callback because the callback might want to get the id provider

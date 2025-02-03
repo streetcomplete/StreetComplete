@@ -1,10 +1,14 @@
 package de.westnordost.streetcomplete.data.upload
 
+import android.content.Context
+import android.widget.Toast
+import androidx.core.content.ContextCompat
 import com.russhwolf.settings.ObservableSettings
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.BuildConfig
 import de.westnordost.streetcomplete.data.AuthorizationException
 import de.westnordost.streetcomplete.Prefs
+import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesController
 import de.westnordost.streetcomplete.data.download.tiles.enclosingTilePos
 import de.westnordost.streetcomplete.data.osm.edits.upload.ElementEditsUploader
@@ -14,10 +18,13 @@ import de.westnordost.streetcomplete.data.externalsource.ExternalSourceQuestCont
 import de.westnordost.streetcomplete.data.user.UserLoginController
 import de.westnordost.streetcomplete.data.user.UserLoginSource
 import de.westnordost.streetcomplete.util.Listeners
+import de.westnordost.streetcomplete.util.ktx.toast
 import de.westnordost.streetcomplete.util.logs.Log
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
 
 class Uploader(
     private val noteEditsUploader: NoteEditsUploader,
@@ -29,7 +36,8 @@ class Uploader(
     private val mutex: Mutex,
     private val externalSourceQuestController: ExternalSourceQuestController,
     private val prefs: ObservableSettings,
-) : UploadProgressSource {
+) : UploadProgressSource, KoinComponent {
+    private val context: Context by inject()
 
     private val listeners = Listeners<UploadProgressSource.Listener>()
 
@@ -71,10 +79,11 @@ class Uploader(
             } else
                 prefs.putInt(Prefs.BAN_CHECK_ERROR_COUNT, 0)
             if (prefs.getInt(Prefs.BAN_CHECK_ERROR_COUNT, 0) > 10) {
-                // todo: make it work again, or kick it out...
-//                ContextCompat.getMainExecutor(context).execute {
-//                    context.toast(R.string.ban_check_fails, Toast.LENGTH_LONG)
-//                }
+                try {
+                    ContextCompat.getMainExecutor(context).execute {
+                        context.toast(R.string.ban_check_fails, Toast.LENGTH_LONG)
+                    }
+                } catch (_: Exception) { }
             }
 
             // let's fail early in case of no authorization
