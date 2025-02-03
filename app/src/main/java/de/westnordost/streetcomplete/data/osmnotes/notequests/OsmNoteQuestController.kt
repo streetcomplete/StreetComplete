@@ -67,16 +67,14 @@ class OsmNoteQuestController(
         settingsListener = prefs.onAllShowNotesChanged { onInvalidated() }
     }
 
-    override fun get(questId: Long): OsmNoteQuest? {
-        return noteSource.get(questId)?.let { createQuestForNote(it) }
-    }
+    override fun get(questId: Long): OsmNoteQuest? =
+        noteSource.get(questId)?.let { createQuestForNote(it) }
 
     override fun getAllInBBox(bbox: BoundingBox): List<OsmNoteQuest> =
         createQuestsForNotes(noteSource.getAll(bbox))
 
-    private fun createQuestsForNotes(notes: Collection<Note>): List<OsmNoteQuest> {
-        return notes.mapNotNull { createQuestForNote(it) }
-    }
+    private fun createQuestsForNotes(notes: Collection<Note>): List<OsmNoteQuest> =
+        notes.mapNotNull { createQuestForNote(it) }
 
     private fun createQuestForNote(note: Note): OsmNoteQuest? =
         if (note.shouldShowAsQuest(userDataSource.userId, showOnlyNotesPhrasedAsQuestions)) {
@@ -84,7 +82,6 @@ class OsmNoteQuestController(
         } else {
             null
         }
-
 
     /* ---------------------------------------- Listener ---------------------------------------- */
 
