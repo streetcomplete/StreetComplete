@@ -30,7 +30,7 @@
 \nkörfält</string>
     <string name="pref_show_nearby_quests_title">Visa uppdrag i närheten</string>
     <string name="quest_custom_quest_remove">Ta bort från listan</string>
-    <string name="quest_benchMaterial_stone">Sten</string>
+    <string name="quest_material_stone">Sten</string>
     <string name="quest_contact_website">Vad har denna plats för webbplats?</string>
     <string name="quest_generic_answer_show_edit_tags">Visa/redigera taggar</string>
     <string name="quest_piste_difficulty_title">Vilken svårighetsgrad har denna pist?</string>
@@ -69,11 +69,11 @@
     <string name="quest_settings_reset">Återställ</string>
     <string name="quest_custom_quest_add_node">Lägg till nod</string>
     <string name="quest_benchMaterial_title">Vad är denna gjord av?</string>
-    <string name="quest_benchMaterial_wood">Trä</string>
-    <string name="quest_benchMaterial_metal">Metall</string>
-    <string name="quest_benchMaterial_plastic">Plast</string>
-    <string name="quest_benchMaterial_concrete">Betong</string>
-    <string name="quest_benchMaterial_brick">Tegelstenar</string>
+    <string name="quest_material_wood">Trä</string>
+    <string name="quest_material_metal">Metall</string>
+    <string name="quest_material_plastic">Plast</string>
+    <string name="quest_material_concrete">Betong</string>
+    <string name="quest_material_brick">Tegelstenar</string>
     <string name="quest_brewery_title">Vilka märken av öl serveras här?</string>
     <string name="quest_brewery_add_more">Lägg till ett annat bryggeri</string>
     <string name="quest_brewery_is_various">Många ölmärken serveras här</string>

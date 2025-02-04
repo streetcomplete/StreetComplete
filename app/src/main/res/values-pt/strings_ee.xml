@@ -89,8 +89,8 @@
     <string name="pref_disable_navigation_mode_title">Desativar modo de navegação</string>
     <string name="pref_quest_settings_preset_summary">Quando ativado, as definições de missões são apenas válidas para o conjunto de missões atual</string>
     <string name="quest_artwork_mural">Mural</string>
-    <string name="quest_benchMaterial_stone">Pedra</string>
-    <string name="quest_benchMaterial_brick">Tijolo</string>
+    <string name="quest_material_stone">Pedra</string>
+    <string name="quest_material_brick">Tijolo</string>
     <string name="quest_utility_telecom">Telecomunicações</string>
     <string name="quest_service_building_type_reservoir_description">Um grande tanque construído para armazenar água fresca</string>
     <string name="quest_service_building_type_pump">Estação de bombagem de água</string>
@@ -151,7 +151,7 @@
     <string name="pref_gpx_track_download">Transferir área delimitada pelo caminho GPX</string>
     <string name="pref_recent_answers_first_min_lines_summary">Caso o formulário tenha mais do que %d linha(s)</string>
     <string name="pref_recent_answers_first_min_lines_message">Move respostas recentes para cima se o formulário de resposta da missão contém mais do que as linhas indicadas de imagens</string>
-    <string name="quest_benchMaterial_concrete">Cimento</string>
+    <string name="quest_material_concrete">Cimento</string>
     <string name="quest_swimmingPoolAvailability_title">Existe aqui uma piscina?</string>
     <string name="quest_service_building_type_traction_substation_description">Subestação elétrica que fornece energia a redes ferroviárias ou a elétricos</string>
     <string name="quest_street_cabinet_type_title">Que tipo de gabinete de rua é este?</string>
@@ -162,9 +162,9 @@
     <string name="quest_healthcare_speciality_disabled_message">Esta missão requer conhecimento das etiquetas de healthcare:speciality. Sem esse conhecimento, esta missão pode ser muito difícil de responder.</string>
     <string name="default_disabled_msg_ee">As missões adicionadas pelo SCEE estão sempre desativadas por predefinição, pois nem sempre são simples de responder, e podem requerer conhecimento do tópico e das etiquetas associadas.</string>
     <string name="quest_benchMaterial_title">De que material é feito este banco?</string>
-    <string name="quest_benchMaterial_wood">Madeira</string>
-    <string name="quest_benchMaterial_metal">Metal</string>
-    <string name="quest_benchMaterial_plastic">Plástico</string>
+    <string name="quest_material_wood">Madeira</string>
+    <string name="quest_material_metal">Metal</string>
+    <string name="quest_material_plastic">Plástico</string>
     <string name="quest_artwork_title">Que tipo de obra de arte é esta?</string>
     <string name="quest_artwork_sculpture">Escultura</string>
     <string name="quest_artwork_architecture">Arquitetura</string>

@@ -75,11 +75,11 @@
     <string name="quest_custom_quest_remove">Odstranit ze seznamu</string>
     <string name="quest_custom_quest_add_node">Přidat uzel/bod (node)</string>
     <string name="quest_benchMaterial_title">Z čeho je toto vyrobeno?</string>
-    <string name="quest_benchMaterial_wood">Dřevo</string>
-    <string name="quest_benchMaterial_metal">Kov</string>
-    <string name="quest_benchMaterial_plastic">Plast</string>
-    <string name="quest_benchMaterial_stone">Kámen</string>
-    <string name="quest_benchMaterial_brick">Cihly</string>
+    <string name="quest_material_wood">Dřevo</string>
+    <string name="quest_material_metal">Kov</string>
+    <string name="quest_material_plastic">Plast</string>
+    <string name="quest_material_stone">Kámen</string>
+    <string name="quest_material_brick">Cihly</string>
     <string name="quest_guidepost_sports_answer_simple">Je to jen jednoduchý rozcestník</string>
     <string name="quest_guidepost_sports_answer_simple_description">Toto je jen jednoduchý rozcestník neurčený k žádnému specifickému sportu.</string>
     <string name="quest_guidepost_sports_hiking">Turistika</string>
@@ -226,7 +226,7 @@
     <string name="export_warning_db_version">Upozornění: verze databáze je neznáma, import by nemusel fungovat. Prosím, zeptejte se na aktualizaci aplikace.</string>
     <string name="resurvey_intervals_even_less_often">Ptát se ještě méně častěji</string>
     <string name="quest_settings_element_selection">Nastavit prvky vhodné pro tento úkol. <a href="https://github.com/Helium314/SCEE/blob/modified/CONTRIBUTING_A_NEW_QUEST.md#element-selection">Klikněte zde (anglicky)</a> pro otevření návodu k syntaxi na výběr prvku v prohlížeči.</string>
-    <string name="quest_benchMaterial_concrete">Beton</string>
+    <string name="quest_material_concrete">Beton</string>
     <string name="quest_piste_ref_title">Jaké je číslo této sjezdovky?</string>
     <string name="quest_utility_power">Elektřina</string>
     <string name="quest_seating_veranda">Na verandě (zastřešené, může být lehce vyvýšené)</string>

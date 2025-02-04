@@ -55,10 +55,10 @@
     <string name="quest_settings_resurvey_all_opening_hours_no">Standaard</string>
     <string name="quest_settings_leaf_type_single_tree_yes">Ja</string>
     <string name="quest_osmose_remove_checked">Verwijder</string>
-    <string name="quest_benchMaterial_wood">Hout</string>
-    <string name="quest_benchMaterial_plastic">Plastic</string>
-    <string name="quest_benchMaterial_stone">Steen</string>
-    <string name="quest_benchMaterial_brick">Stenen</string>
+    <string name="quest_material_wood">Hout</string>
+    <string name="quest_material_plastic">Plastic</string>
+    <string name="quest_material_stone">Steen</string>
+    <string name="quest_material_brick">Stenen</string>
     <string name="quest_guidepost_sports_hiking">Wandelen</string>
     <string name="quest_guidepost_sports_bicycle">Fietsen</string>
     <string name="quest_guidepost_sports_climbing">Klimmen</string>
@@ -88,7 +88,7 @@
     <string name="quest_utility_power">Elektriciteit</string>
     <string name="quest_settings_reset">Opnieuw instellen</string>
     <string name="quest_settings_osmose_level_high">Hoog</string>
-    <string name="quest_benchMaterial_metal">Metaal</string>
+    <string name="quest_material_metal">Metaal</string>
     <string name="import_presets_overlays_message">Geïmporteerde toevoegen, of bestaande vervangen? Als je vervangen kiest, zullen alle huidige willen verwijderd.</string>
     <string name="quest_settings_sidewalk_distance_button">Afstand</string>
     <string name="quest_artwork_sculpture">Beeldhouwwerk</string>
@@ -96,7 +96,7 @@
     <string name="import_error_db_version">Fout bij importeren: onbekende versie</string>
     <string name="pref_show_next_quest_summary">Laat verdere vragen voor hetzelfde element meteen zien na het oplossen</string>
     <string name="export_warning_db_version">Waarschuwing: databaseversie onbekend, importeren werkt mogelijk niet. Vraag om een update van de app.</string>
-    <string name="quest_benchMaterial_concrete">Beton</string>
+    <string name="quest_material_concrete">Beton</string>
     <string name="quest_service_building_railway">Spoorweg</string>
     <string name="pref_main_menu_grid">Toon alle hoofdmenu-items als raster</string>
     <string name="pref_recent_answers_first_min_lines_message">Verplaats recente antwoorden naar voren als het antwoordformulier voor de vraag meer dan dit aantal regels afbeeldingen bevat</string>

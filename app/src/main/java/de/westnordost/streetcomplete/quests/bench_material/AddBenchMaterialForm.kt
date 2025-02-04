@@ -14,12 +14,12 @@ import de.westnordost.streetcomplete.view.image_select.Item
 class AddBenchMaterialForm : AImageListQuestForm<BenchMaterial, BenchMaterial>() {
 
     override val items = listOf(
-        Item(WOOD, R.drawable.bench_wood, R.string.quest_benchMaterial_wood),
-        Item(METAL, R.drawable.bench_metal, R.string.quest_benchMaterial_metal),
-        Item(PLASTIC, R.drawable.bench_plastic, R.string.quest_benchMaterial_plastic),
-        Item(CONCRETE, R.drawable.bench_concrete, R.string.quest_benchMaterial_concrete),
-        Item(STONE, R.drawable.bench_stone, R.string.quest_benchMaterial_stone),
-        Item(BRICK, R.drawable.bench_brick, R.string.quest_benchMaterial_brick)
+        Item(WOOD, R.drawable.bench_wood, R.string.quest_material_wood),
+        Item(METAL, R.drawable.bench_metal, R.string.quest_material_metal),
+        Item(PLASTIC, R.drawable.bench_plastic, R.string.quest_material_plastic),
+        Item(CONCRETE, R.drawable.bench_concrete, R.string.quest_material_concrete),
+        Item(STONE, R.drawable.bench_stone, R.string.quest_material_stone),
+        Item(BRICK, R.drawable.bench_brick, R.string.quest_material_brick)
     )
 
     override val otherAnswers by lazy { if (element.tags["amenity"] == "bench")

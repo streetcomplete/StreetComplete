@@ -4,7 +4,7 @@
     <string name="pref_delete_old_data_after_summary">%d 天</string>
     <string name="quest_monitor_active_request">主动请求位置将增加电池使用量。不主动请求位置时，仍会使用其他应用请求的位置。</string>
     <string name="quest_healthcare_speciality_title">这里有哪些医疗专业？</string>
-    <string name="quest_benchMaterial_metal">金属</string>
+    <string name="quest_material_metal">金属</string>
     <string name="quest_monitor_net">主动请求网络位置？</string>
     <string name="quest_settings_resurvey_all_opening_hours_title">重新调查所有开放时间</string>
     <string name="quest_settings_osmose_level_low">低</string>
@@ -27,12 +27,12 @@
     <string name="pref_recent_answers_first_min_lines_message">如果任务回答表格的图像行数超过此数，则将最近的答案移至最前</string>
     <string name="pref_network_interval_title">网络位置更新间隔</string>
     <string name="pref_custom_title">加载自定义任务文件</string>
-    <string name="quest_benchMaterial_concrete">水泥</string>
+    <string name="quest_material_concrete">水泥</string>
     <string name="pref_save_file_error">保存文件出错</string>
     <string name="level_filter_hint">留空以表示未标记</string>
     <string name="quest_railwayPlatformRef_abc">ABC</string>
     <string name="pref_swap_gpx_note_button">交换 OSM 和 GPX 注释按钮</string>
-    <string name="quest_benchMaterial_plastic">塑料</string>
+    <string name="quest_material_plastic">塑料</string>
     <string name="pref_show_next_quest_summary">解决任务后立即显示同一要素的其它任务</string>
     <string name="restore_dialog_hint">您还可以通过长按撤消按钮来手动选择恢复哪些任务。</string>
     <string name="pref_gpx_track_download">下载 GPX 轨迹覆盖的区域</string>
@@ -137,7 +137,7 @@
     <string name="pref_gpx_track_loading_error">加载 GPX 轨迹文件时出错</string>
     <string name="quest_artwork_bust">半身像</string>
     <string name="pref_show_quick_settings_title">显示快速设置按钮</string>
-    <string name="quest_benchMaterial_stone">石材</string>
+    <string name="quest_material_stone">石材</string>
     <string name="pref_files_not_found">未找到文件</string>
     <string name="quest_custom_quest_remove">从列表中移除</string>
     <string name="pref_show_nearby_quests_title">显示附近的任务</string>
@@ -217,7 +217,7 @@
     <string name="pref_expert_mode_summary">启用高级编辑能力</string>
     <string name="quest_artwork_painting">绘画</string>
     <string name="pref_export">导出设置</string>
-    <string name="quest_benchMaterial_brick">砖块</string>
+    <string name="quest_material_brick">砖块</string>
     <string name="default_disabled_msg_poi_vacant">这个“任务”以灰点的形式显示空置的店铺。点击圆点可显示详细信息和其他回答。</string>
     <string name="quest_generic_surface_yes">允许无注释</string>
     <string name="quest_recycling_excrement_bag_dispenser">它有一个粪便袋自助机</string>
@@ -234,7 +234,7 @@
     <string name="pref_hide_keyboard_title">创建注释前隐藏键盘</string>
     <string name="pref_auto_download_summary">自动下载附近区域的数据</string>
     <string name="pref_screen_notes">注释</string>
-    <string name="quest_benchMaterial_wood">木材</string>
+    <string name="quest_material_wood">木材</string>
     <string name="quest_buildingColour_title">这座建筑的整体颜色是？</string>
     <string name="tree_custom_quest_import">提供</string>
     <string name="quest_tree_error">不被识别。请尝试输入树木的属、种或英文名称。否则，请考虑留下注释。</string>

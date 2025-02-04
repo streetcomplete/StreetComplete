@@ -195,11 +195,11 @@
     <string name="restriction_overlay_signed_switch">Існує знак або дорожня розмітка</string>
     <string name="restriction_overlay_other_restrictions">Інші обмеження цього шляху:</string>
     <string name="add_access">Додати доступ…</string>
-    <string name="quest_benchMaterial_metal">Метал</string>
+    <string name="quest_material_metal">Метал</string>
     <string name="quest_poi_recycling_title">POI: Переробка відходів</string>
     <string name="quest_custom_quest_message">Використовується для перевірки певних заздалегідь визначених елементів або місць. Ви також можете вказати теги і додати точку з ними. Для використання завантажте файл у головному меню налаштувань, що містить або type,id,message (наприклад, NODE,1234,check position), або latitude,longitude,message. Для додавання точок, додайте теги у повідомлення після «addNode», наприклад, addNode amenity=restaurant,wheelchair=no,diet:vegetarian=yes</string>
-    <string name="quest_benchMaterial_concrete">Бетон</string>
-    <string name="quest_benchMaterial_plastic">Пластик</string>
+    <string name="quest_material_concrete">Бетон</string>
+    <string name="quest_material_plastic">Пластик</string>
     <string name="default_disabled_msg_poi_bench">Це завдання показує об\'єкти POI, такі як лавки або столи для пікніка, коричневими крапками. Натисніть на крапку, щоб побачити деталі та інші відповіді.</string>
     <string name="pref_hide_overlay_quests">Приховати специфічні для накладення завдання</string>
     <string name="default_disabled_msg_poi_other">Це завдання показує різні POI, такі як гідранти, оглядові майданчики або туалети, жовтими крапками. Натисніть на крапку, щоб побачити деталі та інші відповіді.</string>
@@ -207,7 +207,7 @@
     <string name="quest_poi_machine_title">POI: Автомати</string>
     <string name="quest_osmose_use_app_language">Завантажувати проблеми мовою програми</string>
     <string name="quest_custom_quest_add_node">Додати точку</string>
-    <string name="quest_benchMaterial_stone">Камінь</string>
+    <string name="quest_material_stone">Камінь</string>
     <string name="quest_custom_quest_remove">Видалити зі списку</string>
     <string name="pref_disable_navigation_mode_summary">Вимкнути режим нахилу та автоматичного повороту мапи</string>
     <string name="quest_poi_seating_title">POI: Місця для сидіння</string>
@@ -222,9 +222,9 @@
     <string name="default_disabled_msg_poi_machine">Це завдання показує такі об\'єкти, як банкомати, телефони чи торгові автомати, синіми крапками. Натисніть на крапку, щоб побачити деталі та інші відповіді.</string>
     <string name="quest_custom_quest_add_node_text">Ви можете додати точку з: %s</string>
     <string name="default_disabled_msg_poi_business">Це завдання показує магазини, ресторани, лікарів і подібні POI у вигляді помаранчевих крапок. Натисніть на крапку, щоб побачити деталі та інші відповіді.</string>
-    <string name="quest_benchMaterial_brick">Цегла</string>
+    <string name="quest_material_brick">Цегла</string>
     <string name="default_disabled_msg_poi_bike">Це завдання показує POI, пов\'язані з велосипедом, фіолетовими крапками. Натисніть на крапку, щоб побачити деталі та інші відповіді.</string>
-    <string name="quest_benchMaterial_wood">Деревина</string>
+    <string name="quest_material_wood">Деревина</string>
     <string name="quest_buildingColour_title">Який загальний колір має ця будівля\?</string>
     <string name="quest_buildingPartColour_title">Який загальний колір має ця частина будівлі\?</string>
     <string name="quest_settings_dot_labels_message">Вказати, які теги слід використовувати для мітки у заданому порядку. Порожній рядок не показуватиме жодних міток, «label» показуватиме мітку за замовчуванням StreetComplete, використовуючи name, brand, ref, local_ref та operator.</string>

@@ -265,12 +265,12 @@
 
     <!-- bench material -->
     <string name="quest_benchMaterial_title">What’s this made of?</string>
-    <string name="quest_benchMaterial_wood">Wood</string>
-    <string name="quest_benchMaterial_metal">Metal</string>
-    <string name="quest_benchMaterial_plastic">Plastic</string>
-    <string name="quest_benchMaterial_concrete">Concrete</string>
-    <string name="quest_benchMaterial_stone">Stone</string>
-    <string name="quest_benchMaterial_brick">Bricks</string>
+    <string name="quest_material_wood">Wood</string>
+    <string name="quest_material_metal">Metal</string>
+    <string name="quest_material_plastic">Plastic</string>
+    <string name="quest_material_concrete">Concrete</string>
+    <string name="quest_material_stone">Stone</string>
+    <string name="quest_material_brick">Bricks</string>
 
     <!-- guidepost sports -->
     <string name="quest_guidepost_sports_title">For which sport is this guidepost intended?</string>

@@ -20,10 +20,10 @@
     <string name="show_nearby_quests_all_types">"Prikaži sve vrste zadataka"</string>
     <string name="show_nearby_quests_even_hidden">"Prikaži sve vrste zadataka i skrivene zadatke"</string>
     <string name="quest_benchMaterial_title">"Od čega je ovo napravljeno?"</string>
-    <string name="quest_benchMaterial_wood">"Drvo"</string>
-    <string name="quest_benchMaterial_metal">"Metal"</string>
-    <string name="quest_benchMaterial_plastic">"Plastika"</string>
-    <string name="quest_benchMaterial_concrete">"Beton"</string>
-    <string name="quest_benchMaterial_stone">"Kamen"</string>
-    <string name="quest_benchMaterial_brick">"Cigle"</string>
+    <string name="quest_material_wood">"Drvo"</string>
+    <string name="quest_material_metal">"Metal"</string>
+    <string name="quest_material_plastic">"Plastika"</string>
+    <string name="quest_material_concrete">"Beton"</string>
+    <string name="quest_material_stone">"Kamen"</string>
+    <string name="quest_material_brick">"Cigle"</string>
 </resources>

@@ -140,7 +140,7 @@
 \n \u0020<li>afegir nodes flotants en qualsevol lloc</li>
 \n \u0020<li>canviar relacions entre missions i elements </li>
 \n
-\n \u0020Aquestes són menys característiques d\'edició que altres editors d\'OSM tenen, però un ús incorrecte d\'aquestes característiques poden trencar dades en formes que no són possibles per defecte en StreetComplete. Tingues en compte que en activar el mode expert, haureu d\'assumir una major responsabilitat en les vostres edicions. 
+\n \u0020Aquestes són menys característiques d\'edició que altres editors d\'OSM tenen, però un ús incorrecte d\'aquestes característiques poden trencar dades en formes que no són possibles per defecte en StreetComplete. Tingues en compte que en activar el mode expert, haureu d\'assumir una major responsabilitat en les vostres edicions.
 \n \u0020Si us plau, activa això sols si saps el que fas i si tens experiència en edició d\'OSM fora d\'StreetComplete. \u0020</string>
     <string name="pref_manual_download_cache_summary">Si ho desactives, les dades no es tornaran a descarregar en fer una descarrega manual a no ser que siguin més antigues de 12 hores</string>
     <string name="pref_quest_monitor_summary">Supervisa l\'ubicació quan l\'app està en segon pla, excepte si has sortit de l\'aplicació prement el botó d\'endarrere</string>
@@ -355,12 +355,12 @@
     <string name="quest_custom_quest_add_node_text">Pots afegir un node amb: %s</string>
     <string name="quest_barrier_locked_title">Aquesta barrera està (normalment) tancada?</string>
     <string name="quest_benchMaterial_title">De quin material està fet aquest banc?</string>
-    <string name="quest_benchMaterial_wood">Fusta</string>
-    <string name="quest_benchMaterial_metal">Metall</string>
-    <string name="quest_benchMaterial_plastic">Plàstic</string>
-    <string name="quest_benchMaterial_concrete">Ciment / formigó</string>
-    <string name="quest_benchMaterial_stone">Pedra</string>
-    <string name="quest_benchMaterial_brick">Totxanes</string>
+    <string name="quest_material_wood">Fusta</string>
+    <string name="quest_material_metal">Metall</string>
+    <string name="quest_material_plastic">Plàstic</string>
+    <string name="quest_material_concrete">Ciment / formigó</string>
+    <string name="quest_material_stone">Pedra</string>
+    <string name="quest_material_brick">Totxanes</string>
     <string name="quest_guidepost_sports_title">Per a quin esport està pensada aquesta senyal guia?</string>
     <string name="quest_guidepost_sports_note">Si cap dols opcions anteriors cobreix totes sunes característiques, considera deixar una nota com a alternativa.</string>
     <string name="quest_guidepost_sports_answer_simple">És simplement un punt guia</string>

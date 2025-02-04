@@ -32,7 +32,7 @@
     <string name="pref_delete_old_data_after_summary">%d Tagen</string>
     <string name="quest_monitor_active_request">Aktives Anfordern von Standorten erhöht den Akkuverbrauch. Wenn keine aktive Standortanforderung erfolgt, werden die von anderen Apps angeforderten Standorte weiterhin verwendet.</string>
     <string name="quest_healthcare_speciality_title">Welche medizinischen Fachrichtungen gibt es an diesem Ort\?</string>
-    <string name="quest_benchMaterial_metal">Metall</string>
+    <string name="quest_material_metal">Metall</string>
     <string name="tag_editor_last_edited">Zuletzt bearbeitet: %s</string>
     <string name="quest_monitor_net">Aktiv nach Netzwerkstandorten fragen\?</string>
     <string name="quest_settings_resurvey_all_opening_hours_title">Alle Öffnungszeiten neu ermitteln</string>
@@ -60,11 +60,11 @@
     <string name="pref_recent_answers_first_min_lines_message">Verschiebe aktuelle Antworten nach vorne, wenn das Antwortformular der Aufgabe mehr als so viele Zeilen mit Bildern enthält</string>
     <string name="pref_network_interval_title">Aktualisierungsintervall für den Netzwerkstandort</string>
     <string name="pref_custom_title">Benutzerdefinierte Aufgabendatei laden</string>
-    <string name="quest_benchMaterial_concrete">Beton</string>
+    <string name="quest_material_concrete">Beton</string>
     <string name="level_filter_hint">Leer lassen, um nicht getaggt anzuzeigen</string>
     <string name="quest_railwayPlatformRef_abc">ABC</string>
     <string name="closed_note_action_title">Du hast ihn geschlossen</string>
-    <string name="quest_benchMaterial_plastic">Kunststoff</string>
+    <string name="quest_material_plastic">Kunststoff</string>
     <string name="pref_show_next_quest_summary">Weitere Aufgabe für dasselbe Element direkt nach dem Lösen anzeigen</string>
     <string name="insert_node">Knoten in Weg einfügen</string>
     <string name="restore_dialog_hint">Du kannst auch manuell auswählen, welche Aufgaben wiederhergestellt werden sollen, indem du lange auf die Schaltfläche „Rückgängig“ drückst.</string>
@@ -204,7 +204,7 @@
     <string name="quest_artwork_bust">Büste</string>
     <string name="pref_show_quick_settings_title">Schaltfläche „Schnelleinstellungen“ anzeigen</string>
     <string name="quest_monitor_running">Überwachungsstandort</string>
-    <string name="quest_benchMaterial_stone">Stein</string>
+    <string name="quest_material_stone">Stein</string>
     <string name="quest_monitor_error">Konnte die Überwachung nicht starten, möglicherweise ein Berechtigungsproblem</string>
     <string name="quest_custom_quest_remove">Aus Liste entfernen</string>
     <string name="pref_show_nearby_quests_title">Aufgaben in der Nähe anzeigen</string>
@@ -314,7 +314,7 @@
     <string name="default_disabled_msg_poi_business">Diese „Aufgabe“ zeigt Geschäfte, Restaurants, Ärzte und ähnliche POIs als orangefarbene Punkte an. Ein Klick auf den Punkt zeigt Details und weitere Antworten an.</string>
     <string name="quest_artwork_painting">Gemälde</string>
     <string name="access_width_limit">Breite</string>
-    <string name="quest_benchMaterial_brick">Ziegel</string>
+    <string name="quest_material_brick">Ziegel</string>
     <string name="default_disabled_msg_poi_vacant">Diese „Aufgabe“ zeigt leer stehende Geschäfte als graue Punkte an. Ein Klick auf den Punkt zeigt Details und andere Antworten an.</string>
     <string name="quest_generic_surface_yes">Ohne Hinweis zulassen</string>
     <string name="quest_recycling_excrement_bag_dispenser">Es hat einen Kotbeutelspender</string>
@@ -330,7 +330,7 @@
     <string name="quest_osmose_settings_items">Ändern der zu ignorierenden Objekttypen</string>
     <string name="pref_auto_download_summary">Automatisches Herunterladen von Daten in der näheren Umgebung</string>
     <string name="access_manager_button_add_conditional">Bedingung hinzufügen</string>
-    <string name="quest_benchMaterial_wood">Holz</string>
+    <string name="quest_material_wood">Holz</string>
     <string name="general_warning">Warnung</string>
     <string name="quest_buildingColour_title">Welche Farbe hat das Gebäude\?</string>
     <string name="tree_custom_quest_import">Bereitstellen</string>
