@@ -37,12 +37,7 @@
     <string name="quest_monitor_net">Aktiv nach Netzwerkstandorten fragen\?</string>
     <string name="quest_settings_resurvey_all_opening_hours_title">Alle Öffnungszeiten neu ermitteln</string>
     <string name="quest_settings_osmose_level_low">Niedrig</string>
-    <string name="custom_overlay_color_message">Wähle Schlüssel aus, um Farben abzurufen. Akzeptiert reguläre Ausdrücke und verwendet übereinstimmende Tags, um eine Farbe zu erhalten. Die Farbe wird aus dem Schlüssel und Wert aller übereinstimmenden Schlüssel abgeleitet. Falls ein übereinstimmender Schlüssel :left/:right/:both enthält, wird er verwendet, um die jeweiligen Seiten eines Weges einzufärben, jedoch nicht die Mittellinie. Wenn keine Übereinstimmung vorhanden ist, ist die Farbe immer rot, was auf fehlende Daten hinweist. Kenntnisse über reguläre Ausdrücke sind für diese Funktion sehr hilfreich.
-\nWenn der Ausdruck kein regulärer Ausdruck ist, füge ein Präfix „!“ hinzu, um mit dem Wert zu beginnen, auf den sich die Bearbeitung von Tags konzentriert.
-\n
-\nBeispiele:
-\n„surface“ zeigt surface=asphalt in derselben Farbe und surface=concrete in einer anderen Farbe an
-\n„.*surface“ ist ähnlich, zeigt aber auch sidewalk:(left/right/both):surface=asphalt in einer Farbe und cycleway:(left/right/both):surface=asphalt in einer anderen Farbe an</string>
+    <string name="custom_overlay_color_message">Wähle Schlüssel aus, um Farben abzurufen. Akzeptiert reguläre Ausdrücke und verwendet übereinstimmende Tags, um eine Farbe zu erhalten. Die Farbe wird aus dem Schlüssel und Wert aller übereinstimmenden Schlüssel abgeleitet. Falls ein übereinstimmender Schlüssel :left/:right/:both enthält, wird er verwendet, um die jeweiligen Seiten eines Weges einzufärben, jedoch nicht die Mittellinie. Wenn keine Übereinstimmung vorhanden ist, ist die Farbe immer rot, was auf fehlende Daten hinweist. Kenntnisse über reguläre Ausdrücke sind für diese Funktion sehr hilfreich. \nWenn der Ausdruck kein regulärer Ausdruck ist, füge ein Präfix „!“ hinzu, um mit dem Wert zu beginnen, auf den sich die Bearbeitung von Tags konzentriert. \n \nBeispiele: \n„surface“ zeigt surface=asphalt in derselben Farbe und surface=concrete in einer anderen Farbe an \n„.*surface“ ist ähnlich, zeigt aber auch sidewalk:(left/right/both):surface=asphalt in einer Farbe und cycleway:(left/right/both):surface=asphalt in einer anderen Farbe an</string>
     <string name="move_node_message_external_source_addition">Beachte, dass sich die Position dieser Aufgabe nicht mit dem Knoten bewegen darf.</string>
     <string name="pref_update_local_statistics">Statistiken beim Hochladen aktualisieren</string>
     <string name="quest_contact_website">Wie lautet die Website dieses Ortes\?</string>
@@ -282,8 +277,7 @@
     <string name="import_presets_overlays_message">Importierte hinzufügen oder bestehende ersetzen? Wenn du „Ersetzen“ wählst, werden alle bereits vorhandenen Einträge entfernt.</string>
     <string name="add_access">Zugang hinzufügen…</string>
     <string name="pref_manual_download_cache_summary">Wenn diese Funktion deaktiviert ist, werden die Daten bei einem manuellen Download nicht erneut heruntergeladen, es sei denn, sie sind älter als 12 Stunden</string>
-    <string name="custom_overlay_filter_message">Ein Klick auf den unten stehenden Link öffnet Informationen zur Syntax der Elementauswahl in einem Browser. Beachte, dass bei der Auswahl von Elementen nach Alter die Einstellung des Wiedererhebungsintervalls das Ergebnis beeinflussen kann.
-\nDie Kontrollkästchen ersetzen den Teil „Knoten, Wege mit“.</string>
+    <string name="custom_overlay_filter_message">Ein Klick auf den unten stehenden Link öffnet Informationen zur Syntax der Elementauswahl in einem Browser. Beachte, dass bei der Auswahl von Elementen nach Alter die Einstellung des Wiedererhebungsintervalls das Ergebnis beeinflussen kann. \nDie Kontrollkästchen ersetzen den Teil „Knoten, Wege mit“.</string>
     <string name="quest_construction">Es ist im Bau bis…</string>
     <string name="quest_construction_value">Setze „construction=…“ oder lasse es leer, wenn du es nicht weißt</string>
     <string name="pref_quest_geometries_title">Geometrien der Aufgaben anzeigen</string>
@@ -542,8 +536,7 @@
     <string name="quest_parking_orientation_title">In welcher Ausrichtung parken Autos hier?</string>
     <string name="quest_parking_capacity_hint">Dazu gehören auch Sonderparkplätze wie für Behinderte, Familien, zum Aufladen von Elektrofahrzeugen usw. Blende die Aufgabe aus, wenn die Parkplätze nicht markiert und somit nicht zählbar sind.</string>
     <string name="quest_parking_capacity_title">Wie viele Autos können hier parken?</string>
-    <string name="quest_parking_capacity_disabled_default_disabled_msg">In SCEE hinzugefügte Aufgaben sind standardmäßig immer deaktiviert, da sie nicht immer beantwortet werden können und möglicherweise Wissen über das Thema und die Kennzeichnung erfordern.
-\nDiese Aufgabe wird nicht gestellt, wenn capacity:disabled=yes gesetzt ist. Wenn du sie auch angeben möchtest, ändere die Elementauswahl von „and !capacity:disabled“ in „and (!capacity:disabled or capacity:disabled=yes)“.</string>
+    <string name="quest_parking_capacity_disabled_default_disabled_msg">In SCEE hinzugefügte Aufgaben sind standardmäßig immer deaktiviert, da sie nicht immer beantwortet werden können und möglicherweise Wissen über das Thema und die Kennzeichnung erfordern. \nDiese Aufgabe wird nicht gestellt, wenn capacity:disabled=yes gesetzt ist. Wenn du sie auch angeben möchtest, ändere die Elementauswahl von „and !capacity:disabled“ in „and (!capacity:disabled or capacity:disabled=yes)“.</string>
     <string name="quest_subwayEntranceRef_hint">Referenznummer für diesen Eingang:</string>
     <string name="quest_subwayEntranceRef_disabled_msg">Dieser Quest ist standardmäßig deaktiviert, da die Beschilderung je nach Region und Betreiber sehr unterschiedlich ist.</string>
     <string name="quest_generalRef_hint">Referenznummer</string>
@@ -630,6 +623,11 @@
     <string name="file_provide">Datei auswählen</string>
     <string name="file_loading_error">Fehler beim Laden der Datei</string>
     <string name="pref_custom_geometry_title">Zeige Map-Features aus GeoJson-Datei an</string>
-    <string name="pref_custom_geometry_info">Wenn du Text anzeigen möchtest, muss er in der Eigenschaft \"name\" enthalten sein</string>
+    <string name="pref_custom_geometry_info">Wenn du Text anzeigen möchtest, muss dieser in der Eigenschaft „name“ stehen</string>
     <string name="pref_tile_maxzoom">Maximal unterstützter Zoom</string>
+    <string name="pref_really_all_notes_title">„Alle Notizen anzeigen“ bedeutet ALLE Notizen</string>
+    <string name="fixme_for_object">Eine andere Person hat ein „fixme“ hinzugefügt:</string>
+    <string name="pref_really_all_notes_summary">Wenn du alle Notizen anzeigen möchtest, zeige auch die von dir selbst erstellten (oder kommentierten) Notizen an</string>
+    <string name="pref_rotate_while_zooming_title">Rotieren beim Zoomen erlauben</string>
+    <string name="pref_rotate_angle_threshold_title">Schwellenwert für die Rotationsgeste</string>
 </resources>

@@ -83,9 +83,9 @@
     <string name="advanced_resurvey_message_date">代わりに使用する再調査間隔。確認日時からの経過が次の値の場合、上のキーを再調査します:</string>
     <string name="advanced_resurvey_hint_keys">カンマを使用して複数のキーを区切ってください</string>
     <string name="advanced_resurvey_hint_date">使用する形式: YYYY-MM-DD ({4桁の西暦年}-{2桁の月}-{2桁の日})</string>
-    <string name="day_night_priority">現在の昼間に適したクエストの優先度を上げる</string>
-    <string name="pref_day_night_title">昼間の抽出クエスト</string>
-    <string name="day_night_ignore">昼間を無視</string>
+    <string name="day_night_priority">現在の時間帯に適したクエストの優先度を上げる</string>
+    <string name="pref_day_night_title">時間帯の抽出クエスト</string>
+    <string name="day_night_ignore">時間帯を無視</string>
     <string name="pref_quest_settings_preset_title">プリセット毎のクエスト設定</string>
     <string name="pref_dynamic_quest_creation_title">動的にクエストを作成</string>
     <string name="pref_dynamic_quest_creation_summary">クエストは表示領域を読み込むときに作成されます。いくらか遅くなりますが、変更されたクエスト設定を即座に適用します。</string>
@@ -213,7 +213,7 @@
     <string name="import_presets_overlays_message">取り込まれたものを追加しますか?　あるいは既存のものを置き換えますか?　置き換えを選択すると、現在の存在する全てが削除されます。</string>
     <string name="pref_advanced_resurvey_summary">選択されたタグを強制的に再調査します</string>
     <string name="advanced_resurvey_message_keys">確認日時キーがない場合、これらのキーを常に再調査します。確認日時は関連したクエストに回答すると、常に追加されます</string>
-    <string name="day_night_visibility">現在の昼間に不適なクエストを表示しない</string>
+    <string name="day_night_visibility">現在の時間帯に不適なクエストを表示しない</string>
     <string name="pref_quest_settings_preset_summary">有効なとき、クエスト設定は現在のクエストのプリセットのみに効果があります</string>
     <string name="quest_settings_element_selection">このクエストに適格な要素を設定します。ブラウザ内で要素選抜表記法についての情報を開くには、<a href="https://github.com/Helium314/SCEE/blob/modified/CONTRIBUTING_A_NEW_QUEST.md#element-selection">ここをクリック</a>してください。</string>
     <string name="default_disabled_msg_poi_camera">この「クエスト」では、監視地物を桃色の点で表示します。点をクリックすると、詳細や他の回答が表示されます。</string>
@@ -359,8 +359,7 @@
     <string name="quest_guidepostName_hint">この地図または道標やガイドポストの記された(場所)の名前です。ここには参照番号を入力しないでください。</string>
     <string name="quest_tree_disabled_msg">回答が容易ではないため、初期設定ではこのクエストは無効化されています。種と属は、最もよく使用される値から取得される提案から選択する必要があります。検索可能な名前を持つ種の独自の一覧から候補を提供するには、 &lt;species&gt; (&lt;name&gt;) を含むファイルをデータ管理設定メニュー内に提供します。</string>
     <string name="quest_guidepost_disabled_msg">このクエストは、記される内容が地域や管理者によって大きく異なるため、初期設定では無効化されています。地域用の要素選択で絞り込む必要があるかもしれません(例:地図を追加または削除する、hiking=yesで要素のみを選択するなど)</string>
-    <string name="quest_parking_capacity_disabled_default_disabled_msg">SCEE内に追加されたクエストは、常に回答可能でない可能性と、当該題目とタグ付けの知識が必要な可能性があるため、初期設定では常に無効化されています。
-\nこのクエストは、 capacity:disabled=yes が設定されている場合は尋ねられません。これらも指定する場合は、要素選抜を「and !capacity:disabled」から「and (!capacity:disabled or capacity:disabled=yes)」に変更します</string>
+    <string name="quest_parking_capacity_disabled_default_disabled_msg">SCEE内に追加されたクエストは、常に回答可能でない可能性と、当該題目とタグ付けの知識が必要な可能性があるため、初期設定では常に無効化されています。 \nこのクエストは、 capacity:disabled=yes が設定されている場合は尋ねられません。これらも指定する場合は、要素選抜を「and !capacity:disabled」から「and (!capacity:disabled or capacity:disabled=yes)」に変更します</string>
     <string name="hide_button">非表示</string>
     <string name="move_node_message_external_source_addition">このクエストの場所はノードと共に移動しない可能性があることを心得てください。</string>
     <string name="quest_surface_value_metal_grid">格子状の金属</string>
@@ -438,8 +437,7 @@
     <string name="quest_generalRef_disabled_msg">これは、地域または管理者によって何を示すか大きく異なるため、初期設定では無効化されています。当該領域で要素選抜から抽出してください(例: 街灯を除去、地図を追加、 hiking=yes が付いている道標だけ選択、なと。)</string>
     <string name="quest_generalRef_hint">参照番号またはコード</string>
     <string name="custom_overlay_title">任意オーバーレイ</string>
-    <string name="custom_overlay_filter_message">ブラウザ内で要素選抜構文についての情報を開くには、以下のリンクをクリックしてください。経過時間で要素を選抜する場合、再調査間隔の設定が結果に影響を与える可能性があることを心得てください。
-\nチェックボックスは、「ノード、ウェイ」の部分を置き換えます。</string>
+    <string name="custom_overlay_filter_message">ブラウザ内で要素選抜構文についての情報を開くには、以下のリンクをクリックしてください。経過時間で要素を選抜する場合、再調査間隔の設定が結果に影響を与える可能性があることを心得てください。 \nチェックボックスは、「ノード、ウェイ」の部分を置き換えます。</string>
     <string name="custom_overlay_color_hint">同じ色で全て表示するには、空のままにしてください</string>
     <string name="custom_overlay_highlight_missing">欠落データを強調表示</string>
     <string name="custom_overlay_color_info">色付け詳細</string>
@@ -467,12 +465,7 @@
     <string name="access_time_limit">時間</string>
     <string name="outside_downloaded_area_warning">この位置はダウンロードされた領域の外側です。続行しますか?</string>
     <string name="close">閉じる</string>
-    <string name="custom_overlay_color_message">色を取得するキーを選択します。正規表現が可能で、一致するタグを使用して色を取得します。色は、一致する全てのキーの値に由来します。一致するキーに :left/right/both が含まれている場合、ウェイの各辺に色を付けるために使用されますが、中心線には色を付けません。一致するものがない場合、色は常に赤で、データが欠落していることを示します。正規表現に関する知識は、この機能に非常に役立ちます。
-\n表現が正規表現でない場合は、タグの編集時に注目された値から始まるように、接頭辞に「!」を付けます。
-\n
-\n例:
-\n「surface」は同じ色で surface=asphalt を、異なる色で surface=concrete を表示します
-\n「.*surface」は似ていますが、1色で sidewalk:(left/right/both):surface=asphalt を、他の色で cycleway:(left/right/both):surface=asphalt も表示します</string>
+    <string name="custom_overlay_color_message">色を取得するキーを選択します。正規表現が可能で、一致するタグを使用して色を取得します。色は、一致する全てのキーの値に由来します。一致するキーに :left/right/both が含まれている場合、ウェイの各辺に色を付けるために使用されますが、中心線には色を付けません。一致するものがない場合、色は常に赤で、データが欠落していることを示します。正規表現に関する知識は、この機能に非常に役立ちます。 \n表現が正規表現でない場合は、タグの編集時に注目された値から始まるように、接頭辞に「!」を付けます。 \n\n例: \n「surface」は同じ色で surface=asphalt を、異なる色で surface=concrete を表示します \n「.*surface」は似ていますが、1色で sidewalk:(left/right/both):surface=asphalt を、他の色で cycleway:(left/right/both):surface=asphalt も表示します</string>
     <string name="quest_utility_sewerage">下水道</string>
     <string name="quest_service_building_other">他の仕事用建物</string>
     <string name="quest_outdoor_seating_name_title">この場所にある屋外の席は、どの種類ですか?</string>
@@ -531,4 +524,20 @@
     <string name="pref_custom_geometry_title">GeoJsonファイルからの地物を表示</string>
     <string name="file_provide">ファイルを選択</string>
     <string name="file_loading_error">ファイルの読み込みエラー</string>
+    <string name="quest_lampType_lowPressureSodium">低圧ナトリウムランプ</string>
+    <string name="quest_lampType_gaslight">ガス灯</string>
+    <string name="quest_lampType_fluorescent">蛍光灯</string>
+    <string name="quest_saunaAvailability_title">サウナ(蒸し風呂)はここにありますか?</string>
+    <string name="quest_lampType_led">発光ダイオード/LED 照明</string>
+    <string name="quest_lampType_title">これは何の種類の照明ですか?</string>
+    <string name="quest_lampType_disabled_msg">回答が容易ではなく、また、地域によってはスパムのようになる可能性があるため、初期設定ではこのクエストは無効化されています。</string>
+    <string name="quest_lampType_halogen">ハロゲンランプ</string>
+    <string name="quest_lampType_incandescent">白熱電球</string>
+    <string name="quest_lampType_metalHalide">メタルハライドランプ</string>
+    <string name="quest_lampType_mercury">水銀灯</string>
+    <string name="quest_lampType_highPressureSodium">高圧ナトリウムランプ</string>
+    <string name="pref_custom_geometry_info">テキストを表示したい場合は、プロパティ「name」が必要です</string>
+    <string name="fixme_for_object">他の人が要修正(fixme)を追加しました:</string>
+    <string name="ban_check_fails">禁止版の確認に失敗しています。古い版を実行している可能性があります。更新をご検討ください。</string>
+    <string name="quest_maxspeed_conditional">時と場合による…</string>
 </resources>

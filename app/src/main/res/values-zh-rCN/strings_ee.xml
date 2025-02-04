@@ -198,16 +198,7 @@
     <string name="quest_osmose_message_for_element">项目类型 %1$s: %2$s</string>
     <string name="pref_read_reverse_button">反转</string>
     <string name="pref_delete_old_data_after_message">如果下载的 OSM 数据超过此天数，则将其删除</string>
-    <string name="pref_expert_mode_message">这将允许在 SCEE 中使用添加的任务，以及
-\n <li>编辑原始标签</li>
-\n <li>移动属于路径或关系的节点</li>
-\n <li>删除任意自由浮动的节点</li>
-\n <li>编辑应由注释屏蔽的要素</li>
-\n <li>在任何地方添加自由浮动节点</li>
-\n <li>改变任务的要素选择</li>
-\n
-\n 这仍然小于大多数其他编辑器所允许的范围，但不当使用可能会导致损坏数据，而这在 StreetComplete 中是可以避免的。请注意，启用专家模式后，您需要为自己的编辑显著承担更多责任。
-\n请在当您拥有除 StreetComplete 之外的 OSM 经验并了解自己在做什么时，再启用此设置。 \u0020</string>
+    <string name="pref_expert_mode_message">这将允许在 SCEE 中使用添加的任务，以及\n <li>编辑原始标签</li>\n <li>移动属于路径或关系的节点</li>\n <li>删除任意自由浮动的节点</li>\n <li>编辑应由注释屏蔽的要素</li>\n <li>在任何地方添加自由浮动节点</li>\n <li>改变任务的要素选择</li>\n\n 这仍然小于大多数其他编辑器所允许的范围，但不当使用可能会导致损坏数据，而这在 StreetComplete 中是可以避免的。请注意，启用专家模式后，您需要为自己的编辑显著承担更多责任。\n 请在当您拥有除 StreetComplete 之外的 OSM 经验并了解自己在做什么时，再启用此设置。</string>
     <string name="quest_is_pharmacy_dispensing_title">这家药房是否配发所有处方药？</string>
     <string name="import_error_db_version">导入错误：未知版本</string>
     <string name="pref_interval_summary">%d 秒</string>
@@ -402,8 +393,7 @@
     <string name="add_access">添加通行限制……</string>
     <string name="access_weight_limit">重量</string>
     <string name="create_relation_action_description">您已建立了关系，与 …</string>
-    <string name="custom_overlay_filter_message">单击下面的链接可在浏览器中打开有关元素选择语法的信息。请注意，按年龄选择元素时，重新调查间隔设置可能会影响结果。
-\n复选框取代了“节点、路径”部分。</string>
+    <string name="custom_overlay_filter_message">单击下面的链接可在浏览器中打开有关元素选择语法的信息。请注意，按年份选择元素时，重新调查间隔设置可能会影响结果。 \n复选框取代了“节点、路径”部分。</string>
     <string name="quest_construction_value">设置 \"construction=...\"，如果未知则留空</string>
     <string name="default_disabled_msg_viaFerrataScale">默认禁用此任务类型。因为铁索攀岩路线的评级非常主观，需要对其所使用的分级系统以及进行铁索攀岩时的专业知识。而这需要高级的登山技能。由于铁索攀岩难度没有全球通用的评级，因此这里使用德国的 Huesler 评级。</string>
     <string name="quest_service_building_oil_pumping_station_description">设施包括用于将油从一处抽送到另一处的泵</string>
@@ -587,15 +577,9 @@
     <string name="quest_buildingType_presbytery">教堂</string>
     <string name="quest_crossing_type_raised">高架人行横道</string>
     <string name="quest_piste_difficulty_advanced">高级</string>
-    <string name="quest_parking_capacity_disabled_default_disabled_msg">SCEE 中添加的任务默认始终处于禁用状态，因为它们可能并不总是可回答的，并且可能需要了解主题和标记。
-\n如果设置了 capacity:disabled=yes，则不会询问此任务。如果您也想指定它们，请将元素选择从“and !capacity:disabled”更改为“and (!capacity:disabled or capacity:disabled=yes)”</string>
+    <string name="quest_parking_capacity_disabled_default_disabled_msg">SCEE 中添加的任务默认始终处于禁用状态，因为它们可能并不总是可回答的，并且可能需要了解主题和标记。 \n如果设置了 capacity:disabled=yes，则不会询问此任务。如果您也想指定它们，请将元素选择从“and !capacity:disabled”更改为“and (!capacity:disabled or capacity:disabled=yes)”</string>
     <string name="quest_maxheight_answer_noSign_question">即使最高的卡车（至少约 4.5 米/15 英尺）是否有足够的空间可以轻松通过？</string>
-    <string name="custom_overlay_color_message">选择要从中获取颜色的键。接受正则表达式并使用匹配的标签来获取颜色。颜色来自所有匹配键的键和值。如果匹配的键包含：left/right/both，它将用于为道路的两侧着色，但不为中心线着色。如果没有匹配，颜色始终为红色，表示缺少数据。正则表达式知识对于此功能非常有帮助。
-\n如果表达式不是正则表达式，请在编辑标签时以“!”开头以重点值开头。
-\n
-\n示例：
-\n“surface”以相同颜色显示 surface=asphalt，以不同颜色显示 surface=concrete
-\n“.*surface”类似，但也以一种颜色显示 sidewalk:(left/right/both):surface=asphalt，以另一种颜色显示 cycleway:(left/right/both):surface=asphalt</string>
+    <string name="custom_overlay_color_message">选择要从中获取颜色的键。接受正则表达式并使用匹配的标签来获取颜色。颜色来自所有匹配键的键和值。如果匹配的键包含：left/right/both，它将用于为道路的两侧着色，但不为中心线着色。如果没有匹配，颜色始终为红色，表示缺少数据。正则表达式知识对于此功能非常有帮助。 \n如果表达式不是正则表达式，请在编辑标签时以“!”开头以重点值开头。 \n \n示例： \n“surface”以相同颜色显示 surface=asphalt，以不同颜色显示 surface=concrete \n“.*surface”类似，但也以一种颜色显示 sidewalk:(left/right/both):surface=asphalt，以另一种颜色显示 cycleway:(left/right/both):surface=asphalt</string>
     <string name="quest_surface_value_chipseal">碎石封层</string>
     <string name="quest_buildingType_barn">谷仓</string>
     <string name="quest_buildingType_cowshed">牛棚</string>
@@ -637,4 +621,10 @@
     <string name="file_provide">选择文件</string>
     <string name="file_loading_error">加载文件时出错</string>
     <string name="pref_tile_maxzoom">最大支持的缩放</string>
+    <string name="pref_custom_geometry_info">如果要显示文本，它必须在“name”属性中</string>
+    <string name="pref_really_all_notes_title">“显示所有注释”是指所有注释</string>
+    <string name="pref_really_all_notes_summary">请求显示所有注释时，甚至显示您自己创建（或评论）的注释</string>
+    <string name="fixme_for_object">另外一个人添加了一个 fixme：</string>
+    <string name="pref_rotate_while_zooming_title">允许缩放时旋转</string>
+    <string name="pref_rotate_angle_threshold_title">旋转手势的阈值</string>
 </resources>

@@ -510,8 +510,7 @@
     <string name="quest_piste_difficulty_advanced">Продвинутый</string>
     <string name="quest_parking_orientation_title">В каком направлении здесь паркуются автомобили?</string>
     <string name="quest_parking_capacity_title">Сколько машин может здесь припарковаться?</string>
-    <string name="quest_parking_capacity_disabled_default_disabled_msg">Задания, добавленные в SCEE, по умолчанию всегда отключены, так как они не всегда могут быть ответственными и могут требовать знания темы и наличия тегов.
-\nЭтот квест не будет запрашиваться, если установлено значение capacity:disabled=yes. Если вы хотите включить их, измените выбор элемента с «and !capacity:disabled» на «and (!capacity:disabled or capacity:disabled=yes)»</string>
+    <string name="quest_parking_capacity_disabled_default_disabled_msg">Задания, добавленные в SCEE, по умолчанию всегда отключены, так как они не всегда могут быть ответственными и могут требовать знания темы и наличия тегов. \nЭтот квест не будет запрашиваться, если установлено значение capacity:disabled=yes. Если вы хотите включить их, измените выбор элемента с «and !capacity:disabled» на «and (!capacity:disabled or capacity:disabled=yes)»</string>
     <string name="quest_parking_capacity_disabled_answer_yes">Есть, но количество неясно</string>
     <string name="quest_parking_capacity_hint">Это также включает в себя специальные места, например, для людей с ограниченными возможностями, семей, для зарядки и т.д. Скройте задание, если парковочные места не отмечены и, следовательно, не поддаются подсчету</string>
     <string name="quest_parking_capacity_disabled_title">Сколько здесь парковочных мест для инвалидов?</string>

@@ -607,5 +607,10 @@
     <string name="pref_custom_geometry_title">Térképelemek megjelenítése GeoJson fájlból</string>
     <string name="file_provide">Fájl választása</string>
     <string name="file_loading_error">Nem sikerült betölteni a fájlt</string>
-    <string name="pref_custom_geometry_info">Ha szöveget szeretnél megjeleníteni, az benne \nkell legyen a name tulajdonságban</string>
+    <string name="pref_custom_geometry_info">Ha szöveget szeretnél megjeleníteni, az benne kell legyen a „name” tulajdonságban</string>
+    <string name="pref_really_all_notes_title">Az „Összes jegyzet megjelenítése” az ÖSSZES jegyzetet jelenti</string>
+    <string name="pref_really_all_notes_summary">Ha az összes jegyzet megjelenítését kéred, megjelennek az általad létrehozott és kommentált jegyzetek is</string>
+    <string name="fixme_for_object">Valaki más hozzáadott egy fixme-t:</string>
+    <string name="pref_rotate_angle_threshold_title">A forgatási gesztus küszöbértéke</string>
+    <string name="pref_rotate_while_zooming_title">Forgatás engedélyezése nagyítás közben</string>
 </resources>

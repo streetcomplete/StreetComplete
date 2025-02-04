@@ -625,8 +625,13 @@
     <string name="quest_lampType_title">Hvad er det for en type lampe?</string>
     <string name="quest_lampType_disabled_msg">Denne opgave er deaktiveret som standard, fordi den ikke er let at besvare og kan være irriterende afhængigt af regionen.</string>
     <string name="pref_custom_geometry_title">Vis kortobjekter fra en GeoJson-fil</string>
-    <string name="pref_custom_geometry_info">Hvis du vil vise tekst, skal den være i \nnavn-egenskaben</string>
+    <string name="pref_custom_geometry_info">Hvis du vil vise tekst, skal den være i \"navn\"-egenskaben</string>
     <string name="file_provide">Vælg fil</string>
     <string name="file_loading_error">Fejl ved indlæsning af fil</string>
     <string name="pref_tile_maxzoom">Maks. understøttet zoom</string>
+    <string name="pref_really_all_notes_title">“Vis alle bemærkninger“ betyder ALLE bemærkninger</string>
+    <string name="pref_really_all_notes_summary">Når du beder om at få vist alle bemærkninger, vises også bemærkninger, som du selv har oprettet (eller kommenteret på)</string>
+    <string name="fixme_for_object">En anden person tilføjede et fixme:</string>
+    <string name="pref_rotate_while_zooming_title">Tillad rotation, mens der zoomes</string>
+    <string name="pref_rotate_angle_threshold_title">Tærskel for rotationsbevægelse</string>
 </resources>
