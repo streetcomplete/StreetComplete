@@ -4,6 +4,7 @@ Q293229: Acer shangszeense
 Q6811154: Acer yuii
 Q7404878: Alaskavide
 Q525223: Albizia berteriana
+Q211457: Aleppotall
 Q1746549: Alfredsvide
 Q20720096: Alnus viridis
 Q2093169: Ambraträd
@@ -22,22 +23,31 @@ Q793606: Azarolhagtorn
 Q601203: Balkanlönn
 Q15527923: Balkanoxel
 Q149471: Balsampoppel
+Q1405636: Banjan
+Q806838: Banksianatall
 Q275160: Benjaminfikus
 Q158608: Bergek
 Q978755: Berggran
 Q163039: Bergkörsbär
 Q163774: Bergoxel
+Q147475: Bergtall
 Q158425: Blekvide
 Q854714: Blodek
+Q157522: Blyerts-en
 Q161468: Blåeukalyptus
+Q146025: Blågran
 Q156831: Bohuslind
 Q149327: Bulgarisk gran
 Q1378390: Buskmagnolia
 Q470006: Bäralm
 Q1743596: Bärapel
+Q159447: Carambola
 Q114226699: Carya lecontei
+Q310063: Castanopsis purpurella
+Q147278: Cembratall
 Q714180: Citronfikus
 Q145939: Coloradogran
+Q165091: Contortatall
 Q5182569: Crataegus jonesae
 Q137046: Cylindermagnolia
 Q159476: Daggvide
@@ -49,10 +59,12 @@ Q15235699: Diospyros quiloënsis
 Q15245351: Diospyros vera
 Q156687: Douglasgran
 Q918920: Douglashagtorn
+Q157952: Drakblodsträd
 Q161388: Dvärglönn
 Q160019: Dvärgmandel
 Q163578: Dvärgvide
 Q5279620: Ebenus geminata
+Q165387: Engelmannsgran
 Q65066343: Eucalyptus clelandii
 Q15396312: Eucalyptus cometae-vallis
 Q15397757: Eucalyptus mackintii
@@ -60,6 +72,7 @@ Q15356262: Eucalyptus taylori
 Q930814: Everstbjörk
 Q10493569: Fagerrönn
 Q159528: Feberträd
+Q183497: Fenicisk en
 Q1801446: Filberthassel
 Q2532563: Finnoxel
 Q819208: Fiskstjärtsmagnolia
@@ -73,6 +86,7 @@ Q43284: Ginkgo
 Q15634290: Ginnalalönn
 Q158987: Glanshägg
 Q164418: Gleditsia caspia
+Q41350: Grapefrukt
 Q854892: Grekgran
 Q17271746: Grenmarsoxel
 Q630288: Grå valnöt
@@ -83,6 +97,7 @@ Q159570: Gudaträd
 Q1499241: Gulbjörk
 Q159620: Gulblommig hästkastanj
 Q164645: Gullvide
+Q460523: Gultall
 Q124969: Hassel
 Q1768635: Himalaja-en
 Q747652: Himalajatall
@@ -93,10 +108,13 @@ Q3206440: Hybridmagnolia
 Q163550: Häckoxel
 Q26899: Hästkastanj
 Q674096: Ishavsvide
+Q1465334: Japansk gran
 Q1132580: Japansk hästkastanj
+Q1144815: Japansk idegran
 Q658749: Japansk krypen
 Q147439: Japansk lärk
 Q942409: Japansk magnolia
+Q41505: Japansk mispel
 Q917187: Japansk ädelcypress
 Q165321: Japanskt prydnadskörsbär
 Q158912: Jolster
@@ -111,12 +129,15 @@ Q2725382: Kalmatplommon
 Q163544: Kamtjatkabjörk
 Q2081304: Kanadahagtorn
 Q734085: Kanadalärk
+Q756191: Kanarietall
 Q1283223: Kaskadgran
 Q163831: Katalpa
 Q121749: Kaukasisk vingnöt
 Q157393: Kejsarträd
 Q158178: Kermesek
 Q1074099: Kinesisk alm
+Q1631520: Kinesisk björk
+Q157697: Kinesisk en
 Q1144805: Kinesisk katalpa
 Q182756: Kinesisk poppel
 Q844835: Kinesträd
@@ -129,6 +150,7 @@ Q10878191: Krikon
 Q147388: Kryptomeria
 Q28141: Krypvide
 Q147434: Kustgran
+Q43300: Kvitten
 Q161253: Kärrek
 Q227763: Körsbärsbjörk
 Q158642: Körsbärskornell
@@ -140,6 +162,8 @@ Q159484: Lavendelvide
 Q10561666: Liljemagnolia
 Q158746: Lind
 Q1258395: Lingonkörsbär
+Q10937885: Lithocarpus kawakamii
+Q15244665: Lithocarpus lepidocarpus
 Q368248: Loblollytall
 Q2013395: Luddhagtorn
 Q627393: Luddkörsbär
@@ -148,14 +172,17 @@ Q146048: Lärk
 Q28127564: Magnolia magnifolia
 Q15493122: Magnolia martini
 Q1439079: Magnoliafikus
+Q146021: Makedonisk tall
 Q1373854: Manchurisk björk
 Q1205178: Manchurisk strimlönn
 Q311361: Manchurisk valnöt
 Q15545507: Mandel
 Q157532: Mandelpil
 Q5487185: Manglietia sinica
+Q170662: Mangostan
 Q161421: Manna-ask
 Q3595431: Melicope lunu-ankenda
+Q748888: Montereytall
 Q158785: Naverlönn
 Q1166864: Nikkogran
 Q17239633: Nordlandsoxel
@@ -168,9 +195,11 @@ Q161882: Odonvide
 Q37083: Olivträd
 Q5222883: Oljeeukalyptus
 Q161105: Orientalisk platan
+Q1145286: Orientgran
 Q42890706: Ostrya multinervis
 Q27980: Oxel
 Q926249: Pagodkornell
+Q288558: Pagodträdssläktet
 Q1138533: Papegojbuske
 Q76971: Pappersbjörk
 Q990982: Paraplymagnolia
@@ -215,6 +244,7 @@ Q4195476: Risvide
 Q157417: Robinia
 Q2727171: Rosenmandel
 Q894236: Rosenrobinia
+Q161070: Rumsgran
 Q159553: Rundhagtorn
 Q162728: Rysk lönn
 Q1784356: Räffelbjörk
@@ -222,6 +252,7 @@ Q1818806: Rödal
 Q161164: Rödask
 Q163779: Rödblommig hästkastanj
 Q147525: Rödek
+Q533674: Röden
 Q39708: Rödvide
 Q1520764: Rött mullbär
 Q10926727: Salix ernestii
@@ -229,7 +260,9 @@ Q17562337: Salix farrae
 Q481717: Salix sachalinensis
 Q2456496: Sammetsvide
 Q838963: Sandpäron
+Q875262: Satsuma
 Q4992235: Scharlakanshagtorn
+Q147824: Serbgran
 Q2233487: Shensigran
 Q738571: Sibirisk apel
 Q2995056: Sibirisk hagtorn
@@ -260,18 +293,24 @@ Q849381: Spanskgran
 Q159086: Spetshagtorn
 Q916961: Sporrhagtorn
 Q218155: Stenek
+Q1135236: Stinkfrukt
 Q839507: Stjärnmagnolia
 Q1093540: Storbladig magnolia
 Q2589489: Strandal
+Q837410: Styvbarrig tall
 Q10783651: Styvvide
 Q161040: Svart mullbär
 Q852572: Svart valnöt
 Q1510231: Svartbjörk
+Q218425: Svartgran
 Q745228: Svarthagtorn
 Q147064: Svartpoppel
+Q145954: Svarttall
 Q159122: Svartvide
 Q750217: Sykomor
+Q148630: Sävenbom
 Q17238869: Sörlandsoxel
+Q516494: Tangerin
 Q602226: Tasmansk väneukalyptus
 Q161511: Trubbhagtorn
 Q17165418: Trädgårdsen
@@ -304,12 +343,15 @@ Q147492: Vresalm
 Q157230: Weymouthtall
 Q1040016: Wilsonmagnolia
 Q17165388: Xanthocyparis vietnamensis
+Q3355098: apelsin
 Q37453: aprikos
 Q156907: ask
 Q428023: balsamgran
 Q157519: bindvide
+Q146149: bok
 Q157628: dvärgbjörk
 Q165145: ek
+Q26325: en
 Q36146: fikon
 Q1498748: fiolfikus
 Q3469828: glansvide
@@ -318,6 +360,8 @@ Q145992: gran
 Q157641: gråal
 Q165424: hägg
 Q157677: hönsbär
+Q179729: idegran
+Q42385: kakao
 Q526549: katsura
 Q156904: klibbal
 Q1335724: klippoxel
@@ -326,7 +370,9 @@ Q390100: koreagran
 Q161116: kungsmagnolia
 Q26745: lönn
 Q39918: mandel
+Q3919027: mango
 Q13189: persika
+Q44120: plommon
 Q731443: praktmagnolia
 Q146281: päron
 Q146198: rönn
@@ -336,6 +382,7 @@ Q147498: skogsalm
 Q131517: surkörsbär
 Q159565: sälg
 Q165137: sötkörsbär
+Q133128: tall
 Q271582: terpentintall
 Q156944: tysklönn
 Q46871: valnöt

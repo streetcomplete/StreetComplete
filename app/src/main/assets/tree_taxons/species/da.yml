@@ -12,10 +12,12 @@ Q157650: Almindelig Tretorn
 Q163831: Almindelig Trompetkrone
 Q46871: Almindelig Valnød
 Q36146: Almindelig figen
+Q179729: Almindelig taks
 Q158657: Almindelig Æble
 Q146992: Almindelig Ædelgran
 Q163546: Alpe-Røn
 Q469576: Amerikansk Asp
+Q149219: Amerikansk Bøg
 Q468659: Amerikansk Hassel
 Q158356: Amerikansk Kaki
 Q470006: Amerikansk Nældetræ
@@ -24,7 +26,9 @@ Q623489: Atlas-Ceder
 Q275160: Birkefigen
 Q879016: Bitter Hickory
 Q4993133: Bjerg-Kirsebær
+Q157522: Blyant-Ene
 Q1768635: Blå Ene
+Q146025: Blå-Gran
 Q158458: Blågrå Pil
 Q159188: Bredbladet Sølvblad
 Q1074872: Bunge-Fyr
@@ -32,10 +36,13 @@ Q162440: Busk-Hestekastanje
 Q158590: Bånd-Pil
 Q1743596: Bær-Æble
 Q146110: Bævre-Asp
+Q628329: Calabrisk Fyr
 Q1399164: Californisk Flodceder
 Q1420828: Canadisk Hønsebær
 Q149622: Canadisk Poppel
+Q147278: Cembra-Fyr
 Q756334: Dahurisk lærk
+Q157952: Drageblodstræ (dracaena draco)
 Q334697: Duetræ
 Q159476: Dug-Pil
 Q161415: Dun-Eg
@@ -55,11 +62,13 @@ Q3269605: Fuji-Kirsebær
 Q1470571: Fujiyama-Æble
 Q1693676: Glansbladet Hvidtjørn
 Q158987: Glansbladet Hæg
+Q41350: Grapefrugt
 Q630288: Grå valnød
 Q157641: Grå-El
 Q149553: Grå-Poppel
 Q156687: Grøn Douglasgran
 Q20720096: Grøn-el
+Q460523: Gul-Fyr
 Q160576: Gummi-Figen
 Q916961: Hanespore-Hvidtjørn
 Q1631932: Have-Løn
@@ -73,14 +82,20 @@ Q128116: Hvid-Gran
 Q156918: Hvid-Pil
 Q11126644: Håret Glansmispel
 Q15634290: Ildløn
+Q1078985: Japansk Bøg
 Q165321: Japansk Kirsebær
 Q147388: Japansk Kryptomeria
 Q269224: Japansk Løn
 Q1144822: Japansk Prydæble
 Q1210209: Japansk Røn
+Q1144815: Japansk Taks
 Q147439: Japansk lærk
+Q1190084: Jesso-Gran
 Q29488: Judastræ
+Q42385: Kakao
 Q163544: Kamtjatka-Birk
+Q756191: Kanariefyr
+Q159447: Karambol
 Q121749: Kaukasisk Vingevalnød
 Q4215118: Kaukasisk nældetræ
 Q157393: Kejsertræ
@@ -92,6 +107,7 @@ Q158642: Kirsebær-Kornel
 Q218417: Kirtelbirk
 Q1335724: Klippe-Røn
 Q978755: Klippe-Ædelgran
+Q165091: Klitfyr
 Q728441: Korea-Kornel
 Q390100: Koreansk Ædelgran
 Q156137: Kork-Eg
@@ -106,6 +122,7 @@ Q61105: Libanon-Ceder
 Q149392: Manchurisk Kirsebær
 Q5487185: Manglietia sinica
 Q161421: Manna-Ask
+Q184300: Middelhavs-Ene
 Q1529852: Mississippinældetræ
 Q750217: Morbær-Figen
 Q10949262: Moupinepil
@@ -113,13 +130,17 @@ Q148920: Nordmannsgran
 Q17275264: Nutkacypres
 Q972950: Næb-Hassel
 Q2564409: Oregonæble
+Q1543749: Orientalsk Bøg
+Q1145286: Orientalsk Gran
 Q1088271: Orientalsk avnbøg
 Q161105: Orientalsk platan
+Q288558: Pagodetræ-slægten
 Q1138533: Papegøjebusk
 Q203985: Papirbark-Løn
 Q163760: Park-Lind
 Q161406: Parykbusk
 Q333877: Pekan
+Q178116: Pensel-Fyr
 Q15230691: Perle-Røn
 Q164130: Pile-Kornel
 Q683819: Pontisk Eg
@@ -131,6 +152,7 @@ Q162728: Russisk Løn
 Q163779: Rød Hestekastanje
 Q161416: Rød Kornel
 Q161364: Rød Løn
+Q1631520: Rød-Birk
 Q156904: Rød-El
 Q147525: Rødeg
 Q145992: Rødgran
@@ -142,6 +164,7 @@ Q4992558: Sargents Æble
 Q159565: Selje-Pil
 Q27980: Selje-Røn
 Q12209062: Sibirisk balsampoppel
+Q146021: Silke-Fyr
 Q147426: Sitka-Gran
 Q854714: Skarlagen-Eg
 Q4992235: Skarlagen-Hvidtjørn
@@ -159,6 +182,8 @@ Q917187: Solcypres
 Q5279626: Sort Ibenholt
 Q161040: Sort Morbær
 Q852572: Sort valnød
+Q145954: Sort-Fyr
+Q218425: Sort-Gran
 Q849381: Spansk Ædelgran
 Q158425: Spyd-Pil
 Q218155: Sten-Eg
@@ -170,15 +195,19 @@ Q159558: Storfrugtet Røn
 Q2946415: Stort Hjertetræ
 Q271582: Strand-Fyr
 Q1190312: Stribet Løn
+Q161070: Stuegran
 Q214733: Sukker-Løn
 Q161253: Sump-Eg
 Q131517: Sur-Kirsebær
 Q157677: Svensk Hønsebær
+Q147824: Søjle-Gran
 Q1283223: Sølv-Gran
 Q161382: Sølv-Lind
 Q158301: Sølv-Løn
 Q146269: Sølv-Poppel
+Q476655: Sørge-Gran
 Q147459: Tarmvrid-Røn
+Q6292155: Taxus x media
 Q43284: Tempeltræ
 Q164371: Tibetansk Kirsebær
 Q2717846: Tibettræ
@@ -198,21 +227,30 @@ Q47161: abild
 Q37453: abrikos
 Q156944: ahorn
 Q156907: almindelig ask
+Q146149: almindelig bøg
+Q26325: almindelig ene
 Q124969: almindelig hassel
 Q161374: almindelig platan
 Q146281: almindelig pære
 Q146198: almindelig røn
 Q158783: almindelig tulipantræ
 Q18674606: almindelig æble
+Q3355098: appelsin
+Q147475: bjergfyr
+Q44120: blommetræ
 Q157624: dun-birk
 Q13189: ferskentræ
 Q157540: gråpil
 Q28141: krybende pil
+Q43300: kvæde
 Q39918: mandel
+Q3919027: mango
 Q146951: mirabel
 Q158785: navr
 Q37083: oliven
 Q106094: pinje
+Q148630: sevenbom
+Q133128: skovfyr
 Q129018: slåen
 Q26745: spids-løn
 Q156895: vortebirk

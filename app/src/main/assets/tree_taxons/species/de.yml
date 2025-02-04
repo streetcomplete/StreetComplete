@@ -6,7 +6,10 @@ Q18471127: Acer x veitchii
 Q2634408: Ades Mehlbeere
 Q383086: Afghanische Esche
 Q161374: Ahornblättrige Platane
+Q1465334: Alcocks-Fichte
+Q211457: Aleppo-Kiefer
 Q2066393: Alligator-Wacholder
+Q149219: Amerikanische Buche
 Q285587: Amerikanische Eberesche
 Q157650: Amerikanische Gleditschie
 Q468664: Amerikanische Hainbuche
@@ -14,6 +17,8 @@ Q468659: Amerikanische Hasel
 Q468698: Amerikanische Kastanie
 Q163981: Amerikanische Linde
 Q157739: Amerikanische Platane
+Q469151: Amerikanische Rot-Fichte
+Q2045958: Amerikanische Rot-Kiefer
 Q469220: Amerikanische Schwarz-Weide
 Q469316: Amerikanische Strauch-Birke
 Q469382: Amerikanische Ulme
@@ -21,6 +26,7 @@ Q469555: Amerikanische Weiß-Eiche
 Q469524: Amerikanische Wildpflaume
 Q469576: Amerikanische Zitterpappel
 Q469652: Amerikanischer Amberbaum
+Q469695: Amerikanischer Erdbeerbaum
 Q470006: Amerikanischer Zürgelbaum
 Q149392: Amur-Kirsche
 Q481717: Amur-Weide
@@ -41,6 +47,8 @@ Q805008: Balkan-Ahorn
 Q149471: Balsam-Pappel
 Q428023: Balsam-Tanne
 Q805516: Balsam-Weide
+Q806838: Banks-Kiefer
+Q1405636: Banyan-Feige
 Q149622: Bastard-Schwarz-Pappel
 Q148939: Baum-Hasel
 Q814408: Behaarte Esche
@@ -48,6 +56,7 @@ Q168335: Benthams Hartriegel
 Q819208: Berg-Magnolie
 Q819226: Berg-Wacholder
 Q156944: Bergahorn
+Q147475: Bergkiefer
 Q147498: Bergulme
 Q822052: Bermuda-Wacholder
 Q1768635: Beschuppter Wacholder
@@ -56,6 +65,7 @@ Q117118875: Betula pulchella Dippel (1891)
 Q111626427: Betula pulchella Lindb. ex Kindb. (1909)
 Q117120667: Betula pulchella Saporta (1865)
 Q117119903: Betula pulchella V.P.Nikitin (1976)
+Q594993: Biegsame Kiefer
 Q182756: Birken-Pappel
 Q275160: Birkenfeige
 Q866150: Bischofs-Kiefer
@@ -86,6 +96,7 @@ Q167027: Champaka
 Q1072578: Chihuahua-Fichte
 Q1073825: Chinesische Balsam-Pappel
 Q1073867: Chinesische Douglasie
+Q1073864: Chinesische Eibe
 Q714180: Chinesische Feige
 Q1021983: Chinesische Gleditschie
 Q1073905: Chinesische Hasel
@@ -100,14 +111,17 @@ Q1074099: Chinesische Ulme
 Q1074153: Chinesischer Apfel
 Q1074224: Chinesischer Spitz-Ahorn
 Q1074257: Chinesischer Tulpenbaum
+Q157697: Chinesischer Wacholder
 Q481767: Cissusblättriger Ahorn
 Q117158626: Cornus paucinervis Ettingsh. (1868) non Heer (1859)
 Q21260617: Cornus paucinervis Hance (1881) non Heer (1859)
 Q15224907: Cotinus nana
+Q1137001: Coulter-Kiefer
 Q15537485: Crataegus cordata Elliott (1821)
 Q5182569: Crataegus jonesae
 Q3002185: Crataegus laevigata
 Q15246005: Cyclobalanopsis annulata
+Q70010716: Cyclobalanopsis fleuryi
 Q11126768: Cyclobalanopsis kerrii
 Q756334: Dahurische Lärche
 Q657935: Davids-Ahorn
@@ -121,7 +135,9 @@ Q15346008: Diospyros tesselaria
 Q18168742: Diospyros vera (Lour.) A.Chev. (1919) non E.W.Berry (1911)
 Q181318: Dornige Ölweide
 Q1257409: Dreiblütiger Ahorn
+Q948827: Dreilappige Papau
 Q941891: Dreispitz-Ahorn
+Q1135236: Durian
 Q146198: Eberesche
 Q36146: Echte Feige
 Q157960: Echte Mehlbeere
@@ -130,9 +146,12 @@ Q46871: Echte Walnuss
 Q1283223: Edel-Tanne
 Q22699: Edelkastanie
 Q1144955: Einblättrige Esche
+Q583885: Einblättrige Kiefer
 Q161511: Eingriffeliger Weißdorn
+Q1308659: Einsamiger Wacholder
 Q844131: Eisen-Birke
 Q147459: Elsbeere
+Q165387: Engelmann-Fichte
 Q1342743: Englische Ulme
 Q1193791: Erlenblättrige Eiche
 Q163544: Ermans Birke
@@ -140,6 +159,7 @@ Q161166: Eschen-Ahorn
 Q146110: Espe
 Q39277600: Eucalyptus angusta Maiden (1922) non Velen. (1885)
 Q1374188: Euphrat-Pappel
+Q179729: Europäische Eibe
 Q1367533: Europäische Hopfenbuche
 Q146048: Europäische Lärche
 Q255375: Europäischer Zürgelbaum
@@ -175,6 +195,7 @@ Q11144459: Ficus undulata S.S.Chang (1984) non Buch.-Ham. (1827)
 Q147492: Flatterulme
 Q161415: Flaumeiche
 Q163779: Fleischrote Rosskastanie
+Q1430041: Florida-Eibe
 Q1024066: Fluss-Esche
 Q716580: Formosa-Tanne
 Q1437747: Formosa-Wacholder
@@ -182,15 +203,18 @@ Q161388: Französischer Ahorn
 Q1451343: Fraser-Tanne
 Q50841461: Fraxinus caudata J.L.Wu (1987) non Dorf (1933)
 Q163718: Fränkische Mehlbeere
+Q950688: Fuchsschwanz-Kiefer
 Q269224: Fächer-Ahorn
 Q1001011: Färber-Eiche
 Q1498748: Geigen-Feige
 Q1499241: Gelb-Birke
+Q460523: Gelb-Kiefer
 Q2611816: Gelbe Eiche
 Q159620: Gelbe Rosskastanie
 Q156907: Gemeine Esche
 Q145992: Gemeine Fichte
 Q124969: Gemeine Hasel
+Q26325: Gemeiner Wacholder
 Q1518121: Geschwänzter Ahorn
 Q156687: Gewöhnliche Douglasie
 Q157417: Gewöhnliche Robinie
@@ -201,13 +225,16 @@ Q163831: Gewöhnlicher Trompetenbaum
 Q43284: Ginkgo
 Q159412: Glanz-Weide
 Q1529852: Glattblättriger Zürgelbaum
+Q1532567: Glänzende Buche
 Q936888: Grannen-Kiefer
 Q1070125: Grannen-Tanne
+Q41350: Grapefruit
 Q1543680: Grau-Birke
 Q157641: Grau-Erle
 Q149553: Grau-Pappel
 Q854892: Griechische Tanne
 Q601203: Griechischer Ahorn
+Q773892: Griechischer Wacholder
 Q1306148: Großblatt-Pappel
 Q1439079: Großblättrige Feige
 Q1093540: Großblättrige Magnolie
@@ -235,6 +262,7 @@ Q163667: Heilinger Bastard-Mehlbeere
 Q560073: Hersbrucker Mehlbeere
 Q1543689: Herzblättrige Erle
 Q1038027: Herzblättrige Hainbuche
+Q186553: Himalaja-Eibe
 Q1548216: Himalaja-Fichte
 Q930814: Himalaya-Birke
 Q1619005: Himalaya-Tanne
@@ -252,7 +280,9 @@ Q161116: Immergrüne Magnolie
 Q573132: Indische Rosskastanie
 Q1679764: Jalisco-Wacholder
 Q165321: Japanische Blütenkirsche
+Q1683271: Japanische Buche
 Q1683278: Japanische Douglasie
+Q1144815: Japanische Eibe
 Q1196169: Japanische Erle
 Q855963: Japanische Gleditschie
 Q161435: Japanische Hainbuche
@@ -263,22 +293,32 @@ Q717827: Japanische Kastanie
 Q1034859: Japanische Kastanien-Eiche
 Q147439: Japanische Lärche
 Q1132580: Japanische Rosskastanie
+Q854884: Japanische Schwarzkiefer
 Q1655870: Japanische Walnuss
+Q41505: Japanische Wollmispel
 Q149269: Japanischer Ahorn
 Q526549: Japanischer Kuchenbaum
+Q288558: Japanischer Schnurbaum
 Q1683370: Japanischer Wildapfel
+Q251370: Jeffreys Kiefer
 Q50843223: Juglans sieboldiana Maxim. (1873) non Göpp. (1855)
 Q1721168: Kahle Weide
 Q540650: Kahler Ahorn
+Q42385: Kakaobaum
 Q158482: Kaki
 Q164301: Kalifornische Platane
 Q540646: Kalifornische Rosskastanie
 Q693392: Kalifornische Schwarzeiche
 Q890824: Kalifornische Walnuss
 Q1377986: Kalifornische Weiß-Eiche
+Q1722255: Kalifornischer Wacholder
+Q1723511: Kanadische Eibe
 Q149319: Kanadische Schwarz-Pappel
 Q1420828: Kanadischer Hartriegel
 Q2452407: Kanadischer Judasbaum
+Q756191: Kanarische Kiefer
+Q2900918: Karibische Kiefer
+Q1729344: Karibischer Wacholder
 Q159127: Karribaum
 Q917216: Kaschmir-Zypresse
 Q164418: Kaspische Gleditschie
@@ -289,7 +329,9 @@ Q121749: Kaukasische Flügelnuss
 Q1353171: Kaukasische Linde
 Q1695645: Kaukasische Strauch-Birke
 Q9579481: Kaukasus-Ahorn
+Q1145286: Kaukasus-Fichte
 Q116078: Kaukasusapfel
+Q1078985: Kerb-Buche
 Q158178: Kermes-Eiche
 Q974954: Kilikische Tanne
 Q1743596: Kirschapfel
@@ -311,15 +353,19 @@ Q1205178: Koreanischer Schlangenhaut-Ahorn
 Q1784359: Koreanischer Zürgelbaum
 Q156137: Korkeiche
 Q158642: Kornelkirsche
+Q391374: Koyama-Fichte
 Q163578: Kraut-Weide
 Q1788044: Kreta-Ahorn
 Q121427: Kriech-Wacholder
 Q28141: Kriech-Weide
 Q10878191: Kriechen-Pflaume
 Q159657: Krim-Linde
+Q2241617: Kuba-Fels-Wacholder
 Q1790865: Kuba-Kiefer
 Q146281: Kultur-Birne
+Q1702741: Kurzblättriger Wacholder
 Q1137593: Königinblume
+Q165091: Küsten-Kiefer
 Q147434: Küsten-Tanne
 Q150129: Küstenmammutbaum
 Q1801446: Lambertshasel
@@ -347,10 +393,16 @@ Q1357301: Mandschurische Esche
 Q857321: Mandschurische Linde
 Q1204865: Mandschurische Tanne
 Q1631785: Mandschurischer Ahorn
+Q3919027: Mango
+Q170662: Mangostane
 Q161421: Manna-Esche
 Q1614934: Maries-Tanne
 Q750217: Maulbeer-Feige
 Q1914703: Mazedonische Eiche
+Q1899475: Mekong-Wacholder
+Q507066: Mexikanische Eibe
+Q3506511: Mexikanische Nusskiefer
+Q1546541: Mexikanische Weymouth-Kiefer
 Q1308561: Mexikanische Zypresse
 Q18544730: Meyers Mehlbeere
 Q1936162: Min-Tanne
@@ -362,11 +414,14 @@ Q1718147: Momi-Tanne
 Q1367359: Mongolische Eiche
 Q976000: Mongolische Hasel
 Q1944479: Mongolische Linde
+Q748888: Monterey-Kiefer
 Q1137183: Monterey-Zypresse
+Q1640268: Montezuma-Kiefer
 Q157624: Moor-Birke
 Q161105: Morgenländische Platane
 Q163788: Mostgummi-Eukalyptus
 Q2667019: Mugga-Eukalyptus
+Q178116: Mädchen-Kiefer
 Q3269605: März-Kirsche
 Q838963: Nashi
 Q657812: Nebrodi-Tanne
@@ -388,19 +443,26 @@ Q599523: Oregon-Ahorn
 Q2029492: Oregon-Eiche
 Q1581524: Oregon-Esche
 Q918920: Oregon-Weißdorn
+Q1543749: Orient-Buche
 Q1088271: Orientalische Hainbuche
+Q577041: Ostafrikanischer Wacholder
 Q734085: Ostamerikanische Lärche
 Q1369065: Ostrya multinervis Rehder (1938), non Ettingsh. (1868)
 Q1201695: Ostsibirische Tanne
 Q926249: Pagoden-Hartriegel
 Q76971: Papier-Birke
+Q2065540: Pazifische Eibe
+Q837410: Pech-Kiefer
 Q333877: Pekannuss
 Q1105707: Persische Eiche
 Q2072019: Persische Weide
+Q2072030: Persischer Wacholder
 Q161406: Perückenstrauch
 Q2664982: Pfefferminz-Eukalyptus
 Q13189: Pfirsich
 Q17165418: Pfitzer-Wacholder
+Q44120: Pflaume
+Q183497: Phönizischer Wacholder
 Q1036491: Pindrow-Tanne
 Q106094: Pinie
 Q2722924: Pluot
@@ -430,14 +492,18 @@ Q41017313: Quercus spathulata Seemen (1897) non Watelet (1866)
 Q117125788: Quercus undulata C.O.Weber (1851) non Torr. (1828)
 Q117125220: Quercus undulata Göpp. (1855) non Torr. (1828)
 Q11141337: Quercus ×
+Q43300: Quitte
 Q2139163: Reichblütige Ölweide
 Q159476: Reif-Weide
 Q1542486: Riesen-Eukalyptus
+Q533674: Rocky-Mountain-Wacholder
 Q161364: Rot-Ahorn
 Q1818806: Rot-Erle
 Q161164: Rot-Esche
 Q1534893: Rot-Ulme
 Q1899488: Rotbeeren-Wacholder
+Q146149: Rotbuche
+Q1631520: Rote China-Birke
 Q1520764: Rote Maulbeere
 Q159049: Rote Rosskastanie
 Q147525: Roteiche
@@ -445,14 +511,18 @@ Q162822: Roter Eukalyptus
 Q161416: Roter Hartriegel
 Q1089472: Roter Schlangenhaut-Ahorn
 Q285744: Rotnerviger Schlangenhaut-Ahorn
+Q146021: Rumelische Kiefer
 Q2137116: Rutenförmiger Eukalyptus
 Q1520125: Sachalin-Tanne
+Q148630: Sadebaum
 Q1887955: Sahara-Zypresse
 Q159565: Sal-Weide
 Q1746549: Salix alfredii
 Q15230972: Salix xiaoguongshanica
 Q376648: Samt-Ahorn
+Q1259309: Sand-Kiefer
 Q1249454: Sand-Kirsche
+Q875262: Satsuma
 Q131517: Sauerkirsche
 Q74068: Sawara-Scheinzypresse
 Q854714: Scharlach-Eiche
@@ -472,10 +542,12 @@ Q1510231: Schwarz-Birke
 Q845791: Schwarz-Eiche
 Q156904: Schwarz-Erle
 Q1790101: Schwarz-Esche
+Q218425: Schwarz-Fichte
 Q147064: Schwarz-Pappel
 Q159122: Schwarz-Weide
 Q161040: Schwarze Maulbeere
 Q918712: Schwarzer Wacholder
+Q145954: Schwarzkiefer
 Q852572: Schwarznuss
 Q27980: Schwedische Mehlbeere
 Q157677: Schwedischer Hartriegel
@@ -485,6 +557,7 @@ Q750307: Seidenbaum
 Q158458: Seidenhaarige Weide
 Q2266551: Seidenhaariger Hartriegel
 Q164130: Seidiger Hartriegel
+Q147824: Serbische Fichte
 Q22675274: Seybold-Mehlbeere
 Q481768: Shirasawas Fächer-Ahorn
 Q964938: Sibirische Aprikose
@@ -508,6 +581,7 @@ Q146269: Silber-Pappel
 Q156918: Silber-Weide
 Q159188: Silber-Ölweide
 Q2070092: Silberdollar-Eukalyptus
+Q476655: Siskiyou-Fichte
 Q458366: Siskiyou-Zypresse
 Q147426: Sitka-Fichte
 Q156831: Sommer-Linde
@@ -515,14 +589,19 @@ Q1378390: Sommer-Magnolie
 Q1936759: Sorbus coronaria
 Q10952171: Sorbus obsletidentata
 Q849381: Spanische Tanne
+Q1510186: Spanischer Wacholder
 Q159558: Speierling
 Q26745: Spitzahorn
 Q160997: Spitzwinklige Bastard-Mehlbeere
 Q158987: Spätblühende Traubenkirsche
+Q146025: Stech-Fichte
+Q184300: Stech-Wacholder
 Q218155: Steineiche
 Q161920: Steinweichsel
 Q839507: Stern-Magnolie
+Q159447: Sternfrucht
 Q165145: Stieleiche
+Q1669527: Stinkender Wacholder
 Q164258: Strauch-Birke
 Q162440: Strauch-Rosskastanie
 Q1190312: Streifen-Ahorn
@@ -541,6 +620,7 @@ Q2396799: Tauern-Weide
 Q1712421: Tee-Apfel
 Q1425243: Teeblättrige Weide
 Q1890300: Tibet-Zypresse
+Q1442846: Tigerschwanz-Fichte
 Q7802148: Tilia johnsoni
 Q1652385: Toromiro
 Q158608: Traubeneiche
@@ -563,8 +643,10 @@ Q164387: Vielkerbige Mehlbeere
 Q1758722: Virginia-Eiche
 Q1489573: Virginische Hopfenbuche
 Q162829: Virginische Traubenkirsche
+Q157522: Virginischer Wacholder
 Q165137: Vogel-Kirsche
 Q163550: Vogesen-Mehlbeere
+Q133128: Waldkiefer
 Q639615: Wechselblättriger Hartriegel
 Q783224: Weiden-Eiche
 Q1591053: Weidenblättrige Birne
@@ -573,13 +655,17 @@ Q1399164: Weihrauchzeder
 Q568923: Weinblatt-Ahorn
 Q1193369: Weiß-Esche
 Q128116: Weiß-Fichte
+Q2473331: Weiß-Kiefer
 Q146992: Weiß-Tanne
 Q1007442: Weißdornblättriger Ahorn
 Q157307: Weiße Maulbeere
 Q1744650: Weiße Scheinzypresse
 Q161468: Weißer Gummi-Eukalyptus
+Q761480: Weißstämmige Kiefer
 Q576585: Westamerikanische Lärche
+Q1768629: Westamerikanischer Wacholder
 Q149382: Westliche Balsam-Pappel
+Q261309: Westliche Weymouth-Kiefer
 Q149332: Wildbirne
 Q2585025: Wintergrüne Ölweide
 Q158746: Winterlinde
@@ -587,9 +673,12 @@ Q163574: Woll-Weide
 Q1470571: Wollapfel
 Q1147634: Wollflaumige Esche
 Q794061: Yulan-Magnolie
+Q1723636: Zedern-Wacholder
 Q157277: Zerreiche
 Q199105: Zierkirschen-Birke
+Q161070: Zimmertanne
 Q203985: Zimt-Ahorn
+Q147278: Zirbelkiefer
 Q214733: Zucker-Ahorn
 Q227763: Zucker-Birke
 Q227779: Zucker-Kiefer
@@ -600,4 +689,5 @@ Q164174: Zwerg-Kirsche
 Q160019: Zwerg-Mandel
 Q163546: Zwerg-Mehlbeere
 Q245805: Zypern-Zeder
+Q1044186: japanische Rotkiefer
 Q303830: Österreichische Mehlbeere

@@ -4,25 +4,29 @@ Q17241710: Andreánszky-berkenye
 Q668879: Argentin dió
 Q17271645: Bakonyi berkenye
 Q17240856: Balatoni berkenye
+Q806838: Banks-fenyő
 Q17237943: Barabits-berkenye
 Q17238056: Bartha-berkenye
+Q33986886: Bodajki berkenye
 Q17271669: Boros-berkenye
 Q17241344: Bükki berkenye
 Q17239619: Csákberényi berkenye
 Q1801446: Csöves mogyoró
 Q17239314: Degen-berkenye
 Q15235699: Diospyros quiloënsis
+Q50191415: Duna-menti berkenye
 Q15527780: Dunai berkenye
 Q17242269: Dunántúli berkenye
 Q15527923: Déli berkenye
+Q761480: Fehértörzsű fenyő
 Q15341609: Fekete datolyaszilva
 Q1451343: Fraser-jegenyefenyő
 Q6313668: Fövenyboróka
 Q762435: Füzéres juhar
 Q1007442: Galagonyalevelű juhar
 Q17238249: Gerecsei berkenye
-Q41521693: Gánti berkenye
 Q5479345: Gánti berkenye
+Q41521693: Gánti berkenye
 Q17271692: Gáyer-berkenye
 Q50311785: Hazslinszky-berkenye
 Q10527903: Hibrid szivarfa
@@ -44,10 +48,15 @@ Q1290970: Leyland-ciprus
 Q15545507: Mandula
 Q5487185: Manglietia sinica
 Q1137183: Monterey-ciprus
+Q748888: Monterey-fenyő
+Q1640268: Montezuma-fenyő
 Q17238394: Nagylevelű berkenye
 Q1216192: Nehézszagú fűz
+Q594993: Nevadai cirbolyafenyő
 Q1038831: Nikkói juhar
+Q161070: Norfolk-szigeti araukária
 Q17275264: Nutka ciprus
+Q948827: Pawpaw
 Q1138533: Perzsa varázsfa
 Q17238052: Polgár-berkenye
 Q159204: Pompás szivarfa
@@ -67,7 +76,9 @@ Q1325491: Turner-tölgy
 Q17240267: Vajda-berkenye
 Q50312382: Veszprémi berkenye
 Q959738: afrikai szilvafa
+Q211457: aleppóifenyő
 Q285587: amerikai berkenye
+Q149219: amerikai bükk
 Q156687: amerikai duglászfenyő
 Q468698: amerikai gesztenye
 Q468664: amerikai gyertyán
@@ -75,6 +86,7 @@ Q163981: amerikai hárs
 Q161164: amerikai kőris
 Q161253: amerikai mocsártölgy
 Q469576: amerikai rezgő nyár
+Q460523: amerikai sárgafenyő
 Q158783: amerikai tulipánfa
 Q469652: amerikai ámbrafa
 Q849381: andalúziai jegenyefenyő
@@ -85,8 +97,11 @@ Q158912: babérfűz
 Q10877943: babérhárslevelű tölgy
 Q157508: balkáni babérmeggy
 Q460531: balkáni páncélfenyő
+Q146021: balkáni selyemfenyő
 Q428023: balzsamfenyő
+Q1405636: banyánfa
 Q147459: barkócaberkenye
+Q43300: birs
 Q936888: bozontos fenyő
 Q5047667: bozót-hikori
 Q17240443: budai berkenye
@@ -94,23 +109,30 @@ Q17241183: budai-berkenye
 Q844835: bugás csörgőfa
 Q854714: bíbor tölgy
 Q5279626: ceyloni ében
+Q165091: csavarttűjű fenyő
 Q164174: csepleszmeggy
 Q159553: cseregalagonya
 Q146951: cseresznyeszilva
 Q157277: csertölgy
 Q39708: csigolyafűz
+Q159447: csillaggyümölcs
 Q839507: csillagvirágú liliomfa
 Q157393: császárfa
 Q1377319: császártölgy
+Q876511: csüngőágú boróka
 Q214733: cukorjuhar
 Q227763: cukornyír
 Q10878191: damaszkuszi szilva
 Q158482: datolyaszilva
 Q756334: dauriai vörösfenyő
 Q137053: durangói jegenyefenyő
+Q1135236: durián
 Q158425: dárdás fűz
 Q161511: egybibés galagonya
+Q583885: egylevelű fenyő
+Q133128: erdeifenyő
 Q990982: ernyős liliomfa
+Q146149: európai bükk
 Q147513: európai ciprus
 Q124969: európai mogyoró
 Q146048: európai vörösfenyő
@@ -130,6 +152,7 @@ Q161040: fekete eperfa
 Q745228: fekete galagonya
 Q147064: fekete nyár
 Q1510231: fekete nyír
+Q145954: feketefenyő
 Q159122: feketéllő fűz
 Q1001011: festő tölgy
 Q157519: füles fűz
@@ -140,6 +163,7 @@ Q783224: fűzlevelű tölgy
 Q334697: galambfa
 Q1010050: gesztenyelevelű tölgy
 Q159528: golyós eukaliptusz
+Q41350: grépfrút
 Q284462: gyertyánlevelű juhar
 Q854892: görög jegenyefenyő
 Q601203: görög juhar
@@ -147,8 +171,10 @@ Q15376540: halvány hikoridió
 Q157540: hamvas fűz
 Q157641: hamvas éger
 Q1042288: hasznos liliomfa
+Q147278: havasi cirbolyafenyő
 Q164356: havasi fűz
 Q1034503: havasi szürke fűz
+Q147475: havasi törpefenyő
 Q20720096: havasi éger
 Q1249099: hegyeslevelű liliomfa
 Q1034859: hegyeslevelű tölgy
@@ -169,28 +195,42 @@ Q158642: húsos som
 Q163779: hússzínű vadgesztenye
 Q1859063: illatos liliomfa
 Q573132: indiai vadgesztenye
+Q1044186: japán erdeifenyő
+Q854884: japán feketefenyő
 Q161435: japán gyertyán
 Q157763: japán kajszi
 Q838963: japán körte
 Q942409: japán liliomfa
+Q1442846: japán luc
+Q178116: japán selyemfenyő
+Q1144815: japán tiszafa
 Q147439: japán vörösfenyő
 Q147388: japánciprus
 Q165321: japáncseresznye
+Q41505: japánnaspolya
 Q958336: jünnani dió
 Q526549: kacurafa
 Q37453: kajszibarack
+Q42385: kakaó
 Q890824: kaliforniai dió
 Q1399164: kaliforniai gyantásciprus
+Q469695: kaliforniai szamócafa
 Q540646: kaliforniai vadgesztenye
+Q628329: kalábriaifenyő
 Q2452407: kanadai júdásfa
 Q149622: kanadai nyár
+Q1723511: kanadai tiszafa
 Q1834639: kanyonciprus
+Q756191: kanári fenyő
+Q157952: kanári sárkányfa
 Q158178: karmazsintölgy
 Q917216: kasmíri ciprus
 Q148920: kaukázusi jegenyefenyő
+Q1145286: kaukázusi luc
 Q121749: kaukázusi szárnyasdió
 Q1105707: kaukázusi tölgy
 Q159565: kecskefűz
+Q1543749: keleti bükk
 Q1088271: keleti gyertyán
 Q161105: keleti platán
 Q1406355: kerek hikoridió
@@ -207,6 +247,8 @@ Q26745: korai juhar
 Q301636: koreai cirbolya
 Q390100: koreai jegenyefenyő
 Q158987: kései meggy
+Q1465334: kétszínű luc
+Q157697: kínai boróka
 Q699584: kínai gesztenye
 Q15238210: kínai hikoridió
 Q942031: kínai liliomfa
@@ -215,8 +257,10 @@ Q1074099: kínai szil
 Q17165418: kínai terülőboróka
 Q1074257: kínai tulipánfa
 Q1073968: kínai táblásfenyő
+Q716571: kínai vörösfenyő
 Q129018: kökény
 Q657935: közép-kínai juhar
+Q26325: közönséges boróka
 Q46871: közönséges dió
 Q36146: közönséges füge
 Q158776: közönséges gyertyán
@@ -224,9 +268,12 @@ Q146992: közönséges jegenyefenyő
 Q29488: közönséges júdásfa
 Q145992: közönséges lucfenyő
 Q156895: közönséges nyír
+Q288558: közönséges pagodafa
 Q161374: közönséges platán
+Q179729: közönséges tiszafa
 Q26899: közönséges vadgesztenye
 Q658749: kúszó boróka
+Q50191999: kőhányási berkenye
 Q161166: kőrislevelű juhar
 Q845791: lantlevelű tölgy
 Q61105: libanoni cédrus
@@ -239,8 +286,11 @@ Q17239802: magyar vadkörte
 Q149327: makedón jegenyefenyő
 Q39918: mandula
 Q106094: mandulafenyő
+Q170662: mangosztán
+Q3919027: mangó
 Q131517: meggy
 Q1308561: mexikói ciprus
+Q1546541: mexikói fehérfenyő
 Q15376656: mexikói hikoridió
 Q158785: mezei juhar
 Q147487: mezei szil
@@ -253,11 +303,15 @@ Q156831: nagylevelű hárs
 Q1093540: nagylevelű liliomfa
 Q1082365: nagylevelű tölgy
 Q16919759: nagypikkelyű tölgy
+Q251370: nagytobozú sárgafenyő
 Q161116: nagyvirágú liliomfa
 Q220777: nagyvirágú som
+Q3355098: narancs
+Q148630: nehézszagú boróka
 Q18674606: nemes alma
 Q1283223: nemes jegenyefenyő
 Q146281: nemes körte
+Q44120: nemes szilva
 Q5047673: nemezes hikoridió
 Q149709: nyugat-kínai szomorú ciprus
 Q470006: nyugati ostorfa
@@ -266,9 +320,12 @@ Q576585: nyugati vörösfenyő
 Q1543680: nyárlevelű nyír
 Q37083: olajfa
 Q163822: opáljuhar
+Q533674: oregoni boróka
 Q161360: oregoni hamisciprus
 Q599523: oregoni juhar
 Q1581524: oregoni kőris
+Q476655: oregoni luc
+Q6292155: oszloptiszafa
 Q20645165: osztrák körte
 Q5047671: ovális hikoridió
 Q76971: papírnyír
@@ -293,13 +350,17 @@ Q1066116: sallangoslevelű tölgy
 Q674096: sarki fűz
 Q157230: simafenyő
 Q1116374: simatűjű szálkásfenyő
+Q1151932: szahalini luc
 Q74068: szavara hamisciprus
 Q608412: szecsuani juhar
+Q50192736: szedresvölgyi berkenye
 Q22699: szelídgesztenye
+Q147824: szerb luc
 Q5047669: szerecsendió-hikori
 Q852262: szibériai jegenyefenyő
 Q1079824: szibériai szil
 Q754765: szibériai vörösfenyő
+Q165387: sziklás-hegységi szürke luc
 Q750217: szikomorfa
 Q147426: szitka luc
 Q160576: szobafikusz
@@ -308,6 +369,7 @@ Q1585952: szír boróka
 Q6712609: szíriai körte
 Q1038027: szívlevelű gyertyán
 Q163831: szívlevelű szivarfa
+Q146025: szúrós luc
 Q241698: szúróslevelű tölgy
 Q630288: szürke dió
 Q203985: szürke juhar
@@ -317,6 +379,8 @@ Q568923: szőlőlevelű juhar
 Q161406: sárga cserszömörce
 Q1499241: sárga nyír
 Q159620: sárga vadgesztenye
+Q1631520: sárgástörzsű nyír
+Q516494: tangerin
 Q1074872: tarkakérgű fenyő
 Q159127: tarkalevelű eukaliptusz
 Q163788: tasmániai havasi eukaliptusz
@@ -338,10 +402,12 @@ Q149332: vadkörte
 Q481767: vadszőlőlevelű juhar
 Q7263800: vastaggallyú körte
 Q161416: veresgyűrű som
+Q157522: virginiai boróka
 Q161421: virágos kőris
 Q147492: vénic-szil
 Q17245424: vértesi berkenye
 Q5047664: vízi hikoridió
+Q184300: vörös boróka
 Q161364: vörös juhar
 Q147525: vörös tölgy
 Q159049: vörös vadgesztenye
@@ -352,4 +418,5 @@ Q528713: zsindelyes tölgy
 Q17271670: zólyomi-berkenye
 Q17238357: Ádám-berkenye
 Q1193791: égerlevelű tölgy
+Q1137001: óriástobozú fenyő
 Q13189: őszibarack

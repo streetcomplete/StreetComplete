@@ -1,6 +1,7 @@
 Q163544: Akmens bērzs
 Q218155: Akmens ozols
 Q469576: Amerikas apse
+Q149219: Amerikas dižskābardis
 Q469382: Amerikas goba
 Q468659: Amerikas lazda
 Q163981: Amerikas liepa
@@ -20,11 +21,14 @@ Q149471: Balzāma papele
 Q2564409: Brūnā ābele
 Q4224592: Bārdainā kļava
 Q3336295: Bērzlapu kļava
+Q43300: Cidonija
 Q214733: Cukura kļava
 Q2139163: Daudzziedu eleagns
 Q850480: Daurijas bērzs
+Q161070: Dažādlapu araukārija
 Q976000: Dažādlapu lazda
 Q930814: Derīgas bērzs
+Q1005330: Dienvidķīnas dižskābardis
 Q43284: Divdaivu ginks
 Q142792: Divkrāsu ozols
 Q1801446: Dižaugļu lazda
@@ -35,24 +39,30 @@ Q2611816: Dzeltenais ozols
 Q844131: Dzelzs bērzs
 Q15341038: Egretas melnkoks
 Q1374188: Eifratas papele
+Q146149: Eiropas dižskābardis
 Q158642: Eiropas kizils
 Q146048: Eiropas lapegle
 Q158776: Eiropas skābardis
 Q11076697: Farže lazda
 Q3838136: Fremonta papele
 Q15634290: Ginnalas kļava
+Q41350: Greipfrūts
 Q1571895: Halla ābele
 Q142912: Henrija liepa
 Q146935: Himalaju ciedrs
 Q4260585: Himalaju lazda
 Q333877: Ilinoisas kārija
+Q3919027: Indijas mango
 Q10351623: Japānas apse
 Q1542823: Japānas baltegle
+Q1078985: Japānas dižskābardis
+Q41505: Japānas eriobotrija
 Q158482: Japānas hurma
 Q717827: Japānas kastaņa
 Q149269: Japānas kļava
 Q161442: Japānas liepa
 Q161435: Japānas skābardis
+Q1683271: Japānas zilais dižskābardis
 Q528713: Jumstiņu ozols
 Q5173728: Juņnaņas lazda
 Q540650: Kailā kļava
@@ -62,6 +72,7 @@ Q6372017: Karaliskais ozols
 Q6146917: Karolīnas liepa
 Q468664: Karolīnas skābardis
 Q148920: Kaukāza baltegle
+Q1543749: Kaukāza dižskābardis
 Q771101: Kaukāza hurma
 Q1105707: Kaukāza ozols
 Q160576: Kaučuka gumijkoks
@@ -106,6 +117,7 @@ Q1743596: Ogābele
 Q2020692: Olivera liepa
 Q161166: Ošlapu kļava
 Q76971: Papīrbērzs
+Q26325: Parastais kadiķis
 Q156907: Parastais osis
 Q146198: Parastais pīlādzis
 Q146110: Parastā apse
@@ -113,8 +125,10 @@ Q145992: Parastā egle
 Q147498: Parastā goba
 Q165424: Parastā ieva
 Q26745: Parastā kļava
+Q133128: Parastā priede
 Q147492: Parastā vīksna
 Q26899: Parastā zirgkastaņa
+Q179729: Parastā īve
 Q269224: Patīkamā kļava
 Q149553: Pelēcīga apse
 Q1190312: Pensilvānijas kļava
@@ -124,6 +138,7 @@ Q1204865: Piejūras baltegle
 Q147064: Piramidālā papele
 Q1373854: Platlapu bērzs
 Q156831: Platlapu liepa
+Q44120: Plūme
 Q738571: Plūmjlapu ābele
 Q683819: Pontijas ozols
 Q157628: Pundurbērzs
@@ -139,8 +154,10 @@ Q1520125: Sahalīnas baltegle
 Q1001011: Samtainais ozols
 Q4085295: Sapožņikova bērzs
 Q147525: Sarkanais ozols
+Q469151: Sarkanā egle
 Q161364: Sarkanā kļava
 Q161511: Sarkanā vilkābele
+Q147824: Serbijas egle
 Q852262: Sibīrijas baltegle
 Q199105: Skābaržlapu bērzs
 Q972950: Snuķaugļu lazda
@@ -153,6 +170,7 @@ Q6372132: Sēdlapu ozols
 Q1074099: Sīklapu goba
 Q1131797: Sīklapu kļava
 Q227763: Sīkstais bērzs
+Q4811357: Taivānas dižskābardis
 Q4085318: Tjanšana bērzs
 Q1023519: Toringoveida ābele
 Q1257409: Trīsziedu kļava
@@ -182,17 +200,22 @@ Q164130: baltais grimonis
 Q156918: baltais vītols
 Q146269: baltā apse
 Q159565: blīgzna
+Q42385: kakaokoks
+Q159447: karambola
 Q158590: klūdziņu kārkls
+Q170662: mangostāns
 Q150129: mūžzaļā sekvoja
 Q37083: olīvkoks
 Q165145: parastais ozols
 Q124969: parastā lazda
 Q158746: parastā liepa
-Q39918: parastā mandele
 Q15545507: parastā mandele
+Q39918: parastā mandele
+Q3355098: saldais apelsīnkoks
 Q165137: saldais ķirsis
 Q131517: skābais ķirsis
 Q149382: spilvaugļu papele
+Q516494: tanžerīns
 Q18674606: Ābele
 Q1075968: Āzijas ābele
 Q158657: ābele
@@ -201,6 +224,8 @@ Q1037138: Čonoska skābardis
 Q22699: Ēdamā kastaņa
 Q129018: Ērkšķu plūme
 Q46871: īstais riekstkoks
+Q1342471: Ķīnas dižskābardis
+Q157697: Ķīnas kadiķis
 Q1073905: Ķīnas lazda
 Q4392776: Ķīnas liepa
 Q182756: Ķīnas papele

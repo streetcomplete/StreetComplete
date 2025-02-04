@@ -1,4 +1,5 @@
 Q161511: Adi alıç
+Q26325: Adi ardıç
 Q46871: Adi ceviz
 Q156907: Adi dişbudak
 Q124969: Adi fındık
@@ -29,20 +30,28 @@ Q2739106: Anadolu palamut meşesi
 Q2093169: Anadolu sığla ağacı
 Q1585952: Andız
 Q670040: Arizona Servisi
+Q161070: Arokarya Çamı
 Q568923: Asma yapraklı akçaağaç
 Q623489: Atlas sediri
+Q146149: Avrupa kayını
 Q145992: Avrupa ladini
+Q43300: Ayva
 Q747652: Ağlayan çam
 Q39918: Badem
+Q147824: Balkan ladini
 Q220715: Ballota meşesi
 Q149471: Balsam kavağı
+Q806838: Banks çamı
 Q142792: Bataklık ak meşesi
 Q161253: Bataklık meşesi
+Q460523: Batı sarıçamı
 Q157739: Batı çınarı
+Q948827: Bayağı papav
 Q157960: Beyaz yapraklı kuş üvezi
 Q26899: Beyaz çiçekli at kestanesi
 Q157417: Beyaz çiçekli yalancı akasya
 Q766133: Beşparmak akçaağaç
+Q773892: Boylu ardıç
 Q6117344: Boylu söğüt
 Q7879426: Boz karaağaç
 Q149553: Boz kavak
@@ -56,6 +65,7 @@ Q17247648: Cornus quinquinervis
 Q164130: Cornus sericea
 Q657935: David akçaağacı
 Q156944: Dağ akçaağacı
+Q147475: Dağ çamı
 Q1869852: Defne yapraklı kavak
 Q161166: Dişbudak yapraklı akçaağaç
 Q121749: Dişbudak yapraklı kanatlı ceviz
@@ -63,25 +73,32 @@ Q148920: Doğu Karadeniz göknarı
 Q683819: Doğu Karadeniz meşesi
 Q1788044: Doğu akçaağacı
 Q1088271: Doğu gürgeni
+Q1543749: Doğu kayını
 Q6773197: Doğu kızılağacı
+Q1145286: Doğu ladini
 Q161105: Doğu çınarı
+Q1135236: Durian
 Q602226: E. obliqua
 Q161360: Elwoodii Çamı
 Q29488: Erguvan
 Q65066343: Eucalyptus clelandii
 Q15356262: Eucalyptus taylori
+Q183497: Finike Ardıcı
 Q3926595: Formoza kızılağacı
 Q1110521: Fındık yapraklı huş
 Q1374188: Fırat kavağı
 Q106094: Fıstık çamı
 Q972950: Gagalı fındık
 Q157518: Gevrek söğüt
+Q41350: Greyfurt
 Q750307: Gülibrişim
 Q145939: Gümüş göknarı
 Q158301: Gümüşi akçaağaç
 Q161382: Gümüşi ıhlamur
+Q116037245: Güney Çin kayını
 Q284462: Gürgen yapraklı akçaağaç
 Q1367533: Gürgen yapraklı kayacık
+Q211457: Halep çamı
 Q577422: Henry kestanesi
 Q147492: Hercai karaağaç
 Q936888: Higori çamı
@@ -91,31 +108,39 @@ Q1548216: Himalaya ladini
 Q146935: Himalaya sediri
 Q4169047: Istranca meşesi
 Q269224: Japon akçaağacı
+Q178116: Japon beyaz çamı
 Q1655870: Japon cevizi
 Q161435: Japon gürgeni
 Q367242: Japon iğdesi
 Q1072399: Japon kayacığı
+Q1078985: Japon kayını
 Q1034859: Japon kestane meşesi
 Q717827: Japon kestanesi
 Q199105: Japon kiraz huşu
 Q1196169: Japon kızılağacı
 Q147439: Japon melezi
+Q288558: Japon soforası
 Q147388: Japon çamı
 Q161442: Japon ıhlamuru
 Q2666298: Kafkas kızılağacı
 Q15377051: Kafkas söğüdü
 Q9281562: Kafkas yaban armudu
+Q42385: Kakao
 Q22111207: Kaliforniya fındığı
 Q1399164: Kaliforniya su sediri
 Q164301: Kaliforniya çınarı
+Q1723511: Kanada porsuğu
 Q852572: Kara ceviz
 Q161040: Kara dut
 Q1510231: Kara huş
 Q147064: Kara kavak
+Q218425: Kara ladin
 Q15341609: Kara sapot
 Q157508: Karayemiş
+Q145954: Karaçam
 Q6372378: Kasnak meşesi
 Q163831: Katalpa
+Q184300: Katran ardıcı
 Q526549: Katsura ağacı
 Q160576: Kauçuk ağacı
 Q37453: Kayısı
@@ -125,8 +150,10 @@ Q159565: Keçi söğüdü
 Q165137: Kiraz
 Q146951: Kiraz eriği
 Q159570: Kokar ağaç
+Q1669527: Kokulu ardıç
 Q6146920: Kore Ihlamuru
 Q390100: Kore göknarı
+Q157522: Kurşun kalem ardıcı
 Q157969: Kuş iğdesi
 Q146198: Kuş üvezi
 Q76971: Kâğıt huşu
@@ -136,9 +163,11 @@ Q158746: Küçük yapraklı ıhlamur
 Q245805: Kıbrıs sediri
 Q161364: Kırmızı akçaağaç
 Q1534893: Kırmızı karaağaç
+Q469151: Kırmızı ladin
 Q163779: Kırmızı çiçekli at kestanesi
 Q1333171: Kızılağaç yapraklı huş
 Q158642: Kızılcık
+Q628329: Kızılçam
 Q1801446: Lambert fındığı
 Q1290970: Leylandi
 Q161374: Londra çınarı
@@ -147,16 +176,20 @@ Q43284: Mabet ağacı
 Q857075: Macar meşesi
 Q161920: Mahlep
 Q1914703: Makedonya meşesi
+Q41505: Malta eriği
 Q5487185: Manglietia sinica
+Q170662: Mangostan
 Q156137: Mantar meşesi
 Q311361: Mançurya cevizi
 Q4115140: Mançurya karaağacı
 Q4334198: Mançurya kızılağacı
 Q857321: Mançurya ıhlamuru
+Q146025: Mavi ladin
 Q3565069: Mazı meşesi
 Q6323361: Meksika meşesi
 Q4364558: Meksika çınarı
 Q1137183: Monteri Servisi
+Q748888: Monteri çamı
 Q1520764: Mor dut
 Q1944479: Moğol ıhlamuru
 Q10878191: Mürdüm eriği
@@ -166,10 +199,14 @@ Q146992: Orta Avrupa göknarı
 Q158785: Ova akçaağacı
 Q147487: Ova karaağacı
 Q1148692: Oya ağacı
+Q1532567: Parıltılı kayın
 Q333877: Pekan cevizi
 Q38224022: Peştun Ardıcı
+Q1465334: Picea alocoquiana
+Q3355098: Portakal
 Q218155: Pırnal meşe
 Q17562222: Rize söğüdü
+Q148630: Sabin Ardıcı
 Q2589489: Sahil kızılağacı
 Q271582: Sahil çamı
 Q165321: Sakura
@@ -180,6 +217,7 @@ Q2564051: Sarı alıç
 Q159620: Sarı at kestanesi
 Q1499241: Sarı huş
 Q508718: Sarı çiçekli at kestanesi
+Q133128: Sarıçam
 Q74068: Sawara Yalancı Servisi
 Q157277: Saçlı meşe
 Q150129: Sekoya
@@ -192,8 +230,10 @@ Q147426: Sitka ladini
 Q518949: Sivri meyveli dişbudak
 Q783224: Söğüt meşesi
 Q2003088: Söğüt yapraklı kavak
+Q516494: Tangerina
 Q162728: Tatar akçaağacı
 Q716580: Tayvan göknarı
+Q4811357: Tayvan kayını
 Q716576: Tayvan ladini
 Q146110: Titrek kavak
 Q805008: Toros akçaağacı
@@ -208,6 +248,7 @@ Q2004617: Utah ardıcı
 Q157230: Veymut çamı
 Q6772356: Wilson kavağı
 Q2703200: Wilson ladini
+Q179729: Yaygın porsuk
 Q4899046: Yayla huşu
 Q161164: Yeşil dişbudak
 Q163978: Yeşil kızılağaç
@@ -218,6 +259,7 @@ Q147498: dağ karaağacı
 Q147459: elsbeere
 Q1543680: kavak yapraklı huş
 Q50848083: saplı meşe
+Q875262: satsuma
 Q131517: vişne
 Q129018: Çakal eriği
 Q1425243: Çay yapraklı söğüt
@@ -226,6 +268,7 @@ Q1073825: Çin balsam kavağı
 Q1073905: Çin fındığı
 Q290605: Çin huşu
 Q1074099: Çin karaağacı
+Q1342471: Çin kayını
 Q699584: Çin kestanesi
 Q1074257: Çin lale ağacı
 Q161421: Çiçekli dişbudak

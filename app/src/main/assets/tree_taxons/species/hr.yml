@@ -1,8 +1,10 @@
 Q959738: Afrička šljiva
+Q211457: Alepski bor
 Q157230: Američki borovac
 Q469382: Američki brijest
 Q469652: Američki likvidambar
 Q158783: Američki tulipanovac
+Q2703215: Arizonski bor
 Q670040: Arizonski čempres
 Q674096: Arktička vrba
 Q623489: Atlaski cedar
@@ -10,6 +12,7 @@ Q161105: Azijska platana
 Q39918: Badem
 Q157532: Bademasta vrba
 Q428023: Balzamasta jela
+Q1405636: Banjan
 Q4460779: Berlinska topola
 Q157641: Bijela joha
 Q157307: Bijela murva
@@ -17,14 +20,19 @@ Q146269: Bijela topola
 Q156918: Bijela vrba
 Q1088271: Bijeli grab
 Q158228: Bijeli svib
+Q761480: Bjelokori bor
 Q147459: Brekinja
 Q147492: Brijest vez
+Q628329: Brucijski bor
+Q146149: Bukva
 Q2750375: Cooperov bor
 Q157624: Cretna breza
 Q156904: Crna joha
 Q147064: Crna topola
+Q145954: Crni bor
 Q161421: Crni jasen
 Q852572: Crni orah
+Q2045958: Crveni bor
 Q161364: Crveni javor
 Q163779: Crvenocvjetni kesten
 Q146951: Crvenolisna šljiva
@@ -33,12 +41,17 @@ Q47161: Divlja jabuka
 Q26899: Divlji kesten
 Q158642: Drijenak
 Q2704355: Dugin eukaliptus
+Q43300: Dunja
+Q1135236: Durijan
 Q43284: Dvorežnjasti ginko
 Q146048: Europski ariš
+Q773892: Foja divlja
 Q157650: Gledičija
+Q183497: Gluhač
 Q147498: Gorski brijest
 Q156944: Gorski javor
 Q2139163: Goumi
+Q41350: Grejp
 Q936498: Grimizna jela
 Q160576: Gumijevac
 Q577422: Henrijev kineski kesten
@@ -53,9 +66,13 @@ Q158178: Hrast oštrika
 Q156137: Hrast plutnjak
 Q16919759: Hrast šiškar
 Q2737852: Huangšanski bor
+Q948827: Indijanska banana
 Q52626848: Japanska jabuka
 Q147388: Japanska kriptomerija
+Q41505: Japanska mušmula
 Q165321: Japanska trešnja
+Q854884: Japanski crni bor
+Q1044186: Japanski crveni bor
 Q728441: Japanski drijen
 Q269224: Japanski javor
 Q717827: Japanski kesten
@@ -67,15 +84,21 @@ Q162728: Javor žestilj
 Q161374: Javorolisna platana
 Q146992: Jela
 Q29488: Judić
+Q42385: Kakaovac
 Q158482: Kaki jabuka
 Q164301: Kalifornijska platana
+Q748888: Kalifornijski bor
 Q2452407: Kanadski judić
+Q756191: Kanarski bor
 Q638095: Kanarski hrast
 Q158987: Kasna sremza
 Q163831: Katalpa
+Q186553: Kineska tisa
+Q3286876: Kineski bijeli bor
 Q699584: Kineski kesten
 Q1074257: Kineski tulipanovac
 Q157518: Krhka vrba
+Q2703208: Kvrgavi bor
 Q844835: Lampion drvo
 Q61105: Libanonski cedar
 Q942031: Ljiljanocvjetna magnolija
@@ -87,16 +110,21 @@ Q161388: Maklen
 Q3662068: Mali američki kesten
 Q158746: Malolisna lipa
 Q5487185: Manglietia sinica
+Q170662: Mangostin
 Q37083: Maslina
 Q148939: Medvjeđa lijeska
+Q1546541: Meksički bijeli bor
+Q146021: Molika
 Q157960: Mukinja
 Q163546: Mukinjica
 Q460531: Munika
 Q793606: Mušmulasti glog
 Q627393: Nankinška trešnja
+Q3355098: Naranča
 Q161166: Negundo
 Q17275264: Nutkanski pačempres
 Q150129: Obalna sekvoja
+Q26325: Obična borovica
 Q146281: Obična kruška
 Q36146: Obična smokva
 Q468698: Obični američki kesten
@@ -104,14 +132,18 @@ Q1367533: Obični crni grab
 Q158776: Obični grab
 Q156907: Obični jasen
 Q147513: Obični čempres
+Q975887: Okinavski bor
 Q46871: Orasi
 Q159558: Oskoruša
 Q5756707: Ozarkenzeški kesten
 Q159570: Pajasen
+Q147824: Pančićeva omorika
 Q157393: Paulovnija
 Q161164: Pensilvanijski jasen
 Q106094: Pinija
 Q22699: Pitomi kesten
+Q147475: Planinski bor
+Q146025: Plava smreka
 Q1283223: Plemenita jela
 Q147487: Poljski brijest
 Q518949: Poljski jasen
@@ -126,15 +158,19 @@ Q157540: Siva vrba
 Q149319: Sjevernoamerička crna topola
 Q857075: Sladun
 Q5446619: Smokva hrastovača
+Q184300: Smrič
+Q161070: Sobna jelica
 Q731443: Soulangeova magnolija
 Q2302697: Spiralna vrba
 Q161382: Srebrnolisna lipa
 Q165424: Sremza
+Q209326: Sumatranski bor
 Q161416: Sviba
 Q716576: Tajvanska smreka
 Q716595: Tajvanski crveni bor
 Q2673686: Tenasserimski bor
 Q2737857: Tibetanski bor
+Q179729: Tisa
 Q165137: Trešnja
 Q129018: Trnina
 Q973828: Turnefortov koprivić
@@ -153,10 +189,14 @@ Q157417: bagrem
 Q13189: breskva
 Q161040: crna murva
 Q161511: glog
+Q716571: kineski crveni bor
 Q158785: klen
+Q3919027: mango
 Q37453: marelica
 Q156895: obična breza
 Q124969: obična lijeska
+Q133128: obični bor
 Q936888: Čekinjasti bor
 Q214733: šećerni javor
+Q44120: šljiva
 Q156307: Žalosna vrba

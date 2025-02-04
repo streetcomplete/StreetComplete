@@ -3,7 +3,9 @@ Q19607254: Acer griseum x pseudoplatanus
 Q18470819: Acer opalus x x monspessulanum
 Q18471127: Acer x veitchii
 Q525223: Albizia berteriana
+Q211457: Aleppoden
 Q2004978: Algerijnse zilverspar
+Q147278: Alpenden
 Q157532: Amandelwilg
 Q469652: Amberboom
 Q147525: Amerikaanse eik
@@ -23,16 +25,21 @@ Q1227092: Bergpersimmon
 Q159476: Berijpte wilg
 Q164258: Berk
 Q866150: Bishopden
+Q146025: Blauwspar
 Q460531: Bosnische den
 Q159565: Boswilg
+Q476655: Brewers treurspar
 Q161360: Californische cipres
 Q2701006: Californische struikeik
 Q149622: Canadapopulier
+Q756191: Canarische den
+Q159447: Carambola
 Q5045662: Carpenter's Oak
 Q114226699: Carya lecontei
 Q15534765: Cerasus araxina
 Q2114345: Chinapeer
 Q182756: Chinese balsempopulier
+Q1631520: Chinese berk
 Q844835: Chinese vernisboom
 Q766133: Colchische esdoorn
 Q145939: Coloradozilverspar
@@ -41,6 +48,8 @@ Q15224907: Cotinus nana
 Q5182569: Crataegus jonesae
 Q1693676: Crataegus × lavallei
 Q5194573: Cupressus pigmaea
+Q70010716: Cyclobalanopsis fleuryi
+Q1135236: Doerian
 Q161415: Donzige eik
 Q2456496: Duitse dot
 Q157628: Dwergberk
@@ -94,11 +103,15 @@ Q1072399: Japanse hopbeuk
 Q147439: Japanse lariks
 Q43284: Japanse notenboom
 Q1250033: Japanse pruim
+Q1044186: Japanse rode den
 Q165321: Japanse sierkers
 Q1683370: Japanse wilde appel
+Q178116: Japanse witte den
+Q854884: Japanse zwarte den
 Q140557: Jarrah
 Q29488: Judasboom
 Q2484621: Kaapse wilde vijg
+Q1145286: Kaukasische spar
 Q121749: Kaukasische vleugelnoot
 Q146951: Kerspruim
 Q2093561: Kirgiezenspar
@@ -112,7 +125,9 @@ Q157508: Laurierkers
 Q158912: Laurierwilg
 Q1290970: Leylandcipres
 Q22675173: Lonetal-Mehlbeere
+Q41505: Loquat
 Q87601999: Mabolo
+Q146021: Macedonische den
 Q11766240: Magnolia brooklińska
 Q5458372: Magnolia gustavi
 Q5458377: Magnolia lenticellatum
@@ -121,6 +136,7 @@ Q30749488: Magnolia wetterii
 Q3927203: Magnolia yarumalense
 Q158657: Malus domestica
 Q4535957: Malus manshurica
+Q170662: Mangistan
 Q5222974: Manglietia aromatica
 Q5487185: Manglietia sinica
 Q1204865: Mantsjoerijse zilverspar
@@ -128,6 +144,7 @@ Q157960: Meelbes
 Q5047673: Mockernut hickory
 Q148542: Moerasden
 Q1137183: Montereycipres
+Q748888: Montereyden
 Q161388: Montpelieresdoorn
 Q157277: Moseik
 Q24957042: Mắc cọp
@@ -145,6 +162,7 @@ Q2072019: Perzische wilg
 Q110224117: Pinus friesiana
 Q161421: Pluimes
 Q2722924: Plumcot
+Q311747: Pohutukawa
 Q2432250: Portugese eik
 Q161406: Pruikenboom
 Q17234725: Prunus matudai
@@ -160,6 +178,8 @@ Q1520764: Rode moerbei
 Q3320649: Rossige wilg
 Q159484: Salix elaeagnos
 Q15230972: Salix xiaoguongshanica
+Q875262: Satsuma
+Q147824: Servische spar
 Q22675274: Seybold-Mehlbeere
 Q774829: Siberische den
 Q243964: Siberische dwergden
@@ -173,11 +193,13 @@ Q10952171: Sorbus obsletidentata
 Q21325553: Sorbus teodorii
 Q158785: Spaanse aak
 Q849381: Spaanse zilverspar
+Q184300: Stekelige jeneverbes
 Q2137116: Suikereucalyptus
 Q974954: Syrische zilverspar
 Q7802148: Tilia johnsoni
 Q1652385: Toromiro
 Q1333171: Transkaukasische berk
+Q628329: Turkse den
 Q142792: Tweekleurige eik
 Q159553: Tweestijlige meidoorn
 Q7879349: Ulmus 'Scampstoniensis'
@@ -208,11 +230,15 @@ Q27980: Zweedse lijsterbes
 Q37453: abrikoos
 Q39918: amandelboom
 Q623489: atlasceder
+Q146149: beuk
 Q39708: bittere wilg
 Q159528: blauwe gomboom
+Q42385: cacaoboom
+Q157522: cederhoutboom
 Q163788: cidergomboom
 Q146935: deodarceder
 Q156687: douglasspar
+Q157952: drakenbloedboom
 Q161511: eenstijlige meidoorn
 Q147459: elsbes
 Q156907: es
@@ -223,16 +249,20 @@ Q161374: gewone plataan
 Q165424: gewone vogelkers
 Q146992: gewone zilverspar
 Q147487: gladde iep
+Q41350: grapefruit
 Q149553: grauwe abeel
 Q1543680: grijze berk
 Q163831: groene trompetboom
 Q1536353: grofgetande populier
 Q1623892: grootbladige berk
 Q156831: grootbladige linde
+Q133128: grove den
 Q158776: haagbeuk
 Q1543689: hartbladige els
 Q124969: hazelaar
 Q159570: hemelboom
+Q288558: honingboom
+Q26325: jeneverbes
 Q158482: kaki
 Q158590: katwilg
 Q158746: kleinbladige linde
@@ -242,8 +272,10 @@ Q156307: kronkelwilg
 Q28141: kruipwilg
 Q156137: kurkeik
 Q150129: kustmammoetboom
+Q43300: kweepeer
 Q61105: libanonceder
 Q771101: lotusboom
+Q3919027: mango
 Q161253: moeraseik
 Q17275264: nootkacipres
 Q37083: olijf
@@ -251,6 +283,7 @@ Q76971: papierberk
 Q106094: parasolden
 Q333877: pecannoot
 Q13189: perzik
+Q44120: pruim
 Q146110: ratelpopulier
 Q157417: robinia
 Q1510231: rode berk
@@ -261,12 +294,14 @@ Q156895: ruwe berk
 Q147498: ruwe iep
 Q854714: scharlaken eik
 Q156918: schietwilg
+Q3355098: sinaasappelboom
 Q129018: sleedoorn
 Q218155: steeneik
 Q227763: suikerberk
 Q214733: suikeresdoorn
 Q22699: tamme kastanje
 Q161166: vederesdoorn
+Q179729: venijnboom
 Q36146: vijgenboom
 Q46871: walnoot
 Q149382: westamerikaanse balsempopulier
@@ -285,6 +320,7 @@ Q157624: zachte berk
 Q271582: zeeden
 Q165137: zoete kers
 Q165145: zomereik
+Q145954: zwarte den
 Q156904: zwarte els
 Q147064: zwarte populier
 Q385769: zwarte zapote

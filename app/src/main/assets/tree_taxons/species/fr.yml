@@ -18,10 +18,12 @@ Q156895: Bouleau verruqueux
 Q76971: Bouleau à papier
 Q2922396: Bournette
 Q2667462: Capulin
+Q159447: Carambolier
 Q114226699: Carya lecontei
 Q879016: Caryer cordiforme
 Q1406355: Caryer glabre
 Q2601238: Caryer ovale
+Q1048556: Castanopsis pseudo-hystrix
 Q159204: Catalpa à feuilles cordées
 Q15534765: Cerasus araxina
 Q162829: Cerisier de Virginie
@@ -44,6 +46,7 @@ Q15224907: Cotinus nana
 Q5182569: Crataegus jonesae
 Q1693676: Crataegus ×lavallei
 Q1890300: Cupressus torulosa var. gigantea
+Q70010716: Cyclobalanopsis fleuryi
 Q458366: Cyprès de Baker
 Q149709: Cyprès de Chine
 Q287544: Cyprès de Gowen
@@ -55,6 +58,8 @@ Q917216: Cyprès du Bhoutan
 Q1308561: Cyprès du Portugal
 Q1887955: Cyprès du Tassili
 Q15346008: Diospyros tesselaria
+Q157952: Dragonnier des Canaries
+Q1135236: Durio kutejensis
 Q3595431: Euodia lunuankenda
 Q10880787: Evodia ailanthifolia
 Q10952882: Evodia compacta
@@ -73,6 +78,7 @@ Q3071408: Ficus cordata salicifolia
 Q13035470: Ficus trichopoda Baker, 1883
 Q98591523: Ficus trichopoda H.Lév., 1913
 Q3071669: Figuier de Maurice
+Q1405636: Figuier des banians
 Q3071706: Figuier des pagodes
 Q2776477: Frêne de Syrie
 Q1581524: Frêne de l'Oregon
@@ -80,11 +86,26 @@ Q1790101: Frêne noir
 Q906921: Frêne à pétiole large
 Q156907: Frêne élevé
 Q157650: Févier d'Amérique
+Q26325: Genévrier commun
+Q577041: Genévrier d'Afrique
+Q157697: Genévrier de Chine
+Q183497: Genévrier de Phénicie
 Q1585952: Genévrier de Syrie
+Q157522: Genévrier de Virginie
+Q876511: Genévrier de l'Himalaya
+Q533674: Genévrier des Rocheuses
+Q773892: Genévrier grec
+Q1768629: Genévrier occidental
 Q121427: Genévrier rampant
 Q1204856: Genévrier rigide
 Q1768635: Genévrier écailleux
 Q2139163: Goumi du Japon
+Q1543749: Hêtre d'Orient
+Q3145119: Hêtre mexicain
+Q149219: Hêtre à grandes feuilles
+Q2065540: If de l'Ouest
+Q1723511: If du Canada
+Q1144815: If du Japon
 Q1969110: Laurier du Portugal
 Q157508: Laurier-cerise
 Q942409: Magnolia de Kobé
@@ -96,6 +117,7 @@ Q5989920: Magnolia ×wiesneri
 Q161116: Magnolia à grandes fleurs
 Q839507: Magnolia étoilé
 Q1023519: Malus bhutanica
+Q170662: Mangoustanier
 Q573132: Marronnier de l'Himalaya
 Q255375: Micocoulier de Provence
 Q470006: Micocoulier occidental
@@ -129,17 +151,35 @@ Q149553: Peuplier grisard
 Q147064: Peuplier noir
 Q2003088: Peuplier à feuilles étroites
 Q1536353: Peuplier à grandes dents
+Q1465334: Picea alocoquiana
 Q1074872: Pin Napoléon
+Q261309: Pin argenté
 Q936888: Pin aristé
 Q301636: Pin blanc de Corée
+Q178116: Pin blanc du Japon
 Q2746153: Pin blanc du Sud-Ouest
+Q3286876: Pin d'Armand
 Q1249109: Pin d'Elliott
+Q3388586: Pin d'Hispaniola
 Q460531: Pin de Bosnie
+Q628329: Pin de Calabre
+Q251370: Pin de Jeffrey
+Q146021: Pin de Macédoine
+Q748888: Pin de Monterey
 Q774829: Pin de Sibérie
 Q747652: Pin de l'Himalaya
 Q148542: Pin des marais
+Q594993: Pin flexible
+Q806838: Pin gris
+Q106094: Pin parasol
+Q460523: Pin ponderosa
+Q2045958: Pin rouge
+Q1044186: Pin rouge du Japon
+Q133128: Pin sylvestre
+Q1137001: Pin à gros cônes
 Q227779: Pin à sucre
 Q2722924: Pluot
+Q311747: Pohutukawa
 Q3079266: Poirier de Chine
 Q1591053: Poirier à feuilles de saule
 Q1683370: Pommier japonais
@@ -149,6 +189,7 @@ Q12309066: Prunus x cistena
 Q121749: Ptérocaryer du Caucase
 Q162128: Pyrus
 Q5412107: Quercus albocinta
+Q11177776: Quercus delavayi
 Q6324068: Quercus edithiae
 Q6324103: Quercus eduardii
 Q5502720: Quercus gulielmitreleasei
@@ -192,15 +233,18 @@ Q163760: Tilleul commun
 Q163981: Tilleul d'Amérique
 Q159657: Tilleul de Crimée
 Q142912: Tilleul de Henry
+Q156831: Tilleul à grandes feuilles
 Q146110: Tremble
 Q1074257: Tulipier de Chine
 Q1079824: Ulmus pumila
 Q37453: abricotier
 Q157763: abricotier du Japon
 Q39918: amandier
+Q948827: asiminier trilobé
 Q2908969: bois d'olive blanc
 Q227763: bouleau flexible
 Q1499241: bouleau jaune
+Q42385: cacaoyer
 Q159188: chalef argenté
 Q158776: charme commun
 Q22699: châtaignier commun
@@ -210,29 +254,40 @@ Q61105: cèdre du Liban
 Q750217: figuier sycomore
 Q1193369: frêne blanc
 Q1066116: madison oak
+Q875262: mandarine satsuma
 Q165137: merisier
 Q756334: mélèze de Dahurie
 Q157307: mûrier blanc
 Q1520764: mûrier rouge
 Q46871: noyer commun
 Q37083: olivier européen
+Q3355098: oranger
 Q1116374: pin Bristlecone
-Q106094: pin parasol
+Q854884: pin noir du Japon
+Q837410: pin rigide
+Q165091: pin tordu
+Q761480: pine à blanche écorce
 Q158482: plaqueminier
 Q161374: platane commun
 Q161105: platane d'Orient
 Q146281: poirier commun
 Q4535957: pommier de mandchourie
 Q158657: pommier domestique
+Q44120: prunier
 Q13189: pêcher
 Q1420828: quatre-temps
 Q156307: saule pleureur
+Q516494: tangerine
 Q161382: tilleul argenté
-Q156831: tilleul à grandes feuilles
 Q158746: tilleul à petites feuilles
+Q146025: Épicéa bleu
+Q1145286: Épicéa d'Orient
 Q2093561: Épicéa de Schrenk
 Q1137607: Épicéa de Sibérie
+Q391374: Épicéa du Koyama
 Q128116: Épinette blanche
+Q165387: Épinette d'Engelmann
+Q469151: Épinette rouge
 Q158301: Érable argenté
 Q158785: Érable champêtre
 Q766133: Érable de Cappadoce
@@ -251,6 +306,7 @@ Q481767: Érable à feuille de vigne
 Q163822: Érable à feuilles d'obier
 Q599523: Érable à grandes feuilles
 Q147426: épinette de Sitka
+Q218425: épinette noire
 Q149269: érable du Japon
 Q269224: érable palmé
 Q26745: érable plane

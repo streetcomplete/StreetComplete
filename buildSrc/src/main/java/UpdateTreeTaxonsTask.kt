@@ -47,8 +47,6 @@ open class UpdateTreeTaxonsTask : DefaultTask() {
     }
 
     private fun query(lang: String?, taxon: Taxon): Map<String, String> {
-        // TODO why does for example Acer (Maple) not appear in genus? Q42292
-
         // Query:
         // - its parent taxon (P171) is a direct or indirect subclass (P279) of a tree (Q10884)
         // - its rank in the taxonomic hierarchy (P105) is species (Q7432) or hybrid species (Q1306176)
@@ -64,7 +62,7 @@ open class UpdateTreeTaxonsTask : DefaultTask() {
 
         val query = """
             SELECT DISTINCT ?item ?name WHERE {
-            ?item wdt:P171 ?parent_taxon .
+            ?item wdt:P171* ?parent_taxon .
             ?parent_taxon wdt:P279* wd:Q10884 .
 
             ?item wdt:P105 ?taxon_rank .

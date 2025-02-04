@@ -1,9 +1,11 @@
 Q158178: Abaritz
 Q159565: Ahuntz-sahats
 Q157650: Akazia hiruarantza
+Q211457: Alepo pinu
 Q255375: Almeza
 Q469382: Amerikar zumar
 Q899686: Ametz
+Q41350: Arabisagar
 Q218155: Arte
 Q156137: Artelatz
 Q158785: Astigar arrunt
@@ -12,13 +14,16 @@ Q26745: Astigar zorrotz
 Q156944: Astigar zuri
 Q623489: Atlasko zedro
 Q428023: Baltsamo-izei
+Q1405636: Baniano
 Q165137: Basagereziondo
 Q147459: Basagurbe
+Q311747: Burdinazko zuhaitza
 Q114226699: Carya lecontei
 Q15534765: Cerasus araxina
 Q164130: Cornus sericea
 Q657935: Daviden astigar
 Q156687: Douglas izei
+Q157952: Drago
 Q1088271: Ekialdeko xarma
 Q129018: Elorri beltz
 Q161511: Elorri zuri
@@ -43,6 +48,7 @@ Q15230797: Evodia trichotoma
 Q158746: Ezki hostotxiki
 Q156831: Ezki hostozabal
 Q161382: Ezki ilauntsu
+Q183497: Feniziar sabina
 Q161388: Frantses ihar
 Q22699: Gaztainondo
 Q146951: Gerezi-aranondo
@@ -51,6 +57,7 @@ Q158987: Gereziondo beltz
 Q131517: Gingondo
 Q43284: Ginkgo
 Q159558: Gurbe
+Q179729: Hagin arrunt
 Q156904: Haltz beltz
 Q163978: Haltz berde
 Q20720096: Haltz berde
@@ -59,6 +66,7 @@ Q147525: Haritz gorri
 Q161415: Haritz ilaundun
 Q165145: Haritz kandudun
 Q158608: Haritz kandugabe
+Q184300: Hego-ipuru
 Q159553: Hegoaldeko elorri zuri
 Q146935: Himalaiako zedro
 Q168335: Himalaiako zuhandor
@@ -69,29 +77,39 @@ Q26899: Indi gaztaina
 Q163779: Indi gaztainondo gorri
 Q1148692: Indimitre
 Q1342743: Ingeles zumar
+Q1510186: Intsentsu-sabina
+Q748888: Intsinis pinu
 Q46871: Intxaurrondo arrunt
 Q852572: Intxaurrondo beltz
+Q26325: Ipar-ipuru
 Q27980: Iparraldeko hostazuri
 Q121427: Ipuru herrestari
+Q43300: Irasagarrondo
 Q1543689: Italiar haltz
 Q163822: Italiar ihar
 Q271582: Itsas pinu
 Q145992: Izei gorri
 Q147434: Izei handi
 Q146992: Izei zuri
+Q41505: Japoniako mizpirondo
 Q917187: Japoniar altzifre
 Q157763: Japoniar aranondo
 Q269224: Japoniar astigar
 Q717827: Japoniar gaztainondo
 Q165321: Japoniar gereziondo
 Q147439: Japoniar laritz
+Q288558: Japoniar sofora
 Q29488: Judasen arbola
+Q42385: Kakao
 Q158482: Kakiondo
 Q638095: Kanariar ametz
+Q756191: Kanariar pinu
 Q6117334: Kantauriar sahats
 Q160576: Kautxu-landare
 Q145939: Konkolor izei
 Q750307: Konstantinoplako akazia
+Q3355098: Laranja
+Q145954: Larizio pinu
 Q161360: Lawson altzifre
 Q146110: Lertxun
 Q61105: Libanoko zedro
@@ -104,25 +122,33 @@ Q162128: Madariondo
 Q161116: Magnolia lorandi
 Q147064: Makal beltz
 Q5487185: Manglietia sinica
+Q3919027: Mango
+Q170662: Mangostan
 Q161040: Masustondo beltz
 Q793606: Mazpil
 Q149548: Mendi-pinu
 Q1137183: Monterreyko nekosta
+Q147475: Mugo pinu
 Q147513: Nekosta arrunt
 Q148920: Nordmann izei
 Q161920: Oilaran
+Q44120: Okaran
 Q157969: Olibo zume
 Q37083: Olibondo
+Q937654: Onbu
 Q599523: Oregongo astigarra
 Q165424: Otsagereziondo
 Q146198: Otsalizar
+Q146149: Pago arrunt
 Q157393: Paulownia
 Q333877: Pekan zuhaitz
 Q36146: Pikondo
 Q2561277: Pikondo itotzaile
 Q106094: Pinazi-pinu
+Q133128: Pinu gorri
 Q1969110: Portugalgo erramu
 Q1308561: Portugalgo nekosta
+Q148630: Sabina arrunt
 Q47161: Sagarmin
 Q158657: Sagarrondo
 Q18674606: Sagarrondo
@@ -132,9 +158,11 @@ Q3320649: Sahats ilun
 Q15230972: Salix xiaoguongshanica
 Q157417: Sasiakazia
 Q150129: Sekuoia luze
+Q147824: Serbiako izei
 Q1079824: Siberiako zumar
 Q750217: Sikomoro
 Q21325553: Sorbus teodorii
+Q1543749: Sortaldeko pago
 Q157277: Turkiar haritz
 Q3079266: Txinako udareondo
 Q844835: Txinako xaboi-arbola
@@ -143,11 +171,13 @@ Q227763: Urki gerezikara
 Q1499241: Urki hori
 Q157628: Urki nano
 Q157624: Urki zuri
+Q157522: Virginiako ipuru
 Q157230: Weymouth pinu
 Q158776: Xarma arrunt
 Q1367533: Xarma lupulukara
 Q163078: Yoshino gereziondo
 Q334697: Zapi zuhaitz
+Q147278: Zenbro pinu
 Q158301: Zilar-astigar
 Q161253: Zingira-haritz
 Q161416: Zuhandor
@@ -172,3 +202,4 @@ Q146281: madariondo arrunt
 Q157307: marugatze zuri
 Q2900277: mendietako paper-urki
 Q13189: mertxikondo
+Q3286876: pinus armadii
