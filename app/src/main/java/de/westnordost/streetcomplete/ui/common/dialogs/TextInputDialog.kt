@@ -11,7 +11,6 @@ import androidx.compose.material.contentColorFor
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.key
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -40,7 +39,8 @@ fun TextInputDialog(
     contentColor: Color = contentColorFor(backgroundColor),
     properties: DialogProperties = DialogProperties(),
     keyboardType: KeyboardType = KeyboardType.Unspecified,
-    checkTextValid: (text: String) -> Boolean = { true }
+    singleLine: Boolean = true,
+    checkTextValid: (text: String) -> Boolean = { it.isNotBlank() }
 ) {
     val focusRequester = remember { FocusRequester() }
 
@@ -54,7 +54,7 @@ fun TextInputDialog(
         onDismissRequest = onDismissRequest,
         confirmButton = {
             TextButton(
-                enabled = value.text.isNotBlank() && checkTextValid(value.text),
+                enabled =  checkTextValid(value.text),
                 onClick = { onDismissRequest(); onConfirmed(value.text) }
             ) {
                 Text(stringResource(android.R.string.ok))
@@ -72,7 +72,7 @@ fun TextInputDialog(
                 modifier = Modifier.fillMaxWidth().focusRequester(focusRequester),
                 label = textInputLabel,
                 keyboardOptions = KeyboardOptions(keyboardType = keyboardType),
-                singleLine = true
+                singleLine = singleLine
             )
         },
         shape = shape,

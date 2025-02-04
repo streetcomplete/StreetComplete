@@ -74,6 +74,7 @@ fun SettingsScreen(
     onClickQuestSettings: () -> Unit,
     onClickUiSettings: () -> Unit,
     onClickDisplaySettings: () -> Unit,
+    onClickNoteSettings: () -> Unit,
 ) {
     val hiddenQuestCount by viewModel.hiddenQuestCount.collectAsState()
     val questTypeCount by viewModel.questTypeCount.collectAsState()
@@ -248,27 +249,22 @@ fun SettingsScreen(
                     name = stringResource(R.string.pref_screen_ui),
                     onClick = onClickUiSettings,
                 )
-
                 Preference(
                     name = stringResource(R.string.pref_screen_display),
                     onClick = onClickDisplaySettings,
                 )
-
                 Preference(
                     name = stringResource(R.string.pref_screen_quests),
                     onClick = onClickQuestSettings,
                 )
-
                 Preference(
                     name = stringResource(R.string.pref_screen_notes),
-                    onClick = { onClickSceeFragment(4) },
+                    onClick = onClickNoteSettings,
                 )
-
                 Preference(
                     name = stringResource(R.string.pref_screen_data_management),
                     onClick = { onClickSceeFragment(5) },
                 )
-
                 if (BuildConfig.DEBUG) {
                     Preference(
                         name = "Debug log reader",
@@ -286,7 +282,6 @@ fun SettingsScreen(
                     }
                 }
             }
-
             if (BuildConfig.DEBUG) {
                 PreferenceCategory("Debug") {
                     Preference(

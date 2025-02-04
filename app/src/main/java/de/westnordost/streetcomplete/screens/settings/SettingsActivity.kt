@@ -182,7 +182,6 @@ class SettingsActivity : BaseActivity(), AbstractOsmQuestForm.Listener {
     private fun loadSceeSettingsFragment(screenId: Int) {
         supportFragmentManager.commit {
             val f = when (screenId) {
-                4 -> NoteSettingsFragment()
                 else -> DataManagementSettingsFragment()
             }
             binding.sceeSettingsFragmentContainer.visibility = View.VISIBLE
