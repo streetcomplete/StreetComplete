@@ -51,8 +51,6 @@ open class UpdateTreeTaxonsTask : DefaultTask() {
         // - its parent taxon (P171) is a direct or indirect subclass (P279) of a tree (Q10884)
         // - its rank in the taxonomic hierarchy (P105) is species (Q7432) or hybrid species (Q1306176)
         //                                                 genus (Q34740) or hybrid genus (Q6045742)
-        // - TODO: its name doesn't have the nomenclatural status (P1135) of nomen illegitimum (Q1093954), e.g. Q111626427
-        // - TODO: its not a homonymous taxon (P13177) of another taxon that has been named earlier, e.g. Q117157451
         // - if no languageCode specified: use scientific name (P225) as label, otherwise use localized label
 
         val ranks = when (taxon) {
