@@ -208,7 +208,7 @@ dependencies {
     implementation("org.maplibre.gl:android-sdk:11.8.0")
 
     // opening hours parser
-    implementation("de.westnordost:osm-opening-hours:0.1.0")
+    implementation("de.westnordost:osm-opening-hours:0.2.0")
 
     // image view that allows zoom and pan
     implementation("com.github.chrisbanes:PhotoView:2.3.0")
