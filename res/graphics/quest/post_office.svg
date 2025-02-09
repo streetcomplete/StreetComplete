@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 128 128">
+  <path d="M128,64c0,35.3-28.7,64-64,64S0,99.3,0,64,28.7,0,64,0s64,28.7,64,64" style="fill: #e9a76f;"/>
+  <g>
+    <path d="M23,44v26.5c-5.4,0-9.8-4.4-9.8-9.8l9.7-16.7h.1Z" style="fill-opacity: .2;"/>
+    <path d="M111.3,60.7c0,5.4-4.4,9.8-9.8,9.8-.5-.5,1.5-20.5,1.5-20.5l8.3,10.7Z" style="fill-opacity: .2;"/>
+    <g>
+      <path d="M16,96h92v-60H16v60Z" style="fill: #cb9781;"/>
+      <rect x="26" y="70" width="48" height="18" style="fill: #a4c1ee;"/>
+      <rect x="82" y="70" width="13" height="26" style="fill: #a4c1ee;"/>
+      <rect x="26" y="70" width="48" height="6" style="fill: #859dbf;"/>
+      <rect x="82" y="70" width="13" height="6" style="fill: #859dbf;"/>
+      <rect x="24" y="24" width="76" height="12" style="fill: #d6bdb1;"/>
+      <path d="M12.9,56.7l8.1-14.7h82l8.3,14.7H12.9Z" style="fill: #c84747;"/>
+      <path d="M32.6,56.7c0,5.4-4.4,9.8-9.8,9.8s-9.8-4.4-9.8-9.8h19.7-.1Z" style="fill: #9a2e2e;"/>
+      <path d="M52.3,56.7c0,5.4-4.4,9.8-9.8,9.8s-9.8-4.4-9.8-9.8h19.7-.1Z" style="fill: #c8c8c8;"/>
+      <path d="M71.9,56.7c0,5.4-4.4,9.8-9.8,9.8s-9.8-4.4-9.8-9.8h19.7,0Z" style="fill: #9a2e2e;"/>
+      <path d="M91.6,56.7c0,5.4-4.4,9.8-9.8,9.8s-9.8-4.4-9.8-9.8h19.7,0Z" style="fill: #c8c8c8;"/>
+      <path d="M111.3,56.7c0,5.4-4.4,9.8-9.8,9.8s-9.8-4.4-9.8-9.8h19.7,0Z" style="fill: #9a2e2e;"/>
+      <path d="M32.6,56.7l4.4-14.7h17l-1.7,14.7h-19.7Z" style="fill: #fff;"/>
+      <path d="M71.9,56.7l-1.9-14.7h17l4.6,14.7s-19.7,0-19.7,0Z" style="fill: #fff;"/>
+    </g>
+  </g>
+  <rect x="16" y="96" width="92" height="4" style="fill-opacity: .2;"/>
+  <g>
+    <path d="M27.5,70.3c-1.8,0-2.8,1.7-2.4,3.2v33.7c-.4,1.5.6,3.2,2.4,3.2h45c1.8,0,2.8-1.7,2.4-3.2v-33.7c.4-1.5-.6-3.2-2.4-3.2H27.5Z" style="fill-opacity: .2;"/>
+    <path d="M29,67.8h41.9c2.2,0,4,1.8,4,4v31.9c0,2.2-1.8,4-4,4H29c-2.2,0-4-1.8-4-4v-31.9c0-2.2,1.8-4,4-4Z" style="fill: #ddd;"/>
+    <path d="M27.5,104.1l22.5-23.8,22.5,23.8" style="fill: none; stroke: #aaa; stroke-linecap: round; stroke-linejoin: round; stroke-width: 5px;"/>
+    <path d="M27.5,107.8c-2.3,0-3.4-2.8-1.7-4.4l22.5-20c.9-.8,2.4-.8,3.3,0l22.5,20c1.7,1.5.6,4.4-1.7,4.4H27.5Z" style="fill: #e9e9e9; fill-rule: evenodd;"/>
+    <path d="M27.5,71.6l22.5,23.8,22.5-23.8" style="fill: none; stroke: #aaa; stroke-linecap: round; stroke-linejoin: round; stroke-width: 5px;"/>
+    <path d="M27.5,67.8c-2.3,0-3.4,2.8-1.7,4.4l22.5,20c.9.8,2.4.8,3.3,0l22.5-20c1.7-1.5.6-4.4-1.7-4.4H27.5Z" style="fill: #fff; fill-rule: evenodd;"/>
+  </g>
+  <path d="M-423,55.5c0,35.3-28.7,64-64,64s-64-28.7-64-64,28.7-64,64-64,64,28.7,64,64" style="fill: #e9a76f;"/>
+  <path d="M-528,29.5v26.5c-5.4,0-9.8-4.4-9.8-9.8l9.7-16.7h.1Z" style="fill-opacity: .2;"/>
+  <path d="M-439.7,46.2c0,5.4-4.4,9.8-9.8,9.8-.5-.5,1.5-20.5,1.5-20.5l8.3,10.7Z" style="fill-opacity: .2;"/>
+  <path d="M-535,87.5h92V27.5h-92v60Z" style="fill: #cb9781;"/>
+  <rect x="-525" y="61.5" width="48" height="18" style="fill: #a4c1ee;"/>
+  <rect x="-469" y="61.5" width="13" height="26" style="fill: #a4c1ee;"/>
+  <rect x="-525" y="61.5" width="48" height="6" style="fill: #859dbf;"/>
+  <rect x="-469" y="61.5" width="13" height="6" style="fill: #859dbf;"/>
+  <rect x="-527" y="15.5" width="76" height="12" style="fill: #d6bdb1;"/>
+  <path d="M-538.1,42.2l8.1-14.7h82l8.3,14.7h-98.4Z" style="fill: #c84747;"/>
+  <path d="M-518.4,42.2c0,5.4-4.4,9.8-9.8,9.8s-9.8-4.4-9.8-9.8h19.7-.1Z" style="fill: #9a2e2e;"/>
+  <path d="M-498.7,42.2c0,5.4-4.4,9.8-9.8,9.8s-9.8-4.4-9.8-9.8h19.7-.1Z" style="fill: #c8c8c8;"/>
+  <path d="M-479.1,42.2c0,5.4-4.4,9.8-9.8,9.8s-9.8-4.4-9.8-9.8h19.7,0Z" style="fill: #9a2e2e;"/>
+  <path d="M-459.4,42.2c0,5.4-4.4,9.8-9.8,9.8s-9.8-4.4-9.8-9.8h19.7,0Z" style="fill: #c8c8c8;"/>
+  <path d="M-439.7,42.2c0,5.4-4.4,9.8-9.8,9.8s-9.8-4.4-9.8-9.8h19.7,0Z" style="fill: #9a2e2e;"/>
+  <path d="M-518.4,42.2l4.4-14.7h17l-1.7,14.7h-19.7Z" style="fill: #fff;"/>
+  <path d="M-479.1,42.2l-1.9-14.7h17l4.6,14.7s-19.7,0-19.7,0Z" style="fill: #fff;"/>
+  <rect x="-535" y="87.5" width="92" height="4" style="fill-opacity: .2;"/>
+  <g>
+    <path d="M-524.5,58c-1.8,0-2.8,1.7-2.4,3.2v33.7c-.4,1.5.6,3.2,2.4,3.2h45c1.8,0,2.8-1.7,2.4-3.2v-33.7c.4-1.5-.6-3.2-2.4-3.2h-45Z" style="fill-opacity: .2;"/>
+    <path d="M-523,55.5h41.9c2.2,0,4,1.8,4,4v31.9c0,2.2-1.8,4-4,4h-41.9c-2.2,0-4-1.8-4-4v-31.9c0-2.2,1.8-4,4-4Z" style="fill: #ddd;"/>
+    <path d="M-524.5,91.8l22.5-23.8,22.5,23.8" style="fill: none; stroke: #aaa; stroke-linecap: round; stroke-linejoin: round; stroke-width: 5px;"/>
+    <path d="M-524.5,95.5c-2.3,0-3.4-2.8-1.7-4.4l22.5-20c.9-.8,2.4-.8,3.3,0l22.5,20c1.7,1.5.6,4.4-1.7,4.4h-44.9Z" style="fill: #e9e9e9; fill-rule: evenodd;"/>
+    <path d="M-524.5,59.3l22.5,23.8,22.5-23.8" style="fill: none; stroke: #aaa; stroke-linecap: round; stroke-linejoin: round; stroke-width: 5px;"/>
+    <path d="M-524.5,55.5c-2.3,0-3.4,2.8-1.7,4.4l22.5,20c.9.8,2.4.8,3.3,0l22.5-20c1.7-1.5.6-4.4-1.7-4.4h-44.9Z" style="fill: #fff; fill-rule: evenodd;"/>
+  </g>
+</svg>

@@ -372,6 +372,7 @@ quest/
     pitch_lantern.svg
     pitch_surface.svg
     playground.svg
+    post_office.svg                 modified by mcliquid based on mail.svg and shop.svg
     power.svg
     quest.svg
     railway.svg
