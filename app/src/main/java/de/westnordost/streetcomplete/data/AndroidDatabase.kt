@@ -65,6 +65,7 @@ class AndroidDatabase(private val db: SQLiteDatabase) : Database {
         having: String?,
         orderBy: String?,
         limit: Int?,
+        distinct: Boolean,
         transform: (CursorPosition) -> T
     ): List<T> {
         val strArgs = args?.primitivesArrayToStringArray()
