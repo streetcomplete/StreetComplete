@@ -1,5 +1,21 @@
 # Changelog
 
+## v60.2
+
+### Fixes
+
+- fixes for opening app from Geo URIs (#6101)
+- fix on rare occasions, a solved quest would immediately reappear (#5545), thanks @Helium314
+- Road surfaces: fix quest immediately reappeared when answer conflicted with the recorded information for the track visibility (#6116)
+- Opening hours: fix don't consider a rare but valid syntax for opening hours as invalid (#6125)
+
+### Improvements
+
+- Hairdresser customers: Don't ask for barber shops (#6108)
+- Bus stop names: Suggest names of nearby bus stops (e.g. the one from the other side of the road) (#6067, #5187) by @kmpoppe
+- Baby changing table: Also ask when information about toilets isn't recorded yet (#6115), by @agent-redd
+- small improvements on the places overlay (#6100, #5985, #6086)
+
 ## v60.1
 
 ### Improvements
