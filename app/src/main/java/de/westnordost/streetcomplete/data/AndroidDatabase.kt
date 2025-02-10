@@ -69,7 +69,7 @@ class AndroidDatabase(private val db: SQLiteDatabase) : Database {
         transform: (CursorPosition) -> T
     ): List<T> {
         val strArgs = args?.primitivesArrayToStringArray()
-        return db.query(false, table, columns, where, strArgs, groupBy, having, orderBy, limit?.toString()).toSequence(transform).toList()
+        return db.query(distinct, table, columns, where, strArgs, groupBy, having, orderBy, limit?.toString()).toSequence(transform).toList()
     }
 
     override fun insert(
