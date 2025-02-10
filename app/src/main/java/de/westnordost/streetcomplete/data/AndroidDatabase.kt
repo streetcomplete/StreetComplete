@@ -16,7 +16,6 @@ import androidx.core.database.getDoubleOrNull
 import androidx.core.database.getFloatOrNull
 import androidx.core.database.getIntOrNull
 import androidx.core.database.getLongOrNull
-import androidx.core.database.getShortOrNull
 import androidx.core.database.getStringOrNull
 import androidx.core.database.sqlite.transaction
 import de.westnordost.streetcomplete.data.ConflictAlgorithm.ABORT
@@ -65,12 +64,12 @@ class AndroidDatabase(private val db: SQLiteDatabase) : Database {
         groupBy: String?,
         having: String?,
         orderBy: String?,
-        limit: String?,
+        limit: Int?,
         distinct: Boolean,
         transform: (CursorPosition) -> T
     ): List<T> {
         val strArgs = args?.primitivesArrayToStringArray()
-        return db.query(false, table, columns, where, strArgs, groupBy, having, orderBy, limit).toSequence(transform).toList()
+        return db.query(distinct, table, columns, where, strArgs, groupBy, having, orderBy, limit?.toString()).toSequence(transform).toList()
     }
 
     override fun insert(
@@ -157,14 +156,12 @@ private inline fun <T> Cursor.toSequence(crossinline transform: (CursorPosition)
 }
 
 class AndroidCursorPosition(private val cursor: Cursor) : CursorPosition {
-    override fun getShort(columnName: String): Short = cursor.getShort(index(columnName))
     override fun getInt(columnName: String): Int = cursor.getInt(index(columnName))
     override fun getLong(columnName: String): Long = cursor.getLong(index(columnName))
     override fun getDouble(columnName: String): Double = cursor.getDouble(index(columnName))
     override fun getFloat(columnName: String): Float = cursor.getFloat(index(columnName))
     override fun getBlob(columnName: String): ByteArray = cursor.getBlob(index(columnName))
     override fun getString(columnName: String): String = cursor.getString(index(columnName))
-    override fun getShortOrNull(columnName: String): Short? = cursor.getShortOrNull(index(columnName))
     override fun getIntOrNull(columnName: String): Int? = cursor.getIntOrNull(index(columnName))
     override fun getLongOrNull(columnName: String): Long? = cursor.getLongOrNull(index(columnName))
     override fun getDoubleOrNull(columnName: String): Double? = cursor.getDoubleOrNull(index(columnName))
