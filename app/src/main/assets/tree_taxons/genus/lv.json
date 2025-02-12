@@ -1,0 +1,219 @@
+{
+  "Q12004": {
+    "name": "ozoli",
+    "aliases": [
+      "Quercus"
+    ]
+  },
+  "Q25243": {
+    "name": "bērzi",
+    "aliases": [
+      "bērzs",
+      "bērzu ģints",
+      "Betula"
+    ]
+  },
+  "Q25239": {
+    "name": "Alkšņi",
+    "aliases": [
+      "alkšņu ģints",
+      "Alnus"
+    ]
+  },
+  "Q25350": {
+    "name": "Baltegles",
+    "aliases": [
+      "Abies",
+      "Baltegle"
+    ]
+  },
+  "Q25356": {
+    "name": "apses",
+    "aliases": [
+      "apšu ģints"
+    ]
+  },
+  "Q25403": {
+    "name": "Dižskābarži",
+    "aliases": [
+      "Dižskabārdis",
+      "Dižskābardis",
+      "Dižskābārdis",
+      "Dižskabārži",
+      "Dižskābārži",
+      "Fagus"
+    ]
+  },
+  "Q25662": {
+    "name": "kadiķi",
+    "aliases": [
+      "paegļi"
+    ]
+  },
+  "Q26782": {
+    "name": "egles",
+    "aliases": [
+      "Picea"
+    ]
+  },
+  "Q27355": {
+    "name": "īves",
+    "aliases": [
+      "Taxus",
+      "īvju ģints"
+    ]
+  },
+  "Q36050": {
+    "name": "vītoli",
+    "aliases": [
+      "kārkli",
+      "kārkls",
+      "Salix"
+    ]
+  },
+  "Q44789": {
+    "name": "zīdkoki",
+    "aliases": [
+      "Morus",
+      "zīdkoks"
+    ]
+  },
+  "Q45669": {
+    "name": "Eikalipti",
+    "aliases": [
+      "Eikalipts",
+      "Eucalyptus"
+    ]
+  },
+  "Q104819": {
+    "name": "ābeļu ģints",
+    "aliases": [
+      "Malus",
+      "ābele",
+      "ābeles"
+    ]
+  },
+  "Q128550": {
+    "name": "Ciedri",
+    "aliases": [
+      "Cedrus",
+      "Ciedru ģints"
+    ]
+  },
+  "Q129324": {
+    "name": "kastaņi",
+    "aliases": [
+      "Kastanis",
+      "Castanea"
+    ]
+  },
+  "Q131113": {
+    "name": "gobas",
+    "aliases": [
+      "vīksnas"
+    ]
+  },
+  "Q132557": {
+    "name": "Vilkābeles",
+    "aliases": [
+      "Crataegus",
+      "Krustābeles"
+    ]
+  },
+  "Q142788": {
+    "name": "kāriju ģints",
+    "aliases": [
+      "Carya",
+      "hikorijas",
+      "kārijas"
+    ]
+  },
+  "Q158513": {
+    "name": "skābarži",
+    "aliases": [
+      "Carpinus",
+      "skābaržu ģints"
+    ]
+  },
+  "Q165173": {
+    "name": "paulovniju ģints",
+    "aliases": [
+      "paulovnijas",
+      "Paulownia"
+    ]
+  },
+  "Q2453469": {
+    "name": "riekstkoki",
+    "aliases": [
+      "riekstkoku ģints",
+      "valriekstkoki"
+    ]
+  },
+  "Q190545": {
+    "name": "kauleņkoki",
+    "aliases": [
+      "kauleņaugi"
+    ]
+  },
+  "Q165258": {
+    "name": "ebenkoki",
+    "aliases": [
+      "Diospyros",
+      "Ebenus",
+      "hurma",
+      "ebenkoks",
+      "hurmas",
+      "melnkoki",
+      "melnkoks",
+      "ebenkoku ģints"
+    ]
+  },
+  "Q127849": {
+    "name": "liepas"
+  },
+  "Q128887": {
+    "name": "oši"
+  },
+  "Q145889": {
+    "name": "Lazdas"
+  },
+  "Q146911": {
+    "name": "cipreses"
+  },
+  "Q149461": {
+    "name": "Ginki"
+  },
+  "Q157017": {
+    "name": "magnolijas"
+  },
+  "Q157964": {
+    "name": "pīlādži"
+  },
+  "Q158072": {
+    "name": "katalpa"
+  },
+  "Q161042": {
+    "name": "Eleagni"
+  },
+  "Q296910": {
+    "name": "olīvkoki"
+  },
+  "Q1975652": {
+    "name": "Sekvojas"
+  },
+  "Q434": {
+    "name": "bumbieres"
+  },
+  "Q12024": {
+    "name": "Priedes"
+  },
+  "Q25618": {
+    "name": "Lapegles"
+  },
+  "Q42292": {
+    "name": "Kļavas"
+  },
+  "Q59798": {
+    "name": "Fikusi"
+  }
+}

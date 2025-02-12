@@ -1,0 +1,456 @@
+{
+  "Q434": {
+    "name": "круша",
+    "aliases": [
+      "Pyrus"
+    ]
+  },
+  "Q12004": {
+    "name": "дъб",
+    "aliases": [
+      "Quercus"
+    ]
+  },
+  "Q12024": {
+    "name": "бор",
+    "aliases": [
+      "Pinus"
+    ]
+  },
+  "Q25239": {
+    "name": "елша",
+    "aliases": [
+      "Alnus"
+    ]
+  },
+  "Q25243": {
+    "name": "бреза",
+    "aliases": [
+      "Betula"
+    ]
+  },
+  "Q25350": {
+    "name": "ела",
+    "aliases": [
+      "Ели",
+      "Abies"
+    ]
+  },
+  "Q25356": {
+    "name": "топола",
+    "aliases": [
+      "Populus"
+    ]
+  },
+  "Q25403": {
+    "name": "бук",
+    "aliases": [
+      "Fagus"
+    ]
+  },
+  "Q25618": {
+    "name": "лиственица",
+    "aliases": [
+      "Larix"
+    ]
+  },
+  "Q25662": {
+    "name": "хвойна",
+    "aliases": [
+      "Juniperus",
+      "Смрика"
+    ]
+  },
+  "Q26782": {
+    "name": "смърч",
+    "aliases": [
+      "Picea"
+    ]
+  },
+  "Q27355": {
+    "name": "тис",
+    "aliases": [
+      "Taxus"
+    ]
+  },
+  "Q29033": {
+    "name": "церцис",
+    "aliases": [
+      "Cercis",
+      "Дървото на Юда"
+    ]
+  },
+  "Q36050": {
+    "name": "върба",
+    "aliases": [
+      "Salix"
+    ]
+  },
+  "Q42292": {
+    "name": "явор",
+    "aliases": [
+      "клен"
+    ]
+  },
+  "Q44789": {
+    "name": "черница",
+    "aliases": [
+      "Morus"
+    ]
+  },
+  "Q45669": {
+    "name": "евкалипт",
+    "aliases": [
+      "Eucalyptus hybrid",
+      "Eucalyptus"
+    ]
+  },
+  "Q104819": {
+    "name": "ябълка",
+    "aliases": [
+      "Malus"
+    ]
+  },
+  "Q59798": {
+    "name": "фикус",
+    "aliases": [
+      "Ficus"
+    ]
+  },
+  "Q127849": {
+    "name": "липа",
+    "aliases": [
+      "Tilia"
+    ]
+  },
+  "Q128550": {
+    "name": "кедър",
+    "aliases": [
+      "Cedrus"
+    ]
+  },
+  "Q129324": {
+    "name": "кестен",
+    "aliases": [
+      "Castanea"
+    ]
+  },
+  "Q131113": {
+    "name": "бряст",
+    "aliases": [
+      "Ulmus"
+    ]
+  },
+  "Q132557": {
+    "name": "глог",
+    "aliases": [
+      "Crataegus"
+    ]
+  },
+  "Q142788": {
+    "name": "хикори",
+    "aliases": [
+      "Carya"
+    ]
+  },
+  "Q145889": {
+    "name": "леска",
+    "aliases": [
+      "Corylus",
+      "Лешник"
+    ]
+  },
+  "Q146911": {
+    "name": "кипарис",
+    "aliases": [
+      "Cupressus"
+    ]
+  },
+  "Q149461": {
+    "name": "гинко",
+    "aliases": [
+      "Ginkgo"
+    ]
+  },
+  "Q157017": {
+    "name": "магнолия",
+    "aliases": [
+      "Yulania"
+    ]
+  },
+  "Q157236": {
+    "name": "Лирово дърво",
+    "aliases": [
+      "Liriodendron",
+      "Дърво лале",
+      "Дърво-лале",
+      "лириодендрон"
+    ]
+  },
+  "Q157366": {
+    "name": "смрадлика",
+    "aliases": [
+      "Cotinus"
+    ]
+  },
+  "Q157964": {
+    "name": "офика",
+    "aliases": [
+      "Sorbus"
+    ]
+  },
+  "Q158513": {
+    "name": "габър",
+    "aliases": [
+      "Carpinus"
+    ]
+  },
+  "Q158752": {
+    "name": "конски кестен",
+    "aliases": [
+      "Aesculus"
+    ]
+  },
+  "Q158771": {
+    "name": "Дугласка ела",
+    "aliases": [
+      "Pseudotsuga",
+      "Дугласка",
+      "Дъгласка ела"
+    ]
+  },
+  "Q159545": {
+    "name": "дрян",
+    "aliases": [
+      "Benthamidia",
+      "Chamaepericlymenum",
+      "Cornus",
+      "Swida"
+    ]
+  },
+  "Q160580": {
+    "name": "айлант",
+    "aliases": [
+      "Ailanthus"
+    ]
+  },
+  "Q161250": {
+    "name": "гледичия",
+    "aliases": [
+      "гледиция"
+    ]
+  },
+  "Q163025": {
+    "name": "чинар",
+    "aliases": [
+      "Castaneophyllum",
+      "Platanaceae",
+      "Platanus",
+      "Платан",
+      "Платанови",
+      "Чинарови",
+      "Яблан"
+    ]
+  },
+  "Q165173": {
+    "name": "пауловния",
+    "aliases": [
+      "Paulownia"
+    ]
+  },
+  "Q183543": {
+    "name": "ликвидамбър",
+    "aliases": [
+      "Амброво дърво"
+    ]
+  },
+  "Q190545": {
+    "name": "слива",
+    "aliases": [
+      "Prunus"
+    ]
+  },
+  "Q296910": {
+    "name": "маслина",
+    "aliases": [
+      "Olea"
+    ]
+  },
+  "Q309213": {
+    "name": "софора",
+    "aliases": [
+      "Sophora"
+    ]
+  },
+  "Q605290": {
+    "name": "Воден габър",
+    "aliases": [
+      "Ostrya"
+    ]
+  },
+  "Q664945": {
+    "name": "албиция",
+    "aliases": [
+      "Albizia"
+    ]
+  },
+  "Q1065400": {
+    "name": "кастанопсис",
+    "aliases": [
+      "Castanopsis"
+    ]
+  },
+  "Q12309040": {
+    "name": "давидия",
+    "aliases": [
+      "Davidia"
+    ]
+  },
+  "Q1070845": {
+    "name": "фотиния",
+    "aliases": [
+      "Photinia"
+    ]
+  },
+  "Q1132766": {
+    "name": "фонтанезия",
+    "aliases": [
+      "Fontanesia"
+    ]
+  },
+  "Q2453469": {
+    "name": "орех",
+    "aliases": [
+      "Juglans"
+    ]
+  },
+  "Q128887": {
+    "name": "ясен"
+  },
+  "Q132402": {
+    "name": "Lithocarpus"
+  },
+  "Q132703": {
+    "name": "Koelreuteria"
+  },
+  "Q137054": {
+    "name": "Chrysolepis"
+  },
+  "Q147791": {
+    "name": "Chamaecyparis"
+  },
+  "Q158072": {
+    "name": "Catalpa"
+  },
+  "Q161042": {
+    "name": "Elaeagnus"
+  },
+  "Q165258": {
+    "name": "Diospyros"
+  },
+  "Q248582": {
+    "name": "Celtis"
+  },
+  "Q472943": {
+    "name": "Robinia"
+  },
+  "Q765246": {
+    "name": "Calocedrus"
+  },
+  "Q775229": {
+    "name": "Lagerstroemia"
+  },
+  "Q796117": {
+    "name": "Cyclobalanopsis"
+  },
+  "Q810562": {
+    "name": "Karpatiosorbus"
+  },
+  "Q858028": {
+    "name": "Cercidiphyllum"
+  },
+  "Q964952": {
+    "name": "ниса"
+  },
+  "Q1420126": {
+    "name": "Pterocarya"
+  },
+  "Q1975652": {
+    "name": "Sequoia"
+  },
+  "Q2697430": {
+    "name": "Toona"
+  },
+  "Q3060383": {
+    "name": "Euodia"
+  },
+  "Q3366033": {
+    "name": "Parrotia"
+  },
+  "Q5122903": {
+    "name": "кумкуат"
+  },
+  "Q5220438": {
+    "name": "Trigonobalanus"
+  },
+  "Q5429644": {
+    "name": "Faidherbia"
+  },
+  "Q12323064": {
+    "name": "Cryptomeria"
+  },
+  "Q17410244": {
+    "name": "Notholithocarpus"
+  },
+  "Q18745576": {
+    "name": "Pasania"
+  },
+  "Q19845401": {
+    "name": "Formanodendron"
+  },
+  "Q20817818": {
+    "name": "Eotrigonobalanus"
+  },
+  "Q21088249": {
+    "name": "Limlia"
+  },
+  "Q21397965": {
+    "name": "Dryophyllum"
+  },
+  "Q21398174": {
+    "name": "Fagopsis"
+  },
+  "Q87070717": {
+    "name": "Salisburia"
+  },
+  "Q87145799": {
+    "name": "Callaeocarpus"
+  },
+  "Q87147998": {
+    "name": "Colombobalanus"
+  },
+  "Q87152055": {
+    "name": "Fagus-castanea"
+  },
+  "Q87162206": {
+    "name": "Pasaniopsis"
+  },
+  "Q108071245": {
+    "name": "Berryophyllum"
+  },
+  "Q113299853": {
+    "name": "Erythrobalanus"
+  },
+  "Q113299877": {
+    "name": "Synaedrys"
+  },
+  "Q113299880": {
+    "name": "Corylopasania"
+  },
+  "Q113299881": {
+    "name": "Cyclobalanus"
+  },
+  "Q119063130": {
+    "name": "Castaneophyllum"
+  }
+}

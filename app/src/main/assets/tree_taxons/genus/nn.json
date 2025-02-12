@@ -1,0 +1,186 @@
+{
+  "Q12024": {
+    "name": "furuslekta",
+    "aliases": [
+      "Pinus",
+      "fureslekta"
+    ]
+  },
+  "Q25239": {
+    "name": "or",
+    "aliases": [
+      "Older",
+      "Alnus",
+      "Oldertre",
+      "Oretre"
+    ]
+  },
+  "Q25243": {
+    "name": "bjørk",
+    "aliases": [
+      "Betula"
+    ]
+  },
+  "Q25350": {
+    "name": "edelgranslekta",
+    "aliases": [
+      "edelgran"
+    ]
+  },
+  "Q25356": {
+    "name": "poppelslekta",
+    "aliases": [
+      "Populus"
+    ]
+  },
+  "Q25403": {
+    "name": "bøkeslekta",
+    "aliases": [
+      "Bøkar",
+      "Bøketre"
+    ]
+  },
+  "Q26782": {
+    "name": "granslekta",
+    "aliases": [
+      "grantre",
+      "Picea"
+    ]
+  },
+  "Q36050": {
+    "name": "Vierslekta",
+    "aliases": [
+      "Salix"
+    ]
+  },
+  "Q42292": {
+    "name": "lønn",
+    "aliases": [
+      "Løn",
+      "Lønn tretype",
+      "Lønnefamilien",
+      "Lønnslekta"
+    ]
+  },
+  "Q127849": {
+    "name": "lindeslekta",
+    "aliases": [
+      "Tilia"
+    ]
+  },
+  "Q146911": {
+    "name": "sypresslekta",
+    "aliases": [
+      "sypress-slekta"
+    ]
+  },
+  "Q149461": {
+    "name": "Ginkgo-slekta",
+    "aliases": [
+      "Ginkgo",
+      "tempeltreslekta"
+    ]
+  },
+  "Q157964": {
+    "name": "asalslekta",
+    "aliases": [
+      "rogn- og asalslekta",
+      "Sorbus"
+    ]
+  },
+  "Q165258": {
+    "name": "Sharon",
+    "aliases": [
+      "Sharonfrukt",
+      "Sharonfruktar"
+    ]
+  },
+  "Q145889": {
+    "name": "Hasselslekta",
+    "aliases": [
+      "Corylus",
+      "Hasselfamilien"
+    ]
+  },
+  "Q190545": {
+    "name": "kirsebærslekta",
+    "aliases": [
+      "Prunus"
+    ]
+  },
+  "Q104819": {
+    "name": "Epleslekta"
+  },
+  "Q128550": {
+    "name": "Sedertre"
+  },
+  "Q128887": {
+    "name": "askeslekta"
+  },
+  "Q132557": {
+    "name": "hagtornslekta"
+  },
+  "Q157017": {
+    "name": "Magnoliaslekten"
+  },
+  "Q157366": {
+    "name": "Cotinus"
+  },
+  "Q158752": {
+    "name": "Aesculus"
+  },
+  "Q159545": {
+    "name": "vårkornellslekta"
+  },
+  "Q161250": {
+    "name": "Gleditsia"
+  },
+  "Q165173": {
+    "name": "Paulownia"
+  },
+  "Q296910": {
+    "name": "Olea"
+  },
+  "Q309213": {
+    "name": "Sophora"
+  },
+  "Q664945": {
+    "name": "Albizia"
+  },
+  "Q775229": {
+    "name": "Lagerstroemia"
+  },
+  "Q1420126": {
+    "name": "Pterocarya"
+  },
+  "Q1975652": {
+    "name": "Sequoia"
+  },
+  "Q5122903": {
+    "name": "kumkvat"
+  },
+  "Q434": {
+    "name": "Pære"
+  },
+  "Q12004": {
+    "name": "eikeslekta"
+  },
+  "Q25618": {
+    "name": "lerk"
+  },
+  "Q25662": {
+    "name": "Einerslekta"
+  },
+  "Q29033": {
+    "name": "Cercis"
+  },
+  "Q44789": {
+    "name": "Morbær"
+  },
+  "Q45669": {
+    "name": "Eukalyptusslekta"
+  },
+  "Q59798": {
+    "name": "Fikenslekta"
+  }
+}

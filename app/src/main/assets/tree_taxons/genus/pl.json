@@ -1,0 +1,450 @@
+{
+  "Q434": {
+    "name": "grusza",
+    "aliases": [
+      "gruszka"
+    ]
+  },
+  "Q12004": {
+    "name": "dąb",
+    "aliases": [
+      "Quercus"
+    ]
+  },
+  "Q12024": {
+    "name": "sosna",
+    "aliases": [
+      "Pinus"
+    ]
+  },
+  "Q25239": {
+    "name": "olsza",
+    "aliases": [
+      "Alnus",
+      "olcha"
+    ]
+  },
+  "Q25243": {
+    "name": "brzoza",
+    "aliases": [
+      "Betula"
+    ]
+  },
+  "Q25350": {
+    "name": "jodła",
+    "aliases": [
+      "Abies"
+    ]
+  },
+  "Q25356": {
+    "name": "topola",
+    "aliases": [
+      "Populus"
+    ]
+  },
+  "Q25403": {
+    "name": "buk",
+    "aliases": [
+      "Fagus"
+    ]
+  },
+  "Q25618": {
+    "name": "Modrzew",
+    "aliases": [
+      "Larix"
+    ]
+  },
+  "Q25662": {
+    "name": "jałowiec",
+    "aliases": [
+      "Juniperus"
+    ]
+  },
+  "Q26782": {
+    "name": "Świerk",
+    "aliases": [
+      "Picea"
+    ]
+  },
+  "Q27355": {
+    "name": "cis",
+    "aliases": [
+      "Taxus"
+    ]
+  },
+  "Q29033": {
+    "name": "judaszowiec",
+    "aliases": [
+      "Cercis"
+    ]
+  },
+  "Q36050": {
+    "name": "wierzba",
+    "aliases": [
+      "Salix"
+    ]
+  },
+  "Q44789": {
+    "name": "Morwa",
+    "aliases": [
+      "Morus"
+    ]
+  },
+  "Q45669": {
+    "name": "Eukaliptus",
+    "aliases": [
+      "Eucalyptus"
+    ]
+  },
+  "Q59798": {
+    "name": "Figowiec",
+    "aliases": [
+      "Ficus",
+      "Fikus"
+    ]
+  },
+  "Q127849": {
+    "name": "lipa",
+    "aliases": [
+      "Tilia"
+    ]
+  },
+  "Q128550": {
+    "name": "Cedr",
+    "aliases": [
+      "Cedrus"
+    ]
+  },
+  "Q131113": {
+    "name": "Wiąz",
+    "aliases": [
+      "Ulmus"
+    ]
+  },
+  "Q132557": {
+    "name": "Głóg",
+    "aliases": [
+      "Crataegus",
+      "Krategus"
+    ]
+  },
+  "Q145889": {
+    "name": "leszczyna",
+    "aliases": [
+      "Corylus",
+      "orzeszyna"
+    ]
+  },
+  "Q146911": {
+    "name": "Cyprys",
+    "aliases": [
+      "Cyprysy",
+      "Cupressus"
+    ]
+  },
+  "Q147791": {
+    "name": "Cyprysik",
+    "aliases": [
+      "Chamaecyparis"
+    ]
+  },
+  "Q149461": {
+    "name": "Miłorząb",
+    "aliases": [
+      "Ginkgo"
+    ]
+  },
+  "Q157236": {
+    "name": "Tulipanowiec",
+    "aliases": [
+      "Liriodendron"
+    ]
+  },
+  "Q157366": {
+    "name": "Perukowiec",
+    "aliases": [
+      "Cotinus"
+    ]
+  },
+  "Q157964": {
+    "name": "Jarząb",
+    "aliases": [
+      "Sorbus"
+    ]
+  },
+  "Q158072": {
+    "name": "Surmia",
+    "aliases": [
+      "Catalpa",
+      "Katalpa"
+    ]
+  },
+  "Q158513": {
+    "name": "Grab",
+    "aliases": [
+      "Carpinus"
+    ]
+  },
+  "Q158752": {
+    "name": "Kasztanowiec",
+    "aliases": [
+      "Aesculus"
+    ]
+  },
+  "Q158771": {
+    "name": "daglezja",
+    "aliases": [
+      "Pseudotsuga",
+      "jedlica"
+    ]
+  },
+  "Q159545": {
+    "name": "Dereń",
+    "aliases": [
+      "Cornus"
+    ]
+  },
+  "Q160580": {
+    "name": "bożodrzew",
+    "aliases": [
+      "Ailanthus",
+      "ajlant"
+    ]
+  },
+  "Q161250": {
+    "name": "glediczja",
+    "aliases": [
+      "Gleditschia",
+      "Gleditsia",
+      "Iglicznia"
+    ]
+  },
+  "Q163025": {
+    "name": "Platan",
+    "aliases": [
+      "Platanus"
+    ]
+  },
+  "Q165258": {
+    "name": "Hurma",
+    "aliases": [
+      "Szaron",
+      "Hebanowiec",
+      "Kaki",
+      "Persymona",
+      "Diospyros"
+    ]
+  },
+  "Q190545": {
+    "name": "śliwa",
+    "aliases": [
+      "Prunus",
+      "śliwka"
+    ]
+  },
+  "Q296910": {
+    "name": "Oliwka (roślina)",
+    "aliases": [
+      "Olea",
+      "Drzewo oliwne",
+      "Olea Europaea",
+      "Oliwka",
+      "Oliwki"
+    ]
+  },
+  "Q309213": {
+    "name": "Szupin",
+    "aliases": [
+      "Sofora",
+      "Sophora"
+    ]
+  },
+  "Q472943": {
+    "name": "robinia",
+    "aliases": [
+      "grochodrzew"
+    ]
+  },
+  "Q858028": {
+    "name": "grujecznik",
+    "aliases": [
+      "Cercidiphyllaceae",
+      "grujecznikowate"
+    ]
+  },
+  "Q964952": {
+    "name": "Błotnia",
+    "aliases": [
+      "klążnia"
+    ]
+  },
+  "Q12323064": {
+    "name": "Cryptomeria",
+    "aliases": [
+      "Kryptomeria",
+      "Szydlica"
+    ]
+  },
+  "Q1070845": {
+    "name": "Głogownik",
+    "aliases": [
+      "Photinia"
+    ]
+  },
+  "Q1420126": {
+    "name": "Skrzydłorzech",
+    "aliases": [
+      "Pterocarya"
+    ]
+  },
+  "Q1975652": {
+    "name": "Sekwoja",
+    "aliases": [
+      "Sequoia"
+    ]
+  },
+  "Q3060383": {
+    "name": "Ewodia (roślina)",
+    "aliases": [
+      "Euodia"
+    ]
+  },
+  "Q104819": {
+    "name": "jabłoń"
+  },
+  "Q128887": {
+    "name": "jesion"
+  },
+  "Q129324": {
+    "name": "kasztan"
+  },
+  "Q132402": {
+    "name": "Lithocarpus"
+  },
+  "Q132703": {
+    "name": "Roztrzeplin"
+  },
+  "Q137054": {
+    "name": "Chrysolepis"
+  },
+  "Q142788": {
+    "name": "Orzesznik"
+  },
+  "Q157017": {
+    "name": "magnolia"
+  },
+  "Q161042": {
+    "name": "Oliwnik"
+  },
+  "Q165173": {
+    "name": "Paulownia"
+  },
+  "Q183543": {
+    "name": "Ambrowiec"
+  },
+  "Q248582": {
+    "name": "Wiązowiec (roślina)"
+  },
+  "Q605290": {
+    "name": "Chmielograb"
+  },
+  "Q664945": {
+    "name": "Albizia"
+  },
+  "Q765246": {
+    "name": "Cedrzyniec"
+  },
+  "Q775229": {
+    "name": "Lagerstremia"
+  },
+  "Q796117": {
+    "name": "Cyclobalanopsis"
+  },
+  "Q810562": {
+    "name": "Karpatiosorbus"
+  },
+  "Q1065400": {
+    "name": "Castanopsis"
+  },
+  "Q1132766": {
+    "name": "Fontanezja"
+  },
+  "Q2453469": {
+    "name": "orzech"
+  },
+  "Q2697430": {
+    "name": "Toona"
+  },
+  "Q3366033": {
+    "name": "Parrotia"
+  },
+  "Q5122903": {
+    "name": "Kumkwat"
+  },
+  "Q5220438": {
+    "name": "Trigonobalanus"
+  },
+  "Q5429644": {
+    "name": "Faidherbia"
+  },
+  "Q12309040": {
+    "name": "Davidia"
+  },
+  "Q17410244": {
+    "name": "Notholithocarpus"
+  },
+  "Q18745576": {
+    "name": "Pasania"
+  },
+  "Q19845401": {
+    "name": "Formanodendron"
+  },
+  "Q20817818": {
+    "name": "Eotrigonobalanus"
+  },
+  "Q21088249": {
+    "name": "Limlia"
+  },
+  "Q21397965": {
+    "name": "Dryophyllum"
+  },
+  "Q21398174": {
+    "name": "Fagopsis"
+  },
+  "Q42292": {
+    "name": "klon"
+  },
+  "Q87070717": {
+    "name": "Salisburia"
+  },
+  "Q87145799": {
+    "name": "Callaeocarpus"
+  },
+  "Q87147998": {
+    "name": "Colombobalanus"
+  },
+  "Q87152055": {
+    "name": "Fagus-castanea"
+  },
+  "Q87162206": {
+    "name": "Pasaniopsis"
+  },
+  "Q108071245": {
+    "name": "Berryophyllum"
+  },
+  "Q113299853": {
+    "name": "Erythrobalanus"
+  },
+  "Q113299877": {
+    "name": "Synaedrys"
+  },
+  "Q113299880": {
+    "name": "Corylopasania"
+  },
+  "Q113299881": {
+    "name": "Cyclobalanus"
+  },
+  "Q119063130": {
+    "name": "Castaneophyllum"
+  }
+}

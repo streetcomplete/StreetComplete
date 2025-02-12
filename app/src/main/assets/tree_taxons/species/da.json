@@ -1,0 +1,1734 @@
+{
+  "Q106094": {
+    "name": "pinje",
+    "aliases": [
+      "Pinus pinea"
+    ]
+  },
+  "Q161105": {
+    "name": "Orientalsk platan",
+    "aliases": [
+      "Platanus orientalis"
+    ]
+  },
+  "Q1144815": {
+    "name": "Japansk Taks",
+    "aliases": [
+      "Taxus cuspidata"
+    ]
+  },
+  "Q1144822": {
+    "name": "Japansk Prydæble",
+    "aliases": [
+      "Malus sieboldii",
+      "Malus toringo"
+    ]
+  },
+  "Q1145286": {
+    "name": "Orientalsk Gran",
+    "aliases": [
+      "Picea orientalis"
+    ]
+  },
+  "Q1190084": {
+    "name": "Jesso-Gran",
+    "aliases": [
+      "Picea jezoensis"
+    ]
+  },
+  "Q161116": {
+    "name": "Magnolia grandiflora",
+    "aliases": [
+      "Magnolia stedsegrøn"
+    ]
+  },
+  "Q161166": {
+    "name": "Askebladet Løn",
+    "aliases": [
+      "Acer negundo"
+    ]
+  },
+  "Q124969": {
+    "name": "almindelig hassel",
+    "aliases": [
+      "Corylus avellana",
+      "hassel",
+      "skov-hassel"
+    ]
+  },
+  "Q22699": {
+    "name": "ægte kastanje",
+    "aliases": [
+      "Castanea sativa"
+    ]
+  },
+  "Q131517": {
+    "name": "Sur-Kirsebær",
+    "aliases": [
+      "Prunus cerasus"
+    ]
+  },
+  "Q26325": {
+    "name": "almindelig ene",
+    "aliases": [
+      "enebær",
+      "ene",
+      "Juniperus communis"
+    ]
+  },
+  "Q1190312": {
+    "name": "Stribet Løn",
+    "aliases": [
+      "Acer pensylvanicum"
+    ]
+  },
+  "Q1210209": {
+    "name": "Japansk Røn",
+    "aliases": [
+      "Sorbus commixta"
+    ]
+  },
+  "Q1283223": {
+    "name": "Sølv-Gran",
+    "aliases": [
+      "Abies procera",
+      "Nobilis (Abies procera)",
+      "sølvgran"
+    ]
+  },
+  "Q1335724": {
+    "name": "Klippe-Røn",
+    "aliases": [
+      "Klippe-Røn (Sorbus rupicola)",
+      "Klipperøn",
+      "Klipperøn (Sorbus rupicola)",
+      "Sorbus rupicola"
+    ]
+  },
+  "Q1367533": {
+    "name": "Almindelig Humlebøg",
+    "aliases": [
+      "Europæisk Humlebøg",
+      "Ostrya carpinifolia"
+    ]
+  },
+  "Q1470571": {
+    "name": "Fujiyama-Æble",
+    "aliases": [
+      "Bær-æble",
+      "Malus tschonoskii"
+    ]
+  },
+  "Q1543689": {
+    "name": "Hjertebladet El",
+    "aliases": [
+      "Alnus cordata"
+    ]
+  },
+  "Q161253": {
+    "name": "Sump-Eg",
+    "aliases": [
+      "Quercus palustris"
+    ]
+  },
+  "Q161360": {
+    "name": "Lawson-Cypres",
+    "aliases": [
+      "Chamaecyparis lawsoniana",
+      "Lawsoncypres"
+    ]
+  },
+  "Q161364": {
+    "name": "Rød Løn",
+    "aliases": [
+      "Rød-Løn"
+    ]
+  },
+  "Q162440": {
+    "name": "Busk-Hestekastanje",
+    "aliases": [
+      "Aesculus parviflora"
+    ]
+  },
+  "Q1631520": {
+    "name": "Rød-Birk",
+    "aliases": [
+      "Betula albo-sinensis",
+      "Betula albosinensis"
+    ]
+  },
+  "Q1631932": {
+    "name": "Have-Løn",
+    "aliases": [
+      "Acer micranthum",
+      "Haveløn"
+    ]
+  },
+  "Q1693676": {
+    "name": "Glansbladet Hvidtjørn",
+    "aliases": [
+      "Glansbladet tjørn"
+    ]
+  },
+  "Q1743596": {
+    "name": "Bær-Æble",
+    "aliases": [
+      "Malus baccata",
+      "Paradis-Æble",
+      "Paradis-Æble (Malus baccata)"
+    ]
+  },
+  "Q133128": {
+    "name": "skovfyr",
+    "aliases": [
+      "Pinus sylvestris",
+      "Skov-Fyr"
+    ]
+  },
+  "Q129018": {
+    "name": "slåen",
+    "aliases": [
+      "Prunus spinosa",
+      "Slåenbær"
+    ]
+  },
+  "Q26745": {
+    "name": "spids-løn",
+    "aliases": [
+      "Acer platanoides",
+      "spidsløn"
+    ]
+  },
+  "Q161920": {
+    "name": "Weichseltræ",
+    "aliases": [
+      "Prunus mahaleb",
+      "Weichsel"
+    ]
+  },
+  "Q161415": {
+    "name": "Dun-Eg",
+    "aliases": [
+      "Quercus pubescens"
+    ]
+  },
+  "Q161416": {
+    "name": "Rød Kornel",
+    "aliases": [
+      "Cornus sanguinea"
+    ]
+  },
+  "Q2727171": {
+    "name": "Rosen-Mandel",
+    "aliases": [
+      "Prunus triloba"
+    ]
+  },
+  "Q2946415": {
+    "name": "Stort Hjertetræ",
+    "aliases": [
+      "Cercidiphyllum magnificum"
+    ]
+  },
+  "Q3079266": {
+    "name": "Kina-Pære",
+    "aliases": [
+      "Pyrus calleryana"
+    ]
+  },
+  "Q128116": {
+    "name": "Hvid-Gran",
+    "aliases": [
+      "Hvidgran",
+      "Picea glauca"
+    ]
+  },
+  "Q161421": {
+    "name": "Manna-Ask",
+    "aliases": [
+      "Fraxinus ornus"
+    ]
+  },
+  "Q161511": {
+    "name": "Engriflet Hvidtjørn",
+    "aliases": [
+      "Hvidtjørn",
+      "Crataegus monogyna"
+    ]
+  },
+  "Q1768635": {
+    "name": "Blå Ene",
+    "aliases": [
+      "Juniperus squamata",
+      "Skællet Ene"
+    ]
+  },
+  "Q1801446": {
+    "name": "Storfrugtet Hassel",
+    "aliases": [
+      "Corylus avellana var. maxima",
+      "Corylus maxima"
+    ]
+  },
+  "Q1969110": {
+    "name": "Portugisisk Laurbær-Kirsebær",
+    "aliases": [
+      "Portugisisk Laurbærkirsebær"
+    ]
+  },
+  "Q161374": {
+    "name": "almindelig platan",
+    "aliases": [
+      "Platan"
+    ]
+  },
+  "Q165424": {
+    "name": "Almindelig Hæg",
+    "aliases": [
+      "Hæg",
+      "Majtræ",
+      "Prunus padus"
+    ]
+  },
+  "Q37083": {
+    "name": "oliven",
+    "aliases": [
+      "Olea europaea",
+      "Olive"
+    ]
+  },
+  "Q146025": {
+    "name": "Blå-Gran",
+    "aliases": [
+      "Picea pungens"
+    ]
+  },
+  "Q163039": {
+    "name": "Sakhalin-Kirsebær",
+    "aliases": [
+      "Prunus sargentii",
+      "Sachalin-Kirsebær"
+    ]
+  },
+  "Q163546": {
+    "name": "Alpe-Røn",
+    "aliases": [
+      "Sorbus chamaemespilus"
+    ]
+  },
+  "Q163544": {
+    "name": "Kamtjatka-Birk",
+    "aliases": [
+      "Betula ermanii"
+    ]
+  },
+  "Q163550": {
+    "name": "Pyrenæisk Røn",
+    "aliases": [
+      "Røn",
+      "Sorbus mougeotii",
+      "Sorbus mougeotti"
+    ]
+  },
+  "Q163574": {
+    "name": "Uld-Pil",
+    "aliases": [
+      "Salix lanata"
+    ]
+  },
+  "Q165137": {
+    "name": "Fugle-Kirsebær",
+    "aliases": [
+      "Kirsebærtræ",
+      "Prunus avium",
+      "Sød-Kirsebær"
+    ]
+  },
+  "Q145939": {
+    "name": "Langnålet Ædelgran",
+    "aliases": [
+      "Abies concolor"
+    ]
+  },
+  "Q145954": {
+    "name": "Sort-Fyr",
+    "aliases": [
+      "Pinus nigra"
+    ]
+  },
+  "Q146149": {
+    "name": "almindelig bøg",
+    "aliases": [
+      "bøgetræ",
+      "blod bøg",
+      "blodbøg",
+      "bøg",
+      "Fagus sylvatica"
+    ]
+  },
+  "Q146198": {
+    "name": "almindelig røn",
+    "aliases": [
+      "Sorbus aucuparia",
+      "røn",
+      "rønnebær"
+    ]
+  },
+  "Q4992235": {
+    "name": "Skarlagen-Hvidtjørn",
+    "aliases": [
+      "Crataegus intricata"
+    ]
+  },
+  "Q4992558": {
+    "name": "Sargents Æble",
+    "aliases": [
+      "Bær-æble",
+      "Malus sargentii"
+    ]
+  },
+  "Q4993133": {
+    "name": "Bjerg-Kirsebær",
+    "aliases": [
+      "Prunus nipponica"
+    ]
+  },
+  "Q5279626": {
+    "name": "Sort Ibenholt",
+    "aliases": [
+      "Sort Ibenholt (Diospyros ebenum)"
+    ]
+  },
+  "Q6292155": {
+    "name": "Taxus x media",
+    "aliases": [
+      "Taks-krydsning"
+    ]
+  },
+  "Q11126644": {
+    "name": "Håret Glansmispel",
+    "aliases": [
+      "Photinia villosa"
+    ]
+  },
+  "Q26899": {
+    "name": "Almindelig Hestekastanje",
+    "aliases": [
+      "Aesculus hippocastanum",
+      "Hestekastanje"
+    ]
+  },
+  "Q164371": {
+    "name": "Tibetansk Kirsebær",
+    "aliases": [
+      "Prunus serrula"
+    ]
+  },
+  "Q165091": {
+    "name": "Klitfyr",
+    "aliases": [
+      "Contorta-Fyr",
+      "Klit-Fyr",
+      "Pinus contorta"
+    ]
+  },
+  "Q146951": {
+    "name": "mirabel",
+    "aliases": [
+      "Kirsebær-Blomme",
+      "Prunus cerasifera",
+      "mirabelle"
+    ]
+  },
+  "Q165321": {
+    "name": "Japansk Kirsebær",
+    "aliases": [
+      "Prunus serrulata"
+    ]
+  },
+  "Q163760": {
+    "name": "Park-Lind",
+    "aliases": [
+      "Kejser-Lind"
+    ]
+  },
+  "Q163831": {
+    "name": "Almindelig Trompetkrone",
+    "aliases": [
+      "Almindeligt Trompettræ",
+      "Catalpa bignonioides",
+      "Trompettræ"
+    ]
+  },
+  "Q165145": {
+    "name": "Stilk-Eg",
+    "aliases": [
+      "Eg",
+      "Quercus robur",
+      "Quereus robur",
+      "Stilkeg"
+    ]
+  },
+  "Q41350": {
+    "name": "Grapefrugt",
+    "aliases": [
+      "Citrus x paradisi",
+      "Grape"
+    ]
+  },
+  "Q145992": {
+    "name": "Rødgran",
+    "aliases": [
+      "Picea abies",
+      "Rød-Gran"
+    ]
+  },
+  "Q146110": {
+    "name": "Bævre-Asp",
+    "aliases": [
+      "Bævreasp",
+      "Populus tremula"
+    ]
+  },
+  "Q3179665": {
+    "name": "Skov-Tupelotræ",
+    "aliases": [
+      "Nyssa sylvatica"
+    ]
+  },
+  "Q3269605": {
+    "name": "Fuji-Kirsebær",
+    "aliases": [
+      "Prunus incisa"
+    ]
+  },
+  "Q27980": {
+    "name": "Selje-Røn",
+    "aliases": [
+      "Bornholmsk Røn",
+      "Seljerøn",
+      "Sorbus x intermedia"
+    ]
+  },
+  "Q28141": {
+    "name": "krybende pil",
+    "aliases": [
+      "Salix repens"
+    ]
+  },
+  "Q146992": {
+    "name": "Almindelig Ædelgran",
+    "aliases": [
+      "Abies alba",
+      "Ædelgran"
+    ]
+  },
+  "Q179729": {
+    "name": "Almindelig taks",
+    "aliases": [
+      "Taks",
+      "Taxus baccata"
+    ]
+  },
+  "Q184300": {
+    "name": "Middelhavs-Ene",
+    "aliases": [
+      "Juniperus oxycedrus"
+    ]
+  },
+  "Q146021": {
+    "name": "Silke-Fyr",
+    "aliases": [
+      "Pinus peuce"
+    ]
+  },
+  "Q146048": {
+    "name": "Europæisk Lærk",
+    "aliases": [
+      "Larix decidua"
+    ]
+  },
+  "Q147064": {
+    "name": "Populus nigra",
+    "aliases": [
+      "Sort poppel",
+      "sortpoppel"
+    ]
+  },
+  "Q218425": {
+    "name": "Sort-Gran",
+    "aliases": [
+      "Picea mariana",
+      "Sortgran"
+    ]
+  },
+  "Q243964": {
+    "name": "Krybe-Fyr",
+    "aliases": [
+      "Pinus pumila"
+    ]
+  },
+  "Q43284": {
+    "name": "Tempeltræ",
+    "aliases": [
+      "Ginkgo biloba"
+    ]
+  },
+  "Q214733": {
+    "name": "Sukker-Løn",
+    "aliases": [
+      "Acer saccharum"
+    ]
+  },
+  "Q42385": {
+    "name": "Kakao",
+    "aliases": [
+      "Kakaotræ",
+      "Ægte Kakaotræ",
+      "Theobroma cacao"
+    ]
+  },
+  "Q146281": {
+    "name": "almindelig pære",
+    "aliases": [
+      "pære",
+      "Pyrus communis"
+    ]
+  },
+  "Q469652": {
+    "name": "Virginsk Ambratræ",
+    "aliases": [
+      "Almindelig Ambratræ",
+      "Almindeligt Ambratræ (Liquidambar styraciflua)",
+      "Liquidambar styraciflua"
+    ]
+  },
+  "Q147426": {
+    "name": "Sitka-Gran",
+    "aliases": [
+      "Picea sitchensis",
+      "Sitkagran"
+    ]
+  },
+  "Q147434": {
+    "name": "Kæmpe-Gran",
+    "aliases": [
+      "Grandis",
+      "Abies grandis",
+      "Kæmpe-Ædelgran"
+    ]
+  },
+  "Q147439": {
+    "name": "Japansk lærk",
+    "aliases": [
+      "Larix kaempferi"
+    ]
+  },
+  "Q163978": {
+    "name": "Alnus viridis",
+    "aliases": [
+      "Alnus fruticosa",
+      "Bjerg-El",
+      "Sibirisk El"
+    ]
+  },
+  "Q164130": {
+    "name": "Pile-Kornel",
+    "aliases": [
+      "Cornus stolonifera",
+      "Gulgrenet Kornel"
+    ]
+  },
+  "Q164174": {
+    "name": "Dværg-Kirsebær",
+    "aliases": [
+      "Prunus fruticosa"
+    ]
+  },
+  "Q39708": {
+    "name": "Purpur-Pil",
+    "aliases": [
+      "Salix purpurea"
+    ]
+  },
+  "Q39918": {
+    "name": "mandel",
+    "aliases": [
+      "Mandler"
+    ]
+  },
+  "Q333877": {
+    "name": "Pekan",
+    "aliases": [
+      "Carya illinoinensis"
+    ]
+  },
+  "Q147487": {
+    "name": "Småbladet Elm",
+    "aliases": [
+      "Ulmus carpinifolia",
+      "Ulmus minor"
+    ]
+  },
+  "Q147492": {
+    "name": "Skærm-Elm",
+    "aliases": [
+      "Ulmus laevis"
+    ]
+  },
+  "Q271582": {
+    "name": "Strand-Fyr",
+    "aliases": [
+      "Pinus pinaster"
+    ]
+  },
+  "Q275160": {
+    "name": "Birkefigen",
+    "aliases": [
+      "Ficus benjamina",
+      "kvælerfigen",
+      "stuebirk"
+    ]
+  },
+  "Q15230691": {
+    "name": "Perle-Røn",
+    "aliases": [
+      "Perle-Røn (Sorbus koehneana)",
+      "Sorbus koehneana"
+    ]
+  },
+  "Q12309066": {
+    "name": "Dværg-Blodblomme",
+    "aliases": [
+      "Prunus cistena",
+      "Prunus x cistena"
+    ]
+  },
+  "Q148920": {
+    "name": "Nordmannsgran",
+    "aliases": [
+      "Abies nordmanniana"
+    ]
+  },
+  "Q148939": {
+    "name": "Tyrkisk Hassel",
+    "aliases": [
+      "Corylus colurna"
+    ]
+  },
+  "Q218155": {
+    "name": "Sten-Eg",
+    "aliases": [
+      "Steneg"
+    ]
+  },
+  "Q147278": {
+    "name": "Cembra-Fyr",
+    "aliases": [
+      "Pinus cembra"
+    ]
+  },
+  "Q156831": {
+    "name": "Storbladet Lind",
+    "aliases": [
+      "Tilia platyphyllos"
+    ]
+  },
+  "Q147459": {
+    "name": "Tarmvrid-Røn",
+    "aliases": [
+      "Sorbus torminalis"
+    ]
+  },
+  "Q147475": {
+    "name": "bjergfyr",
+    "aliases": [
+      "Bjerg-Fyr 'Mops'",
+      "Pinus mugo",
+      "bjerg-fyr",
+      "dværgfyr"
+    ]
+  },
+  "Q18674606": {
+    "name": "almindelig æble",
+    "aliases": [
+      "spiseæble",
+      "sødæbe",
+      "sød æble"
+    ]
+  },
+  "Q972950": {
+    "name": "Næb-Hassel",
+    "aliases": [
+      "Corylus cornuta",
+      "Næbhassel"
+    ]
+  },
+  "Q1138533": {
+    "name": "Papegøjebusk",
+    "aliases": [
+      "Papegøjetræ"
+    ]
+  },
+  "Q147388": {
+    "name": "Japansk Kryptomeria",
+    "aliases": [
+      "Cryptomerie",
+      "Chryptomeria japonica",
+      "Kryptomeria",
+      "Kryptomerie",
+      "Sugi"
+    ]
+  },
+  "Q47161": {
+    "name": "abild",
+    "aliases": [
+      "Malus sylvestris",
+      "Skov-Æble",
+      "Skovabild",
+      "Skovæble"
+    ]
+  },
+  "Q849381": {
+    "name": "Spansk Ædelgran",
+    "aliases": [
+      "Abies pinsapo"
+    ]
+  },
+  "Q852572": {
+    "name": "Sort valnød",
+    "aliases": [
+      "Juglans nigra"
+    ]
+  },
+  "Q149392": {
+    "name": "Manchurisk Kirsebær",
+    "aliases": [
+      "Prunus mackii"
+    ]
+  },
+  "Q149553": {
+    "name": "Grå-Poppel",
+    "aliases": [
+      "Gråpoppel",
+      "Populus x canescens"
+    ]
+  },
+  "Q149622": {
+    "name": "Canadisk Poppel",
+    "aliases": [
+      "Poppel",
+      "Populus x canadensis"
+    ]
+  },
+  "Q470006": {
+    "name": "Amerikansk Nældetræ",
+    "aliases": [
+      "Celtis occidentalis"
+    ]
+  },
+  "Q481768": {
+    "name": "Acer shirasawanum",
+    "aliases": [
+      "Vifte-Løn",
+      "Vifte-Løn (Acer shirasawanum)",
+      "Viftebladet løn",
+      "Viftebladetløn",
+      "Vifteløn"
+    ]
+  },
+  "Q334697": {
+    "name": "Duetræ",
+    "aliases": [
+      "Davidia involucrata"
+    ]
+  },
+  "Q750217": {
+    "name": "Morbær-Figen",
+    "aliases": [
+      "Ficus sycomorus"
+    ]
+  },
+  "Q149219": {
+    "name": "Amerikansk Bøg",
+    "aliases": [
+      "Fagus grandifolia"
+    ]
+  },
+  "Q149319": {
+    "name": "Virginsk Poppel",
+    "aliases": [
+      "Populus deltoides"
+    ]
+  },
+  "Q149382": {
+    "name": "Vestamerikansk Balsampoppel",
+    "aliases": [
+      "Poppel",
+      "Populus trichocarpa"
+    ]
+  },
+  "Q460523": {
+    "name": "Gul-Fyr",
+    "aliases": [
+      "Pinus ponderosa"
+    ]
+  },
+  "Q460531": {
+    "name": "Slangebark-Fyr",
+    "aliases": [
+      "Pinus heldreichii"
+    ]
+  },
+  "Q61105": {
+    "name": "Libanon-Ceder",
+    "aliases": [
+      "Cedrus libani"
+    ]
+  },
+  "Q156895": {
+    "name": "vortebirk",
+    "aliases": [
+      "betula pendula",
+      "betula verrucosa",
+      "vorte-birk"
+    ]
+  },
+  "Q156904": {
+    "name": "Rød-El",
+    "aliases": [
+      "Alnus glutinosa",
+      "Rødel"
+    ]
+  },
+  "Q623489": {
+    "name": "Atlas-Ceder",
+    "aliases": [
+      "Cedrus atlantica"
+    ]
+  },
+  "Q628329": {
+    "name": "Calabrisk Fyr",
+    "aliases": [
+      "Pinus brutia"
+    ]
+  },
+  "Q1078985": {
+    "name": "Japansk Bøg",
+    "aliases": [
+      "Fagus crenata"
+    ]
+  },
+  "Q43300": {
+    "name": "kvæde",
+    "aliases": [
+      "Cydonia oblonga"
+    ]
+  },
+  "Q156907": {
+    "name": "almindelig ask",
+    "aliases": [
+      "Fraxinus excelsior",
+      "ask"
+    ]
+  },
+  "Q150341": {
+    "name": "Lithocarpus edulis",
+    "aliases": [
+      "Pasania edulis"
+    ]
+  },
+  "Q156137": {
+    "name": "Kork-Eg",
+    "aliases": [
+      "Quercus suber"
+    ]
+  },
+  "Q156687": {
+    "name": "Grøn Douglasgran",
+    "aliases": [
+      "Blå Douglasgran",
+      "Oregon pine",
+      "Pseudotsuga menziesii",
+      "Pseudotsuga menziesii var. glauca",
+      "Pseudotsuga menziesii var. menziesii"
+    ]
+  },
+  "Q839507": {
+    "name": "Stjerne-Magnolia",
+    "aliases": [
+      "Magnolia stellata",
+      "Stjerne Magnolia",
+      "Stjerne-Magnolie",
+      "Stjernemagnolia"
+    ]
+  },
+  "Q844835": {
+    "name": "Kinesertræ",
+    "aliases": [
+      "Koelreuteria paniculata",
+      "Koelreutheria paniculata"
+    ]
+  },
+  "Q156918": {
+    "name": "Hvid-Pil",
+    "aliases": [
+      "Hvidpil",
+      "Salix alba"
+    ]
+  },
+  "Q156944": {
+    "name": "ahorn",
+    "aliases": [
+      "Acer pseudoplatanus",
+      "Ær",
+      "valbirk"
+    ]
+  },
+  "Q854714": {
+    "name": "Skarlagen-Eg",
+    "aliases": [
+      "Quercus coccinea"
+    ]
+  },
+  "Q879016": {
+    "name": "Bitter Hickory",
+    "aliases": [
+      "Bitternød",
+      "Carya cordiformis"
+    ]
+  },
+  "Q917187": {
+    "name": "Solcypres",
+    "aliases": [
+      "Chamaecyparis obtusa",
+      "Sol-Cypres"
+    ]
+  },
+  "Q157230": {
+    "name": "Weymouth-Fyr",
+    "aliases": [
+      "Pinus strobus",
+      "Weymouthfyr"
+    ]
+  },
+  "Q157522": {
+    "name": "Blyant-Ene",
+    "aliases": [
+      "Juniperus virginiana"
+    ]
+  },
+  "Q44120": {
+    "name": "blommetræ",
+    "aliases": [
+      "Prunus domestica",
+      "blomme"
+    ]
+  },
+  "Q147498": {
+    "name": "Skov-Elm",
+    "aliases": [
+      "Elm",
+      "Skov-Ælm",
+      "Skovelm",
+      "Storbladet Elm",
+      "Storbladetelm"
+    ]
+  },
+  "Q150129": {
+    "name": "Rødtræ",
+    "aliases": [
+      "Rødved",
+      "Sequoia sempervirens"
+    ]
+  },
+  "Q157624": {
+    "name": "dun-birk",
+    "aliases": [
+      "dunbirk",
+      "Betula pubecens",
+      "Betula pubescens"
+    ]
+  },
+  "Q157628": {
+    "name": "Dværg-Birk",
+    "aliases": [
+      "Betula nana",
+      "Dværgbirk"
+    ]
+  },
+  "Q157307": {
+    "name": "Hvid Morbær",
+    "aliases": [
+      "Morus alba"
+    ]
+  },
+  "Q157540": {
+    "name": "gråpil",
+    "aliases": [
+      "Salix cinerea",
+      "grå-pil"
+    ]
+  },
+  "Q157393": {
+    "name": "Kejsertræ",
+    "aliases": [
+      "Paulonia tomentosa",
+      "Paulownia tomentosa"
+    ]
+  },
+  "Q157641": {
+    "name": "Grå-El",
+    "aliases": [
+      "Alnus incana",
+      "Gråel",
+      "Hvid-El",
+      "Hvidel"
+    ]
+  },
+  "Q683819": {
+    "name": "Pontisk Eg",
+    "aliases": [
+      "Armensk Eg",
+      "Quercus pontica"
+    ]
+  },
+  "Q728441": {
+    "name": "Korea-Kornel",
+    "aliases": [
+      "Cornus kousa",
+      "Korea-Kornel (Cornus kousa)",
+      "Koreakornel (Cornus kousa)"
+    ]
+  },
+  "Q747652": {
+    "name": "Tåre-Fyr",
+    "aliases": [
+      "Pinus wallichiana"
+    ]
+  },
+  "Q157960": {
+    "name": "Aksel-Røn",
+    "aliases": [
+      "Sorbus aria"
+    ]
+  },
+  "Q158178": {
+    "name": "Kermes-Eg",
+    "aliases": [
+      "Quercus coccifera"
+    ]
+  },
+  "Q157677": {
+    "name": "Svensk Hønsebær",
+    "aliases": [
+      "Cornus suecica",
+      "Hønsebær"
+    ]
+  },
+  "Q157417": {
+    "name": "Almindelig Robinie",
+    "aliases": [
+      "Robinie",
+      "Robinia pseudoacacia",
+      "Uægte Akacie"
+    ]
+  },
+  "Q147525": {
+    "name": "Rødeg",
+    "aliases": [
+      "Quercus borealis",
+      "Rød-Eg"
+    ]
+  },
+  "Q147824": {
+    "name": "Søjle-Gran",
+    "aliases": [
+      "Picea omorika",
+      "Serbisk Søjle-Gran"
+    ]
+  },
+  "Q158228": {
+    "name": "Hvid Kornel",
+    "aliases": [
+      "Cornus alba"
+    ]
+  },
+  "Q158301": {
+    "name": "Sølv-Løn",
+    "aliases": [
+      "Acer saccharinum"
+    ]
+  },
+  "Q158425": {
+    "name": "Spyd-Pil",
+    "aliases": [
+      "Salix hastata"
+    ]
+  },
+  "Q157508": {
+    "name": "Laurbær-Kirsebær",
+    "aliases": [
+      "Laurbær Kirsebær",
+      "Laurbærkirsebær",
+      "Prunus laurocerasus"
+    ]
+  },
+  "Q158590": {
+    "name": "Bånd-Pil",
+    "aliases": [
+      "Salix viminalis"
+    ]
+  },
+  "Q158608": {
+    "name": "Vinter-Eg",
+    "aliases": [
+      "Quercus petraea"
+    ]
+  },
+  "Q158482": {
+    "name": "Almindelig Kaki",
+    "aliases": [
+      "Diospyros kaki"
+    ]
+  },
+  "Q158642": {
+    "name": "Kirsebær-Kornel",
+    "aliases": [
+      "Cornus mas",
+      "Kirsebærkornel",
+      "Kornelkirsebær"
+    ]
+  },
+  "Q158657": {
+    "name": "Almindelig Æble",
+    "aliases": [
+      "Æble",
+      "Malus domestica",
+      "Malus x domestica",
+      "Spise-Æble"
+    ]
+  },
+  "Q158746": {
+    "name": "Småbladet Lind",
+    "aliases": [
+      "Tilia cordata",
+      "skov-lind",
+      "skovlind"
+    ]
+  },
+  "Q158776": {
+    "name": "Almindelig Avnbøg",
+    "aliases": [
+      "Avnbøg",
+      "Carpinus betulus"
+    ]
+  },
+  "Q158783": {
+    "name": "almindelig tulipantræ",
+    "aliases": [
+      "Liriodendron tulipifera",
+      "Tulipantræ"
+    ]
+  },
+  "Q158785": {
+    "name": "navr",
+    "aliases": [
+      "Acer campestre",
+      "naur"
+    ]
+  },
+  "Q158912": {
+    "name": "Femhannet Pil",
+    "aliases": [
+      "Salix pentandra"
+    ]
+  },
+  "Q158987": {
+    "name": "Glansbladet Hæg",
+    "aliases": [
+      "Prunus serotina"
+    ]
+  },
+  "Q159188": {
+    "name": "Bredbladet Sølvblad",
+    "aliases": [
+      "Elaeagnus commutata"
+    ]
+  },
+  "Q159447": {
+    "name": "Karambol",
+    "aliases": [
+      "Carambole",
+      "Stjernefrugt"
+    ]
+  },
+  "Q159476": {
+    "name": "Dug-Pil",
+    "aliases": [
+      "Dug-pil (Salix daphnoides)",
+      "Dug-Pil (Salix daphnoides)",
+      "Dugpil",
+      "Pommersk Pil",
+      "Salix daphnoides"
+    ]
+  },
+  "Q159553": {
+    "name": "Almindelig Hvidtjørn",
+    "aliases": [
+      "Crataegus laevigata",
+      "Hvidtjørn"
+    ]
+  },
+  "Q159558": {
+    "name": "Storfrugtet Røn",
+    "aliases": [
+      "Sorbus domestica"
+    ]
+  },
+  "Q159565": {
+    "name": "Selje-Pil",
+    "aliases": [
+      "Salix caprea",
+      "Seljepil"
+    ]
+  },
+  "Q159570": {
+    "name": "Skyrækker",
+    "aliases": [
+      "Ailanthus altissima"
+    ]
+  },
+  "Q160019": {
+    "name": "Dværg-Mandel",
+    "aliases": [
+      "Prunus tenella"
+    ]
+  },
+  "Q161040": {
+    "name": "Sort Morbær",
+    "aliases": [
+      "Morus nigra"
+    ]
+  },
+  "Q74068": {
+    "name": "Ærtecypres"
+  },
+  "Q121749": {
+    "name": "Kaukasisk Vingevalnød"
+  },
+  "Q146269": {
+    "name": "Sølv-Poppel"
+  },
+  "Q146935": {
+    "name": "Himalaya-Ceder"
+  },
+  "Q147513": {
+    "name": "Almindelig Cypres"
+  },
+  "Q148630": {
+    "name": "sevenbom"
+  },
+  "Q157277": {
+    "name": "Frynse-Eg"
+  },
+  "Q157519": {
+    "name": "Øret Pil"
+  },
+  "Q157650": {
+    "name": "Almindelig Tretorn"
+  },
+  "Q157763": {
+    "name": "Prunus mume"
+  },
+  "Q157952": {
+    "name": "Drageblodstræ (dracaena draco)"
+  },
+  "Q157969": {
+    "name": "Smalbladet Sølvblad"
+  },
+  "Q158356": {
+    "name": "Amerikansk Kaki"
+  },
+  "Q158458": {
+    "name": "Blågrå Pil"
+  },
+  "Q160576": {
+    "name": "Gummi-Figen"
+  },
+  "Q161070": {
+    "name": "Stuegran"
+  },
+  "Q161382": {
+    "name": "Sølv-Lind"
+  },
+  "Q161406": {
+    "name": "Parykbusk"
+  },
+  "Q162728": {
+    "name": "Russisk Løn"
+  },
+  "Q163779": {
+    "name": "Rød Hestekastanje"
+  },
+  "Q178116": {
+    "name": "Pensel-Fyr"
+  },
+  "Q203985": {
+    "name": "Papirbark-Løn"
+  },
+  "Q218417": {
+    "name": "Kirtelbirk"
+  },
+  "Q269224": {
+    "name": "Japansk Løn"
+  },
+  "Q288558": {
+    "name": "Pagodetræ-slægten"
+  },
+  "Q290605": {
+    "name": "Betula chinensis"
+  },
+  "Q367242": {
+    "name": "Skærm-Sølvblad"
+  },
+  "Q390100": {
+    "name": "Koreansk Ædelgran"
+  },
+  "Q468659": {
+    "name": "Amerikansk Hassel"
+  },
+  "Q469382": {
+    "name": "Ulmus americana"
+  },
+  "Q469576": {
+    "name": "Amerikansk Asp"
+  },
+  "Q476655": {
+    "name": "Sørge-Gran"
+  },
+  "Q481717": {
+    "name": "Sakhalin-Pil"
+  },
+  "Q518949": {
+    "name": "Smalbladet Ask"
+  },
+  "Q526549": {
+    "name": "Almindelig Hjertetræ"
+  },
+  "Q630288": {
+    "name": "Grå valnød"
+  },
+  "Q756191": {
+    "name": "Kanariefyr"
+  },
+  "Q756334": {
+    "name": "Dahurisk lærk"
+  },
+  "Q766133": {
+    "name": "Tyrkisk Løn"
+  },
+  "Q794061": {
+    "name": "Magnolia denudata"
+  },
+  "Q850480": {
+    "name": "Østasiatisk Birk"
+  },
+  "Q857075": {
+    "name": "Ungarsk Eg"
+  },
+  "Q916961": {
+    "name": "Hanespore-Hvidtjørn"
+  },
+  "Q926249": {
+    "name": "Etage-Kornel"
+  },
+  "Q930814": {
+    "name": "Himalaya-Birk"
+  },
+  "Q966130": {
+    "name": "Labrador-Røn"
+  },
+  "Q978755": {
+    "name": "Klippe-Ædelgran"
+  },
+  "Q1001011": {
+    "name": "Farve-Eg"
+  },
+  "Q1038550": {
+    "name": "Sargentrøn"
+  },
+  "Q1048531": {
+    "name": "Castanopsis fissa"
+  },
+  "Q1074872": {
+    "name": "Bunge-Fyr"
+  },
+  "Q1079824": {
+    "name": "Ulmus pumila"
+  },
+  "Q1088271": {
+    "name": "Orientalsk avnbøg"
+  },
+  "Q1116374": {
+    "name": "Pinus longaeva"
+  },
+  "Q1132580": {
+    "name": "Aesculus turbinata"
+  },
+  "Q1227092": {
+    "name": "Diospyros montana"
+  },
+  "Q1257409": {
+    "name": "Acer triflorum"
+  },
+  "Q1374188": {
+    "name": "Populus euphratica"
+  },
+  "Q1399164": {
+    "name": "Californisk Flodceder"
+  },
+  "Q1420828": {
+    "name": "Canadisk Hønsebær"
+  },
+  "Q1529852": {
+    "name": "Mississippinældetræ"
+  },
+  "Q1543749": {
+    "name": "Orientalsk Bøg"
+  },
+  "Q1591053": {
+    "name": "Pyrus salicifolia"
+  },
+  "Q1623892": {
+    "name": "Ellebladet Birk"
+  },
+  "Q1652385": {
+    "name": "Sophora toromiro"
+  },
+  "Q1712421": {
+    "name": "Kinesisk prydæble"
+  },
+  "Q1744650": {
+    "name": "Hvid Ædelcypres"
+  },
+  "Q1941267": {
+    "name": "Betula szaferi"
+  },
+  "Q2564409": {
+    "name": "Oregonæble"
+  },
+  "Q2717846": {
+    "name": "Tibettræ"
+  },
+  "Q3205624": {
+    "name": "Lagerstroemia intermedia"
+  },
+  "Q3281198": {
+    "name": "Acer sino-oblongum"
+  },
+  "Q3281562": {
+    "name": "Acer poliophyllum"
+  },
+  "Q3281732": {
+    "name": "Acer tsinglingense"
+  },
+  "Q3284652": {
+    "name": "Malus communis"
+  },
+  "Q3336255": {
+    "name": "Acer wardii"
+  },
+  "Q3337079": {
+    "name": "Acer sutchuenense"
+  },
+  "Q3337214": {
+    "name": "Acer sinopurpurascens"
+  },
+  "Q3338661": {
+    "name": "Acer shihweii"
+  },
+  "Q3355098": {
+    "name": "appelsin"
+  },
+  "Q3491094": {
+    "name": "Sophora moorcroftiana"
+  },
+  "Q3919027": {
+    "name": "mango"
+  },
+  "Q4215118": {
+    "name": "Kaukasisk nældetræ"
+  },
+  "Q4673169": {
+    "name": "Acer oblongum"
+  },
+  "Q5487185": {
+    "name": "Manglietia sinica"
+  },
+  "Q6746012": {
+    "name": "Acer schneiderianum"
+  },
+  "Q7213013": {
+    "name": "Eucalyptus platyphylla"
+  },
+  "Q9339712": {
+    "name": "Pinus × rhaetica"
+  },
+  "Q10872414": {
+    "name": "Photinia beauverdiana"
+  },
+  "Q10878191": {
+    "name": "Kræge"
+  },
+  "Q10880877": {
+    "name": "Diospyros yunnanensis"
+  },
+  "Q10887979": {
+    "name": "Diospyros sunyiensis"
+  },
+  "Q10906248": {
+    "name": "Diospyros unisemina"
+  },
+  "Q10907379": {
+    "name": "Castanopsis amabilis"
+  },
+  "Q10908398": {
+    "name": "Lagerstroemia siamica"
+  },
+  "Q10949016": {
+    "name": "Elaeagnus henryi"
+  },
+  "Q10949262": {
+    "name": "Moupinepil"
+  },
+  "Q10958149": {
+    "name": "Olea parvilimba"
+  },
+  "Q11045980": {
+    "name": "Diospyros siderophylla"
+  },
+  "Q11055328": {
+    "name": "Diospyros sutchuensis"
+  },
+  "Q11066157": {
+    "name": "Diospyros anisocalyx"
+  },
+  "Q11080658": {
+    "name": "Eucalyptus kirtoniana"
+  },
+  "Q11107913": {
+    "name": "Salix karelinii"
+  },
+  "Q11127270": {
+    "name": "Photinia pilosicalyx"
+  },
+  "Q11132607": {
+    "name": "Lithocarpus yongfuensis"
+  },
+  "Q11143949": {
+    "name": "Sorbus meliosmifolia"
+  },
+  "Q11173544": {
+    "name": "Ficus pubigera"
+  },
+  "Q11179338": {
+    "name": "Diospyros nigrocortex"
+  },
+  "Q12209062": {
+    "name": "Sibirisk balsampoppel"
+  },
+  "Q15236187": {
+    "name": "Olea neriifolia"
+  },
+  "Q15236943": {
+    "name": "Diospyros ehretioides"
+  },
+  "Q15237898": {
+    "name": "Lithocarpus harlandii"
+  },
+  "Q15238823": {
+    "name": "Eucalyptus leptophleba"
+  },
+  "Q15239088": {
+    "name": "Quercus kongshanensis"
+  },
+  "Q15239300": {
+    "name": "Diospyros punctilimba"
+  },
+  "Q15239422": {
+    "name": "Sophora microcarpa"
+  },
+  "Q15239530": {
+    "name": "Lithocarpus mekongensis"
+  },
+  "Q15239804": {
+    "name": "Castanopsis hupehensis"
+  },
+  "Q15240291": {
+    "name": "Cyclobalanopsis sichourensis"
+  },
+  "Q15240339": {
+    "name": "Elaeagnus gonyanthes"
+  },
+  "Q15240385": {
+    "name": "Lithocarpus gaoligongensis"
+  },
+  "Q15240409": {
+    "name": "Elaeagnus angustata"
+  },
+  "Q15397348": {
+    "name": "Eucalyptus canaliculata"
+  },
+  "Q15397357": {
+    "name": "Eucalyptus anceps"
+  },
+  "Q15397363": {
+    "name": "Eucalyptus ewartiana"
+  },
+  "Q15397379": {
+    "name": "Eucalyptus dura"
+  },
+  "Q15397376": {
+    "name": "Eucalyptus argillacea"
+  },
+  "Q15397385": {
+    "name": "Eucalyptus latens"
+  },
+  "Q15397393": {
+    "name": "Eucalyptus intrasilvatica"
+  },
+  "Q15397568": {
+    "name": "Eucalyptus litoralis"
+  },
+  "Q15634290": {
+    "name": "Ildløn"
+  },
+  "Q17271024": {
+    "name": "Notholithocarpus densiflorus"
+  },
+  "Q17275264": {
+    "name": "Nutkacypres"
+  },
+  "Q20720096": {
+    "name": "Grøn-el"
+  },
+  "Q21269548": {
+    "name": "Ficus henneana"
+  },
+  "Q13189": {
+    "name": "ferskentræ"
+  },
+  "Q29488": {
+    "name": "Judastræ"
+  },
+  "Q36146": {
+    "name": "Almindelig figen"
+  },
+  "Q37453": {
+    "name": "abrikos"
+  },
+  "Q46871": {
+    "name": "Almindelig Valnød"
+  }
+}

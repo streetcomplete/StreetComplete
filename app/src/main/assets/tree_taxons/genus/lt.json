@@ -1,0 +1,305 @@
+{
+  "Q25239": {
+    "name": "Alksnis",
+    "aliases": [
+      "Alnus"
+    ]
+  },
+  "Q25243": {
+    "name": "Beržas",
+    "aliases": [
+      "Betula"
+    ]
+  },
+  "Q25350": {
+    "name": "Kėnis",
+    "aliases": [
+      "Abies",
+      "Balteglė",
+      "Kėniai"
+    ]
+  },
+  "Q25356": {
+    "name": "Tuopa",
+    "aliases": [
+      "Populus",
+      "Topoliai",
+      "Topolis"
+    ]
+  },
+  "Q25403": {
+    "name": "Bukas",
+    "aliases": [
+      "Bukai",
+      "Fagus"
+    ]
+  },
+  "Q25618": {
+    "name": "Maumedis",
+    "aliases": [
+      "Larix",
+      "Maumedžiai"
+    ]
+  },
+  "Q25662": {
+    "name": "Kadagys",
+    "aliases": [
+      "Juniperus"
+    ]
+  },
+  "Q26782": {
+    "name": "Eglė",
+    "aliases": [
+      "Eglės",
+      "Picea"
+    ]
+  },
+  "Q27355": {
+    "name": "Kukmedis",
+    "aliases": [
+      "Taxus"
+    ]
+  },
+  "Q36050": {
+    "name": "Gluosnis",
+    "aliases": [
+      "Salix"
+    ]
+  },
+  "Q42292": {
+    "name": "Klevu demokratine valstybe",
+    "aliases": [
+      "Klevai",
+      "Konstitucija",
+      "Nariai"
+    ]
+  },
+  "Q44789": {
+    "name": "Šilkmedis",
+    "aliases": [
+      "Morus"
+    ]
+  },
+  "Q45669": {
+    "name": "Eukaliptas",
+    "aliases": [
+      "Eucalyptus"
+    ]
+  },
+  "Q104819": {
+    "name": "Obelis",
+    "aliases": [
+      "Malus",
+      "Obuoliai"
+    ]
+  },
+  "Q59798": {
+    "name": "Fikusas",
+    "aliases": [
+      "Ficus",
+      "Figmedis",
+      "Fikas"
+    ]
+  },
+  "Q127849": {
+    "name": "liepa",
+    "aliases": [
+      "Tilia"
+    ]
+  },
+  "Q128550": {
+    "name": "Kedras",
+    "aliases": [
+      "Cedrus"
+    ]
+  },
+  "Q129324": {
+    "name": "Kaštainis",
+    "aliases": [
+      "Castanea"
+    ]
+  },
+  "Q131113": {
+    "name": "Guoba",
+    "aliases": [
+      "Guobos",
+      "Ulmus"
+    ]
+  },
+  "Q128887": {
+    "name": "Uosis",
+    "aliases": [
+      "Uosiai"
+    ]
+  },
+  "Q132557": {
+    "name": "Gudobelė",
+    "aliases": [
+      "Crataegus"
+    ]
+  },
+  "Q157236": {
+    "name": "Tulpmedis",
+    "aliases": [
+      "Leriodendron",
+      "Liriodendron"
+    ]
+  },
+  "Q157366": {
+    "name": "Pūkenis",
+    "aliases": [
+      "Cotinus"
+    ]
+  },
+  "Q157964": {
+    "name": "Šermukšnis",
+    "aliases": [
+      "Sorbus"
+    ]
+  },
+  "Q157017": {
+    "name": "Magnolija",
+    "aliases": [
+      "magnoliaceae",
+      "Magnolijos"
+    ]
+  },
+  "Q145889": {
+    "name": "Lazdynas",
+    "aliases": [
+      "Corylus"
+    ]
+  },
+  "Q146911": {
+    "name": "Kiparisas",
+    "aliases": [
+      "Kiparisai"
+    ]
+  },
+  "Q158771": {
+    "name": "Pocūgė",
+    "aliases": [
+      "Pseudotsuga"
+    ]
+  },
+  "Q160580": {
+    "name": "Ailantas",
+    "aliases": [
+      "Ailanthus"
+    ]
+  },
+  "Q158072": {
+    "name": "Katalpa",
+    "aliases": [
+      "Catalpa"
+    ]
+  },
+  "Q158513": {
+    "name": "Skroblas",
+    "aliases": [
+      "Carpinus"
+    ]
+  },
+  "Q161250": {
+    "name": "gledičija",
+    "aliases": [
+      "Gleditsia"
+    ]
+  },
+  "Q165258": {
+    "name": "Juodmedis",
+    "aliases": [
+      "Churma",
+      "Diospyros",
+      "Persimonai",
+      "Persimonas"
+    ]
+  },
+  "Q190545": {
+    "name": "slyva",
+    "aliases": [
+      "Prunus",
+      "Slyvos"
+    ]
+  },
+  "Q296910": {
+    "name": "Alyvmedis",
+    "aliases": [
+      "Olea",
+      "Alyvmedžiai",
+      "Alyvuogė",
+      "Alyvuogės"
+    ]
+  },
+  "Q309213": {
+    "name": "Sofora",
+    "aliases": [
+      "Sophora"
+    ]
+  },
+  "Q472943": {
+    "name": "Robinija",
+    "aliases": [
+      "Vikmedis"
+    ]
+  },
+  "Q775229": {
+    "name": "Krausva",
+    "aliases": [
+      "Lagerstroemia"
+    ]
+  },
+  "Q147791": {
+    "name": "Puskiparisis"
+  },
+  "Q158752": {
+    "name": "Kaštonas"
+  },
+  "Q159545": {
+    "name": "Sedula"
+  },
+  "Q161042": {
+    "name": "Žilakrūmis"
+  },
+  "Q163025": {
+    "name": "Platanas"
+  },
+  "Q248582": {
+    "name": "Celtis"
+  },
+  "Q664945": {
+    "name": "Albizia"
+  },
+  "Q2453469": {
+    "name": "Riešutmedis"
+  },
+  "Q2697430": {
+    "name": "Indenis"
+  },
+  "Q5122903": {
+    "name": "Kinkanas"
+  },
+  "Q434": {
+    "name": "Kriaušė"
+  },
+  "Q12004": {
+    "name": "Ąžuolas"
+  },
+  "Q12024": {
+    "name": "Pušis"
+  },
+  "Q858028": {
+    "name": "Puošmedis",
+    "aliases": [
+      "Cercidiphyllaceae",
+      "Cercidiphyllum",
+      "Puošmediniai"
+    ]
+  },
+  "Q3060383": {
+    "name": "liekulis",
+    "aliases": [
+      "Euodia"
+    ]
+  }
+}

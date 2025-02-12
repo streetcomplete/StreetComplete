@@ -1,0 +1,1561 @@
+{
+  "Q106094": {
+    "name": "pinija",
+    "aliases": [
+      "Pinus pinea"
+    ]
+  },
+  "Q163578": {
+    "name": "zelnata vrba",
+    "aliases": [
+      "Salix herbacea"
+    ]
+  },
+  "Q163822": {
+    "name": "Italijanski javor",
+    "aliases": [
+      "Acer opalus"
+    ]
+  },
+  "Q22699": {
+    "name": "pravi kostanj",
+    "aliases": [
+      "Castanea sativa"
+    ]
+  },
+  "Q3008950": {
+    "name": "Pterocarya rhoifolia",
+    "aliases": [
+      "krilata oreščnica"
+    ]
+  },
+  "Q121427": {
+    "name": "Polegli brin",
+    "aliases": [
+      "Juniperus horizontalis"
+    ]
+  },
+  "Q121749": {
+    "name": "kavkaški krilati oreškar",
+    "aliases": [
+      "Pterocarya fraxinifolia"
+    ]
+  },
+  "Q26325": {
+    "name": "sibirski brin",
+    "aliases": [
+      "Juniperus communis",
+      "pritlikavi brin"
+    ]
+  },
+  "Q3355098": {
+    "name": "pomarančevec",
+    "aliases": [
+      "pomaranča",
+      "Citrus × sinensis",
+      "Citrus sinensis"
+    ]
+  },
+  "Q26745": {
+    "name": "ostrolistni javor",
+    "aliases": [
+      "Acer platanoides",
+      "ostrolisti javor"
+    ]
+  },
+  "Q3079266": {
+    "name": "Calleryjeva hruška",
+    "aliases": [
+      "Pyrus calleryana",
+      "stožčasta okrasna hruška"
+    ]
+  },
+  "Q170662": {
+    "name": "Mangostan",
+    "aliases": [
+      "Garcinia mangostana"
+    ]
+  },
+  "Q26899": {
+    "name": "Navadni divji kostanj",
+    "aliases": [
+      "Aesculus hippocastanum"
+    ]
+  },
+  "Q129018": {
+    "name": "črni trn",
+    "aliases": [
+      "Prunus spinosa"
+    ]
+  },
+  "Q145992": {
+    "name": "navadna smreka",
+    "aliases": [
+      "Picea abies"
+    ]
+  },
+  "Q124969": {
+    "name": "navadna leska",
+    "aliases": [
+      "Corylus avellana"
+    ]
+  },
+  "Q36146": {
+    "name": "navadni smokvovec",
+    "aliases": [
+      "figa",
+      "smokva",
+      "figovec",
+      "Ficus carica"
+    ]
+  },
+  "Q165145": {
+    "name": "dob",
+    "aliases": [
+      "Quercus robur"
+    ]
+  },
+  "Q165321": {
+    "name": "japonska češnja",
+    "aliases": [
+      "Prunus serrulata"
+    ]
+  },
+  "Q179729": {
+    "name": "tisa",
+    "aliases": [
+      "Taxus baccata",
+      "navadna tisa"
+    ]
+  },
+  "Q183497": {
+    "name": "škrlatnoplodni brin",
+    "aliases": [
+      "feničanski brin",
+      "Juniperus phoenicea"
+    ]
+  },
+  "Q165137": {
+    "name": "češnja",
+    "aliases": [
+      "Prunus avium",
+      "črešnja*"
+    ]
+  },
+  "Q184300": {
+    "name": "rdečeplodni brin",
+    "aliases": [
+      "Juniperus oxycedrus"
+    ]
+  },
+  "Q218155": {
+    "name": "črničevje",
+    "aliases": [
+      "črni hrast",
+      "črnika",
+      "zeleni hrast",
+      "zimzeleni hrast",
+      "adraš"
+    ]
+  },
+  "Q227779": {
+    "name": "sladkorni bor",
+    "aliases": [
+      "Pinus lambertiana"
+    ]
+  },
+  "Q37083": {
+    "name": "divja oljka",
+    "aliases": [
+      "Olea europaeae",
+      "oliva",
+      "oljka"
+    ]
+  },
+  "Q146198": {
+    "name": "Jerebika",
+    "aliases": [
+      "Sorbus aucuparia"
+    ]
+  },
+  "Q18674606": {
+    "name": "jablana",
+    "aliases": [
+      "jabolko"
+    ]
+  },
+  "Q15545507": {
+    "name": "Prunus amygdalus",
+    "aliases": [
+      "mandelj",
+      "mandljevec"
+    ]
+  },
+  "Q16919759": {
+    "name": "južnoevropski hrast",
+    "aliases": [
+      "Quercus macrolepis"
+    ]
+  },
+  "Q17246705": {
+    "name": "dlakavolistna jablana",
+    "aliases": [
+      "Malus dasyphylla"
+    ]
+  },
+  "Q17275264": {
+    "name": "Cupressus nootkatensis",
+    "aliases": [
+      "nutkanska pacipresa"
+    ]
+  },
+  "Q146149": {
+    "name": "bukev",
+    "aliases": [
+      "Fagus sylvatica",
+      "evropska bukev",
+      "navadna bukev"
+    ]
+  },
+  "Q131517": {
+    "name": "višnja",
+    "aliases": [
+      "Prunus cerasus"
+    ]
+  },
+  "Q146048": {
+    "name": "navadni macesen",
+    "aliases": [
+      "evropski macesen",
+      "Larix decidua",
+      "macesen"
+    ]
+  },
+  "Q39918": {
+    "name": "mandljevec",
+    "aliases": [
+      "Prunus dulcis",
+      "mandelj"
+    ]
+  },
+  "Q133128": {
+    "name": "rdeči bor",
+    "aliases": [
+      "Pinus sylvestris",
+      "for",
+      "gozdni bor",
+      "hojka",
+      "navadni bor"
+    ]
+  },
+  "Q311361": {
+    "name": "mandžurski oreh",
+    "aliases": [
+      "Juglans mandshurica"
+    ]
+  },
+  "Q333877": {
+    "name": "ilinojska hikorija",
+    "aliases": [
+      "ameriški oreh",
+      "Carya illinoinensis",
+      "pekan",
+      "ilinojski hikorijevec"
+    ]
+  },
+  "Q271582": {
+    "name": "obmorski bor",
+    "aliases": [
+      "Pinus pinaster"
+    ]
+  },
+  "Q165424": {
+    "name": "čremsa",
+    "aliases": [
+      "Prunus padus"
+    ]
+  },
+  "Q211457": {
+    "name": "alepski bor",
+    "aliases": [
+      "Pinus halepensis"
+    ]
+  },
+  "Q214733": {
+    "name": "sladkorni javor",
+    "aliases": [
+      "Acer saccharum"
+    ]
+  },
+  "Q93146618": {
+    "name": "graškasta cipresa",
+    "aliases": [
+      "Cupressus pisifera"
+    ]
+  },
+  "Q42385": {
+    "name": "kakav",
+    "aliases": [
+      "kakavovec",
+      "Theobroma cacao"
+    ]
+  },
+  "Q146281": {
+    "name": "hruška",
+    "aliases": [
+      "Pyrus communis",
+      "divja hruška"
+    ]
+  },
+  "Q29488": {
+    "name": "navadni jadikovec",
+    "aliases": [
+      "Cercis siliquastrum",
+      "judeževec",
+      "judeževo drevo"
+    ]
+  },
+  "Q146110": {
+    "name": "Trepetlika",
+    "aliases": [
+      "Populus tremula"
+    ]
+  },
+  "Q41350": {
+    "name": "grenivkovec",
+    "aliases": [
+      "Citrus × paradisi",
+      "Citrus x paradisi",
+      "grenivka",
+      "grapefruit",
+      "greipfruit",
+      "grejpfrut"
+    ]
+  },
+  "Q518949": {
+    "name": "ozkolistni jesen",
+    "aliases": [
+      "Fraxinus angustifolia"
+    ]
+  },
+  "Q623489": {
+    "name": "atlaška cedra",
+    "aliases": [
+      "Cedrus atlantica"
+    ]
+  },
+  "Q630288": {
+    "name": "sivi oreh",
+    "aliases": [
+      "Juglans cinerea"
+    ]
+  },
+  "Q428023": {
+    "name": "balzamovec",
+    "aliases": [
+      "Abies balsamea"
+    ]
+  },
+  "Q37453": {
+    "name": "marelica",
+    "aliases": [
+      "Prunus armeniaca"
+    ]
+  },
+  "Q10878191": {
+    "name": "cibora",
+    "aliases": [
+      "Prunus insititia"
+    ]
+  },
+  "Q7263800": {
+    "name": "zimska hruška",
+    "aliases": [
+      "Pyrus nivalis"
+    ]
+  },
+  "Q3919027": {
+    "name": "indijski mangovec",
+    "aliases": [
+      "Mangifera indica",
+      "mangovec"
+    ]
+  },
+  "Q43284": {
+    "name": "dvokrpi ginko",
+    "aliases": [
+      "Gingko biloba",
+      "gingko",
+      "ginko",
+      "ginko biloba"
+    ]
+  },
+  "Q147439": {
+    "name": "japonski macesen",
+    "aliases": [
+      "Larix kaempferi"
+    ]
+  },
+  "Q147459": {
+    "name": "brek",
+    "aliases": [
+      "Sorbus torminalis",
+      "breka"
+    ]
+  },
+  "Q728441": {
+    "name": "japonski dren",
+    "aliases": [
+      "Cornus kousa",
+      "japonski cvetni dren"
+    ]
+  },
+  "Q147487": {
+    "name": "poljski brest",
+    "aliases": [
+      "Ulmus minor"
+    ]
+  },
+  "Q145954": {
+    "name": "črni bor",
+    "aliases": [
+      "Pinus nigra"
+    ]
+  },
+  "Q146935": {
+    "name": "himalajska cedra",
+    "aliases": [
+      "Cedrus deodara"
+    ]
+  },
+  "Q147278": {
+    "name": "cemprin",
+    "aliases": [
+      "Pinus cembra",
+      "limba",
+      "švicarski bor"
+    ]
+  },
+  "Q44120": {
+    "name": "sliva",
+    "aliases": [
+      "češplja",
+      "Prunus domestica"
+    ]
+  },
+  "Q47161": {
+    "name": "lesnika",
+    "aliases": [
+      "Malus sylvestris",
+      "divja jablana"
+    ]
+  },
+  "Q61105": {
+    "name": "libanonska cedra",
+    "aliases": [
+      "Cedrus libani"
+    ]
+  },
+  "Q149219": {
+    "name": "Ameriška bukev",
+    "aliases": [
+      "Fagus grandifolia"
+    ]
+  },
+  "Q460523": {
+    "name": "rumeni bor",
+    "aliases": [
+      "Pinus ponderosa"
+    ]
+  },
+  "Q469220": {
+    "name": "Črna vrba",
+    "aliases": [
+      "Salix nigra"
+    ]
+  },
+  "Q147388": {
+    "name": "japonska kriptomerija",
+    "aliases": [
+      "Cryptomeria japonica",
+      "srpavka"
+    ]
+  },
+  "Q147426": {
+    "name": "sitka",
+    "aliases": [
+      "Picea sitchensis"
+    ]
+  },
+  "Q156137": {
+    "name": "plutovec",
+    "aliases": [
+      "Quercus suber",
+      "hrast plutovec",
+      "plutec"
+    ]
+  },
+  "Q146951": {
+    "name": "mirobalana",
+    "aliases": [
+      "češnjelika sliva",
+      "Prunus cerasifera",
+      "češnjeva sliva"
+    ]
+  },
+  "Q147513": {
+    "name": "vednozelena cipresa",
+    "aliases": [
+      "Cupressus sempervirens",
+      "ciperle",
+      "navadna cipresa",
+      "prava cipresa",
+      "sredozemska cipresa"
+    ]
+  },
+  "Q147724": {
+    "name": "pritlikavi hrast",
+    "aliases": [
+      "Lithocarpus densiflorus"
+    ]
+  },
+  "Q852572": {
+    "name": "črni oreh",
+    "aliases": [
+      "Juglans nigra"
+    ]
+  },
+  "Q854884": {
+    "name": "japonski črni bor",
+    "aliases": [
+      "Pinus thunbergii"
+    ]
+  },
+  "Q1135236": {
+    "name": "durian",
+    "aliases": [
+      "Durio zibethinus"
+    ]
+  },
+  "Q1193369": {
+    "name": "ameriški jesen",
+    "aliases": [
+      "beli pepel"
+    ]
+  },
+  "Q1210209": {
+    "name": "japonska jerebika",
+    "aliases": [
+      "Sorbus commixta"
+    ]
+  },
+  "Q1250033": {
+    "name": "japonska sliva",
+    "aliases": [
+      "Prunus salicina"
+    ]
+  },
+  "Q887221": {
+    "name": "floridski dren",
+    "aliases": [
+      "Cornus florida",
+      "ameriški dren",
+      "ameriški dren cvetnik"
+    ]
+  },
+  "Q43300": {
+    "name": "navadna kutina",
+    "aliases": [
+      "Cydonia oblonga",
+      "kutina"
+    ]
+  },
+  "Q469555": {
+    "name": "beli hrast",
+    "aliases": [
+      "ameriški hrast",
+      "Quercus alba"
+    ]
+  },
+  "Q469695": {
+    "name": "jagodičnica",
+    "aliases": [
+      "Arbutus menziesii",
+      "pacifiška madrona"
+    ]
+  },
+  "Q516494": {
+    "name": "tangerina",
+    "aliases": [
+      "🍊",
+      "Citrus tangerina"
+    ]
+  },
+  "Q156687": {
+    "name": "Duglazija",
+    "aliases": [
+      "Pseudotsuga menziesii"
+    ]
+  },
+  "Q747652": {
+    "name": "himalajski bor",
+    "aliases": [
+      "Pinus wallichiana"
+    ]
+  },
+  "Q750217": {
+    "name": "sikomora",
+    "aliases": [
+      "Ficus sycomorus"
+    ]
+  },
+  "Q146992": {
+    "name": "bela jelka",
+    "aliases": [
+      "Abies alba",
+      "navadna jelka"
+    ]
+  },
+  "Q857075": {
+    "name": "panonski hrast",
+    "aliases": [
+      "Quercus conferta",
+      "Quercus farnetto"
+    ]
+  },
+  "Q875262": {
+    "name": "sacuma",
+    "aliases": [
+      "Citrus unshiu",
+      "japonska mandarina"
+    ]
+  },
+  "Q149269": {
+    "name": "japonski javor",
+    "aliases": [
+      "Acer japonicum"
+    ]
+  },
+  "Q149319": {
+    "name": "Kanadski topol",
+    "aliases": [
+      "Populus deltoides"
+    ]
+  },
+  "Q149332": {
+    "name": "drobnica",
+    "aliases": [
+      "divja hruška",
+      "Pyrus pyraster"
+    ]
+  },
+  "Q156895": {
+    "name": "navadna breza",
+    "aliases": [
+      "Betula pendula"
+    ]
+  },
+  "Q771101": {
+    "name": "datljev kaki",
+    "aliases": [
+      "Diospyros lotus",
+      "divji kaki",
+      "lotusni ebenovec"
+    ]
+  },
+  "Q41505": {
+    "name": "japonska nešplja",
+    "aliases": [
+      "Eriobotrya japonica",
+      "lokvat"
+    ]
+  },
+  "Q156831": {
+    "name": "lipa",
+    "aliases": [
+      "navadna lipa",
+      "Tilia platyphyllos"
+    ]
+  },
+  "Q147824": {
+    "name": "Omorika",
+    "aliases": [
+      "Pančićeva smreka",
+      "Picea omorika"
+    ]
+  },
+  "Q148630": {
+    "name": "smrdljivi brin",
+    "aliases": [
+      "Juniperus sabina"
+    ]
+  },
+  "Q46871": {
+    "name": "navadni oreh",
+    "aliases": [
+      "Juglans regia"
+    ]
+  },
+  "Q147064": {
+    "name": "črni topol",
+    "aliases": [
+      "Populus nigra"
+    ]
+  },
+  "Q1498748": {
+    "name": "Lirastolisti fikus",
+    "aliases": [
+      "Ficus lyrata",
+      "Lirastolistni fikus"
+    ]
+  },
+  "Q1655870": {
+    "name": "japonski oreh",
+    "aliases": [
+      "Juglans ailantifolia"
+    ]
+  },
+  "Q1711441": {
+    "name": "arizonski oreh",
+    "aliases": [
+      "Juglans major"
+    ]
+  },
+  "Q1377319": {
+    "name": "nazobčani hrast",
+    "aliases": [
+      "Quercus dentata"
+    ]
+  },
+  "Q1378390": {
+    "name": "Sieboldova magnolija",
+    "aliases": [
+      "Magnolia sieboldii"
+    ]
+  },
+  "Q1399164": {
+    "name": "kalifornijska kalocedra",
+    "aliases": [
+      "Calocedrus decurrens",
+      "kalocedra"
+    ]
+  },
+  "Q838963": {
+    "name": "naši",
+    "aliases": [
+      "Pyrus pyrifolia"
+    ]
+  },
+  "Q844835": {
+    "name": "latnati mehurnik",
+    "aliases": [
+      "Koelreuteria paniculata"
+    ]
+  },
+  "Q948827": {
+    "name": "Asimina triloba",
+    "aliases": [
+      "asimina"
+    ]
+  },
+  "Q964938": {
+    "name": "sibirska marelica",
+    "aliases": [
+      "Prunus sibirica"
+    ]
+  },
+  "Q1034859": {
+    "name": "ostrokoničasti hrast",
+    "aliases": [
+      "Quercus acutissima",
+      "japonski hrast",
+      "kitajski hrast"
+    ]
+  },
+  "Q1037138": {
+    "name": "Tschonskijev beli gaber",
+    "aliases": [
+      "Carpinus tschonoskii"
+    ]
+  },
+  "Q157307": {
+    "name": "Bela murva",
+    "aliases": [
+      "Morus alba"
+    ]
+  },
+  "Q156904": {
+    "name": "črna jelša",
+    "aliases": [
+      "Alnus glutinosa",
+      "evropska jelša",
+      "navadna jelša"
+    ]
+  },
+  "Q157641": {
+    "name": "Siva jelša",
+    "aliases": [
+      "Alnus hirsuta",
+      "Alnus incana",
+      "Alnus kolaensis",
+      "Alnus oblongifolia",
+      "Alnus rugosa",
+      "Alnus tenuifolia"
+    ]
+  },
+  "Q157650": {
+    "name": "trnata gledičevka",
+    "aliases": [
+      "divji rožič"
+    ]
+  },
+  "Q149743": {
+    "name": "žlezova češnjica",
+    "aliases": [
+      "Prunus glandulosa"
+    ]
+  },
+  "Q147475": {
+    "name": "rušje",
+    "aliases": [
+      "Pinus montana",
+      "Pinus mugo",
+      "ruševje"
+    ]
+  },
+  "Q157677": {
+    "name": "švedski dren",
+    "aliases": [
+      "Cornus suecica"
+    ]
+  },
+  "Q157697": {
+    "name": "kitajski brin",
+    "aliases": [
+      "Juniperus chinensis"
+    ]
+  },
+  "Q157960": {
+    "name": "Mokovec",
+    "aliases": [
+      "Sorbus aria"
+    ]
+  },
+  "Q157417": {
+    "name": "navadna robinija",
+    "aliases": [
+      "Robinia pseudacacia",
+      "Robinia pseudoacacia",
+      "neprava akacija"
+    ]
+  },
+  "Q157508": {
+    "name": "lovorikovec",
+    "aliases": [
+      "Prunus laurocerasus"
+    ]
+  },
+  "Q157763": {
+    "name": "mumovec",
+    "aliases": [
+      "Prunus mume",
+      "japonska marelica"
+    ]
+  },
+  "Q1801446": {
+    "name": "velika leska",
+    "aliases": [
+      "Corylus maxima"
+    ]
+  },
+  "Q158178": {
+    "name": "prnar",
+    "aliases": [
+      "hrast prnar",
+      "Quercus coccifera"
+    ]
+  },
+  "Q158482": {
+    "name": "kaki",
+    "aliases": [
+      "Diospyros kaki"
+    ]
+  },
+  "Q156907": {
+    "name": "veliki jesen",
+    "aliases": [
+      "Fraxinus excelsior",
+      "jesen",
+      "beli jesen"
+    ]
+  },
+  "Q157522": {
+    "name": "virginijski brin",
+    "aliases": [
+      "Juniperus virginiana"
+    ]
+  },
+  "Q1044186": {
+    "name": "japonski rdeči bor",
+    "aliases": [
+      "Pinus densiflora"
+    ]
+  },
+  "Q157624": {
+    "name": "puhasta breza",
+    "aliases": [
+      "Betula pubescens"
+    ]
+  },
+  "Q158590": {
+    "name": "beka",
+    "aliases": [
+      "Salix viminalis"
+    ]
+  },
+  "Q158228": {
+    "name": "tatarski dren",
+    "aliases": [
+      "Cornus alba"
+    ]
+  },
+  "Q158356": {
+    "name": "persimon",
+    "aliases": [
+      "Diospyros virginiana",
+      "virginijski ebenovec"
+    ]
+  },
+  "Q2294122": {
+    "name": "mandljevolistna hruška",
+    "aliases": [
+      "Pyrus amygdaliformis",
+      "Pyrus spinosa"
+    ]
+  },
+  "Q2452407": {
+    "name": "kanadski jadikovec",
+    "aliases": [
+      "Cercis canadensis"
+    ]
+  },
+  "Q2717620": {
+    "name": "Castanopsis cuspidata",
+    "aliases": [
+      "shii"
+    ]
+  },
+  "Q2727171": {
+    "name": "trokrpi mandljevec",
+    "aliases": [
+      "Prunus triloba"
+    ]
+  },
+  "Q158657": {
+    "name": "jablana",
+    "aliases": [
+      "Malus domestica"
+    ]
+  },
+  "Q158608": {
+    "name": "graden",
+    "aliases": [
+      "Quercus petraea",
+      "Quercus sessiliflora"
+    ]
+  },
+  "Q156918": {
+    "name": "Bela vrba",
+    "aliases": [
+      "Salix alba"
+    ]
+  },
+  "Q158642": {
+    "name": "rumeni dren",
+    "aliases": [
+      "Cornus mas"
+    ]
+  },
+  "Q158746": {
+    "name": "lipovec",
+    "aliases": [
+      "Tilia cordata"
+    ]
+  },
+  "Q158776": {
+    "name": "beli gaber",
+    "aliases": [
+      "Carpinus betulus"
+    ]
+  },
+  "Q156944": {
+    "name": "beli javor",
+    "aliases": [
+      "Acer pseudoplatanus",
+      "gorski javor"
+    ]
+  },
+  "Q158785": {
+    "name": "Maklen",
+    "aliases": [
+      "Acer campestre"
+    ]
+  },
+  "Q158987": {
+    "name": "pozna čremsa",
+    "aliases": [
+      "Prunus serotina"
+    ]
+  },
+  "Q159553": {
+    "name": "navadni glog",
+    "aliases": [
+      "Crataegus laevigata",
+      "Crataegus oxyacantha",
+      "Rdeči glog"
+    ]
+  },
+  "Q157230": {
+    "name": "gladki bor",
+    "aliases": [
+      "Pinus strobus",
+      "Weymouthov bor",
+      "zeleni bor"
+    ]
+  },
+  "Q157277": {
+    "name": "cer",
+    "aliases": [
+      "Quercus cerris"
+    ]
+  },
+  "Q159565": {
+    "name": "Iva",
+    "aliases": [
+      "Salix caprea"
+    ]
+  },
+  "Q160576": {
+    "name": "navadni smokvovec",
+    "aliases": [
+      "Ficus elastica",
+      "navadni fikus"
+    ]
+  },
+  "Q161040": {
+    "name": "črna murva",
+    "aliases": [
+      "Morus nigra"
+    ]
+  },
+  "Q161070": {
+    "name": "sobna aravkarija",
+    "aliases": [
+      "Araucaria heterophylla",
+      "norfolški bor",
+      "sobna smreka"
+    ]
+  },
+  "Q161105": {
+    "name": "vzhodna platana",
+    "aliases": [
+      "Platanus orientalis"
+    ]
+  },
+  "Q161360": {
+    "name": "Lawsonova pacipresa",
+    "aliases": [
+      "Chamaecyparis lawsoniana"
+    ]
+  },
+  "Q161388": {
+    "name": "Trokrpi javor",
+    "aliases": [
+      "Acer monspessulanum"
+    ]
+  },
+  "Q161416": {
+    "name": "rdeči dren",
+    "aliases": [
+      "Cornus sanguinea"
+    ]
+  },
+  "Q161421": {
+    "name": "mali jesen",
+    "aliases": [
+      "Fraxinus ornus",
+      "črni jesen"
+    ]
+  },
+  "Q161920": {
+    "name": "rešeljika",
+    "aliases": [
+      "Prunus mahaleb"
+    ]
+  },
+  "Q162829": {
+    "name": "virginska sliva",
+    "aliases": [
+      "Prunus virginiana"
+    ]
+  },
+  "Q163078": {
+    "name": "tokijska češnja",
+    "aliases": [
+      "Prunus × yedoensis"
+    ]
+  },
+  "Q74068": {
+    "name": "graškasta pacipresa"
+  },
+  "Q146021": {
+    "name": "Balkanski bor"
+  },
+  "Q146269": {
+    "name": "Beli topol"
+  },
+  "Q147492": {
+    "name": "Dolgopecljati brest"
+  },
+  "Q147498": {
+    "name": "Gorski brest"
+  },
+  "Q147525": {
+    "name": "Rdeči hrast"
+  },
+  "Q148920": {
+    "name": "Kavkaška jelka"
+  },
+  "Q149622": {
+    "name": "Populus × canadensis"
+  },
+  "Q150129": {
+    "name": "Obalna sekvoja"
+  },
+  "Q157952": {
+    "name": "Navadna zmajevka"
+  },
+  "Q158783": {
+    "name": "Navadni tulipanovec"
+  },
+  "Q159188": {
+    "name": "Elaeagnus commutata"
+  },
+  "Q159558": {
+    "name": "Skorš"
+  },
+  "Q159570": {
+    "name": "veliki pajesen"
+  },
+  "Q160019": {
+    "name": "Prunus tenella"
+  },
+  "Q161116": {
+    "name": "velecvetna magnolija"
+  },
+  "Q161382": {
+    "name": "srebrna lipa"
+  },
+  "Q161415": {
+    "name": "hrast"
+  },
+  "Q161511": {
+    "name": "enovrati glog"
+  },
+  "Q163039": {
+    "name": "Prunus sargentii"
+  },
+  "Q163831": {
+    "name": "Ameriška katalpa"
+  },
+  "Q164130": {
+    "name": "Svilnati dren"
+  },
+  "Q192608": {
+    "name": "Quercus variabilis"
+  },
+  "Q203985": {
+    "name": "Sivi javor"
+  },
+  "Q255375": {
+    "name": "Navadni koprivovec"
+  },
+  "Q269224": {
+    "name": "Pahljačasti javor"
+  },
+  "Q334697": {
+    "name": "Davidia involucrata"
+  },
+  "Q460531": {
+    "name": "Bosanski bor"
+  },
+  "Q469382": {
+    "name": "Ameriški brest"
+  },
+  "Q657935": {
+    "name": "Davidov javor"
+  },
+  "Q699584": {
+    "name": "Kitajski kostanj"
+  },
+  "Q717827": {
+    "name": "japonski kostanj"
+  },
+  "Q745228": {
+    "name": "Panonski glog"
+  },
+  "Q756191": {
+    "name": "Kanarski bor"
+  },
+  "Q794061": {
+    "name": "Magnolia denudata"
+  },
+  "Q819208": {
+    "name": "Magnolia fraseri"
+  },
+  "Q846994": {
+    "name": "Castanopsis sieboldii"
+  },
+  "Q847209": {
+    "name": "Quercus serrata"
+  },
+  "Q854093": {
+    "name": "Prunus mandshurica"
+  },
+  "Q854892": {
+    "name": "Grška jelka"
+  },
+  "Q890824": {
+    "name": "Kalifornijski oreh"
+  },
+  "Q926249": {
+    "name": "Pisanolistni dren"
+  },
+  "Q942409": {
+    "name": "kobuši magnolija"
+  },
+  "Q975887": {
+    "name": "Pinus luchuensis"
+  },
+  "Q1048531": {
+    "name": "Castanopsis fissa"
+  },
+  "Q1073968": {
+    "name": "Pinus tabuliformis"
+  },
+  "Q1079824": {
+    "name": "Ulmus pumila"
+  },
+  "Q1088271": {
+    "name": "Kraški gaber"
+  },
+  "Q1132580": {
+    "name": "Aesculus turbinata"
+  },
+  "Q1227092": {
+    "name": "Diospyros montana"
+  },
+  "Q1257409": {
+    "name": "Acer triflorum"
+  },
+  "Q1283223": {
+    "name": "Srebrna jelka"
+  },
+  "Q1367533": {
+    "name": "Črni gaber"
+  },
+  "Q1374188": {
+    "name": "Populus euphratica"
+  },
+  "Q1405636": {
+    "name": "Banjanovec"
+  },
+  "Q1489573": {
+    "name": "Virginijski gaber"
+  },
+  "Q1652385": {
+    "name": "Sophora toromiro"
+  },
+  "Q1859063": {
+    "name": "Magnolia virginiana"
+  },
+  "Q1939271": {
+    "name": "Pinus kesiya"
+  },
+  "Q2114443": {
+    "name": "Prunus ilicifolia"
+  },
+  "Q2559087": {
+    "name": "Eucalyptus albens"
+  },
+  "Q2601238": {
+    "name": "Carya ovata"
+  },
+  "Q2822955": {
+    "name": "Acer douglasense"
+  },
+  "Q3009781": {
+    "name": "Quercus fusiformis"
+  },
+  "Q3010229": {
+    "name": "Prunus angustifolia"
+  },
+  "Q3071706": {
+    "name": "Sveti figovec"
+  },
+  "Q3179665": {
+    "name": "Nyssa sylvatica"
+  },
+  "Q3205624": {
+    "name": "Lagerstroemia intermedia"
+  },
+  "Q3281198": {
+    "name": "Acer sino-oblongum"
+  },
+  "Q3281562": {
+    "name": "Acer poliophyllum"
+  },
+  "Q3281732": {
+    "name": "Acer tsinglingense"
+  },
+  "Q3284652": {
+    "name": "Malus communis"
+  },
+  "Q3336255": {
+    "name": "Acer wardii"
+  },
+  "Q3337079": {
+    "name": "Acer sutchuenense"
+  },
+  "Q3337214": {
+    "name": "Acer sinopurpurascens"
+  },
+  "Q3338661": {
+    "name": "Acer shihweii"
+  },
+  "Q3408638": {
+    "name": "Prunus davidiana"
+  },
+  "Q3491094": {
+    "name": "Sophora moorcroftiana"
+  },
+  "Q4673169": {
+    "name": "Acer oblongum"
+  },
+  "Q5047673": {
+    "name": "Carya tomentosa"
+  },
+  "Q5487185": {
+    "name": "Manglietia sinica"
+  },
+  "Q5721717": {
+    "name": "Cerasus jamasakura"
+  },
+  "Q6744990": {
+    "name": "Malus sikkimensis"
+  },
+  "Q6746012": {
+    "name": "Acer schneiderianum"
+  },
+  "Q7071273": {
+    "name": "Nyssa aquatica"
+  },
+  "Q7213013": {
+    "name": "Eucalyptus platyphylla"
+  },
+  "Q7879512": {
+    "name": "Ulmus microcarpa"
+  },
+  "Q10872414": {
+    "name": "Photinia beauverdiana"
+  },
+  "Q10877943": {
+    "name": "Quercus phillyraeoides"
+  },
+  "Q10880877": {
+    "name": "Diospyros yunnanensis"
+  },
+  "Q10887979": {
+    "name": "Diospyros sunyiensis"
+  },
+  "Q10906248": {
+    "name": "Diospyros unisemina"
+  },
+  "Q10907379": {
+    "name": "Castanopsis amabilis"
+  },
+  "Q10908398": {
+    "name": "Lagerstroemia siamica"
+  },
+  "Q10933976": {
+    "name": "Quercus griffithii"
+  },
+  "Q10949016": {
+    "name": "Elaeagnus henryi"
+  },
+  "Q10958149": {
+    "name": "Olea parvilimba"
+  },
+  "Q11045980": {
+    "name": "Diospyros siderophylla"
+  },
+  "Q11055328": {
+    "name": "Diospyros sutchuensis"
+  },
+  "Q11066157": {
+    "name": "Diospyros anisocalyx"
+  },
+  "Q11080658": {
+    "name": "Eucalyptus kirtoniana"
+  },
+  "Q11107913": {
+    "name": "Salix karelinii"
+  },
+  "Q11127270": {
+    "name": "Photinia pilosicalyx"
+  },
+  "Q11132607": {
+    "name": "Lithocarpus yongfuensis"
+  },
+  "Q11143949": {
+    "name": "Sorbus meliosmifolia"
+  },
+  "Q11173544": {
+    "name": "Ficus pubigera"
+  },
+  "Q11179338": {
+    "name": "Diospyros nigrocortex"
+  },
+  "Q11291825": {
+    "name": "Magnolia compressa"
+  },
+  "Q12173262": {
+    "name": "Malus praecox"
+  },
+  "Q12202795": {
+    "name": "Malus frutescens"
+  },
+  "Q12839325": {
+    "name": "Eucalyptus camphora"
+  },
+  "Q15235703": {
+    "name": "Diospyros lycioides"
+  },
+  "Q15235730": {
+    "name": "Juglans cathayensis"
+  },
+  "Q15236187": {
+    "name": "Olea neriifolia"
+  },
+  "Q15236943": {
+    "name": "Diospyros ehretioides"
+  },
+  "Q15237898": {
+    "name": "Lithocarpus harlandii"
+  },
+  "Q15238823": {
+    "name": "Eucalyptus leptophleba"
+  },
+  "Q15239088": {
+    "name": "Quercus kongshanensis"
+  },
+  "Q15239300": {
+    "name": "Diospyros punctilimba"
+  },
+  "Q15239422": {
+    "name": "Sophora microcarpa"
+  },
+  "Q15239530": {
+    "name": "Lithocarpus mekongensis"
+  },
+  "Q15239804": {
+    "name": "Castanopsis hupehensis"
+  },
+  "Q15240291": {
+    "name": "Cyclobalanopsis sichourensis"
+  },
+  "Q15240339": {
+    "name": "Elaeagnus gonyanthes"
+  },
+  "Q15240385": {
+    "name": "Lithocarpus gaoligongensis"
+  },
+  "Q15240409": {
+    "name": "Elaeagnus angustata"
+  },
+  "Q15287999": {
+    "name": "Acer pycnanthum"
+  },
+  "Q15340976": {
+    "name": "Diospyros chloroxylon"
+  },
+  "Q15376224": {
+    "name": "Carya alba"
+  },
+  "Q15377188": {
+    "name": "Pterocarya pterocarpa"
+  },
+  "Q15397348": {
+    "name": "Eucalyptus canaliculata"
+  },
+  "Q15397357": {
+    "name": "Eucalyptus anceps"
+  },
+  "Q15397363": {
+    "name": "Eucalyptus ewartiana"
+  },
+  "Q15397379": {
+    "name": "Eucalyptus dura"
+  },
+  "Q15397376": {
+    "name": "Eucalyptus argillacea"
+  },
+  "Q15397385": {
+    "name": "Eucalyptus latens"
+  },
+  "Q15397393": {
+    "name": "Eucalyptus intrasilvatica"
+  },
+  "Q15605039": {
+    "name": "Cornus arnoldiana"
+  },
+  "Q17271024": {
+    "name": "Notholithocarpus densiflorus"
+  },
+  "Q21269548": {
+    "name": "Ficus henneana"
+  },
+  "Q21877186": {
+    "name": "Quercus aegilops"
+  },
+  "Q37995935": {
+    "name": "Crataegus germanica"
+  },
+  "Q38224807": {
+    "name": "Pinus dalmatica"
+  },
+  "Q39027258": {
+    "name": "Parrotia jacquemontiana"
+  },
+  "Q39270015": {
+    "name": "Ficus esquirolii"
+  },
+  "Q50844844": {
+    "name": "Malus paradisiaca"
+  },
+  "Q50860709": {
+    "name": "Pinus benthamiana"
+  },
+  "Q65670136": {
+    "name": "Pyrus dioica"
+  },
+  "Q65672314": {
+    "name": "Pyrus praecox"
+  },
+  "Q65672368": {
+    "name": "Malus dioica"
+  },
+  "Q13189": {
+    "name": "breskev"
+  }
+}

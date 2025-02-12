@@ -1,0 +1,253 @@
+{
+  "Q12024": {
+    "name": "mänd",
+    "aliases": [
+      "Pinus"
+    ]
+  },
+  "Q25239": {
+    "name": "Lepp",
+    "aliases": [
+      "Alnus"
+    ]
+  },
+  "Q25243": {
+    "name": "kask",
+    "aliases": [
+      "kõiv",
+      "Betula"
+    ]
+  },
+  "Q25350": {
+    "name": "Nulg",
+    "aliases": [
+      "Abies"
+    ]
+  },
+  "Q25356": {
+    "name": "Pappel",
+    "aliases": [
+      "Populus"
+    ]
+  },
+  "Q25403": {
+    "name": "Pöök",
+    "aliases": [
+      "Fagus"
+    ]
+  },
+  "Q25618": {
+    "name": "Lehis",
+    "aliases": [
+      "Larix",
+      "Lehtmänd"
+    ]
+  },
+  "Q26782": {
+    "name": "Kuusk",
+    "aliases": [
+      "Picea"
+    ]
+  },
+  "Q25662": {
+    "name": "Kadakas",
+    "aliases": [
+      "Juniperus"
+    ]
+  },
+  "Q27355": {
+    "name": "Jugapuu",
+    "aliases": [
+      "Taxus"
+    ]
+  },
+  "Q29033": {
+    "name": "Juudapuu",
+    "aliases": [
+      "Cercis"
+    ]
+  },
+  "Q36050": {
+    "name": "Paju",
+    "aliases": [
+      "Remmelgas",
+      "Salix"
+    ]
+  },
+  "Q104819": {
+    "name": "Õunapuu",
+    "aliases": [
+      "Malus"
+    ]
+  },
+  "Q128550": {
+    "name": "Seeder",
+    "aliases": [
+      "Cedrus"
+    ]
+  },
+  "Q129324": {
+    "name": "Kastanipuu",
+    "aliases": [
+      "Castanea"
+    ]
+  },
+  "Q131113": {
+    "name": "Jalakas",
+    "aliases": [
+      "Ulmus"
+    ]
+  },
+  "Q145889": {
+    "name": "Sarapuu",
+    "aliases": [
+      "Corylus"
+    ]
+  },
+  "Q146911": {
+    "name": "küpress",
+    "aliases": [
+      "Cupressus"
+    ]
+  },
+  "Q147791": {
+    "name": "Ebaküpress",
+    "aliases": [
+      "Chamaecyparis"
+    ]
+  },
+  "Q157964": {
+    "name": "Pihlakas",
+    "aliases": [
+      "Sorbus"
+    ]
+  },
+  "Q158513": {
+    "name": "Valgepöök",
+    "aliases": [
+      "Carpinus"
+    ]
+  },
+  "Q158752": {
+    "name": "Hobukastan",
+    "aliases": [
+      "Aesculus"
+    ]
+  },
+  "Q158771": {
+    "name": "Ebatsuuga",
+    "aliases": [
+      "Pseudotsuga"
+    ]
+  },
+  "Q159545": {
+    "name": "kontpuu",
+    "aliases": [
+      "Cornus"
+    ]
+  },
+  "Q190545": {
+    "name": "Toompuu",
+    "aliases": [
+      "Prunus"
+    ]
+  },
+  "Q165173": {
+    "name": "printsessipuu",
+    "aliases": [
+      "Paulownia"
+    ]
+  },
+  "Q165258": {
+    "name": "Eebenipuu",
+    "aliases": [
+      "Ebenus",
+      "Cavanillea",
+      "Diospüür",
+      "Diospyros",
+      "Mabola"
+    ]
+  },
+  "Q296910": {
+    "name": "Õlipuu (perekond)",
+    "aliases": [
+      "Olea"
+    ]
+  },
+  "Q309213": {
+    "name": "Keepuu",
+    "aliases": [
+      "Nöörpuu",
+      "Sophora"
+    ]
+  },
+  "Q472943": {
+    "name": "Robiinia",
+    "aliases": [
+      "Ebaakaatsia"
+    ]
+  },
+  "Q1975652": {
+    "name": "Sekvoia",
+    "aliases": [
+      "Sequoia"
+    ]
+  },
+  "Q127849": {
+    "name": "Pärn"
+  },
+  "Q128887": {
+    "name": "Saar"
+  },
+  "Q132557": {
+    "name": "viirpuu"
+  },
+  "Q142788": {
+    "name": "Hikkoripuu"
+  },
+  "Q149461": {
+    "name": "Hõlmikpuu"
+  },
+  "Q157017": {
+    "name": "Magnoolia"
+  },
+  "Q161042": {
+    "name": "Hõbepuu"
+  },
+  "Q163025": {
+    "name": "Plaatan"
+  },
+  "Q664945": {
+    "name": "Albizia"
+  },
+  "Q775229": {
+    "name": "Lagerstroemia"
+  },
+  "Q2453469": {
+    "name": "Pähklipuu"
+  },
+  "Q5122903": {
+    "name": "kinkan"
+  },
+  "Q12309040": {
+    "name": "Davidia"
+  },
+  "Q434": {
+    "name": "pirnipuu"
+  },
+  "Q12004": {
+    "name": "tamm"
+  },
+  "Q42292": {
+    "name": "Vaher"
+  },
+  "Q44789": {
+    "name": "Mooruspuu"
+  },
+  "Q45669": {
+    "name": "Eukalüpt"
+  },
+  "Q59798": {
+    "name": "Viigipuu"
+  }
+}

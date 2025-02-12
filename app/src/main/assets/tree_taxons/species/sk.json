@@ -1,0 +1,844 @@
+{
+  "Q76971": {
+    "name": "Breza papierovitá",
+    "aliases": [
+      "Betula papyrifera"
+    ]
+  },
+  "Q124969": {
+    "name": "lieska obyčajná",
+    "aliases": [
+      "Corylus avellana",
+      "Lieska"
+    ]
+  },
+  "Q42385": {
+    "name": "Kakaovník pravý",
+    "aliases": [
+      "Theobroma cacao"
+    ]
+  },
+  "Q26325": {
+    "name": "Borievka obyčajná",
+    "aliases": [
+      "Juniperus communis"
+    ]
+  },
+  "Q131517": {
+    "name": "Čerešňa višňová",
+    "aliases": [
+      "Prunus cerasus"
+    ]
+  },
+  "Q133128": {
+    "name": "borovica sosnová",
+    "aliases": [
+      "Borovica lesná",
+      "Pinus sylvestris"
+    ]
+  },
+  "Q145954": {
+    "name": "borovica čierna",
+    "aliases": [
+      "Pinus nigra"
+    ]
+  },
+  "Q146048": {
+    "name": "Smrekovec opadavý",
+    "aliases": [
+      "Červený smrek",
+      "Larix decidua"
+    ]
+  },
+  "Q44120": {
+    "name": "slivka domáca",
+    "aliases": [
+      "Prunus domestica"
+    ]
+  },
+  "Q37083": {
+    "name": "oliva európska",
+    "aliases": [
+      "Olivovník",
+      "Olivovník európsky"
+    ]
+  },
+  "Q26899": {
+    "name": "pagaštan konský",
+    "aliases": [
+      "gaštan pravý"
+    ]
+  },
+  "Q145992": {
+    "name": "smrek obyčajný",
+    "aliases": [
+      "Picea abies"
+    ]
+  },
+  "Q146025": {
+    "name": "smrek pichľavý",
+    "aliases": [
+      "Picea pungens",
+      "strieborný smrek"
+    ]
+  },
+  "Q146198": {
+    "name": "jarabina vtáčia",
+    "aliases": [
+      "Sorbus aucuparia"
+    ]
+  },
+  "Q146149": {
+    "name": "Buk lesný",
+    "aliases": [
+      "Fagus sylvatica"
+    ]
+  },
+  "Q146269": {
+    "name": "Topoľ biely",
+    "aliases": [
+      "Leuce alba",
+      "Octima canescens",
+      "Populus berkarensis",
+      "Populus bogueana",
+      "Populus denudata",
+      "Populus excelsa",
+      "Populus floccosa",
+      "Populus globosa",
+      "Populus heteroloba",
+      "Populus hickeliana",
+      "Populus hopeiensis",
+      "Populus megaleuce",
+      "Populus peroneana",
+      "Populus triloba"
+    ]
+  },
+  "Q460531": {
+    "name": "Borovica pancierová",
+    "aliases": [
+      "Borovica Heldreichova",
+      "Pinus heldreichii"
+    ]
+  },
+  "Q469695": {
+    "name": "Arbutus menziesii",
+    "aliases": [
+      "Arbutus menziesov"
+    ]
+  },
+  "Q146992": {
+    "name": "jedľa biela",
+    "aliases": [
+      "Abies alba",
+      "Abies pectinata",
+      "Albies alba",
+      "Jedľa bielokôra",
+      "Pinus picea"
+    ]
+  },
+  "Q147278": {
+    "name": "Borovica limbová",
+    "aliases": [
+      "Limba",
+      "Pinus cembra"
+    ]
+  },
+  "Q147426": {
+    "name": "smrek sitkanský",
+    "aliases": [
+      "Picea sitchensis"
+    ]
+  },
+  "Q806838": {
+    "name": "borovica Banksova",
+    "aliases": [
+      "Pinus banksiana"
+    ]
+  },
+  "Q837410": {
+    "name": "borovica tuhá",
+    "aliases": [
+      "Pinus rigida"
+    ]
+  },
+  "Q838963": {
+    "name": "Hruška nashi",
+    "aliases": [
+      "Ázijská hruška",
+      "Japonská hruška"
+    ]
+  },
+  "Q147475": {
+    "name": "Borovica horská",
+    "aliases": [
+      "Kosodrevina",
+      "Pinus mugo"
+    ]
+  },
+  "Q936888": {
+    "name": "Borovica ostitá",
+    "aliases": [
+      "Pinus aristata"
+    ]
+  },
+  "Q948827": {
+    "name": "Ásimina trojlaločná",
+    "aliases": [
+      "Asimína trojlaločná",
+      "Banán severu",
+      "Indiánsky banán",
+      "Paw-paw"
+    ]
+  },
+  "Q147487": {
+    "name": "brest hrabolistý",
+    "aliases": [
+      "brest poľný"
+    ]
+  },
+  "Q1405636": {
+    "name": "Figovník bengálsky",
+    "aliases": [
+      "Banyan",
+      "Banyán",
+      "Ficus benghalensis"
+    ]
+  },
+  "Q147824": {
+    "name": "smrek omorikový",
+    "aliases": [
+      "omorika",
+      "Picea omorika",
+      "smrek balkánsky",
+      "smrek omorika"
+    ]
+  },
+  "Q1542486": {
+    "name": "Eukalyptus kráľovský",
+    "aliases": [
+      "Eucalyptus regnans"
+    ]
+  },
+  "Q148920": {
+    "name": "Jedľa kaukazská",
+    "aliases": [
+      "Abies nordmanniana",
+      "Jedľa nordmannova",
+      "Jedľa nordmanská",
+      "Jedľa normandská",
+      "Kaukazská jedlička",
+      "Nordmanská jedlička",
+      "Normandská jedlička"
+    ]
+  },
+  "Q149548": {
+    "name": "borovica pyrenejská",
+    "aliases": [
+      "Pinus uncinata"
+    ]
+  },
+  "Q12762609": {
+    "name": "Aronia prunifolia",
+    "aliases": [
+      "Photinia floribunda"
+    ]
+  },
+  "Q12767842": {
+    "name": "Jarabina Margittaiho",
+    "aliases": [
+      "Sorbus margittaiana"
+    ]
+  },
+  "Q150129": {
+    "name": "Sekvoja vždyzelená",
+    "aliases": [
+      "Sequoia sempervirnes"
+    ]
+  },
+  "Q156687": {
+    "name": "Duglaska tisolistá",
+    "aliases": [
+      "Douglaska tisolistá",
+      "Pseudotsuga menziesii"
+    ]
+  },
+  "Q156831": {
+    "name": "lipa veľkolistá",
+    "aliases": [
+      "Tilia platyphyllos"
+    ]
+  },
+  "Q156895": {
+    "name": "breza previsnutá",
+    "aliases": [
+      "Betula alba",
+      "Betula pendula",
+      "Betula verrucosa",
+      "Breza bradavičnatá"
+    ]
+  },
+  "Q156904": {
+    "name": "jelša lepkavá",
+    "aliases": [
+      "Alnus glutinosa"
+    ]
+  },
+  "Q157417": {
+    "name": "agát biely",
+    "aliases": [
+      "Robinia pseudoacacia"
+    ]
+  },
+  "Q158482": {
+    "name": "Hurma",
+    "aliases": [
+      "Churma",
+      "Diospyros kaki",
+      "Hurmi kaki",
+      "Hurmi-kaki",
+      "Hurmikaki"
+    ]
+  },
+  "Q158608": {
+    "name": "Dub zimný",
+    "aliases": [
+      "Quercus petraea",
+      "Quercus sessiliflora",
+      "Quercus sessilis"
+    ]
+  },
+  "Q158642": {
+    "name": "drieň obyčajný",
+    "aliases": [
+      "Cornus mas"
+    ]
+  },
+  "Q158657": {
+    "name": "jabloň domáca",
+    "aliases": [
+      "Malus domestica"
+    ]
+  },
+  "Q158746": {
+    "name": "lipa malolistá",
+    "aliases": [
+      "Tilia cordata"
+    ]
+  },
+  "Q159553": {
+    "name": "hloh obyčajný",
+    "aliases": [
+      "hloh krivokališný"
+    ]
+  },
+  "Q161105": {
+    "name": "platan východný",
+    "aliases": [
+      "Platanus orientalis"
+    ]
+  },
+  "Q161382": {
+    "name": "Lipa striebristá",
+    "aliases": [
+      "Lipa plstnatá",
+      "Tilia argentea"
+    ]
+  },
+  "Q163546": {
+    "name": "mišpuľka horská",
+    "aliases": [
+      "jarabina mišpuľková"
+    ]
+  },
+  "Q165091": {
+    "name": "borovica stočená",
+    "aliases": [
+      "borovica pobrežná"
+    ]
+  },
+  "Q165145": {
+    "name": "Dub letný",
+    "aliases": [
+      "Quercus robur"
+    ]
+  },
+  "Q165321": {
+    "name": "čerešňa pílkatá",
+    "aliases": [
+      "Prunus serrulata",
+      "Sakura ozdobná",
+      "Višňa pílkatá"
+    ]
+  },
+  "Q170662": {
+    "name": "Mangostána",
+    "aliases": [
+      "Garcinia mangostana"
+    ]
+  },
+  "Q179729": {
+    "name": "tis obyčajný",
+    "aliases": [
+      "Taxus baccata"
+    ]
+  },
+  "Q275160": {
+    "name": "fikus malolistý",
+    "aliases": [
+      "ficus benjamina"
+    ]
+  },
+  "Q129018": {
+    "name": "slivka trnková"
+  },
+  "Q138044": {
+    "name": "Cyprus čengský"
+  },
+  "Q138085": {
+    "name": "Cyprus čínsky"
+  },
+  "Q146110": {
+    "name": "Topoľ osikový"
+  },
+  "Q146281": {
+    "name": "hruška obyčajná"
+  },
+  "Q146951": {
+    "name": "slivka višňoplodá"
+  },
+  "Q147434": {
+    "name": "jedľa obrovská"
+  },
+  "Q147459": {
+    "name": "jarabina brekyňová"
+  },
+  "Q147492": {
+    "name": "brest väzový"
+  },
+  "Q147498": {
+    "name": "brest horský"
+  },
+  "Q147525": {
+    "name": "Dub červený"
+  },
+  "Q148630": {
+    "name": "Borievka netatová"
+  },
+  "Q148939": {
+    "name": "Lieska turecká"
+  },
+  "Q149332": {
+    "name": "Hruška planá"
+  },
+  "Q149622": {
+    "name": "Populus × canadensis"
+  },
+  "Q156137": {
+    "name": "Dub korkový"
+  },
+  "Q156907": {
+    "name": "Jaseň štíhly"
+  },
+  "Q156918": {
+    "name": "Vŕba biela"
+  },
+  "Q156944": {
+    "name": "javor horský"
+  },
+  "Q157230": {
+    "name": "borovica hladká"
+  },
+  "Q157277": {
+    "name": "Dub cerový"
+  },
+  "Q157393": {
+    "name": "paulovnia plstnatá"
+  },
+  "Q157508": {
+    "name": "vavrínovec lekársky"
+  },
+  "Q157522": {
+    "name": "Borievka virgínska"
+  },
+  "Q157641": {
+    "name": "Jelša sivá"
+  },
+  "Q157650": {
+    "name": "Gledíčia trojtŕňová"
+  },
+  "Q157697": {
+    "name": "Borievka čínska"
+  },
+  "Q157739": {
+    "name": "Platan západný"
+  },
+  "Q157763": {
+    "name": "Prunus mume"
+  },
+  "Q157960": {
+    "name": "jarabina mukyňová"
+  },
+  "Q158228": {
+    "name": "drieň biely"
+  },
+  "Q158425": {
+    "name": "Vŕba oštepovitolistá"
+  },
+  "Q158776": {
+    "name": "Hrab obyčajný"
+  },
+  "Q158783": {
+    "name": "ľaliovník tulipánokvetý"
+  },
+  "Q158785": {
+    "name": "javor poľný"
+  },
+  "Q159188": {
+    "name": "Elaeagnus commutata"
+  },
+  "Q159447": {
+    "name": "Karambola"
+  },
+  "Q159558": {
+    "name": "Jarabina oskorušová"
+  },
+  "Q159565": {
+    "name": "Vŕba rakytová"
+  },
+  "Q159570": {
+    "name": "pajaseň žliazkatý"
+  },
+  "Q159620": {
+    "name": "pagaštan osemtyčinkový"
+  },
+  "Q160019": {
+    "name": "mandľa nízka"
+  },
+  "Q160576": {
+    "name": "Figovník kaučukový"
+  },
+  "Q161040": {
+    "name": "moruša čierna"
+  },
+  "Q161374": {
+    "name": "Platan javorolistý"
+  },
+  "Q161406": {
+    "name": "škumpa vlasatá"
+  },
+  "Q161415": {
+    "name": "Dub plstnatý"
+  },
+  "Q161416": {
+    "name": "svib krvavý"
+  },
+  "Q161511": {
+    "name": "hloh jednosemenný"
+  },
+  "Q162440": {
+    "name": "pagaštan malokvetý"
+  },
+  "Q162728": {
+    "name": "Javor tatársky"
+  },
+  "Q163760": {
+    "name": "Lipa obyčajná"
+  },
+  "Q163831": {
+    "name": "Katalpa bignóniovitá"
+  },
+  "Q163978": {
+    "name": "Jelša zelená"
+  },
+  "Q165137": {
+    "name": "čerešňa vtáčia"
+  },
+  "Q165424": {
+    "name": "čremcha obyčajná"
+  },
+  "Q178116": {
+    "name": "borovica malokvetá"
+  },
+  "Q269224": {
+    "name": "Javor dlaňolistý"
+  },
+  "Q288558": {
+    "name": "sofora japonská"
+  },
+  "Q334697": {
+    "name": "Davidia involucrata"
+  },
+  "Q731443": {
+    "name": "magnólia Soulangeova"
+  },
+  "Q747652": {
+    "name": "Borovica himalájska"
+  },
+  "Q794061": {
+    "name": "Magnolia denudata"
+  },
+  "Q852572": {
+    "name": "orech čierny"
+  },
+  "Q866150": {
+    "name": "Pinus muricata"
+  },
+  "Q882289": {
+    "name": "Betula caerulea"
+  },
+  "Q917216": {
+    "name": "Cyprus kašmírsky"
+  },
+  "Q1048531": {
+    "name": "Castanopsis fissa"
+  },
+  "Q1079824": {
+    "name": "Ulmus pumila"
+  },
+  "Q1135236": {
+    "name": "Durian zapáchavý"
+  },
+  "Q1227092": {
+    "name": "Diospyros montana"
+  },
+  "Q1257409": {
+    "name": "Acer triflorum"
+  },
+  "Q1367533": {
+    "name": "hrabovec hrabolistý"
+  },
+  "Q1374188": {
+    "name": "Populus euphratica"
+  },
+  "Q1499241": {
+    "name": "Breza žltá"
+  },
+  "Q1543689": {
+    "name": "Jelša srdcovitá"
+  },
+  "Q1652385": {
+    "name": "Sophora toromiro"
+  },
+  "Q1754032": {
+    "name": "Diospyros celebica"
+  },
+  "Q1801446": {
+    "name": "Lieska najväčšia"
+  },
+  "Q1887955": {
+    "name": "Cyprus saharský"
+  },
+  "Q2452407": {
+    "name": "judášovec kanadský"
+  },
+  "Q3205624": {
+    "name": "Lagerstroemia intermedia"
+  },
+  "Q3281198": {
+    "name": "Acer sino-oblongum"
+  },
+  "Q3281562": {
+    "name": "Acer poliophyllum"
+  },
+  "Q3281732": {
+    "name": "Acer tsinglingense"
+  },
+  "Q3284652": {
+    "name": "Malus communis"
+  },
+  "Q3336255": {
+    "name": "Acer wardii"
+  },
+  "Q3337079": {
+    "name": "Acer sutchuenense"
+  },
+  "Q3337214": {
+    "name": "Acer sinopurpurascens"
+  },
+  "Q3338661": {
+    "name": "Acer shihweii"
+  },
+  "Q3355098": {
+    "name": "Citrónovník čínsky"
+  },
+  "Q3491094": {
+    "name": "Sophora moorcroftiana"
+  },
+  "Q4673169": {
+    "name": "Acer oblongum"
+  },
+  "Q5487185": {
+    "name": "Manglietia sinica"
+  },
+  "Q6746012": {
+    "name": "Acer schneiderianum"
+  },
+  "Q7213013": {
+    "name": "Eucalyptus platyphylla"
+  },
+  "Q10872414": {
+    "name": "Photinia beauverdiana"
+  },
+  "Q10880877": {
+    "name": "Diospyros yunnanensis"
+  },
+  "Q10887979": {
+    "name": "Diospyros sunyiensis"
+  },
+  "Q10906248": {
+    "name": "Diospyros unisemina"
+  },
+  "Q10907379": {
+    "name": "Castanopsis amabilis"
+  },
+  "Q10908398": {
+    "name": "Lagerstroemia siamica"
+  },
+  "Q10949016": {
+    "name": "Elaeagnus henryi"
+  },
+  "Q10958149": {
+    "name": "Olea parvilimba"
+  },
+  "Q11045980": {
+    "name": "Diospyros siderophylla"
+  },
+  "Q11055328": {
+    "name": "Diospyros sutchuensis"
+  },
+  "Q11066157": {
+    "name": "Diospyros anisocalyx"
+  },
+  "Q11080658": {
+    "name": "Eucalyptus kirtoniana"
+  },
+  "Q11107913": {
+    "name": "Salix karelinii"
+  },
+  "Q11127270": {
+    "name": "Photinia pilosicalyx"
+  },
+  "Q11132607": {
+    "name": "Lithocarpus yongfuensis"
+  },
+  "Q11143949": {
+    "name": "Sorbus meliosmifolia"
+  },
+  "Q11173544": {
+    "name": "Ficus pubigera"
+  },
+  "Q11179338": {
+    "name": "Diospyros nigrocortex"
+  },
+  "Q15236187": {
+    "name": "Olea neriifolia"
+  },
+  "Q15236943": {
+    "name": "Diospyros ehretioides"
+  },
+  "Q15237898": {
+    "name": "Lithocarpus harlandii"
+  },
+  "Q15238823": {
+    "name": "Eucalyptus leptophleba"
+  },
+  "Q15239088": {
+    "name": "Quercus kongshanensis"
+  },
+  "Q15239300": {
+    "name": "Diospyros punctilimba"
+  },
+  "Q15239422": {
+    "name": "Sophora microcarpa"
+  },
+  "Q15239530": {
+    "name": "Lithocarpus mekongensis"
+  },
+  "Q15239804": {
+    "name": "Castanopsis hupehensis"
+  },
+  "Q15240291": {
+    "name": "Cyclobalanopsis sichourensis"
+  },
+  "Q15240339": {
+    "name": "Elaeagnus gonyanthes"
+  },
+  "Q15240385": {
+    "name": "Lithocarpus gaoligongensis"
+  },
+  "Q15240409": {
+    "name": "Elaeagnus angustata"
+  },
+  "Q15397348": {
+    "name": "Eucalyptus canaliculata"
+  },
+  "Q15397357": {
+    "name": "Eucalyptus anceps"
+  },
+  "Q15397363": {
+    "name": "Eucalyptus ewartiana"
+  },
+  "Q15397379": {
+    "name": "Eucalyptus dura"
+  },
+  "Q15397376": {
+    "name": "Eucalyptus argillacea"
+  },
+  "Q15397385": {
+    "name": "Eucalyptus latens"
+  },
+  "Q15397393": {
+    "name": "Eucalyptus intrasilvatica"
+  },
+  "Q17271024": {
+    "name": "Notholithocarpus densiflorus"
+  },
+  "Q18674606": {
+    "name": "jabloň domáca"
+  },
+  "Q20731329": {
+    "name": "Cupressus atlantica"
+  },
+  "Q21269548": {
+    "name": "Ficus henneana"
+  },
+  "Q13189": {
+    "name": "broskyňa obyčajná"
+  },
+  "Q22699": {
+    "name": "gaštan jedlý"
+  },
+  "Q26745": {
+    "name": "javor mliečny"
+  },
+  "Q27980": {
+    "name": "Jarabina prostredná"
+  },
+  "Q36146": {
+    "name": "Figovník obyčajný"
+  },
+  "Q37453": {
+    "name": "Marhuľa obyčajná"
+  },
+  "Q39918": {
+    "name": "Mandľa obyčajná"
+  },
+  "Q41350": {
+    "name": "Grapefruit"
+  },
+  "Q41505": {
+    "name": "mišpuľa japonská"
+  },
+  "Q43284": {
+    "name": "ginko dvojlaločné"
+  },
+  "Q43300": {
+    "name": "dula podlhovastá"
+  },
+  "Q46871": {
+    "name": "Orech"
+  },
+  "Q47161": {
+    "name": "jabloň planá"
+  }
+}

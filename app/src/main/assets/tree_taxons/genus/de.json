@@ -1,0 +1,541 @@
+{
+  "Q434": {
+    "name": "Birnen",
+    "aliases": [
+      "Pyrus"
+    ]
+  },
+  "Q12004": {
+    "name": "Eichen",
+    "aliases": [
+      "Eiche",
+      "Quercus"
+    ]
+  },
+  "Q12024": {
+    "name": "Kiefern",
+    "aliases": [
+      "Pinoideae",
+      "Pinus",
+      "Dähle",
+      "Föhre",
+      "Förchenholz",
+      "Forle",
+      "Forlen",
+      "Sjüren"
+    ]
+  },
+  "Q25239": {
+    "name": "Erlen",
+    "aliases": [
+      "Alnus"
+    ]
+  },
+  "Q25243": {
+    "name": "Birken",
+    "aliases": [
+      "Priesmeier",
+      "Birke",
+      "Betula"
+    ]
+  },
+  "Q25350": {
+    "name": "Tannen",
+    "aliases": [
+      "Abies"
+    ]
+  },
+  "Q25356": {
+    "name": "Pappeln",
+    "aliases": [
+      "Pappel",
+      "Populus"
+    ]
+  },
+  "Q25403": {
+    "name": "Buchen",
+    "aliases": [
+      "Fagus"
+    ]
+  },
+  "Q25618": {
+    "name": "Lärchen",
+    "aliases": [
+      "Larix",
+      "Lärche"
+    ]
+  },
+  "Q25662": {
+    "name": "Wacholder",
+    "aliases": [
+      "Juniperus",
+      "Kranewitt",
+      "Kronwittbirl",
+      "Machangel",
+      "Wacholderbusch",
+      "Wacholderstrauch"
+    ]
+  },
+  "Q44789": {
+    "name": "Maulbeere",
+    "aliases": [
+      "Maulbeerbäume",
+      "Maulbeeren",
+      "Maulbeerbaum",
+      "Morus"
+    ]
+  },
+  "Q45669": {
+    "name": "Eukalypten",
+    "aliases": [
+      "Eucalyptus hybrid",
+      "Eucalyptus",
+      "Blaugummibaum"
+    ]
+  },
+  "Q36050": {
+    "name": "Weiden",
+    "aliases": [
+      "Salix",
+      "Weidenrinde",
+      "Weidenbaumrinde"
+    ]
+  },
+  "Q26782": {
+    "name": "Fichten",
+    "aliases": [
+      "Picea"
+    ]
+  },
+  "Q42292": {
+    "name": "Ahorne",
+    "aliases": [
+      "Ahorn",
+      "Ahornbaum"
+    ]
+  },
+  "Q27355": {
+    "name": "Eiben",
+    "aliases": [
+      "Eibe",
+      "Eibenholz",
+      "Taxus"
+    ]
+  },
+  "Q29033": {
+    "name": "Judasbäume",
+    "aliases": [
+      "Cercis"
+    ]
+  },
+  "Q157964": {
+    "name": "Mehlbeeren",
+    "aliases": [
+      "Ebereschen",
+      "Sorbus"
+    ]
+  },
+  "Q158771": {
+    "name": "Douglasien",
+    "aliases": [
+      "Pseudotsuga"
+    ]
+  },
+  "Q159545": {
+    "name": "Hartriegel",
+    "aliases": [
+      "Cornus",
+      "Hornstrauch"
+    ]
+  },
+  "Q104819": {
+    "name": "Äpfel",
+    "aliases": [
+      "Apfelbaum",
+      "Malus",
+      "Apfel"
+    ]
+  },
+  "Q59798": {
+    "name": "Feigen",
+    "aliases": [
+      "Ficus"
+    ]
+  },
+  "Q160580": {
+    "name": "Götterbäume",
+    "aliases": [
+      "Ailanthus",
+      "Götterbaum"
+    ]
+  },
+  "Q161042": {
+    "name": "Ölweiden",
+    "aliases": [
+      "Ölweide"
+    ]
+  },
+  "Q158072": {
+    "name": "Trompetenbäume",
+    "aliases": [
+      "Catalpa",
+      "Beamtenbaum"
+    ]
+  },
+  "Q158513": {
+    "name": "Hainbuchen",
+    "aliases": [
+      "Carpinus"
+    ]
+  },
+  "Q158752": {
+    "name": "Rosskastanien",
+    "aliases": [
+      "Roßkastanie",
+      "Aesculus",
+      "Kahle Rosskastanie",
+      "Kahle Roßkastanie"
+    ]
+  },
+  "Q161250": {
+    "name": "Gleditschien",
+    "aliases": [
+      "Gleditschie",
+      "Gleditsia",
+      "Lederhülsenbäume"
+    ]
+  },
+  "Q163025": {
+    "name": "Platanen",
+    "aliases": [
+      "Platane",
+      "Platanaceae",
+      "Platanengewächs",
+      "Platanengewächse",
+      "Platanus"
+    ]
+  },
+  "Q165173": {
+    "name": "Paulownien",
+    "aliases": [
+      "Blauglockenbaum",
+      "Blauglockenbaumgewächs",
+      "Kiribaum",
+      "Paulownia",
+      "Paulownie"
+    ]
+  },
+  "Q165258": {
+    "name": "Diospyros",
+    "aliases": [
+      "Dattelpflaume",
+      "Ebenholzbäume"
+    ]
+  },
+  "Q127849": {
+    "name": "Linde",
+    "aliases": [
+      "Tilia"
+    ]
+  },
+  "Q183543": {
+    "name": "Amberbäume",
+    "aliases": [
+      "Liquidambar"
+    ]
+  },
+  "Q190545": {
+    "name": "Prunus",
+    "aliases": [
+      "Amygdaloideae",
+      "Prunoideae",
+      "Steinobstgewächse"
+    ]
+  },
+  "Q248582": {
+    "name": "Zürgelbäume",
+    "aliases": [
+      "Celtis"
+    ]
+  },
+  "Q296910": {
+    "name": "Ölbäume",
+    "aliases": [
+      "Olea",
+      "olivovník"
+    ]
+  },
+  "Q605290": {
+    "name": "Hopfenbuchen",
+    "aliases": [
+      "Ostrya"
+    ]
+  },
+  "Q1070845": {
+    "name": "Glanzmispeln",
+    "aliases": [
+      "Photinia davidiana",
+      "Photinia",
+      "Stranvaesia",
+      "Glanzmispel",
+      "Lorbeermispel"
+    ]
+  },
+  "Q1420126": {
+    "name": "Flügelnüsse",
+    "aliases": [
+      "Pterocarya"
+    ]
+  },
+  "Q2453469": {
+    "name": "Walnüsse",
+    "aliases": [
+      "Juglans",
+      "Walnussbaum"
+    ]
+  },
+  "Q128550": {
+    "name": "Zedern",
+    "aliases": [
+      "Cedrus"
+    ]
+  },
+  "Q765246": {
+    "name": "Weihrauchzedern",
+    "aliases": [
+      "Calocedrus"
+    ]
+  },
+  "Q775229": {
+    "name": "Lagerströmien",
+    "aliases": [
+      "Lagerstroemia"
+    ]
+  },
+  "Q810562": {
+    "name": "Bastard-Mehlbeeren",
+    "aliases": [
+      "Karpatiosorbus",
+      "Sorbus latifolia agg."
+    ]
+  },
+  "Q858028": {
+    "name": "Kuchenbäume",
+    "aliases": [
+      "Cercidiphyllaceae",
+      "Cercidiphyllum",
+      "Falscher Judasbaum",
+      "Katsurabaum",
+      "Katsurabäume",
+      "Kuchenbaum"
+    ]
+  },
+  "Q964952": {
+    "name": "Tupelobäume",
+    "aliases": [
+      "Nyssa"
+    ]
+  },
+  "Q1065400": {
+    "name": "Scheinkastanien",
+    "aliases": [
+      "Castanopsis"
+    ]
+  },
+  "Q5122903": {
+    "name": "kumquats",
+    "aliases": [
+      "Zwergorange",
+      "Zwergpomeranze"
+    ]
+  },
+  "Q129324": {
+    "name": "Kastanien",
+    "aliases": [
+      "Castanea"
+    ]
+  },
+  "Q131113": {
+    "name": "Ulmen",
+    "aliases": [
+      "Ulme",
+      "Ulmus"
+    ]
+  },
+  "Q132402": {
+    "name": "Lithocarpus",
+    "aliases": [
+      "Steinfruchteichen",
+      "Südeichen"
+    ]
+  },
+  "Q132557": {
+    "name": "Weißdorne",
+    "aliases": [
+      "Hagedorn",
+      "Crataegus",
+      "Hageapfel",
+      "Heckendorn",
+      "Mehlbeerbaum",
+      "Mehldorn",
+      "Weissdorn",
+      "Weißdorn",
+      "Weißdornbusch",
+      "Weißheckdorn",
+      "Zaundorn"
+    ]
+  },
+  "Q132703": {
+    "name": "Koelreuteria",
+    "aliases": [
+      "Koelrevteriam"
+    ]
+  },
+  "Q142788": {
+    "name": "Hickory",
+    "aliases": [
+      "Carya"
+    ]
+  },
+  "Q145889": {
+    "name": "Hasel",
+    "aliases": [
+      "Haselbusch",
+      "Corylus",
+      "Haselnüsse"
+    ]
+  },
+  "Q146911": {
+    "name": "Zypressen",
+    "aliases": [
+      "Zypresse",
+      "Cupressus"
+    ]
+  },
+  "Q147791": {
+    "name": "Scheinzypressen",
+    "aliases": [
+      "Chamaecyparis",
+      "Scheinzypresse"
+    ]
+  },
+  "Q157017": {
+    "name": "Magnolien",
+    "aliases": [
+      "magnoliaceae",
+      "Magnolie",
+      "Magnolienholz"
+    ]
+  },
+  "Q157236": {
+    "name": "Tulpenbäume",
+    "aliases": [
+      "Liriodendron"
+    ]
+  },
+  "Q128887": {
+    "name": "Eschen"
+  },
+  "Q137054": {
+    "name": "Chrysolepis"
+  },
+  "Q149461": {
+    "name": "Ginkgo"
+  },
+  "Q157366": {
+    "name": "Cotinus"
+  },
+  "Q309213": {
+    "name": "Sophora"
+  },
+  "Q472943": {
+    "name": "Robinien"
+  },
+  "Q664945": {
+    "name": "Albizia"
+  },
+  "Q796117": {
+    "name": "Cyclobalanopsis"
+  },
+  "Q1132766": {
+    "name": "Fontanesia"
+  },
+  "Q1975652": {
+    "name": "Sequoia"
+  },
+  "Q2697430": {
+    "name": "Toona"
+  },
+  "Q3060383": {
+    "name": "Euodia"
+  },
+  "Q3366033": {
+    "name": "Parrotia"
+  },
+  "Q5220438": {
+    "name": "Trigonobalanus"
+  },
+  "Q5429644": {
+    "name": "Faidherbia"
+  },
+  "Q12309040": {
+    "name": "Davidia"
+  },
+  "Q12323064": {
+    "name": "Cryptomeria"
+  },
+  "Q17410244": {
+    "name": "Notholithocarpus"
+  },
+  "Q18745576": {
+    "name": "Pasania"
+  },
+  "Q19845401": {
+    "name": "Formanodendron"
+  },
+  "Q20817818": {
+    "name": "Eotrigonobalanus"
+  },
+  "Q21088249": {
+    "name": "Limlia"
+  },
+  "Q21397965": {
+    "name": "Dryophyllum"
+  },
+  "Q21398174": {
+    "name": "Fagopsis"
+  },
+  "Q87070717": {
+    "name": "Salisburia"
+  },
+  "Q87145799": {
+    "name": "Callaeocarpus"
+  },
+  "Q87147998": {
+    "name": "Colombobalanus"
+  },
+  "Q87152055": {
+    "name": "Fagus-castanea"
+  },
+  "Q87162206": {
+    "name": "Pasaniopsis"
+  },
+  "Q108071245": {
+    "name": "Berryophyllum"
+  },
+  "Q113299853": {
+    "name": "Erythrobalanus"
+  },
+  "Q113299877": {
+    "name": "Synaedrys"
+  },
+  "Q113299880": {
+    "name": "Corylopasania"
+  },
+  "Q113299881": {
+    "name": "Cyclobalanus"
+  },
+  "Q119063130": {
+    "name": "Castaneophyllum"
+  }
+}

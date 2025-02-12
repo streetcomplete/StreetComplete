@@ -1,0 +1,6324 @@
+{
+  "Q76971": {
+    "name": "Kâğıt huşu",
+    "aliases": [
+      "Betula papyrifera"
+    ]
+  },
+  "Q161070": {
+    "name": "Arokarya Çamı",
+    "aliases": [
+      "Salon Çamı"
+    ]
+  },
+  "Q161105": {
+    "name": "Doğu çınarı",
+    "aliases": [
+      "Platanus orientalis"
+    ]
+  },
+  "Q1532567": {
+    "name": "Parıltılı kayın",
+    "aliases": [
+      "Fagus lucida"
+    ]
+  },
+  "Q469576": {
+    "name": "Amerika titrek kavağı",
+    "aliases": [
+      "Populus tremuloides"
+    ]
+  },
+  "Q128116": {
+    "name": "Ak ladin",
+    "aliases": [
+      "Kanada ladini",
+      "Picea glauca"
+    ]
+  },
+  "Q159570": {
+    "name": "Kokar ağaç",
+    "aliases": [
+      "Ailanthus altissima",
+      "Aylandız Ağacı",
+      "Kokarağaç"
+    ]
+  },
+  "Q577422": {
+    "name": "Henry kestanesi",
+    "aliases": [
+      "Castanea henryi"
+    ]
+  },
+  "Q1548216": {
+    "name": "Himalaya ladini",
+    "aliases": [
+      "Picea smithiana"
+    ]
+  },
+  "Q1585952": {
+    "name": "Andız",
+    "aliases": [
+      "Andız ağacı",
+      "Arceuthos drupacea",
+      "Juniperus drupacea"
+    ]
+  },
+  "Q106094": {
+    "name": "Fıstık çamı",
+    "aliases": [
+      "Pinus pinea"
+    ]
+  },
+  "Q716576": {
+    "name": "Tayvan ladini",
+    "aliases": [
+      "Picea morrisonicola"
+    ]
+  },
+  "Q717827": {
+    "name": "Japon kestanesi",
+    "aliases": [
+      "Castanea crenata"
+    ]
+  },
+  "Q162728": {
+    "name": "Tatar akçaağacı",
+    "aliases": [
+      "Acer tataricum"
+    ]
+  },
+  "Q133128": {
+    "name": "Sarıçam",
+    "aliases": [
+      "sarıçam (bitki)"
+    ]
+  },
+  "Q160576": {
+    "name": "Kauçuk ağacı",
+    "aliases": [
+      "Ficus elastica",
+      "Kauçukağacı"
+    ]
+  },
+  "Q138307": {
+    "name": "Büyük kozalaklı ardıç",
+    "aliases": [
+      "Juniperus macrocarpa"
+    ]
+  },
+  "Q140557": {
+    "name": "Eucalyptus marginata",
+    "aliases": [
+      "Jarrah"
+    ]
+  },
+  "Q145939": {
+    "name": "Gümüş göknarı",
+    "aliases": [
+      "Abies concolor",
+      "Gümüş köknarı"
+    ]
+  },
+  "Q161166": {
+    "name": "Dişbudak yapraklı akçaağaç",
+    "aliases": [
+      "Acer negundo"
+    ]
+  },
+  "Q1072399": {
+    "name": "Japon kayacığı",
+    "aliases": [
+      "Ostrya japonica"
+    ]
+  },
+  "Q1073825": {
+    "name": "Çin balsam kavağı",
+    "aliases": [
+      "Populus szechuanica"
+    ]
+  },
+  "Q1137607": {
+    "name": "Sibirya ladini",
+    "aliases": [
+      "Picea obovata"
+    ]
+  },
+  "Q161415": {
+    "name": "Tüylü meşe",
+    "aliases": [
+      "Quercus humilis",
+      "Quercus lanuginosa",
+      "Quercus pubescens"
+    ]
+  },
+  "Q2093169": {
+    "name": "Anadolu sığla ağacı",
+    "aliases": [
+      "Sığla"
+    ]
+  },
+  "Q1088271": {
+    "name": "Doğu gürgeni",
+    "aliases": [
+      "Carpinus orientalis"
+    ]
+  },
+  "Q1543749": {
+    "name": "Doğu kayını",
+    "aliases": [
+      "Fagus orientalis"
+    ]
+  },
+  "Q747652": {
+    "name": "Ağlayan çam",
+    "aliases": [
+      "Pinus griffithii",
+      "Pinus wallichiana"
+    ]
+  },
+  "Q1148692": {
+    "name": "Oya ağacı",
+    "aliases": [
+      "Lagerstromia indica",
+      "Oyaağacı"
+    ]
+  },
+  "Q748888": {
+    "name": "Monteri çamı",
+    "aliases": [
+      "Pinus radiata"
+    ]
+  },
+  "Q161421": {
+    "name": "Çiçekli dişbudak",
+    "aliases": [
+      "Fraxinus ornus"
+    ]
+  },
+  "Q161435": {
+    "name": "Japon gürgeni",
+    "aliases": [
+      "Carpinus japonica"
+    ]
+  },
+  "Q2347049": {
+    "name": "Orta Asya ardıcı",
+    "aliases": [
+      "Rus ardıcı"
+    ]
+  },
+  "Q1869852": {
+    "name": "Defne yapraklı kavak",
+    "aliases": [
+      "Populus laurifolia"
+    ]
+  },
+  "Q683819": {
+    "name": "Doğu Karadeniz meşesi",
+    "aliases": [
+      "Doğu karadeniz meşesi",
+      "Quercus pontica"
+    ]
+  },
+  "Q699584": {
+    "name": "Çin kestanesi",
+    "aliases": [
+      "Castanea mollissima"
+    ]
+  },
+  "Q145954": {
+    "name": "Karaçam",
+    "aliases": [
+      "Pinus nigra"
+    ]
+  },
+  "Q145992": {
+    "name": "Avrupa ladini",
+    "aliases": [
+      "Picea abies"
+    ]
+  },
+  "Q1074099": {
+    "name": "Çin karaağacı",
+    "aliases": [
+      "Ulmus parvifolia"
+    ]
+  },
+  "Q1074257": {
+    "name": "Çin lale ağacı",
+    "aliases": [
+      "Liriodendron chinense"
+    ]
+  },
+  "Q1078985": {
+    "name": "Japon kayını",
+    "aliases": [
+      "Fagus crenata"
+    ]
+  },
+  "Q161920": {
+    "name": "Mahlep",
+    "aliases": [
+      "Mehlep",
+      "Prunus mahaleb"
+    ]
+  },
+  "Q806838": {
+    "name": "Banks çamı",
+    "aliases": [
+      "Pinus banksiana"
+    ]
+  },
+  "Q2455043": {
+    "name": "Kazdağı göknarı",
+    "aliases": [
+      "Abies nordmanniana ssp.equi-trojani",
+      "Abies nordmanniana subsp. equi-trojani",
+      "Kazdağı köknarı"
+    ]
+  },
+  "Q623489": {
+    "name": "Atlas sediri",
+    "aliases": [
+      "Cedrus atlantica"
+    ]
+  },
+  "Q628329": {
+    "name": "Kızılçam",
+    "aliases": [
+      "Pinus brutia"
+    ]
+  },
+  "Q2003088": {
+    "name": "Söğüt yapraklı kavak",
+    "aliases": [
+      "Populus angustifolia"
+    ]
+  },
+  "Q2004617": {
+    "name": "Utah ardıcı",
+    "aliases": [
+      "Juniperus osteosperma"
+    ]
+  },
+  "Q1145286": {
+    "name": "Doğu ladini",
+    "aliases": [
+      "Picea orientalis"
+    ]
+  },
+  "Q1193369": {
+    "name": "Amerika dişbudağı",
+    "aliases": [
+      "Ak dişbudak",
+      "Amerikan dişbudağı",
+      "Beyaz dişbudak"
+    ]
+  },
+  "Q161511": {
+    "name": "Adi alıç",
+    "aliases": [
+      "Crataegus monogyna",
+      "Geyik dikeni"
+    ]
+  },
+  "Q2739106": {
+    "name": "Anadolu palamut meşesi",
+    "aliases": [
+      "Quercus ithaburensis ssp.macrolepis",
+      "Quercus ithaburensis subsp.macrolepis"
+    ]
+  },
+  "Q857075": {
+    "name": "Macar meşesi",
+    "aliases": [
+      "Quercus conferta",
+      "Quercus farnetto"
+    ]
+  },
+  "Q750307": {
+    "name": "Gülibrişim",
+    "aliases": [
+      "Albizia julibrissin"
+    ]
+  },
+  "Q146025": {
+    "name": "Mavi ladin",
+    "aliases": [
+      "Kolorado ladini",
+      "Picea pungens"
+    ]
+  },
+  "Q164301": {
+    "name": "Kaliforniya çınarı",
+    "aliases": [
+      "California çınarı",
+      "Platanus racemosa"
+    ]
+  },
+  "Q146149": {
+    "name": "Avrupa kayını",
+    "aliases": [
+      "Fagus sylvatica"
+    ]
+  },
+  "Q1489573": {
+    "name": "Amerika kayacığı",
+    "aliases": [
+      "Ostrya virginiana"
+    ]
+  },
+  "Q936355": {
+    "name": "Carpinus turczaninowii"
+  },
+  "Q2564051": {
+    "name": "Sarı alıç",
+    "aliases": [
+      "Crataegus tanacetifolia"
+    ]
+  },
+  "Q211457": {
+    "name": "Halep çamı",
+    "aliases": [
+      "Pinus halepensis"
+    ]
+  },
+  "Q146110": {
+    "name": "Titrek kavak",
+    "aliases": [
+      "Populus tremula"
+    ]
+  },
+  "Q165145": {
+    "name": "Saplı meşe",
+    "aliases": [
+      "Quercus robur"
+    ]
+  },
+  "Q245805": {
+    "name": "Kıbrıs sediri",
+    "aliases": [
+      "Cedrus brevifolia"
+    ]
+  },
+  "Q1333171": {
+    "name": "Kızılağaç yapraklı huş",
+    "aliases": [
+      "Betula medwediewii"
+    ]
+  },
+  "Q1342471": {
+    "name": "Çin kayını",
+    "aliases": [
+      "Fagus engleriana"
+    ]
+  },
+  "Q1367533": {
+    "name": "Gürgen yapraklı kayacık",
+    "aliases": [
+      "Ostrya carpinifolia"
+    ]
+  },
+  "Q1374188": {
+    "name": "Fırat kavağı",
+    "aliases": [
+      "Populus euphratica"
+    ]
+  },
+  "Q146951": {
+    "name": "Kiraz eriği",
+    "aliases": [
+      "Prunus cerasifera",
+      "Prunus divaricata"
+    ]
+  },
+  "Q165137": {
+    "name": "Kiraz",
+    "aliases": [
+      "Prunus avium"
+    ]
+  },
+  "Q147064": {
+    "name": "Kara kavak",
+    "aliases": [
+      "Populus nigra"
+    ]
+  },
+  "Q936888": {
+    "name": "Higori çamı",
+    "aliases": [
+      "Pinus aristata"
+    ]
+  },
+  "Q150129": {
+    "name": "Sekoya",
+    "aliases": [
+      "Kıyı sekoyası",
+      "Redwood",
+      "Sequoia sempervirens"
+    ]
+  },
+  "Q170662": {
+    "name": "Mangostan",
+    "aliases": [
+      "Garcinia mangostana",
+      "Mangosteen"
+    ]
+  },
+  "Q22699": {
+    "name": "Anadolu kestanesi",
+    "aliases": [
+      "Castanea sativa"
+    ]
+  },
+  "Q2978582": {
+    "name": "Amur ıhlamuru",
+    "aliases": [
+      "Amur Ihlamuru",
+      "Tilia amurensis"
+    ]
+  },
+  "Q1425243": {
+    "name": "Çay yapraklı söğüt",
+    "aliases": [
+      "Salix phylicifolia"
+    ]
+  },
+  "Q271582": {
+    "name": "Sahil çamı",
+    "aliases": [
+      "Pinus pinaster"
+    ]
+  },
+  "Q218417": {
+    "name": "Amerika bodur huşu",
+    "aliases": [
+      "Betula glandulosa"
+    ]
+  },
+  "Q218425": {
+    "name": "Kara ladin",
+    "aliases": [
+      "Picea mariana"
+    ]
+  },
+  "Q849381": {
+    "name": "İspanya göknarı",
+    "aliases": [
+      "Abies pinsapo",
+      "İspanya köknarı"
+    ]
+  },
+  "Q146992": {
+    "name": "Orta Avrupa göknarı",
+    "aliases": [
+      "Abies alba",
+      "Ak göknar",
+      "Orta Avrupa köknarı"
+    ]
+  },
+  "Q146935": {
+    "name": "Himalaya sediri",
+    "aliases": [
+      "Cedrus deodora"
+    ]
+  },
+  "Q156904": {
+    "name": "Adi kızılağaç",
+    "aliases": [
+      "Alnus glutinosa"
+    ]
+  },
+  "Q468664": {
+    "name": "Amerika gürgeni",
+    "aliases": [
+      "Amerika Gürgeni"
+    ]
+  },
+  "Q469151": {
+    "name": "Kırmızı ladin",
+    "aliases": [
+      "Picea rubra"
+    ]
+  },
+  "Q156137": {
+    "name": "Mantar meşesi",
+    "aliases": [
+      "Quercus suber"
+    ]
+  },
+  "Q179729": {
+    "name": "Yaygın porsuk",
+    "aliases": [
+      "Adi porsuk",
+      "Taxus baccata"
+    ]
+  },
+  "Q147824": {
+    "name": "Balkan ladini",
+    "aliases": [
+      "Picea omorika"
+    ]
+  },
+  "Q26745": {
+    "name": "Çınar yapraklı akçaağaç",
+    "aliases": [
+      "Acer platanoides"
+    ]
+  },
+  "Q147475": {
+    "name": "Dağ çamı",
+    "aliases": [
+      "Pinus mugo"
+    ]
+  },
+  "Q156907": {
+    "name": "Adi dişbudak",
+    "aliases": [
+      "Avrupa dişbudağı"
+    ]
+  },
+  "Q147388": {
+    "name": "Japon çamı",
+    "aliases": [
+      "Cryptomeria japonica",
+      "Japon sediri",
+      "Kriptomerya"
+    ]
+  },
+  "Q147426": {
+    "name": "Sitka ladini",
+    "aliases": [
+      "Picea sitchensis"
+    ]
+  },
+  "Q156307": {
+    "name": "Salkım söğüt",
+    "aliases": [
+      "Salix babylonica"
+    ]
+  },
+  "Q13189": {
+    "name": "şeftali",
+    "aliases": [
+      "şeftali ağacı"
+    ]
+  },
+  "Q75604435": {
+    "name": "Salix × altobracensis"
+  },
+  "Q156944": {
+    "name": "Dağ akçaağacı",
+    "aliases": [
+      "Acer pseudoplatanus"
+    ]
+  },
+  "Q6146920": {
+    "name": "Kore Ihlamuru",
+    "aliases": [
+      "Tilia insularis"
+    ]
+  },
+  "Q6772356": {
+    "name": "Wilson kavağı",
+    "aliases": [
+      "Populus wilsonii"
+    ]
+  },
+  "Q7253110": {
+    "name": "Prunus scoparia",
+    "aliases": [
+      "Amygdalus scoparia"
+    ]
+  },
+  "Q148939": {
+    "name": "Türk fındığı",
+    "aliases": [
+      "ağaç fındığı",
+      "ayı fındığı",
+      "Balkan fındığı",
+      "Corylus colurna",
+      "kaya fındığı"
+    ]
+  },
+  "Q4169047": {
+    "name": "Istranca meşesi",
+    "aliases": [
+      "Quercus hartwissiana"
+    ]
+  },
+  "Q4460781": {
+    "name": "Populus × moskoviensis"
+  },
+  "Q948827": {
+    "name": "Bayağı papav",
+    "aliases": [
+      "Asimina triloba"
+    ]
+  },
+  "Q4811357": {
+    "name": "Tayvan kayını",
+    "aliases": [
+      "Fagus hayatae"
+    ]
+  },
+  "Q148920": {
+    "name": "Doğu Karadeniz göknarı",
+    "aliases": [
+      "Doğu Karadeniz köknarı"
+    ]
+  },
+  "Q156895": {
+    "name": "Adi huş",
+    "aliases": [
+      "Betula pendula",
+      "Betula verrucosa"
+    ]
+  },
+  "Q157518": {
+    "name": "Gevrek söğüt",
+    "aliases": [
+      "Salix fragilis"
+    ]
+  },
+  "Q3565069": {
+    "name": "Mazı meşesi",
+    "aliases": [
+      "Quercus infectoria"
+    ]
+  },
+  "Q156831": {
+    "name": "Büyük yapraklı ıhlamur",
+    "aliases": [
+      "Tilia grandiflora",
+      "Tilia platyphillos"
+    ]
+  },
+  "Q149471": {
+    "name": "Balsam kavağı",
+    "aliases": [
+      "Populus balsamifera"
+    ]
+  },
+  "Q149553": {
+    "name": "Boz kavak",
+    "aliases": [
+      "Populus canescens",
+      "Populus x canescens"
+    ]
+  },
+  "Q37453": {
+    "name": "Kayısı",
+    "aliases": [
+      "Gayısı",
+      "Gaysı",
+      "Kayısı meyvesi",
+      "Kaysı",
+      "Kuru Gayısı",
+      "Kuru Gaysı",
+      "Kuru Kayısı",
+      "Kuru Kaysı",
+      "Prunus armeniaca"
+    ]
+  },
+  "Q36146": {
+    "name": "İncir",
+    "aliases": [
+      "Ficus carica"
+    ]
+  },
+  "Q157230": {
+    "name": "Veymut çamı",
+    "aliases": [
+      "Pinus strobus"
+    ]
+  },
+  "Q157277": {
+    "name": "Saçlı meşe",
+    "aliases": [
+      "Quercus cerris"
+    ]
+  },
+  "Q156918": {
+    "name": "Ak söğüt",
+    "aliases": [
+      "Salix alba"
+    ]
+  },
+  "Q157417": {
+    "name": "Beyaz çiçekli yalancı akasya",
+    "aliases": [
+      "Beyaz çiçekli yalancıakasya",
+      "Robinia pseudoacacia"
+    ]
+  },
+  "Q157508": {
+    "name": "Karayemiş",
+    "aliases": [
+      "Tahnal",
+      "Laurocerasus officinalis",
+      "Laz kirazı",
+      "Prunus laurocerasus",
+      "Taflan",
+      "Tanal"
+    ]
+  },
+  "Q29488": {
+    "name": "Erguvan",
+    "aliases": [
+      "Cercis siliquastrum"
+    ]
+  },
+  "Q157307": {
+    "name": "Ak dut",
+    "aliases": [
+      "Akdut",
+      "Morus alba"
+    ]
+  },
+  "Q11127825": {
+    "name": "Çin ak kavağı",
+    "aliases": [
+      "Populus tomentosa"
+    ]
+  },
+  "Q26325": {
+    "name": "Adi ardıç",
+    "aliases": [
+      "Juniperus communis"
+    ]
+  },
+  "Q39918": {
+    "name": "Badem",
+    "aliases": [
+      "Acıbadem",
+      "Amygdalus communis",
+      "Amygdalus dulcis",
+      "Badem ağacı",
+      "Payam",
+      "Prunus amygdalus",
+      "Prunus communis",
+      "Prunus dulcis"
+    ]
+  },
+  "Q59779571": {
+    "name": "Tilia × cinerascens",
+    "aliases": [
+      "Tilia oliveri var. cinerascens",
+      "Tilia populifolia"
+    ]
+  },
+  "Q17275264": {
+    "name": "Cupressus nootkatensis",
+    "aliases": [
+      "Callitropsis nootkatensis"
+    ]
+  },
+  "Q157739": {
+    "name": "Batı çınarı",
+    "aliases": [
+      "Amerika çınarı",
+      "Amerikan çınarı",
+      "Platanus occidentalis"
+    ]
+  },
+  "Q37083": {
+    "name": "Zeytin",
+    "aliases": [
+      "Olea europaea",
+      "Zeytincilik"
+    ]
+  },
+  "Q147513": {
+    "name": "Akdeniz servisi",
+    "aliases": [
+      "Adi servi",
+      "Cupressus sempervirens",
+      "Cupressus sempervirens var. fastigiata",
+      "Cupressus sempervirens var. horizontalis",
+      "Cupressus sempervirens var. pyramidalis",
+      "Cupressus sempervirens var. sempervirens",
+      "Cupressus sempervirens var. stricta",
+      "Dallı servi"
+    ]
+  },
+  "Q159565": {
+    "name": "Keçi söğüdü",
+    "aliases": [
+      "Salix caprea"
+    ]
+  },
+  "Q157624": {
+    "name": "Tüylü huş",
+    "aliases": [
+      "Betula alba",
+      "Betula pubescens",
+      "Betula tortuosa"
+    ]
+  },
+  "Q43284": {
+    "name": "Mabet ağacı",
+    "aliases": [
+      "Gingko biloba"
+    ]
+  },
+  "Q41505": {
+    "name": "Malta eriği",
+    "aliases": [
+      "Eriobotrya japonica",
+      "Maltaeriği",
+      "Mespilus japonica",
+      "Photinia japonica",
+      "Yenidünya"
+    ]
+  },
+  "Q42385": {
+    "name": "Kakao",
+    "aliases": [
+      "Kakao tanesi",
+      "Theobroma cacao"
+    ]
+  },
+  "Q158608": {
+    "name": "Sapsız meşe",
+    "aliases": [
+      "Quercus petraea"
+    ]
+  },
+  "Q158642": {
+    "name": "Kızılcık",
+    "aliases": [
+      "Ergen",
+      "Cornus mas",
+      "Ergençiçeği",
+      "Kiren"
+    ]
+  },
+  "Q158746": {
+    "name": "Küçük yapraklı ıhlamur",
+    "aliases": [
+      "Tilia cordata"
+    ]
+  },
+  "Q158776": {
+    "name": "Adi gürgen",
+    "aliases": [
+      "Carpinus betulus"
+    ]
+  },
+  "Q61105": {
+    "name": "Lübnan sediri",
+    "aliases": [
+      "Cedrus libani",
+      "Toros sediri"
+    ]
+  },
+  "Q158178": {
+    "name": "Kermes meşesi",
+    "aliases": [
+      "Quercus coccifera"
+    ]
+  },
+  "Q15341609": {
+    "name": "Kara sapot",
+    "aliases": [
+      "Diospyros digyna",
+      "Diospyros nigra"
+    ]
+  },
+  "Q43300": {
+    "name": "Ayva",
+    "aliases": [
+      "Cydonia oblonga"
+    ]
+  },
+  "Q158785": {
+    "name": "Ova akçaağacı",
+    "aliases": [
+      "Acer campestre"
+    ]
+  },
+  "Q158783": {
+    "name": "Amerika lale ağacı",
+    "aliases": [
+      "Liriodendron tulipifera"
+    ]
+  },
+  "Q41350": {
+    "name": "Greyfurt",
+    "aliases": [
+      "Citrus paradisi",
+      "Citrus x paradisi",
+      "Greyfrut"
+    ]
+  },
+  "Q158482": {
+    "name": "Trabzon hurması",
+    "aliases": [
+      "Cennet hurması",
+      "Diospyros kaki"
+    ]
+  },
+  "Q74068": {
+    "name": "Sawara Yalancı Servisi"
+  },
+  "Q121427": {
+    "name": "Juniperus horizontalis"
+  },
+  "Q121749": {
+    "name": "Dişbudak yapraklı kanatlı ceviz"
+  },
+  "Q124969": {
+    "name": "Adi fındık"
+  },
+  "Q129018": {
+    "name": "Çakal eriği"
+  },
+  "Q131517": {
+    "name": "vişne"
+  },
+  "Q133096": {
+    "name": "Pinus edulis"
+  },
+  "Q137010": {
+    "name": "Pinus maximinoi"
+  },
+  "Q137009": {
+    "name": "Pinus engelmannii"
+  },
+  "Q137015": {
+    "name": "Pinus greggii"
+  },
+  "Q138044": {
+    "name": "Cupressus chengiana"
+  },
+  "Q138085": {
+    "name": "Cupressus duclouxiana"
+  },
+  "Q142792": {
+    "name": "Bataklık ak meşesi"
+  },
+  "Q146021": {
+    "name": "Pinus peuce"
+  },
+  "Q146048": {
+    "name": "Larix decidua"
+  },
+  "Q146129": {
+    "name": "Ostrya rehderiana"
+  },
+  "Q146198": {
+    "name": "Kuş üvezi"
+  },
+  "Q146269": {
+    "name": "Ak kavak"
+  },
+  "Q146281": {
+    "name": "Pyrus communis"
+  },
+  "Q147439": {
+    "name": "Japon melezi"
+  },
+  "Q147459": {
+    "name": "elsbeere"
+  },
+  "Q147487": {
+    "name": "Ova karaağacı"
+  },
+  "Q147492": {
+    "name": "Hercai karaağaç"
+  },
+  "Q147498": {
+    "name": "dağ karaağacı"
+  },
+  "Q147525": {
+    "name": "Quercus rubra"
+  },
+  "Q148542": {
+    "name": "Pinus palustris"
+  },
+  "Q148630": {
+    "name": "Sabin Ardıcı"
+  },
+  "Q149327": {
+    "name": "Abies borisii-regis"
+  },
+  "Q149332": {
+    "name": "Pyrus pyraster"
+  },
+  "Q149548": {
+    "name": "Pinus uncinata"
+  },
+  "Q149622": {
+    "name": "Populus × canadensis"
+  },
+  "Q149709": {
+    "name": "Cupressus funebris"
+  },
+  "Q150691": {
+    "name": "Aesculus sylvatica"
+  },
+  "Q151013": {
+    "name": "Eucalyptus resinifera"
+  },
+  "Q151031": {
+    "name": "Eucalyptus angustissima"
+  },
+  "Q156687": {
+    "name": "Pseudotsuga menziesii"
+  },
+  "Q157522": {
+    "name": "Kurşun kalem ardıcı"
+  },
+  "Q157540": {
+    "name": "Boz söğüt"
+  },
+  "Q157628": {
+    "name": "Betula nana"
+  },
+  "Q157641": {
+    "name": "Boz kızılağaç"
+  },
+  "Q157677": {
+    "name": "Cornus suecica"
+  },
+  "Q157763": {
+    "name": "Prunus mume"
+  },
+  "Q157960": {
+    "name": "Beyaz yapraklı kuş üvezi"
+  },
+  "Q157969": {
+    "name": "Kuş iğdesi"
+  },
+  "Q158301": {
+    "name": "Gümüşi akçaağaç"
+  },
+  "Q159127": {
+    "name": "Eucalyptus diversicolor"
+  },
+  "Q159188": {
+    "name": "Elaeagnus commutata"
+  },
+  "Q159447": {
+    "name": "Averrhoa carambola"
+  },
+  "Q159528": {
+    "name": "Eucalyptus globulus"
+  },
+  "Q159620": {
+    "name": "Sarı at kestanesi"
+  },
+  "Q159782": {
+    "name": "Eucalyptus coccifera"
+  },
+  "Q159839": {
+    "name": "Eucalyptus dalrympleana"
+  },
+  "Q160019": {
+    "name": "Prunus tenella"
+  },
+  "Q161040": {
+    "name": "Kara dut"
+  },
+  "Q161164": {
+    "name": "Yeşil dişbudak"
+  },
+  "Q161253": {
+    "name": "Bataklık meşesi"
+  },
+  "Q161360": {
+    "name": "Elwoodii Çamı"
+  },
+  "Q161364": {
+    "name": "Kırmızı akçaağaç"
+  },
+  "Q161374": {
+    "name": "Londra çınarı"
+  },
+  "Q161382": {
+    "name": "Gümüşi ıhlamur"
+  },
+  "Q161416": {
+    "name": "Cornus sanguinea"
+  },
+  "Q161442": {
+    "name": "Japon ıhlamuru"
+  },
+  "Q161468": {
+    "name": "Eucalyptus leucoxylon"
+  },
+  "Q162128": {
+    "name": "Pyrus elaeagrifolia"
+  },
+  "Q162440": {
+    "name": "Aesculus parviflora"
+  },
+  "Q162822": {
+    "name": "Eucalyptus camaldulensis"
+  },
+  "Q163544": {
+    "name": "Betula ermanii"
+  },
+  "Q163578": {
+    "name": "cüce söğüt"
+  },
+  "Q163779": {
+    "name": "Kırmızı çiçekli at kestanesi"
+  },
+  "Q163788": {
+    "name": "Eucalyptus gunnii"
+  },
+  "Q163822": {
+    "name": "Acer opalus"
+  },
+  "Q163831": {
+    "name": "Katalpa"
+  },
+  "Q163978": {
+    "name": "Yeşil kızılağaç"
+  },
+  "Q163981": {
+    "name": "Amerika ıhlamuru"
+  },
+  "Q164130": {
+    "name": "Cornus sericea"
+  },
+  "Q164258": {
+    "name": "Betula humilis"
+  },
+  "Q165091": {
+    "name": "Pinus contorta"
+  },
+  "Q165321": {
+    "name": "Sakura"
+  },
+  "Q165387": {
+    "name": "Picea engelmannii"
+  },
+  "Q168335": {
+    "name": "Cornus capitata"
+  },
+  "Q178116": {
+    "name": "Japon beyaz çamı"
+  },
+  "Q183497": {
+    "name": "Finike Ardıcı"
+  },
+  "Q184300": {
+    "name": "Katran ardıcı"
+  },
+  "Q187040": {
+    "name": "Cornus drummondii"
+  },
+  "Q192608": {
+    "name": "Quercus variabilis"
+  },
+  "Q199105": {
+    "name": "Japon kiraz huşu"
+  },
+  "Q209326": {
+    "name": "Pinus merkusii"
+  },
+  "Q214733": {
+    "name": "Acer saccharum"
+  },
+  "Q218155": {
+    "name": "Pırnal meşe"
+  },
+  "Q220715": {
+    "name": "Ballota meşesi"
+  },
+  "Q227763": {
+    "name": "Betula lenta"
+  },
+  "Q227779": {
+    "name": "Pinus lambertiana"
+  },
+  "Q243964": {
+    "name": "Pinus pumila"
+  },
+  "Q251370": {
+    "name": "Pinus jeffreyi"
+  },
+  "Q255375": {
+    "name": "Adi çitlembik"
+  },
+  "Q258068": {
+    "name": "Fraxinus velutina"
+  },
+  "Q261309": {
+    "name": "Pinus monticola"
+  },
+  "Q269224": {
+    "name": "Japon akçaağacı"
+  },
+  "Q275160": {
+    "name": "Ficus benjamina"
+  },
+  "Q280219": {
+    "name": "Eucalyptus smithii"
+  },
+  "Q284462": {
+    "name": "Gürgen yapraklı akçaağaç"
+  },
+  "Q287544": {
+    "name": "Cupressus goveniana"
+  },
+  "Q288373": {
+    "name": "Cupressus sargentii"
+  },
+  "Q288558": {
+    "name": "Japon soforası"
+  },
+  "Q289855": {
+    "name": "Cornus sessilis"
+  },
+  "Q290605": {
+    "name": "Çin huşu"
+  },
+  "Q309537": {
+    "name": "Carpinus putoensis"
+  },
+  "Q311073": {
+    "name": "Pinus teocote"
+  },
+  "Q311361": {
+    "name": "Mançurya cevizi"
+  },
+  "Q333877": {
+    "name": "Pekan cevizi"
+  },
+  "Q334697": {
+    "name": "Davidia involucrata"
+  },
+  "Q357629": {
+    "name": "Acer argutum"
+  },
+  "Q367242": {
+    "name": "Japon iğdesi"
+  },
+  "Q368248": {
+    "name": "Pinus taeda"
+  },
+  "Q381870": {
+    "name": "Aesculus parryi"
+  },
+  "Q383086": {
+    "name": "Fraxinus xanthoxyloides"
+  },
+  "Q385769": {
+    "name": "Diospyros digyna"
+  },
+  "Q390100": {
+    "name": "Kore göknarı"
+  },
+  "Q428023": {
+    "name": "Abies balsamea"
+  },
+  "Q430029": {
+    "name": "Ulmus mexicana"
+  },
+  "Q430617": {
+    "name": "Picea crassifolia"
+  },
+  "Q458366": {
+    "name": "Cupressus bakeri"
+  },
+  "Q460523": {
+    "name": "Batı sarıçamı"
+  },
+  "Q460531": {
+    "name": "Pinus heldreichii"
+  },
+  "Q468659": {
+    "name": "Amerika fındığı"
+  },
+  "Q469220": {
+    "name": "Salix nigra"
+  },
+  "Q469316": {
+    "name": "Betula pumila"
+  },
+  "Q469382": {
+    "name": "Amerika karaağacı"
+  },
+  "Q469555": {
+    "name": "Ak meşe"
+  },
+  "Q476655": {
+    "name": "Picea breweriana"
+  },
+  "Q482510": {
+    "name": "Eucalyptus grandis"
+  },
+  "Q508718": {
+    "name": "Sarı çiçekli at kestanesi"
+  },
+  "Q514995": {
+    "name": "Eucalyptus gomphocephala"
+  },
+  "Q516494": {
+    "name": "Tangerina"
+  },
+  "Q518949": {
+    "name": "Sivri meyveli dişbudak"
+  },
+  "Q526549": {
+    "name": "Katsura ağacı"
+  },
+  "Q539249": {
+    "name": "Pinus glabra"
+  },
+  "Q568002": {
+    "name": "Eucalyptus rudis"
+  },
+  "Q568923": {
+    "name": "Asma yapraklı akçaağaç"
+  },
+  "Q573132": {
+    "name": "Aesculus indica"
+  },
+  "Q583226": {
+    "name": "Eucalyptus moluccana"
+  },
+  "Q583885": {
+    "name": "Pinus monophylla"
+  },
+  "Q594993": {
+    "name": "Pinus flexilis"
+  },
+  "Q601203": {
+    "name": "Acer heldreichii"
+  },
+  "Q602226": {
+    "name": "E. obliqua"
+  },
+  "Q603401": {
+    "name": "Eucalyptus tetraptera"
+  },
+  "Q607855": {
+    "name": "Pinus tropicalis"
+  },
+  "Q639615": {
+    "name": "Cornus alternifolia"
+  },
+  "Q657812": {
+    "name": "Abies nebrodensis"
+  },
+  "Q657935": {
+    "name": "David akçaağacı"
+  },
+  "Q662444": {
+    "name": "Eucalyptus argutifolia"
+  },
+  "Q670040": {
+    "name": "Arizona Servisi"
+  },
+  "Q675804": {
+    "name": "Eucalyptus chapmaniana"
+  },
+  "Q713794": {
+    "name": "Ficus racemosa"
+  },
+  "Q714124": {
+    "name": "Quercus glauca"
+  },
+  "Q714180": {
+    "name": "Ficus microcarpa"
+  },
+  "Q716461": {
+    "name": "Sorbus randaiensis"
+  },
+  "Q716580": {
+    "name": "Tayvan göknarı"
+  },
+  "Q716595": {
+    "name": "Pinus taiwanensis"
+  },
+  "Q717857": {
+    "name": "Eucalyptus alba"
+  },
+  "Q728441": {
+    "name": "Cornus kousa"
+  },
+  "Q728769": {
+    "name": "Malus sieversii"
+  },
+  "Q729276": {
+    "name": "Pinus lumholtzii"
+  },
+  "Q734085": {
+    "name": "Larix laricina"
+  },
+  "Q746222": {
+    "name": "Eucalyptus abdita"
+  },
+  "Q750217": {
+    "name": "Ficus sycomorus"
+  },
+  "Q756191": {
+    "name": "Pinus canariensis"
+  },
+  "Q763060": {
+    "name": "Eucalyptus badjensis"
+  },
+  "Q763431": {
+    "name": "Eucalyptus cinerea"
+  },
+  "Q766133": {
+    "name": "Beşparmak akçaağaç"
+  },
+  "Q766457": {
+    "name": "Eucalyptus cypellocarpa"
+  },
+  "Q771101": {
+    "name": "Küçük Trabzon hurması"
+  },
+  "Q773892": {
+    "name": "Boylu ardıç"
+  },
+  "Q774303": {
+    "name": "Pinus pinceana"
+  },
+  "Q774829": {
+    "name": "Sibirya çamı"
+  },
+  "Q783224": {
+    "name": "Söğüt meşesi"
+  },
+  "Q794061": {
+    "name": "Magnolia denudata"
+  },
+  "Q805008": {
+    "name": "Toros akçaağacı"
+  },
+  "Q814408": {
+    "name": "Tüylü dişbudak"
+  },
+  "Q824288": {
+    "name": "Eucalyptus megacarpa"
+  },
+  "Q837410": {
+    "name": "Pinus rigida"
+  },
+  "Q844131": {
+    "name": "Betula schmidtii"
+  },
+  "Q844835": {
+    "name": "Altuni fener ağacı"
+  },
+  "Q845791": {
+    "name": "Quercus marilandica"
+  },
+  "Q847209": {
+    "name": "Quercus serrata"
+  },
+  "Q850480": {
+    "name": "Betula dahurica"
+  },
+  "Q852572": {
+    "name": "Kara ceviz"
+  },
+  "Q854884": {
+    "name": "Pinus thunbergii"
+  },
+  "Q854892": {
+    "name": "Yunanistan göknarı"
+  },
+  "Q857321": {
+    "name": "Mançurya ıhlamuru"
+  },
+  "Q866150": {
+    "name": "Pinus muricata"
+  },
+  "Q875262": {
+    "name": "satsuma"
+  },
+  "Q882296": {
+    "name": "Fraxinus quadrangulata"
+  },
+  "Q887221": {
+    "name": "Cornus florida"
+  },
+  "Q906921": {
+    "name": "Fraxinus platypoda"
+  },
+  "Q917187": {
+    "name": "Küt Yapraklı Yalancı Servi"
+  },
+  "Q917216": {
+    "name": "Cupressus cashmeriana"
+  },
+  "Q923901": {
+    "name": "Fraxinus bungeana"
+  },
+  "Q926249": {
+    "name": "Cornus controversa"
+  },
+  "Q928175": {
+    "name": "Eucalyptus microtheca"
+  },
+  "Q930814": {
+    "name": "Himalaya huşu"
+  },
+  "Q936498": {
+    "name": "Abies amabilis"
+  },
+  "Q941891": {
+    "name": "Acer buergerianum"
+  },
+  "Q942409": {
+    "name": "Magnolia kobus"
+  },
+  "Q950688": {
+    "name": "Pinus balfouriana"
+  },
+  "Q955744": {
+    "name": "Eucalyptus baueriana"
+  },
+  "Q955858": {
+    "name": "Eucalyptus ovata"
+  },
+  "Q962750": {
+    "name": "Eucalyptus caesia"
+  },
+  "Q970638": {
+    "name": "Fraxinus uhdei"
+  },
+  "Q970978": {
+    "name": "Cornus glabrata"
+  },
+  "Q972749": {
+    "name": "Eucalyptus melliodora"
+  },
+  "Q972950": {
+    "name": "Gagalı fındık"
+  },
+  "Q974954": {
+    "name": "Toros göknarı"
+  },
+  "Q976000": {
+    "name": "Corylus heterophylla"
+  },
+  "Q978755": {
+    "name": "Abies lasiocarpa"
+  },
+  "Q1005330": {
+    "name": "Fagus longipetiolata"
+  },
+  "Q1017264": {
+    "name": "Quercus ilicifolia"
+  },
+  "Q1023660": {
+    "name": "Malus rockii"
+  },
+  "Q1024066": {
+    "name": "Fraxinus sogdiana"
+  },
+  "Q1031773": {
+    "name": "Populus yunnanensis"
+  },
+  "Q1034859": {
+    "name": "Japon kestane meşesi"
+  },
+  "Q1037160": {
+    "name": "Corylus sieboldiana"
+  },
+  "Q1037467": {
+    "name": "Ulmus macrocarpa"
+  },
+  "Q1038027": {
+    "name": "Carpinus cordata"
+  },
+  "Q1044186": {
+    "name": "Pinus densiflora"
+  },
+  "Q1044762": {
+    "name": "Carpinus dayongiana"
+  },
+  "Q1044764": {
+    "name": "Carpinus chuniana"
+  },
+  "Q1044771": {
+    "name": "Carpinus henryana"
+  },
+  "Q1044768": {
+    "name": "Carpinus fangiana"
+  },
+  "Q1044769": {
+    "name": "Carpinus hebestroma"
+  },
+  "Q1044774": {
+    "name": "Carpinus kawakamii"
+  },
+  "Q1044775": {
+    "name": "Carpinus kweichowensis"
+  },
+  "Q1044772": {
+    "name": "Carpinus fargesiana"
+  },
+  "Q1044776": {
+    "name": "Carpinus microphylla"
+  },
+  "Q1044782": {
+    "name": "Carpinus mollicoma"
+  },
+  "Q1044783": {
+    "name": "Carpinus omeiensis"
+  },
+  "Q1044781": {
+    "name": "Carpinus londoniana"
+  },
+  "Q1044786": {
+    "name": "Carpinus polyneura"
+  },
+  "Q1044791": {
+    "name": "Carpinus purpurinervis"
+  },
+  "Q1044788": {
+    "name": "Carpinus pubescens"
+  },
+  "Q1044795": {
+    "name": "Carpinus shensiensis"
+  },
+  "Q1044793": {
+    "name": "Carpinus rankanensis"
+  },
+  "Q1044796": {
+    "name": "Carpinus rupestris"
+  },
+  "Q1044802": {
+    "name": "Carpinus tientaiensis"
+  },
+  "Q1044801": {
+    "name": "Carpinus tsaiana"
+  },
+  "Q1044805": {
+    "name": "Carpinus viminea"
+  },
+  "Q1048531": {
+    "name": "Castanopsis fissa"
+  },
+  "Q1073905": {
+    "name": "Çin fındığı"
+  },
+  "Q1073968": {
+    "name": "Pinus tabuliformis"
+  },
+  "Q1074224": {
+    "name": "Acer truncatum"
+  },
+  "Q1079824": {
+    "name": "Sibirya karaağacı"
+  },
+  "Q1081413": {
+    "name": "Eucalyptus pulverulenta"
+  },
+  "Q1089472": {
+    "name": "Acer capillipes"
+  },
+  "Q1105707": {
+    "name": "Quercus macranthera"
+  },
+  "Q1110521": {
+    "name": "Fındık yapraklı huş"
+  },
+  "Q1116374": {
+    "name": "Pinus longaeva"
+  },
+  "Q1132580": {
+    "name": "Aesculus turbinata"
+  },
+  "Q1134291": {
+    "name": "Cornus racemosa"
+  },
+  "Q1135236": {
+    "name": "Durian"
+  },
+  "Q1137001": {
+    "name": "Pinus coulteri"
+  },
+  "Q1137183": {
+    "name": "Monteri Servisi"
+  },
+  "Q1138533": {
+    "name": "Parrotia persica"
+  },
+  "Q1144379": {
+    "name": "Cupressus macnabiana"
+  },
+  "Q1144815": {
+    "name": "Taxus cuspidata"
+  },
+  "Q1147634": {
+    "name": "Fraxinus lanuginosa"
+  },
+  "Q1147786": {
+    "name": "Ulmus thomasii"
+  },
+  "Q1151932": {
+    "name": "Picea glehnii"
+  },
+  "Q1190084": {
+    "name": "Picea jezoensis"
+  },
+  "Q1196169": {
+    "name": "Japon kızılağacı"
+  },
+  "Q1201695": {
+    "name": "Abies nephrolepis"
+  },
+  "Q1227092": {
+    "name": "Diospyros montana"
+  },
+  "Q1245863": {
+    "name": "Ficus tinctoria"
+  },
+  "Q1249109": {
+    "name": "Pinus elliottii"
+  },
+  "Q1257409": {
+    "name": "Acer triflorum"
+  },
+  "Q1283223": {
+    "name": "Abies procera"
+  },
+  "Q1290204": {
+    "name": "Abies magnifica"
+  },
+  "Q1290970": {
+    "name": "Leylandi"
+  },
+  "Q1306148": {
+    "name": "Populus lasiocarpa"
+  },
+  "Q1308561": {
+    "name": "Cupressus lusitanica"
+  },
+  "Q1353171": {
+    "name": "Tilia dasystyla"
+  },
+  "Q1357301": {
+    "name": "Fraxinus mandshurica"
+  },
+  "Q1377319": {
+    "name": "Quercus dentata"
+  },
+  "Q1399164": {
+    "name": "Kaliforniya su sediri"
+  },
+  "Q1405636": {
+    "name": "Ficus benghalensis"
+  },
+  "Q1420828": {
+    "name": "Cornus canadensis"
+  },
+  "Q1425070": {
+    "name": "Pseudotsuga macrocarpa"
+  },
+  "Q1439079": {
+    "name": "Ficus macrophylla"
+  },
+  "Q1451343": {
+    "name": "Abies fraseri"
+  },
+  "Q1460497": {
+    "name": "Quercus michauxii"
+  },
+  "Q1465334": {
+    "name": "Picea alocoquiana"
+  },
+  "Q1498748": {
+    "name": "Ficus lyrata"
+  },
+  "Q1499241": {
+    "name": "Sarı huş"
+  },
+  "Q1506949": {
+    "name": "Tilia tuan"
+  },
+  "Q1510231": {
+    "name": "Kara huş"
+  },
+  "Q1520125": {
+    "name": "Abies sachalinensis"
+  },
+  "Q1520764": {
+    "name": "Mor dut"
+  },
+  "Q1523895": {
+    "name": "Betula fruticosa"
+  },
+  "Q1534893": {
+    "name": "Kırmızı karaağaç"
+  },
+  "Q1536353": {
+    "name": "Populus grandidentata"
+  },
+  "Q1542486": {
+    "name": "Eucalyptus regnans"
+  },
+  "Q1542823": {
+    "name": "Abies veitchii"
+  },
+  "Q1543680": {
+    "name": "kavak yapraklı huş"
+  },
+  "Q1543689": {
+    "name": "İtalya kızılağacı"
+  },
+  "Q1546541": {
+    "name": "Pinus ayacahuite"
+  },
+  "Q1552597": {
+    "name": "Cupressus guadalupensis"
+  },
+  "Q1557117": {
+    "name": "Ostrya yunnanensis"
+  },
+  "Q1581682": {
+    "name": "Prunus argentea"
+  },
+  "Q1591053": {
+    "name": "Pyrus salicifolia"
+  },
+  "Q1619002": {
+    "name": "Cupressus torulosa"
+  },
+  "Q1623892": {
+    "name": "Betula maximowicziana"
+  },
+  "Q1631785": {
+    "name": "Acer mandshuricum"
+  },
+  "Q1632808": {
+    "name": "Fraxinus longicuspis"
+  },
+  "Q1640268": {
+    "name": "Pinus montezumae"
+  },
+  "Q1655870": {
+    "name": "Japon cevizi"
+  },
+  "Q1669527": {
+    "name": "Kokulu ardıç"
+  },
+  "Q1695645": {
+    "name": "Betula raddeana"
+  },
+  "Q1723511": {
+    "name": "Kanada porsuğu"
+  },
+  "Q1758722": {
+    "name": "Quercus virginiana"
+  },
+  "Q1784356": {
+    "name": "Betula costata"
+  },
+  "Q1788044": {
+    "name": "Doğu akçaağacı"
+  },
+  "Q1790101": {
+    "name": "Fraxinus nigra"
+  },
+  "Q1790865": {
+    "name": "Pinus cubensis"
+  },
+  "Q1801446": {
+    "name": "Lambert fındığı"
+  },
+  "Q1887955": {
+    "name": "Cupressus dupreziana"
+  },
+  "Q1914703": {
+    "name": "Makedonya meşesi"
+  },
+  "Q1939271": {
+    "name": "Pinus kesiya"
+  },
+  "Q1944479": {
+    "name": "Moğol ıhlamuru"
+  },
+  "Q1946803": {
+    "name": "Populus ilicifolia"
+  },
+  "Q1946814": {
+    "name": "Populus guzmanantlensis"
+  },
+  "Q2004978": {
+    "name": "Cezayir göknarı"
+  },
+  "Q2020692": {
+    "name": "Oliver ıhlamuru"
+  },
+  "Q2029492": {
+    "name": "Quercus garryana"
+  },
+  "Q2036009": {
+    "name": "Ostrya trichocarpa"
+  },
+  "Q2068758": {
+    "name": "Eucalyptus deanei"
+  },
+  "Q2069230": {
+    "name": "Eucalyptus blakelyi"
+  },
+  "Q2070092": {
+    "name": "Eucalyptus cordata"
+  },
+  "Q2070107": {
+    "name": "Eucalyptus rubida"
+  },
+  "Q2070117": {
+    "name": "Eucalyptus perriniana"
+  },
+  "Q2070712": {
+    "name": "Eucalyptus oreades"
+  },
+  "Q2072579": {
+    "name": "Eucalyptus haemastoma"
+  },
+  "Q2093561": {
+    "name": "Picea schrenkiana"
+  },
+  "Q2109712": {
+    "name": "Ulmus × mesocarpa"
+  },
+  "Q2109844": {
+    "name": "Ulmus pseudopropinqua"
+  },
+  "Q2109850": {
+    "name": "Ulmus elongata"
+  },
+  "Q2109862": {
+    "name": "Ulmus chenmoui"
+  },
+  "Q2109921": {
+    "name": "Ulmus davidiana"
+  },
+  "Q2110146": {
+    "name": "Ulmus serotina"
+  },
+  "Q2114345": {
+    "name": "Pyrus bretschneideri"
+  },
+  "Q2137116": {
+    "name": "Eucalyptus viminalis"
+  },
+  "Q2139163": {
+    "name": "Elaeagnus multiflora"
+  },
+  "Q2156438": {
+    "name": "Eucalyptus jacksonii"
+  },
+  "Q2165298": {
+    "name": "Eucalyptus pauciflora"
+  },
+  "Q2214544": {
+    "name": "Salix capitata"
+  },
+  "Q2233487": {
+    "name": "Shensi göknarı"
+  },
+  "Q2249175": {
+    "name": "Pinus amamiana"
+  },
+  "Q2258345": {
+    "name": "Populus maximowiczii"
+  },
+  "Q2266551": {
+    "name": "Cornus amomum"
+  },
+  "Q2294122": {
+    "name": "Pyrus spinosa"
+  },
+  "Q2360517": {
+    "name": "Ficus pumila"
+  },
+  "Q2368526": {
+    "name": "Picea koraiensis"
+  },
+  "Q2386394": {
+    "name": "Pinus bhutanica"
+  },
+  "Q2411222": {
+    "name": "Picea maximowiczii"
+  },
+  "Q2427077": {
+    "name": "Picea likiangensis"
+  },
+  "Q2452407": {
+    "name": "Cercis canadensis"
+  },
+  "Q2473331": {
+    "name": "Pinus sabiniana"
+  },
+  "Q2484889": {
+    "name": "Eucalyptus botryoides"
+  },
+  "Q2512210": {
+    "name": "Eucalyptus piperita"
+  },
+  "Q2512644": {
+    "name": "Eucalyptus nitens"
+  },
+  "Q2512653": {
+    "name": "Eucalyptus scoparia"
+  },
+  "Q2512668": {
+    "name": "Eucalyptus goniocalyx"
+  },
+  "Q2559069": {
+    "name": "Eucalyptus dives"
+  },
+  "Q2559087": {
+    "name": "Eucalyptus albens"
+  },
+  "Q2559111": {
+    "name": "Eucalyptus fastigata"
+  },
+  "Q2561277": {
+    "name": "Ficus aurea"
+  },
+  "Q2589489": {
+    "name": "Sahil kızılağacı"
+  },
+  "Q2611082": {
+    "name": "Eucalyptus nitida"
+  },
+  "Q2636528": {
+    "name": "Picea meyeri"
+  },
+  "Q2654015": {
+    "name": "Eucalyptus tenuiramis"
+  },
+  "Q2654153": {
+    "name": "Eucalyptus risdonii"
+  },
+  "Q2664982": {
+    "name": "Eucalyptus radiata"
+  },
+  "Q2666298": {
+    "name": "Kafkas kızılağacı"
+  },
+  "Q2666533": {
+    "name": "Eucalyptus polyanthemos"
+  },
+  "Q2667019": {
+    "name": "Eucalyptus sideroxylon"
+  },
+  "Q2673231": {
+    "name": "Pinus wangii"
+  },
+  "Q2673640": {
+    "name": "Pinus dalatensis"
+  },
+  "Q2673655": {
+    "name": "Pinus chiapensis"
+  },
+  "Q2673686": {
+    "name": "Pinus latteri"
+  },
+  "Q2687372": {
+    "name": "Eucalyptus delegatensis"
+  },
+  "Q2703188": {
+    "name": "Pinus squamata"
+  },
+  "Q2703193": {
+    "name": "Pinus durangensis"
+  },
+  "Q2703200": {
+    "name": "Wilson ladini"
+  },
+  "Q2703208": {
+    "name": "Pinus attenuata"
+  },
+  "Q2703215": {
+    "name": "Pinus arizonica"
+  },
+  "Q2703233": {
+    "name": "Pinus serotina"
+  },
+  "Q2703314": {
+    "name": "Picea neoveitchii"
+  },
+  "Q2704355": {
+    "name": "Eucalyptus deglupta"
+  },
+  "Q2705540": {
+    "name": "Eucalyptus populnea"
+  },
+  "Q2707724": {
+    "name": "Eucalyptus caliginosa"
+  },
+  "Q2707790": {
+    "name": "Eucalyptus baxteri"
+  },
+  "Q2709149": {
+    "name": "Eucalyptus elata"
+  },
+  "Q2709968": {
+    "name": "Eucalyptus microcarpa"
+  },
+  "Q2710313": {
+    "name": "Eucalyptus largiflorens"
+  },
+  "Q2712032": {
+    "name": "Eucalyptus curtisii"
+  },
+  "Q2712052": {
+    "name": "Eucalyptus polybractea"
+  },
+  "Q2712062": {
+    "name": "Eucalyptus crenulata"
+  },
+  "Q2712114": {
+    "name": "Eucalyptus fibrosa"
+  },
+  "Q2712351": {
+    "name": "Eucalyptus conferruminata"
+  },
+  "Q2712369": {
+    "name": "Eucalyptus macrocarpa"
+  },
+  "Q2712400": {
+    "name": "Eucalyptus eremophila"
+  },
+  "Q2712404": {
+    "name": "Eucalyptus laeliae"
+  },
+  "Q2713279": {
+    "name": "Eucalyptus miniata"
+  },
+  "Q2713314": {
+    "name": "Eucalyptus coolabah"
+  },
+  "Q2715195": {
+    "name": "Eucalyptus dumosa"
+  },
+  "Q2737854": {
+    "name": "Pinus leiophylla"
+  },
+  "Q2737852": {
+    "name": "Pinus hwangshanensis"
+  },
+  "Q2737857": {
+    "name": "Pinus densata"
+  },
+  "Q2740464": {
+    "name": "Ficus rubiginosa"
+  },
+  "Q2744072": {
+    "name": "Pinus henryi"
+  },
+  "Q2744076": {
+    "name": "Pinus oocarpa"
+  },
+  "Q2744082": {
+    "name": "Pinus devoniana"
+  },
+  "Q2746149": {
+    "name": "Pinus torreyana"
+  },
+  "Q2746153": {
+    "name": "Pinus strobiformis"
+  },
+  "Q2750375": {
+    "name": "Pinus cooperi"
+  },
+  "Q2837067": {
+    "name": "Eucalyptus saligna"
+  },
+  "Q2882504": {
+    "name": "Ficus prolixa"
+  },
+  "Q2883428": {
+    "name": "Fraxinus chinensis"
+  },
+  "Q2886717": {
+    "name": "Ficus drupacea"
+  },
+  "Q2900277": {
+    "name": "Betula cordifolia"
+  },
+  "Q2900823": {
+    "name": "Eucalyptus todtiana"
+  },
+  "Q2900918": {
+    "name": "Pinus caribaea"
+  },
+  "Q2916933": {
+    "name": "Pinus remota"
+  },
+  "Q2920620": {
+    "name": "Eucalyptus acaciiformis"
+  },
+  "Q2920624": {
+    "name": "Eucalyptus staigeriana"
+  },
+  "Q2920625": {
+    "name": "Eucalyptus salmonophloia"
+  },
+  "Q3005874": {
+    "name": "Eucalyptus michaeliana"
+  },
+  "Q3006265": {
+    "name": "Quercus graciliformis"
+  },
+  "Q3006305": {
+    "name": "Eucalyptus tereticornis"
+  },
+  "Q3009454": {
+    "name": "Eucalyptus forrestiana"
+  },
+  "Q3009668": {
+    "name": "Eucalyptus pyriformis"
+  },
+  "Q3009812": {
+    "name": "Quercus wislizeni"
+  },
+  "Q3011274": {
+    "name": "Eucalyptus microcorys"
+  },
+  "Q3017150": {
+    "name": "Eucalyptus preissiana"
+  },
+  "Q3017623": {
+    "name": "Eucalyptus gregsoniana"
+  },
+  "Q3017645": {
+    "name": "Eucalyptus cloeziana"
+  },
+  "Q3017657": {
+    "name": "Eucalyptus kruseana"
+  },
+  "Q3017706": {
+    "name": "Eucalyptus phoenicea"
+  },
+  "Q3019374": {
+    "name": "Eucalyptus wandoo"
+  },
+  "Q3020430": {
+    "name": "Eucalyptus mannifera"
+  },
+  "Q3020855": {
+    "name": "Eucalyptus tricarpa"
+  },
+  "Q3024351": {
+    "name": "Eucalyptus acmenoides"
+  },
+  "Q3024379": {
+    "name": "Eucalyptus fraxinoides"
+  },
+  "Q3024394": {
+    "name": "Eucalyptus stenostoma"
+  },
+  "Q3024409": {
+    "name": "Eucalyptus cretata"
+  },
+  "Q3024438": {
+    "name": "Eucalyptus erythrocorys"
+  },
+  "Q3024448": {
+    "name": "Eucalyptus luehmanniana"
+  },
+  "Q3059455": {
+    "name": "Eucalyptus brownii"
+  },
+  "Q3059458": {
+    "name": "Eucalyptus gamophylla"
+  },
+  "Q3059456": {
+    "name": "Eucalyptus crebra"
+  },
+  "Q3059457": {
+    "name": "Eucalyptus eugenioides"
+  },
+  "Q3059462": {
+    "name": "Eucalyptus shirleyi"
+  },
+  "Q3059463": {
+    "name": "Eucalyptus triflora"
+  },
+  "Q3071419": {
+    "name": "Ficus lutea"
+  },
+  "Q3071706": {
+    "name": "Ficus religiosa"
+  },
+  "Q3079266": {
+    "name": "Pyrus calleryana"
+  },
+  "Q3081804": {
+    "name": "Quercus acerifolia"
+  },
+  "Q3087592": {
+    "name": "Pinus pungens"
+  },
+  "Q3205624": {
+    "name": "Lagerstroemia intermedia"
+  },
+  "Q3206081": {
+    "name": "Acer wilsonii"
+  },
+  "Q3206216": {
+    "name": "Populus cathayana"
+  },
+  "Q3237840": {
+    "name": "Picea purpurea"
+  },
+  "Q3237846": {
+    "name": "Pinus echinata"
+  },
+  "Q3237849": {
+    "name": "Sikkim ladini"
+  },
+  "Q3239660": {
+    "name": "Picea asperata"
+  },
+  "Q3239675": {
+    "name": "Pinus fenzeliana"
+  },
+  "Q3280527": {
+    "name": "Eucalyptus robusta"
+  },
+  "Q3281198": {
+    "name": "Acer sino-oblongum"
+  },
+  "Q3281562": {
+    "name": "Acer poliophyllum"
+  },
+  "Q3281732": {
+    "name": "Acer tsinglingense"
+  },
+  "Q3285189": {
+    "name": "Pyrus bourgaeana"
+  },
+  "Q3286876": {
+    "name": "Pinus armandii"
+  },
+  "Q3291973": {
+    "name": "Alnus jorullensis"
+  },
+  "Q3297849": {
+    "name": "Populus heterophylla"
+  },
+  "Q3308263": {
+    "name": "Pinus orizabensis"
+  },
+  "Q3308270": {
+    "name": "Pinus jaliscana"
+  },
+  "Q3308298": {
+    "name": "Pinus rzedowskii"
+  },
+  "Q3308307": {
+    "name": "Pinus maximartinezii"
+  },
+  "Q3308344": {
+    "name": "Pinus tecunumanii"
+  },
+  "Q3308373": {
+    "name": "Pinus lawsonii"
+  },
+  "Q3308382": {
+    "name": "Pinus herrerae"
+  },
+  "Q3308389": {
+    "name": "Pinus nelsonii"
+  },
+  "Q3322408": {
+    "name": "Pinus dabeshanensis"
+  },
+  "Q3335799": {
+    "name": "Eucalyptus paniculata"
+  },
+  "Q3336255": {
+    "name": "Acer wardii"
+  },
+  "Q3337079": {
+    "name": "Acer sutchuenense"
+  },
+  "Q3337214": {
+    "name": "Acer sinopurpurascens"
+  },
+  "Q3338661": {
+    "name": "Acer shihweii"
+  },
+  "Q3355098": {
+    "name": "Portakal"
+  },
+  "Q3388586": {
+    "name": "Pinus occidentalis"
+  },
+  "Q3388834": {
+    "name": "Pinus apulcensis"
+  },
+  "Q3388842": {
+    "name": "Pinus fragilissima"
+  },
+  "Q3414214": {
+    "name": "Quercus oblongifolia"
+  },
+  "Q3491094": {
+    "name": "Sophora moorcroftiana"
+  },
+  "Q3503440": {
+    "name": "Pinus krempfii"
+  },
+  "Q3506484": {
+    "name": "Pinus culminicola"
+  },
+  "Q3506492": {
+    "name": "Pinus quadrifolia"
+  },
+  "Q3506511": {
+    "name": "Pinus cembroides"
+  },
+  "Q3506518": {
+    "name": "Pinus pringlei"
+  },
+  "Q3506525": {
+    "name": "Pinus johannis"
+  },
+  "Q3528421": {
+    "name": "Tilia × orbicularis"
+  },
+  "Q3585536": {
+    "name": "Ficus americana"
+  },
+  "Q3590921": {
+    "name": "Acer pentaphyllum"
+  },
+  "Q3644520": {
+    "name": "Ficus thonningii"
+  },
+  "Q3650502": {
+    "name": "Corylus colchica"
+  },
+  "Q3664036": {
+    "name": "Eucalyptus longifolia"
+  },
+  "Q3731407": {
+    "name": "Picea martinezii"
+  },
+  "Q3734121": {
+    "name": "Eucalyptus trabutii"
+  },
+  "Q3744533": {
+    "name": "Ficus palmata"
+  },
+  "Q3919027": {
+    "name": "Mangifera indica"
+  },
+  "Q3926082": {
+    "name": "Pyrus castribonensis"
+  },
+  "Q3926084": {
+    "name": "Pyrus sicanorum"
+  },
+  "Q3926595": {
+    "name": "Formoza kızılağacı"
+  },
+  "Q3926657": {
+    "name": "Alnus nepalensis"
+  },
+  "Q3926712": {
+    "name": "Betula occidentalis"
+  },
+  "Q4022404": {
+    "name": "Ficus natalensis"
+  },
+  "Q4085298": {
+    "name": "Betula potaninii"
+  },
+  "Q4085296": {
+    "name": "Betula delavayi"
+  },
+  "Q4085303": {
+    "name": "Betula luminifera"
+  },
+  "Q4085311": {
+    "name": "Betula microphylla"
+  },
+  "Q4085308": {
+    "name": "Betula megrelica"
+  },
+  "Q4085314": {
+    "name": "Betula alnoides"
+  },
+  "Q4085318": {
+    "name": "Betula tianschanica"
+  },
+  "Q4085320": {
+    "name": "Betula globispica"
+  },
+  "Q4111870": {
+    "name": "Quercus incana"
+  },
+  "Q4112143": {
+    "name": "Quercus laurifolia"
+  },
+  "Q4115140": {
+    "name": "Mançurya karaağacı"
+  },
+  "Q4115345": {
+    "name": "Platanus wrightii"
+  },
+  "Q4116183": {
+    "name": "Ulmus castaneifolia"
+  },
+  "Q4117742": {
+    "name": "Fraxinus trifoliolata"
+  },
+  "Q4117757": {
+    "name": "Fraxinus caroliniana"
+  },
+  "Q4120454": {
+    "name": "Ulmus ismaelis"
+  },
+  "Q4130196": {
+    "name": "Ulmus elliptica"
+  },
+  "Q4147185": {
+    "name": "Carpinus × schuschaensis"
+  },
+  "Q4147190": {
+    "name": "Carpinus laxiflora"
+  },
+  "Q4195467": {
+    "name": "Salix apoda"
+  },
+  "Q4260585": {
+    "name": "Corylus ferox"
+  },
+  "Q4262401": {
+    "name": "Tilia maximowicziana"
+  },
+  "Q4334194": {
+    "name": "Alnus cremastogyne"
+  },
+  "Q4334198": {
+    "name": "Mançurya kızılağacı"
+  },
+  "Q4364558": {
+    "name": "Meksika çınarı"
+  },
+  "Q4392776": {
+    "name": "Tilia chinensis"
+  },
+  "Q4498408": {
+    "name": "Ostrya knowltonii"
+  },
+  "Q4529674": {
+    "name": "Eucalyptus bridgesiana"
+  },
+  "Q4529675": {
+    "name": "Eucalyptus banksii"
+  },
+  "Q4529678": {
+    "name": "Eucalyptus macarthurii"
+  },
+  "Q4529676": {
+    "name": "Eucalyptus caleyi"
+  },
+  "Q4529683": {
+    "name": "Eucalyptus andrewsii"
+  },
+  "Q4529680": {
+    "name": "Eucalyptus robertsonii"
+  },
+  "Q4529681": {
+    "name": "Eucalyptus moorei"
+  },
+  "Q4529684": {
+    "name": "Eucalyptus dealbata"
+  },
+  "Q4529685": {
+    "name": "Eucalyptus cephalocarpa"
+  },
+  "Q4529690": {
+    "name": "Eucalyptus urnigera"
+  },
+  "Q4529691": {
+    "name": "Eucalyptus conica"
+  },
+  "Q4529688": {
+    "name": "Eucalyptus stellulata"
+  },
+  "Q4529689": {
+    "name": "Eucalyptus viridis"
+  },
+  "Q4529694": {
+    "name": "Eucalyptus unialata"
+  },
+  "Q4529695": {
+    "name": "Eucalyptus stricta"
+  },
+  "Q4529693": {
+    "name": "Eucalyptus macrorhyncha"
+  },
+  "Q4529696": {
+    "name": "Eucalyptus aggregata"
+  },
+  "Q4539244": {
+    "name": "Fraxinus rhynchophylla"
+  },
+  "Q4673151": {
+    "name": "Acer duplicatoserratum"
+  },
+  "Q4673169": {
+    "name": "Acer oblongum"
+  },
+  "Q4673817": {
+    "name": "Boz pırnal"
+  },
+  "Q4899046": {
+    "name": "Yayla huşu"
+  },
+  "Q4921039": {
+    "name": "Ficus altissima"
+  },
+  "Q4959177": {
+    "name": "Ficus auriculata"
+  },
+  "Q5171926": {
+    "name": "Cornus foemina"
+  },
+  "Q5171928": {
+    "name": "Cornus unalaschkensis"
+  },
+  "Q5173728": {
+    "name": "Corylus yunnanensis"
+  },
+  "Q5194572": {
+    "name": "Cupressus nevadensis"
+  },
+  "Q5220976": {
+    "name": "Alev Ağacı, Alev Çalısı"
+  },
+  "Q5222883": {
+    "name": "Eucalyptus oleosa"
+  },
+  "Q5226294": {
+    "name": "Eucalyptus globoidea"
+  },
+  "Q5227129": {
+    "name": "Eucalyptus kochii"
+  },
+  "Q5227428": {
+    "name": "Eucalyptus amplifolia"
+  },
+  "Q5229729": {
+    "name": "Eucalyptus cneorifolia"
+  },
+  "Q5233066": {
+    "name": "Eucalyptus muelleriana"
+  },
+  "Q5245913": {
+    "name": "Pyrus pashia"
+  },
+  "Q5392424": {
+    "name": "Ficus trigonata"
+  },
+  "Q5405513": {
+    "name": "Eucalyptus agglomerata"
+  },
+  "Q5405516": {
+    "name": "Eucalyptus accedens"
+  },
+  "Q5405517": {
+    "name": "Eucalyptus amygdalina"
+  },
+  "Q5405523": {
+    "name": "Eucalyptus bancroftii"
+  },
+  "Q5405520": {
+    "name": "Eucalyptus angophoroides"
+  },
+  "Q5405528": {
+    "name": "Eucalyptus behriana"
+  },
+  "Q5405529": {
+    "name": "Eucalyptus benthamii"
+  },
+  "Q5405533": {
+    "name": "Eucalyptus bigalerita"
+  },
+  "Q5405538": {
+    "name": "Eucalyptus blaxlandii"
+  },
+  "Q5405539": {
+    "name": "Eucalyptus bosistoana"
+  },
+  "Q5405546": {
+    "name": "Eucalyptus cadens"
+  },
+  "Q5405548": {
+    "name": "Eucalyptus brookeriana"
+  },
+  "Q5405554": {
+    "name": "Eucalyptus cambageana"
+  },
+  "Q5405563": {
+    "name": "Eucalyptus capitellata"
+  },
+  "Q5405566": {
+    "name": "Eucalyptus cladocalyx"
+  },
+  "Q5405571": {
+    "name": "Eucalyptus cunninghamii"
+  },
+  "Q5405568": {
+    "name": "Eucalyptus copulans"
+  },
+  "Q5405575": {
+    "name": "Eucalyptus dawsonii"
+  },
+  "Q5405572": {
+    "name": "Eucalyptus cornuta"
+  },
+  "Q5405578": {
+    "name": "Eucalyptus deuaensis"
+  },
+  "Q5405576": {
+    "name": "Eucalyptus denticulata"
+  },
+  "Q5405583": {
+    "name": "Eucalyptus elaeophloia"
+  },
+  "Q5405580": {
+    "name": "Eucalyptus dolorosa"
+  },
+  "Q5405581": {
+    "name": "Eucalyptus dorrigoensis"
+  },
+  "Q5405589": {
+    "name": "Eucalyptus ebbanoensis"
+  },
+  "Q5405594": {
+    "name": "Eucalyptus erythronema"
+  },
+  "Q5405595": {
+    "name": "Eucalyptus fasciculosa"
+  },
+  "Q5405592": {
+    "name": "Eucalyptus expressa"
+  },
+  "Q5405599": {
+    "name": "Eucalyptus gillii"
+  },
+  "Q5405597": {
+    "name": "Eucalyptus glaucescens"
+  },
+  "Q5405603": {
+    "name": "Eucalyptus grossa"
+  },
+  "Q5405606": {
+    "name": "Eucalyptus kartzoffiana"
+  },
+  "Q5405607": {
+    "name": "Eucalyptus kybeanensis"
+  },
+  "Q5405611": {
+    "name": "Eucalyptus langleyi"
+  },
+  "Q5405609": {
+    "name": "Eucalyptus kitsoniana"
+  },
+  "Q5405614": {
+    "name": "Eucalyptus leptopoda"
+  },
+  "Q5405613": {
+    "name": "Eucalyptus laevopinea"
+  },
+  "Q5405623": {
+    "name": "Eucalyptus macrandra"
+  },
+  "Q5405621": {
+    "name": "Eucalyptus lansdowneana"
+  },
+  "Q5405625": {
+    "name": "Eucalyptus megacornuta"
+  },
+  "Q5405635": {
+    "name": "Eucalyptus morrisbyi"
+  },
+  "Q5405632": {
+    "name": "Eucalyptus melanophloia"
+  },
+  "Q5405638": {
+    "name": "Eucalyptus multicaulis"
+  },
+  "Q5405643": {
+    "name": "Eucalyptus notabilis"
+  },
+  "Q5405641": {
+    "name": "Eucalyptus nicholii"
+  },
+  "Q5405646": {
+    "name": "Eucalyptus ochrophloia"
+  },
+  "Q5405644": {
+    "name": "Eucalyptus obstans"
+  },
+  "Q5405651": {
+    "name": "Eucalyptus nova-anglica"
+  },
+  "Q5405648": {
+    "name": "Eucalyptus oblonga"
+  },
+  "Q5405658": {
+    "name": "Eucalyptus olida"
+  },
+  "Q5405659": {
+    "name": "Eucalyptus orbifolia"
+  },
+  "Q5405656": {
+    "name": "Eucalyptus oraria"
+  },
+  "Q5405662": {
+    "name": "Eucalyptus parvula"
+  },
+  "Q5405660": {
+    "name": "Eucalyptus olsenii"
+  },
+  "Q5405661": {
+    "name": "Eucalyptus parramattensis"
+  },
+  "Q5405670": {
+    "name": "Eucalyptus placita"
+  },
+  "Q5405668": {
+    "name": "Eucalyptus patens"
+  },
+  "Q5405669": {
+    "name": "Eucalyptus pilularis"
+  },
+  "Q5405674": {
+    "name": "Eucalyptus platypus"
+  },
+  "Q5405678": {
+    "name": "Eucalyptus porosa"
+  },
+  "Q5405682": {
+    "name": "Eucalyptus propinqua"
+  },
+  "Q5405684": {
+    "name": "Eucalyptus quadrangulata"
+  },
+  "Q5405690": {
+    "name": "Eucalyptus redunca"
+  },
+  "Q5405694": {
+    "name": "Eucalyptus punctata"
+  },
+  "Q5405693": {
+    "name": "Eucalyptus rhodantha"
+  },
+  "Q5405696": {
+    "name": "Eucalyptus recurva"
+  },
+  "Q5405703": {
+    "name": "Eucalyptus saxatilis"
+  },
+  "Q5405705": {
+    "name": "Eucalyptus sclerophylla"
+  },
+  "Q5405710": {
+    "name": "Eucalyptus siderophloia"
+  },
+  "Q5405709": {
+    "name": "Eucalyptus scias"
+  },
+  "Q5405714": {
+    "name": "Eucalyptus sieberi"
+  },
+  "Q5405715": {
+    "name": "Eucalyptus spathulata"
+  },
+  "Q5405719": {
+    "name": "Eucalyptus tenella"
+  },
+  "Q5405722": {
+    "name": "Eucalyptus torquata"
+  },
+  "Q5405723": {
+    "name": "Eucalyptus urophylla"
+  },
+  "Q5405720": {
+    "name": "Eucalyptus squamosa"
+  },
+  "Q5405721": {
+    "name": "Eucalyptus tindaliae"
+  },
+  "Q5405727": {
+    "name": "Eucalyptus vernicosa"
+  },
+  "Q5405725": {
+    "name": "Eucalyptus umbra"
+  },
+  "Q5405730": {
+    "name": "Eucalyptus wilcoxii"
+  },
+  "Q5405731": {
+    "name": "Eucalyptus woodwardii"
+  },
+  "Q5405728": {
+    "name": "Eucalyptus victrix"
+  },
+  "Q5405729": {
+    "name": "Eucalyptus yarraensis"
+  },
+  "Q5405732": {
+    "name": "Eucalyptus youngiana"
+  },
+  "Q5405733": {
+    "name": "Eucalyptus zopherophloia"
+  },
+  "Q5405738": {
+    "name": "Eucalyptus tetragona"
+  },
+  "Q5409902": {
+    "name": "Pinus × hakkodensis"
+  },
+  "Q5409936": {
+    "name": "Pinus luzmariae"
+  },
+  "Q5436106": {
+    "name": "Pyrus anatolica"
+  },
+  "Q5436109": {
+    "name": "Pyrus oxyprion"
+  },
+  "Q5446600": {
+    "name": "Ficus citrifolia"
+  },
+  "Q5446622": {
+    "name": "Ficus nota"
+  },
+  "Q5446629": {
+    "name": "Ficus platypoda"
+  },
+  "Q5446647": {
+    "name": "Ficus superba"
+  },
+  "Q5446651": {
+    "name": "Ficus ulmifolia"
+  },
+  "Q5446654": {
+    "name": "Ficus yoponensis"
+  },
+  "Q5466742": {
+    "name": "Ulmus changii"
+  },
+  "Q5466748": {
+    "name": "Ulmus wallichiana"
+  },
+  "Q5475785": {
+    "name": "Picea aurantiaca"
+  },
+  "Q5487185": {
+    "name": "Manglietia sinica"
+  },
+  "Q5491816": {
+    "name": "Ulmus gaussenii"
+  },
+  "Q5494014": {
+    "name": "Fraxinus floribunda"
+  },
+  "Q5502745": {
+    "name": "Quercus Rysophylla"
+  },
+  "Q5788662": {
+    "name": "Cornus asperifolia"
+  },
+  "Q5963800": {
+    "name": "Fraxinus griffithii"
+  },
+  "Q6047313": {
+    "name": "Salix pentandroides"
+  },
+  "Q6117344": {
+    "name": "Boylu söğüt"
+  },
+  "Q6117352": {
+    "name": "Salix pedicellata"
+  },
+  "Q6323361": {
+    "name": "Meksika meşesi"
+  },
+  "Q6372002": {
+    "name": "Quercus pumila"
+  },
+  "Q6372344": {
+    "name": "Quercus vaseyana"
+  },
+  "Q6372378": {
+    "name": "Kasnak meşesi"
+  },
+  "Q6579936": {
+    "name": "Pinus eremitana"
+  },
+  "Q6687831": {
+    "name": "Acer yinkunii"
+  },
+  "Q6746012": {
+    "name": "Acer schneiderianum"
+  },
+  "Q6760145": {
+    "name": "Acer caesium"
+  },
+  "Q6764461": {
+    "name": "Acer fenzelianum"
+  },
+  "Q6773197": {
+    "name": "Doğu kızılağacı"
+  },
+  "Q6811154": {
+    "name": "Acer yui"
+  },
+  "Q6856536": {
+    "name": "Acer linganense"
+  },
+  "Q7212770": {
+    "name": "Eucalyptus beaniana"
+  },
+  "Q7212779": {
+    "name": "Eucalyptus carnea"
+  },
+  "Q7212786": {
+    "name": "Eucalyptus conglomerata"
+  },
+  "Q7212802": {
+    "name": "Eucalyptus foecunda"
+  },
+  "Q7212813": {
+    "name": "Eucalyptus gracilis"
+  },
+  "Q7212840": {
+    "name": "Eucalyptus intertexta"
+  },
+  "Q7212872": {
+    "name": "Eucalyptus koolpinensis"
+  },
+  "Q7212900": {
+    "name": "Eucalyptus lehmannii"
+  },
+  "Q7212964": {
+    "name": "Eucalyptus longicornis"
+  },
+  "Q7212969": {
+    "name": "Eucalyptus melanoleuca"
+  },
+  "Q7212976": {
+    "name": "Eucalyptus morrisii"
+  },
+  "Q7212982": {
+    "name": "Eucalyptus odorata"
+  },
+  "Q7212987": {
+    "name": "Eucalyptus pellita"
+  },
+  "Q7212991": {
+    "name": "Eucalyptus pendens"
+  },
+  "Q7212998": {
+    "name": "Eucalyptus pileata"
+  },
+  "Q7213004": {
+    "name": "Eucalyptus platycorys"
+  },
+  "Q7213013": {
+    "name": "Eucalyptus platyphylla"
+  },
+  "Q7213019": {
+    "name": "Eucalyptus quaerenda"
+  },
+  "Q7213025": {
+    "name": "Eucalyptus raveretiana"
+  },
+  "Q7213058": {
+    "name": "Eucalyptus roycei"
+  },
+  "Q7213073": {
+    "name": "Eucalyptus tetrodonta"
+  },
+  "Q7213077": {
+    "name": "Eucalyptus thozetiana"
+  },
+  "Q7213083": {
+    "name": "Eucalyptus tintinnans"
+  },
+  "Q7263790": {
+    "name": "Pyrus × sinkiangensis"
+  },
+  "Q7263791": {
+    "name": "Pyrus cordata"
+  },
+  "Q7263788": {
+    "name": "Pyrus boissieriana"
+  },
+  "Q7263800": {
+    "name": "Pyrus nivalis"
+  },
+  "Q7560887": {
+    "name": "Pinus × sondereggeri"
+  },
+  "Q7879360": {
+    "name": "Ulmus alata"
+  },
+  "Q7879422": {
+    "name": "Ulmus bergmanniana"
+  },
+  "Q7879426": {
+    "name": "Boz karaağaç"
+  },
+  "Q7879424": {
+    "name": "Ulmus boissieri"
+  },
+  "Q7879430": {
+    "name": "Ulmus chumlia"
+  },
+  "Q7879431": {
+    "name": "Ulmus crassifolia"
+  },
+  "Q7879490": {
+    "name": "Ulmus glaucescens"
+  },
+  "Q7879494": {
+    "name": "Ulmus harbinensis"
+  },
+  "Q7879508": {
+    "name": "Ulmus lamellosa"
+  },
+  "Q7879512": {
+    "name": "Ulmus microcarpa"
+  },
+  "Q7879620": {
+    "name": "Ulmus prunifolia"
+  },
+  "Q7879642": {
+    "name": "Ulmus villosa"
+  },
+  "Q7879641": {
+    "name": "Ulmus uyematsui"
+  },
+  "Q8843726": {
+    "name": "Eucalyptus salubris"
+  },
+  "Q9281562": {
+    "name": "Kafkas yaban armudu"
+  },
+  "Q9281564": {
+    "name": "Pyrus betulifolia"
+  },
+  "Q9287149": {
+    "name": "Eucalyptus racemosa"
+  },
+  "Q9339711": {
+    "name": "Pinus succinifera"
+  },
+  "Q9576377": {
+    "name": "Acer albopurpurascens"
+  },
+  "Q9576382": {
+    "name": "Acer amamiense"
+  },
+  "Q9577000": {
+    "name": "Acer chienii"
+  },
+  "Q9579481": {
+    "name": "Acer trautvetteri"
+  },
+  "Q10296280": {
+    "name": "Populus mexicana"
+  },
+  "Q10349918": {
+    "name": "Pinus gordoniana"
+  },
+  "Q10349927": {
+    "name": "Pinus reflexa"
+  },
+  "Q10349931": {
+    "name": "Pinus uyematsui"
+  },
+  "Q10351623": {
+    "name": "Populus sieboldii"
+  },
+  "Q10351624": {
+    "name": "Populus tristis"
+  },
+  "Q10494933": {
+    "name": "Ficus carolae"
+  },
+  "Q10866674": {
+    "name": "Populus trinervis"
+  },
+  "Q10869591": {
+    "name": "Populus girinensis"
+  },
+  "Q10872414": {
+    "name": "Photinia beauverdiana"
+  },
+  "Q10878191": {
+    "name": "Mürdüm eriği"
+  },
+  "Q10879749": {
+    "name": "Populus xiangchengensis"
+  },
+  "Q10880877": {
+    "name": "Diospyros yunnanensis"
+  },
+  "Q10881993": {
+    "name": "Populus × yuana"
+  },
+  "Q10882519": {
+    "name": "Populus yatungensis"
+  },
+  "Q10886471": {
+    "name": "Elaeagnus argyi"
+  },
+  "Q10887979": {
+    "name": "Diospyros sunyiensis"
+  },
+  "Q10894175": {
+    "name": "Populus hsinganica"
+  },
+  "Q10906248": {
+    "name": "Diospyros unisemina"
+  },
+  "Q10907379": {
+    "name": "Castanopsis amabilis"
+  },
+  "Q10908398": {
+    "name": "Lagerstroemia siamica"
+  },
+  "Q10910754": {
+    "name": "Elaeagnus retrostyla"
+  },
+  "Q10930567": {
+    "name": "Populus violascens"
+  },
+  "Q10937582": {
+    "name": "Elaeagnus macrantha"
+  },
+  "Q10949016": {
+    "name": "Elaeagnus henryi"
+  },
+  "Q10954063": {
+    "name": "Pinus discolor"
+  },
+  "Q10958149": {
+    "name": "Olea parvilimba"
+  },
+  "Q10960227": {
+    "name": "Elaeagnus micrantha"
+  },
+  "Q10971552": {
+    "name": "Eucalyptus ligustrina"
+  },
+  "Q11036852": {
+    "name": "Tilia paucicostata"
+  },
+  "Q11045980": {
+    "name": "Diospyros siderophylla"
+  },
+  "Q11049388": {
+    "name": "Betula calcicola"
+  },
+  "Q11055021": {
+    "name": "Salix wolohoensis"
+  },
+  "Q11055328": {
+    "name": "Diospyros sutchuensis"
+  },
+  "Q11060464": {
+    "name": "Ulmus lanceifolia"
+  },
+  "Q11066157": {
+    "name": "Diospyros anisocalyx"
+  },
+  "Q11071881": {
+    "name": "Populus haoana"
+  },
+  "Q11076697": {
+    "name": "Corylus fargesii"
+  },
+  "Q11079748": {
+    "name": "Elaeagnus wenshanensis"
+  },
+  "Q11080658": {
+    "name": "Eucalyptus kirtoniana"
+  },
+  "Q11087653": {
+    "name": "Populus qamdoensis"
+  },
+  "Q11093053": {
+    "name": "Pyrus xerophila"
+  },
+  "Q11098439": {
+    "name": "Pyrus armeniacifolia"
+  },
+  "Q11107913": {
+    "name": "Salix karelinii"
+  },
+  "Q11115687": {
+    "name": "Populus pseudomaximowiczii"
+  },
+  "Q11127270": {
+    "name": "Photinia pilosicalyx"
+  },
+  "Q11127489": {
+    "name": "Elaeagnus pilostyla"
+  },
+  "Q11132607": {
+    "name": "Lithocarpus yongfuensis"
+  },
+  "Q11141338": {
+    "name": "Pyrus hopeiensis"
+  },
+  "Q11142636": {
+    "name": "Diospyros oleifera"
+  },
+  "Q11157304": {
+    "name": "Eucalyptus apiculata"
+  },
+  "Q11173544": {
+    "name": "Ficus pubigera"
+  },
+  "Q11179338": {
+    "name": "Diospyros nigrocortex"
+  },
+  "Q11179781": {
+    "name": "Populus amurensis"
+  },
+  "Q11179863": {
+    "name": "Tilia kueichouensis"
+  },
+  "Q11282106": {
+    "name": "Pinus × densithunbergii"
+  },
+  "Q12082093": {
+    "name": "Betula klokovii"
+  },
+  "Q12209050": {
+    "name": "Populus afghanica"
+  },
+  "Q12209048": {
+    "name": "Populus glauca"
+  },
+  "Q12209049": {
+    "name": "Populus pseudoglauca"
+  },
+  "Q12209062": {
+    "name": "Populus suaveolens"
+  },
+  "Q12209073": {
+    "name": "Populus platyphylla"
+  },
+  "Q12211853": {
+    "name": "Platanus gentryi"
+  },
+  "Q12234030": {
+    "name": "Acer acuminatum"
+  },
+  "Q12246694": {
+    "name": "Celtis tessmannii"
+  },
+  "Q12246698": {
+    "name": "Celtis tikalana"
+  },
+  "Q12246704": {
+    "name": "Celtis julianae"
+  },
+  "Q12246714": {
+    "name": "Celtis zenkeri"
+  },
+  "Q12246735": {
+    "name": "Celtis vandervoetiana"
+  },
+  "Q12246737": {
+    "name": "Celtis vitiensis"
+  },
+  "Q12839326": {
+    "name": "Eucalyptus flocktoniae"
+  },
+  "Q12839327": {
+    "name": "Eucalyptus drummondii"
+  },
+  "Q12839325": {
+    "name": "Eucalyptus camphora"
+  },
+  "Q12839331": {
+    "name": "Eucalyptus loxophleba"
+  },
+  "Q12839328": {
+    "name": "Eucalyptus mitchelliana"
+  },
+  "Q12840359": {
+    "name": "Pyrus hyrcana"
+  },
+  "Q13172138": {
+    "name": "Pyrus ussuriensis"
+  },
+  "Q13479833": {
+    "name": "Acer chiangdaoense"
+  },
+  "Q13634375": {
+    "name": "Eucalyptus brockwayi"
+  },
+  "Q13634378": {
+    "name": "Eucalyptus signata"
+  },
+  "Q13634376": {
+    "name": "Eucalyptus burgessiana"
+  },
+  "Q13634377": {
+    "name": "Eucalyptus imlayensis"
+  },
+  "Q13909993": {
+    "name": "Eucalyptus dendromorpha"
+  },
+  "Q14478222": {
+    "name": "Ulmus szechuanica"
+  },
+  "Q14942862": {
+    "name": "Eucalyptus verrucata"
+  },
+  "Q14942863": {
+    "name": "Eucalyptus victoriana"
+  },
+  "Q14942861": {
+    "name": "Eucalyptus serraensis"
+  },
+  "Q14956781": {
+    "name": "Picea balfouriana"
+  },
+  "Q15225798": {
+    "name": "Corylus wangii"
+  },
+  "Q15225859": {
+    "name": "Betula cylindrostachya"
+  },
+  "Q15225956": {
+    "name": "Betula gmelinii"
+  },
+  "Q15227886": {
+    "name": "Fraxinus baroniana"
+  },
+  "Q15227887": {
+    "name": "Fraxinus depauperata"
+  },
+  "Q15227888": {
+    "name": "Fraxinus ferruginea"
+  },
+  "Q15227895": {
+    "name": "Fraxinus odontocalyx"
+  },
+  "Q15227893": {
+    "name": "Fraxinus malacophylla"
+  },
+  "Q15230830": {
+    "name": "Populus shanxiensis"
+  },
+  "Q15230832": {
+    "name": "Populus talassica"
+  },
+  "Q15230833": {
+    "name": "Populus wuana"
+  },
+  "Q15231361": {
+    "name": "Tilia endochrysea"
+  },
+  "Q15235954": {
+    "name": "Pyrus phaeocarpa"
+  },
+  "Q15236187": {
+    "name": "Olea neriifolia"
+  },
+  "Q15236943": {
+    "name": "Diospyros ehretioides"
+  },
+  "Q15237898": {
+    "name": "Lithocarpus harlandii"
+  },
+  "Q15238823": {
+    "name": "Eucalyptus leptophleba"
+  },
+  "Q15239088": {
+    "name": "Quercus kongshanensis"
+  },
+  "Q15239265": {
+    "name": "Elaeagnus luoxiangensis"
+  },
+  "Q15239300": {
+    "name": "Diospyros punctilimba"
+  },
+  "Q15239422": {
+    "name": "Sophora microcarpa"
+  },
+  "Q15239530": {
+    "name": "Lithocarpus mekongensis"
+  },
+  "Q15239804": {
+    "name": "Castanopsis hupehensis"
+  },
+  "Q15240291": {
+    "name": "Cyclobalanopsis sichourensis"
+  },
+  "Q15240339": {
+    "name": "Elaeagnus gonyanthes"
+  },
+  "Q15240385": {
+    "name": "Lithocarpus gaoligongensis"
+  },
+  "Q15240409": {
+    "name": "Elaeagnus angustata"
+  },
+  "Q15244776": {
+    "name": "Populus alaschanica"
+  },
+  "Q15245158": {
+    "name": "Fagus chienii"
+  },
+  "Q15246291": {
+    "name": "Elaeagnus tubiflora"
+  },
+  "Q15247101": {
+    "name": "Elaeagnus longiloba"
+  },
+  "Q15247245": {
+    "name": "Elaeagnus magna"
+  },
+  "Q15249080": {
+    "name": "Elaeagnus mollis"
+  },
+  "Q15249563": {
+    "name": "Elaeagnus viridis"
+  },
+  "Q15250158": {
+    "name": "Elaeagnus pallidiflora"
+  },
+  "Q15250798": {
+    "name": "Elaeagnus luxiensis"
+  },
+  "Q15251557": {
+    "name": "Eucalyptus exserta"
+  },
+  "Q15251776": {
+    "name": "Elaeagnus bambusetorum"
+  },
+  "Q15287169": {
+    "name": "Acer × boscii"
+  },
+  "Q15287191": {
+    "name": "Acer brevipes"
+  },
+  "Q15288254": {
+    "name": "Acer shenkanense"
+  },
+  "Q15317091": {
+    "name": "Lithocarpus aggregatus"
+  },
+  "Q15336956": {
+    "name": "Quercus coffeicolor"
+  },
+  "Q15339331": {
+    "name": "Quercus chihuahuensis"
+  },
+  "Q15353376": {
+    "name": "Eucalyptus mundijongensis"
+  },
+  "Q15353387": {
+    "name": "Eucalyptus murphyi"
+  },
+  "Q15353397": {
+    "name": "Eucalyptus myriadena"
+  },
+  "Q15353407": {
+    "name": "Eucalyptus nandewarica"
+  },
+  "Q15353420": {
+    "name": "Eucalyptus nebulosa"
+  },
+  "Q15353428": {
+    "name": "Eucalyptus neglecta"
+  },
+  "Q15353441": {
+    "name": "Eucalyptus nepeanensis"
+  },
+  "Q15353455": {
+    "name": "Eucalyptus neutra"
+  },
+  "Q15353471": {
+    "name": "Eucalyptus newbeyi"
+  },
+  "Q15353495": {
+    "name": "Eucalyptus nigra"
+  },
+  "Q15353507": {
+    "name": "Eucalyptus nigrifunda"
+  },
+  "Q15353542": {
+    "name": "Eucalyptus nobilis"
+  },
+  "Q15353555": {
+    "name": "Eucalyptus normantonensis"
+  },
+  "Q15353567": {
+    "name": "Eucalyptus nortonii"
+  },
+  "Q15353608": {
+    "name": "Eucalyptus occidentalis"
+  },
+  "Q15353636": {
+    "name": "Eucalyptus nudicaulis"
+  },
+  "Q15353650": {
+    "name": "Eucalyptus odontocarpa"
+  },
+  "Q15353651": {
+    "name": "Eucalyptus nutans"
+  },
+  "Q15353674": {
+    "name": "Eucalyptus obconica"
+  },
+  "Q15353684": {
+    "name": "Eucalyptus oldfieldii"
+  },
+  "Q15353695": {
+    "name": "Eucalyptus obesa"
+  },
+  "Q15353750": {
+    "name": "Eucalyptus oligantha"
+  },
+  "Q15353773": {
+    "name": "Eucalyptus olivina"
+  },
+  "Q15353793": {
+    "name": "Eucalyptus obtusiflora"
+  },
+  "Q15353816": {
+    "name": "Eucalyptus ophitica"
+  },
+  "Q15353834": {
+    "name": "Eucalyptus optima"
+  },
+  "Q15353832": {
+    "name": "Eucalyptus oresbia"
+  },
+  "Q15353853": {
+    "name": "Eucalyptus orgadophila"
+  },
+  "Q15353874": {
+    "name": "Eucalyptus ornata"
+  },
+  "Q15353891": {
+    "name": "Eucalyptus orophila"
+  },
+  "Q15353909": {
+    "name": "Eucalyptus orthostemon"
+  },
+  "Q15353916": {
+    "name": "Eucalyptus ordiana"
+  },
+  "Q15353938": {
+    "name": "Eucalyptus pallida"
+  },
+  "Q15353954": {
+    "name": "Eucalyptus paludicola"
+  },
+  "Q15353962": {
+    "name": "Eucalyptus oviformis"
+  },
+  "Q15353970": {
+    "name": "Eucalyptus panda"
+  },
+  "Q15353984": {
+    "name": "Eucalyptus ovularis"
+  },
+  "Q15354009": {
+    "name": "Eucalyptus oxymitra"
+  },
+  "Q15354027": {
+    "name": "Eucalyptus oxypoma"
+  },
+  "Q15354040": {
+    "name": "Eucalyptus pantoleuca"
+  },
+  "Q15354063": {
+    "name": "Eucalyptus paralimnetica"
+  },
+  "Q15354069": {
+    "name": "Eucalyptus pachycalyx"
+  },
+  "Q15354101": {
+    "name": "Eucalyptus pachyloma"
+  },
+  "Q15354119": {
+    "name": "Eucalyptus pachyphylla"
+  },
+  "Q15354138": {
+    "name": "Eucalyptus patellaris"
+  },
+  "Q15354153": {
+    "name": "Eucalyptus paliformis"
+  },
+  "Q15354167": {
+    "name": "Eucalyptus perangusta"
+  },
+  "Q15354208": {
+    "name": "Eucalyptus percostata"
+  },
+  "Q15354238": {
+    "name": "Eucalyptus peacockeana"
+  },
+  "Q15354258": {
+    "name": "Eucalyptus persistens"
+  },
+  "Q15354278": {
+    "name": "Eucalyptus petraea"
+  },
+  "Q15354301": {
+    "name": "Eucalyptus peninsularis"
+  },
+  "Q15354307": {
+    "name": "Eucalyptus petrensis"
+  },
+  "Q15354332": {
+    "name": "Eucalyptus penrithensis"
+  },
+  "Q15354341": {
+    "name": "Eucalyptus petrophila"
+  },
+  "Q15354360": {
+    "name": "Eucalyptus phaenophylla"
+  },
+  "Q15354381": {
+    "name": "Eucalyptus planchoniana"
+  },
+  "Q15354392": {
+    "name": "Eucalyptus phenax"
+  },
+  "Q15354404": {
+    "name": "Eucalyptus planipes"
+  },
+  "Q15354441": {
+    "name": "Eucalyptus platydisca"
+  },
+  "Q15354445": {
+    "name": "Eucalyptus phylacis"
+  },
+  "Q15354470": {
+    "name": "Eucalyptus pilbarensis"
+  },
+  "Q15354538": {
+    "name": "Eucalyptus pimpiniana"
+  },
+  "Q15354566": {
+    "name": "Eucalyptus pleurocorys"
+  },
+  "Q15354578": {
+    "name": "Eucalyptus praetermissa"
+  },
+  "Q15354589": {
+    "name": "Eucalyptus pluricaulis"
+  },
+  "Q15354599": {
+    "name": "Eucalyptus prava"
+  },
+  "Q15354605": {
+    "name": "Eucalyptus prolixa"
+  },
+  "Q15354609": {
+    "name": "Eucalyptus polita"
+  },
+  "Q15354629": {
+    "name": "Eucalyptus prominens"
+  },
+  "Q15354652": {
+    "name": "Eucalyptus prominula"
+  },
+  "Q15354682": {
+    "name": "Eucalyptus purpurata"
+  },
+  "Q15354708": {
+    "name": "Eucalyptus pygmaea"
+  },
+  "Q15354716": {
+    "name": "Eucalyptus protensa"
+  },
+  "Q15354738": {
+    "name": "Eucalyptus pyrenea"
+  },
+  "Q15354749": {
+    "name": "Eucalyptus provecta"
+  },
+  "Q15354783": {
+    "name": "Eucalyptus proxima"
+  },
+  "Q15354787": {
+    "name": "Eucalyptus portuensis"
+  },
+  "Q15354810": {
+    "name": "Eucalyptus pyrocarpa"
+  },
+  "Q15354814": {
+    "name": "Eucalyptus ralla"
+  },
+  "Q15354812": {
+    "name": "Eucalyptus pruiniramis"
+  },
+  "Q15354837": {
+    "name": "Eucalyptus pruinosa"
+  },
+  "Q15354842": {
+    "name": "Eucalyptus rameliana"
+  },
+  "Q15354858": {
+    "name": "Eucalyptus psammitica"
+  },
+  "Q15354866": {
+    "name": "Eucalyptus rariflora"
+  },
+  "Q15354873": {
+    "name": "Eucalyptus quadrans"
+  },
+  "Q15354887": {
+    "name": "Eucalyptus pseudopiperita"
+  },
+  "Q15354894": {
+    "name": "Eucalyptus quadricostata"
+  },
+  "Q15354909": {
+    "name": "Eucalyptus ravida"
+  },
+  "Q15354914": {
+    "name": "Eucalyptus pterocarpa"
+  },
+  "Q15354936": {
+    "name": "Eucalyptus recta"
+  },
+  "Q15354937": {
+    "name": "Eucalyptus pulchella"
+  },
+  "Q15354958": {
+    "name": "Eucalyptus quinniorum"
+  },
+  "Q15354972": {
+    "name": "Eucalyptus redimiculifera"
+  },
+  "Q15354998": {
+    "name": "Eucalyptus reducta"
+  },
+  "Q15354999": {
+    "name": "Eucalyptus pumila"
+  },
+  "Q15355062": {
+    "name": "Eucalyptus rudderi"
+  },
+  "Q15355099": {
+    "name": "Eucalyptus rhombica"
+  },
+  "Q15355111": {
+    "name": "Eucalyptus relicta"
+  },
+  "Q15355135": {
+    "name": "Eucalyptus rugosa"
+  },
+  "Q15355143": {
+    "name": "Eucalyptus rhomboidea"
+  },
+  "Q15355152": {
+    "name": "Eucalyptus remota"
+  },
+  "Q15355178": {
+    "name": "Eucalyptus rugulata"
+  },
+  "Q15355189": {
+    "name": "Eucalyptus repullulans"
+  },
+  "Q15355213": {
+    "name": "Eucalyptus rigescens"
+  },
+  "Q15355225": {
+    "name": "Eucalyptus rummeryi"
+  },
+  "Q15355251": {
+    "name": "Eucalyptus rigidula"
+  },
+  "Q15355254": {
+    "name": "Eucalyptus retinens"
+  },
+  "Q15355265": {
+    "name": "Eucalyptus rupestris"
+  },
+  "Q15355289": {
+    "name": "Eucalyptus retusa"
+  },
+  "Q15355302": {
+    "name": "Eucalyptus sabulosa"
+  },
+  "Q15355312": {
+    "name": "Eucalyptus rivularis"
+  },
+  "Q15355322": {
+    "name": "Eucalyptus scopulorum"
+  },
+  "Q15355330": {
+    "name": "Eucalyptus salicola"
+  },
+  "Q15355351": {
+    "name": "Eucalyptus scyphocalyx"
+  },
+  "Q15355375": {
+    "name": "Eucalyptus seeana"
+  },
+  "Q15355378": {
+    "name": "Eucalyptus robsonae"
+  },
+  "Q15355402": {
+    "name": "Eucalyptus selachiana"
+  },
+  "Q15355433": {
+    "name": "Eucalyptus semiglobosa"
+  },
+  "Q15355473": {
+    "name": "Eucalyptus semota"
+  },
+  "Q15355479": {
+    "name": "Eucalyptus rodwayi"
+  },
+  "Q15355496": {
+    "name": "Eucalyptus sargentii"
+  },
+  "Q15355509": {
+    "name": "Eucalyptus sepulcralis"
+  },
+  "Q15355525": {
+    "name": "Eucalyptus rosacea"
+  },
+  "Q15355547": {
+    "name": "Eucalyptus serpentinicola"
+  },
+  "Q15355563": {
+    "name": "Eucalyptus saxicola"
+  },
+  "Q15355630": {
+    "name": "Eucalyptus sessilis"
+  },
+  "Q15355632": {
+    "name": "Eucalyptus rubiginosa"
+  },
+  "Q15355654": {
+    "name": "Eucalyptus sheathiana"
+  },
+  "Q15355665": {
+    "name": "Eucalyptus silvestris"
+  },
+  "Q15355696": {
+    "name": "Eucalyptus similis"
+  },
+  "Q15355702": {
+    "name": "Eucalyptus stannicola"
+  },
+  "Q15355715": {
+    "name": "Eucalyptus sicilifolia"
+  },
+  "Q15355728": {
+    "name": "Eucalyptus singularis"
+  },
+  "Q15355733": {
+    "name": "Eucalyptus steedmanii"
+  },
+  "Q15355759": {
+    "name": "Eucalyptus sinuosa"
+  },
+  "Q15376615": {
+    "name": "Betula karagandensis"
+  },
+  "Q15376714": {
+    "name": "Betula coriaceifolia"
+  },
+  "Q15376713": {
+    "name": "Betula potamophila"
+  },
+  "Q15376768": {
+    "name": "Betula saksarensis"
+  },
+  "Q15376779": {
+    "name": "Corylus wulingensis"
+  },
+  "Q15376872": {
+    "name": "Betula wuyiensis"
+  },
+  "Q15376968": {
+    "name": "Betula psammophila"
+  },
+  "Q15377051": {
+    "name": "Kafkas söğüdü"
+  },
+  "Q15377160": {
+    "name": "Betula baschkirica"
+  },
+  "Q15377169": {
+    "name": "Carpinus shimenensis"
+  },
+  "Q15377237": {
+    "name": "Carpinus lipoensis"
+  },
+  "Q15377287": {
+    "name": "Betula × purpusii"
+  },
+  "Q15377339": {
+    "name": "Betula honanensis"
+  },
+  "Q15377369": {
+    "name": "Betula zinserlingii"
+  },
+  "Q15377456": {
+    "name": "Carpinus tropicalis"
+  },
+  "Q15377547": {
+    "name": "Carpinus luochengensis"
+  },
+  "Q15377549": {
+    "name": "Betula saviczii"
+  },
+  "Q15377887": {
+    "name": "Carpinus mengshanensis"
+  },
+  "Q15378008": {
+    "name": "Betula michauxii"
+  },
+  "Q15378251": {
+    "name": "Salix pseudomedemii"
+  },
+  "Q15378953": {
+    "name": "Betula sunanensis"
+  },
+  "Q15379370": {
+    "name": "Corylus jacquemontii"
+  },
+  "Q15380332": {
+    "name": "Carpinus faginea"
+  },
+  "Q15386195": {
+    "name": "Tilia begoniifolia"
+  },
+  "Q15395802": {
+    "name": "Eucalyptus bakeri"
+  },
+  "Q15395822": {
+    "name": "Eucalyptus balanopelex"
+  },
+  "Q15395826": {
+    "name": "Eucalyptus balladoniensis"
+  },
+  "Q15395846": {
+    "name": "Eucalyptus alaticaulis"
+  },
+  "Q15395878": {
+    "name": "Eucalyptus brevipes"
+  },
+  "Q15395887": {
+    "name": "Eucalyptus calcareana"
+  },
+  "Q15395898": {
+    "name": "Eucalyptus carnabyi"
+  },
+  "Q15395900": {
+    "name": "Eucalyptus balanites"
+  },
+  "Q15395946": {
+    "name": "Eucalyptus capillosa"
+  },
+  "Q15395944": {
+    "name": "Eucalyptus conjuncta"
+  },
+  "Q15395980": {
+    "name": "Eucalyptus creta"
+  },
+  "Q15395984": {
+    "name": "Eucalyptus biterranea"
+  },
+  "Q15395985": {
+    "name": "Eucalyptus brevirostris"
+  },
+  "Q15395991": {
+    "name": "Eucalyptus depauperata"
+  },
+  "Q15395992": {
+    "name": "Eucalyptus angularis"
+  },
+  "Q15396008": {
+    "name": "Eucalyptus exilipes"
+  },
+  "Q15396015": {
+    "name": "Eucalyptus consideniana"
+  },
+  "Q15396024": {
+    "name": "Eucalyptus barklyensis"
+  },
+  "Q15396038": {
+    "name": "Eucalyptus calcicola"
+  },
+  "Q15396044": {
+    "name": "Eucalyptus extrica"
+  },
+  "Q15396045": {
+    "name": "Eucalyptus clivicola"
+  },
+  "Q15396054": {
+    "name": "Eucalyptus guilfoylei"
+  },
+  "Q15396078": {
+    "name": "Eucalyptus barberi"
+  },
+  "Q15396082": {
+    "name": "Eucalyptus dolichorhyncha"
+  },
+  "Q15396080": {
+    "name": "Eucalyptus carnei"
+  },
+  "Q15396087": {
+    "name": "Eucalyptus exilis"
+  },
+  "Q15396092": {
+    "name": "Eucalyptus albida"
+  },
+  "Q15396113": {
+    "name": "Eucalyptus brevistylis"
+  },
+  "Q15396122": {
+    "name": "Eucalyptus elegans"
+  },
+  "Q15396123": {
+    "name": "Eucalyptus farinosa"
+  },
+  "Q15396125": {
+    "name": "Eucalyptus desmondensis"
+  },
+  "Q15396146": {
+    "name": "Eucalyptus crispata"
+  },
+  "Q15396154": {
+    "name": "Eucalyptus capitanea"
+  },
+  "Q15396167": {
+    "name": "Eucalyptus falcata"
+  },
+  "Q15396177": {
+    "name": "Eucalyptus grossifolia"
+  },
+  "Q15396199": {
+    "name": "Eucalyptus jutsonii"
+  },
+  "Q15396208": {
+    "name": "Eucalyptus castrensis"
+  },
+  "Q15396218": {
+    "name": "Eucalyptus gymnoteles"
+  },
+  "Q15396222": {
+    "name": "Eucalyptus incrassata"
+  },
+  "Q15396223": {
+    "name": "Eucalyptus conspicua"
+  },
+  "Q15396255": {
+    "name": "Eucalyptus glomericassis"
+  },
+  "Q15396265": {
+    "name": "Eucalyptus croajingolensis"
+  },
+  "Q15396271": {
+    "name": "Eucalyptus barmedmanensis"
+  },
+  "Q15396269": {
+    "name": "Eucalyptus elliptica"
+  },
+  "Q15396285": {
+    "name": "Eucalyptus albopurpurea"
+  },
+  "Q15396290": {
+    "name": "Eucalyptus callanii"
+  },
+  "Q15396298": {
+    "name": "Eucalyptus falciformis"
+  },
+  "Q15396297": {
+    "name": "Eucalyptus biturbinata"
+  },
+  "Q15396302": {
+    "name": "Eucalyptus angulosa"
+  },
+  "Q15396312": {
+    "name": "Eucalyptus comitae-vallis"
+  },
+  "Q15396322": {
+    "name": "Eucalyptus kabiana"
+  },
+  "Q15396323": {
+    "name": "Eucalyptus gypsophila"
+  },
+  "Q15396321": {
+    "name": "Eucalyptus extensa"
+  },
+  "Q15396328": {
+    "name": "Eucalyptus celastroides"
+  },
+  "Q15396337": {
+    "name": "Eucalyptus latisinensis"
+  },
+  "Q15396350": {
+    "name": "Eucalyptus livida"
+  },
+  "Q15396352": {
+    "name": "Eucalyptus crucis"
+  },
+  "Q15396359": {
+    "name": "Eucalyptus doratoxylon"
+  },
+  "Q15396366": {
+    "name": "Eucalyptus dielsii"
+  },
+  "Q15396376": {
+    "name": "Eucalyptus absita"
+  },
+  "Q15396386": {
+    "name": "Eucalyptus famelica"
+  },
+  "Q15396391": {
+    "name": "Eucalyptus contracta"
+  },
+  "Q15396394": {
+    "name": "Eucalyptus decipiens"
+  },
+  "Q15396396": {
+    "name": "Eucalyptus epruinata"
+  },
+  "Q15396402": {
+    "name": "Eucalyptus communalis"
+  },
+  "Q15396407": {
+    "name": "Eucalyptus kalangadooensis"
+  },
+  "Q15396404": {
+    "name": "Eucalyptus indurata"
+  },
+  "Q15396419": {
+    "name": "Eucalyptus captiosa"
+  },
+  "Q15396430": {
+    "name": "Eucalyptus micranthera"
+  },
+  "Q15396429": {
+    "name": "Eucalyptus megasepala"
+  },
+  "Q15396434": {
+    "name": "Eucalyptus alipes"
+  },
+  "Q15396446": {
+    "name": "Eucalyptus calycogona"
+  },
+  "Q15396444": {
+    "name": "Eucalyptus fergusonii"
+  },
+  "Q15396450": {
+    "name": "Eucalyptus hebetifolia"
+  },
+  "Q15355764": {
+    "name": "Eucalyptus subangusta"
+  },
+  "Q15355779": {
+    "name": "Eucalyptus stellaris"
+  },
+  "Q15355806": {
+    "name": "Eucalyptus subcaerulea"
+  },
+  "Q15355829": {
+    "name": "Eucalyptus socialis"
+  },
+  "Q15355840": {
+    "name": "Eucalyptus subcrenulata"
+  },
+  "Q15355868": {
+    "name": "Eucalyptus sparsa"
+  },
+  "Q15355875": {
+    "name": "Eucalyptus suberea"
+  },
+  "Q15355896": {
+    "name": "Eucalyptus subviridis"
+  },
+  "Q15355901": {
+    "name": "Eucalyptus sparsicoma"
+  },
+  "Q15355908": {
+    "name": "Eucalyptus sublucida"
+  },
+  "Q15355950": {
+    "name": "Eucalyptus suffulgens"
+  },
+  "Q15355952": {
+    "name": "Eucalyptus subtilior"
+  },
+  "Q15355964": {
+    "name": "Eucalyptus stoatei"
+  },
+  "Q15355995": {
+    "name": "Eucalyptus spectatrix"
+  },
+  "Q15355992": {
+    "name": "Eucalyptus suggrandis"
+  },
+  "Q15356005": {
+    "name": "Eucalyptus subtilis"
+  },
+  "Q15356012": {
+    "name": "Eucalyptus stopfordii"
+  },
+  "Q15356039": {
+    "name": "Eucalyptus surgens"
+  },
+  "Q15356041": {
+    "name": "Eucalyptus sphaerocarpa"
+  },
+  "Q15356046": {
+    "name": "Eucalyptus stowardii"
+  },
+  "Q15356057": {
+    "name": "Eucalyptus tephroclada"
+  },
+  "Q15356069": {
+    "name": "Eucalyptus synandra"
+  },
+  "Q15356078": {
+    "name": "Eucalyptus splendens"
+  },
+  "Q15356079": {
+    "name": "Eucalyptus striaticalyx"
+  },
+  "Q15356099": {
+    "name": "Eucalyptus tephrodes"
+  },
+  "Q15356103": {
+    "name": "Eucalyptus taeniola"
+  },
+  "Q15356115": {
+    "name": "Eucalyptus sporadica"
+  },
+  "Q15356121": {
+    "name": "Eucalyptus stricklandii"
+  },
+  "Q15356124": {
+    "name": "Eucalyptus tephrophloia"
+  },
+  "Q15356138": {
+    "name": "Eucalyptus talyuberlup"
+  },
+  "Q15356152": {
+    "name": "Eucalyptus spreta"
+  },
+  "Q15356170": {
+    "name": "Eucalyptus terebra"
+  },
+  "Q15356200": {
+    "name": "Eucalyptus tardecidens"
+  },
+  "Q15356226": {
+    "name": "Eucalyptus strzeleckii"
+  },
+  "Q15356233": {
+    "name": "Eucalyptus taurina"
+  },
+  "Q15356255": {
+    "name": "Eucalyptus staeri"
+  },
+  "Q15356262": {
+    "name": "Eucalyptus taylori"
+  },
+  "Q15356260": {
+    "name": "Eucalyptus studleyensis"
+  },
+  "Q15356275": {
+    "name": "Eucalyptus terrica"
+  },
+  "Q15356304": {
+    "name": "Eucalyptus tectifica"
+  },
+  "Q15356305": {
+    "name": "Eucalyptus sturgissiana"
+  },
+  "Q15356340": {
+    "name": "Eucalyptus tumida"
+  },
+  "Q15356361": {
+    "name": "Eucalyptus tetrapleura"
+  },
+  "Q15356375": {
+    "name": "Eucalyptus ultima"
+  },
+  "Q15356395": {
+    "name": "Eucalyptus tenera"
+  },
+  "Q15356392": {
+    "name": "Eucalyptus vesiculosa"
+  },
+  "Q15356423": {
+    "name": "Eucalyptus thamnoides"
+  },
+  "Q15356431": {
+    "name": "Eucalyptus tenuipes"
+  },
+  "Q15356432": {
+    "name": "Eucalyptus vicina"
+  },
+  "Q15356468": {
+    "name": "Eucalyptus tholiformis"
+  },
+  "Q15356472": {
+    "name": "Eucalyptus umbrawarrensis"
+  },
+  "Q15356513": {
+    "name": "Eucalyptus tenuis"
+  },
+  "Q15356521": {
+    "name": "Eucalyptus uncinata"
+  },
+  "Q15356558": {
+    "name": "Eucalyptus westonii"
+  },
+  "Q15356593": {
+    "name": "Eucalyptus tinghaensis"
+  },
+  "Q15356607": {
+    "name": "Eucalyptus urna"
+  },
+  "Q15356610": {
+    "name": "Eucalyptus wetarensis"
+  },
+  "Q15356612": {
+    "name": "Eucalyptus virens"
+  },
+  "Q15356639": {
+    "name": "Eucalyptus whitei"
+  },
+  "Q15356671": {
+    "name": "Eucalyptus virgata"
+  },
+  "Q15356712": {
+    "name": "Eucalyptus virginea"
+  },
+  "Q15356730": {
+    "name": "Eucalyptus williamsiana"
+  },
+  "Q15356734": {
+    "name": "Eucalyptus utilis"
+  },
+  "Q15356770": {
+    "name": "Eucalyptus uvida"
+  },
+  "Q15356769": {
+    "name": "Eucalyptus willisii"
+  },
+  "Q15356772": {
+    "name": "Eucalyptus tortilis"
+  },
+  "Q15356805": {
+    "name": "Eucalyptus vitrea"
+  },
+  "Q15356814": {
+    "name": "Eucalyptus valens"
+  },
+  "Q15356824": {
+    "name": "Eucalyptus trachybasis"
+  },
+  "Q15356854": {
+    "name": "Eucalyptus varia"
+  },
+  "Q15356853": {
+    "name": "Eucalyptus transcontinentalis"
+  },
+  "Q15356866": {
+    "name": "Eucalyptus vokesensis"
+  },
+  "Q15356895": {
+    "name": "Eucalyptus woollsiana"
+  },
+  "Q15356899": {
+    "name": "Eucalyptus vegrandis"
+  },
+  "Q15356911": {
+    "name": "Eucalyptus volcanica"
+  },
+  "Q15356931": {
+    "name": "Eucalyptus wubinensis"
+  },
+  "Q15356971": {
+    "name": "Eucalyptus wyolensis"
+  },
+  "Q15356978": {
+    "name": "Eucalyptus walshii"
+  },
+  "Q15356990": {
+    "name": "Eucalyptus trivalvis"
+  },
+  "Q15357014": {
+    "name": "Eucalyptus yilgarnensis"
+  },
+  "Q15357015": {
+    "name": "Eucalyptus xanthoclada"
+  },
+  "Q15357053": {
+    "name": "Eucalyptus xanthonema"
+  },
+  "Q15357064": {
+    "name": "Eucalyptus youmanii"
+  },
+  "Q15357090": {
+    "name": "Eucalyptus wardii"
+  },
+  "Q15357097": {
+    "name": "Eucalyptus xerothermica"
+  },
+  "Q15357142": {
+    "name": "Eucalyptus yumbarrana"
+  },
+  "Q15357143": {
+    "name": "Eucalyptus yagobiei"
+  },
+  "Q15357147": {
+    "name": "Eucalyptus websteriana"
+  },
+  "Q15357194": {
+    "name": "Eucalyptus yalatensis"
+  },
+  "Q15371791": {
+    "name": "Populus wenxianica"
+  },
+  "Q15371872": {
+    "name": "Populus schneideri"
+  },
+  "Q15372622": {
+    "name": "Populus keerqinensis"
+  },
+  "Q15373107": {
+    "name": "Populus × pseudotomentosa"
+  },
+  "Q15374291": {
+    "name": "Populus minhoensis"
+  },
+  "Q15375730": {
+    "name": "Betula bomiensis"
+  },
+  "Q15376000": {
+    "name": "Betula × jackii"
+  },
+  "Q15376140": {
+    "name": "Himalaya kızılağacı"
+  },
+  "Q15376378": {
+    "name": "Betula falcata"
+  },
+  "Q15376417": {
+    "name": "Betula chichibuensis"
+  },
+  "Q15376555": {
+    "name": "Corylus potaninii"
+  },
+  "Q15397140": {
+    "name": "Eucalyptus mannensis"
+  },
+  "Q15397162": {
+    "name": "Eucalyptus cyanophylla"
+  },
+  "Q15397166": {
+    "name": "Eucalyptus campaspe"
+  },
+  "Q15397167": {
+    "name": "Eucalyptus minniritchi"
+  },
+  "Q15397169": {
+    "name": "Eucalyptus largeana"
+  },
+  "Q15397183": {
+    "name": "Eucalyptus ligulata"
+  },
+  "Q15397190": {
+    "name": "Eucalyptus aequans"
+  },
+  "Q15397195": {
+    "name": "Eucalyptus lucasii"
+  },
+  "Q15397208": {
+    "name": "Eucalyptus dunnii"
+  },
+  "Q15397212": {
+    "name": "Eucalyptus eudesmioides"
+  },
+  "Q15397217": {
+    "name": "Eucalyptus burracoppinensis"
+  },
+  "Q15397225": {
+    "name": "Eucalyptus chlorophylla"
+  },
+  "Q15397234": {
+    "name": "Eucalyptus goniocarpa"
+  },
+  "Q15397242": {
+    "name": "Eucalyptus dissita"
+  },
+  "Q15397247": {
+    "name": "Eucalyptus annuliformis"
+  },
+  "Q15397274": {
+    "name": "Eucalyptus laseronii"
+  },
+  "Q15397284": {
+    "name": "Eucalyptus delicata"
+  },
+  "Q15397293": {
+    "name": "Eucalyptus aequioperta"
+  },
+  "Q15397299": {
+    "name": "Eucalyptus cyclostoma"
+  },
+  "Q15397311": {
+    "name": "Eucalyptus limitaris"
+  },
+  "Q15397318": {
+    "name": "Eucalyptus lucens"
+  },
+  "Q15397327": {
+    "name": "Eucalyptus chrysantha"
+  },
+  "Q15397331": {
+    "name": "Eucalyptus coronata"
+  },
+  "Q15397340": {
+    "name": "Eucalyptus misella"
+  },
+  "Q15397348": {
+    "name": "Eucalyptus canaliculata"
+  },
+  "Q15397357": {
+    "name": "Eucalyptus anceps"
+  },
+  "Q15397363": {
+    "name": "Eucalyptus ewartiana"
+  },
+  "Q15397379": {
+    "name": "Eucalyptus dura"
+  },
+  "Q15397376": {
+    "name": "Eucalyptus argillacea"
+  },
+  "Q15397385": {
+    "name": "Eucalyptus latens"
+  },
+  "Q15397393": {
+    "name": "Eucalyptus intrasilvatica"
+  },
+  "Q15397408": {
+    "name": "Eucalyptus affinis"
+  },
+  "Q15397409": {
+    "name": "Eucalyptus foliosa"
+  },
+  "Q15397413": {
+    "name": "Eucalyptus cylindriflora"
+  },
+  "Q15397423": {
+    "name": "Eucalyptus distans"
+  },
+  "Q15397438": {
+    "name": "Eucalyptus lirata"
+  },
+  "Q15397471": {
+    "name": "Eucalyptus densa"
+  },
+  "Q15397483": {
+    "name": "Eucalyptus luculenta"
+  },
+  "Q15397497": {
+    "name": "Eucalyptus marsdenii"
+  },
+  "Q15397505": {
+    "name": "Eucalyptus ancophila"
+  },
+  "Q15397526": {
+    "name": "Eucalyptus corrugata"
+  },
+  "Q15397534": {
+    "name": "Eucalyptus canescens"
+  },
+  "Q15397540": {
+    "name": "Eucalyptus lateritica"
+  },
+  "Q15397547": {
+    "name": "Eucalyptus exigua"
+  },
+  "Q15397568": {
+    "name": "Eucalyptus litoralis"
+  },
+  "Q15397577": {
+    "name": "Eucalyptus cylindrocarpa"
+  },
+  "Q15397581": {
+    "name": "Eucalyptus dwyeri"
+  },
+  "Q15397584": {
+    "name": "Eucalyptus irritans"
+  },
+  "Q15397593": {
+    "name": "Eucalyptus formanii"
+  },
+  "Q15397602": {
+    "name": "Eucalyptus luteola"
+  },
+  "Q15397603": {
+    "name": "Eucalyptus mckieana"
+  },
+  "Q15397616": {
+    "name": "Eucalyptus diversifolia"
+  },
+  "Q15397640": {
+    "name": "Eucalyptus helenae"
+  },
+  "Q15397659": {
+    "name": "Eucalyptus bensonii"
+  },
+  "Q15397669": {
+    "name": "Eucalyptus litorea"
+  },
+  "Q15397674": {
+    "name": "Eucalyptus corynodes"
+  },
+  "Q15397678": {
+    "name": "Eucalyptus anomala"
+  },
+  "Q15397688": {
+    "name": "Eucalyptus canobolensis"
+  },
+  "Q15397695": {
+    "name": "Eucalyptus moderata"
+  },
+  "Q15397738": {
+    "name": "Eucalyptus mcquoidii"
+  },
+  "Q15397744": {
+    "name": "Eucalyptus forthiana"
+  },
+  "Q15397752": {
+    "name": "Eucalyptus granitica"
+  },
+  "Q15397757": {
+    "name": "Eucalyptus mackintyi"
+  },
+  "Q15397801": {
+    "name": "Eucalyptus jensenii"
+  },
+  "Q15397811": {
+    "name": "Eucalyptus dixsonii"
+  },
+  "Q15397845": {
+    "name": "Eucalyptus ednaeana"
+  },
+  "Q15397856": {
+    "name": "Eucalyptus cosmophylla"
+  },
+  "Q15397871": {
+    "name": "Eucalyptus macmahonii"
+  },
+  "Q15397874": {
+    "name": "Eucalyptus medialis"
+  },
+  "Q15397899": {
+    "name": "Eucalyptus molyneuxii"
+  },
+  "Q15397907": {
+    "name": "Eucalyptus beyeri"
+  },
+  "Q15397914": {
+    "name": "Eucalyptus fracta"
+  },
+  "Q15397953": {
+    "name": "Eucalyptus dolichocera"
+  },
+  "Q15397988": {
+    "name": "Eucalyptus gratiae"
+  },
+  "Q15397994": {
+    "name": "Eucalyptus jimberlanica"
+  },
+  "Q15398012": {
+    "name": "Eucalyptus mediocris"
+  },
+  "Q15398038": {
+    "name": "Eucalyptus costuligera"
+  },
+  "Q15398053": {
+    "name": "Eucalyptus apodophylla"
+  },
+  "Q15398057": {
+    "name": "Eucalyptus educta"
+  },
+  "Q15398087": {
+    "name": "Eucalyptus montana"
+  },
+  "Q15398113": {
+    "name": "Eucalyptus boliviana"
+  },
+  "Q15398121": {
+    "name": "Eucalyptus fraseri"
+  },
+  "Q15398166": {
+    "name": "Eucalyptus beyeriana"
+  },
+  "Q15398178": {
+    "name": "Eucalyptus johnsoniana"
+  },
+  "Q15398213": {
+    "name": "Eucalyptus crawfordii"
+  },
+  "Q15398220": {
+    "name": "Eucalyptus gregoriensis"
+  },
+  "Q15398227": {
+    "name": "Eucalyptus effusa"
+  },
+  "Q15398279": {
+    "name": "Eucalyptus helidonica"
+  },
+  "Q15398292": {
+    "name": "Eucalyptus montivaga"
+  },
+  "Q15398368": {
+    "name": "Eucalyptus johnstonii"
+  },
+  "Q15398403": {
+    "name": "Eucalyptus bicolor"
+  },
+  "Q15398414": {
+    "name": "Eucalyptus argophloia"
+  },
+  "Q15398446": {
+    "name": "Eucalyptus apothalassica"
+  },
+  "Q15398445": {
+    "name": "Eucalyptus mooreana"
+  },
+  "Q15398494": {
+    "name": "Eucalyptus joyceae"
+  },
+  "Q15398505": {
+    "name": "Eucalyptus boormanii"
+  },
+  "Q15398554": {
+    "name": "Eucalyptus griffithsii"
+  },
+  "Q15398667": {
+    "name": "Eucalyptus bipileata"
+  },
+  "Q15398697": {
+    "name": "Eucalyptus jucunda"
+  },
+  "Q15398869": {
+    "name": "Eucalyptus grisea"
+  },
+  "Q15396454": {
+    "name": "Eucalyptus microcodon"
+  },
+  "Q15396459": {
+    "name": "Eucalyptus glomerosa"
+  },
+  "Q15396457": {
+    "name": "Eucalyptus hallii"
+  },
+  "Q15396467": {
+    "name": "Eucalyptus lockyeri"
+  },
+  "Q15396464": {
+    "name": "Eucalyptus ceracea"
+  },
+  "Q15396470": {
+    "name": "Eucalyptus kumarlensis"
+  },
+  "Q15396468": {
+    "name": "Eucalyptus broviniensis"
+  },
+  "Q15396474": {
+    "name": "Eucalyptus concinna"
+  },
+  "Q15396478": {
+    "name": "Eucalyptus melanophitra"
+  },
+  "Q15396476": {
+    "name": "Eucalyptus cullenii"
+  },
+  "Q15396480": {
+    "name": "Eucalyptus kalganensis"
+  },
+  "Q15396494": {
+    "name": "Eucalyptus diminuta"
+  },
+  "Q15396510": {
+    "name": "Eucalyptus erectifolia"
+  },
+  "Q15396528": {
+    "name": "Eucalyptus dorisiana"
+  },
+  "Q15396535": {
+    "name": "Eucalyptus cerasiformis"
+  },
+  "Q15396533": {
+    "name": "Eucalyptus leprophloia"
+  },
+  "Q15396547": {
+    "name": "Eucalyptus halophila"
+  },
+  "Q15396554": {
+    "name": "Eucalyptus infera"
+  },
+  "Q15396566": {
+    "name": "Eucalyptus calyerup"
+  },
+  "Q15396567": {
+    "name": "Eucalyptus microneura"
+  },
+  "Q15396564": {
+    "name": "Eucalyptus macta"
+  },
+  "Q15396569": {
+    "name": "Eucalyptus alligatrix"
+  },
+  "Q15396579": {
+    "name": "Eucalyptus decolor"
+  },
+  "Q15396592": {
+    "name": "Eucalyptus conveniens"
+  },
+  "Q15396603": {
+    "name": "Eucalyptus lacrimans"
+  },
+  "Q15396600": {
+    "name": "Eucalyptus kondininensis"
+  },
+  "Q15396605": {
+    "name": "Eucalyptus acies"
+  },
+  "Q15396622": {
+    "name": "Eucalyptus confluens"
+  },
+  "Q15396623": {
+    "name": "Eucalyptus kenneallyi"
+  },
+  "Q15396624": {
+    "name": "Eucalyptus filiformis"
+  },
+  "Q15396625": {
+    "name": "Eucalyptus melanoxylon"
+  },
+  "Q15396633": {
+    "name": "Eucalyptus cuprea"
+  },
+  "Q15396639": {
+    "name": "Eucalyptus diptera"
+  },
+  "Q15396647": {
+    "name": "Eucalyptus ceratocorys"
+  },
+  "Q15396645": {
+    "name": "Eucalyptus blackburniana"
+  },
+  "Q15396651": {
+    "name": "Eucalyptus eremicola"
+  },
+  "Q15396648": {
+    "name": "Eucalyptus leptocalyx"
+  },
+  "Q15396654": {
+    "name": "Eucalyptus hawkeri"
+  },
+  "Q15396657": {
+    "name": "Eucalyptus brunnea"
+  },
+  "Q15396671": {
+    "name": "Eucalyptus gongylocarpa"
+  },
+  "Q15396706": {
+    "name": "Eucalyptus congener"
+  },
+  "Q15396707": {
+    "name": "Eucalyptus kessellii"
+  },
+  "Q15396713": {
+    "name": "Eucalyptus magnificata"
+  },
+  "Q15396718": {
+    "name": "Eucalyptus infracorticata"
+  },
+  "Q15396726": {
+    "name": "Eucalyptus microschema"
+  },
+  "Q15396725": {
+    "name": "Eucalyptus cameronii"
+  },
+  "Q15396730": {
+    "name": "Eucalyptus decorticans"
+  },
+  "Q15396732": {
+    "name": "Eucalyptus cernua"
+  },
+  "Q15396738": {
+    "name": "Eucalyptus alpina"
+  },
+  "Q15396737": {
+    "name": "Eucalyptus drepanophylla"
+  },
+  "Q15396750": {
+    "name": "Eucalyptus leptocarpa"
+  },
+  "Q15396759": {
+    "name": "Eucalyptus cupularis"
+  },
+  "Q15396757": {
+    "name": "Eucalyptus mensalis"
+  },
+  "Q15396767": {
+    "name": "Eucalyptus fitzgeraldii"
+  },
+  "Q15396771": {
+    "name": "Eucalyptus laevis"
+  },
+  "Q15396769": {
+    "name": "Eucalyptus acroleuca"
+  },
+  "Q15396778": {
+    "name": "Eucalyptus bucknellii"
+  },
+  "Q15396786": {
+    "name": "Eucalyptus longirostra"
+  },
+  "Q15396785": {
+    "name": "Eucalyptus disclusa"
+  },
+  "Q15396802": {
+    "name": "Eucalyptus conglobata"
+  },
+  "Q15396813": {
+    "name": "Eucalyptus kingsmillii"
+  },
+  "Q15396817": {
+    "name": "Eucalyptus erosa"
+  },
+  "Q15396827": {
+    "name": "Eucalyptus cooperiana"
+  },
+  "Q15396824": {
+    "name": "Eucalyptus major"
+  },
+  "Q15396837": {
+    "name": "Eucalyptus annulata"
+  },
+  "Q15396850": {
+    "name": "Eucalyptus merrickiae"
+  },
+  "Q15396854": {
+    "name": "Eucalyptus decurva"
+  },
+  "Q15396859": {
+    "name": "Eucalyptus beardiana"
+  },
+  "Q15396857": {
+    "name": "Eucalyptus flavida"
+  },
+  "Q15396871": {
+    "name": "Eucalyptus currabubula"
+  },
+  "Q15396879": {
+    "name": "Eucalyptus buprestium"
+  },
+  "Q15396877": {
+    "name": "Eucalyptus chartaboma"
+  },
+  "Q15396882": {
+    "name": "Eucalyptus goniantha"
+  },
+  "Q15396880": {
+    "name": "Eucalyptus camfieldii"
+  },
+  "Q15396897": {
+    "name": "Eucalyptus longirostrata"
+  },
+  "Q15396906": {
+    "name": "Eucalyptus insularis"
+  },
+  "Q15396910": {
+    "name": "Eucalyptus discreta"
+  },
+  "Q15396920": {
+    "name": "Eucalyptus adjuncta"
+  },
+  "Q15396933": {
+    "name": "Eucalyptus lesouefii"
+  },
+  "Q15396966": {
+    "name": "Eucalyptus mimica"
+  },
+  "Q15396965": {
+    "name": "Eucalyptus malacoxylon"
+  },
+  "Q15396980": {
+    "name": "Eucalyptus erythrandra"
+  },
+  "Q15396984": {
+    "name": "Eucalyptus dundasii"
+  },
+  "Q15397003": {
+    "name": "Eucalyptus chisholmii"
+  },
+  "Q15397018": {
+    "name": "Eucalyptus cyanoclada"
+  },
+  "Q15397022": {
+    "name": "Eucalyptus aenea"
+  },
+  "Q15397020": {
+    "name": "Eucalyptus leucophloia"
+  },
+  "Q15397027": {
+    "name": "Eucalyptus burdettiana"
+  },
+  "Q15397024": {
+    "name": "Eucalyptus campanifructa"
+  },
+  "Q15397031": {
+    "name": "Eucalyptus longissima"
+  },
+  "Q15397032": {
+    "name": "Eucalyptus flindersii"
+  },
+  "Q15397045": {
+    "name": "Eucalyptus deflexa"
+  },
+  "Q15397050": {
+    "name": "Eucalyptus cordieri"
+  },
+  "Q15397059": {
+    "name": "Eucalyptus beaselyi"
+  },
+  "Q15397062": {
+    "name": "Eucalyptus laophila"
+  },
+  "Q15397079": {
+    "name": "Eucalyptus ammophila"
+  },
+  "Q15397082": {
+    "name": "Eucalyptus interstans"
+  },
+  "Q15397087": {
+    "name": "Eucalyptus dissimulata"
+  },
+  "Q15397115": {
+    "name": "Eucalyptus blaxellii"
+  },
+  "Q15397118": {
+    "name": "Eucalyptus chloroclada"
+  },
+  "Q15399049": {
+    "name": "Eucalyptus brachyandra"
+  },
+  "Q15399060": {
+    "name": "Eucalyptus approximans"
+  },
+  "Q15399242": {
+    "name": "Eucalyptus herbertiana"
+  },
+  "Q15399519": {
+    "name": "Eucalyptus aquilina"
+  },
+  "Q15399548": {
+    "name": "Eucalyptus brachycalyx"
+  },
+  "Q15399591": {
+    "name": "Eucalyptus argyphea"
+  },
+  "Q15399668": {
+    "name": "Eucalyptus histophylla"
+  },
+  "Q15399783": {
+    "name": "Eucalyptus arachnaea"
+  },
+  "Q15399865": {
+    "name": "Eucalyptus brachycorys"
+  },
+  "Q15399930": {
+    "name": "Eucalyptus froggattii"
+  },
+  "Q15399959": {
+    "name": "Eucalyptus houseana"
+  },
+  "Q15399999": {
+    "name": "Eucalyptus aromaphloia"
+  },
+  "Q15400005": {
+    "name": "Eucalyptus arborella"
+  },
+  "Q15400063": {
+    "name": "Eucalyptus brachyphylla"
+  },
+  "Q15400194": {
+    "name": "Eucalyptus howittiana"
+  },
+  "Q15400195": {
+    "name": "Eucalyptus fruticosa"
+  },
+  "Q15400313": {
+    "name": "Eucalyptus brassiana"
+  },
+  "Q15400362": {
+    "name": "Eucalyptus hybrida"
+  },
+  "Q15400371": {
+    "name": "Eucalyptus archeri"
+  },
+  "Q15400437": {
+    "name": "Eucalyptus articulata"
+  },
+  "Q15400440": {
+    "name": "Eucalyptus fulgens"
+  },
+  "Q15400504": {
+    "name": "Eucalyptus hypolaena"
+  },
+  "Q15400518": {
+    "name": "Eucalyptus brevifolia"
+  },
+  "Q15400593": {
+    "name": "Eucalyptus arenacea"
+  },
+  "Q15400656": {
+    "name": "Eucalyptus hypostomatica"
+  },
+  "Q15400661": {
+    "name": "Eucalyptus aspersa"
+  },
+  "Q15400666": {
+    "name": "Eucalyptus fusiformis"
+  },
+  "Q15400736": {
+    "name": "Eucalyptus arenicola"
+  },
+  "Q15400795": {
+    "name": "Eucalyptus aspratilis"
+  },
+  "Q15400844": {
+    "name": "Eucalyptus ignorabilis"
+  },
+  "Q15400920": {
+    "name": "Eucalyptus assimilans"
+  },
+  "Q15400946": {
+    "name": "Eucalyptus imitans"
+  },
+  "Q15400977": {
+    "name": "Eucalyptus gardneri"
+  },
+  "Q15400997": {
+    "name": "Eucalyptus astringens"
+  },
+  "Q15401064": {
+    "name": "Eucalyptus georgei"
+  },
+  "Q15401087": {
+    "name": "Eucalyptus atrata"
+  },
+  "Q15401091": {
+    "name": "Eucalyptus impensa"
+  },
+  "Q15401138": {
+    "name": "Eucalyptus gigantangion"
+  },
+  "Q15401154": {
+    "name": "Eucalyptus auburnensis"
+  },
+  "Q15401157": {
+    "name": "Eucalyptus incerata"
+  },
+  "Q15401212": {
+    "name": "Eucalyptus gillenii"
+  },
+  "Q15401234": {
+    "name": "Eucalyptus baeuerlenii"
+  },
+  "Q15401282": {
+    "name": "Eucalyptus baileyana"
+  },
+  "Q15401283": {
+    "name": "Eucalyptus gittinsii"
+  },
+  "Q15401328": {
+    "name": "Eucalyptus baiophylla"
+  },
+  "Q15401360": {
+    "name": "Eucalyptus glaucina"
+  },
+  "Q15461443": {
+    "name": "Eucalyptus paedoglauca"
+  },
+  "Q15461448": {
+    "name": "Eucalyptus rigens"
+  },
+  "Q15474450": {
+    "name": "Ficus godeffroyi"
+  },
+  "Q15474952": {
+    "name": "Ficus obtusifolia"
+  },
+  "Q15476780": {
+    "name": "Ficus pertusa"
+  },
+  "Q15478907": {
+    "name": "Ficus nymphaeifolia"
+  },
+  "Q15486897": {
+    "name": "Pinus × murraybanksiana"
+  },
+  "Q15486972": {
+    "name": "Pinus × neilreichiana"
+  },
+  "Q15487159": {
+    "name": "Pinus × litvinovii"
+  },
+  "Q15487454": {
+    "name": "Pinus × cerambycifera"
+  },
+  "Q15528375": {
+    "name": "Sorbus occidentalis"
+  },
+  "Q15529872": {
+    "name": "Ulmus mianzhuensis"
+  },
+  "Q15538207": {
+    "name": "Elaeagnus maximowiczii"
+  },
+  "Q15538271": {
+    "name": "Elaeagnus pingnanensis"
+  },
+  "Q15538285": {
+    "name": "Elaeagnus yunnanensis"
+  },
+  "Q15538411": {
+    "name": "Elaeagnus laosensis"
+  },
+  "Q15538659": {
+    "name": "Elaeagnus annamensis"
+  },
+  "Q15538743": {
+    "name": "Elaeagnus murakamiana"
+  },
+  "Q15538918": {
+    "name": "Elaeagnus rivularis"
+  },
+  "Q15538948": {
+    "name": "Elaeagnus obovatifolia"
+  },
+  "Q15539023": {
+    "name": "Elaeagnus rotundata"
+  },
+  "Q15539092": {
+    "name": "Elaeagnus heterophylla"
+  },
+  "Q15539109": {
+    "name": "Elaeagnus calcarea"
+  },
+  "Q15539122": {
+    "name": "Elaeagnus s-stylata"
+  },
+  "Q15539208": {
+    "name": "Elaeagnus ovata"
+  },
+  "Q15539303": {
+    "name": "Elaeagnus indica"
+  },
+  "Q15539307": {
+    "name": "Elaeagnus xichouensis"
+  },
+  "Q15539420": {
+    "name": "Elaeagnus xingwenensis"
+  },
+  "Q15539524": {
+    "name": "Elaeagnus xizangensis"
+  },
+  "Q15539622": {
+    "name": "Elaeagnus yoshinoi"
+  },
+  "Q15544117": {
+    "name": "Cotinus carranzae"
+  },
+  "Q15544186": {
+    "name": "Cotinus chiangii"
+  },
+  "Q15545260": {
+    "name": "Pyrus trilocularis"
+  },
+  "Q15545703": {
+    "name": "Pyrus korshinskyi"
+  },
+  "Q15545817": {
+    "name": "Prunus ferruginea"
+  },
+  "Q15546032": {
+    "name": "Prunus ulei"
+  },
+  "Q15546295": {
+    "name": "Prunus oblonga"
+  },
+  "Q15582750": {
+    "name": "Eucalyptus plenissima"
+  },
+  "Q15605039": {
+    "name": "Cornus arnoldiana"
+  },
+  "Q15605468": {
+    "name": "Cornus rugosa"
+  },
+  "Q15742470": {
+    "name": "Celtis tala"
+  },
+  "Q16364671": {
+    "name": "Prunus vachuschtii"
+  },
+  "Q16753004": {
+    "name": "Fraxinus berlandieriana"
+  },
+  "Q16982132": {
+    "name": "Fraxinus gooddingii"
+  },
+  "Q16988612": {
+    "name": "Prunus dasycarpa"
+  },
+  "Q17165388": {
+    "name": "Cupressus vietnamensis"
+  },
+  "Q17165398": {
+    "name": "Cupressus ericoides"
+  },
+  "Q17165396": {
+    "name": "Cupressus elegans"
+  },
+  "Q17165404": {
+    "name": "Cupressus balfouriana"
+  },
+  "Q17165411": {
+    "name": "Cupressus nivea"
+  },
+  "Q17165408": {
+    "name": "Cupressus madeirensis"
+  },
+  "Q17165412": {
+    "name": "Cupressus amoena"
+  },
+  "Q17165423": {
+    "name": "Cupressus religiosa"
+  },
+  "Q17165443": {
+    "name": "Cupressus ugelii"
+  },
+  "Q17165441": {
+    "name": "Cupressus torulosis"
+  },
+  "Q17234656": {
+    "name": "Prunus albicaulis"
+  },
+  "Q17234734": {
+    "name": "Prunus jajarkotensis"
+  },
+  "Q17234748": {
+    "name": "Prunus mugus"
+  },
+  "Q17234760": {
+    "name": "Prunus fordiana"
+  },
+  "Q17234834": {
+    "name": "Prunus jugata"
+  },
+  "Q17234859": {
+    "name": "Prunus falcata"
+  },
+  "Q17235169": {
+    "name": "Prunus fujianensis"
+  },
+  "Q17235271": {
+    "name": "Prunus koelzii"
+  },
+  "Q17237584": {
+    "name": "Pyrus × babadagensis"
+  },
+  "Q17237690": {
+    "name": "Pyrus turcomanica"
+  },
+  "Q17237864": {
+    "name": "Pyrus asiae-mediae"
+  },
+  "Q17237890": {
+    "name": "Pyrus tuskaulensis"
+  },
+  "Q17237893": {
+    "name": "Pyrus eldarica"
+  },
+  "Q17237954": {
+    "name": "Pyrus acutiserrata"
+  },
+  "Q17237952": {
+    "name": "Pyrus chosrovica"
+  },
+  "Q17238189": {
+    "name": "Pyrus ciancioi"
+  },
+  "Q17238257": {
+    "name": "Pyrus regelii"
+  },
+  "Q17238412": {
+    "name": "Pyrus sachokiana"
+  },
+  "Q17239563": {
+    "name": "Pyrus longipedicellata"
+  },
+  "Q17239686": {
+    "name": "Sorbus subfusca"
+  },
+  "Q17239802": {
+    "name": "Pyrus magyarica"
+  },
+  "Q17240363": {
+    "name": "Pyrus mazanderanica"
+  },
+  "Q17240717": {
+    "name": "Pyrus zangezura"
+  },
+  "Q17241464": {
+    "name": "Sorbus bulleyana"
+  },
+  "Q17246773": {
+    "name": "Elaeagnus arakiana"
+  },
+  "Q17247648": {
+    "name": "Cornus quinquinervis"
+  },
+  "Q17248666": {
+    "name": "Elaeagnus numajiriana"
+  },
+  "Q17250329": {
+    "name": "Elaeagnus yakusimensis"
+  },
+  "Q17250690": {
+    "name": "Ulmus lesueurii"
+  },
+  "Q17270891": {
+    "name": "Pyrus ferganensis"
+  },
+  "Q17270895": {
+    "name": "Pyrus nutans"
+  },
+  "Q17270892": {
+    "name": "Pyrus giffanica"
+  },
+  "Q17270898": {
+    "name": "Pyrus demetrii"
+  },
+  "Q17270899": {
+    "name": "Pyrus jacquemontiana"
+  },
+  "Q17270902": {
+    "name": "Pyrus ketzkhovelii"
+  },
+  "Q17270903": {
+    "name": "Pyrus voronovii"
+  },
+  "Q17270905": {
+    "name": "Pyrus yaltirikii"
+  },
+  "Q17271744": {
+    "name": "Sorbus kusnetzovii"
+  },
+  "Q17271759": {
+    "name": "Sorbus tobani"
+  },
+  "Q17274351": {
+    "name": "Pinus × naxiorum"
+  },
+  "Q17274575": {
+    "name": "Pinus anemophila"
+  },
+  "Q17274580": {
+    "name": "Pinus georginae"
+  },
+  "Q17274644": {
+    "name": "Pinus × ascendens"
+  },
+  "Q17357252": {
+    "name": "Pinus balsamea"
+  },
+  "Q17357279": {
+    "name": "Pinus lasiocarpa"
+  },
+  "Q17358290": {
+    "name": "Pinus glauca"
+  },
+  "Q17358512": {
+    "name": "Abies glehnii"
+  },
+  "Q17358709": {
+    "name": "Abies likiangensis"
+  },
+  "Q17363881": {
+    "name": "Cupressus thyoides"
+  },
+  "Q17561921": {
+    "name": "Salix armeno-rossica"
+  },
+  "Q17561938": {
+    "name": "Populus × parryi"
+  },
+  "Q17561939": {
+    "name": "Populus × inopina"
+  },
+  "Q17561936": {
+    "name": "Populus × smithii"
+  },
+  "Q17561937": {
+    "name": "Populus × rouleauana"
+  },
+  "Q17561941": {
+    "name": "Populus × heimburgeri"
+  },
+  "Q17561946": {
+    "name": "Populus × steiniana"
+  },
+  "Q17561953": {
+    "name": "Populus × kashmirica"
+  },
+  "Q17562222": {
+    "name": "Rize söğüdü"
+  },
+  "Q17562237": {
+    "name": "Salix pseudodepressa"
+  },
+  "Q17562249": {
+    "name": "Salix pentandrifolia"
+  },
+  "Q17562596": {
+    "name": "Salix viridiformis"
+  },
+  "Q17562607": {
+    "name": "Trabzon söğüdü"
+  },
+  "Q17579305": {
+    "name": "Tilia sabetii"
+  },
+  "Q17579311": {
+    "name": "Tilia kiusiana"
+  },
+  "Q17579317": {
+    "name": "Tilia concinna"
+  },
+  "Q17592538": {
+    "name": "Eucalyptus algeriensis"
+  },
+  "Q17592536": {
+    "name": "Eucalyptus antipolitensis"
+  },
+  "Q17593459": {
+    "name": "Eucalyptus costata"
+  },
+  "Q17593466": {
+    "name": "Eucalyptus bourlieri"
+  },
+  "Q17713054": {
+    "name": "Fraxinus greggii"
+  },
+  "Q17713053": {
+    "name": "Fraxinus papillosa"
+  },
+  "Q17781615": {
+    "name": "Liquidambar multinervis"
+  },
+  "Q17781612": {
+    "name": "Liquidambar siamensis"
+  },
+  "Q17781613": {
+    "name": "Liquidambar poilanei"
+  },
+  "Q17781620": {
+    "name": "Liquidambar caudata"
+  },
+  "Q17781621": {
+    "name": "Liquidambar cambodiana"
+  },
+  "Q18080352": {
+    "name": "Platanus rzedowskii"
+  },
+  "Q19309094": {
+    "name": "Malus × robusta"
+  },
+  "Q20645165": {
+    "name": "Pyrus austriaca"
+  },
+  "Q20720096": {
+    "name": "Alnus alnobetula"
+  },
+  "Q21251812": {
+    "name": "Betula hainanensis"
+  },
+  "Q21266888": {
+    "name": "Eucalyptus coniophloia"
+  },
+  "Q21266932": {
+    "name": "Eucalyptus grandifolia"
+  },
+  "Q21266956": {
+    "name": "Eucalyptus lamprocalyx"
+  },
+  "Q21266991": {
+    "name": "Eucalyptus phoenix"
+  },
+  "Q21267017": {
+    "name": "Eucalyptus tokwa"
+  },
+  "Q21267020": {
+    "name": "Eucalyptus urnularis"
+  },
+  "Q21269548": {
+    "name": "Ficus henneana"
+  },
+  "Q21269560": {
+    "name": "Ficus saffordii"
+  },
+  "Q21270423": {
+    "name": "Fraxinus apertisquamifera"
+  },
+  "Q21301532": {
+    "name": "Populus incrassata"
+  },
+  "Q21304028": {
+    "name": "Salix armenorossica"
+  },
+  "Q21311676": {
+    "name": "Pyrus glabra"
+  },
+  "Q21370014": {
+    "name": "Fraxinus × rehderiana"
+  },
+  "Q21370012": {
+    "name": "Fraxinus × borzae"
+  },
+  "Q21370013": {
+    "name": "Fraxinus × hybrida"
+  },
+  "Q21370446": {
+    "name": "Pyrus × michauxii"
+  },
+  "Q21370445": {
+    "name": "Pyrus complexa"
+  },
+  "Q21398910": {
+    "name": "Fraxinus raibocarpa"
+  },
+  "Q65938399": {
+    "name": "Eucalyptus yarriambiack"
+  },
+  "Q66361168": {
+    "name": "Carpinus insularis"
+  },
+  "Q66436642": {
+    "name": "Quercus yongchuniana"
+  },
+  "Q26899": {
+    "name": "Beyaz çiçekli at kestanesi"
+  },
+  "Q39527": {
+    "name": "Picea farreri"
+  },
+  "Q46871": {
+    "name": "Adi ceviz"
+  },
+  "Q77606486": {
+    "name": "Carpinus tibetana"
+  },
+  "Q81733778": {
+    "name": "Pyrus cajon"
+  },
+  "Q81734826": {
+    "name": "Pyrus browiczii"
+  },
+  "Q82307933": {
+    "name": "Pyrus × daralagezii"
+  },
+  "Q82309334": {
+    "name": "Pyrus sosnovskii"
+  },
+  "Q84073726": {
+    "name": "Crataegus coriifolia"
+  },
+  "Q84292754": {
+    "name": "Crataegus petrodavisii"
+  },
+  "Q84575456": {
+    "name": "Populus hastifolia"
+  },
+  "Q84589103": {
+    "name": "Crataegus gattingeri"
+  },
+  "Q84708572": {
+    "name": "Crataegus opima"
+  },
+  "Q84749203": {
+    "name": "Alnus betulifolia"
+  },
+  "Q85759741": {
+    "name": "Eucalyptus ornans"
+  },
+  "Q87614834": {
+    "name": "Cupressus obtusa"
+  },
+  "Q89052621": {
+    "name": "Prunus yazdiana"
+  },
+  "Q89199483": {
+    "name": "Pyrus angustissima"
+  },
+  "Q89204342": {
+    "name": "Pyrus britannica"
+  },
+  "Q89212724": {
+    "name": "Pyrus pyrrhula"
+  },
+  "Q89216101": {
+    "name": "Pyrus terpoi"
+  },
+  "Q90580007": {
+    "name": "Pinus vallartensis"
+  },
+  "Q90584819": {
+    "name": "Populus × nevensis"
+  },
+  "Q90584869": {
+    "name": "Populus × tomentiglandulosa"
+  },
+  "Q90586966": {
+    "name": "Prunus xingshanensis"
+  },
+  "Q90691605": {
+    "name": "Acer iranicum"
+  },
+  "Q91344019": {
+    "name": "Prunus erzincanica"
+  },
+  "Q91344047": {
+    "name": "Prunus kaengkrachanensis"
+  },
+  "Q91391723": {
+    "name": "Acer orthocampestre"
+  },
+  "Q92129457": {
+    "name": "Olea luzonica"
+  },
+  "Q92145505": {
+    "name": "Prunus xianjuxing"
+  },
+  "Q92156274": {
+    "name": "Sorbus rhombiformis"
+  },
+  "Q93146618": {
+    "name": "Cupressus pisifera"
+  },
+  "Q93175740": {
+    "name": "Populus rockii"
+  },
+  "Q93438583": {
+    "name": "Carpinus gigabracteatus"
+  },
+  "Q96151953": {
+    "name": "Crataegus teres"
+  },
+  "Q97290700": {
+    "name": "Abies hickelii var. macrocarpa"
+  },
+  "Q102111552": {
+    "name": "Cupressus gansuensis"
+  },
+  "Q104939366": {
+    "name": "Eucalyptus mitchelli"
+  },
+  "Q104945573": {
+    "name": "Eucalyptus risdoni"
+  },
+  "Q106232136": {
+    "name": "Pyrus mecsekensis"
+  },
+  "Q106312107": {
+    "name": "Pyrus raddeana"
+  },
+  "Q106369221": {
+    "name": "Prunus macradenia"
+  },
+  "Q106918407": {
+    "name": "Pinus uliginosa"
+  },
+  "Q108389052": {
+    "name": "Pyrus × jordanovii"
+  },
+  "Q110570767": {
+    "name": "Pyrus elaeagnifolia"
+  },
+  "Q111159821": {
+    "name": "Ficus communis"
+  },
+  "Q111328214": {
+    "name": "Lithocarpus teysmannii"
+  },
+  "Q111539241": {
+    "name": "Fraxinus schiedeana"
+  },
+  "Q111796055": {
+    "name": "Elaeagnus liukiuensis"
+  },
+  "Q115193584": {
+    "name": "Populus usbekistanica"
+  },
+  "Q115206283": {
+    "name": "Populus macrocarpa"
+  },
+  "Q115249813": {
+    "name": "Cupressus rushforthii"
+  },
+  "Q115753475": {
+    "name": "Fraxinus × veltheimii"
+  },
+  "Q115785704": {
+    "name": "Fraxinus × cataubiensis"
+  },
+  "Q116037245": {
+    "name": "Güney Çin kayını"
+  },
+  "Q117073371": {
+    "name": "Pinus leiophylla subsp. chihuahuana"
+  },
+  "Q117085234": {
+    "name": "Pinus lagunae"
+  },
+  "Q117205866": {
+    "name": "Pyrus × bardoensis"
+  },
+  "Q117205869": {
+    "name": "Quercus cornelius"
+  },
+  "Q118610763": {
+    "name": "Betula mcallisteri"
+  },
+  "Q123997812": {
+    "name": "Populus mandschurica"
+  },
+  "Q123999801": {
+    "name": "Populus × rollandii"
+  },
+  "Q124000615": {
+    "name": "Populus × ontariensis"
+  },
+  "Q124048134": {
+    "name": "Cupressus corneyana"
+  },
+  "Q124608227": {
+    "name": "Prunus zielinskii"
+  },
+  "Q128500233": {
+    "name": "Sorbus erzincanica"
+  },
+  "Q130285106": {
+    "name": "Tilia toboliensis"
+  },
+  "Q130285206": {
+    "name": "Tilia occidentalisibirica"
+  },
+  "Q132156226": {
+    "name": "Tilia saxatilis"
+  },
+  "Q21399759": {
+    "name": "Alnus djavanshirii"
+  },
+  "Q21399765": {
+    "name": "Alnus dolichocarpa"
+  },
+  "Q22105040": {
+    "name": "Pyrus georgica"
+  },
+  "Q22108923": {
+    "name": "Fraxinus smallii"
+  },
+  "Q22111207": {
+    "name": "Kaliforniya fındığı"
+  },
+  "Q22112239": {
+    "name": "Fraxinus albicans"
+  },
+  "Q24851933": {
+    "name": "Betula fargesii"
+  },
+  "Q24851938": {
+    "name": "Betula gynoterminalis"
+  },
+  "Q24851962": {
+    "name": "Carpinus firmifolia"
+  },
+  "Q27472892": {
+    "name": "Populus × hastata"
+  },
+  "Q28807130": {
+    "name": "Betula ashburneri"
+  },
+  "Q28813538": {
+    "name": "Eucalyptus arcana"
+  },
+  "Q28813539": {
+    "name": "Eucalyptus brandiana"
+  },
+  "Q28813547": {
+    "name": "Eucalyptus distuberosa"
+  },
+  "Q28813553": {
+    "name": "Eucalyptus frenchiana"
+  },
+  "Q28813587": {
+    "name": "Eucalyptus vittata"
+  },
+  "Q28813584": {
+    "name": "Eucalyptus sweedmaniana"
+  },
+  "Q28814749": {
+    "name": "Fraxinus dipetala"
+  },
+  "Q28814754": {
+    "name": "Fraxinus hookeri"
+  },
+  "Q28814763": {
+    "name": "Fraxinus pringlei"
+  },
+  "Q28814773": {
+    "name": "Fraxinus reflexiflora"
+  },
+  "Q28814780": {
+    "name": "Fraxinus suaveolens"
+  },
+  "Q28815610": {
+    "name": "Olea capitellata"
+  },
+  "Q28815615": {
+    "name": "Olea puberula"
+  },
+  "Q32259076": {
+    "name": "Acer binzayedii"
+  },
+  "Q38224022": {
+    "name": "Peştun Ardıcı"
+  },
+  "Q38528141": {
+    "name": "Betula alnobetula"
+  },
+  "Q39027258": {
+    "name": "Parrotia jacquemontiana"
+  },
+  "Q39270015": {
+    "name": "Ficus esquirolii"
+  },
+  "Q39276064": {
+    "name": "Eucalyptus latifolia"
+  },
+  "Q39308559": {
+    "name": "Fraxinus oxycarpa"
+  },
+  "Q39308590": {
+    "name": "Fraxinus nummularis"
+  },
+  "Q39308603": {
+    "name": "Fraxinus cilicica"
+  },
+  "Q39776613": {
+    "name": "Crataegus occidentalis"
+  },
+  "Q39907512": {
+    "name": "Populus liaotungensis"
+  },
+  "Q40029048": {
+    "name": "Ulmus kunmingensis"
+  },
+  "Q41480908": {
+    "name": "Karpatiosorbus latifolia"
+  },
+  "Q41521667": {
+    "name": "Karpatiosorbus admonitor"
+  },
+  "Q41521664": {
+    "name": "Karpatiosorbus acutiserrata"
+  },
+  "Q41521670": {
+    "name": "Karpatiosorbus alnifrons"
+  },
+  "Q41521679": {
+    "name": "Karpatiosorbus barthae"
+  },
+  "Q41521676": {
+    "name": "Karpatiosorbus barabitsii"
+  },
+  "Q41521677": {
+    "name": "Karpatiosorbus barrandienica"
+  },
+  "Q41521716": {
+    "name": "Karpatiosorbus milensis"
+  },
+  "Q41521732": {
+    "name": "Karpatiosorbus rhodanthera"
+  },
+  "Q41521733": {
+    "name": "Karpatiosorbus rhombiformis"
+  },
+  "Q41521736": {
+    "name": "Karpatiosorbus schuwerkiorum"
+  },
+  "Q41521747": {
+    "name": "Karpatiosorbus vallusensis"
+  },
+  "Q41521744": {
+    "name": "Karpatiosorbus tobani"
+  },
+  "Q42680890": {
+    "name": "Alnus lusitanica"
+  },
+  "Q42733824": {
+    "name": "Carpinus langaoensis"
+  },
+  "Q42753041": {
+    "name": "Prunus kurdistanica"
+  },
+  "Q42753077": {
+    "name": "Prunus pabotii"
+  },
+  "Q42753128": {
+    "name": "Prunus wendelboi"
+  },
+  "Q42753136": {
+    "name": "Prunus zabulica"
+  },
+  "Q42890706": {
+    "name": "Ostrya chinensis"
+  },
+  "Q42891039": {
+    "name": "Pyrus neoserrulata"
+  },
+  "Q43940559": {
+    "name": "Populus × wilsocarpa"
+  },
+  "Q45333304": {
+    "name": "Populus berkarensis"
+  },
+  "Q49525273": {
+    "name": "Populus brandegeei"
+  },
+  "Q50827873": {
+    "name": "Abies alcoquiana"
+  },
+  "Q50828988": {
+    "name": "Eucalyptus parvifolia"
+  },
+  "Q50840910": {
+    "name": "Betula skvortsovii"
+  },
+  "Q50840912": {
+    "name": "Betula celtiberica"
+  },
+  "Q50840923": {
+    "name": "Betula kweichowensis"
+  },
+  "Q50843951": {
+    "name": "Magnolia mollicomata"
+  },
+  "Q50848083": {
+    "name": "saplı meşe"
+  },
+  "Q50854872": {
+    "name": "Prunus ulmifolia"
+  },
+  "Q51046539": {
+    "name": "Eucalyptus adesmophloia"
+  },
+  "Q51046550": {
+    "name": "Eucalyptus annettae"
+  },
+  "Q51046561": {
+    "name": "Eucalyptus aridimontana"
+  },
+  "Q51046572": {
+    "name": "Eucalyptus armillata"
+  },
+  "Q51046602": {
+    "name": "Eucalyptus ecostata"
+  },
+  "Q55857639": {
+    "name": "Eucalyptus lata"
+  },
+  "Q56697226": {
+    "name": "Prunus gazelle-peninsulae"
+  },
+  "Q56755132": {
+    "name": "Prunus fragrans"
+  },
+  "Q64871095": {
+    "name": "Populus luziarum"
+  },
+  "Q64896662": {
+    "name": "Populus primaveralepensis"
+  },
+  "Q65058993": {
+    "name": "Eucalyptus carolaniae"
+  },
+  "Q65066343": {
+    "name": "Eucalyptus clelandii"
+  },
+  "Q65067064": {
+    "name": "Eucalyptus conferta"
+  },
+  "Q65081243": {
+    "name": "Eucalyptus aurifodina"
+  },
+  "Q65086918": {
+    "name": "Eucalyptus bunyip"
+  },
+  "Q65122868": {
+    "name": "Eucalyptus forresterae"
+  },
+  "Q65278134": {
+    "name": "Pyrus megrica"
+  },
+  "Q65930465": {
+    "name": "Albizia amoenissima"
+  },
+  "Q65938342": {
+    "name": "Eucalyptus notactites"
+  },
+  "Q65938346": {
+    "name": "Eucalyptus opimiflora"
+  },
+  "Q65938371": {
+    "name": "Eucalyptus rowleyi"
+  },
+  "Q65938389": {
+    "name": "Eucalyptus trivalva"
+  }
+}

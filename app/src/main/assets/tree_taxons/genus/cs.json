@@ -1,0 +1,379 @@
+{
+  "Q25239": {
+    "name": "olše",
+    "aliases": [
+      "Alnus"
+    ]
+  },
+  "Q25243": {
+    "name": "bříza",
+    "aliases": [
+      "Betula"
+    ]
+  },
+  "Q25350": {
+    "name": "jedle",
+    "aliases": [
+      "Abies"
+    ]
+  },
+  "Q25356": {
+    "name": "topol",
+    "aliases": [
+      "Populus"
+    ]
+  },
+  "Q25403": {
+    "name": "buk",
+    "aliases": [
+      "Fagus"
+    ]
+  },
+  "Q25662": {
+    "name": "jalovec",
+    "aliases": [
+      "Juniperus"
+    ]
+  },
+  "Q26782": {
+    "name": "smrk",
+    "aliases": [
+      "Picea"
+    ]
+  },
+  "Q27355": {
+    "name": "tis",
+    "aliases": [
+      "Taxus"
+    ]
+  },
+  "Q29033": {
+    "name": "zmarlika",
+    "aliases": [
+      "Cercis"
+    ]
+  },
+  "Q36050": {
+    "name": "vrba",
+    "aliases": [
+      "Salix"
+    ]
+  },
+  "Q45669": {
+    "name": "blahovičník",
+    "aliases": [
+      "Eucalyptus",
+      "Eukalypt",
+      "Eukalyptus"
+    ]
+  },
+  "Q59798": {
+    "name": "fíkovník",
+    "aliases": [
+      "Ficus",
+      "Fíkus"
+    ]
+  },
+  "Q104819": {
+    "name": "jabloň",
+    "aliases": [
+      "jabloně"
+    ]
+  },
+  "Q127849": {
+    "name": "lípa",
+    "aliases": [
+      "Tilia"
+    ]
+  },
+  "Q128550": {
+    "name": "cedr",
+    "aliases": [
+      "Cedrus"
+    ]
+  },
+  "Q131113": {
+    "name": "jilm",
+    "aliases": [
+      "Ulmus"
+    ]
+  },
+  "Q132402": {
+    "name": "litokarpus",
+    "aliases": [
+      "Lithocarpus"
+    ]
+  },
+  "Q132557": {
+    "name": "hloh",
+    "aliases": [
+      "Crataegus"
+    ]
+  },
+  "Q132703": {
+    "name": "svitel",
+    "aliases": [
+      "Koelreuteria"
+    ]
+  },
+  "Q145889": {
+    "name": "líska",
+    "aliases": [
+      "Corylus"
+    ]
+  },
+  "Q146911": {
+    "name": "cypřiš",
+    "aliases": [
+      "Cupressus"
+    ]
+  },
+  "Q147791": {
+    "name": "cypřišek",
+    "aliases": [
+      "Chamaecyparis"
+    ]
+  },
+  "Q157017": {
+    "name": "šácholan",
+    "aliases": [
+      "magnolie",
+      "magnólie"
+    ]
+  },
+  "Q157236": {
+    "name": "liliovník",
+    "aliases": [
+      "liriovník",
+      "lyriovník",
+      "lyrovník",
+      "tulipánovník"
+    ]
+  },
+  "Q157366": {
+    "name": "ruj",
+    "aliases": [
+      "Cotinus"
+    ]
+  },
+  "Q157964": {
+    "name": "jeřáb",
+    "aliases": [
+      "jeřabina",
+      "Sorbus"
+    ]
+  },
+  "Q158072": {
+    "name": "katalpa",
+    "aliases": [
+      "Catalpa"
+    ]
+  },
+  "Q158513": {
+    "name": "habr",
+    "aliases": [
+      "Caprinus",
+      "Carpinus"
+    ]
+  },
+  "Q158771": {
+    "name": "douglaska",
+    "aliases": [
+      "Pseudotsuga"
+    ]
+  },
+  "Q159545": {
+    "name": "dřín",
+    "aliases": [
+      "Cornus",
+      "dřínovec",
+      "svída",
+      "swida"
+    ]
+  },
+  "Q160580": {
+    "name": "pajasan",
+    "aliases": [
+      "Ailanthus"
+    ]
+  },
+  "Q161250": {
+    "name": "dřezovec",
+    "aliases": [
+      "Gleditsia"
+    ]
+  },
+  "Q163025": {
+    "name": "platan",
+    "aliases": [
+      "Platanaceae",
+      "Platanovité",
+      "Platanus"
+    ]
+  },
+  "Q165173": {
+    "name": "paulovnie",
+    "aliases": [
+      "Paulownia",
+      "Paulovniovité",
+      "Paulowniaceae",
+      "Pavlonie"
+    ]
+  },
+  "Q165258": {
+    "name": "tomel",
+    "aliases": [
+      "Diospyros",
+      "persimon"
+    ]
+  },
+  "Q190545": {
+    "name": "slivoň",
+    "aliases": [
+      "Amygdalus",
+      "Armeniaca",
+      "Cerasus",
+      "Laurocerasus",
+      "Padellus",
+      "Padus",
+      "Persica",
+      "Prunus",
+      "střemcha"
+    ]
+  },
+  "Q775229": {
+    "name": "pukol",
+    "aliases": [
+      "Lagerstroemia"
+    ]
+  },
+  "Q858028": {
+    "name": "zmarličník",
+    "aliases": [
+      "Cercidiphyllaceae",
+      "Cercidiphyllum",
+      "Zmarličníkovité"
+    ]
+  },
+  "Q1065400": {
+    "name": "kaštanovec",
+    "aliases": [
+      "Castanopsis"
+    ]
+  },
+  "Q1070845": {
+    "name": "blýskalka",
+    "aliases": [
+      "Photinia"
+    ]
+  },
+  "Q472943": {
+    "name": "trnovník",
+    "aliases": [
+      "Akát"
+    ]
+  },
+  "Q5122903": {
+    "name": "kumquat",
+    "aliases": [
+      "kumkvat"
+    ]
+  },
+  "Q1132766": {
+    "name": "bezucha",
+    "aliases": [
+      "Fontanesia",
+      "Fontanézie"
+    ]
+  },
+  "Q1420126": {
+    "name": "lapina",
+    "aliases": [
+      "Pterocarya"
+    ]
+  },
+  "Q2453469": {
+    "name": "ořešák",
+    "aliases": [
+      "ořešáky"
+    ]
+  },
+  "Q128887": {
+    "name": "jasan"
+  },
+  "Q129324": {
+    "name": "kaštanovník"
+  },
+  "Q142788": {
+    "name": "ořechovec"
+  },
+  "Q149461": {
+    "name": "jinan"
+  },
+  "Q158752": {
+    "name": "jírovec"
+  },
+  "Q161042": {
+    "name": "hlošina"
+  },
+  "Q183543": {
+    "name": "ambroň"
+  },
+  "Q248582": {
+    "name": "břestovec"
+  },
+  "Q296910": {
+    "name": "olivovník"
+  },
+  "Q309213": {
+    "name": "jerlín"
+  },
+  "Q605290": {
+    "name": "habrovec"
+  },
+  "Q664945": {
+    "name": "albízie"
+  },
+  "Q765246": {
+    "name": "pazerav"
+  },
+  "Q964952": {
+    "name": "tupela"
+  },
+  "Q1975652": {
+    "name": "Sequoia"
+  },
+  "Q2697430": {
+    "name": "česnekovník"
+  },
+  "Q3060383": {
+    "name": "ampák"
+  },
+  "Q3366033": {
+    "name": "Parocie"
+  },
+  "Q5429644": {
+    "name": "Akácie bělavá"
+  },
+  "Q12323064": {
+    "name": "kryptomerie"
+  },
+  "Q434": {
+    "name": "hrušeň"
+  },
+  "Q12004": {
+    "name": "dub"
+  },
+  "Q12024": {
+    "name": "borovice"
+  },
+  "Q25618": {
+    "name": "modřín"
+  },
+  "Q42292": {
+    "name": "javor"
+  },
+  "Q44789": {
+    "name": "morušovník"
+  }
+}

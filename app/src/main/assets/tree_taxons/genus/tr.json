@@ -1,0 +1,278 @@
+{
+  "Q25243": {
+    "name": "Huş",
+    "aliases": [
+      "Betula",
+      "Huş ağacı",
+      "Huşağacı"
+    ]
+  },
+  "Q25239": {
+    "name": "Kızılağaç",
+    "aliases": [
+      "Adi Kızılağaç",
+      "Alder",
+      "Alnus",
+      "Kizilagac"
+    ]
+  },
+  "Q25350": {
+    "name": "Göknar",
+    "aliases": [
+      "Köknar"
+    ]
+  },
+  "Q25356": {
+    "name": "Kavak",
+    "aliases": [
+      "Populus"
+    ]
+  },
+  "Q25403": {
+    "name": "Kayın",
+    "aliases": [
+      "Fagus",
+      "Kayın ağacı",
+      "Kayınağacı"
+    ]
+  },
+  "Q25662": {
+    "name": "Ardıç",
+    "aliases": [
+      "Ardic",
+      "Juniper",
+      "Juniperus"
+    ]
+  },
+  "Q26782": {
+    "name": "Ladin",
+    "aliases": [
+      "Picea"
+    ]
+  },
+  "Q27355": {
+    "name": "Porsuk",
+    "aliases": [
+      "Porsuk ağacı",
+      "Taxus"
+    ]
+  },
+  "Q44789": {
+    "name": "Dut",
+    "aliases": [
+      "Morus"
+    ]
+  },
+  "Q45669": {
+    "name": "Okaliptüs",
+    "aliases": [
+      "Eucalyptus",
+      "Okaliptus"
+    ]
+  },
+  "Q36050": {
+    "name": "Söğüt",
+    "aliases": [
+      "Salix"
+    ]
+  },
+  "Q104819": {
+    "name": "Çiçek elması",
+    "aliases": [
+      "Malus"
+    ]
+  },
+  "Q127849": {
+    "name": "Ihlamur",
+    "aliases": [
+      "Tilia"
+    ]
+  },
+  "Q128887": {
+    "name": "Dişbudak",
+    "aliases": [
+      "Disbudak"
+    ]
+  },
+  "Q129324": {
+    "name": "kestane",
+    "aliases": [
+      "Castanea"
+    ]
+  },
+  "Q131113": {
+    "name": "Karaağaç",
+    "aliases": [
+      "Karaagac",
+      "Ulmus"
+    ]
+  },
+  "Q132703": {
+    "name": "Fener ağacı",
+    "aliases": [
+      "Fenerağacı",
+      "Güvey kandili",
+      "Güveykandili",
+      "Koelreuteria"
+    ]
+  },
+  "Q145889": {
+    "name": "Fındık",
+    "aliases": [
+      "Corylus"
+    ]
+  },
+  "Q146911": {
+    "name": "servi",
+    "aliases": [
+      "Cupressus",
+      "selvi"
+    ]
+  },
+  "Q157236": {
+    "name": "Lale ağacı",
+    "aliases": [
+      "Liriodendron"
+    ]
+  },
+  "Q157964": {
+    "name": "Üvez",
+    "aliases": [
+      "Sorbus"
+    ]
+  },
+  "Q158513": {
+    "name": "Gürgen",
+    "aliases": [
+      "Carpinus"
+    ]
+  },
+  "Q158752": {
+    "name": "At kestanesi",
+    "aliases": [
+      "Aesculus",
+      "Atkestanesi",
+      "ATKESTANESİ AĞACI"
+    ]
+  },
+  "Q161042": {
+    "name": "İğde",
+    "aliases": [
+      "İğde ağacı"
+    ]
+  },
+  "Q163025": {
+    "name": "Çınar",
+    "aliases": [
+      "Platanus"
+    ]
+  },
+  "Q309213": {
+    "name": "Sofora",
+    "aliases": [
+      "Sophora"
+    ]
+  },
+  "Q472943": {
+    "name": "Yalancı akasya",
+    "aliases": [
+      "Yalancıakasya"
+    ]
+  },
+  "Q605290": {
+    "name": "Kayacık",
+    "aliases": [
+      "Ostrya"
+    ]
+  },
+  "Q128550": {
+    "name": "Sedir"
+  },
+  "Q132557": {
+    "name": "Crataegus"
+  },
+  "Q142788": {
+    "name": "Hikori"
+  },
+  "Q147791": {
+    "name": "Yalancı Servi"
+  },
+  "Q157017": {
+    "name": "Manolya"
+  },
+  "Q157366": {
+    "name": "Cotinus"
+  },
+  "Q158072": {
+    "name": "Catalpa"
+  },
+  "Q158771": {
+    "name": "Pseudotsuga"
+  },
+  "Q159545": {
+    "name": "Kizilcik"
+  },
+  "Q160580": {
+    "name": "Аilanthus"
+  },
+  "Q161250": {
+    "name": "Yabani keçiboynuzu"
+  },
+  "Q165173": {
+    "name": "Pavlonya"
+  },
+  "Q165258": {
+    "name": "Diospyros"
+  },
+  "Q183543": {
+    "name": "Sığla ağacı"
+  },
+  "Q190545": {
+    "name": "Prunus"
+  },
+  "Q248582": {
+    "name": "Çitlembik"
+  },
+  "Q296910": {
+    "name": "Olea"
+  },
+  "Q664945": {
+    "name": "Albizia"
+  },
+  "Q765246": {
+    "name": "Su sediri"
+  },
+  "Q775229": {
+    "name": "Lagerstroemia"
+  },
+  "Q810562": {
+    "name": "Karpatiosorbus"
+  },
+  "Q2453469": {
+    "name": "Ceviz"
+  },
+  "Q5122903": {
+    "name": "Kamkat"
+  },
+  "Q5429644": {
+    "name": "Faidherbia"
+  },
+  "Q434": {
+    "name": "Armut"
+  },
+  "Q12004": {
+    "name": "Meşe"
+  },
+  "Q12024": {
+    "name": "Çam"
+  },
+  "Q25618": {
+    "name": "Larix"
+  },
+  "Q42292": {
+    "name": "Akçaağaç"
+  },
+  "Q59798": {
+    "name": "İncir"
+  }
+}

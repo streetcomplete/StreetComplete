@@ -1,0 +1,475 @@
+{
+  "Q25243": {
+    "name": "Betula",
+    "aliases": [
+      "birch tree",
+      "the birch genus",
+      "birch"
+    ]
+  },
+  "Q12024": {
+    "name": "Pinus",
+    "aliases": [
+      "pines",
+      "the pine genus"
+    ]
+  },
+  "Q25239": {
+    "name": "Alnus",
+    "aliases": [
+      "Alder",
+      "alder genus"
+    ]
+  },
+  "Q434": {
+    "name": "Pyrus",
+    "aliases": [
+      "pear",
+      "pear tree",
+      "pear genus",
+      "pear trees"
+    ]
+  },
+  "Q12004": {
+    "name": "Quercus",
+    "aliases": [
+      "oak",
+      "oak tree",
+      "oaks",
+      "the oak genus"
+    ]
+  },
+  "Q25403": {
+    "name": "Fagus",
+    "aliases": [
+      "the beech genus"
+    ]
+  },
+  "Q25618": {
+    "name": "Larix",
+    "aliases": [
+      "the Larches"
+    ]
+  },
+  "Q25356": {
+    "name": "Populus",
+    "aliases": [
+      "the poplar and aspen genus"
+    ]
+  },
+  "Q25350": {
+    "name": "Abies",
+    "aliases": [
+      "fir"
+    ]
+  },
+  "Q36050": {
+    "name": "Salix",
+    "aliases": [
+      "sallow",
+      "willow",
+      "osier"
+    ]
+  },
+  "Q104819": {
+    "name": "Malus",
+    "aliases": [
+      "apple",
+      "crabapple",
+      "apples"
+    ]
+  },
+  "Q59798": {
+    "name": "Ficus",
+    "aliases": [
+      "fig",
+      "the fig genus"
+    ]
+  },
+  "Q25662": {
+    "name": "Juniperus",
+    "aliases": [
+      "junipers",
+      "the juniper genus"
+    ]
+  },
+  "Q42292": {
+    "name": "Acer",
+    "aliases": [
+      "maple",
+      "maples",
+      "maple tree",
+      "maple trees"
+    ]
+  },
+  "Q44789": {
+    "name": "Morus",
+    "aliases": [
+      "mulberry tree",
+      "mulberry",
+      "mulberries",
+      "mulberry genus"
+    ]
+  },
+  "Q45669": {
+    "name": "Eucalyptus",
+    "aliases": [
+      "Eucalyptus hybrid"
+    ]
+  },
+  "Q27355": {
+    "name": "Taxus",
+    "aliases": [
+      "the yew genus",
+      "the yews",
+      "yew (genus)",
+      "yew tree",
+      "yews"
+    ]
+  },
+  "Q128887": {
+    "name": "Fraxinus",
+    "aliases": [
+      "the ash genus"
+    ]
+  },
+  "Q129324": {
+    "name": "Castanea",
+    "aliases": [
+      "chestnut",
+      "chestnut genus",
+      "chestnuts"
+    ]
+  },
+  "Q26782": {
+    "name": "Picea",
+    "aliases": [
+      "Spruce",
+      "spruce"
+    ]
+  },
+  "Q131113": {
+    "name": "Ulmus",
+    "aliases": [
+      "Elms"
+    ]
+  },
+  "Q127849": {
+    "name": "Tilia",
+    "aliases": [
+      "Basswood genus",
+      "Lime genus",
+      "Linden genus"
+    ]
+  },
+  "Q128550": {
+    "name": "Cedrus",
+    "aliases": [
+      "Cedar"
+    ]
+  },
+  "Q157017": {
+    "name": "Magnolia",
+    "aliases": [
+      "Magnolia tree"
+    ]
+  },
+  "Q157236": {
+    "name": "Liriodendron",
+    "aliases": [
+      "tulip tree",
+      "tuliptree",
+      "tulip-trees",
+      "tuliptrees"
+    ]
+  },
+  "Q157964": {
+    "name": "Sorbus",
+    "aliases": [
+      "rowan"
+    ]
+  },
+  "Q158513": {
+    "name": "Carpinus",
+    "aliases": [
+      "the hornbeam genus"
+    ]
+  },
+  "Q158752": {
+    "name": "Aesculus",
+    "aliases": [
+      "Pavia",
+      "Pawia",
+      "Hippocastanum",
+      "Horse-chestnuts",
+      "buckeyes",
+      "Calothyrsus",
+      "Nebropsis",
+      "Macrothyrsus",
+      "Oesculus",
+      "Ozotis",
+      "Paviana"
+    ]
+  },
+  "Q132402": {
+    "name": "Lithocarpus",
+    "aliases": [
+      "stone oak"
+    ]
+  },
+  "Q132557": {
+    "name": "Crataegus",
+    "aliases": [
+      "hawberry",
+      "hawthorn",
+      "thornapple"
+    ]
+  },
+  "Q190545": {
+    "name": "Prunus",
+    "aliases": [
+      "the Cherries"
+    ]
+  },
+  "Q159545": {
+    "name": "Cornus",
+    "aliases": [
+      "dogwood"
+    ]
+  },
+  "Q248582": {
+    "name": "Celtis",
+    "aliases": [
+      "hackberry"
+    ]
+  },
+  "Q775229": {
+    "name": "Lagerstroemia",
+    "aliases": [
+      "crepe myrtles",
+      "crepemyrtles",
+      "crape myrtles",
+      "crapemyrtles"
+    ]
+  },
+  "Q964952": {
+    "name": "Nyssa",
+    "aliases": [
+      "tupelo"
+    ]
+  },
+  "Q142788": {
+    "name": "Carya",
+    "aliases": [
+      "Hickory",
+      "hickory tree"
+    ]
+  },
+  "Q145889": {
+    "name": "Corylus",
+    "aliases": [
+      "the hazel genus"
+    ]
+  },
+  "Q160580": {
+    "name": "Ailanthus",
+    "aliases": [
+      "Ailantus",
+      "Chinese cumach"
+    ]
+  },
+  "Q5122903": {
+    "name": "Kumquat",
+    "aliases": [
+      "Cumquat"
+    ]
+  },
+  "Q1975652": {
+    "name": "Sequoia",
+    "aliases": [
+      "redwood"
+    ]
+  },
+  "Q2453469": {
+    "name": "Juglans",
+    "aliases": [
+      "Walnut",
+      "Walnut genus"
+    ]
+  },
+  "Q12323064": {
+    "name": "Cryptomeria",
+    "aliases": [
+      "Sugi"
+    ]
+  },
+  "Q163025": {
+    "name": "Platanus",
+    "aliases": [
+      "the plane tree genus",
+      "planes",
+      "plane trees"
+    ]
+  },
+  "Q165173": {
+    "name": "Paulownia",
+    "aliases": [
+      "princess tree",
+      "kiri",
+      "empress tree"
+    ]
+  },
+  "Q146911": {
+    "name": "Cupressus",
+    "aliases": [
+      "cypress"
+    ]
+  },
+  "Q132703": {
+    "name": "Koelreuteria"
+  },
+  "Q137054": {
+    "name": "Chrysolepis"
+  },
+  "Q147791": {
+    "name": "Chamaecyparis"
+  },
+  "Q149461": {
+    "name": "Ginkgo"
+  },
+  "Q157366": {
+    "name": "Cotinus"
+  },
+  "Q158072": {
+    "name": "Catalpa"
+  },
+  "Q158771": {
+    "name": "Pseudotsuga"
+  },
+  "Q161042": {
+    "name": "Elaeagnus"
+  },
+  "Q161250": {
+    "name": "Gleditsia"
+  },
+  "Q165258": {
+    "name": "Diospyros"
+  },
+  "Q183543": {
+    "name": "Liquidambar"
+  },
+  "Q296910": {
+    "name": "Olea"
+  },
+  "Q309213": {
+    "name": "Sophora"
+  },
+  "Q472943": {
+    "name": "Robinia"
+  },
+  "Q605290": {
+    "name": "Ostrya"
+  },
+  "Q664945": {
+    "name": "Albizia"
+  },
+  "Q765246": {
+    "name": "Calocedrus"
+  },
+  "Q796117": {
+    "name": "Cyclobalanopsis"
+  },
+  "Q810562": {
+    "name": "Karpatiosorbus"
+  },
+  "Q858028": {
+    "name": "Cercidiphyllum"
+  },
+  "Q1065400": {
+    "name": "Castanopsis"
+  },
+  "Q1070845": {
+    "name": "Photinia"
+  },
+  "Q1132766": {
+    "name": "Fontanesia"
+  },
+  "Q1420126": {
+    "name": "Pterocarya"
+  },
+  "Q2697430": {
+    "name": "Toona"
+  },
+  "Q3060383": {
+    "name": "Euodia"
+  },
+  "Q3366033": {
+    "name": "Parrotia"
+  },
+  "Q5220438": {
+    "name": "Trigonobalanus"
+  },
+  "Q5429644": {
+    "name": "Faidherbia"
+  },
+  "Q12309040": {
+    "name": "Davidia"
+  },
+  "Q17410244": {
+    "name": "Notholithocarpus"
+  },
+  "Q18745576": {
+    "name": "Pasania"
+  },
+  "Q19845401": {
+    "name": "Formanodendron"
+  },
+  "Q20817818": {
+    "name": "Eotrigonobalanus"
+  },
+  "Q21088249": {
+    "name": "Limlia"
+  },
+  "Q21397965": {
+    "name": "Dryophyllum"
+  },
+  "Q21398174": {
+    "name": "Fagopsis"
+  },
+  "Q29033": {
+    "name": "Cercis"
+  },
+  "Q87070717": {
+    "name": "Salisburia"
+  },
+  "Q87145799": {
+    "name": "Callaeocarpus"
+  },
+  "Q87147998": {
+    "name": "Colombobalanus"
+  },
+  "Q87152055": {
+    "name": "Fagus-castanea"
+  },
+  "Q87162206": {
+    "name": "Pasaniopsis"
+  },
+  "Q108071245": {
+    "name": "Berryophyllum"
+  },
+  "Q113299853": {
+    "name": "Erythrobalanus"
+  },
+  "Q113299877": {
+    "name": "Synaedrys"
+  },
+  "Q113299880": {
+    "name": "Corylopasania"
+  },
+  "Q113299881": {
+    "name": "Cyclobalanus"
+  },
+  "Q119063130": {
+    "name": "Castaneophyllum"
+  }
+}

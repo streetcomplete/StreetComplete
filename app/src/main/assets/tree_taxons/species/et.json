@@ -1,0 +1,1920 @@
+{
+  "Q106094": {
+    "name": "Piinia",
+    "aliases": [
+      "Itaalia mänd",
+      "Pinus pinea"
+    ]
+  },
+  "Q1116374": {
+    "name": "Igimänd",
+    "aliases": [
+      "Pinus longaeva"
+    ]
+  },
+  "Q1137001": {
+    "name": "Coulteri mänd",
+    "aliases": [
+      "Pinus coulteri"
+    ]
+  },
+  "Q124969": {
+    "name": "harilik sarapuu",
+    "aliases": [
+      "Sarapuu",
+      "Corylus avellana"
+    ]
+  },
+  "Q44120": {
+    "name": "harilik ploomipuu",
+    "aliases": [
+      "Prunus domestica"
+    ]
+  },
+  "Q1151932": {
+    "name": "Glehni kuusk",
+    "aliases": [
+      "Picea glehnii"
+    ]
+  },
+  "Q1190084": {
+    "name": "Ajaani kuusk",
+    "aliases": [
+      "Hondo kuusk",
+      "Picea jezoensis"
+    ]
+  },
+  "Q1190312": {
+    "name": "Pensilvaania vaher",
+    "aliases": [
+      "Acer pensylvanicum"
+    ]
+  },
+  "Q1145286": {
+    "name": "Idakuusk",
+    "aliases": [
+      "Abies orientalis",
+      "Picea orientalis",
+      "Pinus orientalis"
+    ]
+  },
+  "Q1201695": {
+    "name": "amuuri nulg",
+    "aliases": [
+      "Abies nephrolepis"
+    ]
+  },
+  "Q1204865": {
+    "name": "mandžuuria nulg",
+    "aliases": [
+      "Abies holophylla"
+    ]
+  },
+  "Q1249109": {
+    "name": "Elliotti mänd",
+    "aliases": [
+      "Pinus elliottii"
+    ]
+  },
+  "Q26745": {
+    "name": "harilik vaher",
+    "aliases": [
+      "Vaher",
+      "Acer platanoides"
+    ]
+  },
+  "Q26899": {
+    "name": "harilik hobukastan",
+    "aliases": [
+      "Aesculus hippocastanum"
+    ]
+  },
+  "Q133096": {
+    "name": "kaljumägede mänd",
+    "aliases": [
+      "pinjon",
+      "Pinus edulis"
+    ]
+  },
+  "Q134804": {
+    "name": "laiuv mänd",
+    "aliases": [
+      "Pinus patula"
+    ]
+  },
+  "Q137009": {
+    "name": "Engelmanni mänd",
+    "aliases": [
+      "Pinus engelmannii"
+    ]
+  },
+  "Q145939": {
+    "name": "hall nulg",
+    "aliases": [
+      "Abies concolor"
+    ]
+  },
+  "Q161416": {
+    "name": "Verev kontpuu",
+    "aliases": [
+      "Cornus sanguinea",
+      "Swida sanguinea"
+    ]
+  },
+  "Q145954": {
+    "name": "must mänd",
+    "aliases": [
+      "Pinus nigra"
+    ]
+  },
+  "Q165145": {
+    "name": "harilik tamm",
+    "aliases": [
+      "Quercus robur",
+      "tamm"
+    ]
+  },
+  "Q165091": {
+    "name": "keerdmänd",
+    "aliases": [
+      "keerdokkaline mänd",
+      "Murray mänd",
+      "Pinus contorta"
+    ]
+  },
+  "Q133128": {
+    "name": "harilik mänd",
+    "aliases": [
+      "Mänd",
+      "Pedak",
+      "Pedajas",
+      "Pedakas",
+      "Pettäi",
+      "Pinus sylvestris"
+    ]
+  },
+  "Q128116": {
+    "name": "kanada kuusk",
+    "aliases": [
+      "Picea canadensis",
+      "Picea glauca",
+      "valge kuusk"
+    ]
+  },
+  "Q129018": {
+    "name": "Laukapuu",
+    "aliases": [
+      "Prunus spinosa"
+    ]
+  },
+  "Q146025": {
+    "name": "torkav kuusk",
+    "aliases": [
+      "Abies commutata glauca",
+      "Abies commutata var. glauca",
+      "Abies menziesii",
+      "Abies menziesii parryana",
+      "Abies menziesii var. parryana",
+      "hõbekuusk",
+      "ilukuusk",
+      "Picea menziesii",
+      "Picea menziesii var. parryana",
+      "Picea parryana",
+      "Picea pungens",
+      "Pinus parryana",
+      "sinikuusk"
+    ]
+  },
+  "Q146048": {
+    "name": "euroopa lehis",
+    "aliases": [
+      "Larix decidua"
+    ]
+  },
+  "Q26325": {
+    "name": "harilik kadakas",
+    "aliases": [
+      "Juniperus communis",
+      "kadakas"
+    ]
+  },
+  "Q1404234": {
+    "name": "Lyalli lehis",
+    "aliases": [
+      "Larix lyallii"
+    ]
+  },
+  "Q1451343": {
+    "name": "Fraseri nulg",
+    "aliases": [
+      "Abies fraseri"
+    ]
+  },
+  "Q27980": {
+    "name": "pooppuu",
+    "aliases": [
+      "Crataegus aria",
+      "Pyrus intermedia",
+      "Sorbus intermedia",
+      "Sorbus scandica",
+      "Sorbus suecica"
+    ]
+  },
+  "Q37083": {
+    "name": "Harilik õlipuu",
+    "aliases": [
+      "Euroopa õlipuu",
+      "Olea europaea",
+      "Oliivipuu",
+      "Õlipuu"
+    ]
+  },
+  "Q1259309": {
+    "name": "liivmänd",
+    "aliases": [
+      "Pinus clausa"
+    ]
+  },
+  "Q1283223": {
+    "name": "Hõbenulg",
+    "aliases": [
+      "Abies procera",
+      "Kaunis nulg"
+    ]
+  },
+  "Q1290204": {
+    "name": "Tore nulg",
+    "aliases": [
+      "Abies magnifica"
+    ]
+  },
+  "Q1939271": {
+    "name": "khasi mänd",
+    "aliases": [
+      "Pinus kesiya"
+    ]
+  },
+  "Q2045958": {
+    "name": "Vaigumänd",
+    "aliases": [
+      "Pinus resinosa"
+    ]
+  },
+  "Q146110": {
+    "name": "harilik haab",
+    "aliases": [
+      "haab",
+      "haavapuu"
+    ]
+  },
+  "Q145992": {
+    "name": "harilik kuusk",
+    "aliases": [
+      "kuusk",
+      "nõglapuu",
+      "Picea abies"
+    ]
+  },
+  "Q2737854": {
+    "name": "põhjamehhiko mänd",
+    "aliases": [
+      "Pinus leiophylla",
+      "tšiuaava mänd"
+    ]
+  },
+  "Q2744076": {
+    "name": "honduurase mänd",
+    "aliases": [
+      "Pinus oocarpa"
+    ]
+  },
+  "Q2746149": {
+    "name": "Torrey mänd",
+    "aliases": [
+      "Pinus torreyana"
+    ]
+  },
+  "Q2746153": {
+    "name": "valkjas mänd",
+    "aliases": [
+      "Pinus strobiformis"
+    ]
+  },
+  "Q2900918": {
+    "name": "Kariibi mänd",
+    "aliases": [
+      "Pinus caribaea"
+    ]
+  },
+  "Q165424": {
+    "name": "harilik toomingas",
+    "aliases": [
+      "Cerasus padus",
+      "Meied",
+      "Padus avium",
+      "Prunus padus",
+      "Prunus racemosa",
+      "toom",
+      "tumilgas"
+    ]
+  },
+  "Q146269": {
+    "name": "hõbepappel",
+    "aliases": [
+      "hõbehaab"
+    ]
+  },
+  "Q1520125": {
+    "name": "sahhalini nulg",
+    "aliases": [
+      "Abies sachalinensis"
+    ]
+  },
+  "Q1542823": {
+    "name": "jaapani nulg",
+    "aliases": [
+      "Abies veitchii"
+    ]
+  },
+  "Q179729": {
+    "name": "harilik jugapuu",
+    "aliases": [
+      "jugapuu"
+    ]
+  },
+  "Q146281": {
+    "name": "Harilik pirnipuu",
+    "aliases": [
+      "Pirnipuu",
+      "Aed-pirnipuu",
+      "Pyrus communis"
+    ]
+  },
+  "Q2093561": {
+    "name": "Schrencki kuusk",
+    "aliases": [
+      "Picea schrenkiana",
+      "Picea shrenkiana tianschanica",
+      "Tjan-Šani kuusk",
+      "Tjanšani kuusk"
+    ]
+  },
+  "Q2249175": {
+    "name": "Pinus amamiana",
+    "aliases": [
+      "Pinus armandii amamiana"
+    ]
+  },
+  "Q2368526": {
+    "name": "Korea kuusk",
+    "aliases": [
+      "Picea koraiensis"
+    ]
+  },
+  "Q2473331": {
+    "name": "Sabine'i mänd",
+    "aliases": [
+      "Pinus sabiniana"
+    ]
+  },
+  "Q29488": {
+    "name": "Harilik juudapuu",
+    "aliases": [
+      "Cercis siliquastrum",
+      "Euroopa juudapuu"
+    ]
+  },
+  "Q36146": {
+    "name": "Harilik viigipuu",
+    "aliases": [
+      "Ficus carica"
+    ]
+  },
+  "Q42385": {
+    "name": "harilik kakaopuu",
+    "aliases": [
+      "Kakaopuu",
+      "Kakaouba",
+      "Theobroma cacao"
+    ]
+  },
+  "Q39648": {
+    "name": "Polaarpaju",
+    "aliases": [
+      "Salix polaris"
+    ]
+  },
+  "Q39918": {
+    "name": "harilik mandlipuu",
+    "aliases": [
+      "Amygdalus communis",
+      "Amygdalus dulcis",
+      "Mandlipuu",
+      "Prunus amygdalus",
+      "Prunus dulcis"
+    ]
+  },
+  "Q1546541": {
+    "name": "guatemaala mänd",
+    "aliases": [
+      "Pinus ayacahuite"
+    ]
+  },
+  "Q1652385": {
+    "name": "Lihavõttesaare keepuu",
+    "aliases": [
+      "Sophora toromiro"
+    ]
+  },
+  "Q146198": {
+    "name": "harilik pihlakas",
+    "aliases": [
+      "Sorbus aucuparia"
+    ]
+  },
+  "Q3505749": {
+    "name": "virgiinia mänd",
+    "aliases": [
+      "Pinus virginiana"
+    ]
+  },
+  "Q3506484": {
+    "name": "Potosi mänd",
+    "aliases": [
+      "Pinus culminicola"
+    ]
+  },
+  "Q3506492": {
+    "name": "neljaokkaline mänd",
+    "aliases": [
+      "Pinus quadrifolia"
+    ]
+  },
+  "Q3506511": {
+    "name": "pähklimänd",
+    "aliases": [
+      "Pinus cembroides"
+    ]
+  },
+  "Q146021": {
+    "name": "rumeelia mänd",
+    "aliases": [
+      "Makedoonia mänd",
+      "Pinus peuce"
+    ]
+  },
+  "Q3308298": {
+    "name": "Rzedowski mänd",
+    "aliases": [
+      "Pinus rzedowskii"
+    ]
+  },
+  "Q3308389": {
+    "name": "Nelsoni mänd",
+    "aliases": [
+      "Pinus nelsonii"
+    ]
+  },
+  "Q3355098": {
+    "name": "Apelsinipuu",
+    "aliases": [
+      "Citrus × sinensis",
+      "Citrus sinensis"
+    ]
+  },
+  "Q3503440": {
+    "name": "Krempfi mänd",
+    "aliases": [
+      "Pinus krempfii"
+    ]
+  },
+  "Q3087592": {
+    "name": "torkav mänd",
+    "aliases": [
+      "Pinus pungens"
+    ]
+  },
+  "Q3237846": {
+    "name": "siilmänd",
+    "aliases": [
+      "Pinus echinata"
+    ]
+  },
+  "Q3239892": {
+    "name": "Roxburgh' mänd",
+    "aliases": [
+      "Pinus roxburghii"
+    ]
+  },
+  "Q3286876": {
+    "name": "hiina seedermänd",
+    "aliases": [
+      "Pinus armandii"
+    ]
+  },
+  "Q271582": {
+    "name": "Merimänd",
+    "aliases": [
+      "Pinus pinaster"
+    ]
+  },
+  "Q301636": {
+    "name": "korea seedermänd",
+    "aliases": [
+      "Pinus koraiensis"
+    ]
+  },
+  "Q43284": {
+    "name": "hõlmikpuu",
+    "aliases": [
+      "ginko"
+    ]
+  },
+  "Q2673640": {
+    "name": "vietnami mänd",
+    "aliases": [
+      "Pinus dalatensis"
+    ]
+  },
+  "Q2703188": {
+    "name": "jünnani mänd",
+    "aliases": [
+      "Pinus squamata"
+    ]
+  },
+  "Q2703208": {
+    "name": "naastuline mänd",
+    "aliases": [
+      "Pinus attenuata"
+    ]
+  },
+  "Q2703215": {
+    "name": "arisoona mänd",
+    "aliases": [
+      "Pinus arizonica"
+    ]
+  },
+  "Q2703314": {
+    "name": "Veitchi kuusk",
+    "aliases": [
+      "Picea neoveitchii"
+    ]
+  },
+  "Q2727171": {
+    "name": "Kolmehõlmaline mandlipuu",
+    "aliases": [
+      "Amygdalus triloba",
+      "Kolmehõlmane mandlipuu",
+      "Prunus triloba"
+    ]
+  },
+  "Q147064": {
+    "name": "must pappel",
+    "aliases": [
+      "Populus nigra"
+    ]
+  },
+  "Q209326": {
+    "name": "Merkuse mänd",
+    "aliases": [
+      "Pinus merkusii"
+    ]
+  },
+  "Q211457": {
+    "name": "aleppo mänd",
+    "aliases": [
+      "Pinus halepensis",
+      "süüria mänd"
+    ]
+  },
+  "Q170662": {
+    "name": "Mangostan",
+    "aliases": [
+      "Garcinia mangostana"
+    ]
+  },
+  "Q178116": {
+    "name": "Jaapani mänd",
+    "aliases": [
+      "Pinus parviflora"
+    ]
+  },
+  "Q218155": {
+    "name": "Iilekstamm",
+    "aliases": [
+      "Quercus ilex",
+      "Vahemere tamm"
+    ]
+  },
+  "Q218425": {
+    "name": "must kuusk",
+    "aliases": [
+      "Abies denticulata",
+      "Abies mariana",
+      "Abies nigra",
+      "Picea mariana"
+    ]
+  },
+  "Q227779": {
+    "name": "Suhkrumänd",
+    "aliases": [
+      "Pinus lambertiana"
+    ]
+  },
+  "Q243964": {
+    "name": "kääbus-seedermänd",
+    "aliases": [
+      "Pinus pumila"
+    ]
+  },
+  "Q251370": {
+    "name": "Jeffrey mänd",
+    "aliases": [
+      "Pinus jeffreyi"
+    ]
+  },
+  "Q261309": {
+    "name": "Läänemänd",
+    "aliases": [
+      "Pinus monticola"
+    ]
+  },
+  "Q41350": {
+    "name": "Greibipuu",
+    "aliases": [
+      "Citrus × paradisi",
+      "Citrus maxima × Citrus sinensis",
+      "Citrus paradisi",
+      "Citrus racemosa",
+      "Citrus x paradisi",
+      "Greipfruudipuu",
+      "Greipipuu",
+      "Kreibipuu"
+    ]
+  },
+  "Q146951": {
+    "name": "haraline ploomipuu",
+    "aliases": [
+      "Alõtšad"
+    ]
+  },
+  "Q146992": {
+    "name": "euroopa nulg",
+    "aliases": [
+      "Abies alba",
+      "Abies pectinata",
+      "Pinus alba",
+      "Valge nulg"
+    ]
+  },
+  "Q147439": {
+    "name": "jaapani lehis",
+    "aliases": [
+      "Eurojaapani lehis",
+      "Eurojaapani lehised",
+      "Larix kaempferi"
+    ]
+  },
+  "Q149548": {
+    "name": "Konksmänd",
+    "aliases": [
+      "Pinus mugo subsp. uncinata",
+      "Pinus uncinata"
+    ]
+  },
+  "Q1044186": {
+    "name": "kalmumänd",
+    "aliases": [
+      "Pinus densiflora",
+      "Pinus funebris"
+    ]
+  },
+  "Q1073968": {
+    "name": "lamedavõraline mänd",
+    "aliases": [
+      "Pinus tabuliformis"
+    ]
+  },
+  "Q368248": {
+    "name": "tõrvikumänd",
+    "aliases": [
+      "Pinus taeda"
+    ]
+  },
+  "Q391374": {
+    "name": "Koyama kuusk",
+    "aliases": [
+      "Picea koyamae"
+    ]
+  },
+  "Q428023": {
+    "name": "palsaminulg",
+    "aliases": [
+      "Abies balsamea"
+    ]
+  },
+  "Q147475": {
+    "name": "Mägimänd",
+    "aliases": [
+      "Pinus mugo",
+      "Pinus mugo mugo",
+      "Pinus mugo subsp. mugo"
+    ]
+  },
+  "Q147492": {
+    "name": "künnapuu",
+    "aliases": [
+      "Ulmus laevis"
+    ]
+  },
+  "Q147824": {
+    "name": "serbia kuusk",
+    "aliases": [
+      "Picea omorica",
+      "Picea omorika"
+    ]
+  },
+  "Q148542": {
+    "name": "Pikaokkaline mänd",
+    "aliases": [
+      "Pinus palustris"
+    ]
+  },
+  "Q148920": {
+    "name": "kaukaasia nulg",
+    "aliases": [
+      "Abies nordmanniana",
+      "Bornmülleri nulg"
+    ]
+  },
+  "Q156904": {
+    "name": "sanglepp",
+    "aliases": [
+      "must lepp"
+    ]
+  },
+  "Q866150": {
+    "name": "piiskopimänd",
+    "aliases": [
+      "Pinus muricata"
+    ]
+  },
+  "Q936498": {
+    "name": "Õilis nulg",
+    "aliases": [
+      "Abies amabilis"
+    ]
+  },
+  "Q539249": {
+    "name": "sile mänd",
+    "aliases": [
+      "Pinus glabra"
+    ]
+  },
+  "Q583885": {
+    "name": "Üheokkaline mänd",
+    "aliases": [
+      "Pinus monophylla"
+    ]
+  },
+  "Q594993": {
+    "name": "kaljumänd",
+    "aliases": [
+      "kalifornia seedermänd",
+      "kalju-seedermänd",
+      "Pinus flexilis"
+    ]
+  },
+  "Q628329": {
+    "name": "kreeta mänd",
+    "aliases": [
+      "Pinus brutia"
+    ]
+  },
+  "Q156895": {
+    "name": "arukask",
+    "aliases": [
+      "Betula pendula",
+      "Betula verrucosa"
+    ]
+  },
+  "Q147278": {
+    "name": "alpi seedermänd",
+    "aliases": [
+      "Pinus cembra"
+    ]
+  },
+  "Q936888": {
+    "name": "Ohteline mänd",
+    "aliases": [
+      "Pinus aristata"
+    ]
+  },
+  "Q950688": {
+    "name": "Balfouri mänd",
+    "aliases": [
+      "Pinus balfouriana"
+    ]
+  },
+  "Q978755": {
+    "name": "Mäginulg",
+    "aliases": [
+      "Abies balsamea subsp. lasiocarpa",
+      "Abies bifolia",
+      "Abies concolor var. lasiocarpa",
+      "Abies lasiocarpa",
+      "Abies lasiocarpa var. fallax",
+      "Abies subalpina",
+      "Abies subalpina var. fallax",
+      "Korginulg",
+      "Picea bifolia",
+      "Picea lasiocarpa",
+      "Pinus lasiocarpa"
+    ]
+  },
+  "Q18674606": {
+    "name": "aed-õunapuu",
+    "aliases": [
+      "õunapuu"
+    ]
+  },
+  "Q50853554": {
+    "name": "Thunbergi mänd",
+    "aliases": [
+      "Pinus thunbergiana",
+      "Pinus thunbergii"
+    ]
+  },
+  "Q15487256": {
+    "name": "krimmi mänd",
+    "aliases": [
+      "Pinus nigra pallasiana"
+    ]
+  },
+  "Q17238257": {
+    "name": "Regeli pirnipuu",
+    "aliases": [
+      "Pyrus regelii"
+    ]
+  },
+  "Q150129": {
+    "name": "Ranniksekvoia",
+    "aliases": [
+      "Rannikusekvoia",
+      "Sequoia sempervirens"
+    ]
+  },
+  "Q1074872": {
+    "name": "Bunge mänd",
+    "aliases": [
+      "Pinus bungeana"
+    ]
+  },
+  "Q147498": {
+    "name": "harilik jalakas",
+    "aliases": [
+      "jalakas"
+    ]
+  },
+  "Q460523": {
+    "name": "Kollane mänd",
+    "aliases": [
+      "Pinus ponderosa"
+    ]
+  },
+  "Q460531": {
+    "name": "Soomusmänd",
+    "aliases": [
+      "Pinus leucodermis",
+      "Pinus heldreichii",
+      "Valgekooreline mänd"
+    ]
+  },
+  "Q1082365": {
+    "name": "suureviljane tamm",
+    "aliases": [
+      "Quercus macrocarpa"
+    ]
+  },
+  "Q849381": {
+    "name": "Hispaania nulg",
+    "aliases": [
+      "Abies pinsapo",
+      "Maroko nulg"
+    ]
+  },
+  "Q852262": {
+    "name": "siberi nulg",
+    "aliases": [
+      "Abies sibirica"
+    ]
+  },
+  "Q156687": {
+    "name": "Harilik ebatsuuga",
+    "aliases": [
+      "Douglase kuusk",
+      "Pseudotsuga douglasii",
+      "Pseudotsuga menziesii",
+      "Ranniku-ebatsuuga",
+      "Roheline ebatsuuga",
+      "Sinihall ebatsuuga"
+    ]
+  },
+  "Q147426": {
+    "name": "sitka kuusk",
+    "aliases": [
+      "Picea sitchensis"
+    ]
+  },
+  "Q147434": {
+    "name": "Hiigelnulg",
+    "aliases": [
+      "Abies grandis"
+    ]
+  },
+  "Q149319": {
+    "name": "kallaspappel",
+    "aliases": [
+      "kanada pappel"
+    ]
+  },
+  "Q149332": {
+    "name": "mets-pirnipuu",
+    "aliases": [
+      "Pyrus communis var. achras",
+      "Pyrus pyraster"
+    ]
+  },
+  "Q149382": {
+    "name": "karvaseviljane pappel",
+    "aliases": [
+      "Populus trichocarpa"
+    ]
+  },
+  "Q157624": {
+    "name": "sookask",
+    "aliases": [
+      "Betula pubescens"
+    ]
+  },
+  "Q156918": {
+    "name": "hõberemmelgas",
+    "aliases": [
+      "hõbepaju"
+    ]
+  },
+  "Q754765": {
+    "name": "siberi lehis",
+    "aliases": [
+      "Larix sibirica"
+    ]
+  },
+  "Q756191": {
+    "name": "kanaari mänd",
+    "aliases": [
+      "Pinus canariensis"
+    ]
+  },
+  "Q756334": {
+    "name": "Dauuria lehis",
+    "aliases": [
+      "Kamtšatka lehis",
+      "Kuriili lehis",
+      "Larix gmelinii",
+      "Olga lehis",
+      "Rupprechti lehis",
+      "Šensi lehis"
+    ]
+  },
+  "Q9339711": {
+    "name": "helmemänd",
+    "aliases": [
+      "Pinus succinifera"
+    ]
+  },
+  "Q5279626": {
+    "name": "Must eebenipuu",
+    "aliases": [
+      "Diospyros ebenum",
+      "Eebenidiospüür",
+      "Tseiloni eebenipuu"
+    ]
+  },
+  "Q15010117": {
+    "name": "valgekooreline mänd",
+    "aliases": [
+      "Pinus leucodermis"
+    ]
+  },
+  "Q15011301": {
+    "name": "Pitsunda mänd",
+    "aliases": [
+      "Pinus pithyusa"
+    ]
+  },
+  "Q15011381": {
+    "name": "eldari mänd",
+    "aliases": [
+      "Pinus brutia ssp. eldarica",
+      "Pinus eldarica"
+    ]
+  },
+  "Q4122187": {
+    "name": "Hübriidhaab",
+    "aliases": [
+      "Populus x wettsteinii"
+    ]
+  },
+  "Q157628": {
+    "name": "vaevakask",
+    "aliases": [
+      "Betula nana"
+    ]
+  },
+  "Q156137": {
+    "name": "Korgitamm",
+    "aliases": [
+      "Quercus suber"
+    ]
+  },
+  "Q716571": {
+    "name": "Massoni mänd",
+    "aliases": [
+      "Pinus massoniana",
+      "Pinus sinensis"
+    ]
+  },
+  "Q728769": {
+    "name": "Mägi-õunapuu",
+    "aliases": [
+      "Malus sieversii",
+      "Pyrus sieversii",
+      "Sieversi õunapuu"
+    ]
+  },
+  "Q729276": {
+    "name": "rippokkane mänd",
+    "aliases": [
+      "Pinus lumholtzii"
+    ]
+  },
+  "Q738571": {
+    "name": "ploomilehine õunapuu",
+    "aliases": [
+      "hiina õunapuu",
+      "kitaika",
+      "Malus prunifolia"
+    ]
+  },
+  "Q157641": {
+    "name": "hall lepp",
+    "aliases": [
+      "valge lepp",
+      "Alnus incana"
+    ]
+  },
+  "Q157677": {
+    "name": "rootsi kukits",
+    "aliases": [
+      "Cornus suecica"
+    ]
+  },
+  "Q147525": {
+    "name": "punane tamm",
+    "aliases": [
+      "põhjatamm"
+    ]
+  },
+  "Q469151": {
+    "name": "Punane kuusk",
+    "aliases": [
+      "Abies americana",
+      "Abies rubra",
+      "Picea americana",
+      "Picea australis",
+      "Picea nigra var. rubra",
+      "Picea rubens",
+      "Picea rubra",
+      "Pinus abies var. acutissima",
+      "Pinus americana",
+      "Pinus mariana var. rubra",
+      "Pinus rubra",
+      "Pinus rubra var. violacea"
+    ]
+  },
+  "Q476655": {
+    "name": "Breweri kuusk",
+    "aliases": [
+      "Picea breweriana"
+    ]
+  },
+  "Q157230": {
+    "name": "valge mänd",
+    "aliases": [
+      "Pinus strobus"
+    ]
+  },
+  "Q157960": {
+    "name": "Valge pihlakas",
+    "aliases": [
+      "Sorbus aria"
+    ]
+  },
+  "Q761480": {
+    "name": "Valgetüveline seedermänd",
+    "aliases": [
+      "Pinus albicaulis"
+    ]
+  },
+  "Q774829": {
+    "name": "Siberi seedermänd",
+    "aliases": [
+      "Pinus cembra ssp. sibirica",
+      "Pinus sibirica"
+    ]
+  },
+  "Q806838": {
+    "name": "hall mänd",
+    "aliases": [
+      "Pinus banksiana"
+    ]
+  },
+  "Q837410": {
+    "name": "pigimänd",
+    "aliases": [
+      "Pinus rigida"
+    ]
+  },
+  "Q157518": {
+    "name": "Rabe remmelgas",
+    "aliases": [
+      "Salix fragilis"
+    ]
+  },
+  "Q747652": {
+    "name": "Pisarmänd",
+    "aliases": [
+      "Pinus wallichiana"
+    ]
+  },
+  "Q748888": {
+    "name": "Kiirjas mänd",
+    "aliases": [
+      "Pinus radiata"
+    ]
+  },
+  "Q158228": {
+    "name": "Siberi kontpuu",
+    "aliases": [
+      "siberi kontpuu"
+    ]
+  },
+  "Q158301": {
+    "name": "hõbevaher",
+    "aliases": [
+      "Acer saccharinum"
+    ]
+  },
+  "Q158482": {
+    "name": "Idadiospüür",
+    "aliases": [
+      "Diospyros chinensis",
+      "Diospyros kaki",
+      "Kakidiospüür",
+      "Kakiploomipuu"
+    ]
+  },
+  "Q157532": {
+    "name": "vesipaju",
+    "aliases": [
+      "Loogapaju",
+      "Salix amygdalina",
+      "Salix triandra"
+    ]
+  },
+  "Q158746": {
+    "name": "harilik pärn",
+    "aliases": [
+      "lõhmus",
+      "niinepuu",
+      "pärn"
+    ]
+  },
+  "Q158776": {
+    "name": "harilik valgepöök",
+    "aliases": [
+      "Carpinus betulus"
+    ]
+  },
+  "Q158912": {
+    "name": "Raudremmelgas",
+    "aliases": [
+      "Raudpaju",
+      "Salix pentandra"
+    ]
+  },
+  "Q159086": {
+    "name": "harilik viirpuu",
+    "aliases": [
+      "Crataegus rhipidophylla"
+    ]
+  },
+  "Q159447": {
+    "name": "Karamboola",
+    "aliases": [
+      "Tähtvili"
+    ]
+  },
+  "Q159565": {
+    "name": "raagremmelgas",
+    "aliases": [
+      "Salix caprea"
+    ]
+  },
+  "Q161105": {
+    "name": "Idaplaatan",
+    "aliases": [
+      "Platanus orientalis"
+    ]
+  },
+  "Q160576": {
+    "name": "Kummi-viigipuu",
+    "aliases": [
+      "Kummipuu"
+    ]
+  },
+  "Q160019": {
+    "name": "Väike mandlipuu",
+    "aliases": [
+      "Amygdalus georgica",
+      "Amygdalus gessleriana",
+      "Amygdalus ledebouriana",
+      "Amygdalus nana",
+      "Madal mandlipuu",
+      "Prunus ledebouriana",
+      "Prunus nana",
+      "Prunus sweginzowii",
+      "Prunus tenella"
+    ]
+  },
+  "Q76971": {
+    "name": "paberikask"
+  },
+  "Q121749": {
+    "name": "kaukaasia tiibpähklipuu"
+  },
+  "Q131517": {
+    "name": "Hapu kirsipuu"
+  },
+  "Q136698": {
+    "name": "Abies beshanzuensis"
+  },
+  "Q146149": {
+    "name": "harilik pöök"
+  },
+  "Q146250": {
+    "name": "Abies yuanbaoshanensis"
+  },
+  "Q146308": {
+    "name": "Abies ziyuanensis"
+  },
+  "Q147459": {
+    "name": "vahtralehine pihlakas"
+  },
+  "Q147513": {
+    "name": "Vahemere küpress"
+  },
+  "Q149471": {
+    "name": "palsamipappel"
+  },
+  "Q149622": {
+    "name": "Populus × canadensis"
+  },
+  "Q156831": {
+    "name": "suurelehine pärn"
+  },
+  "Q156907": {
+    "name": "harilik saar"
+  },
+  "Q156944": {
+    "name": "mägivaher"
+  },
+  "Q157307": {
+    "name": "valge mooruspuu"
+  },
+  "Q157417": {
+    "name": "harilik robiinia"
+  },
+  "Q157519": {
+    "name": "kõrvpaju"
+  },
+  "Q157522": {
+    "name": "Virgiinia kadakas"
+  },
+  "Q157540": {
+    "name": "tuhkur paju"
+  },
+  "Q157650": {
+    "name": "kolmeastlaline glediitsia"
+  },
+  "Q157697": {
+    "name": "hiina kadakas"
+  },
+  "Q157739": {
+    "name": "Lääneplaatan"
+  },
+  "Q157763": {
+    "name": "Prunus mume"
+  },
+  "Q157969": {
+    "name": "ahtalehine hõbepuu"
+  },
+  "Q158458": {
+    "name": "sinihall paju"
+  },
+  "Q158590": {
+    "name": "vitspaju"
+  },
+  "Q158608": {
+    "name": "kivitamm"
+  },
+  "Q158642": {
+    "name": "Kirss-kontpuu"
+  },
+  "Q158657": {
+    "name": "madal õunapuu"
+  },
+  "Q158785": {
+    "name": "põldvaher"
+  },
+  "Q158987": {
+    "name": "Hilistoomingas"
+  },
+  "Q159122": {
+    "name": "mustjas paju"
+  },
+  "Q159188": {
+    "name": "läikiv hõbepuu"
+  },
+  "Q159476": {
+    "name": "härmpaju"
+  },
+  "Q159528": {
+    "name": "Sinine eukalüpt"
+  },
+  "Q159553": {
+    "name": "tömbilehine viirpuu"
+  },
+  "Q159570": {
+    "name": "näärmeline jumalapuu"
+  },
+  "Q161040": {
+    "name": "must mooruspuu"
+  },
+  "Q161166": {
+    "name": "saarvaher"
+  },
+  "Q161164": {
+    "name": "pensilvaania saar"
+  },
+  "Q161360": {
+    "name": "kalifornia ebaküpress"
+  },
+  "Q161364": {
+    "name": "Punane vaher"
+  },
+  "Q161382": {
+    "name": "hõbepärn"
+  },
+  "Q161388": {
+    "name": "prantsuse vaher"
+  },
+  "Q161415": {
+    "name": "karvane tamm"
+  },
+  "Q161511": {
+    "name": "üheemakane viirpuu"
+  },
+  "Q161882": {
+    "name": "mustikpaju"
+  },
+  "Q162728": {
+    "name": "tatari vaher"
+  },
+  "Q163544": {
+    "name": "kivikask"
+  },
+  "Q163760": {
+    "name": "läänepärn"
+  },
+  "Q163822": {
+    "name": "itaalia vaher"
+  },
+  "Q163831": {
+    "name": "harilik trompetipuu"
+  },
+  "Q163978": {
+    "name": "roheline lepp"
+  },
+  "Q164258": {
+    "name": "madal kask"
+  },
+  "Q165137": {
+    "name": "Magus kirsipuu"
+  },
+  "Q165387": {
+    "name": "Engelmanni kuusk"
+  },
+  "Q182756": {
+    "name": "hiina pappel"
+  },
+  "Q214733": {
+    "name": "suhkruvaher"
+  },
+  "Q334697": {
+    "name": "tuvipuu"
+  },
+  "Q367242": {
+    "name": "Sarik-hõbepuu"
+  },
+  "Q390100": {
+    "name": "Korea nulg"
+  },
+  "Q469316": {
+    "name": "kääbuskask"
+  },
+  "Q469576": {
+    "name": "ameerika haab"
+  },
+  "Q481767": {
+    "name": "tsissuselehine vaher"
+  },
+  "Q516494": {
+    "name": "Tangeriinipuu"
+  },
+  "Q599523": {
+    "name": "suurelehine vaher"
+  },
+  "Q630288": {
+    "name": "hall pähklipuu"
+  },
+  "Q657812": {
+    "name": "Sitsiilia nulg"
+  },
+  "Q734085": {
+    "name": "ameerika lehis"
+  },
+  "Q794061": {
+    "name": "Magnolia denudata"
+  },
+  "Q838963": {
+    "name": "Liiv-pirnipuu"
+  },
+  "Q11107913": {
+    "name": "Salix karelinii"
+  },
+  "Q11127270": {
+    "name": "Photinia pilosicalyx"
+  },
+  "Q11132607": {
+    "name": "Lithocarpus yongfuensis"
+  },
+  "Q11143949": {
+    "name": "Sorbus meliosmifolia"
+  },
+  "Q11173544": {
+    "name": "Ficus pubigera"
+  },
+  "Q11179338": {
+    "name": "Diospyros nigrocortex"
+  },
+  "Q12841042": {
+    "name": "Korolkovi viirpuu"
+  },
+  "Q14955046": {
+    "name": "korginulg"
+  },
+  "Q15236187": {
+    "name": "Olea neriifolia"
+  },
+  "Q15236943": {
+    "name": "Diospyros ehretioides"
+  },
+  "Q15237898": {
+    "name": "Lithocarpus harlandii"
+  },
+  "Q15238823": {
+    "name": "Eucalyptus leptophleba"
+  },
+  "Q15239088": {
+    "name": "Quercus kongshanensis"
+  },
+  "Q15239300": {
+    "name": "Diospyros punctilimba"
+  },
+  "Q15239422": {
+    "name": "Sophora microcarpa"
+  },
+  "Q15239530": {
+    "name": "Lithocarpus mekongensis"
+  },
+  "Q15239804": {
+    "name": "Castanopsis hupehensis"
+  },
+  "Q15240291": {
+    "name": "Cyclobalanopsis sichourensis"
+  },
+  "Q15240339": {
+    "name": "Elaeagnus gonyanthes"
+  },
+  "Q15240385": {
+    "name": "Lithocarpus gaoligongensis"
+  },
+  "Q15240409": {
+    "name": "Elaeagnus angustata"
+  },
+  "Q15376720": {
+    "name": "värdlepp"
+  },
+  "Q15378167": {
+    "name": "kiiljalehine paju"
+  },
+  "Q15397348": {
+    "name": "Eucalyptus canaliculata"
+  },
+  "Q15397357": {
+    "name": "Eucalyptus anceps"
+  },
+  "Q15397363": {
+    "name": "Eucalyptus ewartiana"
+  },
+  "Q15397379": {
+    "name": "Eucalyptus dura"
+  },
+  "Q15397376": {
+    "name": "Eucalyptus argillacea"
+  },
+  "Q15397385": {
+    "name": "Eucalyptus latens"
+  },
+  "Q15397393": {
+    "name": "Eucalyptus intrasilvatica"
+  },
+  "Q15535849": {
+    "name": "vilt-kirsipuu"
+  },
+  "Q15536975": {
+    "name": "Lindmani viirpuu"
+  },
+  "Q15537499": {
+    "name": "saaremaa viirpuu"
+  },
+  "Q15537674": {
+    "name": "lääne-viirpuu"
+  },
+  "Q15538118": {
+    "name": "viidumäe viirpuu"
+  },
+  "Q15634290": {
+    "name": "ginnala vaher"
+  },
+  "Q17271024": {
+    "name": "Notholithocarpus densiflorus"
+  },
+  "Q21177790": {
+    "name": "Eurojaapani lehis"
+  },
+  "Q21251271": {
+    "name": "Kuramaa viirpuu"
+  },
+  "Q21251319": {
+    "name": "Daugava viirpuu"
+  },
+  "Q21251343": {
+    "name": "eesti viirpuu"
+  },
+  "Q21251437": {
+    "name": "Kupfferi viirpuu"
+  },
+  "Q21251448": {
+    "name": "Rand-viirpuu"
+  },
+  "Q21269548": {
+    "name": "Ficus henneana"
+  },
+  "Q25519953": {
+    "name": "Salix elongata"
+  },
+  "Q13189": {
+    "name": "virsik"
+  },
+  "Q22699": {
+    "name": "harilik kastanipuu"
+  },
+  "Q28141": {
+    "name": "Hanepaju"
+  },
+  "Q37453": {
+    "name": "harilik aprikoosipuu"
+  },
+  "Q39708": {
+    "name": "Punapaju"
+  },
+  "Q43300": {
+    "name": "Küdoonia"
+  },
+  "Q46871": {
+    "name": "kreeka pähklipuu"
+  },
+  "Q47161": {
+    "name": "mets-õunapuu"
+  },
+  "Q61105": {
+    "name": "Liibanoni seeder"
+  },
+  "Q844131": {
+    "name": "Raudkask"
+  },
+  "Q852572": {
+    "name": "must pähklipuu"
+  },
+  "Q854884": {
+    "name": "Thunbergi mänd"
+  },
+  "Q883558": {
+    "name": "verkjas paju"
+  },
+  "Q916961": {
+    "name": "kannus-viirpuu"
+  },
+  "Q918920": {
+    "name": "Douglase viirpuu"
+  },
+  "Q942409": {
+    "name": "Hondo magnoolia"
+  },
+  "Q990982": {
+    "name": "Varimagnoolia"
+  },
+  "Q1023505": {
+    "name": "Maximowiczi viirpuu"
+  },
+  "Q1024066": {
+    "name": "sogdi saar"
+  },
+  "Q1038027": {
+    "name": "südajas valgepöök"
+  },
+  "Q1048531": {
+    "name": "Castanopsis fissa"
+  },
+  "Q1072578": {
+    "name": "Picea chihuahuana"
+  },
+  "Q1074099": {
+    "name": "Väikeselehine jalakas"
+  },
+  "Q1079824": {
+    "name": "madal jalakas"
+  },
+  "Q1132580": {
+    "name": "Aesculus turbinata"
+  },
+  "Q1137607": {
+    "name": "Siberi kuusk"
+  },
+  "Q1141735": {
+    "name": "sulglõhine viirpuu"
+  },
+  "Q1144815": {
+    "name": "ida-jugapuu"
+  },
+  "Q1148692": {
+    "name": "Lagerstroemia indica"
+  },
+  "Q1166864": {
+    "name": "Nikko nulg"
+  },
+  "Q1210209": {
+    "name": "sahhalini pihkalas"
+  },
+  "Q1227092": {
+    "name": "Diospyros montana"
+  },
+  "Q1257409": {
+    "name": "Acer triflorum"
+  },
+  "Q1335724": {
+    "name": "tuhkpihlakas"
+  },
+  "Q1348662": {
+    "name": "Lapi paju"
+  },
+  "Q1373854": {
+    "name": "lamedalehine kask"
+  },
+  "Q1374188": {
+    "name": "Populus euphratica"
+  },
+  "Q1377319": {
+    "name": "hambuline tamm"
+  },
+  "Q1399164": {
+    "name": "Kalifornia lõhnaseeder"
+  },
+  "Q1405636": {
+    "name": "Bengali viigipuu"
+  },
+  "Q1420828": {
+    "name": "kanada kukits"
+  },
+  "Q1425243": {
+    "name": "kahevärvine paju"
+  },
+  "Q1499241": {
+    "name": "kollane kask"
+  },
+  "Q1555671": {
+    "name": "kivikadakas"
+  },
+  "Q1581524": {
+    "name": "oregoni saar"
+  },
+  "Q1631785": {
+    "name": "mandžuuria vaher"
+  },
+  "Q1640268": {
+    "name": "Montezuma mänd"
+  },
+  "Q1655870": {
+    "name": "jaapani pähklipuu"
+  },
+  "Q1743596": {
+    "name": "ida-mariõunapuu"
+  },
+  "Q1784356": {
+    "name": "roideline kask"
+  },
+  "Q1869852": {
+    "name": "loorberpappel"
+  },
+  "Q2065540": {
+    "name": "Lühiokkaline jugapuu"
+  },
+  "Q2081113": {
+    "name": "karvane viirpuu"
+  },
+  "Q2139163": {
+    "name": "Rohkeõieline hõbepuu"
+  },
+  "Q2456496": {
+    "name": "pikalehine paju"
+  },
+  "Q2532563": {
+    "name": "soome pihlakas"
+  },
+  "Q2603234": {
+    "name": "Halapaju"
+  },
+  "Q2653348": {
+    "name": "sahhalini viirpuu"
+  },
+  "Q2668309": {
+    "name": "hundipaju"
+  },
+  "Q2673231": {
+    "name": "Pinus wangii"
+  },
+  "Q2704355": {
+    "name": "Vikereukalüpt"
+  },
+  "Q2995056": {
+    "name": "verev viirpuu"
+  },
+  "Q3002196": {
+    "name": "sarlakpunane viirpuu"
+  },
+  "Q3071706": {
+    "name": "Püha viigipuu"
+  },
+  "Q3205624": {
+    "name": "Lagerstroemia intermedia"
+  },
+  "Q3281198": {
+    "name": "Acer sino-oblongum"
+  },
+  "Q3281562": {
+    "name": "Acer poliophyllum"
+  },
+  "Q3281732": {
+    "name": "Acer tsinglingense"
+  },
+  "Q3284652": {
+    "name": "Malus communis"
+  },
+  "Q3308307": {
+    "name": "Pinus maximartinezii"
+  },
+  "Q3336255": {
+    "name": "Acer wardii"
+  },
+  "Q3337079": {
+    "name": "Acer sutchuenense"
+  },
+  "Q3337214": {
+    "name": "Acer sinopurpurascens"
+  },
+  "Q3338661": {
+    "name": "Acer shihweii"
+  },
+  "Q3491094": {
+    "name": "Sophora moorcroftiana"
+  },
+  "Q3731407": {
+    "name": "Picea martinezii"
+  },
+  "Q3919027": {
+    "name": "india mangopuu"
+  },
+  "Q3926712": {
+    "name": "läänekask"
+  },
+  "Q4085311": {
+    "name": "väikeselehine kask"
+  },
+  "Q4115140": {
+    "name": "hõlmine jalakas"
+  },
+  "Q4195477": {
+    "name": "Salix koreensis"
+  },
+  "Q4395125": {
+    "name": "hunnitu robiinia"
+  },
+  "Q4673169": {
+    "name": "Acer oblongum"
+  },
+  "Q5487185": {
+    "name": "Manglietia sinica"
+  },
+  "Q5563146": {
+    "name": "Ginkgo adiantoides"
+  },
+  "Q6746012": {
+    "name": "Acer schneiderianum"
+  },
+  "Q7213013": {
+    "name": "Eucalyptus platyphylla"
+  },
+  "Q7404901": {
+    "name": "Salix jessoensis"
+  },
+  "Q9579481": {
+    "name": "Trautvetteri vaher"
+  },
+  "Q10351624": {
+    "name": "tumedalehine pappel"
+  },
+  "Q10872414": {
+    "name": "Photinia beauverdiana"
+  },
+  "Q10878191": {
+    "name": "Kreek"
+  },
+  "Q10880877": {
+    "name": "Diospyros yunnanensis"
+  },
+  "Q10887979": {
+    "name": "Diospyros sunyiensis"
+  },
+  "Q10906248": {
+    "name": "Diospyros unisemina"
+  },
+  "Q10907379": {
+    "name": "Castanopsis amabilis"
+  },
+  "Q10908398": {
+    "name": "Lagerstroemia siamica"
+  },
+  "Q10939476": {
+    "name": "tjanšani pihlakas"
+  },
+  "Q10949016": {
+    "name": "Elaeagnus henryi"
+  },
+  "Q10958149": {
+    "name": "Olea parvilimba"
+  },
+  "Q11045980": {
+    "name": "Diospyros siderophylla"
+  },
+  "Q11055328": {
+    "name": "Diospyros sutchuensis"
+  },
+  "Q11066157": {
+    "name": "Diospyros anisocalyx"
+  },
+  "Q11080658": {
+    "name": "Eucalyptus kirtoniana"
+  }
+}

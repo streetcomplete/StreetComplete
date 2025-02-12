@@ -1,0 +1,246 @@
+{
+  "Q25243": {
+    "name": "breza",
+    "aliases": [
+      "Betula"
+    ]
+  },
+  "Q25350": {
+    "name": "Jele",
+    "aliases": [
+      "Abies"
+    ]
+  },
+  "Q25356": {
+    "name": "Topola",
+    "aliases": [
+      "Populus"
+    ]
+  },
+  "Q36050": {
+    "name": "Vrbe",
+    "aliases": [
+      "Vrba",
+      "Salix"
+    ]
+  },
+  "Q44789": {
+    "name": "murva",
+    "aliases": [
+      "Morus",
+      "dud"
+    ]
+  },
+  "Q45669": {
+    "name": "Eukaliptus",
+    "aliases": [
+      "Eucalyptus",
+      "Gumovac"
+    ]
+  },
+  "Q59798": {
+    "name": "Smokve",
+    "aliases": [
+      "Ficus",
+      "Smokva"
+    ]
+  },
+  "Q131113": {
+    "name": "Ulmus",
+    "aliases": [
+      "Brijest"
+    ]
+  },
+  "Q158771": {
+    "name": "Duglazije",
+    "aliases": [
+      "Pseudotsuga"
+    ]
+  },
+  "Q165258": {
+    "name": "dragun",
+    "aliases": [
+      "Dragun (biljni rod)"
+    ]
+  },
+  "Q183543": {
+    "name": "Likvidambar",
+    "aliases": [
+      "ambar-drvo"
+    ]
+  },
+  "Q775229": {
+    "name": "Lagerstremija",
+    "aliases": [
+      "Lagerstroemia"
+    ]
+  },
+  "Q104819": {
+    "name": "Jabuke"
+  },
+  "Q127849": {
+    "name": "Lipa"
+  },
+  "Q128550": {
+    "name": "Cedar"
+  },
+  "Q128887": {
+    "name": "Jasen"
+  },
+  "Q129324": {
+    "name": "Pitomi kesten"
+  },
+  "Q132402": {
+    "name": "Litokarpus"
+  },
+  "Q132557": {
+    "name": "glog"
+  },
+  "Q132703": {
+    "name": "Kelreuterija"
+  },
+  "Q137054": {
+    "name": "Krizolepis"
+  },
+  "Q142788": {
+    "name": "Karija (biljni rod)"
+  },
+  "Q145889": {
+    "name": "lijeska"
+  },
+  "Q146911": {
+    "name": "Čempres"
+  },
+  "Q147791": {
+    "name": "Pačempres"
+  },
+  "Q149461": {
+    "name": "Ginkgo"
+  },
+  "Q157017": {
+    "name": "Magnolia"
+  },
+  "Q157236": {
+    "name": "Tulipanovac"
+  },
+  "Q157366": {
+    "name": "Rujevina"
+  },
+  "Q157964": {
+    "name": "Jarebika"
+  },
+  "Q158072": {
+    "name": "Katalpa"
+  },
+  "Q158513": {
+    "name": "Grab"
+  },
+  "Q158752": {
+    "name": "Divlji kesten"
+  },
+  "Q159545": {
+    "name": "Drijen"
+  },
+  "Q160580": {
+    "name": "Pajasen"
+  },
+  "Q161042": {
+    "name": "Zlolesina"
+  },
+  "Q161250": {
+    "name": "Gledičija"
+  },
+  "Q163025": {
+    "name": "Vodoklen"
+  },
+  "Q165173": {
+    "name": "Paulovnija"
+  },
+  "Q190545": {
+    "name": "Prunus"
+  },
+  "Q248582": {
+    "name": "Koprivić"
+  },
+  "Q296910": {
+    "name": "Masline"
+  },
+  "Q309213": {
+    "name": "Sofora"
+  },
+  "Q472943": {
+    "name": "bagrem"
+  },
+  "Q605290": {
+    "name": "Crni grab"
+  },
+  "Q664945": {
+    "name": "Albizia"
+  },
+  "Q858028": {
+    "name": "Katsura drvo"
+  },
+  "Q964952": {
+    "name": "Tupelo"
+  },
+  "Q1065400": {
+    "name": "Kastanopsis"
+  },
+  "Q1070845": {
+    "name": "Focinija"
+  },
+  "Q1132766": {
+    "name": "Fontanezija"
+  },
+  "Q1420126": {
+    "name": "Pterokarija"
+  },
+  "Q2453469": {
+    "name": "Orasi"
+  },
+  "Q5122903": {
+    "name": "Kumkvat"
+  },
+  "Q5220438": {
+    "name": "Trigonobalanus"
+  },
+  "Q19845401": {
+    "name": "Formanodendron"
+  },
+  "Q434": {
+    "name": "Kruške"
+  },
+  "Q12004": {
+    "name": "Hrast"
+  },
+  "Q12024": {
+    "name": "Bor (biljni rod)"
+  },
+  "Q25239": {
+    "name": "Joha"
+  },
+  "Q25403": {
+    "name": "Bukva"
+  },
+  "Q25618": {
+    "name": "Ariš"
+  },
+  "Q25662": {
+    "name": "Borovica"
+  },
+  "Q26782": {
+    "name": "Smreka"
+  },
+  "Q27355": {
+    "name": "Tisa"
+  },
+  "Q29033": {
+    "name": "Judino drvo"
+  },
+  "Q42292": {
+    "name": "javor"
+  },
+  "Q87147998": {
+    "name": "Colombobalanus"
+  }
+}

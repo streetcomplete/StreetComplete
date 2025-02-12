@@ -1,0 +1,345 @@
+{
+  "Q22699": {
+    "name": "Pitomi kesten",
+    "aliases": [
+      "Castanea sativa"
+    ]
+  },
+  "Q44120": {
+    "name": "Šljiva",
+    "aliases": [
+      "Šljive",
+      "Prunus domestica"
+    ]
+  },
+  "Q26899": {
+    "name": "Divlji kesten",
+    "aliases": [
+      "Aesculus hippocastanum"
+    ]
+  },
+  "Q37083": {
+    "name": "Maslina",
+    "aliases": [
+      "Masline"
+    ]
+  },
+  "Q36146": {
+    "name": "Smokva",
+    "aliases": [
+      "Smokve"
+    ]
+  },
+  "Q124969": {
+    "name": "Lijeska",
+    "aliases": [
+      "Lješnjak"
+    ]
+  },
+  "Q146048": {
+    "name": "Evropski ariš",
+    "aliases": [
+      "Larix decidua"
+    ]
+  },
+  "Q157277": {
+    "name": "Hrast cer",
+    "aliases": [
+      "Quercus cerris"
+    ]
+  },
+  "Q158608": {
+    "name": "Hrast kitnjak",
+    "aliases": [
+      "Quercus petraea"
+    ]
+  },
+  "Q161415": {
+    "name": "Hrast medunac",
+    "aliases": [
+      "Quercus pubescens"
+    ]
+  },
+  "Q165145": {
+    "name": "Hrast lužnjak",
+    "aliases": [
+      "Quercus robur"
+    ]
+  },
+  "Q50841469": {
+    "name": "Žuta bukva"
+  },
+  "Q13189": {
+    "name": "Breskva"
+  },
+  "Q26325": {
+    "name": "Smreka"
+  },
+  "Q37453": {
+    "name": "Kajsija"
+  },
+  "Q39918": {
+    "name": "badem"
+  },
+  "Q41350": {
+    "name": "Grejpfrut"
+  },
+  "Q42385": {
+    "name": "Kakaovac"
+  },
+  "Q43300": {
+    "name": "Dunja"
+  },
+  "Q46871": {
+    "name": "Orah"
+  },
+  "Q131517": {
+    "name": "Višnja"
+  },
+  "Q133128": {
+    "name": "Bijeli bor"
+  },
+  "Q145954": {
+    "name": "Crni bor"
+  },
+  "Q146149": {
+    "name": "Fagus sylvatica"
+  },
+  "Q146992": {
+    "name": "Abies alba"
+  },
+  "Q147064": {
+    "name": "Crna topola"
+  },
+  "Q147824": {
+    "name": "Pančićeva omorika"
+  },
+  "Q149622": {
+    "name": "Populus × canadensis"
+  },
+  "Q156137": {
+    "name": "Hrast plutnjak"
+  },
+  "Q156904": {
+    "name": "Crna joha"
+  },
+  "Q156944": {
+    "name": "Gorski javor"
+  },
+  "Q157417": {
+    "name": "Bagrem"
+  },
+  "Q157763": {
+    "name": "Prunus mume"
+  },
+  "Q158642": {
+    "name": "Drijen"
+  },
+  "Q158657": {
+    "name": "Jabuka"
+  },
+  "Q158785": {
+    "name": "Klen"
+  },
+  "Q159188": {
+    "name": "Elaeagnus commutata"
+  },
+  "Q161511": {
+    "name": "Bijeli glog"
+  },
+  "Q161920": {
+    "name": "Rašeljka"
+  },
+  "Q163831": {
+    "name": "Katalpa"
+  },
+  "Q165137": {
+    "name": "Trešnja"
+  },
+  "Q179729": {
+    "name": "Tisa (biljka)"
+  },
+  "Q218155": {
+    "name": "Hrast crnika"
+  },
+  "Q334697": {
+    "name": "Davidia involucrata"
+  },
+  "Q460531": {
+    "name": "Munika"
+  },
+  "Q794061": {
+    "name": "Magnolia denudata"
+  },
+  "Q1048531": {
+    "name": "Castanopsis fissa"
+  },
+  "Q1079824": {
+    "name": "Ulmus pumila"
+  },
+  "Q1227092": {
+    "name": "Diospyros montana"
+  },
+  "Q1257409": {
+    "name": "Acer triflorum"
+  },
+  "Q1374188": {
+    "name": "Populus euphratica"
+  },
+  "Q3205624": {
+    "name": "Lagerstroemia intermedia"
+  },
+  "Q3281198": {
+    "name": "Acer sino-oblongum"
+  },
+  "Q3281562": {
+    "name": "Acer poliophyllum"
+  },
+  "Q3281732": {
+    "name": "Acer tsinglingense"
+  },
+  "Q3336255": {
+    "name": "Acer wardii"
+  },
+  "Q3337079": {
+    "name": "Acer sutchuenense"
+  },
+  "Q3337214": {
+    "name": "Acer sinopurpurascens"
+  },
+  "Q3338661": {
+    "name": "Acer shihweii"
+  },
+  "Q3355098": {
+    "name": "narandža"
+  },
+  "Q3491094": {
+    "name": "Sophora moorcroftiana"
+  },
+  "Q3919027": {
+    "name": "Mango"
+  },
+  "Q4673169": {
+    "name": "Acer oblongum"
+  },
+  "Q5487185": {
+    "name": "Manglietia sinica"
+  },
+  "Q6746012": {
+    "name": "Acer schneiderianum"
+  },
+  "Q7213013": {
+    "name": "Eucalyptus platyphylla"
+  },
+  "Q10872414": {
+    "name": "Photinia beauverdiana"
+  },
+  "Q10880877": {
+    "name": "Diospyros yunnanensis"
+  },
+  "Q10887979": {
+    "name": "Diospyros sunyiensis"
+  },
+  "Q10906248": {
+    "name": "Diospyros unisemina"
+  },
+  "Q10907379": {
+    "name": "Castanopsis amabilis"
+  },
+  "Q10908398": {
+    "name": "Lagerstroemia siamica"
+  },
+  "Q10949016": {
+    "name": "Elaeagnus henryi"
+  },
+  "Q10958149": {
+    "name": "Olea parvilimba"
+  },
+  "Q11045980": {
+    "name": "Diospyros siderophylla"
+  },
+  "Q11055328": {
+    "name": "Diospyros sutchuensis"
+  },
+  "Q11066157": {
+    "name": "Diospyros anisocalyx"
+  },
+  "Q11080658": {
+    "name": "Eucalyptus kirtoniana"
+  },
+  "Q11107913": {
+    "name": "Salix karelinii"
+  },
+  "Q11127270": {
+    "name": "Photinia pilosicalyx"
+  },
+  "Q11132607": {
+    "name": "Lithocarpus yongfuensis"
+  },
+  "Q11173544": {
+    "name": "Ficus pubigera"
+  },
+  "Q11179338": {
+    "name": "Diospyros nigrocortex"
+  },
+  "Q15236187": {
+    "name": "Olea neriifolia"
+  },
+  "Q15236943": {
+    "name": "Diospyros ehretioides"
+  },
+  "Q15237898": {
+    "name": "Lithocarpus harlandii"
+  },
+  "Q15238823": {
+    "name": "Eucalyptus leptophleba"
+  },
+  "Q15239088": {
+    "name": "Quercus kongshanensis"
+  },
+  "Q15239300": {
+    "name": "Diospyros punctilimba"
+  },
+  "Q15239422": {
+    "name": "Sophora microcarpa"
+  },
+  "Q15239530": {
+    "name": "Lithocarpus mekongensis"
+  },
+  "Q15239804": {
+    "name": "Castanopsis hupehensis"
+  },
+  "Q15240291": {
+    "name": "Cyclobalanopsis sichourensis"
+  },
+  "Q15240339": {
+    "name": "Elaeagnus gonyanthes"
+  },
+  "Q15240385": {
+    "name": "Lithocarpus gaoligongensis"
+  },
+  "Q15240409": {
+    "name": "Elaeagnus angustata"
+  },
+  "Q15397348": {
+    "name": "Eucalyptus canaliculata"
+  },
+  "Q15397357": {
+    "name": "Eucalyptus anceps"
+  },
+  "Q15397363": {
+    "name": "Eucalyptus ewartiana"
+  },
+  "Q15397379": {
+    "name": "Eucalyptus dura"
+  },
+  "Q15397376": {
+    "name": "Eucalyptus argillacea"
+  },
+  "Q15397385": {
+    "name": "Eucalyptus latens"
+  },
+  "Q15397393": {
+    "name": "Eucalyptus intrasilvatica"
+  }
+}

@@ -1,0 +1,313 @@
+{
+  "Q12004": {
+    "name": "Quercus",
+    "aliases": [
+      "carballo"
+    ]
+  },
+  "Q25243": {
+    "name": "Bidueiro",
+    "aliases": [
+      "Betula"
+    ]
+  },
+  "Q25356": {
+    "name": "Lamigueiro",
+    "aliases": [
+      "Chopo",
+      "Choupo",
+      "Lamagueiro",
+      "Populus"
+    ]
+  },
+  "Q36050": {
+    "name": "Salgueiro",
+    "aliases": [
+      "Salix"
+    ]
+  },
+  "Q45669": {
+    "name": "Eucalipto",
+    "aliases": [
+      "Eucalyptus"
+    ]
+  },
+  "Q128550": {
+    "name": "Cedro",
+    "aliases": [
+      "Cedrus"
+    ]
+  },
+  "Q129324": {
+    "name": "Castanea",
+    "aliases": [
+      "castiñeiro"
+    ]
+  },
+  "Q147791": {
+    "name": "Chamaecyparis",
+    "aliases": [
+      "Falso alcipreste",
+      "Falso ciprés"
+    ]
+  },
+  "Q157017": {
+    "name": "Magnolia",
+    "aliases": [
+      "Magnolio"
+    ]
+  },
+  "Q5122903": {
+    "name": "Kumquat",
+    "aliases": [
+      "Laranxa anana",
+      "Laranxa chinesa"
+    ]
+  },
+  "Q190545": {
+    "name": "Ameixa",
+    "aliases": [
+      "Prunus"
+    ]
+  },
+  "Q104819": {
+    "name": "Malus"
+  },
+  "Q127849": {
+    "name": "Tileiro"
+  },
+  "Q128887": {
+    "name": "Freixo"
+  },
+  "Q131113": {
+    "name": "Umeiro"
+  },
+  "Q132402": {
+    "name": "Lithocarpus"
+  },
+  "Q132557": {
+    "name": "Crataegus"
+  },
+  "Q132703": {
+    "name": "Koelreuteria"
+  },
+  "Q137054": {
+    "name": "Chrysolepis"
+  },
+  "Q142788": {
+    "name": "Carya"
+  },
+  "Q145889": {
+    "name": "Corylus"
+  },
+  "Q146911": {
+    "name": "Alcipreste"
+  },
+  "Q149461": {
+    "name": "Ginkgo"
+  },
+  "Q157236": {
+    "name": "Tulipeiro"
+  },
+  "Q157366": {
+    "name": "Cotinus"
+  },
+  "Q157964": {
+    "name": "Sorbus"
+  },
+  "Q158072": {
+    "name": "Catalpa"
+  },
+  "Q158513": {
+    "name": "Carpinus"
+  },
+  "Q158752": {
+    "name": "Aesculus"
+  },
+  "Q158771": {
+    "name": "Pseudotsuga"
+  },
+  "Q159545": {
+    "name": "Cornus"
+  },
+  "Q160580": {
+    "name": "Ailanthus"
+  },
+  "Q161042": {
+    "name": "Elaeagnus"
+  },
+  "Q161250": {
+    "name": "Gleditsia"
+  },
+  "Q163025": {
+    "name": "Platanus"
+  },
+  "Q165173": {
+    "name": "Paulownia"
+  },
+  "Q165258": {
+    "name": "Diospyros"
+  },
+  "Q183543": {
+    "name": "Liquidámbar"
+  },
+  "Q248582": {
+    "name": "Celtis"
+  },
+  "Q296910": {
+    "name": "Olea"
+  },
+  "Q309213": {
+    "name": "Sophora"
+  },
+  "Q472943": {
+    "name": "Robinia"
+  },
+  "Q605290": {
+    "name": "Ostrya"
+  },
+  "Q664945": {
+    "name": "Albizia"
+  },
+  "Q765246": {
+    "name": "Calocedrus"
+  },
+  "Q775229": {
+    "name": "Lagerstroemia"
+  },
+  "Q796117": {
+    "name": "Cyclobalanopsis"
+  },
+  "Q810562": {
+    "name": "Karpatiosorbus"
+  },
+  "Q858028": {
+    "name": "Cercidiphyllum"
+  },
+  "Q964952": {
+    "name": "Nyssa"
+  },
+  "Q1065400": {
+    "name": "Castanopsis"
+  },
+  "Q1070845": {
+    "name": "Photinia"
+  },
+  "Q1132766": {
+    "name": "Fontanesia"
+  },
+  "Q1420126": {
+    "name": "Pterocarya"
+  },
+  "Q1975652": {
+    "name": "Sequoia"
+  },
+  "Q2453469": {
+    "name": "Nogueira"
+  },
+  "Q2697430": {
+    "name": "Toona"
+  },
+  "Q3060383": {
+    "name": "Euodia"
+  },
+  "Q3366033": {
+    "name": "Parrotia"
+  },
+  "Q5220438": {
+    "name": "Trigonobalanus"
+  },
+  "Q5429644": {
+    "name": "Faidherbia"
+  },
+  "Q12309040": {
+    "name": "Davidia"
+  },
+  "Q12323064": {
+    "name": "Cryptomeria"
+  },
+  "Q17410244": {
+    "name": "Notholithocarpus"
+  },
+  "Q18745576": {
+    "name": "Pasania"
+  },
+  "Q19845401": {
+    "name": "Formanodendron"
+  },
+  "Q20817818": {
+    "name": "Eotrigonobalanus"
+  },
+  "Q21088249": {
+    "name": "Limlia"
+  },
+  "Q21398174": {
+    "name": "Fagopsis"
+  },
+  "Q434": {
+    "name": "Pyrus"
+  },
+  "Q12024": {
+    "name": "Piñeiro"
+  },
+  "Q25239": {
+    "name": "Alnus"
+  },
+  "Q25350": {
+    "name": "Abeto"
+  },
+  "Q25403": {
+    "name": "Fagus"
+  },
+  "Q25618": {
+    "name": "Lárice"
+  },
+  "Q25662": {
+    "name": "Juniperus"
+  },
+  "Q26782": {
+    "name": "Picea"
+  },
+  "Q27355": {
+    "name": "Taxus"
+  },
+  "Q29033": {
+    "name": "Cercis"
+  },
+  "Q42292": {
+    "name": "Pradairo"
+  },
+  "Q44789": {
+    "name": "Moreira"
+  },
+  "Q59798": {
+    "name": "Ficus"
+  },
+  "Q87070717": {
+    "name": "Salisburia"
+  },
+  "Q87145799": {
+    "name": "Callaeocarpus"
+  },
+  "Q87147998": {
+    "name": "Colombobalanus"
+  },
+  "Q87152055": {
+    "name": "Fagus-castanea"
+  },
+  "Q87162206": {
+    "name": "Pasaniopsis"
+  },
+  "Q113299853": {
+    "name": "Erythrobalanus"
+  },
+  "Q113299877": {
+    "name": "Synaedrys"
+  },
+  "Q113299880": {
+    "name": "Corylopasania"
+  },
+  "Q113299881": {
+    "name": "Cyclobalanus"
+  }
+}

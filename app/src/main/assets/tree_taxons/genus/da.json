@@ -1,0 +1,399 @@
+{
+  "Q12004": {
+    "name": "eg",
+    "aliases": [
+      "egetræ",
+      "egeslægten"
+    ]
+  },
+  "Q12024": {
+    "name": "fyrreslægten",
+    "aliases": [
+      "fyr"
+    ]
+  },
+  "Q25239": {
+    "name": "elleslægten",
+    "aliases": [
+      "Alnus",
+      "el",
+      "elletræ",
+      "el-slægten"
+    ]
+  },
+  "Q25243": {
+    "name": "birk",
+    "aliases": [
+      "Betula",
+      "birketræ"
+    ]
+  },
+  "Q25350": {
+    "name": "Ædelgran",
+    "aliases": [
+      "Abies"
+    ]
+  },
+  "Q25356": {
+    "name": "poppel",
+    "aliases": [
+      "Populus",
+      "asp"
+    ]
+  },
+  "Q25403": {
+    "name": "bøg",
+    "aliases": [
+      "Fagus"
+    ]
+  },
+  "Q25618": {
+    "name": "lærk",
+    "aliases": [
+      "Larix",
+      "lærketræ"
+    ]
+  },
+  "Q25662": {
+    "name": "enebær",
+    "aliases": [
+      "Juniperus",
+      "ene"
+    ]
+  },
+  "Q26782": {
+    "name": "gran-slægten",
+    "aliases": [
+      "gran",
+      "Picea"
+    ]
+  },
+  "Q27355": {
+    "name": "taks",
+    "aliases": [
+      "Taks-slægten",
+      "Takstræ",
+      "Taxus"
+    ]
+  },
+  "Q29033": {
+    "name": "Judastræ",
+    "aliases": [
+      "Cercis"
+    ]
+  },
+  "Q36050": {
+    "name": "pile-slægten",
+    "aliases": [
+      "pil",
+      "Salix",
+      "piletræ",
+      "pileslægten"
+    ]
+  },
+  "Q42292": {
+    "name": "løn-slægten",
+    "aliases": [
+      "løn"
+    ]
+  },
+  "Q44789": {
+    "name": "morbær",
+    "aliases": [
+      "Morus"
+    ]
+  },
+  "Q45669": {
+    "name": "Eukalyptus",
+    "aliases": [
+      "Eucalyptus"
+    ]
+  },
+  "Q104819": {
+    "name": "æble-slægten",
+    "aliases": [
+      "Malus",
+      "æbletræ",
+      "æble",
+      "æbleslægten"
+    ]
+  },
+  "Q59798": {
+    "name": "Figen",
+    "aliases": [
+      "Ficus"
+    ]
+  },
+  "Q127849": {
+    "name": "lind",
+    "aliases": [
+      "lindetræ",
+      "Tilia"
+    ]
+  },
+  "Q128550": {
+    "name": "ceder",
+    "aliases": [
+      "Cedrus",
+      "cedertræ"
+    ]
+  },
+  "Q128887": {
+    "name": "ask-slægten",
+    "aliases": [
+      "ask",
+      "asketræ"
+    ]
+  },
+  "Q129324": {
+    "name": "kastanje",
+    "aliases": [
+      "Castanea",
+      "Castanea i Danmark",
+      "Kastanie"
+    ]
+  },
+  "Q131113": {
+    "name": "elm",
+    "aliases": [
+      "Alm",
+      "elmetræ",
+      "Ulmus",
+      "Ælm"
+    ]
+  },
+  "Q132402": {
+    "name": "Garvebarkeg",
+    "aliases": [
+      "Lithocarpus"
+    ]
+  },
+  "Q132557": {
+    "name": "hvidtjørn",
+    "aliases": [
+      "Crataegus",
+      "tjørn"
+    ]
+  },
+  "Q132703": {
+    "name": "Kinesertræ-slægten",
+    "aliases": [
+      "Kinesertræ (Koelreuteria)",
+      "Koelreuteria"
+    ]
+  },
+  "Q145889": {
+    "name": "hassel",
+    "aliases": [
+      "Corylus"
+    ]
+  },
+  "Q146911": {
+    "name": "cypres",
+    "aliases": [
+      "Cupressus",
+      "Cypres-slægten"
+    ]
+  },
+  "Q147791": {
+    "name": "Dværgcypres",
+    "aliases": [
+      "Ædel-Cypres",
+      "Ædelcypres",
+      "Chamaecyparis",
+      "Cypres"
+    ]
+  },
+  "Q157236": {
+    "name": "Tulipantræ",
+    "aliases": [
+      "Liriodendron"
+    ]
+  },
+  "Q157366": {
+    "name": "Parykbusk-slægten",
+    "aliases": [
+      "Cotinus",
+      "Parykbusk"
+    ]
+  },
+  "Q157964": {
+    "name": "røn",
+    "aliases": [
+      "Finsk Røn",
+      "Sorbus",
+      "rønnetræ"
+    ]
+  },
+  "Q158072": {
+    "name": "Trompetkrone",
+    "aliases": [
+      "Catalpa",
+      "Trompettræ"
+    ]
+  },
+  "Q158513": {
+    "name": "Avnbøg",
+    "aliases": [
+      "Carpinus",
+      "Carpinus i Danmark"
+    ]
+  },
+  "Q158752": {
+    "name": "Hestekastanje",
+    "aliases": [
+      "Aesculus"
+    ]
+  },
+  "Q159545": {
+    "name": "kornel",
+    "aliases": [
+      "Cornus"
+    ]
+  },
+  "Q160580": {
+    "name": "Skyrækker-slægten",
+    "aliases": [
+      "Ailanthus",
+      "Skyrækker"
+    ]
+  },
+  "Q161250": {
+    "name": "Tretorn",
+    "aliases": [
+      "Gleditsia"
+    ]
+  },
+  "Q163025": {
+    "name": "platan",
+    "aliases": [
+      "Platanus"
+    ]
+  },
+  "Q165173": {
+    "name": "Kejsertræ-slægten",
+    "aliases": [
+      "Paulownia"
+    ]
+  },
+  "Q165258": {
+    "name": "Ibenholt",
+    "aliases": [
+      "Kaki",
+      "Diospyros",
+      "Diospyros i Danmark",
+      "Sharonfrugt"
+    ]
+  },
+  "Q190545": {
+    "name": "kirsebær",
+    "aliases": [
+      "Prunus",
+      "Stenfrugt"
+    ]
+  },
+  "Q12323064": {
+    "name": "Kryptomeria-slægten",
+    "aliases": [
+      "Kryptomerie (Cryptomeria)",
+      "Kryptomerie-slægten",
+      "Cryptomeria",
+      "Cryptomerie",
+      "Cryptomerie (Cryptomeria)"
+    ]
+  },
+  "Q296910": {
+    "name": "oliven-slægten",
+    "aliases": [
+      "Olea"
+    ]
+  },
+  "Q309213": {
+    "name": "Sophora",
+    "aliases": [
+      "Tempeltræ"
+    ]
+  },
+  "Q858028": {
+    "name": "Hjertetræ",
+    "aliases": [
+      "Cercidiphyllum"
+    ]
+  },
+  "Q1070845": {
+    "name": "Glansmispel",
+    "aliases": [
+      "Photinia",
+      "Stranvaesia"
+    ]
+  },
+  "Q1420126": {
+    "name": "Vingevalnød",
+    "aliases": [
+      "Pterocarya"
+    ]
+  },
+  "Q1975652": {
+    "name": "Rødtræ-slægten",
+    "aliases": [
+      "Sequoia"
+    ]
+  },
+  "Q12309040": {
+    "name": "Duetræ-slægten",
+    "aliases": [
+      "Davidia"
+    ]
+  },
+  "Q142788": {
+    "name": "Hickory"
+  },
+  "Q149461": {
+    "name": "Tempeltræ-slægten"
+  },
+  "Q157017": {
+    "name": "magnolie"
+  },
+  "Q158771": {
+    "name": "douglasgran"
+  },
+  "Q161042": {
+    "name": "Sølvblad"
+  },
+  "Q183543": {
+    "name": "Ambratræ"
+  },
+  "Q248582": {
+    "name": "Nældetræ"
+  },
+  "Q472943": {
+    "name": "Robinie"
+  },
+  "Q605290": {
+    "name": "Humlebøg"
+  },
+  "Q664945": {
+    "name": "Albizia"
+  },
+  "Q765246": {
+    "name": "Flodceder"
+  },
+  "Q775229": {
+    "name": "Lagerstroemia"
+  },
+  "Q964952": {
+    "name": "Tupelotræ"
+  },
+  "Q2453469": {
+    "name": "valnød-slægten"
+  },
+  "Q3366033": {
+    "name": "Papegøjebusk-slægten"
+  },
+  "Q5122903": {
+    "name": "kumquat"
+  },
+  "Q434": {
+    "name": "pære"
+  }
+}

@@ -1,0 +1,383 @@
+{
+  "Q25243": {
+    "name": "Betulo",
+    "aliases": [
+      "Betula"
+    ]
+  },
+  "Q25350": {
+    "name": "abio",
+    "aliases": [
+      "Abies"
+    ]
+  },
+  "Q25356": {
+    "name": "Poploj",
+    "aliases": [
+      "Poplo",
+      "Populus"
+    ]
+  },
+  "Q25403": {
+    "name": "Fago",
+    "aliases": [
+      "Fagus",
+      "Ordinara fago"
+    ]
+  },
+  "Q25618": {
+    "name": "Lariko",
+    "aliases": [
+      "Larikso",
+      "Larix"
+    ]
+  },
+  "Q25662": {
+    "name": "Junipero",
+    "aliases": [
+      "Juniperus"
+    ]
+  },
+  "Q26782": {
+    "name": "Piceo",
+    "aliases": [
+      "Norvega piceo",
+      "Picea"
+    ]
+  },
+  "Q36050": {
+    "name": "Saliko",
+    "aliases": [
+      "Ploranta saliko",
+      "Salix"
+    ]
+  },
+  "Q44789": {
+    "name": "Moruso",
+    "aliases": [
+      "Morusujo"
+    ]
+  },
+  "Q104819": {
+    "name": "pomarbo",
+    "aliases": [
+      "Malus",
+      "maluso",
+      "pomujo"
+    ]
+  },
+  "Q45669": {
+    "name": "Eŭkalipto",
+    "aliases": [
+      "eŭkalipta hibrido"
+    ]
+  },
+  "Q59798": {
+    "name": "Fikuso",
+    "aliases": [
+      "Ficus",
+      "Figarbo",
+      "Figarboj",
+      "Figo",
+      "Figoj",
+      "Figujo",
+      "Figujoj"
+    ]
+  },
+  "Q128887": {
+    "name": "Frakseno",
+    "aliases": [
+      "Fraksino"
+    ]
+  },
+  "Q129324": {
+    "name": "Kaŝtanarbo",
+    "aliases": [
+      "Kastaneo",
+      "Kaŝtano",
+      "Kaŝtanujo"
+    ]
+  },
+  "Q131113": {
+    "name": "Ulmo",
+    "aliases": [
+      "Ulmus"
+    ]
+  },
+  "Q145889": {
+    "name": "avelarbo",
+    "aliases": [
+      "avelujo",
+      "korilo"
+    ]
+  },
+  "Q146911": {
+    "name": "Cipreso",
+    "aliases": [
+      "Cupressus",
+      "Kupreso"
+    ]
+  },
+  "Q157964": {
+    "name": "Sorpujo",
+    "aliases": [
+      "Alizo",
+      "Kurmo",
+      "Sorbus",
+      "Sorbuso",
+      "Sorpo"
+    ]
+  },
+  "Q158513": {
+    "name": "Karpeno",
+    "aliases": [
+      "Carpinus"
+    ]
+  },
+  "Q158771": {
+    "name": "Pseŭdocugo",
+    "aliases": [
+      "Duglasa abio",
+      "Duglaso",
+      "Pseudotsuga"
+    ]
+  },
+  "Q161250": {
+    "name": "Glediĉio",
+    "aliases": [
+      "Gleditsia"
+    ]
+  },
+  "Q165173": {
+    "name": "Paŭlovnio",
+    "aliases": [
+      "Paŭlovniacoj"
+    ]
+  },
+  "Q165258": {
+    "name": "Diospiro",
+    "aliases": [
+      "Diospyros"
+    ]
+  },
+  "Q190545": {
+    "name": "Prunuso",
+    "aliases": [
+      "Prunus",
+      "Prunusoj"
+    ]
+  },
+  "Q296910": {
+    "name": "Oleo",
+    "aliases": [
+      "Olea"
+    ]
+  },
+  "Q309213": {
+    "name": "Soforo",
+    "aliases": [
+      "Sophora"
+    ]
+  },
+  "Q472943": {
+    "name": "Robinio",
+    "aliases": [
+      "Ŝajnakacio"
+    ]
+  },
+  "Q5122903": {
+    "name": "Kumkvato",
+    "aliases": [
+      "Nanaj oranĝoj"
+    ]
+  },
+  "Q127849": {
+    "name": "Tilio"
+  },
+  "Q128550": {
+    "name": "Cedro"
+  },
+  "Q132402": {
+    "name": "Lithocarpus"
+  },
+  "Q132557": {
+    "name": "Kratago"
+  },
+  "Q132703": {
+    "name": "Koelreuteria"
+  },
+  "Q137054": {
+    "name": "Chrysolepis"
+  },
+  "Q142788": {
+    "name": "Hikorio"
+  },
+  "Q147791": {
+    "name": "Kamecipariso"
+  },
+  "Q149461": {
+    "name": "Ginko"
+  },
+  "Q157017": {
+    "name": "Magnolio"
+  },
+  "Q157236": {
+    "name": "Liriodendron"
+  },
+  "Q157366": {
+    "name": "Kotino"
+  },
+  "Q158072": {
+    "name": "Katalpo"
+  },
+  "Q158752": {
+    "name": "Eskulo"
+  },
+  "Q159545": {
+    "name": "Kornuso"
+  },
+  "Q160580": {
+    "name": "Ailanto"
+  },
+  "Q161042": {
+    "name": "Elaeagnus"
+  },
+  "Q163025": {
+    "name": "Platano"
+  },
+  "Q183543": {
+    "name": "Liquidambar"
+  },
+  "Q248582": {
+    "name": "celtido"
+  },
+  "Q605290": {
+    "name": "Ostrya"
+  },
+  "Q664945": {
+    "name": "Albizia"
+  },
+  "Q765246": {
+    "name": "Calocedrus"
+  },
+  "Q775229": {
+    "name": "Lagerstroemia"
+  },
+  "Q796117": {
+    "name": "Cyclobalanopsis"
+  },
+  "Q810562": {
+    "name": "Karpatiosorbus"
+  },
+  "Q858028": {
+    "name": "Cercidiphyllaceae"
+  },
+  "Q964952": {
+    "name": "Tupelo"
+  },
+  "Q1065400": {
+    "name": "Kastanopso"
+  },
+  "Q1070845": {
+    "name": "Photinia"
+  },
+  "Q1132766": {
+    "name": "Fontanesia"
+  },
+  "Q1420126": {
+    "name": "Pterocarya"
+  },
+  "Q1975652": {
+    "name": "Sequoia"
+  },
+  "Q2453469": {
+    "name": "Juglando"
+  },
+  "Q2697430": {
+    "name": "Toona"
+  },
+  "Q3060383": {
+    "name": "Euodia"
+  },
+  "Q3366033": {
+    "name": "Parrotia"
+  },
+  "Q5220438": {
+    "name": "Trigonobalanus"
+  },
+  "Q5429644": {
+    "name": "Faidherbia"
+  },
+  "Q12309040": {
+    "name": "Davidia"
+  },
+  "Q12323064": {
+    "name": "Cryptomeria"
+  },
+  "Q17410244": {
+    "name": "Notholithocarpus"
+  },
+  "Q18745576": {
+    "name": "Pasania"
+  },
+  "Q19845401": {
+    "name": "Formanodendron"
+  },
+  "Q20817818": {
+    "name": "Eotrigonobalanus"
+  },
+  "Q21088249": {
+    "name": "Limlia"
+  },
+  "Q21398174": {
+    "name": "Fagopsis"
+  },
+  "Q434": {
+    "name": "Piro"
+  },
+  "Q12004": {
+    "name": "Kverko"
+  },
+  "Q12024": {
+    "name": "Pino"
+  },
+  "Q25239": {
+    "name": "Alno"
+  },
+  "Q27355": {
+    "name": "Taksuso"
+  },
+  "Q29033": {
+    "name": "Cercido"
+  },
+  "Q42292": {
+    "name": "acero"
+  },
+  "Q87070717": {
+    "name": "Salisburia"
+  },
+  "Q87145799": {
+    "name": "Callaeocarpus"
+  },
+  "Q87147998": {
+    "name": "Colombobalanus"
+  },
+  "Q87152055": {
+    "name": "Fagus-castanea"
+  },
+  "Q87162206": {
+    "name": "Pasaniopsis"
+  },
+  "Q113299853": {
+    "name": "Erythrobalanus"
+  },
+  "Q113299877": {
+    "name": "Synaedrys"
+  },
+  "Q113299880": {
+    "name": "Corylopasania"
+  },
+  "Q113299881": {
+    "name": "Cyclobalanus"
+  }
+}

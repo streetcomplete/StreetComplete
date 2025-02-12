@@ -1,0 +1,996 @@
+{
+  "Q516494": {
+    "name": "tanžerīns",
+    "aliases": [
+      "Citrus tangerina",
+      "tanžerīni",
+      "tanžerīns (auglis)"
+    ]
+  },
+  "Q540650": {
+    "name": "Kailā kļava",
+    "aliases": [
+      "Klinškalnu kļava"
+    ]
+  },
+  "Q623489": {
+    "name": "Atlasa ciedrs",
+    "aliases": [
+      "Cedrus atlantica"
+    ]
+  },
+  "Q683819": {
+    "name": "Pontijas ozols",
+    "aliases": [
+      "Quercus pontica"
+    ]
+  },
+  "Q26325": {
+    "name": "Parastais kadiķis",
+    "aliases": [
+      "Juniperus communis",
+      "Paeglis"
+    ]
+  },
+  "Q972950": {
+    "name": "Snuķaugļu lazda",
+    "aliases": [
+      "Corylus cornuta"
+    ]
+  },
+  "Q978755": {
+    "name": "Piealpu baltegle",
+    "aliases": [
+      "Subalpīnā baltegle"
+    ]
+  },
+  "Q854714": {
+    "name": "Šarlaksarkanais ozols",
+    "aliases": [
+      "Quercus coccinea"
+    ]
+  },
+  "Q857075": {
+    "name": "Ungāru ozols",
+    "aliases": [
+      "Quercus conferta",
+      "Quercus farnetto"
+    ]
+  },
+  "Q26899": {
+    "name": "Parastā zirgkastaņa",
+    "aliases": [
+      "Aesculus hippocastanum",
+      "Zirgkastanis"
+    ]
+  },
+  "Q771101": {
+    "name": "Kaukāza hurma",
+    "aliases": [
+      "dateļplūme",
+      "Diospyros lotus"
+    ]
+  },
+  "Q844131": {
+    "name": "Dzelzs bērzs",
+    "aliases": [
+      "Šmita bērzs"
+    ]
+  },
+  "Q1066116": {
+    "name": "Spāņu ozols",
+    "aliases": [
+      "Quercus falcata"
+    ]
+  },
+  "Q1499241": {
+    "name": "Dzeltenais bērzs",
+    "aliases": [
+      "Alegeinu bērzs"
+    ]
+  },
+  "Q133128": {
+    "name": "Parastā priede",
+    "aliases": [
+      "Pinus sylvestris"
+    ]
+  },
+  "Q146149": {
+    "name": "Eiropas dižskābardis",
+    "aliases": [
+      "Eiropas dižskābārdis",
+      "Fagus sylvatica",
+      "Parastais dižskābardis"
+    ]
+  },
+  "Q1542823": {
+    "name": "Japānas baltegle",
+    "aliases": [
+      "Veiča baltegle"
+    ]
+  },
+  "Q1543749": {
+    "name": "Kaukāza dižskābardis",
+    "aliases": [
+      "Fagus orientalis"
+    ]
+  },
+  "Q145992": {
+    "name": "Parastā egle",
+    "aliases": [
+      "egle",
+      "Picea abies"
+    ]
+  },
+  "Q36146": {
+    "name": "Vīģeskoks",
+    "aliases": [
+      "Ficus carica",
+      "Vīģe",
+      "Vīģes",
+      "Vīģes koks"
+    ]
+  },
+  "Q37083": {
+    "name": "olīvkoks",
+    "aliases": [
+      "Eiropas olīvkoks",
+      "Olea europaea",
+      "olīva",
+      "olīvas",
+      "olīve",
+      "olīves"
+    ]
+  },
+  "Q146048": {
+    "name": "Eiropas lapegle",
+    "aliases": [
+      "Larix decidua"
+    ]
+  },
+  "Q146110": {
+    "name": "Parastā apse",
+    "aliases": [
+      "Apse",
+      "Populus tremula"
+    ]
+  },
+  "Q1201695": {
+    "name": "Mandžūrijas baltegle",
+    "aliases": [
+      "Baltmizas baltegle"
+    ]
+  },
+  "Q1082365": {
+    "name": "Dižzīļu ozols",
+    "aliases": [
+      "Quercus macrocarpa"
+    ]
+  },
+  "Q1743596": {
+    "name": "Ogābele",
+    "aliases": [
+      "Ogu ābele"
+    ]
+  },
+  "Q146198": {
+    "name": "Parastais pīlādzis",
+    "aliases": [
+      "Sērmūkslis",
+      "Sorbus aucuparia"
+    ]
+  },
+  "Q147525": {
+    "name": "Sarkanais ozols",
+    "aliases": [
+      "Quercus borealis"
+    ]
+  },
+  "Q37453": {
+    "name": "aprikoze",
+    "aliases": [
+      "Prunus armeniaca",
+      "parastā aprikoze",
+      "aprikožu koks"
+    ]
+  },
+  "Q148939": {
+    "name": "Kokveida lazda",
+    "aliases": [
+      "Corylus colurna"
+    ]
+  },
+  "Q42385": {
+    "name": "kakaokoks",
+    "aliases": [
+      "Īstais kakaokoks",
+      "Kakao",
+      "Theobroma cacao"
+    ]
+  },
+  "Q2600501": {
+    "name": "Zvaigžņu ozols",
+    "aliases": [
+      "Quercus stellata"
+    ]
+  },
+  "Q3355098": {
+    "name": "saldais apelsīnkoks",
+    "aliases": [
+      "apelsīnkoks"
+    ]
+  },
+  "Q41505": {
+    "name": "Japānas eriobotrija",
+    "aliases": [
+      "lokvata"
+    ]
+  },
+  "Q39918": {
+    "name": "parastā mandele",
+    "aliases": [
+      "Mandeļkoks",
+      "Prunus dulcis"
+    ]
+  },
+  "Q146269": {
+    "name": "baltā apse",
+    "aliases": [
+      "baltapse"
+    ]
+  },
+  "Q156137": {
+    "name": "Korķa ozols",
+    "aliases": [
+      "Quercus suber"
+    ]
+  },
+  "Q149219": {
+    "name": "Amerikas dižskābardis",
+    "aliases": [
+      "Fagus grandifolia"
+    ]
+  },
+  "Q44120": {
+    "name": "Plūme",
+    "aliases": [
+      "Mājas plūme",
+      "Prunus domestica"
+    ]
+  },
+  "Q146935": {
+    "name": "Himalaju ciedrs",
+    "aliases": [
+      "Cedrus deodara"
+    ]
+  },
+  "Q149382": {
+    "name": "spilvaugļu papele",
+    "aliases": [
+      "Populus trichocarpa"
+    ]
+  },
+  "Q156904": {
+    "name": "Melnalksnis",
+    "aliases": [
+      "Alnus glutinosa"
+    ]
+  },
+  "Q147434": {
+    "name": "Dižā baltegle",
+    "aliases": [
+      "Lielā baltegle"
+    ]
+  },
+  "Q15545507": {
+    "name": "parastā mandele",
+    "aliases": [
+      "Prunus amygdalus",
+      "mandeļkoks"
+    ]
+  },
+  "Q46871": {
+    "name": "īstais riekstkoks",
+    "aliases": [
+      "grieķu riekstkoks",
+      "valriekstkoks"
+    ]
+  },
+  "Q61105": {
+    "name": "Libānas ciedrs",
+    "aliases": [
+      "Cedrus libani"
+    ]
+  },
+  "Q157277": {
+    "name": "Austrijas ozols",
+    "aliases": [
+      "Quercus cerris"
+    ]
+  },
+  "Q156895": {
+    "name": "Nokarenais bērzs",
+    "aliases": [
+      "Āra bērzs",
+      "Betula pendula",
+      "Betula verrucosa",
+      "Kārpainais bērzs"
+    ]
+  },
+  "Q41350": {
+    "name": "Greipfrūts",
+    "aliases": [
+      "Citrus × paradisi",
+      "Citrus paradisi",
+      "Greifrūti",
+      "Greifrūts",
+      "Greipfrūti"
+    ]
+  },
+  "Q156918": {
+    "name": "baltais vītols",
+    "aliases": [
+      "Salix alba"
+    ]
+  },
+  "Q157624": {
+    "name": "Purva bērzs",
+    "aliases": [
+      "Betula alba",
+      "Betula pubescens",
+      "Pūkainais bērzs"
+    ]
+  },
+  "Q157628": {
+    "name": "Pundurbērzs",
+    "aliases": [
+      "Betula nana"
+    ]
+  },
+  "Q4112855": {
+    "name": "Melnais ozols",
+    "aliases": [
+      "Quercus nigra"
+    ]
+  },
+  "Q43300": {
+    "name": "Cidonija",
+    "aliases": [
+      "Cidonijas",
+      "Cydonia oblonga",
+      "Cydonia vulgaris",
+      "Parastā cidonija"
+    ]
+  },
+  "Q157641": {
+    "name": "Baltalksnis",
+    "aliases": [
+      "Alnus incana"
+    ]
+  },
+  "Q158301": {
+    "name": "Sudrabkļava",
+    "aliases": [
+      "Sudraba kļava"
+    ]
+  },
+  "Q158356": {
+    "name": "Virdžīnijas hurma",
+    "aliases": [
+      "Diospyros virginiana"
+    ]
+  },
+  "Q158482": {
+    "name": "Japānas hurma",
+    "aliases": [
+      "austrumu hurma",
+      "hurma",
+      "persimons",
+      "Diospyros kaki"
+    ]
+  },
+  "Q158608": {
+    "name": "Klinšu ozols",
+    "aliases": [
+      "Quercus petraea"
+    ]
+  },
+  "Q158642": {
+    "name": "Eiropas kizils",
+    "aliases": [
+      "kizils",
+      "parastais kizils"
+    ]
+  },
+  "Q158657": {
+    "name": "ābele",
+    "aliases": [
+      "Dārza ābele",
+      "Kultūras ābele",
+      "Mājas ābele",
+      "Malus domestica"
+    ]
+  },
+  "Q158746": {
+    "name": "parastā liepa",
+    "aliases": [
+      "liepa",
+      "Tilia cordata"
+    ]
+  },
+  "Q158776": {
+    "name": "Eiropas skābardis",
+    "aliases": [
+      "baltais skābardis",
+      "Carpinus betulus",
+      "parastais skābardis"
+    ]
+  },
+  "Q159565": {
+    "name": "blīgzna",
+    "aliases": [
+      "kazu vītols",
+      "pūpolvītols",
+      "Salix caprea"
+    ]
+  },
+  "Q159570": {
+    "name": "Augstais ailants",
+    "aliases": [
+      "Ailanthus altissima",
+      "Ailants",
+      "Debeskoks",
+      "Debesu koks",
+      "Dievkoks"
+    ]
+  },
+  "Q161253": {
+    "name": "Purva ozols",
+    "aliases": [
+      "Quercus palustris"
+    ]
+  },
+  "Q161382": {
+    "name": "Sudrabliepa",
+    "aliases": [
+      "Sudraba liepa"
+    ]
+  },
+  "Q161415": {
+    "name": "Pūkainais ozols",
+    "aliases": [
+      "Quercus pubescens"
+    ]
+  },
+  "Q164258": {
+    "name": "Zemais bērzs",
+    "aliases": [
+      "Betula humilis"
+    ]
+  },
+  "Q165145": {
+    "name": "parastais ozols",
+    "aliases": [
+      "Ozols",
+      "Quercus robur"
+    ]
+  },
+  "Q165424": {
+    "name": "Parastā ieva",
+    "aliases": [
+      "Padus avium",
+      "Prunus padus"
+    ]
+  },
+  "Q170662": {
+    "name": "mangostāns",
+    "aliases": [
+      "mangustīns"
+    ]
+  },
+  "Q179729": {
+    "name": "Parastā īve",
+    "aliases": [
+      "Taxus baccata",
+      "ogu īve"
+    ]
+  },
+  "Q245805": {
+    "name": "Kipras ciedrs",
+    "aliases": [
+      "Cedrus brevifolia"
+    ]
+  },
+  "Q469555": {
+    "name": "Baltais ozols",
+    "aliases": [
+      "Quercus alba"
+    ]
+  },
+  "Q333877": {
+    "name": "Ilinoisas kārija",
+    "aliases": [
+      "Carya illinoinensis",
+      "Pekanriekstkoki",
+      "Pekanriekstkoks",
+      "Pekans"
+    ]
+  },
+  "Q18674606": {
+    "name": "Ābele"
+  },
+  "Q13189": {
+    "name": "Persiks"
+  },
+  "Q22699": {
+    "name": "Ēdamā kastaņa"
+  },
+  "Q26745": {
+    "name": "Parastā kļava"
+  },
+  "Q43284": {
+    "name": "Divdaivu ginks"
+  },
+  "Q47161": {
+    "name": "Mežābele"
+  },
+  "Q76971": {
+    "name": "Papīrbērzs"
+  },
+  "Q124969": {
+    "name": "parastā lazda"
+  },
+  "Q129018": {
+    "name": "Ērkšķu plūme"
+  },
+  "Q131517": {
+    "name": "skābais ķirsis"
+  },
+  "Q142792": {
+    "name": "Divkrāsu ozols"
+  },
+  "Q142912": {
+    "name": "Henrija liepa"
+  },
+  "Q145939": {
+    "name": "Vienkrāsas baltegle"
+  },
+  "Q146281": {
+    "name": "Mājas bumbiere"
+  },
+  "Q147064": {
+    "name": "Piramidālā papele"
+  },
+  "Q147487": {
+    "name": "Stepes goba"
+  },
+  "Q147492": {
+    "name": "Parastā vīksna"
+  },
+  "Q147498": {
+    "name": "Parastā goba"
+  },
+  "Q147824": {
+    "name": "Serbijas egle"
+  },
+  "Q148920": {
+    "name": "Kaukāza baltegle"
+  },
+  "Q149269": {
+    "name": "Japānas kļava"
+  },
+  "Q149319": {
+    "name": "Kokvilnas koks"
+  },
+  "Q149332": {
+    "name": "Meža bumbiere"
+  },
+  "Q149471": {
+    "name": "Balzāma papele"
+  },
+  "Q149553": {
+    "name": "Pelēcīga apse"
+  },
+  "Q149622": {
+    "name": "Kanādas papele"
+  },
+  "Q150129": {
+    "name": "mūžzaļā sekvoja"
+  },
+  "Q156831": {
+    "name": "Platlapu liepa"
+  },
+  "Q156907": {
+    "name": "Parastais osis"
+  },
+  "Q156944": {
+    "name": "Kalnu kļava"
+  },
+  "Q157307": {
+    "name": "Baltais zīdkoks"
+  },
+  "Q157697": {
+    "name": "Ķīnas kadiķis"
+  },
+  "Q157969": {
+    "name": "Šaurlapu eleagns"
+  },
+  "Q158178": {
+    "name": "Ogzīļu ozols"
+  },
+  "Q158590": {
+    "name": "klūdziņu kārkls"
+  },
+  "Q158785": {
+    "name": "Lauku kļava"
+  },
+  "Q159188": {
+    "name": "Sudraba eleagns"
+  },
+  "Q159447": {
+    "name": "karambola"
+  },
+  "Q160576": {
+    "name": "Kaučuka gumijkoks"
+  },
+  "Q161040": {
+    "name": "Melnais zīdkoks"
+  },
+  "Q161070": {
+    "name": "Dažādlapu araukārija"
+  },
+  "Q161166": {
+    "name": "Ošlapu kļava"
+  },
+  "Q161364": {
+    "name": "Sarkanā kļava"
+  },
+  "Q161435": {
+    "name": "Japānas skābardis"
+  },
+  "Q161442": {
+    "name": "Japānas liepa"
+  },
+  "Q161511": {
+    "name": "Sarkanā vilkābele"
+  },
+  "Q163544": {
+    "name": "Akmens bērzs"
+  },
+  "Q163981": {
+    "name": "Amerikas liepa"
+  },
+  "Q164130": {
+    "name": "baltais grimonis"
+  },
+  "Q165137": {
+    "name": "saldais ķirsis"
+  },
+  "Q182756": {
+    "name": "Ķīnas papele"
+  },
+  "Q199105": {
+    "name": "Skābaržlapu bērzs"
+  },
+  "Q214733": {
+    "name": "Cukura kļava"
+  },
+  "Q218155": {
+    "name": "Akmens ozols"
+  },
+  "Q220715": {
+    "name": "Apaļlapu ozols"
+  },
+  "Q227763": {
+    "name": "Sīkstais bērzs"
+  },
+  "Q269224": {
+    "name": "Patīkamā kļava"
+  },
+  "Q390100": {
+    "name": "Korejas baltegle"
+  },
+  "Q428023": {
+    "name": "Balzama baltegle"
+  },
+  "Q468659": {
+    "name": "Amerikas lazda"
+  },
+  "Q468664": {
+    "name": "Karolīnas skābardis"
+  },
+  "Q468698": {
+    "name": "Zobainā kastaņa"
+  },
+  "Q469151": {
+    "name": "Sarkanā egle"
+  },
+  "Q469382": {
+    "name": "Amerikas goba"
+  },
+  "Q469576": {
+    "name": "Amerikas apse"
+  },
+  "Q481767": {
+    "name": "Mežvīnu kļava"
+  },
+  "Q481769": {
+    "name": "Zīdbolda kļava"
+  },
+  "Q528713": {
+    "name": "Jumstiņu ozols"
+  },
+  "Q568923": {
+    "name": "Apaļlapu kļava"
+  },
+  "Q699584": {
+    "name": "Mīkstā kastaņa"
+  },
+  "Q714124": {
+    "name": "Zilganais ozols"
+  },
+  "Q717827": {
+    "name": "Japānas kastaņa"
+  },
+  "Q738571": {
+    "name": "Plūmjlapu ābele"
+  },
+  "Q762435": {
+    "name": "Vārpainā kļava"
+  },
+  "Q847209": {
+    "name": "Zāģzobainais ozols"
+  },
+  "Q850480": {
+    "name": "Daurijas bērzs"
+  },
+  "Q852262": {
+    "name": "Sibīrijas baltegle"
+  },
+  "Q857321": {
+    "name": "Mandžūrijas liepa"
+  },
+  "Q930814": {
+    "name": "Derīgas bērzs"
+  },
+  "Q976000": {
+    "name": "Dažādlapu lazda"
+  },
+  "Q1001011": {
+    "name": "Samtainais ozols"
+  },
+  "Q1005330": {
+    "name": "Dienvidķīnas dižskābardis"
+  },
+  "Q1017264": {
+    "name": "Pundurozols"
+  },
+  "Q1023519": {
+    "name": "Toringoveida ābele"
+  },
+  "Q1037138": {
+    "name": "Čonoska skābardis"
+  },
+  "Q1037160": {
+    "name": "Zibolda lazda"
+  },
+  "Q1038831": {
+    "name": "Makaimoviča kļava"
+  },
+  "Q1043238": {
+    "name": "Neīstā Zīdbolda kļava"
+  },
+  "Q1073905": {
+    "name": "Ķīnas lazda"
+  },
+  "Q1074099": {
+    "name": "Sīklapu goba"
+  },
+  "Q1074153": {
+    "name": "Krāšņā ābele"
+  },
+  "Q1075968": {
+    "name": "Āzijas ābele"
+  },
+  "Q1078985": {
+    "name": "Japānas dižskābardis"
+  },
+  "Q1079824": {
+    "name": "Zemā goba"
+  },
+  "Q1088271": {
+    "name": "Austrumu skābardis"
+  },
+  "Q1105707": {
+    "name": "Kaukāza ozols"
+  },
+  "Q1131797": {
+    "name": "Sīklapu kļava"
+  },
+  "Q1144822": {
+    "name": "Zībolda ābele"
+  },
+  "Q1190312": {
+    "name": "Pensilvānijas kļava"
+  },
+  "Q1204865": {
+    "name": "Piejūras baltegle"
+  },
+  "Q1205178": {
+    "name": "Zaļmizas kļava"
+  },
+  "Q1257409": {
+    "name": "Trīsziedu kļava"
+  },
+  "Q1306148": {
+    "name": "Kīnas liellapu papele"
+  },
+  "Q1342471": {
+    "name": "Ķīnas dižskābardis"
+  },
+  "Q1367359": {
+    "name": "Mongolijas ozols"
+  },
+  "Q1373854": {
+    "name": "Platlapu bērzs"
+  },
+  "Q1374188": {
+    "name": "Eifratas papele"
+  },
+  "Q1520125": {
+    "name": "Sahalīnas baltegle"
+  },
+  "Q1536353": {
+    "name": "Lielzobu apse"
+  },
+  "Q1571895": {
+    "name": "Halla ābele"
+  },
+  "Q1591053": {
+    "name": "Vītollapainā bumbiere"
+  },
+  "Q1623892": {
+    "name": "Maksimoviča bērzs"
+  },
+  "Q1631785": {
+    "name": "Mandžūrijas kļava"
+  },
+  "Q1683271": {
+    "name": "Japānas zilais dižskābardis"
+  },
+  "Q1695645": {
+    "name": "Rades bērzs"
+  },
+  "Q1768635": {
+    "name": "Zvīņainais kadiķis"
+  },
+  "Q1784356": {
+    "name": "Ribainais bērzs"
+  },
+  "Q1801446": {
+    "name": "Dižaugļu lazda"
+  },
+  "Q1869852": {
+    "name": "Laurlapu papele"
+  },
+  "Q1944479": {
+    "name": "Mongolijas liepa"
+  },
+  "Q2003088": {
+    "name": "Šaurlapu balzāmpapele"
+  },
+  "Q2020692": {
+    "name": "Olivera liepa"
+  },
+  "Q2139163": {
+    "name": "Daudzziedu eleagns"
+  },
+  "Q2258345": {
+    "name": "Maksimoviča papele"
+  },
+  "Q2432250": {
+    "name": "Raupjais ozols"
+  },
+  "Q2564409": {
+    "name": "Brūnā ābele"
+  },
+  "Q2611816": {
+    "name": "Dzeltenais ozols"
+  },
+  "Q2978582": {
+    "name": "Amūras liepa"
+  },
+  "Q3234454": {
+    "name": "Nasčokina liepa"
+  },
+  "Q3297849": {
+    "name": "Purva liellapu papele"
+  },
+  "Q3336295": {
+    "name": "Bērzlapu kļava"
+  },
+  "Q3662068": {
+    "name": "Zemā kastaņa"
+  },
+  "Q3838136": {
+    "name": "Fremonta papele"
+  },
+  "Q3919027": {
+    "name": "Indijas mango"
+  },
+  "Q4085295": {
+    "name": "Sapožņikova bērzs"
+  },
+  "Q4085318": {
+    "name": "Tjanšana bērzs"
+  },
+  "Q4112143": {
+    "name": "Laurlapu ozols"
+  },
+  "Q4224592": {
+    "name": "Bārdainā kļava"
+  },
+  "Q4260585": {
+    "name": "Himalaju lazda"
+  },
+  "Q4262401": {
+    "name": "Maksimoviča liepa"
+  },
+  "Q4392776": {
+    "name": "Ķīnas liepa"
+  },
+  "Q4811357": {
+    "name": "Taivānas dižskābardis"
+  },
+  "Q5173728": {
+    "name": "Juņnaņas lazda"
+  },
+  "Q6146917": {
+    "name": "Karolīnas liepa"
+  },
+  "Q6146922": {
+    "name": "Meksikas liepa"
+  },
+  "Q6372017": {
+    "name": "Karaliskais ozols"
+  },
+  "Q6372132": {
+    "name": "Sēdlapu ozols"
+  },
+  "Q6772356": {
+    "name": "Vilsona papele"
+  },
+  "Q9181026": {
+    "name": "Tumšais bērzs"
+  },
+  "Q9578380": {
+    "name": "Melnā kļava"
+  },
+  "Q10351623": {
+    "name": "Japānas apse"
+  },
+  "Q11076697": {
+    "name": "Farže lazda"
+  },
+  "Q13172138": {
+    "name": "Usūrijas bumbiere"
+  },
+  "Q15341038": {
+    "name": "Egretas melnkoks"
+  },
+  "Q15346008": {
+    "name": "Maurīcijas melnkoks"
+  },
+  "Q15376417": {
+    "name": "Čičibu bērzs"
+  },
+  "Q15376823": {
+    "name": "Apoi bērzs"
+  },
+  "Q15379370": {
+    "name": "Žakmona lazda"
+  },
+  "Q15634290": {
+    "name": "Ginnalas kļava"
+  }
+}

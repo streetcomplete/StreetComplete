@@ -1,0 +1,400 @@
+{
+  "Q434": {
+    "name": "pære",
+    "aliases": [
+      "Pæreslekta"
+    ]
+  },
+  "Q12004": {
+    "name": "eikeslekta",
+    "aliases": [
+      "eikeslekten",
+      "ek"
+    ]
+  },
+  "Q12024": {
+    "name": "furuslekten",
+    "aliases": [
+      "Pinus"
+    ]
+  },
+  "Q25239": {
+    "name": "oreslekten",
+    "aliases": [
+      "Alnus",
+      "Orer",
+      "Oreslekta"
+    ]
+  },
+  "Q25243": {
+    "name": "bjørkeslekten",
+    "aliases": [
+      "bjerk",
+      "bjerketre",
+      "bjørk",
+      "Bjørker",
+      "Bjørkeslekta",
+      "bjørketre",
+      "Tolkmo",
+      "Betula"
+    ]
+  },
+  "Q25350": {
+    "name": "edelgranslekta",
+    "aliases": [
+      "edelgran",
+      "edelgraner",
+      "edelgranslekten"
+    ]
+  },
+  "Q25356": {
+    "name": "Poppelslekten",
+    "aliases": [
+      "Popler",
+      "Poppel",
+      "Populus"
+    ]
+  },
+  "Q25618": {
+    "name": "lerkeslekta",
+    "aliases": [
+      "Larix",
+      "lerker",
+      "lerk",
+      "lerketre",
+      "lerkeslekten"
+    ]
+  },
+  "Q26782": {
+    "name": "granslekta",
+    "aliases": [
+      "Gran",
+      "Grantre",
+      "Graner",
+      "Granskog",
+      "Grantrær",
+      "Picea"
+    ]
+  },
+  "Q36050": {
+    "name": "vierslekta",
+    "aliases": [
+      "Salix",
+      "vier",
+      "viere",
+      "vierslekten"
+    ]
+  },
+  "Q42292": {
+    "name": "lønneslekten",
+    "aliases": [
+      "Lønn",
+      "Aceraceae",
+      "Lønner",
+      "Lønnetre",
+      "Lønnfamilien",
+      "Lønnslekten"
+    ]
+  },
+  "Q44789": {
+    "name": "Morbærslekten",
+    "aliases": [
+      "Morus",
+      "Morbær",
+      "Morbærtrær",
+      "Morbærtre"
+    ]
+  },
+  "Q45669": {
+    "name": "Eukalyptusslekten",
+    "aliases": [
+      "Eucalyptus",
+      "Eukalypter",
+      "Eukalyptus",
+      "Eukalyptustre"
+    ]
+  },
+  "Q59798": {
+    "name": "fikenslekten",
+    "aliases": [
+      "Ficus",
+      "Fiken",
+      "Fikener",
+      "fikenslekta",
+      "Fikentrær"
+    ]
+  },
+  "Q104819": {
+    "name": "Epleslekten",
+    "aliases": [
+      "Epleslekta"
+    ]
+  },
+  "Q127849": {
+    "name": "lindeslekta",
+    "aliases": [
+      "Tilia",
+      "linder",
+      "lindeslekten"
+    ]
+  },
+  "Q128550": {
+    "name": "Sederslekten",
+    "aliases": [
+      "Seder",
+      "Ceder",
+      "Cedertre",
+      "Cedrus",
+      "Sedere",
+      "Sedertrær",
+      "Sedertre",
+      "Sedrer"
+    ]
+  },
+  "Q128887": {
+    "name": "askeslekten",
+    "aliases": [
+      "Asker",
+      "Asketrær",
+      "Askslekten"
+    ]
+  },
+  "Q129324": {
+    "name": "kastanjeslekten",
+    "aliases": [
+      "Castanea",
+      "Kastanjer",
+      "Kastanje",
+      "Kastanjetrær"
+    ]
+  },
+  "Q131113": {
+    "name": "almeslekta",
+    "aliases": [
+      "Ulmus",
+      "almer",
+      "almeslekten"
+    ]
+  },
+  "Q132557": {
+    "name": "hagtornslekta",
+    "aliases": [
+      "Crataegus",
+      "Hagtorner"
+    ]
+  },
+  "Q145889": {
+    "name": "Hasselslekten",
+    "aliases": [
+      "Hasler",
+      "Corylaceae",
+      "Corylus",
+      "Hasselfamilien"
+    ]
+  },
+  "Q146911": {
+    "name": "sypresslekten",
+    "aliases": [
+      "Callitropsis",
+      "Gullsypresslekten",
+      "Nutkasypresslekten",
+      "sypress-slekta",
+      "Sypresser"
+    ]
+  },
+  "Q147791": {
+    "name": "Dvergsypresslekten",
+    "aliases": [
+      "Chamaecyparis"
+    ]
+  },
+  "Q149461": {
+    "name": "Ginkgo-slekta",
+    "aliases": [
+      "Ginkgo-slekten"
+    ]
+  },
+  "Q157236": {
+    "name": "Tulipantreslekten",
+    "aliases": [
+      "Tulipantre",
+      "Liriodendro",
+      "Liriodendron",
+      "Liriodendronslekten",
+      "Tulipantrær"
+    ]
+  },
+  "Q157964": {
+    "name": "rognslekta",
+    "aliases": [
+      "asal",
+      "asalslekta",
+      "asalslekten",
+      "Sorbus"
+    ]
+  },
+  "Q158513": {
+    "name": "agnbøkslekten",
+    "aliases": [
+      "Agnbøker",
+      "Carpinus"
+    ]
+  },
+  "Q158771": {
+    "name": "Douglasgranslekten",
+    "aliases": [
+      "Douglasgran",
+      "Douglasgraner",
+      "Pseudotsuga"
+    ]
+  },
+  "Q159545": {
+    "name": "kornell",
+    "aliases": [
+      "Cornus",
+      "vårkornellslekta"
+    ]
+  },
+  "Q161042": {
+    "name": "Sølvbuskslekten",
+    "aliases": [
+      "Elaeagnus"
+    ]
+  },
+  "Q190545": {
+    "name": "kirsebærslekta",
+    "aliases": [
+      "Hegg og kirsebær",
+      "Kirsebær og hegg",
+      "kirsebærslekten",
+      "Prunus"
+    ]
+  },
+  "Q296910": {
+    "name": "Oliventrær",
+    "aliases": [
+      "Olea"
+    ]
+  },
+  "Q858028": {
+    "name": "Katsurafamilien",
+    "aliases": [
+      "Cercidiphyllaceae",
+      "Katsuraslekten"
+    ]
+  },
+  "Q1420126": {
+    "name": "Pterocarya",
+    "aliases": [
+      "Vingenøtt",
+      "Vingenøttslekten",
+      "Vingevalnøtt",
+      "Vingevalnøttslekten"
+    ]
+  },
+  "Q1975652": {
+    "name": "Redwoodslekten",
+    "aliases": [
+      "Sequoia"
+    ]
+  },
+  "Q5122903": {
+    "name": "kumkvat",
+    "aliases": [
+      "kumquat"
+    ]
+  },
+  "Q132402": {
+    "name": "Lithocarpus"
+  },
+  "Q132703": {
+    "name": "Koelreuteria"
+  },
+  "Q137054": {
+    "name": "Chrysolepis"
+  },
+  "Q142788": {
+    "name": "Hickory"
+  },
+  "Q157017": {
+    "name": "Magnoliaslekten"
+  },
+  "Q157366": {
+    "name": "Cotinus"
+  },
+  "Q158072": {
+    "name": "Trompettre"
+  },
+  "Q158752": {
+    "name": "hestekastanjeslekten"
+  },
+  "Q161250": {
+    "name": "Gleditsia"
+  },
+  "Q163025": {
+    "name": "platanslekta"
+  },
+  "Q165173": {
+    "name": "Paulownia"
+  },
+  "Q165258": {
+    "name": "Diospyros"
+  },
+  "Q183543": {
+    "name": "Ambratreslekta"
+  },
+  "Q248582": {
+    "name": "nesletre"
+  },
+  "Q309213": {
+    "name": "Sophora"
+  },
+  "Q472943": {
+    "name": "Robiniaslekta"
+  },
+  "Q605290": {
+    "name": "Humlebøkslekten"
+  },
+  "Q664945": {
+    "name": "Albizia"
+  },
+  "Q765246": {
+    "name": "Røkelsessederslekten"
+  },
+  "Q775229": {
+    "name": "Lagerstroemia"
+  },
+  "Q964952": {
+    "name": "Nyssa"
+  },
+  "Q1065400": {
+    "name": "Castanopsis"
+  },
+  "Q2453469": {
+    "name": "Valnøttslekta"
+  },
+  "Q2697430": {
+    "name": "Toona"
+  },
+  "Q3366033": {
+    "name": "Parrotia"
+  },
+  "Q5220438": {
+    "name": "Trigonobalanus"
+  },
+  "Q12323064": {
+    "name": "Sugislekten"
+  },
+  "Q25403": {
+    "name": "bøkeslekten"
+  },
+  "Q25662": {
+    "name": "einerslekten"
+  },
+  "Q27355": {
+    "name": "Barlindslekten"
+  },
+  "Q29033": {
+    "name": "Cercis"
+  }
+}

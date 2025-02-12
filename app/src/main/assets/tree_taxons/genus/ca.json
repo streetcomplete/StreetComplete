@@ -1,0 +1,405 @@
+{
+  "Q12004": {
+    "name": "Quercus",
+    "aliases": [
+      "Roure"
+    ]
+  },
+  "Q12024": {
+    "name": "Pinus",
+    "aliases": [
+      "pi"
+    ]
+  },
+  "Q25243": {
+    "name": "bedoll",
+    "aliases": [
+      "bedolls",
+      "Betula",
+      "bedollar"
+    ]
+  },
+  "Q25350": {
+    "name": "avet",
+    "aliases": [
+      "Abies",
+      "Avetar",
+      "Avetosa",
+      "Avetoses",
+      "Avets"
+    ]
+  },
+  "Q25356": {
+    "name": "pollancre",
+    "aliases": [
+      "Leucoides",
+      "Aegiros",
+      "poll",
+      "Populus",
+      "Tacamahaca",
+      "Turanga",
+      "Xop"
+    ]
+  },
+  "Q25403": {
+    "name": "Fagus",
+    "aliases": [
+      "Fages",
+      "Faja"
+    ]
+  },
+  "Q25618": {
+    "name": "Làrix",
+    "aliases": [
+      "Larix"
+    ]
+  },
+  "Q25662": {
+    "name": "Juniperus",
+    "aliases": [
+      "Savina",
+      "Sivina"
+    ]
+  },
+  "Q26782": {
+    "name": "Picea",
+    "aliases": [
+      "Pícea"
+    ]
+  },
+  "Q29033": {
+    "name": "Cercis",
+    "aliases": [
+      "Red bud",
+      "Redbud"
+    ]
+  },
+  "Q36050": {
+    "name": "salze",
+    "aliases": [
+      "Salix",
+      "Salzes"
+    ]
+  },
+  "Q42292": {
+    "name": "Acer",
+    "aliases": [
+      "Aurons",
+      "Auró"
+    ]
+  },
+  "Q45669": {
+    "name": "eucaliptus",
+    "aliases": [
+      "Eucalyptus"
+    ]
+  },
+  "Q44789": {
+    "name": "morera",
+    "aliases": [
+      "Morer",
+      "Móra",
+      "Móra de morer",
+      "Móra de morera",
+      "Móres de morer",
+      "Móres de morera"
+    ]
+  },
+  "Q59798": {
+    "name": "Ficus",
+    "aliases": [
+      "Ficus cotinifolia",
+      "Ficus padifolia"
+    ]
+  },
+  "Q127849": {
+    "name": "Til·ler",
+    "aliases": [
+      "Tilia",
+      "Til.ler",
+      "Til•ler",
+      "Til·la",
+      "Til·lers"
+    ]
+  },
+  "Q128550": {
+    "name": "cedre",
+    "aliases": [
+      "Cedre",
+      "Cedreda",
+      "Cedrus"
+    ]
+  },
+  "Q131113": {
+    "name": "om",
+    "aliases": [
+      "Om",
+      "Ulmus"
+    ]
+  },
+  "Q128887": {
+    "name": "Freixe",
+    "aliases": [
+      "Freixenedes",
+      "Freixes",
+      "Freixnedes"
+    ]
+  },
+  "Q129324": {
+    "name": "Castanea",
+    "aliases": [
+      "Castanyer"
+    ]
+  },
+  "Q145889": {
+    "name": "Corylus",
+    "aliases": [
+      "Avellaner"
+    ]
+  },
+  "Q146911": {
+    "name": "Cupressus",
+    "aliases": [
+      "Xiprer"
+    ]
+  },
+  "Q149461": {
+    "name": "ginkgo",
+    "aliases": [
+      "Gingko"
+    ]
+  },
+  "Q157964": {
+    "name": "Sorbus",
+    "aliases": [
+      "Sorbus sp."
+    ]
+  },
+  "Q158513": {
+    "name": "Carpí",
+    "aliases": [
+      "Carpinus",
+      "Càrpinus"
+    ]
+  },
+  "Q158752": {
+    "name": "Castanyer d'Índia",
+    "aliases": [
+      "Aesculus",
+      "Castanyer d’Índia"
+    ]
+  },
+  "Q158771": {
+    "name": "Avet Douglas",
+    "aliases": [
+      "Avet de Douglas",
+      "Pseudotsuga"
+    ]
+  },
+  "Q163025": {
+    "name": "Platanus",
+    "aliases": [
+      "Platanaceae",
+      "Platanàcia",
+      "Platanàcies"
+    ]
+  },
+  "Q5122903": {
+    "name": "Kumquat",
+    "aliases": [
+      "cumquat"
+    ]
+  },
+  "Q1070845": {
+    "name": "Fotínia",
+    "aliases": [
+      "Photinia"
+    ]
+  },
+  "Q796117": {
+    "name": "Cyclobalanopsis",
+    "aliases": [
+      "Subgènere Cyclobalanopsis"
+    ]
+  },
+  "Q104819": {
+    "name": "pomera"
+  },
+  "Q132402": {
+    "name": "Lithocarpus"
+  },
+  "Q132557": {
+    "name": "Crataegus"
+  },
+  "Q132703": {
+    "name": "Koelreuteria"
+  },
+  "Q137054": {
+    "name": "Chrysolepis"
+  },
+  "Q142788": {
+    "name": "Carya"
+  },
+  "Q147791": {
+    "name": "Chamaecyparis"
+  },
+  "Q157017": {
+    "name": "Magnolia"
+  },
+  "Q157236": {
+    "name": "Liriodendron"
+  },
+  "Q157366": {
+    "name": "Cotinus"
+  },
+  "Q158072": {
+    "name": "Catalpa"
+  },
+  "Q159545": {
+    "name": "Cornus"
+  },
+  "Q160580": {
+    "name": "Ailanthus"
+  },
+  "Q161042": {
+    "name": "Elaeagnus"
+  },
+  "Q161250": {
+    "name": "Gleditsia"
+  },
+  "Q165173": {
+    "name": "Paulownia"
+  },
+  "Q165258": {
+    "name": "Diospyros"
+  },
+  "Q183543": {
+    "name": "Liquidambar"
+  },
+  "Q190545": {
+    "name": "Prunus"
+  },
+  "Q248582": {
+    "name": "Celtis"
+  },
+  "Q296910": {
+    "name": "Olea"
+  },
+  "Q309213": {
+    "name": "Sophora"
+  },
+  "Q472943": {
+    "name": "Robinia"
+  },
+  "Q605290": {
+    "name": "Ostrya"
+  },
+  "Q664945": {
+    "name": "Albizia"
+  },
+  "Q765246": {
+    "name": "Calocedrus"
+  },
+  "Q775229": {
+    "name": "Lagerstroemia"
+  },
+  "Q810562": {
+    "name": "Karpatiosorbus"
+  },
+  "Q858028": {
+    "name": "Cercidifilàcia"
+  },
+  "Q964952": {
+    "name": "Nyssa"
+  },
+  "Q1065400": {
+    "name": "Castanopsis"
+  },
+  "Q1132766": {
+    "name": "Fontanesia"
+  },
+  "Q1420126": {
+    "name": "Pterocarya"
+  },
+  "Q1975652": {
+    "name": "Sequoia"
+  },
+  "Q2453469": {
+    "name": "Noguer"
+  },
+  "Q2697430": {
+    "name": "Toona"
+  },
+  "Q3060383": {
+    "name": "Euodia"
+  },
+  "Q3366033": {
+    "name": "Parrotia"
+  },
+  "Q5220438": {
+    "name": "Trigonobalanus"
+  },
+  "Q5429644": {
+    "name": "Faidherbia"
+  },
+  "Q12309040": {
+    "name": "Davidia"
+  },
+  "Q12323064": {
+    "name": "Cryptomeria"
+  },
+  "Q17410244": {
+    "name": "Notholithocarpus"
+  },
+  "Q18745576": {
+    "name": "Pasania"
+  },
+  "Q19845401": {
+    "name": "Formanodendron"
+  },
+  "Q20817818": {
+    "name": "Eotrigonobalanus"
+  },
+  "Q21088249": {
+    "name": "Limlia"
+  },
+  "Q21398174": {
+    "name": "Fagopsis"
+  },
+  "Q434": {
+    "name": "perera"
+  },
+  "Q25239": {
+    "name": "Alnus"
+  },
+  "Q27355": {
+    "name": "Taxus"
+  },
+  "Q87070717": {
+    "name": "Salisburia"
+  },
+  "Q87145799": {
+    "name": "Callaeocarpus"
+  },
+  "Q87147998": {
+    "name": "Colombobalanus"
+  },
+  "Q87152055": {
+    "name": "Fagus-castanea"
+  },
+  "Q87162206": {
+    "name": "Pasaniopsis"
+  },
+  "Q113299853": {
+    "name": "Erythrobalanus"
+  },
+  "Q113299877": {
+    "name": "Synaedrys"
+  },
+  "Q113299880": {
+    "name": "Corylopasania"
+  },
+  "Q113299881": {
+    "name": "Cyclobalanus"
+  }
+}

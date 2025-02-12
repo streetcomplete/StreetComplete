@@ -1,0 +1,442 @@
+{
+  "Q434": {
+    "name": "päärynäpuut",
+    "aliases": [
+      "Pyrus",
+      "päärynä",
+      "päärynät"
+    ]
+  },
+  "Q12004": {
+    "name": "tammet",
+    "aliases": [
+      "Quercus",
+      "tammi"
+    ]
+  },
+  "Q12024": {
+    "name": "männyt",
+    "aliases": [
+      "Pinus"
+    ]
+  },
+  "Q25239": {
+    "name": "lepät",
+    "aliases": [
+      "Alnus",
+      "leppä"
+    ]
+  },
+  "Q25243": {
+    "name": "koivut",
+    "aliases": [
+      "Betula",
+      "koivu"
+    ]
+  },
+  "Q25350": {
+    "name": "pihdat",
+    "aliases": [
+      "Abies",
+      "jalokuuset",
+      "pihtakuuset"
+    ]
+  },
+  "Q25356": {
+    "name": "poppelit",
+    "aliases": [
+      "haavat",
+      "Populus"
+    ]
+  },
+  "Q25403": {
+    "name": "pyökit",
+    "aliases": [
+      "Fagus",
+      "kehtopyökit",
+      "kehtopyökki",
+      "pyökki"
+    ]
+  },
+  "Q25618": {
+    "name": "lehtikuuset",
+    "aliases": [
+      "Larix",
+      "Lehtikuusi"
+    ]
+  },
+  "Q25662": {
+    "name": "katajat",
+    "aliases": [
+      "Juniperus"
+    ]
+  },
+  "Q26782": {
+    "name": "kuuset",
+    "aliases": [
+      "Picea",
+      "suomukuuset"
+    ]
+  },
+  "Q27355": {
+    "name": "marjakuuset",
+    "aliases": [
+      "Taxus"
+    ]
+  },
+  "Q36050": {
+    "name": "pajut",
+    "aliases": [
+      "Paju"
+    ]
+  },
+  "Q44789": {
+    "name": "mulperit",
+    "aliases": [
+      "mulperipuut",
+      "silkkiäispuut"
+    ]
+  },
+  "Q45669": {
+    "name": "eukalyptukset",
+    "aliases": [
+      "Eucalyptus",
+      "Eukalyptus",
+      "Kuumepuut"
+    ]
+  },
+  "Q104819": {
+    "name": "omenapuut",
+    "aliases": [
+      "Malus"
+    ]
+  },
+  "Q59798": {
+    "name": "viikunat",
+    "aliases": [
+      "Ficus",
+      "fiikukset",
+      "marjaviikunat"
+    ]
+  },
+  "Q127849": {
+    "name": "lehmukset",
+    "aliases": [
+      "Tilia"
+    ]
+  },
+  "Q128550": {
+    "name": "setrit",
+    "aliases": [
+      "Cedrus",
+      "Seetri",
+      "Seetrit"
+    ]
+  },
+  "Q129324": {
+    "name": "kastanjat",
+    "aliases": [
+      "Castanea"
+    ]
+  },
+  "Q131113": {
+    "name": "jalavat",
+    "aliases": [
+      "Ulmus"
+    ]
+  },
+  "Q132557": {
+    "name": "orapihlajat",
+    "aliases": [
+      "Crataegus",
+      "Orapihlaja"
+    ]
+  },
+  "Q145889": {
+    "name": "pähkinäpensaat",
+    "aliases": [
+      "Corylus"
+    ]
+  },
+  "Q146911": {
+    "name": "sypressit",
+    "aliases": [
+      "Cupressus",
+      "sypressi"
+    ]
+  },
+  "Q147791": {
+    "name": "valesypressit",
+    "aliases": [
+      "Chamaecyparis"
+    ]
+  },
+  "Q149461": {
+    "name": "neidonhiuspuut",
+    "aliases": [
+      "Ginkgo"
+    ]
+  },
+  "Q157236": {
+    "name": "tulppaanipuut",
+    "aliases": [
+      "Liriodendron"
+    ]
+  },
+  "Q157964": {
+    "name": "pihlajat",
+    "aliases": [
+      "Sorbus"
+    ]
+  },
+  "Q158072": {
+    "name": "trumpettipuut",
+    "aliases": [
+      "Catalpa"
+    ]
+  },
+  "Q158513": {
+    "name": "valkopyökit",
+    "aliases": [
+      "valkopyökki",
+      "Carpinus"
+    ]
+  },
+  "Q158752": {
+    "name": "hevoskastanjat",
+    "aliases": [
+      "Aesculus"
+    ]
+  },
+  "Q158771": {
+    "name": "douglaskuuset",
+    "aliases": [
+      "Pseudotsuga"
+    ]
+  },
+  "Q159545": {
+    "name": "kanukat",
+    "aliases": [
+      "Cornus"
+    ]
+  },
+  "Q160580": {
+    "name": "jumaltenpuut",
+    "aliases": [
+      "Ailanthus"
+    ]
+  },
+  "Q161042": {
+    "name": "hopeapensaat",
+    "aliases": [
+      "Kilsepensaat"
+    ]
+  },
+  "Q163025": {
+    "name": "plataanit",
+    "aliases": [
+      "Platanus"
+    ]
+  },
+  "Q165258": {
+    "name": "eebenpuut",
+    "aliases": [
+      "Diospyros"
+    ]
+  },
+  "Q190545": {
+    "name": "tuomet",
+    "aliases": [
+      "kirsikat",
+      "luumut",
+      "Prunus"
+    ]
+  },
+  "Q296910": {
+    "name": "öljypuut",
+    "aliases": [
+      "Olea",
+      "oliivipuut"
+    ]
+  },
+  "Q775229": {
+    "name": "kutriot",
+    "aliases": [
+      "Lagerstroemia"
+    ]
+  },
+  "Q858028": {
+    "name": "katsurat",
+    "aliases": [
+      "Cercidiphyllum"
+    ]
+  },
+  "Q12309040": {
+    "name": "Kyyhkyspuut",
+    "aliases": [
+      "Davidia"
+    ]
+  },
+  "Q12323064": {
+    "name": "Sugit",
+    "aliases": [
+      "Cryptomeria"
+    ]
+  },
+  "Q1070845": {
+    "name": "punamarjat",
+    "aliases": [
+      "Photinia"
+    ]
+  },
+  "Q128887": {
+    "name": "saarnet"
+  },
+  "Q132402": {
+    "name": "Lithocarpus"
+  },
+  "Q132703": {
+    "name": "rakkopuut"
+  },
+  "Q137054": {
+    "name": "Chrysolepis"
+  },
+  "Q142788": {
+    "name": "hikkorit"
+  },
+  "Q157017": {
+    "name": "magnoliat"
+  },
+  "Q157366": {
+    "name": "peruukkipensaat"
+  },
+  "Q161250": {
+    "name": "kolmioat"
+  },
+  "Q165173": {
+    "name": "keisaripuut"
+  },
+  "Q183543": {
+    "name": "ambrapuut"
+  },
+  "Q248582": {
+    "name": "keltikset"
+  },
+  "Q309213": {
+    "name": "helmipalot"
+  },
+  "Q472943": {
+    "name": "valeakaasiat"
+  },
+  "Q605290": {
+    "name": "humalapyökit"
+  },
+  "Q664945": {
+    "name": "albitsiat"
+  },
+  "Q765246": {
+    "name": "tuoksusetrit"
+  },
+  "Q796117": {
+    "name": "Cyclobalanopsis"
+  },
+  "Q810562": {
+    "name": "Karpatiosorbus"
+  },
+  "Q964952": {
+    "name": "tupelot"
+  },
+  "Q1065400": {
+    "name": "Castanopsis"
+  },
+  "Q1132766": {
+    "name": "Fontanesia"
+  },
+  "Q1420126": {
+    "name": "siipipähkinät"
+  },
+  "Q1975652": {
+    "name": "punapuut"
+  },
+  "Q2453469": {
+    "name": "jalopähkinät"
+  },
+  "Q2697430": {
+    "name": "toonapuut"
+  },
+  "Q3060383": {
+    "name": "Euodia"
+  },
+  "Q3366033": {
+    "name": "parrotiat"
+  },
+  "Q5122903": {
+    "name": "kumkvatit"
+  },
+  "Q5220438": {
+    "name": "Trigonobalanus"
+  },
+  "Q5429644": {
+    "name": "Faidherbia"
+  },
+  "Q17410244": {
+    "name": "Notholithocarpus"
+  },
+  "Q18745576": {
+    "name": "Pasania"
+  },
+  "Q19845401": {
+    "name": "Formanodendron"
+  },
+  "Q20817818": {
+    "name": "Eotrigonobalanus"
+  },
+  "Q21088249": {
+    "name": "Limlia"
+  },
+  "Q21397965": {
+    "name": "Dryophyllum"
+  },
+  "Q21398174": {
+    "name": "Fagopsis"
+  },
+  "Q29033": {
+    "name": "juudaksenpuut"
+  },
+  "Q42292": {
+    "name": "vaahterat"
+  },
+  "Q87070717": {
+    "name": "Salisburia"
+  },
+  "Q87145799": {
+    "name": "Callaeocarpus"
+  },
+  "Q87147998": {
+    "name": "Colombobalanus"
+  },
+  "Q87152055": {
+    "name": "Fagus-castanea"
+  },
+  "Q87162206": {
+    "name": "Pasaniopsis"
+  },
+  "Q108071245": {
+    "name": "Berryophyllum"
+  },
+  "Q113299853": {
+    "name": "Erythrobalanus"
+  },
+  "Q113299877": {
+    "name": "Synaedrys"
+  },
+  "Q113299880": {
+    "name": "Corylopasania"
+  },
+  "Q113299881": {
+    "name": "Cyclobalanus"
+  },
+  "Q119063130": {
+    "name": "Castaneophyllum"
+  }
+}

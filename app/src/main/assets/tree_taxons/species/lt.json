@@ -1,0 +1,1403 @@
+{
+  "Q74068": {
+    "name": "Žirniasėklis puskiparisis",
+    "aliases": [
+      "Žirniavaisis puskiparisis"
+    ]
+  },
+  "Q76971": {
+    "name": "Popieržievis beržas",
+    "aliases": [
+      "Betula papyrifera"
+    ]
+  },
+  "Q161253": {
+    "name": "Pelkinis ąžuolas",
+    "aliases": [
+      "Quercus palustris"
+    ]
+  },
+  "Q106094": {
+    "name": "Italinė pušis",
+    "aliases": [
+      "Pinija"
+    ]
+  },
+  "Q1635788": {
+    "name": "Puošnioji robinija",
+    "aliases": [
+      "Robinia neomexicana"
+    ]
+  },
+  "Q161511": {
+    "name": "Vienapiestė gudobelė",
+    "aliases": [
+      "aubépine à un style",
+      "Crataegus monogyna"
+    ]
+  },
+  "Q162829": {
+    "name": "Virgininė ieva",
+    "aliases": [
+      "Padus virginiana"
+    ]
+  },
+  "Q1768686": {
+    "name": "Kėninis maumedis",
+    "aliases": [
+      "Larix griffithii"
+    ]
+  },
+  "Q2093561": {
+    "name": "Šrenko eglė",
+    "aliases": [
+      "Picea schrenkiana"
+    ]
+  },
+  "Q2360517": {
+    "name": "Smulkusis fikusas",
+    "aliases": [
+      "Ficus pumila",
+      "Laipiojantysis fikusas"
+    ]
+  },
+  "Q26325": {
+    "name": "Paprastasis kadagys",
+    "aliases": [
+      "Juniperus communis"
+    ]
+  },
+  "Q165091": {
+    "name": "Suktaspyglė pušis",
+    "aliases": [
+      "Pinus contorta"
+    ]
+  },
+  "Q133128": {
+    "name": "Paprastoji pušis",
+    "aliases": [
+      "Pinus sylvestris"
+    ]
+  },
+  "Q128116": {
+    "name": "Baltoji eglė",
+    "aliases": [
+      "Picea glauca"
+    ]
+  },
+  "Q2703200": {
+    "name": "Išlakioji eglė",
+    "aliases": [
+      "Picea wilsonii"
+    ]
+  },
+  "Q2703314": {
+    "name": "Uolinė eglė",
+    "aliases": [
+      "Picea neoveitchii"
+    ]
+  },
+  "Q2727171": {
+    "name": "Triskiautis migdolas",
+    "aliases": [
+      "Prunus triloba"
+    ]
+  },
+  "Q165137": {
+    "name": "trešnė",
+    "aliases": [
+      "cerisier des oiseaux",
+      "Prunus avium",
+      "čerešnė"
+    ]
+  },
+  "Q165424": {
+    "name": "Paprastoji ieva",
+    "aliases": [
+      "cerisier à grappes",
+      "Prunus padus"
+    ]
+  },
+  "Q3239660": {
+    "name": "Šiurkščioji eglė",
+    "aliases": [
+      "Picea asperata"
+    ]
+  },
+  "Q3355098": {
+    "name": "Apelsininis citrinmedis",
+    "aliases": [
+      "Apelsinai",
+      "Apelsinmedis",
+      "Citrus nobilis",
+      "Saldžiavaisis citrinmedis"
+    ]
+  },
+  "Q26899": {
+    "name": "Paprastasis kaštonas",
+    "aliases": [
+      "Aesculus hippocastanum"
+    ]
+  },
+  "Q37083": {
+    "name": "Europinis alyvmedis",
+    "aliases": [
+      "Olea europaea"
+    ]
+  },
+  "Q2368526": {
+    "name": "Korėjinė eglė",
+    "aliases": [
+      "Picea koraiensis"
+    ]
+  },
+  "Q2411222": {
+    "name": "Maksimovičiaus eglė",
+    "aliases": [
+      "Picea maximowiczii"
+    ]
+  },
+  "Q2427077": {
+    "name": "Kininė eglė",
+    "aliases": [
+      "Picea likiangensis"
+    ]
+  },
+  "Q2636528": {
+    "name": "Mejerio eglė",
+    "aliases": [
+      "Picea meyeri"
+    ]
+  },
+  "Q2668309": {
+    "name": "Pelkinis karklas",
+    "aliases": [
+      "Pelkinis gluosnis",
+      "Salix rosmarinifolia"
+    ]
+  },
+  "Q2995056": {
+    "name": "Raudonoji gudobelė",
+    "aliases": [
+      "Crataegus sanguinea"
+    ]
+  },
+  "Q163981": {
+    "name": "Amerikinė liepa",
+    "aliases": [
+      "Tilia americana"
+    ]
+  },
+  "Q164258": {
+    "name": "Liekninis beržas",
+    "aliases": [
+      "Betula humilis",
+      "Lieknasis beržas"
+    ]
+  },
+  "Q146110": {
+    "name": "Drebulė",
+    "aliases": [
+      "Epušė",
+      "peuplier tremble",
+      "Populus tremula"
+    ]
+  },
+  "Q170662": {
+    "name": "Mangostaninė garcinija",
+    "aliases": [
+      "Garcinia mangostana"
+    ]
+  },
+  "Q145954": {
+    "name": "Juodoji pušis",
+    "aliases": [
+      "Pin noir"
+    ]
+  },
+  "Q131517": {
+    "name": "paprastoji vyšnia",
+    "aliases": [
+      "Prunus cerasus"
+    ]
+  },
+  "Q165145": {
+    "name": "Paprastasis ąžuolas",
+    "aliases": [
+      "Quercus robur"
+    ]
+  },
+  "Q145992": {
+    "name": "Paprastoji eglė",
+    "aliases": [
+      "Picea abies"
+    ]
+  },
+  "Q146021": {
+    "name": "Balkaninė pušis",
+    "aliases": [
+      "Pinus peuce"
+    ]
+  },
+  "Q26745": {
+    "name": "Paprastasis klevas",
+    "aliases": [
+      "Acer platanoides"
+    ]
+  },
+  "Q146149": {
+    "name": "Paprastasis bukas",
+    "aliases": [
+      "Fagus sylvatica",
+      "Hêtre commun"
+    ]
+  },
+  "Q135471": {
+    "name": "Nepalinis maumedis",
+    "aliases": [
+      "Larix potaninii"
+    ]
+  },
+  "Q39529": {
+    "name": "Balzganoji eglė",
+    "aliases": [
+      "Picea brachytyla"
+    ]
+  },
+  "Q39708": {
+    "name": "Purpurinis karklas",
+    "aliases": [
+      "osier pourpre",
+      "Salix purpurea"
+    ]
+  },
+  "Q179729": {
+    "name": "Europinis kukmedis",
+    "aliases": [
+      "If",
+      "Taxus baccata"
+    ]
+  },
+  "Q41350": {
+    "name": "Greipfrutinis citrinmedis",
+    "aliases": [
+      "Citrus paradisi",
+      "Greipfrutai"
+    ]
+  },
+  "Q43284": {
+    "name": "Dviskiautis ginkmedis",
+    "aliases": [
+      "Ginkgo Biloba",
+      "Ginkmedainiai",
+      "Ginkmediniai",
+      "Ginkmedis",
+      "Ginkūnai"
+    ]
+  },
+  "Q146025": {
+    "name": "Dygioji eglė",
+    "aliases": [
+      "Picea pungens",
+      "Sidabrinė eglė"
+    ]
+  },
+  "Q218425": {
+    "name": "Juodoji eglė",
+    "aliases": [
+      "Picea mariana"
+    ]
+  },
+  "Q243964": {
+    "name": "Žemoji pušis",
+    "aliases": [
+      "Pinus pumila"
+    ]
+  },
+  "Q460531": {
+    "name": "Baltažievė pušis",
+    "aliases": [
+      "Pinus heldreichii"
+    ]
+  },
+  "Q754765": {
+    "name": "Sibirinis maumedis",
+    "aliases": [
+      "Larix sibirica"
+    ]
+  },
+  "Q756334": {
+    "name": "Daūrinis maumedis",
+    "aliases": [
+      "Larix gmelinii"
+    ]
+  },
+  "Q39918": {
+    "name": "Migdolas",
+    "aliases": [
+      "Migdolai",
+      "Prunus dulcis"
+    ]
+  },
+  "Q147278": {
+    "name": "Kedrinė pušis",
+    "aliases": [
+      "Pinus cembra"
+    ]
+  },
+  "Q146198": {
+    "name": "Paprastasis šermukšnis",
+    "aliases": [
+      "sorbier des oiseleurs",
+      "Sorbus aucuparia"
+    ]
+  },
+  "Q41505": {
+    "name": "japoninė lokva",
+    "aliases": [
+      "japoninė šliandra"
+    ]
+  },
+  "Q147388": {
+    "name": "Japoninė kriptomerija",
+    "aliases": [
+      "Kriptomerija"
+    ]
+  },
+  "Q147426": {
+    "name": "Sitkinė eglė",
+    "aliases": [
+      "Picea sitchensis"
+    ]
+  },
+  "Q146048": {
+    "name": "Europinis maumedis",
+    "aliases": [
+      "Larix decidua"
+    ]
+  },
+  "Q44120": {
+    "name": "Slyva",
+    "aliases": [
+      "Prunus domestica"
+    ]
+  },
+  "Q146269": {
+    "name": "Baltoji tuopa",
+    "aliases": [
+      "peuplier blanc"
+    ]
+  },
+  "Q469151": {
+    "name": "Raudonoji eglė",
+    "aliases": [
+      "Picea rubens"
+    ]
+  },
+  "Q43300": {
+    "name": "Paprastoji cidonija",
+    "aliases": [
+      "Cidonija",
+      "Cydonia oblonga",
+      "Dūlinė kriaušė"
+    ]
+  },
+  "Q146992": {
+    "name": "Europinis kėnis",
+    "aliases": [
+      "Abies alba"
+    ]
+  },
+  "Q852262": {
+    "name": "Sibirinis kėnis",
+    "aliases": [
+      "Abies sibirica"
+    ]
+  },
+  "Q852572": {
+    "name": "Juodasis riešutmedis",
+    "aliases": [
+      "Juodieji riešutai"
+    ]
+  },
+  "Q5279626": {
+    "name": "Ceiloninis juodmedis",
+    "aliases": [
+      "Diospyros ebenum"
+    ]
+  },
+  "Q37453": {
+    "name": "Abrikosas",
+    "aliases": [
+      "Abrikosai",
+      "Armeniaca",
+      "Prunus armeniaca"
+    ]
+  },
+  "Q147475": {
+    "name": "Kalninė pušis",
+    "aliases": [
+      "Pinus mugo"
+    ]
+  },
+  "Q147439": {
+    "name": "Japoninis maumedis",
+    "aliases": [
+      "Japoniškasis maumedis",
+      "Larix kaempferi"
+    ]
+  },
+  "Q716576": {
+    "name": "Morisoninė eglė",
+    "aliases": [
+      "Picea morrisonicola"
+    ]
+  },
+  "Q46871": {
+    "name": "Graikinis riešutmedis",
+    "aliases": [
+      "Calottier"
+    ]
+  },
+  "Q391374": {
+    "name": "Japoninė eglė",
+    "aliases": [
+      "Picea koyamae"
+    ]
+  },
+  "Q1137607": {
+    "name": "Sibirinė eglė",
+    "aliases": [
+      "Picea obovata"
+    ]
+  },
+  "Q1145286": {
+    "name": "Rytinė eglė",
+    "aliases": [
+      "Picea orientalis"
+    ]
+  },
+  "Q1151932": {
+    "name": "Sachalininė eglė",
+    "aliases": [
+      "Picea glehnii"
+    ]
+  },
+  "Q147487": {
+    "name": "Paprastasis skirpstas",
+    "aliases": [
+      "orme champêtre",
+      "Skirpstas",
+      "Ulmus minor"
+    ]
+  },
+  "Q146281": {
+    "name": "Paprastoji kriaušė",
+    "aliases": [
+      "Pyrus communis"
+    ]
+  },
+  "Q149382": {
+    "name": "plaukuotvaisė tuopa",
+    "aliases": [
+      "Populus trichocarpa"
+    ]
+  },
+  "Q149392": {
+    "name": "Makio ieva",
+    "aliases": [
+      "Padus maackii"
+    ]
+  },
+  "Q42385": {
+    "name": "Tikrasis kakavmedis",
+    "aliases": [
+      "Theobroma cacao"
+    ]
+  },
+  "Q887221": {
+    "name": "Gausiažiedė sedula",
+    "aliases": [
+      "Cornus florida"
+    ]
+  },
+  "Q936888": {
+    "name": "Akuotuotoji pušis",
+    "aliases": [
+      "Pinus aristata"
+    ]
+  },
+  "Q156687": {
+    "name": "Didžioji pocūgė",
+    "aliases": [
+      "sapin de douglas"
+    ]
+  },
+  "Q156831": {
+    "name": "Didžialapė liepa",
+    "aliases": [
+      "Tilia platyphyllos"
+    ]
+  },
+  "Q147824": {
+    "name": "Serbinė eglė",
+    "aliases": [
+      "Picea omorika"
+    ]
+  },
+  "Q156895": {
+    "name": "Karpotasis beržas",
+    "aliases": [
+      "Betula pendula"
+    ]
+  },
+  "Q156904": {
+    "name": "Juodalksnis",
+    "aliases": [
+      "Alnus glutinosa",
+      "aulne glutineux",
+      "Juodasis alksnis"
+    ]
+  },
+  "Q150129": {
+    "name": "Visžalė sekvoja",
+    "aliases": [
+      "Sequoia sempervirens"
+    ]
+  },
+  "Q148630": {
+    "name": "Kazokinis kadagys",
+    "aliases": [
+      "Juniperus sabina"
+    ]
+  },
+  "Q156907": {
+    "name": "Paprastasis uosis",
+    "aliases": [
+      "Fraxinus excelsior",
+      "frêne commun"
+    ]
+  },
+  "Q147492": {
+    "name": "Paprastoji vinkšna",
+    "aliases": [
+      "Ulmus laevis",
+      "Vinkšna"
+    ]
+  },
+  "Q156137": {
+    "name": "Kamštinis ąžuolas",
+    "aliases": [
+      "Quercus suber"
+    ]
+  },
+  "Q156918": {
+    "name": "Baltasis gluosnis",
+    "aliases": [
+      "Salix alba",
+      "Saule blanc"
+    ]
+  },
+  "Q1190084": {
+    "name": "Ajaninė eglė",
+    "aliases": [
+      "Picea jezoensis"
+    ]
+  },
+  "Q157540": {
+    "name": "Pilkasis karklas",
+    "aliases": [
+      "Pilkasis gluosnis",
+      "Salix cinerea",
+      "saule cendré"
+    ]
+  },
+  "Q157624": {
+    "name": "Plaukuotasis beržas",
+    "aliases": [
+      "Beržas pašepėlis",
+      "Betula pubescens",
+      "bouleau pubescent"
+    ]
+  },
+  "Q978755": {
+    "name": "Subalpinis kėnis",
+    "aliases": [
+      "Abies lasiocarpa"
+    ]
+  },
+  "Q156307": {
+    "name": "Svyruoklinis gluosnis",
+    "aliases": [
+      "Salix babylonica"
+    ]
+  },
+  "Q157230": {
+    "name": "Veimutinė pušis",
+    "aliases": [
+      "Pin blanc"
+    ]
+  },
+  "Q157628": {
+    "name": "Beržas keružis",
+    "aliases": [
+      "Betula nana"
+    ]
+  },
+  "Q157641": {
+    "name": "Baltalksnis",
+    "aliases": [
+      "Alnus incana",
+      "Baltasis alksnis"
+    ]
+  },
+  "Q157763": {
+    "name": "Japoninis abrikosas",
+    "aliases": [
+      "Prunus mume"
+    ]
+  },
+  "Q149332": {
+    "name": "Miškinė kriaušė",
+    "aliases": [
+      "Pyrus pyraster"
+    ]
+  },
+  "Q158228": {
+    "name": "Baltoji sedula",
+    "aliases": [
+      "Cornus alba"
+    ]
+  },
+  "Q157417": {
+    "name": "Baltažiedė robinija",
+    "aliases": [
+      "Robinia pseudoacacia",
+      "robinier faux-acacia"
+    ]
+  },
+  "Q158482": {
+    "name": "Rytinis juodmedis",
+    "aliases": [
+      "Diospyros kaki",
+      "Rytinis persimonas"
+    ]
+  },
+  "Q157518": {
+    "name": "Trapusis gluosnis",
+    "aliases": [
+      "Salix fragilis"
+    ]
+  },
+  "Q157522": {
+    "name": "Virgininis kadagys",
+    "aliases": [
+      "Juniperus virginiana"
+    ]
+  },
+  "Q158590": {
+    "name": "Žilvitinis karklas",
+    "aliases": [
+      "Salix viminalis",
+      "Žilvitis"
+    ]
+  },
+  "Q158608": {
+    "name": "Bekotis ąžuolas",
+    "aliases": [
+      "chêne rouvre"
+    ]
+  },
+  "Q1404234": {
+    "name": "Alpinis maumedis",
+    "aliases": [
+      "Laielio maumedis",
+      "Larix lyallii"
+    ]
+  },
+  "Q157532": {
+    "name": "Krantinis gluosnis",
+    "aliases": [
+      "Salix triandra"
+    ]
+  },
+  "Q158642": {
+    "name": "Geltonžiedė sedula",
+    "aliases": [
+      "cornouiller mâle",
+      "Geltonoji sedula"
+    ]
+  },
+  "Q158746": {
+    "name": "Mažalapė liepa",
+    "aliases": [
+      "Tilia cordata"
+    ]
+  },
+  "Q158776": {
+    "name": "Paprastasis skroblas",
+    "aliases": [
+      "Carpinus betulus"
+    ]
+  },
+  "Q158783": {
+    "name": "Gelsvažiedis tulpmedis",
+    "aliases": [
+      "Liriodendron tulipifera"
+    ]
+  },
+  "Q158912": {
+    "name": "Virbinis gluosnis",
+    "aliases": [
+      "Saule laurier"
+    ]
+  },
+  "Q158987": {
+    "name": "Vėlyvoji ieva",
+    "aliases": [
+      "cerisier tardif",
+      "Padus serotina"
+    ]
+  },
+  "Q159086": {
+    "name": "Miškinė gudobelė",
+    "aliases": [
+      "Crataegus rhipidophylla"
+    ]
+  },
+  "Q159528": {
+    "name": "Rutulinis eukaliptas",
+    "aliases": [
+      "Gommier bleu"
+    ]
+  },
+  "Q159553": {
+    "name": "Grauželinė gudobelė",
+    "aliases": [
+      "Crataegus laevigata"
+    ]
+  },
+  "Q159565": {
+    "name": "Blindė",
+    "aliases": [
+      "Paprastoji blindė",
+      "Salix caprea"
+    ]
+  },
+  "Q159570": {
+    "name": "Aukštasis ailantas",
+    "aliases": [
+      "Ailanthus altissima"
+    ]
+  },
+  "Q160019": {
+    "name": "Keružinis migdolas",
+    "aliases": [
+      "Prunus tenella"
+    ]
+  },
+  "Q160576": {
+    "name": "Stambialapis fikusas",
+    "aliases": [
+      "Ficus elastica"
+    ]
+  },
+  "Q161040": {
+    "name": "Juodasis šilkmedis",
+    "aliases": [
+      "Morus nigra"
+    ]
+  },
+  "Q161166": {
+    "name": "Uosialapis klevas",
+    "aliases": [
+      "Acer negundo",
+      "Érable negundo"
+    ]
+  },
+  "Q124969": {
+    "name": "Paprastasis lazdynas"
+  },
+  "Q129018": {
+    "name": "Dygioji slyva"
+  },
+  "Q134045": {
+    "name": "Išlakioji araukarija"
+  },
+  "Q134804": {
+    "name": "Plačioji pušis"
+  },
+  "Q145939": {
+    "name": "Pilkasis kėnis"
+  },
+  "Q146935": {
+    "name": "Himalajinis kedras"
+  },
+  "Q147064": {
+    "name": "Juodoji tuopa"
+  },
+  "Q147434": {
+    "name": "Kaliforninis kėnis"
+  },
+  "Q147498": {
+    "name": "Kalninė guoba"
+  },
+  "Q147513": {
+    "name": "Visžalis kiparisas"
+  },
+  "Q147525": {
+    "name": "Raudonasis ąžuolas"
+  },
+  "Q148542": {
+    "name": "Pelkinė pušis"
+  },
+  "Q148751": {
+    "name": "Sičuaninis maumedis"
+  },
+  "Q148920": {
+    "name": "Kaukazinis kėnis"
+  },
+  "Q149219": {
+    "name": "Amerikinis bukas"
+  },
+  "Q149327": {
+    "name": "Abies borisii-regis"
+  },
+  "Q149471": {
+    "name": "Balzaminė tuopa"
+  },
+  "Q149553": {
+    "name": "Pilkoji tuopa"
+  },
+  "Q149622": {
+    "name": "Populus × canadensis"
+  },
+  "Q156944": {
+    "name": "Platanalapis klevas"
+  },
+  "Q157393": {
+    "name": "Kininė paulovnija"
+  },
+  "Q157519": {
+    "name": "Ausytasis karklas"
+  },
+  "Q157650": {
+    "name": "Tridyglė gledičija"
+  },
+  "Q157969": {
+    "name": "Siauralapis žilakrūmis"
+  },
+  "Q158301": {
+    "name": "Sidabrinis klevas"
+  },
+  "Q158785": {
+    "name": "Trakinis klevas"
+  },
+  "Q159122": {
+    "name": "Juosvasis karklas"
+  },
+  "Q159127": {
+    "name": "Spalvingasis eukaliptas"
+  },
+  "Q159188": {
+    "name": "Amerikinis žilakrūmis"
+  },
+  "Q159476": {
+    "name": "Pajūrinis gluosnis"
+  },
+  "Q159657": {
+    "name": "Grakščioji liepa"
+  },
+  "Q161070": {
+    "name": "Aukštoji araukarija"
+  },
+  "Q161360": {
+    "name": "Lausono puskiparisis"
+  },
+  "Q161364": {
+    "name": "Raudonasis klevas"
+  },
+  "Q161374": {
+    "name": "Klevalapis platanas"
+  },
+  "Q161382": {
+    "name": "Sidabrinė liepa"
+  },
+  "Q161406": {
+    "name": "Europinis pūkenis"
+  },
+  "Q161416": {
+    "name": "Raudonoji sedula"
+  },
+  "Q161442": {
+    "name": "Japoninė liepa"
+  },
+  "Q161882": {
+    "name": "Mėlynialapis karklas"
+  },
+  "Q163544": {
+    "name": "Ermano beržas"
+  },
+  "Q165387": {
+    "name": "Engelmano eglė"
+  },
+  "Q209326": {
+    "name": "Vietnaminė pušis"
+  },
+  "Q211457": {
+    "name": "Alepinė pušis"
+  },
+  "Q214733": {
+    "name": "Cukrinis klevas"
+  },
+  "Q227763": {
+    "name": "Kvapusis beržas"
+  },
+  "Q227779": {
+    "name": "Saldžioji pušis"
+  },
+  "Q261309": {
+    "name": "Kalvinė pušis"
+  },
+  "Q311361": {
+    "name": "Mandžiūrinis riešutmedis"
+  },
+  "Q333877": {
+    "name": "Pekaninė karija"
+  },
+  "Q334697": {
+    "name": "Davidia involucrata"
+  },
+  "Q368248": {
+    "name": "Terpentininė pušis"
+  },
+  "Q428023": {
+    "name": "Balzaminis kėnis"
+  },
+  "Q430029": {
+    "name": "Meksikinė guoba"
+  },
+  "Q460523": {
+    "name": "Geltonoji pušis"
+  },
+  "Q469555": {
+    "name": "Baltasis ąžuolas"
+  },
+  "Q476655": {
+    "name": "Brevero eglė"
+  },
+  "Q482510": {
+    "name": "Didysis eukaliptas"
+  },
+  "Q526549": {
+    "name": "Japoninis puošmedis"
+  },
+  "Q568254": {
+    "name": "Afrikinis alyvmedis"
+  },
+  "Q576585": {
+    "name": "Vakarinis maumedis"
+  },
+  "Q602226": {
+    "name": "Eucalyptus obliqua"
+  },
+  "Q623489": {
+    "name": "Atlaso kedras"
+  },
+  "Q630288": {
+    "name": "Pilkasis riešutmedis"
+  },
+  "Q731443": {
+    "name": "Sulanžo magnolija"
+  },
+  "Q734085": {
+    "name": "Amerikinis maumedis"
+  },
+  "Q747652": {
+    "name": "Himalajinė pušis"
+  },
+  "Q748888": {
+    "name": "Spindulinė pušis"
+  },
+  "Q761480": {
+    "name": "Baltakamienė pušis"
+  },
+  "Q774829": {
+    "name": "Sibirinė pušis"
+  },
+  "Q794061": {
+    "name": "Magnolia denudata"
+  },
+  "Q806838": {
+    "name": "Bankso pušis"
+  },
+  "Q837410": {
+    "name": "Šiurkščioji pušis"
+  },
+  "Q854714": {
+    "name": "Purpurinis ąžuolas"
+  },
+  "Q15236943": {
+    "name": "Diospyros ehretioides"
+  },
+  "Q15237898": {
+    "name": "Lithocarpus harlandii"
+  },
+  "Q15238823": {
+    "name": "Eucalyptus leptophleba"
+  },
+  "Q15239088": {
+    "name": "Quercus kongshanensis"
+  },
+  "Q15239300": {
+    "name": "Diospyros punctilimba"
+  },
+  "Q15239422": {
+    "name": "Sophora microcarpa"
+  },
+  "Q15239530": {
+    "name": "Lithocarpus mekongensis"
+  },
+  "Q15239804": {
+    "name": "Castanopsis hupehensis"
+  },
+  "Q15240291": {
+    "name": "Cyclobalanopsis sichourensis"
+  },
+  "Q15240339": {
+    "name": "Elaeagnus gonyanthes"
+  },
+  "Q15240385": {
+    "name": "Lithocarpus gaoligongensis"
+  },
+  "Q15240409": {
+    "name": "Elaeagnus angustata"
+  },
+  "Q15338342": {
+    "name": "Quercus lancifolia"
+  },
+  "Q15397348": {
+    "name": "Eucalyptus canaliculata"
+  },
+  "Q15397357": {
+    "name": "Eucalyptus anceps"
+  },
+  "Q15397363": {
+    "name": "Eucalyptus ewartiana"
+  },
+  "Q15397379": {
+    "name": "Eucalyptus dura"
+  },
+  "Q15397376": {
+    "name": "Eucalyptus argillacea"
+  },
+  "Q15397385": {
+    "name": "Eucalyptus latens"
+  },
+  "Q15397393": {
+    "name": "Eucalyptus intrasilvatica"
+  },
+  "Q15400997": {
+    "name": "Aitrusis eukaliptas"
+  },
+  "Q17275264": {
+    "name": "Nutkinis geltkiparisis"
+  },
+  "Q13189": {
+    "name": "Persikas"
+  },
+  "Q22699": {
+    "name": "Valgomasis kaštainis"
+  },
+  "Q28141": {
+    "name": "Gulsčiasis karklas"
+  },
+  "Q36146": {
+    "name": "Skiautėtalapis fikusas"
+  },
+  "Q39527": {
+    "name": "Picea farreri"
+  },
+  "Q47161": {
+    "name": "Miškinė obelis"
+  },
+  "Q61105": {
+    "name": "Libano kedras"
+  },
+  "Q854892": {
+    "name": "Graikinis kėnis"
+  },
+  "Q866150": {
+    "name": "Dygioji pušis"
+  },
+  "Q883558": {
+    "name": "Žemasis karklas"
+  },
+  "Q917216": {
+    "name": "Butaninis kiparisas"
+  },
+  "Q936498": {
+    "name": "Purpurinis kėnis"
+  },
+  "Q937654": {
+    "name": "Nuodingoji fitolaka"
+  },
+  "Q950688": {
+    "name": "Lapuodegė pušis"
+  },
+  "Q990982": {
+    "name": "Triskiautė magnolija"
+  },
+  "Q1048531": {
+    "name": "Castanopsis fissa"
+  },
+  "Q1072578": {
+    "name": "Picea chihuahuana"
+  },
+  "Q1073867": {
+    "name": "Kininė pocūgė"
+  },
+  "Q1079824": {
+    "name": "Ulmus pumila"
+  },
+  "Q1116374": {
+    "name": "Gajoji pušis"
+  },
+  "Q1137001": {
+    "name": "Skarotoji pušis"
+  },
+  "Q1137183": {
+    "name": "Dailusis kiparisas"
+  },
+  "Q1193369": {
+    "name": "Amerikinis uosis"
+  },
+  "Q1227092": {
+    "name": "Diospyros montana"
+  },
+  "Q1249109": {
+    "name": "Rantytoji pušis"
+  },
+  "Q1257409": {
+    "name": "Acer triflorum"
+  },
+  "Q1259309": {
+    "name": "Alabaminė pušis"
+  },
+  "Q1283223": {
+    "name": "Kvapusis kėnis"
+  },
+  "Q1290204": {
+    "name": "Didingasis kėnis"
+  },
+  "Q1348662": {
+    "name": "Laplandinis karklas"
+  },
+  "Q1374188": {
+    "name": "Populus euphratica"
+  },
+  "Q1399164": {
+    "name": "Kaliforninis kedrotis"
+  },
+  "Q1405636": {
+    "name": "Bengalinis fikusas"
+  },
+  "Q1425070": {
+    "name": "Stambiakankorėžė pocūgė"
+  },
+  "Q1442846": {
+    "name": "Picea torano"
+  },
+  "Q1465334": {
+    "name": "Dvispalvė eglė"
+  },
+  "Q1542486": {
+    "name": "Karališkasis eukaliptas"
+  },
+  "Q1542823": {
+    "name": "Japoninis kėnis"
+  },
+  "Q1548216": {
+    "name": "Himalajinė eglė"
+  },
+  "Q1619002": {
+    "name": "Himalajinis kiparisas"
+  },
+  "Q1655870": {
+    "name": "Širdinis riešutmedis"
+  },
+  "Q1683278": {
+    "name": "Japoninė pocūgė"
+  },
+  "Q1713601": {
+    "name": "Didysis kadagys"
+  },
+  "Q1890300": {
+    "name": "Cupressus gigantea"
+  },
+  "Q2045958": {
+    "name": "Sakingoji pušis"
+  },
+  "Q2081113": {
+    "name": "Pošvelnė gudobelė"
+  },
+  "Q2137116": {
+    "name": "Vytelinis eukaliptas"
+  },
+  "Q2456496": {
+    "name": "Ilgalapis karklas"
+  },
+  "Q2512644": {
+    "name": "Žvilgusis eukaliptas"
+  },
+  "Q2603234": {
+    "name": "Smailialapis karklas"
+  },
+  "Q2672321": {
+    "name": "Indinis juodmedis"
+  },
+  "Q2687372": {
+    "name": "Eucalyptus delegatensis"
+  },
+  "Q2704355": {
+    "name": "Vaivorykštinis eukaliptas"
+  },
+  "Q2739400": {
+    "name": "Raudonasis indenis"
+  },
+  "Q2889020": {
+    "name": "Čilinis gluosnis"
+  },
+  "Q3071706": {
+    "name": "Maldyklinis fikusas"
+  },
+  "Q3205624": {
+    "name": "Lagerstroemia intermedia"
+  },
+  "Q3237840": {
+    "name": "Picea purpurea"
+  },
+  "Q3237849": {
+    "name": "Dygliuotoji eglė"
+  },
+  "Q3281198": {
+    "name": "Acer sino-oblongum"
+  },
+  "Q3281562": {
+    "name": "Acer poliophyllum"
+  },
+  "Q3322417": {
+    "name": "Picea retroflexa"
+  },
+  "Q3336255": {
+    "name": "Acer wardii"
+  },
+  "Q3337079": {
+    "name": "Acer sutchuenense"
+  },
+  "Q3337214": {
+    "name": "Acer sinopurpurascens"
+  },
+  "Q3338661": {
+    "name": "Acer shihweii"
+  },
+  "Q3491094": {
+    "name": "Sophora moorcroftiana"
+  },
+  "Q3506511": {
+    "name": "Meksikinė pušis"
+  },
+  "Q3731407": {
+    "name": "Picea martinezii"
+  },
+  "Q3919027": {
+    "name": "Indinis mangas"
+  },
+  "Q4673169": {
+    "name": "Acer oblongum"
+  },
+  "Q5405576": {
+    "name": "Smulkiadantis eukaliptas"
+  },
+  "Q5487185": {
+    "name": "Manglietia sinica"
+  },
+  "Q6372061": {
+    "name": "Quercus sapotifolia"
+  },
+  "Q6746012": {
+    "name": "Acer schneiderianum"
+  },
+  "Q7213013": {
+    "name": "Eucalyptus platyphylla"
+  },
+  "Q7255679": {
+    "name": "Meksikinė pocūgė"
+  },
+  "Q10872414": {
+    "name": "Photinia beauverdiana"
+  },
+  "Q10880877": {
+    "name": "Diospyros yunnanensis"
+  },
+  "Q10887979": {
+    "name": "Diospyros sunyiensis"
+  },
+  "Q10906248": {
+    "name": "Diospyros unisemina"
+  },
+  "Q10907379": {
+    "name": "Castanopsis amabilis"
+  },
+  "Q10908398": {
+    "name": "Lagerstroemia siamica"
+  },
+  "Q10949016": {
+    "name": "Elaeagnus henryi"
+  },
+  "Q10958149": {
+    "name": "Olea parvilimba"
+  },
+  "Q11045980": {
+    "name": "Diospyros siderophylla"
+  },
+  "Q11055328": {
+    "name": "Diospyros sutchuensis"
+  },
+  "Q11066157": {
+    "name": "Diospyros anisocalyx"
+  },
+  "Q11080658": {
+    "name": "Eucalyptus kirtoniana"
+  },
+  "Q11107913": {
+    "name": "Salix karelinii"
+  },
+  "Q11127270": {
+    "name": "Photinia pilosicalyx"
+  },
+  "Q11132607": {
+    "name": "Lithocarpus yongfuensis"
+  },
+  "Q11173544": {
+    "name": "Ficus pubigera"
+  },
+  "Q11179338": {
+    "name": "Diospyros nigrocortex"
+  },
+  "Q12669375": {
+    "name": "Picea alcockiana"
+  },
+  "Q13423887": {
+    "name": "Kurilinis maumedis"
+  },
+  "Q13424577": {
+    "name": "Lenkinis maumedis"
+  },
+  "Q14956781": {
+    "name": "Picea balfouriana"
+  },
+  "Q15236187": {
+    "name": "Olea neriifolia"
+  }
+}

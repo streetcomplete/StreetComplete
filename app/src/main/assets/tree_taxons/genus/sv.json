@@ -1,0 +1,421 @@
+{
+  "Q12004": {
+    "name": "ek",
+    "aliases": [
+      "eksläkte",
+      "Quercus"
+    ]
+  },
+  "Q12024": {
+    "name": "tallsläktet",
+    "aliases": [
+      "Pinus"
+    ]
+  },
+  "Q25239": {
+    "name": "alsläktet",
+    "aliases": [
+      "Alnus",
+      "al",
+      "alar"
+    ]
+  },
+  "Q25243": {
+    "name": "Björksläktet",
+    "aliases": [
+      "björk",
+      "Betula",
+      "Björkar"
+    ]
+  },
+  "Q25350": {
+    "name": "ädelgranssläktet",
+    "aliases": [
+      "Abies",
+      "ädelgran",
+      "ädelgranar",
+      "ädelgransläktet"
+    ]
+  },
+  "Q25356": {
+    "name": "Poppelsläktet",
+    "aliases": [
+      "Poppel",
+      "Poppelsläkt",
+      "Popplar",
+      "Popplelsläktet",
+      "Populus fremontii"
+    ]
+  },
+  "Q25403": {
+    "name": "boksläktet",
+    "aliases": [
+      "Fagoideae",
+      "Fagus",
+      "bokar"
+    ]
+  },
+  "Q25618": {
+    "name": "Lärkträdssläktet",
+    "aliases": [
+      "Larix",
+      "Lärkar",
+      "Lärksläktet"
+    ]
+  },
+  "Q25662": {
+    "name": "ensläktet",
+    "aliases": [
+      "Enar",
+      "Enar (växter)",
+      "Enbär",
+      "Juniperus"
+    ]
+  },
+  "Q26782": {
+    "name": "Gransläktet",
+    "aliases": [
+      "Granar",
+      "Granar (växter)",
+      "Picea"
+    ]
+  },
+  "Q27355": {
+    "name": "idegranar",
+    "aliases": [
+      "Taxus"
+    ]
+  },
+  "Q29033": {
+    "name": "Judasträdssläktet",
+    "aliases": [
+      "Cercis",
+      "Siliquastrum"
+    ]
+  },
+  "Q36050": {
+    "name": "Videsläktet",
+    "aliases": [
+      "Pilar",
+      "Pil",
+      "Viden",
+      "Salix",
+      "Pilträd",
+      "Bandpil",
+      "Bandvide",
+      "Salix hybrider",
+      "Salixhybrider"
+    ]
+  },
+  "Q42292": {
+    "name": "Lönnsläktet",
+    "aliases": [
+      "Lönnar"
+    ]
+  },
+  "Q44789": {
+    "name": "mullbärssläktet",
+    "aliases": [
+      "Morus",
+      "mullbär",
+      "mullbärsträd"
+    ]
+  },
+  "Q45669": {
+    "name": "Eukalyptussläktet",
+    "aliases": [
+      "Eucalyptus",
+      "Eucalyptussläktet",
+      "Eukalyptus"
+    ]
+  },
+  "Q59798": {
+    "name": "Fikussläktet",
+    "aliases": [
+      "Ficus",
+      "Fikus",
+      "Fikusar"
+    ]
+  },
+  "Q104819": {
+    "name": "apelsläktet",
+    "aliases": [
+      "aplar",
+      "malus"
+    ]
+  },
+  "Q127849": {
+    "name": "Lindsläktet",
+    "aliases": [
+      "Lindar",
+      "Tilia",
+      "Kejsarlind"
+    ]
+  },
+  "Q128550": {
+    "name": "Cedersläktet",
+    "aliases": [
+      "Ceder",
+      "Cederträd",
+      "Cedrar",
+      "Cedrus"
+    ]
+  },
+  "Q128887": {
+    "name": "Asksläktet",
+    "aliases": [
+      "Askar"
+    ]
+  },
+  "Q129324": {
+    "name": "Kastanjesläktet",
+    "aliases": [
+      "Castanea"
+    ]
+  },
+  "Q131113": {
+    "name": "Almsläktet",
+    "aliases": [
+      "Ulmus",
+      "Almar",
+      "Almbark"
+    ]
+  },
+  "Q132557": {
+    "name": "Hagtornssläktet",
+    "aliases": [
+      "Crataegus",
+      "Hagtorn",
+      "Hagtornar"
+    ]
+  },
+  "Q145889": {
+    "name": "Hasslar",
+    "aliases": [
+      "Hasselsläktet"
+    ]
+  },
+  "Q146911": {
+    "name": "Cypress-släktet",
+    "aliases": [
+      "Cypress",
+      "Cupressus",
+      "Cypresser",
+      "Cypressläktet"
+    ]
+  },
+  "Q157017": {
+    "name": "magnoliasläktet",
+    "aliases": [
+      "magnoliaslöktet",
+      "magnolior"
+    ]
+  },
+  "Q157236": {
+    "name": "Tulpanträdssläktet",
+    "aliases": [
+      "Liriodendron",
+      "Tulpanträdsläktet"
+    ]
+  },
+  "Q157964": {
+    "name": "Rönnsläktet",
+    "aliases": [
+      "Oxlar",
+      "Rönnar",
+      "Sorbus"
+    ]
+  },
+  "Q158072": {
+    "name": "Katalpasläktet",
+    "aliases": [
+      "Catalpa",
+      "Katalpor"
+    ]
+  },
+  "Q158513": {
+    "name": "Avenbokssläktet",
+    "aliases": [
+      "Avenbokar",
+      "Carpinus"
+    ]
+  },
+  "Q158752": {
+    "name": "Hästkastanjesläktet",
+    "aliases": [
+      "Aesculus",
+      "Hästkastanjer"
+    ]
+  },
+  "Q158771": {
+    "name": "Douglasgranssläktet",
+    "aliases": [
+      "Douglasgransläktet",
+      "Oregon pine",
+      "Pseudotsuga"
+    ]
+  },
+  "Q159545": {
+    "name": "kornellsläktet",
+    "aliases": [
+      "Chamaepericlymenum",
+      "Cornus"
+    ]
+  },
+  "Q161250": {
+    "name": "Korstörnesläktet",
+    "aliases": [
+      "Gleditsia"
+    ]
+  },
+  "Q163025": {
+    "name": "Platansläktet",
+    "aliases": [
+      "Platan",
+      "Platanaceae",
+      "Plataner",
+      "Platanus",
+      "Platanväxter"
+    ]
+  },
+  "Q165173": {
+    "name": "Kejsarträdssläktet",
+    "aliases": [
+      "Kejsarträdsväxter"
+    ]
+  },
+  "Q190545": {
+    "name": "plommonsläktet",
+    "aliases": [
+      "Prunus",
+      "Prunusar"
+    ]
+  },
+  "Q248582": {
+    "name": "Bäralmssläktet",
+    "aliases": [
+      "Celtis"
+    ]
+  },
+  "Q296910": {
+    "name": "Olivsläktet",
+    "aliases": [
+      "Olea"
+    ]
+  },
+  "Q309213": {
+    "name": "Soforasläktet",
+    "aliases": [
+      "Sophora"
+    ]
+  },
+  "Q472943": {
+    "name": "Robinia",
+    "aliases": [
+      "Falsk akacia",
+      "Robinia pseudoacacia",
+      "Robiniasläktet"
+    ]
+  },
+  "Q605290": {
+    "name": "Humlebokssläktet",
+    "aliases": [
+      "Ostrya"
+    ]
+  },
+  "Q775229": {
+    "name": "Lagerströmiasläktet",
+    "aliases": [
+      "Lagerstroemia"
+    ]
+  },
+  "Q858028": {
+    "name": "Katsuror",
+    "aliases": [
+      "Cercidiphyllaceae",
+      "Cercidiphyllum",
+      "Katsuraväxter"
+    ]
+  },
+  "Q132402": {
+    "name": "Lithocarpus"
+  },
+  "Q132703": {
+    "name": "Kinesträdsläktet"
+  },
+  "Q137054": {
+    "name": "Chrysolepis"
+  },
+  "Q142788": {
+    "name": "Hickorysläktet"
+  },
+  "Q147791": {
+    "name": "Ädelcypress-släktet"
+  },
+  "Q157366": {
+    "name": "Perukbuskar"
+  },
+  "Q160580": {
+    "name": "Gudaträdssläktet"
+  },
+  "Q161042": {
+    "name": "Silverbusksläktet"
+  },
+  "Q165258": {
+    "name": "Diospyros"
+  },
+  "Q183543": {
+    "name": "Liquidambar"
+  },
+  "Q664945": {
+    "name": "Albiziasläktet"
+  },
+  "Q765246": {
+    "name": "Calocedrus"
+  },
+  "Q796117": {
+    "name": "Cyclobalanopsis"
+  },
+  "Q810562": {
+    "name": "Karpatiosorbus"
+  },
+  "Q964952": {
+    "name": "Nyssa"
+  },
+  "Q1065400": {
+    "name": "Castanopsis"
+  },
+  "Q1070845": {
+    "name": "Photinia"
+  },
+  "Q1420126": {
+    "name": "Vingnötssläktet"
+  },
+  "Q1975652": {
+    "name": "Sequoia"
+  },
+  "Q2453469": {
+    "name": "Valnötssläktet"
+  },
+  "Q2697430": {
+    "name": "Toona"
+  },
+  "Q3060383": {
+    "name": "Euodia"
+  },
+  "Q3366033": {
+    "name": "Papegojbuskar"
+  },
+  "Q5122903": {
+    "name": "kumquat"
+  },
+  "Q5220438": {
+    "name": "Trigonobalanus"
+  },
+  "Q434": {
+    "name": "päronsläktet"
+  },
+  "Q108071245": {
+    "name": "Berryophyllum"
+  }
+}

@@ -1,0 +1,2638 @@
+{
+  "Q76971": {
+    "name": "papírnyír",
+    "aliases": [
+      "Betula papyrifera"
+    ]
+  },
+  "Q623489": {
+    "name": "atlaszcédrus",
+    "aliases": [
+      "Cedrus atlantica",
+      "Cedrus libani atlantica"
+    ]
+  },
+  "Q628329": {
+    "name": "kalábriaifenyő",
+    "aliases": [
+      "ciprusifenyő",
+      "keleti aleppófenyő",
+      "törökfenyő",
+      "Pinus brutia"
+    ]
+  },
+  "Q630288": {
+    "name": "szürke dió",
+    "aliases": [
+      "Juglans cinerea",
+      "Vajdió"
+    ]
+  },
+  "Q106094": {
+    "name": "mandulafenyő",
+    "aliases": [
+      "Pinus pinea"
+    ]
+  },
+  "Q121427": {
+    "name": "henye boróka",
+    "aliases": [
+      "Juniperus horizontalis"
+    ]
+  },
+  "Q121749": {
+    "name": "kaukázusi szárnyasdió",
+    "aliases": [
+      "Pterocarya fraxinifolia"
+    ]
+  },
+  "Q159553": {
+    "name": "cseregalagonya",
+    "aliases": [
+      "Crataegus laevigata",
+      "kétbibés galagonya"
+    ]
+  },
+  "Q159565": {
+    "name": "kecskefűz",
+    "aliases": [
+      "Salix caprea"
+    ]
+  },
+  "Q22699": {
+    "name": "szelídgesztenye",
+    "aliases": [
+      "Castanea sativa",
+      "gesztenyefa",
+      "szelidgesztenye"
+    ]
+  },
+  "Q129018": {
+    "name": "kökény",
+    "aliases": [
+      "Prunus spinosa"
+    ]
+  },
+  "Q1399164": {
+    "name": "kaliforniai gyantásciprus",
+    "aliases": [
+      "Calocedrus decurrens"
+    ]
+  },
+  "Q1405636": {
+    "name": "banyánfa",
+    "aliases": [
+      "Ficus benghalensis",
+      "indiai füge"
+    ]
+  },
+  "Q1406355": {
+    "name": "kerek hikoridió",
+    "aliases": [
+      "Carya glabra"
+    ]
+  },
+  "Q1249099": {
+    "name": "hegyeslevelű liliomfa",
+    "aliases": [
+      "Magnolia acuminata"
+    ]
+  },
+  "Q1257409": {
+    "name": "Háromvirágú juhar",
+    "aliases": [
+      "Acer triflorum"
+    ]
+  },
+  "Q1283223": {
+    "name": "nemes jegenyefenyő",
+    "aliases": [
+      "Abies procera"
+    ]
+  },
+  "Q161040": {
+    "name": "fekete eperfa",
+    "aliases": [
+      "Morus nigra"
+    ]
+  },
+  "Q161070": {
+    "name": "Norfolk-szigeti araukária",
+    "aliases": [
+      "Araucaria heterophylla",
+      "Norfolk-szigeti fenyő",
+      "szobafenyő"
+    ]
+  },
+  "Q747652": {
+    "name": "himalájai selyemfenyő",
+    "aliases": [
+      "Pinus wallichiana"
+    ]
+  },
+  "Q748888": {
+    "name": "Monterey-fenyő",
+    "aliases": [
+      "Pinus radiata"
+    ]
+  },
+  "Q124969": {
+    "name": "európai mogyoró",
+    "aliases": [
+      "Corylus avellana",
+      "közönséges mogyoró"
+    ]
+  },
+  "Q128116": {
+    "name": "szürke luc",
+    "aliases": [
+      "kanadai szürke luc",
+      "Picea glauca"
+    ]
+  },
+  "Q1536353": {
+    "name": "nagyfogú nyár",
+    "aliases": [
+      "Populus grandidentata"
+    ]
+  },
+  "Q1543680": {
+    "name": "nyárlevelű nyír",
+    "aliases": [
+      "Betula populifolia"
+    ]
+  },
+  "Q1543749": {
+    "name": "keleti bükk",
+    "aliases": [
+      "Fagus orientalis"
+    ]
+  },
+  "Q1546541": {
+    "name": "mexikói fehérfenyő",
+    "aliases": [
+      "mexikói selyemfenyő",
+      "Pinus ayacahuite"
+    ]
+  },
+  "Q1585952": {
+    "name": "szír boróka",
+    "aliases": [
+      "Arceuthos drupacea",
+      "Juniperus drupacea"
+    ]
+  },
+  "Q1591053": {
+    "name": "fűzlevelű körte",
+    "aliases": [
+      "Pyrus salicifolia"
+    ]
+  },
+  "Q1631520": {
+    "name": "sárgástörzsű nyír",
+    "aliases": [
+      "Betula albosinensis",
+      "Betula utilis albosinensis"
+    ]
+  },
+  "Q26899": {
+    "name": "közönséges vadgesztenye",
+    "aliases": [
+      "Aesculus hippocastanum",
+      "bokrétafa",
+      "fehér vadgesztenye",
+      "vadgesztenye"
+    ]
+  },
+  "Q1290970": {
+    "name": "Leyland-ciprus",
+    "aliases": [
+      " × Cupressocyparis leylandii",
+      " × Cuprocyparis leylandii",
+      "Cupressus × leylandii"
+    ]
+  },
+  "Q1308561": {
+    "name": "mexikói ciprus",
+    "aliases": [
+      "Cupressus lusitanica"
+    ]
+  },
+  "Q1325491": {
+    "name": "Turner-tölgy",
+    "aliases": [
+      "Quercus × turneri"
+    ]
+  },
+  "Q1367533": {
+    "name": "komlógyertyán",
+    "aliases": [
+      "komlóbükk",
+      "Ostrya carpinifolia"
+    ]
+  },
+  "Q161166": {
+    "name": "kőrislevelű juhar",
+    "aliases": [
+      "Acer negundo"
+    ]
+  },
+  "Q161164": {
+    "name": "amerikai kőris",
+    "aliases": [
+      "Fraxinus pennsylvanica",
+      "vörös kőris"
+    ]
+  },
+  "Q133128": {
+    "name": "erdeifenyő",
+    "aliases": [
+      "Pinus sylvestris"
+    ]
+  },
+  "Q137053": {
+    "name": "durangói jegenyefenyő",
+    "aliases": [
+      "Abies durangensis"
+    ]
+  },
+  "Q142912": {
+    "name": "szálkáslevelű hárs",
+    "aliases": [
+      "Henry-hárs",
+      "Tilia henryana"
+    ]
+  },
+  "Q159839": {
+    "name": "hegyi gumifa",
+    "aliases": [
+      "Eucalyptus dalrympleana"
+    ]
+  },
+  "Q160019": {
+    "name": "törpe mandula",
+    "aliases": [
+      "Prunus tenella"
+    ]
+  },
+  "Q160576": {
+    "name": "szobafikusz",
+    "aliases": [
+      "Ficus elastica"
+    ]
+  },
+  "Q159570": {
+    "name": "mirigyes bálványfa",
+    "aliases": [
+      "Ailanthus altissima",
+      "bálványfa"
+    ]
+  },
+  "Q159620": {
+    "name": "sárga vadgesztenye",
+    "aliases": [
+      "Aesculus flava"
+    ]
+  },
+  "Q1442846": {
+    "name": "japán luc",
+    "aliases": [
+      "Picea torano"
+    ]
+  },
+  "Q1451343": {
+    "name": "Fraser-jegenyefenyő",
+    "aliases": [
+      "Abies fraseri",
+      "Allegheny-jegenyefenyő"
+    ]
+  },
+  "Q1465334": {
+    "name": "kétszínű luc",
+    "aliases": [
+      "Picea alcoquiana",
+      "Picea bicolor"
+    ]
+  },
+  "Q1499241": {
+    "name": "sárga nyír",
+    "aliases": [
+      "Betula alleghaniensis"
+    ]
+  },
+  "Q1510231": {
+    "name": "fekete nyír",
+    "aliases": [
+      "Betula nigra"
+    ]
+  },
+  "Q26325": {
+    "name": "közönséges boróka",
+    "aliases": [
+      "Juniperus communis"
+    ]
+  },
+  "Q754765": {
+    "name": "szibériai vörösfenyő",
+    "aliases": [
+      "Larix sibirica"
+    ]
+  },
+  "Q756191": {
+    "name": "kanári fenyő",
+    "aliases": [
+      "Pinus canariensis"
+    ]
+  },
+  "Q756334": {
+    "name": "dauriai vörösfenyő",
+    "aliases": [
+      "Larix gmelinii"
+    ]
+  },
+  "Q131517": {
+    "name": "meggy",
+    "aliases": [
+      "Prunus cerasus"
+    ]
+  },
+  "Q761480": {
+    "name": "Fehértörzsű fenyő",
+    "aliases": [
+      "Pinus albicaulis"
+    ]
+  },
+  "Q762435": {
+    "name": "Füzéres juhar",
+    "aliases": [
+      "Acer spicatum"
+    ]
+  },
+  "Q766133": {
+    "name": "pontusi juhar",
+    "aliases": [
+      "Acer cappadocicum"
+    ]
+  },
+  "Q783224": {
+    "name": "fűzlevelű tölgy",
+    "aliases": [
+      "Quercus phellos"
+    ]
+  },
+  "Q806838": {
+    "name": "Banks-fenyő",
+    "aliases": [
+      "Pinus banksiana"
+    ]
+  },
+  "Q161253": {
+    "name": "amerikai mocsártölgy",
+    "aliases": [
+      "Quercus palustris"
+    ]
+  },
+  "Q161360": {
+    "name": "oregoni hamisciprus",
+    "aliases": [
+      "Chamaecyparis lawsoniana"
+    ]
+  },
+  "Q638095": {
+    "name": "Kanári-tölgy",
+    "aliases": [
+      "Quercus canariensis"
+    ]
+  },
+  "Q657935": {
+    "name": "közép-kínai juhar",
+    "aliases": [
+      "Acer davidii"
+    ]
+  },
+  "Q658749": {
+    "name": "kúszó boróka",
+    "aliases": [
+      "Juniperus procumbens"
+    ]
+  },
+  "Q670040": {
+    "name": "arizonai ciprus",
+    "aliases": [
+      "Cupressus arizonica"
+    ]
+  },
+  "Q674096": {
+    "name": "sarki fűz",
+    "aliases": [
+      "Salix arctica"
+    ]
+  },
+  "Q683819": {
+    "name": "pontuszi tölgy",
+    "aliases": [
+      "pontusi tölgy",
+      "Quercus pontica"
+    ]
+  },
+  "Q699584": {
+    "name": "kínai gesztenye",
+    "aliases": [
+      "Castanea mollissima"
+    ]
+  },
+  "Q745228": {
+    "name": "fekete galagonya",
+    "aliases": [
+      "Crataegus nigra"
+    ]
+  },
+  "Q161105": {
+    "name": "keleti platán",
+    "aliases": [
+      "Platanus orientalis"
+    ]
+  },
+  "Q161116": {
+    "name": "nagyvirágú liliomfa",
+    "aliases": [
+      "örökzöld liliomfa"
+    ]
+  },
+  "Q36146": {
+    "name": "közönséges füge",
+    "aliases": [
+      "Ficus carica",
+      "fügefa"
+    ]
+  },
+  "Q1640268": {
+    "name": "Montezuma-fenyő",
+    "aliases": [
+      "Pinus montezumae"
+    ]
+  },
+  "Q1723511": {
+    "name": "kanadai tiszafa",
+    "aliases": [
+      "Taxus canadensis"
+    ]
+  },
+  "Q1768635": {
+    "name": "törpe boróka",
+    "aliases": [
+      "Juniperus squamata"
+    ]
+  },
+  "Q1801446": {
+    "name": "Csöves mogyoró",
+    "aliases": [
+      "Corylus maxima"
+    ]
+  },
+  "Q3206440": {
+    "name": "Magnolia × loebneri",
+    "aliases": [
+      "Loebner-liliomfa"
+    ]
+  },
+  "Q3919027": {
+    "name": "mangó",
+    "aliases": [
+      "Mangifera indica"
+    ]
+  },
+  "Q750217": {
+    "name": "szikomorfa",
+    "aliases": [
+      "Ficus sycomorus",
+      "szikomorfüge"
+    ]
+  },
+  "Q161374": {
+    "name": "közönséges platán",
+    "aliases": [
+      "juharlevelű platán"
+    ]
+  },
+  "Q852262": {
+    "name": "szibériai jegenyefenyő",
+    "aliases": [
+      "Abies sibirica"
+    ]
+  },
+  "Q852572": {
+    "name": "fekete dió",
+    "aliases": [
+      "Juglans nigra"
+    ]
+  },
+  "Q854714": {
+    "name": "bíbor tölgy",
+    "aliases": [
+      "Quercus coccinea",
+      "skarlát tölgy",
+      "szabdaltlevelű vöröstölgy"
+    ]
+  },
+  "Q26745": {
+    "name": "korai juhar",
+    "aliases": [
+      "Acer platanoides",
+      "platánlevelű juhar"
+    ]
+  },
+  "Q161416": {
+    "name": "veresgyűrű som",
+    "aliases": [
+      "Cornus sanguinea"
+    ]
+  },
+  "Q161421": {
+    "name": "virágos kőris",
+    "aliases": [
+      "Fraxinus ornus",
+      "mannakőris"
+    ]
+  },
+  "Q161435": {
+    "name": "japán gyertyán",
+    "aliases": [
+      "Carpinus japonica"
+    ]
+  },
+  "Q39918": {
+    "name": "mandula",
+    "aliases": [
+      "Amygdalus communis",
+      "édesmandula",
+      "keserűmandula",
+      "Prunus amygdalus"
+    ]
+  },
+  "Q29488": {
+    "name": "közönséges júdásfa",
+    "aliases": [
+      "Cercis siliquastrum"
+    ]
+  },
+  "Q145992": {
+    "name": "közönséges lucfenyő",
+    "aliases": [
+      "Picea abies"
+    ]
+  },
+  "Q145939": {
+    "name": "Kolorádói jegenyefenyő",
+    "aliases": [
+      "Abies concolor"
+    ]
+  },
+  "Q145954": {
+    "name": "feketefenyő",
+    "aliases": [
+      "Pinus nigra"
+    ]
+  },
+  "Q5279626": {
+    "name": "ceyloni ében",
+    "aliases": [
+      "Diospyros ebenum"
+    ]
+  },
+  "Q6117332": {
+    "name": "fűrészes fűz",
+    "aliases": [
+      "Salix breviserrata"
+    ]
+  },
+  "Q6292155": {
+    "name": "oszloptiszafa",
+    "aliases": [
+      "Taxus x media"
+    ]
+  },
+  "Q15238210": {
+    "name": "kínai hikoridió",
+    "aliases": [
+      "Carya cathayensis"
+    ]
+  },
+  "Q10877943": {
+    "name": "babérhárslevelű tölgy",
+    "aliases": [
+      "Quercus phillyreoides"
+    ]
+  },
+  "Q6712609": {
+    "name": "szíriai körte",
+    "aliases": [
+      "Pyrus syriaca"
+    ]
+  },
+  "Q7263800": {
+    "name": "vastaggallyú körte",
+    "aliases": [
+      "gyapjaskörte",
+      "Pyrus nivalis"
+    ]
+  },
+  "Q839507": {
+    "name": "csillagvirágú liliomfa",
+    "aliases": [
+      "Magnolia stellata"
+    ]
+  },
+  "Q844835": {
+    "name": "bugás csörgőfa",
+    "aliases": [
+      "csörgőfa",
+      "Koelreuteria paniculata"
+    ]
+  },
+  "Q845791": {
+    "name": "lantlevelű tölgy",
+    "aliases": [
+      "Quercus marilandica"
+    ]
+  },
+  "Q849381": {
+    "name": "andalúziai jegenyefenyő",
+    "aliases": [
+      "Abies pinsapo"
+    ]
+  },
+  "Q41350": {
+    "name": "grépfrút",
+    "aliases": [
+      "citrancs",
+      "Citrus × paradisi",
+      "Citrus decumana",
+      "Citrus paradisi",
+      "Citrus x paradisi",
+      "Grape Fruit",
+      "grapefruit"
+    ]
+  },
+  "Q1818806": {
+    "name": "vörös éger",
+    "aliases": [
+      "Alnus rubra"
+    ]
+  },
+  "Q1834639": {
+    "name": "kanyonciprus",
+    "aliases": [
+      "Cupressus glabra"
+    ]
+  },
+  "Q1859063": {
+    "name": "illatos liliomfa",
+    "aliases": [
+      "Magnolia virginiana",
+      "virginiai magnólia"
+    ]
+  },
+  "Q2452407": {
+    "name": "kanadai júdásfa",
+    "aliases": [
+      "Cercis canadensis"
+    ]
+  },
+  "Q2600501": {
+    "name": "Keresztkaréjú tölgy",
+    "aliases": [
+      "Quercus stellata"
+    ]
+  },
+  "Q2601238": {
+    "name": "fehér hikoridió",
+    "aliases": [
+      "Caria alba",
+      "Carya ovata",
+      "foszlós kérgű hikoridió"
+    ]
+  },
+  "Q146025": {
+    "name": "szúrós luc",
+    "aliases": [
+      "Picea pungens"
+    ]
+  },
+  "Q146048": {
+    "name": "európai vörösfenyő",
+    "aliases": [
+      "közönséges vörösfenyő",
+      "Larix decidua"
+    ]
+  },
+  "Q165091": {
+    "name": "csavarttűjű fenyő",
+    "aliases": [
+      "Pinus contorta"
+    ]
+  },
+  "Q147064": {
+    "name": "fekete nyár",
+    "aliases": [
+      "Populus nigra"
+    ]
+  },
+  "Q165321": {
+    "name": "japáncseresznye",
+    "aliases": [
+      "Cerasus serrulata",
+      "Prunus serrulata"
+    ]
+  },
+  "Q838963": {
+    "name": "japán körte",
+    "aliases": [
+      "Pyrus pyrifolia"
+    ]
+  },
+  "Q39708": {
+    "name": "csigolyafűz",
+    "aliases": [
+      "bíborfűz"
+    ]
+  },
+  "Q146198": {
+    "name": "madárberkenye",
+    "aliases": [
+      "Sorbus aucuparia"
+    ]
+  },
+  "Q1066116": {
+    "name": "sallangoslevelű tölgy",
+    "aliases": [
+      "Quercus falcata"
+    ]
+  },
+  "Q1070125": {
+    "name": "Santa Lucia-hegységi jegenyefenyő",
+    "aliases": [
+      "Abies bracteata"
+    ]
+  },
+  "Q1073968": {
+    "name": "kínai táblásfenyő",
+    "aliases": [
+      "Pinus tabuliformis"
+    ]
+  },
+  "Q1074099": {
+    "name": "kínai szil",
+    "aliases": [
+      "Ulmus parvifolia"
+    ]
+  },
+  "Q1074257": {
+    "name": "kínai tulipánfa",
+    "aliases": [
+      "Liriodendron chinense"
+    ]
+  },
+  "Q974954": {
+    "name": "Kilíkiai jegenyefenyő",
+    "aliases": [
+      "Abies cilicica"
+    ]
+  },
+  "Q990982": {
+    "name": "ernyős liliomfa",
+    "aliases": [
+      "Magnolia tripetala"
+    ]
+  },
+  "Q1007442": {
+    "name": "Galagonyalevelű juhar",
+    "aliases": [
+      "Acer crataegifolium"
+    ]
+  },
+  "Q1010050": {
+    "name": "gesztenyelevelű tölgy",
+    "aliases": [
+      "Quercus castaneifolia"
+    ]
+  },
+  "Q1034503": {
+    "name": "havasi szürke fűz",
+    "aliases": [
+      "Salix glaucosericea"
+    ]
+  },
+  "Q1034859": {
+    "name": "hegyeslevelű tölgy",
+    "aliases": [
+      "Quercus acutissima"
+    ]
+  },
+  "Q161511": {
+    "name": "egybibés galagonya",
+    "aliases": [
+      "Crataegus monogyna"
+    ]
+  },
+  "Q161415": {
+    "name": "molyhos tölgy",
+    "aliases": [
+      "Quercus pubescens"
+    ]
+  },
+  "Q165137": {
+    "name": "vadcseresznye",
+    "aliases": [
+      "madárcseresznye",
+      "Prunus avium"
+    ]
+  },
+  "Q163831": {
+    "name": "szívlevelű szivarfa",
+    "aliases": [
+      "Catalpa bignonioides",
+      "szívlevelű trombitafa"
+    ]
+  },
+  "Q163978": {
+    "name": "Alnus viridis",
+    "aliases": [
+      "havasi éger"
+    ]
+  },
+  "Q163981": {
+    "name": "amerikai hárs",
+    "aliases": [
+      "Tilia americana"
+    ]
+  },
+  "Q164356": {
+    "name": "havasi fűz",
+    "aliases": [
+      "Salix alpina"
+    ]
+  },
+  "Q917216": {
+    "name": "kasmíri ciprus",
+    "aliases": [
+      "bhutáni ciprus",
+      "Cupressus cashmeriana"
+    ]
+  },
+  "Q930814": {
+    "name": "himalájai nyír",
+    "aliases": [
+      "Betula utilis"
+    ]
+  },
+  "Q936498": {
+    "name": "Szitka jegenyefenyő",
+    "aliases": [
+      "Abies amabilis"
+    ]
+  },
+  "Q936888": {
+    "name": "bozontos fenyő",
+    "aliases": [
+      "Pinus aristata"
+    ]
+  },
+  "Q43284": {
+    "name": "páfrányfenyő",
+    "aliases": [
+      "Gingko biloba",
+      "Ginkgo biloba"
+    ]
+  },
+  "Q146021": {
+    "name": "balkáni selyemfenyő",
+    "aliases": [
+      "Pinus peuce"
+    ]
+  },
+  "Q163788": {
+    "name": "tasmániai havasi eukaliptusz",
+    "aliases": [
+      "Eucalyptus gunnii"
+    ]
+  },
+  "Q163822": {
+    "name": "opáljuhar",
+    "aliases": [
+      "Acer opalus"
+    ]
+  },
+  "Q37083": {
+    "name": "olajfa",
+    "aliases": [
+      "európai olajfa",
+      "Olea europaea",
+      "oliva"
+    ]
+  },
+  "Q146992": {
+    "name": "közönséges jegenyefenyő",
+    "aliases": [
+      "Abies alba"
+    ]
+  },
+  "Q165387": {
+    "name": "sziklás-hegységi szürke luc",
+    "aliases": [
+      "Picea engelmannii"
+    ]
+  },
+  "Q165424": {
+    "name": "zelnicemeggy",
+    "aliases": [
+      "Prunus padus"
+    ]
+  },
+  "Q890824": {
+    "name": "kaliforniai dió",
+    "aliases": [
+      "Juglans californica"
+    ]
+  },
+  "Q894236": {
+    "name": "Rózsás akác",
+    "aliases": [
+      "Robinia hispida"
+    ]
+  },
+  "Q899686": {
+    "name": "pireneusi tölgy",
+    "aliases": [
+      "Quercus pyrenaica"
+    ]
+  },
+  "Q917187": {
+    "name": "hinoki hamisciprus",
+    "aliases": [
+      "Chamaecyparis obtusa"
+    ]
+  },
+  "Q162728": {
+    "name": "tatár juhar",
+    "aliases": [
+      "Acer tataricum"
+    ]
+  },
+  "Q146951": {
+    "name": "cseresznyeszilva",
+    "aliases": [
+      "Prunus cerasifera"
+    ]
+  },
+  "Q146149": {
+    "name": "európai bükk",
+    "aliases": [
+      "Fagus sylvatica",
+      "közönséges bükk"
+    ]
+  },
+  "Q1137001": {
+    "name": "óriástobozú fenyő",
+    "aliases": [
+      "Pinus coulteri"
+    ]
+  },
+  "Q1137183": {
+    "name": "Monterey-ciprus",
+    "aliases": [
+      "Cupressus macrocarpa"
+    ]
+  },
+  "Q41505": {
+    "name": "japánnaspolya",
+    "aliases": [
+      "Eriobotrya japonica"
+    ]
+  },
+  "Q37453": {
+    "name": "kajszibarack",
+    "aliases": [
+      "Armeniaca vulgaris",
+      "kajszi",
+      "kajszin",
+      "Prunus armeniaca",
+      "sárgabarack"
+    ]
+  },
+  "Q42385": {
+    "name": "kakaó",
+    "aliases": [
+      "kakaófa",
+      "Theobroma cacao"
+    ]
+  },
+  "Q47161": {
+    "name": "vadalma",
+    "aliases": [
+      "Malus sylvestris"
+    ]
+  },
+  "Q46871": {
+    "name": "közönséges dió",
+    "aliases": [
+      "Juglans regia"
+    ]
+  },
+  "Q211457": {
+    "name": "aleppóifenyő",
+    "aliases": [
+      "Aleppó-fenyő",
+      "aleppói fenyő",
+      "Pinus halepensis"
+    ]
+  },
+  "Q214733": {
+    "name": "cukorjuhar",
+    "aliases": [
+      "Acer saccharum"
+    ]
+  },
+  "Q5047667": {
+    "name": "bozót-hikori",
+    "aliases": [
+      "Carya floridana"
+    ]
+  },
+  "Q5047664": {
+    "name": "vízi hikoridió",
+    "aliases": [
+      "Carya aquatica"
+    ]
+  },
+  "Q5047670": {
+    "name": "texasi hikoridió",
+    "aliases": [
+      "Carya texana"
+    ]
+  },
+  "Q5047669": {
+    "name": "szerecsendió-hikori",
+    "aliases": [
+      "Carya myristiciformis"
+    ]
+  },
+  "Q5047673": {
+    "name": "nemezes hikoridió",
+    "aliases": [
+      "Carya tomentosa"
+    ]
+  },
+  "Q1144815": {
+    "name": "japán tiszafa",
+    "aliases": [
+      "Taxus cuspidata"
+    ]
+  },
+  "Q1145286": {
+    "name": "kaukázusi luc",
+    "aliases": [
+      "Picea orientalis"
+    ]
+  },
+  "Q1148692": {
+    "name": "kínai selyemvirágfa",
+    "aliases": [
+      "kínai selyemmirtusz",
+      "Lagerstroemia indica"
+    ]
+  },
+  "Q4215101": {
+    "name": "héjas kérgű hikoridió",
+    "aliases": [
+      "Carya laciniosa"
+    ]
+  },
+  "Q1036491": {
+    "name": "himalájai jegenyefenyő",
+    "aliases": [
+      "Abies pindrow"
+    ]
+  },
+  "Q1038027": {
+    "name": "szívlevelű gyertyán",
+    "aliases": [
+      "Carpinus cordata"
+    ]
+  },
+  "Q1038831": {
+    "name": "Nikkói juhar",
+    "aliases": [
+      "Acer maximowiczianum"
+    ]
+  },
+  "Q1042288": {
+    "name": "hasznos liliomfa",
+    "aliases": [
+      "Magnolia officinalis"
+    ]
+  },
+  "Q1044186": {
+    "name": "japán erdeifenyő",
+    "aliases": [
+      "Pinus densiflora",
+      "vöröskérgű fenyő"
+    ]
+  },
+  "Q165145": {
+    "name": "kocsányos tölgy",
+    "aliases": [
+      "Quercus robur"
+    ]
+  },
+  "Q61105": {
+    "name": "libanoni cédrus",
+    "aliases": [
+      "Cedrus libani"
+    ]
+  },
+  "Q184300": {
+    "name": "vörös boróka",
+    "aliases": [
+      "Juniperus oxycedrus"
+    ]
+  },
+  "Q192608": {
+    "name": "paráskérgű tölgy",
+    "aliases": [
+      "Quercus variabilis"
+    ]
+  },
+  "Q203985": {
+    "name": "szürke juhar",
+    "aliases": [
+      "Acer griseum",
+      "papírkérgű juhar"
+    ]
+  },
+  "Q146110": {
+    "name": "rezgő nyár",
+    "aliases": [
+      "eurázsiai nyár",
+      "közönséges nyár",
+      "Populus tremula"
+    ]
+  },
+  "Q149269": {
+    "name": "vörösvirágú juhar",
+    "aliases": [
+      "Acer japonicum"
+    ]
+  },
+  "Q149327": {
+    "name": "makedón jegenyefenyő",
+    "aliases": [
+      "Abies borisii-regis"
+    ]
+  },
+  "Q149332": {
+    "name": "vadkörte",
+    "aliases": [
+      "Pyrus pyraster",
+      "vackor"
+    ]
+  },
+  "Q149553": {
+    "name": "szürke nyár",
+    "aliases": [
+      "Populus x canescens"
+    ]
+  },
+  "Q147487": {
+    "name": "mezei szil",
+    "aliases": [
+      "Ulmus minor"
+    ]
+  },
+  "Q43300": {
+    "name": "birs",
+    "aliases": [
+      "birsalma",
+      "birskörte",
+      "Cydonia oblonga"
+    ]
+  },
+  "Q147525": {
+    "name": "vörös tölgy",
+    "aliases": [
+      "amerikai tölgy",
+      "amerikai vöröstölgy",
+      "Quercus borealis"
+    ]
+  },
+  "Q147824": {
+    "name": "szerb luc",
+    "aliases": [
+      "Picea omorika"
+    ]
+  },
+  "Q147388": {
+    "name": "japánciprus",
+    "aliases": [
+      "Cryptomeria japonica"
+    ]
+  },
+  "Q147426": {
+    "name": "szitka luc",
+    "aliases": [
+      "Picea sitchensis"
+    ]
+  },
+  "Q460531": {
+    "name": "balkáni páncélfenyő",
+    "aliases": [
+      "Pinus leucodermis"
+    ]
+  },
+  "Q468664": {
+    "name": "amerikai gyertyán",
+    "aliases": [
+      "Carpinus caroliniana"
+    ]
+  },
+  "Q941891": {
+    "name": "háromerű juhar",
+    "aliases": [
+      "Acer buergerianum"
+    ]
+  },
+  "Q942031": {
+    "name": "kínai liliomfa",
+    "aliases": [
+      "bíbor liliomfa",
+      "Magnolia liliiflora"
+    ]
+  },
+  "Q942409": {
+    "name": "japán liliomfa",
+    "aliases": [
+      "fehér liliomfa"
+    ]
+  },
+  "Q958336": {
+    "name": "jünnani dió",
+    "aliases": [
+      "Juglans sigillata"
+    ]
+  },
+  "Q959738": {
+    "name": "afrikai szilvafa",
+    "aliases": [
+      "Prunus africana"
+    ]
+  },
+  "Q275160": {
+    "name": "kislevelű fikusz",
+    "aliases": [
+      "csüngőágú fikusz",
+      "Ficus benjamina"
+    ]
+  },
+  "Q284462": {
+    "name": "gyertyánlevelű juhar",
+    "aliases": [
+      "Acer carpinifolium"
+    ]
+  },
+  "Q285587": {
+    "name": "amerikai berkenye",
+    "aliases": [
+      "Sorbus americana"
+    ]
+  },
+  "Q285744": {
+    "name": "rőterű juhar",
+    "aliases": [
+      "Acer rufinerve"
+    ]
+  },
+  "Q288558": {
+    "name": "közönséges pagodafa",
+    "aliases": [
+      "japánakác",
+      "Sophora japonica",
+      "Styphnolobium japonicum"
+    ]
+  },
+  "Q301636": {
+    "name": "koreai cirbolya",
+    "aliases": [
+      "Pinus koraiensis"
+    ]
+  },
+  "Q15246628": {
+    "name": "hunani hikoridió",
+    "aliases": [
+      "Carya hunanensis"
+    ]
+  },
+  "Q15250408": {
+    "name": "tonkini dió",
+    "aliases": [
+      "Carya tonkinensis"
+    ]
+  },
+  "Q15287726": {
+    "name": "Acer cappadocicum lobelii",
+    "aliases": [
+      "Acer lobelii"
+    ]
+  },
+  "Q15341609": {
+    "name": "Fekete datolyaszilva",
+    "aliases": [
+      "Diospyros dygina",
+      "Diospyros nigra"
+    ]
+  },
+  "Q15376540": {
+    "name": "halvány hikoridió",
+    "aliases": [
+      "Carya pallida"
+    ]
+  },
+  "Q15376656": {
+    "name": "mexikói hikoridió",
+    "aliases": [
+      "Carya palmeri"
+    ]
+  },
+  "Q15634290": {
+    "name": "tűzvörös juhar",
+    "aliases": [
+      "Acer ginnala",
+      "tűzjuhar"
+    ]
+  },
+  "Q334697": {
+    "name": "galambfa",
+    "aliases": [
+      "Davidia involucrata",
+      "Zsebkendőfa"
+    ]
+  },
+  "Q376648": {
+    "name": "perzsa juhar",
+    "aliases": [
+      "Acer velutinum"
+    ]
+  },
+  "Q390100": {
+    "name": "koreai jegenyefenyő",
+    "aliases": [
+      "Abies koreana"
+    ]
+  },
+  "Q428023": {
+    "name": "balzsamfenyő",
+    "aliases": [
+      "Abies balsamea",
+      "balzsamos jegenyefenyő"
+    ]
+  },
+  "Q460523": {
+    "name": "amerikai sárgafenyő",
+    "aliases": [
+      "Pinus ponderosa"
+    ]
+  },
+  "Q147439": {
+    "name": "japán vörösfenyő",
+    "aliases": [
+      "Larix kaempferi"
+    ]
+  },
+  "Q147459": {
+    "name": "barkócaberkenye",
+    "aliases": [
+      "Sorbus torminalis"
+    ]
+  },
+  "Q170662": {
+    "name": "mangosztán",
+    "aliases": [
+      "fanyar mangosztán",
+      "királygyümölcs",
+      "mangosteen",
+      "Garcinia mangostana",
+      "ázsiai mangosztán"
+    ]
+  },
+  "Q178116": {
+    "name": "japán selyemfenyő",
+    "aliases": [
+      "Pinus parviflora"
+    ]
+  },
+  "Q150129": {
+    "name": "tengerparti mamutfenyő",
+    "aliases": [
+      "örökzöld mamutfenyő",
+      "parti mamutfenyő",
+      "Sequoia sempervirens"
+    ]
+  },
+  "Q149622": {
+    "name": "kanadai nyár",
+    "aliases": [
+      "Populus × canadensis"
+    ]
+  },
+  "Q149709": {
+    "name": "nyugat-kínai szomorú ciprus",
+    "aliases": [
+      "Cupressus funebris",
+      "Cupressus pendula"
+    ]
+  },
+  "Q148939": {
+    "name": "török mogyoró",
+    "aliases": [
+      "Corylus colurna",
+      "törökmogyoró"
+    ]
+  },
+  "Q149219": {
+    "name": "amerikai bükk",
+    "aliases": [
+      "Fagus grandifolia"
+    ]
+  },
+  "Q147278": {
+    "name": "havasi cirbolyafenyő",
+    "aliases": [
+      "Pinus cembra"
+    ]
+  },
+  "Q854884": {
+    "name": "japán feketefenyő",
+    "aliases": [
+      "Pinus thunbergii"
+    ]
+  },
+  "Q854892": {
+    "name": "görög jegenyefenyő",
+    "aliases": [
+      "Abies cephalonica"
+    ]
+  },
+  "Q866150": {
+    "name": "püspökfenyő",
+    "aliases": [
+      "Pinus muricata"
+    ]
+  },
+  "Q879016": {
+    "name": "keserű hikoridió",
+    "aliases": [
+      "Carya cordiformis"
+    ]
+  },
+  "Q156137": {
+    "name": "paratölgy",
+    "aliases": [
+      "Quercus suber"
+    ]
+  },
+  "Q1151932": {
+    "name": "szahalini luc",
+    "aliases": [
+      "Picea glehnii"
+    ]
+  },
+  "Q1190312": {
+    "name": "pennsylvaniai juhar",
+    "aliases": [
+      "Acer pensylvanicum"
+    ]
+  },
+  "Q146935": {
+    "name": "himalájai cédrus",
+    "aliases": [
+      "Cedrus deodara"
+    ]
+  },
+  "Q168335": {
+    "name": "fejecskés som",
+    "aliases": [
+      "Cornus capitata",
+      "himalájai som"
+    ]
+  },
+  "Q518949": {
+    "name": "keskenylevelű kőris",
+    "aliases": [
+      "Fraxinus angustifolia"
+    ]
+  },
+  "Q526549": {
+    "name": "kacurafa",
+    "aliases": [
+      "Cercidiphyllum japonicum"
+    ]
+  },
+  "Q528713": {
+    "name": "zsindelyes tölgy",
+    "aliases": [
+      "Quercus imbricaria"
+    ]
+  },
+  "Q533674": {
+    "name": "oregoni boróka",
+    "aliases": [
+      "Juniperus scopulorum"
+    ]
+  },
+  "Q540646": {
+    "name": "kaliforniai vadgesztenye",
+    "aliases": [
+      "Aesculus californica"
+    ]
+  },
+  "Q546069": {
+    "name": "fűzlevelű liliomfa",
+    "aliases": [
+      "Magnolia salicifolia"
+    ]
+  },
+  "Q568923": {
+    "name": "szőlőlevelű juhar",
+    "aliases": [
+      "Acer circinatum"
+    ]
+  },
+  "Q573132": {
+    "name": "indiai vadgesztenye",
+    "aliases": [
+      "Aesculus indica"
+    ]
+  },
+  "Q576585": {
+    "name": "nyugati vörösfenyő",
+    "aliases": [
+      "Larix occidentalis"
+    ]
+  },
+  "Q583885": {
+    "name": "egylevelű fenyő",
+    "aliases": [
+      "Pinus monophylla"
+    ]
+  },
+  "Q146281": {
+    "name": "nemes körte",
+    "aliases": [
+      "Pyrus communis"
+    ]
+  },
+  "Q333877": {
+    "name": "pekándió",
+    "aliases": [
+      "Carya illinoinensis"
+    ]
+  },
+  "Q147475": {
+    "name": "havasi törpefenyő",
+    "aliases": [
+      "Pinus mugo"
+    ]
+  },
+  "Q220715": {
+    "name": "kereklevelű magyaltölgy",
+    "aliases": [
+      "Quercus ilex subsp. rotundifolia",
+      "Quercus rotundifolia"
+    ]
+  },
+  "Q220777": {
+    "name": "nagyvirágú som",
+    "aliases": [
+      "Cornus nuttallii"
+    ]
+  },
+  "Q227763": {
+    "name": "cukornyír",
+    "aliases": [
+      "Betula lenta"
+    ]
+  },
+  "Q241698": {
+    "name": "szúróslevelű tölgy",
+    "aliases": [
+      "Quercus ellipsoidalis"
+    ]
+  },
+  "Q243964": {
+    "name": "törpe cirbolya",
+    "aliases": [
+      "Pinus pumila"
+    ]
+  },
+  "Q251370": {
+    "name": "nagytobozú sárgafenyő",
+    "aliases": [
+      "Pinus jeffreyi"
+    ]
+  },
+  "Q269224": {
+    "name": "ujjas juhar",
+    "aliases": [
+      "Acer palmatum",
+      "legyezőlevelű juhar"
+    ]
+  },
+  "Q156895": {
+    "name": "közönséges nyír",
+    "aliases": [
+      "Betula pendula",
+      "bibircses nyír"
+    ]
+  },
+  "Q156687": {
+    "name": "amerikai duglászfenyő",
+    "aliases": [
+      "Pseudotsuga menziesii"
+    ]
+  },
+  "Q1089472": {
+    "name": "parókás juhar",
+    "aliases": [
+      "Acer capillipes"
+    ]
+  },
+  "Q1093540": {
+    "name": "nagylevelű liliomfa",
+    "aliases": [
+      "Magnolia macrophylla"
+    ]
+  },
+  "Q1105707": {
+    "name": "kaukázusi tölgy",
+    "aliases": [
+      "Quercus macranthera"
+    ]
+  },
+  "Q1116374": {
+    "name": "simatűjű szálkásfenyő",
+    "aliases": [
+      "Pinus longaeva"
+    ]
+  },
+  "Q1135236": {
+    "name": "durián",
+    "aliases": [
+      "Durio zibethinus"
+    ]
+  },
+  "Q44120": {
+    "name": "nemes szilva",
+    "aliases": [
+      "európai szilva",
+      "Prunus domestica",
+      "szilva",
+      "szilvafa"
+    ]
+  },
+  "Q271582": {
+    "name": "tengerparti fenyő",
+    "aliases": [
+      "Pinus pinaster"
+    ]
+  },
+  "Q156944": {
+    "name": "hegyi juhar",
+    "aliases": [
+      "Acer pseudoplatanus"
+    ]
+  },
+  "Q156904": {
+    "name": "mézgás éger",
+    "aliases": [
+      "Alnus glutinosa"
+    ]
+  },
+  "Q469555": {
+    "name": "fehér tölgy",
+    "aliases": [
+      "Quercus alba"
+    ]
+  },
+  "Q469576": {
+    "name": "amerikai rezgő nyár",
+    "aliases": [
+      "Populus tremuloides"
+    ]
+  },
+  "Q469652": {
+    "name": "amerikai ámbrafa",
+    "aliases": [
+      "Liquidambar styraciflua"
+    ]
+  },
+  "Q41521693": {
+    "name": "Gánti berkenye",
+    "aliases": [
+      "Karpatiosorbus dracofolia",
+      "Sorbus dracofolia",
+      "Sorbus dracofolius"
+    ]
+  },
+  "Q157230": {
+    "name": "simafenyő",
+    "aliases": [
+      "Pinus strobus"
+    ]
+  },
+  "Q157277": {
+    "name": "csertölgy",
+    "aliases": [
+      "cserfa",
+      "Quercus cerris"
+    ]
+  },
+  "Q1074872": {
+    "name": "tarkakérgű fenyő",
+    "aliases": [
+      "Pinus bungeana"
+    ]
+  },
+  "Q1079824": {
+    "name": "szibériai szil",
+    "aliases": [
+      "Ulmus pumila"
+    ]
+  },
+  "Q1082365": {
+    "name": "nagylevelű tölgy",
+    "aliases": [
+      "nagymakkú tölgy",
+      "Quercus macrocarpa"
+    ]
+  },
+  "Q1088271": {
+    "name": "keleti gyertyán",
+    "aliases": [
+      "Carpinus orientalis"
+    ]
+  },
+  "Q156907": {
+    "name": "magas kőris",
+    "aliases": [
+      "Fraxinus excelsior"
+    ]
+  },
+  "Q20645165": {
+    "name": "osztrák körte",
+    "aliases": [
+      "fekete körte",
+      "Pyrus austriaca",
+      "sózókörte"
+    ]
+  },
+  "Q20720096": {
+    "name": "havasi éger",
+    "aliases": [
+      "Alnus viridis"
+    ]
+  },
+  "Q17165418": {
+    "name": "kínai terülőboróka",
+    "aliases": [
+      "Juniperus × pfitzeriana"
+    ]
+  },
+  "Q17234633": {
+    "name": "Prunus eminens",
+    "aliases": [
+      "gömb csepleszmeggy",
+      "gömbmeggy"
+    ]
+  },
+  "Q17239802": {
+    "name": "magyar vadkörte",
+    "aliases": [
+      "Pyrus magyarica"
+    ]
+  },
+  "Q17271645": {
+    "name": "Bakonyi berkenye",
+    "aliases": [
+      "Májer-berkenye",
+      "Sorbus majeri nom. illeg. nom. superfl."
+    ]
+  },
+  "Q17275264": {
+    "name": "Nutka ciprus",
+    "aliases": [
+      "Cupressus nootkatensis"
+    ]
+  },
+  "Q179729": {
+    "name": "közönséges tiszafa",
+    "aliases": [
+      "Taxus baccata"
+    ]
+  },
+  "Q157307": {
+    "name": "fehér eperfa",
+    "aliases": [
+      "fehér eper",
+      "Morus alba"
+    ]
+  },
+  "Q148630": {
+    "name": "nehézszagú boróka",
+    "aliases": [
+      "Juniperus sabina",
+      "szagos boróka"
+    ]
+  },
+  "Q148920": {
+    "name": "kaukázusi jegenyefenyő",
+    "aliases": [
+      "Abies nordmanniana"
+    ]
+  },
+  "Q157697": {
+    "name": "kínai boróka",
+    "aliases": [
+      "Juniperus chinensis"
+    ]
+  },
+  "Q157739": {
+    "name": "nyugati platán",
+    "aliases": [
+      "Platanus occidentalis"
+    ]
+  },
+  "Q469695": {
+    "name": "kaliforniai szamócafa",
+    "aliases": [
+      "Arbutus menziesii"
+    ]
+  },
+  "Q470006": {
+    "name": "nyugati ostorfa",
+    "aliases": [
+      "Celtis occidentalis"
+    ]
+  },
+  "Q476655": {
+    "name": "oregoni luc",
+    "aliases": [
+      "Picea breweriana"
+    ]
+  },
+  "Q481767": {
+    "name": "vadszőlőlevelű juhar",
+    "aliases": [
+      "Acer cissifolium"
+    ]
+  },
+  "Q481769": {
+    "name": "Siebold-juhar",
+    "aliases": [
+      "Acer sieboldianum"
+    ]
+  },
+  "Q157393": {
+    "name": "császárfa",
+    "aliases": [
+      "illatos császárfa",
+      "Paulownia tomentosa"
+    ]
+  },
+  "Q594993": {
+    "name": "Nevadai cirbolyafenyő",
+    "aliases": [
+      "Pinus flexilis"
+    ]
+  },
+  "Q599523": {
+    "name": "oregoni juhar",
+    "aliases": [
+      "Acer macrophyllum"
+    ]
+  },
+  "Q601203": {
+    "name": "görög juhar",
+    "aliases": [
+      "Acer heldreichii"
+    ]
+  },
+  "Q608412": {
+    "name": "szecsuani juhar",
+    "aliases": [
+      "Acer henryi"
+    ]
+  },
+  "Q157763": {
+    "name": "japán kajszi",
+    "aliases": [
+      "Prunus mume"
+    ]
+  },
+  "Q158608": {
+    "name": "kocsánytalan tölgy",
+    "aliases": [
+      "Quercus petraea"
+    ]
+  },
+  "Q147513": {
+    "name": "európai ciprus",
+    "aliases": [
+      "Cupressus sempervirens",
+      "örökzöld ciprus"
+    ]
+  },
+  "Q156831": {
+    "name": "nagylevelű hárs",
+    "aliases": [
+      "Tilia platyphyllos"
+    ]
+  },
+  "Q157417": {
+    "name": "fehér akác",
+    "aliases": [
+      "Robinia pseudoacacia"
+    ]
+  },
+  "Q157952": {
+    "name": "kanári sárkányfa",
+    "aliases": [
+      "Dracaena draco"
+    ]
+  },
+  "Q156918": {
+    "name": "fehér fűz",
+    "aliases": [
+      "Salix alba"
+    ]
+  },
+  "Q147492": {
+    "name": "vénic-szil",
+    "aliases": [
+      "Ulmus laevis"
+    ]
+  },
+  "Q157960": {
+    "name": "lisztes berkenye",
+    "aliases": [
+      "Baródka",
+      "Süvölvény berkenye"
+    ]
+  },
+  "Q157522": {
+    "name": "virginiai boróka",
+    "aliases": [
+      "Juniperus virginiana"
+    ]
+  },
+  "Q157540": {
+    "name": "hamvas fűz",
+    "aliases": [
+      "Salix cinerea"
+    ]
+  },
+  "Q158642": {
+    "name": "húsos som",
+    "aliases": [
+      "Cornus mas"
+    ]
+  },
+  "Q157508": {
+    "name": "balkáni babérmeggy",
+    "aliases": [
+      "közönséges babérmeggy",
+      "örökzöld babérmeggy",
+      "Prunus laurocerasus"
+    ]
+  },
+  "Q157519": {
+    "name": "füles fűz",
+    "aliases": [
+      "Salix aurita"
+    ]
+  },
+  "Q156307": {
+    "name": "babiloni szomorúfűz",
+    "aliases": [
+      "Salix babylonica"
+    ]
+  },
+  "Q158178": {
+    "name": "karmazsintölgy",
+    "aliases": [
+      "Quercus coccifera"
+    ]
+  },
+  "Q158228": {
+    "name": "fehér som",
+    "aliases": [
+      "Cornus alba"
+    ]
+  },
+  "Q158746": {
+    "name": "kislevelű hárs",
+    "aliases": [
+      "Tilia cordata"
+    ]
+  },
+  "Q1193791": {
+    "name": "égerlevelű tölgy",
+    "aliases": [
+      "Quercus alnifolia"
+    ]
+  },
+  "Q1216192": {
+    "name": "Nehézszagú fűz",
+    "aliases": [
+      "Salix foetida"
+    ]
+  },
+  "Q157624": {
+    "name": "molyhos nyír",
+    "aliases": [
+      "Betula alba",
+      "Betula pubescens",
+      "szőrös nyír"
+    ]
+  },
+  "Q159049": {
+    "name": "vörös vadgesztenye",
+    "aliases": [
+      "Aesculus pavia",
+      "vörös bokrétafa"
+    ]
+  },
+  "Q159086": {
+    "name": "rózsaképű galagonya",
+    "aliases": [
+      "Crataegus rhipidophylla"
+    ]
+  },
+  "Q159122": {
+    "name": "feketéllő fűz",
+    "aliases": [
+      "feketedő fűz",
+      "Salix myrsinifolia"
+    ]
+  },
+  "Q159127": {
+    "name": "tarkalevelű eukaliptusz",
+    "aliases": [
+      "Eucalyptus diversicolor"
+    ]
+  },
+  "Q158776": {
+    "name": "közönséges gyertyán",
+    "aliases": [
+      "Carpinus betulus"
+    ]
+  },
+  "Q158301": {
+    "name": "ezüst juhar",
+    "aliases": [
+      "Acer saccharinum"
+    ]
+  },
+  "Q158425": {
+    "name": "dárdás fűz",
+    "aliases": [
+      "Salix hastata"
+    ]
+  },
+  "Q157641": {
+    "name": "hamvas éger",
+    "aliases": [
+      "Alnus incana"
+    ]
+  },
+  "Q159484": {
+    "name": "parti fűz",
+    "aliases": [
+      "Salix eleagnos"
+    ]
+  },
+  "Q159528": {
+    "name": "golyós eukaliptusz",
+    "aliases": [
+      "Eucalyptus globulus"
+    ]
+  },
+  "Q159447": {
+    "name": "csillaggyümölcs",
+    "aliases": [
+      "Averrhoa carambola"
+    ]
+  },
+  "Q158783": {
+    "name": "amerikai tulipánfa",
+    "aliases": [
+      "Liriodendron tulipifera"
+    ]
+  },
+  "Q158785": {
+    "name": "mezei juhar",
+    "aliases": [
+      "Acer campestre"
+    ]
+  },
+  "Q158482": {
+    "name": "datolyaszilva",
+    "aliases": [
+      "Diospyros kaki"
+    ]
+  },
+  "Q158912": {
+    "name": "babérfűz",
+    "aliases": [
+      "Salix pentandra"
+    ]
+  },
+  "Q158987": {
+    "name": "kései meggy",
+    "aliases": [
+      "Prunus serotina"
+    ]
+  },
+  "Q74068": {
+    "name": "szavara hamisciprus"
+  },
+  "Q146269": {
+    "name": "fehér nyár"
+  },
+  "Q147498": {
+    "name": "hegyi szil"
+  },
+  "Q157650": {
+    "name": "tövises lepényfa"
+  },
+  "Q157969": {
+    "name": "keskenylevelű ezüstfa"
+  },
+  "Q158657": {
+    "name": "Malus pumila"
+  },
+  "Q159188": {
+    "name": "Elaeagnus commutata"
+  },
+  "Q159204": {
+    "name": "Pompás szivarfa"
+  },
+  "Q159558": {
+    "name": "házi berkenye"
+  },
+  "Q161364": {
+    "name": "vörös juhar"
+  },
+  "Q161382": {
+    "name": "ezüst hárs"
+  },
+  "Q161406": {
+    "name": "sárga cserszömörce"
+  },
+  "Q161920": {
+    "name": "sajmeggy"
+  },
+  "Q163779": {
+    "name": "hússzínű vadgesztenye"
+  },
+  "Q164174": {
+    "name": "csepleszmeggy"
+  },
+  "Q218155": {
+    "name": "magyaltölgy"
+  },
+  "Q385769": {
+    "name": "Diospyros digyna"
+  },
+  "Q468698": {
+    "name": "amerikai gesztenye"
+  },
+  "Q481768": {
+    "name": "Acer shirasawanum"
+  },
+  "Q508718": {
+    "name": "Aesculus × neglecta"
+  },
+  "Q516494": {
+    "name": "tangerin"
+  },
+  "Q668879": {
+    "name": "Argentin dió"
+  },
+  "Q716571": {
+    "name": "kínai vörösfenyő"
+  },
+  "Q729276": {
+    "name": "Pinus lumholtzii"
+  },
+  "Q731443": {
+    "name": "Magnolia × soulangeana"
+  },
+  "Q734085": {
+    "name": "Amerikai vörösfenyő"
+  },
+  "Q750307": {
+    "name": "perzsa selyemakác"
+  },
+  "Q794061": {
+    "name": "Magnolia denudata"
+  },
+  "Q824288": {
+    "name": "Eucalyptus megacarpa"
+  },
+  "Q857075": {
+    "name": "magyar tölgy"
+  },
+  "Q876511": {
+    "name": "csüngőágú boróka"
+  },
+  "Q948827": {
+    "name": "Pawpaw"
+  },
+  "Q972749": {
+    "name": "Eucalyptus melliodora"
+  },
+  "Q1001011": {
+    "name": "festő tölgy"
+  },
+  "Q1048531": {
+    "name": "Castanopsis fissa"
+  },
+  "Q1132580": {
+    "name": "Aesculus turbinata"
+  },
+  "Q1138533": {
+    "name": "Perzsa varázsfa"
+  },
+  "Q1144805": {
+    "name": "Karéjos levelű szivarfa"
+  },
+  "Q1193369": {
+    "name": "fehér kőris"
+  },
+  "Q1227092": {
+    "name": "Diospyros montana"
+  },
+  "Q1250033": {
+    "name": "Japánszilva"
+  },
+  "Q1374188": {
+    "name": "Populus euphratica"
+  },
+  "Q1377319": {
+    "name": "császártölgy"
+  },
+  "Q1396603": {
+    "name": "Salix fargesii"
+  },
+  "Q1581524": {
+    "name": "oregoni kőris"
+  },
+  "Q1652385": {
+    "name": "Sophora toromiro"
+  },
+  "Q2156438": {
+    "name": "Eucalyptus jacksonii"
+  },
+  "Q3205624": {
+    "name": "Lagerstroemia intermedia"
+  },
+  "Q3281198": {
+    "name": "Acer sino-oblongum"
+  },
+  "Q3281562": {
+    "name": "Acer poliophyllum"
+  },
+  "Q3336255": {
+    "name": "Acer wardii"
+  },
+  "Q3337079": {
+    "name": "Acer sutchuenense"
+  },
+  "Q3337214": {
+    "name": "Acer sinopurpurascens"
+  },
+  "Q3338661": {
+    "name": "Acer shihweii"
+  },
+  "Q3355098": {
+    "name": "narancs"
+  },
+  "Q3491094": {
+    "name": "Sophora moorcroftiana"
+  },
+  "Q3845797": {
+    "name": "Larix himalaica"
+  },
+  "Q3927226": {
+    "name": "Larix speciosa"
+  },
+  "Q4673169": {
+    "name": "Acer oblongum"
+  },
+  "Q5047671": {
+    "name": "ovális hikoridió"
+  },
+  "Q5479345": {
+    "name": "Gánti berkenye"
+  },
+  "Q5487185": {
+    "name": "Manglietia sinica"
+  },
+  "Q6313668": {
+    "name": "Fövenyboróka"
+  },
+  "Q6746012": {
+    "name": "Acer schneiderianum"
+  },
+  "Q7213013": {
+    "name": "Eucalyptus platyphylla"
+  },
+  "Q9579481": {
+    "name": "Acer trautvetteri"
+  },
+  "Q10527903": {
+    "name": "Hibrid szivarfa"
+  },
+  "Q10872414": {
+    "name": "Photinia beauverdiana"
+  },
+  "Q10878191": {
+    "name": "damaszkuszi szilva"
+  },
+  "Q10880877": {
+    "name": "Diospyros yunnanensis"
+  },
+  "Q10887979": {
+    "name": "Diospyros sunyiensis"
+  },
+  "Q10906248": {
+    "name": "Diospyros unisemina"
+  },
+  "Q10907379": {
+    "name": "Castanopsis amabilis"
+  },
+  "Q10908398": {
+    "name": "Lagerstroemia siamica"
+  },
+  "Q10949016": {
+    "name": "Elaeagnus henryi"
+  },
+  "Q10958149": {
+    "name": "Olea parvilimba"
+  },
+  "Q11045980": {
+    "name": "Diospyros siderophylla"
+  },
+  "Q11055328": {
+    "name": "Diospyros sutchuensis"
+  },
+  "Q11066157": {
+    "name": "Diospyros anisocalyx"
+  },
+  "Q11080658": {
+    "name": "Eucalyptus kirtoniana"
+  },
+  "Q11107913": {
+    "name": "Salix karelinii"
+  },
+  "Q11127270": {
+    "name": "Photinia pilosicalyx"
+  },
+  "Q11132607": {
+    "name": "Lithocarpus yongfuensis"
+  },
+  "Q11143949": {
+    "name": "Sorbus meliosmifolia"
+  },
+  "Q11173544": {
+    "name": "Ficus pubigera"
+  },
+  "Q11179338": {
+    "name": "Diospyros nigrocortex"
+  },
+  "Q15225853": {
+    "name": "Szecsuáni szivarfa"
+  },
+  "Q15235699": {
+    "name": "Diospyros quiloënsis"
+  },
+  "Q15236187": {
+    "name": "Olea neriifolia"
+  },
+  "Q15236943": {
+    "name": "Diospyros ehretioides"
+  },
+  "Q15237898": {
+    "name": "Lithocarpus harlandii"
+  },
+  "Q15238823": {
+    "name": "Eucalyptus leptophleba"
+  },
+  "Q15239088": {
+    "name": "Quercus kongshanensis"
+  },
+  "Q15239300": {
+    "name": "Diospyros punctilimba"
+  },
+  "Q15239422": {
+    "name": "Sophora microcarpa"
+  },
+  "Q15239530": {
+    "name": "Lithocarpus mekongensis"
+  },
+  "Q15239804": {
+    "name": "Castanopsis hupehensis"
+  },
+  "Q15240291": {
+    "name": "Cyclobalanopsis sichourensis"
+  },
+  "Q15240339": {
+    "name": "Elaeagnus gonyanthes"
+  },
+  "Q15240385": {
+    "name": "Lithocarpus gaoligongensis"
+  },
+  "Q15240409": {
+    "name": "Elaeagnus angustata"
+  },
+  "Q15244650": {
+    "name": "Carya kweichowensis"
+  },
+  "Q15397348": {
+    "name": "Eucalyptus canaliculata"
+  },
+  "Q15397357": {
+    "name": "Eucalyptus anceps"
+  },
+  "Q15397363": {
+    "name": "Eucalyptus ewartiana"
+  },
+  "Q15397379": {
+    "name": "Eucalyptus dura"
+  },
+  "Q15397376": {
+    "name": "Eucalyptus argillacea"
+  },
+  "Q15397385": {
+    "name": "Eucalyptus latens"
+  },
+  "Q15397393": {
+    "name": "Eucalyptus intrasilvatica"
+  },
+  "Q15397568": {
+    "name": "Eucalyptus litoralis"
+  },
+  "Q15527780": {
+    "name": "Dunai berkenye"
+  },
+  "Q15527923": {
+    "name": "Déli berkenye"
+  },
+  "Q15545507": {
+    "name": "Mandula"
+  },
+  "Q16919759": {
+    "name": "nagypikkelyű tölgy"
+  },
+  "Q17237943": {
+    "name": "Barabits-berkenye"
+  },
+  "Q17238008": {
+    "name": "Jávorka-berkenye"
+  },
+  "Q17238051": {
+    "name": "Kárpáti-berkenye"
+  },
+  "Q17238052": {
+    "name": "Polgár-berkenye"
+  },
+  "Q17238056": {
+    "name": "Bartha-berkenye"
+  },
+  "Q17238097": {
+    "name": "Keszthelyi berkenye"
+  },
+  "Q17238249": {
+    "name": "Gerecsei berkenye"
+  },
+  "Q17238357": {
+    "name": "Ádám-berkenye"
+  },
+  "Q17238394": {
+    "name": "Nagylevelű berkenye"
+  },
+  "Q17238776": {
+    "name": "Közép-dunai berkenye"
+  },
+  "Q17239314": {
+    "name": "Degen-berkenye"
+  },
+  "Q17239619": {
+    "name": "Csákberényi berkenye"
+  },
+  "Q17240267": {
+    "name": "Vajda-berkenye"
+  },
+  "Q17240398": {
+    "name": "Keller-berkenye"
+  },
+  "Q17240443": {
+    "name": "budai berkenye"
+  },
+  "Q17240856": {
+    "name": "Balatoni berkenye"
+  },
+  "Q17240917": {
+    "name": "Rövidkaréjú berkenye"
+  },
+  "Q17241183": {
+    "name": "budai-berkenye"
+  },
+  "Q17241344": {
+    "name": "Bükki berkenye"
+  },
+  "Q17241710": {
+    "name": "Andreánszky-berkenye"
+  },
+  "Q17242269": {
+    "name": "Dunántúli berkenye"
+  },
+  "Q17245424": {
+    "name": "vértesi berkenye"
+  },
+  "Q17271024": {
+    "name": "Notholithocarpus densiflorus"
+  },
+  "Q17271670": {
+    "name": "zólyomi-berkenye"
+  },
+  "Q17271669": {
+    "name": "Boros-berkenye"
+  },
+  "Q17271692": {
+    "name": "Gáyer-berkenye"
+  },
+  "Q17271709": {
+    "name": "Széleslevelű berkenye"
+  },
+  "Q17271721": {
+    "name": "Kevéserű berkenye"
+  },
+  "Q17271759": {
+    "name": "Tobán-berkenye"
+  },
+  "Q17271760": {
+    "name": "Simonkai-berkenye"
+  },
+  "Q17271775": {
+    "name": "Rédl-berkenye"
+  },
+  "Q18674606": {
+    "name": "nemes alma"
+  },
+  "Q21269548": {
+    "name": "Ficus henneana"
+  },
+  "Q21370382": {
+    "name": "Pinus × schwerinii"
+  },
+  "Q33986886": {
+    "name": "Bodajki berkenye"
+  },
+  "Q41521746": {
+    "name": "Szedresvölgyi berkenye"
+  },
+  "Q50190812": {
+    "name": "Hulják-berkenye"
+  },
+  "Q50191415": {
+    "name": "Duna-menti berkenye"
+  },
+  "Q50191999": {
+    "name": "kőhányási berkenye"
+  },
+  "Q50192736": {
+    "name": "szedresvölgyi berkenye"
+  },
+  "Q50306722": {
+    "name": "Thaisz-berkenye"
+  },
+  "Q50311785": {
+    "name": "Hazslinszky-berkenye"
+  },
+  "Q50312382": {
+    "name": "Veszprémi berkenye"
+  },
+  "Q13189": {
+    "name": "őszibarack"
+  }
+}

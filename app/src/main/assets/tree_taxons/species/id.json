@@ -1,0 +1,748 @@
+{
+  "Q124969": {
+    "name": "Corylus avellana",
+    "aliases": [
+      "Hazelnut",
+      "Kacang hazel"
+    ]
+  },
+  "Q37083": {
+    "name": "Zaitun",
+    "aliases": [
+      "Pohon zaytun",
+      "Zaytun"
+    ]
+  },
+  "Q44120": {
+    "name": "Prem",
+    "aliases": [
+      "Plum",
+      "Prunus domestica"
+    ]
+  },
+  "Q131517": {
+    "name": "Kersen",
+    "aliases": [
+      "ceri asam",
+      "kers"
+    ]
+  },
+  "Q39918": {
+    "name": "Badam",
+    "aliases": [
+      "Almond"
+    ]
+  },
+  "Q36146": {
+    "name": "Tin",
+    "aliases": [
+      "Fig",
+      "Tiin"
+    ]
+  },
+  "Q42385": {
+    "name": "Kakao",
+    "aliases": [
+      "Theobroma cacao"
+    ]
+  },
+  "Q146048": {
+    "name": "Lorik Eropa",
+    "aliases": [
+      "Larix decidua"
+    ]
+  },
+  "Q2831937": {
+    "name": "Weru",
+    "aliases": [
+      "Wangkal",
+      "Albizia procera",
+      "Ki hiang"
+    ]
+  },
+  "Q3919027": {
+    "name": "mangga",
+    "aliases": [
+      "Mangga",
+      "pohon mangga",
+      "buah mangga"
+    ]
+  },
+  "Q4201565": {
+    "name": "Sengon",
+    "aliases": [
+      "senggung",
+      "sengon jawa"
+    ]
+  },
+  "Q156904": {
+    "name": "Alnus glutinosa",
+    "aliases": [
+      "tuska hitam"
+    ]
+  },
+  "Q15390854": {
+    "name": "Euodia quercifolia",
+    "aliases": [
+      "Cendana India",
+      "Mysoram",
+      "Melicope denhamii"
+    ]
+  },
+  "Q15492641": {
+    "name": "Langir",
+    "aliases": [
+      "Albizia saponaria"
+    ]
+  },
+  "Q15545507": {
+    "name": "Badam",
+    "aliases": [
+      "Prunus amygdalus"
+    ]
+  },
+  "Q12478483": {
+    "name": "Cempaka telur",
+    "aliases": [
+      "Cempaka gondok",
+      "Magnolia candollei"
+    ]
+  },
+  "Q12485163": {
+    "name": "Hampelas",
+    "aliases": [
+      "Ampelas",
+      "Rampelas"
+    ]
+  },
+  "Q12520982": {
+    "name": "Terisi",
+    "aliases": [
+      "Albizia lebbeckioides",
+      "Albizia lebbekoides",
+      "Kedinding",
+      "Soga tekik",
+      "Tekik"
+    ]
+  },
+  "Q157763": {
+    "name": "Prunus mume",
+    "aliases": [
+      "Ume"
+    ]
+  },
+  "Q158482": {
+    "name": "Kesemek",
+    "aliases": [
+      "Diospyros kaki"
+    ]
+  },
+  "Q161070": {
+    "name": "Araucaria heterophylla",
+    "aliases": [
+      "Cemara Norfolk"
+    ]
+  },
+  "Q167027": {
+    "name": "Cempaka wangi",
+    "aliases": [
+      "Cempaka"
+    ]
+  },
+  "Q170662": {
+    "name": "Manggis",
+    "aliases": [
+      "Buah manggis",
+      "Garcinia mangostana"
+    ]
+  },
+  "Q209326": {
+    "name": "tusam",
+    "aliases": [
+      "Pinus merkusii",
+      "pinus sumatra"
+    ]
+  },
+  "Q218425": {
+    "name": "Picea mariana",
+    "aliases": [
+      "cemara hitam"
+    ]
+  },
+  "Q275160": {
+    "name": "Beringin",
+    "aliases": [
+      "Pohon Beringin"
+    ]
+  },
+  "Q310280": {
+    "name": "ki riung anak",
+    "aliases": [
+      "ek papua",
+      "ek putih",
+      "ki anak",
+      "ko-duai",
+      "ko-mat",
+      "ko-soi",
+      "meranak",
+      "riung anak"
+    ]
+  },
+  "Q713794": {
+    "name": "Pohon Loa",
+    "aliases": [
+      "Pohon Ee, Ara"
+    ]
+  },
+  "Q1135236": {
+    "name": "Durian",
+    "aliases": [
+      "Duren",
+      "Durio zibethinus",
+      "Kadu"
+    ]
+  },
+  "Q1148692": {
+    "name": "Bungur jepang",
+    "aliases": [
+      "Lagerstroemia indica"
+    ]
+  },
+  "Q2221893": {
+    "name": "Cempaka putih",
+    "aliases": [
+      "Kantil",
+      "Magnolia alba"
+    ]
+  },
+  "Q1754032": {
+    "name": "Kayu hitam sulawesi",
+    "aliases": [
+      "Diospyros celebica",
+      "Eboni bergaris",
+      "Kayu-hitam Sulawesi"
+    ]
+  },
+  "Q106094": {
+    "name": "Tusam batu"
+  },
+  "Q121427": {
+    "name": "Arar buaya"
+  },
+  "Q129018": {
+    "name": "Sloe"
+  },
+  "Q133128": {
+    "name": "Tusam skotlandia"
+  },
+  "Q137033": {
+    "name": "Abies densa"
+  },
+  "Q137053": {
+    "name": "Abies durangensis"
+  },
+  "Q137063": {
+    "name": "Abies forrestii"
+  },
+  "Q142109": {
+    "name": "Abies fabri"
+  },
+  "Q145954": {
+    "name": "Tusam hitam"
+  },
+  "Q145992": {
+    "name": "Separ Norwegia"
+  },
+  "Q146025": {
+    "name": "Separ biru"
+  },
+  "Q146110": {
+    "name": "Hawar gemetar Erasia"
+  },
+  "Q146149": {
+    "name": "Bewuk Eropa"
+  },
+  "Q147064": {
+    "name": "Hawar hitam"
+  },
+  "Q147475": {
+    "name": "Tusam gunung"
+  },
+  "Q147513": {
+    "name": "Cupressus sempervirens"
+  },
+  "Q147525": {
+    "name": "Pasang merah utara"
+  },
+  "Q148542": {
+    "name": "Tusam daun-panjang"
+  },
+  "Q156307": {
+    "name": "Dedalu tangis"
+  },
+  "Q156895": {
+    "name": "Betula pendula"
+  },
+  "Q156918": {
+    "name": "Dedalu putih"
+  },
+  "Q156944": {
+    "name": "Acer pseudoplatanus"
+  },
+  "Q157230": {
+    "name": "Tusam putih"
+  },
+  "Q157393": {
+    "name": "Paulownia tomentosa"
+  },
+  "Q157697": {
+    "name": "Juniperus chinensis"
+  },
+  "Q158912": {
+    "name": "Dedalu dafnah"
+  },
+  "Q159447": {
+    "name": "Belimbing"
+  },
+  "Q159565": {
+    "name": "Dedalu kambing"
+  },
+  "Q159570": {
+    "name": "Ailanthus altissima"
+  },
+  "Q160576": {
+    "name": "Karet kebo"
+  },
+  "Q161364": {
+    "name": "Acer rubrum"
+  },
+  "Q165091": {
+    "name": "Tusam pesisir"
+  },
+  "Q165137": {
+    "name": "Ceri manis"
+  },
+  "Q165145": {
+    "name": "Quercus robur"
+  },
+  "Q165321": {
+    "name": "Ceri jepang"
+  },
+  "Q179729": {
+    "name": "Tampinur Inggris"
+  },
+  "Q243964": {
+    "name": "Pinus pumila"
+  },
+  "Q269224": {
+    "name": "Acer palmatum"
+  },
+  "Q271582": {
+    "name": "Tusam laut"
+  },
+  "Q310024": {
+    "name": "Juniperus angosturana"
+  },
+  "Q311864": {
+    "name": "Cempaka mulia"
+  },
+  "Q311950": {
+    "name": "Abies fanjingshanensis"
+  },
+  "Q333877": {
+    "name": "Pecan"
+  },
+  "Q390100": {
+    "name": "Abies koreana"
+  },
+  "Q406938": {
+    "name": "Salayar"
+  },
+  "Q460523": {
+    "name": "Tusam ponderosa"
+  },
+  "Q469382": {
+    "name": "Dardar Amerika"
+  },
+  "Q469555": {
+    "name": "Pasang putih"
+  },
+  "Q469576": {
+    "name": "Hawar perinding"
+  },
+  "Q516494": {
+    "name": "Tangerine"
+  },
+  "Q571266": {
+    "name": "Bisbul"
+  },
+  "Q714180": {
+    "name": "Bonsai kimeng"
+  },
+  "Q717857": {
+    "name": "Hue"
+  },
+  "Q794061": {
+    "name": "Magnolia denudata"
+  },
+  "Q805008": {
+    "name": "Acer hyrcanum"
+  },
+  "Q855853": {
+    "name": "Surian Tiongkok"
+  },
+  "Q887221": {
+    "name": "Kornelia bunga"
+  },
+  "Q917216": {
+    "name": "Cupressus cashmeriana"
+  },
+  "Q948827": {
+    "name": "Asimina triloba"
+  },
+  "Q959738": {
+    "name": "Prunus africana"
+  },
+  "Q974954": {
+    "name": "Abies cilicica"
+  },
+  "Q1044186": {
+    "name": "Pinus densiflora"
+  },
+  "Q1048516": {
+    "name": "Saninten"
+  },
+  "Q1048543": {
+    "name": "Berangan jawa"
+  },
+  "Q1073864": {
+    "name": "Tampinur batu"
+  },
+  "Q1074099": {
+    "name": "Dardar tiongkok"
+  },
+  "Q1132580": {
+    "name": "Aesculus turbinata"
+  },
+  "Q1137183": {
+    "name": "Cupressus macrocarpa"
+  },
+  "Q1137593": {
+    "name": "Bungur besar"
+  },
+  "Q1245863": {
+    "name": "Ara bereteh"
+  },
+  "Q1250033": {
+    "name": "Prunus salicina"
+  },
+  "Q1396605": {
+    "name": "Abies fargesii"
+  },
+  "Q1498748": {
+    "name": "Kimunding"
+  },
+  "Q13189": {
+    "name": "Persik"
+  },
+  "Q26899": {
+    "name": "Aesculus hippocastanum"
+  },
+  "Q29488": {
+    "name": "Cercis siliquastrum"
+  },
+  "Q37453": {
+    "name": "Aprikot"
+  },
+  "Q39708": {
+    "name": "Dedalu ungu"
+  },
+  "Q41350": {
+    "name": "Jeruk keprok"
+  },
+  "Q41505": {
+    "name": "Loquat"
+  },
+  "Q43284": {
+    "name": "Ginkgo"
+  },
+  "Q43300": {
+    "name": "Quince"
+  },
+  "Q46871": {
+    "name": "Juglans regia"
+  },
+  "Q47161": {
+    "name": "Apel Manalagi"
+  },
+  "Q61105": {
+    "name": "aras lebanon"
+  },
+  "Q1499241": {
+    "name": "Birken kuning"
+  },
+  "Q1510231": {
+    "name": "Birken hitam"
+  },
+  "Q1542486": {
+    "name": "Eucalyptus regnans"
+  },
+  "Q1543680": {
+    "name": "Birken kelabu"
+  },
+  "Q1555671": {
+    "name": "Juniperus pseudosabina"
+  },
+  "Q1652385": {
+    "name": "Sophora toromiro"
+  },
+  "Q1890300": {
+    "name": "Cupressus gigantea"
+  },
+  "Q2003088": {
+    "name": "Populus angustifolia"
+  },
+  "Q2045958": {
+    "name": "Tusam merah"
+  },
+  "Q2233487": {
+    "name": "Cemara Shensi"
+  },
+  "Q2249201": {
+    "name": "Sorbus bristoliensis"
+  },
+  "Q2360517": {
+    "name": "Dolar rambat"
+  },
+  "Q2512210": {
+    "name": "Eucalyptus piperita"
+  },
+  "Q2561277": {
+    "name": "Ficus aurea"
+  },
+  "Q2672193": {
+    "name": "Magnolia campbellii"
+  },
+  "Q2701705": {
+    "name": "Ficus retusa"
+  },
+  "Q2704355": {
+    "name": "Leda (tumbuhan)"
+  },
+  "Q2717620": {
+    "name": "Ki Hiur"
+  },
+  "Q2717818": {
+    "name": "Ara bunut"
+  },
+  "Q2737852": {
+    "name": "Pinus hwangshanensis"
+  },
+  "Q2821615": {
+    "name": "Abies flinckii"
+  },
+  "Q3013067": {
+    "name": "Hau besi"
+  },
+  "Q3071424": {
+    "name": "Ficus rumphii"
+  },
+  "Q3071706": {
+    "name": "Ficus religiosa"
+  },
+  "Q3206158": {
+    "name": "Tarum laut"
+  },
+  "Q3281732": {
+    "name": "Acer tsinglingense"
+  },
+  "Q3284652": {
+    "name": "Malus communis"
+  },
+  "Q3349206": {
+    "name": "Bisoro"
+  },
+  "Q3355098": {
+    "name": "Jeruk manis"
+  },
+  "Q3565069": {
+    "name": "Majakani"
+  },
+  "Q3595461": {
+    "name": "Culiket"
+  },
+  "Q3608801": {
+    "name": "Albizia gummifera"
+  },
+  "Q3662068": {
+    "name": "Castanea pumila"
+  },
+  "Q4274131": {
+    "name": "Cempaka kelapa"
+  },
+  "Q4921039": {
+    "name": "Jerakah"
+  },
+  "Q5023074": {
+    "name": "Calocedrus huashanensis"
+  },
+  "Q5405563": {
+    "name": "Eucalyptus capitellata"
+  },
+  "Q5405705": {
+    "name": "Eucalyptus sclerophylla"
+  },
+  "Q5405714": {
+    "name": "Eucalyptus sieberi"
+  },
+  "Q5405723": {
+    "name": "Ampupu"
+  },
+  "Q5405725": {
+    "name": "Eucalyptus umbra"
+  },
+  "Q5446619": {
+    "name": "Uyah-uyahan"
+  },
+  "Q5446620": {
+    "name": "Ficus mexiae"
+  },
+  "Q5446640": {
+    "name": "Awar-awar"
+  },
+  "Q5446647": {
+    "name": "Ficus superba"
+  },
+  "Q5446649": {
+    "name": "Nyawai"
+  },
+  "Q5472760": {
+    "name": "Lithocarpus crassinervius"
+  },
+  "Q5472767": {
+    "name": "Lithocarpus platycarpus"
+  },
+  "Q5472764": {
+    "name": "Lithocarpus kostermansii"
+  },
+  "Q5563142": {
+    "name": "Ginkgo apodes"
+  },
+  "Q5563143": {
+    "name": "Ginkgo digitata"
+  },
+  "Q5563146": {
+    "name": "Ginkgo adiantoides"
+  },
+  "Q5563144": {
+    "name": "Ginkgo cranei"
+  },
+  "Q5563145": {
+    "name": "Ginkgo dissecta"
+  },
+  "Q5880766": {
+    "name": "Gleditsia amorphoides"
+  },
+  "Q5963800": {
+    "name": "Haju lui"
+  },
+  "Q6322891": {
+    "name": "Mempening"
+  },
+  "Q6324270": {
+    "name": "Modang pantau"
+  },
+  "Q6372252": {
+    "name": "Kayu pasang"
+  },
+  "Q6647989": {
+    "name": "Lithocarpus indutus"
+  },
+  "Q6667233": {
+    "name": "Bungur siam"
+  },
+  "Q7404910": {
+    "name": "Salix pulchra"
+  },
+  "Q7689704": {
+    "name": "Tampinur sulawesi"
+  },
+  "Q9138776": {
+    "name": "Acer laurinum"
+  },
+  "Q10888585": {
+    "name": "Beringin karét"
+  },
+  "Q10933976": {
+    "name": "Quercus griffithii"
+  },
+  "Q10942836": {
+    "name": "Andalas (pohon)"
+  },
+  "Q11060464": {
+    "name": "Pengkih sumatra"
+  },
+  "Q11129693": {
+    "name": "Benying"
+  },
+  "Q11143949": {
+    "name": "Sorbus meliosmifolia"
+  },
+  "Q12700736": {
+    "name": "Beringin pencekik"
+  },
+  "Q13110693": {
+    "name": "Kayu gading gajah"
+  },
+  "Q13629560": {
+    "name": "Diospyros attenuata"
+  },
+  "Q15227825": {
+    "name": "Pangsor"
+  },
+  "Q15337146": {
+    "name": "Pasang berangan"
+  },
+  "Q15340475": {
+    "name": "Ajang kelicung"
+  },
+  "Q15341609": {
+    "name": "Kesemek hitam"
+  },
+  "Q15473257": {
+    "name": "Ficus celebensis"
+  },
+  "Q15475615": {
+    "name": "Longusei"
+  },
+  "Q15476062": {
+    "name": "Hamerang putih"
+  },
+  "Q15478473": {
+    "name": "Ficus punctata"
+  },
+  "Q15479149": {
+    "name": "Ara bulu"
+  },
+  "Q15479208": {
+    "name": "Dali"
+  },
+  "Q15494410": {
+    "name": "Cempaka hutan kasar"
+  },
+  "Q17271024": {
+    "name": "Notholithocarpus densiflorus"
+  },
+  "Q18674606": {
+    "name": "Malus domestica"
+  },
+  "Q21269548": {
+    "name": "Ficus henneana"
+  },
+  "Q50829006": {
+    "name": "Brokoli kuning"
+  },
+  "Q87601999": {
+    "name": "Bisbul"
+  }
+}

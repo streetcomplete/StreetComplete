@@ -1,0 +1,288 @@
+{
+  "Q434": {
+    "name": "hruška",
+    "aliases": [
+      "Pyrus"
+    ]
+  },
+  "Q12004": {
+    "name": "hrast",
+    "aliases": [
+      "Quercus"
+    ]
+  },
+  "Q12024": {
+    "name": "bor",
+    "aliases": [
+      "Pinus"
+    ]
+  },
+  "Q25239": {
+    "name": "jelša",
+    "aliases": [
+      "Alnus"
+    ]
+  },
+  "Q25243": {
+    "name": "breza",
+    "aliases": [
+      "Betula"
+    ]
+  },
+  "Q25350": {
+    "name": "jelka",
+    "aliases": [
+      "hoja",
+      "Abies"
+    ]
+  },
+  "Q25356": {
+    "name": "topol",
+    "aliases": [
+      "Topol",
+      "Populus"
+    ]
+  },
+  "Q25403": {
+    "name": "bukev",
+    "aliases": [
+      "Fagus"
+    ]
+  },
+  "Q25618": {
+    "name": "macesen",
+    "aliases": [
+      "Larix"
+    ]
+  },
+  "Q25662": {
+    "name": "brin",
+    "aliases": [
+      "Juniperus"
+    ]
+  },
+  "Q26782": {
+    "name": "smreka",
+    "aliases": [
+      "Picea"
+    ]
+  },
+  "Q27355": {
+    "name": "tisa",
+    "aliases": [
+      "Taxus"
+    ]
+  },
+  "Q29033": {
+    "name": "jadikovec",
+    "aliases": [
+      "Cercis"
+    ]
+  },
+  "Q36050": {
+    "name": "vrba",
+    "aliases": [
+      "Salix",
+      "vrbe"
+    ]
+  },
+  "Q44789": {
+    "name": "murva",
+    "aliases": [
+      "Morus"
+    ]
+  },
+  "Q45669": {
+    "name": "evkalipt",
+    "aliases": [
+      "evkaliptus"
+    ]
+  },
+  "Q59798": {
+    "name": "smokvovec",
+    "aliases": [
+      "Ficus",
+      "figa"
+    ]
+  },
+  "Q104819": {
+    "name": "jablana",
+    "aliases": [
+      "Malus",
+      "lesnika"
+    ]
+  },
+  "Q127849": {
+    "name": "lipa",
+    "aliases": [
+      "Tilia"
+    ]
+  },
+  "Q128550": {
+    "name": "cedra",
+    "aliases": [
+      "Cedrus"
+    ]
+  },
+  "Q129324": {
+    "name": "pravi kostanj",
+    "aliases": [
+      "Castanea"
+    ]
+  },
+  "Q131113": {
+    "name": "brest",
+    "aliases": [
+      "Ulmus"
+    ]
+  },
+  "Q132402": {
+    "name": "beli hrast",
+    "aliases": [
+      "Lithocarpus"
+    ]
+  },
+  "Q132557": {
+    "name": "glog",
+    "aliases": [
+      "Crataegus"
+    ]
+  },
+  "Q142788": {
+    "name": "hikorijevec",
+    "aliases": [
+      "Carya"
+    ]
+  },
+  "Q145889": {
+    "name": "leska",
+    "aliases": [
+      "Corylus"
+    ]
+  },
+  "Q147791": {
+    "name": "pacipresa",
+    "aliases": [
+      "Chamaecyparis"
+    ]
+  },
+  "Q158752": {
+    "name": "Divji kostanj",
+    "aliases": [
+      "Aesculus"
+    ]
+  },
+  "Q159545": {
+    "name": "dren",
+    "aliases": [
+      "Cornus"
+    ]
+  },
+  "Q161250": {
+    "name": "gledičevka",
+    "aliases": [
+      "Gleditsia"
+    ]
+  },
+  "Q163025": {
+    "name": "platana",
+    "aliases": [
+      "Platanus"
+    ]
+  },
+  "Q157964": {
+    "name": "Sorbus",
+    "aliases": [
+      "jerebika",
+      "mokovec"
+    ]
+  },
+  "Q158513": {
+    "name": "gaber",
+    "aliases": [
+      "Carpinus"
+    ]
+  },
+  "Q12323064": {
+    "name": "kriptomerija",
+    "aliases": [
+      "Cryptomeria",
+      "sugi"
+    ]
+  },
+  "Q165258": {
+    "name": "ebenovec",
+    "aliases": [
+      "Diospyros",
+      "božji sad",
+      "diospiros"
+    ]
+  },
+  "Q190545": {
+    "name": "sliva",
+    "aliases": [
+      "Prunus"
+    ]
+  },
+  "Q296910": {
+    "name": "oljka",
+    "aliases": [
+      "Olea"
+    ]
+  },
+  "Q765246": {
+    "name": "kalocedra",
+    "aliases": [
+      "Calocedrus"
+    ]
+  },
+  "Q1065400": {
+    "name": "kostanjevec",
+    "aliases": [
+      "Castanopsis"
+    ]
+  },
+  "Q1420126": {
+    "name": "krilati oreškar",
+    "aliases": [
+      "krilata oreščnica",
+      "Pterocarya"
+    ]
+  },
+  "Q2453469": {
+    "name": "oreh",
+    "aliases": [
+      "Juglans"
+    ]
+  },
+  "Q128887": {
+    "name": "jesen"
+  },
+  "Q132703": {
+    "name": "Koelreuteria"
+  },
+  "Q146911": {
+    "name": "cipresa"
+  },
+  "Q157017": {
+    "name": "magnolija"
+  },
+  "Q165173": {
+    "name": "Pavlovnija"
+  },
+  "Q472943": {
+    "name": "robinija"
+  },
+  "Q664945": {
+    "name": "Albizia"
+  },
+  "Q964952": {
+    "name": "Nyssa"
+  },
+  "Q5122903": {
+    "name": "kumkvat"
+  },
+  "Q42292": {
+    "name": "javor"
+  }
+}
