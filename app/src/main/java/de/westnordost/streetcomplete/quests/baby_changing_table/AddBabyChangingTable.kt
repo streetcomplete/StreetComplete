@@ -15,11 +15,9 @@ class AddBabyChangingTable : OsmFilterQuestType<Boolean>() {
         (
           (
             (
-              amenity ~ restaurant|cafe|fuel|fast_food|food_court|ice_cream|library|community_centre|hospital
+              amenity ~ restaurant|cafe|fuel|fast_food|food_court|library|community_centre
               or 
-              shop ~ mall|department_store|chemist|bakery|furniture|toys|baby_goods|doityourself
-              or
-              leisure ~ water_park|sports_centre|indoor_play
+              shop ~ mall|department_store|chemist|bakery|baby_goods
             )
             and toilets != no
           )
