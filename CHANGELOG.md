@@ -1394,7 +1394,7 @@ Special thanks to @FloEdelmann for helping with the refactor.
 - Enhance maxspeed collection for the United Kingdom (#2745, #2748, #2750, #2811), by @arrival-spring
 - Periodically ask for the existence of BBQ spots, ticket validators, emergency life rings and emergency phones (#2679), thanks @arrival-spring
 - Also ask for the surface of service roads as long as they are not driveways (#2783)
-- Don't remove the check_date tag if it is already tagged, instead, update it (#2861, #2883)
+- Don't remove the `check_date` tag if it is already tagged, instead, update it (#2861, #2883)
 - Don't tag `foot=use_sidepath` on the road if there is a separate sidewalk (#2895)
 
 ### Other Enhancements
@@ -1522,7 +1522,7 @@ Did you already [take the survey](https://osmf.limequery.org/281662) of the Open
 - Check existence: Display brand name if object has no name (#2512)
 - Sidewalks: Ask for residential roads even if they are not lit (#2519, #2531), by @riQQ
 - Recycling materials: Do not ask for private containers (#2515)
-- Road name: Do not ask if name:left or name:right is defined already (#2526)
+- Road name: Do not ask if `name:left` or `name:right` is defined already (#2526)
 - A few clarifications in wording (#2467, #2431, #2539)
 
 ### Fixes & More
@@ -2973,7 +2973,7 @@ minor bugfix update: bugfixes, updated translations
 
 ## v0.10
 
-fixed #108: opening_hours used wrong separator
+fixed #108: `opening_hours` used wrong separator
 
 ## v0.9
 
