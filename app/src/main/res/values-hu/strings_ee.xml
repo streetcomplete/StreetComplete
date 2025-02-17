@@ -508,7 +508,6 @@
     <string name="quest_artwork_painting">Festmény</string>
     <string name="default_disabled_msg_trail_visibility">Ez a kérdéstípus alapértelmezés szerint ki van kapcsolva, mivel az ösvények láthatóságának értékelése erősen szubjektív, és az osztályozási rendszer alapos ismeretét igényli.</string>
     <string name="quest_trail_visibility_good_description">Az ösvény vagy a következő jelzés mindig látható, de néha keresni kell. Alapvető irányérzék szükséges, térkép ajánlott.</string>
-    <string name="default_disabled_msg_roofColour">Ez a kérdéstípus alapértelmezés szerint ki van kapcsolva, mivel a tető színe az utcáról gyakran nem jól látható. Ez a kérdéstípus ráadásul meglehetősen időigényes; a legtöbb esetben egyszerűbb és hatékonyabb ezt otthon, légi felvételről térképezni.</string>
     <string name="quest_trail_visibility_bad_description">Az ösvény néha nem látható, részben úttalan útvonalon vezet, nincsenek jelzések. Alapvető tájékozódási készség szükséges.</string>
     <string name="quest_mapType_street_description">Egy terület összes utcáját vagy útját tartalmazó térkép. Az utcák többnyire névvel szerepelnek. A szögek, távolságok stb. pontosak. Pl. az idegenforgalmi irodákban vagy szálláshelyek áttekintéséhez használják.</string>
     <string name="quest_mapType_scheme_description">Sematikus térkép, amely csak a fontos utakat és látnivalókat tartalmazza. A szögek, távolságok stb. csupán szemléltető jellegűek, nem pontosak. Például utazási irodák használják a túráik szemléltetésére.</string>

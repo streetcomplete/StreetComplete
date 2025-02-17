@@ -249,7 +249,6 @@
     <string name="pref_screen_quests">任务</string>
     <string name="quest_cuisine_title">该场所有哪些菜系？使用建议的 OSM 标签！</string>
     <string name="pref_hide_button_title">显示隐藏按钮</string>
-    <string name="default_disabled_msg_roofColour">该任务类型默认为禁用，因为从街道上通常不容易看到屋顶的颜色。这种任务类型也相当耗时；在大多数情况下，根据家中的航拍图像绘制这种地图会更简单、更高效。</string>
     <string name="tree_custom_quest_export">获取</string>
     <string name="quest_artwork_mosaic">马赛克镶嵌艺术</string>
     <string name="import_export_custom_overlays">自定覆盖层</string>

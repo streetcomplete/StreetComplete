@@ -202,7 +202,7 @@
     <string name="quest_mapType_title">Que tipo de mapa é este?</string>
     <string name="quest_mapType_toposcope_title">Toposcópio</string>
     <string name="quest_mapType_topo_description">Um mapa com desenho topográfico para, por exemplo, um mapa histórico ou de trilhos. O mapa contém linhas de contorno.</string>
-    <string name="default_disabled_msg_roofColour">Esta missão está desativada por predefinição porque geralmente não é possível determinar a cor dum telhado estando na rua. Esta missão também é bastante demorada; em muitos casos é mais fácil e eficiente mapear esta informação através de imagens aéreas em casa.</string>
+    <string name="default_disabled_msg_roof">Esta missão está desativada por predefinição porque geralmente não é possível determinar os telhados estando na rua. Esta missão também é bastante demorada; em muitos casos é mais fácil e eficiente mapear esta informação através de imagens aéreas em casa.</string>
     <string name="quest_crossing_marking_value_dashes">Traços</string>
     <string name="quest_crossing_marking_value_dots">Pontos</string>
     <string name="quest_crossing_marking_value_surface">Superfície</string>

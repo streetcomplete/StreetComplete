@@ -274,7 +274,7 @@
     <string name="quest_buildingColour_title">Vilken huvudsaklig färg har denna byggnad?</string>
     <string name="quest_buildingPartColour_title">Vilken huvudsaklig färg har denna byggnadsdel?</string>
     <string name="quest_roofColour_title">Vilken huvudsaklig färg har denna byggnads tak?</string>
-    <string name="default_disabled_msg_roofColour">Detta uppdrag är inaktiverat som stanard eftersom takfärger ofta inte är lätta att se från gatan. Detta uppdrag tar också rätt så mycket tid; i de flesta fall är det lättare och mer effektivt att kartlägga detta hemma med hjälp av flygfoton.</string>
+    <string name="default_disabled_msg_roof">Detta uppdrag är inaktiverat som stanard eftersom tak ofta inte är lätta att se från gatan. Detta uppdrag tar också rätt så mycket tid; i de flesta fall är det lättare och mer effektivt att kartlägga detta hemma med hjälp av flygfoton.</string>
     <string name="quest_mapType_street_title">Gator</string>
     <string name="quest_contact_phone">Vilket telefonnummer har detta ställe?</string>
     <string name="quest_building_entrance_parking">Entré till parkering</string>

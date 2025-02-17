@@ -345,7 +345,6 @@
     <string name="close_note_checkbox">メモを閉じる(メモが確実に解決する場合に、これを行ってください!)</string>
     <string name="closed_note_action_title">あなたはそれを閉じました</string>
     <string name="quest_trail_visibility_good_description">道や次の印は見失うことが少ないですが、ときどき探す必要があることもあります。地図持参が推奨され、基本的な方向感覚が必要です。</string>
-    <string name="default_disabled_msg_roofColour">大抵、屋根の色は道路から容易には見ることができないため、初期設定ではこのクエスト種別は無効化されています。このクエスト種別はまた、時間が掛かります。大抵の事例において、自宅にて空中写真からマッピングする方が容易かつより効率的です。</string>
     <string name="quest_trail_visibility_title">この道のトレイル(ハイキング道)の見つけやすさは何ですか?</string>
     <string name="quest_trail_visibility_intermediate_description">大抵の所では道が判別できます。地図と、しっかりした方向感覚が必要です。</string>
     <string name="quest_mapType_scheme_description">重要な道やPOI(関心地点)のみが書かれた絵地図です。角度や距離などは純粋に説明的であり、正確ではありません(非一般図)。例えば旅行会社が旅程を説明する場合などに使います。</string>

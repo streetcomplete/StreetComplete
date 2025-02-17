@@ -473,7 +473,7 @@
 
     <!-- roof colour -->
     <string name="quest_roofColour_title">"What overall color does this building’s roof have?"</string>
-    <string name="default_disabled_msg_roofColour">This quest type is disabled by default because roof colors are often not easily visible from the street. This quest type is also quite time-consuming; in most cases it is easier and more efficient to map this from aerial imagery at home.</string>
+    <string name="default_disabled_msg_roof">This quest type is disabled by default because roofs are often not easily visible from the street. This quest type is also quite time-consuming; in most cases it is easier and more efficient to map this from aerial imagery at home.</string>
 
     <!-- map type -->
     <string name="quest_mapType_title">What kind of map is this?</string>
@@ -765,4 +765,7 @@ Out of the box SCEE is configured to behave very similar to StreetComplete.</str
     <!-- actually there are still SC translations available, as only the main string has been removed from SC. -->
     <string name="close">Close</string>
     <string name="fixme_for_object">Another person added a fixme:</string>
+    <string name="quest_roofOrientation_along">Parallel to the building’s longer side</string>
+    <string name="quest_roofOrientation_across">Parallel to the building’s shorter side</string>
+    <string name="quest_roofOrientation_title">How is the roof ridge oriented?</string>
 </resources>

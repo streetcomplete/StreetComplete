@@ -21,7 +21,7 @@ class AddRoofColour : OsmFilterQuestType<RoofColour>() {
     override val wikiLink = "Key:roof:colour"
     override val icon = R.drawable.ic_quest_roof_colour
     override val achievements = listOf(BUILDING)
-    override val defaultDisabledMessage = R.string.default_disabled_msg_roofColour
+    override val defaultDisabledMessage = R.string.default_disabled_msg_roof
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_roofColour_title
 

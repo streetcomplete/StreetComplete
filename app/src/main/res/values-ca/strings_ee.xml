@@ -164,7 +164,7 @@
     <string name="quest_service_building_monitoring_station">Estació de control i monitoratge</string>
     <string name="quest_seating_veranda">Sota un porxo (pot tindre sostre i pot estar lleugerament per sobre del nivell de terra)</string>
     <string name="default_disabled_msg_trail_visibility">Aquesta missió està desactivada per defecte, ja que classificar la visibilitat del sender és altament subjectiu i depèn de coneixements experts en el sistema de classificació.</string>
-    <string name="default_disabled_msg_roofColour">Aquest tipus de missions està desactivat per defecte perquè els colors del terrat normalment no són fàcilment visibles des del carrer. Aquest tipus de missions també requereix de molt de temps, i en moltes ocasions és més ràpid i eficient fer-ho usant imatgeria aèria des de casa.</string>
+    <string name="default_disabled_msg_roof">Aquest tipus de missions està desactivat per defecte perquè els terrat normalment no són fàcilment visibles des del carrer. Aquest tipus de missions també requereix de molt de temps, i en moltes ocasions és més ràpid i eficient fer-ho usant imatgeria aèria des de casa.</string>
     <string name="quest_service_building_monitoring_station_description">Una estació (normalment situada en sun propi edifici) que controla i supervisa alguna cosa</string>
     <string name="quest_trail_visibility_good_description">El camí o la senyalització d\'orientació són fàcilment visibles, però no sempre obvis, i a vegades cal buscar-los. Es requereix d\'un sentit bàsic d\'orientació, i es recomana l\'ús d\'un mapa.</string>
     <string name="quest_trail_visibility_no_description">Majoritàriament sense camí i sense marques. Es requereixen d\'excel·lents habilitats d\'orientació.</string>

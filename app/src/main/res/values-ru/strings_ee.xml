@@ -337,7 +337,6 @@
     <string name="quest_surface_value_metal_grid">Металлическая сетка</string>
     <string name="quest_buildingType_barn">Сарай</string>
     <string name="restriction_overlay_show_details">Показать отношение</string>
-    <string name="default_disabled_msg_roofColour">Этот квест отключён по умолчанию, поскольку рассмотреть цвет крыши на улице бывает не просто. Кроме того, этот квест отнимает не мало времени, как правило, такое проще отметить из дома, пользуясь аэрофотоснимками.</string>
     <string name="quest_roofColour_title">Какой цвет является основным для крыши этого здания\?</string>
     <string name="quest_buildingType_presbytery">Пресвитерий</string>
     <string name="quest_buildingType_stable">Конюшня</string>

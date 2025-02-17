@@ -204,7 +204,7 @@
     <string name="default_disabled_msg_ee">Las tareas agregadas en SCEE siempre están deshabilitadas de forma predeterminada, ya que es posible que no siempre se puedan responder y pueden requerir conocimiento del tema y etiquetado.</string>
     <string name="quest_railwayPlatformRef_title">¿Qué número de pista está aquí\?</string>
     <string name="quest_roofColour_title">¿Qué color general tiene el tejado de este edificio\?</string>
-    <string name="default_disabled_msg_roofColour">Este tipo de tarea está deshabilitado de forma predeterminada porque los colores de los tejados a menudo no son fácilmente visibles desde la calle. Este tipo de tarea también requiere bastante tiempo; en la mayoría de los casos, es más fácil y eficiente mapear esto a partir de imágenes aéreas en casa.</string>
+    <string name="default_disabled_msg_roofColour">Este tipo de tarea está deshabilitado de forma predeterminada porque los tejados a menudo no son fácilmente visibles desde la calle. Este tipo de tarea también requiere bastante tiempo; en la mayoría de los casos, es más fácil y eficiente mapear esto a partir de imágenes aéreas en casa.</string>
     <string name="quest_healthcare_speciality_switch_ui">Cambiar interfaz de usuario</string>
     <string name="quest_healthcare_speciality_disabled_message">Esta tarea requiere conocimiento sobre las etiquetas de healthcare:speciality. Sin este conocimiento, la tarea puede ser muy difícil de responder.</string>
     <string name="quest_buildingType_elevator">Ascensor</string>

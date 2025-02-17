@@ -346,7 +346,7 @@
     <string name="pref_screen_quests">Aufgaben</string>
     <string name="quest_cuisine_title">Welche Küche gibt es in diesem Ort\? Verwende die vorgeschlagenen OSM-Tags!</string>
     <string name="pref_hide_button_title">Schaltfläche „Ausblenden“ anzeigen</string>
-    <string name="default_disabled_msg_roofColour">Dieser Aufgabentyp ist standardmäßig deaktiviert, da die Farben der Dächer von der Straße aus oft nicht gut sichtbar sind. Dieser Aufgabentyp ist auch recht zeitaufwändig; in den meisten Fällen ist es einfacher und effizienter, diese aus Luftbildern zu Hause zu kartieren.</string>
+    <string name="default_disabled_msg_roof">Dieser Aufgabentyp ist standardmäßig deaktiviert, da Dächer von der Straße aus oft nicht gut sichtbar sind. Dieser Aufgabentyp ist auch recht zeitaufwändig; in den meisten Fällen ist es einfacher und effizienter, diese aus Luftbildern zu Hause zu kartieren.</string>
     <string name="tree_custom_quest_export">Abrufen</string>
     <string name="quest_artwork_mosaic">Mosaik</string>
     <string name="import_export_custom_overlays">Benutzerdefinierte Overlays</string>
@@ -625,6 +625,9 @@
     <string name="pref_custom_geometry_title">Kartenmerkmale aus GeoJson-Datei anzeigen</string>
     <string name="pref_custom_geometry_info">Wenn du Text anzeigen möchtest, muss dieser in der Eigenschaft „name“ stehen</string>
     <string name="pref_tile_maxzoom">Maximal unterstützter Zoom</string>
+    <string name="quest_roofOrientation_along">Parallel zur längeren Gebäudeseite</string>
+    <string name="quest_roofOrientation_across">Parallel zur kürzeren Gebäudeseite</string>
+    <string name="quest_roofOrientation_title">Wie ist der Dachfirst ausgerichtet?</string>
     <string name="pref_really_all_notes_title">„Alle Notizen anzeigen“ bedeutet ALLE Notizen</string>
     <string name="fixme_for_object">Eine andere Person hat ein „FixMe“ hinzugefügt:</string>
     <string name="pref_really_all_notes_summary">Wenn du alle Notizen anzeigen möchtest, zeige auch die von dir selbst erstellten (oder kommentierten) Notizen an</string>

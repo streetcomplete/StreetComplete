@@ -336,7 +336,6 @@
     <string name="quest_utility_gas">Газ</string>
     <string name="quest_service_building_other">Інша службова будівля</string>
     <string name="quest_service_building_railway_ventilation_shaft_description">Конструкція, яка забезпечує вентиляцію в залізничних підземних тунелях</string>
-    <string name="default_disabled_msg_roofColour">Це завдання вимкнено за замовчуванням, оскільки колір даху часто погано видно з вулиці. Крім того, це завдання займає досить багато часу; у більшості випадків простіше й ефективніше позначити це на карті вдома за допомогою аерофотознімків.</string>
     <string name="quest_service_building_ventilation">Вентиляційна шахта</string>
     <string name="quest_service_building_heating">Теплопостачання</string>
     <string name="quest_viaFerrataScale_six">Рівень 6/K6/F — надзвичайно складно</string>
