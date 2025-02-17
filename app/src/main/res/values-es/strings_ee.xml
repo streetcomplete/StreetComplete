@@ -611,4 +611,6 @@
     <string name="quest_valves_disabled_msg">Esta búsqueda está desactivada por defecto porque requiere una inspección muy minuciosa de las válvulas disponibles.</string>
     <string name="quest_caravanSiteType_museum">Museo - situado en un museo, exposición o similar.</string>
     <string name="quest_sacScale_strolling_description">Sendero liso y llano, sin obstáculos, apto para todo tipo de calzado, cochecitos o muletas, y que no requiere habilidades de orientación.</string>
+    <string name="file_provide">Seleccionar archivo</string>
+    <string name="file_loading_error">Error al cargar el archivo</string>
 </resources>

@@ -627,4 +627,8 @@
     <string name="fixme_for_object">另外一个人添加了一个 fixme：</string>
     <string name="pref_rotate_while_zooming_title">允许缩放时旋转</string>
     <string name="pref_rotate_angle_threshold_title">旋转手势的阈值</string>
+    <string name="quest_postOffice_title">这是什么类型的邮局？</string>
+    <string name="quest_postOffice_bureau">完整（官方）邮局</string>
+    <string name="quest_postOffice_postAnnex">邮局（私人拥有，可能服务受限）</string>
+    <string name="quest_postOffice_postPartner">商店或便利设施的邮政驿站（作为服务）</string>
 </resources>

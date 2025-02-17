@@ -634,4 +634,8 @@
     <string name="fixme_for_object">En anden person tilføjede et fixme:</string>
     <string name="pref_rotate_while_zooming_title">Tillad rotation, mens der zoomes</string>
     <string name="pref_rotate_angle_threshold_title">Tærskel for rotationsbevægelse</string>
+    <string name="quest_postOffice_title">Hvilken type postkontor er dette?</string>
+    <string name="quest_postOffice_bureau">Fuldt (officielt) posthus</string>
+    <string name="quest_postOffice_postAnnex">Postkontor (privatejet, måske med begrænset service)</string>
+    <string name="quest_postOffice_postPartner">Postafhentning og aflevering i butikker eller faciliteter (som en service)</string>
 </resources>

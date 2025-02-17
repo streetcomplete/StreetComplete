@@ -62,4 +62,27 @@
     <string name="quest_shelter_type_title">Minkälainen katos tämä on?</string>
     <string name="quest_shelter_type_disabled_msg">Tämä tehtävä on oletusarvoisesti pois käytöstä, koska siihen ei ole helppo vastata. Katoksen tyyppi täytyy valita ehdotuksista, jotka on otettu yleisimmistä vastauksista, ja ne on usein vaikea erottaa toisistaan.</string>
     <string name="quest_saunaAvailability_title">Onko täällä sauna?</string>
+    <string name="pref_really_all_notes_title">\"Näytä kaikki huomautukset\" tarkoittaahan kaikkia huomautuksia</string>
+    <string name="pref_really_all_notes_summary">Kun pyydät näyttämään kaikki huomautukset, näytä jopa itse luomasi (tai kommentoimasi) huomautukset</string>
+    <string name="pref_create_custom_quest_summary">…vaihtoehtona huomautuksen jättämiselle. Tätä voidaan käyttää paikallisesti tallennettuna huomautuksena, joka näkyy kartalla. Huomaa, että sinun on otettava käyttöön mukautetut pyynnöt.</string>
+    <string name="pref_save_photos_title">Tallenna huomautuksiin käytetyt valokuvat</string>
+    <string name="pref_save_photos_summary">Tallenna täysikokoisia versioita valokuvista, jotka on otettu huomautuksia luotaessa tyhjentämättä EXIF-tietoja</string>
+    <string name="pref_expert_mode_title">Asiantuntijatila</string>
+    <string name="pref_expert_mode_summary">Ota käyttöön edistyneet muokkausominaisuudet</string>
+    <string name="pref_screen_notes">Huomautuksia</string>
+    <string name="pref_hide_notes_title">Piilota tiettyjen käyttäjien huomautukset</string>
+    <string name="pref_hide_notes_hint">Käytä pilkkua erottelemaan käyttäjänimet tai tunnukset</string>
+    <string name="pref_hide_notes_message">Syötä ohitettavat käyttäjänimet tai tunnukset</string>
+    <string name="pref_show_gpx_button_title">Näytä GPX-huomautuspainike</string>
+    <string name="pref_show_gpx_button_summary">Toisin kuin OSM-huomautuksissa, GPX-huomautuksen lisääminen ei piilota tehtäviä kyseisessä paikassa</string>
+    <string name="pref_swap_gpx_note_button">Vaihda OSM- ja GPX-huomautuspainikkeita</string>
+    <string name="pref_files_not_found">Tiedostoja ei löytynyt</string>
+    <string name="pref_create_custom_quest_title">Salli mukautettujen pyyntöjen luominen</string>
+    <string name="pref_hide_keyboard_title">Piilota näppäimistö ennen huomautuksen luomista</string>
+    <string name="pref_hide_keyboard_summary">Piilottaa näppäimistön, kun se avataan ennen nuotin tosiasiallista luomista (jotta mahdollistaa paikan uudelleennäkeminen)</string>
+    <string name="pref_save_gpx">Hanki GPX-huomautukset, liitteenä olevat kuvat ja säikeet</string>
+    <string name="pref_save_file_error">Virhe tallennettaessa tiedostoa</string>
+    <string name="pref_get_photos_title">Hanki täysikokoisia valokuvia</string>
+    <string name="pref_screen_display">Näyttö</string>
+    <string name="pref_expert_mode_message">Tämä mahdollistaa SCEE:hen lisättyjen seikkailujen ja tapojen käytön\n <li>raaka-tunnisteiden muokkaaminen</li>\n <li>siirtää solmuja, jotka ovat osa tapoja tai suhteita</li>\n <li>vapaasti kelluvan solmun poistaminen</li>\n <li>muokkaa elementtejä, jotka tulee estää muistiinpanolla</li>\n <li>vapaiden kelluvien solmujen lisääminen mihin tahansa</li>\n <li>tehtävän elementtivalikoiman muuttaminen</li>\n\nTämä on silti vähemmän kuin useimmat muut muokkaimet sallivat, mutta huoleton käyttö voi johtaa tietojen vahingoittamiseen tavoilla, jotka eivät ole mahdollisia StreetCompletessa. Huomaa, että ottamalla käyttöön asiantuntijatilan olet huomattavasti enemmän vastuussa muokkauksistasi.\n Ota tämä asetus käyttöön vain, jos sinulla on OSM-kokemusta StreetCompleten ulkopuolella ja ymmärrät mitä olet tekemässä.</string>
 </resources>

@@ -613,4 +613,9 @@
     <string name="fixme_for_object">Valaki más hozzáadott egy fixme-t:</string>
     <string name="pref_rotate_angle_threshold_title">A forgatási gesztus küszöbértéke</string>
     <string name="pref_rotate_while_zooming_title">Forgatás engedélyezése nagyítás közben</string>
+    <string name="ban_check_fails">A tiltott verziók ellenőrzése többször is sikertelen volt. Előfordulhat, hogy elavult verziót futtatsz. Fontold meg a frissítést.</string>
+    <string name="quest_postOffice_title">Milyen posta ez?</string>
+    <string name="quest_postOffice_bureau">Postahivatal</string>
+    <string name="quest_postOffice_postAnnex">Posta (magán, esetleg korlátozott szolgáltatással)</string>
+    <string name="quest_postOffice_postPartner">Postapartner-pont más bolton belül</string>
 </resources>
