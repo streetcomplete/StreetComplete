@@ -95,7 +95,6 @@ import de.westnordost.streetcomplete.quests.hairdresser.AddHairdresserCustomers
 import de.westnordost.streetcomplete.quests.handrail.AddHandrail
 import de.westnordost.streetcomplete.quests.incline_direction.AddBicycleIncline
 import de.westnordost.streetcomplete.quests.incline_direction.AddStepsIncline
-import de.westnordost.streetcomplete.quests.incline_direction.AddEscalatorIncline
 import de.westnordost.streetcomplete.quests.internet_access.AddInternetAccess
 import de.westnordost.streetcomplete.quests.kerb_height.AddKerbHeight
 import de.westnordost.streetcomplete.quests.lanes.AddLanes
@@ -283,7 +282,6 @@ fun questTypeRegistry(
     21 to AddHandrail(), // for accessibility of pedestrian routing, can be gathered when walking past
     22 to AddStepsRamp(),
     23 to AddStepsIncline(), // can be gathered while walking perpendicular to the way e.g. the other side of the road or when running/cycling past, confuses some people, so not as high as it theoretically should be
-    175 to AddEscalatorIncline(),
     158 to AddTactilePavingSteps(), // need to check top and bottom
 
     24 to AddBicycleIncline(),
