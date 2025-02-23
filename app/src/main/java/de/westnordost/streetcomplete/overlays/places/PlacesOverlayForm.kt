@@ -112,7 +112,7 @@ class PlacesOverlayForm : AbstractOverlayForm() {
                 element?.geometryType ?: GeometryType.POINT,
                 countryOrSubdivisionCode,
                 featureCtrl.feature?.name,
-                ::filterOnlyPlaces,
+                { it.isPlace() || it.id == "shop/vacant" },
                 ::onSelectedFeature,
                 POPULAR_PLACE_FEATURE_IDS,
             ).show()
@@ -158,11 +158,6 @@ class PlacesOverlayForm : AbstractOverlayForm() {
         super.onSaveInstanceState(outState)
         namesAdapter?.names?.let { outState.putString(LOCALIZED_NAMES_DATA, Json.encodeToString(it)) }
         outState.putBoolean(NO_NAME, isNoName)
-    }
-
-    private fun filterOnlyPlaces(feature: Feature): Boolean {
-        val fakeElement = Node(-1L, LatLon(0.0, 0.0), feature.tags, 0)
-        return fakeElement.isPlace() || feature.id == "shop/vacant"
     }
 
     private fun onSelectedFeature(feature: Feature) {

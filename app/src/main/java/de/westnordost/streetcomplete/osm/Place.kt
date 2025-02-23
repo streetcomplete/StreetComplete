@@ -3,6 +3,8 @@ package de.westnordost.streetcomplete.osm
 import de.westnordost.osmfeatures.Feature
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.data.osm.mapdata.Node
 
 /** Return whether this element is a kind of place, regardless whether it is currently vacant or
  *  not */
@@ -16,6 +18,13 @@ fun Element.isDisusedPlace(): Boolean =
 
 fun Element.isPlace(): Boolean =
     IS_PLACE_EXPRESSION.matches(this)
+
+fun Feature.isPlace(): Boolean {
+    val allTags = tagKeys.associateWith { "yes" } + tags
+    val element = Node(-1L, LatLon(0.0, 0.0), allTags)
+    return element.isPlace()
+}
+
 
 /** Map features like shops or amenities that usually have a name and can be entered.
  *

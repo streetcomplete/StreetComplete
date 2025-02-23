@@ -115,15 +115,10 @@ class ThingsOverlayForm : AbstractOverlayForm() {
             element?.geometryType ?: GeometryType.POINT, // for new features: always POINT
             countryOrSubdivisionCode,
             featureCtrl.feature?.name,
-            ::filterOnlyThings,
+            { it.isThing() },
             ::onSelectedFeature,
             POPULAR_THING_FEATURE_IDS
         ).show()
-    }
-
-    private fun filterOnlyThings(feature: Feature): Boolean {
-        val fakeElement = Node(-1L, LatLon(0.0, 0.0), feature.tags, 0)
-        return fakeElement.isThing()
     }
 
     private fun onSelectedFeature(feature: Feature) {

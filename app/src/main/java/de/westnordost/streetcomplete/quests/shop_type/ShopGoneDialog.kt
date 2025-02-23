@@ -57,7 +57,7 @@ class ShopGoneDialog(
                 element.geometryType,
                 countryCode,
                 featureCtrl.feature?.name,
-                ::filterOnlyPlaces,
+                { it.isPlace() },
                 ::onSelectedFeature,
                 POPULAR_PLACE_FEATURE_IDS,
                 true
@@ -76,9 +76,6 @@ class ShopGoneDialog(
         updateOkButtonEnablement()
     }
 
-    private fun filterOnlyPlaces(feature: Feature): Boolean =
-        Node(-1L, LatLon(0.0, 0.0), feature.tags, 0).isPlace()
-
     private fun onSelectedFeature(feature: Feature) {
         featureCtrl.feature = feature
         updateOkButtonEnablement()
@@ -92,7 +89,7 @@ class ShopGoneDialog(
                 R.id.vacantRadioButton -> {
                     val vacantShop = featureDictionary
                         .getByTags(element.tags)
-                        .firstOrNull { filterOnlyPlaces(it) }
+                        .firstOrNull { it.isPlace() }
                         ?.toPrefixedFeature("disused")
                         ?: featureDictionary.getById("shop/vacant")!!
                     onSelectedFeatureFn(vacantShop)

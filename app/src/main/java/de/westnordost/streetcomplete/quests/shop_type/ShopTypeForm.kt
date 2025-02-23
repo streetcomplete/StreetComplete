@@ -45,16 +45,11 @@ class ShopTypeForm : AbstractOsmQuestForm<ShopTypeAnswer>() {
                 element.geometryType,
                 countryOrSubdivisionCode,
                 featureCtrl.feature?.name,
-                ::filterOnlyShops,
+                { it.isPlace() },
                 ::onSelectedFeature,
                 POPULAR_PLACE_FEATURE_IDS,
             ).show()
         }
-    }
-
-    private fun filterOnlyShops(feature: Feature): Boolean {
-        val fakeElement = Node(-1L, LatLon(0.0, 0.0), feature.tags, 0)
-        return fakeElement.isPlace()
     }
 
     private fun onSelectedFeature(feature: Feature) {
