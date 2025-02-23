@@ -4,23 +4,26 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isGone
+import de.westnordost.osmfeatures.BaseFeature
 import de.westnordost.osmfeatures.Feature
 import de.westnordost.osmfeatures.GeometryType
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.create.CreateNodeAction
 import de.westnordost.streetcomplete.data.osm.edits.delete.DeletePoiNodeAction
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.databinding.FragmentOverlayThingsBinding
 import de.westnordost.streetcomplete.osm.POPULAR_THING_FEATURE_IDS
+import de.westnordost.streetcomplete.osm.applyTo
 import de.westnordost.streetcomplete.osm.asIfItWasnt
 import de.westnordost.streetcomplete.osm.isThing
+import de.westnordost.streetcomplete.osm.toPrefixedFeature
 import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 import de.westnordost.streetcomplete.overlays.AnswerItem
 import de.westnordost.streetcomplete.overlays.IAnswerItem
-import de.westnordost.streetcomplete.util.DummyFeature
 import de.westnordost.streetcomplete.util.getLanguagesForFeatureDictionary
 import de.westnordost.streetcomplete.util.getNameAndLocationSpanned
 import de.westnordost.streetcomplete.util.ktx.geometryType
@@ -54,20 +57,19 @@ class ThingsOverlayForm : AbstractOverlayForm() {
         if (disusedElement != null) {
             val disusedFeature = getFeatureDictionaryFeature(disusedElement)
             if (disusedFeature != null) {
-                return DummyFeature(
-                    disusedFeature.id + "/disused",
-                    "${disusedFeature.name} (${resources.getString(R.string.disused).uppercase()})",
-                    disusedFeature.icon,
-                    disusedFeature.addTags.mapKeys { "disused:${it.key}" }
+                return disusedFeature.toPrefixedFeature(
+                    prefix = "disused",
+                    label = resources.getString(R.string.disused).uppercase()
                 )
             }
         }
 
-        return DummyFeature(
-            "thing/unknown",
-            requireContext().getString(R.string.unknown_object),
-            "ic_preset_maki_marker_stroked",
-            element.tags
+        return BaseFeature(
+            id = "thing/unknown",
+            names = listOf(requireContext().getString(R.string.unknown_object)),
+            icon = "ic_preset_maki_marker_stroked",
+            tags = element.tags,
+            geometry = GeometryType.entries.toList()
         )
     }
 
@@ -149,7 +151,11 @@ class ThingsOverlayForm : AbstractOverlayForm() {
     override fun onClickOk() {
         if (element == null) {
             val feature = featureCtrl.feature!!
-            applyEdit(CreateNodeAction(geometry.center, feature.addTags))
+            val tags = HashMap<String, String>()
+            val builder = StringMapChangesBuilder(tags)
+            feature.applyTo(builder)
+            builder.create().applyTo(tags)
+            applyEdit(CreateNodeAction(geometry.center, tags))
         }
     }
 }

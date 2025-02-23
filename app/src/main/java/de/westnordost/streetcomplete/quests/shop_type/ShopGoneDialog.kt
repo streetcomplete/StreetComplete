@@ -15,8 +15,8 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.databinding.DialogShopGoneBinding
 import de.westnordost.streetcomplete.databinding.ViewShopTypeBinding
 import de.westnordost.streetcomplete.osm.POPULAR_PLACE_FEATURE_IDS
-import de.westnordost.streetcomplete.osm.getDisusedPlaceTags
 import de.westnordost.streetcomplete.osm.isPlace
+import de.westnordost.streetcomplete.osm.toPrefixedFeature
 import de.westnordost.streetcomplete.util.ktx.geometryType
 import de.westnordost.streetcomplete.view.controller.FeatureViewController
 import de.westnordost.streetcomplete.view.dialogs.SearchFeaturesDialog
@@ -26,8 +26,8 @@ class ShopGoneDialog(
     private val element: Element,
     private val countryCode: String?,
     private val featureDictionary: FeatureDictionary,
-    private val onSelectedFeature: (Map<String, String>) -> Unit,
-    private val onLeaveNote: () -> Unit
+    private val onSelectedFeatureFn: (Feature) -> Unit,
+    private val onLeaveNoteFn: () -> Unit
 ) : AlertDialog(context) {
 
     private val binding: ViewShopTypeBinding
@@ -76,10 +76,8 @@ class ShopGoneDialog(
         updateOkButtonEnablement()
     }
 
-    private fun filterOnlyPlaces(feature: Feature): Boolean {
-        val fakeElement = Node(-1L, LatLon(0.0, 0.0), feature.tags, 0)
-        return fakeElement.isPlace()
-    }
+    private fun filterOnlyPlaces(feature: Feature): Boolean =
+        Node(-1L, LatLon(0.0, 0.0), feature.tags, 0).isPlace()
 
     private fun onSelectedFeature(feature: Feature) {
         featureCtrl.feature = feature
@@ -91,9 +89,20 @@ class ShopGoneDialog(
         // to override the default OK=dismiss() behavior
         getButton(DialogInterface.BUTTON_POSITIVE).setOnClickListener {
             when (selectedRadioButtonId) {
-                R.id.vacantRadioButton ->    onSelectedFeature(getDisusedPlaceTags(element.tags))
-                R.id.replaceRadioButton ->   onSelectedFeature(featureCtrl.feature!!.addTags)
-                R.id.leaveNoteRadioButton -> onLeaveNote()
+                R.id.vacantRadioButton -> {
+                    val vacantShop = featureDictionary
+                        .getByTags(element.tags)
+                        .firstOrNull { filterOnlyPlaces(it) }
+                        ?.toPrefixedFeature("disused")
+                        ?: featureDictionary.getById("shop/vacant")!!
+                    onSelectedFeatureFn(vacantShop)
+                }
+                R.id.replaceRadioButton -> {
+                    onSelectedFeatureFn(featureCtrl.feature!!)
+                }
+                R.id.leaveNoteRadioButton -> {
+                    onLeaveNoteFn()
+                }
             }
             dismiss()
         }

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isGone
+import de.westnordost.osmfeatures.BaseFeature
 import de.westnordost.osmfeatures.Feature
 import de.westnordost.osmfeatures.GeometryType
 import de.westnordost.streetcomplete.R
@@ -20,16 +21,15 @@ import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.databinding.FragmentOverlayPlacesBinding
 import de.westnordost.streetcomplete.osm.LocalizedName
 import de.westnordost.streetcomplete.osm.POPULAR_PLACE_FEATURE_IDS
+import de.westnordost.streetcomplete.osm.applyReplacePlaceTo
 import de.westnordost.streetcomplete.osm.applyTo
-import de.westnordost.streetcomplete.osm.getDisusedPlaceTags
 import de.westnordost.streetcomplete.osm.isDisusedPlace
 import de.westnordost.streetcomplete.osm.isPlace
 import de.westnordost.streetcomplete.osm.parseLocalizedNames
-import de.westnordost.streetcomplete.osm.replacePlace
+import de.westnordost.streetcomplete.osm.toPrefixedFeature
 import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 import de.westnordost.streetcomplete.overlays.AnswerItem
 import de.westnordost.streetcomplete.quests.LocalizedNameAdapter
-import de.westnordost.streetcomplete.util.DummyFeature
 import de.westnordost.streetcomplete.util.getLanguagesForFeatureDictionary
 import de.westnordost.streetcomplete.util.getLocationSpanned
 import de.westnordost.streetcomplete.util.ktx.geometryType
@@ -81,11 +81,12 @@ class PlacesOverlayForm : AbstractOverlayForm() {
                     geometry = geometryType,
                 ).firstOrNull()
                 // if not found anything in the iD presets, it's a shop type unknown to iD presets
-                ?: DummyFeature(
-                    "shop/unknown",
-                    requireContext().getString(R.string.unknown_shop_title),
-                    "maki-shop",
-                    element.tags
+                ?: BaseFeature(
+                    id = "shop/unknown",
+                    names = listOf(requireContext().getString(R.string.unknown_shop_title)),
+                    icon = "maki-shop",
+                    tags = element.tags,
+                    geometry = GeometryType.entries.toList()
                 )
             }
         }
@@ -111,7 +112,7 @@ class PlacesOverlayForm : AbstractOverlayForm() {
                 element?.geometryType ?: GeometryType.POINT,
                 countryOrSubdivisionCode,
                 featureCtrl.feature?.name,
-                ::filterOnlyShops,
+                ::filterOnlyPlaces,
                 ::onSelectedFeature,
                 POPULAR_PLACE_FEATURE_IDS,
             ).show()
@@ -159,7 +160,7 @@ class PlacesOverlayForm : AbstractOverlayForm() {
         outState.putBoolean(NO_NAME, isNoName)
     }
 
-    private fun filterOnlyShops(feature: Feature): Boolean {
+    private fun filterOnlyPlaces(feature: Feature): Boolean {
         val fakeElement = Node(-1L, LatLon(0.0, 0.0), feature.tags, 0)
         return fakeElement.isPlace() || feature.id == "shop/vacant"
     }
@@ -308,19 +309,13 @@ private suspend fun createEditAction(
 
     if (doReplaceShop) {
         if (isVacant) {
-            tagChanges.replacePlace(getDisusedPlaceTags(element?.tags))
+            val vacantFeature = previousFeature?.toPrefixedFeature("disused") ?: newFeature
+            vacantFeature.applyReplacePlaceTo(tagChanges)
         } else {
-            tagChanges.replacePlace(newFeature.addTags)
+            newFeature.applyReplacePlaceTo(tagChanges)
         }
     } else {
-        for ((key, value) in previousFeature?.removeTags.orEmpty()) {
-            tagChanges.remove(key)
-        }
-        for ((key, value) in newFeature.addTags) {
-            if (key !in tagChanges || newFeature.preserveTags.none { it.containsMatchIn(key) }) {
-                tagChanges[key] = value
-            }
-        }
+        newFeature.applyTo(tagChanges, previousFeature)
     }
 
     if (!newFeature.hasFixedName) {
