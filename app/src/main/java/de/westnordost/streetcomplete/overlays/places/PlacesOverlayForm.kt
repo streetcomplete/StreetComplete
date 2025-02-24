@@ -24,6 +24,7 @@ import de.westnordost.streetcomplete.osm.applyTo
 import de.westnordost.streetcomplete.osm.isDisusedPlace
 import de.westnordost.streetcomplete.osm.isPlace
 import de.westnordost.streetcomplete.osm.parseLocalizedNames
+import de.westnordost.streetcomplete.osm.toElement
 import de.westnordost.streetcomplete.osm.toPrefixedFeature
 import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 import de.westnordost.streetcomplete.overlays.AnswerItem
@@ -110,7 +111,7 @@ class PlacesOverlayForm : AbstractOverlayForm() {
                 element?.geometryType ?: GeometryType.POINT,
                 countryOrSubdivisionCode,
                 featureCtrl.feature?.name,
-                { it.isPlace() || it.id == "shop/vacant" },
+                { it.toElement().isPlace() || it.id == "shop/vacant" },
                 ::onSelectedFeature,
                 POPULAR_PLACE_FEATURE_IDS,
             ).show()

@@ -16,6 +16,7 @@ import de.westnordost.streetcomplete.databinding.DialogShopGoneBinding
 import de.westnordost.streetcomplete.databinding.ViewShopTypeBinding
 import de.westnordost.streetcomplete.osm.POPULAR_PLACE_FEATURE_IDS
 import de.westnordost.streetcomplete.osm.isPlace
+import de.westnordost.streetcomplete.osm.toElement
 import de.westnordost.streetcomplete.osm.toPrefixedFeature
 import de.westnordost.streetcomplete.util.ktx.geometryType
 import de.westnordost.streetcomplete.view.controller.FeatureViewController
@@ -57,7 +58,7 @@ class ShopGoneDialog(
                 element.geometryType,
                 countryCode,
                 featureCtrl.feature?.name,
-                { it.isPlace() },
+                { it.toElement().isPlace() },
                 ::onSelectedFeature,
                 POPULAR_PLACE_FEATURE_IDS,
                 true
@@ -89,7 +90,7 @@ class ShopGoneDialog(
                 R.id.vacantRadioButton -> {
                     val vacantShop = featureDictionary
                         .getByTags(element.tags)
-                        .firstOrNull { it.isPlace() }
+                        .firstOrNull { it.toElement().isPlace() }
                         ?.toPrefixedFeature("disused")
                         ?: featureDictionary.getById("shop/vacant")!!
                     onSelectedFeatureFn(vacantShop)

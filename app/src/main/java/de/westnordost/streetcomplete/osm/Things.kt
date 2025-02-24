@@ -1,24 +1,13 @@
 package de.westnordost.streetcomplete.osm
 
-import de.westnordost.osmfeatures.Feature
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
-import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
-import de.westnordost.streetcomplete.data.osm.mapdata.Node
 
 fun Element.isThing(): Boolean =
     IS_THING_EXPRESSION.matches(this)
 
 fun Element.isDisusedThing(): Boolean =
     this.asIfItWasnt("disused")?.let { IS_THING_EXPRESSION.matches(it) } == true
-
-fun Feature.isThing(): Boolean {
-    val allTags = tagKeys.associateWith { "yes" } + tags
-    val element = Node(-1L, NULL_ISLAND, allTags)
-    return element.isThing()
-}
-
-private val NULL_ISLAND = LatLon(0.0, 0.0)
 
 /** Small map features that are often mapped as points and usually cannot be entered.
  *

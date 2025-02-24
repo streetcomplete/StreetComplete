@@ -10,6 +10,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.databinding.ViewShopTypeBinding
 import de.westnordost.streetcomplete.osm.POPULAR_PLACE_FEATURE_IDS
 import de.westnordost.streetcomplete.osm.isPlace
+import de.westnordost.streetcomplete.osm.toElement
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.util.ktx.geometryType
 import de.westnordost.streetcomplete.view.controller.FeatureViewController
@@ -45,7 +46,7 @@ class ShopTypeForm : AbstractOsmQuestForm<ShopTypeAnswer>() {
                 element.geometryType,
                 countryOrSubdivisionCode,
                 featureCtrl.feature?.name,
-                { it.isPlace() },
+                { it.toElement().isPlace() },
                 ::onSelectedFeature,
                 POPULAR_PLACE_FEATURE_IDS,
             ).show()
