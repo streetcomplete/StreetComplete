@@ -22,7 +22,7 @@ private fun Map<String, String>.getPrefixedOnly(prefix: String): Map<String, Str
     .filter { it.key.startsWith("$prefix:") }
     .mapKeys { it.key.substring(prefix.length + 1) }
 
-/** Returns a copy of this feature with all its tags prefixed with the given [lifecycle] prefix. */
+/** Returns a copy of this feature with all its tags prefixed with the given lifecycle [prefix]. */
 fun Feature.toPrefixedFeature(prefix: String, label: String = prefix): Feature = BaseFeature(
     id = "$id/$prefix",
     names = names.map { "$name ($label)" },
