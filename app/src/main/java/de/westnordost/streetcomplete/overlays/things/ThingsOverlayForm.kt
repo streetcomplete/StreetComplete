@@ -20,6 +20,7 @@ import de.westnordost.streetcomplete.osm.POPULAR_THING_FEATURE_IDS
 import de.westnordost.streetcomplete.osm.applyTo
 import de.westnordost.streetcomplete.osm.asIfItWasnt
 import de.westnordost.streetcomplete.osm.isThing
+import de.westnordost.streetcomplete.osm.toElement
 import de.westnordost.streetcomplete.osm.toPrefixedFeature
 import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 import de.westnordost.streetcomplete.overlays.AnswerItem
@@ -50,27 +51,23 @@ class ThingsOverlayForm : AbstractOverlayForm() {
 
     private fun getOriginalFeature(): Feature? {
         val element = element ?: return null
-        val feature = getFeatureDictionaryFeature(element)
-        if (feature != null) return feature
 
-        val disusedElement = element.asIfItWasnt("disused")
-        if (disusedElement != null) {
-            val disusedFeature = getFeatureDictionaryFeature(disusedElement)
-            if (disusedFeature != null) {
-                return disusedFeature.toPrefixedFeature(
-                    prefix = "disused",
-                    label = resources.getString(R.string.disused).uppercase()
-                )
-            }
-        }
+        return getFeatureDictionaryFeature(element)
+            ?: getDisusedFeatureDictionaryFeature(element)
+            ?: BaseFeature(
+                id = "thing/unknown",
+                names = listOf(requireContext().getString(R.string.unknown_object)),
+                icon = "ic_preset_maki_marker_stroked",
+                tags = element.tags,
+                geometry = GeometryType.entries.toList()
+            )
+    }
 
-        return BaseFeature(
-            id = "thing/unknown",
-            names = listOf(requireContext().getString(R.string.unknown_object)),
-            icon = "ic_preset_maki_marker_stroked",
-            tags = element.tags,
-            geometry = GeometryType.entries.toList()
-        )
+    private fun getDisusedFeatureDictionaryFeature(element: Element): Feature? {
+        val disusedElement = element.asIfItWasnt("disused") ?: return null
+        val disusedFeature = getFeatureDictionaryFeature(disusedElement) ?: return null
+        val disusedLabel = resources.getString(R.string.disused).uppercase()
+        return disusedFeature.toPrefixedFeature("disused", disusedLabel)
     }
 
     private fun getFeatureDictionaryFeature(element: Element): Feature? {
@@ -82,7 +79,7 @@ class ThingsOverlayForm : AbstractOverlayForm() {
             languages = languages,
             country = countryOrSubdivisionCode,
             geometry = geometryType
-        ).firstOrNull()
+        ).firstOrNull { it.toElement().isThing() }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -115,7 +112,7 @@ class ThingsOverlayForm : AbstractOverlayForm() {
             element?.geometryType ?: GeometryType.POINT, // for new features: always POINT
             countryOrSubdivisionCode,
             featureCtrl.feature?.name,
-            { it.isThing() },
+            { it.toElement().isThing() },
             ::onSelectedFeature,
             POPULAR_THING_FEATURE_IDS
         ).show()

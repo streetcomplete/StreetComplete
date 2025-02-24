@@ -62,6 +62,9 @@ open class UpdatePresetsTask : DefaultTask() {
             // remove presets specific to certain countries (these are very likely just tweaks
             // which fields are displayed etc), see https://github.com/ideditor/schema-builder/issues/94#issuecomment-2416796047
             || (value as JsonObject).obj("locationSet")?.array<String>("include") != null
+            // remove "disused" presets. We deal with disused stuff ourselves, in a more detailed manner, i.e.
+            // say what kind of thing it is that is disused
+            || key.startsWith("disused/")
         }
         // strip unused fields
         for (value in json.values) {
