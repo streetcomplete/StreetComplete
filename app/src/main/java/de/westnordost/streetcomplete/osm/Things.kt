@@ -14,9 +14,11 @@ fun Element.isDisusedThing(): Boolean =
 
 fun Feature.isThing(): Boolean {
     val allTags = tagKeys.associateWith { "yes" } + tags
-    val element = Node(-1L, LatLon(0.0, 0.0), allTags)
+    val element = Node(-1L, NULL_ISLAND, allTags)
     return element.isThing()
 }
+
+private val NULL_ISLAND = LatLon(0.0, 0.0)
 
 /** Small map features that are often mapped as points and usually cannot be entered.
  *

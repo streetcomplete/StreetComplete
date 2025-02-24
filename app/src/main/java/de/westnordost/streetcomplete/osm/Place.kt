@@ -21,10 +21,11 @@ fun Element.isPlace(): Boolean =
 
 fun Feature.isPlace(): Boolean {
     val allTags = tagKeys.associateWith { "yes" } + tags
-    val element = Node(-1L, LatLon(0.0, 0.0), allTags)
+    val element = Node(-1L, NULL_ISLAND, allTags)
     return element.isPlace()
 }
 
+private val NULL_ISLAND = LatLon(0.0, 0.0)
 
 /** Map features like shops or amenities that usually have a name and can be entered.
  *
