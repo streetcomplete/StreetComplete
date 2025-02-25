@@ -16,7 +16,7 @@ import org.koin.dsl.module
 
 val userScreenModule = module {
     viewModel<ProfileViewModel> { ProfileViewModelImpl(
-        get(), get(), get(), get(), get(), get(), get(named("AvatarsCacheDirectory"))
+        get(), get(), get(), get(), get(), get(), get(), get(named("AvatarsCacheDirectory"))
     ) }
 
     viewModel<LoginViewModel> { LoginViewModelImpl(get(), get(), get()) }
