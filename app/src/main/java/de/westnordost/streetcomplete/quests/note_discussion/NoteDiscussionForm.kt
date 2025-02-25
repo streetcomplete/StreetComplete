@@ -187,7 +187,7 @@ class NoteDiscussionForm : AbstractQuestForm() {
 
         private val User.avatar: Bitmap? get() {
             val file = Path(avatarsCacheDir, id.toString())
-            return if (fileSystem.exists(file)) BitmapFactory.decodeFile(file.name) else null
+            return if (fileSystem.exists(file)) BitmapFactory.decodeFile(file.toString()) else null
         }
 
         private val NoteComment.Action.actionResourceId get() = when (this) {

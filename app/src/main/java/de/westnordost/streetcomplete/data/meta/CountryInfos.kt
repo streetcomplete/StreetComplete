@@ -43,7 +43,7 @@ class CountryInfos(private val assetManager: AssetManager) {
         val path = Path(BASEPATH, "$countryCodeIso3166.yml")
 
         val countryInfos = "countryCode: $countryCode\n" + assetManager
-            .open(path.name)
+            .open(path.toString())
             .bufferedReader()
             .use { it.readText() }
 

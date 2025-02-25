@@ -84,7 +84,7 @@ fun ProfileScreen(viewModel: ProfileViewModel) {
             horizontalArrangement = Arrangement.spacedBy(16.dp)
         ) {
             Image(
-                painter = userAvatarFile?.let { getAvatarPainter(it.name) }
+                painter = userAvatarFile?.let { getAvatarPainter(it.toString()) }
                     ?: painterResource(R.drawable.ic_osm_anon_avatar),
                 contentDescription = null,
                 modifier = Modifier
