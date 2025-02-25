@@ -30,7 +30,7 @@ class AddGlutenFree : OsmFilterQuestType<DietAvailabilityAnswer>() {
     override val icon = R.drawable.ic_quest_glutenfree
     override val isReplacePlaceEnabled = true
     override val achievements = listOf(CITIZEN)
-    override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside_regional_warning
+    override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside
 
     override val hint = R.string.quest_dietType_explanation_glutenfree
 
