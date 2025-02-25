@@ -341,11 +341,12 @@ Once the quest icon is ready:
 - when using Inkscape, save as "Optimized SVG" to remove unnecessary cruft or use another tool for that, like [svgo](https://github.com/svg/svgo) or online [SVGOMG](https://svgomg.net/)
 - Put SVG into [`res/graphics/quest`](res/graphics/quest) folder
   - SVG is a standard format editable in various software, unlike internal Android Studio XML that will be produced in the next steps.
-- Open Android Studio
+  - take care to name the SVG file just like the XML but without `ic_quest_` prefix, as some tools expect that.
+- Open Android Studio (if you don't use it, there are also online tools to convert from SVG to Android XML)
 - Right click on the "app" folder in the Project tool window (top left)
 - Select new → vector asset
 - Select your SVG file
-- Name with `ic_quest_` prefix (something like `ic_quest_traffic_calming`)
+- Name with `ic_quest_` prefix (something like `ic_quest_traffic_calming`) - it should be the same name as used in the Quest file (e.g. `R.drawable.ic_quest_traffic_calming`)
 - Press "Finish" button to generate drawable
 - Add an entry in the [attribution file](res/graphics/authors.txt)
 - Modify `icon` property in the quest definition to use the new drawable
