@@ -34,7 +34,7 @@ class AddGlutenFree : OsmFilterQuestType<DietAvailabilityAnswer>() {
 
     override val hint = R.string.quest_dietType_explanation_glutenfree
 
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_dietType_glutenfree_name_title2
+    override fun getTitle(tags: Map<String, String>) = R.string.quest_dietType_glutenfree_name_title
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
         getMapData().asSequence().filter { it.isPlaceOrDisusedPlace() }
