@@ -345,6 +345,7 @@ quest/
     footway_surface.svg
     footway_surface_detail.svg
     fuel.svg
+    gluten.svg                       modified from CC0 https://www.svgrepo.com/svg/269879/cereal-wheat and restaurant_vegan.svg by Matija Nalis (CC0 for modifications)
     hairdresser.svg                  modified from scissors.svg by Matija Nalis (CC0 for modifications)
     housenumber.svg
     housenumber_street.svg
