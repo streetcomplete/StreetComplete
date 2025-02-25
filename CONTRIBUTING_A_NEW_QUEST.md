@@ -142,6 +142,8 @@ Adjust [QuestsModule.kt](app/src/main/java/de/westnordost/streetcomplete/quests/
 
 Each quest is associated with a number in this list. These numbers are used to identify the quest uniquely and can be used to save presets as QR codes. When adding a new quest, use the next consecutive number that is not yet in the list. Put the quest in order of priority, even if it means the numbers are not sorted.
 
+You can use this command to get last used quest number (which you need to increment by one): `sed -ne 's/^ *\([0-9]\+\) .*$/\1/p' app/src/main/java/de/westnordost/streetcomplete/quests/QuestsModule.kt | sort -g | tail -n1`
+
 Add your quest to the list so that it will be loaded by the app.
 
 At this point you can run the app in the emulator - everything should work and one of the quests will appear twice.
