@@ -57,6 +57,8 @@ class PlacesOverlayForm : AbstractOverlayForm() {
     private var isNoName: Boolean = false
     private var namesAdapter: LocalizedNameAdapter? = null
 
+    private lateinit var vacantShopFeature: Feature
+
     override val otherAnswers get() = listOfNotNull(
         AnswerItem(R.string.quest_shop_gone_vacant_answer) { setVacant() },
         createNoNameAnswer()
@@ -65,32 +67,37 @@ class PlacesOverlayForm : AbstractOverlayForm() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val element = element
-        originalFeature = element?.let {
-            val languages = getLanguagesForFeatureDictionary(resources.configuration)
-            val geometryType = if (element.type == ElementType.NODE) null else element.geometryType
-
-            if (element.isDisusedPlace()) {
-                featureDictionary.getById("shop/vacant", languages = languages)
-            } else {
-                featureDictionary.getByTags(
-                    tags = element.tags,
-                    languages = languages,
-                    country = countryOrSubdivisionCode,
-                    geometry = geometryType,
-                ).firstOrNull()
-                // if not found anything in the iD presets, it's a shop type unknown to iD presets
-                ?: BaseFeature(
-                    id = "shop/unknown",
-                    names = listOf(requireContext().getString(R.string.unknown_shop_title)),
-                    icon = "maki-shop",
-                    tags = element.tags,
-                    geometry = GeometryType.entries.toList()
-                )
-            }
-        }
+        val languages = getLanguagesForFeatureDictionary(resources.configuration)
+        vacantShopFeature = featureDictionary.getById("shop/vacant", languages)!!
+        originalFeature = getOriginalFeature()
         originalNoName = element?.tags?.get("name:signed") == "no" || element?.tags?.get("noname") == "yes"
         isNoName = savedInstanceState?.getBoolean(NO_NAME) ?: originalNoName
+    }
+
+    private fun getOriginalFeature(): Feature? {
+        val element = element ?: return null
+
+        return getFeatureDictionaryFeature(element)
+            ?: if (element.isDisusedPlace()) vacantShopFeature else null
+            ?: BaseFeature(
+                id = "shop/unknown",
+                names = listOf(requireContext().getString(R.string.unknown_shop_title)),
+                icon = "maki-shop",
+                tags = element.tags,
+                geometry = GeometryType.entries.toList()
+            )
+    }
+
+    private fun getFeatureDictionaryFeature(element: Element): Feature? {
+        val languages = getLanguagesForFeatureDictionary(resources.configuration)
+        val geometryType = if (element.type == ElementType.NODE) null else element.geometryType
+
+        return featureDictionary.getByTags(
+            tags = element.tags,
+            languages = languages,
+            country = countryOrSubdivisionCode,
+            geometry = geometryType,
+        ).firstOrNull { it.toElement().isPlace() }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
