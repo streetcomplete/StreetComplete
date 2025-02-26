@@ -142,6 +142,8 @@ Adjust [QuestsModule.kt](app/src/main/java/de/westnordost/streetcomplete/quests/
 
 Each quest is associated with a number in this list. These numbers are used to identify the quest uniquely and can be used to save presets as QR codes. When adding a new quest, use the next consecutive number that is not yet in the list. Put the quest in order of priority, even if it means the numbers are not sorted.
 
+You can use this command to get last used quest number (which you need to increment by one): `sed -ne 's/^ *\([0-9]\+\) .*$/\1/p' app/src/main/java/de/westnordost/streetcomplete/quests/QuestsModule.kt | sort -g | tail -n1`
+
 Add your quest to the list so that it will be loaded by the app.
 
 At this point you can run the app in the emulator - everything should work and one of the quests will appear twice.
@@ -339,11 +341,12 @@ Once the quest icon is ready:
 - when using Inkscape, save as "Optimized SVG" to remove unnecessary cruft or use another tool for that, like [svgo](https://github.com/svg/svgo) or online [SVGOMG](https://svgomg.net/)
 - Put SVG into [`res/graphics/quest`](res/graphics/quest) folder
   - SVG is a standard format editable in various software, unlike internal Android Studio XML that will be produced in the next steps.
-- Open Android Studio
+  - take care to name the SVG file just like the XML but without `ic_quest_` prefix, as some tools expect that.
+- Open Android Studio (if you don't use it, there are also online tools to convert from SVG to Android XML)
 - Right click on the "app" folder in the Project tool window (top left)
 - Select new → vector asset
 - Select your SVG file
-- Name with `ic_quest_` prefix (something like `ic_quest_traffic_calming`)
+- Name with `ic_quest_` prefix (something like `ic_quest_traffic_calming`) - it should be the same name as used in the Quest file (e.g. `R.drawable.ic_quest_traffic_calming`)
 - Press "Finish" button to generate drawable
 - Add an entry in the [attribution file](res/graphics/authors.txt)
 - Modify `icon` property in the quest definition to use the new drawable
