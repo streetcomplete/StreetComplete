@@ -6,6 +6,7 @@ import de.westnordost.osmfeatures.GeometryType
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 
+/** Get the primary feature or null given an element in the given language(s) */
 fun FeatureDictionary.getFeature(
     element: Element,
     languages: List<String?>? = null,
