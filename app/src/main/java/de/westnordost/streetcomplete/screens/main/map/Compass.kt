@@ -12,7 +12,6 @@ import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.math.normalizeRadians
-import java.lang.Math.toRadians
 import kotlin.math.PI
 import kotlin.math.abs
 
@@ -93,7 +92,7 @@ class Compass(
             location.altitude.toFloat(),
             nowAsEpochMilliseconds()
         )
-        declination = toRadians(geomagneticField.declination.toDouble()).toFloat()
+        declination = (geomagneticField.declination * PI / 180.0).toFloat()
     }
 
     private fun lowPassFilterAngle(newValue: Float, oldValue: Float): Float {

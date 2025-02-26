@@ -16,7 +16,6 @@ import de.westnordost.streetcomplete.quests.AAddLocalizedNameForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.NameSuggestionsSource
 import org.koin.android.ext.android.inject
-import java.lang.IllegalStateException
 import java.util.LinkedList
 import java.util.Locale
 

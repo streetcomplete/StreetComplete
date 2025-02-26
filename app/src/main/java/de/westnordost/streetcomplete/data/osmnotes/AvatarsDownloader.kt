@@ -8,22 +8,24 @@ import io.ktor.client.HttpClient
 import io.ktor.client.plugins.expectSuccess
 import io.ktor.client.request.get
 import io.ktor.client.statement.bodyAsChannel
-import io.ktor.util.cio.writeChannel
+import io.ktor.utils.io.asByteWriteChannel
 import io.ktor.utils.io.copyAndClose
-import java.io.File
+import kotlinx.io.IOException
+import kotlinx.io.buffered
+import kotlinx.io.files.FileSystem
+import kotlinx.io.files.Path
+import kotlinx.io.files.SystemFileSystem
 
 /** Downloads and stores the OSM avatars of users */
 class AvatarsDownloader(
     private val httpClient: HttpClient,
     private val userApi: UserApiClient,
-    private val cacheDir: File
+    private val fileSystem: FileSystem,
+    private val cacheDir: Path
 ) {
 
     suspend fun download(userIds: Collection<Long>) {
-        if (!ensureCacheDirExists()) {
-            Log.w(TAG, "Unable to create directories for avatars")
-            return
-        }
+        if (!ensureCacheDirExists()) return
 
         val time = nowAsEpochMilliseconds()
         for (userId in userIds) {
@@ -47,10 +49,11 @@ class AvatarsDownloader(
     /** download avatar for the given user and a known avatar url */
     suspend fun download(userId: Long, avatarUrl: String) {
         if (!ensureCacheDirExists()) return
-        val avatarFile = File(cacheDir, "$userId")
+        val avatarFile = Path(cacheDir, userId.toString())
+        val avatarFileSink = SystemFileSystem.sink(avatarFile).buffered()
         try {
             val response = httpClient.get(avatarUrl) { expectSuccess = true }
-            response.bodyAsChannel().copyAndClose(avatarFile.writeChannel())
+            response.bodyAsChannel().copyAndClose(avatarFileSink.asByteWriteChannel())
             Log.d(TAG, "Downloaded file ${avatarFile.name}")
         } catch (e: Exception) {
             Log.w(TAG, "Unable to download avatar for user id $userId")
@@ -58,7 +61,13 @@ class AvatarsDownloader(
     }
 
     private fun ensureCacheDirExists(): Boolean =
-        cacheDir.exists() || cacheDir.mkdirs()
+        try {
+            fileSystem.createDirectories(cacheDir, mustCreate = false)
+            true
+        } catch (e: IOException) {
+            Log.w(TAG, "Unable to create directories for avatars")
+            false
+        }
 
     companion object {
         private const val TAG = "OsmAvatarsDownload"
