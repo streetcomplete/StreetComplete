@@ -1059,6 +1059,9 @@ A level counts as a roof level when its windows are in the roof. Subsequently, r
 
     <string name="quest_cycleway_width_title">"How wide is the bicycle path here?"</string>
 
+    <string name="quest_dietType_glutenfree_name_title">Are gluten-free products offered here?</string>
+    <string name="quest_dietType_explanation_glutenfree">Preparing gluten-free products requires knowledge, as common spices and sauces may contain gluten. Gluten-free food would be explicitely labeled as such.</string>
+
     <string name="quest_dietType_halal_name_title2">Are halal products offered here?</string>
     <string name="quest_dietType_explanation_halal">Halal products must be prepared according to special rules, with Halal certification agencies marking products in compliance.</string>
 
