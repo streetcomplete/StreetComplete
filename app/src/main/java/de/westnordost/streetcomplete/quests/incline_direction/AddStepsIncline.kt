@@ -22,12 +22,7 @@ class AddStepsIncline : OsmFilterQuestType<Incline>() {
 
     override val hint = R.string.quest_arrow_tutorial
 
-    override fun getTitle(tags: Map<String, String>) =
-        if (tags["conveying"] == "yes") {
-            R.string.quest_escalator_incline_title
-        } else {
-            R.string.quest_steps_incline_title
-        }
+    override fun getTitle(tags: Map<String, String>) = R.string.quest_incline_title
 
     override fun createForm() = AddInclineForm()
 
