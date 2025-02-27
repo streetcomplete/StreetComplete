@@ -11,6 +11,7 @@ import android.widget.PopupMenu
 import androidx.appcompat.app.AlertDialog
 import androidx.core.os.bundleOf
 import androidx.core.view.children
+import de.westnordost.osmfeatures.Feature
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.location.RecentLocationStore
@@ -35,8 +36,8 @@ import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsController
 import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.data.visiblequests.HideQuestController
 import de.westnordost.streetcomplete.data.visiblequests.QuestsHiddenController
+import de.westnordost.streetcomplete.osm.applyReplacePlaceTo
 import de.westnordost.streetcomplete.osm.isPlaceOrDisusedPlace
-import de.westnordost.streetcomplete.osm.replacePlace
 import de.westnordost.streetcomplete.quests.shop_type.ShopGoneDialog
 import de.westnordost.streetcomplete.util.getNameAndLocationSpanned
 import de.westnordost.streetcomplete.util.ktx.isSplittable
@@ -259,18 +260,18 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
                 element,
                 countryOrSubdivisionCode,
                 featureDictionary,
-                onSelectedFeature = this::onShopReplacementSelected,
-                onLeaveNote = this::composeNote
+                onSelectedFeatureFn = this::onShopReplacementSelected,
+                onLeaveNoteFn = this::composeNote
             ).show()
         } else {
             composeNote()
         }
     }
 
-    private fun onShopReplacementSelected(tags: Map<String, String>) {
+    private fun onShopReplacementSelected(feature: Feature) {
         viewLifecycleScope.launch {
             val builder = StringMapChangesBuilder(element.tags)
-            builder.replacePlace(tags)
+            feature.applyReplacePlaceTo(builder)
             solve(UpdateElementTagsAction(element, builder.create()))
         }
     }

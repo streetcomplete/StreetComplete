@@ -1,5 +1,7 @@
 package de.westnordost.streetcomplete.quests.shop_type
 
+import de.westnordost.osmfeatures.BaseFeature
+import de.westnordost.osmfeatures.GeometryType
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.osm.nowAsCheckDateString
 import de.westnordost.streetcomplete.quests.answerApplied
@@ -80,7 +82,12 @@ class CheckShopTypeTest {
                 StringMapEntryAdd("a", "b"),
                 StringMapEntryAdd("c", "d")
             ),
-            questType.answerApplied(ShopType(mapOf("a" to "b", "c" to "d")))
+            questType.answerApplied(ShopType(BaseFeature(
+                id = "id",
+                tags = mapOf("a" to "b", "c" to "d"),
+                names = listOf(),
+                geometry = listOf(GeometryType.POINT),
+            )))
         )
     }
 }
