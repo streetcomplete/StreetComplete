@@ -12,17 +12,20 @@ import io.ktor.client.request.setBody
 import io.ktor.http.ContentType
 import io.ktor.http.HttpStatusCode
 import io.ktor.http.contentType
-import io.ktor.http.defaultForFile
-import io.ktor.util.cio.readChannel
+import io.ktor.http.defaultForFilePath
+import io.ktor.utils.io.ByteReadChannel
+import kotlinx.io.buffered
+import kotlinx.io.files.FileSystem
+import kotlinx.io.files.Path
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
-import java.io.File
 
 /** Upload and activate a list of image paths to an instance of the
  *  https://github.com/streetcomplete/sc-photo-service
  */
 class PhotoServiceApiClient(
+    private val fileSystem: FileSystem,
     private val httpClient: HttpClient,
     private val baseUrl: String
 ) {
@@ -35,13 +38,13 @@ class PhotoServiceApiClient(
         val imageLinks = ArrayList<String>()
 
         for (path in imagePaths) {
-            val file = File(path)
-            if (!file.exists()) continue
+            val file = Path(path)
+            if (!fileSystem.exists(file)) continue
 
             val response = httpClient.post(baseUrl + "upload.php") {
-                contentType(ContentType.defaultForFile(file))
+                contentType(ContentType.defaultForFilePath(file.toString()))
                 header("Content-Transfer-Encoding", "binary")
-                setBody(file.readChannel())
+                setBody(ByteReadChannel(fileSystem.source(file).buffered()))
                 expectSuccess = true
             }
 
