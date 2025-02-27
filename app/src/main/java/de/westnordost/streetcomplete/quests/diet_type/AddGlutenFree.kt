@@ -18,7 +18,7 @@ class AddGlutenFree : OsmFilterQuestType<DietAvailabilityAnswer>() {
         (
           amenity ~ restaurant|cafe|fast_food|food_court and food != no
           or amenity ~ pub|nightclub|biergarten|bar and food = yes
-          or shop ~ supermarket|convenience
+          or shop ~ supermarket|convenience|deli
         )
         and (
           !diet:gluten_free
