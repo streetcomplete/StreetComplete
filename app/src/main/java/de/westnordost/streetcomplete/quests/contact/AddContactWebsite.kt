@@ -17,7 +17,7 @@ class AddContactWebsite : OsmFilterQuestType<String>() {
          tourism = information and information = office
          or """.trimIndent() +
         PLACES_FOR_CONTACT_QUESTS +
-        "\n) and !website and !contact:website and !contact:facebook and !contact:instagram and !brand and name"
+        "\n) and !website and !contact:website and !contact:facebook and !contact:instagram and !brand and (name or operator)"
 
     override val changesetComment = "Add website"
     override val wikiLink = "Key:website"
