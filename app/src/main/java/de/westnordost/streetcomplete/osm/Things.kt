@@ -40,6 +40,7 @@ private val IS_THING_EXPRESSION by lazy {
         "aeroway" to listOf(
             "navigationaid",
             "windsock",
+            "gate",
         ),
         "amenity" to listOf(
             // grouped by subcategory, sorted by alphabet
