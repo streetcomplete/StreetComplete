@@ -2,16 +2,18 @@ package de.westnordost.streetcomplete.data.user.statistics
 
 import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDate
+import kotlinx.io.Source
+import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.io.decodeFromSource
 
 class StatisticsParser(private val typeAliases: List<Pair<String, String>>) {
     private val jsonParser = Json { ignoreUnknownKeys = true }
 
-    fun parse(json: String): Statistics {
-        val apiStatistics = jsonParser.decodeFromString<ApiStatistics>(json)
-        return apiStatistics.toStatistics()
-    }
+    @OptIn(ExperimentalSerializationApi::class)
+    fun parse(json: Source): Statistics =
+        jsonParser.decodeFromSource<ApiStatistics>(json).toStatistics()
 
     private fun ApiStatistics.toStatistics() = Statistics(
         types = parseEditTypeStatistics(questTypes),

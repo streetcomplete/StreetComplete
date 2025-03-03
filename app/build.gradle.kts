@@ -177,9 +177,9 @@ dependencies {
     implementation("androidx.work:work-runtime-ktx:2.10.0")
 
     // HTTP Client
-    implementation("io.ktor:ktor-client-core:3.0.3")
-    implementation("io.ktor:ktor-client-android:3.0.3")
-    testImplementation("io.ktor:ktor-client-mock:3.0.3")
+    implementation("io.ktor:ktor-client-core:3.1.0")
+    implementation("io.ktor:ktor-client-android:3.1.0")
+    testImplementation("io.ktor:ktor-client-mock:3.1.0")
     // TODO: as soon as both ktor-client and kotlinx-serialization have been refactored to be based
     //       on kotlinx-io, revisit sending and receiving xml/json payloads via APIs, currently it
     //       is all String-based, i.e. no KMP equivalent of InputStream/OutputStream involved
@@ -201,7 +201,8 @@ dependencies {
 
     // serialization
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.8.0")
-    implementation("com.charleskorn.kaml:kaml:0.67.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json-io:1.8.0")
+    implementation("com.charleskorn.kaml:kaml:0.72.0")
     implementation("io.github.pdvrieze.xmlutil:core:0.90.3")
 
     // map and location

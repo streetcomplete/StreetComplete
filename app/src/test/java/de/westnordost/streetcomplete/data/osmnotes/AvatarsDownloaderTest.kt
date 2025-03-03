@@ -10,9 +10,13 @@ import io.ktor.client.engine.mock.respondError
 import io.ktor.client.engine.mock.respondOk
 import io.ktor.http.HttpMethod
 import io.ktor.http.HttpStatusCode
-import io.ktor.utils.io.errors.IOException
+import io.ktor.utils.io.readText
 import kotlinx.coroutines.runBlocking
-import java.nio.file.Files
+import kotlinx.io.IOException
+import kotlinx.io.buffered
+import kotlinx.io.files.Path
+import kotlinx.io.files.SystemFileSystem
+import kotlinx.io.files.SystemTemporaryDirectory
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
@@ -24,9 +28,14 @@ class AvatarsDownloaderTest {
             else -> respondOk("Image Content")
         }
     }
-    private val tempFolder = Files.createTempDirectory("images").toFile()
+    private val fileSystem = SystemFileSystem
+    private val tempFolder = Path(SystemTemporaryDirectory, "images")
     private val userApi: UserApiClient = mock()
-    private val downloader = AvatarsDownloader(HttpClient(mockEngine), userApi, tempFolder)
+    private val downloader = AvatarsDownloader(HttpClient(mockEngine), userApi, fileSystem, tempFolder)
+
+    init {
+        fileSystem.createDirectories(tempFolder)
+    }
 
     @Test
     fun `download makes GET request to profileImageUrl`() = runBlocking {
@@ -47,7 +56,12 @@ class AvatarsDownloaderTest {
 
         downloader.download(listOf(user.id))
 
-        assertEquals("Image Content", tempFolder.resolve("100").readText())
+        val file = Path(tempFolder, "100")
+
+        assertEquals(
+            "Image Content",
+            fileSystem.source(file).buffered().readText()
+        )
     }
 
     @Test
