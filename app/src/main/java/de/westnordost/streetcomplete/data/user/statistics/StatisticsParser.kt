@@ -11,9 +11,6 @@ import kotlinx.serialization.json.io.decodeFromSource
 class StatisticsParser(private val typeAliases: List<Pair<String, String>>) {
     private val jsonParser = Json { ignoreUnknownKeys = true }
 
-    fun parse(json: String): Statistics =
-        jsonParser.decodeFromString<ApiStatistics>(json).toStatistics()
-
     @OptIn(ExperimentalSerializationApi::class)
     fun parse(json: Source): Statistics =
         jsonParser.decodeFromSource<ApiStatistics>(json).toStatistics()
