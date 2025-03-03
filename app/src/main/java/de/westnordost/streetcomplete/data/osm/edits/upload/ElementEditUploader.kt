@@ -1,10 +1,12 @@
 package de.westnordost.streetcomplete.data.osm.edits.upload
 
-import de.westnordost.streetcomplete.ApplicationConstants
+import de.westnordost.streetcomplete.ApplicationConstants.EDIT_ACTIONS_NOT_ALLOWED_TO_USE_LOCAL_CHANGES
+import de.westnordost.streetcomplete.ApplicationConstants.IGNORED_RELATION_TYPES
 import de.westnordost.streetcomplete.data.ConflictException
 import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
 import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
 import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.OpenChangesetsManager
+import de.westnordost.streetcomplete.data.osm.mapdata.ChangesetTooLargeException
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataApiClient
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataChanges
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataController
@@ -22,31 +24,50 @@ class ElementEditUploader(
      *  @throws ConflictException if element has been changed server-side in an incompatible way
      */
     suspend fun upload(edit: ElementEdit, getIdProvider: () -> ElementIdProvider): MapDataUpdates {
-        val remoteChanges by lazy { edit.action.createUpdates(RemoteMapDataRepository(mapDataApi), getIdProvider()) }
+        // build changes on top of map data cached in the local database (faster)
         val localChanges by lazy { edit.action.createUpdates(mapDataController, getIdProvider()) }
 
-        val mustUseRemoteData = edit.action::class in ApplicationConstants.EDIT_ACTIONS_NOT_ALLOWED_TO_USE_LOCAL_CHANGES
+        // build changes on top of map data downloaded ad-hoc from remote (additional HTTP requests -> slower)
+        val remoteChanges by lazy { edit.action.createUpdates(RemoteMapDataRepository(mapDataApi), getIdProvider()) }
 
-        return if (mustUseRemoteData) {
+        // certain edit types don't allow building changes on top of cached map data
+        val mustUseRemoteData = edit.action::class in EDIT_ACTIONS_NOT_ALLOWED_TO_USE_LOCAL_CHANGES
+
+        if (!mustUseRemoteData) {
             try {
-                uploadChanges(edit, remoteChanges, false)
-            } catch (e: ConflictException) {
-                // probably changeset closed
-                uploadChanges(edit, remoteChanges, true)
+                return uploadChanges(edit, localChanges, false)
             }
-        } else {
-            try {
-                uploadChanges(edit, localChanges, false)
-            } catch (e: ConflictException) {
-                // either changeset was closed, or element modified, or local element was cleaned from db
+            // either changeset was closed, element modified on remote, element not available in DB
+            catch (e: ConflictException) {
+                // continue execution outside of this if-block (-> try with remote data)
+            }
+            // changeset too large -> try again with new changeset
+            catch (e: ChangesetTooLargeException) {
                 try {
-                    uploadChanges(edit, remoteChanges, false)
-                } catch (e: ConflictException) {
-                    // probably changeset closed
-                    uploadChanges(edit, remoteChanges, true)
+                    return uploadChanges(edit, localChanges, true)
+                }
+                // we have a new changeset already -> one last try with using remote data
+                catch (e: ConflictException) {
+                    return uploadChanges(edit, remoteChanges, false)
                 }
             }
         }
+
+        try {
+            return uploadChanges(edit, remoteChanges, false)
+        }
+        // probably changeset closed -> try again with new changeset
+        catch (e: ConflictException) {
+            return uploadChanges(edit, remoteChanges, true)
+        }
+        // changeset too large -> try again with new changeset
+        catch (e: ChangesetTooLargeException) {
+            return uploadChanges(edit, remoteChanges, true)
+        }
+
+        // Finally, if an uncaught ConflictException is thrown, it means this is because the changes
+        // of this edit conflict with the current version of the element (on remote) it targets, as
+        // we excluded all the other reasons why a ConflictException might be thrown.
     }
 
     private suspend fun uploadChanges(
@@ -59,6 +80,6 @@ class ElementEditUploader(
         } else {
             changesetManager.getOrCreateChangeset(edit.type, edit.source, edit.position, edit.isNearUserLocation)
         }
-        return mapDataApi.uploadChanges(changesetId, changes, ApplicationConstants.IGNORED_RELATION_TYPES)
+        return mapDataApi.uploadChanges(changesetId, changes, IGNORED_RELATION_TYPES)
     }
 }
