@@ -4,12 +4,14 @@ import de.westnordost.streetcomplete.data.AuthorizationException
 import de.westnordost.streetcomplete.data.ConnectionException
 import de.westnordost.streetcomplete.data.wrapApiClientExceptions
 import io.ktor.client.HttpClient
-import io.ktor.client.call.body
 import io.ktor.client.plugins.ClientRequestException
 import io.ktor.client.plugins.expectSuccess
 import io.ktor.client.request.bearerAuth
 import io.ktor.client.request.get
+import io.ktor.client.statement.bodyAsChannel
 import io.ktor.http.HttpStatusCode
+import io.ktor.utils.io.asSource
+import kotlinx.io.buffered
 
 /**
  * Talks with OSM user API
@@ -31,8 +33,8 @@ class UserApiClient(
             userLoginSource.accessToken?.let { bearerAuth(it) }
             expectSuccess = true
         }
-        val body = response.body<String>()
-        return userApiParser.parseUsers(body).first()
+        val source = response.bodyAsChannel().asSource().buffered()
+        return userApiParser.parseUsers(source).first()
     }
 
     /**
@@ -44,8 +46,8 @@ class UserApiClient(
     suspend fun get(userId: Long): UserInfo? = wrapApiClientExceptions {
         try {
             val response = httpClient.get(baseUrl + "user/$userId") { expectSuccess = true }
-            val body = response.body<String>()
-            return userApiParser.parseUsers(body).first()
+            val source = response.bodyAsChannel().asSource().buffered()
+            return userApiParser.parseUsers(source).first()
         } catch (e: ClientRequestException) {
             when (e.response.status) {
                 HttpStatusCode.Gone, HttpStatusCode.NotFound -> return null

@@ -1,5 +1,6 @@
 import java.io.FileInputStream
 import java.io.FileWriter
+import java.net.URI
 import java.util.Properties
 
 plugins {
@@ -102,6 +103,9 @@ if (keystorePropertiesFile.exists()) {
 }
 
 repositories {
+    maven {
+        url = URI("https://s01.oss.sonatype.org/content/repositories/snapshots/")
+    }
     google()
     mavenCentral()
 }
@@ -203,7 +207,8 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.8.0")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json-io:1.8.0")
     implementation("com.charleskorn.kaml:kaml:0.72.0")
-    implementation("io.github.pdvrieze.xmlutil:core:0.90.3")
+    implementation("io.github.pdvrieze.xmlutil:core:0.90.4-SNAPSHOT")
+    implementation("io.github.pdvrieze.xmlutil:coreKXIO:0.90.4-SNAPSHOT")
 
     // map and location
     implementation("org.maplibre.gl:android-sdk:11.8.0")

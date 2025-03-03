@@ -11,14 +11,16 @@ import de.westnordost.streetcomplete.data.user.UserLoginSource
 import de.westnordost.streetcomplete.data.wrapApiClientExceptions
 import de.westnordost.streetcomplete.util.ktx.format
 import io.ktor.client.HttpClient
-import io.ktor.client.call.body
 import io.ktor.client.plugins.ClientRequestException
 import io.ktor.client.plugins.expectSuccess
 import io.ktor.client.request.bearerAuth
 import io.ktor.client.request.get
 import io.ktor.client.request.parameter
 import io.ktor.client.request.post
+import io.ktor.client.statement.bodyAsChannel
 import io.ktor.http.HttpStatusCode
+import io.ktor.utils.io.asSource
+import kotlinx.io.buffered
 
 /**
  * Creates, comments, closes, reopens and search for notes.
@@ -49,7 +51,8 @@ class NotesApiClient(
             parameter("text", text)
             expectSuccess = true
         }
-        return notesApiParser.parseNotes(response.body<String>()).single()
+        val source = response.bodyAsChannel().asSource().buffered()
+        return notesApiParser.parseNotes(source).single()
     }
 
     /**
@@ -70,7 +73,8 @@ class NotesApiClient(
                 parameter("text", text)
                 expectSuccess = true
             }
-            return notesApiParser.parseNotes(response.body<String>()).single()
+            val source = response.bodyAsChannel().asSource().buffered()
+            return notesApiParser.parseNotes(source).single()
         } catch (e: ClientRequestException) {
             when (e.response.status) {
                 // hidden by moderator, does not exist (yet), has already been closed
@@ -92,8 +96,8 @@ class NotesApiClient(
     suspend fun get(id: Long): Note? = wrapApiClientExceptions {
         try {
             val response = httpClient.get(baseUrl + "notes/$id") { expectSuccess = true }
-            val body = response.body<String>()
-            return notesApiParser.parseNotes(body).singleOrNull()
+            val source = response.bodyAsChannel().asSource().buffered()
+            return notesApiParser.parseNotes(source).singleOrNull()
         } catch (e: ClientRequestException) {
             when (e.response.status) {
                 // hidden by moderator, does not exist (yet)
@@ -129,8 +133,8 @@ class NotesApiClient(
                 parameter("closed", 0)
                 expectSuccess = true
             }
-            val body = response.body<String>()
-            return notesApiParser.parseNotes(body)
+            val source = response.bodyAsChannel().asSource().buffered()
+            return notesApiParser.parseNotes(source)
         } catch (e: ClientRequestException) {
             if (e.response.status == HttpStatusCode.BadRequest) {
                 throw QueryTooBigException(e.message, e)
