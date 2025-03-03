@@ -175,7 +175,8 @@ class PlacesOverlayForm : AbstractOverlayForm() {
     }
 
     private fun setVacant() {
-        onSelectedFeature(featureDictionary.getById("shop/vacant")!!)
+        val languages = getLanguagesForFeatureDictionary(resources.configuration)
+        onSelectedFeature(featureDictionary.getById("shop/vacant", languages)!!)
     }
 
     private fun createNoNameAnswer(): AnswerItem? {
@@ -273,7 +274,7 @@ private suspend fun createEditAction(
 
     val hasAddedNames = newNames.isNotEmpty() && newNames.containsAll(previousNames)
     val hasChangedNames = previousNames != newNames
-    val hasChangedFeature = newFeature != previousFeature
+    val hasChangedFeature = newFeature.id != previousFeature?.id
     val hasChangedFeatureType = previousFeature?.featureId != newFeature.featureId
     val wasVacant = element != null && element.isDisusedPlace()
     val isVacant = newFeature.id == "shop/vacant"
