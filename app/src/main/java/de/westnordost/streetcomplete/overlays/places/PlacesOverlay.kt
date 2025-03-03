@@ -7,6 +7,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement
+import de.westnordost.streetcomplete.osm.isDisusedPlace
 import de.westnordost.streetcomplete.osm.isPlaceOrDisusedPlace
 import de.westnordost.streetcomplete.overlays.Color
 import de.westnordost.streetcomplete.overlays.Overlay
@@ -37,9 +38,11 @@ class PlacesOverlay(private val getFeature: (Element) -> Feature?) : Overlay {
             .asSequence()
             .filter { it.isPlaceOrDisusedPlace() }
             .map { element ->
-                val feature = getFeature(element)
+                // show disused places always with the icon for "disused shop" icon
+                val icon = getFeature(element)?.icon?.let { presetIconIndex[it] }
+                    ?: if (element.isDisusedPlace()) R.drawable.ic_preset_fas_store_alt_slash else null
+                    ?: R.drawable.ic_preset_maki_shop
 
-                val icon = feature?.icon?.let { presetIconIndex[it] } ?: R.drawable.ic_preset_maki_shop
                 val label = getNameLabel(element.tags)
 
                 val style = if (element is Node) {
@@ -59,5 +62,6 @@ class PlacesOverlay(private val getFeature: (Element) -> Feature?) : Overlay {
             .map { it to PointStyle(icon = null, label = "◽") }
 
     override fun createForm(element: Element?) =
+        // this check is necessary because the form shall not be shown for entrances
         if (element == null || element.isPlaceOrDisusedPlace()) PlacesOverlayForm() else null
 }

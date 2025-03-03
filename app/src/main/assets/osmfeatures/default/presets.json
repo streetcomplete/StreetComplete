@@ -8834,32 +8834,6 @@
       "fire_hydrant:type": "pillar"
     }
   },
-  "disused/shop": {
-    "icon": "fas-store-alt-slash",
-    "geometry": ["point", "area"],
-    "tags": {
-      "disused:shop": "*"
-    },
-    "matchScore": 0.05,
-    "searchable": false
-  },
-  "disused/railway": {
-    "icon": "temaki-rail_profile",
-    "geometry": ["point", "vertex", "line", "area"],
-    "tags": {
-      "disused:railway": "*"
-    },
-    "matchScore": 0.05,
-    "searchable": false
-  },
-  "disused/amenity": {
-    "geometry": ["point", "vertex", "area"],
-    "tags": {
-      "disused:amenity": "*"
-    },
-    "matchScore": 0.05,
-    "searchable": false
-  },
   "disc_golf/tee": {
     "icon": "temaki-disc_golf_basket",
     "geometry": ["point", "vertex"],
