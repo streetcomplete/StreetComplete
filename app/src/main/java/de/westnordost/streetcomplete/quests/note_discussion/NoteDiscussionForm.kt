@@ -36,9 +36,10 @@ import de.westnordost.streetcomplete.view.RoundRectOutlineProvider
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import kotlinx.io.files.FileSystem
+import kotlinx.io.files.Path
 import org.koin.android.ext.android.inject
 import org.koin.core.qualifier.named
-import java.io.File
 
 class NoteDiscussionForm : AbstractQuestForm() {
 
@@ -52,7 +53,8 @@ class NoteDiscussionForm : AbstractQuestForm() {
     private val noteSource: NotesWithEditsSource by inject()
     private val noteEditsController: NoteEditsController by inject()
     private val hiddenQuestsController: QuestsHiddenController by inject()
-    private val avatarsCacheDir: File by inject(named("AvatarsCacheDirectory"))
+    private val fileSystem: FileSystem by inject()
+    private val avatarsCacheDir: Path by inject(named("AvatarsCacheDirectory"))
 
     private val attachPhotoFragment get() =
         childFragmentManager.findFragmentById(R.id.attachPhotoFragment) as? AttachPhotoFragment
@@ -184,8 +186,8 @@ class NoteDiscussionForm : AbstractQuestForm() {
         }
 
         private val User.avatar: Bitmap? get() {
-            val file = File(avatarsCacheDir.toString() + File.separator + id)
-            return if (file.exists()) BitmapFactory.decodeFile(file.path) else null
+            val file = Path(avatarsCacheDir, id.toString())
+            return if (fileSystem.exists(file)) BitmapFactory.decodeFile(file.toString()) else null
         }
 
         private val NoteComment.Action.actionResourceId get() = when (this) {
