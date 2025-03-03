@@ -1,5 +1,23 @@
 # Changelog
 
+## v60.2
+
+### Fixes
+
+- fixes for opening app from Geo URIs (#6101)
+- fix on rare occasions, a solved quest would immediately reappear (#5545), thanks @Helium314
+- Road surfaces: fix quest immediately reappeared when answer conflicted with the recorded information for the track visibility (#6116)
+- Opening hours: fix don't consider a rare but valid syntax for opening hours as invalid (#6125)
+- fix escalators were previously labeled as steps (#5728)
+
+### Improvements
+
+- Hairdresser customers: Don't ask for barber shops (#6108)
+- Bus stop names: Suggest names of nearby bus stops (e.g. the one from the other side of the road) (#6067, #5187) by @kmpoppe
+- Baby changing table: Also ask when information about toilets isn't recorded yet (#6115), by @agent-redd
+- Places overlay: Display correctly and allow to select some generic places (some office, some club, some healthcare facility, some shop) (#6140)
+- small improvements on the places overlay (#6100, #5985, #6086, #6085, #6140)
+
 ## v60.1
 
 ### Improvements
@@ -1378,7 +1396,7 @@ Special thanks to @FloEdelmann for helping with the refactor.
 - Enhance maxspeed collection for the United Kingdom (#2745, #2748, #2750, #2811), by @arrival-spring
 - Periodically ask for the existence of BBQ spots, ticket validators, emergency life rings and emergency phones (#2679), thanks @arrival-spring
 - Also ask for the surface of service roads as long as they are not driveways (#2783)
-- Don't remove the check_date tag if it is already tagged, instead, update it (#2861, #2883)
+- Don't remove the `check_date` tag if it is already tagged, instead, update it (#2861, #2883)
 - Don't tag `foot=use_sidepath` on the road if there is a separate sidewalk (#2895)
 
 ### Other Enhancements
@@ -1506,7 +1524,7 @@ Did you already [take the survey](https://osmf.limequery.org/281662) of the Open
 - Check existence: Display brand name if object has no name (#2512)
 - Sidewalks: Ask for residential roads even if they are not lit (#2519, #2531), by @riQQ
 - Recycling materials: Do not ask for private containers (#2515)
-- Road name: Do not ask if name:left or name:right is defined already (#2526)
+- Road name: Do not ask if `name:left` or `name:right` is defined already (#2526)
 - A few clarifications in wording (#2467, #2431, #2539)
 
 ### Fixes & More
@@ -2957,7 +2975,7 @@ minor bugfix update: bugfixes, updated translations
 
 ## v0.10
 
-fixed #108: opening_hours used wrong separator
+fixed #108: `opening_hours` used wrong separator
 
 ## v0.9
 

@@ -13,6 +13,7 @@ import android.widget.PopupMenu
 import androidx.appcompat.app.AlertDialog
 import androidx.core.os.bundleOf
 import androidx.core.view.children
+import de.westnordost.osmfeatures.Feature
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
@@ -41,9 +42,9 @@ import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.data.visiblequests.HideQuestController
 import de.westnordost.streetcomplete.data.visiblequests.QuestsHiddenController
+import de.westnordost.streetcomplete.osm.applyReplacePlaceTo
 import de.westnordost.streetcomplete.osm.isPlaceOrDisusedPlace
 import de.westnordost.streetcomplete.osm.ALL_PATHS
-import de.westnordost.streetcomplete.osm.replacePlace
 import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.quests.custom.CustomQuestList
 import de.westnordost.streetcomplete.quests.shop_type.ShopGoneDialog
@@ -341,8 +342,8 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
                 element,
                 countryOrSubdivisionCode,
                 featureDictionary,
-                onSelectedFeature = { onShopReplacementSelected(it, extra) },
-                onLeaveNote = this::composeNote,
+                onSelectedFeatureFn = { onShopReplacementSelected(it, extra) },
+                onLeaveNoteFn = this::composeNote,
                 geometry.center
             ).show()
         } else {
@@ -350,10 +351,10 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
         }
     }
 
-    private fun onShopReplacementSelected(tags: Map<String, String>, extra: Boolean = true) {
+    private fun onShopReplacementSelected(feature: Feature, extra: Boolean = true) {
         viewLifecycleScope.launch {
             val builder = StringMapChangesBuilder(element.tags)
-            builder.replacePlace(tags)
+            feature.applyReplacePlaceTo(builder)
             solve(UpdateElementTagsAction(element, builder.create()), extra)
         }
     }

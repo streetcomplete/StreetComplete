@@ -400,7 +400,7 @@ fun MainScreen(
                 }
             }
 
-            MapAttribution(Modifier.align(Alignment.End))
+            MapAttribution(Modifier.align(Alignment.Start))
         }
 
         intersection?.let { (offset, angle) ->

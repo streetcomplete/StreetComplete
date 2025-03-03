@@ -31,7 +31,6 @@ import org.koin.android.ext.android.inject
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
-import java.lang.Exception
 
 class AttachPhotoFragment : Fragment(R.layout.fragment_attach_photo) {
 

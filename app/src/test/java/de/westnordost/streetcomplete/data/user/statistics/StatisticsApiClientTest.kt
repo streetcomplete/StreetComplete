@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.data.user.statistics
 
 import de.westnordost.streetcomplete.data.ApiClientException
+import de.westnordost.streetcomplete.testutils.any
 import de.westnordost.streetcomplete.testutils.mock
 import de.westnordost.streetcomplete.testutils.on
 import io.ktor.client.HttpClient
@@ -32,7 +33,7 @@ class StatisticsApiClientTest {
             isAnalyzing = false,
             lastUpdate = 10
         )
-        on(statisticsParser.parse("simple response")).thenReturn(stats)
+        on(statisticsParser.parse(any())).thenReturn(stats)
         assertEquals(stats, client.get(100))
     }
 

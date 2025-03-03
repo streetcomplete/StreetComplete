@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isGone
+import de.westnordost.osmfeatures.BaseFeature
 import de.westnordost.osmfeatures.Feature
 import de.westnordost.osmfeatures.GeometryType
 import de.westnordost.streetcomplete.R
@@ -14,22 +15,20 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTag
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
-import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
-import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.databinding.FragmentOverlayPlacesBinding
 import de.westnordost.streetcomplete.osm.LocalizedName
 import de.westnordost.streetcomplete.osm.POPULAR_PLACE_FEATURE_IDS
+import de.westnordost.streetcomplete.osm.applyReplacePlaceTo
 import de.westnordost.streetcomplete.osm.applyTo
-import de.westnordost.streetcomplete.osm.getDisusedPlaceTags
 import de.westnordost.streetcomplete.osm.isDisusedPlace
 import de.westnordost.streetcomplete.osm.isPlace
 import de.westnordost.streetcomplete.osm.parseLocalizedNames
-import de.westnordost.streetcomplete.osm.replacePlace
+import de.westnordost.streetcomplete.osm.toElement
+import de.westnordost.streetcomplete.osm.toPrefixedFeature
 import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 import de.westnordost.streetcomplete.overlays.AnswerItem
 import de.westnordost.streetcomplete.quests.LocalizedNameAdapter
-import de.westnordost.streetcomplete.util.DummyFeature
 import de.westnordost.streetcomplete.util.getLanguagesForFeatureDictionary
 import de.westnordost.streetcomplete.util.getLocationSpanned
 import de.westnordost.streetcomplete.util.ktx.geometryType
@@ -58,6 +57,8 @@ class PlacesOverlayForm : AbstractOverlayForm() {
     private var isNoName: Boolean = false
     private var namesAdapter: LocalizedNameAdapter? = null
 
+    private lateinit var vacantShopFeature: Feature
+
     override val otherAnswers get() = listOfNotNull(
         AnswerItem(R.string.quest_shop_gone_vacant_answer) { setVacant() },
         createNoNameAnswer()
@@ -66,31 +67,37 @@ class PlacesOverlayForm : AbstractOverlayForm() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val element = element
-        originalFeature = element?.let {
-            val languages = getLanguagesForFeatureDictionary(resources.configuration)
-            val geometryType = if (element.type == ElementType.NODE) null else element.geometryType
-
-            if (element.isDisusedPlace()) {
-                featureDictionary.getById("shop/vacant", languages = languages)
-            } else {
-                featureDictionary.getByTags(
-                    tags = element.tags,
-                    languages = languages,
-                    country = countryOrSubdivisionCode,
-                    geometry = geometryType,
-                ).firstOrNull()
-                // if not found anything in the iD presets, it's a shop type unknown to iD presets
-                ?: DummyFeature(
-                    "shop/unknown",
-                    requireContext().getString(R.string.unknown_shop_title),
-                    "maki-shop",
-                    element.tags
-                )
-            }
-        }
+        val languages = getLanguagesForFeatureDictionary(resources.configuration)
+        vacantShopFeature = featureDictionary.getById("shop/vacant", languages)!!
+        originalFeature = getOriginalFeature()
         originalNoName = element?.tags?.get("name:signed") == "no" || element?.tags?.get("noname") == "yes"
         isNoName = savedInstanceState?.getBoolean(NO_NAME) ?: originalNoName
+    }
+
+    private fun getOriginalFeature(): Feature? {
+        val element = element ?: return null
+
+        return getFeatureDictionaryFeature(element)
+            ?: if (element.isDisusedPlace()) vacantShopFeature else null
+            ?: BaseFeature(
+                id = "shop/unknown",
+                names = listOf(requireContext().getString(R.string.unknown_shop_title)),
+                icon = "maki-shop",
+                tags = element.tags,
+                geometry = GeometryType.entries.toList()
+            )
+    }
+
+    private fun getFeatureDictionaryFeature(element: Element): Feature? {
+        val languages = getLanguagesForFeatureDictionary(resources.configuration)
+        val geometryType = if (element.type == ElementType.NODE) null else element.geometryType
+
+        return featureDictionary.getByTags(
+            tags = element.tags,
+            languages = languages,
+            country = countryOrSubdivisionCode,
+            geometry = geometryType,
+        ).firstOrNull { it.toElement().isPlace() }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -111,7 +118,7 @@ class PlacesOverlayForm : AbstractOverlayForm() {
                 element?.geometryType ?: GeometryType.POINT,
                 countryOrSubdivisionCode,
                 featureCtrl.feature?.name,
-                ::filterOnlyShops,
+                { it.toElement().isPlace() || it.id == "shop/vacant" },
                 ::onSelectedFeature,
                 POPULAR_PLACE_FEATURE_IDS,
                 false,
@@ -161,11 +168,6 @@ class PlacesOverlayForm : AbstractOverlayForm() {
         outState.putBoolean(NO_NAME, isNoName)
     }
 
-    private fun filterOnlyShops(feature: Feature): Boolean {
-        val fakeElement = Node(-1L, LatLon(0.0, 0.0), feature.tags, 0)
-        return fakeElement.isPlace() || feature.id == "shop/vacant"
-    }
-
     private fun onSelectedFeature(feature: Feature) {
         featureCtrl.feature = feature
         // clear previous names (if necessary, and if any)
@@ -175,7 +177,8 @@ class PlacesOverlayForm : AbstractOverlayForm() {
     }
 
     private fun setVacant() {
-        onSelectedFeature(featureDictionary.getById("shop/vacant")!!)
+        val languages = getLanguagesForFeatureDictionary(resources.configuration)
+        onSelectedFeature(featureDictionary.getById("shop/vacant", languages)!!)
     }
 
     private fun createNoNameAnswer(): AnswerItem? {
@@ -273,7 +276,7 @@ private suspend fun createEditAction(
 
     val hasAddedNames = newNames.isNotEmpty() && newNames.containsAll(previousNames)
     val hasChangedNames = previousNames != newNames
-    val hasChangedFeature = newFeature != previousFeature
+    val hasChangedFeature = newFeature.id != previousFeature?.id
     val hasChangedFeatureType = previousFeature?.featureId != newFeature.featureId
     val wasVacant = element != null && element.isDisusedPlace()
     val isVacant = newFeature.id == "shop/vacant"
@@ -310,19 +313,13 @@ private suspend fun createEditAction(
 
     if (doReplaceShop) {
         if (isVacant) {
-            tagChanges.replacePlace(getDisusedPlaceTags(element?.tags))
+            val vacantFeature = previousFeature?.toPrefixedFeature("disused") ?: newFeature
+            vacantFeature.applyReplacePlaceTo(tagChanges)
         } else {
-            tagChanges.replacePlace(newFeature.addTags)
+            newFeature.applyReplacePlaceTo(tagChanges)
         }
     } else {
-        for ((key, value) in previousFeature?.removeTags.orEmpty()) {
-            tagChanges.remove(key)
-        }
-        for ((key, value) in newFeature.addTags) {
-            if (key !in tagChanges || newFeature.preserveTags.none { it.containsMatchIn(key) }) {
-                tagChanges[key] = value
-            }
-        }
+        newFeature.applyTo(tagChanges, previousFeature)
     }
 
     if (!newFeature.hasFixedName) {
