@@ -54,7 +54,7 @@ class MapDataApiClient(
         try {
             val response = httpClient.post(baseUrl + "changeset/$changesetId/upload") {
                 userLoginSource.accessToken?.let { bearerAuth(it) }
-                setBody(serializer.serializeMapDataChanges(changes, changesetId))
+                setBody(serializer.serialize(changes, changesetId))
                 expectSuccess = true
             }
             val source = response.bodyAsChannel().asSource().buffered()

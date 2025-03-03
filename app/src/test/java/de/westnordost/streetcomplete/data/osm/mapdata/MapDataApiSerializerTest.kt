@@ -5,7 +5,7 @@ import kotlin.test.assertEquals
 
 class MapDataApiSerializerTest {
 
-    @Test fun `serializeMapDataChanges full`() {
+    @Test fun `serialize full`() {
         val osmChange = """
             <osmChange>
             <create>
@@ -31,7 +31,7 @@ class MapDataApiSerializerTest {
 
         assertEquals(
             osmChange.replace(Regex("[\n\r] *"), ""),
-            MapDataApiSerializer().serializeMapDataChanges(mapDataChanges, 1234L)
+            MapDataApiSerializer().serialize(mapDataChanges, 1234L)
         )
     }
 }
