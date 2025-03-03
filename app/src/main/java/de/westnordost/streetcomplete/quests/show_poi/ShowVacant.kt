@@ -6,10 +6,9 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.osm.KEYS_THAT_SHOULD_BE_REMOVED_WHEN_PLACE_IS_REPLACED
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.osm.applyReplacePlaceTo
 import de.westnordost.streetcomplete.osm.isPlace
-import de.westnordost.streetcomplete.osm.removeCheckDates
 import de.westnordost.streetcomplete.osm.updateCheckDate
 import de.westnordost.streetcomplete.quests.getLabelOrElementSelectionDialog
 import de.westnordost.streetcomplete.quests.getLabelSources
@@ -43,22 +42,8 @@ class ShowVacant : OsmFilterQuestType<ShopTypeAnswer>() {
 
     override fun applyAnswerTo(answer: ShopTypeAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {
-            is IsShopVacant -> {
-                tags.updateCheckDate()
-            }
-            is ShopType -> {
-                tags.removeCheckDates()
-
-                for (key in tags.keys) {
-                    if (KEYS_THAT_SHOULD_BE_REMOVED_WHEN_PLACE_IS_REPLACED.any { it.matches(key) }) {
-                        tags.remove(key)
-                    }
-                }
-
-                for ((key, value) in answer.tags) {
-                    tags[key] = value
-                }
-            }
+            is IsShopVacant -> tags.updateCheckDate()
+            is ShopType -> answer.feature.applyReplacePlaceTo(tags)
         }
     }
 
