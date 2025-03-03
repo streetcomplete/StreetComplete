@@ -341,7 +341,7 @@ class LanesSelectPuzzle @JvmOverloads constructor(
             carsOnLanes.add(CarState(forwardDirection, carBitmaps))
         }
         while (carsOnLanes.size > laneCount) {
-            carsOnLanes.removeLast()
+            carsOnLanes.removeAt(carsOnLanes.lastIndex)
         }
     }
 
