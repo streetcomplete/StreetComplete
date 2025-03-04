@@ -1269,8 +1269,6 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="overlay_surface">"표면"</string>
     <string name="overlay_path_surface_segregated">"자전거와 보행 부분이 나뉘어 있음"</string>
     <string name="quest_crossing_title2">"여기에 횡단보도가 있나요?"</string>
-    <string name="quest_crossing_yes">"예 (예: 여기에서 연석이 낮아지거나 표시가 있음)"</string>
-    <string name="quest_crossing_no">"아니요, 하지만 건널 수 있습니다"</string>
     <string name="quest_crossing_prohibited">"아니요, 횡단이 금지되거나 불가능합니다"</string>
     <string name="quest_hairdresser_title">"어떤 고객들이 이 미용실에 방문하나요?"</string>
     <string name="quest_hairdresser_male_and_female">"누구나"</string>

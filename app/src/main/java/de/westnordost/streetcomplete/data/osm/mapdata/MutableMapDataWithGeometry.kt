@@ -10,6 +10,10 @@ class MutableMapDataWithGeometry() : MapDataWithGeometry {
         putAll(elements, geometryEntries)
     }
 
+    constructor(other: MapDataWithGeometry) : this() {
+        putAll(other)
+    }
+
     private val nodesById = HashMap<Long, Node>()
     private val waysById = HashMap<Long, Way>()
     private val relationsById = HashMap<Long, Relation>()

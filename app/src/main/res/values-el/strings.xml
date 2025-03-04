@@ -1252,8 +1252,8 @@
     <string name="overlay_surface">"Επιφάνειες"</string>
     <string name="overlay_path_surface_segregated">"Χωρίζεται σε τμήματα ποδηλασίας και πεζοπορίας"</string>
     <string name="quest_crossing_title2">"Υπάρχει διάβαση εδώ;"</string>
-    <string name="quest_crossing_yes">"Ναι (π.χ. το κράσπεδο είναι χαμηλωμένο εδώ ή υπάρχουν σημάνσεις)"</string>
-    <string name="quest_crossing_no">"Όχι, αλλά η διάβαση είναι δυνατή"</string>
+    <string name="quest_crossing_yes">"Ναι, προορίζεται ως διάβαση"</string>
+    <string name="quest_crossing_no">"Δεν προορίζεται για διάσχιση, εξακολουθεί να είναι δυνατή η διέλευση (π.χ. ανεπίσημα μονοπάτια)"</string>
     <string name="quest_crossing_prohibited">"Όχι, η διάβαση απαγορεύεται ή είναι αδύνατη"</string>
     <string name="quest_hairdresser_title">"Ποιοι πελάτες επισκέπτονται αυτό το κομμωτήριο;"</string>
     <string name="quest_hairdresser_male_and_female">"Ανδρικό &amp; Γυναικείο"</string>

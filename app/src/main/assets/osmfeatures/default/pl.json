@@ -293,7 +293,7 @@
         },
         "amenity/clinic": {
           "name": "Przychodnia/poliklinika",
-          "terms": "przychodnia zdrowia,poliklinika,ośrodek zdrowia,zoz,nzoz,nocna opieka lekarska"
+          "terms": "przychodnia zdrowia,poliklinika,ośrodek zdrowia,klinika,zoz,nzoz,nocna opieka lekarska"
         },
         "amenity/clinic/abortion": {
           "name": "Klinika aborcyjna",
@@ -1624,7 +1624,7 @@
           "terms": "ekrany akustyczne,ekran akustyczny,ekran dźwiękochłonny,bariera"
         },
         "barrier/wicket_gate": {
-          "name": "Furtka (towarzysząca głównej bramie)",
+          "name": "Furtka",
           "terms": "furtka,furta"
         },
         "barrier/yes": {
@@ -1889,8 +1889,8 @@
           "name": "Budynek dworca kolejowego"
         },
         "building/transportation": {
-          "name": "Budynek dworca kolejowego",
-          "terms": "budynek dworca kolejowego,budynek stacji kolejowej,dworzec kolejowy,transport,dworzec,stacja"
+          "name": "Budynek transportu publicznego",
+          "terms": "budynek dworca,budynek stacji,budynek centrum przesiadkowego,budynek węzła przesiadkowego,transport,dworzec,stacja,centrum przesiadkowe,węzeł przesiadkowy"
         },
         "building/university": {
           "name": "Budynek uczelni",
@@ -2300,6 +2300,10 @@
           "name": "Wejście główne",
           "terms": "wejście główne,główne wejście,drzwi"
         },
+        "entrance/shop": {
+          "name": "Wejście do sklepu",
+          "terms": "wejście do sklepu,wejście do lokalu usługowego,sklep,lokal usługowy"
+        },
         "entrance/staircase": {
           "name": "Wejście do klatki schodowej",
           "terms": "wejście do klatki schodowej,wejście na klatkę schodową,klatka schodowa"
@@ -2540,6 +2544,14 @@
           "name": "Łącznik dla motorowerów",
           "terms": "łącznik dla motorowerów"
         },
+        "highway/cycleway/traffic_island": {
+          "name": "Droga rowerowa na wyspie azylu",
+          "terms": "droga rowerowa na wyspie azylu,wyspa azylu"
+        },
+        "highway/cycleway/traffic_island_shared": {
+          "name": "Ciąg pieszo-rowerowy na wyspie azylu",
+          "terms": "ciąg pieszo-rowerowy na wyspie azylu,wyspa azylu"
+        },
         "highway/cyclist_waiting_aid": {
           "name": "Podpórka dla rowerzystów",
           "terms": "podpórka dla rowerzystów,podpórka rowerowa,spocznik dla rowerzystów,spocznik rowerowy"
@@ -2646,6 +2658,22 @@
         "highway/path/boardwalk": {
           "name": "Kładka drewniana",
           "terms": "kładka drewniana,chodnik z desek,drewniany chodnik,mostek dla pieszych,ścieżka dla pieszych,pomost"
+        },
+        "highway/path/crossing": {
+          "name": "Przejazd pieszo-rowerowy",
+          "aliases": "Przejście pieszo-rowerowe"
+        },
+        "highway/path/crossing/traffic_signals": {
+          "name": "Przejazd pieszo-rowerowy z sygnalizacją świetlną",
+          "aliases": "Przejście pieszo-rowerowe z sygnalizacją świetlną"
+        },
+        "highway/path/crossing/uncontrolled": {
+          "name": "Oznakowany przejazd pieszo-rowerowy",
+          "aliases": "Oznakowane przejście pieszo-rowerowe"
+        },
+        "highway/path/crossing/unmarked": {
+          "name": "Nieoznakowany przejazd pieszo-rowerowy",
+          "aliases": "Nieoznakowane przejście pieszo-rowerowe"
         },
         "highway/path/informal": {
           "name": "Nieformalna ścieżka",
@@ -2881,8 +2909,8 @@
           "terms": "ruiny,ruina"
         },
         "historic/tomb": {
-          "name": "Grób",
-          "terms": "grób,grobowiec,mogiła,tumulus,kurhan,mauzoleum,kolumbarium,piramida,sarkofag,nagrobek"
+          "name": "Grobowiec",
+          "terms": "grobowiec,grób,mogiła,tumulus,kurhan,mauzoleum,kolumbarium,piramida,sarkofag,nagrobek"
         },
         "historic/wayside_cross": {
           "name": "Krzyż przydrożny",
@@ -3037,6 +3065,14 @@
         "landuse/meadow": {
           "name": "Łąka/pastwisko",
           "terms": "łąka,pastwisko,rozłóg,wygon,nieużytki,polana,pole,zieleń"
+        },
+        "landuse/meadow_orchard/meadow": {
+          "name": "Łąka z drzewami owocowymi",
+          "terms": "łąka z drzewami owocowymi,streuobstwiese"
+        },
+        "landuse/meadow_orchard/orchard": {
+          "name": "Sad w obrębie łąki",
+          "terms": "sad w obrębie łąki,streuobstwiese"
         },
         "landuse/military": {
           "name": "Teren wojskowy",
@@ -4106,6 +4142,10 @@
         "natural": {
           "name": "Obiekt geograficzny"
         },
+        "natural/arch": {
+          "name": "Most skalny",
+          "terms": "most skalny,łuk skalny"
+        },
         "natural/bare_rock": {
           "name": "Odkryte skały",
           "terms": "odkryte skały,odkryta skała,obnażone skały,obnażona skała,skała macierzysta,skała,skały"
@@ -4216,7 +4256,7 @@
         },
         "natural/stone": {
           "name": "Kamień",
-          "terms": "kamień,głaz"
+          "terms": "kamień,głaz,głaz narzutowy"
         },
         "natural/strait": {
           "name": "Cieśnina",
@@ -4568,6 +4608,10 @@
           "name": "Terapeuta",
           "terms": "terapeuta,fizjoterapeuta"
         },
+        "office/translator": {
+          "name": "Tłumacz",
+          "terms": "tłumacz,biuro tłumaczeniowe"
+        },
         "office/travel_agent": {
           "name": "Biuro podróży"
         },
@@ -4614,8 +4658,7 @@
           "terms": "trasa narciarska,szlak narciarstwa klasycznego,szlak narciarstwa przełajowego,narty,klasyczne,przełajowe,narciarstwo"
         },
         "piste/piste": {
-          "name": "Szlak sportów zimowych",
-          "terms": "szlaki sportów zimowych,trasa sportów zimowych,narty,klasyczne,przełajowe,downhill,alpejskie,snowboard,wycieczki narciarskie,sanki,saneczki,sanie,kulig,skijöring,husky,koń,zimowa wspinaczka,rakiety śniegowe,lód,łyżwiarstwo"
+          "name": "Trasa do sportów zimowych (nieokreślonych)"
         },
         "piste/ski_jump": {
           "name": "Skocznia narciarska (najazd/zeskok)",
@@ -5032,7 +5075,7 @@
         },
         "public_transport/station": {
           "name": "Dworzec",
-          "terms": "dworzec,stacja,transport publiczny,terminal,transport,przewozy"
+          "terms": "dworzec,stacja,transport publiczny,terminal,transport,przewozy,centrum przesiadkowe,węzeł przesiadkowy"
         },
         "public_transport/station_aerialway": {
           "name": "Stacja wyciągu / kolei linowej",
@@ -5620,6 +5663,10 @@
           "name": "Sklep z pamiątkami",
           "terms": "sklep z pamiątkami,sklep z prezentami,pamiątki,prezenty,gadżety,pocztówki,magnesy,figurki"
         },
+        "shop/gold_buyer": {
+          "name": "Skup złota",
+          "terms": "skup złota"
+        },
         "shop/greengrocer": {
           "name": "Warzywniak",
           "terms": "warzywniak,zieleniak,sklep warzywny,sklep z warzywami,sklep z owocami,stoisko z warzywami,stragan z warzywami,owoce,warzywa"
@@ -6127,7 +6174,7 @@
         },
         "tourism/information/guidepost": {
           "name": "Drogowskaz",
-          "terms": "drogowskaz"
+          "terms": "drogowskaz,kierunkowskaz"
         },
         "tourism/information/map": {
           "name": "Mapa",

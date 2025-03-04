@@ -1,5 +1,5 @@
-Pomozite poboljšati OpenStreetMap pomoću StreetCompletea!
+Pomozite poboljšati OpenStreetMap pomoću StreetComplete aplikacije!
 
-Ova aplikacija pronalazi nepotpune i proširive podatke u vašoj blizini i prikazuje ih na karti kao oznake. Svaka od njih je rješiva odgovorom na jednostavno pitanje kako biste dopunili informacije na licu mjesta.
+Ova aplikacija pronalazi nepotpune  podatke u vašoj blizini i prikazuje ih na karti kao Zadatke. Kako biste dopunili informacije na licu mjesta, svaki od zadataka je rješiv odgovorom na jednostavno pitanje. 
 
 Podaci koje unesete se izravno dodaju u OpenStreetMap pod vašim korisničkim imenom, bez potrebe za korištenjem drugog uređivača.

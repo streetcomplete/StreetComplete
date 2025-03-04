@@ -695,6 +695,7 @@ seviyeleri"</string>
     <string name="quest_board_type_public_transport">"Toplu taşıma"</string>
     <string name="quest_board_type_title">"Bu bilgi panosunun konusu nedir?"</string>
     <string name="quest_board_type_map">"Bu bir harita"</string>
+    <string name="quest_board_type_map_title">"Bu sadece bir haritadan mı ibaret?"</string>
     <string name="quest_board_type_map_description">"Pano belirli bir konu hakkındaysa, lütfen bir harita içerip içermediğine bakılmaksızın bunu belirtin. Örneğin, bir toplu taşıma panosunun bir otobüs güzergâh haritası olabilir. Konu mevcut cevaplar arasında listelenmemişse, lütfen bunun yerine bir not bırakın."</string>
     <string name="quest_streetName_menuItem_international">"uluslararası"</string>
     <string name="quest_buildingType_terrace2">"Sıra Evler"</string>
@@ -856,6 +857,7 @@ Tüm seçenekleri değerlendir! Bazı durumlar net olmayabilir. Çift yönde bis
     <string name="quest_policeType_title">"Bu ne tür bir polis karakolu?"</string>
     <string name="quest_barrier_type_kissing_gate_conversion">"Koyun paneline çevrilmişt"</string>
     <string name="quest_stile_type_title">"Bu ne tür bir turnike?"</string>
+    <string name="quest_buildingType_semi_detached_description2">"Yarı-birleşik aile ev(leri)"</string>
     <string name="pref_title_quests2">"Görev seçimi ve sıralama ölçütü"</string>
     <string name="pref_subtitle_quests">"%2$d görevden %1$d kadarı aktif"</string>
     <string name="no_location_permission_warning_title">"Konum İzni"</string>
@@ -868,6 +870,7 @@ Tüm seçenekleri değerlendir! Bazı durumlar net olmayabilir. Çift yönde bis
     <string name="quest_camera_type_title">"Bu ne tür bir güvenlik kamerası?"</string>
     <string name="quest_camera_type_dome">"Geniş açılı kamera"</string>
     <string name="quest_camera_type_fixed">"Sabit"</string>
+    <string name="quest_camera_type_panning">"Hareketli"</string>
     <string name="about_title_faq">"S.S.S."</string>
     <string name="quest_buildingLevels_title2">"Bodrum katının üstündeki kattan başlayarak bu binanın kaç katı var?"</string>
     <string name="quest_buildingLevels_title_buildingPart2">"Bodrum katının üstündeki kattan başlayarak bu bina parçasının kaç katı var?"</string>
@@ -905,12 +908,14 @@ Tüm seçenekleri değerlendir! Bazı durumlar net olmayabilir. Çift yönde bis
     <string name="quest_laundrySelfService_title2">"Bu çamaşırhane self servise izin veriyor mu?"</string>
     <string name="quest_dietType_explanation_halal">"Helal ürünler sertifika veren ajanslarla uyumlu olarak özel kurallara göre hazırlanmalıdır."</string>
     <string name="quest_generic_answer_is_actually_steps">"Bunlar merdivenler"</string>
+    <string name="quest_barrier_type_passage_conversion">"Bir duvar/çit vb. içinde patikaya dönüştürülmüş."</string>
     <string name="quest_barrier_type_gate_conversion">"Kapıya dönüştürüldü"</string>
     <string name="quest_traffic_calming_type_title">"Bu ne tür hız kesici?"</string>
     <string name="quest_traffic_calming_type_bump">"Kasis (kısa)"</string>
     <string name="quest_traffic_calming_type_hump">"Kasis (uzun)"</string>
     <string name="quest_traffic_calming_type_choker">"Daraltılmış yol"</string>
     <string name="quest_traffic_calming_type_island">"Ada"</string>
+    <string name="quest_traffic_calming_type_chicane">"Kasıtlı kıvrım/eğri(ler)"</string>
     <string name="quest_surface_value_concrete_plates">"Beton levhalar"</string>
     <string name="quest_surface_value_concrete_lanes">"Beton yollar"</string>
     <string name="quest_fireHydrant_diameter_title">"Bu yangın musluğunun çapı tabelasında ne olarak belirtilmiş?"</string>
@@ -925,6 +930,8 @@ Tüm seçenekleri değerlendir! Bazı durumlar net olmayabilir. Çift yönde bis
     <string name="quest_postboxCollectionTimes_resurvey_title">"Bu toplama kutusunun toplanma saatleri hâlâ aynı mı?"</string>
     <string name="quest_bicycle_barrier_type_title">"Bu ne tür bir bisiklet engeli?"</string>
     <string name="quest_barrier_bicycle_type_diagonal">"Patikaya göre çapraz"</string>
+    <string name="quest_barrier_bicycle_type_tilted">"Dar giriş, Sona doğru küçülüyor"</string>
+    <string name="quest_barrier_bicycle_type_single">"Bariyerler arasında geçiş"</string>
     <string name="language_default">"Sistem varsayılanı"</string>
     <string name="on_floor">"%s. katta"</string>
     <string name="select_street_parking_orientation">"Yola göre duruş açısını seç"</string>
@@ -938,6 +945,7 @@ Tüm seçenekleri değerlendir! Bazı durumlar net olmayabilir. Çift yönde bis
     <string name="street_parking_on_kerb">"Caddeye bitişik"</string>
     <string name="street_parking_street_side">"Belirli yerlerde sokağa bitişik"</string>
     <string name="street_parking_painted_area_only">"Sadece işaretli alanlarda"</string>
+    <string name="street_parking_separate">"Park yeri ayrı olarak eklenmiş"</string>
     <string name="street_parking_no">"Park yasak"</string>
     <string name="street_parking_prohibited">"Park yasak"</string>
     <string name="street_stopping_prohibited">"Durmak Yasak"</string>
@@ -1091,6 +1099,7 @@ Alternatif olarak, bir not bırakabilirsin (fotoğrafla beraber)."</string>
     <string name="map_btn_stop_track">"Konum takibini kapat"</string>
     <string name="quest_bicycle_rental_capacity_title">"Burada kaç tane kiralık bisiklet yeri var?"</string>
     <string name="quest_bicycle_rental_type_title">"Bu ne tür bir bisiklet kiralama?"</string>
+    <string name="quest_bicycle_rental_type_docking_station">"Kilitli kiralama servisi"</string>
     <string name="quest_bicycle_rental_type_dropoff_point">"Belirli alan (bisikletler kendilerine bağlı)"</string>
     <string name="quest_bicycle_rental_type_human">"Bisiklet kiralama servisi"</string>
     <string name="quest_bicycle_rental_type_shop_with_rental">"Bisiklet kiralanabilen bisiklet mağazası"</string>
@@ -1102,11 +1111,13 @@ Alternatif olarak, bir not bırakabilirsin (fotoğrafla beraber)."</string>
     <string name="quest_bicycle_shop_second_hand_no_bicycles">"Bisiklet satılmaz"</string>
     <string name="quest_building_entrance_title">"Bu ne tür bir bina girişi?"</string>
     <string name="quest_building_entrance_main">"Topluma açık bir binanın ana girişi"</string>
+    <string name="quest_building_entrance_staircase">"Merdiven girişi (apartman vb.)"</string>
     <string name="quest_building_entrance_service">"Servis girişi"</string>
     <string name="quest_building_entrance_exit">"Sadece çıkış"</string>
     <string name="quest_building_entrance_emergency_exit">"Sadece acil çıkıştan"</string>
     <string name="quest_building_entrance_shop">"Ön dükkan girişi"</string>
     <string name="quest_building_entrance_yes">"Diğer giriş tipi"</string>
+    <string name="quest_building_entrance_dead_end">"Çıkmaz sokak, giriş yok"</string>
     <string name="ar_core_tracking_hint_tap_to_measure">"Ölçmeye başlamak için ekrana tıkla"</string>
     <string name="quest_air_pump_bicycle_shop_title">"Burada herkese açık bisiklet pompası var mı? (en azından mekan açık olduğunda)"</string>
     <string name="action_overlays">"Filtreler"</string>
@@ -1136,6 +1147,7 @@ Alternatif olarak, bir not bırakabilirsin (fotoğrafla beraber)."</string>
     <string name="quest_entrance_reference_nothing_signed">"Tabela yok"</string>
     <string name="quest_entrance_reference_reference_label">"Giriş tabelası:"</string>
     <string name="quest_entrance_reference_flat_range_label">"Kat sayısı:"</string>
+    <string name="quest_entrance_reference_flat_range_to">"-na"</string>
     <string name="default_disabled_msg_overlay">"Bu görev tipi bu veriyi girmek için daha etkili ve verimli bir filtre bulunduğundan dolayı devre dışı bırakılmıştır."</string>
     <string name="quest_camp_drinking_water_title">"Bu içme suyu kampçılar için ücretsiz mi?"</string>
     <string name="quest_camp_shower_title">"Burada duş alma yeri var mı?"</string>
@@ -1149,6 +1161,7 @@ Alternatif olarak, bir not bırakabilirsin (fotoğrafla beraber)."</string>
     <string name="quest_recycling_type_pet">"Sadece pet şişeler"</string>
     <string name="street_parking_street_width">"Sokak genişliği: %s"</string>
     <string name="overlay_street_parking">"Sokağa park"</string>
+    <string name="link_ohsomehex_description">"Büyük ölçekli resimlerden tekli objelere kadar OSM tarihini keşfedin"</string>
     <string name="link_opencampingmap_description">"Kamp alanlarının bir haritası"</string>
     <string name="quest_atm_cashin_title">"Bu ATM'den para yatırabilir misin?"</string>
     <string name="create_node_action_description">"... ile bir nokta oluşturdun"</string>
@@ -1237,8 +1250,6 @@ Alternatif olarak, bir not bırakabilirsin (fotoğrafla beraber)."</string>
     <string name="overlay_surface">"Zeminler"</string>
     <string name="overlay_path_surface_segregated">"Bisiklet ve yaya için ayrılmış bölge"</string>
     <string name="quest_crossing_title2">"Burada bir geçit var mı?"</string>
-    <string name="quest_crossing_yes">"Evet (kaldırım alçaltılmış ya da işaretler var)"</string>
-    <string name="quest_crossing_no">"Hayır fakat geçmek mümkün"</string>
     <string name="quest_crossing_prohibited">"Hayır geçmek yasak ya da imkansız "</string>
     <string name="quest_hairdresser_title">"Bu kuaförün müşterisi kimlerdir?"</string>
     <string name="quest_hairdresser_male_and_female">"Herkes"</string>
@@ -1247,6 +1258,7 @@ Alternatif olarak, bir not bırakabilirsin (fotoğrafla beraber)."</string>
     <string name="quest_hairdresser_not_signed">"Belirtilmemiş"</string>
     <string name="quest_amenityCover_title">"Bu yağmurdan korunaklı mıdır?"</string>
     <string name="lane_narrowing_traffic_calming_island">"Trafik adası/refüj"</string>
+    <string name="lane_narrowing_traffic_calming_none">"Burada daralan şerit yok"</string>
     <string name="quest_tactilePaving_title_steps">"Bu merdivenlerin yukarısında ve aşağısında engelli kabartmaları var mı?"</string>
     <string name="quest_tactilePaving_steps_top">"Sadece yukarıda"</string>
     <string name="quest_tactilePaving_steps_bottom">"Sadece aşağıda"</string>
@@ -1312,15 +1324,21 @@ Ek olarak, adresler katmanı gibi bazı katmanlar imlecin olduğu yere yeni veri
     <string name="overlay_buildings">"Binalar"</string>
     <string name="quest_pedestrian_crossing_markings">"Bu yaya geçidinin çizgileri var mı?"</string>
     <string name="overlay_places">"Mekanlar"</string>
+    <string name="overlay_things">"Şeyler"</string>
     <string name="disused">"kullanılmayan"</string>
     <string name="unknown_object">"Bilinmeyen öğe"</string>
     <string name="quest_leafType_tree_title">"Bu ağaç dikenli mi yapraklı mı?"</string>
+    <string name="quest_bbq_fuel_gas">"Benzin"</string>
     <string name="about_description_donate_google_play3">"Uygulayı desteklemeyi düşündüğün için teşekkür ederiz! Google Play uygulama içerisine link koymaya izin vermediği için bağış bilgilerini websitemizde veya projenin ana sayfasında  bulabilirsin. "</string>
     <string name="lit_value_unsupported">"Uygulama içinde bulunmayan özel aydınlatma seçeneği"</string>
+    <string name="quest_generic_otherAnswers2">"Şey..."</string>
+    <string name="quest_pedestrian_crossing_signals2">"Burada zamanlı trafik ışıkları var mı?"</string>
     <string name="quest_moped_access_allowed">"Tabela yok"</string>
     <string name="quest_moped_access_designated">"Bu bisiklet yolunu mopedlerin kullanabileceğini belirten bir tabela var"</string>
     <string name="default_disabled_msg_visible_sign_moped">"Bu görev tipi bisiklet yolunda moped kullanı"</string>
     <string name="info">"Daha fazla bilgi"</string>
+    <string name="quest_accessible_for_pedestrians_prohibited">"Yasaklı."</string>
+    <string name="quest_accessible_for_pedestrians_allowed">"İzin var."</string>
     <string name="quest_parcel_locker_brand">"Bu teslim noktası hangi markaya ait?"</string>
     <string name="quest_cycleway_value_sidewalk_ok">"Yok ama bir tabela kaldırımda bisiklet binmeye izin veriyor"</string>
     <string name="separate_cycleway_no_signed">"Bisiklete binmeyi yasaklayan bir tabela var"</string>
@@ -1337,12 +1355,14 @@ Ek olarak, adresler katmanı gibi bazı katmanlar imlecin olduğu yere yeni veri
     <string name="pref_title_resurvey_intervals_summary">"Daha önce eklediğiniz bilgilerin doğruluğunu ne sıklıkla kontrol edeceğinizi seçin."</string>
     <string name="questList_disabled_by_default">"Varsayılan olarak devre dışı"</string>
     <string name="action_manage_presets_summary">"Aşağıdaki görev seçimlerinin kaydedileceği isimle."</string>
+    <string name="quest_multiselect_hint">"Uygun olanların tümünü seçin:"</string>
     <string name="quest_barrier_opening_width_gate">"Bu girişin genişliği ne kadar?"</string>
     <string name="bridge">"köprü üstü"</string>
     <string name="about_title_intro">"Uygulama tanıtımı"</string>
     <string name="about_category_help">"Yardım"</string>
     <string name="user_profile_all_time_title">"Genel"</string>
     <string name="user_statistics_country_rank2">"%s sıralamasında"</string>
+    <string name="quest_leafType_tree_is_just_a_stump">"Alt tarafı ağaç kökü"</string>
     <string name="quest_board_name_title">"Bu bilgi tabelasının başlığında ne yazıyor?"</string>
     <string name="note_for_object">"Başka biri not bıraktı:"</string>
     <string name="quest_bicycle_parking_type_safeloops">"Teker ve kadro demirleri"</string>

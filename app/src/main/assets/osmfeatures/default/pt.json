@@ -322,9 +322,16 @@
           "name": "Centro comunitário",
           "terms": "community center,espaço social,centro social"
         },
+        "amenity/community_centre/cultural_centre": {
+          "terms": "cultura,centre,center,comunidade,culturais,atividades,actividades,comunitário"
+        },
         "amenity/community_centre/lgbtq": {
           "name": "Centro comunitário LGBTQ+",
           "terms": "gay,lésbico,lgbt,lgbtq,lgb,homosexual,homossexual"
+        },
+        "amenity/community_centre/parish_hall": {
+          "name": "Centro paroquial",
+          "terms": "paróquia,parish,igreja,religião"
         },
         "amenity/community_centre/youth_centre": {
           "name": "Centro comunitário para jovens",
@@ -512,6 +519,10 @@
           "name": "Comida rápida",
           "terms": "comida instantânea,comida de plástico,fast food,fast-food,lanchonete,lancheria,snack-bar,snackbar,snack bar,snak bar,snak-bar,restaurante de fast food,restaurante de comida rápida,restaurante de serviço rápido,restaurante,sanduíche,sanduixe,sanduiche,sande,sandes,casa de sandes,casa das sandes,mcdonald's,mac donalds,macdonalds,mc donalds,mcdonalds,burger king,subway,rulote,rolote,farturas"
         },
+        "amenity/fast_food/bagel": {
+          "name": "Loja de bagels",
+          "terms": "fast food,comida rápida,lox,beygl,beigel,beiguel,comer"
+        },
         "amenity/fast_food/burger": {
           "name": "Hamburgueria",
           "terms": "fast food,burguer,hamburguer,hamburger,hambúrguer"
@@ -523,6 +534,10 @@
         "amenity/fast_food/chicken": {
           "name": "Frango Assado",
           "terms": "fast food,galinha,frango,frango grelhado,churrascaria"
+        },
+        "amenity/fast_food/chinese": {
+          "name": "Comida rápida chinesa",
+          "terms": "dim sum,fast food,chinese,china"
         },
         "amenity/fast_food/donut": {
           "name": "Donuts",
@@ -558,6 +573,10 @@
         "amenity/fast_food/sandwich": {
           "name": "Sanduicheria",
           "terms": "sandwich,fast food,sanduiche,sande,sandes,sanduixe,sanduíxe,sanduíche"
+        },
+        "amenity/fast_food/wings": {
+          "name": "Comida rápida asas de frango",
+          "terms": "galinha,chicken,comer,lunch,fast,food"
         },
         "amenity/ferry_terminal": {
           "name": "Terminal de ferry"
@@ -908,6 +927,10 @@
           "name": "Restaurante asiático",
           "terms": "restaurante de comida asiática,restaurante,comida asiática,cozinha asiática,asiático,asiática,oriental,japonês,chinês,tailandês,vietnamita,coreano"
         },
+        "amenity/restaurant/barbecue": {
+          "name": "Restaurante de churrasco",
+          "terms": "barbecue,comida,comer,bbq,carne,grelhado,assado,grill"
+        },
         "amenity/restaurant/chinese": {
           "name": "Restaurante chinês",
           "terms": "restaurante de comida chinesa,comida chinesa,chinesa,chinês"
@@ -1110,7 +1133,7 @@
         },
         "amenity/theatre/type/amphi": {
           "name": "Anfiteatro",
-          "terms": "anfiteatros"
+          "terms": "amphitheater,teatro,exterior,externo,ar-livre,ar livre,theatre"
         },
         "amenity/ticket_validator": {
           "name": "Validador de bilhetes",
@@ -1121,7 +1144,7 @@
           "terms": "instalações sanitárias,sanitário,gabinete sanitário,banheiros,toilette,lavabo,wc,w.c."
         },
         "amenity/toilets/disposal/flush": {
-          "name": "Autoclismo",
+          "name": "Casa de banho com autoclismo",
           "terms": "flush toilets,autoclismo de descarga,retrete de descarga,descarga de água,retrete,sanita"
         },
         "amenity/toilets/disposal/pitlatrine": {
@@ -2223,6 +2246,9 @@
           "name": "Entrada principal",
           "terms": "porta,portão"
         },
+        "entrance/shop": {
+          "name": "Entrada de loja"
+        },
         "entrance/staircase": {
           "name": "Entrada de escada rolante",
           "terms": "passadeira,rolar,rolante,escadaria,stairway"
@@ -2399,6 +2425,10 @@
         "highway/bus_stop": {
           "name": "Paragem de autocarro"
         },
+        "highway/busway": {
+          "name": "Estrada exclusiva p/autocarros",
+          "terms": "busway,transportes públicos,reservada,ônibus,bus"
+        },
         "highway/construction": {
           "name": "Estrada em construção",
           "terms": "rua,estrada,rodovia,fechada,encerrada,obras,reparações,reparação,trabalhos,remodelação,alteração,reformulação,trânsito,interrompido"
@@ -2432,10 +2462,10 @@
           "terms": "d7e,d7f,pista obrigatória para peões e velocípedes,bicicleta,ciclovia,ciclista,pedonal,pedestre,peões,peão,velocípede"
         },
         "highway/cycleway/crossing": {
-          "name": "Passadeira para bicicletas"
+          "name": "Passadeira para ciclistas"
         },
         "highway/cycleway/crossing/bicycle_foot": {
-          "name": "Passadeira p/bicicletas e peões",
+          "name": "Passadeira p/ciclistas e peões",
           "terms": "passadeira,faixa de segurança,ciclovia,ciclistas,bicicletas,travessia,pedestres,peões"
         },
         "highway/cycleway/crossing/traffic_signals": {
@@ -2447,12 +2477,20 @@
           "terms": "passadeira,peões,pedestres,estrada,trânsito,travessia,faixa de segurança,bicicletas,binas,ciclistas,ciclismo,cicloturismo,ciclovia"
         },
         "highway/cycleway/crossing/unmarked": {
-          "name": "Passadeira para bicicletas não marcada",
+          "name": "Travessia de ciclistas",
           "terms": "atravessamento de bicicletas,atravessamento para bicicletas,atravessamento de ciclista,atravessamento para ciclista,travessia,passadeira,bicicletas,ciclistas"
         },
         "highway/cycleway/moped_link-NL": {
           "name": "Via para ciclomotores",
           "terms": "moped,motorizada,ciclomotora"
+        },
+        "highway/cycleway/traffic_island": {
+          "name": "Travessia de refúgio p/ciclistas",
+          "terms": "island,ilha,rodoviária,travessia,bicicletas,bicla,ciclistas,crossing,parada,bina,bicycle"
+        },
+        "highway/cycleway/traffic_island_shared": {
+          "name": "Travessia de refúgio p/ciclistas e peões",
+          "terms": "island,ilha,rodoviária,travessia,bicicletas,bicla,ciclistas,crossing,parada,bina,bicycle,peões,caminho,passeio,ciclovia"
         },
         "highway/cyclist_waiting_aid": {
           "name": "Apoio para ciclistas",
@@ -2558,6 +2596,18 @@
           "name": "Passadiço",
           "terms": "caminho de madeira,tábuas,trilho,pedonal,pedestre,passadisso"
         },
+        "highway/path/crossing": {
+          "name": "Passadeira p/ciclistas e peões"
+        },
+        "highway/path/crossing/traffic_signals": {
+          "name": "Passadeira p/ ciclistas e peões c/ semáforos"
+        },
+        "highway/path/crossing/uncontrolled": {
+          "name": "Passadeira marcada p/ ciclistas e peões"
+        },
+        "highway/path/crossing/unmarked": {
+          "name": "Travessia p/ ciclistas e peões"
+        },
         "highway/path/informal": {
           "name": "Trilho informal",
           "terms": "trilha,caminho,vereda,carreiro,caminhar,hiking,hike,trail,caminhada,trilho de animais,cabras,javalis,cães,cavalos"
@@ -2619,8 +2669,8 @@
           "terms": "rodovia,rua,acesso"
         },
         "highway/service/alley": {
-          "name": "Viela",
-          "terms": "traseiras,beco,quelha,estrada estreita,caminho estreito"
+          "name": "Acesso a traseiras/arrumos",
+          "terms": "beco,quelha,estrada estreita,caminho estreito,viela,garagens,depósitos"
         },
         "highway/service/drive-through": {
           "name": "Serviço ao volante",
@@ -2944,6 +2994,14 @@
           "name": "Prado",
           "terms": "meadow,campo,área,zona,pasto,erva,vegetação,forragem,pastagem,feno,palha"
         },
+        "landuse/meadow_orchard/meadow": {
+          "name": "Prado com árvores de fruto",
+          "terms": "frutos,fruta,frutíferas,frutas,fruit,tree,pasto,pastagem,campo,área,zona,terreno"
+        },
+        "landuse/meadow_orchard/orchard": {
+          "name": "Árvores de fruto em prado",
+          "terms": "frutos,fruta,frutíferas,frutas,fruit,tree,pasto,pastagem,campo,área,zona,terreno"
+        },
         "landuse/military": {
           "name": "Área militar",
           "terms": "military,exército,marinha,forças especiais,força aérea,forças armadas,militar,quartel,tropa,polícia"
@@ -3052,6 +3110,10 @@
         "leisure/bandstand": {
           "name": "Coreto",
           "terms": "bandstand,coreto,banda,filarmónica,música,igreja,edifício,festas"
+        },
+        "leisure/bathing_place": {
+          "name": "Local de banhos informal",
+          "terms": "banhar,banho,nadar,mergulhar,rio,lago,lagoa,água,natural,selvagem,bathing,dipping,swimming,swimming hole,ladder,pier,water"
         },
         "leisure/beach_resort": {
           "name": "Estância balnear",
@@ -3788,6 +3850,10 @@
           "name": "Silo",
           "terms": "silo,depósito,armazenamento,estrutura,edifício,cereais,cereal,trigo,soja,milho,cevada,canola,centeio"
         },
+        "man_made/ski_jump": {
+          "name": "Torre de saltos de esqui",
+          "terms": "jump,ski jump,in-run,inrun,esqui,tower,desporto,neve,esquiar"
+        },
         "man_made/storage_tank": {
           "name": "Tanque de armazenamento",
           "terms": "storage tank,depósito,armazenagem,líquidos,óleos,água,gás,petróleo,estrutura"
@@ -3977,6 +4043,10 @@
         },
         "natural": {
           "name": "Elemento natural"
+        },
+        "natural/arch": {
+          "name": "Arco natural",
+          "terms": "rocha,pedra,arch,archway,arqueado,geológico,geologia"
         },
         "natural/bare_rock": {
           "name": "Área de rocha exposta",
@@ -4425,6 +4495,10 @@
           "name": "Terapeuta",
           "terms": "therapist,terapista,terapêutica,recuperação,fisioterapia,psicoterapia,ocupacional,fala"
         },
+        "office/translator": {
+          "name": "Escritório de tradução",
+          "terms": "tradutor,tradutora,tradutores,transcrição,localização,agência,gabinete,translation,traduções"
+        },
         "office/travel_agent": {
           "name": "Agência de viagens"
         },
@@ -4471,8 +4545,11 @@
           "terms": "esqui,ski,cross country,crosscountry,trilha,nórdico,clássico,neve,inverno"
         },
         "piste/piste": {
-          "name": "Pistas de desportos de inverno",
-          "terms": "esqui,ski,nórdicos,alpina,cross country,crosscountry,descida,downhill,snowboard,caminhadas,trenó,husky,cavalo,raquetes,pedestre,gelo,patinagem no gelo,inverno,neve"
+          "name": "Tipo de pista"
+        },
+        "piste/ski_jump": {
+          "name": "Pista de saltos de esqui",
+          "terms": "salto,saltar,ski,jumping,desporto,neve,deslizar,esquiar,esquis"
         },
         "piste/skitour": {
           "name": "Trilho de esqui-alpinismo",
@@ -4485,6 +4562,10 @@
         "piste/sleigh": {
           "name": "Pista de trenó puxado a animais",
           "terms": "esqui,ski,neve,inverno,cavalos,renas,animais,trenó"
+        },
+        "piste/take_off": {
+          "name": "Largada de saltos de esqui",
+          "terms": "rampa,salto,saltar,ski,jumping,desporto,neve,deslizar,esquiar,esquis"
         },
         "place": {
           "name": "Localidade"
@@ -5462,6 +5543,10 @@
         "shop/gift": {
           "name": "Loja de lembranças",
           "terms": "gift,souvenir,recordações,souvenirs,lembranças,bugigangas,suvenir,suvenirs,suvenires,souvenires,memorabilia,lembrancinha"
+        },
+        "shop/gold_buyer": {
+          "name": "Loja de compra de ouro",
+          "terms": "gold,venda,prata,metal precioso,comprar"
         },
         "shop/greengrocer": {
           "name": "Loja de frutas e verduras",

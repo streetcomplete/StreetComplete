@@ -283,6 +283,9 @@
           "name": "عيادة الإجهاض",
           "terms": "عيادة الإجهاض"
         },
+        "amenity/clinic/dialysis": {
+          "name": "غسيل كلى"
+        },
         "amenity/clinic/fertility": {
           "name": "عيادة الخصوبة",
           "terms": "عيادة الخصوبة"
@@ -340,6 +343,10 @@
         "amenity/doctors": {
           "name": "طبيب",
           "terms": "طبيب"
+        },
+        "amenity/doctors/podiatry": {
+          "name": "طبيب الأقدام",
+          "terms": "طبيب الأقدام; الأرجل"
         },
         "amenity/dojo": {
           "name": "دوجو /  أكاديمية الفنون القتالية",
@@ -874,9 +881,6 @@
           "name": "مسرح",
           "terms": "مسرح"
         },
-        "amenity/theatre/type/amphi": {
-          "name": "مسرح روماني"
-        },
         "amenity/ticket_validator": {
           "name": "مدقق التذاكر",
           "terms": "مدقق التذاكر"
@@ -978,6 +982,10 @@
         "amenity/vending_machine/food": {
           "name": "آلة بيع مواد غذائية",
           "terms": "آلة بيع مواد غذائية"
+        },
+        "amenity/vending_machine/food/snacks": {
+          "name": "آلة بيع الوجبات الخفيفة",
+          "terms": "آلة بيع الوجبات الخفيفة"
         },
         "amenity/vending_machine/ice_cream": {
           "name": "آلة بيع آيس كريم",
@@ -1283,6 +1291,9 @@
         "boundary/administrative": {
           "name": "حدود إدارية",
           "terms": "حدود إدارية"
+        },
+        "boundary/hazard": {
+          "name": "منطقة خطرة"
         },
         "bridge/support": {
           "name": "دعامات جسر",
@@ -2039,7 +2050,8 @@
           "terms": "ممر داخلي; رواق"
         },
         "highway/crossing": {
-          "name": "معبر/خط مشاة"
+          "name": "معبر/خط مشاة",
+          "terms": "تقاطع,معبر"
         },
         "highway/crossing/traffic_signals": {
           "name": "معبر مشاة بإشارات",
@@ -2063,6 +2075,10 @@
         "highway/cycleway/crossing/bicycle_foot": {
           "name": "معبر مشاة ودراجات هوائية",
           "terms": "معبر مشاة ودراجات هوائية"
+        },
+        "highway/cycleway/crossing/uncontrolled": {
+          "name": "معبر دراجات هوائية بعلامات مرورية",
+          "terms": "معبر دراجات هوائية بعلامات مرورية"
         },
         "highway/cycleway/crossing/unmarked": {
           "name": "معبر دراجات هوائية بدون علامات مرورية",
@@ -2103,6 +2119,14 @@
         "highway/footway/crossing": {
           "name": "معبر مشاة"
         },
+        "highway/footway/crossing/traffic_signals": {
+          "name": "معبر مشاة بإشارات",
+          "terms": "معبر مشاة بإشارات"
+        },
+        "highway/footway/crossing/unmarked": {
+          "name": "معبر مشاة بدون علامات أو إشارة مرورية",
+          "terms": "معبر مشاة بدون علامات أو إشارة مرورية"
+        },
         "highway/footway/informal": {
           "name": "مسار للمشاة غير رسمي"
         },
@@ -2110,9 +2134,15 @@
           "name": "رصيف مشاة",
           "terms": "رصيف مشاة,رصيف المشاة,رصيف جانب الطريق للمشاة"
         },
+        "highway/footway/traffic_island": {
+          "name": "جزيرة مشاة بين طريقين"
+        },
         "highway/give_way": {
           "name": "علامة \"أعط أفضلية المرور لمن هم في الطريق الآخر\"",
           "terms": "علامة \"أعط أفضلية المرور لمن هم في الطريق الآخر\",علامة \"أعط الأفضلية\",علامة \"أفضلية المرور لمن هم في الدور\",علامة \"أعط أفضلية المرور لمن هم في الطريق السريع\""
+        },
+        "highway/ladder": {
+          "name": "سلم"
         },
         "highway/living_street": {
           "name": "شارع معيشة بين المساكن",
@@ -2149,6 +2179,9 @@
         "highway/path/boardwalk": {
           "name": "ممر خشبي",
           "terms": "ممر خشبي,درب خشبي,مسار على ألواح خشب"
+        },
+        "highway/path/crossing": {
+          "name": "معبر مشاة ودراجات هوائية"
         },
         "highway/path/informal": {
           "name": "مسار غير رسمي",
@@ -2982,6 +3015,9 @@
           "name": "مضمار السباق (غير رياضة السيارات)",
           "terms": "مضمار السباق (غير رياضة السيارات)"
         },
+        "leisure/track/athletics/running": {
+          "name": "مسار جري"
+        },
         "leisure/track/cycling": {
           "name": "مسار دراجات هوائية",
           "terms": "مسار دراجات هوائية"
@@ -3064,6 +3100,9 @@
           "name": "رافعة ثابتة",
           "terms": "رافعة"
         },
+        "man_made/crane/portal_crane": {
+          "name": "رافعة جسرية"
+        },
         "man_made/cross": {
           "name": "Cross"
         },
@@ -3086,6 +3125,10 @@
         "man_made/flagpole": {
           "name": "سارية العلم",
           "terms": "سارية العلم"
+        },
+        "man_made/fuel_pump": {
+          "name": "مضخة وقود",
+          "terms": "مضخة وقود,مضخة غاز,مضخة بترول,مضخة جاز,مضخة سولار"
         },
         "man_made/gasometer": {
           "name": "خزان غاز كبير فوق الأرض",
@@ -3448,6 +3491,9 @@
           "name": "شجيرة",
           "terms": "شجيرة"
         },
+        "natural/sinkhole": {
+          "name": "دِحل/خفس/هبوط أرضي"
+        },
         "natural/spring": {
           "name": "‮‮عين / نبع / ينبوع",
           "terms": "نبع,منبع,‮‮عين,ينبوع,عيون"
@@ -3455,6 +3501,9 @@
         "natural/stone": {
           "name": "صخرة كبيرة غير متصلة بالأرض",
           "terms": "صخرة كبيرة غير متصلة بالأرض"
+        },
+        "natural/strait": {
+          "name": "مضيق"
         },
         "natural/tree": {
           "name": "شجرة",
@@ -3766,6 +3815,13 @@
         "office/yes": {
           "name": "مكتب (نوع غير محدد)"
         },
+        "pipeline/substation": {
+          "name": "محطة فرعية لخطوط الأنابيب"
+        },
+        "pipeline/valve": {
+          "name": "صمام خط أنابيب",
+          "terms": "صمام خط أنابيب"
+        },
         "piste/downhill": {
           "name": "سباق التزلج على المنحدرات",
           "terms": "سباق التزلج على المنحدرات"
@@ -3785,10 +3841,6 @@
         "piste/nordic": {
           "name": "مسار تزلج عبر الريف",
           "terms": "مسار تزلج عبر الريف"
-        },
-        "piste/piste": {
-          "name": "ممر رياضة الثلوج / الزحلقة",
-          "terms": "ممر رياضة الثلوج / الزحلقة"
         },
         "piste/skitour": {
           "name": "مسار للتزلج على الجليد",
@@ -5058,7 +5110,8 @@
           "terms": "محل بيع إطارات,كفرات,بيع كفرات"
         },
         "shop/vacant": {
-          "name": "محل شاغر"
+          "name": "محل شاغر",
+          "terms": "محل شاغر,محل فاضي"
         },
         "shop/vacuum_cleaner": {
           "name": "متجر المكنسات الكهربائية",

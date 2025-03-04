@@ -184,6 +184,9 @@
         "amenity/clinic/abortion": {
           "name": "Abortklinikk"
         },
+        "amenity/clinic/dialysis": {
+          "name": "Dialyse-senter"
+        },
         "amenity/clinic/fertility": {
           "name": "Fertilitetsklinikk"
         },
@@ -621,9 +624,6 @@
         "amenity/theatre": {
           "name": "Teater"
         },
-        "amenity/theatre/type/amphi": {
-          "name": "Amfiteater"
-        },
         "amenity/ticket_validator": {
           "name": "Billettautomat"
         },
@@ -671,6 +671,9 @@
         },
         "amenity/vending_machine/food": {
           "name": "Matautomat"
+        },
+        "amenity/vending_machine/food/snacks": {
+          "name": "Godteriautomat"
         },
         "amenity/vending_machine/ice_cream": {
           "name": "Iskremautomat"
@@ -745,6 +748,9 @@
         "attraction/maze": {
           "name": "Labyrint"
         },
+        "attraction/pirate_ship": {
+          "name": "Sjørøverskipattraksjon"
+        },
         "attraction/river_rafting": {
           "name": "Vannbane"
         },
@@ -811,11 +817,17 @@
         "barrier/guard_rail": {
           "name": "Autovern"
         },
+        "barrier/handrail": {
+          "name": "Gelender"
+        },
         "barrier/hedge": {
           "name": "Hekk"
         },
         "barrier/height_restrictor": {
           "name": "Høydebegrenser"
+        },
+        "barrier/jersey_barrier": {
+          "name": "Fenderstein"
         },
         "barrier/kerb": {
           "name": "Kantstein"
@@ -916,6 +928,9 @@
         "building/construction": {
           "name": "Bygning under oppføring"
         },
+        "building/cowshed": {
+          "name": "Fjøs"
+        },
         "building/detached": {
           "name": "Anneks"
         },
@@ -939,6 +954,9 @@
         },
         "building/garages": {
           "name": "Garasjer"
+        },
+        "building/ger": {
+          "name": "Jurt"
         },
         "building/grandstand": {
           "name": "Tribune"
@@ -979,6 +997,9 @@
         "building/office": {
           "name": "Kontorbygg"
         },
+        "building/outbuilding": {
+          "name": "Uthus"
+        },
         "building/pavilion": {
           "name": "Paviljongbygning"
         },
@@ -999,6 +1020,9 @@
         },
         "building/school": {
           "name": "Skole"
+        },
+        "building/semidetached_house": {
+          "name": "Tomannsbolig"
         },
         "building/service": {
           "name": "Servicebygning"
@@ -1295,6 +1319,9 @@
         "ford": {
           "name": "Vadested"
         },
+        "ford_line": {
+          "name": "Vadested"
+        },
         "golf/bunker": {
           "name": "Bunkers"
         },
@@ -1316,6 +1343,9 @@
         "golf/hole": {
           "name": "Golfbanehull"
         },
+        "golf/lateral_water_hazard": {
+          "name": "Sidevannhinder"
+        },
         "golf/path": {
           "name": "Gangvei i golfbane"
         },
@@ -1325,6 +1355,9 @@
         "golf/tee": {
           "name": "Utslagssted"
         },
+        "golf/water_hazard": {
+          "name": "Vannhinder"
+        },
         "healthcare/alternative": {
           "name": "Alternativ medisin"
         },
@@ -1333,6 +1366,9 @@
         },
         "healthcare/audiologist": {
           "name": "Audiolog"
+        },
+        "healthcare/birthing_center": {
+          "name": "Fødestue"
         },
         "healthcare/blood_donation": {
           "name": "Blodgiversentral"
@@ -1424,6 +1460,9 @@
         "highway/footway/crossing": {
           "name": "Fotgjengerovergang"
         },
+        "highway/footway/crossing/traffic_signals": {
+          "name": "Fotgjengerovergang med fotgjengersignal"
+        },
         "highway/footway/crossing/uncontrolled": {
           "name": "Gangfelt",
           "aliases": "Fotgjengerfelt"
@@ -1465,6 +1504,9 @@
         "highway/path": {
           "name": "Sti",
           "terms": "tursti,turvei"
+        },
+        "highway/path/crossing": {
+          "name": "Sykkel- og fotgjengerovergang"
         },
         "highway/path/informal": {
           "name": "Uformell sti"
@@ -1613,6 +1655,9 @@
         },
         "historic/fort": {
           "name": "Historisk fort"
+        },
+        "historic/manor": {
+          "name": "Herregård"
         },
         "historic/memorial": {
           "name": "Minnesmerke"
@@ -1854,6 +1899,9 @@
         "leisure/hackerspace": {
           "name": "Hackerspace"
         },
+        "leisure/horse_riding": {
+          "name": "Ridesenter"
+        },
         "leisure/ice_rink": {
           "name": "Skøytebane"
         },
@@ -1974,6 +2022,9 @@
         "leisure/track": {
           "name": "Racerbane (Ikke motorsport)"
         },
+        "leisure/track/athletics/running": {
+          "name": "Løpebane"
+        },
         "leisure/track/cycling": {
           "name": "Sykkelbane"
         },
@@ -2001,6 +2052,9 @@
         "man_made/antenna": {
           "name": "Antenne"
         },
+        "man_made/beacon": {
+          "name": "Trigonometrisk punkt"
+        },
         "man_made/beehive": {
           "name": "Bikube"
         },
@@ -2009,6 +2063,9 @@
         },
         "man_made/bridge": {
           "name": "Bruområde"
+        },
+        "man_made/cairn": {
+          "name": "Varde"
         },
         "man_made/chimney": {
           "name": "Pipe"
@@ -2024,6 +2081,12 @@
         },
         "man_made/crane": {
           "name": "Kran"
+        },
+        "man_made/crane/gantry_crane": {
+          "name": "Brokran"
+        },
+        "man_made/crane/portal_crane": {
+          "name": "Traverskran"
         },
         "man_made/cross": {
           "name": "Kors"
@@ -2230,6 +2293,9 @@
         "natural/heath": {
           "name": "Hei"
         },
+        "natural/hot_spring": {
+          "name": "Varm kilde"
+        },
         "natural/mud": {
           "name": "Gjørme"
         },
@@ -2412,6 +2478,9 @@
           "terms": "myndighetskontor,offentlig kontor",
           "aliases": "Offentlig kontor"
         },
+        "office/government/register_office": {
+          "name": "Registrer Kontor"
+        },
         "office/government/tax": {
           "name": "Skattekontor"
         },
@@ -2469,6 +2538,9 @@
         "office/yes": {
           "name": "Kontor (uspesifisert type)"
         },
+        "pipeline/valve": {
+          "name": "Rørledningsventil"
+        },
         "piste/downhill": {
           "name": "Utforløype"
         },
@@ -2483,9 +2555,6 @@
         },
         "piste/nordic": {
           "name": "Langrennsløype"
-        },
-        "piste/piste": {
-          "name": "Snøsportsti/ Piste"
         },
         "piste/skitour": {
           "name": "Skitursti"
@@ -2531,6 +2600,12 @@
         },
         "place/village": {
           "name": "Landsby"
+        },
+        "playground": {
+          "name": "Lekeplassutstyr"
+        },
+        "playground/balancebeam": {
+          "name": "Leke Balansebjelke"
         },
         "playground/basketswing": {
           "name": "Kurvhuske"
@@ -2792,6 +2867,9 @@
         },
         "railway/funicular": {
           "name": "Kabelbanespor"
+        },
+        "railway/halt": {
+          "name": "Togstasjon (holdeplass)"
         },
         "railway/level_crossing": {
           "name": "Planovergang"
@@ -3373,6 +3451,9 @@
         "tourism/information/board": {
           "name": "Informasjonstavle"
         },
+        "tourism/information/board/welcome_sign": {
+          "name": "Velkomstskilt"
+        },
         "tourism/information/map": {
           "name": "Kart"
         },
@@ -3585,6 +3666,9 @@
         },
         "type/site": {
           "name": "Sted"
+        },
+        "type/waterway": {
+          "name": "Vannvei"
         },
         "waterway/boatyard": {
           "name": "Skipsverft"
