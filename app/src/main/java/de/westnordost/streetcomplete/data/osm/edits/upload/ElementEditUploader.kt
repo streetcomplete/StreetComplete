@@ -24,50 +24,57 @@ class ElementEditUploader(
      *  @throws ConflictException if element has been changed server-side in an incompatible way
      */
     suspend fun upload(edit: ElementEdit, getIdProvider: () -> ElementIdProvider): MapDataUpdates {
-        // build changes on top of map data cached in the local database (faster)
-        val localChanges by lazy { edit.action.createUpdates(mapDataController, getIdProvider()) }
-
-        // build changes on top of map data downloaded ad-hoc from remote (additional HTTP requests -> slower)
-        val remoteChanges by lazy { edit.action.createUpdates(RemoteMapDataRepository(mapDataApi), getIdProvider()) }
-
         // certain edit types don't allow building changes on top of cached map data
         val mustUseRemoteData = edit.action::class in EDIT_ACTIONS_NOT_ALLOWED_TO_USE_LOCAL_CHANGES
 
-        if (!mustUseRemoteData) {
+        return if (mustUseRemoteData) {
+            uploadUsingRemoteRepo(edit, getIdProvider)
+        } else {
+            // we first try to apply the changes onto the element cached locally, then upload...
             try {
-                return uploadChanges(edit, localChanges, false)
-            }
-            // either changeset was closed, element modified on remote, element not available in DB
-            catch (e: ConflictException) {
-                // continue execution outside of this if-block (-> try with remote data)
-            }
-            // changeset too large -> try again with new changeset
-            catch (e: ChangesetTooLargeException) {
+                val localChanges = edit.action.createUpdates(mapDataController, getIdProvider())
                 try {
-                    return uploadChanges(edit, localChanges, true)
+                    uploadChanges(edit, localChanges, false)
                 }
-                // we have a new changeset already -> one last try with using remote data
-                catch (e: ConflictException) {
-                    return uploadChanges(edit, remoteChanges, false)
+                // changeset already too large -> try again with new changeset
+                catch (e: ChangesetTooLargeException) {
+                    uploadChanges(edit, localChanges, true)
                 }
             }
+            // ...but this can fail for various reasons:
+            // - the changeset is already closed on remote
+            // - the element was modified on remote in the meantime
+            // - there's a conflict when applying the change to the locally cached element
+            // - the element does not exist in the local database (cache was deleted)
+            //
+            // In any case -> try again with remote data
+            catch (e: ConflictException) {
+                uploadUsingRemoteRepo(edit, getIdProvider)
+            }
         }
+    }
 
-        try {
-            return uploadChanges(edit, remoteChanges, false)
+    /**
+     *  Apply the given edit to data downloaded ad-hoc from remote, then upload it.
+     *
+     *  @throws ConflictException if element has been changed on remote in an incompatible way
+     * */
+    private suspend fun uploadUsingRemoteRepo(edit: ElementEdit, getIdProvider: () -> ElementIdProvider): MapDataUpdates {
+        // If a conflict is thrown here, it definitely means that the element has been changed on
+        // remote in an incompatible way. So, we don't catch the exception but exit
+        val remoteChanges = edit.action.createUpdates(RemoteMapDataRepository(mapDataApi), getIdProvider())
+
+        return try {
+            uploadChanges(edit, remoteChanges, false)
         }
-        // probably changeset closed -> try again with new changeset
+        // probably changeset was closed -> try again once with new changeset
         catch (e: ConflictException) {
-            return uploadChanges(edit, remoteChanges, true)
+            uploadChanges(edit, remoteChanges, true)
         }
-        // changeset too large -> try again with new changeset
+        // changeset too large -> also try again once with new changeset
         catch (e: ChangesetTooLargeException) {
-            return uploadChanges(edit, remoteChanges, true)
+            uploadChanges(edit, remoteChanges, true)
         }
-
-        // Finally, if an uncaught ConflictException is thrown, it means this is because the changes
-        // of this edit conflict with the current version of the element (on remote) it targets, as
-        // we excluded all the other reasons why a ConflictException might be thrown.
     }
 
     private suspend fun uploadChanges(
