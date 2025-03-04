@@ -1253,8 +1253,6 @@ También podés dejar una nota (con foto)."</string>
     <string name="overlay_surface">"Superficies"</string>
     <string name="overlay_path_surface_segregated">"Dividido entre bicis y peatones"</string>
     <string name="quest_crossing_title2">"¿Hay un cruce acá?"</string>
-    <string name="quest_crossing_yes">"Sí (por ej. el cordón está rebajado acá o hay marcas)"</string>
-    <string name="quest_crossing_no">"No, pero se puede cruzar"</string>
     <string name="quest_crossing_prohibited">"No, está prohibido cruzar o es imposible"</string>
     <string name="quest_hairdresser_title">"¿A quién atiende esta peluquería?"</string>
     <string name="quest_hairdresser_male_and_female">"A cualquiera, es unisex"</string>

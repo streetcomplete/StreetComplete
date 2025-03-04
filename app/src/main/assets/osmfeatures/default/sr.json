@@ -114,6 +114,9 @@
         "amenity": {
           "name": "Погодност"
         },
+        "amenity/animal_boarding": {
+          "name": "Одгајивачница"
+        },
         "amenity/animal_breeding": {
           "name": "Установа за узгој животиња"
         },
@@ -188,6 +191,9 @@
           "name": "Кафић",
           "terms": "kafić,кафе,бистро,кафа,чај,фука,фићка,kafе,kafic,bistro,kafa,čaj,caj,fuka,fićka,ficka"
         },
+        "amenity/cafe/bubble_tea": {
+          "name": "Бабл ти кафић"
+        },
         "amenity/cafe/coffee_shop": {
           "name": "Кафеџиница"
         },
@@ -204,8 +210,8 @@
           "name": "Казино"
         },
         "amenity/charging_station": {
-          "name": "Електропуњач",
-          "terms": "пуњач за електричне аутомобиле,акумулаторска станица,пуњач за електрична возила"
+          "name": "Станица за пуњење електричних возила",
+          "terms": "станица за пуњење"
         },
         "amenity/childcare": {
           "name": "Обданиште"
@@ -218,6 +224,9 @@
         },
         "amenity/clinic/abortion": {
           "name": "Клиника за абортусе"
+        },
+        "amenity/clinic/dialysis": {
+          "name": "Центар за дијализу"
         },
         "amenity/clinic/fertility": {
           "name": "Клиника за оплодњу"
@@ -396,7 +405,8 @@
           "name": "Изложбени центар"
         },
         "amenity/fast_food": {
-          "name": "Брза храна"
+          "name": "Брза храна",
+          "terms": "фаст-фуд,brza hrana,fast-fud"
         },
         "amenity/fast_food/bagel": {
           "name": "Бејгл брза храна"
@@ -410,6 +420,9 @@
         },
         "amenity/fast_food/chicken": {
           "name": "Пилећа брза храна"
+        },
+        "amenity/fast_food/chinese": {
+          "name": "Кинеска брза храна"
         },
         "amenity/fast_food/donut": {
           "name": "Крофџиница"
@@ -445,8 +458,8 @@
           "name": "Фонтана"
         },
         "amenity/fuel": {
-          "name": "Бензинска пумпа",
-          "terms": "пумпа,pumpa,benzinska pumpa"
+          "name": "Бензинска станица",
+          "terms": "пумпа,pumpa,benzinska pumpa,бензинска пумпа"
         },
         "amenity/gambling": {
           "name": "Коцкарска дворана"
@@ -454,6 +467,13 @@
         "amenity/grave_yard": {
           "name": "Гробље",
           "terms": "гробље,костурница,некропола"
+        },
+        "amenity/grit_bin": {
+          "name": "Канта за песак"
+        },
+        "amenity/hookah_lounge": {
+          "name": "Шиша бар",
+          "terms": "наргила бар"
         },
         "amenity/hospital": {
           "name": "Болнички круг"
@@ -481,7 +501,8 @@
           "name": "Језичка школа"
         },
         "amenity/letter_box": {
-          "name": "Поштанско сандуче"
+          "name": "Кућно сандуче",
+          "terms": "кућни сандучић"
         },
         "amenity/library": {
           "name": "Библиотека"
@@ -497,6 +518,9 @@
         },
         "amenity/love_hotel": {
           "name": "Љубавни хотел"
+        },
+        "amenity/luggage_locker": {
+          "name": "Ормарић за чување пртљага"
         },
         "amenity/marketplace": {
           "name": "Тржница"
@@ -751,6 +775,12 @@
           "name": "Надстрешњица",
           "terms": "надстрешњица,nadstrešnjica,nadstresnjica,gazebo,газебо"
         },
+        "amenity/shelter/picnic_shelter": {
+          "name": "Склониште за пикник"
+        },
+        "amenity/shelter/public_transport": {
+          "name": "Надстрешница стајалишта јавног превоза"
+        },
         "amenity/shower": {
           "name": "Туш",
           "terms": "јавни туш,туш,туш-кабина"
@@ -804,9 +834,6 @@
         "amenity/theatre": {
           "name": "Позориште"
         },
-        "amenity/theatre/type/amphi": {
-          "name": "Амфитеатар"
-        },
         "amenity/toilets": {
           "name": "Тоалет"
         },
@@ -818,6 +845,9 @@
         },
         "amenity/townhall/city": {
           "name": "Градска кућа"
+        },
+        "amenity/toy_library": {
+          "name": "Библиотека играчака"
         },
         "amenity/trolley_bay": {
           "name": "Место за колица"
@@ -1141,6 +1171,9 @@
         "boundary/administrative": {
           "name": "Административна граница"
         },
+        "boundary/hazard": {
+          "name": "Опасно подручје"
+        },
         "bridge/support": {
           "name": "Подршка мосту"
         },
@@ -1148,13 +1181,17 @@
           "name": "Стуб моста"
         },
         "building": {
-          "name": "Зграда"
+          "name": "Зграда",
+          "terms": "објекат"
         },
         "building/allotment_house": {
           "name": "Викенд кућа"
         },
         "building/apartments": {
           "name": "Стамбена зграда"
+        },
+        "building/bakehouse": {
+          "name": "Пекарска радионица (зграда)"
         },
         "building/barn": {
           "name": "Амбар"
@@ -1323,7 +1360,8 @@
           "name": "Мобилна кућа"
         },
         "building/sty": {
-          "name": "Свињац"
+          "name": "Свињац",
+          "terms": "обор"
         },
         "building/synagogue": {
           "name": "Зграда синагоге",
@@ -1353,11 +1391,20 @@
         "building_point": {
           "name": "Зграда"
         },
+        "cemetery/grave": {
+          "name": "Гроб"
+        },
+        "cemetery/sector": {
+          "name": "Парцела гробља"
+        },
         "club": {
           "name": "Клуб"
         },
         "club/sport": {
           "name": "Спортски клуб"
+        },
+        "craft/agricultural_engines": {
+          "name": "Механичар пољопривредних мотора"
         },
         "craft/basket_maker": {
           "name": "Корпар"
@@ -1389,6 +1436,9 @@
         "craft/chimney_sweeper": {
           "name": "Димничар",
           "terms": "димничар,оџачар"
+        },
+        "craft/cleaning": {
+          "name": "Сервис за чишћење"
         },
         "craft/clockmaker": {
           "name": "Сајџија"
@@ -1483,6 +1533,9 @@
         "craft/shoemaker": {
           "name": "Обућар"
         },
+        "craft/signmaker": {
+          "name": "Фирмописац"
+        },
         "craft/stonemason": {
           "name": "Каменорезац"
         },
@@ -1500,6 +1553,9 @@
         },
         "craft/watchmaker": {
           "name": "Часовничар"
+        },
+        "craft/window_construction": {
+          "name": "Израда прозора"
         },
         "craft/winery": {
           "name": "Винарија"
@@ -1678,6 +1734,9 @@
         "healthcare/blood_donation": {
           "name": "Место за давање крви"
         },
+        "healthcare/counselling": {
+          "name": "Саветовалиште"
+        },
         "healthcare/dentist/orthodontics": {
           "name": "Ортодонт"
         },
@@ -1704,6 +1763,12 @@
         },
         "healthcare/psychotherapist": {
           "name": "Психотерапеут"
+        },
+        "healthcare/rehabilitation": {
+          "name": "Болница за рехабилитацију"
+        },
+        "healthcare/sample_collection": {
+          "name": "Место узорковања"
         },
         "healthcare/speech_therapist": {
           "name": "Логопед"
@@ -1847,6 +1912,9 @@
         "highway/path/boardwalk": {
           "name": "Дашчана пешачка стаза"
         },
+        "highway/path/crossing": {
+          "name": "Пешачки и бициклистички прелаз"
+        },
         "highway/path/informal": {
           "name": "Неформална стаза"
         },
@@ -1912,7 +1980,8 @@
           "name": "Сервисна област"
         },
         "highway/speed_camera": {
-          "name": "Камера за контролу брзине"
+          "name": "Фото-радар",
+          "terms": "камера за контролу брзине"
         },
         "highway/speed_display": {
           "name": "Брзински дисплеји са радаром"
@@ -2140,7 +2209,8 @@
           "name": "Депо"
         },
         "landuse/industrial/scrap_yard": {
-          "name": "Ауто-отпад"
+          "name": "Ауто-отпад",
+          "terms": "ауто-отпад,старо гвожђе,прикупљање строг гвожђа"
         },
         "landuse/industrial/slaughterhouse": {
           "name": "Фабричка кланица"
@@ -2464,6 +2534,9 @@
         "leisure/pitch/rugby_union": {
           "name": "Терен за рагби јунион"
         },
+        "leisure/pitch/shooting": {
+          "name": "Стрелиште"
+        },
         "leisure/pitch/shuffleboard": {
           "name": "Шафлборд терен"
         },
@@ -2488,7 +2561,7 @@
           "terms": "терен за тенис,тениски терен"
         },
         "leisure/pitch/tetherball": {
-          "name": "Тетербол терен"
+          "name": "Терен за тетер"
         },
         "leisure/pitch/volleyball": {
           "name": "Терен за одбојку",
@@ -2523,6 +2596,9 @@
         },
         "leisure/sports_centre/horse_racing": {
           "name": "Хиподром"
+        },
+        "leisure/sports_centre/karting": {
+          "name": "Објекат за картинг"
         },
         "leisure/sports_centre/shooting": {
           "name": "Стрељана"
@@ -2609,6 +2685,13 @@
         "man_made/bunker_silo": {
           "name": "Подземни силос"
         },
+        "man_made/cairn": {
+          "name": "Громила"
+        },
+        "man_made/charge_point": {
+          "name": "Електропуњач",
+          "terms": "пуњач за електричне аутомобиле,акумулаторска станица,пуњач за електрична возила"
+        },
         "man_made/chimney": {
           "name": "Димњак",
           "terms": "димњак,оџак"
@@ -2616,6 +2699,9 @@
         "man_made/clarifier": {
           "name": "Пречистач отпадних вода",
           "terms": "пречистћивач отпадних вода"
+        },
+        "man_made/compass_rose": {
+          "name": "Ружа компаса"
         },
         "man_made/crane": {
           "name": "Кран"
@@ -2632,15 +2718,30 @@
         "man_made/cutline": {
           "name": "Усек"
         },
+        "man_made/dovecote": {
+          "name": "Голубињак"
+        },
+        "man_made/dyke": {
+          "name": "Насип"
+        },
         "man_made/embankment": {
           "name": "Насип"
         },
         "man_made/flagpole": {
           "name": "Јарбол за заставу"
         },
+        "man_made/fuel_pump": {
+          "name": "Точилица горива"
+        },
+        "man_made/gantry": {
+          "name": "Портални носач"
+        },
         "man_made/gasometer": {
           "name": "Гасно складиште",
           "terms": "гасно складиште,гасометар,гасни силос,силос"
+        },
+        "man_made/insect_hotel": {
+          "name": "Хотел за инсекте"
         },
         "man_made/lighthouse": {
           "name": "Светионик"
@@ -2684,6 +2785,9 @@
         "man_made/mast/communication/television": {
           "name": "Телевизијски торањ"
         },
+        "man_made/mast/lighting": {
+          "name": "Рефлектор"
+        },
         "man_made/mineshaft": {
           "name": "Рударско окно"
         },
@@ -2717,6 +2821,9 @@
         "man_made/pumping_station": {
           "name": "Црпна станица"
         },
+        "man_made/quay": {
+          "name": "Пристаниште"
+        },
         "man_made/reservoir_covered": {
           "name": "Покривени резервоар"
         },
@@ -2735,12 +2842,16 @@
         "man_made/street_cabinet": {
           "name": "Средњенапонски трафо"
         },
+        "man_made/street_cabinet/postal_service": {
+          "name": "Поштанско релејско сандуче"
+        },
         "man_made/surveillance": {
           "name": "Надзор",
           "terms": "надзор,видео-надзор,праћење,посматрање,сигурносни надзор"
         },
         "man_made/surveillance/camera": {
-          "name": "Надзорна камера"
+          "name": "Надзорна камера",
+          "terms": "надзорна камера,видео-надзор,сигурносна камера"
         },
         "man_made/survey_point": {
           "name": "Извиђачница"
@@ -2768,6 +2879,9 @@
         },
         "man_made/tower/communication": {
           "name": "Комуникациона кула"
+        },
+        "man_made/tower/cooling": {
+          "name": "Расхладни торањ"
         },
         "man_made/tower/defensive": {
           "name": "Утврђена кула"
@@ -2836,13 +2950,15 @@
           "name": "Напонска ознака"
         },
         "military/bunker": {
-          "name": "Војни бункер"
+          "name": "Војни бункер",
+          "terms": "војни бункер,војно склониште"
         },
         "military/checkpoint": {
           "name": "Војно контролно место"
         },
         "military/nuclear_explosion_site": {
-          "name": "Место нуклеарне експлозије"
+          "name": "Место нуклеарне експлозије",
+          "terms": "место нуклеарне експлозије"
         },
         "military/office": {
           "name": "Војна канцеларија"
@@ -3117,7 +3233,7 @@
           "name": "Фондациона канцеларија"
         },
         "office/government": {
-          "name": "Владина канцеларија",
+          "name": "Државна институција",
           "terms": "владина канцеларија,канцеларија владе,државна канцеларија"
         },
         "office/government/prosecutor": {
@@ -3213,6 +3329,9 @@
         "pipeline/substation": {
           "name": "Црпна станица"
         },
+        "pipeline/valve": {
+          "name": "Вентил цевовода"
+        },
         "piste/downhill": {
           "name": "Ски-стаза"
         },
@@ -3227,9 +3346,6 @@
         },
         "piste/nordic": {
           "name": "Стаза за скијашко трчање"
-        },
-        "piste/piste": {
-          "name": "Стаза за зимске спортове"
         },
         "piste/skitour": {
           "name": "Стаза за турно скијање"
@@ -3294,15 +3410,45 @@
         "playground": {
           "name": "Опрема игралишта"
         },
+        "playground/activitypanel": {
+          "name": "Зид са игром"
+        },
+        "playground/aerialrotator": {
+          "name": "Висећа вртешка"
+        },
+        "playground/balancebeam": {
+          "name": "Гимнастичка греда"
+        },
+        "playground/basketrotator": {
+          "name": "Ротирајућа корпа"
+        },
+        "playground/basketswing": {
+          "name": "Љуљашка у корпи"
+        },
         "playground/bridge": {
           "name": "Мостић за игралиште"
+        },
+        "playground/climbingframe": {
+          "name": "Пењалица"
+        },
+        "playground/climbingwall": {
+          "name": "Зид за пењање"
+        },
+        "playground/cushion": {
+          "name": "Јастук за скакање"
         },
         "playground/hopscotch": {
           "name": "Школица",
           "terms": "школица,хоп-скоч,хоп скоч"
         },
+        "playground/map": {
+          "name": "Насликана карта игралишта"
+        },
         "playground/playhouse": {
           "name": "Кућица"
+        },
+        "playground/roundabout": {
+          "name": "Вртешка"
         },
         "playground/sandpit": {
           "name": "Песковник"
@@ -3311,19 +3457,43 @@
           "name": "Клацкалица",
           "terms": "клацкалица,klackalica"
         },
+        "playground/sledding": {
+          "name": "Спуст за санкање на игралишту"
+        },
         "playground/slide": {
           "name": "Тобоган"
+        },
+        "playground/splash_pad": {
+          "name": "Подлога за прскање"
         },
         "playground/springy": {
           "name": "Њихалица",
           "terms": "коњић,коњић клацкалица,konjić,konjić klackalica"
         },
+        "playground/structure": {
+          "name": "Структура на игралишту"
+        },
         "playground/swing": {
           "name": "Љуљашка"
+        },
+        "playground/teenshelter": {
+          "name": "Тинејџерско склониште"
+        },
+        "playground/tetherball": {
+          "name": "Мотка за тетер"
         },
         "playground/trampoline": {
           "name": "Трамбулина",
           "terms": "трамполина"
+        },
+        "playground/tunnel_tube": {
+          "name": "Тунел на дечијем игралишту"
+        },
+        "playground/water": {
+          "name": "Опрема за игру у води"
+        },
+        "playground/zipwire": {
+          "name": "Зип-лајн на игралишту"
         },
         "point": {
           "name": "Чвор"
@@ -3353,10 +3523,12 @@
           "name": "Водо-турбина"
         },
         "power/generator/source/nuclear": {
-          "name": "Нуклеарни реактор"
+          "name": "Нуклеарни реактор",
+          "terms": "нуклеарни реактор,нуклеарна електрана"
         },
         "power/generator/source/wind": {
-          "name": "Ветро-турбина"
+          "name": "Ветро-турбина",
+          "terms": "ветро-турбина,ветротурбина,ветро-генератор,ветрогенератор"
         },
         "power/line": {
           "name": "Далековод"
@@ -3440,6 +3612,12 @@
         "public_transport/platform/ferry_point": {
           "name": "Трајектно стајалиште"
         },
+        "public_transport/platform/light_rail": {
+          "name": "Перон лаке железнице"
+        },
+        "public_transport/platform/light_rail_point": {
+          "name": "Станица лаке железнице"
+        },
         "public_transport/platform/monorail": {
           "name": "Мнорејл перон"
         },
@@ -3496,6 +3674,9 @@
         },
         "public_transport/station_train": {
           "name": "Железничка станица"
+        },
+        "public_transport/station_train_halt": {
+          "name": "Железничка станица (на захтев)"
         },
         "public_transport/station_tram": {
           "name": "Трамвајска станица"
@@ -3557,6 +3738,9 @@
         },
         "railway/funicular": {
           "name": "Пруга успињаче"
+        },
+        "railway/halt": {
+          "name": "Железничка станица (на захтев)"
         },
         "railway/level_crossing": {
           "name": "Укрштање пута и железничке пруге"
@@ -3629,6 +3813,9 @@
         "railway/turntable": {
           "name": "Железничка окретница"
         },
+        "railway/yard": {
+          "name": "Ранжирна станица"
+        },
         "relation": {
           "name": "Однос"
         },
@@ -3646,6 +3833,9 @@
         "seamark/buoy_lateral/red": {
           "name": "Црвена бова",
           "terms": "црвена плутача"
+        },
+        "seamark/mooring": {
+          "name": "Сидриште"
         },
         "shop": {
           "name": "Продавница"
@@ -3673,6 +3863,9 @@
         },
         "shop/bakery": {
           "name": "Пекара"
+        },
+        "shop/bathroom_furnishing": {
+          "name": "Продавница опреме за купатило"
         },
         "shop/beauty": {
           "name": "Салон лепоте"
@@ -3704,6 +3897,9 @@
         "shop/boutique": {
           "name": "Бутик"
         },
+        "shop/brewing_supplies": {
+          "name": "Продавница пиварске опреме"
+        },
         "shop/butcher": {
           "name": "Месара"
         },
@@ -3734,7 +3930,7 @@
           "name": "Хуманитарна продавница"
         },
         "shop/cheese": {
-          "name": "Продавница сирева"
+          "name": "Продавница сира"
         },
         "shop/chemist": {
           "name": "Дрогерија"
@@ -3810,7 +4006,7 @@
           "terms": "продавница електронских цигарета"
         },
         "shop/electrical": {
-          "name": "Продавница беле технике"
+          "name": "Продавница електроопреме"
         },
         "shop/electronics": {
           "name": "Продавница електронике"
@@ -3882,11 +4078,17 @@
         "shop/hairdresser": {
           "name": "Фризер"
         },
+        "shop/hairdresser/barber": {
+          "name": "Бербер"
+        },
         "shop/hairdresser_supply": {
           "name": "Продавница опреме за фризера"
         },
         "shop/hardware": {
           "name": "Гвожђара"
+        },
+        "shop/hearing_aids": {
+          "name": "Продавница слушних апарата"
         },
         "shop/herbalist": {
           "name": "Травар"
@@ -3986,7 +4188,8 @@
           "name": "Продавница планинарске опреме"
         },
         "shop/paint": {
-          "name": "Фарбара"
+          "name": "Фарбара",
+          "terms": "продавница фарбе"
         },
         "shop/party": {
           "name": "Продавница опреме за журке"
@@ -4032,6 +4235,9 @@
         },
         "shop/religion": {
           "name": "Продавница верских предмета"
+        },
+        "shop/rental": {
+          "name": "Агенција за изнајмљивање"
         },
         "shop/repair": {
           "name": "Сервис"
@@ -4088,6 +4294,9 @@
           "name": "Чајџиница",
           "terms": "чајџиница,продавница чаја"
         },
+        "shop/telecommunication": {
+          "name": "Продавница телекомуникационе опреме"
+        },
         "shop/ticket": {
           "name": "Билетарница",
           "terms": "билетарница,продавница улазница"
@@ -4124,7 +4333,8 @@
           "name": "Продавница усисивача"
         },
         "shop/variety_store": {
-          "name": "Дисконтна продавница"
+          "name": "Дисконтна продавница",
+          "terms": "дисконт"
         },
         "shop/video": {
           "name": "Видео-клуб"
@@ -4157,11 +4367,14 @@
         "shop/yes": {
           "name": "Продавница (неодређеног типа)"
         },
+        "telecom": {
+          "name": "Телекомуникационо обележије"
+        },
         "telecom/data_center": {
           "name": "Складиште података"
         },
         "telecom/exchange": {
-          "name": "Телекомуникационо чвориште"
+          "name": "Комутациони центар"
         },
         "tourism": {
           "name": "Туристичко обележје"

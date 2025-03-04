@@ -2272,6 +2272,10 @@
           "name": "出入口 (正面)",
           "terms": "正面玄関,表玄関,表口,ドア,正面入口,出入口"
         },
+        "entrance/shop": {
+          "name": "出入口（店舗）",
+          "terms": "店舗入口,ドア,扉,入口"
+        },
         "entrance/staircase": {
           "name": "出入口（階段）",
           "terms": "階段の入口,階段,出入口,出入り口,出口,入口"
@@ -2481,14 +2485,14 @@
           "terms": "自転車道,サイクリング道路,自転車"
         },
         "highway/cycleway/bicycle_foot": {
-          "name": "自転車歩行者道",
+          "name": "自転車専用道路(歩行者通行可)",
           "terms": "自転車歩行者道,自歩道,自転車,歩道"
         },
         "highway/cycleway/crossing": {
           "name": "自転車横断道"
         },
         "highway/cycleway/crossing/bicycle_foot": {
-          "name": "横断歩道(自転車道内)",
+          "name": "自転車横断道(歩行者横断可)",
           "terms": "横断歩道(自転車道内),横断歩道,自転車道"
         },
         "highway/cycleway/crossing/traffic_signals": {
@@ -2506,6 +2510,14 @@
         "highway/cycleway/moped_link-NL": {
           "name": "モペッド・リンク",
           "terms": "原付専用道"
+        },
+        "highway/cycleway/traffic_island": {
+          "name": "安全島（自転車用）",
+          "terms": "交通島,安全島,待避島,交通安全,道路設備,二段階横断,自転車横断道"
+        },
+        "highway/cycleway/traffic_island_shared": {
+          "name": "安全島（自転車歩行者兼用）",
+          "terms": "交通島,安全島,待避島,交通安全,道路設備,二段階横断,横断歩道,自転車横断道"
         },
         "highway/cyclist_waiting_aid": {
           "name": "サイクリスト用停車補助",
@@ -2613,6 +2625,18 @@
         "highway/path/boardwalk": {
           "name": "木道",
           "terms": "木道,ボードウォーク,遊歩道,歩道"
+        },
+        "highway/path/crossing": {
+          "name": "自転車横断道(歩行者横断可)"
+        },
+        "highway/path/crossing/traffic_signals": {
+          "name": "自転車横断道(歩行者横断可、信号あり)"
+        },
+        "highway/path/crossing/uncontrolled": {
+          "name": "自転車横断道(歩行者横断可、信号なし)"
+        },
+        "highway/path/crossing/unmarked": {
+          "name": "自転車横断道(歩行者横断可、マークなし)"
         },
         "highway/path/informal": {
           "name": "けもの道",
@@ -3002,6 +3026,14 @@
         "landuse/meadow": {
           "name": "牧草地",
           "terms": "牧草地"
+        },
+        "landuse/meadow_orchard/meadow": {
+          "name": "果樹のある牧草地",
+          "terms": "果樹,牧草地"
+        },
+        "landuse/meadow_orchard/orchard": {
+          "name": "牧草地にある果樹園",
+          "terms": "果樹,牧草地"
         },
         "landuse/military": {
           "name": "軍用地",
@@ -4050,6 +4082,10 @@
         "natural": {
           "name": "自然関連"
         },
+        "natural/arch": {
+          "name": "天然橋",
+          "terms": "岩門,石門"
+        },
         "natural/bare_rock": {
           "name": "岩場",
           "terms": "岩場"
@@ -4494,8 +4530,8 @@
           "terms": "警備会社,会社,オフィス,事務所,セキュリティ,警備,安全"
         },
         "office/surveyor": {
-          "name": "土地家屋調査士事務所",
-          "terms": "測量,オフィス,事務所,土地家屋調査士,土地家屋調査士事務所,土地家屋"
+          "name": "不動産調査鑑定事務所",
+          "terms": "測量,測量士,測量設計,測量事務所,測量会社,土地家屋,土地家屋調査士,土地家屋調査士事務所,不動産,不動産鑑定,登記,オフィス,事務所"
         },
         "office/tax_advisor": {
           "name": "税理士事務所",
@@ -4508,6 +4544,10 @@
         "office/therapist": {
           "name": "セラピスト（オフィス）",
           "terms": "セラピスト,オフィス,事務所"
+        },
+        "office/translator": {
+          "name": "通訳・翻訳事業者",
+          "terms": "通訳,同時通訳,翻訳,校閲,校正,英語,英文,オフィス,事務所"
         },
         "office/travel_agent": {
           "name": "旅行代理店"
@@ -4553,10 +4593,6 @@
         "piste/nordic": {
           "name": "ノルディック/クロスカントリー",
           "terms": "ノルディック/クロスカントリー,ノルディック,クロスカントリー,スキーコース"
-        },
-        "piste/piste": {
-          "name": "スキーコースの種類",
-          "terms": "スキーコースの種類,スキーコース"
         },
         "piste/ski_jump": {
           "name": "スキージャンプ台",
@@ -5554,6 +5590,10 @@
         "shop/gift": {
           "name": "ギフト店",
           "terms": "ギフト店,ギフト用品店,土産店,お土産,贈答品,店舗,お店,ギフト,プレゼント"
+        },
+        "shop/gold_buyer": {
+          "name": "金買取店",
+          "terms": "貴金属買取店"
         },
         "shop/greengrocer": {
           "name": "青果店",

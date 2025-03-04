@@ -1262,8 +1262,6 @@
     <string name="overlay_surface">"سطوح"</string>
     <string name="overlay_path_surface_segregated">"به دو بخش دوچرخه‌سواری و پیاده‌روی تقسیم می‌شود"</string>
     <string name="quest_crossing_title2">"آیا اینجا گذرگاهی وجود دارد؟"</string>
-    <string name="quest_crossing_yes">"بله (مثلاً اینجا جدول پایین آمده یا خط‌کشی‌هایی هست)"</string>
-    <string name="quest_crossing_no">"خیر، اما عبور امکان پذیر است"</string>
     <string name="quest_crossing_prohibited">"خیر، عبور ممنوع یا غیرممکن است"</string>
     <string name="quest_hairdresser_title">"چه مشتریانی به این آرایشگاه مراجعه می‌کنند؟"</string>
     <string name="quest_hairdresser_male_and_female">"هر کسی"</string>

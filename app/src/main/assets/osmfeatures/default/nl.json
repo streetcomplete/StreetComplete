@@ -189,7 +189,7 @@
           "terms": "fietsenrek,fietsrek,fietsenparking,fietsenkelder"
         },
         "amenity/bicycle_parking/building": {
-          "name": "Overdekte fietsenstalling",
+          "name": "Fietsparkeergebouw",
           "terms": "fietsengarage,fietsenschuur,fietsenflat,parkeren,fiets"
         },
         "amenity/bicycle_parking/lockers": {
@@ -1088,10 +1088,6 @@
           "name": "Theater",
           "terms": "concertgebouw,schouwburg,opvoering,optreden,opera,toneelstuk,musical"
         },
-        "amenity/theatre/type/amphi": {
-          "name": "Amfitheater",
-          "terms": "romeins theater"
-        },
         "amenity/ticket_validator": {
           "name": "Stempelautomaat",
           "terms": "apparaat,ticketje,controle"
@@ -1198,7 +1194,8 @@
           "terms": "etenautomaat,automaat met eten,voedingsautomaat"
         },
         "amenity/vending_machine/food/snacks": {
-          "name": "Snackautomaat"
+          "name": "Snackautomaat",
+          "terms": "etenautomaat,automaat"
         },
         "amenity/vending_machine/fuel": {
           "name": "Brandstofautomaat"
@@ -2200,7 +2197,8 @@
           "terms": "gat,doel"
         },
         "golf/lateral_water_hazard": {
-          "name": "Laterale waterhindernis"
+          "name": "Laterale waterhindernis",
+          "terms": "golf,water"
         },
         "golf/path": {
           "name": "Golfwandelpad",
@@ -2345,14 +2343,16 @@
           "terms": "kruispunt,oversteken"
         },
         "highway/crossing/traffic_signals": {
-          "name": "Oversteekplaats met voetgangersverkeerslichten"
+          "name": "Oversteekplaats met voetgangersverkeerslichten",
+          "terms": "verkeerslichten,zebra,oversteekplaats,zebrapad,stoplicht"
         },
         "highway/crossing/uncontrolled": {
           "name": "Gemarkeerde oversteekplaats",
           "terms": "voetganger,zebra,zebrapad"
         },
         "highway/crossing/unmarked": {
-          "name": "Ongemarkeerde oversteekplaats"
+          "name": "Ongemarkeerde oversteekplaats",
+          "terms": "oversteekplaats,voetganger,ongemarkeerde,niet aangeduide"
         },
         "highway/cycleway": {
           "name": "Fietspad",
@@ -2374,7 +2374,8 @@
           "terms": "fiets,kruispunt"
         },
         "highway/cycleway/crossing/uncontrolled": {
-          "name": "Gemarkeerde fietsoversteekplaats"
+          "name": "Gemarkeerde fietsoversteekplaats",
+          "terms": "fiets,blokmarkering,oversteekplaats,fietser,bromfietser"
         },
         "highway/cycleway/crossing/unmarked": {
           "name": "Ongemarkeerde fietsoversteekplaats",
@@ -2420,13 +2421,16 @@
           "name": "Voetgangersoversteekplaats"
         },
         "highway/footway/crossing/traffic_signals": {
-          "name": "Oversteekplaats met verkeerslichten voor voetgangers"
+          "name": "Oversteekplaats met verkeerslichten voor voetgangers",
+          "terms": "verkeerslichten,zebra,oversteekplaats,zebrapad,stoplicht"
         },
         "highway/footway/crossing/uncontrolled": {
-          "name": "Gemarkeerde oversteekplaats"
+          "name": "Gemarkeerde oversteekplaats",
+          "terms": "voetganger,zebra,zebrapad"
         },
         "highway/footway/crossing/unmarked": {
-          "name": "Ongemarkeerde oversteekplaats"
+          "name": "Ongemarkeerde oversteekplaats",
+          "terms": "oversteekplaats,voetganger,ongemarkeerde,niet aangeduide"
         },
         "highway/footway/informal": {
           "name": "Informeel voetpad"
@@ -2480,6 +2484,9 @@
         "highway/path/boardwalk": {
           "name": "Vlonderpad",
           "terms": "plankenweg"
+        },
+        "highway/path/crossing": {
+          "name": "Fiets- en voetgangersoversteekplaats"
         },
         "highway/path/informal": {
           "name": "Informeel pad",
@@ -2879,7 +2886,8 @@
           "name": "Militaire basis"
         },
         "landuse/military/base/navy": {
-          "name": "Marinebasis"
+          "name": "Marinebasis",
+          "terms": "militair,leger,zeemacht"
         },
         "landuse/military/danger_area": {
           "name": "Militaire gevarenzone"
@@ -3486,7 +3494,8 @@
           "terms": "vlaggenstok,vlaggenpaal"
         },
         "man_made/fuel_pump": {
-          "name": "Benzinepomp"
+          "name": "Benzinepomp",
+          "terms": "benzinepomp,dieselpomp,gaspomp,lng-pomp,cng-pomp,biodieselpomp"
         },
         "man_made/gantry": {
           "name": "Wegportaal"
@@ -3511,10 +3520,11 @@
         },
         "man_made/manhole": {
           "name": "Putdeksel",
-          "terms": "riooldeksel"
+          "terms": "riooldeksel,mangat,deksel"
         },
         "man_made/manhole/drain": {
-          "name": "Straatkolk"
+          "name": "Straatkolk",
+          "terms": "regenwaterafvoer,trottoirkolk,afvoerputje,putje,rioolputje,slikker"
         },
         "man_made/manhole/gas": {
           "name": "Putdeksel voor gasvoorzieningen"
@@ -3842,14 +3852,14 @@
           "terms": "ravijn,talud"
         },
         "natural/scrub": {
-          "name": "Scrubland",
-          "terms": "kreupelhout,ruigte,savanne,prairie,pampa"
+          "name": "Kreupelhout",
+          "terms": "kreupelhout,ruigte,savanne,prairie,pampa,scrubland,struweel"
         },
         "natural/shingle": {
           "name": "Kiezelstrand"
         },
         "natural/shrub": {
-          "name": "Scrubland"
+          "name": "Struik"
         },
         "natural/sinkhole": {
           "name": "Zinkgat"
@@ -4200,7 +4210,8 @@
           "name": "Tussenstation van een pijpleiding"
         },
         "pipeline/valve": {
-          "name": "Ventiel van een pijpleiding"
+          "name": "Ventiel van een pijpleiding",
+          "terms": "aflsuitklep,ventiel"
         },
         "piste/downhill": {
           "name": "Ski afdaling"
@@ -4216,9 +4227,6 @@
         },
         "piste/nordic": {
           "name": "Langlaufpiste"
-        },
-        "piste/piste": {
-          "name": "Wintersportpad"
         },
         "piste/skitour": {
           "name": "Toerskipad",
@@ -4431,7 +4439,7 @@
         },
         "power/generator/method/photovoltaic/building/roof": {
           "name": "Zonnepaneel als luifel",
-          "terms": "zonnepaneel,carport,overdekking,overkapping"
+          "terms": "zonnepaneel,carport,overdekking,overkapping,dak,afdak"
         },
         "power/generator/method/photovoltaic/location/roof": {
           "name": "Zonnepaneel op dak",
@@ -4474,7 +4482,8 @@
           "terms": "hydro-elektrische elektriciteitscentrale"
         },
         "power/plant/source/method/photovoltaic": {
-          "name": "Zonnepark"
+          "name": "Zonnepark",
+          "terms": "zonnepaneelpark"
         },
         "power/plant/source/nuclear": {
           "name": "Nucleaire centrale",

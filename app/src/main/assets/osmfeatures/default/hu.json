@@ -9,6 +9,11 @@
           "name": "Cím",
           "terms": "cím,lakcím,házszám,utca,postacím"
         },
+        "advertising": {
+          "name": "Hirdetőfelület",
+          "terms": "hirdetőtábla,hirdetés,reklám,neonreklám",
+          "aliases": "hirdetőtábla\nhirdetés\nreklám"
+        },
         "advertising/billboard": {
           "name": "Óriásplakát",
           "terms": "plakát,óriásplakát,reklámtábla,poszter,óriásposzter"
@@ -164,6 +169,10 @@
           "name": "Bankautomata",
           "terms": "atm,pénzautomata,pénzkiadó automata"
         },
+        "amenity/baking_oven": {
+          "name": "Kemence",
+          "terms": "sütő"
+        },
         "amenity/bank": {
           "name": "Bank",
           "terms": "bank,csekk,befektetés,széf,megtakarítás,részvény,takarékszövetkezet,pénzintézet,takarék"
@@ -207,6 +216,9 @@
         "amenity/bicycle_repair_station": {
           "name": "Önálló kerékpárszerelő pont",
           "terms": "kerékpárszerelés,biciklijavítás,bringajavító"
+        },
+        "amenity/bicycle_wash": {
+          "name": "Kerékpármosó"
         },
         "amenity/biergarten": {
           "name": "Sörkert",
@@ -283,6 +295,9 @@
           "name": "Abortuszklinika",
           "terms": "abortusz,magzatelhajtás,klinika,kórház,szülészet,magzat,tehességmegszakítás"
         },
+        "amenity/clinic/dialysis": {
+          "name": "Dialízisközpont"
+        },
         "amenity/clinic/fertility": {
           "name": "Termékenységi klinika",
           "terms": "termékenység,szaporodás,klinika,kórház,sperma,pete,lombik"
@@ -303,9 +318,27 @@
           "name": "Közösségi ház",
           "terms": "művelődési ház,kultúrház,művház,faluház"
         },
+        "amenity/community_centre/club_home": {
+          "name": "Klubhelyiség"
+        },
+        "amenity/community_centre/community_hall": {
+          "name": "Közösségi terem"
+        },
+        "amenity/community_centre/cultural_centre": {
+          "name": "Kulturális központ"
+        },
+        "amenity/community_centre/family_centre": {
+          "name": "Családközpont"
+        },
         "amenity/community_centre/lgbtq": {
           "name": "LMBTQ+ közösségi ház",
           "terms": "leszbikus,homoszexuális,meleg"
+        },
+        "amenity/community_centre/parish_hall": {
+          "name": "Egyházközségi terem"
+        },
+        "amenity/community_centre/village_hall": {
+          "name": "Faluház"
         },
         "amenity/community_centre/youth_centre": {
           "name": "Ifjúsági központ",
@@ -342,6 +375,35 @@
           "name": "Orvosi rendelő",
           "terms": "doktor,orvos,szakorvos,rendelő,háziorvos,gyerekorvos"
         },
+        "amenity/doctors/allergology": {
+          "name": "Allergológus"
+        },
+        "amenity/doctors/cardiology": {
+          "name": "Kardiológus",
+          "terms": "szív,érrendszer"
+        },
+        "amenity/doctors/child_psychiatry": {
+          "name": "Gyermek- és serdülőkori pszichiáter"
+        },
+        "amenity/doctors/dermatology": {
+          "name": "Bőrgyógyász",
+          "terms": "dermatológus,bőrgyógyászat"
+        },
+        "amenity/doctors/gastroenterology": {
+          "name": "Gasztroenterológus",
+          "terms": "belgyógyász,emésztőrendszer,gyomor"
+        },
+        "amenity/doctors/general": {
+          "name": "Háziorvos",
+          "terms": "orvosi alapellátás"
+        },
+        "amenity/doctors/podiatry": {
+          "name": "Lábgyógyász",
+          "terms": "láb,gyógyítás"
+        },
+        "amenity/dog_toilet": {
+          "name": "Kutyavécé"
+        },
         "amenity/dojo": {
           "name": "Harcművészeti edzőterem / dodzso",
           "terms": "kick-box,karate,kung fu,aikido,taekwando,judo,jujitsu,kendo,capoeira,dzsudo,baranta,zenbukan,kempo,boksz,krav maga,csikung,vusu,saolin,kungfu"
@@ -353,6 +415,11 @@
         "amenity/drinking_water": {
           "name": "Ivóvíz",
           "terms": "ivókút,kút,csap,közkifolyó,közkút,nyomós kút,forrás,víz"
+        },
+        "amenity/driver_training": {
+          "name": "Autós gyakorlópálya",
+          "terms": "kresz pálya,autós iskola",
+          "aliases": "kresz pálya"
         },
         "amenity/driving_school": {
           "name": "Autósiskola",
@@ -373,6 +440,9 @@
           "name": "Gyorsétterem",
           "terms": "pizza,gyros,gyorskajálda,lángos,büfé,hamburger,hot dog"
         },
+        "amenity/fast_food/bagel": {
+          "name": "Bagel gyorsétterem"
+        },
         "amenity/fast_food/burger": {
           "name": "Hamburgerbüfé",
           "terms": "burger,reggeli,drive-in"
@@ -380,6 +450,9 @@
         "amenity/fast_food/chicken": {
           "name": "Csirkebüfé",
           "terms": "csirke gyorsétterem,pipiző"
+        },
+        "amenity/fast_food/chinese": {
+          "name": "Kínai gyorsétterem"
         },
         "amenity/fast_food/donut": {
           "name": "Fánkbüfé",
@@ -477,6 +550,11 @@
           "name": "Óvoda / óvodai terület",
           "terms": "iskolai előkészítő területe,óvoda terület,ovi terület,bölcsőde terület,kisdedóvó terület"
         },
+        "amenity/kneipp_water_cure": {
+          "name": "Kneipp-kúra",
+          "terms": "kneipp-taposó",
+          "aliases": "Kneipp-taposó"
+        },
         "amenity/language_school": {
           "name": "Nyelviskola",
           "terms": "nyelvtanulás,nyelvoktatás,idegen nyelv"
@@ -504,6 +582,9 @@
         "amenity/love_hotel": {
           "name": "Love hotel",
           "terms": "búvóhely,szerelmi fészek"
+        },
+        "amenity/luggage_locker": {
+          "name": "Poggyászmegőrző"
         },
         "amenity/marketplace": {
           "name": "Piactér",
@@ -716,6 +797,11 @@
           "name": "Hulladékudvar",
           "terms": "hulladék,szelektív hulladék,szeméttelep,szemétlerakó,veszélyes hulladék"
         },
+        "amenity/recycling_container": {
+          "name": "Szelektív konténer",
+          "terms": "újrahasznosító konténer,szelektív kuka",
+          "aliases": "Újrahasznosító konténer\nSzelektív kuka"
+        },
         "amenity/refugee_site": {
           "name": "Menekülttábor",
           "terms": "menekülttábor,menekültek,migránsok,kitelepítettek"
@@ -736,6 +822,10 @@
           "name": "Ázsiai étterem",
           "terms": "ázsiai étterem"
         },
+        "amenity/restaurant/barbecue": {
+          "name": "Barbecue étterem",
+          "aliases": "Grillező étterem\nGrillétterem"
+        },
         "amenity/restaurant/chinese": {
           "name": "Kínai étterem",
           "terms": "kínai étterem"
@@ -743,6 +833,9 @@
         "amenity/restaurant/french": {
           "name": "Francia étterem",
           "terms": "francia étterem"
+        },
+        "amenity/restaurant/georgian": {
+          "name": "Grúz étterem"
         },
         "amenity/restaurant/german": {
           "name": "Német étterem",
@@ -778,6 +871,11 @@
           "name": "Pizzeria",
           "terms": "pizza"
         },
+        "amenity/restaurant/ramen": {
+          "name": "Rámen étterem",
+          "terms": "ramen étterem,japán étterem",
+          "aliases": "Ramen étterem\nJapán étterem"
+        },
         "amenity/restaurant/seafood": {
           "name": "Tengeri ételek étterme",
           "terms": "halvendéglő"
@@ -807,7 +905,7 @@
         },
         "amenity/sanitary_dump_station": {
           "name": "Szaniterürítő hely (lakóautóknak)",
-          "terms": "lakóautó,lakókocsi,vécé,toalett,tisztasági"
+          "terms": "lakóautó,lakókocsi,wc,szaniter,tartály,ürítés,szennyvíz,ürülék"
         },
         "amenity/school": {
           "name": "Iskola területe",
@@ -815,21 +913,23 @@
         },
         "amenity/shelter": {
           "name": "Esőbeálló",
-          "terms": "fedett,fedél,esőház,esőkunyhó,menedékház,menedék,tető"
+          "terms": "fedett,fedél,esőház,esőkunyhó,menedékház,menedék,tető",
+          "aliases": "esőház\nesőbeálló\nmenedék\nváró"
         },
         "amenity/shelter/gazebo": {
-          "name": "Pavilon",
+          "name": "Gazebo pavilon",
           "terms": "filagória,szaletli,gloriett"
         },
         "amenity/shelter/lean_to": {
-          "name": "Háromfalú fészer",
-          "terms": "fészer"
+          "name": "Háromfalú menedék",
+          "terms": "esőbeálló,fél tető,féltető"
         },
         "amenity/shelter/picnic_shelter": {
           "name": "Fedett piknikezőhely"
         },
         "amenity/shelter/public_transport": {
-          "name": "Tömegközlekedési esőbeálló"
+          "name": "Tömegközlekedési utasváró",
+          "terms": "busz,esőbeálló,tömegközlekedés,váró,utasváró"
         },
         "amenity/shower": {
           "name": "Zuhany",
@@ -893,6 +993,15 @@
           "name": "Taxiállomás",
           "terms": "taxidroszt,droszt,taxiállomás,taxibeálló"
         },
+        "amenity/taxi/auto_rickshaw": {
+          "name": "Motoros riksa droszt"
+        },
+        "amenity/taxi/cycle_rickshaw": {
+          "name": "Riksakerékpár droszt"
+        },
+        "amenity/taxi/motorcycle_taxi": {
+          "name": "Motorkerékpár-taxi droszt"
+        },
         "amenity/telephone": {
           "name": "Telefon",
           "terms": "telefonfülke,telefonkészülék,telefon,nyilvános telefon,nyilvános állomás"
@@ -902,8 +1011,7 @@
           "terms": "amfiteátrum,játékszín,teátrum,bábszínház,operaház"
         },
         "amenity/theatre/type/amphi": {
-          "name": "Amfiteátrum",
-          "terms": "aréna"
+          "name": "Amfiteátrum"
         },
         "amenity/ticket_validator": {
           "name": "Jegyellenőrző",
@@ -953,6 +1061,9 @@
           "name": "Árusító automata",
           "terms": "automata,árusító automata"
         },
+        "amenity/vending_machine/bicycle_tube": {
+          "name": "Kerékpárbelső-automata"
+        },
         "amenity/vending_machine/bottle_return": {
           "name": "Palackvisszaváltó automata",
           "terms": "üvegvisszaváltó"
@@ -997,6 +1108,10 @@
           "name": "Ételárusító automata",
           "terms": "büféautomata,automata büfé"
         },
+        "amenity/vending_machine/food/snacks": {
+          "name": "Édességautomata",
+          "terms": "csokoládé,cukorka,snack,chips"
+        },
         "amenity/vending_machine/ice_cream": {
           "name": "Jégkrém automata"
         },
@@ -1030,6 +1145,10 @@
           "name": "Kutyaürülék-tartály",
           "terms": "ürülék,kutya,kuka,kutyaszar"
         },
+        "amenity/waste_basket": {
+          "name": "Szemetes",
+          "terms": "szemeteskosár,kuka,szemétgyűjtő,hulladékgyűjtő"
+        },
         "amenity/waste_disposal": {
           "name": "Szemeteskonténer",
           "terms": "szemetes,kuka,szemetes kuka,hulladéktároló,szemétgyűjtő"
@@ -1059,6 +1178,9 @@
         },
         "area/highway": {
           "name": "Út területe"
+        },
+        "area/highway/traffic_island": {
+          "name": "Forgalmi sziget területe"
         },
         "attraction": {
           "name": "Látványosság"
@@ -1151,6 +1273,11 @@
         "barrier/bump_gate": {
           "name": "Forgókapu"
         },
+        "barrier/bus_trap": {
+          "name": "Nyomtávkorlátozó",
+          "terms": "buszcsapda",
+          "aliases": "buszcsapda"
+        },
         "barrier/cable_barrier": {
           "name": "Kábelkorlát",
           "terms": "kötélkorlát"
@@ -1186,7 +1313,8 @@
           "terms": "védőkorlát"
         },
         "barrier/full-height_turnstile": {
-          "name": "Forgókapu"
+          "name": "Teljes magasságú forgókapu",
+          "terms": "beléptető kapu"
         },
         "barrier/gate": {
           "name": "Kapu",
@@ -1195,6 +1323,9 @@
         "barrier/guard_rail": {
           "name": "Szalagkorlát",
           "terms": "védőkorlát,szalagkorlát"
+        },
+        "barrier/hampshire_gate": {
+          "name": "Nyitható drótkerítés"
         },
         "barrier/handrail": {
           "name": "Korlát, kapaszkodó"
@@ -1207,7 +1338,9 @@
           "name": "Magasságkorlátozó"
         },
         "barrier/jersey_barrier": {
-          "name": "Beton útakadály"
+          "name": "Előregyártott terelőfal",
+          "terms": "előregyártott terelőfal,beton útakadály,betonelem",
+          "aliases": "Beton útakadály\nBetonelem"
         },
         "barrier/kerb": {
           "name": "Járdaszegély",
@@ -1239,6 +1372,9 @@
         "barrier/log": {
           "name": "Kidőltfa-akadály"
         },
+        "barrier/motorcycle_barrier": {
+          "name": "Motorkerékpár-akadály"
+        },
         "barrier/planter": {
           "name": "Virágláda (akadály)"
         },
@@ -1261,7 +1397,7 @@
         },
         "barrier/swing_gate": {
           "name": "Elforduló sorompó",
-          "terms": "forgó sorompó"
+          "terms": "forgó sorompó,vízszintes sorompó,nyitható sorompó,nyíló sorompó"
         },
         "barrier/toll_booth": {
           "name": "Útdíjfizető-kapu",
@@ -1269,7 +1405,7 @@
         },
         "barrier/turnstile": {
           "name": "Beléptető kapu",
-          "terms": "forgókapu,mókuskerék"
+          "terms": "forgókapu,mókuskerék,forgóvillás kapu"
         },
         "barrier/wall": {
           "name": "Fal",
@@ -1292,6 +1428,9 @@
           "name": "Közigazgatási határ",
           "terms": "adminisztratív határ,településhatár,városhatár,megyehatár,országhatár"
         },
+        "boundary/hazard": {
+          "name": "Veszélyes terület"
+        },
         "bridge/support": {
           "name": "Híd alátámasztása"
         },
@@ -1309,6 +1448,9 @@
         "building/apartments": {
           "name": "Társasház"
         },
+        "building/bakehouse": {
+          "name": "Sütöde"
+        },
         "building/barn": {
           "name": "Pajta",
           "terms": "csűr,melléképület,mezőgazdasági épület"
@@ -1319,7 +1461,7 @@
         },
         "building/bungalow": {
           "name": "Bungaló",
-          "terms": "kunyhó,faház,bódé"
+          "terms": "kunyhó,faház,hétvégi ház,nyaraló"
         },
         "building/bunker": {
           "name": "Bunker"
@@ -1419,6 +1561,10 @@
           "name": "Családi ház",
           "terms": "ház"
         },
+        "building/house/terraced": {
+          "name": "Sorház",
+          "terms": "házsor"
+        },
         "building/houseboat": {
           "name": "Lakóhajó"
         },
@@ -1463,6 +1609,9 @@
           "name": "Kiskereskedelmi épület",
           "terms": "boltépület,kereskedés"
         },
+        "building/riding_hall": {
+          "name": "Belétri lovarda"
+        },
         "building/roof": {
           "name": "Tető",
           "terms": "tető,fedél,esőbeállló"
@@ -1494,6 +1643,9 @@
           "name": "Stadionépület",
           "terms": "labdarúgópálya"
         },
+        "building/static_caravan": {
+          "name": "Telepített lakókocsi"
+        },
         "building/sty": {
           "name": "Disznóól",
           "terms": "ól"
@@ -1503,6 +1655,11 @@
         },
         "building/temple": {
           "name": "Nem keresztény templom"
+        },
+        "building/terrace": {
+          "name": "Sorházakból álló házsor",
+          "terms": "sorház",
+          "aliases": "sorházak"
         },
         "building/train_station": {
           "name": "Vasútállomás-épület"
@@ -1732,7 +1889,7 @@
           "terms": "kárpitozás,bútor"
         },
         "craft/watchmaker": {
-          "name": "Órás (karóra)",
+          "name": "Órás",
           "terms": "órakészítő és javító műhely"
         },
         "craft/window_construction": {
@@ -1794,6 +1951,12 @@
         "emergency/fire_hydrant": {
           "name": "Tűzcsap",
           "terms": "tűzcsap,vészhelyzet,tűzoltók,fecskendő,tömlő"
+        },
+        "emergency/fire_hydrant/pillar": {
+          "name": "Tűzcsap oszlop"
+        },
+        "emergency/fire_hydrant/underground": {
+          "name": "Föld alatti tűzcsap"
         },
         "emergency/first_aid_kit": {
           "name": "Elsősegélykészlet",
@@ -1861,6 +2024,9 @@
           "name": "Főbejárat",
           "terms": "főkapu"
         },
+        "entrance/staircase": {
+          "name": "Lépcsőházbejárat"
+        },
         "ford": {
           "name": "Gázló",
           "terms": "gázló"
@@ -1894,7 +2060,8 @@
           "terms": "golflyuk"
         },
         "golf/lateral_water_hazard": {
-          "name": "Keresztirányú vízakadály"
+          "name": "Keresztirányú vízakadály",
+          "terms": "keresztirányú vízi akadály,oldalirányú vízi akadály,oldalirányú vízakadály"
         },
         "golf/path": {
           "name": "Golf sétaút"
@@ -1908,7 +2075,8 @@
           "terms": "tee box - elütőhely"
         },
         "golf/water_hazard": {
-          "name": "Vízakadály"
+          "name": "Vízakadály",
+          "terms": "vízi akadály"
         },
         "healthcare": {
           "name": "Egészségügyi létesítmény",
@@ -1921,6 +2089,12 @@
         "healthcare/alternative/chiropractic": {
           "name": "Kiropraktor (csontkovács)",
           "terms": "hát,fájdalom,gerinc,masszázs,csont"
+        },
+        "healthcare/alternative/homeopathy": {
+          "name": "Homeopata"
+        },
+        "healthcare/alternative/traditional_chinese_medicine": {
+          "name": "Hagyományos kínai orvoslás gyakorlója"
         },
         "healthcare/audiologist": {
           "name": "Audiológus",
@@ -1984,6 +2158,9 @@
           "name": "Beszédterapeuta",
           "terms": "beszéd,terapeuta,terápia,hang"
         },
+        "healthcare/yes": {
+          "name": "Egészségügyi intézmény (meghatározatlan típus)"
+        },
         "highway": {
           "name": "Út"
         },
@@ -1997,6 +2174,10 @@
         "highway/bus_stop": {
           "name": "Buszmegálló"
         },
+        "highway/busway": {
+          "name": "Zárt buszút",
+          "aliases": "zárt buszsáv"
+        },
         "highway/construction": {
           "name": "Útépítés"
         },
@@ -2005,7 +2186,8 @@
           "terms": "csarnok,átjáró,passzázs"
         },
         "highway/crossing": {
-          "name": "Gyalogosátkelő"
+          "name": "Gyalogosátkelő",
+          "terms": "kereszteződés"
         },
         "highway/crossing/traffic_signals": {
           "name": "Jelzőlámpás gyalogosátkelő"
@@ -2039,6 +2221,12 @@
         },
         "highway/cycleway/crossing/unmarked": {
           "name": "Nem jelölt kerékpáros-átkelő"
+        },
+        "highway/cycleway/moped_link-NL": {
+          "name": "Segédmotors kerékpár lehajtó"
+        },
+        "highway/cyclist_waiting_aid": {
+          "name": "Kerékpáros várakozó támasz"
         },
         "highway/elevator": {
           "name": "Lift",
@@ -2092,6 +2280,9 @@
           "name": "Elsőbbségadás kötelező",
           "terms": "elsőbbségadás"
         },
+        "highway/ladder": {
+          "name": "Létra"
+        },
         "highway/living_street": {
           "name": "Lakó-pihenő övezet",
           "terms": "pihenő-lakóút,lakóút,pihenőövezet,lakóövezet"
@@ -2127,6 +2318,9 @@
           "name": "Talaj fölötti járda",
           "terms": "deszkajárda,palló"
         },
+        "highway/path/crossing": {
+          "name": "Gyalogos- és kerékpáros-átkelő"
+        },
         "highway/path/informal": {
           "name": "Nem hivatalos ösvény"
         },
@@ -2134,7 +2328,8 @@
           "name": "Sétálóutca"
         },
         "highway/pedestrian_line": {
-          "name": "Sétálóutca"
+          "name": "Sétálóutca",
+          "terms": "sétálóutca"
         },
         "highway/primary": {
           "name": "Főút",
@@ -2201,6 +2396,9 @@
         "highway/service/parking_aisle": {
           "name": "Parkolóút"
         },
+        "highway/service_area": {
+          "name": "Aszfaltozott szolgálati terület"
+        },
         "highway/services": {
           "name": "Autós pihenőhely (benzinkúttal)",
           "terms": "autó,pihenő,pihenőhely"
@@ -2210,7 +2408,7 @@
           "terms": "sebességellenőrző,sebességmérő,kamera"
         },
         "highway/speed_display": {
-          "name": "Radarral ellenőrzött sebességet jelző tábla"
+          "name": "Sebességkijelző tábla"
         },
         "highway/steps": {
           "name": "Lépcső",
@@ -2286,6 +2484,9 @@
         "historic/building": {
           "name": "Történelmi épület"
         },
+        "historic/cannon": {
+          "name": "Ágyú"
+        },
         "historic/castle": {
           "name": "Vár",
           "terms": "kastély,palota,fellegvár,erőd"
@@ -2315,6 +2516,9 @@
         },
         "historic/memorial/plaque": {
           "name": "Emléktábla"
+        },
+        "historic/memorial/stolperstein-EU": {
+          "name": "Botlatókő emléktábla"
         },
         "historic/monument": {
           "name": "Monumentális, épületszerű emlékmű",
@@ -2351,7 +2555,8 @@
           "name": "Beltéri terület"
         },
         "indoor/corridor": {
-          "name": "Beltéri folyosó"
+          "name": "Beltéri folyosó",
+          "terms": "csarnok,átjáró,passzázs"
         },
         "indoor/corridor_line": {
           "name": "Beltéri folyosó"
@@ -2493,6 +2698,9 @@
           "name": "Haditengerészeti támaszpont",
           "terms": "flottatámaszpont,hadikikötő"
         },
+        "landuse/military/danger_area": {
+          "name": "Veszélyes katonai terület"
+        },
         "landuse/military/obstacle_course": {
           "name": "Katonai akadálypálya",
           "terms": "hadsereg,haderő,partiőrség,tengerészet,haditengerészet,háború"
@@ -2543,6 +2751,9 @@
           "name": "Társasház-együttes",
           "terms": "lakópark"
         },
+        "landuse/residential/trailer_park": {
+          "name": "Telepítettlakókocsi-park"
+        },
         "landuse/retail": {
           "name": "Kiskereskedelmi terület",
           "terms": "boltok,üzletek,pláza"
@@ -2570,6 +2781,11 @@
         "leisure/bandstand": {
           "name": "Zenepavilon",
           "terms": "színpad"
+        },
+        "leisure/bathing_place": {
+          "name": "Fürdőzőhely",
+          "terms": "fürdőhely",
+          "aliases": "fürdőhely"
         },
         "leisure/beach_resort": {
           "name": "Fürdőhely, vízparti strand",
@@ -2671,7 +2887,11 @@
           "terms": "arborétum"
         },
         "leisure/garden/community": {
-          "name": "Közösségi kert"
+          "name": "Közösségi kert",
+          "terms": "közösségi kert"
+        },
+        "leisure/garden/kitchen": {
+          "name": "Konyhakert"
         },
         "leisure/golf_course": {
           "name": "Golfpálya"
@@ -2682,6 +2902,9 @@
         "leisure/horse_riding": {
           "name": "Lovasiskola központ",
           "terms": "lovas létesítmény,lovas farm,lovas központ,lovaglás,lovas istálló,lóistálló"
+        },
+        "leisure/hot_tub": {
+          "name": "Pezsgőfürdő"
         },
         "leisure/ice_rink": {
           "name": "Jégpálya",
@@ -2724,8 +2947,14 @@
           "name": "Amerikaifutball-pálya",
           "terms": "amerikaifoci pálya"
         },
+        "leisure/pitch/american_handball": {
+          "name": "Amerikaikézilabda-pálya"
+        },
         "leisure/pitch/archery": {
           "name": "Íjászlőtér"
+        },
+        "leisure/pitch/athletics": {
+          "name": "Atlétikai pálya"
         },
         "leisure/pitch/australian_football": {
           "name": "Ausztrálfutball-pálya"
@@ -2848,8 +3077,14 @@
           "name": "Falmászás",
           "terms": "mászófal"
         },
+        "leisure/sports_centre/climbing_adventure": {
+          "name": "Kalandpark"
+        },
         "leisure/sports_centre/horse_racing": {
           "name": "Lóversenypálya"
+        },
+        "leisure/sports_centre/karting": {
+          "name": "Gokartpálya"
         },
         "leisure/sports_centre/shooting": {
           "name": "Lőtér létesítmény"
@@ -2878,6 +3113,9 @@
           "name": "Versenypálya (nem motorsport)",
           "terms": "futás,lóverseny,kerékpárverseny"
         },
+        "leisure/track/athletics": {
+          "name": "Atlétikai futópálya"
+        },
         "leisure/track/athletics/running": {
           "name": "Futópálya"
         },
@@ -2889,7 +3127,8 @@
           "name": "Lóversenypálya"
         },
         "leisure/track/running": {
-          "name": "Futópálya"
+          "name": "Futópálya",
+          "terms": "futópálya"
         },
         "leisure/trampoline_park": {
           "name": "Ugrálda",
@@ -2938,9 +3177,15 @@
         "man_made/carpet_hanger": {
           "name": "Szőnyegporoló"
         },
+        "man_made/charge_point": {
+          "name": "Elektromos töltőoszlop"
+        },
         "man_made/chimney": {
           "name": "Kémény",
           "terms": "füstelvezető"
+        },
+        "man_made/clarifier": {
+          "name": "Szennyvíztisztító"
         },
         "man_made/clearcut": {
           "name": "Tarvágás",
@@ -2976,11 +3221,28 @@
           "name": "Védőgát"
         },
         "man_made/embankment": {
-          "name": "Töltés"
+          "name": "Töltés",
+          "terms": "kiemelkedés,hát,vasúti töltés"
         },
         "man_made/flagpole": {
           "name": "Zászlórúd",
           "terms": "árbóc"
+        },
+        "man_made/flare": {
+          "name": "Gázfáklya"
+        },
+        "man_made/footwear_decontamination-AU-NZ": {
+          "name": "Cipőfertőtlenítő állomás"
+        },
+        "man_made/fuel_pump": {
+          "name": "Üzemanyagtöltő kútoszlop",
+          "terms": "kútoszlop",
+          "aliases": "kútoszlop"
+        },
+        "man_made/gantry": {
+          "name": "Portál",
+          "terms": "kapu",
+          "aliases": "Kapu"
         },
         "man_made/gasometer": {
           "name": "Gázmérő óra",
@@ -2993,15 +3255,20 @@
         "man_made/groyne": {
           "name": "Sarkantyú (kőgát)"
         },
+        "man_made/insect_hotel": {
+          "name": "Rovarhotel"
+        },
         "man_made/lighthouse": {
           "name": "Világítótorony",
           "terms": "jelzőfény"
         },
         "man_made/manhole": {
-          "name": "Búvónyílás"
+          "name": "Búvónyílás",
+          "terms": "akna"
         },
         "man_made/manhole/drain": {
-          "name": "Vízelvezető árok"
+          "name": "Vízelvezető árok",
+          "terms": "csatorna,cső"
         },
         "man_made/manhole/gas": {
           "name": "Gázvezeték-kibúvónyílás"
@@ -3082,12 +3349,21 @@
           "name": "Szivattyúház",
           "terms": "szivattyú,pumpa,nyomásfokozó"
         },
+        "man_made/quay": {
+          "name": "Rakpart"
+        },
         "man_made/reservoir_covered": {
           "name": "Fedett víztározó"
+        },
+        "man_made/satellite_dish": {
+          "name": "Parabolaantenna"
         },
         "man_made/silo": {
           "name": "Siló",
           "terms": "gabonatároló,gabonasiló,gabona,kukorica,búza"
+        },
+        "man_made/ski_jump": {
+          "name": "Síugrótorony"
         },
         "man_made/storage_tank": {
           "name": "Tárolótartály",
@@ -3101,16 +3377,41 @@
           "name": "Utcai közműszekrény",
           "terms": "elosztószekrény"
         },
+        "man_made/street_cabinet/traffic_control": {
+          "name": "Forgalomirányítási közműszekrény"
+        },
+        "man_made/street_cabinet/traffic_monitoring": {
+          "name": "Forgalomellenőrzési közműszekrény"
+        },
+        "man_made/street_cabinet/transport_management": {
+          "name": "Közlekedésirányítási közműszekrény"
+        },
+        "man_made/street_cabinet/waste": {
+          "name": "Privát hulladékgyűjtő doboz"
+        },
         "man_made/surveillance": {
           "name": "Térfigyelés",
           "terms": "biztonsági kamera,cctv,zártláncú kamera,őrség"
         },
         "man_made/surveillance/camera": {
-          "name": "Térfigyelő kamera"
+          "name": "Térfigyelő kamera",
+          "terms": "megfigyelő kamera,biztonsági kamera"
         },
         "man_made/survey_point": {
           "name": "Földmérési alappont",
           "terms": "felmérési jelző,geodéziai jel,geodéziai pont,háromszögelési oszlop,trigonometriai állomás,földmérés"
+        },
+        "man_made/tailings_pond": {
+          "name": "Zagytározó"
+        },
+        "man_made/telescope": {
+          "name": "Teleszkóp"
+        },
+        "man_made/telescope/optical": {
+          "name": "Csillagászati távcső"
+        },
+        "man_made/telescope/radio": {
+          "name": "Rádióteleszkóp"
         },
         "man_made/torii": {
           "name": "Sinto templomkapu"
@@ -3142,7 +3443,8 @@
           "terms": "iszlám,mecset,müezzin,muszlim"
         },
         "man_made/tower/observation": {
-          "name": "Kilátótorony"
+          "name": "Kilátótorony",
+          "terms": "kilátó,megfigyelőtorony"
         },
         "man_made/tower/pagoda": {
           "name": "Pagoda"
@@ -3192,6 +3494,9 @@
           "name": "Gyár",
           "terms": "üzem,kombinát,manufaktúra,művek,műhely"
         },
+        "man_made/works/brewery": {
+          "name": "Ipari sörfőzde"
+        },
         "man_made/yes": {
           "name": "Mesterséges építmény (nem specifikált)"
         },
@@ -3214,7 +3519,8 @@
           "name": "Katonai ellenőrzőpont"
         },
         "military/nuclear_explosion_site": {
-          "name": "Nukleáris robbantás helyszíne"
+          "name": "Nukleáris robbantás helyszíne",
+          "terms": "atomrobbantás,atombomba,atomkísérlet"
         },
         "military/office": {
           "name": "Katonai hivatal",
@@ -3284,6 +3590,9 @@
           "name": "Hegycsúcs",
           "terms": "hegytető,csúcs"
         },
+        "natural/peninsula": {
+          "name": "Félsziget"
+        },
         "natural/reef": {
           "name": "Zátony",
           "terms": "szirt"
@@ -3317,18 +3626,50 @@
         "natural/shrub": {
           "name": "Cserje"
         },
+        "natural/sinkhole": {
+          "name": "Víznyelő",
+          "terms": "zsomboly,töbör",
+          "aliases": "Zsomboly\nTöbör"
+        },
         "natural/spring": {
           "name": "Forrás"
         },
         "natural/stone": {
           "name": "Kő"
         },
+        "natural/strait": {
+          "name": "Tengerszoros"
+        },
         "natural/tree": {
           "name": "Fa"
+        },
+        "natural/tree/broadleaved": {
+          "name": "Széles levelű fa"
+        },
+        "natural/tree/broadleaved/deciduous": {
+          "name": "Széles levelű fa (lombhullató)",
+          "terms": "lombos,lombhulató"
+        },
+        "natural/tree/broadleaved/evergreen": {
+          "name": "Széles levelű fa (örökzöld)"
+        },
+        "natural/tree/needleleaved": {
+          "name": "Tűlevelű fa"
+        },
+        "natural/tree/needleleaved/deciduous": {
+          "name": "Tűlevelű fa (lombhullató)"
+        },
+        "natural/tree/needleleaved/evergreen": {
+          "name": "Tűlevelű fa (örökzöld)"
         },
         "natural/tree_row": {
           "name": "Fasor",
           "terms": "fasor"
+        },
+        "natural/tree_stump": {
+          "name": "Fatönk",
+          "terms": "tuskó,kivágott fa",
+          "aliases": "Tuskó"
         },
         "natural/valley": {
           "name": "Völgy"
@@ -3341,7 +3682,8 @@
           "name": "Víz"
         },
         "natural/water/basin": {
-          "name": "Vízgyűjtő medence"
+          "name": "Vízgyűjtő medence",
+          "terms": "vízgyűjtőterület,vízgyűjtő,vízválasztó"
         },
         "natural/water/canal": {
           "name": "Csatorna területe"
@@ -3387,7 +3729,8 @@
           "name": "Mangrove"
         },
         "natural/wetland/marsh": {
-          "name": "Mocsár"
+          "name": "Mocsár",
+          "terms": "láp"
         },
         "natural/wetland/reedbed": {
           "name": "Nádas"
@@ -3411,6 +3754,9 @@
         "natural/wood": {
           "name": "Erdő (természetes)",
           "terms": "boreális,erdő,tajga,fák"
+        },
+        "network/type/node_network-DE-NL-BE-LU": {
+          "name": "Szabadidős hálózati csomópont"
         },
         "noexit/yes": {
           "name": "Zsákutca",
@@ -3443,7 +3789,8 @@
           "name": "Egyesület irodája"
         },
         "office/bail_bond_agent-US-PH": {
-          "name": "Óvadékügynök"
+          "name": "Óvadékügynök",
+          "terms": "óvadékügynök"
         },
         "office/charity": {
           "name": "Jótékonysági szervezet irodája",
@@ -3483,6 +3830,9 @@
         },
         "office/energy_supplier": {
           "name": "Energiaszolgáltató irodája"
+        },
+        "office/engineer": {
+          "name": "Mérnökiroda"
         },
         "office/estate_agent": {
           "name": "Ingatlaniroda",
@@ -3565,6 +3915,10 @@
         "office/private_investigator": {
           "name": "Magánnyomozó-iroda"
         },
+        "office/property_management": {
+          "name": "Ingatlangazdálkodási vagy -bérbeadási iroda",
+          "terms": "ingatlankezelő,ingatlanbérbeadó"
+        },
         "office/quango": {
           "name": "Kvázicivil szervezet irodája"
         },
@@ -3594,6 +3948,9 @@
           "name": "Orvosi iroda",
           "terms": "terápia"
         },
+        "office/translator": {
+          "name": "Fordítóiroda"
+        },
         "office/travel_agent": {
           "name": "Utazási iroda"
         },
@@ -3605,6 +3962,15 @@
         },
         "office/yes": {
           "name": "Iroda (meghatározatlan típusú)"
+        },
+        "pipeline": {
+          "name": "Csővezeték-infrastruktúra"
+        },
+        "pipeline/substation": {
+          "name": "Csővezeték-alállomás"
+        },
+        "pipeline/valve": {
+          "name": "Csővezeték-elzáró"
         },
         "piste/downhill": {
           "name": "Sí lesikló pálya"
@@ -3622,7 +3988,10 @@
           "name": "Sífutóút"
         },
         "piste/piste": {
-          "name": "Téli sport ösvény / Sípálya"
+          "name": "Télisportpálya (meghatározatlan típus)"
+        },
+        "piste/ski_jump": {
+          "name": "Síugrópálya"
         },
         "piste/skitour": {
           "name": "Túrasí ösvény"
@@ -3632,6 +4001,9 @@
         },
         "piste/sleigh": {
           "name": "Szánhúzó ösvény"
+        },
+        "piste/take_off": {
+          "name": "Síugró landolóhely"
         },
         "place": {
           "name": "Hely"
@@ -3696,14 +4068,25 @@
         "playground": {
           "name": "Játszótéri játék"
         },
+        "playground/activitypanel": {
+          "name": "Interaktív játszófal"
+        },
+        "playground/aerialrotator": {
+          "name": "Kapaszkodós körhinta"
+        },
         "playground/balancebeam": {
           "name": "Egyensúlyozó gerenda"
         },
         "playground/basketrotator": {
-          "name": "Fészekkörhinta"
+          "name": "Fészekkörhinta",
+          "terms": "kosár,forog,hinta"
         },
         "playground/basketswing": {
-          "name": "Fészekhinta"
+          "name": "Fészekhinta",
+          "terms": "kosár,hinta,játék"
+        },
+        "playground/bridge": {
+          "name": "Játékhíd"
         },
         "playground/climbingframe": {
           "name": "Mászókeret",
@@ -3716,11 +4099,17 @@
           "name": "Ugráló párna",
           "terms": "párna,felfúj,ugrál"
         },
+        "playground/funnel_ball": {
+          "name": "Kosárlabdatölcsér"
+        },
         "playground/hopscotch": {
           "name": "Ugróiskola"
         },
         "playground/horizontal_bar": {
           "name": "Vízszintes rúd"
+        },
+        "playground/map": {
+          "name": "Játszótéri festett térkép"
         },
         "playground/playhouse": {
           "name": "Házikó"
@@ -3754,9 +4143,18 @@
         "playground/swing": {
           "name": "Hinta"
         },
+        "playground/teenshelter": {
+          "name": "Közösségi bódé serdülőknek"
+        },
         "playground/trampoline": {
           "name": "Trambulin",
           "terms": "gumiasztal"
+        },
+        "playground/tunnel_tube": {
+          "name": "Játszóalagút"
+        },
+        "playground/water": {
+          "name": "Játék vízszivattyú vagy -csavar"
         },
         "playground/zipwire": {
           "name": "Kötélpálya",
@@ -3854,12 +4252,18 @@
           "name": "Villanyoszlop",
           "terms": "villanypózna,villanykaró"
         },
+        "power/portal": {
+          "name": "Távvezetékkapu"
+        },
         "power/substation": {
           "name": "Elektromos alállomás",
           "terms": "alállomás,transzformátorállomás,trafóállomás,trafóház"
         },
         "power/switch": {
           "name": "Hálózati kapcsoló"
+        },
+        "power/switchgear": {
+          "name": "Kapcsolóberendezés"
         },
         "power/tower": {
           "name": "Távvezetékoszlop",
@@ -3883,7 +4287,8 @@
           "name": "Buszmegálló peronja"
         },
         "public_transport/platform/bus_point": {
-          "name": "Buszmegálló peronja"
+          "name": "Buszmegálló peronja",
+          "terms": "buszmegálló"
         },
         "public_transport/platform/bus_tram_point": {
           "name": "Villamos- és buszmegálló peronja"
@@ -3938,7 +4343,8 @@
           "name": "Tömegközlekedési állomás"
         },
         "public_transport/station_aerialway": {
-          "name": "Kötélpályás felvonó állomása"
+          "name": "Kötélpályás felvonó állomása",
+          "terms": "kötélpálya-állomás,síliftállomás"
         },
         "public_transport/station_bus": {
           "name": "Buszpályaudvar",
@@ -4079,7 +4485,9 @@
           "terms": "vágány"
         },
         "railway/railway_crossing": {
-          "name": "Vasútvonalak kereszteződése"
+          "name": "Vágánykeresztezés",
+          "terms": "vágánykeresztezés,vágányátszelés,vasutak kereszteződése",
+          "aliases": "vágányátszelés"
         },
         "railway/signal": {
           "name": "Vasúti jelző",
@@ -4119,12 +4527,18 @@
         "railway/tram_stop": {
           "name": "Villamos megállási pontja"
         },
+        "railway/turntable": {
+          "name": "Fordítókorong"
+        },
         "railway/yard": {
           "name": "Rendezőpályaudvar",
           "terms": "kocsirendező"
         },
         "relation": {
           "name": "Kapcsolat"
+        },
+        "roller_coaster/station": {
+          "name": "Hullámvasút-állomás"
         },
         "route/ferry": {
           "name": "Kompútvonal",
@@ -4343,6 +4757,10 @@
           "name": "Kozmetikai bolt",
           "terms": "szépségápolási szaküzlet,sminkbolt,parfüm,illatszerbolt"
         },
+        "shop/country_store": {
+          "name": "Gazdabolt",
+          "terms": "mezőgadasági bolt"
+        },
         "shop/craft": {
           "name": "Kézműves bolt",
           "terms": "hobbi,kreatív hobbi"
@@ -4466,6 +4884,9 @@
         "shop/hairdresser": {
           "name": "Fodrász",
           "terms": "hajvágás,fodrász"
+        },
+        "shop/hairdresser/barber": {
+          "name": "Borbély"
         },
         "shop/hairdresser_supply": {
           "name": "Fodrászkellék-bolt",
@@ -4615,6 +5036,9 @@
         "shop/party": {
           "name": "Partykellékbolt"
         },
+        "shop/pasta": {
+          "name": "Tésztabolt"
+        },
         "shop/pastry": {
           "name": "Cukrászda",
           "terms": "sütemény,süti,torta,édesség"
@@ -4664,6 +5088,9 @@
         "shop/repair": {
           "name": "Javítóműhely",
           "terms": "szerelő"
+        },
+        "shop/rice": {
+          "name": "Rizsbolt"
         },
         "shop/scuba_diving": {
           "name": "Búvárfelszerelés-bolt",
@@ -4764,7 +5191,8 @@
           "terms": "autógumi,gumiabroncs,gumiszerelés,gumis"
         },
         "shop/vacant": {
-          "name": "Kiadó üzlethelyiség"
+          "name": "Kiadó üzlethelyiség",
+          "terms": "kiadó bolthelyiség"
         },
         "shop/vacuum_cleaner": {
           "name": "Porszívóbolt",
@@ -4839,7 +5267,7 @@
         },
         "tourism/artwork": {
           "name": "Műalkotás",
-          "terms": "művészeti alkotás,szobor,fafaragás"
+          "terms": "művészeti alkotás,szobor,fafaragás,kép,festmény,freskó"
         },
         "tourism/artwork/bust": {
           "name": "Mellszobor"
@@ -4852,11 +5280,13 @@
           "name": "Művészeti installáció"
         },
         "tourism/artwork/mural": {
-          "name": "Freskó",
-          "terms": "falfestmény"
+          "name": "Falfestmény",
+          "terms": "falfestmény",
+          "aliases": "freskó\nszekkó\nsgraffito\nmozaik\nstukkó"
         },
         "tourism/artwork/sculpture": {
-          "name": "Szobor"
+          "name": "Absztrakt szobor",
+          "terms": "szobor"
         },
         "tourism/artwork/statue": {
           "name": "Szobor"
@@ -4980,16 +5410,18 @@
           "name": "Őshonos állatokat bemutató állatkert"
         },
         "traffic_calming": {
-          "name": "Forgalomlassítás",
-          "terms": "forgalomcsillapító"
+          "name": "Forgalomlassító",
+          "terms": "forgalomcsillapító",
+          "aliases": "forgalomlassítás\nforgalomcsillapító\nsebességcsökkentő\nfekvőrendőr"
         },
         "traffic_calming/bump": {
-          "name": "Fekvőrendőr",
+          "name": "Forgalomlassító borda",
           "terms": "forgalomcsillapító küszöb,sebességcsökkentő borda"
         },
         "traffic_calming/chicane": {
-          "name": "Félsziget",
-          "terms": "sikán,forgalmi sikán"
+          "name": "Sávelhúzás",
+          "terms": "sikán,forgalmi sikán",
+          "aliases": "sikán\nfélsziget"
         },
         "traffic_calming/choker": {
           "name": "Útszűkület",
@@ -5000,19 +5432,28 @@
           "terms": "bucka,sebességlassító,bukkanó,forgalomlassító,borda"
         },
         "traffic_calming/dip": {
-          "name": "Bemarás",
-          "terms": "mélyedés"
+          "name": "Mélyedés",
+          "terms": "mélyedés",
+          "aliases": "Bemarás"
         },
         "traffic_calming/hump": {
-          "name": "Hosszú fekvőrendőr",
+          "name": "Fekvőrendőr",
           "terms": "lapos és hosszú fekvőrendőr"
         },
+        "traffic_calming/island": {
+          "name": "Forgalomlassító sziget",
+          "aliases": "középsziget"
+        },
+        "traffic_calming/mini_bumps": {
+          "name": "Mini bukkanók"
+        },
         "traffic_calming/rumble_strip": {
-          "name": "Rázósáv",
-          "terms": "rázó felfestés"
+          "name": "Rázó bordázat",
+          "terms": "rázó felfestés",
+          "aliases": "rázósáv\nrázóborda"
         },
         "traffic_calming/table": {
-          "name": "Küszöb",
+          "name": "Pályaszintemelés",
           "terms": "sebesség,tábla,lassító,megemelt szintű gyalogátjáró"
         },
         "traffic_calming/yes": {
@@ -5026,6 +5467,9 @@
         },
         "traffic_sign/maxspeed": {
           "name": "Sebességkorlátozást jelző tábla"
+        },
+        "traffic_sign/variable_message": {
+          "name": "Változó üzenetű tábla"
         },
         "type/boundary": {
           "name": "Határvonal",
@@ -5049,7 +5493,8 @@
           "terms": "traffipax"
         },
         "type/multipolygon": {
-          "name": "Multipoligon"
+          "name": "Multipoligon",
+          "terms": "multipoligon"
         },
         "type/public_transport/stop_area_group": {
           "name": "Tranzitmegálló-terület csoport"
@@ -5226,8 +5671,8 @@
           "terms": "folyam"
         },
         "waterway/sanitary_dump_station": {
-          "name": "Szaniterürítő hely",
-          "terms": "tisztaság,szaniter,ürítés"
+          "name": "Kikötői szaniterürítő hely",
+          "terms": "hajó,vitorlás,szaniter,tartály,ürítés,szennyvíz,wc,ürülék"
         },
         "waterway/stream": {
           "name": "Patak",

@@ -914,9 +914,6 @@
           "name": "Tiyatro",
           "terms": "tiyatro"
         },
-        "amenity/theatre/type/amphi": {
-          "name": "Amfitiyatro"
-        },
         "amenity/ticket_validator": {
           "name": "Ticket Validator"
         },
@@ -1002,6 +999,10 @@
         },
         "amenity/vending_machine/food": {
           "name": "Yemek Otomatı"
+        },
+        "amenity/vending_machine/food/snacks": {
+          "name": "Yiyecek Otomatı",
+          "terms": "yiyecek otomatı"
         },
         "amenity/vending_machine/ice_cream": {
           "name": "Dondurma Otomatı"
@@ -2151,6 +2152,9 @@
         "highway/path/boardwalk": {
           "name": "Kaldırım"
         },
+        "highway/path/crossing": {
+          "name": "Bisiklet ve Yaya Geçidi"
+        },
         "highway/path/informal": {
           "name": "Gayri Resmi Yol"
         },
@@ -3060,6 +3064,9 @@
           "name": "Bayrak Direği",
           "terms": "bayrak direği"
         },
+        "man_made/fuel_pump": {
+          "name": "Gaz Pompası"
+        },
         "man_made/gantry": {
           "name": "Gantry"
         },
@@ -3733,9 +3740,6 @@
         },
         "piste/nordic": {
           "name": "Kros-Kayağı Kayak Patikası"
-        },
-        "piste/piste": {
-          "name": "Kar Sporları Yolu / Piste"
         },
         "piste/skitour": {
           "name": "Kayak Turu Yolu"

@@ -326,6 +326,9 @@
           "name": "Doutor",
           "terms": "doutor,médico,clínica,saúde,clinica,saude"
         },
+        "amenity/doctors/podiatry": {
+          "name": "Podólogo"
+        },
         "amenity/dojo": {
           "name": "Dojo/academia de artes marciais",
           "terms": "dojo,academia,artes marciais,karate,judo,taekwondo,kendo,ninjutsu,kung fu"
@@ -436,6 +439,10 @@
         "amenity/internet_cafe": {
           "name": "Internet café",
           "terms": "internet,terminais,cafe,cyber,cyber cafe,cybercafe,ciber,ciber café,cibercafé,xogos,xogos en rede"
+        },
+        "amenity/karaoke_box": {
+          "name": "Caixa de karaoke",
+          "terms": "clube de karaoke,sala de karaoke,televisión karaoke,ktv,club de karaoke"
         },
         "amenity/kindergarten": {
           "name": "Área escolar infantil",
@@ -687,6 +694,9 @@
         "amenity/restaurant/japanese": {
           "name": "Restaurante xaponés"
         },
+        "amenity/restaurant/korean": {
+          "name": "Restaurante coreano"
+        },
         "amenity/restaurant/mexican": {
           "name": "Restaurante mexicano"
         },
@@ -809,10 +819,6 @@
           "name": "Teatro",
           "terms": "auditorio,teatro,anfiteatro,arte,cultura,escenografía,música,son,espectáculo,teatral"
         },
-        "amenity/theatre/type/amphi": {
-          "name": "Anfiteatro",
-          "terms": "ar libre,aire libre,ao aire libre,grego,ampi,anfi,anfiteatro"
-        },
         "amenity/toilets/disposal/flush": {
           "name": "Aseo con cisterna",
           "terms": "aseos,aseo,baños,wc,cuarto de baño,servizo,servizos,lavabo,latrina,retrete,váter,urinario,urinaria"
@@ -881,6 +887,9 @@
         },
         "amenity/vending_machine/food": {
           "name": "Expendedora de comida"
+        },
+        "amenity/vending_machine/food/snacks": {
+          "name": "Expendedora de Snacks"
         },
         "amenity/vending_machine/ice_cream": {
           "name": "Expendedora de xeados"
@@ -1013,6 +1022,12 @@
           "name": "Alfándega",
           "terms": "alfándega,aduana,fronteira"
         },
+        "barrier/bump_gate": {
+          "name": "Bump Gate"
+        },
+        "barrier/bus_trap": {
+          "name": "Trampa de autobús"
+        },
         "barrier/cattle_grid": {
           "name": "Reixa de Retención",
           "terms": "paso canadiense"
@@ -1052,6 +1067,9 @@
           "name": "Gardarraíl",
           "terms": "gardarraíl,quitamedos,barreira"
         },
+        "barrier/handrail": {
+          "name": "Pasamáns"
+        },
         "barrier/hedge": {
           "name": "Sebe",
           "terms": "cobertura,sebe,liña de arbustos"
@@ -1059,6 +1077,9 @@
         "barrier/height_restrictor": {
           "name": "Restrinxente de altura",
           "terms": "redutor de altura,restrinxente de altura"
+        },
+        "barrier/jersey_barrier": {
+          "name": "Barreira Jersey"
         },
         "barrier/kerb": {
           "name": "Bordo",
@@ -1563,6 +1584,9 @@
           "name": "Entrada / Saída",
           "terms": "entrada,saída,porta,saida,acceso"
         },
+        "entrance/emergency": {
+          "name": "Saída de emerxencia"
+        },
         "ford": {
           "name": "Vao",
           "terms": "vao,vado,paso,cruce,cruzamento,gual"
@@ -1679,7 +1703,8 @@
           "terms": "corredor,pasillo"
         },
         "highway/crossing": {
-          "name": "Paso de peóns"
+          "name": "Paso de peóns",
+          "terms": "paso peonil,paso peatonal,paso de cebra"
         },
         "highway/crossing/unmarked": {
           "name": "Paso de peóns sen marcar",
@@ -1699,6 +1724,10 @@
           "name": "Paso de peóns e de pista de ciclismo",
           "terms": "peonil,peonal,ciclista,ciclismo,bicicleta"
         },
+        "highway/cycleway/crossing/uncontrolled": {
+          "name": "Paso de bicicletas marcado",
+          "terms": "paso de bicicleta,cruzamento de carril bici,cruzamento de ciclovía,cruzamento de bicicleta,cruzamento de bici,cruzamento de senda ciclista"
+        },
         "highway/cycleway/crossing/unmarked": {
           "name": "Paso de bicicletas sen marcar",
           "terms": "cruzamento de carril bici,cruzamento de ciclovía,cruzamento de bicicleta,cruzamento de bici,cruzamento de senda ciclista"
@@ -1706,6 +1735,9 @@
         "highway/elevator": {
           "name": "Ascensor",
           "terms": "montacargas,ascensor,elevador"
+        },
+        "highway/emergency_access_point": {
+          "name": "Punto de acceso de emerxencia"
         },
         "highway/emergency_bay": {
           "name": "Lugar de parada de emerxencia",
@@ -1725,9 +1757,16 @@
         "highway/footway/crossing": {
           "name": "Paso de peóns"
         },
+        "highway/footway/crossing/unmarked": {
+          "name": "Paso peonil sen marcar",
+          "terms": "paso de peóns sen marcar,peonil,peonal"
+        },
         "highway/footway/sidewalk": {
           "name": "Beirarrúa",
           "terms": "calzada,paseo,berma"
+        },
+        "highway/footway/traffic_island": {
+          "name": "Refuxio para peóns"
         },
         "highway/give_way": {
           "name": "Ceda o paso"
@@ -1767,6 +1806,9 @@
         "highway/path/boardwalk": {
           "name": "Paseo marítimo elevado",
           "terms": "paseo marítimo elevado,paseo elevado,paseo de madeira,pasarela,pasarela de madeira,pasarela elevada"
+        },
+        "highway/path/crossing": {
+          "name": "Paso de peóns e de pista de ciclismo"
         },
         "highway/path/informal": {
           "name": "Camiño informal"
@@ -1909,6 +1951,9 @@
           "name": "Marco",
           "terms": "marco,fito,mollón,mouteira,linde,pedra"
         },
+        "historic/building": {
+          "name": "Edificio histórico"
+        },
         "historic/castle": {
           "name": "Castelo"
         },
@@ -1972,7 +2017,8 @@
           "terms": "espazo interior,interior,área,area"
         },
         "indoor/corridor": {
-          "name": "Corredor interior"
+          "name": "Corredor interior",
+          "terms": "corredor,pasillo"
         },
         "indoor/corridor_line": {
           "name": "Corredor interior"
@@ -2101,6 +2147,9 @@
         },
         "landuse/military/barracks": {
           "name": "Barracóns"
+        },
+        "landuse/military/base/navy": {
+          "name": "Base naval"
         },
         "landuse/military/range": {
           "name": "Campo de tiro militar"
@@ -2261,7 +2310,8 @@
           "name": "Xardín botánico"
         },
         "leisure/garden/community": {
-          "name": "Xardín comunitario"
+          "name": "Xardín comunitario",
+          "terms": "xardín,comunitario,horta,horto,urbano"
         },
         "leisure/golf_course": {
           "name": "Campo de golf"
@@ -2406,6 +2456,9 @@
         "leisure/track": {
           "name": "Pista de competición (non motorizada)"
         },
+        "leisure/track/athletics/running": {
+          "name": "Pista de carreiras"
+        },
         "leisure/track/cycling": {
           "name": "Circuíto de ciclismo"
         },
@@ -2428,6 +2481,9 @@
         },
         "man_made/antenna": {
           "name": "Antena"
+        },
+        "man_made/beacon": {
+          "name": "Faro"
         },
         "man_made/beehive": {
           "name": "Abellariza",
@@ -2462,6 +2518,9 @@
           "name": "Guindastre",
           "terms": "guindastre,grúa,grua,elevadora,cabria,cabrestante,trucha,pluma"
         },
+        "man_made/crane/portal_crane": {
+          "name": "Guindastre portal"
+        },
         "man_made/cross": {
           "name": "Cruz"
         },
@@ -2479,6 +2538,9 @@
           "name": "Mastro de bandeira",
           "terms": "bandeira,mastro,hasta"
         },
+        "man_made/fuel_pump": {
+          "name": "Surtidor de combustíbel"
+        },
         "man_made/gasometer": {
           "name": "Gasómetro",
           "terms": "gasómetro,gas,contedor,depósito"
@@ -2495,7 +2557,8 @@
           "terms": "cuberta,buraco,burato,sumidoiro,tapa de sumidoiro,rede de sumidoiro,alcantarilla,alcantarillado,telecomunicacións,boca de sumidoiro,rexistro,colector,colectores,foxo,foxos,furaco,furado"
         },
         "man_made/manhole/drain": {
-          "name": "Tapa de sumidoiro"
+          "name": "Tapa de sumidoiro",
+          "terms": "cuberta,tapa,desagüe,burato,buraco,pozo,choiva,alcantarillado,tormenta,boca de tormenta,alcantarillado pluvial,drenaxe,sumidoiro,sumideiro,acougadoiro,desacougadoiro,pluviais,augas,chuvia,chuva,sumidero,alcantarilla,resumidero"
         },
         "man_made/manhole/gas": {
           "name": "Pozo de inspección de servizo de gas",
@@ -2593,7 +2656,8 @@
           "terms": "vixilancia,cámara,vídeo,recoñecemento facial,lector de matrículas,cctv,seguridade,webcam,seguranza,vixiar,zona videovixiada"
         },
         "man_made/surveillance/camera": {
-          "name": "Cámara de vixilancia"
+          "name": "Cámara de vixilancia",
+          "terms": "vixilancia,cámara,vídeo,gravación,cctv,seguridade,webcam"
         },
         "man_made/survey_point": {
           "name": "Vértice xeodésico",
@@ -2818,7 +2882,8 @@
           "terms": "río,auga,lago,laguna,albufeira,ibón,lagoa,estanque,embalse,encoro,pantano,balsa,corpo de auga,augas,lámina de auga,poza de auga,charca,agua,regato,rego,pozo,poza,burgas,termas"
         },
         "natural/water/basin": {
-          "name": "Cunca"
+          "name": "Cunca",
+          "terms": "cunca,auga"
         },
         "natural/water/canal": {
           "name": "Área da canle"
@@ -2854,6 +2919,9 @@
           "name": "Zona húmida",
           "terms": "humidal,húmido,braña,lameiro,estuario,marisma,pantano,turbeira,mangleiro,esteiro"
         },
+        "natural/wetland/bog": {
+          "name": "Pantano"
+        },
         "natural/wood": {
           "name": "Bosque natural",
           "terms": "bosque,fraga,foresta,monte,árbores,bosque natural,madeira natural,floresta"
@@ -2882,6 +2950,9 @@
         "office/association": {
           "name": "Oficina de asociación"
         },
+        "office/bail_bond_agent-US-PH": {
+          "name": "Axente de fianzas"
+        },
         "office/charity": {
           "name": "Oficina da caridade",
           "terms": "caridade,beneficencia"
@@ -2904,7 +2975,8 @@
           "terms": "consulado,cónsul"
         },
         "office/diplomatic/embassy": {
-          "name": "Embaixada"
+          "name": "Embaixada",
+          "terms": "embaixada,consulado,consul"
         },
         "office/diplomatic/liaison": {
           "name": "Oficina de ligazóns"
@@ -2974,7 +3046,8 @@
           "name": "Oficina ONG"
         },
         "office/notary": {
-          "name": "Notaría"
+          "name": "Notaría",
+          "terms": "notaría,notario"
         },
         "office/physician": {
           "name": "Médico"
@@ -3016,6 +3089,10 @@
           "name": "Oficina de servizos públicos de auga",
           "terms": "servizo público,servicio público,publico,auga,agua,saneamento"
         },
+        "pipeline/valve": {
+          "name": "Válvula de tubaxe",
+          "terms": "petróleo,gas natural,auga,alcantarillado,augas residuais,pluviais,oleoduto"
+        },
         "piste/downhill": {
           "name": "Pista de esquí de velocidade"
         },
@@ -3031,9 +3108,6 @@
         },
         "piste/nordic": {
           "name": "Pista de esquí de fondo"
-        },
-        "piste/piste": {
-          "name": "Pista de deportes de neve"
         },
         "piste/skitour": {
           "name": "Pista de esquí de travesía"
@@ -3102,6 +3176,15 @@
         "playground": {
           "name": "Equipamento de parque infantil"
         },
+        "playground/balancebeam": {
+          "name": "Barra de equilibrio de xogos"
+        },
+        "playground/basketrotator": {
+          "name": "Cesta xiratoria"
+        },
+        "playground/basketswing": {
+          "name": "Cesta da randeeira"
+        },
         "playground/cushion": {
           "name": "Colchón saltón"
         },
@@ -3122,6 +3205,10 @@
         "playground/slide": {
           "name": "Esvaradoiro",
           "terms": "escorregadoiro,esvaradoiro,tobogan,tobogán,resbaladilla,rodadeiro,resbalín,deslizadeiro,lizadeiro"
+        },
+        "playground/springy": {
+          "name": "Berce elástico",
+          "terms": "mecedoiro,mecedeiro,mecedor elástico,cabaliñ,cabalo,vaquiña,vaca,berce elástico,berce,mecedor"
         },
         "playground/structure": {
           "name": "Estrutura de parque infantil"
@@ -3182,6 +3269,9 @@
         },
         "power/plant/source/gas": {
           "name": "Planta de enerxía a gas"
+        },
+        "power/plant/source/method/photovoltaic": {
+          "name": "Planta de enerxía solar"
         },
         "power/plant/source/nuclear": {
           "name": "Planta de enerxía nuclear"
@@ -4209,7 +4299,8 @@
           "terms": "fronteira,raia"
         },
         "type/boundary/administrative": {
-          "name": "Límite administrativo"
+          "name": "Límite administrativo",
+          "terms": "límite administrativo,fronteira,termo,termo municipal,término municipal"
         },
         "type/connectivity": {
           "name": "Conexión vial"
@@ -4241,6 +4332,9 @@
         },
         "type/route": {
           "name": "Ruta"
+        },
+        "type/route/bicycle": {
+          "name": "Ruta ciclista"
         },
         "type/route/bus": {
           "name": "Liña de bus"

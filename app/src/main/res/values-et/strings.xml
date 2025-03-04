@@ -119,7 +119,7 @@ Enne muudatuste üleslaadimist rakendus kontrollib minu serveris seda &lt;a href
     <string name="store_listing_short_description">"Rakendus OpenStreetMapi parandamiseks"</string>
     <string name="store_listing_full_description">"Aita StreetComplete'i abil OpenStreetMapi täiendada!
 
-See rakendus leiab sinu lähikonnast puuduvad kaardiandmed ja kuvab need kaardil ülesannetena. Neid ülesandeid saad lahendada konkreetse asukoha vaatlemisel ja lihtsatele küsimustele vastates ning sellega täiendad kaartdiandmeid.
+See rakendus leiab sinu lähikonnast puuduvad kaardiandmed ja kuvab need kaardil ülesannetena. Neid ülesandeid saad lahendada konkreetse asukoha vaatlemisel ja lihtsatele küsimustele vastates ning sellega täiendad kaardiandmeid.
 
 Sinu sisestatud teave lisatakse sinu kasutajakonto nimel otse, ilma vahepealse toimetamiseta, OpenStreetMapi andmekogusse."</string>
     <string name="quest_name_answer_noName">"Sellel pole nime…"</string>

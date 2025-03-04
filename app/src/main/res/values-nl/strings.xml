@@ -1258,8 +1258,8 @@ Nu verplaatsen?"</string>
     <string name="overlay_surface">"Oppervlakten"</string>
     <string name="overlay_path_surface_segregated">"Het pad heeft gescheiden delen voor fietsers en voetgangers"</string>
     <string name="quest_crossing_title2">"Is hier een oversteekplaats?"</string>
-    <string name="quest_crossing_yes">"Ja (de stoeprand is verlaagd, er zijn markeringen, etc.)"</string>
-    <string name="quest_crossing_no">"Nee, maar oversteken is mogelijk"</string>
+    <string name="quest_crossing_yes">"Ja, bedoeld als oversteekplaats"</string>
+    <string name="quest_crossing_no">"Niet bedoeld als oversteekplaats, maar oversteken mogelijk (bij informele paden bijv.)"</string>
     <string name="quest_crossing_prohibited">"Nee, oversteken is verboden of onmogelijk"</string>
     <string name="quest_hairdresser_title">"Is dit een dames- of een herenkapper?"</string>
     <string name="quest_hairdresser_male_and_female">"Beiden"</string>
@@ -1278,15 +1278,15 @@ Nu verplaatsen?"</string>
     <string name="overlay_addresses_no_entrance">"Het is geen ingang..."</string>
     <string name="quest_cycleway_value_sidewalk2">"Gedeeld trottoirgebruik"</string>
     <string name="quest_cycleway_value_sidewalk_dual2">"Gedeeld trottoirgebruik, beide richtingen"</string>
-    <string name="overlays_tutorial_title">"Overlays"</string>
+    <string name="overlays_tutorial_title">"Lagen"</string>
     <string name="overlays_tutorial_intro">"Je hebt een nieuwe manier gevonden om gegevens te bewerken!"</string>
-    <string name="overlays_tutorial_display">"Elke overlay toont één soort gegevens, bijvoorbeeld winkels of straatoppervlakken.
+    <string name="overlays_tutorial_display">"Elke laag toont één soort gegevens, bijvoorbeeld winkels of straatoppervlakken.
 
 De gegevens worden in verschillende kleuren weergegeven om je een goed overzicht te geven van wat er tot nu toe is geregistreerd.
 Ontbrekende gegevens worden altijd in rood weergegeven."</string>
-    <string name="overlays_tutorial_edit">"Tik op elk gekleurd element om het te bewerken. Je kunt ook wegdelen splitsen of notities toevoegen, zoals bij quests.
+    <string name="overlays_tutorial_edit">"Tik op elk gekleurd element om het te bewerken. Je kunt ook wegdelen splitsen of notities toevoegen, zoals bij vragen.
 
-Bovendien kun je met sommige overlays nieuwe gegevens toevoegen op de positie van het weergegeven plusje, zoals met de adressen overlay."</string>
+Bovendien kun je met sommige lagen nieuwe gegevens toevoegen op de positie van het weergegeven plusje, zoals met de adressenlaag."</string>
     <string name="quest_crossing_kerb_height_title">"Wat is de hoogte van de stoepranden op deze kruising?"</string>
     <string name="quest_maxheight_sign_title">"Welke hoogtebeperking staat hier vermeld?"</string>
     <string name="quest_leave_new_note_as_answer">"In dit geval moet je een notitie achterlaten, waarin je de situatie uitlegt"</string>
@@ -1427,5 +1427,5 @@ Een verdieping telt als dakverdieping als er ramen in het dak zijn. Daken die ni
     <string name="pedestrian_zone_designated">"Hier bestemd voor fietsen"</string>
     <string name="pedestrian_zone_allowed_sign">"Een bord laat hier fietsen toe"</string>
     <string name="pedestrian_zone_no_sign">"Geen expliciet bord voor fietsen hier"</string>
-    <string name="team_mode_description_overlay_hint">"Als je overlays gebruikt, moet ieder van jullie een andere overlay gebruiken, omdat alleen de missies worden opgesplitst."</string>
+    <string name="team_mode_description_overlay_hint">"Als je lagen gebruikt, moet ieder van jullie een andere laag gebruiken, omdat alleen de vragen worden opgesplitst."</string>
 </resources>
