@@ -10,8 +10,6 @@ import de.westnordost.osmfeatures.Feature
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
-import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
-import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.databinding.DialogShopGoneBinding
 import de.westnordost.streetcomplete.databinding.ViewShopTypeBinding
 import de.westnordost.streetcomplete.osm.POPULAR_PLACE_FEATURE_IDS

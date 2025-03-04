@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.data.user.statistics
 import de.westnordost.streetcomplete.data.ConnectionException
 import de.westnordost.streetcomplete.data.wrapApiClientExceptions
 import io.ktor.client.HttpClient
-import io.ktor.client.call.body
 import io.ktor.client.plugins.expectSuccess
 import io.ktor.client.request.get
 import io.ktor.client.statement.bodyAsChannel
