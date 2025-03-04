@@ -121,7 +121,7 @@ dependencies {
     androidTestImplementation(kotlin("test"))
 
     // dependency injection
-    implementation(platform("io.insert-koin:koin-bom:4.0.1"))
+    implementation(platform("io.insert-koin:koin-bom:4.0.2"))
     implementation("io.insert-koin:koin-core")
     implementation("io.insert-koin:koin-android")
     implementation("io.insert-koin:koin-androidx-workmanager")
@@ -139,7 +139,7 @@ dependencies {
     implementation("androidx.localbroadcastmanager:localbroadcastmanager:1.1.0")
 
     // Jetpack Compose
-    val composeBom = platform("androidx.compose:compose-bom:2024.10.01")
+    val composeBom = platform("androidx.compose:compose-bom:2025.02.00")
     implementation(composeBom)
     androidTestImplementation(composeBom)
     implementation("androidx.compose.material:material")
@@ -154,7 +154,7 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.7")
 
     // reorderable lists (raw Compose API is pretty complicated)
-    implementation("sh.calvin.reorderable:reorderable:2.4.2")
+    implementation("sh.calvin.reorderable:reorderable:2.4.3")
 
     // multiplatform webview (for login via OAuth)
     implementation("io.github.kevinnzou:compose-webview-multiplatform-android:1.9.40")
@@ -168,18 +168,18 @@ dependencies {
     // Kotlin
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.1")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.10.1")
-    implementation("org.jetbrains.kotlinx:kotlinx-io-core:0.6.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-io-core:0.7.0")
 
     // Date/time
-    api("org.jetbrains.kotlinx:kotlinx-datetime:0.6.1")
+    api("org.jetbrains.kotlinx:kotlinx-datetime:0.6.2")
 
     // scheduling background jobs
     implementation("androidx.work:work-runtime-ktx:2.10.0")
 
     // HTTP Client
-    implementation("io.ktor:ktor-client-core:3.1.0")
-    implementation("io.ktor:ktor-client-android:3.1.0")
-    testImplementation("io.ktor:ktor-client-mock:3.1.0")
+    implementation("io.ktor:ktor-client-core:3.1.1")
+    implementation("io.ktor:ktor-client-android:3.1.1")
+    testImplementation("io.ktor:ktor-client-mock:3.1.1")
 
     // finding in which country we are for country-specific logic
     implementation("de.westnordost:countryboundaries:2.1")
@@ -203,7 +203,7 @@ dependencies {
     implementation("io.github.pdvrieze.xmlutil:core:0.90.3")
 
     // map and location
-    implementation("org.maplibre.gl:android-sdk:11.8.0")
+    implementation("org.maplibre.gl:android-sdk:11.8.2")
 
     // opening hours parser
     implementation("de.westnordost:osm-opening-hours:0.2.0")
