@@ -1,10 +1,12 @@
 package de.westnordost.streetcomplete.data.osm.edits.upload
 
-import de.westnordost.streetcomplete.ApplicationConstants
+import de.westnordost.streetcomplete.ApplicationConstants.EDIT_ACTIONS_NOT_ALLOWED_TO_USE_LOCAL_CHANGES
+import de.westnordost.streetcomplete.ApplicationConstants.IGNORED_RELATION_TYPES
 import de.westnordost.streetcomplete.data.ConflictException
 import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
 import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
 import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.OpenChangesetsManager
+import de.westnordost.streetcomplete.data.osm.mapdata.ChangesetTooLargeException
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataApiClient
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataChanges
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataController
@@ -22,30 +24,56 @@ class ElementEditUploader(
      *  @throws ConflictException if element has been changed server-side in an incompatible way
      */
     suspend fun upload(edit: ElementEdit, getIdProvider: () -> ElementIdProvider): MapDataUpdates {
-        val remoteChanges by lazy { edit.action.createUpdates(RemoteMapDataRepository(mapDataApi), getIdProvider()) }
-        val localChanges by lazy { edit.action.createUpdates(mapDataController, getIdProvider()) }
-
-        val mustUseRemoteData = edit.action::class in ApplicationConstants.EDIT_ACTIONS_NOT_ALLOWED_TO_USE_LOCAL_CHANGES
+        // certain edit types don't allow building changes on top of cached map data
+        val mustUseRemoteData = edit.action::class in EDIT_ACTIONS_NOT_ALLOWED_TO_USE_LOCAL_CHANGES
 
         return if (mustUseRemoteData) {
-            try {
-                uploadChanges(edit, remoteChanges, false)
-            } catch (e: ConflictException) {
-                // probably changeset closed
-                uploadChanges(edit, remoteChanges, true)
-            }
+            uploadUsingRemoteRepo(edit, getIdProvider)
         } else {
+            // we first try to apply the changes onto the element cached locally, then upload...
             try {
-                uploadChanges(edit, localChanges, false)
-            } catch (e: ConflictException) {
-                // either changeset was closed, or element modified, or local element was cleaned from db
+                val localChanges = edit.action.createUpdates(mapDataController, getIdProvider())
                 try {
-                    uploadChanges(edit, remoteChanges, false)
-                } catch (e: ConflictException) {
-                    // probably changeset closed
-                    uploadChanges(edit, remoteChanges, true)
+                    uploadChanges(edit, localChanges, false)
+                }
+                // changeset already too large -> try again with new changeset
+                catch (e: ChangesetTooLargeException) {
+                    uploadChanges(edit, localChanges, true)
                 }
             }
+            // ...but this can fail for various reasons:
+            // - the changeset is already closed on remote
+            // - the element was modified on remote in the meantime
+            // - there's a conflict when applying the change to the locally cached element
+            // - the element does not exist in the local database (cache was deleted)
+            //
+            // In any case -> try again with remote data
+            catch (e: ConflictException) {
+                uploadUsingRemoteRepo(edit, getIdProvider)
+            }
+        }
+    }
+
+    /**
+     *  Apply the given edit to data downloaded ad-hoc from remote, then upload it.
+     *
+     *  @throws ConflictException if element has been changed on remote in an incompatible way
+     * */
+    private suspend fun uploadUsingRemoteRepo(edit: ElementEdit, getIdProvider: () -> ElementIdProvider): MapDataUpdates {
+        // If a conflict is thrown here, it definitely means that the element has been changed on
+        // remote in an incompatible way. So, we don't catch the exception but exit
+        val remoteChanges = edit.action.createUpdates(RemoteMapDataRepository(mapDataApi), getIdProvider())
+
+        return try {
+            uploadChanges(edit, remoteChanges, false)
+        }
+        // probably changeset was closed -> try again once with new changeset
+        catch (e: ConflictException) {
+            uploadChanges(edit, remoteChanges, true)
+        }
+        // changeset too large -> also try again once with new changeset
+        catch (e: ChangesetTooLargeException) {
+            uploadChanges(edit, remoteChanges, true)
         }
     }
 
@@ -59,6 +87,6 @@ class ElementEditUploader(
         } else {
             changesetManager.getOrCreateChangeset(edit.type, edit.source, edit.position, edit.isNearUserLocation)
         }
-        return mapDataApi.uploadChanges(changesetId, changes, ApplicationConstants.IGNORED_RELATION_TYPES)
+        return mapDataApi.uploadChanges(changesetId, changes, IGNORED_RELATION_TYPES)
     }
 }
