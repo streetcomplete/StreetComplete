@@ -1250,8 +1250,6 @@
     <string name="overlay_surface">"Повърхности"</string>
     <string name="overlay_path_surface_segregated">"Разделяне на велоалея и пешеходна алея"</string>
     <string name="quest_crossing_title2">"Може ли да се пресича тук?"</string>
-    <string name="quest_crossing_yes">"Да (напр. бордюрът е по-нисък или има маркировка)"</string>
-    <string name="quest_crossing_no">"Не, но пресичането е възможно"</string>
     <string name="quest_crossing_prohibited">"Не, пресичането е забранено или невъзможно"</string>
     <string name="quest_hairdresser_title">"Какви са клиентите на този фризьорски салон?"</string>
     <string name="quest_hairdresser_male_and_female">"Всички"</string>

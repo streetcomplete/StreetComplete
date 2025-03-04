@@ -10,12 +10,16 @@ class MutableMapDataWithGeometry(capacity: Int = 50) : MapDataWithGeometry {
         putAll(elements, geometryEntries)
     }
 
-    private val nodesById = HashMap<Long, Node>(capacity)
-    private val waysById = HashMap<Long, Way>(capacity / 2)
-    private val relationsById = HashMap<Long, Relation>(capacity / 5)
-    private val nodeGeometriesById = HashMap<Long, ElementPointGeometry?>(capacity)
-    private val wayGeometriesById = HashMap<Long, ElementGeometry?>(capacity / 2)
-    private val relationGeometriesById = HashMap<Long, ElementGeometry?>(capacity / 5)
+    constructor(other: MapDataWithGeometry) : this() {
+        putAll(other)
+    }
+
+    private val nodesById = HashMap<Long, Node>()
+    private val waysById = HashMap<Long, Way>()
+    private val relationsById = HashMap<Long, Relation>()
+    private val nodeGeometriesById = HashMap<Long, ElementPointGeometry?>()
+    private val wayGeometriesById = HashMap<Long, ElementGeometry?>()
+    private val relationGeometriesById = HashMap<Long, ElementGeometry?>()
 
     override var boundingBox: BoundingBox? = null
 

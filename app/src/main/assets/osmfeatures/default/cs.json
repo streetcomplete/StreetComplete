@@ -188,7 +188,7 @@
         },
         "amenity/bbq": {
           "name": "Gril",
-          "terms": "barbecue,grilovat"
+          "terms": "barbecue,grilovat,gril"
         },
         "amenity/bench": {
           "name": "Lavička",
@@ -321,9 +321,33 @@
           "name": "Komunitní centrum",
           "terms": "událost,hala"
         },
+        "amenity/community_centre/club_home": {
+          "name": "Domácí klub",
+          "terms": "klubovna,klubová místnost,klubové centrum"
+        },
+        "amenity/community_centre/community_hall": {
+          "name": "Společenský sál",
+          "terms": "komunitní sál"
+        },
+        "amenity/community_centre/cultural_centre": {
+          "name": "Kulturní středisko",
+          "terms": "centrum kultury"
+        },
+        "amenity/community_centre/family_centre": {
+          "name": "Rodinné středisko",
+          "terms": "centrum pro rodinu"
+        },
         "amenity/community_centre/lgbtq": {
           "name": "Komunitní centrum LGBTQ+",
           "terms": "lgbtq událost,lgbtq hala,lgbt událost,lgbt hala,lgb událost,lgb hala'"
+        },
+        "amenity/community_centre/parish_hall": {
+          "name": "Farní sál",
+          "terms": "sál fary"
+        },
+        "amenity/community_centre/village_hall": {
+          "name": "Obecní úřad",
+          "terms": "obecní sál"
         },
         "amenity/community_centre/youth_centre": {
           "name": "Centrum mládeže",
@@ -526,6 +550,10 @@
         "amenity/fast_food/chicken": {
           "name": "Kuřecí rychlé občerstvení",
           "terms": "snídaně,jídelna,stolovat,stolování,večeře,drive-in,jíst,gril,oběd,stůl"
+        },
+        "amenity/fast_food/chinese": {
+          "name": "Čínské rychlé občerstvení",
+          "terms": "čínská,čína,rychlé občerstvení,fast food,restaurace,jídlo,oběd,večeře"
         },
         "amenity/fast_food/donut": {
           "name": "Kiosek s donuty",
@@ -916,8 +944,8 @@
           "terms": "bar,snídaně,kavárna,kafe,jídelna,káva,stolovat,stolování,večeře,drive-in,jíst,gril,oběd,stůl"
         },
         "amenity/restaurant/barbecue": {
-          "name": "Barbecue",
-          "terms": "bar,grilování,jídelna,stolování,stolovat,večeře,drive-in,jíst,gril,oběd,stůl"
+          "name": "Barbecue restaurace",
+          "terms": "barbecue,grilování,gril,bbq"
         },
         "amenity/restaurant/chinese": {
           "name": "Čínská restaurace",
@@ -1095,6 +1123,10 @@
           "name": "Filmové studio",
           "terms": "filmová produkce,filmové studio,videoprodukce,videozáznam,videostudio"
         },
+        "amenity/swingerclub": {
+          "name": "Swingers klub",
+          "terms": "dospělý*,lifestyle club,porno*,sex,strip*,swinger"
+        },
         "amenity/taxi": {
           "name": "Stanoviště taxi",
           "terms": "taxi"
@@ -1121,7 +1153,7 @@
         },
         "amenity/theatre/type/amphi": {
           "name": "Amfiteátr",
-          "terms": "pod širým nebem,venkovní,řecký,ampi"
+          "terms": "otevřený,venkovní,řecký,amfitéatr"
         },
         "amenity/ticket_validator": {
           "name": "Ověřovač vstupenek",
@@ -1572,7 +1604,7 @@
           "terms": "dvěře,vchod,vstup"
         },
         "barrier/yes": {
-          "name": "Zábrana (nespecifikovaný typ)"
+          "name": "Zábrana (nespecifikovaný druh)"
         },
         "boundary": {
           "name": "Hranice"
@@ -2237,6 +2269,10 @@
           "name": "Hlavní vchod",
           "terms": "hlavní vchod,vchod,dveře,průchod,vstup,východ,hlavní vstup,vchodové dveře,vstupní dveře"
         },
+        "entrance/shop": {
+          "name": "Vchod do obchodu",
+          "terms": "dveře"
+        },
         "entrance/staircase": {
           "name": "Vstup na schodiště",
           "terms": "dveře,schody,schodiště,schodový"
@@ -2394,7 +2430,7 @@
           "terms": "řeč,terapeut,terapie,hlas"
         },
         "healthcare/yes": {
-          "name": "Zdravotní zařízení (nespecifikovaný typ)"
+          "name": "Zdravotní zařízení (nespecifikovaný druh)"
         },
         "highway": {
           "name": "Prvek cesty"
@@ -2573,6 +2609,18 @@
         "highway/path/boardwalk": {
           "name": "Chodník z prken",
           "terms": "dřevěný chodník,boardwalk,prkenný chodník,vyvýšený,nad terénem,vyvýšený chodník"
+        },
+        "highway/path/crossing": {
+          "name": "Přechod pro pěší a cyklisty"
+        },
+        "highway/path/crossing/traffic_signals": {
+          "name": "Přechod pro pěší a cyklisty se signály pro chodce"
+        },
+        "highway/path/crossing/uncontrolled": {
+          "name": "Označený přechod pro pěší a cyklisty"
+        },
+        "highway/path/crossing/unmarked": {
+          "name": "Neoznačený přechod pro pěší a cyklisty"
         },
         "highway/path/informal": {
           "name": "Neformální pěšina",
@@ -2910,7 +2958,7 @@
           "terms": "statek,farma,zemědělství,usedlost,jzd,družstvo"
         },
         "landuse/flowerbed": {
-          "name": "Květnatý pás",
+          "name": "Květinový záhon",
           "terms": "rostlinná zahrada,květinová zahrada"
         },
         "landuse/forest": {
@@ -2927,7 +2975,7 @@
         },
         "landuse/greenfield": {
           "name": "Zelená louka",
-          "terms": "vývoj,hodně"
+          "terms": "zelená louka"
         },
         "landuse/greenhouse_horticulture": {
           "name": "Skleníky",
@@ -2960,6 +3008,14 @@
         "landuse/meadow": {
           "name": "Louka",
           "terms": "louka,pastviny,tráva"
+        },
+        "landuse/meadow_orchard/meadow": {
+          "name": "Louka s ovocnými stromy",
+          "terms": "ovoce,louka"
+        },
+        "landuse/meadow_orchard/orchard": {
+          "name": "Sad vysazený na louce",
+          "terms": "ovoce,louka"
         },
         "landuse/military": {
           "name": "Vojenský prostor",
@@ -3070,8 +3126,13 @@
           "name": "Kryté pódium",
           "terms": "hudební pavilon,hudební altán,altán,pavilón,pavilon,pódium,podium"
         },
+        "leisure/bathing_place": {
+          "name": "Místo ke koupání",
+          "terms": "koupání,máčení,máchání,plavání,koupací díra,žebřík,molo,voda"
+        },
         "leisure/beach_resort": {
-          "name": "Spravovaná pláž"
+          "name": "Spravovaná pláž",
+          "terms": "plážový resort"
         },
         "leisure/bird_hide": {
           "name": "Pozorovatelna zvěře",
@@ -3465,6 +3526,10 @@
           "name": "Kurz jízdy na koni",
           "terms": "jezdecká dostihová dráha,cval,sázení na dostihy,dostihy,dostihové,sázky,dostihová dráha,jezdecká dráha"
         },
+        "leisure/sports_centre/karting": {
+          "name": "Zařízení pro motokáry",
+          "terms": "jít na káru,motokáry,motokárové závody"
+        },
         "leisure/sports_centre/shooting": {
           "name": "Areál střelnice",
           "terms": "střelecký klub,střelnice,střelba,střelnit,cvičení se zbraní,cvičení na terč"
@@ -3636,7 +3701,8 @@
           "terms": "hráz,hráza,náplavka,doraz"
         },
         "man_made/embankment": {
-          "name": "Násyp"
+          "name": "Násyp",
+          "terms": "násyp,násep,hráz,bariéra"
         },
         "man_made/flagpole": {
           "name": "Vlajka",
@@ -3645,6 +3711,10 @@
         "man_made/flare": {
           "name": "Fléra",
           "terms": "plynový komín,plyn,olej,oheň,hořet"
+        },
+        "man_made/footwear_decontamination-AU-NZ": {
+          "name": "Dekontaminační stanice obuvi",
+          "terms": "čištění obuvi,boty čištění,čištění bot,kontaminační stanice,dekontaminační stanice"
         },
         "man_made/fuel_pump": {
           "name": "Čerpací stanice",
@@ -3788,6 +3858,10 @@
         "man_made/silo": {
           "name": "Silo",
           "terms": "silo,zásobník,silážní,sýpka,špýchar,špejchar"
+        },
+        "man_made/ski_jump": {
+          "name": "Věž skoku na lyžích",
+          "terms": "skok,skokanský můstek,běh,náběh,struktura skokanského můstku,skokanská věž,věž skokanského můstku"
         },
         "man_made/storage_tank": {
           "name": "Zásobník",
@@ -3941,7 +4015,7 @@
           "terms": "alkohol,pivo,pivko,chlast,mošt"
         },
         "man_made/yes": {
-          "name": "Prvek vytvořený člověkem (nespecifikovaný typ)"
+          "name": "Prvek vytvořený člověkem (nespecifikovaný druh)"
         },
         "marker": {
           "name": "Značka/označník",
@@ -3977,6 +4051,10 @@
         },
         "natural": {
           "name": "Přírodní prvek"
+        },
+        "natural/arch": {
+          "name": "Přírodní oblouk",
+          "terms": "přírodní most,kamenný oblouk"
         },
         "natural/bare_rock": {
           "name": "Plochy jednolité skály",
@@ -4431,6 +4509,10 @@
           "name": "Terapeutická kancelář",
           "terms": "terapie"
         },
+        "office/translator": {
+          "name": "Překladatelská kancelář",
+          "terms": "překladatel,překlad,překladatelská agentura"
+        },
         "office/travel_agent": {
           "name": "Cestovní kancelář"
         },
@@ -4443,7 +4525,7 @@
           "terms": "vodohospodářství,služba"
         },
         "office/yes": {
-          "name": "Kancelář (nespecifikovaný typ)"
+          "name": "Kancelář (nespecifikovaný druh)"
         },
         "pipeline": {
           "name": "Prvek potrubní dopravy"
@@ -4477,8 +4559,11 @@
           "terms": "běžky,severské lyžování,sjezdovka,skate lyžování,lyžování,xc"
         },
         "piste/piste": {
-          "name": "Dráha pro zimní sporty",
-          "terms": "lyže,nordic,běh na lyžích,sjezd,alpský,snowboard,skitour,lyžařská turistika,sáňky,sáně,saně,sáňkování,ski-joring,husky,kůň,zimní turistika,sněžnice,výlety na sněžnicích,led,bruslení"
+          "name": "Stezka/sjezdovka pro sněžné sporty (nespecifikovaný druh)"
+        },
+        "piste/ski_jump": {
+          "name": "Sjezdovka pro skoky na lyžích",
+          "terms": "skok,skok na lyžích,skokanský můstek"
         },
         "piste/skitour": {
           "name": "Lyžařská turistická stezka",
@@ -4491,6 +4576,10 @@
         "piste/sleigh": {
           "name": "Zimní dráha pro spřežení",
           "terms": "psí spřežení,husky,kůň,sjezdovka,sáně,saně,ski-joring,skijoring"
+        },
+        "piste/take_off": {
+          "name": "Odrazová hrana skoku na lyžích",
+          "terms": "skok,skok na lyžích,start,odjezová,skok s lyžemi,hrana pro skoky na lyžích,hrana pro skoky s lyžemi"
         },
         "place": {
           "name": "Místo"
@@ -5303,7 +5392,7 @@
           "terms": "sběratelské potřeby,sběratelství,obchod se známkami,obchod se sběratelskými předměty,známky,mince,komix,panenky,antikvariát,filaterista,filaterie,razítka,sběratelský,sbírat"
         },
         "shop/computer": {
-          "name": "Počítače",
+          "name": "Obchod s počítači",
           "terms": "obchod s výpočetní technikou,počítače,elektro,elektronika,výpočetní technika"
         },
         "shop/confectionery": {
@@ -5423,8 +5512,8 @@
           "terms": "pohřebák,hřbitovní služby,hřbitovní služba,hrobař"
         },
         "shop/furniture": {
-          "name": "Nábytek",
-          "terms": "obchod s nábytkem,nábytek,domácnost"
+          "name": "Obchod s nábytkem",
+          "terms": "obchod s nabytkem,nábytek,domácnost"
         },
         "shop/games": {
           "name": "Deskové hry",
@@ -5446,6 +5535,9 @@
           "name": "Dárky, suvenýry",
           "terms": "obchod s dárky,suvenýry"
         },
+        "shop/gold_buyer": {
+          "name": "Zlatokupec"
+        },
         "shop/greengrocer": {
           "name": "Ovoce a zelenina",
           "terms": "zelinář,zelinářství,prodejna zeleniny,zelenina,ovoce,ovoce a zelenina"
@@ -5453,6 +5545,10 @@
         "shop/hairdresser": {
           "name": "Kadeřnictví",
           "terms": "kadeřník,holič,vizážista,kadeřnictví"
+        },
+        "shop/hairdresser/barber": {
+          "name": "Holičství",
+          "terms": "vousy,knír,holit,holení,kadeře,kadeřnictví,holicí strojek,kadeřník,stříhání vlasů"
         },
         "shop/hairdresser_supply": {
           "name": "Kadeřnické potřeby",
@@ -5639,7 +5735,7 @@
           "terms": "fotografie,fotografický obchod,foto,fotoobchod,video,vyvolávání,tisk,film,filmy,fotostudio,studio,fotoaparát,digitální,digitál,střih,ateliér,objektiv"
         },
         "shop/pottery": {
-          "name": "Keramika",
+          "name": "Obchod s keramikou",
           "terms": "keramika,hrnec,váza"
         },
         "shop/printer_ink": {
@@ -5722,8 +5818,8 @@
           "terms": "supermarket,obchod,přírodní produkty,bioprodukty,bio,eko,biopotraviny"
         },
         "shop/swimming_pool": {
-          "name": "Bazény",
-          "terms": "obchod s vybavením pro vířivky,obchod s údržbou vířivek,obchod s potřebami pro vířivky,obchod s bazény,bazény,obchod s vybavením pro bazény,obchod s instalací bazénů,obchod s údržbou bazénů,obchod s potřebami pro bazény"
+          "name": "Obchod s bazény",
+          "terms": "obchod s vybavením pro vířivky,obchod s údržbou vířivek,obchod s potřebami pro vířivky,obchod s bazeny,bazény,obchod s vybavením pro bazény,obchod s instalací bazénů,obchod s údržbou bazénů,obchod s potřebami pro bazény"
         },
         "shop/tailor": {
           "name": "Krejčovství",
@@ -5772,19 +5868,20 @@
           "terms": "obchod,prodejna,trofej,rofeje,poháry,medaile,diplomy,ocenění,ceny,rytí,rytiny,pamětní desky,plakety,rytí nápisů,rytec"
         },
         "shop/tyres": {
-          "name": "Pneuservis",
-          "terms": "prodejna pneumatik,pneumatiky,pneuservis"
+          "name": "Obchod s pneumatikami",
+          "terms": "prodejna pneumatik,pneumatiky"
         },
         "shop/vacant": {
-          "name": "Neobsazený obchod"
+          "name": "Neobsazený obchod",
+          "terms": "prázdný obchod,neobsazený obchod"
         },
         "shop/vacuum_cleaner": {
           "name": "Obchod s vysavači",
           "terms": "vysavač,vysavače,vysávat,lux,luxovat"
         },
         "shop/variety_store": {
-          "name": "Diskontní prodejna",
-          "terms": "za pár babek,za bura"
+          "name": "Obchod s levným zbožím",
+          "terms": "obchod s levnym zbozim,všechno za dolar,vsechno za dolar,za pár babek,za bura"
         },
         "shop/video": {
           "name": "Video obchod",
@@ -5826,7 +5923,7 @@
           "terms": "vinotéka,víno,vinárna,vinařství,vino"
         },
         "shop/yes": {
-          "name": "Obchod (nespecifikovaný typ)"
+          "name": "Obchod (nespecifikovaný druh)"
         },
         "telecom": {
           "name": "Telekomunikační prvek"
@@ -6049,7 +6146,7 @@
           "terms": "zpomalovací stůl,rychlostní stůl"
         },
         "traffic_calming/yes": {
-          "name": "Zklidňování dopravy (nespecifikovaný typ)"
+          "name": "Zklidňování dopravy (nespecifikovaný druh)"
         },
         "traffic_sign": {
           "name": "Dopravní značka",

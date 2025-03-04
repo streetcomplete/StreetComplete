@@ -47,7 +47,7 @@
     <string name="turn_on_location_request">"Placering er slået fra. Åbn indstillinger for at slå den til nu?"</string>
     <string name="no_location_permission_warning">"Placeringstilladelse er nødvendig for at vise din position på kortet og downloade data i nærheden af dig."</string>
     <string name="about_title_authors">"Kreditering"</string>
-    <string name="about_title_repository">"Kildekode"</string>
+    <string name="about_title_repository">"Projekthjemmeside"</string>
     <string name="about_title_report_error">"Rapportér fejl"</string>
     <string name="about_title_feedback">"Giv feedback"</string>
     <string name="about_title_license">"Licens"</string>
@@ -401,7 +401,7 @@ Delvist betyder, at kørestolsbrugeren kan komme ind og bruge toilettet, men at 
     <string name="quest_buildingType_dormitory">"Kollegium"</string>
     <string name="quest_buildingType_houseboat">"Husbåd"</string>
     <string name="quest_buildingType_bungalow">"Bungalow"</string>
-    <string name="quest_buildingType_static_caravan">"Campingvogn (semi-permanent)"</string>
+    <string name="quest_buildingType_static_caravan">"Mobilhome (semi-permanent)"</string>
     <string name="quest_buildingType_commercial">"Erhvervsbygning"</string>
     <string name="quest_buildingType_commercial_generic_description">"bygning hvor folk arbejder, handler eller udfører andre kommercielle aktiviteter"</string>
     <string name="quest_buildingType_industrial">"Industribygning"</string>
@@ -849,7 +849,7 @@ Data fornyes efter %1$s dage og ubrugte data slettes automatisk efter %2$s dage.
     <string name="quest_barrier_type_turnstile">"Drejekors"</string>
     <string name="quest_barrier_type_passage">"Passage gennem mur/hegn/osv."</string>
     <string name="quest_barrier_type_debris_pile">"Bunke af affald"</string>
-    <string name="quest_barrier_type_stile_squeezer">"Stente (gennem mur)"</string>
+    <string name="quest_barrier_type_stile_squeezer">"Stente (snæver passage)"</string>
     <string name="quest_barrier_type_stile_ladder">"Stente (stige)"</string>
     <string name="quest_barrier_type_bicycle_barrier">"Cykelchikane"</string>
     <string name="quest_barrier_type_kissing_gate">"Kissing gate"</string>

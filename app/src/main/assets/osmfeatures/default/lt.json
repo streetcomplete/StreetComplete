@@ -131,7 +131,8 @@
           "terms": "odontologas,dantistas,stomatologas"
         },
         "amenity/doctors": {
-          "name": "Daktaras"
+          "name": "Daktaras",
+          "terms": "daktaras,gydytojas,medikas"
         },
         "amenity/drinking_water": {
           "name": "Geriamas vanduo",
@@ -365,9 +366,15 @@
           "name": "Vartai",
           "terms": "vartai"
         },
+        "barrier/handrail": {
+          "name": "Turėklai"
+        },
         "barrier/hedge": {
           "name": "Gyvatvorė",
           "terms": "gyvatvorė"
+        },
+        "barrier/kerb": {
+          "name": "Bordiūras"
         },
         "barrier/kissing_gate": {
           "name": "Atsidarantys varteliai"
@@ -535,6 +542,9 @@
           "name": "Sandėlis",
           "terms": "sandėlys"
         },
+        "building_point": {
+          "name": "Pastatas"
+        },
         "club": {
           "name": "Klubas"
         },
@@ -686,6 +696,9 @@
           "name": "Brasta",
           "terms": "brasta"
         },
+        "ford_line": {
+          "name": "Brasta"
+        },
         "golf/hole": {
           "name": "Golfo skylė",
           "terms": "duobutė,golfo duobutė"
@@ -700,6 +713,10 @@
           "name": "Žirgų kelias",
           "terms": "jodinėjimo takas,arklių takas"
         },
+        "highway/crossing": {
+          "name": "Sankryža",
+          "terms": "perėja,pervaža"
+        },
         "highway/cycleway": {
           "name": "Dviračių takas",
           "terms": "dviračių takas"
@@ -707,6 +724,10 @@
         "highway/footway": {
           "name": "Pėsčiųjų takas",
           "terms": "pėsčiųjų takas"
+        },
+        "highway/footway/sidewalk": {
+          "name": "Šaligatvis",
+          "terms": "šaligatvis"
         },
         "highway/give_way": {
           "name": "Duoti kelią ženklas"
@@ -726,6 +747,9 @@
         "highway/path": {
           "name": "Takas",
           "terms": "takas"
+        },
+        "highway/pedestrian_line": {
+          "name": "Pėsčiųjų gatvė"
         },
         "highway/primary": {
           "name": "Pirminis Kelias",
@@ -914,13 +938,26 @@
         "landuse/military/barracks": {
           "name": "Barakai"
         },
+        "landuse/military/base/navy": {
+          "name": "Karinio jūrų laivyno bazė"
+        },
+        "landuse/military/range": {
+          "name": "Karinis poligonas",
+          "terms": "šaudykla,poligonas"
+        },
         "landuse/orchard": {
           "name": "Vaismedžių sodas",
           "terms": "sodas,vaisių sodas"
         },
+        "landuse/pond": {
+          "name": "Kūdra"
+        },
         "landuse/quarry": {
           "name": "Karjeras",
           "terms": "karjeras"
+        },
+        "landuse/reservoir": {
+          "name": "Rezervuaras"
         },
         "landuse/residential": {
           "name": "Gyvenamoji zona",
@@ -953,6 +990,9 @@
         "leisure/garden": {
           "name": "Sodas",
           "terms": "sodas"
+        },
+        "leisure/garden/community": {
+          "name": "Bendruomenės sodas"
         },
         "leisure/golf_course": {
           "name": "Golfo aikštynas"
@@ -1021,6 +1061,13 @@
           "name": "Baseinas",
           "terms": "baseinas,maudymosi baseinas"
         },
+        "leisure/track/athletics/running": {
+          "name": "Bėgimo takelis"
+        },
+        "leisure/track/running": {
+          "name": "Bėgimo takelis",
+          "terms": "bėgimo takelis"
+        },
         "leisure/water_park": {
           "name": "Vandens parkas"
         },
@@ -1078,6 +1125,10 @@
           "name": "Bokštas",
           "terms": "bokštas"
         },
+        "man_made/tower/observation": {
+          "name": "Stebėjimo bokštas",
+          "terms": "stebėjimo bokštas"
+        },
         "man_made/wastewater_plant": {
           "name": "Nuotekų valymo įmonė",
           "terms": "vandens valymo įrenginiai"
@@ -1097,6 +1148,9 @@
         },
         "man_made/works": {
           "name": "Gamykla"
+        },
+        "military/bunker": {
+          "name": "Karinis bunkeris"
         },
         "natural/bare_rock": {
           "name": "Plikas akmuo"
@@ -1126,6 +1180,9 @@
         },
         "natural/grassland": {
           "name": "Pieva"
+        },
+        "natural/hot_spring": {
+          "name": "Karštas šaltinis"
         },
         "natural/mud": {
           "name": "Purvas"
@@ -1158,6 +1215,10 @@
         "natural/water": {
           "name": "Vanduo",
           "terms": "vanduo"
+        },
+        "natural/water/basin": {
+          "name": "Vandens telkinys",
+          "terms": "prūdas,kūdra,baseinas"
         },
         "natural/water/lake": {
           "name": "Ežeras",
@@ -1199,6 +1260,10 @@
         "office/company": {
           "name": "Korporacijos biuras"
         },
+        "office/diplomatic/embassy": {
+          "name": "Ambasada",
+          "terms": "ambasada,atstovybė"
+        },
         "office/educational_institution": {
           "name": "Edukacinis institutas",
           "terms": "mokslo institutas,mokslo įstaiga"
@@ -1216,6 +1281,9 @@
         "office/government": {
           "name": "Vyriausybės biuras",
           "terms": "valdžios biuras"
+        },
+        "office/government/register_office": {
+          "name": "Registravimo biūras"
         },
         "office/insurance": {
           "name": "Draudimo įstaiga",
@@ -1266,6 +1334,9 @@
           "name": "Kaiminystė",
           "terms": "apylinkė"
         },
+        "place/square": {
+          "name": "Statūs kampai"
+        },
         "place/town": {
           "name": "Miestelis",
           "terms": "miestas"
@@ -1305,6 +1376,13 @@
           "name": "Transformatorius",
           "terms": "transformatorius"
         },
+        "public_transport/platform/bus_point": {
+          "terms": "stotelė,autobusų stotelė,troleibusų stotelė"
+        },
+        "public_transport/station_train": {
+          "name": "Traukinių stotis",
+          "terms": "geležinkleio stotis"
+        },
         "railway/abandoned": {
           "name": "Apleistas geležinkelis",
           "terms": "apleistas gelžkelis,nebenaudojamas gelžkelis"
@@ -1330,6 +1408,9 @@
         "route/ferry": {
           "name": "Kelto maršrutas",
           "terms": "kelto maršrutas"
+        },
+        "seamark": {
+          "name": "Plūduras"
         },
         "shop": {
           "name": "Parduotuvė",
@@ -1512,7 +1593,8 @@
           "terms": "oda,odos dirbiniai,odos dirbinių parduotuvė"
         },
         "shop/locksmith": {
-          "name": "Raktininkas"
+          "name": "Raktininkas",
+          "terms": "šaltkalvis"
         },
         "shop/lottery": {
           "name": "Loterijų parduotuvė"
@@ -1547,7 +1629,8 @@
           "name": "Muzikos instrumentų parduotuvė"
         },
         "shop/optician": {
-          "name": "Optika"
+          "name": "Optika",
+          "terms": "okulistas"
         },
         "shop/outdoor": {
           "name": "Laisvalaikio parduotuvė"
@@ -1594,6 +1677,10 @@
         "shop/supermarket": {
           "name": "Prekybos centras",
           "terms": "prekybos centras"
+        },
+        "shop/tailor": {
+          "name": "Siuvėjas",
+          "terms": "siuvėjas"
         },
         "shop/tattoo": {
           "name": "Tatuiruočių salonas"
@@ -1712,6 +1799,9 @@
         "traffic_calming/hump": {
           "name": "Dideli greičio slopinimo kalneliai"
         },
+        "traffic_sign": {
+          "name": "Eismo ženklas"
+        },
         "type/boundary": {
           "name": "Riba",
           "terms": "riba,siena"
@@ -1721,7 +1811,8 @@
           "terms": "riba,administracinė riba,siena"
         },
         "type/multipolygon": {
-          "name": "Multipoligonas"
+          "name": "Multipoligonas",
+          "terms": "multipoligonas"
         },
         "type/restriction": {
           "name": "Apribojimas",
@@ -1747,7 +1838,8 @@
           "name": "Apvažiavimo maršrutas"
         },
         "type/route/ferry": {
-          "name": "Kelto maršrutas"
+          "name": "Kelto maršrutas",
+          "terms": "kelto maršrutas"
         },
         "type/route/hiking": {
           "name": "Žygių maršrutas"

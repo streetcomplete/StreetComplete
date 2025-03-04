@@ -802,7 +802,7 @@ Ten en cuenta que esta aplicación solo pide el número de portal de un edificio
     <string name="quest_recycling_type_plastic_bottles_and_cartons">"Solo botellas y cajas de plástico"</string>
     <string name="team_mode">"Modo equipo"</string>
     <string name="team_mode_exit">"Salir del modo equipo"</string>
-    <string name="team_mode_description">"Cuando estéis varios mejorando una zona a la vez podéis utilizar el modo «en equipo» y así dividir las tareas entre los miembros."</string>
+    <string name="team_mode_description">"Cuando estéis varios mejorando una zona a la vez podéis utilizar el modo «en equipo» y así dividir las tareas entre los miembros. Cada uno de vosotros entonces verá diferentes tareas."</string>
     <string name="team_mode_active">"El modo equipo está activo"</string>
     <string name="team_mode_deactivated">"El modo equipo está desactivado"</string>
     <string name="undo_confirm_title2">"¿Deshacer la siguiente edición?"</string>
@@ -927,7 +927,7 @@ Los datos se actualizan cada %1$s días y los datos sin utilizar se eliminan aut
     <string name="quest_barrier_bicycle_type_tilted">"Cruce estrecho, estrechándose por arriba"</string>
     <string name="quest_barrier_bicycle_type_single">"Cruce entre dos obstáculos"</string>
     <string name="quest_barrier_bicycle_type_double">"Chicane; un bloque a cada lado"</string>
-    <string name="quest_barrier_bicycle_type_multiple">"Chicane; de tres bloques o más"</string>
+    <string name="quest_barrier_bicycle_type_multiple">"Chicane; más de dos bloques"</string>
     <string name="language_default">"Idioma del sistema"</string>
     <string name="on_floor">"En el piso %s:"</string>
     <string name="select_street_parking_orientation">"Elige la modalidad de aparcamiento/estacionamiento:"</string>

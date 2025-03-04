@@ -2,12 +2,24 @@
   "th": {
     "presets": {
       "presets": {
+        "addr/interpolation": {
+          "name": "การสอดแทรกที่อยู่"
+        },
         "address": {
-          "name": "ที่อยู่"
+          "name": "ที่อยู่",
+          "terms": "การสอดแทรกที่อยู่"
         },
         "advertising": {
           "name": "อุปกรณ์โฆษณา",
           "terms": "อุปกรณ์โฆษณา"
+        },
+        "advertising/billboard": {
+          "name": "ป้ายโฆษณา",
+          "terms": "การสอดแทรกที่อยู่"
+        },
+        "advertising/board": {
+          "name": "กระดานป้ายติดประกาศ",
+          "terms": "กระดานป้ายติดประกาศ"
         },
         "advertising/column": {
           "name": "เสาโฆษณา",
@@ -44,27 +56,80 @@
           "name": "กระเช้าขนส่งสินค้า",
           "terms": "กระเช้าขนส่งสินค้า"
         },
+        "aerialway/j-bar": {
+          "name": "ลิฟต์สกีแบบตัวเจ",
+          "terms": "ลิฟต์สกีแบบตัวเจ"
+        },
         "aerialway/magic_carpet": {
           "name": "สายพานเลื่อนสกี",
           "terms": "สายพานเลื่อนสกี"
+        },
+        "aerialway/mixed_lift": {
+          "name": "ลิฟต์แบบผสม",
+          "terms": "ลิฟต์แบบผสม"
+        },
+        "aerialway/platter": {
+          "name": "ลิฟต์แพลเตอร์",
+          "terms": "ลิฟต์แพลเตอร์"
+        },
+        "aerialway/pylon": {
+          "name": "กระเช้าไพลอน",
+          "terms": "กระเช้าไพลอน"
+        },
+        "aerialway/rope_tow": {
+          "name": "ลิฟท์ลากเชือก",
+          "terms": "ลิฟท์ลากเชือก"
+        },
+        "aerialway/t-bar": {
+          "name": "ลิฟต์ทีบาร์",
+          "terms": "ลิฟต์ทีบาร์"
+        },
+        "aerialway/zip_line": {
+          "name": "ซิปไลน์",
+          "terms": "ซิปไลน์"
         },
         "aeroway": {
           "name": "คุณลักษณะทางอากาศ"
         },
         "aeroway/aerodrome": {
-          "name": "สนามบิน"
+          "name": "สนามบิน",
+          "terms": "สนามบิน,ลานบิน"
+        },
+        "aeroway/apron": {
+          "name": "ลานจอดอากาศยาน",
+          "terms": "ลานจอดอากาศยาน"
+        },
+        "aeroway/gate": {
+          "name": "เกทสนามบิน",
+          "terms": "เกทสนามบิน,ประตูสนามบิน"
         },
         "aeroway/hangar": {
           "name": "โรงเก็บเครื่องบิน",
           "terms": "โรงเก็บเครื่องบิน"
         },
+        "aeroway/helipad": {
+          "name": "ลานจอดเฮลิคอปเตอร์",
+          "terms": "ลานจอดเฮลิคอปเตอร์"
+        },
         "aeroway/holding_position": {
           "name": "ตำแหน่งยึดอากาศยาน",
           "terms": "ตำแหน่งยึดอากาศยาน"
         },
+        "aeroway/jet_bridge": {
+          "name": "สะพานเทียบเครื่องบิน",
+          "terms": "งวงช้าง,สะพานเทียบเครื่องบิน"
+        },
         "aeroway/parking_position": {
           "name": "ตำแหน่งจอดอากาศยาน",
           "terms": "ตำแหน่งจอดอากาศยาน"
+        },
+        "aeroway/runway": {
+          "name": "รันเวย์",
+          "terms": "รันเวย์"
+        },
+        "aeroway/spaceport": {
+          "name": "ท่าอวกาศยาน",
+          "terms": "ท่าอวกาศยาน,ฐานปล่อยจรวด,คอสโมโดรม"
         },
         "aeroway/taxiway": {
           "name": "แท็กซี่เวย์",
@@ -253,11 +318,36 @@
           "terms": "พื้นที่ของวิทยาลัย"
         },
         "amenity/community_centre": {
-          "name": "ศูนย์ชุมชน"
+          "name": "ศูนย์ชุมชน",
+          "terms": "ศูนย์ชุมชน,ศาลาชุมชน,ศาลาประชาคม,ศูนย์ประชาคม"
+        },
+        "amenity/community_centre/club_home": {
+          "name": "คลับโฮม",
+          "terms": "คลับโฮม"
+        },
+        "amenity/community_centre/community_hall": {
+          "name": "ศาลาประชาคม",
+          "terms": "ศาลาประชาคม"
+        },
+        "amenity/community_centre/cultural_centre": {
+          "name": "ศูนย์วัฒนธรรม",
+          "terms": "ศูนย์วัฒนธรรม"
+        },
+        "amenity/community_centre/family_centre": {
+          "name": "ศูนย์ครอบครัว",
+          "terms": "ศูนย์ครอบครัว"
         },
         "amenity/community_centre/lgbtq": {
           "name": "ศูนย์ชุมชนกลุ่ม LGBTQ+",
           "terms": "ศูนย์ชุมชนกลุ่ม lgbtq+"
+        },
+        "amenity/community_centre/parish_hall": {
+          "name": "โถงโบสถ์",
+          "terms": "โถงโบสถ์"
+        },
+        "amenity/community_centre/village_hall": {
+          "name": "ศาลาหมู่บ้าน",
+          "terms": "ศาลาหมู่บ้าน"
         },
         "amenity/community_centre/youth_centre": {
           "name": "ศูนย์เยาวชน",
@@ -302,17 +392,109 @@
           "name": "อายุรแพทย์หัวใจ",
           "terms": "อายุรแพทย์หัวใจ,แพทย์หัวใจ,หมอหัวใจ"
         },
+        "amenity/doctors/child_psychiatry": {
+          "name": "จิตแพทย์เด็กและวัยรุ่น",
+          "terms": "จิตแพทย์เด็กและวัยรุ่น"
+        },
+        "amenity/doctors/dermatology": {
+          "name": "แพทย์ผิวหนัง",
+          "terms": "แพทย์ผิวหนัง"
+        },
+        "amenity/doctors/gastroenterology": {
+          "name": "อายุรแพทย์โรคระบบทางเดินอาหาร",
+          "terms": "อายุรแพทย์โรคระบบทางเดินอาหาร"
+        },
+        "amenity/doctors/general": {
+          "name": "แพทย์ประจำครอบครัว",
+          "terms": "แพทย์ประจำครอบครัว"
+        },
+        "amenity/doctors/gynaecology": {
+          "name": "สูติแพทย์/สูตินารีแพทย์",
+          "terms": "สูติแพทย์/สูตินารีแพทย์,หมอตำแย"
+        },
+        "amenity/doctors/haematology": {
+          "name": "นักโลหิตวิทยา",
+          "terms": "นักโลหิตวิทยา"
+        },
+        "amenity/doctors/internal": {
+          "name": "อายุรแพทย์",
+          "terms": "อายุรแพทย์"
+        },
+        "amenity/doctors/nephrology": {
+          "name": "นักวักกวิทยา",
+          "terms": "นักวักกวิทยา"
+        },
+        "amenity/doctors/neurology": {
+          "name": "ประสาทแพทย์",
+          "terms": "ประสาทแพทย์"
+        },
+        "amenity/doctors/neurosurgery": {
+          "name": "ประสาทศัลยแพทย์",
+          "terms": "ประสาทศัลยแพทย์"
+        },
+        "amenity/doctors/oncology": {
+          "name": "นักวิทยาเนื้องอก",
+          "terms": "นักวิทยาเนื้องอก"
+        },
+        "amenity/doctors/ophthalmology": {
+          "name": "จักษุแพทย์",
+          "terms": "จักษุแพทย์"
+        },
+        "amenity/doctors/orthopaedics": {
+          "name": "ศัลยแพทย์ออร์โธปิดิกส์",
+          "terms": "ศัลยแพทย์ออร์โธปิดิกส์"
+        },
         "amenity/doctors/otolaryngology": {
           "name": "แพทย์โสตศอนาสิก",
           "terms": "แพทย์โสตศอนาสิก,แพทย์หูคอจมูก,หมอโสตศอนาสิก,หมอหูคอจมูก"
+        },
+        "amenity/doctors/paediatrics": {
+          "name": "กุมารแพทย์",
+          "terms": "กุมารแพทย์"
         },
         "amenity/doctors/pathology": {
           "name": "พยาธิแพทย์",
           "terms": "พยาธิแพทย์"
         },
+        "amenity/doctors/plastic_surgery": {
+          "name": "ศัลยแพทย์ตกแต่ง",
+          "terms": "ศัลยแพทย์ตกแต่ง"
+        },
+        "amenity/doctors/podiatry": {
+          "name": "แพทย์เท้า",
+          "terms": "แพทย์เท้า"
+        },
+        "amenity/doctors/proctology": {
+          "name": "ศัลยแพทย์ลำไส้ใหญ่",
+          "terms": "ศัลยแพทย์ลำไส้ใหญ่"
+        },
+        "amenity/doctors/psychiatrist": {
+          "name": "จิตแพทย์",
+          "terms": "จิตแพทย์"
+        },
+        "amenity/doctors/pulmonology": {
+          "name": "แพทย์วิทยาปอด",
+          "terms": "แพทย์วิทยาปอด"
+        },
+        "amenity/doctors/radiology": {
+          "name": "รังสีแพทย์",
+          "terms": "รังสีแพทย์"
+        },
+        "amenity/doctors/rheumatology": {
+          "name": "แพทย์วิทยารูมาติก",
+          "terms": "แพทย์วิทยารูมาติก"
+        },
         "amenity/doctors/surgery": {
           "name": "ศัลยแพทย์ทั่วไป",
           "terms": "ศัลยแพทย์ทั่วไป"
+        },
+        "amenity/doctors/trauma": {
+          "name": "ศัลยแพทย์อุบัติเหตุ",
+          "terms": "ศัลยแพทย์อุบัติเหตุ"
+        },
+        "amenity/doctors/urology": {
+          "name": "ศัลยแพทย์ทางเดินปัสสาวะ",
+          "terms": "ศัลยแพทย์ทางเดินปัสสาวะ"
         },
         "amenity/dog_toilet": {
           "name": "ห้องน้ำสุนัข",
@@ -320,10 +502,11 @@
         },
         "amenity/dojo": {
           "name": "โรงเรียนสอนศิลปะป้องกันตัว",
-          "aliases": "สถาบันศิลปะการป้องกันตัว"
+          "terms": "โรงเรียนสอนศิลปะป้องกันตัว,สถาบันศิลปะการป้องกันตัว"
         },
         "amenity/dressing_room": {
-          "name": "ห้องเปลี่ยนเสื้อผ้า"
+          "name": "ห้องลองเสื้อผ้า",
+          "terms": "ห้องเปลี่ยนเสื้อผ้า,ห้องลองเสื้อผ้า"
         },
         "amenity/drinking_water": {
           "name": "น้ำดื่ม",
@@ -345,7 +528,8 @@
           "terms": "สถานที่จัดงาน,สถานที่จัดกิจกรรม"
         },
         "amenity/exhibition_centre": {
-          "name": "ศูนย์นิทรรศการ"
+          "name": "ศูนย์นิทรรศการ",
+          "terms": "ศูนย์นิทรรศการ"
         },
         "amenity/fast_food": {
           "name": "อาหารจานด่วน",
@@ -366,6 +550,10 @@
         "amenity/fast_food/chicken": {
           "name": "ร้านไก่ทอด",
           "terms": "ร้านไก่ทอด"
+        },
+        "amenity/fast_food/chinese": {
+          "name": "ร้านอาหารจีน",
+          "terms": "ร้านอาหารจีน"
         },
         "amenity/fast_food/donut": {
           "name": "ร้านโดนัท",
@@ -433,6 +621,10 @@
           "name": "โถงเล่นการพนัน",
           "terms": "ห้องเล่นการพนัน"
         },
+        "amenity/give_box": {
+          "name": "ตู้ปันสุข",
+          "terms": "ตู้ปันสุข,ตู้บริจาค"
+        },
         "amenity/grave_yard": {
           "name": "สุสาน",
           "terms": "สุสาน,ป้าช้า,กุโบร์"
@@ -441,8 +633,13 @@
           "name": "ถังเกลือโรยถนน",
           "terms": "ถังเกลือโรยถนน"
         },
+        "amenity/hookah_lounge": {
+          "name": "เลานจ์ฮุคคา",
+          "terms": "เลานจ์ฮุคคา"
+        },
         "amenity/hospital": {
-          "name": "พื้นที่โรงพยาบาล"
+          "name": "พื้นที่โรงพยาบาล",
+          "terms": "พื้นที่โรงพยาบาล"
         },
         "amenity/hunting_stand": {
           "name": "หอพรานล่าสัตว์",
@@ -468,15 +665,21 @@
           "name": "โรงเรียนอนุบาล",
           "terms": "โรงเรียนอนุบาล,โรงเรียนเตรียมอนุบาล"
         },
+        "amenity/kneipp_water_cure": {
+          "name": "เครื่องวารีบำบัด",
+          "terms": "เครื่องวารีบำบัด"
+        },
         "amenity/language_school": {
           "name": "โรงเรียนสอนภาษา",
           "terms": "โรงเรียนสอนภาษา"
         },
         "amenity/lavoir": {
-          "name": "สถานที่ซักเสื้อผ้าสาธารณะ"
+          "name": "สถานที่ซักเสื้อผ้าสาธารณะ",
+          "terms": "สถานที่ซักเสื้อผ้าสาธารณะ"
         },
         "amenity/letter_box": {
-          "name": "กล่องจดหมาย"
+          "name": "กล่องจดหมาย",
+          "terms": "กล่องจดหมาย"
         },
         "amenity/library": {
           "name": "ห้องสมุด",
@@ -491,11 +694,16 @@
           "terms": "ท่าเรือขนถ่าย"
         },
         "amenity/lounger": {
-          "name": "เก้าอี้นอน"
+          "name": "เก้าอี้นอน",
+          "terms": "เก้าอี้นอน"
         },
         "amenity/love_hotel": {
           "name": "ม่านรูด",
           "terms": "ม่านรูด"
+        },
+        "amenity/luggage_locker": {
+          "name": "ตู้ฝากสัมภาระ",
+          "terms": "ตู้ฝากสัมภาระ"
         },
         "amenity/marketplace": {
           "name": "ตลาด",
@@ -510,7 +718,8 @@
           "terms": "สถานีโอนเงิน"
         },
         "amenity/mortuary": {
-          "name": "ห้องเก็บศพ"
+          "name": "ห้องเก็บศพ",
+          "terms": "ห้องเก็บศพ"
         },
         "amenity/motorcycle_parking": {
           "name": "ที่จอดจักรยานยนต์",
@@ -536,7 +745,8 @@
           "name": "บ้านพักคนชรา"
         },
         "amenity/parcel_locker": {
-          "name": "ตู้ล็อกเกอร์รับฝากสัมภาระ"
+          "name": "ตู้ล็อกเกอร์รับฝากพัสดุ",
+          "terms": "ตู้ล็อกเกอร์รับฝากพัสดุ"
         },
         "amenity/parking": {
           "name": "ลานจอดรถ",
@@ -571,7 +781,8 @@
           "terms": "ซองจอดรถสำหรับคนพิการ,ช่องจอดรถสำหรับคนพิการ,ซองจอดรถวีลแชร์"
         },
         "amenity/payment_centre": {
-          "name": "ศูนย์การชำระเงิน"
+          "name": "ศูนย์การชำระเงิน",
+          "terms": "ศูนย์การชำระเงิน"
         },
         "amenity/payment_terminal": {
           "name": "เครื่องชำระเงิน",
@@ -590,17 +801,52 @@
           "terms": "สถานที่ศักดิ์สิทธิ์"
         },
         "amenity/place_of_worship/buddhist": {
-          "name": "โบสถ์"
+          "name": "วัดพุทธ",
+          "terms": "วัดพุทธ"
         },
         "amenity/place_of_worship/christian": {
-          "name": "คริสตจักร"
+          "name": "คริสตจักร",
+          "terms": "คริสตจักร"
+        },
+        "amenity/place_of_worship/christian/jehovahs_witness": {
+          "name": "หอประชุมราชอาณาจักรของพยานพระยะโฮวา",
+          "terms": "หอประชุมราชอาณาจักรของพยานพระยะโฮวา"
+        },
+        "amenity/place_of_worship/christian/la_luz_del_mundo": {
+          "name": "วัดลา ลุซ เดล มุนโด",
+          "terms": "วัดลา ลุซ เดล มุนโด"
+        },
+        "amenity/place_of_worship/christian/quaker": {
+          "name": "บ้านสหายเควกเกอร์",
+          "terms": "บ้านสหายเควกเกอร์"
+        },
+        "amenity/place_of_worship/hindu": {
+          "name": "วัดฮินดู",
+          "terms": "วัดฮินดู"
+        },
+        "amenity/place_of_worship/jewish": {
+          "name": "สุเหร่ายิว",
+          "terms": "สุเหร่ายิว"
         },
         "amenity/place_of_worship/muslim": {
           "name": "มัสยิด",
           "terms": "สุเหร่า"
         },
+        "amenity/place_of_worship/shinto": {
+          "name": "ศาลเจ้าชินโต",
+          "terms": "ศาลเจ้าชินโต"
+        },
+        "amenity/place_of_worship/sikh": {
+          "name": "วัดซิกข์",
+          "terms": "วัดซิกข์"
+        },
+        "amenity/place_of_worship/taoist": {
+          "name": "วัดเต๋า",
+          "terms": "วัดเต๋า"
+        },
         "amenity/planetarium": {
-          "name": "ท้องฟ้าจำลอง"
+          "name": "ท้องฟ้าจำลอง",
+          "terms": "ท้องฟ้าจำลอง"
         },
         "amenity/police": {
           "name": "สถานีตำรวจ",
@@ -612,7 +858,8 @@
           "aliases": "สถานที่เลือกตั้ง"
         },
         "amenity/post_box": {
-          "name": "ตู้ไปรษณีย์"
+          "name": "ตู้ไปรษณีย์",
+          "terms": "ตู้ไปรษณีย์"
         },
         "amenity/post_depot": {
           "name": "สำนักงานคัดแยกไปรษณีย์",
@@ -631,14 +878,20 @@
           "terms": "พื้นที่ทัณฑสถาน,พื้นที่เรือนจำ,พื้นที่คุก"
         },
         "amenity/pub": {
-          "name": "ผับ"
+          "name": "ผับ",
+          "terms": "ผับ"
+        },
+        "amenity/pub/irish": {
+          "name": "ผับไอร์ริช",
+          "terms": "ผับไอร์ริช"
         },
         "amenity/pub/lgbtq": {
           "name": "ผับ LGBTQ+",
           "terms": "ผับ lgbtq+"
         },
         "amenity/pub/microbrewery": {
-          "name": "ผับเบียร์"
+          "name": "ผับเบียร์",
+          "terms": "ผับเบียร์"
         },
         "amenity/public_bath": {
           "name": "โรงอาบน้ำสาธารณะ",
@@ -657,13 +910,20 @@
           "aliases": "การทำให้นำมาใช้ประโยชน์ได้อีกครั้ง"
         },
         "amenity/recycling/container/electrical_items": {
-          "name": "ภาชนะบรรจุขยะอิเล็กทรอนิกส์"
+          "name": "ภาชนะบรรจุขยะอิเล็กทรอนิกส์",
+          "terms": "ภาชนะบรรจุขยะอิเล็กทรอนิกส์"
         },
         "amenity/recycling/container/green_waste": {
-          "name": "ถังขยะสีเขียว"
+          "name": "ถังขยะสีเขียว",
+          "terms": "ถังขยะสีเขียว"
         },
         "amenity/recycling_centre": {
-          "name": "ศูนย์รีไซเคิล"
+          "name": "ศูนย์รีไซเคิล",
+          "terms": "ศูนย์รีไซเคิล,ของเก่า,รับซื้อของเก่า"
+        },
+        "amenity/recycling_container": {
+          "name": "ถังขยะรีไซเคิล",
+          "terms": "ถังขยะรีไซเคิล"
         },
         "amenity/refugee_site": {
           "name": "ค่ายผู้ลี้ภัย",
@@ -774,7 +1034,8 @@
           "terms": "ร้านอาหารเวียดนาม"
         },
         "amenity/sanitary_dump_station": {
-          "name": "ห้องน้ำเคลื่อนที่"
+          "name": "ห้องน้ำเคลื่อนที่",
+          "terms": "ห้องน้ำเคลื่อนที่"
         },
         "amenity/school": {
           "name": "พื้นที่โรงเรียน",
@@ -785,10 +1046,12 @@
           "terms": "ศาลาที่พัก,ศาลาพัก,กระท่อม,ที่บัง,ที่ร่ม"
         },
         "amenity/shelter/gazebo": {
-          "name": "ศาลา"
+          "name": "ศาลา",
+          "terms": "ศาลา"
         },
         "amenity/shelter/lean_to": {
-          "name": "เพิงหมาแหงน"
+          "name": "เพิงหมาแหงน",
+          "terms": "เพิงหมาแหงน,เพิงพิง"
         },
         "amenity/shelter/picnic_shelter": {
           "name": "ศาลาปิคนิค",
@@ -803,7 +1066,8 @@
           "terms": "ที่อาบน้ำฝักบัว"
         },
         "amenity/smoking_area": {
-          "name": "พื้นที่สูบบุหรี่"
+          "name": "พื้นที่สูบบุหรี่",
+          "terms": "พื้นที่สูบบุหรี่,ที่สูบบุหรี่"
         },
         "amenity/social_centre": {
           "name": "ศูนย์ชุมชน",
@@ -817,12 +1081,17 @@
           "name": "การดูแลผู้ป่วยนอก",
           "terms": "การดูแลผู้ป่วยนอก"
         },
+        "amenity/social_facility/assisted_living": {
+          "name": "สถานดูแลผู้สูงอายุ",
+          "terms": "สถานดูแลผู้สูงอายุ,บ้านพักดูแลผู้สูงอายุ,บ้านพักผู้สูงอายุ"
+        },
         "amenity/social_facility/food_bank": {
           "name": "คลังอาหาร",
           "terms": "คลังอาหาร,ธนาคารอาหาร"
         },
         "amenity/social_facility/group_home": {
-          "name": "บ้านกลุ่มผู้สูงอายุ"
+          "name": "บ้านกลุ่มผู้สูงอายุ",
+          "terms": "บ้านกลุ่มผู้สูงอายุ"
         },
         "amenity/social_facility/homeless_shelter": {
           "name": "ศูนย์พักพิงคนไร้บ้าน",
@@ -856,9 +1125,21 @@
           "name": "สตูดิโอภาพยนตร์",
           "terms": "สตูดิโอภาพยนตร์"
         },
+        "amenity/swingerclub": {
+          "name": "สวิงเกอร์คลับ",
+          "terms": "สวิงเกอร์คลับ"
+        },
         "amenity/taxi": {
           "name": "ป้ายรอแท็กซี่",
           "terms": "ป้ายรอแท็กซี่"
+        },
+        "amenity/taxi/auto_rickshaw": {
+          "name": "จุดจอดรถสามล้อยนต์",
+          "terms": "จุดจอดรถสามล้อยนต์"
+        },
+        "amenity/taxi/cycle_rickshaw": {
+          "name": "จุดจอดสามล้อถีบ",
+          "terms": "จุดจอดสามล้อถีบ"
         },
         "amenity/taxi/motorcycle_taxi": {
           "name": "จุดจอดวินมอเตอร์ไซค์",
@@ -869,30 +1150,40 @@
           "terms": "โทรศัพท์"
         },
         "amenity/theatre": {
-          "name": "โรงภาพยนตร์",
-          "aliases": "โรงหนัง"
+          "name": "โรงละคร",
+          "terms": "โรงละคร"
         },
         "amenity/theatre/type/amphi": {
-          "name": "อัฒจันทร์"
+          "name": "อัศจรรย์",
+          "terms": "อัศจรรย์"
         },
         "amenity/ticket_validator": {
           "name": "เครื่องตรวจสอบตั๋ว",
           "terms": "เครื่องตรวจสอบตั๋ว"
         },
         "amenity/toilets": {
-          "name": "ห้องน้ำ"
+          "name": "ห้องน้ำ",
+          "terms": "ห้องน้ำ,สุขา,ห้องส้วม"
         },
         "amenity/toilets/disposal/flush": {
           "name": "ชักโครก",
           "terms": "ชักโครก,ชักโครกกด"
         },
+        "amenity/toilets/disposal/pitlatrine": {
+          "name": "ส้วมหลุม",
+          "terms": "ส้วมหลุม"
+        },
         "amenity/toilets/portable": {
           "name": "สุขาเคลื่อนที่",
-          "aliases": "ห้องน้ำแบบพกพา"
+          "terms": "สุขาเคลื่อนที่,ห้องน้ำแบบพกพา"
         },
         "amenity/townhall": {
           "name": "ศาลากลาง",
           "terms": "ศาลากลาง"
+        },
+        "amenity/townhall/barangay-PH": {
+          "name": "ศาลาบารังไกย์",
+          "terms": "ศาลาบารังไกย์,ศาลาบาร์ริโอ"
         },
         "amenity/townhall/city": {
           "name": "ศาลากลางจังหวัด",
@@ -910,6 +1201,10 @@
           "name": "พื้นที่มหาวิทยาลัย",
           "terms": "พื้นที่มหาวิทยาลัย,พื้นที่อุดมศึกษา"
         },
+        "amenity/vacuum_cleaner": {
+          "name": "เครื่องดูดฝุ่นรถ",
+          "terms": "เครื่องดูดฝุ่นรถ"
+        },
         "amenity/vehicle_inspection": {
           "name": "ตรวจสอบยานพาหนะ",
           "terms": "ตรวจสอบยานพาหนะ"
@@ -921,6 +1216,10 @@
         "amenity/vending_machine/bicycle_tube": {
           "name": "ตู้จำหน่ายยางในจักรยานอัตโนมัติ",
           "terms": "ตู้จำหน่ายยางในจักรยานอัตโนมัติ"
+        },
+        "amenity/vending_machine/bottle_return": {
+          "name": "เครื่องคืนขวด",
+          "terms": "เครื่องคืนขวด"
         },
         "amenity/vending_machine/bread": {
           "name": "ตู้จำหน่ายขนมปัง",
@@ -953,6 +1252,10 @@
         "amenity/vending_machine/elongated_coin": {
           "name": "ตู้จำหน่ายเหรียญที่ละลึก",
           "terms": "ตู้จำหน่ายเหรียญที่ละลึก"
+        },
+        "amenity/vending_machine/excrement_bags": {
+          "name": "เครื่องจ่ายถุงเก็บมูลสัตว์",
+          "terms": "เครื่องจ่ายถุงเก็บมูลสัตว์"
         },
         "amenity/vending_machine/feminine_hygiene": {
           "name": "ตู้จำหน่ายสินค้าสุขอนามัยสำหรับผู้หญิง",
@@ -1010,6 +1313,10 @@
           "name": "ถังขยะสำหรับมูลสุนัข",
           "terms": "ถังขยะสำหรับมูลสุนัข,ถังขยะสำหรับอึสุนัข,ถังขยะสำหรับขี้สุนัข,ถังขยะสำหรับมูลหมา,ถังขยะสำหรับอึหมา,ถังขยะสำหรับขี้หมา"
         },
+        "amenity/waste_basket": {
+          "name": "ถังขยะ",
+          "terms": "ถังขยะ"
+        },
         "amenity/waste_disposal": {
           "name": "ถังขยะใหญ่",
           "terms": "ถังขยะใหญ่"
@@ -1027,10 +1334,16 @@
           "terms": "น้ำสำหรับสัตว์"
         },
         "amenity/weighbridge": {
-          "name": "เครื่องชั่งรถบรรทุก"
+          "name": "เครื่องชั่งรถบรรทุก",
+          "terms": "เครื่องชั่งรถบรรทุก"
         },
         "area": {
-          "name": "พื้นที่"
+          "name": "พื้นที่",
+          "terms": "พื้นที่"
+        },
+        "area/footway": {
+          "name": "พื้นที่ทางเท้า",
+          "terms": "พื้นที่ทางเท้า"
         },
         "area/highway": {
           "name": "พื้นที่ถนน",
@@ -1040,17 +1353,68 @@
           "name": "พื้นที่เกาะจราจร",
           "terms": "พื้นที่เกาะจราจร"
         },
+        "attraction": {
+          "name": "สถานที่ท่องเที่ยว"
+        },
+        "attraction/amusement_ride": {
+          "name": "เครื่องเล่น",
+          "terms": "เครื่องเล่น"
+        },
+        "attraction/animal": {
+          "name": "กรงสัตว์",
+          "terms": "กรงสัตว์"
+        },
+        "attraction/big_wheel": {
+          "name": "ชิงช้าสวรรค์",
+          "terms": "ชิงช้าสวรรค์"
+        },
         "attraction/bumper_car": {
           "name": "รถบั๊ม",
           "terms": "รถบั๊ม,รถบั๊มเปอร์"
+        },
+        "attraction/bungee_jumping": {
+          "name": "บันจีจัมพ์",
+          "terms": "บันจีจัมพ์"
         },
         "attraction/carousel": {
           "name": "ม้าหมุน",
           "terms": "ม้าหมุน"
         },
+        "attraction/dark_ride": {
+          "name": "รถไฟผีสิง",
+          "terms": "รถไฟผีสิง"
+        },
+        "attraction/drop_tower": {
+          "name": "หอคอยทิ้งดิ่ง",
+          "terms": "หอคอยทิ้งดิ่ง"
+        },
+        "attraction/kiddie_ride": {
+          "name": "ม้าโยก",
+          "terms": "ม้าโยก"
+        },
+        "attraction/log_flume": {
+          "name": "ล่องแก่ง",
+          "terms": "ล่องแก่ง"
+        },
+        "attraction/maze": {
+          "name": "เขาวงกต",
+          "terms": "เขาวงกต"
+        },
+        "attraction/pirate_ship": {
+          "name": "เครื่องเล่นเรือโจรสลัด",
+          "terms": "เครื่องเล่นเรือโจรสลัด"
+        },
         "attraction/river_rafting": {
           "name": "ล่องแก่งแม่น้ำ",
           "terms": "ล่องแก่งแม่น้ำ"
+        },
+        "attraction/roller_coaster": {
+          "name": "รถไฟเหาะ",
+          "terms": "รถไฟเหาะ"
+        },
+        "attraction/summer_toboggan": {
+          "name": "รถเหาะภูเขา",
+          "terms": "รถเหาะภูเขา"
         },
         "attraction/swing_carousel": {
           "name": "ม้าหมุนชิงช้า",
@@ -1064,38 +1428,53 @@
           "name": "สไลด์น้ำ",
           "terms": "สไลด์น้ำ"
         },
+        "barrier": {
+          "name": "สิ่งกีดขวาง",
+          "terms": "สิ่งกีดขวาง"
+        },
         "barrier/block": {
           "name": "เครื่องกีดขวาง",
           "terms": "บล็อก,บล็อค,กัด,ตัวกัน,ตัวกีดขวาง,block"
         },
         "barrier/bollard": {
-          "name": "เสากั้นรถ"
+          "name": "เสากั้นรถ",
+          "terms": "เสากั้นรถ"
         },
         "barrier/bollard_line": {
-          "name": "เสากั้นรถเรียงแถว"
+          "name": "เสากั้นรถเรียงแถว",
+          "terms": "เสากั้นรถเรียงแถว,แถวเสากั้นรถ"
         },
         "barrier/border_control": {
-          "name": "การควบคุมเขตแดน"
+          "name": "การควบคุมเขตแดน",
+          "terms": "การควบคุมเขตแดน,ตระเวนชายแดน"
         },
         "barrier/bump_gate": {
-          "name": "ประตูกันกระแทก"
+          "name": "ประตูกันกระแทก",
+          "terms": "ประตูกันกระแทก"
         },
         "barrier/bus_trap": {
           "name": "กับดักรถประจำทาง",
           "terms": "กับดักรถประจำทาง"
         },
         "barrier/cable_barrier": {
-          "name": "ที่กั้นไหล่ทางแบบเคเบิ้ล"
+          "name": "ที่กั้นไหล่ทางแบบสายเคเบิ้ล",
+          "terms": "ที่กั้นไหล่ทางแบบสายเคเบิ้ล"
         },
         "barrier/cattle_grid": {
-          "name": "ตะแกรงกันสัตว์ข้าม"
+          "name": "ตะแกรงกันสัตว์ข้าม",
+          "terms": "ตะแกรงกันสัตว์ข้าม"
+        },
+        "barrier/chain": {
+          "name": "ล่ามโซ่",
+          "terms": "ล่ามโซ่"
         },
         "barrier/city_wall": {
           "name": "กำแพงเมือง",
           "terms": "กำแพงเมือง"
         },
         "barrier/cycle_barrier": {
-          "name": "ที่กั้นจักรยาน"
+          "name": "ที่กั้นจักรยาน",
+          "terms": "ที่กั้นจักรยาน"
         },
         "barrier/ditch": {
           "name": "คู",
@@ -1110,63 +1489,124 @@
         },
         "barrier/fence/railing": {
           "name": "ราวบันได",
-          "aliases": "ราว"
+          "terms": "ราวบันได,ราว,ราวกั้น"
         },
         "barrier/full-height_turnstile": {
-          "name": "ประตูหมุน"
+          "name": "ประตูหมุนสูงเท่าตัว",
+          "terms": "ประตูหมุนสูงเท่าตัว"
         },
         "barrier/gate": {
-          "name": "ประตูรั้ว"
+          "name": "ประตูรั้ว",
+          "terms": "ประตูรั้ว"
         },
         "barrier/guard_rail": {
-          "name": "ราวกันตก"
+          "name": "ราวกันตก",
+          "terms": "ราวกันตก"
         },
         "barrier/hampshire_gate": {
-          "name": "รั้วเหล็ก"
+          "name": "รั้วเหล็ก",
+          "terms": "รั้วเหล็ก"
         },
         "barrier/handrail": {
           "name": "ราวจับ"
         },
         "barrier/hedge": {
-          "name": "แนวพุ่มไม้"
+          "name": "แนวพุ่มไม้",
+          "terms": "แนวพุ่มไม้"
         },
         "barrier/height_restrictor": {
-          "name": "ที่กั้นจำกัดความสูง"
+          "name": "ที่กั้นจำกัดความสูง",
+          "terms": "ที่กั้นจำกัดความสูง"
         },
         "barrier/jersey_barrier": {
-          "name": "ราวกั้นเกาะกลางถนน"
+          "name": "ราวกั้นเกาะกลางถนน",
+          "terms": "ราวกั้นเกาะกลางถนน"
         },
         "barrier/kerb": {
-          "name": "ขอบทางเดิน"
+          "name": "ขอบทางเดิน",
+          "terms": "ขอบทางเดิน"
+        },
+        "barrier/kerb/flush": {
+          "name": "ขอบทางเดินเสมอระดับ",
+          "terms": "ขอบทางเดินเสมอระดับ"
+        },
+        "barrier/kerb/lowered": {
+          "name": "ขอบทางเดินลู่ลงระดับ",
+          "terms": "ขอบทางเดินลู่ลงระดับ"
+        },
+        "barrier/kerb/raised": {
+          "name": "ขอบทางเดินยกระดับ",
+          "terms": "ขอบทางเดินยกระดับ"
+        },
+        "barrier/kerb/rolled": {
+          "name": "ขอบทางเดินยกระดับโค้ง",
+          "terms": "ขอบทางเดินยกระดับโค้ง"
         },
         "barrier/kissing_gate": {
-          "name": "ประตูกั้นปศุสัตว์"
+          "name": "ประตูกั้นปศุสัตว์",
+          "terms": "ประตูกั้นปศุสัตว์"
+        },
+        "barrier/lift_gate": {
+          "name": "แขนกั้นทาง",
+          "terms": "แขนกั้นทาง"
+        },
+        "barrier/log": {
+          "name": "ต้มไม้ล้มขวางทาง",
+          "terms": "ต้มไม้ล้มขวางทาง"
         },
         "barrier/motorcycle_barrier": {
           "name": "ที่กั้นจักรยานยนต์",
           "terms": "ที่กั้นจักรยานยนต์"
         },
+        "barrier/planter": {
+          "name": "กระถางต้นไม้ (ขวางทาง)"
+        },
         "barrier/retaining_wall": {
-          "name": "กำแพงกันดิน"
+          "name": "กำแพงกันดิน",
+          "terms": "กำแพงกันดิน"
         },
         "barrier/rope": {
           "name": "รั้วเชือก",
           "terms": "รั้วเชือก,เชือกรั้ว"
         },
+        "barrier/sally_port": {
+          "name": "แซลลี่พอร์ต",
+          "terms": "แซลลี่พอร์ต"
+        },
+        "barrier/spikes": {
+          "name": "แถบเหล็กแหลม",
+          "terms": "แถบเหล็กแหลม"
+        },
+        "barrier/stile": {
+          "name": "บันไดติดข้างรั้ว",
+          "terms": "บันไดติดข้างรั้ว"
+        },
         "barrier/swing_gate": {
-          "name": "ประตูกั้นแบบเปิดสวิง"
+          "name": "ประตูกั้นแบบเปิดสวิง",
+          "terms": "ประตูกั้นแบบเปิดสวิง"
         },
         "barrier/toll_booth": {
-          "name": "ตู้เก็บค่าผ่านทาง"
+          "name": "ตู้เก็บค่าผ่านทาง",
+          "terms": "ตู้เก็บค่าผ่านทาง"
         },
         "barrier/turnstile": {
-          "name": "ประตูหมุน"
+          "name": "ประตูหมุน",
+          "terms": "ประตูหมุน"
         },
         "barrier/wall": {
-          "name": "กำแพง"
+          "name": "กำแพง",
+          "terms": "กำแพง"
         },
         "barrier/wall/noise_barrier": {
-          "name": "ผนังกันเสียง"
+          "name": "ผนังกันเสียง",
+          "terms": "ผนังกันเสียง"
+        },
+        "barrier/wicket_gate": {
+          "name": "ประตูรั้วเตี้ย",
+          "terms": "ประตูรั้วเตี้ย"
+        },
+        "barrier/yes": {
+          "name": "สิ่งกีดขวาง (ไม่ระบุประเภท)"
         },
         "boundary": {
           "name": "แนวเขต"
@@ -1188,7 +1628,8 @@
           "terms": "สะพานท่าเรือ"
         },
         "building": {
-          "name": "อาคาร"
+          "name": "อาคาร",
+          "terms": "ตึก,อาคาร,สิ่งปลูกสร้าง"
         },
         "building/allotment_house": {
           "name": "บ้านจัดสรร",
@@ -1469,11 +1910,12 @@
           "terms": "งานฝีมือ,หัตถกรรม"
         },
         "craft/agricultural_engines": {
-          "name": "ช่างเครื่องจักรกลเกษตร"
+          "name": "ช่างเครื่องจักรกลเกษตร",
+          "terms": "ช่างเครื่องจักรกลเกษตร"
         },
         "craft/basket_maker": {
-          "name": "ช่างจักสาน",
-          "aliases": "ช่างทำตะกร้า"
+          "name": "ช่างทำตะกร้า",
+          "terms": "ช่างทำตะกร้า,ช่างจักสาน"
         },
         "craft/beekeeper": {
           "name": "คนเลี้ยงผึ้ง",
@@ -1484,7 +1926,8 @@
           "terms": "ช่างตีเหล็ก"
         },
         "craft/boatbuilder": {
-          "name": "ช่างต่อเรือ"
+          "name": "ช่างต่อเรือ",
+          "terms": "ช่างต่อเรือ"
         },
         "craft/bookbinder": {
           "name": "คนเย็บเล่มหนังสือ",
@@ -1511,31 +1954,36 @@
           "terms": "คนทำความสะอาดปล่องไฟ"
         },
         "craft/cleaning": {
-          "name": "บริการทำความสะอาด"
+          "name": "บริการทำความสะอาด",
+          "terms": "บริการทำความสะอาด"
         },
         "craft/clockmaker": {
-          "name": "ช่างทำนาฬิกา"
+          "name": "ช่างทำนาฬิกา",
+          "terms": "ช่างทำนาฬิกา"
         },
         "craft/confectionery": {
           "name": "ทำลูกกวาด",
           "terms": "ทำลูกกวาด,คนทำลูกกวาด,เครื่องลูกกวาด"
         },
         "craft/distillery": {
-          "name": "โรงกลั่นสุรา"
+          "name": "โรงกลั่นสุรา",
+          "terms": "โรงกลั่นสุรา"
         },
         "craft/dressmaker": {
           "name": "ช่างตัดเสื้อ",
           "terms": "ช่างตัดเสื้อ"
         },
         "craft/electrician": {
-          "name": "ช่างไฟฟ้า"
+          "name": "ช่างไฟฟ้า",
+          "terms": "ช่างไฟฟ้า"
         },
         "craft/electronics_repair": {
           "name": "ร้านซ่อมอุปกรณ์อิเล็กทรอนิกส์",
           "terms": "ร้านซ่อมอุปกรณ์อิเล็กทรอนิกส์"
         },
         "craft/floorer": {
-          "name": "ช่างปูพื้น"
+          "name": "ช่างปูพื้น",
+          "terms": "ช่างปูพื้น"
         },
         "craft/gardener": {
           "name": "คนสวน",
@@ -1555,10 +2003,11 @@
         },
         "craft/insulator": {
           "name": "ฉนวน",
-          "aliases": "ฉนวนกันความร้อน"
+          "terms": "ฉนวน,ฉนวนกันความร้อน"
         },
         "craft/joiner": {
-          "name": "ช่างต่อไม้"
+          "name": "ช่างเชื่อม",
+          "terms": "ช่างเชื่อม"
         },
         "craft/key_cutter": {
           "name": "ตัดกุญแจ",
@@ -1576,7 +2025,8 @@
           "terms": "ช่างทาสี"
         },
         "craft/parquet_layer": {
-          "name": "ช่างปูพื้นไม้ปาร์เก้"
+          "name": "ช่างปูพื้นไม้ปาร์เก้",
+          "terms": "ช่างปูพื้นไม้ปาร์เก้"
         },
         "craft/photographer": {
           "name": "ช่างภาพ",
@@ -1584,20 +2034,23 @@
         },
         "craft/photographic_laboratory": {
           "name": "ห้องล้างรูป",
-          "aliases": "ห้องมืด"
+          "terms": "ห้องล้างรูป,ห้องมืด,แลปล้างรูป,แลปรูปภาพ,แลปรูปถ่าย"
         },
         "craft/plasterer": {
-          "name": "ช่างปูน"
+          "name": "ช่างปูน",
+          "terms": "ช่างปูน"
         },
         "craft/plumber": {
           "name": "ช่างประปา",
           "terms": "ช่างประปา"
         },
         "craft/pottery": {
-          "name": "ช่างปั้นเครื่องปั้นดินเผา"
+          "name": "ช่างปั้นเครื่องปั้นดินเผา",
+          "terms": "ช่างปั้นเครื่องปั้นดินเผา"
         },
         "craft/rigger": {
-          "name": "ช่างขึงใบเรือ"
+          "name": "ช่างขึงใบเรือ",
+          "terms": "ช่างขึงใบเรือ"
         },
         "craft/roofer": {
           "name": "ช่างมุงหลังคา",
@@ -1608,24 +2061,28 @@
           "terms": "ช่างเครื่องหนัง,คนขายอุปกรณ์เครื่องหนัง,คนทำอานม้า"
         },
         "craft/sailmaker": {
-          "name": "ช่างทำเรือใบ"
+          "name": "ช่างทำเรือใบ",
+          "terms": "ช่างทำเรือใบ"
         },
         "craft/sawmill": {
           "name": "โรงเลื่อย",
           "terms": "โรงเลื่อย"
         },
         "craft/scaffolder": {
-          "name": "นั่งร้าน"
+          "name": "นั่งร้าน",
+          "terms": "นั่งร้าน"
         },
         "craft/sculptor": {
-          "name": "ประติมากร"
+          "name": "ประติมากร",
+          "terms": "ประติมากร"
         },
         "craft/shoemaker": {
           "name": "ช่างทำรองเท้า",
           "terms": "ช่างทำรองเท้า"
         },
         "craft/signmaker": {
-          "name": "ช่างทำป้าย"
+          "name": "ช่างทำป้าย",
+          "terms": "ช่างทำป้าย"
         },
         "craft/stonemason": {
           "name": "ช่างหิน",
@@ -1635,17 +2092,20 @@
           "name": "ช่างตัดเสื้อ"
         },
         "craft/tiler": {
-          "name": "ช่างปูกระเบื้อง"
+          "name": "ช่างปูกระเบื้อง",
+          "terms": "ช่างปูกระเบื้อง"
         },
         "craft/tinsmith": {
-          "name": "ช่างบัดกรี"
+          "name": "ช่างดีบุก",
+          "terms": "ช่างดีบุก"
         },
         "craft/upholsterer": {
           "name": "ช่างทำเบาะ",
-          "aliases": "ช่างทำเก้าอี้"
+          "terms": "ช่างทำเบาะ,ช่างทำเก้าอี้,ช่างหุ้มเบาะ"
         },
         "craft/watchmaker": {
-          "name": "ช่างซ่อมนาฬิกา"
+          "name": "ช่างซ่อมนาฬิกา",
+          "terms": "ช่างซ่อมนาฬิกา"
         },
         "craft/window_construction": {
           "name": "การติดหน้าต่าง",
@@ -1655,8 +2115,24 @@
           "name": "โรงกลั่นไวน์",
           "terms": "โรงกลั่นไวน์,โรงกลั่นเหล้าองุ่น"
         },
+        "cycleway/asl": {
+          "name": "เส้นหยุดแบบ Advance Stop Line",
+          "terms": "เส้นหยุดแบบ advance stop line"
+        },
         "demolished/building": {
           "name": "อาคารเพิ่งถูกรื้อถอน"
+        },
+        "disc_golf/basket": {
+          "name": "ตะกร้าดิสก์กอล์ฟ",
+          "terms": "ตะกร้าดิสก์กอล์ฟ"
+        },
+        "disc_golf/hole": {
+          "name": "หลุมดิสก์กอล์ฟ",
+          "terms": "หลุมดิสก์กอล์ฟ"
+        },
+        "disc_golf/tee": {
+          "name": "ทีดิสก์กอล์ฟ",
+          "terms": "ทีดิสก์กอล์ฟ"
         },
         "disused/amenity": {
           "name": "สิ่งอำนวยความสะดวกที่ไม่ได้ใช้งานแล้ว"
@@ -1668,7 +2144,7 @@
           "name": "ร้านที่ปิดกิจการไปแล้ว"
         },
         "embankment": {
-          "name": "คันดิน"
+          "name": "คันทำนบ"
         },
         "emergency": {
           "name": "คุณลักษณะฉุกเฉิน"
@@ -1695,6 +2171,10 @@
           "name": "สถานีบรรเทาภัย",
           "terms": "สถานีบรรเทาภัย"
         },
+        "emergency/fire_alarm": {
+          "name": "ตู้แจ้งเตือนเพลิงไหม้",
+          "terms": "ตู้แจ้งเตือนอัคคีภัย"
+        },
         "emergency/fire_extinguisher": {
           "name": "ถังดับเพลิง",
           "terms": "ถังดับเพลิง,เครื่องดับเพลิง"
@@ -1720,7 +2200,8 @@
           "terms": "หัวรับน้ำดับเพลิง"
         },
         "emergency/first_aid_kit": {
-          "name": "ชุดปฐมพยาบาล"
+          "name": "ชุดปฐมพยาบาล",
+          "terms": "ชุดปฐมพยาบาล"
         },
         "emergency/landing_site": {
           "name": "พื้นที่ลงจอดฉุกเฉิน",
@@ -1775,7 +2256,8 @@
           "name": "เข้าถึงเมื่อฉุกเฉินได้"
         },
         "entrance": {
-          "name": "ทางเข้า / ทางออก"
+          "name": "ทางเข้า / ทางออก",
+          "terms": "ทางเข้า / ทางออก"
         },
         "entrance/emergency": {
           "name": "ทางออกฉุกเฉิน",
@@ -1786,7 +2268,16 @@
           "terms": "ทางเข้าห้องฉุกเฉิน"
         },
         "entrance/main": {
-          "name": "ทางเข้าหลัก"
+          "name": "ทางเข้าหลัก",
+          "terms": "ทางเข้าหลัก,ประตูทางเข้าหลัก"
+        },
+        "entrance/shop": {
+          "name": "ทางเข้าร้าน",
+          "terms": "ทางเข้าหน้าร้าน"
+        },
+        "entrance/staircase": {
+          "name": "ทางเข้าบรรได",
+          "terms": "ทางเข้าบรรได"
         },
         "ford": {
           "name": "ฝายน้ำล้น",
@@ -1794,6 +2285,10 @@
         },
         "ford_line": {
           "name": "ฝายน้ำล้น"
+        },
+        "golf/bunker": {
+          "name": "กับดักทราย",
+          "terms": "กับดักทราย"
         },
         "golf/cartpath": {
           "name": "ทางรถกอล์ฟ",
@@ -1803,6 +2298,22 @@
           "name": "สโมสรกอล์ฟ",
           "terms": "สโมสรกอล์ฟ,กอล์ฟคลับเฮาส์"
         },
+        "golf/driving_range": {
+          "name": "สนามไดร์ฟกอล์ฟ",
+          "terms": "สนามไดร์ฟกอล์ฟ"
+        },
+        "golf/fairway": {
+          "name": "แฟร์เวย์",
+          "terms": "แฟร์เวย์"
+        },
+        "golf/green": {
+          "name": "สนามปราบเรียบ/กรีน",
+          "terms": "สนามปราบเรียบ/กรีน,กรีน,พุตติงกรีน"
+        },
+        "golf/hole": {
+          "name": "หลุมกอล์ฟ",
+          "terms": "หลุมกอล์ฟ"
+        },
         "golf/lateral_water_hazard": {
           "name": "อุปสรรคน้ำด้านข้าง",
           "terms": "อุปสรรคน้ำด้านข้าง"
@@ -1811,6 +2322,14 @@
           "name": "ทางเดินกอล์ฟ",
           "terms": "ทางเดินกอล์ฟ"
         },
+        "golf/rough": {
+          "name": "รัฟ",
+          "terms": "รัฟ"
+        },
+        "golf/tee": {
+          "name": "พื้นที่ตี",
+          "terms": "พื้นที่ตี"
+        },
         "golf/water_hazard": {
           "name": "อุปสรรคน้ำ",
           "terms": "อุปสรรคน้ำ"
@@ -1818,6 +2337,22 @@
         "healthcare": {
           "name": "สิ่งอำนวยความสะดวกด้านการดูแลสุขภาพ",
           "terms": "สิ่งอำนวยความสะดวกด้านการดูแลสุขภาพ"
+        },
+        "healthcare/alternative": {
+          "name": "การแพทย์ทางเลือก",
+          "terms": "การแพทย์ทางเลือก"
+        },
+        "healthcare/alternative/acupuncture": {
+          "name": "แพทย์ฝังเข็ม",
+          "terms": "แพทย์ฝังเข็ม"
+        },
+        "healthcare/alternative/ayurveda": {
+          "name": "แพทย์อายุรเวท",
+          "terms": "แพทย์อายุรเวท"
+        },
+        "healthcare/alternative/chiropractic": {
+          "name": "แพทย์จัดกระดูก",
+          "terms": "แพทย์จัดกระดูก"
         },
         "healthcare/alternative/homeopathy": {
           "name": "แพทย์โฮมีโอพาธี",
@@ -1831,13 +2366,73 @@
           "name": "หมอจับเส้น",
           "terms": "หมอจับเส้น"
         },
+        "healthcare/alternative/traditional_chinese_medicine": {
+          "name": "แพทย์แผนจีน",
+          "terms": "แพทย์แผนจีน"
+        },
+        "healthcare/audiologist": {
+          "name": "นักโสตสัมผัสวิทยา",
+          "terms": "นักโสตสัมผัสวิทยา"
+        },
+        "healthcare/birthing_center": {
+          "name": "ศูนย์คลอดกำเนิด",
+          "terms": "ศูนย์คลอดกำเนิด"
+        },
         "healthcare/blood_donation": {
           "name": "ศูนย์รับบริจาคโลหิต",
           "terms": "ศูนย์รับบริจาคโลหิต,ศูนย์รับบริจาคเลือด,บริจาคเลือด"
         },
+        "healthcare/counselling": {
+          "name": "ศูนย์ให้คำปรึกษา",
+          "terms": "ศูนย์ให้คำปรึกษา"
+        },
+        "healthcare/dentist/orthodontics": {
+          "name": "ทันตแพทย์จัดฟัน",
+          "terms": "ทันตแพทย์จัดฟัน"
+        },
+        "healthcare/hospice": {
+          "name": "ที่พักผู้ป่วย",
+          "terms": "ที่พักผู้ป่วย"
+        },
         "healthcare/laboratory": {
           "name": "ห้องปฏิบัติการทางการแพทย์",
           "terms": "ห้องปฏิบัติการทางการแพทย์,แลปห้องปฏิบัติการทางการแพทย์,แล็บห้องปฏิบัติการทางการแพทย์,ห้องปฏิบัติการหมอ,ห้องแล็บหมอ,ห้องแลปหมอ"
+        },
+        "healthcare/midwife": {
+          "name": "ผดุงครรภ์",
+          "terms": "ผดุงครรภ์"
+        },
+        "healthcare/occupational_therapist": {
+          "name": "นักกิจกรรมบำบัด",
+          "terms": "นักกิจกรรมบำบัด"
+        },
+        "healthcare/optometrist": {
+          "name": "นักทัศนมาตร",
+          "terms": "นักทัศนมาตร"
+        },
+        "healthcare/physiotherapist": {
+          "name": "นักกายภาพบำบัด",
+          "terms": "นักกายภาพบำบัด"
+        },
+        "healthcare/podiatrist": {
+          "name": "แพทย์เท้า",
+          "terms": "แพทย์เท้า"
+        },
+        "healthcare/psychotherapist": {
+          "name": "นักจิตบำบัด",
+          "terms": "นักจิตบำบัด"
+        },
+        "healthcare/rehabilitation": {
+          "name": "สถานพักฟื้น",
+          "terms": "สถานพักฟื้น"
+        },
+        "healthcare/sample_collection": {
+          "name": "สถานการเก็บตัวอย่าง",
+          "terms": "สถานการเก็บตัวอย่าง"
+        },
+        "healthcare/speech_therapist": {
+          "name": "นักบำบัดการพูด",
+          "terms": "นักบำบัดการพูด"
         },
         "healthcare/yes": {
           "name": "สิ่งอำนวยความสะดวกด้านการดูแลสุขภาพ (ไม่ระบุประเภท)"
@@ -1857,7 +2452,7 @@
           "name": "ป้ายหยุดรถประจำทาง"
         },
         "highway/busway": {
-          "name": "ช่องทางรถประจำทาง",
+          "name": "ช่องเดินรถประจำทาง",
           "terms": "ช่องทางรถประจำทาง,ช่องทางรถเมล์"
         },
         "highway/construction": {
@@ -1914,6 +2509,14 @@
         "highway/cycleway/moped_link-NL": {
           "name": "ทางจักรยานโมเพด",
           "terms": "ทางจักรยานโมเพด"
+        },
+        "highway/cycleway/traffic_island": {
+          "name": "เกาะข้ามจักรยาน",
+          "terms": "เกาะข้ามจักรยาน"
+        },
+        "highway/cycleway/traffic_island_shared": {
+          "name": "เกาะข้ามคนเดินและจักรยาน",
+          "terms": "เกาะข้ามคนเดินและจักรยาน"
         },
         "highway/cyclist_waiting_aid": {
           "name": "ราวพิงรอสำหรับจักรยาน",
@@ -2022,6 +2625,18 @@
           "name": "สะพานยาว",
           "terms": "สะพานยาว"
         },
+        "highway/path/crossing": {
+          "name": "ทางข้ามจักรยานกับทางเท้า"
+        },
+        "highway/path/crossing/traffic_signals": {
+          "name": "ทางตัดทางเท้าทางจักรยานที่มีสัญญาณจราจร"
+        },
+        "highway/path/crossing/uncontrolled": {
+          "name": "ทางตัดทางเท้าทางจักรยานที่หมายสัญลักษณ์"
+        },
+        "highway/path/crossing/unmarked": {
+          "name": "ทางตัดทางเท้าทางจักรยานที่ไม่หมายสัญลักษณ์"
+        },
         "highway/path/informal": {
           "name": "ทางไม่เป็นทางการ",
           "terms": "ทางไม่เป็นทางการ"
@@ -2035,12 +2650,12 @@
           "terms": "ถนนคนเดิน"
         },
         "highway/primary": {
-          "name": "ถนนสายหลัก",
-          "terms": "ถนนสายหลัก"
+          "name": "ทางหลวงแผ่นดินสายหลัก",
+          "terms": "ทางหลวงแผ่นดินสายหลัก,ถนนสายหลัก,ทางหลวง"
         },
         "highway/primary_link": {
-          "name": "ทางเชื่อมถนนสายหลัก",
-          "terms": "ทางเชื่อมถนนสายหลัก"
+          "name": "ทางเชื่อมทางหลวงแผ่นดินสายหลัก",
+          "terms": "ทางเชื่อมทางหลวงแผ่นดินสายหลัก"
         },
         "highway/raceway": {
           "name": "เส้นทางรถแข่ง",
@@ -2071,12 +2686,12 @@
           "terms": "สะพานถนนไม่ทราบประเภท"
         },
         "highway/secondary": {
-          "name": "ถนนสายรอง",
-          "terms": "ถนนสายรอง"
+          "name": "ทางหลวงแผ่นดินสายรอง",
+          "terms": "ถนนสายรอง,ทางหลวงแผ่นดินสายรอง"
         },
         "highway/secondary_link": {
-          "name": "ทางเชื่อมถนนสายรอง",
-          "terms": "ทางเชื่อมถนนสายรอง"
+          "name": "ทางเชื่อมทางหลวงแผ่นดินสายรอง",
+          "terms": "ทางเชื่อมทางหลวงแผ่นดินสายรอง"
         },
         "highway/service": {
           "name": "ถนนบริการ",
@@ -2134,12 +2749,12 @@
           "terms": "ไฟถนน"
         },
         "highway/tertiary": {
-          "name": "ทางหลวงชนบท",
-          "terms": "ถนนสายย่อย"
+          "name": "ถนนสายย่อย",
+          "terms": "ถนนสายย่อย,ทางหลวงชนบท"
         },
         "highway/tertiary_link": {
-          "name": "ถนนเชื่อมทางหลวงชนบท",
-          "terms": "ถนนเชื่อมทางหลวงชนบท"
+          "name": "ทางเชื่อมถนนสายย่อย",
+          "terms": "ถนนเชื่อมถนนสายย่อย,ทางเชื่อมถนนสายย่อย"
         },
         "highway/toll_gantry": {
           "name": "ทางด่วนเก็บค่าผ่านทางแบบเปิด",
@@ -2178,8 +2793,8 @@
           "terms": "ทางโค้งกลับรถ (มีเกาะกลาง)"
         },
         "highway/unclassified": {
-          "name": "ถนนพื้นฐาน",
-          "terms": "ถนนพื้นฐาน"
+          "name": "ถนนสาธารณะ",
+          "terms": "ถนนพื้นฐาน,ถนนสาธารณะ"
         },
         "historic": {
           "name": "พื้นที่ประวัติศาสตร์",
@@ -2405,11 +3020,19 @@
         },
         "landuse/landfill": {
           "name": "บ่อฝังกลบ",
-          "terms": "บ่อฝังกลบ"
+          "terms": "บ่อฝังกลบ,บ่อขยะ"
         },
         "landuse/meadow": {
           "name": "ทุ่ง",
           "terms": "ทุ่ง"
+        },
+        "landuse/meadow_orchard/meadow": {
+          "name": "สวนผลไม้",
+          "terms": "สวนผลไม้"
+        },
+        "landuse/meadow_orchard/orchard": {
+          "name": "สวนผลไม้บนทุ่ง",
+          "terms": "สวนผลไม้บนทุ่ง"
         },
         "landuse/military": {
           "name": "เขตทหาร",
@@ -2428,11 +3051,20 @@
           "terms": "ฐานทหาร,ค่ายทหาร"
         },
         "landuse/military/base/navy": {
-          "name": "ฐานทัพเรือ"
+          "name": "ฐานทัพเรือ",
+          "terms": "ฐานทัพเรือ,ฐานกองทัพเรือ,ฐานทัพนาวี,ฐานนาวี"
         },
         "landuse/military/danger_area": {
           "name": "ที่อันตรายทางทหาร",
           "terms": "ที่อันตรายทางทหาร"
+        },
+        "landuse/military/obstacle_course": {
+          "name": "สนามฝึกอุปสรรค์ทางทหาร",
+          "terms": "สนามฝึกอุปสรรค์ทางทหาร"
+        },
+        "landuse/military/range": {
+          "name": "ลานฝึกอาวุธทหาร",
+          "terms": "ลานฝึกอาวุธทหาร"
         },
         "landuse/military/training_area": {
           "name": "พื้นที่ฝึกทหาร",
@@ -2445,6 +3077,9 @@
         "landuse/plant_nursery": {
           "name": "สถานเพาะชำพืช",
           "terms": "สถานเพาะชำพืช"
+        },
+        "landuse/pond": {
+          "name": "บึง"
         },
         "landuse/quarry": {
           "name": "เหมืองเปิด",
@@ -2481,6 +3116,10 @@
           "name": "พื้นที่ค้าปลีก",
           "terms": "พื้นที่ค้าปลีก"
         },
+        "landuse/salt_pond": {
+          "name": "นาเกลือ",
+          "terms": "นาเกลือ"
+        },
         "landuse/vineyard": {
           "name": "ไร่องุ่น",
           "terms": "ไร่องุ่น"
@@ -2493,14 +3132,20 @@
           "name": "คุณลักษณะนันทนาการ"
         },
         "leisure/adult_gaming_centre": {
-          "name": "ศูนย์เกมสำหรับผู้ใหญ่"
+          "name": "ศูนย์เกมสำหรับผู้ใหญ่",
+          "terms": "ศูนย์เกมสำหรับผู้ใหญ่"
         },
         "leisure/amusement_arcade": {
-          "name": "ร้านเกมตู้"
+          "name": "ร้านเกมตู้",
+          "terms": "ร้านเกมตู้"
         },
         "leisure/bandstand": {
           "name": "เวทีศาลา",
           "terms": "เวทีศาลา"
+        },
+        "leisure/bathing_place": {
+          "name": "ที่อาบน้ำ",
+          "terms": "ที่อาบน้ำ,ที่แช่น้ำ"
         },
         "leisure/beach_resort": {
           "name": "รีสอร์ทริมชายหาด",
@@ -2519,7 +3164,8 @@
           "terms": "ลานโบว์ลิ่ง"
         },
         "leisure/common": {
-          "name": "ทั่วไป"
+          "name": "ทั่วไป",
+          "terms": "ทั่วไป"
         },
         "leisure/dance": {
           "name": "ลานเต้นรำ",
@@ -2530,11 +3176,16 @@
           "terms": "โรงเรียนสอนเต้น"
         },
         "leisure/disc_golf_course": {
-          "name": "สนามดิสก์กอล์ฟ"
+          "name": "สนามดิสก์กอล์ฟ",
+          "terms": "สนามดิสก์กอล์ฟ"
         },
         "leisure/dog_park": {
           "name": "สวนสุนัข",
           "terms": "สวนสาธารณะสำหรับสุนัข"
+        },
+        "leisure/escape_game": {
+          "name": "เอสเคปรูม",
+          "terms": "เอสเคปรูม,ห้องปริศนา"
         },
         "leisure/firepit": {
           "name": "หลุมไฟ",
@@ -2562,34 +3213,43 @@
         },
         "leisure/fitness_station/box": {
           "name": "กล่องออกกำลังกาย",
-          "aliases": "กล่องสำหรับออกกำลังกาย"
+          "terms": "กล่องออกกำลังกาย,กล่องสำหรับออกกำลังกาย"
         },
         "leisure/fitness_station/horizontal_bar": {
-          "name": "บาร์เดี่ยว"
+          "name": "บาร์เดี่ยว",
+          "terms": "บาร์เดี่ยว"
         },
         "leisure/fitness_station/horizontal_ladder": {
-          "name": "ราวโหน"
+          "name": "ราวโหน",
+          "terms": "ราวโหน"
+        },
+        "leisure/fitness_station/hyperextension": {
+          "name": "เครื่องแอ่นตัว",
+          "terms": "เครื่องแอ่นตัว"
         },
         "leisure/fitness_station/parallel_bars": {
-          "name": "บาร์คู่"
+          "name": "บาร์คู่",
+          "terms": "บาร์คู่"
         },
         "leisure/fitness_station/push-up": {
           "name": "เครื่องออกกำลังกายวิดพื้น",
-          "terms": "เครื่องออกกำลังกายวิดพื้น,อุปกรณ์ออกกำลังกายวิดพื้น",
-          "aliases": "อุปกรณ์ออกกำลังกายวิดพื้น"
+          "terms": "เครื่องออกกำลังกายวิดพื้น,อุปกรณ์ออกกำลังกายวิดพื้น"
         },
         "leisure/fitness_station/rings": {
-          "name": "ห่วงสำหรับออกกำลังกาย"
+          "name": "ห่วงสำหรับออกกำลังกาย",
+          "terms": "ห่วงสำหรับออกกำลังกาย"
         },
         "leisure/fitness_station/sign": {
-          "name": "ป้ายแนะนำการออกกำลังกาย"
+          "name": "ป้ายแนะนำการออกกำลังกาย",
+          "terms": "ป้ายแนะนำการออกกำลังกาย"
         },
         "leisure/fitness_station/sit-up": {
           "name": "เครื่องออกกำลังกายซิทอัพ",
           "terms": "เครื่องออกกำลังกายซิทอัพ"
         },
         "leisure/fitness_station/stairs": {
-          "name": "บันไดออกกำลังกาย"
+          "name": "บันไดออกกำลังกาย",
+          "terms": "บันไดออกกำลังกาย"
         },
         "leisure/garden": {
           "name": "สวน",
@@ -2612,20 +3272,36 @@
           "terms": "สวนของพื้นที่อยู่อาศัย"
         },
         "leisure/golf_course": {
-          "name": "สนามกอล์ฟ"
+          "name": "สนามกอล์ฟ",
+          "terms": "สนามกอล์ฟ"
+        },
+        "leisure/hackerspace": {
+          "name": "แฮกเกอร์สเปซ",
+          "terms": "แฮกเกอร์สเปซ"
         },
         "leisure/horse_riding": {
-          "name": "ศูนย์ขี่ม้า"
+          "name": "ศูนย์ขี่ม้า",
+          "terms": "ศูนย์ขี่ม้า"
+        },
+        "leisure/hot_tub": {
+          "name": "อ่างน้ำร้อน",
+          "terms": "อ่างน้ำร้อน"
         },
         "leisure/ice_rink": {
-          "name": "ลานสเก็ตน้ำแข็ง"
+          "name": "ลานสเก็ตน้ำแข็ง",
+          "terms": "ลานสเก็ตน้ำแข็ง"
         },
         "leisure/indoor_play": {
-          "name": "สนามเด็กเล่นในร่ม"
+          "name": "สนามเด็กเล่นในร่ม",
+          "terms": "สนามเด็กเล่นในร่ม"
         },
         "leisure/marina": {
           "name": "ลานจอดเรือ",
           "terms": "ลานจอดเรือ,มาริน่า"
+        },
+        "leisure/marina_no_facilities": {
+          "name": "ท่าเทียบเรือยอชท์",
+          "terms": "ท่าเทียบเรือยอชท์"
         },
         "leisure/miniature_golf": {
           "name": "มินิกอล์ฟ",
@@ -2648,42 +3324,99 @@
           "terms": "โต๊ะปิคนิค"
         },
         "leisure/picnic_table/chess": {
-          "name": "โต๊ะหมากรุก"
+          "name": "โต๊ะหมากรุก",
+          "terms": "โต๊ะหมากรุก"
         },
         "leisure/pitch": {
           "name": "ลานกีฬา",
           "terms": "ลานกีฬา"
         },
         "leisure/pitch/american_football": {
-          "name": "สนามอเมริกันฟุตบอล"
+          "name": "สนามอเมริกันฟุตบอล",
+          "terms": "สนามอเมริกันฟุตบอล"
+        },
+        "leisure/pitch/american_handball": {
+          "name": "สนามอเมริกันแฮนด์บอล",
+          "terms": "สนามอเมริกันแฮนด์บอล"
         },
         "leisure/pitch/archery": {
-          "name": "สนามยิงธนู"
+          "name": "สนามยิงธนู",
+          "terms": "สนามยิงธนู"
+        },
+        "leisure/pitch/athletics": {
+          "name": "สนามกรีฑา"
+        },
+        "leisure/pitch/athletics/discus_throw": {
+          "name": "แหวนจักร/เซกเตอร์",
+          "terms": "แหวนจักร/เซกเตอร์"
+        },
+        "leisure/pitch/athletics/hammer_throw": {
+          "name": "แหวนจักรขว้างค้อน/เซกเตอร์",
+          "terms": "แหวนจักรขว้างค้อน/เซกเตอร์"
+        },
+        "leisure/pitch/athletics/high_jump": {
+          "name": "สนามกระโดดสูง",
+          "terms": "สนามกระโดดสูง"
+        },
+        "leisure/pitch/athletics/javelin_throw": {
+          "name": "สนามหอกซัด",
+          "terms": "สนามหอกซัด"
+        },
+        "leisure/pitch/athletics/long_jump": {
+          "name": "สนามกระโดดไกล",
+          "terms": "สนามกระโดดไกล"
+        },
+        "leisure/pitch/athletics/pole_vault": {
+          "name": "สนามกระโดดค้ำถ่อ",
+          "terms": "สนามกระโดดค้ำถ่อ"
+        },
+        "leisure/pitch/athletics/shot_put": {
+          "name": "วงแหวนช็อตพุต",
+          "terms": "วงแหวนช็อตพุต"
+        },
+        "leisure/pitch/athletics/triple_jump": {
+          "name": "สนามเขย่งก้าวกระโดด",
+          "terms": "สนามเขย่งก้าวกระโดด"
         },
         "leisure/pitch/australian_football": {
-          "name": "สนามฟุตบอลออสเตรเลีย"
+          "name": "สนามฟุตบอลออสเตรเลีย",
+          "terms": "สนามฟุตบอลออสเตรเลีย"
         },
         "leisure/pitch/badminton": {
-          "name": "สนามแบดมินตัน"
+          "name": "สนามแบดมินตัน",
+          "terms": "สนามแบดมินตัน"
         },
         "leisure/pitch/baseball": {
-          "name": "สนามเบสบอล"
+          "name": "สนามเบสบอล",
+          "terms": "สนามเบสบอล"
         },
         "leisure/pitch/basketball": {
-          "name": "สนามบาสเกตบอล"
+          "name": "สนามบาสเกตบอล",
+          "terms": "สนามบาสเกตบอล"
         },
         "leisure/pitch/beachvolleyball": {
           "name": "สนามวอลเลย์บอลชายหาด",
           "terms": "สนามวอลเลย์บอลชายหาด"
         },
         "leisure/pitch/boules": {
-          "name": "สนามเปตอง"
+          "name": "สนามเปตอง",
+          "terms": "สนามเปตอง"
+        },
+        "leisure/pitch/bowls": {
+          "name": "โบว์ลิ่งกรีน",
+          "terms": "โบว์ลิ่งกรีน"
         },
         "leisure/pitch/chess": {
-          "name": "กระดานหมากรุกยักษ์"
+          "name": "กระดานหมากรุกยักษ์",
+          "terms": "กระดานหมากรุกยักษ์"
         },
         "leisure/pitch/cricket": {
-          "name": "สนามคริกเก็ต"
+          "name": "สนามคริกเก็ต",
+          "terms": "สนามคริกเก็ต"
+        },
+        "leisure/pitch/equestrian": {
+          "name": "สนามม้า",
+          "terms": "สนามม้า"
         },
         "leisure/pitch/field_hockey": {
           "name": "สนามฮอกกี้",
@@ -2693,58 +3426,89 @@
           "name": "สนามสี่ช่อง",
           "terms": "สนามสี่ช่อง"
         },
+        "leisure/pitch/funnel_ball": {
+          "name": "สนามบอลกรวย",
+          "terms": "สนามบอลกรวย"
+        },
         "leisure/pitch/futsal": {
-          "name": "สนามฟุตซอล"
+          "name": "สนามฟุตซอล",
+          "terms": "สนามฟุตซอล"
+        },
+        "leisure/pitch/gaga": {
+          "name": "สนามกาก้า",
+          "terms": "สนามกาก้า"
+        },
+        "leisure/pitch/handball": {
+          "name": "สนามแฮนด์บอลทีม",
+          "terms": "สนามแฮนด์บอลทีม"
         },
         "leisure/pitch/horseshoes": {
           "name": "สนามเดินม้า",
           "terms": "สนามเดินม้า"
         },
         "leisure/pitch/netball": {
-          "name": "สนามเน็ทบอล"
+          "name": "สนามเน็ทบอล",
+          "terms": "สนามเน็ทบอล"
         },
         "leisure/pitch/padel": {
-          "name": "สนามพาเดล"
+          "name": "สนามพาเดล",
+          "terms": "สนามพาเดล"
         },
         "leisure/pitch/paintball": {
-          "name": "สนามเพ้นท์บอล"
+          "name": "สนามเพ้นท์บอล",
+          "terms": "สนามเพ้นท์บอล"
         },
         "leisure/pitch/pickleball": {
-          "name": "สนามพิคเคิลบอล"
+          "name": "สนามพิคเคิลบอล",
+          "terms": "สนามพิคเคิลบอล"
         },
         "leisure/pitch/rugby_league": {
-          "name": "สนามรักบี้ลีค"
+          "name": "สนามรักบี้ลีค",
+          "terms": "สนามรักบี้ลีค"
         },
         "leisure/pitch/rugby_union": {
-          "name": "สนามรักบี้ยูเนี่ยน"
+          "name": "สนามรักบี้ยูเนี่ยน",
+          "terms": "สนามรักบี้ยูเนี่ยน"
         },
         "leisure/pitch/shooting": {
-          "name": "สนามยิงปืน"
+          "name": "สนามยิงปืน",
+          "terms": "สนามยิงปืน"
         },
         "leisure/pitch/shuffleboard": {
-          "name": "สนามชัฟเฟิลบอร์ด"
+          "name": "สนามชัฟเฟิลบอร์ด",
+          "terms": "สนามชัฟเฟิลบอร์ด"
         },
         "leisure/pitch/skateboard": {
           "name": "ลานสเก็ต",
           "terms": "ลานสเก็ต,สวนสเก็ต"
         },
         "leisure/pitch/soccer": {
-          "name": "สนามฟุตบอล"
+          "name": "สนามฟุตบอล",
+          "terms": "สนามฟุตบอล"
         },
         "leisure/pitch/softball": {
-          "name": "สนามซอฟต์บอล"
+          "name": "สนามซอฟต์บอล",
+          "terms": "สนามซอฟต์บอล"
         },
         "leisure/pitch/table_soccer": {
-          "name": "ฟุตบอลโต๊ะ"
+          "name": "ฟุตบอลโต๊ะ",
+          "terms": "ฟุตบอลโต๊ะ"
         },
         "leisure/pitch/table_tennis": {
-          "name": "โต๊ะปิงปอง"
+          "name": "โต๊ะปิงปอง",
+          "terms": "โต๊ะปิงปอง"
         },
         "leisure/pitch/tennis": {
-          "name": "สนามเทนนิส"
+          "name": "สนามเทนนิส",
+          "terms": "สนามเทนนิส"
+        },
+        "leisure/pitch/tetherball": {
+          "name": "สนามเทเธอร์บอล",
+          "terms": "สนามเทเธอร์บอล"
         },
         "leisure/pitch/volleyball": {
-          "name": "สนามวอลเลย์บอล"
+          "name": "สนามวอลเลย์บอล",
+          "terms": "สนามวอลเลย์บอล"
         },
         "leisure/playground": {
           "name": "สนามเด็กเล่น",
@@ -2775,7 +3539,8 @@
           "terms": "ศูนย์กีฬา"
         },
         "leisure/sports_centre/climbing": {
-          "name": "สถานที่ปีนผาจำลอง"
+          "name": "สถานที่ปีนผาจำลอง",
+          "terms": "สถานที่ปีนผาจำลอง"
         },
         "leisure/sports_centre/climbing_adventure": {
           "name": "สวนผจญภัย",
@@ -2783,11 +3548,27 @@
         },
         "leisure/sports_centre/horse_racing": {
           "name": "สนามม้า",
-          "aliases": "สนามแข่งม้า"
+          "terms": "สนามม้า,สนามแข่งม้า"
+        },
+        "leisure/sports_centre/karting": {
+          "name": "สนามโกคาร์ท",
+          "terms": "สนามแข่งคาร์ท,สนามแข่งโกคาร์ท"
+        },
+        "leisure/sports_centre/shooting": {
+          "name": "สนามยิงปืน",
+          "terms": "สนามยิงปืน"
         },
         "leisure/sports_centre/swimming": {
           "name": "สิ่งอำนวยความสะดวกสระว่ายน้ำ",
           "terms": "สิ่งอำนวยความสะดวกสระว่ายน้ำ"
+        },
+        "leisure/sports_hall": {
+          "name": "ยิมเนเซียม",
+          "terms": "ยิมเนเซียม"
+        },
+        "leisure/stadium": {
+          "name": "สนามกีฬา",
+          "terms": "สนามกีฬา,สเตเดียม"
         },
         "leisure/swimming_area": {
           "name": "พื้นที่ว่ายน้ำธรรมชาติ",
@@ -2797,8 +3578,47 @@
           "name": "สระว่ายน้ำ",
           "terms": "สระว่ายน้ำ"
         },
+        "leisure/track": {
+          "name": "สนามแข่ง (ไม่ใช่มอเตอร์สปอร์ต)",
+          "terms": "สนามแข่ง (ไม่ใช่มอเตอร์สปอร์ต)"
+        },
+        "leisure/track/athletics": {
+          "name": "ลู่วิ่งกรีฑา"
+        },
+        "leisure/track/athletics/javelin_throw": {
+          "name": "ลู่วิ่งหอกซัด",
+          "terms": "ลู่วิ่งหอกซัด"
+        },
+        "leisure/track/athletics/long_jump": {
+          "name": "ทางวิ่งกระโดดไกล",
+          "terms": "ทางวิ่งกระโดดไกล"
+        },
+        "leisure/track/athletics/pole_vault": {
+          "name": "ทางวิ่งกระโดดค้ำถ่อ",
+          "terms": "ทางวิ่งกระโดดค้ำถ่อ"
+        },
         "leisure/track/athletics/running": {
           "name": "ลู่วิ่ง"
+        },
+        "leisure/track/athletics/sprint": {
+          "name": "ทางวิ่งเร็ว",
+          "terms": "ทางวิ่งเร็ว"
+        },
+        "leisure/track/athletics/steeplechase": {
+          "name": "ทางวิ่งวิบาก",
+          "terms": "ทางวิ่งวิบาก"
+        },
+        "leisure/track/athletics/triple_jump": {
+          "name": "ทางวิ่งกระโดดไกล",
+          "terms": "ทางวิ่งกระโดดไกล"
+        },
+        "leisure/track/cycling": {
+          "name": "ทางปั่นจักรยาน",
+          "terms": "ทางปั่นจักรยาน"
+        },
+        "leisure/track/horse_racing": {
+          "name": "ทางขี่ม้า",
+          "terms": "ทางขี่ม้า"
         },
         "leisure/track/running": {
           "name": "ลู่วิ่ง",
@@ -2813,10 +3633,15 @@
           "terms": "สวนน้ำ"
         },
         "line": {
-          "name": "เส้น"
+          "name": "เส้น",
+          "terms": "เส้น"
         },
         "man_made": {
           "name": "คุณลักษณะที่มนุษย์สร้างขึ้น"
+        },
+        "man_made/adit": {
+          "name": "เหมืองลาดยาว",
+          "terms": "เหมืองลาดยาว"
         },
         "man_made/antenna": {
           "name": "เสาอากาศ",
@@ -2866,6 +3691,13 @@
           "name": "ป่าเตียน",
           "terms": "ป่าเตียน"
         },
+        "man_made/compass_rose": {
+          "name": "วงกลมแสดงทิศ",
+          "terms": "วงกลมแสดงทิศ"
+        },
+        "man_made/courtyard": {
+          "name": "ลานบ้าน"
+        },
         "man_made/crane": {
           "name": "ปั้นจั่น",
           "terms": "ปั้นจั่น"
@@ -2878,21 +3710,57 @@
           "name": "พอร์ทัลเครน",
           "terms": "พอร์ทัลเครน"
         },
-        "man_made/embankment": {
+        "man_made/cross": {
+          "name": "กางเขน",
+          "terms": "กางเขน"
+        },
+        "man_made/cutline": {
+          "name": "เส้นตัด",
+          "terms": "เส้นตัด"
+        },
+        "man_made/dovecote": {
+          "name": "บ้านนก",
+          "terms": "บ้านนก"
+        },
+        "man_made/dyke": {
           "name": "คันดิน",
           "terms": "คันดิน"
+        },
+        "man_made/embankment": {
+          "name": "คันทำนบ",
+          "terms": "คันทำนบ"
         },
         "man_made/flagpole": {
           "name": "เสาธง",
           "terms": "เสาธง"
         },
+        "man_made/flare": {
+          "name": "เปลวไฟแก๊ส",
+          "terms": "เปลวไฟแก๊ส"
+        },
+        "man_made/footwear_decontamination-AU-NZ": {
+          "name": "ที่ทำความสะอาดรองเท้า",
+          "terms": "ที่ทำความสะอาดรองเท้า"
+        },
         "man_made/fuel_pump": {
           "name": "ปั๊มแก๊ส",
           "terms": "ปั๊มแก๊ส"
         },
+        "man_made/gantry": {
+          "name": "แกนตี้เครน",
+          "terms": "แกนตี้เครน"
+        },
         "man_made/gasometer": {
           "name": "ถังเก็บแก๊ส",
           "terms": "ถังเก็บแก๊ส"
+        },
+        "man_made/goods_conveyor": {
+          "name": "สายพานสินค้า",
+          "terms": "สายพานสินค้า"
+        },
+        "man_made/groyne": {
+          "name": "คันดักทราย",
+          "terms": "คันดักทราย"
         },
         "man_made/insect_hotel": {
           "name": "บ้านแมลง",
@@ -2954,6 +3822,10 @@
           "name": "เสาล่อฟ้า",
           "terms": "เสาล่อฟ้า"
         },
+        "man_made/milk_churn_stand": {
+          "name": "แท่นวางนม",
+          "terms": "แท่นวางนม"
+        },
         "man_made/mineshaft": {
           "name": "ปล่องเหมือง",
           "terms": "ปล่องเหมือง"
@@ -2962,9 +3834,25 @@
           "name": "สถานีตรวจอากาศ",
           "terms": "สถานีตรวจอากาศ"
         },
+        "man_made/obelisk": {
+          "name": "แท่งหิน",
+          "terms": "แท่งหิน"
+        },
+        "man_made/observatory": {
+          "name": "หอดูดาว",
+          "terms": "หอดูดาว"
+        },
         "man_made/petroleum_well": {
           "name": "บ่อน้ำมัน",
           "terms": "บ่อน้ำมัน"
+        },
+        "man_made/pier": {
+          "name": "ท่าเรือ",
+          "terms": "ท่าเรือ"
+        },
+        "man_made/pier/floating": {
+          "name": "ท่าเรือลอย",
+          "terms": "ท่าเรือลอย,โป๊ะ"
         },
         "man_made/pipeline": {
           "name": "ท่อ",
@@ -2974,17 +3862,33 @@
           "name": "ท่อใต้ดิน",
           "terms": "ท่อใต้ดิน"
         },
+        "man_made/planter": {
+          "name": "กระถางต้นไม้",
+          "terms": "กระถางต้นไม้"
+        },
         "man_made/pumping_station": {
           "name": "สถานีสูบ",
           "terms": "สถานีสูบ"
+        },
+        "man_made/quay": {
+          "name": "เขื่อนเทียบเรือ",
+          "terms": "เขื่อนเทียบเรือ"
         },
         "man_made/reservoir_covered": {
           "name": "อ่างเก็บน้ำคลุมปิด",
           "terms": "อ่างเก็บน้ำคลุมปิด"
         },
+        "man_made/satellite_dish": {
+          "name": "จานดาวเทียม",
+          "terms": "จานดาวเทียม"
+        },
         "man_made/silo": {
           "name": "ไซโล",
           "terms": "ไซโล"
+        },
+        "man_made/ski_jump": {
+          "name": "หอกระโดดสกี",
+          "terms": "หอกระโดดสกี"
         },
         "man_made/storage_tank": {
           "name": "ถังกักเก็บ",
@@ -3030,6 +3934,10 @@
           "name": "จุดสำรวจ",
           "terms": "จุดสำรวจ"
         },
+        "man_made/tailings_pond": {
+          "name": "บ่อตกตะกอน",
+          "terms": "บ่อตกตะกอน"
+        },
         "man_made/telescope": {
           "name": "กล้องโทรทรรศน์",
           "terms": "กล้องโทรทรรศน์"
@@ -3042,9 +3950,53 @@
           "name": "กล้องโทรทรรศน์แบบวิทยุ",
           "terms": "กล้องโทรทรรศน์แบบวิทยุ"
         },
+        "man_made/torii": {
+          "name": "โทริอิ",
+          "terms": "โทริอิ"
+        },
+        "man_made/tower": {
+          "name": "หอ",
+          "terms": "หอ"
+        },
+        "man_made/tower/bell_tower": {
+          "name": "หอระฆัง",
+          "terms": "หอระฆัง"
+        },
+        "man_made/tower/communication": {
+          "name": "เสาสื่อสาร",
+          "terms": "เสาสื่อสาร"
+        },
+        "man_made/tower/cooling": {
+          "name": "หอทำความเย็น",
+          "terms": "หอทำความเย็น"
+        },
+        "man_made/tower/defensive": {
+          "name": "หอปราการ",
+          "terms": "หอปราการ"
+        },
+        "man_made/tower/diving": {
+          "name": "แท่นกระโดดน้ำ",
+          "terms": "แท่นกระโดดน้ำ"
+        },
+        "man_made/tower/minaret": {
+          "name": "หออะษาน",
+          "terms": "หออะษาน"
+        },
+        "man_made/tower/observation": {
+          "name": "หอสังเกตการณ์",
+          "terms": "หอสังเกตการณ์"
+        },
+        "man_made/tower/pagoda": {
+          "name": "เจดีย์",
+          "terms": "เจดีย์"
+        },
         "man_made/tunnel": {
           "name": "พื้นที่อุโมงค์",
           "terms": "พื้นที่อุโมงค์"
+        },
+        "man_made/utility_pole": {
+          "name": "เสาสาธารณูปโภค",
+          "terms": "เสาสาธารณูปโภค"
         },
         "man_made/video_wall": {
           "name": "จอดิจิทัล",
@@ -3093,6 +4045,18 @@
         "man_made/yes": {
           "name": "คุณลักษณะที่มนุษย์สร้างขึ้น (ไม่ระบุประเภท)"
         },
+        "marker": {
+          "name": "เครื่องหมาย",
+          "terms": "เครื่องหมาย"
+        },
+        "marker/utility": {
+          "name": "เครื่องหมายสาธารณูปโภค",
+          "terms": "เครื่องหมายสาธารณูปโภค"
+        },
+        "marker/utility/power": {
+          "name": "เครื่องหมายพลังงาน",
+          "terms": "เครื่องหมายพลังงาน"
+        },
         "military/bunker": {
           "name": "หลุมหลบภัยทางทหาร",
           "terms": "หลุมหลบภัยทางทหาร"
@@ -3115,6 +4079,10 @@
         },
         "natural": {
           "name": "คุณลักษณะธรรมชาติ"
+        },
+        "natural/arch": {
+          "name": "ซุ้มหินธรรมชาติ",
+          "terms": "ซุ้มหินธรรมชาติ,ซุ้มประตูธรรมชาติ"
         },
         "natural/bare_rock": {
           "name": "หินเปลือย",
@@ -3188,6 +4156,10 @@
           "name": "สันเขา",
           "terms": "สันเขา"
         },
+        "natural/rock": {
+          "name": "ก้อนหินเดี่ยว",
+          "terms": "ก้อนหินเดี่ยว"
+        },
         "natural/saddle": {
           "name": "หุบโค้ง",
           "terms": "หุบโค้ง"
@@ -3207,6 +4179,14 @@
         "natural/shingle": {
           "name": "กรวดชายฝั่ง",
           "terms": "กรวดชายฝั่ง"
+        },
+        "natural/shrub": {
+          "name": "ไม้พุ่ม",
+          "terms": "ไม้พุ่ม"
+        },
+        "natural/sinkhole": {
+          "name": "หลุมยุบ",
+          "terms": "หลุมยุบ"
         },
         "natural/spring": {
           "name": "น้ำพุธรรมชาติ",
@@ -3266,9 +4246,29 @@
           "name": "น้ำ",
           "terms": "น้ำ"
         },
+        "natural/water/basin": {
+          "name": "อ่าง",
+          "terms": "อ่าง"
+        },
         "natural/water/canal": {
           "name": "พื้นที่คลอง",
           "terms": "พื้นที่คลอง"
+        },
+        "natural/water/lake": {
+          "name": "ทะเลสาบ",
+          "terms": "ทะเลสาบ"
+        },
+        "natural/water/moat": {
+          "name": "คูน้ำ",
+          "terms": "คูน้ำ"
+        },
+        "natural/water/oxbow": {
+          "name": "ทะเลสาบรูปแอก",
+          "terms": "ทะเลสาบรูปแอก,บึงโค้ง,กุด"
+        },
+        "natural/water/pond": {
+          "name": "บึง",
+          "terms": "บึง"
         },
         "natural/water/reservoir": {
           "name": "อ่างเก็บน้ำ",
@@ -3286,20 +4286,53 @@
           "name": "อ่างเก็บน้ำเสีย",
           "terms": "อ่างเก็บน้ำเสีย"
         },
+        "natural/wetland": {
+          "name": "พื้นที่ชุ่มน้ำ",
+          "terms": "พื้นที่ชุ่มน้ำ"
+        },
+        "natural/wetland/bog": {
+          "name": "พรุ",
+          "terms": "พรุ"
+        },
         "natural/wetland/fen": {
           "name": "พรุดินด่าง",
           "terms": "พรุดินด่าง"
+        },
+        "natural/wetland/mangrove": {
+          "name": "ป่าโกงกาง",
+          "terms": "ป่าโกงกาง"
         },
         "natural/wetland/marsh": {
           "name": "ทุ่งลุ่มชื้นแฉะ",
           "terms": "ทุ่งลุ่มชื้นแฉะ,ทุ่งลุ่มน้ำขัง"
         },
+        "natural/wetland/reedbed": {
+          "name": "ทุ่งหญ้าชื้นแฉะ",
+          "terms": "ทุ่งหญ้าชื้นแฉะ"
+        },
         "natural/wetland/saltmarsh": {
           "name": "ทุ่งลุ่มชื้นแฉะเกลือชายฝั่ง",
           "terms": "ทุ่งลุ่มชื้นแฉะเกลือชายฝั่ง"
         },
+        "natural/wetland/string_bog": {
+          "name": "พรุลุ่มน้ำขัง",
+          "terms": "พรุลุ่มน้ำขัง"
+        },
+        "natural/wetland/swamp": {
+          "name": "ป่าบึง",
+          "terms": "ป่าบึง"
+        },
+        "natural/wetland/tidalflat": {
+          "name": "เขตน้ำขึ้นน้ำลง",
+          "terms": "เขตน้ำขึ้นน้ำลง"
+        },
         "natural/wetland/wet_meadow": {
-          "name": "ทุ่งชุ่มน้ำ"
+          "name": "ทุ่งชุ่มน้ำ",
+          "terms": "ทุ่งชุ่มน้ำ"
+        },
+        "natural/wood": {
+          "name": "ป่าไม้ธรรมชาติ",
+          "terms": "ป่าไม้ธรรมชาติ"
         },
         "network/type/node_network-DE-NL-BE-LU": {
           "name": "โหนดเครือข่ายสันทนาการ",
@@ -3307,7 +4340,7 @@
         },
         "noexit/yes": {
           "name": "ไม่มีทางออก",
-          "aliases": "ไม่ใช่ทางออก"
+          "terms": "ไม่มีทางออก,ไม่ใช่ทางออก"
         },
         "office": {
           "name": "สำนักงาน",
@@ -3321,7 +4354,8 @@
           "name": "สำนักงานบริหาร"
         },
         "office/adoption_agency": {
-          "name": "หน่วยงานรับเลี้ยงบุตรบุญธรรม"
+          "name": "หน่วยงานรับเลี้ยงบุตรบุญธรรม",
+          "terms": "หน่วยงานรับเลี้ยงบุตรบุญธรรม"
         },
         "office/advertising_agency": {
           "name": "ตัวแทนโฆษณา",
@@ -3336,7 +4370,8 @@
           "terms": "สำนักงานองค์กรที่ไม่แสวงหาผลกำไร"
         },
         "office/bail_bond_agent-US-PH": {
-          "name": "ตัวแทนค้ำประกัน"
+          "name": "ตัวแทนค้ำประกัน",
+          "terms": "ตัวแทนค้ำประกัน"
         },
         "office/charity": {
           "name": "สำนักงานการกุศล",
@@ -3351,14 +4386,16 @@
           "terms": "สำนักงานที่ปรึกษา"
         },
         "office/coworking": {
-          "name": "พื้นที่ทำงานร่วมกันกับผู้อื่น"
+          "name": "พื้นที่ทำงานร่วมกันกับผู้อื่น",
+          "terms": "พื้นที่ทำงานร่วมกันกับผู้อื่น,โคเวิร์คกิ้งสเปซ์,coworking space"
         },
         "office/diplomatic": {
           "name": "สำนักงานการทูต",
           "terms": "สำนักงานการทูต"
         },
         "office/diplomatic/consulate": {
-          "name": "สถานกงสุล"
+          "name": "สถานกงสุล",
+          "terms": "สถานกงสุล"
         },
         "office/diplomatic/embassy": {
           "name": "สถานฑูต",
@@ -3506,6 +4543,10 @@
           "name": "สำนักงานนักบำบัด",
           "terms": "สำนักงานนักบำบัด"
         },
+        "office/translator": {
+          "name": "สำนักงานแปลภาษา",
+          "terms": "สำนักงานแปลภาษา"
+        },
         "office/travel_agent": {
           "name": "ตัวแทนท่องเที่ยว"
         },
@@ -3531,13 +4572,48 @@
           "name": "วาล์วท่อ",
           "terms": "วาล์วท่อ"
         },
+        "piste/downhill": {
+          "name": "สกีลงเนิน",
+          "terms": "สกีลงเนิน"
+        },
+        "piste/downhill/halfpipe": {
+          "name": "กีฬาหิมะครึ่งวงกลม",
+          "terms": "กีฬาหิมะครึ่งวงกลม"
+        },
         "piste/hike": {
           "name": "ทางเดินป่าหิมะ",
           "terms": "ทางเดินป่าหิมะ"
         },
+        "piste/ice_skate": {
+          "name": "ทางไอซ์สเก็ต",
+          "terms": "ทางไอซ์สเก็ต"
+        },
         "piste/nordic": {
           "name": "เส้นทางสกีวิบาก",
           "terms": "เส้นทางสกีวิบาก"
+        },
+        "piste/piste": {
+          "name": "ทางกีฬาหิมะอัด (ไม่ทราบประเภท)"
+        },
+        "piste/ski_jump": {
+          "name": "สกีกระโดดหิมะอัด",
+          "terms": "สกีกระโดดหิมะอัด"
+        },
+        "piste/skitour": {
+          "name": "ทางสกีทัวร์",
+          "terms": "ทางสกีทัวร์"
+        },
+        "piste/sled": {
+          "name": "ทางแคร่เลื่อนหิมะ",
+          "terms": "ทางแคร่เลื่อนหิมะ"
+        },
+        "piste/sleigh": {
+          "name": "ทางรถลากหิมะ",
+          "terms": "ทางรถลากหิมะ"
+        },
+        "piste/take_off": {
+          "name": "กระโดดสกี",
+          "terms": "กระโดดสกี"
         },
         "place": {
           "name": "สถานที่"
@@ -3562,6 +4638,10 @@
           "name": "เกาะ",
           "terms": "เกาะ"
         },
+        "place/islet": {
+          "name": "เกาะเล็ก",
+          "terms": "เกาะเล็ก"
+        },
         "place/isolated_dwelling": {
           "name": "หมู่บ้านโดดเดี่ยว",
           "terms": "หมู่บ้านโดดเดี่ยว"
@@ -3571,8 +4651,8 @@
           "terms": "ละแวก"
         },
         "place/neighbourhood": {
-          "name": "ชุมชน",
-          "aliases": "ย่าน"
+          "name": "ชุมชน/ย่าน",
+          "terms": "ชุมชน/ย่าน"
         },
         "place/plot": {
           "name": "แปลง",
@@ -3596,38 +4676,114 @@
         },
         "place/village": {
           "name": "หมู่บ้าน",
-          "aliases": "หมู่"
+          "terms": "หมู่บ้าน,หมู่"
         },
         "playground": {
           "name": "อุปกรณ์สนามเด็กเล่น"
+        },
+        "playground/activitypanel": {
+          "name": "แผ่นหมุดเล่น",
+          "terms": "แผ่นหมุดเล่น"
+        },
+        "playground/aerialrotator": {
+          "name": "เครื่องหมุนโหนเล่น",
+          "terms": "เครื่องหมุนโหนเล่น"
         },
         "playground/balancebeam": {
           "name": "เครื่องเล่นขอนไม้ทรงตัว",
           "terms": "เครื่องเล่นขอนไม้ทรงตัว,เครื่องเล่นทรงตัวไม้"
         },
+        "playground/basketrotator": {
+          "name": "เครื่องเล่นตะกร้าหมุน",
+          "terms": "เครื่องเล่นตะกร้าหมุน"
+        },
+        "playground/basketswing": {
+          "name": "ชิงช้าตะกร้า",
+          "terms": "ชิงช้าตะกร้า"
+        },
         "playground/bridge": {
           "name": "สะพานเด็กเล่น",
           "terms": "สะพานเด็กเล่น"
+        },
+        "playground/climbingframe": {
+          "name": "ตาข่ายปีนป่าย",
+          "terms": "ตาข่ายปีนป่าย"
+        },
+        "playground/climbingwall": {
+          "name": "กำแพงปีนป่าย",
+          "terms": "กำแพงปีนป่าย"
+        },
+        "playground/cushion": {
+          "name": "เบาะยางกระโดด",
+          "terms": "เบาะยางกระโดด"
+        },
+        "playground/funnel_ball": {
+          "name": "บอลกรวย",
+          "terms": "บอลกรวย"
+        },
+        "playground/hopscotch": {
+          "name": "ตั้งเต",
+          "terms": "ตั้งเต"
+        },
+        "playground/horizontal_bar": {
+          "name": "บาร์โหนเล่น",
+          "terms": "บาร์โหนเล่น"
         },
         "playground/map": {
           "name": "แผนที่สนามเด็กเล่น",
           "terms": "แผนที่สนามเด็กเล่น"
         },
+        "playground/playhouse": {
+          "name": "บ้านบอล",
+          "terms": "บ้านบอล"
+        },
+        "playground/roundabout": {
+          "name": "วงเวียนหมุนเล่น",
+          "terms": "วงเวียนหมุนเล่น"
+        },
         "playground/sandpit": {
           "name": "บ่อทราย",
           "terms": "บ่อทราย"
+        },
+        "playground/seesaw": {
+          "name": "ไม้กระดก",
+          "terms": "ไม้กระดก"
+        },
+        "playground/sledding": {
+          "name": "แคร่เลื่อน",
+          "terms": "แคร่เลื่อน"
         },
         "playground/slide": {
           "name": "สไลด์เดอร์",
           "terms": "สไลด์เดอร์"
         },
+        "playground/splash_pad": {
+          "name": "สวนน้ำ",
+          "terms": "สวนน้ำ"
+        },
         "playground/springy": {
           "name": "สปริงโยกเยก",
           "terms": "สปริงโยกเยก"
         },
+        "playground/structure": {
+          "name": "บ้านของเล่น",
+          "terms": "บ้านของเล่น"
+        },
+        "playground/swing": {
+          "name": "ชิงช้า",
+          "terms": "ชิงช้า"
+        },
         "playground/teenshelter": {
           "name": "ศาลาเด็กเล่น",
           "terms": "ศาลาเด็กเล่น"
+        },
+        "playground/tetherball": {
+          "name": "บอลผูกเสา",
+          "terms": "บอลผูกเสา"
+        },
+        "playground/trampoline": {
+          "name": "แทรมโพลีน",
+          "terms": "แทรมโพลีน"
         },
         "playground/tunnel_tube": {
           "name": "อุโมงค์เด็กเล่น",
@@ -3636,6 +4792,10 @@
         "playground/water": {
           "name": "ปั๊มป์น้ำเด็กเล่น",
           "terms": "ปั๊มป์น้ำเด็กเล่น"
+        },
+        "playground/zipwire": {
+          "name": "ซิปไลน์เล่น",
+          "terms": "ซิปไลน์เล่น"
         },
         "point": {
           "name": "จุด",
@@ -3652,16 +4812,56 @@
         "power": {
           "name": "คุณลักษณะพลังงาน"
         },
+        "power/cable": {
+          "name": "สายไฟฟ้า"
+        },
+        "power/cable/underground": {
+          "name": "สายไฟฟ้าใต้ดิน",
+          "terms": "สายไฟฟ้าใต้ดิน"
+        },
+        "power/catenary_mast": {
+          "name": "เสาเหนือหัว",
+          "terms": "เสาเหนือหัว"
+        },
+        "power/generator": {
+          "name": "เครื่องกำเนิดไฟฟ้า",
+          "terms": "เครื่องกำเนิดไฟฟ้า"
+        },
+        "power/generator/method/photovoltaic": {
+          "name": "แผงโซล่าเซลล์",
+          "terms": "แผงโซล่าเซลล์,โซล่าเซลล์,แผงพลังงานแสงอาทิตย์"
+        },
+        "power/generator/method/photovoltaic/building/roof": {
+          "name": "หลังคาแผงโซล่าเซลล์",
+          "terms": "หลังคาแผงโซล่าเซลล์"
+        },
         "power/generator/method/photovoltaic/location/roof": {
-          "name": "แผงโซลาร์ติดหลังคา"
+          "name": "แผงโซลาร์ติดหลังคา",
+          "terms": "แผงโซลาร์ติดหลังคา"
         },
         "power/generator/source/hydro": {
           "name": "กังหันน้ำ",
           "terms": "กังหันน้ำ"
         },
+        "power/generator/source/nuclear": {
+          "name": "เครื่องปฏิกรณ์นิวเคลียร์",
+          "terms": "เครื่องปฏิกรณ์นิวเคลียร์"
+        },
         "power/generator/source/wind": {
           "name": "กังหันลมเพื่อผลิตไฟฟ้า",
           "terms": "กังหันลมเพื่อผลิตไฟฟ้า,กังหันลมผลิตไฟฟ้า"
+        },
+        "power/line": {
+          "name": "สายพลังงาน",
+          "terms": "สายพลังงาน"
+        },
+        "power/minor_line": {
+          "name": "สายพลังงานรอง",
+          "terms": "สายพลังงานรอง"
+        },
+        "power/plant": {
+          "name": "พื้นที่โรงงานพลังงาน",
+          "terms": "พื้นที่โรงงานพลังงาน"
         },
         "power/plant/source/coal": {
           "name": "โรงไฟฟ้าพลังงานถ่านหิน",
@@ -3671,21 +4871,61 @@
           "name": "โรงไฟฟ้าพลังงานก๊าซ",
           "terms": "โรงไฟฟ้าพลังงานก๊าซ,โรงไฟฟ้าก๊าซ"
         },
+        "power/plant/source/hydro": {
+          "name": "โรงงานพลังงานน้ำ",
+          "terms": "โรงงานพลังงานน้ำ"
+        },
         "power/plant/source/method/photovoltaic": {
           "name": "ฟาร์มพลังงานแสงอาทิตย์",
           "terms": "ฟาร์มพลังงานแสงอาทิตย์,โซลาร์ฟาร์ม"
+        },
+        "power/plant/source/nuclear": {
+          "name": "โรงงานพลังงานนิวเคลียร์",
+          "terms": "โรงงานพลังงานนิวเคลียร์"
         },
         "power/plant/source/oil": {
           "name": "โรงไฟฟ้าพลังงานน้ำมัน",
           "terms": "โรงไฟฟ้าพลังงานน้ำมัน,โรงไฟฟ้าน้ำมัน"
         },
+        "power/plant/source/solar": {
+          "name": "พลังงานแสงอาทิตย์",
+          "terms": "พลังงานแสงอาทิตย์"
+        },
+        "power/plant/source/waste": {
+          "name": "โรงงานพลังงานจากขยะ",
+          "terms": "โรงงานพลังงานจากขยะ"
+        },
         "power/plant/source/wind": {
           "name": "ฟาร์มกังหันลม",
           "terms": "ฟาร์มกังหันลม"
         },
+        "power/pole": {
+          "name": "เสาพลังงาน",
+          "terms": "เสาพลังงาน"
+        },
+        "power/portal": {
+          "name": "ปลายสายแรงสูง",
+          "terms": "ปลายสายแรงสูง"
+        },
+        "power/substation": {
+          "name": "สถานีย่อย",
+          "terms": "สถานีย่อย"
+        },
+        "power/switch": {
+          "name": "สวิตซ์ไฟฟ้า",
+          "terms": "สวิตซ์ไฟฟ้า"
+        },
+        "power/switchgear": {
+          "name": "สวิตช์เกียร์",
+          "terms": "สวิตช์เกียร์"
+        },
         "power/tower": {
           "name": "เสาไฟฟ้าแรงสูง",
           "terms": "เสาไฟฟ้าแรงสูง"
+        },
+        "power/transformer": {
+          "name": "หม้อแปลงไฟฟ้า",
+          "terms": "หม้อแปลงไฟฟ้า"
         },
         "public_transport/platform": {
           "name": "ชานชาลา",
@@ -3761,6 +5001,18 @@
           "name": "ป้ายหยุดรถประจำทางพ่วงไฟฟ้า",
           "terms": "ป้ายหยุดรถประจำทางพ่วงไฟฟ้า"
         },
+        "public_transport/platform_point": {
+          "name": "ที่หยุด/ชานชาลาขนส่ง",
+          "terms": "ที่หยุด/ชานชาลาขนส่ง"
+        },
+        "public_transport/station": {
+          "name": "สถานีขนส่ง",
+          "terms": "สถานีขนส่ง"
+        },
+        "public_transport/station_aerialway": {
+          "name": "สถานีกระเช้า",
+          "terms": "สถานีกระเช้า"
+        },
         "public_transport/station_bus": {
           "name": "สถานี/ขนส่งรถประจำทาง",
           "terms": "สถานี/ขนส่งรถประจำทาง"
@@ -3797,6 +5049,18 @@
           "name": "สถานี/ขนส่งรถประจำทางพ่วงไฟฟ้า",
           "terms": "สถานี/ขนส่งรถประจำทางพ่วงไฟฟ้า"
         },
+        "public_transport/stop_area": {
+          "name": "พื้นที่หยุดขนส่ง",
+          "terms": "พื้นที่หยุดขนส่ง"
+        },
+        "public_transport/stop_position": {
+          "name": "ตำแหน่งการหยุดขนส่ง",
+          "terms": "ตำแหน่งการหยุดขนส่ง"
+        },
+        "public_transport/stop_position_aerialway": {
+          "name": "ตำแหน่งการหยุดกระเช้า",
+          "terms": "ตำแหน่งการหยุดกระเช้า"
+        },
         "public_transport/stop_position_bus": {
           "name": "ตำแหน่งจอดรถประจำทาง",
           "terms": "ตำแหน่งจอดรถประจำทาง"
@@ -3830,7 +5094,7 @@
           "terms": "ตำแหน่งจอดรถประจำทางพ่วงไฟฟ้า"
         },
         "railway": {
-          "name": "คุณสมบัติทางราง"
+          "name": "คุณลักษณะทางราง"
         },
         "railway/abandoned": {
           "name": "ทางรถไฟร้าง",
@@ -3952,6 +5216,26 @@
           "name": "วงเวียนกลับรถจักร",
           "terms": "วงเวียนกลับรถไฟ,วงเวียนกลับรถจักร"
         },
+        "railway/yard": {
+          "name": "ลานรถไฟ",
+          "terms": "ลานรถไฟ,อู่รถไฟ,ย่านรถไฟ"
+        },
+        "relation": {
+          "name": "ความสัมพันธ์",
+          "terms": "ความสัมพันธ์"
+        },
+        "roller_coaster/station": {
+          "name": "สถานีรถไฟเหาะ",
+          "terms": "สถานีรถไฟเหาะ"
+        },
+        "roller_coaster/support": {
+          "name": "โครงสนับสนุนรถไฟเหาะ",
+          "terms": "โครงสนับสนุนรถไฟเหาะ"
+        },
+        "roller_coaster/track": {
+          "name": "รางรถไฟเหาะ",
+          "terms": "รางรถไฟเหาะ"
+        },
         "route/ferry": {
           "name": "เส้นทางเรือโดยสาร",
           "terms": "เส้นทางเรือโดยสาร"
@@ -4032,10 +5316,12 @@
           "terms": "ร้านเสริมสวย"
         },
         "shop/beauty/nails": {
-          "name": "ร้านทำเล็บ"
+          "name": "ร้านทำเล็บ",
+          "terms": "ร้านทำเล็บ"
         },
         "shop/beauty/tanning": {
-          "name": "ร้านทำผิวสีแทน"
+          "name": "ร้านทำผิวสีแทน",
+          "terms": "ร้านทำผิวสีแทน,ร้าแทนผิว"
         },
         "shop/bed": {
           "name": "ร้านเครื่องนอน",
@@ -4085,10 +5371,12 @@
           "terms": "ร้านกัญชา"
         },
         "shop/car": {
-          "name": "ตัวแทนจำหน่ายรถยนต์"
+          "name": "ตัวแทนจำหน่ายรถยนต์",
+          "terms": "ตัวแทนจำหน่ายรถยนต์"
         },
         "shop/car/second_hand": {
-          "name": "ตัวแทนจำหน่ายรถมือสอง"
+          "name": "ตัวแทนจำหน่ายรถมือสอง",
+          "terms": "ตัวแทนจำหน่ายรถมือสอง"
         },
         "shop/car_parts": {
           "name": "ร้านอะไหล่รถยนต์",
@@ -4099,7 +5387,8 @@
           "terms": "ร้านซ่อมรถยนต์"
         },
         "shop/caravan": {
-          "name": "ตัวแทนจำหน่ายรถบ้าน"
+          "name": "ตัวแทนจำหน่ายรถบ้าน",
+          "terms": "ตัวแทนจำหน่ายรถบ้าน"
         },
         "shop/carpet": {
           "name": "ร้านขายพรม",
@@ -4194,7 +5483,8 @@
           "terms": "ร้านขายนม"
         },
         "shop/deli": {
-          "name": "อาหารสำเร็จรูป"
+          "name": "อาหารสำเร็จรูป",
+          "terms": "อาหารสำเร็จรูป"
         },
         "shop/department_store": {
           "name": "ห้างสรรพสินค้า",
@@ -4237,7 +5527,8 @@
           "terms": "ร้านขายผ้า"
         },
         "shop/farm": {
-          "name": "แผงลอยสำหรับวางสินค้า"
+          "name": "แผงลอยผักผลไม้",
+          "terms": "แผงลอยของสด,แผงลอยผัก,แผงลอยผลไม้,แผงลอยผักผลไม้"
         },
         "shop/fashion": {
           "name": "ร้านเสื้อผ้าแฟชั่น"
@@ -4302,13 +5593,21 @@
           "name": "ร้านของฝาก",
           "terms": "ร้านของฝาก"
         },
+        "shop/gold_buyer": {
+          "name": "รับซื้อทอง",
+          "terms": "รับซื้อทอง,ซื้อทอง"
+        },
         "shop/greengrocer": {
           "name": "ร้านขายผักผลไม้",
           "terms": "ร้านขายผักผลไม้,ร้านขายผลผลิตเกษตรกรรม"
         },
         "shop/hairdresser": {
           "name": "ร้านทำผม",
-          "terms": "ร้านทำผม,ร้านตัดผม,ซาลอน,บาร์เบอร์"
+          "terms": "ร้านทำผม,ร้านตัดผม,ซาลอน"
+        },
+        "shop/hairdresser/barber": {
+          "name": "ร้านตัดผม",
+          "terms": "ร้านตัดผม,บาร์เบอร์"
         },
         "shop/hairdresser_supply": {
           "name": "ร้านอุปกรณ์ทำผม",
@@ -4362,7 +5661,8 @@
           "terms": "ร้านจิวเวลรี่,ร้านเครื่องประดับ,ร้านทอง"
         },
         "shop/kiosk": {
-          "name": "ร้านค้าขนาดเล็ก"
+          "name": "ร้านค้าขนาดเล็ก",
+          "terms": "ร้านค้าขนาดเล็ก,ร้านค้าป๊อปอัพ,ร้าน pop up"
         },
         "shop/kitchen": {
           "name": "ร้านตกแต่งห้องครัว",
@@ -4437,7 +5737,8 @@
           "terms": "ร้านเครื่องดนตรี,ร้านอุปกรณ์ดนตรี"
         },
         "shop/newsagent": {
-          "name": "แผงหนังสือ"
+          "name": "แผงหนังสือ",
+          "terms": "แผงหนังสือ"
         },
         "shop/nutrition_supplements": {
           "name": "ร้านอาหารเสริม",
@@ -4487,6 +5788,10 @@
           "name": "ร้านสัตว์เลี้ยง",
           "terms": "ร้านสัตว์เลี้ยง"
         },
+        "shop/pet_grooming": {
+          "name": "ตัดแต่งขนสัตว์เลี้ยง",
+          "terms": "ตัดแต่งขนสัตว์เลี้ยง"
+        },
         "shop/photo": {
           "name": "ร้านถ่ายรูป",
           "terms": "ร้านถ่ายรูป,ร้านอัดรูป,ร้านล้างรูป"
@@ -4500,8 +5805,8 @@
           "terms": "ร้านหมึกพิมพ์,ร้านหมึกเครื่องพิมพ์,ร้านหมึกปริ้น"
         },
         "shop/psychic": {
-          "name": "เกี่ยวกับจิตใจ",
-          "aliases": "เกี่ยวกับจิตวิญญาณ"
+          "name": "จิตวิญญาณ",
+          "terms": "จิตวิญญาณ,กายสิทธิ,หมอดู,ดูดวง,หมอผี,เชื่อจิต,ร่างทรง"
         },
         "shop/pyrotechnics": {
           "name": "ร้านดอกไม้ไฟ",
@@ -4689,6 +5994,10 @@
         "telecom": {
           "name": "คุณลักษณะโทรคมนาคม"
         },
+        "telecom/data_center": {
+          "name": "ศูนย์ข้อมูล",
+          "terms": "ศูนย์ข้อมูล"
+        },
         "telecom/exchange": {
           "name": "ชุมสายโทรคมนาคม",
           "terms": "ชุมสายโทรคมนาคม,ชุมสายเทเลคอม"
@@ -4705,25 +6014,36 @@
           "terms": "อพาร์ทเมนท์ตากอากาศ"
         },
         "tourism/aquarium": {
-          "name": "พิพิธภัณฑ์สัตว์น้ำ"
+          "name": "พิพิธภัณฑ์สัตว์น้ำ",
+          "terms": "พิพิธภัณฑ์สัตว์น้ำ,อควาเรียม"
         },
         "tourism/artwork": {
-          "name": "งานด้านศิลปะ"
+          "name": "งานศิลปะ",
+          "terms": "งานศิลปะ"
         },
         "tourism/artwork/bust": {
-          "name": "รูปสลักครึ่งตัว"
+          "name": "รูปสลักครึ่งตัว",
+          "terms": "รูปสลักครึ่งตัว"
         },
         "tourism/artwork/graffiti": {
-          "name": "การวาดภาพหรือเขียนบนกำแพงในที่สาธารณะ"
+          "name": "การเขียนกำแพง",
+          "terms": "การเขียนกำแพง,การวาดกำแพง,กราฟิตี,กราฟิตี้"
+        },
+        "tourism/artwork/installation": {
+          "name": "งานศิลปะติดตั้ง",
+          "terms": "งานศิลปะติดตั้ง"
         },
         "tourism/artwork/mural": {
-          "name": "จิตรกรรมฝาผนัง"
+          "name": "จิตรกรรมฝาผนัง",
+          "terms": "จิตรกรรมฝาผนัง"
         },
         "tourism/artwork/sculpture": {
-          "name": "ประติมากรรม"
+          "name": "ประติมากรรม",
+          "terms": "ประติมากรรม"
         },
         "tourism/artwork/statue": {
-          "name": "รูปปั้น"
+          "name": "รูปปั้น",
+          "terms": "รูปปั้น"
         },
         "tourism/attraction": {
           "name": "สถานที่ท่องเที่ยว",
@@ -4778,19 +6098,24 @@
           "terms": "กระดานประชาสัมพันธ์"
         },
         "tourism/information/board/welcome_sign": {
-          "name": "ป้ายต้อนรับ"
+          "name": "ป้ายต้อนรับ",
+          "terms": "ป้ายต้อนรับ,ป้ายยินดีต้อนรับ"
         },
         "tourism/information/guidepost": {
-          "name": "ป้ายบอกทาง"
+          "name": "ป้ายชี้ทาง",
+          "terms": "ป้ายบอกทาง,ป้ายชี้ทาง"
         },
         "tourism/information/map": {
-          "name": "แผนที่"
+          "name": "แผนที่",
+          "terms": "แผนที่,แผนผัง"
         },
         "tourism/information/office": {
-          "name": "ศูนย์ช่วยเหลือนักท่องเที่ยว"
+          "name": "ศูนย์ช่วยเหลือนักท่องเที่ยว",
+          "terms": "ศูนย์ช่วยเหลือนักท่องเที่ยว,ศูนย์บริการนักท่องเที่ยว"
         },
         "tourism/information/route_marker": {
-          "name": "ป้ายบอกทาง"
+          "name": "ป้ายบอกทางเดิน",
+          "terms": "ป้ายบอกทางเดิน"
         },
         "tourism/information/terminal": {
           "name": "จอประชาสัมพันธ์",
@@ -4817,7 +6142,8 @@
           "terms": "สวนสนุก,สวนหรรษา"
         },
         "tourism/trail_riding_station": {
-          "name": "สนามขี่ม้า"
+          "name": "สนามขี่ม้า",
+          "terms": "สนามขี่ม้าเดินป่า"
         },
         "tourism/viewpoint": {
           "name": "จุดชมวิว",
@@ -4847,16 +6173,140 @@
           "name": "การสยบการจราจร",
           "terms": "การสยบการจราจร"
         },
+        "traffic_calming/bump": {
+          "name": "ลูกระนาดชะลอความเร็ว",
+          "terms": "ลูกระนาดชะลอความเร็ว"
+        },
+        "traffic_calming/chicane": {
+          "name": "จราจรแนวหยัก",
+          "terms": "จราจรแนวหยัก"
+        },
+        "traffic_calming/choker": {
+          "name": "ปลอกคอจราจร",
+          "terms": "ปลอกคอจราจร"
+        },
+        "traffic_calming/cushion": {
+          "name": "แผ่นยางชะลอความเร็ว",
+          "terms": "แผ่นยางชะลอความเร็ว"
+        },
+        "traffic_calming/dip": {
+          "name": "หลุมยุบ",
+          "terms": "หลุมยุบ"
+        },
+        "traffic_calming/hump": {
+          "name": "เนินชะลอความเร็ว",
+          "terms": "เนินชะลอความเร็ว"
+        },
         "traffic_calming/island": {
           "name": "เกาะการสยบการจราจร",
           "terms": "เกาะการสยบการจราจร"
         },
+        "traffic_calming/mini_bumps": {
+          "name": "ลูกระนาดชะลอความเร็วแบบเล็ก",
+          "terms": "ลูกระนาดชะลอความเร็วแบบเล็ก"
+        },
+        "traffic_calming/rumble_strip": {
+          "name": "แถบเตือนผิวจราจร",
+          "terms": "แถบเตือนผิวจราจร"
+        },
+        "traffic_calming/table": {
+          "name": "ตารางความเร็ว",
+          "terms": "ตารางความเร็ว"
+        },
         "traffic_calming/yes": {
           "name": "การสยบการจราจร (ไม่ระบุประเภท)"
+        },
+        "traffic_sign": {
+          "name": "ป้ายจราจร",
+          "terms": "ป้ายจราจร"
         },
         "traffic_sign/city_limit": {
           "name": "ป้ายเขตเมือง",
           "terms": "ป้ายเขตเมือง,ป้ายขอบเขตเมือง,ป้ายขอบเมือง,ป้ายยินดีต้อนรับ"
+        },
+        "traffic_sign/maxspeed": {
+          "name": "ป้ายเขตเมือง",
+          "terms": "ป้ายเขตเมือง"
+        },
+        "traffic_sign/variable_message": {
+          "name": "จอป้ายข้อความ",
+          "terms": "จอป้ายข้อความ"
+        },
+        "type/boundary": {
+          "name": "แนวเขต",
+          "terms": "แนวเขต"
+        },
+        "type/boundary/administrative": {
+          "name": "แนวเขตการปกครอง",
+          "terms": "แนวเขตการปกครอง"
+        },
+        "type/connectivity": {
+          "name": "การเชื่อมต่อช่องจราจร",
+          "terms": "การเชื่อมต่อเลน"
+        },
+        "type/destination_sign": {
+          "name": "ป้ายปลายทาง",
+          "terms": "ป้ายปลายทาง"
+        },
+        "type/enforcement": {
+          "name": "การบังคับ",
+          "terms": "การบังคับ"
+        },
+        "type/enforcement/maxspeed": {
+          "name": "การบังคับความเร็วสูงสุด",
+          "terms": "การบังคับความเร็วสูงสุด"
+        },
+        "type/multipolygon": {
+          "name": "รูปหลายเหลี่ยม",
+          "terms": "รูปหลายเหลี่ยม"
+        },
+        "type/public_transport/stop_area_group": {
+          "name": "กลุ่มพื้นที่หยุดขนส่ง",
+          "terms": "กลุ่มพื้นที่หยุดขนส่ง"
+        },
+        "type/restriction": {
+          "name": "การปิดกั้น",
+          "terms": "การปิดกั้น"
+        },
+        "type/restriction/no_left_turn": {
+          "name": "ห้ามเลี้ยวซ้าย",
+          "terms": "ห้ามเลี้ยวซ้าย"
+        },
+        "type/restriction/no_right_turn": {
+          "name": "ห้ามเลี้ยวขวา",
+          "terms": "ห้ามเลี้ยวขวา"
+        },
+        "type/restriction/no_straight_on": {
+          "name": "ห้ามตรงไป",
+          "terms": "ห้ามตรงไป"
+        },
+        "type/restriction/no_u_turn": {
+          "name": "ห้ามกลับรถ",
+          "terms": "ห้ามกลับรถ"
+        },
+        "type/restriction/only_left_turn": {
+          "name": "เลี้ยวซ้ายเท่านั้น",
+          "terms": "เลี้ยวซ้ายเท่านั้น"
+        },
+        "type/restriction/only_right_turn": {
+          "name": "เลี้ยวขวาเท่านั้น",
+          "terms": "เลี้ยวขวาเท่านั้น"
+        },
+        "type/restriction/only_straight_on": {
+          "name": "ตรงไปเท่านั้น",
+          "terms": "ตรงไปเท่านั้น"
+        },
+        "type/restriction/only_u_turn": {
+          "name": "กลับรถเท่านั้น",
+          "terms": "กลับรถเท่านั้น"
+        },
+        "type/route": {
+          "name": "เส้นทาง",
+          "terms": "เส้นทาง"
+        },
+        "type/route/aerialway": {
+          "name": "เส้นทางอากาศ",
+          "terms": "เส้นทางอากาศ"
         },
         "type/route/bicycle": {
           "name": "เส้นทางปั่นจักรยาน",
@@ -4866,12 +6316,25 @@
           "name": "เส้นทางรถประจำทาง",
           "terms": "เส้นทางรถประจำทาง"
         },
+        "type/route/detour": {
+          "name": "เส้นทางเบี่ยง",
+          "terms": "เส้นทางเบี่ยง"
+        },
         "type/route/ferry": {
           "name": "เส้นทางเรือโดยสาร",
           "terms": "เส้นทางเรือโดยสาร"
         },
         "type/route/foot": {
-          "name": "เส้นทางเดิน"
+          "name": "เส้นทางเดิน",
+          "terms": "เส้นทางเดิน"
+        },
+        "type/route/hiking": {
+          "name": "เส้นทางเดินเขา",
+          "terms": "เส้นทางเดินเขา"
+        },
+        "type/route/horse": {
+          "name": "เส้นทางขี่ม้า",
+          "terms": "เส้นทางขี่ม้า"
         },
         "type/route/light_rail": {
           "name": "เส้นทางรถไฟรางเบา",
@@ -4888,6 +6351,14 @@
         "type/route/pipeline": {
           "name": "เส้นทางท่อ",
           "terms": "เส้นทางท่อ"
+        },
+        "type/route/piste": {
+          "name": "เส้นทางหิมะอัด/สกี",
+          "terms": "เส้นทางหิมะอัด/สกี"
+        },
+        "type/route/power": {
+          "name": "เส้นทางพลังงาน",
+          "terms": "เส้นทางพลังงาน"
         },
         "type/route/railway": {
           "name": "เส้นทางรถไฟ",
@@ -4928,6 +6399,10 @@
         "waterway": {
           "name": "คุณลักษณะของทางน้ำ"
         },
+        "waterway/boatyard": {
+          "name": "อู่เรือ",
+          "terms": "อู่เรือ"
+        },
         "waterway/canal": {
           "name": "คลอง",
           "terms": "คลอง"
@@ -4952,8 +6427,17 @@
           "name": "ทางระบายน้ำ",
           "terms": "ทางระบายน้ำ,รางระบายน้ำ"
         },
+        "waterway/fish_pass": {
+          "name": "บันไดปลา",
+          "terms": "บันไดปลา"
+        },
         "waterway/fuel": {
-          "name": "ร้านขายเชื้อเพลิงสำหรับพานะทางน้ำ"
+          "name": "ร้านขายเชื้อเพลิงสำหรับพานะทางน้ำ",
+          "terms": "ร้านขายเชื้อเพลิงสำหรับพานะทางน้ำ"
+        },
+        "waterway/lock_gate": {
+          "name": "ประตูล็อก",
+          "terms": "ประตูล็อก"
         },
         "waterway/milestone": {
           "name": "หลักหินบอกระยะทางน้ำ",
@@ -4963,6 +6447,10 @@
           "name": "แม่น้ำ",
           "terms": "แม่น้ำ"
         },
+        "waterway/sanitary_dump_station": {
+          "name": "ที่กำจัดของเสียห้องน้ำจากเรือ",
+          "terms": "ที่กำจัดของเสียห้องน้ำจากเรือ"
+        },
         "waterway/stream": {
           "name": "ลำธาร",
           "terms": "ลำธาร"
@@ -4970,6 +6458,10 @@
         "waterway/stream_intermittent": {
           "name": "ลำธารไม่สม่ำเสมอ",
           "terms": "ลำธารไม่สม่ำเสมอ"
+        },
+        "waterway/tidal_channel": {
+          "name": "ช่องน้ำขึ้นน้ำลง",
+          "terms": "ช่องน้ำขึ้นน้ำลง"
         },
         "waterway/water_point": {
           "name": "น้ำดื่มสำหรับเรือ",

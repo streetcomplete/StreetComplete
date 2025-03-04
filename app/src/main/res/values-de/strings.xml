@@ -1412,7 +1412,7 @@ Eine Ebene zählt als Dachebene, wenn sich die Fenster im Dach befinden. Dächer
     <string name="quest_bicycle_repair_station_services_title">"Welche Fahrradausstattung gibt es hier?"</string>
     <string name="quest_bicycle_repair_station_pump">"Pumpe"</string>
     <string name="quest_bicycle_repair_station_tools">"Verschiedene Werkzeuge"</string>
-    <string name="quest_bicycle_repair_station_stand">"Stativ"</string>
+    <string name="quest_bicycle_repair_station_stand">"Montageständer"</string>
     <string name="quest_bicycle_repair_station_chain_tool">"Kettenwerkzeug"</string>
     <string name="quest_boat_rental_title">"Welche Art von Booten kann man hier mieten?"</string>
     <string name="quest_boat_rental_motorboat">"Motorboot"</string>

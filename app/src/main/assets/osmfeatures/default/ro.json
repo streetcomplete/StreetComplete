@@ -8,6 +8,9 @@
         "advertising/billboard": {
           "name": "Billboard"
         },
+        "advertising/board": {
+          "name": "Avizier"
+        },
         "aerialway/mixed_lift": {
           "name": "Lift Mixat"
         },
@@ -100,6 +103,9 @@
         },
         "amenity/fast_food": {
           "name": "Fast Food"
+        },
+        "amenity/ferry_terminal": {
+          "name": "Terminal de Bac"
         },
         "amenity/fire_station": {
           "name": "Pompieri"
@@ -200,6 +206,9 @@
         "amenity/school": {
           "name": "Școală"
         },
+        "amenity/shelter": {
+          "name": "Adăpost"
+        },
         "amenity/social_facility": {
           "name": "Facilitate Socială"
         },
@@ -230,11 +239,35 @@
         "area": {
           "name": "Suprafață"
         },
+        "attraction/animal": {
+          "name": "Țarc animale"
+        },
+        "attraction/bungee_jumping": {
+          "name": "Sărituri cu coarda elastică"
+        },
+        "attraction/carousel": {
+          "name": "Carusel"
+        },
+        "attraction/maze": {
+          "name": "Labirint"
+        },
+        "attraction/roller_coaster": {
+          "name": "Roller coaster"
+        },
+        "attraction/water_slide": {
+          "name": "Tobogan cu apă"
+        },
         "barrier": {
           "name": "Barieră"
         },
         "barrier/block": {
           "name": "Blocaj"
+        },
+        "barrier/bollard": {
+          "name": "Bolard"
+        },
+        "barrier/chain": {
+          "name": "Lanț"
         },
         "barrier/city_wall": {
           "name": "Zid de Oraș"
@@ -248,8 +281,29 @@
         "barrier/gate": {
           "name": "Poartă"
         },
+        "barrier/guard_rail": {
+          "name": "Parapet"
+        },
+        "barrier/hedge": {
+          "name": "Gard viu"
+        },
+        "barrier/height_restrictor": {
+          "name": "Limitator de înălțime"
+        },
+        "barrier/kerb": {
+          "name": "Bordură"
+        },
+        "barrier/stile": {
+          "name": "Pârleaz"
+        },
+        "barrier/turnstile": {
+          "name": "Turnichet"
+        },
         "barrier/wall": {
           "name": "Zid"
+        },
+        "boundary": {
+          "name": "Graniță"
         },
         "boundary/administrative": {
           "name": "Graniță Administrativă"
@@ -278,6 +332,9 @@
         "building/church": {
           "name": "Biserică"
         },
+        "building/civic": {
+          "name": "Clădire civică"
+        },
         "building/college": {
           "name": "Colegiu"
         },
@@ -286,6 +343,9 @@
         },
         "building/construction": {
           "name": "Clădire în Construcție"
+        },
+        "building/cowshed": {
+          "name": "Grajd"
         },
         "building/detached": {
           "name": "Casă Detașată"
@@ -296,14 +356,32 @@
         "building/entrance": {
           "name": "Intrare/Ieșire"
         },
+        "building/farm": {
+          "name": "Casă la fermă"
+        },
+        "building/farm_auxiliary": {
+          "name": "Clădire a fermei"
+        },
+        "building/fire_station": {
+          "name": "Stație pompieri"
+        },
         "building/garage": {
           "name": "Garaj"
         },
         "building/garages": {
           "name": "Garaje"
         },
+        "building/ger": {
+          "name": "Iurtă"
+        },
+        "building/grandstand": {
+          "name": "Tribună"
+        },
         "building/greenhouse": {
           "name": "Seră"
+        },
+        "building/hangar": {
+          "name": "Hangar"
         },
         "building/hospital": {
           "name": "Spital"
@@ -314,11 +392,20 @@
         "building/house": {
           "name": "Casă"
         },
+        "building/houseboat": {
+          "name": "Casă plutitoare"
+        },
         "building/hut": {
           "name": "Colibă"
         },
         "building/industrial": {
           "name": "Clădire Industrială"
+        },
+        "building/mosque": {
+          "name": "Clădire moschee"
+        },
+        "building/office": {
+          "name": "Clădire birouri"
         },
         "building/public": {
           "name": "Clădire Publică"
@@ -338,11 +425,26 @@
         "building/semidetached_house": {
           "name": "Casă Semi-detașată"
         },
+        "building/sty": {
+          "name": "Cocină"
+        },
+        "building/synagogue": {
+          "name": "Clădire sinagogă"
+        },
+        "building/temple": {
+          "name": "Clădire templu"
+        },
         "building/university": {
           "name": "Universitate"
         },
         "building/warehouse": {
           "name": "Depozit"
+        },
+        "building_part": {
+          "name": "Parte de clădire"
+        },
+        "building_point": {
+          "name": "Clădire"
         },
         "club": {
           "name": "Club"
@@ -392,6 +494,9 @@
         "ford": {
           "name": "Vad"
         },
+        "ford_line": {
+          "name": "Vad"
+        },
         "golf/fairway": {
           "name": "Drum Maritim"
         },
@@ -413,6 +518,9 @@
         "highway/footway": {
           "name": "Potecă"
         },
+        "highway/footway/sidewalk": {
+          "name": "Drum de Pietoni"
+        },
         "highway/motorway": {
           "name": "Autostradă"
         },
@@ -424,6 +532,9 @@
         },
         "highway/path": {
           "name": "Potecă"
+        },
+        "highway/pedestrian_line": {
+          "name": "Drum Pietonal"
         },
         "highway/primary": {
           "name": "Drum principal"
@@ -515,6 +626,12 @@
         "historic/tomb": {
           "name": "Mormânt"
         },
+        "indoor/corridor": {
+          "name": "Coridor Interior"
+        },
+        "indoor/corridor_line": {
+          "name": "Coridor Interior"
+        },
         "junction": {
           "name": "Juncție"
         },
@@ -563,8 +680,17 @@
         "landuse/military/barracks": {
           "name": "Baraci"
         },
+        "landuse/military/base/navy": {
+          "name": "Bază Navală"
+        },
         "landuse/military/range": {
           "name": "Gamă Militară"
+        },
+        "landuse/pond": {
+          "name": "Iaz"
+        },
+        "landuse/reservoir": {
+          "name": "Rezervor"
         },
         "landuse/residential": {
           "name": "Zonă Rezidențială"
@@ -598,6 +724,9 @@
         },
         "leisure/garden": {
           "name": "Grădină"
+        },
+        "leisure/garden/community": {
+          "name": "Grădină Comunitară"
         },
         "leisure/golf_course": {
           "name": "Curs de Golf"
@@ -698,8 +827,14 @@
         "man_made/surveillance": {
           "name": "Supraveghere"
         },
+        "man_made/surveillance/camera": {
+          "name": "Cameră de Supraveghere"
+        },
         "man_made/tower": {
           "name": "Turn"
+        },
+        "man_made/tower/observation": {
+          "name": "Turn de Observație"
         },
         "man_made/wastewater_plant": {
           "name": "Sta'ie de Epurare"
@@ -718,6 +853,15 @@
         },
         "man_made/works": {
           "name": "Fabrică"
+        },
+        "military/bunker": {
+          "name": "Munker Militar"
+        },
+        "military/nuclear_explosion_site": {
+          "name": "Sit de Explozie Nucleară"
+        },
+        "military/office": {
+          "name": "Oficiu Militar"
         },
         "natural/bare_rock": {
           "name": "Stâncă"
@@ -746,6 +890,9 @@
         "natural/heath": {
           "name": "Landă"
         },
+        "natural/hot_spring": {
+          "name": "Izvor termal"
+        },
         "natural/peak": {
           "name": "Vârf"
         },
@@ -767,6 +914,9 @@
         "natural/water": {
           "name": "Apă"
         },
+        "natural/water/basin": {
+          "name": "Bazin"
+        },
         "natural/water/lake": {
           "name": "Lac"
         },
@@ -787,6 +937,9 @@
         },
         "office/administrative": {
           "name": "Oficiu Administrativ"
+        },
+        "office/diplomatic/embassy": {
+          "name": "Ambasadă"
         },
         "office/educational_institution": {
           "name": "Instituție Educațională"
@@ -817,6 +970,9 @@
         },
         "office/ngo": {
           "name": "Oficiu NGO"
+        },
+        "office/notary": {
+          "name": "Notar"
         },
         "office/physician": {
           "name": "Fizician"
@@ -866,11 +1022,20 @@
         "place/village": {
           "name": "Sat"
         },
+        "playground": {
+          "name": "Echipament de loc de joacă"
+        },
         "point": {
           "name": "Punct"
         },
         "power/generator": {
           "name": "Generator de Energie"
+        },
+        "power/generator/source/nuclear": {
+          "name": "Reactor Nuclear"
+        },
+        "power/generator/source/wind": {
+          "name": "Turbină de Vânt"
         },
         "power/line": {
           "name": "Linie de Alimentare"
@@ -889,6 +1054,9 @@
         },
         "power/transformer": {
           "name": "Transformator"
+        },
+        "public_transport/station_ferry": {
+          "name": "Terminal de Bac"
         },
         "railway/abandoned": {
           "name": "Cale Ferată Abandonată"
@@ -1177,6 +1345,18 @@
         "tourism/aquarium": {
           "name": "Acvariu"
         },
+        "tourism/artwork/bust": {
+          "name": "Bust"
+        },
+        "tourism/artwork/graffiti": {
+          "name": "Grafitti"
+        },
+        "tourism/artwork/sculpture": {
+          "name": "Sculptură"
+        },
+        "tourism/artwork/statue": {
+          "name": "Statuie"
+        },
         "tourism/attraction": {
           "name": "Atracție Turistică"
         },
@@ -1282,6 +1462,9 @@
         "type/site": {
           "name": "Sit"
         },
+        "type/waterway": {
+          "name": "Drum Marin"
+        },
         "waterway/boatyard": {
           "name": "Curte de Bărci"
         },
@@ -1290,6 +1473,9 @@
         },
         "waterway/dam": {
           "name": "Baraj"
+        },
+        "waterway/ditch": {
+          "name": "Șanț"
         },
         "waterway/drain": {
           "name": "Pârâu"
