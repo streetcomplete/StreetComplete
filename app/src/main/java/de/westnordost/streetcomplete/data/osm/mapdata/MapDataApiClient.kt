@@ -7,7 +7,6 @@ import de.westnordost.streetcomplete.data.QueryTooBigException
 import de.westnordost.streetcomplete.data.user.UserLoginSource
 import de.westnordost.streetcomplete.data.wrapApiClientExceptions
 import io.ktor.client.HttpClient
-import io.ktor.client.call.body
 import io.ktor.client.plugins.ClientRequestException
 import io.ktor.client.plugins.expectSuccess
 import io.ktor.client.request.bearerAuth
@@ -15,7 +14,10 @@ import io.ktor.client.request.get
 import io.ktor.client.request.parameter
 import io.ktor.client.request.post
 import io.ktor.client.request.setBody
+import io.ktor.client.statement.bodyAsChannel
 import io.ktor.http.HttpStatusCode
+import io.ktor.utils.io.asSource
+import kotlinx.io.buffered
 
 /** Get and upload changes to map data */
 class MapDataApiClient(
@@ -54,10 +56,11 @@ class MapDataApiClient(
         try {
             val response = httpClient.post(baseUrl + "changeset/$changesetId/upload") {
                 userLoginSource.accessToken?.let { bearerAuth(it) }
-                setBody(serializer.serializeMapDataChanges(changes, changesetId))
+                setBody(serializer.serialize(changes, changesetId))
                 expectSuccess = true
             }
-            val updates = parser.parseElementUpdates(response.body<String>())
+            val source = response.bodyAsChannel().asSource().buffered()
+            val updates = parser.parseElementUpdates(source)
             val changedElements = changes.creations + changes.modifications + changes.deletions
             return createMapDataUpdates(changedElements, updates, ignoreRelationTypes)
         } catch (e: ClientRequestException) {
@@ -108,7 +111,8 @@ class MapDataApiClient(
                 parameter("bbox", bounds.toOsmApiString())
                 expectSuccess = true
             }
-            return parser.parseMapData(response.body(), ignoreRelationTypes)
+            val source = response.bodyAsChannel().asSource().buffered()
+            return parser.parseMapData(source, ignoreRelationTypes)
         } catch (e: ClientRequestException) {
             if (e.response.status == HttpStatusCode.BadRequest) {
                 throw QueryTooBigException(e.message, e)
@@ -194,7 +198,8 @@ class MapDataApiClient(
     private suspend fun getMapDataOrNull(query: String): MapData? = wrapApiClientExceptions {
         try {
             val response = httpClient.get(baseUrl + query) { expectSuccess = true }
-            return parser.parseMapData(response.body(), emptySet())
+            val source = response.bodyAsChannel().asSource().buffered()
+            return parser.parseMapData(source, emptySet())
         } catch (e: ClientRequestException) {
             when (e.response.status) {
                 HttpStatusCode.Gone, HttpStatusCode.NotFound -> return null
