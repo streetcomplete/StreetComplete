@@ -610,7 +610,7 @@ fun getQuestTypeList(
     EE_QUEST_OFFSET + 0 to AddBenchMaterial(),
     EE_QUEST_OFFSET + 27 to AddBuildingColour(),
     EE_QUEST_OFFSET + 24 to AddRoofColour(),
-    EE_QUEST_OFFSET + 55 to AddRoofOrientation(),
+    EE_QUEST_OFFSET + 56 to AddRoofOrientation(),
     EE_QUEST_OFFSET + 1 to AddContactPhone(),
     EE_QUEST_OFFSET + 2 to AddContactWebsite(),
     EE_QUEST_OFFSET + 4 to AddCuisine(),
