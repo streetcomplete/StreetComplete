@@ -395,4 +395,8 @@
     <string name="pref_custom_geometry_info">Якщо ви хочете відобразити текст, він повинен бути під тегом «name»</string>
     <string name="pref_rotate_while_zooming_title">Дозволити поворот під час масштабування</string>
     <string name="pref_rotate_angle_threshold_title">Поріг для жесту обертання</string>
+    <string name="quest_roofOrientation_along">Паралельно довшій стороні будівлі</string>
+    <string name="quest_roofOrientation_title">Як орієнтований гребінь даху?</string>
+    <string name="default_disabled_msg_roof">Цей тип завдання вимкнено за замовчуванням, оскільки дахи часто не дуже добре видно з вулиці. Це завдання також потребує досить багато часу; у більшості випадків простіше й ефективніше скласти карту з аерофотознімків удома.</string>
+    <string name="quest_roofOrientation_across">Паралельно коротшій стороні будівлі</string>
 </resources>

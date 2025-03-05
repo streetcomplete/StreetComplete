@@ -1,0 +1,7 @@
+- Add roof orientation quest (#733), by @FloEdelmann
+- Add post office type quest (#737), by @mcliquid
+- Add settings for tuning map behavior (#732), by @mnalis
+- Add settings for showing own notes (#718), by @mnalis
+- Fix typo causing issues with level filter (#730), by @mnalis
+- Fix way rotation in destination quest (#721), by @mnalis
+- Improve max zoom for default aerial images (#727), by @mnalis

@@ -630,4 +630,8 @@
     <string name="quest_postOffice_bureau">完整（官方）邮局</string>
     <string name="quest_postOffice_postAnnex">邮局（私人拥有，可能服务受限）</string>
     <string name="quest_postOffice_postPartner">商店或便利设施的邮政驿站（作为服务）</string>
+    <string name="default_disabled_msg_roof">默认禁用此任务类型，因为从街道上通常不容易看到屋顶。这种任务类型也相当耗时。在大多数情况下，从家里的航拍照片绘制更容易，更高效。</string>
+    <string name="quest_roofOrientation_title">屋脊的朝向是怎样的？</string>
+    <string name="quest_roofOrientation_along">与建筑物的长边平行</string>
+    <string name="quest_roofOrientation_across">与建筑物的短边平行</string>
 </resources>

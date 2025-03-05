@@ -638,4 +638,7 @@
     <string name="quest_postOffice_bureau">Fuldt (officielt) posthus</string>
     <string name="quest_postOffice_postAnnex">Postkontor (privatejet, måske med begrænset service)</string>
     <string name="quest_postOffice_postPartner">Postafhentning og aflevering i butikker eller faciliteter (som en service)</string>
+    <string name="quest_roofOrientation_across">Parallelt med bygningens korte side</string>
+    <string name="quest_roofOrientation_along">Parallelt med bygningens lange side</string>
+    <string name="quest_roofOrientation_title">Hvordan er tagryggen orienteret?</string>
 </resources>
