@@ -352,6 +352,10 @@
           "name": "Ēdiena Tirdzniecības automāts",
           "terms": "pārtika"
         },
+        "amenity/vending_machine/food/snacks": {
+          "name": "Saldumu Tirdzniecības automāts",
+          "terms": "šokolādes,saldumu,konfekšu,cepumu,batoniņu"
+        },
         "amenity/vending_machine/ice_cream": {
           "name": "Saldējuma Tirdzniecības automāts",
           "terms": "šokolādes,vaniļas,sasaldēts,auksts"
@@ -448,8 +452,17 @@
           "name": "Vārti",
           "terms": "žogs"
         },
+        "barrier/guard_rail": {
+          "name": "Aizsargbarjeras"
+        },
+        "barrier/handrail": {
+          "name": "Margas"
+        },
         "barrier/hedge": {
           "name": "Krūmi"
+        },
+        "barrier/kerb": {
+          "name": "Apmale"
         },
         "barrier/kissing_gate": {
           "name": "Dubultveramie vārti",
@@ -461,11 +474,17 @@
         "barrier/toll_booth": {
           "name": "Muitas punkts"
         },
+        "barrier/turnstile": {
+          "name": "Turnikets"
+        },
         "barrier/wall": {
           "name": "Siena"
         },
         "barrier/yes": {
           "name": "Barjera (neprecizēts veids)"
+        },
+        "boundary": {
+          "name": "Robeža"
         },
         "boundary/administrative": {
           "name": "Administratīvā robeža",
@@ -473,6 +492,9 @@
         },
         "building": {
           "name": "Ēka"
+        },
+        "building/apartments": {
+          "name": "Daudzdzīvokļu ēka"
         },
         "building/barn": {
           "name": "Klēts"
@@ -535,6 +557,9 @@
         "building/mosque": {
           "name": "Mošejas Ēka"
         },
+        "building/office": {
+          "name": "Biroju ēka"
+        },
         "building/public": {
           "name": "Publiska Ēka"
         },
@@ -573,6 +598,9 @@
         },
         "building/warehouse": {
           "name": "Noliktava"
+        },
+        "building_point": {
+          "name": "Ēka"
         },
         "club": {
           "name": "Klubs"
@@ -648,6 +676,9 @@
         "craft/shoemaker": {
           "name": "Kurpnieks"
         },
+        "craft/tailor": {
+          "name": "Šuvējs"
+        },
         "craft/window_construction": {
           "name": "Logu izgatavošana"
         },
@@ -656,6 +687,9 @@
         },
         "disused/shop": {
           "name": "Neizmantots veikals"
+        },
+        "embankment": {
+          "name": "Uzbērums"
         },
         "emergency/ambulance_station": {
           "name": "Ātrās palīdzības stacija",
@@ -732,6 +766,12 @@
           "name": "Gājēju ceļš",
           "terms": "taka,gājēju,kājāmgājēju,celiņš"
         },
+        "highway/footway/crossing/traffic_signals": {
+          "name": "Šķērsošanas vieta ar gājēju signālu"
+        },
+        "highway/footway/crossing/uncontrolled": {
+          "name": "Marķēta šķērsošanas vieta"
+        },
         "highway/footway/sidewalk": {
           "name": "Ietve"
         },
@@ -765,8 +805,14 @@
         "highway/service": {
           "name": "Apkalpošanas ceļš"
         },
+        "highway/service/drive-through": {
+          "name": "Drive-Through"
+        },
         "highway/service/driveway": {
           "name": "Piebraucamais ceļš"
+        },
+        "highway/service/parking_aisle": {
+          "name": "Stāvvietas ceļš"
         },
         "highway/speed_camera": {
           "name": "Fotoradars"
@@ -818,6 +864,12 @@
         },
         "indoor/area": {
           "name": "Iekštelpu platība"
+        },
+        "indoor/corridor": {
+          "name": "Iekštelpu koridors"
+        },
+        "indoor/corridor_line": {
+          "name": "Iekštelpu koridors"
         },
         "landuse/allotments": {
           "name": "Mazdārziņš"
@@ -871,8 +923,17 @@
         "landuse/military/barracks": {
           "name": "Kazarmas"
         },
+        "landuse/military/base/navy": {
+          "name": "Ūdensspēku bāze"
+        },
+        "landuse/pond": {
+          "name": "Dīķis"
+        },
         "landuse/quarry": {
           "name": "Karjers"
+        },
+        "landuse/reservoir": {
+          "name": "Ūdenstilpne"
         },
         "landuse/residential": {
           "name": "Dzīvojamā zona"
@@ -984,8 +1045,15 @@
           "name": "Karogmasts",
           "terms": "karogs,masts"
         },
+        "man_made/fuel_pump": {
+          "name": "Degvielas sūknis",
+          "terms": "degviela,dīzelis,gāze,98,95,uzpilde"
+        },
         "man_made/lighthouse": {
           "name": "Bāka"
+        },
+        "man_made/manhole": {
+          "name": "Kanalizācijas lūka"
         },
         "man_made/mast": {
           "name": "Masts"
@@ -1041,6 +1109,12 @@
         "man_made/works": {
           "name": "Rūpnīca"
         },
+        "military/bunker": {
+          "name": "Militārais Bunkurs"
+        },
+        "military/nuclear_explosion_site": {
+          "name": "Atomsprādziena zona"
+        },
         "natural/bare_rock": {
           "name": "Pliks Akmens"
         },
@@ -1068,6 +1142,9 @@
         "natural/heath": {
           "name": "Tīrelis",
           "terms": "virsājs,koki,tīrelis,mazs"
+        },
+        "natural/hot_spring": {
+          "name": "Karstais avots"
         },
         "natural/mud": {
           "name": "Dubļi"
@@ -1097,6 +1174,9 @@
         "natural/water": {
           "name": "Ūdens"
         },
+        "natural/water/basin": {
+          "name": "Baseins"
+        },
         "natural/water/lake": {
           "name": "Ezers"
         },
@@ -1120,6 +1200,9 @@
         },
         "office/architect": {
           "name": "Arhitekta birojs"
+        },
+        "office/diplomatic/embassy": {
+          "name": "Vēstniecība"
         },
         "office/educational_institution": {
           "name": "Izglītības Iestāde"
@@ -1153,6 +1236,9 @@
         },
         "office/therapist": {
           "name": "Terapieta birojs"
+        },
+        "office/travel_agent": {
+          "name": "Ceļojumu aģentūra"
         },
         "place": {
           "name": "Vieta"
@@ -1188,6 +1274,12 @@
           "name": "Elektroenerģijas ģenerātors",
           "terms": "elektroģenrātors,turbīna,vējs"
         },
+        "power/generator/source/nuclear": {
+          "name": "Atomreaktors"
+        },
+        "power/generator/source/wind": {
+          "name": "Vēja Turbīna"
+        },
         "power/line": {
           "name": "Elektrolīnija"
         },
@@ -1207,8 +1299,20 @@
         "public_transport/platform/bus": {
           "name": "Autobusu platforma"
         },
+        "public_transport/platform/bus_point": {
+          "name": "Autobusu pietura"
+        },
         "public_transport/platform/bus_tram_point": {
           "name": "Tramvaju un autobusu pietura"
+        },
+        "public_transport/platform/ferry_point": {
+          "name": "Prāmja pietura / Platforma"
+        },
+        "public_transport/platform/subway_point": {
+          "name": "Metro pietura / platforma"
+        },
+        "public_transport/platform/train_point": {
+          "name": "Vilciena Pietura / Platforma"
         },
         "public_transport/platform/trolleybus_point": {
           "name": "Trolejbusu pietura"
@@ -1528,6 +1632,24 @@
         "tourism/artwork": {
           "name": "Mākslas darbs"
         },
+        "tourism/artwork/bust": {
+          "name": "Krūšutēls"
+        },
+        "tourism/artwork/graffiti": {
+          "name": "Grafiti"
+        },
+        "tourism/artwork/installation": {
+          "name": "Mākslas objekts"
+        },
+        "tourism/artwork/mural": {
+          "name": "Apgleznota siena/murālis"
+        },
+        "tourism/artwork/sculpture": {
+          "name": "Skulptūra"
+        },
+        "tourism/artwork/statue": {
+          "name": "Statuja"
+        },
         "tourism/attraction": {
           "name": "Tūrisma objekts"
         },
@@ -1580,14 +1702,21 @@
         "traffic_calming/hump": {
           "name": "Guļošais Policists"
         },
+        "traffic_calming/island": {
+          "name": "Satiksmes mierināšanas sala"
+        },
         "type/boundary": {
           "name": "Robeža"
         },
         "type/boundary/administrative": {
-          "name": "Administratīvā robeža"
+          "name": "Administratīvā robeža",
+          "terms": "robeža,novadu robeža,administratīvā teritorija"
         },
         "type/restriction": {
           "name": "Aizliegums"
+        },
+        "type/waterway": {
+          "name": "Ūdensceļš"
         },
         "waterway/canal": {
           "name": "Kanāls"

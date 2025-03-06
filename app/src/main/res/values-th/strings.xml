@@ -1255,8 +1255,6 @@
     <string name="overlay_surface">"พื้นผิว"</string>
     <string name="overlay_path_surface_segregated">"แยกเป็นส่วนของการปั่นจักรยานและการเดินของทางเท้า"</string>
     <string name="quest_crossing_title2">"ตรงนี้มีทางข้ามหรือไม่?"</string>
-    <string name="quest_crossing_yes">"ใช่ (เช่น ขอบถนนลดระดับลงที่นี่หรือมีเครื่องหมาย)"</string>
-    <string name="quest_crossing_no">"ไม่ แต่สามารถข้ามได้"</string>
     <string name="quest_crossing_prohibited">"ไม่ ห้ามข้ามหรือเป็นไปไม่ได้"</string>
     <string name="quest_hairdresser_title">"ลูกค้าคนไหนเข้าเยี่ยมชมช่างทำผมคนนี้?"</string>
     <string name="quest_hairdresser_male_and_female">"ใครก็ได้"</string>
@@ -1295,6 +1293,10 @@
     <string name="outside">"ด้านนอก"</string>
     <string name="quest_recycling_type_food_waste">"เศษอาหาร"</string>
     <string name="quest_generalFee_title">"ต้องจ่ายเงินเพื่อใช้สิ่งนี้หรือไม่?"</string>
+    <string name="about_summary_logs">"ใช้ในการรายงานข้อผิดพลาด"</string>
+    <string name="action_filter">"กรอง"</string>
+    <string name="action_share">"แชร์ logs"</string>
+    <string name="about_title_show_logs">"แสดง logs"</string>
     <string name="label_log_newer_than">"จาก"</string>
     <string name="label_log_older_than">"ถึง"</string>
     <string name="quest_disable_action">"ปิดใช้งาน"</string>

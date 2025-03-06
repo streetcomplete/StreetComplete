@@ -1270,7 +1270,6 @@
     <string name="overlay_surface">"أسطح"</string>
     <string name="overlay_path_surface_segregated">"مقسوم إلى جزء للدراجات وآخر للمشاة"</string>
     <string name="quest_crossing_title2">"أيوجد معبر هنا؟"</string>
-    <string name="quest_crossing_yes">"نعم (كمثال، الرصيف منخفض هنا أو توجد علامات)"</string>
     <string name="quest_crossing_no">"لا، ولكن العبور ممكن"</string>
     <string name="quest_crossing_prohibited">"لا، العبور ممنوع أو مستحيل"</string>
     <string name="quest_hairdresser_title">"من هم الزبائن الذين يرتادون هذا الحلاق؟"</string>

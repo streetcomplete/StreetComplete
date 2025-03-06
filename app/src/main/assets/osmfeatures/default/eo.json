@@ -344,6 +344,16 @@
           "name": "Kabineto de kuracisto",
           "terms": "kuracistejo,sanigejo,doktoro"
         },
+        "amenity/doctors/gynaecology": {
+          "name": "Obstetrikisto/Ginekologo"
+        },
+        "amenity/doctors/podiatry": {
+          "name": "Pied-kuracisto",
+          "terms": "piedisto"
+        },
+        "amenity/doctors/urology": {
+          "name": "Urologisto"
+        },
         "amenity/dojo": {
           "name": "Doĵo / batalart-lernejo",
           "terms": "dojho,dojxo,batalarto,luktoarto,luktarto"
@@ -899,10 +909,6 @@
           "name": "Teatrejo",
           "terms": "teatro"
         },
-        "amenity/theatre/type/amphi": {
-          "name": "Amfiteatro",
-          "terms": "teatro,spektejo"
-        },
         "amenity/ticket_validator": {
           "name": "Bilet-kontrolilo",
           "terms": "biletkontrolilo,kontrolilo,validigilo.bilettruilo,truilo"
@@ -994,6 +1000,10 @@
         "amenity/vending_machine/food": {
           "name": "Vendilo de manĝaĵo",
           "terms": "manghajho,mangxajxo"
+        },
+        "amenity/vending_machine/food/snacks": {
+          "name": "Vendilo de dolĉaĵoj",
+          "terms": "dolĉaĵoj,dolchajhoj,dolcxajxoj,sukeraĵoj,sukerajhoj,sukerajxoj"
         },
         "amenity/vending_machine/ice_cream": {
           "name": "Vendilo de glaciaĵoj",
@@ -1188,6 +1198,9 @@
         "barrier/guard_rail": {
           "name": "Gard-relo (apudvoja)",
           "terms": "gardrelo,palisaro,balustro,balustrado,barilo,bariero,apogrelo"
+        },
+        "barrier/handrail": {
+          "name": "Apogrelo"
         },
         "barrier/hedge": {
           "name": "Kreskaĵ-barilo",
@@ -1998,6 +2011,10 @@
         "highway/crossing": {
           "name": "Stratpasejo"
         },
+        "highway/crossing/traffic_signals": {
+          "name": "Stratpasejo kun trafiklumoj",
+          "terms": "pasejo,trairejo,trafiklumoj,transpasejo,piedira transpasejo,stripasejo,zebrostria pasejo"
+        },
         "highway/crossing/unmarked": {
           "name": "Stratpasejo nemarkita",
           "terms": "pasejo,trairejo,transpasejo,piedira transirejo"
@@ -2016,6 +2033,10 @@
         "highway/cycleway/crossing/bicycle_foot": {
           "name": "Stratpasejo por biciklistoj k piedirantoj",
           "terms": "biciklvojo,biciklovojo,pasejo,zebro,transirejo"
+        },
+        "highway/cycleway/crossing/uncontrolled": {
+          "name": "Stratpasejo bicikla (markita)",
+          "terms": "biciklvojo,biciklovojo,pasejo,zebro"
         },
         "highway/cycleway/crossing/unmarked": {
           "name": "Stratpasejo bicikla (nemarkita)",
@@ -2048,9 +2069,20 @@
         "highway/footway/crossing": {
           "name": "Stratpasejo"
         },
+        "highway/footway/crossing/traffic_signals": {
+          "name": "Stratpasejo kun trafiklumoj",
+          "terms": "pasejo,trairejo,trafiklumoj,transpasejo,piedira transpasejo,stripasejo,zebrostria pasejo"
+        },
+        "highway/footway/crossing/unmarked": {
+          "name": "Stratpasejo nemarkita",
+          "terms": "pasejo,trairejo,irejo,piedira transirejo,transpasejo"
+        },
         "highway/footway/sidewalk": {
           "name": "Trotuaro (ĉestrata)",
           "terms": "irejo"
+        },
+        "highway/footway/traffic_island": {
+          "name": "Trafik-insuleto"
         },
         "highway/give_way": {
           "name": "Trafiksigno pri cedi traveturon",
@@ -2091,6 +2123,9 @@
         "highway/path/boardwalk": {
           "name": "Trotuaro ligna tra malsekejo/sablo",
           "terms": "tramalsekejo,irejo,ligna irejo,tabula irejo,lignotabula irejo,ponteto"
+        },
+        "highway/path/crossing": {
+          "name": "Stratpasejo por biciklistoj k piedirantoj"
         },
         "highway/path/informal": {
           "name": "Vojeto (piedpremita)",
@@ -2469,6 +2504,10 @@
         "landuse/military/barracks": {
           "name": "Soldatejo",
           "terms": "soldathejmo,kazerno"
+        },
+        "landuse/military/base/navy": {
+          "name": "Marbazo armea",
+          "terms": "haveno armea,ŝiparo milita"
         },
         "landuse/military/obstacle_course": {
           "name": "Obstakl-kurejo armea",
@@ -2887,6 +2926,9 @@
           "name": "Kurejo/biciklejo/konkursejo (nemotora)",
           "terms": "dromo,kurado,biciklado,stadiono,konkursejo,areno"
         },
+        "leisure/track/athletics/running": {
+          "name": "Kurejo"
+        },
         "leisure/track/cycling": {
           "name": "Kurejo bicikla",
           "terms": "dromo,biciklado,biciklkonkursejo,konkursejo"
@@ -2958,6 +3000,9 @@
           "name": "Gruo",
           "terms": "gruo,argano,levmaŝino"
         },
+        "man_made/crane/portal_crane": {
+          "name": "Rulponta"
+        },
         "man_made/cross": {
           "name": "Kruco (nereligia)",
           "terms": "kruco,monto,montopinto,montpinto"
@@ -2981,6 +3026,10 @@
         "man_made/flagpole": {
           "name": "Flago",
           "terms": "flagmasto,masto"
+        },
+        "man_made/fuel_pump": {
+          "name": "Vendilo de benzino",
+          "terms": "benzinstacio,diseloleo,benzino,brulaĵo,lpg,biodisel"
         },
         "man_made/gasometer": {
           "name": "Gasujo (atmosfera premo)",
@@ -3652,6 +3701,10 @@
         "office/yes": {
           "name": "Oficejo (nekonata speco)"
         },
+        "pipeline/valve": {
+          "name": "Valvo de konduktubo",
+          "terms": "klapo"
+        },
         "piste/downhill": {
           "name": "Skivojo alpa (malsuprenira)",
           "terms": "skivojo,skitrako,alpa skiado,downhill,malsuprenveturo"
@@ -3671,10 +3724,6 @@
         "piste/nordic": {
           "name": "Skivojo nordia (skikurada)",
           "terms": "skitrako,skiado"
-        },
-        "piste/piste": {
-          "name": "Skivojo",
-          "terms": "skitrako,vintrosportoj,skiado,skikurso,neĝtabulado,sketado"
         },
         "piste/skitour": {
           "name": "Skivojo ski-ekskursuma",
@@ -3886,6 +3935,10 @@
         "power/plant/source/hydro": {
           "name": "Akvoenergia elektrocentralo",
           "terms": "elektrejo,centralo,hidroelektra,akvobarilo"
+        },
+        "power/plant/source/method/photovoltaic": {
+          "name": "Sunenergia elektrocentralo",
+          "terms": "elektrejo,centralo,sunpanelo,sunĉelo,fotovoltaiko,sunkolektroro,suncentralo"
         },
         "power/plant/source/nuclear": {
           "name": "Nuklea elektrocentralo",

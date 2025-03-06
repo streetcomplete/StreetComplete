@@ -73,6 +73,9 @@
           "name": "Стоматолог",
           "terms": "зъб,зъби,зъболекар"
         },
+        "amenity/doctors/podiatry": {
+          "name": "Ортопед"
+        },
         "amenity/drinking_water": {
           "name": "Чешма"
         },
@@ -119,6 +122,9 @@
         },
         "amenity/music_school": {
           "name": "Музикално училище"
+        },
+        "amenity/nursing_home": {
+          "name": "Старчески дом"
         },
         "amenity/parking": {
           "name": "Паркинг"
@@ -226,6 +232,9 @@
         "amenity/school": {
           "name": "Училище"
         },
+        "amenity/shelter": {
+          "name": "Навес"
+        },
         "amenity/shelter/gazebo": {
           "name": "Беседка"
         },
@@ -256,9 +265,6 @@
         },
         "amenity/theatre": {
           "name": "Театър"
-        },
-        "amenity/theatre/type/amphi": {
-          "name": "Амфитеатър"
         },
         "amenity/townhall": {
           "name": "Кметство"
@@ -358,6 +364,9 @@
         },
         "barrier/wall/noise_barrier": {
           "name": "Шумоизолираща преграда"
+        },
+        "boundary": {
+          "name": "Граница"
         },
         "boundary/administrative": {
           "name": "Административна граница"
@@ -506,6 +515,9 @@
         "demolished/building": {
           "name": "Наскоро разрушена сграда"
         },
+        "embankment": {
+          "name": "Насип"
+        },
         "emergency/defibrillator": {
           "name": "Дефибрилатор"
         },
@@ -541,6 +553,10 @@
         "entrance/main": {
           "name": "Главен вход",
           "terms": "основен вход"
+        },
+        "entrance/shop": {
+          "name": "Вход към магазин",
+          "terms": "врата,вход към търговски обект"
         },
         "healthcare/alternative": {
           "name": "Алтернативна медицина"
@@ -588,7 +604,8 @@
           "name": "Маркирана пешеходна пътека"
         },
         "highway/crossing/unmarked": {
-          "name": "Немаркирана пешеходна пътека"
+          "name": "Немаркирана пешеходна пътека",
+          "terms": "продължение на тротоар"
         },
         "highway/cycleway": {
           "name": "Велоалея"
@@ -626,7 +643,7 @@
           "name": "Пешеходен остров"
         },
         "highway/living_street": {
-          "name": "Улица в жилищна зона"
+          "name": "Улица в жилищна зона (обозначена със пътен знак Д15)"
         },
         "highway/mini_roundabout": {
           "name": "Малко кръгово кръстовище"
@@ -827,17 +844,26 @@
         "landuse/military/base": {
           "name": "Военна база"
         },
+        "landuse/military/base/navy": {
+          "name": "Военноморска база"
+        },
         "landuse/orchard": {
           "name": "Овощна градина"
         },
         "landuse/plant_nursery": {
           "name": "Разсадник"
         },
+        "landuse/pond": {
+          "name": "Резервоар"
+        },
         "landuse/quarry": {
           "name": "Кариера"
         },
         "landuse/railway": {
           "name": "Железопътен коридор"
+        },
+        "landuse/reservoir": {
+          "name": "Язовир"
         },
         "landuse/residential": {
           "name": "Жилищна зона"
@@ -920,6 +946,10 @@
         "leisure/pitch/soccer": {
           "name": "Футболно игрище"
         },
+        "leisure/pitch/table_soccer": {
+          "name": "Маса за джаги",
+          "terms": "фусбол,маса за фусбол,футбол на маса"
+        },
         "leisure/pitch/table_tennis": {
           "name": "Тенис маса",
           "terms": "тенис на маса,пинг понг"
@@ -965,6 +995,9 @@
         },
         "man_made/cutline": {
           "name": "Просека"
+        },
+        "man_made/embankment": {
+          "name": "Насип"
         },
         "man_made/lighthouse": {
           "name": "Морски фар"
@@ -1026,11 +1059,17 @@
         "natural/heath": {
           "name": "Малки храсти"
         },
+        "natural/hot_spring": {
+          "name": "Горещ минерален извор"
+        },
         "natural/peak": {
           "name": "Връх"
         },
         "natural/reef": {
           "name": "Риф"
+        },
+        "natural/sand": {
+          "name": "Пясък"
         },
         "natural/scrub": {
           "name": "Шубрак"
@@ -1050,6 +1089,9 @@
         },
         "natural/water": {
           "name": "Водна площ"
+        },
+        "natural/water/basin": {
+          "name": "Басейн"
         },
         "natural/water/canal": {
           "name": "Канал"
@@ -1100,6 +1142,9 @@
         "office/lawyer/notary": {
           "name": "Нотариус"
         },
+        "office/notary": {
+          "name": "Нотариус"
+        },
         "office/travel_agent": {
           "name": "Туристическа агенция"
         },
@@ -1124,11 +1169,17 @@
         "place/neighbourhood": {
           "name": "Квартал"
         },
+        "place/square": {
+          "name": "Квадрат"
+        },
         "place/town": {
           "name": "Град под 100 000"
         },
         "place/village": {
           "name": "Село"
+        },
+        "playground": {
+          "name": "Оборудване за детски площадки"
         },
         "playground/sandpit": {
           "name": "Пясъчник"
@@ -1250,6 +1301,9 @@
         "public_transport/platform/trolleybus_point": {
           "name": "Тролейбусна спирка"
         },
+        "public_transport/station_bus": {
+          "name": "Автостанция / терминал"
+        },
         "public_transport/station_subway": {
           "name": "Метростанция"
         },
@@ -1265,6 +1319,9 @@
         },
         "railway/disused": {
           "name": "Закрита железопътна линия"
+        },
+        "railway/halt": {
+          "name": "Железопътна спирка (по желание)"
         },
         "railway/level_crossing": {
           "name": "ЖП прелез",
@@ -1296,10 +1353,12 @@
           "name": "Релация"
         },
         "route/ferry": {
-          "name": "Фериботна връзка"
+          "name": "Фериботна връзка",
+          "terms": "фериботен маршрут"
         },
         "shop": {
-          "name": "Магазин"
+          "name": "Магазин",
+          "terms": "търговски обект"
         },
         "shop/alcohol": {
           "name": "Магазин за алкохол"
@@ -1346,6 +1405,10 @@
         },
         "shop/butcher": {
           "name": "Колбаси"
+        },
+        "shop/candles": {
+          "name": "Магазин за свещи",
+          "terms": "восък"
         },
         "shop/car": {
           "name": "Автокъща",
@@ -1404,6 +1467,10 @@
         },
         "shop/dry_cleaning": {
           "name": "Химическо чистене"
+        },
+        "shop/e-cigarette": {
+          "name": "Магазин за електронни цигари",
+          "terms": "вейп,vape"
         },
         "shop/electronics": {
           "name": "Магазин за електроника"
@@ -1516,6 +1583,9 @@
         "shop/supermarket": {
           "name": "Супермаркет"
         },
+        "shop/tailor": {
+          "name": "Шивач"
+        },
         "shop/toys": {
           "name": "Магазин за играчки"
         },
@@ -1526,14 +1596,25 @@
           "name": "Магазин за автомобилни гуми"
         },
         "shop/vacant": {
-          "name": "Свободна търговска площ"
+          "name": "Свободна търговска площ",
+          "terms": "вакантен магазин"
         },
         "shop/video": {
           "name": "Видеотека"
         },
+        "shop/wigs": {
+          "name": "Магазин за перуки"
+        },
         "shop/window_blind": {
           "name": "Магазин за щори",
           "terms": "ролетни щори"
+        },
+        "shop/wine": {
+          "name": "Магазин за вино",
+          "terms": "изба"
+        },
+        "shop/yes": {
+          "name": "Магазин (неуточнен тип)"
         },
         "telecom/data_center": {
           "name": "Център за данни"
@@ -1722,6 +1803,9 @@
         },
         "type/route_master": {
           "name": "Маршрутна схема"
+        },
+        "type/waterway": {
+          "name": "Води"
         },
         "waterway/canal": {
           "name": "Канал"

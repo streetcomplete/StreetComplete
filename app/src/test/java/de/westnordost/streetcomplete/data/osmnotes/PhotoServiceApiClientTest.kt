@@ -10,8 +10,9 @@ import io.ktor.client.engine.mock.toByteArray
 import io.ktor.http.ContentType
 import io.ktor.http.HttpMethod
 import io.ktor.http.HttpStatusCode
-import io.ktor.utils.io.errors.IOException
 import kotlinx.coroutines.runBlocking
+import kotlinx.io.IOException
+import kotlinx.io.files.SystemFileSystem
 import kotlinx.serialization.SerializationException
 import kotlin.test.Test
 import kotlin.test.assertContentEquals
@@ -21,11 +22,12 @@ import kotlin.test.assertFailsWith
 class PhotoServiceApiClientTest {
 
     private val picture = "src/test/resources/hai_phong_street.jpg"
+    private val fileSystem = SystemFileSystem
 
     @Test
     fun `upload makes POST request with file contents and returns response`() = runBlocking {
         val mockEngine = MockEngine { respondOk("{\"future_url\": \"market.jpg\"}") }
-        val client = PhotoServiceApiClient(HttpClient(mockEngine), "http://example.com/")
+        val client = PhotoServiceApiClient(fileSystem, HttpClient(mockEngine), "http://example.com/")
 
         val response = client.upload(listOf(picture))
 
@@ -56,7 +58,7 @@ class PhotoServiceApiClientTest {
     @Test
     fun `upload performs no requests with missing file`() = runBlocking {
         val mockEngine = MockEngine { respondOk() }
-        val client = PhotoServiceApiClient(HttpClient(mockEngine), "http://example.com/")
+        val client = PhotoServiceApiClient(fileSystem, HttpClient(mockEngine), "http://example.com/")
 
         assertContentEquals(listOf(), client.upload(listOf("no-such-file-at-this-path.jpg")))
         assertEquals(0, mockEngine.requestHistory.size)
@@ -65,7 +67,7 @@ class PhotoServiceApiClientTest {
     @Test
     fun `activate makes POST request with note ID`() = runBlocking {
         val mockEngine = MockEngine { respondOk() }
-        val client = PhotoServiceApiClient(HttpClient(mockEngine), "http://example.com/")
+        val client = PhotoServiceApiClient(fileSystem, HttpClient(mockEngine), "http://example.com/")
 
         client.activate(123)
 
@@ -91,5 +93,5 @@ class PhotoServiceApiClientTest {
     }
 
     private fun client(engine: HttpClientEngine) =
-        PhotoServiceApiClient(HttpClient(engine), "http://example.com/")
+        PhotoServiceApiClient(fileSystem, HttpClient(engine), "http://example.com/")
 }

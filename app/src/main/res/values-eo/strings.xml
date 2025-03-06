@@ -1244,8 +1244,6 @@ Movu ĝin nun?"</string>
     <string name="overlay_surface">"Surfacoj"</string>
     <string name="overlay_path_surface_segregated">"Dividi la biciklan kaj piedpaŝan partojn"</string>
     <string name="quest_crossing_title2">"Ĉu ĉi tie estas piedira transirejo?"</string>
-    <string name="quest_crossing_yes">"Jes (ekz. la trotuarrando estas malaltigita aŭ markita)"</string>
-    <string name="quest_crossing_no">"Ne, sed transiri eblas"</string>
     <string name="quest_crossing_prohibited">"Ne, transiri estas malpermesata aŭ ne ebla"</string>
     <string name="quest_hairdresser_title">"Kiuj estas la klientoj de ĉi tiu frizisto?"</string>
     <string name="quest_hairdresser_male_and_female">"Ĉiuj"</string>

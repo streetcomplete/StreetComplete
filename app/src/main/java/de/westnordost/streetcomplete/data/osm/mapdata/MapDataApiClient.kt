@@ -40,6 +40,8 @@ class MapDataApiClient(
      *                           is not the same as the one uploading the change
      * @throws AuthorizationException if the application does not have permission to edit the map
      *                                (OAuth scope "write_api")
+     * @throws ChangesetTooLargeException when the [changes] don't fit into the changeset with the given
+     *                               [changesetId] anymore.
      * @throws ConnectionException if a temporary network connection problem occurs
      *
      * @return the updated elements
@@ -60,7 +62,7 @@ class MapDataApiClient(
             return createMapDataUpdates(changedElements, updates, ignoreRelationTypes)
         } catch (e: ClientRequestException) {
             when (e.response.status) {
-                // current element version is outdated, current changeset has been closed already
+                // current element version is outdated or current changeset has been closed already
                 HttpStatusCode.Conflict,
                 // an element referred to by another element does not exist (anymore) or was redacted
                 HttpStatusCode.PreconditionFailed,
@@ -69,6 +71,9 @@ class MapDataApiClient(
                 // some elements do not exist and never existed
                 HttpStatusCode.NotFound -> {
                     throw ConflictException(e.message, e)
+                }
+                HttpStatusCode.PayloadTooLarge -> {
+                    throw ChangesetTooLargeException(e.message, e)
                 }
                 else -> throw e
             }
@@ -209,3 +214,8 @@ data class MapDataChanges(
 sealed interface ElementUpdateAction
 data class UpdateElement(val newId: Long, val newVersion: Int) : ElementUpdateAction
 data object DeleteElement : ElementUpdateAction
+
+/** While adding changes to our changeset, the API reports that the changeset limit is already
+ *  reached. We must create a new changeset */
+class ChangesetTooLargeException(message: String? = null, cause: Throwable? = null) :
+    RuntimeException(message, cause)

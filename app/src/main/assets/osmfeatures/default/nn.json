@@ -2,8 +2,17 @@
   "nn": {
     "presets": {
       "presets": {
+        "address": {
+          "name": "Addresse"
+        },
         "amenity/atm": {
           "name": "Minibank"
+        },
+        "amenity/bar": {
+          "name": "Bar"
+        },
+        "amenity/bench": {
+          "name": "Benk"
         },
         "amenity/dentist": {
           "name": "Tannlege"
@@ -14,14 +23,80 @@
         "amenity/language_school": {
           "name": "Språkskule"
         },
+        "amenity/telephone": {
+          "name": "Telefon"
+        },
+        "area": {
+          "name": "Område"
+        },
         "attraction/carousel": {
           "name": "Karusell"
+        },
+        "barrier/entrance": {
+          "name": "Inngang"
+        },
+        "barrier/wall": {
+          "name": "Vegg"
+        },
+        "building": {
+          "name": "Bygning"
+        },
+        "building/school": {
+          "name": "Skulebugning"
+        },
+        "building_point": {
+          "name": "Bygning"
+        },
+        "craft/tailor": {
+          "name": "Skreddar"
+        },
+        "craft/watchmaker": {
+          "name": "Klokkemakar"
+        },
+        "craft/winery": {
+          "name": "Vinprodusent"
+        },
+        "entrance/emergency": {
+          "name": "Naudutgang"
         },
         "leisure/dancing_school": {
           "name": "Danseskule"
         },
+        "line": {
+          "name": "Linje"
+        },
+        "office/diplomatic/consulate": {
+          "name": "Konsulat"
+        },
+        "place": {
+          "name": "Plass"
+        },
+        "place/city": {
+          "name": "By/Bygd"
+        },
+        "place/hamlet": {
+          "name": "Grend"
+        },
+        "place/square": {
+          "name": "Kvadrat"
+        },
+        "point": {
+          "name": "Punkt"
+        },
+        "seamark": {
+          "name": "Sjømerke"
+        },
+        "shop/tailor": {
+          "name": "Skreddar"
+        },
+        "tourism/artwork/sculpture": {
+          "name": "Skulptur"
+        },
         "waterway/river": {
           "name": "Elv"
+        },
+        "waterway/stream": {
+          "name": "Straum"
         }
       }
     }
