@@ -17,7 +17,6 @@ import kotlinx.coroutines.runBlocking
 import org.mockito.ArgumentMatchers.anyBoolean
 import org.mockito.ArgumentMatchers.anyLong
 import org.mockito.Mockito.doThrow
-import org.mockito.Mockito.verify
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals

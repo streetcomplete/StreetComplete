@@ -164,7 +164,6 @@ class MapDataWithEditsSource internal constructor(
                 synchronized(isReplacingForBBoxLock) { isReplacingForBBox = false }
 
                 callOnUpdated(updated, deleted)
-
             }
         }
 
