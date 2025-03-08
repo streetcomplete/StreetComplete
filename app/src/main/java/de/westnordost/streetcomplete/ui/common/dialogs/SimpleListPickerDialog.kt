@@ -4,6 +4,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
@@ -50,6 +51,7 @@ fun <T> SimpleListPickerDialog(
     title: (@Composable () -> Unit)? = null,
     selectedItem: T? = null,
     getItemName: (@Composable (T) -> String) = { it.toString() },
+    showButtons: Boolean = true,
     width: Dp? = null,
     shape: Shape = MaterialTheme.shapes.medium,
     backgroundColor: Color = MaterialTheme.colors.surface,
@@ -103,16 +105,18 @@ fun <T> SimpleListPickerDialog(
                                 modifier = Modifier
                                     .clickable { select(item) }
                                     .padding(horizontal = 24.dp)
+                                    .heightIn(min = 40.dp)
                             ) {
                                 Text(
                                     text = getItemName(item),
                                     style = MaterialTheme.typography.body1,
                                     modifier = Modifier.weight(1f),
                                 )
-                                RadioButton(
-                                    selected = selected == item,
-                                    onClick = { select(item) }
-                                )
+                                if (showButtons)
+                                    RadioButton(
+                                        selected = selected == item,
+                                        onClick = { select(item) }
+                                    )
                             }
                         }
                     }

@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.data.download
 import android.content.Context
 import android.content.pm.ServiceInfo.FOREGROUND_SERVICE_TYPE_DATA_SYNC
 import android.os.Build
-import androidx.preference.PreferenceManager
 import androidx.work.CoroutineWorker
 import androidx.work.ForegroundInfo
 import androidx.work.OneTimeWorkRequest
@@ -16,7 +15,6 @@ import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.sync.createSyncNotification
-import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 
 /** Downloads all quests and tiles in a given area asynchronously.
@@ -51,7 +49,8 @@ class DownloadWorker(
             val isPriorityDownload = inputData.getBoolean(ARG_IS_USER_INITIATED, false)
             downloader.download(bbox,
                 isPriorityDownload,
-                PreferenceManager.getDefaultSharedPreferences(context).getBoolean(Prefs.MANUAL_DOWNLOAD_OVERRIDE_CACHE, true)
+                context.getSharedPreferences(context.packageName + "_preferences", Context.MODE_PRIVATE)
+                    .getBoolean(Prefs.MANUAL_DOWNLOAD_OVERRIDE_CACHE, true)
             )
             Result.success()
         } catch (e: Exception) {

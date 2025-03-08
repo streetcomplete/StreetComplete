@@ -70,11 +70,11 @@ fun SettingsScreen(
     onClickPresetSelection: () -> Unit,
     onClickQuestSelection: () -> Unit,
     onClickBack: () -> Unit,
-    onClickSceeFragment: (Int) -> Unit,
     onClickQuestSettings: () -> Unit,
     onClickUiSettings: () -> Unit,
     onClickDisplaySettings: () -> Unit,
     onClickNoteSettings: () -> Unit,
+    onClickDataSettings: () -> Unit,
 ) {
     val hiddenQuestCount by viewModel.hiddenQuestCount.collectAsState()
     val questTypeCount by viewModel.questTypeCount.collectAsState()
@@ -263,7 +263,7 @@ fun SettingsScreen(
                 )
                 Preference(
                     name = stringResource(R.string.pref_screen_data_management),
-                    onClick = { onClickSceeFragment(5) },
+                    onClick = onClickDataSettings,
                 )
                 if (BuildConfig.DEBUG) {
                     Preference(

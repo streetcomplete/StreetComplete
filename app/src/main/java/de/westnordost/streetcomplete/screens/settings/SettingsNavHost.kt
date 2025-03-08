@@ -18,7 +18,6 @@ import org.koin.androidx.compose.koinViewModel
     onClickBack: () -> Unit,
     onClickShowQuestTypeForDebug: (QuestType) -> Unit,
     startDestination: String? = null,
-    onClickSceeFragment: (Int) -> Unit
 ) {
     val navController = rememberNavController()
     val dir = LocalLayoutDirection.current.dir
@@ -42,11 +41,11 @@ import org.koin.androidx.compose.koinViewModel
                 onClickPresetSelection = { navController.navigate(SettingsDestination.QuestPresets) },
                 onClickQuestSelection = { navController.navigate(SettingsDestination.QuestSelection) },
                 onClickBack = ::goBack,
-                onClickSceeFragment = onClickSceeFragment,
                 onClickQuestSettings = { navController.navigate(SettingsDestination.QuestSettings) },
                 onClickUiSettings = { navController.navigate(SettingsDestination.UiSettings) },
                 onClickDisplaySettings = { navController.navigate(SettingsDestination.DisplaySettings) },
                 onClickNoteSettings = { navController.navigate(SettingsDestination.NoteSettings) },
+                onClickDataSettings = { navController.navigate(SettingsDestination.DataManagementSettings) },
             )
         }
         composable(SettingsDestination.QuestPresets) {
@@ -88,6 +87,11 @@ import org.koin.androidx.compose.koinViewModel
                 onClickBack = ::goBack
             )
         }
+        composable(SettingsDestination.DataManagementSettings) {
+            DataManagementScreen(
+                onClickBack = ::goBack
+            )
+        }
     }
 }
 
@@ -100,4 +104,5 @@ object SettingsDestination {
     const val UiSettings = "scee_ui_settings"
     const val DisplaySettings = "scee_display_settings"
     const val NoteSettings = "scee_note_settings"
+    const val DataManagementSettings = "scee_data_settings"
 }

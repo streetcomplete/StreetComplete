@@ -142,7 +142,6 @@ dependencies {
     implementation("androidx.annotation:annotation:1.9.1")
     implementation("androidx.fragment:fragment-ktx:1.8.6")
     implementation("androidx.recyclerview:recyclerview:1.4.0")
-    implementation("androidx.preference:preference-ktx:1.2.1")
     implementation("androidx.viewpager:viewpager:1.1.0")
     implementation("androidx.localbroadcastmanager:localbroadcastmanager:1.1.0")
 

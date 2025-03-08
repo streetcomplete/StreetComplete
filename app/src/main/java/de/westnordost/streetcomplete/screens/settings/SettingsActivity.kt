@@ -66,7 +66,6 @@ class SettingsActivity : BaseActivity(), AbstractOsmQuestForm.Listener {
                         onClickBack = { finish() },
                         onClickShowQuestTypeForDebug = ::onClickQuestType,
                         startDestination = if (launchQuestSelection) SettingsDestination.QuestSelection else null,
-                        onClickSceeFragment = { loadSceeSettingsFragment(it) }
                     )
                 }
             }
@@ -175,17 +174,6 @@ class SettingsActivity : BaseActivity(), AbstractOsmQuestForm.Listener {
         binding.questFormContainer.visibility = View.VISIBLE
         supportFragmentManager.commit {
             replace(R.id.questForm, f)
-            addToBackStack(null)
-        }
-    }
-
-    private fun loadSceeSettingsFragment(screenId: Int) {
-        supportFragmentManager.commit {
-            val f = when (screenId) {
-                else -> DataManagementSettingsFragment()
-            }
-            binding.sceeSettingsFragmentContainer.visibility = View.VISIBLE
-            replace(R.id.sceeSettingsFragment, f)
             addToBackStack(null)
         }
     }
