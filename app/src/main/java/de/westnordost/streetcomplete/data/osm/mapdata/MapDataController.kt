@@ -7,18 +7,8 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryDao
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryEntry
 import de.westnordost.streetcomplete.util.Listeners
 import de.westnordost.streetcomplete.util.ktx.format
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.SupervisorJob
-import kotlinx.coroutines.launch
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.logs.Log
-import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
-import kotlinx.coroutines.CoroutineStart
-import kotlinx.coroutines.NonCancellable
-import kotlinx.coroutines.channels.Channel
-import kotlin.coroutines.EmptyCoroutineContext
 
 /** Controller to access element data and its geometry and handle updates to it (from OSM API) */
 class MapDataController internal constructor(
@@ -62,13 +52,6 @@ class MapDataController internal constructor(
         { nodeDB.getAll(it) },
     )
 
-    // the previous job + join thing might have been cancelled sometimes, so try something different
-    // todo: if this doesn't help, consider dropping the background update (app is not working on slow S4 Mini anyway...)
-    private val scope = CoroutineScope(SupervisorJob() + Dispatchers.IO + NonCancellable)
-    private val channel = Channel<Job>(Channel.UNLIMITED).apply {
-        scope.launch { for (j in this@apply) j.join() }
-    }
-
     /** update element data with [mapData] in the given [bbox] (fresh data from the OSM API has been
      *  downloaded) */
     fun putAllForBBox(bbox: BoundingBox, mapData: MutableMapData) {
@@ -92,31 +75,22 @@ class MapDataController internal constructor(
             // for the cache, use bbox and not mapData.boundingBox because the latter is padded,
             // see comment for QUEST_FILTER_PADDING
             cache.update(oldElementKeys, mapData, geometryEntries, bbox)
+
+            elementDB.deleteAll(oldElementKeys)
+            geometryDB.deleteAll(oldElementKeys)
+            geometryDB.putAll(geometryEntries)
+            elementDB.putAll(mapData)
         }
+
+        Log.i(TAG,
+            "Persisted ${geometryEntries.size} and deleted ${oldElementKeys.size} elements and geometries" +
+                " in ${((nowAsEpochMilliseconds() - time) / 1000.0).format(1)}s"
+        )
 
         val mapDataWithGeometry = MutableMapDataWithGeometry(mapData, geometryEntries)
         mapDataWithGeometry.boundingBox = mapData.boundingBox
 
-        // first call onReplaced, then persist the data
-        // this allows quests to be created and displayed before starting to persist data (which slows down quest creation considerably)
-        // overall the persist takes a little longer, but it's still perceived as a clear performance improvement
-        cache.noTrimPlus(mapData.boundingBox!!) // quest creation can trigger trim, so we need to set noTrim here
         onReplacedForBBox(bbox, mapDataWithGeometry)
-
-        val job = scope.launch(EmptyCoroutineContext, CoroutineStart.LAZY) {
-            synchronized(this@MapDataController) {
-                elementDB.deleteAll(oldElementKeys)
-                geometryDB.deleteAll(oldElementKeys)
-                geometryDB.putAll(geometryEntries)
-                elementDB.putAll(mapData)
-            }
-            cache.noTrimMinus(mapData.boundingBox!!)
-            Log.i(TAG,
-                "Persisted ${geometryEntries.size} and deleted ${oldElementKeys.size} elements and geometries" +
-                " in ${((nowAsEpochMilliseconds() - time) / 1000.0).format(1)}s"
-            )
-        }
-        channel.trySend(job)
     }
 
     /** incorporate the [mapDataUpdates] (data has been updated after upload) */
@@ -138,36 +112,17 @@ class MapDataController internal constructor(
 
             cache.update(deletedKeys, elements, geometryEntries)
 
-            if (newElementKeys.isNotEmpty())
-                createdElementsController.putAll(newElementKeys)
+            elementDB.deleteAll(deletedKeys)
+            geometryDB.deleteAll(deletedKeys)
+            geometryDB.putAll(geometryEntries)
+            elementDB.putAll(elements)
+            createdElementsController.putAll(newElementKeys)
         }
 
         val mapDataWithGeom = MutableMapDataWithGeometry(elements, geometryEntries)
         mapDataWithGeom.boundingBox = mapData.boundingBox
 
-        val bbox = (geometryEntries + getGeometries(mapDataUpdates.deleted))
-            .ifEmpty { getGeometries(geometryEntries.map { it.key }) }
-            .flatMap { listOf(it.geometry.getBounds().min, it.geometry.getBounds().max) }
-            .ifEmpty {
-                // in some cases this list can be empty, find out what is going on
-                Log.w(TAG, "updateAll: geometries empty? $mapDataUpdates")
-                listOf(LatLon(0.0, 0.0))
-            }
-            .enclosingBoundingBox()
-        cache.noTrimPlus(bbox) // quest creation can trigger trim, so we need to set noTrim here
         onUpdated(updated = mapDataWithGeom, deleted = deletedKeys)
-
-        val job = scope.launch(EmptyCoroutineContext, CoroutineStart.LAZY) {
-            synchronized(this@MapDataController) {
-                elementDB.deleteAll(deletedKeys)
-                geometryDB.deleteAll(deletedKeys)
-                geometryDB.putAll(geometryEntries)
-                elementDB.putAll(elements)
-            }
-            cache.noTrimMinus(bbox)
-            Log.i(TAG, "Persisted ${elements.size} and deleted ${deletedKeys.size} elements and geometries")
-        }
-        channel.trySend(job)
     }
 
     /** Create ElementGeometryEntries for [elements] using [mapData] to supply the necessary geometry */
@@ -334,12 +289,12 @@ class MapDataController internal constructor(
 
 // StyleableOverlayManager loads z16 tiles, but we want smaller tiles. Small tiles make db fetches for
 // typical getMapDataWithGeometry calls noticeably faster than z16, as they usually only require a small area.
-private const val SPATIAL_CACHE_TILE_ZOOM = 18
+private const val SPATIAL_CACHE_TILE_ZOOM = 17
 
 // Three times the maximum number of tiles that can be loaded at once in StyleableOverlayManager (translated from z16 tiles).
 // We don't want to drop tiles from cache already when scrolling the map just a bit, especially
 // considering automatic trim may temporarily reduce cache size to 2/3 of maximum.
-private const val SPATIAL_CACHE_TILES = 64 * 4 * 4 // 48 z16 tiles, but 2 zoom levels higher
+private const val SPATIAL_CACHE_TILES = 192
 
 // In a city this is roughly the number of nodes in ~20-40 z16 tiles
 private const val SPATIAL_CACHE_INITIAL_CAPACITY = 100000

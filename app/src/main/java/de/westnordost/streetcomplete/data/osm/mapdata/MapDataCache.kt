@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.data.osm.mapdata
 
-import de.westnordost.streetcomplete.data.download.tiles.TilePos
 import de.westnordost.streetcomplete.data.download.tiles.enclosingTilesRect
 import de.westnordost.streetcomplete.data.download.tiles.upToTwoMinTileRects
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
@@ -28,16 +27,12 @@ class MapDataCache(
     private val fetchMapData: (BoundingBox) -> Pair<Collection<Element>, Collection<ElementGeometryEntry>>, // used if the tile is not contained
     private val fetchNodes: (Collection<Long>) -> Collection<Node>,
 ) {
-    // contains tiles that should not be trimmed, and number of calls to not trim this tile
-    private val noTrim = HashMap<TilePos, Int>()
-
     private val spatialCache = SpatialCache(
         tileZoom,
         maxTiles,
         initialCapacity,
         { emptyList() }, // data is fetched using fetchMapData and put using spatialCache.replaceAllInBBox
         Node::key, Node::position,
-        noTrim // actually noTrim.keys is sufficient, but whatever
     )
     // initial values obtained from a spot check:
     //  approximately 80% of all elements were found to be nodes
@@ -47,24 +42,6 @@ class MapDataCache(
     private val wayRelationGeometryCache = HashMap<ElementKey, ElementGeometry>(initialCapacity / 5)
     private val wayKeyByNodeKeyCache = HashMap<ElementKey, MutableList<ElementKey>>(initialCapacity / 2)
     private val relationKeysByElementKeyCache = HashMap<ElementKey, MutableList<ElementKey>>(initialCapacity / 10)
-
-    fun noTrimPlus(bbox: BoundingBox) = synchronized(this) {
-        // bbox to tiles, and increase all by 1
-        bbox.enclosingTilesRect(tileZoom).asTilePosSequence().forEach { tile ->
-            noTrim[tile] = (noTrim[tile] ?: 0) + 1
-        }
-    }
-
-    fun noTrimMinus(bbox: BoundingBox) = synchronized(this) {
-        // if number is 0, remove tile from map
-        bbox.enclosingTilesRect(tileZoom).asTilePosSequence().forEach { tile ->
-            val newValue = (noTrim[tile] ?: 0) - 1
-            if (newValue > 0) noTrim[tile] = newValue
-            else noTrim.remove(tile)
-        }
-        if (spatialCache.size > maxTiles)
-            trim(maxTiles * 2 / 3)
-    }
 
     /**
      * Removes elements and geometries with keys in [deletedKeys] from cache and puts the
@@ -509,9 +486,6 @@ class MapDataCache(
      */
     fun trim(tiles: Int) { synchronized(this) {
         Log.i(TAG, "trim to $tiles tiles")
-
-        // spatialCache does not remove tiles contained in noTrim
-        spatialCache.trim(tiles)
 
         // ways and relations with at least one element in cache should not be removed
         val (wayIds, relationIds) = determineWayAndRelationIdsWithElementsInSpatialCache()
