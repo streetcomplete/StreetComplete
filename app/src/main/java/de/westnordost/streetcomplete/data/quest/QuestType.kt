@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.data.quest
 import androidx.appcompat.app.AlertDialog
 import android.content.Context
 import android.content.SharedPreferences
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.StreetCompleteApplication
 import de.westnordost.streetcomplete.data.osm.edits.EditType
 import de.westnordost.streetcomplete.quests.AbstractQuestForm
@@ -42,6 +43,12 @@ interface QuestType : EditType {
 
     fun getQuestSettingsDialog(context: Context): AlertDialog? = null
     val hasQuestSettings: Boolean get() = false
+    @Composable
+    fun QuestSettings(context: Context, onDismissRequest: () -> Unit) {
+        getQuestSettingsDialog(context)?.show()
+        onDismissRequest()
+    }
+
 
     /** color of the dot, which is used instead of a quest pin */
     val dotColor: String? get() = null

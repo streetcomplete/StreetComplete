@@ -86,24 +86,24 @@ fun QuestSelectionRow(
                 DisabledHint(stringResource(R.string.questList_disabled_by_default))
             }
         }
-        if (item.questType.hasQuestSettings)
+        if (item.questType.hasQuestSettings) {
+            var showQuestSettings by remember { mutableStateOf(false) }
             Image(
                 painter = painterResource(R.drawable.ic_settings_48dp),
                 contentDescription = null,
                 modifier = Modifier
                     .padding(start = 16.dp)
                     .size(48.dp)
-                    .clickable {
-                        item.questType
-                            .getQuestSettingsDialog(c)
-                            ?.show()
-                    }
+                    .clickable { showQuestSettings = true }
                     .background( // looks ugly and does not appear right after dismissing dialog, but whatever... I don't care any more.
                         color = nowItHasToBeSomewhereElse(item),
                         shape = CircleShape
                     )
                     .alpha(alpha),
             )
+            if (showQuestSettings)
+                item.questType.QuestSettings(c) { showQuestSettings = false }
+        }
         Box(
             modifier = Modifier
                 .width(64.dp)
