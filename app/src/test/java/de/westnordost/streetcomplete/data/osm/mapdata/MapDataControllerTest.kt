@@ -71,7 +71,7 @@ class MapDataControllerTest {
 
     @Test fun getMapDataWithGeometry() {
         val bbox = bbox()
-        val bboxCacheWillRequest = bbox.asBoundingBoxOfEnclosingTiles(18)
+        val bboxCacheWillRequest = bbox.asBoundingBoxOfEnclosingTiles(17)
         val geomEntries = listOf(
             ElementGeometryEntry(NODE, 1L, pGeom()),
             ElementGeometryEntry(NODE, 2L, pGeom()),
@@ -195,7 +195,6 @@ class MapDataControllerTest {
 
         controller.addListener(listener)
         controller.putAllForBBox(bbox, mapData)
-        sleep(2000) // long wait necessary, because cache.noTrimPlus takes long for such a huge bbox (33k z16 tiles)
 
         verify(elementDB).deleteAll(eq(emptySet()))
         verify(geometryDB).deleteAll(eq(emptySet()))

@@ -1320,7 +1320,7 @@ class MapDataWithEditsSourceTest {
 
     //endregion
 
-    private fun create() = MapDataWithEditsSource(mapDataCtrl, editsCtrl, geometryCreator, mock(), mock())
+    private fun create() = MapDataWithEditsSource(mapDataCtrl, editsCtrl, geometryCreator)
 
     /** Feed mock MapDataController the data */
     private fun originalGeometriesAre(vararg elementGeometryEntries: ElementGeometryEntry) {
