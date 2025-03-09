@@ -18,6 +18,7 @@ class AddBusStopName : OsmFilterQuestType<BusStopNameAnswer>() {
           or highway = bus_stop and public_transport != stop_position
           or railway ~ halt|station|tram_stop
         )
+        and access !~ no|private
         and !name and noname != yes and name:signed != no
     """
 
