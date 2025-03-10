@@ -13,6 +13,7 @@ class AddRoofColour : OsmFilterQuestType<RoofColour>() {
           roof:shape
           and roof:shape != flat
           and !roof:colour
+          and building
           and building !~ no|construction
           and location != underground
           and ruins != yes

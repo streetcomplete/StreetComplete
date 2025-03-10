@@ -22,6 +22,7 @@ class AddRoofOrientation : OsmElementQuestType<String> {
           roof:shape = gabled
           and !roof:orientation
           and !roof:direction
+          and building
           and building !~ no|construction
           and location != underground
           and ruins != yes
