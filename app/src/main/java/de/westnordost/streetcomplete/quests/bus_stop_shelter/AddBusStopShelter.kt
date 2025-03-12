@@ -19,6 +19,7 @@ class AddBusStopShelter : OsmFilterQuestType<BusStopShelterAnswer>() {
           or (highway = bus_stop and public_transport != stop_position)
         )
         and physically_present != no and naptan:BusStopType != HAR
+        and access !~ no|private
         and !covered
         and location !~ underground|indoor
         and indoor != yes

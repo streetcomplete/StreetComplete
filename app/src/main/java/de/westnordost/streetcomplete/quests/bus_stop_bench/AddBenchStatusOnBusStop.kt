@@ -18,6 +18,7 @@ class AddBenchStatusOnBusStop : OsmFilterQuestType<Boolean>() {
           or (highway = bus_stop and public_transport != stop_position)
         )
         and physically_present != no and naptan:BusStopType != HAR
+        and access !~ no|private
         and (!bench or bench older today -4 years)
     """
     override val changesetComment = "Specify whether public transport stops have benches"
