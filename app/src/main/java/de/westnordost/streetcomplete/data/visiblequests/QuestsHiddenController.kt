@@ -45,12 +45,12 @@ class QuestsHiddenController(
     fun unhide(key: QuestKey): Boolean {
         val timestamp: Long
         synchronized(this) {
+            timestamp = getTimestamp(key) ?: return false
             val result = when (key) {
                 is OsmQuestKey -> osmDb.delete(key)
                 is OsmNoteQuestKey -> notesDb.delete(key.noteId)
             }
             if (!result) return false
-            timestamp = getTimestamp(key) ?: return false
             cache.remove(key)
         }
         listeners.forEach { it.onUnhid(key, timestamp) }
