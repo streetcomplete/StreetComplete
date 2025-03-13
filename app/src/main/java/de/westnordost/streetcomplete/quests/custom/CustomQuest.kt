@@ -24,6 +24,7 @@ import de.westnordost.streetcomplete.data.externalsource.ExternalSourceQuest
 import de.westnordost.streetcomplete.data.externalsource.ExternalSourceQuestType
 import de.westnordost.streetcomplete.util.ktx.getActivity
 import kotlinx.io.IOException
+import org.koin.compose.koinInject
 import java.io.File
 
 class CustomQuest(private val customQuestList: CustomQuestList) : ExternalSourceQuestType {
@@ -74,6 +75,7 @@ class CustomQuest(private val customQuestList: CustomQuestList) : ExternalSource
     override fun QuestSettings(context: Context, onDismissRequest: () -> Unit) {
         val file = File(context.getExternalFilesDir(null), FILENAME_CUSTOM_QUEST)
         val activity = LocalContext.current.getActivity()!!
+        val customQuestList: CustomQuestList = koinInject()
         val importIntent = Intent(Intent.ACTION_OPEN_DOCUMENT).apply {
             addCategory(Intent.CATEGORY_OPENABLE)
             type = "*/*" // can't select text file if setting to application/text
@@ -88,6 +90,7 @@ class CustomQuest(private val customQuestList: CustomQuestList) : ExternalSource
                 return@rememberLauncherForActivityResult
             val uri = it.data?.data ?: return@rememberLauncherForActivityResult
             readFromUriToExternalFile(uri, file.name, activity)
+            customQuestList.reload()
             onDismissRequest()
         }
         val exportFileLauncher = rememberLauncherForActivityResult(ActivityResultContracts.StartActivityForResult()) {
