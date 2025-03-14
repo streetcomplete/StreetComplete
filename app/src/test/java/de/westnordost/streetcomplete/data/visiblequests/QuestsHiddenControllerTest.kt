@@ -104,7 +104,8 @@ class QuestsHiddenControllerTest {
         assertTrue(ctrl.unhide(q))
         assertFalse(ctrl.unhide(q))
 
-        verify(osmDb, times(2)).delete(q)
+        verify(osmDb, times(2)).getTimestamp(q)
+        verify(osmDb, times(1)).delete(q)
         verify(listener, times(1)).onUnhid(q, 123)
     }
 
@@ -112,12 +113,13 @@ class QuestsHiddenControllerTest {
         val q = OsmNoteQuestKey(2)
 
         on(notesDb.delete(q.noteId)).thenReturn(true).thenReturn(false)
-        on(notesDb.getTimestamp(q.noteId)).thenReturn(123)
+        on(notesDb.getTimestamp(q.noteId)).thenReturn(123).thenReturn(null)
 
         assertTrue(ctrl.unhide(q))
         assertFalse(ctrl.unhide(q))
 
-        verify(notesDb, times(2)).delete(q.noteId)
+        verify(notesDb, times(2)).getTimestamp(q.noteId)
+        verify(notesDb, times(1)).delete(q.noteId)
         verify(listener, times(1)).onUnhid(q, 123)
     }
 
