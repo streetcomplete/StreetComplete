@@ -203,6 +203,7 @@ dependencies {
     implementation("io.github.pdvrieze.xmlutil:core:0.90.3")
 
     // map and location
+    // upgrading MapLibre blocked by https://github.com/maplibre/maplibre-native/issues/3309
     implementation("org.maplibre.gl:android-sdk:11.8.0")
 
     // opening hours parser
