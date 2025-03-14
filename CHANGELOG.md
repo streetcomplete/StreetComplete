@@ -1,5 +1,12 @@
 # Changelog
 
+## v60.3
+
+- downgraded third-party component that renders the map because causes crashes due to out of memory (see #6166)
+- fix undoing hiding a quest seemingly didn't work (#6162)
+- improve location permission wording (#6156)
+- Bus stop quests: Don't ask for private ones (#6158), by @k-yle
+
 ## v60.2
 
 ### Fixes

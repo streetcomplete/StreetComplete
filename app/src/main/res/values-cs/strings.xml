@@ -1268,6 +1268,8 @@ Chcete ho posunout?"</string>
     <string name="overlay_surface">"Povrchy"</string>
     <string name="overlay_path_surface_segregated">"Rozděleno na části pro cyklisty a chodce"</string>
     <string name="quest_crossing_title2">"Je zde přechod?"</string>
+    <string name="quest_crossing_yes">"Ano, určeno jako přechod"</string>
+    <string name="quest_crossing_no">"Není určeno jako přechod, ale přecházení je možné (např. neformální cesty)"</string>
     <string name="quest_crossing_prohibited">"Ne, přecházení je zakázáno nebo nemožné"</string>
     <string name="quest_hairdresser_title">"Jací zákazníci navštěvují toto kadeřnictví?"</string>
     <string name="quest_hairdresser_male_and_female">"Kdokoli"</string>

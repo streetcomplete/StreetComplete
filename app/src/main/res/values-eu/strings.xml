@@ -1371,6 +1371,7 @@ Diru-emateko informazioa gure web horrian aurki dezakezu, Google Play-k ez digu 
     <string name="quest_buildingLevels_hint">"Aldapa bateko eraikinetarako, alde baxueneko lur mailatik hasi behar da kontatzen.
 
 Maila bat sabai maila da leihoak sabaian dituenean. Beraz, sabai mailarik ez duten sabaiak ez dira nahitaez lauak izan behar, nahikoa da maila oso bat egiteko bezain altuak ez badira"</string>
+    <string name="quest_parcel_locker_brand">"Zein da kontsigna honen marka?"</string>
     <string name="quest_powerPolesMaterial_is_terminal">"Elektrizitate-kablea eraikinera lotuta dago"</string>
     <string name="quest_cycleway_value_sidewalk_ok">"Ez, baina bizikletak espreski baimenduta"</string>
     <string name="separate_cycleway_no_signed">"Ikurrak bizikletak debekatzen ditu"</string>
@@ -1392,12 +1393,15 @@ Maila bat sabai maila da leihoak sabaian dituenean. Beraz, sabai mailarik ez dut
     <string name="bridge">"Zubian"</string>
     <string name="about_title_intro">"Erakutsi sarrera"</string>
     <string name="about_category_help">"Laguntza"</string>
+    <string name="quest_camp_power_supply_hint">"Kanping lekuan dauden kargagailuak, zerbitzu eraikin batean eskuragarri daudenak, ala mobil edo portatiletarako kargagune berezia izan daiteke hau."</string>
     <string name="quest_barrier_opening_width_bollard">"Zein da hemendik pasa daitekeen tarterik zabalena?"</string>
     <string name="user_profile_all_time_title">"Ohikoa"</string>
+    <string name="user_statistics_country_rank2">"%s-ko rankinga"</string>
     <string name="quest_leafType_tree_is_just_a_stump">"Zuhaitz-ipurdi bat da"</string>
     <string name="quest_board_name_title">"Zein da informazio-taula honen izenburua?"</string>
     <string name="quest_crossing_hint">"Bide bat zeharkatzen duen arrasto informala:"</string>
     <string name="note_for_object">"Batek oharra utzi du:"</string>
+    <string name="quest_bicycle_parking_type_safeloops">"Safe Loops (gidoina eta koadrorako)"</string>
     <string name="quest_cycleway_value_sidewalk_ok_dual">"bat ere ez, baina seinaleak espaloian bizikletaz ibiltzea uzten du, bi norabideetan.
 
 
@@ -1417,6 +1421,7 @@ Maila bat sabai maila da leihoak sabaian dituenean. Beraz, sabai mailarik ez dut
     <string name="quest_bicycle_repair_station_chain_tool">"Katerako tresna"</string>
     <string name="quest_boat_rental_title">"Zer motatako ontziak daude hemen alokatzeko?"</string>
     <string name="quest_boat_rental_motorboat">"Motordun txalupa"</string>
+    <string name="quest_boat_rental_jetski">"Jetski"</string>
     <string name="quest_boat_rental_sailboat">"Belauntzia"</string>
     <string name="quest_boat_rental_pedalboat">"Pedaloa"</string>
     <string name="quest_boat_rental_kayak">"Kayak"</string>
@@ -1427,6 +1432,7 @@ Maila bat sabai maila da leihoak sabaian dituenean. Beraz, sabai mailarik ez dut
     <string name="quest_boat_rental_surfboard">"Surf-taula"</string>
     <string name="quest_boat_rental_sailboard">"Windsurf-taula"</string>
     <string name="quest_boat_rental_yacht">"Belauntzia"</string>
+    <string name="quest_boat_rental_standup_paddleboard">"Standup Paddleboard (SUP)"</string>
     <string name="quest_powerAttachment_title">"Nola eusten da elektrizitate linea hau?"</string>
     <string name="quest_powerAttachment_suspension">"Goitik helduta"</string>
     <string name="quest_powerAttachment_anchor">"Horizontalki finkatuta"</string>
@@ -1442,4 +1448,5 @@ Maila bat sabai maila da leihoak sabaian dituenean. Beraz, sabai mailarik ez dut
 
 
 "</string>
+    <string name="team_mode_description_overlay_hint">"Gainjartzeak erabilita, bakoitzak bat behar duzue, erronkak bakarrik partekatzen direlako"</string>
 </resources>
