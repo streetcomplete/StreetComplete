@@ -39,9 +39,9 @@ import de.westnordost.streetcomplete.ui.theme.titleLarge
 @Composable
 fun BuildingLevelsForm(
     levels: String?,
-    onLevels: (String) -> Unit,
+    onLevelsChange: (String) -> Unit,
     roofLevels: String?,
-    onRoofLevels: (String) -> Unit,
+    onRoofLevelsChange: (String) -> Unit,
     onButton: (levels: Int, roofLevels: Int?) -> Unit,
     modifier: Modifier = Modifier,
     previousBuildingLevels: List<BuildingLevels> = listOf(),
@@ -70,7 +70,7 @@ fun BuildingLevelsForm(
                     )
                     OutlinedTextField(
                         value = levels ?: "",
-                        onValueChange = onLevels,
+                        onValueChange = onLevelsChange,
                         keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Number, imeAction = ImeAction.Next),
                         modifier = Modifier
                             .conditional(levels == null) { focusRequester(focusRequester) },
@@ -91,7 +91,7 @@ fun BuildingLevelsForm(
                 ) {
                     OutlinedTextField(
                         roofLevels ?: "",
-                        onValueChange = onRoofLevels,
+                        onValueChange = onRoofLevelsChange,
                         keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Number, imeAction = ImeAction.Done),
                         modifier = Modifier
                             .conditional(levels != null) { focusRequester(focusRequester) },
@@ -123,9 +123,9 @@ private fun BuildingLevelsFormPreview() {
     val roofLevels = remember { mutableStateOf("55") }
     BuildingLevelsForm(
         levels = levels.value,
-        onLevels = { levels.value = it },
+        onLevelsChange = { levels.value = it },
         roofLevels = roofLevels.value,
-        onRoofLevels = { roofLevels.value = it },
+        onRoofLevelsChange = { roofLevels.value = it },
         onButton = { l, r ->
             levels.value = l.toString()
             roofLevels.value = r?.toString() ?: ""

@@ -46,12 +46,12 @@ class AddBuildingLevelsForm : AbstractOsmQuestForm<BuildingLevels>() {
             roofLevels = rememberSaveable { mutableStateOf(element.tags["roof:levels"] ?: "") }
             BuildingLevelsForm(
                 levels = levels.value,
-                onLevels = {
+                onLevelsChange = {
                     levels.value = it
                     checkIsFormComplete()
                 },
                 roofLevels = roofLevels.value,
-                onRoofLevels = {
+                onRoofLevelsChange = {
                     roofLevels.value = it
                     checkIsFormComplete()
                 },
