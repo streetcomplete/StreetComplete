@@ -82,7 +82,7 @@ fun BuildingLevelsForm(
                         ),
                     )
                 }
-                // same height as
+                // same height as BuildingLevelsIllustration
                 Spacer(Modifier.size(188.dp, 144.dp))
                 Column(
                     modifier = Modifier
