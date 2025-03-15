@@ -42,7 +42,6 @@ fun BuildingLevelsForm(
     onLevelsChange: (String) -> Unit,
     roofLevels: String?,
     onRoofLevelsChange: (String) -> Unit,
-    onButton: (levels: Int, roofLevels: Int?) -> Unit,
     modifier: Modifier = Modifier,
     previousBuildingLevels: List<BuildingLevels> = listOf(),
 ) {
@@ -108,7 +107,13 @@ fun BuildingLevelsForm(
                 }
             }
         }
-        BuildingLevelsButtons(previousBuildingLevels, onButton)
+        BuildingLevelsButtons(
+            buildingLevels = previousBuildingLevels,
+            onSelect = { levels, roofLevels ->
+                onLevelsChange(levels.toString())
+                onRoofLevelsChange(roofLevels?.toString() ?: "")
+            }
+        )
     }
     LaunchedEffect(Unit) {
         focusRequester.requestFocus()
@@ -126,10 +131,6 @@ private fun BuildingLevelsFormPreview() {
         onLevelsChange = { levels.value = it },
         roofLevels = roofLevels.value,
         onRoofLevelsChange = { roofLevels.value = it },
-        onButton = { l, r ->
-            levels.value = l.toString()
-            roofLevels.value = r?.toString() ?: ""
-        },
         previousBuildingLevels = listOf(
             BuildingLevels(5, 2),
             BuildingLevels(4, 1),

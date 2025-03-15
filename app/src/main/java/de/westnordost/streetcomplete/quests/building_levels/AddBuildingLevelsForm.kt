@@ -55,12 +55,6 @@ class AddBuildingLevelsForm : AbstractOsmQuestForm<BuildingLevels>() {
                     roofLevels.value = it
                     checkIsFormComplete()
                 },
-                onButton = {
-                    regular, roof ->
-                    levels.value = regular.toString()
-                    roofLevels.value = if (roof != null) roof.toString() else ""
-                    checkIsFormComplete()
-                },
                 previousBuildingLevels = lastPickedAnswers
             )
         }
