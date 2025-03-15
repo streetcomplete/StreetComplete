@@ -21,7 +21,7 @@ class UserDataController(private val prefs: Preferences) : UserDataSource {
     fun setDetails(userDetails: UserInfo) {
         prefs.userId = userDetails.id
         prefs.userName = userDetails.displayName
-        userDetails.unreadMessagesCount?.let { prefs.userUnreadMessages }
+        userDetails.unreadMessagesCount?.let { prefs.userUnreadMessages = it }
         listeners.forEach { it.onUpdated() }
     }
 

@@ -1139,8 +1139,6 @@
     <string name="quest_traffic_signals_sound_description">"Հուշում. փնտրեք բարձրախոս։ Ոչ բոլոր ազդանշանները միանում են կոճակով։"</string>
     <string name="unknown_surface_title">"Այլ հարթություն"</string>
     <string name="quest_crossing_title2">"Այստեղ անցում կա՞:"</string>
-    <string name="quest_crossing_yes">"Այո (օրինակ` եզրը իջեցրած է կամ կան նշումներ)"</string>
-    <string name="quest_crossing_no">"Ոչ, բայց անցումը հնարավոր է"</string>
     <string name="quest_crossing_prohibited">"Ոչ, անցումը արգելված է կամ անհնար"</string>
     <string name="quest_hairdresser_title">"Ովքե՞ր են այցելում այս վարսավիրանոցը։"</string>
     <string name="quest_hairdresser_male_and_female">"Բոլորը"</string>

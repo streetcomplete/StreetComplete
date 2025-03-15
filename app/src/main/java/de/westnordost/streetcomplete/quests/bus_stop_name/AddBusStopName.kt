@@ -10,15 +10,15 @@ import de.westnordost.streetcomplete.osm.applyTo
 
 class AddBusStopName : OsmFilterQuestType<BusStopNameAnswer>() {
 
+    // this filter needs to be kept somewhat in sync with the filter in AddBusStopNameForm
     override val elementFilter = """
         nodes, ways, relations with
         (
           public_transport = platform and bus = yes
-          or (highway = bus_stop and public_transport != stop_position)
-          or railway = halt
-          or railway = station
-          or railway = tram_stop
+          or highway = bus_stop and public_transport != stop_position
+          or railway ~ halt|station|tram_stop
         )
+        and access !~ no|private
         and !name and noname != yes and name:signed != no
     """
 

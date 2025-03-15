@@ -88,7 +88,7 @@ fun UnreadMessagesDialog(
                         val scale = 0.8f + 0.2f * c
                         scaleX = scale
                         scaleY = scale
-                        alpha = 0.4f + c * 0.6f
+                        alpha = c
                         translationY = (140f * (1f - c)) * density
                     }
                     .shadow(24.dp)

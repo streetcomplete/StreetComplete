@@ -1,12 +1,21 @@
 package de.westnordost.streetcomplete.data.user
 
+import de.westnordost.streetcomplete.ApplicationConstants.USE_TEST_API
 import de.westnordost.streetcomplete.data.user.oauth.OAuthApiClient
 import org.koin.dsl.module
 
-const val OAUTH2_TOKEN_URL = "https://www.openstreetmap.org/oauth2/token"
-const val OAUTH2_AUTHORIZATION_URL = "https://www.openstreetmap.org/oauth2/authorize"
+private const val OAUTH2_HOST_LIVE = "https://www.openstreetmap.org/"
+private const val OAUTH2_HOST_TEST = "https://master.apis.dev.openstreetmap.org/"
 
-const val OAUTH2_CLIENT_ID = "Yyk4PmTopczrr3BWZYvLK_M-KBloCQwXgPGEzqUYTc8"
+private const val OAUTH2_CLIENT_ID_LIVE = "Yyk4PmTopczrr3BWZYvLK_M-KBloCQwXgPGEzqUYTc8"
+private const val OAUTH2_CLIENT_ID_TEST = "ObZ7yPf4lfs4XJ3NWysI3ukJMN0SHey1oPnNQnLmvw8"
+
+val OAUTH2_TOKEN_URL =
+    (if (USE_TEST_API) OAUTH2_HOST_TEST else OAUTH2_HOST_LIVE) + "oauth2/token"
+val OAUTH2_AUTHORIZATION_URL =
+    (if (USE_TEST_API) OAUTH2_HOST_TEST else OAUTH2_HOST_LIVE) + "oauth2/authorize"
+val OAUTH2_CLIENT_ID =
+    if (USE_TEST_API) OAUTH2_CLIENT_ID_TEST else OAUTH2_CLIENT_ID_LIVE
 
 const val OAUTH2_CALLBACK_SCHEME = "streetcomplete"
 const val OAUTH2_CALLBACK_HOST = "oauth"
@@ -35,7 +44,6 @@ val OAUTH2_REQUIRED_SCOPES = listOf(
 )
 
 val userModule = module {
-
     single<UserDataSource> { get<UserDataController>() }
     single { UserDataController(get()) }
 

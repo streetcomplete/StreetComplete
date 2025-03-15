@@ -24,12 +24,12 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
-import de.westnordost.streetcomplete.data.osm.osmquests.HideOsmQuestController
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
 import de.westnordost.streetcomplete.data.preferences.Preferences
-import de.westnordost.streetcomplete.data.quest.OsmQuestKey
+import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.data.quest.QuestType
+import de.westnordost.streetcomplete.data.visiblequests.HideQuestController
 import de.westnordost.streetcomplete.databinding.ActivitySettingsBinding
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AbstractQuestForm
@@ -115,7 +115,7 @@ class SettingsActivity : BaseActivity(), AbstractOsmQuestForm.Listener {
         popQuestForm()
     }
 
-    override fun onQuestHidden(osmQuestKey: OsmQuestKey) {
+    override fun onQuestHidden(questKey: QuestKey) {
         popQuestForm()
     }
 
@@ -142,8 +142,8 @@ class SettingsActivity : BaseActivity(), AbstractOsmQuestForm.Listener {
             AbstractQuestForm.createArguments(quest.key, quest.type, geometry, 30.0, 0.0)
         )
         f.requireArguments().putAll(AbstractOsmQuestForm.createArguments(element))
-        f.hideOsmQuestController = object : HideOsmQuestController {
-            override fun hide(key: OsmQuestKey) {}
+        f.hideQuestController = object : HideQuestController {
+            override fun hide(key: QuestKey) {}
         }
         f.addElementEditsController = object : AddElementEditsController {
             override fun add(

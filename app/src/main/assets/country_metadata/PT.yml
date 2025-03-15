@@ -1,7 +1,7 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [Caixa Geral de Depósitos, Euronet, Crédito Agrícola, Multibanco, Santander Totta, SIBS, Montepio, Banco Santander, Millennium bcp, Novo Banco, Millennium BCP, Euronet Worldwide, Banco BPI, MB Multibanco, Santander, ATMExpress, EuroBic, ATM Express, BPI, Millennium, CGD, Bankinter, ATM, Caixa Agrícola, Branco BPI, Banco Montepio, multibanco, Millenium bcp, Millenium, Caixa de Crédito Agrícola, CCAM, BES, Abanca, Crédito Agricola, Cashzone, Banco Popular, Banco CTT, crédito agrícola, bankinter, Western Union, SIBS Multibanco, Mind the Coin, Deutsche Bank, Credit Agricole, Cash Zone, Caixa Agricola, Barclays, Banif, BCP Millenium, BBVA, ActivoBank]
-chargingStationOperators: [EDP, Galp Power, Powerdot, Atlante, KLC Serviços, Wowplug, Tesla, Galp Geste, Repsol, Iberdrola, Prio.E, Mobiletric, Sonae, Helexia II, Charging Together, MobiSmart, Maksu Services, Mota Engil II, Porsche, Moon, EV Power, Loulé Concelho Global, Hexagonal Ocean, Generation Journey, E-Plug, EcoInside, EMEL, Ucharge, powercharge, DTE, Ionity, High Green Power, GreenCharge, Cepsa, Renault, Nissan, Luzigás, Evio, CapWatt, Bluecharge, Evaz Energy, DPC-Privado, Mobi.E, Circuitos Energy Solutions, Neureifen, NRG, Cargga Inteligente, Águas de Portugal, Orbitur, Gasfomento, Cascais Proxima]
-clothesContainerOperators: [Ultriplo, Ultriplo Lda, Humana Portugal, H Sarah Trading, Wippytex, Projeto Amigo, Fundação o Século, FILTEX & reciclagem, Câmara Municipal de Lisboa, Cáritas Diocesana de Lisboa, Cáritas, utriplo, Sarah Trading, ResiNorte]
+atmOperators: [Euronet, Caixa Geral de Depósitos, Crédito Agrícola, Multibanco, Santander Totta, Montepio, SIBS, Novo Banco, Millennium bcp, Banco Santander, Euronet Worldwide, MB Multibanco, Millennium BCP, Banco BPI, Santander, ATMExpress, ATM Express, EuroBic, Millennium, BPI, CGD, Bankinter, Caixa Agrícola, Banco Montepio, ATM, multibanco, Branco BPI, Millenium bcp, Caixa de Crédito Agrícola, Millenium, CCAM, BES, Abanca, SIBS Multibanco, Crédito Agricola, Cashzone, Banco CTT, novobanco, crédito agrícola, bankinter, Novobanco, Mind the Coin, Deutsche Bank, Credit Agricole, Cash Zone, Caixa Agricola, Barclays, Banco Popular, BCP Millenium, BBVA, ActivoBank]
+chargingStationOperators: [EDP, Galp Power, Powerdot, Atlante, KLC Serviços, True Kare, Tesla, Galp Geste, Repsol, Iberdrola, Prio.E, Helexia II, Sonae, Mobiletric, Charging Together, Mota Engil II, Maksu Services, MobiSmart, Moon, Loulé Concelho Global, EcoInside, EMEL, Porsche, EV Power, Hexagonal Ocean, Generation Journey, Ucharge, Cepsa, powercharge, 'Tesla, Inc.', High Green Power, E-Plug, DTE, GreenCharge, Evio, Renault, Nissan, Luzigás, DPC-Privado, Bluecharge, Circuitos Energy Solutions, Cable Energia, BP, Neureifen, NRG, Cargga Inteligente, CapWatt]
+clothesContainerOperators: [Ultriplo, Humana Portugal, Ultriplo Lda, Wippytex, H Sarah Trading, Projeto Amigo, Fundação o Século, FILTEX & reciclagem, Câmara Municipal de Lisboa, Cáritas Diocesana de Lisboa, Cáritas, utriplo, Sarah Trading, ResiNorte]
 defaultSpeedLimitHasUrbanOrRural: true
 hasAdvisoryCycleLane: false
 hasAdvisorySpeedLimitSign: true
@@ -11,7 +11,7 @@ noParkingLineStyle: dashed yellow
 noStoppingLineStyle: yellow
 officialLanguages: [pt]
 orchardProduces: [olive, grape, chestnut, almond, orange, tomato, apple, pear, walnut, fig, peach, kiwi, blueberry, avocado, plum]
-parcelLockerBrand: [Locky CTT, Locky, DPD Pickup Station, Amazon]
+parcelLockerBrand: [Locky CTT, Locky, Amazon Hub, InPost, DPD Pickup Station, DPD, Amazon, CTT, Amazon Locker]
 popularReligions: [christian, jewish, muslim]
 postboxesHaveCollectionTimes: true
 slowZoneLabelPosition: top

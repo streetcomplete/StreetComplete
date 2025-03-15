@@ -7,8 +7,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement
 import de.westnordost.streetcomplete.osm.asIfItWasnt
-import de.westnordost.streetcomplete.osm.isDisusedThing
-import de.westnordost.streetcomplete.osm.isThing
+import de.westnordost.streetcomplete.osm.isThingOrDisusedThing
 import de.westnordost.streetcomplete.overlays.Color
 import de.westnordost.streetcomplete.overlays.Overlay
 import de.westnordost.streetcomplete.overlays.PointStyle
@@ -27,8 +26,10 @@ class ThingsOverlay(private val getFeature: (Element) -> Feature?) : Overlay {
     override fun getStyledElements(mapData: MapDataWithGeometry) =
         mapData
             .asSequence()
-            .filter { it.isThing() || it.isDisusedThing() }
+            .filter { it.isThingOrDisusedThing() }
             .mapNotNull { element ->
+                // show disused things with the same icon as normal things because they usually look
+                // similar (a disused telephone booth still looks like a telephone booth, etc.)
                 val feature = getFeature(element)
                     ?: element.asIfItWasnt("disused")?.let { getFeature(it) }
                     ?: return@mapNotNull null

@@ -1,16 +1,16 @@
 - name: "Tobias Zwick"
   githubUsername: "westnordost"
-  linesOfCodeChanged: 499975
-  linesOfInterfaceMarkupChanged: 155459
-  assetFilesChanged: 2186
+  linesOfCodeChanged: 503214
+  linesOfInterfaceMarkupChanged: 155493
+  assetFilesChanged: 2188
 - name: "Mateusz Konieczny"
   githubUsername: "matkoniecz"
-  linesOfCodeChanged: 22190
+  linesOfCodeChanged: 22211
   linesOfInterfaceMarkupChanged: 5233
   assetFilesChanged: 636
 - name: "Flo Edelmann"
   githubUsername: "FloEdelmann"
-  linesOfCodeChanged: 21441
+  linesOfCodeChanged: 21504
   linesOfInterfaceMarkupChanged: 3733
   assetFilesChanged: 152
 - name: "Helium314"
@@ -30,7 +30,7 @@
   assetFilesChanged: 4
 - name: "Matija Nalis"
   githubUsername: "mnalis"
-  linesOfCodeChanged: 3512
+  linesOfCodeChanged: 3574
   linesOfInterfaceMarkupChanged: 523
   assetFilesChanged: 70
 - name: "arrival-spring"
@@ -84,6 +84,11 @@
 - name: "Peter Newman"
   githubUsername: "peternewman"
   linesOfCodeChanged: 903
+- name: "Kai Michael Poppe"
+  githubUsername: "kmpoppe"
+  linesOfCodeChanged: 869
+  linesOfInterfaceMarkupChanged: 869
+  assetFilesChanged: 44
 - name: "Wieland"
   githubUsername: "wielandb"
   linesOfCodeChanged: 851
@@ -100,11 +105,6 @@
   linesOfCodeChanged: 444
   linesOfInterfaceMarkupChanged: 165
   assetFilesChanged: 1
-- name: "Kai Michael Poppe"
-  githubUsername: "kmpoppe"
-  linesOfCodeChanged: 414
-  linesOfInterfaceMarkupChanged: 869
-  assetFilesChanged: 44
 - name: "naposm"
   githubUsername: "naposm"
   linesOfCodeChanged: 399
@@ -249,6 +249,9 @@
 - name: "RubenKelevra"
   githubUsername: "RubenKelevra"
   linesOfCodeChanged: 12
+- name: "Kyℓe Hensel"
+  githubUsername: "k-yle"
+  linesOfCodeChanged: 11
 - name: "Holger Jeromin"
   githubUsername: "HolgerJeromin"
   linesOfCodeChanged: 11
@@ -281,9 +284,6 @@
 - name: "rolag"
   githubUsername: "rolag"
   linesOfCodeChanged: 6
-- name: "Kyℓe Hensel"
-  githubUsername: "k-yle"
-  linesOfCodeChanged: 5
 - name: "Sam Smith"
   githubUsername: "sams96"
   linesOfCodeChanged: 5
@@ -312,6 +312,15 @@
 - name: "Guillaume Rischard"
   githubUsername: "grischard"
   linesOfCodeChanged: 3
+- name: "Andrew Harvey"
+  githubUsername: "andrewharvey"
+  linesOfCodeChanged: 2
+- name: "Redd"
+  githubUsername: "agent-redd"
+  linesOfCodeChanged: 2
+- name: "dokutan"
+  githubUsername: "dokutan"
+  linesOfCodeChanged: 2
 - name: "mpol"
   githubUsername: "mpol"
   linesOfCodeChanged: 2
@@ -329,9 +338,6 @@
   linesOfCodeChanged: 2
 - name: "Alexander Bantyev"
   githubUsername: "balsoft"
-  linesOfCodeChanged: 2
-- name: "Andrew Harvey"
-  githubUsername: "andrewharvey"
   linesOfCodeChanged: 2
 - name: "Dmitry Gurovich"
   githubUsername: "yrtimiD"

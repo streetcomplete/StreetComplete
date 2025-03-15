@@ -24,7 +24,7 @@ android {
         }
     }
 
-    compileSdk = 34
+    compileSdk = 35
     testOptions {
         unitTests {
             isReturnDefaultValues = true
@@ -34,9 +34,9 @@ android {
     defaultConfig {
         applicationId = "de.westnordost.streetcomplete"
         minSdk = 21
-        targetSdk = 34
-        versionCode = 6003
-        versionName = "60.0"
+        targetSdk = 35
+        versionCode = 6006
+        versionName = "60.3"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -107,13 +107,12 @@ repositories {
 }
 
 dependencies {
-    val mockitoVersion = "3.12.4"
+    val mockitoVersion = "5.15.2"
 
-    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.3")
+    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.5")
 
     // tests
     testImplementation("org.mockito:mockito-core:$mockitoVersion")
-    testImplementation("org.mockito:mockito-inline:$mockitoVersion")
     testImplementation(kotlin("test"))
 
     androidTestImplementation("androidx.test:runner:1.6.2")
@@ -122,7 +121,7 @@ dependencies {
     androidTestImplementation(kotlin("test"))
 
     // dependency injection
-    implementation(platform("io.insert-koin:koin-bom:4.0.0"))
+    implementation(platform("io.insert-koin:koin-bom:4.0.2"))
     implementation("io.insert-koin:koin-core")
     implementation("io.insert-koin:koin-android")
     implementation("io.insert-koin:koin-androidx-workmanager")
@@ -130,17 +129,17 @@ dependencies {
 
     // Android stuff
     implementation("com.google.android.material:material:1.12.0")
-    implementation("androidx.core:core-ktx:1.13.1")
+    implementation("androidx.core:core-ktx:1.15.0")
     implementation("androidx.appcompat:appcompat:1.7.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.2.0")
+    implementation("androidx.constraintlayout:constraintlayout:2.2.1")
     implementation("androidx.annotation:annotation:1.9.1")
-    implementation("androidx.fragment:fragment-ktx:1.8.5")
-    implementation("androidx.recyclerview:recyclerview:1.3.2")
-    implementation("androidx.viewpager:viewpager:1.0.0")
+    implementation("androidx.fragment:fragment-ktx:1.8.6")
+    implementation("androidx.recyclerview:recyclerview:1.4.0")
+    implementation("androidx.viewpager:viewpager:1.1.0")
     implementation("androidx.localbroadcastmanager:localbroadcastmanager:1.1.0")
 
     // Jetpack Compose
-    val composeBom = platform("androidx.compose:compose-bom:2024.10.01")
+    val composeBom = platform("androidx.compose:compose-bom:2025.02.00")
     implementation(composeBom)
     androidTestImplementation(composeBom)
     implementation("androidx.compose.material:material")
@@ -149,46 +148,43 @@ dependencies {
     implementation("androidx.compose.ui:ui-tooling-preview")
     debugImplementation("androidx.compose.ui:ui-tooling")
 
-    implementation("androidx.navigation:navigation-compose:2.8.4")
+    implementation("androidx.navigation:navigation-compose:2.8.8")
 
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.7")
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.7")
 
     // reorderable lists (raw Compose API is pretty complicated)
-    implementation("sh.calvin.reorderable:reorderable:2.4.0")
+    implementation("sh.calvin.reorderable:reorderable:2.4.3")
 
     // multiplatform webview (for login via OAuth)
-    implementation("io.github.kevinnzou:compose-webview-multiplatform-android:1.9.20")
+    implementation("io.github.kevinnzou:compose-webview-multiplatform-android:1.9.40")
 
     // photos
-    implementation("androidx.exifinterface:exifinterface:1.3.7")
+    implementation("androidx.exifinterface:exifinterface:1.4.0")
 
     // settings
-    implementation("com.russhwolf:multiplatform-settings:1.2.0")
+    implementation("com.russhwolf:multiplatform-settings:1.3.0")
 
     // Kotlin
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.9.0")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.9.0")
-    implementation("org.jetbrains.kotlinx:kotlinx-io-core:0.5.4")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.1")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.10.1")
+    implementation("org.jetbrains.kotlinx:kotlinx-io-core:0.7.0")
 
     // Date/time
-    api("org.jetbrains.kotlinx:kotlinx-datetime:0.6.1")
+    api("org.jetbrains.kotlinx:kotlinx-datetime:0.6.2")
 
     // scheduling background jobs
-    implementation("androidx.work:work-runtime-ktx:2.9.1")
+    implementation("androidx.work:work-runtime-ktx:2.10.0")
 
     // HTTP Client
-    implementation("io.ktor:ktor-client-core:2.3.13")
-    implementation("io.ktor:ktor-client-android:2.3.13")
-    testImplementation("io.ktor:ktor-client-mock:2.3.13")
-    // TODO: as soon as both ktor-client and kotlinx-serialization have been refactored to be based
-    //       on kotlinx-io, revisit sending and receiving xml/json payloads via APIs, currently it
-    //       is all String-based, i.e. no KMP equivalent of InputStream/OutputStream involved
+    implementation("io.ktor:ktor-client-core:3.1.1")
+    implementation("io.ktor:ktor-client-android:3.1.1")
+    testImplementation("io.ktor:ktor-client-mock:3.1.1")
 
     // finding in which country we are for country-specific logic
     implementation("de.westnordost:countryboundaries:2.1")
     // finding a name for a feature without a name tag
-    implementation("de.westnordost:osmfeatures:6.2")
+    implementation("de.westnordost:osmfeatures:7.0")
 
     // widgets
     implementation("androidx.viewpager2:viewpager2:1.1.0")
@@ -201,15 +197,17 @@ dependencies {
     implementation("com.ionspin.kotlin:bignum:0.3.10")
 
     // serialization
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.3")
-    implementation("com.charleskorn.kaml:kaml:0.66.0")
-    implementation("io.github.pdvrieze.xmlutil:core:0.90.2")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.8.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json-io:1.8.0")
+    implementation("com.charleskorn.kaml:kaml:0.72.0")
+    implementation("io.github.pdvrieze.xmlutil:core:0.90.3")
 
     // map and location
-    implementation("org.maplibre.gl:android-sdk:11.6.1")
+    // upgrading MapLibre blocked by https://github.com/maplibre/maplibre-native/issues/3309
+    implementation("org.maplibre.gl:android-sdk:11.8.0")
 
     // opening hours parser
-    implementation("de.westnordost:osm-opening-hours:0.1.0")
+    implementation("de.westnordost:osm-opening-hours:0.2.0")
 
     // image view that allows zoom and pan
     implementation("com.github.chrisbanes:PhotoView:2.3.0")
@@ -226,9 +224,9 @@ val bcp47ExportLanguages = setOf(
 )
 
 // see https://github.com/osmlab/name-suggestion-index/tags for latest version
-val nsiVersion = "v6.0.20241208"
+val nsiVersion = "v6.0.20250309"
 // see https://github.com/openstreetmap/id-tagging-schema/releases for latest version
-val presetsVersion = "v6.8.1"
+val presetsVersion = "v6.9.1"
 
 val poEditorProjectId = "97843"
 

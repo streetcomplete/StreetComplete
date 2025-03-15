@@ -563,6 +563,15 @@ class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
 
     //region Save and restore state
 
+    override fun setInitialCameraPosition(camera: CameraPosition) {
+        super.setInitialCameraPosition(camera)
+        isFollowingPosition = false
+        isNavigationMode = false
+        if (map == null) {
+            saveMapState()
+        }
+    }
+
     private fun restoreMapState() {
         isFollowingPosition = prefs.mapIsFollowing
         isNavigationMode = prefs.mapIsNavigationMode

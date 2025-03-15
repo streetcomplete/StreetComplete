@@ -1265,8 +1265,6 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="overlay_surface">"道路表面"</string>
     <string name="overlay_path_surface_segregated">"分为自行车和步行两部分"</string>
     <string name="quest_crossing_title2">"这里有路口吗？"</string>
-    <string name="quest_crossing_yes">"有（例如，此处路缘降低或有标线）"</string>
-    <string name="quest_crossing_no">"不，但穿越是可行的"</string>
     <string name="quest_crossing_prohibited">"不，禁止或不可能穿越"</string>
     <string name="quest_hairdresser_title">"哪些顾客光顾这家美发店？"</string>
     <string name="quest_hairdresser_male_and_female">"任何人"</string>

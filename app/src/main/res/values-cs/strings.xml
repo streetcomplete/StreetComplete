@@ -1268,8 +1268,8 @@ Chcete ho posunout?"</string>
     <string name="overlay_surface">"Povrchy"</string>
     <string name="overlay_path_surface_segregated">"Rozděleno na části pro cyklisty a chodce"</string>
     <string name="quest_crossing_title2">"Je zde přechod?"</string>
-    <string name="quest_crossing_yes">"Ano (např. je zde snížený obrubník nebo je zde značení)"</string>
-    <string name="quest_crossing_no">"Ne, ale přecházení je možné"</string>
+    <string name="quest_crossing_yes">"Ano, určeno jako přechod"</string>
+    <string name="quest_crossing_no">"Není určeno jako přechod, ale přecházení je možné (např. neformální cesty)"</string>
     <string name="quest_crossing_prohibited">"Ne, přecházení je zakázáno nebo nemožné"</string>
     <string name="quest_hairdresser_title">"Jací zákazníci navštěvují toto kadeřnictví?"</string>
     <string name="quest_hairdresser_male_and_female">"Kdokoli"</string>
@@ -1431,9 +1431,9 @@ Podlaží se počítají jako střešní, pokud jejich okna jsou ve střeše. Te
     <string name="quest_boat_rental_yacht">"Jachta"</string>
     <string name="quest_boat_rental_standup_paddleboard">"Paddleboard (SUP)"</string>
     <string name="quest_powerAttachment_title">"Jak je toto silové vedení připojeno?"</string>
-    <string name="quest_powerAttachment_suspension">"Podepřené shora"</string>
-    <string name="quest_powerAttachment_anchor">"Upevněné vodorovně"</string>
-    <string name="quest_powerAttachment_pin">"Podepřené zdola"</string>
+    <string name="quest_powerAttachment_suspension">"Zavěšeno shora"</string>
+    <string name="quest_powerAttachment_anchor">"Upevněno vodorovně"</string>
+    <string name="quest_powerAttachment_pin">"Podepřeno zdola"</string>
     <string name="pedestrian_zone_designated">"Určeno pro jízdu na kole"</string>
     <string name="pedestrian_zone_allowed_sign">"Značka tu povoluje jízdu na kole"</string>
     <string name="pedestrian_zone_no_sign">"Žádná značka ohledně jízdy na kole"</string>

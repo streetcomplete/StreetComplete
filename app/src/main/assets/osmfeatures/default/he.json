@@ -100,8 +100,8 @@
           "terms": "רחבת חנייה,טיפולים,תחזוקה,חנייה"
         },
         "aeroway/gate": {
-          "name": "שער נמל תעופה",
-          "terms": "שער שדה תעופה,שער טיסה"
+          "name": "שער עלייה למטוס",
+          "terms": "שער שדה תעופה,שער טיסה,שער נמל תעופה"
         },
         "aeroway/hangar": {
           "name": "הנגאר",
@@ -398,7 +398,8 @@
           "terms": "כירורג פלסטי"
         },
         "amenity/doctors/podiatry": {
-          "name": "פודיאטור"
+          "name": "פודיאטור",
+          "terms": "פודיאטורית"
         },
         "amenity/doctors/proctology": {
           "name": "מנתח המעי הגס"
@@ -462,6 +463,9 @@
         "amenity/fast_food/chicken": {
           "name": "מזון מהיר עוף",
           "terms": "מזון מהיר,אוכל מהיר,ג׳אנק,ג'אנק,ג׳אנד פוד,ג'אנק פוד,המבורגר,המבורגריה,עוף,צ׳יקן,צ'יקן,פאסט פוד"
+        },
+        "amenity/fast_food/chinese": {
+          "name": "מזון סיני מהיר"
         },
         "amenity/fast_food/donut": {
           "name": "מזון מהיר דונאט",
@@ -638,6 +642,10 @@
         },
         "amenity/nursing_home": {
           "name": "בית אבות"
+        },
+        "amenity/parcel_locker": {
+          "name": "תא חבילות",
+          "terms": "תיבות דואר אוטומטיות,לוקר חבילות,תא לחבילות"
         },
         "amenity/parking": {
           "name": "מגרש חנייה",
@@ -1010,6 +1018,10 @@
           "name": "אולפן קולנוע",
           "terms": "סטודיו,סטודיו לקולנוע,אולפן צילומים,אולפן קולנוע"
         },
+        "amenity/swingerclub": {
+          "name": "מועדון חילופי זוגות",
+          "terms": "מועדון מין,מועדון סקס,מועדון סווינגר"
+        },
         "amenity/taxi": {
           "name": "עמדת מוניות",
           "terms": "עמדת מוניות"
@@ -1021,10 +1033,6 @@
         "amenity/theatre": {
           "name": "תאטרון",
           "terms": "תאטרון"
-        },
-        "amenity/theatre/type/amphi": {
-          "name": "אמפיתאטרון",
-          "terms": "אמפיתיאטרון,אמפי"
         },
         "amenity/toilets": {
           "name": "שירותים",
@@ -1121,6 +1129,10 @@
           "name": "מכונת אוכל",
           "terms": "אוטומט אוכל"
         },
+        "amenity/vending_machine/food/snacks": {
+          "name": "מכונת חטיפים",
+          "terms": "אוטומט מכירת חטיפים"
+        },
         "amenity/vending_machine/ice_cream": {
           "name": "מכונת גלידה",
           "terms": "אוטומט גלידה"
@@ -1189,6 +1201,9 @@
         "area/highway": {
           "name": "שטח כביש",
           "terms": "מתחם כביש,תחום כביש"
+        },
+        "area/highway/traffic_island": {
+          "name": "אזור אי תנועה"
         },
         "attraction": {
           "name": "אטרקציה"
@@ -1374,6 +1389,9 @@
         },
         "barrier/motorcycle_barrier": {
           "name": "מחסום אופנועים"
+        },
+        "barrier/planter": {
+          "name": "גדר חיה"
         },
         "barrier/retaining_wall": {
           "name": "קיר תומך",
@@ -1573,6 +1591,9 @@
           "name": "בניין גן/גן חובה",
           "terms": "גן חובה"
         },
+        "building/manufacture": {
+          "name": "מבנה ייצור תעשייתי"
+        },
         "building/mosque": {
           "name": "מסגד",
           "terms": "מסגד"
@@ -1580,6 +1601,9 @@
         "building/office": {
           "name": "בניין משרדים",
           "terms": "מרכז תעשייתי,משרדים"
+        },
+        "building/outbuilding": {
+          "name": "אגף חיצוני"
         },
         "building/pavilion": {
           "name": "ביתן",
@@ -1664,6 +1688,10 @@
         },
         "building_point": {
           "name": "בניין"
+        },
+        "cemetery/sector": {
+          "name": "אזור בבית קברות",
+          "terms": "שטח בית קברות,אגף בית קברות,שטח בית עלמין,אגף בית עלמין"
         },
         "club": {
           "name": "מועדון",
@@ -2231,7 +2259,8 @@
           "name": "מעבר דו-גלגלי עם אותות תנועה"
         },
         "highway/cycleway/crossing/uncontrolled": {
-          "name": "מעבר דו־גלגליים מסומן"
+          "name": "מעבר דו־גלגליים מסומן",
+          "terms": "מעבר לאופניים,מעבר לאופנועים,מעבר לקורקינט"
         },
         "highway/cycleway/crossing/unmarked": {
           "name": "מעבר דו־גלגליים בלתי מסומן",
@@ -2253,7 +2282,7 @@
           "terms": "מקום לעצירת חירום,שוליים,כביש מהיר"
         },
         "highway/escape": {
-          "name": "מסלול עליה לעצירת משאית ללא בלימה"
+          "name": "מסלול עליה לעצירת משאית ללא בלמים"
         },
         "highway/footway": {
           "name": "דרך רגלית",
@@ -2277,7 +2306,8 @@
           "name": "מעבר מסומן"
         },
         "highway/footway/crossing/unmarked": {
-          "name": "מעבר לא מסומן"
+          "name": "מעבר לא מסומן",
+          "terms": "מעבר חציה לא מסומן,מעבר חצייה לא מסומן"
         },
         "highway/footway/informal": {
           "name": "שביל הולכי רגל לא מוכרז"
@@ -2328,6 +2358,9 @@
         "highway/path/boardwalk": {
           "name": "גשר עץ",
           "terms": "גשר קרשים,גשר חבלים,גשר תלוי,גשר קורות"
+        },
+        "highway/path/crossing": {
+          "name": "מעבר אופניים והולכי רגל"
         },
         "highway/path/informal": {
           "name": "שביל לא מוכרז",
@@ -2721,7 +2754,8 @@
           "name": "בסיס צבאי"
         },
         "landuse/military/base/navy": {
-          "name": "בסיס חיל ים"
+          "name": "בסיס חיל ים",
+          "terms": "בסיס,צבא,חיל ים,חיל הים,משמר החופים,צה״ל,צה\"ל,צוללת,ספינה,דבור,דבורה,מלחמה"
         },
         "landuse/military/danger_area": {
           "name": "אזור סכנה צבאית"
@@ -2808,6 +2842,9 @@
         "leisure/bandstand": {
           "name": "בימת תזמורת",
           "terms": "במת תזמורת,הגבהה,אוהל הופעות,אוהל תזמורת,סוכך נגינה,בימת נגינה,במת נגינה"
+        },
+        "leisure/bathing_place": {
+          "name": "מקום רחצה"
         },
         "leisure/beach_resort": {
           "name": "אתר נופש על החוף",
@@ -2924,6 +2961,10 @@
         "leisure/garden/community": {
           "name": "גינה קהילתית",
           "terms": "גינה שכונתית,גן קהילתי,גידול קהילתי,בוטניקה,חקלאות"
+        },
+        "leisure/garden/kitchen": {
+          "name": "גינה קהילתית",
+          "terms": "גן שיתופי,גינה שיתופית,גינת ירק,גינת מאכל"
         },
         "leisure/garden/residential": {
           "name": "גן מגורים"
@@ -3126,6 +3167,10 @@
         "leisure/sports_centre/climbing_adventure": {
           "name": "פארק הרפתקאות"
         },
+        "leisure/sports_centre/karting": {
+          "name": "מתקן קארטינג",
+          "terms": "גו קארט"
+        },
         "leisure/sports_centre/shooting": {
           "name": "מתקן מטווחי ירי"
         },
@@ -3222,6 +3267,9 @@
           "name": "ארובה",
           "terms": "ארובה"
         },
+        "man_made/clarifier": {
+          "name": "מטהר שפכים"
+        },
         "man_made/clearcut": {
           "name": "יער מגולח",
           "terms": "קרחת יער"
@@ -3267,6 +3315,10 @@
         "man_made/flagpole": {
           "name": "עמוד דגל",
           "terms": "תורן,תורן דגל"
+        },
+        "man_made/fuel_pump": {
+          "name": "משאבת דלק",
+          "terms": "משאבת דלק"
         },
         "man_made/gasometer": {
           "name": "מיכל גז",
@@ -3424,6 +3476,12 @@
         },
         "man_made/telescope": {
           "name": "טלסקופ"
+        },
+        "man_made/telescope/optical": {
+          "name": "טלסקופ אופטי"
+        },
+        "man_made/telescope/radio": {
+          "name": "רדיו טלסקופ"
         },
         "man_made/torii": {
           "name": "טוריאי",
@@ -3653,6 +3711,9 @@
           "name": "סלע לא מחובר",
           "terms": "סלע מבודד"
         },
+        "natural/strait": {
+          "name": "מצר"
+        },
         "natural/tree": {
           "name": "עץ",
           "terms": "עץ"
@@ -3734,12 +3795,19 @@
           "name": "ביצה",
           "terms": "ביצה"
         },
+        "natural/wetland/mangrove": {
+          "name": "מנגרוב"
+        },
         "natural/wetland/wet_meadow": {
           "name": "אחו רטוב"
         },
         "natural/wood": {
           "name": "חורש טבעי",
           "terms": "עצים,חורשה,יער,עץ"
+        },
+        "network/type/node_network-DE-NL-BE-LU": {
+          "name": "מפרק מיועד לפנאי",
+          "terms": "מפרק פנאי"
         },
         "noexit/yes": {
           "name": "אין יציאה",
@@ -3773,7 +3841,8 @@
           "terms": "ארגון ללא מטרת רווח,מלכר,מלכ״ר,מלכ\"ר"
         },
         "office/bail_bond_agent-US-PH": {
-          "name": "סוכן שחרור בערבות"
+          "name": "סוכן שחרור בערבות",
+          "terms": "שחרור בערבות,שטר ערבות,משחרר בערבות"
         },
         "office/charity": {
           "name": "משרד צדקה",
@@ -3942,6 +4011,10 @@
           "name": "משרד מטפל",
           "terms": "משרד מטפלת"
         },
+        "office/translator": {
+          "name": "משרד שירותי תרגום",
+          "terms": "שרותי תרגום,משרד תרגום,טראנסלט"
+        },
         "office/travel_agent": {
           "name": "סוכנות נסיעות"
         },
@@ -3962,7 +4035,8 @@
           "name": "תחנת צינורות משנית"
         },
         "pipeline/valve": {
-          "name": "שסתום צינור"
+          "name": "שסתום צינור",
+          "terms": "ברז צינור,ברז"
         },
         "piste/downhill": {
           "name": "סקי אלפיני",
@@ -3983,10 +4057,6 @@
         "piste/nordic": {
           "name": "שביל סקי חורף",
           "terms": "שביל סקי חורף,שביל סקי נורדי"
-        },
-        "piste/piste": {
-          "name": "שבילי ספורט חורף",
-          "terms": "שבילי ספורט חורפי,שבילי טיולי חורף,מסלול טיול חורף,מסלול טיול שלג"
         },
         "piste/skitour": {
           "name": "מסלול סיורי סקי",
@@ -4070,7 +4140,8 @@
           "terms": "שיווי משקל,איזון,משחק"
         },
         "playground/basketrotator": {
-          "name": "סל מסתובב"
+          "name": "סל מסתובב",
+          "terms": "מסובב סלים,סלים מסתובבים"
         },
         "playground/basketswing": {
           "name": "נדנדת סל",
@@ -4216,7 +4287,8 @@
           "terms": "תחנת כוח מופעלת מים"
         },
         "power/plant/source/method/photovoltaic": {
-          "name": "חווה סולרית"
+          "name": "חווה סולרית",
+          "terms": "חווה סולרית"
         },
         "power/plant/source/nuclear": {
           "name": "תחנת כוח גרעיני",
@@ -4549,6 +4621,9 @@
         "relation": {
           "name": "יחס",
           "terms": "יחס"
+        },
+        "roller_coaster/track": {
+          "name": "מסלול רכבת הרים"
         },
         "route/ferry": {
           "name": "נתיב מעבורת",
@@ -4909,6 +4984,10 @@
         "shop/hairdresser": {
           "name": "מעצב שיער",
           "terms": "מעצב שער"
+        },
+        "shop/hairdresser/barber": {
+          "name": "ספר",
+          "terms": "ספר,מעצב שיער"
         },
         "shop/hairdresser_supply": {
           "name": "חנות ציוד לספרים",

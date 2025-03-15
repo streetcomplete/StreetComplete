@@ -1273,8 +1273,6 @@ Menejar ara?"</string>
     <string name="overlay_surface">"Superfícies"</string>
     <string name="overlay_path_surface_segregated">"Dividit en parts per anar amb bicicleta o caminant"</string>
     <string name="quest_crossing_title2">"Hi ha un creuament aquí?"</string>
-    <string name="quest_crossing_yes">"Si (p. ex. el voral està rebaixat o hi ha marques)"</string>
-    <string name="quest_crossing_no">"No, però és possible creuar"</string>
     <string name="quest_crossing_prohibited">"No, creuar està prohibit o és impossible"</string>
     <string name="quest_hairdresser_title">"Quin tipus de clients visita aquesta perruqueria?"</string>
     <string name="quest_hairdresser_male_and_female">"Qualsevol"</string>
@@ -1364,7 +1362,7 @@ Podeu trobar informació sobre les donacions a la nostra web o al portal del pro
     <string name="quest_isAmenityIndoor_outside_covered">"No és interior, però està cobert"</string>
     <string name="lit_value_unsupported">"Un tipus d'il·luminació no disponible en aquesta aplicació"</string>
     <string name="quest_generic_otherAnswers2">"Bufa…"</string>
-    <string name="quest_pedestrian_crossing_signals2">"Hi ha senyals de trànsit que indiquen quan creuar aquí?"</string>
+    <string name="quest_pedestrian_crossing_signals2">"Hi ha semàfors que indiquen quan creuar aquí?"</string>
     <string name="quest_moped_access_title">"Hi ha senyals de trànsit que indiquen si els ciclomotors poden circular per aquest carril bici?"</string>
     <string name="quest_moped_access_allowed">"No hi ha cap senyal"</string>
     <string name="quest_moped_access_designated">"Hi ha un senyal que permet la circulació de ciclomotors per aquest carril bici"</string>

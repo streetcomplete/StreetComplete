@@ -8,4 +8,4 @@ fun Double.format(digits: Int) = "%.${digits}f".format(null, this)
 
 fun Double.format(locale: Locale, digits: Int) = "%.${digits}f".format(locale, this)
 
-fun Double.truncateTo5Decimals() = (this * 1e5).toInt().toDouble() / 1e5
+fun Double.truncateTo6Decimals() = (this * 1e6).toInt().toDouble() / 1e6

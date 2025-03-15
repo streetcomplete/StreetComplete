@@ -5,6 +5,9 @@
         "address": {
           "name": "Helbidea"
         },
+        "advertising/board": {
+          "name": "Ohar-taula"
+        },
         "advertising/column": {
           "name": "Publizitaterako zutabea"
         },
@@ -36,7 +39,8 @@
           "name": "Barbakoa/Parrila"
         },
         "amenity/bench": {
-          "name": "Banku"
+          "name": "Bankua",
+          "terms": "banku,aulki,eserleku"
         },
         "amenity/bicycle_parking": {
           "name": "Bizikletentzako Aparkalekua"
@@ -163,7 +167,8 @@
           "name": "Internet kafetegi"
         },
         "amenity/language_school": {
-          "name": "Hizkuntz eskola"
+          "name": "Hizkuntza-eskola",
+          "terms": "hizkuntza-eskola,akademia,hizkuntz"
         },
         "amenity/library": {
           "name": "Liburutegi"
@@ -183,8 +188,17 @@
         "amenity/nightclub": {
           "name": "Klub"
         },
+        "amenity/nursing_home": {
+          "name": "Zahar-egoitza"
+        },
+        "amenity/parking": {
+          "name": "Aparkalekuan"
+        },
         "amenity/parking/multi-storey": {
           "name": "Maila anitzeko aparkaleku"
+        },
+        "amenity/parking/underground": {
+          "name": "Lurpeko aparkalekua"
         },
         "amenity/parking_space": {
           "name": "Aparkatzeko lekua"
@@ -242,7 +256,11 @@
           "name": "Birziklatze zentrua"
         },
         "amenity/restaurant": {
-          "name": "Jatetxe"
+          "name": "Jatetxea",
+          "terms": "jatetxe,jantoki,restaurante,bazkari,afari,erretegi,kantina,taberna"
+        },
+        "amenity/restaurant/american": {
+          "name": "Jatetxe amerikarra"
         },
         "amenity/school": {
           "name": "Eskola eremu"
@@ -298,10 +316,12 @@
           "terms": "telefonoa,urrutizkina"
         },
         "amenity/theatre": {
-          "name": "Antzoki"
+          "name": "Antzokia",
+          "terms": "antzokia,zinema,antzerki,areto,teatroa"
         },
         "amenity/theatre/type/amphi": {
-          "name": "Anfiteatro"
+          "name": "Anfiteatroa",
+          "terms": "anfiteatroa,antzoki,teatroa"
         },
         "amenity/townhall": {
           "name": "Udaletxe"
@@ -361,11 +381,44 @@
         "barrier/gate": {
           "name": "Ate"
         },
+        "barrier/handrail": {
+          "name": "Baranda"
+        },
+        "barrier/kerb": {
+          "name": "Frenatu"
+        },
         "barrier/wall": {
           "name": "Pareta"
         },
+        "boundary": {
+          "name": "Muga"
+        },
+        "building": {
+          "name": "Eraikina"
+        },
         "building/apartments": {
           "name": "Apartamentu-blokea"
+        },
+        "building/cathedral": {
+          "name": "Katedral-erainika"
+        },
+        "building/chapel": {
+          "name": "Kapera-eraikina"
+        },
+        "building/church": {
+          "name": "Eliza-eraikina"
+        },
+        "building/civic": {
+          "name": "Eraikin zibila"
+        },
+        "building/commercial": {
+          "name": "Eraikin komertziala"
+        },
+        "building/construction": {
+          "name": "Eraikitzen"
+        },
+        "building/cowshed": {
+          "name": "Ukuilua"
         },
         "building/dormitory": {
           "name": "Erresidentzia"
@@ -378,14 +431,47 @@
           "terms": "baserria,basetxea,basarria",
           "aliases": "Basetxea"
         },
+        "building/farm_auxiliary": {
+          "name": "Baserri alboko eraikina"
+        },
+        "building/fire_station": {
+          "name": "Suhiltzaileen eraikina"
+        },
         "building/garage": {
           "name": "Garaje"
         },
         "building/garages": {
           "name": "Garajeak"
         },
+        "building/ger": {
+          "name": "Yurta"
+        },
+        "building/greenhouse": {
+          "name": "Negutegia"
+        },
+        "building/hangar": {
+          "name": "Hangar-eraikina"
+        },
+        "building/hospital": {
+          "name": "Ospitale-eraikina"
+        },
+        "building/hotel": {
+          "name": "Hotel-eraikina"
+        },
         "building/house": {
           "name": "Etxe"
+        },
+        "building/industrial": {
+          "name": "Industria-eraikina"
+        },
+        "building/manufacture": {
+          "name": "Industria-produkziorako eraikina"
+        },
+        "building/mosque": {
+          "name": "Meskita-eraikina"
+        },
+        "building/office": {
+          "name": "Bulego-eraikina"
         },
         "building/residential": {
           "name": "Bizitegi-eraikina"
@@ -393,8 +479,23 @@
         "building/roof": {
           "name": "Teilatu"
         },
+        "building/school": {
+          "name": "Eskola-eraikina"
+        },
         "building/stable": {
           "name": "Ukuilu"
+        },
+        "building/transportation": {
+          "name": "Garraio-eraikina"
+        },
+        "building/university": {
+          "name": "Unibertsitate-eraikina"
+        },
+        "building/warehouse": {
+          "name": "Biltegia"
+        },
+        "building_point": {
+          "name": "Eraikina"
         },
         "club": {
           "name": "Klub"
@@ -428,9 +529,21 @@
         "craft/rigger": {
           "name": "Aparejadore"
         },
+        "craft/shoemaker": {
+          "name": "Zapataria"
+        },
+        "craft/window_construction": {
+          "name": "Leiho-eraikitzailea"
+        },
         "healthcare/physiotherapist": {
           "name": "Fisioterapeuta",
           "terms": "fisioterapeuta,masajea,masaia,fisioterapia"
+        },
+        "highway/bus_stop": {
+          "name": "Autobus geltokia"
+        },
+        "highway/busway": {
+          "name": "Autobusen bidea"
         },
         "highway/cycleway/bicycle_foot": {
           "name": "Bizikleta eta oinezko-bidea"
@@ -444,8 +557,17 @@
         "highway/footway/informal": {
           "name": "Oinezkoen bide informala"
         },
+        "highway/footway/sidewalk": {
+          "name": "Espaloian"
+        },
+        "highway/path/crossing": {
+          "name": "Bizikleta eta oinezkoen pasabidea"
+        },
         "highway/residential": {
           "name": "Bizitegi-kalea"
+        },
+        "highway/service/drive-through": {
+          "name": "Auto-zerbitzua"
         },
         "highway/service/driveway": {
           "name": "Sarrera-bidea"
@@ -459,11 +581,21 @@
         "historic/pillory": {
           "name": "Urkabe historikoa"
         },
+        "landuse/industrial/scrap_yard": {
+          "name": "Txatarra metaketa"
+        },
+        "landuse/pond": {
+          "name": "Urmael"
+        },
         "landuse/residential": {
           "name": "Bizitegi-eremua"
         },
         "landuse/residential/apartments": {
           "name": "Apartamentu-konplexua"
+        },
+        "leisure/garden/kitchen": {
+          "name": "Baratzea",
+          "terms": "ortua,baratze"
         },
         "leisure/pitch/table_tennis": {
           "name": "ping-pong mahai"
@@ -513,6 +645,12 @@
         "man_made/chimney": {
           "name": "Tximinia"
         },
+        "man_made/crane/portal_crane": {
+          "name": "Lehorpe Garabia"
+        },
+        "man_made/fuel_pump": {
+          "name": "Gas hornigailu"
+        },
         "man_made/manhole/telecom": {
           "name": "Telekomunikazioko erregistro-tapa"
         },
@@ -522,19 +660,86 @@
         "natural/spring": {
           "name": "Iturburua"
         },
+        "natural/water/pond": {
+          "name": "Urmael"
+        },
         "office/architect": {
           "name": "Arkitektura bulegoa",
           "terms": "arkitekto bulegoa,arkitektura bulegoa"
         },
+        "office/coworking": {
+          "name": "Coworking espazioa"
+        },
+        "office/diplomatic/embassy": {
+          "name": "Enbaxada"
+        },
+        "office/government": {
+          "name": "Gobernuaren bulegoa",
+          "terms": "gobernuaren bulegoa,ofiziala,erakunde,udal,gobernu"
+        },
+        "office/government/register_office": {
+          "name": "Erregistro bulegoa"
+        },
+        "office/lawyer/notary": {
+          "name": "Notario bulegoa"
+        },
+        "office/ngo": {
+          "name": "GKE bulegoa",
+          "terms": "gke bulegoa,gobernuz kanpoko erakundea,elkartea"
+        },
+        "office/notary": {
+          "name": "Notario bulegoa"
+        },
         "office/political_party": {
+          "name": "Alderdi politikoaren bulegoa",
           "terms": "alderdi politikoa,alderdia,hauteskunde"
+        },
+        "office/property_management": {
+          "name": "Etxaldeen administrazioa / Etxe-alokairu bulegoa",
+          "terms": "administrazioa,finkak,etxaldeen administrazioa,aholkularitza,kudeaketa"
+        },
+        "office/telecommunication": {
+          "name": "Telekomunikazio bulegoa"
+        },
+        "office/travel_agent": {
+          "name": "Bidai-agentzia"
+        },
+        "place": {
+          "name": "Leku"
+        },
+        "place/city": {
+          "name": "Hiria"
         },
         "place/farm": {
           "name": "Baserria",
           "aliases": "Basetxea"
         },
+        "place/hamlet": {
+          "name": "Herrixka"
+        },
         "place/locality": {
           "name": "Aurkintza"
+        },
+        "place/square": {
+          "name": "Laukia"
+        },
+        "playground": {
+          "name": "Jolastokiko ekipamendua"
+        },
+        "point": {
+          "name": "Puntua"
+        },
+        "public_transport/platform/bus_point": {
+          "name": "Autobus geltokia"
+        },
+        "public_transport/platform/bus_tram_point": {
+          "name": "Tranbia eta autobus geltokia"
+        },
+        "public_transport/station_bus": {
+          "name": "Autobus geltoki / Terminal"
+        },
+        "public_transport/stop_position_bus": {
+          "name": "Autobusa gelditzen den puntua"
         },
         "relation": {
           "name": "Erlazioa",
@@ -548,19 +753,59 @@
           "name": "Okindegia",
           "terms": "okindegia,ogia,okina"
         },
+        "shop/bathroom_furnishing": {
+          "name": "Bainugela diseinu-denda",
+          "terms": "komun,dutxa,bainera,bainugela"
+        },
+        "shop/beauty": {
+          "name": "Estetika zentroa",
+          "terms": "estetika,estetizien,depilazio,spa,beltzarantze,brontzeatu"
+        },
+        "shop/clothes/wedding": {
+          "name": "Eztei-jantzien denda",
+          "terms": "ezkontza,botique,nobio,nobia,ezkongai,soineko"
+        },
+        "shop/coffee": {
+          "name": "Kafe-denda"
+        },
         "shop/confectionery": {
           "name": "Gozodenda",
           "terms": "gozodenda,goxokiak,azukrea,txutxeak"
+        },
+        "shop/convenience": {
+          "name": "Komenentziako denda",
+          "terms": "supermerkatu,denda-txikia,ultramarino"
+        },
+        "shop/fashion": {
+          "name": "Arropa-denda"
+        },
+        "shop/fashion_accessories": {
+          "name": "Arropa-lagungarrien denda",
+          "terms": "poltsa,gerriko,kolonia,perfume,sonbreru,kapela,bitxi,betaurreko,aterki,konplementu,moda"
+        },
+        "shop/furniture": {
+          "name": "Altzari-denda",
+          "terms": "altzari,aulki,mahai,armairu,sukalde,sofa,silloi,barne-diseinu"
         },
         "shop/greengrocer": {
           "name": "Fruta eta barazki-saltzailea",
           "terms": "frutadenda,barazkiak,frutak,fruituak,entsalada"
         },
         "shop/hairdresser": {
-          "name": "Ile-apaintzailea"
+          "name": "Ile-apaintzailea",
+          "terms": "pelukeria,ile-apaintzaile,barberia"
         },
         "shop/hairdresser_supply": {
-          "name": "Ile-apaindegiko hornidura-denda"
+          "name": "Ile-apaindegiko hornidura-denda",
+          "terms": "txanpu,bizar,laka,depilazio"
+        },
+        "shop/herbalist": {
+          "name": "Belar-denda",
+          "terms": "belarrak,dietetika,fitomedizina,infusioak"
+        },
+        "shop/kitchen": {
+          "name": "Sukalde diseinu denda",
+          "terms": "sukaldeak,sukalde armairu,sukalde dekorazio"
         },
         "shop/locksmith": {
           "name": "Sarrailagilea",
@@ -568,6 +813,13 @@
         },
         "shop/medical_supply": {
           "name": "Ortopedia eta medikuntzako-hornidura denda"
+        },
+        "shop/optician": {
+          "name": "Optikari"
+        },
+        "shop/pastry": {
+          "name": "Gozo-denda",
+          "terms": "gozotegia,gozoak,pastelak,tartak,gozogintza,opilak,opilgintza,txokolate,azukre"
         },
         "shop/photo": {
           "name": "Argazkilaritza denda"
@@ -584,8 +836,36 @@
           "name": "Paperdenda",
           "aliases": "bulegoko materiala\nbulegoa"
         },
+        "shop/travel_agency": {
+          "name": "Bidai-agentzia"
+        },
         "shop/vacant": {
           "name": "Denda-lokal hutsa"
+        },
+        "shop/window_blind": {
+          "name": "Kurtina-denda",
+          "terms": "kurtina,estore,pertsiana"
+        },
+        "tourism/artwork/bust": {
+          "name": "Bustua"
+        },
+        "tourism/artwork/mural": {
+          "name": "Murala (muralen)"
+        },
+        "tourism/artwork/sculpture": {
+          "name": "Eskultura"
+        },
+        "tourism/artwork/statue": {
+          "name": "Estatua"
+        },
+        "tourism/information": {
+          "name": "Informazioa"
+        },
+        "tourism/information/board/welcome_sign": {
+          "name": "Ongietorri seinalea"
+        },
+        "traffic_sign": {
+          "name": "Trafiko seinalea"
         },
         "type/boundary": {
           "name": "Muga"

@@ -4,23 +4,26 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isGone
+import de.westnordost.osmfeatures.BaseFeature
 import de.westnordost.osmfeatures.Feature
 import de.westnordost.osmfeatures.GeometryType
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.create.CreateNodeAction
 import de.westnordost.streetcomplete.data.osm.edits.delete.DeletePoiNodeAction
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
-import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.databinding.FragmentOverlayThingsBinding
 import de.westnordost.streetcomplete.osm.POPULAR_THING_FEATURE_IDS
+import de.westnordost.streetcomplete.osm.applyTo
 import de.westnordost.streetcomplete.osm.asIfItWasnt
 import de.westnordost.streetcomplete.osm.isThing
+import de.westnordost.streetcomplete.osm.toElement
+import de.westnordost.streetcomplete.osm.toPrefixedFeature
 import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 import de.westnordost.streetcomplete.overlays.AnswerItem
 import de.westnordost.streetcomplete.overlays.IAnswerItem
-import de.westnordost.streetcomplete.util.DummyFeature
 import de.westnordost.streetcomplete.util.getLanguagesForFeatureDictionary
 import de.westnordost.streetcomplete.util.getNameAndLocationSpanned
 import de.westnordost.streetcomplete.util.ktx.geometryType
@@ -47,28 +50,23 @@ class ThingsOverlayForm : AbstractOverlayForm() {
 
     private fun getOriginalFeature(): Feature? {
         val element = element ?: return null
-        val feature = getFeatureDictionaryFeature(element)
-        if (feature != null) return feature
 
-        val disusedElement = element.asIfItWasnt("disused")
-        if (disusedElement != null) {
-            val disusedFeature = getFeatureDictionaryFeature(disusedElement)
-            if (disusedFeature != null) {
-                return DummyFeature(
-                    disusedFeature.id + "/disused",
-                    "${disusedFeature.name} (${resources.getString(R.string.disused).uppercase()})",
-                    disusedFeature.icon,
-                    disusedFeature.addTags.mapKeys { "disused:${it.key}" }
-                )
-            }
-        }
+        return getFeatureDictionaryFeature(element)
+            ?: getDisusedFeatureDictionaryFeature(element)
+            ?: BaseFeature(
+                id = "thing/unknown",
+                names = listOf(requireContext().getString(R.string.unknown_object)),
+                icon = "ic_preset_maki_marker_stroked",
+                tags = element.tags,
+                geometry = GeometryType.entries.toList()
+            )
+    }
 
-        return DummyFeature(
-            "thing/unknown",
-            requireContext().getString(R.string.unknown_object),
-            "ic_preset_maki_marker_stroked",
-            element.tags
-        )
+    private fun getDisusedFeatureDictionaryFeature(element: Element): Feature? {
+        val disusedElement = element.asIfItWasnt("disused") ?: return null
+        val disusedFeature = getFeatureDictionaryFeature(disusedElement) ?: return null
+        val disusedLabel = resources.getString(R.string.disused).uppercase()
+        return disusedFeature.toPrefixedFeature("disused", disusedLabel)
     }
 
     private fun getFeatureDictionaryFeature(element: Element): Feature? {
@@ -80,7 +78,7 @@ class ThingsOverlayForm : AbstractOverlayForm() {
             languages = languages,
             country = countryOrSubdivisionCode,
             geometry = geometryType
-        ).firstOrNull()
+        ).firstOrNull { it.toElement().isThing() }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -113,15 +111,10 @@ class ThingsOverlayForm : AbstractOverlayForm() {
             element?.geometryType ?: GeometryType.POINT, // for new features: always POINT
             countryOrSubdivisionCode,
             featureCtrl.feature?.name,
-            ::filterOnlyThings,
+            { it.toElement().isThing() },
             ::onSelectedFeature,
             POPULAR_THING_FEATURE_IDS
         ).show()
-    }
-
-    private fun filterOnlyThings(feature: Feature): Boolean {
-        val fakeElement = Node(-1L, LatLon(0.0, 0.0), feature.tags, 0)
-        return fakeElement.isThing()
     }
 
     private fun onSelectedFeature(feature: Feature) {
@@ -149,7 +142,11 @@ class ThingsOverlayForm : AbstractOverlayForm() {
     override fun onClickOk() {
         if (element == null) {
             val feature = featureCtrl.feature!!
-            applyEdit(CreateNodeAction(geometry.center, feature.addTags))
+            val tags = HashMap<String, String>()
+            val builder = StringMapChangesBuilder(tags)
+            feature.applyTo(builder)
+            builder.create().applyTo(tags)
+            applyEdit(CreateNodeAction(geometry.center, tags))
         }
     }
 }

@@ -7,8 +7,7 @@ import de.westnordost.streetcomplete.data.edithistory.EditHistorySource
 import de.westnordost.streetcomplete.data.edithistory.EditKey
 import de.westnordost.streetcomplete.data.edithistory.ElementEditKey
 import de.westnordost.streetcomplete.data.edithistory.NoteEditKey
-import de.westnordost.streetcomplete.data.edithistory.OsmNoteQuestHiddenKey
-import de.westnordost.streetcomplete.data.edithistory.OsmQuestHiddenKey
+import de.westnordost.streetcomplete.data.edithistory.QuestHiddenKey
 import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestHidden
@@ -143,12 +142,12 @@ private fun Map<String, String>.toEditKey(): EditKey? = when (get(MARKER_EDIT_TY
     EDIT_TYPE_NOTE ->
         NoteEditKey(getValue(MARKER_ID).toLong())
     EDIT_TYPE_HIDE_OSM_QUEST ->
-        OsmQuestHiddenKey(OsmQuestKey(
+        QuestHiddenKey(OsmQuestKey(
             ElementType.valueOf(getValue(MARKER_ELEMENT_TYPE)),
             getValue(MARKER_ELEMENT_ID).toLong(),
             getValue(MARKER_QUEST_TYPE)
         ))
     EDIT_TYPE_HIDE_OSM_NOTE_QUEST ->
-        OsmNoteQuestHiddenKey(OsmNoteQuestKey(getValue(MARKER_NOTE_ID).toLong()))
+        QuestHiddenKey(OsmNoteQuestKey(getValue(MARKER_NOTE_ID).toLong()))
     else -> null
 }

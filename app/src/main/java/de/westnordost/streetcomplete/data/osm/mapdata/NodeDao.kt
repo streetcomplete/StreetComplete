@@ -71,7 +71,7 @@ class NodeDao(private val db: Database) {
         return db.query(NAME,
             columns = arrayOf(ID),
             where = "$LAST_SYNC < $timestamp",
-            limit = limit?.toString()
+            limit = limit
         ) { it.getLong(ID) }
     }
 

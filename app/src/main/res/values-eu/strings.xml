@@ -1082,7 +1082,7 @@ Egin gauza bera beste aldean egonez gero."</string>
     <string name="quest_openingHours_signed_title">"Irekitzeko ordutegia agerian dago?"</string>
     <string name="quest_openingHours_resurvey_title">"Ordutegia zuzena da oraindik?"</string>
     <string name="quest_placeName_title">"Zein da toki honen izena?"</string>
-    <string name="quest_shop_type_title2">"Erre daiteke bertan?"</string>
+    <string name="quest_shop_type_title2">"Zein da denda mota hau?"</string>
     <string name="quest_smoking_title2">"Ba al dago erretzerik hemen?"</string>
     <string name="quest_smoothness_title">"Zein da bertako zoladuraren kalitatea?"</string>
     <string name="quest_summit_register_title2">"Badago erregistrorik gailurrean?"</string>
@@ -1218,7 +1218,7 @@ Egin gauza bera beste aldean egonez gero."</string>
     <string name="confirmation_replace_shop_title">"Leku desberdin batean al dago orain?"</string>
     <string name="confirmation_replace_shop_message">"Kasu horretan, ordutegiak, harremanetarako informazioa eta abar ere aldatuko dira."</string>
     <string name="confirmation_replace_shop_yes">"Leku desberdin bat da orain"</string>
-    <string name="confirmation_replace_shop_no">"Oraindik leku berean"</string>
+    <string name="confirmation_replace_shop_no">"Oraindik leku berbera"</string>
     <string name="move_node">"Posizio apur bat desberdina da"</string>
     <string name="quest_move_node_message">"Posizioa zuzendu dezakezu funtzioa mugituz.
 Orain mugitu?"</string>
@@ -1264,8 +1264,8 @@ Orain mugitu?"</string>
     <string name="overlay_surface">"Azalerak"</string>
     <string name="overlay_path_surface_segregated">"Banatu bizikletaz eta oinez ibiltzeko zatietan"</string>
     <string name="quest_crossing_title2">"Hemen zeharbiderik dago?"</string>
-    <string name="quest_crossing_yes">"Bai (adibidez, zintarria hemen jaitsita dago edo markak daude)"</string>
-    <string name="quest_crossing_no">"Ez, baina zeharkatzea posible da"</string>
+    <string name="quest_crossing_yes">"Bai, gurutzatzekoa"</string>
+    <string name="quest_crossing_no">"Teorian ez da gurutzatzeko baina gurutzatu ahal da"</string>
     <string name="quest_crossing_prohibited">"Ez, zeharkatzea debekatuta edo ezinezkoa da"</string>
     <string name="quest_hairdresser_title">"Zein bezerok bisitatzen dute ile-apaindegia?"</string>
     <string name="quest_hairdresser_male_and_female">"Edozein"</string>
@@ -1322,4 +1322,131 @@ Gainera, geruza batzuek datu berriak gehitzeko aukera ematen dute bistaratzen de
     <string name="label_log_older_than">"-ra"</string>
     <string name="label_log_message_contains">"Mezua hau dauka"</string>
     <string name="title_logs_filters">"Mezuak iragazi"</string>
+    <string name="pref_title_quests_restore_hidden_summary">"Ezkutatutako erronkak: %d"</string>
+    <string name="link_every_door_description">"Android/iOSerako POI editore indartsua"</string>
+    <string name="link_mapcomplete_description">"OSM mapa tematikoen bilduma, bakoitzak ezaugarri mota bat editatzen uzten dizutenak"</string>
+    <string name="link_forum_description">"Laguntza behar? Irakurri nahi duzu zer gertatzen ari den? Etorri eta ekin, mundu osoko komunitateak ekintza mordo egiten ari dira!"</string>
+    <string name="link_calendar_description">"Bada OSMeko ekitaldi edo komunitate topaketarik zugandik hurbil? (Bestela, gehitu zeurea!)"</string>
+    <string name="link_prettymapp_description">"Sortu auzoen kolore anitzeko mapa posterrak"</string>
+    <string name="quest_disable_action">"Ezgaitu"</string>
+    <string name="quest_disable_title">"Desgaitu erronka mota"</string>
+    <string name="quest_disable_message_not_installed">"StreetMeasure ez dago instalatuta"</string>
+    <string name="quest_disable_message_not_working">"StreetMeasure-k ez du neurririk eman."</string>
+    <string name="quest_disable_message_tape_measure">"Neurketa-zinta erabili ahal duzu honen ordez, baina arraro gerta daiteke."</string>
+    <string name="quest_buildingType_outbuilding">"Dependentzi"</string>
+    <string name="quest_buildingType_outbuilding_description">"Jabetza bateko menpeko eraikina"</string>
+    <string name="quest_buildingType_other_description">"App honetan ezin hauta daitekeen eraikin mota"</string>
+    <string name="quest_buildingType_container">"Kontainer"</string>
+    <string name="quest_buildingType_tent">"Dend"</string>
+    <string name="quest_buildingType_tomb">"Hobi"</string>
+    <string name="quest_buildingType_tower">"Dorre"</string>
+    <string name="quest_buildingType_tower_description">"Edozein dorre"</string>
+    <string name="quest_buildingType_under_construction">"Eraikitzen"</string>
+    <string name="overlay_buildings">"Eraikinak"</string>
+    <string name="quest_pedestrian_crossing_markings">"Gurutzebide honek ikurrak ditu errepidean?"</string>
+    <string name="overlay_places">"Lekuak"</string>
+    <string name="overlay_things">"Gauzak"</string>
+    <string name="disused">"erabili gabea"</string>
+    <string name="unknown_object">"Ezezaguna"</string>
+    <string name="quest_leafType_tree_title">"Zuhaitz honek orratz edo hostoak ditu?"</string>
+    <string name="quest_bbq_fuel_gas">"Gas"</string>
+    <string name="about_description_donate_google_play3">"Eskerrik asko app hau laguntzeaz pentsatzeagatik!
+Diru-emateko informazioa gure web horrian aurki dezakezu, Google Play-k ez digu loturak ipintzen uzten."</string>
+    <string name="quest_isAmenityIndoor_outside_covered">"Kanpoan baina estalita"</string>
+    <string name="lit_value_unsupported">"Aplikazio honetan hauta ezin daitekeen egoera zehatza"</string>
+    <string name="quest_generic_otherAnswers2">"Eh…"</string>
+    <string name="quest_pedestrian_crossing_signals2">"Badago trafiko ikurrik hemen non zeharkatu azaltzeko?"</string>
+    <string name="quest_moped_access_title">"Badago seinalerik bidegorri honetan ziklomotorrik sartzeko?"</string>
+    <string name="quest_moped_access_allowed">"Ez dago ikurrik"</string>
+    <string name="quest_moped_access_designated">"Badago seinale bat bidegorri hau ziklomotorrentzat dela
+
+"</string>
+    <string name="quest_moped_access_forbidden">"Badago seinale bat ziklomotorrak debekatzen dituena
+"</string>
+    <string name="default_disabled_msg_visible_sign_moped">"Galdera hau desgaituta dago, ziklomotorren sarbidea bidegorri baten hasieran edo amaieran seinale zehatz batek bakarrik adierazten duelako."</string>
+    <string name="quest_arrow_tutorial">"Irudiko geziek mapa doan lekura apuntatzen dute, bere pin-aren kokapenaren erdian. Biratu mapa ta hor izango duzu."</string>
+    <string name="info">"Informazio gehio"</string>
+    <string name="quest_accessible_for_pedestrians_prohibited">"Debekatuta."</string>
+    <string name="quest_accessible_for_pedestrians_allowed">"Baimenduta."</string>
+    <string name="quest_buildingLevels_hint">"Aldapa bateko eraikinetarako, alde baxueneko lur mailatik hasi behar da kontatzen.
+
+Maila bat sabai maila da leihoak sabaian dituenean. Beraz, sabai mailarik ez duten sabaiak ez dira nahitaez lauak izan behar, nahikoa da maila oso bat egiteko bezain altuak ez badira"</string>
+    <string name="quest_parcel_locker_brand">"Zein da kontsigna honen marka?"</string>
+    <string name="quest_powerPolesMaterial_is_terminal">"Elektrizitate-kablea eraikinera lotuta dago"</string>
+    <string name="quest_cycleway_value_sidewalk_ok">"Ez, baina bizikletak espreski baimenduta"</string>
+    <string name="separate_cycleway_no_signed">"Ikurrak bizikletak debekatzen ditu"</string>
+    <string name="separate_cycleway_footway_allowed_sign">"Oinezkoa, bizikletak baimenduta"</string>
+    <string name="quest_bicycle_parking_type_floor">"Eremua markatuta dago"</string>
+    <string name="link_osmapp_description">"Hainbat geruza dituen mapa, hala nola eskalada edo sky"</string>
+    <string name="action_back">"Atzera"</string>
+    <string name="action_clear">"Garbitu"</string>
+    <string name="action_more">"Gehiago"</string>
+    <string name="action_open_in_browser">"Ireki nabigatzailean"</string>
+    <string name="about_category_contribute">"Lagundu"</string>
+    <string name="pref_category_quests">"Bilaketak"</string>
+    <string name="pref_title_language_select2">"Hizkuntza"</string>
+    <string name="pref_title_resurvey_intervals_summary">"Zenbat aldiz galdetzen dizute ea lehendik mapatutako datuak zuzenak diren ala ez berresteko."</string>
+    <string name="questList_disabled_by_default">"Lehenespenez desgaituta"</string>
+    <string name="action_manage_presets_summary">"Izenaren azpian bilaketa-hautapena gordetzen da."</string>
+    <string name="quest_multiselect_hint">"Hauta ondo datozenak:"</string>
+    <string name="quest_barrier_opening_width_gate">"Zein da irekieraren zabalera?"</string>
+    <string name="bridge">"Zubian"</string>
+    <string name="about_title_intro">"Erakutsi sarrera"</string>
+    <string name="about_category_help">"Laguntza"</string>
+    <string name="quest_camp_power_supply_hint">"Kanping lekuan dauden kargagailuak, zerbitzu eraikin batean eskuragarri daudenak, ala mobil edo portatiletarako kargagune berezia izan daiteke hau."</string>
+    <string name="quest_barrier_opening_width_bollard">"Zein da hemendik pasa daitekeen tarterik zabalena?"</string>
+    <string name="user_profile_all_time_title">"Ohikoa"</string>
+    <string name="user_statistics_country_rank2">"%s-ko rankinga"</string>
+    <string name="quest_leafType_tree_is_just_a_stump">"Zuhaitz-ipurdi bat da"</string>
+    <string name="quest_board_name_title">"Zein da informazio-taula honen izenburua?"</string>
+    <string name="quest_crossing_hint">"Bide bat zeharkatzen duen arrasto informala:"</string>
+    <string name="note_for_object">"Batek oharra utzi du:"</string>
+    <string name="quest_bicycle_parking_type_safeloops">"Safe Loops (gidoina eta koadrorako)"</string>
+    <string name="quest_cycleway_value_sidewalk_ok_dual">"bat ere ez, baina seinaleak espaloian bizikletaz ibiltzea uzten du, bi norabideetan.
+
+
+
+
+"</string>
+    <string name="quest_surface_value_rubber">"Kautxuzko pikorrak"</string>
+    <string name="quest_surface_value_acrylic">"Erretxin sintetikoa"</string>
+    <string name="action_messages">"Erakutsi mezuak"</string>
+    <string name="action_create_new_poi">"Sortu berri bat"</string>
+    <string name="auth_error">"Baimen-errorea. Saiatu berriro sartzen."</string>
+    <string name="quest_accessible_for_pedestrians_sidewalk">"Egia esan, espaloia dago."</string>
+    <string name="quest_bicycle_repair_station_services_title">"Zein bizikleta-ekipamendua dago hemen?"</string>
+    <string name="quest_bicycle_repair_station_pump">"Ponpa"</string>
+    <string name="quest_bicycle_repair_station_tools">"Hainbat tresna"</string>
+    <string name="quest_bicycle_repair_station_stand">"Lanerako tokia"</string>
+    <string name="quest_bicycle_repair_station_chain_tool">"Katerako tresna"</string>
+    <string name="quest_boat_rental_title">"Zer motatako ontziak daude hemen alokatzeko?"</string>
+    <string name="quest_boat_rental_motorboat">"Motordun txalupa"</string>
+    <string name="quest_boat_rental_jetski">"Jetski"</string>
+    <string name="quest_boat_rental_sailboat">"Belauntzia"</string>
+    <string name="quest_boat_rental_pedalboat">"Pedaloa"</string>
+    <string name="quest_boat_rental_kayak">"Kayak"</string>
+    <string name="quest_boat_rental_canoe">"Kanoa"</string>
+    <string name="quest_boat_rental_houseboat">"Etxe flotagarria"</string>
+    <string name="quest_boat_rental_rowboat">"Arraun txalupa"</string>
+    <string name="quest_boat_rental_raft">"Baltsa"</string>
+    <string name="quest_boat_rental_surfboard">"Surf-taula"</string>
+    <string name="quest_boat_rental_sailboard">"Windsurf-taula"</string>
+    <string name="quest_boat_rental_yacht">"Belauntzia"</string>
+    <string name="quest_boat_rental_standup_paddleboard">"Standup Paddleboard (SUP)"</string>
+    <string name="quest_powerAttachment_title">"Nola eusten da elektrizitate linea hau?"</string>
+    <string name="quest_powerAttachment_suspension">"Goitik helduta"</string>
+    <string name="quest_powerAttachment_anchor">"Horizontalki finkatuta"</string>
+    <string name="quest_powerAttachment_pin">"Behetik helduta"</string>
+    <string name="pedestrian_zone_designated">"Txirrindularitzarako izendatua hemen"</string>
+    <string name="pedestrian_zone_allowed_sign">"Seinale batek bizikletaz ibiltzea baimentzen du"</string>
+    <string name="pedestrian_zone_no_sign">"Ez dago txirrindularitzari buruzko seinale zehatzik hemen
+
+
+
+
+
+
+
+"</string>
+    <string name="team_mode_description_overlay_hint">"Gainjartzeak erabilita, bakoitzak bat behar duzue, erronkak bakarrik partekatzen direlako"</string>
 </resources>

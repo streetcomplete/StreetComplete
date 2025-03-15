@@ -45,7 +45,7 @@ class TracksApiClient(
         val tags = listOf(ApplicationConstants.NAME.lowercase()).joinToString()
         val xml = tracksSerializer.serialize(trackpoints)
 
-        val response = httpClient.post(baseUrl + "gpx/create") {
+        val response = httpClient.post(baseUrl + "gpx") {
             userLoginSource.accessToken?.let { bearerAuth(it) }
             setBody(MultiPartFormDataContent(formData {
                 append("file", xml, Headers.build {

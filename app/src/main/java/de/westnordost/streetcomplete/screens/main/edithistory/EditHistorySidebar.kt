@@ -6,15 +6,15 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.WindowInsetsSides
 import androidx.compose.foundation.layout.asPaddingValues
-import androidx.compose.foundation.layout.calculateEndPadding
-import androidx.compose.foundation.layout.calculateStartPadding
 import androidx.compose.foundation.layout.consumeWindowInsets
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
@@ -37,13 +37,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.unit.dp
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.edithistory.Edit
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.ui.ktx.isItemAtIndexFullyVisible
+import de.westnordost.streetcomplete.ui.ktx.plus
 import de.westnordost.streetcomplete.ui.theme.titleSmall
 import de.westnordost.streetcomplete.util.ktx.toast
 import kotlinx.coroutines.launch
@@ -67,9 +67,6 @@ fun EditHistorySidebar(
     val scope = rememberCoroutineScope()
 
     val context = LocalContext.current
-    val dir = LocalLayoutDirection.current
-
-    val insets = WindowInsets.safeDrawing.asPaddingValues()
 
     var showUndoDialog by remember { mutableStateOf(false) }
     var editElement by remember { mutableStateOf<Element?>(null) }
@@ -105,28 +102,25 @@ fun EditHistorySidebar(
         }
     }
 
-    // take care of insets:
-    // vertical offset as lazy column content padding, left padding as padding of the surface
     Surface(
         modifier = modifier
-            .padding(end = insets.calculateEndPadding(dir))
             .fillMaxHeight()
-            .consumeWindowInsets(insets)
+            .windowInsetsPadding(WindowInsets.safeDrawing.only(WindowInsetsSides.End))
             .shadow(16.dp),
         // not using surface's elevation here because we don't want it to change its background
         // color to gray in dark mode
     ) {
+        val verticalInsets = WindowInsets.safeDrawing.only(WindowInsetsSides.Vertical)
         LazyColumn(
             modifier = Modifier
-                .padding(start = insets.calculateStartPadding(dir))
+                .windowInsetsPadding(WindowInsets.safeDrawing.only(WindowInsetsSides.Start))
+                .consumeWindowInsets(verticalInsets)
                 .width(80.dp),
             state = state,
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Bottom,
-            contentPadding = PaddingValues(
-                top = insets.calculateTopPadding(),
-                bottom = insets.calculateBottomPadding() + 24.dp // to align with undo button
-            )
+            // bottom 24 dp to align with undo button
+            contentPadding = verticalInsets.asPaddingValues() + PaddingValues(bottom = 24.dp)
         ) {
             items(
                 items = editItems,

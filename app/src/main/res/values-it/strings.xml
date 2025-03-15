@@ -808,7 +808,7 @@ Considera tutte le opzioni disponibili: alcuni casi non sono ovvi, ad esempio un
     <string name="quest_buildingType_fire_station">"Centrale dei vigili del fuoco"</string>
     <string name="quest_recycling_type_beverage_cartons">"Solo cartoni per bevande"</string>
     <string name="quest_recycling_type_plastic_bottles_and_cartons">"Solo bottiglie di plastica e cartoni per bevande"</string>
-    <string name="team_mode">"Imposta Modalità Squadra"</string>
+    <string name="team_mode">"Imposta Modalità squadra"</string>
     <string name="team_mode_exit">"Abbandona la modalità squadra"</string>
     <string name="team_mode_description">"Quando mappi una stessa area insieme ad altre persone, puoi attivare la modalità squadra per suddividere le missioni tra tutte le persone."</string>
     <string name="team_mode_active">"Modalità squadra attiva"</string>
@@ -1263,8 +1263,6 @@ Spostarlo ora?"</string>
     <string name="overlay_surface">"Superfici"</string>
     <string name="overlay_path_surface_segregated">"Dividi in parti ciclabili e pedonali"</string>
     <string name="quest_crossing_title2">"C'è un attraversamento qui?"</string>
-    <string name="quest_crossing_yes">"Sì (ad es. qui il cordolo è abbassato oppure ci sono le strisce)"</string>
-    <string name="quest_crossing_no">"No, però è possibile attraversare"</string>
     <string name="quest_crossing_prohibited">"No, è proibito oppure impossibile attraversare"</string>
     <string name="quest_hairdresser_title">"Quali clienti vanno da questo parrucchiere?"</string>
     <string name="quest_hairdresser_male_and_female">"Chiunque"</string>
@@ -1418,10 +1416,14 @@ Un piano del tetto va contato quando ci sono finestre nel tetto. Quindi, un tett
     <string name="quest_boat_rental_canoe">"Canoa"</string>
     <string name="quest_boat_rental_houseboat">"Casa galleggiante"</string>
     <string name="quest_boat_rental_rowboat">"Barca a remi"</string>
+    <string name="quest_boat_rental_raft">"Gommone"</string>
     <string name="quest_boat_rental_surfboard">"Tavola da surf"</string>
     <string name="quest_boat_rental_sailboard">"Tavola da windsurf"</string>
     <string name="quest_boat_rental_yacht">"Yacht"</string>
     <string name="quest_boat_rental_standup_paddleboard">"Stand up paddle (SUP)"</string>
+    <string name="quest_powerAttachment_title">"Come è collegata questa linea elettrica?"</string>
+    <string name="pedestrian_zone_designated">"Designato per i velocipedi"</string>
     <string name="pedestrian_zone_allowed_sign">"Un cartello permette il transito in bicicletta"</string>
     <string name="pedestrian_zone_no_sign">"Nessun cartello permette esplicitamente il transito in bicicletta"</string>
+    <string name="team_mode_description_overlay_hint">"Se usate i livelli sovrapposti, ognuno di voi dovrebbe usarne uno diverso, dato che solo le missioni vengono suddivise."</string>
 </resources>

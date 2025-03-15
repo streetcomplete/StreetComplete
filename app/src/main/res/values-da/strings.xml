@@ -47,7 +47,7 @@
     <string name="turn_on_location_request">"Placering er slået fra. Åbn indstillinger for at slå den til nu?"</string>
     <string name="no_location_permission_warning">"Placeringstilladelse er nødvendig for at vise din position på kortet og downloade data i nærheden af dig."</string>
     <string name="about_title_authors">"Kreditering"</string>
-    <string name="about_title_repository">"Kildekode"</string>
+    <string name="about_title_repository">"Projekthjemmeside"</string>
     <string name="about_title_report_error">"Rapportér fejl"</string>
     <string name="about_title_feedback">"Giv feedback"</string>
     <string name="about_title_license">"Licens"</string>
@@ -401,7 +401,7 @@ Delvist betyder, at kørestolsbrugeren kan komme ind og bruge toilettet, men at 
     <string name="quest_buildingType_dormitory">"Kollegium"</string>
     <string name="quest_buildingType_houseboat">"Husbåd"</string>
     <string name="quest_buildingType_bungalow">"Bungalow"</string>
-    <string name="quest_buildingType_static_caravan">"Campingvogn (semi-permanent)"</string>
+    <string name="quest_buildingType_static_caravan">"Mobilhome (semi-permanent)"</string>
     <string name="quest_buildingType_commercial">"Erhvervsbygning"</string>
     <string name="quest_buildingType_commercial_generic_description">"bygning hvor folk arbejder, handler eller udfører andre kommercielle aktiviteter"</string>
     <string name="quest_buildingType_industrial">"Industribygning"</string>
@@ -849,7 +849,7 @@ Data fornyes efter %1$s dage og ubrugte data slettes automatisk efter %2$s dage.
     <string name="quest_barrier_type_turnstile">"Drejekors"</string>
     <string name="quest_barrier_type_passage">"Passage gennem mur/hegn/osv."</string>
     <string name="quest_barrier_type_debris_pile">"Bunke af affald"</string>
-    <string name="quest_barrier_type_stile_squeezer">"Stente (gennem mur)"</string>
+    <string name="quest_barrier_type_stile_squeezer">"Stente (snæver passage)"</string>
     <string name="quest_barrier_type_stile_ladder">"Stente (stige)"</string>
     <string name="quest_barrier_type_bicycle_barrier">"Cykelchikane"</string>
     <string name="quest_barrier_type_kissing_gate">"Kissing gate"</string>
@@ -1422,7 +1422,7 @@ En etage tæller som en tagetage, når dens vinduer er i taget. Derfor er tage m
     <string name="quest_boat_rental_rowboat">"Robåd"</string>
     <string name="quest_boat_rental_raft">"Tømmerflåde"</string>
     <string name="quest_boat_rental_surfboard">"Surfbræt"</string>
-    <string name="quest_boat_rental_sailboard">"Windsurfingbræt"</string>
+    <string name="quest_boat_rental_sailboard">"Windsurfing"</string>
     <string name="quest_boat_rental_yacht">"Lystyacht"</string>
     <string name="quest_boat_rental_standup_paddleboard">"Paddleboard (SUP)"</string>
     <string name="quest_powerAttachment_title">"Hvordan er denne elledning fastgjort?"</string>
@@ -1432,4 +1432,5 @@ En etage tæller som en tagetage, når dens vinduer er i taget. Derfor er tage m
     <string name="pedestrian_zone_designated">"Udpeget til cykling her"</string>
     <string name="pedestrian_zone_allowed_sign">"Et skilt tillader cykling her"</string>
     <string name="pedestrian_zone_no_sign">"Ingen eksplicit skiltning om cykling her"</string>
+    <string name="team_mode_description_overlay_hint">"Hvis I bruger overlejringer, bør I bruge hver jeres, da det kun er opgaver, der er delt op."</string>
 </resources>

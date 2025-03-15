@@ -9,7 +9,6 @@ import de.westnordost.streetcomplete.testutils.any
 import de.westnordost.streetcomplete.testutils.argThat
 import de.westnordost.streetcomplete.testutils.bbox
 import de.westnordost.streetcomplete.testutils.comment
-import de.westnordost.streetcomplete.testutils.eq
 import de.westnordost.streetcomplete.testutils.mock
 import de.westnordost.streetcomplete.testutils.note
 import de.westnordost.streetcomplete.testutils.on
@@ -25,27 +24,23 @@ import kotlin.test.assertNull
 class OsmNoteQuestControllerTest {
 
     private lateinit var noteSource: NotesWithEditsSource
-    private lateinit var hiddenDB: NoteQuestsHiddenDao
     private lateinit var userDataSource: UserDataSource
     private lateinit var userLoginSource: UserLoginSource
     private lateinit var prefs: Preferences
 
     private lateinit var ctrl: OsmNoteQuestController
     private lateinit var listener: OsmNoteQuestSource.Listener
-    private lateinit var hideListener: OsmNoteQuestsHiddenSource.Listener
 
     private lateinit var noteUpdatesListener: NotesWithEditsSource.Listener
     private lateinit var userLoginListener: UserLoginSource.Listener
 
     @BeforeTest fun setUp() {
         noteSource = mock()
-        hiddenDB = mock()
         userDataSource = mock()
         userLoginSource = mock()
         prefs = mock()
 
         listener = mock()
-        hideListener = mock()
 
         on(noteSource.addListener(any())).then { invocation ->
             noteUpdatesListener = invocation.getArgument(0)
@@ -57,102 +52,13 @@ class OsmNoteQuestControllerTest {
             Unit
         }
 
-        ctrl = OsmNoteQuestController(noteSource, hiddenDB, userDataSource, userLoginSource, prefs)
+        ctrl = OsmNoteQuestController(noteSource, userDataSource, userLoginSource, prefs)
         ctrl.addListener(listener)
-        ctrl.addListener(hideListener)
-    }
-
-    @Test fun hide() {
-        val note = note(1)
-        val ts = 123L
-
-        on(hiddenDB.getTimestamp(1)).thenReturn(ts)
-        on(noteSource.get(1)).thenReturn(note)
-
-        ctrl.hide(1)
-
-        verify(hiddenDB).add(1)
-        verify(hideListener).onHid(eq(OsmNoteQuestHidden(note, ts)))
-        verify(listener).onUpdated(
-            addedQuests = eq(emptyList()),
-            deletedQuestIds = eq(listOf(1))
-        )
-    }
-
-    @Test fun unhide() {
-        val note = note(1)
-        val ts = 123L
-
-        on(hiddenDB.getTimestamp(1)).thenReturn(ts)
-        on(noteSource.get(1)).thenReturn(note)
-        on(hiddenDB.delete(1)).thenReturn(true)
-        on(prefs.showAllNotes).thenReturn(true)
-
-        ctrl.unhide(1)
-
-        verify(hideListener).onUnhid(eq(OsmNoteQuestHidden(note, ts)))
-        verify(listener).onUpdated(
-            addedQuests = eq(listOf(OsmNoteQuest(1, note.position))),
-            deletedQuestIds = eq(emptyList())
-        )
-    }
-
-    @Test fun unhideAll() {
-        val hiddenNoteIds = listOf<Long>(1, 2, 3)
-        val hiddenNotes = listOf(
-            note(1), note(2), note(3)
-        )
-
-        on(hiddenDB.getAllIds()).thenReturn(hiddenNoteIds)
-        on(noteSource.getAll(hiddenNoteIds)).thenReturn(hiddenNotes)
-        on(prefs.showAllNotes).thenReturn(true)
-
-        ctrl.unhideAll()
-
-        val expectedQuests = hiddenNotes.map { OsmNoteQuest(it.id, it.position) }
-
-        verify(hiddenDB).deleteAll()
-        verify(hideListener).onUnhidAll()
-        verify(listener).onUpdated(
-            addedQuests = eq(expectedQuests),
-            deletedQuestIds = eq(emptyList())
-        )
-    }
-
-    @Test fun getAllHiddenNewerThan() {
-        val note1 = note(1)
-        val note2 = note(2)
-
-        on(hiddenDB.getNewerThan(123L)).thenReturn(listOf(
-            NoteIdWithTimestamp(1, 300),
-            NoteIdWithTimestamp(2, 500),
-            NoteIdWithTimestamp(3, 600), // missing note
-        ))
-        on(noteSource.getAll(eq(listOf(1L, 2L, 3L)))).thenReturn(listOf(note1, note2))
-
-        assertEquals(
-            listOf(
-                OsmNoteQuestHidden(note1, 300),
-                OsmNoteQuestHidden(note2, 500),
-            ),
-            ctrl.getAllHiddenNewerThan(123L)
-        )
-    }
-
-    @Test fun countAll() {
-        on(hiddenDB.countAll()).thenReturn(123L)
-        assertEquals(123L, ctrl.countAll())
-    }
-
-    @Test fun `get hidden returns null`() {
-        on(noteSource.get(1)).thenReturn(note(1))
-        on(hiddenDB.contains(1)).thenReturn(true)
-        assertNull(ctrl.getVisible(1))
     }
 
     @Test fun `get missing returns null`() {
         on(noteSource.get(1)).thenReturn(null)
-        assertNull(ctrl.getVisible(1))
+        assertNull(ctrl.get(1))
     }
 
     @Test fun `get note quest with comment from user returns null`() {
@@ -162,7 +68,7 @@ class OsmNoteQuestControllerTest {
         )))
         on(userDataSource.userId).thenReturn(1)
 
-        assertNull(ctrl.getVisible(1))
+        assertNull(ctrl.get(1))
     }
 
     @Test fun `get note quest with comment from user that contains a survey required marker returns non-null`() {
@@ -172,7 +78,34 @@ class OsmNoteQuestControllerTest {
         )))
         on(userDataSource.userId).thenReturn(1)
 
-        assertNotNull(ctrl.getVisible(1))
+        assertNotNull(ctrl.get(1))
+    }
+
+    @Test fun `get note quest created in app without comments and without survey required marker returns null`() {
+        on(noteSource.get(1)).thenReturn(note(comments = listOf(
+            comment(text = "this is a non-question test note\n\nCreated via StreetComplete 60.1", user = User(id = 100, "Blaubär")),
+        )))
+        on(userDataSource.userId).thenReturn(1)
+
+        assertNull(ctrl.get(1))
+    }
+
+    @Test fun `get note quest created in app without comments and with survey required marker returns non-null`() {
+        on(noteSource.get(1)).thenReturn(note(comments = listOf(
+            comment(text = "this is a non-question test note #surveyme\n\nCreated via StreetComplete 60.1", user = User(id = 100, "Blaubär")),
+        )))
+        on(userDataSource.userId).thenReturn(1)
+
+        assertNotNull(ctrl.get(1))
+    }
+
+    @Test fun `get note quest created in app without comments and with survey required marker (ignore case) returns non-null`() {
+        on(noteSource.get(1)).thenReturn(note(comments = listOf(
+            comment(text = "this is a non-question test note #SurVEyMe\n\nCreated via StreetComplete 60.1", user = User(id = 100, "Blaubär")),
+        )))
+        on(userDataSource.userId).thenReturn(1)
+
+        assertNotNull(ctrl.get(1))
     }
 
     @Test fun `get quest not phrased as question returns null`() {
@@ -181,7 +114,7 @@ class OsmNoteQuestControllerTest {
         )))
         on(prefs.showAllNotes).thenReturn(false)
 
-        assertNull(ctrl.getVisible(1))
+        assertNull(ctrl.get(1))
     }
 
     @Test fun `get quest phrased as question returns non-null`() {
@@ -192,7 +125,7 @@ class OsmNoteQuestControllerTest {
         ))
         on(prefs.showAllNotes).thenReturn(false)
 
-        assertEquals(OsmNoteQuest(1, p(1.0, 1.0)), ctrl.getVisible(1))
+        assertEquals(OsmNoteQuest(1, p(1.0, 1.0)), ctrl.get(1))
     }
 
     @Test fun `get quest phrased as question in other scripts returns non-null`() {
@@ -205,13 +138,13 @@ class OsmNoteQuestControllerTest {
         on(noteSource.get(7)).thenReturn(note(7, comments = listOf(comment(text = "full width question mark: ？"))))
         on(prefs.showAllNotes).thenReturn(false)
 
-        assertEquals(1, ctrl.getVisible(1)?.id)
-        assertEquals(2, ctrl.getVisible(2)?.id)
-        assertEquals(3, ctrl.getVisible(3)?.id)
-        assertEquals(4, ctrl.getVisible(4)?.id)
-        assertEquals(5, ctrl.getVisible(5)?.id)
-        assertEquals(6, ctrl.getVisible(6)?.id)
-        assertEquals(7, ctrl.getVisible(7)?.id)
+        assertEquals(1, ctrl.get(1)?.id)
+        assertEquals(2, ctrl.get(2)?.id)
+        assertEquals(3, ctrl.get(3)?.id)
+        assertEquals(4, ctrl.get(4)?.id)
+        assertEquals(5, ctrl.get(5)?.id)
+        assertEquals(6, ctrl.get(6)?.id)
+        assertEquals(7, ctrl.get(7)?.id)
     }
 
     @Test fun `get quest with comment containing survey required marker returns non-null`() {
@@ -222,7 +155,7 @@ class OsmNoteQuestControllerTest {
         ))
         on(prefs.showAllNotes).thenReturn(false)
 
-        assertEquals(OsmNoteQuest(1, p(1.0, 1.0)), ctrl.getVisible(1))
+        assertEquals(OsmNoteQuest(1, p(1.0, 1.0)), ctrl.get(1))
     }
 
     @Test fun `get quest not phrased as question returns non-null by preference`() {
@@ -233,7 +166,7 @@ class OsmNoteQuestControllerTest {
         ))
         on(prefs.showAllNotes).thenReturn(true)
 
-        assertEquals(OsmNoteQuest(1, p(1.0, 1.0)), ctrl.getVisible(1))
+        assertEquals(OsmNoteQuest(1, p(1.0, 1.0)), ctrl.get(1))
     }
 
     // not doing all the tests for getAll again because it uses the same functions
@@ -242,7 +175,6 @@ class OsmNoteQuestControllerTest {
         val bbox = bbox()
         val notes = listOf(note(1), note(2), note(3))
 
-        on(hiddenDB.getAllIds()).thenReturn(emptyList())
         on(noteSource.getAll(bbox)).thenReturn(notes)
         on(prefs.showAllNotes).thenReturn(true)
 
@@ -250,13 +182,12 @@ class OsmNoteQuestControllerTest {
 
         assertEquals(
             expectedQuests,
-            ctrl.getAllVisibleInBBox(bbox)
+            ctrl.getAllInBBox(bbox)
         )
     }
 
     @Test fun `calls onInvalidated when logged in`() {
         userLoginListener.onLoggedIn()
-
         verify(listener).onInvalidated()
     }
 
@@ -266,32 +197,19 @@ class OsmNoteQuestControllerTest {
     }
 
     @Test fun `calls onUpdated when notes changed`() {
-        // note 1 is added
-        // note 2 is not eligible
-        // note 3 is added/updated
-        // note 4 is not eligible -> delete it
-        // note 5 is deleted
-
-        on(hiddenDB.getAllIds()).thenReturn(listOf(2, 4))
         on(prefs.showAllNotes).thenReturn(true)
 
         noteUpdatesListener.onUpdated(
-            added = listOf(
-                note(1),
-                note(2)
-            ),
-            updated = listOf(note(3), note(4)),
-            deleted = listOf(5)
+            added = listOf(note(1)),
+            updated = listOf(note(2)),
+            deleted = listOf(3)
         )
 
         verify(listener).onUpdated(
-            addedQuests = argThat {
-                it.containsExactlyInAnyOrder(listOf(
-                    OsmNoteQuest(1, p()),
-                    OsmNoteQuest(3, p()),
-                ))
+            added = argThat {
+                it.containsExactlyInAnyOrder(listOf(OsmNoteQuest(1, p()), OsmNoteQuest(2, p())))
             },
-            deletedQuestIds = argThat { it.containsExactlyInAnyOrder(listOf(4, 5)) }
+            deleted = argThat { it.containsExactlyInAnyOrder(listOf(3)) }
         )
     }
 }

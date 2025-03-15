@@ -162,6 +162,9 @@
           "name": "Xulgáu",
           "terms": "tribunal,audiencia,sala"
         },
+        "amenity/coworking_space": {
+          "name": "Espaciu de trabayu compartíu"
+        },
         "amenity/crematorium": {
           "name": "Crematoriu"
         },
@@ -172,6 +175,9 @@
         "amenity/doctors": {
           "name": "Doctor",
           "terms": "médicu,especialista"
+        },
+        "amenity/doctors/podiatry": {
+          "name": "Pediatra"
         },
         "amenity/dojo": {
           "name": "Dojo / Academia d'artes marciales",
@@ -236,6 +242,9 @@
         "amenity/nightclub": {
           "name": "Discoteca",
           "terms": "disco,discobar,baille"
+        },
+        "amenity/parking": {
+          "name": "Aparcamientu"
         },
         "amenity/parking_space": {
           "name": "Espaciu d'aparcamientu"
@@ -349,7 +358,8 @@
           "terms": "terrén universitariu"
         },
         "amenity/vending_machine": {
-          "name": "Máquina de venta automática"
+          "name": "Máquina de venta automática",
+          "terms": "máquina,autoventa"
         },
         "amenity/vending_machine/cigarettes": {
           "name": "Máquina de venta de tabacu"
@@ -364,6 +374,9 @@
         "amenity/vending_machine/feminine_hygiene": {
           "name": "Máquina de venta d'hixénicos femeninos",
           "terms": "máquina,compresa,tampón"
+        },
+        "amenity/vending_machine/food/snacks": {
+          "name": "Máquina de venta de llambionaes"
         },
         "amenity/vending_machine/newspapers": {
           "name": "Máquina de venta de periódicos",
@@ -443,6 +456,9 @@
         "barrier/gate": {
           "name": "Puerta"
         },
+        "barrier/handrail": {
+          "name": "Pasamanes"
+        },
         "barrier/hedge": {
           "name": "Sebe"
         },
@@ -460,6 +476,9 @@
         },
         "barrier/wall": {
           "name": "Muria"
+        },
+        "boundary": {
+          "name": "Llende"
         },
         "boundary/administrative": {
           "name": "Llende alministrativa"
@@ -567,6 +586,9 @@
         "building/warehouse": {
           "name": "Almacén",
           "terms": "nave d'almacenamientu"
+        },
+        "building_point": {
+          "name": "Edificiu"
         },
         "craft": {
           "name": "Oficiu",
@@ -740,6 +762,9 @@
         "ford": {
           "name": "Vau"
         },
+        "ford_line": {
+          "name": "Vau"
+        },
         "golf/bunker": {
           "name": "Trampa de sable",
           "terms": "bunker (golf),areneru"
@@ -754,11 +779,17 @@
         "golf/hole": {
           "name": "Furacu de golf"
         },
+        "golf/lateral_water_hazard": {
+          "name": "Llagu d'agua llateral en golf"
+        },
         "golf/rough": {
           "name": "Rough de golf"
         },
         "golf/tee": {
           "name": "Salida de percorríu"
+        },
+        "golf/water_hazard": {
+          "name": "Llagu de golf"
         },
         "healthcare": {
           "name": "Instalación sanitaria"
@@ -806,6 +837,10 @@
         "highway/corridor": {
           "name": "Pasiellu d'edificiu"
         },
+        "highway/crossing": {
+          "name": "Pasu de peatones",
+          "terms": "cruce de víes,pasu"
+        },
         "highway/cycleway": {
           "name": "Camín ciclista"
         },
@@ -815,6 +850,9 @@
         "highway/footway": {
           "name": "Camín peatonal",
           "terms": "camín,senderu,sienda"
+        },
+        "highway/footway/sidewalk": {
+          "name": "Cera"
         },
         "highway/give_way": {
           "name": "Señal de dexar pasu"
@@ -960,6 +998,12 @@
         "historic/wayside_shrine": {
           "name": "Capiella de camín"
         },
+        "indoor/corridor": {
+          "name": "Pasiellu d'edificiu"
+        },
+        "indoor/corridor_line": {
+          "name": "Pasiellu d'edificiu"
+        },
         "junction": {
           "name": "Crucie"
         },
@@ -1021,10 +1065,16 @@
           "name": "Aeródromu militar"
         },
         "landuse/military/barracks": {
-          "name": "Cuartel"
+          "name": "Cuartel",
+          "terms": "campamentu militar"
+        },
+        "landuse/military/base/navy": {
+          "name": "Base naval",
+          "terms": "arsenal"
         },
         "landuse/military/range": {
-          "name": "Campu de tiru"
+          "name": "Campu de tiru",
+          "terms": "campu de maniobres"
         },
         "landuse/orchard": {
           "name": "Plantación"
@@ -1032,8 +1082,14 @@
         "landuse/plant_nursery": {
           "name": "Viveru"
         },
+        "landuse/pond": {
+          "name": "Estanque"
+        },
         "landuse/quarry": {
           "name": "Cantera"
+        },
+        "landuse/reservoir": {
+          "name": "Embalse"
         },
         "landuse/residential": {
           "name": "Área de viviendes"
@@ -1073,6 +1129,9 @@
         },
         "leisure/garden": {
           "name": "Xardín"
+        },
+        "leisure/garden/community": {
+          "name": "Xardín acomuñáu"
         },
         "leisure/golf_course": {
           "name": "Campu de golf"
@@ -1164,6 +1223,13 @@
         "leisure/track": {
           "name": "Circuitu (Deportes sin motor)"
         },
+        "leisure/track/athletics/running": {
+          "name": "Pista d'atletismu"
+        },
+        "leisure/track/running": {
+          "name": "Pista d'atletismu",
+          "terms": "pista,circuitu"
+        },
         "leisure/water_park": {
           "name": "Parque acuáticu"
         },
@@ -1183,11 +1249,15 @@
         "man_made/crane": {
           "name": "Grúa"
         },
+        "man_made/crane/portal_crane": {
+          "name": "Pórticu"
+        },
         "man_made/cutline": {
           "name": "Cortafuéu"
         },
         "man_made/embankment": {
-          "name": "Terremplén"
+          "name": "Terremplén",
+          "terms": "rellenu"
         },
         "man_made/flagpole": {
           "name": "Mástil",
@@ -1198,6 +1268,9 @@
         },
         "man_made/lighthouse": {
           "name": "Faru"
+        },
+        "man_made/manhole": {
+          "name": "Tapa d'alcantariella"
         },
         "man_made/mast": {
           "name": "Mástil"
@@ -1226,11 +1299,18 @@
         "man_made/surveillance": {
           "name": "Vixilancia"
         },
+        "man_made/surveillance/camera": {
+          "name": "Cámara de vixilancia"
+        },
         "man_made/survey_point": {
           "name": "Vértiz xeodésicu"
         },
         "man_made/tower": {
           "name": "Torre"
+        },
+        "man_made/tower/observation": {
+          "name": "Torre de vixilancia",
+          "terms": "observatoriu,torre d'observación"
         },
         "man_made/wastewater_plant": {
           "name": "Planta depuradora",
@@ -1253,6 +1333,15 @@
         },
         "man_made/works": {
           "name": "Fábrica"
+        },
+        "military/bunker": {
+          "name": "Bunquer militar"
+        },
+        "military/nuclear_explosion_site": {
+          "name": "Llugar d'españíu nuclear"
+        },
+        "military/office": {
+          "name": "Oficina militar"
         },
         "natural/bare_rock": {
           "name": "Roca"
@@ -1285,6 +1374,9 @@
         "natural/heath": {
           "name": "Escobal"
         },
+        "natural/hot_spring": {
+          "name": "Fonte caliente"
+        },
         "natural/peak": {
           "name": "Picu",
           "terms": "picu,monte,vértiz"
@@ -1312,6 +1404,9 @@
         },
         "natural/water": {
           "name": "Agua"
+        },
+        "natural/water/basin": {
+          "name": "Acumulación d'agües"
         },
         "natural/water/lake": {
           "name": "Llagu"
@@ -1344,6 +1439,13 @@
         "office/association": {
           "name": "Oficina d'ONG"
         },
+        "office/coworking": {
+          "name": "Espaciu de trabayu compartíu"
+        },
+        "office/diplomatic/embassy": {
+          "name": "Embaxada",
+          "terms": "embaxada,consuláu,representación diplomática"
+        },
         "office/educational_institution": {
           "name": "Institución educativa"
         },
@@ -1368,12 +1470,19 @@
           "name": "Oficina gubernamental",
           "terms": "gobiernu,ministeriu,delegación"
         },
+        "office/government/register_office": {
+          "name": "Oficina de rexistru",
+          "terms": "rexistru,almisión"
+        },
         "office/insurance": {
           "name": "Oficina de seguros",
           "terms": "aseguradora,seguros,riesgu"
         },
         "office/lawyer": {
           "name": "Despachu d'abogaos"
+        },
+        "office/lawyer/notary": {
+          "name": "Notaría"
         },
         "office/newspaper": {
           "name": "Redacción de periódicu"
@@ -1438,6 +1547,12 @@
           "name": "Xenerador d'enerxía",
           "terms": "central eléctrica"
         },
+        "power/generator/source/nuclear": {
+          "name": "Reactor nuclear"
+        },
+        "power/generator/source/wind": {
+          "name": "Turbina de vientu"
+        },
         "power/line": {
           "name": "Llinia eléctrica"
         },
@@ -1457,8 +1572,35 @@
         "power/transformer": {
           "name": "Tresformador"
         },
+        "public_transport/platform/aerialway_point": {
+          "name": "Andén / Parada de remonte"
+        },
+        "public_transport/platform/ferry_point": {
+          "name": "Andén / Parada de ferry"
+        },
+        "public_transport/platform/light_rail_point": {
+          "name": "Andén / Parada de tren llixeru"
+        },
+        "public_transport/platform/monorail_point": {
+          "name": "Andén / Parada de monocarril"
+        },
+        "public_transport/platform/subway_point": {
+          "name": "Andén / Parada de metro"
+        },
+        "public_transport/platform/train_point": {
+          "name": "Andén / Parada de tren"
+        },
+        "public_transport/platform/tram_point": {
+          "name": "Andén / Parada de trolebús"
+        },
+        "public_transport/platform_point": {
+          "name": "Andén / Parada de tresporte"
+        },
         "public_transport/station": {
           "name": "Estación d'intercambiu"
+        },
+        "public_transport/station_aerialway": {
+          "name": "Estación de remonte"
         },
         "public_transport/station_bus": {
           "name": "Estación / Terminal d'autobuses"
@@ -1473,7 +1615,8 @@
           "name": "Estación de metro"
         },
         "public_transport/station_train": {
-          "name": "Estación de tren"
+          "name": "Estación de tren",
+          "terms": "terminal ferroviaria"
         },
         "railway/abandoned": {
           "name": "Ferrocarril abandonáu"

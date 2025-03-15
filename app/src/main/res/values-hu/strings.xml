@@ -78,7 +78,7 @@
 &lt;h2&gt;Közvetlen közreműködések&lt;/h2&gt;
 &lt;p&gt;
 Először is, fontos megérteni, hogy a módosításaid valóban és közvetlenül megjelennek az OpenStreetMapben.&lt;br&gt;
-Az alkalmazásban megadott összes módosítás közvetlenül hozzáadódik a térképhez, nincs harmadik fél az alkalmazás és az OSM infrastruktúra között.
+Az alkalmazásban megadott összes módosítás közvetlenül hozzáadódik a térképhez, nincs harmadik fél az alkalmazás és az OSM-infrastruktúra között.
 &lt;/p&gt;
 &lt;p&gt;
 Az OpenStreetMapet nem lehet névtelenül szerkeszteni, tehát minden módosítást az OSM-fiókoddal végzel. Ez azt jelenti, hogy a módosításaid időpontja, tartalma és így közvetve a helyszíne is a fiókodhoz köthető és ezeket bárki láthatja az OpenStreetMap honlapján.
@@ -91,7 +91,7 @@ Az alkalmazás senkivel sem osztja meg a helyzetedet. Kizárólag arra használj
 
 &lt;h2&gt;Adathasználat&lt;/h2&gt;
 &lt;p&gt;
-Ahogy említettük, az alkalmazás közvetlenül kommunikál az OSM infrastruktúrával.
+Ahogy említettük, az alkalmazás közvetlenül kommunikál az OSM-infrastruktúrával.
 A módosításaid feltöltése előtt azonban az alkalmazás először leellenőrzi egy &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;egyszerű szövegfájl&lt;/a&gt; alapján a szerveremen, hogy nincs-e letiltva számára a módosítások feltöltése. Ez egy óvintézkedés, amely kiszűri az alkalmazás azon verzióit, amelyekben olyan súlyos programhibák vannak, amelyek potenciálisan károsíthatnák az OSM adatait.&lt;/p&gt;"</string>
     <string name="autosync_on">"Be"</string>
     <string name="autosync_only_on_wifi">"Csak Wi-Fi használatakor"</string>
@@ -577,7 +577,7 @@ Automatikusan megkeresi a hiányzó információkat környékeden: kerékpársá
 Egyből elkezdheted megoldani őket, és majd később bejelentkezhetsz, hogy fel tudd tölteni a válaszaidat."</string>
     <string name="tutorial_stay_safe">"Amennyiben bizonytalan vagy, mindig válaszolhatod azt, hogy „Nem tudom”, és írhatsz egy jegyzetet.
 
-Végezetül, légy óvatos: figyelj a környezetedre és ne lépj magánterületre."</string>
+Végezetül, légy óvatos: figyelj a környezetedre, és ne lépj magánterületre."</string>
     <string name="tutorial_happy_mapping">"Jó térképezést!"</string>
     <string name="achievements_empty">"Még nincsenek kitüntetéseid"</string>
     <string name="links_empty">"Még nincsenek hivatkozásaid"</string>
@@ -813,8 +813,7 @@ Vedd figyelembe az összes lehetséges választ: néhány esetben nem egyértelm
     <string name="quest_recycling_type_plastic_bottles_and_cartons">"Kizárólag műanyag palack és karton"</string>
     <string name="team_mode">"Belépés csapatmódba"</string>
     <string name="team_mode_exit">"Kilépés a csapatmódból"</string>
-    <string name="team_mode_description">"Ha egy területen egyszerre többen szeretnétek térképezni, lehetőség van csapatmódban felosztani a feladatokat.
-Ezután mindegyikőtök különböző kérdéseket fog látni."</string>
+    <string name="team_mode_description">"Ha egy területen csoportosan szeretnétek térképezni, lehetőség van csapatmódban felosztani a feladatokat a csapattagok között. Ezután mindegyikőtök különböző kérdéseket fog látni."</string>
     <string name="team_mode_active">"Csapatmód aktív"</string>
     <string name="team_mode_deactivated">"Csapatmód kikapcsolva"</string>
     <string name="undo_confirm_title2">"Visszavonod a következő szerkesztést?"</string>
@@ -1268,7 +1267,7 @@ Elmozdítod?"</string>
     <string name="overlay_path_surface_segregated">"A kerékpárút és a gyalogút el van választva"</string>
     <string name="quest_crossing_title2">"Itt át lehet menni?"</string>
     <string name="quest_crossing_yes">"Igen, ez egy hivatalos átkelő"</string>
-    <string name="quest_crossing_no">"Nem hivatalos átkelő, de át lehet menni"</string>
+    <string name="quest_crossing_no">"Nem keresztezésnek szánt, mégis lehetséges az átkelés (pl. nem hivatalos ösvények)."</string>
     <string name="quest_crossing_prohibited">"Nem, az átkelés tilos vagy nem lehetséges"</string>
     <string name="quest_hairdresser_title">"Mi az ügyfélköre ennek a fodrásznak?"</string>
     <string name="quest_hairdresser_male_and_female">"Bárki"</string>
@@ -1346,7 +1345,7 @@ Ezenkívül egyes rétegek, például a cím réteg, új adatok hozzáadását i
     <string name="quest_buildingType_tower_description">"bármilyen torony"</string>
     <string name="quest_buildingType_under_construction">"Építés alatt"</string>
     <string name="overlay_buildings">"Épületek"</string>
-    <string name="quest_pedestrian_crossing_markings">"Fel van festve az átkelőhely van az útburkolatra?"</string>
+    <string name="quest_pedestrian_crossing_markings">"Fel van festve az átkelőhely az útburkolatra?"</string>
     <string name="overlay_places">"Helyek"</string>
     <string name="overlay_things">"Dolgok"</string>
     <string name="disused">"használaton kívül"</string>
@@ -1357,7 +1356,7 @@ Ezenkívül egyes rétegek, például a cím réteg, új adatok hozzáadását i
 Támogatással kapcsolatos információkat a honlapunkon vagy a projekt kezdőoldalán talász, a Google Play nem engedi, hogy a hivatkozásokat az alkalmazásban megadjuk."</string>
     <string name="quest_isAmenityIndoor_outside_covered">"Nem beltéri, de fedett"</string>
     <string name="lit_value_unsupported">"Olyan kivilágítási mód, amelyet nem kínál fel ez az alkalmazás"</string>
-    <string name="quest_generic_otherAnswers2">"Uh…"</string>
+    <string name="quest_generic_otherAnswers2">"Hmm…"</string>
     <string name="quest_pedestrian_crossing_signals2">"Közlekedési lámpák jelzik, hogy mikor lehet átkelni?"</string>
     <string name="quest_moped_access_title">"Szabályozva van táblával a segédmotoros kerékpárok közlekedése ezen a kerékpárúton?"</string>
     <string name="quest_moped_access_allowed">"Nincs tábla"</string>
@@ -1391,7 +1390,7 @@ Egy szint akkor számít tetőszintnek, ha az ablakai a tetőben vannak. A nulla
     <string name="quest_multiselect_hint">"Válaszd ki az összes megfelelőt:"</string>
     <string name="quest_barrier_opening_width_gate">"Mekkora itt a nyílás szélessége?"</string>
     <string name="bridge">"hídon"</string>
-    <string name="about_title_intro">"Bemutatkozás megjelenítés"</string>
+    <string name="about_title_intro">"Bevezető megtekintése"</string>
     <string name="about_category_help">"Súgó"</string>
     <string name="quest_camp_power_supply_hint">"Ez lehet közvetlenül a táborhelyeken található konnektor, konnektor a vendégek által hozzáférhető kiszolgáló épületben, vagy külön töltőállomás telefonok, laptopok stb. számára."</string>
     <string name="quest_barrier_opening_width_bollard">"Mekkora a legszélesebb rés, amin itt át lehet menni?"</string>
@@ -1435,4 +1434,5 @@ Egy szint akkor számít tetőszintnek, ha az ablakai a tetőben vannak. A nulla
     <string name="pedestrian_zone_designated">"Kerékpározásra kijelölt"</string>
     <string name="pedestrian_zone_allowed_sign">"Jelzés engedi a kerékpározást"</string>
     <string name="pedestrian_zone_no_sign">"Nincs kifejezett jelzés kerékpározásról"</string>
+    <string name="team_mode_description_overlay_hint">"Ha rátéteket használtok, mindegyikőtöknek másikat kell használnia, mivel csak a küldetések vannak felosztva."</string>
 </resources>

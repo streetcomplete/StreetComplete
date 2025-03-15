@@ -7,7 +7,6 @@ import android.content.Intent
 import android.content.IntentFilter
 import android.content.pm.PackageManager
 import android.content.res.Configuration
-import android.graphics.Color
 import android.graphics.PointF
 import android.location.Location
 import android.os.Bundle
@@ -18,7 +17,6 @@ import android.view.animation.AccelerateInterpolator
 import android.view.animation.OvershootInterpolator
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
-import androidx.activity.SystemBarStyle
 import androidx.activity.enableEdgeToEdge
 import androidx.annotation.AnyThread
 import androidx.annotation.DrawableRes
@@ -53,15 +51,15 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
 import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuest
-import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestsHiddenSource
 import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
 import de.westnordost.streetcomplete.data.preferences.Preferences
-import de.westnordost.streetcomplete.data.quest.OsmQuestKey
+import de.westnordost.streetcomplete.data.quest.OsmNoteQuestKey
 import de.westnordost.streetcomplete.data.quest.Quest
 import de.westnordost.streetcomplete.data.quest.QuestAutoSyncer
 import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.VisibleQuestsSource
+import de.westnordost.streetcomplete.data.visiblequests.QuestsHiddenSource
 import de.westnordost.streetcomplete.databinding.ActivityMainBinding
 import de.westnordost.streetcomplete.databinding.EffectQuestPlopBinding
 import de.westnordost.streetcomplete.osm.level.levelsIntersect
@@ -103,7 +101,7 @@ import de.westnordost.streetcomplete.util.ktx.isLocationAvailable
 import de.westnordost.streetcomplete.util.ktx.observe
 import de.westnordost.streetcomplete.util.ktx.toLatLon
 import de.westnordost.streetcomplete.util.ktx.toast
-import de.westnordost.streetcomplete.util.ktx.truncateTo5Decimals
+import de.westnordost.streetcomplete.util.ktx.truncateTo6Decimals
 import de.westnordost.streetcomplete.util.location.FineLocationManager
 import de.westnordost.streetcomplete.util.location.LocationAvailabilityReceiver
 import de.westnordost.streetcomplete.util.location.LocationRequestFragment
@@ -162,7 +160,7 @@ class MainActivity :
     private val visibleQuestsSource: VisibleQuestsSource by inject()
     private val mapDataWithEditsSource: MapDataWithEditsSource by inject()
     private val notesSource: NotesWithEditsSource by inject()
-    private val noteQuestsHiddenSource: OsmNoteQuestsHiddenSource by inject()
+    private val questsHiddenSource: QuestsHiddenSource by inject()
     private val featureDictionary: Lazy<FeatureDictionary> by inject(named("FeatureDictionaryLazy"))
     private val soundFx: SoundFx by inject()
 
@@ -173,6 +171,7 @@ class MainActivity :
 
     private lateinit var binding: ActivityMainBinding
 
+    // for freezing the map while sidebar is open
     private var wasFollowingPosition: Boolean? = null
     private var wasNavigationMode: Boolean? = null
 
@@ -201,9 +200,12 @@ class MainActivity :
     //region Lifecycle - Android Lifecycle Callbacks
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        val systemBarStyle = SystemBarStyle.dark(Color.argb(0x80, 0x1b, 0x1b, 0x1b))
-        enableEdgeToEdge(systemBarStyle, systemBarStyle)
+        enableEdgeToEdge()
         super.onCreate(savedInstanceState)
+
+        if (savedInstanceState == null) {
+            handleIntent(intent)
+        }
 
         LocalBroadcastManager.getInstance(this).registerReceiver(
             requestLocationPermissionResultReceiver,
@@ -264,6 +266,8 @@ class MainActivity :
         observe(viewModel.geoUri) { geoUri ->
             if (geoUri != null) {
                 mapFragment?.setInitialCameraPosition(geoUri)
+                viewModel.isFollowingPosition.value = mapFragment?.isFollowingPosition ?: false
+                viewModel.isNavigationMode.value = mapFragment?.isNavigationMode ?: false
             }
         }
     }
@@ -282,6 +286,10 @@ class MainActivity :
 
     override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
+        handleIntent(intent)
+    }
+
+    private fun handleIntent(intent: Intent) {
         if (intent.action != Intent.ACTION_VIEW) return
         val data = intent.data?.toString() ?: return
         viewModel.setUri(data)
@@ -298,9 +306,6 @@ class MainActivity :
         visibleQuestsSource.removeListener(this)
         mapDataWithEditsSource.removeListener(this)
         locationAvailabilityReceiver.removeListener(::updateLocationAvailability)
-
-        wasFollowingPosition = mapFragment?.isFollowingPosition
-        wasNavigationMode = mapFragment?.isNavigationMode
 
         locationManager.removeUpdates()
     }
@@ -438,7 +443,7 @@ class MainActivity :
         mapFragment.hideOverlay()
     }
 
-    override fun onQuestHidden(osmQuestKey: OsmQuestKey) {
+    override fun onQuestHidden(questKey: QuestKey) {
         closeBottomSheet()
     }
 
@@ -530,7 +535,7 @@ class MainActivity :
     /* ---------------------------------- VisibleQuestListener ---------------------------------- */
 
     @AnyThread
-    override fun onUpdatedVisibleQuests(added: Collection<Quest>, removed: Collection<QuestKey>) {
+    override fun onUpdated(added: Collection<Quest>, removed: Collection<QuestKey>) {
         lifecycleScope.launch {
             val f = bottomSheetFragment
             // open quest has been deleted
@@ -541,7 +546,7 @@ class MainActivity :
     }
 
     @AnyThread
-    override fun onVisibleQuestsInvalidated() {
+    override fun onInvalidated() {
         lifecycleScope.launch {
             val f = bottomSheetFragment
             if (f is IsShowingQuestDetails) {
@@ -609,7 +614,7 @@ class MainActivity :
         mapFragment?.startPositionTracking()
         questAutoSyncer.startPositionTracking()
 
-        setIsFollowingPosition(wasFollowingPosition ?: true)
+        mapFragment?.centerCurrentPositionIfFollowing()
         locationManager.getCurrentLocation()
     }
 
@@ -903,9 +908,9 @@ class MainActivity :
         val center = geometry.center
         val note = withContext(Dispatchers.IO) {
             notesSource
-                .getAll(BoundingBox(center, center).enlargedBy(1.2))
-                .firstOrNull { it.position.truncateTo5Decimals() == center.truncateTo5Decimals() }
-                ?.takeIf { noteQuestsHiddenSource.getHidden(it.id) == null }
+                .getAll(BoundingBox(center, center).enlargedBy(0.2))
+                .firstOrNull { it.position.truncateTo6Decimals() == center.truncateTo6Decimals() }
+                ?.takeIf { questsHiddenSource.get(OsmNoteQuestKey(it.id)) == null }
         }
         if (note != null) {
             showQuestDetails(OsmNoteQuest(note.id, note.position))

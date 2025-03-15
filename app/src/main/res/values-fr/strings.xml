@@ -398,7 +398,7 @@ Sinon, vous pouvez télécharger un autre clavier dans l’app store. Les clavie
     <string name="quest_buildingType_semi_detached">"Maison jumelée"</string>
     <string name="quest_buildingType_terrace_description">"une ligne de maisons unifamiliales similaires"</string>
     <string name="quest_buildingType_hotel">"Hôtel"</string>
-    <string name="quest_buildingType_dormitory">"Bâtiment abritant les dortoirs"</string>
+    <string name="quest_buildingType_dormitory">"Résidence étudiante, internat"</string>
     <string name="quest_buildingType_houseboat">"Maison flottante"</string>
     <string name="quest_buildingType_bungalow">"Bâtiment de bungalow"</string>
     <string name="quest_buildingType_static_caravan">"Mobile-home"</string>
@@ -412,10 +412,10 @@ Sinon, vous pouvez télécharger un autre clavier dans l’app store. Les clavie
     <string name="quest_buildingType_kiosk">"Bâtiment du kiosque"</string>
     <string name="quest_buildingType_storage_tank">"Réservoir de stockage"</string>
     <string name="quest_buildingType_religious">"Bâtiment religieux"</string>
-    <string name="quest_buildingType_church">"Bâtiment de l’église"</string>
-    <string name="quest_buildingType_chapel">"Bâtiment de la chapelle"</string>
+    <string name="quest_buildingType_church">"Église (bâtiment)"</string>
+    <string name="quest_buildingType_chapel">"Chapelle"</string>
     <string name="quest_buildingType_cathedral">"Cathédrale"</string>
-    <string name="quest_buildingType_mosque">"Bâtiment de la mosquée"</string>
+    <string name="quest_buildingType_mosque">"Mosquée"</string>
     <string name="quest_buildingType_temple">"Bâtiment du temple"</string>
     <string name="quest_buildingType_pagoda">"Bâtiment de la pagode"</string>
     <string name="quest_buildingType_synagogue">"Bâtiment de la synagogue"</string>
@@ -423,7 +423,7 @@ Sinon, vous pouvez télécharger un autre clavier dans l’app store. Les clavie
     <string name="quest_buildingType_civic_description">"abrite d’ordinaire un service public"</string>
     <string name="quest_buildingType_kindergarten">"École maternelle ou crèche"</string>
     <string name="quest_buildingType_school">"École primaire ou secondaire"</string>
-    <string name="quest_buildingType_college">"Établissement d’enseignement supérieur non universitaire"</string>
+    <string name="quest_buildingType_college">"Bâtiment d’enseignement supérieur non universitaire"</string>
     <string name="quest_buildingType_hospital">"Hôpital"</string>
     <string name="quest_buildingType_stadium">"Stade"</string>
     <string name="quest_buildingType_train_station">"Gare"</string>
@@ -813,7 +813,7 @@ Prenez garde de voire toutes les options, certains cas sont non triviaux, comme 
     <string name="quest_recycling_type_plastic_bottles_and_cartons">"Seulement des bouteilles en plastique et des cartons"</string>
     <string name="team_mode">"Entrez le mode équipe"</string>
     <string name="team_mode_exit">"Quitter le mode par équipe"</string>
-    <string name="team_mode_description">"Quand vous cartographiez la même zone avec un groupe, vous pouvez vous répartir les quêtes entre les différents membres de ce groupe."</string>
+    <string name="team_mode_description">"Quand vous cartographiez la même zone avec un groupe, vous pouvez entrer le mode équipe pour répartir les quêtes entre tous les membres de l’équipe. Chacun d’entre vous verra alors des quêtes différentes."</string>
     <string name="team_mode_active">"Le mode par équipe est activé"</string>
     <string name="team_mode_deactivated">"Le mode par équipe est désactivé"</string>
     <string name="undo_confirm_title2">"Annuler cette contribution ?"</string>
@@ -1265,8 +1265,8 @@ Faites la même chose pour l’autre côté, si présent."</string>
     <string name="overlay_surface">"Surfaces"</string>
     <string name="overlay_path_surface_segregated">"Séparé entre voies cyclables et piétonnes"</string>
     <string name="quest_crossing_title2">"Y a-t-il un croisement ici ?"</string>
-    <string name="quest_crossing_yes">"Oui (par exemple, la bordure est abaissée à cet endroit ou il y a des marquages)"</string>
-    <string name="quest_crossing_no">"Non, mais la traversée est possible"</string>
+    <string name="quest_crossing_yes">"Oui, il s’agit d’une traversée"</string>
+    <string name="quest_crossing_no">"Non, mais la traversée est possible (ex. chemin informel)"</string>
     <string name="quest_crossing_prohibited">"Non, la traversée est impossible ou interdite"</string>
     <string name="quest_hairdresser_title">"Quels sont les clients qui fréquentent ce salon de coiffure ?"</string>
     <string name="quest_hairdresser_male_and_female">"Toute personne"</string>
@@ -1302,12 +1302,12 @@ De plus, certaines surcouches vous permettent d’ajouter de nouvelles données 
     <string name="quest_bbq_fuel_title">"Quel est le moteur de ce gril ?"</string>
     <string name="quest_bbq_fuel_wood">"Bois"</string>
     <string name="quest_bbq_fuel_electric">"Électrique"</string>
-    <string name="quest_bbq_fuel_charcoal">"Fusain"</string>
+    <string name="quest_bbq_fuel_charcoal">"Charbon"</string>
     <string name="inside">"à l’intérieur"</string>
     <string name="outside">"à l’extérieur"</string>
     <string name="quest_recycling_type_food_waste">"Déchets alimentaires"</string>
     <string name="quest_defibrillator_location">"Où se trouve ce défibrillateur ?"</string>
-    <string name="quest_defibrillator_location_description">"Veuillez fournir une description concise de son emplacement (ex. « dans la salle des porteurs »)."</string>
+    <string name="quest_defibrillator_location_description">"Veuillez fournir une description concise de son emplacement (ex. « dans la bagagerie »)."</string>
     <string name="quest_sanitary_dump_station_title">"Y a-t-il une station de vidange ?"</string>
     <string name="quest_sanitary_dump_station_description">"Installation permettant de déverser des déchets organiques provenant du réservoir des toilettes d’un camping-car, d’une camionnette, etc. Généralement indiqué par un panneau comme celui-ci :"</string>
     <string name="quest_generalFee_title">"Doit-on payer pour l’utiliser ?"</string>
@@ -1343,7 +1343,7 @@ De plus, certaines surcouches vous permettent d’ajouter de nouvelles données 
     <string name="quest_buildingType_tower">"Tour"</string>
     <string name="quest_buildingType_tower_description">"Tout type de tour"</string>
     <string name="quest_buildingType_under_construction">"En cours de construction"</string>
-    <string name="overlay_buildings">"Immeubles"</string>
+    <string name="overlay_buildings">"Bâtiments"</string>
     <string name="quest_pedestrian_crossing_markings">"Est-ce que ce passage piéton est peint sur la chaussée ?"</string>
     <string name="overlay_places">"Lieux"</string>
     <string name="overlay_things">"Objets"</string>
@@ -1374,7 +1374,7 @@ Un niveau compte comme un niveau de toit lorsque ses fenêtres se trouvent dans 
     <string name="quest_cycleway_value_sidewalk_ok">"aucun, mais un panneau autorise les cyclistes à circuler sur le trottoir"</string>
     <string name="separate_cycleway_no_signed">"Un panneau interdit explicitement le vélo"</string>
     <string name="separate_cycleway_footway_allowed_sign">"Voie piétonne, mais un panneau autorise la circulation des cyclistes"</string>
-    <string name="quest_bicycle_parking_type_floor">"Zone désignée"</string>
+    <string name="quest_bicycle_parking_type_floor">"Zone dédiée"</string>
     <string name="link_osmapp_description">"Une carte avec différentes couches, par exemple pour l’escalade ou le ski"</string>
     <string name="action_back">"Retour"</string>
     <string name="action_clear">"Annuler"</string>
@@ -1426,11 +1426,12 @@ Un niveau compte comme un niveau de toit lorsque ses fenêtres se trouvent dans 
     <string name="quest_boat_rental_sailboard">"Planche à voile"</string>
     <string name="quest_boat_rental_yacht">"Yacht"</string>
     <string name="quest_boat_rental_standup_paddleboard">"Paddle debout"</string>
-    <string name="quest_powerAttachment_title">"Comment cette ligne de courant est attachée ?"</string>
-    <string name="quest_powerAttachment_suspension">"Supporté à partir de"</string>
-    <string name="quest_powerAttachment_anchor">"Fixé horizontalement"</string>
-    <string name="quest_powerAttachment_pin">"Supporté en dessous de"</string>
+    <string name="quest_powerAttachment_title">"Comment cette ligne électrique est attachée ?"</string>
+    <string name="quest_powerAttachment_suspension">"Fixée par dessus"</string>
+    <string name="quest_powerAttachment_anchor">"Fixée horizontalement"</string>
+    <string name="quest_powerAttachment_pin">"Fixée par dessous"</string>
     <string name="pedestrian_zone_designated">"Conçu pour les vélos"</string>
     <string name="pedestrian_zone_allowed_sign">"Un panneau autorise les vélos ici"</string>
     <string name="pedestrian_zone_no_sign">"Aucune indication panticulière concernant les vélos"</string>
+    <string name="team_mode_description_overlay_hint">"Si vous utilisez des overlays, chacun d’entre vous doit en utiliser un différent, car seules les quêtes sont réparties."</string>
 </resources>

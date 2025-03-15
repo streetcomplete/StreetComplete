@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="about_title_authors">"鳴謝"</string>
+    <string name="about_title_report_error">"報告錯誤"</string>
+    <string name="about_title_feedback">"提供反饋"</string>
+    <string name="about_title_license">"授權"</string>
+    <string name="about_title_privacy_statement">"私隱政策聲明"</string>
+    <string name="about_category_feedback">"反饋"</string>
+    <string name="about_title_changelog">"版本"</string>
+    <string name="about_title_rate">"為此應用程式評分"</string>
+    <string name="about_title_donate">"捐贈"</string>
+    <string name="about_title_sponsors">"贊助商"</string>
+    <string name="about_title_translate">"翻譯這個應用程式"</string>
+    <string name="about_title_faq">"常見問題"</string>
+    <string name="action_search">"搜尋"</string>
+    <string name="about_title_get_involved">"參與"</string>
+    <string name="about_summary_logs">"用於錯誤報告。"</string>
+    <string name="action_filter">"篩選"</string>
+    <string name="about_category_contribute">"貢獻"</string>
+    <string name="about_title_intro">"顯示介紹"</string>
+    <string name="about_category_help">"幫助"</string>
+</resources>

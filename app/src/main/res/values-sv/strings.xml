@@ -1268,8 +1268,6 @@ Flytta den?"</string>
     <string name="overlay_surface">"Beläggningar"</string>
     <string name="overlay_path_surface_segregated">"Uppdelad i cykel- och gångdel"</string>
     <string name="quest_crossing_title2">"Finns det en passage/korsning här?"</string>
-    <string name="quest_crossing_yes">"Ja (t.ex. är vägkanten sänkt eller så finns det markeringar)"</string>
-    <string name="quest_crossing_no">"Nej, men det är möjligt att korsa ändå"</string>
     <string name="quest_crossing_prohibited">"Nej, det är förbjudet eller omöjligt att korsa"</string>
     <string name="quest_hairdresser_title">"Vilka kan klippa sig här?"</string>
     <string name="quest_hairdresser_male_and_female">"Alla"</string>
@@ -1413,6 +1411,7 @@ En våning räknas som en takvåning när dess fönster finns i taket. Det följ
     <string name="quest_bicycle_repair_station_services_title">"Vilken cykelutrustning finns tillgänglig här?"</string>
     <string name="quest_bicycle_repair_station_pump">"Pump"</string>
     <string name="quest_bicycle_repair_station_tools">"Diverse verktyg"</string>
+    <string name="quest_bicycle_repair_station_stand">"Arbetsställ"</string>
     <string name="quest_bicycle_repair_station_chain_tool">"Kedjeverktyg"</string>
     <string name="quest_boat_rental_title">"Vilka typer av båtar finns att hyra här?"</string>
     <string name="quest_boat_rental_motorboat">"Motorbåt"</string>

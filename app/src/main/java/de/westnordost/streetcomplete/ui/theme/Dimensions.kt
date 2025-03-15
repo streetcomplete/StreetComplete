@@ -5,7 +5,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 
 /** Padding on the map due to an open quest form */
-fun getOpenQuestFormMapPadding(totalWidth: Dp, totalHeight: Dp, ): PaddingValues {
+fun getOpenQuestFormMapPadding(totalWidth: Dp, totalHeight: Dp): PaddingValues {
     val isLandscape = totalWidth > totalHeight
     return PaddingValues.Absolute(
         left = if (isLandscape) getMaxQuestFormWidth(totalWidth) else 0.dp,

@@ -9,6 +9,10 @@
           "name": "Διεύθυνση",
           "terms": "διεύθυνση,αριθμός σπιτιού,οδός"
         },
+        "advertising": {
+          "name": "Διαφημιστική Συσκευή",
+          "terms": "διαφημιστική μηχανή"
+        },
         "advertising/billboard": {
           "name": "Διαφημιστική Πινακίδα",
           "terms": "διαφημιστική ταμπέλα"
@@ -73,6 +77,10 @@
         "aeroway/helipad": {
           "name": "Ελικοδρόμιο",
           "terms": "ελικοδρόμιο"
+        },
+        "aeroway/holding_position": {
+          "name": "Θέση Αναμονής Αεροσκάφους",
+          "terms": "θέση παραμονής αεροσκάφους"
         },
         "aeroway/parking_position": {
           "name": "Θέση Στάθμευσης Αεροσκάφους"
@@ -227,6 +235,9 @@
         },
         "amenity/clinic/abortion": {
           "name": "Κλινική Άμβλωσης"
+        },
+        "amenity/clinic/dialysis": {
+          "name": "Νεφρολογικό Κέντρο"
         },
         "amenity/clinic/fertility": {
           "name": "Κλινική Γονιμότητας"
@@ -490,7 +501,8 @@
           "terms": "ναργιλές,χώρος για ναργιλέ"
         },
         "amenity/hospital": {
-          "name": "Νοσοκομείο"
+          "name": "Νοσοκομείο",
+          "terms": "χώροι νοσοκομείου,περιοχή νοσοκομείου"
         },
         "amenity/hunting_stand": {
           "name": "Καραούλι"
@@ -500,7 +512,8 @@
           "terms": "παγωτά,κατάστημα πώλησης παγωτού,παγωτατζίδικο"
         },
         "amenity/ice_cream/frozen_yogurt": {
-          "name": "Κατάστημα Παγωμένου Γιαουρτιού"
+          "name": "Κατάστημα Frozen Yogurt",
+          "terms": "κατάστημα παγωμένου γιαουρτιού"
         },
         "amenity/internet_cafe": {
           "name": "Internet Cafe"
@@ -573,7 +586,7 @@
         },
         "amenity/parking": {
           "name": "Πάρκινγκ",
-          "terms": "θέσεις στάθμευσης,χώρος στάθμευσης"
+          "terms": "θέσεις στάθμευσης,χώρος στάθμευσης,γκαράζ"
         },
         "amenity/parking/multi-storey": {
           "name": "Πολυώροφο Πάρκινγκ",
@@ -596,7 +609,7 @@
         },
         "amenity/parking_space": {
           "name": "Χώρος Στάθμευσης",
-          "terms": "χώρος παρκαρίσματος"
+          "terms": "χώρος παρκαρίσματος,θέση στάθμευσης,θέση πάρκινγκ"
         },
         "amenity/parking_space/disabled": {
           "name": "Προσβάσιμη Θέση Στάθμευσης",
@@ -862,6 +875,9 @@
         "amenity/social_facility/nursing_home": {
           "name": "Κλινική"
         },
+        "amenity/stripclub": {
+          "name": "Στριπτιτζάδικο"
+        },
         "amenity/studio": {
           "name": "Στούντιο"
         },
@@ -935,7 +951,8 @@
           "name": "Κέντρο Τεχνικού Ελέγχου Οχημάτων (Κ.Τ.Ε.Ο.)"
         },
         "amenity/vending_machine": {
-          "name": "Αυτόματος Πωλητής"
+          "name": "Αυτόματος Πωλητής",
+          "terms": "μηχάνημα αυτόματης πώλησης"
         },
         "amenity/vending_machine/bottle_return": {
           "name": "Μηχανή Επιστροφής Φιαλών"
@@ -1170,12 +1187,18 @@
           "name": "Προστατευτικό Κιγκλίδωμα",
           "terms": "πλευρικό στηθαίο ασφαλείας οδών\nμεταλλικό στηθαίο ασφαλείας οδών"
         },
+        "barrier/handrail": {
+          "name": "Κουπαστή"
+        },
         "barrier/hedge": {
           "name": "Θαμνώδης Περίφραξη",
           "terms": "φράκτης από θάμνους,μπορντούρα"
         },
         "barrier/height_restrictor": {
           "name": "Περιοριστής Ύψους"
+        },
+        "barrier/jersey_barrier": {
+          "name": "Κιγκλίδωμα Τζέρσεϊ"
         },
         "barrier/kerb": {
           "name": "Κράσπεδο"
@@ -1447,6 +1470,9 @@
         "building/stadium": {
           "name": "Στάδιο"
         },
+        "building/static_caravan": {
+          "name": "Τροχόσπιτο"
+        },
         "building/sty": {
           "name": "Χοιροστάσιο"
         },
@@ -1495,7 +1521,8 @@
           "name": "Αθλητική Λέσχη / Ομάδα"
         },
         "craft": {
-          "name": "Τέχνη"
+          "name": "Τέχνη",
+          "terms": "χειροτεχνία,τεχνίτης,εργαστήριο,έμπορας,έμπορος"
         },
         "craft/agricultural_engines": {
           "name": "Μηχανικός Αγροτικών Μηχανημάτων"
@@ -1541,8 +1568,8 @@
           "terms": "ρολογάς"
         },
         "craft/confectionery": {
-          "name": "Ζαχαροπλαστείο",
-          "aliases": "Εργαστήριο Ζαχαροπλαστικής"
+          "name": "Εργαστήριο Ζαχαροπλαστικής",
+          "aliases": "Ζαχαροπλαστείο"
         },
         "craft/distillery": {
           "name": "Οινοπνευματοποιείο"
@@ -1791,6 +1818,10 @@
         "entrance/main": {
           "name": "Κύρια Είσοδος"
         },
+        "entrance/shop": {
+          "name": "Είσοδος καταστήματος",
+          "terms": "είσοδος μαγαζιού"
+        },
         "entrance/staircase": {
           "name": "Είσοδος Με Σκαλιά",
           "terms": "σκαλιά,σκαλοπάτια"
@@ -1846,7 +1877,8 @@
           "name": "Εναλλακτική Ιατρική"
         },
         "healthcare/alternative/acupuncture": {
-          "name": "Βελονισμός"
+          "name": "Βελονισμός",
+          "terms": "βελονιστής"
         },
         "healthcare/alternative/ayurveda": {
           "name": "Αγιουβέρδα"
@@ -1862,6 +1894,10 @@
         },
         "healthcare/alternative/osteopathy": {
           "name": "Οστεοπαθητική"
+        },
+        "healthcare/alternative/traditional_chinese_medicine": {
+          "name": "Παραδοσιακή Κινέζικη Ιατρική",
+          "terms": "κινέζικη ιατρική,ιατρός παραδοσιακής κινέζικης ιατρικής,ιατρός κινέζικης ιατρικής"
         },
         "healthcare/audiologist": {
           "name": "Ωτορινολαρυγγολόγος"
@@ -1937,10 +1973,12 @@
           "name": "Εσωτερικός Διάδρομος"
         },
         "highway/crossing": {
-          "name": "Διάβαση"
+          "name": "Διάβαση",
+          "terms": "διάβαση"
         },
         "highway/crossing/traffic_signals": {
-          "name": "Διάβαση Με Σημάνσεις Πεζών"
+          "name": "Διάβαση Με Σημάνσεις Πεζών",
+          "terms": "διάβαση πεζών με σήματα"
         },
         "highway/crossing/uncontrolled": {
           "name": "Διάβαση Με Διαγράμμιση"
@@ -2001,7 +2039,8 @@
           "name": "Διάβαση Πεζών"
         },
         "highway/footway/crossing/traffic_signals": {
-          "name": "Διάβαση Με Σημάνσεις Πεζών"
+          "name": "Διάβαση Με Σημάνσεις Πεζών",
+          "terms": "διάβαση πεζών με σήματα"
         },
         "highway/footway/crossing/uncontrolled": {
           "name": "Διάβαση Με Διαγράμμιση"
@@ -2014,7 +2053,8 @@
           "aliases": "Άτυπο μονοπάτι πεζών\nΑνεπίσημο μονοπάτι πεζών"
         },
         "highway/footway/sidewalk": {
-          "name": "Πεζοδρόμιο"
+          "name": "Πεζοδρόμιο",
+          "terms": "πεζοδρόμιο"
         },
         "highway/footway/traffic_island": {
           "name": "Νησίδα Δρόμου"
@@ -2053,6 +2093,9 @@
         },
         "highway/path/boardwalk": {
           "name": "Θαλάσσιος Περίπατος"
+        },
+        "highway/path/crossing": {
+          "name": "Διασταύρωση Ποδηλατόδρομου με Πεζόδρομου"
         },
         "highway/path/informal": {
           "name": "Ανεπίσημο Μονοπάτι"
@@ -2179,7 +2222,8 @@
           "name": "Πρωτεύον Δίκτυο"
         },
         "highway/trunk_link": {
-          "name": "Σύνδεση Πρωτεύοντος Δικτύου"
+          "name": "Σύνδεση Πρωτεύοντος Δικτύου",
+          "terms": "σύνδεση εθνικού δρόμου"
         },
         "highway/turning_circle": {
           "name": "Πλάτωμα Αναστροφής"
@@ -2242,6 +2286,9 @@
         "historic/monument": {
           "name": "Μνημείο",
           "terms": "μνημείο,μαυσωλείο,μνημειακό κτίσμα"
+        },
+        "historic/pillory": {
+          "name": "Ιστορικός Κύφωνας"
         },
         "historic/ruins": {
           "name": "Ερείπια",
@@ -2405,7 +2452,8 @@
           "terms": "στρατόπεδο,στρατιωτική μονάδα,φυλάκιο"
         },
         "landuse/military/base/navy": {
-          "name": "Ναυτική Βάση"
+          "name": "Ναυτική Βάση",
+          "terms": "ναυτική βάση"
         },
         "landuse/military/danger_area": {
           "name": "Στρατιωτική Περιοχή Κινδύνου",
@@ -2593,6 +2641,9 @@
         "leisure/horse_riding": {
           "name": "Κέντρο Ιππασίας",
           "terms": "ιππικό κέντρο"
+        },
+        "leisure/hot_tub": {
+          "name": "Τζακούζι"
         },
         "leisure/ice_rink": {
           "name": "Παγοδρόμιο"
@@ -2888,6 +2939,12 @@
         "man_made/crane": {
           "name": "Γερανός"
         },
+        "man_made/crane/gantry_crane": {
+          "name": "Γέφυρα γάντζου"
+        },
+        "man_made/crane/portal_crane": {
+          "name": "Φορητός Γερανός"
+        },
         "man_made/cross": {
           "name": "Σταυρός"
         },
@@ -3073,11 +3130,16 @@
           "name": "Οχυρωμένος Πύργος",
           "terms": "πύργος οχύρωσης"
         },
+        "man_made/tower/diving": {
+          "name": "Πλατφόρμα Κατάδυσης",
+          "terms": "καταδυτική πλατφόρμα"
+        },
         "man_made/tower/minaret": {
           "name": "Μιναρές"
         },
         "man_made/tower/observation": {
-          "name": "Πύργος Παρατήρησης"
+          "name": "Πύργος Παρατήρησης",
+          "terms": "παρατηρητήριο"
         },
         "man_made/tower/pagoda": {
           "name": "Παγόδα"
@@ -3143,7 +3205,8 @@
           "name": "Στρατιωτικό Σημείο Ελέγχου"
         },
         "military/nuclear_explosion_site": {
-          "name": "Περιοχή Πυρηνικής Έκρηξης"
+          "name": "Περιοχή Πυρηνικής Έκρηξης",
+          "terms": "τόποθεσία πυρηνικών δοκιμών,τόποθεσία ρίψης πυρηνικών όπλων"
         },
         "military/office": {
           "name": "Στρατιωτική Υπηρεσία"
@@ -3154,8 +3217,13 @@
         "natural": {
           "name": "Στοιχείο Φύση"
         },
+        "natural/arch": {
+          "name": "Φυσική αψίδα",
+          "terms": "αψίδα"
+        },
         "natural/bare_rock": {
-          "name": "Γυμνός Βράχος"
+          "name": "Γυμνός Βράχος",
+          "terms": "βράχος"
         },
         "natural/bay": {
           "name": "Κόλπος",
@@ -3241,6 +3309,10 @@
         "natural/shrub": {
           "name": "Χαμόκλαδο"
         },
+        "natural/sinkhole": {
+          "name": "Καταβόθρα",
+          "terms": "δολίνη"
+        },
         "natural/spring": {
           "name": "Πηγή",
           "terms": "πηγή"
@@ -3293,7 +3365,7 @@
         },
         "natural/water": {
           "name": "Νερό",
-          "terms": "νερό"
+          "terms": "ύδωρ"
         },
         "natural/water/basin": {
           "name": "Λεκάνη",
@@ -3315,13 +3387,15 @@
         },
         "natural/water/reservoir": {
           "name": "Ταμιευτήρας",
-          "terms": "δεξαμενή,ταμιευτήρας"
+          "terms": "δεξαμενή,τεχνητή λίμνη"
         },
         "natural/water/river": {
-          "name": "Περιοχή Ποταμού"
+          "name": "Περιοχή Ποταμού",
+          "terms": "ποτάμι"
         },
         "natural/water/stream": {
-          "name": "Περιοχή Ροής"
+          "name": "Περιοχή Ροής",
+          "terms": "περιοχή ρέματος,ρέμα"
         },
         "natural/water/wastewater": {
           "name": "Δεξαμενή Λυμάτων"
@@ -3416,7 +3490,8 @@
           "name": "Προξενείο"
         },
         "office/diplomatic/embassy": {
-          "name": "Πρεσβεία"
+          "name": "Πρεσβεία",
+          "terms": "πρεσβεία,προξενείο"
         },
         "office/diplomatic/liaison": {
           "name": "Γραφείο Διασύνδεσης"
@@ -3430,6 +3505,9 @@
         },
         "office/energy_supplier": {
           "name": "Κατάστημα Παρόχου Ενέργειας"
+        },
+        "office/engineer": {
+          "name": "Μηχανολογικό Γραφείο"
         },
         "office/estate_agent": {
           "name": "Κτηματομεσιτική Υπηρεσία",
@@ -3460,6 +3538,9 @@
         },
         "office/government/tax": {
           "name": "Φορολογικό Γραφείο"
+        },
+        "office/graphic_design": {
+          "name": "Γραφείο Γραφικού Σχεδιασμού"
         },
         "office/guide": {
           "name": "Ταξιδιωτικό Γραφείο"
@@ -3530,6 +3611,10 @@
         "office/therapist": {
           "name": "Υπηρεσία Θεραπευτών"
         },
+        "office/translator": {
+          "name": "Μεταφραστικό Γραφείο",
+          "terms": "γραφείο μετάφρασης"
+        },
         "office/travel_agent": {
           "name": "Ταξιδιωτικό Γραφείο"
         },
@@ -3556,6 +3641,9 @@
         "piste/ice_skate": {
           "name": "Πίστα Παγοδρομίας",
           "terms": "παγοδρομία,μονοπάτι παγοδρομίας"
+        },
+        "piste/piste": {
+          "name": "Διαδρομές / Πίστες Χειμερινών Αθλημάτων (Απροσδιόριστου Είδους)"
         },
         "place": {
           "name": "Τόπος"
@@ -3671,6 +3759,9 @@
           "name": "Τσουλίθρα",
           "terms": "τσουλήθρα"
         },
+        "playground/springy": {
+          "name": "Ελατήρια ζωάκια"
+        },
         "playground/structure": {
           "name": "Κατασκευή Παιγνίων"
         },
@@ -3779,10 +3870,14 @@
           "terms": "στύλος ηλεκτρισμού,κολόνα ρεύματος"
         },
         "power/substation": {
-          "name": "Υποσταθμός"
+          "name": "Υποσταθμός",
+          "terms": "υποσταθμός"
         },
         "power/switch": {
           "name": "Διακόπτης Ρεύματος"
+        },
+        "power/switchgear": {
+          "name": "Εξοπλισμός Μεταγωγής Υποσταθμού"
         },
         "power/tower": {
           "name": "Πυλώνας Υψηλής Τάσης",
@@ -3805,7 +3900,8 @@
           "name": "Αποβάθρα Λεωφορείου"
         },
         "public_transport/platform/bus_point": {
-          "name": "Στάση Λεωφορείου"
+          "name": "Στάση Λεωφορείου",
+          "terms": "στάση λεωφορείου"
         },
         "public_transport/platform/bus_tram_point": {
           "name": "Στάση Τραμ & Λεωφορείου"
@@ -3878,7 +3974,8 @@
           "name": "Σταθμός Υπόγειου Σιδηρόδρομου / Μετρό"
         },
         "public_transport/station_train": {
-          "name": "Σταθμός Τρένου"
+          "name": "Σταθμός Τρένου",
+          "terms": "κτίριο σιδηροδρομικού σταθμού,κτίριο σταθμού τρένων"
         },
         "public_transport/station_train_halt": {
           "name": "Σταθμός Τρένου ( Με Παραγγελία Στάσης )"
@@ -4236,7 +4333,8 @@
           "name": "Κατάστημα Αγροτικών Ειδών"
         },
         "shop/craft": {
-          "name": "Κατάστημα Τέχνης & Χειροτεχνίας"
+          "name": "Κατάστημα Τέχνης & Χειροτεχνίας",
+          "terms": "τέχνη και χειροτεχνία"
         },
         "shop/curtain": {
           "name": "Είδη Κουρτίνας"
@@ -4343,6 +4441,10 @@
           "name": "Κατάστημα Δώρων",
           "terms": "είδη δώρων"
         },
+        "shop/gold_buyer": {
+          "name": "Αγοραστής χρυσού",
+          "terms": "αγορά χρυσού"
+        },
         "shop/greengrocer": {
           "name": "Οπωροπωλείο",
           "terms": "οπωροπώλης,μανάβης,μανάβικο,φρούτα,λαχανικά"
@@ -4350,6 +4452,10 @@
         "shop/hairdresser": {
           "name": "Κομμωτήριο",
           "terms": "κομμωτήριο,νύχια,μανικιούρ,πεντικιούρ"
+        },
+        "shop/hairdresser/barber": {
+          "name": "Κουρείο",
+          "terms": "μπαρμπεράδικο,μπαρμπέρικο"
         },
         "shop/hairdresser_supply": {
           "name": "Εξοπλισμός Κομμωτηρίου"
@@ -4406,10 +4512,12 @@
           "name": "Πλυντήρια με Αυτοεξυπηρέτηση"
         },
         "shop/leather": {
-          "name": "Κατάστημα με Δερμάτινα"
+          "name": "Κατάστημα με Δερμάτινα",
+          "terms": "δερμάτινα είδη"
         },
         "shop/lighting": {
-          "name": "Κατάστημα Λάμπας"
+          "name": "Κατάστημα Φωτιστικών",
+          "terms": "φωτιστικά"
         },
         "shop/locksmith": {
           "name": "Κλειδαράς"
@@ -4423,21 +4531,24 @@
           "terms": "εμπορικό κέντρο,mall"
         },
         "shop/massage": {
-          "name": "Κατάστημα Μασάζ"
+          "name": "Κατάστημα Μασάζ",
+          "terms": "μασέρ"
         },
         "shop/medical_supply": {
           "name": "Κατάστημα Προμήθειας Ιατρικών Ειδών",
           "terms": "προμήθεια ιατρικών ειδών,ιατρικά είδη"
         },
         "shop/military_surplus": {
-          "name": "Κατάστημα Στρατιωτικού Εξοπλισμού"
+          "name": "Κατάστημα Στρατιωτικού Εξοπλισμού",
+          "terms": "στρατιωτικός εξοπλισμός"
         },
         "shop/mobile_phone": {
           "name": "Κατάστημα Κινητής Τηλεφωνίας",
           "terms": "κατάστημα κινητών τηλεφώνων"
         },
         "shop/model": {
-          "name": "Κατάστημα Μοντελισμού"
+          "name": "Κατάστημα Μοντελισμού",
+          "terms": "μοντελισμός"
         },
         "shop/money_lender": {
           "name": "Τοκογλύφος",
@@ -4465,14 +4576,16 @@
           "name": "Κατάστημα με Συμπληρώματα Διατροφής"
         },
         "shop/nuts": {
-          "name": "Κατάστημα Καρπών"
+          "name": "Κατάστημα Ξηρών Καρπών",
+          "terms": "κατάστημα καρπών,ξηρά καρπά,ξηροί καρποί"
         },
         "shop/optician": {
           "name": "Οπτικός",
           "terms": "οπτικός"
         },
         "shop/outdoor": {
-          "name": "Κατάστημα με Είδη Εξοπλισμού Υπαίθρου"
+          "name": "Κατάστημα με Είδη Εξοπλισμού Υπαίθρου",
+          "terms": "εξοπλισμός υπαίθρου"
         },
         "shop/outpost": {
           "name": "Σημείο Παραλαβής Διαδικτυακών Πωλήσεων"
@@ -4502,6 +4615,10 @@
         "shop/pet": {
           "name": "Κατάστημα Κατοικίδιων",
           "terms": "κατάστημα κατοικιδίων,πετ σοπ"
+        },
+        "shop/pet_grooming": {
+          "name": "Καλλωπισμός Κατοικιδίων",
+          "terms": "περιποίηση κατοικιδίων,κατάστημα περιποίησης κατοικιδίων,κατάστημα καλλωπισμού κατοικιδίων"
         },
         "shop/photo": {
           "name": "Φωτογραφείο",
@@ -4584,7 +4701,8 @@
           "terms": "προμήθειες πισίνας"
         },
         "shop/tailor": {
-          "name": "Ράφτης"
+          "name": "Ράφτης",
+          "terms": "ράφτης,ράπτης"
         },
         "shop/tattoo": {
           "name": "Στούντιο Τατουάζ",
@@ -4900,7 +5018,8 @@
           "name": "Επιβεβλημένο Όριο Ταχύτητας"
         },
         "type/multipolygon": {
-          "name": "Πολύ-Πολύγωνο"
+          "name": "Πολύ-Πολύγωνο",
+          "terms": "πολυπολύγωνο"
         },
         "type/public_transport/stop_area_group": {
           "name": "Ομάδα Περιοχής Διαμετακόμισης"
@@ -5010,7 +5129,8 @@
           "name": "Χώρος"
         },
         "type/waterway": {
-          "name": "Γραμμή Νερού"
+          "name": "Γραμμή Νερού",
+          "terms": "υδατοδιαδρομή,διαδρομή νερού"
         },
         "waterway": {
           "name": "Στοιχείο Γραμμής Νερού"

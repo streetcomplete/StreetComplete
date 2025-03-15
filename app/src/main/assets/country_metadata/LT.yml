@@ -15,5 +15,5 @@ noParkingLineStyle: dashed yellow
 noStoppingLineStyle: yellow
 officialLanguages: [lt]
 orchardProduces: [apple, raspberry, strawberry, pear, blueberry, plum, tomato, cherry]
-parcelLockerBrand: [Omniva, LP Express, Venipak, DPD, DPD Pickup Station, uDrop, Smartpost]
+parcelLockerBrand: [Omniva, LP Express, Venipak, DPD Pickup Station, DPD, uDrop, Smartpost, ShareFreeze]
 postboxesHaveCollectionTimes: true
