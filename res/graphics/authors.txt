@@ -345,6 +345,7 @@ quest/
     footway_surface.svg
     footway_surface_detail.svg
     fuel.svg
+    glutenfree.svg                   created with elements from CC0 https://www.svgrepo.com/svg/269879/cereal-wheat
     hairdresser.svg                  modified from scissors.svg by Matija Nalis (CC0 for modifications)
     housenumber.svg
     housenumber_street.svg
