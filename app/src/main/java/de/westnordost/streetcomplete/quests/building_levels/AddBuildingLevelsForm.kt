@@ -12,7 +12,6 @@ import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.databinding.QuestBuildingLevelsBinding
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
-import de.westnordost.streetcomplete.ui.theme.AppTheme
 import de.westnordost.streetcomplete.ui.util.content
 import de.westnordost.streetcomplete.util.logs.Log
 import de.westnordost.streetcomplete.util.takeFavourites
@@ -24,7 +23,7 @@ class AddBuildingLevelsForm : AbstractOsmQuestForm<BuildingLevels>() {
     private val binding by contentViewBinding(QuestBuildingLevelsBinding::bind)
 
     private val prefs: Preferences by inject()
-    private lateinit var regularLevels: MutableState<String?>
+    private lateinit var levels: MutableState<String?>
     private lateinit var roofLevels: MutableState<String?>
     override val otherAnswers = listOf(
         AnswerItem(R.string.quest_buildingLevels_answer_multipleLevels) { showMultipleLevelsHint() }
@@ -43,12 +42,12 @@ class AddBuildingLevelsForm : AbstractOsmQuestForm<BuildingLevels>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.questBuildingLevelsBase.content {
-            regularLevels = rememberSaveable { mutableStateOf(element.tags["building:levels"] ?: "") }
+            levels = rememberSaveable { mutableStateOf(element.tags["building:levels"] ?: "") }
             roofLevels = rememberSaveable { mutableStateOf(element.tags["roof:levels"] ?: "") }
             BuildingLevelsForm(
-                regularLevels = regularLevels.value,
-                onRegularLevels = {
-                    regularLevels.value = it
+                levels = levels.value,
+                onLevels = {
+                    levels.value = it
                     checkIsFormComplete()
                 },
                 roofLevels = roofLevels.value,
@@ -58,7 +57,7 @@ class AddBuildingLevelsForm : AbstractOsmQuestForm<BuildingLevels>() {
                 },
                 onButton = {
                     regular, roof ->
-                    regularLevels.value = regular.toString()
+                    levels.value = regular.toString()
                     roofLevels.value = if (roof != null) roof.toString() else ""
                     checkIsFormComplete()
                 },
@@ -69,7 +68,7 @@ class AddBuildingLevelsForm : AbstractOsmQuestForm<BuildingLevels>() {
 
     override fun onClickOk() {
         val answer = BuildingLevels(
-            regularLevels.value?.toInt() ?: 0,
+            levels.value?.toInt() ?: 0,
             roofLevels.value?.toInt() ?: null
         )
         prefs.addLastPicked(
@@ -93,10 +92,10 @@ class AddBuildingLevelsForm : AbstractOsmQuestForm<BuildingLevels>() {
             element.tags.containsKey("roof:shape") && element.tags["roof:shape"] != "flat"
         val roofLevelsAreOptional = countryInfo.roofsAreUsuallyFlat && !hasNonFlatRoofShape
         Log.i("Form", "Roof is Optional? $roofLevelsAreOptional")
-        return regularLevels.value != ""
-            && regularLevels.value != null
-            && regularLevels.value!!.isDigitsOnly()
-            && regularLevels.value!!.toInt() >= 0
+        return levels.value != ""
+            && levels.value != null
+            && levels.value!!.isDigitsOnly()
+            && levels.value!!.toInt() >= 0
             && (roofLevelsAreOptional
                 || (roofLevels.value != ""
                 && roofLevels.value != null

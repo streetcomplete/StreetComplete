@@ -40,8 +40,8 @@ import de.westnordost.streetcomplete.ui.theme.titleLarge
 /** Form to input building levels and roof levels, with quick-select buttons */
 @Composable
 fun BuildingLevelsForm(
-    regularLevels: String?,
-    onRegularLevels: (String) -> Unit,
+    levels: String?,
+    onLevels: (String) -> Unit,
     roofLevels: String?,
     onRoofLevels: (String) -> Unit,
     onButton: (levels: Int, roofLevels: Int?) -> Unit,
@@ -71,12 +71,12 @@ fun BuildingLevelsForm(
                         color = LocalContentColor.current.copy(alpha = ContentAlpha.medium),
                     )
                     OutlinedTextField(
-                        value = regularLevels ?: "",
-                        onValueChange = onRegularLevels,
+                        value = levels ?: "",
+                        onValueChange = onLevels,
                         keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Number, imeAction = ImeAction.Next),
                         modifier = Modifier
-                            .conditional(regularLevels == null) { focusRequester(focusRequester) }
-                            .conditional(regularLevels == null || !regularLevels.isDigitsOnly()) { border(2.dp, color = MaterialTheme.colors.error) },
+                            .conditional(levels == null) { focusRequester(focusRequester) }
+                            .conditional(levels == null || !levels.isDigitsOnly()) { border(2.dp, color = MaterialTheme.colors.error) },
                         textStyle = MaterialTheme.typography.titleLarge.copy(
                             textAlign = TextAlign.Center
                         ),
@@ -98,7 +98,7 @@ fun BuildingLevelsForm(
                         keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Number, imeAction = ImeAction.Done),
                         modifier = Modifier
                             .align(Alignment.CenterHorizontally)
-                            .conditional(regularLevels != null) { focusRequester(focusRequester) }
+                            .conditional(levels != null) { focusRequester(focusRequester) }
                             .conditional(roofLevels == null || !roofLevels.isDigitsOnly()) { border(2.dp, color = MaterialTheme.colors.error) },
                         textStyle = MaterialTheme.typography.titleLarge.copy(
                             textAlign = TextAlign.Center
@@ -127,8 +127,8 @@ private fun BuildingLevelsFormPreview() {
     val regularLevels = remember { mutableStateOf("55") }
     val roofLevels = remember { mutableStateOf("55") }
     BuildingLevelsForm(
-        regularLevels = regularLevels.value,
-        onRegularLevels = { },
+        levels = regularLevels.value,
+        onLevels = { },
         roofLevels = roofLevels.value,
         onRoofLevels = { },
         onButton = { _, _ -> },
