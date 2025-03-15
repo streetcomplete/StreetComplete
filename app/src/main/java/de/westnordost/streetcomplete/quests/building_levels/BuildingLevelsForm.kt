@@ -119,14 +119,17 @@ fun BuildingLevelsForm(
 @Preview(showBackground = true)
 @Preview(showBackground = true, locale = "ar")
 private fun BuildingLevelsFormPreview() {
-    val regularLevels = remember { mutableStateOf("55") }
+    val levels = remember { mutableStateOf("55") }
     val roofLevels = remember { mutableStateOf("55") }
     BuildingLevelsForm(
-        levels = regularLevels.value,
-        onLevels = { },
+        levels = levels.value,
+        onLevels = { levels.value = it },
         roofLevels = roofLevels.value,
-        onRoofLevels = { },
-        onButton = { _, _ -> },
+        onRoofLevels = { roofLevels.value = it },
+        onButton = { l, r ->
+            levels.value = l.toString()
+            roofLevels.value = r?.toString() ?: ""
+        },
         previousBuildingLevels = listOf(
             BuildingLevels(5, 2),
             BuildingLevels(4, 1),
