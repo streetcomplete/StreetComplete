@@ -3,21 +3,25 @@ package de.westnordost.streetcomplete.data.osmnotes
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.user.User
 import kotlinx.datetime.Instant
+import kotlinx.io.Buffer
+import kotlinx.io.writeString
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
 class NotesApiParserTest {
 
     @Test fun `parse one minimum note`() {
-        val xml = """
-        <osm>
-          <note lon="0.0689357" lat="51.5085707">
-            <id>1</id>
-            <date_created>2024-06-06 12:47:50 UTC</date_created>
-            <status>open</status>
-          </note>
-        </osm>
-        """.trimIndent()
+        val buffer = Buffer()
+        buffer.writeString("""
+            <osm>
+              <note lon="0.0689357" lat="51.5085707">
+                <id>1</id>
+                <date_created>2024-06-06 12:47:50 UTC</date_created>
+                <status>open</status>
+              </note>
+            </osm>
+            """.trimIndent()
+        )
 
         val note = Note(
             position = LatLon(51.5085707, 0.0689357),
@@ -28,38 +32,40 @@ class NotesApiParserTest {
             comments = listOf()
         )
 
-        assertEquals(listOf(note), NotesApiParser().parseNotes(xml))
+        assertEquals(listOf(note), NotesApiParser().parseNotes(buffer))
     }
 
     @Test fun `parse one full note`() {
-        val xml = """
-        <osm version="0.6" generator="OpenStreetMap server" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
-          <note lon="0.0689357" lat="51.5085707">
-            <id>1</id>
-            <url>https://api.openstreetmap.org/api/0.6/notes/1</url>
-            <comment_url>https://api.openstreetmap.org/api/0.6/notes/1/comment</comment_url>
-            <close_url>https://api.openstreetmap.org/api/0.6/notes/1/close</close_url>
-            <date_created>2024-06-06 12:47:50 UTC</date_created>
-            <status>closed</status>
-            <date_closed>2024-06-06 12:47:51 UTC</date_closed>
-            <comments>
-              <comment>
-                <date>2024-06-06 12:47:50 UTC</date>
-                <uid>1234</uid>
-                <user>dude</user>
-                <user_url>https://api.openstreetmap.org/user/dude</user_url>
-                <action>opened</action>
-                <text>I opened it!</text>
-                <html><p>Some</p><p>text</p></html>
-              </comment>
-              <comment>
-                <date>2024-06-06 12:47:51 UTC</date>
-                <action>closed</action>
-              </comment>
-            </comments>
-          </note>
-        </osm>
-        """.trimIndent()
+        val buffer = Buffer()
+        buffer.writeString("""
+            <osm version="0.6" generator="OpenStreetMap server" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+              <note lon="0.0689357" lat="51.5085707">
+                <id>1</id>
+                <url>https://api.openstreetmap.org/api/0.6/notes/1</url>
+                <comment_url>https://api.openstreetmap.org/api/0.6/notes/1/comment</comment_url>
+                <close_url>https://api.openstreetmap.org/api/0.6/notes/1/close</close_url>
+                <date_created>2024-06-06 12:47:50 UTC</date_created>
+                <status>closed</status>
+                <date_closed>2024-06-06 12:47:51 UTC</date_closed>
+                <comments>
+                  <comment>
+                    <date>2024-06-06 12:47:50 UTC</date>
+                    <uid>1234</uid>
+                    <user>dude</user>
+                    <user_url>https://api.openstreetmap.org/user/dude</user_url>
+                    <action>opened</action>
+                    <text>I opened it!</text>
+                    <html><p>Some</p><p>text</p></html>
+                  </comment>
+                  <comment>
+                    <date>2024-06-06 12:47:51 UTC</date>
+                    <action>closed</action>
+                  </comment>
+                </comments>
+              </note>
+            </osm>
+            """.trimIndent()
+        )
 
         val note = Note(
             position = LatLon(51.5085707, 0.0689357),
@@ -83,24 +89,26 @@ class NotesApiParserTest {
             )
         )
 
-        assertEquals(listOf(note), NotesApiParser().parseNotes(xml))
+        assertEquals(listOf(note), NotesApiParser().parseNotes(buffer))
     }
 
     @Test fun `parse several notes`() {
-        val xml = """
-        <osm>
-          <note lon="0.0689357" lat="51.5085707">
-            <id>1</id>
-            <date_created>2024-06-06 12:47:50 UTC</date_created>
-            <status>open</status>
-          </note>
-          <note lon="0.0689359" lat="51.5085709">
-            <id>2</id>
-            <date_created>2024-06-06 12:47:51 UTC</date_created>
-            <status>hidden</status>
-          </note>
-        </osm>
-        """.trimIndent()
+        val buffer = Buffer()
+        buffer.writeString("""
+            <osm>
+              <note lon="0.0689357" lat="51.5085707">
+                <id>1</id>
+                <date_created>2024-06-06 12:47:50 UTC</date_created>
+                <status>open</status>
+              </note>
+              <note lon="0.0689359" lat="51.5085709">
+                <id>2</id>
+                <date_created>2024-06-06 12:47:51 UTC</date_created>
+                <status>hidden</status>
+              </note>
+            </osm>
+            """.trimIndent()
+        )
 
         val notes = listOf(
             Note(
@@ -121,32 +129,34 @@ class NotesApiParserTest {
             ),
         )
 
-        assertEquals(notes, NotesApiParser().parseNotes(xml))
+        assertEquals(notes, NotesApiParser().parseNotes(buffer))
     }
 
     @Test fun `parse note with XML entity refs`() {
-        val xml = """
-        <osm>
-          <note lon="0.0689357" lat="51.5085707">
-            <id>1</id>
-            <date_created>2024-06-06 12:47:50 UTC</date_created>
-            <status>open</status>
-            <comments>
-              <comment>
-                <date>2024-06-06 12:47:50 UTC</date>
-                <uid>1234</uid>
-                <user>dude &amp; &lt;dudette&gt;</user>
-                <user_url>https://api.openstreetmap.org/user/dude</user_url>
-                <action>opened</action>
-                <text>I opened it &amp; &quot;nothing&quot; broke!</text>
-                <html><p>Some</p><p>text</p></html>
-              </comment>
-            </comments>
-          </note>
-        </osm>
-        """.trimIndent()
+        val buffer = Buffer()
+        buffer.writeString("""
+            <osm>
+              <note lon="0.0689357" lat="51.5085707">
+                <id>1</id>
+                <date_created>2024-06-06 12:47:50 UTC</date_created>
+                <status>open</status>
+                <comments>
+                  <comment>
+                    <date>2024-06-06 12:47:50 UTC</date>
+                    <uid>1234</uid>
+                    <user>dude &amp; &lt;dudette&gt;</user>
+                    <user_url>https://api.openstreetmap.org/user/dude</user_url>
+                    <action>opened</action>
+                    <text>I opened it &amp; &quot;nothing&quot; broke!</text>
+                    <html><p>Some</p><p>text</p></html>
+                  </comment>
+                </comments>
+              </note>
+            </osm>
+            """.trimIndent()
+        )
 
-        val comment = NotesApiParser().parseNotes(xml)[0].comments[0]
+        val comment = NotesApiParser().parseNotes(buffer)[0].comments[0]
 
         assertEquals("dude & <dudette>", comment.user?.displayName)
         assertEquals("I opened it & \"nothing\" broke!", comment.text)

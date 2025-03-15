@@ -9,7 +9,7 @@ import nl.adaptivity.xmlutil.newWriter
 import nl.adaptivity.xmlutil.xmlStreaming
 
 class MapDataApiSerializer {
-    fun serializeMapDataChanges(changes: MapDataChanges, changesetId: Long): String {
+    fun serialize(changes: MapDataChanges, changesetId: Long): String {
         val buffer = StringBuilder()
         xmlStreaming.newWriter(buffer).serializeMapDataChanges(changes, changesetId)
         return buffer.toString()
