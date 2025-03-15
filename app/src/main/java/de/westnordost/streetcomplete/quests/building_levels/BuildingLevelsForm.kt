@@ -75,8 +75,7 @@ fun BuildingLevelsForm(
                         onValueChange = onLevels,
                         keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Number, imeAction = ImeAction.Next),
                         modifier = Modifier
-                            .conditional(levels == null) { focusRequester(focusRequester) }
-                            .conditional(levels == null || !levels.isDigitsOnly()) { border(2.dp, color = MaterialTheme.colors.error) },
+                            .conditional(levels == null) { focusRequester(focusRequester) },
                         textStyle = MaterialTheme.typography.titleLarge.copy(
                             textAlign = TextAlign.Center
                         ),
@@ -97,9 +96,7 @@ fun BuildingLevelsForm(
                         onValueChange = onRoofLevels,
                         keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Number, imeAction = ImeAction.Done),
                         modifier = Modifier
-                            .align(Alignment.CenterHorizontally)
-                            .conditional(levels != null) { focusRequester(focusRequester) }
-                            .conditional(roofLevels == null || !roofLevels.isDigitsOnly()) { border(2.dp, color = MaterialTheme.colors.error) },
+                            .conditional(levels != null) { focusRequester(focusRequester) },
                         textStyle = MaterialTheme.typography.titleLarge.copy(
                             textAlign = TextAlign.Center
                         ),
