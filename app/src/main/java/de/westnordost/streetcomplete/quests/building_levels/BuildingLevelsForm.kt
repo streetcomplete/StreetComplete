@@ -38,9 +38,9 @@ import de.westnordost.streetcomplete.ui.theme.titleLarge
 /** Form to input building levels and roof levels, with quick-select buttons */
 @Composable
 fun BuildingLevelsForm(
-    levels: String?,
+    levels: String,
     onLevelsChange: (String) -> Unit,
-    roofLevels: String?,
+    roofLevels: String,
     onRoofLevelsChange: (String) -> Unit,
     modifier: Modifier = Modifier,
     previousBuildingLevels: List<BuildingLevels> = listOf(),
@@ -68,11 +68,11 @@ fun BuildingLevelsForm(
                         color = LocalContentColor.current.copy(alpha = ContentAlpha.medium),
                     )
                     OutlinedTextField(
-                        value = levels ?: "",
+                        value = levels,
                         onValueChange = onLevelsChange,
                         keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Number, imeAction = ImeAction.Next),
                         modifier = Modifier
-                            .conditional(levels == null) { focusRequester(focusRequester) },
+                            .conditional(levels.isEmpty()) { focusRequester(focusRequester) },
                         textStyle = MaterialTheme.typography.titleLarge.copy(
                             textAlign = TextAlign.Center
                         ),
@@ -89,11 +89,11 @@ fun BuildingLevelsForm(
                     verticalArrangement = Arrangement.SpaceBetween
                 ) {
                     OutlinedTextField(
-                        roofLevels ?: "",
+                        value = roofLevels,
                         onValueChange = onRoofLevelsChange,
                         keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Number, imeAction = ImeAction.Done),
                         modifier = Modifier
-                            .conditional(levels != null) { focusRequester(focusRequester) },
+                            .conditional(levels.isNotEmpty()) { focusRequester(focusRequester) },
                         textStyle = MaterialTheme.typography.titleLarge.copy(
                             textAlign = TextAlign.Center
                         ),

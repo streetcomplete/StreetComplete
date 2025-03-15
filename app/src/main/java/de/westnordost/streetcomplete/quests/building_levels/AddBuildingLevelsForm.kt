@@ -6,7 +6,6 @@ import androidx.appcompat.app.AlertDialog
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.core.text.isDigitsOnly
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.databinding.QuestBuildingLevelsBinding
@@ -22,8 +21,8 @@ class AddBuildingLevelsForm : AbstractOsmQuestForm<BuildingLevels>() {
     private val binding by contentViewBinding(QuestBuildingLevelsBinding::bind)
 
     private val prefs: Preferences by inject()
-    private lateinit var levels: MutableState<String?>
-    private lateinit var roofLevels: MutableState<String?>
+    private lateinit var levels: MutableState<String>
+    private lateinit var roofLevels: MutableState<String>
     override val otherAnswers = listOf(
         AnswerItem(R.string.quest_buildingLevels_answer_multipleLevels) { showMultipleLevelsHint() }
     )
@@ -61,8 +60,8 @@ class AddBuildingLevelsForm : AbstractOsmQuestForm<BuildingLevels>() {
 
     override fun onClickOk() {
         val answer = BuildingLevels(
-            levels.value?.toInt() ?: 0,
-            roofLevels.value?.toInt() ?: null
+            levels.value.toInt(),
+            roofLevels.value.takeIf { it.isNotEmpty() }?.toInt()
         )
         prefs.addLastPicked(
             this::class.simpleName!!,
@@ -85,14 +84,13 @@ class AddBuildingLevelsForm : AbstractOsmQuestForm<BuildingLevels>() {
         val hasNonFlatRoofShape = roofShape != null && roofShape != "flat"
         val roofLevelsAreOptional = countryInfo.roofsAreUsuallyFlat && !hasNonFlatRoofShape
 
-        return levels.value != ""
-            && levels.value != null
-            && levels.value!!.isDigitsOnly()
-            && levels.value!!.toInt() >= 0
-            && (roofLevelsAreOptional
-                || (roofLevels.value != ""
-                && roofLevels.value != null
-                && roofLevels.value!!.isDigitsOnly()
-                && roofLevels.value!!.toInt() >= 0))
+        return levels.value.isValidLevel()
+            && (
+                roofLevelsAreOptional && roofLevels.value.isEmpty()
+                || roofLevels.value.isValidLevel()
+            )
     }
+
+    private fun String.isValidLevel(): Boolean =
+        toIntOrNull()?.takeIf { it >= 0 } != null
 }
