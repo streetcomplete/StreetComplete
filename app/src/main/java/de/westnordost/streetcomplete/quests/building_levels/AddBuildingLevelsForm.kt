@@ -13,6 +13,7 @@ import de.westnordost.streetcomplete.databinding.QuestBuildingLevelsBinding
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.ui.theme.AppTheme
+import de.westnordost.streetcomplete.ui.util.content
 import de.westnordost.streetcomplete.util.logs.Log
 import de.westnordost.streetcomplete.util.takeFavourites
 import org.koin.android.ext.android.inject
@@ -41,30 +42,28 @@ class AddBuildingLevelsForm : AbstractOsmQuestForm<BuildingLevels>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.questBuildingLevelsBase.setContent {
+        binding.questBuildingLevelsBase.content {
             regularLevels = rememberSaveable { mutableStateOf(element.tags["building:levels"] ?: "") }
             roofLevels = rememberSaveable { mutableStateOf(element.tags["roof:levels"] ?: "") }
-            AppTheme {
-                BuildingLevelsForm(
-                    regularLevels.value,
-                    {
-                        regularLevels.value = it
-                        checkIsFormComplete()
-                    },
-                    roofLevels.value,
-                    {
-                        roofLevels.value = it
-                        checkIsFormComplete()
-                    },
-                    onButton = {
-                        regular, roof ->
-                        regularLevels.value = regular.toString()
-                        roofLevels.value = if (roof != null) roof.toString() else ""
-                        checkIsFormComplete()
-                    },
-                    previousBuildingLevels = lastPickedAnswers
-                )
-            }
+            BuildingLevelsForm(
+                regularLevels = regularLevels.value,
+                onRegularLevels = {
+                    regularLevels.value = it
+                    checkIsFormComplete()
+                },
+                roofLevels = roofLevels.value,
+                onRoofLevels = {
+                    roofLevels.value = it
+                    checkIsFormComplete()
+                },
+                onButton = {
+                    regular, roof ->
+                    regularLevels.value = regular.toString()
+                    roofLevels.value = if (roof != null) roof.toString() else ""
+                    checkIsFormComplete()
+                },
+                previousBuildingLevels = lastPickedAnswers
+            )
         }
     }
 
