@@ -11,6 +11,7 @@ enum class BuildingTypeCategory(val type: BuildingType?, val subTypes: List<Buil
     COMMERCIAL(
         BuildingType.COMMERCIAL, listOf(
         OFFICE, RETAIL, KIOSK, INDUSTRIAL, WAREHOUSE, HOTEL, STORAGE_TANK, PARKING, HANGAR,
+        BUNGALOW,
     )),
     CIVIC(
         BuildingType.CIVIC, listOf(

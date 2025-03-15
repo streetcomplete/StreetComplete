@@ -18,6 +18,7 @@ class AddBinStatusOnBusStop : OsmFilterQuestType<Boolean>() {
           or (highway = bus_stop and public_transport != stop_position)
         )
         and physically_present != no and naptan:BusStopType != HAR
+        and access !~ no|private
         and (!bin or bin older today -4 years)
     """
     override val changesetComment = "Specify whether public transport stops have bins"
