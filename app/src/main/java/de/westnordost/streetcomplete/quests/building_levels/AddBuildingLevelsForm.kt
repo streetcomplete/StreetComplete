@@ -13,7 +13,6 @@ import de.westnordost.streetcomplete.databinding.QuestBuildingLevelsBinding
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.ui.util.content
-import de.westnordost.streetcomplete.util.logs.Log
 import de.westnordost.streetcomplete.util.takeFavourites
 import org.koin.android.ext.android.inject
 
@@ -82,10 +81,10 @@ class AddBuildingLevelsForm : AbstractOsmQuestForm<BuildingLevels>() {
     }
 
     override fun isFormComplete(): Boolean {
-        val hasNonFlatRoofShape =
-            element.tags.containsKey("roof:shape") && element.tags["roof:shape"] != "flat"
+        val roofShape = element.tags["roof:shape"]
+        val hasNonFlatRoofShape = roofShape != null && roofShape != "flat"
         val roofLevelsAreOptional = countryInfo.roofsAreUsuallyFlat && !hasNonFlatRoofShape
-        Log.i("Form", "Roof is Optional? $roofLevelsAreOptional")
+
         return levels.value != ""
             && levels.value != null
             && levels.value!!.isDigitsOnly()
@@ -95,6 +94,5 @@ class AddBuildingLevelsForm : AbstractOsmQuestForm<BuildingLevels>() {
                 && roofLevels.value != null
                 && roofLevels.value!!.isDigitsOnly()
                 && roofLevels.value!!.toInt() >= 0))
-        return false
     }
 }
