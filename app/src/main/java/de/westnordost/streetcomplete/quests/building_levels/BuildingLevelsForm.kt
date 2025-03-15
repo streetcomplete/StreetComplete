@@ -70,9 +70,11 @@ fun BuildingLevelsForm(
                     OutlinedTextField(
                         value = levels,
                         onValueChange = onLevelsChange,
-                        keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Number, imeAction = ImeAction.Next),
                         modifier = Modifier
                             .conditional(levels.isEmpty()) { focusRequester(focusRequester) },
+                        isError = levels.isNotEmpty() && !levels.isValidLevel(),
+                        keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Number, imeAction = ImeAction.Next),
+                        singleLine = true,
                         textStyle = MaterialTheme.typography.titleLarge.copy(
                             textAlign = TextAlign.Center
                         ),
@@ -91,9 +93,11 @@ fun BuildingLevelsForm(
                     OutlinedTextField(
                         value = roofLevels,
                         onValueChange = onRoofLevelsChange,
-                        keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Number, imeAction = ImeAction.Done),
                         modifier = Modifier
                             .conditional(levels.isNotEmpty()) { focusRequester(focusRequester) },
+                        isError = roofLevels.isNotEmpty() && !roofLevels.isValidLevel(),
+                        keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Number, imeAction = ImeAction.Done),
+                        singleLine = true,
                         textStyle = MaterialTheme.typography.titleLarge.copy(
                             textAlign = TextAlign.Center
                         ),
@@ -119,6 +123,9 @@ fun BuildingLevelsForm(
         focusRequester.requestFocus()
     }
 }
+
+private fun String.isValidLevel(): Boolean =
+    toIntOrNull()?.takeIf { it >= 0 } != null
 
 @Composable
 @Preview(showBackground = true)
