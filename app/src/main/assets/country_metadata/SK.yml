@@ -1,6 +1,6 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [Slovenská sporiteľňa, VÚB, ČSOB, Všeobecná úverová banka, Tatra banka, Prima banka, UniCredit Bank, Poštová banka, Euronet, Kvakomat, Bitcoinmat.sk, OTP banka, Fio banka, 365.bank, Prima Banka, ATM Point, Raiffeisen banka, wBTCb, 'Tatra banka, a.s.', Shitcoins.club, Bitcoinmat, ATM point]
-chargingStationOperators: [GreenWay, ejoin, Západoslovenská energetika, ZSE, Lidl, nabibajk.sk, econec.eu, GreenWay Infrastructure, ZSE Drive, NabiBajk, Specialized, 'Sharengo/4 SALE,s.r.o', Billa, VSE, 'Tesla, Inc.', ebajk connect, MOL, LEDEOS, Základná škola Hrubý Šůr, Správný úrad Ivanka pri Dunaji, Penzion Tvarožek, Obecná knižnica - Ivanka pri Dunaji, Obecný úrad Veľký Biel, Miestny úrad Záhorská Bystrica, Econec, ABB, 'ejoin, s.r.o.', ebajkonnect, ebajkconnect, ZSE drive, V.I.P Bar Vysoká pri Morave, Slovnaft, Senica, Požiarna zbrojnica Liptovská Štiavnica, Obec Važec, Obec Ulič, Ledeos, Kultúrne zariadenia Petržalky - KOCR Bratislava Region Tourism, Ionity, Farmárska reštaurácia, EVlink, E.ON, Chata Zapadnutý Kút - KOCR Bratislava Region Tourism, Chata Na Plácku, Bufet na dobrom mieste - KOCR Bratislava Region Tourism, Bajkservis Stupava - KOCR Bratislava Region Tourism, BMW T.O.B., Areál Pálffyho kaštieľa, Antik Telecom, Antik, Amfiteáter Bratislava Rača]
+atmOperators: [Slovenská sporiteľňa, VÚB, ČSOB, Všeobecná úverová banka, Tatra banka, Prima banka, UniCredit Bank, Poštová banka, Euronet, Kvakomat, Bitcoinmat.sk, OTP banka, 365.bank, Fio banka, Prima Banka, ATM Point, Raiffeisen banka, wBTCb, 'Tatra banka, a.s.', Shitcoins.club, Bitcoinmat, ATM point]
+chargingStationOperators: [GreenWay, ejoin, Západoslovenská energetika, ZSE, Lidl, NabiBajk, nabibajk.sk, econec.eu, GreenWay Infrastructure, ZSE Drive, Specialized, 'Sharengo/4 SALE,s.r.o', Billa, VSE, 'Tesla, Inc.', ebajk connect, MOL, LEDEOS, OMV, Econec, ABB, 'ejoin, s.r.o.', ebajkonnect, ebajkconnect, ZSE drive, Slovnaft, Ledeos, Ionity, Farmárska reštaurácia, EVlink, E.ON, BMW T.O.B., Antik Telecom, Antik]
 clothesContainerOperators: [Ekocharita, HUMANA, EKOCHARITA, 'KOSIT, a.s.', Humana, 'Marius Pedersen,a.s.', Nadácia ECO, ECO textil, TextilEco, FCC Trnava, Ekotextil]
 defaultSpeedLimitHasUrbanOrRural: true
 hasAdvisorySpeedLimitSign: true
@@ -11,7 +11,7 @@ livingStreetSignStyle: vienna
 mobileCountryCode: 231
 officialLanguages: [sk]
 orchardProduces: [grape, apple, walnut, plum, tomato, peach, strawberry, chilli_pepper, sweet_pepper, apricot, hop, pear, blueberry, cherry, raspberry]
-parcelLockerBrand: [Packeta, AlzaBox, BalíkoBOX, GLS, GLS Balíkomat, Penguin Box, Dr. Max, Balíkovo, balíkovo, Pilulka Box, Direct4me, DPD Pickup Station]
+parcelLockerBrand: [Packeta, AlzaBox, BalíkoBOX, GLS, GLS Balíkomat, balíkovo box, DPD Pickup Station, Penguin Box, Pilulka Box, Dr. Max, Balíkovo, balíkovo, Direct4me]
 postboxesHaveCollectionTimes: true
 postboxesHaveRef: true
 slowZoneLabelPosition: top

@@ -1,5 +1,12 @@
 # Changelog
 
+## v60.3
+
+- downgraded third-party component because it caused crashes due to memory leaks (see #6166)
+- fix undoing hiding a quest seemingly didn't work (#6162)
+- improve location permission wording (#6156)
+- Bus stop quests: Don't ask for private ones (#6158), by @k-yle
+
 ## v60.2
 
 ### Fixes
@@ -16,7 +23,7 @@
 ### Improvements
 
 - Hairdresser customers: Don't ask for barber shops (#6108)
-- Bus stop names: Suggest names of nearby bus stops (e.g. the one from the other side of the road) (#6067, #5187) by @kmpoppe
+- Bus stop names: Suggest names of nearby bus stops (e.g. the one from the other side of the road) (#6097, #5187) by @kmpoppe
 - Baby changing table: Also ask when information about toilets isn't recorded yet (#6115), by @agent-redd
 - Places overlay: Display correctly and allow to select some generic places (some office, some club, some healthcare facility, some shop) (#6140)
 - small improvements on the places overlay (#6100, #5985, #6086, #6085, #6140)
