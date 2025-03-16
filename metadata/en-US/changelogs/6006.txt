@@ -1,0 +1,3 @@
+- Don't ask roof quests for non-buildings (#751), by @FloEdelmann
+- When marking a building as demolished, remove obsolete tags (#753), by @mnalis
+- Move file access for tree and custom quest into quest settings
