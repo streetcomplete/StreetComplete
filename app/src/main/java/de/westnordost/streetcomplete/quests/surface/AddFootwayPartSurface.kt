@@ -26,7 +26,7 @@ class AddFootwayPartSurface : OsmFilterQuestType<Surface>() {
           !footway:surface
           or footway:surface ~ ${INVALID_SURFACES.joinToString("|")}
           or (
-            footway:surface ~ paved|unpaved
+            footway:surface ~ paved|unpaved and surface older today -6 years
             and !footway:surface:note
             and !check_date:footway:surface
           )
