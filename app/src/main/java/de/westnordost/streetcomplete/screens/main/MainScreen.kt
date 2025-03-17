@@ -220,181 +220,182 @@ fun MainScreen(
             )
         }
 
-        Column(Modifier
+        Box(Modifier
             .fillMaxSize()
             .windowInsetsPadding(WindowInsets.safeDrawing)
             .onGloballyPositioned { pointerPinRects["frame"] = it.boundsInRoot() }
         ) {
+            // top-start controls
             Box(Modifier
-                .fillMaxWidth()
-                .weight(1f)
+                .align(Alignment.TopStart)
+                .onGloballyPositioned { pointerPinRects["top-start"] = it.boundsInRoot() }
             ) {
-                // top-start controls
-                Box(Modifier
-                    .align(Alignment.TopStart)
-                    .onGloballyPositioned { pointerPinRects["top-start"] = it.boundsInRoot() }
-                ) {
-                    // stars counter
-                    StarsCounter(
-                        count = starsCount,
-                        modifier = Modifier
-                            .defaultMinSize(minWidth = 96.dp)
-                            .clickable(null, null) { viewModel.toggleShowingCurrentWeek() },
-                        isCurrentWeek = isShowingStarsCurrentWeek,
-                        showProgress = isUploadingOrDownloading
+                // stars counter
+                StarsCounter(
+                    count = starsCount,
+                    modifier = Modifier
+                        .defaultMinSize(minWidth = 96.dp)
+                        .clickable(null, null) { viewModel.toggleShowingCurrentWeek() },
+                    isCurrentWeek = isShowingStarsCurrentWeek,
+                    showProgress = isUploadingOrDownloading
+                )
+            }
+
+            // top-end controls
+            Row(
+                modifier = Modifier
+                    .align(Alignment.TopEnd)
+                    .padding(4.dp)
+                    .onGloballyPositioned { pointerPinRects["top-end"] = it.boundsInRoot() },
+                horizontalArrangement = Arrangement.spacedBy(8.dp)
+            ) {
+                AnimatedVisibility(hasMessages) {
+                    MessagesButton(
+                        onClick = ::onClickMessages,
+                        messagesCount = messagesCount
+                    )
+                }
+                if (!isAutoSync) {
+                    UploadButton(
+                        onClick = ::onClickUpload,
+                        unsyncedEditsCount = unsyncedEditsCount,
+                        enabled = !isUploadingOrDownloading
+                    )
+                }
+                Box {
+                    OverlaySelectionButton(
+                        onClick = ::onClickOverlays,
+                        overlay = selectedOverlay
+                    )
+                    OverlaySelectionDropdownMenu(
+                        expanded = showOverlaysDropdown,
+                        onDismissRequest = { showOverlaysDropdown = false },
+                        overlays = viewModel.overlays,
+                        onSelect = { viewModel.selectOverlay(it) }
                     )
                 }
 
-                // top-end controls
-                Column(
-                    modifier = Modifier
-                        .align(Alignment.TopEnd)
-                        .padding(4.dp),
-                    horizontalAlignment = Alignment.End,
-                ) {
-                    Row(
+                MainMenuButton(
+                    onClick = { showMainMenuDialog = true },
+                    indexInTeam = if (isTeamMode) indexInTeam else null
+                )
+            }
+
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .align(Alignment.BottomStart)
+            ) {
+                // bottom controls
+                Box(Modifier.fillMaxWidth()) {
+                    // bottom-end controls
+                    Column(
                         modifier = Modifier
-                            .onGloballyPositioned { pointerPinRects["top-end"] = it.boundsInRoot() },
-                        horizontalArrangement = Arrangement.spacedBy(8.dp)
+                            .align(Alignment.BottomEnd)
+                            .padding(4.dp)
+                            .onGloballyPositioned { pointerPinRects["bottom-end"] = it.boundsInRoot() },
+                        verticalArrangement = Arrangement.spacedBy(8.dp),
+                        horizontalAlignment = Alignment.End,
                     ) {
-                        AnimatedVisibility(hasMessages) {
-                            MessagesButton(
-                                onClick = ::onClickMessages,
-                                messagesCount = messagesCount
+                        val isCompassVisible = abs(mapRotation) >= 1.0 || abs(mapTilt) >= 1.0
+                        AnimatedVisibility(
+                            visible = isCompassVisible,
+                            enter = fadeIn(),
+                            exit = fadeOut()
+                        ) {
+                            CompassButton(
+                                onClick = onClickCompass,
+                                modifier = Modifier.graphicsLayer(
+                                    rotationZ = -mapRotation.toFloat(),
+                                    rotationX = mapTilt.toFloat()
+                                )
                             )
                         }
-                        if (!isAutoSync) {
-                            UploadButton(
-                                onClick = ::onClickUpload,
-                                unsyncedEditsCount = unsyncedEditsCount,
-                                enabled = !isUploadingOrDownloading
-                            )
-                        }
-                        Box {
-                            OverlaySelectionButton(
-                                onClick = ::onClickOverlays,
-                                overlay = selectedOverlay
-                            )
-                            OverlaySelectionDropdownMenu(
-                                expanded = showOverlaysDropdown,
-                                onDismissRequest = { showOverlaysDropdown = false },
-                                overlays = viewModel.overlays,
-                                onSelect = { viewModel.selectOverlay(it) }
-                            )
-                        }
-
-                        MainMenuButton(
-                            onClick = { showMainMenuDialog = true },
-                            indexInTeam = if (isTeamMode) indexInTeam else null
-                        )
-                    }
-                    metersPerDp?.let {
-                        ScaleBar(
-                            metersPerDp = it,
-                            alignment = Alignment.End
+                        MapButton(onClick = onClickZoomIn) { ZoomInIcon() }
+                        MapButton(onClick = onClickZoomOut) { ZoomOutIcon() }
+                        LocationStateButton(
+                            onClick = onClickLocation,
+                            state = locationState,
+                            isNavigationMode = isNavigationMode,
+                            isFollowing = isFollowingPosition,
                         )
                     }
 
-                }
-
-                // bottom-end controls
-                Column(
-                    modifier = Modifier
-                        .align(Alignment.BottomEnd)
-                        .padding(4.dp)
-                        .onGloballyPositioned { pointerPinRects["bottom-end"] = it.boundsInRoot() },
-                    verticalArrangement = Arrangement.spacedBy(8.dp),
-                    horizontalAlignment = Alignment.End,
-                ) {
-                    val isCompassVisible = abs(mapRotation) >= 1.0 || abs(mapTilt) >= 1.0
-                    AnimatedVisibility(
-                        visible = isCompassVisible,
-                        enter = fadeIn(),
-                        exit = fadeOut()
-                    ) {
-                        CompassButton(
-                            onClick = onClickCompass,
-                            modifier = Modifier.graphicsLayer(
-                                rotationZ = -mapRotation.toFloat(),
-                                rotationX = mapTilt.toFloat()
-                            )
-                        )
-                    }
-                    MapButton(onClick = onClickZoomIn) { ZoomInIcon() }
-                    MapButton(onClick = onClickZoomOut) { ZoomOutIcon() }
-                    LocationStateButton(
-                        onClick = onClickLocation,
-                        state = locationState,
-                        isNavigationMode = isNavigationMode,
-                        isFollowing = isFollowingPosition,
-                    )
-                }
-
-                if (isCreateNodeEnabled) {
-                    MapButton(
-                        onClick = {
-                            if ((mapCamera?.zoom ?: 0.0) >= 17.0) {
-                                onClickCreate()
-                            } else {
-                                context.toast(R.string.download_area_too_big, Toast.LENGTH_LONG)
-                            }
-                        },
-                        modifier = Modifier
-                            .align(BiasAlignment(0.333f, 1f))
-                            .onGloballyPositioned { pointerPinRects["create-node"] = it.boundsInRoot() }
-                            .padding(4.dp),
-                        colors = ButtonDefaults.buttonColors(
-                            backgroundColor = MaterialTheme.colors.secondaryVariant,
-                        ),
-                    ) {
-                        LargeCreateIcon()
-                    }
-                }
-
-                // bottom-start controls
-                Column(
-                    modifier = Modifier
-                        .align(Alignment.BottomStart)
-                        .padding(4.dp)
-                        .onGloballyPositioned {
-                            pointerPinRects["bottom-start"] = it.boundsInRoot()
-                        },
-                    verticalArrangement = Arrangement.spacedBy(8.dp)
-                ) {
-                    if (isRecordingTracks) {
+                    if (isCreateNodeEnabled) {
                         MapButton(
-                            onClick = onClickStopTrackRecording,
+                            onClick = {
+                                if ((mapCamera?.zoom ?: 0.0) >= 17.0) {
+                                    onClickCreate()
+                                } else {
+                                    context.toast(R.string.download_area_too_big, Toast.LENGTH_LONG)
+                                }
+                            },
+                            modifier = Modifier
+                                .align(BiasAlignment(0.333f, 1f))
+                                .onGloballyPositioned { pointerPinRects["create-node"] = it.boundsInRoot() }
+                                .padding(4.dp),
                             colors = ButtonDefaults.buttonColors(
                                 backgroundColor = MaterialTheme.colors.secondaryVariant,
                             ),
                         ) {
-                            StopRecordingIcon()
+                            LargeCreateIcon()
                         }
                     }
 
-                    if (hasEdits) {
-                        MapButton(
-                            onClick = { editHistoryViewModel.showSidebar() },
-                            // Don't allow undoing while uploading. Should prevent race conditions.
-                            // (Undoing quest while also uploading it at the same time)
-                            enabled = !isUploadingOrDownloading,
-                        ) {
-                            UndoIcon()
+                    // bottom-start controls
+                    Column(
+                        modifier = Modifier
+                            .align(Alignment.BottomStart)
+                            .padding(4.dp)
+                            .onGloballyPositioned {
+                                pointerPinRects["bottom-start"] = it.boundsInRoot()
+                            },
+                        verticalArrangement = Arrangement.spacedBy(8.dp)
+                    ) {
+                        if (isRecordingTracks) {
+                            MapButton(
+                                onClick = onClickStopTrackRecording,
+                                colors = ButtonDefaults.buttonColors(
+                                    backgroundColor = MaterialTheme.colors.secondaryVariant,
+                                ),
+                            ) {
+                                StopRecordingIcon()
+                            }
+                        }
+
+                        if (hasEdits) {
+                            MapButton(
+                                onClick = { editHistoryViewModel.showSidebar() },
+                                // Don't allow undoing while uploading. Should prevent race conditions.
+                                // (Undoing quest while also uploading it at the same time)
+                                enabled = !isUploadingOrDownloading,
+                            ) {
+                                UndoIcon()
+                            }
                         }
                     }
                 }
+                // attribution info and scalebar
+                Box(Modifier.fillMaxWidth()) {
+                    metersPerDp?.let {
+                        ScaleBar(
+                            metersPerDp = it,
+                            modifier = Modifier
+                                .align(Alignment.BottomStart)
+                                .padding(4.dp)
+                        )
+                    }
+                    AttributionButton(
+                        lastCameraMoveReason = CameraMoveReason.NONE,
+                        attributions = listOf(
+                            AttributionLink(stringResource(R.string.map_attribution_osm), "https://osm.org/copyright"),
+                            AttributionLink("© JawgMaps", "https://jawg.io")
+                        ),
+                        modifier = Modifier.align(Alignment.BottomEnd)
+                    )
+                }
             }
 
-            AttributionButton(
-                lastCameraMoveReason = CameraMoveReason.NONE,
-                attributions = listOf(
-                    AttributionLink(stringResource(R.string.map_attribution_osm), "https://osm.org/copyright"),
-                    AttributionLink("© JawgMaps", "https://jawg.io")
-                ),
-                modifier = Modifier.align(Alignment.Start),
-                textStyle = MaterialTheme.typography.caption,
-                contentAlignment = Alignment.BottomStart,
-            )
         }
 
         intersection?.let { (offset, angle) ->
