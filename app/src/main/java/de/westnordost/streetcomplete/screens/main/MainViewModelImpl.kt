@@ -369,6 +369,7 @@ class MainViewModelImpl(
 
     override val locationState = MutableStateFlow(LocationState.ENABLED)
     override val mapCamera = MutableStateFlow<CameraPosition?>(null)
+    override val metersPerDp = MutableStateFlow<Double?>(null)
     override val displayedPosition = MutableStateFlow<Offset?>(null)
 
     override val isFollowingPosition = MutableStateFlow(false)

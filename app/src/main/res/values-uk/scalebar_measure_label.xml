@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="meters_symbol">米</string>
+    <string name="kilometers_symbol">千米</string>
+</resources>

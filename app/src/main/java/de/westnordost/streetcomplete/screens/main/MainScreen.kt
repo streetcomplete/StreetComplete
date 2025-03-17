@@ -43,19 +43,23 @@ import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.messages.Message
 import de.westnordost.streetcomplete.screens.about.AboutActivity
+import de.westnordost.streetcomplete.screens.main.controls.AttributionButton
+import de.westnordost.streetcomplete.screens.main.controls.AttributionLink
+import de.westnordost.streetcomplete.screens.main.controls.CameraMoveReason
 import de.westnordost.streetcomplete.screens.main.controls.CompassButton
 import de.westnordost.streetcomplete.screens.main.controls.Crosshair
 import de.westnordost.streetcomplete.screens.main.controls.LocationStateButton
 import de.westnordost.streetcomplete.screens.main.controls.MainMenuButton
-import de.westnordost.streetcomplete.screens.main.controls.MapAttribution
 import de.westnordost.streetcomplete.screens.main.controls.MapButton
 import de.westnordost.streetcomplete.screens.main.controls.MessagesButton
 import de.westnordost.streetcomplete.screens.main.controls.OverlaySelectionButton
 import de.westnordost.streetcomplete.screens.main.controls.PointerPinButton
+import de.westnordost.streetcomplete.screens.main.controls.ScaleBar
 import de.westnordost.streetcomplete.screens.main.controls.StarsCounter
 import de.westnordost.streetcomplete.screens.main.controls.UploadButton
 import de.westnordost.streetcomplete.screens.main.controls.findClosestIntersection
@@ -135,6 +139,7 @@ fun MainScreen(
     val isRecordingTracks by viewModel.isRecordingTracks.collectAsState()
 
     val mapCamera by viewModel.mapCamera.collectAsState()
+    val metersPerDp by viewModel.metersPerDp.collectAsState()
     val displayedPosition by viewModel.displayedPosition.collectAsState()
 
     val editItems by editHistoryViewModel.editItems.collectAsState()
@@ -241,43 +246,51 @@ fun MainScreen(
                 }
 
                 // top-end controls
-                Row(
-                    modifier = Modifier
-                        .align(Alignment.TopEnd)
-                        .padding(4.dp)
-                        .onGloballyPositioned { pointerPinRects["top-end"] = it.boundsInRoot() },
-                    horizontalArrangement = Arrangement.spacedBy(8.dp)
-                ) {
-                    AnimatedVisibility(hasMessages) {
-                        MessagesButton(
-                            onClick = ::onClickMessages,
-                            messagesCount = messagesCount
+                Column(Modifier.align(Alignment.TopEnd)) {
+                    Row(
+                        modifier = Modifier
+                            .padding(4.dp)
+                            .onGloballyPositioned { pointerPinRects["top-end"] = it.boundsInRoot() },
+                        horizontalArrangement = Arrangement.spacedBy(8.dp)
+                    ) {
+                        AnimatedVisibility(hasMessages) {
+                            MessagesButton(
+                                onClick = ::onClickMessages,
+                                messagesCount = messagesCount
+                            )
+                        }
+                        if (!isAutoSync) {
+                            UploadButton(
+                                onClick = ::onClickUpload,
+                                unsyncedEditsCount = unsyncedEditsCount,
+                                enabled = !isUploadingOrDownloading
+                            )
+                        }
+                        Box {
+                            OverlaySelectionButton(
+                                onClick = ::onClickOverlays,
+                                overlay = selectedOverlay
+                            )
+                            OverlaySelectionDropdownMenu(
+                                expanded = showOverlaysDropdown,
+                                onDismissRequest = { showOverlaysDropdown = false },
+                                overlays = viewModel.overlays,
+                                onSelect = { viewModel.selectOverlay(it) }
+                            )
+                        }
+
+                        MainMenuButton(
+                            onClick = { showMainMenuDialog = true },
+                            indexInTeam = if (isTeamMode) indexInTeam else null
                         )
                     }
-                    if (!isAutoSync) {
-                        UploadButton(
-                            onClick = ::onClickUpload,
-                            unsyncedEditsCount = unsyncedEditsCount,
-                            enabled = !isUploadingOrDownloading
-                        )
-                    }
-                    Box {
-                        OverlaySelectionButton(
-                            onClick = ::onClickOverlays,
-                            overlay = selectedOverlay
-                        )
-                        OverlaySelectionDropdownMenu(
-                            expanded = showOverlaysDropdown,
-                            onDismissRequest = { showOverlaysDropdown = false },
-                            overlays = viewModel.overlays,
-                            onSelect = { viewModel.selectOverlay(it) }
+                    metersPerDp?.let {
+                        ScaleBar(
+                            metersPerDp = it,
+                            alignment = Alignment.End
                         )
                     }
 
-                    MainMenuButton(
-                        onClick = { showMainMenuDialog = true },
-                        indexInTeam = if (isTeamMode) indexInTeam else null
-                    )
                 }
 
                 // bottom-end controls
@@ -368,7 +381,16 @@ fun MainScreen(
                 }
             }
 
-            MapAttribution(Modifier.align(Alignment.Start))
+            AttributionButton(
+                lastCameraMoveReason = CameraMoveReason.NONE,
+                attributions = listOf(
+                    AttributionLink(stringResource(R.string.map_attribution_osm), "https://osm.org/copyright"),
+                    AttributionLink("© JawgMaps", "https://jawg.io")
+                ),
+                modifier = Modifier.align(Alignment.Start),
+                textStyle = MaterialTheme.typography.caption,
+                contentAlignment = Alignment.BottomStart,
+            )
         }
 
         intersection?.let { (offset, angle) ->

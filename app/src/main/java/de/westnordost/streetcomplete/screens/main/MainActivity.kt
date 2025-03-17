@@ -332,11 +332,13 @@ class MainActivity :
         viewModel.isNavigationMode.value = mapFragment?.isNavigationMode ?: false
         viewModel.isRecordingTracks.value = mapFragment?.isRecordingTracks ?: false
         viewModel.mapCamera.value = mapFragment?.cameraPosition
+        viewModel.metersPerDp.value = mapFragment?.getMetersPerPixel()
         updateDisplayedPosition()
     }
 
     override fun onMapIsChanging(camera: CameraPosition) {
         viewModel.mapCamera.value = camera
+        viewModel.metersPerDp.value = mapFragment?.getMetersPerPixel()
         updateDisplayedPosition()
 
         val f = bottomSheetFragment

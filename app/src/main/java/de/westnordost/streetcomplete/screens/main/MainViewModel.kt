@@ -1,12 +1,15 @@
 package de.westnordost.streetcomplete.screens.main
 
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.ViewModel
+import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.messages.Message
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.urlconfig.UrlConfig
 import de.westnordost.streetcomplete.overlays.Overlay
+import de.westnordost.streetcomplete.screens.main.controls.AttributionLink
 import de.westnordost.streetcomplete.screens.main.controls.LocationState
 import de.westnordost.streetcomplete.screens.main.map.maplibre.CameraPosition
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -73,11 +76,11 @@ abstract class MainViewModel : ViewModel() {
     abstract val isShowingStarsCurrentWeek: StateFlow<Boolean>
     abstract fun toggleShowingCurrentWeek()
 
-    /* map */
     // NOTE: currently filled from MainActivity (communication to compose view), i.e. the source of
     //       truth is actually the MapFragment
     abstract val locationState: MutableStateFlow<LocationState>
     abstract val mapCamera: MutableStateFlow<CameraPosition?>
+    abstract val metersPerDp: MutableStateFlow<Double?>
     abstract val displayedPosition: MutableStateFlow<Offset?>
 
     abstract val isFollowingPosition: MutableStateFlow<Boolean>
