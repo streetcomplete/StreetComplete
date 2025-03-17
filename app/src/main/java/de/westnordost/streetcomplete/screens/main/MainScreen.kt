@@ -246,10 +246,14 @@ fun MainScreen(
                 }
 
                 // top-end controls
-                Column(Modifier.align(Alignment.TopEnd)) {
+                Column(
+                    modifier = Modifier
+                        .align(Alignment.TopEnd)
+                        .padding(4.dp),
+                    horizontalAlignment = Alignment.End,
+                ) {
                     Row(
                         modifier = Modifier
-                            .padding(4.dp)
                             .onGloballyPositioned { pointerPinRects["top-end"] = it.boundsInRoot() },
                         horizontalArrangement = Arrangement.spacedBy(8.dp)
                     ) {

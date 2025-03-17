@@ -22,6 +22,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.toSize
 import de.westnordost.streetcomplete.ui.ktx.drawPathsWithHalo
 import de.westnordost.streetcomplete.ui.ktx.drawTextWithHalo
+import kotlin.math.ceil
+import kotlin.math.roundToInt
 
 /** Which measures to show on the scale bar. */
 public data class ScaleBarMeasures(
@@ -101,18 +103,21 @@ fun ScaleBar(
             val paths = ArrayList<List<Offset>>(2)
             val texts = ArrayList<Pair<Offset, TextLayoutResult>>(2)
 
+            val alignmentSpacePx = ceil(size.width - fullStrokeWidthPx).toInt()
+
             if (true) { // just want a scope here
+                val barLengthPx = params1.barLength.toPx().roundToInt()
                 val offsetX =
                     alignment.align(
-                        size = params1.barLength.toPx().toInt(),
-                        space = (size.width - fullStrokeWidthPx).toInt(),
+                        size = barLengthPx,
+                        space = alignmentSpacePx,
                         layoutDirection = layoutDirection,
                     )
                 paths.add(
                     listOf(
                         Offset(offsetX + fullStrokeWidthPx / 2f, 0f + textHeightPx / 2f),
                         Offset(0f, barEndsHeightPx),
-                        Offset(params1.barLength.toPx(), 0f),
+                        Offset(barLengthPx.toFloat(), 0f),
                         Offset(0f, -barEndsHeightPx),
                     )
                 )
@@ -127,17 +132,18 @@ fun ScaleBar(
             }
 
             if (params2 != null) {
+                val barLengthPx = params2.barLength.toPx().roundToInt()
                 val offsetX =
                     alignment.align(
-                        size = params2.barLength.toPx().toInt(),
-                        space = (size.width - fullStrokeWidthPx).toInt(),
+                        size = barLengthPx,
+                        space = alignmentSpacePx,
                         layoutDirection = layoutDirection,
                     )
                 paths.add(
                     listOf(
                         Offset(offsetX + fullStrokeWidthPx / 2f, y + fullStrokeWidthPx / 2f + barEndsHeightPx),
                         Offset(0f, -barEndsHeightPx),
-                        Offset(params2.barLength.toPx(), 0f),
+                        Offset(barLengthPx.toFloat(), 0f),
                         Offset(0f, +barEndsHeightPx),
                     )
                 )
@@ -165,7 +171,7 @@ fun ScaleBar(
                 val offsetX =
                     alignment.align(
                         size = textLayoutResult.size.width,
-                        space = (size.width - 2 * offset.x).toInt(),
+                        space = ceil(size.width - 2 * offset.x).toInt(),
                         layoutDirection = layoutDirection,
                     ) + offset.x
                 drawTextWithHalo(
