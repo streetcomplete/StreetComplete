@@ -35,7 +35,7 @@ class AddPitchSurface : OsmFilterQuestType<Surface>() {
           !surface
           or surface ~ ${INVALID_SURFACES.joinToString("|")}
           or (
-            surface ~ paved|unpaved
+            surface ~ paved|unpaved and surface older today -6 years
             and !surface:note
             and !note:surface
             and !check_date:surface
