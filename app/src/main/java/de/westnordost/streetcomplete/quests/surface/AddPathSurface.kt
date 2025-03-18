@@ -24,7 +24,7 @@ class AddPathSurface : OsmFilterQuestType<SurfaceOrIsStepsAnswer>() {
           !surface
           or surface ~ ${INVALID_SURFACES.joinToString("|")}
           or (
-            surface ~ paved|unpaved and surface older today -6 years
+            surface ~ paved|unpaved and surface older today -6 months
             and !surface:note
             and !note:surface
             and !check_date:surface
