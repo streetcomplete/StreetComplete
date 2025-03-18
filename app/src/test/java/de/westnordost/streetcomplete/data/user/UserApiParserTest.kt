@@ -1,5 +1,7 @@
 package de.westnordost.streetcomplete.data.user
 
+import kotlinx.io.Buffer
+import kotlinx.io.writeString
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
@@ -7,7 +9,13 @@ class UserApiParserTest {
 
     @Test
     fun `parse minimum user info`() {
-        val xml = """<osm><user display_name="Max Muster" id="1234"/></osm>""".trimIndent()
+        val buffer = Buffer()
+        buffer.writeString("""
+            <osm>
+              <user display_name="Max Muster" id="1234"/>
+            </osm>
+            """.trimIndent()
+        )
 
         assertEquals(
             UserInfo(
@@ -15,13 +23,14 @@ class UserApiParserTest {
                 displayName = "Max Muster",
                 profileImageUrl = null
             ),
-            UserApiParser().parseUsers(xml).single()
+            UserApiParser().parseUsers(buffer).single()
         )
     }
 
     @Test
     fun `parse full user info`() {
-        val xml = """
+        val buffer = Buffer()
+        buffer.writeString("""
             <osm version="0.6" generator="OpenStreetMap server" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
               <user display_name="Max Muster" account_created="2006-07-21T19:28:26Z" id="1234">
                 <contributor-terms agreed="true" pd="true"/>
@@ -46,7 +55,8 @@ class UserApiParserTest {
                 </messages>
               </user>
             </osm>
-        """.trimIndent()
+            """.trimIndent()
+        )
 
         assertEquals(
             UserInfo(
@@ -55,7 +65,7 @@ class UserApiParserTest {
                 profileImageUrl = "https://www.openstreetmap.org/attachments/users/images/000/000/1234/original/someLongURLOrOther.JPG",
                 unreadMessagesCount = 0,
             ),
-            UserApiParser().parseUsers(xml).single()
+            UserApiParser().parseUsers(buffer).single()
         )
     }
 }
