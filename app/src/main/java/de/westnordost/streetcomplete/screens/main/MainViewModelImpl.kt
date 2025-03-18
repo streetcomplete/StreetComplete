@@ -134,6 +134,13 @@ class MainViewModelImpl(
         get() = prefs.hasShownTutorial
         set(value) { prefs.hasShownTutorial = value }
 
+    /* HUD */
+    override var showZoomButtons: StateFlow<Boolean> = callbackFlow {
+        send(prefs.showZoomButtons)
+        val listener = prefs.onShowZoomButtonsChanged { trySend(it) }
+        awaitClose { listener.deactivate() }
+    }.stateIn(viewModelScope, SharingStarted.Eagerly, true)
+
     /* messages */
 
     override val messagesCount: StateFlow<Int> = callbackFlow {

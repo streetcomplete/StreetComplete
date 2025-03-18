@@ -145,6 +145,8 @@ fun MainScreen(
     val selectedEdit by editHistoryViewModel.selectedEdit.collectAsState()
     val hasEdits by remember { derivedStateOf { editItems.isNotEmpty() } }
 
+    val showZoomButtons by viewModel.showZoomButtons.collectAsState()
+
     val isRequestingLogin by viewModel.isRequestingLogin.collectAsState()
 
     var showOverlaysDropdown by remember { mutableStateOf(false) }
@@ -310,10 +312,12 @@ fun MainScreen(
                                 )
                             )
                         }
-                        ZoomButtons(
-                            onZoomIn = onClickZoomIn,
-                            onZoomOut = onClickZoomOut
-                        )
+                        if (showZoomButtons) {
+                            ZoomButtons(
+                                onZoomIn = onClickZoomIn,
+                                onZoomOut = onClickZoomOut
+                            )
+                        }
                         LocationStateButton(
                             onClick = onClickLocation,
                             state = locationState,

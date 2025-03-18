@@ -31,6 +31,9 @@ abstract class MainViewModel : ViewModel() {
     /* intro */
     abstract var hasShownTutorial: Boolean
 
+    /* HUD */
+    abstract var showZoomButtons: StateFlow<Boolean>
+
     /* messages */
     abstract val messagesCount: StateFlow<Int>
     abstract suspend fun popMessage(): Message?
