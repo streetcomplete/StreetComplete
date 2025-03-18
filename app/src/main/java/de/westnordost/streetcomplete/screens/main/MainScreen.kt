@@ -62,6 +62,7 @@ import de.westnordost.streetcomplete.screens.main.controls.PointerPinButton
 import de.westnordost.streetcomplete.screens.main.controls.ScaleBar
 import de.westnordost.streetcomplete.screens.main.controls.StarsCounter
 import de.westnordost.streetcomplete.screens.main.controls.UploadButton
+import de.westnordost.streetcomplete.screens.main.controls.ZoomButtons
 import de.westnordost.streetcomplete.screens.main.controls.findClosestIntersection
 import de.westnordost.streetcomplete.screens.main.edithistory.EditHistorySidebar
 import de.westnordost.streetcomplete.screens.main.edithistory.EditHistoryViewModel
@@ -311,8 +312,10 @@ fun MainScreen(
                                 )
                             )
                         }
-                        MapButton(onClick = onClickZoomIn) { ZoomInIcon() }
-                        MapButton(onClick = onClickZoomOut) { ZoomOutIcon() }
+                        ZoomButtons(
+                            onZoomIn = onClickZoomIn,
+                            onZoomOut = onClickZoomOut
+                        )
                         LocationStateButton(
                             onClick = onClickLocation,
                             state = locationState,
