@@ -81,8 +81,6 @@ import de.westnordost.streetcomplete.ui.common.AnimatedScreenVisibility
 import de.westnordost.streetcomplete.ui.common.LargeCreateIcon
 import de.westnordost.streetcomplete.ui.common.StopRecordingIcon
 import de.westnordost.streetcomplete.ui.common.UndoIcon
-import de.westnordost.streetcomplete.ui.common.ZoomInIcon
-import de.westnordost.streetcomplete.ui.common.ZoomOutIcon
 import de.westnordost.streetcomplete.ui.ktx.dir
 import de.westnordost.streetcomplete.ui.ktx.pxToDp
 import de.westnordost.streetcomplete.util.ktx.sendErrorReportEmail
@@ -380,14 +378,12 @@ fun MainScreen(
                 }
                 // attribution info and scalebar
                 Box(Modifier.fillMaxWidth()) {
-                    metersPerDp?.let {
-                        ScaleBar(
-                            metersPerDp = it,
-                            modifier = Modifier
-                                .align(Alignment.BottomStart)
-                                .padding(4.dp)
-                        )
-                    }
+                    ScaleBar(
+                        metersPerDp = metersPerDp,
+                        modifier = Modifier
+                            .align(Alignment.BottomStart)
+                            .padding(4.dp)
+                    )
                     AttributionButton(
                         lastCameraMoveReason = CameraMoveReason.NONE,
                         attributions = listOf(
