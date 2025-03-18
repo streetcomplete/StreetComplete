@@ -11,7 +11,6 @@ import kotlin.math.pow
 import de.westnordost.streetcomplete.screens.main.controls.ScaleBarMeasure.Metric
 import de.westnordost.streetcomplete.screens.main.controls.ScaleBarMeasure.YardsAndMiles
 import de.westnordost.streetcomplete.screens.main.controls.ScaleBarMeasure.FeetAndMiles
-import de.westnordost.streetcomplete.util.ktx.asSequenceOfPairs
 
 /** A measure to show in the scale bar */
 interface ScaleBarMeasure {
@@ -186,10 +185,3 @@ internal fun defaultScaleBarMeasures(): ScaleBarMeasures {
     val primary = systemDefaultPrimaryMeasure() ?: fallbackDefaultPrimaryMeasure(region)
     return ScaleBarMeasures(primary = primary, secondary = defaultSecondaryMeasure(primary, region))
 }
-
-/**
- * Maximum factor going from one stop to the next. E.g. if the stops are 500, 1000, 5000, the max
- * factor is 5.0 (1000 -> 5000).
- */
-internal fun ScaleBarMeasure.getMaxStopFactor(): Double =
-    stops.asSequenceOfPairs().maxOf { it.second / it.first }
