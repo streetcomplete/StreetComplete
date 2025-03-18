@@ -25,7 +25,7 @@ class AddCyclewayPartSurface : OsmFilterQuestType<Surface>() {
           !cycleway:surface
           or cycleway:surface ~ ${INVALID_SURFACES.joinToString("|")}
           or (
-            cycleway:surface ~ paved|unpaved and cycleway:surface older today -6 years
+            cycleway:surface ~ paved|unpaved and cycleway:surface older today -6 months
             and !cycleway:surface:note
             and !check_date:cycleway:surface
           )
