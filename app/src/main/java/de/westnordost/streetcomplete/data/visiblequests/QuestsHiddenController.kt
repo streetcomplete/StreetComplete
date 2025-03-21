@@ -35,6 +35,7 @@ class QuestsHiddenController(
 
     /** Mark the quest as hidden by user interaction */
     override fun hide(key: QuestKey) {
+        if (cache.contains(key)) return // SCEE allows accessing and hiding already hidden quests
         val timestamp: Long
         synchronized(this) {
             when (key) {
@@ -50,7 +51,6 @@ class QuestsHiddenController(
 
     override fun tempHide(key: QuestKey) {
         val timestamp = nowAsEpochMilliseconds()
-        //synchronized(this) { cache[key] = timestamp } // would hide until app restart or unhide all, maybe wanted?
         listeners.forEach { it.onHid(key, timestamp) }
     }
 
