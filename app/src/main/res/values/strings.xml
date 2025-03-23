@@ -1006,7 +1006,7 @@ A level counts as a roof level when its windows are in the roof. Subsequently, r
     <string name="quest_carWashType_selfService">Self-service</string>
     <string name="quest_carWashType_service">Staff cleans car</string>
 
-    <string name="quest_charging_station_capacity_title">"How many cars can be charged here at the same time?"</string>
+    <string name="quest_charging_station_capacity_title">"How many vehicles can be charged here at the same time?"</string>
 
     <string name="quest_charging_station_operator_title">"Who is the operator of this charging station?"</string>
 
