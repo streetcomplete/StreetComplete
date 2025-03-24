@@ -18,7 +18,7 @@ fun MessagesButton(
         MapButton(onClick = onClick) { MessagesIcon() }
         Box(Modifier.align(Alignment.TopEnd)) {
             NotificationBox {
-                Text(messagesCount.toString())
+                Text(messagesCount.toString(), textAlign = TextAlign.Center)
             }
         }
     }

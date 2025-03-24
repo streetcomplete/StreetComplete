@@ -31,7 +31,7 @@ fun MainMenuButton(
         if (unsyncedEditsCount > 0) {
             Box(Modifier.align(Alignment.TopEnd)) {
                 NotificationBox {
-                    Text(unsyncedEditsCount.toString())
+                    Text(unsyncedEditsCount.toString(), textAlign = TextAlign.Center)
                 }
             }
         }

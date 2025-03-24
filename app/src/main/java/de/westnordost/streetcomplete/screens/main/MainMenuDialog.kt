@@ -95,7 +95,7 @@ fun MainMenuDialog(
                             UploadIcon()
                             if (unsyncedEditsCount > 0) {
                                 NotificationBox {
-                                    Text(unsyncedEditsCount.toString())
+                                    Text(unsyncedEditsCount.toString(), textAlign = TextAlign.Center)
                                 }
                             }
                         },
