@@ -355,6 +355,10 @@ class MainActivity :
         }
     }
 
+    override fun onUserCameraMoveStarted() {
+        viewModel.userHasMovedCamera.value = true
+    }
+
     override fun onLongPress(point: PointF, position: LatLon) {
         if (bottomSheetFragment != null || editHistoryViewModel.isShowingSidebar.value) return
 

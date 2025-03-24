@@ -20,7 +20,6 @@ import androidx.compose.material.ProvideTextStyle
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -44,19 +43,15 @@ import de.westnordost.streetcomplete.screens.main.controls.ktx.Reverse
  * Info button from which an attribution popup text is expanded from. The attribution text retracts
  * once when the user first starts interacting with the map.
  *
- * @param lastCameraMoveReason The reason reason why the camera moved, last time it moved. See
- *   [CameraState.moveReason].
- * @param attributions List of attributions to show. See
- *   [Source.attributionLinks][dev.sargunv.maplibrecompose.core.source.Source.attributionLinks] via
- *   [StyleState.sources][dev.sargunv.maplibrecompose.compose.StyleState.sources]
+ * @param userHasMovedMap The user has moved the map.
+ * @param attributions List of attributions to show.
  * @param modifier the Modifier to be applied to this layout node
- * @param colors Colors that will be used for the info button
  * @param textStyle Text style used for the attribution info
  * @param textLinkStyles Text link styles that should be used for the links in the attribution info
  */
 @Composable
 public fun AttributionButton(
-    lastCameraMoveReason: CameraMoveReason,
+    userHasMovedMap: Boolean,
     attributions: List<AttributionLink>,
     modifier: Modifier = Modifier,
     textStyle: TextStyle = MaterialTheme.typography.body2,
@@ -67,10 +62,8 @@ public fun AttributionButton(
     val expanded = remember { MutableTransitionState(true) }
 
     // close popup on moving the map
-    LaunchedEffect(lastCameraMoveReason) {
-        if (lastCameraMoveReason == CameraMoveReason.GESTURE) {
-            expanded.targetState = false
-        }
+    LaunchedEffect(userHasMovedMap) {
+        if (userHasMovedMap) expanded.targetState = false
     }
 
     Box(modifier) {
@@ -157,22 +150,3 @@ private fun AttributionTexts(
 }
 
 data class AttributionLink(val title: String, val url: String)
-
-
-@Immutable
-public enum class CameraMoveReason {
-    /** The camera hasn't moved yet. */
-    NONE,
-
-    /** The camera moved for a reason we don't understand. File a bug report! */
-    UNKNOWN,
-
-    /**
-     * Camera movement was initiated by the user manipulating the map by panning, zooming, rotating,
-     * or tilting.
-     */
-    GESTURE,
-
-    /** Camera movement was initiated by a call to the public API, or by the compass ornament. */
-    PROGRAMMATIC,
-}

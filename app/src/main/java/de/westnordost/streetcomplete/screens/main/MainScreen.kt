@@ -50,7 +50,6 @@ import de.westnordost.streetcomplete.data.messages.Message
 import de.westnordost.streetcomplete.screens.about.AboutActivity
 import de.westnordost.streetcomplete.screens.main.controls.AttributionButton
 import de.westnordost.streetcomplete.screens.main.controls.AttributionLink
-import de.westnordost.streetcomplete.screens.main.controls.CameraMoveReason
 import de.westnordost.streetcomplete.screens.main.controls.CompassButton
 import de.westnordost.streetcomplete.screens.main.controls.Crosshair
 import de.westnordost.streetcomplete.screens.main.controls.LocationStateButton
@@ -135,6 +134,7 @@ fun MainScreen(
     val isNavigationMode by viewModel.isNavigationMode.collectAsState()
     val isFollowingPosition by viewModel.isFollowingPosition.collectAsState()
     val isRecordingTracks by viewModel.isRecordingTracks.collectAsState()
+    val userHasMovedCamera by viewModel.userHasMovedCamera.collectAsState()
 
     val mapCamera by viewModel.mapCamera.collectAsState()
     val metersPerDp by viewModel.metersPerDp.collectAsState()
@@ -380,7 +380,7 @@ fun MainScreen(
 
                         Row(verticalAlignment = Alignment.CenterVertically) {
                             AttributionButton(
-                                lastCameraMoveReason = CameraMoveReason.NONE,
+                                userHasMovedMap = userHasMovedCamera,
                                 attributions = mapAttribution,
                             )
                             ScaleBar(

@@ -384,6 +384,8 @@ class MainViewModelImpl(
 
     override val isRecordingTracks = MutableStateFlow(false)
 
+    override val userHasMovedCamera = MutableStateFlow(false)
+
     // ---------------------------------------------------------------------------------------
 
     init {
