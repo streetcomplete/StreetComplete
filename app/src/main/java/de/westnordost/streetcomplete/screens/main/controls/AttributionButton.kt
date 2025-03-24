@@ -11,7 +11,7 @@ import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
@@ -110,7 +110,7 @@ public fun AttributionButton(
                             )
                             // icon buttons are automatically padded to have a certain click size, which makes the
                             // popup appear misaligned if we don't also add some extra padding on the other side
-                            Spacer(Modifier.size(8.dp))
+                            Spacer(Modifier.width(16.dp))
                         }
                     }
                 }
