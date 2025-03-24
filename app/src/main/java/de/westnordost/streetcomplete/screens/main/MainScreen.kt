@@ -18,10 +18,8 @@ import androidx.compose.foundation.layout.absoluteOffset
 import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.MaterialTheme
@@ -63,7 +61,6 @@ import de.westnordost.streetcomplete.screens.main.controls.OverlaySelectionButto
 import de.westnordost.streetcomplete.screens.main.controls.PointerPinButton
 import de.westnordost.streetcomplete.screens.main.controls.ScaleBar
 import de.westnordost.streetcomplete.screens.main.controls.StarsCounter
-import de.westnordost.streetcomplete.screens.main.controls.UploadButton
 import de.westnordost.streetcomplete.screens.main.controls.ZoomButtons
 import de.westnordost.streetcomplete.screens.main.controls.findClosestIntersection
 import de.westnordost.streetcomplete.screens.main.edithistory.EditHistorySidebar
@@ -263,13 +260,6 @@ fun MainScreen(
                         messagesCount = messagesCount
                     )
                 }
-                if (!isAutoSync) {
-                    UploadButton(
-                        onClick = ::onClickUpload,
-                        unsyncedEditsCount = unsyncedEditsCount,
-                        enabled = !isUploadingOrDownloading
-                    )
-                }
                 Box {
                     OverlaySelectionButton(
                         onClick = ::onClickOverlays,
@@ -285,6 +275,7 @@ fun MainScreen(
 
                 MainMenuButton(
                     onClick = { showMainMenuDialog = true },
+                    unsyncedEditsCount = if (!isAutoSync) unsyncedEditsCount else 0,
                     indexInTeam = if (isTeamMode) indexInTeam else null
                 )
             }
@@ -444,10 +435,13 @@ fun MainScreen(
             onClickSettings = { context.startActivity(Intent(context, SettingsActivity::class.java)) },
             onClickAbout = { context.startActivity(Intent(context, AboutActivity::class.java)) },
             onClickDownload = onClickDownload,
+            onClickUpload = ::onClickUpload,
             onClickEnterTeamMode = { showTeamModeWizard = true },
             onClickExitTeamMode = { viewModel.disableTeamMode() },
             isLoggedIn = isLoggedIn,
             indexInTeam = if (isTeamMode) indexInTeam else null,
+            unsyncedEditsCount = if (!isAutoSync) unsyncedEditsCount else null,
+            isUploadingOrDownloading = isUploadingOrDownloading,
         )
     }
 

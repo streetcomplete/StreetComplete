@@ -574,7 +574,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="autosync_on">"On"</string>
     <string name="autosync_only_on_wifi">"Only on Wi-Fi"</string>
     <string name="autosync_off">"Off"</string>
-    <string name="dialog_tutorial_upload">To upload your changes manually, use the button in the toolbar that looks like this.</string>
+    <string name="dialog_tutorial_upload">To upload your changes manually, use the button in the main menu that looks like this.</string>
 
     <string name="pref_title_language_select2">Language</string>
     <string name="language_default">System default</string>
