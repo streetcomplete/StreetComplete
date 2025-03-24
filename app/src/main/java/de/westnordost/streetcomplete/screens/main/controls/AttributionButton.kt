@@ -89,7 +89,7 @@ public fun AttributionButton(
                 onDismissRequest = { expanded.targetState = false },
             ) {
                 AnimatedVisibility(visibleState = expanded, enter = fadeIn(), exit = fadeOut()) {
-                    Surface(shape = RoundedCornerShape(24.dp), elevation = 8.dp) {
+                    Surface(shape = RoundedCornerShape(24.dp)) {
                         // the content of the popup should be aligned centered vertically in general, only the
                         // icon button should be in the corner, so that it exactly overlaps the original button
                         Row(
