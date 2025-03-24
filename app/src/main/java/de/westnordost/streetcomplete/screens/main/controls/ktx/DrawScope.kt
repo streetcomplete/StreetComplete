@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.ui.ktx
+package de.westnordost.streetcomplete.screens.main.controls.ktx
 
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.BlendMode
@@ -54,8 +54,10 @@ internal fun DrawScope.drawPathsWithHalo(
     haloWidth: Float = Stroke.HairlineWidth,
     cap: StrokeCap = Stroke.DefaultCap,
 ) {
-    for (path in paths) {
-        drawPath(color = haloColor, path = path, strokeWidth = strokeWidth + haloWidth * 2, cap = cap)
+    if (haloWidth > 0f && haloColor != Color.Transparent) {
+        for (path in paths) {
+            drawPath(color = haloColor, path = path, strokeWidth = strokeWidth + haloWidth * 2, cap = cap)
+        }
     }
     for (path in paths) {
         drawPath(color = color, path = path, strokeWidth = strokeWidth, cap = cap)
@@ -70,12 +72,15 @@ internal fun DrawScope.drawTextWithHalo(
     haloWidth: Float = 0f,
 ) {
     // * 2 because the stroke is painted half outside and half inside of the text shape
-    val stroke = Stroke(width = haloWidth * 2, cap = StrokeCap.Round, join = StrokeJoin.Round)
-    drawText(
-        textLayoutResult = textLayoutResult,
-        color = haloColor,
-        topLeft = topLeft,
-        drawStyle = stroke,
-    )
+    if (haloWidth > 0f && haloColor != Color.Transparent) {
+        // * 2 because the stroke is painted half outside and half inside of the text shape
+        val stroke = Stroke(width = haloWidth * 2, cap = StrokeCap.Round, join = StrokeJoin.Round)
+        drawText(
+            textLayoutResult = textLayoutResult,
+            color = haloColor,
+            topLeft = topLeft,
+            drawStyle = stroke,
+        )
+    }
     drawText(textLayoutResult = textLayoutResult, color = color, topLeft = topLeft, drawStyle = Fill)
 }

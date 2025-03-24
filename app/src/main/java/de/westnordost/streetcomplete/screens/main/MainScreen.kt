@@ -18,8 +18,10 @@ import androidx.compose.foundation.layout.absoluteOffset
 import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.MaterialTheme
@@ -159,6 +161,11 @@ fun MainScreen(
 
     val mapRotation = mapCamera?.rotation ?: 0.0
     val mapTilt = mapCamera?.tilt ?: 0.0
+
+    val mapAttribution = listOf(
+        AttributionLink(stringResource(R.string.map_attribution_osm), "https://osm.org/copyright"),
+        AttributionLink("© JawgMaps", "https://jawg.io")
+    )
 
     fun onClickOverlays() {
         if (viewModel.hasShownOverlaysTutorial) {
@@ -378,27 +385,20 @@ fun MainScreen(
                                 UndoIcon()
                             }
                         }
+
+
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            AttributionButton(
+                                lastCameraMoveReason = CameraMoveReason.NONE,
+                                attributions = mapAttribution,
+                            )
+                            ScaleBar(
+                                metersPerDp = metersPerDp,
+                            )
+                        }
                     }
                 }
-                // attribution info and scalebar
-                Box(Modifier.fillMaxWidth()) {
-                    ScaleBar(
-                        metersPerDp = metersPerDp,
-                        modifier = Modifier
-                            .align(Alignment.BottomStart)
-                            .padding(4.dp)
-                    )
-                    AttributionButton(
-                        lastCameraMoveReason = CameraMoveReason.NONE,
-                        attributions = listOf(
-                            AttributionLink(stringResource(R.string.map_attribution_osm), "https://osm.org/copyright"),
-                            AttributionLink("© JawgMaps", "https://jawg.io")
-                        ),
-                        modifier = Modifier.align(Alignment.BottomEnd)
-                    )
-                }
             }
-
         }
 
         intersection?.let { (offset, angle) ->

@@ -1,23 +1,25 @@
 package de.westnordost.streetcomplete.screens.main.controls
 
 import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.foundation.background
+import androidx.compose.animation.core.MutableTransitionState
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
-import androidx.compose.material.LocalContentColor
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.ProvideTextStyle
+import androidx.compose.material.Surface
 import androidx.compose.material.Text
-import androidx.compose.material.contentColorFor
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -26,7 +28,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.LinkAnnotation
@@ -35,98 +36,88 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.withLink
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.window.Popup
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.ui.ktx.horizontal
-import de.westnordost.streetcomplete.ui.ktx.reverse
-import de.westnordost.streetcomplete.ui.ktx.toArrangement
-import de.westnordost.streetcomplete.ui.ktx.vertical
-
+import de.westnordost.streetcomplete.screens.main.controls.ktx.Reverse
 
 /**
- * Info button from which an attribution text is expanded towards the start. The attribution text
- * retracts once when the user first starts interacting with the map.
+ * Info button from which an attribution popup text is expanded from. The attribution text retracts
+ * once when the user first starts interacting with the map.
  *
  * @param lastCameraMoveReason The reason reason why the camera moved, last time it moved. See
  *   [CameraState.moveReason].
  * @param attributions List of attributions to show. See
- *   [StyleState.queryAttributionLinks][dev.sargunv.maplibrecompose.compose.StyleState.queryAttributionLinks]
+ *   [Source.attributionLinks][dev.sargunv.maplibrecompose.core.source.Source.attributionLinks] via
+ *   [StyleState.sources][dev.sargunv.maplibrecompose.compose.StyleState.sources]
  * @param modifier the Modifier to be applied to this layout node
+ * @param colors Colors that will be used for the info button
  * @param textStyle Text style used for the attribution info
  * @param textLinkStyles Text link styles that should be used for the links in the attribution info
- * @param contentAlignment Alignment where the button and attribution texts should be aligned to
  */
 @Composable
-fun AttributionButton(
+public fun AttributionButton(
     lastCameraMoveReason: CameraMoveReason,
     attributions: List<AttributionLink>,
     modifier: Modifier = Modifier,
     textStyle: TextStyle = MaterialTheme.typography.body2,
     textLinkStyles: TextLinkStyles? = null,
-    contentAlignment: Alignment = Alignment.BottomEnd,
 ) {
     if (attributions.isEmpty()) return
 
-    var expanded by remember { mutableStateOf(true) }
+    val expanded = remember { MutableTransitionState(true) }
 
+    // close popup on moving the map
     LaunchedEffect(lastCameraMoveReason) {
         if (lastCameraMoveReason == CameraMoveReason.GESTURE) {
-            expanded = false
+            expanded.targetState = false
         }
     }
 
-    val verticalAlignment = remember(contentAlignment) { contentAlignment.vertical }
-    val horizontalArrangement =
-        remember(contentAlignment) { contentAlignment.horizontal.toArrangement() }
-
-    // rounded corner the size of the info button
-    val cornerSize = 20.dp
-
-    // the background is separate from the attribution texts because it should, when visible, also
-    // cover the info icon button. This makes the whole setup a bit more complicated, i.e. requires
-    // two AnimatedVisibility and the actual content to be wrapped in CompositionLocalProvider for the
-    // the content color
-    val surfaceColor = MaterialTheme.colors.surface
-    val contentColor = contentColorFor(surfaceColor)
-
-    // reverse the layout if necessary: the info button should always stick to the side the whole
-    // widget is aligned to
-    val dir = LocalLayoutDirection.current
-    val rowLayoutDirection = if (horizontalArrangement == Arrangement.End) dir.reverse() else dir
-
-    CompositionLocalProvider(
-        LocalContentColor provides contentColor,
-        LocalLayoutDirection provides rowLayoutDirection,
-    ) {
-        Box(modifier = modifier, contentAlignment = Alignment.CenterStart) {
-            // background for the attribution texts
-            AnimatedVisibility(expanded, modifier = Modifier.matchParentSize()) {
-                Box(
-                    modifier =
-                    Modifier.matchParentSize()
-                        .padding(4.dp)
-                        .background(surfaceColor, RoundedCornerShape(cornerSize))
-                )
+    Box(modifier) {
+        IconButton(onClick = { expanded.targetState = !expanded.currentState }) {
+            InfoIcon()
+        }
+        if (expanded.currentState || expanded.targetState) {
+            // popup position provider places popup superimposed over the icon button, the arrangement
+            // and alignment of its content depends on the position of the icon button in relation to the
+            // screen.
+            var alignLeft by remember { mutableStateOf(false) }
+            var alignTop by remember { mutableStateOf(false) }
+            val popupPositionProvider = SuperimposingPopupPositionProvider { left, top ->
+                alignLeft = left
+                alignTop = top
             }
+            val verticalAlignment = if (alignTop) Alignment.Top else Alignment.Bottom
+            val horizontalArrangement =
+                if (alignLeft) Arrangement.Absolute.Left else Arrangement.Absolute.Reverse
 
-            Row(
-                horizontalArrangement = Arrangement.Start,
-                verticalAlignment = Alignment.CenterVertically,
+            Popup(
+                popupPositionProvider = popupPositionProvider,
+                onDismissRequest = { expanded.targetState = false },
             ) {
-                InfoIconButton(
-                    onClick = { expanded = !expanded },
-                    modifier = Modifier.align(verticalAlignment),
-                )
-                // attributions texts: after applying the paddings, they should be layout in the normal
-                // layout direction again
-                AnimatedVisibility(expanded, modifier = Modifier.weight(1f, fill = false)) {
-                    // make sure that the text always fits in the rounded corner background
-                    Box(Modifier.padding(vertical = 8.dp).padding(end = cornerSize - 4.dp)) {
-                        CompositionLocalProvider(LocalLayoutDirection provides dir) {
+                AnimatedVisibility(visibleState = expanded, enter = fadeIn(), exit = fadeOut()) {
+                    Surface(shape = RoundedCornerShape(24.dp), elevation = 8.dp) {
+                        // the content of the popup should be aligned centered vertically in general, only the
+                        // icon button should be in the corner, so that it exactly overlaps the original button
+                        Row(
+                            horizontalArrangement = horizontalArrangement,
+                            verticalAlignment = Alignment.CenterVertically,
+                        ) {
+                            IconButton(
+                                onClick = { expanded.targetState = false },
+                                modifier = Modifier.align(verticalAlignment),
+                            ) {
+                                InfoIcon()
+                            }
                             AttributionTexts(
                                 attributions = attributions,
                                 textStyle = textStyle,
                                 textLinkStyles = textLinkStyles,
+                                modifier = Modifier.padding(vertical = 8.dp),
                             )
+                            // icon buttons are automatically padded to have a certain click size, which makes the
+                            // popup appear misaligned if we don't also add some extra padding on the other side
+                            Spacer(Modifier.size(8.dp))
                         }
                     }
                 }
@@ -136,16 +127,12 @@ fun AttributionButton(
 }
 
 @Composable
-private fun InfoIconButton(
-    onClick: () -> Unit,
-    modifier: Modifier = Modifier,
-) {
-    IconButton(onClick = onClick, modifier = modifier) {
-        Icon(
-            painter = painterResource(R.drawable.ic_info_outline_24dp),
-            contentDescription = stringResource(R.string.map_attribution),
-        )
-    }
+private fun InfoIcon(modifier: Modifier = Modifier) {
+    Icon(
+        painter = painterResource(R.drawable.ic_info_outline_24dp),
+        contentDescription = stringResource(R.string.map_attribution),
+        modifier = modifier,
+    )
 }
 
 @OptIn(ExperimentalLayoutApi::class)
@@ -157,13 +144,13 @@ private fun AttributionTexts(
     modifier: Modifier = Modifier,
 ) {
     ProvideTextStyle(textStyle) {
-        FlowRow(modifier = modifier, horizontalArrangement = Arrangement.spacedBy(4.dp)) {
+        FlowRow(modifier = modifier, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
             attributions.forEach {
-                Text(
-                    buildAnnotatedString {
-                        withLink(LinkAnnotation.Url(url = it.url, styles = textLinkStyles)) { append(it.title) }
-                    }
-                )
+                val attributionString = buildAnnotatedString {
+                    val link = LinkAnnotation.Url(url = it.url, styles = textLinkStyles)
+                    withLink(link) { append(it.title) }
+                }
+                Text(attributionString)
             }
         }
     }

@@ -20,8 +20,8 @@ import androidx.compose.ui.text.rememberTextMeasurer
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.toSize
-import de.westnordost.streetcomplete.ui.ktx.drawPathsWithHalo
-import de.westnordost.streetcomplete.ui.ktx.drawTextWithHalo
+import de.westnordost.streetcomplete.screens.main.controls.ktx.drawPathsWithHalo
+import de.westnordost.streetcomplete.screens.main.controls.ktx.drawTextWithHalo
 import kotlin.math.ceil
 import kotlin.math.roundToInt
 
@@ -55,7 +55,7 @@ fun ScaleBar(
     modifier: Modifier = Modifier,
     measures: ScaleBarMeasures = defaultScaleBarMeasures(),
     haloColor: Color = MaterialTheme.colors.surface,
-    haloWidth: Dp = 1.dp,
+    haloWidth: Dp = 0.dp,
     color: Color = contentColorFor(haloColor),
     barWidth: Dp = 2.dp,
     textStyle: TextStyle = MaterialTheme.typography.caption,
