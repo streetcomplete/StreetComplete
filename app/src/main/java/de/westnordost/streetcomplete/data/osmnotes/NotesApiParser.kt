@@ -7,14 +7,16 @@ import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalTime
 import kotlinx.datetime.format.DateTimeComponents
 import kotlinx.datetime.format.char
+import kotlinx.io.Source
 import kotlinx.serialization.SerializationException
 import nl.adaptivity.xmlutil.EventType.*
 import nl.adaptivity.xmlutil.XmlReader
+import nl.adaptivity.xmlutil.core.kxio.newReader
 import nl.adaptivity.xmlutil.xmlStreaming
 
 class NotesApiParser {
-    fun parseNotes(osmXml: String): List<Note> =
-        xmlStreaming.newReader(osmXml).parseNotes()
+    fun parseNotes(source: Source): List<Note> =
+        xmlStreaming.newReader(source).parseNotes()
 }
 
 private fun XmlReader.parseNotes(): List<Note> = try {
