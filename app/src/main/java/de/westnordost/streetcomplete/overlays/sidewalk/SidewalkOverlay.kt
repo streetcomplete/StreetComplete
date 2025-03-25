@@ -100,7 +100,7 @@ private fun getStreetStrokeStyle(tags: Map<String, String>): StrokeStyle? =
 
 private val sidewalkTaggingNotExpectedFilter by lazy { """
     ways with
-      highway ~ living_street|pedestrian|service|motorway_link|busway
+      highway ~ track|living_street|pedestrian|service|motorway_link|motorway|busway
       or motorroad = yes
       or expressway = yes
       or maxspeed <= 10
