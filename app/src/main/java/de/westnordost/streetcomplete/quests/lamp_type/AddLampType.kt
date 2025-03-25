@@ -16,8 +16,8 @@ class AddLampType : OsmFilterQuestType<String>() {
     override val elementFilter = """
         nodes with
           highway = street_lamp
-          and !lamp_type
-          and !light:method
+          and (!lamp_type or lamp_type ~ electric|floodlight|sodium|solar_lamp)
+          and (!light:method or light:method ~ electric|discharge|sodium)
     """
     override val changesetComment = "Add lamp type"
     override val defaultDisabledMessage = R.string.quest_lampType_disabled_msg
@@ -35,5 +35,8 @@ class AddLampType : OsmFilterQuestType<String>() {
 
     override fun applyAnswerTo(answer: String, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags["lamp_type"] = answer
+        if (tags["light:method"] in listOf("electric", "discharge", "sodium")) {
+            tags.remove("light:method")
+        }
     }
 }
