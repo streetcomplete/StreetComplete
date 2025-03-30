@@ -419,6 +419,7 @@ open class TagEditor : Fragment(), IsCloseableBottomSheet {
         updateQuestsJob?.cancel()
         delay(waitMillis)
         updateQuestsJob = viewLifecycleScope.launch(Dispatchers.IO) {
+            if (context == null) return@launch // maybe this happens when form is closed while waiting
             val q = osmQuestController.createNonPoiQuestsForElement(element, geometry).map { q ->
                 val icon = ImageView(requireContext()).apply { setImageResource(q.type.icon) }
                 icon.layoutParams = questIconParameters
