@@ -118,6 +118,10 @@ class NearbyQuestMonitor : Service(), LocationListener, KoinComponent {
         } catch (e: SecurityException) {
             // there is some foreground issue, and of course location permissions
             this.toast(R.string.quest_monitor_error, Toast.LENGTH_LONG)
+        } catch (e: Exception) {
+            // there is also ForegroundServiceNotAllowedException that can occur, didn't bother investigating details...
+            // catch other exceptions because ForegroundServiceNotAllowedException is only available on API 31 and up
+            this.toast(R.string.quest_monitor_error, Toast.LENGTH_LONG)
         }
         return Binder()
     }
