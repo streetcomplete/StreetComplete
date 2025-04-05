@@ -55,6 +55,7 @@ import de.westnordost.streetcomplete.quests.building_colour.AddBuildingColour
 import de.westnordost.streetcomplete.quests.building_entrance.AddEntrance
 import de.westnordost.streetcomplete.quests.building_entrance_reference.AddEntranceReference
 import de.westnordost.streetcomplete.quests.building_levels.AddBuildingLevels
+import de.westnordost.streetcomplete.quests.building_material.AddBuildingMaterial
 import de.westnordost.streetcomplete.quests.building_type.AddBuildingType
 import de.westnordost.streetcomplete.quests.building_underground.AddIsBuildingUnderground
 import de.westnordost.streetcomplete.quests.bus_stop_bench.AddBenchStatusOnBusStop
@@ -609,6 +610,7 @@ fun getQuestTypeList(
     // quests added in SCEE
     EE_QUEST_OFFSET + 0 to AddBenchMaterial(),
     EE_QUEST_OFFSET + 27 to AddBuildingColour(),
+    EE_QUEST_OFFSET + 49 to AddBuildingMaterial(),
     EE_QUEST_OFFSET + 24 to AddRoofColour(),
     EE_QUEST_OFFSET + 56 to AddRoofOrientation(),
     EE_QUEST_OFFSET + 1 to AddContactPhone(),

@@ -768,4 +768,26 @@ Out of the box SCEE is configured to behave very similar to StreetComplete.</str
     <string name="quest_roofOrientation_along">Parallel to the building’s longer side</string>
     <string name="quest_roofOrientation_across">Parallel to the building’s shorter side</string>
     <string name="quest_roofOrientation_title">How is the roof ridge oriented?</string>
+
+    <!-- building material -->
+    <string name="quest_buildingMaterial_title">"What overall material is this building made of?"</string>
+    <string name="quest_buildingPartMaterial_title">"What overall material is this building part made of?"</string>
+    <string name="quest_material_cement_block">Cement block</string>
+    <string name="quest_material_plaster">Plaster</string>
+    <string name="quest_material_glass">Glass</string>
+    <string name="quest_material_mirror">Mirrored-glass</string>
+    <string name="quest_material_mud">Dried mud</string>
+    <string name="quest_material_timber_framing">Timber Framing</string>
+    <string name="quest_material_sandstone">Sandstone</string>
+    <string name="quest_material_clay">Clay</string>
+    <string name="quest_material_reed">Reed</string>
+    <string name="quest_material_loam">Loam</string>
+    <string name="quest_material_marble">Marble</string>
+    <string name="quest_material_slate">Slate</string>
+    <string name="quest_material_vinyl">Plastic vinyl strips</string>
+    <string name="quest_material_limestone">Limestone</string>
+    <string name="quest_material_tiles">Tiles</string>
+    <string name="quest_material_bamboo">Bamboo</string>
+    <string name="quest_material_adobe">Adobe</string>
+
 </resources>
