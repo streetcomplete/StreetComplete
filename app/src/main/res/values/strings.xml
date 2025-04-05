@@ -1244,7 +1244,7 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_oneway2_no_oneway">"Not a oneway"</string>
 
     <string name="quest_openingHours_title">"What are the opening hours here?"</string>
-    <string name="quest_openingHours_signed_title">"Are the opening hours here signed?"</string>
+    <string name="quest_openingHours_signed_title">"Are the opening hours signed here?"</string>
     <string name="quest_openingHours_resurvey_title">"Are these opening hours still correct?"</string>
     <string name="quest_openingHours_start_time">"opening time"</string>
     <string name="quest_openingHours_end_time">"closing time"</string>
