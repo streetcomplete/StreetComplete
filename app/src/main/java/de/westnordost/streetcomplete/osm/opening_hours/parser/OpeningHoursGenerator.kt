@@ -84,7 +84,7 @@ fun List<OpeningHoursRow>.toOpeningHours(): OpeningHours {
         rules.add(createRule(currentMonths, currentWds, currentTimeSpans))
     }
 
-    return OpeningHours(rules.asNonColliding())
+    return OpeningHours(rules.offRulesMovedToBack().asNonColliding())
 }
 
 @JvmName("collectionTimesRowsToOpeningHours")
@@ -117,6 +117,15 @@ fun List<CollectionTimesRow>.toOpeningHours(): OpeningHours {
 
     return OpeningHours(rules.asNonColliding())
 }
+
+/** move all off-rules to the back, so normal rules don't overwrite these */
+private fun List<Rule>.offRulesMovedToBack(): List<Rule> =
+    if (none { it.ruleType == RuleType.Off }) {
+        this
+    } else {
+        val (normalRules, offRules) = partition { it.ruleType != RuleType.Off }
+        normalRules + offRules
+    }
 
 /* if any rule collides with another, e.g. "Mo-Fr 10:00-12:00; We 14:00-16:00", switch to
    additive rules e.g. "Mo-Fr 10:00-12:00, We 14:00-16:00" */
