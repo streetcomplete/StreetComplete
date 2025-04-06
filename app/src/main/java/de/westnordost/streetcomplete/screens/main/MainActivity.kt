@@ -1080,7 +1080,7 @@ class MainActivity :
     private fun selectPoiType(pos: LatLon) {
         val country = countryBoundaries.value.getIds(pos.longitude, pos.latitude).firstOrNull()
         val defaultFeatureIds: List<String> = prefs.getString(Prefs.CREATE_POI_RECENT_FEATURE_IDS, "")
-            .split("§").filter { it.isNotBlank() }
+            .split("§").filter { it.isNotBlank() && it != "shop" }
             .ifEmpty { POPULAR_PLACE_FEATURE_IDS }
 
         SearchFeaturesDialog(
@@ -1089,7 +1089,7 @@ class MainActivity :
             GeometryType.POINT,
             country,
             null, // pre-filled search text
-            { true }, // filter, but we want everything
+            { it.addTags.isNotEmpty() }, // require non-empty tags, avoids the crash reported in https://github.com/Helium314/SCEE/issues/757
             { addPoi(pos, it) },
             defaultFeatureIds.reversed(),
             false,
