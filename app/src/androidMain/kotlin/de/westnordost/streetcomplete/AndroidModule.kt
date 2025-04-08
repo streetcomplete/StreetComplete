@@ -1,11 +1,12 @@
 package de.westnordost.streetcomplete
 
+import android.content.Context
+import androidx.sqlite.driver.bundled.BundledSQLiteDriver
 import com.russhwolf.settings.ObservableSettings
 import com.russhwolf.settings.SharedPreferencesSettings
-import de.westnordost.streetcomplete.data.AndroidDatabase
 import de.westnordost.streetcomplete.data.CleanerWorker
 import de.westnordost.streetcomplete.data.Database
-import de.westnordost.streetcomplete.data.StreetCompleteSQLiteOpenHelper
+import de.westnordost.streetcomplete.data.StreetCompleteDatabase
 import de.westnordost.streetcomplete.data.connection.InternetConnectionState
 import de.westnordost.streetcomplete.data.download.DownloadController
 import de.westnordost.streetcomplete.data.download.DownloadControllerAndroid
@@ -28,8 +29,9 @@ val androidModule = module {
     // Database on Android
 
     single<Database> {
-        val sqLite = StreetCompleteSQLiteOpenHelper(get(), ApplicationConstants.DATABASE_NAME)
-        AndroidDatabase(sqLite.writableDatabase)
+        val databaseFilePath = get<Context>().getDatabasePath(ApplicationConstants.DATABASE_NAME).path
+        val databaseConnection = BundledSQLiteDriver().open(databaseFilePath)
+        StreetCompleteDatabase(databaseConnection)
     }
 
     // Workmanager-based on Android
