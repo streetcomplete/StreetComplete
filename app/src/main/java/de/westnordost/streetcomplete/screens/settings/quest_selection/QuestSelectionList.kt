@@ -88,7 +88,22 @@ fun QuestSelectionList(
                 bottom = contentPadding.calculateBottomPadding()
             ),
         ) {
-            itemsIndexed(reorderableItems, key = { _, it -> it.questType.name }) { index, item ->
+            itemsIndexed(
+                reorderableItems,
+                key = { _, it -> it.questType.name },
+                contentType = { _, _ -> "QuestSelectionItem" },
+            ) { index, item ->
+
+                val rememberedOnToggleSelection = remember(item.questType) {
+                    { isSelected: Boolean ->
+                        if (isSelected && item.questType.defaultDisabledMessage != 0) {
+                            showEnableQuestDialog = item.questType
+                        } else {
+                            onSelectQuest(item.questType, isSelected)
+                        }
+                    }
+                }
+
                 ReorderableItem(
                     state = dragDropState,
                     key = item.questType.name,
@@ -110,14 +125,7 @@ fun QuestSelectionList(
                             if (index > 0) Divider()
                             QuestSelectionRow(
                                 item = item,
-                                onToggleSelection = { isSelected ->
-                                    // when enabling quest that is disabled by default, require confirmation
-                                    if (isSelected && item.questType.defaultDisabledMessage != 0) {
-                                        showEnableQuestDialog = item.questType
-                                    } else {
-                                        onSelectQuest(item.questType, isSelected)
-                                    }
-                                },
+                                onToggleSelection = rememberedOnToggleSelection,
                                 displayCountry = displayCountry,
                                 modifier = Modifier.padding(vertical = 8.dp)
                             )
@@ -144,7 +152,8 @@ private fun QuestSelectionHeader(modifier: Modifier = Modifier) {
         Row(
             Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 16.dp, vertical = 8.dp)) {
+                .padding(horizontal = 16.dp, vertical = 8.dp)
+        ) {
             Text(
                 text = stringResource(R.string.quest_type),
                 modifier = Modifier.weight(1f),

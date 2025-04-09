@@ -12,7 +12,7 @@ import org.koin.dsl.module
 
 val settingsModule = module {
     viewModel<SettingsViewModel> { SettingsViewModelImpl(get(), get(), get(), get(), get(), get(), get()) }
-    viewModel<QuestSelectionViewModel> { QuestSelectionViewModelImpl(get(), get(), get(), get(), get(named("CountryBoundariesLazy")), get()) }
+    viewModel<QuestSelectionViewModel> { QuestSelectionViewModelImpl(get(), get(), get(), get(), get(), get(named("CountryBoundariesLazy")), get()) }
     viewModel<QuestPresetsViewModel> { QuestPresetsViewModelImpl(get(), get(), get(), get()) }
     viewModel<ShowQuestFormsViewModel> { ShowQuestFormsViewModelImpl(get()) }
 }

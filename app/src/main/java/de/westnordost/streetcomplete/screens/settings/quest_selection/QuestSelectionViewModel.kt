@@ -1,7 +1,9 @@
 package de.westnordost.streetcomplete.screens.settings.quest_selection
 
 import androidx.compose.runtime.Stable
+import androidx.compose.ui.text.input.TextFieldValue
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.preferences.Preferences
@@ -16,16 +18,25 @@ import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderController
 import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderSource
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeController
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeSource
+import de.westnordost.streetcomplete.util.ResourceProvider
+import de.westnordost.streetcomplete.util.ktx.containsAll
 import de.westnordost.streetcomplete.util.ktx.containsAny
 import de.westnordost.streetcomplete.util.ktx.getIds
 import de.westnordost.streetcomplete.util.ktx.launch
+import kotlinx.coroutines.Dispatchers.Default
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.launch
 
 @Stable
 abstract class QuestSelectionViewModel : ViewModel() {
+    abstract val searchText: StateFlow<TextFieldValue>
+    abstract val filteredQuests: StateFlow<List<QuestSelection>>
     abstract val currentCountry: String?
     abstract val selectedQuestPresetName: StateFlow<String?>
     abstract val quests: StateFlow<List<QuestSelection>>
@@ -34,10 +45,12 @@ abstract class QuestSelectionViewModel : ViewModel() {
     abstract fun orderQuest(questType: QuestType, toAfter: QuestType)
     abstract fun unselectAllQuests()
     abstract fun resetQuestSelectionsAndOrder()
+    abstract fun updateSearchText(text: TextFieldValue)
 }
 
 @Stable
 class QuestSelectionViewModelImpl(
+    private val resourceProvider: ResourceProvider,
     private val questTypeRegistry: QuestTypeRegistry,
     private val questPresetsSource: QuestPresetsSource,
     private val visibleQuestTypeController: VisibleQuestTypeController,
@@ -45,6 +58,11 @@ class QuestSelectionViewModelImpl(
     countryBoundaries: Lazy<CountryBoundaries>,
     prefs: Preferences,
 ) : QuestSelectionViewModel() {
+
+    private val _searchText = MutableStateFlow(TextFieldValue())
+    override val searchText: StateFlow<TextFieldValue> = _searchText
+
+    private val questTitles = MutableStateFlow<Map<String, String>>(emptyMap())
 
     private val visibleQuestsListener = object : VisibleQuestTypeSource.Listener {
         override fun onQuestTypeVisibilityChanged(questType: QuestType, visible: Boolean) {
@@ -86,6 +104,11 @@ class QuestSelectionViewModelImpl(
 
     override val quests = MutableStateFlow<List<QuestSelection>>(emptyList())
 
+    override val filteredQuests: StateFlow<List<QuestSelection>> =
+        combine(quests, searchText, questTitles) { quests, searchText, titles ->
+            filterQuests(quests, searchText.text, titles)
+        }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptyList())
+
     private val currentCountryCodes = countryBoundaries.value.getIds(prefs.mapPosition)
 
     override val selectedQuestPresetName = MutableStateFlow<String?>(null)
@@ -96,6 +119,7 @@ class QuestSelectionViewModelImpl(
     init {
         initQuests()
         updateSelectedQuestPresetName()
+        loadQuestTitles()
         questPresetsSource.addListener(questPresetsListener)
         visibleQuestTypeController.addListener(visibleQuestsListener)
         questTypeOrderController.addListener(questTypeOrderListener)
@@ -104,6 +128,13 @@ class QuestSelectionViewModelImpl(
     private fun updateSelectedQuestPresetName() {
         launch(IO) {
             selectedQuestPresetName.value = questPresetsSource.selectedQuestPresetName
+        }
+    }
+
+    private fun loadQuestTitles() {
+        launch(Default) {
+            questTitles.value = questTypeRegistry.ordinalsAndEntries
+                .associate { it.second.name to resourceProvider.getString(it.second.title) }
         }
     }
 
@@ -138,6 +169,10 @@ class QuestSelectionViewModelImpl(
         }
     }
 
+    override fun updateSearchText(text: TextFieldValue) {
+        _searchText.value = text
+    }
+
     private fun initQuests() {
         launch(IO) {
             val sortedQuestTypes = questTypeRegistry.toMutableList()
@@ -158,6 +193,21 @@ class QuestSelectionViewModelImpl(
             is AllCountries -> true
             is AllCountriesExcept -> !countries.exceptions.containsAny(currentCountryCodes)
             is NoCountriesExcept -> countries.exceptions.containsAny(currentCountryCodes)
+        }
+    }
+
+    private fun filterQuests(
+        quests: List<QuestSelection>,
+        filter: String,
+        titles: Map<String, String>
+    ): List<QuestSelection> {
+        val words = filter.takeIf { it.isNotBlank() }?.trim()?.lowercase()?.split(' ') ?: emptyList()
+        return if (words.isEmpty()) {
+            quests
+        } else {
+            quests.filter { quest ->
+                titles[quest.questType.name]?.lowercase()?.containsAll(words) == true
+            }
         }
     }
 }
