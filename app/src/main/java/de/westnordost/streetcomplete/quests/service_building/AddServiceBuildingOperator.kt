@@ -9,7 +9,7 @@ class AddServiceBuildingOperator : OsmFilterQuestType<String>() {
 
     override val elementFilter = """
         ways, relations with
-          building = service
+          building ~ service|transformer_tower
           and !operator
           and !name
           and !brand

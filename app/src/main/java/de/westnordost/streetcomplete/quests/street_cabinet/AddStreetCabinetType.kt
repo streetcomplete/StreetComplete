@@ -28,7 +28,7 @@ class AddStreetCabinetType : OsmFilterQuestType<StreetCabinetType>() {
             nodes, ways with
              (
                  man_made = street_cabinet
-                 or building = service
+                 or building ~ service|transformer_tower
              )
         """)
 

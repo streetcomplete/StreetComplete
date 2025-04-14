@@ -16,7 +16,7 @@ class AddGeneralRef : OsmFilterQuestType<GeneralRefAnswer>() {
           (
             (information = guidepost or guidepost) and guidepost != simple and hiking = yes
             or railway = subway_entrance and highway != elevator
-            or building = service and power = substation
+            or building ~ service|transformer_tower and power = substation
             or man_made = street_cabinet
             or highway = street_lamp
             or golf = hole
