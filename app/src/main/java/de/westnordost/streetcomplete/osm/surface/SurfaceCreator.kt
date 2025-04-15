@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.osm.surface
 
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.removeCheckDatesForKey
+import de.westnordost.streetcomplete.osm.updateCheckDateForKey
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 
 /** Apply the surface to the given [tags], with optional [prefix], e.g. "footway" for
@@ -34,7 +35,16 @@ fun Surface.applyTo(tags: Tags, prefix: String? = null, updateCheckDate: Boolean
 
     // update surface + check date
     if (updateCheckDate) {
-        tags.updateWithCheckDate(key, osmValue)
+        val isGeneric = this == Surface.PAVED || this == Surface.UNPAVED
+        if (isGeneric) {
+            // if a generic surface has been selected, always add the check date as a marker that
+            // the selection has been deliberate and is not an artifact of prior coarse
+            // satellite-imagery-based mapping ("oh, road is grey, must be *something* paved")
+            tags.updateCheckDateForKey(key)
+            tags[key] = osmValue
+        } else {
+            tags.updateWithCheckDate(key, osmValue)
+        }
     } else {
         tags[key] = osmValue
     }
