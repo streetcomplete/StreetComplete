@@ -989,7 +989,7 @@ A level counts as a roof level when its windows are in the roof. Subsequently, r
     <string name="quest_camera_type_fixed">Fixed</string>
     <string name="quest_camera_type_panning">Panning</string>
 
-    <string name="quest_camp_drinking_water_title">Is drinking water freely available to campers here?</string>
+    <string name="quest_camp_drinking_water_title">Is drinking water freely available for guests here?</string>
     <string name="quest_camp_shower_title">Are there showers here?</string>
     <string name="quest_camp_power_supply_title">Are there any power outlets available for guests?</string>
     <string name="quest_camp_power_supply_hint">This could be outlets directly at the camp pitches, outlets in a service building accessible by guests, a dedicated charging station for phones, laptops, etc.</string>
