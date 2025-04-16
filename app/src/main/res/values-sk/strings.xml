@@ -1259,8 +1259,6 @@ Presunúť ho teraz?"</string>
     <string name="overlay_surface">"Povrchy"</string>
     <string name="overlay_path_surface_segregated">"Rozdelené na cyklo a pešiu časť"</string>
     <string name="quest_crossing_title2">"Nachádza sa tu prechod?"</string>
-    <string name="quest_crossing_yes">"Áno (napr. obrubník je tu znížený alebo sú tu značky)"</string>
-    <string name="quest_crossing_no">"Nie, ale prechod je možný"</string>
     <string name="quest_crossing_prohibited">"Nie, prechod je zakázaný alebo nemožný"</string>
     <string name="quest_hairdresser_title">"Akí zákazníci navštevujú kaderníctvo?"</string>
     <string name="quest_hairdresser_male_and_female">"Ktokoľvek"</string>

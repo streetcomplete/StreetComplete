@@ -16,6 +16,7 @@ class AddBusStopRef : OsmFilterQuestType<BusStopRefAnswer>() {
           or
           (highway = bus_stop and public_transport != stop_position)
         )
+        and access !~ no|private
         and !ref and noref != yes and ref:signed != no and !~"ref:.*"
     """
     override val enabledInCountries = NoCountriesExcept(

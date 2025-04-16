@@ -44,7 +44,7 @@ The info you enter is directly added to OpenStreetMap in your name, without the 
     <string name="map_btn_gps_tracking">"Follow me"</string>
     <string name="turn_on_location_request">"Location is off. Open Settings to turn it on now?"</string>
     <string name="no_location_permission_warning_title">"Location Permission"</string>
-    <string name="no_location_permission_warning">"Location permission is needed to show your position on the map and download data in your vicinity."</string>
+    <string name="no_location_permission_warning">"Precise location permission is needed to show your position on the map and download data in your vicinity."</string>
 
     <string name="map_attribution_osm">"© OpenStreetMap contributors"</string>
     <string name="open_url">Open URL</string>
@@ -154,7 +154,7 @@ The info you enter is directly added to OpenStreetMap in your name, without the 
     <string name="quest_generic_answer_notApplicable">"Can’t say…"</string>
 
     <string name="quest_generic_answer_does_not_exist">It does not exist…</string>
-    <string name="osm_element_gone_description">"Are you sure that it does not exist, not even at a slightly different location? If you’re not sure, leave a note instead.</string>
+    <string name="osm_element_gone_description">"Are you sure that it does not exist, not even at a slightly different location? If you’re not sure, leave a note instead."</string>
     <string name="osm_element_gone_confirmation">It does not exist</string>
     <string name="leave_note">Leave note</string>
     <string name="note_for_object">Another person noted:</string>
@@ -252,7 +252,7 @@ Additionally, some overlays allow you to add new data at the position of a displ
     <string name="quest_disable_action">Disable</string>
     <string name="quest_disable_title">Disable this quest type?</string>
     <string name="quest_disable_message_not_installed">"StreetMeasure is not installed (yet)."</string>
-    <string name="quest_disable_message_not_working">"StreetMeasure didn’t return a measurement.</string>
+    <string name="quest_disable_message_not_working">"StreetMeasure didn’t return a measurement."</string>
     <string name="quest_disable_message_tape_measure">You could use a tape measure instead, but that might be a little awkward, after all.</string>
 
     <!-- Notifications -->
@@ -263,7 +263,7 @@ Additionally, some overlays allow you to add new data at the position of a displ
     <string name="quest_selection_hint_title">Too much to do?</string>
     <string name="quest_selection_hint_message">"Contributing should primarily be fun!
 
-If you are overwhelmed by the number of quests, you can always fine-tune which quests are displayed to you and in what order in the settings.</string>
+If you are overwhelmed by the number of quests, you can always fine-tune which quests are displayed to you and in what order in the settings."</string>
 
 
     <!-- Team mode -->
@@ -288,7 +288,7 @@ If you are overwhelmed by the number of quests, you can always fine-tune which q
 
     <string name="version_banned_message">"This version of StreetComplete is too old. Please update!"</string>
 
-    <string name="no_gps_no_quests">"To download data around you automatically, turn on location"</string>
+    <string name="no_gps_no_quests">"To download data around you automatically, turn on precise location"</string>
 
     <string name="download_server_error">"Connection error while downloading data. Try again later."</string>
     <string name="upload_server_error">"Connection error while uploading answers. Try again later."</string>
@@ -485,7 +485,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="link_disaster_ninja_description">Map that shows recent natural disasters, interesting for humanitarian mappers. Also, shows many interesting statistics to analyze how well-mapped and up-to-date places are.</string>
     <string name="link_welcome_mat_description">General information about OpenStreetMap and how to work with OSM as an organization</string>
     <string name="link_mapillary_description">A service and app for sharing crowdsourced street-level photos, with explicit permission to use them for contributing to OSM</string>
-    <string name="link_ohsomehex_description">Explore OSM data across scales from the "big picture" up to individual objects over space and time</string>
+    <string name="link_ohsomehex_description">Explore OSM data across scales from the “big picture” up to individual objects over space and time</string>
     <string name="link_openstreetcam_description">A service and app for sharing crowdsourced street-level photos, with explicit permission to use them for contributing to OSM</string>
     <string name="link_openrouteservice_wheelchair_description">Turn-by-turn navigation for wheelchair users</string>
     <string name="link_nominatim_description">The geocoder for OSM data, used by many other services</string>
@@ -500,7 +500,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="link_openrouteservice_description">Routing for a variety of vehicles and on foot, each with preferences. Can also show isochrones (reachable area in X minutes from a starting point).</string>
     <string name="link_osm_haiku_description">Using OSM data to generate a haiku (a form of Japanese poetry)</string>
     <string name="link_opencampingmap_description">A map of campsites</string>
-    <string name="link_prettymapp_description">Create pretty multi-colored map posters of neighbourhoods</string>
+    <string name="link_prettymapp_description">Create pretty multi-colored map posters of neighborhoods</string>
     <string name="link_openinframap_description">A map showing power, telecoms, gas, and oil infrastructure</string>
     <string name="link_openorienteeringmap_description">Create printable maps for the orienteering sport</string>
     <string name="link_openstreetbrowser_description">A map to browse OpenStreetMap map features by category</string>
@@ -800,7 +800,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_bicycle_shop_second_hand_no_bicycles">No bicycles sold at all</string>
 
     <string name="quest_bikeParkingCapacity_title">"How many bicycles can be parked here?"</string>
-    <string name="quest_bikeParkingCapacity_hint">"Note that you can usually park one bicycle on each side of a stand."</string>
+    <string name="quest_bikeParkingCapacity_hint">"Note that you can usually park one bicycle on each side of a stand, and for wheelbenders you might have to estimate how many would fit."</string>
 
     <string name="quest_air_pump_bicycle_shop_title">Is there a public bicycle pump here (at least when it’s open)?</string>
     <string name="quest_air_pump_compressor_title">Is there an air compressor available here?</string>
@@ -989,7 +989,7 @@ A level counts as a roof level when its windows are in the roof. Subsequently, r
     <string name="quest_camera_type_fixed">Fixed</string>
     <string name="quest_camera_type_panning">Panning</string>
 
-    <string name="quest_camp_drinking_water_title">Is drinking water freely available to campers here?</string>
+    <string name="quest_camp_drinking_water_title">Is drinking water freely available for guests here?</string>
     <string name="quest_camp_shower_title">Are there showers here?</string>
     <string name="quest_camp_power_supply_title">Are there any power outlets available for guests?</string>
     <string name="quest_camp_power_supply_hint">This could be outlets directly at the camp pitches, outlets in a service building accessible by guests, a dedicated charging station for phones, laptops, etc.</string>
@@ -1058,6 +1058,9 @@ A level counts as a roof level when its windows are in the roof. Subsequently, r
     <string name="quest_cyclewayPartSurface_title">What’s the surface of the bicycle path here?</string>
 
     <string name="quest_cycleway_width_title">"How wide is the bicycle path here?"</string>
+
+    <string name="quest_dietType_glutenfree_name_title">Are gluten-free products offered here?</string>
+    <string name="quest_dietType_explanation_glutenfree">Preparing gluten-free products requires knowledge, as common spices and sauces may contain gluten. Gluten-free food would be explicitely labeled as such.</string>
 
     <string name="quest_dietType_halal_name_title2">Are halal products offered here?</string>
     <string name="quest_dietType_explanation_halal">Halal products must be prepared according to special rules, with Halal certification agencies marking products in compliance.</string>
@@ -1220,7 +1223,7 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_moped_access_designated">There is a sign that designates this bike path for mopeds</string>
     <string name="quest_moped_access_forbidden">There is a sign that prohibits mopeds</string>
 
-    <string name="default_disabled_msg_visible_sign_moped">This quest type is disabled by default because moped access is only indicated by a specific signs at start/end of a cycleway. </string>
+    <string name="default_disabled_msg_visible_sign_moped">This quest type is disabled by default because moped access is only indicated by specific signs at start/end of a cycleway.</string>
 
 
     <string name="quest_motorcycleParkingCapacity_title">How many motorcycles can be parked here?</string>
@@ -1254,7 +1257,7 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_openingHours_add_weekdays">"Add days of the week"</string>
     <string name="quest_openingHours_add_off_days">"Add off days"</string>
     <string name="quest_openingHours_off_day">"Off day"</string>
-    <string name="quest_openingHours_unspecified_range">Not specified"</string>
+    <string name="quest_openingHours_unspecified_range">"Not specified"</string>
     <string name="quest_openingHours_chooseMonthsTitle">"Select months"</string>
     <string name="quest_openingHours_chooseWeekdaysTitle">"Select days of the week"</string>
     <string name="quest_openingHours_24_7_confirmation">"In other words, is it open any time, every day?"</string>

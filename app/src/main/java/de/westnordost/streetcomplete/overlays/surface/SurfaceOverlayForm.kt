@@ -169,9 +169,9 @@ class SurfaceOverlayForm : AbstractOverlayForm() {
 
         val languages = getLanguagesForFeatureDictionary(resources.configuration)
         binding.cyclewaySurfaceLabel.text =
-            featureDictionary.getById("highway/cycleway", languages = languages)?.name
+            featureDictionary.getById("highway/cycleway", languages)?.name
         binding.footwaySurfaceLabel.text =
-            featureDictionary.getById("highway/footway", languages = languages)?.name
+            featureDictionary.getById("highway/footway", languages)?.name
 
         checkIsFormComplete()
     }

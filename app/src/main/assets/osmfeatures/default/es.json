@@ -1153,7 +1153,7 @@
         },
         "amenity/theatre/type/amphi": {
           "name": "Anfiteatro",
-          "terms": "aire libre,al aire libre,griego,ampi,anfi,anfiteatro"
+          "terms": "anfiteatro,teatro al aire libre,arena,auditorio abierto,recinto exterior,espacio escénico al aire libre"
         },
         "amenity/ticket_validator": {
           "name": "Validador de boletos",
@@ -2268,6 +2268,10 @@
           "name": "Entrada principal",
           "terms": "entrada,ingreso,puerta,portón,acceso,principal,vestíbulo"
         },
+        "entrance/shop": {
+          "name": "Entrada de tienda",
+          "terms": "entrada de tienda,acceso comercial,entrada de comercio."
+        },
         "entrance/staircase": {
           "name": "Escalera de entrada",
           "terms": "escalera de entrada,puerta,escaleras"
@@ -2503,6 +2507,14 @@
           "name": "Enlace de ciclomotor",
           "terms": "enlace,ciclomotor,motocicleta,moto,motoneta"
         },
+        "highway/cycleway/traffic_island": {
+          "name": "Isla de refugio para ciclistas",
+          "terms": "isla de refugio para ciclistas,área de descanso para bicicletas,refugio para bicicletas"
+        },
+        "highway/cycleway/traffic_island_shared": {
+          "name": "Isla de refugio para ciclistas y peatones",
+          "terms": "isla de refugio para ciclistas y peatones,área de descanso para bicicletas y peatones,refugio para bicis y caminantes"
+        },
         "highway/cyclist_waiting_aid": {
           "name": "Ayuda de espera para ciclistas",
           "terms": "ayuda de espera para ciclistas,dispositivo de espera para ciclistas,señal de espera para ciclistas,barandilla para pies,reposapiés,agarre,barandilla,manija,reposamanos,barandilla de sujeción"
@@ -2609,6 +2621,18 @@
         "highway/path/boardwalk": {
           "name": "Pasarela de tablones",
           "terms": "muelle,pasarela de tablones,sendero elevado de madera,paseo de tablas,tablas,madera,tarima,entarimado,paseo marítimo,puente"
+        },
+        "highway/path/crossing": {
+          "name": "Cruce para ciclistas y peatones"
+        },
+        "highway/path/crossing/traffic_signals": {
+          "name": "Cruce para ciclistas y peatones con señales peatonales"
+        },
+        "highway/path/crossing/uncontrolled": {
+          "name": "Cruce marcado para ciclistas y peatones"
+        },
+        "highway/path/crossing/unmarked": {
+          "name": "Cruce no marcado para ciclistas y peatones"
         },
         "highway/path/informal": {
           "name": "Camino informal",
@@ -2998,6 +3022,14 @@
         "landuse/meadow": {
           "name": "Prado",
           "terms": "prado,pradera,campo,mies,braniza,braña"
+        },
+        "landuse/meadow_orchard/meadow": {
+          "name": "Prado con árboles frutales",
+          "terms": "prado con árboles frutales,campo con árboles frutales,área verde con frutales,campo frutal,área verde con árboles de frutas"
+        },
+        "landuse/meadow_orchard/orchard": {
+          "name": "Huerto en pradera",
+          "terms": "huerto en pradera,plantación de frutales en campo,frutales en campo abierto,frutales en campo,plantación de frutales en pradera"
         },
         "landuse/military": {
           "name": "Área militar",
@@ -4045,6 +4077,10 @@
         "natural": {
           "name": "Elemento natural"
         },
+        "natural/arch": {
+          "name": "Arco natural",
+          "terms": "arco natural,puente de roca,formación rocosa arqueada."
+        },
         "natural/bare_rock": {
           "name": "Roca desnuda",
           "terms": "roca,roca desnuda,roca descubierta,costa rocosa,montaña"
@@ -4122,7 +4158,7 @@
           "terms": "roca,piedra"
         },
         "natural/saddle": {
-          "name": "Collado",
+          "name": "Collado / Abra",
           "terms": "collado,depresión,paso de montaña,portillo,punto de silla,abra,ensillada,cañada"
         },
         "natural/sand": {
@@ -4504,6 +4540,10 @@
           "name": "Oficina de terapeuta",
           "terms": "terapia,terapeuta,fisioterapia"
         },
+        "office/translator": {
+          "name": "Oficina de traducción",
+          "terms": "oficina de traducción,agencia de traducción,centro de traducción,servicio de traducción"
+        },
         "office/travel_agent": {
           "name": "Agencia de viajes"
         },
@@ -4550,8 +4590,7 @@
           "terms": "esquí de fondo,esqui de fondo,esquí nórdico,esqui nordico,pista,esquí,esqui,xc"
         },
         "piste/piste": {
-          "name": "Pista / Sendero de deportes de nieve",
-          "terms": "esquí,esqui,nórdico,nordico,crosscountry,de fondo,cuesta abajo,alpino,snowboard,skitour,esquí de travesía,trineo,luge,husky,caballo,senderismo de invierno,raquetas de nieve,hielo,patinaje"
+          "name": "Sendero / Pista de deportes de nieve (tipo no especificado)"
         },
         "piste/ski_jump": {
           "name": "Pista de salto en esquí",
@@ -4731,8 +4770,8 @@
           "terms": "columpio,hamaca,hamacarse,amaca"
         },
         "playground/teenshelter": {
-          "name": "Refugio para jóvenes",
-          "terms": "refugio,abrigo,albergue,amparo,joven,adolescente"
+          "name": "Refugio para jugar",
+          "terms": "refugio,abrigo,albergue,amparo,joven,adolescente,juvenil,juegos"
         },
         "playground/tetherball": {
           "name": "Poste de Tetherball",
@@ -5550,8 +5589,12 @@
           "name": "Tienda de regalos",
           "terms": "regalo,obsequio,presentes,recuerdo,souvenir,regaleria,regionales"
         },
+        "shop/gold_buyer": {
+          "name": "Comprador de oro",
+          "terms": "comprador de oro,adquisición de metales preciosos,casa de empeño"
+        },
         "shop/greengrocer": {
-          "name": "Verdulería / Frutería",
+          "name": "Tienda de frutas y verduras",
           "terms": "hortaliza,verdura,fruta,verdulería,frutería,legumbre,vegetal,verdulero,frutero"
         },
         "shop/hairdresser": {
@@ -5818,8 +5861,8 @@
           "terms": "deporte,deportivo"
         },
         "shop/stationery": {
-          "name": "Artículos de papelería y oficina",
-          "terms": "papel,papelería,escritorio,oficina,artículos de papelería,material de papelería,material de escritorio,papel de escribir,artículos de oficina,librería,libreria,artículos escolares,papelera"
+          "name": "Papelería/Librería",
+          "terms": "papel,papelería,escritorio,oficina,artículos de papelería,material de papelería,material de escritorio,papel de escribir,artículos de oficina,librería,libreria,artículos escolares,papelera,artículos de papelería y oficina"
         },
         "shop/storage_rental": {
           "name": "Alquiler de espacios para almacenaje",

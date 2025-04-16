@@ -1,4 +1,32 @@
 <!-- Do not edit! This file was generated automatically from CHANGELOG.md via UpdateChangelogTask -->
+<h2>v60.3</h2>
+<ul>
+<li>downgraded third-party component because it caused crashes due to memory leaks (see <a href="https://github.com/streetcomplete/StreetComplete/issues/6166">#6166</a>)</li>
+<li>fix undoing hiding a quest seemingly didn't work (<a href="https://github.com/streetcomplete/StreetComplete/issues/6162">#6162</a>)</li>
+<li>improve location permission wording (<a href="https://github.com/streetcomplete/StreetComplete/issues/6156">#6156</a>)</li>
+<li>Bus stop quests: Don't ask for private ones (<a href="https://github.com/streetcomplete/StreetComplete/issues/6158">#6158</a>), by <a href="https://github.com/k-yle">k-yle</a></li>
+</ul>
+<h2>v60.2</h2>
+<h3>Fixes</h3>
+<ul>
+<li>fixes for opening app from Geo URIs (<a href="https://github.com/streetcomplete/StreetComplete/issues/6101">#6101</a>)</li>
+<li>fix on rare occasions, a solved quest would immediately reappear (<a href="https://github.com/streetcomplete/StreetComplete/issues/5545">#5545</a>), thanks <a href="https://github.com/Helium314">Helium314</a></li>
+<li>Road surfaces: fix quest immediately reappeared when answer conflicted with the recorded information for the track visibility (<a href="https://github.com/streetcomplete/StreetComplete/issues/6116">#6116</a>)</li>
+<li>Opening hours: fix don't consider a rare but valid syntax for opening hours as invalid (<a href="https://github.com/streetcomplete/StreetComplete/issues/6125">#6125</a>)</li>
+<li>fix escalators were previously labeled as steps (<a href="https://github.com/streetcomplete/StreetComplete/issues/5728">#5728</a>)</li>
+<li>Car lanes: fix crash on Android &lt; 35 when changing number of lanes</li>
+<li>Fix upload issue when solved quests are far apart enough to trigger OSM vandalism protection (<a href="https://github.com/streetcomplete/StreetComplete/issues/6151">#6151</a>)</li>
+<li>Steps incline: Improve wording (<a href="https://github.com/streetcomplete/StreetComplete/issues/6135">#6135</a>), by <a href="https://github.com/andrewharvey">andrewharvey</a></li>
+</ul>
+<h3>Improvements</h3>
+<ul>
+<li>Hairdresser customers: Don't ask for barber shops (<a href="https://github.com/streetcomplete/StreetComplete/issues/6108">#6108</a>)</li>
+<li>Bus stop names: Suggest names of nearby bus stops (e.g. the one from the other side of the road) (<a href="https://github.com/streetcomplete/StreetComplete/issues/6097">#6097</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/5187">#5187</a>) by <a href="https://github.com/kmpoppe">kmpoppe</a></li>
+<li>Baby changing table: Also ask when information about toilets isn't recorded yet (<a href="https://github.com/streetcomplete/StreetComplete/issues/6115">#6115</a>), by <a href="https://github.com/agent-redd">agent-redd</a></li>
+<li>Places overlay: Display correctly and allow to select some generic places (some office, some club, some healthcare facility, some shop) (<a href="https://github.com/streetcomplete/StreetComplete/issues/6140">#6140</a>)</li>
+<li>small improvements on the places overlay (<a href="https://github.com/streetcomplete/StreetComplete/issues/6100">#6100</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/5985">#5985</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/6086">#6086</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/6085">#6085</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/6140">#6140</a>)</li>
+<li>more small improvements (<a href="https://github.com/streetcomplete/StreetComplete/issues/6139">#6139</a>, ...)</li>
+</ul>
 <h2>v60.1</h2>
 <h3>Improvements</h3>
 <ul>
@@ -1255,7 +1283,7 @@ Special thanks to <a href="https://github.com/FloEdelmann">FloEdelmann</a> for h
 <li>Enhance maxspeed collection for the United Kingdom (<a href="https://github.com/streetcomplete/StreetComplete/issues/2745">#2745</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/2748">#2748</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/2750">#2750</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/2811">#2811</a>), by <a href="https://github.com/arrival-spring">arrival-spring</a></li>
 <li>Periodically ask for the existence of BBQ spots, ticket validators, emergency life rings and emergency phones (<a href="https://github.com/streetcomplete/StreetComplete/issues/2679">#2679</a>), thanks <a href="https://github.com/arrival-spring">arrival-spring</a></li>
 <li>Also ask for the surface of service roads as long as they are not driveways (<a href="https://github.com/streetcomplete/StreetComplete/issues/2783">#2783</a>)</li>
-<li>Don't remove the check_date tag if it is already tagged, instead, update it (<a href="https://github.com/streetcomplete/StreetComplete/issues/2861">#2861</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/2883">#2883</a>)</li>
+<li>Don't remove the <code>check_date</code> tag if it is already tagged, instead, update it (<a href="https://github.com/streetcomplete/StreetComplete/issues/2861">#2861</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/2883">#2883</a>)</li>
 <li>Don't tag <code>foot=use_sidepath</code> on the road if there is a separate sidewalk (<a href="https://github.com/streetcomplete/StreetComplete/issues/2895">#2895</a>)</li>
 </ul>
 <h3>Other Enhancements</h3>
@@ -1369,7 +1397,7 @@ Due to big changes under the hood, when you upgrade to the next major version, l
 <li>Check existence: Display brand name if object has no name (<a href="https://github.com/streetcomplete/StreetComplete/issues/2512">#2512</a>)</li>
 <li>Sidewalks: Ask for residential roads even if they are not lit (<a href="https://github.com/streetcomplete/StreetComplete/issues/2519">#2519</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/2531">#2531</a>), by <a href="https://github.com/riQQ">riQQ</a></li>
 <li>Recycling materials: Do not ask for private containers (<a href="https://github.com/streetcomplete/StreetComplete/issues/2515">#2515</a>)</li>
-<li>Road name: Do not ask if name:left or name:right is defined already (<a href="https://github.com/streetcomplete/StreetComplete/issues/2526">#2526</a>)</li>
+<li>Road name: Do not ask if <code>name:left</code> or <code>name:right</code> is defined already (<a href="https://github.com/streetcomplete/StreetComplete/issues/2526">#2526</a>)</li>
 <li>A few clarifications in wording (<a href="https://github.com/streetcomplete/StreetComplete/issues/2467">#2467</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/2431">#2431</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/2539">#2539</a>)</li>
 </ul>
 <h3>Fixes &amp; More</h3>
@@ -2723,7 +2751,7 @@ You can also read this list of changes later in that screen if you are impatient
 <li>new languages: Malayalam, Czech, Portuguese (PT)</li>
 </ul>
 <h2>v0.10</h2>
-<p>fixed <a href="https://github.com/streetcomplete/StreetComplete/issues/108">#108</a>: opening_hours used wrong separator</p>
+<p>fixed <a href="https://github.com/streetcomplete/StreetComplete/issues/108">#108</a>: <code>opening_hours</code> used wrong separator</p>
 <h2>v0.9</h2>
 <ul>
 <li>add Lithuanian language</li>

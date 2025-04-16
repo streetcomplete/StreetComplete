@@ -1263,8 +1263,6 @@ Pārvietot tagad?"</string>
     <string name="overlay_surface">"Virsmas"</string>
     <string name="overlay_path_surface_segregated">"Sadalīt velosipēdu un gājēju daļās"</string>
     <string name="quest_crossing_title2">"Vai šeit ir pāreja?"</string>
-    <string name="quest_crossing_yes">"Jā (apmale ir pazemināta šeit vai te ir marķējumi)"</string>
-    <string name="quest_crossing_no">"Nē, bet pārvietošanās ir iespējama"</string>
     <string name="quest_crossing_prohibited">"Nē, pārvietošanās ir aizliegts vai neiespējams"</string>
     <string name="quest_hairdresser_title">"Kuri klienti var apmeklēt frizieri?"</string>
     <string name="quest_hairdresser_male_and_female">"Jebkurš"</string>

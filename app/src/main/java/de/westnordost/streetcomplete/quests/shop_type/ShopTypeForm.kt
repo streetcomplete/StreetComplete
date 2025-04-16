@@ -5,11 +5,10 @@ import android.view.View
 import android.widget.RadioButton
 import de.westnordost.osmfeatures.Feature
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
-import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.databinding.ViewShopTypeBinding
 import de.westnordost.streetcomplete.osm.POPULAR_PLACE_FEATURE_IDS
 import de.westnordost.streetcomplete.osm.isPlace
+import de.westnordost.streetcomplete.osm.toElement
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.util.ktx.geometryType
 import de.westnordost.streetcomplete.view.controller.FeatureViewController
@@ -45,16 +44,11 @@ class ShopTypeForm : AbstractOsmQuestForm<ShopTypeAnswer>() {
                 element.geometryType,
                 countryOrSubdivisionCode,
                 featureCtrl.feature?.name,
-                ::filterOnlyShops,
+                { it.toElement().isPlace() },
                 ::onSelectedFeature,
                 POPULAR_PLACE_FEATURE_IDS,
             ).show()
         }
-    }
-
-    private fun filterOnlyShops(feature: Feature): Boolean {
-        val fakeElement = Node(-1L, LatLon(0.0, 0.0), feature.tags, 0)
-        return fakeElement.isPlace()
     }
 
     private fun onSelectedFeature(feature: Feature) {
@@ -66,7 +60,7 @@ class ShopTypeForm : AbstractOsmQuestForm<ShopTypeAnswer>() {
         when (selectedRadioButtonId) {
             R.id.vacantRadioButton    -> applyAnswer(IsShopVacant)
             R.id.leaveNoteRadioButton -> composeNote()
-            R.id.replaceRadioButton   -> applyAnswer(ShopType(featureCtrl.feature!!.addTags))
+            R.id.replaceRadioButton   -> applyAnswer(ShopType(featureCtrl.feature!!))
         }
     }
 

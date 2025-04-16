@@ -1,5 +1,7 @@
 package de.westnordost.streetcomplete.osm
 
+import de.westnordost.osmfeatures.BaseFeature
+import de.westnordost.osmfeatures.GeometryType
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryChange
@@ -9,7 +11,7 @@ import kotlin.test.assertEquals
 
 class PlaceKtTest {
 
-    @Test fun `replacePlace removes all previous survey keys`() {
+    @Test fun `applyReplacePlaceTo removes all previous survey keys`() {
         assertEquals(
             setOf(
                 StringMapEntryAdd("a", "b"),
@@ -33,7 +35,7 @@ class PlaceKtTest {
     }
 
     // see KEYS_THAT_SHOULD_BE_REMOVED_WHEN_PLACE_IS_REPLACED
-    @Test fun `replacePlace removes certain tags connected with the type of place`() {
+    @Test fun `applyReplacePlaceTo removes certain tags connected with the type of place`() {
         assertEquals(
             setOf(
                 StringMapEntryAdd("shop", "ice_cream"),
@@ -68,6 +70,12 @@ class PlaceKtTest {
 
 private fun replacePlaceApplied(newTags: Map<String, String>, oldTags: Map<String, String>): Set<StringMapEntryChange> {
     val cb = StringMapChangesBuilder(oldTags)
-    cb.replacePlace(newTags)
+    val feature = BaseFeature(
+        id = "id",
+        tags = newTags,
+        geometry = listOf(GeometryType.POINT),
+        names = listOf("name")
+    )
+    feature.applyReplacePlaceTo(cb)
     return cb.create().changes
 }

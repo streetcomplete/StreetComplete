@@ -156,10 +156,14 @@ class MapDataWithEditsSource internal constructor(
 
                 callOnReplacedForBBox(bbox, mapDataWithGeometry)
 
+                // copy data, as updatesWhileReplacingBBox can be modified after the synchronized line below
+                val updated = MutableMapDataWithGeometry(updatesWhileReplacingBBox.updated)
+                val deleted = ArrayList(updatesWhileReplacingBBox.deleted)
+                updatesWhileReplacingBBox.clear()
+
                 synchronized(isReplacingForBBoxLock) { isReplacingForBBox = false }
 
-                callOnUpdated(updatesWhileReplacingBBox.updated, updatesWhileReplacingBBox.deleted)
-                updatesWhileReplacingBBox.clear()
+                callOnUpdated(updated, deleted)
             }
         }
 

@@ -1268,8 +1268,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="overlay_surface">"路面"</string>
     <string name="overlay_path_surface_segregated">"自転車道と歩道が分かれる"</string>
     <string name="quest_crossing_title2">"ここに横断歩道はありますか。"</string>
-    <string name="quest_crossing_yes">"はい(例:縁石がここで低くなっている、またはマーキングがある)"</string>
-    <string name="quest_crossing_no">"いいえ、しかし横断は可能です"</string>
     <string name="quest_crossing_prohibited">"いいえ、横断は禁止または不可能です"</string>
     <string name="quest_hairdresser_title">"この美容院にはどんなお客さんが来るんですか?"</string>
     <string name="quest_hairdresser_male_and_female">"だれでも"</string>

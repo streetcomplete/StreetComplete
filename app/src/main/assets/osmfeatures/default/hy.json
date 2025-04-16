@@ -2,17 +2,26 @@
   "hy": {
     "presets": {
       "presets": {
+        "address": {
+          "name": "Հասցէ"
+        },
         "aeroway/aerodrome": {
           "name": "Օդանավակայան"
         },
         "aeroway/helipad": {
           "name": "Ուղաթիռային հրապարակ"
         },
+        "amenity/atm": {
+          "name": "Բանկոմատ"
+        },
         "amenity/bank": {
           "name": "Բանկ"
         },
         "amenity/bar": {
           "name": "Բար"
+        },
+        "amenity/bench": {
+          "name": "Նստարան"
         },
         "amenity/bicycle_parking": {
           "name": "Հեծանվային կայանատեղի"
@@ -38,8 +47,35 @@
         "barrier/wall": {
           "name": "Պատ"
         },
+        "building": {
+          "name": "Շինություն"
+        },
+        "building_point": {
+          "name": "Շինություն"
+        },
+        "highway/crossing": {
+          "name": "Անցում (հետիոտնի)"
+        },
         "highway/steps": {
           "name": "Աստիճաններ"
+        },
+        "line": {
+          "name": "Գիծ"
+        },
+        "place": {
+          "name": "Վայր"
+        },
+        "place/city": {
+          "name": "Քաղաք"
+        },
+        "place/hamlet": {
+          "name": "Գիւղակ"
+        },
+        "place/square": {
+          "name": "Ուղղանկիւն"
+        },
+        "point": {
+          "name": "Կետ"
         },
         "relation": {
           "name": "Յարաբերութիւն"

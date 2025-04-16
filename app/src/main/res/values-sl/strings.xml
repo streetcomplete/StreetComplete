@@ -1268,8 +1268,6 @@ Naredi enako za drugo stran, če ta obstaja."</string>
     <string name="overlay_surface">"Površine"</string>
     <string name="overlay_path_surface_segregated">"Razdeli se na kolesarski del in del za pešce"</string>
     <string name="quest_crossing_title2">"Ali je tukaj prehod"</string>
-    <string name="quest_crossing_yes">"Ja (robnik je znižan ali pa je prehod označen)"</string>
-    <string name="quest_crossing_no">"Ne, ampak je prečkanje mogoče"</string>
     <string name="quest_crossing_prohibited">"Ne, prečkanje je prepovedano ali nemogoče"</string>
     <string name="quest_hairdresser_title">"Kdo so stranke v tem frizerskem salonu?"</string>
     <string name="quest_hairdresser_male_and_female">"Vsi"</string>

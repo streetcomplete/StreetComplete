@@ -3,6 +3,10 @@ package de.westnordost.streetcomplete.osm
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 
+/** Return whether this element is a kind of thing, regardless whether it is disused or not */
+fun Element.isThingOrDisusedThing(): Boolean =
+    isThing() || isDisusedThing()
+
 fun Element.isThing(): Boolean =
     IS_THING_EXPRESSION.matches(this)
 
@@ -36,6 +40,7 @@ private val IS_THING_EXPRESSION by lazy {
         "aeroway" to listOf(
             "navigationaid",
             "windsock",
+            "gate",
         ),
         "amenity" to listOf(
             // grouped by subcategory, sorted by alphabet
@@ -145,9 +150,9 @@ private val IS_THING_EXPRESSION by lazy {
             // "speed_camera", - while not directly a sign, it definitely belongs into the traffic
             //                   signals/controls category
             // "speed_display", this is rather like a sign - signs should not go in here
-            "street_lamp", // candidate to be moved to lit overlay?
+            "street_lamp", // maybe should appear also in lit overlay, but is a good reference point while surveying - and more importantly, it would be confusing if they would be missing in Things overlay
             "trailhead",
-            // "traffic_mirror" is rather like a sign - signs should not go in here
+            // "traffic_mirror" is rather like a sign - signs should not go in here, though mirrors are borderline
         ),
         "historic" to listOf(
             "aircraft",
@@ -160,11 +165,11 @@ private val IS_THING_EXPRESSION by lazy {
             // "monument" - it's rather a structure. Small monuments are tagged as "memorial"
             "railway_car",
             "rune_stone",
-            // "ship" - probably too big, more like a structure
+            // "ship" - too big, more like a structure/building
             "stone",
             "tank",
             "vehicle",
-            // "wreck" - probably too big, and usually quite off-shore anyway
+            // "wreck" - too big, and usually quite off-shore anyway
             "wayside_cross",
             "wayside_shrine",
         ),

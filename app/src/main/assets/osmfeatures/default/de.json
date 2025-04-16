@@ -1165,7 +1165,7 @@
         },
         "amenity/theatre/type/amphi": {
           "name": "Amphitheater",
-          "terms": "amphitheater"
+          "terms": "amphitheater,naturtheater,rundbau"
         },
         "amenity/ticket_validator": {
           "name": "Entwerter",
@@ -1913,7 +1913,7 @@
           "terms": "verein,klub"
         },
         "club/scout": {
-          "name": "Pfadfinder",
+          "name": "Pfadfinderstamm",
           "terms": "pfadfinderstamm,pfadfindergruppe,pfadfinderabteilung,pfadfinderverein"
         },
         "club/sport": {
@@ -2290,6 +2290,10 @@
           "name": "Haupteingang",
           "terms": "eingangstür,tür,eingang,hauptzugang,zugang"
         },
+        "entrance/shop": {
+          "name": "Ladeneingang",
+          "terms": "eingangsbereich,eingangstür,zugang"
+        },
         "entrance/staircase": {
           "name": "Treppenhauseingang",
           "terms": "treppe,treppenhaus,stiege,stiegenhaus,treppenaufgang,tür,eingang,zugang,aufgang"
@@ -2491,7 +2495,7 @@
           "terms": "überweg,übergang,überquerung,querung,fußgängerüberweg,fußgängerübergang,fußgängerüberquerung,fußgängerquerung"
         },
         "highway/crossing/traffic_signals": {
-          "name": "Kreuzung mit Fußgängerampel",
+          "name": "Überweg mit Ampelregelung",
           "terms": "fußgängerampel,fußgängerübergang,radübergang"
         },
         "highway/crossing/uncontrolled": {
@@ -2533,6 +2537,14 @@
         "highway/cycleway/moped_link-NL": {
           "name": "Mopedstraße",
           "terms": "mopedstraße"
+        },
+        "highway/cycleway/traffic_island": {
+          "name": "Radfahrerschutzinsel",
+          "terms": "radfahrerschutzinsel,schutzinsel für radfahrer,radverkehrsinsel,fahrradwartemöglichkeit,radfahrerüberquerungshilfe,radweginsel,verkehrsinsel"
+        },
+        "highway/cycleway/traffic_island_shared": {
+          "name": "Rad- und Fußgängerschutzinsel",
+          "terms": "multifunktionsschutzinsel,gemeinsame schutzinsel,überquerungshilfe für radfahrer und fußgänger,verkehrsinsel für radfahrer und fußgänger,fahrrad- und fußgängerinsel,rad- und fußverkehrsinsel,schutzinsel für radfahrer und fußgänger,rad- und fußgängerschutzinsel"
         },
         "highway/cyclist_waiting_aid": {
           "name": "Wartehilfe für Radfahrer",
@@ -2642,6 +2654,18 @@
         "highway/path/boardwalk": {
           "name": "Bohlenweg",
           "terms": "pier,steg,knüppeldamm,erhöhter fußweg aus holz,plankenweg,prügelweg,holzsteg,knüppelweg,bohlenweg,holzweg"
+        },
+        "highway/path/crossing": {
+          "name": "Rad- und Gehwegquerung"
+        },
+        "highway/path/crossing/traffic_signals": {
+          "name": "Rad- und Gehwegquerung mit Ampelregelung"
+        },
+        "highway/path/crossing/uncontrolled": {
+          "name": "Rad- und Gehwegquerung mit Straßenmarkierung"
+        },
+        "highway/path/crossing/unmarked": {
+          "name": "Rad- und Gehwegquerung ohne Straßenmarkierung"
         },
         "highway/path/informal": {
           "name": "Trampelpfad",
@@ -3031,6 +3055,14 @@
         "landuse/meadow": {
           "name": "Wiese / Weide",
           "terms": "landwirtschaftlich genutzte wiese oder weide,almweide,almwiese"
+        },
+        "landuse/meadow_orchard/meadow": {
+          "name": "Streuobstwiese (vereinzelte Obstbäume)",
+          "terms": "obstwiese,obstgarten,bitz,bangert,bongert,bungert,baumgarten,streuobstbau,obstbau"
+        },
+        "landuse/meadow_orchard/orchard": {
+          "name": "Streuobstwiese (zahlreiche Obstbäume)",
+          "terms": "obstwiese,obstgarten,bitz,bangert,bongert,bungert,baumgarten,streuobstbau,obstbau"
         },
         "landuse/military": {
           "name": "Militärgelände",
@@ -4091,6 +4123,10 @@
         "natural": {
           "name": "Natürliches..."
         },
+        "natural/arch": {
+          "name": "Natursteinbogen",
+          "terms": "natürlicher bogen,felsbogen,natursteinbogen,naturbrücke,felstor,steinbogen,felsdurchbruch,steinbrücke"
+        },
         "natural/bare_rock": {
           "name": "Felsgestein",
           "terms": "blanker fels,anstehender fels,nackter felsen"
@@ -4551,6 +4587,10 @@
           "name": "Therapeut",
           "terms": "therapeut"
         },
+        "office/translator": {
+          "name": "Übersetzer",
+          "terms": "übersetzungsbüro,übersetzungsagentur,übersetzungsdienst,übersetzungsdienste,übersetzungsdienstleister,dolmetscher,sprachdienstleister,lektorat,sprachmittler"
+        },
         "office/travel_agent": {
           "name": "Reisebüro"
         },
@@ -4569,11 +4609,11 @@
           "name": "Pipeline Objekt"
         },
         "pipeline/substation": {
-          "name": "Unterstation",
+          "name": "Pipeline-Unterstation",
           "terms": "unterstation"
         },
         "pipeline/valve": {
-          "name": "Durchlussregelung",
+          "name": "Durchflussregelung",
           "terms": "durchflussregelung"
         },
         "piste/downhill": {
@@ -4597,8 +4637,7 @@
           "terms": "langlauf,loipe,biathlon"
         },
         "piste/piste": {
-          "name": "Wintersport Piste / Strecke",
-          "terms": "wintersport,winterwandern,schneesport,alpin,skisport,skiwanderung,skiwanderweg,piste,loipe,abfahrt,schlitten,schlittenhund,eislauf,eisbahn,schneeschuh"
+          "name": "Schneesportstrecke / Piste (nicht spezifizierter Typ)"
         },
         "piste/ski_jump": {
           "name": "Skisprungpiste",
@@ -5600,6 +5639,10 @@
           "name": "Geschenkeladen",
           "terms": "geschenkeladen,geschenkehandlung,geschenkartikelladen,souvenirladen,souvenirgeschäft"
         },
+        "shop/gold_buyer": {
+          "name": "Goldankauf",
+          "terms": "goldankaufstelle,goldhandel,edelmetallhandel,goldbörse,goldhändler,altgoldankauf,schmuckankauf"
+        },
         "shop/greengrocer": {
           "name": "Obst- und Gemüseladen",
           "terms": "obsthandlung,gemüsehändler,gemüsehandlung,obst- und gemüsehandlung"
@@ -6070,8 +6113,8 @@
           "terms": "jugencampingplatz,scoutcampingplatz,camping"
         },
         "tourism/caravan_site": {
-          "name": "Wohnwagen-Campingplatz",
-          "terms": "wohnwagenpark,wohnmobil-stellplätze"
+          "name": "Wohnmobil-Stellplatz",
+          "terms": "wohnmobilstellplatz,wohnwagenpark,wohnmobil-stellplätze,reisemobilstellplatz,wohnmobilpark,wohnmobil-campingplatz,reisemobilpark,wohnmobilhafen,reisemobilplatz,reisemobilhafen"
         },
         "tourism/chalet": {
           "name": "Ferienhaus",

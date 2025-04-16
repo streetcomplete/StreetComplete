@@ -88,6 +88,10 @@
           "name": "Zubar",
           "terms": "zubar,stomatolog"
         },
+        "amenity/doctors": {
+          "name": "Doktor",
+          "terms": "doktor,ljekar"
+        },
         "amenity/drinking_water": {
           "name": "Voda za piće",
           "terms": "voda za piće,pitka voda"
@@ -174,6 +178,10 @@
           "name": "Gradska vijećnica",
           "terms": "gradska vijećnica,vijećnica"
         },
+        "amenity/vending_machine": {
+          "name": "Automat",
+          "terms": "automat,automat za prodaju pića,automat sa pićem,automat sa slatkišima"
+        },
         "area": {
           "name": "Područje",
           "terms": "područje,zona,oblast"
@@ -237,6 +245,9 @@
           "name": "Zid",
           "terms": "zid,zidić,bedem"
         },
+        "boundary": {
+          "name": "Granica"
+        },
         "boundary/administrative": {
           "name": "Admninistrativna granica",
           "terms": "administrativna granica,administrativna linija"
@@ -244,6 +255,9 @@
         "building": {
           "name": "Građevina",
           "terms": "zgrada,građevina,kuća"
+        },
+        "building/bunker": {
+          "name": "Bunker"
         },
         "building/commercial": {
           "name": "Poslovna zgrada",
@@ -268,6 +282,9 @@
         "building/residential": {
           "name": "Stambena zgrada",
           "terms": "stambena zgrada,zgrada za stanovanje"
+        },
+        "building_point": {
+          "name": "Građevina"
         },
         "craft/beekeeper": {
           "name": "Pčelar"
@@ -360,6 +377,10 @@
           "name": "Rupa za golf",
           "terms": "golf rupa,rupa za golf loptice"
         },
+        "golf/lateral_water_hazard": {
+          "name": "Vodena opasnost sa strane",
+          "terms": "opasnost of vode sa strane,voda sa strane"
+        },
         "golf/rough": {
           "name": "Rough",
           "terms": "područje \"divlje\" trave van igre,trava van golf terena"
@@ -368,9 +389,17 @@
           "name": "Tee Box",
           "terms": "\"tee\" kutija,kutija područja na početku rupe"
         },
+        "golf/water_hazard": {
+          "name": "Vodena opasnost",
+          "terms": "opasnost od vode,vodena opasnost"
+        },
         "highway/bridleway": {
           "name": "Konjska staza",
           "terms": "konjska staza,konjička staza,konjski trag"
+        },
+        "highway/crossing": {
+          "name": "Prelaz",
+          "terms": "prelaz,pješački prelaz"
         },
         "highway/cycleway": {
           "name": "Biciklistička staza",
@@ -379,6 +408,10 @@
         "highway/footway": {
           "name": "Pješačka staza",
           "terms": "pješačka staza,staza,ugažena staza"
+        },
+        "highway/footway/sidewalk": {
+          "name": "Trotoar",
+          "terms": "trotoar"
         },
         "highway/living_street": {
           "name": "Stambena ulica",
@@ -535,13 +568,27 @@
           "name": "Livada",
           "terms": "livada,prirodni travnjak"
         },
+        "landuse/military/barracks": {
+          "name": "Kasarna",
+          "terms": "kasarna,zgrada kasarne"
+        },
+        "landuse/military/range": {
+          "name": "Strelište",
+          "terms": "strelište,vojni poligon,poligon za vojne vježbe"
+        },
         "landuse/orchard": {
           "name": "Voćnjak",
           "terms": "voćnjak,uzgoj voća"
         },
+        "landuse/pond": {
+          "name": "Ribnjak"
+        },
         "landuse/quarry": {
           "name": "Rudnik",
           "terms": "kamenolom,vađenje kamena"
+        },
+        "landuse/reservoir": {
+          "name": "Rezervoar"
         },
         "landuse/vineyard": {
           "name": "Vinograd",
@@ -628,7 +675,8 @@
           "terms": "šumski prosjek,prosjek kroz šumu"
         },
         "man_made/embankment": {
-          "name": "Nasip"
+          "name": "Nasip",
+          "terms": "nasip"
         },
         "man_made/flagpole": {
           "name": "Jarbol",
@@ -653,6 +701,10 @@
         "man_made/tower": {
           "name": "Toranj",
           "terms": "toranj,kula"
+        },
+        "man_made/tower/observation": {
+          "name": "Osmatračnica",
+          "terms": "osmatračnica,toranj za osmatranje,platforma za osmatranje,toranj za turiste,protupožarni toranj"
         },
         "man_made/wastewater_plant": {
           "name": "Postrojenje za obradu otpadnih voda",
@@ -722,6 +774,10 @@
           "name": "Voda",
           "terms": "voda"
         },
+        "natural/water/basin": {
+          "name": "Sliv",
+          "terms": "sliv,bazen"
+        },
         "natural/water/lake": {
           "name": "Jezero",
           "terms": "jezero,vodom ispunjena kopnena depresija"
@@ -744,6 +800,10 @@
         },
         "office/administrative": {
           "name": "Administrativni ured"
+        },
+        "office/diplomatic/embassy": {
+          "name": "Ambasada",
+          "terms": "ambasada,konzulat,predstavništvo strane zemlje"
         },
         "office/educational_institution": {
           "name": "Obrazovna institucija",
@@ -814,6 +874,9 @@
           "name": "Lokalitet",
           "terms": "lokalitet,specifično mjesto"
         },
+        "place/square": {
+          "name": "Kvadrat"
+        },
         "place/town": {
           "name": "Gradić",
           "terms": "gradić,mali grad,manje urbano područje"
@@ -842,6 +905,10 @@
           "name": "Naponski stub",
           "terms": "naponski stub,stub el. napajanja"
         },
+        "power/substation": {
+          "name": "Trafo stanica",
+          "terms": "trafo,trafo stanica"
+        },
         "power/tower": {
           "name": "Visokonaponski dalekovod",
           "terms": "visokonaponski dalekovod,visokonaponski toranj"
@@ -849,6 +916,9 @@
         "power/transformer": {
           "name": "Transformator",
           "terms": "transformator,transformator el. energije"
+        },
+        "public_transport/platform/bus_point": {
+          "terms": "autobuska stanica,autobusko stajalište"
         },
         "railway/abandoned": {
           "name": "Napuštena željeznica",
@@ -1025,6 +1095,9 @@
           "name": "Supermarket",
           "terms": "supermarket,prodaja robe široke potrošnje"
         },
+        "shop/tailor": {
+          "name": "Krojač"
+        },
         "shop/toys": {
           "name": "Prodavnica igračaka",
           "terms": "prodavnica igračaka,radnja za prodaju igračaka"
@@ -1038,7 +1111,8 @@
           "terms": "prodavnica guma,radnja za prodaju auto-guma"
         },
         "shop/vacant": {
-          "name": "Prodavnica za iznajmljivanje"
+          "name": "Prodavnica za iznajmljivanje",
+          "terms": "prodavnica za iznajmljivanje,prodavnica za najam"
         },
         "shop/video": {
           "name": "Video klub",
@@ -1105,7 +1179,8 @@
           "terms": "administrativna granica,administrativna linija"
         },
         "type/multipolygon": {
-          "name": "Multipoligon"
+          "name": "Multipoligon",
+          "terms": "multipoligon,mnogougaonik"
         },
         "type/restriction": {
           "name": "Zabrana",
@@ -1154,6 +1229,10 @@
         "type/route_master": {
           "name": "Informacije o rutama",
           "terms": "informacije o rutama,informacije o trasama"
+        },
+        "type/waterway": {
+          "name": "Vodotok",
+          "terms": "vodotok,vodeni tok"
         },
         "waterway/canal": {
           "name": "Kanal",

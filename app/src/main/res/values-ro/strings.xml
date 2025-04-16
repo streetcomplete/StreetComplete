@@ -1262,8 +1262,6 @@ Doriți să îl mutați acum?"</string>
     <string name="overlay_surface">"Suprafețe"</string>
     <string name="overlay_path_surface_segregated">"Împărțită în parte pentru biciclete și parte pentru pietoni"</string>
     <string name="quest_crossing_title2">"Se poate traversa pe aici?"</string>
-    <string name="quest_crossing_yes">"Da (e.g. bordura este joasă aici sau sunt marcaje)"</string>
-    <string name="quest_crossing_no">"Nu, dar trecerea este posibilă"</string>
     <string name="quest_crossing_prohibited">"Nu, dar trecerea este interzisă sau imposibilă"</string>
     <string name="quest_hairdresser_title">"Ce clienți frecventează acest coafor?"</string>
     <string name="quest_hairdresser_male_and_female">"Oricine"</string>

@@ -1891,6 +1891,13 @@
       "shop": "greengrocer"
     }
   },
+  "shop/gold_buyer": {
+    "icon": "fas-hand-holding",
+    "geometry": ["point", "area"],
+    "tags": {
+      "shop": "gold_buyer"
+    }
+  },
   "shop/gift": {
     "icon": "maki-gift",
     "geometry": ["point", "area"],
@@ -3613,8 +3620,7 @@
       "generator:method": "photovoltaic",
       "generator:type": "solar_photovoltaic_panel",
       "generator:output:electricity": "*",
-      "building": "roof",
-      "layer": "1"
+      "building": "roof"
     }
   },
   "power/cable/underground": {
@@ -3981,13 +3987,6 @@
       "piste:type": "ski_jump"
     }
   },
-  "piste/piste": {
-    "icon": "fas-skiing",
-    "geometry": ["line", "area"],
-    "tags": {
-      "piste:type": "*"
-    }
-  },
   "piste/nordic": {
     "icon": "fas-skiing-nordic",
     "geometry": ["line", "area"],
@@ -4015,6 +4014,14 @@
     "tags": {
       "piste:type": "downhill"
     }
+  },
+  "piste/piste": {
+    "icon": "fas-skiing",
+    "geometry": ["line", "area"],
+    "tags": {
+      "piste:type": "*"
+    },
+    "searchable": false
   },
   "piste/downhill/halfpipe": {
     "icon": "fas-snowboarding",
@@ -4050,6 +4057,13 @@
     "geometry": ["point", "area"],
     "tags": {
       "office": "union"
+    }
+  },
+  "office/translator": {
+    "icon": "fas-language",
+    "geometry": ["point", "area"],
+    "tags": {
+      "office": "translator"
     }
   },
   "office/therapist": {
@@ -4682,6 +4696,13 @@
     "geometry": ["area"],
     "tags": {
       "natural": "bare_rock"
+    }
+  },
+  "natural/arch": {
+    "icon": "temaki-natural_arch",
+    "geometry": ["point", "area"],
+    "tags": {
+      "natural": "arch"
     }
   },
   "natural/wood_point": {
@@ -8021,13 +8042,75 @@
       "surface": "wood"
     }
   },
+  "highway/path/crossing": {
+    "icon": "temaki-cyclist_crosswalk",
+    "geometry": ["line"],
+    "tags": {
+      "path": "crossing"
+    },
+    "addTags": {
+      "highway": "path",
+      "path": "crossing"
+    },
+    "searchable": false
+  },
+  "highway/path/crossing/unmarked": {
+    "icon": "temaki-pedestrian",
+    "geometry": ["line"],
+    "tags": {
+      "highway": "path",
+      "path": "crossing",
+      "crossing": "unmarked"
+    },
+    "addTags": {
+      "highway": "path",
+      "path": "crossing",
+      "crossing": "unmarked",
+      "crossing:markings": "no"
+    },
+    "searchable": false
+  },
+  "highway/path/crossing/uncontrolled": {
+    "icon": "temaki-pedestrian",
+    "geometry": ["line"],
+    "tags": {
+      "highway": "path",
+      "path": "crossing",
+      "crossing": "uncontrolled"
+    },
+    "searchable": false
+  },
+  "highway/path/crossing/traffic_signals": {
+    "icon": "temaki-railway_signals",
+    "geometry": ["line"],
+    "tags": {
+      "highway": "path",
+      "path": "crossing",
+      "crossing": "traffic_signals"
+    },
+    "searchable": false
+  },
+  "highway/path/crossing/marked": {
+    "icon": "temaki-pedestrian_crosswalk",
+    "geometry": ["line"],
+    "tags": {
+      "highway": "path",
+      "path": "crossing",
+      "crossing": "marked"
+    },
+    "addTags": {
+      "highway": "path",
+      "path": "crossing",
+      "crossing": "marked",
+      "crossing:markings": "yes"
+    },
+    "name": "{highway/path/crossing/uncontrolled}",
+    "searchable": false
+  },
   "highway/footway/traffic_island": {
     "icon": "temaki-pedestrian",
     "geometry": ["line"],
     "tags": {
-      "footway": "traffic_island"
-    },
-    "addTags": {
       "highway": "footway",
       "footway": "traffic_island"
     }
@@ -8135,6 +8218,24 @@
     },
     "name": "{highway/footway/crossing/uncontrolled}",
     "searchable": false
+  },
+  "highway/cycleway/traffic_island_shared": {
+    "icon": "temaki-pedestrian_and_cyclist",
+    "geometry": ["line"],
+    "tags": {
+      "highway": "cycleway",
+      "cycleway": "traffic_island",
+      "foot": "designated",
+      "bicycle": "designated"
+    }
+  },
+  "highway/cycleway/traffic_island": {
+    "icon": "fas-biking",
+    "geometry": ["line"],
+    "tags": {
+      "highway": "cycleway",
+      "cycleway": "traffic_island"
+    }
   },
   "highway/cycleway/bicycle_foot": {
     "icon": "temaki-pedestrian_and_cyclist",
@@ -8591,6 +8692,13 @@
       "entrance": "staircase"
     }
   },
+  "entrance/shop": {
+    "icon": "maki-entrance-alt1",
+    "geometry": ["vertex"],
+    "tags": {
+      "entrance": "shop"
+    }
+  },
   "entrance/main": {
     "icon": "maki-entrance-alt1",
     "geometry": ["vertex"],
@@ -8833,32 +8941,6 @@
       "emergency": "fire_hydrant",
       "fire_hydrant:type": "pillar"
     }
-  },
-  "disused/shop": {
-    "icon": "fas-store-alt-slash",
-    "geometry": ["point", "area"],
-    "tags": {
-      "disused:shop": "*"
-    },
-    "matchScore": 0.05,
-    "searchable": false
-  },
-  "disused/railway": {
-    "icon": "temaki-rail_profile",
-    "geometry": ["point", "vertex", "line", "area"],
-    "tags": {
-      "disused:railway": "*"
-    },
-    "matchScore": 0.05,
-    "searchable": false
-  },
-  "disused/amenity": {
-    "geometry": ["point", "vertex", "area"],
-    "tags": {
-      "disused:amenity": "*"
-    },
-    "matchScore": 0.05,
-    "searchable": false
   },
   "disc_golf/tee": {
     "icon": "temaki-disc_golf_basket",
@@ -9416,10 +9498,6 @@
     "geometry": ["area"],
     "tags": {
       "building": "roof"
-    },
-    "addTags": {
-      "building": "roof",
-      "layer": "1"
     },
     "matchScore": 0.5
   },
@@ -10459,7 +10537,7 @@
     }
   },
   "amenity/ticket_validator": {
-    "icon": "temaki-vending_machine",
+    "icon": "temaki-vending_tickets",
     "geometry": ["point", "vertex"],
     "tags": {
       "amenity": "ticket_validator"

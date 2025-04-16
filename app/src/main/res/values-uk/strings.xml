@@ -507,8 +507,8 @@
     <string name="quest_busStopShelter_covered">"Зупинка вкрита повністю"</string>
     <string name="quest_ferry_pedestrian_title">"Чи переправляє цей поромний маршрут пішоходів?"</string>
     <string name="quest_ferry_motor_vehicle_title">"Чи перевозить цей поромний маршрут автотранспорт?"</string>
-    <string name="quest_leave_new_note_photos_are_useful">"Додавання фото може зробити нотатку білтш корисною"</string>
-    <string name="create_new_note_hint">"Краще залишить нотатку місцевою мовою, інакше - англійською"</string>
+    <string name="quest_leave_new_note_photos_are_useful">"Додавання фото може зробити нотатку більш корисною"</string>
+    <string name="create_new_note_hint">"Краще залиште нотатку місцевою мовою, інакше - англійською"</string>
     <string name="quest_leafType_title">"Тут листяні чи хвойні дерева?"</string>
     <string name="quest_leaf_type_needles">"Хвойні"</string>
     <string name="quest_leaf_type_broadleaved">"Листяні"</string>
@@ -1258,8 +1258,8 @@
     <string name="overlay_surface">"Покриття"</string>
     <string name="overlay_path_surface_segregated">"Поділено на вело- та пішохідну смуги"</string>
     <string name="quest_crossing_title2">"Тут є перехід?"</string>
-    <string name="quest_crossing_yes">"Так (наприклад, занижений бордюр або є розмітка)"</string>
-    <string name="quest_crossing_no">"Ні, але перехід можливий"</string>
+    <string name="quest_crossing_yes">"Так, призначено для переходу"</string>
+    <string name="quest_crossing_no">"Не призначено для переходу, проте перехід можливий (наприклад, неформальні стежки)"</string>
     <string name="quest_crossing_prohibited">"Ні, перехід заборонений чи неможливий"</string>
     <string name="quest_hairdresser_title">"Для яких клієнтів ця перукарня?"</string>
     <string name="quest_hairdresser_male_and_female">"Будь-хто"</string>
@@ -1386,7 +1386,7 @@
     <string name="about_title_intro">"Показати вступ"</string>
     <string name="about_category_help">"Справка"</string>
     <string name="quest_camp_power_supply_hint">"Це можуть бути розетки безпосередньо на території табору, розетки в службовій будівлі, доступній для гостей, спеціальна станція для зарядки телефонів, ноутбуків тощо."</string>
-    <string name="quest_barrier_opening_width_bollard">"Яка найширша щілина, через яку тут можна пройти?"</string>
+    <string name="quest_barrier_opening_width_bollard">"Яка тут найбільша ширина проміжку для проходу?"</string>
     <string name="user_profile_all_time_title">"Загалом"</string>
     <string name="user_statistics_country_rank2">"Місце в %s"</string>
     <string name="quest_leafType_tree_is_just_a_stump">"Це просто пень"</string>
