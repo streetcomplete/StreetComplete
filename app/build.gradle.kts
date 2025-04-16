@@ -103,9 +103,6 @@ if (keystorePropertiesFile.exists()) {
 }
 
 repositories {
-    maven {
-        url = URI("https://s01.oss.sonatype.org/content/repositories/snapshots/")
-    }
     google()
     mavenCentral()
 }
@@ -204,8 +201,8 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.8.0")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json-io:1.8.0")
     implementation("com.charleskorn.kaml:kaml:0.72.0")
-    implementation("io.github.pdvrieze.xmlutil:core:0.90.4-SNAPSHOT")
-    implementation("io.github.pdvrieze.xmlutil:coreKXIO:0.90.4-SNAPSHOT")
+    implementation("io.github.pdvrieze.xmlutil:core:0.91.0")
+    implementation("io.github.pdvrieze.xmlutil:core-io:0.91.0")
 
     // map and location
     // upgrading MapLibre blocked by https://github.com/maplibre/maplibre-native/issues/3309
