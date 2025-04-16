@@ -5,6 +5,7 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryChange
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
+import de.westnordost.streetcomplete.osm.nowAsCheckDateString
 import kotlin.test.*
 import kotlin.test.Test
 
@@ -23,7 +24,8 @@ class SurfaceUtilsKtTest {
     @Test fun `update foot and cycleway with common paved surface`() {
         assertEquals(
             setOf(
-                StringMapEntryAdd("surface", "paved")
+                StringMapEntryAdd("surface", "paved"),
+                StringMapEntryAdd("check_date:surface", nowAsCheckDateString()),
             ),
             appliedCommonSurfaceFromFootAndCyclewaySurface(mapOf(
                 "footway:surface" to "asphalt",
@@ -35,7 +37,10 @@ class SurfaceUtilsKtTest {
 
     @Test fun `update foot and cycleway with common unpaved surface`() {
         assertEquals(
-            setOf(StringMapEntryAdd("surface", "unpaved")),
+            setOf(
+                StringMapEntryAdd("surface", "unpaved"),
+                StringMapEntryAdd("check_date:surface", nowAsCheckDateString()),
+            ),
             appliedCommonSurfaceFromFootAndCyclewaySurface(mapOf(
                 "footway:surface" to "gravel",
                 "cycleway:surface" to "sand",
@@ -75,6 +80,7 @@ class SurfaceUtilsKtTest {
             setOf(
                 StringMapEntryModify("surface", "asphalt", "paved"),
                 StringMapEntryDelete("smoothness", "excellent"),
+                StringMapEntryAdd("check_date:surface", nowAsCheckDateString()),
             ),
             appliedCommonSurfaceFromFootAndCyclewaySurface(mapOf(
                 "footway:surface" to "asphalt",
