@@ -11,10 +11,10 @@ import kotlin.test.assertEquals
 
 class AddRoofOrientationTest {
     private val questType = AddRoofOrientation()
-    private val gabledRoofTags = mapOf("roof:shape" to "gabled")
+    private val gabledRoofTags = mapOf("roof:shape" to "gabled", "building" to "yes")
 
     @Test fun `not applicable to way with wrong roof shape`() {
-        val roof = way(tags = mapOf("roof:shape" to "skillion"))
+        val roof = way(tags = mapOf("roof:shape" to "skillion", "building" to "yes"))
 
         assertEquals(false, questType.isApplicableTo(roof))
         assertEquals(0, getApplicableElementsCount(roof, emptyList()))
