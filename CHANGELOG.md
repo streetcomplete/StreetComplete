@@ -1,5 +1,23 @@
 # Changelog
 
+## v61.0
+
+### New quests
+
+- _"Are gluten-free products offered here?"_, disabled by default (#3031, #6143), by @mnalis
+
+### Quest and Overlay improvements
+- Opening hours: Fix semantic issue when specifying off-days at the top (#6191)
+- Surfaces: Fix surface was asked twice when a generic surface was selected (#6172)
+- Smoothness: Don't ask if surface is still correct just after specifying the surface smoothness (#6178)
+- Baby changing tables: Ask at more places (#6167), by @agent-redd
+- Sidewalk overlay: Align which roads are selectable with the bike paths overlay, for consistency (#6185), by @mnalis
+- Various: Ask about more features of alpine and wilderness huts (#6101, #6200), thanks @tiptoptom
+- Other small things (#6209, …), thanks @mnalis
+
+### General Improvements
+- Performance improvements on upload and download (#6150)
+
 ## v60.3
 
 - downgraded third-party component because it caused crashes due to memory leaks (see #6166)
