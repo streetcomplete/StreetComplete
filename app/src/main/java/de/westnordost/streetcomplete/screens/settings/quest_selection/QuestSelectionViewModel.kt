@@ -46,6 +46,7 @@ abstract class QuestSelectionViewModel : ViewModel() {
     abstract fun unselectAllQuests()
     abstract fun resetQuestSelectionsAndOrder()
     abstract fun updateSearchText(text: TextFieldValue)
+    abstract fun onConfigurationChanged()
 }
 
 @Stable
@@ -171,6 +172,10 @@ class QuestSelectionViewModelImpl(
 
     override fun updateSearchText(text: TextFieldValue) {
         _searchText.value = text
+    }
+
+    override fun onConfigurationChanged() {
+        loadQuestTitles()
     }
 
     private fun initQuests() {

@@ -24,6 +24,7 @@ abstract class ShowQuestFormsViewModel : ViewModel() {
     abstract val filteredQuests: StateFlow<List<QuestType>>
 
     abstract fun updateSearchText(text: TextFieldValue)
+    abstract fun onConfigurationChanged()
 }
 
 @Stable
@@ -44,6 +45,10 @@ class ShowQuestFormsViewModelImpl(
 
     override fun updateSearchText(text: TextFieldValue) {
         _searchText.value = text
+    }
+
+    override fun onConfigurationChanged() {
+        loadQuestTitles()
     }
 
     init {
