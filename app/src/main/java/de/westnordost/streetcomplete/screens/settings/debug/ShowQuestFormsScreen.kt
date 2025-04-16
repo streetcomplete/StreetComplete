@@ -18,6 +18,7 @@ import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.AppBarDefaults
 import androidx.compose.material.Divider
 import androidx.compose.material.IconButton
@@ -39,6 +40,7 @@ import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.TextFieldValue
+import androidx.compose.ui.text.intl.LocaleList
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import de.westnordost.streetcomplete.R
@@ -126,7 +128,8 @@ private fun ShowQuestFormsTopAppBar(
                 colors = TextFieldDefaults.textFieldColors(
                     textColor = MaterialTheme.colors.onSurface,
                     backgroundColor = MaterialTheme.colors.surface
-                )
+                ),
+                keyboardOptions = KeyboardOptions(hintLocales = LocaleList.current),
             )
         }
     }
