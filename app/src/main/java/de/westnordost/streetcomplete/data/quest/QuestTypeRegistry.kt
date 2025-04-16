@@ -9,4 +9,4 @@ import de.westnordost.streetcomplete.data.ObjectTypeRegistry
  * It is also used to define a (display) order of the quest types and to assign an ordinal to each
  * quest type for serialization.
  */
-class QuestTypeRegistry(val ordinalsAndEntries: List<Pair<Int, QuestType>>) : ObjectTypeRegistry<QuestType>(ordinalsAndEntries)
+class QuestTypeRegistry(ordinalsAndEntries: List<Pair<Int, QuestType>>) : ObjectTypeRegistry<QuestType>(ordinalsAndEntries)

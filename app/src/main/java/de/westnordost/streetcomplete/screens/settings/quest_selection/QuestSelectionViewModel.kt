@@ -28,10 +28,10 @@ import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
-import kotlinx.coroutines.launch
 
 @Stable
 abstract class QuestSelectionViewModel : ViewModel() {
@@ -60,7 +60,7 @@ class QuestSelectionViewModelImpl(
 ) : QuestSelectionViewModel() {
 
     private val _searchText = MutableStateFlow(TextFieldValue())
-    override val searchText: StateFlow<TextFieldValue> = _searchText
+    override val searchText: StateFlow<TextFieldValue> = _searchText.asStateFlow()
 
     private val questTitles = MutableStateFlow<Map<String, String>>(emptyMap())
 
@@ -107,7 +107,7 @@ class QuestSelectionViewModelImpl(
     override val filteredQuests: StateFlow<List<QuestSelection>> =
         combine(quests, searchText, questTitles) { quests, searchText, titles ->
             filterQuests(quests, searchText.text, titles)
-        }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptyList())
+        }.stateIn(viewModelScope, SharingStarted.Lazily, emptyList())
 
     private val currentCountryCodes = countryBoundaries.value.getIds(prefs.mapPosition)
 
@@ -133,8 +133,8 @@ class QuestSelectionViewModelImpl(
 
     private fun loadQuestTitles() {
         launch(Default) {
-            questTitles.value = questTypeRegistry.ordinalsAndEntries
-                .associate { it.second.name to resourceProvider.getString(it.second.title) }
+            questTitles.value = questTypeRegistry
+                .associate { it.name to resourceProvider.getString(it.title) }
         }
     }
 

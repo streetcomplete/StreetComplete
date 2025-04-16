@@ -42,9 +42,7 @@ fun QuestSelectionScreen(
             onUnselectAll = { viewModel.unselectAllQuests() },
             onReset = { viewModel.resetQuestSelectionsAndOrder() },
             search = searchText,
-            onSearchChange = {
-                viewModel.updateSearchText(it)
-            }
+            onSearchChange = viewModel::updateSearchText,
         )
 
         val filteredQuests by viewModel.filteredQuests.collectAsStateWithLifecycle()

@@ -91,18 +91,7 @@ fun QuestSelectionList(
             itemsIndexed(
                 reorderableItems,
                 key = { _, it -> it.questType.name },
-                contentType = { _, _ -> "QuestSelectionItem" },
             ) { index, item ->
-
-                val rememberedOnToggleSelection = remember(item.questType) {
-                    { isSelected: Boolean ->
-                        if (isSelected && item.questType.defaultDisabledMessage != 0) {
-                            showEnableQuestDialog = item.questType
-                        } else {
-                            onSelectQuest(item.questType, isSelected)
-                        }
-                    }
-                }
 
                 ReorderableItem(
                     state = dragDropState,
@@ -125,7 +114,14 @@ fun QuestSelectionList(
                             if (index > 0) Divider()
                             QuestSelectionRow(
                                 item = item,
-                                onToggleSelection = rememberedOnToggleSelection,
+                                onToggleSelection = { isSelected ->
+                                    // when enabling quest that is disabled by default, require confirmation
+                                    if (isSelected && item.questType.defaultDisabledMessage != 0) {
+                                        showEnableQuestDialog = item.questType
+                                    } else {
+                                        onSelectQuest(item.questType, isSelected)
+                                    }
+                                },
                                 displayCountry = displayCountry,
                                 modifier = Modifier.padding(vertical = 8.dp)
                             )
