@@ -1,6 +1,5 @@
 import java.io.FileInputStream
 import java.io.FileWriter
-import java.net.URI
 import java.util.Properties
 
 plugins {
