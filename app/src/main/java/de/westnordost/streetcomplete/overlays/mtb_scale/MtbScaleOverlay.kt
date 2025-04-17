@@ -39,8 +39,8 @@ class MtbScaleOverlay : Overlay {
     override fun createForm(element: Element?) = MtbScaleOverlayForm()
 
     private fun getStyle(element: Element): Style {
-        val scale = parseMtbScale(element.tags)
-        return PolylineStyle(StrokeStyle(scale.color))
+        val color = parseMtbScale(element.tags).color
+        return PolylineStyle(stroke = color?.let { StrokeStyle(it) })
     }
 }
 
@@ -52,5 +52,5 @@ private val MtbScale?.color get() = when (this?.value) {
     4 -> Color.GOLD
     5 -> Color.ORANGE
     6 -> Color.BLACK
-    else -> Color.DATA_REQUESTED
+    else -> null
 }
