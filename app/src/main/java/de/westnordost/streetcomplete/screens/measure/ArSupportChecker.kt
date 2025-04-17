@@ -11,7 +11,7 @@ class ArSupportChecker(private val context: Context) {
 }
 
 private fun hasArMeasureSupport(context: Context): Boolean =
-    // extra requirements for Sceneform: OpenGL ES 3.1
+    // extra requirement for Sceneform: OpenGL ES 3.1
     context.getSystemService<ActivityManager>()!!.deviceConfigurationInfo.glEsVersion.toDouble() >= 3.1
     // Google Play is required to lead the user through installing the app
     && (

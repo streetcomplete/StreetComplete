@@ -12,7 +12,7 @@ jobs:
     strategy:
       matrix:
         api-level:
-          - 21 # minSdk
+          - 25 # minSdk
           - 35 # targetSdk
         jdk-version:
           - 21
