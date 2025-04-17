@@ -50,8 +50,8 @@ class ShowQuestFormsViewModelImpl(
 
     private fun loadQuestTitles() {
         // This method loads titles only once. When the system language changes, the titles
-        // are not reloaded automatically. Context changes cannot be monitored from
-        // ViewModel, so we can't detect when the system language changes.
+        // are not reloaded automatically since there is no listenable callback from the
+        // system for when the language changes
         launch(Default) {
             questTitles.value = questTypeRegistry
                 .associate { it.name to resourceProvider.getString(it.title) }
