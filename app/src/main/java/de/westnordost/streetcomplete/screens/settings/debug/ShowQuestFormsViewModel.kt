@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.screens.settings.debug
 
 import androidx.compose.runtime.Stable
-import androidx.compose.ui.text.input.TextFieldValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import de.westnordost.streetcomplete.data.quest.QuestType
@@ -19,10 +18,10 @@ import kotlinx.coroutines.flow.stateIn
 @Stable
 abstract class ShowQuestFormsViewModel : ViewModel() {
     abstract val quests: List<QuestType>
-    abstract val searchText: StateFlow<TextFieldValue>
+    abstract val searchText: StateFlow<String>
     abstract val filteredQuests: StateFlow<List<QuestType>>
 
-    abstract fun updateSearchText(text: TextFieldValue)
+    abstract fun updateSearchText(text: String)
 }
 
 @Stable
@@ -31,16 +30,16 @@ class ShowQuestFormsViewModelImpl(
     private val resourceProvider: ResourceProvider,
 ) : ShowQuestFormsViewModel() {
     override val quests get() = questTypeRegistry
-    override val searchText = MutableStateFlow(TextFieldValue())
+    override val searchText = MutableStateFlow("")
 
     private val questTitles = MutableStateFlow<Map<String, String>>(emptyMap())
 
     override val filteredQuests: StateFlow<List<QuestType>> =
         combine(searchText, questTitles) { searchText, titles ->
-            filterQuests(quests, searchText.text, titles)
+            filterQuests(quests, searchText, titles)
         }.stateIn(viewModelScope, SharingStarted.Lazily, emptyList())
 
-    override fun updateSearchText(text: TextFieldValue) {
+    override fun updateSearchText(text: String) {
         searchText.value = text
     }
 

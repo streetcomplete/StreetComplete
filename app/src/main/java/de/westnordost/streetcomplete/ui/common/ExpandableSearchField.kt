@@ -20,8 +20,8 @@ import androidx.compose.ui.text.input.TextFieldValue
 fun ExpandableSearchField(
     expanded: Boolean,
     onDismiss: () -> Unit,
-    search: TextFieldValue,
-    onSearchChange: (TextFieldValue) -> Unit,
+    search: String,
+    onSearchChange: (String) -> Unit,
     modifier: Modifier = Modifier,
     colors: TextFieldColors = TextFieldDefaults.textFieldColors(),
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
@@ -38,8 +38,8 @@ fun ExpandableSearchField(
             modifier = modifier.focusRequester(focusRequester),
             leadingIcon = { SearchIcon() },
             trailingIcon = { IconButton(onClick = {
-                if (search.text.isBlank()) onDismiss()
-                else onSearchChange(TextFieldValue())
+                if (search.isBlank()) onDismiss()
+                else onSearchChange("")
             }) { ClearIcon() } },
             singleLine = true,
             colors = colors,

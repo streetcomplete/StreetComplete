@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.screens.settings.quest_selection
 
 import androidx.compose.runtime.Stable
-import androidx.compose.ui.text.input.TextFieldValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import de.westnordost.countryboundaries.CountryBoundaries
@@ -34,7 +33,7 @@ import kotlinx.coroutines.flow.update
 
 @Stable
 abstract class QuestSelectionViewModel : ViewModel() {
-    abstract val searchText: StateFlow<TextFieldValue>
+    abstract val searchText: StateFlow<String>
     abstract val filteredQuests: StateFlow<List<QuestSelection>>
     abstract val currentCountry: String?
     abstract val selectedQuestPresetName: StateFlow<String?>
@@ -44,7 +43,7 @@ abstract class QuestSelectionViewModel : ViewModel() {
     abstract fun orderQuest(questType: QuestType, toAfter: QuestType)
     abstract fun unselectAllQuests()
     abstract fun resetQuestSelectionsAndOrder()
-    abstract fun updateSearchText(text: TextFieldValue)
+    abstract fun updateSearchText(text: String)
 }
 
 @Stable
@@ -58,7 +57,7 @@ class QuestSelectionViewModelImpl(
     prefs: Preferences,
 ) : QuestSelectionViewModel() {
 
-    override val searchText = MutableStateFlow(TextFieldValue())
+    override val searchText = MutableStateFlow("")
 
     private val questTitles = MutableStateFlow<Map<String, String>>(emptyMap())
 
@@ -104,7 +103,7 @@ class QuestSelectionViewModelImpl(
 
     override val filteredQuests: StateFlow<List<QuestSelection>> =
         combine(quests, searchText, questTitles) { quests, searchText, titles ->
-            filterQuests(quests, searchText.text, titles)
+            filterQuests(quests, searchText, titles)
         }.stateIn(viewModelScope, SharingStarted.Lazily, emptyList())
 
     private val currentCountryCodes = countryBoundaries.value.getIds(prefs.mapPosition)
@@ -170,7 +169,7 @@ class QuestSelectionViewModelImpl(
         }
     }
 
-    override fun updateSearchText(text: TextFieldValue) {
+    override fun updateSearchText(text: String) {
         searchText.value = text
     }
 
@@ -200,7 +199,7 @@ class QuestSelectionViewModelImpl(
     private fun filterQuests(
         quests: List<QuestSelection>,
         filter: String,
-        titles: Map<String, String>
+        titles: Map<String, String>,
     ): List<QuestSelection> {
         val words = filter.takeIf { it.isNotBlank() }?.trim()?.lowercase()?.split(' ') ?: emptyList()
         return if (words.isEmpty()) {

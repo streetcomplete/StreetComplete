@@ -37,7 +37,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.intl.LocaleList
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -85,15 +84,15 @@ fun ShowQuestFormsScreen(
 @Composable
 private fun ShowQuestFormsTopAppBar(
     onClickBack: () -> Unit,
-    search: TextFieldValue,
-    onSearchChange: (TextFieldValue) -> Unit,
+    search: String,
+    onSearchChange: (String) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     var showSearch by remember { mutableStateOf(false) }
 
     fun setShowSearch(value: Boolean) {
         showSearch = value
-        if (!value) onSearchChange(TextFieldValue())
+        if (!value) onSearchChange("")
     }
 
     Surface(
