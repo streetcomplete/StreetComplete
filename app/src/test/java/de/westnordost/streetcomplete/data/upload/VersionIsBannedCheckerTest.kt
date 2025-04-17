@@ -24,4 +24,4 @@ class VersionIsBannedCheckerTest {
     }
 }
 
-private const val URL = "https://westnordost.de/streetcomplete/banned_versions.txt"
+private const val URL = "https://streetcomplete.app/banned_versions.txt"

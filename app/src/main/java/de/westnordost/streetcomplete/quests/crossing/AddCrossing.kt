@@ -17,7 +17,7 @@ class AddCrossing : OsmElementQuestType<CrossingAnswer> {
 
     private val roadsFilter by lazy { """
         ways with
-          highway ~ trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential
+          highway ~ trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|busway
           and area != yes
           and (access !~ private|no or (foot and foot !~ private|no))
     """.toElementFilterExpression() }
@@ -33,6 +33,11 @@ class AddCrossing : OsmElementQuestType<CrossingAnswer> {
     override val wikiLink = "Tag:highway=crossing"
     override val icon = R.drawable.ic_quest_pedestrian
     override val achievements = listOf(PEDESTRIAN)
+
+    override val hint =  R.string.quest_crossing_hint
+    override val hintImages = listOf(
+        R.drawable.informal_crossing,
+    )
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_crossing_title2
 
@@ -70,7 +75,7 @@ class AddCrossing : OsmElementQuestType<CrossingAnswer> {
     override fun applyAnswerTo(answer: CrossingAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {
             YES -> tags["highway"] = "crossing"
-            NO -> tags["crossing"] = "informal"
+            INFORMAL -> tags["crossing"] = "informal"
             PROHIBITED -> tags["crossing"] = "no"
         }
     }

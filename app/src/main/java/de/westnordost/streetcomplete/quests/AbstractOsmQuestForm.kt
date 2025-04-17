@@ -11,6 +11,7 @@ import android.widget.PopupMenu
 import androidx.appcompat.app.AlertDialog
 import androidx.core.os.bundleOf
 import androidx.core.view.children
+import de.westnordost.osmfeatures.Feature
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.location.RecentLocationStore
@@ -29,17 +30,16 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
-import de.westnordost.streetcomplete.data.osm.osmquests.HideOsmQuestController
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
-import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestsHiddenController
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsController
-import de.westnordost.streetcomplete.data.quest.OsmQuestKey
+import de.westnordost.streetcomplete.data.quest.QuestKey
+import de.westnordost.streetcomplete.data.visiblequests.HideQuestController
+import de.westnordost.streetcomplete.data.visiblequests.QuestsHiddenController
+import de.westnordost.streetcomplete.osm.applyReplacePlaceTo
 import de.westnordost.streetcomplete.osm.isPlaceOrDisusedPlace
-import de.westnordost.streetcomplete.osm.replacePlace
 import de.westnordost.streetcomplete.quests.shop_type.ShopGoneDialog
-import de.westnordost.streetcomplete.util.getNameAndLocationLabel
-import de.westnordost.streetcomplete.util.ktx.geometryType
+import de.westnordost.streetcomplete.util.getNameAndLocationSpanned
 import de.westnordost.streetcomplete.util.ktx.isSplittable
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.view.add
@@ -48,7 +48,6 @@ import de.westnordost.streetcomplete.view.confirmIsSurvey
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import org.koin.android.ext.android.inject
 import org.koin.core.qualifier.named
@@ -60,16 +59,16 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
     // dependencies
     private val elementEditsController: ElementEditsController by inject()
     private val noteEditsController: NoteEditsController by inject()
-    private val osmQuestsHiddenController: OsmQuestsHiddenController by inject()
+    private val hiddenQuestsController: QuestsHiddenController by inject()
     private val featureDictionaryLazy: Lazy<FeatureDictionary> by inject(named("FeatureDictionaryLazy"))
     private val mapDataWithEditsSource: MapDataWithEditsSource by inject()
     private val recentLocationStore: RecentLocationStore by inject()
 
     protected val featureDictionary: FeatureDictionary get() = featureDictionaryLazy.value
 
-    // only used for testing / only used for ShowQuestFormsActivity! Found no better way to do this
+    // only used for testing / only used for ShowQuestFormsScreen! Found no better way to do this
     var addElementEditsController: AddElementEditsController = elementEditsController
-    var hideOsmQuestController: HideOsmQuestController = osmQuestsHiddenController
+    var hideQuestController: HideQuestController = hiddenQuestsController
 
     // passed in parameters
     private val osmElementQuestType: OsmElementQuestType<T> get() = questType as OsmElementQuestType<T>
@@ -104,7 +103,7 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
         fun onMoveNode(editType: ElementEditType, node: Node)
 
         /** Called when the user chose to hide the quest instead */
-        fun onQuestHidden(osmQuestKey: OsmQuestKey)
+        fun onQuestHidden(questKey: QuestKey)
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
@@ -118,8 +117,9 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setTitle(resources.getHtmlQuestTitle(osmElementQuestType, element.tags))
-        setTitleHintLabel(getNameAndLocationLabel(element, resources, featureDictionary))
+        setTitle(getString(osmElementQuestType.getTitle(element.tags)))
+        setTitleHintLabel(getNameAndLocationSpanned(element, resources, featureDictionary))
+        setObjNote(element.tags["note"])
     }
 
     override fun onStart() {
@@ -235,8 +235,9 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
     }
 
     protected fun composeNote() {
-        val questTitle = englishResources.getQuestTitle(osmElementQuestType, element.tags)
-        val hintLabel = getNameAndLocationLabel(element, englishResources, featureDictionary)
+
+        val questTitle = englishResources.getString(osmElementQuestType.getTitle(element.tags))
+        val hintLabel = getNameAndLocationSpanned(element, englishResources, featureDictionary)
         val leaveNoteContext = if (hintLabel.isNullOrBlank()) {
             "Unable to answer \"$questTitle\""
         } else {
@@ -247,8 +248,8 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
 
     protected fun hideQuest() {
         viewLifecycleScope.launch {
-            withContext(Dispatchers.IO) { hideOsmQuestController.hide(questKey as OsmQuestKey) }
-            listener?.onQuestHidden(questKey as OsmQuestKey)
+            withContext(Dispatchers.IO) { hideQuestController.hide(questKey) }
+            listener?.onQuestHidden(questKey)
         }
     }
 
@@ -256,21 +257,21 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
         if (element.isPlaceOrDisusedPlace()) {
             ShopGoneDialog(
                 requireContext(),
-                element.geometryType,
+                element,
                 countryOrSubdivisionCode,
                 featureDictionary,
-                onSelectedFeature = this::onShopReplacementSelected,
-                onLeaveNote = this::composeNote
+                onSelectedFeatureFn = this::onShopReplacementSelected,
+                onLeaveNoteFn = this::composeNote
             ).show()
         } else {
             composeNote()
         }
     }
 
-    private fun onShopReplacementSelected(tags: Map<String, String>) {
+    private fun onShopReplacementSelected(feature: Feature) {
         viewLifecycleScope.launch {
             val builder = StringMapChangesBuilder(element.tags)
-            builder.replacePlace(tags)
+            feature.applyReplacePlaceTo(builder)
             solve(UpdateElementTagsAction(element, builder.create()))
         }
     }
@@ -298,7 +299,7 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
         }
         withContext(Dispatchers.IO) {
             if (action is UpdateElementTagsAction && !action.changes.isValid()) {
-                val questTitle = englishResources.getQuestTitle(osmElementQuestType, element.tags)
+                val questTitle = englishResources.getString(osmElementQuestType.getTitle(element.tags))
                 val text = createNoteTextForTooLongTags(questTitle, element.type, element.id, action.changes.changes)
                 noteEditsController.add(0, NoteEditAction.CREATE, geometry.center, text)
             } else {

@@ -6,13 +6,12 @@ import android.content.Intent
 import android.content.IntentFilter
 import android.location.LocationManager
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
-import de.westnordost.streetcomplete.util.ktx.hasLocationPermission
-import de.westnordost.streetcomplete.util.ktx.isLocationEnabled
+import de.westnordost.streetcomplete.util.ktx.isLocationAvailable
 
 /** Tells its listeners changes to whether the location is available, i.e. being updated. The
  *  location is available if there is both a GPS (or other location provider) fix and the user
  *  granted this application location permission.
- *  */
+ */
 class LocationAvailabilityReceiver(private val context: Context) {
 
     private val listeners = mutableSetOf<(Boolean) -> Unit>()
@@ -41,8 +40,7 @@ class LocationAvailabilityReceiver(private val context: Context) {
     }
 
     private fun updateLocationAvailability() {
-        val isEnabled = context.hasLocationPermission && context.isLocationEnabled
-        listeners.forEach { it.invoke(isEnabled) }
+        listeners.forEach { it.invoke(context.isLocationAvailable) }
     }
 
     fun addListener(listener: (Boolean) -> Unit) {

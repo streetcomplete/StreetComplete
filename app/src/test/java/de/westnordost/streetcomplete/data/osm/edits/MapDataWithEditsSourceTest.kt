@@ -1222,6 +1222,29 @@ class MapDataWithEditsSourceTest {
         verify(listener).onUpdated(eq(updatedMapData), eq(emptyList()))
     }
 
+    @Test
+    fun `does call onUpdated when updated element is not in local changes`() {
+        val nd = node(1, p(0.1, 0.0))
+        val ndModified = node(1, p(0.3, 0.0))
+        val nd2 = node(2, p(0.5, 0.4))
+        val p2 = ElementGeometryEntry(NODE, 2, pGeom(0.5, 0.4))
+
+        originalElementsAre(nd, nd2)
+        mapDataChangesAre(modifications = listOf(ndModified))
+
+        val s = create()
+        val listener = mock<MapDataWithEditsSource.Listener>()
+        s.addListener(listener)
+
+        val updatedMapData = MutableMapDataWithGeometry(
+            elements = listOf(nd2),
+            geometryEntries = listOf(p2)
+        )
+        mapDataListener.onUpdated(updatedMapData, emptyList())
+
+        verify(listener).onUpdated(eq(updatedMapData), eq(emptyList()))
+    }
+
     //endregion
 
     //region MapDataController.Listener ::onReplacedForBBox

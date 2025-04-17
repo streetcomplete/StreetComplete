@@ -13,9 +13,10 @@ class AddBuildingLevels : OsmFilterQuestType<BuildingLevelsAnswer>() {
         ways, relations with
            building ~ ${BUILDINGS_WITH_LEVELS.joinToString("|")}
            and (
-               !building:levels
-               or !roof:levels and roof:shape and roof:shape != flat
+             !building:levels
+             or !roof:levels and !roof:height and roof:shape and roof:shape != flat
            )
+           and !(height and roof:height)
            and !building:min_level
            and !man_made
            and location != underground

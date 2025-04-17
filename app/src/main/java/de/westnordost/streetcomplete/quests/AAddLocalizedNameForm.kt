@@ -8,10 +8,9 @@ import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.core.text.parseAsHtml
 import androidx.recyclerview.widget.RecyclerView
-import com.russhwolf.settings.ObservableSettings
-import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.AbbreviationsByLocale
+import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.osm.LocalizedName
 import de.westnordost.streetcomplete.view.AdapterDataChangedWatcher
 import kotlinx.serialization.encodeToString
@@ -24,7 +23,7 @@ abstract class AAddLocalizedNameForm<T> : AbstractOsmQuestForm<T>() {
     protected abstract val addLanguageButton: View
     protected abstract val namesList: RecyclerView
 
-    private val prefs: ObservableSettings by inject()
+    private val prefs: Preferences by inject()
 
     open val adapterRowLayoutResId = R.layout.row_localizedname
 
@@ -40,7 +39,7 @@ abstract class AAddLocalizedNameForm<T> : AbstractOsmQuestForm<T>() {
 
     private fun initLocalizedNameAdapter(data: MutableList<LocalizedName>? = null) {
         val selectableLanguages = getSelectableLanguageTags().toMutableList()
-        val preferredLanguage = prefs.getStringOrNull(Prefs.PREFERRED_LANGUAGE_FOR_NAMES)
+        val preferredLanguage = prefs.preferredLanguageForNames
         if (preferredLanguage != null) {
             if (selectableLanguages.remove(preferredLanguage)) {
                 selectableLanguages.add(0, preferredLanguage)
@@ -81,7 +80,7 @@ abstract class AAddLocalizedNameForm<T> : AbstractOsmQuestForm<T>() {
         onClickOk(adapter?.names.orEmpty())
 
         val firstLanguage = adapter?.names?.firstOrNull()?.languageTag?.takeIf { it.isNotBlank() }
-        if (firstLanguage != null) prefs.putString(Prefs.PREFERRED_LANGUAGE_FOR_NAMES, firstLanguage)
+        if (firstLanguage != null) prefs.preferredLanguageForNames = firstLanguage
     }
 
     abstract fun onClickOk(names: List<LocalizedName>)

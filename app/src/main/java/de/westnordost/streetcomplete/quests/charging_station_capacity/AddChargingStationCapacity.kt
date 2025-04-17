@@ -17,6 +17,7 @@ class AddChargingStationCapacity : OsmFilterQuestType<Int>() {
           amenity = charging_station
           and !capacity
           and bicycle != yes and scooter != yes and motorcar != no
+          and access !~ private|no
     """
     override val changesetComment = "Specify charging stations capacities"
     override val wikiLink = "Tag:amenity=charging_station"

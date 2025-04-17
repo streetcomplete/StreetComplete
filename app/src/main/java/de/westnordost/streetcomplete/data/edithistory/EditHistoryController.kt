@@ -5,15 +5,20 @@ import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsController
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsSource
 import de.westnordost.streetcomplete.data.osm.edits.IsRevertAction
+import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestHidden
-import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestsHiddenController
-import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestsHiddenSource
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEdit
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsController
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsSource
+import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestHidden
-import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestsHiddenController
-import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestsHiddenSource
+import de.westnordost.streetcomplete.data.quest.OsmNoteQuestKey
+import de.westnordost.streetcomplete.data.quest.OsmQuestKey
+import de.westnordost.streetcomplete.data.quest.QuestKey
+import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
+import de.westnordost.streetcomplete.data.visiblequests.QuestsHiddenController
+import de.westnordost.streetcomplete.data.visiblequests.QuestsHiddenSource
 import de.westnordost.streetcomplete.util.Listeners
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 
@@ -21,8 +26,10 @@ import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 class EditHistoryController(
     private val elementEditsController: ElementEditsController,
     private val noteEditsController: NoteEditsController,
-    private val osmNoteQuestsHiddenController: OsmNoteQuestsHiddenController,
-    private val osmQuestsHiddenController: OsmQuestsHiddenController
+    private val hiddenQuestsController: QuestsHiddenController,
+    private val notesSource: NotesWithEditsSource,
+    private val mapDataSource: MapDataWithEditsSource,
+    private val questTypeRegistry: QuestTypeRegistry,
 ) : EditHistorySource {
     private val listeners = Listeners<EditHistorySource.Listener>()
 
@@ -44,22 +51,36 @@ class EditHistoryController(
         override fun onDeletedEdits(edits: List<NoteEdit>) { onDeleted(edits) }
     }
 
-    private val osmNoteQuestHiddenListener = object : OsmNoteQuestsHiddenSource.Listener {
-        override fun onHid(edit: OsmNoteQuestHidden) { onAdded(edit) }
-        override fun onUnhid(edit: OsmNoteQuestHidden) { onDeleted(listOf(edit)) }
+    private val questHiddenListener = object : QuestsHiddenSource.Listener {
+        override fun onHid(key: QuestKey, timestamp: Long) {
+            val edit = createQuestHiddenEdit(key, timestamp)
+            if (edit != null) onAdded(edit)
+        }
+        override fun onUnhid(key: QuestKey, timestamp: Long) {
+            val edit = createQuestHiddenEdit(key, timestamp)
+            if (edit != null) onDeleted(listOf(edit))
+        }
         override fun onUnhidAll() { onInvalidated() }
     }
-    private val osmQuestHiddenListener = object : OsmQuestsHiddenSource.Listener {
-        override fun onHid(edit: OsmQuestHidden) { onAdded(edit) }
-        override fun onUnhid(edit: OsmQuestHidden) { onDeleted(listOf(edit)) }
-        override fun onUnhidAll() { onInvalidated() }
+
+    private fun createQuestHiddenEdit(key: QuestKey, timestamp: Long): Edit? {
+        return when (key) {
+            is OsmNoteQuestKey -> {
+                val note = notesSource.get(key.noteId) ?: return null
+                OsmNoteQuestHidden(note, timestamp)
+            }
+            is OsmQuestKey -> {
+                val geometry = mapDataSource.getGeometry(key.elementType, key.elementId) ?: return null
+                val questType = questTypeRegistry.getByName(key.questTypeName) as? OsmElementQuestType<*> ?: return null
+                OsmQuestHidden(key.elementType, key.elementId, questType, geometry, timestamp)
+            }
+        }
     }
 
     init {
         elementEditsController.addListener(osmElementEditsListener)
         noteEditsController.addListener(osmNoteEditsListener)
-        osmNoteQuestsHiddenController.addListener(osmNoteQuestHiddenListener)
-        osmQuestsHiddenController.addListener(osmQuestHiddenListener)
+        hiddenQuestsController.addListener(questHiddenListener)
     }
 
     fun undo(editKey: EditKey): Boolean {
@@ -68,8 +89,8 @@ class EditHistoryController(
         return when (edit) {
             is ElementEdit -> elementEditsController.undo(edit)
             is NoteEdit -> noteEditsController.undo(edit)
-            is OsmNoteQuestHidden -> osmNoteQuestsHiddenController.unhide(edit.note.id)
-            is OsmQuestHidden -> osmQuestsHiddenController.unhide(edit.questKey)
+            is OsmNoteQuestHidden -> hiddenQuestsController.unhide(edit.questKey)
+            is OsmQuestHidden -> hiddenQuestsController.unhide(edit.questKey)
             else -> throw IllegalArgumentException()
         }
     }
@@ -81,8 +102,10 @@ class EditHistoryController(
     override fun get(key: EditKey): Edit? = when (key) {
         is ElementEditKey -> elementEditsController.get(key.id)
         is NoteEditKey -> noteEditsController.get(key.id)
-        is OsmNoteQuestHiddenKey -> osmNoteQuestsHiddenController.getHidden(key.osmNoteQuestKey.noteId)
-        is OsmQuestHiddenKey -> osmQuestsHiddenController.getHidden(key.osmQuestKey)
+        is QuestHiddenKey -> {
+            val timestamp = hiddenQuestsController.get(key.questKey)
+            if (timestamp != null) createQuestHiddenEdit(key.questKey, timestamp) else null
+        }
     }
 
     override fun getAll(): List<Edit> {
@@ -91,8 +114,9 @@ class EditHistoryController(
         val result = ArrayList<Edit>()
         result += elementEditsController.getAll().filter { it.action !is IsRevertAction }
         result += noteEditsController.getAll()
-        result += osmNoteQuestsHiddenController.getAllHiddenNewerThan(maxAge)
-        result += osmQuestsHiddenController.getAllHiddenNewerThan(maxAge)
+        result += hiddenQuestsController.getAllNewerThan(maxAge).mapNotNull { (key, timestamp) ->
+            createQuestHiddenEdit(key, timestamp)
+        }
 
         result.sortByDescending { it.createdTimestamp }
         return result

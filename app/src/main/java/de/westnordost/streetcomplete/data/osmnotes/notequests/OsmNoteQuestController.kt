@@ -1,13 +1,12 @@
 package de.westnordost.streetcomplete.data.osmnotes.notequests
 
-import com.russhwolf.settings.ObservableSettings
 import com.russhwolf.settings.SettingsListener
 import de.westnordost.streetcomplete.ApplicationConstants
-import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osmnotes.Note
 import de.westnordost.streetcomplete.data.osmnotes.NoteComment
 import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
+import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.data.user.UserDataSource
 import de.westnordost.streetcomplete.data.user.UserLoginSource
 import de.westnordost.streetcomplete.util.Listeners
@@ -15,35 +14,30 @@ import de.westnordost.streetcomplete.util.Listeners
 /** Used to get visible osm note quests */
 class OsmNoteQuestController(
     private val noteSource: NotesWithEditsSource,
-    private val hiddenDB: NoteQuestsHiddenDao,
     private val userDataSource: UserDataSource,
     private val userLoginSource: UserLoginSource,
-    private val prefs: ObservableSettings,
-) : OsmNoteQuestSource, OsmNoteQuestsHiddenController, OsmNoteQuestsHiddenSource {
+    private val prefs: Preferences,
+) : OsmNoteQuestSource {
     /* Must be a singleton because there is a listener that should respond to a change in the
      *  database table */
-
-    private val hideListeners = Listeners<OsmNoteQuestsHiddenSource.Listener>()
 
     private val listeners = Listeners<OsmNoteQuestSource.Listener>()
 
     private val showOnlyNotesPhrasedAsQuestions: Boolean get() =
-        !prefs.getBoolean(Prefs.SHOW_NOTES_NOT_PHRASED_AS_QUESTIONS, false)
+        !prefs.showAllNotes
 
     private val settingsListener: SettingsListener
 
     private val noteUpdatesListener = object : NotesWithEditsSource.Listener {
         override fun onUpdated(added: Collection<Note>, updated: Collection<Note>, deleted: Collection<Long>) {
-            val hiddenNoteIds = getHiddenIds()
-
             val quests = mutableListOf<OsmNoteQuest>()
             val deletedQuestIds = ArrayList(deleted)
             for (note in added) {
-                val q = createQuestForNote(note, hiddenNoteIds)
+                val q = createQuestForNote(note)
                 if (q != null) quests.add(q)
             }
             for (note in updated) {
-                val q = createQuestForNote(note, hiddenNoteIds)
+                val q = createQuestForNote(note)
                 if (q != null) {
                     quests.add(q)
                 } else {
@@ -69,86 +63,25 @@ class OsmNoteQuestController(
     init {
         noteSource.addListener(noteUpdatesListener)
         userLoginSource.addListener(userLoginStatusListener)
-        settingsListener = prefs.addBooleanListener(Prefs.SHOW_NOTES_NOT_PHRASED_AS_QUESTIONS, false) {
-            // a lot of notes become visible/invisible if this option is changed
-            onInvalidated()
-        }
+        // a lot of notes become visible/invisible if this option is changed
+        settingsListener = prefs.onAllShowNotesChanged { onInvalidated() }
     }
 
-    override fun getVisible(questId: Long): OsmNoteQuest? {
-        if (isHidden(questId)) return null
-        return noteSource.get(questId)?.let { createQuestForNote(it) }
-    }
+    override fun get(questId: Long): OsmNoteQuest? =
+        noteSource.get(questId)?.let { createQuestForNote(it) }
 
-    override fun getAllVisibleInBBox(bbox: BoundingBox): List<OsmNoteQuest> =
+    override fun getAllInBBox(bbox: BoundingBox): List<OsmNoteQuest> =
         createQuestsForNotes(noteSource.getAll(bbox))
 
-    private fun createQuestsForNotes(notes: Collection<Note>): List<OsmNoteQuest> {
-        val blockedNoteIds = getHiddenIds()
-        return notes.mapNotNull { createQuestForNote(it, blockedNoteIds) }
-    }
+    private fun createQuestsForNotes(notes: Collection<Note>): List<OsmNoteQuest> =
+        notes.mapNotNull { createQuestForNote(it) }
 
-    private fun createQuestForNote(note: Note, blockedNoteIds: Set<Long> = setOf()): OsmNoteQuest? =
-        if (note.shouldShowAsQuest(userDataSource.userId, showOnlyNotesPhrasedAsQuestions, blockedNoteIds)) {
+    private fun createQuestForNote(note: Note): OsmNoteQuest? =
+        if (note.shouldShowAsQuest(userDataSource.userId, showOnlyNotesPhrasedAsQuestions)) {
             OsmNoteQuest(note.id, note.position)
         } else {
             null
         }
-
-    /* ---------------------------- OsmNoteQuestsHiddenController  ------------------------------ */
-
-    override fun hide(questId: Long) {
-        val hidden: OsmNoteQuestHidden?
-        synchronized(this) {
-            hiddenDB.add(questId)
-            hidden = getHidden(questId)
-        }
-        if (hidden != null) onHid(hidden)
-        onUpdated(deletedQuestIds = listOf(questId))
-    }
-
-    override fun unhide(questId: Long): Boolean {
-        val hidden = getHidden(questId)
-        synchronized(this) {
-            if (!hiddenDB.delete(questId)) return false
-        }
-        if (hidden != null) onUnhid(hidden)
-        val quest = noteSource.get(questId)?.let { createQuestForNote(it, emptySet()) }
-        if (quest != null) onUpdated(quests = listOf(quest))
-        return true
-    }
-
-    override fun unhideAll(): Int {
-        val previouslyHiddenNotes = noteSource.getAll(hiddenDB.getAllIds())
-        val unhidCount = synchronized(this) { hiddenDB.deleteAll() }
-
-        val unhiddenNoteQuests = previouslyHiddenNotes.mapNotNull { createQuestForNote(it, emptySet()) }
-
-        onUnhidAll()
-        onUpdated(quests = unhiddenNoteQuests)
-        return unhidCount
-    }
-
-    override fun getHidden(questId: Long): OsmNoteQuestHidden? {
-        val timestamp = hiddenDB.getTimestamp(questId) ?: return null
-        val note = noteSource.get(questId) ?: return null
-        return OsmNoteQuestHidden(note, timestamp)
-    }
-
-    override fun getAllHiddenNewerThan(timestamp: Long): List<OsmNoteQuestHidden> {
-        val noteIdsWithTimestamp = hiddenDB.getNewerThan(timestamp)
-        val notesById = noteSource.getAll(noteIdsWithTimestamp.map { it.noteId }).associateBy { it.id }
-
-        return noteIdsWithTimestamp.mapNotNull { (noteId, timestamp) ->
-            notesById[noteId]?.let { OsmNoteQuestHidden(it, timestamp) }
-        }
-    }
-
-    override fun countAll(): Long = hiddenDB.countAll()
-
-    private fun isHidden(questId: Long): Boolean = hiddenDB.contains(questId)
-
-    private fun getHiddenIds(): Set<Long> = hiddenDB.getAllIds().toSet()
 
     /* ---------------------------------------- Listener ---------------------------------------- */
 
@@ -170,44 +103,27 @@ class OsmNoteQuestController(
     private fun onInvalidated() {
         listeners.forEach { it.onInvalidated() }
     }
-
-    /* ------------------------------------- Hide Listeners ------------------------------------- */
-
-    override fun addListener(listener: OsmNoteQuestsHiddenSource.Listener) {
-        hideListeners.add(listener)
-    }
-    override fun removeListener(listener: OsmNoteQuestsHiddenSource.Listener) {
-        hideListeners.remove(listener)
-    }
-
-    private fun onHid(edit: OsmNoteQuestHidden) {
-        hideListeners.forEach { it.onHid(edit) }
-    }
-    private fun onUnhid(edit: OsmNoteQuestHidden) {
-        hideListeners.forEach { it.onUnhid(edit) }
-    }
-    private fun onUnhidAll() {
-        hideListeners.forEach { it.onUnhidAll() }
-    }
 }
 
 private fun Note.shouldShowAsQuest(
     userId: Long,
-    showOnlyNotesPhrasedAsQuestions: Boolean,
-    blockedNoteIds: Set<Long>
+    showOnlyNotesPhrasedAsQuestions: Boolean
 ): Boolean {
-    // don't show notes hidden by user
-    if (id in blockedNoteIds) return false
-
-    // don't show notes where user replied last unless he wrote a survey required marker
-    if (comments.last().isReplyFromUser(userId)
+    /*
+        We usually don't show notes where either the user is the last responder, or the
+        note was created with the app and has no replies.
+        If the most recent comment contains "#surveyme", we want to show the note regardless.
+        See https://github.com/streetcomplete/StreetComplete/issues/6052#issuecomment-2567163451
+     */
+    if (
+        (
+            comments.last().isReplyFromUser(userId) ||
+            (probablyCreatedByUserInThisApp(userId) && !hasReplies)
+        )
         && !comments.last().containsSurveyRequiredMarker()
     ) {
         return false
     }
-
-    // newly created notes by user should not be shown if it was both created in this app and has no replies yet
-    if (probablyCreatedByUserInThisApp(userId) && !hasReplies) return false
 
     /*
         many notes are created to report problems on the map that cannot be resolved
@@ -234,6 +150,7 @@ private fun Note.probablyContainsQuestion(): Boolean {
      */
     val questionMarksAroundTheWorld = listOf(
         "?", // Latin question mark
+        "¿", // Spanish question mark in case the closing latin one was omitted
         ";", // Greek question mark (a different character than semicolon, though same appearance)
         ";", // semicolon (often used instead of proper greek question mark)
         "؟", // mirrored question mark (used in script written from right to left, like Arabic)
@@ -252,7 +169,7 @@ private fun Note.containsSurveyRequiredMarker(): Boolean =
     comments.any { it.containsSurveyRequiredMarker() }
 
 private fun NoteComment.containsSurveyRequiredMarker(): Boolean =
-    text?.matches(".*#surveyme.*".toRegex()) == true
+    text?.contains("#surveyme", ignoreCase = true) == true
 
 private fun Note.probablyCreatedByUserInThisApp(userId: Long): Boolean {
     val firstComment = comments.first()

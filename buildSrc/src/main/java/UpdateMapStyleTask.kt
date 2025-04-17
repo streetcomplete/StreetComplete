@@ -1,90 +1,47 @@
-import kotlinx.serialization.decodeFromString
-import kotlinx.serialization.json.Json
 import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.Input
 import org.gradle.api.tasks.TaskAction
 import java.io.File
 import java.net.URL
 
-/** Pulls the newest map style from the streetcomplete-mapstyle repository */
+/** Pulls the newest map style from the maplibre-streetcomplete-style repository */
 open class UpdateMapStyleTask : DefaultTask() {
 
     @get:Input lateinit var targetDir: String
     @get:Input lateinit var mapStyleBranch: String
+    @get:Input lateinit var apiKey: String
 
     @TaskAction fun run() {
         val targetDir = File(targetDir)
         require(targetDir.exists()) { "Directory ${targetDir.absolutePath} does not exist." }
 
-        val githubDirectoryListingUrl = URL("https://api.github.com/repos/streetcomplete/streetcomplete-mapstyle/contents?ref=$mapStyleBranch")
-        val mapStyleFiles = fetchDirectoryContents(githubDirectoryListingUrl)
+        val urls = listOf(
+            "https://raw.githubusercontent.com/streetcomplete/maplibre-streetcomplete-style/master/demo/streetcomplete.json",
+            "https://raw.githubusercontent.com/streetcomplete/maplibre-streetcomplete-style/master/demo/streetcomplete-night.json",
+        ).map { URL(it) }
 
-        val excludeFilePaths = setOf(
-            ".gitattributes",
-            "LICENSE",
-            "README.md"
-        )
+        for (url in urls) {
+            val fileName = File(url.path).name
+            val targetFile = File(targetDir, fileName)
 
-        for (file in mapStyleFiles) {
-            if (file.path in excludeFilePaths) {
-                continue
-            }
+            val fileContent = url.readText()
+                .normalizeLineEndings()
+                .replaceAccessToken(apiKey)
+                .replaceGlyphs()
+                .replaceSprites()
 
-            val targetFile = File(targetDir, file.path)
-            val downloadUrl = URL(file.download_url)
-
-            if (file.name.endsWith(".yaml")) {
-                val fileContent = downloadUrl.readText()
-                    .normalizeLineEndings()
-                    .replaceOnlineWithLocalSections()
-
-                targetFile.writeText(fileContent)
-            } else {
-                // e.g. for images: don't try to read/write as UTF-8
-                downloadUrl.openStream().use { it.transferTo(targetFile.outputStream()) }
-            }
+            targetFile.writeText(fileContent)
         }
     }
-
-    private val json = Json { ignoreUnknownKeys = true }
-
-    private fun fetchDirectoryContents(sourceGithubDirectoryUrl: URL): List<GithubDirectoryListingItem> =
-        json.decodeFromString<List<GithubDirectoryListingItem>>(sourceGithubDirectoryUrl.readText())
-            .flatMap { if (it.type == "dir") fetchDirectoryContents(URL(it.url)) else listOf(it) }
 }
 
 private fun String.normalizeLineEndings() = this.replace("\r\n", "\n")
 
-private fun String.replaceOnlineWithLocalSections(): String {
-    val lines = this.split("\n").toMutableList()
+private fun String.replaceAccessToken(apiKey: String): String =
+    replace(Regex("\\?access-token=[0-9A-Za-z+/=]*"), "?access-token=$apiKey")
 
-    val onlineStartLineIndices = lines.indices.filter { lines[it].trim().startsWith("# for online testing") }
-    val localStartLineIndices = lines.indices.filter { lines[it].trim().startsWith("# for local testing") }
-    require(onlineStartLineIndices.size == localStartLineIndices.size) {
-        "There should be the same number of online sections and local sections"
-    }
+private fun String.replaceGlyphs(): String =
+    replace(Regex("https://api.jawg.io/glyphs"), "asset://map_theme/glyphs")
 
-    val onlineRanges = onlineStartLineIndices.zip(localStartLineIndices)
-    onlineRanges.forEach { (start, end) ->
-        require(start < end) { "Online section should be before local section" }
-    }
-
-    // uncomment local sections
-    var shouldUncomment = false
-    lines.forEachIndexed { index, line ->
-        if (localStartLineIndices.contains(index)) {
-            shouldUncomment = true
-        } else if (shouldUncomment && line.trim().startsWith("#")) {
-            lines[index] = line.replaceFirst("#", "")
-        } else {
-            shouldUncomment = false
-        }
-    }
-
-    // delete online sections
-    val filteredLines = lines.filterIndexed { index, _ -> !onlineRanges.any { it.contains(index) } }
-
-    return filteredLines.joinToString("\n")
-}
-
-private fun Pair<Int, Int>.contains(value: Int) = value in first..second
+private fun String.replaceSprites(): String =
+    replace(Regex("https://streetcomplete.app/map-jawg/sprites"), "asset://map_theme/sprites")

@@ -1,26 +1,34 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<de.westnordost.streetcomplete.view.RelativeLayoutFix xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".screens.MainActivity">
+    tools:context=".screens.main.MainActivity">
 
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/map_fragment"
-        android:name="de.westnordost.streetcomplete.screens.main.MainFragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
-
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fragment_container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
-
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/messages_container_fragment"
-        android:name="de.westnordost.streetcomplete.screens.main.messages.MessagesContainerFragment"
+        android:id="@+id/mapFragment"
+        android:name="de.westnordost.streetcomplete.screens.main.map.MainMapFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:visibility="gone"/>
+        tools:layout="@layout/fragment_map"
+        />
 
- </RelativeLayout >
+    <androidx.compose.ui.platform.ComposeView
+        android:id="@+id/controls"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <View
+        android:id="@+id/contextMenuView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        tools:ignore="MissingConstraints" />
+
+    <!-- is a RelativeLayout so that the child layout can, if it is not matching parent, use layout_alignParent* -->
+    <RelativeLayout
+        android:id="@+id/map_bottom_sheet_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipChildren="false" />
+
+ </de.westnordost.streetcomplete.view.RelativeLayoutFix >

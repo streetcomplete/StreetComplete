@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.screens.user.profile
 
 import androidx.compose.runtime.Immutable
+import androidx.compose.runtime.Stable
 import androidx.lifecycle.ViewModel
 import de.westnordost.streetcomplete.data.UnsyncedChangesCountSource
 import de.westnordost.streetcomplete.data.user.UserDataSource
@@ -16,11 +17,13 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.datetime.LocalDate
-import java.io.File
+import kotlinx.io.files.FileSystem
+import kotlinx.io.files.Path
 
+@Stable
 abstract class ProfileViewModel : ViewModel() {
     abstract val userName: StateFlow<String?>
-    abstract val userAvatarFile: StateFlow<File>
+    abstract val userAvatarFile: StateFlow<Path?>
 
     abstract val achievementLevels: StateFlow<Int>
 
@@ -44,6 +47,7 @@ abstract class ProfileViewModel : ViewModel() {
 @Immutable
 data class DatesActiveInRange(val datesActive: List<LocalDate>, val range: Int)
 
+@Stable
 class ProfileViewModelImpl(
     private val userDataSource: UserDataSource,
     private val userLoginController: UserLoginController,
@@ -51,7 +55,8 @@ class ProfileViewModelImpl(
     private val statisticsSource: StatisticsSource,
     private val achievementsSource: AchievementsSource,
     private val unsyncedChangesCountSource: UnsyncedChangesCountSource,
-    private val avatarsCacheDirectory: File
+    private val fileSystem: FileSystem,
+    private val avatarsCacheDirectory: Path
 ) : ProfileViewModel() {
 
     override val userName = MutableStateFlow<String?>(null)
@@ -163,8 +168,10 @@ class ProfileViewModelImpl(
         }
     }
 
-    private fun getUserAvatarFile(): File =
-        File(avatarsCacheDirectory, userDataSource.userId.toString())
+    private fun getUserAvatarFile(): Path? {
+        val path = Path(avatarsCacheDirectory, userDataSource.userId.toString())
+        return if (fileSystem.exists(path)) path else null
+    }
 
     override fun onCleared() {
         unsyncedChangesCountSource.removeListener(unsyncedChangesCountListener)

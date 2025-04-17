@@ -1,7 +1,7 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [Türkiye İş Bankası, Akbank, Yapı Kredi, Ziraat Bankası, Garanti Bankası, Denizbank, Halkbank, Vakıfbank, QNB Finansbank, TEB, ING, HSBC, İş Bankası, Şekerbank, PTT, Akbank ATM, Ziraat Bankası ATM, Kuveyt Türk, DenizBank, Ziraat, Vakıfbank ATM, Deniz Bank, Garanti, İş Bankası ATM, Finansbank, Bankamatik, Halkbank ATM, Garanti BBVA, Ziraat Bankasi, VakıfBank, Garanti Bankası ATM, Türkiye İş Bankası Bankamatik, ING Bank, Halk Bankası, AKBANK, Yapı Kredi Bankası, Yapı Kredi ATM, VakifBank, Türkiye Finans, YapiKredi, T.C. Ziraat Bankası, Shitcoins.club, Garanti BBVA ATM, AkBank, Ziraat Bank, Yapi Kredi, Türkiye Bankasi, QNB Finansbank ATM, QNB, Odeabank, Denizbank ATM, BBVA]
-chargingStationOperators: [SHARZ, ZES, Astor Enerji, VOLTRUN, 'Tesla, Inc.', Sharz, Eşarj, EŞARJ, TOGG, Renault, zes, Trugo]
-clothesContainerOperators: [Maltepe Belediyesi, Ümraniye Belediyesi, Ortaca Belediyesi, Kızılay]
+atmOperators: [Türkiye İş Bankası, Akbank, Ziraat Bankası, Yapı Kredi, Garanti Bankası, Denizbank, Halkbank, QNB Finansbank, Vakıfbank, TEB, ING, HSBC, İş Bankası, PTT, Şekerbank, Ziraat Bankası ATM, Akbank ATM, Kuveyt Türk, Vakıfbank ATM, DenizBank, Ziraat, Garanti BBVA, Garanti, Bankamatik, Halkbank ATM, Finansbank, Deniz Bank, İş Bankası ATM, Türkiye Finans, Ziraat Bankasi, Yapı Kredi ATM, Garanti Bankası ATM, VakifBank, Türkiye İş Bankası Bankamatik, Halk Bankası, Yapı Kredi Bankası, YapiKredi, VakıfBank, Banka ATM'leri, Türkiye Bankasi, T.C. Ziraat Bankası, Shitcoins.club, ING Bank, Garanti BBVA ATM, AkBank, İş Bank, Ziraat Katılım, Yapi Kredi, TEB ATM, QNB Finansbank ATM, Ptt, Odeabank, Denizbank ATM, AKBANK]
+chargingStationOperators: [SHARZ, ZES, Astor Enerji, VOLTRUN, 'Tesla, Inc.', Sharz, TOGG, Eşarj, EŞARJ, Renault, Trugo, zes, WAT Mobilite]
+clothesContainerOperators: [Maltepe Belediyesi, İlkadım Belediyesi, Ümraniye Belediyesi, Ortaca Belediyesi, Çerkezköy Belediyesi, Kızılay]
 defaultSpeedLimitHasUrbanOrRural: true
 hasLivingStreet: true
 livingStreetSignStyle: vienna

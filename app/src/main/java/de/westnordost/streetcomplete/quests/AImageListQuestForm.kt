@@ -1,15 +1,13 @@
 package de.westnordost.streetcomplete.quests
 
-import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.core.view.isGone
 import androidx.recyclerview.widget.GridLayoutManager
-import com.russhwolf.settings.ObservableSettings
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.databinding.QuestGenericListBinding
-import de.westnordost.streetcomplete.util.LastPickedValuesStore
-import de.westnordost.streetcomplete.util.padWith
+import de.westnordost.streetcomplete.util.takeFavourites
 import de.westnordost.streetcomplete.view.image_select.DisplayItem
 import de.westnordost.streetcomplete.view.image_select.ImageSelectAdapter
 import org.koin.android.ext.android.inject
@@ -28,15 +26,13 @@ abstract class AImageListQuestForm<I, T> : AbstractOsmQuestForm<T>() {
     final override val contentLayoutResId = R.layout.quest_generic_list
     private val binding by contentViewBinding(QuestGenericListBinding::bind)
 
-    private val prefs: ObservableSettings by inject()
+    private val prefs: Preferences by inject()
 
     override val defaultExpanded = false
 
     protected open val descriptionResId: Int? = null
 
     protected lateinit var imageSelector: ImageSelectAdapter<I>
-
-    private lateinit var favs: LastPickedValuesStore<DisplayItem<I>>
 
     protected open val itemsPerRow = 4
     /** return -1 for any number. Default: 1  */
@@ -55,16 +51,6 @@ abstract class AImageListQuestForm<I, T> : AbstractOsmQuestForm<T>() {
         itemsByString = items.associateBy { it.value.toString() }
     }
 
-    override fun onAttach(ctx: Context) {
-        super.onAttach(ctx)
-        favs = LastPickedValuesStore(
-            prefs,
-            key = javaClass.simpleName,
-            serialize = { it.value.toString() },
-            deserialize = { itemsByString[it] }
-        )
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -74,7 +60,10 @@ abstract class AImageListQuestForm<I, T> : AbstractOsmQuestForm<T>() {
         binding.list.layoutManager = GridLayoutManager(activity, itemsPerRow)
         binding.list.isNestedScrollingEnabled = false
 
-        binding.selectHintLabel.setText(if (maxSelectableItems == 1) R.string.quest_roofShape_select_one else R.string.quest_select_hint)
+        binding.selectHintLabel.setText(
+            if (maxSelectableItems == 1) R.string.quest_roofShape_select_one
+            else R.string.quest_multiselect_hint
+        )
 
         imageSelector.listeners.add(object : ImageSelectAdapter.OnItemSelectionListener {
             override fun onIndexSelected(index: Int) {
@@ -97,7 +86,7 @@ abstract class AImageListQuestForm<I, T> : AbstractOsmQuestForm<T>() {
     override fun onClickOk() {
         val values = imageSelector.selectedItems
         if (values.isNotEmpty()) {
-            favs.add(values)
+            prefs.addLastPicked(this::class.simpleName!!, values.map { it.value.toString() })
             onClickOk(values.map { it.value!! })
         }
     }
@@ -112,12 +101,16 @@ abstract class AImageListQuestForm<I, T> : AbstractOsmQuestForm<T>() {
 
     override fun isFormComplete() = imageSelector.selectedIndices.isNotEmpty()
 
-    private fun moveFavouritesToFront(originalList: List<DisplayItem<I>>): List<DisplayItem<I>> =
+    private fun moveFavouritesToFront(originalList: List<DisplayItem<I>>): List<DisplayItem<I>> {
         if (originalList.size > itemsPerRow && moveFavoritesToFront) {
-            favs.get().filterNotNull().padWith(originalList).toList()
+            val favourites = prefs.getLastPicked(this::class.simpleName!!)
+                .map { itemsByString[it] }
+                .takeFavourites(n = itemsPerRow, history = 50)
+            return (favourites + originalList).distinct()
         } else {
-            originalList
+            return originalList
         }
+    }
 
     companion object {
         private const val SELECTED_INDICES = "selected_indices"

@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.data.osm.mapdata
 
+import de.westnordost.streetcomplete.util.ktx.format
 import de.westnordost.streetcomplete.util.math.normalizeLongitude
 import kotlinx.serialization.Serializable
 
@@ -39,7 +40,7 @@ fun BoundingBox.splitAt180thMeridian(): List<BoundingBox> =
     }
 
 /** @return a polygon with the same extent as this bounding box, defined in counter-clockwise order
- * */
+ */
 fun BoundingBox.toPolygon() = listOf(
     min,
     LatLon(min.latitude, max.longitude),
@@ -47,3 +48,11 @@ fun BoundingBox.toPolygon() = listOf(
     LatLon(max.latitude, min.longitude),
     min,
 )
+
+/** bounding box bounds in counter-clockwise direction, starting with min longitude */
+fun BoundingBox.toOsmApiString(): String = listOf(
+    min.longitude,
+    min.latitude,
+    max.longitude,
+    max.latitude
+).joinToString(",") { it.format(7) }

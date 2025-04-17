@@ -20,9 +20,9 @@ import androidx.compose.ui.unit.Constraints
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
+import de.westnordost.streetcomplete.ui.ktx.pxToDp
 import de.westnordost.streetcomplete.ui.theme.GrassGreen
 import de.westnordost.streetcomplete.ui.theme.surfaceContainer
-import de.westnordost.streetcomplete.ui.util.pxToDp
 import de.westnordost.streetcomplete.util.ktx.systemTimeNow
 import kotlinx.datetime.DateTimeUnit
 import kotlinx.datetime.LocalDate
@@ -61,7 +61,7 @@ fun DatesActiveTable(
         val months = symbols.shortMonths
 
         val weekdayColumnWidth = weekdays.maxOf { textMeasurer.measure(it, textStyle).size.width }.pxToDp()
-        val textHeight = textMeasurer.measure(months[0]).size.height.pxToDp()
+        val textHeight = textMeasurer.measure(months[0], textStyle).size.height.pxToDp()
 
         // stretch 100% width and determine available box size and then the height from that
         val cellSize = (maxWidth - weekdayColumnWidth - cellPadding * 2) / horizontalCells - cellPadding

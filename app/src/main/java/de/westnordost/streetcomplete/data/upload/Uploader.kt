@@ -7,14 +7,13 @@ import de.westnordost.streetcomplete.data.download.tiles.enclosingTilePos
 import de.westnordost.streetcomplete.data.osm.edits.upload.ElementEditsUploader
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsUploader
+import de.westnordost.streetcomplete.data.user.UserLoginController
 import de.westnordost.streetcomplete.data.user.UserLoginSource
 import de.westnordost.streetcomplete.util.Listeners
 import de.westnordost.streetcomplete.util.logs.Log
 import kotlinx.coroutines.CancellationException
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
-import kotlinx.coroutines.withContext
 
 class Uploader(
     private val noteEditsUploader: NoteEditsUploader,
@@ -22,6 +21,7 @@ class Uploader(
     private val downloadedTilesController: DownloadedTilesController,
     private val userLoginSource: UserLoginSource,
     private val versionIsBannedChecker: VersionIsBannedChecker,
+    private val userLoginController: UserLoginController,
     private val mutex: Mutex
 ) : UploadProgressSource {
 
@@ -54,7 +54,7 @@ class Uploader(
             listeners.forEach { it.onStarted() }
 
             if (!::bannedInfo.isInitialized) {
-                bannedInfo = withContext(Dispatchers.IO) { versionIsBannedChecker.get() }
+                bannedInfo = versionIsBannedChecker.get()
             }
             val banned = bannedInfo
             if (banned is IsBanned) {
@@ -79,6 +79,9 @@ class Uploader(
             Log.i(TAG, "Upload cancelled")
         } catch (e: Exception) {
             Log.e(TAG, "Unable to upload", e)
+            if (e is AuthorizationException) {
+                userLoginController.logOut()
+            }
             listeners.forEach { it.onError(e) }
             throw e
         } finally {

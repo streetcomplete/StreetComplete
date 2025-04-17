@@ -11,8 +11,8 @@ interface Overlay : ElementEditType {
     /** which quest types (by name) should not be visible when this overlay is active */
     val hidesQuestTypes: Set<String> get() = emptySet()
 
-    /** scene updates that should be applied to the map when this overlay is active */
-    val sceneUpdates: List<Pair<String, String>>? get() = null
+    /** layers that should be hidden while this overlay is active */
+    val hidesLayers: List<String> get() = emptyList()
 
     /** Whether the form can be opened with a null element (=new element) */
     val isCreateNodeEnabled: Boolean get() = false
@@ -22,6 +22,6 @@ interface Overlay : ElementEditType {
 
     /** returns the fragment in which the user can view/add the data or null if no form should be
      * displayed for the given [element]. [element] is null for when a new element should be created
-     * */
+     */
     fun createForm(element: Element?): AbstractOverlayForm?
 }

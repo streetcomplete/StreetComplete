@@ -17,7 +17,6 @@ import de.westnordost.streetcomplete.quests.address.AddAddressStreet
 import de.westnordost.streetcomplete.quests.address.AddHousenumber
 import de.westnordost.streetcomplete.quests.air_conditioning.AddAirConditioning
 import de.westnordost.streetcomplete.quests.air_pump.AddAirCompressor
-import de.westnordost.streetcomplete.quests.air_pump.AddBicyclePump
 import de.westnordost.streetcomplete.quests.amenity_cover.AddAmenityCover
 import de.westnordost.streetcomplete.quests.amenity_indoor.AddIsAmenityIndoor
 import de.westnordost.streetcomplete.quests.atm_cashin.AddAtmCashIn
@@ -25,20 +24,25 @@ import de.westnordost.streetcomplete.quests.atm_operator.AddAtmOperator
 import de.westnordost.streetcomplete.quests.baby_changing_table.AddBabyChangingTable
 import de.westnordost.streetcomplete.quests.barrier_bicycle_barrier_installation.AddBicycleBarrierInstallation
 import de.westnordost.streetcomplete.quests.barrier_bicycle_barrier_type.AddBicycleBarrierType
+import de.westnordost.streetcomplete.quests.barrier_opening.AddBarrierOpening
 import de.westnordost.streetcomplete.quests.barrier_type.AddBarrierOnPath
 import de.westnordost.streetcomplete.quests.barrier_type.AddBarrierOnRoad
 import de.westnordost.streetcomplete.quests.barrier_type.AddBarrierType
 import de.westnordost.streetcomplete.quests.barrier_type.AddStileType
 import de.westnordost.streetcomplete.quests.bbq_fuel.AddBbqFuel
 import de.westnordost.streetcomplete.quests.bench_backrest.AddBenchBackrest
+import de.westnordost.streetcomplete.quests.bicycle_repair_station.AddBicycleRepairStationServices
 import de.westnordost.streetcomplete.quests.bike_parking_capacity.AddBikeParkingCapacity
 import de.westnordost.streetcomplete.quests.bike_parking_cover.AddBikeParkingCover
 import de.westnordost.streetcomplete.quests.bike_parking_type.AddBikeParkingType
 import de.westnordost.streetcomplete.quests.bike_rental_capacity.AddBikeRentalCapacity
 import de.westnordost.streetcomplete.quests.bike_rental_type.AddBikeRentalType
+import de.westnordost.streetcomplete.quests.bike_shop.AddBicyclePump
 import de.westnordost.streetcomplete.quests.bike_shop.AddBikeRepairAvailability
 import de.westnordost.streetcomplete.quests.bike_shop.AddSecondHandBicycleAvailability
+import de.westnordost.streetcomplete.quests.board_name.AddBoardName
 import de.westnordost.streetcomplete.quests.board_type.AddBoardType
+import de.westnordost.streetcomplete.quests.boat_rental.AddBoatRental
 import de.westnordost.streetcomplete.quests.bollard_type.AddBollardType
 import de.westnordost.streetcomplete.quests.bridge_structure.AddBridgeStructure
 import de.westnordost.streetcomplete.quests.building_entrance.AddEntrance
@@ -70,6 +74,7 @@ import de.westnordost.streetcomplete.quests.crossing_markings.AddCrossingMarking
 import de.westnordost.streetcomplete.quests.crossing_signals.AddCrossingSignals
 import de.westnordost.streetcomplete.quests.cycleway.AddCycleway
 import de.westnordost.streetcomplete.quests.defibrillator.AddDefibrillatorLocation
+import de.westnordost.streetcomplete.quests.diet_type.AddGlutenFree
 import de.westnordost.streetcomplete.quests.diet_type.AddHalal
 import de.westnordost.streetcomplete.quests.diet_type.AddKosher
 import de.westnordost.streetcomplete.quests.diet_type.AddVegan
@@ -106,15 +111,10 @@ import de.westnordost.streetcomplete.quests.moped.AddMopedAccess
 import de.westnordost.streetcomplete.quests.motorcycle_parking_capacity.AddMotorcycleParkingCapacity
 import de.westnordost.streetcomplete.quests.motorcycle_parking_cover.AddMotorcycleParkingCover
 import de.westnordost.streetcomplete.quests.oneway.AddOneway
-import de.westnordost.streetcomplete.quests.oneway_suspects.AddSuspectedOneway
-import de.westnordost.streetcomplete.quests.oneway_suspects.data.TrafficFlowSegmentsApi
-import de.westnordost.streetcomplete.quests.oneway_suspects.data.WayTrafficFlowDao
 import de.westnordost.streetcomplete.quests.opening_hours.AddOpeningHours
 import de.westnordost.streetcomplete.quests.opening_hours_signed.CheckOpeningHoursSigned
 import de.westnordost.streetcomplete.quests.orchard_produce.AddOrchardProduce
 import de.westnordost.streetcomplete.quests.parcel_locker_brand.AddParcelLockerBrand
-import de.westnordost.streetcomplete.quests.parcel_locker_mail_in.AddParcelLockerMailIn
-import de.westnordost.streetcomplete.quests.parcel_locker_pickup.AddParcelLockerPickup
 import de.westnordost.streetcomplete.quests.parking_access.AddBikeParkingAccess
 import de.westnordost.streetcomplete.quests.parking_access.AddParkingAccess
 import de.westnordost.streetcomplete.quests.parking_fee.AddBikeParkingFee
@@ -127,6 +127,7 @@ import de.westnordost.streetcomplete.quests.police_type.AddPoliceType
 import de.westnordost.streetcomplete.quests.postbox_collection_times.AddPostboxCollectionTimes
 import de.westnordost.streetcomplete.quests.postbox_ref.AddPostboxRef
 import de.westnordost.streetcomplete.quests.postbox_royal_cypher.AddPostboxRoyalCypher
+import de.westnordost.streetcomplete.quests.power_attachment.AddPowerAttachment
 import de.westnordost.streetcomplete.quests.powerpoles_material.AddPowerPolesMaterial
 import de.westnordost.streetcomplete.quests.railway_crossing.AddRailwayCrossingBarrier
 import de.westnordost.streetcomplete.quests.recycling.AddRecyclingType
@@ -135,7 +136,6 @@ import de.westnordost.streetcomplete.quests.recycling_material.AddRecyclingConta
 import de.westnordost.streetcomplete.quests.religion.AddReligionToPlaceOfWorship
 import de.westnordost.streetcomplete.quests.religion.AddReligionToWaysideShrine
 import de.westnordost.streetcomplete.quests.road_name.AddRoadName
-import de.westnordost.streetcomplete.quests.road_name.RoadNameSuggestionsSource
 import de.westnordost.streetcomplete.quests.roof_shape.AddRoofShape
 import de.westnordost.streetcomplete.quests.sanitary_dump_station.AddSanitaryDumpStation
 import de.westnordost.streetcomplete.quests.seating.AddSeating
@@ -186,13 +186,10 @@ import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
 val questsModule = module {
-    factory { RoadNameSuggestionsSource(get()) }
-    factory { WayTrafficFlowDao(get()) }
+    factory { NameSuggestionsSource(get()) }
 
     single {
         questTypeRegistry(
-            get(),
-            get(),
             get(),
             { location ->
                 val countryInfos = get<CountryInfos>()
@@ -207,8 +204,6 @@ val questsModule = module {
 }
 
 fun questTypeRegistry(
-    trafficFlowSegmentsApi: TrafficFlowSegmentsApi,
-    trafficFlowDao: WayTrafficFlowDao,
     arSupportChecker: ArSupportChecker,
     getCountryInfoByLocation: (LatLon) -> CountryInfo,
     getFeature: (Element) -> Feature?,
@@ -297,6 +292,7 @@ fun questTypeRegistry(
     26 to AddReligionToPlaceOfWorship(), // icons on maps are different - OSM Carto, mapy.cz, OsmAnd, Sputnik etc
     27 to AddReligionToWaysideShrine(),
 
+    172 to AddPowerAttachment(),
     28 to AddPowerPolesMaterial(),
 
     29 to AddIsBuildingUnderground(), // should be before AddHousenumber to avoid asking for underground buildings
@@ -349,6 +345,7 @@ fun questTypeRegistry(
     155 to AddGritBinSeasonal(),
 
     50 to AddBoardType(),
+    171 to AddBoardName(),
 
     51 to AddBarrierType(), // basically any more detailed rendering and routing: OSM Carto, mapy.cz, OSMand for start
     52 to AddBarrierOnPath(),
@@ -388,9 +385,9 @@ fun questTypeRegistry(
     73 to AddBikeRentalCapacity(), // less ambiguous than bike parking
     74 to AddBikeParkingCapacity(), // used by cycle map layer on osm.org, OsmAnd
 
+    173 to AddBicycleRepairStationServices(),
+
     167 to AddParcelLockerBrand(),
-    168 to AddParcelLockerPickup(),
-    169 to AddParcelLockerMailIn(),
 
     // address: usually only visible when just in front + sometimes requires to take "other answer"
     75 to AddHousenumber(),
@@ -427,7 +424,6 @@ fun questTypeRegistry(
     95 to AddMaxPhysicalHeight(arSupportChecker), // same as above, best if it appears right after (if enabled)
     96 to AddRoadName(),
     97 to AddOneway(),
-    98 to AddSuspectedOneway(trafficFlowSegmentsApi, trafficFlowDao),
 
     99 to AddEntrance(),
     100 to AddEntranceReference(),
@@ -460,6 +456,8 @@ fun questTypeRegistry(
 
     /* ↓ 4.quests that may need to go inside ------------------------------------------------ */
 
+    174 to AddBoatRental(),
+
     112 to AddWheelchairAccessPublicTransport(), // need to look out for lifts etc, maybe even enter the station
 
     113 to AddIsAmenityIndoor(getFeature), // need to go inside in case it is inside (or gone)
@@ -473,7 +471,7 @@ fun questTypeRegistry(
     162 to AddSanitaryDumpStation(),
 
     // toilets
-    118 to AddToiletAvailability(), // OSM Carto, shown in OsmAnd descriptions
+    118 to AddToiletAvailability(), // shown in OsmAnd descriptions
     119 to AddToiletsFee(), // used by OsmAnd in the object description
     120 to AddBabyChangingTable(), // used by OsmAnd in the object description
     121 to AddWheelchairAccessToiletsPart(),
@@ -486,6 +484,7 @@ fun questTypeRegistry(
     126 to AddVegan(),
     127 to AddHalal(), // there are ~ 100 times more Muslims than Jews
     128 to AddKosher(),
+    175 to AddGlutenFree(),
     129 to AddWheelchairAccessBusiness(), // used by wheelmap, OsmAnd, Organic Maps
     130 to AddInternetAccess(), // used by OsmAnd
     131 to AddAcceptsCards(), // this will often involve going inside and near the till
@@ -503,13 +502,10 @@ fun questTypeRegistry(
     137 to AddCycleway(getCountryInfoByLocation), // for any cyclist routers (and cyclist maps)
     138 to AddLanes(), // abstreet, certainly most routing engines - often requires way to be split
 
-    // disabled completely because definition is too fuzzy/broad to be useful and easy to answer,
-    // see https://community.openstreetmap.org/t/shoulder-tag-is-confusing/5185
-    // 139 to AddShoulder(), // needs minimal thinking
-
     140 to AddRoadWidth(arSupportChecker),
     141 to AddRoadSmoothness(),
     142 to AddPathSmoothness(),
+    170 to AddBarrierOpening(arSupportChecker),
 
     // footways
     143 to AddPathSurface(), // used by OSM Carto, BRouter, OsmAnd, OSRM, graphhopper...

@@ -40,8 +40,8 @@ class AddWidthForm : AbstractArMeasureQuestForm<WidthAnswer>() {
         }
         lengthInput.unitSelectItemResId = R.layout.spinner_item_centered_large
         lengthInput.isCompactMode = true
-        lengthInput.maxFeetDigits = if (isRoad) 3 else 2
-        lengthInput.maxMeterDigits = Pair(if (isRoad) 2 else 1, 2)
+        lengthInput.maxFeetDigits = 3
+        lengthInput.maxMeterDigits = Pair(2, 2)
         lengthInput.selectableUnits = countryInfo.lengthUnits
         lengthInput.onInputChanged = {
             isARMeasurement = false

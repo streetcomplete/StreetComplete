@@ -35,7 +35,7 @@ class SidewalkOverlay : Overlay {
         // roads
         mapData.filter("""
             ways with
-              highway ~ motorway_link|trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|living_street|pedestrian|service
+              highway ~ ${ALL_ROADS.joinToString("|")}
               and area != yes
         """).map { it to getSidewalkStyle(it) } +
         // footways etc, just to highlight e.g. separately mapped sidewalks. However, it is also
@@ -79,24 +79,28 @@ private fun getFootwayStyle(element: Element): PolylineStyle {
 }
 
 private fun getSidewalkStyle(element: Element): PolylineStyle {
-    val sidewalkSides = parseSidewalkSides(element.tags)
-    // not set but on road that usually has no sidewalk or it is private -> do not highlight as missing
-    if (sidewalkSides == null) {
-        if (sidewalkTaggingNotExpected(element) || isPrivateOnFoot(element)) {
-            return PolylineStyle(StrokeStyle(Color.INVISIBLE))
-        }
-    }
+    val sidewalks = parseSidewalkSides(element.tags)
+    val isNoSidewalkExpected = lazy { sidewalkTaggingNotExpected(element) || isPrivateOnFoot(element) }
 
     return PolylineStyle(
-        stroke = null,
-        strokeLeft = sidewalkSides?.left.style,
-        strokeRight = sidewalkSides?.right.style
+        stroke = getStreetStrokeStyle(element.tags),
+        strokeLeft = sidewalks?.left.getStyle(isNoSidewalkExpected),
+        strokeRight = sidewalks?.right.getStyle(isNoSidewalkExpected)
     )
 }
 
+private fun getStreetStrokeStyle(tags: Map<String, String>): StrokeStyle? =
+    when {
+        tags["highway"] == "pedestrian" ->
+            StrokeStyle(Color.SKY)
+        tags["highway"] == "living_street" || tags["living_street"] == "yes" ->
+            StrokeStyle(Color.SKY, dashed = true)
+        else -> null
+    }
+
 private val sidewalkTaggingNotExpectedFilter by lazy { """
     ways with
-      highway ~ living_street|pedestrian|service|motorway_link
+      highway ~ track|living_street|pedestrian|service|motorway_link|motorway|busway
       or motorroad = yes
       or expressway = yes
       or maxspeed <= 10
@@ -108,9 +112,10 @@ private val sidewalkTaggingNotExpectedFilter by lazy { """
 private fun sidewalkTaggingNotExpected(element: Element) =
     sidewalkTaggingNotExpectedFilter.matches(element)
 
-private val Sidewalk?.style get() = StrokeStyle(when (this) {
-    Sidewalk.YES           -> Color.SKY
-    Sidewalk.NO            -> Color.BLACK
-    Sidewalk.SEPARATE      -> Color.INVISIBLE
-    Sidewalk.INVALID, null -> Color.DATA_REQUESTED
+private fun Sidewalk?.getStyle(isNoSidewalkExpected: Lazy<Boolean>) = StrokeStyle(when (this) {
+    Sidewalk.YES ->      Color.SKY
+    Sidewalk.NO ->       Color.BLACK
+    Sidewalk.SEPARATE -> Color.INVISIBLE
+    Sidewalk.INVALID  -> Color.DATA_REQUESTED
+    null ->              if (isNoSidewalkExpected.value) Color.INVISIBLE else Color.DATA_REQUESTED
 })

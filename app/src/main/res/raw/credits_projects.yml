@@ -1,5 +1,3 @@
 - Jannik Vieten (<a href="https://github.com/exploide/">exploide</a>) created the photo upload service for StreetComplete
-- <a href="https://github.com/ENT8R/">ENT8R</a> created an API to query oneway data from improveOSM
-- <a href="https://github.com/ENT8R/">ENT8R</a> created the map stylesheets for StreetComplete
-- Nils Rokita maintained the map tileserver used till v20, map-data.de
+- <a href="https://github.com/ENT8R/">ENT8R</a> created the original map stylesheet for StreetComplete
 - Ruben Kelevra maintains an unofficial <a href="https://mastodon.social/@streetcomplete">Mastodon</a> account for news and support

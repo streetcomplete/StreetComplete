@@ -13,8 +13,10 @@ val questPresetsModule = module {
     single<QuestTypeOrderSource> { get<QuestTypeOrderController>() }
     single { QuestTypeOrderController(get(), get(), get()) }
 
-    single { SelectedQuestPresetStore(get()) }
     single { TeamModeQuestFilter(get(), get()) }
+
+    single<QuestsHiddenSource> { get<QuestsHiddenController>() }
+    single { QuestsHiddenController(get(), get()) }
 
     single<VisibleQuestTypeSource> { get<VisibleQuestTypeController>() }
     single { VisibleQuestTypeController(get(), get(), get()) }

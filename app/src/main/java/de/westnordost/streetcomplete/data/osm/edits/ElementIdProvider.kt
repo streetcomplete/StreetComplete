@@ -27,9 +27,9 @@ class ElementIdProvider(elementKeys: Collection<ElementKey>) {
         relationIds.sortDescending()
     }
 
-    fun nextNodeId(): Long = nodeIds.removeFirst()
-    fun nextWayId(): Long = wayIds.removeFirst()
-    fun nextRelationId(): Long = relationIds.removeFirst()
+    fun nextNodeId(): Long = nodeIds.removeAt(0)
+    fun nextWayId(): Long = wayIds.removeAt(0)
+    fun nextRelationId(): Long = relationIds.removeAt(0)
 
     fun getAll(): List<ElementKey> =
         nodeIds.map { ElementKey(ElementType.NODE, it) } +

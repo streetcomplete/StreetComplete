@@ -18,6 +18,19 @@ class SmoothnessAnswerKtTest {
         )
     }
 
+    @Test fun `apply smoothness answer updates check date for surface`() {
+        assertEquals(
+            setOf(
+                StringMapEntryAdd("smoothness", "excellent"),
+                StringMapEntryModify("check_date:surface", "2000-10-10", nowAsCheckDateString()),
+            ),
+            SmoothnessValueAnswer(Smoothness.EXCELLENT).appliedTo(mapOf(
+                "surface" to "asphalt",
+                "check_date:surface" to "2000-10-10",
+            ))
+        )
+    }
+
     @Test fun `deletes possibly out of date info`() {
         assertEquals(
             setOf(
@@ -60,7 +73,8 @@ class SmoothnessAnswerKtTest {
                 StringMapEntryDelete("smoothness:date", "2000-10-10"),
                 StringMapEntryDelete("surface", "asphalt"),
                 StringMapEntryDelete("surface:grade", "3"),
-                StringMapEntryDelete("check_date:smoothness", "2000-10-10")
+                StringMapEntryDelete("check_date:smoothness", "2000-10-10"),
+                StringMapEntryDelete("paving_stones:length", "30"),
             ),
             WrongSurfaceAnswer.appliedTo(mapOf(
                 "smoothness" to "excellent",
@@ -68,6 +82,7 @@ class SmoothnessAnswerKtTest {
                 "surface" to "asphalt",
                 "surface:grade" to "3",
                 "check_date:smoothness" to "2000-10-10",
+                "paving_stones:length" to "30"
             ))
         )
     }

@@ -11,7 +11,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.AbbreviationsByLocale
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.osm.address.StreetOrPlaceNameViewController.StreetOrPlace.*
-import de.westnordost.streetcomplete.quests.road_name.RoadNameSuggestionsSource
+import de.westnordost.streetcomplete.quests.NameSuggestionsSource
 import de.westnordost.streetcomplete.util.ktx.nonBlankTextOrNull
 import de.westnordost.streetcomplete.view.OnAdapterItemSelectedListener
 import java.util.Locale
@@ -26,13 +26,13 @@ class StreetOrPlaceNameViewController(
     private val placeNameInput: EditText,
     private val streetNameInputContainer: View,
     private val streetNameInput: EditText,
-    roadNameSuggestionsSource: RoadNameSuggestionsSource,
+    nameSuggestionsSource: NameSuggestionsSource,
     abbreviationsByLocale: AbbreviationsByLocale,
     countryLocale: Locale,
     startWithPlace: Boolean,
 ) {
     private val streetNameInputCtrl = AddressStreetNameInputViewController(
-        streetNameInput, roadNameSuggestionsSource, abbreviationsByLocale, countryLocale
+        streetNameInput, nameSuggestionsSource, abbreviationsByLocale, countryLocale
     )
 
     var onInputChanged: (() -> Unit)? = null

@@ -1,9 +1,11 @@
 package de.westnordost.streetcomplete.ui.theme
 
 import androidx.compose.material.Colors
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.darkColors
 import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.ReadOnlyComposable
 import androidx.compose.ui.graphics.Color
 
 /* Colors as they could be found on (illustrations of) traffic signs. */
@@ -18,18 +20,20 @@ val TrafficGrayA = Color(0xff8e9291)
 val TrafficGrayB = Color(0xff4f5250)
 
 /* Colors for the teams in team mode.  */
-val Team0 = Color(0xfff44336)
-val Team1 = Color(0xff529add)
-val Team2 = Color(0xffffdd55)
-val Team3 = Color(0xffca72e2)
-val Team4 = Color(0xff9bbe55)
-val Team5 = Color(0xfff4900c)
-val Team6 = Color(0xff9aa0ad)
-val Team7 = Color(0xff6390a0)
-val Team8 = Color(0xffa07a43)
-val Team9 = Color(0xff494EAD)
-val Team10 = Color(0xffAA335D)
-val Team11 = Color(0xff655555)
+val TeamColors = arrayOf(
+    Color(0xfff44336),
+    Color(0xff529add),
+    Color(0xFFFBC02D),
+    Color(0xffca72e2),
+    Color(0xff9bbe55),
+    Color(0xfff4900c),
+    Color(0xff9aa0ad),
+    Color(0xff6390a0),
+    Color(0xffa07a43),
+    Color(0xff494EAD),
+    Color(0xffAA335D),
+    Color(0xff655555),
+)
 
 val White = Color(0xffffffff)
 
@@ -55,25 +59,25 @@ val DarkColors = darkColors(
     onSecondary = Color.White
 )
 
-val Colors.hint @Composable get() =
-    if (isLight) Color(0xff666666) else Color(0xff999999)
+val Colors.selectionBackground @ReadOnlyComposable @Composable get() =
+    MaterialTheme.colors.secondary.copy(alpha = 0.5f)
 
-val Colors.surfaceContainer @Composable get() =
+val Colors.surfaceContainer @ReadOnlyComposable @Composable get() =
     if (isLight) Color(0xffdddddd) else Color(0xff222222)
 
 // use lighter tones (200) for increased contrast with dark background
 
-val Colors.logVerbose @Composable get() =
+val Colors.logVerbose @ReadOnlyComposable @Composable get() =
     if (isLight) Color(0xff666666) else Color(0xff999999)
 
-val Colors.logDebug @Composable get() =
+val Colors.logDebug @ReadOnlyComposable @Composable get() =
     if (isLight) Color(0xff2196f3) else Color(0xff90caf9)
 
-val Colors.logInfo @Composable get() =
+val Colors.logInfo @ReadOnlyComposable @Composable get() =
     if (isLight) Color(0xff4caf50) else Color(0xffa5d6a7)
 
-val Colors.logWarning @Composable get() =
+val Colors.logWarning @ReadOnlyComposable @Composable get() =
     if (isLight) Color(0xffff9800) else Color(0xffffcc80)
 
-val Colors.logError @Composable get() =
+val Colors.logError @ReadOnlyComposable @Composable get() =
     if (isLight) Color(0xfff44336) else Color(0xffef9a9a)

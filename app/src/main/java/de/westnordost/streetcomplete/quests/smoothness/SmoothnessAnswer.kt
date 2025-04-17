@@ -2,7 +2,10 @@ package de.westnordost.streetcomplete.quests.smoothness
 
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.changeToSteps
+import de.westnordost.streetcomplete.osm.hasCheckDateForKey
 import de.westnordost.streetcomplete.osm.removeCheckDatesForKey
+import de.westnordost.streetcomplete.osm.surface.getKeysAssociatedWithSurface
+import de.westnordost.streetcomplete.osm.updateCheckDateForKey
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 
 sealed interface SmoothnessAnswer
@@ -19,11 +22,14 @@ fun SmoothnessAnswer.applyTo(tags: Tags) {
     when (this) {
         is SmoothnessValueAnswer -> {
             tags.updateWithCheckDate("smoothness", value.osmValue)
+            if (tags.hasCheckDateForKey("surface")) {
+                tags.updateCheckDateForKey("surface")
+            }
         }
         is WrongSurfaceAnswer -> {
             tags.remove("surface")
-            tags.remove("smoothness")
-            tags.removeCheckDatesForKey("smoothness")
+            tags.removeCheckDatesForKey("surface")
+            getKeysAssociatedWithSurface().forEach { tags.remove(it) }
         }
         is IsActuallyStepsAnswer -> {
             tags.changeToSteps()

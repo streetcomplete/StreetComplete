@@ -142,6 +142,8 @@ Adjust [QuestsModule.kt](app/src/main/java/de/westnordost/streetcomplete/quests/
 
 Each quest is associated with a number in this list. These numbers are used to identify the quest uniquely and can be used to save presets as QR codes. When adding a new quest, use the next consecutive number that is not yet in the list. Put the quest in order of priority, even if it means the numbers are not sorted.
 
+You can use this command to get last used quest number (which you need to increment by one): `sed -ne 's/^ *\([0-9]\+\) .*$/\1/p' app/src/main/java/de/westnordost/streetcomplete/quests/QuestsModule.kt | sort -g | tail -n1`
+
 Add your quest to the list so that it will be loaded by the app.
 
 At this point you can run the app in the emulator - everything should work and one of the quests will appear twice.
@@ -336,14 +338,15 @@ Keep similar style to existing ones and the app in general. Note that the backgr
 
 Once the quest icon is ready:
 
-- when using Inkscape, save as "Optimized SVG" to remove unnecessary cruft or use another tool for that, like [svgo](https://github.com/svg/svgo)
+- when using Inkscape, save as "Optimized SVG" to remove unnecessary cruft or use another tool for that, like [svgo](https://github.com/svg/svgo) or online [SVGOMG](https://svgomg.net/)
 - Put SVG into [`res/graphics/quest`](res/graphics/quest) folder
   - SVG is a standard format editable in various software, unlike internal Android Studio XML that will be produced in the next steps.
-- Open Android Studio
+  - take care to name the SVG file just like the XML but without `ic_quest_` prefix, as some tools expect that.
+- Open Android Studio (if you don't use it, there are also online tools to convert from SVG to Android XML)
 - Right click on the "app" folder in the Project tool window (top left)
 - Select new → vector asset
 - Select your SVG file
-- Name with `ic_quest_` prefix (something like `ic_quest_traffic_calming`)
+- Name with `ic_quest_` prefix (something like `ic_quest_traffic_calming`) - it should be the same name as used in the Quest file (e.g. `R.drawable.ic_quest_traffic_calming`)
 - Press "Finish" button to generate drawable
 - Add an entry in the [attribution file](res/graphics/authors.txt)
 - Modify `icon` property in the quest definition to use the new drawable
@@ -464,6 +467,10 @@ Each of these folders should hold the same image resized to a different resoluti
 
 The [rescaling script](https://github.com/matkoniecz/rescaling_for_android) may be useful, but you can also do this manually with Gimp or similar software.
 
+Please make sure that the images do not take too much disk space. Most useful way to do that is by lowering JPEG quality, which can make images noticeably smaller. Play with settings to see which is the smallest size which does not degrade image quality visibly.
+
+[GIMP](https://gimp.org/) allows such previews while saving JPG files, and there are also online tools like [squoosh](https://squoosh.app/) which allow for quick visual comparison if you prefer that.
+
 After adding a photo, remember to update [the credits file](app/src/main/res/authors.txt) (different to the one for icons).
 
 ## Resurvey
@@ -542,6 +549,10 @@ For nodes within ways, the node will remain and tags will be removed.
 
 When there are doubts on the question itself (terms used, etc.), how to answer or how to find the answer, more information can be provided via info button text & images.
 Examples for such info button would be explanation of what is halal, what is [tactile paving](app/src/main/java/de/westnordost/streetcomplete/quests/tactile_paving/AddTactilePavingBusStop.kt#L33-L38), what is a sanitary dump station, when a level counts as a roof level and when as a normal level, explanation of the street side puzzle UI, etc.
+
+Instructions for answering the quest should instead be directly visible either in the quest title or a label on the form always shown with the answers. For example, when asked for the name of a road, a label instructs the user to expand abbreviated road names. When asked about whether a restaurant offers vegetarian options, it is clarified that one should only answer "yes" if these are proper options (not just a salad or whatever).
+
+For doubts on how to answer specific situations, like e.g. when asked for the opening hours of a shop that doesn't seem to exist anymore or asked about the house number of a building that instead has a house name, it is better to provide such answer through the "Uh..." menu, see [Designing the form](#designing-the-form).
 
 ## Per-country quest behaviour modification
 

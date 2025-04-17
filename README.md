@@ -1,4 +1,4 @@
-![StreetComplete](http://www.westnordost.de/streetcomplete/featureGraphic.png)
+![StreetComplete](.github/images/feature_graphic.png)
 
 StreetComplete is an easy to use editor of OpenStreetMap data available for Android. It can be used without any OpenStreetMap-specific knowledge. It asks simple questions, with answers directly used to edit and improve OpenStreetMap data. The app is aimed at users who do not know anything about OSM tagging schemes but still want to contribute to OpenStreetMap.
 
@@ -53,16 +53,16 @@ This software is released under the terms of the [GNU General Public License](ht
 Many users are currently supporting this app through <a href="https://github.com/sponsors/westnordost">GitHub sponsors</a>, <a href="https://liberapay.com/westnordost">Liberapay</a> and <a href="https://www.patreon.com/westnordost">Patreon</a>. If you like the app, you can join them ☺️ to support the continued development and maintenance of the app.<br/>
 <br/>
 
-<a href="https://bmbf.de/"><img src=".github/images/logo_bmbf.png" alt="German Federal Ministry of Education and Research" height="140"/></a><a href="https://prototypefund.de/"><img src=".github/images/logo_prototypefund.svg" alt="Prototype Fund" height="140"/></a><br/>
-Within the frame of **Prototype Fund** <a href="https://prototypefund.de/en/project/streetcomplete-for-ios/">round 15</a> (March 2024 to August 2024), the German Federal Ministry of Education and Research currently sponsors Tobias Zwick to work on StreetComplete for iOS.<br/>
-Development on this app was also sponsored in <a href="https://prototypefund.de/en/project/streetcomplete/">round 8</a> (September 2020 to February 2021) of the Prototype fund, with focus on collecting more data points and on general improvements of this app.<br/>
-<br/>
-
 <a href="https://www.jawg.io"><img src=".github/images/logo_jawgmaps.png" alt="JawgMaps" height="58"/></a><br>
 Since mid 2020, **JawgMaps** provides their vector map tiles service to StreetComplete for free, i.e. the background map displayed in the app.<br/>
 <br/>
 
 ## Past Sponsors
+
+<a href="https://bmbf.de/"><img src=".github/images/logo_bmbf.png" alt="German Federal Ministry of Education and Research" height="140"/></a><a href="https://prototypefund.de/"><img src=".github/images/logo_prototypefund.svg" alt="Prototype Fund" height="140"/></a><br/>
+Within the frame of **Prototype Fund** <a href="https://prototypefund.de/en/project/streetcomplete-for-ios/">round 15</a> (March 2024 to August 2024), the German Federal Ministry of Education and Research sponsored Tobias Zwick to work on StreetComplete for iOS (see [progress report](https://github.com/streetcomplete/StreetComplete/issues/5421#issuecomment-2332402123))<br/><br>
+Development on this app was also sponsored in <a href="https://prototypefund.de/en/project/streetcomplete/">round 8</a> (September 2020 to February 2021) of the Prototype fund, with focus on collecting more data points and on general improvements of this app.<br/>
+<br/>
 
 <a href="https://nlnet.nl/discovery/"><img src=".github/images/logo_nlnet.svg" alt="nlnet" height="100"/></a><br/>
 The **NLnet foundation** sponsored development on this app in three individual grants with funds from the European Commission:<br/>

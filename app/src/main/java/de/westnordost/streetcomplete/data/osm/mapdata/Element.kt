@@ -17,7 +17,7 @@ sealed class Element {
 data class Node(
     override val id: Long,
     val position: LatLon,
-    override val tags: Map<String, String> = HashMap(0),
+    override val tags: Map<String, String> = emptyMap(),
     override val version: Int = 1,
     override val timestampEdited: Long = 0
 ) : Element() {
@@ -30,7 +30,7 @@ data class Node(
 data class Way(
     override val id: Long,
     val nodeIds: List<Long>,
-    override val tags: Map<String, String> = HashMap(0),
+    override val tags: Map<String, String> = emptyMap(),
     override val version: Int = 1,
     override val timestampEdited: Long = 0
 ) : Element() {
@@ -45,7 +45,7 @@ data class Way(
 data class Relation(
     override val id: Long,
     val members: List<RelationMember>,
-    override val tags: Map<String, String> = HashMap(0),
+    override val tags: Map<String, String> = emptyMap(),
     override val version: Int = 1,
     override val timestampEdited: Long = 0
 ) : Element() {
@@ -62,13 +62,6 @@ data class RelationMember(
 )
 
 enum class ElementType { NODE, WAY, RELATION }
-
-data class DiffElement(
-    val type: ElementType,
-    val clientId: Long,
-    val serverId: Long? = null,
-    val serverVersion: Int? = null
-)
 
 @Serializable
 data class LatLon(

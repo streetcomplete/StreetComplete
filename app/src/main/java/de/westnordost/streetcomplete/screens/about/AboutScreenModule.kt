@@ -1,6 +1,8 @@
 package de.westnordost.streetcomplete.screens.about
 
-import org.koin.androidx.viewmodel.dsl.viewModel
+import de.westnordost.streetcomplete.screens.about.logs.LogsViewModel
+import de.westnordost.streetcomplete.screens.about.logs.LogsViewModelImpl
+import org.koin.core.module.dsl.viewModel
 import org.koin.dsl.module
 
 val aboutScreenModule = module {

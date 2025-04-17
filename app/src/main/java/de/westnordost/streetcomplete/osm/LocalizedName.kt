@@ -24,7 +24,7 @@ data class LocalizedName(var languageTag: String, var name: String)
  *
  *  Tags that are not two- or three-letter ISO 639 language codes appended with an optional 4-letter
  *  ISO 15924 code, such as name:left, name:etymology, name:source etc., are ignored
- *  */
+ */
 fun parseLocalizedNames(tags: Map<String, String>): List<LocalizedName>? {
     val result = ArrayList<LocalizedName>()
     for ((key, value) in tags) {

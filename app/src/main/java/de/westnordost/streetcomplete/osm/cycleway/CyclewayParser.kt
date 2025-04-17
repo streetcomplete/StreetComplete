@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.osm.cycleway
 
+import de.westnordost.streetcomplete.osm.Direction
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway.*
 import de.westnordost.streetcomplete.osm.expandSidesTags
 import de.westnordost.streetcomplete.osm.isForwardOneway
@@ -154,11 +155,20 @@ private fun parseDirectionForSide(
 ): Direction {
     val sideVal = if (isRight) ":right" else ":left"
     val cyclewayKey = "cycleway$sideVal"
+    val sidewalkKey = "sidewalk$sideVal"
     val explicitDirection = when (tags["$cyclewayKey:oneway"]) {
         "yes" -> Direction.FORWARD
         "-1" ->  Direction.BACKWARD
         "no" ->  Direction.BOTH
-        else ->  null
+        else ->  when (tags["$sidewalkKey:oneway:bicycle"]) {
+            "yes" -> Direction.FORWARD
+            "-1" ->  Direction.BACKWARD
+            "no" ->  when (tags["$sidewalkKey:bicycle:signed"]) {
+                "yes" -> Direction.BOTH
+                else -> null
+            }
+            else -> null
+        }
     }
     return explicitDirection ?: Direction.getDefault(isRight, isLeftHandTraffic)
 }
@@ -188,6 +198,7 @@ private fun expandRelevantSidesTags(tags: Map<String, String>): Map<String, Stri
     result.expandSidesTags("cycleway", "segregated", true)
     result.expandSidesTags("sidewalk", "bicycle", true)
     result.expandSidesTags("sidewalk", "bicycle:signed", true)
+    result.expandSidesTags("sidewalk", "oneway:bicycle", true)
     return result
 }
 

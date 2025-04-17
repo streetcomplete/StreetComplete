@@ -16,13 +16,12 @@ import de.westnordost.streetcomplete.util.ktx.toYesNo
 class AddAirCompressor : OsmFilterQuestType<Boolean>() {
 
     override val elementFilter = """
-       nodes, ways with
-       amenity = fuel
-       and (
-           !compressed_air
-           or compressed_air older today -6 years
-       )
-       and access !~ private|no
+        nodes, ways with
+        amenity = fuel
+        and (
+            !compressed_air
+            or compressed_air older today -6 years
+        )
     """
 
     override val changesetComment = "Survey availability of air compressors"

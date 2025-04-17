@@ -20,6 +20,7 @@ import androidx.compose.ui.graphics.Outline
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.vector.PathParser
+import androidx.compose.ui.graphics.vector.toPath
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Density
@@ -79,9 +80,12 @@ private fun Modifier.levelLabelBackground() =
     .padding(horizontal = 10.dp, vertical = 4.dp)
 
 object AchievementFrameShape : Shape {
+    private val pathNodes = PathParser()
+        .parsePathString("m0.55404 0.97761c-0.029848 0.029846-0.078236 0.029846-0.10808 0l-0.42357-0.42357c-0.029848-0.029848-0.029848-0.078239 0-0.10808l0.42357-0.42357c0.029846-0.029846 0.078236-0.029846 0.10808 0l0.42357 0.42357c0.029846 0.029846 0.029846 0.078236 0 0.10808z")
+        .toNodes()
+
     override fun createOutline(size: Size, layoutDirection: LayoutDirection, density: Density): Outline {
-        val pathStr = "m0.55404 0.97761c-0.029848 0.029846-0.078236 0.029846-0.10808 0l-0.42357-0.42357c-0.029848-0.029848-0.029848-0.078239 0-0.10808l0.42357-0.42357c0.029846-0.029846 0.078236-0.029846 0.10808 0l0.42357 0.42357c0.029846 0.029846 0.029846 0.078236 0 0.10808z"
-        val path = PathParser().parsePathString(pathStr).toPath()
+        val path = pathNodes.toPath()
         path.transform(Matrix().apply { scale(size.width, size.height, 1f) })
         return Outline.Generic(path)
     }

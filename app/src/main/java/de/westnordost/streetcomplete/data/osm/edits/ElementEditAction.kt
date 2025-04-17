@@ -20,7 +20,7 @@ interface ElementEditAction {
     /** Using the given map data repository (if necessary) and the id provider (if this action
      * creates new elements), this function should return all updated elements this action produces
      * when applied to the given element or throw a ElementConflictException
-     * */
+     */
     fun createUpdates(
         mapDataRepository: MapDataRepository,
         idProvider: ElementIdProvider

@@ -7,11 +7,12 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.WHEELCHAIR
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.osm.surface.SurfaceAndNote
+import de.westnordost.streetcomplete.osm.surface.INVALID_SURFACES
+import de.westnordost.streetcomplete.osm.surface.Surface
 import de.westnordost.streetcomplete.osm.surface.applyTo
 import de.westnordost.streetcomplete.osm.surface.updateCommonSurfaceFromFootAndCyclewaySurface
 
-class AddFootwayPartSurface : OsmFilterQuestType<SurfaceAndNote>() {
+class AddFootwayPartSurface : OsmFilterQuestType<Surface>() {
 
     override val elementFilter = """
         ways with (
@@ -20,17 +21,21 @@ class AddFootwayPartSurface : OsmFilterQuestType<SurfaceAndNote>() {
           or (highway ~ cycleway|bridleway and foot and foot != no)
         )
         and segregated = yes
-        and !sidewalk
+        and !(sidewalk or sidewalk:left or sidewalk:right or sidewalk:both)
         and (
           !footway:surface
-          or footway:surface older today -8 years
+          or footway:surface ~ ${INVALID_SURFACES.joinToString("|")}
           or (
             footway:surface ~ paved|unpaved
             and !footway:surface:note
-            and !note:footway:surface
+            and !check_date:footway:surface
           )
+          or footway:surface older today -8 years
         )
-        and (access !~ private|no or (foot and foot !~ private|no))
+        and (
+          access !~ private|no
+          or (foot and foot !~ private|no)
+        )
         and ~path|footway|cycleway|bridleway !~ link
     """
     override val changesetComment = "Add footway path surfaces"
@@ -42,7 +47,7 @@ class AddFootwayPartSurface : OsmFilterQuestType<SurfaceAndNote>() {
 
     override fun createForm() = AddPathPartSurfaceForm()
 
-    override fun applyAnswerTo(answer: SurfaceAndNote, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: Surface, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         answer.applyTo(tags, "footway")
         updateCommonSurfaceFromFootAndCyclewaySurface(tags)
     }

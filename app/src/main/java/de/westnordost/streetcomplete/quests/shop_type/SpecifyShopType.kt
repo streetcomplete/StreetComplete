@@ -7,6 +7,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.osm.applyTo
 import de.westnordost.streetcomplete.osm.isPlaceOrDisusedPlace
 import de.westnordost.streetcomplete.osm.removeCheckDates
 
@@ -47,17 +48,15 @@ class SpecifyShopType : OsmFilterQuestType<ShopTypeAnswer>() {
         tags.removeCheckDates()
         when (answer) {
             is IsShopVacant -> {
+                tags["disused:shop"] = tags["shop"] ?: "yes"
                 tags.remove("shop")
-                tags["disused:shop"] = "yes"
             }
             is ShopType -> {
                 tags.remove("disused:shop")
-                if (!answer.tags.containsKey("shop")) {
+                if (!answer.feature.tags.containsKey("shop")) {
                     tags.remove("shop")
                 }
-                for ((key, value) in answer.tags) {
-                    tags[key] = value
-                }
+                answer.feature.applyTo(tags)
             }
         }
     }

@@ -17,15 +17,17 @@ class AddCampPower : OsmFilterQuestType<Boolean>() {
      * values from other editors, and we don't want to damage them */
     override val elementFilter = """
         nodes, ways with
-          tourism ~ camp_site|caravan_site and (
+          tourism ~ camp_site|caravan_site|alpine_hut|wilderness_hut and (
             !power_supply
             or power_supply older today -4 years and power_supply ~ yes|no
           )
     """
-    override val changesetComment = "Specify whether there is electricity available at camp or caravan site"
+    override val changesetComment = "Specify whether there is electricity available"
     override val wikiLink = "Key:power_supply"
     override val icon = R.drawable.ic_quest_camp_power
     override val achievements = listOf(OUTDOORS)
+
+    override val hint = R.string.quest_camp_power_supply_hint
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_camp_power_supply_title
 

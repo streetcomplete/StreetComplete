@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="TextAppearance.HeadlineSmall" parent="TextAppearance.AppCompat.Headline">
-        <item name="android:textSize">24sp</item>
-    </style>
-    <style name="TextAppearance.Subhead" parent="TextAppearance.AppCompat.Subhead">
-        <item name="android:textSize">15sp</item>
-    </style>
     <style name="TextAppearance.BigBody" parent="TextAppearance.Body">
         <item name="android:textSize">16sp</item>
         <item name="android:fontFamily">sans-serif</item>
@@ -47,32 +41,6 @@
         <item name="android:textSize">14sp</item>
         <item name="android:fontFamily">sans-serif-condensed</item>
         <item name="android:textColor">@color/hint_text</item>
-    </style>
-
-    <!-- ++++++++++++++++++++++++++++++++++++++++ Logs +++++++++++++++++++++++++++++++++++++++++ -->
-
-    <style name="TextAppearance.LogMessage" parent="TextAppearance.Body">
-        <item name="android:fontFamily">monospace</item>
-    </style>
-
-    <style name="TextAppearance.LogMessage.Verbose" parent="TextAppearance.LogMessage">
-        <item name="android:textColor">@color/log_verbose</item>
-    </style>
-
-    <style name="TextAppearance.LogMessage.Debug">
-        <item name="android:textColor">@color/log_debug</item>
-    </style>
-
-    <style name="TextAppearance.LogMessage.Info">
-        <item name="android:textColor">@color/log_info</item>
-    </style>
-
-    <style name="TextAppearance.LogMessage.Warning">
-        <item name="android:textColor">@color/log_warning</item>
-    </style>
-
-    <style name="TextAppearance.LogMessage.Error">
-        <item name="android:textColor">@color/log_error</item>
     </style>
 
 </resources>

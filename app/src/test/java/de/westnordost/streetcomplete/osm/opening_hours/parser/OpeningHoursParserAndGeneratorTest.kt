@@ -193,9 +193,14 @@ class OpeningHoursParserAndGeneratorTest {
         accept("Tu-Fr 08:00-10:00; Mo closed", "Tu-Fr 08:00-10:00; Mo off")
         accept("Tu-Fr 08:00-10:00, We 12:00-18:00; Mo off")
         accept("Tu-Fr 08:00-10:00; Sa 12:00-18:00; Mo,PH off")
-        accept("Tu-Fr 08:00-10:00; Mo off, We 12:00-18:00")
-        accept("Tu-Fr 08:00-10:00; Mo off, We 12:00-18:00; PH off")
+        accept("Tu-Fr 08:00-10:00; Mo off, We 12:00-18:00", "Tu-Fr 08:00-10:00, We 12:00-18:00; Mo off")
+        accept("Tu-Fr 08:00-10:00; Mo off, We 12:00-18:00; PH off", "Tu-Fr 08:00-10:00, We 12:00-18:00; Mo off; PH off")
         accept("Mo-Fr 08:00-10:00; We off") // off rules do not collide
+        // off rules moved to back
+        accept("PH off; Mo-Fr 08:00-18:00", "Mo-Fr 08:00-18:00; PH off")
+        accept("PH off; Dec-Jun: Mo-Fr 08:00-18:00; Dec-Jun: Mo off", "Dec-Jun: Mo-Fr 08:00-18:00; PH off; Dec-Jun: Mo off")
+        // off rules are always overwriting
+        accept("PH off, Mo-Fr 08:00-18:00", "Mo-Fr 08:00-18:00; PH off")
     }
 
     private fun parseAndGenerate(oh: String): String? =

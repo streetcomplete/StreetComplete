@@ -17,7 +17,7 @@ class AddMaxSpeed : OsmFilterQuestType<MaxSpeedAnswer>() {
 
     override val elementFilter = """
         ways with
-         highway ~ motorway|trunk|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential
+         highway ~ motorway|trunk|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|busway
          and !maxspeed and !maxspeed:advisory and !maxspeed:forward and !maxspeed:backward
          and ${MAXSPEED_TYPE_KEYS.joinToString(" and ") { "!$it" }}
          and surface !~ ${UNPAVED_SURFACES.joinToString("|")}

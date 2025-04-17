@@ -3,6 +3,10 @@ package de.westnordost.streetcomplete.osm
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 
+/** Return whether this element is a kind of thing, regardless whether it is disused or not */
+fun Element.isThingOrDisusedThing(): Boolean =
+    isThing() || isDisusedThing()
+
 fun Element.isThing(): Boolean =
     IS_THING_EXPRESSION.matches(this)
 
@@ -30,12 +34,13 @@ fun Element.isDisusedThing(): Boolean =
  *             exists. This policy exists in order to reduce effort to maintain this list, i.e. we
  *             don't want to check, weigh and balance requests in parallel to iD maintainers (in
  *             terms of notability, it being unambiguous, consensus etc.)
- *  */
+ */
 private val IS_THING_EXPRESSION by lazy {
     val tags = mapOf(
         "aeroway" to listOf(
             "navigationaid",
             "windsock",
+            "gate",
         ),
         "amenity" to listOf(
             // grouped by subcategory, sorted by alphabet
@@ -70,7 +75,7 @@ private val IS_THING_EXPRESSION by lazy {
             "whirlpool",
 
             // public service
-            // "post_box", - blocked by https://github.com/streetcomplete/StreetComplete/issues/4916 - which is blocked by https://github.com/westnordost/osmfeatures/issues/23
+            "post_box",
 
             // facilities & others
             "baking_oven",
@@ -86,7 +91,7 @@ private val IS_THING_EXPRESSION by lazy {
             "give_box",
             "karaoke_box",
             "kitchen", // usually an amenity within campsites etc, i.e. like shower, toilets, ...
-            // "letter_box", - see "post_box", but also, it would be very spammy to comprehensively map this
+            // "letter_box", - it would be very spammy to comprehensively map this
             "library_dropoff",
             "locker",
             "lounger",
@@ -145,9 +150,9 @@ private val IS_THING_EXPRESSION by lazy {
             // "speed_camera", - while not directly a sign, it definitely belongs into the traffic
             //                   signals/controls category
             // "speed_display", this is rather like a sign - signs should not go in here
-            "street_lamp", // candidate to be moved to lit overlay?
+            "street_lamp", // maybe should appear also in lit overlay, but is a good reference point while surveying - and more importantly, it would be confusing if they would be missing in Things overlay
             "trailhead",
-            // "traffic_mirror" is rather like a sign - signs should not go in here
+            // "traffic_mirror" is rather like a sign - signs should not go in here, though mirrors are borderline
         ),
         "historic" to listOf(
             "aircraft",
@@ -160,11 +165,11 @@ private val IS_THING_EXPRESSION by lazy {
             // "monument" - it's rather a structure. Small monuments are tagged as "memorial"
             "railway_car",
             "rune_stone",
-            // "ship" - probably too big, more like a structure
+            // "ship" - too big, more like a structure/building
             "stone",
             "tank",
             "vehicle",
-            // "wreck" - probably too big, and usually quite off-shore anyway
+            // "wreck" - too big, and usually quite off-shore anyway
             "wayside_cross",
             "wayside_shrine",
         ),
@@ -205,7 +210,7 @@ private val IS_THING_EXPRESSION by lazy {
             "planter",
             "snow_cannon",
             "stele",
-            // "street_cabinet", - blocked; see note at amenity=post_box, most are included by dedicated filter below
+            "street_cabinet",
             "surveillance",
             // "survey_point" - this can be very very small -> verifiability issue
             //                  danger that mapper deletes it because he can't find it
@@ -241,7 +246,6 @@ private val IS_THING_EXPRESSION by lazy {
         or attraction
         or boundary = marker
         or leisure = pitch and sport ~ chess|table_soccer|table_tennis|teqball
-        or man_made = street_cabinet and street_cabinet != postal_service
         or playground
         or public_transport = platform and (
           bus = yes
@@ -254,20 +258,19 @@ private val IS_THING_EXPRESSION by lazy {
 }
 
 val POPULAR_THING_FEATURE_IDS = listOf(
-    "natural/tree/broadleaved",    // 4.0 M
-    "highway/street_lamp",         // 4.0 M
-    "amenity/bench",               // 2.4 M
-    "emergency/fire_hydrant",      // 2.0 M
+    "natural/tree/broadleaved",    // 4.8 M
+    "highway/street_lamp",         // 4.3 M
+    "amenity/bench",               // 2.6 M
+    "emergency/fire_hydrant",      // 2.1 M
 
-    "amenity/waste_basket",        // 0.7 M
-    "amenity/bicycle_parking",     // 0.6 M
+    "amenity/waste_basket",        // 0.9 M
+    "amenity/bicycle_parking",     // 0.7 M
     "amenity/shelter",             // 0.5 M
 
     "amenity/recycling_container", // 0.4 M
     "amenity/toilets",             // 0.4 M
 
-    // "amenity/post_box",         // 0.4 M
-    // blocked by https://github.com/streetcomplete/StreetComplete/issues/4916
+    "amenity/post_box",            // 0.4 M
 
     // More:
 

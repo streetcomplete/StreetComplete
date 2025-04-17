@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.screens.main.bottom_sheet
 
+import android.content.res.Configuration
 import android.graphics.PointF
 import android.os.Bundle
 import android.view.View
@@ -9,6 +10,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.graphics.toPointF
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.AllEditTypes
@@ -29,6 +31,7 @@ import de.westnordost.streetcomplete.overlays.IsShowingElement
 import de.westnordost.streetcomplete.screens.measure.MeasureDisplayUnit
 import de.westnordost.streetcomplete.screens.measure.MeasureDisplayUnitFeetInch
 import de.westnordost.streetcomplete.screens.measure.MeasureDisplayUnitMeter
+import de.westnordost.streetcomplete.util.ktx.awaitLayout
 import de.westnordost.streetcomplete.util.ktx.getLocationInWindow
 import de.westnordost.streetcomplete.util.ktx.popIn
 import de.westnordost.streetcomplete.util.ktx.popOut
@@ -101,7 +104,7 @@ class MoveNodeFragment :
 
         binding.okButton.setOnClickListener { onClickOk() }
         binding.cancelButton.setOnClickListener { activity?.onBackPressed() }
-        binding.moveNodeIconView.setImageResource(editType.icon)
+        binding.pin.pinIconView.setImageResource(editType.icon)
 
         val cornerRadius = resources.getDimension(R.dimen.speech_bubble_rounded_corner_radius)
         val margin = resources.getDimensionPixelSize(R.dimen.horizontal_speech_bubble_margin)
@@ -114,10 +117,26 @@ class MoveNodeFragment :
                 AnimationUtils.loadAnimation(context, R.anim.inflate_answer_bubble)
             )
         }
+
+        // to lay out the arrow drawable correctly, view must have been layouted first
+        viewLifecycleOwner.lifecycleScope.launch {
+            view.awaitLayout()
+            updateArrowDrawable()
+        }
+    }
+
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+        binding.centeredMarkerLayout.setPadding(
+            resources.getDimensionPixelSize(R.dimen.quest_form_leftOffset),
+            resources.getDimensionPixelSize(R.dimen.quest_form_topOffset),
+            resources.getDimensionPixelSize(R.dimen.quest_form_rightOffset),
+            resources.getDimensionPixelSize(R.dimen.quest_form_bottomOffset)
+        )
     }
 
     private fun getMarkerScreenPosition(): PointF {
-        val moveNodeMarker = binding.moveNodeMarker
+        val moveNodeMarker = binding.pin.root
         val screenPos = moveNodeMarker.getLocationInWindow()
         screenPos.offset(moveNodeMarker.width / 2, moveNodeMarker.height / 2)
         return screenPos.toPointF()
@@ -209,15 +228,11 @@ class MoveNodeFragment :
     }
 }
 
-// Require a minimum distance because:
-// 1. The map is not perfectly precise, especially displayed road widths may be off by a few meters,
-//     so it may be hard to tell whether something really is misplaced (e.g. bench along a path)
-//     without good aerial imagery.
-// 2. The value added by moving nodes by such small distance, even if correct, is rather low.
-// 3. The position imprecision is already about 1.5 m because it is not really possible for the user
-//     to ascertain exactly what is the center of an icon (e.g. in shop overlay), which is ca 3x3 m
-//     at maximum zoom.
-private const val MIN_MOVE_DISTANCE = 2.0
+// Require a minimum distance because the map is not perfectly precise, it may be hard to tell
+// whether something really is misplaced without good aerial imagery.
+// Also, POIs are objects with a certain extent, so as long as the node is within this extent, it's
+// fine, there is little value of putting the point at exactly the center point of the POI
+private const val MIN_MOVE_DISTANCE = 1.0
 // Move node functionality is meant for fixing slightly misplaced elements. If something moved far
 // away, it is reasonable to assume there are more substantial changes required, also to nearby
 // elements. Additionally, the default radius for highlighted elements is 30 m, so moving outside

@@ -5,12 +5,9 @@
     <string name="oauth_failed_permissions">"Թույլտվությունը ձախողվեց. բոլոր թվարկված թույլտվությունները պետք է տրամադրվեն:"</string>
     <string name="pref_category_communication">"Հաղորդակցություն"</string>
     <string name="pref_category_display">"Պատկեր"</string>
-    <string name="pref_tilecache_size_summary">"%d ՄԲ"</string>
-    <string name="pref_tilecache_size_message">"Քարտեզի սալիկները քեշավորելու համար արտաքին պահեստում վերապահված տարածք մեգաբայթերով"</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">"Ցույց տալ բոլոր նշումները"</string>
     <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"Ցուցադրել բոլոր նշումները հարցերով և առանց"</string>
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"Փակել բոլոր նշումները առանց հարցի"</string>
-    <string name="pref_title_map_cache">"Քարտեզի քեշի չափը"</string>
     <string name="map_btn_gps_tracking">"Հետևել ինձ"</string>
     <string name="map_attribution_osm">"© OpenStreetMap-ի անդամներ"</string>
     <string name="quest_generic_otherAnswers">"Այլ պատասխաններ…"</string>
@@ -49,13 +46,10 @@
     <string name="confirmation_cancel_prev_download_title">"Փոխարենը դադարեցրեք ընթացիկ որոնումը եւ սկանավորեք այստեղ:"</string>
     <string name="turn_on_location_request">"Տեղանքը անջատված է: Բաց պարամետրեր, այն այժմ միացնելու համար:"</string>
     <string name="no_location_permission_warning">"Տեղադրության թույլտվությունը անհրաժեշտ է ձեր դիրքը քարտեզի վրա ցույց տալու համար եւ սկան ձեր հարեւանությամբ որոնումների համար:"</string>
-    <string name="about_summary_authors">"© %s Թոբիաս Ցվիքը և ներդրողները"</string>
     <string name="about_title_repository">"Նախագծի տուն"</string>
-    <string name="about_summary_repository">"Գիտուբում"</string>
     <string name="about_title_report_error">"Հաղորդել սխալի մասին"</string>
     <string name="about_title_feedback">"Հետադարձ կապ"</string>
     <string name="about_title_license">"Լիցենզիա"</string>
-    <string name="about_summary_license">"GNU Ընդհանուր հանրային լիցենզիա"</string>
     <string name="offline">"Դուք անցանց եք"</string>
     <string name="confirmation_authorize_now">"Ձեր պատասխանները հրապարակելու համար հարկավոր է լիազորել ձեր OSM օգտվողի հաշվի հետ: Լիազորեք հիմա:"</string>
     <string name="not_authorized">"Ոչ լիազորված"</string>
@@ -65,7 +59,6 @@
     <string name="quest_streetName_answer_noProperStreet_link">"Այն ուղղակի կապում է երկու ճանապարհ"</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">"Այլ բան (թողնել նշում)"</string>
     <string name="about_title_privacy_statement">"Գաղտնիության քաղաքականությունը"</string>
-    <string name="about_summary_privacy_statement">"և տվյալների օգտագործումը"</string>
     <string name="quest_openingHours_public_holidays">"Հասարակական տոներ"</string>
     <string name="quest_openingHours_public_holidays_short">"PH"</string>
     <string name="quest_openingHours_open_end">"Աշխատում է մինչև վերջին հաճախորդը"</string>
@@ -102,7 +95,6 @@
     <string name="quest_surface_value_wood">"Փայտ"</string>
     <string name="quest_sidewalk_title">"Այս փողոցը մայթ ունի:"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Որտեղ է այս փողոցը:"</string>
-    <string name="quest_oneway_title">"Սա միակողմանի փողոց է:"</string>
     <string name="quest_address_title">"Որն է այս շենքի տան թիվը:"</string>
     <string name="store_listing_short_description">"OpenstreetMap Surveyor ծրագիրը"</string>
     <string name="store_listing_full_description">"Օգնեք բարելավել OpenStreetMap-ը StreetComplete-ի միջոցով:
@@ -367,7 +359,7 @@
     <string name="questList_disabled_in_country">"Երբեք չի ցուցադրվել %s"</string>
     <string name="quest_select_hint_most_specific">"Ընտրեք առավել հատուկը, որը տեղավորվում է."</string>
     <string name="quest_generic_item_confirmation">"Համոզված եք, որ այն կարող եք ավելի շատ պարզել:"</string>
-    <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;Որոշ որոնումների համար որոշ լրացուցիչ տվյալներ են ներբեռնվում երրորդ կողմերից: Մասնավորապես, oneway quest-ը API-ից, որը նույնպես տեղակայված է westnordost.de-ում, հարցնում է հնարավոր միակողմանի թեկնածուների համար:&lt;/p&gt;"</string>
+    <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;Որոշ որոնումների համար որոշ լրացուցիչ տվյալներ են ներբեռնվում երրորդ կողմերից:&lt;/p&gt;"</string>
     <string name="quest_generic_hasFeature_no_leave_note">"Ոչ (թողնել նոտա)"</string>
     <string name="pref_quests_reset">"Վերագործարկեք ինչպես որոնման հնարավորությունը եւ կարգը լռելյայն:"</string>
     <string name="quest_generic_item_invalid_value">"Խնդրում ենք ընտրել ավելի կոնկրետ արժեք:"</string>
@@ -477,7 +469,6 @@
     <string name="quest_accessible_for_pedestrians_title_prohibited">"Արդյոք հետիոտները արգելվում են այստեղ քայլել այս ճանապարհով:"</string>
     <string name="quest_buildingType_title">"Ինչպիսի շենք է սա:"</string>
     <string name="pref_title_theme_select">"Ընտրեք թեման"</string>
-    <string name="theme_automatic">"Ավտո"</string>
     <string name="theme_light">"Լապտեր"</string>
     <string name="theme_dark">"Մութ"</string>
     <string name="theme_system_default">"Համակարգի լռելյայն"</string>
@@ -507,7 +498,6 @@
     <string name="quest_maxweight_answer_other_sign">"Նշանը տարբեր տեսք ունի…"</string>
     <string name="quest_maxweight_unsupported_sign_request_photo">"Կցանկանայիք նոտա թողնել Լուսանկարով գրությունը հնարավորություն կտա այլ քարտեզներին հոգ տանել դրա մասին:"</string>
     <string name="quest_handrail_title">"Այս աստիճանները ունե՞ն բազրիք:"</string>
-    <string name="about_summary_current_version">"Ընթացիկ տարբերակը %s"</string>
     <string name="quest_ref_answer_noRef">"Ոչ մի տեղեկանքի համար տեսանելի չէ…"</string>
     <string name="quest_street_side_puzzle_tutorial">"Պատկերազարդում գտնվող ճանապարհը պտտվում է նույնը, ինչ Քարտեզի վրա `PIN- ի գտնվելու վայրում:"</string>
     <string name="quest_recycling_materials_title">"Ինչը կարելի է թողնել այստեղ վերամշակման համար:"</string>
@@ -532,7 +522,6 @@
     <string name="about_title_changelog">"Տարբերակի պատմություն"</string>
     <string name="title_whats_new">"Ինչ նորություն կա?"</string>
     <string name="about_title_rate">"Գնահատեք այս ծրագիրը"</string>
-    <string name="about_summary_rate">"Google Play- ում"</string>
     <string name="about_title_donate">"Նվիրաբերել"</string>
     <string name="about_summary_donate">"Show ույց տվեք ձեր գնահատանքը: ❤️"</string>
     <string name="about_description_donate">"Շնորհակալ եմ այս հավելվածին աջակցելու համար: Ներկայիս նվիրատվությունները տեսնելու եւ ինքներդ ձեզ նվիրելու համար հպեք համապատասխան հարթակին."</string>
@@ -652,7 +641,6 @@
     <string name="credits_projects_contributors_title">"Ծրագրեր, որոնք արվել են փողոցային մասնաճյուղի համար"</string>
     <string name="credits_main_contributors_title">"Հիմնական ներդրողներ"</string>
     <string name="stats_are_syncing">"Ձեր վիճակագրությունը դեռ համաժամեցվում է: Ստուգեք այս էկրանը ավելի ուշ:"</string>
-    <string name="user_statistics_country_rank">"Վարկանիշը %2$s: %1$d"</string>
     <string name="user_statistics_country_wiki_link">"Քարտեզագրում պորտալ %s"</string>
     <string name="user_statistics_filter_by_country">"ըստ երկրի"</string>
     <string name="user_statistics_filter_by_quest_type">"ըստ որոնման տեսակի"</string>
@@ -683,9 +671,6 @@
     <string name="quest_board_type_map">"Դա քարտեզ է"</string>
     <string name="quest_board_type_map_title">"Դա պարզապես քարտեզ է եւ միայն քարտեզ:"</string>
     <string name="quest_board_type_map_description">"Եթե ​​խորհուրդը որոշակի թեմայի մասին է, ապա նշեք այն, անկախ նրանից, թե արդյոք այն նույնպես ներառում է քարտեզ: Օրինակ, հասարակական տրանսպորտի խորհուրդը կարող է ունենալ ավտոբուսի երթուղու քարտեզ: Եթե ​​թեման նշված չէ առկա պատասխանների մեջ, փոխարենը հաշվի առեք գրությունը թողնելը:"</string>
-    <string name="quest_surface_detailed_answer_impossible">"Բազմաթիվ մակերեսներ…"</string>
-    <string name="quest_surface_detailed_answer_impossible_confirmation">"Համոզված եք, որ մակերեսը նշել հնարավոր չէ: Նկատի ունեցեք «տարբերվում է ճանապարհին» պատասխանը, որը թույլ է տալիս կտրել այն ճանապարհը, որտեղ մակերեսը փոխվում է: Խնդրում ենք օգտագործել «Չեմ կարող ասել», եթե կա մեկ մակերես, բայց այն մատչելի չէ որպես պատասխան:"</string>
-    <string name="quest_surface_detailed_answer_impossible_description">"Խնդրում ենք հակիրճ նշել այստեղ մակերեւույթի բնույթը, օրինակ, «Sandy- ը ճարմանդով ճարմանդով»: Տեքստի երկարությունը սահմանափակվում է 255 նիշով:"</string>
     <string name="quest_streetName_menuItem_international">"միջազգային"</string>
     <string name="quest_buildingType_terrace2">"Տող տներ"</string>
     <string name="at_housename">"Տան անուն %s"</string>
@@ -734,7 +719,6 @@
     <string name="quest_steps_ramp_separate_wheelchair_confirm">"առանձին"</string>
     <string name="quest_steps_ramp_separate_wheelchair_decline">"Առանձնացված չէ"</string>
     <string name="pref_title_sync2">"Վերբեռնեք պատասխանները ինքնաբերաբար"</string>
-    <string name="quest_surface_detailed_answer_impossible_title">"Նկարագրեք մակերեսը"</string>
     <string name="open_url">"Բաց URL"</string>
     <string name="quest_buildingType_silo">"Սիլոս"</string>
     <string name="quest_buildingType_historic">"Պատմական"</string>
@@ -788,7 +772,6 @@
     <string name="quest_construction_completion_date_title">"Երբ է այն ամբողջական:"</string>
     <string name="quest_surface_value_clay">"Կավ"</string>
     <string name="quest_surface_value_artificial_turf">"Արհեստական ​​տորֆ"</string>
-    <string name="quest_surface_value_tartan">"Թաթան"</string>
     <string name="quest_bicycle_parking_fee_title">"Դուք պետք է վճարեք այստեղ հեծանիվ կայանելու համար:"</string>
     <string name="quest_buildingType_house_description2">"Ոչ առանձնացված միայնակ ընտանիքի տուն, օրինակ. Մեկ շարքի տուն"</string>
     <string name="quest_drinking_water_potable_signed">"Ապահով խմել (ստորագրված)"</string>
@@ -804,7 +787,6 @@
     <string name="team_mode">"Թիմային ռեժիմ"</string>
     <string name="team_mode_exit">"Ելքի թիմային ռեժիմ"</string>
     <string name="team_mode_description">"Միեւնույն տարածքը խմբով քարտեզագրելու համար կարող եք մուտքագրել թիմային ռեժիմ` թիմի բոլոր անդամների միջեւ որոնումները բաժանելու համար:"</string>
-    <string name="team_mode_team_size_hint">"Թիմային ռեժիմն աշխատում է 2-ից 12 հոգու խմբերի համար:"</string>
     <string name="team_mode_active">"Թիմային ռեժիմը ակտիվ է"</string>
     <string name="team_mode_deactivated">"Թիմային ռեժիմը անջատված է"</string>
     <string name="undo_confirm_title2">"Վերացրեք հետեւյալ խմբագրումը:"</string>
@@ -930,7 +912,6 @@
     <string name="quest_barrier_bicycle_type_single">"Անցում խոչընդոտների միջեւ"</string>
     <string name="quest_barrier_bicycle_type_double">"Chicane - պատնեշ յուրաքանչյուր կողմում"</string>
     <string name="quest_barrier_bicycle_type_multiple">"Chicane - ավելի քան երկու խոչընդոտ"</string>
-    <string name="pref_title_language_select">"Ընտրել լեզուն"</string>
     <string name="language_default">"Համակարգի լռելյայն"</string>
     <string name="on_floor">"Հատակի վրա %s"</string>
     <string name="select_street_parking_orientation">"Ընտրեք կողմնորոշումը դեպի ճանապարհը."</string>
@@ -955,7 +936,6 @@
 
 Այլապես, կարող եք թողնել գրառում (լուսանկարով):"</string>
     <string name="quest_address_house_number_label">"Տան համարը."</string>
-    <string name="quest_shoulder_title">"Այս ճանապարհը ուս ունի:"</string>
     <string name="quest_fireHydrant_position_title">"Որտեղ է գտնվում այս հրդեհային հիդրանտը:"</string>
     <string name="quest_fireHydrant_position_green">"Խոտի կամ կեղտի մեջ"</string>
     <string name="quest_fireHydrant_position_lane">"Ճանապարհի վրա"</string>
@@ -1006,8 +986,6 @@
     <string name="quest_barrier_path_intersection">"Ինչպես է այս ճանապարհը անցնում այստեղ պատնեշը:"</string>
     <string name="quest_barrier_road_intersection">"Ինչպես է այս ճանապարհը անցնում այստեղ պատնեշը:"</string>
     <string name="quest_sidewalk_value_separate">"Displayed ուցադրվում է առանձին քարտեզի վրա"</string>
-    <string name="quest_shoulder_value_yes">"ուս"</string>
-    <string name="quest_shoulder_value_no">"ոչ մի ուս"</string>
     <string name="no_camera_permission_warning_title">"Տեսախցիկի թույլտվություն"</string>
     <string name="no_camera_permission_warning">"Թույլտվությունը անհրաժեշտ է, որպեսզի կարողանաք լուսանկարվել եւ հեռավորությունները չափել խցիկի հետ:"</string>
     <string name="ar_core_error_sdk_too_old">"Այս ծրագիրը չափազանց հին է, փորձեք թարմացնել:"</string>
@@ -1129,7 +1107,6 @@
     <string name="quest_camp_power_supply_title">"Այստեղ կարելի՞ է լիցքավորել հեռախոս կամ այլ բաներ։"</string>
     <string name="quest_camp_type_tents_only">"Միայն վրաններ"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Տրամագիծը սովորաբար լինում է %1$d-ի և %2$d-ի միջև։"</string>
-    <string name="quest_surface_tractypeMismatchInput_confirmation_description">"Պատասխանը չի համապատասխանում փողոցի մասին տվյալներին։ Վստա՞հ եք, որ ճիշտ փողոցի մասին եք պատասխանում։ Վստա՞հ եք, որ փողոցի ամբողջ երկարությամբ եք չափում, ինչպես պահանջվում է:"</string>
     <string name="quest_recycling_type_pet">"Միայն PET"</string>
     <string name="street_parking_street_width">"Փողոցի լայնություն` %s"</string>
     <string name="overlay_street_parking">"Կայանատեղիներ"</string>
@@ -1162,8 +1139,6 @@
     <string name="quest_traffic_signals_sound_description">"Հուշում. փնտրեք բարձրախոս։ Ոչ բոլոր ազդանշանները միանում են կոճակով։"</string>
     <string name="unknown_surface_title">"Այլ հարթություն"</string>
     <string name="quest_crossing_title2">"Այստեղ անցում կա՞:"</string>
-    <string name="quest_crossing_yes">"Այո (օրինակ` եզրը իջեցրած է կամ կան նշումներ)"</string>
-    <string name="quest_crossing_no">"Ոչ, բայց անցումը հնարավոր է"</string>
     <string name="quest_crossing_prohibited">"Ոչ, անցումը արգելված է կամ անհնար"</string>
     <string name="quest_hairdresser_title">"Ովքե՞ր են այցելում այս վարսավիրանոցը։"</string>
     <string name="quest_hairdresser_male_and_female">"Բոլորը"</string>

@@ -3,7 +3,7 @@ package de.westnordost.streetcomplete.data.user.statistics
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
-private const val STATISTICS_BACKEND_URL = "https://www.westnordost.de/streetcomplete/statistics/"
+private const val STATISTICS_BACKEND_URL = "https://streetcomplete.app/statistics/"
 val statisticsModule = module {
 
     factory(named("EditTypeStatistics")) { EditTypeStatisticsDao(get(), EditTypeStatisticsTables.NAME) }
@@ -14,7 +14,7 @@ val statisticsModule = module {
 
     factory { ActiveDatesDao(get()) }
 
-    factory { StatisticsDownloader(get(), STATISTICS_BACKEND_URL, get()) }
+    factory { StatisticsApiClient(get(), STATISTICS_BACKEND_URL, get()) }
     factory { StatisticsParser(get(named("TypeAliases"))) }
 
     single<StatisticsSource> { get<StatisticsController>() }

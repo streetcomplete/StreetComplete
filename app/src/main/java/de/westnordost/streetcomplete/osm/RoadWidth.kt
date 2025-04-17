@@ -39,7 +39,7 @@ fun guessRoadwayWidth(tags: Map<String, String>): Float {
         "motorway" -> 2 * BROAD_LANE
         "motorway_link" -> BROAD_LANE
         "trunk", "primary" -> BROAD_LANE // to pay respect to that primary roads are usually broader than secondary etc
-        "secondary", "tertiary", "unclassified" -> LANE
+        "secondary", "tertiary", "unclassified", "busway" -> LANE
         "service" -> 2.5f
         else -> LANE
     }

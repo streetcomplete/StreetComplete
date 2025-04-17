@@ -47,6 +47,15 @@ class DeletePoiNodeActionTest {
         assertTrue(data.modifications.single().tags.isEmpty())
     }
 
+    @Test fun `'delete' relation member`() {
+        on(repos.getRelationsForNode(1L)).thenReturn(listOf(mock()))
+        on(repos.getNode(e.id)).thenReturn(e)
+        val data = DeletePoiNodeAction(e).createUpdates(repos, provider)
+        assertTrue(data.deletions.isEmpty())
+        assertTrue(data.creations.isEmpty())
+        assertTrue(data.modifications.single().tags.containsKey("fixme"))
+    }
+
     @Test
     fun `moved element creates conflict`() {
         on(repos.getNode(e.id)).thenReturn(e.copy(position = p(1.0, 1.0)))

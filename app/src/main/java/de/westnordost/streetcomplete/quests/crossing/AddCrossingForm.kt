@@ -13,10 +13,9 @@ class AddCrossingForm : AListQuestForm<CrossingAnswer>() {
 
     override val items = listOf(
         TextItem(YES, R.string.quest_crossing_yes),
-        TextItem(NO, R.string.quest_crossing_no),
+        TextItem(INFORMAL, R.string.quest_crossing_no),
         TextItem(PROHIBITED, R.string.quest_crossing_prohibited),
     )
-
     /*
         PROHIBITED is not possible for sidewalks or crossings (=separately mapped sidewalk
         infrastructure) because if the crossing does not exist, it would require to also
@@ -26,8 +25,8 @@ class AddCrossingForm : AListQuestForm<CrossingAnswer>() {
         See https://github.com/streetcomplete/StreetComplete/pull/2999#discussion_r681516203
         and https://github.com/streetcomplete/StreetComplete/issues/5160
 
-        NO on the other hand would be okay because crossing=informal would not require deleting
-        the crossing ways (I would say... it is in edge case...)
+        INFORMAL on the other hand would be okay because crossing=informal would not require
+        deleting the crossing ways (I would say... it is in edge case...)
      */
     override fun onClickOk() {
         if (checkedItem?.value == PROHIBITED && isOnSidewalkOrCrossing()) {

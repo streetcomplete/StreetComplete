@@ -3,11 +3,12 @@ package de.westnordost.streetcomplete.quests.foot
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.osm.ROADS_ASSUMED_TO_BE_PAVED
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.surface.PAVED_SURFACES
-import de.westnordost.streetcomplete.quests.foot.ProhibitedForPedestriansAnswer.HAS_SEPARATE_SIDEWALK
+import de.westnordost.streetcomplete.quests.foot.ProhibitedForPedestriansAnswer.ACTUALLY_HAS_SIDEWALK
 import de.westnordost.streetcomplete.quests.foot.ProhibitedForPedestriansAnswer.NO
 import de.westnordost.streetcomplete.quests.foot.ProhibitedForPedestriansAnswer.YES
 
@@ -45,6 +46,9 @@ class AddProhibitedForPedestrians : OsmFilterQuestType<ProhibitedForPedestriansA
     override val wikiLink = "Key:foot"
     override val icon = R.drawable.ic_quest_no_pedestrians
     override val achievements = listOf(PEDESTRIAN)
+    override val enabledInCountries = AllCountriesExcept(
+        "GB" // see https://community.openstreetmap.org/t/poll-should-streetcomplete-disable-the-are-pedestrians-forbidden-to-walk-on-this-road-without-sidewalk-here-quest-in-the-uk/118387
+    )
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_accessible_for_pedestrians_title_prohibited
 
@@ -55,9 +59,9 @@ class AddProhibitedForPedestrians : OsmFilterQuestType<ProhibitedForPedestriansA
             // the question is whether it is prohibited, so YES -> foot=no etc
             YES -> tags["foot"] = "no"
             NO -> tags["foot"] = "yes"
-            HAS_SEPARATE_SIDEWALK -> {
-                tags["sidewalk:both"] = "separate"
-                // wrong tagging may exist, it should be removed to prevent quest from reappearing
+            // but we did not specify on which side. So, clear it, sidewalk is added separately
+            ACTUALLY_HAS_SIDEWALK -> {
+                tags.remove("sidewalk:both")
                 tags.remove("sidewalk")
                 tags.remove("sidewalk:left")
                 tags.remove("sidewalk:right")

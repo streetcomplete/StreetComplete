@@ -26,11 +26,12 @@ open class UpdateChangelogTask : DefaultTask() {
     }
 
     private fun convertToHtml(markdown: String): String {
+        val substringsToRemove = listOf("</?body>", "<h1>Changelog</h1>")
+        val tagsToAddNewLineAfter = listOf("</h[1-6]>", "</?ul>", "</?ol>", "</li>", "</p>")
+
         val parsedTree = MarkdownParser(markdownFlavour).buildMarkdownTreeFromString(markdown)
         return HtmlGenerator(markdown, parsedTree, markdownFlavour).generateHtml()
-            .replace("<body>", "")
-            .replace("</body>", "")
-            .replace("<h1>Changelog</h1>", "")
+            .replace(Regex(substringsToRemove.joinToString("|")), "")
             .replace(Regex("(?<=[\\s(]|^)#(\\d+)")) { matchResult ->
                 val issue = matchResult.groupValues[1]
                 "<a href=\"https://github.com/streetcomplete/StreetComplete/issues/$issue\">#$issue</a>"
@@ -39,5 +40,6 @@ open class UpdateChangelogTask : DefaultTask() {
                 val contributor = matchResult.groupValues[1]
                 "<a href=\"https://github.com/$contributor\">$contributor</a>"
             }
+            .replace(Regex(tagsToAddNewLineAfter.joinToString("|")), "$0\n")
     }
 }

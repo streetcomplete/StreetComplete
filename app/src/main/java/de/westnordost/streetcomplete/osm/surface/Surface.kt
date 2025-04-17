@@ -2,8 +2,6 @@ package de.westnordost.streetcomplete.osm.surface
 
 import de.westnordost.streetcomplete.osm.surface.Surface.*
 
-data class SurfaceAndNote(val surface: Surface?, val note: String? = null)
-
 enum class Surface(val osmValue: String?) {
     ASPHALT("asphalt"),
     CONCRETE("concrete"),
@@ -27,7 +25,8 @@ enum class Surface(val osmValue: String?) {
     ROCK("rock"),
     CLAY("clay"),
     ARTIFICIAL_TURF("artificial_turf"),
-    TARTAN("tartan"),
+    RUBBER("rubber"),
+    ACRYLIC("acrylic"),
 
     // generic surfaces
     PAVED("paved"),
@@ -46,18 +45,26 @@ enum class Surface(val osmValue: String?) {
     COBBLESTONE_FLATTENED("cobblestone:flattened"), // =sett with good smoothness
     BRICK("brick"),
     BRICKS("bricks"),
+    TARTAN("tartan"), // there are two products by 3M named "Tartan":
+                      // "Tartan track" are bound rubber granules, "Tartan turf" is artificial turf.
+                      // Very likely we mean "bound rubber granules", but still, it is inherently ambiguous
+    HARD("hard"), // badly worded: surface used for tennis hard courts, which is synthetic resin (-> acrylic)
 
     // various possibly valid surfaces not supported as duplicates
     UNKNOWN(null),
 }
 
 val SELECTABLE_PITCH_SURFACES = listOf(
-    GRASS, ASPHALT, SAND, CONCRETE,
-    CLAY, ARTIFICIAL_TURF, TARTAN, DIRT,
+    // grouped a bit: 1. very most popular, 2. artificial, 3. natural
+    GRASS, ASPHALT, CONCRETE,
+    ARTIFICIAL_TURF, ACRYLIC, RUBBER,
+    CLAY, SAND, DIRT,
+    // then, roughly by popularity
     FINE_GRAVEL, PAVING_STONES, COMPACTED,
     SETT, UNHEWN_COBBLESTONE, GRASS_PAVER,
-    WOOD, METAL, GRAVEL, PEBBLES,
-    ROCK, PAVED, UNPAVED, GROUND
+    WOOD, METAL, GRAVEL,
+    PEBBLES, ROCK,
+    PAVED, UNPAVED, GROUND
 )
 
 val SELECTABLE_WAY_SURFACES = listOf(
@@ -71,10 +78,3 @@ val SELECTABLE_WAY_SURFACES = listOf(
     // generic surfaces
     PAVED, UNPAVED, GROUND
 )
-
-private val UNDERSPECIFED_SURFACES = setOf(PAVED, UNPAVED)
-
-val Surface.shouldBeDescribed: Boolean get() = this in UNDERSPECIFED_SURFACES
-
-val SurfaceAndNote.isComplete: Boolean get() =
-    surface != null && (!surface.shouldBeDescribed || note != null)
