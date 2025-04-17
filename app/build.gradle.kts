@@ -33,7 +33,7 @@ android {
 
     defaultConfig {
         applicationId = "de.westnordost.streetcomplete"
-        minSdk = 21
+        minSdk = 25
         targetSdk = 35
         versionCode = 6006
         versionName = "60.3"
@@ -200,7 +200,8 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.8.0")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json-io:1.8.0")
     implementation("com.charleskorn.kaml:kaml:0.72.0")
-    implementation("io.github.pdvrieze.xmlutil:core:0.90.3")
+    implementation("io.github.pdvrieze.xmlutil:core:0.91.0")
+    implementation("io.github.pdvrieze.xmlutil:core-io:0.91.0")
 
     // map and location
     // upgrading MapLibre blocked by https://github.com/maplibre/maplibre-native/issues/3309

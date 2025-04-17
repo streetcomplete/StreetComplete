@@ -1,14 +1,16 @@
 package de.westnordost.streetcomplete.data.user
 
 import de.westnordost.streetcomplete.util.ktx.attribute
+import kotlinx.io.Source
 import kotlinx.serialization.SerializationException
 import nl.adaptivity.xmlutil.EventType.*
 import nl.adaptivity.xmlutil.XmlReader
+import nl.adaptivity.xmlutil.core.kxio.newReader
 import nl.adaptivity.xmlutil.xmlStreaming
 
 class UserApiParser {
-    fun parseUsers(osmXml: String): List<UserInfo> =
-        xmlStreaming.newReader(osmXml).parseUsers()
+    fun parseUsers(source: Source): List<UserInfo> =
+        xmlStreaming.newReader(source).parseUsers()
 }
 
 private fun XmlReader.parseUsers(): List<UserInfo> = try {

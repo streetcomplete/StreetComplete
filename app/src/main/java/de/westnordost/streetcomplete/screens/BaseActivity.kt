@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.screens
 
 import android.content.Context
 import android.content.res.Configuration
+import android.os.LocaleList
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
@@ -9,8 +10,6 @@ import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.util.getSelectedLocale
 import de.westnordost.streetcomplete.util.getSystemLocales
 import de.westnordost.streetcomplete.util.ktx.addedToFront
-import de.westnordost.streetcomplete.util.setDefaultLocales
-import de.westnordost.streetcomplete.util.setLocales
 import org.koin.android.ext.android.inject
 import java.util.Locale
 
@@ -30,7 +29,7 @@ open class BaseActivity : AppCompatActivity {
 
         if (locale != null) {
             val locales = getSystemLocales().addedToFront(locale)
-            setDefaultLocales(locales)
+            LocaleList.setDefault(locales)
             newBase = base.createConfigurationContext(Configuration().also { it.setLocales(locales) })
         }
 

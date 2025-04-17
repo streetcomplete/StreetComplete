@@ -800,7 +800,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_bicycle_shop_second_hand_no_bicycles">No bicycles sold at all</string>
 
     <string name="quest_bikeParkingCapacity_title">"How many bicycles can be parked here?"</string>
-    <string name="quest_bikeParkingCapacity_hint">"Note that you can usually park one bicycle on each side of a stand."</string>
+    <string name="quest_bikeParkingCapacity_hint">"Note that you can usually park one bicycle on each side of a stand, and for wheelbenders you might have to estimate how many would fit."</string>
 
     <string name="quest_air_pump_bicycle_shop_title">Is there a public bicycle pump here (at least when it’s open)?</string>
     <string name="quest_air_pump_compressor_title">Is there an air compressor available here?</string>
@@ -989,7 +989,7 @@ A level counts as a roof level when its windows are in the roof. Subsequently, r
     <string name="quest_camera_type_fixed">Fixed</string>
     <string name="quest_camera_type_panning">Panning</string>
 
-    <string name="quest_camp_drinking_water_title">Is drinking water freely available to campers here?</string>
+    <string name="quest_camp_drinking_water_title">Is drinking water freely available for guests here?</string>
     <string name="quest_camp_shower_title">Are there showers here?</string>
     <string name="quest_camp_power_supply_title">Are there any power outlets available for guests?</string>
     <string name="quest_camp_power_supply_hint">This could be outlets directly at the camp pitches, outlets in a service building accessible by guests, a dedicated charging station for phones, laptops, etc.</string>
@@ -1058,6 +1058,9 @@ A level counts as a roof level when its windows are in the roof. Subsequently, r
     <string name="quest_cyclewayPartSurface_title">What’s the surface of the bicycle path here?</string>
 
     <string name="quest_cycleway_width_title">"How wide is the bicycle path here?"</string>
+
+    <string name="quest_dietType_glutenfree_name_title">Are gluten-free products offered here?</string>
+    <string name="quest_dietType_explanation_glutenfree">Preparing gluten-free products requires knowledge, as common spices and sauces may contain gluten. Gluten-free food would be explicitly labeled as such.</string>
 
     <string name="quest_dietType_halal_name_title2">Are halal products offered here?</string>
     <string name="quest_dietType_explanation_halal">Halal products must be prepared according to special rules, with Halal certification agencies marking products in compliance.</string>
