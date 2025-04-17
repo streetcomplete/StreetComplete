@@ -9,12 +9,10 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import de.westnordost.streetcomplete.R
@@ -34,12 +32,6 @@ fun QuestSelectionScreen(
 
     val displayCountry = remember {
         viewModel.currentCountry?.let { Locale("", it).displayCountry } ?: "Atlantis"
-    }
-
-    val configuration = LocalConfiguration.current
-
-    LaunchedEffect(configuration.locale.toString()) {
-        viewModel.onConfigurationChanged()
     }
 
     Column(Modifier.fillMaxSize()) {

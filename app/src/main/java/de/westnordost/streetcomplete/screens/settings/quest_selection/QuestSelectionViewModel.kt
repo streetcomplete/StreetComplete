@@ -28,7 +28,6 @@ import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
@@ -46,7 +45,6 @@ abstract class QuestSelectionViewModel : ViewModel() {
     abstract fun unselectAllQuests()
     abstract fun resetQuestSelectionsAndOrder()
     abstract fun updateSearchText(text: TextFieldValue)
-    abstract fun onConfigurationChanged()
 }
 
 @Stable
@@ -60,8 +58,7 @@ class QuestSelectionViewModelImpl(
     prefs: Preferences,
 ) : QuestSelectionViewModel() {
 
-    private val _searchText = MutableStateFlow(TextFieldValue())
-    override val searchText: StateFlow<TextFieldValue> = _searchText.asStateFlow()
+    override val searchText = MutableStateFlow(TextFieldValue())
 
     private val questTitles = MutableStateFlow<Map<String, String>>(emptyMap())
 
@@ -133,6 +130,9 @@ class QuestSelectionViewModelImpl(
     }
 
     private fun loadQuestTitles() {
+        // This method loads titles only once. When the system language changes, the titles
+        // are not reloaded automatically. Context changes cannot be monitored from
+        // ViewModel, so we can't detect when the system language changes.
         launch(Default) {
             questTitles.value = questTypeRegistry
                 .associate { it.name to resourceProvider.getString(it.title) }
@@ -171,11 +171,7 @@ class QuestSelectionViewModelImpl(
     }
 
     override fun updateSearchText(text: TextFieldValue) {
-        _searchText.value = text
-    }
-
-    override fun onConfigurationChanged() {
-        loadQuestTitles()
+        searchText.value = text
     }
 
     private fun initQuests() {
