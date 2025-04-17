@@ -6,6 +6,8 @@ import android.widget.TextView
 import androidx.core.view.children
 import androidx.core.view.isGone
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.osm.mtb_scale.MtbScale
+import de.westnordost.streetcomplete.osm.mtb_scale.asItem
 import de.westnordost.streetcomplete.view.image_select.DisplayItem
 import de.westnordost.streetcomplete.view.image_select.ImageListPickerDialog
 import de.westnordost.streetcomplete.view.image_select.ItemViewHolder

@@ -1814,21 +1814,21 @@ Alternatively, you can leave a note (with a photo)."</string>
     <string name="quest_barrier_opening_width_gate">What is the width of the opening here?</string>
     <string name="quest_barrier_opening_width_bollard">What is the widest gap one can pass through here?</string>
 
-    <!-- mtb:scale -->
-    <string name="overlay_mtb_scale">Mtb scale</string>
-    <string name="overlay_mtbScale_zero">"Grade 0"</string>
-    <string name="overlay_mtbScale_zero_description">"Firm and grippy ground, no obstacles, wide turns."</string>
-    <string name="overlay_mtbScale_one">"Grade 1"</string>
-    <string name="overlay_mtbScale_one_description">"Some loose ground, easily navigable obstacles like roots and stones, no hairpin turns."</string>
-    <string name="overlay_mtbScale_two">"Grade 2"</string>
-    <string name="overlay_mtbScale_two_description">"Mostly loose ground, moderate obstacles like larger roots and stones, steps, narrow curves."</string>
-    <string name="overlay_mtbScale_three">"Grade 3"</string>
-    <string name="overlay_mtbScale_three_description">"Slippery surface or loose scree, challenging obstacles like boulders, many large roots or rocks, steps, tricky traverses, hairpin turns."</string>
-    <string name="overlay_mtbScale_four">"Grade 4"</string>
-    <string name="overlay_mtbScale_four_description">"Numerous challenging and technical obstacles like tight switchbacks, steep ramps, barely rideable drops."</string>
-    <string name="overlay_mtbScale_five">"Grade 5"</string>
-    <string name="overlay_mtbScale_five_description">"Extremely steep terrain with highly technical sections and numerous severe obstacles."</string>
-    <string name="overlay_mtbScale_six">"Grade 6"</string>
-    <string name="overlay_mtbScale_six_description">"Dangerous and impassable terrain, not suitable for mountain biking."</string>
+    <!-- MTB = Mountainbike -->
+    <string name="overlay_mtb_scale">MTB difficulty</string>
+    <string name="overlay_mtb_scale_0">"Grade 0"</string>
+    <string name="overlay_mtb_scale_0_description">"Firm and grippy ground, no obstacles, wide turns."</string>
+    <string name="overlay_mtb_scale_1">"Grade 1"</string>
+    <string name="overlay_mtb_scale_1_description">"Some loose ground, easily navigable obstacles like roots and stones, no hairpin turns."</string>
+    <string name="overlay_mtb_scale_2">"Grade 2"</string>
+    <string name="overlay_mtb_scale_2_description">"Mostly loose ground, moderate obstacles like larger roots and stones, steps, narrow curves."</string>
+    <string name="overlay_mtb_scale_3">"Grade 3"</string>
+    <string name="overlay_mtb_scale_3_description">"Slippery surface or loose scree, challenging obstacles like boulders, many large roots or rocks, steps, tricky traverses, hairpin turns."</string>
+    <string name="overlay_mtb_scale_4">"Grade 4"</string>
+    <string name="overlay_mtb_scale_4_description">"Numerous challenging and technical obstacles like tight switchbacks, steep ramps, barely rideable drops."</string>
+    <string name="overlay_mtb_scale_5">"Grade 5"</string>
+    <string name="overlay_mtb_scale_5_description">"Extremely steep terrain with highly technical sections and numerous severe obstacles."</string>
+    <string name="overlay_mtb_scale_6">"Grade 6"</string>
+    <string name="overlay_mtb_scale_6_description">"Dangerous and impassable terrain, not suitable for mountain biking."</string>
 
 </resources>

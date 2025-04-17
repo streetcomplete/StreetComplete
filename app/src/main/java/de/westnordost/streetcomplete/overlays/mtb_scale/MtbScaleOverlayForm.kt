@@ -9,6 +9,8 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
 import de.westnordost.streetcomplete.databinding.FragmentOverlayMtbScaleSelectBinding
+import de.westnordost.streetcomplete.osm.mtb_scale.MtbScale
+import de.westnordost.streetcomplete.osm.mtb_scale.asItem
 import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 import de.westnordost.streetcomplete.util.LastPickedValuesStore
 import de.westnordost.streetcomplete.util.ktx.valueOfOrNull
