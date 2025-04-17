@@ -50,7 +50,7 @@ class MtbScaleKtTest {
         )
     }
 
-    @Test fun `applyTo with unspecified modifier doesnt overwrite modifier`() {
+    @Test fun `applyTo with unspecified modifier doesn't overwrite modifier`() {
         assertEquals(
             setOf(
                 StringMapEntryModify("mtb:scale", "2+", "2+"),
@@ -68,7 +68,7 @@ class MtbScaleKtTest {
     }
 }
 
-private fun parse(value: String) = createMtbScale(mapOf("mtb:scale" to value))
+private fun parse(value: String) = parseMtbScale(mapOf("mtb:scale" to value))
 
 private fun MtbScale.appliedTo(tags: Map<String, String>): Set<StringMapEntryChange> {
     val cb = StringMapChangesBuilder(tags)

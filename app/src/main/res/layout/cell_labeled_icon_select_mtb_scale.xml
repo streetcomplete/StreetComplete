@@ -16,8 +16,8 @@
         android:scaleType="centerCrop"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintWidth_percent="0.40"
-        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintWidth_percent="0.33"
+        app:layout_constraintDimensionRatio="2:3"
         android:adjustViewBounds="true"
         tools:src="@drawable/mtb_scale_0"
         />
@@ -36,14 +36,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/TitleNextToImage"
-            tools:text="@string/overlay_mtbScale_zero" />
+            tools:text="@string/overlay_mtb_scale_0" />
 
         <TextView
             android:id="@+id/descriptionView"
             style="@style/DescriptionNextToImage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="@string/overlay_mtbScale_zero_description" />
+            tools:text="@string/overlay_mtb_scale_0_description" />
 
     </LinearLayout>
 

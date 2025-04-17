@@ -7,8 +7,6 @@ import de.westnordost.streetcomplete.osm.mtb_scale.MtbScale.*
 import de.westnordost.streetcomplete.view.image_select.GroupableDisplayItem
 import de.westnordost.streetcomplete.view.image_select.Item
 
-fun Collection<MtbScale>.toItems() = map { it.asItem() }
-
 fun MtbScale.asItem(): GroupableDisplayItem<MtbScale> =
     Item(this, imageResId, titleResId, descriptionResId)
 

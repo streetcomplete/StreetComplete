@@ -16,7 +16,7 @@ data class MtbScale(
     }
 }
 
-fun createMtbScale(tags: Map<String, String>): MtbScale? {
+fun parseMtbScale(tags: Map<String, String>): MtbScale? {
     val scale = tags["mtb:scale"] ?: return null
     if (scale.length > 2) return null
 
@@ -32,7 +32,7 @@ fun createMtbScale(tags: Map<String, String>): MtbScale? {
 fun MtbScale.applyTo(tags: Tags) {
     // don't overwrite values such as "3+" with "3" if the new value doesn't have the modifier
     // specified unless the scale value is also different. (I.e. "4" can replace "3+")
-    val previous = createMtbScale(tags)
+    val previous = parseMtbScale(tags)
     val modifier = modifier ?: if (previous?.value == value) previous.modifier else null
 
     val newValue = value.toString() + modifier?.value?.toString().orEmpty()

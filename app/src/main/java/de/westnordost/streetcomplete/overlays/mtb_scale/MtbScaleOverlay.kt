@@ -7,7 +7,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.*
 import de.westnordost.streetcomplete.osm.mtb_scale.MtbScale
-import de.westnordost.streetcomplete.osm.mtb_scale.createMtbScale
+import de.westnordost.streetcomplete.osm.mtb_scale.parseMtbScale
 import de.westnordost.streetcomplete.overlays.Color
 import de.westnordost.streetcomplete.overlays.Overlay
 import de.westnordost.streetcomplete.overlays.PolylineStyle
@@ -39,7 +39,7 @@ class MtbScaleOverlay : Overlay {
     override fun createForm(element: Element?) = MtbScaleOverlayForm()
 
     private fun getStyle(element: Element): Style {
-        val scale = createMtbScale(element.tags)
+        val scale = parseMtbScale(element.tags)
         return PolylineStyle(StrokeStyle(scale.color))
     }
 }
