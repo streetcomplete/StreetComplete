@@ -8,6 +8,7 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.*
 import de.westnordost.streetcomplete.osm.mtb_scale.MtbScale
 import de.westnordost.streetcomplete.osm.mtb_scale.parseMtbScale
+import de.westnordost.streetcomplete.osm.surface.UNPAVED_SURFACES
 import de.westnordost.streetcomplete.overlays.Color
 import de.westnordost.streetcomplete.overlays.Overlay
 import de.westnordost.streetcomplete.overlays.PolylineStyle
@@ -26,14 +27,14 @@ class MtbScaleOverlay : Overlay {
     override fun getStyledElements(mapData: MapDataWithGeometry) =
         mapData.filter("""
             ways with
-              highway ~ path|track
+              highway ~ path|track|bridleway
               and (
                 access !~ no|private
                 or foot ~ yes|permissive|designated
                 or bicycle ~ yes|permissive|designated
               )
               and (!lit or lit = no)
-              and surface ~ grass|sand|dirt|soil|fine_gravel|compacted|wood|gravel|pebblestone|rock|ground|earth|mud|woodchips|snow|ice|salt|stone
+              and (!surface or surface ~ ${UNPAVED_SURFACES.joinToString("|")})
         """).map { it to getStyle(it) }
 
     override fun createForm(element: Element?) = MtbScaleOverlayForm()
