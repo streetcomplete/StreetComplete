@@ -17,7 +17,7 @@ import de.westnordost.streetcomplete.overlays.Style
 class MtbScaleOverlay : Overlay {
 
     override val title = R.string.overlay_mtb_scale
-    override val icon = R.drawable.ic_overlay_mtb_scale
+    override val icon = R.drawable.ic_quest_mtb
     override val changesetComment = "Specify mtb scale"
     override val wikiLink: String = "Key:mtb:scale"
     override val achievements: List<EditTypeAchievement> =
