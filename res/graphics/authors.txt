@@ -461,14 +461,19 @@ lit/
     yes.svg
     no.svg
 
-mtb_scale/
-    mtb_scale_0.jpg                 Public Domain     https://wiki.openstreetmap.org/wiki/File:Mtbscale_0_doubletrack.jpg (Anders Fougner)
-    mtb_scale_1.jpg                 Public Domain     https://wiki.openstreetmap.org/wiki/File:Mtbscale_1_path_portait.jpg (Anders Fougner)
-    mtb_scale_2.jpg                 CC-BY-SA 3.0      https://wiki.openstreetmap.org/wiki/File:S2.jpg (Felix Hartmann)
-    mtb_scale_3.jpg                 CC-BY-SA 3.0      https://wiki.openstreetmap.org/wiki/File:S3.jpg (Felix Hartmann)
-    mtb_scale_4.jpg                 CC-BY-SA 3.0      https://wiki.openstreetmap.org/wiki/File:S4.jpg (Felix Hartmann)
-    mtb_scale_5.jpg                 CC-BY-SA 3.0      https://wiki.openstreetmap.org/wiki/File:S5.jpg (Felix Hartmann)
-    mtb_scale_6.jpg                 fair use          https://unsplash.com/photos/EiJQdDI_t_Y (Maja Kochanowska)
+mtb scale/
+    0.jpg                 CC-BY-SA 3.0      reimagined with AI by Ruben Kelevra,
+                                            based on https://wiki.openstreetmap.org/wiki/File:S0.jpg
+    1.jpg                 CC-BY-SA 3.0      reimagined with AI by Ruben Kelevra,
+                                            based on https://wiki.openstreetmap.org/wiki/File:S1.jpg
+    2.jpg                 CC-BY-SA 3.0      reimagined with AI by Ruben Kelevra,
+                                            based on https://wiki.openstreetmap.org/wiki/File:S2.jpg
+    3.jpg                 CC-BY-SA 3.0      reimagined with AI by Ruben Kelevra,
+                                            based on https://wiki.openstreetmap.org/wiki/File:S3.jpg
+    4.jpg                 CC-BY-SA 3.0      reimagined with AI by Ruben Kelevra,
+                                            based on https://wiki.openstreetmap.org/wiki/File:S4.jpg
+    5.jpg                 CC-BY-SA 3.0      reimagined with AI by Ruben Kelevra,
+                                            based on https://wiki.openstreetmap.org/wiki/File:S5.jpg
 
 pin/
     pin_dot.xcf
