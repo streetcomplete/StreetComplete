@@ -120,7 +120,7 @@ fun EditHistorySidebar(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Bottom,
             // bottom 24 dp to align with undo button
-            contentPadding = verticalInsets.asPaddingValues() + PaddingValues(bottom = 24.dp)
+            contentPadding = verticalInsets.asPaddingValues() + PaddingValues(bottom = 56.dp)
         ) {
             items(
                 items = editItems,

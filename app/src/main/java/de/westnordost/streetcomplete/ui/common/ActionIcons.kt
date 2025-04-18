@@ -57,6 +57,16 @@ fun UploadIcon() {
 }
 
 @Composable
+fun DownloadIcon() {
+    Icon(painterResource(R.drawable.ic_file_download_24dp), stringResource(R.string.action_download))
+}
+
+@Composable
+fun TeamModeIcon() {
+    Icon(painterResource(R.drawable.ic_team_mode_24dp), stringResource(R.string.team_mode))
+}
+
+@Composable
 fun MessagesIcon() {
     Icon(painterResource(R.drawable.ic_email_24dp), stringResource(R.string.action_messages))
 }

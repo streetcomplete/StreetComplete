@@ -20,19 +20,18 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.R
 
-/** Notification shown on the top end corner of e.g. a button */
+/** Notification shown usually shown on the top end corner of e.g. a button */
 @Composable
-fun BoxScope.MapButtonNotification(
+fun NotificationBox(
     modifier: Modifier = Modifier,
     content: @Composable BoxScope.() -> Unit,
 ) {
     CompositionLocalProvider(
         LocalContentColor provides Color.White,
-        LocalTextStyle provides MaterialTheme.typography.caption
+        LocalTextStyle provides MaterialTheme.typography.caption,
     ) {
         Box(
             modifier = modifier
-                .align(Alignment.TopEnd)
                 .background(MaterialTheme.colors.secondaryVariant, RoundedCornerShape(12.dp))
                 .padding(vertical = 2.dp, horizontal = 6.dp),
             contentAlignment = Alignment.Center,
@@ -48,8 +47,8 @@ private fun PreviewMapButtonWithNotification() {
         MapButton(onClick = {}) {
             Icon(painterResource(R.drawable.ic_email_24dp), null)
         }
-        MapButtonNotification {
-            Text(text = "999")
+        Box(Modifier.align(Alignment.TopEnd)) {
+            NotificationBox { Text(text = "999") }
         }
     }
 }

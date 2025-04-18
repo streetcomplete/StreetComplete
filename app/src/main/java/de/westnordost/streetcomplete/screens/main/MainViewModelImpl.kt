@@ -134,6 +134,13 @@ class MainViewModelImpl(
         get() = prefs.hasShownTutorial
         set(value) { prefs.hasShownTutorial = value }
 
+    /* HUD */
+    override var showZoomButtons: StateFlow<Boolean> = callbackFlow {
+        send(prefs.showZoomButtons)
+        val listener = prefs.onShowZoomButtonsChanged { trySend(it) }
+        awaitClose { listener.deactivate() }
+    }.stateIn(viewModelScope, SharingStarted.Eagerly, true)
+
     /* messages */
 
     override val messagesCount: StateFlow<Int> = callbackFlow {
@@ -369,12 +376,15 @@ class MainViewModelImpl(
 
     override val locationState = MutableStateFlow(LocationState.ENABLED)
     override val mapCamera = MutableStateFlow<CameraPosition?>(null)
+    override val metersPerDp = MutableStateFlow(0.0)
     override val displayedPosition = MutableStateFlow<Offset?>(null)
 
     override val isFollowingPosition = MutableStateFlow(false)
     override val isNavigationMode = MutableStateFlow(false)
 
     override val isRecordingTracks = MutableStateFlow(false)
+
+    override val userHasMovedCamera = MutableStateFlow(false)
 
     // ---------------------------------------------------------------------------------------
 

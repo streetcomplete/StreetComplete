@@ -63,6 +63,7 @@ fun SettingsScreen(
     val autosync by viewModel.autosync.collectAsState()
     val theme by viewModel.theme.collectAsState()
     val keepScreenOn by viewModel.keepScreenOn.collectAsState()
+    val showZoomButtons by viewModel.showZoomButtons.collectAsState()
     val selectedLanguage by viewModel.selectedLanguage.collectAsState()
 
     var showDeleteCacheConfirmation by remember { mutableStateOf(false) }
@@ -156,6 +157,16 @@ fun SettingsScreen(
                     onClick = { showThemeSelect = true },
                 ) {
                     Text(stringResource(theme.titleResId))
+                }
+
+                Preference(
+                    name = stringResource(R.string.pref_title_zoom_buttons),
+                    onClick = { viewModel.setShowZoomButtons(!showZoomButtons) },
+                ) {
+                    Switch(
+                        checked = showZoomButtons,
+                        onCheckedChange = { viewModel.setShowZoomButtons(it) }
+                    )
                 }
 
                 Preference(

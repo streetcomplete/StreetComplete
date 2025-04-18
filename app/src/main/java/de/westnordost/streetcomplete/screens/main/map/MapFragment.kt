@@ -54,6 +54,8 @@ open class MapFragment : Fragment(R.layout.fragment_map) {
         fun onPanBegin()
         /** Called when the user long-presses the map */
         fun onLongPress(point: PointF, position: LatLon)
+        /** Called when user starts to move the map */
+        fun onUserCameraMoveStarted()
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
@@ -151,6 +153,11 @@ open class MapFragment : Fragment(R.layout.fragment_map) {
             val camera = cameraPosition ?: return@addOnCameraMoveListener
             onMapIsChanging(camera)
             listener?.onMapIsChanging(camera)
+        }
+        map.addOnCameraMoveStartedListener { reason ->
+            if (reason == MapLibreMap.OnCameraMoveStartedListener.REASON_API_GESTURE) {
+                listener?.onUserCameraMoveStarted()
+            }
         }
         map.addOnMapLongClickListener { pos ->
             onLongPress(map.projection.toScreenLocation(pos), pos.toLatLon())
