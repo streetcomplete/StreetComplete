@@ -1817,18 +1817,17 @@ Alternatively, you can leave a note (with a photo)."</string>
     <!-- MTB = Mountainbike -->
     <string name="overlay_mtb_scale">MTB difficulty</string>
     <string name="overlay_mtb_scale_0">"Grade 0"</string>
-    <string name="overlay_mtb_scale_0_description">"Firm and grippy ground, no obstacles, wide turns."</string>
+    <string name="overlay_mtb_scale_0_description">"Firm, grippy compacted or natural surface; no obstacles; gentle gradient; wide turns."</string>
     <string name="overlay_mtb_scale_1">"Grade 1"</string>
-    <string name="overlay_mtb_scale_1_description">"Some loose ground, easily navigable obstacles like roots and stones, no hairpin turns."</string>
+    <string name="overlay_mtb_scale_1_description">"Partially loose terrain with small roots, stones, erosion or water ruts; ≤ 40 % gradient; rollable obstacles; basic riding technique required."</string>
     <string name="overlay_mtb_scale_2">"Grade 2"</string>
-    <string name="overlay_mtb_scale_2_description">"Mostly loose ground, moderate obstacles like larger roots and stones, steps, narrow curves."</string>
+    <string name="overlay_mtb_scale_2_description">"Loose terrain with larger roots and rocks, flat drops/small stairs, up to 70 % gradient; easy hairpin turns; advanced braking and weight shifting required."</string>
     <string name="overlay_mtb_scale_3">"Grade 3"</string>
-    <string name="overlay_mtb_scale_3_description">"Slippery surface or loose scree, challenging obstacles like boulders, many large roots or rocks, steps, tricky traverses, hairpin turns."</string>
+    <string name="overlay_mtb_scale_3_description">"Slippery, loose terrain with scree, boulders, large roots and rocks, high steps and tricky traverses; tight hairpin turns, > 70 % gradient; very good balance and precise braking required."</string>
     <string name="overlay_mtb_scale_4">"Grade 4"</string>
-    <string name="overlay_mtb_scale_4_description">"Numerous challenging and technical obstacles like tight switchbacks, steep ramps, barely rideable drops."</string>
+    <string name="overlay_mtb_scale_4_description">"Challenging and technical obstacles: big boulders, roots, scree, steep ramps; pivot switchbacks, flat drops with pedal strikes; perfect balance, precise braking, and rear-wheel repositioning required."</string>
     <string name="overlay_mtb_scale_5">"Grade 5"</string>
-    <string name="overlay_mtb_scale_5_description">"Extremely steep terrain with highly technical sections and numerous severe obstacles."</string>
+    <string name="overlay_mtb_scale_5_description">"Ultra-steep blocky terrain with counter‑uphills, boulder fields, landslides, pivot switchbacks with obstacles, back‑to‑back high drops and fallen trees. Bike carrying around obstacles impossible; riding unavoidable. Trial mastery required."</string>
     <string name="overlay_mtb_scale_6">"Grade 6"</string>
     <string name="overlay_mtb_scale_6_description">"Dangerous and impassable terrain, not suitable for mountain biking."</string>
-
 </resources>
