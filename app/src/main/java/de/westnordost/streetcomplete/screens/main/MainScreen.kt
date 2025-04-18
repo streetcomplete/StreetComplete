@@ -280,12 +280,11 @@ fun MainScreen(
                 )
             }
 
-            Column(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .align(Alignment.BottomStart)
+            // bottom controls
+            Column(Modifier
+                .fillMaxWidth()
+                .align(Alignment.BottomStart)
             ) {
-                // bottom controls
                 Box(Modifier.fillMaxWidth()) {
                     // bottom-end controls
                     Column(
@@ -371,17 +370,21 @@ fun MainScreen(
                                 UndoIcon()
                             }
                         }
-
-                        Row(verticalAlignment = Alignment.CenterVertically) {
-                            AttributionButton(
-                                userHasMovedMap = userHasMovedCamera,
-                                attributions = mapAttribution,
-                            )
-                            ScaleBar(
-                                metersPerDp = metersPerDp,
-                            )
-                        }
                     }
+                }
+                Box(Modifier
+                    .fillMaxWidth()
+                    .padding(4.dp)
+                ) {
+                    AttributionButton(
+                        userHasMovedMap = userHasMovedCamera,
+                        attributions = mapAttribution,
+                        modifier = Modifier.align(Alignment.TopStart)
+                    )
+                    ScaleBar(
+                        metersPerDp = metersPerDp,
+                        modifier = Modifier.align(Alignment.CenterEnd)
+                    )
                 }
             }
         }
