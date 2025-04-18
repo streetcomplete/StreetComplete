@@ -3,18 +3,20 @@ package de.westnordost.streetcomplete.data.osm.mapdata
 import de.westnordost.streetcomplete.util.ktx.attribute
 import de.westnordost.streetcomplete.util.ktx.attributeOrNull
 import kotlinx.datetime.Instant
+import kotlinx.io.Source
 import kotlinx.serialization.SerializationException
 import nl.adaptivity.xmlutil.EventType.END_ELEMENT
 import nl.adaptivity.xmlutil.EventType.START_ELEMENT
 import nl.adaptivity.xmlutil.XmlReader
+import nl.adaptivity.xmlutil.core.kxio.newReader
 import nl.adaptivity.xmlutil.xmlStreaming
 
 class MapDataApiParser {
-    fun parseMapData(osmXml: String, ignoreRelationTypes: Set<String?>): MutableMapData =
-        xmlStreaming.newReader(osmXml).parseMapData(ignoreRelationTypes)
+    fun parseMapData(source: Source, ignoreRelationTypes: Set<String?>): MutableMapData =
+        xmlStreaming.newReader(source).parseMapData(ignoreRelationTypes)
 
-    fun parseElementUpdates(diffResultXml: String): Map<ElementKey, ElementUpdateAction> =
-        xmlStreaming.newReader(diffResultXml).parseElementUpdates()
+    fun parseElementUpdates(source: Source): Map<ElementKey, ElementUpdateAction> =
+        xmlStreaming.newReader(source).parseElementUpdates()
 }
 
 private fun XmlReader.parseMapData(ignoreRelationTypes: Set<String?>): MutableMapData = try {

@@ -17,12 +17,12 @@ class AddCampShower : OsmFilterQuestType<Boolean>() {
      * values from other editors, and we don't want to damage them */
     override val elementFilter = """
         nodes, ways with
-          tourism = camp_site and (
+          tourism ~ camp_site|alpine_hut|wilderness_hut and (
             !shower
             or shower older today -4 years and shower ~ yes|no
           )
     """
-    override val changesetComment = "Specify whether there are showers available at camp site"
+    override val changesetComment = "Specify whether there are showers available"
     override val wikiLink = "Key:shower"
     override val icon = R.drawable.ic_quest_shower
     override val achievements = listOf(OUTDOORS)

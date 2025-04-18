@@ -1,5 +1,7 @@
 package de.westnordost.streetcomplete.data.osm.mapdata
 
+import kotlinx.io.Buffer
+import kotlinx.io.writeString
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertNull
@@ -7,22 +9,25 @@ import kotlin.test.assertNull
 class MapDataApiParserTest {
 
     @Test fun `parseMapData minimum`() {
-        val empty = MapDataApiParser().parseMapData("<osm></osm>", emptySet())
+        val buffer = Buffer()
+        buffer.writeString("<osm></osm>")
+        val empty = MapDataApiParser().parseMapData(buffer, emptySet())
         assertEquals(0, empty.size)
         assertNull(empty.boundingBox)
     }
 
     @Test fun `parseMapData full`() {
-        val osm = """<?xml version="1.0" encoding="UTF-8"?>
+        val buffer = Buffer()
+        buffer.writeString("""<?xml version="1.0" encoding="UTF-8"?>
             <osm version="0.6" generator="CGImap 0.9.2 (2448320 spike-08.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
             <bounds minlat="53.0000000" minlon="9.0000000" maxlat="53.0100000" maxlon="9.0100000"/>
             ${nodesOsm(123)}
             ${waysOsm(345)}
             ${relationsOsm(567)}
             </osm>
-        """
+        """)
 
-        val data = MapDataApiParser().parseMapData(osm, emptySet())
+        val data = MapDataApiParser().parseMapData(buffer, emptySet())
         assertEquals(nodesList.toSet(), data.nodes.toSet())
         assertEquals(waysList.toSet(), data.ways.toSet())
         assertEquals(relationsList.toSet(), data.relations.toSet())
@@ -30,27 +35,31 @@ class MapDataApiParserTest {
     }
 
     @Test fun `parseMapData with ignored relation types`() {
-        val osm = """
+        val buffer = Buffer()
+        buffer.writeString("""
             <osm>
             <relation id="1" version="1" timestamp="2023-05-08T14:14:51Z">
               <tag k="type" v="route"/>
             </relation>
             </osm>
-        """
+        """)
 
-        val empty = MapDataApiParser().parseMapData(osm, setOf("route"))
+        val empty = MapDataApiParser().parseMapData(buffer, setOf("route"))
         assertEquals(0, empty.size)
     }
 
     @Test fun `parseElementUpdates minimum`() {
+        val buffer = Buffer()
+        buffer.writeString("<diffResult></diffResult>")
         assertEquals(
             mapOf(),
-            MapDataApiParser().parseElementUpdates("<diffResult></diffResult>")
+            MapDataApiParser().parseElementUpdates(buffer)
         )
     }
 
     @Test fun `parseElementUpdates full`() {
-        val diffResult = """
+        val buffer = Buffer()
+        buffer.writeString("""
             <diffResult generator="OpenStreetMap Server" version="0.6">
             <node old_id="1"/>
             <way old_id="2"/>
@@ -59,7 +68,7 @@ class MapDataApiParserTest {
             <way old_id="-2" new_id="8" new_version="88" />
             <relation old_id="-3" new_id="7" new_version="77" />
             </diffResult>
-        """
+        """)
 
         val elementUpdates = mapOf(
             ElementKey(ElementType.NODE, 1) to DeleteElement,
@@ -72,7 +81,7 @@ class MapDataApiParserTest {
 
         assertEquals(
             elementUpdates,
-            MapDataApiParser().parseElementUpdates(diffResult)
+            MapDataApiParser().parseElementUpdates(buffer)
         )
     }
 }

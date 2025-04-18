@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.AppBarDefaults
 import androidx.compose.material.DropdownMenu
 import androidx.compose.material.IconButton
@@ -20,7 +21,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.input.TextFieldValue
+import androidx.compose.ui.text.intl.LocaleList
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -33,20 +34,21 @@ import de.westnordost.streetcomplete.ui.common.SearchIcon
 import de.westnordost.streetcomplete.ui.common.dialogs.ConfirmationDialog
 
 /** Top bar and search field for the quest selection screen */
-@Composable fun QuestSelectionTopAppBar(
+@Composable
+fun QuestSelectionTopAppBar(
     currentPresetName: String,
     onClickBack: () -> Unit,
     onUnselectAll: () -> Unit,
     onReset: () -> Unit,
-    search: TextFieldValue,
-    onSearchChange: (TextFieldValue) -> Unit,
+    search: String,
+    onSearchChange: (String) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     var showSearch by remember { mutableStateOf(false) }
 
     fun setShowSearch(value: Boolean) {
         showSearch = value
-        if (!value) onSearchChange(TextFieldValue())
+        if (!value) onSearchChange("")
     }
 
     Surface(
@@ -79,7 +81,8 @@ import de.westnordost.streetcomplete.ui.common.dialogs.ConfirmationDialog
                 colors = TextFieldDefaults.textFieldColors(
                     textColor = MaterialTheme.colors.onSurface,
                     backgroundColor = MaterialTheme.colors.surface
-                )
+                ),
+                keyboardOptions = KeyboardOptions(hintLocales = LocaleList.current),
             )
         }
     }
@@ -154,7 +157,7 @@ private fun QuestSelectionTopBarActions(
 @Preview
 @Composable
 private fun PreviewQuestSelectionTopBar() {
-    var searchText by remember { mutableStateOf(TextFieldValue()) }
+    var searchText by remember { mutableStateOf("") }
     QuestSelectionTopAppBar(
         currentPresetName = "Test",
         onClickBack = {},
