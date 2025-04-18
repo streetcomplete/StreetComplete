@@ -28,7 +28,6 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateMapOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
@@ -61,7 +60,7 @@ import de.westnordost.streetcomplete.screens.main.controls.PointerPinButton
 import de.westnordost.streetcomplete.screens.main.controls.ScaleBar
 import de.westnordost.streetcomplete.screens.main.controls.StarsCounter
 import de.westnordost.streetcomplete.screens.main.controls.ZoomButtons
-import de.westnordost.streetcomplete.screens.main.controls.findClosestIntersection
+import de.westnordost.streetcomplete.screens.main.controls.findEllipsisIntersection
 import de.westnordost.streetcomplete.screens.main.edithistory.EditHistorySidebar
 import de.westnordost.streetcomplete.screens.main.edithistory.EditHistoryViewModel
 import de.westnordost.streetcomplete.screens.main.errors.LastCrashEffect
@@ -216,25 +215,27 @@ fun MainScreen(
             Crosshair()
         }
 
-        val pointerPinRects = remember { mutableStateMapOf<String, Rect>() }
-        val intersection = remember(displayedPosition, pointerPinRects) {
-            findClosestIntersection(
-                origin = pointerPinRects["frame"]?.center,
-                target = displayedPosition,
-                rects = pointerPinRects.values
-            )
+        var screen by remember { mutableStateOf<Rect?>(null) }
+        val intersection = remember(displayedPosition, screen) {
+            findEllipsisIntersection(screen, displayedPosition)
+        }
+
+        intersection?.let { (offset, angle) ->
+            val rotation = angle * 180 / PI
+            PointerPinButton(
+                onClick = onClickLocationPointer,
+                rotate = rotation.toFloat(),
+                modifier = Modifier.absoluteOffset(offset.x.pxToDp(), offset.y.pxToDp()),
+            ) { Image(painterResource(R.drawable.location_dot_small), null) }
         }
 
         Box(Modifier
             .fillMaxSize()
             .windowInsetsPadding(WindowInsets.safeDrawing)
-            .onGloballyPositioned { pointerPinRects["frame"] = it.boundsInRoot() }
+            .onGloballyPositioned { screen = it.boundsInRoot() }
         ) {
             // top-start controls
-            Box(Modifier
-                .align(Alignment.TopStart)
-                .onGloballyPositioned { pointerPinRects["top-start"] = it.boundsInRoot() }
-            ) {
+            Box(Modifier.align(Alignment.TopStart)) {
                 // stars counter
                 StarsCounter(
                     count = starsCount,
@@ -250,8 +251,7 @@ fun MainScreen(
             Row(
                 modifier = Modifier
                     .align(Alignment.TopEnd)
-                    .padding(4.dp)
-                    .onGloballyPositioned { pointerPinRects["top-end"] = it.boundsInRoot() },
+                    .padding(4.dp),
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 AnimatedVisibility(hasMessages) {
@@ -291,8 +291,7 @@ fun MainScreen(
                     Column(
                         modifier = Modifier
                             .align(Alignment.BottomEnd)
-                            .padding(4.dp)
-                            .onGloballyPositioned { pointerPinRects["bottom-end"] = it.boundsInRoot() },
+                            .padding(4.dp),
                         verticalArrangement = Arrangement.spacedBy(8.dp),
                         horizontalAlignment = Alignment.End,
                     ) {
@@ -335,7 +334,6 @@ fun MainScreen(
                             },
                             modifier = Modifier
                                 .align(BiasAlignment(0.333f, 1f))
-                                .onGloballyPositioned { pointerPinRects["create-node"] = it.boundsInRoot() }
                                 .padding(4.dp),
                             colors = ButtonDefaults.buttonColors(
                                 backgroundColor = MaterialTheme.colors.secondaryVariant,
@@ -349,10 +347,7 @@ fun MainScreen(
                     Column(
                         modifier = Modifier
                             .align(Alignment.BottomStart)
-                            .padding(4.dp)
-                            .onGloballyPositioned {
-                                pointerPinRects["bottom-start"] = it.boundsInRoot()
-                            },
+                            .padding(4.dp),
                         verticalArrangement = Arrangement.spacedBy(8.dp)
                     ) {
                         if (isRecordingTracks) {
@@ -377,7 +372,6 @@ fun MainScreen(
                             }
                         }
 
-
                         Row(verticalAlignment = Alignment.CenterVertically) {
                             AttributionButton(
                                 userHasMovedMap = userHasMovedCamera,
@@ -390,15 +384,6 @@ fun MainScreen(
                     }
                 }
             }
-        }
-
-        intersection?.let { (offset, angle) ->
-            val rotation = angle * 180 / PI
-            PointerPinButton(
-                onClick = onClickLocationPointer,
-                rotate = rotation.toFloat(),
-                modifier = Modifier.absoluteOffset(offset.x.pxToDp(), offset.y.pxToDp()),
-            ) { Image(painterResource(R.drawable.location_dot_small), null) }
         }
 
         val dir = LocalLayoutDirection.current.dir
