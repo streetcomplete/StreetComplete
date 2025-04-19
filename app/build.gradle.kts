@@ -138,6 +138,10 @@ dependencies {
     implementation("androidx.viewpager:viewpager:1.1.0")
     implementation("androidx.localbroadcastmanager:localbroadcastmanager:1.1.0")
 
+    // SQLite
+    implementation("androidx.sqlite:sqlite:2.5.0-rc03")
+    implementation("androidx.sqlite:sqlite-bundled:2.5.0-rc03")
+
     // Jetpack Compose
     val composeBom = platform("androidx.compose:compose-bom:2025.02.00")
     implementation(composeBom)
