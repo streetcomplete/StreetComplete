@@ -24,12 +24,11 @@ import de.westnordost.streetcomplete.data.osm.edits.move.RevertMoveNodeAction
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitWayAction
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.RevertUpdateElementTagsAction
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
-import de.westnordost.streetcomplete.data.externalsource.ExternalSourceQuestType
 import de.westnordost.streetcomplete.data.osm.edits.create.CreateRelationAction
 import de.westnordost.streetcomplete.data.osm.edits.delete.DeleteRelationAction
+import de.westnordost.streetcomplete.data.osm.edits.delete.RevertDeleteRelationAction
 import de.westnordost.streetcomplete.quests.tagEdit
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.addNodeEdit
-import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.modules.SerializersModule
 import kotlinx.serialization.modules.polymorphic
@@ -54,6 +53,7 @@ class ElementEditsDao(
                 subclass(CreateNodeFromVertexAction::class)
                 subclass(CreateRelationAction::class)
                 subclass(DeleteRelationAction::class)
+                subclass(RevertDeleteRelationAction::class)
             }
         }
     }
