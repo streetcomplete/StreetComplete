@@ -27,7 +27,7 @@ class AddParkingAccess : OsmFilterQuestType<ParkingAccess>() {
             !bdouble and !agricultural and !auto_rickshaw and !nev and !golf_cart and !atv and
             !ohv and !snowmobile and !psv and !bus and !taxi and !minibus and !share_taxi and
             !hov and !carpool and !car_sharing and !emergency and !hazmat and !hazmat:water and
-            !school_bus !disabled and !4wd_only and !roadtrain and !lhv and !tank and
+            !school_bus and !disabled and !4wd_only and !roadtrain and !lhv and !tank and
             !motor_vehicle and !vehicle
         )
     """
