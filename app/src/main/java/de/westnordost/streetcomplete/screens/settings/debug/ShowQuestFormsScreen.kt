@@ -18,6 +18,7 @@ import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.AppBarDefaults
 import androidx.compose.material.Divider
 import androidx.compose.material.IconButton
@@ -28,7 +29,6 @@ import androidx.compose.material.TextFieldDefaults
 import androidx.compose.material.TopAppBar
 import androidx.compose.material.primarySurface
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.ReadOnlyComposable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -37,15 +37,15 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.input.TextFieldValue
+import androidx.compose.ui.text.intl.LocaleList
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.ui.common.BackIcon
 import de.westnordost.streetcomplete.ui.common.CenteredLargeTitleHint
 import de.westnordost.streetcomplete.ui.common.ExpandableSearchField
 import de.westnordost.streetcomplete.ui.common.SearchIcon
-import de.westnordost.streetcomplete.util.ktx.containsAll
 
 /** Searchable and clickable quest list as a full screen */
 @Composable
@@ -54,17 +54,16 @@ fun ShowQuestFormsScreen(
     onClickQuestType: (QuestType) -> Unit,
     onClickBack: () -> Unit,
 ) {
-    var searchText by remember { mutableStateOf(TextFieldValue()) }
+    val searchText by viewModel.searchText.collectAsStateWithLifecycle()
+
+    val filteredQuests by viewModel.filteredQuests.collectAsStateWithLifecycle()
 
     Column(Modifier.fillMaxSize()) {
         ShowQuestFormsTopAppBar(
             onClickBack = onClickBack,
             search = searchText,
-            onSearchChange = { searchText = it }
+            onSearchChange = viewModel::updateSearchText,
         )
-
-        // see comment in QuestSelectionScreen
-        val filteredQuests = filterQuests(viewModel.quests, searchText.text)
 
         if (filteredQuests.isEmpty()) {
             CenteredLargeTitleHint(stringResource(R.string.no_search_results))
@@ -85,15 +84,15 @@ fun ShowQuestFormsScreen(
 @Composable
 private fun ShowQuestFormsTopAppBar(
     onClickBack: () -> Unit,
-    search: TextFieldValue,
-    onSearchChange: (TextFieldValue) -> Unit,
+    search: String,
+    onSearchChange: (String) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     var showSearch by remember { mutableStateOf(false) }
 
     fun setShowSearch(value: Boolean) {
         showSearch = value
-        if (!value) onSearchChange(TextFieldValue())
+        if (!value) onSearchChange("")
     }
 
     Surface(
@@ -120,7 +119,8 @@ private fun ShowQuestFormsTopAppBar(
                 colors = TextFieldDefaults.textFieldColors(
                     textColor = MaterialTheme.colors.onSurface,
                     backgroundColor = MaterialTheme.colors.surface
-                )
+                ),
+                keyboardOptions = KeyboardOptions(hintLocales = LocaleList.current),
             )
         }
     }
@@ -131,7 +131,7 @@ private fun QuestList(
     items: List<QuestType>,
     onClickQuestType: (QuestType) -> Unit,
     modifier: Modifier = Modifier,
-    contentPadding: PaddingValues = PaddingValues(0.dp)
+    contentPadding: PaddingValues = PaddingValues(0.dp),
 ) {
     LazyColumn(
         modifier = modifier,
@@ -157,17 +157,5 @@ private fun QuestList(
                 }
             }
         }
-    }
-}
-
-@Composable
-@ReadOnlyComposable
-private fun filterQuests(quests: List<QuestType>, filter: String): List<QuestType> {
-    val words = filter.trim().lowercase()
-    return if (words.isEmpty()) {
-        quests
-    } else {
-        val wordList = words.split(' ')
-        quests.filter { stringResource(it.title).lowercase().containsAll(wordList) }
     }
 }

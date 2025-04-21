@@ -407,6 +407,7 @@ quest/
     street_cabinet.svg               mcliquid (GPL 3) based on https://github.com/JOSM/josm/blob/master/resources/images/presets/misc/street_cabinet.svg)
     street_lanes.svg
     street_name.svg
+    street_name2.svg                 modified from housenumber_street.svg by Matija Nalis (CC0 for modifications)
     street_surface.svg
     street_surface_detail.svg
     street_turn_lanes.svg

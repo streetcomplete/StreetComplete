@@ -10,7 +10,6 @@ import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.isPlaceOrDisusedPlace
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 
-
 class AddGlutenFree : OsmFilterQuestType<DietAvailabilityAnswer>() {
 
     override val elementFilter = """

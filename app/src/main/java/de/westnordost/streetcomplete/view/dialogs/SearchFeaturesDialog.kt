@@ -200,7 +200,7 @@ private val iconOnlyFeatures = mapOf(
     "amenity/vending_machine/drinks" to R.drawable.ic_preset_temaki_vending_cold_drink,
     "amenity/atm" to R.drawable.ic_quest_money,
     "natural/tree" to R.drawable.ic_quest_tree,
-    "tourism/information/guidepost" to R.drawable.ic_quest_street_name,
+    "tourism/information/guidepost" to R.drawable.ic_quest_destination,
     "amenity/post_box" to R.drawable.ic_quest_mail,
     "amenity/charging_station" to R.drawable.ic_quest_car_charger,
     "highway/street_lamp" to R.drawable.ic_preset_temaki_street_lamp_arm,

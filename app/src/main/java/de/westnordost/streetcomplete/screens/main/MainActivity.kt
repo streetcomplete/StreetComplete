@@ -140,6 +140,7 @@ import de.westnordost.streetcomplete.screens.settings.gpx_track_changed
 import de.westnordost.streetcomplete.util.SoundFx
 import de.westnordost.streetcomplete.util.buildGeoUri
 import de.westnordost.streetcomplete.util.getFakeCustomOverlays
+import de.westnordost.streetcomplete.util.getSystemLocales
 import de.westnordost.streetcomplete.util.ktx.dpToPx
 import de.westnordost.streetcomplete.util.ktx.getLocationInWindow
 import de.westnordost.streetcomplete.util.ktx.hasLocationPermission
@@ -1372,7 +1373,7 @@ class MainActivity :
             }
         if (elements == emptySequence<Element>()) return emptyList()
         val levels = element?.let { parseLevelsOrNull(it.tags) }
-        val localLanguages = ConfigurationCompat.getLocales(resources.configuration).toList().map { it.language }
+        val localLanguages = getSystemLocales().toList().map { it.language }
         return elements.mapNotNull { e ->
             // don't highlight "this" element
             if (element == e) return@mapNotNull null

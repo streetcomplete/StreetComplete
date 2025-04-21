@@ -89,7 +89,11 @@ fun QuestSelectionList(
                 bottom = contentPadding.calculateBottomPadding()
             ),
         ) {
-            itemsIndexed(reorderableItems, key = { _, it -> it.questType.name }) { index, item ->
+            itemsIndexed(
+                reorderableItems,
+                key = { _, it -> it.questType.name },
+            ) { index, item ->
+
                 ReorderableItem(
                     state = dragDropState,
                     key = item.questType.name,
@@ -145,7 +149,8 @@ private fun QuestSelectionHeader(modifier: Modifier = Modifier) {
         Row(
             Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 16.dp, vertical = 8.dp)) {
+                .padding(horizontal = 16.dp, vertical = 8.dp)
+        ) {
             Text(
                 text = stringResource(R.string.quest_type),
                 modifier = Modifier.weight(1f),

@@ -26,8 +26,9 @@ class AddParkingAccess : OsmFilterQuestType<ParkingAccess>() {
             !motorhome and !tourist_bus and !coach and !goods and !hgv and !hgv_articulated and
             !bdouble and !agricultural and !auto_rickshaw and !nev and !golf_cart and !atv and
             !ohv and !snowmobile and !psv and !bus and !taxi and !minibus and !share_taxi and
-            !hov and !carpool and !car_sharing and !emergency and !hazmat and !water and
-            !disabled and !4wd_only and !roadtrain and !lhv and !tank
+            !hov and !carpool and !car_sharing and !emergency and !hazmat and !hazmat:water and
+            !school_bus and !disabled and !4wd_only and !roadtrain and !lhv and !tank and
+            !motor_vehicle and !vehicle
         )
     """
     override val changesetComment = "Specify parking access"
