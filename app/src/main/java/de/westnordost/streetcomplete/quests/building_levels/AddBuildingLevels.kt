@@ -7,7 +7,7 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.osm.BUILDINGS_WITH_LEVELS
 import de.westnordost.streetcomplete.osm.Tags
 
-class AddBuildingLevels : OsmFilterQuestType<BuildingLevelsAnswer>() {
+class AddBuildingLevels : OsmFilterQuestType<BuildingLevels>() {
 
     override val elementFilter = """
         ways, relations with
@@ -37,7 +37,7 @@ class AddBuildingLevels : OsmFilterQuestType<BuildingLevelsAnswer>() {
 
     override fun createForm() = AddBuildingLevelsForm()
 
-    override fun applyAnswerTo(answer: BuildingLevelsAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: BuildingLevels, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags["building:levels"] = answer.levels.toString()
         answer.roofLevels?.let { tags["roof:levels"] = it.toString() }
     }
