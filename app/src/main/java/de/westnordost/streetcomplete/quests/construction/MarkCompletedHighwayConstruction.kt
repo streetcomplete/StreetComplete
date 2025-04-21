@@ -23,8 +23,8 @@ class MarkCompletedHighwayConstruction : OsmFilterQuestType<CompletedConstructio
     override val hasMarkersAtEnds = true
     override val achievements = listOf(CAR)
 
-    override fun getTitle(tags: Map<String, String>): Int {
-        return when (tags["construction"]) {
+    override fun getTitle(tags: Map<String, String>) =
+        when (tags["construction"]) {
             "minor" -> R.string.quest_construction_minor_title
             /*
               Alternative could be "Is this construction finished?" and just display the feature
@@ -38,7 +38,6 @@ class MarkCompletedHighwayConstruction : OsmFilterQuestType<CompletedConstructio
             "steps" -> R.string.quest_construction_steps_title
             else -> R.string.quest_construction_generic_title
         }
-    }
 
     override fun createForm() = MarkCompletedConstructionForm()
 
