@@ -179,6 +179,7 @@ dependencies {
     // HTTP Client
     implementation("io.ktor:ktor-client-core:3.1.1")
     implementation("io.ktor:ktor-client-android:3.1.1")
+    implementation("io.ktor:ktor-client-encoding:3.1.1")
     testImplementation("io.ktor:ktor-client-mock:3.1.1")
 
     // finding in which country we are for country-specific logic

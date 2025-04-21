@@ -8,6 +8,7 @@ import de.westnordost.streetcomplete.util.ResourceProvider
 import de.westnordost.streetcomplete.util.SoundFx
 import de.westnordost.streetcomplete.util.logs.DatabaseLogger
 import io.ktor.client.HttpClient
+import io.ktor.client.plugins.compression.ContentEncoding
 import io.ktor.client.plugins.defaultRequest
 import io.ktor.http.userAgent
 import kotlinx.io.files.FileSystem
@@ -25,6 +26,11 @@ val appModule = module {
     single { HttpClient {
         defaultRequest {
             userAgent(ApplicationConstants.USER_AGENT)
+        }
+        install(ContentEncoding) {
+            gzip()
+            deflate()
+            identity()
         }
     } }
     single<FileSystem> { SystemFileSystem }

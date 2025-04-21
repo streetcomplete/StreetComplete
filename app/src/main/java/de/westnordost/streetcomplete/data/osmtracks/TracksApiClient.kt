@@ -8,6 +8,7 @@ import de.westnordost.streetcomplete.data.wrapApiClientExceptions
 import de.westnordost.streetcomplete.util.ktx.truncate
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
+import io.ktor.client.plugins.compression.compress
 import io.ktor.client.plugins.expectSuccess
 import io.ktor.client.request.bearerAuth
 import io.ktor.client.request.forms.MultiPartFormDataContent
@@ -46,6 +47,7 @@ class TracksApiClient(
         val xml = tracksSerializer.serialize(trackpoints)
 
         val response = httpClient.post(baseUrl + "gpx") {
+            compress("gzip")
             userLoginSource.accessToken?.let { bearerAuth(it) }
             setBody(MultiPartFormDataContent(formData {
                 append("file", xml, Headers.build {
