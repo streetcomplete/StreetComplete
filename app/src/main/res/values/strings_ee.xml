@@ -677,6 +677,19 @@
     <string name="quest_lampType_mercury">Mercury-vapor lamp</string>
     <string name="quest_lampType_halogen">Halogen lamp</string>
 
+    <!-- lamp type -->
+    <string name="quest_lampMount_title">How is this lamp mounted?</string>
+    <string name="quest_lampMount_disabled_msg">This quest is disabled by default because it might be spammy depending on the region.</string>
+    <string name="quest_lampMount_straightMast">Straight pole</string>
+    <string name="quest_lampMount_bentMast">Bent pole</string>
+    <string name="quest_lampMount_suspended">Suspended by a wire</string>
+    <string name="quest_lampMount_angledMast">Angled pole</string>
+    <string name="quest_lampMount_highMast">Tall pole (greater than 30m)</string>
+    <string name="quest_lampMount_bollard">Bollard</string>
+    <string name="quest_lampMount_wall">Wall</string>
+    <string name="quest_lampMount_ceiling">Ceiling</string>
+    <string name="quest_lampMount_transitShelter">Transit shelter</string>
+
     <!-- post office -->
     <string name="quest_postOffice_title">What type is this post office?</string>
     <string name="quest_postOffice_bureau">Full (official) post office</string>

@@ -119,6 +119,7 @@ import de.westnordost.streetcomplete.quests.incline_direction.AddStepsIncline
 import de.westnordost.streetcomplete.quests.internet_access.AddInternetAccess
 import de.westnordost.streetcomplete.quests.kerb_height.AddKerbHeight
 import de.westnordost.streetcomplete.quests.lamp_type.AddLampType
+import de.westnordost.streetcomplete.quests.lamp_mount.AddLampMount
 import de.westnordost.streetcomplete.quests.lanes.AddLanes
 import de.westnordost.streetcomplete.quests.leaf_detail.AddForestLeafType
 import de.westnordost.streetcomplete.quests.leaf_detail.AddTreeLeafType
@@ -654,6 +655,7 @@ fun getQuestTypeList(
     EE_QUEST_OFFSET + 53 to AddSwimmingPoolAvailability(),
     EE_QUEST_OFFSET + 54 to AddLampType(),
     EE_QUEST_OFFSET + 55 to AddPostOfficeType(),
+    EE_QUEST_OFFSET + 57 to AddLampMount(),
     EE_QUEST_OFFSET + 10 to OsmoseQuest(osmoseDao),
     EE_QUEST_OFFSET + 11 to CustomQuest(customQuestList),
     // POI quests
