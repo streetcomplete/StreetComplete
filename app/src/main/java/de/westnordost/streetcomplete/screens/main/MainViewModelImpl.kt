@@ -312,7 +312,7 @@ class MainViewModelImpl(
         val listener = object : StatisticsSource.Listener {
             override fun onAddedOne(type: String) { trySend(++count) }
             override fun onSubtractedOne(type: String) { trySend(--count) }
-            override fun onUpdatedAll() { update() }
+            override fun onUpdatedAll(isFirstUpdate: Boolean) { update() }
             override fun onCleared() { update() }
             override fun onUpdatedDaysActive() {}
         }
@@ -332,7 +332,7 @@ class MainViewModelImpl(
         val listener = object : StatisticsSource.Listener {
             override fun onAddedOne(type: String) { trySend(++count) }
             override fun onSubtractedOne(type: String) { trySend(--count) }
-            override fun onUpdatedAll() { update() }
+            override fun onUpdatedAll(isFirstUpdate: Boolean) { update() }
             override fun onCleared() { update() }
             override fun onUpdatedDaysActive() {}
         }

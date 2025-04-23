@@ -68,7 +68,7 @@ class AchievementsControllerTest {
         statisticsListener.onUpdatedDaysActive()
 
         verify(userAchievementsDao).put("daysActive", 1)
-        verify(listener).onAchievementUnlocked(achievement, 1)
+        verify(listener).onAchievementUnlocked(achievement, 1, emptyList())
     }
 
     @Test fun `unlocks TotalEditCount achievement`() {
@@ -79,11 +79,11 @@ class AchievementsControllerTest {
         createAchievementsController()
         statisticsListener.onAddedOne("QuestOne")
         verify(userAchievementsDao).put("allQuests", 1)
-        verify(listener).onAchievementUnlocked(achievement, 1)
+        verify(listener).onAchievementUnlocked(achievement, 1, emptyList())
 
         statisticsListener.onAddedOne("OverlayOne")
         verify(userAchievementsDao).put("allQuests", 2)
-        verify(listener).onAchievementUnlocked(achievement, 2)
+        verify(listener).onAchievementUnlocked(achievement, 2, emptyList())
     }
 
     @Test fun `unlocks EditsOfTypeCount achievement`() {
@@ -95,15 +95,17 @@ class AchievementsControllerTest {
 
         statisticsListener.onAddedOne("QuestTwo")
         verify(userAchievementsDao).put("mixedAchievement", 1)
-        verify(listener).onAchievementUnlocked(achievement, 1)
+        verify(listener).onAchievementUnlocked(achievement, 1, emptyList())
 
         statisticsListener.onAddedOne("OverlayOne")
         verify(userAchievementsDao).put("mixedAchievement", 2)
-        verify(listener).onAchievementUnlocked(achievement, 2)
+        verify(listener).onAchievementUnlocked(achievement, 2, emptyList())
     }
 
     @Test fun `unlocks multiple locked levels of an achievement and grants those links`() {
         on(userAchievementsDao.getAll()).thenReturn(mapOf("allQuests" to 2))
+        // already granted: link "a" and "c"
+        on(userLinksDao.getAll()).thenReturn(listOf("a", "c"))
         on(statisticsSource.getEditCount()).thenReturn(5)
         val achievement = achievement(
             id = "allQuests",
@@ -116,20 +118,24 @@ class AchievementsControllerTest {
                 5 to links("e", "f") // 5 has two links
             )
         )
+        allLinks = links("a", "b", "c", "d", "e", "f")
         allAchievements = listOf(achievement)
 
         createAchievementsController()
         statisticsListener.onAddedOne("QuestOne")
 
         verify(userAchievementsDao).put("allQuests", 5)
-        verify(userLinksDao).addAll(listOf("d", "e", "f"))
-        verify(listener).onAchievementUnlocked(achievement, 3)
-        verify(listener).onAchievementUnlocked(achievement, 4)
-        verify(listener).onAchievementUnlocked(achievement, 5)
+        verify(userLinksDao).addAll(listOf("b", "d", "e", "f"))
+        verify(listener).onAchievementUnlocked(
+            achievement = achievement,
+            level = 5,
+            unlockedLinks = links("b", "d", "e", "f")
+        )
     }
 
     @Test fun `unlocks links not yet unlocked`() {
-        on(userAchievementsDao.getAll()).thenReturn(mapOf("allQuests" to 2))
+        on(statisticsSource.getEditCount()).thenReturn(2)
+        allLinks = links("a", "b", "c", "d")
         allAchievements = listOf(achievement(
             id = "allQuests",
             condition = TotalEditCount,
@@ -141,8 +147,9 @@ class AchievementsControllerTest {
         ))
 
         createAchievementsController()
-        statisticsListener.onUpdatedAll()
+        statisticsListener.onUpdatedAll(true)
 
+        verify(userAchievementsDao).putAll(listOf("allQuests" to 2))
         verify(userLinksDao).addAll(listOf("a", "b", "c"))
     }
 
@@ -159,7 +166,7 @@ class AchievementsControllerTest {
         statisticsListener.onUpdatedDaysActive()
 
         verify(userAchievementsDao).put("daysActive", 5)
-        verify(listener).onAchievementUnlocked(achievement, 5)
+        verify(listener).onAchievementUnlocked(achievement, 5, emptyList())
     }
 
     @Test fun `only updates achievements for given questType`() {

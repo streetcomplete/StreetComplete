@@ -2,6 +2,8 @@ package de.westnordost.streetcomplete.data.user.statistics
 
 import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.streetcomplete.data.preferences.Preferences
+import de.westnordost.streetcomplete.data.user.UserLoginSource
+import de.westnordost.streetcomplete.testutils.any
 import de.westnordost.streetcomplete.testutils.mock
 import de.westnordost.streetcomplete.testutils.on
 import de.westnordost.streetcomplete.testutils.p
@@ -21,6 +23,8 @@ class StatisticsControllerTest {
     private lateinit var activeDatesDao: ActiveDatesDao
     private lateinit var countryBoundaries: CountryBoundaries
     private lateinit var prefs: Preferences
+    private lateinit var userLoginSource: UserLoginSource
+    private lateinit var userLoginListener: UserLoginSource.Listener
 
     private lateinit var statisticsController: StatisticsController
     private lateinit var listener: StatisticsSource.Listener
@@ -38,11 +42,21 @@ class StatisticsControllerTest {
         prefs = mock()
         listener = mock()
 
+        userLoginSource = mock()
+        on(userLoginSource.addListener(any())).then { invocation ->
+            userLoginListener = (invocation.arguments[0] as UserLoginSource.Listener)
+            Unit
+        }
+
         statisticsController = StatisticsController(
-            editTypeStatisticsDao, countryStatisticsDao,
-            currentWeekEditTypeStatisticsDao, currentWeekCountryStatisticsDao,
+            editTypeStatisticsDao,
+            countryStatisticsDao,
+            currentWeekEditTypeStatisticsDao,
+            currentWeekCountryStatisticsDao,
             activeDatesDao,
-            lazyOf(countryBoundaries), prefs
+            lazyOf(countryBoundaries),
+            prefs,
+            userLoginSource
         )
         statisticsController.addListener(listener)
     }
@@ -103,8 +117,13 @@ class StatisticsControllerTest {
         verify(listener).onUpdatedDaysActive()
     }
 
-    @Test fun `clear all`() {
-        statisticsController.clear()
+    @Test fun `mark as not synchronized on login`() {
+        userLoginListener.onLoggedIn()
+        verify(prefs).statisticsSynchronizedOnce = false
+    }
+
+    @Test fun `clear on logout`() {
+        userLoginListener.onLoggedOut()
         verify(editTypeStatisticsDao).clear()
         verify(countryStatisticsDao).clear()
         verify(currentWeekCountryStatisticsDao).clear()
@@ -115,6 +134,7 @@ class StatisticsControllerTest {
     }
 
     @Test fun `update all`() {
+        on(prefs.statisticsSynchronizedOnce).thenReturn(false)
         statisticsController.updateAll(Statistics(
             types = listOf(
                 EditTypeStatistics(questA, 123),
@@ -169,6 +189,7 @@ class StatisticsControllerTest {
         verify(prefs).userGlobalRank = 999
         verify(prefs).userGlobalRankCurrentWeek = 111
         verify(prefs).userLastTimestampActive = 9999999
-        verify(listener).onUpdatedAll()
+        verify(prefs).statisticsSynchronizedOnce = true
+        verify(listener).onUpdatedAll(true)
     }
 }

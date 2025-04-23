@@ -13,13 +13,18 @@ class UserAchievementsDaoTest : ApplicationDbTestCase() {
     }
 
     @Test fun putGetAll() {
-        dao.put(ONE, 1)
-        dao.put(ONE, 4)
-        dao.put(TWO, 2)
+        dao.putAll(listOf(ONE to 1))
+        dao.putAll(listOf(ONE to 4, TWO to 2))
         assertEquals(mapOf(
             ONE to 4,
             TWO to 2
         ), dao.getAll())
+    }
+
+    @Test fun putSingle() {
+        dao.put(ONE, 1)
+        dao.put(ONE, 4)
+        assertEquals(mapOf(ONE to 4), dao.getAll())
     }
 }
 
