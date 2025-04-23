@@ -29,6 +29,8 @@ class Preferences(private val prefs: ObservableSettings) {
 
     var keepScreenOn: Boolean by prefs.boolean(KEEP_SCREEN_ON, false)
 
+    var showZoomButtons: Boolean by prefs.boolean(SHOW_ZOOM_BUTTONS, false)
+
     var resurveyIntervals: ResurveyIntervals
         set(value) { prefs.putString(RESURVEY_INTERVALS, value.name) }
         get() = prefs.getStringOrNull(RESURVEY_INTERVALS)?.let { ResurveyIntervals.valueOf(it) }
@@ -59,6 +61,9 @@ class Preferences(private val prefs: ObservableSettings) {
 
     fun onKeepScreenOnChanged(callback: (Boolean) -> Unit): SettingsListener =
         prefs.addBooleanListener(KEEP_SCREEN_ON, false, callback)
+
+    fun onShowZoomButtonsChanged(callback: (Boolean) -> Unit): SettingsListener =
+        prefs.addBooleanListener(SHOW_ZOOM_BUTTONS, false, callback)
 
     // login and user
     var userId: Long by prefs.long(OSM_USER_ID, -1)
@@ -204,6 +209,7 @@ class Preferences(private val prefs: ObservableSettings) {
         private const val SHOW_ALL_NOTES = "display.nonQuestionNotes"
         private const val AUTOSYNC = "autosync"
         private const val KEEP_SCREEN_ON = "display.keepScreenOn"
+        private const val SHOW_ZOOM_BUTTONS = "display.zoomButtons"
         private const val THEME_SELECT = "theme.select"
         private const val LANGUAGE_SELECT = "language.select"
         private const val RESURVEY_INTERVALS = "quests.resurveyIntervals"

@@ -39,6 +39,8 @@ The info you enter is directly added to OpenStreetMap in your name, without the 
     <string name="map_btn_zoom_out">"Zoom out"</string>
     <string name="map_btn_zoom_in">"Zoom in"</string>
 
+    <string name="map_attribution">Map Attribution</string>
+
     <string name="map_btn_menu">"Menu"</string>
 
     <string name="map_btn_gps_tracking">"Follow me"</string>
@@ -568,11 +570,13 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
 
     <string name="pref_title_keep_screen_on">"Keep screen on"</string>
 
+    <string name="pref_title_zoom_buttons">"Show map zoom buttons"</string>
+
     <string name="pref_title_sync2">"Upload answers automatically"</string>
     <string name="autosync_on">"On"</string>
     <string name="autosync_only_on_wifi">"Only on Wi-Fi"</string>
     <string name="autosync_off">"Off"</string>
-    <string name="dialog_tutorial_upload">To upload your changes manually, use the button in the toolbar that looks like this.</string>
+    <string name="dialog_tutorial_upload">To upload your changes manually, use the button in the main menu that looks like this.</string>
 
     <string name="pref_title_language_select2">Language</string>
     <string name="language_default">System default</string>

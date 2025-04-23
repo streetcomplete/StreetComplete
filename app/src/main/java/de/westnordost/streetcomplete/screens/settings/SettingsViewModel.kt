@@ -36,6 +36,7 @@ abstract class SettingsViewModel : ViewModel() {
     abstract val autosync: StateFlow<Autosync>
     abstract val theme: StateFlow<Theme>
     abstract val keepScreenOn: StateFlow<Boolean>
+    abstract val showZoomButtons: StateFlow<Boolean>
     abstract val selectedLanguage: StateFlow<String?>
 
     abstract fun unhideQuests()
@@ -47,6 +48,7 @@ abstract class SettingsViewModel : ViewModel() {
     abstract fun setAutosync(value: Autosync)
     abstract fun setTheme(value: Theme)
     abstract fun setKeepScreenOn(value: Boolean)
+    abstract fun setShowZoomButtons(value: Boolean)
     abstract fun setSelectedLanguage(value: String?)
 }
 
@@ -91,6 +93,7 @@ class SettingsViewModelImpl(
     override val theme = MutableStateFlow(prefs.theme)
     override val showAllNotes = MutableStateFlow(prefs.showAllNotes)
     override val keepScreenOn = MutableStateFlow(prefs.keepScreenOn)
+    override val showZoomButtons = MutableStateFlow(prefs.showZoomButtons)
     override val selectedLanguage = MutableStateFlow(prefs.language)
 
     private val listeners = mutableListOf<SettingsListener>()
@@ -105,6 +108,7 @@ class SettingsViewModelImpl(
         listeners += prefs.onThemeChanged { theme.value = it }
         listeners += prefs.onAllShowNotesChanged { showAllNotes.value = it }
         listeners += prefs.onKeepScreenOnChanged { keepScreenOn.value = it }
+        listeners += prefs.onShowZoomButtonsChanged { showZoomButtons.value = it }
         listeners += prefs.onLanguageChanged { selectedLanguage.value = it }
 
         updateQuestTypeCount()
@@ -131,6 +135,7 @@ class SettingsViewModelImpl(
     override fun setAutosync(value: Autosync) { prefs.autosync = value }
     override fun setTheme(value: Theme) { prefs.theme = value }
     override fun setKeepScreenOn(value: Boolean) { prefs.keepScreenOn = value }
+    override fun setShowZoomButtons(value: Boolean) { prefs.showZoomButtons = value }
     override fun setSelectedLanguage(value: String?) { prefs.language = value }
 
     override fun unhideQuests() {
