@@ -55,6 +55,7 @@ fun AchievementsScreen(viewModel: AchievementsViewModel) {
     showAchievement?.let { (achievement, level) ->
         AchievementDialog(
             achievement, level,
+            unlockedLinks = emptyList(),
             onDismissRequest = { showAchievement = null },
             isNew = false
         )

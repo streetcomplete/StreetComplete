@@ -2,8 +2,10 @@ package de.westnordost.streetcomplete.data.user.achievements
 
 interface AchievementsSource {
     interface Listener {
-        /** Called when a single achievement level has been unlocked */
-        fun onAchievementUnlocked(achievement: Achievement, level: Int)
+        /** Called when a new achievement level has been reached. When the user unlocked several
+         *  levels at once, this is only called once with the highest achieved level, the
+         *  [unlockedLinks] contain all links not unlocked yet */
+        fun onAchievementUnlocked(achievement: Achievement, level: Int, unlockedLinks: List<Link>)
         /** Called when all achievements have been updated (after sync with server) */
         fun onAllAchievementsUpdated()
     }

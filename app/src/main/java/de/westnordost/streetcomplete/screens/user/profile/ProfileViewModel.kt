@@ -9,6 +9,7 @@ import de.westnordost.streetcomplete.data.user.UserLoginController
 import de.westnordost.streetcomplete.data.user.UserUpdater
 import de.westnordost.streetcomplete.data.user.achievements.Achievement
 import de.westnordost.streetcomplete.data.user.achievements.AchievementsSource
+import de.westnordost.streetcomplete.data.user.achievements.Link
 import de.westnordost.streetcomplete.data.user.statistics.CountryStatistics
 import de.westnordost.streetcomplete.data.user.statistics.StatisticsSource
 import de.westnordost.streetcomplete.util.ktx.launch
@@ -89,12 +90,16 @@ class ProfileViewModelImpl(
             editCount.update { it - 1 }
             editCountCurrentWeek.update { it - 1 }
         }
-        override fun onUpdatedAll() { updateStatistics() }
+        override fun onUpdatedAll(isFirstUpdate: Boolean) { updateStatistics() }
         override fun onCleared() { updateStatistics() }
         override fun onUpdatedDaysActive() { updateDatesActive() }
     }
     private val achievementsListener = object : AchievementsSource.Listener {
-        override fun onAchievementUnlocked(achievement: Achievement, level: Int) { updateAchievementLevels() }
+        override fun onAchievementUnlocked(
+            achievement: Achievement,
+            level: Int,
+            unlockedLinks: List<Link>
+        ) { updateAchievementLevels() }
         override fun onAllAchievementsUpdated() { updateAchievementLevels() }
     }
     private val userListener = object : UserDataSource.Listener {

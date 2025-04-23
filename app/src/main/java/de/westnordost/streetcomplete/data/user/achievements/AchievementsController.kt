@@ -29,11 +29,15 @@ class AchievementsController(
             // anything once granted is not removed, so nothing to do here
         }
 
-        override fun onUpdatedAll() {
-            // when syncing statistics from server, any granted achievements should be
-            // granted silently (without message) because no user action was involved
-            updateAllAchievementsSilently()
-            updateAchievementLinks()
+        override fun onUpdatedAll(isFirstUpdate: Boolean) {
+            // When syncing statistics from server first time after login, any granted achievements
+            // should be granted silently (without message) because no user action was involved.
+            // This ensures that achievement links added later will also be earned by old users
+            // (i.e. unlocked on next achievement update) rather than be unlocked silently right
+            // away.
+            if (isFirstUpdate) {
+                updateAllAchievementsSilently()
+            }
         }
 
         override fun onCleared() {
@@ -73,9 +77,18 @@ class AchievementsController(
         listeners.forEach { it.onAllAchievementsUpdated() }
     }
 
-    /** Look at and grant all achievements */
+    /** Look at and grant all achievements and their links */
     private fun updateAllAchievementsSilently() {
-        updateAchievements(allAchievements, silent = true)
+        val unlockedAchievements = allAchievements.map { it to getAchievedLevel(it) }
+        val unlockedLinks = mutableListOf<Link>()
+        for ((achievement, achievedLevel) in unlockedAchievements) {
+            for (level in 1..achievedLevel) {
+                unlockedLinks.addAll(achievement.unlockedLinks[level].orEmpty())
+            }
+        }
+        userAchievementsDao.putAll(unlockedAchievements.map { it.first.id to it.second })
+        userLinksDao.addAll(unlockedLinks.map { it.id })
+
         listeners.forEach { it.onAllAchievementsUpdated() }
     }
 
@@ -95,8 +108,9 @@ class AchievementsController(
         updateAchievements(allAchievements.filter { it.condition is DaysActive })
     }
 
-    private fun updateAchievements(achievements: List<Achievement>, silent: Boolean = false) {
+    private fun updateAchievements(achievements: List<Achievement>) {
         val currentAchievementLevels = userAchievementsDao.getAll()
+        val currentLinks = getLinks().toSet()
         // look at all defined achievements
         for (achievement in achievements) {
             val currentLevel = currentAchievementLevels[achievement.id] ?: 0
@@ -106,34 +120,21 @@ class AchievementsController(
             if (achievedLevel > currentLevel) {
                 userAchievementsDao.put(achievement.id, achievedLevel)
 
-                val unlockedLinkIds = mutableListOf<String>()
-                for (level in (currentLevel + 1)..achievedLevel) {
-                    achievement.unlockedLinks[level]?.map { it.id }?.let { unlockedLinkIds.addAll(it) }
-
-                    // one message for each achievement level
-                    if (!silent && !statisticsSource.isSynchronizing) {
-                        listeners.forEach { it.onAchievementUnlocked(achievement, level) }
-                    }
+                val unlockedLinks = mutableListOf<Link>()
+                // add all links from all levels (some might have been added later in-between)
+                for (level in 1..achievedLevel) {
+                    unlockedLinks.addAll(achievement.unlockedLinks[level].orEmpty())
                 }
-                userLinksDao.addAll(unlockedLinkIds)
-            }
-        }
-    }
+                unlockedLinks -= currentLinks
 
-    /** Goes through all granted achievements and gives the included links to the user if he doesn't
-     *  have them yet. This method only needs to be called when new links have been added to already
-     *  existing achievement levels from one StreetComplete version to another. So, this only needs
-     *  to be done once after each app update */
-    private fun updateAchievementLinks() {
-        val unlockedLinkIds = mutableListOf<String>()
-        val currentAchievementLevels = userAchievementsDao.getAll()
-        for (achievement in allAchievements) {
-            val currentLevel = currentAchievementLevels[achievement.id] ?: 0
-            for (level in 1..currentLevel) {
-                achievement.unlockedLinks[level]?.map { it.id }?.let { unlockedLinkIds.addAll(it) }
+                // one message only even if multiple levels were achieved
+                if (!statisticsSource.isSynchronizing) {
+                    listeners.forEach { it.onAchievementUnlocked(achievement, achievedLevel, unlockedLinks) }
+                }
+
+                userLinksDao.addAll(unlockedLinks.map { it.id })
             }
         }
-        if (unlockedLinkIds.isNotEmpty()) userLinksDao.addAll(unlockedLinkIds)
     }
 
     private fun getAchievedLevel(achievement: Achievement): Int {

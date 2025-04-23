@@ -11,7 +11,7 @@ interface StatisticsSource {
         fun onSubtractedOne(type: String)
         /** Called when all the statistics have been replaced by a new set of statistics. E.g. when
          *  the updated statistics have been downloaded from the server */
-        fun onUpdatedAll()
+        fun onUpdatedAll(isFirstUpdate: Boolean)
         /** Called when the statistics have been cleared. E.g. on logout. */
         fun onCleared()
         /** Called when the days the user has been active changed */

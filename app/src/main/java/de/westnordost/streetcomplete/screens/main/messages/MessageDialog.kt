@@ -23,6 +23,7 @@ fun MessageDialog(
             AchievementDialog(
                 achievement = message.achievement,
                 level = message.level,
+                unlockedLinks = message.unlockedLinks,
                 onDismissRequest = onDismissRequest
             )
         }

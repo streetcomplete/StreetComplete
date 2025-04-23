@@ -24,9 +24,7 @@ class UserUpdater(
         override fun onLoggedIn() {
             update()
         }
-        override fun onLoggedOut() {
-            clear()
-        }
+        override fun onLoggedOut() {}
     }
 
     interface Listener {
@@ -52,11 +50,6 @@ class UserUpdater(
         } catch (e: Exception) {
             Log.w(TAG, "Unable to download user details", e)
         }
-    }
-
-    fun clear() {
-        userDataController.clear()
-        statisticsController.clear()
     }
 
     private fun updateAvatar(userId: Long, imageUrl: String) = coroutineScope.launch(Dispatchers.IO) {

@@ -21,6 +21,7 @@ import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.user.achievements.Achievement
+import de.westnordost.streetcomplete.data.user.achievements.Link
 import de.westnordost.streetcomplete.data.user.achievements.achievements
 import de.westnordost.streetcomplete.screens.user.DialogContentWithIconLayout
 import de.westnordost.streetcomplete.screens.user.links.LazyLinksColumn
@@ -32,6 +33,7 @@ import de.westnordost.streetcomplete.ui.theme.titleMedium
 fun AchievementDialog(
     achievement: Achievement,
     level: Int,
+    unlockedLinks: List<Link>,
     onDismissRequest: () -> Unit,
     modifier: Modifier = Modifier,
     isNew: Boolean = true,
@@ -57,9 +59,8 @@ fun AchievementDialog(
                 },
                 content = { isLandscape ->
                     AchievementDetails(
-                        achievement, level,
-                        isLandscape = isLandscape,
-                        showLinks = isNew
+                        achievement, level, unlockedLinks,
+                        isLandscape = isLandscape
                     )
                 },
                 modifier = modifier.padding(16.dp)
@@ -72,9 +73,9 @@ fun AchievementDialog(
 private fun AchievementDetails(
     achievement: Achievement,
     level: Int,
+    unlockedLinks: List<Link>,
     modifier: Modifier = Modifier,
     isLandscape: Boolean,
-    showLinks: Boolean,
 ) {
     Column(
         modifier = modifier,
@@ -95,8 +96,7 @@ private fun AchievementDetails(
                 style = MaterialTheme.typography.body2
             )
         }
-        val unlockedLinks = achievement.unlockedLinks[level].orEmpty()
-        if (unlockedLinks.isNotEmpty() && showLinks) {
+        if (unlockedLinks.isNotEmpty()) {
             val unlockedLinksText = stringResource(
                 if (unlockedLinks.size == 1) R.string.achievements_unlocked_link
                 else R.string.achievements_unlocked_links
@@ -119,9 +119,11 @@ private fun AchievementDetails(
 @Composable
 private fun PreviewAchievementDetailsDialog() {
     AppTheme {
+        val regularAchievement = achievements.associateBy { it.id }["regular"]!!
         AchievementDialog(
-            achievement = achievements.associateBy { it.id }["regular"]!!,
+            achievement = regularAchievement,
             level = 7,
+            unlockedLinks = regularAchievement.unlockedLinks[7].orEmpty(),
             onDismissRequest = {}
         )
     }
