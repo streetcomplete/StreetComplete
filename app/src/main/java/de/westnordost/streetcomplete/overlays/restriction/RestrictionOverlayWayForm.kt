@@ -604,7 +604,7 @@ class RestrictionOverlayWayForm : AbstractOverlayForm() {
 
     // get bearing of last segment of "from" member for via icon
     private fun showTurnRestrictionOnMap(restriction: TurnRestriction) {
-        val members = restriction.relation.members.map { it.role to mapDataSource.get(it.type, it.ref)!! }
+        val members = restriction.relation.members.map { it.role to (mapDataSource.get(it.type, it.ref) ?: return) }
         val viaMembers = members.filter { it.first == "via" }.map { it.second }
         val from = members.singleOrNull { it.first == "from" }?.second as? Way ?: return // only one from member supported
         val isFirst = viaMembers.any { it is Node && it.id == from.nodeIds.first() || it is Way && it.nodeIds.firstAndLast().contains(from.nodeIds.first()) }
