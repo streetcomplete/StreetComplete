@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.screens.settings.quest_presets
+package de.westnordost.streetcomplete.screens.settings.presets
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.IntrinsicSize
@@ -27,8 +27,8 @@ import de.westnordost.streetcomplete.ui.common.dialogs.ConfirmationDialog
 import de.westnordost.streetcomplete.ui.common.dialogs.TextInputDialog
 
 @Composable
-fun QuestPresetRow(
-    item: QuestPresetSelection,
+fun EditTypePresetRow(
+    item: EditTypePresetSelection,
     onSelect: () -> Unit,
     onRename: (name: String) -> Unit,
     onDuplicate: (name: String) -> Unit,
@@ -64,7 +64,7 @@ fun QuestPresetRow(
             ) {
                 MoreIcon()
             }
-            QuestPresetDropdownMenu(
+            EditTypePresetDropdownMenu(
                 expanded = showActionsDropdown,
                 onDismissRequest = { showActionsDropdown = false },
                 onRename = { showRenameDialog = true },
@@ -120,9 +120,9 @@ fun QuestPresetRow(
 
 @Preview
 @Composable
-private fun PreviewQuestPresetRow() {
-    QuestPresetRow(
-        item = QuestPresetSelection(1L, "A quest preset name", false),
+private fun PreviewEditTypePresetRow() {
+    EditTypePresetRow(
+        item = EditTypePresetSelection(1L, "A edit type preset name", false),
         onSelect = {},
         onRename = {},
         onDuplicate = {},

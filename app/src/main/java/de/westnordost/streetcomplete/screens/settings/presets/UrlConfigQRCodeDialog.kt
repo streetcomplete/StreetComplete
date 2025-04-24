@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.screens.settings.quest_presets
+package de.westnordost.streetcomplete.screens.settings.presets
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background

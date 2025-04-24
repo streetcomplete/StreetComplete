@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.data.visiblequests
 
+import de.westnordost.streetcomplete.data.presets.EditTypePresetsSource
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.quest.TestQuestTypeA
 import de.westnordost.streetcomplete.data.quest.TestQuestTypeB
@@ -20,12 +21,12 @@ import kotlin.test.assertTrue
 class VisibleQuestTypeControllerTest {
 
     private lateinit var visibleQuestTypeDao: VisibleQuestTypeDao
-    private lateinit var questPresetsSource: QuestPresetsSource
+    private lateinit var editTypePresetsSource: EditTypePresetsSource
     private lateinit var questTypeRegistry: QuestTypeRegistry
     private lateinit var ctrl: VisibleQuestTypeController
     private lateinit var listener: VisibleQuestTypeSource.Listener
 
-    private lateinit var questPresetsListener: QuestPresetsSource.Listener
+    private lateinit var editTypePresetsListener: EditTypePresetsSource.Listener
 
     private val disabledQuest = TestQuestTypeDisabled()
     private val quest1 = TestQuestTypeA()
@@ -33,21 +34,21 @@ class VisibleQuestTypeControllerTest {
 
     @BeforeTest fun setUp() {
         visibleQuestTypeDao = mock()
-        questPresetsSource = mock()
+        editTypePresetsSource = mock()
         questTypeRegistry = QuestTypeRegistry(listOf(
             0 to quest1,
             1 to quest2,
             2 to disabledQuest
         ))
 
-        on(questPresetsSource.addListener(any())).then { invocation ->
-            questPresetsListener = (invocation.arguments[0] as QuestPresetsSource.Listener)
+        on(editTypePresetsSource.addListener(any())).then { invocation ->
+            editTypePresetsListener = (invocation.arguments[0] as EditTypePresetsSource.Listener)
             Unit
         }
 
-        on(questPresetsSource.selectedId).thenReturn(0)
+        on(editTypePresetsSource.selectedId).thenReturn(0)
 
-        ctrl = VisibleQuestTypeController(visibleQuestTypeDao, questPresetsSource, questTypeRegistry)
+        ctrl = VisibleQuestTypeController(visibleQuestTypeDao, editTypePresetsSource, questTypeRegistry)
 
         listener = mock()
         ctrl.addListener(listener)
@@ -138,18 +139,18 @@ class VisibleQuestTypeControllerTest {
         verify(listener).onQuestTypeVisibilitiesChanged()
     }
 
-    @Test fun `clears visibilities of deleted quest preset`() {
-        questPresetsListener.onDeletedQuestPreset(1)
+    @Test fun `clears visibilities of deleted edit type preset`() {
+        editTypePresetsListener.onDeleted(1)
         verify(visibleQuestTypeDao).clear(1)
         verifyNoInteractions(listener)
     }
 
-    @Test fun `clears cache and notifies listener when changing quest preset`() {
+    @Test fun `clears cache and notifies listener when changing edit type preset`() {
         // make sure that visibilities are queried once from DB
         on(visibleQuestTypeDao.getAll(0)).thenReturn(mutableMapOf())
         assertTrue(ctrl.isVisible(quest1))
 
-        questPresetsListener.onSelectedQuestPresetChanged()
+        editTypePresetsListener.onSelectionChanged()
         verify(listener).onQuestTypeVisibilitiesChanged()
 
         // now they should be queried again: we expect getAll to be called twice

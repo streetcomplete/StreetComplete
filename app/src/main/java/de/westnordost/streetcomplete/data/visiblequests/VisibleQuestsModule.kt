@@ -2,13 +2,9 @@ package de.westnordost.streetcomplete.data.visiblequests
 
 import org.koin.dsl.module
 
-val questPresetsModule = module {
-    factory { QuestPresetsDao(get()) }
+val visibleQuestsModule = module {
     factory { QuestTypeOrderDao(get()) }
     factory { VisibleQuestTypeDao(get()) }
-
-    single<QuestPresetsSource> { get<QuestPresetsController>() }
-    single { QuestPresetsController(get(), get()) }
 
     single<QuestTypeOrderSource> { get<QuestTypeOrderController>() }
     single { QuestTypeOrderController(get(), get(), get()) }

@@ -47,7 +47,8 @@ import de.westnordost.streetcomplete.data.user.UserUpdater
 import de.westnordost.streetcomplete.data.user.achievements.achievementsModule
 import de.westnordost.streetcomplete.data.user.statistics.statisticsModule
 import de.westnordost.streetcomplete.data.user.userModule
-import de.westnordost.streetcomplete.data.visiblequests.questPresetsModule
+import de.westnordost.streetcomplete.data.presets.editTypePresetsModule
+import de.westnordost.streetcomplete.data.visiblequests.visibleQuestsModule
 import de.westnordost.streetcomplete.overlays.overlaysModule
 import de.westnordost.streetcomplete.quests.questsModule
 import de.westnordost.streetcomplete.screens.about.aboutScreenModule
@@ -127,7 +128,8 @@ class StreetCompleteApplication : Application() {
                 osmQuestModule,
                 preferencesModule,
                 questModule,
-                questPresetsModule,
+                editTypePresetsModule,
+                visibleQuestsModule,
                 allEditTypesModule,
                 questsModule,
                 settingsModule,

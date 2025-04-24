@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.screens.settings.quest_presets
+package de.westnordost.streetcomplete.screens.settings.presets
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -43,9 +43,10 @@ import de.westnordost.streetcomplete.ui.common.BackIcon
 import de.westnordost.streetcomplete.ui.common.dialogs.TextInputDialog
 import de.westnordost.streetcomplete.ui.theme.titleMedium
 
-/** Shows a screen in which the user can select which preset of quest selections he wants to use. */
-@Composable fun QuestPresetsScreen(
-    viewModel: QuestPresetsViewModel,
+/** Shows a screen in which the user can select which preset of edit type selections he wants to
+ *  use. */
+@Composable fun EditTypePresetsScreen(
+    viewModel: EditTypePresetsViewModel,
     onClickBack: () -> Unit,
 ) {
     var showAddDialog by remember { mutableStateOf(false) }
@@ -63,7 +64,7 @@ import de.westnordost.streetcomplete.ui.theme.titleMedium
             .fillMaxHeight()
             .consumeWindowInsets(insets)
         ) {
-            QuestPresetsList(
+            EditTypePresetsList(
                 viewModel = viewModel,
                 contentPadding = insets,
             )
@@ -93,8 +94,8 @@ import de.westnordost.streetcomplete.ui.theme.titleMedium
 }
 
 @Composable
-private fun QuestPresetsList(
-    viewModel: QuestPresetsViewModel,
+private fun EditTypePresetsList(
+    viewModel: EditTypePresetsViewModel,
     modifier: Modifier = Modifier,
     contentPadding: PaddingValues = PaddingValues(0.dp)
 ) {
@@ -102,7 +103,7 @@ private fun QuestPresetsList(
 
     Column(modifier) {
         val layoutDirection = LocalLayoutDirection.current
-        QuestPresetsHeader(Modifier.padding(
+        EditTypePresetsHeader(Modifier.padding(
             start = contentPadding.calculateStartPadding(layoutDirection),
             top = contentPadding.calculateTopPadding(),
             end = contentPadding.calculateEndPadding(layoutDirection)
@@ -117,7 +118,7 @@ private fun QuestPresetsList(
             itemsIndexed(presets, key = { _, it -> it.id }) { index, item ->
                 Column {
                     if (index > 0) Divider()
-                    QuestPresetRow(
+                    EditTypePresetRow(
                         item = item,
                         onSelect = { viewModel.select(item.id) },
                         onRename = { viewModel.rename(item.id, it) },
@@ -133,7 +134,7 @@ private fun QuestPresetsList(
 }
 
 @Composable
-private fun QuestPresetsHeader(modifier: Modifier = Modifier) {
+private fun EditTypePresetsHeader(modifier: Modifier = Modifier) {
     Column(modifier) {
         Row(
             Modifier

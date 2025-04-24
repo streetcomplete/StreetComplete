@@ -26,7 +26,7 @@ fun QuestSelectionScreen(
     onClickBack: () -> Unit,
 ) {
     val quests by viewModel.quests.collectAsState()
-    val selectedQuestPresetName by viewModel.selectedQuestPresetName.collectAsState()
+    val selectedEditTypePresetName by viewModel.selectedEditTypePresetName.collectAsState()
 
     val searchText by viewModel.searchText.collectAsStateWithLifecycle()
 
@@ -36,7 +36,7 @@ fun QuestSelectionScreen(
 
     Column(Modifier.fillMaxSize()) {
         QuestSelectionTopAppBar(
-            currentPresetName = selectedQuestPresetName
+            currentPresetName = selectedEditTypePresetName
                 ?: stringResource(R.string.quest_presets_default_name),
             onClickBack = onClickBack,
             onUnselectAll = { viewModel.unselectAllQuests() },

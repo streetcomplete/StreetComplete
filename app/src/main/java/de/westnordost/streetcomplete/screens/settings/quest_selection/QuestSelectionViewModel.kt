@@ -11,8 +11,8 @@ import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
-import de.westnordost.streetcomplete.data.visiblequests.QuestPreset
-import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsSource
+import de.westnordost.streetcomplete.data.presets.EditTypePreset
+import de.westnordost.streetcomplete.data.presets.EditTypePresetsSource
 import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderController
 import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderSource
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeController
@@ -36,7 +36,7 @@ abstract class QuestSelectionViewModel : ViewModel() {
     abstract val searchText: StateFlow<String>
     abstract val filteredQuests: StateFlow<List<QuestSelection>>
     abstract val currentCountry: String?
-    abstract val selectedQuestPresetName: StateFlow<String?>
+    abstract val selectedEditTypePresetName: StateFlow<String?>
     abstract val quests: StateFlow<List<QuestSelection>>
 
     abstract fun selectQuest(questType: QuestType, selected: Boolean)
@@ -50,7 +50,7 @@ abstract class QuestSelectionViewModel : ViewModel() {
 class QuestSelectionViewModelImpl(
     private val resourceProvider: ResourceProvider,
     private val questTypeRegistry: QuestTypeRegistry,
-    private val questPresetsSource: QuestPresetsSource,
+    private val editTypePresetsSource: EditTypePresetsSource,
     private val visibleQuestTypeController: VisibleQuestTypeController,
     private val questTypeOrderController: QuestTypeOrderController,
     countryBoundaries: Lazy<CountryBoundaries>,
@@ -92,11 +92,11 @@ class QuestSelectionViewModelImpl(
         override fun onQuestTypeOrdersChanged() { initQuests() }
     }
 
-    private val questPresetsListener = object : QuestPresetsSource.Listener {
-        override fun onSelectedQuestPresetChanged() { updateSelectedQuestPresetName() }
-        override fun onAddedQuestPreset(preset: QuestPreset) {}
-        override fun onRenamedQuestPreset(preset: QuestPreset) {}
-        override fun onDeletedQuestPreset(presetId: Long) {}
+    private val editTypePresetsListener = object : EditTypePresetsSource.Listener {
+        override fun onSelectionChanged() { updateSelectedEditTypePresetName() }
+        override fun onAdded(preset: EditTypePreset) {}
+        override fun onRenamed(preset: EditTypePreset) {}
+        override fun onDeleted(presetId: Long) {}
     }
 
     override val quests = MutableStateFlow<List<QuestSelection>>(emptyList())
@@ -108,23 +108,23 @@ class QuestSelectionViewModelImpl(
 
     private val currentCountryCodes = countryBoundaries.value.getIds(prefs.mapPosition)
 
-    override val selectedQuestPresetName = MutableStateFlow<String?>(null)
+    override val selectedEditTypePresetName = MutableStateFlow<String?>(null)
 
     override val currentCountry: String?
         get() = currentCountryCodes.firstOrNull()
 
     init {
         initQuests()
-        updateSelectedQuestPresetName()
+        updateSelectedEditTypePresetName()
         loadQuestTitles()
-        questPresetsSource.addListener(questPresetsListener)
+        editTypePresetsSource.addListener(editTypePresetsListener)
         visibleQuestTypeController.addListener(visibleQuestsListener)
         questTypeOrderController.addListener(questTypeOrderListener)
     }
 
-    private fun updateSelectedQuestPresetName() {
+    private fun updateSelectedEditTypePresetName() {
         launch(IO) {
-            selectedQuestPresetName.value = questPresetsSource.selectedQuestPresetName
+            selectedEditTypePresetName.value = editTypePresetsSource.selectedEditTypePresetName
         }
     }
 
@@ -139,7 +139,7 @@ class QuestSelectionViewModelImpl(
     }
 
     override fun onCleared() {
-        questPresetsSource.removeListener(questPresetsListener)
+        editTypePresetsSource.removeListener(editTypePresetsListener)
         visibleQuestTypeController.removeListener(visibleQuestsListener)
         questTypeOrderController.removeListener(questTypeOrderListener)
     }

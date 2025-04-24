@@ -22,7 +22,7 @@ import de.westnordost.streetcomplete.data.user.achievements.UserLinksTable
 import de.westnordost.streetcomplete.data.user.statistics.ActiveDaysTable
 import de.westnordost.streetcomplete.data.user.statistics.CountryStatisticsTables
 import de.westnordost.streetcomplete.data.user.statistics.EditTypeStatisticsTables
-import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsTable
+import de.westnordost.streetcomplete.data.presets.EditTypePresetsTable
 import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderTable
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeTable
 import de.westnordost.streetcomplete.util.logs.Log
@@ -73,7 +73,7 @@ object DatabaseInitializer {
         db.exec(VisibleQuestTypeTable.CREATE)
         db.exec(QuestTypeOrderTable.CREATE)
         db.exec(QuestTypeOrderTable.INDEX_CREATE)
-        db.exec(QuestPresetsTable.CREATE)
+        db.exec(EditTypePresetsTable.CREATE)
 
         // quests based on OSM elements
         db.exec(OsmQuestTable.CREATE)
@@ -109,7 +109,7 @@ object DatabaseInitializer {
             db.exec(QuestTypeOrderTable.CREATE)
             db.exec(QuestTypeOrderTable.INDEX_CREATE)
 
-            db.exec(QuestPresetsTable.CREATE)
+            db.exec(EditTypePresetsTable.CREATE)
 
             val oldName = "quest_visibility_old"
             db.exec("ALTER TABLE ${VisibleQuestTypeTable.NAME} RENAME TO $oldName;")

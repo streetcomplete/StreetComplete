@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.data.visiblequests
+package de.westnordost.streetcomplete.data.presets
 
 import de.westnordost.streetcomplete.data.ApplicationDbTestCase
 import kotlin.test.BeforeTest
@@ -7,11 +7,11 @@ import kotlin.test.assertEquals
 import kotlin.test.assertNull
 import kotlin.test.assertTrue
 
-class QuestPresetsDaoTest : ApplicationDbTestCase() {
-    private lateinit var dao: QuestPresetsDao
+class EditTypePresetsDaoTest : ApplicationDbTestCase() {
+    private lateinit var dao: EditTypePresetsDao
 
     @BeforeTest fun createDao() {
-        dao = QuestPresetsDao(database)
+        dao = EditTypePresetsDao(database)
     }
 
     @Test fun getEmpty() {
@@ -21,7 +21,7 @@ class QuestPresetsDaoTest : ApplicationDbTestCase() {
 
     @Test fun addGetDelete() {
         dao.add("test")
-        assertEquals(listOf(QuestPreset(1, "test")), dao.getAll())
+        assertEquals(listOf(EditTypePreset(1, "test")), dao.getAll())
         assertEquals("test", dao.getName(1))
         dao.delete(1)
         assertTrue(dao.getAll().isEmpty())
@@ -31,8 +31,8 @@ class QuestPresetsDaoTest : ApplicationDbTestCase() {
         dao.add("one")
         dao.add("two")
         assertEquals(listOf(
-            QuestPreset(1, "one"),
-            QuestPreset(2, "two")
+            EditTypePreset(1, "one"),
+            EditTypePreset(2, "two")
         ), dao.getAll())
     }
 

@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.screens.settings.quest_presets
+package de.westnordost.streetcomplete.screens.settings.presets
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
@@ -17,7 +17,7 @@ import de.westnordost.streetcomplete.ui.common.DropdownMenuItem
 
 /** The dropdown menu that shows when tapping on the more button */
 @Composable
-fun QuestPresetDropdownMenu(
+fun EditTypePresetDropdownMenu(
     expanded: Boolean,
     onDismissRequest: () -> Unit,
     onRename: () -> Unit,

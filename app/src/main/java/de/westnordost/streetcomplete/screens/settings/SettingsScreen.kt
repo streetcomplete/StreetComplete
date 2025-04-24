@@ -55,7 +55,7 @@ fun SettingsScreen(
 ) {
     val hiddenQuestCount by viewModel.hiddenQuestCount.collectAsState()
     val questTypeCount by viewModel.questTypeCount.collectAsState()
-    val selectedPresetName by viewModel.selectedQuestPresetName.collectAsState()
+    val selectedPresetName by viewModel.selectedEditTypePresetName.collectAsState()
     val selectableLanguageCodes by viewModel.selectableLanguageCodes.collectAsState()
 
     val resurveyIntervals by viewModel.resurveyIntervals.collectAsState()
