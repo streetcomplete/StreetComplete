@@ -371,6 +371,7 @@ quest/
     motorcycle_parking.svg
     motorcycle_parking_capacity.svg
     motorcycle_parking_cover.svg
+    mtb.svg
     museum.svg
     no_bicycles.svg
     no_cars.svg                      based on car.svg - modified from Twemoji: U+1F698 by Tobias Zwick, negation circle added by Flo Edelmann
@@ -460,6 +461,20 @@ lit/
     automatic.svg
     yes.svg
     no.svg
+
+mtb scale/
+    0.jpg                 CC-BY-SA 3.0      reimagined with AI by Ruben Kelevra,
+                                            based on https://wiki.openstreetmap.org/wiki/File:S0.jpg
+    1.jpg                 CC-BY-SA 3.0      reimagined with AI by Ruben Kelevra,
+                                            based on https://wiki.openstreetmap.org/wiki/File:S1.jpg
+    2.jpg                 CC-BY-SA 3.0      reimagined with AI by Ruben Kelevra,
+                                            based on https://wiki.openstreetmap.org/wiki/File:S2.jpg
+    3.jpg                 CC-BY-SA 3.0      reimagined with AI by Ruben Kelevra,
+                                            based on https://wiki.openstreetmap.org/wiki/File:S3.jpg
+    4.jpg                 CC-BY-SA 3.0      reimagined with AI by Ruben Kelevra,
+                                            based on https://wiki.openstreetmap.org/wiki/File:S4.jpg
+    5.jpg                 CC-BY-SA 3.0      reimagined with AI by Ruben Kelevra,
+                                            based on https://wiki.openstreetmap.org/wiki/File:S5.jpg
 
 pin/
     pin_dot.xcf
