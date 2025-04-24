@@ -5,7 +5,7 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.osm.Tags
 
-class AddServiceBuildingOperator : OsmFilterQuestType<String>() {
+class AddServiceBuildingOperator : OsmFilterQuestType<ServiceBuildingOperatorAnswer>() {
 
     override val elementFilter = """
         ways, relations with
@@ -13,6 +13,7 @@ class AddServiceBuildingOperator : OsmFilterQuestType<String>() {
           and !operator
           and !name
           and !brand
+          and disused != yes and abandoned != yes and !construction
     """
     override val changesetComment = "Add service building operator"
     override val wikiLink = "Tag:building=service"
@@ -23,7 +24,19 @@ class AddServiceBuildingOperator : OsmFilterQuestType<String>() {
 
     override fun createForm() = AddServiceBuildingOperatorForm()
 
-    override fun applyAnswerTo(answer: String, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
-        tags["operator"] = answer
+    override fun applyAnswerTo(answer: ServiceBuildingOperatorAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
+        when (answer) {
+            is ServiceBuildingOperator -> {
+                tags["operator"] = answer.name
+            }
+            is DisusedServiceBuilding -> {
+                tags["disused"] = "yes"
+                tags.keys.toList().filter { it.matches(Regex("^(power|service|man_made|substation|pipeline|utility|railway)$")) }
+                    .forEach {
+                        tags["disused:" + it] = tags[it] ?: "yes"
+                        tags.remove(it)
+                    }
+            }
+        }
     }
 }

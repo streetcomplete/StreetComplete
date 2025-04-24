@@ -38,6 +38,8 @@ enum class ServiceBuildingType(val tags: List<Pair<String, String>>) {
     // TELECOM
     INTERNET_EXCHANGE(listOf("utility" to "communication", "telecom" to "internet_exchange")),
     TELECOM_EXCHANGE(listOf("utility" to "communication", "telecom" to "exchange")),
+    // DISUSED
+    DISUSED(listOf("disused" to "yes")),
 }
 
 enum class ServiceBuildingTypeCategory(val type: ServiceBuildingType?, val subTypes: List<ServiceBuildingType>) {
@@ -87,6 +89,7 @@ private val ServiceBuildingType.titleResId: Int get() = when (this) {
     VENTILATION_SHAFT -> R.string.quest_service_building_ventilation
     HEATING -> R.string.quest_service_building_heating
     MONITORING_STATION -> R.string.quest_service_building_monitoring_station
+    DISUSED -> R.string.quest_disused
 }
 
 private val ServiceBuildingType.descriptionResId: Int? get() = when (this) {
@@ -141,6 +144,7 @@ private val ServiceBuildingType.iconResId: Int get() = when (this) {
     TELECOM_EXCHANGE ->    R.drawable.ic_quest_service_building_telecom_exchange
     INTERNET_EXCHANGE ->    R.drawable.ic_quest_service_building_internet_exchange
     MONITORING_STATION ->    R.drawable.ic_quest_service_building_monitoring
+    DISUSED -> R.drawable.ic_quest_service_building
 }
 
 private val ServiceBuildingTypeCategory.titleResId: Int get() = when (this) {

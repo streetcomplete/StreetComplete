@@ -10,13 +10,14 @@ class AddServiceBuildingType : OsmFilterQuestType<ServiceBuildingType>() {
     override val elementFilter = """
         ways, relations with
           building ~ service|transformer_tower
-          and !power
-          and !service
-          and !man_made
-          and !substation
-          and !pipeline
-          and !utility
-          and !railway
+          and !power and !disused:power and !abandoned:power and !was:power and !construction:power
+          and !service and !disused:service and !abandoned:service and !was:service and !construction:service
+          and !man_made and !disused:man_made and !abandoned:man_made and !was:man_made and !construction:man_made
+          and !substation and !disused:substation and !abandoned:substation and !was:substation and !construction:substation
+          and !pipeline and !disused:pipeline and !abandoned:pipeline and !was:pipeline and !construction:pipeline
+          and !utility and !disused:utility and !abandoned:utility and !was:utility and !construction:utility
+          and !railway and !disused:railway and !abandoned:railway and !was:railway and !construction:railway
+          and disused != yes and abandoned != yes and !construction
     """
     override val changesetComment = "Add service building type"
     override val wikiLink = "Tag:building=service"

@@ -5,8 +5,13 @@ import android.view.View
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.quests.AGroupedImageListQuestForm
+import de.westnordost.streetcomplete.quests.AnswerItem
 
 class AddServiceBuildingTypeForm : AGroupedImageListQuestForm<ServiceBuildingType, ServiceBuildingType>() {
+
+    override val otherAnswers = listOf(
+        AnswerItem(R.string.quest_disused) { applyAnswer(ServiceBuildingType.DISUSED) }
+    )
 
     override val topItems = listOf(
         ServiceBuildingType.MINOR_SUBSTATION,
