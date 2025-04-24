@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.data.user.statistics
 import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.preferences.Preferences
+import de.westnordost.streetcomplete.data.user.UserLoginSource
 import de.westnordost.streetcomplete.util.Listeners
 import de.westnordost.streetcomplete.util.ktx.getIds
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
@@ -20,8 +21,14 @@ class StatisticsController(
     private val currentWeekCountryStatisticsDao: CountryStatisticsDao,
     private val activeDatesDao: ActiveDatesDao,
     private val countryBoundaries: Lazy<CountryBoundaries>,
-    private val prefs: Preferences
+    private val prefs: Preferences,
+    private val userLoginSource: UserLoginSource,
 ) : StatisticsSource {
+
+    private val userLoginListener = object : UserLoginSource.Listener {
+        override fun onLoggedIn() { prefs.statisticsSynchronizedOnce = false }
+        override fun onLoggedOut() { clear() }
+    }
 
     private val listeners = Listeners<StatisticsSource.Listener>()
 
@@ -48,6 +55,10 @@ class StatisticsController(
     private var lastUpdate: Long
         get() = prefs.userLastTimestampActive
         set(value) { prefs.userLastTimestampActive = value }
+
+    init {
+        userLoginSource.addListener(userLoginListener)
+    }
 
     override fun getEditCount(): Int =
         editTypeStatisticsDao.getTotalAmount()
@@ -128,10 +139,12 @@ class StatisticsController(
         daysActive = statistics.daysActive
         lastUpdate = statistics.lastUpdate
 
-        listeners.forEach { it.onUpdatedAll() }
+        listeners.forEach { it.onUpdatedAll(!prefs.statisticsSynchronizedOnce) }
+
+        prefs.statisticsSynchronizedOnce = true
     }
 
-    fun clear() {
+    private fun clear() {
         editTypeStatisticsDao.clear()
         countryStatisticsDao.clear()
         currentWeekEditTypeStatisticsDao.clear()

@@ -10,7 +10,10 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.material.ButtonColors
+import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Divider
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
@@ -32,9 +35,13 @@ import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsController
+import de.westnordost.streetcomplete.screens.main.controls.NotificationBox
 import de.westnordost.streetcomplete.screens.main.teammode.TeamModeColorCircle
 import de.westnordost.streetcomplete.util.dialogs.showProfileSelectionDialog
 import org.koin.compose.koinInject
+import de.westnordost.streetcomplete.ui.common.DownloadIcon
+import de.westnordost.streetcomplete.ui.common.TeamModeIcon
+import de.westnordost.streetcomplete.ui.common.UploadIcon
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
@@ -44,10 +51,13 @@ fun MainMenuDialog(
     onClickSettings: () -> Unit,
     onClickAbout: () -> Unit,
     onClickDownload: () -> Unit,
+    onClickUpload: () -> Unit,
     onClickEnterTeamMode: () -> Unit,
     onClickExitTeamMode: () -> Unit,
     isLoggedIn: Boolean,
     indexInTeam: Int?,
+    unsyncedEditsCount: Int?,
+    isUploadingOrDownloading: Boolean,
     modifier: Modifier = Modifier,
     shape: Shape = MaterialTheme.shapes.medium,
     backgroundColor: Color = MaterialTheme.colors.surface,
@@ -88,15 +98,30 @@ fun MainMenuDialog(
                         )
                     }
                     Divider()
+                    if (unsyncedEditsCount != null) {
+                        CompactMenuButton(
+                            onClick = { onDismissRequest(); onClickUpload() },
+                            icon = {
+                                UploadIcon()
+                                if (unsyncedEditsCount > 0) {
+                                    NotificationBox {
+                                        Text(unsyncedEditsCount.toString(), textAlign = TextAlign.Center)
+                                    }
+                                }
+                            },
+                            text = stringResource(R.string.action_upload),
+                            enabled = !isUploadingOrDownloading,
+                        )
+                    }
                     CompactMenuButton(
                         onClick = { onDismissRequest(); onClickDownload() },
-                        icon = { Icon(painterResource(R.drawable.ic_file_download_24dp), null) },
+                        icon = { DownloadIcon() },
                         text = stringResource(R.string.action_download),
                     )
                     if (indexInTeam == null) {
                         CompactMenuButton(
                             onClick = { onDismissRequest(); onClickEnterTeamMode() },
-                            icon = { Icon(painterResource(R.drawable.ic_team_mode_24dp), null) },
+                            icon = { TeamModeIcon() },
                             text = stringResource(R.string.team_mode)
                         )
                     } else {
@@ -139,15 +164,29 @@ fun MainMenuDialog(
                             icon = { Icon(painterResource(R.drawable.ic_info_outline_48dp), null) },
                             text = LocalContext.current.getString(R.string.action_about2) + " SCEE",
                         )
+                        if (unsyncedEditsCount != null && !isUploadingOrDownloading) {
+                            BigMenuButton(
+                                onClick = { onDismissRequest(); onClickUpload() },
+                                icon = {
+                                    UploadIcon()
+                                    if (unsyncedEditsCount > 0) {
+                                        NotificationBox {
+                                            Text(unsyncedEditsCount.toString(), textAlign = TextAlign.Center)
+                                        }
+                                    }
+                                },
+                                text = stringResource(R.string.action_upload),
+                            )
+                        }
                         BigMenuButton(
                             onClick = { onDismissRequest(); onClickDownload() },
-                            icon = { Icon(painterResource(R.drawable.ic_file_download_24dp), null) },
+                            icon = { DownloadIcon() },
                             text = stringResource(R.string.action_download),
                         )
                         if (indexInTeam == null) {
                             BigMenuButton(
                                 onClick = { onDismissRequest(); onClickEnterTeamMode() },
-                                icon = { Icon(painterResource(R.drawable.ic_team_mode_24dp), null) },
+                                icon = { TeamModeIcon() },
                                 text = stringResource(R.string.team_mode)
                             )
                         } else {
@@ -198,27 +237,38 @@ private fun BigMenuButton(
     }
 }
 
+@OptIn(ExperimentalMaterialApi::class)
 @Composable
 private fun CompactMenuButton(
     onClick: () -> Unit,
     icon: @Composable () -> Unit,
     text: String,
     modifier: Modifier = Modifier,
+    enabled: Boolean = true,
+    colors: ButtonColors = ButtonDefaults.buttonColors(
+        backgroundColor = MaterialTheme.colors.surface,
+    ),
 ) {
-    Row(
-        modifier = modifier
-            .fillMaxWidth()
-            .clickable { onClick() }
-            .padding(16.dp),
-        verticalAlignment = Alignment.CenterVertically
+    Surface(
+        onClick = onClick,
+        enabled = enabled,
+        color = colors.backgroundColor(enabled).value,
+        contentColor = colors.contentColor(enabled).value,
     ) {
-        icon()
-        Text(
-            text = text,
-            modifier = Modifier.weight(1f),
-            textAlign = TextAlign.Center,
-            style = MaterialTheme.typography.body1,
-        )
+        Row(
+            modifier = modifier
+                .fillMaxWidth()
+                .padding(16.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            icon()
+            Text(
+                text = text,
+                modifier = Modifier.weight(1f),
+                textAlign = TextAlign.Center,
+                style = MaterialTheme.typography.body1,
+            )
+        }
     }
 }
 
@@ -231,9 +281,12 @@ private fun PreviewMainMenuDialog() {
         onClickSettings = {},
         onClickAbout = {},
         onClickDownload = {},
+        onClickUpload = {},
         onClickEnterTeamMode = {},
         onClickExitTeamMode = {},
         isLoggedIn = true,
         indexInTeam = 0,
+        unsyncedEditsCount = 122,
+        isUploadingOrDownloading = true,
     )
 }

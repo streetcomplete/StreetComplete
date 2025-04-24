@@ -45,7 +45,7 @@ val OAUTH2_REQUIRED_SCOPES = listOf(
 
 val userModule = module {
     single<UserDataSource> { get<UserDataController>() }
-    single { UserDataController(get()) }
+    single { UserDataController(get(), get()) }
 
     single<UserLoginSource> { get<UserLoginController>() }
     single { UserLoginController(get()) }

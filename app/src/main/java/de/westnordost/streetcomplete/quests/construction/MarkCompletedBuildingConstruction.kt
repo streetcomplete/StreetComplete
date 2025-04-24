@@ -11,9 +11,10 @@ import de.westnordost.streetcomplete.osm.updateCheckDate
 class MarkCompletedBuildingConstruction : OsmFilterQuestType<CompletedConstructionAnswer>() {
 
     override val elementFilter = """
-        ways with building = construction
-         and (!opening_date or opening_date < today)
-         and older today -6 months
+        ways with
+          building = construction
+          and (!opening_date or opening_date < today)
+          and older today -6 months
     """
     override val changesetComment = "Determine whether building construction is now completed"
     override val wikiLink = "Tag:building=construction"
@@ -31,8 +32,7 @@ class MarkCompletedBuildingConstruction : OsmFilterQuestType<CompletedConstructi
             }
             is StateAnswer -> {
                 if (answer.value) {
-                    val value = tags["construction"] ?: "yes"
-                    tags["building"] = value
+                    tags["building"] = tags["construction"] ?: "yes"
                     removeTagsDescribingConstruction(tags)
                 } else {
                     tags.updateCheckDate()

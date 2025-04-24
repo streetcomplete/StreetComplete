@@ -21,4 +21,12 @@ class UserAchievementsDao(private val db: Database) {
             LEVEL to level
         ))
     }
+
+    fun putAll(achievements: Collection<Pair<String, Int>>) {
+        db.replaceMany(
+            table = NAME,
+            columnNames = arrayOf(ACHIEVEMENT, LEVEL),
+            valuesList = achievements.map { arrayOf(it.first, it.second) }
+        )
+    }
 }

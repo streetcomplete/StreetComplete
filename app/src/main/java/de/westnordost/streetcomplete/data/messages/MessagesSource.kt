@@ -13,6 +13,7 @@ import de.westnordost.streetcomplete.data.user.UserDataController
 import de.westnordost.streetcomplete.data.user.UserDataSource
 import de.westnordost.streetcomplete.data.user.achievements.Achievement
 import de.westnordost.streetcomplete.data.user.achievements.AchievementsSource
+import de.westnordost.streetcomplete.data.user.achievements.Link
 import de.westnordost.streetcomplete.util.Listeners
 
 /** This class is to access user messages, which are basically dialogs that pop up when
@@ -36,7 +37,7 @@ class MessagesSource(
 
     /** Achievement levels unlocked since application start. I.e. when restarting the app, the
      *  messages about new achievements unlocked are lost, this is deliberate */
-    private val newAchievements = ArrayList<Pair<Achievement, Int>>()
+    private val newAchievements = ArrayList<NewAchievementMessage>()
 
     init {
         userDataController.addListener(object : UserDataSource.Listener {
@@ -45,8 +46,8 @@ class MessagesSource(
             }
         })
         achievementsSource.addListener(object : AchievementsSource.Listener {
-            override fun onAchievementUnlocked(achievement: Achievement, level: Int) {
-                newAchievements.add(achievement to level)
+            override fun onAchievementUnlocked(achievement: Achievement, level: Int, unlockedLinks: List<Link>) {
+                newAchievements.add(NewAchievementMessage(achievement, level, unlockedLinks))
                 onNumberOfMessagesUpdated()
             }
 
@@ -114,7 +115,7 @@ class MessagesSource(
         val newAchievement = newAchievements.removeFirstOrNull()
         if (newAchievement != null) {
             onNumberOfMessagesUpdated()
-            return NewAchievementMessage(newAchievement.first, newAchievement.second)
+            return newAchievement
         }
 
         val unreadOsmMessages = userDataController.unreadMessagesCount

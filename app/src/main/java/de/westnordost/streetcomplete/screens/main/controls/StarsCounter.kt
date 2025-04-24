@@ -64,10 +64,10 @@ fun StarsCounter(
                 contentDescription = null,
                 tint = contentColorFor(surfaceColor)
             )
-            if (hasUnsyncedChanges)
-                MapButtonNotification {
-                    Text("+", textAlign = TextAlign.Center)
-                }
+//            if (hasUnsyncedChanges)
+//                NotificationBox {
+//                    Text("+", textAlign = TextAlign.Center)
+//                }
         }
 /*
         if (isCurrentWeek) {

@@ -143,6 +143,13 @@ class MainViewModelImpl(
         get() = prefs.hasShownTutorial
         set(value) { prefs.hasShownTutorial = value }
 
+    /* HUD */
+    override var showZoomButtons: StateFlow<Boolean> = callbackFlow {
+        send(prefs.showZoomButtons)
+        val listener = prefs.onShowZoomButtonsChanged { trySend(it) }
+        awaitClose { listener.deactivate() }
+    }.stateIn(viewModelScope, SharingStarted.Eagerly, true)
+
     /* messages */
 
     override val messagesCount: StateFlow<Int> = callbackFlow {
@@ -328,7 +335,7 @@ class MainViewModelImpl(
         val listener = object : StatisticsSource.Listener {
             override fun onAddedOne(type: String) { trySend(++count) }
             override fun onSubtractedOne(type: String) { trySend(--count) }
-            override fun onUpdatedAll() { update() }
+            override fun onUpdatedAll(isFirstUpdate: Boolean) { update() }
             override fun onCleared() { update() }
             override fun onUpdatedDaysActive() {}
         }
@@ -348,7 +355,7 @@ class MainViewModelImpl(
         val listener = object : StatisticsSource.Listener {
             override fun onAddedOne(type: String) { trySend(++count) }
             override fun onSubtractedOne(type: String) { trySend(--count) }
-            override fun onUpdatedAll() { update() }
+            override fun onUpdatedAll(isFirstUpdate: Boolean) { update() }
             override fun onCleared() { update() }
             override fun onUpdatedDaysActive() {}
         }
@@ -385,12 +392,15 @@ class MainViewModelImpl(
 
     override val locationState = MutableStateFlow(LocationState.ENABLED)
     override val mapCamera = MutableStateFlow<CameraPosition?>(null)
+    override val metersPerDp = MutableStateFlow(0.0)
     override val displayedPosition = MutableStateFlow<Offset?>(null)
 
     override val isFollowingPosition = MutableStateFlow(false)
     override val isNavigationMode = MutableStateFlow(false)
 
     override val isRecordingTracks = MutableStateFlow(false)
+
+    override val userHasMovedCamera = MutableStateFlow(false)
 
     override val showQuickSettings = callbackFlow {
         send(prefs.showQuickSettings)
