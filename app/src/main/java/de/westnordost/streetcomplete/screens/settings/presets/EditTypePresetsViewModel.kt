@@ -7,7 +7,7 @@ import de.westnordost.streetcomplete.data.presets.EditTypePreset
 import de.westnordost.streetcomplete.data.presets.EditTypePresetsController
 import de.westnordost.streetcomplete.data.presets.EditTypePresetsSource
 import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderController
-import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeController
+import de.westnordost.streetcomplete.data.visiblequests.VisibleEditTypeController
 import de.westnordost.streetcomplete.util.ktx.launch
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -38,7 +38,7 @@ data class EditTypePresetSelection(
 class EditTypePresetsViewModelImpl(
     private val editTypePresetsController: EditTypePresetsController,
     private val questTypeOrderController: QuestTypeOrderController,
-    private val visibleQuestTypeController: VisibleQuestTypeController,
+    private val visibleEditTypeController: VisibleEditTypeController,
     private val urlConfigController: UrlConfigController,
 ) : EditTypePresetsViewModel() {
 
@@ -111,7 +111,7 @@ class EditTypePresetsViewModelImpl(
         launch(IO) {
             val newPresetId = editTypePresetsController.add(name)
             questTypeOrderController.copyOrders(presetId, newPresetId)
-            visibleQuestTypeController.copyVisibilities(presetId, newPresetId)
+            visibleEditTypeController.copyVisibilities(presetId, newPresetId)
             editTypePresetsController.selectedId = newPresetId
         }
     }

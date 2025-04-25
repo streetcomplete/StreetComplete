@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.data.quest
 
+import de.westnordost.streetcomplete.data.osm.edits.EditType
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestSource
@@ -8,7 +9,7 @@ import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestSource
 import de.westnordost.streetcomplete.data.overlays.SelectedOverlaySource
 import de.westnordost.streetcomplete.data.visiblequests.QuestsHiddenSource
 import de.westnordost.streetcomplete.data.visiblequests.TeamModeQuestFilter
-import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeSource
+import de.westnordost.streetcomplete.data.visiblequests.VisibleEditTypeSource
 import de.westnordost.streetcomplete.util.Listeners
 import de.westnordost.streetcomplete.util.SpatialCache
 
@@ -20,7 +21,7 @@ import de.westnordost.streetcomplete.util.SpatialCache
  *
  *  Quests can be not visible for a user for the following reasons:
  *  - when the user has hidden a quest, see [QuestsHiddenSource]
- *  - when the type of the quest is disabled in the user settings, see [VisibleQuestTypeSource]
+ *  - when the type of the quest is disabled in the user settings, see [VisibleEditTypeSource]
  *  - when the team mode is activated, only every Xth quest is visible, see [TeamModeQuestFilter]
  *  - when the selected overlay disables the quest type because the overlay lets the user edit
  *   the same info as the quest, see [SelectedOverlaySource] / [Overlay.hidesQuestTypes][de.westnordost.streetcomplete.overlays.Overlay.hidesQuestTypes]
@@ -34,7 +35,7 @@ class VisibleQuestsSource(
     private val osmQuestSource: OsmQuestSource,
     private val osmNoteQuestSource: OsmNoteQuestSource,
     private val questsHiddenSource: QuestsHiddenSource,
-    private val visibleQuestTypeSource: VisibleQuestTypeSource,
+    private val visibleEditTypeSource: VisibleEditTypeSource,
     private val teamModeQuestFilter: TeamModeQuestFilter,
     private val selectedOverlaySource: SelectedOverlaySource
 ) {
@@ -86,13 +87,13 @@ class VisibleQuestsSource(
         }
     }
 
-    private val visibleQuestTypeSourceListener = object : VisibleQuestTypeSource.Listener {
-        override fun onQuestTypeVisibilityChanged(questType: QuestType, visible: Boolean) {
+    private val visibleEditTypeSourceListener = object : VisibleEditTypeSource.Listener {
+        override fun onVisibilityChanged(editType: EditType, visible: Boolean) {
             // many different quests could become visible/invisible when this is changed
-            invalidate()
+            if (editType is QuestType) invalidate()
         }
 
-        override fun onQuestTypeVisibilitiesChanged() {
+        override fun onVisibilitiesChanged() {
             // many different quests could become visible/invisible when this is changed
             invalidate()
         }
@@ -121,7 +122,7 @@ class VisibleQuestsSource(
         osmQuestSource.addListener(osmQuestSourceListener)
         osmNoteQuestSource.addListener(osmNoteQuestSourceListener)
         questsHiddenSource.addListener(questsHiddenSourceListener)
-        visibleQuestTypeSource.addListener(visibleQuestTypeSourceListener)
+        visibleEditTypeSource.addListener(visibleEditTypeSourceListener)
         teamModeQuestFilter.addListener(teamModeQuestFilterListener)
         selectedOverlaySource.addListener(selectedOverlayListener)
     }
@@ -156,7 +157,7 @@ class VisibleQuestsSource(
         isVisible(quest.key) && isVisibleInTeamMode(quest) && isVisible(quest.type)
 
     private fun isVisible(questType: QuestType): Boolean =
-        visibleQuestTypeSource.isVisible(questType) &&
+        visibleEditTypeSource.isVisible(questType) &&
         selectedOverlaySource.selectedOverlay?.let { questType.name !in it.hidesQuestTypes } ?: true
 
     private fun isVisible(questKey: QuestKey): Boolean =

@@ -4,7 +4,7 @@ import org.koin.dsl.module
 
 val visibleQuestsModule = module {
     factory { QuestTypeOrderDao(get()) }
-    factory { VisibleQuestTypeDao(get()) }
+    factory { VisibleEditTypeDao(get()) }
 
     single<QuestTypeOrderSource> { get<QuestTypeOrderController>() }
     single { QuestTypeOrderController(get(), get(), get()) }
@@ -14,6 +14,6 @@ val visibleQuestsModule = module {
     single<QuestsHiddenSource> { get<QuestsHiddenController>() }
     single { QuestsHiddenController(get(), get()) }
 
-    single<VisibleQuestTypeSource> { get<VisibleQuestTypeController>() }
-    single { VisibleQuestTypeController(get(), get(), get()) }
+    single<VisibleEditTypeSource> { get<VisibleEditTypeController>() }
+    single { VisibleEditTypeController(get(), get(), get()) }
 }

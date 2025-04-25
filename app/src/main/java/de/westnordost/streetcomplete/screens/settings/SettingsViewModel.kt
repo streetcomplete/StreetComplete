@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import com.russhwolf.settings.SettingsListener
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.Cleaner
+import de.westnordost.streetcomplete.data.osm.edits.EditType
 import de.westnordost.streetcomplete.data.preferences.Autosync
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.data.preferences.ResurveyIntervals
@@ -17,7 +18,7 @@ import de.westnordost.streetcomplete.data.presets.EditTypePreset
 import de.westnordost.streetcomplete.data.presets.EditTypePresetsSource
 import de.westnordost.streetcomplete.data.visiblequests.QuestsHiddenController
 import de.westnordost.streetcomplete.data.visiblequests.QuestsHiddenSource
-import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeSource
+import de.westnordost.streetcomplete.data.visiblequests.VisibleEditTypeSource
 import de.westnordost.streetcomplete.util.ktx.getYamlObject
 import de.westnordost.streetcomplete.util.ktx.launch
 import kotlinx.coroutines.Dispatchers.IO
@@ -61,13 +62,15 @@ class SettingsViewModelImpl(
     private val cleaner: Cleaner,
     private val hiddenQuestsController: QuestsHiddenController,
     private val questTypeRegistry: QuestTypeRegistry,
-    private val visibleQuestTypeSource: VisibleQuestTypeSource,
+    private val visibleEditTypeSource: VisibleEditTypeSource,
     private val editTypePresetsSource: EditTypePresetsSource,
 ) : SettingsViewModel() {
 
-    private val visibleQuestTypeListener = object : VisibleQuestTypeSource.Listener {
-        override fun onQuestTypeVisibilityChanged(questType: QuestType, visible: Boolean) { updateQuestTypeCount() }
-        override fun onQuestTypeVisibilitiesChanged() { updateQuestTypeCount() }
+    private val visibleEditTypeListener = object : VisibleEditTypeSource.Listener {
+        override fun onVisibilityChanged(editType: EditType, visible: Boolean) {
+            if (editType is QuestType) updateQuestTypeCount()
+        }
+        override fun onVisibilitiesChanged() { updateQuestTypeCount() }
     }
 
     private val editTypePresetsListener = object : EditTypePresetsSource.Listener {
@@ -99,7 +102,7 @@ class SettingsViewModelImpl(
     private val listeners = mutableListOf<SettingsListener>()
 
     init {
-        visibleQuestTypeSource.addListener(visibleQuestTypeListener)
+        visibleEditTypeSource.addListener(visibleEditTypeListener)
         editTypePresetsSource.addListener(editTypePresetsListener)
         hiddenQuestsController.addListener(hiddenQuestsListener)
 
@@ -118,7 +121,7 @@ class SettingsViewModelImpl(
     }
 
     override fun onCleared() {
-        visibleQuestTypeSource.removeListener(visibleQuestTypeListener)
+        visibleEditTypeSource.removeListener(visibleEditTypeListener)
         editTypePresetsSource.removeListener(editTypePresetsListener)
         hiddenQuestsController.removeListener(hiddenQuestsListener)
 
@@ -166,7 +169,7 @@ class SettingsViewModelImpl(
         launch(IO) {
             questTypeCount.value = QuestTypeCount(
                 total = questTypeRegistry.size,
-                enabled = questTypeRegistry.count { visibleQuestTypeSource.isVisible(it) }
+                enabled = questTypeRegistry.count { visibleEditTypeSource.isVisible(it) }
             )
         }
     }

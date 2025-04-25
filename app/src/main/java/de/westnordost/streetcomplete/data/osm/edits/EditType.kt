@@ -21,4 +21,12 @@ interface EditType {
 
     /** towards which achievements solving an edit of this type should count */
     val achievements: List<EditTypeAchievement>
+
+    /** the string resource id that explains why this edit type is disabled by default or zero if it
+     *  is not disabled by default.
+     *
+     *  E.g. quest types that do not fully fulfill the [quest guidelines](https://github.com/streetcomplete/StreetComplete/blob/master/QUEST_GUIDELINES.md),
+     *  (e.g. often the requirement that the information is publicly available from the outside),
+     *  are disabled by default. */
+    val defaultDisabledMessage: Int get() = 0
 }
