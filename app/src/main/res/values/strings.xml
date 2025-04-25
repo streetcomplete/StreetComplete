@@ -601,6 +601,8 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="pref_subtitle_quests">%1$d of %2$d enabled</string>
     <string name="pref_subtitle_quests_preset_name">for preset: %s</string>
 
+    <string name="pref_title_overlays">Overlay selection</string>
+
     <string name="delete_confirmation">Delete</string>
     <string name="delete_cache_dialog_message">Delete all downloaded map data, including quests?\nData is refreshed after %1$s days and unused data is deleted after %2$s days automatically.</string>
 

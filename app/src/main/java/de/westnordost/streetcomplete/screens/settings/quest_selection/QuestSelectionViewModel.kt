@@ -39,10 +39,10 @@ abstract class QuestSelectionViewModel : ViewModel() {
     abstract val currentCountry: String?
     abstract val selectedEditTypePresetName: StateFlow<String?>
 
-    abstract fun selectQuest(questType: QuestType, selected: Boolean)
-    abstract fun orderQuest(questType: QuestType, toAfter: QuestType)
-    abstract fun unselectAllQuests()
-    abstract fun resetQuestSelectionsAndOrder()
+    abstract fun select(questType: QuestType, selected: Boolean)
+    abstract fun order(questType: QuestType, toAfter: QuestType)
+    abstract fun unselectAll()
+    abstract fun resetAll()
     abstract fun updateSearchText(text: String)
 }
 
@@ -146,25 +146,25 @@ class QuestSelectionViewModelImpl(
         questTypeOrderController.removeListener(questTypeOrderListener)
     }
 
-    override fun selectQuest(questType: QuestType, selected: Boolean) {
+    override fun select(questType: QuestType, selected: Boolean) {
         launch(IO) {
             visibleEditTypeController.setVisibility(questType, selected)
         }
     }
 
-    override fun orderQuest(questType: QuestType, toAfter: QuestType) {
+    override fun order(questType: QuestType, toAfter: QuestType) {
         launch(IO) {
             questTypeOrderController.addOrderItem(questType, toAfter)
         }
     }
 
-    override fun unselectAllQuests() {
+    override fun unselectAll() {
         launch(IO) {
             visibleEditTypeController.setVisibilities(questTypeRegistry.associateWith { false })
         }
     }
 
-    override fun resetQuestSelectionsAndOrder() {
+    override fun resetAll() {
         launch(IO) {
             visibleEditTypeController.clearVisibilities()
             questTypeOrderController.clear()

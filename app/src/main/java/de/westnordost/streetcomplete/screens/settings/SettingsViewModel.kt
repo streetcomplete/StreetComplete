@@ -7,6 +7,7 @@ import com.russhwolf.settings.SettingsListener
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.Cleaner
 import de.westnordost.streetcomplete.data.osm.edits.EditType
+import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
 import de.westnordost.streetcomplete.data.preferences.Autosync
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.data.preferences.ResurveyIntervals
@@ -19,6 +20,7 @@ import de.westnordost.streetcomplete.data.presets.EditTypePresetsSource
 import de.westnordost.streetcomplete.data.visiblequests.QuestsHiddenController
 import de.westnordost.streetcomplete.data.visiblequests.QuestsHiddenSource
 import de.westnordost.streetcomplete.data.visiblequests.VisibleEditTypeSource
+import de.westnordost.streetcomplete.overlays.Overlay
 import de.westnordost.streetcomplete.util.ktx.getYamlObject
 import de.westnordost.streetcomplete.util.ktx.launch
 import kotlinx.coroutines.Dispatchers.IO
@@ -31,6 +33,7 @@ abstract class SettingsViewModel : ViewModel() {
     abstract val selectedEditTypePresetName: StateFlow<String?>
     abstract val hiddenQuestCount: StateFlow<Int>
     abstract val questTypeCount: StateFlow<QuestTypeCount?>
+    abstract val overlayCount: StateFlow<QuestTypeCount?>
 
     abstract val resurveyIntervals: StateFlow<ResurveyIntervals>
     abstract val showAllNotes: StateFlow<Boolean>
@@ -62,6 +65,7 @@ class SettingsViewModelImpl(
     private val cleaner: Cleaner,
     private val hiddenQuestsController: QuestsHiddenController,
     private val questTypeRegistry: QuestTypeRegistry,
+    private val overlayRegistry: OverlayRegistry,
     private val visibleEditTypeSource: VisibleEditTypeSource,
     private val editTypePresetsSource: EditTypePresetsSource,
 ) : SettingsViewModel() {
@@ -69,8 +73,12 @@ class SettingsViewModelImpl(
     private val visibleEditTypeListener = object : VisibleEditTypeSource.Listener {
         override fun onVisibilityChanged(editType: EditType, visible: Boolean) {
             if (editType is QuestType) updateQuestTypeCount()
+            if (editType is Overlay) updateOverlayCount()
         }
-        override fun onVisibilitiesChanged() { updateQuestTypeCount() }
+        override fun onVisibilitiesChanged() {
+            updateQuestTypeCount()
+            updateOverlayCount()
+        }
     }
 
     private val editTypePresetsListener = object : EditTypePresetsSource.Listener {
@@ -88,6 +96,7 @@ class SettingsViewModelImpl(
 
     override val hiddenQuestCount = MutableStateFlow(0)
     override val questTypeCount = MutableStateFlow<QuestTypeCount?>(null)
+    override val overlayCount = MutableStateFlow<QuestTypeCount?>(null)
     override val selectedEditTypePresetName = MutableStateFlow<String?>(null)
     override val selectableLanguageCodes = MutableStateFlow<List<String>?>(null)
 
@@ -115,6 +124,7 @@ class SettingsViewModelImpl(
         listeners += prefs.onLanguageChanged { selectedLanguage.value = it }
 
         updateQuestTypeCount()
+        updateOverlayCount()
         updateSelectableLanguageCodes()
         updateHiddenQuests()
         updateSelectedEditTypePreset()
@@ -170,6 +180,15 @@ class SettingsViewModelImpl(
             questTypeCount.value = QuestTypeCount(
                 total = questTypeRegistry.size,
                 enabled = questTypeRegistry.count { visibleEditTypeSource.isVisible(it) }
+            )
+        }
+    }
+
+    private fun updateOverlayCount() {
+        launch(IO) {
+            overlayCount.value = QuestTypeCount(
+                total = overlayRegistry.size,
+                enabled = overlayRegistry.count { visibleEditTypeSource.isVisible(it) }
             )
         }
     }
