@@ -41,7 +41,7 @@ abstract class MainViewModel : ViewModel() {
 
     /* overlays */
     abstract val selectedOverlay: StateFlow<Overlay?>
-    abstract val overlays: List<Overlay>
+    abstract val overlays: StateFlow<List<Overlay>>
 
     abstract var hasShownOverlaysTutorial: Boolean
 
