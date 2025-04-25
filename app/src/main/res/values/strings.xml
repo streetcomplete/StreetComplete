@@ -120,6 +120,8 @@ The info you enter is directly added to OpenStreetMap in your name, without the 
     <string name="default_disabled_msg_overlay">This quest type is disabled by default because there is already an overlay with which it is more effective and efficient to enter and update this data.</string>
     <string name="default_disabled_msg_seasonal">"This quest type is disabled by default because it may require re-checking the situation at different times of the year."</string>
 
+    <string name="default_disabled_overlay_domain_expert">This overlay is disabled by default because you need to be a domain expert to accurately record this data.</string>
+
 
     <!-- Quest interface -->
     <!-- caution: This is not the floor and level=0 is not necessarily at street level as it may follow the numbering scheme of the building operator. Try to use a generic wording that does not carry an implicit meaning of where it is located in respect to the ground floor. The context is usually shopping centres, train stations or airport terminals -->
