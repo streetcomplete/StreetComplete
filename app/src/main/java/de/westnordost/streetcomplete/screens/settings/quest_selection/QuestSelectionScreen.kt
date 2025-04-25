@@ -25,7 +25,6 @@ fun QuestSelectionScreen(
     viewModel: QuestSelectionViewModel,
     onClickBack: () -> Unit,
 ) {
-    val quests by viewModel.quests.collectAsState()
     val selectedEditTypePresetName by viewModel.selectedEditTypePresetName.collectAsState()
 
     val searchText by viewModel.searchText.collectAsStateWithLifecycle()

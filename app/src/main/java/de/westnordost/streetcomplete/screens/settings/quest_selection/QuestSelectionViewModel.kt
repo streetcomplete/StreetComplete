@@ -38,7 +38,6 @@ abstract class QuestSelectionViewModel : ViewModel() {
     abstract val filteredQuests: StateFlow<List<QuestSelection>>
     abstract val currentCountry: String?
     abstract val selectedEditTypePresetName: StateFlow<String?>
-    abstract val quests: StateFlow<List<QuestSelection>>
 
     abstract fun selectQuest(questType: QuestType, selected: Boolean)
     abstract fun orderQuest(questType: QuestType, toAfter: QuestType)
@@ -102,7 +101,7 @@ class QuestSelectionViewModelImpl(
         override fun onDeleted(presetId: Long) {}
     }
 
-    override val quests = MutableStateFlow<List<QuestSelection>>(emptyList())
+    private val quests = MutableStateFlow<List<QuestSelection>>(emptyList())
 
     override val filteredQuests: StateFlow<List<QuestSelection>> =
         combine(quests, searchText, questTitles) { quests, searchText, titles ->
