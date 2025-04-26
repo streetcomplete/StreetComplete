@@ -41,16 +41,13 @@ fun OverlaySelectionScreen(
     val overlays by viewModel.overlays.collectAsState()
 
     Column(Modifier.fillMaxSize()) {
-        TopAppBar(
-            title = { OverlaySelectionTitle(currentPresetName ?: stringResource(R.string.quest_presets_default_name)) },
-            windowInsets = AppBarDefaults.topAppBarWindowInsets,
-            navigationIcon = { IconButton(onClick = onClickBack) { BackIcon() } },
-            actions = {
-                OverlaySelectionTopBarActions(
-                    onReset = { viewModel.resetAll() },
-                )
-            }
+
+        OverlaySelectionTopAppBar(
+            currentPresetName = currentPresetName ?: stringResource(R.string.quest_presets_default_name),
+            onClickBack = onClickBack,
+            onReset = { viewModel.resetAll() }
         )
+
         val insets = WindowInsets.safeDrawing.only(
             WindowInsetsSides.Horizontal + WindowInsetsSides.Bottom
         ).asPaddingValues()
@@ -62,54 +59,6 @@ fun OverlaySelectionScreen(
             },
             modifier = Modifier.consumeWindowInsets(insets),
             contentPadding = insets,
-        )
-    }
-}
-
-@Composable
-private fun OverlaySelectionTitle(currentPresetName: String) {
-    Column {
-        Text(
-            text = stringResource(R.string.pref_title_overlays),
-            maxLines = 1,
-            overflow = TextOverflow.Ellipsis
-        )
-        Text(
-            text = stringResource(R.string.pref_subtitle_quests_preset_name, currentPresetName),
-            maxLines = 1,
-            overflow = TextOverflow.Ellipsis,
-            style = MaterialTheme.typography.body1,
-        )
-    }
-}
-
-@Composable
-private fun OverlaySelectionTopBarActions(
-    onReset: () -> Unit,
-) {
-    var showResetDialog by remember { mutableStateOf(false) }
-    var showActionsDropdown by remember { mutableStateOf(false) }
-
-    Box {
-        IconButton(onClick = { showActionsDropdown = true }) { MoreIcon() }
-        DropdownMenu(
-            expanded = showActionsDropdown,
-            onDismissRequest = { showActionsDropdown = false },
-        ) {
-            DropdownMenuItem(onClick = {
-                showResetDialog = true
-                showActionsDropdown = false
-            }) {
-                Text(stringResource(R.string.action_reset))
-            }
-        }
-    }
-
-    if (showResetDialog) {
-        ConfirmationDialog(
-            onDismissRequest = { showResetDialog = false },
-            onConfirmed = onReset,
-            text = { Text(stringResource(R.string.pref_overlays_reset)) },
         )
     }
 }
