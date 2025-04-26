@@ -19,7 +19,7 @@ import kotlin.test.assertEquals
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
-class VisibleQuestTypeControllerTest {
+class VisibleEditTypeControllerTest {
 
     private lateinit var visibleEditTypeDao: VisibleEditTypeDao
     private lateinit var editTypePresetsSource: EditTypePresetsSource
@@ -134,13 +134,13 @@ class VisibleQuestTypeControllerTest {
         assertTrue(ctrl.isVisible(quest1))
         assertFalse(ctrl.isVisible(disabledQuest))
         assertEquals(setOf(quest1, quest2), ctrl.getVisible())
-        verify(visibleEditTypeDao).clear(0)
+        verify(visibleEditTypeDao).clear(0, allEditTypes.map { it.name })
         verify(listener).onVisibilitiesChanged()
     }
 
     @Test fun `clears visibilities of deleted edit type preset`() {
         editTypePresetsListener.onDeleted(1)
-        verify(visibleEditTypeDao).clear(1)
+        verify(visibleEditTypeDao).clear(1, allEditTypes.map { it.name })
         verifyNoInteractions(listener)
     }
 
