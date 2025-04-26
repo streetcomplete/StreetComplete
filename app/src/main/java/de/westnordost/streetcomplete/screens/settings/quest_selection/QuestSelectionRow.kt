@@ -34,7 +34,7 @@ import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.surface.AddRoadSurface
 
-/** Single item the the quest selection list. Shows icon + title, whether it is enabled and whether
+/** Single item in the quest selection list. Shows icon + title, whether it is enabled and whether
  *  it is disabled by default / disabled in the country one is in */
 @Composable
 fun QuestSelectionRow(
