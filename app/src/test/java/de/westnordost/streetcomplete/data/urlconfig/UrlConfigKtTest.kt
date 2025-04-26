@@ -115,11 +115,8 @@ internal class UrlConfigKtTest {
         assertNull(parseConfigUrl("https://streetcomplete.app/s?n=Test&q=d&qo=0.0", quests, overlays))
     }
 
-    @Test fun `allow empty`() {
-        assertEquals(
-            UrlConfig(null, emptyList(), emptyList(), emptyList(), null),
-            parseConfigUrl("https://streetcomplete.app/s?", quests, overlays)
-        )
+    @Test fun `reject empty`() {
+        assertNull(parseConfigUrl("https://streetcomplete.app/s?", quests, overlays))
     }
 
     //endregion
