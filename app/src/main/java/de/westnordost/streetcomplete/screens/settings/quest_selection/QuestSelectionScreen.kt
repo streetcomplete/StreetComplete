@@ -51,13 +51,14 @@ fun QuestSelectionScreen(
             val insets = WindowInsets.safeDrawing.only(
                 WindowInsetsSides.Horizontal + WindowInsetsSides.Bottom
             ).asPaddingValues()
+
             QuestSelectionList(
                 items = filteredQuests,
                 displayCountry = displayCountry,
-                onSelectQuest = { questType, selected ->
+                onSelect = { questType, selected ->
                     viewModel.select(questType, selected)
                 },
-                onReorderQuest = { questType, toAfter ->
+                onReorder = { questType, toAfter ->
                     viewModel.order(questType, toAfter)
                 },
                 modifier = Modifier.consumeWindowInsets(insets),

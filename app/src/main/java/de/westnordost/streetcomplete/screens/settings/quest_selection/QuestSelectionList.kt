@@ -42,8 +42,8 @@ import sh.calvin.reorderable.rememberReorderableLazyListState
 fun QuestSelectionList(
     items: List<QuestSelection>,
     displayCountry: String,
-    onSelectQuest: (questType: QuestType, selected: Boolean) -> Unit,
-    onReorderQuest: (questType: QuestType, toAfter: QuestType) -> Unit,
+    onSelect: (questType: QuestType, selected: Boolean) -> Unit,
+    onReorder: (questType: QuestType, toAfter: QuestType) -> Unit,
     modifier: Modifier = Modifier,
     contentPadding: PaddingValues = PaddingValues(0.dp),
 ) {
@@ -65,7 +65,7 @@ fun QuestSelectionList(
 
     fun onDragStopped() {
         dragItem?.let { (first, second) ->
-            if (first != second) onReorderQuest(first, second)
+            if (first != second) onReorder(first, second)
         }
         dragItem = null
     }
@@ -119,7 +119,7 @@ fun QuestSelectionList(
                                     if (isSelected && item.questType.defaultDisabledMessage != 0) {
                                         showEnableQuestDialog = item.questType
                                     } else {
-                                        onSelectQuest(item.questType, isSelected)
+                                        onSelect(item.questType, isSelected)
                                     }
                                 },
                                 displayCountry = displayCountry,
@@ -135,7 +135,7 @@ fun QuestSelectionList(
     showEnableQuestDialog?.let { questType ->
         ConfirmationDialog(
             onDismissRequest = { showEnableQuestDialog = null },
-            onConfirmed = { onSelectQuest(questType, true) },
+            onConfirmed = { onSelect(questType, true) },
             title = { Text(stringResource(R.string.enable_quest_confirmation_title)) },
             text = { Text(stringResource(questType.defaultDisabledMessage)) }
         )
@@ -174,7 +174,7 @@ private fun PreviewQuestSelectionList() {
             QuestSelection(AddTactilePavingBusStop(), true, false),
         ),
         displayCountry = "Atlantis",
-        onSelectQuest = { _, _ -> },
-        onReorderQuest = { _, _ -> }
+        onSelect = { _, _ -> },
+        onReorder = { _, _ -> }
     )
 }

@@ -616,7 +616,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="pref_title_delete_cache_summary">If you think some data is outdated</string>
 
 
-    <!-- Quest selection screen -->
+    <!-- Quest & overlay selection screen -->
 
     <string name="action_search">Search</string>
     <string name="no_search_results">Nothing found</string>
@@ -626,14 +626,17 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
 
     <string name="action_reset">Reset</string>
     <string name="pref_quests_reset">Reset both quest enablement and order to the default?</string>
+    <string name="pref_overlays_reset">Reset overlay enablement to the default?</string>
 
     <string name="quest_enabled">Enabled</string>
     <string name="quest_type">Quest type</string>
+    <string name="overlay">Overlay</string>
 
     <string name="questList_disabled_in_country">Never shown in %s</string>
     <string name="questList_disabled_by_default">Disabled by default</string>
 
     <string name="enable_quest_confirmation_title">Enable this quest type?</string>
+    <string name="enable_overlay_confirmation_title">Enable this overlay?</string>
 
 
     <!-- Managing edit type presets screen -->
