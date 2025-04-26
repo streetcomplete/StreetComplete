@@ -22,6 +22,7 @@ import de.westnordost.streetcomplete.ui.common.DropdownMenuItem
 import de.westnordost.streetcomplete.ui.common.MoreIcon
 import de.westnordost.streetcomplete.ui.common.dialogs.ConfirmationDialog
 
+/** Top bar for the overlay selection screen */
 @Composable
 fun OverlaySelectionTopAppBar(
     currentPresetName: String,
