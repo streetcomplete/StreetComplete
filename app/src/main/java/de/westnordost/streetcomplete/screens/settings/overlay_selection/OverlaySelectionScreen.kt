@@ -26,7 +26,6 @@ fun OverlaySelectionScreen(
     val overlays by viewModel.overlays.collectAsState()
 
     Column(Modifier.fillMaxSize()) {
-
         OverlaySelectionTopAppBar(
             currentPresetName = currentPresetName ?: stringResource(R.string.quest_presets_default_name),
             onClickBack = onClickBack,

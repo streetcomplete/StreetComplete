@@ -27,7 +27,7 @@ import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.R
 
 /** Single item in the overlay selection list. Shows icon + title, whether it is enabled and
- *  whether it is disabled by default / disabled in the country one is in */
+ *  whether it is disabled by default */
 @Composable
 fun OverlaySelectionRow(
     item: OverlaySelection,

@@ -34,9 +34,7 @@ fun OverlaySelectionTopAppBar(
         title = { OverlaySelectionTitle(currentPresetName ) },
         windowInsets = AppBarDefaults.topAppBarWindowInsets,
         navigationIcon = { IconButton(onClick = onClickBack) { BackIcon() } },
-        actions = {
-            OverlaySelectionTopBarActions(onReset = onReset)
-        },
+        actions = { OverlaySelectionTopBarActions(onReset = onReset) },
         modifier = modifier,
     )
 }
