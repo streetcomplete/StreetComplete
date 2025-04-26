@@ -84,8 +84,7 @@ class OverlaySelectionViewModelImpl(
 
     override fun resetAll() {
         launch(IO) {
-            // TODO!!!! clears also quest visibilities!!!
-            visibleEditTypeController.clearVisibilities()
+            visibleEditTypeController.clearVisibilities(overlayRegistry)
         }
     }
 

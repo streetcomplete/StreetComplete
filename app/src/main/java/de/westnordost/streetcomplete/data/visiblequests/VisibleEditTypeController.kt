@@ -27,7 +27,7 @@ class VisibleEditTypeController(
             override fun onAdded(preset: EditTypePreset) {}
             override fun onRenamed(preset: EditTypePreset) {}
             override fun onDeleted(presetId: Long) {
-                clearVisibilities(presetId)
+                clearVisibilities(allEditTypes, presetId)
             }
         })
     }
@@ -74,11 +74,13 @@ class VisibleEditTypeController(
         if (id == selectedPresetId) onVisibilitiesChanged()
     }
 
-    fun clearVisibilities(presetId: Long? = null) {
+    fun clearVisibilities(editTypes: Collection<EditType>, presetId: Long? = null) {
         val id = presetId ?: selectedPresetId
         synchronized(this) {
-            visibleEditTypeDao.clear(id)
-            if (id == selectedPresetId) visibleEditTypes.clear()
+            visibleEditTypeDao.clear(id, editTypes.map { it.name })
+            if (id == selectedPresetId) {
+                editTypes.forEach { visibleEditTypes.remove(it.name) }
+            }
         }
         if (id == selectedPresetId) onVisibilitiesChanged()
     }

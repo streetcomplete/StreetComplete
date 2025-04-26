@@ -43,7 +43,11 @@ class VisibleEditTypeDao(private val db: Database) {
         return result
     }
 
-    fun clear(presetId: Long) {
-        db.delete(NAME, where = "$EDIT_TYPE_PRESET_ID = $presetId")
+    fun clear(presetId: Long, editTypeNames: Collection<String>) {
+        val questionMarks = Array(editTypeNames.size) { "?" }.joinToString(",")
+        db.delete(NAME,
+            where = "$EDIT_TYPE_PRESET_ID = $presetId AND $EDIT_TYPE IN ($questionMarks)",
+            args = editTypeNames.toTypedArray()
+        )
     }
 }

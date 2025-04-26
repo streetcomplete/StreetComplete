@@ -130,7 +130,7 @@ class VisibleQuestTypeControllerTest {
             quest1.name to false,
             disabledQuest.name to true
         ))
-        ctrl.clearVisibilities()
+        ctrl.clearVisibilities(allEditTypes)
         assertTrue(ctrl.isVisible(quest1))
         assertFalse(ctrl.isVisible(disabledQuest))
         assertEquals(setOf(quest1, quest2), ctrl.getVisible())

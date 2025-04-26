@@ -36,13 +36,19 @@ class VisibleEditTypeDaoTest : ApplicationDbTestCase() {
     @Test fun reset() {
         dao.put(0, "blurb", false)
         dao.put(1, "blurb", false)
+        dao.put(1, "blarb", false)
         assertFalse(dao.get(0, "blurb"))
         assertFalse(dao.get(1, "blurb"))
-        dao.clear(0)
+        assertFalse(dao.get(1, "blarb"))
+
+        dao.clear(0, listOf("blurb"))
         assertTrue(dao.get(0, "blurb"))
         assertFalse(dao.get(1, "blurb"))
-        dao.clear(1)
+        assertFalse(dao.get(1, "blarb"))
+
+        dao.clear(1, listOf("blurb", "blarb"))
         assertTrue(dao.get(1, "blurb"))
+        assertTrue(dao.get(1, "blarb"))
     }
 
     @Test fun putAllAndGetAll() {

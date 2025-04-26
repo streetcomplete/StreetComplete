@@ -166,7 +166,7 @@ class QuestSelectionViewModelImpl(
 
     override fun resetAll() {
         launch(IO) {
-            visibleEditTypeController.clearVisibilities()
+            visibleEditTypeController.clearVisibilities(questTypeRegistry)
             questTypeOrderController.clear()
         }
     }
