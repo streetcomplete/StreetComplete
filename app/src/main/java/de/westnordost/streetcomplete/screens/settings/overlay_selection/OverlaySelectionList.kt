@@ -30,7 +30,7 @@ import de.westnordost.streetcomplete.overlays.surface.SurfaceOverlay
 import de.westnordost.streetcomplete.ui.common.dialogs.ConfirmationDialog
 import de.westnordost.streetcomplete.ui.theme.titleMedium
 
-/** List of overlays to individually enable or disable or reorder them */
+/** List of overlays to individually enable or disable */
 @Composable
 fun OverlaySelectionList(
     items: List<OverlaySelection>,
