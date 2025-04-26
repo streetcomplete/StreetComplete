@@ -60,7 +60,7 @@ class VisibleEditTypeController(
 
     fun setVisibilities(editTypeVisibilities: Map<EditType, Boolean>, presetId: Long? = null) {
         val editTypeNameVisibilities = editTypeVisibilities
-            .filter { it.key !is OsmNoteQuestType } // TODO remove exception?
+            .filter { it.key !is OsmNoteQuestType }
             .mapKeys { it.key.name }
         val id = presetId ?: selectedPresetId
         synchronized(this) {
