@@ -314,6 +314,11 @@ val links = listOf(
         null,
         R.string.link_openinframap_description
     ),
+    // note: osmapp.org (and cartes.app) actually includes this as an overlay. An integration into
+    // a general-purpose map app makes this much more interesting / useful. But as long as we map to
+    // specific maps like osmhydrant, sunders, opencamping due to a lack of an app that would
+    // encompass all of that (like maybe in the future, osmapp.org or cartes.app), I think it is
+    // okay to leave it here
     Link(
         "indoorequal",
         "https://indoorequal.org",
@@ -338,6 +343,10 @@ val links = listOf(
         R.drawable.ic_link_sunders,
         R.string.link_sunders_description
     ),
+    // note: osmapp.org actually includes this as an overlay (not the background map, but the other
+    // features, e.g. showing the climbing paths). But as long as we map to specific maps like
+    // osmhydrant, sunders, opencamping due to a lack of an app that would encompass all of that
+    // (like maybe in the future, osmapp.org), I think it is okay to leave it here
     Link(
         "openclimbing",
         "https://openclimbing.org/",
