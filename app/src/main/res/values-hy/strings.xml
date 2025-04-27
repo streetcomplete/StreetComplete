@@ -586,7 +586,6 @@
     <string name="link_ideditor_description">"Պարզ OSM խմբագիր զննարկչի համար: Օպտիմիզացված է աշխատասեղանի կամ մեծ պլանշետների համար"</string>
     <string name="link_umap_description">"Ստեղծեք Քարտեզներ `պատվերով տվյալներով արագ եւ տեղադրեք դրանք ձեր կայքում"</string>
     <string name="link_opnvkarte_description">"Հասարակական տրանսպորտի երթուղիների քարտեզ եւ դադարում"</string>
-    <string name="link_pic4review_description">"Նպաստել OSM- ին պարզապես նայելով ձեր քաղաքի նկարներին"</string>
     <string name="link_wiki_description">"Վիքիդը ձեր ելակետն է ամեն ինչի հետ կապված ամեն ինչի հետ"</string>
     <string name="link_learnosm_description">"Նոր է OpenstreetMap- ը: Սա սկսնակ ուղեցույց է"</string>
     <string name="link_neis_one_description">"Վիճակագրության հսկայական հավաքածու OpenstreetMap- ի ներդրողների համար, ինչպես եւ ինչպես եք նպաստել, ով է ձեր շուրջը, գումարած առաջատարներ"</string>

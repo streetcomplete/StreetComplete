@@ -1076,6 +1076,9 @@
           "name": "Dyrlæge",
           "terms": "dyrlæge,veterinærdyrlæge"
         },
+        "amenity/veterinary_pharmacy": {
+          "name": "Veterinært apotek"
+        },
         "amenity/waste/dog_excrement": {
           "name": "Affaldsspand til hundeekskrementer",
           "terms": "lort,hund,ekskrement"
@@ -1504,6 +1507,10 @@
         "building/retail": {
           "name": "Butiksbygning",
           "terms": "butiksbygning,forretningsbygning"
+        },
+        "building/riding_hall": {
+          "name": "Ridehal",
+          "terms": "ridehal,indendørs ridebane"
         },
         "building/roof": {
           "name": "Tag",
@@ -2527,8 +2534,8 @@
           "terms": "landbrugsjord,mark,agerjord,markjord,dyrkningsjord,stubmark,pløjemark,grønjord,græsgang,vedvarende græsareal,bygmark,sennepsmark,kornmark,kornareal,rapsmark,rismark,roemark,rugmark,græsmark,vinmark"
         },
         "landuse/farmyard": {
-          "name": "Gårdsplads",
-          "terms": "gårdsplads,gård,bondegård"
+          "name": "Gårdanlæg",
+          "terms": "gårdanlæg,gårdsplads,bondegård,bondegårdsanlæg"
         },
         "landuse/flowerbed": {
           "name": "Blomsterbed"
@@ -2694,7 +2701,7 @@
         },
         "leisure/bleachers": {
           "name": "Lægtepladser",
-          "terms": "lægte,stadion,siddeplads,fodbold,tilskuer"
+          "terms": "lægtepladser,lægter,stadion,siddeplads,fodbold,tilskuerrækker"
         },
         "leisure/bowling_alley": {
           "name": "Bowlingbaner",
@@ -2980,8 +2987,8 @@
           "terms": "bådrampe,skibsrampe,slæbested"
         },
         "leisure/sports_centre": {
-          "name": "Sportcenter / Kompleks",
-          "terms": "sportcenter / kompleks"
+          "name": "Sportcenter / Sportsplads",
+          "terms": "sportcenter,sportsplads,sportplads,sportkompleks"
         },
         "leisure/sports_centre/climbing": {
           "name": "Klatrecenter",
@@ -2995,8 +3002,8 @@
           "terms": "skydebaneanlæg,skydebane"
         },
         "leisure/sports_centre/swimming": {
-          "name": "Swimmingpool",
-          "terms": "swimmingpool,svømmepool"
+          "name": "Svømmehal",
+          "terms": "svømmehal,swimmingpool,svømmepøl"
         },
         "leisure/sports_hall": {
           "name": "Idrætshal",
@@ -3012,7 +3019,7 @@
         },
         "leisure/swimming_pool": {
           "name": "Svømmebassin",
-          "terms": "svømmebassin,swimming pool,pool"
+          "terms": "svømmebassin,swimming pool,pool,swimmingpool,bassin"
         },
         "leisure/track": {
           "name": "Løbsbane (Ej motorsport)",
@@ -3915,6 +3922,9 @@
         "playground": {
           "name": "Legepladsudstyr"
         },
+        "playground/climbingframe": {
+          "name": "Klatrestativ"
+        },
         "playground/climbingwall": {
           "name": "Klatrevæg til leg"
         },
@@ -3986,12 +3996,16 @@
           "terms": "kraftværk"
         },
         "power/generator/method/photovoltaic": {
-          "name": "Solcelleanlæg",
-          "terms": "solcelle,solpanel,panel,strøm,elektricitet,el,solkraft,sol,fotovoltaik,anlæg"
+          "name": "Solcellepanel",
+          "terms": "solcellepanel,solpanel,solcelle,panel,strøm,elektricitet,el,solkraft,sol,fotovoltaik,anlæg,solenergi,vedvarende"
+        },
+        "power/generator/method/photovoltaic/building/roof": {
+          "name": "Solcellepaneltag",
+          "terms": "solcellepaneltag,solcelletag"
         },
         "power/generator/method/photovoltaic/location/roof": {
-          "name": "Solpanel på tag",
-          "terms": "solpanel på tag,solvarmeanlæg,solfanger"
+          "name": "Solcellepanel på tag",
+          "terms": "solcellepanel på tag,solvarmeanlæg,solfanger"
         },
         "power/generator/source/hydro": {
           "name": "Vandturbine",
@@ -4027,11 +4041,14 @@
         },
         "power/plant/source/method/photovoltaic": {
           "name": "Solcellepark",
-          "terms": "solcelle,solpanel,panel,kraftværk,strøm,elektricitet,el,solkraft,sol,fotovoltaik"
+          "terms": "solcellepark,solpanel,panel,kraftværk,strøm,elektricitet,el,solkraft,sol,fotovoltaik,solcelleanlæg"
         },
         "power/plant/source/nuclear": {
           "name": "Atomkraftværk",
           "terms": "nuklear,atom,fission"
+        },
+        "power/plant/source/solar": {
+          "name": "Solenergianlæg"
         },
         "power/plant/source/waste": {
           "name": "Affaldskraft­varmeværk",

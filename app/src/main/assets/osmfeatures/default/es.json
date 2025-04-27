@@ -1307,6 +1307,10 @@
           "name": "Veterinario",
           "terms": "veterinario,veterinaria,albéitar,albeitar. mascotas,animales,perros,gatos"
         },
+        "amenity/veterinary_pharmacy": {
+          "name": "Farmacia veterinaria",
+          "terms": "farmacia para animales,botica veterinaria,tienda de medicamentos veterinarios"
+        },
         "amenity/waste/dog_excrement": {
           "name": "Recipiente para excremento de perro",
           "terms": "basura,tacho,recipiente,caca,excremento,popo,perro"
@@ -5034,7 +5038,7 @@
           "terms": "transporte público,transporte publico,ferrocarril,vía,tren,tránsito,transporte"
         },
         "public_transport/station_train_halt": {
-          "name": "Estación de tren (Alto / A pedido)",
+          "name": "Apeadero",
           "terms": "alto,a pedido,transporte público,transporte publico,ferrocarril,estación,vía,tren,tránsito,transporte,parada a silbato,silbato"
         },
         "public_transport/station_tram": {
@@ -5306,6 +5310,10 @@
         "shop/bathroom_furnishing": {
           "name": "Tienda de muebles de baño",
           "terms": "baño,lavabo,equipamiento,muebles"
+        },
+        "shop/bbq": {
+          "name": "Tienda de parrillas",
+          "terms": "tienda de barbacoas,tienda de asadores,tienda de parrillas"
         },
         "shop/beauty": {
           "name": "Salón de belleza",
@@ -5596,6 +5604,10 @@
         "shop/greengrocer": {
           "name": "Tienda de frutas y verduras",
           "terms": "hortaliza,verdura,fruta,verdulería,frutería,legumbre,vegetal,verdulero,frutero"
+        },
+        "shop/groundskeeping": {
+          "name": "Tienda de equipos para jardín y césped",
+          "terms": "tienda de herramientas de jardinería,tienda de equipos para exteriores,tienda de insumos para jardinería"
         },
         "shop/hairdresser": {
           "name": "Peluquería",

@@ -612,7 +612,6 @@ Fine, memoru resti sekura: Estu konscia pri via ĉirkaŭaĵo kaj ne eniru privat
     <string name="link_ideditor_description">"Simpla OSM-redaktilo por la retumilo. Optimumigita por la komputilo aŭ grandaj tabuletoj"</string>
     <string name="link_umap_description">"Kreu mapojn kun kutimaj datumoj rapide kaj enmetu ilin en vian retejon"</string>
     <string name="link_opnvkarte_description">"Mapo de publiktransportaj itineroj kaj haltejoj"</string>
-    <string name="link_pic4review_description">"Kontribuu al OSM simple per rigardante bildojn de via urbo"</string>
     <string name="link_wiki_description">"La vikio estas via elirpunkto al ĉio rilata al OpenStreetMap"</string>
     <string name="link_learnosm_description">"Nova al OpenStreetMap? Ĉi tio estas gvidilo de komencanto"</string>
     <string name="link_neis_one_description">"Grandega kolekto de statistikoj por OpenStreetMap-kontribuantoj, kiel kie kaj kiel vi kontribuis, kiu alia estas ĉirkaŭ vi kaj gvidtabuloj."</string>

@@ -613,7 +613,6 @@ Infine, ricorda di stare al sicuro: fa attenzione a ciò che ti circonda e non e
     <string name="link_ideditor_description">"Semplice editor di OSM su browser. Ottimizzato per desktop o tablet."</string>
     <string name="link_umap_description">"Crea mappe con dati personalizzati velocemente e inseriscile nel tuo sito"</string>
     <string name="link_opnvkarte_description">"Una mappa delle fermate e del trasporto pubblico"</string>
-    <string name="link_pic4review_description">"Contribuisci a OSM semplicemente guardando immagini della tua città"</string>
     <string name="link_wiki_description">"Questa wiki è il tuo punto di partenza per qualsiasi cosa legata a OpenStreetMap"</string>
     <string name="link_learnosm_description">"Prima volta su OpenStreetMap? Questa è una guida per principianti"</string>
     <string name="link_neis_one_description">"Una grande raccolta di statistiche per chi contribuisce a OpenStreetMap: dove e come hai dato il tuo apporto, chi c'è vicino a te e, in più, le classifiche"</string>
@@ -1263,6 +1262,8 @@ Spostarlo ora?"</string>
     <string name="overlay_surface">"Superfici"</string>
     <string name="overlay_path_surface_segregated">"Dividi in parti ciclabili e pedonali"</string>
     <string name="quest_crossing_title2">"C'è un attraversamento qui?"</string>
+    <string name="quest_crossing_yes">"Sì, pensato come incrocio"</string>
+    <string name="quest_crossing_no">"Non pensato come incrocio, ma è possibile attraversare (es. percorsi informali)"</string>
     <string name="quest_crossing_prohibited">"No, è proibito oppure impossibile attraversare"</string>
     <string name="quest_hairdresser_title">"Quali clienti vanno da questo parrucchiere?"</string>
     <string name="quest_hairdresser_male_and_female">"Chiunque"</string>
@@ -1406,6 +1407,7 @@ Un piano del tetto va contato quando ci sono finestre nel tetto. Quindi, un tett
     <string name="quest_bicycle_repair_station_services_title">"Quali strumenti per le bici sono disponibili qui?"</string>
     <string name="quest_bicycle_repair_station_pump">"Pompa"</string>
     <string name="quest_bicycle_repair_station_tools">"Vari strumenti"</string>
+    <string name="quest_bicycle_repair_station_stand">"Cavalletto per manutenzione"</string>
     <string name="quest_bicycle_repair_station_chain_tool">"Smagliacatene"</string>
     <string name="quest_boat_rental_title">"Che tipi di barche si possono noleggiare qui?"</string>
     <string name="quest_boat_rental_motorboat">"Motoscafo"</string>
@@ -1422,8 +1424,14 @@ Un piano del tetto va contato quando ci sono finestre nel tetto. Quindi, un tett
     <string name="quest_boat_rental_yacht">"Yacht"</string>
     <string name="quest_boat_rental_standup_paddleboard">"Stand up paddle (SUP)"</string>
     <string name="quest_powerAttachment_title">"Come è collegata questa linea elettrica?"</string>
+    <string name="quest_powerAttachment_suspension">"Tenuto dall'alto"</string>
+    <string name="quest_powerAttachment_anchor">"Fissato orizzontalmente"</string>
+    <string name="quest_powerAttachment_pin">"Tenuto dal basso"</string>
     <string name="pedestrian_zone_designated">"Designato per i velocipedi"</string>
     <string name="pedestrian_zone_allowed_sign">"Un cartello permette il transito in bicicletta"</string>
     <string name="pedestrian_zone_no_sign">"Nessun cartello permette esplicitamente il transito in bicicletta"</string>
     <string name="team_mode_description_overlay_hint">"Se usate i livelli sovrapposti, ognuno di voi dovrebbe usarne uno diverso, dato che solo le missioni vengono suddivise."</string>
+    <string name="quest_dietType_glutenfree_name_title">"Qui si servono prodotti senza glutine?"</string>
+    <string name="quest_dietType_explanation_glutenfree">"La preparazione di prodotti senza glutine richiede una formazione specifica, perché anche spezie e salse comuni possono contenere glutine. I prodotti senza glutine sono segnalati da etichette apposite."</string>
+    <string name="quest_construction_minor_title">"I lavori stradali secondari qui sono finiti?"</string>
 </resources>

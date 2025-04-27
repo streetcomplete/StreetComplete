@@ -1167,7 +1167,8 @@
           "terms": "prefeitura"
         },
         "amenity/townhall/barangay-PH": {
-          "name": "Barangay"
+          "name": "Barangay",
+          "terms": "barangay"
         },
         "amenity/townhall/city": {
           "name": "Câmara municipal",
@@ -1291,6 +1292,10 @@
         "amenity/veterinary": {
           "name": "Veterinário",
           "terms": "veterinário,médico veterinário,pet,animal de estimação,animais,hospital veterinário,hospital de animais,clínica de animais,cachorros,gatos"
+        },
+        "amenity/veterinary_pharmacy": {
+          "name": "Farmácia veterinária",
+          "terms": "animais,animal,pet,veterinário,medicação,medicamentos,remédios,estimação,animais de estimação,gado"
         },
         "amenity/waste/dog_excrement": {
           "name": "Lixeira para excrementos de cães",
@@ -5333,6 +5338,10 @@
           "name": "Loja de Mobiliário de Banheiros",
           "terms": "loja especializada em banheiros,banheiros,sanitário"
         },
+        "shop/bbq": {
+          "name": "Loja de material para churrasco",
+          "terms": "grill,bbq,barbecue,barbeque"
+        },
         "shop/beauty": {
           "name": "Salão de Beleza",
           "terms": "salão de beleza,cabeleireiro,beleza,maquiagem,manicure,pedicure"
@@ -5627,6 +5636,10 @@
         "shop/greengrocer": {
           "name": "Verdureira ou quitanda",
           "terms": "quitanda,quitandeiro,loja de frutas e verduras,frutaria,verduraria"
+        },
+        "shop/groundskeeping": {
+          "name": "Loja de material para pisos",
+          "terms": "manutenção,ferramentas,relvados,gramados,corte,abate,limpeza"
         },
         "shop/hairdresser": {
           "name": "Cabeleireiro",

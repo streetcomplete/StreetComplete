@@ -1,5 +1,5 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [ABSA, Standard Bank, FNB, Nedbank, Capitec Bank, Cash Express, Capitec, Bitcoin ATM SA, Absa, CashExpress, Stanbic Bank, Shitcoins.club, First National Bank, Bidvest Bank]
+atmOperators: [ABSA, Standard Bank, FNB, Nedbank, Capitec Bank, Capitec, Cash Express, Bitcoin ATM SA, Absa, CashExpress, Stanbic Bank, Shitcoins.club, First National Bank, Bidvest Bank]
 centerLineStyle: white
 defaultSpeedLimitHasUrbanOrRural: true
 edgeLineStyle: yellow

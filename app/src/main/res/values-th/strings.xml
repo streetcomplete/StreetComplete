@@ -610,7 +610,6 @@
     <string name="link_ideditor_description">"ตัวแก้ไข OSM แบบเรียบง่ายสำหรับเบราว์เซอร์ ปรับปรุงเพื่อใช้งานบนเดสก์ท็อปหรือแท็บเล็ตขนาดใหญ่"</string>
     <string name="link_umap_description">"สร้างแผนที่ด้วยข้อมูลที่กำหนดเองอย่างรวดเร็วและฝังลงในไซต์ของคุณ"</string>
     <string name="link_opnvkarte_description">"แผนที่สำหรับขนส่งสาธารนะ เส้นทาง กับป้ายหยุด"</string>
-    <string name="link_pic4review_description">"ร่วมสมทบกับ OSM ได้ง่ายๆ เพียงดูภาพเมืองของคุณ"</string>
     <string name="link_wiki_description">"วิกิที่เป็นจุดเริ่มต้นสำหรับทุกอย่างที่เกี่ยวกับ OpenStreetMap"</string>
     <string name="link_learnosm_description">"เพิ่งเริ่มหัดทำ OpenStreetMap หรือเปล่า? นี่คือไกด์สำหรับผู้เริ่มต้น"</string>
     <string name="link_neis_one_description">"รวมสถิติสำหรับผู้สมทบ OpenStreetMap เช่น คุณสมทบในพื้นที่ไหนบ้าง รอบตัวมีใครบ้าง และตารางผู้นำ"</string>
@@ -1203,8 +1202,10 @@
     <string name="urlconfig_apply_message">"ใช้และเลือกค่าที่ตั้งไว้ %1$s หรือไม่?"</string>
     <string name="urlconfig_apply_message_overwrite">"หมายเหตุ: ค่าที่ตั้งไว้ของคุณที่ใช้ชื่อเดียวกันจะถูกเขียนทับ!"</string>
     <string name="urlconfig_switch_hint">"คุณสามารถเปลี่ยนค่าที่ตั้งไว้ในการตั้งค่าได้ทุกเมื่อ"</string>
+    <string name="quest_bicycle_parking_type_two_tier">"ที่จอดจักรยาน2ชั้น"</string>
     <string name="user_profile_current_week_title">"7 วันที่ผ่านมา"</string>
     <string name="user_profile_dates_mapped">"วันที่คุณได้ทำแผนที่ในช่วงที่ผ่านมา"</string>
+    <string name="quest_cycleway_value_advisory_lane">"เลนจักรยานแบบแนะนำ"</string>
     <string name="urlconfig_scan_qr_code_again2">"หลังจากติดตั้งแอปแล้ว ให้สแกน QR code อีกครั้ง หรือคลิก&lt;a href=\"%s\"&gt;ลิงก์นี้&lt;/a&gt;เพื่อใช้งานค่าที่ตั้งไว้"</string>
     <string name="confirmation_replace_shop_title">"ที่นี่เป็นร้านอื่นหรือยัง?"</string>
     <string name="confirmation_replace_shop_message">"หากเปลี่ยนเป็นร้านอื่นแล้ว เวลาทำการ ข้อมูลติดต่อ ฯลฯ จะเปลี่ยนไปด้วยเช่นกัน"</string>
@@ -1255,6 +1256,8 @@
     <string name="overlay_surface">"พื้นผิว"</string>
     <string name="overlay_path_surface_segregated">"แยกเป็นส่วนของการปั่นจักรยานและการเดินของทางเท้า"</string>
     <string name="quest_crossing_title2">"ตรงนี้มีทางข้ามหรือไม่?"</string>
+    <string name="quest_crossing_yes">"ตั้งใจให้เป็นทางข้าม"</string>
+    <string name="quest_crossing_no">"ไม่ได้ตั้งใจให้เป็นทางข้าม แต่ยังสามารถข้ามไปได้"</string>
     <string name="quest_crossing_prohibited">"ไม่ ห้ามข้ามหรือเป็นไปไม่ได้"</string>
     <string name="quest_hairdresser_title">"ลูกค้าคนไหนเข้าเยี่ยมชมช่างทำผมคนนี้?"</string>
     <string name="quest_hairdresser_male_and_female">"ใครก็ได้"</string>
@@ -1284,6 +1287,8 @@
 นอกจากนี้ ภาพซ้อนทับบางแบบยังช่วยให้คุณเพิ่มข้อมูลใหม่ที่ตำแหน่งของเป้าเล็งที่แสดงได้ เช่น ภาพซ้อนทับที่อยู่"</string>
     <string name="quest_crossing_kerb_height_title">"ความสูงของขอบทางที่ทางข้ามนี้อยู่ที่เท่าไหร่?"</string>
     <string name="quest_maxheight_sign_title">"ป้ายจำกัดความสูงที่แสดงอยู่ที่นี่คืออะไร?"</string>
+    <string name="quest_leave_new_note_as_answer">"ในกรณีนี้ คุณต้องเพิ่มหมายเหตุอธิบาย"</string>
+    <string name="quest_drinking_water_type_title2">"ที่นี่มีน้ำดื่มไหม? ถ้ามี แหล่งน้ำมาจากไหน?"</string>
     <string name="quest_is_amenity_inside_title">"สิ่งนี้อยู่ด้านในอาคารหรือไม่?"</string>
     <string name="quest_bbq_fuel_title">"เตาย่างนี้ใช้พลังงานอะไร?"</string>
     <string name="quest_bbq_fuel_wood">"ไม้"</string>
@@ -1292,6 +1297,8 @@
     <string name="inside">"ด้านใน"</string>
     <string name="outside">"ด้านนอก"</string>
     <string name="quest_recycling_type_food_waste">"เศษอาหาร"</string>
+    <string name="quest_defibrillator_location">"เครื่องกระตุ้นหัวใจไฟฟ้าอยู่บริเวณไหน?"</string>
+    <string name="quest_sanitary_dump_station_title">"ที่นี่มีที่กำจัดขยะไหม?"</string>
     <string name="quest_generalFee_title">"ต้องจ่ายเงินเพื่อใช้สิ่งนี้หรือไม่?"</string>
     <string name="about_summary_logs">"ใช้ในการรายงานข้อผิดพลาด"</string>
     <string name="action_filter">"กรอง"</string>
@@ -1299,11 +1306,21 @@
     <string name="about_title_show_logs">"แสดง logs"</string>
     <string name="label_log_newer_than">"จาก"</string>
     <string name="label_log_older_than">"ถึง"</string>
+    <string name="title_logs_filters">"กรองข้อความ"</string>
     <string name="quest_disable_action">"ปิดใช้งาน"</string>
+    <string name="quest_buildingType_container">"คอนเทนเนอร์"</string>
+    <string name="quest_buildingType_tent">"เต็นท์"</string>
+    <string name="quest_buildingType_tomb">"หลุมศพ"</string>
+    <string name="quest_buildingType_tower">"หอคอย"</string>
+    <string name="quest_buildingType_tower_description">"หอคอยชนิดใดก็ได้"</string>
     <string name="quest_buildingType_under_construction">"อยู่ระหว่างการก่อสร้าง"</string>
     <string name="overlay_buildings">"อาคาร"</string>
+    <string name="quest_pedestrian_crossing_markings">"ทางข้ามนี้มีเครื่องหมายที่ถนนไหม"</string>
     <string name="overlay_places">"สถานที่"</string>
     <string name="overlay_things">"สิ่งของ"</string>
+    <string name="disused">"เลิกใช้แล้ว"</string>
+    <string name="unknown_object">"วัตถุไม่รู้จัก"</string>
+    <string name="quest_bbq_fuel_gas">"แก๊ส"</string>
     <string name="quest_generic_otherAnswers2">"เอ่อ…"</string>
     <string name="info">"ข้อมูลเพิ่มเติม"</string>
 </resources>

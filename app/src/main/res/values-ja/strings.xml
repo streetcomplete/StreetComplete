@@ -616,7 +616,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="link_ideditor_description">"ブラウザ用のシンプルなOSMエディタです。デスクトップや大型のタブレットに最適化されています"</string>
     <string name="link_umap_description">"カスタムデータを入れた地図をすばやく作成しあなたのサイトに埋め込むことができます"</string>
     <string name="link_opnvkarte_description">"公共交通機関の路線図と停留所地図"</string>
-    <string name="link_pic4review_description">"あなたの街の写真を見るだけでもOSMに貢献できます"</string>
     <string name="link_wiki_description">"wikiはOpenStreetMapに関する全ての出発点です"</string>
     <string name="link_learnosm_description">"OpenStreetMapは初めてですか？初心者向けガイドはこちらです。"</string>
     <string name="link_neis_one_description">"あなたがどこでどのように貢献したか、あなたの周りに他に誰がいるか、リーダーボードなど、翻訳状況の貢献者のためのOpenStreetMapの膨大なコレクション"</string>

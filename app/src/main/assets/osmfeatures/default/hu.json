@@ -2915,7 +2915,7 @@
         },
         "leisure/marina": {
           "name": "Kishajókikötő",
-          "terms": "kikötő,jachtkikötő,vitorláskikötő,vitorlázás"
+          "terms": "kikötő,jachtkikötő,vitorláskikötő,vitorlázás,csónak,dokk,jacht"
         },
         "leisure/miniature_golf": {
           "name": "Minigolf",
@@ -5166,10 +5166,11 @@
         },
         "shop/tobacco": {
           "name": "Dohánybolt",
-          "terms": "nemzeti dohánybolt,dohány,cigaretta,szivar"
+          "terms": "nemzeti dohánybolt,dohány,cigaretta,szivar,trafik"
         },
         "shop/tool_hire": {
-          "name": "Gépkölcsönző"
+          "name": "Gépkölcsönző",
+          "terms": "szerszám,szerszámgép,kölcsönzés"
         },
         "shop/toys": {
           "name": "Játékbolt",

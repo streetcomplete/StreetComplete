@@ -3,4 +3,4 @@ atmOperators: [Caixabank, Banco Sabadell, BBVA, Euronet, La Caixa, CaixaBank, Ba
 chargingStationOperators: [Etecnic, Endesa, Iberdrola, Repsol, 'Tesla, Inc.', AMB, Endolla Barcelona, ETECNIC, Endesa X, Àrea Metropolitana de Barcelona, Zunder, Ajuntament de Barcelona, estebanell, Wenea, Ionity, Acciona Energía, Bauhaus, Acciona, ChargePoint, guixesenergia, etecnic, endesa x enelway, Wallbox, VNG Aparcaments, TMB, Pradella Sistemi srl, Port de Mataró, Mercadona, Lidl, Estabanell, Electric Vehicle Charging Station, EVcharge, BonArea, Ajuntament de les Masies de Voltregà, Ajuntament de Rubí, Ajuntament de Móra la Nova, Ajuntament de Montblanc, Ajuntament de Mataró, Ajuntament d'Alcover]
 clothesContainerOperators: [Càritas, Roba Amiga, Humana, roba amiga, Cáritas, Ropa Amiga]
 officialLanguages: [ca, es, oc]
-parcelLockerBrand: [Amazon Locker, Amazon Hub, CityPaq, InPost, BonÀrea]
+parcelLockerBrand: [Amazon Locker, Amazon Hub, InPost, CityPaq, BonÀrea]

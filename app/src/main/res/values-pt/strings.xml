@@ -45,7 +45,7 @@
     <string name="download_area_too_big">"Por favor aproxime mais"</string>
     <string name="confirmation_cancel_prev_download_title">"Parar o descarregamento atual e descarregar antes nesta área?"</string>
     <string name="turn_on_location_request">"A localização está desativada. Quer aceder agora às definições para a ativar?"</string>
-    <string name="no_location_permission_warning">"É preciso conceder a permissão de localização ao StreetComplete para este poder descarregar dados nas suas redondezas."</string>
+    <string name="no_location_permission_warning">"É necessária uma autorização de localização precisa para mostrar a sua posição no mapa e descarregar dados nas suas redondezas."</string>
     <string name="about_title_authors">"Créditos"</string>
     <string name="about_title_repository">"Página do projeto"</string>
     <string name="about_title_report_error">"Reportar erro"</string>
@@ -55,7 +55,7 @@
     <string name="confirmation_authorize_now">"Tem de autorizar o acesso à sua conta no OpenStreetMap para enviar as suas alterações. Autorizar agora?"</string>
     <string name="not_authorized">"Não autorizado"</string>
     <string name="version_banned_message">"Esta versão do StreetComplete é muito antiga. Faça a atualização!"</string>
-    <string name="no_gps_no_quests">"Para descarregar dados automaticamente, ative a localização"</string>
+    <string name="no_gps_no_quests">"Para descarregar automaticamente os dados à sua volta, ative a localização precisa"</string>
     <string name="later">"Mais tarde"</string>
     <string name="quest_streetName_answer_noProperStreet_link">"É apenas uma ligação entre 2 estradas"</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">"Outra coisa qualquer (deixar uma nota)"</string>
@@ -613,7 +613,6 @@ Mantenha-se em segurança: preste atenção ao que se passa em seu redor ao usar
     <string name="link_ideditor_description">"Um editor OSM simples para o navegador. Otimizado para computadores e tablets"</string>
     <string name="link_umap_description">"Criar mapas com dados próprios de forma rápida e incluí-los no seu site"</string>
     <string name="link_opnvkarte_description">"Um mapa com a rede de transportes e as suas paragens"</string>
-    <string name="link_pic4review_description">"Contribuir para o OSM, visualizando fotografias da sua cidade"</string>
     <string name="link_wiki_description">"A wiki é o seu ponto de partida para tudo o que esteja relacionado com o OpenStreeMap"</string>
     <string name="link_learnosm_description">"Novo no OpenStreetMap? Este é um guia para iniciantes"</string>
     <string name="link_neis_one_description">"Uma vasta coleção estatística para os contribuidores do OpenStreetMap, onde editou, como contribuiu, quem está ao seu redor e uma classificação de contribuidores"</string>
@@ -716,7 +715,7 @@ conquista"</string>
     <string name="quest_oneway2_dir">"Sentido único nesta direção"</string>
     <string name="quest_oneway2_no_oneway">"Não é de sentido único"</string>
     <string name="quest_maxweight_select_sign">"Selecione o sinal"</string>
-    <string name="quest_steps_incline_title">"Em que direção se sobem estas escadas?"</string>
+    <string name="quest_steps_incline_title">"Qual é a direção que leva para cima?"</string>
     <string name="quest_steps_incline_up">"Nesta direção para subir"</string>
     <string name="quest_step_count_title">"Quantos degraus há aqui?"</string>
     <string name="quest_traffic_signals_sound_title">"Existe aqui sinalização sonora para cegos?"</string>

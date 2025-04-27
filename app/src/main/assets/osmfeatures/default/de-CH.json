@@ -1317,6 +1317,10 @@
           "name": "Tierarzt",
           "terms": "tierarzt,tierärztin,veterinär,tierklinik,tierarztpraxis"
         },
+        "amenity/veterinary_pharmacy": {
+          "name": "Tierapotheke",
+          "terms": "veterinärapotheke,veterinär-apotheke,tierärztliche apotheke,apotheke für tierarzneimittel"
+        },
         "amenity/waste/dog_excrement": {
           "name": "Hundekotabfalleimer",
           "terms": "hundekotbeutel,hundekotbeutelspender,hundetütenspender,hundekottüte,robidog,säckli,sackerl"
@@ -5323,6 +5327,10 @@
           "name": "Badeinrichtungsgeschäft",
           "terms": "badezimmereinrichtungsgeschäft,badeinrichtungsgeschäft"
         },
+        "shop/bbq": {
+          "name": "Grillgeschäft",
+          "terms": "grill-shop,barbecue shop,grillladen,bbq-shop"
+        },
         "shop/beauty": {
           "name": "Schönheitssalon",
           "terms": "schönheits-salon,nagelstudio"
@@ -5611,6 +5619,10 @@
         "shop/greengrocer": {
           "name": "Gemüsehändler",
           "terms": "obsthandlung,gemüsehändler,gemüsehandlung,obst- und gemüsehandlung"
+        },
+        "shop/groundskeeping": {
+          "name": "Geschäft für Gartengeräte",
+          "terms": "geschäft für rasen- und gartengeräte,geschäft für rasen- und gartenbedarf,rasen- und gartengeräte-geschäft,gartenfachgeschäft,baumarkt für gartengeräte"
         },
         "shop/hairdresser": {
           "name": "Friseur",

@@ -1160,7 +1160,8 @@
           "terms": "junta,câmara,paços,centro administrativo,capital de concelho,capital de freguesia,capital de distrito,capital de região"
         },
         "amenity/townhall/barangay-PH": {
-          "name": "Barangay"
+          "name": "Barangay",
+          "terms": "barangay"
         },
         "amenity/townhall/city": {
           "name": "Câmara Municipal",
@@ -1285,6 +1286,10 @@
         "amenity/veterinary": {
           "name": "Veterinário",
           "terms": "veterinary,veterinária,animais,médico,médicos,médica,médicas,animais de companhia,animais de estimação"
+        },
+        "amenity/veterinary_pharmacy": {
+          "name": "Farmácia veterinária",
+          "terms": "animais,animal,pet,veterinário,medicação,medicamentos,remédios,estimação,animais de estimação,gado"
         },
         "amenity/waste/dog_excrement": {
           "name": "Balde para excrementos de cães",
@@ -2544,6 +2549,9 @@
           "name": "Passadeira sem marcações",
           "terms": "passadeira,peões,pedestres,estrada,trânsito,travessia,faixa de segurança"
         },
+        "highway/footway/informal": {
+          "name": "Caminho pedonal informal"
+        },
         "highway/footway/sidewalk": {
           "name": "Passeio",
           "terms": "calçada,passeios,bermas,berma"
@@ -2687,6 +2695,9 @@
         "highway/service/parking_aisle": {
           "name": "Corredor de estacionamento",
           "terms": "pista de estacionamento,estacionar,estacionamento,estrada,parquear,parqueamento"
+        },
+        "highway/service_area": {
+          "name": "Área de serviço para manobras"
         },
         "highway/services": {
           "name": "Área de serviço",
@@ -5220,7 +5231,7 @@
         },
         "shop": {
           "name": "Loja",
-          "terms": "venda,vendedor,estabelecimento,grossista"
+          "terms": "venda,vendedor,estabelecimento,grossista,store,shop"
         },
         "shop/agrarian": {
           "name": "Loja de produtos agrícolas",
@@ -5261,6 +5272,10 @@
         "shop/bathroom_furnishing": {
           "name": "Loja de assessórios para casas de banho",
           "terms": "bathroom furnishing store,casa de banho,casas de banho,wc,w.c.,banheiro,lavabos"
+        },
+        "shop/bbq": {
+          "name": "Loja de material para churrasco",
+          "terms": "grill,bbq,barbecue,barbeque"
         },
         "shop/beauty": {
           "name": "Centro de estética",
@@ -5551,6 +5566,10 @@
         "shop/greengrocer": {
           "name": "Loja de frutas e verduras",
           "terms": "greengrocer,frutaria,frutas,fruta,verduras,hortícolas,vegetais,frutos"
+        },
+        "shop/groundskeeping": {
+          "name": "Loja de material para pisos",
+          "terms": "manutenção,ferramentas,relvados,gramados,corte,abate,limpeza"
         },
         "shop/hairdresser": {
           "name": "Cabeleireiro(a)",

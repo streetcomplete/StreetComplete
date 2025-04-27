@@ -2785,8 +2785,9 @@
           "terms": "bretelle,accès,entrée,sortie,voie,route,rapide,express"
         },
         "highway/turning_circle": {
-          "name": "Rond point",
-          "terms": "point de retournement"
+          "name": "Zone de manœuvre",
+          "terms": "point de retournement",
+          "aliases": "Point de retournement"
         },
         "highway/turning_loop": {
           "name": "Boucle de retournement (îlot central)",

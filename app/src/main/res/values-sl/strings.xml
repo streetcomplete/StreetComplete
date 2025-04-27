@@ -613,7 +613,6 @@ In ne pozabi ostati varen! Spremljaj okolico okrog sebe in ne vstopaj na zasebna
     <string name="link_ideditor_description">"Preprost OSM urejevalnik, ki deluje v brskalnikih. Optimiziran je za namizne računalnike in tablice."</string>
     <string name="link_umap_description">"Hitro ustvari zemljevide z lastnimi podatki in jih vgradi v svoja spletna mesta. "</string>
     <string name="link_opnvkarte_description">"Zemljevid poti javnega prevoza"</string>
-    <string name="link_pic4review_description">"Prispevaj OSM zemljevidu zgolj z gledanjem slik svojega mesta."</string>
     <string name="link_wiki_description">"Wiki je tvoja začetna točka do vsega v povezavi z OSM"</string>
     <string name="link_learnosm_description">"Si nov pri OpenStreetMap-u? Tole so začetniška navodila."</string>
     <string name="link_neis_one_description">"Ogromna "</string>

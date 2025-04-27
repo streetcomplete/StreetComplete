@@ -1309,6 +1309,10 @@
           "name": "獣医",
           "terms": "獣医,ペット医,病院,医療,動物病院,犬猫病院,動物,ペット,鳥獣,アニマル,医者"
         },
+        "amenity/veterinary_pharmacy": {
+          "name": "動物専門薬局",
+          "terms": "動物薬,ペット用薬局,動物薬剤師"
+        },
         "amenity/waste/dog_excrement": {
           "name": "犬の便入れ",
           "terms": "犬の便入れ,動物,ペット,犬"

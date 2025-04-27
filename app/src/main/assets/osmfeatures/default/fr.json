@@ -742,7 +742,7 @@
           "terms": "boîte de nuit,discothèque,lgbtq,gay,lesbien"
         },
         "amenity/nursing_home": {
-          "name": "Maison de repos"
+          "name": "Maison de soin, handicapé,longue durée"
         },
         "amenity/parcel_locker": {
           "name": "Casier à colis",
@@ -1096,8 +1096,8 @@
           "terms": "foyer pour sans-abri"
         },
         "amenity/social_facility/nursing_home": {
-          "name": "Maison de repos",
-          "terms": "maison de repos,maison de convalescence,maison de retraite médicalisée,ehpad"
+          "name": "EHPAD",
+          "terms": "maison de retraite médicalisée,personnes âgées,médicalisé"
         },
         "amenity/stripclub": {
           "name": "Club de strip-tease",
@@ -1534,8 +1534,8 @@
           "terms": "abaissement de trottoir,bateau,bordure abaissée,rampe d'accès,plan incliné,charretière"
         },
         "barrier/kerb/raised": {
-          "name": "Bordure de trottoir relevée",
-          "terms": "trottoir,bord,relèvement de trottoir,trottoir relevé"
+          "name": "Bordure de trottoir surélevée",
+          "terms": "trottoir,bord,relèvement de trottoir,trottoir surélevé"
         },
         "barrier/kerb/rolled": {
           "name": "Bordure de trottoir creusée",
@@ -2186,9 +2186,9 @@
           "terms": "tuyau d'incendie,lance à incendie,canon à eau"
         },
         "emergency/fire_hydrant": {
-          "name": "Point d'eau incendie",
+          "name": "Borne d'incendie",
           "terms": "borne incendie,borne-fontaine,borne fontaine,bouche d'incendie,poteau incendie,hydrant,fire hydrant,point d'eau incendie",
-          "aliases": "Borne incendie"
+          "aliases": "Bouche d'incendie\nPoint d'eau incendie"
         },
         "emergency/fire_hydrant/pillar": {
           "name": "Poteau incendie",
@@ -2466,9 +2466,8 @@
           "terms": "corridor intérieur"
         },
         "highway/crossing": {
-          "name": "Passage",
-          "terms": "passage piéton",
-          "aliases": "Traversée"
+          "name": "Passage piéton",
+          "terms": "passage piéton"
         },
         "highway/crossing/traffic_signals": {
           "name": "Passage piéton avec feux de signalisation",
@@ -2502,7 +2501,7 @@
           "terms": "passage,traversée,cycliste,protégé,signalisation,lumineuse,feux"
         },
         "highway/cycleway/crossing/uncontrolled": {
-          "name": "Passage cycliste marqué",
+          "name": "Passage cycliste non protégé",
           "terms": "passage cycliste,passage piéton,passage clouté"
         },
         "highway/cycleway/crossing/unmarked": {
@@ -2520,7 +2519,7 @@
           "name": "Îlot central"
         },
         "highway/cyclist_waiting_aid": {
-          "name": "Sas vélo",
+          "name": "Support d'attente cycliste",
           "terms": "sas à vélo,sas cycliste,sas pour vélo"
         },
         "highway/elevator": {
@@ -2773,8 +2772,8 @@
           "terms": "miroir de sécurité"
         },
         "highway/traffic_signals": {
-          "name": "Feux tricolores",
-          "terms": "feux de circulation,feux tricolores,feux rouges"
+          "name": "Feux de signalisation routière",
+          "terms": "feux de circulation,feux tricolores,feux rouges,feux de signalisation"
         },
         "highway/trailhead": {
           "name": "Début du sentier",
@@ -2790,7 +2789,7 @@
         },
         "highway/turning_circle": {
           "name": "Zone de manœuvre",
-          "terms": "point de retournement"
+          "terms": "point de retournement;zone de manœuvre"
         },
         "highway/turning_loop": {
           "name": "Boucle de retournement (îlot central)",
@@ -3686,7 +3685,7 @@
           "terms": "cheminée"
         },
         "man_made/clarifier": {
-          "name": "Décanteur d'eaux usées",
+          "name": "Clarificateur d'eaux usées",
           "terms": "clarificateur d'eaux usées,clarificateur,décanteur"
         },
         "man_made/clearcut": {
@@ -4124,8 +4123,8 @@
           "terms": "glacier"
         },
         "natural/grassland": {
-          "name": "Zone naturelle à dominance herbacée",
-          "terms": "prairie"
+          "name": "Prairie naturelle",
+          "terms": "prairie,zone naturelle à dominance herbacée"
         },
         "natural/heath": {
           "name": "Lande",
@@ -4815,7 +4814,7 @@
           "terms": "câble électrique souterrain"
         },
         "power/catenary_mast": {
-          "name": "Caténaire",
+          "name": "Mât de caténaire",
           "terms": "caténaire,câble,éléctrique,alimentation,train,tramway,trolley"
         },
         "power/generator": {
@@ -5170,8 +5169,8 @@
           "terms": "croisement rail-rail,croisement à niveau de voies ferrées"
         },
         "railway/signal": {
-          "name": "Feux tricolores ferroviaires",
-          "terms": "feux tricolores ferroviaires,signalisation ferroviaire"
+          "name": "Feux de signalisation ferroviaire",
+          "terms": "feux de signalisation ferroviaire,feux ferroviaires"
         },
         "railway/station": {
           "name": "Gare ferroviaire"

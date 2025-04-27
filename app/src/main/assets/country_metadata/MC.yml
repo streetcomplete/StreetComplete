@@ -2,6 +2,7 @@
 additionalStreetsignLanguages: [lij]
 advisoryCycleLaneStyle: white dashes without pictogram
 atmOperators: [BNP Paribas]
+chargingStationOperators: [EVBox]
 defaultSpeedLimitHasUrbanOrRural: false
 exclusiveCycleLaneStyle: white dashes
 hasAdvisoryCycleLane: true

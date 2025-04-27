@@ -21,7 +21,7 @@
     <string name="quest_leave_new_note_no">"Нет, просто скрыть"</string>
     <string name="quest_streetName_title">"Как называется эта дорога?"</string>
     <string name="quest_streetName_description">"как написано на дорожных знаках, сокращения должны быть раскрыты:"</string>
-    <string name="quest_streetName_answer_noName_confirmation_description">"Иногда знаки и таблички могут быть только на одном конце улицы. Также, их отсутствие означает, что это переулок, который относится к  более крупной улице. Обычно, если на улице есть какие-либо строения, то у неё есть и название. "</string>
+    <string name="quest_streetName_answer_noName_confirmation_description">"Иногда знаки и таблички могут быть только на одном конце улицы. Также, их отсутствие означает, что это переулок, который относится к более крупной улице. Обычно, если на улице есть какие-либо строения, то у неё есть и название. "</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"Если название может быть написано без сокращений, так и следует его писать. Многие распространённые сокращения уже раскрываются в процессе ввода, но не все."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"Нет сокращений"</string>
     <string name="quest_openingHours_start_time">"Время открытия"</string>
@@ -615,7 +615,6 @@
     <string name="link_ideditor_description">"Простой редактор OSM, работающий в браузере. Оптимизирован для компьютеров и больших планшетов"</string>
     <string name="link_umap_description">"Быстрое создание карт на основе пользовательских данных с возможностью вставить их на веб-сайт"</string>
     <string name="link_opnvkarte_description">"Карта общественного транспорта с остановками"</string>
-    <string name="link_pic4review_description">"Вносите вклад в OSM, просматривая фотографии из вашего города"</string>
     <string name="link_wiki_description">"Эта вики — ваш портал во всё, что связано с OpenStreetMap"</string>
     <string name="link_learnosm_description">"Вы новичок в OpenStreetMap? Эта инструкция для вас"</string>
     <string name="link_neis_one_description">"Огромная база данных со статистикой по участникам OpenStreetMap, например, где и какие правки вы вносили, кто ещё работает поблизости, а также топы"</string>
@@ -1266,6 +1265,8 @@
     <string name="overlay_surface">"Покрытие"</string>
     <string name="overlay_path_surface_segregated">"Разделить на велосипедную и пешеходную части"</string>
     <string name="quest_crossing_title2">"Здесь есть переход?"</string>
+    <string name="quest_crossing_yes">"Да, предназначено как переход"</string>
+    <string name="quest_crossing_no">"Не предназначено как переход, но возможно перейти (н.п. неформальная тропика)"</string>
     <string name="quest_crossing_prohibited">"Нет, пересечение запрещено или невозможно"</string>
     <string name="quest_hairdresser_title">"Какие клиенты посещают эту парикмахерскую?"</string>
     <string name="quest_hairdresser_male_and_female">"Любые"</string>
@@ -1290,9 +1291,9 @@
 
  Данные выделены разными цветами, чтобы дать вам хорошее представление о том, что было записано на данный момент.
  Отсутствующие данные всегда отображаются красным цветом."</string>
-    <string name="overlays_tutorial_edit">"Нажмите на выделенные данные, чтобы отобразить или отредактировать их.  Вы также можете разделить пути или оставить заметки, как в случае с квестами.
+    <string name="overlays_tutorial_edit">"Нажмите на выделенные данные, чтобы отобразить или отредактировать их. Вы также можете разделить пути или оставить заметки, как в случае с квестами.
 
- Кроме того, некоторые наложения позволяют добавлять новые данные в место отображаемого перекрестия, например адреса."</string>
+ Кроме того, некоторые наложения позволяют добавлять новые данные на место отображаемого перекрестия, например адреса."</string>
     <string name="quest_crossing_kerb_height_title">"Какова высота бордюров на этом переходе?"</string>
     <string name="quest_maxheight_sign_title">"Какое ограничение по высоте здесь указано?"</string>
     <string name="quest_leave_new_note_as_answer">"В этом случае вам нужно оставить заметку, в которой вы объясните ситуацию."</string>
@@ -1434,4 +1435,6 @@
     <string name="pedestrian_zone_allowed_sign">"Знак разрешает здесь ездить на велосипеде"</string>
     <string name="pedestrian_zone_no_sign">"Здесь нет явного указания на езду на велосипеде"</string>
     <string name="team_mode_description_overlay_hint">"Если вы используете наложения, каждому из вас следует использовать разные, так как разделены только квесты."</string>
+    <string name="quest_dietType_glutenfree_name_title">"Здесь продаётся продукты без глютена?"</string>
+    <string name="quest_dietType_explanation_glutenfree">"Готовка продуктов без глютена требует знаний, поскольку общие специи и соусы могут содержать глютен. Безглютеновая пища будет явно обозначена как таковая."</string>
 </resources>

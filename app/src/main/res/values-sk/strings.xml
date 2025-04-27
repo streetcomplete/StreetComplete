@@ -611,7 +611,6 @@ A nakoniec, nezabudnite na bezpečnosť - všímajte si vášho okolia a nevstup
     <string name="link_ideditor_description">"Jednoduchý OSM editor v prehliadači optimalizovaný pre počítače alebo veľké tablety"</string>
     <string name="link_umap_description">"Rýchlo vytvorte mapu s vlastnými dátami a vložte ju na váš web"</string>
     <string name="link_opnvkarte_description">"Mapa s linkami a zastávkami verejnej dopravy"</string>
-    <string name="link_pic4review_description">"Prispejte do OSM jednoducho tak, že sa pozriete na obrázky vášho mesta"</string>
     <string name="link_wiki_description">"Wiki je váš východiskový bod pre všetko týkajúce sa OpenStreetMap"</string>
     <string name="link_learnosm_description">"Nepoznáte OpenStreetMap? Toto je sprievodca pre začiatočníkov"</string>
     <string name="link_neis_one_description">"Obrovská kolekcia štatistík pre OpenStreetMap prispievateľa s informáciami o tom, kde a ako ste prispeli, kto ďalší je vo vašom okolí plus rebríčky prispievateľov"</string>

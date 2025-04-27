@@ -614,7 +614,6 @@ Zawsze pamiętaj, aby zachować bezpieczeństwo! Uważaj na swoje otoczenie i ni
     <string name="link_ideditor_description">"Prosty edytor OSM dla przeglądarek. Zoptymalizowany pod komputery osobiste i duże tablety."</string>
     <string name="link_umap_description">"Tworzy napy z własnymi danymi do umieszczenia na swojej stronie www."</string>
     <string name="link_opnvkarte_description">"Mapa tras transportu publicznego i przystanków."</string>
-    <string name="link_pic4review_description">"Współtwórz OSM poprzez oglądanie zdjęć z Twojego miasta"</string>
     <string name="link_wiki_description">"Wiki jest Twoim punktem początkowym do wszystkiego co jest związane z OpenStreetMap"</string>
     <string name="link_learnosm_description">"Nowicjusz w OpenStreetMap? Tutaj jest podręcznik dla początkujących"</string>
     <string name="link_neis_one_description">"Ogromna kolekcja statystyk dla autorów OpenStreetMap takich jak gdzie i jak edytujesz, kto jeszcze edytuje w okolicy oraz rankingi użytkowników"</string>

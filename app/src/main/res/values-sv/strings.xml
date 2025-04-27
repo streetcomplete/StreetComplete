@@ -613,7 +613,6 @@ Slutligen, kom ihåg att ta det säkra före det osäkra: var medveten om din om
     <string name="link_ideditor_description">"Enkel OSM-redigerare för webbläsaren. Optimerad för skrivbordet eller stora surfplattor"</string>
     <string name="link_umap_description">"Skapa kartor med anpassade data snabbt och bädda in dem i din webbplats"</string>
     <string name="link_opnvkarte_description">"En karta över kollektivtrafik och hållplatser"</string>
-    <string name="link_pic4review_description">"Bidra till OSM enkelt genom att titta på bilder av din stad"</string>
     <string name="link_wiki_description">"Wikin är din utgångspunkt för allt som har med OpenStreetMap att göra"</string>
     <string name="link_learnosm_description">"Är du ny på OpenStreetMap? Detta är en nybörjarguide"</string>
     <string name="link_neis_one_description">"En stor samling statistik för OpenStreetMaps bidragsgivare, som var och hur du bidragit, vem som är runt omkring dig plus topplistor"</string>
@@ -1268,6 +1267,8 @@ Flytta den?"</string>
     <string name="overlay_surface">"Beläggningar"</string>
     <string name="overlay_path_surface_segregated">"Uppdelad i cykel- och gångdel"</string>
     <string name="quest_crossing_title2">"Finns det en passage/korsning här?"</string>
+    <string name="quest_crossing_yes">"Ja, tänkt som passage/korsning"</string>
+    <string name="quest_crossing_no">"Inte tilltänkt, men det är möjligt att korsa (t.ex. en informell stig)"</string>
     <string name="quest_crossing_prohibited">"Nej, det är förbjudet eller omöjligt att korsa"</string>
     <string name="quest_hairdresser_title">"Vilka kan klippa sig här?"</string>
     <string name="quest_hairdresser_male_and_female">"Alla"</string>
@@ -1435,4 +1436,5 @@ En våning räknas som en takvåning när dess fönster finns i taket. Det följ
     <string name="pedestrian_zone_allowed_sign">"En skylt tillåter cykling här"</string>
     <string name="pedestrian_zone_no_sign">"Det finns ingen skylt om cykling"</string>
     <string name="team_mode_description_overlay_hint">"Om ni använder extralager bör ni inte använda samma lager som varandra eftersom bara uppdragen är uppdelade."</string>
+    <string name="quest_dietType_glutenfree_name_title">"Erbjuds glutenfria produkter här?"</string>
 </resources>

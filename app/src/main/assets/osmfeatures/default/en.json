@@ -936,6 +936,10 @@
           "aliases": "Hair Salon\nHair Stylist",
           "terms": "haircut"
         },
+        "shop/groundskeeping": {
+          "name": "Lawn & Garden Equipment Store",
+          "terms": "chainsaw,cultivator,garden machinery,garden power tools,groundskeeping,mower, string trimmer,snow blower"
+        },
         "shop/greengrocer": {
           "name": "Greengrocer",
           "aliases": "Produce Store\nProduce Shop",
@@ -1190,6 +1194,10 @@
         "shop/beauty": {
           "name": "Beauty Shop",
           "terms": "spa,salon,tanning"
+        },
+        "shop/bbq": {
+          "name": "Barbecue Shop",
+          "terms": "barbecue,barbeque,bbq,grill"
         },
         "shop/bathroom_furnishing": {
           "name": "Bathroom Furnishing Store"
@@ -4802,7 +4810,7 @@
         },
         "barrier/cycle_barrier": {
           "name": "Cycle Barrier",
-          "terms": "bicycle barrier,bicycling barrier,bike gates,cycling barrier"
+          "terms": "chicane,bike chicane,bike barrier,bicycle barrier,bicycling barrier,bike gates,cycling barrier"
         },
         "barrier/city_wall": {
           "name": "City Wall"
@@ -4981,6 +4989,11 @@
           "name": "Trash Can",
           "aliases": "Waste Basket",
           "terms": "bin,garbage,rubbish,litter,trash"
+        },
+        "amenity/veterinary_pharmacy": {
+          "name": "Veterinary Pharmacy",
+          "aliases": "Animal Pharmacy",
+          "terms": "animal medication,pet clinic,pet doctor,pet meds,pet pharmacy,pet prescriptions,veterinarian,veterinary compounding,veterinary supplies,vet pharmacy"
         },
         "amenity/veterinary": {
           "name": "Veterinary",

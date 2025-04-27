@@ -611,7 +611,6 @@
     <string name="link_ideditor_description">"ویرایشگر ساده OSM به عنوان مرورگر. برای رایانه‌های شخصی یا رایانه‌های لوحی بزرگ بهینه‌سازی شده است."</string>
     <string name="link_umap_description">"نقشه‌ها را با داده‌های سفارشی به سرعت ایجاد کرده و آنها را در وبسایت خود وارد نمایید."</string>
     <string name="link_opnvkarte_description">"نقشه مسیرها و ایستگاه‌های حمل‌ونقل عمومی"</string>
-    <string name="link_pic4review_description">"با مشاهده تصاویر از شهر خود به OSM کمک کنید."</string>
     <string name="link_wiki_description">"تارنمای راهنمای osm نقطه شروع شما برای ویرایش هر چیزی مرتبط با نقشه متن باز OSM است."</string>
     <string name="link_learnosm_description">"به‌تازگی با نقشه متن باز OSM آشنا شده‌اید؟ این یک راهنما برای مبتدی‌ها است"</string>
     <string name="link_neis_one_description">"سیاهه‌ای بزرگ از آمار و تعداد مشارکت‌کنندگان در نقشه متن باز OSM، مانند مکان و چگونگی مشارکت شما و اینکه چه کسی در نزدیکی شماست مانند یک صفحه راهنما"</string>
@@ -1262,6 +1261,8 @@
     <string name="overlay_surface">"سطوح"</string>
     <string name="overlay_path_surface_segregated">"به دو بخش دوچرخه‌سواری و پیاده‌روی تقسیم می‌شود"</string>
     <string name="quest_crossing_title2">"آیا اینجا گذرگاهی وجود دارد؟"</string>
+    <string name="quest_crossing_yes">"بله، به معنای عبور است."</string>
+    <string name="quest_crossing_no">"قرار نیست به عنوان محل عبور استفاده شود، اما همچنان امکان عبور وجود دارد (مثلاً از مسیرهای غیررسمی)"</string>
     <string name="quest_crossing_prohibited">"خیر، عبور ممنوع یا غیرممکن است"</string>
     <string name="quest_hairdresser_title">"چه مشتریانی به این آرایشگاه مراجعه می‌کنند؟"</string>
     <string name="quest_hairdresser_male_and_female">"هر کسی"</string>

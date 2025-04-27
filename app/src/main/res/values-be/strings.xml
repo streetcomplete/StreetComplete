@@ -614,7 +614,6 @@
     <string name="link_ideditor_description">"Просты рэдактар OSM, які працуе ў браўзеры. Аптымізаваны для камп’ютараў і вялікіх планшэтаў"</string>
     <string name="link_umap_description">"Хутка стварайце карты на аснове карыстацкіх даных і ўбудоўвайце іх на свой вэб-сайт"</string>
     <string name="link_opnvkarte_description">"Карта грамадскага транспарту з прыпынкамі"</string>
-    <string name="link_pic4review_description">"Рабіце ўнёсак у OSM, проста праглядаючы фатаграфіі з вашага горада"</string>
     <string name="link_wiki_description">"Гэтая вікі - ваш партал ва ўсё, што звязана з OpenStreetMap"</string>
     <string name="link_learnosm_description">"Вы пачатковец у OpenStreetMap? Гэтая інструкцыя для вас"</string>
     <string name="link_neis_one_description">"Велізарная база даных са статыстыкай па ўдзельніках OpenStreetMap, напрыклад, дзе і якія праўкі вы ўносілі, хто яшчэ працуе паблізу, а таксама топы"</string>
@@ -1408,4 +1407,15 @@
     <string name="action_create_new_poi">"Стварыць POI"</string>
     <string name="auth_error">"Памылка аўтарызацыі. Паспрабуйце ўвайсці яшчэ раз."</string>
     <string name="quest_accessible_for_pedestrians_sidewalk">"Насамрэч, тут тратуар."</string>
+    <string name="quest_bicycle_repair_station_pump">"Насос"</string>
+    <string name="quest_bicycle_repair_station_tools">"Розныя інструменты"</string>
+    <string name="quest_bicycle_repair_station_chain_tool">"для цэпа"</string>
+    <string name="quest_boat_rental_title">"Якія лодкі тут здаюць напракат?"</string>
+    <string name="quest_boat_rental_motorboat">"Маторка"</string>
+    <string name="quest_boat_rental_kayak">"Каяк"</string>
+    <string name="quest_powerAttachment_title">"Як трымаецца гэтая лінія электраперадачы?"</string>
+    <string name="quest_powerAttachment_suspension">"Ізалятары зверху"</string>
+    <string name="quest_powerAttachment_anchor">"Фіксуецца гарызантальна"</string>
+    <string name="quest_powerAttachment_pin">"Падтрымліваюцца знізу (лінія над ізалятарамі)"</string>
+    <string name="quest_dietType_glutenfree_name_title">"Ці прапануюць тут прадукты без глютэна?"</string>
 </resources>

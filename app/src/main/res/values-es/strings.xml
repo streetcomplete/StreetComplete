@@ -608,7 +608,6 @@ Y ya para terminar, ten cuidado: No te despistes y mira a tu alrededor. No entre
     <string name="link_ideditor_description">"Editor OSM simple para el navegador. Optimizado para escritorio o tabletas grandes"</string>
     <string name="link_umap_description">"Crea mapas con capas personalizadas de forma rápida e incrustable en páginas Web"</string>
     <string name="link_opnvkarte_description">"Un mapa de paradas y rutas de transporte público"</string>
-    <string name="link_pic4review_description">"Contribuye a OSM mirando fotos de tu ciudad"</string>
     <string name="link_wiki_description">"La wiki es tu punto de partida para todo lo relacionado con OpenStreetMap"</string>
     <string name="link_learnosm_description">"¿Nuevo en OpenStreetMap? Esta es una guía para principiantes"</string>
     <string name="link_neis_one_description">"Una gran colección de estadísticas para los contribuyentes de OpenStreetMap, como dónde y cómo contribuiste, quién más está a tu alrededor, más tablas de clasificación"</string>
@@ -1419,4 +1418,5 @@ La planta de arriba cuenta como «tejado» si el tejado tiene ventanas. Por lo q
     <string name="pedestrian_zone_designated">"Está hecho para ir en bici"</string>
     <string name="pedestrian_zone_allowed_sign">"Hay señales que permiten ir en bici"</string>
     <string name="pedestrian_zone_no_sign">"Sin señales sobre ir en bici"</string>
+    <string name="team_mode_description_overlay_hint">"Si utilizáis superposiciones, cada persona debe utilizar una diferente, ya que sólo se dividen las misiones."</string>
 </resources>

@@ -1307,6 +1307,10 @@
           "name": "獸醫院",
           "terms": "獸醫診所,動物醫院"
         },
+        "amenity/veterinary_pharmacy": {
+          "name": "獸醫藥局",
+          "terms": "動物用藥店,動物藥局,動物藥房,獸醫藥房"
+        },
         "amenity/waste/dog_excrement": {
           "name": "寵物排泄物箱",
           "terms": "寵物排洩物箱,狗排泄物箱"
@@ -4847,12 +4851,12 @@
           "terms": "風力渦輪"
         },
         "power/line": {
-          "name": "特高壓架空電線",
-          "terms": "架空電線"
+          "name": "高壓電線",
+          "terms": "架空電線,特高壓架空電線"
         },
         "power/minor_line": {
-          "name": "高壓電線",
-          "terms": "高壓電線"
+          "name": "電線",
+          "terms": "電線"
         },
         "power/plant": {
           "name": "發電廠",
@@ -5306,6 +5310,10 @@
           "name": "衛浴用品店",
           "terms": "衛浴用品店"
         },
+        "shop/bbq": {
+          "name": "燒烤店",
+          "terms": "烤肉店,燒肉店"
+        },
         "shop/beauty": {
           "name": "美容店",
           "terms": "美容店"
@@ -5595,6 +5603,10 @@
         "shop/greengrocer": {
           "name": "蔬果行",
           "terms": "蔬果行"
+        },
+        "shop/groundskeeping": {
+          "name": "除草與花園設備商店",
+          "terms": "除草與花園設備商家,花圃設備店,除草與花園設備店"
         },
         "shop/hairdresser": {
           "name": "美髮店",

@@ -1307,6 +1307,10 @@
           "name": "獸醫",
           "terms": "兽医,动物,宠物,医院,家畜,治疗,医疗,急救,手术,猫,狗,犬,门诊"
         },
+        "amenity/veterinary_pharmacy": {
+          "name": "獸醫藥局",
+          "terms": "動物用藥店,動物藥局,動物藥房,獸醫藥房"
+        },
         "amenity/waste/dog_excrement": {
           "name": "寵物排泄物箱",
           "terms": "寵物排洩物箱,狗排泄物箱"
@@ -4506,8 +4510,8 @@
           "terms": "徵信社"
         },
         "office/property_management": {
-          "name": "物业管理",
-          "terms": "物業管理辦公室,物業租賃辦公室"
+          "name": "物业管理/租赁",
+          "terms": "物业,物管,物业管理,物业租赁,不动产,不动产管理,不动产租赁,租赁管理,小区,写字楼"
         },
         "office/quango": {
           "name": "準非政府組織",
@@ -5308,6 +5312,10 @@
           "name": "浴室配件店",
           "terms": "衛浴用品店"
         },
+        "shop/bbq": {
+          "name": "燒烤店",
+          "terms": "烤肉店,燒肉店"
+        },
         "shop/beauty": {
           "name": "美容店",
           "terms": "美容店"
@@ -5597,6 +5605,10 @@
         "shop/greengrocer": {
           "name": "果蔬店",
           "terms": "蔬果行"
+        },
+        "shop/groundskeeping": {
+          "name": "除草與花園設備商店",
+          "terms": "除草與花園設備商家,花圃設備店,除草與花園設備店"
         },
         "shop/hairdresser": {
           "name": "理发点",

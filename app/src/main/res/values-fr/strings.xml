@@ -45,8 +45,8 @@
     <string name="download_area_too_big">"Veuillez zoomer un peu plus"</string>
     <string name="confirmation_cancel_prev_download_title">"Annuler le téléchargement en cours et télécharger ici à la place ?"</string>
     <string name="turn_on_location_request">"La localisation est désactivée. Ouvrir les paramètres pour l’activer maintenant ?"</string>
-    <string name="no_location_permission_warning">"L’autorisation de localisation est nécessaire pour afficher votre position sur la carte et télécharger des données à proximité."</string>
-    <string name="about_title_authors">"Auteurs"</string>
+    <string name="no_location_permission_warning">"L’autorisation « position exacte » est nécessaire pour afficher votre position sur la carte et télécharger des données à proximité."</string>
+    <string name="about_title_authors">"Crédits"</string>
     <string name="about_title_repository">"Page d’accueil du projet"</string>
     <string name="about_title_report_error">"Signaler une erreur"</string>
     <string name="about_title_feedback">"Envoyer un commentaire"</string>
@@ -55,7 +55,7 @@
     <string name="confirmation_authorize_now">"Vous devez autoriser la publication de vos réponses avec votre compte utilisateur OSM. Autoriser maintenant ?"</string>
     <string name="not_authorized">"Non autorisé"</string>
     <string name="version_banned_message">"Cette version de StreetComplete est trop vielle. Veuillez la mettre à jour !"</string>
-    <string name="no_gps_no_quests">"Pour télécharger automatiquement des données à proximité de vous, activez la localisation"</string>
+    <string name="no_gps_no_quests">"Pour télécharger automatiquement les données autour de vous, activez la localisation exacte"</string>
     <string name="later">"Plus tard"</string>
     <string name="quest_streetName_answer_noProperStreet_link">"Ce n’est qu’une section entre deux voies"</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">"Autre chose (laisser une note)"</string>
@@ -119,9 +119,9 @@ Toutefois, avant de télécharger vos modifications, l’application vérifie, �
     <string name="store_listing_short_description">"Application d’arpentage OpenStreetMap"</string>
     <string name="store_listing_full_description">"Aidez à améliorer OpenStreetMap avec StreetComplete !
 
-Cette application recense les informations incomplètes et à améliorer autour de vous et les affiche sur une carte sous forme de marqueurs. L’information liée à chaque marqueur peut être complétée en répondant à une question simple.
+Cette application recense les informations incomplètes autour de vous et les affiche sur une carte sous forme de quêtes. Résolvez chaque quête en vous rendant sur place et en répondant à une question simple pour mettre à jour la carte. 
 
-Les informations que vous saisissez sont ensuite directement ajoutées à OpenStreetMap, avec votre compte OSM, sans qu’il soit nécessaire d’utiliser un autre éditeur de carte."</string>
+Les informations que vous saisissez sont ensuite directement ajoutées à OpenStreetMap en votre nom, sans qu’il soit nécessaire d’utiliser un autre éditeur de carte."</string>
     <string name="quest_name_answer_noName">"Il n’y a pas de nom…"</string>
     <string name="quest_name_answer_noName_confirmation_title">"Vraiment aucun nom ?"</string>
     <string name="quest_name_noName_confirmation_positive">"Oui, pas de nom"</string>
@@ -184,7 +184,7 @@ S’il n’y a pas de panneau applicable à ce tronçon le long de la voie, les 
     <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">"La limite de vitesse par défaut en agglomération est inférieure à celle hors agglomération."</string>
     <string name="quest_maxspeed_answer_noSign_urbanOk">"En agglomération"</string>
     <string name="quest_maxspeed_answer_noSign_ruralOk">"Hors agglomération"</string>
-    <string name="quest_maxspeed_answer_noSign_info_zone">"S’il y a un panneau de ce type au carrefour avec la rue principale, vous ne trouverez pas d’autres panneaux de limitation dans la zone car cette limite de vitesse s’applique à toute la zone."</string>
+    <string name="quest_maxspeed_answer_noSign_info_zone">"S’il y a un panneau de ce type au carrefour avec la rue principale, vous ne trouverez pas forcément d’autres panneaux de limitation dans la zone car cette limite de vitesse s’applique à toute la zone."</string>
     <string name="quest_sport_softball">"Softball"</string>
     <string name="quest_sport_racquet">"Racquetball"</string>
     <string name="quest_sport_ice_skating">"Patinage sur glace"</string>
@@ -287,10 +287,10 @@ Sinon, vous pouvez télécharger un autre clavier dans l’app store. Les clavie
     <string name="quest_maxspeed_answer_advisory_speed_limit">"Juste une limite de vitesse conseillée…"</string>
     <string name="quest_address_house_name_label">"Nom de la maison :"</string>
     <string name="quest_buildingLevels_roofLevelsLabel2">"étages dans le toit"</string>
-    <string name="quest_buildingLevels_levelsLabel2">"étages (sans compter ceux du toit)"</string>
+    <string name="quest_buildingLevels_levelsLabel2">"étages ordinaires (sans toit)"</string>
     <string name="quest_buildingLevels_answer_multipleLevels">"Diffère selon la partie du bâtiment"</string>
     <string name="quest_buildingLevels_answer_description">"Dans ce cas, il suffit de saisir les valeurs de la partie la plus élevée du bâtiment."</string>
-    <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"Les chaussées de cette route sont-elles séparées physiquement par une barrière ? La limite de vitesse par défaut en dépend."</string>
+    <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"Les chaussées de cette route sont-elles séparées physiquement par une barrière ou un terre-plein ? La limite de vitesse par défaut en dépend."</string>
     <string name="about_category_feedback">"Commentaire"</string>
     <string name="quest_leave_new_note_photo">"Joindre une photo"</string>
     <string name="quest_leave_new_note_photo_delete_title">"Voulez-vous supprimer cette photo ?"</string>
@@ -463,7 +463,7 @@ Sinon, vous pouvez télécharger un autre clavier dans l’app store. Les clavie
     <string name="quest_buildingType_toilets">"Toilettes"</string>
     <string name="quest_maxspeed_sign_question">"Qu’est-ce qui indique la limite de vitesse ?"</string>
     <string name="quest_segregated_title">"Comment sont aménagées les voies piétonnes et cyclables ici ?"</string>
-    <string name="dialog_tutorial_upload">"Pour envoyer vos modifications manuellement, utilisez le bouton de la barre d’outils qui ressemble à ceci."</string>
+    <string name="dialog_tutorial_upload">"Pour envoyer vos modifications manuellement, utilisez le bouton du menu principal qui ressemble à ceci."</string>
     <string name="quest_segregated_separated">"Séparés l’un de l’autre"</string>
     <string name="quest_segregated_mixed">"Cyclistes et piétons partagent le même espace"</string>
     <string name="quest_maxheight_title">"Quelle est la limite de hauteur à cet endroit ?"</string>
@@ -487,7 +487,7 @@ Sinon, vous pouvez télécharger un autre clavier dans l’app store. Les clavie
     <string name="quest_traffic_signals_button_title">"Ces feux tricolores ont-ils un bouton pour demander le feu vert pour les piétons ?"</string>
     <string name="quest_motorcycleParkingCapacity_title">"Combien de motos peuvent être garées ici ?"</string>
     <string name="quest_motorcycleParkingCoveredStatus_title">"Ce parking moto est-il couvert (protégé de la pluie) ?"</string>
-    <string name="default_disabled_msg_maxspeed">"Ce type de quête est désactivé par défaut car vous devez généralement vérifier les panneaux de limitation de vitesse sur toute la voie et pas seulement sur le tronçon mis en évidence. Il peut parfois être particulièrement long de résoudre une seule quête."</string>
+    <string name="default_disabled_msg_maxspeed">"Ce type de quête est désactivé par défaut car vous devez généralement vérifier les panneaux de limitation de vitesse sur toute la voie et pas seulement sur le tronçon mis en évidence. Cela peut représenter beaucoup de travail pour la résolution d’une simple quête."</string>
     <string name="pref_title_quests_restore_hidden">"Rétablir les quêtes cachées"</string>
     <string name="on_level">"à l’étage %s"</string>
     <string name="underground">"en sous-sol"</string>
@@ -526,7 +526,7 @@ Découper maintenant ?"</string>
     <string name="quest_maxweight_unsupported_sign_request_photo">"Souhaitez-vous laisser une note ? Une note avec une photo permettra à d’autres cartographes de s’en occuper."</string>
     <string name="quest_handrail_title">"Ces marches ont-elles une main courante ?"</string>
     <string name="quest_ref_answer_noRef">"Aucun numéro ou code visible…"</string>
-    <string name="quest_street_side_puzzle_tutorial">"La route de l’illustration est tournée dans le même sens que sur la carte, à l’emplacement du marqueur."</string>
+    <string name="quest_street_side_puzzle_tutorial">"La route de l’illustration est tournée dans le même sens que sur la carte, à l’emplacement du marqueur. Faites pivoter la carte et vous verrez bien."</string>
     <string name="quest_recycling_materials_title">"Qu’est-ce qui peut être déposé ici pour le recyclage ?"</string>
     <string name="quest_recycling_materials_note">"S’il est possible de recycler autre chose ici que ce qui est présent sur la liste, veuillez laisser une note à la place."</string>
     <string name="quest_recycling_type_batteries">"Batteries"</string>
@@ -562,7 +562,7 @@ Découper maintenant ?"</string>
     <string name="quest_tourism_information_map">"Carte"</string>
     <string name="quest_tourism_information_guidepost">"Panneau indicateur"</string>
     <string name="quest_recycling_materials_answer_waste">"Pour les ordures génériques"</string>
-    <string name="quest_recycling_materials_answer_waste_description">"Il s’agit donc d’un conteneur pour tous les déchets, tels que des déchets ménagers mis en sac ou des déchets issus d’établissements commerciaux ?"</string>
+    <string name="quest_recycling_materials_answer_waste_description">"Il s’agit donc d’un conteneur pour tout type de déchets, tels que des déchets ménagers mis en sac ou des déchets issus d’établissements commerciaux ?"</string>
     <string name="user_profile">"Mon profil"</string>
     <string name="user_login">"Se connecter"</string>
     <string name="user_logout">"Se déconnecter"</string>
@@ -613,7 +613,6 @@ Enfin, n’oubliez pas de rester prudent : soyez attentifs à votre environnemen
     <string name="link_ideditor_description">"Éditeur OSM simple, accessible depuis un navigateur internet. Optimisé pour les ordinateurs ou les grandes tablettes"</string>
     <string name="link_umap_description">"Créez rapidement des cartes avec vos données et intégrez-les dans votre site web"</string>
     <string name="link_opnvkarte_description">"Une carte des itinéraires et des arrêts des transports en commun"</string>
-    <string name="link_pic4review_description">"Contribuez simplement à OSM en visionnant des photos de votre ville"</string>
     <string name="link_wiki_description">"Le wiki est votre point d’entrée pour tout ce qui concerne OpenStreetMap"</string>
     <string name="link_learnosm_description">"Vous êtes nouveau sur OpenStreetMap ? Voici le guide pour débuter"</string>
     <string name="link_neis_one_description">"Une vaste collection de statistiques concernant les contributeurs d’OpenStreetMap telles que le lieu et la manière dont vous avez contribué, les contributeurs proches de vous ainsi que des classements"</string>
@@ -649,7 +648,7 @@ Enfin, n’oubliez pas de rester prudent : soyez attentifs à votre environnemen
 Ces données sont essentielles non seulement pour le facteur mais aussi pour tout système de navigation."</string>
     <string name="achievement_building_title">"Gratte-ciel"</string>
     <string name="achievement_building_solved_X">"Vous avez résolu %d quêtes liées aux bâtiments.
-Notez que StreetComplete vous demandera les numéros de rues après avoir indiqué le type de bâtiment."</string>
+Remarquez que cette appli ne vous demandera les numéros de rues qu’après avoir indiqué le type de bâtiment."</string>
     <string name="achievement_blind_title">"Sixième sens"</string>
     <string name="achievement_blind_solved_X">"Vous avez résolu %d quêtes utiles pour les déficients visuel."</string>
     <string name="achievement_pedestrian_title">"Coureur"</string>
@@ -657,7 +656,7 @@ Notez que StreetComplete vous demandera les numéros de rues après avoir indiqu
     <string name="achievement_veg_title">"Bienveillance animale"</string>
     <string name="achievement_veg_solved_X">"Vous avez résolu %d quêtes utiles pour les personnes ne mangeant pas de viande !"</string>
     <string name="achievement_car_title">"Sur la route"</string>
-    <string name="achievement_car_solved_X">"Vous avez résolu %d quêtes qui enrichissent la voirie d’OpenStreetMap et lui permet d’avoir pignon sur rue !"</string>
+    <string name="achievement_car_solved_X">"Vous avez résolu %d quêtes qui enrichissent la voirie d’OpenStreetMap. Elles lui permettent d’avoir pignon sur rue !"</string>
     <string name="unread_messages_message">"Vous avez %d messages non-lus dans votre boîte de réception"</string>
     <string name="unread_messages_button">"Ouvrir la boîte de réception"</string>
     <string name="action_about2">"À propos"</string>
@@ -679,7 +678,7 @@ global"</string>
 actifs"</string>
     <string name="user_profile_achievement_levels">"Niveaux
 accomplis"</string>
-    <string name="quest_address_street_no_named_streets">"Cela n’appartient pas à une rue précise"</string>
+    <string name="quest_address_street_no_named_streets">"Cela n’appartient pas à une rue précise…"</string>
     <string name="quest_address_street_place_name_label">"Nom du lieu :"</string>
     <string name="quest_recycling_type_cooking_oil">"Huile de friture"</string>
     <string name="quest_recycling_type_engine_oil">"Huile de moteur"</string>
@@ -705,7 +704,7 @@ accomplis"</string>
     <string name="quest_openingHours_add_off_days">"Ajouter des jours de fermeture"</string>
     <string name="quest_openingHours_off_day">"Jour de fermeture"</string>
     <string name="quest_openingHours_unspecified_range">"Non spécifié"</string>
-    <string name="quest_cycleway_resurvey_title">"Est-ce que c’est toujours la situation des routes cyclables, ici ?"</string>
+    <string name="quest_cycleway_resurvey_title">"Est-ce toujours l’état de l’infrastructure cyclable ici ?"</string>
     <string name="pref_title_resurvey_intervals">"Intervalles d’enquête"</string>
     <string name="resurvey_intervals_less_often">"Moins souvent"</string>
     <string name="resurvey_intervals_default">"Défaut"</string>
@@ -762,7 +761,8 @@ accomplis"</string>
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">"Il y a une voie à double sens pour le tourne-à-gauche"</string>
     <string name="quest_address_answer_no_housenumber_message2b">"Est-ce correct ?"</string>
     <string name="quest_maxheight_below_bridge_title">"Quelle est la limite de hauteur sous le pont ?"</string>
-    <string name="quest_maxheight_split_way_hint">"Si cela ne concerne pas la totalité de la voie, vous pouvez répondre « %s »."</string>
+    <string name="quest_maxheight_split_way_hint">"Cette question est aussi posée pour les routes qui passent sous des ponts, des toits, des tuyauteries aériennes, etc.
+Si cela ne concerne pas la totalité de la voie, vous pouvez répondre « %s »."</string>
     <string name="quest_tactile_paving_kerb_title">"Y a t-il un revêtement podotactile à cet endroit ?"</string>
     <string name="quest_kerb_height_title">"Quelle est la hauteur de ce ressaut ?"</string>
     <string name="quest_kerb_height_flush">"Au niveau de la route"</string>
@@ -771,8 +771,8 @@ accomplis"</string>
     <string name="quest_kerb_height_lowered_ramp">"Il s’agit d’une pente douce"</string>
     <string name="quest_lanes_answer_lanes_description2">"Spécifiez le nombre total de voies délimitées (dans les deux sens) utilisables pour le trafic routier. Les voies cyclables et emplacements de parking ne comptent pas.
 Si certaines voies sont réservées aux bus, laissez une note."</string>
-    <string name="quest_lanes_answer_lanes_description_one_side2">"Spécifiez le nombre de voies délimitées utilisables pour le trafic routier. Les voies cyclables et emplacement de parking ne comptent pas.
-Si certaines voies sont réservées aux bus, laissez une note."</string>
+    <string name="quest_lanes_answer_lanes_description_one_side2">"Spécifiez le nombre de voies délimitées utilisables par le trafic routier. Les voies cyclables et emplacements de parking ne comptent pas.
+Si certaines voies sont réservées aux bus, laissez plutôt une note."</string>
     <string name="quest_surface_value_rock">"Rocher"</string>
     <string name="quest_parkingType_street_side">"Stationnement à coté de la chaussée"</string>
     <string name="quest_parkingType_lane">"Stationnement sur la chaussée"</string>
@@ -818,7 +818,7 @@ Prenez garde de voire toutes les options, certains cas sont non triviaux, comme 
     <string name="team_mode_deactivated">"Le mode par équipe est désactivé"</string>
     <string name="undo_confirm_title2">"Annuler cette contribution ?"</string>
     <string name="toast_undo_unavailable">"Cette contribution est déjà téléversée et ne peut pas être annulée"</string>
-    <string name="quest_cycleway_value_separate">"Affichée distinctement sur la carte"</string>
+    <string name="quest_cycleway_value_separate">"affichée distinctement sur la carte"</string>
     <string name="created_note_action_title">"Créer une note"</string>
     <string name="commented_note_action_title">"Commenter une note"</string>
     <string name="hid_action_description">"Vous l’avez caché"</string>
@@ -847,9 +847,9 @@ Les données sont automatiquement mises à jour au bout de %1$s jours et les don
     <string name="quest_barrier_type_log">"Tronc d’arbre"</string>
     <string name="quest_barrier_type_kerb">"Bordure"</string>
     <string name="quest_barrier_type_height_restrictor">"Portique limiteur de hauteur"</string>
-    <string name="quest_barrier_full_height_turnstile">"Portillon d’accès pleine hauteur"</string>
+    <string name="quest_barrier_full_height_turnstile">"Tourniquet pleine hauteur"</string>
     <string name="quest_barrier_type_turnstile">"Portillon d’accès"</string>
-    <string name="quest_barrier_type_passage">"Passage à travers un mur/clôture/etc"</string>
+    <string name="quest_barrier_type_passage">"Passage à travers un mur/clôture/etc."</string>
     <string name="quest_barrier_type_debris_pile">"Tas de débris"</string>
     <string name="quest_barrier_type_stile_squeezer">"Échalier étroit"</string>
     <string name="quest_barrier_type_stile_ladder">"Échalier (échelle)"</string>
@@ -876,7 +876,7 @@ Les données sont automatiquement mises à jour au bout de %1$s jours et les don
     <string name="about_title_faq">"FAQ"</string>
     <string name="quest_buildingLevels_title2">"Combien d’étages au-dessus du sous-sol compte ce bâtiment ?"</string>
     <string name="quest_buildingLevels_title_buildingPart2">"Combien d’étages au-dessus du sous-sol compte cette partie du bâtiment ?"</string>
-    <string name="pref_subtitle_quests_preset_name">"Préréglages : %s"</string>
+    <string name="pref_subtitle_quests_preset_name">"préréglage : %s"</string>
     <string name="default_disabled_msg_roofShape">"Ce type de quête est désactivé par défaut car la forme des toits est souvent peu visible depuis la rue. Cette quête est également très chronophage. Il est souvent plus efficace de renseigner ces informations depuis des images satellitaires."</string>
     <string name="quest_religion_animist">"Animiste"</string>
     <string name="quest_construction_steps_title">"Ces étapes sont-elles terminées ?"</string>
@@ -896,7 +896,9 @@ Les données sont automatiquement mises à jour au bout de %1$s jours et les don
     <string name="quest_bollard_type_foldable2">"Pliable (avec ou sans clé)"</string>
     <string name="no_search_results">"Aucun résultat"</string>
     <string name="quest_selection_hint_title">"Trop de choses à faire ?"</string>
-    <string name="quest_selection_hint_message">"Contribuer doit rester agréable ! Si vous êtes submergé, vous pouvez choisir quelles quêtes sont affichées et dans quel ordre dans les réglages."</string>
+    <string name="quest_selection_hint_message">"Contribuer doit rester agréable !
+
+Si vous êtes submergé par le nombre de quêtes, vous pouvez choisir quelles quêtes sont affichées et dans quel ordre dans les réglages."</string>
     <string name="quest_presets_preset_add">"Ajouter le préréglage"</string>
     <string name="quest_presets_preset_name">"Nom du préréglage"</string>
     <string name="quest_presets_default_name">"Par défaut"</string>
@@ -1109,7 +1111,7 @@ Faites la même chose pour l’autre côté, si présent."</string>
     <string name="quest_bicycle_rental_capacity_title">"Combien d’espaces de location de vélos il y a-il ici ?"</string>
     <string name="quest_bicycle_rental_type_title">"Quel type de location de vélos est ceci ?"</string>
     <string name="quest_bicycle_rental_type_docking_station">"Station où les vélos sont verrouillés"</string>
-    <string name="quest_bicycle_rental_type_dropoff_point">"Endroit désigné (vélos verrouillés individuellement)"</string>
+    <string name="quest_bicycle_rental_type_dropoff_point">"Endroit dédié (vélos verrouillés individuellement)"</string>
     <string name="quest_bicycle_rental_type_human">"Location de vélo avec personnel"</string>
     <string name="quest_bicycle_rental_type_shop_with_rental">"Magasin de vélos qui propose des vélos à louer"</string>
     <string name="quest_bicycle_shop_repair_title">"Des services de réparation de vélos sont-ils proposés ici ?"</string>
@@ -1159,7 +1161,7 @@ Faites la même chose pour l’autre côté, si présent."</string>
     <string name="quest_entrance_reference_flat_range_label">"Rangée d’appartements :"</string>
     <string name="quest_entrance_reference_flat_range_to">"à"</string>
     <string name="default_disabled_msg_overlay">"Cette quête est désactivée par défaut car il existe une surcouche qui est plus facile à réaliser et plus efficace pour mettre à jour ces données."</string>
-    <string name="quest_camp_drinking_water_title">"L’eau potable est elle disponible librement aux campeurs ici ?"</string>
+    <string name="quest_camp_drinking_water_title">"L’eau potable est elle disponible librement pour les hôtes ?"</string>
     <string name="quest_camp_shower_title">"Y a-t-il des douches ici ?"</string>
     <string name="quest_camp_power_supply_title">"Y a-t-il la possibilité pour les clients de recharger leur téléphone, ordinateur portable, etc. ici ?"</string>
     <string name="quest_camp_type_title">"Qui peut camper ici ?"</string>
@@ -1384,7 +1386,7 @@ Un niveau compte comme un niveau de toit lorsque ses fenêtres se trouvent dans 
     <string name="pref_category_quests">"Quêtes"</string>
     <string name="pref_title_language_select2">"Langue"</string>
     <string name="pref_title_resurvey_intervals_summary">"A quelle fréquence vous sera demandé de confirmer la véracité d’une information déjà connue."</string>
-    <string name="questList_disabled_by_default">"Affiché par défaut"</string>
+    <string name="questList_disabled_by_default">"Désactivé par défaut"</string>
     <string name="action_manage_presets_summary">"Sous quel nom est enregistré la sélection de quête ci-dessous."</string>
     <string name="quest_multiselect_hint">"Sélectionner tous ceux qui correspondent :"</string>
     <string name="quest_barrier_opening_width_gate">"Quelle est la largeur de l’ouverture ?"</string>
@@ -1434,4 +1436,7 @@ Un niveau compte comme un niveau de toit lorsque ses fenêtres se trouvent dans 
     <string name="pedestrian_zone_allowed_sign">"Un panneau autorise les vélos ici"</string>
     <string name="pedestrian_zone_no_sign">"Aucune indication panticulière concernant les vélos"</string>
     <string name="team_mode_description_overlay_hint">"Si vous utilisez des overlays, chacun d’entre vous doit en utiliser un différent, car seules les quêtes sont réparties."</string>
+    <string name="quest_dietType_glutenfree_name_title">"Des produits sans gluten sont-ils proposés ici ?"</string>
+    <string name="quest_dietType_explanation_glutenfree">"La préparation de produits sans gluten nécessite des connaissances, car les épices et les sauces courantes peuvent contenir du gluten. Les aliments sans gluten doivent être explicitement étiquetés comme tels."</string>
+    <string name="quest_construction_minor_title">"Les petits travaux routiers sont-ils terminés ?"</string>
 </resources>

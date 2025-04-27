@@ -673,7 +673,8 @@
           "name": "Parkovisko"
         },
         "amenity/parking/multi-storey": {
-          "name": "Viacúrovňová parkovacia garáž"
+          "name": "Viacposchodová parkovacia garáž",
+          "terms": "viacposchodova parkovacia garaz,parkovací dom,parkovaci dom"
         },
         "amenity/parking/park_ride": {
           "name": "Odstavné parkovisko",
@@ -684,7 +685,8 @@
           "terms": "postranné,postranne,pri ceste"
         },
         "amenity/parking/underground": {
-          "name": "Podzemné parkovisko"
+          "name": "Podzemné parkovisko",
+          "terms": "podzemne parkovisko"
         },
         "amenity/parking_entrance": {
           "name": "Vjazd / výjazd z / do garáže"
@@ -2008,6 +2010,9 @@
           "name": "Hlavný vchod",
           "terms": "vchod,dvere,vstup"
         },
+        "entrance/shop": {
+          "name": "Vchod do obchodu"
+        },
         "entrance/staircase": {
           "name": "Vchod na schodisko"
         },
@@ -2763,6 +2768,10 @@
         "leisure/bandstand": {
           "name": "Hudobný pavilón",
           "terms": "hudobny pavilon,hudobný altán,hudobny altan,altan,pavilón,pavilon,pódium,podium"
+        },
+        "leisure/bathing_place": {
+          "name": "Miesto na kúpanie (prírodné)",
+          "terms": "miesto na kupanie,kúpanie,kupanie"
         },
         "leisure/beach_resort": {
           "name": "Plážový rezort"
@@ -4620,14 +4629,14 @@
         },
         "shop/car": {
           "name": "Predajňa áut",
-          "terms": "predajna aut,diler,díler,autosalón,autosalon,autobazár,autobazar"
+          "terms": "predajna aut,diler,díler,autosalón,autosalon,autobazár,autobazar,predajňa automobilov,predajna automobilov,automobily,autá,auta"
         },
         "shop/car/second_hand": {
           "name": "Autobazár"
         },
         "shop/car_parts": {
           "name": "Predajňa autodielov",
-          "terms": "predajna autodielov,autodiely"
+          "terms": "predajna autodielov,autodiely,autopríslušenstvo,autoprislusenstvo,náhradné diely,nahradne dielydiely pre automobily"
         },
         "shop/car_repair": {
           "name": "Autoservis",

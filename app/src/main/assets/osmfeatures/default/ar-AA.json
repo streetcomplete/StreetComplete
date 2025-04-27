@@ -1065,6 +1065,9 @@
           "name": "حظيرة حيوانات",
           "terms": "حظيرة حيوانات،محجر حيوانات،حوش حيوانات،حوز حيوانات،ضميمة حيوانات"
         },
+        "attraction/big_wheel": {
+          "name": "عجلة فيريس"
+        },
         "attraction/bumper_car": {
           "name": "Bumper Cars"
         },

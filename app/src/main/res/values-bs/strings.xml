@@ -616,7 +616,6 @@ Konačno, ne zaboravite paziti na sigurnost: budite svjesni svoje okoline i ne u
     <string name="link_ideditor_description">"Jednostavan OSM uređivač za web preglednik. Optimiziran je za desktop kompjutere ili velike tablete"</string>
     <string name="link_umap_description">"Brzo izradite karte s prilagođenim podacima i ugradite ih na svoje web stranice"</string>
     <string name="link_opnvkarte_description">"Karta javnog prijevoza sa rutama i stajalištima"</string>
-    <string name="link_pic4review_description">"Doprinesite OSM-u jednostavno gledajući slike vašeg grada"</string>
     <string name="link_wiki_description">"Wiki je vaše polazište za sve povezano OpenStreetMapom"</string>
     <string name="link_learnosm_description">"Novi ste u OpenStreetMapu? Ovo je vodič za početnike"</string>
     <string name="link_neis_one_description">"Ogromna zbirka statistika za suradnike OpenStreetMap-a; poput mjesta i načina na koji ste dali svoj doprinos, tko je još blizu vas, te rang liste"</string>

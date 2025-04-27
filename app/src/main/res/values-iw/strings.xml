@@ -604,7 +604,6 @@
     <string name="link_ideditor_description">"עורך OSM פשוט עבור דפדפנים. מותאם למחשב שולחני או טאבלטים גדולים."</string>
     <string name="link_umap_description">"יצירת מפות עם מידע מותאם בקלות והטמעתן באתר שלך"</string>
     <string name="link_opnvkarte_description">"מפה עם מסלולי תחבורה ציבורית ותחנות"</string>
-    <string name="link_pic4review_description">"תרומה ל-OSM פשוט על ידי צפייה בתמונות של העיר שלך"</string>
     <string name="link_wiki_description">"ה-wiki היא נקודת ההתחלה לכל דבר שקשור ב-OpenStreetMap"</string>
     <string name="link_learnosm_description">"חדשים פה ב-OpenStreetMap? זהו המדריך למתחילים"</string>
     <string name="link_neis_one_description">"אוסף ענק של סטטיסטיקות עבור התורמים ל-OpenStreetMap, כמו היכן וכיצד תרמת, מי עוד סביבך וגם טבלאות מובילים"</string>
