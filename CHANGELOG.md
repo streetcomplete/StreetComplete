@@ -1,6 +1,6 @@
 # Changelog
 
-## v61.0
+## v61.0-beta1
 
 ### Android below 7.1 no longer supported (#6210)
 
