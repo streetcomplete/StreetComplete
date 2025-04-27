@@ -32,11 +32,14 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.commit
 import androidx.lifecycle.lifecycleScope
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
+import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.download.tiles.asBoundingBoxOfEnclosingTiles
 import de.westnordost.streetcomplete.data.edithistory.EditKey
+import de.westnordost.streetcomplete.data.meta.CountryInfos
+import de.westnordost.streetcomplete.data.meta.getByLocation
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
@@ -163,6 +166,8 @@ class MainActivity :
     private val questsHiddenSource: QuestsHiddenSource by inject()
     private val featureDictionary: Lazy<FeatureDictionary> by inject(named("FeatureDictionaryLazy"))
     private val soundFx: SoundFx by inject()
+    private val countryInfos: CountryInfos by inject()
+    private val countryBoundaries: Lazy<CountryBoundaries> by inject(named("CountryBoundariesLazy"))
 
     private lateinit var locationManager: FineLocationManager
 
@@ -968,8 +973,17 @@ class MainActivity :
         f.requireArguments().putAll(args)
 
         if (quest is OsmQuest) {
-            val element = withContext(Dispatchers.IO) { mapDataWithEditsSource.get(quest.elementType, quest.elementId) } ?: return
-            val osmArgs = AbstractOsmQuestForm.createArguments(element)
+            val element = withContext(Dispatchers.Default) { mapDataWithEditsSource.get(quest.elementType, quest.elementId) } ?: return
+            val countryInfo = withContext(Dispatchers.Default) {
+                countryInfos.getByLocation(
+                    countryBoundaries.value,
+                    quest.geometry.center.longitude,
+                    quest.geometry.center.latitude,
+                )
+            }
+
+
+            val osmArgs = AbstractOsmQuestForm.createArguments(element, countryInfo)
             f.requireArguments().putAll(osmArgs)
             showHighlightedElements(quest, element)
         }
