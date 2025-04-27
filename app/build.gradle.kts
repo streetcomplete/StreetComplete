@@ -107,7 +107,7 @@ repositories {
 }
 
 dependencies {
-    val mockitoVersion = "5.15.2"
+    val mockitoVersion = "5.17.0"
 
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.5")
 
@@ -121,7 +121,7 @@ dependencies {
     androidTestImplementation(kotlin("test"))
 
     // dependency injection
-    implementation(platform("io.insert-koin:koin-bom:4.0.2"))
+    implementation(platform("io.insert-koin:koin-bom:4.0.4"))
     implementation("io.insert-koin:koin-core")
     implementation("io.insert-koin:koin-android")
     implementation("io.insert-koin:koin-androidx-workmanager")
@@ -139,7 +139,7 @@ dependencies {
     implementation("androidx.localbroadcastmanager:localbroadcastmanager:1.1.0")
 
     // Jetpack Compose
-    val composeBom = platform("androidx.compose:compose-bom:2025.02.00")
+    val composeBom = platform("androidx.compose:compose-bom:2025.04.01")
     implementation(composeBom)
     androidTestImplementation(composeBom)
     implementation("androidx.compose.material:material")
@@ -160,27 +160,27 @@ dependencies {
     implementation("io.github.kevinnzou:compose-webview-multiplatform-android:1.9.40")
 
     // photos
-    implementation("androidx.exifinterface:exifinterface:1.4.0")
+    implementation("androidx.exifinterface:exifinterface:1.4.1")
 
     // settings
     implementation("com.russhwolf:multiplatform-settings:1.3.0")
 
     // Kotlin
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.1")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.10.1")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.10.2")
     implementation("org.jetbrains.kotlinx:kotlinx-io-core:0.7.0")
 
     // Date/time
     api("org.jetbrains.kotlinx:kotlinx-datetime:0.6.2")
 
     // scheduling background jobs
-    implementation("androidx.work:work-runtime-ktx:2.10.0")
+    implementation("androidx.work:work-runtime-ktx:2.10.1")
 
     // HTTP Client
-    implementation("io.ktor:ktor-client-core:3.1.1")
-    implementation("io.ktor:ktor-client-android:3.1.1")
-    implementation("io.ktor:ktor-client-encoding:3.1.1")
-    testImplementation("io.ktor:ktor-client-mock:3.1.1")
+    implementation("io.ktor:ktor-client-core:3.1.2")
+    implementation("io.ktor:ktor-client-android:3.1.2")
+    implementation("io.ktor:ktor-client-encoding:3.1.2")
+    testImplementation("io.ktor:ktor-client-mock:3.1.2")
 
     // finding in which country we are for country-specific logic
     implementation("de.westnordost:countryboundaries:2.1")
@@ -198,15 +198,14 @@ dependencies {
     implementation("com.ionspin.kotlin:bignum:0.3.10")
 
     // serialization
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.8.0")
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json-io:1.8.0")
-    implementation("com.charleskorn.kaml:kaml:0.72.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.8.1")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json-io:1.8.1")
+    implementation("com.charleskorn.kaml:kaml:0.77.1")
     implementation("io.github.pdvrieze.xmlutil:core:0.91.0")
     implementation("io.github.pdvrieze.xmlutil:core-io:0.91.0")
 
     // map and location
-    // upgrading MapLibre blocked by https://github.com/maplibre/maplibre-native/issues/3309
-    implementation("org.maplibre.gl:android-sdk:11.8.0")
+    implementation("org.maplibre.gl:android-sdk:11.8.6")
 
     // opening hours parser
     implementation("de.westnordost:osm-opening-hours:0.2.0")
@@ -226,9 +225,9 @@ val bcp47ExportLanguages = setOf(
 )
 
 // see https://github.com/osmlab/name-suggestion-index/tags for latest version
-val nsiVersion = "v6.0.20250309"
+val nsiVersion = "v6.0.20250427"
 // see https://github.com/openstreetmap/id-tagging-schema/releases for latest version
-val presetsVersion = "v6.9.1"
+val presetsVersion = "v6.10.0"
 
 val poEditorProjectId = "97843"
 
