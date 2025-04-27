@@ -10,7 +10,7 @@ import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestSource
 import de.westnordost.streetcomplete.data.overlays.SelectedOverlaySource
 import de.westnordost.streetcomplete.data.visiblequests.QuestsHiddenSource
 import de.westnordost.streetcomplete.data.visiblequests.TeamModeQuestFilter
-import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeSource
+import de.westnordost.streetcomplete.data.visiblequests.VisibleEditTypeSource
 import de.westnordost.streetcomplete.overlays.Overlay
 import de.westnordost.streetcomplete.testutils.any
 import de.westnordost.streetcomplete.testutils.bbox
@@ -35,7 +35,7 @@ class VisibleQuestsSourceTest {
     private lateinit var questsHiddenSource: QuestsHiddenSource
     private lateinit var questTypeRegistry: QuestTypeRegistry
     private lateinit var osmNoteQuestSource: OsmNoteQuestSource
-    private lateinit var visibleQuestTypeSource: VisibleQuestTypeSource
+    private lateinit var visibleEditTypeSource: VisibleEditTypeSource
     private lateinit var teamModeQuestFilter: TeamModeQuestFilter
     private lateinit var selectedOverlaySource: SelectedOverlaySource
     private lateinit var source: VisibleQuestsSource
@@ -43,7 +43,7 @@ class VisibleQuestsSourceTest {
     private lateinit var noteQuestListener: OsmNoteQuestSource.Listener
     private lateinit var questListener: OsmQuestSource.Listener
     private lateinit var questsHiddenListener: QuestsHiddenSource.Listener
-    private lateinit var visibleQuestTypeListener: VisibleQuestTypeSource.Listener
+    private lateinit var visibleEditTypeListener: VisibleEditTypeSource.Listener
     private lateinit var teamModeListener: TeamModeQuestFilter.TeamModeChangeListener
     private lateinit var selectedOverlayListener: SelectedOverlaySource.Listener
 
@@ -57,12 +57,12 @@ class VisibleQuestsSourceTest {
         osmNoteQuestSource = mock()
         osmQuestSource = mock()
         questsHiddenSource = mock()
-        visibleQuestTypeSource = mock()
+        visibleEditTypeSource = mock()
         teamModeQuestFilter = mock()
         selectedOverlaySource = mock()
         questTypeRegistry = QuestTypeRegistry(questTypes.mapIndexed { index, questType -> index to questType })
 
-        on(visibleQuestTypeSource.isVisible(any())).thenReturn(true)
+        on(visibleEditTypeSource.isVisible(any())).thenReturn(true)
         on(teamModeQuestFilter.isVisible(any())).thenReturn(true)
 
         on(osmNoteQuestSource.addListener(any())).then { invocation ->
@@ -77,8 +77,8 @@ class VisibleQuestsSourceTest {
             questsHiddenListener = (invocation.arguments[0] as QuestsHiddenSource.Listener)
             Unit
         }
-        on(visibleQuestTypeSource.addListener(any())).then { invocation ->
-            visibleQuestTypeListener = (invocation.arguments[0] as VisibleQuestTypeSource.Listener)
+        on(visibleEditTypeSource.addListener(any())).then { invocation ->
+            visibleEditTypeListener = (invocation.arguments[0] as VisibleEditTypeSource.Listener)
             Unit
         }
         on(teamModeQuestFilter.addListener(any())).then { invocation ->
@@ -92,7 +92,7 @@ class VisibleQuestsSourceTest {
 
         source = VisibleQuestsSource(
             questTypeRegistry, osmQuestSource, osmNoteQuestSource, questsHiddenSource,
-            visibleQuestTypeSource, teamModeQuestFilter, selectedOverlaySource
+            visibleEditTypeSource, teamModeQuestFilter, selectedOverlaySource
         )
 
         listener = mock()
@@ -166,7 +166,7 @@ class VisibleQuestsSourceTest {
 
     @Test fun `osm quests added of invisible type does not trigger listener`() {
         val quests = listOf(osmQuest(elementId = 1), osmQuest(elementId = 2))
-        on(visibleQuestTypeSource.isVisible(any())).thenReturn(false)
+        on(visibleEditTypeSource.isVisible(any())).thenReturn(false)
         on(questsHiddenSource.get(any())).thenReturn(null)
 
         questListener.onUpdated(quests, emptyList())
@@ -184,7 +184,7 @@ class VisibleQuestsSourceTest {
 
     @Test fun `osm note quests added of invisible type does not trigger listener`() {
         val quests = listOf(osmNoteQuest(1L), osmNoteQuest(2L))
-        on(visibleQuestTypeSource.isVisible(any())).thenReturn(false)
+        on(visibleEditTypeSource.isVisible(any())).thenReturn(false)
         on(questsHiddenSource.get(any())).thenReturn(null)
 
         noteQuestListener.onUpdated(quests, emptyList())
@@ -192,7 +192,7 @@ class VisibleQuestsSourceTest {
     }
 
     @Test fun `trigger invalidate listener if quest type visibilities changed`() {
-        visibleQuestTypeListener.onQuestTypeVisibilitiesChanged()
+        visibleEditTypeListener.onVisibilitiesChanged()
         verify(listener).onInvalidated()
     }
 

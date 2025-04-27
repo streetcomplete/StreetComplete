@@ -1,23 +1,22 @@
-package de.westnordost.streetcomplete.screens.settings.quest_presets
+package de.westnordost.streetcomplete.screens.settings.presets
 
 import androidx.compose.runtime.Stable
 import androidx.lifecycle.ViewModel
 import de.westnordost.streetcomplete.data.urlconfig.UrlConfigController
-import de.westnordost.streetcomplete.data.visiblequests.QuestPreset
-import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsController
-import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsSource
+import de.westnordost.streetcomplete.data.presets.EditTypePreset
+import de.westnordost.streetcomplete.data.presets.EditTypePresetsController
+import de.westnordost.streetcomplete.data.presets.EditTypePresetsSource
 import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderController
-import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeController
+import de.westnordost.streetcomplete.data.visiblequests.VisibleEditTypeController
 import de.westnordost.streetcomplete.util.ktx.launch
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.update
 
 @Stable
-abstract class QuestPresetsViewModel : ViewModel() {
-    abstract val presets: StateFlow<List<QuestPresetSelection>>
+abstract class EditTypePresetsViewModel : ViewModel() {
+    abstract val presets: StateFlow<List<EditTypePresetSelection>>
 
     abstract fun add(name: String)
     abstract fun rename(presetId: Long, name: String)
@@ -28,7 +27,7 @@ abstract class QuestPresetsViewModel : ViewModel() {
     abstract fun queryUrlConfig(presetId: Long)
 }
 
-data class QuestPresetSelection(
+data class EditTypePresetSelection(
     val id: Long,
     val name: String,
     val selected: Boolean,
@@ -36,30 +35,30 @@ data class QuestPresetSelection(
 )
 
 @Stable
-class QuestPresetsViewModelImpl(
-    private val questPresetsController: QuestPresetsController,
+class EditTypePresetsViewModelImpl(
+    private val editTypePresetsController: EditTypePresetsController,
     private val questTypeOrderController: QuestTypeOrderController,
-    private val visibleQuestTypeController: VisibleQuestTypeController,
+    private val visibleEditTypeController: VisibleEditTypeController,
     private val urlConfigController: UrlConfigController,
-) : QuestPresetsViewModel() {
+) : EditTypePresetsViewModel() {
 
-    override val presets = MutableStateFlow<List<QuestPresetSelection>>(emptyList())
+    override val presets = MutableStateFlow<List<EditTypePresetSelection>>(emptyList())
 
-    private val questPresetsListener = object : QuestPresetsSource.Listener {
-        override fun onSelectedQuestPresetChanged() {
-            val selectedId = questPresetsController.selectedId
+    private val editTypePresetsListener = object : EditTypePresetsSource.Listener {
+        override fun onSelectionChanged() {
+            val selectedId = editTypePresetsController.selectedId
             presets.update { presets ->
                 presets.map { it.copy(selected = it.id == selectedId) }
             }
         }
 
-        override fun onAddedQuestPreset(preset: QuestPreset) {
+        override fun onAdded(preset: EditTypePreset) {
             presets.update { presets ->
-                presets + QuestPresetSelection(preset.id, preset.name, false)
+                presets + EditTypePresetSelection(preset.id, preset.name, false)
             }
         }
 
-        override fun onRenamedQuestPreset(preset: QuestPreset) {
+        override fun onRenamed(preset: EditTypePreset) {
             presets.update { presets ->
                 presets.map {
                     if (it.id == preset.id) it.copy(name = preset.name, url = null) else it
@@ -67,7 +66,7 @@ class QuestPresetsViewModelImpl(
             }
         }
 
-        override fun onDeletedQuestPreset(presetId: Long) {
+        override fun onDeleted(presetId: Long) {
             presets.update { presets ->
                 presets.filterNot { it.id == presetId }
             }
@@ -76,50 +75,50 @@ class QuestPresetsViewModelImpl(
 
     init {
         launch(IO) {
-            val selectedId = questPresetsController.selectedId
+            val selectedId = editTypePresetsController.selectedId
             presets.value = buildList {
-                add(QuestPreset(0, ""))
-                addAll(questPresetsController.getAll())
-            }.map { QuestPresetSelection(it.id, it.name, it.id == selectedId) }
+                add(EditTypePreset(0, ""))
+                addAll(editTypePresetsController.getAll())
+            }.map { EditTypePresetSelection(it.id, it.name, it.id == selectedId) }
         }
-        questPresetsController.addListener(questPresetsListener)
+        editTypePresetsController.addListener(editTypePresetsListener)
     }
 
     override fun onCleared() {
-        questPresetsController.removeListener(questPresetsListener)
+        editTypePresetsController.removeListener(editTypePresetsListener)
     }
 
     override fun add(name: String) {
         launch(IO) {
-            val newPresetId = questPresetsController.add(name)
-            questPresetsController.selectedId = newPresetId
+            val newPresetId = editTypePresetsController.add(name)
+            editTypePresetsController.selectedId = newPresetId
         }
     }
 
     override fun rename(presetId: Long, name: String) {
         launch(IO) {
-            questPresetsController.rename(presetId, name)
+            editTypePresetsController.rename(presetId, name)
         }
     }
 
     override fun select(presetId: Long) {
         launch(IO) {
-            questPresetsController.selectedId = presetId
+            editTypePresetsController.selectedId = presetId
         }
     }
 
     override fun duplicate(presetId: Long, name: String) {
         launch(IO) {
-            val newPresetId = questPresetsController.add(name)
+            val newPresetId = editTypePresetsController.add(name)
             questTypeOrderController.copyOrders(presetId, newPresetId)
-            visibleQuestTypeController.copyVisibilities(presetId, newPresetId)
-            questPresetsController.selectedId = newPresetId
+            visibleEditTypeController.copyVisibilities(presetId, newPresetId)
+            editTypePresetsController.selectedId = newPresetId
         }
     }
 
     override fun delete(presetId: Long) {
         launch(IO) {
-            questPresetsController.delete(presetId)
+            editTypePresetsController.delete(presetId)
         }
     }
 

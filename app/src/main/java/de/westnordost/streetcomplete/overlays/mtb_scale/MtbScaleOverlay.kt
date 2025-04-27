@@ -21,8 +21,8 @@ class MtbScaleOverlay : Overlay {
     override val icon = R.drawable.ic_quest_mtb
     override val changesetComment = "Specify MTB difficulty"
     override val wikiLink: String = "Key:mtb:scale"
-    override val achievements: List<EditTypeAchievement> =
-        listOf(BICYCLIST, OUTDOORS)
+    override val achievements = listOf(BICYCLIST, OUTDOORS)
+    override val defaultDisabledMessage = R.string.default_disabled_overlay_domain_expert
 
     override fun getStyledElements(mapData: MapDataWithGeometry) =
         mapData.filter("""

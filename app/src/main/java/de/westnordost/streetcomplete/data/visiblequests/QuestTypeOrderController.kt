@@ -1,5 +1,7 @@
 package de.westnordost.streetcomplete.data.visiblequests
 
+import de.westnordost.streetcomplete.data.presets.EditTypePreset
+import de.westnordost.streetcomplete.data.presets.EditTypePresetsSource
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.util.Listeners
@@ -7,22 +9,22 @@ import de.westnordost.streetcomplete.util.Listeners
 /** Controls which quest types have been reordered after which other quest types by the user */
 class QuestTypeOrderController(
     private val questTypeOrderDao: QuestTypeOrderDao,
-    private val questPresetsSource: QuestPresetsSource,
+    private val editTypePresetsSource: EditTypePresetsSource,
     private val questTypeRegistry: QuestTypeRegistry
 ) : QuestTypeOrderSource {
 
     private val listeners = Listeners<QuestTypeOrderSource.Listener>()
 
-    private val selectedPresetId: Long get() = questPresetsSource.selectedId
+    private val selectedPresetId: Long get() = editTypePresetsSource.selectedId
 
     init {
-        questPresetsSource.addListener(object : QuestPresetsSource.Listener {
-            override fun onSelectedQuestPresetChanged() {
+        editTypePresetsSource.addListener(object : EditTypePresetsSource.Listener {
+            override fun onSelectionChanged() {
                 onQuestTypeOrderChanged()
             }
-            override fun onAddedQuestPreset(preset: QuestPreset) {}
-            override fun onRenamedQuestPreset(preset: QuestPreset) {}
-            override fun onDeletedQuestPreset(presetId: Long) {
+            override fun onAdded(preset: EditTypePreset) {}
+            override fun onRenamed(preset: EditTypePreset) {}
+            override fun onDeleted(presetId: Long) {
                 clear(presetId)
             }
         })

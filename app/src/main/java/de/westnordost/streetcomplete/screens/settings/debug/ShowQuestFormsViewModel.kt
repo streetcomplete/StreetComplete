@@ -17,7 +17,6 @@ import kotlinx.coroutines.flow.stateIn
 
 @Stable
 abstract class ShowQuestFormsViewModel : ViewModel() {
-    abstract val quests: List<QuestType>
     abstract val searchText: StateFlow<String>
     abstract val filteredQuests: StateFlow<List<QuestType>>
 
@@ -29,14 +28,13 @@ class ShowQuestFormsViewModelImpl(
     private val questTypeRegistry: QuestTypeRegistry,
     private val resourceProvider: ResourceProvider,
 ) : ShowQuestFormsViewModel() {
-    override val quests get() = questTypeRegistry
     override val searchText = MutableStateFlow("")
 
     private val questTitles = MutableStateFlow<Map<String, String>>(emptyMap())
 
     override val filteredQuests: StateFlow<List<QuestType>> =
         combine(searchText, questTitles) { searchText, titles ->
-            filterQuests(quests, searchText, titles)
+            filterQuests(questTypeRegistry, searchText, titles)
         }.stateIn(viewModelScope, SharingStarted.Lazily, emptyList())
 
     override fun updateSearchText(text: String) {

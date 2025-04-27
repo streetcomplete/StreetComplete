@@ -22,9 +22,9 @@ import de.westnordost.streetcomplete.data.user.achievements.UserLinksTable
 import de.westnordost.streetcomplete.data.user.statistics.ActiveDaysTable
 import de.westnordost.streetcomplete.data.user.statistics.CountryStatisticsTables
 import de.westnordost.streetcomplete.data.user.statistics.EditTypeStatisticsTables
-import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsTable
+import de.westnordost.streetcomplete.data.presets.EditTypePresetsTable
 import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderTable
-import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeTable
+import de.westnordost.streetcomplete.data.visiblequests.VisibleEditTypeTable
 import de.westnordost.streetcomplete.util.logs.Log
 
 /** Creates the database and upgrades it */
@@ -70,10 +70,10 @@ object DatabaseInitializer {
         db.exec(CreatedElementsTable.CREATE)
 
         // quests
-        db.exec(VisibleQuestTypeTable.CREATE)
+        db.exec(VisibleEditTypeTable.CREATE)
         db.exec(QuestTypeOrderTable.CREATE)
         db.exec(QuestTypeOrderTable.INDEX_CREATE)
-        db.exec(QuestPresetsTable.CREATE)
+        db.exec(EditTypePresetsTable.CREATE)
 
         // quests based on OSM elements
         db.exec(OsmQuestTable.CREATE)
@@ -109,20 +109,20 @@ object DatabaseInitializer {
             db.exec(QuestTypeOrderTable.CREATE)
             db.exec(QuestTypeOrderTable.INDEX_CREATE)
 
-            db.exec(QuestPresetsTable.CREATE)
+            db.exec(EditTypePresetsTable.CREATE)
 
             val oldName = "quest_visibility_old"
-            db.exec("ALTER TABLE ${VisibleQuestTypeTable.NAME} RENAME TO $oldName;")
-            db.exec(VisibleQuestTypeTable.CREATE)
+            db.exec("ALTER TABLE ${VisibleEditTypeTable.NAME} RENAME TO $oldName;")
+            db.exec(VisibleEditTypeTable.CREATE)
             db.exec("""
-                INSERT INTO ${VisibleQuestTypeTable.NAME} (
-                    ${VisibleQuestTypeTable.Columns.QUEST_PRESET_ID},
-                    ${VisibleQuestTypeTable.Columns.QUEST_TYPE},
-                    ${VisibleQuestTypeTable.Columns.VISIBILITY}
+                INSERT INTO ${VisibleEditTypeTable.NAME} (
+                    ${VisibleEditTypeTable.Columns.EDIT_TYPE_PRESET_ID},
+                    ${VisibleEditTypeTable.Columns.EDIT_TYPE},
+                    ${VisibleEditTypeTable.Columns.VISIBILITY}
                 ) SELECT
                     0,
-                    ${VisibleQuestTypeTable.Columns.QUEST_TYPE},
-                    ${VisibleQuestTypeTable.Columns.VISIBILITY}
+                    ${VisibleEditTypeTable.Columns.EDIT_TYPE},
+                    ${VisibleEditTypeTable.Columns.VISIBILITY}
                 FROM $oldName;
             """.trimIndent())
             db.exec("DROP TABLE $oldName;")
@@ -274,7 +274,7 @@ private fun Database.deleteQuest(name: String) {
     deleteValue(ElementEditsTable.NAME, ElementEditsTable.Columns.QUEST_TYPE, name)
     deleteValue(OsmQuestTable.NAME, OsmQuestTable.Columns.QUEST_TYPE, name)
     deleteValue(OsmQuestsHiddenTable.NAME, OsmQuestsHiddenTable.Columns.QUEST_TYPE, name)
-    deleteValue(VisibleQuestTypeTable.NAME, VisibleQuestTypeTable.Columns.QUEST_TYPE, name)
+    deleteValue(VisibleEditTypeTable.NAME, VisibleEditTypeTable.Columns.EDIT_TYPE, name)
     deleteValue(OpenChangesetsTable.NAME, OpenChangesetsTable.Columns.QUEST_TYPE, name)
     deleteValue(QuestTypeOrderTable.NAME, QuestTypeOrderTable.Columns.BEFORE, name)
     deleteValue(QuestTypeOrderTable.NAME, QuestTypeOrderTable.Columns.AFTER, name)
@@ -284,7 +284,7 @@ private fun Database.renameQuest(old: String, new: String) {
     renameValue(ElementEditsTable.NAME, ElementEditsTable.Columns.QUEST_TYPE, old, new)
     renameValue(OsmQuestTable.NAME, OsmQuestTable.Columns.QUEST_TYPE, old, new)
     renameValue(OsmQuestsHiddenTable.NAME, OsmQuestsHiddenTable.Columns.QUEST_TYPE, old, new)
-    renameValue(VisibleQuestTypeTable.NAME, VisibleQuestTypeTable.Columns.QUEST_TYPE, old, new)
+    renameValue(VisibleEditTypeTable.NAME, VisibleEditTypeTable.Columns.EDIT_TYPE, old, new)
     renameValue(OpenChangesetsTable.NAME, OpenChangesetsTable.Columns.QUEST_TYPE, old, new)
     renameValue(QuestTypeOrderTable.NAME, QuestTypeOrderTable.Columns.BEFORE, old, new)
     renameValue(QuestTypeOrderTable.NAME, QuestTypeOrderTable.Columns.AFTER, old, new)

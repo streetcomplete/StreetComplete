@@ -18,14 +18,6 @@ interface QuestType : EditType {
     /** Hint pictures to be shown when the user taps on the ℹ️ button */
     val hintImages: List<Int> get() = emptyList()
 
-    /** the string resource id that explains why this quest is disabled by default or zero if it is
-     *  not disabled by default.
-     *
-     *  Quests that do not fully fulfill the [quest guidelines](https://github.com/streetcomplete/StreetComplete/blob/master/QUEST_GUIDELINES.md),
-     *  (e.g. often the requirement that the information is publicly available from the outside),
-     *  are disabled by default. */
-    val defaultDisabledMessage: Int get() = 0
-
     /** returns the fragment in which the user can add the data */
     fun createForm(): AbstractQuestForm
 

@@ -126,14 +126,14 @@ class Preferences(private val prefs: ObservableSettings) {
 
     // quest & overlay UI
     var preferredLanguageForNames: String? by prefs.nullableString(PREFERRED_LANGUAGE_FOR_NAMES)
-    var selectedQuestPreset: Long by prefs.long(SELECTED_QUESTS_PRESET, 0L)
+    var selectedEditTypePreset: Long by prefs.long(SELECTED_EDIT_TYPE_PRESET, 0L)
     var selectedOverlayName: String? by prefs.nullableString(SELECTED_OVERLAY)
 
     fun onSelectedOverlayNameChanged(callback: (String?) -> Unit): SettingsListener =
         prefs.addStringOrNullListener(SELECTED_OVERLAY, callback)
 
-    fun onSelectedQuestPresetChanged(callback: (Long) -> Unit): SettingsListener =
-        prefs.addLongListener(SELECTED_QUESTS_PRESET, 0L, callback)
+    fun onSelectedEditTypePresetChanged(callback: (Long) -> Unit): SettingsListener =
+        prefs.addLongListener(SELECTED_EDIT_TYPE_PRESET, 0L, callback)
 
     var lastEditTime: Long by prefs.long(LAST_EDIT_TIME, 0L)
 
@@ -252,7 +252,7 @@ class Preferences(private val prefs: ObservableSettings) {
 
         // quest & overlays
         private const val PREFERRED_LANGUAGE_FOR_NAMES = "preferredLanguageForNames"
-        private const val SELECTED_QUESTS_PRESET = "selectedQuestsPreset"
+        private const val SELECTED_EDIT_TYPE_PRESET = "selectedQuestsPreset"
         private const val SELECTED_OVERLAY = "selectedOverlay"
         private const val LAST_PICKED_PREFIX = "imageListLastPicked."
         private const val LAST_EDIT_TIME = "changesets.lastChangeTime"

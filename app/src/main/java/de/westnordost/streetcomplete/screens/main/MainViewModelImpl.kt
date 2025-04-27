@@ -7,6 +7,7 @@ import de.westnordost.streetcomplete.data.download.DownloadController
 import de.westnordost.streetcomplete.data.download.DownloadProgressSource
 import de.westnordost.streetcomplete.data.messages.Message
 import de.westnordost.streetcomplete.data.messages.MessagesSource
+import de.westnordost.streetcomplete.data.osm.edits.EditType
 import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsSource
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
@@ -27,8 +28,9 @@ import de.westnordost.streetcomplete.data.urlconfig.UrlConfig
 import de.westnordost.streetcomplete.data.urlconfig.UrlConfigController
 import de.westnordost.streetcomplete.data.user.UserLoginSource
 import de.westnordost.streetcomplete.data.user.statistics.StatisticsSource
-import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsSource
+import de.westnordost.streetcomplete.data.presets.EditTypePresetsSource
 import de.westnordost.streetcomplete.data.visiblequests.TeamModeQuestFilter
+import de.westnordost.streetcomplete.data.visiblequests.VisibleEditTypeSource
 import de.westnordost.streetcomplete.overlays.Overlay
 import de.westnordost.streetcomplete.screens.main.controls.LocationState
 import de.westnordost.streetcomplete.screens.main.map.maplibre.CameraPosition
@@ -51,7 +53,7 @@ import kotlinx.coroutines.withContext
 class MainViewModelImpl(
     private val crashReportExceptionHandler: CrashReportExceptionHandler,
     private val urlConfigController: UrlConfigController,
-    private val questPresetsSource: QuestPresetsSource,
+    private val editTypePresetsSource: EditTypePresetsSource,
     private val uploadController: UploadController,
     private val uploadProgressSource: UploadProgressSource,
     private val downloadController: DownloadController,
@@ -63,6 +65,7 @@ class MainViewModelImpl(
     private val selectedOverlayController: SelectedOverlayController,
     private val questTypeRegistry: QuestTypeRegistry,
     private val overlayRegistry: OverlayRegistry,
+    private val visibleEditTypeSource: VisibleEditTypeSource,
     private val messagesSource: MessagesSource,
     private val teamModeQuestFilter: TeamModeQuestFilter,
     private val elementEditsSource: ElementEditsSource,
@@ -113,7 +116,7 @@ class MainViewModelImpl(
     private suspend fun parseShownUrlConfig(uri: String): ShownUrlConfig? {
         val config = urlConfigController.parse(uri) ?: return null
         val alreadyExists = withContext(IO) {
-            config.presetName == null || questPresetsSource.getByName(config.presetName) != null
+            config.presetName == null || editTypePresetsSource.getByName(config.presetName) != null
         }
         return ShownUrlConfig(urlConfig = config, alreadyExists = alreadyExists)
     }
@@ -159,7 +162,23 @@ class MainViewModelImpl(
 
     /* overlays */
 
-    override val overlays: List<Overlay> get() = overlayRegistry
+    override val overlays: StateFlow<List<Overlay>> = callbackFlow {
+        send(getVisibleOverlays())
+        val listener = object : VisibleEditTypeSource.Listener {
+            override fun onVisibilityChanged(editType: EditType, visible: Boolean) {
+                trySend(getVisibleOverlays())
+            }
+
+            override fun onVisibilitiesChanged() {
+                trySend(getVisibleOverlays())
+            }
+        }
+        visibleEditTypeSource.addListener(listener)
+        awaitClose { visibleEditTypeSource.removeListener(listener) }
+    }.stateIn(viewModelScope + IO, SharingStarted.Eagerly, getVisibleOverlays())
+
+    private fun getVisibleOverlays(): List<Overlay> =
+        overlayRegistry.filter { visibleEditTypeSource.isVisible(it) }
 
     override val selectedOverlay: StateFlow<Overlay?> = callbackFlow {
         send(selectedOverlayController.selectedOverlay)

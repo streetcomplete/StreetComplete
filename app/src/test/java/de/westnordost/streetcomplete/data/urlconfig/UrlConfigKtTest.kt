@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.data.urlconfig
 
 import de.westnordost.streetcomplete.data.overlay.TestOverlayA
 import de.westnordost.streetcomplete.data.overlay.TestOverlayB
+import de.westnordost.streetcomplete.data.overlay.TestOverlayC
 import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.quest.TestQuestTypeA
@@ -24,64 +25,74 @@ internal class UrlConfigKtTest {
     private val o0 = TestOverlayA()
     private val o1 = TestOverlayB()
 
+    private val oUnknown = TestOverlayC()
+
     private val quests = QuestTypeRegistry(listOf(0 to q0, 1 to q1, 2 to q2, 3 to q3))
 
     private val overlays = OverlayRegistry(listOf(0 to o0, 1 to o1))
 
     //region parse url
 
+
     @Test fun `parse config without name`() {
         assertEquals(
-            UrlConfig(null, listOf(q0, q2, q3), emptyList(), null),
+            UrlConfig(null, listOf(q0, q2, q3), emptyList(), emptyList(), null),
             parseConfigUrl("https://streetcomplete.app/s?q=d", quests, overlays)
         )
     }
 
     @Test fun `parse simple config`() {
         assertEquals(
-            UrlConfig("Test", listOf(q0, q2, q3), emptyList(), null),
+            UrlConfig("Test", listOf(q0, q2, q3), emptyList(), emptyList(), null),
             parseConfigUrl("https://streetcomplete.app/s?n=Test&q=d", quests, overlays)
+        )
+    }
+
+    @Test fun `parse config with overlays`() {
+        assertEquals(
+            UrlConfig("Test", emptyList(), emptyList(), listOf(o0, o1), null),
+            parseConfigUrl("https://streetcomplete.app/s?n=Test&os=3", quests, overlays)
         )
     }
 
     @Test fun `parse config using custom url scheme`() {
         assertEquals(
-            UrlConfig("Test", listOf(q0, q2, q3), emptyList(), null),
+            UrlConfig("Test", listOf(q0, q2, q3), emptyList(), emptyList(),null),
             parseConfigUrl("streetcomplete://s?n=Test&q=d", quests, overlays)
         )
     }
 
-    @Test fun `parse config with overlay`() {
+    @Test fun `parse config with selected overlay`() {
         assertEquals(
-            UrlConfig("Test", listOf(q0, q2, q3), emptyList(), o1),
+            UrlConfig("Test", listOf(q0, q2, q3), emptyList(), emptyList(), o1),
             parseConfigUrl("https://streetcomplete.app/s?n=Test&q=d&o=1", quests, overlays)
         )
     }
 
     @Test fun `upper case is fine`() {
         assertEquals(
-            UrlConfig("Test", listOf(q0, q2, q3), emptyList(), null),
+            UrlConfig("Test", listOf(q0, q2, q3), emptyList(), emptyList(),null),
             parseConfigUrl("https://streetcomplete.app/s?N=Test&Q=D", quests, overlays)
         )
     }
 
     @Test fun `url decode name`() {
         assertEquals(
-            UrlConfig("Hello Wörld", listOf(q0), emptyList(), null),
-            parseConfigUrl("https://streetcomplete.app/s?n=Hello+W%C3%B6rld&q=1", quests, overlays)
+            UrlConfig("Hello Wörld", emptyList(), emptyList(), emptyList(),null),
+            parseConfigUrl("https://streetcomplete.app/s?n=Hello+W%C3%B6rld", quests, overlays)
         )
     }
 
     @Test fun `parse config with quest sort orders`() {
         assertEquals(
-            UrlConfig("Test", listOf(q0, q2, q3), listOf(q0 to q1, q3 to q0), null),
+            UrlConfig("Test", listOf(q0, q2, q3), listOf(q0 to q1, q3 to q0), emptyList(), null),
             parseConfigUrl("https://streetcomplete.app/s?n=Test&q=d&qo=0.1-3.0", quests, overlays)
         )
     }
 
     @Test fun `parse ignores unknown ordinals`() {
         assertEquals(
-            UrlConfig("Test", listOf(q0, q2, q3), listOf(q1 to q3), null),
+            UrlConfig("Test", listOf(q0, q2, q3), listOf(q1 to q3), emptyList(), null),
             // i.e. ordinal 4 is ignored
             parseConfigUrl("https://streetcomplete.app/s?n=Test&q=t&qo=0.4-1.3", quests, overlays)
         )
@@ -104,8 +115,8 @@ internal class UrlConfigKtTest {
         assertNull(parseConfigUrl("https://streetcomplete.app/s?n=Test&q=d&qo=0.0", quests, overlays))
     }
 
-    @Test fun `reject if quests is missing`() {
-        assertNull(parseConfigUrl("https://streetcomplete.app/s?n=d", quests, overlays))
+    @Test fun `reject empty`() {
+        assertNull(parseConfigUrl("https://streetcomplete.app/s?", quests, overlays))
     }
 
     //endregion
@@ -115,49 +126,63 @@ internal class UrlConfigKtTest {
     @Test fun `create url without name`() {
         assertEquals(
             "https://streetcomplete.app/s?q=d",
-            createConfigUrl(UrlConfig(null, listOf(q0, q2, q3), emptyList(), null), quests, overlays),
+            createConfigUrl(UrlConfig(null, listOf(q0, q2, q3), emptyList(), emptyList(), null), quests, overlays),
         )
     }
 
     @Test fun `create simple url`() {
         assertEquals(
             "https://streetcomplete.app/s?n=Test&q=d",
-            createConfigUrl(UrlConfig("Test", listOf(q0, q2, q3), emptyList(), null), quests, overlays),
+            createConfigUrl(UrlConfig("Test", listOf(q0, q2, q3), emptyList(), emptyList(), null), quests, overlays),
         )
     }
 
-    @Test fun `create url with overlay`() {
+    @Test fun `create url with overlays`() {
+        assertEquals(
+            "https://streetcomplete.app/s?n=Test&os=3",
+            createConfigUrl(UrlConfig("Test", emptyList(), emptyList(), listOf(o0, o1), null), quests, overlays),
+        )
+    }
+
+    @Test fun `create url with selected overlay`() {
         assertEquals(
             "https://streetcomplete.app/s?n=Test&q=d&o=1",
-            createConfigUrl(UrlConfig("Test", listOf(q0, q2, q3), emptyList(), o1), quests, overlays),
+            createConfigUrl(UrlConfig("Test", listOf(q0, q2, q3), emptyList(), emptyList(), o1), quests, overlays),
         )
     }
 
     @Test fun `create url with quest type orders`() {
         assertEquals(
             "https://streetcomplete.app/s?n=Test&q=d&qo=0.1-3.2",
-            createConfigUrl(UrlConfig("Test", listOf(q0, q2, q3), listOf(q0 to q1, q3 to q2), null), quests, overlays),
+            createConfigUrl(UrlConfig("Test", listOf(q0, q2, q3), listOf(q0 to q1, q3 to q2), emptyList(), null), quests, overlays),
         )
     }
 
     @Test fun `url encode name`() {
         assertEquals(
             "https://streetcomplete.app/s?n=Hello+W%C3%B6rld&q=1",
-            createConfigUrl(UrlConfig("Hello Wörld", listOf(q0), emptyList(), null), quests, overlays)
+            createConfigUrl(UrlConfig("Hello Wörld", listOf(q0), emptyList(), emptyList(), null), quests, overlays)
         )
     }
 
     @Test fun `shorten name if too long`() {
         assertEquals(
             "https://streetcomplete.app/s?n=123456789012345678901234567890123456789012345678901234567...&q=1",
-            createConfigUrl(UrlConfig("123456789012345678901234567890123456789012345678901234567890X", listOf(q0), emptyList(), null), quests, overlays)
+            createConfigUrl(UrlConfig("123456789012345678901234567890123456789012345678901234567890X", listOf(q0), emptyList(), emptyList(),null), quests, overlays)
         )
     }
 
     @Test fun `create url ignores unknown quests`() {
         assertEquals(
             "https://streetcomplete.app/s?n=Test&q=1&qo=3.2",
-            createConfigUrl(UrlConfig("Test", listOf(q0, qUnknown), listOf(q0 to qUnknown, q3 to q2), null), quests, overlays),
+            createConfigUrl(UrlConfig("Test", listOf(q0, qUnknown), listOf(q0 to qUnknown, q3 to q2), emptyList(),null), quests, overlays),
+        )
+    }
+
+    @Test fun `create url ignores unknown overlays`() {
+        assertEquals(
+            "https://streetcomplete.app/s?n=Test&os=1",
+            createConfigUrl(UrlConfig("Test", emptyList(), emptyList(), listOf(o0, oUnknown),null), quests, overlays),
         )
     }
 

@@ -51,11 +51,13 @@ fun SettingsScreen(
     onClickShowQuestForms: () -> Unit,
     onClickPresetSelection: () -> Unit,
     onClickQuestSelection: () -> Unit,
+    onClickOverlaySelection: () -> Unit,
     onClickBack: () -> Unit,
 ) {
     val hiddenQuestCount by viewModel.hiddenQuestCount.collectAsState()
     val questTypeCount by viewModel.questTypeCount.collectAsState()
-    val selectedPresetName by viewModel.selectedQuestPresetName.collectAsState()
+    val overlayCount by viewModel.overlayCount.collectAsState()
+    val selectedPresetName by viewModel.selectedEditTypePresetName.collectAsState()
     val selectableLanguageCodes by viewModel.selectableLanguageCodes.collectAsState()
 
     val resurveyIntervals by viewModel.resurveyIntervals.collectAsState()
@@ -104,6 +106,14 @@ fun SettingsScreen(
                     name = stringResource(R.string.pref_title_quests2),
                     onClick = onClickQuestSelection,
                     description = questTypeCount?.let {
+                        stringResource(R.string.pref_subtitle_quests, it.enabled, it.total)
+                    }
+                ) { NextScreenIcon() }
+
+                Preference(
+                    name = stringResource(R.string.pref_title_overlays),
+                    onClick = onClickOverlaySelection,
+                    description = overlayCount?.let {
                         stringResource(R.string.pref_subtitle_quests, it.enabled, it.total)
                     }
                 ) { NextScreenIcon() }

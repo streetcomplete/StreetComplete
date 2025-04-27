@@ -4,6 +4,7 @@ import androidx.compose.runtime.Stable
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import de.westnordost.countryboundaries.CountryBoundaries
+import de.westnordost.streetcomplete.data.osm.edits.EditType
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.data.quest.AllCountries
@@ -11,12 +12,12 @@ import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
-import de.westnordost.streetcomplete.data.visiblequests.QuestPreset
-import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsSource
+import de.westnordost.streetcomplete.data.presets.EditTypePreset
+import de.westnordost.streetcomplete.data.presets.EditTypePresetsSource
 import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderController
 import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderSource
-import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeController
-import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeSource
+import de.westnordost.streetcomplete.data.visiblequests.VisibleEditTypeController
+import de.westnordost.streetcomplete.data.visiblequests.VisibleEditTypeSource
 import de.westnordost.streetcomplete.util.ResourceProvider
 import de.westnordost.streetcomplete.util.ktx.containsAll
 import de.westnordost.streetcomplete.util.ktx.containsAny
@@ -36,13 +37,12 @@ abstract class QuestSelectionViewModel : ViewModel() {
     abstract val searchText: StateFlow<String>
     abstract val filteredQuests: StateFlow<List<QuestSelection>>
     abstract val currentCountry: String?
-    abstract val selectedQuestPresetName: StateFlow<String?>
-    abstract val quests: StateFlow<List<QuestSelection>>
+    abstract val selectedEditTypePresetName: StateFlow<String?>
 
-    abstract fun selectQuest(questType: QuestType, selected: Boolean)
-    abstract fun orderQuest(questType: QuestType, toAfter: QuestType)
-    abstract fun unselectAllQuests()
-    abstract fun resetQuestSelectionsAndOrder()
+    abstract fun select(questType: QuestType, selected: Boolean)
+    abstract fun order(questType: QuestType, toAfter: QuestType)
+    abstract fun unselectAll()
+    abstract fun resetAll()
     abstract fun updateSearchText(text: String)
 }
 
@@ -50,8 +50,8 @@ abstract class QuestSelectionViewModel : ViewModel() {
 class QuestSelectionViewModelImpl(
     private val resourceProvider: ResourceProvider,
     private val questTypeRegistry: QuestTypeRegistry,
-    private val questPresetsSource: QuestPresetsSource,
-    private val visibleQuestTypeController: VisibleQuestTypeController,
+    private val editTypePresetsSource: EditTypePresetsSource,
+    private val visibleEditTypeController: VisibleEditTypeController,
     private val questTypeOrderController: QuestTypeOrderController,
     countryBoundaries: Lazy<CountryBoundaries>,
     prefs: Preferences,
@@ -61,18 +61,20 @@ class QuestSelectionViewModelImpl(
 
     private val questTitles = MutableStateFlow<Map<String, String>>(emptyMap())
 
-    private val visibleQuestsListener = object : VisibleQuestTypeSource.Listener {
-        override fun onQuestTypeVisibilityChanged(questType: QuestType, visible: Boolean) {
+    private val visibleEditTypeListener = object : VisibleEditTypeSource.Listener {
+        override fun onVisibilityChanged(editType: EditType, visible: Boolean) {
             quests.update { quests ->
                 val result = quests.toMutableList()
-                val index = result.indexOfFirst { it.questType == questType }
-                result[index] = result[index].copy(selected = visible)
+                val index = result.indexOfFirst { it.questType == editType }
+                if (index != -1) {
+                    result[index] = result[index].copy(selected = visible)
+                }
                 return@update result
             }
         }
 
         // all/many visibilities have changed - re-init list
-        override fun onQuestTypeVisibilitiesChanged() { initQuests() }
+        override fun onVisibilitiesChanged() { initQuests() }
     }
 
     private val questTypeOrderListener = object : QuestTypeOrderSource.Listener {
@@ -92,14 +94,14 @@ class QuestSelectionViewModelImpl(
         override fun onQuestTypeOrdersChanged() { initQuests() }
     }
 
-    private val questPresetsListener = object : QuestPresetsSource.Listener {
-        override fun onSelectedQuestPresetChanged() { updateSelectedQuestPresetName() }
-        override fun onAddedQuestPreset(preset: QuestPreset) {}
-        override fun onRenamedQuestPreset(preset: QuestPreset) {}
-        override fun onDeletedQuestPreset(presetId: Long) {}
+    private val editTypePresetsListener = object : EditTypePresetsSource.Listener {
+        override fun onSelectionChanged() { updateSelectedEditTypePresetName() }
+        override fun onAdded(preset: EditTypePreset) {}
+        override fun onRenamed(preset: EditTypePreset) {}
+        override fun onDeleted(presetId: Long) {}
     }
 
-    override val quests = MutableStateFlow<List<QuestSelection>>(emptyList())
+    private val quests = MutableStateFlow<List<QuestSelection>>(emptyList())
 
     override val filteredQuests: StateFlow<List<QuestSelection>> =
         combine(quests, searchText, questTitles) { quests, searchText, titles ->
@@ -108,23 +110,23 @@ class QuestSelectionViewModelImpl(
 
     private val currentCountryCodes = countryBoundaries.value.getIds(prefs.mapPosition)
 
-    override val selectedQuestPresetName = MutableStateFlow<String?>(null)
+    override val selectedEditTypePresetName = MutableStateFlow<String?>(null)
 
     override val currentCountry: String?
         get() = currentCountryCodes.firstOrNull()
 
     init {
         initQuests()
-        updateSelectedQuestPresetName()
+        updateSelectedEditTypePresetName()
         loadQuestTitles()
-        questPresetsSource.addListener(questPresetsListener)
-        visibleQuestTypeController.addListener(visibleQuestsListener)
+        editTypePresetsSource.addListener(editTypePresetsListener)
+        visibleEditTypeController.addListener(visibleEditTypeListener)
         questTypeOrderController.addListener(questTypeOrderListener)
     }
 
-    private fun updateSelectedQuestPresetName() {
+    private fun updateSelectedEditTypePresetName() {
         launch(IO) {
-            selectedQuestPresetName.value = questPresetsSource.selectedQuestPresetName
+            selectedEditTypePresetName.value = editTypePresetsSource.selectedEditTypePresetName
         }
     }
 
@@ -139,32 +141,32 @@ class QuestSelectionViewModelImpl(
     }
 
     override fun onCleared() {
-        questPresetsSource.removeListener(questPresetsListener)
-        visibleQuestTypeController.removeListener(visibleQuestsListener)
+        editTypePresetsSource.removeListener(editTypePresetsListener)
+        visibleEditTypeController.removeListener(visibleEditTypeListener)
         questTypeOrderController.removeListener(questTypeOrderListener)
     }
 
-    override fun selectQuest(questType: QuestType, selected: Boolean) {
+    override fun select(questType: QuestType, selected: Boolean) {
         launch(IO) {
-            visibleQuestTypeController.setVisibility(questType, selected)
+            visibleEditTypeController.setVisibility(questType, selected)
         }
     }
 
-    override fun orderQuest(questType: QuestType, toAfter: QuestType) {
+    override fun order(questType: QuestType, toAfter: QuestType) {
         launch(IO) {
             questTypeOrderController.addOrderItem(questType, toAfter)
         }
     }
 
-    override fun unselectAllQuests() {
+    override fun unselectAll() {
         launch(IO) {
-            visibleQuestTypeController.setVisibilities(questTypeRegistry.associateWith { false })
+            visibleEditTypeController.setVisibilities(questTypeRegistry.associateWith { false })
         }
     }
 
-    override fun resetQuestSelectionsAndOrder() {
+    override fun resetAll() {
         launch(IO) {
-            visibleQuestTypeController.clearVisibilities()
+            visibleEditTypeController.clearVisibilities(questTypeRegistry)
             questTypeOrderController.clear()
         }
     }
@@ -180,7 +182,7 @@ class QuestSelectionViewModelImpl(
             quests.value = sortedQuestTypes
                 .map { QuestSelection(
                     questType = it,
-                    selected = visibleQuestTypeController.isVisible(it),
+                    selected = visibleEditTypeController.isVisible(it),
                     enabledInCurrentCountry = isQuestEnabledInCurrentCountry(it)
                 ) }
                 .toMutableList()
