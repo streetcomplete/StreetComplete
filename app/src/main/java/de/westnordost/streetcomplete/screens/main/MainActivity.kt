@@ -319,6 +319,7 @@ class MainActivity :
                 editHistoryViewModel = editHistoryViewModel,
                 onClickZoomIn = ::onClickZoomIn,
                 onClickZoomOut = ::onClickZoomOut,
+                onZoom = ::onZoom,
                 onClickCompass = ::onClickCompassButton,
                 onClickLocation = ::onClickLocationButton,
                 onClickLocationPointer = ::onClickLocationPointer,
@@ -918,6 +919,10 @@ class MainActivity :
 
     fun onClickZoomIn() {
         mapFragment?.updateCameraPosition(300) { zoomBy = +1.0 }
+    }
+
+    fun onZoom(zoomDelta: Float) {
+        mapFragment?.updateCameraPosition(300) { zoomBy = zoomDelta.toDouble() }
     }
 
     private fun onClickTracksStop() {
