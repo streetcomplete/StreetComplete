@@ -102,4 +102,10 @@
     <string name="pref_recent_answers_first_min_lines_message">Verplaats recente antwoorden naar voren als het antwoordformulier voor de vraag meer dan dit aantal regels afbeeldingen bevat</string>
     <string name="pref_create_node_show_keyboard_title">Automatisch toetsenbord weergeven bij het toevoegen van een knoop</string>
     <string name="pref_manual_download_cache_summary">Als dit is uitgeschakeld worden gegevens niet opnieuw gedownload bij een handmatige download tenzij ze ouder zijn dan 12 uur</string>
+    <string name="quest_lampMount_straightMast">Rechte paal</string>
+    <string name="quest_lampMount_bentMast">Kromme paal</string>
+    <string name="quest_lampMount_suspended">Opgehangen aan een draad</string>
+    <string name="quest_lampMount_highMast">Hoge paal (hoger dan 30m)</string>
+    <string name="quest_lampMount_wall">Muur</string>
+    <string name="quest_lampMount_ceiling">Plafond</string>
 </resources>

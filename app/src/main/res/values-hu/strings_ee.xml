@@ -617,4 +617,8 @@
     <string name="quest_postOffice_bureau">Postahivatal</string>
     <string name="quest_postOffice_postAnnex">Posta (magán, esetleg korlátozott szolgáltatással)</string>
     <string name="quest_postOffice_postPartner">Postapartner-pont más bolton belül</string>
+    <string name="default_disabled_msg_roof">Ez a kérdéstípus alapértelmezés szerint le van tiltva, mivel a tetők általában nem jól látszódnak az utcáról. Ez a küldetéstípus meglehetősen időigényes is, a legtöbb esetben ezt egyszerűbb és hatékonyabb otthonról, légifelvételek alapján térképezni.</string>
+    <string name="quest_roofOrientation_along">Az épület hosszabbik oldalával párhuzamosan</string>
+    <string name="quest_roofOrientation_across">Az épület rövidebbik oldalával párhuzamosan</string>
+    <string name="quest_roofOrientation_title">Milyen irányban áll a tetőgerinc?</string>
 </resources>

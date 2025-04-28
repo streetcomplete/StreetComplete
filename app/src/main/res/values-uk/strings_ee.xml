@@ -399,4 +399,25 @@
     <string name="quest_roofOrientation_title">Як орієнтований гребінь даху?</string>
     <string name="default_disabled_msg_roof">Цей тип завдання вимкнено за замовчуванням, оскільки дахи часто не дуже добре видно з вулиці. Це завдання також потребує досить багато часу; у більшості випадків простіше й ефективніше скласти карту з аерофотознімків удома.</string>
     <string name="quest_roofOrientation_across">Паралельно коротшій стороні будівлі</string>
+    <string name="pref_really_all_notes_title">«Показати всі нотатки» означає ВСІ нотатки</string>
+    <string name="pref_really_all_notes_summary">При запиті показати всі нотатки, показувати навіть нотатки, створені (або прокоментовані) вами</string>
+    <string name="quest_material_sandstone">Пісковик</string>
+    <string name="quest_material_glass">Скло</string>
+    <string name="quest_material_limestone">Вапняк</string>
+    <string name="quest_material_adobe">Саман</string>
+    <string name="quest_material_clay">Глина</string>
+    <string name="quest_material_mirror">Дзеркальне скло</string>
+    <string name="quest_material_timber_framing">Дерев\'яний каркас</string>
+    <string name="quest_material_bamboo">Бамбук</string>
+    <string name="quest_material_reed">Очерет</string>
+    <string name="quest_material_tiles">Кахлі</string>
+    <string name="quest_buildingMaterial_title">Переважно з якого матеріалу побудовано цю будівлю?</string>
+    <string name="quest_material_slate">Шифер</string>
+    <string name="quest_material_vinyl">Пластикові панелі (сайдинг)</string>
+    <string name="quest_material_marble">Мармур</string>
+    <string name="quest_material_cement_block">Шлакоблок</string>
+    <string name="quest_buildingPartMaterial_title">Переважно з якого матеріалу виготовлена ця частина будівлі?</string>
+    <string name="quest_lampMount_ceiling">Стеля</string>
+    <string name="quest_lampMount_wall">Стіна</string>
+    <string name="quest_lampMount_bollard">Дорожня тумба</string>
 </resources>

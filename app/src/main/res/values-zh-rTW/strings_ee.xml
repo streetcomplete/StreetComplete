@@ -6,4 +6,26 @@
     <string name="pref_hide_notes_title">隱藏特定使用者的註解</string>
     <string name="pref_category_mods">SCEE設定</string>
     <string name="pref_expert_mode_summary">啟用進階編輯能力</string>
+    <string name="pref_show_gpx_button_title">顯示GPX註記按鈕</string>
+    <string name="pref_files_not_found">找不到檔案</string>
+    <string name="pref_create_custom_quest_title">允許創建新任務圖層</string>
+    <string name="pref_gpx_track_enable">顯示GPX軌跡</string>
+    <string name="pref_screen_display">顯示</string>
+    <string name="pref_show_next_quest_title">立即顯示下一個任務</string>
+    <string name="pref_show_gpx_button_summary">相比回報OSM註解，新增GPX節點則不會隱藏附近地點的任何任務</string>
+    <string name="pref_swap_gpx_note_button">滑動OSM與GPX節點按鈕</string>
+    <string name="pref_hide_keyboard_title">新增節點前隱藏鍵盤</string>
+    <string name="quest_disused">已經廢棄</string>
+    <string name="pref_save_file_error">儲存檔案時發生錯誤</string>
+    <string name="quest_private">是私人的</string>
+    <string name="time_limited_to">到</string>
+    <string name="quest_construction">在...之前施工中</string>
+    <string name="quest_name_brand">它有品牌名稱</string>
+    <string name="quest_lampMount_title">這個路燈是怎麼被設置的？</string>
+    <string name="quest_lampMount_wall">牆</string>
+    <string name="time_limited_from">從</string>
+    <string name="quest_lampType_led">LED 燈</string>
+    <string name="quest_buildingType_elevator">電梯</string>
+    <string name="quest_generic_answer_show_edit_tags">顯示/編輯標籤</string>
+    <string name="quest_building_entrance_parking">停車場出入口</string>
 </resources>

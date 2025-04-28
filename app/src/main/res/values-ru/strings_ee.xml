@@ -300,7 +300,7 @@
     <string name="quest_settings_eligible_highways">Укажите дороги, подходящие для этого квеста, через запятую</string>
     <string name="quest_traffic_stuff_raised">Это возвышенный переход</string>
     <string name="quest_artwork_architecture">Архитектура</string>
-    <string name="quest_railwayPlatformRef_message">Какой тег использовать для треков, доступных с этой платформы\? Согласно вики OSM, local_ref может быть предпочтительнее, но фактическое использование в основном ref.</string>
+    <string name="quest_railwayPlatformRef_message">Какой тег использовать для треков, доступных с этой платформы? Согласно вики OSM, local_ref может быть предпочтительнее, но фактическое использование в основном ref.</string>
     <string name="quest_disabled_msg_railway_platform_ref">Обратите внимание, что вики не даёт однозначного ответа какой тег предпочесть, поэтому выбор остается за пользователем. Выберите либо «ref» (по умолчанию) либо «local_ref» в настройках квеста.
 \nЕсли вдоль платформы идут два пути, используйте значения, разделенные точкой с запятой, например, 2;3</string>
     <string name="quest_construction_value">Установите «construction=…» или оставьте пустым, если неизвестно</string>
@@ -345,9 +345,7 @@
     <string name="quest_destination_add_more">Добавить направление</string>
     <string name="quest_destination_all_lanes_button">Все
 \nполосы</string>
-    <string name="custom_overlay_filter_message">Нажмите на ссылку, чтобы открыть сведения о правилах выбора элементов в браузере.
-\nИмейте в виду, что на отбор элементов по дате может влиять настройка частоты повторного обследования.
-\nГалочки заменяют собой такие части кода как \"nodes, ways with\".</string>
+    <string name="custom_overlay_filter_message">Нажмите на ссылку, чтобы открыть сведения о правилах выбора элементов в браузере. Имейте в виду, что на отбор элементов по дате может влиять настройка частоты повторного обследования. \nГалочки заменяют собой такие части кода как \"nodes, ways with\".</string>
     <string name="quest_surface_value_stepping_stones">Камни для перехода</string>
     <string name="restriction_overlay_exceptions">Исключения: %s</string>
     <string name="restriction_overlay_remove_conditional_restrictions">Убрать условия</string>
@@ -359,7 +357,7 @@
     <string name="restriction_overlay_relation_unsupported">Неподдерживаемый тип ограничения:
 \n%s</string>
     <string name="restriction_overlay_select_way">Коснитесь следующей линии на карте. Она должна иметь общую крайнюю точку с текущей линией. Делите линии по необходимости.</string>
-    <string name="access_manager_message">Выберите теги ограничения доступа. Отмечайте только предписанное знаками, по возможности, не применяйте простой тег \"access\".</string>
+    <string name="access_manager_message">Выберите метки ограничения доступа. Отмечайте только предписанное знаками, по возможности, не применяйте общую метку \"access\"</string>
     <string name="level_filter">Фильтр этажности</string>
     <string name="level_filter_enable">Включить фильтр этажности</string>
     <string name="quest_osmose_hide_type">Пропускать такие проблемы…</string>
@@ -526,4 +524,40 @@
     <string name="close">Закрыть</string>
     <string name="quest_mapType_toposcope_title">Топоскоп</string>
     <string name="quest_swimming_pool_indoor_and_outdoor">И в помещении и на открытом воздухе</string>
+    <string name="quest_street_cabinet_waste">Отходы</string>
+    <string name="quest_guidepost_sports_answer_simple">Это простой ориентир</string>
+    <string name="quest_guidepost_sports_answer_simple_description">Это просто простой путеводитель без особого вида спорта.</string>
+    <string name="quest_guidepost_sports_mtb">Горный велосипед</string>
+    <string name="quest_viaFerrataScale_five">Уровень 5/K5/E — очень сложно</string>
+    <string name="quest_viaFerrataScale_six">Уровень 6/K6/F — черезвычайно сложно</string>
+    <string name="quest_caravanSiteType_title">Где эта область каравана находится?</string>
+    <string name="quest_crossing_marking_value_surface">Поверехность</string>
+    <string name="quest_crossing_marking_value_dashes">Длинные линии</string>
+    <string name="quest_crossing_marking_value_dots">Пунктирные линии</string>
+    <string name="quest_viaFerrataScale_four">Уровень 4/K4/D — сложно</string>
+    <string name="quest_service_building_type_pressure_description">Газовая подстанция в здании, отвечающем за снижение давления на потребителей вокруг</string>
+    <string name="quest_crossing_marking_value_zebra">Зебра</string>
+    <string name="pref_really_all_notes_title">«Показать все заметки» значит ВСЕ заметки</string>
+    <string name="pref_really_all_notes_summary">При запросе показать все заметки, показывать даже заметки, созданные (или прокомментированные) вами</string>
+    <string name="file_loading_error">Ошибка загрузки файла</string>
+    <string name="quest_street_cabinet_traffic">Транспорт</string>
+    <string name="quest_street_cabinet_traffic_monitoring">Наблюдение на движением</string>
+    <string name="quest_street_cabinet_transport_management">Управление движением</string>
+    <string name="quest_viaFerrataScale_three">Уровень 3/K3/C — довольно сложно</string>
+    <string name="quest_viaFerrataScale_three_description">Некоторое техническое восхождение, но ничего, что требует особенно сильного оружия. Необходим страховочный набор.</string>
+    <string name="quest_crossing_marking_value_lines">Линии</string>
+    <string name="quest_crossing_marking_value_ladder">Лестница</string>
+    <string name="pref_rotate_while_zooming_title">Разрешить поворот во время масштабирования</string>
+    <string name="pref_rotate_angle_threshold_title">Порог для жеста повотора</string>
+    <string name="quest_brewery_add_more">Добавить иную пивоварню</string>
+    <string name="pref_custom_geometry_title">Отображение объектов карты из файла GeoJson</string>
+    <string name="pref_custom_geometry_info">Если вы хотите отобразить текст, он должен иметь метку «name»</string>
+    <string name="file_provide">Выбрать файл</string>
+    <string name="pref_tile_maxzoom">Максимально поддерживаемое увеличение</string>
+    <string name="quest_caravanSiteType_parking_lot">Парковка - прямо на парковке.</string>
+    <string name="quest_valves_title">Какие типы клапанов доступны здесь?</string>
+    <string name="quest_valves_disabled_msg">Этот квест отключен по умолчанию, потому что он требует очень тесного осмотра доступных клапанов.</string>
+    <string name="quest_shelter_type_field_shelter">Фермерское укрытие</string>
+    <string name="quest_caravanSiteType_river">Река - место расположена прямо на реке.</string>
+    <string name="quest_caravanSiteType_lake">Озеро - место расположена прямо на озере.</string>
 </resources>

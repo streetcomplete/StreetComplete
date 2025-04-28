@@ -17,7 +17,7 @@
     <string name="pref_get_photos_title">Hent billeder i fuld størrelse</string>
     <string name="pref_quest_geometries_summary">Fremhæv linjestrenge (ways) og områder, der har opgaver</string>
     <string name="pref_quest_geometries_title">Vis geometrier for opgaver</string>
-    <string name="pref_expert_mode_message">Dette vil gøre det muligt at bruge opgaver tilføjet i SCEE, og mulighed for at \u0020 \n <li>redigere rå tags</li> \u0020 \n <li>flytte punkter der er en del af veje eller relationer</li> \u0020 \n <li>slette ethvert fritflydende punkt</li> \u0020 \n <li>redigere elementer, der skal blokeres af en bemærkning</li> \u0020 \n <li>tilføje fritflydende punkter overalt</li> \u0020 \n <li>ændre elementvalg for opgaver</li> \u0020 \n \u0020 \n \u0020Det er stadig mindre, end hvad de fleste andre editorer tillader, men uforsigtig brug kan resultere i beskadigelse af data på måder, som ikke er mulige i StreetComplete. Vær opmærksom på, at du ved at aktivere eksperttilstand bærer et betydeligt større ansvar for dine redigeringer. \u0020 \n \u0020Aktivér kun denne indstilling, hvis du har erfaring med OSM uden for StreetComplete og ved, hvad du gør.</string>
+    <string name="pref_expert_mode_message">Dette vil gøre det muligt at bruge opgaver tilføjet i SCEE, og mulighed for at \n <li>redigere rå tags</li> \n <li>flytte punkter der er en del af veje eller relationer</li> \n <li>slette ethvert fritflydende punkt</li> \n <li>redigere elementer, der skal blokeres af en bemærkning</li> \n <li>tilføje fritflydende punkter overalt</li> \n <li>ændre elementvalg for opgaver</li> \n \n Det er stadig mindre, end hvad de fleste andre editorer tillader, men uforsigtig brug kan resultere i beskadigelse af data på måder, som ikke er mulige i StreetComplete. Vær opmærksom på, at du ved at aktivere eksperttilstand bærer et betydeligt større ansvar for dine redigeringer. \n Aktivér kun denne indstilling, hvis du har erfaring med OSM uden for StreetComplete og ved, hvad du gør.</string>
     <string name="pref_expert_mode_title">Ekspert-tilstand</string>
     <string name="pref_expert_mode_summary">Aktivér avancerede redigeringsfunktioner</string>
     <string name="pref_save_photos_summary">Gem billeder i fuld størrelse, der er taget under oprettelse af bemærkninger, uden at slette EXIF-data</string>
@@ -321,7 +321,7 @@
     <string name="quest_lanes_answer_noLanes_known_count">Ingen markeringer, tydeligt antal vognbaner</string>
     <string name="quest_generic_answer_show_edit_tags">Vis/rediger tags</string>
     <string name="quest_construction">Under opførelse indtil…</string>
-    <string name="quest_building_demolished">Det er revet ned (synlige spor)</string>
+    <string name="quest_building_demolished">Er revet ned (synlige spor)</string>
     <string name="quest_construction_value">Angiv \"construction=…\", eller lad være tom, hvis ukendt</string>
     <string name="quest_maxspeed_conditional">Afhænger af…</string>
     <string name="quest_maxspeed_conditional_limited_enter_default">Vælg standardgrænsen, før du vælger dette svar</string>
@@ -525,12 +525,7 @@
     <string name="quest_healthcare_speciality_title">Hvilke sundhedsspecialer har dette sted?</string>
     <string name="quest_tree_error">Ikke genkendt. Prøv at indtaste træets slægt, art eller engelske navn. Ellers kan du overveje at efterlade en bemærkning.</string>
     <string name="quest_piste_difficulty_advanced">Øvet</string>
-    <string name="tutorial_info_fork_message"><b>SCEE</b>
-\n \u0020
-\n Dette er en modificeret version af StreetComplete. Den er beregnet til erfarne brugere med avanceret viden om OSM. Den giver dig mere kontrol, men også et større <i>ansvar</i>. \u0020
-\n Det gælder især muligheden for at redigere rå tags og slette punkter, men også for ændring af elementvalg til opgaver. Opgaver tilføjet i SCEE <i>kan måske ikke besvares</i> i alle tilfælde og er deaktiveret som standard. Skjul dem, hvis du ikke kan svare på dem, og <i>lav ikke en masse bemærkninger</i>. \u0020
-\n \u0020
-\n Som udgangspunkt er SCEE konfigureret til at opføre sig meget ligesom StreetComplete.</string>
+    <string name="tutorial_info_fork_message"><b>SCEE</b> \n \n Dette er en modificeret version af StreetComplete. Den er beregnet til erfarne brugere med avanceret viden om OSM. Den giver dig mere kontrol, men også et større <i>ansvar</i>. \n Det gælder især muligheden for at redigere rå tags og slette punkter, men også for ændring af elementvalg til opgaver. Opgaver tilføjet i SCEE <i>kan måske ikke besvares</i> i alle tilfælde og er deaktiveret som standard. Skjul dem, hvis du ikke kan svare på dem, og <i>lav ikke en masse bemærkninger</i>. \n \n Som udgangspunkt er SCEE konfigureret til at opføre sig meget ligesom StreetComplete.</string>
     <string name="default_disabled_msg_viaFerrataScale">Denne opgavetype er som standard deaktiveret, fordi vurderingen af via ferrata-ruter er meget subjektiv og kræver ekspertviden om det anvendte klassificeringssystem og om klatring af via ferrata, da det kræver avancerede bjergbestigningsevner. Da der ikke findes en verdensomspændende skala for via ferratas sværhedsgrad, bruges den tyske Huesler-skala her.</string>
     <string name="quest_viaFerrataScale_four_description">Stejlt terræn med gennemgående stålkabler til fastgørelse. Kræver styrke i armene. Kunstige hjælpemidler (jerntrin, håndtag) på de sværeste strækninger.</string>
     <string name="quest_viaFerrataScale_six_description">Lange, sparsomt sikrede gymnastiske strækninger, der kræver stor udholdenhed. Klatresko kan være nyttige. Ekstra sikkerhed sker ved hjælp af reb eller sikring (anbefales)</string>
@@ -641,4 +636,35 @@
     <string name="quest_roofOrientation_across">Parallelt med bygningens korte side</string>
     <string name="quest_roofOrientation_along">Parallelt med bygningens lange side</string>
     <string name="quest_roofOrientation_title">Hvordan er tagryggen orienteret?</string>
+    <string name="quest_buildingPartMaterial_title">Hvilket materiale er denne bygningsdel overordnet set lavet af?</string>
+    <string name="quest_material_plaster">Puds</string>
+    <string name="quest_material_glass">Glas</string>
+    <string name="quest_material_mirror">Spejlglas</string>
+    <string name="quest_material_mud">Tørret mudder</string>
+    <string name="quest_material_timber_framing">Bindingsværk af træ</string>
+    <string name="quest_material_sandstone">Sandsten</string>
+    <string name="quest_material_clay">Ler</string>
+    <string name="quest_material_reed">Siv</string>
+    <string name="quest_material_loam">Lermuld</string>
+    <string name="quest_material_slate">Skiffer</string>
+    <string name="quest_material_vinyl">Strimler af vinylplast</string>
+    <string name="quest_material_limestone">Kalksten</string>
+    <string name="quest_material_cement_block">Betonblokke</string>
+    <string name="quest_material_bamboo">Bambus</string>
+    <string name="quest_material_adobe">Adobe</string>
+    <string name="quest_buildingMaterial_title">Hvilket materiale er bygningen overordnet set lavet af?</string>
+    <string name="quest_material_marble">Marmor</string>
+    <string name="quest_material_tiles">Klinker</string>
+    <string name="quest_lampMount_disabled_msg">Denne opgave er deaktiveret som standard, fordi den kan have karakter af spam afhængigt af regionen.</string>
+    <string name="quest_lampMount_straightMast">Lige pæl</string>
+    <string name="quest_lampMount_bentMast">Bøjet pæl</string>
+    <string name="quest_lampMount_suspended">Ophængt i en wire</string>
+    <string name="quest_lampMount_angledMast">Vinklet pæl</string>
+    <string name="quest_lampMount_highMast">Høj pæl (over 30 m)</string>
+    <string name="quest_lampMount_bollard">Pullert</string>
+    <string name="quest_lampMount_wall">Væg</string>
+    <string name="quest_lampMount_ceiling">Loft</string>
+    <string name="quest_lampMount_transitShelter">Venteskur</string>
+    <string name="quest_lampMount_title">Hvordan er denne lampe monteret?</string>
+    <string name="quest_disused">Er ikke i brug</string>
 </resources>
