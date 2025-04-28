@@ -519,6 +519,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="link_osmhydrant_description">"Lookup, add and edit fire stations and fire hydrants"</string>
     <string name="link_backofyourhand_description">How well do you know your area? Test your knowledge by locating streets.</string>
     <string name="link_notesreview_description">Conveniently see, filter and comment on notes created by you and others. Many notes can be solved by putting the information contained in them on the map with iD or JOSM</string>
+    <string name="link_transitous_description">Provider neutral free and open source public transport routing</string>
 
     <!-- Achievement screen -->
 

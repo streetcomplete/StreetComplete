@@ -430,6 +430,14 @@ val links = listOf(
         R.drawable.ic_link_valhalla,
         R.string.link_valhalla_description
     ),
+    Link(
+        "transitous",
+        "https://transitous.org/",
+        "Transitous",
+        LinkCategory.SHOWCASE,
+        R.drawable.ic_link_transitous,
+        R.string.link_transitous_description
+    ),
 
     /* -------------------------------------- Goodies ----------------------------------------*/
     Link(
@@ -647,7 +655,8 @@ val achievements = listOf(
         // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
         { lvl -> (lvl + 1) * 10 },
         mapOf(
-            1 to links("öpnvkarte")
+            1 to links("öpnvkarte"),
+            3 to links("transitous"),
         )
     ),
 
