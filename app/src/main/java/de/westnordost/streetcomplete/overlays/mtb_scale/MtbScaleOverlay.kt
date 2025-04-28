@@ -33,7 +33,7 @@ class MtbScaleOverlay : Overlay {
                 or bicycle ~ yes|permissive|designated
               )
               and (
-                surface ~ ${UNPAVED_SURFACES.joinToString("|")}
+                surface ~ ${UNPAVED_SURFACES.joinToString("|")}|wood
                 or (highway = track and tracktype and tracktype != grade1)
               )
         """).map { it to getStyle(it) }
