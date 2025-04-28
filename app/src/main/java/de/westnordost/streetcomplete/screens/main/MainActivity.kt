@@ -460,7 +460,7 @@ class MainActivity :
             val eeAllowed = if (prefs.getBoolean(Prefs.EXPERT_MODE, false)) true
                 else overlayRegistry.getOrdinalOf(it)!! < ApplicationConstants.EE_QUEST_OFFSET
             eeAllowed && it !is CustomOverlay
-        } + getFakeCustomOverlays(prefs, this)
+        } + getFakeCustomOverlays(prefs, this.resources)
         val params = ViewGroup.LayoutParams(resources.dpToPx(52).toInt(), resources.dpToPx(52).toInt())
         overlays.forEach { overlay ->
             val view = ImageView(this)

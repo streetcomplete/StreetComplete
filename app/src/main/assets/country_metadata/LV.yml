@@ -2,7 +2,7 @@
 atmOperators: [Swedbank, SEB, Citadele, Luminor Bank, Luminor, Euronet, BluOr Bank]
 centerLineStyle: white
 chargingStationOperators: [CSDD, Elektrum, ChargePoint, Bolt, e-mobi, Eleport, Ceļu satiksmes drošības direkcija, Ignitis, Enefit, 'Tesla, Inc.', Porsche, Energolukss, CSDD - Ceļu Satiksmes Drošības Direkcija]
-clothesContainerOperators: [ViaCor Charity, Kuldīgas komunālie pakalpojumi, Eco Baltia Vide, CleanR, Clean R]
+clothesContainerOperators: [ViaCor Charity, Kuldīgas komunālie pakalpojumi, Eco Baltia Vide, Clean R, CleanR]
 defaultSpeedLimitHasUrbanOrRural: true
 edgeLineStyle: white
 exclusiveCycleLaneStyle: white
@@ -17,7 +17,7 @@ noParkingLineStyle: dashed yellow
 noStoppingLineStyle: yellow
 officialLanguages: [lv]
 orchardProduces: [apple, blueberry, strawberry, raspberry, pear, plum]
-parcelLockerBrand: [DPD, Omniva, Latvijas Pasts, Venipak, Smartpost, Unisend, DPD Pickup Station, Udrop, Itella]
+parcelLockerBrand: [DPD, Omniva, Latvijas Pasts, Venipak, SmartPosti, Unisend, DPD Pickup Station, Udrop]
 postboxesHaveCollectionTimes: true
 slowZoneLabelPosition: bottom
 slowZoneLabelText: ZONA

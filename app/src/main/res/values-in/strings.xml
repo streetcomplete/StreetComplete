@@ -613,7 +613,6 @@ Jangan lupa hati-hati: Sadar terhadap lingkungan sekitar dan jangan masuk proper
     <string name="link_ideditor_description">"Editor OSM sederhana untuk browser. Optimal untuk dekstop atau tablet besar"</string>
     <string name="link_umap_description">"Buat peta dengan data khusus dengan cepat dan sisipkan ke situsmu"</string>
     <string name="link_opnvkarte_description">"Peta untuk transportasi publik dan perhentian"</string>
-    <string name="link_pic4review_description">"Berkontribusi ke OSM hanya dengan melihat foto di kotamu"</string>
     <string name="link_wiki_description">"Wiki ini ialah tempat awal untuk semua yang berhubungan dengan OpenStreetMap"</string>
     <string name="link_learnosm_description">"Baru di OpenStreetMap? Ini adalah panduan pemula"</string>
     <string name="link_neis_one_description">"Kumpulan statistik besar untuk kontributor OpenStreetMap, seperti di mana kamu berkontribusi, siapa lagi di sekitarmu, juga papan peringkat"</string>
@@ -1382,7 +1381,7 @@ Level dihitung sebagai level atap jika jendelanya berada di atap. Selanjutnya, a
     <string name="quest_barrier_opening_width_gate">"Berapa lebar bukaan di sini?"</string>
     <string name="bridge">"di jembatan"</string>
     <string name="about_title_intro">"Tampilkan pengantar"</string>
-    <string name="about_category_help">"Tolong"</string>
+    <string name="about_category_help">"Bantuan"</string>
     <string name="quest_camp_power_supply_hint">"Ini bisa berupa stopkontak langsung di tempat perkemahan, stopkontak di gedung layanan yang dapat diakses oleh tamu, stasiun pengisian daya khusus untuk ponsel, laptop, dll."</string>
     <string name="quest_barrier_opening_width_bollard">"Berapa celah terlebar yang dapat dilewati di sini?"</string>
     <string name="user_profile_all_time_title">"Keseluruhan"</string>

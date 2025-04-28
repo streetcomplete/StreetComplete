@@ -192,7 +192,7 @@ Jos koko tien varrella ei ole nopeusrajoitusmerkiä, joka pätee korostettuun ko
     <string name="quest_sport_gaelic_games">"Gaelilaiset urheilulajit"</string>
     <string name="quest_sport_sepak_takraw">"Sepak takraw"</string>
     <string name="quest_wheelchairAccess_limited">"Osittain"</string>
-    <string name="quest_bikeParkingCapacity_hint">"Huomaa, että telineeseen voi yleensä pysäköidä yhden pyörän sen kummallekin puolelle."</string>
+    <string name="quest_bikeParkingCapacity_hint">"Huomaa, että telineeseen voi yleensä pysäköidä yhden pyörän sen kummallekin puolelle, ja joissain tapauksissa saatat joutua arvioimaan montako mahtuisi."</string>
     <string name="quest_sport_roller_skating">"Rullaluistelu"</string>
     <string name="quest_wheelchairAccess_limited_description_business">"Osittain tarkoittaa, että sisäänpääsyllä on enintään nilkan korkuinen askelma ja että sisällä useimmat huoneet ovat kuljettavissa pyörätuolilla."</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">"Osittain tarkoittaa, että pääsyllä on enintään nilkan korkuinen askelma."</string>
@@ -613,7 +613,6 @@ Viimeiseksi, muista turvallisuus: huomioi ympäristösi äläkä mene yksityisal
     <string name="link_ideditor_description">"Yksinkertainen OSM-editori selaimella. Optimoitu tietokoneille ja suurille tableteille"</string>
     <string name="link_umap_description">"Luo muokattu kartta nopeasti ja upota se sivuillesi"</string>
     <string name="link_opnvkarte_description">"Julkisen liikenteen reittien ja pysäkkien kartta"</string>
-    <string name="link_pic4review_description">"Osallistu OSM-karttojen tekoon yksinkertaisesti katsomalla kaupunkisi kuvia"</string>
     <string name="link_wiki_description">"Wiki on aloituspiste kaikkeen OpenStreetMapiin liittyvään"</string>
     <string name="link_learnosm_description">"Uusi OpenStreetMapin parissa? Tässä aloittajan opas"</string>
     <string name="link_neis_one_description">"Valtava kokoelma tilastoja OpenStreetMap-avustajille, esimerkiksi missä ja milloin kartoitettu, keitä muita kartoittajia on ympärilläsi"</string>
@@ -716,7 +715,7 @@ taso"</string>
     <string name="quest_oneway2_dir">"Yksisuuntainen tähän suuntaan"</string>
     <string name="quest_oneway2_no_oneway">"Ei yksisuuntainen"</string>
     <string name="quest_maxweight_select_sign">"Valitse merkki"</string>
-    <string name="quest_steps_incline_title">"Mihin suuntaan on portaiden yläpää?"</string>
+    <string name="quest_steps_incline_title">"Kumpi suunta johtaa ylöspäin täällä?"</string>
     <string name="quest_steps_incline_up">"Tähän suuntaan ylös"</string>
     <string name="quest_step_count_title">"Kuinka monta askelmaa tässä on?"</string>
     <string name="quest_traffic_signals_sound_title">"Onko täällä äänimerkkiä sokeille?"</string>
@@ -1159,7 +1158,7 @@ Tee sama toiselle puolelle mikäli tarpeellista."</string>
     <string name="quest_entrance_reference_flat_range_label">"Huoneistoväli:"</string>
     <string name="quest_entrance_reference_flat_range_to">"-"</string>
     <string name="default_disabled_msg_overlay">"Tämä tehtävätyyppi on oletusarvoisesti pois käytöstä, koska tarjolla on taso, jota käyttämällä tähän liittyvää tietoa on mahdollista syöttää ja päivittää tehokkaammalla tavalla."</string>
-    <string name="quest_camp_drinking_water_title">"Onko juomavesi ilmaista leiriytyjille täällä?"</string>
+    <string name="quest_camp_drinking_water_title">"Onko juomavettä vapaasti vierailijoiden saatavissa täällä?"</string>
     <string name="quest_camp_shower_title">"Onko täällä suihkuja?"</string>
     <string name="quest_camp_power_supply_title">"Onko täällä pistorasioita vieraille?"</string>
     <string name="quest_camp_type_title">"Kuka saa leiriytyä täällä?"</string>
@@ -1433,4 +1432,9 @@ Kerros lasketaan kattokerrokseksi kun sen ikkunat ovat katossa. Katot, joissa ei
     <string name="pedestrian_zone_allowed_sign">"Kyltti sallii pyöräilyn"</string>
     <string name="pedestrian_zone_no_sign">"Ei kylttiä pyöräilystä"</string>
     <string name="team_mode_description_overlay_hint">"Jos käytätte tasoja, jokaisen kannattaa käyttää eriä, koska vain tehtävät jaetaan."</string>
+    <string name="quest_dietType_glutenfree_name_title">"Saako täältä gluteenittomia tuotteita?"</string>
+    <string name="quest_construction_minor_title">"Onko tietyö valmis?"</string>
+    <string name="link_opengeofiction_description">"Kyllästyttääkö todellisuuden kartoittaminen? Luo kuvitteellisia karttoja muiden kanssa!"</string>
+    <string name="link_openclimbing_description">"Kartta kiipeilypaikoista"</string>
+    <string name="pref_title_zoom_buttons">"Näytä kartan suurennuspainikkeet"</string>
 </resources>

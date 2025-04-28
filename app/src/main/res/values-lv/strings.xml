@@ -37,13 +37,13 @@
     <string name="quest_noteDiscussion_anonymous">"Anonīms"</string>
     <string name="confirmation_discard_title">"Atmest pienesumu?"</string>
     <string name="confirmation_discard_positive">"Atmest"</string>
-    <string name="action_download">"Pārlūkot uzdevumus šeit"</string>
+    <string name="action_download">"Lejupielādēt datus šeit"</string>
     <string name="action_upload">"Augšupielādēt atbildes"</string>
     <string name="no_changes">"Jūs neatbildējāt"</string>
-    <string name="download_error">"Kļūda, pārlūkojot uzdevumus"</string>
-    <string name="upload_error">"Kļūda, augšupielādējot atbildes"</string>
+    <string name="download_error">"Lejupielādes kļūda"</string>
+    <string name="upload_error">"Augšupielādes kļūda"</string>
     <string name="download_area_too_big">"Lūdzu, vēl pietuviniet"</string>
-    <string name="confirmation_cancel_prev_download_title">"Vai pārtraukt pašreizējo meklēšanu un tā vietā pārlūkot šeit?"</string>
+    <string name="confirmation_cancel_prev_download_title">"Vai pārtraukt pašreizējo lejupielādēšanu un tā vietā lejupielādēšanu šeit?"</string>
     <string name="turn_on_location_request">"Atrašanās vieta ir izslēgta. Vai vēlaties, lai tiek atvērti iestatījumi tās ieslēgšanai?"</string>
     <string name="no_location_permission_warning">"Atrašanās vietas atļauja ir nepieciešama, lai parādītu jūsu atrašanās vietu kartē un pārlūkotu uzdevumus jūsu apkārtnē."</string>
     <string name="about_title_authors">"Autori"</string>
@@ -611,7 +611,6 @@ Pats galvenais, atcerieties ievērot drošību: apzinieties savu apkārtni un ne
     <string name="link_ideditor_description">"Vienkāršs OSM redaktors tīmekļa pārlūkā. Pielāgots darbam uz darbvirsmas datora vai lielām planšetēm"</string>
     <string name="link_umap_description">"Ātri veidojiet kartes ar pielāgotiem datiem, un ieguliet tās savās vietnēs"</string>
     <string name="link_opnvkarte_description">"Karte ar sabiedriskā transporta maršrutiem un pieturām"</string>
-    <string name="link_pic4review_description">"Sniedziet ieguldījumu OSM kartēm, vienkārši skatoties uz bildēm jūsu pilsētā"</string>
     <string name="link_wiki_description">"Šis viki ir jūsu starta punkts visam, kas ir saistīts ar OpenStreetMap"</string>
     <string name="link_learnosm_description">"Iesācēju ceļvedis OpenStreetMap kartēšanā"</string>
     <string name="link_neis_one_description">"Milzīga OpenStreetMap kartētāju statistikas kolekcija, piemēram, kur un kā esat kartējis, kas vēl ir jums tuvumā un līderu saraksts"</string>
@@ -1263,6 +1262,8 @@ Pārvietot tagad?"</string>
     <string name="overlay_surface">"Virsmas"</string>
     <string name="overlay_path_surface_segregated">"Sadalīt velosipēdu un gājēju daļās"</string>
     <string name="quest_crossing_title2">"Vai šeit ir pāreja?"</string>
+    <string name="quest_crossing_yes">"Jā, domāta kā pāreja"</string>
+    <string name="quest_crossing_no">"Nav domāta kā pāreja, bet var šķērsot (piemēram, neoficiālas takas)"</string>
     <string name="quest_crossing_prohibited">"Nē, pārvietošanās ir aizliegts vai neiespējams"</string>
     <string name="quest_hairdresser_title">"Kuri klienti var apmeklēt frizieri?"</string>
     <string name="quest_hairdresser_male_and_female">"Jebkurš"</string>
@@ -1393,7 +1394,7 @@ Stāvs tiek uzskatīts par jumta stāvu, ja tā logi atrodas jumtā. Attiecīgi,
     <string name="user_statistics_country_rank2">"Rangs valstī %s"</string>
     <string name="quest_leafType_tree_is_just_a_stump">"Tas ir tikai celms"</string>
     <string name="quest_board_name_title">"Kāds ir šī informācijas dēļa virsraksts?"</string>
-    <string name="quest_crossing_hint">"Neformāla taka, kas šķērso ceļu:"</string>
+    <string name="quest_crossing_hint">"Neoficiāla taka, kas šķērso ceļu:"</string>
     <string name="note_for_object">"Cita persona ir piezīmējusi:"</string>
     <string name="quest_bicycle_parking_type_safeloops">"Drošā cilpa (atbalsta riteni un rāmi)"</string>
     <string name="quest_cycleway_value_sidewalk_ok_dual">"nav, bet zīme atļauj braukt ar velosipēdu pa ietvi abos virzienos"</string>

@@ -11,7 +11,7 @@ import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.data.visiblequests.LevelFilter
-import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsController
+import de.westnordost.streetcomplete.data.presets.EditTypePresetsController
 import de.westnordost.streetcomplete.screens.main.MainViewModel
 import de.westnordost.streetcomplete.ui.common.DropdownMenuItem
 import de.westnordost.streetcomplete.util.dialogs.showProfileSelectionDialog
@@ -25,7 +25,7 @@ fun QuickSettingsDropdown(
     modifier: Modifier = Modifier,
 ) {
 
-    val questPresetsController: QuestPresetsController = koinInject()
+    val editTypePresetsController: EditTypePresetsController = koinInject()
     val levelFilter: LevelFilter = koinInject()
     val prefs: Preferences = koinInject()
     val ctx = LocalContext.current
@@ -37,7 +37,7 @@ fun QuickSettingsDropdown(
     ) {
         DropdownMenuItem(onClick = {
             onDismissRequest()
-            showProfileSelectionDialog(ctx, questPresetsController, prefs)
+            showProfileSelectionDialog(ctx, editTypePresetsController, prefs)
         })
         {
             Text(text = stringResource(R.string.quick_switch_preset))

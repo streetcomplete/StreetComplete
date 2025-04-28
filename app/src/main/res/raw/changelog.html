@@ -1,4 +1,45 @@
 <!-- Do not edit! This file was generated automatically from CHANGELOG.md via UpdateChangelogTask -->
+<h2>v61.0-beta1</h2>
+<h3>Android below 7.1 no longer supported (<a href="https://github.com/streetcomplete/StreetComplete/issues/6210">#6210</a>)</h3>
+<p>In reality, support for Android versions below 7.1 has already been just on-paper for a while now, 
+as more and more issues with old Androids have been popping up lately that cannot be fixed on our 
+side. Luckily, it seems that &gt;99.6% of app users already use Android 7.1 and above. (See <a href="https://github.com/streetcomplete/StreetComplete/issues/6210">#6210</a>)</p>
+<h3>Main screen improvements (<a href="https://github.com/streetcomplete/StreetComplete/issues/6213">#6213</a>)</h3>
+<p>Cleaned up the appearance of the main screen a bit:</p>
+<ul>
+<li>Merged the +/- buttons into one button, not shown by default, it's a setting. By the way, you can also zoom with one finger by double-tapping, then moving the finger up or down. This works in any app in which you can zoom, actually.</li>
+<li>The upload button is now in the main menu</li>
+<li>The pointer pin button moves more smoothly (in an ellipsis near the screen border)</li>
+<li>Added a scale bar on the lower right (<a href="https://github.com/streetcomplete/StreetComplete/issues/5765">#5765</a>)</li>
+<li>Replaced the static map attribution text with an info button</li>
+</ul>
+<h3>New overlays</h3>
+<ul>
+<li><em>MTB difficulty</em>: Add the difficulty ratings for mountainbike trails (<a href="https://github.com/streetcomplete/StreetComplete/issues/1850">#1850</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/5726">#5726</a>), thanks <a href="https://github.com/RubenKelevra">RubenKelevra</a> and <a href="https://github.com/ravenfield">ravenfield</a>. It is disabled by default because you need to be a domain expert to accurately record this data. (<a href="https://github.com/streetcomplete/StreetComplete/issues/6226">#6226</a>)</li>
+</ul>
+<h3>New quests</h3>
+<ul>
+<li><em>&quot;Are gluten-free products offered here?&quot;</em>, disabled by default (<a href="https://github.com/streetcomplete/StreetComplete/issues/3031">#3031</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/6143">#6143</a>), by <a href="https://github.com/mnalis">mnalis</a></li>
+</ul>
+<h3>Quest and Overlay improvements</h3>
+<ul>
+<li>Opening hours: Fix semantic issue when specifying off-days at the top (<a href="https://github.com/streetcomplete/StreetComplete/issues/6191">#6191</a>)</li>
+<li>Surfaces: Fix surface was asked twice when a generic surface was selected (<a href="https://github.com/streetcomplete/StreetComplete/issues/6172">#6172</a>)</li>
+<li>Smoothness: Don't ask if surface is still correct just after specifying the surface smoothness (<a href="https://github.com/streetcomplete/StreetComplete/issues/6178">#6178</a>)</li>
+<li>Baby changing tables: Ask at more places (<a href="https://github.com/streetcomplete/StreetComplete/issues/6167">#6167</a>), by <a href="https://github.com/agent-redd">agent-redd</a></li>
+<li>Sidewalk overlay: Align which roads are selectable with the bike paths overlay, for consistency (<a href="https://github.com/streetcomplete/StreetComplete/issues/6185">#6185</a>), by <a href="https://github.com/mnalis">mnalis</a></li>
+<li>Roadwork: Also ask whether minor roadwork (i.e. construction without full road closure) is completed (<a href="https://github.com/streetcomplete/StreetComplete/issues/6090">#6090</a>)</li>
+<li>Various: Ask about more features of alpine and wilderness huts (<a href="https://github.com/streetcomplete/StreetComplete/issues/6200">#6200</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/6201">#6201</a>), thanks <a href="https://github.com/tiptoptom">tiptoptom</a></li>
+<li>Building levels: Prettified input form a bit (<a href="https://github.com/streetcomplete/StreetComplete/issues/6022">#6022</a>), by <a href="https://github.com/GaeaKat">GaeaKat</a></li>
+<li>Other small things (<a href="https://github.com/streetcomplete/StreetComplete/issues/6209">#6209</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/6216">#6216</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/6217">#6217</a>…), thanks <a href="https://github.com/mnalis">mnalis</a></li>
+</ul>
+<h3>General Improvements</h3>
+<ul>
+<li>Performance improvements on upload and download (<a href="https://github.com/streetcomplete/StreetComplete/issues/6150">#6150</a>) as well as significantly decreased data download size (<a href="https://github.com/streetcomplete/StreetComplete/issues/6218">#6218</a>)</li>
+<li>Performance improvements in the quest selection screen (<a href="https://github.com/streetcomplete/StreetComplete/issues/6205">#6205</a>), by <a href="https://github.com/irakliy01">irakliy01</a></li>
+<li>Added a few new links to unlock via achievements. Newly added links do not unlock silently for old users anymore (<a href="https://github.com/streetcomplete/StreetComplete/issues/6220">#6220</a>)</li>
+<li>Render parks and playgrounds with an outline (<a href="https://github.com/streetcomplete/StreetComplete/issues/6221">#6221</a>), by <a href="https://github.com/doniks">doniks</a></li>
+</ul>
 <h2>v60.3</h2>
 <ul>
 <li>downgraded third-party component because it caused crashes due to memory leaks (see <a href="https://github.com/streetcomplete/StreetComplete/issues/6166">#6166</a>)</li>

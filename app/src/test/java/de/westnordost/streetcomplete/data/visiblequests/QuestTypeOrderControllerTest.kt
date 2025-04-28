@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.data.visiblequests
 
+import de.westnordost.streetcomplete.data.presets.EditTypePresetsSource
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.quest.TestQuestTypeA
@@ -18,12 +19,12 @@ import kotlin.test.assertEquals
 
 class QuestTypeOrderControllerTest {
     private lateinit var questTypeOrderDao: QuestTypeOrderDao
-    private lateinit var questPresetsSource: QuestPresetsSource
+    private lateinit var editTypePresetsSource: EditTypePresetsSource
     private lateinit var questTypeRegistry: QuestTypeRegistry
     private lateinit var ctrl: QuestTypeOrderController
     private lateinit var listener: QuestTypeOrderSource.Listener
 
-    private lateinit var questPresetsListener: QuestPresetsSource.Listener
+    private lateinit var editTypePresetsListener: EditTypePresetsSource.Listener
 
     private val questA = TestQuestTypeA()
     private val questB = TestQuestTypeB()
@@ -32,7 +33,7 @@ class QuestTypeOrderControllerTest {
 
     @BeforeTest fun setUp() {
         questTypeOrderDao = mock()
-        questPresetsSource = mock()
+        editTypePresetsSource = mock()
         questTypeRegistry = QuestTypeRegistry(listOf(
             0 to questA,
             1 to questB,
@@ -40,21 +41,21 @@ class QuestTypeOrderControllerTest {
             3 to questD
         ))
 
-        on(questPresetsSource.addListener(any())).then { invocation ->
-            questPresetsListener = (invocation.arguments[0] as QuestPresetsSource.Listener)
+        on(editTypePresetsSource.addListener(any())).then { invocation ->
+            editTypePresetsListener = (invocation.arguments[0] as EditTypePresetsSource.Listener)
             Unit
         }
 
-        on(questPresetsSource.selectedId).thenReturn(0)
+        on(editTypePresetsSource.selectedId).thenReturn(0)
 
-        ctrl = QuestTypeOrderController(questTypeOrderDao, questPresetsSource, questTypeRegistry)
+        ctrl = QuestTypeOrderController(questTypeOrderDao, editTypePresetsSource, questTypeRegistry)
 
         listener = mock()
         ctrl.addListener(listener)
     }
 
-    @Test fun `notifies listener when changing quest preset`() {
-        questPresetsListener.onSelectedQuestPresetChanged()
+    @Test fun `notifies listener when changing edit type preset`() {
+        editTypePresetsListener.onSelectionChanged()
         verify(listener).onQuestTypeOrdersChanged()
     }
 

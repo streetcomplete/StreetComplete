@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.util
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
+import android.content.res.Resources
 import android.util.TypedValue
 import android.view.ViewGroup
 import android.widget.CheckBox
@@ -17,6 +18,7 @@ import androidx.appcompat.widget.SwitchCompat
 import androidx.core.content.ContextCompat
 import androidx.core.net.toUri
 import androidx.core.widget.doAfterTextChanged
+import de.westnordost.streetcomplete.BuildConfig
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
@@ -258,7 +260,7 @@ fun showOverlayCustomizer(
 // title is invalid resId 0
 // name and wikiLink are the overlay index as stored in shared preferences
 // changesetComment is the overlay title
-fun getFakeCustomOverlays(prefs: Preferences, ctx: Context, onlyIfExpertMode: Boolean = true): List<Overlay> {
+fun getFakeCustomOverlays(prefs: Preferences, res: Resources, onlyIfExpertMode: Boolean = true): List<Overlay> {
     if (onlyIfExpertMode && !prefs.getBoolean(Prefs.EXPERT_MODE, false)) return emptyList()
     return prefs.getString(Prefs.CUSTOM_OVERLAY_INDICES, "0").split(",").mapNotNull { index ->
         val i = index.toIntOrNull() ?: return@mapNotNull null
@@ -266,10 +268,10 @@ fun getFakeCustomOverlays(prefs: Preferences, ctx: Context, onlyIfExpertMode: Bo
             override fun getStyledElements(mapData: MapDataWithGeometry) = emptySequence<Pair<Element, Style>>()
             override fun createForm(element: Element?) = null
             override val changesetComment = prefs.getString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_NAME, i), "")
-                .ifBlank { ctx.getString(R.string.custom_overlay_title) } // displayed overlay name
-            override val icon = ctx.resources.getIdentifier(
+                .ifBlank { res.getString(R.string.custom_overlay_title) } // displayed overlay name
+            override val icon = res.getIdentifier(
                 prefs.getString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_ICON, i), "ic_custom_overlay"),
-                "drawable", ctx.packageName
+                "drawable", BuildConfig.APPLICATION_ID
             ).takeIf { it != 0 } ?: R.drawable.ic_custom_overlay
             override val title = 0 // use invalid resId placeholder, the adapter needs to be aware of this
             override val name = index // allows to uniquely identify an overlay

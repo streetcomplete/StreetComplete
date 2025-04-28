@@ -41,7 +41,7 @@ import de.westnordost.streetcomplete.data.download.DownloadWorker
 import de.westnordost.streetcomplete.data.importGpx
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.preferences.Preferences
-import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeController
+import de.westnordost.streetcomplete.data.visiblequests.VisibleEditTypeController
 import de.westnordost.streetcomplete.ui.common.BackIcon
 import de.westnordost.streetcomplete.ui.common.dialogs.SimpleListPickerDialog
 import de.westnordost.streetcomplete.ui.common.settings.Preference
@@ -60,7 +60,7 @@ import java.io.IOException
 fun DisplaySettingsScreen(
     onClickBack: () -> Unit,
 ) {
-    val visibleQuestTypeController: VisibleQuestTypeController = koinInject()
+    val visibleEditTypeController: VisibleEditTypeController = koinInject()
     val prefs: Preferences = koinInject()
     val scope = rememberCoroutineScope()
     var showBackgroundDialog by remember { mutableStateOf(false) }
@@ -92,7 +92,7 @@ fun DisplaySettingsScreen(
                 description = stringResource(R.string.pref_quest_geometries_summary),
                 default = false,
                 pref = Prefs.QUEST_GEOMETRIES,
-                onCheckedChange = { visibleQuestTypeController.onQuestTypeVisibilitiesChanged() }
+                onCheckedChange = { visibleEditTypeController.onVisibilitiesChanged() }
             )
             SwitchPreference(
                 name = stringResource(R.string.pref_offset_fix_title2),

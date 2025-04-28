@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.screens.main
 
-import android.content.Context
 import androidx.compose.runtime.MutableState
 import androidx.compose.ui.geometry.Offset
 import androidx.lifecycle.ViewModel
@@ -43,7 +42,7 @@ abstract class MainViewModel : ViewModel() {
 
     /* overlays */
     abstract val selectedOverlay: StateFlow<Overlay?>
-    abstract fun getOverlays(context: Context): List<Overlay>
+    abstract val overlays: StateFlow<List<Overlay>>
 
     abstract var hasShownOverlaysTutorial: Boolean
 

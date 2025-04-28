@@ -1,5 +1,5 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [Victoriabank, Moldova Agroindbank, Moldindconbank, Energbank, Mobiasbanca, Eximbank, FinComBank, Moldincombank, OTP Bank, Moldinconbank, MAIB, Moldindcombank, MICB, EuroCreditBank, BCR, micb.md, maib, Victoriabank1, MobiasBanca, BCR Chișinău]
+atmOperators: [Moldova Agroindbank, Victoriabank, Moldindconbank, Energbank, Mobiasbanca, Eximbank, FinComBank, Moldincombank, OTP Bank, Moldinconbank, MAIB, Moldindcombank, MICB, EuroCreditBank, BCR, micb.md, maib, Victoriabank1, MobiasBanca, BCR Chișinău]
 defaultSpeedLimitHasUrbanOrRural: true
 hasDailyAlternateSideParkingSign: true
 hasLivingStreet: true

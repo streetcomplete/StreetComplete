@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.screens.main.overlays
 
-import android.content.Context
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -31,7 +30,7 @@ import org.koin.compose.koinInject
 fun OverlaySelectionDropdownMenu(
     expanded: Boolean,
     onDismissRequest: () -> Unit,
-    getOverlays: (Context) -> List<Overlay>,
+    overlays: List<Overlay>,
     onSelect: (Overlay?) -> Unit,
     modifier: Modifier = Modifier
 ) {
@@ -50,7 +49,7 @@ fun OverlaySelectionDropdownMenu(
                 modifier = Modifier.padding(start = 48.dp)
             )
         }
-        for (overlay in getOverlays(LocalContext.current)) {
+        for (overlay in overlays) {
             DropdownMenuItem(onClick = { onDismissRequest(); onSelect(overlay) }) {
                 Row(
                     horizontalArrangement = Arrangement.spacedBy(16.dp),

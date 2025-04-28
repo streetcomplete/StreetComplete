@@ -120,6 +120,8 @@ The info you enter is directly added to OpenStreetMap in your name, without the 
     <string name="default_disabled_msg_overlay">This quest type is disabled by default because there is already an overlay with which it is more effective and efficient to enter and update this data.</string>
     <string name="default_disabled_msg_seasonal">"This quest type is disabled by default because it may require re-checking the situation at different times of the year."</string>
 
+    <string name="default_disabled_overlay_domain_expert">This overlay is disabled by default because you need to be a domain expert to accurately record this data.</string>
+
 
     <!-- Quest interface -->
     <!-- caution: This is not the floor and level=0 is not necessarily at street level as it may follow the numbering scheme of the building operator. Try to use a generic wording that does not carry an implicit meaning of where it is located in respect to the ground floor. The context is usually shopping centres, train stations or airport terminals -->
@@ -517,6 +519,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="link_osmhydrant_description">"Lookup, add and edit fire stations and fire hydrants"</string>
     <string name="link_backofyourhand_description">How well do you know your area? Test your knowledge by locating streets.</string>
     <string name="link_notesreview_description">Conveniently see, filter and comment on notes created by you and others. Many notes can be solved by putting the information contained in them on the map with iD or JOSM</string>
+    <string name="link_transitous_description">Provider neutral free and open source public transport routing</string>
 
     <!-- Achievement screen -->
 
@@ -599,6 +602,8 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="pref_subtitle_quests">%1$d of %2$d enabled</string>
     <string name="pref_subtitle_quests_preset_name">for preset: %s</string>
 
+    <string name="pref_title_overlays">Overlay selection</string>
+
     <string name="delete_confirmation">Delete</string>
     <string name="delete_cache_dialog_message">Delete all downloaded map data, including quests?\nData is refreshed after %1$s days and unused data is deleted after %2$s days automatically.</string>
 
@@ -612,7 +617,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="pref_title_delete_cache_summary">If you think some data is outdated</string>
 
 
-    <!-- Quest selection screen -->
+    <!-- Quest & overlay selection screen -->
 
     <string name="action_search">Search</string>
     <string name="no_search_results">Nothing found</string>
@@ -622,17 +627,20 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
 
     <string name="action_reset">Reset</string>
     <string name="pref_quests_reset">Reset both quest enablement and order to the default?</string>
+    <string name="pref_overlays_reset">Reset overlay enablement to the default?</string>
 
     <string name="quest_enabled">Enabled</string>
     <string name="quest_type">Quest type</string>
+    <string name="overlay">Overlay</string>
 
     <string name="questList_disabled_in_country">Never shown in %s</string>
     <string name="questList_disabled_by_default">Disabled by default</string>
 
     <string name="enable_quest_confirmation_title">Enable this quest type?</string>
+    <string name="enable_overlay_confirmation_title">Enable this overlay?</string>
 
 
-    <!-- Managing quest presets screen -->
+    <!-- Managing edit type presets screen -->
 
     <string name="action_manage_presets">Manage presets</string>
 

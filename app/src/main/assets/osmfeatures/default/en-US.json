@@ -166,6 +166,9 @@
         "amenity/bicycle_repair_station": {
           "name": "Bicycle Repair Tool Stand"
         },
+        "amenity/bicycle_wash": {
+          "name": "Bicycle Wash"
+        },
         "amenity/biergarten": {
           "name": "Biergarten"
         },
@@ -295,6 +298,9 @@
         },
         "amenity/doctors/gynaecology": {
           "name": "Obstetrician/Gynecologist"
+        },
+        "amenity/doctors/haematology": {
+          "name": "Haematologist"
         },
         "amenity/doctors/paediatrics": {
           "name": "Pediatrician"
@@ -450,6 +456,9 @@
         },
         "amenity/language_school": {
           "name": "Language School"
+        },
+        "amenity/lavoir": {
+          "name": "Lavoir"
         },
         "amenity/letter_box": {
           "name": "Letter Box"
@@ -1214,7 +1223,8 @@
           "name": "Cowshed"
         },
         "building/detached": {
-          "name": "Detached House"
+          "name": "Detached House",
+          "terms": "freestanding house"
         },
         "building/dormitory": {
           "name": "Dormitory"
@@ -1825,6 +1835,9 @@
         "highway/cycleway/moped_link-NL": {
           "name": "Moped Link"
         },
+        "highway/cycleway/traffic_island_shared": {
+          "name": "Shared Path Refuge Island"
+        },
         "highway/cyclist_waiting_aid": {
           "name": "Cyclist Waiting Aid"
         },
@@ -1882,6 +1895,9 @@
           "name": "Give Way Sign",
           "terms": "yield,sign"
         },
+        "highway/ladder": {
+          "name": "Ladder"
+        },
         "highway/living_street": {
           "name": "Shared Zone Road"
         },
@@ -1911,6 +1927,9 @@
         },
         "highway/path/crossing": {
           "name": "Cycle & Foot Crossing"
+        },
+        "highway/path/crossing/traffic_signals": {
+          "name": "Path Crossing With Pedestrian Signals"
         },
         "highway/path/informal": {
           "name": "Informal Path"
@@ -2017,6 +2036,9 @@
           "name": "Traffic Lights",
           "terms": "light,stoplight,traffic light,traffic signals"
         },
+        "highway/trailhead": {
+          "name": "Trailhead"
+        },
         "highway/trunk": {
           "name": "Trunk Road"
         },
@@ -2043,6 +2065,9 @@
         },
         "historic/building": {
           "name": "Historic Building"
+        },
+        "historic/cannon": {
+          "name": "Cannon"
         },
         "historic/castle": {
           "name": "Castle"
@@ -2844,6 +2869,9 @@
         "man_made/survey_point": {
           "name": "Survey Marker"
         },
+        "man_made/tailings_pond": {
+          "name": "Tailings Pond"
+        },
         "man_made/telescope": {
           "name": "Telescope"
         },
@@ -2852,6 +2880,9 @@
         },
         "man_made/telescope/radio": {
           "name": "Radio Telescope"
+        },
+        "man_made/torii": {
+          "name": "Torii"
         },
         "man_made/tower": {
           "name": "Tower"
@@ -3024,6 +3055,9 @@
         },
         "natural/shrub": {
           "name": "Shrub"
+        },
+        "natural/sinkhole": {
+          "name": "Sinkhole"
         },
         "natural/spring": {
           "name": "Spring"
@@ -3975,6 +4009,9 @@
         "shop/dairy": {
           "name": "Milk Product Shop"
         },
+        "shop/deli": {
+          "name": "Delicatessen"
+        },
         "shop/department_store": {
           "name": "Department Store"
         },
@@ -4062,6 +4099,9 @@
         "shop/hairdresser": {
           "name": "Hairdresser",
           "terms": "barber"
+        },
+        "shop/hairdresser/barber": {
+          "name": "Barber"
         },
         "shop/hairdresser_supply": {
           "name": "Hairdresser Supply Shop"

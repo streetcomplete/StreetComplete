@@ -2,3 +2,4 @@
 atmOperators: [Santander, Unicaja Banco, Liberbank, Caja Madrid, Caja Castilla La Mancha, Caixabank, Banco Santander, BBVA]
 chargingStationOperators: [Iberdrola, Wenea, Endesa, 'Tesla, Inc.', Zunder, Repsol, Acciona, Mercadona, Ionity]
 clothesContainerOperators: [Reciclaje de ropa de Cáritas]
+parcelLockerBrand: [Amazon Hub]

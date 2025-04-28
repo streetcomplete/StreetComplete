@@ -1,8 +1,8 @@
 - name: "Tobias Zwick"
   githubUsername: "westnordost"
-  linesOfCodeChanged: 503214
-  linesOfInterfaceMarkupChanged: 155493
-  assetFilesChanged: 2188
+  linesOfCodeChanged: 507505
+  linesOfInterfaceMarkupChanged: 155569
+  assetFilesChanged: 2195
 - name: "Mateusz Konieczny"
   githubUsername: "matkoniecz"
   linesOfCodeChanged: 22211
@@ -10,7 +10,7 @@
   assetFilesChanged: 636
 - name: "Flo Edelmann"
   githubUsername: "FloEdelmann"
-  linesOfCodeChanged: 21504
+  linesOfCodeChanged: 21527
   linesOfInterfaceMarkupChanged: 3733
   assetFilesChanged: 152
 - name: "Helium314"
@@ -30,9 +30,9 @@
   assetFilesChanged: 4
 - name: "Matija Nalis"
   githubUsername: "mnalis"
-  linesOfCodeChanged: 3574
-  linesOfInterfaceMarkupChanged: 523
-  assetFilesChanged: 70
+  linesOfCodeChanged: 3638
+  linesOfInterfaceMarkupChanged: 607
+  assetFilesChanged: 72
 - name: "arrival-spring"
   githubUsername: "arrival-spring"
   linesOfCodeChanged: 3305
@@ -105,6 +105,10 @@
   linesOfCodeChanged: 444
   linesOfInterfaceMarkupChanged: 165
   assetFilesChanged: 1
+- name: "Katrina Knight"
+  githubUsername: "GaeaKat"
+  linesOfCodeChanged: 424
+  linesOfInterfaceMarkupChanged: 251
 - name: "naposm"
   githubUsername: "naposm"
   linesOfCodeChanged: 399
@@ -119,11 +123,19 @@
   linesOfCodeChanged: 344
   linesOfInterfaceMarkupChanged: 1956
   assetFilesChanged: 56
+- name: "Irakliy Kukava"
+  githubUsername: "irakliy01"
+  linesOfCodeChanged: 302
 - name: "mcliquid"
   githubUsername: "mcliquid"
   linesOfCodeChanged: 289
   linesOfInterfaceMarkupChanged: 442
   assetFilesChanged: 12
+- name: "Alexis Lecanu"
+  githubUsername: "ravenfeld"
+  linesOfCodeChanged: 264
+  linesOfInterfaceMarkupChanged: 101
+  assetFilesChanged: 25
 - name: "darken"
   githubUsername: "d4rken"
   linesOfCodeChanged: 230
@@ -242,10 +254,14 @@
   githubUsername: "Akasch"
   linesOfCodeChanged: 16
 - name: "tiptoptom"
-  linesOfCodeChanged: 13
+  githubUsername: "tiptoptom"
+  linesOfCodeChanged: 15
 - name: "Finn"
   githubUsername: "catdogmat"
   linesOfCodeChanged: 13
+- name: "Redd"
+  githubUsername: "agent-redd"
+  linesOfCodeChanged: 12
 - name: "RubenKelevra"
   githubUsername: "RubenKelevra"
   linesOfCodeChanged: 12
@@ -314,9 +330,6 @@
   linesOfCodeChanged: 3
 - name: "Andrew Harvey"
   githubUsername: "andrewharvey"
-  linesOfCodeChanged: 2
-- name: "Redd"
-  githubUsername: "agent-redd"
   linesOfCodeChanged: 2
 - name: "dokutan"
   githubUsername: "dokutan"

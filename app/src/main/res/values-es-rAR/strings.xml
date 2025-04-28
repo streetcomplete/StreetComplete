@@ -608,7 +608,6 @@ Para terminar, tené cuidado: No te distraigas y mirá a tu alrededor. No entres
     <string name="link_ideditor_description">"Editor OSM simple para el navegador. Optimizado para escritorio o tabletas grandes"</string>
     <string name="link_umap_description">"Creá mapas con capas personalizadas de forma rápida e incrustable en páginas web"</string>
     <string name="link_opnvkarte_description">"Un mapa de paradas y rutas de transporte público"</string>
-    <string name="link_pic4review_description">"Contribuí a OSM mirando fotos de tu ciudad"</string>
     <string name="link_wiki_description">"La wiki es tu punto de partida para todo lo relacionado con OpenStreetMap"</string>
     <string name="link_learnosm_description">"¿Sos nuevo en OpenStreetMap? Esta es una guía para principiantes"</string>
     <string name="link_neis_one_description">"Una gran colección de estadísticas para los contribuyentes de OpenStreetMap, como dónde y cómo contribuiste, quién más está a tu alrededor, más tablas de clasificación"</string>

@@ -217,6 +217,9 @@
           "name": "Stazione di riparazione biciclette",
           "terms": "riparazione,biciclette,meccanico,bici,cicli"
         },
+        "amenity/bicycle_wash": {
+          "name": "Lavaggio biciclette"
+        },
         "amenity/biergarten": {
           "name": "Biergarten",
           "terms": "birreria,distesa,birra,alcol,bevuta"
@@ -600,7 +603,7 @@
           "name": "Scatola generica"
         },
         "amenity/grave_yard": {
-          "name": "Cimitero",
+          "name": "Camposanto",
           "terms": "cimitero,tombe"
         },
         "amenity/grit_bin": {
@@ -651,6 +654,9 @@
           "name": "Biblioteca",
           "terms": "biblioteca,libri,prestito,comunale"
         },
+        "amenity/library_dropoff": {
+          "name": "Box per la restituzione dei libri"
+        },
         "amenity/loading_dock": {
           "name": "Zona di carico"
         },
@@ -660,6 +666,9 @@
         "amenity/love_hotel": {
           "name": "Love Hotel",
           "terms": "hotel per coppie,motel per coppie,hotel a ore,sexy motel"
+        },
+        "amenity/luggage_locker": {
+          "name": "Stipetto per le valigie"
         },
         "amenity/marketplace": {
           "name": "Mercato",
@@ -1066,6 +1075,9 @@
         "amenity/theatre": {
           "name": "Teatro",
           "terms": "teatro,spettacoli,giochi,musical"
+        },
+        "amenity/theatre/type/amphi": {
+          "name": "Anfiteatro"
         },
         "amenity/ticket_validator": {
           "name": "Validatore di biglietti"
@@ -2010,6 +2022,12 @@
           "name": "Idrante",
           "terms": "pompa antincendio"
         },
+        "emergency/fire_hydrant/pillar": {
+          "name": "Idrante a colonnina"
+        },
+        "emergency/fire_hydrant/underground": {
+          "name": "Idrante sottosuolo"
+        },
         "emergency/fire_service_inlet": {
           "name": "Collegamento vigili del fuoco"
         },
@@ -2079,6 +2097,9 @@
         "entrance/main": {
           "name": "Ingresso principale",
           "terms": "ingresso,entrata,porta,entrata principale"
+        },
+        "entrance/shop": {
+          "name": "Ingresso negozio"
         },
         "entrance/staircase": {
           "name": "Entrata a una scalinata"
@@ -4755,7 +4776,7 @@
         },
         "shop/cosmetics": {
           "name": "Negozio di cosmetici",
-          "terms": "cosmetica,negozio di cosmetica,profumeria"
+          "terms": "cosmetica,negozio di cosmetica,negozio di trucchi"
         },
         "shop/craft": {
           "name": "Negozio di arti e mestieri"

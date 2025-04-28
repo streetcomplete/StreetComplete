@@ -1307,6 +1307,10 @@
           "name": "獸醫",
           "terms": "獸醫,動物醫生"
         },
+        "amenity/veterinary_pharmacy": {
+          "name": "獸醫藥局",
+          "terms": "動物用藥店,動物藥局,動物藥房,獸醫藥房"
+        },
         "amenity/waste/dog_excrement": {
           "name": "狗糞收集箱",
           "terms": "dog excrement bin,狗屎收集箱"
@@ -5308,6 +5312,10 @@
           "name": "浴室配件店",
           "terms": "衛浴用品店,廁所用品店,洗手間用品店"
         },
+        "shop/bbq": {
+          "name": "燒烤店",
+          "terms": "烤肉店,燒肉店"
+        },
         "shop/beauty": {
           "name": "美容院",
           "terms": "beauty shop,指甲美容,理容院,美妝店,美容店,美容院,護膚中心"
@@ -5597,6 +5605,10 @@
         "shop/greengrocer": {
           "name": "菜檔",
           "terms": "greengrocer,果蔬店,菜檔,蔬果店,生果,菜販"
+        },
+        "shop/groundskeeping": {
+          "name": "除草與花園設備商店",
+          "terms": "除草與花園設備商家,花圃設備店,除草與花園設備店"
         },
         "shop/hairdresser": {
           "name": "理髮店",

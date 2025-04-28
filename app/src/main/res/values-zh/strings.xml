@@ -614,7 +614,6 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="link_ideditor_description">"简单的浏览器OSM编辑器。为桌面和大平板做了优化。"</string>
     <string name="link_umap_description">"迅速利用自定义数据创建地图并将其嵌入你的网站。"</string>
     <string name="link_opnvkarte_description">"公共交通路线和站点的地图"</string>
-    <string name="link_pic4review_description">"简单地通过查看你的城市照片来贡献OSM"</string>
     <string name="link_wiki_description">"该维基是一切与OpenStreetMap相关事情的起点"</string>
     <string name="link_learnosm_description">"刚刚接触OpenStreetMap吗?这有一份初学者指南"</string>
     <string name="link_neis_one_description">"超大OpenStreetMap贡献者数据统计集，如你在哪里和如何作出贡献，你周边的贡献者，以及排行榜"</string>

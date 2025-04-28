@@ -1322,6 +1322,10 @@
           "name": "Weterynarz",
           "terms": "weterynarz,zakład weterynaryjny,gabinet weterynaryjny,przychodnia weterynaryjna,klinika weterynaryjna,lecznica dla zwierząt,leczenie,zwierzęta"
         },
+        "amenity/veterinary_pharmacy": {
+          "name": "Apteka weterynaryjna",
+          "terms": "apteka weterynaryjna,sklep weterynaryjny,apteka dla zwierząt"
+        },
         "amenity/waste/dog_excrement": {
           "name": "Kosz na psie odchody",
           "terms": "kosz na psie odchody"
@@ -2637,7 +2641,7 @@
         },
         "highway/motorway": {
           "name": "Droga autostradowa",
-          "terms": "droga autostradowa"
+          "terms": "droga autostradowa,dwujezdniowa droga ekspresowa"
         },
         "highway/motorway_junction": {
           "name": "Węzeł dróg autostradowych",
@@ -3959,7 +3963,7 @@
           "terms": "zbiornik na wodę,cysterna na wodę,zbiornik wody,woda"
         },
         "man_made/street_cabinet": {
-          "name": "Skrzynka elektryczna",
+          "name": "Skrzynka uliczna",
           "terms": "skrzynka elektryczna,szafka elektryczna,szafka uliczna,rozdzielnica elektryczna,szafka instalacyjna,bzbwi"
         },
         "man_made/street_cabinet/postal_service": {
@@ -4052,8 +4056,9 @@
           "terms": "pagoda,wieża"
         },
         "man_made/tunnel": {
-          "name": "Tunel",
-          "terms": "tunel,podziemna,podziemny,podziemne"
+          "name": "Obszar tunelu",
+          "terms": "obszar tunelu,tunel,podziemna,podziemny,podziemne",
+          "aliases": "Tunel"
         },
         "man_made/utility_pole": {
           "name": "Słup",
@@ -5380,6 +5385,10 @@
           "name": "Sklep z wyposażeniem łazienek",
           "terms": "sklep z wyposażeniem łazienek,łazienki,wyposażenie łazienek,meble łazienkowe,akcesoria łazienkowe,armatura sanitarna,wanny,prysznice,baterie,brodziki,zlewy,zlewozmywaki,umywalki"
         },
+        "shop/bbq": {
+          "name": "Sklep z grillami",
+          "terms": "sklep z grillami,sklep z akcesoriami do grillowania"
+        },
         "shop/beauty": {
           "name": "Salon urody",
           "terms": "salon urody,salon piękności,salon kosmetyczny,gabinet kosmetyczny,zakład kosmetyczny,kosmetyka,kosmetyczka,makijażystka,wizażystka,depilacja,medycyna estetyczna,laseroterapia,spa",
@@ -5670,6 +5679,10 @@
         "shop/greengrocer": {
           "name": "Warzywniak",
           "terms": "warzywniak,zieleniak,sklep warzywny,sklep z warzywami,sklep z owocami,stoisko z warzywami,stragan z warzywami,owoce,warzywa"
+        },
+        "shop/groundskeeping": {
+          "name": "Sklep ze sprzętem do utrzymywania terenów zieleni",
+          "terms": "sklep ze sprzętem do utrzymywania terenów zieleni"
         },
         "shop/hairdresser": {
           "name": "Fryzjer",

@@ -619,7 +619,6 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="link_ideditor_description">"인터넷 브라우저에서 이용하는 간단한 오픈스트리트맵 편집기입니다. 데스크톱과 큰 태블릿에 최적화되었습니다"</string>
     <string name="link_umap_description">"원하는 데이터만 골라 나만의 지도를 만들고 홈페이지에 삽입해 보세요"</string>
     <string name="link_opnvkarte_description">"대중교통 노선 및 정류장 지도"</string>
-    <string name="link_pic4review_description">"단순히 도시 사진만 보고도 오픈스트리트맵에 기여할 수 있습니다"</string>
     <string name="link_wiki_description">"오픈스트리트맵과 관련된 모든 활동은 이 위키에서 시작됩니다"</string>
     <string name="link_learnosm_description">"오픈스트리트맵이 처음이세요? 여기 초보자 가이드가 있습니다"</string>
     <string name="link_neis_one_description">"오픈스트리트맵 기여자들의 통계를 모은 사이트입니다. 여러분이 어디를 어떻게 기여했는지, 여러분 주변에 다른 사람이 있는지, 내 리더보드는 어떠한지 등을 볼 수 있습니다"</string>

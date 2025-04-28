@@ -1,12 +1,26 @@
 # Changelog
 
-## v61.0
+## v61.0-beta1
 
 ### Android below 7.1 no longer supported (#6210)
 
 In reality, support for Android versions below 7.1 has already been just on-paper for a while now, 
-as more and more issues with old Androids have been popping up lately that cannot be fixed on my 
-side. Luckily, it seems that >99.6% of app users already use a newer Android. (See #6210)
+as more and more issues with old Androids have been popping up lately that cannot be fixed on our 
+side. Luckily, it seems that >99.6% of app users already use Android 7.1 and above. (See #6210)
+
+### Main screen improvements (#6213)
+
+Cleaned up the appearance of the main screen a bit:
+
+- Merged the +/- buttons into one button, not shown by default, it's a setting. By the way, you can also zoom with one finger by double-tapping, then moving the finger up or down. This works in any app in which you can zoom, actually.
+- The upload button is now in the main menu
+- The pointer pin button moves more smoothly (in an ellipsis near the screen border)
+- Added a scale bar on the lower right (#5765)
+- Replaced the static map attribution text with an info button
+
+### New overlays
+
+- _MTB difficulty_: Add the difficulty ratings for mountainbike trails (#1850, #5726), thanks @RubenKelevra and @ravenfield. It is disabled by default because you need to be a domain expert to accurately record this data. (#6226)
 
 ### New quests
 
@@ -28,6 +42,8 @@ side. Luckily, it seems that >99.6% of app users already use a newer Android. (S
 
 - Performance improvements on upload and download (#6150) as well as significantly decreased data download size (#6218)
 - Performance improvements in the quest selection screen (#6205), by @irakliy01
+- Added a few new links to unlock via achievements. Newly added links do not unlock silently for old users anymore (#6220)
+- Render parks and playgrounds with an outline (#6221), by @doniks
 
 ## v60.3
 

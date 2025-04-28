@@ -608,7 +608,6 @@
     <string name="link_ideditor_description">"Απλό πρόγραμμα επεξεργασίας OSM για το πρόγραμμα περιήγησης. Βελτιστοποιημένο για υπολογιστή ή μεγάλο tablet"</string>
     <string name="link_umap_description">"Δημιουργήστε χάρτες με προσαρμοσμένα δεδομένα γρήγορα και ενσωματώστε τους στον ιστότοπό σας"</string>
     <string name="link_opnvkarte_description">"Ένας χάρτης για διαδρομές και στάσεις δημόσιων συγκοινωνιών"</string>
-    <string name="link_pic4review_description">"Συνεισφέρετε στο OSM απλά κοιτάζοντας φωτογραφίες της πόλης σας"</string>
     <string name="link_wiki_description">"Το wiki είναι το σημείο εκκίνησής σας με οτιδήποτε σχετικό με το OpenStreetMap"</string>
     <string name="link_learnosm_description">"Είστε νέοι στο OpenStreetMap; Αυτός είναι ένας οδηγός για αρχάριους"</string>
     <string name="link_neis_one_description">"Μια τεράστια συλλογή στατιστικών για συνεργάτες του OpenStreetMap, όπως πού και πώς συνεισφέρατε, ποιος άλλος είναι γύρω σας καθώς και πίνακες κατάταξης"</string>
@@ -1421,4 +1420,27 @@
     <string name="pedestrian_zone_allowed_sign">"Μια πινακίδα επιτρέπει την ποδηλασία εδώ"</string>
     <string name="pedestrian_zone_no_sign">"Δεν υπάρχει σαφής ένδειξη για την ποδηλασία εδώ"</string>
     <string name="team_mode_description_overlay_hint">"Εάν χρησιμοποιείτε επικαλύψεις, το κάθε άτομο πρέπει να χρησιμοποιήσει μια διαφορετική, καθώς μόνο οι αποστολές χωρίζονται."</string>
+    <string name="quest_dietType_glutenfree_name_title">"Προσφέρονται προϊόντα χωρίς γλουτένη εδώ;"</string>
+    <string name="quest_dietType_explanation_glutenfree">"Η παρασκευή προϊόντων χωρίς γλουτένη απαιτεί γνώση, καθώς τα κοινά μπαχαρικά και οι σάλτσες μπορεί να περιέχουν γλουτένη. Τα τρόφιμα χωρίς γλουτένη θα επισημαίνονται ρητά ως τέτοια."</string>
+    <string name="quest_construction_minor_title">"Έχουν ολοκληρωθεί οι μικρές οδικές εργασίες εδώ;"</string>
+    <string name="map_attribution">"Απόδοση χάρτη"</string>
+    <string name="link_panoramax_description">"Ένα δωρεάν λογισμικό ανοιχτού κώδικα και μια μη κερδοσκοπική υπηρεσία για την κοινή χρήση φωτογραφιών σε επίπεδο δρόμου που προέρχονται από το κοινό"</string>
+    <string name="link_opengeofiction_description">"Κουράστηκες να χαρτογραφείς την πραγματικότητα; Δημιούργησε φανταστικούς χάρτες συνεργατικά!"</string>
+    <string name="link_openclimbing_description">"Χάρτης με σημεία αναρρίχησης"</string>
+    <string name="pref_title_zoom_buttons">"Εμφάνιση κουμπιών ζουμ χάρτη"</string>
+    <string name="overlay_mtb_scale">"Δυσκολία MTB"</string>
+    <string name="overlay_mtb_scale_0">"Βαθμός 0"</string>
+    <string name="overlay_mtb_scale_0_description">"Σταθερή, καλή πρόσφυση ή φυσική επιφάνεια, χωρίς εμπόδια, ήπια κλίση, φαρδιές στροφές."</string>
+    <string name="overlay_mtb_scale_1">"Βαθμός 1"</string>
+    <string name="overlay_mtb_scale_1_description">"Μερικώς χαλαρό έδαφος με μικρές ρίζες, πέτρες, διάβρωση ή αυλάκια νερού. ≤40% κλίση, κυλιόμενα εμπόδια, απαιτείται βασική οδηγική τεχνική."</string>
+    <string name="overlay_mtb_scale_2">"Βαθμός 2"</string>
+    <string name="overlay_mtb_scale_2_description">"Χαλαρό έδαφος με μεγαλύτερες ρίζες και βράχους, επίπεδες πτώσεις/μικρές σκάλες, κλίση έως και 70%, εύκολες στροφές φουρκέτας, απαιτείται προηγμένο φρενάρισμα και αλλαγή βάρους."</string>
+    <string name="overlay_mtb_scale_3">"Βαθμός 3"</string>
+    <string name="overlay_mtb_scale_3_description">"Ολισθηρό, χαλαρό έδαφος με σχισμές, ογκόλιθους, μεγάλες ρίζες και βράχους, ψηλά σκαλοπάτια και δύσκολες τραβέρσες, σφιχτές στροφές φουρκέτας, κλίση &gt;70%, απαιτείται πολύ καλή ισορροπία και ακριβές φρενάρισμα."</string>
+    <string name="overlay_mtb_scale_4">"Βαθμός 4"</string>
+    <string name="overlay_mtb_scale_4_description">"Προκλητικά και τεχνικά εμπόδια: μεγάλοι ογκόλιθοι, ρίζες, θάμνοι, απότομες ράμπες, στροφές περιστροφής, επίπεδες πτώσεις με χτυπήματα πεντάλ. Απαιτείται τέλεια ισορροπία, ακριβές φρενάρισμα και επανατοποθέτηση του πίσω τροχού."</string>
+    <string name="overlay_mtb_scale_5">"Βαθμός 5"</string>
+    <string name="overlay_mtb_scale_5_description">"Εξαιρετικά απότομο, ανώμαλο έδαφος με αντίθετες ανηφόρες, πεδία με ογκόλιθους, κατολισθήσεις, στροφές με εμπόδια που απαιτούν ελιγμούς, διαδοχικά ψηλά κατεβάσματα και πεσμένα δέντρα. Η μεταφορά του ποδηλάτου γύρω από τα εμπόδια είναι αδύνατη· η πορεία δεν αποφεύγεται. Απαιτείται πλήρης δεξιοτεχνία trial."</string>
+    <string name="overlay_mtb_scale_6">"Βαθμός 6"</string>
+    <string name="overlay_mtb_scale_6_description">"Επικίνδυνο και δύσβατο έδαφος, ακατάλληλο για ορεινή ποδηλασία."</string>
 </resources>

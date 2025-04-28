@@ -445,7 +445,8 @@
           "name": "Suurlähetystö"
         },
         "amenity/events_venue": {
-          "name": "Tapahtumahalli"
+          "name": "Tapahtumatila",
+          "aliases": "Juhlatila"
         },
         "amenity/exhibition_centre": {
           "name": "Messukeskus"
@@ -1197,7 +1198,8 @@
           "terms": "oja,juoksuhauta,syvä,vajoama,kanjoni"
         },
         "barrier/entrance": {
-          "name": "Sisäänkäynti"
+          "name": "Kulkuaukko",
+          "aliases": "Sisäänkäyntiaukko\nAidan aukko\nAukko aidassa\nMuurin aukko"
         },
         "barrier/fence": {
           "name": "Aita"
@@ -1540,7 +1542,8 @@
           "terms": "urheiluyhdistys,urheilukerho,liikuntayhdistys"
         },
         "craft": {
-          "name": "Ammatti"
+          "name": "Käsityöammattilainen",
+          "aliases": "Ammattilainen\nAmmatinharjoittaja"
         },
         "craft/agricultural_engines": {
           "name": "Maatalousmekaanikko"
@@ -2038,10 +2041,10 @@
           "name": "Moporamppi"
         },
         "highway/cycleway/traffic_island": {
-          "name": "Keskisaareke (pyöräilijän)"
+          "name": "Pyöräilijän keskisaareke"
         },
         "highway/cycleway/traffic_island_shared": {
-          "name": "Keskisaareke (pyöräilijän ja jalankulkijan)"
+          "name": "Pyöräilijän ja jalankulkijan keskisaareke"
         },
         "highway/cyclist_waiting_aid": {
           "name": "Pyöräilijän odotusnoja"
@@ -2726,9 +2729,11 @@
         "leisure/pitch/athletics": {
           "name": "Yleisurheilukenttä"
         },
+        "leisure/pitch/athletics/discus_throw": {
+          "name": "Kiekonheittokehä / sektori"
+        },
         "leisure/pitch/athletics/hammer_throw": {
-          "name": "Moukarinheittokehä / sektorialue",
-          "aliases": "Moukarikehä / sektorialue"
+          "name": "Moukarikehä / sektori"
         },
         "leisure/pitch/athletics/high_jump": {
           "name": "Korkeushyppypatja"
@@ -2938,7 +2943,7 @@
           "name": "Mattoteline"
         },
         "man_made/charge_point": {
-          "name": "Sähköauton latauspiste",
+          "name": "Sähköajoneuvon latauspiste",
           "aliases": "Latauspiste"
         },
         "man_made/chimney": {
@@ -3251,7 +3256,7 @@
           "terms": "kallio,jyrkänne,kallioseinämä,seinämä,pystyseinämä,jyrkkä rinne,rinne,pudotus,mäki,penger,törmä,töyräs"
         },
         "natural/coastline": {
-          "name": "Rannikko",
+          "name": "Merenrantaviiva",
           "terms": "rantaviiva"
         },
         "natural/fell": {
@@ -3273,7 +3278,8 @@
           "name": "Kuuma lähde"
         },
         "natural/mud": {
-          "name": "Muta"
+          "name": "Muta",
+          "terms": "muta,lieju,savi"
         },
         "natural/peak": {
           "name": "Vuorenhuippu",
@@ -3402,8 +3408,7 @@
           "name": "Suo"
         },
         "natural/wetland/fen": {
-          "name": "Neva",
-          "aliases": "Avosuo"
+          "name": "Letto"
         },
         "natural/wetland/mangrove": {
           "name": "Mangrove"
@@ -3727,7 +3732,7 @@
           "terms": "kiikku,linnunpesäkiikku,hämähäkki,hämähäkkikeinu hämähäkkikiikku,verkkokeinu"
         },
         "playground/bridge": {
-          "name": "Silta",
+          "name": "Leikkisilta",
           "terms": "silta"
         },
         "playground/climbingframe": {
@@ -3780,7 +3785,7 @@
           "name": "Keinu"
         },
         "playground/teenshelter": {
-          "name": "Katos"
+          "name": "Teen Shelter"
         },
         "playground/tetherball": {
           "name": "Salkopallo"
@@ -3792,7 +3797,7 @@
           "name": "Tunneli"
         },
         "playground/zipwire": {
-          "name": "Vaijeriliuku"
+          "name": "Leikkipuiston vaijeriliuku"
         },
         "point": {
           "name": "Paikkapiste"
@@ -4227,6 +4232,9 @@
           "name": "Kylpyhuoneliike",
           "terms": "kylpyhuone,kylpy,suihku,amme,sisustus,sisustaminen,pesuhuone,sauna"
         },
+        "shop/bbq": {
+          "name": "Grillikauppa"
+        },
         "shop/beauty": {
           "name": "Kauneushoitola"
         },
@@ -4242,7 +4250,7 @@
         "shop/bed": {
           "name": "Vuodetarvikeliike",
           "terms": "uni,peti,sänky,sängyn,sängyt,pedin,petivaatteet,lakana,peitto,tyyny,patja,nukkuminen,täkki,vuode,vuoteen,myymälä,kauppa,liike,puoti",
-          "aliases": "Patjakauppa"
+          "aliases": "Patjakauppa\nSänkykauppa"
         },
         "shop/beverages": {
           "name": "Juomakauppa"
@@ -5147,7 +5155,7 @@
           "terms": "laiva,laivanrakennus,laivateollisuus,teollisuus,rakentaminen,kuivatelakka,laivatelakka"
         },
         "waterway/drain": {
-          "name": "Viemäri"
+          "name": "Avoviemäri"
         },
         "waterway/fish_pass": {
           "name": "Kalaporras"
@@ -5173,10 +5181,11 @@
           "name": "Puro"
         },
         "waterway/stream_intermittent": {
-          "name": "Ajoittain kuiva puro"
+          "name": "Ajoittain kuiva puro",
+          "aliases": "Noro"
         },
         "waterway/tidal_channel": {
-          "name": "Tulvakanava"
+          "name": "Vuorovesikanava"
         },
         "waterway/water_point": {
           "name": "Veneen juomavesipiste",

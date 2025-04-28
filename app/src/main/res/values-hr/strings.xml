@@ -63,7 +63,7 @@
     <string name="quest_openingHours_public_holidays">"Državnim praznicima"</string>
     <string name="quest_openingHours_public_holidays_short">"Praznik"</string>
     <string name="quest_openingHours_open_end">"fleksibilan kraj"</string>
-    <string name="quest_openingHours_answer_247">"Uvijek otvoreno"</string>
+    <string name="quest_openingHours_answer_247">"Otvoreno 24/7"</string>
     <string name="quest_openingHours_answer_seasonal_opening_hours">"Ovisi o mjesecu…"</string>
     <string name="quest_openingHours_answer_no_regular_opening_hours">"Nema redovno radno vrijeme…"</string>
     <string name="quest_openingHours_comment_title">"Opišite radno vrijeme"</string>
@@ -192,7 +192,7 @@ Ako duž cijele ulice nema znakova koji se odnose na istaknuti odjeljak, primjen
     <string name="quest_sport_gaelic_games">"Galske igre"</string>
     <string name="quest_sport_sepak_takraw">"(Sepak takraw)"</string>
     <string name="quest_wheelchairAccess_limited">"Djelomično"</string>
-    <string name="quest_bikeParkingCapacity_hint">"Imajte na umu da obično možete parkirati po jedan bicikl sa svake strane postolja."</string>
+    <string name="quest_bikeParkingCapacity_hint">"Imajte na umu da obično možete parkirati po jedan bicikl sa svake strane klamerice, a za spirale ćete vjerojatno trebati procijeniti odoka."</string>
     <string name="quest_sport_roller_skating">"Rolanje"</string>
     <string name="quest_wheelchairAccess_limited_description_business">"\"Djelomično\" znači da nema više od jedne stepenice visine gležnja za pristup lokaciji, i da je većina prostorija pristupačna za invalidska kolica."</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">"\"Djelomično\" znači da nema više od jedne stepenice visine gležnja za pristup."</string>
@@ -613,7 +613,6 @@ Konačno, ne zaboravite paziti na sigurnost: budite svjesni svoje okoline i ne u
     <string name="link_ideditor_description">"Jednostavan OSM uređivač za web preglednik. Optimiziran je za stolna računala ili velike tablete"</string>
     <string name="link_umap_description">"Brzo izradite karte s prilagođenim podacima i ugradite ih na svoje web stranice"</string>
     <string name="link_opnvkarte_description">"Karta javnog prijevoza sa rutama i stajalištima"</string>
-    <string name="link_pic4review_description">"Doprinesite OSM-u jednostavno gledajući slike vašeg grada"</string>
     <string name="link_wiki_description">"Wiki je vaše polazište za sve povezano OpenStreetMapom"</string>
     <string name="link_learnosm_description">"Novi ste u OpenStreetMapu? Ovo je vodič za početnike"</string>
     <string name="link_neis_one_description">"Ogromna zbirka statistika o suradnicima OpenStreetMap-a, poput mjesta i načina na koji ste dali svoj doprinos, tko je još blizu vas, te rang listi"</string>
@@ -754,7 +753,7 @@ postignuća"</string>
     <string name="quest_buildingType_abandoned_description">"zgrada koja se ne koristi, a čija je izvorna funkcija ili namjena nepoznata"</string>
     <string name="quest_buildingType_ruins">"Ruševine"</string>
     <string name="quest_buildingType_ruins_description">"zapuštena i uništena zgrada koju nije moguće identificirati"</string>
-    <string name="quest_charging_station_capacity_title">"Koliko se automobila može istovremeno puniti ovdje?"</string>
+    <string name="quest_charging_station_capacity_title">"Koliko se vozila može istovremeno puniti ovdje?"</string>
     <string name="link_disaster_ninja_description">"Karta koja prikazuje nedavne prirodne katastrofe, zanimljiva za kartografe humanitarnih organizacija. Također, prikazuje mnoštvo zanimljivih statističkih podataka za analizu koliko su dobro kartirana i ažurirana mjesta."</string>
     <string name="quest_lanes_title">"Koliko automobilskih traka ima ova cesta?"</string>
     <string name="quest_lanes_answer_lanes">"Označene trake"</string>
@@ -1436,4 +1435,27 @@ Kat se računa kao kat u potkrovlju samo kada ima prozore unutar krova. Stoga, k
     <string name="pedestrian_zone_allowed_sign">"Znakom dozvoljena vožnja biciklom ovdje"</string>
     <string name="pedestrian_zone_no_sign">"Nema izričitog prometnog znaka o vožnji biciklom ovdje"</string>
     <string name="team_mode_description_overlay_hint">"Ako koristite Nadslojeve, svatko od vas trebao bi koristiti različiti Nadsloj, jer su samo Zadatci podijeljeni."</string>
+    <string name="quest_dietType_glutenfree_name_title">"Nude li se ovdje proizvodi bez glutena?"</string>
+    <string name="quest_dietType_explanation_glutenfree">"Priprema bezglutenskih proizvoda zahtijeva posebno znanje, jer čak i uobičajeni začini i umaci mogu sadržavati gluten. Hrana bez glutena trebala bi biti izričito označena kao takva."</string>
+    <string name="quest_construction_minor_title">"Jesu li ovdje završeni manji radovi na cesti?"</string>
+    <string name="map_attribution">"Atribucija karte"</string>
+    <string name="link_panoramax_description">"Softver otvorenog koda i neprofitna usluga za dijeljenje uličnih fotografija"</string>
+    <string name="link_opengeofiction_description">"Umorni ste od mapiranja stvarnosti? Zajednički stvarajte izmišljene karte!"</string>
+    <string name="link_openclimbing_description">"Karta lokacija za penjanje"</string>
+    <string name="pref_title_zoom_buttons">"Prikaži gumbe za zumiranje karte"</string>
+    <string name="overlay_mtb_scale">"MTB težina"</string>
+    <string name="overlay_mtb_scale_0">"Težina 0"</string>
+    <string name="overlay_mtb_scale_0_description">"Čvrsti, prianjajući makadam ili prirodna površina; nema prepreka; blagi nagib; široki zavoji."</string>
+    <string name="overlay_mtb_scale_1">"Težina 1"</string>
+    <string name="overlay_mtb_scale_1_description">"Djelomično rastresit teren sa sitnim korijenjem, kamenjem, erozijom ili brazdama; ≤40% nagiba; prepreke koje se mogu proći bez skokova; potrebne osnovne tehnike brdskog bicikliranja."</string>
+    <string name="overlay_mtb_scale_2">"Težina 2"</string>
+    <string name="overlay_mtb_scale_2_description">"Rastresit teren s većim korijenjem i kamenjem, flat dropovi/male stepenice, do 70% nagiba; laganije oštre krivine; potrebno napredna tehnika kočenja i prebacivanja težine."</string>
+    <string name="overlay_mtb_scale_3">"Težina 3"</string>
+    <string name="overlay_mtb_scale_3_description">"Klizav, rastresit teren sa siparom, stijenama, velikim korijenjem i kamenjem, visokim stepenicama i zahtjevnim bočnim planinskim prijelazima; uske oštre krivine, &gt;70% nagiba; potrebna je vrlo dobra ravnoteža i precizno kočenje."</string>
+    <string name="overlay_mtb_scale_4">"Težina 4"</string>
+    <string name="overlay_mtb_scale_4_description">"Zahtjevne i tehničke prepreke: veliko stijenje, korijenje, sipar, strme rampe; oštro zakretanje na stražnjem kotaču, flat dropovi koji riskiraju zapinjanje pedala; potrebna je savršena ravnoteža, precizno kočenje i tehnika premještanja stražnjeg kotača."</string>
+    <string name="overlay_mtb_scale_5">"Težina 5"</string>
+    <string name="overlay_mtb_scale_5_description">"Izuzetno strmi i neravni teren s kontra-uzbrdicama, poljima stijena, klizištima; potrebno je oštro zakretanje na stražnjem kotaču preko prepreka; uzastopni visoki padovi i oborena stabla su učestali. Nemoguće nošenje bicikla oko prepreka; vožnja preko njih je neizbježna. Potrebno majstorstvo u vožnji triala."</string>
+    <string name="overlay_mtb_scale_6">"Težina 6"</string>
+    <string name="overlay_mtb_scale_6_description">"Opasan i neprohodan teren, nepogodan za brdski biciklizam."</string>
 </resources>

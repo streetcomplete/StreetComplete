@@ -43,7 +43,7 @@ import de.westnordost.streetcomplete.quests.questPrefix
 import de.westnordost.streetcomplete.quests.surface.AddRoadSurface
 import org.koin.compose.koinInject
 
-/** Single item the the quest selection list. Shows icon + title, whether it is enabled and whether
+/** Single item in the quest selection list. Shows icon + title, whether it is enabled and whether
  *  it is disabled by default / disabled in the country one is in */
 @Composable
 fun QuestSelectionRow(

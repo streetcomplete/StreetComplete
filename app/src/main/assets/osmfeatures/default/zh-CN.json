@@ -1307,6 +1307,10 @@
           "name": "动物医院",
           "terms": "兽医,动物,宠物,医院,家畜,治疗,医疗,急救,手术,猫,狗,犬,门诊"
         },
+        "amenity/veterinary_pharmacy": {
+          "name": "獸醫藥局",
+          "terms": "動物用藥店,動物藥局,動物藥房,獸醫藥房"
+        },
         "amenity/waste/dog_excrement": {
           "name": "狗粪便箱",
           "terms": "狗,动物,宠物,犬,粪便,大便,屎,排泄,尿,垃圾,箱,盒,垃圾桶,厕所"
@@ -1471,8 +1475,8 @@
           "terms": "城墙"
         },
         "barrier/cycle_barrier": {
-          "name": "自行车路障",
-          "terms": "自行车,单车,路障"
+          "name": "非机动车限行栏杆",
+          "terms": "非机动车,电动车,障碍,自行车,单车,路障,栏杆,限行,阻车器"
         },
         "barrier/ditch": {
           "name": "堑壕",
@@ -2939,7 +2943,7 @@
           "name": "水池"
         },
         "landuse/brownfield": {
-          "name": "平整场地",
+          "name": "棕地",
           "terms": "棕土,棕地,场地,待建设用地,空地,规划用地,平地,清收"
         },
         "landuse/cemetery": {
@@ -4140,7 +4144,7 @@
         },
         "natural/peak": {
           "name": "山峰",
-          "terms": "山峰"
+          "terms": "山,山峰,山地,山顶,顶峰"
         },
         "natural/peninsula": {
           "name": "半岛",
@@ -4160,7 +4164,7 @@
         },
         "natural/saddle": {
           "name": "垭口",
-          "terms": "垭口,山口,山鞍,鞍部"
+          "terms": "垭口,山口,山鞍,鞍部,山坳,山,山垭"
         },
         "natural/sand": {
           "name": "沙地",
@@ -4506,8 +4510,8 @@
           "terms": "侦探,私家,私家侦探,私人,侦查,侦察,民商,调查,推理,行踪,诈骗,取证,警察,警官"
         },
         "office/property_management": {
-          "name": "物业管理",
-          "terms": "物业管理办公室"
+          "name": "物业管理/租赁",
+          "terms": "物业,物管,物业管理,物业租赁,不动产,不动产管理,不动产租赁,租赁管理,物业办公室,物业服务中心,物业服务"
         },
         "office/quango": {
           "name": "准非政府组织",
@@ -5309,6 +5313,10 @@
           "name": "浴室家具店",
           "terms": "水暖店"
         },
+        "shop/bbq": {
+          "name": "燒烤店",
+          "terms": "烤肉店,燒肉店"
+        },
         "shop/beauty": {
           "name": "美容店",
           "terms": "美容院"
@@ -5599,6 +5607,10 @@
           "name": "果蔬店",
           "terms": "果蔬店"
         },
+        "shop/groundskeeping": {
+          "name": "除草與花園設備商店",
+          "terms": "除草與花園設備商家,花圃設備店,除草與花園設備店"
+        },
         "shop/hairdresser": {
           "name": "理发店",
           "terms": "理发店"
@@ -5680,11 +5692,11 @@
         },
         "shop/lighting": {
           "name": "灯饰店",
-          "terms": "燈具店"
+          "terms": "灯具,灯饰,灯泡,照明,灯"
         },
         "shop/locksmith": {
           "name": "锁匠铺",
-          "terms": "锁匠铺,开锁匠,锁匠,开锁,锁,门锁,钥匙"
+          "terms": "锁匠铺,开锁匠,锁匠,开锁,锁,门锁,钥匙,锁业,配匙,配钥匙"
         },
         "shop/lottery": {
           "name": "彩票店",
@@ -5704,7 +5716,7 @@
         },
         "shop/military_surplus": {
           "name": "军品店",
-          "terms": "軍用品店"
+          "terms": "军用品,军品,军事,军事用品,武器"
         },
         "shop/mobile_phone": {
           "name": "手机店",
@@ -5735,16 +5747,16 @@
           "terms": "乐器店,音乐用品店"
         },
         "shop/newsagent": {
-          "name": "書報攤",
-          "terms": "書報攤"
+          "name": "报刊店",
+          "terms": "报纸,报刊,书刊,书店,杂志,新闻,刊物,报刊亭,书报亭,书报"
         },
         "shop/nutrition_supplements": {
           "name": "保健品店",
           "terms": "保健品店"
         },
         "shop/nuts": {
-          "name": "坚果店",
-          "terms": "堅果店"
+          "name": "干杂店",
+          "terms": "坚果,干杂,种子,瓜子,毛嗑,干果,零食,茶叶,香料"
         },
         "shop/optician": {
           "name": "眼镜店",
@@ -5755,24 +5767,24 @@
           "terms": "户外用品店,销售户外活动用品的商店"
         },
         "shop/outpost": {
-          "name": "社区团购自提点",
+          "name": "网购自提点",
           "terms": "电商,自提,线上,零售,社区,社区团购,团购,提货点,提货,在线,自提点,取货,取货点,网购"
         },
         "shop/paint": {
-          "name": "油漆店",
-          "terms": "油漆店,颜料店"
+          "name": "涂料店",
+          "terms": "油漆,涂料,彩漆,喷漆,刷漆,清漆,漆业,装饰,颜料,水粉,油画,水彩"
         },
         "shop/party": {
-          "name": "派对节日用品",
-          "terms": "聚会,气球,服饰,装饰,邀请函"
+          "name": "节庆用品店",
+          "terms": "派对,聚会,节日,节庆,庆祝,庆典,婚礼,酒席,宴会,气球,服饰,装饰,邀请函"
         },
         "shop/pasta": {
           "name": "生面食店",
           "terms": "面食,面点"
         },
         "shop/pastry": {
-          "name": "糕饼店",
-          "terms": "油酥点心店,糕点店,糕饼店,面包点心店"
+          "name": "甜品店",
+          "terms": "蛋糕,饼干,糕饼,油酥,酥皮卷,酥卷,酥皮,馅饼,派,肉饼,点心,糕点,糕饼店,点心店"
         },
         "shop/pawnbroker": {
           "name": "当铺",
@@ -6097,7 +6109,7 @@
         },
         "tourism/information/board/welcome_sign": {
           "name": "欢迎标志",
-          "terms": "歡迎標示,歡迎標誌"
+          "terms": "欢迎,界牌,标志,标识"
         },
         "tourism/information/guidepost": {
           "name": "路标",
@@ -6109,7 +6121,7 @@
         },
         "tourism/information/office": {
           "name": "游客中心",
-          "terms": "遊客中心,旅遊中心,資訊服務站"
+          "terms": "游客中心,旅游中心,景点中心,景区中心,集散中心,问询点,集散点,集散,游客,旅游,游玩,导游,景点"
         },
         "tourism/information/route_marker": {
           "name": "步道标记",

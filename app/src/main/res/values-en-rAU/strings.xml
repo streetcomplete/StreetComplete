@@ -613,7 +613,6 @@ Finally, remember to stay safe: be aware of your surroundings and don’t enter 
     <string name="link_ideditor_description">"Simple OpenStreetMap editor for the browser. Optimised for the desktop or large tablets"</string>
     <string name="link_umap_description">"Create maps with custom data quickly and embed them in your site"</string>
     <string name="link_opnvkarte_description">"A map of public transport routes and stops"</string>
-    <string name="link_pic4review_description">"Contribute to OpenStreetMap simply by looking at pictures of your city"</string>
     <string name="link_wiki_description">"The wiki is your starting point to everything related to OpenStreetMap"</string>
     <string name="link_learnosm_description">"New to OpenStreetMap? This is a beginner’s guide"</string>
     <string name="link_neis_one_description">"A huge collection of statistics for OpenStreetMap contributors, like where and how you contributed, who else is around you plus leaderboards"</string>

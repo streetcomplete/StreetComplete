@@ -597,7 +597,6 @@ Appen kommuniserer direkte med OSM-tenarane.&lt;br/&gt;Før appen lastar opp end
     <string name="link_ideditor_description">"Enkel kartredigering for nettlesarar (tilpassa vanlege datamaskiner og store nettbrett)"</string>
     <string name="link_umap_description">"Lag kjapt kart med eigne data for framvising på nettstaden din"</string>
     <string name="link_opnvkarte_description">"Eit kart over ruter og stopp for kollektiv­transport"</string>
-    <string name="link_pic4review_description">"Bidra til OSM berre ved å sjå på bilete av gater i byen din"</string>
     <string name="link_wiki_description">"Wikien er utgangspunktet for alt som er knytt til OpenStreetMap"</string>
     <string name="link_learnosm_description">"Ny i OpenStreetMap-verda? Her er ei innføring."</string>
     <string name="link_neis_one_description">"Ei enorm samling statistikk for bidrag­sytarar til OpenStreetMap. Har blant anna informasjon om kor og når du bidrog, kven andre som kartlegg i same område som deg og rankinglister."</string>

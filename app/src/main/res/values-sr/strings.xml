@@ -613,7 +613,6 @@
     <string name="link_ideditor_description">"Једноставни OSM уређивач за прегледач. Прилагођено за рачунаре и веће таблете"</string>
     <string name="link_umap_description">"Брзо направите карте са прилагођеним подацима и уградите их у ваш сајт"</string>
     <string name="link_opnvkarte_description">"Карта јавног превоза са рутама и стајалишта"</string>
-    <string name="link_pic4review_description">"Допринесите на OSM посматрајући фотографије вашег града"</string>
     <string name="link_wiki_description">"Wiki је ваше полазиште за све што је везано за OpenStreetMap"</string>
     <string name="link_learnosm_description">"Нови сте на OpenStreetMap? Ово је водич за почетнике"</string>
     <string name="link_neis_one_description">"Велика збирка статистика за OpenStreetMap сараднике, попут, како и где сте картирали, ко је у вашој околини, као и ранг листе"</string>
@@ -1262,6 +1261,8 @@
     <string name="overlay_surface">"Подлоге"</string>
     <string name="overlay_path_surface_segregated">"Подељено на бициклистичке и пешачке делове"</string>
     <string name="quest_crossing_title2">"Да ли је овде прелаз?"</string>
+    <string name="quest_crossing_yes">"Да, служи као прелаз"</string>
+    <string name="quest_crossing_no">"Није намењено за прелаз, али може да послужи (нпр. неформалне стазе)"</string>
     <string name="quest_crossing_prohibited">"Не, прелаз је изричито забрањен или није могућ"</string>
     <string name="quest_hairdresser_title">"Која клијентела посећује овог фризера?"</string>
     <string name="quest_hairdresser_male_and_female">"Свако"</string>

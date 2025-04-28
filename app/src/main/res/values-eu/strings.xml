@@ -610,7 +610,6 @@ Bukatzeko, tentuz ibili: Adi zure inguruneari eta ez sartu jabetza pribatuko ere
     <string name="link_ideditor_description">"OSM editore sinplea nabigatzailearentzat. Mahaigainerako edo tablet handientzako optimizatua"</string>
     <string name="link_umap_description">"Sortu azkar mapak datu propioekin eta txertatu zure gunean"</string>
     <string name="link_opnvkarte_description">"Garraio publikoaren ibilbide eta geltokien mapa"</string>
-    <string name="link_pic4review_description">"Parte-hartu OSM-n zure hiriko irudiak begiratuz"</string>
     <string name="link_wiki_description">"Wiki hau OpenStreetMap-ekin zerikusia duen guztiarentzako hasiera puntu bat da"</string>
     <string name="link_learnosm_description">"Berria OpenStreetMap-en? Hau hasberrien gida bat da"</string>
     <string name="link_neis_one_description">"OpenStreetMap parte-hartzaileen estatistiken bilduma erraldoi bat, non eta nola parte-hartu duzun, beste nortzuk daude inguruan eta sailkapen taulak"</string>

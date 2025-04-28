@@ -607,7 +607,6 @@
     <string name="link_ideditor_description">"Опростен редактор за OSM работещ в браузър. Оптимизиран за десктопи и големи таблети."</string>
     <string name="link_umap_description">"Създайте карти с ваши добавени данни удобни за вграждане в сайт"</string>
     <string name="link_opnvkarte_description">"Карта на обществения транспорт"</string>
-    <string name="link_pic4review_description">"Допринасяйте към OSM просто като разглеждате снимки от вашия град"</string>
     <string name="link_wiki_description">"Отправна точка за всичко свързано с OSM"</string>
     <string name="link_learnosm_description">"OpenStreetMap ви звучи непознато? Вижте упътването за начинаещи"</string>
     <string name="link_neis_one_description">"Голяма колекция от статистически данни относно хората допринасящи в OSM. "</string>

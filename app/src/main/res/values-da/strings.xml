@@ -45,7 +45,7 @@
     <string name="download_area_too_big">"Zoom længere ind"</string>
     <string name="confirmation_cancel_prev_download_title">"Afbryd det nuværende download og download her i stedet?"</string>
     <string name="turn_on_location_request">"Placering er slået fra. Åbn indstillinger for at slå den til nu?"</string>
-    <string name="no_location_permission_warning">"Placeringstilladelse er nødvendig for at vise din position på kortet og downloade data i nærheden af dig."</string>
+    <string name="no_location_permission_warning">"Tilladelse til præcis placering er nødvendig for at vise din position på kortet og downloade data i nærheden af dig."</string>
     <string name="about_title_authors">"Kreditering"</string>
     <string name="about_title_repository">"Projekthjemmeside"</string>
     <string name="about_title_report_error">"Rapportér fejl"</string>
@@ -55,7 +55,7 @@
     <string name="confirmation_authorize_now">"Du skal autorisere dig med din OSM-brugerkonto for at offentliggøre dine svar. Autorisér nu?"</string>
     <string name="not_authorized">"Ikke autoriseret"</string>
     <string name="version_banned_message">"Denne version af StreetComplete er for gammel. Opdater venligst!"</string>
-    <string name="no_gps_no_quests">"For automatisk at downloade data tæt på dig, skal du slå placering til"</string>
+    <string name="no_gps_no_quests">"For automatisk at downloade data tæt på dig, skal du slå præcis placering til"</string>
     <string name="later">"Senere"</string>
     <string name="quest_streetName_answer_noProperStreet_link">"Det forbinder bare to veje"</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">"Noget andet (efterlad en bemærkning)"</string>
@@ -173,7 +173,7 @@ De oplysninger, du indsender, tilføjes direkte til OpenStreetMap i dit navn, ud
     <string name="quest_toiletsFee_title">"Skal man betale for at benytte dette toilet?"</string>
     <string name="quest_tactilePaving_title_crosswalk">"Har denne fodgængerovergang taktil belægning på begge sider?"</string>
     <string name="quest_source_dialog_title">"Er du sikker på, at du har tjekket det på stedet?"</string>
-    <string name="quest_source_dialog_note">"Kun information, der er blevet bekræftet personligt, bør indberettes."</string>
+    <string name="quest_source_dialog_note">"Kun information, der ved selvsyn er blevet bekræftet, bør indberettes."</string>
     <string name="quest_bicycleParkingCoveredStatus_title">"Er denne cykelparkering overdækket (beskyttet mod regn)?"</string>
     <string name="dialog_session_dont_show_again">"Vis ikke igen for denne session"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"Denne hastighedsgrænse ser urealistisk ud."</string>
@@ -612,7 +612,6 @@ Til sidst: husk på at passe på dig selv: Vær opmærksom på dine omgivelser o
     <string name="link_ideditor_description">"Simpel OSM-editor til browseren. Optimeret til desktop eller store tablets."</string>
     <string name="link_umap_description">"Opret kort med brugerdefinerede data, og integrer dem på din hjemmeside"</string>
     <string name="link_opnvkarte_description">"Et kort over offentlige transportruter og stop"</string>
-    <string name="link_pic4review_description">"Bidrag til OSM blot ved at kigge på billeder af din by"</string>
     <string name="link_wiki_description">"Wiki'en er dit udgangspunkt for alt, hvad der har med OpenStreetMap at gøre"</string>
     <string name="link_learnosm_description">"Er OpenStreetMap nyt for dig? Se denne guide for begyndere"</string>
     <string name="link_neis_one_description">"En kæmpe samling af statistikker til OpenStreetMap-bidragsydere, som hvor og hvordan du bidrog, hvem der ellers er omkring dig plus toplister"</string>
@@ -794,7 +793,7 @@ Bemærk alle svarmuligheder: nogle situationer er ikke åbenlyse, som f.eks. en 
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">"Vælger at der ingen cykelsti eller bane er"</string>
     <string name="quest_construction_completed_at_known_date">"Vil være færdig på datoen…"</string>
     <string name="quest_construction_completion_date_title">"Hvornår vil det være færdigt?"</string>
-    <string name="quest_surface_value_clay">"Ler"</string>
+    <string name="quest_surface_value_clay">"Ler (rødt grus)"</string>
     <string name="quest_surface_value_artificial_turf">"Kunstgræs"</string>
     <string name="quest_bicycle_parking_fee_title">"Skal man betale for at parkere en cykel her?"</string>
     <string name="quest_buildingType_house_description2">"Ikke-fritliggende enfamiliehus, f.eks. et rækkehus"</string>
@@ -1098,7 +1097,7 @@ Gør det samme med den anden side, hvis den findes."</string>
     <string name="quest_accepts_cards_credit_only">"Kun kreditkort"</string>
     <string name="quest_accepts_cards_dedit_only">"Kun debetkort"</string>
     <string name="quest_accepts_cards_unavailable">"Hverken debet- eller kreditkort"</string>
-    <string name="quest_barrier_type_gate_any_size">"Port, enhver størrelse"</string>
+    <string name="quest_barrier_type_gate_any_size">"Led, enhver størrelse"</string>
     <string name="quest_air_pump_compressor_title">"Er der en luftkompressor til rådighed her?"</string>
     <string name="quest_step_count_stile_hint">"Kun antallet af trin for at nå toppen. Hvis antallet af trin er forskelligt på hver side, angives det højeste tal."</string>
     <string name="quest_cycleway_value_none_and_oneway">"ingen, cykling ikke tilladt i denne retning"</string>
@@ -1179,7 +1178,7 @@ Gør det samme med den anden side, hvis den findes."</string>
     <string name="quest_address_street_street_name_label">"Gadenavn:"</string>
     <string name="quest_address_street_hint2">"Tryk på gaden på kortet for at vælge den"</string>
     <string name="quest_bicycle_incline_title">"Hvilken retning fører opad her?"</string>
-    <string name="quest_bicycle_incline_up_and_down">"Det er op og ned hop"</string>
+    <string name="quest_bicycle_incline_up_and_down">"Det går op og ned"</string>
     <string name="quest_drinking_water_type_generic_water_fountain">"Anden vandfontæne"</string>
     <string name="quest_drinking_water_type_jet_water_fountain">"Vandfontæne, der udsender en lille vandstråle"</string>
     <string name="quest_drinking_water_type_bottle_refill_only_fountain">"Kun genopfyldning af flasker"</string>
@@ -1433,4 +1432,27 @@ En etage tæller som en tagetage, når dens vinduer er i taget. Derfor er tage m
     <string name="pedestrian_zone_allowed_sign">"Et skilt tillader cykling her"</string>
     <string name="pedestrian_zone_no_sign">"Ingen eksplicit skiltning om cykling her"</string>
     <string name="team_mode_description_overlay_hint">"Hvis I bruger overlejringer, bør I bruge hver jeres, da det kun er opgaver, der er delt op."</string>
+    <string name="quest_dietType_glutenfree_name_title">"Tilbydes der glutenfri produkter her?"</string>
+    <string name="quest_dietType_explanation_glutenfree">"Det kræver viden at tilberede glutenfri produkter, da almindelige krydderier og saucer kan indeholde gluten. Glutenfri mad er udtrykkeligt mærket som sådan."</string>
+    <string name="quest_construction_minor_title">"Er det mindre vejarbejde her afsluttet?"</string>
+    <string name="map_attribution">"Kortkreditering"</string>
+    <string name="link_panoramax_description">"Gratis og open source-software og nonprofit-tjeneste til deling af crowdsourcede fotos på gadeniveau"</string>
+    <string name="link_opengeofiction_description">"Træt af at kortlægge virkeligheden? Skab fiktive kort i fællesskab!"</string>
+    <string name="link_openclimbing_description">"Et kort over klatresteder"</string>
+    <string name="pref_title_zoom_buttons">"Vis zoomknapper på kortet"</string>
+    <string name="overlay_mtb_scale">"MTB-sværhedsgrad"</string>
+    <string name="overlay_mtb_scale_0">"Grad 0"</string>
+    <string name="overlay_mtb_scale_0_description">"Fast, komprimeret eller naturlig overflade med godt greb; ingen forhindringer; svag hældning; brede sving."</string>
+    <string name="overlay_mtb_scale_1">"Grad 1"</string>
+    <string name="overlay_mtb_scale_1_description">"Delvist løst terræn med små rødder, sten, erosions- eller vandrender; ≤ 40 % hældning; Forhindringer, man kan køre over; grundlæggende køreteknik påkrævet."</string>
+    <string name="overlay_mtb_scale_2">"Grad 2"</string>
+    <string name="overlay_mtb_scale_2_description">"Løst terræn med større rødder og sten, flade fald/små trapper, op til 70 % hældning; lette hårnålesving; kræver avanceret bremsning og vægtforskydning."</string>
+    <string name="overlay_mtb_scale_3">"Grad 3"</string>
+    <string name="overlay_mtb_scale_3_description">"Glat, løst terræn med skrænter, klippeblokke, store rødder og sten, høje trin og vanskelige passager; snævre hårnålesving, &gt; 70 % hældning; kræver meget god balance og præcis opbremsning."</string>
+    <string name="overlay_mtb_scale_4">"Grad 4"</string>
+    <string name="overlay_mtb_scale_4_description">"Udfordrende og tekniske forhindringer: store stenblokke, rødder, skrænter, stejle ramper; hårnålesving med behov for baghjulsløft, flade fald med risiko for pedalslag; perfekt balance, præcis opbremsning og omplacering af baghjulet påkrævet."</string>
+    <string name="overlay_mtb_scale_5">"Grad 5"</string>
+    <string name="overlay_mtb_scale_5_description">"Ultrastejlt, blokterræn med modbakker, kampestensfelter, jordskred, hårnålesving med baghjulsløft og forhindringer, høje fald på stribe og væltede træer. Det er umuligt at bære cyklen rundt om forhindringerne, man skal køre. Kræver erfaring med trial-kørsel."</string>
+    <string name="overlay_mtb_scale_6">"Grad 6"</string>
+    <string name="overlay_mtb_scale_6_description">"Farligt og ufremkommeligt terræn, ikke egnet til mountainbiking."</string>
 </resources>

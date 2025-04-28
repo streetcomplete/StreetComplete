@@ -42,7 +42,7 @@ import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.data.preferences.ResurveyIntervalsUpdater
 import de.westnordost.streetcomplete.data.visiblequests.DayNightQuestFilter
 import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderController
-import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeController
+import de.westnordost.streetcomplete.data.visiblequests.VisibleEditTypeController
 import de.westnordost.streetcomplete.ui.common.BackIcon
 import de.westnordost.streetcomplete.ui.common.dialogs.SimpleListPickerDialog
 import de.westnordost.streetcomplete.ui.common.settings.Preference
@@ -62,7 +62,7 @@ fun QuestSettingsScreen(
     val ctx = LocalContext.current
     val prefs: Preferences = koinInject()
     val scope = rememberCoroutineScope()
-    val visibleQuestTypeController: VisibleQuestTypeController = koinInject()
+    val visibleEditTypeController: VisibleEditTypeController = koinInject()
     val dayNightQuestFilter: DayNightQuestFilter = koinInject()
     val questTypeOrderController: QuestTypeOrderController = koinInject()
     val resurveyIntervalsUpdater: ResurveyIntervalsUpdater = koinInject()
@@ -109,7 +109,7 @@ fun QuestSettingsScreen(
                     description = stringResource(R.string.pref_dynamic_quest_creation_summary),
                     pref = Prefs.DYNAMIC_QUEST_CREATION,
                     default = false,
-                    onCheckedChange = { scope.launch(Dispatchers.IO) { visibleQuestTypeController.onQuestTypeVisibilitiesChanged() } }
+                    onCheckedChange = { scope.launch(Dispatchers.IO) { visibleEditTypeController.onVisibilitiesChanged() } }
                 )
             Preference(
                 name = stringResource(R.string.pref_quest_monitor_title),
@@ -120,7 +120,7 @@ fun QuestSettingsScreen(
                 name = stringResource(R.string.pref_hide_overlay_quests),
                 pref = Prefs.HIDE_OVERLAY_QUESTS,
                 default = true,
-                onCheckedChange = { scope.launch(Dispatchers.IO) { visibleQuestTypeController.onQuestTypeVisibilitiesChanged() } }
+                onCheckedChange = { scope.launch(Dispatchers.IO) { visibleEditTypeController.onVisibilitiesChanged() } }
             )
         }
     }
@@ -132,7 +132,7 @@ fun QuestSettingsScreen(
                 prefs.putString(Prefs.DAY_NIGHT_BEHAVIOR, it.name)
                 scope.launch(Dispatchers.IO) {
                     dayNightQuestFilter.reload()
-                    visibleQuestTypeController.onQuestTypeVisibilitiesChanged()
+                    visibleEditTypeController.onVisibilitiesChanged()
                     questTypeOrderController.onQuestTypeOrderChanged()
                 }
             },

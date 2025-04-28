@@ -4,7 +4,6 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
-import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.*
 import de.westnordost.streetcomplete.osm.mtb_scale.MtbScale
 import de.westnordost.streetcomplete.osm.mtb_scale.parseMtbScale
@@ -21,8 +20,8 @@ class MtbScaleOverlay : Overlay {
     override val icon = R.drawable.ic_quest_mtb
     override val changesetComment = "Specify MTB difficulty"
     override val wikiLink: String = "Key:mtb:scale"
-    override val achievements: List<EditTypeAchievement> =
-        listOf(BICYCLIST, OUTDOORS)
+    override val achievements = listOf(BICYCLIST, OUTDOORS)
+    override val defaultDisabledMessage = R.string.default_disabled_overlay_domain_expert
 
     override fun getStyledElements(mapData: MapDataWithGeometry) =
         mapData.filter("""
@@ -33,8 +32,10 @@ class MtbScaleOverlay : Overlay {
                 or foot ~ yes|permissive|designated
                 or bicycle ~ yes|permissive|designated
               )
-              and (!lit or lit = no)
-              and (!surface or surface ~ ${UNPAVED_SURFACES.joinToString("|")})
+              and (
+                surface ~ ${UNPAVED_SURFACES.joinToString("|")}|wood
+                or (highway = track and tracktype and tracktype != grade1)
+              )
         """).map { it to getStyle(it) }
 
     override fun createForm(element: Element?) = MtbScaleOverlayForm()

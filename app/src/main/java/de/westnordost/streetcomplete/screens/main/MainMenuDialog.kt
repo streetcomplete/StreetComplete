@@ -34,7 +34,7 @@ import androidx.compose.ui.window.Dialog
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.preferences.Preferences
-import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsController
+import de.westnordost.streetcomplete.data.presets.EditTypePresetsController
 import de.westnordost.streetcomplete.screens.main.controls.NotificationBox
 import de.westnordost.streetcomplete.screens.main.teammode.TeamModeColorCircle
 import de.westnordost.streetcomplete.util.dialogs.showProfileSelectionDialog
@@ -43,7 +43,6 @@ import de.westnordost.streetcomplete.ui.common.DownloadIcon
 import de.westnordost.streetcomplete.ui.common.TeamModeIcon
 import de.westnordost.streetcomplete.ui.common.UploadIcon
 
-@OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun MainMenuDialog(
     onDismissRequest: () -> Unit,
@@ -64,7 +63,7 @@ fun MainMenuDialog(
     contentColor: Color = contentColorFor(backgroundColor),
 ) {
     val prefs: Preferences = koinInject()
-    val questPresetsController: QuestPresetsController = koinInject()
+    val editTypePresetsController: EditTypePresetsController = koinInject()
     val ctx = LocalContext.current
     Dialog(onDismissRequest = onDismissRequest) {
         Surface(
@@ -138,7 +137,7 @@ fun MainMenuDialog(
                     }
                     if (prefs.getBoolean(Prefs.MAIN_MENU_SWITCH_PRESETS, false))
                         CompactMenuButton(
-                            onClick = { onDismissRequest(); showProfileSelectionDialog(ctx, questPresetsController, prefs) },
+                            onClick = { onDismissRequest(); showProfileSelectionDialog(ctx, editTypePresetsController, prefs) },
                             icon = { },
                             text = stringResource(R.string.quick_switch_preset)
                         )
@@ -203,7 +202,7 @@ fun MainMenuDialog(
                         }
                         if (prefs.getBoolean(Prefs.MAIN_MENU_SWITCH_PRESETS, false))
                             BigMenuButton(
-                                onClick = { onDismissRequest(); showProfileSelectionDialog(ctx, questPresetsController, prefs) },
+                                onClick = { onDismissRequest(); showProfileSelectionDialog(ctx, editTypePresetsController, prefs) },
                                 icon = { },
                                 text = stringResource(R.string.quick_switch_preset)
                             )

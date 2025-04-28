@@ -36,7 +36,7 @@ class LevelFilter internal constructor(private val prefs: ObservableSettings) : 
         private set
 
     private val mapDataSource: MapDataWithEditsSource by inject()
-    private val visibleQuestTypeController: VisibleQuestTypeController by inject()
+    private val visibleEditTypeController: VisibleEditTypeController by inject()
     private val visibleQuestsSource: VisibleQuestsSource by inject()
     private val selectedOverlaySource: SelectedOverlaySource by inject()
 
@@ -143,9 +143,9 @@ class LevelFilter internal constructor(private val prefs: ObservableSettings) : 
                 overlayController.selectedOverlay = null
                 overlayController.selectedOverlay = tempOverlay
                 if (!prefs.getBoolean(Prefs.HIDE_OVERLAY_QUESTS, true))
-                    visibleQuestTypeController.setVisibilities(emptyMap()) // trigger reload
+                    visibleEditTypeController.setVisibilities(emptyMap()) // trigger reload
             } else {
-                visibleQuestTypeController.setVisibilities(emptyMap()) // trigger reload
+                visibleEditTypeController.setVisibilities(emptyMap()) // trigger reload
             }
         }
         builder.show()

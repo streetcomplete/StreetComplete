@@ -192,7 +192,7 @@ Wenn es keine Schilder entlang der gesamten Straße gibt, die für den hervorgeh
     <string name="quest_sport_gaelic_games">"Gälische Sportarten"</string>
     <string name="quest_sport_sepak_takraw">"Sepak Takraw"</string>
     <string name="quest_wheelchairAccess_limited">"Teilweise"</string>
-    <string name="quest_bikeParkingCapacity_hint">"Beachte, dass man normalerweise auf beiden Seiten eines Fahrradbügels je ein Fahrrad anschließen kann."</string>
+    <string name="quest_bikeParkingCapacity_hint">"Beachte, dass man normalerweise auf beiden Seiten eines Fahrradbügels je ein Fahrrad anschließen kann. Bei Felgenkillern musst du evtl. schätzen, wie viele Fahrräder hineinpassen."</string>
     <string name="quest_sport_roller_skating">"Rollschuh­laufen"</string>
     <string name="quest_wheelchairAccess_limited_description_business">"Teilweise bedeutet, dass es nicht mehr als eine knöchelhohe Stufe zu überwinden gilt, um das Gebäude zu betreten, und die meisten Räume darin zugänglich für Rollstuhlfahrer sind."</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">"Teilweise bedeutet, dass es nicht mehr als eine knöchelhohe Stufe zu überwinden gilt."</string>
@@ -463,7 +463,7 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="quest_buildingType_toilets">"Toilettenhäuschen"</string>
     <string name="quest_maxspeed_sign_question">"Durch was ist es festgelegt?"</string>
     <string name="quest_segregated_title">"Wie sind der Gehweg und Radweg hier zueinander gelegen?"</string>
-    <string name="dialog_tutorial_upload">"Um deine Änderungen manuell hochzuladen, nutze den Knopf in der Werkzeugleiste, der so aussieht."</string>
+    <string name="dialog_tutorial_upload">"Um deine Änderungen manuell hochzuladen, nutze den Knopf im Menü, der so aussieht."</string>
     <string name="quest_segregated_separated">"Getrennt voneinander"</string>
     <string name="quest_segregated_mixed">"Der Weg wird gemeinsam genutzt"</string>
     <string name="quest_maxheight_title">"Was ist die Durchfahrtshöhe hier?"</string>
@@ -613,7 +613,6 @@ Denke auch daran, dich nicht in Gefahr zu begeben: Achte auf deine Umgebung und 
     <string name="link_ideditor_description">"Einfacher OSM-Editor für Browser. Optimiert für Desktop oder große Tablets"</string>
     <string name="link_umap_description">"Erstelle Karten nach Maß und füge sie in eigene Seiten ein"</string>
     <string name="link_opnvkarte_description">"Eine Karte für ÖPNV-Routen und -Stopps"</string>
-    <string name="link_pic4review_description">"Trage durch Ansehen von Bildern deiner Stadt zu OSM bei"</string>
     <string name="link_wiki_description">"Das Wiki ist dein Startpunkt für alles Relevante zu OpenStreetMap"</string>
     <string name="link_learnosm_description">"Neu bei OpenStreetMap? Hier ist eine Einführung"</string>
     <string name="link_neis_one_description">"Umfangreiche Statistiken für OpenStreetMap-Mitwirkende, zum Beispiel wo und wie du beigetragen hast, wer sonst noch so in der Nähe beiträgt sowie Bestenlisten"</string>
@@ -897,7 +896,9 @@ Die Daten werden nach %1$s Tagen aktualisiert und ungenutzte Daten werden nach %
     <string name="quest_bollard_type_foldable2">"Umklappbar (mit oder ohne Schlüssel)"</string>
     <string name="no_search_results">"Nichts gefunden"</string>
     <string name="quest_selection_hint_title">"Zu viel zu tun?"</string>
-    <string name="quest_selection_hint_message">"Bei OpenStreetMap mitzumachen soll vor allem Spaß machen! Falls du von der Flut der Aufgaben überwältigt bist, kannst du in den Einstellungen genau bestimmen, welche Aufgaben dir angezeigt werden und in welcher Reihenfolge."</string>
+    <string name="quest_selection_hint_message">"Bei OpenStreetMap mitzumachen soll vor allem Spaß machen!
+
+Falls du von der Flut der Aufgaben überwältigt bist, kannst du in den Einstellungen genau bestimmen, welche Aufgaben dir angezeigt werden und in welcher Reihenfolge."</string>
     <string name="quest_presets_preset_add">"Voreinstellung hinzufügen"</string>
     <string name="quest_presets_preset_name">"Name der Voreinstellung"</string>
     <string name="quest_presets_default_name">"Standard"</string>
@@ -1160,7 +1161,7 @@ Wiederhole dies für die andere Seite, wenn sie existiert."</string>
     <string name="quest_entrance_reference_flat_range_label">"Wohnungsbereich:"</string>
     <string name="quest_entrance_reference_flat_range_to">"bis"</string>
     <string name="default_disabled_msg_overlay">"Diese Aufgabe ist standardmäßig deaktiviert, da es bereits ein Overlay gibt, mit dem die Eingabe und Aktualisierung dieser Daten effektiver und effizienter ist."</string>
-    <string name="quest_camp_drinking_water_title">"Ist Trinkwasser für Camper hier frei verfügbar?"</string>
+    <string name="quest_camp_drinking_water_title">"Ist Trinkwasser für Gäste hier frei verfügbar?"</string>
     <string name="quest_camp_shower_title">"Gibt es hier Duschen?"</string>
     <string name="quest_camp_power_supply_title">"Gibt es hier für Gäste nutzbare Steckdosen?"</string>
     <string name="quest_camp_type_title">"Wer darf hier campen?"</string>
@@ -1436,4 +1437,32 @@ Eine Ebene zählt als Dachebene, wenn sich die Fenster im Dach befinden. Dächer
     <string name="pedestrian_zone_allowed_sign">"Ein Schild erlaubt hier das Radfahren"</string>
     <string name="pedestrian_zone_no_sign">"Kein ausdrückliches Schild zum Radfahren hier"</string>
     <string name="team_mode_description_overlay_hint">"Wenn ihr Overlays nutzt, sollte jeder von euch jeweils ein anderes nutzen, da nur die Aufgaben aufgeteilt werden."</string>
+    <string name="quest_dietType_glutenfree_name_title">"Gibt es hier glutenfreie Produkte?"</string>
+    <string name="quest_dietType_explanation_glutenfree">"Die Zubereitung von glutenfreien Produkten erfordert Sachkenntnis, da gängige Gewürze und Soßen Gluten enthalten können. Glutenfreie Lebensmittel sollten ausdrücklich gekennzeichnet sein."</string>
+    <string name="quest_construction_minor_title">"Sind die kleineren Straßenbauarbeiten hier abgeschlossen?"</string>
+    <string name="map_attribution">"Namensnennung der Karte"</string>
+    <string name="link_panoramax_description">"Eine kostenlose und quelloffene Software und ein gemeinnütziger Dienst für das Teilen von Straßenfotos per Crowdsourcing"</string>
+    <string name="link_opengeofiction_description">"Keine Lust mehr, die Realität zu kartieren? Erstellt gemeinsam fiktive Karten!"</string>
+    <string name="link_openclimbing_description">"Eine Karte mit Kletterorten"</string>
+    <string name="pref_title_zoom_buttons">"Karten-Zoom-Knöpfe anzeigen"</string>
+    <string name="overlay_mtb_scale">"MTB-Schwierigkeitsgrad"</string>
+    <string name="overlay_mtb_scale_0">"Klasse 0"</string>
+    <string name="overlay_mtb_scale_0_description">"Fester, griffiger, verdichteter oder natürlicher Untergrund; keine Hindernisse; leichtes Gefälle; weite Kurven."</string>
+    <string name="overlay_mtb_scale_1">"Klasse 1"</string>
+    <string name="overlay_mtb_scale_1_description">"Teilweise loses Gelände mit kleinen Wurzeln, Steinen, Erosions- oder Wasserrillen; ≤ 40 % Steigung; überrollbare Hindernisse; grundlegende Fahrtechnik erforderlich."</string>
+    <string name="overlay_mtb_scale_2">"Klasse 2"</string>
+    <string name="overlay_mtb_scale_2_description">"Lockeres Gelände mit größeren Wurzeln und Steinen, flache Gefälle/kleine Treppen, bis zu 70 % Steigung; leichte Spitzkehren; fortgeschrittenes Bremsen und Gewichtsverlagerung erforderlich."</string>
+    <string name="overlay_mtb_scale_3">"Klasse 3"</string>
+    <string name="overlay_mtb_scale_3_description">"Rutschiges, loses Gelände mit Geröll, Felsbrocken, großen Wurzeln und Steinen, hohen Stufen und kniffligen Traversen; enge Kehren, &gt; 70 % Steigung; sehr gute Balance und präzises Bremsen erforderlich."</string>
+    <string name="overlay_mtb_scale_4">"Klasse 4"</string>
+    <string name="overlay_mtb_scale_4_description">"Anspruchsvolle und technische Hindernisse: große Felsbrocken, Wurzeln, Geröll, steile Rampen; Pivot-Switchbacks, flache Drops mit Pedalaufschlägen; perfektes Gleichgewicht, präzises Bremsen und Repositionierung des Hinterrads erforderlich."</string>
+    <string name="overlay_mtb_scale_5">"Klasse 5"</string>
+    <string name="overlay_mtb_scale_5_description">"Extrem steiles, blockiges Gelände mit Gegenanstiegen, Geröllfeldern, Erdrutschen, Pivot-Switchbacks mit Hindernissen, Back-to-Back High Drops und umgestürzten Bäumen. Das Tragen des Fahrrads um die Hindernisse herum ist unmöglich; das Fahren ist unvermeidlich. Trial-Beherrschung erforderlich."</string>
+    <string name="overlay_mtb_scale_6">"Klasse 6"</string>
+    <string name="overlay_mtb_scale_6_description">"Gefährliches und unwegsames Gelände, nicht zum Mountainbiken geeignet."</string>
+    <string name="default_disabled_overlay_domain_expert">"Dieses Overlay ist standardmäßig deaktiviert, weil du dich auf dem Gebiet gut auskennen musst, um die Daten korrekt zu erfassen."</string>
+    <string name="pref_title_overlays">"Overlayauswahl"</string>
+    <string name="pref_overlays_reset">"Die Aktivierung zurücksetzen?"</string>
+    <string name="overlay">"Overlay"</string>
+    <string name="enable_overlay_confirmation_title">"Dieses Overlay aktivieren?"</string>
 </resources>

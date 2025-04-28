@@ -25,8 +25,7 @@ fun QuestSelectionScreen(
     viewModel: QuestSelectionViewModel,
     onClickBack: () -> Unit,
 ) {
-    val quests by viewModel.quests.collectAsState()
-    val selectedQuestPresetName by viewModel.selectedQuestPresetName.collectAsState()
+    val currentPresetName by viewModel.selectedEditTypePresetName.collectAsState()
 
     val searchText by viewModel.searchText.collectAsStateWithLifecycle()
 
@@ -34,18 +33,17 @@ fun QuestSelectionScreen(
         viewModel.currentCountry?.let { Locale("", it).displayCountry } ?: "Atlantis"
     }
 
+    val filteredQuests by viewModel.filteredQuests.collectAsStateWithLifecycle()
+
     Column(Modifier.fillMaxSize()) {
         QuestSelectionTopAppBar(
-            currentPresetName = selectedQuestPresetName
-                ?: stringResource(R.string.quest_presets_default_name),
+            currentPresetName = currentPresetName ?: stringResource(R.string.quest_presets_default_name),
             onClickBack = onClickBack,
-            onUnselectAll = { viewModel.unselectAllQuests() },
-            onReset = { viewModel.resetQuestSelectionsAndOrder() },
+            onUnselectAll = { viewModel.unselectAll() },
+            onReset = { viewModel.resetAll() },
             search = searchText,
             onSearchChange = viewModel::updateSearchText,
         )
-
-        val filteredQuests by viewModel.filteredQuests.collectAsStateWithLifecycle()
 
         if (filteredQuests.isEmpty()) {
             CenteredLargeTitleHint(stringResource(R.string.no_search_results))
@@ -53,14 +51,15 @@ fun QuestSelectionScreen(
             val insets = WindowInsets.safeDrawing.only(
                 WindowInsetsSides.Horizontal + WindowInsetsSides.Bottom
             ).asPaddingValues()
+
             QuestSelectionList(
                 items = filteredQuests,
                 displayCountry = displayCountry,
-                onSelectQuest = { questType, selected ->
-                    viewModel.selectQuest(questType, selected)
+                onSelect = { questType, selected ->
+                    viewModel.select(questType, selected)
                 },
-                onReorderQuest = { questType, toAfter ->
-                    viewModel.orderQuest(questType, toAfter)
+                onReorder = { questType, toAfter ->
+                    viewModel.order(questType, toAfter)
                 },
                 modifier = Modifier.consumeWindowInsets(insets),
                 contentPadding = insets,

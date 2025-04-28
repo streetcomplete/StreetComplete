@@ -121,6 +121,7 @@ fun MainScreen(
     val starsCount by viewModel.starsCount.collectAsState()
     val isShowingStarsCurrentWeek by viewModel.isShowingStarsCurrentWeek.collectAsState()
 
+    val overlays by viewModel.overlays.collectAsState()
     val selectedOverlay by viewModel.selectedOverlay.collectAsState()
     val isCreateNodeEnabled by remember { derivedStateOf { selectedOverlay?.isCreateNodeEnabled == true } }
 
@@ -276,17 +277,19 @@ fun MainScreen(
                         messagesCount = messagesCount
                     )
                 }
-                Box {
-                    OverlaySelectionButton(
-                        onClick = ::onClickOverlays,
-                        overlay = selectedOverlay
-                    )
-                    OverlaySelectionDropdownMenu(
-                        expanded = showOverlaysDropdown,
-                        onDismissRequest = { showOverlaysDropdown = false },
-                        getOverlays = { viewModel.getOverlays(it) },
-                        onSelect = { viewModel.selectOverlay(it) }
-                    )
+                if (overlays.isNotEmpty()) {
+                    Box {
+                        OverlaySelectionButton(
+                            onClick = ::onClickOverlays,
+                            overlay = selectedOverlay
+                        )
+                        OverlaySelectionDropdownMenu(
+                            expanded = showOverlaysDropdown,
+                            onDismissRequest = { showOverlaysDropdown = false },
+                            overlays = overlays,
+                            onSelect = { viewModel.selectOverlay(it) }
+                        )
+                    }
                 }
 
                 MainMenuButton(

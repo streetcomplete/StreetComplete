@@ -613,7 +613,6 @@ Son olarak, güvenli olmayı unutma. Çevrenin farkında ol ve özel mülke girm
     <string name="link_ideditor_description">"Tarayıcı için basit OSM editörü. Masaüstü veya büyük tabletler için optimize edilmiştir"</string>
     <string name="link_umap_description">"Özel veri ile hızlıca harita üret ve kendi sitene entegre et"</string>
     <string name="link_opnvkarte_description">"Toplu taşıma güzergahlarının ve duraklarının haritası"</string>
-    <string name="link_pic4review_description">"Yalnızca şehrinizin resimlerine bakarak OSM'ye katkıda bulunun"</string>
     <string name="link_wiki_description">"Wiki, OpenStreetMap ile ilgili her şey için başlangıç ​​noktanızdır"</string>
     <string name="link_learnosm_description">"OpenStreetMapte yeni misiniz? Bu bir başlangıç ​​kılavuzu"</string>
     <string name="link_neis_one_description">"OpenStreetMap'e katkıda bulunanlar için, nerede ve nasıl katkıda bulunduğunuz, çevrenizde başka kimlerin olduğu ve liderlik tabloları gibi büyük bir istatistik koleksiyonu"</string>

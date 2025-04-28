@@ -613,7 +613,6 @@ Na kraju, ne zaboravite na bezbednost. Budite svesni vašeg okruženja i ne ulaz
     <string name="link_ideditor_description">"Jednostavni OSM uređivač za pregledač. Prilagođeno za računare i veće tablete"</string>
     <string name="link_umap_description">"Brzo napravite karte sa prilagođenim podacima i ugradite ih u vaš sajt"</string>
     <string name="link_opnvkarte_description">"Karta javnog prevoza sa rutama i stajališta"</string>
-    <string name="link_pic4review_description">"Doprinesite na OSM posmatrajući fotografije vašeg grada"</string>
     <string name="link_wiki_description">"Wiki je vaše polazište za sve što je vezano za OpenStreetMap"</string>
     <string name="link_learnosm_description">"Novi ste na OpenStreetMap? Ovo je vodič za početnike"</string>
     <string name="link_neis_one_description">"Velika zbirka statistika za OpenStreetMap saradnike, poput, kako i gde ste kartirali, ko je u vašoj okolini, kao i rang liste"</string>
@@ -1262,6 +1261,8 @@ Uradite isto i za suprotnu stranu ako postoji."</string>
     <string name="overlay_surface">"Podloge"</string>
     <string name="overlay_path_surface_segregated">"Podeljeno na biciklističke i pešačke delove"</string>
     <string name="quest_crossing_title2">"Da li je ovde prelaz?"</string>
+    <string name="quest_crossing_yes">"Da, služi kao prelaz"</string>
+    <string name="quest_crossing_no">"Nije namenjeno za prelaz, ali može da posluži (npr. neformalne staze)"</string>
     <string name="quest_crossing_prohibited">"Ne, prelaz je izričito zabranjen ili nije moguć"</string>
     <string name="quest_hairdresser_title">"Koja klijentela posećuje ovog frizera?"</string>
     <string name="quest_hairdresser_male_and_female">"Svako"</string>

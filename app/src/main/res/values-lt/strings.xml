@@ -612,7 +612,6 @@ Galų gale visada būkite atidūs: stebėkite aplinką ir neikite į privačias 
     <string name="link_ideditor_description">"Primityvus OSM redaktorius naršyklėje. Tinka tik labai paprastiems dalykams."</string>
     <string name="link_umap_description">"Greitai kurkite žemėlapius su savais duomenimis ir įterpkite juos į savo svetainę"</string>
     <string name="link_opnvkarte_description">"Viešo transporto žemėlapis maršrutams ir stotelėms"</string>
-    <string name="link_pic4review_description">"Padėkite OSM tiesiog žiūrėdami į jūsų miesto nuotraukas"</string>
     <string name="link_wiki_description">"Wiki yra pradinė vieta, kurioje galite sužinoti viską apie OpenStreetMap"</string>
     <string name="link_learnosm_description">"Pirmi žingsniai OpenStreetMap? Čia yra pradinuko vadovas"</string>
     <string name="link_neis_one_description">"Didžiulis OpenStreetMap talkininkų statistikos rinkinys, įskaitant kur ir kaip jūs prisidėjote, kas yra aplink jus ir lyderių sąrašai"</string>

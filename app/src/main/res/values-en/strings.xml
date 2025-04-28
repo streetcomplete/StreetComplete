@@ -39,6 +39,8 @@ The info you enter is directly added to OpenStreetMap in your name, without the 
     <string name="map_btn_zoom_out">"Zoom out"</string>
     <string name="map_btn_zoom_in">"Zoom in"</string>
 
+    <string name="map_attribution">Map Attribution</string>
+
     <string name="map_btn_menu">"Menu"</string>
 
     <string name="map_btn_gps_tracking">"Follow me"</string>
@@ -118,6 +120,8 @@ The info you enter is directly added to OpenStreetMap in your name, without the 
     <string name="default_disabled_msg_overlay">This quest type is disabled by default because there is already an overlay with which it is more effective and efficient to enter and update this data.</string>
     <string name="default_disabled_msg_seasonal">"This quest type is disabled by default because it may require re-checking the situation at different times of the year."</string>
 
+    <string name="default_disabled_overlay_domain_expert">This overlay is disabled by default because you need to be a domain expert to accurately record this data.</string>
+
 
     <!-- Quest interface -->
     <!-- caution: This is not the floor and level=0 is not necessarily at street level as it may follow the numbering scheme of the building operator. Try to use a generic wording that does not carry an implicit meaning of where it is located in respect to the ground floor. The context is usually shopping centres, train stations or airport terminals -->
@@ -154,7 +158,7 @@ The info you enter is directly added to OpenStreetMap in your name, without the 
     <string name="quest_generic_answer_notApplicable">"Can’t say…"</string>
 
     <string name="quest_generic_answer_does_not_exist">It does not exist…</string>
-    <string name="osm_element_gone_description">"Are you sure that it does not exist, not even at a slightly different location? If you’re not sure, leave a note instead.</string>
+    <string name="osm_element_gone_description">"Are you sure that it does not exist, not even at a slightly different location? If you’re not sure, leave a note instead."</string>
     <string name="osm_element_gone_confirmation">It does not exist</string>
     <string name="leave_note">Leave note</string>
     <string name="note_for_object">Another person noted:</string>
@@ -252,7 +256,7 @@ Additionally, some overlays allow you to add new data at the position of a displ
     <string name="quest_disable_action">Disable</string>
     <string name="quest_disable_title">Disable this quest type?</string>
     <string name="quest_disable_message_not_installed">"StreetMeasure is not installed (yet)."</string>
-    <string name="quest_disable_message_not_working">"StreetMeasure didn’t return a measurement.</string>
+    <string name="quest_disable_message_not_working">"StreetMeasure didn’t return a measurement."</string>
     <string name="quest_disable_message_tape_measure">You could use a tape measure instead, but that might be a little awkward, after all.</string>
 
     <!-- Notifications -->
@@ -263,7 +267,7 @@ Additionally, some overlays allow you to add new data at the position of a displ
     <string name="quest_selection_hint_title">Too much to do?</string>
     <string name="quest_selection_hint_message">"Contributing should primarily be fun!
 
-If you are overwhelmed by the number of quests, you can always fine-tune which quests are displayed to you and in what order in the settings.</string>
+If you are overwhelmed by the number of quests, you can always fine-tune which quests are displayed to you and in what order in the settings."</string>
 
 
     <!-- Team mode -->
@@ -476,7 +480,6 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="link_mapcomplete_description">Collection of thematic OSM maps that each show and let you edit one kind of feature</string>
     <string name="link_umap_description">Create maps with custom data quickly and embed them in your site</string>
     <string name="link_opnvkarte_description">A map of public transport routes and stops</string>
-    <string name="link_pic4review_description">Contribute to OSM simply by looking at pictures of your city</string>
     <string name="link_wiki_description">The wiki is your starting point to everything related to OpenStreetMap</string>
     <string name="link_forum_description">Need help? Want to read what’s going on? Come and mingle, it’s bustling with activity from communities all over the globe!</string>
     <string name="link_calendar_description">Are OpenStreetMap events or community meetings near you? (If not, you could add your own!)</string>
@@ -485,8 +488,9 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="link_disaster_ninja_description">Map that shows recent natural disasters, interesting for humanitarian mappers. Also, shows many interesting statistics to analyze how well-mapped and up-to-date places are.</string>
     <string name="link_welcome_mat_description">General information about OpenStreetMap and how to work with OSM as an organization</string>
     <string name="link_mapillary_description">A service and app for sharing crowdsourced street-level photos, with explicit permission to use them for contributing to OSM</string>
-    <string name="link_ohsomehex_description">Explore OSM data across scales from the "big picture" up to individual objects over space and time</string>
+    <string name="link_ohsomehex_description">Explore OSM data across scales from the “big picture” up to individual objects over space and time</string>
     <string name="link_openstreetcam_description">A service and app for sharing crowdsourced street-level photos, with explicit permission to use them for contributing to OSM</string>
+    <string name="link_panoramax_description">A free and open source software and nonprofit service for sharing crowdsourced street-level photos</string>
     <string name="link_openrouteservice_wheelchair_description">Turn-by-turn navigation for wheelchair users</string>
     <string name="link_nominatim_description">The geocoder for OSM data, used by many other services</string>
     <string name="link_photon_description">A standalone extension to Nominatim, featuring fuzzy search and search-as-you-type</string>
@@ -500,7 +504,8 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="link_openrouteservice_description">Routing for a variety of vehicles and on foot, each with preferences. Can also show isochrones (reachable area in X minutes from a starting point).</string>
     <string name="link_osm_haiku_description">Using OSM data to generate a haiku (a form of Japanese poetry)</string>
     <string name="link_opencampingmap_description">A map of campsites</string>
-    <string name="link_prettymapp_description">Create pretty multi-colored map posters of neighbourhoods</string>
+    <string name="link_prettymapp_description">Create pretty multi-colored map posters of neighborhoods</string>
+    <string name="link_opengeofiction_description">Tired of mapping reality? Collaboratively create fictional maps!</string>
     <string name="link_openinframap_description">A map showing power, telecoms, gas, and oil infrastructure</string>
     <string name="link_openorienteeringmap_description">Create printable maps for the orienteering sport</string>
     <string name="link_openstreetbrowser_description">A map to browse OpenStreetMap map features by category</string>
@@ -510,6 +515,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="link_weeklyosm_description">The weekly news blog about what’s happening in the OpenStreetMap world</string>
     <string name="link_figuregrounder_description">Create figure-ground diagram posters of a city or neighbourhood</string>
     <string name="link_sunders_description">A map of cameras and surveillance equipment</string>
+    <string name="link_openclimbing_description">A map of climbing spots</string>
     <string name="link_osmhydrant_description">"Lookup, add and edit fire stations and fire hydrants"</string>
     <string name="link_backofyourhand_description">How well do you know your area? Test your knowledge by locating streets.</string>
     <string name="link_notesreview_description">Conveniently see, filter and comment on notes created by you and others. Many notes can be solved by putting the information contained in them on the map with iD or JOSM</string>
@@ -566,11 +572,13 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
 
     <string name="pref_title_keep_screen_on">"Keep screen on"</string>
 
+    <string name="pref_title_zoom_buttons">"Show map zoom buttons"</string>
+
     <string name="pref_title_sync2">"Upload answers automatically"</string>
     <string name="autosync_on">"On"</string>
     <string name="autosync_only_on_wifi">"Only on Wi-Fi"</string>
     <string name="autosync_off">"Off"</string>
-    <string name="dialog_tutorial_upload">To upload your changes manually, use the button in the toolbar that looks like this.</string>
+    <string name="dialog_tutorial_upload">To upload your changes manually, use the button in the main menu that looks like this.</string>
 
     <string name="pref_title_language_select2">Language</string>
     <string name="language_default">System default</string>
@@ -593,6 +601,8 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="pref_subtitle_quests">%1$d of %2$d enabled</string>
     <string name="pref_subtitle_quests_preset_name">for preset: %s</string>
 
+    <string name="pref_title_overlays">Overlay selection</string>
+
     <string name="delete_confirmation">Delete</string>
     <string name="delete_cache_dialog_message">Delete all downloaded map data, including quests?\nData is refreshed after %1$s days and unused data is deleted after %2$s days automatically.</string>
 
@@ -606,7 +616,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="pref_title_delete_cache_summary">If you think some data is outdated</string>
 
 
-    <!-- Quest selection screen -->
+    <!-- Quest & overlay selection screen -->
 
     <string name="action_search">Search</string>
     <string name="no_search_results">Nothing found</string>
@@ -616,17 +626,20 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
 
     <string name="action_reset">Reset</string>
     <string name="pref_quests_reset">Reset both quest enablement and order to the default?</string>
+    <string name="pref_overlays_reset">Reset overlay enablement to the default?</string>
 
     <string name="quest_enabled">Enabled</string>
     <string name="quest_type">Quest type</string>
+    <string name="overlay">Overlay</string>
 
     <string name="questList_disabled_in_country">Never shown in %s</string>
     <string name="questList_disabled_by_default">Disabled by default</string>
 
     <string name="enable_quest_confirmation_title">Enable this quest type?</string>
+    <string name="enable_overlay_confirmation_title">Enable this overlay?</string>
 
 
-    <!-- Managing quest presets screen -->
+    <!-- Managing edit type presets screen -->
 
     <string name="action_manage_presets">Manage presets</string>
 
@@ -800,7 +813,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_bicycle_shop_second_hand_no_bicycles">No bicycles sold at all</string>
 
     <string name="quest_bikeParkingCapacity_title">"How many bicycles can be parked here?"</string>
-    <string name="quest_bikeParkingCapacity_hint">"Note that you can usually park one bicycle on each side of a stand."</string>
+    <string name="quest_bikeParkingCapacity_hint">"Note that you can usually park one bicycle on each side of a stand, and for wheelbenders you might have to estimate how many would fit."</string>
 
     <string name="quest_air_pump_bicycle_shop_title">Is there a public bicycle pump here (at least when it’s open)?</string>
     <string name="quest_air_pump_compressor_title">Is there an air compressor available here?</string>
@@ -860,7 +873,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_buildingLevels_title2">"How many levels above the basement does this building have?"</string>
     <string name="quest_buildingLevels_title_buildingPart2">"How many levels above the basement does this building part have?"</string>
     <string name="quest_buildingLevels_roofLevelsLabel2">levels in the roof</string>
-    <string name="quest_buildingLevels_levelsLabel2">regular levels (not counting the roof)</string>
+    <string name="quest_buildingLevels_levelsLabel2">regular levels (without roof)</string>
     <string name="quest_buildingLevels_answer_multipleLevels">Differs per building part</string>
     <string name="quest_buildingLevels_answer_description">In this case, simply input the values of the highest building part.</string>
     <string name="quest_buildingLevels_hint">"For buildings on a slope, the level count starts from the ground level of the lowest side.
@@ -989,7 +1002,7 @@ A level counts as a roof level when its windows are in the roof. Subsequently, r
     <string name="quest_camera_type_fixed">Fixed</string>
     <string name="quest_camera_type_panning">Panning</string>
 
-    <string name="quest_camp_drinking_water_title">Is drinking water freely available to campers here?</string>
+    <string name="quest_camp_drinking_water_title">Is drinking water freely available for guests here?</string>
     <string name="quest_camp_shower_title">Are there showers here?</string>
     <string name="quest_camp_power_supply_title">Are there any power outlets available for guests?</string>
     <string name="quest_camp_power_supply_hint">This could be outlets directly at the camp pitches, outlets in a service building accessible by guests, a dedicated charging station for phones, laptops, etc.</string>
@@ -1016,6 +1029,7 @@ A level counts as a roof level when its windows are in the roof. Subsequently, r
     <string name="quest_construction_completed_at_known_date">Will be finished at date…</string>
     <string name="quest_construction_completion_date_title">When will it be complete?</string>
 
+    <string name="quest_construction_minor_title">Is the minor roadwork here completed?</string>
     <string name="quest_construction_road_title">Is this road completed?</string>
     <string name="quest_construction_cycleway_title">Is this bike path completed?</string>
     <string name="quest_construction_footway_title">Is this foot path completed?</string>
@@ -1058,6 +1072,9 @@ A level counts as a roof level when its windows are in the roof. Subsequently, r
     <string name="quest_cyclewayPartSurface_title">What’s the surface of the bicycle path here?</string>
 
     <string name="quest_cycleway_width_title">"How wide is the bicycle path here?"</string>
+
+    <string name="quest_dietType_glutenfree_name_title">Are gluten-free products offered here?</string>
+    <string name="quest_dietType_explanation_glutenfree">Preparing gluten-free products requires knowledge, as common spices and sauces may contain gluten. Gluten-free food would be explicitly labeled as such.</string>
 
     <string name="quest_dietType_halal_name_title2">Are halal products offered here?</string>
     <string name="quest_dietType_explanation_halal">Halal products must be prepared according to special rules, with Halal certification agencies marking products in compliance.</string>
@@ -1220,7 +1237,7 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_moped_access_designated">There is a sign that designates this bike path for mopeds</string>
     <string name="quest_moped_access_forbidden">There is a sign that prohibits mopeds</string>
 
-    <string name="default_disabled_msg_visible_sign_moped">This quest type is disabled by default because moped access is only indicated by a specific signs at start/end of a cycleway. </string>
+    <string name="default_disabled_msg_visible_sign_moped">This quest type is disabled by default because moped access is only indicated by specific signs at start/end of a cycleway.</string>
 
 
     <string name="quest_motorcycleParkingCapacity_title">How many motorcycles can be parked here?</string>
@@ -1254,7 +1271,7 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_openingHours_add_weekdays">"Add days of the week"</string>
     <string name="quest_openingHours_add_off_days">"Add off days"</string>
     <string name="quest_openingHours_off_day">"Off day"</string>
-    <string name="quest_openingHours_unspecified_range">Not specified"</string>
+    <string name="quest_openingHours_unspecified_range">"Not specified"</string>
     <string name="quest_openingHours_chooseMonthsTitle">"Select months"</string>
     <string name="quest_openingHours_chooseWeekdaysTitle">"Select days of the week"</string>
     <string name="quest_openingHours_24_7_confirmation">"In other words, is it open any time, every day?"</string>
@@ -1811,4 +1828,20 @@ Alternatively, you can leave a note (with a photo)."</string>
     <string name="quest_barrier_opening_width_gate">What is the width of the opening here?</string>
     <string name="quest_barrier_opening_width_bollard">What is the widest gap one can pass through here?</string>
 
+    <!-- MTB = Mountainbike -->
+    <string name="overlay_mtb_scale">MTB difficulty</string>
+    <string name="overlay_mtb_scale_0">"Grade 0"</string>
+    <string name="overlay_mtb_scale_0_description">"Firm, grippy compacted or natural surface; no obstacles; gentle gradient; wide turns."</string>
+    <string name="overlay_mtb_scale_1">"Grade 1"</string>
+    <string name="overlay_mtb_scale_1_description">"Partially loose terrain with small roots, stones, erosion or water ruts; ≤ 40 % gradient; rollable obstacles; basic riding technique required."</string>
+    <string name="overlay_mtb_scale_2">"Grade 2"</string>
+    <string name="overlay_mtb_scale_2_description">"Loose terrain with larger roots and rocks, flat drops/small stairs, up to 70 % gradient; easy hairpin turns; advanced braking and weight shifting required."</string>
+    <string name="overlay_mtb_scale_3">"Grade 3"</string>
+    <string name="overlay_mtb_scale_3_description">"Slippery, loose terrain with scree, boulders, large roots and rocks, high steps and tricky traverses; tight hairpin turns, > 70 % gradient; very good balance and precise braking required."</string>
+    <string name="overlay_mtb_scale_4">"Grade 4"</string>
+    <string name="overlay_mtb_scale_4_description">"Challenging and technical obstacles: big boulders, roots, scree, steep ramps; pivot switchbacks, flat drops with pedal strikes; perfect balance, precise braking, and rear-wheel repositioning required."</string>
+    <string name="overlay_mtb_scale_5">"Grade 5"</string>
+    <string name="overlay_mtb_scale_5_description">"Ultra-steep blocky terrain with counter‑uphills, boulder fields, landslides, pivot switchbacks with obstacles, back‑to‑back high drops and fallen trees. Bike carrying around obstacles impossible; riding unavoidable. Trial mastery required."</string>
+    <string name="overlay_mtb_scale_6">"Grade 6"</string>
+    <string name="overlay_mtb_scale_6_description">"Dangerous and impassable terrain, not suitable for mountain biking."</string>
 </resources>

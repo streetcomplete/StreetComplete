@@ -1884,6 +1884,13 @@
       "shop": "hairdresser"
     }
   },
+  "shop/groundskeeping": {
+    "icon": "fas-tractor",
+    "geometry": ["point", "area"],
+    "tags": {
+      "shop": "groundskeeping"
+    }
+  },
   "shop/greengrocer": {
     "icon": "fas-carrot",
     "geometry": ["point", "area"],
@@ -2040,7 +2047,7 @@
     }
   },
   "shop/e-cigarette": {
-    "icon": "maki-shop",
+    "icon": "fas-smoking",
     "geometry": ["point", "area"],
     "tags": {
       "shop": "e-cigarette"
@@ -2096,7 +2103,7 @@
     }
   },
   "shop/craft": {
-    "icon": "fas-cut",
+    "icon": "fas-palette",
     "geometry": ["point", "area"],
     "tags": {
       "shop": "craft"
@@ -2319,6 +2326,13 @@
       "shop": "beauty"
     }
   },
+  "shop/bbq": {
+    "icon": "maki-bbq",
+    "geometry": ["point", "area"],
+    "tags": {
+      "shop": "bbq"
+    }
+  },
   "shop/bathroom_furnishing": {
     "icon": "fas-bath",
     "geometry": ["point", "area"],
@@ -2348,7 +2362,7 @@
     }
   },
   "shop/art": {
-    "icon": "maki-shop",
+    "icon": "maki-art-gallery",
     "geometry": ["point", "area"],
     "tags": {
       "shop": "art"
@@ -2399,7 +2413,7 @@
     "matchScore": 0.8
   },
   "shop/vacant": {
-    "icon": "maki-shop",
+    "icon": "fas-store-alt-slash",
     "geometry": ["point", "area"],
     "tags": {
       "shop": "vacant"
@@ -9000,7 +9014,7 @@
     }
   },
   "craft/upholsterer": {
-    "icon": "temaki-tools",
+    "icon": "fas-couch",
     "geometry": ["point", "area"],
     "tags": {
       "craft": "upholsterer"
@@ -10472,6 +10486,13 @@
       "amenity": "waste_basket"
     }
   },
+  "amenity/veterinary_pharmacy": {
+    "icon": "temaki-veterinary_care",
+    "geometry": ["point", "area"],
+    "tags": {
+      "amenity": "veterinary_pharmacy"
+    }
+  },
   "amenity/veterinary": {
     "icon": "temaki-veterinary_care",
     "geometry": ["point", "area"],
@@ -10877,7 +10898,7 @@
     }
   },
   "amenity/marketplace": {
-    "icon": "maki-shop",
+    "icon": "fas-store",
     "geometry": ["point", "area"],
     "tags": {
       "amenity": "marketplace"

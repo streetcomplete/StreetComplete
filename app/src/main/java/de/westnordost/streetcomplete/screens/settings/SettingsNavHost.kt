@@ -9,7 +9,8 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.screens.settings.debug.ShowQuestFormsScreen
-import de.westnordost.streetcomplete.screens.settings.quest_presets.QuestPresetsScreen
+import de.westnordost.streetcomplete.screens.settings.overlay_selection.OverlaySelectionScreen
+import de.westnordost.streetcomplete.screens.settings.presets.EditTypePresetsScreen
 import de.westnordost.streetcomplete.screens.settings.quest_selection.QuestSelectionScreen
 import de.westnordost.streetcomplete.ui.ktx.dir
 import org.koin.androidx.compose.koinViewModel
@@ -38,8 +39,9 @@ import org.koin.androidx.compose.koinViewModel
             SettingsScreen(
                 viewModel = koinViewModel(),
                 onClickShowQuestForms = { navController.navigate(SettingsDestination.ShowQuestForms) },
-                onClickPresetSelection = { navController.navigate(SettingsDestination.QuestPresets) },
+                onClickPresetSelection = { navController.navigate(SettingsDestination.EditTypePresets) },
                 onClickQuestSelection = { navController.navigate(SettingsDestination.QuestSelection) },
+                onClickOverlaySelection = { navController.navigate(SettingsDestination.OverlaySelection) },
                 onClickBack = ::goBack,
                 onClickQuestSettings = { navController.navigate(SettingsDestination.QuestSettings) },
                 onClickUiSettings = { navController.navigate(SettingsDestination.UiSettings) },
@@ -48,14 +50,20 @@ import org.koin.androidx.compose.koinViewModel
                 onClickDataSettings = { navController.navigate(SettingsDestination.DataManagementSettings) },
             )
         }
-        composable(SettingsDestination.QuestPresets) {
-            QuestPresetsScreen(
+        composable(SettingsDestination.EditTypePresets) {
+            EditTypePresetsScreen(
                 viewModel = koinViewModel(),
                 onClickBack = ::goBack
             )
         }
         composable(SettingsDestination.QuestSelection) {
             QuestSelectionScreen(
+                viewModel = koinViewModel(),
+                onClickBack = ::goBack
+            )
+        }
+        composable(SettingsDestination.OverlaySelection) {
+            OverlaySelectionScreen(
                 viewModel = koinViewModel(),
                 onClickBack = ::goBack
             )
@@ -97,8 +105,9 @@ import org.koin.androidx.compose.koinViewModel
 
 object SettingsDestination {
     const val Settings = "settings"
-    const val QuestPresets = "quest_presets"
+    const val EditTypePresets = "edit_type_presets"
     const val QuestSelection = "quest_selection"
+    const val OverlaySelection = "overlay_selection"
     const val ShowQuestForms = "show_quest_forms"
     const val QuestSettings = "scee_quest_settings"
     const val UiSettings = "scee_ui_settings"

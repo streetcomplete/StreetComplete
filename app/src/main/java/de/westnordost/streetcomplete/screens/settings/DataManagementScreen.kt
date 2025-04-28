@@ -53,13 +53,13 @@ import de.westnordost.streetcomplete.data.externalsource.ExternalSourceQuestTabl
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestsHiddenTable
 import de.westnordost.streetcomplete.data.osmnotes.notequests.NoteQuestsHiddenTable
 import de.westnordost.streetcomplete.data.preferences.Preferences
+import de.westnordost.streetcomplete.data.presets.EditTypePreset
+import de.westnordost.streetcomplete.data.presets.EditTypePresetsController
+import de.westnordost.streetcomplete.data.presets.EditTypePresetsTable
 import de.westnordost.streetcomplete.data.urlconfig.UrlConfigController
-import de.westnordost.streetcomplete.data.visiblequests.QuestPreset
-import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsController
-import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsTable
 import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderTable
-import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeController
-import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeTable
+import de.westnordost.streetcomplete.data.visiblequests.VisibleEditTypeController
+import de.westnordost.streetcomplete.data.visiblequests.VisibleEditTypeTable
 import de.westnordost.streetcomplete.overlays.custom.getCustomOverlayIndices
 import de.westnordost.streetcomplete.overlays.custom.getIndexedCustomOverlayPref
 import de.westnordost.streetcomplete.quests.amenity_cover.AddAmenityCover
@@ -89,9 +89,9 @@ fun DataManagementScreen(
     val prefs: Preferences = koinInject()
     val cleaner: Cleaner = koinInject()
     val db: Database = koinInject()
-    val questPresetsController: QuestPresetsController = koinInject()
+    val editTypePresetsController: EditTypePresetsController = koinInject()
     val urlConfigController: UrlConfigController = koinInject()
-    val visibleQuestTypeController: VisibleQuestTypeController = koinInject()
+    val visibleEditTypeController: VisibleEditTypeController = koinInject()
     val osmoseDao: OsmoseDao = koinInject()
     val externalSourceQuestController: ExternalSourceQuestController = koinInject()
     val ctx = LocalContext.current
@@ -110,7 +110,7 @@ fun DataManagementScreen(
         when (currentSetting) {
             "settings" -> exportSettings(uri, activity)
             "hidden_quests" -> exportHidden(uri, activity, db)
-            "presets" -> exportPresets(uri, activity, db, questPresetsController, urlConfigController)
+            "presets" -> exportPresets(uri, activity, db, editTypePresetsController, urlConfigController)
             "overlays" -> exportOverlays(uri, activity, prefs)
         }
         currentSetting = ""
@@ -123,8 +123,8 @@ fun DataManagementScreen(
         when (currentSetting) {
             "settings" -> if (!importSettings(uri, activity, osmoseDao, externalSourceQuestController))
                 ctx.toast(ctx.getString(R.string.import_error), Toast.LENGTH_LONG)
-            "hidden_quests" -> importHidden(uri, activity, db, visibleQuestTypeController)
-            "presets" -> importPresets(uri, activity, db, visibleQuestTypeController)
+            "hidden_quests" -> importHidden(uri, activity, db, visibleEditTypeController)
+            "presets" -> importPresets(uri, activity, db, visibleEditTypeController)
             "overlays" -> importOverlays(uri, activity)
         }
         currentSetting = ""
@@ -389,10 +389,10 @@ private fun exportHidden(uri: Uri, activity: Activity, db: Database) {
     }
 }
 
-private fun exportPresets(uri: Uri, activity: Activity, db: Database, questPresetsController: QuestPresetsController, urlConfigController: UrlConfigController) {
-    val allPresets = mutableListOf<QuestPreset>()
-    allPresets.add(QuestPreset(0, activity.getString(R.string.quest_presets_default_name)))
-    allPresets.addAll(questPresetsController.getAll())
+private fun exportPresets(uri: Uri, activity: Activity, db: Database, editTypePresetsController: EditTypePresetsController, urlConfigController: UrlConfigController) {
+    val allPresets = mutableListOf<EditTypePreset>()
+    allPresets.add(EditTypePreset(0, activity.getString(R.string.quest_presets_default_name)))
+    allPresets.addAll(editTypePresetsController.getAll())
     val array = allPresets.map { it.name }.toTypedArray()
     val selectedPresets = mutableSetOf<Long>()
     val d = AlertDialog.Builder(activity)
@@ -417,19 +417,19 @@ private fun exportPresets(ids: Collection<Long>, uri: Uri, activity: Activity, d
             activity.toast(activity.getString(R.string.export_warning_db_version), Toast.LENGTH_LONG)
 
         val presetString = ids.joinToString(",")
-        val presets = db.query(QuestPresetsTable.NAME, where = "${QuestPresetsTable.Columns.QUEST_PRESET_ID} IN ($presetString)") { c ->
-            c.getLong(QuestPresetsTable.Columns.QUEST_PRESET_ID).toString() + "," +
-                c.getString(QuestPresetsTable.Columns.QUEST_PRESET_NAME)
+        val presets = db.query(EditTypePresetsTable.NAME, where = "${EditTypePresetsTable.Columns.EDIT_TYPE_PRESET_ID} IN ($presetString)") { c ->
+            c.getLong(EditTypePresetsTable.Columns.EDIT_TYPE_PRESET_ID).toString() + "," +
+                c.getString(EditTypePresetsTable.Columns.EDIT_TYPE_PRESET_NAME)
         }.map { "$it,${urlConfigController.create(it.substringBefore(',').toLong())}" }
-        val orders = db.query(QuestTypeOrderTable.NAME, where = "${QuestTypeOrderTable.Columns.QUEST_PRESET_ID} IN ($presetString)") { c->
-            c.getLong(QuestTypeOrderTable.Columns.QUEST_PRESET_ID).toString() + "," +
+        val orders = db.query(QuestTypeOrderTable.NAME, where = "${QuestTypeOrderTable.Columns.EDIT_TYPE_PRESET_ID} IN ($presetString)") { c->
+            c.getLong(QuestTypeOrderTable.Columns.EDIT_TYPE_PRESET_ID).toString() + "," +
                 c.getString(QuestTypeOrderTable.Columns.BEFORE) + "," +
                 c.getString(QuestTypeOrderTable.Columns.AFTER)
         }
-        val visibilities = db.query(VisibleQuestTypeTable.NAME, where = "${VisibleQuestTypeTable.Columns.QUEST_PRESET_ID} IN ($presetString)") { c ->
-            c.getLong(VisibleQuestTypeTable.Columns.QUEST_PRESET_ID).toString() + "," +
-                c.getString(VisibleQuestTypeTable.Columns.QUEST_TYPE) + "," +
-                c.getLong(VisibleQuestTypeTable.Columns.VISIBILITY).toString()
+        val visibilities = db.query(VisibleEditTypeTable.NAME, where = "${VisibleEditTypeTable.Columns.EDIT_TYPE_PRESET_ID} IN ($presetString)") { c ->
+            c.getLong(VisibleEditTypeTable.Columns.EDIT_TYPE_PRESET_ID).toString() + "," +
+                c.getString(VisibleEditTypeTable.Columns.EDIT_TYPE) + "," +
+                c.getLong(VisibleEditTypeTable.Columns.VISIBILITY).toString()
         }
         val perPresetQuestSetting = "\\d+_qs_.+".toRegex()
         val questSettings = StreetCompleteApplication.preferences.all.filterKeys { it.matches(perPresetQuestSetting) && it.substringBefore('_').toLongOrNull() in ids }
@@ -478,7 +478,7 @@ private fun settingsToJsonStream(settings: Map<String, Any?>, out: BufferedWrite
 }
 
 private fun exportOverlays(uri: Uri, activity: Activity, scPrefs: Preferences) {
-    val allOverlays = getFakeCustomOverlays(scPrefs, activity, false)
+    val allOverlays = getFakeCustomOverlays(scPrefs, activity.resources, false)
     val array = allOverlays.map { it.changesetComment }.toTypedArray()
     val selectedOverlays = mutableSetOf<String>()
     val d = AlertDialog.Builder(activity)
@@ -614,7 +614,7 @@ private fun readToSettings(list: List<String>): Boolean {
     }
 }
 
-private fun importHidden(uri: Uri, activity: Activity, db: Database, visibleQuestTypeController: VisibleQuestTypeController) {
+private fun importHidden(uri: Uri, activity: Activity, db: Database, visibleEditTypeController: VisibleEditTypeController) {
     // do not delete existing hidden quests; this can be done manually anyway
     val lines = importLinesAndCheck(uri, BACKUP_HIDDEN_OSM_QUESTS, activity, db)
 
@@ -661,7 +661,7 @@ private fun importHidden(uri: Uri, activity: Activity, db: Database, visibleQues
     )
 
     // definitely need to reset visible quests
-    visibleQuestTypeController.onQuestTypeVisibilitiesChanged()
+    visibleEditTypeController.onVisibilitiesChanged()
     // imported hidden osmquests are applied, but don't show up in edit history
     // imported other quests are not even applied
 }
@@ -687,7 +687,7 @@ private fun importLinesAndCheck(uri: Uri, checkLine: String, activity: Activity,
 // when importing, names should be updated!
 private fun List<String>.renameUpdatedQuests() = map { it.renameUpdatedQuests() }
 
-private fun importPresets(uri: Uri, activity: Activity, db: Database, visibleQuestTypeController: VisibleQuestTypeController) {
+private fun importPresets(uri: Uri, activity: Activity, db: Database, visibleEditTypeController: VisibleEditTypeController) {
     val lines = importLinesAndCheck(uri, BACKUP_PRESETS, activity, db)
     if (lines.isEmpty()) {
         return
@@ -695,12 +695,12 @@ private fun importPresets(uri: Uri, activity: Activity, db: Database, visibleQue
     AlertDialog.Builder(activity)
         .setTitle(R.string.pref_import)
         .setMessage(R.string.import_presets_overlays_message)
-        .setPositiveButton(R.string.import_presets_overlays_replace) { _, _ -> importPresets(lines, true, db, visibleQuestTypeController) }
-        .setNeutralButton(R.string.import_presets_overlays_add) { _, _ -> importPresets(lines, false, db, visibleQuestTypeController) }
+        .setPositiveButton(R.string.import_presets_overlays_replace) { _, _ -> importPresets(lines, true, db, visibleEditTypeController) }
+        .setNeutralButton(R.string.import_presets_overlays_add) { _, _ -> importPresets(lines, false, db, visibleEditTypeController) }
         .show()
 }
 
-private fun importPresets(lines: List<String>, replaceExistingPresets: Boolean, db: Database, visibleQuestTypeController: VisibleQuestTypeController) {
+private fun importPresets(lines: List<String>, replaceExistingPresets: Boolean, db: Database, visibleEditTypeController: VisibleEditTypeController) {
     val lines = lines.renameUpdatedQuests()
     val presets = mutableListOf<Array<Any?>>()
     val orders = mutableListOf<Array<Any?>>()
@@ -721,7 +721,7 @@ private fun importPresets(lines: List<String>, replaceExistingPresets: Boolean, 
 
     if (!replaceExistingPresets) {
         // map profile ids to ids greater than existing maximum
-        val max = db.query(QuestPresetsTable.NAME) { it.getLong(QuestPresetsTable.Columns.QUEST_PRESET_ID) }.maxOrNull() ?: 0L
+        val max = db.query(EditTypePresetsTable.NAME) { it.getLong(EditTypePresetsTable.Columns.EDIT_TYPE_PRESET_ID) }.maxOrNull() ?: 0L
         val keys = profileIdMap.keys.toList()
         keys.forEachIndexed { i, id ->
             profileIdMap[id] = max + i + 1L
@@ -766,24 +766,24 @@ private fun importPresets(lines: List<String>, replaceExistingPresets: Boolean, 
     db.transaction {
         if (replaceExistingPresets) {
             // delete existing data in all tables
-            db.delete(QuestPresetsTable.NAME)
+            db.delete(EditTypePresetsTable.NAME)
             db.delete(QuestTypeOrderTable.NAME)
-            db.delete(VisibleQuestTypeTable.NAME)
+            db.delete(VisibleEditTypeTable.NAME)
         }
-        db.insertMany(QuestPresetsTable.NAME,
-            arrayOf(QuestPresetsTable.Columns.QUEST_PRESET_ID, QuestPresetsTable.Columns.QUEST_PRESET_NAME),
+        db.insertMany(EditTypePresetsTable.NAME,
+            arrayOf(EditTypePresetsTable.Columns.EDIT_TYPE_PRESET_ID, EditTypePresetsTable.Columns.EDIT_TYPE_PRESET_NAME),
             presets
         )
         db.insertMany(QuestTypeOrderTable.NAME,
-            arrayOf(QuestTypeOrderTable.Columns.QUEST_PRESET_ID,
+            arrayOf(QuestTypeOrderTable.Columns.EDIT_TYPE_PRESET_ID,
                 QuestTypeOrderTable.Columns.BEFORE,
                 QuestTypeOrderTable.Columns.AFTER),
             orders
         )
-        db.insertMany(VisibleQuestTypeTable.NAME,
-            arrayOf(VisibleQuestTypeTable.Columns.QUEST_PRESET_ID,
-                VisibleQuestTypeTable.Columns.QUEST_TYPE,
-                VisibleQuestTypeTable.Columns.VISIBILITY),
+        db.insertMany(VisibleEditTypeTable.NAME,
+            arrayOf(VisibleEditTypeTable.Columns.EDIT_TYPE_PRESET_ID,
+                VisibleEditTypeTable.Columns.EDIT_TYPE,
+                VisibleEditTypeTable.Columns.VISIBILITY),
             visibilities
         )
     }
@@ -795,12 +795,12 @@ private fun importPresets(lines: List<String>, replaceExistingPresets: Boolean, 
             // remove all per-preset quest settings for proper replace
             prefs.all.keys.filter { qsRegex.containsMatchIn(it) }.forEach { remove(it) }
             // set selected preset to default, because previously selected may not exist any more
-            putLong(Preferences.SELECTED_QUESTS_PRESET, 0)
+            putLong(Preferences.SELECTED_EDIT_TYPE_PRESET, 0)
         }
     }
     readToSettings(questSettingsLines)
 
-    visibleQuestTypeController.setVisibilities(emptyMap()) // reload stuff
+    visibleEditTypeController.setVisibilities(emptyMap()) // reload stuff
 }
 
 private fun importSettings(uri: Uri, activity: Activity, osmoseDao: OsmoseDao, externalSourceQuestController: ExternalSourceQuestController): Boolean {

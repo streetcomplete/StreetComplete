@@ -612,7 +612,6 @@ Finalment, ves amb compte: para atenció al que t'envolta i no entris en propiet
     <string name="link_ideditor_description">"Editor senzill d'OSM per al navegador. Optimitzat per a escriptori i tauletes grans"</string>
     <string name="link_umap_description">"Crea ràpidament mapes amb dades a mida i insereix-los en el teu lloc web"</string>
     <string name="link_opnvkarte_description">"Un mapa de rutes i parades de transport públic"</string>
-    <string name="link_pic4review_description">"Col·labora amb OSM només mirant fotos de la teva ciutat"</string>
     <string name="link_wiki_description">"La wiki és el teu punt de partida per a tot allò relacionat amb OpenStreetMap"</string>
     <string name="link_learnosm_description">"Sou nou a l'OpenStreetMap? Això és la guia d'iniciació"</string>
     <string name="link_neis_one_description">"Una gran recopilació d'estadístiques per als contribuïdors d'OpenStreetMap, com ara, des d'on i com has contribuït, qui hi ha a prop teu, a més de taules de classificació"</string>
@@ -1370,8 +1369,8 @@ Podeu trobar informació sobre les donacions a la nostra web o al portal del pro
     <string name="default_disabled_msg_visible_sign_moped">"Aquest grup de missions està desactivat per defecte perquè l'accés de ciclomotors sols s'especifica en senyals al principi o al final del carril bici."</string>
     <string name="quest_arrow_tutorial">"Les fletxes de la il·lustració estan orientades cap a les dues direccions de la via sortint des del punt central de la missió. Prova de girar el mapa i ho entendràs millor."</string>
     <string name="info">"Més informació"</string>
-    <string name="quest_accessible_for_pedestrians_prohibited">"És prohibit."</string>
-    <string name="quest_accessible_for_pedestrians_allowed">"és permès."</string>
+    <string name="quest_accessible_for_pedestrians_prohibited">"Està prohibit."</string>
+    <string name="quest_accessible_for_pedestrians_allowed">"Està permès."</string>
     <string name="quest_buildingLevels_hint">"Per edificis en un pendent, el recompte de pisos comença des del nivell de terra en el costat més baix.
 
 Un pis compta com a teulada quan les seves finestres són a la teulada. En conseqüència, les teulades amb zero nivells de teulada no són necessàriament planes, simplement no són prou alts per un pis sencer.

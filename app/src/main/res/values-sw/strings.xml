@@ -596,7 +596,6 @@ Kabla ya kupakia mabadiliko yako, programu hukagua na &lt;a href=\" https://www.
     <string name="link_ideditor_description">"Mhariri rahisi wa OSM kwa kivinjari. Imeboreshwa kwa ajili ya eneo-kazi au kompyuta kibao kubwa"</string>
     <string name="link_umap_description">"Unda ramani ukitumia data maalum kwa haraka na uzipachike kwenye tovuti yako"</string>
     <string name="link_opnvkarte_description">"Ramani ya njia za usafiri wa umma na vituo"</string>
-    <string name="link_pic4review_description">"Changia kwa OSM kwa kuangalia tu picha za jiji lako"</string>
     <string name="link_wiki_description">"Wiki ndio mahali pa kuanzia kwa kila kitu kinachohusiana na OpenStreetMap"</string>
     <string name="link_learnosm_description">"Je, ni mpya kwa OpenStreetMap? Huu ni mwongozo wa wanaoanza"</string>
     <string name="link_neis_one_description">"Mkusanyiko mkubwa wa takwimu za wachangiaji wa OpenStreetMap, kama vile mahali na jinsi ulichangia, ni nani mwingine aliye karibu nawe pamoja na bodi ya viongozi."</string>
