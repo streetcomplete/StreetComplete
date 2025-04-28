@@ -44,6 +44,8 @@ class EditTypePresetsController(
             selectedId = 0
         }
         editTypePresetsDao.delete(presetId)
+        val presetSettings = prefs.prefs.keys.filter { it.startsWith("${presetId}_qs_") }
+        presetSettings.forEach { prefs.prefs.remove(it) }
         onDeleted(presetId)
     }
 

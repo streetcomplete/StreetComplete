@@ -7,6 +7,7 @@ import de.westnordost.streetcomplete.data.presets.EditTypePresetsDao
 import de.westnordost.streetcomplete.data.presets.EditTypePresetsSource
 import de.westnordost.streetcomplete.testutils.any
 import de.westnordost.streetcomplete.testutils.mock
+import de.westnordost.streetcomplete.testutils.mockPrefs3
 import de.westnordost.streetcomplete.testutils.on
 import org.mockito.Mockito.verify
 import kotlin.test.BeforeTest
@@ -24,7 +25,7 @@ class EditTypePresetControllerTest {
 
     @BeforeTest fun setUp() {
         editTypePresetsDao = mock()
-        prefs = mock()
+        prefs = mockPrefs3()
         ctrl = EditTypePresetsController(editTypePresetsDao, prefs)
 
         listener = mock()
