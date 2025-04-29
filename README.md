@@ -27,7 +27,7 @@ F-Droid releases of SCEE make use of reproducible builds, so releases on F-Droid
 __F-Droid anti-feature__ _non-free network_: SCEE uses map tiles provided by [jawg](https://www.jawg.io), and optionally [aerial / satellite imagery](https://server.arcgisonline.com/arcgis/rest/services/World_Imagery/MapServer) by [Esri](https://www.esri.com) .
 
 ## Translations
-Translations for strings added in SCEE can be done [using Weblate](https://translate.codeberg.org/projects/scee/).
+Translations for strings added in SCEE can be done [using Weblate at Codeberg](https://translate.codeberg.org/projects/scee/).
 You will need an account to update translations and add languages. Add the language you want to translate to in _Languages_ -> _Manage translated languages_ in the top menu bar.
 
 ## Permissions
