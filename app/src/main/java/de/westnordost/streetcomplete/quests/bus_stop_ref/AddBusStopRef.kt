@@ -20,17 +20,18 @@ class AddBusStopRef : OsmFilterQuestType<BusStopRefAnswer>() {
         and !ref and noref != yes and ref:signed != no and !~"ref:.*"
     """
     override val enabledInCountries = NoCountriesExcept(
-        "CA",
-        "IE",
-        "JE",
         "AU", // https://github.com/streetcomplete/StreetComplete/issues/4487
-        "TR", // https://github.com/streetcomplete/StreetComplete/issues/4489
-        "US",
-        "IL", // https://github.com/streetcomplete/StreetComplete/issues/5119
+        "CA",
         "CO", // https://github.com/streetcomplete/StreetComplete/issues/5124
+        "IE",
+        "IR", // https://github.com/streetcomplete/StreetComplete/issues/6227
+        "IL", // https://github.com/streetcomplete/StreetComplete/issues/5119
+        "JE",
+        "KR", // https://github.com/streetcomplete/StreetComplete/issues/6076
         "NZ", // https://wiki.openstreetmap.org/w/index.php?title=Talk:StreetComplete/Quests&oldid=2599288#Quests_in_New_Zealand
         "PT", // https://github.com/streetcomplete/StreetComplete/issues/5695
-        "KR", // https://github.com/streetcomplete/StreetComplete/issues/6076
+        "TR", // https://github.com/streetcomplete/StreetComplete/issues/4489
+        "US",
     )
     override val changesetComment = "Determine bus/tram stop refs"
     override val wikiLink = "Tag:public_transport=platform"
