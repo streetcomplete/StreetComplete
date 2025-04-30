@@ -177,7 +177,7 @@ val links = listOf(
 
     Link(
         "ideditor",
-        "http://ideditor.com",
+        "https://ideditor.com",
         "iD",
         LinkCategory.EDITORS,
         R.drawable.ic_link_ideditor,
