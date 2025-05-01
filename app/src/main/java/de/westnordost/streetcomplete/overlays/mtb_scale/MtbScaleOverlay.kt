@@ -42,9 +42,13 @@ class MtbScaleOverlay : Overlay {
 
     private fun getStyle(element: Element): Style {
         val color = parseMtbScale(element.tags).color
+            ?: if (isMtbTaggingExpected(element.tags)) Color.DATA_REQUESTED else null
         return PolylineStyle(stroke = color?.let { StrokeStyle(it) })
     }
 }
+
+private fun isMtbTaggingExpected(tags: Map<String, String>) =
+    tags["mtb"] == "designated" || tags["mtb"] == "yes"
 
 private val MtbScale?.color get() = when (this?.value) {
     0 -> Color.BLUE
