@@ -52,13 +52,13 @@ fun OverlaysIcon() {
 }
 
 @Composable
-fun UploadIcon() {
-    Icon(painterResource(R.drawable.ic_file_upload_24dp), stringResource(R.string.action_upload))
+fun DownloadIcon() {
+    Icon(painterResource(R.drawable.ic_file_download_24dp), stringResource(R.string.action_download))
 }
 
 @Composable
-fun DownloadIcon() {
-    Icon(painterResource(R.drawable.ic_file_download_24dp), stringResource(R.string.action_download))
+fun UploadIcon() {
+    Icon(painterResource(R.drawable.ic_file_upload_24dp), stringResource(R.string.action_upload))
 }
 
 @Composable
