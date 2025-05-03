@@ -64,11 +64,11 @@ private fun isMtbTaggingExpected(element: Element) =
 
 private val MtbScale?.color get() = when (this?.value) {
     0 -> Color.BLUE
-    1 -> Color.SKY
-    2 -> Color.CYAN
-    3 -> Color.LIME
-    4 -> Color.GOLD
-    5 -> Color.ORANGE
+    1 -> Color.CYAN
+    2 -> Color.LIME
+    3 -> Color.GOLD
+    4 -> Color.ORANGE
+    5 -> Color.PURPLE
     6 -> Color.BLACK
     else -> null
 }

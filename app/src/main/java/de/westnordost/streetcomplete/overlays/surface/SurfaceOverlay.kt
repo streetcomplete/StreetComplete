@@ -117,7 +117,7 @@ private val Surface.color get() = when (this) {
     GRAVEL, PEBBLES, ROCK,
         // very different from above but unlikely to be used in same places, i.e. below are usually on bridges
     WOOD, METAL, METAL_GRID
-        -> Color.GRAY
+        -> Color.PURPLE
     UNKNOWN, PAVED, UNPAVED,
         // not encountered in normal situations, get the same as generic surface
     CLAY, ARTIFICIAL_TURF, TARTAN, RUBBER, ACRYLIC, HARD

@@ -107,7 +107,7 @@ class BuildingsOverlay : Overlay {
         // other/special
         HISTORIC, ABANDONED, RUINS, CONSTRUCTION, BUNKER, TOMB, TOWER,
         UNSUPPORTED ->
-            Color.GRAY
+            Color.PURPLE
     }
 
     private fun isBuildingTypeMissing(tags: Map<String, String>): Boolean =

@@ -7,7 +7,7 @@ package de.westnordost.streetcomplete.overlays
  *  - Blue-yellow color blindness (but not as good): Tritan (~0.01% of population)
  *
  *   See the palette here (update link if colors are updated!):
- *   https://davidmathlogic.com/colorblind/#%23444444-%23FF0000-%231A87E6-%232FACE8-%2330D4EE-%2310C1B8-%230DA082-%23F37D1E-%23EEBD0D-%23B6EF28
+ *   https://davidmathlogic.com/colorblind/#%230f0f0f-%23FF0000-%23BF39A5-%231A87E6-%232FACE8-%2330D4EE-%2310C1B8-%230DA082-%23F37D1E-%23EEBD0D-%23B6EF28
  *
  *   The palette is loosely based on Color Universal Design (CUD) by Masataka Okabe and Kei Ito's
  *   color palette (https://jfly.uni-koeln.de/color/), compare:
@@ -29,7 +29,8 @@ object Color {
     private const val RED = "#FF0000" // reserved
     const val DATA_REQUESTED = RED // "not mapped" / "incomplete/invalid" / "data missing" / "outdated"
 
-    // blue
+    // blue-ish
+    const val PURPLE = "#BF39A5"
     const val BLUE = "#1A87E6"
     const val SKY = "#2FACE8"
     const val CYAN = "#30D4EE"
@@ -40,8 +41,6 @@ object Color {
     const val ORANGE = "#F37D1E"
     const val GOLD = "#EEBD0D"
     const val LIME = "#B6EF28"
-    // extra gray colour - works, but better to avoid it
-    const val GRAY = "#dddddd"
 
     // note that AQUAMARINE and TEAL look like SKY and BLUE for Blue-yellow color blind people
     // (~0.01% of population)

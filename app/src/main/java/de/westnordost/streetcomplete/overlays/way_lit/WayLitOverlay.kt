@@ -49,7 +49,7 @@ private fun getStyle(element: Element): Style {
 
 private val LitStatus?.color get() = when (this) {
     LitStatus.YES  ->          Color.LIME
-    LitStatus.UNSUPPORTED ->   Color.GRAY
+    LitStatus.UNSUPPORTED ->   Color.PURPLE
     LitStatus.NIGHT_AND_DAY -> Color.AQUAMARINE
     LitStatus.AUTOMATIC ->     Color.SKY
     LitStatus.NO ->            Color.BLACK
