@@ -70,6 +70,7 @@ object Prefs {
     const val REALLY_ALL_NOTES = "really_all_notes"
     const val ROTATE_WHILE_ZOOMING = "rotate_while_zooming"
     const val ROTATE_ANGLE_THRESHOLD = "rotate_angle_threshold"
+    const val OVERRIDE_COUNTRY_RESTRICTIONS = "override_country_restrictions"
 
     enum class DayNightBehavior(val titleResId: Int) {
         IGNORE(R.string.day_night_ignore),

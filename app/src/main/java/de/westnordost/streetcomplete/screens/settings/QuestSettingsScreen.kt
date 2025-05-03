@@ -111,6 +111,14 @@ fun QuestSettingsScreen(
                     default = false,
                     onCheckedChange = { scope.launch(Dispatchers.IO) { visibleEditTypeController.onVisibilitiesChanged() } }
                 )
+            if (prefs.expertMode)
+                SwitchPreference(
+                    name = stringResource(R.string.pref_override_country_restrictions_title),
+                    description = stringResource(R.string.pref_override_country_restrictions_summary),
+                    pref = Prefs.OVERRIDE_COUNTRY_RESTRICTIONS,
+                    default = false,
+                    onCheckedChange = { scope.launch(Dispatchers.IO) { visibleEditTypeController.onVisibilitiesChanged() } }
+                )
             Preference(
                 name = stringResource(R.string.pref_quest_monitor_title),
                 onClick = { questMonitorDialog(prefs, ctx) },
