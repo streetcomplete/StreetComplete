@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.overlays.mtb_scale
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
@@ -43,7 +44,7 @@ class MtbScaleOverlay : Overlay {
     private fun getStyle(element: Element): Style {
         val mtbScale = parseMtbScale(element.tags)
         val color = mtbScale.color
-            ?: if (isMtbTaggingExpected(element.tags)) Color.DATA_REQUESTED else null
+            ?: if (isMtbTaggingExpected(element)) Color.DATA_REQUESTED else null
         return PolylineStyle(
             stroke = color?.let { StrokeStyle(it) },
             label = mtbScale?.value.toString()
@@ -51,8 +52,15 @@ class MtbScaleOverlay : Overlay {
     }
 }
 
-private fun isMtbTaggingExpected(tags: Map<String, String>) =
-    tags["mtb"] == "designated" || tags["mtb"] == "yes"
+private val mtbTaggingExpectedFilter by lazy { """
+    ways with
+      mtb ~ designated|yes
+      or mtb:scale:uphill
+      or mtb:scale:imba
+""".toElementFilterExpression() }
+
+private fun isMtbTaggingExpected(element: Element) =
+    mtbTaggingExpectedFilter.matches(element)
 
 private val MtbScale?.color get() = when (this?.value) {
     0 -> Color.BLUE
