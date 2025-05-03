@@ -32,6 +32,8 @@ class MtbScaleOverlay : Overlay {
                 or foot ~ yes|permissive|designated
                 or bicycle ~ yes|permissive|designated
               )
+              and bicycle != no
+              and mtb != no
               and (
                 surface ~ ${UNPAVED_SURFACES.joinToString("|")}|wood
                 or (highway = track and tracktype and tracktype != grade1)
