@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests.building_levels
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AlertDialog
+import androidx.compose.material.Surface
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -42,19 +43,21 @@ class AddBuildingLevelsForm : AbstractOsmQuestForm<BuildingLevels>() {
         binding.questBuildingLevelsBase.content {
             levels = rememberSaveable { mutableStateOf(element.tags["building:levels"] ?: "") }
             roofLevels = rememberSaveable { mutableStateOf(element.tags["roof:levels"] ?: "") }
-            BuildingLevelsForm(
-                levels = levels.value,
-                onLevelsChange = {
-                    levels.value = it
-                    checkIsFormComplete()
-                },
-                roofLevels = roofLevels.value,
-                onRoofLevelsChange = {
-                    roofLevels.value = it
-                    checkIsFormComplete()
-                },
-                previousBuildingLevels = lastPickedAnswers
-            )
+            Surface {
+                BuildingLevelsForm(
+                    levels = levels.value,
+                    onLevelsChange = {
+                        levels.value = it
+                        checkIsFormComplete()
+                    },
+                    roofLevels = roofLevels.value,
+                    onRoofLevelsChange = {
+                        roofLevels.value = it
+                        checkIsFormComplete()
+                    },
+                    previousBuildingLevels = lastPickedAnswers
+                )
+            }
         }
     }
 
