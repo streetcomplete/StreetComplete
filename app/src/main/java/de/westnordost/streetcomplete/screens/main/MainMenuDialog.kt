@@ -88,6 +88,11 @@ fun MainMenuDialog(
                     )
                 }
                 Divider()
+                CompactMenuButton(
+                    onClick = { onDismissRequest(); onClickDownload() },
+                    icon = { DownloadIcon() },
+                    text = stringResource(R.string.action_download),
+                )
                 if (unsyncedEditsCount != null) {
                     CompactMenuButton(
                         onClick = { onDismissRequest(); onClickUpload() },
@@ -103,11 +108,6 @@ fun MainMenuDialog(
                         enabled = !isUploadingOrDownloading,
                     )
                 }
-                CompactMenuButton(
-                    onClick = { onDismissRequest(); onClickDownload() },
-                    icon = { DownloadIcon() },
-                    text = stringResource(R.string.action_download),
-                )
                 if (indexInTeam == null) {
                     CompactMenuButton(
                         onClick = { onDismissRequest(); onClickEnterTeamMode() },
