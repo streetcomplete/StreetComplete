@@ -22,8 +22,10 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.material.ButtonDefaults
+import androidx.compose.material.LocalContentColor
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.derivedStateOf
@@ -379,14 +381,18 @@ fun MainScreen(
                     .fillMaxWidth()
                     .padding(4.dp)
                 ) {
-                    AttributionButton(
-                        userHasMovedMap = userHasMovedCamera,
-                        attributions = mapAttribution,
-                        modifier = Modifier.align(Alignment.TopStart)
-                    )
+                    CompositionLocalProvider(LocalContentColor provides MaterialTheme.colors.onSurface) {
+                        AttributionButton(
+                            userHasMovedMap = userHasMovedCamera,
+                            attributions = mapAttribution,
+                            modifier = Modifier.align(Alignment.TopStart),
+                            popupElevation = 4.dp,
+                        )
+                    }
                     ScaleBar(
                         metersPerDp = metersPerDp,
-                        modifier = Modifier.align(Alignment.CenterEnd)
+                        modifier = Modifier.align(Alignment.CenterEnd).padding(horizontal = 12.dp),
+                        alignment = Alignment.End,
                     )
                 }
             }

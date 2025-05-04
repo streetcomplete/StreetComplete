@@ -65,6 +65,7 @@ import de.westnordost.streetcomplete.screens.main.controls.ktx.Reverse
  * @param popupColor Color of the popup (applied to [Surface])
  * @param popupContentColor Content Color of the popup (applied to [Surface])
  * @param popupBorder Border of the popup (applied to [Surface])
+ * @param popupElevation Elevation of the popup (applied to the [Surface])
  */
 @Composable
 public fun AttributionButton(
@@ -78,6 +79,7 @@ public fun AttributionButton(
     popupColor: Color = MaterialTheme.colors.surface,
     popupContentColor: Color = contentColorFor(popupColor),
     popupBorder: BorderStroke? = null,
+    popupElevation: Dp = 0.dp,
 ) {
     if (attributions.isEmpty()) return
 
@@ -128,6 +130,7 @@ public fun AttributionButton(
                         color = popupColor,
                         contentColor = popupContentColor,
                         border = popupBorder,
+                        elevation = popupElevation,
                     ) {
                         // the content of the popup should be aligned centered vertically in general, only the
                         // icon button should be in the corner, so that it exactly overlaps the original button
