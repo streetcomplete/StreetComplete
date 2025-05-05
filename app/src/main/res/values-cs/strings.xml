@@ -1462,4 +1462,10 @@ Podlaží se počítají jako střešní, pokud jejich okna jsou ve střeše. Te
     <string name="overlay_mtb_scale_5_description">"Ultrastrmý hranatý terén s protisvahy, balvanitými poli, sesuvy půdy, serpentinami s překážkami, četnými hlubokými propady a spadlými stromy. Přenášení kola okolo překážek je nemožné, je nutné jet. Jsou potřeba značné zkušenosti."</string>
     <string name="overlay_mtb_scale_6">"Stupeň 6"</string>
     <string name="overlay_mtb_scale_6_description">"Nebezpečný a neprůchodný terén, nevhodný pro horská kola."</string>
+    <string name="default_disabled_overlay_domain_expert">"Tato překryvná vrstva je ve výchozím stavu vypnuta, protože musíte být odborníkem v oboru, abyste mohli přesně zaznamenat tato data."</string>
+    <string name="pref_title_overlays">"Výběr překryvných vrstev"</string>
+    <string name="pref_overlays_reset">"Vrátit zapnutí překryvných vrstev do výchozího stavu?"</string>
+    <string name="overlay">"Překryvná vrstva"</string>
+    <string name="enable_overlay_confirmation_title">"Zapnout tuto překryvnou vrstvu?"</string>
+    <string name="link_transitous_description">"Poskytovatel svobodného a otevřeného řešení pro trasy veřejné dopravy"</string>
 </resources>

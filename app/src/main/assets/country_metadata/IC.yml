@@ -1,4 +1,4 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [Euronet, Caixabank, CaixaBank, Banco Santander, BBVA, Santander, Euronet Worldwide, Banca March, Cashzone, Targobank, Bankia, Shitcoins.club, Caja de Canarias, La Caixa, Banco Sabadell, Banco Popular, cajamar, Servired, Popular, ING, Deutsche Bank, Cajasiete, Caixa Bank, 4B]
-chargingStationOperators: [Endesa, CanariasTeRecarga, canariasterecarga.com, Movilidad Eléctrica, Iberdrola, BP]
+atmOperators: [Euronet, Caixabank, CaixaBank, Banco Santander, BBVA, Santander, Euronet Worldwide, Banca March, Cashzone, Targobank, Bankia, Shitcoins.club, Caja de Canarias, La Caixa, ING, Banco Sabadell, Banco Popular, cajamar, Servired, Popular, Deutsche Bank, Cajasiete, Caixa Bank, 4B]
+chargingStationOperators: [Endesa, CanariasTeRecarga, efacec, canariasterecarga.com, Movilidad Eléctrica, Iberdrola, BP]
 orchardProduces: [olive, grape, almond, orange, peach, tomato, lemon, lime, chestnut, apple, chilli_pepper, sweet_pepper, pear, apricot, fig, avocado, plum, pineapple, mango, avocado]

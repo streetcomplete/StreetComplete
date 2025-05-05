@@ -62,7 +62,7 @@ AL:
   - Raiffeisenbank # 2
   - ALPHA BANK # 2
 AM:
-  - ԱԿԲԱ # 176
+  - ԱԿԲԱ # 175
   - Ամերիաբանկ # 157
   - Կոնվերս Բանկ # 96
   - ՎՏԲ # 74
@@ -193,9 +193,9 @@ AR:
   - Athena Bitcoin Inc. # 2
   - Athena Bitcoin # 2
 AT:
-  - Raiffeisen # 178
-  - BAWAG PSK # 112
-  - Raiffeisenbank # 103
+  - Raiffeisen # 179
+  - BAWAG PSK # 113
+  - Raiffeisenbank # 105
   - Euronet # 92
   - Volksbank # 58
   - Erste Bank # 54
@@ -203,7 +203,7 @@ AT:
   - Kurant # 45
   - BAWAG # 43
   - bank99 # 30
-  - Oberbank # 25
+  - Oberbank # 26
   - ICCash # 22
   - PSA # 20
   - Bank Austria # 20
@@ -214,13 +214,14 @@ AT:
   - Sparkasse Oberösterreich # 9
   - Bawag PSK # 8
   - BKS Bank # 8
-  - BAWAG P.S.K. # 8
   - Steiermärkische Sparkasse # 7
   - Raiffeisen Bank # 7
+  - BAWAG P.S.K. # 7
   - Salzburger Sparkasse # 6
   - Raiffeisen Wien # 6
   - Kremser Bank und Sparkassen AG # 6
   - ICCash Services # 6
+  - IC Cash # 5
   - Hypo # 5
   - Denizbank # 5
   - Bankomat # 5
@@ -229,7 +230,6 @@ AT:
   - Sparda Bank # 4
   - Raiffeisenbank Wr. Neustadt-Schneebergland # 4
   - Raiffeisenbank Sillian # 4
-  - IC Cash # 4
   - Hypo Salzburg # 4
   - Global ATM Network # 4
   - DenizBank # 4
@@ -278,7 +278,7 @@ AU-NSW:
   - Westpac # 40
   - ANZ # 28
   - NAB # 22
-  - St.George # 19
+  - St.George # 20
   - Travelex # 7
   - IMB # 6
   - St George # 5
@@ -398,13 +398,13 @@ AX:
 AZ:
   - ABB # 218
   - Kapital Bank # 156
-  - Rabitəbank # 70
+  - Rabitəbank # 69
   - Unibank # 38
   - XalqBank # 20
   - Bank Respublika # 16
   - Bank of Baku # 15
-  - Expressbank # 11
   - Premium Bank # 10
+  - Expressbank # 10
   - Yelo Bank # 8
   - AFB Bank # 8
   - PAŞA Bank # 7
@@ -412,8 +412,8 @@ AZ:
   - TuranBank # 6
   - Bank Avrasiya # 6
   - AccessBank # 6
-  - YapıKredi Bank # 5
   - Azər-Türk Bank # 5
+  - YapıKredi Bank # 4
   - VTB Bank (Azerbaijan) # 4
   - Melli İran Bankı # 2
   - Bank BTB # 2
@@ -605,20 +605,19 @@ BE-BRU:
   - Batopin # 37
   - Beobank # 8
   - BeoBank # 5
+  - bpost # 4
   - ING # 4
   - Belfius # 3
-  - bpost # 2
-  - Bpost # 2
 BE-VLG:
   - Batopin # 110
   - KBC # 33
   - Argenta # 32
   - BNP Paribas Fortis # 18
   - Belfius # 13
+  - bpost # 11
   - ING # 10
   - Crelan # 10
   - Bancontact # 9
-  - bpost # 7
   - bpost bank # 4
   - Europabank # 4
   - Beobank # 4
@@ -629,24 +628,21 @@ BE-VLG:
   - BNP Paribas # 3
   - Record Bank # 2
   - Record # 2
-  - De Post # 2
-  - Bpost # 2
   - Beobank NV # 2
   - Batopin NV # 2
   - BNP Parisbas Fortis # 2
 BE-WAL:
   - Batopin # 52
-  - bpost # 13
+  - bpost # 20
   - BNP Paribas Fortis # 9
   - Crelan # 7
   - Belfius # 7
-  - Bpost # 6
-  - ING # 4
+  - ING # 3
+  - CASH # 3
   - Bancontact # 3
   - BNP Paribas # 3
   - bpost banque # 2
   - Cash # 2
-  - CASH # 2
   - Argenta # 2
   - AXA # 2
 BF:
@@ -820,16 +816,16 @@ BW:
   - Stanbic # 2
   - FNB ATM # 2
 BY:
-  - Беларусбанк # 689
-  - Белинвестбанк # 266
-  - Банк БелВЭБ # 256
-  - Белагропромбанк # 234
+  - Беларусбанк # 691
+  - Белинвестбанк # 267
+  - Банк БелВЭБ # 254
+  - Белагропромбанк # 235
   - Приорбанк # 224
   - Альфа-Банк # 151
-  - Сбер Банк # 121
-  - БПС-Сбербанк # 99
+  - Сбер Банк # 122
+  - БПС-Сбербанк # 98
   - Белгазпромбанк # 87
-  - БелВЭБ # 82
+  - БелВЭБ # 84
   - МТБанк # 73
   - БСБ Банк # 50
   - Банк Дабрабыт # 38
@@ -847,9 +843,9 @@ BY:
   - Нео Банк Азiя # 10
   - ОАО «АСБ Беларусбанк» # 9
   - ОАО «Белгазпромбанк» # 8
-  - Белвнешэкономбанк # 8
   - Сбербанк # 7
   - ОАО "БПС-СБЕРБАНК" # 7
+  - Белвнешэкономбанк # 7
   - Франсабанк # 6
   - БеларусБанк # 6
   - Банк Решение # 6
@@ -894,6 +890,7 @@ CA-BC:
   - RBC # 39
   - CIBC # 18
   - Instacoin # 17
+  - Localcoin # 16
   - TD # 13
   - Scotiabank # 13
   - BMO # 10
@@ -934,11 +931,11 @@ CA-NS:
 CA-ON:
   - RBC # 90
   - CIBC # 88
-  - TD # 63
+  - TD # 65
   - BMO # 56
   - Scotiabank # 50
-  - TD Canada Trust # 25
   - Instacoin # 25
+  - TD Canada Trust # 23
   - PC Financial # 10
   - Alterna Savings # 8
   - HODL Digital Services # 6
@@ -958,8 +955,8 @@ CA-ON:
 CA-QC:
   - Desjardins # 78
   - Instacoin # 23
+  - BMO # 19
   - Banque Nationale # 18
-  - BMO # 18
   - RBC # 15
   - Banque Laurentienne # 15
   - Banque Scotia # 11
@@ -995,15 +992,15 @@ CG:
   - BSCA BANK # 2
 CH:
   - Raiffeisen # 357
-  - PostFinance # 242
+  - PostFinance # 244
   - Postfinance # 124
   - UBS # 106
-  - Credit Suisse # 98
+  - Credit Suisse # 97
   - Zürcher Kantonalbank # 86
   - Raiffeisenbank # 46
   - Valiant # 42
   - Migros Bank # 40
-  - Banque Cantonale Vaudoise # 36
+  - Banque Cantonale Vaudoise # 37
   - Värdex # 34
   - Luzerner Kantonalbank # 28
   - Graubündner Kantonalbank # 25
@@ -1011,10 +1008,10 @@ CH:
   - Euronet # 22
   - St. Galler Kantonalbank # 21
   - Thurgauer Kantonalbank # 20
-  - BCV # 20
   - Die Post # 19
+  - BCV # 19
   - Bank Cler # 18
-  - Berner Kantonalbank # 16
+  - Berner Kantonalbank # 15
   - Urner Kantonalbank # 13
   - La Poste # 13
   - Schwyzer Kantonalbank # 12
@@ -1047,6 +1044,7 @@ CH:
   - BCGE # 5
   - UBS AG # 4
   - Schaffhauser Kantonalbank # 4
+  - Poste # 4
   - Obwaldner Kantonalbank # 4
   - Bity SA # 4
   - Bezirks-Sparkasse Dielsdorf # 4
@@ -1057,7 +1055,6 @@ CH:
   - Walliser Kantonalbank # 3
   - TiBc # 3
   - Reiffeisen # 3
-  - Poste # 3
   - La Poste Suisse SA # 3
   - Bank Thalwil # 3
   - Bank Linth # 3
@@ -1107,7 +1104,7 @@ CH:
   - AEK Thun # 2
 CI:
   - Ecobank # 6
-  - BNI # 4
+  - BNI # 5
   - UBA # 2
   - Société générale Côte d’Ivoire # 2
   - SGCI # 2
@@ -1137,6 +1134,9 @@ CL:
 CM:
   - Ecobank # 3
   - Société générale # 2
+CN-AH:
+  - 中国银行 # 2
+  - 中国邮政储蓄银行 # 2
 CN-BJ:
   - 中国银行 # 17
   - 中国工商银行 # 16
@@ -1219,7 +1219,7 @@ CN-JS:
   - 中国银行 # 14
   - 中国邮政储蓄银行 # 12
   - 中国工商银行 # 12
-  - 中国建设银行 # 10
+  - 中国建设银行 # 11
   - 交通银行 # 6
   - ICBC # 5
   - Bank of China # 5
@@ -1227,11 +1227,11 @@ CN-JS:
   - 中国民生银行 # 3
   - 中国光大银行 # 3
   - 中信银行 # 3
+  - 上海浦东发展银行 # 3
   - ABC # 3
   - 浦发银行 # 2
   - 招商银行 # 2
   - 中国农业银行 # 2
-  - 上海浦东发展银行 # 2
   - China Construction Bank # 2
 CN-JX:
   - 中国建设银行 # 2
@@ -1313,14 +1313,14 @@ CN-ZJ:
   - BNB # 2
 CO:
   - Bancolombia # 287
-  - Davivienda # 144
+  - Davivienda # 145
   - Servibanca # 88
   - BBVA # 70
-  - Banco de Bogotá # 53
+  - Banco de Bogotá # 54
   - A Toda Hora S.A. (Red Aval) # 25
   - DAVIVIENDA # 24
-  - ATH # 22
-  - Banco Popular # 21
+  - Banco Popular # 22
+  - ATH # 21
   - Banco Agrario # 18
   - Banco Caja Social # 16
   - Colpatria # 13
@@ -1333,15 +1333,16 @@ CO:
   - Scotiabank # 6
   - Athena Bitcoin # 6
   - Red Aval # 5
-  - Grupo Aval # 5
   - Av Villas # 5
   - ServiBanca # 4
+  - Grupo Aval # 4
   - Caja Social # 4
   - BanColombia # 4
   - davivienda # 3
   - bancolombia # 3
   - banco popular # 3
   - Grupo AVAL # 3
+  - Banco de Occidente # 3
   - Banco Pichincha # 3
   - Banco Agrario de Colombia # 3
   - BANCOLOMBIA # 3
@@ -1360,7 +1361,7 @@ CO:
   - Cajero Bancolombia # 2
   - Cajero # 2
   - BancoBogota # 2
-  - Banco de Occidente # 2
+  - Banco Santander # 2
   - Banco Popular Cajero # 2
   - Banco Davivienda # 2
   - Banco Colombia # 2
@@ -1408,8 +1409,8 @@ CW:
   - RBC # 4
   - ACU # 2
 CY:
-  - Euronet # 105
-  - Bank of Cyprus # 28
+  - Euronet # 106
+  - Bank of Cyprus # 31
   - Hellenic Bank # 16
   - Türkiye İş Bankası # 11
   - Ziraat Bankası # 9
@@ -1432,16 +1433,16 @@ CY:
 CZ:
   - Česká spořitelna # 760
   - ČSOB # 433
-  - Komerční banka # 410
+  - Komerční banka # 411
   - Euronet # 189
-  - Fio banka # 179
-  - MONETA Money Bank # 132
+  - Fio banka # 178
+  - MONETA Money Bank # 133
   - Air Bank # 104
   - Raiffeisenbank # 74
   - UniCredit Bank # 64
   - Moneta # 39
   - MONETA Money Bank, a.s. # 39
-  - Moneta Money Bank # 38
+  - Moneta Money Bank # 37
   - KB # 33
   - Pharro # 31
   - Bitcoinmat.sk # 25
@@ -1471,16 +1472,16 @@ CZ:
   - airbank # 3
   - Bitcoinmat # 3
 DE:
-  - Euronet # 914
-  - Sparkasse # 763
-  - Postbank # 576
-  - Volksbank # 309
+  - Euronet # 917
+  - Sparkasse # 760
+  - Postbank # 575
+  - Volksbank # 308
   - Deutsche Bank # 207
   - ING # 188
   - Reisebank # 157
   - Commerzbank # 127
   - Berliner Volksbank # 91
-  - Raiffeisenbank # 90
+  - Raiffeisenbank # 89
   - Berliner Sparkasse # 88
   - ING-DiBa # 85
   - Hamburger Sparkasse # 82
@@ -1489,7 +1490,7 @@ DE:
   - Sparda-Bank # 73
   - Cashzone # 71
   - ING DiBa # 70
-  - ICCash Services # 61
+  - ICCash Services # 62
   - Sparkasse KölnBonn # 57
   - Euronet Worldwide # 57
   - Stadtsparkasse München # 56
@@ -1501,27 +1502,27 @@ DE:
   - Ostsächsische Sparkasse Dresden # 45
   - Kreissparkasse # 45
   - Sparkasse Bremen # 44
+  - ICCash # 44
   - Sparkasse Essen # 43
-  - ICCash # 43
   - Sparkasse Karlsruhe # 40
   - VR Bank # 38
   - Sparkasse Marburg-Biedenkopf # 38
   - Mittelbrandenburgische Sparkasse # 38
   - Volksbank Mittelhessen # 37
   - Oldenburgische Landesbank # 37
+  - cash zone # 34
   - Sparkasse Altbayern # 34
   - Hamburger Volksbank eG # 34
-  - cash zone # 33
   - Sparkasse Göttingen # 33
   - Sparkasse Bochum # 32
+  - Kreissparkasse Köln # 32
   - Sparkasse MagdeBurg # 31
   - Sparkasse Düren # 31
-  - Kreissparkasse Köln # 31
   - Kreissparkasse München Starnberg Ebersberg # 30
   - ATM # 30
   - Stadtsparkasse Augsburg # 29
-  - Frankfurter Volksbank # 29
   - Sparkasse Spree-Neiße # 28
+  - Frankfurter Volksbank # 28
   - Targobank # 27
   - Sparkasse Chemnitz # 27
   - Nord-Ostsee Sparkasse # 27
@@ -1571,6 +1572,7 @@ DE:
   - Förde Sparkasse # 17
   - Sparkasse Westmünsterland # 16
   - Kreissparkasse Reutlingen # 16
+  - Sparkasse Nürnberg # 15
   - Sparkasse Münsterland Ost # 15
   - Sparkasse Hanau # 15
   - Sparkasse Bayreuth # 15
@@ -1583,9 +1585,8 @@ DE:
   - Volksbank Raiffeisenbank # 14
   - Stadtsparkasse # 14
   - Sparkasse Westholstein # 14
-  - Sparkasse Nürnberg # 14
+  - Sparkasse Langen-Seligenstadt # 14
   - Sparkasse Hanauerland # 14
-  - Sparkasse Dortmund # 14
   - Sparkasse Bühl # 14
   - Frankfurter Sparkasse # 14
   - Erzgebirgssparkasse # 14
@@ -1595,9 +1596,9 @@ DE:
   - Volksbank Euskirchen eG # 13
   - Sparkasse Vorpommern # 13
   - Sparkasse Ulm # 13
-  - Sparkasse Langen-Seligenstadt # 13
   - Sparkasse Kraichgau # 13
   - Sparkasse Freising # 13
+  - Sparkasse Dortmund # 13
   - Kreissparkasse Tübingen # 13
   - Kreissparkasse Herzogtum Lauenburg # 13
   - Kreissparkasse Heilbronn # 13
@@ -1629,7 +1630,7 @@ DE:
   - Bremische Volksbank eG # 11
   - Bankhaus Lenz # 11
 DK:
-  - Danske Bank # 103
+  - Danske Bank # 102
   - Nordea # 86
   - Euronet # 68
   - Sydbank # 27
@@ -1646,6 +1647,7 @@ DK:
   - Ringkøbing Landbobank # 3
   - Nykredit # 3
   - Nokas Verdihåndtering AS # 3
+  - Nokas # 3
   - Lån & Spar Bank # 3
   - Jutlander Bank # 3
   - Andelskassen # 3
@@ -1657,11 +1659,11 @@ DK:
   - SparNord # 2
   - Skjern Bank # 2
   - Ringkjøbing Landbobank # 2
-  - Nokas # 2
   - Middelfart Sparekasse # 2
   - Loomis # 2
   - Kontanten # 2
   - Handelsbanken # 2
+  - Euronet Worldwide # 2
   - DiBa # 2
   - DKK # 2
 DM:
@@ -1805,9 +1807,9 @@ ES-AN:
   - Santander # 22
   - Banco Santander # 22
   - ING # 21
-  - BBVA # 18
+  - BBVA # 19
+  - La Caixa # 13
   - Unicaja Banco # 12
-  - La Caixa # 11
   - Shitcoins.club # 10
   - Cajamar # 10
   - BitBase # 9
@@ -1836,9 +1838,9 @@ ES-AN:
   - BATM.pro # 2
 ES-AR:
   - Ibercaja # 26
+  - Banco Sabadell # 4
   - Caja Rural # 3
   - Banco Santander # 3
-  - Banco Sabadell # 3
   - Shitcoins.club # 2
   - IberCaja # 2
   - BBVA # 2
@@ -2031,7 +2033,7 @@ ES-PV:
   - Caja Laboral # 2
   - BitBase # 2
 ES-VC:
-  - Euronet # 80
+  - Euronet # 82
   - Banco Sabadell # 36
   - Caixabank # 33
   - Cash Zone # 19
@@ -2112,27 +2114,27 @@ FO:
   - Betri Banki # 2
   - Betri # 2
 FR:
-  - Crédit Agricole # 1264
-  - La Banque Postale # 1144
-  - Caisse d'Épargne # 555
-  - SG # 529
-  - Crédit Mutuel # 509
+  - Crédit Agricole # 1271
+  - La Banque Postale # 1146
+  - Caisse d'Épargne # 560
+  - SG # 532
+  - Crédit Mutuel # 515
   - BNP Paribas # 442
-  - LCL # 433
+  - LCL # 437
   - CIC # 390
   - Banque Populaire # 365
-  - Société Générale # 188
-  - La Poste # 169
+  - Société Générale # 186
+  - La Poste # 170
   - Crédit Mutuel de Bretagne # 71
-  - Caisse d'Epargne # 40
   - BRED # 37
-  - Credit Agricole # 34
-  - HSBC # 28
-  - Crédit agricole # 27
-  - BNP # 26
+  - Caisse d'Epargne # 35
+  - Credit Agricole # 32
+  - HSBC # 27
+  - Crédit agricole # 26
   - Euronet # 24
+  - BNP # 24
   - Caisse d'épargne # 23
-  - CCF # 21
+  - CCF # 22
   - Société Marseillaise de Crédit # 16
   - Banque Postale # 16
   - Banque Chabrières # 16
@@ -2144,23 +2146,22 @@ FR:
   - Carrefour Banque # 11
   - Banque populaire # 11
   - Banque Rhône-Alpes # 11
+  - Societe Generale # 10
   - Loomis # 10
-  - Crédit mutuel # 10
   - Credit Mutuel # 10
   - Banque de Savoie # 10
-  - Societe Generale # 9
   - La banque postale # 9
+  - Crédit mutuel # 9
   - Banque Edel # 9
   - BNP Parisbas # 9
   - Société générale # 8
-  - Crédit Lyonnais # 8
   - Banque Populaire Méditerranée # 8
-  - Societé Générale # 7
+  - Banque Dupuy de Parseval # 8
   - Le Crédit Lyonnais # 7
   - Crédit Maritime # 7
-  - Banque Dupuy de Parseval # 7
+  - Crédit Lyonnais # 7
 GA:
-  - BGFIBank Gabon # 8
+  - BGFIBank Gabon # 9
   - Ecobank # 6
   - Union Gabonaise de Banque # 4
   - BGFI Bank # 4
@@ -2168,30 +2169,30 @@ GA:
   - Orabank # 2
   - BICIG # 2
 GB-ENG:
-  - NatWest # 352
+  - NatWest # 355
   - Sainsbury's Bank # 350
-  - Cash Zone # 329
-  - Barclays # 323
-  - Lloyds Bank # 283
+  - Cash Zone # 331
+  - Barclays # 325
+  - Lloyds Bank # 284
   - NoteMachine # 264
   - Tesco Bank # 228
-  - RBS # 210
+  - RBS # 209
   - Santander # 181
   - Nationwide # 170
   - Tesco # 167
-  - Halifax # 154
+  - Halifax # 156
   - HSBC UK # 153
   - Post Office # 128
   - Cashzone # 111
-  - CashZone # 81
-  - Link # 74
+  - CashZone # 82
+  - Link # 73
   - TSB # 62
   - Sainsbury's # 62
   - The Co-operative Bank # 59
   - Bank of Ireland # 48
   - Bank Machine # 44
   - Co-op # 34
-  - Barclays Bank PLC # 34
+  - Barclays Bank PLC # 33
   - Note Machine # 32
   - HSBC # 29
   - Co-operative Bank # 26
@@ -2236,11 +2237,11 @@ GB-ENG:
   - Lloyds # 6
   - HSBC Bank plc # 6
   - Coventry Building Society # 6
+  - Cashzone Ltd # 6
   - Royal Mail # 5
   - Nationwide Building Society # 5
   - Coop # 5
   - Co-Op # 5
-  - Cashzone Ltd # 5
 GB-NIR:
   - Ulster Bank # 42
   - Danske Bank # 24
@@ -2262,8 +2263,8 @@ GB-SCT:
   - RBS # 90
   - Bank of Scotland # 58
   - NoteMachine # 45
-  - Sainsbury's Bank # 39
-  - Cash Zone # 29
+  - Sainsbury's Bank # 40
+  - Cash Zone # 30
   - Tesco Bank # 26
   - Barclays # 24
   - Tesco # 22
@@ -2288,11 +2289,11 @@ GB-SCT:
   - co-op # 3
   - cash zone # 3
   - Travelex # 3
-  - Sainsbury's # 3
   - NatWest # 3
   - Coop # 3
   - tesco # 2
   - The Co-operative Food # 2
+  - Sainsbury's # 2
   - HSBC UK # 2
   - EATM # 2
   - Cardtronics UK Ltd # 2
@@ -2323,12 +2324,12 @@ GB-WLS:
 GD:
   - Scotiabank # 2
 GE:
-  - საქართველოს ბანკი # 835
-  - თიბისი ბანკი # 220
-  - ლიბერთი ბანკი # 131
-  - ბაზისბანკი # 75
-  - კრედო ბანკი # 33
-  - ლიბერთი # 24
+  - საქართველოს ბანკი # 832
+  - თიბისი ბანკი # 228
+  - ლიბერთი ბანკი # 137
+  - ბაზისბანკი # 76
+  - კრედო ბანკი # 34
+  - ლიბერთი # 23
   - ტერაბანკი # 22
   - BitXChange # 22
   - ბანკი ქართუ # 19
@@ -2411,12 +2412,12 @@ GP:
 GQ:
   - SEGESA Comercial # 2
 GR:
-  - Euronet # 237
+  - Euronet # 240
   - Τράπεζα Πειραιώς # 218
   - Alpha Bank # 181
-  - Eurobank # 160
-  - Εθνική Τράπεζα # 150
-  - Euronet Worldwide # 27
+  - Eurobank # 161
+  - Εθνική Τράπεζα # 148
+  - Euronet Worldwide # 28
   - Piraeus Bank # 19
   - Εθνική Τράπεζα της Ελλάδος # 17
   - Bcash # 15
@@ -2429,11 +2430,12 @@ GR:
   - Πειραιώς / Piraeus # 5
   - Πειραιώς # 5
   - Citibank # 5
-  - Bank of Chania # 4
+  - Bank of Chania # 5
   - Τράπεζα Eurobank # 3
   - Εθνική Τράπεζα της Ελλάδος - National Bank of Greece NBG # 3
   - Shitcoins.club # 3
   - Piräus Bank # 3
+  - Piraeus # 3
   - NBG GROUP # 3
   - NBG # 3
   - EuroNet # 3
@@ -2446,7 +2448,6 @@ GR:
   - Pireus Bank # 2
   - Pireaus Bank # 2
   - Piraeus bank # 2
-  - Piraeus # 2
   - Hellenic Post # 2
   - HSBC # 2
   - Ethniki Bank # 2
@@ -2477,7 +2478,7 @@ GY:
   - GBTI # 2
 HK:
   - 香港上海滙豐銀行 HSBC # 34
-  - 中國銀行 Bank of China # 27
+  - 中國銀行 Bank of China # 28
   - 恒生銀行 Hang Seng Bank # 22
   - 花旗銀行 Citibank # 9
   - 渣打銀行 Standard Chartered # 7
@@ -2507,7 +2508,7 @@ HR:
   - OTP Bank # 40
   - Addiko Bank # 31
   - Raiffeisen Bank # 29
-  - Raiffeisen bank # 24
+  - Raiffeisen bank # 25
   - Euronet Worldwide # 24
   - ZABA # 23
   - RBA # 23
@@ -2519,13 +2520,13 @@ HR:
   - OTP # 10
   - Shitcoins.club # 9
   - Monestiq # 9
-  - Raiffeisenbank # 7
   - Privredna Banka Zagreb # 7
   - MoneyGet # 7
   - Erste Banka # 7
   - Addiko # 7
   - Zaba # 6
   - Raiffeisenbank Austria # 6
+  - Raiffeisenbank # 6
   - Hypo # 6
   - Zagrebačka Banka # 5
   - Payten # 5
@@ -2576,18 +2577,18 @@ HT:
   - Banque de la République d'Haïti # 2
 HU:
   - OTP Bank # 702
-  - MBH Bank # 188
+  - MBH Bank # 189
   - Euronet # 145
   - CIB Bank # 109
   - Erste Bank # 104
   - K&H Bank # 56
   - UniCredit Bank # 45
   - K&H # 30
-  - Raiffeisen Bank # 22
+  - Raiffeisen Bank # 23
   - Erste # 19
   - Euronet Worldwide # 16
   - Takarékbank # 13
-  - Erste Bank Hungary Zrt. # 11
+  - Erste Bank Hungary Zrt. # 12
   - CoinATM # 10
   - OTP Bank Nyrt. # 8
   - MagNet Magyar Közösségi Bank Zrt. # 8
@@ -2623,12 +2624,12 @@ IC:
   - Shitcoins.club # 4
   - Caja de Canarias # 4
   - La Caixa # 3
+  - ING # 3
   - Banco Sabadell # 3
   - Banco Popular # 3
   - cajamar # 2
   - Servired # 2
   - Popular # 2
-  - ING # 2
   - Deutsche Bank # 2
   - Cajasiete # 2
   - Caixa Bank # 2
@@ -2640,7 +2641,7 @@ ID-JW:
   - BNI # 224
   - Bank Mandiri # 199
   - BRI # 198
-  - Bank Central Asia # 167
+  - Bank Central Asia # 168
   - BCA # 97
   - Mandiri # 33
   - CIMB Niaga # 33
@@ -2739,7 +2740,7 @@ ID-ML:
 ID-NU:
   - BNI # 66
   - BRI # 56
-  - Bank Mandiri # 27
+  - Bank Mandiri # 29
   - BCA # 23
   - Mandiri # 16
   - Commonwealth Bank # 12
@@ -2761,6 +2762,7 @@ ID-NU:
   - PT Bank Negara Indonesia # 2
   - Bersama # 2
   - Bank NTB # 2
+  - BPD Bali # 2
   - BPD # 2
   - BANK BRI # 2
   - ATM BNI 46 # 2
@@ -2894,12 +2896,12 @@ IN-AP:
   - India1 ATM # 7
   - Bank of Baroda # 7
   - Hitachi # 5
-  - sbi # 4
   - SBI ATM # 4
   - Punjab National Bank # 4
   - Indian Overseas Bank # 4
   - Indian Bank # 4
   - Bank of India # 4
+  - sbi # 3
   - Union Bank # 3
   - Andhra Bank ATM # 3
   - Tamilnad Mercantile Bank Limited # 2
@@ -2931,18 +2933,18 @@ IN-AS:
   - Bank of India # 2
   - ATM # 2
 IN-BR:
-  - State Bank of India # 29
+  - State Bank of India # 30
   - SBI # 9
+  - Axis Bank # 6
   - Punjab National Bank # 5
-  - Axis Bank # 5
+  - HDFC Bank # 5
   - Union Bank of India # 4
-  - HDFC Bank # 4
   - ICICI Bank # 3
+  - Canara Bank # 3
+  - Bank of Baroda # 3
   - IndusInd Bank # 2
   - Central Bank of India # 2
-  - Canara Bank # 2
   - Bank of India # 2
-  - Bank of Baroda # 2
 IN-CH:
   - State Bank of India # 43
   - Punjab National Bank # 4
@@ -2961,7 +2963,7 @@ IN-CT:
   - HDFC Bank # 2
   - Axis Bank # 2
 IN-DL:
-  - State Bank of India # 73
+  - State Bank of India # 74
   - ICICI Bank # 55
   - Axis Bank # 43
   - Punjab National Bank # 40
@@ -2980,8 +2982,8 @@ IN-DL:
   - Standard Chartered # 4
   - Punjab & Sind Bank # 4
   - Oriental Bank of Commerce # 4
+  - IDFC First Bank # 4
   - Andhra Bank # 4
-  - IDFC First Bank # 3
   - Bank of Maharashtra # 3
   - Union Bank # 2
   - South Indian Bank # 2
@@ -2990,6 +2992,7 @@ IN-DL:
   - India Post Payments Bank # 2
   - Corporation Bank # 2
   - Allahabad Bank # 2
+  - AU Small Finance Bank # 2
 IN-GA:
   - State Bank of India # 10
   - HDFC Bank # 10
@@ -3058,7 +3061,7 @@ IN-KA:
   - ICICI Bank # 141
   - HDFC Bank # 131
   - Canara Bank # 111
-  - Karnataka Bank # 57
+  - Karnataka Bank # 58
   - Corporation Bank # 40
   - Citibank # 37
   - Kotak Mahindra Bank # 28
@@ -3084,17 +3087,17 @@ IN-KA:
   - HDFC ATM # 7
   - Axis Bank ATM # 7
   - Vijaya Bank # 6
-  - HDFC # 6
   - Union Bank # 5
   - ICICI # 5
   - HDFC Bank ATM # 5
+  - HDFC # 5
   - UCO Bank # 4
   - State Bank # 4
   - ICICI ATM # 4
-  - Dhanalakshmi Bank # 4
   - RBL Bank # 3
   - Oriental Bank of Commerce # 3
   - HDFC BANK # 3
+  - Dhanalakshmi Bank # 3
   - Corporation Bank ATM # 3
   - Corp Bank # 3
   - Central Bank of India # 3
@@ -3125,14 +3128,14 @@ IN-KA:
   - AXIS Bank ATM # 2
   - AXIS Bank # 2
 IN-KL:
-  - State Bank of India # 306
-  - Federal Bank # 151
+  - State Bank of India # 308
+  - Federal Bank # 152
   - SBI # 102
-  - South Indian Bank # 98
+  - South Indian Bank # 99
   - Canara Bank # 60
   - SBI ATM # 51
   - Federal Bank ATM # 41
-  - State Bank Of India # 31
+  - State Bank Of India # 30
   - South Indian Bank ATM # 30
   - HDFC Bank # 28
   - Axis Bank # 26
@@ -3142,38 +3145,38 @@ IN-KL:
   - Punjab National Bank # 19
   - Kerala Gramin Bank # 19
   - Canara Bank ATM # 19
+  - State Bank of India ATM # 16
   - sbi # 15
-  - State Bank of India ATM # 15
-  - Union Bank # 14
   - Kerala Bank ATM # 14
   - Indian Bank # 14
   - Bank of Baroda # 14
   - federal bank # 13
+  - Union Bank # 13
   - Indian Overseas Bank # 13
   - ATM # 13
-  - state bank of india # 12
-  - south indian bank # 10
+  - state bank of india # 11
   - canara bank # 10
   - SBT # 10
-  - FEDERAL BANK # 10
   - Bank of India # 10
+  - south indian bank # 9
   - federal bank atm # 9
   - State Bank of Travancore # 9
   - State Bank Of India ATM # 9
   - State Bank # 9
   - ICICI Bank ATM # 9
   - Federal bank # 9
+  - FEDERAL BANK # 9
   - ESAF Small Finance Bank # 9
   - CANARA BANK ATM # 9
   - STATE BANK OF INDIA # 8
   - IDBI Bank # 8
   - HDFC Bank ATM # 8
   - CSB Bank # 8
+  - Union Bank ATM # 7
   - Syndicate Bank # 7
   - south indian bank atm # 6
   - sbi atm # 6
   - atm # 6
-  - Union Bank ATM # 6
   - Punjab National Bank ATM # 6
   - Kerala Gramin Bank ATM # 6
   - India One # 6
@@ -3204,6 +3207,7 @@ IN-KL:
   - PNB # 3
   - INDIA ONE ATM # 3
   - ICICI # 3
+  - Hitachi ATM # 3
   - Federal Bank Atm # 3
   - ESAF ATM # 3
   - ESAF # 3
@@ -3249,7 +3253,6 @@ IN-KL:
   - IDCB # 2
   - IDBI Bank ATM # 2
   - ICICI ATM # 2
-  - Hitachi ATM # 2
   - HDFC bank atm # 2
   - HDFC ATM # 2
   - Fedral Bank ATM # 2
@@ -3269,16 +3272,16 @@ IN-KL:
 IN-MH:
   - State Bank of India # 89
   - ICICI Bank # 71
-  - HDFC Bank # 67
+  - HDFC Bank # 68
   - Axis Bank # 60
   - Kotak Mahindra Bank # 23
   - SBI # 20
   - Bank of Maharashtra # 20
   - IndusInd Bank # 18
   - Bank of India # 17
+  - Bank of Baroda # 15
   - IDBI Bank # 14
   - Canara Bank # 14
-  - Bank of Baroda # 14
   - Yes Bank # 10
   - Punjab National Bank # 10
   - Union Bank of India # 9
@@ -3288,12 +3291,12 @@ IN-MH:
   - Cosmos Bank # 6
   - sbi # 5
   - RBL Bank # 5
-  - HDFC Bank ATM # 5
   - HDFC # 5
   - Central Bank of India # 5
   - Axis Bank ATM # 5
   - State Bank Of India ATM # 4
   - Saraswat Bank # 4
+  - HDFC Bank ATM # 4
   - Union Bank # 3
   - Standard Chartered # 3
   - SVC Bank # 3
@@ -3444,8 +3447,8 @@ IN-TG:
   - State Bank # 47
   - State Bank of India # 33
   - Axis Bank # 26
+  - HDFC Bank # 25
   - ICICI Bank # 24
-  - HDFC Bank # 24
   - Andhra Bank # 23
   - ICICI # 14
   - SBI # 13
@@ -3476,7 +3479,6 @@ IN-TG:
   - Oriental Bank Of Commerce # 2
   - Kotak Mahindra Bank # 2
   - IndusInd Bank # 2
-  - Indian bank # 2
   - Icici # 2
   - IOB # 2
   - ING Vysya # 2
@@ -3546,7 +3548,7 @@ IN-TN:
   - Bandhan Bank # 2
 IN-UP:
   - State Bank of India # 52
-  - HDFC Bank # 36
+  - HDFC Bank # 37
   - ICICI Bank # 28
   - Bank of Baroda # 15
   - Punjab National Bank # 14
@@ -3732,12 +3734,12 @@ IS:
   - Hradbanki # 2
   - Arion Banki # 2
 IT:
-  - Poste Italiane # 856
-  - Intesa Sanpaolo # 198
+  - Poste Italiane # 857
+  - Intesa Sanpaolo # 200
   - UniCredit Bank # 133
-  - Monte dei Paschi di Siena # 121
-  - BPER Banca # 98
-  - Euronet # 97
+  - Monte dei Paschi di Siena # 124
+  - BPER Banca # 99
+  - Euronet # 98
   - Banco BPM # 63
   - Credem # 39
   - Unicredit # 35
@@ -3751,15 +3753,15 @@ IT:
   - Banca di Asti # 23
   - Banca Popolare di Milano # 21
   - Poste # 19
+  - Intesa San Paolo # 19
   - Postamat # 18
-  - Intesa San Paolo # 18
   - Banco Desio # 18
   - Banca Sella # 17
   - Banca Popolare di Novara # 17
+  - Banca Popolare Pugliese # 17
   - BCC Roma # 17
   - UniCredit # 16
   - Deutsche Bank # 16
-  - Banca Popolare Pugliese # 16
   - Euronet Worldwide # 15
   - Poste italiane # 12
   - BPER # 12
@@ -3790,6 +3792,7 @@ IT:
   - Cassa di Risparmio del Veneto # 5
   - Bancomat # 5
   - Banco Popolare # 5
+  - Banca di Piacenza # 5
   - Banca Tercas # 5
   - BCC Fano # 5
   - Volksbank # 4
@@ -3803,7 +3806,6 @@ IT:
   - BdM Banca # 4
   - Bancoposta # 4
   - Banco di Desio # 4
-  - Banca di Piacenza # 4
   - Banca di Credito Popolare # 4
   - Unicredit S.p.a. # 3
   - SanPaolo # 3
@@ -3859,7 +3861,6 @@ IT-36:
   - Intesa Sanpaolo # 6
   - Postamat # 4
   - Banca di Cividale # 4
-  - Banca Popolare di Cividale # 3
   - BCC # 3
   - Unicredit # 2
   - UniCredit Banca # 2
@@ -3868,6 +3869,7 @@ IT-36:
   - Friuladria # 2
   - CrediFriuli # 2
   - Banco BPM # 2
+  - Banca Popolare di Cividale # 2
   - Banca 360 Credito Cooperativo FVG - Società cooperativa # 2
 IT-82:
   - Poste Italiane # 19
@@ -3918,15 +3920,15 @@ JO:
   - Islamic International Arab Bank # 2
   - Bank al Etihad # 2
 JP:
-  - ゆうちょ銀行 # 625
+  - ゆうちょ銀行 # 626
   - セブン銀行 # 316
-  - みずほ銀行 # 213
-  - 三菱UFJ銀行 # 209
-  - 三井住友銀行 # 150
+  - みずほ銀行 # 212
+  - 三菱UFJ銀行 # 210
+  - 三井住友銀行 # 149
   - 鹿児島銀行 # 139
   - イオン銀行 # 113
-  - りそな銀行 # 94
-  - 横浜銀行 # 76
+  - りそな銀行 # 93
+  - 横浜銀行 # 77
   - JAバンク # 64
   - 七十七銀行 # 51
   - 北洋銀行 # 45
@@ -4124,9 +4126,9 @@ KY:
 KZ:
   - Jusan Bank # 270
   - Банк ЦентрКредит # 191
-  - Home Credit Bank # 152
+  - Home Credit Bank # 151
   - Forte Bank # 146
-  - Halyk Bank # 84
+  - Halyk Bank # 83
   - ForteBank # 70
   - Jusan # 52
   - Kaspi.kz # 43
@@ -4291,8 +4293,8 @@ LV:
   - Swedbank # 294
   - SEB # 223
   - Citadele # 141
-  - Luminor Bank # 76
-  - Luminor # 57
+  - Luminor Bank # 75
+  - Luminor # 58
   - Euronet # 3
   - BluOr Bank # 2
 LY:
@@ -4309,16 +4311,16 @@ MA:
   - CIH Bank # 9
   - BMCI # 9
   - Attijariwafa Bank # 8
-  - Société générale Maroc الشركة العامة # 5
+  - Société générale Maroc الشركة العامة # 6
   - Crédit du Maroc # 5
   - Crédit Agricole # 5
-  - BMCE # 5
   - سوسيتيه جنرال # 4
   - البنك الشعبي # 4
   - Poste Maroc # 4
   - Crédit du Maroc مصرف المغرب # 4
   - Bank Al-Maghrib بنك المغرب # 4
   - BMCE Bank # 4
+  - BMCE # 4
   - Attijariwafa # 4
   - التجاري وفا بنك # 3
   - Societe Generale # 3
@@ -4383,11 +4385,12 @@ ME:
   - CKB Banka # 5
   - Addiko Bank # 5
   - Erste # 4
+  - ERSTE Bank # 3
   - Crnogorska Komercijalna Banka # 3
   - Atlas Banka # 3
   - Prva Banka # 2
   - Lovćen Banka # 2
-  - ERSTE Bank # 2
+  - Hipotekarna Banka # 2
 MF:
   - La Banque Postale # 3
 MG:
@@ -4423,7 +4426,7 @@ ML:
   - BNDA # 5
   - BICIM # 2
 MM:
-  - KBZ Bank # 68
+  - KBZ Bank # 73
   - KBZ # 66
   - CB Bank # 54
   - AYA Bank # 37
@@ -4433,7 +4436,6 @@ MM:
   - MAB # 10
   - AGD # 8
   - UAB # 7
-  - KBZ BANK # 7
   - AYA # 7
   - UAB Bank # 6
   - KBZ ATM # 6
@@ -4444,6 +4446,7 @@ MM:
   - KBZ bank # 5
   - AYA ATM # 5
   - MAB Bank # 4
+  - KBZ BANK # 4
   - Ayeyarwaddy Bank # 4
   - Aya Bank ATM # 4
   - AYA bank # 4
@@ -4524,14 +4527,14 @@ MW:
   - FMB # 2
   - FDH Bank # 2
 MX:
-  - Banorte # 209
+  - Banorte # 210
   - HSBC # 118
   - Banamex # 116
-  - Santander # 114
-  - Banco Santander # 58
+  - Santander # 113
+  - Banco Santander # 60
   - BBVA # 56
   - Bancomer # 47
-  - Scotiabank # 34
+  - Scotiabank # 35
   - BBVA Bancomer # 24
   - Banco Azteca # 21
   - Bansi # 19
@@ -4559,6 +4562,7 @@ MX:
   - Santander Consumo, S.A. de C.V. # 2
   - SANTANDER # 2
   - CFE # 2
+  - Bitspot # 2
   - Bancomer BBVA # 2
   - Banco del Bajío # 2
   - Banca Afirme # 2
@@ -4642,19 +4646,19 @@ NI:
 NI-AS:
   - Banpro # 2
 NL:
-  - Geldmaat # 1481
-  - Rabobank # 185
-  - ING # 121
-  - ABN AMRO # 80
+  - Geldmaat # 1508
+  - Rabobank # 177
+  - ING # 116
+  - ABN AMRO # 76
   - Byelex Data Solutions B.V. # 41
-  - Euronet # 32
-  - YourCash # 16
-  - GWK Travelex # 14
+  - Euronet # 33
+  - GWK Travelex # 17
+  - YourCash # 15
   - SNS Bank # 13
   - SNS # 7
+  - Global ATM Network # 7
   - In2Retail # 6
   - Rabobank Westelijke Mijnstreek # 5
-  - Global ATM Network # 5
   - AllTransact # 5
   - Rabobank West Betuwe # 4
   - Rabobank Peel Noord # 4
@@ -4678,8 +4682,8 @@ NO:
   - Nordea # 25
   - Nokas # 17
   - DNB # 13
+  - Sparebanken Sør # 10
   - Euronet # 10
-  - Sparebanken Sør # 8
   - Sparebanken Vest # 6
   - Sparebank 1 # 5
   - Sparebank1 # 4
@@ -4801,7 +4805,7 @@ NR:
 NZ:
   - ANZ # 165
   - Westpac # 129
-  - Bank of New Zealand # 93
+  - Bank of New Zealand # 94
   - Kiwibank # 58
   - ASB Bank # 54
   - ASB # 41
@@ -4811,9 +4815,9 @@ NZ:
   - Quickcash # 5
   - Next # 5
   - NBS # 3
-  - BNZ # 3
   - Next Payments # 2
   - NZCU # 2
+  - BNZ # 2
 OM:
   - Bank Muscat # 36
   - بنك مسقط # 10
@@ -4881,24 +4885,24 @@ PG:
   - Bank South Pacific # 2
   - ANZ Bank # 2
 PH:
-  - BDO # 310
-  - BPI # 235
-  - Landbank # 180
+  - BDO # 312
+  - BPI # 236
+  - Landbank # 181
   - Metrobank # 132
-  - RCBC # 110
-  - PNB # 88
+  - RCBC # 111
+  - PNB # 89
   - Land Bank of the Philippines # 51
   - Bank of the Philippine Islands # 47
   - Security Bank # 38
   - PSBank # 37
   - BDO Unibank # 37
-  - Euronet # 31
+  - Euronet # 33
+  - Chinabank # 30
   - Bank of Commerce # 30
-  - Chinabank # 29
   - DBP # 24
   - Pito AxM Platform, Inc. # 21
-  - China Bank # 21
   - EastWest Unibank # 20
+  - China Bank # 20
   - Philippine National Bank # 17
   - Bancnet # 15
   - Metropolitan Bank and Trust Company # 14
@@ -4918,10 +4922,10 @@ PH:
   - Land Bank # 8
   - Robinsons Bank Corporation # 7
   - Landbank of the Philippines # 7
+  - First Consolidated Bank # 7
   - UCPB # 6
   - Robinsons Bank # 6
   - One Network Bank # 6
-  - First Consolidated Bank # 6
   - China Banking Corporation # 6
   - Banco de Oro # 6
   - Maybank # 5
@@ -4967,11 +4971,11 @@ PH:
 PH-14:
   - Landbank of the Philippines # 3
 PK:
-  - HBL # 24
+  - HBL # 25
   - HBL Bank # 20
   - MCB # 17
   - UBL # 16
-  - Askari Bank # 11
+  - Askari Bank # 12
   - Allied Bank Limited # 11
   - Meezan Bank # 9
   - Bank Al Habib # 9
@@ -5009,23 +5013,23 @@ PK:
   - Bank AL Habib # 2
   - Askari bank # 2
 PL:
-  - Euronet # 3383
-  - PKO BP # 967
+  - Euronet # 3382
+  - PKO BP # 968
   - Planet Cash # 342
   - Bank Pekao # 326
   - Santander # 284
   - ITCARD S.A. # 215
-  - Bank Spółdzielczy # 153
-  - Bank Millennium S.A. # 136
+  - Bank Spółdzielczy # 154
+  - Bank Millennium S.A. # 134
   - BZ WBK # 106
   - PKO # 92
   - Shitcoins.club # 86
-  - ING # 84
+  - ING # 83
   - PKO Bank Polski # 78
   - ING Bank Śląski # 70
-  - SGB # 67
+  - SGB # 68
   - Grupa BPS # 47
-  - Millennium Bank # 46
+  - Millennium Bank # 45
   - BNP Paribas # 44
   - Pekao SA # 31
   - mBank # 30
@@ -5037,9 +5041,9 @@ PL:
   - BNP Paribas Bank Polska # 21
   - Krakowski Bank Spółdzielczy # 20
   - Cash4You # 20
+  - Euronet Polska # 18
   - SKOK # 17
   - Millennium # 17
-  - Euronet Polska # 17
   - BZWBK # 16
   - Bank Pekao SA # 15
   - eCard # 14
@@ -5060,8 +5064,8 @@ PL:
 PR:
   - Popular # 51
   - First Bank # 22
-  - Banco Popular # 17
-  - Oriental # 12
+  - Banco Popular # 20
+  - Oriental # 13
   - Scotiabank # 4
   - Oriental Bank # 2
 PS:
@@ -5079,20 +5083,20 @@ PT:
   - Crédito Agrícola # 91
   - Multibanco # 65
   - Santander Totta # 51
+  - Banco Santander # 46
   - Novo Banco # 45
-  - Banco Santander # 45
-  - Montepio # 43
+  - Montepio # 44
+  - Millennium bcp # 43
   - SIBS # 42
-  - Millennium bcp # 42
   - Euronet Worldwide # 34
   - MB Multibanco # 31
   - Banco BPI # 30
   - Millennium BCP # 29
-  - Santander # 18
-  - ATMExpress # 16
+  - Santander # 17
+  - ATMExpress # 15
   - ATM Express # 14
+  - EuroBic # 12
   - Millennium # 11
-  - EuroBic # 11
   - BPI # 11
   - CGD # 9
   - Bankinter # 9
@@ -5177,7 +5181,7 @@ RE:
   - CA # 2
   - Bred # 2
 RO:
-  - BCR # 146
+  - BCR # 145
   - Banca Transilvania # 138
   - BRD # 127
   - Raiffeisen Bank # 86
@@ -5189,7 +5193,7 @@ RO:
   - Shitcoins.club # 29
   - Raiffeisen # 22
   - Bitcoin Romania # 15
-  - OTP Bank # 12
+  - OTP Bank # 11
   - Bancpost # 11
   - bitpm # 10
   - First Bank # 10
@@ -5221,24 +5225,25 @@ RO:
   - ATM Piraeus Bank # 2
   - ATM Alpha Bank # 2
 RS:
-  - Payten # 145
-  - AIK banka # 125
+  - Payten # 144
+  - AIK banka # 132
   - Поштанска штедионица # 121
-  - Eurobank # 75
-  - НЛБ Комерцијална банка # 64
+  - НЛБ Комерцијална банка # 65
   - UniCredit Bank # 61
   - OTP banka # 30
+  - Eurobank # 29
   - Raiffeisen bank # 24
   - Banca Intesa # 23
   - Erste Bank # 20
-  - Beograd # 15
-  - Halkbank # 14
+  - Beograd # 18
+  - Halkbank # 15
   - Yettel bank # 13
   - Addiko Bank # 9
   - 3 Банка # 6
   - Mobi banka # 3
   - Intesa # 3
   - Čačak # 2
+  - ekspozitura Valjevo # 2
   - ekspozitura Obrenovac # 2
   - Telenor # 2
   - Sopot # 2
@@ -5251,62 +5256,62 @@ RS:
 RS-VO:
   - Поштанска штедионица # 54
   - OTP banka # 53
-  - AIK banka # 40
+  - AIK banka # 42
   - Erste Bank # 34
   - Payten # 26
   - НЛБ Комерцијална банка # 25
   - UniCredit Bank # 20
-  - Eurobank # 19
   - Banca Intesa # 12
   - Raiffeisen bank # 10
+  - Eurobank # 9
   - Yettel bank # 8
   - Halkbank # 3
   - 3 Банка # 3
   - Novi Sad # 2
   - Addiko Bank # 2
 RU:
-  - ПАО Сбербанк # 6139
-  - ПАО "Промсвязьбанк" # 1569
-  - Банк ВТБ (ПАО) # 1441
+  - ПАО Сбербанк # 6127
+  - ПАО "Промсвязьбанк" # 1561
+  - Банк ВТБ (ПАО) # 1439
   - Банк "ВБРР" (АО) # 719
   - АО "Альфа-Банк" # 655
-  - Банк ГПБ (АО) # 646
-  - Сбербанк # 448
+  - Банк ГПБ (АО) # 645
+  - Сбербанк # 463
   - АО «ТБанк» # 400
-  - ПАО "Банк "Санкт-Петербург" # 358
+  - ПАО "Банк "Санкт-Петербург" # 349
   - АО "Райффайзенбанк" # 336
   - КБ "Кубань Кредит" ООО # 296
   - ПАО Банк "ФК Открытие" # 286
   - ПАО РОСБАНК # 276
   - АО "Россельхозбанк" # 240
-  - '"Азиатско-Тихоокеанский Банк" (АО)' # 231
+  - '"Азиатско-Тихоокеанский Банк" (АО)' # 230
   - ПАО "БАНК УРАЛСИБ" # 182
   - ПАО "МОСКОВСКИЙ КРЕДИТНЫЙ БАНК" # 181
   - АО ЮниКредит Банк # 172
   - АО "Почта Банк" # 152
   - ПАО КБ "УБРиР" # 151
   - Уралсиб # 126
-  - ВТБ # 122
+  - ВТБ # 123
   - АО "БМ-Банк" # 119
   - ПАО Банк Синара # 110
   - ПАО СКБ Приморья "Примсоцбанк" # 101
   - ПАО АКБ "АВАНГАРД" # 100
   - ПАО "ЧЕЛЯБИНВЕСТБАНК" # 96
-  - Промсвязьбанк # 85
+  - Промсвязьбанк # 89
   - ПАО "АК БАРС" БАНК # 85
   - ПАО АКБ "Приморье" # 81
   - Банк "КУБ" (АО) # 77
   - АО "БАНК СГБ" # 76
   - ПАО "Совкомбанк" # 72
-  - Газпромбанк # 71
+  - Газпромбанк # 72
   - РНКБ Банк (ПАО) # 65
   - ПАО "Контур.Банк" # 63
   - Альфа-Банк # 62
   - ТКБ БАНК ПАО # 59
+  - Банк Санкт-Петербург # 53
   - АО "Кредит Европа Банк (Россия)" # 45
   - АО "Банк Русский Стандарт" # 45
   - ПАО "ЧЕЛИНДБАНК" # 44
-  - Банк Санкт-Петербург # 44
   - ПАО "МТС-Банк" # 36
   - АО "Экспобанк" # 35
   - Цифра банк # 34
@@ -5361,14 +5366,14 @@ RU-CE:
   - ПАО "Промсвязьбанк" # 3
   - АО "Россельхозбанк" # 2
 RU-CU:
-  - ПАО Сбербанк # 50
+  - ПАО Сбербанк # 49
   - Банк ВТБ (ПАО) # 17
   - АО "Альфа-Банк" # 14
   - ПАО "Промсвязьбанк" # 9
   - ПАО АКБ "АВАНГАРД" # 8
   - ПАО "АК БАРС" БАНК # 7
   - Банк ГПБ (АО) # 7
-  - Сбербанк # 4
+  - Сбербанк # 5
   - ВТБ # 4
   - АО «ТБанк» # 4
   - АО "Россельхозбанк" # 4
@@ -5407,7 +5412,7 @@ RU-KGD:
   - КБ "ЭНЕРГОТРАНСБАНК" (АО) # 2
   - АО «ТБанк» # 2
 RU-KHM:
-  - ПАО Сбербанк # 552
+  - ПАО Сбербанк # 551
   - ПАО Банк "ФК Открытие" # 98
   - Банк "ВБРР" (АО) # 64
   - АО БАНК "СНГБ" # 48
@@ -5491,7 +5496,7 @@ RU-TA:
   - Банк ВТБ (ПАО) # 52
   - Ак Барс Банк # 47
   - АО "Альфа-Банк" # 45
-  - ПАО Банк ЗЕНИТ # 32
+  - ПАО Банк ЗЕНИТ # 33
   - Сбербанк # 27
   - ПАО "АКИБАНК" # 25
   - АО "ТАТСОЦБАНК" # 25
@@ -5510,9 +5515,9 @@ RU-TA:
   - ПАО Банк "ФК Открытие" # 5
   - Альфа-Банк # 5
   - Райффайзен # 4
+  - Газпромбанк # 4
   - ПАО РОСБАНК # 3
   - ПАО «АК БАРС» БАНК # 3
-  - Газпромбанк # 3
   - АО "Тимер Банк" # 3
   - АО "Банк Русский Стандарт" # 3
   - Цифра банк # 2
@@ -5628,7 +5633,7 @@ SD:
   - Faisal Islamic Bank ATM # 2
   - Faisal Islamic Bank # 2
 SE:
-  - Bankomat AB # 220
+  - Bankomat AB # 219
   - Bankomat # 111
   - Swedbank # 49
   - Kontanten # 37
@@ -5644,14 +5649,14 @@ SE:
   - Forex Bank # 5
   - Kontanten AB # 4
   - bankomat # 3
-  - Länsförsäkringar # 3
   - Ica # 3
   - ICA-banken # 3
   - ICA # 3
+  - Länsförsäkringar # 2
   - Danske Bank # 2
 SG:
   - UOB # 418
-  - POSB # 104
+  - POSB # 105
   - OCBC Bank # 49
   - DBS # 42
   - OCBC # 38
@@ -5674,8 +5679,8 @@ SI:
   - NovaKBM # 21
   - SKB # 20
   - Gorenjska banka # 20
-  - Euronet # 17
-  - OTP banka # 9
+  - Euronet # 18
+  - OTP banka # 10
   - Intesa Sanpaolo # 8
   - Delavska hranilnica # 8
   - NKBM d.d. # 7
@@ -5685,7 +5690,7 @@ SI:
   - SKB Banka # 5
   - Gorenjska Banka # 5
   - UniCredit Bank # 4
-  - Shitcoins.club # 4
+  - Shitcoins.club # 3
   - NLB d. d. # 3
   - Deželna Banka Slovenije # 3
   - ABANKA # 3
@@ -5708,7 +5713,7 @@ SK:
   - ČSOB # 228
   - Tatra banka # 221
   - Prima banka # 168
-  - UniCredit Bank # 91
+  - UniCredit Bank # 92
   - Poštová banka # 76
   - Euronet # 42
   - Kvakomat # 37
@@ -5901,14 +5906,14 @@ TN:
 TO:
   - Bank of the South Pacific # 2
 TR:
-  - Türkiye İş Bankası # 438
-  - Akbank # 438
+  - Akbank # 443
+  - Türkiye İş Bankası # 441
   - Ziraat Bankası # 388
-  - Yapı Kredi # 370
+  - Yapı Kredi # 371
   - Garanti Bankası # 356
   - Denizbank # 269
-  - QNB Finansbank # 230
-  - Halkbank # 223
+  - QNB Finansbank # 231
+  - Halkbank # 224
   - Vakıfbank # 222
   - TEB # 148
   - ING # 100
@@ -5943,6 +5948,7 @@ TR:
   - Türkiye Bankasi # 5
   - T.C. Ziraat Bankası # 5
   - Shitcoins.club # 5
+  - QNB # 5
   - ING Bank # 5
   - Garanti BBVA ATM # 5
   - AkBank # 5
@@ -5951,7 +5957,6 @@ TR:
   - Yapi Kredi # 4
   - TEB ATM # 4
   - QNB Finansbank ATM # 4
-  - QNB # 4
   - Ptt # 4
   - Odeabank # 4
   - Denizbank ATM # 4
@@ -6032,11 +6037,11 @@ TZ-15:
   - CRDB Bank # 2
   - Barclays Bank # 2
 UA:
-  - ПриватБанк # 2312
+  - ПриватБанк # 2313
   - Альфа-Банк # 315
   - Ukrsibbank # 310
-  - Акціонерне товариство "Державний ощадний банк України" # 270
-  - Ощадбанк # 234
+  - Акціонерне товариство "Державний ощадний банк України" # 269
+  - Ощадбанк # 235
   - УкрСиббанк # 192
   - UkrSibbank # 191
   - Райффайзен Банк # 169
@@ -6045,7 +6050,7 @@ UA:
   - Raiffeisen Bank # 114
   - ПУМБ # 109
   - Райффайзен Банк Аваль # 97
-  - Сенс Банк # 92
+  - Сенс Банк # 91
   - Укрексімбанк # 72
   - Укргазбанк # 62
   - Euronet # 62
@@ -6178,7 +6183,7 @@ US-AZ:
   - Allpoint # 2
   - AZ Federal Credit Union # 2
 US-CA:
-  - Bank of America # 289
+  - Bank of America # 292
   - Wells Fargo # 231
   - Chase # 131
   - U.S. Bank # 35
@@ -6233,6 +6238,7 @@ US-CA:
   - First School # 2
   - First National Bank of Northern California # 2
   - Educational Employees Credit Union # 2
+  - Coin Time # 2
   - City ATM # 2
   - Capital One # 2
   - Caltech Employees Federal Credit Union # 2
@@ -6275,7 +6281,7 @@ US-CO:
   - Alpine Bank # 2
 US-CT:
   - Bank of America # 18
-  - WebsterBank # 7
+  - WebsterBank # 6
   - M&T Bank # 4
   - Citibank # 3
   - Wells Fargo # 2
@@ -6701,7 +6707,7 @@ US-OH:
   - Fifth Third Bank # 29
   - Huntington Bank # 26
   - KeyBank # 20
-  - Chase # 20
+  - Chase # 19
   - U.S. Bank # 13
   - Huntington # 13
   - Citizens Bank # 13
@@ -6835,11 +6841,11 @@ US-TX:
   - Bank of America # 65
   - Chase # 56
   - Wells Fargo # 51
-  - Capital One # 20
+  - Capital One # 18
   - Frost Bank # 16
   - USAA # 14
+  - University Federal Credit Union # 8
   - RockItCoin # 8
-  - University Federal Credit Union # 7
   - Prosperity Bank # 7
   - PNC Bank # 6
   - Cardtronics # 6
@@ -6885,11 +6891,11 @@ US-UT:
   - Chase # 3
   - USU Credit Union # 2
 US-VA:
-  - Wells Fargo # 36
+  - Wells Fargo # 37
   - Bank of America # 31
   - Truist # 16
   - Bitstop # 15
-  - PNC Bank # 12
+  - PNC Bank # 11
   - Navy Federal Credit Union # 9
   - Capital One # 9
   - SunTrust # 7
@@ -6983,9 +6989,9 @@ US-WI:
   - BMO Harris # 2
 US-WV:
   - WesBanco # 4
-  - Huntington Bank # 4
   - Chase # 4
   - BB&T # 4
+  - Huntington Bank # 3
   - City National Bank # 2
 US-WY:
   - Wells Fargo # 3
@@ -6993,8 +6999,8 @@ UY:
   - Banco República # 63
   - BROU # 9
   - Santander # 8
+  - Banred # 6
   - BBVA # 6
-  - Banred # 5
   - Scotiabank # 3
   - RedBROU # 3
   - Itaú # 3
@@ -7079,13 +7085,13 @@ UZ-QR:
   - Хорезмский региональный офис банковских услуг # 6
   - Mikrokreditbank # 5
   - UZCARD;HUMO - O'ZSANOATQURILISHBANK # 4
+  - Biznesni Rivojlantirish Banki # 4
   - Центр банковских услуг "Тахиатош" # 3
   - Каракалпакский региональный офис банковских услуг # 3
   - Гарант банк # 3
   - Xalq bank # 3
   - Xalq Bank # 3
   - UZCARD;HUMO - AGROBANK # 3
-  - Biznesni Rivojlantirish Banki # 3
   - Xalq banki # 2
   - VISA;MIR;UZCARD;HUMO - KAPITAL BANK # 2
   - UZCARD;HUMO - TURON BANK # 2
@@ -7127,8 +7133,8 @@ VN:
   - BIDV # 304
   - Vietcombank # 248
   - Techcombank # 235
-  - Agribank # 126
-  - VietinBank # 87
+  - Agribank # 127
+  - VietinBank # 88
   - Agribank - ATM # 74
   - Sacombank # 72
   - Techcombank - ATM # 59
@@ -7138,9 +7144,9 @@ VN:
   - Vietcombank - ATM # 41
   - Dong A - ATM # 39
   - BIDV - ATM # 39
-  - Vietinbank # 30
-  - SHB # 30
   - HSBC # 30
+  - Vietinbank # 29
+  - SHB # 29
   - Ngân hàng MB # 28
   - Saigon Bank # 27
   - SHB - ATM # 21
@@ -7166,12 +7172,12 @@ VN:
   - SeABank # 9
   - Sacombank - ATM # 9
   - Ngân hàng TMCP Đông Á # 9
+  - Ngân hàng Quân đội # 9
   - Military Bank - ATM # 9
   - BIDV - Pos - ATM # 9
   - ACB - ATM # 9
   - Eab # 8
   - TPBank # 7
-  - Ngân hàng Quân đội # 7
   - TP Bank # 6
   - OCB # 6
   - MBBank # 6
@@ -7194,6 +7200,7 @@ VN:
   - AgriBank # 4
   - Abbank - ATM # 4
   - vietcombank # 3
+  - agribank # 3
   - Vietnam – Russia Bank # 3
   - Vietinbank - Atm # 3
   - VietcomBank # 3

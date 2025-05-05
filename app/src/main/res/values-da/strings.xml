@@ -1455,4 +1455,10 @@ En etage tæller som en tagetage, når dens vinduer er i taget. Derfor er tage m
     <string name="overlay_mtb_scale_5_description">"Ultrastejlt, blokterræn med modbakker, kampestensfelter, jordskred, hårnålesving med baghjulsløft og forhindringer, høje fald på stribe og væltede træer. Det er umuligt at bære cyklen rundt om forhindringerne, man skal køre. Kræver erfaring med trial-kørsel."</string>
     <string name="overlay_mtb_scale_6">"Grad 6"</string>
     <string name="overlay_mtb_scale_6_description">"Farligt og ufremkommeligt terræn, ikke egnet til mountainbiking."</string>
+    <string name="default_disabled_overlay_domain_expert">"Denne overlejring er som standard deaktiveret, fordi man skal være ekspert i området for at kunne registrere disse data korrekt."</string>
+    <string name="pref_title_overlays">"Valg af overlejring"</string>
+    <string name="pref_overlays_reset">"Nulstil aktivering af overlejring til standard?"</string>
+    <string name="overlay">"Overlejring"</string>
+    <string name="enable_overlay_confirmation_title">"Aktiver denne overlejring?"</string>
+    <string name="link_transitous_description">"Udbyderneutral, gratis og open source-ruteplanlægning for offentlig transport"</string>
 </resources>

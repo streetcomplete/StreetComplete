@@ -1,5 +1,5 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [ABB, Kapital Bank, Rabitəbank, Unibank, XalqBank, Bank Respublika, Bank of Baku, Expressbank, Premium Bank, Yelo Bank, AFB Bank, PAŞA Bank, Azərbaycan Sənaye Bankı, TuranBank, Bank Avrasiya, AccessBank, YapıKredi Bank, Azər-Türk Bank, VTB Bank (Azerbaijan), Melli İran Bankı, Bank BTB]
+atmOperators: [ABB, Kapital Bank, Rabitəbank, Unibank, XalqBank, Bank Respublika, Bank of Baku, Premium Bank, Expressbank, Yelo Bank, AFB Bank, PAŞA Bank, Azərbaycan Sənaye Bankı, TuranBank, Bank Avrasiya, AccessBank, Azər-Türk Bank, YapıKredi Bank, VTB Bank (Azerbaijan), Melli İran Bankı, Bank BTB]
 defaultSpeedLimitHasUrbanOrRural: true
 hasDailyAlternateSideParkingSign: true
 hasLivingStreet: true

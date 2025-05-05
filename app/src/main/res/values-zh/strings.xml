@@ -15,8 +15,8 @@
     <string name="quest_generic_confirmation_title">"您确定吗？"</string>
     <string name="quest_generic_confirmation_yes">"是的，我确定"</string>
     <string name="quest_generic_confirmation_no">"我再看看"</string>
-    <string name="quest_leave_new_note_title">"要留一条笔记吗？"</string>
-    <string name="quest_leave_new_note_description">"您可以在此位置留下公开笔记，让其它图客来解决问题；也可以仅对自己隐藏这个任务"</string>
+    <string name="quest_leave_new_note_title">"要留一条注记吗？"</string>
+    <string name="quest_leave_new_note_description">"您可以在此位置留下公开注记，让其它贡献者来解决这个问题；也可以仅对自己隐藏这个任务"</string>
     <string name="quest_leave_new_note_yes">"留下注记"</string>
     <string name="quest_leave_new_note_no">"隐藏它"</string>
     <string name="quest_streetName_title">"这条街叫什么名字？"</string>
@@ -32,7 +32,7 @@
     <string name="quest_openingHours_chooseMonthsTitle">"选择月"</string>
     <string name="quest_openingHours_chooseWeekdaysTitle">"选择一周中的某几天"</string>
     <string name="quest_openingHours_24_7_confirmation">"换句话说，它是否每天每时都开放？"</string>
-    <string name="quest_noteDiscussion_title">"你能为此笔记添加一些内容吗？"</string>
+    <string name="quest_noteDiscussion_title">"你能为此注记添加一些内容吗？"</string>
     <string name="quest_noteDiscussion_no">"不，请隐藏"</string>
     <string name="quest_noteDiscussion_anonymous">"匿名"</string>
     <string name="confirmation_discard_title">"放弃已输入的内容?"</string>
@@ -44,7 +44,7 @@
     <string name="upload_error">"上传回答时出现问题"</string>
     <string name="download_area_too_big">"请进一步放大"</string>
     <string name="confirmation_cancel_prev_download_title">"停止当前下载并在此处下载？"</string>
-    <string name="turn_on_location_request">"位置已关闭。现在到设定中开启它吗？"</string>
+    <string name="turn_on_location_request">"定位服务已关闭。现在到“设置”中开启它吗？"</string>
     <string name="no_location_permission_warning">"需要获得定位许可，以便在地图上显示您的位置并下载您附近的数据。"</string>
     <string name="about_title_authors">"作者"</string>
     <string name="about_title_repository">"项目主页"</string>
@@ -52,13 +52,13 @@
     <string name="about_title_feedback">"提供反馈"</string>
     <string name="about_title_license">"许可证"</string>
     <string name="offline">"您正处于离线状态"</string>
-    <string name="confirmation_authorize_now">"需要验证您的 OpenStreetMap 用户帐户以便发布回答。要现在验证吗？"</string>
+    <string name="confirmation_authorize_now">"您需要使用您的 OpenStreetMap 账户进行授权，才能发布您的回答。是否现在授权？"</string>
     <string name="not_authorized">"未认证"</string>
     <string name="version_banned_message">"当前版本的 StreetComplete 过旧。请更新！"</string>
-    <string name="no_gps_no_quests">"如果要自动下载您周围的数据，请启用定位"</string>
+    <string name="no_gps_no_quests">"如果要自动下载您周围的数据，请启用“定位服务”"</string>
     <string name="later">"稍后"</string>
     <string name="quest_streetName_answer_noProperStreet_link">"它只连接两条道路"</string>
-    <string name="quest_streetName_answer_noProperStreet_leaveNote">"其它（留下笔记）"</string>
+    <string name="quest_streetName_answer_noProperStreet_leaveNote">"其它（留下注记）"</string>
     <string name="about_title_privacy_statement">"隐私声明"</string>
     <string name="quest_openingHours_public_holidays">"公共假期"</string>
     <string name="quest_openingHours_public_holidays_short">"公共假期（PH）"</string>
@@ -74,24 +74,25 @@
     <string name="quest_roofShape_answer_many">"它有多种不同的形状"</string>
     <string name="map_btn_zoom_out">"缩小"</string>
     <string name="map_btn_zoom_in">"放大"</string>
-    <string name="privacy_html">"&lt;p&gt;您很在意隐私？非常好！ 我们只有好消息可以告诉你：&lt;/p&gt;
-&lt;h2&gt;数据传输&lt;/h2&gt;
+    <string name="privacy_html">"&lt;p&gt;啊，您很注重隐私，这很好！我想给我您带来的都是好消息：&lt;/p&gt;
+&lt;h2&gt;直接贡献&lt;/h2&gt;
 &lt;p&gt;
-首先，通过此APP，您可以帮助完善 OpenStreetMap。&lt;br/&gt;
-您在此APP上所提交的所有数据，均将被直接添加至 OpenStreetMap，此 APP 和 OpenStreetMap 之间不会有任何第三方介入。
+首先请知悉，您通过本应用所做出的贡献，是直接且真实地添加到 OpenStreetMap (OSM) 上的。&lt;br/&gt;
+您在本应用中贡献的任何内容都会直接加入地图，在本应用与 OSM 基础设施之间不存在任何第三方。
 &lt;/p&gt;
 &lt;p&gt;
-OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号。您在此 APP 中作出的数据贡献都会在 OpenStreetMap 上公开。
-&lt;/p&gt;
-
-&lt;h2&gt;定位讯息&lt;/h2&gt;
-&lt;p&gt;
-您的定位讯息仅用于搜寻附近的任务。不用担心，我们不会将您的定位讯息传至第三方。
+匿名编辑 OpenStreetMap 是不可能的。您所做的任何更改（以及更改的时间和地点）都会归属到您的 OSM 用户帐户下，并在 openstreetmap.org 网站上公开可见。由于 StreetComplete 只应在实地考察时使用，这会显示出您在何时何地使用了本应用。
 &lt;/p&gt;
 
-&lt;h2&gt;资料使用&lt;/h2&gt;
+&lt;h2&gt;位置信息&lt;/h2&gt;
 &lt;p&gt;
-上传你的更变之前，此APP会在我的伺服器上确认 &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;简单的文字档&lt;/a&gt; 是否被封锁而无法上传任何更变。这是一个防护措施，这样一来，如果 APP 的版本更变后有严重的错误出现，OpenStreetMap 的资料不会受污染。&lt;br/&gt;
+本应用不会将您的 GPS 位置信息分享给任何人。它仅用于自动下载您周围的数据，并将地图定位在您的位置。
+&lt;/p&gt;
+
+&lt;h2&gt;数据使用&lt;/h2&gt;
+&lt;p&gt;
+本应用直接与 OSM 服务器通信。&lt;br/&gt;
+在上传您的更改之前，本应用会通过我服务器上的一个&lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;简单文本文件&lt;/a&gt;进行核对，以确保当前应用版本未被禁止上传更改。这是一项预防措施，以便能够阻止那些被发现存在严重错误、可能向 OSM 上传损坏数据的应用版本。
 &lt;/p&gt;"</string>
     <string name="autosync_on">"启用"</string>
     <string name="autosync_only_on_wifi">"仅通过 Wi-Fi"</string>
@@ -290,7 +291,7 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="quest_buildingLevels_levelsLabel2">"常规楼层数（屋顶不计）"</string>
     <string name="quest_buildingLevels_answer_multipleLevels">"建筑物的各部分不同"</string>
     <string name="quest_buildingLevels_answer_description">"在这种情况下，简单填写建筑部分最高楼层的数值。"</string>
-    <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"相反方向的交通之间是否被物理屏障或被绿地隔开？这会决定采用哪种预设的速度限制。"</string>
+    <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"此处的对向车道之间是否有物理隔离带或绿化带？（这可能会影响该道路的默认限速）"</string>
     <string name="about_category_feedback">"反馈"</string>
     <string name="quest_leave_new_note_photo">"附加照片"</string>
     <string name="quest_leave_new_note_photo_delete_title">"您想删除这张照片吗？"</string>
@@ -329,9 +330,9 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="quest_streetName_answer_noName_noname">"上述答案都不是，它只是没有名字（无名路）"</string>
     <string name="quest_wheelchairAccess_description_toilets">"如果洗手间是无障碍的，这样的轮椅标志可能会很明显。
 部分表示轮椅可以进入并使用洗手间，但没有扶手或改装洗手盆。"</string>
-    <string name="map_btn_create_note">"创建新笔记"</string>
-    <string name="create_new_note_unprecise">"进一步放大以便创建笔记"</string>
-    <string name="create_new_note_description">"你可以在此处留下笔记，让其他地图绘制者了解问题。通过移动地图来调整笔记所标注的位置："</string>
+    <string name="map_btn_create_note">"创建新注记"</string>
+    <string name="create_new_note_unprecise">"进一步放大以便创建注记"</string>
+    <string name="create_new_note_description">"你可以在此处留下注记，让其他地图绘制者了解问题。通过移动地图来调整注记所标注的位置："</string>
     <string name="quest_generic_looks_like_this">"通常看上去像这样："</string>
     <string name="quest_surface_value_metal">"金属"</string>
     <string name="quest_cycleway_title2">"这里有自行车车道或车径吗？哪种类型的？"</string>
@@ -382,9 +383,9 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="questList_disabled_in_country">"从不在 %s 显示"</string>
     <string name="quest_select_hint_most_specific">"选择最合适的一项："</string>
     <string name="quest_generic_item_confirmation">"您确定无法更具体地确定吗？"</string>
-    <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;对于某些任务，将下载第三方的某些附加数据。&lt;/p&gt;"</string>
-    <string name="quest_generic_hasFeature_no_leave_note">"无（留下笔记）"</string>
-    <string name="pref_quests_reset">"将任务启用和顺序都重置为默认值吗？"</string>
+    <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;为了完成某些任务，系统会下载来自第三方的附加数据。&lt;/p&gt;"</string>
+    <string name="quest_generic_hasFeature_no_leave_note">"无（留下注记）"</string>
+    <string name="pref_quests_reset">"恢复任务启用状态和排序的默认设置？"</string>
     <string name="quest_generic_item_invalid_value">"请选择更具体的数值。"</string>
     <string name="quest_buildingType_answer_multiple_types">"这栋建筑有多种用途"</string>
     <string name="quest_buildingType_answer_multiple_types_description">"简单选择这栋建筑的主要用途。例如，如果一楼有店面，但楼上全是公寓，那么这栋建筑就是公寓建筑。"</string>
@@ -474,7 +475,7 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="quest_noteDiscussion_closed2">"由 %1$s、%2$s 关闭"</string>
     <string name="quest_noteDiscussion_reopen2">"由 %1$s、%2$s 重新开启"</string>
     <string name="quest_noteDiscussion_hide2">"由 %1$s、%2$s 隐藏"</string>
-    <string name="privacy_html_image_upload2">"&lt;p&gt;附加在笔记中的照片会上传到我的服务器中，在笔记解决之后会被删除。上传前，照片中的元数据会被移除。&lt;/p&gt;"</string>
+    <string name="privacy_html_image_upload2">"&lt;p&gt;您在地图注记中附加的照片会被上传至我的服务器，并在该注释被处理几天后删除。上传前，照片的 EXIF 元数据会被清除。&lt;/p&gt;"</string>
     <string name="action_deselect_all">"取消选取全部"</string>
     <string name="quest_buildingType_retail_description">"含有餐厅、咖啡馆、商店之类的建筑"</string>
     <string name="quest_openingHours_timeSelect_next">"下一个"</string>
@@ -483,12 +484,12 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="quest_tracktype_grade4">"多半松软"</string>
     <string name="quest_tracktype_grade5">"松软"</string>
     <string name="quest_building_underground_title">"这座建筑是否完全位于地下？"</string>
-    <string name="quest_wheelchairAccess_limited_description_outside">"部分意味着需经过不高于脚踝高的台阶才能到达。"</string>
+    <string name="quest_wheelchairAccess_limited_description_outside">"“部分可达”指进入时遇到的台阶不超过脚踝高度。"</string>
     <string name="quest_wheelchairAccess_outside_title">"此地允许轮椅无障碍通行吗？"</string>
     <string name="quest_traffic_signals_button_title">"这些交通灯有按钮供行人发送行走指示吗？"</string>
     <string name="quest_motorcycleParkingCapacity_title">"这里能够停放多少辆摩托车？"</string>
-    <string name="quest_motorcycleParkingCoveredStatus_title">"该摩托车停车场是否有遮盖（防雨）？"</string>
-    <string name="default_disabled_msg_maxspeed">"默认情况下，此任务类型为禁用状态，因为您通常需要检查整条街道的限速标志，而不仅仅是突出显示的部分。有时，仅仅为解决一个任务就会耗费大量精力。"</string>
+    <string name="quest_motorcycleParkingCoveredStatus_title">"该摩托车停车场是否有遮雨棚？"</string>
+    <string name="default_disabled_msg_maxspeed">"此任务类型默认禁用，因为您通常需要检查整条街道的限速标志，而不仅仅是高亮显示的路段。有时，仅为完成一个任务就需要花费大量精力。"</string>
     <string name="pref_title_quests_restore_hidden">"恢复隐藏任务"</string>
     <string name="on_level">"在第 %s 楼"</string>
     <string name="underground">"地下"</string>
@@ -507,16 +508,16 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="quest_busStopShelter_covered">"整个车站被完全遮盖"</string>
     <string name="quest_ferry_pedestrian_title">"这条渡轮航线是否运送行人？"</string>
     <string name="quest_ferry_motor_vehicle_title">"这条渡轮航线是否运送机动车辆？"</string>
-    <string name="quest_leave_new_note_photos_are_useful">"添加一张照片会使这条笔记更加有用。"</string>
-    <string name="create_new_note_hint">"最好用使用当地人使用的语言撰写笔记。否则，最好使用英语。"</string>
+    <string name="quest_leave_new_note_photos_are_useful">"添加一张照片会使这条注记更加有用。"</string>
+    <string name="create_new_note_hint">"最好用使用当地人使用的语言撰写注记。否则，最好使用英语。"</string>
     <string name="quest_leafType_title">"这些树是针叶树还是阔叶树？"</string>
     <string name="quest_leaf_type_needles">"针叶"</string>
     <string name="quest_leaf_type_broadleaved">"阔叶"</string>
     <string name="quest_leaf_type_mixed">"两种都存在"</string>
     <string name="quest_cyclewayPartSurface_title">"这条自行车道的路面是什么材质的？"</string>
     <string name="quest_generic_answer_differs_along_the_way">"一路走来，不同的是…"</string>
-    <string name="quest_split_way_description">"如果沿途有差异，则需要先拆分路径。之后，就可以分别回答每段路径的任务了。
-要现在分割吗？"</string>
+    <string name="quest_split_way_description">"如果情况沿途发生变化，请先分割该路径（way）。之后，便可分别为各段路径（way）解答任务。
+是否现在进行分割？"</string>
     <string name="quest_split_way_tutorial">"点击道路上答案不一致的点来分割。使用缩放功能，并尽可能地精确。"</string>
     <string name="quest_split_way_too_imprecise">"请继续放大"</string>
     <string name="quest_split_way_many_splits_confirmation_description">"分割点太多了。你可以之后再随时进行分割。"</string>
@@ -524,12 +525,12 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="quest_maxweight_title">"最大重量限制是多少？"</string>
     <string name="quest_maxweight_unusualInput_confirmation_description">"该重量看起来难以置信。你确定它是正确的吗？"</string>
     <string name="quest_maxweight_answer_other_sign">"标志看起来不太对"</string>
-    <string name="quest_maxweight_unsupported_sign_request_photo">"您想留条笔记吗？附有照片的笔记可以允许其他地图绘制者帮忙处理。"</string>
+    <string name="quest_maxweight_unsupported_sign_request_photo">"您想留条注记吗？附有照片的注记可以允许其他地图绘制者帮忙处理。"</string>
     <string name="quest_handrail_title">"楼梯有扶手吗？"</string>
     <string name="quest_ref_answer_noRef">"看不到数字或代码"</string>
     <string name="quest_street_side_puzzle_tutorial">"图示中的道路旋转角度与地图上的中心相同。"</string>
     <string name="quest_recycling_materials_title">"这里可以回收哪些资源？"</string>
-    <string name="quest_recycling_materials_note">"如果有未列出的东西可以在此处回收，请在此留下笔记。"</string>
+    <string name="quest_recycling_materials_note">"如果有未列出的东西可以在此处回收，请在此留下注记。"</string>
     <string name="quest_recycling_type_batteries">"电池"</string>
     <string name="quest_recycling_type_cans">"易拉罐"</string>
     <string name="quest_recycling_type_clothes">"衣物"</string>
@@ -563,7 +564,7 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="quest_tourism_information_map">"地图"</string>
     <string name="quest_tourism_information_guidepost">"路标"</string>
     <string name="quest_recycling_materials_answer_waste">"适用于一般垃圾"</string>
-    <string name="quest_recycling_materials_answer_waste_description">"那么，这是个用于存放例如袋装的家庭或商业垃圾等任何垃圾的容器？"</string>
+    <string name="quest_recycling_materials_answer_waste_description">"所以，这是一个用于收集各类废弃物（如袋装生活垃圾或商业垃圾）的容器？"</string>
     <string name="user_profile">"我的资料"</string>
     <string name="user_login">"登录"</string>
     <string name="user_logout">"登出"</string>
@@ -656,12 +657,12 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="achievement_veg_title">"善待动物"</string>
     <string name="achievement_veg_solved_X">"你完成了 %d 项与无肉饮食人群相关的任务！"</string>
     <string name="achievement_car_title">"在路上"</string>
-    <string name="achievement_car_solved_X">"你完成了%d项任务，改进了街道设施的细节。将 “街道” 添加到 OpenStreetMap 中！"</string>
+    <string name="achievement_car_solved_X">"您完成了 %d 个任务，完善了街道设施的细节，真正为 OpenStreetMap 增添了“街道”信息！"</string>
     <string name="unread_messages_message">"你的收件箱中有 %d 条未读消息"</string>
     <string name="unread_messages_button">"打开收件箱"</string>
     <string name="action_about2">"关于"</string>
     <string name="map_btn_menu">"菜单"</string>
-    <string name="privacy_html_statistics">"&lt;p&gt;你的资料页面所展示数据是获取公开的OpenStreetMap贡献历史，随后托管在我的服务器上的&lt;/p&gt;"</string>
+    <string name="privacy_html_statistics">"&lt;p&gt;您个人资料中显示的数据，是根据您向 OpenStreetMap 公开贡献的历史记录汇总而来，并托管在我的服务器上的。&lt;/p&gt;"</string>
     <string name="confirmation_authorize_now_note2">"您还可以之后在个人资料页面做"</string>
     <string name="credits_art_contributors_title">"艺术贡献者"</string>
     <string name="credits_projects_contributors_title">"为StreetComplete制作的项目"</string>
@@ -681,7 +682,7 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="link_photon_description">"Nominatim的独立扩展，具有模糊搜索和随用随查的特点
 "</string>
     <string name="link_graphhopper_description">"灵活的路径规划引擎"</string>
-    <string name="privacy_html_tileserver2">"&lt;p&gt;要显示此地图，从 %1$s 检索矢量图。检视他们的&lt;a href=\"%2$s\"&gt;隐私声明&lt;/a&gt;取得更多资讯。&lt;/p&gt;"</string>
+    <string name="privacy_html_tileserver2">"&lt;p&gt;为了显示地图，将从 %1$s 获取矢量瓦片。更多信息请参阅其&lt;a href=\"%2$s\"&gt;隐私声明&lt;/a&gt;。&lt;/p&gt;"</string>
     <string name="about_title_sponsors">"赞助者"</string>
     <string name="quest_board_type_history">"历史"</string>
     <string name="quest_board_type_geology">"地质"</string>
@@ -717,7 +718,7 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="quest_step_count_title">"有多少台阶？"</string>
     <string name="quest_traffic_signals_sound_title">"这个交通灯带有声音，供盲人使用吗？"</string>
     <string name="quest_traffic_signals_vibrate_title">"这些交通信号灯是否有触觉指示以告知盲人何时能够安全通过？"</string>
-    <string name="quest_traffic_signals_vibrate_description">"提示：它通常位于交通灯按钮盒底部的振动按钮或旋转锥体。"</string>
+    <string name="quest_traffic_signals_vibrate_description">"提示：通常在红绿灯按钮盒下方会有振动按钮或旋转锥体装置。"</string>
     <string name="quest_buildingType_bungalow_description2">"小型独立屋（避暑屋、度假屋、木屋…）"</string>
     <string name="quest_railway_crossing_barrier_title2">"这个铁路道口使用哪种护栏？"</string>
     <string name="quest_railway_crossing_barrier_none2">"没有护栏"</string>
@@ -784,7 +785,7 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="quest_shop_gone_replaced_answer_hint">"输入该场所的类型"</string>
     <string name="quest_shop_vacant_type_title">"这家商店已经空置。现在又是什么？"</string>
     <string name="quest_lanes_answer_lanes_odd2">"每一侧的车道数不同"</string>
-    <string name="default_disabled_msg_go_inside_regional_warning">"此类任务类型在默认情况下是禁用的，因为它在某些地区没有用处，同时你很可能要进入这个地方才能回答这种类型的任务。"</string>
+    <string name="default_disabled_msg_go_inside_regional_warning">"此任务类型默认禁用，因为它在某些地区可能用途不大，并且您可能需要进入场所内部才能回答此类任务。"</string>
     <string name="quest_dietType_explanation_kosher">"犹太教的洁食食品必须依规矩制作，并附上饮食教规认证机构标章以确保其饮食从教。"</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">"没有任何自行车道或车径"</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">"像往常一样，点击图示的一侧，选择合适的答案，然后对另一侧进行同样的操作。
@@ -796,7 +797,7 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="quest_surface_value_clay">"黏土"</string>
     <string name="quest_surface_value_artificial_turf">"人造草皮"</string>
     <string name="quest_bicycle_parking_fee_title">"在这里停放自行车需要付费吗？"</string>
-    <string name="quest_buildingType_house_description2">"非独立式单户住宅，如单排房屋"</string>
+    <string name="quest_buildingType_house_description2">"非独栋单户住宅（例如：联排别墅中的一户）"</string>
     <string name="quest_drinking_water_potable_signed">"可安全饮用（已标明）"</string>
     <string name="quest_drinking_water_potable_unsigned">"可安全饮用（未标明）"</string>
     <string name="quest_drinking_water_not_potable_signed">"不能安全饮用（已标明）"</string>
@@ -873,7 +874,7 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="quest_buildingLevels_title2">"这座建筑的地下室以上有几层？"</string>
     <string name="quest_buildingLevels_title_buildingPart2">"这个建筑部分在地下室以上有几层？"</string>
     <string name="pref_subtitle_quests_preset_name">"预设: %s"</string>
-    <string name="default_disabled_msg_roofShape">"此类任务类型在默认情况下是禁用的，因为屋顶的形状往往无法轻易从街道上看到。任务同时也相当耗时；在大多数情况下，在家中使用航空图像中进行测绘会更容易、有效。"</string>
+    <string name="default_disabled_msg_roofShape">"此任务类型默认禁用，因为屋顶形状通常难以从街道上轻易看清。而且，完成此类任务相当耗时；多数情况下，在家通过航空影像绘制此信息更为简便高效。"</string>
     <string name="quest_religion_animist">"万物有灵论/泛灵论者"</string>
     <string name="quest_construction_steps_title">"这些台阶是否已完工？"</string>
     <string name="pref_quests_deselect_all">"取消选择所有的任务？"</string>
@@ -882,7 +883,7 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="quest_buildingType_grandstand">"看台"</string>
     <string name="action_search">"搜索"</string>
     <string name="action_manage_presets">"管理预设值"</string>
-    <string name="team_mode_team_size_label2">"有多少人在绘制地图？在每个人的手机上输入相同的数字。"</string>
+    <string name="team_mode_team_size_label2">"有多少人正在一同绘制地图？请在各自的手机上选择相同的人数。"</string>
     <string name="team_mode_choose_color2">"接下来，每个人必须选择不同的颜色。选择您的："</string>
     <string name="link_organic_maps_description">"为旅行者、徒步旅行者和骑自行车者提供的地图应用，可在离线情况下使用"</string>
     <string name="quest_kerb_height_no">"完全没有路缘"</string>
@@ -892,7 +893,9 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="quest_bollard_type_foldable2">"可折叠的（无论是否需要钥匙）"</string>
     <string name="no_search_results">"没有任何结果"</string>
     <string name="quest_selection_hint_title">"有太多要做？"</string>
-    <string name="quest_selection_hint_message">"贡献首先应该是有趣的！如果您对数量众多的任务感到不知所措，您可以随时在设置中微调要显示的任务以及显示顺序。"</string>
+    <string name="quest_selection_hint_message">"贡献首先应是充满乐趣的！
+
+如果您觉得任务数量过多，可以随时在设置中调整要显示的任务类型及其排序。"</string>
     <string name="quest_presets_preset_add">"添加预设"</string>
     <string name="quest_presets_preset_name">"预设名称"</string>
     <string name="quest_presets_default_name">"默认"</string>
@@ -923,7 +926,7 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="quest_diet_answer_no_food">"它不提供餐食"</string>
     <string name="short_no_answer_on_button">"否"</string>
     <string name="restore_confirmation">"恢复"</string>
-    <string name="restore_dialog_message">"恢复所有你已经隐藏的任务吗？"</string>
+    <string name="restore_dialog_message">"恢复所有已隐藏的任务？"</string>
     <string name="quest_parking_access_title2">"谁被允许在此停车？停车可能是免费或付费的。"</string>
     <string name="quest_access_yes">"任何公众人员"</string>
     <string name="quest_access_customers">"访问特定地点的任何人（如仅限顾客）"</string>
@@ -1034,7 +1037,7 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="quest_sidewalk_answer_none">"完全没有人行道"</string>
     <string name="link_osmand_description">"用于在线和离线地图查看与导航的移动应用程序"</string>
     <string name="link_sunders_description">"标记摄像头和监控设备的地图"</string>
-    <string name="ar_core_tracking_error_no_plane_hit">"靠近箭头处，但要注意车流！"</string>
+    <string name="ar_core_tracking_error_no_plane_hit">"请靠近箭头指示的位置，但注意交通安全！"</string>
     <string name="quest_sidewalk_surface_title">"这条人行道的表面是哪种材质？"</string>
     <string name="quest_tactilePaving_incorrect">"只在一侧"</string>
     <string name="quest_fee_answer_yes_but">"是的，…"</string>
@@ -1089,10 +1092,10 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="quest_surface_title">"这里的地面是什么材质？"</string>
     <string name="quest_toiletAvailability_title">"这里有洗手间吗？"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title2">"洗手间有无障碍设施吗？"</string>
-    <string name="quest_cycleway_confirmation_oneway_for_cyclists_too">"你确定骑车人不允许双向使用这条单行道吗？如果拿不准，请检查街道尽头是否有标志。"</string>
+    <string name="quest_cycleway_confirmation_oneway_for_cyclists_too">"您确定自行车不能在该单行道双向通行吗？如果不确定，请留意街道出口处是否有相关标志。"</string>
     <string name="link_valhalla_description">"路线规划引擎具有非常小的内存占用，多模式路线规划，等值线及更多功能。"</string>
     <string name="link_backofyourhand_description">"你对你的地区有多了解？通过定位街道来测试你的知识。"</string>
-    <string name="link_notesreview_description">"方便地查看、过滤和评论由你和其他人创建的笔记。许多笔记可以通过将其中的信息放在地图上用iD或JOSM来解决。"</string>
+    <string name="link_notesreview_description">"方便地查看、过滤和评论由你和其他人创建的注记。许多注记可以通过将其中的信息放在地图上用 iD 或 JOSM 来解决。"</string>
     <string name="quest_accepts_cards">"这里接受信用卡或借记卡吗？"</string>
     <string name="quest_accepts_cards_debit_and_credit">"两种都接受"</string>
     <string name="quest_accepts_cards_credit_only">"仅限信用卡"</string>
@@ -1264,6 +1267,8 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="overlay_surface">"道路表面"</string>
     <string name="overlay_path_surface_segregated">"分为自行车和步行两部分"</string>
     <string name="quest_crossing_title2">"这里有路口吗？"</string>
+    <string name="quest_crossing_yes">"是，为人行横道/过道"</string>
+    <string name="quest_crossing_no">"非指定过道，但仍可通行（如：便道）"</string>
     <string name="quest_crossing_prohibited">"不，禁止或不可能穿越"</string>
     <string name="quest_hairdresser_title">"哪些顾客光顾这家美发店？"</string>
     <string name="quest_hairdresser_male_and_female">"任何人"</string>
@@ -1309,7 +1314,7 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="quest_sanitary_dump_station_description">"用于从房车、长途卡车等的厕所储水箱中存放人类排泄物的设施。通常用这样的标志表示："</string>
     <string name="quest_generalFee_title">"使用它需要付费吗？"</string>
     <string name="quest_bbq_fuel_not_a_bbq">"这是台式篝火"</string>
-    <string name="quest_bbq_fuel_not_a_bbq_confirmation">"与烤架不同，台式篝火没有可烹饪的表面（例如炉排/烤盘）"</string>
+    <string name="quest_bbq_fuel_not_a_bbq_confirmation">"如果没有烹饪台面（如烤架、铁板），则应视作火塘/篝火点。"</string>
     <string name="about_title_logs">"日志 (%1$d)"</string>
     <string name="about_summary_logs">"用于错误报告"</string>
     <string name="action_filter">"筛选器"</string>
@@ -1358,15 +1363,14 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="quest_moped_access_allowed">"这里没有标志"</string>
     <string name="quest_moped_access_designated">"这里有允许轻便摩托车通行的标志"</string>
     <string name="quest_moped_access_forbidden">"这里有禁止轻便摩托车通行的标志"</string>
-    <string name="default_disabled_msg_visible_sign_moped">"不使用预设，因为轻便摩托车从指定的地方驶入并驶出。"</string>
+    <string name="default_disabled_msg_visible_sign_moped">"此任务类型默认禁用，因为轻便摩托车的通行权限仅由自行车道起点/终点的特定标志标明。"</string>
     <string name="quest_arrow_tutorial">"插图中的箭头指向地图中心点位置的路线。尝试旋转地图，您就会明白。"</string>
     <string name="info">"更多的信息"</string>
     <string name="quest_accessible_for_pedestrians_prohibited">"这是被禁止的。"</string>
     <string name="quest_accessible_for_pedestrians_allowed">"这是被允许的。"</string>
-    <string name="quest_buildingLevels_hint">"对于位于斜坡上的建筑来说，楼层数从最低侧的地面开始计算。
+    <string name="quest_buildingLevels_hint">"对于建在斜坡上的建筑物，楼层计数应从最低一侧的地面开始。
 
-该楼层的有窗户且在房屋最上端，该楼层算作房屋顶层。因此，屋顶层为零的屋顶不一定是平的，只是高度不足以容纳整个楼层。
-    "</string>
+当窗户位于屋顶内时，该层计为屋顶层。因此，屋顶层数为零的屋顶不一定就是平顶，只是其高度不足以容纳完整的一层。"</string>
     <string name="quest_parcel_locker_brand">"这个快递柜是什么品牌的？"</string>
     <string name="quest_powerPolesMaterial_is_terminal">"电缆固定于建筑物上"</string>
     <string name="quest_cycleway_value_sidewalk_ok">"没有，但是有标志允许在人行道上骑行"</string>
@@ -1374,4 +1378,91 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="separate_cycleway_footway_allowed_sign">"步道但是允许自行车通行"</string>
     <string name="quest_bicycle_parking_type_floor">"划出的区域"</string>
     <string name="link_osmapp_description">"一个具有多图层，如展示攀岩或滑雪的地图"</string>
+    <string name="action_back">"返回"</string>
+    <string name="action_clear">"清除"</string>
+    <string name="action_more">"更多"</string>
+    <string name="action_open_in_browser">"在默认浏览器中打开"</string>
+    <string name="about_category_contribute">"贡献"</string>
+    <string name="pref_category_quests">"任务"</string>
+    <string name="pref_title_language_select2">"语言 / Language"</string>
+    <string name="pref_title_resurvey_intervals_summary">"询问您确认先前提交的数据是否仍然正确的频率。"</string>
+    <string name="questList_disabled_by_default">"默认禁用"</string>
+    <string name="action_manage_presets_summary">"为下方所选任务命名。"</string>
+    <string name="quest_multiselect_hint">"选择所有符合的项目："</string>
+    <string name="quest_barrier_opening_width_gate">"此处的开口宽度是多少？"</string>
+    <string name="bridge">"在桥上"</string>
+    <string name="about_title_intro">"显示欢迎引导"</string>
+    <string name="about_category_help">"帮助"</string>
+    <string name="quest_camp_power_supply_hint">"这可以指营位上的插座、公共服务设施内供客人使用的插座，或是为手机、笔记本电脑等设备专设的充电站。"</string>
+    <string name="quest_barrier_opening_width_bollard">"此处可通过的最大宽度是多少？"</string>
+    <string name="user_profile_all_time_title">"所有时间"</string>
+    <string name="user_statistics_country_rank2">"在 %s 的排名"</string>
+    <string name="quest_leafType_tree_is_just_a_stump">"这只是个树桩"</string>
+    <string name="quest_board_name_title">"这块公告牌的标题是什么？"</string>
+    <string name="quest_crossing_hint">"横穿道路的便道："</string>
+    <string name="note_for_object">"其他的贡献者指出："</string>
+    <string name="quest_bicycle_parking_type_safeloops">"安全停放架（可固定车轮和车架）"</string>
+    <string name="quest_cycleway_value_sidewalk_ok_dual">"无；但标志允许在人行道上双向骑行"</string>
+    <string name="quest_surface_value_rubber">"橡胶颗粒"</string>
+    <string name="quest_surface_value_acrylic">"合成树脂"</string>
+    <string name="action_messages">"显示信息"</string>
+    <string name="action_create_new_poi">"新建"</string>
+    <string name="auth_error">"鉴权时发生错误。请重新尝试登录。"</string>
+    <string name="quest_accessible_for_pedestrians_sidewalk">"实际上，这里有人行道。"</string>
+    <string name="quest_bicycle_repair_station_services_title">"此处提供哪些自行车维修设备？"</string>
+    <string name="quest_bicycle_repair_station_pump">"打气筒"</string>
+    <string name="quest_bicycle_repair_station_tools">"各种工具"</string>
+    <string name="quest_bicycle_repair_station_stand">"维修架"</string>
+    <string name="quest_bicycle_repair_station_chain_tool">"链条工具"</string>
+    <string name="quest_boat_rental_title">"此处可租赁哪些类型的船只？"</string>
+    <string name="quest_boat_rental_motorboat">"摩托艇"</string>
+    <string name="quest_boat_rental_jetski">"水上摩托"</string>
+    <string name="quest_boat_rental_sailboat">"帆船"</string>
+    <string name="quest_boat_rental_pedalboat">"脚踏船"</string>
+    <string name="quest_boat_rental_kayak">"皮划艇"</string>
+    <string name="quest_boat_rental_canoe">"独木舟"</string>
+    <string name="quest_boat_rental_houseboat">"船屋"</string>
+    <string name="quest_boat_rental_rowboat">"划艇"</string>
+    <string name="quest_boat_rental_raft">"木筏"</string>
+    <string name="quest_boat_rental_surfboard">"冲浪板"</string>
+    <string name="quest_boat_rental_sailboard">"帆船"</string>
+    <string name="quest_boat_rental_yacht">"游艇"</string>
+    <string name="quest_boat_rental_standup_paddleboard">"桨板 (SUP)"</string>
+    <string name="quest_powerAttachment_title">"这条输电线是如何固定的？"</string>
+    <string name="quest_powerAttachment_suspension">"上方支撑"</string>
+    <string name="quest_powerAttachment_anchor">"水平固定"</string>
+    <string name="quest_powerAttachment_pin">"下方支撑"</string>
+    <string name="pedestrian_zone_designated">"此处为自行车专用"</string>
+    <string name="pedestrian_zone_allowed_sign">"有标志允许在此骑行"</string>
+    <string name="pedestrian_zone_no_sign">"此处无关于骑行的明确标志"</string>
+    <string name="team_mode_description_overlay_hint">"使用覆盖层时，建议各位分别选用不同覆盖层，因为系统仅拆分任务本身。"</string>
+    <string name="quest_dietType_glutenfree_name_title">"此处是否提供无麸质产品？"</string>
+    <string name="quest_dietType_explanation_glutenfree">"制备无麸质产品需要专业知识，因为常用调料和酱汁中可能含有麸质。真正的无麸质食品通常会明确标示。"</string>
+    <string name="quest_construction_minor_title">"此处的小型道路施工完成了吗？"</string>
+    <string name="map_attribution">"地图数据来源"</string>
+    <string name="link_panoramax_description">"一款免费、开源且非营利的软件与服务，用于分享众包街景照片。"</string>
+    <string name="link_opengeofiction_description">"厌倦了绘制真实世界？来一起协作创建虚构地图吧！"</string>
+    <string name="link_openclimbing_description">"攀岩地点地图"</string>
+    <string name="pref_title_zoom_buttons">"显示地图缩放按钮"</string>
+    <string name="overlay_mtb_scale">"山地车 (MTB) 难度"</string>
+    <string name="overlay_mtb_scale_0">"等级 0"</string>
+    <string name="overlay_mtb_scale_0_description">"路面：坚实、抓地力强的压实路面或自然路面；障碍：无；坡度：缓坡；转弯：宽阔。"</string>
+    <string name="overlay_mtb_scale_1">"等级 1"</string>
+    <string name="overlay_mtb_scale_1_description">"路面：部分松散，有小树根、石块、冲沟或水辙；坡度：≤ 40%；障碍：可碾过；技术：需掌握基本骑行技巧。"</string>
+    <string name="overlay_mtb_scale_2">"等级 2"</string>
+    <string name="overlay_mtb_scale_2_description">"路面：松散，有较大树根和石块，平缓的落差/小台阶；坡度：≤ 70%；转弯：轻松的发夹弯；技术：需熟练掌握刹车和重心转移。"</string>
+    <string name="overlay_mtb_scale_3">"等级 3"</string>
+    <string name="overlay_mtb_scale_3_description">"路面：湿滑、松散，有碎石坡、巨石、大树根和石块，较高的台阶和复杂的横切路段；转弯：急促的发夹弯；坡度：&gt; 70%；技术：需极佳的平衡感和精准的刹车控制。"</string>
+    <string name="overlay_mtb_scale_4">"等级 4"</string>
+    <string name="overlay_mtb_scale_4_description">"障碍：极具挑战性的技术障碍，如巨石、树根、碎石坡、陡坡；转弯：需要定竿转向的急弯，可能打脚踏的平缓落差；技术：需完美的平衡感、精准刹车及后轮重置（抬后轮）能力。"</string>
+    <string name="overlay_mtb_scale_5">"等级 5"</string>
+    <string name="overlay_mtb_scale_5_description">"路面：极其陡峭、遍布石块的地形，包含逆向爬坡、乱石区、塌方区；障碍：带障碍物的定竿转向急弯、连续的高落差、倒下的树木。几乎无法扛车绕行障碍，必须骑行通过。技术：需具备顶级的 (Trials) 控车技巧。"</string>
+    <string name="overlay_mtb_scale_6">"等级 6"</string>
+    <string name="overlay_mtb_scale_6_description">"危险且无法通行的地形，不适合山地骑行。"</string>
+    <string name="default_disabled_overlay_domain_expert">"此覆盖层默认被禁用，因为准确记录相关数据需要具备专业领域知识。"</string>
+    <string name="pref_title_overlays">"覆盖层选择"</string>
+    <string name="pref_overlays_reset">"恢复默认覆盖层启用设置？"</string>
+    <string name="overlay">"覆盖层"</string>
+    <string name="enable_overlay_confirmation_title">"启用此覆盖层？"</string>
+    <string name="link_transitous_description">"一款免费开源、独立于具体交通供应商的公共交通路线规划服务。"</string>
 </resources>

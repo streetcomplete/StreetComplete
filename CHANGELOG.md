@@ -1,6 +1,6 @@
 # Changelog
 
-## v61.0-beta1
+## v61.0
 
 ### Android below 7.1 no longer supported (#6210)
 
@@ -36,7 +36,8 @@ Cleaned up the appearance of the main screen a bit:
 - Roadwork: Also ask whether minor roadwork (i.e. construction without full road closure) is completed (#6090)
 - Various: Ask about more features of alpine and wilderness huts (#6200, #6201), thanks @tiptoptom
 - Building levels: Prettified input form a bit (#6022), by @GaeaKat
-- Other small things (#6209, #6216, #6217…), thanks @mnalis
+- Bus stop ref: Also ask in Iran (#6227)
+- Other small things (#6209, #6216, #6217, #6229…), thanks @mnalis, @peternewman
 
 ### General Improvements
 

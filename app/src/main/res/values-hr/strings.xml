@@ -1158,7 +1158,7 @@ Učinite isto za drugu stranu ako je prikazana na ekranu."</string>
     <string name="quest_entrance_reference_reference_label">"Oznaka ulaza:"</string>
     <string name="quest_entrance_reference_flat_range_label">"Raspon stanova:"</string>
     <string name="quest_entrance_reference_flat_range_to">"do"</string>
-    <string name="default_disabled_msg_overlay">"Ova vrsta zadatka je inicijalno onemogućena jer već postoji nadsloj s kojim je efikasnije i učinkovitije unositi i ažurirati ove podatke."</string>
+    <string name="default_disabled_msg_overlay">"Ova vrsta zadatka je inicijalno onemogućena jer već postoji Nadsloj s kojim je efikasnije i učinkovitije unositi i ažurirati ove podatke."</string>
     <string name="quest_camp_drinking_water_title">"Je li pitka voda ovdje besplatno dostupna kamperima?"</string>
     <string name="quest_camp_shower_title">"Ima li ovdje tuševa?"</string>
     <string name="quest_camp_power_supply_title">"Postoji li način da korisnici ovdje napune svoj telefon, prijenosno računalo itd.?"</string>
@@ -1458,4 +1458,9 @@ Kat se računa kao kat u potkrovlju samo kada ima prozore unutar krova. Stoga, k
     <string name="overlay_mtb_scale_5_description">"Izuzetno strmi i neravni teren s kontra-uzbrdicama, poljima stijena, klizištima; potrebno je oštro zakretanje na stražnjem kotaču preko prepreka; uzastopni visoki padovi i oborena stabla su učestali. Nemoguće nošenje bicikla oko prepreka; vožnja preko njih je neizbježna. Potrebno majstorstvo u vožnji triala."</string>
     <string name="overlay_mtb_scale_6">"Težina 6"</string>
     <string name="overlay_mtb_scale_6_description">"Opasan i neprohodan teren, nepogodan za brdski biciklizam."</string>
+    <string name="default_disabled_overlay_domain_expert">"Ovaj Nadsloj je inicijalno onemogućen jer morate biti stručnjak za tu temu da biste točno zabilježili ove podatke"</string>
+    <string name="pref_title_overlays">"Odabir Nadslojeva"</string>
+    <string name="pref_overlays_reset">"Vratiti aktivaciju Nadslojeva na inicijalne postavke?"</string>
+    <string name="overlay">"Nadsloj"</string>
+    <string name="enable_overlay_confirmation_title">"Omogućiti ovaj Nadsloj?"</string>
 </resources>

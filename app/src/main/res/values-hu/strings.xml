@@ -1441,7 +1441,7 @@ Egy szint akkor számít tetőszintnek, ha az ablakai a tetőben vannak. A nulla
     <string name="link_panoramax_description">"Ingyenes és nyílt forráskódú szoftver és nonprofit szolgáltatás közösségi készítésű utcaszintű képek megosztásához"</string>
     <string name="link_opengeofiction_description">"Unod a valóság feltérképezését? Készíts közösen fiktív térképeket!"</string>
     <string name="link_openclimbing_description">"Mászóhelyek térképe"</string>
-    <string name="pref_title_zoom_buttons">"Térkép nagyítógombok megjelenítése"</string>
+    <string name="pref_title_zoom_buttons">"Térképnagyító gombok megjelenítése"</string>
     <string name="overlay_mtb_scale">"MTB-nehézség"</string>
     <string name="overlay_mtb_scale_0">"0 fokozat"</string>
     <string name="overlay_mtb_scale_1">"1 fokozat"</string>

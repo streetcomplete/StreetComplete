@@ -3,4 +3,4 @@ atmOperators: [Pay Depot, Chase, PNC Bank, Bank of America, Wells Fargo, Valley 
 chargingStationOperators: ['Tesla, Inc.', ChargePoint, Tesla Motors, EVgo, Blink, Electrify America, Volta, Glen Rock]
 clothesContainerOperators: [The ClothesLine, Jersey City PSOA, 'Hoboken PBA #2', Better World Recycling]
 defaultSpeedLimitHasUrbanOrRural: true
-parcelLockerBrand: [Amazon Locker, Amazon Hub, Amazon Hub Locker]
+parcelLockerBrand: [Amazon Locker, Amazon Hub]

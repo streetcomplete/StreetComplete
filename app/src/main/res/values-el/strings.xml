@@ -1443,4 +1443,10 @@
     <string name="overlay_mtb_scale_5_description">"Εξαιρετικά απότομο, ανώμαλο έδαφος με αντίθετες ανηφόρες, πεδία με ογκόλιθους, κατολισθήσεις, στροφές με εμπόδια που απαιτούν ελιγμούς, διαδοχικά ψηλά κατεβάσματα και πεσμένα δέντρα. Η μεταφορά του ποδηλάτου γύρω από τα εμπόδια είναι αδύνατη· η πορεία δεν αποφεύγεται. Απαιτείται πλήρης δεξιοτεχνία trial."</string>
     <string name="overlay_mtb_scale_6">"Βαθμός 6"</string>
     <string name="overlay_mtb_scale_6_description">"Επικίνδυνο και δύσβατο έδαφος, ακατάλληλο για ορεινή ποδηλασία."</string>
+    <string name="default_disabled_overlay_domain_expert">"Αυτή η επικάλυψη είναι απενεργοποιημένη από προεπιιλογή επειδή χρειάζεται να είστε ειδικός τομέα για να καταγράψετε με ακρίβεια αυτά τα δεδομένα."</string>
+    <string name="pref_title_overlays">"Επιλογή επικάλυψης"</string>
+    <string name="pref_overlays_reset">"Επαναφορά ενεργοποίησης επικάλυψης στην προεπιλογή;"</string>
+    <string name="overlay">"Επικάλυψη"</string>
+    <string name="enable_overlay_confirmation_title">"Ενεργοποίηση αυτής της επικάλυψης;"</string>
+    <string name="link_transitous_description">"Δωρεάν και ανοιχτού κώδικα δρομολόγηση δημόσιων συγκοινωνιών με ουδέτερο πάροχο"</string>
 </resources>
