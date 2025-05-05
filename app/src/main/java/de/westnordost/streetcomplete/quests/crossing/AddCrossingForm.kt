@@ -4,8 +4,8 @@ import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.quests.crossing.CrossingAnswer.*
-import de.westnordost.streetcomplete.quests.list_quests.AListQuestForm
-import de.westnordost.streetcomplete.quests.list_quests.TextItem
+import de.westnordost.streetcomplete.quests.AListQuestForm
+import de.westnordost.streetcomplete.ui.common.TextItem
 import org.koin.android.ext.android.inject
 
 class AddCrossingForm : AListQuestForm<CrossingAnswer>() {

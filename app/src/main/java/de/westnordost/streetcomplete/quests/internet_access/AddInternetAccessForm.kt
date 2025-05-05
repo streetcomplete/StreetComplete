@@ -5,8 +5,8 @@ import de.westnordost.streetcomplete.quests.internet_access.InternetAccess.NO
 import de.westnordost.streetcomplete.quests.internet_access.InternetAccess.TERMINAL
 import de.westnordost.streetcomplete.quests.internet_access.InternetAccess.WIFI
 import de.westnordost.streetcomplete.quests.internet_access.InternetAccess.WIRED
-import de.westnordost.streetcomplete.quests.list_quests.AListQuestForm
-import de.westnordost.streetcomplete.quests.list_quests.TextItem
+import de.westnordost.streetcomplete.quests.AListQuestForm
+import de.westnordost.streetcomplete.ui.common.TextItem
 
 class AddInternetAccessForm : AListQuestForm<InternetAccess>() {
 

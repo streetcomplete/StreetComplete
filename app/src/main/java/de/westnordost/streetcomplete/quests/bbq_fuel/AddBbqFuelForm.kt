@@ -2,13 +2,13 @@ package de.westnordost.streetcomplete.quests.bbq_fuel
 
 import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.quests.AListQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.bbq_fuel.BbqFuel.CHARCOAL
 import de.westnordost.streetcomplete.quests.bbq_fuel.BbqFuel.ELECTRIC
 import de.westnordost.streetcomplete.quests.bbq_fuel.BbqFuel.GAS
 import de.westnordost.streetcomplete.quests.bbq_fuel.BbqFuel.WOOD
-import de.westnordost.streetcomplete.quests.list_quests.AListQuestForm
-import de.westnordost.streetcomplete.quests.list_quests.TextItem
+import de.westnordost.streetcomplete.ui.common.TextItem
 
 class AddBbqFuelForm : AListQuestForm<BbqFuelAnswer>() {
     override val items: List<TextItem<BbqFuelAnswer>> = listOf(

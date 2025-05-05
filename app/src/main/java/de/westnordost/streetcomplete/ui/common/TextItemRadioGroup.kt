@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests.list_quests
+package de.westnordost.streetcomplete.ui.common
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -22,20 +22,21 @@ import de.westnordost.streetcomplete.quests.accepts_cards.CardAcceptance.DEBIT_C
 import de.westnordost.streetcomplete.quests.accepts_cards.CardAcceptance.NEITHER_DEBIT_NOR_CREDIT
 
 @Composable
-fun <T> ListQuestForm(options: List<TextItem<T>>, onSelectionChange: (TextItem<T>) -> Unit, currentOption: TextItem<T>?, modifier: Modifier = Modifier) {
+fun <T> TextItemRadioGroup(options: List<TextItem<T>>, onSelectionChange: (TextItem<T>) -> Unit, currentOption: TextItem<T>?, modifier: Modifier = Modifier) {
     Column(
         modifier = modifier
     ) {
-        options.forEach {
+        options.forEach { option ->
             Row(modifier = Modifier
-                .padding(vertical = 8.dp)
                 .selectable(
-                    selected = (it == currentOption),
-                    onClick = { onSelectionChange(it) },
-                    role = Role.RadioButton
-                )) {
-                RadioButton(it == currentOption, null)
-                Text(stringResource(it.titleId), modifier = Modifier
+                    selected = (option == currentOption),
+                    onClick = { onSelectionChange(option) },
+                    role = Role.RadioButton)
+                .padding(vertical = 8.dp)) {
+                RadioButton(option == currentOption, null)
+                Text(
+                    text = stringResource(option.titleId),
+                    modifier = Modifier
                     .align(Alignment.CenterVertically)
                     .padding(horizontal = 16.dp))
             }
@@ -45,10 +46,14 @@ fun <T> ListQuestForm(options: List<TextItem<T>>, onSelectionChange: (TextItem<T
 
 @Composable
 @Preview(showBackground = true)
-@Preview(showBackground = true, locale = "ar")
-private fun ListQuestFormPreview() {
-    var selectedOption = remember { mutableStateOf(TextItem(DEBIT_AND_CREDIT, R.string.quest_accepts_cards_debit_and_credit)) }
-    ListQuestForm(
+private fun TextItemRadioGroupFormPreview() {
+    var selectedOption = remember { mutableStateOf(
+        TextItem(
+            DEBIT_AND_CREDIT,
+            R.string.quest_accepts_cards_debit_and_credit
+        )
+    ) }
+    TextItemRadioGroup(
         listOf(
             TextItem(DEBIT_AND_CREDIT, R.string.quest_accepts_cards_debit_and_credit),
             TextItem(CREDIT_CARDS_ONLY, R.string.quest_accepts_cards_credit_only),
@@ -59,3 +64,5 @@ private fun ListQuestFormPreview() {
         selectedOption.value
     )
 }
+
+data class TextItem<T>(val value: T, val titleId: Int)

@@ -6,8 +6,8 @@ import de.westnordost.streetcomplete.quests.camping.CampType.BACKCOUNTRY
 import de.westnordost.streetcomplete.quests.camping.CampType.CARAVANS_ONLY
 import de.westnordost.streetcomplete.quests.camping.CampType.TENTS_AND_CARAVANS
 import de.westnordost.streetcomplete.quests.camping.CampType.TENTS_ONLY
-import de.westnordost.streetcomplete.quests.list_quests.AListQuestForm
-import de.westnordost.streetcomplete.quests.list_quests.TextItem
+import de.westnordost.streetcomplete.quests.AListQuestForm
+import de.westnordost.streetcomplete.ui.common.TextItem
 
 class AddCampTypeForm : AListQuestForm<CampType>() {
 
