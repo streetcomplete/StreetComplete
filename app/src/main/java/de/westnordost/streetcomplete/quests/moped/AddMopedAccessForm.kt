@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.quests.moped
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.AListQuestForm
-import de.westnordost.streetcomplete.quests.TextItem
+import de.westnordost.streetcomplete.quests.list_quests.AListQuestForm
+import de.westnordost.streetcomplete.quests.list_quests.TextItem
 import de.westnordost.streetcomplete.quests.moped.AddMopedAccessAnswer.DESIGNATED
 import de.westnordost.streetcomplete.quests.moped.AddMopedAccessAnswer.FORBIDDEN
 import de.westnordost.streetcomplete.quests.moped.AddMopedAccessAnswer.NO_SIGN

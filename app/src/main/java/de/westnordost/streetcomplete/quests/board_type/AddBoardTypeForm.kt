@@ -2,10 +2,10 @@ package de.westnordost.streetcomplete.quests.board_type
 
 import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.AListQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
-import de.westnordost.streetcomplete.quests.TextItem
 import de.westnordost.streetcomplete.quests.board_type.BoardType.*
+import de.westnordost.streetcomplete.quests.list_quests.AListQuestForm
+import de.westnordost.streetcomplete.quests.list_quests.TextItem
 
 class AddBoardTypeForm : AListQuestForm<BoardTypeAnswer>() {
 
