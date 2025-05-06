@@ -25,10 +25,14 @@ abstract class AListQuestForm<T> : AbstractOsmQuestForm<T>() {
         binding.composeViewBase.content {
             checkedItem = remember { mutableStateOf<TextItem<T>?>(null) }
             Surface {
-                TextItemRadioGroup(items, {
-                    checkedItem.value = it
-                    checkIsFormComplete()
-                }, checkedItem.value)
+                TextItemRadioGroup(
+                    options = items,
+                    onSelectionChange = {
+                        checkedItem.value = it
+                        checkIsFormComplete()
+                    },
+                    currentOption = checkedItem.value,
+                )
             }
         }
     }
