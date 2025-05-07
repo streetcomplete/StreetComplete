@@ -23,6 +23,7 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.UiThread
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.PopupMenu
+import androidx.compose.material.Surface
 import androidx.compose.ui.geometry.Offset
 import androidx.core.graphics.Insets
 import androidx.core.net.toUri
@@ -221,19 +222,21 @@ class MainActivity :
         setContentView(binding.root)
 
         binding.controls.content {
-            MainScreen(
-                viewModel = viewModel,
-                editHistoryViewModel = editHistoryViewModel,
-                onClickZoomIn = ::onClickZoomIn,
-                onClickZoomOut = ::onClickZoomOut,
-                onClickCompass = ::onClickCompassButton,
-                onClickLocation = ::onClickLocationButton,
-                onClickLocationPointer = ::onClickLocationPointer,
-                onClickCreate = ::onClickCreateButton,
-                onClickStopTrackRecording = ::onClickTracksStop,
-                onClickDownload = ::onClickDownload,
-                onExplainedNeedForLocationPermission = ::requestLocation
-            )
+            Surface {
+                MainScreen(
+                    viewModel = viewModel,
+                    editHistoryViewModel = editHistoryViewModel,
+                    onClickZoomIn = ::onClickZoomIn,
+                    onClickZoomOut = ::onClickZoomOut,
+                    onClickCompass = ::onClickCompassButton,
+                    onClickLocation = ::onClickLocationButton,
+                    onClickLocationPointer = ::onClickLocationPointer,
+                    onClickCreate = ::onClickCreateButton,
+                    onClickStopTrackRecording = ::onClickTracksStop,
+                    onClickDownload = ::onClickDownload,
+                    onExplainedNeedForLocationPermission = ::requestLocation
+                )
+            }
         }
 
         onBackPressedDispatcher.addCallback(this, sheetBackPressedCallback)
