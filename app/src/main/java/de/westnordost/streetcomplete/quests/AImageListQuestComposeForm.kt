@@ -3,12 +3,16 @@ package de.westnordost.streetcomplete.quests
 import android.os.Bundle
 import android.view.View
 import androidx.compose.material.Surface
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.databinding.ComposeViewBinding
-import de.westnordost.streetcomplete.ui.common.image_select.DisplayItem
 import de.westnordost.streetcomplete.ui.common.image_select.ImageList
+import de.westnordost.streetcomplete.ui.common.image_select.ImageListItem
 import de.westnordost.streetcomplete.ui.util.content
+import de.westnordost.streetcomplete.view.image_select.DisplayItem
 import de.westnordost.streetcomplete.view.image_select.Item
 import org.koin.android.ext.android.inject
 
@@ -35,12 +39,21 @@ abstract class AImageListQuestComposeForm<I, T> : AbstractOsmQuestForm<T>() {
         super.onCreate(savedInstanceState)
         // itemsByString = items.associateBy { it.value.toString() }
     }
-
+    protected lateinit var listItems: MutableState<List<ImageListItem<I>>>
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.composeViewBase.content {
+            val temp = items.map { item -> ImageListItem<I>(item, false ) }
+            listItems = remember {  mutableStateOf(temp) }
             Surface {
-                ImageList(imageItems = items, itemsPerRow = itemsPerRow)
+                ImageList(imageItems = listItems.value, onClick = { index, item ->
+                    listItems.value = listItems.value.mapIndexed { i, imageListItem ->
+                        if(i == index)
+                            imageListItem.copy(checked = !imageListItem.checked)
+                        else
+                            imageListItem
+                    }
+                }, itemsPerRow = itemsPerRow)
             }
         }
     }
