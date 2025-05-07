@@ -12,24 +12,30 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.quests.bicycle_repair_station.BicycleRepairStationService
 import de.westnordost.streetcomplete.quests.bicycle_repair_station.asItem
 
 @Composable
-fun <T> ImageList(imageItems: List<ImageListItem<T>>, onClick: (index: Int, item: ImageListItem<T>) -> Unit, modifier: Modifier = Modifier, itemsPerRow: Int = 4) {
+fun <T> ImageList(imageItems: List<ImageListItem<T>>,
+    onClick: (index: Int, item: ImageListItem<T>) -> Unit,
+    modifier: Modifier = Modifier,
+    itemsPerRow: Int = 4,
+    itemRole: Role = Role.Checkbox,
+    itemContent: @Composable (item: ImageListItem<T>, index: Int, onClick: () -> Unit, role: Role) -> Unit) {
     LazyVerticalGrid(columns = GridCells.Fixed(itemsPerRow),
         horizontalArrangement = Arrangement.spacedBy(4.dp), verticalArrangement = Arrangement.spacedBy(4.dp),
         modifier = modifier.height(400.dp)
         ) {
         itemsIndexed(imageItems) { index, item ->
-            SelectableImageItem(
-                imageResId = item.item.drawableId!!,
-                title = stringResource(item.item.titleId!!),
-                isSelected = item.checked,
-                onClick = { onClick(index, item) }
-                )
+            itemContent(
+                item,
+                index,
+                { onClick(index, item) },
+                itemRole
+            )
         }
     }
 }
@@ -44,5 +50,12 @@ fun ImageListPreview() {
         onClick = { i, f ->
             items = items.mapIndexed { index, item -> if (index == i) ImageListItem(item.item, !item.checked) else item }
                   },
-        itemsPerRow = 3)
+        itemsPerRow = 3) { item, index, onClick, role ->
+        SelectableImageItem(
+            item = item.item,
+            isSelected = item.checked,
+            onClick = onClick,
+            role = role
+        )
+    }
 }

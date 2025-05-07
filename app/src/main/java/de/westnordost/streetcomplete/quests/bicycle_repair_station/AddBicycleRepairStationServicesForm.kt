@@ -8,8 +8,8 @@ class AddBicycleRepairStationServicesForm : AImageListQuestComposeForm<BicycleRe
 
     override val maxSelectableItems = -1
     override val itemsPerRow = 3
-    //
-    // override fun onClickOk(selectedItems: List<BicycleRepairStationService>) {
-    //     applyAnswer(selectedItems)
-    // }
+
+    override fun onClickOk(selectedItems: List<BicycleRepairStationService>) {
+        applyAnswer(selectedItems)
+    }
 }

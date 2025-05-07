@@ -1,14 +1,25 @@
 package de.westnordost.streetcomplete.quests.incline_direction
 
 import android.os.Bundle
+import androidx.compose.ui.semantics.Role
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
-import de.westnordost.streetcomplete.quests.AImageListQuestForm
+import de.westnordost.streetcomplete.quests.AImageListQuestComposeForm
+import de.westnordost.streetcomplete.ui.common.image_select.ImageListItem
+import de.westnordost.streetcomplete.ui.common.image_select.SelectableIconItem
 import de.westnordost.streetcomplete.util.math.getOrientationAtCenterLineInDegrees
 
-class AddInclineForm : AImageListQuestForm<Incline, Incline>() {
+class AddInclineForm : AImageListQuestComposeForm<Incline, Incline>() {
     override val items get() =
         Incline.entries.map { it.asItem(requireContext(), wayRotation - mapRotation) }
+
+    override val itemContent = @androidx.compose.runtime.Composable { item: ImageListItem<Incline>, index: Int, onClick: () -> Unit, role: Role ->
+        SelectableIconItem(
+            item = item.item,
+            isSelected = item.checked,
+            onClick = onClick,
+            role = role
+        ) }
 
     override val itemsPerRow = 2
 
@@ -18,12 +29,11 @@ class AddInclineForm : AImageListQuestForm<Incline, Incline>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         wayRotation = (geometry as ElementPolylinesGeometry).getOrientationAtCenterLineInDegrees()
-        imageSelector.cellLayoutId = R.layout.cell_icon_select_with_label_below
     }
 
     override fun onMapOrientation(rotation: Double, tilt: Double) {
         mapRotation = rotation.toFloat()
-        imageSelector.items = items
+        refreshComposeView()
     }
 
     override fun onClickOk(selectedItems: List<Incline>) {

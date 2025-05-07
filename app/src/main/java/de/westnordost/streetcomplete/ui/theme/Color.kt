@@ -41,6 +41,8 @@ val GrassGreen = Color(0xff80b158)
 val GrassGray = Color(0xff888888)
 val LeafGreen = Color(0xff006a00)
 
+val SelectionColor = Color(0x66ff6600)
+val SelectionFrameColor = Color(0xbbff6600)
 val LightColors = lightColors(
     primary = Color(0xff4141ba),
     primaryVariant = Color(0xff3939a3),

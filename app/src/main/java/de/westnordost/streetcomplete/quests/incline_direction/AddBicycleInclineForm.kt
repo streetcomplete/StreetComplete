@@ -2,13 +2,16 @@ package de.westnordost.streetcomplete.quests.incline_direction
 
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
+import androidx.compose.ui.semantics.Role
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
-import de.westnordost.streetcomplete.quests.AImageListQuestForm
+import de.westnordost.streetcomplete.quests.AImageListQuestComposeForm
 import de.westnordost.streetcomplete.quests.AnswerItem
+import de.westnordost.streetcomplete.ui.common.image_select.ImageListItem
+import de.westnordost.streetcomplete.ui.common.image_select.SelectableIconItem
 import de.westnordost.streetcomplete.util.math.getOrientationAtCenterLineInDegrees
 
-class AddBicycleInclineForm : AImageListQuestForm<Incline, BicycleInclineAnswer>() {
+class AddBicycleInclineForm : AImageListQuestComposeForm<Incline, BicycleInclineAnswer>() {
     override val otherAnswers = listOf(
         AnswerItem(R.string.quest_bicycle_incline_up_and_down) { confirmUpAndDown() }
     )
@@ -24,12 +27,18 @@ class AddBicycleInclineForm : AImageListQuestForm<Incline, BicycleInclineAnswer>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         wayRotation = (geometry as ElementPolylinesGeometry).getOrientationAtCenterLineInDegrees()
-        imageSelector.cellLayoutId = R.layout.cell_icon_select_with_label_below
     }
+    override val itemContent = @androidx.compose.runtime.Composable { item: ImageListItem<Incline>, index: Int, onClick: () -> Unit, role: Role ->
+        SelectableIconItem(
+            item = item.item,
+            isSelected = item.checked,
+            onClick = onClick,
+            role = role
+        ) }
 
     override fun onMapOrientation(rotation: Double, tilt: Double) {
         mapRotation = rotation.toFloat()
-        imageSelector.items = items
+        refreshComposeView()
     }
 
     private fun confirmUpAndDown() {

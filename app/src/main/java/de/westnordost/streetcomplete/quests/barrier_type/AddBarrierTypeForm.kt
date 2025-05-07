@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.quests.barrier_type
 
-import de.westnordost.streetcomplete.quests.AImageListQuestForm
+import de.westnordost.streetcomplete.quests.AImageListQuestComposeForm
 
-class AddBarrierTypeForm : AImageListQuestForm<BarrierType, BarrierType>() {
+class AddBarrierTypeForm : AImageListQuestComposeForm<BarrierType, BarrierType>() {
 
     override val items = BarrierType.entries.map { it.asItem() }
 
