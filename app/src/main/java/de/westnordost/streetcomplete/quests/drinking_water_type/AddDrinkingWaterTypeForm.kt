@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.quests.drinking_water_type
 
-import de.westnordost.streetcomplete.quests.AImageListQuestForm
+import de.westnordost.streetcomplete.quests.AImageListQuestComposeForm
 
-class AddDrinkingWaterTypeForm : AImageListQuestForm<DrinkingWaterType, DrinkingWaterType>() {
+class AddDrinkingWaterTypeForm : AImageListQuestComposeForm<DrinkingWaterType, DrinkingWaterType>() {
 
     override val items = DrinkingWaterType.entries.map { it.asItem() }
 
