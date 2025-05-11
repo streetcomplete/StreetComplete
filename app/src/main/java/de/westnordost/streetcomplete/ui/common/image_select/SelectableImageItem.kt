@@ -49,7 +49,6 @@ fun <T> SelectableImageItem(
     modifier: Modifier = Modifier,
     role: Role = Role.Checkbox
 ) {
-    println("Recomposing image")
     val animatedAlpha by animateFloatAsState(
         targetValue = if (isSelected) 0.5f else 0f,
         label = "OverlayAlpha"
@@ -74,6 +73,13 @@ fun <T> SelectableImageItem(
             null -> ""
         }
     }
+    var description = remember(item.description) {
+        when (item.description) {
+            is ResText -> context.getString((item.description as ResText).resId)
+            is CharSequenceText -> (item.description as CharSequenceText).text.toString()
+            null -> null
+        }
+    }
     Box(
         modifier = modifier
             .selectable(
@@ -84,6 +90,7 @@ fun <T> SelectableImageItem(
             .conditional(isSelected) {
                 border(4.dp, SelectionFrameColor)
             }
+            .padding(2.dp)
     ) {
         imageBitmap?.let { bitmap ->
             Image(

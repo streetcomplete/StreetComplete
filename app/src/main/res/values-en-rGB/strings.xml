@@ -973,7 +973,7 @@ Alternatively, you can leave a note (with a photo)."</string>
     <string name="quest_generic_hasFeature_yes_leave_note">"Yes (leave note)"</string>
     <string name="quest_smoothness_square_title">"What’s the surface quality of this square?"</string>
     <string name="quest_smoothness_road_title">"What’s the surface quality of this road here?"</string>
-    <string name="quest_smoothness_title_excellent">"Smooth and even"</string>
+    <string name="quest_smoothness_title_excellent">"Smooth and even "</string>
     <string name="quest_smoothness_title_good">"Mostly even"</string>
     <string name="quest_smoothness_title_intermediate">"A little bumpy"</string>
     <string name="quest_smoothness_title_bad">"Bumpy"</string>

@@ -15,9 +15,7 @@ class AddOnewayForm : AImageListQuestComposeForm<OnewayAnswer, OnewayAnswer>() {
             OnewayAnswer.entries.map { it.asItem(requireContext(), wayRotation - mapRotation) }
     override val itemContent =
         @androidx.compose.runtime.Composable { item: ImageListItem<OnewayAnswer>, index: Int, onClick: () -> Unit, role: Role ->
-            println("Outside key")
-            key(item.item) {
-                println("Inside key")
+            key(item.item to (wayRotation - mapRotation)) {
                 SelectableIconItem(
                     item = item.item,
                     isSelected = item.checked,
@@ -39,9 +37,7 @@ class AddOnewayForm : AImageListQuestComposeForm<OnewayAnswer, OnewayAnswer>() {
 
     override fun onMapOrientation(rotation: Double, tilt: Double) {
         mapRotation = rotation.toFloat()
-        selectedItems.value = OnewayAnswer.entries.map { it.asItem(requireContext(), wayRotation - mapRotation) }
-        println("SelectedItem 0 " + selectedItems.value[0].image)
-        refreshComposeView()
+        currentItems.value = OnewayAnswer.entries.map { it.asItem(requireContext(), wayRotation - mapRotation) }
     }
 
     override fun onClickOk(selectedItems: List<OnewayAnswer>) {

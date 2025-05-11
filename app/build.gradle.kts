@@ -132,6 +132,7 @@ dependencies {
     implementation("androidx.core:core-ktx:1.16.0")
     implementation("androidx.appcompat:appcompat:1.7.0")
     implementation("androidx.constraintlayout:constraintlayout:2.2.1")
+
     implementation("androidx.annotation:annotation:1.9.1")
     implementation("androidx.fragment:fragment-ktx:1.8.6")
     implementation("androidx.recyclerview:recyclerview:1.4.0")
@@ -144,6 +145,7 @@ dependencies {
     androidTestImplementation(composeBom)
     implementation("androidx.compose.material:material")
     implementation("androidx.activity:activity-compose")
+
     // Jetpack Compose Previews
     implementation("androidx.compose.ui:ui-tooling-preview")
     debugImplementation("androidx.compose.ui:ui-tooling")
@@ -152,6 +154,8 @@ dependencies {
 
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.7")
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.7")
+
+    implementation("com.cheonjaeung.compose.grid:grid:2.2.1")
 
     // reorderable lists (raw Compose API is pretty complicated)
     implementation("sh.calvin.reorderable:reorderable:2.4.3")

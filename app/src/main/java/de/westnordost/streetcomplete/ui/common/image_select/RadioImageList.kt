@@ -1,7 +1,12 @@
 package de.westnordost.streetcomplete.ui.common.image_select
 
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.key
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -12,6 +17,7 @@ import de.westnordost.streetcomplete.quests.bicycle_repair_station.BicycleRepair
 import de.westnordost.streetcomplete.quests.bicycle_repair_station.asItem
 import de.westnordost.streetcomplete.view.image_select.DisplayItem
 
+
 @Composable
 fun <T> RadioImageList(items: List<DisplayItem<T>>,
     onSelect: (List<DisplayItem<T>>) -> Unit,
@@ -19,6 +25,9 @@ fun <T> RadioImageList(items: List<DisplayItem<T>>,
     itemsPerRow: Int = 4,
     itemContent: @Composable (item: ImageListItem<T>, index: Int, onClick: () -> Unit, role: Role) -> Unit) {
     var listItems by remember { mutableStateOf(items.map { ImageListItem(it, false) }) }
+    LaunchedEffect(items) {
+        listItems = items.map { ImageListItem(it, false) }
+    }
     ImageList(
         imageItems = listItems,
         onClick = { targetIndex, targetItem ->
@@ -31,10 +40,14 @@ fun <T> RadioImageList(items: List<DisplayItem<T>>,
             onSelect(listItems.filter { it.checked }.map { it.item })
         },
         itemRole = Role.RadioButton,
-        modifier = modifier,
+        modifier = modifier.fillMaxHeight(),
         itemsPerRow = itemsPerRow,
-        itemContent = itemContent
-        )
+        itemContent = { item, index, onClick, role ->
+            key(item.item to items) {
+                itemContent(item, index, onClick, role)
+            }
+        }
+    )
 }
 
 @Composable

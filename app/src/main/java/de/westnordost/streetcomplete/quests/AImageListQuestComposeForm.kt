@@ -3,16 +3,14 @@ package de.westnordost.streetcomplete.quests
 import android.os.Bundle
 import android.view.View
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.MutableState
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.key
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
@@ -24,10 +22,8 @@ import de.westnordost.streetcomplete.ui.common.image_select.ImageListItem
 import de.westnordost.streetcomplete.ui.common.image_select.MultiImageList
 import de.westnordost.streetcomplete.ui.common.image_select.RadioImageList
 import de.westnordost.streetcomplete.ui.common.image_select.SelectableImageItem
-import de.westnordost.streetcomplete.ui.util.content
 import de.westnordost.streetcomplete.view.image_select.DisplayItem
 import org.koin.android.ext.android.inject
-import kotlin.collections.map
 
 /**
  * Abstract class for quests with a list of images and one or several to select.
@@ -54,13 +50,14 @@ abstract class AImageListQuestComposeForm<I, T> : AbstractOsmQuestForm<T>() {
     protected open val moveFavoritesToFront = true
     /** items to display. May not be accessed before onCreate */
     protected abstract val items: List<DisplayItem<I>>
-    protected lateinit var currentItems: MutableState<List<DisplayItem<I>>>
+    protected var currentItems: MutableState<List<DisplayItem<I>>> = mutableStateOf(emptyList())
 
     protected open val itemContent = @androidx.compose.runtime.Composable { item: ImageListItem<I>, index: Int, onClick: () -> Unit, role: Role ->
             SelectableImageItem(
                 item = item.item,
                 isSelected = item.checked,
                 onClick = onClick,
+                modifier = Modifier.fillMaxSize(),
                 role = role
             )
     }
@@ -71,33 +68,35 @@ abstract class AImageListQuestComposeForm<I, T> : AbstractOsmQuestForm<T>() {
         super.onCreate(savedInstanceState)
         itemsByString = items.associateBy { it.value.toString() }
     }
-    protected lateinit var selectedItems: MutableState<List<DisplayItem<I>>>
+    protected var selectedItems: MutableState<List<DisplayItem<I>>> = mutableStateOf(emptyList())
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         // TODO: deal with favourites
         super.onViewCreated(view, savedInstanceState)
+        currentItems.value = items
         refreshComposeView()
     }
 
     protected fun refreshComposeView() {
-        binding.composeViewBase.content {
-            currentItems = remember { mutableStateOf(items) }
-            selectedItems = remember { mutableStateOf(listOf()) }
-            Surface {
+        binding.composeViewBase.setContent {
+            Surface(
+                modifier = Modifier.fillMaxSize()
+            ) {
                 Column {
-                    if (descriptionResId != null) {
+                    descriptionResId?.let {
                         Text(
-                            text = stringResource(descriptionResId!!),
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(vertical = 8.dp)
+                            text = stringResource(it),
+                            modifier = Modifier.fillMaxWidth()
                         )
                     }
+                    Text(
+                        text = stringResource(
+                            if (maxSelectableItems == 1) R.string.quest_select_hint
+                            else R.string.quest_multiselect_hint
+                        ),
+                        modifier = Modifier.padding(bottom = 8.dp).wrapContentSize()
+                    )
                     if (maxSelectableItems == 1) {
-                        Text(
-                            text = stringResource(R.string.quest_select_hint)
-                        )
-                        print("Cur " + currentItems.value[0])
                         RadioImageList(
                             items = currentItems.value,
                             itemsPerRow = itemsPerRow,
@@ -105,22 +104,16 @@ abstract class AImageListQuestComposeForm<I, T> : AbstractOsmQuestForm<T>() {
                                 selectedItems.value = newItems
                                 checkIsFormComplete()
                             },
-                            itemContent = itemContent
-                        )
+                            itemContent = itemContent)
                     } else {
-                        Text(
-                            text = stringResource(R.string.quest_multiselect_hint)
-                        )
                         MultiImageList(
                             items = currentItems.value,
+                            itemsPerRow = itemsPerRow,
                             onSelect = { newItems ->
                                 selectedItems.value = newItems
                                 checkIsFormComplete()
                             },
-                            itemsPerRow = itemsPerRow,
-                            itemContent = itemContent
-
-                        )
+                            itemContent = itemContent)
                     }
                 }
             }

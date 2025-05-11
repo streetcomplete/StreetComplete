@@ -33,12 +33,14 @@ fun Smoothness.asItem(context: Context, surface: String): DisplayItem<Smoothness
     stringBuilder.append(" X") // one space char + one placeholder char for the image span
 
     val iconDrawable = context.getDrawable(icon) ?: return null
+    println(stringBuilder)
     stringBuilder.setSpan(
         iconDrawable.asImageSpan(36, 36),
         title.length + 1,
         title.length + 2,
         Spannable.SPAN_INCLUSIVE_INCLUSIVE
     )
+    println(stringBuilder)
 
     return Item2(
         this,

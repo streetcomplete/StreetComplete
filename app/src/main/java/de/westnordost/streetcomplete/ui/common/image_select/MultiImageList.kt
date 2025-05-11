@@ -1,7 +1,10 @@
 package de.westnordost.streetcomplete.ui.common.image_select
 
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.key
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -21,7 +24,10 @@ fun <T> MultiImageList(items: List<DisplayItem<T>>,
     itemsPerRow: Int = 4,
     itemContent: @Composable (item: ImageListItem<T>, index: Int, onClick: () -> Unit, role: Role) -> Unit) {
     var listItems by remember { mutableStateOf(items.map { ImageListItem(it, false) }) }
-    ImageList<T>(
+    LaunchedEffect(items) {
+        listItems = items.map { ImageListItem(it, false) }
+    }
+    ImageList(
         imageItems = listItems,
         onClick = { targetIndex, targetItem ->
             listItems = listItems.mapIndexed { currentIndex, currentItem ->
@@ -32,9 +38,13 @@ fun <T> MultiImageList(items: List<DisplayItem<T>>,
             }
             onSelect(listItems.filter { it.checked }.map { it.item })
         },
-        modifier = modifier,
+        modifier = modifier.fillMaxSize(),
         itemsPerRow = itemsPerRow,
-        itemContent = itemContent
+        itemContent = { item, index, onClick, role ->
+            key(item.item to items) {
+                itemContent(item, index, onClick, role)
+            }
+        }
     )
 
 }

@@ -1,20 +1,17 @@
 package de.westnordost.streetcomplete.ui.common.image_select
 
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.lazy.grid.GridCells
-import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.foundation.lazy.grid.itemsIndexed
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.cheonjaeung.compose.grid.SimpleGridCells
+import com.cheonjaeung.compose.grid.VerticalGrid
 import de.westnordost.streetcomplete.quests.bicycle_repair_station.BicycleRepairStationService
 import de.westnordost.streetcomplete.quests.bicycle_repair_station.asItem
 
@@ -25,17 +22,14 @@ fun <T> ImageList(imageItems: List<ImageListItem<T>>,
     itemsPerRow: Int = 4,
     itemRole: Role = Role.Checkbox,
     itemContent: @Composable (item: ImageListItem<T>, index: Int, onClick: () -> Unit, role: Role) -> Unit) {
-    LazyVerticalGrid(columns = GridCells.Fixed(itemsPerRow),
-        horizontalArrangement = Arrangement.spacedBy(4.dp), verticalArrangement = Arrangement.spacedBy(4.dp),
-        modifier = modifier.height(400.dp)
-        ) {
-        itemsIndexed(imageItems) { index, item ->
-            itemContent(
-                item,
-                index,
-                { onClick(index, item) },
-                itemRole
-            )
+    VerticalGrid(
+        columns = SimpleGridCells.Fixed(itemsPerRow),
+        modifier = modifier,
+        horizontalArrangement = Arrangement.spacedBy(2.dp),
+        verticalArrangement = Arrangement.spacedBy(2.dp)
+    ) {
+        imageItems.forEachIndexed { index, item ->
+            itemContent(item, index, { onClick(index, item) }, itemRole)
         }
     }
 }
