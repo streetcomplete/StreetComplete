@@ -20,7 +20,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shadow
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -29,7 +28,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toBitmap
-import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.bicycle_repair_station.BicycleRepairStationService
 import de.westnordost.streetcomplete.quests.bicycle_repair_station.asItem
 import de.westnordost.streetcomplete.ui.ktx.conditional
@@ -67,17 +65,10 @@ fun <T> SelectableImageItem(
         }
     }
     val title = remember(item.title) {
-        when(item.title) {
+        when (item.title) {
             is ResText -> context.getString((item.title as ResText).resId)
             is CharSequenceText -> (item.title as CharSequenceText).text.toString()
             null -> ""
-        }
-    }
-    var description = remember(item.description) {
-        when (item.description) {
-            is ResText -> context.getString((item.description as ResText).resId)
-            is CharSequenceText -> (item.description as CharSequenceText).text.toString()
-            null -> null
         }
     }
     Box(

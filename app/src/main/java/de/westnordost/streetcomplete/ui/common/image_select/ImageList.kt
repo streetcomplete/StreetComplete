@@ -39,7 +39,7 @@ fun <T> ImageList(imageItems: List<ImageListItem<T>>,
 fun ImageListPreview() {
     var items by remember {
         mutableStateOf(
-            BicycleRepairStationService.entries.map { ImageListItem<BicycleRepairStationService>(it.asItem(), false) })  }
+            BicycleRepairStationService.entries.map { ImageListItem(it.asItem(), false) })  }
     ImageList(imageItems = items,
         onClick = { i, f ->
             items = items.mapIndexed { index, item -> if (index == i) ImageListItem(item.item, !item.checked) else item }

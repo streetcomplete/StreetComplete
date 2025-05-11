@@ -4,6 +4,7 @@ import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -21,35 +22,26 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shadow
+import androidx.compose.ui.graphics.asImageBitmap
+import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import de.westnordost.streetcomplete.R
+import androidx.core.content.ContextCompat
+import androidx.core.graphics.drawable.toBitmap
+import de.westnordost.streetcomplete.quests.boat_rental.BoatRental
+import de.westnordost.streetcomplete.quests.boat_rental.asItem
 import de.westnordost.streetcomplete.ui.ktx.conditional
 import de.westnordost.streetcomplete.ui.theme.SelectionColor
 import de.westnordost.streetcomplete.ui.theme.SelectionFrameColor
+import de.westnordost.streetcomplete.view.CharSequenceText
 import de.westnordost.streetcomplete.view.DrawableImage
 import de.westnordost.streetcomplete.view.ResImage
-import de.westnordost.streetcomplete.view.image_select.DisplayItem
-import androidx.compose.runtime.remember
-import androidx.compose.ui.graphics.asImageBitmap
-import androidx.compose.ui.graphics.ImageBitmap
-import androidx.compose.foundation.Image
-import androidx.core.graphics.drawable.toBitmap
-import android.graphics.drawable.Drawable
-import androidx.core.content.ContextCompat
-import de.westnordost.streetcomplete.quests.boat_rental.BoatRental
-import de.westnordost.streetcomplete.quests.boat_rental.asItem
-import de.westnordost.streetcomplete.view.CharSequenceText
 import de.westnordost.streetcomplete.view.ResText
-import androidx.compose.foundation.gestures.detectTapGestures
-import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.ui.input.pointer.pointerInput
+import de.westnordost.streetcomplete.view.image_select.DisplayItem
 
 @Composable
 fun <T> SelectableIconItem(
@@ -80,14 +72,6 @@ fun <T> SelectableIconItem(
             is ResText -> context.getString((item.title as ResText).resId)
             is CharSequenceText -> (item.title as CharSequenceText).text.toString()
             null -> ""
-        }
-    }
-
-    var description = remember(item.description) {
-        when (item.description) {
-            is ResText -> context.getString((item.description as ResText).resId)
-            is CharSequenceText -> (item.description as CharSequenceText).text.toString()
-            null -> null
         }
     }
 

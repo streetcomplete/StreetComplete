@@ -1,8 +1,6 @@
 package de.westnordost.streetcomplete.ui.common.image_select
 
 import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -16,7 +14,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import de.westnordost.streetcomplete.quests.bicycle_repair_station.BicycleRepairStationService
 import de.westnordost.streetcomplete.quests.bicycle_repair_station.asItem
 import de.westnordost.streetcomplete.view.image_select.DisplayItem
-
 
 @Composable
 fun <T> RadioImageList(items: List<DisplayItem<T>>,

@@ -9,13 +9,11 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.tooling.preview.Preview
 import de.westnordost.streetcomplete.quests.bicycle_repair_station.BicycleRepairStationService
 import de.westnordost.streetcomplete.quests.bicycle_repair_station.asItem
 import de.westnordost.streetcomplete.view.image_select.DisplayItem
-import de.westnordost.streetcomplete.view.image_select.Item
 
 @Composable
 fun <T> MultiImageList(items: List<DisplayItem<T>>,
@@ -46,7 +44,6 @@ fun <T> MultiImageList(items: List<DisplayItem<T>>,
             }
         }
     )
-
 }
 @Composable
 @Preview(showBackground = true)
