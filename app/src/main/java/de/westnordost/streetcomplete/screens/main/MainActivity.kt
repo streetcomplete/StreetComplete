@@ -23,7 +23,9 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.UiThread
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.PopupMenu
-import androidx.compose.material.Surface
+import androidx.compose.material.LocalContentColor
+import androidx.compose.material.MaterialTheme
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.geometry.Offset
 import androidx.core.graphics.Insets
 import androidx.core.net.toUri
@@ -222,7 +224,10 @@ class MainActivity :
         setContentView(binding.root)
 
         binding.controls.content {
-            Surface {
+            // color for HUD elements without a background (e.g. scalebar, attribution button)
+            CompositionLocalProvider(
+                LocalContentColor provides MaterialTheme.colors.onSurface
+            ) {
                 MainScreen(
                     viewModel = viewModel,
                     editHistoryViewModel = editHistoryViewModel,
