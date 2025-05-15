@@ -10,6 +10,8 @@ import java.io.StringWriter
 import java.net.HttpURLConnection
 import java.net.URL
 import java.net.URLEncoder
+import kotlinx.io.asSource
+import kotlinx.io.buffered
 
 /** Counts the occurrence of values for a given key for a certain tag combination by country and
  *  writes the result in a YML file.
@@ -26,7 +28,9 @@ open class QLeverCountValueByCountryTask : DefaultTask() {
     @get:Input var minPercent: Double = 0.0
 
     private val firstPointRegex = Regex("[A-Za-z(]*([-+\\d.]*) ([-+\\d.]*)")
-    private val boundaries = CountryBoundaries.load(FileInputStream("${project.projectDir}/app/src/main/assets/boundaries.ser"))
+    private val boundaries = CountryBoundaries.deserializeFrom(
+        FileInputStream("${project.projectDir}/app/src/main/assets/boundaries.ser").asSource().buffered()
+    )
 
     @TaskAction fun run() {
         val query = """

@@ -183,7 +183,7 @@ dependencies {
     testImplementation("io.ktor:ktor-client-mock:3.1.3")
 
     // finding in which country we are for country-specific logic
-    implementation("de.westnordost:countryboundaries:2.1")
+    implementation("de.westnordost:countryboundaries:3.0.0")
     // finding a name for a feature without a name tag
     implementation("de.westnordost:osmfeatures:7.0")
 
