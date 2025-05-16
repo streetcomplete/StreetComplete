@@ -11,10 +11,12 @@ import android.widget.PopupMenu
 import androidx.appcompat.app.AlertDialog
 import androidx.core.os.bundleOf
 import androidx.core.view.children
+import androidx.lifecycle.lifecycleScope
 import de.westnordost.osmfeatures.Feature
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.location.RecentLocationStore
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.edits.AddElementEditsController
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
@@ -118,8 +120,15 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
         super.onViewCreated(view, savedInstanceState)
 
         setTitle(getString(osmElementQuestType.getTitle(element.tags)))
-        setTitleHintLabel(getNameAndLocationSpanned(element, resources, featureDictionary))
+        setTitleHintLabel(null)
         setObjNote(element.tags["note"])
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            val hintText = withContext(Dispatchers.Default) {
+                getNameAndLocationSpanned(element, resources, featureDictionary)
+            }
+            setTitleHintLabel(hintText)
+        }
     }
 
     override fun onStart() {
@@ -311,9 +320,11 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
 
     companion object {
         private const val ARG_ELEMENT = "element"
+        private const val ARG_COUNTRY_INFO = "country_info"
 
-        fun createArguments(element: Element) = bundleOf(
-            ARG_ELEMENT to Json.encodeToString(element)
+        fun createArguments(element: Element, countryInfo: CountryInfo? = null) = bundleOf(
+            ARG_ELEMENT to Json.encodeToString(element),
+            ARG_COUNTRY_INFO to Json.encodeToString(countryInfo),
         )
     }
 }
