@@ -2,10 +2,10 @@ package de.westnordost.streetcomplete.quests.parking_access
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AListQuestForm
-import de.westnordost.streetcomplete.quests.TextItem
 import de.westnordost.streetcomplete.quests.parking_access.ParkingAccess.CUSTOMERS
 import de.westnordost.streetcomplete.quests.parking_access.ParkingAccess.PRIVATE
 import de.westnordost.streetcomplete.quests.parking_access.ParkingAccess.YES
+import de.westnordost.streetcomplete.ui.common.TextItem
 
 class AddParkingAccessForm : AListQuestForm<ParkingAccess>() {
 

@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.quests.leaf_detail
 
-import de.westnordost.streetcomplete.quests.AImageListQuestForm
+import de.westnordost.streetcomplete.quests.AImageListQuestComposeForm
 
-class AddForestLeafTypeForm : AImageListQuestForm<ForestLeafType, ForestLeafType>() {
+class AddForestLeafTypeForm : AImageListQuestComposeForm<ForestLeafType, ForestLeafType>() {
 
     override val items = ForestLeafType.entries.map { it.asItem() }
     override val itemsPerRow = 3

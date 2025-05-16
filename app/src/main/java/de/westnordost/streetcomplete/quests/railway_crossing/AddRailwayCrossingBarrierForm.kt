@@ -1,9 +1,9 @@
 package de.westnordost.streetcomplete.quests.railway_crossing
 
-import de.westnordost.streetcomplete.quests.AImageListQuestForm
+import de.westnordost.streetcomplete.quests.AImageListQuestComposeForm
 import de.westnordost.streetcomplete.view.image_select.DisplayItem
 
-class AddRailwayCrossingBarrierForm : AImageListQuestForm<RailwayCrossingBarrier, RailwayCrossingBarrier>() {
+class AddRailwayCrossingBarrierForm : AImageListQuestComposeForm<RailwayCrossingBarrier, RailwayCrossingBarrier>() {
 
     override val items: List<DisplayItem<RailwayCrossingBarrier>> get() {
         val isPedestrian = element.tags["railway"] == "crossing"
