@@ -2,11 +2,11 @@ package de.westnordost.streetcomplete.quests.accepts_cards
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AListQuestForm
-import de.westnordost.streetcomplete.quests.TextItem
 import de.westnordost.streetcomplete.quests.accepts_cards.CardAcceptance.CREDIT_CARDS_ONLY
 import de.westnordost.streetcomplete.quests.accepts_cards.CardAcceptance.DEBIT_AND_CREDIT
 import de.westnordost.streetcomplete.quests.accepts_cards.CardAcceptance.DEBIT_CARDS_ONLY
 import de.westnordost.streetcomplete.quests.accepts_cards.CardAcceptance.NEITHER_DEBIT_NOR_CREDIT
+import de.westnordost.streetcomplete.ui.common.TextItem
 
 class AddAcceptsCardsForm : AListQuestForm<CardAcceptance>() {
 
