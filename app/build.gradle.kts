@@ -8,7 +8,7 @@ plugins {
     id("org.jetbrains.kotlin.multiplatform") version "2.1.21"
     id("org.jetbrains.kotlin.plugin.serialization") version "2.1.21"
     id("org.jetbrains.kotlin.plugin.compose") version "2.1.21"
-    id("com.android.application") version "8.7.3"
+    id("com.android.application") version "8.9.3"
     //id("org.jetbrains.compose") version "1.8.0" apply false
 }
 
@@ -33,125 +33,130 @@ kotlin {
         iosSimulatorArm64()
     ).forEach { iosTarget ->
         iosTarget.binaries.framework {
-            baseName = "ComposeApp"
+            baseName = "StreetComplete"
             isStatic = true
         }
     }
 
     sourceSets {
-        androidMain.dependencies {
-            val mockitoVersion = "5.17.0"
+        androidMain {
+            dependencies {
+                // dependency injection
+                implementation(platform("io.insert-koin:koin-bom:4.0.4"))
+                implementation("io.insert-koin:koin-core")
+                implementation("io.insert-koin:koin-android")
+                implementation("io.insert-koin:koin-androidx-workmanager")
+                implementation("io.insert-koin:koin-androidx-compose")
 
-            // tests
-            testImplementation("org.mockito:mockito-core:$mockitoVersion")
-            testImplementation(kotlin("test"))
+                // Android stuff
+                implementation("com.google.android.material:material:1.12.0")
+                implementation("androidx.core:core-ktx:1.16.0")
+                implementation("androidx.appcompat:appcompat:1.7.0")
+                implementation("androidx.constraintlayout:constraintlayout:2.2.1")
+                implementation("androidx.annotation:annotation:1.9.1")
+                implementation("androidx.fragment:fragment-ktx:1.8.6")
+                implementation("androidx.recyclerview:recyclerview:1.4.0")
+                implementation("androidx.viewpager:viewpager:1.1.0")
+                implementation("androidx.localbroadcastmanager:localbroadcastmanager:1.1.0")
 
-            androidTestImplementation("androidx.test:runner:1.6.2")
-            androidTestImplementation("androidx.test:rules:1.6.1")
-            androidTestImplementation("org.mockito:mockito-android:$mockitoVersion")
-            androidTestImplementation(kotlin("test"))
+                // Jetpack Compose
+                val composeBom = platform("androidx.compose:compose-bom:2025.04.01")
+                implementation(composeBom)
 
-            // dependency injection
-            implementation(platform("io.insert-koin:koin-bom:4.0.4"))
-            implementation("io.insert-koin:koin-core")
-            implementation("io.insert-koin:koin-android")
-            implementation("io.insert-koin:koin-androidx-workmanager")
-            implementation("io.insert-koin:koin-androidx-compose")
+                implementation("androidx.compose.material:material")
+                implementation("androidx.activity:activity-compose")
+                // Jetpack Compose Previews
+                implementation("androidx.compose.ui:ui-tooling-preview")
 
-            // Android stuff
-            implementation("com.google.android.material:material:1.12.0")
-            implementation("androidx.core:core-ktx:1.16.0")
-            implementation("androidx.appcompat:appcompat:1.7.0")
-            implementation("androidx.constraintlayout:constraintlayout:2.2.1")
-            implementation("androidx.annotation:annotation:1.9.1")
-            implementation("androidx.fragment:fragment-ktx:1.8.6")
-            implementation("androidx.recyclerview:recyclerview:1.4.0")
-            implementation("androidx.viewpager:viewpager:1.1.0")
-            implementation("androidx.localbroadcastmanager:localbroadcastmanager:1.1.0")
+                implementation("androidx.navigation:navigation-compose:2.9.0")
 
-            // Jetpack Compose
-            val composeBom = platform("androidx.compose:compose-bom:2025.04.01")
-            implementation(composeBom)
-            androidTestImplementation(composeBom)
-            implementation("androidx.compose.material:material")
-            implementation("androidx.activity:activity-compose")
-            // Jetpack Compose Previews
-            implementation("androidx.compose.ui:ui-tooling-preview")
-            debugImplementation("androidx.compose.ui:ui-tooling")
+                implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.9.0")
+                implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.9.0")
 
-            implementation("androidx.navigation:navigation-compose:2.8.9")
+                // reorderable lists (raw Compose API is pretty complicated)
+                implementation("sh.calvin.reorderable:reorderable:2.4.3")
 
-            implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.7")
-            implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.7")
+                // multiplatform webview (for login via OAuth)
+                implementation("io.github.kevinnzou:compose-webview-multiplatform-android:1.9.40")
 
-            // reorderable lists (raw Compose API is pretty complicated)
-            implementation("sh.calvin.reorderable:reorderable:2.4.3")
+                // photos
+                implementation("androidx.exifinterface:exifinterface:1.4.1")
 
-            // multiplatform webview (for login via OAuth)
-            implementation("io.github.kevinnzou:compose-webview-multiplatform-android:1.9.40")
+                // settings
+                implementation("com.russhwolf:multiplatform-settings:1.3.0")
 
-            // photos
-            implementation("androidx.exifinterface:exifinterface:1.4.1")
+                // Kotlin
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2")
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.10.2")
+                implementation("org.jetbrains.kotlinx:kotlinx-io-core:0.7.0")
 
-            // settings
-            implementation("com.russhwolf:multiplatform-settings:1.3.0")
+                // Date/time
+                implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.6.2")
 
-            // Kotlin
-            implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2")
-            implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.10.2")
-            implementation("org.jetbrains.kotlinx:kotlinx-io-core:0.7.0")
+                // scheduling background jobs
+                implementation("androidx.work:work-runtime-ktx:2.10.1")
 
-            // Date/time
-            api("org.jetbrains.kotlinx:kotlinx-datetime:0.6.2")
+                // HTTP Client
+                implementation("io.ktor:ktor-client-core:3.1.3")
+                implementation("io.ktor:ktor-client-android:3.1.3")
+                implementation("io.ktor:ktor-client-encoding:3.1.3")
 
-            // scheduling background jobs
-            implementation("androidx.work:work-runtime-ktx:2.10.1")
+                // finding in which country we are for country-specific logic
+                implementation("de.westnordost:countryboundaries:3.0.0")
+                // finding a name for a feature without a name tag
+                implementation("de.westnordost:osmfeatures:7.0")
 
-            // HTTP Client
-            implementation("io.ktor:ktor-client-core:3.1.3")
-            implementation("io.ktor:ktor-client-android:3.1.3")
-            implementation("io.ktor:ktor-client-encoding:3.1.3")
-            testImplementation("io.ktor:ktor-client-mock:3.1.3")
+                // widgets
+                implementation("androidx.viewpager2:viewpager2:1.1.0")
+                implementation("me.grantland:autofittextview:0.2.1")
+                implementation("com.google.android.flexbox:flexbox:3.0.0")
 
-            // finding in which country we are for country-specific logic
-            implementation("de.westnordost:countryboundaries:3.0.0")
-            // finding a name for a feature without a name tag
-            implementation("de.westnordost:osmfeatures:7.0")
+                // sharing presets/settings via QR Code
+                implementation("io.github.alexzhirkevich:qrose:1.0.1")
+                // for encoding information for the URL configuration (QR code)
+                implementation("com.ionspin.kotlin:bignum:0.3.10")
 
-            // widgets
-            implementation("androidx.viewpager2:viewpager2:1.1.0")
-            implementation("me.grantland:autofittextview:0.2.1")
-            implementation("com.google.android.flexbox:flexbox:3.0.0")
+                // serialization
+                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.8.1")
+                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json-io:1.8.1")
+                implementation("com.charleskorn.kaml:kaml:0.77.1")
+                implementation("io.github.pdvrieze.xmlutil:core:0.91.0")
+                implementation("io.github.pdvrieze.xmlutil:core-io:0.91.0")
 
-            // sharing presets/settings via QR Code
-            implementation("io.github.alexzhirkevich:qrose:1.0.1")
-            // for encoding information for the URL configuration (QR code)
-            implementation("com.ionspin.kotlin:bignum:0.3.10")
+                // map and location
+                implementation("org.maplibre.gl:android-sdk:11.8.8")
 
-            // serialization
-            implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.8.1")
-            implementation("org.jetbrains.kotlinx:kotlinx-serialization-json-io:1.8.1")
-            implementation("com.charleskorn.kaml:kaml:0.77.1")
-            implementation("io.github.pdvrieze.xmlutil:core:0.91.0")
-            implementation("io.github.pdvrieze.xmlutil:core-io:0.91.0")
+                // opening hours parser
+                implementation("de.westnordost:osm-opening-hours:0.2.0")
 
-            // map and location
-            implementation("org.maplibre.gl:android-sdk:11.8.7")
-
-            // opening hours parser
-            implementation("de.westnordost:osm-opening-hours:0.2.0")
-
-            // image view that allows zoom and pan
-            implementation("com.github.chrisbanes:PhotoView:2.3.0")
+                // image view that allows zoom and pan
+                implementation("com.github.chrisbanes:PhotoView:2.3.0")
+            }
         }
-        androidTest.dependencies {
-            // TODO
+        androidUnitTest {
+            dependencies {
+                implementation("org.mockito:mockito-core:5.17.0")
+                implementation(kotlin("test"))
+                implementation("io.ktor:ktor-client-mock:3.1.3")
+            }
         }
-        commonMain.dependencies {
-            // TODO
+        androidInstrumentedTest {
+            dependencies {
+                implementation(kotlin("test"))
+                // android tests
+                implementation("androidx.test:runner:1.6.2")
+                implementation("androidx.test:rules:1.6.1")
+            }
         }
-        commonTest.dependencies {
-            // TODO
+        commonMain {
+            dependencies {
+                // TODO
+            }
+        }
+        commonTest {
+            dependencies {
+                // TODO
+            }
         }
     }
 }
@@ -172,9 +177,6 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
-    }
-    kotlinOptions {
-        jvmTarget = "11"
     }
 
     signingConfigs {
@@ -231,10 +233,6 @@ android {
         )
         abortOnError = false
     }
-}
-
-composeCompiler {
-    enableStrongSkippingMode = true
 }
 
 val keystorePropertiesFile = rootProject.file("keystore.properties")
