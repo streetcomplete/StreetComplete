@@ -42,7 +42,7 @@ kotlin {
         androidMain {
             dependencies {
                 // dependency injection
-                implementation(platform("io.insert-koin:koin-bom:4.0.4"))
+                implementation(project.dependencies.platform("io.insert-koin:koin-bom:4.0.4"))
                 implementation("io.insert-koin:koin-core")
                 implementation("io.insert-koin:koin-android")
                 implementation("io.insert-koin:koin-androidx-workmanager")
@@ -60,7 +60,7 @@ kotlin {
                 implementation("androidx.localbroadcastmanager:localbroadcastmanager:1.1.0")
 
                 // Jetpack Compose
-                val composeBom = platform("androidx.compose:compose-bom:2025.04.01")
+                val composeBom = project.dependencies.platform("androidx.compose:compose-bom:2025.04.01")
                 implementation(composeBom)
 
                 implementation("androidx.compose.material:material")
