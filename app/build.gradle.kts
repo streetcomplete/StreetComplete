@@ -5,11 +5,18 @@ import java.io.FileWriter
 import java.util.Properties
 
 plugins {
-    id("com.android.application")
-    // TODO remove this?: kotlin("android")
+    id("org.jetbrains.kotlin.multiplatform") version "2.1.21"
     id("org.jetbrains.kotlin.plugin.serialization") version "2.1.21"
     id("org.jetbrains.kotlin.plugin.compose") version "2.1.21"
+    id("com.android.application") version "8.7.3"
     //id("org.jetbrains.compose") version "1.8.0" apply false
+}
+
+repositories {
+    google()
+    mavenCentral()
+    // for com.github.chrisbaines:PhotoView
+    maven { url = uri("https://www.jitpack.io") }
 }
 
 kotlin {

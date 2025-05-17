@@ -1,33 +1,11 @@
-
 plugins {
     // this is necessary to avoid the plugins to be loaded multiple times
     // in each subproject's classloader
-    id("com.android.application") apply false
-    id("com.android.library") apply false
     id("org.jetbrains.kotlin.multiplatform") version "2.1.21" apply false
     id("org.jetbrains.kotlin.plugin.compose") version "2.1.21"  apply false
+    id("com.android.application") version "8.7.3" apply false
+    id("com.android.library") version "8.7.3" apply false
     //id("org.jetbrains.compose") version "1.8.0" apply false
-}
-
-
-buildscript {
-    repositories {
-        google()
-        mavenCentral()
-    }
-    dependencies {
-        classpath("com.android.tools.build:gradle:8.9.3")
-        classpath("org.jetbrains.kotlin.gradle-plugin:2.1.21")
-    }
-}
-
-allprojects {
-    repositories {
-        google()
-        mavenCentral()
-        // for com.github.chrisbaines:PhotoView
-        maven { url = uri("https://www.jitpack.io") }
-    }
 }
 
 val poEditorProjectId = "97843"
@@ -143,3 +121,4 @@ tasks.register("updateStreetCompleteData") {
         "app:downloadAndConvertPresetIcons"
     )
 }
+
