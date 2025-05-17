@@ -86,7 +86,7 @@ tasks.register<GenerateQuestListTask>("generateQuestList") {
     group = "streetcomplete"
     targetFile = "$projectDir/quest-list.csv"
     projectDirectory = projectDir
-    sourceDirectory = projectDir.resolve("app/src/main/java/de/westnordost/streetcomplete/")
+    sourceDirectory = projectDir.resolve("app/src/androidMain/kotlin/de/westnordost/streetcomplete/")
     iconsDirectory = projectDir.resolve("res/graphics/quest/")
     noteQuestFile = sourceDirectory.resolve("data/osmnotes/notequests/OsmNoteQuestType.kt")
 }
@@ -108,7 +108,7 @@ tasks.register<UpdateContributorStatisticsTask>("updateContributorStatistics") {
     )
     val skipWords = listOf("lint", "linter", "reorder imports", "organize imports")
     skipCommitRegex = Regex(".*\\b(${skipWords.joinToString("|")})\\b.*", RegexOption.IGNORE_CASE)
-    targetFile = "$projectDir/app/src/main/res/raw/credits_contributors.yml"
+    targetFile = "$projectDir/app/src/androidMain/res/raw/credits_contributors.yml"
     // gradle, py, bat, java and mjs don't exist anymore in this repo but they used to
     codeFileRegex = Regex(".*\\.(java|kt|kts|py|gradle|bat|mjs)$")
     /* photos, illustrations, sounds ... but not yml, json, ... because most of these are updated

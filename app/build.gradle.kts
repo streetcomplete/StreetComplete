@@ -261,7 +261,7 @@ val poEditorProjectId = "97843"
 tasks.register("updateAvailableLanguages") {
     group = "streetcomplete"
     doLast {
-        val fileWriter = FileWriter("$projectDir/src/main/res/raw/languages.yml", false)
+        val fileWriter = FileWriter("$projectDir/src/androidMain/res/raw/languages.yml", false)
         fileWriter.write(bcp47ExportLanguages.joinToString("\n") { "- $it" })
         fileWriter.write("\n")
         fileWriter.close()
@@ -270,7 +270,7 @@ tasks.register("updateAvailableLanguages") {
 
 tasks.register<GetTranslatorCreditsTask>("updateTranslatorCredits") {
     group = "streetcomplete"
-    targetFile = "$projectDir/src/main/res/raw/credits_translators.yml"
+    targetFile = "$projectDir/src/androidMain/res/raw/credits_translators.yml"
     languageCodes = bcp47ExportLanguages
     cookie = properties["POEditorCookie"] as String
     phpsessid = properties["POEditorPHPSESSID"] as String
@@ -280,28 +280,28 @@ tasks.register<UpdatePresetsTask>("updatePresets") {
     group = "streetcomplete"
     version = presetsVersion
     languageCodes = bcp47ExportLanguages
-    targetDir = "$projectDir/src/main/assets/osmfeatures/default"
+    targetDir = "$projectDir/src/androidMain/assets/osmfeatures/default"
 }
 
 tasks.register<UpdateNsiPresetsTask>("updateNsiPresets") {
     group = "streetcomplete"
     version = nsiVersion
-    targetDir = "$projectDir/src/main/assets/osmfeatures/brands"
+    targetDir = "$projectDir/src/androidMain/assets/osmfeatures/brands"
 }
 
 // tasks.register<DownloadBrandLogosTask>("downloadBrandLogos") {
 //     group = "streetcomplete"
 //     version = nsiVersion
-//     targetDir = "$projectDir/src/main/assets/osmfeatures/brands"
+//     targetDir = "$projectDir/src/androidMain/assets/osmfeatures/brands"
 // }
 
 tasks.register<DownloadAndConvertPresetIconsTask>("downloadAndConvertPresetIcons") {
     group = "streetcomplete"
     version = presetsVersion
-    targetDir = "$projectDir/src/main/res/drawable/"
+    targetDir = "$projectDir/src/androidMain/res/drawable/"
     iconSize = 34
     transformName = { "ic_preset_" + it.replace('-', '_') }
-    indexFile = "$projectDir/src/main/java/de/westnordost/streetcomplete/view/PresetIconIndex.kt"
+    indexFile = "$projectDir/src/androidMain/kotlin/de/westnordost/streetcomplete/view/PresetIconIndex.kt"
 }
 
 tasks.register<UpdateAppTranslationsTask>("updateTranslations") {
@@ -309,7 +309,7 @@ tasks.register<UpdateAppTranslationsTask>("updateTranslations") {
     languageCodes = bcp47ExportLanguages
     apiToken = properties["POEditorAPIToken"] as String
     projectId = poEditorProjectId
-    targetFiles = { "$projectDir/src/main/res/values-$it/strings.xml" }
+    targetFiles = { "$projectDir/src/androidMain/res/values-$it/strings.xml" }
 }
 
 tasks.register<UpdateAppTranslationCompletenessTask>("updateTranslationCompleteness") {
@@ -318,18 +318,18 @@ tasks.register<UpdateAppTranslationCompletenessTask>("updateTranslationCompleten
     mustIncludeLanguagePercentage = 90
     apiToken = properties["POEditorAPIToken"] as String
     projectId = poEditorProjectId
-    targetFiles = { "$projectDir/src/main/res/values-$it/translation_info.xml" }
+    targetFiles = { "$projectDir/src/androidMain/res/values-$it/translation_info.xml" }
 }
 
 tasks.register<UpdateChangelogTask>("updateChangelog") {
     group = "streetcomplete"
     sourceFile = "$rootDir/CHANGELOG.md"
-    targetFile = "$projectDir/src/main/res/raw/changelog.html"
+    targetFile = "$projectDir/src/androidMain/res/raw/changelog.html"
 }
 
 tasks.register<UpdateMapStyleTask>("updateMapStyle") {
     group = "streetcomplete"
-    targetDir = "$projectDir/src/main/assets/map_theme"
+    targetDir = "$projectDir/src/androidMain/assets/map_theme"
     apiKey = "mL9X4SwxfsAGfojvGiion9hPKuGLKxPbogLyMbtakA2gJ3X88gcVlTSQ7OD6OfbZ"
     mapStyleBranch = "master"
 }
@@ -337,12 +337,12 @@ tasks.register<UpdateMapStyleTask>("updateMapStyle") {
 tasks.register<GenerateMetadataByCountryTask>("generateMetadataByCountry") {
     group = "streetcomplete"
     sourceDir = "$rootDir/res/country_metadata"
-    targetDir = "$projectDir/src/main/assets/country_metadata"
+    targetDir = "$projectDir/src/androidMain/assets/country_metadata"
 }
 
 tasks.register("copyDefaultStringsToEnStrings") {
     doLast {
-        File("$projectDir/src/main/res/values/strings.xml")
-            .copyTo(File("$projectDir/src/main/res/values-en/strings.xml"), true)
+        File("$projectDir/src/androidMain/res/values/strings.xml")
+            .copyTo(File("$projectDir/src/androidMain/res/values-en/strings.xml"), true)
     }
 }

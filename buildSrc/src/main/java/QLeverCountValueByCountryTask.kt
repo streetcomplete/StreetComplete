@@ -29,7 +29,7 @@ open class QLeverCountValueByCountryTask : DefaultTask() {
 
     private val firstPointRegex = Regex("[A-Za-z(]*([-+\\d.]*) ([-+\\d.]*)")
     private val boundaries = CountryBoundaries.deserializeFrom(
-        FileInputStream("${project.projectDir}/app/src/main/assets/boundaries.ser").asSource().buffered()
+        FileInputStream("${project.projectDir}/app/src/androidMain/assets/boundaries.ser").asSource().buffered()
     )
 
     @TaskAction fun run() {
