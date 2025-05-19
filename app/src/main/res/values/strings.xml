@@ -104,7 +104,7 @@ The info you enter is directly added to OpenStreetMap in your name, without the 
     <!-- As in: "show more of those pictures to select an answer from -->
     <string name="quest_roofShape_show_more">"Show more…"</string>
     <!-- E.g "tactile paving at a crosswalk usually looks like this: <picture of tactile paving shown> -->
-    <string name="quest_generic_looks_like_this">Usually looks like this:</string>
+    <string name="quest_generic_looks_like_this">Note that mere surface transitions (e.g. sett) or anti-slip strips (e.g. on steps) do NOT count as tactile paving. Tactile paving usually looks like this:</string>
     <!-- E.g user answered that the surface of a road is "paved", but maybe he can say what kind of pavement it is? -->
     <string name="quest_generic_item_confirmation">Are you sure that you can not determine it more specifically?</string>
 
