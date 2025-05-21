@@ -9,8 +9,6 @@ import androidx.core.os.bundleOf
 import de.westnordost.streetcomplete.ApplicationConstants.STREETMEASURE
 import de.westnordost.streetcomplete.data.meta.LengthUnit
 import de.westnordost.streetcomplete.osm.Length
-import de.westnordost.streetcomplete.osm.LengthInFeetAndInches
-import de.westnordost.streetcomplete.osm.LengthInMeters
 
 class MeasureContract : ActivityResultContract<MeasureContract.Params, Length?>() {
     data class Params(val lengthUnit: LengthUnit, val measureVertical: Boolean)
@@ -42,13 +40,13 @@ class MeasureContract : ActivityResultContract<MeasureContract.Params, Length?>(
 
         val meters = intent?.getDoubleExtra("meters", -1.0)?.takeIf { it != -1.0 }
         if (meters != null) {
-            return LengthInMeters(meters)
+            return Length.Meters(meters)
         }
 
         val feet = intent?.getIntExtra("feet", -1)?.takeIf { it != -1 }
         val inches = intent?.getIntExtra("inches", -1)?.takeIf { it != -1 }
         if (feet != null && inches != null) {
-            return LengthInFeetAndInches(feet, inches)
+            return Length.FeetAndInches(feet, inches)
         }
         return null
     }

@@ -20,7 +20,6 @@ import de.westnordost.streetcomplete.quests.opening_hours.adapter.OpeningHoursAd
 import de.westnordost.streetcomplete.quests.opening_hours.adapter.OpeningMonthsRow
 import de.westnordost.streetcomplete.quests.opening_hours.adapter.OpeningWeekdaysRow
 import de.westnordost.streetcomplete.view.AdapterDataChangedWatcher
-import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 
 class AddOpeningHoursForm : AbstractOsmQuestForm<OpeningHoursAnswer>() {

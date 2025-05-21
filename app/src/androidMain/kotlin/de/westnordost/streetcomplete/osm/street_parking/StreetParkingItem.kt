@@ -42,51 +42,51 @@ fun StreetParking.asStreetSideItem(
 )
 
 private val StreetParking.titleResId: Int? get() = when (this) {
-    NoStreetParking -> R.string.street_parking_no
-    is StreetParkingPositionAndOrientation -> position.titleResId
-    StreetParkingSeparate -> R.string.street_parking_separate
-    UnknownStreetParking, IncompleteStreetParking -> null
+    StreetParking.None -> R.string.street_parking_no
+    is StreetParking.PositionAndOrientation -> position.titleResId
+    StreetParking.Separate -> R.string.street_parking_separate
+    StreetParking.Unknown, StreetParking.Incomplete -> null
 }
 
 /** Image that should be shown in the street side select puzzle */
 private fun StreetParking.getIcon(context: Context, isUpsideDown: Boolean, isRightSide: Boolean): Image = when (this) {
-    is StreetParkingPositionAndOrientation ->
+    is StreetParking.PositionAndOrientation ->
         getIcon(context, isUpsideDown, isRightSide)
-    NoStreetParking, StreetParkingSeparate ->
+    StreetParking.None, StreetParking.Separate ->
         ResImage(R.drawable.ic_street_none)
-    UnknownStreetParking, IncompleteStreetParking ->
+    StreetParking.Unknown, StreetParking.Incomplete ->
         ResImage(if (isUpsideDown) R.drawable.ic_street_side_unknown_l else R.drawable.ic_street_side_unknown)
 }
 
 /** Icon that should be shown as the icon in a selection dialog */
 private fun StreetParking.getDialogIcon(context: Context, isUpsideDown: Boolean): Image = when (this) {
-    is StreetParkingPositionAndOrientation ->
+    is StreetParking.PositionAndOrientation ->
         getDialogIcon(context, isUpsideDown)
-    NoStreetParking ->
+    StreetParking.None ->
         ResImage(R.drawable.ic_floating_no)
-    StreetParkingSeparate ->
+    StreetParking.Separate ->
         ResImage(R.drawable.ic_floating_separate)
-    IncompleteStreetParking, UnknownStreetParking ->
+    StreetParking.Incomplete, StreetParking.Unknown ->
         ResImage(if (isUpsideDown) R.drawable.ic_street_side_unknown_l else R.drawable.ic_street_side_unknown)
 }
 
 /** Icon that should be shown as the floating icon in the street side select puzzle */
 private fun StreetParking.getFloatingIcon(): Image? = when (this) {
-    StreetParkingSeparate -> ResImage(R.drawable.ic_floating_separate)
+    StreetParking.Separate -> ResImage(R.drawable.ic_floating_separate)
     else -> null
 }
 
-fun StreetParkingPositionAndOrientation.asItem(context: Context, isUpsideDown: Boolean) =
+fun StreetParking.PositionAndOrientation.asItem(context: Context, isUpsideDown: Boolean) =
     Item2(this, getDialogIcon(context, isUpsideDown), ResText(position.titleResId))
 
 /** An icon for a street parking is square and shows always the same car so it is easier to spot
  *  the variation that matters(on kerb, half on kerb etc) */
-private fun StreetParkingPositionAndOrientation.getDialogIcon(context: Context, isUpsideDown: Boolean): Image =
+private fun StreetParking.PositionAndOrientation.getDialogIcon(context: Context, isUpsideDown: Boolean): Image =
     DrawableImage(StreetParkingDrawable(context, orientation, position, isUpsideDown, 128, 128, R.drawable.ic_car1))
 
 /** An image for a street parking to be displayed shows a wide variety of different cars so that
  *  it looks nicer and/or closer to reality */
-private fun StreetParkingPositionAndOrientation.getIcon(context: Context, isUpsideDown: Boolean, isRightSide: Boolean): Image {
+private fun StreetParking.PositionAndOrientation.getIcon(context: Context, isUpsideDown: Boolean, isRightSide: Boolean): Image {
     val drawable = StreetParkingDrawable(context, orientation, position, isUpsideDown, 128, 512)
     // show left and right side staggered to each other
     if (isRightSide) drawable.phase = 0.5f

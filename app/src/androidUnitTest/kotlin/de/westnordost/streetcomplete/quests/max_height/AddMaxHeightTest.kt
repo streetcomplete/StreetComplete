@@ -2,8 +2,6 @@ package de.westnordost.streetcomplete.quests.max_height
 
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
-import de.westnordost.streetcomplete.osm.LengthInFeetAndInches
-import de.westnordost.streetcomplete.osm.LengthInMeters
 import de.westnordost.streetcomplete.quests.TestMapDataWithGeometry
 import de.westnordost.streetcomplete.quests.answerApplied
 import de.westnordost.streetcomplete.testutils.node

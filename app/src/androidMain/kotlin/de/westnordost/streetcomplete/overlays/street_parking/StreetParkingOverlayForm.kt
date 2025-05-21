@@ -6,16 +6,13 @@ import android.view.View
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
-import de.westnordost.streetcomplete.osm.isForwardOneway
-import de.westnordost.streetcomplete.osm.isReversedOneway
+import de.westnordost.streetcomplete.osm.oneway.isForwardOneway
+import de.westnordost.streetcomplete.osm.oneway.isReversedOneway
 import de.westnordost.streetcomplete.osm.street_parking.DISPLAYED_PARKING_POSITIONS
 import de.westnordost.streetcomplete.osm.street_parking.LeftAndRightStreetParking
-import de.westnordost.streetcomplete.osm.street_parking.NoStreetParking
 import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation
 import de.westnordost.streetcomplete.osm.street_parking.StreetParking
 import de.westnordost.streetcomplete.osm.street_parking.StreetParkingDrawable
-import de.westnordost.streetcomplete.osm.street_parking.StreetParkingPositionAndOrientation
-import de.westnordost.streetcomplete.osm.street_parking.StreetParkingSeparate
 import de.westnordost.streetcomplete.osm.street_parking.applyTo
 import de.westnordost.streetcomplete.osm.street_parking.asItem
 import de.westnordost.streetcomplete.osm.street_parking.asStreetSideItem
@@ -34,7 +31,6 @@ import de.westnordost.streetcomplete.view.ResText
 import de.westnordost.streetcomplete.view.image_select.DisplayItem
 import de.westnordost.streetcomplete.view.image_select.ImageListPickerDialog
 import de.westnordost.streetcomplete.view.image_select.Item2
-import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 
 class StreetParkingOverlayForm : AStreetSideSelectOverlayForm<StreetParking>() {
@@ -97,8 +93,8 @@ class StreetParkingOverlayForm : AStreetSideSelectOverlayForm<StreetParking>() {
         val items = getParkingItems(ctx)
         ImageListPickerDialog(ctx, items, R.layout.cell_icon_select_with_label_below, 2, R.string.select_street_parking_orientation) {
             when (it.value!!) {
-                NO -> onSelectedSide(NoStreetParking, isRight)
-                SEPARATE -> onSelectedSide(StreetParkingSeparate, isRight)
+                NO -> onSelectedSide(StreetParking.None, isRight)
+                SEPARATE -> onSelectedSide(StreetParking.Separate, isRight)
                 PARALLEL -> showParkingPositionDialog(ParkingOrientation.PARALLEL, isRight)
                 DIAGONAL -> showParkingPositionDialog(ParkingOrientation.DIAGONAL, isRight)
                 PERPENDICULAR -> showParkingPositionDialog(ParkingOrientation.PERPENDICULAR, isRight)
@@ -124,7 +120,7 @@ class StreetParkingOverlayForm : AStreetSideSelectOverlayForm<StreetParking>() {
 
     private fun getParkingPositionItems(context: Context, orientation: ParkingOrientation) =
         DISPLAYED_PARKING_POSITIONS
-            .map { StreetParkingPositionAndOrientation(orientation, it) }
+            .map { StreetParking.PositionAndOrientation(orientation, it) }
             .map { it.asItem(context, isLeftHandTraffic) }
 
     /* --------------------------------------- apply answer ------------------------------------- */

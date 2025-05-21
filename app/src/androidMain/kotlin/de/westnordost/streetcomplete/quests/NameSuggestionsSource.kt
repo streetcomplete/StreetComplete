@@ -4,8 +4,8 @@ import de.westnordost.streetcomplete.data.elementfilter.ElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
-import de.westnordost.streetcomplete.osm.LocalizedName
-import de.westnordost.streetcomplete.osm.parseLocalizedNames
+import de.westnordost.streetcomplete.osm.localized_name.LocalizedName
+import de.westnordost.streetcomplete.osm.localized_name.parseLocalizedNames
 import de.westnordost.streetcomplete.util.math.distance
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import de.westnordost.streetcomplete.util.math.enlargedBy

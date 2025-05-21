@@ -11,8 +11,6 @@ import androidx.core.widget.doAfterTextChanged
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.LengthUnit
 import de.westnordost.streetcomplete.osm.Length
-import de.westnordost.streetcomplete.osm.LengthInFeetAndInches
-import de.westnordost.streetcomplete.osm.LengthInMeters
 import de.westnordost.streetcomplete.util.ktx.intOrNull
 import de.westnordost.streetcomplete.util.ktx.numberOrNull
 import de.westnordost.streetcomplete.view.OnAdapterItemSelectedListener
@@ -85,22 +83,22 @@ class LengthInputViewController(
     var length: Length?
         get() = when (unit) {
             LengthUnit.METER -> {
-                metersInput.numberOrNull?.let { LengthInMeters(it) }
+                metersInput.numberOrNull?.let { Length.Meters(it) }
             }
             LengthUnit.FOOT_AND_INCH -> {
                 val feet = feetInput.intOrNull
                 val inches = inchesInput.intOrNull
-                if (feet != null && inches != null) LengthInFeetAndInches(feet, inches) else null
+                if (feet != null && inches != null) Length.FeetAndInches(feet, inches) else null
             }
             null -> null
         }
         set(value) {
             when (value) {
-                is LengthInFeetAndInches -> {
+                is Length.FeetAndInches -> {
                     feetInput.setText(value.feet.toString())
                     inchesInput.setText(value.inches.toString())
                 }
-                is LengthInMeters -> {
+                is Length.Meters -> {
                     metersInput.setText(value.meters.toString())
                 }
                 null -> {}

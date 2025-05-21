@@ -9,7 +9,7 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.databinding.QuestLevelBinding
 import de.westnordost.streetcomplete.osm.isPlaceOrDisusedPlace
-import de.westnordost.streetcomplete.osm.level.SingleLevel
+import de.westnordost.streetcomplete.osm.level.Level
 import de.westnordost.streetcomplete.osm.level.levelsIntersect
 import de.westnordost.streetcomplete.osm.level.parseLevelsOrNull
 import de.westnordost.streetcomplete.osm.level.parseSelectableLevels
@@ -98,7 +98,7 @@ class AddLevelForm : AbstractOsmQuestForm<String>() {
     private fun updateMarkers(level: Double?) {
         showsGeometryMarkersListener?.clearMarkersForCurrentHighlighting()
         if (level == null) return
-        val levels = listOf(SingleLevel(level))
+        val levels = listOf(Level.Single(level))
         val markers = shopElementsAndGeometry.mapNotNull { (element, geometry) ->
             if (!parseLevelsOrNull(element.tags).levelsIntersect(levels)) return@mapNotNull null
             val icon = getIcon(featureDictionary, element)

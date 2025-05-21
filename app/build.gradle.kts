@@ -99,6 +99,8 @@ kotlin {
                 //implementation("de.westnordost:countryboundaries:3.0.0")
                 // finding a name for a feature without a name tag
                 //implementation("de.westnordost:osmfeatures:7.0")
+                // opening hours parser
+                //implementation("de.westnordost:osm-opening-hours:0.2.0")
 
                 // Kotlin
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2")
@@ -124,12 +126,8 @@ kotlin {
 
                 implementation("com.charleskorn.kaml:kaml:0.77.1")
 
-
                 // map and location
                 implementation("org.maplibre.gl:android-sdk:11.8.8")
-
-                // opening hours parser
-                implementation("de.westnordost:osm-opening-hours:0.2.0")
 
                 // image view that allows zoom and pan
                 implementation("com.github.chrisbanes:PhotoView:2.3.0")
@@ -174,6 +172,9 @@ kotlin {
 
                 // finding a name for a feature without a name tag
                 implementation("de.westnordost:osmfeatures:7.0")
+
+                // opening hours parser
+                implementation("de.westnordost:osm-opening-hours:0.2.0")
             }
         }
         commonTest {

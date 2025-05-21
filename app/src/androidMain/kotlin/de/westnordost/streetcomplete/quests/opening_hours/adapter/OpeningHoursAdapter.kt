@@ -12,23 +12,18 @@ import de.westnordost.streetcomplete.databinding.QuestTimesMonthRowBinding
 import de.westnordost.streetcomplete.databinding.QuestTimesOffdayRowBinding
 import de.westnordost.streetcomplete.databinding.QuestTimesWeekdayRowBinding
 import de.westnordost.streetcomplete.osm.opening_hours.model.Months
+import de.westnordost.streetcomplete.osm.opening_hours.model.OffDaysRow
+import de.westnordost.streetcomplete.osm.opening_hours.model.OpeningHoursRow
+import de.westnordost.streetcomplete.osm.opening_hours.model.OpeningMonthsRow
+import de.westnordost.streetcomplete.osm.opening_hours.model.OpeningWeekdaysRow
 import de.westnordost.streetcomplete.osm.opening_hours.model.TimeRange
 import de.westnordost.streetcomplete.osm.opening_hours.model.Weekdays
 import de.westnordost.streetcomplete.osm.opening_hours.parser.toOpeningHours
 import de.westnordost.streetcomplete.quests.opening_hours.MonthsPickerDialog
 import de.westnordost.streetcomplete.quests.opening_hours.TimeRangePickerDialog
 import de.westnordost.streetcomplete.quests.opening_hours.WeekdaysPickerDialog
-import kotlinx.serialization.Serializable
 import java.util.Locale
 
-@Serializable
-sealed class OpeningHoursRow
-@Serializable
-data class OpeningMonthsRow(var months: Months) : OpeningHoursRow()
-@Serializable
-data class OpeningWeekdaysRow(var weekdays: Weekdays, var timeRange: TimeRange) : OpeningHoursRow()
-@Serializable
-data class OffDaysRow(var weekdays: Weekdays) : OpeningHoursRow()
 
 class OpeningHoursAdapter(private val context: Context) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {

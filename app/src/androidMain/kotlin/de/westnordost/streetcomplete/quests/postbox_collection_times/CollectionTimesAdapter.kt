@@ -16,9 +16,6 @@ import de.westnordost.streetcomplete.view.dialogs.TimePickerDialog
 import kotlinx.serialization.Serializable
 import java.util.Locale
 
-@Serializable
-data class CollectionTimesRow(var weekdays: Weekdays, var time: Int)
-
 class CollectionTimesAdapter(
     private val context: Context,
     private val countryInfo: CountryInfo

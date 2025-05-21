@@ -10,10 +10,8 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.osm.MAXSPEED_TYPE_KEYS
 import de.westnordost.streetcomplete.osm.isPrivateOnFoot
-import de.westnordost.streetcomplete.osm.lane_narrowing_traffic_calming.LaneNarrowingTrafficCalming
-import de.westnordost.streetcomplete.osm.lane_narrowing_traffic_calming.parseNarrowingTrafficCalming
-import de.westnordost.streetcomplete.osm.street_parking.IncompleteStreetParking
-import de.westnordost.streetcomplete.osm.street_parking.NoStreetParking
+import de.westnordost.streetcomplete.osm.traffic_calming.LaneNarrowingTrafficCalming
+import de.westnordost.streetcomplete.osm.traffic_calming.parseNarrowingTrafficCalming
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.HALF_ON_STREET
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.OFF_STREET
@@ -23,9 +21,6 @@ import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.STAGGERE
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.STAGGERED_ON_STREET
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.STREET_SIDE
 import de.westnordost.streetcomplete.osm.street_parking.StreetParking
-import de.westnordost.streetcomplete.osm.street_parking.StreetParkingPositionAndOrientation
-import de.westnordost.streetcomplete.osm.street_parking.StreetParkingSeparate
-import de.westnordost.streetcomplete.osm.street_parking.UnknownStreetParking
 import de.westnordost.streetcomplete.osm.street_parking.parseStreetParkingSides
 import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 import de.westnordost.streetcomplete.overlays.Color
@@ -130,14 +125,14 @@ private val ParkingPosition.color: String get() = when (this) {
 }
 
 private val StreetParking?.style: StrokeStyle get() = when (this) {
-    is StreetParkingPositionAndOrientation ->
+    is StreetParking.PositionAndOrientation ->
                                 StrokeStyle(position.color, position.isDashed)
 
-    NoStreetParking ->          StrokeStyle(Color.BLACK)
+    StreetParking.None ->       StrokeStyle(Color.BLACK)
 
-    StreetParkingSeparate ->    StrokeStyle(Color.INVISIBLE)
+    StreetParking.Separate ->   StrokeStyle(Color.INVISIBLE)
 
-    UnknownStreetParking,
-    IncompleteStreetParking,
+    StreetParking.Unknown,
+    StreetParking.Incomplete,
     null ->                     StrokeStyle(Color.DATA_REQUESTED)
 }

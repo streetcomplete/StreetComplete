@@ -6,7 +6,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.osm.applyTo
+import de.westnordost.streetcomplete.osm.localized_name.applyTo
 
 class AddBusStopName : OsmFilterQuestType<BusStopNameAnswer>() {
 

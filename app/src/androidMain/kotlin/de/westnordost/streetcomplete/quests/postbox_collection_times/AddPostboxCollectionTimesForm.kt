@@ -16,7 +16,6 @@ import de.westnordost.streetcomplete.osm.opening_hours.parser.toCollectionTimesR
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.view.AdapterDataChangedWatcher
-import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 
 class AddPostboxCollectionTimesForm : AbstractOsmQuestForm<CollectionTimesAnswer>() {
