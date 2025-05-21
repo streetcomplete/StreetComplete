@@ -86,7 +86,7 @@ interface ScaleBarMeasure {
 
 /** format a number with a unit symbol, not showing the decimal point if it's an integer */
 private fun Double.formatForDisplay(symbol: String) =
-    if (this.toInt().toDouble() == this) "${this.toInt()} $symbol" else "${this} $symbol"
+    if (this.toInt().toDouble() == this) "${this.toInt()} $symbol" else "$this $symbol"
 
 /** build a list of stops by multiplying mantissas by 10^exponents, like scientific notation */
 private fun buildStops(mantissas: List<Int>, exponents: IntRange) = buildList {
