@@ -56,11 +56,5 @@ class ElementGeometryDao(
     }
 }
 
-data class ElementGeometryEntry(
-    val elementType: ElementType,
-    val elementId: Long,
-    val geometry: ElementGeometry
-)
-
 private fun Iterable<ElementKey>.filterByType(type: ElementType) =
     mapNotNull { if (it.type == type) it.id else null }
