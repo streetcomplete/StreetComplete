@@ -155,7 +155,7 @@ kotlin {
         }
         commonTest {
             dependencies {
-                // TODO
+                implementation(kotlin("test"))
             }
         }
     }
