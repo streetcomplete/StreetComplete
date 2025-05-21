@@ -18,6 +18,7 @@ import de.westnordost.streetcomplete.osm.opening_hours.model.OpeningMonthsRow
 import de.westnordost.streetcomplete.osm.opening_hours.model.OpeningWeekdaysRow
 import de.westnordost.streetcomplete.osm.opening_hours.model.TimeRange
 import de.westnordost.streetcomplete.osm.opening_hours.model.Weekdays
+import de.westnordost.streetcomplete.osm.opening_hours.model.toLocalizedString
 import de.westnordost.streetcomplete.osm.opening_hours.parser.toOpeningHours
 import de.westnordost.streetcomplete.quests.opening_hours.MonthsPickerDialog
 import de.westnordost.streetcomplete.quests.opening_hours.TimeRangePickerDialog
@@ -260,7 +261,7 @@ class OpeningHoursAdapter(private val context: Context) :
                 }
             }
 
-            binding.hoursLabel.text = row.timeRange.toStringUsing(Locale.getDefault(), "–")
+            binding.hoursLabel.text = row.timeRange.toLocalizedString(Locale.getDefault())
             binding.hoursLabel.setOnClickListener {
                 openSetTimeRangeDialog(row.timeRange) { timeRange ->
                     row.timeRange = timeRange

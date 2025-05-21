@@ -8,8 +8,8 @@ import androidx.annotation.LayoutRes
 import androidx.core.view.isGone
 import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.osm.opening_hours.model.OpeningHoursRow
 import de.westnordost.streetcomplete.quests.opening_hours.adapter.OpeningHoursAdapter
-import de.westnordost.streetcomplete.quests.opening_hours.adapter.OpeningHoursRow
 import de.westnordost.streetcomplete.view.AdapterDataChangedWatcher
 import de.westnordost.streetcomplete.view.OnAdapterItemSelectedListener
 import java.util.Locale

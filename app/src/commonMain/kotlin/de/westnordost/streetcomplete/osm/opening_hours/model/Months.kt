@@ -1,8 +1,6 @@
 package de.westnordost.streetcomplete.osm.opening_hours.model
 
 import kotlinx.serialization.Serializable
-import java.text.DateFormatSymbols
-import java.util.Locale
 
 /** A selection of months */
 @Serializable
@@ -17,9 +15,6 @@ class Months(private val data: BooleanArray = BooleanArray(MONTHS_COUNT)) {
     fun isSelectionEmpty() = data.all { !it }
 
     override fun toString() = toStringUsing(OSM_ABBR_MONTHS, ",", "-")
-
-    fun toLocalizedString(locale: Locale) =
-        toStringUsing(getNames(locale), ", ", "–")
 
     fun toStringUsing(names: Array<String>, separator: String, range: String): String =
         toCircularSections().joinToString(separator) { section ->
@@ -63,11 +58,5 @@ class Months(private val data: BooleanArray = BooleanArray(MONTHS_COUNT)) {
         const val MONTHS_COUNT = 12
         val OSM_ABBR_MONTHS = arrayOf("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
         val MONTHS_NUMBER_SYSTEM = NumberSystem(0, MONTHS_COUNT - 1)
-
-        fun getNames(locale: Locale): Array<String> {
-            val symbols = DateFormatSymbols.getInstance(locale)
-            val result = symbols.months.copyOf(MONTHS_COUNT)
-            return result.requireNoNulls()
-        }
     }
 }

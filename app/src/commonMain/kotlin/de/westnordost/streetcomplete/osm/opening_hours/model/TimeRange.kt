@@ -1,8 +1,6 @@
 package de.westnordost.streetcomplete.osm.opening_hours.model
 
-import de.westnordost.streetcomplete.util.timeOfDayToString
 import kotlinx.serialization.Serializable
-import java.util.Locale
 
 /** A time range from [start,end). The times are specified in minutes. */
 @Serializable
@@ -31,12 +29,12 @@ data class TimeRange(val start: Int, val end: Int, val isOpenEnded: Boolean = fa
         return end - other.end
     }
 
-    fun toStringUsing(locale: Locale, range: String): String {
+    fun toStringUsing(range: String): String {
         val sb = StringBuilder()
-        sb.append(timeOfDayToString(locale, start))
+        sb.append(timeOfDayToString(start))
         if (start != end || !isOpenEnded) {
             sb.append(range)
-            var displayEnd = timeOfDayToString(locale, end % (24 * 60))
+            var displayEnd = timeOfDayToString(end % (24 * 60))
             if (displayEnd == "00:00") displayEnd = "24:00"
             sb.append(displayEnd)
         }
@@ -44,5 +42,11 @@ data class TimeRange(val start: Int, val end: Int, val isOpenEnded: Boolean = fa
         return sb.toString()
     }
 
-    override fun toString() = toStringUsing(Locale.GERMANY, "-")
+    override fun toString() = toStringUsing("-")
+}
+
+private fun timeOfDayToString(minutes: Int): String {
+    val h = minutes / 60
+    val m = minutes % 60
+    return h.toString().padStart(2, '0') + ":" + m.toString().padStart(2, '0')
 }

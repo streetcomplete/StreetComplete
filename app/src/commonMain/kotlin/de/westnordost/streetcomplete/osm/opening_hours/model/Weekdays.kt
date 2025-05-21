@@ -1,10 +1,6 @@
 package de.westnordost.streetcomplete.osm.opening_hours.model
 
-import android.content.res.Resources
-import de.westnordost.streetcomplete.R
 import kotlinx.serialization.Serializable
-import java.text.DateFormatSymbols
-import java.util.Locale
 
 /** A selection of weekdays */
 @Serializable
@@ -19,9 +15,6 @@ class Weekdays(private val data: BooleanArray = BooleanArray(OSM_ABBR_WEEKDAYS.s
     fun isSelectionEmpty() = data.all { !it }
 
     override fun toString() = toStringUsing(OSM_ABBR_WEEKDAYS, ",", "-")
-
-    fun toLocalizedString(r: Resources, locale: Locale) =
-        toStringUsing(getShortNames(r, locale), ", ", "–")
 
     fun toStringUsing(names: Array<String>, separator: String, range: String): String {
         val sb = StringBuilder()
@@ -95,22 +88,6 @@ class Weekdays(private val data: BooleanArray = BooleanArray(OSM_ABBR_WEEKDAYS.s
 
         private val WEEKDAY_NUMBER_SYSTEM = NumberSystem(0, WEEKDAY_COUNT - 1)
 
-        fun getNames(r: Resources, locale: Locale): Array<String> {
-            val symbols = DateFormatSymbols.getInstance(locale)
-            val result = symbols.weekdays.toIso8601Order().copyOf(OSM_ABBR_WEEKDAYS.size)
-            result[PUBLIC_HOLIDAY] = r.getString(R.string.quest_openingHours_public_holidays)
-            return result.requireNoNulls()
-        }
-
-        fun getShortNames(r: Resources, locale: Locale): Array<String> {
-            val symbols = DateFormatSymbols.getInstance(locale)
-            val result = symbols.shortWeekdays.toIso8601Order().copyOf(OSM_ABBR_WEEKDAYS.size)
-            result[PUBLIC_HOLIDAY] = r.getString(R.string.quest_openingHours_public_holidays_short)
-            return result.requireNoNulls()
-        }
-
         fun getWeekdayIndex(name: String) = OSM_ABBR_WEEKDAYS.indexOf(name)
-
-        private fun Array<String>.toIso8601Order() = Array(7) { this[1 + (it + 1) % 7] }
     }
 }
