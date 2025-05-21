@@ -421,7 +421,7 @@ class MapDataCache(
             relationIdsByElementKeyCache[way.key]?.let { relationIds.addAll(it) }
 
             // find all nodes that are part of the way, but not in result
-            if (wayGeometry?.getBounds()?.isCompletelyInside(bbox) == true) continue // no need to check
+            if (wayGeometry?.bounds?.isCompletelyInside(bbox) == true) continue // no need to check
             for (nodeId in way.nodeIds) {
                 if (result.getNode(nodeId) != null) continue
                 val cachedNode = getCachedNode(nodeId)

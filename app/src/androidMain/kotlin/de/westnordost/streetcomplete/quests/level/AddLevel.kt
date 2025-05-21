@@ -66,7 +66,7 @@ class AddLevel : OsmElementQuestType<String> {
             var level: String? = null
             for (shop in thingsWithLevel) {
                 val pos = mapData.getGeometry(shop.type, shop.id)?.center ?: continue
-                if (!mallGeometry.getBounds().contains(pos)) continue
+                if (!mallGeometry.bounds.contains(pos)) continue
                 if (!pos.isInMultipolygon(mallGeometry.polygons)) continue
 
                 if (shop.tags.containsKey("level")) {
@@ -94,7 +94,7 @@ class AddLevel : OsmElementQuestType<String> {
             while (it.hasNext()) {
                 val shop = it.next()
                 val pos = mapData.getGeometry(shop.type, shop.id)?.center ?: continue
-                if (!mallGeometry.getBounds().contains(pos)) continue
+                if (!mallGeometry.bounds.contains(pos)) continue
                 if (!pos.isInMultipolygon(mallGeometry.polygons)) continue
 
                 result.add(shop)

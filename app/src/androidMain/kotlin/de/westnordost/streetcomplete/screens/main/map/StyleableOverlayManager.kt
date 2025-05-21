@@ -188,7 +188,7 @@ class StyleableOverlayManager(
             }
             // elements that are either newly displayed or which were updated
             styledElementsByKey.forEach { (key, styledElement) ->
-                if (displayedBBox.intersect(styledElement.geometry.getBounds())) {
+                if (displayedBBox.intersect(styledElement.geometry.bounds)) {
                     mapDataInView[key] = styledElement
                     hasChanges = true
                 } else {

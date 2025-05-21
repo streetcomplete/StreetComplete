@@ -144,7 +144,7 @@ class MapDataWithEditsSourceTest {
                     WAY -> mapData.getWayGeometry(element.id)
                     RELATION -> mapData.getRelationGeometry(element.id)
                 }
-                if (geometry != null && geometry.getBounds().intersect(bbox)) {
+                if (geometry != null && geometry.bounds.intersect(bbox)) {
                     result.put(element, geometry)
                 }
             }

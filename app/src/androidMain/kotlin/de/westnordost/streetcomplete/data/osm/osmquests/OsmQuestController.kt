@@ -190,7 +190,7 @@ class OsmQuestController internal constructor(
         geometry: ElementGeometry,
         questTypes: Collection<OsmElementQuestType<*>>
     ): List<Deferred<OsmQuest?>> {
-        val paddedBounds = geometry.getBounds().enlargedBy(ApplicationConstants.QUEST_FILTER_PADDING)
+        val paddedBounds = geometry.bounds.enlargedBy(ApplicationConstants.QUEST_FILTER_PADDING)
         val lazyMapData by lazy { mapDataSource.getMapDataWithGeometry(paddedBounds) }
 
         return questTypes.map { questType ->

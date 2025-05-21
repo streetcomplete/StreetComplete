@@ -412,7 +412,7 @@ class MapDataWithEditsSource internal constructor(
             // we will deal with nodes at the end
             if (key.type == NODE) continue
 
-            if (geometry != null && geometry.getBounds().intersect(bbox)) {
+            if (geometry != null && geometry.bounds.intersect(bbox)) {
                 // add the modified data if it is in the bbox
                 val element = updatedElements[key]
                 if (element != null) {

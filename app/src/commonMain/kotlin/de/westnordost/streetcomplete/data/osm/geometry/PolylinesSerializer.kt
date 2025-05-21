@@ -1,11 +1,5 @@
 package de.westnordost.streetcomplete.data.osm.geometry
 
-import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
-import kotlinx.io.Buffer
-import kotlinx.io.readByteArray
-import kotlinx.io.readDouble
-import kotlinx.io.writeDouble
-
 /** Serializes a list of a list of latlons into to a byte array and back memory-efficiently.
  *
  *  Why have this when we could use Json.encodeToString etc. from kotlinx-serialization?

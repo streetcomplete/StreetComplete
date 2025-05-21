@@ -992,7 +992,7 @@ class MainActivity :
     }
 
     private fun showHighlightedElements(quest: OsmQuest, element: Element) {
-        val bbox = quest.geometry.getBounds().enlargedBy(quest.type.highlightedElementsRadius)
+        val bbox = quest.geometry.bounds.enlargedBy(quest.type.highlightedElementsRadius)
         var mapData: MapDataWithGeometry? = null
 
         fun getMapData(): MapDataWithGeometry {

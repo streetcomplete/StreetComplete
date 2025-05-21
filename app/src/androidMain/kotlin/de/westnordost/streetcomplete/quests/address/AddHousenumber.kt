@@ -78,7 +78,7 @@ class AddHousenumber : OsmElementQuestType<HouseNumberAnswer> {
         }
 
         buildings.removeAll { building ->
-            val buildingBounds = buildingGeometriesById[building.id]?.getBounds()
+            val buildingBounds = buildingGeometriesById[building.id]?.bounds
             (buildingBounds == null || !buildingBounds.isCompletelyInside(bbox))
         }
 
@@ -94,7 +94,7 @@ class AddHousenumber : OsmElementQuestType<HouseNumberAnswer> {
         buildings.removeAll { building ->
             val buildingGeometry = buildingGeometriesById[building.id]
             if (buildingGeometry != null) {
-                val nearbyAddresses = addressPositions.getAll(buildingGeometry.getBounds())
+                val nearbyAddresses = addressPositions.getAll(buildingGeometry.bounds)
                 nearbyAddresses.any { it.isInMultipolygon(buildingGeometry.polygons) }
             } else {
                 true
@@ -122,7 +122,7 @@ class AddHousenumber : OsmElementQuestType<HouseNumberAnswer> {
         }
 
         for (areaWithAddress in areasWithAddresses + areasWithAddressesOnOutline) {
-            val nearbyBuildings = buildingPositions.getAll(areaWithAddress.getBounds())
+            val nearbyBuildings = buildingPositions.getAll(areaWithAddress.bounds)
             val buildingPositionsInArea = nearbyBuildings.filter { it.isInMultipolygon(areaWithAddress.polygons) }
             val buildingsInArea = buildingPositionsInArea.mapNotNull { buildingsByCenterPosition[it] }.toSet()
 

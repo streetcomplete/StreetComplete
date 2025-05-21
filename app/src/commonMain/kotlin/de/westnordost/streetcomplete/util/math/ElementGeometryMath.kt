@@ -15,7 +15,7 @@ fun ElementGeometry.intersects(other: ElementGeometry): Boolean {
     // not interested in point geometry here
     if (this is ElementPointGeometry || other is ElementPointGeometry) return false
 
-    if (!getBounds().intersect(other.getBounds())) return false
+    if (!bounds.intersect(other.bounds)) return false
 
     return asList().any { polyline ->
         other.asList().any { otherPolyline ->
