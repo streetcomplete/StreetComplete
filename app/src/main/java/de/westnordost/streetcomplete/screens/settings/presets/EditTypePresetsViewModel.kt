@@ -2,10 +2,10 @@ package de.westnordost.streetcomplete.screens.settings.presets
 
 import androidx.compose.runtime.Stable
 import androidx.lifecycle.ViewModel
-import de.westnordost.streetcomplete.data.urlconfig.UrlConfigController
 import de.westnordost.streetcomplete.data.presets.EditTypePreset
 import de.westnordost.streetcomplete.data.presets.EditTypePresetsController
 import de.westnordost.streetcomplete.data.presets.EditTypePresetsSource
+import de.westnordost.streetcomplete.data.urlconfig.UrlConfigController
 import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderController
 import de.westnordost.streetcomplete.data.visiblequests.VisibleEditTypeController
 import de.westnordost.streetcomplete.util.ktx.launch

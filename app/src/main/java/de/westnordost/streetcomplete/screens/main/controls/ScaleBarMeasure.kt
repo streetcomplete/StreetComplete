@@ -7,10 +7,10 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.intl.Locale
 import de.westnordost.streetcomplete.R
-import kotlin.math.pow
+import de.westnordost.streetcomplete.screens.main.controls.ScaleBarMeasure.FeetAndMiles
 import de.westnordost.streetcomplete.screens.main.controls.ScaleBarMeasure.Metric
 import de.westnordost.streetcomplete.screens.main.controls.ScaleBarMeasure.YardsAndMiles
-import de.westnordost.streetcomplete.screens.main.controls.ScaleBarMeasure.FeetAndMiles
+import kotlin.math.pow
 
 /** A measure to show in the scale bar */
 interface ScaleBarMeasure {

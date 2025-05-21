@@ -2,8 +2,8 @@ package de.westnordost.streetcomplete.osm.mtb_scale
 
 import androidx.annotation.IntRange
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.osm.updateWithCheckDate
 import de.westnordost.streetcomplete.osm.mtb_scale.MtbScale.*
+import de.westnordost.streetcomplete.osm.updateWithCheckDate
 
 data class MtbScale(
     @IntRange(from = 0, to = 6) val value: Int,
