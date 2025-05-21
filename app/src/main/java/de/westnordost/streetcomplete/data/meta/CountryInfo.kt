@@ -84,6 +84,7 @@ data class IncompleteCountryInfo(
     val workweekDays: Int? = null,
 )
 
+@Serializable
 data class CountryInfo(private val infos: List<IncompleteCountryInfo>) {
     val countryCode get() = infos.first().countryCode
 

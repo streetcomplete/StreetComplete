@@ -14,8 +14,6 @@ import androidx.viewbinding.ViewBinding
 import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.CountryInfo
-import de.westnordost.streetcomplete.data.meta.CountryInfos
-import de.westnordost.streetcomplete.data.meta.getByLocation
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.data.quest.QuestType
@@ -32,7 +30,6 @@ import de.westnordost.streetcomplete.view.CharSequenceText
 import de.westnordost.streetcomplete.view.ResText
 import de.westnordost.streetcomplete.view.Text
 import de.westnordost.streetcomplete.view.setText
-import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import org.koin.android.ext.android.inject
 import org.koin.core.qualifier.named
@@ -47,7 +44,6 @@ abstract class AbstractQuestForm :
     AbstractBottomSheetFragment(), IsShowingQuestDetails, IsMapOrientationAware {
 
     // dependencies
-    private val countryInfos: CountryInfos by inject()
     private val countryBoundaries: Lazy<CountryBoundaries> by inject(named("CountryBoundariesLazy"))
     private val questTypeRegistry: QuestTypeRegistry by inject()
 
@@ -64,18 +60,8 @@ abstract class AbstractQuestForm :
 
     private var startedOnce = false
 
-    private var _countryInfo: CountryInfo? = null // lazy but resettable because based on lateinit var
-        get() {
-            if (field == null) {
-                field = countryInfos.getByLocation(
-                    countryBoundaries.value,
-                    geometry.center.longitude,
-                    geometry.center.latitude,
-                )
-            }
-            return field
-        }
-    protected val countryInfo get() = _countryInfo!!
+    protected lateinit var countryInfo: CountryInfo
+        private set
 
     /** either DE or US-NY (or null), depending on what countryBoundaries returns */
     protected val countryOrSubdivisionCode: String? get() {
@@ -105,7 +91,9 @@ abstract class AbstractQuestForm :
         geometry = Json.decodeFromString(args.getString(ARG_GEOMETRY)!!)
         initialMapRotation = args.getDouble(ARG_MAP_ROTATION)
         initialMapTilt = args.getDouble(ARG_MAP_TILT)
-        _countryInfo = null // reset lazy field
+        val countryInfoJson = args.getString(ARG_COUNTRY_INFO)
+        countryInfo = requireNotNull(countryInfoJson) { "countryInfoJson must not be null" }
+            .let { Json.decodeFromString(it) }
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -261,7 +249,7 @@ abstract class AbstractQuestForm :
         private const val ARG_QUESTTYPE = "quest_type"
         private const val ARG_MAP_ROTATION = "map_rotation"
         private const val ARG_MAP_TILT = "map_tilt"
-
+        private const val ARG_COUNTRY_INFO = "country_info"
         fun createArguments(questKey: QuestKey, questType: QuestType, geometry: ElementGeometry, rotation: Double, tilt: Double) = bundleOf(
             ARG_QUEST_KEY to Json.encodeToString(questKey),
             ARG_GEOMETRY to Json.encodeToString(geometry),
