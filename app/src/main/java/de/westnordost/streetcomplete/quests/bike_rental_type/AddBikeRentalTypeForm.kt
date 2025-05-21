@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.quests.bike_rental_type
 
-import de.westnordost.streetcomplete.quests.AImageListQuestForm
+import de.westnordost.streetcomplete.quests.AImageListQuestComposeForm
 
-class AddBikeRentalTypeForm : AImageListQuestForm<BikeRentalTypeAnswer, BikeRentalTypeAnswer>() {
+class AddBikeRentalTypeForm : AImageListQuestComposeForm<BikeRentalTypeAnswer, BikeRentalTypeAnswer>() {
 
     override val items = BikeRentalType.entries.map { it.asItem() } + BikeShopWithRental.asItem()
     override val itemsPerRow = 2

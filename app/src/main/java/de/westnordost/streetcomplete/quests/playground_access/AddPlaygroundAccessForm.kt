@@ -2,10 +2,10 @@ package de.westnordost.streetcomplete.quests.playground_access
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AListQuestForm
-import de.westnordost.streetcomplete.quests.TextItem
 import de.westnordost.streetcomplete.quests.playground_access.PlaygroundAccess.CUSTOMERS
 import de.westnordost.streetcomplete.quests.playground_access.PlaygroundAccess.PRIVATE
 import de.westnordost.streetcomplete.quests.playground_access.PlaygroundAccess.YES
+import de.westnordost.streetcomplete.ui.common.TextItem
 
 class AddPlaygroundAccessForm : AListQuestForm<PlaygroundAccess>() {
 

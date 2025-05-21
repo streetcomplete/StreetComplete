@@ -2,12 +2,16 @@ package de.westnordost.streetcomplete.quests.sport
 
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
+import androidx.compose.runtime.key
+import androidx.compose.ui.semantics.Role
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.AImageListQuestForm
+import de.westnordost.streetcomplete.quests.AImageListQuestComposeForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.sport.Sport.MULTI
+import de.westnordost.streetcomplete.ui.common.image_select.ImageListItem
+import de.westnordost.streetcomplete.ui.common.image_select.SelectableIconItem
 
-class AddSportForm : AImageListQuestForm<Sport, List<Sport>>() {
+class AddSportForm : AImageListQuestComposeForm<Sport, List<Sport>>() {
 
     override val otherAnswers = listOf(
         AnswerItem(R.string.quest_sport_answer_multi) { applyMultiAnswer() }
@@ -16,12 +20,22 @@ class AddSportForm : AImageListQuestForm<Sport, List<Sport>>() {
     override val items get() = Sport.entries
         .mapNotNull { it.asItem() }
         .sortedBy { sportPosition(it.value!!.osmValue) }
+    override val itemContent =
+        @androidx.compose.runtime.Composable { item: ImageListItem<Sport>, index: Int, onClick: () -> Unit, role: Role ->
+            key(item.item) {
+                SelectableIconItem(
+                    item = item.item,
+                    isSelected = item.checked,
+                    onClick = onClick,
+                    role = role
+                )
+            }
+        }
 
     override val maxSelectableItems = -1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        imageSelector.cellLayoutId = R.layout.cell_icon_select_with_label_below
     }
 
     override fun onClickOk(selectedItems: List<Sport>) {
