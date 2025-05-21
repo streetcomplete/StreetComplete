@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.databinding.QuestGenericListBinding
-import de.westnordost.streetcomplete.util.takeFavourites
+import de.westnordost.streetcomplete.util.takeFavorites
 import de.westnordost.streetcomplete.view.image_select.GroupableDisplayItem
 import de.westnordost.streetcomplete.view.image_select.GroupedImageSelectAdapter
 import org.koin.android.ext.android.inject
@@ -92,7 +92,7 @@ abstract class AGroupedImageListQuestForm<I, T> : AbstractOsmQuestForm<T>() {
     private fun getInitialItems(): List<GroupableDisplayItem<I>> =
         prefs.getLastPicked(this::class.simpleName!!)
             .map { itemsByString[it] }
-            .takeFavourites(n = 6, history = 50, first = 1, pad = topItems)
+            .takeFavorites(n = 6, history = 50, first = 1, pad = topItems)
 
     override fun onClickOk() {
         val item = selectedItem!!

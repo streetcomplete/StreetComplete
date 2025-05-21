@@ -14,7 +14,7 @@ import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.fire_hydrant_diameter.FireHydrantDiameterMeasurementUnit.INCH
 import de.westnordost.streetcomplete.quests.fire_hydrant_diameter.FireHydrantDiameterMeasurementUnit.MILLIMETER
 import de.westnordost.streetcomplete.util.ktx.intOrNull
-import de.westnordost.streetcomplete.util.takeFavourites
+import de.westnordost.streetcomplete.util.takeFavorites
 import org.koin.android.ext.android.inject
 
 class AddFireHydrantDiameterForm : AbstractOsmQuestForm<FireHydrantDiameterAnswer>() {
@@ -34,7 +34,7 @@ class AddFireHydrantDiameterForm : AbstractOsmQuestForm<FireHydrantDiameterAnswe
     private val lastPickedAnswers by lazy {
         prefs.getLastPicked(this::class.simpleName!!)
             .map { it.toInt() }
-            .takeFavourites(n = 5, history = 15, first = 1)
+            .takeFavorites(n = 5, history = 15, first = 1)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

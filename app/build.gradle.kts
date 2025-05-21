@@ -82,16 +82,27 @@ kotlin {
                 // photos
                 implementation("androidx.exifinterface:exifinterface:1.4.1")
 
+                // TODO common ones!
                 // settings
-                implementation("com.russhwolf:multiplatform-settings:1.3.0")
+                //implementation("com.russhwolf:multiplatform-settings:1.3.0")
+                // I/O
+                //implementation("org.jetbrains.kotlinx:kotlinx-io-core:0.7.0")
+                // XML
+                //implementation("io.github.pdvrieze.xmlutil:core:0.91.0")
+                //implementation("io.github.pdvrieze.xmlutil:core-io:0.91.0")
+                // JSON
+                //implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.8.1")
+                //implementation("org.jetbrains.kotlinx:kotlinx-serialization-json-io:1.8.1")
+                // Date / time
+                //implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.6.2")
+                // finding in which country we are for country-specific logic
+                //implementation("de.westnordost:countryboundaries:3.0.0")
+                // finding a name for a feature without a name tag
+                //implementation("de.westnordost:osmfeatures:7.0")
 
                 // Kotlin
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2")
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.10.2")
-                implementation("org.jetbrains.kotlinx:kotlinx-io-core:0.7.0")
-
-                // Date/time
-                implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.6.2")
 
                 // scheduling background jobs
                 implementation("androidx.work:work-runtime-ktx:2.10.1")
@@ -100,11 +111,6 @@ kotlin {
                 implementation("io.ktor:ktor-client-core:3.1.3")
                 implementation("io.ktor:ktor-client-android:3.1.3")
                 implementation("io.ktor:ktor-client-encoding:3.1.3")
-
-                // finding in which country we are for country-specific logic
-                implementation("de.westnordost:countryboundaries:3.0.0")
-                // finding a name for a feature without a name tag
-                implementation("de.westnordost:osmfeatures:7.0")
 
                 // widgets
                 implementation("androidx.viewpager2:viewpager2:1.1.0")
@@ -116,12 +122,8 @@ kotlin {
                 // for encoding information for the URL configuration (QR code)
                 implementation("com.ionspin.kotlin:bignum:0.3.10")
 
-                // serialization
-                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.8.1")
-                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json-io:1.8.1")
                 implementation("com.charleskorn.kaml:kaml:0.77.1")
-                implementation("io.github.pdvrieze.xmlutil:core:0.91.0")
-                implementation("io.github.pdvrieze.xmlutil:core-io:0.91.0")
+
 
                 // map and location
                 implementation("org.maplibre.gl:android-sdk:11.8.8")
@@ -150,7 +152,28 @@ kotlin {
         }
         commonMain {
             dependencies {
-                // TODO
+                // settings
+                implementation("com.russhwolf:multiplatform-settings:1.3.0")
+
+                // I/O
+                implementation("org.jetbrains.kotlinx:kotlinx-io-core:0.7.0")
+
+                // XML
+                implementation("io.github.pdvrieze.xmlutil:core:0.91.0")
+                implementation("io.github.pdvrieze.xmlutil:core-io:0.91.0")
+
+                // JSON
+                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.8.1")
+                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json-io:1.8.1")
+
+                // Date / time
+                implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.6.2")
+
+                // finding in which country we are for country-specific logic
+                implementation("de.westnordost:countryboundaries:3.0.0")
+
+                // finding a name for a feature without a name tag
+                implementation("de.westnordost:osmfeatures:7.0")
             }
         }
         commonTest {

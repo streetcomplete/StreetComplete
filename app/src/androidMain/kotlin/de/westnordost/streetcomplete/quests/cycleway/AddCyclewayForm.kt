@@ -26,7 +26,6 @@ import de.westnordost.streetcomplete.view.controller.StreetSideSelectWithLastAns
 import de.westnordost.streetcomplete.view.controller.StreetSideSelectWithLastAnswerButtonViewController.Sides.LEFT
 import de.westnordost.streetcomplete.view.controller.StreetSideSelectWithLastAnswerButtonViewController.Sides.RIGHT
 import de.westnordost.streetcomplete.view.image_select.ImageListPickerDialog
-import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 
 class AddCyclewayForm : AStreetSideSelectForm<CyclewayAndDirection, LeftAndRightCycleway>() {

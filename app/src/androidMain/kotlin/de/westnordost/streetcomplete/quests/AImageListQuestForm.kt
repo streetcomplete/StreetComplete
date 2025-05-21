@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.databinding.QuestGenericListBinding
-import de.westnordost.streetcomplete.util.takeFavourites
+import de.westnordost.streetcomplete.util.takeFavorites
 import de.westnordost.streetcomplete.view.image_select.DisplayItem
 import de.westnordost.streetcomplete.view.image_select.ImageSelectAdapter
 import org.koin.android.ext.android.inject
@@ -105,7 +105,7 @@ abstract class AImageListQuestForm<I, T> : AbstractOsmQuestForm<T>() {
         if (originalList.size > itemsPerRow && moveFavoritesToFront) {
             val favourites = prefs.getLastPicked(this::class.simpleName!!)
                 .map { itemsByString[it] }
-                .takeFavourites(n = itemsPerRow, history = 50)
+                .takeFavorites(n = itemsPerRow, history = 50)
             return (favourites + originalList).distinct()
         } else {
             return originalList

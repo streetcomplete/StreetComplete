@@ -24,7 +24,7 @@ import de.westnordost.streetcomplete.screens.main.map.maplibre.isPoint
 import de.westnordost.streetcomplete.screens.main.map.maplibre.queryRenderedFeatures
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toMapLibreGeometry
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toPoint
-import de.westnordost.streetcomplete.util.ktx.toRGB
+import de.westnordost.streetcomplete.util.color.toRgb
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import org.maplibre.android.geometry.LatLng
@@ -362,7 +362,7 @@ class StyleableOverlayMapComponent(
     // no need to parse, modify and write to string darkening the same colors for every single element
     private fun getDarkenedColor(color: String): String =
         darkenedColors.getOrPut(color) {
-            val rgb = color.toRGB()
+            val rgb = color.toRgb()
             val hsv = rgb.toHsv()
             val darkenedHsv = hsv.copy(value = hsv.value * 2 / 3)
             darkenedHsv.toRgb().toHexString()

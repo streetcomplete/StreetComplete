@@ -14,7 +14,7 @@ import de.westnordost.streetcomplete.osm.building.toItems
 import de.westnordost.streetcomplete.overlays.AGroupedImageSelectOverlayForm
 import de.westnordost.streetcomplete.util.getNameAndLocationSpanned
 import de.westnordost.streetcomplete.util.ktx.valueOfOrNull
-import de.westnordost.streetcomplete.util.takeFavourites
+import de.westnordost.streetcomplete.util.takeFavorites
 import org.koin.android.ext.android.inject
 
 class BuildingsOverlayForm : AGroupedImageSelectOverlayForm<BuildingType>() {
@@ -28,7 +28,7 @@ class BuildingsOverlayForm : AGroupedImageSelectOverlayForm<BuildingType>() {
     override val lastPickedItems by lazy {
         prefs.getLastPicked(this::class.simpleName!!)
             .map { valueOfOrNull<BuildingType>(it)?.asItem() }
-            .takeFavourites(
+            .takeFavorites(
                 n = 6,
                 history = 50,
                 first = 1,

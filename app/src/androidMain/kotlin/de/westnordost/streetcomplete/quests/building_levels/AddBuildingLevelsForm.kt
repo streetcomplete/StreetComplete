@@ -13,7 +13,7 @@ import de.westnordost.streetcomplete.databinding.QuestBuildingLevelsBinding
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.ui.util.content
-import de.westnordost.streetcomplete.util.takeFavourites
+import de.westnordost.streetcomplete.util.takeFavorites
 import org.koin.android.ext.android.inject
 
 class AddBuildingLevelsForm : AbstractOsmQuestForm<BuildingLevels>() {
@@ -34,7 +34,7 @@ class AddBuildingLevelsForm : AbstractOsmQuestForm<BuildingLevels>() {
                 value.split("#")
                     .let { BuildingLevels(it[0].toInt(), it.getOrNull(1)?.toInt()) }
             }
-            .takeFavourites(n = 5, history = 15, first = 1)
+            .takeFavorites(n = 5, history = 15, first = 1)
             .sortedWith(compareBy<BuildingLevels> { it.levels }.thenBy { it.roofLevels })
     }
 
