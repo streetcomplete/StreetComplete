@@ -4,6 +4,17 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChanges
 
 typealias Tags = StringMapChangesBuilder
 
+/**
+ * Expands `:both` tags to `:left` and `:right` tags.
+ *
+ * For example, if [key] is `"sidewalk"`, `sidewalk:both=X` is replaced with `sidewalk:left=X` and
+ * `sidewalk:right=X`.
+ *
+ * If [includeBareTag] is `true`, also in this case `sidewalk=X` is replaced
+ * with `sidewalk:left=X` and `sidewalk:right=X`.
+ *
+ * [postfix] is appended to the key name.
+ */
 fun Tags.expandSides(key: String, postfix: String? = null, includeBareTag: Boolean = true) {
     val post = if (postfix != null) ":$postfix" else ""
     val both = get("$key:both$post") ?: (if (includeBareTag) get("$key$post") else null)
@@ -16,6 +27,14 @@ fun Tags.expandSides(key: String, postfix: String? = null, includeBareTag: Boole
     if (includeBareTag) remove("$key$post")
 }
 
+/**
+ * Replaces `:left` and `:right` tags that are identical with `:both` tags.
+ *
+ * For example, if [key] is `"sidewalk"`, `sidewalk:left=X` and `sidewalk:right=X` is replaced with
+ * `sidewalk:both=X`.
+ *
+ * [postfix] is appended to the key name.
+ */
 fun Tags.mergeSides(key: String, postfix: String? = null) {
     val post = if (postfix != null) ":$postfix" else ""
     val left = get("$key:left$post")

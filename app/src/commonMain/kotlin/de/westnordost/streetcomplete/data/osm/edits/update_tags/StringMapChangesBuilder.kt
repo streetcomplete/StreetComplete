@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.data.osm.edits.update_tags
 
+// TODO clean: this should implement MutableMap<String, String> and users of this should not (need to) know that they are actually using this class
 class StringMapChangesBuilder(private val source: Map<String, String>) : Map<String, String> {
     private val changes: MutableMap<String, StringMapEntryChange> = mutableMapOf()
 
