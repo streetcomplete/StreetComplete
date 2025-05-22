@@ -20,7 +20,7 @@ class AbbreviationsByLocale(private val applicationContext: Context) {
 
     private fun load(locale: Locale): Abbreviations {
         val config = getResources(locale).getYamlStringMap(R.raw.abbreviations)
-        return Abbreviations(config, locale)
+        return Abbreviations(config)
     }
 
     private fun getResources(locale: Locale): Resources {

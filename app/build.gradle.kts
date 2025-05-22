@@ -82,7 +82,7 @@ kotlin {
                 // photos
                 implementation("androidx.exifinterface:exifinterface:1.4.1")
 
-                // TODO common ones!
+                // TODO moved to common...
                 // settings
                 //implementation("com.russhwolf:multiplatform-settings:1.3.0")
                 // I/O
@@ -101,6 +101,8 @@ kotlin {
                 //implementation("de.westnordost:osmfeatures:7.0")
                 // opening hours parser
                 //implementation("de.westnordost:osm-opening-hours:0.2.0")
+                // HTTP Client
+                //implementation("io.ktor:ktor-client-core:3.1.3")
 
                 // Kotlin
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2")
@@ -110,9 +112,7 @@ kotlin {
                 implementation("androidx.work:work-runtime-ktx:2.10.1")
 
                 // HTTP Client
-                implementation("io.ktor:ktor-client-core:3.1.3")
                 implementation("io.ktor:ktor-client-android:3.1.3")
-                implementation("io.ktor:ktor-client-encoding:3.1.3")
 
                 // widgets
                 implementation("androidx.viewpager2:viewpager2:1.1.0")
@@ -155,6 +155,9 @@ kotlin {
 
                 // I/O
                 implementation("org.jetbrains.kotlinx:kotlinx-io-core:0.7.0")
+                // HTTP client
+                implementation("io.ktor:ktor-client-core:3.1.3")
+                implementation("io.ktor:ktor-client-encoding:3.1.3")
 
                 // XML
                 implementation("io.github.pdvrieze.xmlutil:core:0.91.0")

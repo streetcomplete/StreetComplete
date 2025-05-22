@@ -1,6 +1,9 @@
 package de.westnordost.streetcomplete.data.user.achievements
 
 import de.westnordost.streetcomplete.data.AllEditTypes
+import de.westnordost.streetcomplete.data.user.achievements.AchievementCondition.DaysActive
+import de.westnordost.streetcomplete.data.user.achievements.AchievementCondition.EditsOfTypeCount
+import de.westnordost.streetcomplete.data.user.achievements.AchievementCondition.TotalEditCount
 import de.westnordost.streetcomplete.data.user.statistics.StatisticsSource
 import de.westnordost.streetcomplete.util.Listeners
 

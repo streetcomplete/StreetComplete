@@ -1,13 +1,11 @@
 package de.westnordost.streetcomplete.data.user.achievements
 
-import androidx.annotation.DrawableRes
-import androidx.annotation.StringRes
 
 data class Achievement(
     val id: String,
-    @DrawableRes val icon: Int,
-    @StringRes val title: Int,
-    @StringRes val description: Int?,
+    val icon: Int,
+    val title: Int,
+    val description: Int?,
     val condition: AchievementCondition,
     val pointsNeededToAdvanceFunction: (Int) -> Int,
     val unlockedLinks: Map<Int, List<Link>>,
@@ -22,8 +20,8 @@ data class Achievement(
     }
 }
 
-sealed interface AchievementCondition
-
-data object EditsOfTypeCount : AchievementCondition
-data object TotalEditCount : AchievementCondition
-data object DaysActive : AchievementCondition
+sealed interface AchievementCondition {
+    data object EditsOfTypeCount : AchievementCondition
+    data object TotalEditCount : AchievementCondition
+    data object DaysActive : AchievementCondition
+}

@@ -1,6 +1,9 @@
 package de.westnordost.streetcomplete.data.user.achievements
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.user.achievements.AchievementCondition.DaysActive
+import de.westnordost.streetcomplete.data.user.achievements.AchievementCondition.EditsOfTypeCount
+import de.westnordost.streetcomplete.data.user.achievements.AchievementCondition.TotalEditCount
 import de.westnordost.streetcomplete.overlays.places.PlacesOverlay
 import de.westnordost.streetcomplete.overlays.street_parking.StreetParkingOverlay
 import de.westnordost.streetcomplete.quests.amenity_cover.AddAmenityCover
@@ -20,20 +23,6 @@ import de.westnordost.streetcomplete.quests.wheelchair_access.AddWheelchairAcces
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
-enum class EditTypeAchievement(val id: String) {
-    RARE("rare"),
-    CAR("car"),
-    VEG("veg"),
-    PEDESTRIAN("pedestrian"),
-    BUILDING("building"),
-    POSTMAN("postman"),
-    BLIND("blind"),
-    WHEELCHAIR("wheelchair"),
-    BICYCLIST("bicyclist"),
-    CITIZEN("citizen"),
-    OUTDOORS("outdoors"),
-    LIFESAVER("lifesaver"),
-}
 
 val achievementsModule = module {
     factory(named("Achievements")) { achievements }

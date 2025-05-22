@@ -4,10 +4,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalUriHandler
 import de.westnordost.streetcomplete.data.messages.Message
-import de.westnordost.streetcomplete.data.messages.NewAchievementMessage
-import de.westnordost.streetcomplete.data.messages.NewVersionMessage
-import de.westnordost.streetcomplete.data.messages.OsmUnreadMessagesMessage
-import de.westnordost.streetcomplete.data.messages.QuestSelectionHintMessage
 import de.westnordost.streetcomplete.screens.settings.SettingsActivity
 import de.westnordost.streetcomplete.screens.user.achievements.AchievementDialog
 
@@ -19,7 +15,7 @@ fun MessageDialog(
     onDismissRequest: () -> Unit,
 ) {
     when (message) {
-        is NewAchievementMessage -> {
+        is Message.NewAchievement -> {
             AchievementDialog(
                 achievement = message.achievement,
                 level = message.level,
@@ -27,13 +23,13 @@ fun MessageDialog(
                 onDismissRequest = onDismissRequest
             )
         }
-        is NewVersionMessage -> {
+        is Message.NewVersion -> {
             WhatsNewDialog(
                 changelog = message.changelog,
                 onDismissRequest = onDismissRequest,
             )
         }
-        is QuestSelectionHintMessage -> {
+        is Message.QuestSelectionHint -> {
             val context = LocalContext.current
             QuestSelectionHintDialog(
                 onDismissRequest = onDismissRequest,
@@ -43,7 +39,7 @@ fun MessageDialog(
                 allQuestIconIds = allQuestIconIds
             )
         }
-        is OsmUnreadMessagesMessage -> {
+        is Message.OsmUnreadMessages -> {
             val uriHandler = LocalUriHandler.current
             UnreadMessagesDialog(
                 unreadMessageCount = message.unreadMessages,

@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.data.meta
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
-import java.util.Locale
 
 @Serializable
 enum class LengthUnit(private val abbr: String) {
@@ -187,20 +186,12 @@ data class CountryInfo(private val infos: List<IncompleteCountryInfo>) {
     val slowZoneLabelText: String?
         get() = infos.firstNotNullOfOrNull { it.slowZoneLabelText }
 
-    val locale: Locale
-        get() = if (officialLanguages.isEmpty()) {
-            Locale.getDefault()
-        } else {
-            Locale(officialLanguages[0], countryCode)
+    val language: String?
+        get() = officialLanguages.firstOrNull()
+
+    val languageTag: String?
+        get() {
+            val lang = officialLanguages.firstOrNull() ?: return null
+            return "$lang-$countryCode"
         }
-
-    /** the country locale, but preferring the user's set language if the country has several
-     *  official languages and the user selected one of them, e.g. French in Switzerland */
-    val userPreferredLocale: Locale get() {
-        if (officialLanguages.isEmpty()) return Locale.getDefault()
-
-        val locales = officialLanguages.map { Locale(it, countryCode) }
-        val preferredLocale = locales.find { it.language == Locale.getDefault().language }
-        return preferredLocale ?: locales.first()
-    }
 }

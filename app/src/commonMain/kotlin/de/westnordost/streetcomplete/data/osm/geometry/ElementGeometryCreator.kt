@@ -11,7 +11,6 @@ import de.westnordost.streetcomplete.util.ktx.isArea
 import de.westnordost.streetcomplete.util.math.centerPointOfPolygon
 import de.westnordost.streetcomplete.util.math.centerPointOfPolyline
 import de.westnordost.streetcomplete.util.math.isRingDefinedClockwise
-import kotlin.collections.ArrayList
 
 /** Creates an ElementGeometry from an element and a collection of positions. */
 class ElementGeometryCreator {

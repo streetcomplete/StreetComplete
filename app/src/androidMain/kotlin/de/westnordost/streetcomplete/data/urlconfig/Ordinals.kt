@@ -33,6 +33,6 @@ fun BigInteger.toBooleanArray(): BooleanArray {
 fun String.toBigIntegerOrNull(radix: Int): BigInteger? =
     try {
         BigInteger.parseString(this, radix)
-    } catch (e: Exception) {
+    } catch (_: Exception) {
         null
     }

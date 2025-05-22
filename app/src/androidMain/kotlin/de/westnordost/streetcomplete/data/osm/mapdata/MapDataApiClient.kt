@@ -209,16 +209,6 @@ class MapDataApiClient(
     }
 }
 
-/** Data class that contains the request to create, modify elements and delete the given elements */
-data class MapDataChanges(
-    val creations: Collection<Element> = emptyList(),
-    val modifications: Collection<Element> = emptyList(),
-    val deletions: Collection<Element> = emptyList()
-)
-
-sealed interface ElementUpdateAction
-data class UpdateElement(val newId: Long, val newVersion: Int) : ElementUpdateAction
-data object DeleteElement : ElementUpdateAction
 
 /** While adding changes to our changeset, the API reports that the changeset limit is already
  *  reached. We must create a new changeset */

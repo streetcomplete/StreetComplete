@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.parking_fee
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.userPreferredLocale
 import de.westnordost.streetcomplete.databinding.QuestFeeHoursBinding
 import de.westnordost.streetcomplete.databinding.QuestMaxstayBinding
 import de.westnordost.streetcomplete.osm.fee.Fee

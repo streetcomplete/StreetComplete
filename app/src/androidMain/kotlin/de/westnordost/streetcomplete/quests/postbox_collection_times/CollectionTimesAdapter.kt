@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.core.view.isInvisible
 import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.data.meta.CountryInfo
+import de.westnordost.streetcomplete.data.meta.userPreferredLocale
 import de.westnordost.streetcomplete.databinding.QuestTimesWeekdayRowBinding
 import de.westnordost.streetcomplete.osm.opening_hours.model.CollectionTimesRow
 import de.westnordost.streetcomplete.osm.opening_hours.model.Weekdays

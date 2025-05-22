@@ -1,17 +1,8 @@
-package de.westnordost.streetcomplete.data.meta
+package de.westnordost.streetcomplete.osm
 
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
-import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.osm.hasCheckDateForKey
-import de.westnordost.streetcomplete.osm.nowAsCheckDateString
-import de.westnordost.streetcomplete.osm.removeCheckDates
-import de.westnordost.streetcomplete.osm.toCheckDate
-import de.westnordost.streetcomplete.osm.toCheckDateString
-import de.westnordost.streetcomplete.osm.updateCheckDate
-import de.westnordost.streetcomplete.osm.updateCheckDateForKey
-import de.westnordost.streetcomplete.osm.updateWithCheckDate
 import de.westnordost.streetcomplete.util.ktx.containsExactlyInAnyOrder
 import kotlinx.datetime.LocalDate
 import kotlin.test.Test

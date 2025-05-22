@@ -49,6 +49,7 @@ import de.westnordost.streetcomplete.util.math.PositionOnWay
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import de.westnordost.streetcomplete.util.math.getPositionOnWays
 import org.koin.android.ext.android.inject
+import java.util.Locale
 
 class AddressOverlayForm : AbstractOverlayForm(), IsMapPositionAware {
 
@@ -151,7 +152,7 @@ class AddressOverlayForm : AbstractOverlayForm(), IsMapPositionAware {
             streetNameInput = streetOrPlaceBinding.streetNameInput.apply { hint = lastStreetName },
             nameSuggestionsSource = nameSuggestionsSource,
             abbreviationsByLocale = abbreviationsByLocale,
-            countryLocale = countryInfo.locale,
+            countryLocale = Locale.forLanguageTag(countryInfo.languageTag.orEmpty()),
             startWithPlace = isShowingPlaceName
         )
         if (streetOrPlaceName != null) { // this changes back to street if it's null

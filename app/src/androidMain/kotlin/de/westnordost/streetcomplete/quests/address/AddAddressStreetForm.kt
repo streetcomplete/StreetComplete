@@ -15,6 +15,7 @@ import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.NameSuggestionsSource
 import de.westnordost.streetcomplete.util.getNameAndLocationSpanned
 import org.koin.android.ext.android.inject
+import java.util.Locale
 
 class AddAddressStreetForm : AbstractOsmQuestForm<StreetOrPlaceName>() {
     override val contentLayoutResId = R.layout.view_street_or_place_name_input
@@ -53,7 +54,7 @@ class AddAddressStreetForm : AbstractOsmQuestForm<StreetOrPlaceName>() {
             streetNameInput = binding.streetNameInput,
             nameSuggestionsSource = nameSuggestionsSource,
             abbreviationsByLocale = abbreviationsByLocale,
-            countryLocale = countryInfo.locale,
+            countryLocale = Locale.forLanguageTag(countryInfo.languageTag.orEmpty()),
             startWithPlace = isShowingPlaceName
         )
         streetOrPlaceCtrl.onInputChanged = { checkIsFormComplete() }

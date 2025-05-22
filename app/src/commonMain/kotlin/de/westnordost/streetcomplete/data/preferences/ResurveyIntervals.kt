@@ -13,13 +13,11 @@ enum class ResurveyIntervals(val multiplier: Float) {
  *  intervals to use */
 class ResurveyIntervalsUpdater(private val prefs: Preferences) {
     // must hold a local reference to the listener because it is a weak reference
-    private val listener: SettingsListener
+    @Suppress("unused")
+    private val listener: SettingsListener =
+        prefs.onResurveyIntervalsChanged { RelativeDate.MULTIPLIER = it.multiplier }
 
     fun update() {
         RelativeDate.MULTIPLIER = prefs.resurveyIntervals.multiplier
-    }
-
-    init {
-        listener = prefs.onResurveyIntervalsChanged { RelativeDate.MULTIPLIER = it.multiplier }
     }
 }

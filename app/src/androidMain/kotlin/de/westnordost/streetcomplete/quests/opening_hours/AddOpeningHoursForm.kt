@@ -11,14 +11,15 @@ import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.osm_opening_hours.parser.toOpeningHours
 import de.westnordost.osm_opening_hours.parser.toOpeningHoursOrNull
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.userPreferredLocale
 import de.westnordost.streetcomplete.databinding.QuestOpeningHoursBinding
 import de.westnordost.streetcomplete.databinding.QuestOpeningHoursCommentBinding
+import de.westnordost.streetcomplete.osm.opening_hours.model.OpeningMonthsRow
+import de.westnordost.streetcomplete.osm.opening_hours.model.OpeningWeekdaysRow
 import de.westnordost.streetcomplete.osm.opening_hours.parser.toOpeningHoursRows
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.opening_hours.adapter.OpeningHoursAdapter
-import de.westnordost.streetcomplete.quests.opening_hours.adapter.OpeningMonthsRow
-import de.westnordost.streetcomplete.quests.opening_hours.adapter.OpeningWeekdaysRow
 import de.westnordost.streetcomplete.view.AdapterDataChangedWatcher
 import kotlinx.serialization.json.Json
 

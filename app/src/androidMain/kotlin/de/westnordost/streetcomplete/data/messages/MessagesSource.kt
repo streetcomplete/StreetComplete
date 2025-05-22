@@ -37,7 +37,7 @@ class MessagesSource(
 
     /** Achievement levels unlocked since application start. I.e. when restarting the app, the
      *  messages about new achievements unlocked are lost, this is deliberate */
-    private val newAchievements = ArrayList<NewAchievementMessage>()
+    private val newAchievements = ArrayList<Message.NewAchievement>()
 
     init {
         userDataController.addListener(object : UserDataSource.Listener {
@@ -47,7 +47,7 @@ class MessagesSource(
         })
         achievementsSource.addListener(object : AchievementsSource.Listener {
             override fun onAchievementUnlocked(achievement: Achievement, level: Int, unlockedLinks: List<Link>) {
-                newAchievements.add(NewAchievementMessage(achievement, level, unlockedLinks))
+                newAchievements.add(Message.NewAchievement(achievement, level, unlockedLinks))
                 onNumberOfMessagesUpdated()
             }
 
@@ -102,14 +102,14 @@ class MessagesSource(
             if (lastVersion != null) {
                 val version = "v$lastVersion"
                 onNumberOfMessagesUpdated()
-                return NewVersionMessage(changelog.getChangelog(version))
+                return Message.NewVersion(changelog.getChangelog(version))
             }
         }
 
         val shouldShowQuestSelectionHint = prefs.questSelectionHintState == QuestSelectionHintState.SHOULD_SHOW
         if (shouldShowQuestSelectionHint) {
             prefs.questSelectionHintState = QuestSelectionHintState.SHOWN
-            return QuestSelectionHintMessage
+            return Message.QuestSelectionHint
         }
 
         val newAchievement = newAchievements.removeFirstOrNull()
@@ -121,7 +121,7 @@ class MessagesSource(
         val unreadOsmMessages = userDataController.unreadMessagesCount
         if (unreadOsmMessages > 0) {
             userDataController.unreadMessagesCount = 0
-            return OsmUnreadMessagesMessage(unreadOsmMessages)
+            return Message.OsmUnreadMessages(unreadOsmMessages)
         }
 
         return null

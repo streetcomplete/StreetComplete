@@ -9,9 +9,9 @@ fun Element.changesApplied(changes: StringMapChanges): Element {
     val tags = tags.toMutableMap()
     try {
         changes.applyTo(tags)
-    } catch (e: IllegalStateException) {
+    } catch (_: IllegalStateException) {
         throw ConflictException("Conflict while applying the changes")
-    } catch (e: IllegalArgumentException) {
+    } catch (_: IllegalArgumentException) {
         /*
             There is a max key/value length limit of 255 characters in OSM. If we reach this
             point, it means the UI did permit an input of more than that. So, we have to catch

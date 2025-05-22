@@ -16,6 +16,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.databinding.FragmentOverlayThingsBinding
 import de.westnordost.streetcomplete.osm.POPULAR_THING_FEATURE_IDS
+import de.westnordost.streetcomplete.osm.applyTo
 import de.westnordost.streetcomplete.osm.localized_name.applyTo
 import de.westnordost.streetcomplete.osm.asIfItWasnt
 import de.westnordost.streetcomplete.osm.isThing

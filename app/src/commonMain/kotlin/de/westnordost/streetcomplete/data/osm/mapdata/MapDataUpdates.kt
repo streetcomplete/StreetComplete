@@ -16,7 +16,7 @@ data class ElementIdUpdate(
 
 fun createMapDataUpdates(
     elements: Collection<Element>,
-    updates: Map<ElementKey, ElementUpdateAction>,
+    updates: Map<ElementKey, ElementUpdate>,
     ignoreRelationTypes: Set<String?> = emptySet()
 ): MapDataUpdates {
     val updatedElements = mutableListOf<Element>()
@@ -46,10 +46,10 @@ fun createMapDataUpdates(
  * @return null if the element was deleted, this if nothing was changed or an updated element
  *         if anything way changed, e.g. the element's version or id, but also if any way node or
  *         relation member('s id) was changed */
-private fun Element.update(updates: Map<ElementKey, ElementUpdateAction>): Element? {
+private fun Element.update(updates: Map<ElementKey, ElementUpdate>): Element? {
     val update = updates[key]
-    if (update is DeleteElement) return null
-    val u = update as UpdateElement? // kotlin doesn't infer this
+    if (update is ElementUpdate.Delete) return null
+    val u = update as ElementUpdate.Update? // kotlin doesn't infer this
     return when (this) {
         is Node -> update(u)
         is Relation -> update(u, updates)
@@ -57,14 +57,14 @@ private fun Element.update(updates: Map<ElementKey, ElementUpdateAction>): Eleme
     }
 }
 
-private fun Node.update(update: UpdateElement?): Node =
+private fun Node.update(update: ElementUpdate.Update?): Node =
     if (update != null) copy(id = update.newId, version = update.newVersion) else this
 
-private fun Way.update(update: UpdateElement?, updates: Map<ElementKey, ElementUpdateAction>): Way {
+private fun Way.update(update: ElementUpdate.Update?, updates: Map<ElementKey, ElementUpdate>): Way {
     val newNodeIds = nodeIds.mapNotNull { nodeId ->
         when (val nodeUpdate = updates[ElementKey(ElementType.NODE, nodeId)]) {
-            DeleteElement -> null
-            is UpdateElement -> nodeUpdate.newId
+            ElementUpdate.Delete -> null
+            is ElementUpdate.Update -> nodeUpdate.newId
             null -> nodeId
         }
     }
@@ -76,11 +76,11 @@ private fun Way.update(update: UpdateElement?, updates: Map<ElementKey, ElementU
     )
 }
 
-private fun Relation.update(update: UpdateElement?, updates: Map<ElementKey, ElementUpdateAction>): Relation {
+private fun Relation.update(update: ElementUpdate.Update?, updates: Map<ElementKey, ElementUpdate>): Relation {
     val newMembers = members.mapNotNull { member ->
         when (val memberUpdate = updates[ElementKey(member.type, member.ref)]) {
-            DeleteElement -> null
-            is UpdateElement -> member.copy(ref = memberUpdate.newId)
+            ElementUpdate.Delete -> null
+            is ElementUpdate.Update -> member.copy(ref = memberUpdate.newId)
             null -> member
         }
     }
