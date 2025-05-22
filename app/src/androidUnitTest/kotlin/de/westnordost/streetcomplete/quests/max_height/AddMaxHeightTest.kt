@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.max_height
 
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
+import de.westnordost.streetcomplete.osm.Length
 import de.westnordost.streetcomplete.quests.TestMapDataWithGeometry
 import de.westnordost.streetcomplete.quests.answerApplied
 import de.westnordost.streetcomplete.testutils.node
@@ -143,14 +144,14 @@ class AddMaxHeightTest {
     @Test fun `apply metric height answer`() {
         assertEquals(
             setOf(StringMapEntryAdd("maxheight", "3.5")),
-            questType.answerApplied(MaxHeight(LengthInMeters(3.5)))
+            questType.answerApplied(MaxHeight(Length.Meters(3.5)))
         )
     }
 
     @Test fun `apply imperial height answer`() {
         assertEquals(
             setOf(StringMapEntryAdd("maxheight", "10'6\"")),
-            questType.answerApplied(MaxHeight(LengthInFeetAndInches(10, 6)))
+            questType.answerApplied(MaxHeight(Length.FeetAndInches(10, 6)))
         )
     }
 

@@ -1,13 +1,12 @@
 package de.westnordost.streetcomplete.data.osm.edits.upload
 
-import de.westnordost.streetcomplete.data.osm.mapdata.DeleteElement
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementIdUpdate
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.NODE
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.RELATION
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.WAY
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementUpdate
 import de.westnordost.streetcomplete.data.osm.mapdata.Relation
-import de.westnordost.streetcomplete.data.osm.mapdata.UpdateElement
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.mapdata.createMapDataUpdates
 import de.westnordost.streetcomplete.data.osm.mapdata.key
@@ -24,9 +23,9 @@ class MapDataUpdatesTest {
         val updates = createMapDataUpdates(
             elements = listOf(node(1), way(2), rel(3)),
             updates = mapOf(
-                ElementKey(NODE, 1) to UpdateElement(1L, 123),
-                ElementKey(WAY, 2) to UpdateElement(2L, 124),
-                ElementKey(RELATION, 3) to UpdateElement(3L, 125),
+                ElementKey(NODE, 1) to ElementUpdate.Update(1L, 123),
+                ElementKey(WAY, 2) to ElementUpdate.Update(2L, 124),
+                ElementKey(RELATION, 3) to ElementUpdate.Update(3L, 125),
             )
         )
 
@@ -42,9 +41,9 @@ class MapDataUpdatesTest {
         val updates = createMapDataUpdates(
             elements = listOf(node(1), way(2), rel(3)),
             updates = mapOf(
-                ElementKey(NODE, 1) to DeleteElement,
-                ElementKey(WAY, 2) to DeleteElement,
-                ElementKey(RELATION, 3) to DeleteElement,
+                ElementKey(NODE, 1) to ElementUpdate.Delete,
+                ElementKey(WAY, 2) to ElementUpdate.Delete,
+                ElementKey(RELATION, 3) to ElementUpdate.Delete,
             )
         )
 
@@ -64,9 +63,9 @@ class MapDataUpdatesTest {
         val updates = createMapDataUpdates(
             elements = listOf(node(1), way(2), rel(3)),
             updates = mapOf(
-                ElementKey(NODE, 1) to UpdateElement(12L, 1),
-                ElementKey(WAY, 2) to UpdateElement(22L, 1),
-                ElementKey(RELATION, 3) to UpdateElement(32L, 1),
+                ElementKey(NODE, 1) to ElementUpdate.Update(12L, 1),
+                ElementKey(WAY, 2) to ElementUpdate.Update(22L, 1),
+                ElementKey(RELATION, 3) to ElementUpdate.Update(32L, 1),
             )
         )
 
@@ -98,7 +97,7 @@ class MapDataUpdatesTest {
                 way(2, listOf(-1, 2, -1, -1)), // contains it multiple times
                 way(3, listOf(3, 4)) // contains it not
             ),
-            updates = mapOf(ElementKey(NODE, -1) to UpdateElement(1L, 1),)
+            updates = mapOf(ElementKey(NODE, -1) to ElementUpdate.Update(1L, 1),)
         )
 
         val ways = updates.updated.filterIsInstance<Way>().associateBy { it.id }
@@ -118,7 +117,7 @@ class MapDataUpdatesTest {
                 rel(2, listOf(member(NODE, -1), member(NODE, 2), member(NODE, -1))), // contains it multiple times
                 rel(3, listOf(member(WAY, -1), member(RELATION, -1), member(NODE, 1))) // contains it not
             ),
-            updates = mapOf(ElementKey(NODE, -1) to UpdateElement(1L, 1),)
+            updates = mapOf(ElementKey(NODE, -1) to ElementUpdate.Update(1L, 1),)
         )
 
         val relations = updates.updated.filterIsInstance<Relation>().associateBy { it.id }
@@ -144,7 +143,7 @@ class MapDataUpdatesTest {
                 way(2, listOf(1, 2, 1)), // contains it multiple times
                 way(3, listOf(3, 4)) // contains it not
             ),
-            updates = mapOf(ElementKey(NODE, 1) to DeleteElement)
+            updates = mapOf(ElementKey(NODE, 1) to ElementUpdate.Delete)
         )
 
         assertTrue(updates.idUpdates.isEmpty())
@@ -164,7 +163,7 @@ class MapDataUpdatesTest {
                 rel(2, listOf(member(NODE, 1), member(NODE, 2), member(NODE, 1))), // contains it multiple times
                 rel(3, listOf(member(WAY, 1), member(RELATION, 1), member(NODE, 2))) // contains it not
             ),
-            updates = mapOf(ElementKey(NODE, 1) to DeleteElement)
+            updates = mapOf(ElementKey(NODE, 1) to ElementUpdate.Delete)
         )
         assertTrue(updates.idUpdates.isEmpty())
         assertEquals(listOf(ElementKey(NODE, 1)), updates.deleted)
@@ -180,7 +179,7 @@ class MapDataUpdatesTest {
             elements = listOf(
                 rel(-4, tags = mapOf("type" to "route"))
             ),
-            updates = mapOf(ElementKey(RELATION, -4) to UpdateElement(4, 1)),
+            updates = mapOf(ElementKey(RELATION, -4) to ElementUpdate.Update(4, 1)),
             ignoreRelationTypes = setOf("route")
         )
         assertTrue(updates.idUpdates.isEmpty())
@@ -194,7 +193,7 @@ class MapDataUpdatesTest {
                 rel(1, members = listOf(member(RELATION, -4))),
                 rel(-4, tags = mapOf("type" to "route"))
             ),
-            updates = mapOf(ElementKey(RELATION, -4) to UpdateElement(4, 1)),
+            updates = mapOf(ElementKey(RELATION, -4) to ElementUpdate.Update(4, 1)),
             ignoreRelationTypes = setOf("route")
         )
         assertTrue(updates.idUpdates.isEmpty())

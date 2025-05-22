@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.osm.opening_hours.model
 
-import java.util.Locale
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
@@ -41,49 +40,5 @@ class TimeRangeTest {
 
         assertFalse(before.intersects(openEnd))
         assertTrue(after.intersects(openEnd))
-    }
-
-    @Test fun `toString works`() {
-        val openEnd = TimeRange(10, 80, true)
-
-        assertEquals(
-            "00:10-01:20+",
-            openEnd.toStringUsing(Locale.GERMANY, "-")
-        )
-        assertEquals(
-            "00:10 till 01:20+",
-            openEnd.toStringUsing(Locale.GERMANY, " till ")
-        )
-        assertEquals(
-            "00:00+",
-            TimeRange(0, 0, true).toStringUsing(Locale.GERMANY, "-")
-        )
-
-        assertEquals(
-            "12:00 AM - 12:00 PM",
-            TimeRange(0, 720).toStringUsing(Locale.US, " - ")
-        )
-        assertEquals(
-            "8:25 AM - 8:25 PM",
-            TimeRange(505, 1225).toStringUsing(Locale.US, " - ")
-        )
-
-        assertEquals(
-            "12:00 AM - 12:00 AM",
-            TimeRange(0, 0).toStringUsing(Locale.US, " - ")
-        )
-        assertEquals(
-            "12:00 AM - 12:00 AM",
-            TimeRange(0, 24 * 60).toStringUsing(Locale.US, " - ")
-        )
-
-        assertEquals(
-            "00:00 - 24:00",
-            TimeRange(0, 0).toStringUsing(Locale.GERMANY, " - ")
-        )
-        assertEquals(
-            "00:00 - 24:00",
-            TimeRange(0, 24 * 60).toStringUsing(Locale.GERMANY, " - ")
-        )
     }
 }

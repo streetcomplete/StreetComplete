@@ -71,12 +71,12 @@ class MapDataApiParserTest {
         """)
 
         val elementUpdates = mapOf(
-            ElementKey(ElementType.NODE, 1) to DeleteElement,
-            ElementKey(ElementType.WAY, 2) to DeleteElement,
-            ElementKey(ElementType.RELATION, 3) to DeleteElement,
-            ElementKey(ElementType.NODE, -1) to UpdateElement(9, 99),
-            ElementKey(ElementType.WAY, -2) to UpdateElement(8, 88),
-            ElementKey(ElementType.RELATION, -3) to UpdateElement(7, 77),
+            ElementKey(ElementType.NODE, 1) to ElementUpdate.Delete,
+            ElementKey(ElementType.WAY, 2) to ElementUpdate.Delete,
+            ElementKey(ElementType.RELATION, 3) to ElementUpdate.Delete,
+            ElementKey(ElementType.NODE, -1) to ElementUpdate.Update(9, 99),
+            ElementKey(ElementType.WAY, -2) to ElementUpdate.Update(8, 88),
+            ElementKey(ElementType.RELATION, -3) to ElementUpdate.Update(7, 77),
         )
 
         assertEquals(

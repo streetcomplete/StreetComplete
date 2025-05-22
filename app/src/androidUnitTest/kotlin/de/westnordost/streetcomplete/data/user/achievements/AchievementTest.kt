@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.data.user.achievements
 
+import de.westnordost.streetcomplete.data.user.achievements.AchievementCondition.DaysActive
 import kotlin.test.Test
 import kotlin.test.assertEquals
 

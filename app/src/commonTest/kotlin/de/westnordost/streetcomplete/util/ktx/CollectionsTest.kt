@@ -1,5 +1,7 @@
 package de.westnordost.streetcomplete.util.ktx
 
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.testutils.p
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith

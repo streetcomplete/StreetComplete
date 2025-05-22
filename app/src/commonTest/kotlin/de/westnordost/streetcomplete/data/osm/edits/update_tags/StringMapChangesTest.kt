@@ -1,9 +1,5 @@
 package de.westnordost.streetcomplete.data.osm.edits.update_tags
 
-import de.westnordost.streetcomplete.testutils.mock
-import de.westnordost.streetcomplete.testutils.on
-import org.mockito.Mockito.atLeastOnce
-import org.mockito.Mockito.verify
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith
@@ -18,89 +14,64 @@ class StringMapChangesTest {
         assertTrue(changes.changes.isEmpty())
 
         // executable without error:
-        val someMap = mutableMapOf("a" to "b")
-        changes.applyTo(someMap)
+        val map = mutableMapOf("a" to "b")
+        changes.applyTo(map)
 
-        assertFalse(changes.hasConflictsTo(someMap))
+        assertFalse(changes.hasConflictsTo(map))
     }
 
     @Test fun one() {
-        val change: StringMapEntryChange = mock()
-        on(change.toString()).thenReturn("x")
+        val changes = StringMapChanges(listOf(StringMapEntryAdd("x", "y")))
+        val map = mutableMapOf("a" to "b")
 
-        val changes = StringMapChanges(listOf(change))
-        val someMap = mutableMapOf("a" to "b")
+        assertFalse(changes.hasConflictsTo(map))
+        changes.applyTo(map)
 
-        assertEquals("x", changes.toString())
-
-        changes.applyTo(someMap)
-        verify(change).applyTo(someMap)
-
-        changes.hasConflictsTo(someMap)
-        verify(change, atLeastOnce()).conflictsWith(someMap)
+        assertEquals("ADD \"x\"=\"y\"", changes.toString())
+        assertEquals(mapOf("a" to "b", "x" to "y"), map)
     }
 
     @Test fun two() {
-        val change1: StringMapEntryChange = mock()
-        on(change1.toString()).thenReturn("a")
-        val change2: StringMapEntryChange = mock()
-        on(change2.toString()).thenReturn("b")
+        val changes = StringMapChanges(listOf(
+            StringMapEntryAdd("a", "b"),
+            StringMapEntryAdd("x", "y")
+        ))
+        val map = mutableMapOf<String, String>()
+        changes.applyTo(map)
 
-        val changes = StringMapChanges(listOf(change1, change2))
-        val someMap = mutableMapOf("a" to "b")
-
-        assertEquals("a, b", changes.toString())
-
-        changes.applyTo(someMap)
-        verify(change1).applyTo(someMap)
-        verify(change2).applyTo(someMap)
-
-        changes.hasConflictsTo(someMap)
-        verify(change1, atLeastOnce()).conflictsWith(someMap)
-        verify(change2, atLeastOnce()).conflictsWith(someMap)
+        assertEquals("ADD \"a\"=\"b\", ADD \"x\"=\"y\"", changes.toString())
+        assertEquals(mapOf("a" to "b", "x" to "y"), map)
     }
 
-    @Test
-    fun `applying with conflict fails`() {
-        val someMap = mutableMapOf<String, String>()
+    @Test fun `applying with conflict fails`() {
+        val changes = StringMapChanges(listOf(StringMapEntryAdd("a", "c")))
+        val map = mutableMapOf("a" to "b")
 
-        val conflict: StringMapEntryChange = mock()
-        on(conflict.conflictsWith(someMap)).thenReturn(true)
-
-        val changes = StringMapChanges(listOf(conflict))
-
+        assertTrue(changes.hasConflictsTo(map))
         assertFailsWith<IllegalStateException> {
-            changes.applyTo(someMap)
+            changes.applyTo(map)
         }
     }
 
     @Test fun getConflicts() {
-        val someMap = emptyMap<String, String>()
+        val change1 = StringMapEntryAdd("a", "c")
+        val change2 = StringMapEntryAdd("x", "y")
+        val changes = StringMapChanges(listOf(change1, change2))
+        val map = mutableMapOf("a" to "b", "x" to "z")
 
-        val conflict: StringMapEntryChange = mock()
-        on(conflict.conflictsWith(someMap)).thenReturn(true)
-
-        val conflict2: StringMapEntryChange = mock()
-        on(conflict2.conflictsWith(someMap)).thenReturn(true)
-
-        val changes = StringMapChanges(listOf(mock(), mock(), conflict, mock(), conflict2))
-
-        changes.getConflictsTo(someMap)
-
-        val conflicts = changes.getConflictsTo(someMap).toSet()
-        val expectedConflicts = setOf(conflict, conflict2)
-        assertEquals(expectedConflicts, conflicts)
+        assertTrue(changes.hasConflictsTo(map))
+        assertEquals(
+            setOf(change1, change2),
+            changes.getConflictsTo(map).toSet()
+        )
     }
 
     @Test fun equals() {
-        val a: StringMapEntryChange = mock()
-        val b: StringMapEntryChange = mock()
-        val one = StringMapChanges(listOf(a, b))
-        val anotherOne = StringMapChanges(listOf(a, b))
-        val two = StringMapChanges(listOf(b, a))
+        val change1 = StringMapEntryAdd("a", "c")
+        val change2 = StringMapEntryAdd("x", "y")
+        val changes1 = StringMapChanges(listOf(change1, change2))
+        val changes2 = StringMapChanges(listOf(change2, change1))
 
-        assertEquals(one, anotherOne)
-        // but the order does not matter
-        assertEquals(one, two)
+        assertEquals(changes2, changes1)
     }
 }

@@ -14,18 +14,12 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.Relation
 import de.westnordost.streetcomplete.data.osm.mapdata.RelationMember
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
-import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
-import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
-import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestHidden
 import de.westnordost.streetcomplete.data.osmnotes.Note
 import de.westnordost.streetcomplete.data.osmnotes.NoteComment
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEdit
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction
-import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuest
-import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestHidden
 import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
-import de.westnordost.streetcomplete.data.quest.TestQuestTypeA
 import de.westnordost.streetcomplete.data.user.User
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 
@@ -115,7 +109,7 @@ fun edit(
     isNearUserLocation: Boolean = true
 ) = ElementEdit(
     id,
-    QUEST_TYPE,
+    TestElementEditType,
     geometry,
     "survey",
     timestamp,
@@ -123,37 +117,3 @@ fun edit(
     action,
     isNearUserLocation
 )
-
-fun questHidden(
-    elementType: ElementType = ElementType.NODE,
-    elementId: Long = 1L,
-    questType: OsmElementQuestType<*> = QUEST_TYPE,
-    geometry: ElementGeometry = pGeom(),
-    timestamp: Long = 123L
-) = OsmQuestHidden(elementType, elementId, questType, geometry, timestamp)
-
-fun noteQuestHidden(
-    note: Note = note(),
-    timestamp: Long = 123L
-) = OsmNoteQuestHidden(note, timestamp)
-
-fun osmQuest(
-    questType: OsmElementQuestType<*> = QUEST_TYPE,
-    elementType: ElementType = ElementType.NODE,
-    elementId: Long = 1L,
-    geometry: ElementGeometry = pGeom()
-) =
-    OsmQuest(questType, elementType, elementId, geometry)
-
-fun osmNoteQuest(
-    id: Long = 1L,
-    pos: LatLon = p()
-) = OsmNoteQuest(id, pos)
-
-fun osmQuestKey(
-    elementType: ElementType = ElementType.NODE,
-    elementId: Long = 1L,
-    questTypeName: String = QUEST_TYPE.name
-) = OsmQuestKey(elementType, elementId, questTypeName)
-
-val QUEST_TYPE = TestQuestTypeA()
