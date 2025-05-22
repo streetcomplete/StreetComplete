@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests.parking_fee
+package de.westnordost.streetcomplete.osm.fee
 
 import de.westnordost.osm_opening_hours.model.OpeningHours
 import de.westnordost.osm_opening_hours.model.Rule
@@ -21,7 +21,7 @@ class FeeTest {
             setOf(
                 StringMapEntryAdd("fee", "no")
             ),
-            HasNoFee.appliedTo(mapOf())
+            Fee.No.appliedTo(mapOf())
         )
 
         assertEquals(
@@ -29,7 +29,7 @@ class FeeTest {
                 StringMapEntryModify("fee", "no", "no"),
                 StringMapEntryAdd("check_date:fee", nowAsCheckDateString())
             ),
-            HasNoFee.appliedTo(mapOf("fee" to "no"))
+            Fee.No.appliedTo(mapOf("fee" to "no"))
         )
 
         assertEquals(
@@ -37,7 +37,7 @@ class FeeTest {
                 StringMapEntryAdd("fee", "no"),
                 StringMapEntryDelete("fee:conditional", "no @ (24/7)")
             ),
-            HasNoFee.appliedTo(mapOf("fee:conditional" to "no @ (24/7)"))
+            Fee.No.appliedTo(mapOf("fee:conditional" to "no @ (24/7)"))
         )
     }
 
@@ -46,7 +46,7 @@ class FeeTest {
             setOf(
                 StringMapEntryAdd("fee", "yes")
             ),
-            HasFee.appliedTo(mapOf())
+            Fee.Yes.appliedTo(mapOf())
         )
 
         assertEquals(
@@ -54,7 +54,7 @@ class FeeTest {
                 StringMapEntryModify("fee", "yes", "yes"),
                 StringMapEntryAdd("check_date:fee", nowAsCheckDateString())
             ),
-            HasFee.appliedTo(mapOf("fee" to "yes"))
+            Fee.Yes.appliedTo(mapOf("fee" to "yes"))
         )
 
         assertEquals(
@@ -62,7 +62,7 @@ class FeeTest {
                 StringMapEntryAdd("fee", "yes"),
                 StringMapEntryDelete("fee:conditional", "no @ (24/7)")
             ),
-            HasFee.appliedTo(mapOf("fee:conditional" to "no @ (24/7)"))
+            Fee.Yes.appliedTo(mapOf("fee:conditional" to "no @ (24/7)"))
         )
     }
 
@@ -72,7 +72,7 @@ class FeeTest {
                 StringMapEntryAdd("fee", "no"),
                 StringMapEntryAdd("fee:conditional", "yes @ ($ohStr)"),
             ),
-            HasFeeAtHours(oh).appliedTo(mapOf())
+            Fee.During(oh).appliedTo(mapOf())
         )
 
         assertEquals(
@@ -81,7 +81,7 @@ class FeeTest {
                 StringMapEntryModify("fee:conditional", "yes @ ($ohStr)", "yes @ ($ohStr)"),
                 StringMapEntryAdd("check_date:fee", nowAsCheckDateString())
             ),
-            HasFeeAtHours(oh).appliedTo(mapOf(
+            Fee.During(oh).appliedTo(mapOf(
                 "fee" to "no",
                 "fee:conditional" to "yes @ ($ohStr)"
             ))
@@ -94,7 +94,7 @@ class FeeTest {
                 StringMapEntryAdd("fee", "yes"),
                 StringMapEntryAdd("fee:conditional", "no @ ($ohStr)"),
             ),
-            HasFeeExceptAtHours(oh).appliedTo(mapOf())
+            Fee.ExceptDuring(oh).appliedTo(mapOf())
         )
 
         assertEquals(
@@ -103,7 +103,7 @@ class FeeTest {
                 StringMapEntryModify("fee:conditional", "no @ ($ohStr)", "no @ ($ohStr)"),
                 StringMapEntryAdd("check_date:fee", nowAsCheckDateString())
             ),
-            HasFeeExceptAtHours(oh).appliedTo(mapOf(
+            Fee.ExceptDuring(oh).appliedTo(mapOf(
                 "fee" to "yes",
                 "fee:conditional" to "no @ ($ohStr)"
             ))

@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests.parking_fee
+package de.westnordost.streetcomplete.osm.maxstay
 
 import de.westnordost.osm_opening_hours.model.OpeningHours
 import de.westnordost.osm_opening_hours.model.Rule
@@ -14,19 +14,19 @@ import kotlin.test.assertEquals
 
 class MaxStayTest {
 
-    private val oneHour = MaxStayDuration(1.0, MaxStay.Unit.HOURS)
+    private val oneHour = MaxStay.Duration(1.0, MaxStay.Unit.HOURS)
     private val oneHourStr = "1 hour"
 
     private val oh = OpeningHours(listOf(Rule(TwentyFourSeven)))
     private val ohStr = "24/7"
 
     @Test fun `MaxStayDuration to OSM value`() {
-        assertEquals("1 minute", MaxStayDuration(1.0, MaxStay.Unit.MINUTES).toOsmValue())
-        assertEquals("12 minutes", MaxStayDuration(12.0, MaxStay.Unit.MINUTES).toOsmValue())
-        assertEquals("1 hour", MaxStayDuration(1.0, MaxStay.Unit.HOURS).toOsmValue())
-        assertEquals("12 hours", MaxStayDuration(12.0, MaxStay.Unit.HOURS).toOsmValue())
-        assertEquals("1 day", MaxStayDuration(1.0, MaxStay.Unit.DAYS).toOsmValue())
-        assertEquals("12 days", MaxStayDuration(12.0, MaxStay.Unit.DAYS).toOsmValue())
+        assertEquals("1 minute", MaxStay.Duration(1.0, MaxStay.Unit.MINUTES).toOsmValue())
+        assertEquals("12 minutes", MaxStay.Duration(12.0, MaxStay.Unit.MINUTES).toOsmValue())
+        assertEquals("1 hour", MaxStay.Duration(1.0, MaxStay.Unit.HOURS).toOsmValue())
+        assertEquals("12 hours", MaxStay.Duration(12.0, MaxStay.Unit.HOURS).toOsmValue())
+        assertEquals("1 day", MaxStay.Duration(1.0, MaxStay.Unit.DAYS).toOsmValue())
+        assertEquals("12 days", MaxStay.Duration(12.0, MaxStay.Unit.DAYS).toOsmValue())
     }
 
     @Test fun `apply NoMaxStay`() {
@@ -34,7 +34,7 @@ class MaxStayTest {
             setOf(
                 StringMapEntryAdd("maxstay", "no")
             ),
-            NoMaxStay.appliedTo(mapOf())
+            MaxStay.No.appliedTo(mapOf())
         )
 
         assertEquals(
@@ -42,7 +42,7 @@ class MaxStayTest {
                 StringMapEntryModify("maxstay", "no", "no"),
                 StringMapEntryAdd("check_date:maxstay", nowAsCheckDateString())
             ),
-            NoMaxStay.appliedTo(mapOf("maxstay" to "no"))
+            MaxStay.No.appliedTo(mapOf("maxstay" to "no"))
         )
 
         assertEquals(
@@ -50,7 +50,7 @@ class MaxStayTest {
                 StringMapEntryAdd("maxstay", "no"),
                 StringMapEntryDelete("maxstay:conditional", "no @ (24/7)")
             ),
-            NoMaxStay.appliedTo(mapOf("maxstay:conditional" to "no @ (24/7)"))
+            MaxStay.No.appliedTo(mapOf("maxstay:conditional" to "no @ (24/7)"))
         )
     }
 
@@ -80,7 +80,7 @@ class MaxStayTest {
     }
 
     @Test fun `apply MaxStayAtHours`() {
-        val maxstayAtHours = MaxStayAtHours(oneHour, oh)
+        val maxstayAtHours = MaxStay.During(oneHour, oh)
 
         assertEquals(
             setOf(
@@ -104,7 +104,7 @@ class MaxStayTest {
     }
 
     @Test fun `apply MaxStayExceptAtHours`() {
-        val maxstayExceptAtHours = MaxStayExceptAtHours(oneHour, oh)
+        val maxstayExceptAtHours = MaxStay.ExceptDuring(oneHour, oh)
 
         assertEquals(
             setOf(

@@ -3,6 +3,8 @@ package de.westnordost.streetcomplete.quests.parking_fee
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.QuestFeeHoursBinding
 import de.westnordost.streetcomplete.databinding.QuestMaxstayBinding
+import de.westnordost.streetcomplete.osm.fee.Fee
+import de.westnordost.streetcomplete.osm.maxstay.MaxStay
 import de.westnordost.streetcomplete.osm.opening_hours.parser.toOpeningHours
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
@@ -16,7 +18,7 @@ import de.westnordost.streetcomplete.view.controller.TimeRestriction.EXCEPT_AT_H
 import de.westnordost.streetcomplete.view.controller.TimeRestriction.ONLY_AT_HOURS
 import de.westnordost.streetcomplete.view.controller.TimeRestrictionSelectViewController
 
-class AddParkingFeeForm : AbstractOsmQuestForm<FeeAndMaxStay>() {
+class AddParkingFeeForm : AbstractOsmQuestForm<ParkingFeeAnswer>() {
 
     private var feeAtHoursSelect: TimeRestrictionSelectViewController? = null
 
@@ -26,8 +28,8 @@ class AddParkingFeeForm : AbstractOsmQuestForm<FeeAndMaxStay>() {
     override val buttonPanelAnswers get() =
         if (mode == FEE_YES_NO) {
             listOf(
-                AnswerItem(R.string.quest_generic_hasFeature_no) { applyAnswer(FeeAndMaxStay(HasNoFee)) },
-                AnswerItem(R.string.quest_generic_hasFeature_yes) { applyAnswer(FeeAndMaxStay(HasFee)) }
+                AnswerItem(R.string.quest_generic_hasFeature_no) { applyAnswer(ParkingFeeAnswer(Fee.No)) },
+                AnswerItem(R.string.quest_generic_hasFeature_yes) { applyAnswer(ParkingFeeAnswer(Fee.Yes)) }
             )
         } else {
             emptyList()
@@ -102,14 +104,14 @@ class AddParkingFeeForm : AbstractOsmQuestForm<FeeAndMaxStay>() {
             FEE_AT_HOURS -> {
                 val hours = feeAtHoursSelect!!.times.toOpeningHours()
                 val fee = when (feeAtHoursSelect!!.timeRestriction) {
-                    AT_ANY_TIME -> HasFee
-                    ONLY_AT_HOURS -> HasFeeAtHours(hours)
-                    EXCEPT_AT_HOURS -> HasFeeExceptAtHours(hours)
+                    AT_ANY_TIME -> Fee.Yes
+                    ONLY_AT_HOURS -> Fee.During(hours)
+                    EXCEPT_AT_HOURS -> Fee.ExceptDuring(hours)
                 }
-                applyAnswer(FeeAndMaxStay(fee))
+                applyAnswer(ParkingFeeAnswer(fee))
             }
             MAX_STAY -> {
-                val duration = MaxStayDuration(
+                val duration = MaxStay.Duration(
                     maxstayDurationInput!!.durationValue,
                     when (maxstayDurationInput!!.durationUnit) {
                         DurationUnit.MINUTES -> MaxStay.Unit.MINUTES
@@ -120,10 +122,10 @@ class AddParkingFeeForm : AbstractOsmQuestForm<FeeAndMaxStay>() {
                 val hours = maxstayAtHoursSelect!!.times.toOpeningHours()
                 val maxstay = when (maxstayAtHoursSelect!!.timeRestriction) {
                     AT_ANY_TIME -> duration
-                    ONLY_AT_HOURS -> MaxStayAtHours(duration, hours)
-                    EXCEPT_AT_HOURS -> MaxStayExceptAtHours(duration, hours)
+                    ONLY_AT_HOURS -> MaxStay.During(duration, hours)
+                    EXCEPT_AT_HOURS -> MaxStay.ExceptDuring(duration, hours)
                 }
-                applyAnswer(FeeAndMaxStay(HasNoFee, maxstay))
+                applyAnswer(ParkingFeeAnswer(Fee.No, maxstay))
             }
             else -> {}
         }

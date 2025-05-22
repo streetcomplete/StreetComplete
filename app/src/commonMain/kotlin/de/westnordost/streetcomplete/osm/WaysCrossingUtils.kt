@@ -18,7 +18,11 @@ data class WaysCrossing(val node: Node, var barrierWays: List<Way>, var movingWa
  *  3. the ways actually cross each other, not just touch each other, i.e. the moving way
  *     intersects, then continues on the other side of a barrier way
  */
-fun findNodesAtCrossingsOf(barrierWays: Sequence<Way>, movingWays: Sequence<Way>, mapData: MapData): Iterable<WaysCrossing> {
+fun findNodesAtCrossingsOf(
+    barrierWays: Sequence<Way>,
+    movingWays: Sequence<Way>,
+    mapData: MapData
+): Iterable<WaysCrossing> {
     val barriersByNodeId = barrierWays.groupByNodeIds()
     // filter out nodes of roads that are the end of a barrier not continuing further
     barriersByNodeId.removeEndNodes()

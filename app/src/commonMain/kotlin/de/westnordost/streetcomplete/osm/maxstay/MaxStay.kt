@@ -1,23 +1,23 @@
-package de.westnordost.streetcomplete.quests.parking_fee
+package de.westnordost.streetcomplete.osm.maxstay
 
 import de.westnordost.osm_opening_hours.model.OpeningHours
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
-import de.westnordost.streetcomplete.quests.parking_fee.MaxStay.Unit.DAYS
-import de.westnordost.streetcomplete.quests.parking_fee.MaxStay.Unit.HOURS
-import de.westnordost.streetcomplete.quests.parking_fee.MaxStay.Unit.MINUTES
+import de.westnordost.streetcomplete.osm.maxstay.MaxStay.Unit.DAYS
+import de.westnordost.streetcomplete.osm.maxstay.MaxStay.Unit.HOURS
+import de.westnordost.streetcomplete.osm.maxstay.MaxStay.Unit.MINUTES
 import de.westnordost.streetcomplete.util.ktx.toShortString
 
 sealed interface MaxStay {
     enum class Unit { MINUTES, HOURS, DAYS }
+
+    data object No : MaxStay
+    data class Duration(val value: Double, val unit: Unit) : MaxStay
+    data class During(val duration: Duration, val hours: OpeningHours) : MaxStay
+    data class ExceptDuring(val duration: Duration, val hours: OpeningHours) : MaxStay
 }
 
-data object NoMaxStay : MaxStay
-data class MaxStayDuration(val value: Double, val unit: MaxStay.Unit) : MaxStay
-data class MaxStayAtHours(val duration: MaxStayDuration, val hours: OpeningHours) : MaxStay
-data class MaxStayExceptAtHours(val duration: MaxStayDuration, val hours: OpeningHours) : MaxStay
-
-fun MaxStayDuration.toOsmValue(): String =
+fun MaxStay.Duration.toOsmValue(): String =
     value.toShortString() + " " + when (unit) {
         MINUTES -> if (value != 1.0) "minutes" else "minute"
         HOURS -> if (value != 1.0) "hours" else "hour"
@@ -26,19 +26,19 @@ fun MaxStayDuration.toOsmValue(): String =
 
 fun MaxStay.applyTo(tags: Tags) {
     when (this) {
-        is MaxStayExceptAtHours -> {
+        is MaxStay.ExceptDuring -> {
             tags.updateWithCheckDate("maxstay", duration.toOsmValue())
             tags["maxstay:conditional"] = "no @ ($hours)"
         }
-        is MaxStayAtHours -> {
+        is MaxStay.During -> {
             tags.updateWithCheckDate("maxstay", "no")
             tags["maxstay:conditional"] = "${duration.toOsmValue()} @ ($hours)"
         }
-        is MaxStayDuration -> {
+        is MaxStay.Duration -> {
             tags.updateWithCheckDate("maxstay", toOsmValue())
             tags.remove("maxstay:conditional")
         }
-        NoMaxStay -> {
+        MaxStay.No -> {
             tags.updateWithCheckDate("maxstay", "no")
             tags.remove("maxstay:conditional")
         }

@@ -5,8 +5,10 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.osm.fee.applyTo
+import de.westnordost.streetcomplete.osm.maxstay.applyTo
 
-class AddParkingFee : OsmFilterQuestType<FeeAndMaxStay>() {
+class AddParkingFee : OsmFilterQuestType<ParkingFeeAnswer>() {
 
     override val elementFilter = """
         nodes, ways, relations with amenity = parking
@@ -25,6 +27,8 @@ class AddParkingFee : OsmFilterQuestType<FeeAndMaxStay>() {
 
     override fun createForm() = AddParkingFeeForm()
 
-    override fun applyAnswerTo(answer: FeeAndMaxStay, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) =
-        answer.applyTo(tags)
+    override fun applyAnswerTo(answer: ParkingFeeAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
+        answer.fee.applyTo(tags)
+        answer.maxstay?.applyTo(tags)
+    }
 }
