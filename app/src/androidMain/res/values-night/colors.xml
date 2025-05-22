@@ -3,8 +3,6 @@
     <color name="accent">#ff6600</color>
     <color name="accent_variant">#F44336</color>
 
-    <color name="attribution_text">#ccc</color>
-
     <color name="inverted_background">#aaa</color>
     <color name="background">#121212</color>
     <color name="background_transparent">#00121212</color>
