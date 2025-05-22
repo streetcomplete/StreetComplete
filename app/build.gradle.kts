@@ -82,30 +82,7 @@ kotlin {
                 // photos
                 implementation("androidx.exifinterface:exifinterface:1.4.1")
 
-                // TODO moved to common...
-                // settings
-                //implementation("com.russhwolf:multiplatform-settings:1.3.0")
-                // I/O
-                //implementation("org.jetbrains.kotlinx:kotlinx-io-core:0.7.0")
-                // XML
-                //implementation("io.github.pdvrieze.xmlutil:core:0.91.0")
-                //implementation("io.github.pdvrieze.xmlutil:core-io:0.91.0")
-                // JSON
-                //implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.8.1")
-                //implementation("org.jetbrains.kotlinx:kotlinx-serialization-json-io:1.8.1")
-                // Date / time
-                //implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.6.2")
-                // finding in which country we are for country-specific logic
-                //implementation("de.westnordost:countryboundaries:3.0.0")
-                // finding a name for a feature without a name tag
-                //implementation("de.westnordost:osmfeatures:7.0")
-                // opening hours parser
-                //implementation("de.westnordost:osm-opening-hours:0.2.0")
-                // HTTP Client
-                //implementation("io.ktor:ktor-client-core:3.1.3")
-
                 // Kotlin
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2")
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.10.2")
 
                 // scheduling background jobs
@@ -118,19 +95,15 @@ kotlin {
                 implementation("androidx.viewpager2:viewpager2:1.1.0")
                 implementation("me.grantland:autofittextview:0.2.1")
                 implementation("com.google.android.flexbox:flexbox:3.0.0")
+                implementation("com.github.chrisbanes:PhotoView:2.3.0")
 
                 // sharing presets/settings via QR Code
                 implementation("io.github.alexzhirkevich:qrose:1.0.1")
                 // for encoding information for the URL configuration (QR code)
                 implementation("com.ionspin.kotlin:bignum:0.3.10")
 
-                implementation("com.charleskorn.kaml:kaml:0.77.1")
-
                 // map and location
                 implementation("org.maplibre.gl:android-sdk:11.8.8")
-
-                // image view that allows zoom and pan
-                implementation("com.github.chrisbanes:PhotoView:2.3.0")
             }
         }
         androidUnitTest {
@@ -150,11 +123,15 @@ kotlin {
         }
         commonMain {
             dependencies {
+                // Kotlin
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2")
+
                 // settings
                 implementation("com.russhwolf:multiplatform-settings:1.3.0")
 
                 // I/O
                 implementation("org.jetbrains.kotlinx:kotlinx-io-core:0.7.0")
+
                 // HTTP client
                 implementation("io.ktor:ktor-client-core:3.1.3")
                 implementation("io.ktor:ktor-client-encoding:3.1.3")
@@ -162,6 +139,9 @@ kotlin {
                 // XML
                 implementation("io.github.pdvrieze.xmlutil:core:0.91.0")
                 implementation("io.github.pdvrieze.xmlutil:core-io:0.91.0")
+
+                // YAML
+                implementation("com.charleskorn.kaml:kaml:0.77.1")
 
                 // JSON
                 implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.8.1")
@@ -173,7 +153,7 @@ kotlin {
                 // finding in which country we are for country-specific logic
                 implementation("de.westnordost:countryboundaries:3.0.0")
 
-                // finding a name for a feature without a name tag
+                // finding OSM features
                 implementation("de.westnordost:osmfeatures:7.0")
 
                 // opening hours parser
