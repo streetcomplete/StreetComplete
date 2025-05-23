@@ -110,7 +110,6 @@ kotlin {
             dependencies {
                 implementation("org.mockito:mockito-core:5.17.0")
                 implementation(kotlin("test"))
-                implementation("io.ktor:ktor-client-mock:3.1.3")
             }
         }
         androidInstrumentedTest {
@@ -163,6 +162,8 @@ kotlin {
         commonTest {
             dependencies {
                 implementation(kotlin("test"))
+
+                implementation("io.ktor:ktor-client-mock:3.1.3")
             }
         }
     }

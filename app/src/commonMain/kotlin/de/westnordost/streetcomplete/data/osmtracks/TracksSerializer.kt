@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.data.osmtracks
 
-import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.util.ktx.attribute
 import de.westnordost.streetcomplete.util.ktx.endTag
 import de.westnordost.streetcomplete.util.ktx.startTag
@@ -10,18 +9,18 @@ import nl.adaptivity.xmlutil.newWriter
 import nl.adaptivity.xmlutil.xmlStreaming
 
 class TracksSerializer {
-    fun serialize(trackpoints: List<Trackpoint>): String {
+    fun serialize(trackpoints: List<Trackpoint>, creator: String? = null): String {
         val buffer = StringBuilder()
-        xmlStreaming.newWriter(buffer).serializeToGpx(trackpoints)
+        xmlStreaming.newWriter(buffer).serializeToGpx(trackpoints, creator)
         return buffer.toString()
     }
 }
 
-private fun XmlWriter.serializeToGpx(trackpoints: List<Trackpoint>) {
+private fun XmlWriter.serializeToGpx(trackpoints: List<Trackpoint>, creator: String? = null) {
     startTag("gpx")
     attribute("xmlns", "http://www.topografix.com/GPX/1/0")
     attribute("version", "1.0")
-    attribute("creator", ApplicationConstants.USER_AGENT)
+    creator?.let { attribute("creator", it) }
     startTag("trk")
     startTag("trkseg")
     for (trackpoint in trackpoints) {

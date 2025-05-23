@@ -211,7 +211,7 @@ class NoteEditsUploaderTest {
         on(noteEditsController.getOldestUnsynced()).thenReturn(edit).thenReturn(null)
         on(userDataSource.userName).thenReturn("blah mc/Blah")
         on(notesApi.create(any(), any())).thenReturn(note)
-        on(tracksApi.create(edit.track, edit.text)).thenReturn(988)
+        on(tracksApi.create(edit.track, "creator", edit.text)).thenReturn(988)
 
         upload()
 

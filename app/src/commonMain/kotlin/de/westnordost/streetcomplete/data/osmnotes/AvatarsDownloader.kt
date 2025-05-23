@@ -14,7 +14,6 @@ import kotlinx.io.IOException
 import kotlinx.io.buffered
 import kotlinx.io.files.FileSystem
 import kotlinx.io.files.Path
-import kotlinx.io.files.SystemFileSystem
 
 /** Downloads and stores the OSM avatars of users */
 class AvatarsDownloader(
@@ -50,7 +49,7 @@ class AvatarsDownloader(
     suspend fun download(userId: Long, avatarUrl: String) {
         if (!ensureCacheDirExists()) return
         val avatarFile = Path(cacheDir, userId.toString())
-        val avatarFileSink = SystemFileSystem.sink(avatarFile).buffered()
+        val avatarFileSink = fileSystem.sink(avatarFile).buffered()
         try {
             val response = httpClient.get(avatarUrl) { expectSuccess = true }
             response.bodyAsChannel().copyAndClose(avatarFileSink.asByteWriteChannel())

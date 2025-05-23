@@ -1,5 +1,7 @@
 package de.westnordost.streetcomplete.data.user.oauth
 
+import kotlin.jvm.JvmOverloads
+
 /** OAuth failed due to a well-defined error */
 class OAuthException @JvmOverloads constructor(
     val error: String,

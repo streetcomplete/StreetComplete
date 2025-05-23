@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.data.osmtracks
 
-import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.AuthorizationException
 import de.westnordost.streetcomplete.data.ConnectionException
 import de.westnordost.streetcomplete.data.user.UserLoginSource
@@ -32,7 +31,9 @@ class TracksApiClient(
      * Upload a list of trackpoints as a GPX
      *
      * @param trackpoints recorded trackpoints
-     * @param noteText optional description text
+     * @param creator user agent string
+     * @param description optional description text
+     * @param tags optional tags for the trace
      *
      * @throws AuthorizationException if not logged in or not not authorized to upload traces
      *                                (scope "write_gpx")
@@ -40,11 +41,15 @@ class TracksApiClient(
      *
      * @return id of the uploaded track
      */
-    suspend fun create(trackpoints: List<Trackpoint>, noteText: String? = null): Long = wrapApiClientExceptions {
+    suspend fun create(
+        trackpoints: List<Trackpoint>,
+        creator: String,
+        description: String? = null,
+        tags: Iterable<String>? = null,
+    ): Long = wrapApiClientExceptions {
         val name = Instant.fromEpochMilliseconds(trackpoints.first().time).toString() + ".gpx"
-        val description = noteText ?: "Uploaded via ${ApplicationConstants.USER_AGENT}"
-        val tags = listOf(ApplicationConstants.NAME.lowercase()).joinToString()
-        val xml = tracksSerializer.serialize(trackpoints)
+        val description = description ?: "Uploaded via $creator"
+        val xml = tracksSerializer.serialize(trackpoints, creator)
 
         val response = httpClient.post(baseUrl + "gpx") {
             compress("gzip")
@@ -55,7 +60,7 @@ class TracksApiClient(
                     append(HttpHeaders.ContentDisposition, "filename=\"$name\"")
                 })
                 append("description", description.truncate(255))
-                append("tags", tags)
+                tags?.let { append("tags", it.joinToString().truncate(255)) }
                 append("visibility", "identifiable")
             }))
             expectSuccess = true

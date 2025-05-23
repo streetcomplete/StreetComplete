@@ -57,7 +57,7 @@ class Uploader(
                 bannedInfo = versionIsBannedChecker.get()
             }
             val banned = bannedInfo
-            if (banned is IsBanned) {
+            if (banned is BannedInfo.IsBanned) {
                 throw VersionBannedException(banned.reason)
             }
 

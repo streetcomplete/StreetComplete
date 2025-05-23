@@ -15,7 +15,6 @@ import io.ktor.http.URLParserException
 import io.ktor.http.Url
 import io.ktor.http.contentType
 import io.ktor.http.decodeURLQueryComponent
-import io.ktor.http.parameters
 import io.ktor.http.takeFrom
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
@@ -192,6 +191,10 @@ private data class ErrorResponseJson(
 @OptIn(ExperimentalEncodingApi::class)
 private fun createPKCE_S256CodeChallenge(codeVerifier: String): String {
     // S256: code_challenge = BASE64URL-ENCODE(SHA256(ASCII(code_verifier)))
+    // TODO: currently this is Java code. A quick google search finds two KMP libraries that should
+    //       be able to do a SHA256 hash. Should take a closer look:
+    //       https://github.com/whyoleg/cryptography-kotlin
+    //       https://github.com/KotlinCrypto/hash/
     val encodedBytes = codeVerifier.toByteArray(StandardCharsets.US_ASCII)
     val sha256 = MessageDigest.getInstance("SHA-256").digest(encodedBytes)
     return Base64.UrlSafe.encode(sha256).split("=")[0]

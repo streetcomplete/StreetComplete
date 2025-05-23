@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.data.osmtracks
 
-import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import kotlinx.datetime.Instant
 import kotlin.test.Test
@@ -11,7 +10,7 @@ class TracksSerializerTest {
     @Test
     fun `serialize to xml`() {
         val gpx = """
-            <gpx xmlns="http://www.topografix.com/GPX/1/0" version="1.0" creator="${ApplicationConstants.USER_AGENT}">
+            <gpx xmlns="http://www.topografix.com/GPX/1/0" version="1.0" creator="XXYYZZ">
             <trk>
             <trkseg>
             <trkpt lat="12.34" lon="56.78">
@@ -46,7 +45,7 @@ class TracksSerializerTest {
 
         assertEquals(
             gpx.replace(Regex("[\n\r] *"), ""),
-            TracksSerializer().serialize(track)
+            TracksSerializer().serialize(track, "XXYYZZ")
         )
     }
 }

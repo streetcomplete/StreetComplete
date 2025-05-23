@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.data.osmnotes.edits
 
+import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.ConflictException
 import de.westnordost.streetcomplete.data.osmnotes.NoteController
 import de.westnordost.streetcomplete.data.osmnotes.NotesApiClient
@@ -130,7 +131,12 @@ class NoteEditsUploader(
         noteText: String?
     ): String {
         if (trackpoints.isEmpty()) return ""
-        val trackId = tracksApi.create(trackpoints, noteText)
+        val trackId = tracksApi.create(
+            trackpoints = trackpoints,
+            creator = ApplicationConstants.USER_AGENT,
+            description = noteText,
+            tags = listOf(ApplicationConstants.NAME)
+        )
         val encodedUsername = userDataSource.userName!!.encodeURLPathPart()
         return "\n\nGPS Trace: https://www.openstreetmap.org/user/$encodedUsername/traces/$trackId\n"
     }

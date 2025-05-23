@@ -1,8 +1,6 @@
 package de.westnordost.streetcomplete.data.osm.edits.upload.changesets
 
-import de.westnordost.streetcomplete.data.AuthorizationException
 import de.westnordost.streetcomplete.data.ConflictException
-import de.westnordost.streetcomplete.data.ConnectionException
 import de.westnordost.streetcomplete.data.user.UserLoginSource
 import de.westnordost.streetcomplete.data.wrapApiClientExceptions
 import io.ktor.client.HttpClient

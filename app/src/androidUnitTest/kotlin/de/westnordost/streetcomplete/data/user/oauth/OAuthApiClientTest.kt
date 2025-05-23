@@ -10,7 +10,6 @@ import io.ktor.http.HttpStatusCode
 import io.ktor.http.ParametersBuilder
 import io.ktor.http.Url
 import kotlinx.coroutines.runBlocking
-import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -19,7 +18,7 @@ import kotlin.test.assertFailsWith
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
-class OAuthAuthorizationTest {
+class OAuthApiClientTest {
     @Test fun createAuthorizationUrl() {
         val url = Url(createOAuth().authorizationRequestUrl)
 
