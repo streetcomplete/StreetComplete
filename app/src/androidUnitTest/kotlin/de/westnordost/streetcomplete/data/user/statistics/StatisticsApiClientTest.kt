@@ -45,9 +45,9 @@ class StatisticsApiClientTest {
 
     @Test fun `download constructs request URL`() = runBlocking {
         StatisticsApiClient(
-            HttpClient(validResponseMockEngine),
-            "https://example.com/stats/",
-            statisticsParser
+            httpClient = HttpClient(validResponseMockEngine),
+            baseUrl = "https://example.com/stats/",
+            statisticsParser = statisticsParser
         ).get(100)
 
         assertEquals(

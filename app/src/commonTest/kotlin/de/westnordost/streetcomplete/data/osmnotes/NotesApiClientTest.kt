@@ -5,10 +5,8 @@ import de.westnordost.streetcomplete.data.ConflictException
 import de.westnordost.streetcomplete.data.QueryTooBigException
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
-import de.westnordost.streetcomplete.data.user.UserLoginSource
+import de.westnordost.streetcomplete.data.user.UserAccessTokenSource
 import de.westnordost.streetcomplete.testutils.OsmDevApi
-import de.westnordost.streetcomplete.testutils.mock
-import de.westnordost.streetcomplete.testutils.on
 import io.ktor.client.HttpClient
 import io.ktor.client.request.bearerAuth
 import io.ktor.client.request.parameter
@@ -25,18 +23,8 @@ import kotlin.test.assertTrue
 // response
 class NotesApiClientTest {
 
-    private val allowEverything = mock<UserLoginSource>()
-    private val allowNothing = mock<UserLoginSource>()
-    private val anonymous = mock<UserLoginSource>()
-
-    init {
-        on(allowEverything.accessToken).thenReturn(OsmDevApi.ALLOW_EVERYTHING_TOKEN)
-        on(allowNothing.accessToken).thenReturn(OsmDevApi.ALLOW_NOTHING_TOKEN)
-        on(anonymous.accessToken).thenReturn(null)
-    }
-
     @Test fun `create note`(): Unit = runBlocking {
-        val note = client(allowEverything).create(LatLon(83.0, 9.0), "Created note!")
+        val note = client(OsmDevApi.ALLOW_EVERYTHING_TOKEN).create(LatLon(83.0, 9.0), "Created note!")
         closeNote(note.id)
 
         assertEquals(LatLon(83.0, 9.0), note.position)
@@ -50,8 +38,8 @@ class NotesApiClientTest {
     }
 
     @Test fun `comment note`(): Unit = runBlocking {
-        var note = client(allowEverything).create(LatLon(83.0, 9.1), "Created note for comment!")
-        note = client(allowEverything).comment(note.id, "First comment!")
+        var note = client(OsmDevApi.ALLOW_EVERYTHING_TOKEN).create(LatLon(83.0, 9.1), "Created note for comment!")
+        note = client(OsmDevApi.ALLOW_EVERYTHING_TOKEN).comment(note.id, "First comment!")
         closeNote(note.id)
 
         assertEquals(2, note.comments.size)
@@ -65,46 +53,46 @@ class NotesApiClientTest {
     }
 
     @Test fun `comment note fails when not logged in`(): Unit = runBlocking {
-        val note = client(allowEverything).create(LatLon(83.0, 9.1), "Created note for comment!")
+        val note = client(OsmDevApi.ALLOW_EVERYTHING_TOKEN).create(LatLon(83.0, 9.1), "Created note for comment!")
         assertFailsWith<AuthorizationException> {
-            client(anonymous).comment(note.id, "test")
+            client(null).comment(note.id, "test")
         }
         closeNote(note.id)
     }
 
     @Test fun `comment note fails when not authorized`(): Unit = runBlocking {
-        val note = client(allowEverything).create(LatLon(83.0, 9.1), "Created note for comment!")
+        val note = client(OsmDevApi.ALLOW_EVERYTHING_TOKEN).create(LatLon(83.0, 9.1), "Created note for comment!")
         assertFailsWith<AuthorizationException> {
-            client(allowNothing).comment(note.id, "test")
+            client(OsmDevApi.ALLOW_NOTHING_TOKEN).comment(note.id, "test")
         }
         closeNote(note.id)
     }
 
     @Test fun `comment note fails when already closed`(): Unit = runBlocking {
-        val note = client(allowEverything).create(LatLon(83.0, 9.1), "Created note for comment!")
+        val note = client(OsmDevApi.ALLOW_EVERYTHING_TOKEN).create(LatLon(83.0, 9.1), "Created note for comment!")
         closeNote(note.id)
         assertFailsWith<ConflictException> {
-            client(allowEverything).comment(note.id, "test")
+            client(OsmDevApi.ALLOW_EVERYTHING_TOKEN).comment(note.id, "test")
         }
     }
 
     @Test fun `get note`(): Unit = runBlocking {
-        val note = client(allowEverything).create(LatLon(83.0, 9.2), "Created note to get it!")
-        val note2 = client(anonymous).get(note.id)
+        val note = client(OsmDevApi.ALLOW_EVERYTHING_TOKEN).create(LatLon(83.0, 9.2), "Created note to get it!")
+        val note2 = client(null).get(note.id)
         closeNote(note.id)
 
         assertEquals(note, note2)
     }
 
     @Test fun `get no note`(): Unit = runBlocking {
-        assertNull(client(anonymous).get(0))
+        assertNull(client(null).get(0))
     }
 
     @Test fun `get notes`(): Unit = runBlocking {
-        val note1 = client(allowEverything).create(LatLon(83.0, 9.3), "Note a")
-        val note2 = client(allowEverything).create(LatLon(83.1, 9.4), "Note b")
+        val note1 = client(OsmDevApi.ALLOW_EVERYTHING_TOKEN).create(LatLon(83.0, 9.3), "Note a")
+        val note2 = client(OsmDevApi.ALLOW_EVERYTHING_TOKEN).create(LatLon(83.1, 9.4), "Note b")
 
-        val notes = client(anonymous).getAllOpen(BoundingBox(83.0, 9.3, 83.2, 9.5))
+        val notes = client(null).getAllOpen(BoundingBox(83.0, 9.3, 83.2, 9.5))
 
         closeNote(note1.id)
         closeNote(note2.id)
@@ -114,21 +102,26 @@ class NotesApiClientTest {
 
     @Test fun `get notes fails when bbox crosses 180th meridian`(): Unit = runBlocking {
         assertFailsWith<IllegalArgumentException> {
-            client(anonymous).getAllOpen(BoundingBox(0.0, 179.0, 0.1, -179.0))
+            client(null).getAllOpen(BoundingBox(0.0, 179.0, 0.1, -179.0))
         }
     }
 
     @Test fun `get notes fails when limit is too large`(): Unit = runBlocking {
         assertFailsWith<QueryTooBigException> {
-            client(anonymous).getAllOpen(BoundingBox(0.0, 0.0, 0.1, 0.1), 100000000)
+            client(null).getAllOpen(BoundingBox(0.0, 0.0, 0.1, 0.1), 100000000)
         }
         assertFailsWith<QueryTooBigException> {
-            client(anonymous).getAllOpen(BoundingBox(0.0, 0.0, 90.0, 90.0))
+            client(null).getAllOpen(BoundingBox(0.0, 0.0, 90.0, 90.0))
         }
     }
 
-    private fun client(userLoginSource: UserLoginSource) =
-        NotesApiClient(HttpClient(), OsmDevApi.URL, userLoginSource, NotesApiParser())
+    private fun client(token: String?) =
+        NotesApiClient(
+            httpClient = HttpClient(),
+            baseUrl = OsmDevApi.URL,
+            userAccessTokenSource = object : UserAccessTokenSource { override val accessToken = token.orEmpty() },
+            notesApiParser = NotesApiParser()
+        )
 
     // for cleanup
     private fun closeNote(id: Long): Unit = runBlocking {

@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.data.osmtracks
 
 import de.westnordost.streetcomplete.data.AuthorizationException
 import de.westnordost.streetcomplete.data.ConnectionException
-import de.westnordost.streetcomplete.data.user.UserLoginSource
+import de.westnordost.streetcomplete.data.user.UserAccessTokenSource
 import de.westnordost.streetcomplete.data.wrapApiClientExceptions
 import de.westnordost.streetcomplete.util.ktx.truncate
 import io.ktor.client.HttpClient
@@ -24,7 +24,7 @@ import kotlinx.datetime.Instant
 class TracksApiClient(
     private val httpClient: HttpClient,
     private val baseUrl: String,
-    private val userLoginSource: UserLoginSource,
+    private val userAccessTokenSource: UserAccessTokenSource,
     private val tracksSerializer: TracksSerializer
 ) {
     /**
@@ -53,7 +53,7 @@ class TracksApiClient(
 
         val response = httpClient.post(baseUrl + "gpx") {
             compress("gzip")
-            userLoginSource.accessToken?.let { bearerAuth(it) }
+            userAccessTokenSource.accessToken?.let { bearerAuth(it) }
             setBody(MultiPartFormDataContent(formData {
                 append("file", xml, Headers.build {
                     append(HttpHeaders.ContentType, "application/gpx+xml")

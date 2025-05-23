@@ -19,7 +19,7 @@ import kotlinx.io.buffered
 class UserApiClient(
     private val httpClient: HttpClient,
     private val baseUrl: String,
-    private val userLoginSource: UserLoginSource,
+    private val userAccessTokenSource: UserAccessTokenSource,
     private val userApiParser: UserApiParser,
 ) {
     /**
@@ -30,7 +30,7 @@ class UserApiClient(
      */
     suspend fun getMine(): UserInfo = wrapApiClientExceptions {
         val response = httpClient.get(baseUrl + "user/details") {
-            userLoginSource.accessToken?.let { bearerAuth(it) }
+            userAccessTokenSource.accessToken?.let { bearerAuth(it) }
             expectSuccess = true
         }
         val source = response.bodyAsChannel().asSource().buffered()

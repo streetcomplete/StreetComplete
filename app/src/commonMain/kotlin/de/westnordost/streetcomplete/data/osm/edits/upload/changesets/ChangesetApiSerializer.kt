@@ -4,6 +4,7 @@ import de.westnordost.streetcomplete.util.ktx.attribute
 import de.westnordost.streetcomplete.util.ktx.endTag
 import de.westnordost.streetcomplete.util.ktx.startTag
 import nl.adaptivity.xmlutil.XmlWriter
+import nl.adaptivity.xmlutil.newWriter
 import nl.adaptivity.xmlutil.xmlStreaming
 
 class ChangesetApiSerializer {

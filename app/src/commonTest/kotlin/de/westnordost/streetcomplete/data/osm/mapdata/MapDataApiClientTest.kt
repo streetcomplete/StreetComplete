@@ -5,11 +5,9 @@ import de.westnordost.streetcomplete.data.ConflictException
 import de.westnordost.streetcomplete.data.QueryTooBigException
 import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.ChangesetApiClient
 import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.ChangesetApiSerializer
-import de.westnordost.streetcomplete.data.user.UserLoginSource
+import de.westnordost.streetcomplete.data.user.UserAccessTokenSource
 import de.westnordost.streetcomplete.testutils.OsmDevApi
-import de.westnordost.streetcomplete.testutils.mock
 import de.westnordost.streetcomplete.testutils.node
-import de.westnordost.streetcomplete.testutils.on
 import de.westnordost.streetcomplete.testutils.p
 import de.westnordost.streetcomplete.testutils.way
 import io.ktor.client.HttpClient
@@ -22,16 +20,6 @@ import kotlin.test.assertNull
 import kotlin.test.assertTrue
 
 class MapDataApiClientTest {
-
-    private val allowEverything = mock<UserLoginSource>()
-    private val allowNothing = mock<UserLoginSource>()
-    private val anonymous = mock<UserLoginSource>()
-
-    init {
-        on(allowEverything.accessToken).thenReturn(OsmDevApi.ALLOW_EVERYTHING_TOKEN)
-        on(allowNothing.accessToken).thenReturn(OsmDevApi.ALLOW_NOTHING_TOKEN)
-        on(anonymous.accessToken).thenReturn(null)
-    }
 
     @Test fun getNode(): Unit = runBlocking {
         assertEquals("Yangon", liveClient.getNode(NDDE_YANGON)?.tags?.get("name:en"))
@@ -117,39 +105,39 @@ class MapDataApiClientTest {
 
     @Test fun `uploadChanges as anonymous fails`(): Unit = runBlocking {
         assertFailsWith<AuthorizationException> {
-            client(anonymous).uploadChanges(1L, MapDataChanges())
+            client(null).uploadChanges(1L, MapDataChanges())
         }
     }
 
     @Test fun `uploadChanges without authorization fails`(): Unit = runBlocking {
         assertFailsWith<AuthorizationException> {
-            client(allowNothing).uploadChanges(1L, MapDataChanges())
+            client(OsmDevApi.ALLOW_NOTHING_TOKEN).uploadChanges(1L, MapDataChanges())
         }
     }
 
     @Test fun `uploadChanges in already closed changeset fails`(): Unit = runBlocking {
-        val changesetId = changesetClient(allowEverything).open(mapOf())
-        changesetClient(allowEverything).close(changesetId)
+        val changesetId = changesetClient(OsmDevApi.ALLOW_EVERYTHING_TOKEN).open(mapOf())
+        changesetClient(OsmDevApi.ALLOW_EVERYTHING_TOKEN).close(changesetId)
         assertFailsWith<ConflictException> {
-            client(allowEverything).uploadChanges(changesetId, MapDataChanges())
+            client(OsmDevApi.ALLOW_EVERYTHING_TOKEN).uploadChanges(changesetId, MapDataChanges())
         }
     }
 
     @Test fun `uploadChanges of non-existing element fails`(): Unit = runBlocking {
-        val changesetId = changesetClient(allowEverything).open(mapOf())
+        val changesetId = changesetClient(OsmDevApi.ALLOW_EVERYTHING_TOKEN).open(mapOf())
         assertFailsWith<ConflictException> {
-            client(allowEverything).uploadChanges(
+            client(OsmDevApi.ALLOW_EVERYTHING_TOKEN).uploadChanges(
                 changesetId = changesetId,
                 changes = MapDataChanges(modifications = listOf(node(Long.MAX_VALUE)))
             )
         }
-        changesetClient(allowEverything).close(changesetId)
+        changesetClient(OsmDevApi.ALLOW_EVERYTHING_TOKEN).close(changesetId)
     }
 
     @Test fun uploadChanges(): Unit = runBlocking {
-        val changesetId = changesetClient(allowEverything).open(mapOf())
+        val changesetId = changesetClient(OsmDevApi.ALLOW_EVERYTHING_TOKEN).open(mapOf())
 
-        val updates1 = client(allowEverything).uploadChanges(
+        val updates1 = client(OsmDevApi.ALLOW_EVERYTHING_TOKEN).uploadChanges(
             changesetId = changesetId,
             changes = MapDataChanges(
                 creations = listOf(
@@ -177,7 +165,7 @@ class MapDataApiClientTest {
         val thirdNode = elements.find { it.tags["third"] == "3" } as Node
         val way = elements.filterIsInstance<Way>().single()
 
-        val updates2 = client(allowEverything).uploadChanges(
+        val updates2 = client(OsmDevApi.ALLOW_EVERYTHING_TOKEN).uploadChanges(
             changesetId = changesetId,
             changes = MapDataChanges(
                 modifications = listOf(way.copy(nodeIds = listOf(secondNode.id, thirdNode.id))),
@@ -188,17 +176,34 @@ class MapDataApiClientTest {
         assertEquals(listOf(firstNode.key), updates2.deleted)
         assertEquals(listOf(way.key), updates2.updated.map { it.key })
 
-        changesetClient(allowEverything).close(changesetId)
+        changesetClient(OsmDevApi.ALLOW_EVERYTHING_TOKEN).close(changesetId)
     }
 
-    private fun client(userLoginSource: UserLoginSource) =
-        MapDataApiClient(HttpClient(), OsmDevApi.URL, userLoginSource, MapDataApiParser(), MapDataApiSerializer())
+    private fun client(token: String?) =
+        MapDataApiClient(
+            httpClient = HttpClient(),
+            baseUrl = OsmDevApi.URL,
+            userAccessTokenSource = object : UserAccessTokenSource { override val accessToken = token.orEmpty() },
+            parser = MapDataApiParser(),
+            serializer = MapDataApiSerializer()
+        )
 
-    private fun changesetClient(userLoginSource: UserLoginSource) =
-        ChangesetApiClient(HttpClient(), OsmDevApi.URL, userLoginSource, ChangesetApiSerializer())
+    private fun changesetClient(token: String?) =
+        ChangesetApiClient(
+            httpClient = HttpClient(),
+            baseUrl = OsmDevApi.URL,
+            userAccessTokenSource = object : UserAccessTokenSource { override val accessToken = token.orEmpty() },
+            serializer = ChangesetApiSerializer()
+        )
 
     private val liveClient =
-        MapDataApiClient(HttpClient(), "https://api.openstreetmap.org/api/0.6/", anonymous, MapDataApiParser(), MapDataApiSerializer())
+        MapDataApiClient(
+            httpClient = HttpClient(),
+            baseUrl = "https://api.openstreetmap.org/api/0.6/",
+            userAccessTokenSource = object : UserAccessTokenSource { override val accessToken = null },
+            parser = MapDataApiParser(),
+            serializer = MapDataApiSerializer()
+        )
 
     // some elements that should exist on the live API
 

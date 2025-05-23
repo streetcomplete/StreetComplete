@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.data.osmnotes.edits
 
+import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.ConflictException
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osmnotes.NoteController
@@ -211,7 +212,12 @@ class NoteEditsUploaderTest {
         on(noteEditsController.getOldestUnsynced()).thenReturn(edit).thenReturn(null)
         on(userDataSource.userName).thenReturn("blah mc/Blah")
         on(notesApi.create(any(), any())).thenReturn(note)
-        on(tracksApi.create(edit.track, "creator", edit.text)).thenReturn(988)
+        on(tracksApi.create(
+            trackpoints = edit.track,
+            creator = ApplicationConstants.USER_AGENT,
+            description = edit.text,
+            tags = listOf(ApplicationConstants.NAME)
+        )).thenReturn(988L)
 
         upload()
 

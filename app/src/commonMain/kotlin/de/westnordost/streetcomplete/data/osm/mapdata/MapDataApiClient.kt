@@ -4,7 +4,7 @@ import de.westnordost.streetcomplete.data.AuthorizationException
 import de.westnordost.streetcomplete.data.ConflictException
 import de.westnordost.streetcomplete.data.ConnectionException
 import de.westnordost.streetcomplete.data.QueryTooBigException
-import de.westnordost.streetcomplete.data.user.UserLoginSource
+import de.westnordost.streetcomplete.data.user.UserAccessTokenSource
 import de.westnordost.streetcomplete.data.wrapApiClientExceptions
 import io.ktor.client.HttpClient
 import io.ktor.client.plugins.ClientRequestException
@@ -23,7 +23,7 @@ import kotlinx.io.buffered
 class MapDataApiClient(
     private val httpClient: HttpClient,
     private val baseUrl: String,
-    private val userLoginSource: UserLoginSource,
+    private val userAccessTokenSource: UserAccessTokenSource,
     private val parser: MapDataApiParser,
     private val serializer: MapDataApiSerializer,
 ) {
@@ -55,7 +55,7 @@ class MapDataApiClient(
     ): MapDataUpdates = wrapApiClientExceptions {
         try {
             val response = httpClient.post(baseUrl + "changeset/$changesetId/upload") {
-                userLoginSource.accessToken?.let { bearerAuth(it) }
+                userAccessTokenSource.accessToken?.let { bearerAuth(it) }
                 setBody(serializer.serialize(changes, changesetId))
                 expectSuccess = true
             }

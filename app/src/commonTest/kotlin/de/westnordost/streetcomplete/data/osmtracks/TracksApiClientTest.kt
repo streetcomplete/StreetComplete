@@ -2,13 +2,11 @@ package de.westnordost.streetcomplete.data.osmtracks
 
 import de.westnordost.streetcomplete.data.AuthorizationException
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
-import de.westnordost.streetcomplete.data.user.UserLoginSource
+import de.westnordost.streetcomplete.data.user.UserAccessTokenSource
 import de.westnordost.streetcomplete.testutils.OsmDevApi
-import de.westnordost.streetcomplete.testutils.mock
-import de.westnordost.streetcomplete.testutils.on
+import de.westnordost.streetcomplete.util.ktx.systemTimeNow
 import io.ktor.client.HttpClient
 import kotlinx.coroutines.runBlocking
-import java.time.Instant
 import kotlin.test.Ignore
 import kotlin.test.Test
 import kotlin.test.assertFailsWith
@@ -18,30 +16,30 @@ import kotlin.test.assertFailsWith
 // response
 class TracksApiClientTest {
 
-    private val trackpoint = Trackpoint(LatLon(1.23, 3.45), Instant.now().toEpochMilli(), 1f, 1f)
-
-    private val allowEverything = mock<UserLoginSource>()
-    private val allowNothing = mock<UserLoginSource>()
-    private val anonymous = mock<UserLoginSource>()
-
-    init {
-        on(allowEverything.accessToken).thenReturn(OsmDevApi.ALLOW_EVERYTHING_TOKEN)
-        on(allowNothing.accessToken).thenReturn(OsmDevApi.ALLOW_NOTHING_TOKEN)
-        on(anonymous.accessToken).thenReturn(null)
-    }
+    private val trackpoint = Trackpoint(LatLon(1.23, 3.45), systemTimeNow().toEpochMilliseconds(), 1f, 1f)
+    private val creator = "StreetComplete test"
 
     @Test fun `throws exception on insufficient privileges`(): Unit = runBlocking {
-        assertFailsWith<AuthorizationException> { client(anonymous).create(listOf(trackpoint)) }
-        assertFailsWith<AuthorizationException> { client(allowNothing).create(listOf(trackpoint)) }
+        assertFailsWith<AuthorizationException> {
+            client(null).create(listOf(trackpoint), creator)
+        }
+        assertFailsWith<AuthorizationException> {
+            client(OsmDevApi.ALLOW_NOTHING_TOKEN).create(listOf(trackpoint), creator)
+        }
     }
 
     // disabled this test, because I get an email about the successfull GPX upload every time this
     // test is executed
     @Ignore
     @Test fun `create works without error`(): Unit = runBlocking {
-        client(allowEverything).create(listOf(trackpoint))
+        client(OsmDevApi.ALLOW_EVERYTHING_TOKEN).create(listOf(trackpoint), creator)
     }
 
-    private fun client(userLoginSource: UserLoginSource) =
-        TracksApiClient(HttpClient(), OsmDevApi.URL, userLoginSource, TracksSerializer())
+    private fun client(token: String?) =
+        TracksApiClient(
+            httpClient = HttpClient(),
+            baseUrl = OsmDevApi.URL,
+            userAccessTokenSource = object : UserAccessTokenSource { override val accessToken = token.orEmpty() },
+            tracksSerializer = TracksSerializer()
+        )
 }
