@@ -9,7 +9,7 @@ class EditTypeStatisticsDaoTest : ApplicationDbTestCase() {
     private lateinit var daoType: EditTypeStatisticsDao
 
     @BeforeTest fun createDao() {
-        daoType = EditTypeStatisticsDao(database, EditTypeStatisticsTables.NAME)
+        daoType = EditTypeStatisticsDao(database, EditTypeStatisticsTable.NAME)
     }
 
     @Test fun getZero() {

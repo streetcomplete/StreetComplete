@@ -19,9 +19,9 @@ import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsTable
 import de.westnordost.streetcomplete.data.osmnotes.notequests.NoteQuestsHiddenTable
 import de.westnordost.streetcomplete.data.user.achievements.UserAchievementsTable
 import de.westnordost.streetcomplete.data.user.achievements.UserLinksTable
-import de.westnordost.streetcomplete.data.user.statistics.ActiveDaysTable
-import de.westnordost.streetcomplete.data.user.statistics.CountryStatisticsTables
-import de.westnordost.streetcomplete.data.user.statistics.EditTypeStatisticsTables
+import de.westnordost.streetcomplete.data.user.statistics.ActiveDatesTable
+import de.westnordost.streetcomplete.data.user.statistics.CountryStatisticsTable
+import de.westnordost.streetcomplete.data.user.statistics.EditTypeStatisticsTable
 import de.westnordost.streetcomplete.data.presets.EditTypePresetsTable
 import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderTable
 import de.westnordost.streetcomplete.data.visiblequests.VisibleEditTypeTable
@@ -88,13 +88,13 @@ object DatabaseInitializer {
         db.exec(DownloadedTilesTable.CREATE)
 
         // user statistics
-        db.exec(EditTypeStatisticsTables.create(EditTypeStatisticsTables.NAME))
-        db.exec(EditTypeStatisticsTables.create(EditTypeStatisticsTables.NAME_CURRENT_WEEK))
-        db.exec(CountryStatisticsTables.create(CountryStatisticsTables.NAME))
-        db.exec(CountryStatisticsTables.create(CountryStatisticsTables.NAME_CURRENT_WEEK))
+        db.exec(EditTypeStatisticsTable.create(EditTypeStatisticsTable.NAME))
+        db.exec(EditTypeStatisticsTable.create(EditTypeStatisticsTable.NAME_CURRENT_WEEK))
+        db.exec(CountryStatisticsTable.create(CountryStatisticsTable.NAME))
+        db.exec(CountryStatisticsTable.create(CountryStatisticsTable.NAME_CURRENT_WEEK))
         db.exec(UserAchievementsTable.CREATE)
         db.exec(UserLinksTable.CREATE)
-        db.exec(ActiveDaysTable.CREATE)
+        db.exec(ActiveDatesTable.CREATE)
 
         // logs
         db.exec(LogsTable.CREATE)
@@ -181,9 +181,9 @@ object DatabaseInitializer {
             db.tryExec("ALTER TABLE ${NoteEditsTable.NAME} ADD COLUMN ${NoteEditsTable.Columns.TRACK} text DEFAULT '[]' NOT NULL")
         }
         if (oldVersion <= 6 && newVersion > 6) {
-            db.exec(EditTypeStatisticsTables.create(EditTypeStatisticsTables.NAME_CURRENT_WEEK))
-            db.exec(CountryStatisticsTables.create(CountryStatisticsTables.NAME_CURRENT_WEEK))
-            db.exec(ActiveDaysTable.CREATE)
+            db.exec(EditTypeStatisticsTable.create(EditTypeStatisticsTable.NAME_CURRENT_WEEK))
+            db.exec(CountryStatisticsTable.create(CountryStatisticsTable.NAME_CURRENT_WEEK))
+            db.exec(ActiveDatesTable.CREATE)
         }
         if (oldVersion <= 7 && newVersion > 7) {
             db.delete(ElementEditsTable.NAME, "${ElementEditsTable.Columns.QUEST_TYPE} = 'AddShoulder'", null)

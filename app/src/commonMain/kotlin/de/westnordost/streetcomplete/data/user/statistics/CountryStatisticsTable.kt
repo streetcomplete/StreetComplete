@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.data.user.statistics
 
-object CountryStatisticsTables {
+object CountryStatisticsTable {
     const val NAME = "country_statistics"
     const val NAME_CURRENT_WEEK = "country_statistics_current_week"
 

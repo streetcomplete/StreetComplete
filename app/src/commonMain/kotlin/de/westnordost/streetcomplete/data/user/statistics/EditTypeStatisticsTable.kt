@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.data.user.statistics
 
-object EditTypeStatisticsTables {
+object EditTypeStatisticsTable {
     const val NAME = "quest_statistics"
     const val NAME_CURRENT_WEEK = "quest_statistics_current_week"
 

@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.data.user.statistics
 
-object ActiveDaysTable {
+object ActiveDatesTable {
     const val NAME = "active_days_statistics"
 
     object Columns {
