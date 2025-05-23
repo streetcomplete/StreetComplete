@@ -9,7 +9,7 @@ class CountryStatisticsDaoTest : ApplicationDbTestCase() {
     private lateinit var dao: CountryStatisticsDao
 
     @BeforeTest fun createDao() {
-        dao = CountryStatisticsDao(database, CountryStatisticsTables.NAME)
+        dao = CountryStatisticsDao(database, CountryStatisticsTable.NAME)
     }
 
     @Test fun addAndSubtract() {

@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.data.user.statistics
 
 import de.westnordost.streetcomplete.data.Database
-import de.westnordost.streetcomplete.data.user.statistics.ActiveDaysTable.Columns.DATE
-import de.westnordost.streetcomplete.data.user.statistics.ActiveDaysTable.NAME
+import de.westnordost.streetcomplete.data.user.statistics.ActiveDatesTable.Columns.DATE
+import de.westnordost.streetcomplete.data.user.statistics.ActiveDatesTable.NAME
 import de.westnordost.streetcomplete.util.ktx.systemTimeNow
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.TimeZone
