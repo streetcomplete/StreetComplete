@@ -3,15 +3,19 @@ package de.westnordost.streetcomplete.quests.width
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AlertDialog
-import androidx.core.view.isGone
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.LengthUnit
 import de.westnordost.streetcomplete.databinding.QuestLengthBinding
 import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.osm.Length
 import de.westnordost.streetcomplete.osm.hasDubiousRoadWidth
 import de.westnordost.streetcomplete.quests.AbstractArMeasureQuestForm
+import de.westnordost.streetcomplete.quests.LengthForm
 import de.westnordost.streetcomplete.screens.measure.ArSupportChecker
-import de.westnordost.streetcomplete.view.controller.LengthInputViewController
+import de.westnordost.streetcomplete.ui.util.content
 import org.koin.android.ext.android.inject
 
 class AddWidthForm : AbstractArMeasureQuestForm<WidthAnswer>() {
@@ -20,8 +24,10 @@ class AddWidthForm : AbstractArMeasureQuestForm<WidthAnswer>() {
     private val binding by contentViewBinding(QuestLengthBinding::bind)
     private val checkArSupport: ArSupportChecker by inject()
     private var isARMeasurement: Boolean = false
-    private lateinit var lengthInput: LengthInputViewController
-
+    private lateinit var length: MutableState<Length?>
+    private lateinit var syncLength: MutableState<Boolean>
+    private val countryLengthUnits = countryInfo.lengthUnits;
+    private var currentUnit = countryLengthUnits[0]
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         savedInstanceState?.let { isARMeasurement = it.getBoolean(AR) }
@@ -32,37 +38,42 @@ class AddWidthForm : AbstractArMeasureQuestForm<WidthAnswer>() {
 
         val isRoad = element.tags["highway"] in ALL_ROADS
         val explanation = if (isRoad) getString(R.string.quest_road_width_explanation) else null
-        binding.widthExplanationTextView.isGone = explanation == null
-        binding.widthExplanationTextView.text = explanation
 
-        lengthInput = binding.lengthInput.let {
-            LengthInputViewController(it.unitSelect, it.metersContainer, it.metersInput, it.feetInchesContainer, it.feetInput, it.inchesInput)
+        binding.questLengthBase.content {
+            length = rememberSaveable { mutableStateOf(null) }
+            syncLength = rememberSaveable { mutableStateOf(false) }
+            LengthForm(
+                currentLength = length.value,
+                syncLength = syncLength.value,
+                onLengthChanged = {
+                    syncLength.value = false
+                    isARMeasurement = false
+                    length.value = it
+                    checkIsFormComplete()
+                },
+                maxFeetDigits = 3,
+                maxMeterDigits = Pair(2, 2),
+                selectableUnits = countryLengthUnits,
+                onUnitChanged = { currentUnit = it },
+                showMeasureButton = checkArSupport(),
+                takeMeasurementClick = { takeMeasurement() },
+                explanation = explanation
+            )
         }
-        lengthInput.unitSelectItemResId = R.layout.spinner_item_centered_large
-        lengthInput.isCompactMode = true
-        lengthInput.maxFeetDigits = 3
-        lengthInput.maxMeterDigits = Pair(2, 2)
-        lengthInput.selectableUnits = countryInfo.lengthUnits
-        lengthInput.onInputChanged = {
-            isARMeasurement = false
-            checkIsFormComplete()
-        }
-        binding.measureButton.isGone = !checkArSupport()
-        binding.measureButton.setOnClickListener { takeMeasurement() }
     }
 
     private fun takeMeasurement() {
-        val lengthUnit = lengthInput.unit ?: return
-        takeMeasurement(lengthUnit, false)
+        takeMeasurement(currentUnit, false)
     }
 
     override fun onMeasured(length: Length) {
-        lengthInput.length = length
+        this.syncLength.value = true
+        this.length.value = length
         isARMeasurement = true
     }
 
     override fun onClickOk() {
-        val length = lengthInput.length!!
+        val length = length.value!!
         val newTags = element.tags + ("width" to length.toMeters().toString())
         if (hasDubiousRoadWidth(newTags) != true) {
             applyAnswer(WidthAnswer(length, isARMeasurement))
@@ -83,7 +94,7 @@ class AddWidthForm : AbstractArMeasureQuestForm<WidthAnswer>() {
         }
     }
 
-    override fun isFormComplete(): Boolean = lengthInput.length != null
+    override fun isFormComplete(): Boolean = length.value != null
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
