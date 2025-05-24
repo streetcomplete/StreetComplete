@@ -95,3 +95,8 @@ fun StopRecordingIcon() {
 fun LargeCreateIcon() {
     Icon(painterResource(R.drawable.ic_crosshair_32dp), stringResource(R.string.action_create_new_poi))
 }
+
+@Composable
+fun MeasurementIcon() {
+    Icon(painterResource(R.drawable.ic_camera_measure_24dp), stringResource(R.string.ar_measure_take))
+}
