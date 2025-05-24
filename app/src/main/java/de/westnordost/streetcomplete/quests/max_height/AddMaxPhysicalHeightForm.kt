@@ -6,7 +6,7 @@ import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.databinding.QuestLengthBinding
+import de.westnordost.streetcomplete.databinding.ComposeViewBinding
 import de.westnordost.streetcomplete.osm.Length
 import de.westnordost.streetcomplete.quests.AbstractArMeasureQuestForm
 import de.westnordost.streetcomplete.quests.LengthForm
@@ -16,8 +16,8 @@ import org.koin.android.ext.android.inject
 
 class AddMaxPhysicalHeightForm : AbstractArMeasureQuestForm<MaxPhysicalHeightAnswer>() {
 
-    override val contentLayoutResId = R.layout.quest_length
-    private val binding by contentViewBinding(QuestLengthBinding::bind)
+    override val contentLayoutResId = R.layout.compose_view
+    private val binding by contentViewBinding(ComposeViewBinding::bind)
     private val checkArSupport: ArSupportChecker by inject()
     private var isARMeasurement: Boolean = false
     private lateinit var length: MutableState<Length?>
@@ -32,7 +32,7 @@ class AddMaxPhysicalHeightForm : AbstractArMeasureQuestForm<MaxPhysicalHeightAns
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.questLengthBase.content {
+        binding.composeViewBase.content {
             length = rememberSaveable { mutableStateOf(null) }
             syncLength = rememberSaveable { mutableStateOf(false) }
             LengthForm(

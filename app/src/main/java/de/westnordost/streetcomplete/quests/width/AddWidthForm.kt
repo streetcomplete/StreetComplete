@@ -8,9 +8,12 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.LengthUnit
-import de.westnordost.streetcomplete.databinding.QuestLengthBinding
+import de.westnordost.streetcomplete.databinding.ComposeViewBinding
 import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.osm.Length
+import de.westnordost.streetcomplete.osm.LengthInFeetAndInches
+import de.westnordost.streetcomplete.osm.LengthInMeters
+import de.westnordost.streetcomplete.osm.LengthSaver
 import de.westnordost.streetcomplete.osm.hasDubiousRoadWidth
 import de.westnordost.streetcomplete.quests.AbstractArMeasureQuestForm
 import de.westnordost.streetcomplete.quests.LengthForm
@@ -20,14 +23,13 @@ import org.koin.android.ext.android.inject
 
 class AddWidthForm : AbstractArMeasureQuestForm<WidthAnswer>() {
 
-    override val contentLayoutResId = R.layout.quest_length
-    private val binding by contentViewBinding(QuestLengthBinding::bind)
+    override val contentLayoutResId = R.layout.compose_view
+    private val binding by contentViewBinding(ComposeViewBinding::bind)
     private val checkArSupport: ArSupportChecker by inject()
     private var isARMeasurement: Boolean = false
     private lateinit var length: MutableState<Length?>
     private lateinit var syncLength: MutableState<Boolean>
-    private val countryLengthUnits = countryInfo.lengthUnits;
-    private var currentUnit = countryLengthUnits[0]
+    private var currentUnit = LengthUnit.METER
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         savedInstanceState?.let { isARMeasurement = it.getBoolean(AR) }
@@ -39,8 +41,8 @@ class AddWidthForm : AbstractArMeasureQuestForm<WidthAnswer>() {
         val isRoad = element.tags["highway"] in ALL_ROADS
         val explanation = if (isRoad) getString(R.string.quest_road_width_explanation) else null
 
-        binding.questLengthBase.content {
-            length = rememberSaveable { mutableStateOf(null) }
+        binding.composeViewBase.content {
+            length = rememberSaveable(stateSaver = LengthSaver) { mutableStateOf(null) }!!
             syncLength = rememberSaveable { mutableStateOf(false) }
             LengthForm(
                 currentLength = length.value,
@@ -53,7 +55,7 @@ class AddWidthForm : AbstractArMeasureQuestForm<WidthAnswer>() {
                 },
                 maxFeetDigits = 3,
                 maxMeterDigits = Pair(2, 2),
-                selectableUnits = countryLengthUnits,
+                selectableUnits = countryInfo.lengthUnits,
                 onUnitChanged = { currentUnit = it },
                 showMeasureButton = checkArSupport(),
                 takeMeasurementClick = { takeMeasurement() },
@@ -70,6 +72,7 @@ class AddWidthForm : AbstractArMeasureQuestForm<WidthAnswer>() {
         this.syncLength.value = true
         this.length.value = length
         isARMeasurement = true
+        checkIsFormComplete()
     }
 
     override fun onClickOk() {
