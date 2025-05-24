@@ -42,7 +42,7 @@ class AddWidthForm : AbstractArMeasureQuestForm<WidthAnswer>() {
         val explanation = if (isRoad) getString(R.string.quest_road_width_explanation) else null
 
         binding.composeViewBase.content {
-            length = rememberSaveable(stateSaver = LengthSaver) { mutableStateOf(null) }!!
+            length = rememberSaveable(stateSaver = LengthSaver) { mutableStateOf(null) }
             syncLength = rememberSaveable { mutableStateOf(false) }
             LengthForm(
                 currentLength = length.value,

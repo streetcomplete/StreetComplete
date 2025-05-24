@@ -6,8 +6,10 @@ import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.LengthUnit
 import de.westnordost.streetcomplete.databinding.ComposeViewBinding
 import de.westnordost.streetcomplete.osm.Length
+import de.westnordost.streetcomplete.osm.LengthSaver
 import de.westnordost.streetcomplete.quests.AbstractArMeasureQuestForm
 import de.westnordost.streetcomplete.quests.LengthForm
 import de.westnordost.streetcomplete.screens.measure.ArSupportChecker
@@ -22,8 +24,7 @@ class AddMaxPhysicalHeightForm : AbstractArMeasureQuestForm<MaxPhysicalHeightAns
     private var isARMeasurement: Boolean = false
     private lateinit var length: MutableState<Length?>
     private lateinit var syncLength: MutableState<Boolean>
-    private val countryLengthUnits = countryInfo.lengthUnits;
-    private var currentUnit = countryLengthUnits[0]
+    private var currentUnit = LengthUnit.METER
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,7 +34,7 @@ class AddMaxPhysicalHeightForm : AbstractArMeasureQuestForm<MaxPhysicalHeightAns
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.composeViewBase.content {
-            length = rememberSaveable { mutableStateOf(null) }
+            length = rememberSaveable(stateSaver = LengthSaver) { mutableStateOf(null) }
             syncLength = rememberSaveable { mutableStateOf(false) }
             LengthForm(
                 currentLength = length.value,
@@ -46,7 +47,7 @@ class AddMaxPhysicalHeightForm : AbstractArMeasureQuestForm<MaxPhysicalHeightAns
                 },
                 maxFeetDigits = 3,
                 maxMeterDigits = Pair(2, 2),
-                selectableUnits = countryLengthUnits,
+                selectableUnits = countryInfo.lengthUnits,
                 onUnitChanged = { currentUnit = it },
                 showMeasureButton = checkArSupport(),
                 takeMeasurementClick = { takeMeasurement() },
@@ -63,6 +64,7 @@ class AddMaxPhysicalHeightForm : AbstractArMeasureQuestForm<MaxPhysicalHeightAns
         this.syncLength.value = true
         this.length.value = length
         isARMeasurement = true
+        checkIsFormComplete()
     }
 
     override fun isFormComplete(): Boolean = length.value != null
