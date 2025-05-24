@@ -134,6 +134,8 @@ kotlin {
                 // HTTP client
                 implementation("io.ktor:ktor-client-core:3.1.3")
                 implementation("io.ktor:ktor-client-encoding:3.1.3")
+                // SHA256 hashing, used during OAuth authentication
+                implementation("org.kotlincrypto.hash:sha2:0.7.0")
 
                 // XML
                 implementation("io.github.pdvrieze.xmlutil:core:0.91.0")

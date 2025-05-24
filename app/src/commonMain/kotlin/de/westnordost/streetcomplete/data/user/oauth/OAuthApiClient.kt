@@ -15,11 +15,12 @@ import io.ktor.http.URLParserException
 import io.ktor.http.Url
 import io.ktor.http.contentType
 import io.ktor.http.decodeURLQueryComponent
+import io.ktor.http.encodeOAuth
 import io.ktor.http.takeFrom
+import io.ktor.utils.io.charsets.Charsets
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
-import java.nio.charset.StandardCharsets
-import java.security.MessageDigest
+import org.kotlincrypto.hash.sha2.SHA256
 import kotlin.io.encoding.Base64
 import kotlin.io.encoding.ExperimentalEncodingApi
 
@@ -186,17 +187,18 @@ private data class ErrorResponseJson(
 /**
  * Create the RFC 7636 Proof Key for Code Exchange from a random string.
  *
+ * S256: code_challenge = BASE64URL-ENCODE(SHA256(ASCII(code_verifier)))
+ *
  * See https://www.rfc-editor.org/rfc/rfc7636
  */
 @OptIn(ExperimentalEncodingApi::class)
 private fun createPKCE_S256CodeChallenge(codeVerifier: String): String {
-    // S256: code_challenge = BASE64URL-ENCODE(SHA256(ASCII(code_verifier)))
-    // TODO: currently this is Java code. A quick google search finds two KMP libraries that should
-    //       be able to do a SHA256 hash. Should take a closer look:
-    //       https://github.com/whyoleg/cryptography-kotlin
-    //       https://github.com/KotlinCrypto/hash/
-    val encodedBytes = codeVerifier.toByteArray(StandardCharsets.US_ASCII)
-    val sha256 = MessageDigest.getInstance("SHA-256").digest(encodedBytes)
+    // this encodes in UTF-8, but as the code verifier is only A-Z, a-z, 0-9, that's fine because
+    // UTF-8 is a superset of ASCII
+    val encodedBytes = codeVerifier.encodeToByteArray()
+
+    val sha256 = SHA256().digest(encodedBytes)
+
     return Base64.UrlSafe.encode(sha256).split("=")[0]
 }
 
