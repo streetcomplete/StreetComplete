@@ -1,7 +1,5 @@
 package de.westnordost.streetcomplete.osm.surface
 
-import de.westnordost.streetcomplete.osm.surface.Surface.*
-
 enum class Surface(val osmValue: String?) {
     ASPHALT("asphalt"),
     CONCRETE("concrete"),
@@ -56,30 +54,32 @@ enum class Surface(val osmValue: String?) {
     HARD("hard"), // badly worded: surface used for tennis hard courts, which is synthetic resin (-> acrylic)
 
     // various possibly valid surfaces not supported as duplicates
-    UNKNOWN(null),
+    UNKNOWN(null);
+
+    companion object {
+        val selectableValuesForWays = listOf(
+            // paved surfaces
+            ASPHALT, PAVING_STONES, CONCRETE, CONCRETE_LANES,
+            SETT, UNHEWN_COBBLESTONE, GRASS_PAVER, WOOD, METAL,
+            // unpaved surfaces
+            COMPACTED, FINE_GRAVEL, GRAVEL, PEBBLES, WOODCHIPS,
+            // ground surfaces
+            DIRT, MUD, GRASS, SAND, ROCK,
+            // generic surfaces
+            PAVED, UNPAVED, GROUND
+        )
+
+        val selectableValuesForPitches = listOf(
+            // grouped a bit: 1. very most popular, 2. artificial, 3. natural
+            GRASS, ASPHALT, CONCRETE,
+            ARTIFICIAL_TURF, ACRYLIC, RUBBER,
+            CLAY, SAND, DIRT,
+            // then, roughly by popularity
+            FINE_GRAVEL, PAVING_STONES, COMPACTED,
+            SETT, UNHEWN_COBBLESTONE, GRASS_PAVER,
+            WOOD, METAL, GRAVEL,
+            PEBBLES, ROCK,
+            PAVED, UNPAVED, GROUND
+        )
+    }
 }
-
-val SELECTABLE_PITCH_SURFACES = listOf(
-    // grouped a bit: 1. very most popular, 2. artificial, 3. natural
-    GRASS, ASPHALT, CONCRETE,
-    ARTIFICIAL_TURF, ACRYLIC, RUBBER,
-    CLAY, SAND, DIRT,
-    // then, roughly by popularity
-    FINE_GRAVEL, PAVING_STONES, COMPACTED,
-    SETT, UNHEWN_COBBLESTONE, GRASS_PAVER,
-    WOOD, METAL, GRAVEL,
-    PEBBLES, ROCK,
-    PAVED, UNPAVED, GROUND
-)
-
-val SELECTABLE_WAY_SURFACES = listOf(
-    // paved surfaces
-    ASPHALT, PAVING_STONES, CONCRETE, CONCRETE_LANES,
-    SETT, UNHEWN_COBBLESTONE, GRASS_PAVER, WOOD, METAL,
-    // unpaved surfaces
-    COMPACTED, FINE_GRAVEL, GRAVEL, PEBBLES, WOODCHIPS,
-    // ground surfaces
-    DIRT, MUD, GRASS, SAND, ROCK,
-    // generic surfaces
-    PAVED, UNPAVED, GROUND
-)
