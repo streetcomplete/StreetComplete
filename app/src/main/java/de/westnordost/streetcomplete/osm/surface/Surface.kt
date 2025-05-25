@@ -5,7 +5,6 @@ import de.westnordost.streetcomplete.osm.surface.Surface.*
 enum class Surface(val osmValue: String?) {
     ASPHALT("asphalt"),
     CONCRETE("concrete"),
-    CONCRETE_PLATES("concrete:plates"),
     CONCRETE_LANES("concrete:lanes"),
     FINE_GRAVEL("fine_gravel"),
     PAVING_STONES("paving_stones"),
@@ -38,6 +37,12 @@ enum class Surface(val osmValue: String?) {
     CHIPSEAL("chipseal"), // subtype/synonym of asphalt
     METAL_GRID("metal_grid"), // more specific than "metal"
 
+    // very specific subtype of concrete - heavy-duty concrete plates not cast in place. See 2024
+    // discussion in https://wiki.openstreetmap.org/wiki/Talk:Tag:surface%3Dconcrete:plates#Difference_from_surface:concrete_-_2024_discussion
+    // handling as synonym to concrete should avoid tagging basically large paving stones as
+    // concrete:plates
+    CONCRETE_PLATES("concrete:plates"),
+
     // these values ideally would be removed from OpenStreetMap, but while they remain
     // we want to handle them as synonyms
     SOIL("soil"), // synonym of earth and dirt
@@ -69,7 +74,7 @@ val SELECTABLE_PITCH_SURFACES = listOf(
 
 val SELECTABLE_WAY_SURFACES = listOf(
     // paved surfaces
-    ASPHALT, PAVING_STONES, CONCRETE, CONCRETE_PLATES, CONCRETE_LANES,
+    ASPHALT, PAVING_STONES, CONCRETE, CONCRETE_LANES,
     SETT, UNHEWN_COBBLESTONE, GRASS_PAVER, WOOD, METAL,
     // unpaved surfaces
     COMPACTED, FINE_GRAVEL, GRAVEL, PEBBLES, WOODCHIPS,

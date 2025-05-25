@@ -27,8 +27,7 @@ fun Surface.asStreetSideItem(resources: Resources): StreetSideDisplayItem<Surfac
 
 val Surface.titleResId: Int get() = when (this) {
     ASPHALT, CHIPSEAL -> R.string.quest_surface_value_asphalt
-    CONCRETE -> R.string.quest_surface_value_concrete
-    CONCRETE_PLATES -> R.string.quest_surface_value_concrete_plates
+    CONCRETE, CONCRETE_PLATES -> R.string.quest_surface_value_concrete
     CONCRETE_LANES -> R.string.quest_surface_value_concrete_lanes
     FINE_GRAVEL -> R.string.quest_surface_value_fine_gravel
     PAVING_STONES, PAVING_STONES_WITH_WEIRD_SUFFIX, BRICK, BRICKS -> R.string.quest_surface_value_paving_stones
@@ -58,8 +57,7 @@ val Surface.titleResId: Int get() = when (this) {
 
 val Surface.iconResId: Int get() = when (this) {
     ASPHALT, CHIPSEAL -> R.drawable.surface_asphalt
-    CONCRETE -> R.drawable.surface_concrete
-    CONCRETE_PLATES -> R.drawable.surface_concrete_plates
+    CONCRETE, CONCRETE_PLATES -> R.drawable.surface_concrete
     CONCRETE_LANES -> R.drawable.surface_concrete_lanes
     FINE_GRAVEL -> R.drawable.surface_fine_gravel
     PAVING_STONES, PAVING_STONES_WITH_WEIRD_SUFFIX, BRICK, BRICKS -> R.drawable.surface_paving_stones

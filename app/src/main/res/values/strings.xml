@@ -1659,7 +1659,6 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_surface_value_sett">"Sett"</string>
     <string name="quest_surface_value_wood">"Wood"</string>
     <string name="quest_surface_value_woodchips">Woodchips</string>
-    <string name="quest_surface_value_concrete_plates">Concrete plates</string>
     <string name="quest_surface_value_concrete_lanes">Concrete lanes</string>
     <string name="quest_surface_value_metal">Metal</string>
     <string name="quest_surface_value_unhewn_cobblestone">Unhewn cobblestone</string>
