@@ -131,6 +131,10 @@ class MainViewModelImpl(
 
     override val geoUri = MutableStateFlow<CameraPosition?>(null)
 
+    override fun consumeGeoUri() {
+        geoUri.value = null
+    }
+
     /* intro */
 
     override var hasShownTutorial: Boolean
