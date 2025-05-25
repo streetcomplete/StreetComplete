@@ -40,6 +40,7 @@ The info you enter is directly added to OpenStreetMap in your name, without the 
     <string name="map_btn_zoom_in">"Zoom in"</string>
 
     <string name="map_attribution">Map Attribution</string>
+    <string name="compass">Compass</string>
 
     <string name="map_btn_menu">"Menu"</string>
 
