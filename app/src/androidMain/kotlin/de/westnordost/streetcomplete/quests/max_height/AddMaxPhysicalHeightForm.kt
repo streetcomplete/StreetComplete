@@ -51,7 +51,6 @@ class AddMaxPhysicalHeightForm : AbstractArMeasureQuestForm<MaxPhysicalHeightAns
                 onUnitChanged = { currentUnit = it },
                 showMeasureButton = checkArSupport(),
                 takeMeasurementClick = { takeMeasurement() },
-                explanation = null
             )
         }
     }

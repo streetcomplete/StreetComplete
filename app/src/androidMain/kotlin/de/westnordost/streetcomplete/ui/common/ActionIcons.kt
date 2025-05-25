@@ -98,5 +98,5 @@ fun LargeCreateIcon() {
 
 @Composable
 fun MeasurementIcon() {
-    Icon(painterResource(R.drawable.ic_camera_measure_24dp), stringResource(R.string.ar_measure_take))
+    Icon(painterResource(R.drawable.ic_camera_measure_24dp), stringResource(R.string.ar_measure))
 }

@@ -59,7 +59,6 @@ class AddWidthForm : AbstractArMeasureQuestForm<WidthAnswer>() {
                 onUnitChanged = { currentUnit = it },
                 showMeasureButton = checkArSupport(),
                 takeMeasurementClick = { takeMeasurement() },
-                explanation = explanation
             )
         }
     }

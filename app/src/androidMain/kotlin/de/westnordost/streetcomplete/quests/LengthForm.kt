@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.text.KeyboardOptions
@@ -32,6 +31,9 @@ import de.westnordost.streetcomplete.osm.Length
 import de.westnordost.streetcomplete.osm.LengthInFeetAndInches
 import de.westnordost.streetcomplete.osm.LengthInMeters
 import de.westnordost.streetcomplete.ui.common.MeasurementIcon
+import de.westnordost.streetcomplete.ui.util.onlyDecimalDigits
+import de.westnordost.streetcomplete.ui.util.validFeetInput
+import de.westnordost.streetcomplete.ui.util.validInchInput
 import kotlin.math.pow
 
 @Composable
@@ -45,7 +47,6 @@ fun LengthForm(
     onUnitChanged: (LengthUnit) -> Unit,
     showMeasureButton: Boolean,
     takeMeasurementClick: () -> Unit,
-    explanation: String?,
     modifier: Modifier = Modifier,
 ) {
     val selectedUnitIndex = remember { mutableIntStateOf(0) }
@@ -58,13 +59,6 @@ fun LengthForm(
             .fillMaxWidth()
             .padding(5.dp)
     ) {
-        if (explanation != null) {
-            Text(
-                text = explanation,
-                modifier = Modifier
-                    .wrapContentHeight()
-            )
-        }
 
         Row(
             modifier = modifier.fillMaxWidth(),
@@ -105,16 +99,6 @@ fun LengthForm(
     }
 }
 
-// TODO Adjusted from InputValidators.kt acceptDecimalDigits(). Should this be put into a common file?
-fun acceptDecimalDigits(string: String, beforeDecimalPoint: Int, afterDecimalPoint: Int): Boolean {
-    if (!string.all { it.isDigit() || it == '.' || it == ',' }) return false;
-    val texts = string.split(',', '.')
-    if (texts.size > 2 || texts.isEmpty()) return false
-    val before = texts[0]
-    val after = if (texts.size > 1) texts[1] else ""
-    return string.toDoubleOrNull() != null && after.length <= afterDecimalPoint && before.length <= beforeDecimalPoint
-}
-
 @Composable
 private fun LengthInputMeters(
     currentLength: Length?,
@@ -146,7 +130,7 @@ private fun LengthInputMeters(
             if (input.isEmpty()) {
                 onLengthChanged(null)
                 lengthMeterText = input
-            } else if (acceptDecimalDigits(
+            } else if (onlyDecimalDigits(
                     input,
                     maxMeterDigits.first,
                     maxMeterDigits.second
@@ -208,8 +192,8 @@ private fun LengthInputFootInch(
                     onLengthChanged(null)
                     feet = ""
                 }
-                val value = input.toIntOrNull();
-                if (value != null && input.length <= maxFeetDigits) {
+                if (validFeetInput(input, maxFeetDigits)) {
+                    val value = input.toInt()
                     if (inches.isNotEmpty()) {
                         onLengthChanged(LengthInFeetAndInches(value, inches.toInt()))
                     }
@@ -232,8 +216,8 @@ private fun LengthInputFootInch(
                     onLengthChanged(null)
                     inches = ""
                 }
-                val value = input.toIntOrNull();
-                if (value != null && value >= 0 && value < 12) {
+                if (validInchInput(input)) {
+                    val value = input.toInt();
                     if (feet.isNotEmpty()) {
                         onLengthChanged(LengthInFeetAndInches(feet.toInt(), value))
                     }
@@ -252,7 +236,7 @@ private fun LengthInputFootInch(
 
 @Composable
 private fun MeasureButton(onClick: () -> Unit) {
-    Button(onClick = { onClick() }, modifier = Modifier.size(50.dp)) {
+    Button(onClick = { onClick() }) {
         MeasurementIcon()
     }
 }
@@ -272,7 +256,6 @@ private fun LengthFormPreview() {
         onUnitChanged = {},
         showMeasureButton = true,
         takeMeasurementClick = {},
-        explanation = "ABC"
     )
 }
 

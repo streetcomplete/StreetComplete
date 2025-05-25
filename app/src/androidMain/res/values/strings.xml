@@ -239,8 +239,7 @@ Additionally, some overlays allow you to add new data at the position of a displ
 
     <!-- AR Measure screen -->
 
-    <string name="ar_measure">Measure</string>
-    <string name="ar_measure_take">Take Measurement</string>
+    <string name="ar_measure">Take Measurement</string>
     <string name="ar_core_error_sdk_too_old">This app is too old, try updating.</string>
     <string name="ar_core_tracking_error_bad_state">Something went wrong. Try restarting the measuring.</string>
     <string name="ar_core_tracking_error_insufficient_light">Too dark here</string>
