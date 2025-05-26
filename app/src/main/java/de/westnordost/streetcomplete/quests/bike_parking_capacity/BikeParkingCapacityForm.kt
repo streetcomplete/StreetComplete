@@ -3,13 +3,14 @@ package de.westnordost.streetcomplete.quests.bike_parking_capacity
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.CountForm
+import de.westnordost.streetcomplete.ui.common.CountForm
 
 @Composable
 fun BikeParkingCapacityForm(count: Int, onCountChange: (Int) -> Unit) {
-    CountForm(count = count, onCountChange = onCountChange, iconResource = R.drawable.ic_bicycle)
+    CountForm(count = count, onCountChange = onCountChange, iconPainter = painterResource(R.drawable.ic_bicycle))
 }
 
 @Composable

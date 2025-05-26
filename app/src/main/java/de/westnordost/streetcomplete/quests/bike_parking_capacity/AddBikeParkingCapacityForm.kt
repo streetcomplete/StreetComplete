@@ -9,8 +9,6 @@ import androidx.core.widget.doAfterTextChanged
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.QuestBikeParkingCapacityBinding
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
-import de.westnordost.streetcomplete.quests.step_count.StepCountForm
-import de.westnordost.streetcomplete.util.ktx.intOrNull
 
 class AddBikeParkingCapacityForm : AbstractOsmQuestForm<Int>() {
 

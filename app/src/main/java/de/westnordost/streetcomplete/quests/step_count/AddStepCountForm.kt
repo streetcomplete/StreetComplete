@@ -5,28 +5,28 @@ import android.view.View
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.res.painterResource
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.databinding.QuestStepCountBinding
+import de.westnordost.streetcomplete.databinding.ComposeViewBinding
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
+import de.westnordost.streetcomplete.ui.common.CountForm
 
 class AddStepCountForm : AbstractOsmQuestForm<Int>() {
 
-    override val contentLayoutResId = R.layout.quest_step_count
-    private val binding by contentViewBinding(QuestStepCountBinding::bind)
+    override val contentLayoutResId = R.layout.compose_view
+    private val binding by contentViewBinding(ComposeViewBinding::bind)
 
     private lateinit var count: MutableState<Int>
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.questStepCountBase.setContent {
+        binding.composeViewBase.setContent {
             count = rememberSaveable { mutableIntStateOf(element.tags["step_count"]?.toIntOrNull() ?: 0) }
-            StepCountForm(
-                count = count.value,
-                onCountChange = {
-                    count.value = it
-                    checkIsFormComplete()
-                }
-            )
+            CountForm(count = count.value, onCountChange = {
+                count.value = it
+                checkIsFormComplete()
+            }, iconPainter = painterResource(R.drawable.ic_step))
         }
     }
 
