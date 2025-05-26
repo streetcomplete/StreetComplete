@@ -6,7 +6,7 @@ fun parseSurface(surface: String?): Surface? {
     if (surface in INVALID_SURFACES) return null
 
     val foundSurface = Surface.entries.find { it.osmValue == surface }
-        Surface.aliases.entries.find { it.key == surface }?.value
+        ?: Surface.aliases.entries.find { it.key == surface }?.value
 
     if (foundSurface != null) return foundSurface
 
