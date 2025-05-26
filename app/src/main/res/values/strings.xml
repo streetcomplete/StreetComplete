@@ -1689,9 +1689,9 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_tourism_information_guidepost">Guidepost</string>
 
     <string name="quest_tracktype_title">What’s the surface firmness of this track?</string>
-    <string name="quest_tracktype_grade1">Paved</string>
-    <string name="quest_tracktype_grade2a">Hard-packed dirt</string>
-    <string name="quest_tracktype_grade3a">Mostly solid</string>
+    <string name="quest_tracktype_grade1">Solid</string>
+    <string name="quest_tracktype_grade2">Mostly solid</string>
+    <string name="quest_tracktype_grade3">Mixture</string>
     <string name="quest_tracktype_grade4">Mostly soft</string>
     <string name="quest_tracktype_grade5">Soft</string>
 

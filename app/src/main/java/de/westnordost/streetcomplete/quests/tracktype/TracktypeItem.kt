@@ -12,8 +12,8 @@ fun Tracktype.asItem() = Item(this, iconResId, titleResId)
 
 private val Tracktype.titleResId: Int get() = when (this) {
     GRADE1 -> R.string.quest_tracktype_grade1
-    GRADE2 -> R.string.quest_tracktype_grade2a
-    GRADE3 -> R.string.quest_tracktype_grade3a
+    GRADE2 -> R.string.quest_tracktype_grade2
+    GRADE3 -> R.string.quest_tracktype_grade3
     GRADE4 -> R.string.quest_tracktype_grade4
     GRADE5 -> R.string.quest_tracktype_grade5
 }
