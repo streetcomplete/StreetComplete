@@ -99,6 +99,7 @@ private fun getCommonSurface(vararg surface: String?): String? = when {
 
 fun getKeysAssociatedWithSurface(prefix: String = ""): Set<String> =
     setOf(
+        "${prefix}surface:note",
         "${prefix}surface:grade",
         "${prefix}surface:colour",
         "source:${prefix}surface",
