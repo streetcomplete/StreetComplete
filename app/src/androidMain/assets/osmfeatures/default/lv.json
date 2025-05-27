@@ -1,0 +1,2071 @@
+{
+  "lv": {
+    "presets": {
+      "presets": {
+        "address": {
+          "name": "Adrese"
+        },
+        "advertising": {
+          "name": "Reklāmas ierīce"
+        },
+        "advertising/billboard": {
+          "name": "Reklāmas dēlis"
+        },
+        "advertising/column": {
+          "name": "Reklāmu stabs"
+        },
+        "aerialway/cable_car": {
+          "name": "Trosu Ceļš"
+        },
+        "aerialway/drag_lift": {
+          "name": "Velkošais pacēlājs"
+        },
+        "aeroway/aerodrome": {
+          "name": "Lidosta"
+        },
+        "aeroway/gate": {
+          "name": "Lidostas vārti"
+        },
+        "aeroway/hangar": {
+          "name": "Angārs"
+        },
+        "aeroway/helipad": {
+          "name": "Helikopteru nosēšanās laukums"
+        },
+        "aeroway/holding_position": {
+          "name": "Lidmašīnu gaidīšanas pozīcija"
+        },
+        "aeroway/runway": {
+          "name": "Skrejceļš"
+        },
+        "aeroway/taxiway": {
+          "name": "Manevrēšanas ceļš"
+        },
+        "aeroway/terminal": {
+          "name": "Lidostas Terminālis"
+        },
+        "amenity": {
+          "name": "Labiekārtojums"
+        },
+        "amenity/animal_shelter": {
+          "name": "Dzīvnieku patversme"
+        },
+        "amenity/arts_centre": {
+          "name": "Mākslas Centrs"
+        },
+        "amenity/atm": {
+          "name": "Bankomāts"
+        },
+        "amenity/bank": {
+          "name": "Banka"
+        },
+        "amenity/bar": {
+          "name": "Bārs"
+        },
+        "amenity/bbq": {
+          "name": "Barbekjū/Grills"
+        },
+        "amenity/bench": {
+          "name": "Sols"
+        },
+        "amenity/bicycle_parking": {
+          "name": "Velo stāvvieta"
+        },
+        "amenity/bicycle_rental": {
+          "name": "Velonoma",
+          "terms": "velosipēdu"
+        },
+        "amenity/bicycle_repair_station": {
+          "name": "Velosipēdu Remonta Darbarīku Stends"
+        },
+        "amenity/boat_rental": {
+          "name": "Laivu īre"
+        },
+        "amenity/bureau_de_change": {
+          "name": "Valūtas Maiņa"
+        },
+        "amenity/bus_station": {
+          "name": "Autobusu pietura / Terminālis"
+        },
+        "amenity/cafe": {
+          "name": "Kafejnīca",
+          "terms": "bistro,krogs,kafija,tēja"
+        },
+        "amenity/cafe/coffee_shop": {
+          "name": "Kafijas nams"
+        },
+        "amenity/car_rental": {
+          "name": "Autonoma"
+        },
+        "amenity/car_wash": {
+          "name": "Automazgātuve"
+        },
+        "amenity/casino": {
+          "name": "Kazino"
+        },
+        "amenity/charging_station": {
+          "name": "Uzlādes stacija",
+          "terms": "elektriskā,uzlāde,elektroauto,superlāde,zemsprieguma uzlāde"
+        },
+        "amenity/childcare": {
+          "name": "Bērnistaba / Bērnu aprūpe"
+        },
+        "amenity/cinema": {
+          "name": "Kino",
+          "terms": "kinoteātris,filmas,izrādes,lielekrāna"
+        },
+        "amenity/clinic": {
+          "name": "Klīnika",
+          "terms": "medicīna,neatliekama"
+        },
+        "amenity/clinic/abortion": {
+          "name": "Aborta klīnika"
+        },
+        "amenity/clinic/fertility": {
+          "name": "Fertilitātes Klīnika"
+        },
+        "amenity/clock": {
+          "name": "Pulkstenis"
+        },
+        "amenity/clock/sundial": {
+          "name": "Saules pulkstenis"
+        },
+        "amenity/community_centre": {
+          "name": "Kopienas centrs"
+        },
+        "amenity/compressed_air": {
+          "name": "Saspiests Gaiss",
+          "terms": "augstspiediena,riepu uzpilde"
+        },
+        "amenity/courthouse": {
+          "name": "Tiesas nams",
+          "terms": "tiesnesis,apgabaltiesa"
+        },
+        "amenity/crematorium": {
+          "name": "Krematorija",
+          "terms": "bēres,kapi"
+        },
+        "amenity/dentist": {
+          "name": "Zobārsts",
+          "terms": "zobi,ārsts,higēnists"
+        },
+        "amenity/doctors": {
+          "name": "Dakteris",
+          "terms": "ārsts,medicīna"
+        },
+        "amenity/dojo": {
+          "name": "Dojo / Karatē apmācība",
+          "terms": "karatē,skola"
+        },
+        "amenity/dressing_room": {
+          "name": "Ģērbtuve"
+        },
+        "amenity/drinking_water": {
+          "name": "Dzeramūdens"
+        },
+        "amenity/driving_school": {
+          "name": "Autoskola",
+          "terms": "braukšana,apmācība"
+        },
+        "amenity/embassy": {
+          "name": "Vēstniecība"
+        },
+        "amenity/fast_food": {
+          "name": "Ātrās ēdināšanas iestāde",
+          "terms": "restorāns,līdzņemšana"
+        },
+        "amenity/fast_food/burger": {
+          "name": "Ātrās ēdināšanas burgernīca"
+        },
+        "amenity/fast_food/sandwich": {
+          "name": "Ātrās ēdināšanas sviestmaižu kafejnīca",
+          "terms": "ātrās ēdināšanas sviestmaižu restorāns"
+        },
+        "amenity/ferry_terminal": {
+          "name": "Prāmju termināls"
+        },
+        "amenity/fire_station": {
+          "name": "Ugunsdzēsēju stacija",
+          "terms": "pažarnieki,depo"
+        },
+        "amenity/food_court": {
+          "name": "Ēdnīca",
+          "terms": "restorāns,ātrā uzkoda,ēdiens"
+        },
+        "amenity/fountain": {
+          "name": "Strūklaka"
+        },
+        "amenity/fuel": {
+          "name": "Degvielas uzpildes stacija",
+          "terms": "degviela,dīzelis,gāze,98,95,uzpilde"
+        },
+        "amenity/grave_yard": {
+          "name": "Kapi"
+        },
+        "amenity/grit_bin": {
+          "name": "Smilšu tvertne",
+          "terms": "sāls kaste,smilšu kaste,smiltis,sāls,grants"
+        },
+        "amenity/hunting_stand": {
+          "name": "Medību stends",
+          "terms": "ieroču,šaušana,šautuve"
+        },
+        "amenity/ice_cream": {
+          "name": "Saldējuma Veikals",
+          "terms": "sorbejs,saldēts"
+        },
+        "amenity/internet_cafe": {
+          "name": "Interneta Kafejnīca"
+        },
+        "amenity/library": {
+          "name": "Bibliotēka",
+          "terms": "grāmatas,lasītava"
+        },
+        "amenity/lounger": {
+          "name": "Guļamkrēsls"
+        },
+        "amenity/marketplace": {
+          "name": "Tirgus"
+        },
+        "amenity/motorcycle_parking": {
+          "name": "Motociklu stāvvieta"
+        },
+        "amenity/music_school": {
+          "name": "Mūzikas skola",
+          "terms": "dziedāšanas skola,mūzikas instrumenti"
+        },
+        "amenity/nightclub": {
+          "name": "Naktsklubs",
+          "terms": "klubs,deju klubs,dejošana,nakts klubs"
+        },
+        "amenity/parcel_locker": {
+          "name": "Pakomāts"
+        },
+        "amenity/parking": {
+          "name": "Stāvvieta",
+          "terms": "auto,mašīnas,stāvvieta,stāvēšana,apstāšanās,pieturvieta"
+        },
+        "amenity/parking/multi-storey": {
+          "name": "Daudzlīmeņu Stāvvieta",
+          "terms": "garāža,daudzstāvu,stāvi,ēka,autostāvieta"
+        },
+        "amenity/parking/street-side": {
+          "name": "Autostāvvieta ielas malā"
+        },
+        "amenity/parking/underground": {
+          "name": "Pazemes stāvvieta"
+        },
+        "amenity/parking_space/disabled": {
+          "name": "Autostāvvietas vieta invalīdiem"
+        },
+        "amenity/pharmacy": {
+          "name": "Aptiekas lete"
+        },
+        "amenity/place_of_worship": {
+          "name": "Dievnams",
+          "terms": "baziliks,baznīca,katedrāle,kapella,mošeja,lūgšanas,bazilika"
+        },
+        "amenity/place_of_worship/buddhist": {
+          "name": "Budistu templis"
+        },
+        "amenity/place_of_worship/christian": {
+          "name": "Kristiešu baznīca"
+        },
+        "amenity/place_of_worship/hindu": {
+          "name": "Hindu Templis"
+        },
+        "amenity/place_of_worship/shinto": {
+          "name": "Sintoistu svētnīca"
+        },
+        "amenity/planetarium": {
+          "name": "Planetārijs"
+        },
+        "amenity/police": {
+          "name": "Policija",
+          "terms": "iecirknis,detektīvs,likums,kruķi,poliči"
+        },
+        "amenity/post_box": {
+          "name": "Pasta nodošanas pastkaste"
+        },
+        "amenity/post_office": {
+          "name": "Pasta nodaļa",
+          "terms": "vēstule,pasts,paciņa"
+        },
+        "amenity/prison": {
+          "terms": "cietums,ūķis,aizturēšana,kamera"
+        },
+        "amenity/pub": {
+          "name": "Krogs",
+          "terms": "alkohols,dzeršana,alus"
+        },
+        "amenity/public_bookcase": {
+          "name": "Publisks Grāmatplaukts"
+        },
+        "amenity/recycling_centre": {
+          "name": "Šķirošanas centrs"
+        },
+        "amenity/restaurant": {
+          "name": "Restorāns"
+        },
+        "amenity/restaurant/asian": {
+          "name": "Āzijas virtuves restorāns"
+        },
+        "amenity/restaurant/georgian": {
+          "name": "Gruzīnu restorāns"
+        },
+        "amenity/restaurant/pizza": {
+          "name": "Picērija"
+        },
+        "amenity/school": {
+          "name": "Skolas Zeme"
+        },
+        "amenity/shelter": {
+          "name": "Pajumte"
+        },
+        "amenity/shelter/public_transport": {
+          "name": "Sabiedriskā transporta nojume"
+        },
+        "amenity/shower": {
+          "name": "Duša"
+        },
+        "amenity/smoking_area": {
+          "name": "Smēķēšanas vieta"
+        },
+        "amenity/social_facility/food_bank": {
+          "name": "Pārtikas banka",
+          "terms": "ēdiena nodošana,ēdiena banka"
+        },
+        "amenity/social_facility/group_home": {
+          "name": "Pansionāts",
+          "terms": "vecs,seniors,uzraudzība"
+        },
+        "amenity/studio": {
+          "name": "Studija"
+        },
+        "amenity/taxi": {
+          "name": "Taksometru stāvvieta"
+        },
+        "amenity/telephone": {
+          "name": "Telefons"
+        },
+        "amenity/theatre": {
+          "name": "Teātris",
+          "terms": "aktieri,uzstāšanās,uzvedums"
+        },
+        "amenity/toilets": {
+          "name": "Tualete"
+        },
+        "amenity/toilets/disposal/flush": {
+          "name": "Tualete ar ūdens novadu"
+        },
+        "amenity/townhall": {
+          "name": "Pilsētas dome"
+        },
+        "amenity/university": {
+          "name": "Universitātes teritorija"
+        },
+        "amenity/vending_machine": {
+          "name": "Tirdzniecības automāts"
+        },
+        "amenity/vending_machine/bottle_return": {
+          "name": "Taromāts"
+        },
+        "amenity/vending_machine/cigarettes": {
+          "name": "Cigarešu Tirdzniecības automāts",
+          "terms": "cigrarete,tabaka"
+        },
+        "amenity/vending_machine/coffee": {
+          "name": "Kafijas Tirdzniecības automāts",
+          "terms": "kafija,kofeīns,ekspresso"
+        },
+        "amenity/vending_machine/condoms": {
+          "name": "Prezervatīvu Tirdzniecības automāts"
+        },
+        "amenity/vending_machine/drinks": {
+          "name": "Dzērienu Tirdzniecības automāts",
+          "terms": "limonāde,sula,dzēriens"
+        },
+        "amenity/vending_machine/electronics": {
+          "name": "Elektronikas Tirdzniecības automāts",
+          "terms": "kabelis,telefons,planšete,dators,austiņas,skaļruņi"
+        },
+        "amenity/vending_machine/elongated_coin": {
+          "name": "Plakanu Monētu Tirdzniecības automāts",
+          "terms": "monēta,saspiešana,suvenīri,suvenīrs,saplacināt"
+        },
+        "amenity/vending_machine/feminine_hygiene": {
+          "name": "Sieviešu Higēnas Tirdzniecības automāts",
+          "terms": "tampons,ieliknis,biksīšu,sieivešu,menstruāls,personālā apkope"
+        },
+        "amenity/vending_machine/food": {
+          "name": "Ēdiena Tirdzniecības automāts",
+          "terms": "pārtika"
+        },
+        "amenity/vending_machine/food/snacks": {
+          "name": "Saldumu Tirdzniecības automāts",
+          "terms": "šokolādes,saldumu,konfekšu,cepumu,batoniņu"
+        },
+        "amenity/vending_machine/ice_cream": {
+          "name": "Saldējuma Tirdzniecības automāts",
+          "terms": "šokolādes,vaniļas,sasaldēts,auksts"
+        },
+        "amenity/vending_machine/newspapers": {
+          "name": "Avīžu Tirdzniecības automāts",
+          "terms": "avīze,laiksraksts,žurnāls,iespiests"
+        },
+        "amenity/vending_machine/parking_tickets": {
+          "name": "Stāvvietu Atļauju Tirdzniecības automāts",
+          "terms": "biļete,atļauja"
+        },
+        "amenity/vending_machine/public_transport_tickets": {
+          "name": "Tranzītbiļešu Tirdzniecības automāts",
+          "terms": "autobuss,vilciens,e-talons,transports,biļete,tranvajs,trolejbuss,prāmis,etalons"
+        },
+        "amenity/vending_machine/stamps": {
+          "name": "Pastmarku Tirdzniecības automāts",
+          "terms": "pasts,marka,vēstule"
+        },
+        "amenity/veterinary": {
+          "name": "Veternārārsts",
+          "terms": "klīnika,veterniārā,dzīvienku,veterinārais ārsts"
+        },
+        "amenity/waste/dog_excrement": {
+          "name": "Suņu ekskrementu tvertne",
+          "terms": "tvertne,kaste,suņu,kaku,maisiņu,atkritumu"
+        },
+        "amenity/waste_basket": {
+          "name": "Atkritumu tvertne"
+        },
+        "amenity/waste_disposal": {
+          "name": "Atkritumu konteiners",
+          "terms": "miskaste,atkritumi,izgāztuve,tvertne"
+        },
+        "area": {
+          "name": "Apgabals"
+        },
+        "area/footway": {
+          "name": "Gājēju ceļa laukums"
+        },
+        "area/highway": {
+          "name": "Ceļa teritorija"
+        },
+        "area/highway/traffic_island": {
+          "name": "Satiksmes sadalošā sala"
+        },
+        "attraction/bungee_jumping": {
+          "name": "Gumijlēkšana",
+          "terms": "gumija,augstums,lekšana,lekšanas platforma"
+        },
+        "attraction/carousel": {
+          "name": "Karuseļu",
+          "terms": "atrakciju,zirgu"
+        },
+        "attraction/maze": {
+          "name": "Labirints"
+        },
+        "attraction/roller_coaster": {
+          "name": "Amerikāņu Kalniņi",
+          "terms": "atrakcija,brauciens,ātrs"
+        },
+        "attraction/train": {
+          "name": "Tūristu vilcieniņš",
+          "terms": "apskates vilciens,apbrauciena,parka vilciens"
+        },
+        "attraction/water_slide": {
+          "name": "Ūdens Slidkalniņš",
+          "terms": "ūdens parks,ūdens atrakcija"
+        },
+        "barrier": {
+          "name": "Barjera"
+        },
+        "barrier/block": {
+          "name": "Bloks",
+          "terms": "klucis,gabals"
+        },
+        "barrier/bollard": {
+          "name": "Stabs",
+          "terms": "stabi,stabiņi"
+        },
+        "barrier/bollard_line": {
+          "name": "Stabiņu rinda"
+        },
+        "barrier/border_control": {
+          "name": "Robežu Kontrole",
+          "terms": "pārbaude,kontroles punkts,pases,ieeja,robežkontrole"
+        },
+        "barrier/city_wall": {
+          "name": "Pilsētas mūri"
+        },
+        "barrier/cycle_barrier": {
+          "name": "Veloceliņa barjera"
+        },
+        "barrier/ditch": {
+          "name": "Tranšeja",
+          "terms": "trenča,bedre"
+        },
+        "barrier/entrance": {
+          "name": "Ieeja"
+        },
+        "barrier/fence": {
+          "name": "Žogs"
+        },
+        "barrier/fence/railing": {
+          "name": "Margas"
+        },
+        "barrier/gate": {
+          "name": "Vārti",
+          "terms": "žogs"
+        },
+        "barrier/guard_rail": {
+          "name": "Aizsargbarjeras"
+        },
+        "barrier/handrail": {
+          "name": "Margas"
+        },
+        "barrier/hedge": {
+          "name": "Krūmi"
+        },
+        "barrier/kerb": {
+          "name": "Apmale"
+        },
+        "barrier/kerb/flush": {
+          "name": "Vienlīmeņa apmale"
+        },
+        "barrier/kerb/lowered": {
+          "name": "Pazemināta apmale"
+        },
+        "barrier/kerb/raised": {
+          "name": "Paaugstināta apmale"
+        },
+        "barrier/kissing_gate": {
+          "name": "Dubultveramie vārti",
+          "terms": "dubultie,abpusējie,dubultvārti"
+        },
+        "barrier/lift_gate": {
+          "name": "Paceļamā barjera"
+        },
+        "barrier/retaining_wall": {
+          "name": "Stiprinājuma siena"
+        },
+        "barrier/toll_booth": {
+          "name": "Muitas punkts"
+        },
+        "barrier/turnstile": {
+          "name": "Turnikets"
+        },
+        "barrier/wall": {
+          "name": "Siena"
+        },
+        "barrier/yes": {
+          "name": "Barjera (neprecizēts veids)"
+        },
+        "boundary": {
+          "name": "Robeža"
+        },
+        "boundary/administrative": {
+          "name": "Administratīvā robeža",
+          "terms": "robeža,novadu robeža,administratīvā teritorija"
+        },
+        "building": {
+          "name": "Ēka"
+        },
+        "building/apartments": {
+          "name": "Daudzdzīvokļu ēka"
+        },
+        "building/barn": {
+          "name": "Klēts"
+        },
+        "building/boathouse": {
+          "name": "Laivu ēka"
+        },
+        "building/bunker": {
+          "name": "Bunkurs"
+        },
+        "building/cabin": {
+          "name": "Būda"
+        },
+        "building/cathedral": {
+          "name": "Katedrāles Ēka"
+        },
+        "building/chapel": {
+          "name": "Kappelas Ēka"
+        },
+        "building/church": {
+          "name": "Baznīcas Ēka"
+        },
+        "building/commercial": {
+          "name": "Komerciāla ēka"
+        },
+        "building/construction": {
+          "name": "Būvniecībā esoša ēka"
+        },
+        "building/dormitory": {
+          "name": "Kopmītnes"
+        },
+        "building/entrance": {
+          "name": "Ieeja/Izeja"
+        },
+        "building/farm_auxiliary": {
+          "name": "Fermas Ēka"
+        },
+        "building/garage": {
+          "name": "Garāža"
+        },
+        "building/garages": {
+          "name": "Garāžas"
+        },
+        "building/grandstand": {
+          "name": "Tribīnes"
+        },
+        "building/greenhouse": {
+          "name": "Siltumnīca",
+          "terms": "augi,stikls"
+        },
+        "building/hospital": {
+          "name": "Slīmnīcas Ēka"
+        },
+        "building/hotel": {
+          "name": "Viesnīcas Ēka"
+        },
+        "building/house": {
+          "name": "Māja"
+        },
+        "building/industrial": {
+          "name": "Rūpnieciskā ēka"
+        },
+        "building/mosque": {
+          "name": "Mošejas Ēka"
+        },
+        "building/office": {
+          "name": "Biroju ēka"
+        },
+        "building/public": {
+          "name": "Publiska Ēka"
+        },
+        "building/residential": {
+          "name": "Dzīvojamā Ēka"
+        },
+        "building/retail": {
+          "name": "Komerciāla ēka"
+        },
+        "building/roof": {
+          "name": "Jumts"
+        },
+        "building/ruins": {
+          "name": "Ēkas drupas"
+        },
+        "building/school": {
+          "name": "Skolas ēka",
+          "terms": "sākumskola,pamatskola,vidusskola,augstskola,koledža"
+        },
+        "building/shed": {
+          "name": "Sķūnis"
+        },
+        "building/stable": {
+          "name": "Stallis",
+          "terms": "zirgu,zirgi,stallis"
+        },
+        "building/stadium": {
+          "name": "Stadiona Ēka"
+        },
+        "building/temple": {
+          "name": "Tempļa Ēka",
+          "terms": "templis,reliģija,piemiņa"
+        },
+        "building/train_station": {
+          "name": "Dzelzceļa stacijas ēka"
+        },
+        "building/university": {
+          "name": "Universitātes ēka"
+        },
+        "building/warehouse": {
+          "name": "Noliktava"
+        },
+        "building_part": {
+          "name": "Ēkas daļa"
+        },
+        "building_point": {
+          "name": "Ēka"
+        },
+        "club": {
+          "name": "Klubs"
+        },
+        "craft/basket_maker": {
+          "name": "Grozu veidotājs"
+        },
+        "craft/beekeeper": {
+          "name": "Biškopis",
+          "terms": "bišu kopējs"
+        },
+        "craft/blacksmith": {
+          "name": "Kalējs",
+          "terms": "metālkalis,kalis"
+        },
+        "craft/boatbuilder": {
+          "name": "Laivu būvētājs",
+          "terms": "laivenieks,piķotājs"
+        },
+        "craft/carpenter": {
+          "name": "Galdnieks"
+        },
+        "craft/chimney_sweeper": {
+          "name": "Skursteņslauķis",
+          "terms": "skursteņu slaucītājs"
+        },
+        "craft/clockmaker": {
+          "name": "Pulksteņdaris",
+          "terms": "pulksteņmeistars"
+        },
+        "craft/confectionery": {
+          "name": "Saldumu veidotājs",
+          "terms": "saldumi,konfektes,konfekcionārs"
+        },
+        "craft/electrician": {
+          "name": "Elektriķis"
+        },
+        "craft/electronics_repair": {
+          "name": "Elektronikas remonta darbnīca"
+        },
+        "craft/gardener": {
+          "name": "Dārznieks"
+        },
+        "craft/key_cutter": {
+          "name": "Atslēdznieks"
+        },
+        "craft/locksmith": {
+          "name": "Atslēdznieks"
+        },
+        "craft/metal_construction": {
+          "name": "Metālstrādnieks"
+        },
+        "craft/painter": {
+          "name": "Krāsotājs"
+        },
+        "craft/photographer": {
+          "name": "Fotogrāfs",
+          "terms": "fotogrāfēt"
+        },
+        "craft/photographic_laboratory": {
+          "name": "Fotolabratorija",
+          "terms": "attēlu attīstīšana,filmas,filmiņas,3.5mm"
+        },
+        "craft/plumber": {
+          "name": "Santehniķis"
+        },
+        "craft/roofer": {
+          "name": "Jumiķis"
+        },
+        "craft/sawmill": {
+          "name": "Kokzāģētava"
+        },
+        "craft/sculptor": {
+          "name": "Skulptors"
+        },
+        "craft/shoemaker": {
+          "name": "Kurpnieks"
+        },
+        "craft/tailor": {
+          "name": "Šuvējs"
+        },
+        "craft/window_construction": {
+          "name": "Logu izgatavošana"
+        },
+        "craft/winery": {
+          "name": "Vīna darītava"
+        },
+        "disused/amenity": {
+          "name": "Neizmantots pakalpojums"
+        },
+        "disused/shop": {
+          "name": "Neizmantots veikals"
+        },
+        "embankment": {
+          "name": "Uzbērums"
+        },
+        "emergency/ambulance_station": {
+          "name": "Ātrās palīdzības stacija",
+          "terms": "ambulances stacija,ātrā palīdzība"
+        },
+        "emergency/assembly_point": {
+          "name": "Ārkārtas pulcēšanās vieta"
+        },
+        "emergency/defibrillator": {
+          "name": "Defibrilators"
+        },
+        "emergency/fire_extinguisher": {
+          "name": "Ugunsdzēsības aparāts"
+        },
+        "emergency/fire_hydrant": {
+          "name": "Ugunsdzēsības Hidrants"
+        },
+        "emergency/first_aid_kit": {
+          "name": "Pirmās palīdzības aptieciņa",
+          "terms": "aptieciņa,kompleks,medicīnas,ārkārtas"
+        },
+        "emergency/life_ring": {
+          "name": "Glābšanas Rinķis"
+        },
+        "emergency/lifeguard": {
+          "name": "Glābējs"
+        },
+        "emergency/phone": {
+          "name": "Ārkārtas telefons"
+        },
+        "emergency/siren": {
+          "name": "Sirēna"
+        },
+        "emergency/water_reservoir_covered": {
+          "name": "Avārijas ūdens rezervuārs (pazemes)"
+        },
+        "entrance": {
+          "name": "Ieeja/Izeja"
+        },
+        "entrance/main": {
+          "name": "Galvenā ieeja"
+        },
+        "entrance/staircase": {
+          "name": "Kāpņutelpas ieeja"
+        },
+        "ford": {
+          "name": "Brasls"
+        },
+        "ford_line": {
+          "name": "Brasls"
+        },
+        "golf/hole": {
+          "name": "Golfa bedrīte"
+        },
+        "healthcare/birthing_center": {
+          "name": "Dzemdību nams"
+        },
+        "healthcare/blood_donation": {
+          "name": "Asinsdonoru Centrs"
+        },
+        "healthcare/laboratory": {
+          "name": "Medicīnas Labrotorija"
+        },
+        "healthcare/optometrist": {
+          "name": "Optometrists"
+        },
+        "healthcare/speech_therapist": {
+          "name": "Runas Terapiets"
+        },
+        "highway/bridleway": {
+          "name": "Jāšanas ceļš"
+        },
+        "highway/bus_stop": {
+          "name": "Autobusu pietura"
+        },
+        "highway/construction": {
+          "name": "Būvniecībā esošs ceļš"
+        },
+        "highway/corridor": {
+          "name": "Iekštelpu koridors"
+        },
+        "highway/crossing/traffic_signals": {
+          "name": "Šķērsošanas vieta ar gājēju signālu"
+        },
+        "highway/crossing/uncontrolled": {
+          "name": "Marķēta šķērsošanas vieta"
+        },
+        "highway/crossing/unmarked": {
+          "name": "Nemarķēta šķērsošanas vieta"
+        },
+        "highway/cycleway": {
+          "name": "Veloceļš"
+        },
+        "highway/cycleway/bicycle_foot": {
+          "name": "Velosipēdu un gājēju ceļš"
+        },
+        "highway/cycleway/crossing/traffic_signals": {
+          "name": "Velo pāreja ar luksoforiem"
+        },
+        "highway/cycleway/crossing/unmarked": {
+          "name": "Nemarķēta velo šķērsošanas vieta"
+        },
+        "highway/elevator": {
+          "name": "Lifts"
+        },
+        "highway/footway": {
+          "name": "Gājēju ceļš",
+          "terms": "taka,gājēju,kājāmgājēju,celiņš"
+        },
+        "highway/footway/crossing/traffic_signals": {
+          "name": "Šķērsošanas vieta ar gājēju signālu"
+        },
+        "highway/footway/crossing/uncontrolled": {
+          "name": "Marķēta šķērsošanas vieta"
+        },
+        "highway/footway/crossing/unmarked": {
+          "name": "Nemarķēta šķērsošanas vieta"
+        },
+        "highway/footway/sidewalk": {
+          "name": "Ietve"
+        },
+        "highway/footway/traffic_island": {
+          "name": "Drošības sala"
+        },
+        "highway/give_way": {
+          "name": "Dodiet ceļu zīme"
+        },
+        "highway/living_street": {
+          "name": "Dzīvojamā iela"
+        },
+        "highway/motorway": {
+          "name": "Ātrgaitas šoseja"
+        },
+        "highway/motorway_link": {
+          "name": "Ātrgaitas šosejas pieslēgums"
+        },
+        "highway/path": {
+          "name": "Taka"
+        },
+        "highway/path/boardwalk": {
+          "name": "Dēļu laipa"
+        },
+        "highway/path/crossing/unmarked": {
+          "name": "Nemarķēta velo un gājēju šķērsošanas vieta"
+        },
+        "highway/path/informal": {
+          "name": "Iemīta taka"
+        },
+        "highway/pedestrian_area": {
+          "name": "Gājējiem paredzēta zona"
+        },
+        "highway/pedestrian_line": {
+          "name": "Gājēju iela"
+        },
+        "highway/primary": {
+          "name": "Galvenais ceļš"
+        },
+        "highway/primary_link": {
+          "name": "Galvenā ceļa pieslēgums"
+        },
+        "highway/residential": {
+          "name": "Vietējas nozīmes ceļš"
+        },
+        "highway/road": {
+          "name": "Nezināms ceļš"
+        },
+        "highway/secondary": {
+          "name": "Otrās škiras ceļš"
+        },
+        "highway/secondary_link": {
+          "name": "Otrās šķiras ceļa pieslēgums"
+        },
+        "highway/service": {
+          "name": "Apkalpošanas ceļš"
+        },
+        "highway/service/alley": {
+          "name": "Šķērsceļš"
+        },
+        "highway/service/drive-through": {
+          "name": "Caurbrauktuve"
+        },
+        "highway/service/driveway": {
+          "name": "Piebraucamais ceļš"
+        },
+        "highway/service/emergency_access": {
+          "name": "Avārijas pieeja"
+        },
+        "highway/service/parking_aisle": {
+          "name": "Stāvvietas ceļš"
+        },
+        "highway/service_area": {
+          "name": "Bruģēta apkalpošanas zona"
+        },
+        "highway/speed_camera": {
+          "name": "Fotoradars"
+        },
+        "highway/steps": {
+          "name": "Kāpnes"
+        },
+        "highway/steps/conveying": {
+          "name": "Eskalators"
+        },
+        "highway/stop": {
+          "name": "Stop Zīme"
+        },
+        "highway/street_lamp": {
+          "name": "Ielas lampa"
+        },
+        "highway/tertiary": {
+          "name": "Trešās šķiras ceļš"
+        },
+        "highway/tertiary_link": {
+          "name": "Trešās šķiras ceļa pieslēgums"
+        },
+        "highway/track": {
+          "name": "Meža/lauku ceļš"
+        },
+        "highway/traffic_signals": {
+          "name": "Luksofors"
+        },
+        "highway/trunk": {
+          "name": "Maģistrālais ceļš"
+        },
+        "highway/trunk_link": {
+          "name": "Maģistrālā ceļa pieslēgums"
+        },
+        "highway/turning_circle": {
+          "name": "Apgriešanās riņķis"
+        },
+        "highway/unclassified": {
+          "name": "Mazs/Neklasificēts ceļš"
+        },
+        "historic": {
+          "name": "Vēsturiska vieta"
+        },
+        "historic/archaeological_site": {
+          "name": "Arheoloģisko izrakumu vieta"
+        },
+        "historic/boundary_stone": {
+          "name": "Robežakmens"
+        },
+        "historic/castle": {
+          "name": "Pils"
+        },
+        "historic/memorial": {
+          "name": "Memoriāls"
+        },
+        "historic/memorial/plaque": {
+          "name": "Piemiņas plāksne"
+        },
+        "historic/monument": {
+          "name": "Piemineklis"
+        },
+        "historic/ruins": {
+          "name": "Pilsdrupas"
+        },
+        "indoor/area": {
+          "name": "Iekštelpu platība"
+        },
+        "indoor/corridor": {
+          "name": "Iekštelpu koridors"
+        },
+        "indoor/corridor_line": {
+          "name": "Iekštelpu koridors"
+        },
+        "indoor/wall": {
+          "name": "Iekštelpu siena"
+        },
+        "junction": {
+          "name": "Krustojums"
+        },
+        "landuse/allotments": {
+          "name": "Mazdārziņš"
+        },
+        "landuse/basin": {
+          "name": "Baseins"
+        },
+        "landuse/brownfield": {
+          "name": "Degradēta teritorija"
+        },
+        "landuse/cemetery": {
+          "name": "Kapsēta"
+        },
+        "landuse/commercial": {
+          "name": "Komercplatība",
+          "terms": "komerciāla platība,komercapgabals"
+        },
+        "landuse/construction": {
+          "name": "Būvlaukums"
+        },
+        "landuse/farmyard": {
+          "name": "Lauku sēta"
+        },
+        "landuse/flowerbed": {
+          "name": "Ziedu dobe",
+          "terms": "puķu dobe"
+        },
+        "landuse/garages": {
+          "name": "Garāžu zeme"
+        },
+        "landuse/grass": {
+          "name": "Zāle"
+        },
+        "landuse/harbour": {
+          "name": "Osta"
+        },
+        "landuse/industrial": {
+          "name": "Rūpniecības zona"
+        },
+        "landuse/industrial/slaughterhouse": {
+          "name": "Kautuve"
+        },
+        "landuse/landfill": {
+          "name": "Izgāztuve"
+        },
+        "landuse/meadow": {
+          "name": "Pļava"
+        },
+        "landuse/military": {
+          "name": "Militārā zona"
+        },
+        "landuse/military/airfield": {
+          "name": "Militārais Lidlauks"
+        },
+        "landuse/military/barracks": {
+          "name": "Kazarmas"
+        },
+        "landuse/military/base/navy": {
+          "name": "Ūdensspēku bāze"
+        },
+        "landuse/pond": {
+          "name": "Dīķis"
+        },
+        "landuse/quarry": {
+          "name": "Karjers"
+        },
+        "landuse/reservoir": {
+          "name": "Ūdenstilpne"
+        },
+        "landuse/residential": {
+          "name": "Dzīvojamā zona"
+        },
+        "landuse/vineyard": {
+          "name": "Vīnogu lauks"
+        },
+        "leisure/bleachers": {
+          "name": "Skatītāju tribīnes"
+        },
+        "leisure/bowling_alley": {
+          "name": "Boulinga Zāle"
+        },
+        "leisure/dance": {
+          "name": "Deju zāle"
+        },
+        "leisure/dancing_school": {
+          "name": "Deju skola",
+          "terms": "valsis,tango,deju apmācības,dejošana,svings"
+        },
+        "leisure/dog_park": {
+          "name": "Suņu parks"
+        },
+        "leisure/fitness_centre": {
+          "name": "Sportazāle / Fitnesa centrs"
+        },
+        "leisure/fitness_centre/yoga": {
+          "name": "Jogas studija"
+        },
+        "leisure/fitness_station": {
+          "name": "Brīvdabas fitnesa vieta"
+        },
+        "leisure/garden": {
+          "name": "Dārzs"
+        },
+        "leisure/golf_course": {
+          "name": "Golfa laukums"
+        },
+        "leisure/ice_rink": {
+          "name": "Ledus halle"
+        },
+        "leisure/outdoor_seating": {
+          "name": "Āra sēdvietu zona"
+        },
+        "leisure/park": {
+          "name": "Parks"
+        },
+        "leisure/picnic_table": {
+          "name": "Piknika galds"
+        },
+        "leisure/pitch": {
+          "name": "Sporta laukums"
+        },
+        "leisure/pitch/american_football": {
+          "name": "Amerikāņu futbola laukums"
+        },
+        "leisure/pitch/basketball": {
+          "name": "Basketbola laukums"
+        },
+        "leisure/pitch/beachvolleyball": {
+          "name": "Pludmales volejbola laukums"
+        },
+        "leisure/pitch/paintball": {
+          "name": "Peintbola laukums"
+        },
+        "leisure/pitch/skateboard": {
+          "name": "Skrituļparks",
+          "terms": "skootei,skrituļdēļi,skrituļslidas,rampas"
+        },
+        "leisure/pitch/soccer": {
+          "name": "Futbola laukums",
+          "terms": "futbols"
+        },
+        "leisure/pitch/table_tennis": {
+          "name": "Pingponga galds",
+          "terms": "galda teniss,pingpongs"
+        },
+        "leisure/pitch/tennis": {
+          "name": "Tenisa korti"
+        },
+        "leisure/pitch/volleyball": {
+          "name": "Volejbola laukums"
+        },
+        "leisure/playground": {
+          "name": "Spēļlaukums"
+        },
+        "leisure/sauna": {
+          "name": "Sauna"
+        },
+        "leisure/sports_centre": {
+          "name": "Sporta Centrs / Komplekss"
+        },
+        "leisure/stadium": {
+          "name": "Stadions"
+        },
+        "leisure/swimming_pool": {
+          "name": "Peldbaseins"
+        },
+        "leisure/track": {
+          "name": "Sacensību trase (ne-motorsportam)"
+        },
+        "leisure/water_park": {
+          "name": "Akvaparks"
+        },
+        "line": {
+          "name": "Līnija"
+        },
+        "man_made/antenna": {
+          "name": "Antēna"
+        },
+        "man_made/bridge": {
+          "name": "Tilta teritorija"
+        },
+        "man_made/chimney": {
+          "name": "Skurstenis"
+        },
+        "man_made/crane": {
+          "name": "Celtnis"
+        },
+        "man_made/embankment": {
+          "name": "Uzbērums"
+        },
+        "man_made/flagpole": {
+          "name": "Karogmasts",
+          "terms": "karogs,masts"
+        },
+        "man_made/fuel_pump": {
+          "name": "Degvielas sūknis",
+          "terms": "degviela,dīzelis,gāze,98,95,uzpilde"
+        },
+        "man_made/lighthouse": {
+          "name": "Bāka"
+        },
+        "man_made/manhole": {
+          "name": "Kanalizācijas lūka"
+        },
+        "man_made/mast": {
+          "name": "Masts"
+        },
+        "man_made/mast/lighting": {
+          "name": "Apgaismojuma masts"
+        },
+        "man_made/milk_churn_stand": {
+          "name": "piena galds",
+          "aliases": "piena steķis\npīna golds"
+        },
+        "man_made/observatory": {
+          "name": "Observatorija"
+        },
+        "man_made/petroleum_well": {
+          "name": "Naftas Raktuve"
+        },
+        "man_made/pier": {
+          "name": "Piestātne"
+        },
+        "man_made/pipeline": {
+          "name": "Caurule",
+          "terms": "truba"
+        },
+        "man_made/planter": {
+          "name": "Stādījumu kaste"
+        },
+        "man_made/pumping_station": {
+          "name": "Sūkņu stacija"
+        },
+        "man_made/surveillance": {
+          "name": "Apsardze"
+        },
+        "man_made/surveillance/camera": {
+          "name": "Novērošanas kamera"
+        },
+        "man_made/survey_point": {
+          "name": "Novērošanas punkts"
+        },
+        "man_made/tower": {
+          "name": "Tornis"
+        },
+        "man_made/video_wall": {
+          "name": "Digitālais ekrāns"
+        },
+        "man_made/wastewater_plant": {
+          "name": "Notekūdeņu stacija"
+        },
+        "man_made/water_tower": {
+          "name": "Ūdenstornis"
+        },
+        "man_made/water_well": {
+          "name": "Ūdens aka",
+          "terms": "aka,dzeramūdens"
+        },
+        "man_made/watermill": {
+          "name": "Ūdens Dzirnavas"
+        },
+        "man_made/windmill": {
+          "name": "Vējdzirnavas"
+        },
+        "man_made/works": {
+          "name": "Rūpnīca"
+        },
+        "military/bunker": {
+          "name": "Militārais Bunkurs"
+        },
+        "military/nuclear_explosion_site": {
+          "name": "Atomsprādziena zona"
+        },
+        "natural/bare_rock": {
+          "name": "Pliks Akmens"
+        },
+        "natural/bay": {
+          "name": "Līcis"
+        },
+        "natural/beach": {
+          "name": "Pludmale"
+        },
+        "natural/cave_entrance": {
+          "name": "Alas Ieeja"
+        },
+        "natural/cliff": {
+          "name": "Klints"
+        },
+        "natural/coastline": {
+          "name": "Krasta līnija"
+        },
+        "natural/glacier": {
+          "name": "Ledājs"
+        },
+        "natural/grassland": {
+          "name": "Neapstrādāta zeme"
+        },
+        "natural/heath": {
+          "name": "Tīrelis",
+          "terms": "virsājs,koki,tīrelis,mazs"
+        },
+        "natural/hot_spring": {
+          "name": "Karstais avots"
+        },
+        "natural/mud": {
+          "name": "Dubļi"
+        },
+        "natural/peak": {
+          "name": "Virsotne"
+        },
+        "natural/reef": {
+          "name": "Rifs"
+        },
+        "natural/sand": {
+          "name": "Smiltis"
+        },
+        "natural/spring": {
+          "name": "Avots"
+        },
+        "natural/tree": {
+          "name": "Koks",
+          "terms": "koki"
+        },
+        "natural/tree/broadleaved": {
+          "name": "Lapu koks"
+        },
+        "natural/tree/broadleaved/deciduous": {
+          "name": "Lapu koks (vasarzaļš)"
+        },
+        "natural/tree/broadleaved/evergreen": {
+          "name": "Lapu koks (mūžzaļš)"
+        },
+        "natural/tree_row": {
+          "name": "Koku rinda"
+        },
+        "natural/volcano": {
+          "name": "Vulkāns"
+        },
+        "natural/water": {
+          "name": "Ūdens"
+        },
+        "natural/water/basin": {
+          "name": "Baseins"
+        },
+        "natural/water/canal": {
+          "name": "Kanāla teritorija"
+        },
+        "natural/water/lake": {
+          "name": "Ezers"
+        },
+        "natural/water/pond": {
+          "name": "Dīķis"
+        },
+        "natural/water/reservoir": {
+          "name": "Ūdenstilpne"
+        },
+        "natural/water/river": {
+          "name": "Upes teritorija"
+        },
+        "natural/wetland": {
+          "name": "Purvs"
+        },
+        "natural/wood": {
+          "name": "Dabisks mežs"
+        },
+        "noexit/yes": {
+          "name": "Bez izejas"
+        },
+        "office": {
+          "name": "Biroju ēka"
+        },
+        "office/adoption_agency": {
+          "name": "Adopcijas Aģentūra"
+        },
+        "office/architect": {
+          "name": "Arhitekta birojs"
+        },
+        "office/company": {
+          "name": "Uzņēmuma birojs"
+        },
+        "office/diplomatic/embassy": {
+          "name": "Vēstniecība"
+        },
+        "office/educational_institution": {
+          "name": "Izglītības Iestāde"
+        },
+        "office/energy_supplier": {
+          "name": "Elektrodevēja birojs"
+        },
+        "office/forestry": {
+          "name": "Mežniecības birojs"
+        },
+        "office/government": {
+          "name": "Valdības birojs"
+        },
+        "office/government/tax": {
+          "name": "Ieņēmumu birojs"
+        },
+        "office/insurance": {
+          "name": "Apdrošināšanas birojs"
+        },
+        "office/lawyer/notary": {
+          "name": "Notāru birojs"
+        },
+        "office/notary": {
+          "name": "Notāru birojs"
+        },
+        "office/private_investigator": {
+          "name": "Privātizmeklētēja birojs"
+        },
+        "office/telecommunication": {
+          "name": "Telekomunikāciju birojs"
+        },
+        "office/therapist": {
+          "name": "Terapieta birojs"
+        },
+        "office/travel_agent": {
+          "name": "Ceļojumu aģentūra"
+        },
+        "place": {
+          "name": "Vieta"
+        },
+        "place/city": {
+          "name": "Lielpilsēta"
+        },
+        "place/farm": {
+          "name": "Zemnieku saimniecība"
+        },
+        "place/island": {
+          "name": "Sala"
+        },
+        "place/square": {
+          "name": "Skvērs"
+        },
+        "place/town": {
+          "name": "Pilsēta"
+        },
+        "place/village": {
+          "name": "Ciems"
+        },
+        "playground": {
+          "name": "Rotaļu laukuma aprīkojums"
+        },
+        "playground/slide": {
+          "name": "Slidkalniņš"
+        },
+        "playground/swing": {
+          "name": "Šūpoles"
+        },
+        "point": {
+          "name": "Punkts"
+        },
+        "power/cable": {
+          "name": "Elektrības kabelis"
+        },
+        "power/generator": {
+          "name": "Elektroenerģijas ģenerātors",
+          "terms": "elektroģenrātors,turbīna,vējs"
+        },
+        "power/generator/source/nuclear": {
+          "name": "Atomreaktors"
+        },
+        "power/generator/source/wind": {
+          "name": "Vēja Turbīna"
+        },
+        "power/line": {
+          "name": "Elektrolīnija"
+        },
+        "power/minor_line": {
+          "name": "Zemsprieguma elektrolīnija"
+        },
+        "power/pole": {
+          "name": "Elektrības stabs",
+          "terms": "elektrostabs"
+        },
+        "power/substation": {
+          "name": "Apakšstacija"
+        },
+        "power/tower": {
+          "name": "Augstsprieguma tornis"
+        },
+        "power/transformer": {
+          "name": "Transformators"
+        },
+        "public_transport/platform/bus": {
+          "name": "Autobusu platforma"
+        },
+        "public_transport/platform/bus_point": {
+          "name": "Autobusu pietura"
+        },
+        "public_transport/platform/bus_tram_point": {
+          "name": "Tramvaju un autobusu pietura"
+        },
+        "public_transport/platform/ferry_point": {
+          "name": "Prāmja pietura / Platforma"
+        },
+        "public_transport/platform/subway_point": {
+          "name": "Metro pietura / platforma"
+        },
+        "public_transport/platform/train_point": {
+          "name": "Vilciena Pietura / Platforma"
+        },
+        "public_transport/platform/trolleybus_point": {
+          "name": "Trolejbusu pietura"
+        },
+        "public_transport/station_bus": {
+          "name": "Autobusu stacija / Terminālis"
+        },
+        "public_transport/station_ferry": {
+          "name": "Prāmju termināls"
+        },
+        "public_transport/station_train": {
+          "name": "Stacija"
+        },
+        "public_transport/station_trolleybus": {
+          "name": "Trolejbusu stacija / Terminālis"
+        },
+        "public_transport/stop_position": {
+          "name": "Sabiedriskā transporta pieturvieta"
+        },
+        "public_transport/stop_position_bus": {
+          "name": "Autobusu apstāšanās vieta"
+        },
+        "public_transport/stop_position_tram": {
+          "name": "Tramvaju pietura"
+        },
+        "public_transport/stop_position_trolleybus": {
+          "name": "Trolejbusu apstāšanās vieta"
+        },
+        "railway/abandoned": {
+          "name": "Pamests dzelzceļš"
+        },
+        "railway/buffer_stop": {
+          "name": "Sliežu ceļa atdure"
+        },
+        "railway/crossing": {
+          "name": "Dzelzceļa-gājēju ceļa šķērsojums"
+        },
+        "railway/disused": {
+          "name": "Neizmantots dzelzceļa sliežu ceļš"
+        },
+        "railway/funicular": {
+          "name": "Funikuliera sliežu ceļš"
+        },
+        "railway/level_crossing": {
+          "name": "Dzelzceļa-brauktuves šķērsojums"
+        },
+        "railway/light_rail": {
+          "name": "Vieglā dzelzceļa sliežu ceļš"
+        },
+        "railway/monorail": {
+          "name": "Viensliedes sliežu ceļš"
+        },
+        "railway/narrow_gauge": {
+          "name": "Šaursliežu ceļš"
+        },
+        "railway/rail": {
+          "name": "Dzelzceļa sliežu ceļš"
+        },
+        "railway/railway_crossing": {
+          "name": "Dzelzceļa-dzelzceļa šķērsojums"
+        },
+        "railway/station": {
+          "name": "Dzelzceļa stacija"
+        },
+        "railway/subway": {
+          "name": "Metro sliežu ceļš"
+        },
+        "railway/subway_entrance": {
+          "name": "Metro ieeja"
+        },
+        "railway/switch": {
+          "name": "Dzelzceļa pārmija",
+          "terms": "pārmijas"
+        },
+        "railway/train_wash": {
+          "name": "Vilcienu mazgātuve"
+        },
+        "railway/tram": {
+          "name": "Tramvaja sliežu ceļš"
+        },
+        "railway/tram_crossing": {
+          "name": "Tramvaja-gājēju ceļa šķērsojums"
+        },
+        "railway/tram_level_crossing": {
+          "name": "Tramvaja-brauktuves šķērsojums"
+        },
+        "relation": {
+          "name": "Relācija"
+        },
+        "shop": {
+          "name": "Veikals"
+        },
+        "shop/alcohol": {
+          "name": "Alkoholisko dzērienu veikals"
+        },
+        "shop/art": {
+          "name": "Mākslas veikals"
+        },
+        "shop/bag": {
+          "name": "Somu/Bagāžas veikals"
+        },
+        "shop/bakery": {
+          "name": "Konditoreja"
+        },
+        "shop/beauty": {
+          "name": "Skaistumveikals"
+        },
+        "shop/beauty/nails": {
+          "name": "Manikīra/Nagu salons"
+        },
+        "shop/beauty/tanning": {
+          "name": "Solārija Salons",
+          "terms": "solārija,solārijs"
+        },
+        "shop/bed": {
+          "name": "Gultasveļas / Matraču veikals",
+          "terms": "gultas preces,gulta"
+        },
+        "shop/beverages": {
+          "name": "Dzērienu veikals"
+        },
+        "shop/bicycle": {
+          "name": "Velo veikals",
+          "terms": "velosipēdu,remonts,remonta"
+        },
+        "shop/books": {
+          "name": "Grāmatnīca"
+        },
+        "shop/boutique": {
+          "name": "Veikals"
+        },
+        "shop/butcher": {
+          "name": "Miesnieks"
+        },
+        "shop/candles": {
+          "name": "Sveču veikals"
+        },
+        "shop/car": {
+          "name": "Auto dīleris",
+          "terms": "auto,mašīnu,pārdošana"
+        },
+        "shop/car_parts": {
+          "name": "Auto rezerves daļu veikals"
+        },
+        "shop/car_repair": {
+          "name": "Auto remontdarbnīca",
+          "terms": "remonts,serviss,garāža"
+        },
+        "shop/carpet": {
+          "name": "Paklāju veikals"
+        },
+        "shop/cheese": {
+          "name": "Siera veikals"
+        },
+        "shop/chemist": {
+          "name": "Aptieka"
+        },
+        "shop/chocolate": {
+          "name": "Šokolādes veikals"
+        },
+        "shop/clothes": {
+          "name": "Apģērba veikals"
+        },
+        "shop/coffee": {
+          "name": "Kafijas veikals"
+        },
+        "shop/computer": {
+          "name": "Datorveikals",
+          "terms": "elektronika,datori,datortehnika"
+        },
+        "shop/confectionery": {
+          "name": "Saldumu veikals"
+        },
+        "shop/convenience": {
+          "name": "Veikals"
+        },
+        "shop/copyshop": {
+          "name": "Printēšanas veikals"
+        },
+        "shop/cosmetics": {
+          "name": "Kosmētikas veikals"
+        },
+        "shop/curtain": {
+          "name": "Aizkaru veikals"
+        },
+        "shop/dairy": {
+          "name": "Piena veikals"
+        },
+        "shop/deli": {
+          "name": "Delikatešu veikals"
+        },
+        "shop/department_store": {
+          "name": "Lielveikals"
+        },
+        "shop/dry_cleaning": {
+          "name": "Ķīmiskā tīrītava"
+        },
+        "shop/e-cigarette": {
+          "name": "E-Cigarešu veikals"
+        },
+        "shop/electronics": {
+          "name": "Elektronikas veikals"
+        },
+        "shop/erotic": {
+          "name": "Intīmpreču veikals"
+        },
+        "shop/fabric": {
+          "name": "Audumu veikals"
+        },
+        "shop/fashion": {
+          "name": "Modes veikals"
+        },
+        "shop/florist": {
+          "name": "Florists"
+        },
+        "shop/funeral_directors": {
+          "name": "Apbedīšanas birojs"
+        },
+        "shop/furniture": {
+          "name": "Mēbeļu veikals"
+        },
+        "shop/games": {
+          "name": "Galda spēļu veikals"
+        },
+        "shop/garden_centre": {
+          "name": "Dārzkopības veikals"
+        },
+        "shop/gas": {
+          "name": "Gāzes balonu veikals",
+          "terms": "lpg,propāns,balons,uzpilde,gāze"
+        },
+        "shop/gift": {
+          "name": "Dāvanu veikals"
+        },
+        "shop/hairdresser": {
+          "name": "Frizieris"
+        },
+        "shop/hardware": {
+          "name": "Celtniecības veikals"
+        },
+        "shop/health_food": {
+          "name": "Veselīgas pārtikas veikals"
+        },
+        "shop/jewelry": {
+          "name": "Juvelierizstrādājumu veikals"
+        },
+        "shop/kiosk": {
+          "name": "Kiosks"
+        },
+        "shop/kitchen": {
+          "name": "Virtuves dizaina veikals"
+        },
+        "shop/laundry": {
+          "name": "Veļas mazgātuve"
+        },
+        "shop/leather": {
+          "name": "Ādas veikals"
+        },
+        "shop/locksmith": {
+          "name": "Atslēdznieks"
+        },
+        "shop/lottery": {
+          "name": "Loterijas veikals"
+        },
+        "shop/mall": {
+          "name": "Iepirkšanās centrs"
+        },
+        "shop/massage": {
+          "name": "Masāžu veikals"
+        },
+        "shop/medical_supply": {
+          "name": "Medicīnisko piederumu veikals"
+        },
+        "shop/mobile_phone": {
+          "name": "Mobilo telefonu veikals"
+        },
+        "shop/money_lender": {
+          "name": "Naudas Aizdevējs"
+        },
+        "shop/motorcycle": {
+          "name": "Motociklu veikals"
+        },
+        "shop/motorcycle_repair": {
+          "name": "Motociklu remonta darbnīca"
+        },
+        "shop/music": {
+          "name": "Mūzikas veikals"
+        },
+        "shop/musical_instrument": {
+          "name": "Mūzikas instrumentu veikals"
+        },
+        "shop/optician": {
+          "name": "Optikas veikals"
+        },
+        "shop/paint": {
+          "name": "Krāsu veikals"
+        },
+        "shop/pawnbroker": {
+          "name": "Lombards"
+        },
+        "shop/perfumery": {
+          "name": "Parfimērijas veikals"
+        },
+        "shop/pet": {
+          "name": "Dzīvnieku veikals"
+        },
+        "shop/photo": {
+          "name": "Fotogrāfijas veikals"
+        },
+        "shop/radiotechnics": {
+          "name": "Radio / Elektronisko komponenšu veikals"
+        },
+        "shop/shoes": {
+          "name": "Apavu veikals"
+        },
+        "shop/sports": {
+          "name": "Sporta veikals"
+        },
+        "shop/stationery": {
+          "name": "Rakstāmlietu veikals"
+        },
+        "shop/supermarket": {
+          "name": "Lielveikals"
+        },
+        "shop/tailor": {
+          "name": "Šuvējs"
+        },
+        "shop/tattoo": {
+          "name": "Tetovēšanas salons"
+        },
+        "shop/tea": {
+          "name": "Tējas veikals"
+        },
+        "shop/telecommunication": {
+          "name": "Telekomunikāciju mazumtirdzniecības veikals"
+        },
+        "shop/ticket": {
+          "name": "Biļešu kase"
+        },
+        "shop/tiles": {
+          "name": "Flīžu veikals"
+        },
+        "shop/tobacco": {
+          "name": "Tabakas veikals"
+        },
+        "shop/toys": {
+          "name": "Rotaļlietu veikals"
+        },
+        "shop/travel_agency": {
+          "name": "Ceļojumu aģentūra"
+        },
+        "shop/tyres": {
+          "name": "Riepu veikals"
+        },
+        "shop/vacant": {
+          "name": "Brīvs veikala īpašums"
+        },
+        "shop/vacuum_cleaner": {
+          "name": "Putekļusūcēju veikals"
+        },
+        "shop/variety_store": {
+          "name": "Lētās preces veikals"
+        },
+        "shop/video": {
+          "name": "Video veikals"
+        },
+        "shop/video_games": {
+          "name": "Videospēļu veikals"
+        },
+        "shop/watches": {
+          "name": "Pulksteņu veikals"
+        },
+        "shop/weapons": {
+          "name": "Ieroču Veikals"
+        },
+        "shop/window_blind": {
+          "name": "Logu žalūziju veikals",
+          "terms": "logi,aizkari,žalūzijas"
+        },
+        "shop/wine": {
+          "name": "Vīna veikals"
+        },
+        "tourism/aquarium": {
+          "name": "Akvārijs"
+        },
+        "tourism/artwork": {
+          "name": "Mākslas darbs"
+        },
+        "tourism/artwork/bust": {
+          "name": "Krūšutēls"
+        },
+        "tourism/artwork/graffiti": {
+          "name": "Grafiti"
+        },
+        "tourism/artwork/installation": {
+          "name": "Mākslas objekts"
+        },
+        "tourism/artwork/mural": {
+          "name": "Apgleznota siena/murālis"
+        },
+        "tourism/artwork/sculpture": {
+          "name": "Skulptūra"
+        },
+        "tourism/artwork/statue": {
+          "name": "Statuja"
+        },
+        "tourism/attraction": {
+          "name": "Tūrisma objekts"
+        },
+        "tourism/camp_site": {
+          "name": "Kempinga vieta"
+        },
+        "tourism/camp_site/backcountry": {
+          "name": "Savvaļas kempinga vieta"
+        },
+        "tourism/gallery": {
+          "name": "Mākslas galerija"
+        },
+        "tourism/guest_house": {
+          "name": "Viesu nams"
+        },
+        "tourism/hostel": {
+          "name": "Hostelis"
+        },
+        "tourism/hotel": {
+          "name": "Viesnīca"
+        },
+        "tourism/information": {
+          "name": "Informācija"
+        },
+        "tourism/information/board": {
+          "name": "Informācijas stends"
+        },
+        "tourism/information/guidepost": {
+          "name": "Norāžu stabs"
+        },
+        "tourism/information/map": {
+          "name": "Karte"
+        },
+        "tourism/motel": {
+          "name": "Motelis"
+        },
+        "tourism/museum": {
+          "name": "Muzejs"
+        },
+        "tourism/picnic_site": {
+          "name": "Piknika vieta"
+        },
+        "tourism/theme_park": {
+          "name": "Tematiskais parks"
+        },
+        "tourism/viewpoint": {
+          "name": "Skatu punkts"
+        },
+        "tourism/zoo": {
+          "name": "Zooloģiskais dārzs",
+          "terms": "zoodārzs,zoo,dzīvnieku dārzs,dzīvnieki"
+        },
+        "traffic_calming": {
+          "name": "Satiksmes mierināšana"
+        },
+        "traffic_calming/bump": {
+          "name": "Guļošais Policists"
+        },
+        "traffic_calming/hump": {
+          "name": "Guļošais Policists"
+        },
+        "traffic_calming/island": {
+          "name": "Satiksmes mierināšanas sala"
+        },
+        "traffic_calming/table": {
+          "name": "Ātrumvalnis"
+        },
+        "type/boundary": {
+          "name": "Robeža"
+        },
+        "type/boundary/administrative": {
+          "name": "Administratīvā robeža",
+          "terms": "robeža,novadu robeža,administratīvā teritorija"
+        },
+        "type/restriction": {
+          "name": "Aizliegums"
+        },
+        "type/restriction/only_straight_on": {
+          "name": "Tikai taisni uz priekšu"
+        },
+        "type/route/road": {
+          "name": "Ceļa maršruts"
+        },
+        "type/waterway": {
+          "name": "Ūdensceļš"
+        },
+        "waterway/canal": {
+          "name": "Kanāls"
+        },
+        "waterway/dam": {
+          "name": "Dambis"
+        },
+        "waterway/ditch": {
+          "name": "Grāvis"
+        },
+        "waterway/drain": {
+          "name": "Notekgrāvis"
+        },
+        "waterway/river": {
+          "name": "Upe"
+        },
+        "waterway/stream": {
+          "name": "Strauts"
+        },
+        "waterway/waterfall": {
+          "name": "Ūdenskritums"
+        }
+      }
+    }
+  }
+}
