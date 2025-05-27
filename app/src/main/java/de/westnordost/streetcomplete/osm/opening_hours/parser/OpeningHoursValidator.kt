@@ -44,7 +44,7 @@ fun Rule.isSupportedOpeningHours(): Boolean =
     // fallback rules not supported
     ruleOperator != RuleOperator.Fallback &&
     when (ruleType) {
-        // open and implictly open rules are supported, but times must be defined
+        // open and implicitly open rules are supported, but times must be defined
         RuleType.Open, null ->
             selector.hasTimes()
         // unknown-rules are not supported

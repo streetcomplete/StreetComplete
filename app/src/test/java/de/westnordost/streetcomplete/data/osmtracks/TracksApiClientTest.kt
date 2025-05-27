@@ -35,7 +35,7 @@ class TracksApiClientTest {
         assertFailsWith<AuthorizationException> { client(allowNothing).create(listOf(trackpoint)) }
     }
 
-    // disabled this test, because I get an email about the successfull GPX upload every time this
+    // disabled this test, because I get an email about the successful GPX upload every time this
     // test is executed
     @Ignore
     @Test fun `create works without error`(): Unit = runBlocking {

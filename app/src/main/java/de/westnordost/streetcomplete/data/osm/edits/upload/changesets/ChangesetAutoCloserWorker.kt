@@ -21,7 +21,7 @@ class ChangesetAutoCloserWorker(
             // changesets after 1 hour anyway.
         } catch (e: AuthorizationException) {
             // the user may not be authorized yet (or not be authorized anymore) #283
-            // nothing we can do about here. He will have to reauthenticate when he next opens the app
+            // nothing we can do about here. He will have to re-authenticate when he next opens the app
             return Result.failure()
         }
         return Result.success()

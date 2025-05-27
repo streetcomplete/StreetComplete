@@ -99,7 +99,7 @@ class Uploader(
 
     private fun invalidateArea(pos: LatLon) {
         // called after a conflict. If there is a conflict, the user is not the only one in that
-        // area, so best invalidate all downloaded quests here and redownload on next occasion
+        // area, so best invalidate all downloaded quests here and re-download on next occasion
         val tile = pos.enclosingTilePos(ApplicationConstants.DOWNLOAD_TILE_ZOOM)
         downloadedTilesController.invalidate(tile)
     }

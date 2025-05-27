@@ -122,13 +122,13 @@ fun estimateParkingOffRoadWidth(tags: Map<String, String>): Float? {
 
 /** Estimated width the cycle lanes take up space on the roadway.
  *
- *  Returns null if there is no cyclewa tagging at all */
+ *  Returns null if there is no cycleway tagging at all */
 fun estimateCycleLanesWidth(tags: Map<String, String>): Float? =
     estimateCyclewaysWidth(tags, true)
 
 /** Estimated width the cycle lanes take up space from of the roadway
  *
- *  Returns null if there is no cyclewa tagging at all */
+ *  Returns null if there is no cycleway tagging at all */
 fun estimateCycleTrackWidth(tags: Map<String, String>): Float? =
     estimateCyclewaysWidth(tags, false)
 

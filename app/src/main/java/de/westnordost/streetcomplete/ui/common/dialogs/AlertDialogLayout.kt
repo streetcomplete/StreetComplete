@@ -21,7 +21,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.unit.dp
 
-/** The layout used in alert dialogs. Used for mimicing the appearance of alert dialogs when not
+/** The layout used in alert dialogs. Used for mimicking the appearance of alert dialogs when not
  *  using AlertDialog */
 @OptIn(ExperimentalLayoutApi::class)
 @Composable

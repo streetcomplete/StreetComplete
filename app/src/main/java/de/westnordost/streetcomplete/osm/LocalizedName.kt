@@ -92,7 +92,7 @@ fun List<LocalizedName>.applyTo(tags: Tags) {
 // name:zh-Hant-SG      - Traditional Chinese name as written in Singapore
 // name:zh-Latn-pinyin  - Chinese name transliterated to Latin alphabet (using pinyin transliteration)
 // name:zh_pinyin       - same as above (this is preferred by community)
-// name:be-tarask       - Belariusian name in pre-reform of 1933, classical orthography
+// name:be-tarask       - Belarusian name in pre-reform of 1933, classical orthography
 
 private val namePattern = Regex(pattern =
     "name(?::([a-z]{2,3}(?:-[A-Z][a-z]{3})?(?:-[A-Z]{2})?(?:[_-][a-z]{2,})?))?"

@@ -105,7 +105,7 @@ class AddSmokingTest {
         ))))
     }
 
-    // nighclubs etc. may have outdoor smoking areas even if no seating is present
+    // nightclubs etc. may have outdoor smoking areas even if no seating is present
     @Test fun `applicable to nightclub without any seating`() {
         assertTrue(questType.isApplicableTo(node(tags = mapOf(
             "amenity" to "nightclub",

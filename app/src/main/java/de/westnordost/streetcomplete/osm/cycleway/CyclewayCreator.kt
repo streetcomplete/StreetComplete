@@ -73,7 +73,7 @@ private fun expandBareTags(tags: Tags, isLeftHandTraffic: Boolean) {
         "both"
     }
     // an important part of expanding bare tags is to expand the cycleway=opposite_* tagging to
-    // oneway:bicyle=no because this information gets lost otherwise
+    // oneway:bicycle=no because this information gets lost otherwise
     val isNoOnewayForCyclists = isNotOnewayForCyclists(tags, isLeftHandTraffic)
     if (isNoOnewayForCyclists && !tags.containsKey("oneway:bicycle")) {
         tags["oneway:bicycle"] = "no"

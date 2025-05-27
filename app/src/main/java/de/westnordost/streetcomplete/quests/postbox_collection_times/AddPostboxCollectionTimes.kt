@@ -45,7 +45,7 @@ class AddPostboxCollectionTimes : OsmElementQuestType<CollectionTimesAnswer> {
         "UA", "SK", "CZ", "HU", "RO", "MD", "BG", "SI", "HR", "IL", "ZA", "GR", "UZ", "ME", "CY", "TR", "LB",
         // these only maybe/sometimes (Oceania, Cambodia, North Korea):
         "BN", "KH", "ID", "TL", "PG", "KP", "PH",
-        // unknown but all countries around have it (former Yugoslawia):
+        // unknown but all countries around have it (former Yugoslavia):
         "RS", "RS-KM", "BA", "MK", "AL",
         // unknown but region around it has it (southern states of former soviet union):
         "TJ", "KG", "KZ", "MN", "GE"

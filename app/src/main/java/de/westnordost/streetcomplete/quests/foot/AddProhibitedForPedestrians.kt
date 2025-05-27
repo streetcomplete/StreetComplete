@@ -30,7 +30,7 @@ class AddProhibitedForPedestrians : OsmFilterQuestType<ProhibitedForPedestriansA
            inner segregated lanes of large streets, connecting/linking road way sections and so
            forth. See https://lists.openstreetmap.org/pipermail/tagging/2019-February/042852.html
 
-           #2472 documents that there have been continuous misuderstandings when roads are really
+           #2472 documents that there have been continuous misunderstandings when roads are really
            forbidden to walk on legally, which is why since v34.0, so the question is not asked for
            roads that are simply lit anymore but only if they are tunnels, bridges, links (=oneways)
            or if already bicycle=no/sidepath */
