@@ -2468,6 +2468,9 @@
           "name": "Cruce",
           "terms": "cruce,paso,peatón,peatonal,cebra,paso peatonal,cruce peatonal,paso de peatones,paso de cebra"
         },
+        "highway/crossing/informal": {
+          "name": "Cruce informal"
+        },
         "highway/crossing/traffic_signals": {
           "name": "Cruce semaforizado para peatones",
           "terms": "semáforo para peatones,señal para peatones,cruce de peatones,paso de peatones,paso de bicicletas"

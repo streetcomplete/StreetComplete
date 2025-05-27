@@ -840,6 +840,9 @@
         "amenity/toilets/disposal/pitlatrine": {
           "name": "Пољски тоалет"
         },
+        "amenity/toilets/portable": {
+          "name": "Мобилни тоалет"
+        },
         "amenity/townhall": {
           "name": "Градска кућа"
         },
@@ -1612,6 +1615,9 @@
         "emergency/fire_hydrant": {
           "name": "Хидрант"
         },
+        "emergency/fire_hydrant/underground": {
+          "name": "Подземни хидрант"
+        },
         "emergency/fire_service_inlet": {
           "name": "Ватрогасни прикључак"
         },
@@ -2227,6 +2233,12 @@
         "landuse/meadow": {
           "name": "Ливада"
         },
+        "landuse/meadow_orchard/meadow": {
+          "name": "Ливада са воћкама"
+        },
+        "landuse/meadow_orchard/orchard": {
+          "name": "Воћњак засађен на ливади"
+        },
         "landuse/military": {
           "name": "Војна област"
         },
@@ -2745,6 +2757,9 @@
         "man_made/gasometer": {
           "name": "Гасно складиште",
           "terms": "гасно складиште,гасометар,гасни силос,силос"
+        },
+        "man_made/goods_conveyor": {
+          "name": "Транспортна трака"
         },
         "man_made/insect_hotel": {
           "name": "Хотел за инсекте"

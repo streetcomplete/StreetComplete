@@ -113,7 +113,7 @@ enum class Cycleway {
     /** cycleway is mapped as a separate way */
     SEPARATE,
 
-    /** no cycle track or lane, but cyclists use shoudler */
+    /** no cycle track or lane, but cyclists use shoulder */
     SHOULDER,
 
     /** unknown cycleway tag set */

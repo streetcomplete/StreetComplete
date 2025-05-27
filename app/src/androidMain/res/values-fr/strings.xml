@@ -776,8 +776,6 @@ Si certaines voies sont réservées aux bus, laissez plutôt une note."</string>
     <string name="quest_surface_value_rock">"Rocher"</string>
     <string name="quest_parkingType_street_side">"Stationnement à coté de la chaussée"</string>
     <string name="quest_parkingType_lane">"Stationnement sur la chaussée"</string>
-    <string name="quest_tracktype_grade2a">"Terre battue"</string>
-    <string name="quest_tracktype_grade3a">"Globalement dur"</string>
     <string name="quest_generic_answer_does_not_exist">"Ça n’existe pas…"</string>
     <string name="osm_element_gone_description">"Êtes-vous sûr que ça n’existe pas, même pas à un endroit un peu différent ? En cas de doute, il vaut mieux laisser une note à la place."</string>
     <string name="osm_element_gone_confirmation">"Ça n’existe pas"</string>
@@ -1448,9 +1446,9 @@ Un niveau compte comme un niveau de toit lorsque ses fenêtres se trouvent dans 
     <string name="overlay_mtb_scale_0">"Niveau 0"</string>
     <string name="overlay_mtb_scale_0_description">"Surface ferme, adhérente, compact ou naturelle; aucun obstacle; pente douce; virages larges."</string>
     <string name="overlay_mtb_scale_1">"Niveau 1"</string>
-    <string name="overlay_mtb_scale_1_description">"Terrain partiellement meuble avec des petites racines, pierres, érosion ou ornières d'eau; pente ≤ 40 %; obstacles roulants; technique de conduite de base requise."</string>
+    <string name="overlay_mtb_scale_1_description">"Terrain partiellement meuble avec des petites racines, pierres, érosion ou ornières d’eau; pente ≤ 40 %; obstacles roulants; technique de conduite de base requise."</string>
     <string name="overlay_mtb_scale_2">"Niveau 2"</string>
-    <string name="overlay_mtb_scale_2_description">"Terrain meuble avec racines et rochers plus gros, saut à plat/petits escaliers, jusqu'à 70 % de pente; virages en épingle à cheveux faciles; freinage avancé et transfert de poids requis."</string>
+    <string name="overlay_mtb_scale_2_description">"Terrain meuble avec racines et rochers plus gros, saut à plat/petits escaliers, jusqu’à 70 % de pente; virages en épingle à cheveux faciles; freinage avancé et transfert de poids requis."</string>
     <string name="overlay_mtb_scale_3">"Niveau 3"</string>
     <string name="overlay_mtb_scale_3_description">"Terrain glissant et meuble avec éboulis, rochers, grosses racines et rochers, marches hautes et traversées délicates ; virages en épingle à cheveux serrés, pente &gt; 70 %; très bon équilibre et freinage précis requis."</string>
     <string name="overlay_mtb_scale_4">"Niveau 4"</string>

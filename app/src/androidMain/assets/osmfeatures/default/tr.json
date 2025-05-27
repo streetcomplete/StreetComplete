@@ -2104,7 +2104,7 @@
           "name": "İşaretli Yaya Geçidi"
         },
         "highway/footway/crossing/unmarked": {
-          "name": "Unmarked Crossing"
+          "name": "İşaretsiz Yaya Geçidi"
         },
         "highway/footway/informal": {
           "name": "Informal Foot Path"

@@ -2694,7 +2694,7 @@
           "terms": "과속 카메라,속도 카메라,단속 카메라"
         },
         "highway/speed_display": {
-          "name": "가변속도표출기",
+          "name": "가변 속도 표출기",
           "terms": "가변속도표출기"
         },
         "highway/steps": {
@@ -2750,11 +2750,11 @@
           "terms": "고속화도로 연결로"
         },
         "highway/turning_circle": {
-          "name": "선회권",
-          "terms": "선회권"
+          "name": "쿨데삭 (컬드색)",
+          "terms": "쿨데삭,컬드색"
         },
         "highway/turning_loop": {
-          "name": "루프선 (교통섬)",
+          "name": "회차 루프 (교통섬)",
           "terms": "루프선 (교통섬)"
         },
         "highway/unclassified": {
@@ -3099,6 +3099,10 @@
         "leisure/bandstand": {
           "name": "연주 무대",
           "terms": "연주 무대"
+        },
+        "leisure/bathing_place": {
+          "name": "욕장",
+          "terms": "수욕장,욕장"
         },
         "leisure/beach_resort": {
           "name": "해변 리조트",

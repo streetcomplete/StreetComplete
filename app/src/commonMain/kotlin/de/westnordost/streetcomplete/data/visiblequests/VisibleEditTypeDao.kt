@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.data.visiblequests
 
 import de.westnordost.streetcomplete.data.Database
-import de.westnordost.streetcomplete.data.visiblequests.VisibleEditTypeTable.Columns.EDIT_TYPE_PRESET_ID
 import de.westnordost.streetcomplete.data.visiblequests.VisibleEditTypeTable.Columns.EDIT_TYPE
+import de.westnordost.streetcomplete.data.visiblequests.VisibleEditTypeTable.Columns.EDIT_TYPE_PRESET_ID
 import de.westnordost.streetcomplete.data.visiblequests.VisibleEditTypeTable.Columns.VISIBILITY
 import de.westnordost.streetcomplete.data.visiblequests.VisibleEditTypeTable.NAME
 

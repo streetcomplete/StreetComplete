@@ -15,9 +15,22 @@ fun Surface.applyTo(tags: Tags, prefix: String? = null, updateCheckDate: Boolean
     val pre = if (prefix != null) "$prefix:" else ""
     val key = "${pre}surface"
     val previousOsmValue = tags[key]
-    val hasChanged = previousOsmValue != null && previousOsmValue != osmValue
+
+    // if previously it was an alias of the value we have now, we *don't* want to change the value!
+    // (e.g. it was surface=earth before and now again Surface.DIRT was selected -> tag value
+    // should not be changed)
+    val previousWasAliasOfThis =
+        previousOsmValue != null &&
+        Surface.aliases.entries.find { it.key == previousOsmValue }?.value == this
+
+    val hasChanged =
+        previousOsmValue != null &&
+        previousOsmValue != osmValue &&
+        !previousWasAliasOfThis
+
     val hasChangedSurfaceCategory =
         hasChanged && parseSurfaceCategory(osmValue) != parseSurfaceCategory(previousOsmValue)
+
     val invalidTracktype =
         prefix == null && osmValue in INVALID_SURFACES_FOR_TRACKTYPES[tags["tracktype"]].orEmpty()
 
@@ -28,30 +41,26 @@ fun Surface.applyTo(tags: Tags, prefix: String? = null, updateCheckDate: Boolean
         tags.removeCheckDatesForKey("tracktype")
     }
 
-    // on change need to remove keys associated with (old) surface
     if (hasChanged) {
+        // need to remove keys associated with (old) surface
         getKeysAssociatedWithSurface(pre).forEach { tags.remove(it) }
     }
 
+    val osmValueOrAlias = if (previousWasAliasOfThis) previousOsmValue else osmValue
     // update surface + check date
     if (updateCheckDate) {
         val isGeneric = this == Surface.PAVED || this == Surface.UNPAVED
         if (isGeneric) {
-            // if a generic surface has been selected, always add the check date as a marker that
-            // the selection has been deliberate and is not an artifact of prior coarse
+            // if a generic surface has been selected, always add the check date as a marker
+            // that the selection has been deliberate and is not an artifact of prior coarse
             // satellite-imagery-based mapping ("oh, road is grey, must be *something* paved")
             tags.updateCheckDateForKey(key)
-            tags[key] = osmValue
+            tags[key] = osmValueOrAlias
         } else {
-            tags.updateWithCheckDate(key, osmValue)
+            tags.updateWithCheckDate(key, osmValueOrAlias)
         }
     } else {
-        tags[key] = osmValue
-    }
-
-    // remove note if surface has changed
-    if (hasChanged) {
-        tags.remove("$key:note")
+        tags[key] = osmValueOrAlias
     }
 
     // always clean up old source tags - source should be in changeset tags

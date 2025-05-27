@@ -1,6 +1,6 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [Batopin, Beobank, BeoBank, bpost, ING, Belfius]
-chargingStationOperators: [EnergyDrive, PitPoint, TotalEnergies, charge.brussels, brusol, Blue Corner, STIB/MIVB, Luminus, Lidl, 'Tesla, Inc.', Equans, EnergyVision, Electra, charge.Brussels, TotalEnergie, Total Energies, Pitpoint Brussels, Optimile, Interparking, Enovatec, Energydrive, EVBOX, Allego]
+atmOperators: [Batopin, Beobank, bpost, ING, BeoBank, Belfius]
+chargingStationOperators: [EnergyDrive, PitPoint, TotalEnergies, charge.brussels, brusol, Blue Corner, STIB/MIVB, Luminus, Lidl, Electra, 'Tesla, Inc.', Equans, EnergyVision, charge.Brussels, TotalEnergie, Total Energies, Pitpoint Brussels, Optimile, Interparking, Enovatec, Energydrive, EVBOX, Allego]
 clothesContainerOperators: [Les Petits Riens - Spullenhulp, Oxfam, Terre, Bruxelles-Propreté - Net Brussel, Terre asbl, Solid'R]
 defaultSpeedLimitHasUrbanOrRural: true
 officialLanguages: [fr, nl]

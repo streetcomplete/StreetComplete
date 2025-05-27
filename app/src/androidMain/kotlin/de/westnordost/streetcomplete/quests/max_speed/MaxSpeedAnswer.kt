@@ -1,5 +1,7 @@
 package de.westnordost.streetcomplete.quests.max_speed
 
+import de.westnordost.streetcomplete.osm.maxspeed.Speed
+
 sealed interface MaxSpeedAnswer
 
 data class MaxSpeedSign(val value: Speed) : MaxSpeedAnswer

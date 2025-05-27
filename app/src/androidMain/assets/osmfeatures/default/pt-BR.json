@@ -2462,6 +2462,9 @@
           "name": "Travessia",
           "terms": "faixa de pedestres"
         },
+        "highway/crossing/informal": {
+          "name": "Travessia informal"
+        },
         "highway/crossing/traffic_signals": {
           "name": "Faixa de pedestres com semáforo",
           "terms": "sinal de travessia de pedestres,travessia de pedestres com sinal,travessia de bicicletas com sinal",
@@ -2723,10 +2726,10 @@
           "terms": "estacionamento,via de estacionamento,corredor de estacionamento"
         },
         "highway/service_area": {
-          "name": "Área de Serviço Pavimentada"
+          "name": "Área de serviço pavimentada"
         },
         "highway/services": {
-          "name": "Posto de Serviços",
+          "name": "Posto de serviços",
           "terms": "área de serviço,posto de combustíveis,posto de gasolina,combustíveis,borracharia,lava jato,serviços,loja de conveniências"
         },
         "highway/speed_camera": {

@@ -2,7 +2,7 @@
 <resources>
     <string name="action_settings">"设置"</string>
     <string name="oauth_communication_error">"无法访问授权服务器"</string>
-    <string name="oauth_failed_permissions">"验证失败：需要授予所有列出的权限"</string>
+    <string name="oauth_failed_permissions">"授权失败：需要授予所有列出的权限"</string>
     <string name="pref_category_communication">"通讯"</string>
     <string name="pref_category_display">"显示"</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">"显示所有注记（note）"</string>
@@ -773,8 +773,6 @@
     <string name="quest_surface_value_rock">"岩石"</string>
     <string name="quest_parkingType_street_side">"与道路相邻的停车场"</string>
     <string name="quest_parkingType_lane">"车行道上停车"</string>
-    <string name="quest_tracktype_grade2a">"压实的硬土"</string>
-    <string name="quest_tracktype_grade3a">"多半坚实"</string>
     <string name="quest_generic_answer_does_not_exist">"不存在哦"</string>
     <string name="osm_element_gone_description">"您确定它并不存在，即便是在稍微远离地点的地方也没有吗？如果有任何疑问，最好留下注记。"</string>
     <string name="osm_element_gone_confirmation">"它不存在"</string>

@@ -766,8 +766,6 @@ Ten en cuenta que esta aplicación solo pide el número de portal de un edificio
     <string name="quest_surface_value_rock">"Roca"</string>
     <string name="quest_parkingType_street_side">"Estacionamiento apartado, fuera de la vía"</string>
     <string name="quest_parkingType_lane">"Estacionamiento al borde de la vía"</string>
-    <string name="quest_tracktype_grade2a">"Sólido pero sin pavimentar"</string>
-    <string name="quest_tracktype_grade3a">"Mayormente sólido"</string>
     <string name="quest_generic_answer_does_not_exist">"Esto no existe…"</string>
     <string name="osm_element_gone_description">"¿Estás seguro de que ya no existe? ¿No se habrá mudado de sitio? Si dudas es mejor dejar una nota."</string>
     <string name="osm_element_gone_confirmation">"No existe"</string>

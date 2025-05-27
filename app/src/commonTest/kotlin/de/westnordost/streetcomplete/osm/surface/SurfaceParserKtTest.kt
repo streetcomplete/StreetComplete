@@ -7,12 +7,15 @@ class SurfaceParserKtTest {
 
     @Test fun `parse surface`() {
         assertEquals(parseSurface("asphalt"), Surface.ASPHALT)
-        assertEquals(parseSurface("earth"), Surface.EARTH)
-        assertEquals(parseSurface("soil"), Surface.SOIL)
+    }
+
+    @Test fun `parse surface alias`() {
+        assertEquals(parseSurface("earth"), Surface.DIRT)
+        assertEquals(parseSurface("tartan"), Surface.RUBBER)
     }
 
     @Test fun `parse unknown surface`() {
-        assertEquals(parseSurface("wobbly_goo"), Surface.UNKNOWN)
+        assertEquals(parseSurface("wobbly_goo"), Surface.UNSUPPORTED)
     }
 
     @Test fun `parse invalid surface`() {

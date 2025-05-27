@@ -768,8 +768,6 @@ Repara en qu'esta aplicación solo pide'l númberu de portal d'un edificiu en sa
     <string name="quest_surface_value_rock">"Piedra"</string>
     <string name="quest_parkingType_street_side">"Aparcaderu al llau de la vía"</string>
     <string name="quest_parkingType_lane">"Aparcaderu na vía"</string>
-    <string name="quest_tracktype_grade2a">"Sólido pero ensin pavimentar"</string>
-    <string name="quest_tracktype_grade3a">"Mayormente sólido"</string>
     <string name="quest_generic_answer_does_not_exist">"Nun esiste..."</string>
     <string name="osm_element_gone_description">"¿Seguro que yá nun esiste? ¿Nun cambiaría de sitiu? Si duldes ye meyor dexar una nota."</string>
     <string name="osm_element_gone_confirmation">"Nun esiste"</string>

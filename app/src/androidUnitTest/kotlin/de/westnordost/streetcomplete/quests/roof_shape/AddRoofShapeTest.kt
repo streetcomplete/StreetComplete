@@ -45,7 +45,7 @@ class AddRoofShapeTest {
         ))
     }
 
-    @Test fun `not applicable to building under contruction`() {
+    @Test fun `not applicable to building under construction`() {
         assertEquals(false, questType.isApplicableTo(
             way(tags = mapOf("building:levels" to "1", "building" to "construction"))
         ))

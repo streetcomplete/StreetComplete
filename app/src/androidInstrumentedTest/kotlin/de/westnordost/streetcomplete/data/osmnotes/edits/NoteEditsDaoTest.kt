@@ -27,7 +27,7 @@ class NoteEditsDaoTest : ApplicationDbTestCase() {
         assertEquals(edit, dbEdit)
     }
 
-    @Test fun addGetWithAllPropertieS() {
+    @Test fun addGetWithAllProperties() {
         val edit = NoteEdit(
             1L,
             123L,

@@ -49,4 +49,17 @@ class SpecifyShopTypeTest {
             questType.answerApplied(IsShopVacant)
         )
     }
+
+    @Test fun `removes previous shop-related tags`() {
+        assertEquals(
+            setOf(
+                StringMapEntryAdd("disused:shop", "yes"),
+                StringMapEntryDelete("opening_hours", "24/7"),
+            ),
+            questType.answerAppliedTo(
+                IsShopVacant,
+                mapOf("opening_hours" to "24/7")
+            )
+        )
+    }
 }

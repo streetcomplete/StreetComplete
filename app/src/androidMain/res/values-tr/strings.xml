@@ -774,8 +774,6 @@ Herhangi bir şerit otobüs için ayrılmışsa, lütfen bunun yerine bir not b�
     <string name="quest_surface_value_rock">"Kaya"</string>
     <string name="quest_parkingType_street_side">"Yola bitişik park"</string>
     <string name="quest_parkingType_lane">"Yol üzerine park"</string>
-    <string name="quest_tracktype_grade2a">"Sertleşmiş Toprak"</string>
-    <string name="quest_tracktype_grade3a">"Genellikle sağlam"</string>
     <string name="quest_generic_answer_does_not_exist">"Böyle bir şey yok…"</string>
     <string name="osm_element_gone_description">"Bunun var olmadığına emin misin? Biraz farklı bir konumda bile mi? Emin değilsen bir not bırakman faydalı olacaktır."</string>
     <string name="osm_element_gone_confirmation">"Böyle bir şey yok"</string>

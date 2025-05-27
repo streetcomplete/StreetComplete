@@ -8121,6 +8121,17 @@
     "name": "{highway/path/crossing/uncontrolled}",
     "searchable": false
   },
+  "highway/path/crossing/informal": {
+    "icon": "temaki-pedestrian",
+    "geometry": ["line"],
+    "tags": {
+      "highway": "path",
+      "path": "crossing",
+      "crossing": "informal"
+    },
+    "name": "{highway/crossing/informal}",
+    "searchable": false
+  },
   "highway/footway/traffic_island": {
     "icon": "temaki-pedestrian",
     "geometry": ["line"],
@@ -8231,6 +8242,17 @@
       "crossing:markings": "yes"
     },
     "name": "{highway/footway/crossing/uncontrolled}",
+    "searchable": false
+  },
+  "highway/footway/crossing/informal": {
+    "icon": "temaki-pedestrian",
+    "geometry": ["line"],
+    "tags": {
+      "highway": "footway",
+      "footway": "crossing",
+      "crossing": "informal"
+    },
+    "name": "{highway/crossing/informal}",
     "searchable": false
   },
   "highway/cycleway/traffic_island_shared": {
@@ -8406,6 +8428,14 @@
       "crossing:markings": "yes"
     },
     "name": "{highway/crossing/uncontrolled}",
+    "searchable": false
+  },
+  "highway/crossing/informal": {
+    "icon": "temaki-pedestrian",
+    "geometry": ["vertex"],
+    "tags": {
+      "crossing": "informal"
+    },
     "searchable": false
   },
   "healthcare/speech_therapist": {

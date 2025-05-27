@@ -22,7 +22,7 @@ class AddRecyclingContainerMaterialsForm :
 
     override val maxSelectableItems = -1
 
-    private val isAnyGlassRecycleable get() = countryInfo.isUsuallyAnyGlassRecyclableInContainers
+    private val isAnyGlassRecyclable get() = countryInfo.isUsuallyAnyGlassRecyclableInContainers
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,7 +33,7 @@ class AddRecyclingContainerMaterialsForm :
 
                 if (value in RecyclingMaterial.selectablePlasticValues) {
                     showPickItemForItemAtIndexDialog(index, RecyclingMaterial.selectablePlasticValues.map { it.asItem() })
-                } else if (isAnyGlassRecycleable && value in RecyclingMaterial.selectableGlassValues) {
+                } else if (isAnyGlassRecyclable && value in RecyclingMaterial.selectableGlassValues) {
                     showPickItemForItemAtIndexDialog(index, RecyclingMaterial.selectableGlassValues.map { it.asItem() })
                 }
             }

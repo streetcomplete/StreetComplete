@@ -6,7 +6,6 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk
 import de.westnordost.streetcomplete.osm.sidewalk.parseSidewalkSides
 import de.westnordost.streetcomplete.osm.sidewalk_surface.LeftAndRightSidewalkSurface
-import de.westnordost.streetcomplete.osm.surface.SELECTABLE_WAY_SURFACES
 import de.westnordost.streetcomplete.osm.surface.Surface
 import de.westnordost.streetcomplete.osm.surface.asStreetSideItem
 import de.westnordost.streetcomplete.osm.surface.toItems
@@ -20,7 +19,7 @@ import de.westnordost.streetcomplete.view.image_select.ImageListPickerDialog
 
 class AddSidewalkSurfaceForm : AStreetSideSelectForm<Surface, SidewalkSurfaceAnswer>() {
 
-    private val items: List<DisplayItem<Surface>> = SELECTABLE_WAY_SURFACES.toItems()
+    private val items: List<DisplayItem<Surface>> = Surface.selectableValuesForWays.toItems()
 
     override val otherAnswers = listOf(
         AnswerItem(R.string.quest_sidewalk_answer_different) { applyAnswer(SidewalkIsDifferent) }

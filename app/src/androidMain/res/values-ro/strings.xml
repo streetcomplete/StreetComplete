@@ -773,8 +773,6 @@ Dacă există benzi rezervate autobuzelor, vă rugăm să lăsați o notă."</st
     <string name="quest_surface_value_rock">"Piatră"</string>
     <string name="quest_parkingType_street_side">"Parcare adiacentă drumului"</string>
     <string name="quest_parkingType_lane">"Parcare pe carosabil"</string>
-    <string name="quest_tracktype_grade2a">"Drum de pământ bătătorit"</string>
-    <string name="quest_tracktype_grade3a">"Preponderent solid"</string>
     <string name="quest_generic_answer_does_not_exist">"Nu există…"</string>
     <string name="osm_element_gone_description">"Sunteți sigur că nu există, nici măcar într-o locație ușor diferită? Dacă aveți dubii, mai bine lăsați o notă."</string>
     <string name="osm_element_gone_confirmation">"Nu există"</string>

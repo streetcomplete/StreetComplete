@@ -37,7 +37,7 @@ class StreetSideSelectPuzzle @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
-) : FrameLayout(context, attrs, defStyleAttr), StreetRotateable {
+) : FrameLayout(context, attrs, defStyleAttr), StreetRotatable {
 
     private val binding: ViewSideSelectPuzzleBinding =
         ViewSideSelectPuzzleBinding.inflate(LayoutInflater.from(context), this)
@@ -257,6 +257,6 @@ private fun View.animateFallDown() {
     animate().scaleX(1f).scaleY(1f)
 }
 
-interface StreetRotateable {
+interface StreetRotatable {
     var streetRotation: Float
 }

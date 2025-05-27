@@ -714,7 +714,7 @@ riconoscimento"</string>
     <string name="quest_oneway2_dir">"Senso unico in questa direzione"</string>
     <string name="quest_oneway2_no_oneway">"Non è a senso unico"</string>
     <string name="quest_maxweight_select_sign">"Seleziona cartello"</string>
-    <string name="quest_steps_incline_title">"In quale direzione salgono questi scalini?"</string>
+    <string name="quest_steps_incline_title">"Quale direzione porta verso l'alto?"</string>
     <string name="quest_steps_incline_up">"Da questo lato"</string>
     <string name="quest_step_count_title">"Quanti gradini ci sono?"</string>
     <string name="quest_traffic_signals_sound_title">"Ci sono segnali sonori per i non vedenti?"</string>
@@ -772,8 +772,6 @@ riconoscimento"</string>
     <string name="quest_surface_value_rock">"Rocce"</string>
     <string name="quest_parkingType_street_side">"Parcheggio poco fuori dalla carreggiata"</string>
     <string name="quest_parkingType_lane">"Parcheggio sulla carreggiata"</string>
-    <string name="quest_tracktype_grade2a">"Solido ma non pavimentato"</string>
-    <string name="quest_tracktype_grade3a">"Per lo più solido"</string>
     <string name="quest_generic_answer_does_not_exist">"Non esiste…"</string>
     <string name="osm_element_gone_description">"Confermi che non esista, magari in una posizione leggermente diversa? In caso di dubbi lascia una nota."</string>
     <string name="osm_element_gone_confirmation">"Non esiste"</string>
@@ -1176,7 +1174,7 @@ Fai la stessa cosa per l'altro lato, se presente."</string>
     <string name="quest_address_answer_house_name2">"La casa ha un nome…"</string>
     <string name="quest_address_street_street_name_label">"Nome della strada:"</string>
     <string name="quest_address_street_hint2">"Premi sulla strada nella mappa per selezionarla"</string>
-    <string name="quest_bicycle_incline_title">"In quale direzione si sale qua?"</string>
+    <string name="quest_bicycle_incline_title">"Quale direzione porta verso l'alto?"</string>
     <string name="quest_bicycle_incline_up_and_down">"È un saliscendi"</string>
     <string name="quest_drinking_water_type_generic_water_fountain">"Altra fontanella"</string>
     <string name="quest_drinking_water_type_jet_water_fountain">"La fontanella emette un piccolo getto d’acqua"</string>

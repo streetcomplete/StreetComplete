@@ -20,6 +20,7 @@ import de.westnordost.streetcomplete.data.overlays.SelectedOverlaySource
 import de.westnordost.streetcomplete.data.platform.InternetConnectionState
 import de.westnordost.streetcomplete.data.preferences.Autosync
 import de.westnordost.streetcomplete.data.preferences.Preferences
+import de.westnordost.streetcomplete.data.presets.EditTypePresetsSource
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.upload.UploadController
@@ -28,7 +29,6 @@ import de.westnordost.streetcomplete.data.urlconfig.UrlConfig
 import de.westnordost.streetcomplete.data.urlconfig.UrlConfigController
 import de.westnordost.streetcomplete.data.user.UserLoginSource
 import de.westnordost.streetcomplete.data.user.statistics.StatisticsSource
-import de.westnordost.streetcomplete.data.presets.EditTypePresetsSource
 import de.westnordost.streetcomplete.data.visiblequests.TeamModeQuestFilter
 import de.westnordost.streetcomplete.data.visiblequests.VisibleEditTypeSource
 import de.westnordost.streetcomplete.overlays.Overlay
@@ -130,6 +130,10 @@ class MainViewModelImpl(
     }
 
     override val geoUri = MutableStateFlow<CameraPosition?>(null)
+
+    override fun consumeGeoUri() {
+        geoUri.value = null
+    }
 
     /* intro */
 

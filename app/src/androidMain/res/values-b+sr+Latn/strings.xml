@@ -774,8 +774,6 @@ Ako su neke trake za javni prevoz, ostavite napomenu."</string>
     <string name="quest_surface_value_rock">"Kamenje"</string>
     <string name="quest_parkingType_street_side">"Parking uz ulicu"</string>
     <string name="quest_parkingType_lane">"Parking na putu"</string>
-    <string name="quest_tracktype_grade2a">"Čvrsto, ali neasfaltirano"</string>
-    <string name="quest_tracktype_grade3a">"Uglavnom čvrsto"</string>
     <string name="quest_generic_answer_does_not_exist">"Ne postoji…"</string>
     <string name="osm_element_gone_description">"Da li ste sigurni da ne dostaje, čak ni na nešto udaljenijoj lokaciji? Ukoliko niste sigurni, bolje ostavite napomenu."</string>
     <string name="osm_element_gone_confirmation">"Ne postoji"</string>

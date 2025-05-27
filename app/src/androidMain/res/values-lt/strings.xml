@@ -773,8 +773,6 @@ Jei kuri nors juosta skirta autobusams, palikite pastabą."</string>
     <string name="quest_surface_value_rock">"Akmuo"</string>
     <string name="quest_parkingType_street_side">"Automobilių stovėjimo aikštelė šalia kelio"</string>
     <string name="quest_parkingType_lane">"Parkavimas ant važiuojamosios dalies"</string>
-    <string name="quest_tracktype_grade2a">"Kietai supiltas purvas"</string>
-    <string name="quest_tracktype_grade3a">"Daugiausia kietas"</string>
     <string name="quest_generic_answer_does_not_exist">"Šito nėra"</string>
     <string name="osm_element_gone_description">"Ar esate tikri, kad tai neegzistuoja, net ir šiek tiek kitoje vietoje? Jei nesate tikri, palikite pastabą."</string>
     <string name="osm_element_gone_confirmation">"Šito nėra"</string>

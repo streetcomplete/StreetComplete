@@ -207,8 +207,8 @@
           "terms": "skříňka na kola,cyklistika,cyklobox"
         },
         "amenity/bicycle_parking/shed": {
-          "name": "Bouda pro kola",
-          "terms": "cyklistická bouda,cyklistika,cyklobouda"
+          "name": "Uzavíratelný přístřešek pro kola",
+          "terms": "uzaviratelny pristresek pro kola,cyklistický přístřešek,cyklisticky pristresek,cyklistika"
         },
         "amenity/bicycle_rental": {
           "name": "Půjčovna kol",
@@ -614,8 +614,8 @@
           "terms": "benzín,palivo,pohon,propan,nafta,lng,cng,bionafta"
         },
         "amenity/funeral_hall": {
-          "name": "Síň pohřební služby",
-          "terms": "pohřební obřad,pohřební síň"
+          "name": "Pohřební síň",
+          "terms": "pohrebni sin,pohřební obřad,pohrebni obrad"
         },
         "amenity/gambling": {
           "name": "Místo pro hazard",
@@ -642,8 +642,8 @@
           "terms": "klinika,lékař,pohotovost,zdraví,ošetřovna,ústav,sanatorium,sanitarium,nemocný,ordinace,oddělení"
         },
         "amenity/hunting_stand": {
-          "name": "Posed",
-          "terms": "hra,zbraň,rozhledna,puška,střílet*,divoký,sledovat"
+          "name": "Myslivecký posed",
+          "terms": "myslivecky posed,posed,zbraň,puška,střílet*,divoký,sledovat"
         },
         "amenity/ice_cream": {
           "name": "Zmrzlina",
@@ -761,7 +761,7 @@
           "terms": "parkoviště pro dojíždějící,parkoviště s pobídkami,parkoviště metra,parkoviště a koupaliště,parkoviště,p+r,parkoviště mhd,parkoviště veřejné dopravy,parkoviště vlaků"
         },
         "amenity/parking/street-side": {
-          "name": "Parkování na straně ulice",
+          "name": "Parkování vedle vozovky",
           "terms": "parkoviště pro automobily,parkoviště,parkování vozidel,parkování na ulici,parkování v ulici,parkování u silnice,parkování na kraji"
         },
         "amenity/parking/underground": {
@@ -1041,23 +1041,23 @@
         },
         "amenity/shelter": {
           "name": "Přístřešek",
-          "terms": "otevřený přístřešek,altánek,piknik"
+          "terms": "pristresek"
         },
         "amenity/shelter/gazebo": {
           "name": "Altánek",
-          "terms": "altán,přístřešek,střecha,dřevěná stavba,kašna"
+          "terms": "altanek,altán,altan,besídka,besidka,přístřešek,střecha,dřevěná stavba"
         },
         "amenity/shelter/lean_to": {
           "name": "Otevřený přístřešek",
-          "terms": "horská chata,dřevěná stavba,přístřešek,ubytování,přenocování,přístřešek na spaní,chata v divočině"
+          "terms": "dřevěná stavba,přístřešek,ubytování,přenocování,přístřešek na spaní"
         },
         "amenity/shelter/picnic_shelter": {
-          "name": "Kryté odpočívadlo",
-          "terms": "pavilon"
+          "name": "Piknikový přístřešek",
+          "terms": "piknikovy pristresek,turistický přístřešek,turisticky pristresek,přístřešek,pristresek"
         },
         "amenity/shelter/public_transport": {
-          "name": "Krytá zastávka",
-          "terms": "autobusová zastávka,zastávka metra,přístřešek veřejné dopravy,přístřešek mhd,přístřešek tramvajové zastávky,čekání"
+          "name": "Přístřešek veřejné dopravy",
+          "terms": "autobusová zastávka,zastávka metra,pristresek verejne dopravy,přístřešek hromadné dopravy,pristresek hromadne dopravy,přístřešek mhd,přístřešek tramvajové zastávky,čekání"
         },
         "amenity/shower": {
           "name": "Sprchy",
@@ -1661,8 +1661,8 @@
           "name": "Bunkr"
         },
         "building/cabin": {
-          "name": "Dřevěná stavba",
-          "terms": "chata,chalupa,srub,roubenka,chatrč,roubená stavba,dřevěná stavba"
+          "name": "Chatka",
+          "terms": "bouda,chata,srub,roubenka,roubená stavba,dřevěnice,drevenice"
         },
         "building/carport": {
           "name": "Zastřešené stání pro auto",
@@ -1689,8 +1689,8 @@
           "terms": "univerzita"
         },
         "building/commercial": {
-          "name": "Obchodní budova",
-          "terms": "obchody,firmy,firma,prodej,podnik,podniky,kanceláře"
+          "name": "Komerční budova",
+          "terms": "komercni budova,firmy,firma,kanceláře,služby,sluzby"
         },
         "building/construction": {
           "name": "Budova ve výstavbě",
@@ -1768,12 +1768,12 @@
           "terms": "domov,rodina,bydliště,obydlí"
         },
         "building/hut": {
-          "name": "Chatička",
-          "terms": "chatka,chata,bouda,dřevěnice,kůlna,dřevník"
+          "name": "Chýše",
+          "terms": "chyse,chatrč,chatrc,chatka,chata,bouda"
         },
         "building/industrial": {
           "name": "Průmyslová budova",
-          "terms": "průmysl,industriální,výroba"
+          "terms": "prumyslova budova,průmysl,iprumys,ndustriální,výroba"
         },
         "building/kindergarten": {
           "name": "Budova školky/předškolního zařízení",
@@ -1794,8 +1794,8 @@
           "name": "Přístavba"
         },
         "building/pavilion": {
-          "name": "Pavilón",
-          "terms": "sporty"
+          "name": "Sportovní budova se zázemím",
+          "terms": "sportovni budova se zazemim,šatny,satny"
         },
         "building/public": {
           "name": "Veřejná budova",
@@ -1803,11 +1803,11 @@
         },
         "building/residential": {
           "name": "Obytná budova",
-          "terms": "ubytování,bývání,byt"
+          "terms": "obytna budova,ubytování,bývání,byt,dům,dum,budova"
         },
         "building/retail": {
-          "name": "Budova s obchody",
-          "terms": "obchodní budova,nákupní budova"
+          "name": "Prodejna",
+          "terms": "budova s obchody,obchod"
         },
         "building/riding_hall": {
           "name": "Krytá jezdecká aréna",
@@ -2469,6 +2469,9 @@
           "name": "Přechod",
           "terms": "přecházení,přechod pro chodce,přechod pro pěší"
         },
+        "highway/crossing/informal": {
+          "name": "Neformální přechod"
+        },
         "highway/crossing/traffic_signals": {
           "name": "Přechod se semaforem pro chodce",
           "terms": "přechod pro cyklisty (semafor),přechod (semafor),přechod pro chodce (semafor),semafor pro chodce,světelná signalizace pro chodce"
@@ -2672,8 +2675,8 @@
           "terms": "off-roadové závody,offroadové moto závody,motokrosový okruh,motocyklová dráha,motorsport"
         },
         "highway/residential": {
-          "name": "Ulice",
-          "terms": "silnice,ulice"
+          "name": "Obytná ulice",
+          "terms": "obytna ulice,silnice,ulice"
         },
         "highway/rest_area": {
           "name": "Odpočívadlo",
@@ -2696,8 +2699,8 @@
           "terms": "nájezd,sjezd,výjezd,příjezd,rampa,exit"
         },
         "highway/service": {
-          "name": "Účelová komunikace, příjezd",
-          "terms": "silnice,ulice"
+          "name": "Účelová komunikace",
+          "terms": "ucelova komunikace,účelová cesta,ucelova cesta"
         },
         "highway/service/alley": {
           "name": "Ulička",
@@ -2871,16 +2874,16 @@
           "terms": "zříceniny,zřícenina"
         },
         "historic/tomb": {
-          "name": "Hrob",
-          "terms": "hrobka,místo posledního odpočinku"
+          "name": "Hrobka",
+          "terms": "místo posledního odpočinku"
         },
         "historic/wayside_cross": {
           "name": "Přícestní kříž",
           "terms": "boží muka,bozi muika,kříž při cestě,kriz pri ceste,krucifix,pricestni kriz,historický kříž,historicky kriz"
         },
         "historic/wayside_shrine": {
-          "name": "Boží muka",
-          "terms": "svatostánek u cesty,svatyně,svatostánek,kaplička"
+          "name": "Svatostánek u cesty",
+          "terms": "boží muka,bozi muka,svatostanek u cesty,svatostánek,svatostanek,kaplička,kaplicka,výklenková kaplička,vysklenkova kaplicka,poklona"
         },
         "historic/wreck": {
           "name": "Vrak lodi",
@@ -2954,8 +2957,8 @@
           "name": "Prostor kolem kostela"
         },
         "landuse/commercial": {
-          "name": "Oblast kanceláří, podniků",
-          "terms": "kancelář,kancelářský,kancelářská,podnikový,podnik,komerční"
+          "name": "Komerční oblast (oblast služeb)",
+          "terms": "komercni oblast,oblast služeb,oblast sluzeb,komerční zóna,komercni zona,zóna služeb,zona sluzeb,kancelář,kancelar"
         },
         "landuse/construction": {
           "name": "Staveniště",
@@ -3006,7 +3009,7 @@
         },
         "landuse/industrial": {
           "name": "Průmyslová oblast",
-          "terms": "průmysl,průmyslová,průmyslové,průmyslový,industriální,továrna,továrny,fabrika,fabriky"
+          "terms": "prumyslova oblast,průmysl,průmyslová,průmyslové,průmyslový,industriální,továrna,továrny,fabrika,fabriky"
         },
         "landuse/industrial/depot": {
           "name": "Depo",
@@ -3103,8 +3106,8 @@
           "name": "Přehrada"
         },
         "landuse/residential": {
-          "name": "Obytná oblast",
-          "terms": "obytná oblast,rezidenční oblast,byty,domy,bydlení,obytné,sídelní"
+          "name": "Rezidenční oblast",
+          "terms": "rezidencni oblast,obytná oblast,byty,domy,bydlení"
         },
         "landuse/residential/apartments": {
           "name": "Oblast s bytovými budovami",
@@ -3115,8 +3118,8 @@
           "terms": "park pro karavany,komunity vyrobených domů,park pro přívěsy"
         },
         "landuse/retail": {
-          "name": "Maloobchodní zóna",
-          "terms": "nákupní,nakupni,obchod,maloobchodní,maloobchodni,nákup"
+          "name": "Maloobchodní oblast",
+          "terms": "maloobchodni oblast,maloobchodní zóna,maloobchodni zona,nákupní,nakupni,obchod,nákup"
         },
         "landuse/salt_pond": {
           "name": "Jezírko pro odpařování soli",
@@ -3142,24 +3145,24 @@
           "terms": "placené hry,videohry,simulátory řízení,hrací automaty"
         },
         "leisure/bandstand": {
-          "name": "Kryté pódium",
-          "terms": "hudební pavilon,hudební altán,altán,pavilón,pavilon,pódium,podium"
+          "name": "Hudební altán",
+          "terms": "hudebni altan,hudební pavilon,hudebni pavilon,altán,pavilón,pavilon,pódium,podium,kryté pódium,kryte podium"
         },
         "leisure/bathing_place": {
           "name": "Místo ke koupání",
           "terms": "koupání,máčení,máchání,plavání,koupací díra,žebřík,molo,voda"
         },
         "leisure/beach_resort": {
-          "name": "Spravovaná pláž",
-          "terms": "plážový resort"
+          "name": "Plážový resort",
+          "terms": "plazovy resort,pláž,plaz"
         },
         "leisure/bird_hide": {
           "name": "Pozorovatelna zvěře",
           "terms": "pozorovatelna zvěře,pozorovatelna ptáků,ptačí zástěna,machan"
         },
         "leisure/bleachers": {
-          "name": "Nekryté tribuny",
-          "terms": "dav,lavice,sport,stojan,stojany,sedadlo,posezení"
+          "name": "Nekrytá tribuna / hlediště",
+          "terms": "tribuna,hlediste,lavice,sport,sedadlo,posezení"
         },
         "leisure/bowling_alley": {
           "name": "Bowlingová dráha",
@@ -3270,8 +3273,8 @@
           "terms": "kuchyňská zahrada,bramborová zahrada,kulinářská zahrada,zahrada na jídlo,kuchařská zahrada"
         },
         "leisure/garden/residential": {
-          "name": "Obytná zahrada",
-          "terms": "zadní zahrada,dvorek,domácí zahrada,předzahrádka,přední dvůr"
+          "name": "Rezidenční zahrada",
+          "terms": "rezidencni zahrada,obytná zahrada,obytna zahrada,zadní zahrada,dvorek,domácí zahrada,domaci zahrada,předzahrádka,přední dvůr"
         },
         "leisure/golf_course": {
           "name": "Golfové hřiště",
@@ -3666,8 +3669,8 @@
           "terms": "obrys mostu,viadukt"
         },
         "man_made/bunker_silo": {
-          "name": "Podzemní silo",
-          "terms": "siláž,sklad"
+          "name": "Silážní jáma",
+          "terms": "silazni jama,silážní žlab,silazni zlab,siláž,sklad"
         },
         "man_made/cairn": {
           "name": "Mohyla",
@@ -3901,7 +3904,7 @@
           "terms": "cisterna,vodárenská věž"
         },
         "man_made/street_cabinet": {
-          "name": "Pouliční skříň / kaplička",
+          "name": "Pouliční skříň",
           "terms": "kabelová televize,monitorovací box,technický box,telekomunikace,ovládání dopravního signálu"
         },
         "man_made/street_cabinet/postal_service": {
@@ -4357,7 +4360,7 @@
         },
         "office/adoption_agency": {
           "name": "Adopční agentura",
-          "terms": "děti"
+          "terms": "adopcni agentura"
         },
         "office/advertising_agency": {
           "name": "Reklamní agentura",
@@ -4553,8 +4556,8 @@
           "name": "Cestovní kancelář"
         },
         "office/union": {
-          "name": "Úřad práce",
-          "terms": "obchodní unie"
+          "name": "Odborová organizace zaměstnanců",
+          "terms": "odborová organizace zamestnancu,odbory,odborova organizace"
         },
         "office/water_utility": {
           "name": "Vodohospodářská kancelář",
@@ -4775,8 +4778,8 @@
           "terms": "houpačka,visutá houpačka,řetízková houpačka"
         },
         "playground/teenshelter": {
-          "name": "Přístřešek pro dospívající",
-          "terms": "přístřešek,altánek,přístřešek na hřiště"
+          "name": "Přístřešek pro děti",
+          "terms": "pristresek pro deti,dětský přístřešek,detsky pristresek,přístřešek pro teenagery,pristresek pro teenagery,přístřešek na hřisti,pristresek na hristi,přístřešek pro dospívající,pristresek pro dospivajici"
         },
         "playground/tetherball": {
           "name": "Tyč na tetherball",
@@ -5278,7 +5281,7 @@
         },
         "shop/alcohol": {
           "name": "Prodejna alkoholu",
-          "terms": "alkohol,alkoholický"
+          "terms": "alkohol,alkoholické nápoje,alkoholicke napoje"
         },
         "shop/anime": {
           "name": "Obchod s Anime / Mangou",
@@ -5658,8 +5661,8 @@
           "terms": "domácí potřeby,kuchyňské potřeby,potřeby pro domácnost,nádobí"
         },
         "shop/hunting": {
-          "name": "Lovecké potřeby",
-          "terms": "šípy,luky,kulky,kuše,pušky,pasti"
+          "name": "Obchod s mysliveckými potřebami",
+          "terms": "obchod s mysliveckymi potrebami,myslivecké potřeby,myslivecke potreby,lovecké potřeby,lovecke potreby,myslivecký obchod,myslivecky obchod,šípy,luky,kulky,kuše,pušky,pasti"
         },
         "shop/interior_decoration": {
           "name": "Obchod s bytovými doplňky",
@@ -5906,8 +5909,8 @@
           "terms": "čaj,čaje,čajovna,čajírna"
         },
         "shop/telecommunication": {
-          "name": "Telekomunikační prodejna",
-          "terms": "komunikace,poskytovatel internetové služby,isp,síť,telefon,hlas"
+          "name": "Obchod s telekomunikačními službami",
+          "terms": "operátor,operator,mobilní operátor,mobilni operator,komunikace,poskytovatel internetového připojení,internetové připojení,internetove pripojeni,isp,síť,telefon,hlas,kabelová televize,kabelova televize,optický internet,opticky internet"
         },
         "shop/ticket": {
           "name": "Prodejna vstupenek",
@@ -5935,7 +5938,7 @@
         },
         "shop/travel_agency": {
           "name": "Cestovní kancelář",
-          "terms": "cestovní kancelář,cestovka,cestování,dovolená"
+          "terms": "cestovní kancelář,cestovní agentura,cestovni agenturacestovka,cestování,dovolená"
         },
         "shop/trophy": {
           "name": "Prodejna trofejí",
@@ -6015,8 +6018,8 @@
           "name": "Turistický prvek"
         },
         "tourism/alpine_hut": {
-          "name": "Horský srub",
-          "terms": "chata,horolezecká chata,ubytování,ubytování přes noc,útočiště,chata na divočinu"
+          "name": "Horská chata",
+          "terms": "horska chata,vysokohorská chata,vysokohorska chata,chata,horolezecká chata,ubytování,ubytování přes noc,útočiště"
         },
         "tourism/apartment": {
           "name": "Byt/apartmán k pronájmu",
@@ -6047,16 +6050,16 @@
           "terms": "freska,nástěnná malba"
         },
         "tourism/artwork/sculpture": {
-          "name": "Socha",
-          "terms": "skulptura,plastika"
+          "name": "Skulptura",
+          "terms": "socha,plastika"
         },
         "tourism/artwork/statue": {
           "name": "Socha (osoba nebo zvíře)",
           "terms": "sochařství,figura,řezba"
         },
         "tourism/attraction": {
-          "name": "Pamětihodnost",
-          "terms": "pamětihodnost,turistická atrakce,turistická zajímavost,turistické lákadlo,atrakce,zajímavost,lákadlo"
+          "name": "Turistická atrakce",
+          "terms": "turisticka atrakce,pamětihodnost,pametihodnost,turistická zajímavost,turisticka zajimavost,turistické lákadlo,atrakce,zajímavost,lákadlo"
         },
         "tourism/camp_pitch": {
           "name": "Místo pro stan/karavan",
@@ -6079,8 +6082,8 @@
           "terms": "místo pro karavany,kemp,camp,camping,karavan"
         },
         "tourism/chalet": {
-          "name": "Prázdninová vesnice",
-          "terms": "chata,prázdninová dřevostavba,prázdninový domek,srub,ubytování ve srubu,ubytování,přenocování,ubytování přes noc,dřevostavba,domek"
+          "name": "Prázdninová chata",
+          "terms": "prazdninova chata,chata,prázdninová dřevostavba,prázdninový domek,srub,ubytování ve srubu,ubytování,přenocování,ubytování přes noc,dřevostavba,domek,chalupa,dřevěnice,drevenice"
         },
         "tourism/gallery": {
           "name": "Galerie umění",
@@ -6160,7 +6163,7 @@
         },
         "tourism/wilderness_hut": {
           "name": "Chata v divočině",
-          "terms": "horská chata,bivak,bivakovací box,biwakschachtel,kajuta,chata,ubytování,přenocování,útočiště,přístřešek na spaní"
+          "terms": "chata v divocine,horská chata,horska chata,bivak,bivakovací box,biwakschachtel,kajuta,chata,ubytování,přenocování,útočiště,přístřešek na spaní,nouzové přespání,nouzove prespani"
         },
         "tourism/zoo": {
           "name": "ZOO",

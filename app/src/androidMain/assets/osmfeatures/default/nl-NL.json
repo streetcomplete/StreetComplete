@@ -1290,6 +1290,9 @@
           "name": "Dierenarts",
           "terms": "veearts,dierendokter"
         },
+        "amenity/veterinary_pharmacy": {
+          "name": "Dierenapotheek"
+        },
         "amenity/waste/dog_excrement": {
           "name": "Afvalbak voor hondenpoep",
           "terms": "hondenstront,hondenpoepbuis,hondenstrontbuis"
@@ -1393,7 +1396,8 @@
           "terms": "roetsjbaan,rollercoaster"
         },
         "attraction/summer_toboggan": {
-          "name": "Zomerrodelbaan"
+          "name": "Zomerrodelbaan",
+          "terms": "rodelbaan"
         },
         "attraction/swing_carousel": {
           "name": "Zweefmolen",
@@ -2781,7 +2785,8 @@
           "terms": "herinnering,herdenking,plakkaat,bord,nagedachtenis"
         },
         "historic/memorial/stolperstein-EU": {
-          "name": "Stolpersteine"
+          "name": "Stolpersteine",
+          "terms": "struikelsteen"
         },
         "historic/monument": {
           "name": "Monument",
@@ -4374,7 +4379,7 @@
           "name": "Dorp/gehucht/buurtschap"
         },
         "place/island": {
-          "name": "Vluchtheuvel",
+          "name": "Eiland",
           "terms": "eiland"
         },
         "place/islet": {
@@ -5026,6 +5031,9 @@
         "shop/bathroom_furnishing": {
           "name": "Badkamermeubelwinkel",
           "terms": "sanitairwinkel"
+        },
+        "shop/bbq": {
+          "name": "BBQ Winkel"
         },
         "shop/beauty": {
           "name": "Schoonheidssalon",

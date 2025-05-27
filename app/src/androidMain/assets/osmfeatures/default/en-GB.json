@@ -915,7 +915,8 @@
           "name": "Postage Vending Machine"
         },
         "amenity/vending_machine/sweets": {
-          "name": "Sweets Vending Machine"
+          "name": "Sweets Vending Machine",
+          "terms": "sweets,candy,lollies"
         },
         "amenity/veterinary": {
           "name": "Veterinary"
@@ -1424,6 +1425,7 @@
         },
         "craft/confectionery": {
           "name": "Confectioner",
+          "terms": "sweets,candy,lollies",
           "aliases": "Sweet Maker\nCandy Maker"
         },
         "craft/distillery": {
@@ -3987,7 +3989,8 @@
           "name": "Computer Shop"
         },
         "shop/confectionery": {
-          "name": "Sweet Shop"
+          "name": "Sweet Shop",
+          "terms": "sweets,candy,lollies"
         },
         "shop/convenience": {
           "name": "Convenience Store",

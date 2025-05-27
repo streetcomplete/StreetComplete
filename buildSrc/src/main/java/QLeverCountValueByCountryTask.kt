@@ -1,6 +1,8 @@
 import com.esotericsoftware.yamlbeans.YamlConfig
 import com.esotericsoftware.yamlbeans.YamlWriter
 import de.westnordost.countryboundaries.CountryBoundaries
+import kotlinx.io.asSource
+import kotlinx.io.buffered
 import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.Input
 import org.gradle.api.tasks.TaskAction
@@ -10,8 +12,6 @@ import java.io.StringWriter
 import java.net.HttpURLConnection
 import java.net.URL
 import java.net.URLEncoder
-import kotlinx.io.asSource
-import kotlinx.io.buffered
 
 /** Counts the occurrence of values for a given key for a certain tag combination by country and
  *  writes the result in a YML file.

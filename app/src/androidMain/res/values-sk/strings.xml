@@ -768,8 +768,6 @@ Pamätajte, že táto aplikácia sa pýta na súpisné číslo budovy až po ur�
     <string name="quest_surface_value_rock">"Skala"</string>
     <string name="quest_parkingType_street_side">"Parkuje sa priamo vedľa cesty"</string>
     <string name="quest_parkingType_lane">"Parkuje sa na ceste"</string>
-    <string name="quest_tracktype_grade2a">"Viac-menej pevný"</string>
-    <string name="quest_tracktype_grade3a">"Skôr pevný"</string>
     <string name="quest_generic_answer_does_not_exist">"Neexistuje to…"</string>
     <string name="osm_element_gone_description">"Ste si istí, že to čo tu bolo už neexistuje? Trebárs neďaleko? Ak ste na pochybách, je lepšie zanechať k miestu poznámku."</string>
     <string name="osm_element_gone_confirmation">"Neexistuje to"</string>

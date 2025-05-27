@@ -1307,6 +1307,10 @@
           "name": "Veterinär",
           "terms": "veterinär,djurläkare,djurdoktor,djurklinik,djursjukhus"
         },
+        "amenity/veterinary_pharmacy": {
+          "name": "Veterinärapotek",
+          "terms": "veterinärapotek,djurapotek,apotek för djur,husdjurspotek,husdjurmedicin,veterinärmedicin,veterinärklinik,husdjurspreparat,veterinärmediciner,djurmedicin,veterinärprodukter,apotek för husdjur,apotek"
+        },
         "amenity/waste/dog_excrement": {
           "name": "Sopkärl för hundbajspåsar",
           "terms": "sopkärl för hundbajspåsar,hundbajs,hundbajspåsar,hundbajspåse,hund,bajs,bajspåsar,soptunna,sopkärl,hundskit,skitpåse"
@@ -2464,6 +2468,9 @@
         "highway/crossing": {
           "name": "Övergångsställe",
           "terms": "korsning,övergångsställe,övergång,passage,vad,gångpassage,fotgängarövergång,zebraövergång"
+        },
+        "highway/crossing/informal": {
+          "name": "Informell korsning"
         },
         "highway/crossing/traffic_signals": {
           "name": "Korsning med trafikljus för fotgängare",
@@ -5309,6 +5316,10 @@
           "name": "Badrumsinredning",
           "terms": "badrumsinredning,badrum"
         },
+        "shop/bbq": {
+          "name": "Grillaffär",
+          "terms": "grillaffär,grillbutik,bbq-butik,barbecuebutik,barbequebutik,bbq-affär,barbecueaffär,grillshop,bbq-shop,grillning"
+        },
         "shop/beauty": {
           "name": "Skönhetssalong",
           "terms": "skönhetssalong,skönhet,skönhetsbehandlingar,nagelsalong,solarium,shiatsu,massage,spa,hälsoanläggning,kuranstalt,kurort,kosmetik,smink,naglar,salong"
@@ -5598,6 +5609,10 @@
         "shop/greengrocer": {
           "name": "Grönsakshandlare",
           "terms": "grönsakshandlare,grönsaker,frukt,frukthandlare,frukthandel,vegetabiliskt"
+        },
+        "shop/groundskeeping": {
+          "name": "Affär för gräsmatte- och trädgårdsutrustning",
+          "terms": "butik för gräsmatte- och trädgårdsutrustning,trädgårdsutrustningsbutik,gräsmattebutik,trädgårdsmaskiner,trädgårdsverktyg,trädgårdsredskap,maskinbutik för trädgård,gräsklipparebutik,trimmerbutik,motorsågbutik,snöblåsarebutik,jordfräsbutik,trädgårdsverktygsaffär"
         },
         "shop/hairdresser": {
           "name": "Hårfrisör",

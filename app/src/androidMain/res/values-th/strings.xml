@@ -769,8 +769,6 @@
     <string name="quest_surface_value_rock">"หิน"</string>
     <string name="quest_parkingType_street_side">"ที่จอดรถอยู่ริมถนน"</string>
     <string name="quest_parkingType_lane">"จุดจอดรถริมถนน"</string>
-    <string name="quest_tracktype_grade2a">"เป็นพื้นแข็งแต่ยังไม่ปรับผิวถนน"</string>
-    <string name="quest_tracktype_grade3a">"พื้นค่อนข้างแข็ง"</string>
     <string name="quest_generic_answer_does_not_exist">"มันไม่มีอยู่…"</string>
     <string name="osm_element_gone_description">"คุณแน่ใจว่ามันไม่มีอยู่จริง หรือว่าตำแหน่งที่ตั้งอาจอยู่ผิดที่ไปนิดหน่อย? ถ้าไม่แน่ใจ ให้ใส่หมายเหตุไว้ดีกว่า"</string>
     <string name="osm_element_gone_confirmation">"มันไม่มีอยู่"</string>

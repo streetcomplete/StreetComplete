@@ -2469,6 +2469,9 @@
           "name": "人行横道",
           "terms": "交叉口,道口,交道口,岔路口"
         },
+        "highway/crossing/informal": {
+          "name": "非正式行人穿越道"
+        },
         "highway/crossing/traffic_signals": {
           "name": "有號誌的行人穿越道",
           "terms": "有號誌的行人穿越道"

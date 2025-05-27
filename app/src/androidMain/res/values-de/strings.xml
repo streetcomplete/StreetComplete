@@ -478,7 +478,7 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="quest_buildingType_retail_description">"inklusive Gebäude für Restaurants, Cafés, Geschäfte …"</string>
     <string name="quest_openingHours_timeSelect_next">"Weiter"</string>
     <string name="quest_tracktype_title">"Wie gut ist dieser Weg befestigt?"</string>
-    <string name="quest_tracktype_grade1">"Befestigt"</string>
+    <string name="quest_tracktype_grade1">"Fest"</string>
     <string name="quest_tracktype_grade4">"Größtenteils weich"</string>
     <string name="quest_tracktype_grade5">"Weich"</string>
     <string name="quest_building_underground_title">"Ist dieses Gebäude komplett unterirdisch?"</string>
@@ -776,8 +776,6 @@ Wenn es eine Busspur gibt, hinterlasse bitte stattdessen einen Hinweis."</string
     <string name="quest_surface_value_rock">"Fels"</string>
     <string name="quest_parkingType_street_side">"Parkbuchten am Fahrbahnrand"</string>
     <string name="quest_parkingType_lane">"Parken auf der Fahrbahn"</string>
-    <string name="quest_tracktype_grade2a">"Unbefestigt, aber fest"</string>
-    <string name="quest_tracktype_grade3a">"Größtenteils fest"</string>
     <string name="quest_generic_answer_does_not_exist">"Existiert nicht …"</string>
     <string name="osm_element_gone_description">"Bist du sicher, dass es nicht existiert, auch nicht an einer leicht anderen Stelle? Im Zweifelsfall hinterlasse besser einen Hinweis."</string>
     <string name="osm_element_gone_confirmation">"Existiert nicht"</string>
@@ -1460,9 +1458,13 @@ Eine Ebene zählt als Dachebene, wenn sich die Fenster im Dach befinden. Dächer
     <string name="overlay_mtb_scale_5_description">"Extrem steiles, blockiges Gelände mit Gegenanstiegen, Geröllfeldern, Erdrutschen, Pivot-Switchbacks mit Hindernissen, Back-to-Back High Drops und umgestürzten Bäumen. Das Tragen des Fahrrads um die Hindernisse herum ist unmöglich; das Fahren ist unvermeidlich. Trial-Beherrschung erforderlich."</string>
     <string name="overlay_mtb_scale_6">"Klasse 6"</string>
     <string name="overlay_mtb_scale_6_description">"Gefährliches und unwegsames Gelände, nicht zum Mountainbiken geeignet."</string>
-    <string name="default_disabled_overlay_domain_expert">"Dieses Overlay ist standardmäßig deaktiviert, weil du dich auf dem Gebiet gut auskennen musst, um die Daten korrekt zu erfassen."</string>
+    <string name="default_disabled_overlay_domain_expert">"Dieses Overlay ist standardmäßig deaktiviert, weil du dich auf dem Themengebiet gut auskennen musst, um die Daten korrekt zu erfassen."</string>
     <string name="pref_title_overlays">"Overlayauswahl"</string>
-    <string name="pref_overlays_reset">"Die Aktivierung zurücksetzen?"</string>
+    <string name="pref_overlays_reset">"Overlay-Aktivierung zurücksetzen?"</string>
     <string name="overlay">"Overlay"</string>
     <string name="enable_overlay_confirmation_title">"Dieses Overlay aktivieren?"</string>
+    <string name="link_transitous_description">"Anbieterunabhängige, kostenlose und quelloffene Routenplanung für öffentliche Verkehrsmittel"</string>
+    <string name="compass">"Kompass"</string>
+    <string name="quest_tracktype_grade2">"Größtenteils fest"</string>
+    <string name="quest_tracktype_grade3">"Gemischt"</string>
 </resources>

@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.osm.building
 
 /** a set of building values that should be treated as deprecated aliases of known building
  *  types */
-val DEPRECATED_BUILDING_VALUES = setOf(
+val INVALID_BUILDING_TYPES = setOf(
     "semi",
     "semidetached",
     "semi_detached",
@@ -39,6 +39,9 @@ val DEPRECATED_BUILDING_VALUES = setOf(
     "unknown",
     "other",
     "fixme", // -> yes
+
+    "no",
+    "entrance"
 )
 
 /** other OSM keys that may describe the purpose of a building */

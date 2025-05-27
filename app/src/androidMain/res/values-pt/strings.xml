@@ -192,7 +192,7 @@ Se não existir sinalização ao longo da estrada selecionada, por omissão é a
     <string name="quest_sport_gaelic_games">"Jogos gaélicos"</string>
     <string name="quest_sport_sepak_takraw">"Voleibol de pontapé ou takraw"</string>
     <string name="quest_wheelchairAccess_limited">"Parcialmente"</string>
-    <string name="quest_bikeParkingCapacity_hint">"Note que normalmente pode-se parquear 1 bicicleta de cada lado."</string>
+    <string name="quest_bikeParkingCapacity_hint">"Note que normalmente pode-se parquear 1 bicicleta de cada lado. Em outros tipos de suporte pode ter que estimar quantas bicicletas cabem."</string>
     <string name="quest_sport_roller_skating">"Patins em linha"</string>
     <string name="quest_wheelchairAccess_limited_description_business">"Parcialmente significa que não existe mais do que um pequeno degrau com alguns centímetros para aceder ao local e que a maioria das divisões interiores são acessíveis a cadeira de rodas."</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">"Parcialmente significa que não existe mais do que um pequeno degrau para aceder ao local."</string>
@@ -463,7 +463,7 @@ Caso contrário, pode descarregar outro teclado na loja de aplicações. Alguns 
     <string name="quest_buildingType_toilets">"Casa de banho"</string>
     <string name="quest_maxspeed_sign_question">"O que define o limite de velocidade?"</string>
     <string name="quest_segregated_title">"Esta ciclovia e via pedonal são separadas?"</string>
-    <string name="dialog_tutorial_upload">"Para enviar as suas alterações manualmente, toque no botão com este ícone na barra de ferramentas superior."</string>
+    <string name="dialog_tutorial_upload">"Para enviar as suas alterações manualmente, use o botão do menu principal com o seguinte aspeto."</string>
     <string name="quest_segregated_separated">"São separadas uma da outra"</string>
     <string name="quest_segregated_mixed">"Os ciclistas e peões partilham a mesma pista"</string>
     <string name="quest_maxheight_title">"Qual é o limite de altura aqui?"</string>
@@ -564,7 +564,7 @@ Quer dividir agora?"</string>
     <string name="quest_recycling_materials_answer_waste">"É para resíduos indiferenciados"</string>
     <string name="quest_recycling_materials_answer_waste_description">"Então, este é um recipiente para qualquer resíduo, como lixo doméstico ensacado ou comercial?"</string>
     <string name="user_profile">"O meu perfil"</string>
-    <string name="user_login">"Entrar"</string>
+    <string name="user_login">"Iniciar sessão"</string>
     <string name="user_logout">"Sair"</string>
     <string name="osm_profile">"Perfil no OSM"</string>
     <string name="next">"Seguinte"</string>
@@ -715,7 +715,7 @@ conquista"</string>
     <string name="quest_oneway2_dir">"Sentido único nesta direção"</string>
     <string name="quest_oneway2_no_oneway">"Não é de sentido único"</string>
     <string name="quest_maxweight_select_sign">"Selecione o sinal"</string>
-    <string name="quest_steps_incline_title">"Qual é a direção que leva para cima?"</string>
+    <string name="quest_steps_incline_title">"Em que direção se sobe?"</string>
     <string name="quest_steps_incline_up">"Nesta direção para subir"</string>
     <string name="quest_step_count_title">"Quantos degraus há aqui?"</string>
     <string name="quest_traffic_signals_sound_title">"Existe aqui sinalização sonora para cegos?"</string>
@@ -774,8 +774,6 @@ Caso não se aplique a toda a secção destacada, pode responder “%s”."</str
     <string name="quest_surface_value_rock">"Pedras toscas amontoadas (trilhos montanhosos)"</string>
     <string name="quest_parkingType_street_side">"Estacionamento ao lado, fora da estrada"</string>
     <string name="quest_parkingType_lane">"Estacionamento dentro da estrada"</string>
-    <string name="quest_tracktype_grade2a">"Terra compacta"</string>
-    <string name="quest_tracktype_grade3a">"Maioritariamente sólido"</string>
     <string name="quest_generic_answer_does_not_exist">"Não existe…"</string>
     <string name="osm_element_gone_description">"Tem a certeza que não existe, nem mesmo num local próximo? Se não tiver certeza, deixe uma nota."</string>
     <string name="osm_element_gone_confirmation">"Não existe"</string>
@@ -894,7 +892,9 @@ Os dados são atualizados após %1$s dias e os dados não utilizados são elimin
     <string name="quest_bollard_type_foldable2">"Reclinável (com ou sem chave)"</string>
     <string name="no_search_results">"Nada encontrado"</string>
     <string name="quest_selection_hint_title">"Demasiadas coisas para fazer?"</string>
-    <string name="quest_selection_hint_message">"Contribuir tem de ser divertido! Se achar que aparecem demasiadas missões, pode escolher apenas as missões que prefere e em que ordem de prioridade são mostradas."</string>
+    <string name="quest_selection_hint_message">"Contribuir tem de ser divertido!
+
+Se ficar sobrecarregado com o número de missões, pode sempre ajustar as missões que lhe são apresentadas e a sua ordem nas definições."</string>
     <string name="quest_presets_preset_add">"Adicionar conjunto de missões"</string>
     <string name="quest_presets_preset_name">"Nome do conjunto de missões"</string>
     <string name="quest_presets_default_name">"Base"</string>
@@ -1433,4 +1433,33 @@ Um andar conta como um andar de telhado quando as suas janelas estão no telhado
     <string name="pedestrian_zone_allowed_sign">"Um sinal permite andar de bicicleta aqui"</string>
     <string name="pedestrian_zone_no_sign">"Não há sinalização explícita sobre ciclismo aqui"</string>
     <string name="team_mode_description_overlay_hint">"Se utilizarem sobreposições, cada um de vós deve utilizar uma diferente, pois só as missões são divididas entre pessoas."</string>
+    <string name="quest_dietType_glutenfree_name_title">"Existem produtos sem glúten?"</string>
+    <string name="quest_dietType_explanation_glutenfree">"A preparação de produtos sem glúten requer conhecimentos, uma vez que as especiarias e os molhos comuns podem conter glúten. Os alimentos sem glúten devem ser explicitamente rotulados como tal."</string>
+    <string name="quest_construction_minor_title">"As pequenas obras na estrada estão concluídas?"</string>
+    <string name="map_attribution">"Atribuição do mapa"</string>
+    <string name="link_panoramax_description">"Um software gratuito e de código aberto e um serviço sem fins lucrativos para a partilha de fotografias ao nível da rua obtidas por contribuição colaborativa"</string>
+    <string name="link_opengeofiction_description">"Cansado de mapear a realidade? Crie mapas fictícios de forma colaborativa!"</string>
+    <string name="link_openclimbing_description">"Um mapa dos locais de escalada"</string>
+    <string name="pref_title_zoom_buttons">"Mostrar botões de zoom do mapa"</string>
+    <string name="overlay_mtb_scale">"Dificuldade MTB"</string>
+    <string name="overlay_mtb_scale_0">"Grau 0"</string>
+    <string name="overlay_mtb_scale_0_description">"Superfície firme, aderente, compactada ou natural; sem obstáculos; declive suave; curvas largas."</string>
+    <string name="overlay_mtb_scale_1">"Grau 1"</string>
+    <string name="overlay_mtb_scale_1_description">"Terreno parcialmente solto com pequenas raízes, pedras, erosão ou sulcos de água; ≤ 40 % de inclinação; obstáculos que podem rolar; técnica de condução básica necessária."</string>
+    <string name="overlay_mtb_scale_2">"Grau 2"</string>
+    <string name="overlay_mtb_scale_2_description">"Terreno solto com raízes e pedras maiores, descidas planas/pequenas escadas, até 70 % de inclinação; curvas fáceis em gancho; é necessário um nível avançado de travagem e de transferência de peso."</string>
+    <string name="overlay_mtb_scale_3">"Grau 3"</string>
+    <string name="overlay_mtb_scale_3_description">"Terreno escorregadio e solto, com cascalho, pedregulhos, grandes raízes e rochas, degraus altos e travessias difíceis; curvas apertadas, &gt; 70 % de inclinação; é necessário muito bom equilíbrio e uma travagem precisa."</string>
+    <string name="overlay_mtb_scale_4">"Grau 4"</string>
+    <string name="overlay_mtb_scale_4_description">"Obstáculos desafiantes e técnicos: grandes pedregulhos, raízes, cascalho, rampas íngremes; curvas em pivô, descidas planas com golpes de pedal; equilíbrio perfeito, travagem precisa e reposicionamento das rodas traseiras."</string>
+    <string name="overlay_mtb_scale_5">"Grau 5"</string>
+    <string name="overlay_mtb_scale_5_description">"Terreno muito íngreme, em blocos, com contra-montanhas, campos de pedregulhos, deslizamentos de terras, ziguezagues com obstáculos, quedas altas consecutivas e árvores caídas. Não é possível transportar a bicicleta à volta dos obstáculos; é inevitável pedalar. É necessário o domínio do trial."</string>
+    <string name="overlay_mtb_scale_6">"Grau 6"</string>
+    <string name="overlay_mtb_scale_6_description">"Terreno perigoso e intransitável, impróprio para a prática de BTT."</string>
+    <string name="default_disabled_overlay_domain_expert">"Esta sobreposição está desativada por predefinição porque é necessário ser um especialista no domínio para registar com precisão estes dados."</string>
+    <string name="pref_title_overlays">"Seleção de sobreposição"</string>
+    <string name="pref_overlays_reset">"Repor a ativação de sobreposição para o predefinido?"</string>
+    <string name="overlay">"Sobreposição"</string>
+    <string name="enable_overlay_confirmation_title">"Ativar esta sobreposição?"</string>
+    <string name="link_transitous_description">"Fornecedor de rotas de transportes públicos neutras, gratuitas e de fonte aberta"</string>
 </resources>

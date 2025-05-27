@@ -127,6 +127,9 @@
         "amenity/clock": {
           "name": "Pulkstenis"
         },
+        "amenity/clock/sundial": {
+          "name": "Saules pulkstenis"
+        },
         "amenity/community_centre": {
           "name": "Kopienas centrs"
         },
@@ -440,8 +443,14 @@
         "area": {
           "name": "Apgabals"
         },
+        "area/footway": {
+          "name": "Gājēju ceļa laukums"
+        },
         "area/highway": {
           "name": "Ceļa teritorija"
+        },
+        "area/highway/traffic_island": {
+          "name": "Satiksmes sadalošā sala"
         },
         "attraction/bungee_jumping": {
           "name": "Gumijlēkšana",
@@ -521,6 +530,9 @@
         },
         "barrier/kerb/flush": {
           "name": "Vienlīmeņa apmale"
+        },
+        "barrier/kerb/lowered": {
+          "name": "Pazemināta apmale"
         },
         "barrier/kerb/raised": {
           "name": "Paaugstināta apmale"
@@ -643,7 +655,7 @@
           "name": "Ēkas drupas"
         },
         "building/school": {
-          "name": "Skolas Ēka",
+          "name": "Skolas ēka",
           "terms": "sākumskola,pamatskola,vidusskola,augstskola,koledža"
         },
         "building/shed": {
@@ -664,7 +676,7 @@
           "name": "Dzelzceļa stacijas ēka"
         },
         "building/university": {
-          "name": "Universitātes Ēka"
+          "name": "Universitātes ēka"
         },
         "building/warehouse": {
           "name": "Noliktava"
@@ -760,6 +772,9 @@
         },
         "craft/winery": {
           "name": "Vīna darītava"
+        },
+        "disused/amenity": {
+          "name": "Neizmantots pakalpojums"
         },
         "disused/shop": {
           "name": "Neizmantots veikals"
@@ -887,6 +902,9 @@
         "highway/footway/sidewalk": {
           "name": "Ietve"
         },
+        "highway/footway/traffic_island": {
+          "name": "Drošības sala"
+        },
         "highway/give_way": {
           "name": "Dodiet ceļu zīme"
         },
@@ -953,6 +971,9 @@
         "highway/service/parking_aisle": {
           "name": "Stāvvietas ceļš"
         },
+        "highway/service_area": {
+          "name": "Bruģēta apkalpošanas zona"
+        },
         "highway/speed_camera": {
           "name": "Fotoradars"
         },
@@ -966,7 +987,7 @@
           "name": "Stop Zīme"
         },
         "highway/street_lamp": {
-          "name": "Ielu Gaisma"
+          "name": "Ielas lampa"
         },
         "highway/tertiary": {
           "name": "Trešās šķiras ceļš"
@@ -1195,6 +1216,9 @@
         },
         "leisure/swimming_pool": {
           "name": "Peldbaseins"
+        },
+        "leisure/track": {
+          "name": "Sacensību trase (ne-motorsportam)"
         },
         "leisure/water_park": {
           "name": "Akvaparks"
@@ -1466,6 +1490,9 @@
         },
         "place/village": {
           "name": "Ciems"
+        },
+        "playground": {
+          "name": "Rotaļu laukuma aprīkojums"
         },
         "playground/slide": {
           "name": "Slidkalniņš"
@@ -1746,6 +1773,9 @@
         "shop/furniture": {
           "name": "Mēbeļu veikals"
         },
+        "shop/games": {
+          "name": "Galda spēļu veikals"
+        },
         "shop/garden_centre": {
           "name": "Dārzkopības veikals"
         },
@@ -1892,7 +1922,7 @@
           "name": "Videospēļu veikals"
         },
         "shop/watches": {
-          "name": "Pulksteņu Veikals"
+          "name": "Pulksteņu veikals"
         },
         "shop/weapons": {
           "name": "Ieroču Veikals"
@@ -1979,6 +2009,9 @@
         "tourism/zoo": {
           "name": "Zooloģiskais dārzs",
           "terms": "zoodārzs,zoo,dzīvnieku dārzs,dzīvnieki"
+        },
+        "traffic_calming": {
+          "name": "Satiksmes mierināšana"
         },
         "traffic_calming/bump": {
           "name": "Guļošais Policists"

@@ -2,6 +2,8 @@ package de.westnordost.streetcomplete.quests.max_speed
 
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
+import de.westnordost.streetcomplete.osm.maxspeed.Speed.Kmh
+import de.westnordost.streetcomplete.osm.maxspeed.Speed.Mph
 import de.westnordost.streetcomplete.quests.answerApplied
 import de.westnordost.streetcomplete.quests.answerAppliedTo
 import kotlin.test.Test

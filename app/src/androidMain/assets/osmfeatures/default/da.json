@@ -755,8 +755,8 @@
           "terms": "offentligt bad"
         },
         "amenity/public_bookcase": {
-          "name": "Offentlig bogkasse",
-          "terms": "bogkasse"
+          "name": "Bogbytteskab",
+          "terms": "bogbytteskab,bogkasse,bogbørs,bogsøjle,delebøger,bytteboks,genbrugsbøger,little library"
         },
         "amenity/ranger_station": {
           "name": "Rangerstation",
@@ -902,7 +902,7 @@
         },
         "amenity/social_facility/assisted_living": {
           "name": "Ældrebolig",
-          "terms": "ældrebolig,plejebolig,plejehjem,plejecenter"
+          "terms": "ældrebolig,plejebolig,plejehjem,plejecenter,beskyttet bolig"
         },
         "amenity/social_facility/food_bank": {
           "name": "Fødevarebank",
@@ -1004,8 +1004,8 @@
           "name": "Automat til salg af cykelslanger"
         },
         "amenity/vending_machine/bottle_return": {
-          "name": "Pantautomat",
-          "terms": "pantautomat,pant,retur,flaskeautomat"
+          "name": "Flaskeautomat",
+          "terms": "flaskeautomat,pantautomat,pant,retur"
         },
         "amenity/vending_machine/bread": {
           "name": "Brødsalgsautomat",
@@ -1204,7 +1204,7 @@
         },
         "barrier/cattle_grid": {
           "name": "Kreaturrist",
-          "terms": "kreaturrist"
+          "terms": "kreaturrist,færist,kvægrist,dyrerist,kirkerist,rist"
         },
         "barrier/chain": {
           "name": "Kæde"
@@ -1215,7 +1215,7 @@
         },
         "barrier/cycle_barrier": {
           "name": "Cykelbarriere",
-          "terms": "cykelbarriere"
+          "terms": "cykelbarriere,cykelchikane"
         },
         "barrier/ditch": {
           "name": "Grøft",
@@ -2723,7 +2723,7 @@
         },
         "leisure/dog_park": {
           "name": "Hundeskov",
-          "terms": "hundeskov,hundepark"
+          "terms": "hundeskov,hundepark,hundehegn,fritløbsområde"
         },
         "leisure/firepit": {
           "name": "Bålsted",
@@ -3335,7 +3335,7 @@
         },
         "man_made/tower/observation": {
           "name": "Observationstårn",
-          "terms": "observationstårn,udsigtstårn,fugletårn,fugleskjul"
+          "terms": "observationstårn,udsigtstårn,fugletårn,fugleskjul,udkigstårn"
         },
         "man_made/tunnel": {
           "name": "Tunnelkompleks",
@@ -3416,8 +3416,8 @@
           "name": "Naturligt element"
         },
         "natural/bare_rock": {
-          "name": "Klippe",
-          "terms": "klippe,klippeområde"
+          "name": "Bar klippe",
+          "terms": "bar klippe,klippe,klippeområde,bjerg"
         },
         "natural/bay": {
           "name": "Bugt",
@@ -4017,7 +4017,7 @@
         },
         "power/generator/source/wind": {
           "name": "Vindturbine",
-          "terms": "mølle,vind,strøm"
+          "terms": "vindturbine,vindmølle,mølle,vind,strøm"
         },
         "power/line": {
           "name": "Højspændingsledning",
@@ -5296,7 +5296,7 @@
         },
         "waterway/stream": {
           "name": "Bæk",
-          "terms": "bæk"
+          "terms": "bæk,vandløb,å,flod,kanal"
         },
         "waterway/stream_intermittent": {
           "name": "Sporadisk bæk"

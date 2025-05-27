@@ -774,8 +774,6 @@ Se hai carrís reservados para buses, deixa unha nota no seu lugar."</string>
     <string name="quest_surface_value_rock">"Rocha"</string>
     <string name="quest_parkingType_street_side">"Aparcadoiro ao carón da estrada"</string>
     <string name="quest_parkingType_lane">"Liña de aparcadoiro"</string>
-    <string name="quest_tracktype_grade2a">"Terreo sólido"</string>
-    <string name="quest_tracktype_grade3a">"Maiormente sólido"</string>
     <string name="quest_generic_answer_does_not_exist">"Non existe…"</string>
     <string name="osm_element_gone_description">"Estás seguro de que non existe, nin tan sequera nun lugar lixeiramente diferente? En caso de dúbida, mellor deixa unha nota."</string>
     <string name="osm_element_gone_confirmation">"Non existe"</string>

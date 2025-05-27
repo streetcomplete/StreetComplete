@@ -1241,7 +1241,8 @@
           "name": "Shop (Unspecified Type)"
         },
         "shop/vacant": {
-          "name": "Vacant Shop"
+          "name": "Vacant Shop",
+          "terms": "empty"
         },
         "shop/hobby": {
           "name": "Hobby Shop"
@@ -3917,6 +3918,7 @@
           "name": "Cycle & Foot Crossing With Pedestrian Signals"
         },
         "highway/path/crossing/marked": {},
+        "highway/path/crossing/informal": {},
         "highway/footway/traffic_island": {
           "name": "Refuge Island",
           "aliases": "Crosswalk Island\nTraffic Island\nPedestrian Island",
@@ -3955,6 +3957,7 @@
         },
         "highway/footway/crossing/zebra": {},
         "highway/footway/crossing/marked": {},
+        "highway/footway/crossing/informal": {},
         "highway/cycleway/traffic_island_shared": {
           "name": "Cycle & Foot Refuge Island",
           "aliases": "Crosswalk Island\nTraffic Island\nPedestrian Island",
@@ -4006,6 +4009,9 @@
         },
         "highway/crossing/zebra": {},
         "highway/crossing/marked": {},
+        "highway/crossing/informal": {
+          "name": "Informal Crossing"
+        },
         "healthcare/speech_therapist": {
           "name": "Speech Therapist",
           "terms": "speech,therapist,therapy,voice"

@@ -776,8 +776,6 @@ Om några körfält är reserverade för bussar, vänligen lämna en anteckning 
     <string name="quest_surface_value_rock">"Sten"</string>
     <string name="quest_parkingType_street_side">"Parkering i parkeringsficka"</string>
     <string name="quest_parkingType_lane">"Parkering på väg"</string>
-    <string name="quest_tracktype_grade2a">"Hårt packad jord"</string>
-    <string name="quest_tracktype_grade3a">"Mestadels fast"</string>
     <string name="quest_generic_answer_does_not_exist">"Den finns inte…"</string>
     <string name="osm_element_gone_description">"Är du säker på att den inte finns, inte ens på en närliggande plats? Om du är osäker, lämna hellre en anteckning istället."</string>
     <string name="osm_element_gone_confirmation">"Den finns inte"</string>

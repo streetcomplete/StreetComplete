@@ -776,8 +776,6 @@ If any lanes are reserved for buses, please leave a note instead."</string>
     <string name="quest_surface_value_rock">"Rock"</string>
     <string name="quest_parkingType_street_side">"Parking adjacent to the road"</string>
     <string name="quest_parkingType_lane">"Parking on road"</string>
-    <string name="quest_tracktype_grade2a">"Hard-packed dirt"</string>
-    <string name="quest_tracktype_grade3a">"Mostly solid"</string>
     <string name="quest_generic_answer_does_not_exist">"It does not exist…"</string>
     <string name="osm_element_gone_description">"Are you sure that it does not exist, not even at a slightly different location? If you’re not sure, leave a note instead."</string>
     <string name="osm_element_gone_confirmation">"It does not exist"</string>

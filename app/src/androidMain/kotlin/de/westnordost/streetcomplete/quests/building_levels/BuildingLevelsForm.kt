@@ -18,13 +18,10 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.focus.FocusRequester
-import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
@@ -32,7 +29,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.ui.ktx.conditional
 import de.westnordost.streetcomplete.ui.theme.titleLarge
 
 /** Form to input building levels and roof levels, with quick-select buttons */
@@ -45,8 +41,6 @@ fun BuildingLevelsForm(
     modifier: Modifier = Modifier,
     previousBuildingLevels: List<BuildingLevels> = listOf(),
 ) {
-    val focusRequester = remember { FocusRequester() }
-
     Column(
         modifier = modifier,
         verticalArrangement = Arrangement.spacedBy(16.dp)
@@ -70,8 +64,6 @@ fun BuildingLevelsForm(
                     OutlinedTextField(
                         value = levels,
                         onValueChange = onLevelsChange,
-                        modifier = Modifier
-                            .conditional(levels.isEmpty()) { focusRequester(focusRequester) },
                         isError = levels.isNotEmpty() && !levels.isValidLevel(),
                         keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Number, imeAction = ImeAction.Next),
                         singleLine = true,
@@ -93,8 +85,6 @@ fun BuildingLevelsForm(
                     OutlinedTextField(
                         value = roofLevels,
                         onValueChange = onRoofLevelsChange,
-                        modifier = Modifier
-                            .conditional(levels.isNotEmpty()) { focusRequester(focusRequester) },
                         isError = roofLevels.isNotEmpty() && !roofLevels.isValidLevel(),
                         keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Number, imeAction = ImeAction.Done),
                         singleLine = true,
@@ -118,9 +108,6 @@ fun BuildingLevelsForm(
                 onRoofLevelsChange(roofLevels?.toString() ?: "")
             }
         )
-    }
-    LaunchedEffect(Unit) {
-        focusRequester.requestFocus()
     }
 }
 

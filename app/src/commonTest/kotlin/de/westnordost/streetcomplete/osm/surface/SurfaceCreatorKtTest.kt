@@ -36,6 +36,16 @@ class SurfaceCreatorKtTest {
         )
     }
 
+    @Test fun `apply surface that was previously an alias of this only updates check date`() {
+        assertEquals(
+            setOf(
+                StringMapEntryModify("surface", "earth", "earth"),
+                StringMapEntryAdd("check_date:surface", nowAsCheckDateString())
+            ),
+            DIRT.appliedTo(mapOf("surface" to "earth"))
+        )
+    }
+
     @Test fun `apply non-changed surface with prefix updates check date`() {
         assertEquals(
             setOf(

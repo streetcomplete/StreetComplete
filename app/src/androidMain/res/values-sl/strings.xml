@@ -776,8 +776,6 @@ Razmislite tudi o odgovoru, če ne velja za celoten označeni del  “%s”."</s
     <string name="quest_surface_value_rock">"Kamen"</string>
     <string name="quest_parkingType_street_side">"Rarkirišče zraven ceste"</string>
     <string name="quest_parkingType_lane">"Parkirišče na cesti"</string>
-    <string name="quest_tracktype_grade2a">"Trdna zemlja"</string>
-    <string name="quest_tracktype_grade3a">"Večinima trdno"</string>
     <string name="quest_generic_answer_does_not_exist">"Ne obstaja …"</string>
     <string name="osm_element_gone_description">"Ste prepričani, da ne obstaja niti v bližini? Če dvomite, raje pustite opombo."</string>
     <string name="osm_element_gone_confirmation">"Ne obstaja"</string>

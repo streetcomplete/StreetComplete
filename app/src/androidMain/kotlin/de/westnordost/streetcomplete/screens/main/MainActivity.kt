@@ -273,6 +273,7 @@ class MainActivity :
         }
         observe(viewModel.geoUri) { geoUri ->
             if (geoUri != null) {
+                viewModel.consumeGeoUri()
                 mapFragment?.setInitialCameraPosition(geoUri)
                 viewModel.isFollowingPosition.value = mapFragment?.isFollowingPosition ?: false
                 viewModel.isNavigationMode.value = mapFragment?.isNavigationMode ?: false
@@ -335,7 +336,10 @@ class MainActivity :
     /* ---------------------------------- MapFragment.Listener ---------------------------------- */
 
     override fun onMapInitialized() {
-        viewModel.geoUri.value?.let { mapFragment?.setInitialCameraPosition(it) }
+        viewModel.geoUri.value?.let { geoUri ->
+            viewModel.consumeGeoUri()
+            mapFragment?.setInitialCameraPosition(geoUri)
+        }
         viewModel.isFollowingPosition.value = mapFragment?.isFollowingPosition ?: false
         viewModel.isNavigationMode.value = mapFragment?.isNavigationMode ?: false
         viewModel.isRecordingTracks.value = mapFragment?.isRecordingTracks ?: false

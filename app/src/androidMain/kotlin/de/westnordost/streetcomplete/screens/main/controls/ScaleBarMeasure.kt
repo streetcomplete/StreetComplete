@@ -7,10 +7,10 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.intl.Locale
 import de.westnordost.streetcomplete.R
-import kotlin.math.pow
+import de.westnordost.streetcomplete.screens.main.controls.ScaleBarMeasure.FeetAndMiles
 import de.westnordost.streetcomplete.screens.main.controls.ScaleBarMeasure.Metric
 import de.westnordost.streetcomplete.screens.main.controls.ScaleBarMeasure.YardsAndMiles
-import de.westnordost.streetcomplete.screens.main.controls.ScaleBarMeasure.FeetAndMiles
+import kotlin.math.pow
 
 /** A measure to show in the scale bar */
 interface ScaleBarMeasure {
@@ -86,7 +86,7 @@ interface ScaleBarMeasure {
 
 /** format a number with a unit symbol, not showing the decimal point if it's an integer */
 private fun Double.formatForDisplay(symbol: String) =
-    if (this.toInt().toDouble() == this) "${this.toInt()} $symbol" else "${this} $symbol"
+    if (this.toInt().toDouble() == this) "${this.toInt()} $symbol" else "$this $symbol"
 
 /** build a list of stops by multiplying mantissas by 10^exponents, like scientific notation */
 private fun buildStops(mantissas: List<Int>, exponents: IntRange) = buildList {

@@ -776,8 +776,6 @@ Hvis noen av feltene er kollektivfelt er det bedre å legge inn en merknad."</st
     <string name="quest_surface_value_rock">"Stein"</string>
     <string name="quest_parkingType_street_side">"Parkering ved siden av veien"</string>
     <string name="quest_parkingType_lane">"Parkering i veien"</string>
-    <string name="quest_tracktype_grade2a">"Fast, men ikke asfaltert"</string>
-    <string name="quest_tracktype_grade3a">"Stort sett fast"</string>
     <string name="quest_generic_answer_does_not_exist">"Det eksisterer ikke…"</string>
     <string name="osm_element_gone_description">"Er du sikker på at det ikke finnes, ikke engang på en litt annen lokasjon? Bedre å legge igjen en merknad om man er usikker."</string>
     <string name="osm_element_gone_confirmation">"Den finnes ikke"</string>

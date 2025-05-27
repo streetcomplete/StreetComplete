@@ -767,8 +767,6 @@ Se iuj vojeroj estas rezervitaj al busoj, bonvolu lasi noton anstataŭe."</strin
     <string name="quest_surface_value_rock">"Roko"</string>
     <string name="quest_parkingType_street_side">"Parkado apud la vojo"</string>
     <string name="quest_parkingType_lane">"Parkejo sur vojo"</string>
-    <string name="quest_tracktype_grade2a">"Solida sed nepavimita"</string>
-    <string name="quest_tracktype_grade3a">"Plejparte solida"</string>
     <string name="quest_generic_answer_does_not_exist">"Ĝi ne ekzistas…"</string>
     <string name="osm_element_gone_description">"Ĉu vi certas, ke ĝi ne ekzistas, eĉ ne en iomete alia loko? Se vi dubas, prefere lasu noton anstataŭe."</string>
     <string name="osm_element_gone_confirmation">"Ĝi ne ekzistas"</string>

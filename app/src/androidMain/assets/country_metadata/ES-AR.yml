@@ -1,6 +1,6 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 atmOperators: [Ibercaja, Banco Sabadell, Caja Rural, Banco Santander, Shitcoins.club, IberCaja, BBVA]
-chargingStationOperators: [Endesa, Zunder, Cargacoches, Acciona, Wenea, 'Tesla, Inc.', Mercadona, Iberdrola, IBIL, Repsol, Monasterio de Boltaña, Ionity, Feníe Energía, Ayuntamiento de Jaca, Ayuntamiento de Huesca]
+chargingStationOperators: [Endesa, Zunder, Cargacoches, Acciona, Wenea, 'Tesla, Inc.', Repsol, Mercadona, Iberdrola, IBIL, Monasterio de Boltaña, Ionity, Feníe Energía, Ayuntamiento de Jaca, Ayuntamiento de Huesca]
 clothesContainerOperators: [Cáritas, aRopa2, Ayuntamiento de Zaragoza, Caritas]
 officialLanguages: [es, an, ca]
 parcelLockerBrand: [Amazon Locker]
