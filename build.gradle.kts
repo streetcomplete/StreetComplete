@@ -1,21 +1,11 @@
-buildscript {
-    repositories {
-        google()
-        mavenCentral()
-    }
-    dependencies {
-        val kotlinVersion = "2.1.10"
-        classpath("com.android.tools.build:gradle:8.9.2")
-        classpath(kotlin("gradle-plugin", version = kotlinVersion))
-    }
-}
-
-allprojects {
-    repositories {
-        google()
-        mavenCentral()
-        maven { url = uri("https://www.jitpack.io") }
-    }
+plugins {
+    // this is necessary to avoid the plugins to be loaded multiple times
+    // in each subproject's classloader
+    id("org.jetbrains.kotlin.multiplatform") version "2.1.21" apply false
+    id("org.jetbrains.kotlin.plugin.compose") version "2.1.21"  apply false
+    id("com.android.application") version "8.9.3" apply false
+    id("com.android.library") version "8.9.3" apply false
+    //id("org.jetbrains.compose") version "1.8.0" apply false
 }
 
 val poEditorProjectId = "97843"
@@ -74,7 +64,7 @@ tasks.register<GenerateQuestListTask>("generateQuestList") {
     group = "streetcomplete"
     targetFile = "$projectDir/quest-list.csv"
     projectDirectory = projectDir
-    sourceDirectory = projectDir.resolve("app/src/main/java/de/westnordost/streetcomplete/")
+    sourceDirectory = projectDir.resolve("app/src/androidMain/kotlin/de/westnordost/streetcomplete/")
     iconsDirectory = projectDir.resolve("res/graphics/quest/")
     noteQuestFile = sourceDirectory.resolve("data/osmnotes/notequests/OsmNoteQuestType.kt")
 }
@@ -96,7 +86,7 @@ tasks.register<UpdateContributorStatisticsTask>("updateContributorStatistics") {
     )
     val skipWords = listOf("lint", "linter", "reorder imports", "organize imports")
     skipCommitRegex = Regex(".*\\b(${skipWords.joinToString("|")})\\b.*", RegexOption.IGNORE_CASE)
-    targetFile = "$projectDir/app/src/main/res/raw/credits_contributors.yml"
+    targetFile = "$projectDir/app/src/androidMain/res/raw/credits_contributors.yml"
     // gradle, py, bat, java and mjs don't exist anymore in this repo but they used to
     codeFileRegex = Regex(".*\\.(java|kt|kts|py|gradle|bat|mjs)$")
     /* photos, illustrations, sounds ... but not yml, json, ... because most of these are updated
@@ -131,3 +121,4 @@ tasks.register("updateStreetCompleteData") {
         "app:downloadAndConvertPresetIcons"
     )
 }
+
