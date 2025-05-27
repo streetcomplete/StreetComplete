@@ -1,0 +1,23 @@
+# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
+advisoryCycleLaneStyle: white dashes
+atmOperators: [Česká spořitelna, ČSOB, Komerční banka, Euronet, Fio banka, MONETA Money Bank, Air Bank, Raiffeisenbank, UniCredit Bank, Moneta, 'MONETA Money Bank, a.s.', Moneta Money Bank, KB, Pharro, Bitcoinmat.sk, GE Money Bank, 'Česká spořitelna, a.s.', 'Komerční banka, a.s.', 'Československá obchodní banka, a. s.', Kvakomat, Česká spořitelna a.s., Oberbank, Fio, Coinemic, Air bank, Komerční Banka, Česká Spořitelna, Travelex, Komerční banka a.s., GE Money, Citibank, CSOB, Airbank, air bank, Poštovní spořitelna, 'Česká spořitelna, a. s.', ČS, mBank, airbank, Bitcoinmat]
+chargingStationOperators: [ČEZ, PRE, E.ON, Teplárny Brno, Lidl, EON, MOL, EVMAPA, Innogy, FutureGo, 'Tesla, Inc.', Ionity, beskolo, 'Pražská energetika, a.s.', Bauhaus, Tesla, Kaufland, Česká spořitelna, 'ČEZ, a. s..', 'ČEZ, a. s.', firemni nabijecka, evmapa.cz, Pražská energetika, Polyfazer, MOL (CCS/CHAdeMO/Mennekes), Innogy Energo, ČEZ (CCS/CHAdeMO/Mennekes), www.premobilita.cz, chargee, VŠB, UCED, TS Opava, Shell Recharge Solutions, Shell, PRE distribuce, Město Dačice, Kraj Vysočina, InChaNet, EVSELECT s.r.o., EVSELECT, E.ON Energie, Decathlon, ChargePoint]
+clothesContainerOperators: [KlokTex, Kloktex, Textileco, Diakonie Broumov, TextilEco a.s., Služby města Český Krumlov s.r.o., Potex, Helptex, recyklujemetextil.cz, Dimatex CS spol. s r.o., TextilEco, Obec Tuchlovice, Charita Česká republika, Sova, SAKO, POTEX, Obec Kamenný Přívoz, Marius Pedersen a.s., EKOR, Diecezni charita Brno, Čistá Plzeň s.r.o., www.kloktex.cz, potex, Textil Eco, Obec Drnovice, KLOK.TEX, Diecezni charita Plzen, Diecezni charita, 'Diakonie Broumov, sociální družstvo', Český červený kříž, TS Zlín, Město Veltrusy, Klokánek FOD, Klokánek, Klok-Tex, Dětské krizové centrum, Diecézní charita Brno]
+defaultSpeedLimitHasUrbanOrRural: true
+exclusiveCycleLaneStyle: white
+hasAdvisoryCycleLane: true
+hasAdvisorySpeedLimitSign: true
+hasBicycleBoulevard: true
+hasLivingStreet: true
+hasSlowZone: true
+isUsuallyAnyGlassRecyclableInContainers: true
+livingStreetSignStyle: vienna
+mobileCountryCode: 230
+officialLanguages: [cs]
+orchardProduces: [grape, apple, hop, plum, cherry, apricot, pear, strawberry, peach, chilli_pepper, sweet_pepper, tomato, walnut, raspberry]
+parcelLockerBrand: [Packeta, AlzaBox, Penguin Box, PPL Parcelbox, GLS, PPL, Allegro One Box, Z-Box, DPD Pickup Box, OX Point, GLS Parcel Box, OX.Point, DPD Pickup Station, One Box]
+popularSports: [soccer, tennis, volleyball, beachvolleyball, ice_hockey, handball]
+postboxesHaveCollectionTimes: true
+postboxesHaveRef: true
+slowZoneLabelPosition: top
+slowZoneLabelText: ZÓNA
