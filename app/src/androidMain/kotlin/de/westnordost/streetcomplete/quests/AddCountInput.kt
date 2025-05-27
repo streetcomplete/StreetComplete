@@ -7,7 +7,7 @@ import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.res.painterResource
 import de.westnordost.streetcomplete.databinding.ComposeViewBinding
-import de.westnordost.streetcomplete.ui.common.CountForm
+import de.westnordost.streetcomplete.ui.common.CountInput
 
 abstract class AddCountInput : AbstractOsmQuestForm<Int>() {
 
@@ -21,7 +21,7 @@ abstract class AddCountInput : AbstractOsmQuestForm<Int>() {
         super.onViewCreated(view, savedInstanceState)
         binding.composeViewBase.setContent {
             capacity = rememberSaveable { mutableIntStateOf(element.tags["capacity"]?.toIntOrNull() ?: 0) }
-            CountForm(
+            CountInput(
                 count = capacity.value,
                 onCountChange = {
                     capacity.value = it

@@ -6,11 +6,11 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.ui.common.CountForm
+import de.westnordost.streetcomplete.ui.common.CountInput
 
 @Composable
 fun BikeParkingCapacityForm(count: Int, onCountChange: (Int) -> Unit) {
-    CountForm(count = count, onCountChange = onCountChange, iconPainter = painterResource(R.drawable.ic_bicycle))
+    CountInput(count = count, onCountChange = onCountChange, iconPainter = painterResource(R.drawable.ic_bicycle))
 }
 
 @Composable
