@@ -16,7 +16,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.meta.LengthUnit
 import de.westnordost.streetcomplete.osm.Length
-import de.westnordost.streetcomplete.osm.LengthInMeters
 import de.westnordost.streetcomplete.ui.common.LengthInput
 import de.westnordost.streetcomplete.ui.common.LengthUnitSelector
 import de.westnordost.streetcomplete.ui.common.MeasurementIcon
@@ -74,7 +73,7 @@ private fun MeasureButton(onClick: () -> Unit) {
 @Composable
 @Preview(showBackground = true)
 private fun LengthFormPreview() {
-    val length = remember { mutableStateOf<Length?>(LengthInMeters(10.00)) }
+    val length = remember { mutableStateOf<Length?>(Length.Meters(10.00)) }
 
     LengthForm(
         currentLength = length.value,

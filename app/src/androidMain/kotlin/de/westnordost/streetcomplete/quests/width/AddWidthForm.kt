@@ -8,14 +8,11 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.saveable.rememberSaveable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.LengthUnit
 import de.westnordost.streetcomplete.databinding.ComposeViewBinding
 import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.osm.Length
-import de.westnordost.streetcomplete.osm.LengthInFeetAndInches
-import de.westnordost.streetcomplete.osm.LengthInMeters
 import de.westnordost.streetcomplete.osm.hasDubiousRoadWidth
 import de.westnordost.streetcomplete.quests.AbstractArMeasureQuestForm
 import de.westnordost.streetcomplete.quests.LengthForm

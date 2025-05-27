@@ -25,8 +25,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.meta.LengthUnit
 import de.westnordost.streetcomplete.osm.Length
-import de.westnordost.streetcomplete.osm.LengthInFeetAndInches
-import de.westnordost.streetcomplete.osm.LengthInMeters
 import de.westnordost.streetcomplete.ui.util.onlyDecimalDigits
 import de.westnordost.streetcomplete.ui.util.validFeetInput
 import de.westnordost.streetcomplete.ui.util.validInchInput
@@ -81,7 +79,7 @@ private fun LengthInputMeters(
 
     LaunchedEffect(currentLength, syncLength) {
         // Sync from the length only when explicitly allowed (e.g. when inserting data from AR measurement)
-        if (syncLength && currentLength is LengthInMeters) {
+        if (syncLength && currentLength is Length.Meters) {
             // Clamp meters to maximum allowed numbers
             val upper = 10.0.pow(maxMeterDigits.first) - 10.0.pow(-maxMeterDigits.second)
             val clamped = currentLength.meters.coerceIn(0.0..upper)
@@ -90,7 +88,7 @@ private fun LengthInputMeters(
             // For the unlikely case, that clamping has happened: Propagate change back to parent
             // so that when still published, the displayed value is used.
             if (clamped != currentLength.meters) {
-                onLengthChanged(LengthInMeters(clamped))
+                onLengthChanged(Length.Meters(clamped))
             }
         }
     }
@@ -107,7 +105,7 @@ private fun LengthInputMeters(
                     maxMeterDigits.second
                 )
             ) {
-                onLengthChanged(LengthInMeters(input.toDouble()))
+                onLengthChanged(Length.Meters(input.toDouble()))
                 lengthMeterText = input
             }
         },
@@ -142,7 +140,7 @@ private fun LengthInputFootInch(
 
         LaunchedEffect(currentLength, syncLength) {
             // Sync from the length only when explicitly allowed (e.g. when inserting data from AR measurement)
-            if (syncLength && currentLength is LengthInFeetAndInches) {
+            if (syncLength && currentLength is Length.FeetAndInches) {
                 // Clamp feet/inches to maximum allowed values
                 val upper = 10.0.pow(maxFeetDigits).toInt() - 1
                 val clampedFeet = currentLength.feet.coerceIn(0..upper)
@@ -153,7 +151,7 @@ private fun LengthInputFootInch(
                 // For the unlikely case, that clamping has happened: Propagate change back to parent
                 // so that when still published, the displayed value is used.
                 if (clampedFeet != currentLength.feet || clampedInch != currentLength.inches) {
-                    onLengthChanged(LengthInFeetAndInches(clampedFeet, clampedInch))
+                    onLengthChanged(Length.FeetAndInches(clampedFeet, clampedInch))
                 }
             }
         }
@@ -168,7 +166,7 @@ private fun LengthInputFootInch(
                 if (validFeetInput(input, maxFeetDigits)) {
                     val value = input.toInt()
                     if (inches.isNotEmpty()) {
-                        onLengthChanged(LengthInFeetAndInches(value, inches.toInt()))
+                        onLengthChanged(Length.FeetAndInches(value, inches.toInt()))
                     }
                     feet = value.toString()
                 }
@@ -193,7 +191,7 @@ private fun LengthInputFootInch(
                 if (validInchInput(input)) {
                     val value = input.toInt();
                     if (feet.isNotEmpty()) {
-                        onLengthChanged(LengthInFeetAndInches(feet.toInt(), value))
+                        onLengthChanged(Length.FeetAndInches(feet.toInt(), value))
                     }
                     inches = value.toString()
                 }
@@ -213,7 +211,7 @@ private fun LengthInputFootInch(
 private fun LengthInputPreview() {
     LengthInput(
         selectedUnit = LengthUnit.FOOT_AND_INCH,
-        currentLength = LengthInFeetAndInches(22, 11),
+        currentLength = Length.FeetAndInches(22, 11),
         syncLength = true,
         onLengthChanged = {},
         maxMeterDigits = Pair(2, 2),
