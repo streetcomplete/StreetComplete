@@ -171,6 +171,9 @@ kotlin {
     }
 }
 
+dependencies {
+    debugImplementation("androidx.compose.ui:ui-tooling:1.8.2")
+}
 android {
     namespace = "de.westnordost.streetcomplete"
     compileSdk = 35
