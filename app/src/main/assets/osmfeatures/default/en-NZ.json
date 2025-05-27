@@ -448,9 +448,6 @@
         "amenity/karaoke_box": {
           "name": "Karaoke Box"
         },
-        "amenity/kindergarten": {
-          "name": "Preschool / Nursery Grounds"
-        },
         "amenity/kneipp_water_cure": {
           "name": "Kneipp Facility"
         },
@@ -744,7 +741,7 @@
           "name": "Smoking Area"
         },
         "amenity/social_centre": {
-          "name": "Payment Centre"
+          "name": "Social Centre"
         },
         "amenity/social_facility": {
           "name": "Social Facility"
@@ -839,7 +836,7 @@
           "name": "University Grounds"
         },
         "amenity/vacuum_cleaner": {
-          "name": "Car Hoover Service"
+          "name": "Vehicle Vacuum Cleaning Station"
         },
         "amenity/vehicle_inspection": {
           "name": "Vehicle Inspection",
@@ -917,7 +914,8 @@
           "name": "Postage Vending Machine"
         },
         "amenity/vending_machine/sweets": {
-          "name": "Sweets Vending Machine"
+          "name": "Lolly Vending Machine",
+          "terms": "sweets,candy,lollies"
         },
         "amenity/veterinary": {
           "name": "Veterinary"
@@ -929,7 +927,7 @@
           "name": "Rubbish bin"
         },
         "amenity/waste_disposal": {
-          "name": "Skip Bin"
+          "name": "Garbage Dumpster / Skip"
         },
         "amenity/waste_transfer_station": {
           "name": "Waste Transfer Station"
@@ -1277,9 +1275,6 @@
         "building/industrial": {
           "name": "Industrial Building"
         },
-        "building/kindergarten": {
-          "name": "Preschool / Nursery Building"
-        },
         "building/manufacture": {
           "name": "Industrial Production Building"
         },
@@ -1425,7 +1420,8 @@
           "name": "Clockmaker"
         },
         "craft/confectionery": {
-          "name": "Candy Maker"
+          "name": "Lolly Maker",
+          "terms": "sweets,candy,lollies"
         },
         "craft/distillery": {
           "name": "Distillery"
@@ -1855,9 +1851,6 @@
         "highway/emergency_bay": {
           "name": "Emergency Stopping Place"
         },
-        "highway/escape": {
-          "name": "Escape Lane"
-        },
         "highway/footway": {
           "name": "Walkway",
           "terms": "foot path,footpath,path,track,hike,hiking,promenade,trackway,trail,walk"
@@ -1897,12 +1890,6 @@
         },
         "highway/ladder": {
           "name": "Ladder"
-        },
-        "highway/living_street": {
-          "name": "Shared Zone Road"
-        },
-        "highway/milestone": {
-          "name": "Road Milestone"
         },
         "highway/mini_roundabout": {
           "name": "Mini-Roundabout"
@@ -2283,9 +2270,6 @@
         "landuse/residential": {
           "name": "Residential Area"
         },
-        "landuse/residential/apartments": {
-          "name": "Flat Complex"
-        },
         "landuse/residential/trailer_park": {
           "name": "Mobile Home Park"
         },
@@ -2319,9 +2303,6 @@
         },
         "leisure/bird_hide": {
           "name": "Bird Hide"
-        },
-        "leisure/bleachers": {
-          "name": "Stands"
         },
         "leisure/bowling_alley": {
           "name": "Bowling Alley"
@@ -2510,7 +2491,7 @@
           "name": "Cricket Field"
         },
         "leisure/pitch/equestrian": {
-          "name": "Horse Riding / Rodeo Arena"
+          "name": "Horse Riding Arena"
         },
         "leisure/pitch/four_square": {
           "name": "Four Square Court"
@@ -3233,7 +3214,7 @@
           "name": "Engineering Office"
         },
         "office/estate_agent": {
-          "name": "Estate Agent"
+          "name": "Real Estate Agent"
         },
         "office/financial": {
           "name": "Financial Office"
@@ -3852,8 +3833,7 @@
           "name": "Farm Supply Shop"
         },
         "shop/alcohol": {
-          "name": "Off licence (Alcohol shop)",
-          "terms": "alcohol,beer,booze,wine,off licence,off license"
+          "terms": "alcohol,beer,booze,wine,off licence,off-license,bottle-o,bottle shop"
         },
         "shop/anime": {
           "name": "Anime / Manga Shop"
@@ -3889,7 +3869,7 @@
           "name": "Tanning Salon"
         },
         "shop/bed": {
-          "name": "Bed Shop"
+          "name": "Bedding/Mattress Shop"
         },
         "shop/beverages": {
           "name": "Beverages Shop"
@@ -3988,7 +3968,8 @@
           "name": "Computer Shop"
         },
         "shop/confectionery": {
-          "name": "Sweet Shop"
+          "name": "Lolly Shop",
+          "terms": "sweets,candy,lollies"
         },
         "shop/convenience": {
           "name": "Convenience Store / Dairy",
@@ -4168,7 +4149,6 @@
           "name": "Lottery Shop"
         },
         "shop/mall": {
-          "name": "Shopping Centre",
           "terms": "mall,shopping center"
         },
         "shop/massage": {
@@ -4349,13 +4329,13 @@
           "name": "Trophy Shop"
         },
         "shop/tyres": {
-          "name": "Tyre Store"
+          "name": "Tyre Shop"
         },
         "shop/vacant": {
           "name": "Vacant Shop"
         },
         "shop/vacuum_cleaner": {
-          "name": "Hoover Shop"
+          "name": "Vacuum Cleaner Shop"
         },
         "shop/variety_store": {
           "name": "Discount shop"
@@ -4377,9 +4357,6 @@
         },
         "shop/weapons": {
           "name": "Weapon Shop"
-        },
-        "shop/wholesale": {
-          "name": "Wholesale Shop / Cash & Carry"
         },
         "shop/wigs": {
           "name": "Wig Shop"
@@ -4607,9 +4584,6 @@
         "type/restriction/no_right_turn": {
           "name": "No Right Turn"
         },
-        "type/restriction/no_straight_on": {
-          "name": "No Straight On"
-        },
         "type/restriction/no_u_turn": {
           "name": "No U-Turn"
         },
@@ -4618,9 +4592,6 @@
         },
         "type/restriction/only_right_turn": {
           "name": "Right Turn Only"
-        },
-        "type/restriction/only_straight_on": {
-          "name": "Straight On Only"
         },
         "type/restriction/only_u_turn": {
           "name": "U-Turn Only"

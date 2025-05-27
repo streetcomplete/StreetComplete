@@ -767,8 +767,6 @@ Let op dat deze app pas naar het huisnummer van een gebouw vraagt nadat het gebo
     <string name="quest_surface_value_rock">"Rots"</string>
     <string name="quest_parkingType_street_side">"Parkeren langs de weg"</string>
     <string name="quest_parkingType_lane">"Parkeren op de weg"</string>
-    <string name="quest_tracktype_grade2a">"Hard maar niet bestraat"</string>
-    <string name="quest_tracktype_grade3a">"Voornamelijk hard"</string>
     <string name="quest_generic_answer_does_not_exist">"Het bestaat niet…"</string>
     <string name="osm_element_gone_description">"Weet je zeker dat het niet bestaat, zelfs niet op een iets andere plaats? Als je niet zeker bent kun je beter een notitie achterlaten."</string>
     <string name="osm_element_gone_confirmation">"Het bestaat niet"</string>
@@ -1427,4 +1425,8 @@ Een verdieping telt als dakverdieping als er ramen in het dak zijn. Daken die ni
     <string name="pedestrian_zone_allowed_sign">"Een bord laat hier fietsen toe"</string>
     <string name="pedestrian_zone_no_sign">"Geen expliciet bord voor fietsen hier"</string>
     <string name="team_mode_description_overlay_hint">"Als je lagen gebruikt, moet ieder van jullie een andere laag gebruiken, omdat alleen de vragen worden opgesplitst."</string>
+    <string name="quest_dietType_glutenfree_name_title">"Worden er glutenvrije producten aangeboden?"</string>
+    <string name="link_openclimbing_description">"Een kaart voor klimsport"</string>
+    <string name="pref_title_zoom_buttons">"Laat zoomknoppen zien"</string>
+    <string name="overlay_mtb_scale">"MTB moeilijkheidsgraad"</string>
 </resources>

@@ -751,8 +751,6 @@ Appen kommuniserer direkte med OSM-tenarane.&lt;br/&gt;Før appen lastar opp end
     <string name="quest_surface_value_rock">"Stein"</string>
     <string name="quest_parkingType_street_side">"Parkering i grøftekanten"</string>
     <string name="quest_parkingType_lane">"Parkering på vegen"</string>
-    <string name="quest_tracktype_grade2a">"Fast, men ikkje asfaltert"</string>
-    <string name="quest_tracktype_grade3a">"Stort sett fast"</string>
     <string name="quest_generic_answer_does_not_exist">"Han finst ikkje …"</string>
     <string name="osm_element_gone_description">"Er du sikker på at han ikkje finst, heller ikkje like i nærleiken? Er du i tvil, er det betre å leggja att ein merknad."</string>
     <string name="osm_element_gone_confirmation">"Han finst ikkje"</string>

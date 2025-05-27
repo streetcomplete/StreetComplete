@@ -778,8 +778,6 @@ Pokud jsou tu pruhy pro autobusy, napište to prosím do poznámky."</string>
     <string name="quest_surface_value_rock">"Skála"</string>
     <string name="quest_parkingType_street_side">"Parkuje se přímo vedle cesty"</string>
     <string name="quest_parkingType_lane">"Parkuje se na cestě"</string>
-    <string name="quest_tracktype_grade2a">"Víceméně pevný"</string>
-    <string name="quest_tracktype_grade3a">"Spíše pevný"</string>
     <string name="quest_generic_answer_does_not_exist">"Objekt neexistuje…"</string>
     <string name="osm_element_gone_description">"Jste si jistí, že to co tu bylo již neexistuje? Třeba nedaleko? Pokud jste na pochybách, je lepší zanechat k místu poznámku."</string>
     <string name="osm_element_gone_confirmation">"Objekt neexistuje"</string>

@@ -771,8 +771,6 @@ Autobusentzako bat baldin badago, utzi ohar bat."</string>
     <string name="quest_surface_value_rock">"Arroka"</string>
     <string name="quest_parkingType_street_side">"Errepidearen kanpoan aparka daiteke"</string>
     <string name="quest_parkingType_lane">"Errepidean aparka daiteke"</string>
-    <string name="quest_tracktype_grade2a">"Solidoa, baina asfaltorik gabekoa"</string>
-    <string name="quest_tracktype_grade3a">"Batez ere solidoa"</string>
     <string name="quest_generic_answer_does_not_exist">"Ez da existitzen…"</string>
     <string name="osm_element_gone_description">"Ziur zaude ez dela existitzen, ezta gertu dagoen lekuren batean? Duda baduzu, akaso hobeto da ohar bat uztea."</string>
     <string name="osm_element_gone_confirmation">"Ez da exititzen"</string>

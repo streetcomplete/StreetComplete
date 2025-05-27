@@ -35,8 +35,8 @@ android {
         applicationId = "de.westnordost.streetcomplete"
         minSdk = 25
         targetSdk = 35
-        versionCode = 6101
-        versionName = "61.0"
+        versionCode = 6102
+        versionName = "61.1"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -133,7 +133,7 @@ dependencies {
     implementation("androidx.appcompat:appcompat:1.7.0")
     implementation("androidx.constraintlayout:constraintlayout:2.2.1")
     implementation("androidx.annotation:annotation:1.9.1")
-    implementation("androidx.fragment:fragment-ktx:1.8.6")
+    implementation("androidx.fragment:fragment-ktx:1.8.7")
     implementation("androidx.recyclerview:recyclerview:1.4.0")
     implementation("androidx.viewpager:viewpager:1.1.0")
     implementation("androidx.localbroadcastmanager:localbroadcastmanager:1.1.0")
@@ -148,10 +148,10 @@ dependencies {
     implementation("androidx.compose.ui:ui-tooling-preview")
     debugImplementation("androidx.compose.ui:ui-tooling")
 
-    implementation("androidx.navigation:navigation-compose:2.8.9")
+    implementation("androidx.navigation:navigation-compose:2.9.0")
 
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.7")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.7")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.9.0")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.9.0")
 
     // reorderable lists (raw Compose API is pretty complicated)
     implementation("sh.calvin.reorderable:reorderable:2.4.3")
@@ -205,7 +205,7 @@ dependencies {
     implementation("io.github.pdvrieze.xmlutil:core-io:0.91.0")
 
     // map and location
-    implementation("org.maplibre.gl:android-sdk:11.8.7")
+    implementation("org.maplibre.gl:android-sdk:11.8.8")
 
     // opening hours parser
     implementation("de.westnordost:osm-opening-hours:0.2.0")
@@ -225,9 +225,9 @@ val bcp47ExportLanguages = setOf(
 )
 
 // see https://github.com/osmlab/name-suggestion-index/tags for latest version
-val nsiVersion = "v6.0.20250504"
+val nsiVersion = "v6.0.20250525"
 // see https://github.com/openstreetmap/id-tagging-schema/releases for latest version
-val presetsVersion = "v6.10.0"
+val presetsVersion = "v6.11.0"
 
 val poEditorProjectId = "97843"
 

@@ -772,8 +772,6 @@ Jika ada lajur yang digunakan khusus untuk bus, harap meninggalkan catatan saja.
     <string name="quest_surface_value_rock">"Batu"</string>
     <string name="quest_parkingType_street_side">"Parkir di sebelah jalan"</string>
     <string name="quest_parkingType_lane">"Parkir pada jalan"</string>
-    <string name="quest_tracktype_grade2a">"Tanah dipadatkan"</string>
-    <string name="quest_tracktype_grade3a">"Sebagian padat"</string>
     <string name="quest_generic_answer_does_not_exist">"Ini tidak nyata…"</string>
     <string name="osm_element_gone_description">"Apakah kamu yakin ini tidak nyata, bahkan di lokasi yang sedikit berbeda? Jika kamu tidak yakin, tinggalkan catatan saja."</string>
     <string name="osm_element_gone_confirmation">"Ini tidak nyata"</string>

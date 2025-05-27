@@ -1,5 +1,5 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [SEB, Swedbank, DNB, Luminor, Luminor Bank, Medus, Šiaulių bankas, Euronet, Worldline Lietuva, Nordea, 'SEB, DNB', AB SEB bankas, AB "Swedbank", swedbank, Perlas, Nordea/Parex/Danske/Ūkio, Luminor/Citadele, Citadele]
+atmOperators: [SEB, Swedbank, DNB, Luminor, Luminor Bank, Medus, Euronet, Worldline Lietuva, Nordea, 'SEB, DNB', AB SEB bankas, AB "Swedbank", Šiaulių bankas, swedbank, Perlas, Nordea/Parex/Danske/Ūkio, Luminor/Citadele, Citadele]
 centerLineStyle: white
 chargingStationOperators: [UAB Ignitis, Elinta, IgnitisON, Elinta Charge, Spark, Ignitis ON, Ignitis, LAKD, Ionity, Eldrive, Vilniaus apšvietimas, UAB „Elinta“, Enefit, Elektrum]
 clothesContainerOperators: [Šiaulių regiono atliekų tvarkymo centras, Ecoservice, UAB „VAATC“]

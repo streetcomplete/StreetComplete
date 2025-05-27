@@ -761,8 +761,6 @@
     <string name="quest_surface_value_rock">"Камъни"</string>
     <string name="quest_parkingType_street_side">"Паркиране до пътя"</string>
     <string name="quest_parkingType_lane">"Паркиране на пътя"</string>
-    <string name="quest_tracktype_grade2a">"Солиден, но без покритие"</string>
-    <string name="quest_tracktype_grade3a">"Повечето е солиден"</string>
     <string name="quest_generic_answer_does_not_exist">"Не съществува…"</string>
     <string name="osm_element_gone_description">"Сигурни ли сте, че не съществува, дори и някъде наблизо? Ако не сте сигурни, по-добре оставете бележка."</string>
     <string name="osm_element_gone_confirmation">"Не съществува"</string>

@@ -777,8 +777,6 @@
     <string name="quest_surface_value_rock">"Камень"</string>
     <string name="quest_parkingType_street_side">"Парковка на обочине"</string>
     <string name="quest_parkingType_lane">"Парковка на проезжей части"</string>
-    <string name="quest_tracktype_grade2a">"Твёрдое, но без покрытия"</string>
-    <string name="quest_tracktype_grade3a">"Преимущественно твёрдое"</string>
     <string name="quest_generic_answer_does_not_exist">"Не существует…"</string>
     <string name="osm_element_gone_description">"Вы уверены, что этого места не существует, даже в ближайшей окрестности? Если есть сомнения, лучше оставить заметку."</string>
     <string name="osm_element_gone_confirmation">"Не существует"</string>

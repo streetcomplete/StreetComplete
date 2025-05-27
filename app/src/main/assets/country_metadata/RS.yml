@@ -1,5 +1,5 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [Payten, AIK banka, Поштанска штедионица, НЛБ Комерцијална банка, UniCredit Bank, OTP banka, Eurobank, Raiffeisen bank, Banca Intesa, Erste Bank, Beograd, Halkbank, Yettel bank, Addiko Bank, 3 Банка, Mobi banka, Intesa, Čačak, ekspozitura Valjevo, ekspozitura Obrenovac, Telenor, Sopot, Sokobanja, Raiffeisen, NLB, Intesa Sanpaolo, Bankomat, Banka Intesa]
+atmOperators: [Payten, AIK banka, Поштанска штедионица, НЛБ Комерцијална банка, UniCredit Bank, OTP banka, Eurobank, Raiffeisen bank, Banca Intesa, Erste Bank, Halkbank, Beograd, Yettel bank, Addiko Bank, 3 Банка, Mobi banka, Intesa, Čačak, ekspozitura Valjevo, ekspozitura Obrenovac, Telenor, Sopot, Sokobanja, Raiffeisen, NLB, Bankomat, Banka Intesa]
 chargingStationOperators: ['Tesla, Inc.', Газпром]
 defaultSpeedLimitHasUrbanOrRural: true
 hasDailyAlternateSideParkingSign: true

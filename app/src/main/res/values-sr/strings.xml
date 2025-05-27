@@ -774,8 +774,6 @@
     <string name="quest_surface_value_rock">"Камење"</string>
     <string name="quest_parkingType_street_side">"Паркинг уз улицу"</string>
     <string name="quest_parkingType_lane">"Паркинг на путу"</string>
-    <string name="quest_tracktype_grade2a">"Чврсто, али неасфалтирано"</string>
-    <string name="quest_tracktype_grade3a">"Углавном чврсто"</string>
     <string name="quest_generic_answer_does_not_exist">"Не постоји…"</string>
     <string name="osm_element_gone_description">"Да ли сте сигурни да не достаје, чак ни на нешто удаљенијој локацији? Уколико нисте сигурни, боље оставите напомену."</string>
     <string name="osm_element_gone_confirmation">"Не постоји"</string>

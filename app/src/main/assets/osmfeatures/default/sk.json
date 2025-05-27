@@ -571,8 +571,8 @@
           "terms": "nemocnicny areal,nemocnica,poliklinika"
         },
         "amenity/hunting_stand": {
-          "name": "Poľovnícka postriežka",
-          "terms": "polovnicka postriezka,úkryt,ukryt,skrýša,skrysa"
+          "name": "Poľovnícky posed",
+          "terms": "polovnicky posed,posed,poľovnícka postriežka,polovnicka postriezka,úkryt,ukryt,skrýša,skrysa"
         },
         "amenity/ice_cream": {
           "name": "Obchod so zmrzlinou",
@@ -938,7 +938,8 @@
           "terms": "hruby pristresok s otvorenou stenou,útulňa,utulna,prístrešok,pristresok"
         },
         "amenity/shelter/picnic_shelter": {
-          "name": "Piknikový prístrešok"
+          "name": "Piknikový prístrešok",
+          "terms": "piknikovy pristresok"
         },
         "amenity/shelter/public_transport": {
           "name": "Prístrešok hromadnej prepravy",
@@ -1346,7 +1347,12 @@
           "name": "Znížený obrubník"
         },
         "barrier/kerb/raised": {
-          "name": "Zvýšený obrubník"
+          "name": "Zvýšený obrubník",
+          "terms": "zvyseny obrubnik"
+        },
+        "barrier/kerb/rolled": {
+          "name": "Zaguľatený obrubník",
+          "terms": "zagulateny obrubník,oblý obrubník,obly obrugnik"
         },
         "barrier/kissing_gate": {
           "name": "Zábrana pre dobytok",
@@ -1451,8 +1457,8 @@
           "name": "Bunker"
         },
         "building/cabin": {
-          "name": "Búda",
-          "terms": "zrub,drevenica,chatka"
+          "name": "Chatka",
+          "terms": "búda,buda,chata,zrub,drevenica"
         },
         "building/carport": {
           "name": "Prístrešok pre auto",
@@ -1781,7 +1787,7 @@
         },
         "craft/key_cutter": {
           "name": "Výroba kľúčov",
-          "terms": "vyroba klucov"
+          "terms": "vyroba klucov,kľúčová služba,klucova sluzba,duplikáty kľúčov,duplikaty klucov"
         },
         "craft/locksmith": {
           "name": "Montáž a oprava zámkov"
@@ -2780,7 +2786,8 @@
           "name": "Pozorovateľňa vtáctva"
         },
         "leisure/bleachers": {
-          "name": "Tribúny"
+          "name": "Tribúna / hľadisko",
+          "terms": "tribuna,tribúny,tribuny,hladisko"
         },
         "leisure/bowling_alley": {
           "name": "Bowlingová hala",
@@ -3218,7 +3225,8 @@
           "name": "Plocha mosta"
         },
         "man_made/bunker_silo": {
-          "name": "Silážna jama"
+          "name": "Silážna jama",
+          "terms": "silazna jama,silážny žľab,silazny zlab"
         },
         "man_made/cairn": {
           "name": "Kamenný mužík"
@@ -3541,7 +3549,8 @@
           "terms": "závod,zavod,továreň,tovaren"
         },
         "man_made/works/brewery": {
-          "name": "Pivovar"
+          "name": "Pivovar (priemyselný závod)",
+          "terms": "priemyselný pivovar,priemyselny pivovar"
         },
         "man_made/yes": {
           "name": "Objekt vytvorený človekom (nešpecifikovaný typ)"
@@ -3692,6 +3701,9 @@
         "natural/tree/needleleaved/deciduous": {
           "name": "Ihličnatý strom (opadavý)"
         },
+        "natural/tree/needleleaved/evergreen": {
+          "name": "Ihličnatý strom (neopadavý)"
+        },
         "natural/tree_row": {
           "name": "Stromoradie",
           "terms": "alej,vetrolam"
@@ -3797,10 +3809,12 @@
           "name": "Administratívny úrad"
         },
         "office/adoption_agency": {
-          "name": "Adopčná agentúra"
+          "name": "Adopčná agentúra",
+          "terms": "adopcna agentura"
         },
         "office/advertising_agency": {
-          "name": "Reklamná agentúra"
+          "name": "Reklamná agentúra",
+          "terms": "reklamna agentura"
         },
         "office/architect": {
           "name": "Architektonická kancelária"
@@ -3842,8 +3856,8 @@
           "terms": "urad vzdelavacej organizacie,skola,vzdelavanie,vzdelávanie,vzdelávacia inštitúcia,vzdelavacia institucia"
         },
         "office/employment_agency": {
-          "name": "Zamestnávateľská agentúra",
-          "terms": "zamestnavatelska agentura"
+          "name": "Úrad práce / Pracovná agentúra",
+          "terms": "urad prace,pracovná agentúra,pracovna agentura"
         },
         "office/energy_supplier": {
           "name": "Dodávateľ energie"
@@ -4080,10 +4094,12 @@
           "name": "Most pre deti"
         },
         "playground/climbingframe": {
-          "name": "Lezecké zariadenie pre deti"
+          "name": "Preliezačka",
+          "terms": "preliezacka,preliezka,lanová pyramída,lanova pyramida,lanová sieť,lanova siet"
         },
         "playground/climbingwall": {
-          "name": "Lezecká stena pre deti"
+          "name": "Lezecká stena pre deti",
+          "terms": "detská lezecká stena,detska lezecka stena,lezecka stena"
         },
         "playground/cushion": {
           "name": "Skákací vankúš"
@@ -4131,7 +4147,8 @@
           "name": "Hojdačka"
         },
         "playground/teenshelter": {
-          "name": "Prístrešok pre tínedžerov"
+          "name": "Prístrešok pre deti",
+          "terms": "pristresok pre deti,detský prístrešok,detsky pristresok,prístrešok pre tínedžerov,pristresok pre tinedzerov,prístrešok pre teenagerov,prisresok pre teenagerov"
         },
         "playground/tetherball": {
           "name": "Ihrisko pre tetherball"
@@ -4495,7 +4512,8 @@
           "terms": "tocna"
         },
         "railway/yard": {
-          "name": "Koľajisko"
+          "name": "Zoraďovacia / nákladná stanica",
+          "terms": "zoraďovacia stanica,zoradovacia stanica,nákladná stanica,nakladna stanica,zriaďovacia stanica,zriadovacia stanica,spádovisko,spadovisko"
         },
         "relation": {
           "name": "Relácia",
@@ -4542,7 +4560,7 @@
         },
         "shop/alcohol": {
           "name": "Obchod s alkoholom",
-          "terms": "alkohol"
+          "terms": "alkohol,alkoholické nápoje,alkoholicke napoje"
         },
         "shop/anime": {
           "name": "Obchod s anime/manga predmetmi"
@@ -4873,7 +4891,8 @@
           "terms": "domace potreby,zeleziarstvo,železiarstvo"
         },
         "shop/hunting": {
-          "name": "Obchod s poľovníckymi potrebami"
+          "name": "Obchod s poľovníckymi potrebami",
+          "terms": "obchod s polovnickymi potrebami,poľovnícke potreby,polovnicke potreby,poľovníctvo,polovnictvo"
         },
         "shop/interior_decoration": {
           "name": "Obchod s bytovými dekoráciami",
@@ -4907,8 +4926,8 @@
           "terms": "svietidlá,svietidla,lampy,lampa,obchod s osvetlením,obchod s osvetlenim,osvetlenie"
         },
         "shop/locksmith": {
-          "name": "Kľúčová služba (obchod)",
-          "terms": "zamocnictvo,zámočník,zamocnik,kľúče,kluce,zámok,zámky,zamok,zamky"
+          "name": "Obchod so zámkami",
+          "terms": "zámočníctvo,zamocnictvo,zámočník,zamocnik,kľúče,kluce,zámok,zámky,zamok,zamky"
         },
         "shop/lottery": {
           "name": "Obchod s lotériovými žrebmi",
@@ -5104,11 +5123,12 @@
           "terms": "obchod s cajom,cajovy obchod,čajový ochod"
         },
         "shop/telecommunication": {
-          "name": "Obchod s telekomunikačnými službami"
+          "name": "Obchod s telekomunikačnými službami",
+          "terms": "obchod s telekomunikacnymi sluzbami,telekomunikačné služby,telekomunikacne sluzby,mobilný operátor,mobilny operator,poskytovateľ internetového pripojenia,poskytovatel internetoveho pripojenia,káblová televízia,kablova televizia"
         },
         "shop/ticket": {
-          "name": "Predajňa vstupeniek",
-          "terms": "predajna listkov,vstupenky,predajna vstupeniek,vstupenka,listok,lístok"
+          "name": "Predajňa vstupeniek / cestovných lístkov",
+          "terms": "predajna listkov,vstupenky,predajna vstupeniek,vstupenka,listok,lístok,cestovný lístok,cestovny listok,predajňa cestovných lístkov,predajna cestovnych listkov"
         },
         "shop/tiles": {
           "name": "Obchod s obkladmi a dlažbami",
@@ -5130,7 +5150,7 @@
         },
         "shop/travel_agency": {
           "name": "Cestovná agentúra",
-          "terms": "cestovna agentura,cestovanie,cestovka,dovolenka"
+          "terms": "cestovna agentura,cestovná kancelária,cestovna kancelaria,cestovanie,cestovka,dovolenka"
         },
         "shop/trophy": {
           "name": "Obchod s trofejami"

@@ -843,7 +843,7 @@
           "name": "University Grounds"
         },
         "amenity/vacuum_cleaner": {
-          "name": "Car Hoover Service"
+          "name": "Vehicle Vacuum Cleaning Station"
         },
         "amenity/vehicle_inspection": {
           "name": "Vehicle Inspection",
@@ -921,7 +921,8 @@
           "name": "Postage Vending Machine"
         },
         "amenity/vending_machine/sweets": {
-          "name": "Sweets Vending Machine"
+          "name": "Sweets Vending Machine",
+          "terms": "sweets,candy,lollies"
         },
         "amenity/veterinary": {
           "name": "Veterinary"
@@ -1430,7 +1431,8 @@
           "name": "Clockmaker"
         },
         "craft/confectionery": {
-          "name": "Candy Maker"
+          "name": "Candy Maker",
+          "terms": "sweets,candy,lollies"
         },
         "craft/distillery": {
           "name": "Distillery"
@@ -2554,7 +2556,7 @@
           "name": "Skate Park"
         },
         "leisure/pitch/soccer": {
-          "name": "Football Pitch"
+          "name": "Soccer Field"
         },
         "leisure/pitch/softball": {
           "name": "Softball Field"
@@ -3241,7 +3243,7 @@
           "name": "Engineering Office"
         },
         "office/estate_agent": {
-          "name": "Estate Agent"
+          "name": "Real Estate Agent"
         },
         "office/financial": {
           "name": "Financial Office"
@@ -3996,7 +3998,8 @@
           "name": "Computer Shop"
         },
         "shop/confectionery": {
-          "name": "Sweet Shop"
+          "name": "Sweet Shop",
+          "terms": "sweets,candy,lollies"
         },
         "shop/convenience": {
           "name": "Convenience Store",
@@ -4363,7 +4366,7 @@
           "name": "Vacant Shop"
         },
         "shop/vacuum_cleaner": {
-          "name": "Hoover Shop"
+          "name": "Vacuum Cleaner Shop"
         },
         "shop/variety_store": {
           "name": "Discount shop"

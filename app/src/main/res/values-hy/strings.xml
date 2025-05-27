@@ -748,8 +748,6 @@
     <string name="quest_surface_value_rock">"Ժայռ"</string>
     <string name="quest_parkingType_street_side">"Ավտոճանապարհին հարող ավտոկանգառ"</string>
     <string name="quest_parkingType_lane">"Ավտոկանգառ ճանապարհի վրա"</string>
-    <string name="quest_tracktype_grade2a">"Պինդ, բայց չաղտոտված"</string>
-    <string name="quest_tracktype_grade3a">"Հիմնականում պինդ"</string>
     <string name="quest_generic_answer_does_not_exist">"Այն գոյություն չունի …"</string>
     <string name="osm_element_gone_description">"Համոզված եք, որ այն գոյություն չունի, նույնիսկ մի փոքր այլ վայրում: Եթե ​​կասկածում եք, փոխարենը ավելի լավ թողեք գրությունը:"</string>
     <string name="osm_element_gone_confirmation">"Այն գոյություն չունի"</string>

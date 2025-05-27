@@ -2469,6 +2469,9 @@
           "name": "路口",
           "terms": "crossing,路口,過路處"
         },
+        "highway/crossing/informal": {
+          "name": "非正式行人穿越道"
+        },
         "highway/crossing/traffic_signals": {
           "name": "有號誌的行人穿越道",
           "terms": "有號誌的行人穿越道"

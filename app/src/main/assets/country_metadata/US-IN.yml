@@ -1,5 +1,5 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 atmOperators: [Chase, PNC Bank, Athena Bitcoin, Wells Fargo, Horizon Bank, Centra Credit Union, Fifth Third Bank, Terre Haute Savings Bank, Old National Bank, Tech Credit Union, Security Federal Savings Bank, Regions Bank, Purdue Federal Credit Union, Logansport Savings Bank, KeyBank, IU Credit Union, Huntington Bank, First Financial Bank, Everwise Credit Union, Centier Bank, Bitcoin Depot, Beacon Credit Union, BMO Harris, 1st Source Bank]
-chargingStationOperators: [ChargePoint, 'Tesla, Inc.', Indiana Power & Light, Electrify America]
+chargingStationOperators: [ChargePoint, 'Tesla, Inc.', Indiana Power & Light, Tesla, Electrify America]
 defaultSpeedLimitHasUrbanOrRural: true
 parcelLockerBrand: [Amazon Locker]

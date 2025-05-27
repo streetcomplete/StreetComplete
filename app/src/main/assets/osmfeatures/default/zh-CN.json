@@ -246,7 +246,7 @@
           "name": "公交车站 / 枢纽站"
         },
         "amenity/cafe": {
-          "name": "咖啡馆",
+          "name": "咖啡餐馆",
           "terms": "咖啡,茶,咖啡厅,咖啡馆,茶座,摩卡,拿铁,馥芮白,玛奇朵,卡布奇诺,红茶,黄茶,清茶,青茶,绿茶,花茶,黑茶,白茶,乌龙,咖啡豆,餐馆,餐厅,奶茶,奶茶店"
         },
         "amenity/cafe/bubble_tea": {
@@ -254,8 +254,8 @@
           "terms": "奶茶,波霸奶茶,珍珠奶茶"
         },
         "amenity/cafe/coffee_shop": {
-          "name": "咖啡屋",
-          "terms": "咖啡屋"
+          "name": "咖啡馆",
+          "terms": "咖啡屋,咖啡,摩卡,拿铁,馥芮白,玛奇朵,卡布奇诺,美式,意式,浓缩,饮品,饮料"
         },
         "amenity/car_pooling": {
           "name": "拼车站",
@@ -603,7 +603,7 @@
         },
         "amenity/food_court": {
           "name": "食阁",
-          "terms": "美食广场,美食,食物,吃,餐厅,广场,熟食中心,美食街,食阁,食肆,小贩"
+          "terms": "美食广场,食堂,美食,食物,吃,餐厅,广场,熟食中心,美食街,食阁,食肆,小贩"
         },
         "amenity/fountain": {
           "name": "喷泉",
@@ -1308,8 +1308,8 @@
           "terms": "兽医,动物,宠物,医院,家畜,治疗,医疗,急救,手术,猫,狗,犬,门诊"
         },
         "amenity/veterinary_pharmacy": {
-          "name": "獸醫藥局",
-          "terms": "動物用藥店,動物藥局,動物藥房,獸醫藥房"
+          "name": "兽药店",
+          "terms": "兽药,动物,宠物,动物用药,兽用药,兽医,兽医药"
         },
         "amenity/waste/dog_excrement": {
           "name": "狗粪便箱",
@@ -2031,7 +2031,7 @@
           "terms": "铺木地板,木地板,铺地板,地板工,铺地工"
         },
         "craft/photographer": {
-          "name": "照相馆",
+          "name": "摄影师",
           "terms": "摄影师,摄影棚,快相店"
         },
         "craft/photographic_laboratory": {
@@ -2468,6 +2468,9 @@
         "highway/crossing": {
           "name": "路口",
           "terms": "交叉口,道口,交道口,岔路口"
+        },
+        "highway/crossing/informal": {
+          "name": "非正式行人穿越道"
         },
         "highway/crossing/traffic_signals": {
           "name": "有交通信号人行横道",
@@ -3097,7 +3100,7 @@
         },
         "landuse/religious": {
           "name": "宗教场所",
-          "terms": "寺,庙,祠,观,宗教,国教,信仰,崇拜,基督教,天主教,东正教,佛教,伊斯兰教,印度教,儒教,道教,神道教,本教,锡克教,场所"
+          "terms": "寺,庙,祠,观,寺庙,道观,祠堂,文庙,教堂,宗教,国教,信仰,崇拜,基督教,天主教,东正教,佛教,伊斯兰教,印度教,儒教,道教,神道教,本教,锡克教,场所"
         },
         "landuse/reservoir": {
           "name": "水库"
@@ -5314,8 +5317,8 @@
           "terms": "水暖店"
         },
         "shop/bbq": {
-          "name": "燒烤店",
-          "terms": "烤肉店,燒肉店"
+          "name": "烧烤用品店",
+          "terms": "烤肉,烧烤,烧肉,烤架,烧烤架,烧烤调料,烧烤串,烤串,烧烤炉,烧烤碳"
         },
         "shop/beauty": {
           "name": "美容店",
@@ -5445,7 +5448,7 @@
           "terms": "工作服装店"
         },
         "shop/coffee": {
-          "name": "咖啡豆/粉店",
+          "name": "咖啡商店",
           "terms": "咖啡,咖啡豆,咖啡粉,商店,摩卡,拿铁,馥芮白,玛奇朵,卡布奇诺"
         },
         "shop/collector": {
@@ -5608,16 +5611,16 @@
           "terms": "果蔬店"
         },
         "shop/groundskeeping": {
-          "name": "除草與花園設備商店",
-          "terms": "除草與花園設備商家,花圃設備店,除草與花園設備店"
+          "name": "园艺设备商店",
+          "terms": "园艺,园林,草皮,除草,除草设备,花园设备,花园,除草商店,花园商店"
         },
         "shop/hairdresser": {
           "name": "理发店",
-          "terms": "理发店"
+          "terms": "发廊,理发,美发,剪发,快剪,洗剪吹,美发沙龙,发艺"
         },
         "shop/hairdresser/barber": {
-          "name": "理发店",
-          "terms": "理发,美发,剪发,快剪,洗剪吹,美发沙龙,发艺"
+          "name": "男士理发店",
+          "terms": "发廊,理发,美发,剪发,快剪,洗剪吹,美发沙龙,发艺,男士,男人,剃须,胡须"
         },
         "shop/hairdresser_supply": {
           "name": "美发美容用品店",
@@ -5767,7 +5770,7 @@
           "terms": "户外用品店,销售户外活动用品的商店"
         },
         "shop/outpost": {
-          "name": "网购自提点",
+          "name": "线上订货自提点",
           "terms": "电商,自提,线上,零售,社区,社区团购,团购,提货点,提货,在线,自提点,取货,取货点,网购"
         },
         "shop/paint": {
@@ -5804,7 +5807,7 @@
         },
         "shop/photo": {
           "name": "照相馆",
-          "terms": "照相馆,照片"
+          "terms": "照相,照片,摄影,摄像,拍照,快照,图文,广告,冲洗"
         },
         "shop/pottery": {
           "name": "陶瓷店",
@@ -5879,16 +5882,16 @@
           "terms": "文具店"
         },
         "shop/storage_rental": {
-          "name": "租赁处",
-          "terms": "租赁处"
+          "name": "仓储租赁",
+          "terms": "仓储,仓库,库房,租赁,出租"
         },
         "shop/supermarket": {
           "name": "超市",
-          "terms": "超级市场"
+          "terms": "商超,市场,超级市场"
         },
         "shop/supermarket/organic": {
           "name": "有机产品超市",
-          "terms": "有機超市"
+          "terms": "有机,超市,有机产品"
         },
         "shop/swimming_pool": {
           "name": "泳池设备店",
@@ -6089,7 +6092,7 @@
         },
         "tourism/guest_house": {
           "name": "客栈",
-          "terms": "招待所,旅馆,宾馆"
+          "terms": "民宿,招待所,旅馆,宾馆"
         },
         "tourism/hostel": {
           "name": "旅舍",

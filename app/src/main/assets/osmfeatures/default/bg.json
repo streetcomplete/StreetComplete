@@ -22,7 +22,7 @@
           "name": "Летателна писта"
         },
         "aeroway/taxiway": {
-          "name": "Рольожка"
+          "name": "Рульожка"
         },
         "amenity": {
           "name": "Услуги"
@@ -482,6 +482,9 @@
         "craft/gardener": {
           "name": "Градинар"
         },
+        "craft/key_cutter": {
+          "name": "Изработка на ключове"
+        },
         "craft/locksmith": {
           "name": "Ключар"
         },
@@ -600,6 +603,9 @@
         "highway/crossing": {
           "name": "Пешеходна пътека"
         },
+        "highway/crossing/traffic_signals": {
+          "name": "Пешеходно пресичане със светофар"
+        },
         "highway/crossing/uncontrolled": {
           "name": "Маркирана пешеходна пътека"
         },
@@ -629,6 +635,9 @@
         "highway/footway/crossing": {
           "name": "Пешеходна пътека"
         },
+        "highway/footway/crossing/traffic_signals": {
+          "name": "Пешеходно пресичане със светофар"
+        },
         "highway/footway/crossing/uncontrolled": {
           "name": "Маркирана пешеходна пътека"
         },
@@ -656,6 +665,10 @@
         },
         "highway/path": {
           "name": "Пътека"
+        },
+        "highway/path/informal": {
+          "name": "Неформална пътека",
+          "terms": "неофициална пътека,кална пътека,пътечка"
         },
         "highway/pedestrian_line": {
           "name": "Пешеходна улица"
@@ -1170,7 +1183,7 @@
           "name": "Квартал"
         },
         "place/square": {
-          "name": "Квадрат"
+          "name": "Площад"
         },
         "place/town": {
           "name": "Град под 100 000"
@@ -1320,6 +1333,9 @@
         "railway/disused": {
           "name": "Закрита железопътна линия"
         },
+        "railway/funicular": {
+          "name": "Релсов път на фуникуляр"
+        },
         "railway/halt": {
           "name": "Железопътна спирка (по желание)"
         },
@@ -1327,11 +1343,26 @@
           "name": "ЖП прелез",
           "terms": "железопътен прелез"
         },
+        "railway/monorail": {
+          "name": "Монорелсов път"
+        },
+        "railway/monorail/hanging": {
+          "name": "Окачен монорелсов път"
+        },
+        "railway/narrow_gauge": {
+          "name": "Теснолиниеен железопътен път"
+        },
         "railway/platform": {
           "name": "Перон"
         },
+        "railway/preserved": {
+          "name": "Историческа железопътна линия"
+        },
         "railway/rail": {
-          "name": "ЖП линия"
+          "name": "Железопътна линия"
+        },
+        "railway/rail/highspeed": {
+          "name": "Релсов път за високоскоростни влакове"
         },
         "railway/signal": {
           "name": "Светофор",
@@ -1340,6 +1371,9 @@
         "railway/station": {
           "name": "Гара"
         },
+        "railway/subway": {
+          "name": "Релсов път на метрото"
+        },
         "railway/subway_entrance": {
           "name": "Вход на метростанция"
         },
@@ -1347,7 +1381,8 @@
           "name": "Железопътна стрелка"
         },
         "railway/tram": {
-          "name": "Трамвайни релси"
+          "name": "Трамваен релсов път",
+          "terms": "трамвайно трасе,трамвайни релси"
         },
         "relation": {
           "name": "Релация"

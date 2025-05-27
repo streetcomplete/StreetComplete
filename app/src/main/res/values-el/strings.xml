@@ -764,8 +764,6 @@
     <string name="quest_surface_value_rock">"Πέτρα"</string>
     <string name="quest_parkingType_street_side">"Χώρος στάθμευσης ακριβώς έξω από το δρόμο"</string>
     <string name="quest_parkingType_lane">"Χώρος στάθμευσης σε δρόμο"</string>
-    <string name="quest_tracktype_grade2a">"Στερεό αλλά μη ασφαλτοστρωμένο"</string>
-    <string name="quest_tracktype_grade3a">"Κυρίως στερεό"</string>
     <string name="quest_generic_answer_does_not_exist">"Δεν υπάρχει…"</string>
     <string name="osm_element_gone_description">"Είστε βέβαιοι ότι δεν υπάρχει, ούτε καν σε διαφορετική τοποθεσία; Σε περίπτωση αμφιβολίας, καλύτερα να αφήσετε μια σημείωση."</string>
     <string name="osm_element_gone_confirmation">"Δεν υπάρχει"</string>

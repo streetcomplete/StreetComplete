@@ -462,7 +462,7 @@ Delvist betyder, at kørestolsbrugeren kan komme ind og bruge toilettet, men at 
     <string name="quest_buildingType_sports_centre">"Sportscenter"</string>
     <string name="quest_buildingType_toilets">"Toiletter"</string>
     <string name="quest_maxspeed_sign_question">"Hvad definerer hastighedsgrænsen?"</string>
-    <string name="quest_segregated_title">"Hvordan er gangsti og cykelsti blevet anlagt her?"</string>
+    <string name="quest_segregated_title">"Hvordan er gang- og cykelstien anlagt her?"</string>
     <string name="dialog_tutorial_upload">"For at indsende dine ændringer manuelt, skal du bruge knappen i værktøjslinjen, der ser således ud."</string>
     <string name="quest_segregated_separated">"Adskilt fra hinanden"</string>
     <string name="quest_segregated_mixed">"Cyklister og fodgængere deler samme plads"</string>
@@ -772,8 +772,6 @@ Hvis der er baner, der er reserveret til busser, bedes du lave en bemærkning i 
     <string name="quest_surface_value_rock">"Sten"</string>
     <string name="quest_parkingType_street_side">"Parkering lige ved siden af kørebanen"</string>
     <string name="quest_parkingType_lane">"Parkering på vejen"</string>
-    <string name="quest_tracktype_grade2a">"Hårdt sammenpresset jord"</string>
-    <string name="quest_tracktype_grade3a">"Mest fast underlag"</string>
     <string name="quest_generic_answer_does_not_exist">"Eksisterer ikke…"</string>
     <string name="osm_element_gone_description">"Er du sikker på at dette ikke findes, heller ikke på en lokalitet i nærheden? Hvis du er i tvivl, er det bedre at efterlade en bemærkning i stedet for."</string>
     <string name="osm_element_gone_confirmation">"Det findes ikke"</string>
@@ -1461,4 +1459,7 @@ En etage tæller som en tagetage, når dens vinduer er i taget. Derfor er tage m
     <string name="overlay">"Overlejring"</string>
     <string name="enable_overlay_confirmation_title">"Aktiver denne overlejring?"</string>
     <string name="link_transitous_description">"Udbyderneutral, gratis og open source-ruteplanlægning for offentlig transport"</string>
+    <string name="compass">"Kompas"</string>
+    <string name="quest_tracktype_grade2">"Mest fast"</string>
+    <string name="quest_tracktype_grade3">"Blanding"</string>
 </resources>

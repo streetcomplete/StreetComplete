@@ -780,8 +780,6 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="quest_surface_value_rock">"바위"</string>
     <string name="quest_parkingType_street_side">"도로와 인접한 주차장"</string>
     <string name="quest_parkingType_lane">"도로변 주차장"</string>
-    <string name="quest_tracktype_grade2a">"단단하지만 비포장임"</string>
-    <string name="quest_tracktype_grade3a">"거의 단단함"</string>
     <string name="quest_generic_answer_does_not_exist">"존재하지 않습니다…"</string>
     <string name="osm_element_gone_description">"정말 존재하지 않나요? 혹시 바로 옆에 있는 것은 아닌가요? 확신이 들지 않는다면, 대신 참고를 남기는 것이 좋습니다."</string>
     <string name="osm_element_gone_confirmation">"존재하지 않습니다"</string>

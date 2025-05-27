@@ -772,8 +772,6 @@ Ja kādas joslas ir rezervētas autobusiem, lūdzu, atstājiet piezīmi."</strin
     <string name="quest_surface_value_rock">"Akmens"</string>
     <string name="quest_parkingType_street_side">"Auto novietošana pie ceļa"</string>
     <string name="quest_parkingType_lane">"Auto novietošana uz ceļa"</string>
-    <string name="quest_tracktype_grade2a">"Cieti sablīvēta zeme"</string>
-    <string name="quest_tracktype_grade3a">"Pārsvarā ciets"</string>
     <string name="quest_generic_answer_does_not_exist">"Neeksistē…"</string>
     <string name="osm_element_gone_description">"Vai esat pārliecināts, ka tiešām neeksistē, pat ne nedaudz citā vietā? Ja šaubāties, atbildes vietā atstājiet piezīmi."</string>
     <string name="osm_element_gone_confirmation">"Neeksistē"</string>
@@ -1431,4 +1429,5 @@ Stāvs tiek uzskatīts par jumta stāvu, ja tā logi atrodas jumtā. Attiecīgi,
     <string name="pedestrian_zone_allowed_sign">"Šeit zīme atļauj riteņbraukšanu"</string>
     <string name="pedestrian_zone_no_sign">"Nav zīmes par riteņbraukšanu"</string>
     <string name="team_mode_description_overlay_hint">"Ja izmantojat pārklājumus, katram no jums vajadzētu izmantot citu, jo tikai uzdevumi tiek sadalīti."</string>
+    <string name="quest_dietType_glutenfree_name_title">"Vai šeit piedāvā bezglutēna produktus?"</string>
 </resources>

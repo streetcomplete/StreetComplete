@@ -770,8 +770,6 @@
     <string name="quest_surface_value_rock">"Каміння"</string>
     <string name="quest_parkingType_street_side">"Парковка біля проїжджої частини"</string>
     <string name="quest_parkingType_lane">"Парковка на проїжджій частині"</string>
-    <string name="quest_tracktype_grade2a">"Тверде, але ґрунтове"</string>
-    <string name="quest_tracktype_grade3a">"Переважно тверде"</string>
     <string name="quest_generic_answer_does_not_exist">"Це відсутнє…"</string>
     <string name="osm_element_gone_description">"Ви впевнені що це не існує, навіть у іншому місці? Якщо є сумніви краще залишити нотатку."</string>
     <string name="osm_element_gone_confirmation">"Це не існує"</string>
@@ -1427,5 +1425,18 @@
     <string name="pedestrian_zone_allowed_sign">"Знак дозволяє велорух"</string>
     <string name="pedestrian_zone_no_sign">"Тут немає чіткого знаку для велосипедистів"</string>
     <string name="team_mode_description_overlay_hint">"Якщо ви використовуєте накладні шари, кожен із вас має використовувати окремий, оскільки розділяються лише квести."</string>
+    <string name="quest_dietType_glutenfree_name_title">"Чи є тут продукти без глютену?"</string>
+    <string name="quest_construction_minor_title">"Чи завершено тут дрібні дорожні роботи?"</string>
+    <string name="link_openclimbing_description">"Мапа місць для скелелазіння"</string>
+    <string name="pref_title_zoom_buttons">"Показати кнопки масштабування мапи"</string>
     <string name="overlay_mtb_scale">"Складність MTB"</string>
+    <string name="overlay_mtb_scale_0_description">"Тверда, чіпка утрамбована або природна поверхня; відсутність перешкод; пологий схил; широкі повороти."</string>
+    <string name="overlay_mtb_scale_1_description">"Частково пухка місцевість з дрібним корінням, камінням, ерозією або водними борознами; ухил ≤40%; перешкоди, що піддаються перекочуванню; потрібна базова техніка їзди."</string>
+    <string name="overlay_mtb_scale_2_description">"Пухка місцевість з великим корінням та камінням, плоскі перепади/невеликі сходи, ухил до 70%; легкі круті повороти; потрібне розширене гальмування та перенесення ваги."</string>
+    <string name="overlay_mtb_scale_3_description">"Слизька, пухка місцевість з осипом, брилами, великим корінням та камінням, високими сходами та складними траверсами; круті повороти, ухил &gt;70%; потрібні дуже хороший баланс та точне гальмування."</string>
+    <string name="overlay_mtb_scale_6_description">"Небезпечна та непрохідна місцевість, непридатна для катання на гірському велосипеді."</string>
+    <string name="default_disabled_overlay_domain_expert">"Це накладання вимкнено за замовчуванням, оскільки вам потрібно бути експертом у предметній області, щоб точно записувати цю інформацію."</string>
+    <string name="overlay">"Накладання"</string>
+    <string name="enable_overlay_confirmation_title">"Увімкнути це накладання?"</string>
+    <string name="link_transitous_description">"Незалежний від постачальника безкоштовний та відкритий код маршрутизації громадського транспорту"</string>
 </resources>

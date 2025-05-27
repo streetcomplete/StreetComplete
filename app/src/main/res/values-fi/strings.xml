@@ -774,8 +774,6 @@ Jos jokin kaistoista on varattu busseille, jätä paikalle ilmoitus."</string>
     <string name="quest_surface_value_rock">"Kivi"</string>
     <string name="quest_parkingType_street_side">"Pysäköinti tien varrella"</string>
     <string name="quest_parkingType_lane">"Pysäköinti tiellä"</string>
-    <string name="quest_tracktype_grade2a">"Kiinteäksi pakkautunut maa"</string>
-    <string name="quest_tracktype_grade3a">"Enimmäkseen kiinteä"</string>
     <string name="quest_generic_answer_does_not_exist">"Sitä ei ole olemassa…"</string>
     <string name="osm_element_gone_description">"Oletko varma ettei sitä ole olemassa, edes hieman eri paikassa? Jos olet epävarma, jätä ilmoitus."</string>
     <string name="osm_element_gone_confirmation">"Sitä ei ole olemassa"</string>
@@ -1437,4 +1435,16 @@ Kerros lasketaan kattokerrokseksi kun sen ikkunat ovat katossa. Katot, joissa ei
     <string name="link_opengeofiction_description">"Kyllästyttääkö todellisuuden kartoittaminen? Luo kuvitteellisia karttoja muiden kanssa!"</string>
     <string name="link_openclimbing_description">"Kartta kiipeilypaikoista"</string>
     <string name="pref_title_zoom_buttons">"Näytä kartan suurennuspainikkeet"</string>
+    <string name="overlay_mtb_scale">"Maastopyöräilyn vaikeus"</string>
+    <string name="overlay_mtb_scale_0">"Luokka 0"</string>
+    <string name="overlay_mtb_scale_1">"Luokka 1"</string>
+    <string name="overlay_mtb_scale_2">"Luokka 2"</string>
+    <string name="overlay_mtb_scale_3">"Luokka 3"</string>
+    <string name="overlay_mtb_scale_4">"Luokka 4"</string>
+    <string name="overlay_mtb_scale_5">"Luokka 5"</string>
+    <string name="overlay_mtb_scale_6">"Luokka 6"</string>
+    <string name="pref_title_overlays">"Tasovalinta"</string>
+    <string name="pref_overlays_reset">"Palautetaanko käytettävät tasot oletusarvoihin?"</string>
+    <string name="overlay">"Taso"</string>
+    <string name="enable_overlay_confirmation_title">"Käytetäänkö tätä tasoa?"</string>
 </resources>

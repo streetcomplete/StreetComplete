@@ -770,8 +770,6 @@
     <string name="quest_surface_value_rock">"سنگ"</string>
     <string name="quest_parkingType_street_side">"پارکینگ در کنار راه"</string>
     <string name="quest_parkingType_lane">"پارکینگ در مسیر راه"</string>
-    <string name="quest_tracktype_grade2a">"سخت اما روسازی‌نشده"</string>
-    <string name="quest_tracktype_grade3a">"اغلب سخت"</string>
     <string name="quest_generic_answer_does_not_exist">"وجود ندارد…"</string>
     <string name="osm_element_gone_description">"اطمینان دارید که وجود ندارد؟ شاید فقط موقعیت آن اندکی متفاوت باشد. اگر تردید دارید، بهتر است به جای این کار، یادداشتی بگذارید."</string>
     <string name="osm_element_gone_confirmation">"وجود ندارد"</string>

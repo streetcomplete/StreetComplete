@@ -772,8 +772,6 @@ Si algun dels carrils estan reservats per busos, deixeu una nota com a alternati
     <string name="quest_surface_value_rock">"Roca"</string>
     <string name="quest_parkingType_street_side">"Aparcament en bateria"</string>
     <string name="quest_parkingType_lane">"Aparcament en fila"</string>
-    <string name="quest_tracktype_grade2a">"Sòlid però sense pavimentar"</string>
-    <string name="quest_tracktype_grade3a">"Majoritàriament sòlid"</string>
     <string name="quest_generic_answer_does_not_exist">"No existeix…"</string>
     <string name="osm_element_gone_description">"Segur que no existeix, encara que sigui en una localització lleugerament diferent? En cas de dubte, millor que deixeu una nota com a alternativa."</string>
     <string name="osm_element_gone_confirmation">"No existeix"</string>
@@ -1130,7 +1128,7 @@ Feu el mateix per a l'altre costat."</string>
     <string name="quest_building_entrance_dead_end">"Cul de sac, no hi ha entrada"</string>
     <string name="ar_core_tracking_hint_tap_to_measure">"Toca la pantalla per iniciar el mesurament"</string>
     <string name="quest_air_pump_bicycle_shop_title">"Hi ha una manxa d'inflar bicicletes pública aquí? (almenys quan és obert)"</string>
-    <string name="action_overlays">"Superposicions"</string>
+    <string name="action_overlays">"Capes"</string>
     <string name="split_way">"Divideix la via"</string>
     <string name="quest_memorialType_title">"Quin tipus de memorial és?"</string>
     <string name="quest_memorialType_statue">"Estàtua"</string>
@@ -1159,7 +1157,7 @@ Feu el mateix per a l'altre costat."</string>
     <string name="quest_entrance_reference_reference_label">"Nom de l'entrada:"</string>
     <string name="quest_entrance_reference_flat_range_label">"Rang de pisos:"</string>
     <string name="quest_entrance_reference_flat_range_to">"cap a"</string>
-    <string name="default_disabled_msg_overlay">"Aquest tipus de missió està desactivada per defecte perquè ja hi ha una capa superposada amb la qual és més eficaç i eficient introduir i actualitzar aquestes dades."</string>
+    <string name="default_disabled_msg_overlay">"Aquest tipus de missió està desactivada per defecte perquè ja hi ha una capa amb la qual és més eficaç i eficient introduir i actualitzar aquestes dades."</string>
     <string name="quest_camp_drinking_water_title">"Els campistes poden beure aigua debades?"</string>
     <string name="quest_camp_shower_title">"Hi ha dutxes aquí?"</string>
     <string name="quest_camp_power_supply_title">"Els clients poden carregar ací el seu mòbil, portàtil, etc.?"</string>
@@ -1272,6 +1270,8 @@ Menejar ara?"</string>
     <string name="overlay_surface">"Superfícies"</string>
     <string name="overlay_path_surface_segregated">"Dividit en parts per anar amb bicicleta o caminant"</string>
     <string name="quest_crossing_title2">"Hi ha un creuament aquí?"</string>
+    <string name="quest_crossing_yes">"Sí, destinat com a creuament."</string>
+    <string name="quest_crossing_no">"No destinat com a creuament, però és possible creuar (p. ex. camins informals)"</string>
     <string name="quest_crossing_prohibited">"No, creuar està prohibit o és impossible"</string>
     <string name="quest_hairdresser_title">"Quin tipus de clients visita aquesta perruqueria?"</string>
     <string name="quest_hairdresser_male_and_female">"Qualsevol"</string>
@@ -1290,7 +1290,7 @@ Menejar ara?"</string>
     <string name="overlay_addresses_no_entrance">"No és una entrada..."</string>
     <string name="quest_cycleway_value_sidewalk2">"Camí d'us compartit"</string>
     <string name="quest_cycleway_value_sidewalk_dual2">"camí d'ús compartit, ambdues direccions"</string>
-    <string name="overlays_tutorial_title">"Superposicions"</string>
+    <string name="overlays_tutorial_title">"Capes"</string>
     <string name="overlays_tutorial_intro">"Heu trobat una nova manera d'editar dades!"</string>
     <string name="overlays_tutorial_display">"Cada superposició mostra un tipus de dades, per exemple, botigues o superfícies de carrers.
 
@@ -1298,7 +1298,7 @@ Les dades es destaquen amb diferents colors per oferir-vos una bona visió gener
 Les dades que falten sempre es mostren en vermell."</string>
     <string name="overlays_tutorial_edit">"Toqueu les dades destacades per mostrar-les o editar-les. També podeu dividir vies o afegir notes, com amb les missions.
 
-A més, algunes superposicions us permeten afegir dades noves a la posició d'un punt de mira mostrat, com ara la superposició d'adreces."</string>
+A més, algunes capes us permeten afegir dades noves a la posició d'un punt de mira mostrat, com ara la capa d'adreces."</string>
     <string name="quest_crossing_kerb_height_title">"Quina és l'alçada dels vorals en aquest pas?"</string>
     <string name="quest_maxheight_sign_title">"Quin límit d'alçada s'indica aquí?"</string>
     <string name="quest_leave_new_note_as_answer">"En aquest cas, cal deixar una nota on expliqui la situació."</string>
@@ -1439,4 +1439,29 @@ Un pis compta com a teulada quan les seves finestres són a la teulada. En conse
     <string name="pedestrian_zone_designated">"Espai habilitat per a bicicletes"</string>
     <string name="pedestrian_zone_allowed_sign">"Hi ha un senyal que permet anar en bicicleta"</string>
     <string name="pedestrian_zone_no_sign">"No hi ha cap senyal explícit sobre anar en bicicleta"</string>
+    <string name="team_mode_description_overlay_hint">"Si utilitzeu capes, cadascun de vosaltres hauria d'utilitzar una capa diferent, ja que només les missions es divideixen."</string>
+    <string name="quest_dietType_glutenfree_name_title">"Aquí s'ofereixen productes sense gluten?"</string>
+    <string name="quest_dietType_explanation_glutenfree">"Preparar productes sense gluten requereix coneixement, ja que espècies i salses habituals poden contenir gluten. Els aliments sense gluten hauran d'estar explícitament etiquetats com a tal."</string>
+    <string name="map_attribution">"Atribució del mapa"</string>
+    <string name="link_panoramax_description">"Un programari lliure i de codi obert i un servei sense ànim de lucre per compartir fotos a nivell de carrer obtingudes de manera col·laborativa"</string>
+    <string name="link_opengeofiction_description">"Cansat de mapejar la realitat? Crea mapes ficticis de manera col·laborativa!"</string>
+    <string name="link_openclimbing_description">"Un mapa de llocs d'escalada"</string>
+    <string name="pref_title_zoom_buttons">"Mostrar els botons de zoom del mapa"</string>
+    <string name="overlay_mtb_scale">"Dificultat BTT"</string>
+    <string name="overlay_mtb_scale_0">"Grau 0"</string>
+    <string name="overlay_mtb_scale_0_description">"Superfície ferma i amb bona adherència, compactada o natural; sense obstacles; pendent suau; revoltes amplies."</string>
+    <string name="overlay_mtb_scale_1">"Grau 1"</string>
+    <string name="overlay_mtb_scale_1_description">"Terreny parcialment solt amb arrels petites, pedres, erosió o regueres d’aigua; pendent ≤ 40 %; obstacles rodables; es requereix una tècnica bàsica de conducció."</string>
+    <string name="overlay_mtb_scale_2">"Grau 2"</string>
+    <string name="overlay_mtb_scale_3">"Grau 3"</string>
+    <string name="overlay_mtb_scale_4">"Grau 4"</string>
+    <string name="overlay_mtb_scale_5">"Grau 5"</string>
+    <string name="overlay_mtb_scale_6">"Grau 6"</string>
+    <string name="overlay_mtb_scale_6_description">"Terreny perillós i impracticable, no apte per a la BTT."</string>
+    <string name="default_disabled_overlay_domain_expert">"Aquesta capa està desactivada per defecte perquè cal ser una persona experta en la matèria per registrar aquestes dades amb precisió."</string>
+    <string name="pref_title_overlays">"Selecció de capa"</string>
+    <string name="pref_overlays_reset">"Restablir l'habilitació de la capa als valors per defecte?"</string>
+    <string name="overlay">"Capa"</string>
+    <string name="enable_overlay_confirmation_title">"Activar aquesta capa?"</string>
+    <string name="link_transitous_description">"Planificació de trajectes amb transport públic neutral pel que fa al proveïdor, lliure i de codi obert"</string>
 </resources>

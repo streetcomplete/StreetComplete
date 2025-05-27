@@ -953,6 +953,9 @@
           "name": "Àrea",
           "terms": "àrea"
         },
+        "area/highway": {
+          "name": "Àrea de la carretera"
+        },
         "attraction": {
           "name": "Atracció"
         },
@@ -1117,8 +1120,8 @@
           "terms": "mur de contenció,paret de contenció"
         },
         "barrier/stile": {
-          "name": "esgraons",
-          "terms": "escala de tanca"
+          "name": "Tanca amb escalons",
+          "terms": "escala de tanca,tanca amb esgraons,tanca amb esglaons"
         },
         "barrier/swing_gate": {
           "name": "Porta batent"
@@ -1128,7 +1131,8 @@
           "terms": "peatge,autopista de peatge,cabina de peatge,estació de peatge,punt de peatge"
         },
         "barrier/turnstile": {
-          "name": "Torniquet"
+          "name": "Torniquet d'accés",
+          "terms": "molinet"
         },
         "barrier/wall": {
           "name": "Mur",
@@ -2593,6 +2597,10 @@
           "name": "Desguàs",
           "terms": "pluja,plutja,forat,aigua,desaigüe,tormenta,drenatge"
         },
+        "man_made/manhole/sewer": {
+          "name": "Tapa de claveguera",
+          "terms": "arqueta de claveguera,claveguera,forat,aigües residuals,aigües brutes"
+        },
         "man_made/monitoring_station": {
           "name": "Estació de seguiment"
         },
@@ -2824,6 +2832,9 @@
         "natural/shrub": {
           "name": "Arbust"
         },
+        "natural/sinkhole": {
+          "name": "Dolina"
+        },
         "natural/spring": {
           "name": "Font natural",
           "terms": "deu,aiguaneix,brollador"
@@ -2864,6 +2875,9 @@
         },
         "natural/water/moat": {
           "name": "Fossat"
+        },
+        "natural/water/oxbow": {
+          "name": "Braç mort"
         },
         "natural/water/pond": {
           "name": "Estany",
@@ -3102,6 +3116,9 @@
           "name": "Oficina de terapeuta",
           "terms": "teràpia"
         },
+        "office/translator": {
+          "name": "Oficina de traducció"
+        },
         "office/travel_agent": {
           "name": "Agència de viatges"
         },
@@ -3129,6 +3146,9 @@
         },
         "piste/nordic": {
           "name": "Camí per esquí de muntanya"
+        },
+        "piste/sleigh": {
+          "name": "Camí per a trineus"
         },
         "place": {
           "name": "Lloc"
@@ -4500,7 +4520,7 @@
           "terms": "presa,pantà,embassament"
         },
         "waterway/ditch": {
-          "name": "Séquia",
+          "name": "Cuneta",
           "terms": "séquia,sèquia,rara,canal,aigua,via aqüífera,torrent,conducció d'aigua,aqüífer,rierol"
         },
         "waterway/dock": {

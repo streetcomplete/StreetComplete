@@ -43,7 +43,7 @@
           "name": "Terminal Bandar Udara,Terminal Bandara"
         },
         "amenity": {
-          "name": "Keramahan"
+          "name": "Fasilitas"
         },
         "amenity/animal_shelter": {
           "name": "Penampungan Hewan",
@@ -80,9 +80,12 @@
         "amenity/bicycle_parking/lockers": {
           "name": "Loker Sepeda"
         },
+        "amenity/bicycle_parking/shed": {
+          "name": "Parkir Sepeda Teduh"
+        },
         "amenity/bicycle_rental": {
           "name": "Penyewaan Sepeda",
-          "terms": "penyewaan sepeda"
+          "terms": "sewa sepeda"
         },
         "amenity/bicycle_wash": {
           "name": "Tempat Cuci Sepeda"
@@ -101,6 +104,9 @@
         "amenity/cafe": {
           "name": "Kafe",
           "terms": "warung kopi,bistro,teh,thai,kopi,kafe,cafe,warkop,jamu"
+        },
+        "amenity/cafe/coffee_shop": {
+          "name": "Kedai Kopi"
         },
         "amenity/car_rental": {
           "name": "Penyewaan Mobil",
@@ -303,7 +309,8 @@
           "terms": "gereja,kristen,basilika,bethel,katedral,mimbar,biara,rumah tuhan,rumah doa,rumah pujian,paroki"
         },
         "amenity/place_of_worship/hindu": {
-          "name": "Pura"
+          "name": "Pura",
+          "terms": "candi"
         },
         "amenity/place_of_worship/jewish": {
           "name": "Sinagoge",
@@ -332,6 +339,10 @@
         "amenity/prep_school": {
           "name": "Tempat Bimbel",
           "terms": "bimbel,bimbingan belajar,tutor,les,tempat les"
+        },
+        "amenity/prison": {
+          "name": "Rutan",
+          "terms": "rumah tahanan,lapas,lembaga pemasyarakatan,penjara"
         },
         "amenity/pub": {
           "name": "Pub",
@@ -445,7 +456,7 @@
           "terms": "telepon"
         },
         "amenity/theatre": {
-          "name": "Teater",
+          "name": "Teater / Taman Budaya",
           "terms": "teater"
         },
         "amenity/toilets": {
@@ -488,6 +499,9 @@
         "area": {
           "name": "Area",
           "terms": "daerah,kawasan,wilayah,poligon,polygon,kurva"
+        },
+        "area/footway": {
+          "name": "Area Gang"
         },
         "area/highway/traffic_island": {
           "name": "Pulau Jalan"
@@ -1031,6 +1045,10 @@
         "highway/crossing": {
           "name": "Penyebrangan"
         },
+        "highway/crossing/traffic_signals": {
+          "name": "Tempat Penyebrangan dengan Lalin",
+          "terms": "zebra cross,pelican cross"
+        },
         "highway/crossing/uncontrolled": {
           "name": "Tempat Penyebrangan / Zebra Kros"
         },
@@ -1055,10 +1073,15 @@
         },
         "highway/footway": {
           "name": "Jalur Pejalan Kaki Terpisah",
-          "terms": "pejalan kaki,jogging track,joging trek"
+          "terms": "pejalan kaki,jogging track,joging trek,gang,gang sempit"
         },
         "highway/footway/crossing": {
-          "name": "Tempat Penyebrangan"
+          "name": "Tempat Penyebrangan",
+          "terms": "zebra cross,pelican cross"
+        },
+        "highway/footway/crossing/traffic_signals": {
+          "name": "Tempat Penyebrangan dengan Lalin",
+          "terms": "zebra cross,pelican cross"
         },
         "highway/footway/crossing/uncontrolled": {
           "name": "Tempat Penyebrangan / Zebra Kros"
@@ -1085,14 +1108,19 @@
           "terms": "simpang susun / jalan keluar"
         },
         "highway/motorway_link": {
-          "name": "Jalan Tol",
+          "name": "Jalan Penghubung Tol",
           "terms": "jalan penghubung bebas hambatan"
         },
         "highway/path": {
           "name": "Jalur"
         },
+        "highway/pedestrian_area": {
+          "name": "Area Pejalan Kaki",
+          "terms": "square,alun-alun,pedestrian"
+        },
         "highway/pedestrian_line": {
-          "name": "Jalan Hanya Khusus Pejalan Kaki"
+          "name": "Jalan Hanya Khusus Pejalan Kaki",
+          "terms": "jalan pedestrian,jalan alun-alun,jalan square"
         },
         "highway/primary": {
           "name": "Jalan Provinsi",
@@ -1317,6 +1345,10 @@
         },
         "landuse/allotments": {
           "name": "Bidang Tanah Kebun Komunitas"
+        },
+        "landuse/aquaculture": {
+          "name": "Budidaya Air",
+          "terms": "tambak,kolam,tiram,bandeng,udang,lobster,kepiting,ikan laut,peternakan laut,krustasea,alga,aquafarming,mussel,marikultur,algaculture"
         },
         "landuse/basin": {
           "name": "Cekungan"
@@ -1615,6 +1647,10 @@
         "man_made/chimney": {
           "name": "Cerobong"
         },
+        "man_made/clarifier": {
+          "name": "Tangki Clarifier",
+          "terms": "air limbah"
+        },
         "man_made/crane/portal_crane": {
           "name": "Derek portal"
         },
@@ -1726,7 +1762,8 @@
           "terms": "perigi"
         },
         "man_made/water_works": {
-          "name": "Instalasi Penyedia Air Minum"
+          "name": "Instalasi Penyedia Air Minum",
+          "terms": "spam,pam,pdam,air minum"
         },
         "man_made/watermill": {
           "name": "Kincir Air Penggilingan"
@@ -1868,8 +1905,8 @@
           "terms": "meander"
         },
         "natural/water/pond": {
-          "name": "Empang",
-          "terms": "air"
+          "name": "Kolam",
+          "terms": "air,kolam,empang"
         },
         "natural/water/reservoir": {
           "name": "Waduk",
@@ -1882,6 +1919,10 @@
         "natural/water/stream": {
           "name": "Badan Air",
           "terms": "tubuh air"
+        },
+        "natural/water/wastewater": {
+          "name": "Kolam Air Limbah",
+          "terms": "air limbah"
         },
         "natural/wetland": {
           "name": "Lahan Basah"
@@ -2068,7 +2109,7 @@
         },
         "office/water_utility": {
           "name": "Kantor PAM",
-          "terms": "kantor pdam,kantor air minum"
+          "terms": "kantor spam,kantor pam,kantor pdam,kantor air minum"
         },
         "pipeline": {
           "name": "Fitur Jalur Perpipaan"
@@ -2108,14 +2149,13 @@
           "name": "Persegi"
         },
         "place/suburb": {
-          "name": "Desa / Kelurahan",
           "terms": "nagari,dukuh,dusun,jorong"
         },
         "place/town": {
           "name": "Kota"
         },
         "place/village": {
-          "name": "Desa"
+          "name": "Kelurahan/Desa/Dusun"
         },
         "playground": {
           "name": "Wahana Taman Bermain"
@@ -2140,7 +2180,7 @@
           "aliases": "Fitur Kelistrikan\nEnergi\nListrik\nTenaga\nPLN"
         },
         "power/generator": {
-          "name": "Generator Listrik"
+          "name": "Pembangkit Listrik"
         },
         "power/generator/method/photovoltaic/location/roof": {
           "name": "Sel Surya Atap Bangunan"
@@ -2193,7 +2233,8 @@
           "name": "Tiang Listrik"
         },
         "power/substation": {
-          "name": "Terminal"
+          "name": "Jaringan Distribusi Listrik",
+          "terms": "listrik,terminal,substation,gardu,trafo,transformer"
         },
         "power/tower": {
           "name": "Menara Tegangan Tinggi"
@@ -2208,7 +2249,10 @@
           "name": "Halte Bis dan Tram"
         },
         "public_transport/platform/train": {
-          "name": "Platform Kereta"
+          "name": "Peron Kereta"
+        },
+        "public_transport/platform/tram": {
+          "name": "Peron Tram"
         },
         "public_transport/platform/trolleybus": {
           "name": "Peron Bis Troli"
@@ -2233,6 +2277,9 @@
         "railway/abandoned": {
           "name": "Rel Terhapus"
         },
+        "railway/buffer_stop": {
+          "name": "Sepur Badug / Rel Buntu"
+        },
         "railway/construction": {
           "name": "Rel KA dalam Pembangunan",
           "terms": "railway under construction,bangun,konstruksi"
@@ -2241,7 +2288,7 @@
           "name": "Rel Tidak Terpakai"
         },
         "railway/level_crossing": {
-          "name": "Penyeberangan Jalan-Rel",
+          "name": "Perlintasan Sebidang",
           "terms": "penyeberangan,penyebrangan,zebra cross,crossing"
         },
         "railway/light_rail": {
@@ -2259,7 +2306,7 @@
           "terms": "narrow gauge track"
         },
         "railway/platform": {
-          "name": "Platform Kereta"
+          "name": "Peron Kereta"
         },
         "railway/preserved": {
           "name": "Rel Bersejarah"
@@ -2282,6 +2329,9 @@
         "railway/subway_entrance": {
           "name": "Pintu Terowongan"
         },
+        "railway/switch": {
+          "name": "Wesel"
+        },
         "railway/tram": {
           "name": "Rel Trem",
           "terms": "rel listrik jalan,rel ringan,rel listrik,lajur rel listrik,jalur rel listrik",
@@ -2296,6 +2346,10 @@
         "route/ferry": {
           "name": "Rute Feri",
           "terms": "kapal,laut"
+        },
+        "seamark/mooring": {
+          "name": "Bersandar",
+          "terms": "berlabuh,buoy"
         },
         "shop": {
           "name": "Toko"
@@ -2686,6 +2740,7 @@
         },
         "tourism/chalet": {
           "name": "Vila Liburan",
+          "terms": "vila,kabin liburan,rumah liburan,pondok,penginapan,akomodasi semalam",
           "aliases": "Pondok Liburan"
         },
         "tourism/gallery": {

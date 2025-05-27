@@ -774,8 +774,6 @@ Kui mõni sõidurada on mõeldud ühistranspordile, siis pigem lisa vastav ingli
     <string name="quest_surface_value_rock">"Kivi"</string>
     <string name="quest_parkingType_street_side">"Parkimine sõidutee kõrval teiselpool äärekivi"</string>
     <string name="quest_parkingType_lane">"Parkimine sõiduteel"</string>
-    <string name="quest_tracktype_grade2a">"Peamiselt kõva: sillutamata tee, kruus, kivi või kõva pinnas"</string>
-    <string name="quest_tracktype_grade3a">"Ühtlane segu kõvadest ja pehmetest materjalidest"</string>
     <string name="quest_generic_answer_does_not_exist">"Seda pole olemas…"</string>
     <string name="osm_element_gone_description">"Kas oled ikka kindel, et seda pole olemas? Isegi natuke teises asukohas mitte? Kui sa pole kindel, siis pigem koosta märkus."</string>
     <string name="osm_element_gone_confirmation">"Seda pole olemas"</string>

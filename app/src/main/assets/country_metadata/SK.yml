@@ -1,7 +1,7 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [Slovenská sporiteľňa, VÚB, Všeobecná úverová banka, ČSOB, Tatra banka, Prima banka, UniCredit Bank, Poštová banka, Euronet, Kvakomat, Bitcoinmat.sk, OTP banka, 365.bank, Fio banka, Prima Banka, Raiffeisen banka, ATM Point, wBTCb, 'Tatra banka, a.s.', Shitcoins.club, Bitcoinmat, ATM point]
-chargingStationOperators: [GreenWay, Západoslovenská energetika, ejoin, ZSE, Lidl, NabiBajk, econec.eu, GreenWay Infrastructure, nabibajk.sk, ZSE Drive, Specialized, 'Sharengo/4 SALE,s.r.o', MOL, VSE, 'Tesla, Inc.', ebajk connect, LEDEOS, Billa, OMV Slovensko, OMV, Econec, ABB, 'ejoin, s.r.o.', ebajkonnect, ebajkconnect, ZSE drive, Východoslovenská energetika, Slovnaft, Ledeos, Ionity, Farmárska reštaurácia, EVlink, E.ON, BMW T.O.B., Antik Telecom, Antik]
-clothesContainerOperators: [Ekocharita, EKOCHARITA, HUMANA, 'KOSIT, a.s.', Humana, 'Marius Pedersen,a.s.', Nadácia ECO, ECO textil, TextilEco, FCC Trnava, Ekotextil]
+atmOperators: [Slovenská sporiteľňa, VÚB, Všeobecná úverová banka, ČSOB, Tatra banka, Prima banka, UniCredit Bank, Poštová banka, Euronet, Kvakomat, Bitcoinmat.sk, OTP banka, Fio banka, 365.bank, Prima Banka, Raiffeisen banka, ATM Point, wBTCb, 'Tatra banka, a.s.', Shitcoins.club, Bitcoinmat, ATM point]
+chargingStationOperators: [GreenWay, ejoin, Západoslovenská energetika, ZSE, Lidl, NabiBajk, econec.eu, GreenWay Infrastructure, nabibajk.sk, ZSE Drive, Specialized, 'Sharengo/4 SALE,s.r.o', MOL, VSE, ebajk connect, 'Tesla, Inc.', LEDEOS, Billa, OMV Slovensko, OMV, Econec, ABB, 'ejoin, s.r.o.', ebajkonnect, ebajkconnect, ZSE drive, Východoslovenská energetika, Slovnaft, Shell Recharge Solutions, Ledeos, Ionity, Farmárska reštaurácia, EVlink, E.ON, BMW T.O.B., Antik Telecom, Antik]
+clothesContainerOperators: [Ekocharita, EKOCHARITA, HUMANA, 'KOSIT, a.s.', Humana, 'Marius Pedersen,a.s.', Nadácia ECO, TextilEco, ECO textil, FCC Trnava, Ekotextil]
 defaultSpeedLimitHasUrbanOrRural: true
 hasAdvisorySpeedLimitSign: true
 hasDailyAlternateSideParkingSign: true

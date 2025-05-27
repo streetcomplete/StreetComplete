@@ -13,6 +13,7 @@
 - Track type: Align wording with wiki (#6272)
 - Max speed: For implicit max speeds, tag the country subdivision when it is relevant (#6259)
 - Surface: Remove concrete plates as selectable option (#6290)
+- Specify Shop type: Clear properties related to the previous shop when answering that it is vacant now (#6291)
 
 ## v61.0
 

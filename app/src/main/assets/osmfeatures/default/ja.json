@@ -2472,6 +2472,9 @@
           "name": "横断歩道",
           "terms": "横断歩道,歩道"
         },
+        "highway/crossing/informal": {
+          "name": "横断多し"
+        },
         "highway/crossing/traffic_signals": {
           "name": "横断歩道(信号あり)",
           "terms": "横断歩道(信号あり),横断歩道,信号機,信号,歩行者信号機,歩行者用信号機"
@@ -5313,6 +5316,10 @@
           "name": "浴室用品店",
           "terms": "浴室用品店,バス用品"
         },
+        "shop/bbq": {
+          "name": "バーベキュー用品店",
+          "terms": "バーベキュー,グリル"
+        },
         "shop/beauty": {
           "name": "美容サービス",
           "terms": "美容サービス,エステサロン,ネイルサロン,サービス,店舗,お店"
@@ -5602,6 +5609,10 @@
         "shop/greengrocer": {
           "name": "青果店",
           "terms": "青果店,八百屋,果物屋,食料品,食品,食べ物,野菜,ベジタブル,果物,くだもの,フルーツ,小売,店舗,お店"
+        },
+        "shop/groundskeeping": {
+          "name": "芝生整備用品店",
+          "terms": "グラウンド整備用品店"
         },
         "shop/hairdresser": {
           "name": "理美容店",

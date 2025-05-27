@@ -774,8 +774,6 @@ Ako su neke trake rezervirane za autobuse, umjesto toga ostavite bilješku."</st
     <string name="quest_surface_value_rock">"Kamenje"</string>
     <string name="quest_parkingType_street_side">"Parkiralište tik uz cestu"</string>
     <string name="quest_parkingType_lane">"Parkiralište na cesti"</string>
-    <string name="quest_tracktype_grade2a">"Čvrsta ali nepopločana"</string>
-    <string name="quest_tracktype_grade3a">"Uglavnom čvrsta"</string>
     <string name="quest_generic_answer_does_not_exist">"Ne postoji…"</string>
     <string name="osm_element_gone_description">"Jeste li sigurni da ne postoji, čak ni na nešto pomaknutoj lokaciji? Ako niste potpuno sigurni, radije ostavite bilješku."</string>
     <string name="osm_element_gone_confirmation">"Ne postoji"</string>

@@ -854,7 +854,7 @@
         },
         "amenity/prep_school": {
           "name": "Centro de explicações",
-          "terms": "exames,tutoring,escola,escola de preparação,matemática,tpc,trabalhos de casa,leitura,explicações,testes,ensino"
+          "terms": "exames,tutoring,escola,escola de preparação,matemática,tpc,trabalhos de casa,leitura,explicações,testes,ensino,estudos,estudo,estudar"
         },
         "amenity/prison": {
           "name": "Prisão",
@@ -1739,7 +1739,7 @@
           "terms": "casa,domicílio,moradia,mansão,solar,vivenda,residência,lar,edifício"
         },
         "building/house/terraced": {
-          "name": "Casa geminada",
+          "name": "Casa em banda",
           "terms": "edifício,habitação,residência,terrace,townhome,townhouse,geminada"
         },
         "building/houseboat": {
@@ -1804,8 +1804,8 @@
           "terms": "school building,pavilhão escolar,escola,educacional,serviços escolares"
         },
         "building/semidetached_house": {
-          "name": "Casa semi-isolada",
-          "terms": "semi-detached house,edifício,casa,destacada,habitação,residência"
+          "name": "Casa geminada",
+          "terms": "semi-detached house,edifício,casa,habitação,residência"
         },
         "building/service": {
           "name": "Edifício de serviço",
@@ -1840,7 +1840,7 @@
           "terms": "edifício,templo,religioso,oração,religião"
         },
         "building/terrace": {
-          "name": "Fileira de casas geminadas",
+          "name": "Fileira de casas em banda",
           "terms": "geminado,geminada,germinada,linha de casas,habitação,house,casa,residência,residence,dwelling,brownstone"
         },
         "building/train_station": {
@@ -2445,6 +2445,9 @@
         "highway/crossing": {
           "name": "Passadeira",
           "terms": "zebra,faixa de segurança,passagem,passagem de peões,riscas,pedestres,travessia,crossing,segurança,peão"
+        },
+        "highway/crossing/informal": {
+          "name": "Travessia informal"
         },
         "highway/crossing/traffic_signals": {
           "name": "Passadeira com semáforos",

@@ -479,7 +479,8 @@
           "terms": "kiirtoidukoht,tänavatoidukoht,tänavatoit"
         },
         "amenity/fast_food/bagel": {
-          "name": "soolakringlikohvik"
+          "name": "soolakringlikohvik",
+          "terms": "sarvesai,soolakringel"
         },
         "amenity/fast_food/burger": {
           "name": "Burgeriputka",
@@ -647,7 +648,8 @@
           "terms": "motikaparkla"
         },
         "amenity/motorcycle_rental": {
-          "name": "Mootorratta rent"
+          "name": "Mootorratta rent",
+          "terms": "motikarent"
         },
         "amenity/music_school": {
           "name": "Muusikakool",
@@ -783,7 +785,8 @@
           "terms": "pubi"
         },
         "amenity/pub/irish": {
-          "name": "Iiri pubi"
+          "name": "Iiri pubi",
+          "terms": "iiri baar,viski,iiri kohv"
         },
         "amenity/pub/lgbtq": {
           "name": "LGBTQ+ kõrts"
@@ -1095,7 +1098,8 @@
           "name": "Toidu müügiautomaat"
         },
         "amenity/vending_machine/food/snacks": {
-          "name": "Näkside müügiautomaat"
+          "name": "Näkside müügiautomaat",
+          "terms": "kommid,batoon,maiustus"
         },
         "amenity/vending_machine/fuel": {
           "name": "Kütusetankur",
@@ -1124,7 +1128,8 @@
           "name": "Postmarkide müügiautomaat"
         },
         "amenity/vending_machine/sweets": {
-          "name": "Kommiautomaat"
+          "name": "Kommiautomaat",
+          "terms": "kommid,maiustused"
         },
         "amenity/veterinary": {
           "name": "Loomaarst",
@@ -1531,7 +1536,8 @@
           "name": "Tootmishoone"
         },
         "building/mosque": {
-          "name": "Mošeehoone"
+          "name": "Mošeehoone",
+          "terms": "muhameedlaste pühakoda,islami pühakoda,mulla,minarett"
         },
         "building/office": {
           "name": "Büroohoone",
@@ -1592,7 +1598,8 @@
           "name": "Paikne haagismaja"
         },
         "building/sty": {
-          "name": "Sigala"
+          "name": "Sigala",
+          "terms": "seasulg,seapesa"
         },
         "building/synagogue": {
           "name": "Sünagoogi hoone"
@@ -1709,7 +1716,8 @@
           "name": "Põrandameister"
         },
         "craft/gardener": {
-          "name": "Aednik"
+          "name": "Aednik",
+          "terms": "iluaednik,kärner,kunstkärner"
         },
         "craft/glaziery": {
           "name": "Klaasija",
@@ -1998,7 +2006,8 @@
           "terms": "traditsiooniline hiina meditsiin,ravitseja"
         },
         "healthcare/alternative/chiropractic": {
-          "name": "Kiropraktik"
+          "name": "Kiropraktik",
+          "terms": "osteopaat,kondiväänaja,luutasuja,manuaalterapeut"
         },
         "healthcare/alternative/homeopathy": {
           "name": "Homöopaat"
@@ -2027,7 +2036,8 @@
           "name": "Raviteenuste nõustamiskeskus"
         },
         "healthcare/dentist/orthodontics": {
-          "name": "Ortodont"
+          "name": "Ortodont",
+          "terms": "erihambaarst,hambakorrastusõpetus,hambakorrastusarst"
         },
         "healthcare/hospice": {
           "name": "Hooldekodu",
@@ -2096,6 +2106,9 @@
         "highway/crossing": {
           "name": "Ülekäigurada",
           "terms": "ülekäik,vöötrada,ülekäigukoht"
+        },
+        "highway/crossing/informal": {
+          "name": "Mitteametlik ülekäigurada"
         },
         "highway/crossing/traffic_signals": {
           "name": "Fooridega juhitud ülekäigurada jalakäijatele",
@@ -2892,7 +2905,8 @@
           "name": "Austraalia jalgpalli väljak"
         },
         "leisure/pitch/badminton": {
-          "name": "Sulgpalliväljak"
+          "name": "Sulgpalliväljak",
+          "terms": "bädminton,sulka,sulkaplats"
         },
         "leisure/pitch/baseball": {
           "name": "Pesapalliväljak",
@@ -3792,13 +3806,15 @@
           "name": "Arhitektuuribüroo"
         },
         "office/association": {
-          "name": "MTÜ kontor"
+          "name": "MTÜ kontor",
+          "terms": "ngo,mtü"
         },
         "office/bail_bond_agent-US-PH": {
           "name": "Kautsjoniagent"
         },
         "office/charity": {
-          "name": "Heategevusasutuse büroo"
+          "name": "Heategevusühingu büroo",
+          "terms": "heategevusasutuse,heategevusühing,annetus,annetamine"
         },
         "office/company": {
           "name": "Ettevõtte kontor",
@@ -3847,7 +3863,8 @@
           "name": "Rahandusnõustaja büroo"
         },
         "office/forestry": {
-          "name": "Metsaamet"
+          "name": "Metsaamet",
+          "terms": "metsamajandus,metsandus"
         },
         "office/foundation": {
           "name": "Sihtasutuse büroo"
@@ -4238,7 +4255,7 @@
         },
         "public_transport/platform/subway": {
           "name": "Metroo ooteplatvorm",
-          "terms": "metroo platvorm,metrooplatvorm"
+          "terms": "metroo platvorm,metrooplatvorm,allmaaraudteeplatvorm"
         },
         "public_transport/platform/subway_point": {
           "name": "Metroopeatus"
@@ -4289,7 +4306,8 @@
           "name": "Monorelsstee jaam"
         },
         "public_transport/station_subway": {
-          "name": "Metroojaam"
+          "name": "Metroojaam",
+          "terms": "allmaaraudteejaam"
         },
         "public_transport/station_train": {
           "name": "Raudteejaam"
@@ -4420,7 +4438,7 @@
         },
         "railway/subway": {
           "name": "Metrootee",
-          "terms": "maaalune raudtee"
+          "terms": "maaalune raudtee,allmaaraudtee"
         },
         "railway/subway_entrance": {
           "name": "Metroo sissepääs",
@@ -5022,6 +5040,10 @@
           "name": "Renditeenuse büroo",
           "terms": "rentimine"
         },
+        "shop/repair": {
+          "name": "Parandustöökoda",
+          "terms": "pisiparandus,kingad,vihmavari,kott"
+        },
         "shop/rice": {
           "name": "Riisipood",
           "terms": "pikateraline riis,jasmiiniriis,basmatiriis"
@@ -5512,7 +5534,8 @@
           "name": "Teemarsruut"
         },
         "type/route/subway": {
-          "name": "Metroomarsruut"
+          "name": "Metroomarsruut",
+          "terms": "allmaaraudteeliin"
         },
         "type/route/train": {
           "name": "Rongimarsruut"

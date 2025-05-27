@@ -2485,6 +2485,9 @@
           "name": "Bahnübergang (Fussgänger)",
           "terms": "überweg,übergang,überquerung,querung,fußgängerüberweg,fußgängerübergang,fußgängerüberquerung,fußgängerquerung"
         },
+        "highway/crossing/informal": {
+          "name": "Informeller Übergang"
+        },
         "highway/crossing/traffic_signals": {
           "name": "Überweg mit Ampelregelung",
           "terms": "fußgängerampel,fußgängergang,fußgängerüberweg (ampel),fahrradüberweg (ampel),zebrastreifen (ampel)"

@@ -1307,6 +1307,9 @@
           "name": "Vétérinaire",
           "terms": "vétérinaire"
         },
+        "amenity/veterinary_pharmacy": {
+          "name": "Pharmacie véterinaire"
+        },
         "amenity/waste/dog_excrement": {
           "name": "Bac à excrément de chien",
           "terms": "bac à excrément de chien,poubelle,déchets,crottes,chien"
@@ -1507,7 +1510,7 @@
           "terms": "barrière,portail,accès,fil,fer,barré,barbelé"
         },
         "barrier/handrail": {
-          "name": "Rampe"
+          "name": "Rampe, Main courante"
         },
         "barrier/hedge": {
           "name": "Haie",
@@ -1829,7 +1832,7 @@
           "aliases": "Maison jumelée"
         },
         "building/service": {
-          "name": "Bâtiment de service (technique)",
+          "name": "Bâtiment de service",
           "terms": "bâtiment de services,batiment de services,services"
         },
         "building/shed": {
@@ -2468,6 +2471,9 @@
         "highway/crossing": {
           "name": "Passage piéton",
           "terms": "passage piéton"
+        },
+        "highway/crossing/informal": {
+          "name": "Passage piéton informel"
         },
         "highway/crossing/traffic_signals": {
           "name": "Passage piéton avec feux de signalisation",
@@ -5304,6 +5310,9 @@
           "name": "Fournitures pour salles de bain",
           "terms": "fournitures pour salles de bain"
         },
+        "shop/bbq": {
+          "name": "Magasin pour barbecues"
+        },
         "shop/beauty": {
           "name": "Salon de beauté",
           "terms": "salon de beauté,institut de beauté,épilation"
@@ -5592,6 +5601,9 @@
         "shop/greengrocer": {
           "name": "Primeur",
           "terms": "fruiterie,marchand de fruits et légumes,maraicher,maraîcher,primeur"
+        },
+        "shop/groundskeeping": {
+          "name": "Magasin d'entretien du jardin"
         },
         "shop/hairdresser": {
           "name": "Salon de coiffure",
@@ -6099,7 +6111,8 @@
         },
         "tourism/information/map": {
           "name": "Carte",
-          "terms": "plan"
+          "terms": "plan",
+          "aliases": "Plan\nTable d'orientation"
         },
         "tourism/information/office": {
           "name": "Centre d'accueil des visiteurs",

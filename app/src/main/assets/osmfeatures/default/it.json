@@ -4646,7 +4646,7 @@
         },
         "shop/bed": {
           "name": "Negozio di letti/materassi",
-          "terms": "negozio di materassi"
+          "terms": "negozio di materassi,letti,letto,materasso,materassi,cuscini,cuscino,guanciali,guanciale"
         },
         "shop/beverages": {
           "name": "Negozio di bevande",

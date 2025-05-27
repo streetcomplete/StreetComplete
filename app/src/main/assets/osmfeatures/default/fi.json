@@ -641,7 +641,7 @@
           "name": "Pysäköintiluola"
         },
         "amenity/parking_entrance": {
-          "name": "Pysäköintihallin ajoramppi"
+          "name": "Pysäköintihallin sisäänajo"
         },
         "amenity/parking_space": {
           "name": "Pysäköintiruutu",
@@ -1239,13 +1239,13 @@
           "name": "Tasoon upotettu reunakivi"
         },
         "barrier/kerb/lowered": {
-          "name": "Madallettu reunakivi"
+          "name": "Matala reunakivi"
         },
         "barrier/kerb/raised": {
-          "name": "Korotettu reunakivi"
+          "name": "Korkea reunakivi"
         },
         "barrier/kerb/rolled": {
-          "name": "Aallonmuotoiseksi pyöristetty reunakivi"
+          "name": "Pyöristetty korkea reunakivi"
         },
         "barrier/kissing_gate": {
           "name": "Karjarajoitin"
@@ -1327,13 +1327,13 @@
           "name": "Kerrostalo"
         },
         "building/barn": {
-          "name": "Lato"
+          "name": "Lato/navetta"
         },
         "building/boathouse": {
           "name": "Venevaja"
         },
         "building/bungalow": {
-          "name": "Kesämökki"
+          "name": "Bungalow"
         },
         "building/bunker": {
           "name": "Bunkkeri"
@@ -1365,7 +1365,8 @@
         },
         "building/construction": {
           "name": "Keskeneräinen rakennus",
-          "terms": "rakennus,rakennustyömaa,rakenteilla"
+          "terms": "rakennus,rakennustyömaa,rakenteilla",
+          "aliases": "Rakenteilla oleva rakennus"
         },
         "building/cowshed": {
           "name": "Navetta"
@@ -1393,7 +1394,7 @@
           "terms": "autotalli,autonsäilytys,autohalli,autovarasto,auto"
         },
         "building/garages": {
-          "name": "Suuri autotalli",
+          "name": "Autotallirivistö",
           "terms": "ryhmäautotalli,joukkoautotalli,joukkotalli,ryhmätalli,autotalli"
         },
         "building/ger": {
@@ -1427,7 +1428,8 @@
         },
         "building/hut": {
           "name": "Maja",
-          "terms": "maja,mökki,kesämökki,tönö,pikkutalo,pieni rakennus"
+          "terms": "maja,mökki,kesämökki,tönö,pikkutalo,pieni rakennus",
+          "aliases": "Kota"
         },
         "building/industrial": {
           "name": "Teollisuusrakennus"
@@ -1449,7 +1451,8 @@
           "name": "Ulkorakennus"
         },
         "building/pavilion": {
-          "name": "Urheilurakennus"
+          "name": "Urheilukentän pukuhuone",
+          "aliases": "Pukkari"
         },
         "building/public": {
           "name": "Julkinen rakennus"
@@ -1996,7 +1999,8 @@
           "name": "Linja-autopysäkki"
         },
         "highway/construction": {
-          "name": "Rakenteilla oleva tie"
+          "name": "Rakenteilla oleva tie",
+          "aliases": "Tietyömaa"
         },
         "highway/corridor": {
           "name": "Sisäkäytävä",
@@ -2009,10 +2013,10 @@
           "name": "Valo-ohjattu suojatie"
         },
         "highway/crossing/uncontrolled": {
-          "name": "Merkitty suojatie"
+          "name": "Suojatie"
         },
         "highway/crossing/unmarked": {
-          "name": "Merkitsemätön suojatie"
+          "name": "Ylityspaikka"
         },
         "highway/cycleway": {
           "name": "Pyörätie"
@@ -2081,7 +2085,7 @@
           "name": "Suojatie (merkitty)"
         },
         "highway/footway/crossing/unmarked": {
-          "name": "Suojatie (merkitsemätön)"
+          "name": "Ylityspaikka"
         },
         "highway/footway/informal": {
           "name": "Epävirallinen kävelypolku"
@@ -2155,10 +2159,12 @@
           "terms": "jalankulku,kävely,katu,tori,aukio"
         },
         "highway/primary": {
-          "name": "Kantatie/pääkatu"
+          "name": "Kantatie/pääkatu",
+          "terms": "katu,tie,pääkatu,kokoojakatu,pää,päätie,kanta"
         },
         "highway/primary_link": {
-          "name": "Kantatien ramppi"
+          "name": "Kantatien ramppi",
+          "terms": "katu,tie,kanta,päätie,ramppi,liittymä,eritaso,risteys"
         },
         "highway/raceway": {
           "name": "Moottorirata"
@@ -2173,7 +2179,7 @@
           "name": "Asuinkatu"
         },
         "highway/rest_area": {
-          "name": "Lepoalue"
+          "name": "Levähdysalue"
         },
         "highway/road": {
           "name": "Tuntematon tie"
@@ -2182,10 +2188,12 @@
           "name": "Tuntematon tiesilta"
         },
         "highway/secondary": {
-          "name": "Seututie/alueellinen kokoojakatu"
+          "name": "Seututie/alueellinen kokoojakatu",
+          "terms": "katu,tie,kokooja,alueellinen,kokoojakatu"
         },
         "highway/secondary_link": {
-          "name": "Seututien ramppi"
+          "name": "Seututien ramppi",
+          "terms": "katu,tie,kokooja,alueellinen,kokoojakatu,seutu,ramppi,liittymä,eritaso,risteys"
         },
         "highway/service": {
           "name": "Huoltotie"

@@ -776,8 +776,6 @@
     <string name="quest_surface_value_rock">"صخر"</string>
     <string name="quest_parkingType_street_side">"وقوف السيارات قبالة الطريق"</string>
     <string name="quest_parkingType_lane">"موقف سيارات على الطريق"</string>
-    <string name="quest_tracktype_grade2a">"صلبة لكنها غير ممهدة/معبدة أو مرصوفة"</string>
-    <string name="quest_tracktype_grade3a">"مستوي في المعظم وهو مسار عبر الحصى/صخور المختلطة مع بعض المواد اللينة"</string>
     <string name="quest_generic_answer_does_not_exist">"إنه غير موجود …"</string>
     <string name="osm_element_gone_description">"هل أنت متأكد من أنه غير موجود، ولا حتى في مكان مختلف قليلاً؟ عندما تكون في شك، من الأفضل ترك ملاحظة بدلاً من ذلك."</string>
     <string name="osm_element_gone_confirmation">"إنه غير موجود"</string>
