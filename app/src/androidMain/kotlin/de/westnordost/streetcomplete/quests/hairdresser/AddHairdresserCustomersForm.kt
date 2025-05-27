@@ -1,12 +1,12 @@
 package de.westnordost.streetcomplete.quests.hairdresser
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.AListQuestForm
-import de.westnordost.streetcomplete.quests.TextItem
 import de.westnordost.streetcomplete.quests.hairdresser.HairdresserCustomers.MALE_AND_FEMALE
 import de.westnordost.streetcomplete.quests.hairdresser.HairdresserCustomers.NOT_SIGNED
 import de.westnordost.streetcomplete.quests.hairdresser.HairdresserCustomers.ONLY_FEMALE
 import de.westnordost.streetcomplete.quests.hairdresser.HairdresserCustomers.ONLY_MALE
+import de.westnordost.streetcomplete.quests.AListQuestForm
+import de.westnordost.streetcomplete.ui.common.TextItem
 
 class AddHairdresserCustomersForm : AListQuestForm<HairdresserCustomers>() {
     override val items = listOf(

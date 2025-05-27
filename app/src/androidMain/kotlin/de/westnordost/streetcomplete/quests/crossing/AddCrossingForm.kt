@@ -3,9 +3,9 @@ package de.westnordost.streetcomplete.quests.crossing
 import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
-import de.westnordost.streetcomplete.quests.AListQuestForm
-import de.westnordost.streetcomplete.quests.TextItem
 import de.westnordost.streetcomplete.quests.crossing.CrossingAnswer.*
+import de.westnordost.streetcomplete.quests.AListQuestForm
+import de.westnordost.streetcomplete.ui.common.TextItem
 import org.koin.android.ext.android.inject
 
 class AddCrossingForm : AListQuestForm<CrossingAnswer>() {
@@ -29,7 +29,7 @@ class AddCrossingForm : AListQuestForm<CrossingAnswer>() {
         deleting the crossing ways (I would say... it is in edge case...)
      */
     override fun onClickOk() {
-        if (checkedItem?.value == PROHIBITED && isOnSidewalkOrCrossing()) {
+        if (checkedItem.value?.value == PROHIBITED && isOnSidewalkOrCrossing()) {
             AlertDialog.Builder(requireContext())
                 .setMessage(R.string.quest_leave_new_note_as_answer)
                 .setPositiveButton(R.string.quest_leave_new_note_yes) { _, _ -> composeNote() }

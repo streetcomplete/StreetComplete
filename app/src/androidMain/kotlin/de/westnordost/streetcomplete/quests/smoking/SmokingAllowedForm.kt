@@ -2,11 +2,11 @@ package de.westnordost.streetcomplete.quests.smoking
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AListQuestForm
-import de.westnordost.streetcomplete.quests.TextItem
 import de.westnordost.streetcomplete.quests.smoking.SmokingAllowed.NO
 import de.westnordost.streetcomplete.quests.smoking.SmokingAllowed.OUTSIDE
 import de.westnordost.streetcomplete.quests.smoking.SmokingAllowed.SEPARATED
 import de.westnordost.streetcomplete.quests.smoking.SmokingAllowed.YES
+import de.westnordost.streetcomplete.ui.common.TextItem
 
 class SmokingAllowedForm : AListQuestForm<SmokingAllowed>() {
 
