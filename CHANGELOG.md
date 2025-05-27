@@ -2,11 +2,14 @@
 
 ## v61.1
 
+### Fixes
 - Fix map attribution was shown in front of Next-button in tutorial 😬 (#6255)
 - Fix opening the app at certain location would open it always at that location (#6264)
 - Wheelchair accessible toilets: Fix "no" answer shouldn't imply that there are toilets at all (#6257)
 - Places overlay: Fix some brand features were not selectable (#6272)
 - Building levels: Fix keyboard popped up automatically (#6284)
+
+### Improvements 
 - Halal: Also ask for vegan-only places (#6280), by @mnalis
 - Road width: Disable by default (#6256)
 - Track type: Use better pictures (#6242), by @Caerbannog
