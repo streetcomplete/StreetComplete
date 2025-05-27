@@ -17,17 +17,3 @@ data class LengthInFeetAndInches(val feet: Int, val inches: Int) : Length {
     override fun toMeters() = (feet * 12 + inches) * 0.0254
     override fun toOsmValue() = "$feet'$inches\""
 }
-
-val LengthSaver = Saver<Length?, List<Any>>(save = {
-    when (it) {
-        is LengthInFeetAndInches -> listOf("LengthInFeetAndInches", it.feet, it.inches)
-        is LengthInMeters -> listOf("LengthInMeters", it.meters)
-        null -> listOf("null")
-    }
-}, restore = {
-    when (it[0] as String) {
-        "LengthInFeetAndInches" -> LengthInMeters(it[1] as Double)
-        "LengthInMeters" -> LengthInFeetAndInches(it[1] as Int, it[2] as Int)
-        else -> null
-    }
-})

@@ -2,14 +2,20 @@ package de.westnordost.streetcomplete.quests.max_height
 
 import android.os.Bundle
 import android.view.View
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.LengthUnit
 import de.westnordost.streetcomplete.databinding.ComposeViewBinding
 import de.westnordost.streetcomplete.osm.Length
-import de.westnordost.streetcomplete.osm.LengthSaver
 import de.westnordost.streetcomplete.quests.AbstractArMeasureQuestForm
 import de.westnordost.streetcomplete.quests.LengthForm
 import de.westnordost.streetcomplete.screens.measure.ArSupportChecker
@@ -24,7 +30,6 @@ class AddMaxPhysicalHeightForm : AbstractArMeasureQuestForm<MaxPhysicalHeightAns
     private var isARMeasurement: Boolean = false
     private lateinit var length: MutableState<Length?>
     private lateinit var syncLength: MutableState<Boolean>
-    private var currentUnit = LengthUnit.METER
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,8 +39,9 @@ class AddMaxPhysicalHeightForm : AbstractArMeasureQuestForm<MaxPhysicalHeightAns
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.composeViewBase.content {
-            length = rememberSaveable(stateSaver = LengthSaver) { mutableStateOf(null) }
-            syncLength = rememberSaveable { mutableStateOf(false) }
+            length = remember { mutableStateOf(null) }
+            syncLength = remember { mutableStateOf(false) }
+
             LengthForm(
                 currentLength = length.value,
                 syncLength = syncLength.value,
@@ -48,15 +54,14 @@ class AddMaxPhysicalHeightForm : AbstractArMeasureQuestForm<MaxPhysicalHeightAns
                 maxFeetDigits = 3,
                 maxMeterDigits = Pair(2, 2),
                 selectableUnits = countryInfo.lengthUnits,
-                onUnitChanged = { currentUnit = it },
                 showMeasureButton = checkArSupport(),
-                takeMeasurementClick = { takeMeasurement() },
+                takeMeasurementClick = { takeMeasurement(it) },
             )
         }
     }
 
-    private fun takeMeasurement() {
-        takeMeasurement(currentUnit, false)
+    private fun takeMeasurement(unit: LengthUnit) {
+        takeMeasurement(unit, false)
     }
 
     override fun onMeasured(length: Length) {

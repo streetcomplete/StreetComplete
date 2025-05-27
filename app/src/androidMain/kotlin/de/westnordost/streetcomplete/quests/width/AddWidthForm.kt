@@ -3,8 +3,11 @@ package de.westnordost.streetcomplete.quests.width
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AlertDialog
+import androidx.compose.foundation.layout.Column
+import androidx.compose.material.Text
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.LengthUnit
@@ -13,7 +16,6 @@ import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.osm.Length
 import de.westnordost.streetcomplete.osm.LengthInFeetAndInches
 import de.westnordost.streetcomplete.osm.LengthInMeters
-import de.westnordost.streetcomplete.osm.LengthSaver
 import de.westnordost.streetcomplete.osm.hasDubiousRoadWidth
 import de.westnordost.streetcomplete.quests.AbstractArMeasureQuestForm
 import de.westnordost.streetcomplete.quests.LengthForm
@@ -29,7 +31,7 @@ class AddWidthForm : AbstractArMeasureQuestForm<WidthAnswer>() {
     private var isARMeasurement: Boolean = false
     private lateinit var length: MutableState<Length?>
     private lateinit var syncLength: MutableState<Boolean>
-    private var currentUnit = LengthUnit.METER
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         savedInstanceState?.let { isARMeasurement = it.getBoolean(AR) }
@@ -42,29 +44,35 @@ class AddWidthForm : AbstractArMeasureQuestForm<WidthAnswer>() {
         val explanation = if (isRoad) getString(R.string.quest_road_width_explanation) else null
 
         binding.composeViewBase.content {
-            length = rememberSaveable(stateSaver = LengthSaver) { mutableStateOf(null) }
-            syncLength = rememberSaveable { mutableStateOf(false) }
-            LengthForm(
-                currentLength = length.value,
-                syncLength = syncLength.value,
-                onLengthChanged = {
-                    syncLength.value = false
-                    isARMeasurement = false
-                    length.value = it
-                    checkIsFormComplete()
-                },
-                maxFeetDigits = 3,
-                maxMeterDigits = Pair(2, 2),
-                selectableUnits = countryInfo.lengthUnits,
-                onUnitChanged = { currentUnit = it },
-                showMeasureButton = checkArSupport(),
-                takeMeasurementClick = { takeMeasurement() },
-            )
+            length = remember { mutableStateOf(null) }
+            syncLength = remember { mutableStateOf(false) }
+            Column {
+                if(explanation != null) {
+                    Text(explanation)
+                }
+
+                LengthForm(
+                    currentLength = length.value,
+                    syncLength = syncLength.value,
+                    onLengthChanged = {
+                        syncLength.value = false
+                        isARMeasurement = false
+                        length.value = it
+                        checkIsFormComplete()
+                    },
+                    maxFeetDigits = 3,
+                    maxMeterDigits = Pair(2, 2),
+                    selectableUnits = countryInfo.lengthUnits,
+                    showMeasureButton = checkArSupport(),
+                    takeMeasurementClick = { takeMeasurement(it) },
+                )
+            }
+
         }
     }
 
-    private fun takeMeasurement() {
-        takeMeasurement(currentUnit, false)
+    private fun takeMeasurement(unit: LengthUnit) {
+        takeMeasurement(unit, false)
     }
 
     override fun onMeasured(length: Length) {
