@@ -3,7 +3,7 @@
 ## v61.1
 
 - Fix map attribution was shown in front of Next-button in tutorial 😬 (#6255)
-- Fix opening the app at certain location would open it always at that lcoation (#6264)
+- Fix opening the app at certain location would open it always at that location (#6264)
 - Wheelchair accessible toilets: Fix "no" answer shouldn't imply that there are toilets at all (#6257)
 - Places overlay: Fix some brand features were not selectable (#6272)
 - Building levels: Fix keyboard popped up automatically (#6284)
