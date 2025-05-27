@@ -15,7 +15,6 @@ import de.westnordost.streetcomplete.databinding.FragmentOverlaySurfaceSelectBin
 import de.westnordost.streetcomplete.databinding.ViewImageSelectBinding
 import de.westnordost.streetcomplete.osm.ALL_PATHS
 import de.westnordost.streetcomplete.osm.changeToSteps
-import de.westnordost.streetcomplete.osm.surface.SELECTABLE_WAY_SURFACES
 import de.westnordost.streetcomplete.osm.surface.Surface
 import de.westnordost.streetcomplete.osm.surface.applyTo
 import de.westnordost.streetcomplete.osm.surface.asItem
@@ -40,7 +39,7 @@ class SurfaceOverlayForm : AbstractOverlayForm() {
     private val prefs: Preferences by inject()
 
     private val selectableItems: List<DisplayItem<Surface>> get() =
-        SELECTABLE_WAY_SURFACES.map { it.asItem() }
+        Surface.selectableValuesForWays.map { it.asItem() }
 
     private val lastPickedSurface: Surface? get() =
         prefs.getLastPicked(this::class.simpleName!!)

@@ -98,29 +98,29 @@ private fun Surface?.getColor(element: Element): String =
  *   by extremely strong association between surface and colour
  */
 private val Surface.color get() = when (this) {
-    ASPHALT, CHIPSEAL, CONCRETE
+    ASPHALT, CONCRETE,
         -> Color.BLUE
-    PAVING_STONES, PAVING_STONES_WITH_WEIRD_SUFFIX, BRICK, BRICKS
+    PAVING_STONES,
         -> Color.SKY
-    CONCRETE_PLATES, CONCRETE_LANES, SETT, COBBLESTONE_FLATTENED
+    CONCRETE_LANES, SETT,
         -> Color.CYAN
-    UNHEWN_COBBLESTONE, GRASS_PAVER
+    UNHEWN_COBBLESTONE, GRASS_PAVER,
         -> Color.AQUAMARINE
-    COMPACTED, FINE_GRAVEL
+    COMPACTED, FINE_GRAVEL,
         -> Color.TEAL
-    DIRT, SOIL, EARTH, MUD, GROUND, WOODCHIPS
+    DIRT, MUD, GROUND, WOODCHIPS,
         -> Color.ORANGE
-    GRASS
+    GRASS,
         -> Color.LIME // greenish colour for grass is deliberate
-    SAND
+    SAND,
         -> Color.GOLD // yellowish color for sand is deliberate
     GRAVEL, PEBBLES, ROCK,
         // very different from above but unlikely to be used in same places, i.e. below are usually on bridges
-    WOOD, METAL, METAL_GRID
+    WOOD, METAL,
         -> Color.PURPLE
-    UNKNOWN, PAVED, UNPAVED,
+    UNSUPPORTED, PAVED, UNPAVED,
         // not encountered in normal situations, get the same as generic surface
-    CLAY, ARTIFICIAL_TURF, TARTAN, RUBBER, ACRYLIC, HARD
+    CLAY, ARTIFICIAL_TURF, RUBBER, ACRYLIC,
         -> Color.BLACK
 }
 
@@ -130,7 +130,7 @@ private fun surfaceTaggingNotExpected(element: Element) =
 private fun isIndoor(tags: Map<String, String>): Boolean = tags["indoor"] == "yes"
 
 private fun isLink(tags: Map<String, String>): Boolean =
-    tags["path"] == "link"
-        || tags["footway"] == "link"
-        || tags["cycleway"] == "link"
-        || tags["bridleway"] == "link"
+    tags["path"] == "link" ||
+    tags["footway"] == "link" ||
+    tags["cycleway"] == "link" ||
+    tags["bridleway"] == "link"

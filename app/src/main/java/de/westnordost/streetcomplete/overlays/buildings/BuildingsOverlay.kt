@@ -7,6 +7,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BUILDING
 import de.westnordost.streetcomplete.osm.building.BuildingType
 import de.westnordost.streetcomplete.osm.building.BuildingType.*
+import de.westnordost.streetcomplete.osm.building.OTHER_KEYS_POTENTIALLY_DESCRIBING_BUILDING_TYPE
 import de.westnordost.streetcomplete.osm.building.createBuildingType
 import de.westnordost.streetcomplete.osm.building.iconResId
 import de.westnordost.streetcomplete.overlays.Color
@@ -111,5 +112,5 @@ class BuildingsOverlay : Overlay {
     }
 
     private fun isBuildingTypeMissing(tags: Map<String, String>): Boolean =
-        !BuildingType.otherKeysPotentiallyDescribingBuildingType.any { it in tags }
+        !OTHER_KEYS_POTENTIALLY_DESCRIBING_BUILDING_TYPE.any { it in tags }
 }

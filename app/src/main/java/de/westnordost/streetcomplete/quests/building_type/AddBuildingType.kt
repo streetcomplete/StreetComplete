@@ -6,14 +6,16 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BUILDING
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.building.BuildingType
+import de.westnordost.streetcomplete.osm.building.INVALID_BUILDING_TYPES
+import de.westnordost.streetcomplete.osm.building.OTHER_KEYS_POTENTIALLY_DESCRIBING_BUILDING_TYPE
 import de.westnordost.streetcomplete.osm.building.applyTo
 
 class AddBuildingType : OsmFilterQuestType<BuildingType>() {
 
     override val elementFilter = """
         ways, relations with
-        building ~ yes|${BuildingType.deprecatedValues.joinToString("|")}
-        and ${BuildingType.otherKeysPotentiallyDescribingBuildingType.joinToString(" and ") { "!$it" }}
+        building ~ yes|${INVALID_BUILDING_TYPES.joinToString("|")}
+        and ${OTHER_KEYS_POTENTIALLY_DESCRIBING_BUILDING_TYPE.joinToString(" and ") { "!$it" }}
         and location != underground
         and disused != yes
         and abandoned != yes

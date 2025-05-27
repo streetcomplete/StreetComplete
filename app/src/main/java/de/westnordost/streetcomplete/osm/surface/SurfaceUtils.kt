@@ -4,9 +4,29 @@ import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.getLastCheckDateKeys
 
 val INVALID_SURFACES = setOf(
-    "cobblestone", // https://wiki.openstreetmap.org/wiki/Tag%3Asurface%3Dcobblestone
-    "cement", // https://community.openstreetmap.org/t/mysterious-surface-cement/5158 and https://wiki.openstreetmap.org/wiki/Tag:surface%3Dconcrete
-    "trail", // https://wiki.openstreetmap.org/wiki/Tag%3Asurface%3Dtrail
+    // sorted roughly by usage count
+
+    "cobblestone", // ambiguous (could be unhewn cobblestone or sett)
+
+    "trail", // unclear meaning, deprecated
+
+    "cobblestone:flattened", // sett with good smoothness, deprecated in the wiki
+
+    "cement", // see https://community.openstreetmap.org/t/mysterious-surface-cement/5158 and https://wiki.openstreetmap.org/wiki/Tag:surface%3Dconcrete
+
+    "hard", // badly worded: surface used for tennis hard courts, which is synthetic resin (-> acrylic)
+    "hard_court", // same
+    "decoturf", // that's a brand name for acrylic resin
+
+    "rocky", // undocumented, "rock" surface is already described in wiki as rocky
+    "rocks", // same, deprecated
+
+    "paving_stones:30", // deprecated
+    "paving_stones:20", // deprecated
+
+    "turf", // ambiguous (natural turf or artificial turf)
+
+    "yes", "none", "footway",
 )
 
 val FULLY_PAVED_SURFACES = setOf(
@@ -79,6 +99,7 @@ private fun getCommonSurface(vararg surface: String?): String? = when {
 
 fun getKeysAssociatedWithSurface(prefix: String = ""): Set<String> =
     setOf(
+        "${prefix}surface:note",
         "${prefix}surface:grade",
         "${prefix}surface:colour",
         "source:${prefix}surface",

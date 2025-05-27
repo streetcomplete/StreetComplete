@@ -14,10 +14,7 @@ fun createBuildingType(tags: Map<String, String>): BuildingType? {
     if (buildingValue == "yes") return null
 
     // treat deprecated building value as if it is unspecified
-    if (buildingValue in BuildingType.deprecatedValues) return null
-
-    // ah yes, those two clowns...
-    if (buildingValue == "no" || buildingValue == "entrance") return null
+    if (buildingValue in INVALID_BUILDING_TYPES) return null
 
     // no building and no man_made value at all
     if (buildingValue == null && tags["man_made"] == null) return null
