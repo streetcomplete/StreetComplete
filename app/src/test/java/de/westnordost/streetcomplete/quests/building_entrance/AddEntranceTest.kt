@@ -40,7 +40,7 @@ class AddEntranceTest {
     }
 
     @Test
-    fun `applicable to cases where corridor through building is mapped and amrked as private`() {
+    fun `applicable to cases where corridor through building is mapped and marked as private`() {
         val mapData = generalTestDataWithWayThroughBuilding(mapOf(
             "highway" to "corridor",
             "access" to "private",
@@ -49,7 +49,7 @@ class AddEntranceTest {
     }
 
     @Test
-    fun `applicable to cases where indor footway through building is mapped`() {
+    fun `applicable to cases where indoor footway through building is mapped`() {
         val mapData = generalTestDataWithWayThroughBuilding(mapOf(
             "highway" to "footway",
             "indoor" to "yes",

@@ -724,7 +724,7 @@ class SeparateCyclewayCreatorKtTest {
         )
     }
 
-    @Test fun `apply allowed on footway changes highway to footway if it isnt already`() {
+    @Test fun `apply allowed on footway changes highway to footway if it isn't already`() {
         assertTrue(
             ALLOWED_ON_FOOTWAY.appliedTo(mapOf(
                 "highway" to "path",
