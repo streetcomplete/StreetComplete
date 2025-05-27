@@ -27,6 +27,7 @@ import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -111,13 +112,15 @@ fun <T> SelectableIconItem(
 
             Text(
                 text = title,
+                textAlign = TextAlign.Center,
                 style = TextStyle(
                     color = Color.Black,
                     fontSize = 12.sp,
                     shadow = Shadow(
                         color = Color.Gray,
                         offset = Offset(2f, 2f),
-                        blurRadius = 4f
+                        blurRadius = 4f,
+
                     )
                 ),
                 modifier = Modifier
