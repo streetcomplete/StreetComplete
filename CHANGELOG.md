@@ -1,5 +1,69 @@
 # Changelog
 
+## v61.1
+
+### Fixes
+- Fix map attribution was shown in front of Next-button in tutorial 😬 (#6255)
+- Fix opening the app at certain location would open it always at that location (#6264)
+- Wheelchair accessible toilets: Fix "no" answer shouldn't imply that there are toilets at all (#6257)
+- Places overlay: Fix some brand features were not selectable (#6272)
+- Building levels: Fix keyboard popped up automatically (#6284)
+
+### Improvements 
+- Halal: Also ask for vegan-only places (#6280), by @mnalis
+- Road width: Disable by default (#6256)
+- Track type: Use better pictures (#6242), by @Caerbannog
+- Track type: Align wording with wiki (#6272)
+- Max speed: For implicit max speeds, tag the country subdivision when it is relevant (#6259)
+- Surface: Remove concrete plates as selectable option (#6290)
+- Specify Shop type: Clear properties related to the previous shop when answering that it is vacant now (#6291)
+
+## v61.0
+
+### Android below 7.1 no longer supported (#6210)
+
+In reality, support for Android versions below 7.1 has already been just on-paper for a while now, 
+as more and more issues with old Androids have been popping up lately that cannot be fixed on our 
+side. Luckily, it seems that >99.6% of app users already use Android 7.1 and above. (See #6210)
+
+### Main screen improvements (#6213)
+
+Cleaned up the appearance of the main screen a bit:
+
+- Merged the +/- buttons into one button, not shown by default, it's a setting. By the way, you can also zoom with one finger by double-tapping, then moving the finger up or down. This works in any app in which you can zoom, actually.
+- The upload button is now in the main menu
+- The pointer pin button moves more smoothly (in an ellipsis near the screen border)
+- Added a scale bar on the lower right (#5765)
+- Replaced the static map attribution text with an info button
+
+### New overlays
+
+- _MTB difficulty_: Add the difficulty ratings for mountainbike trails (#1850, #5726), thanks @RubenKelevra and @ravenfield. It is disabled by default because you need to be a domain expert to accurately record this data. (#6226)
+
+### New quests
+
+- _"Are gluten-free products offered here?"_, disabled by default (#3031, #6143), by @mnalis
+
+### Quest and Overlay improvements
+
+- Opening hours: Fix semantic issue when specifying off-days at the top (#6191)
+- Surfaces: Fix surface was asked twice when a generic surface was selected (#6172)
+- Smoothness: Don't ask if surface is still correct just after specifying the surface smoothness (#6178)
+- Baby changing tables: Ask at more places (#6167), by @agent-redd
+- Sidewalk overlay: Align which roads are selectable with the bike paths overlay, for consistency (#6185), by @mnalis
+- Roadwork: Also ask whether minor roadwork (i.e. construction without full road closure) is completed (#6090)
+- Various: Ask about more features of alpine and wilderness huts (#6200, #6201), thanks @tiptoptom
+- Building levels: Prettified input form a bit (#6022), by @GaeaKat
+- Bus stop ref: Also ask in Iran (#6227)
+- Other small things (#6209, #6216, #6217, #6229…), thanks @mnalis, @peternewman
+
+### General Improvements
+
+- Performance improvements on upload and download (#6150) as well as significantly decreased data download size (#6218)
+- Performance improvements in the quest selection screen (#6205), by @irakliy01
+- Added a few new links to unlock via achievements. Newly added links do not unlock silently for old users anymore (#6220)
+- Render parks and playgrounds with an outline (#6221), by @doniks
+
 ## v60.3
 
 - downgraded third-party component because it caused crashes due to memory leaks (see #6166)

@@ -345,6 +345,7 @@ quest/
     footway_surface.svg
     footway_surface_detail.svg
     fuel.svg
+    glutenfree.svg                   created with elements from CC0 https://www.svgrepo.com/svg/269879/cereal-wheat
     hairdresser.svg                  modified from scissors.svg by Matija Nalis (CC0 for modifications)
     housenumber.svg
     housenumber_street.svg
@@ -370,6 +371,7 @@ quest/
     motorcycle_parking.svg
     motorcycle_parking_capacity.svg
     motorcycle_parking_cover.svg
+    mtb.svg
     museum.svg
     no_bicycles.svg
     no_cars.svg                      based on car.svg - modified from Twemoji: U+1F698 by Tobias Zwick, negation circle added by Flo Edelmann
@@ -428,6 +430,7 @@ quest/
     street.svg
     street_lanes.svg
     street_name.svg
+    street_name2.svg                 modified from housenumber_street.svg by Matija Nalis (CC0 for modifications)
     street_surface.svg
     street_surface_detail.svg
     street_turn_lanes.svg
@@ -458,6 +461,20 @@ lit/
     automatic.svg
     yes.svg
     no.svg
+
+mtb scale/
+    0.jpg                 CC-BY-SA 3.0      reimagined with AI by Ruben Kelevra,
+                                            based on https://wiki.openstreetmap.org/wiki/File:S0.jpg
+    1.jpg                 CC-BY-SA 3.0      reimagined with AI by Ruben Kelevra,
+                                            based on https://wiki.openstreetmap.org/wiki/File:S1.jpg
+    2.jpg                 CC-BY-SA 3.0      reimagined with AI by Ruben Kelevra,
+                                            based on https://wiki.openstreetmap.org/wiki/File:S2.jpg
+    3.jpg                 CC-BY-SA 3.0      reimagined with AI by Ruben Kelevra,
+                                            based on https://wiki.openstreetmap.org/wiki/File:S3.jpg
+    4.jpg                 CC-BY-SA 3.0      reimagined with AI by Ruben Kelevra,
+                                            based on https://wiki.openstreetmap.org/wiki/File:S4.jpg
+    5.jpg                 CC-BY-SA 3.0      reimagined with AI by Ruben Kelevra,
+                                            based on https://wiki.openstreetmap.org/wiki/File:S5.jpg
 
 pin/
     pin_dot.xcf

@@ -5,11 +5,12 @@ repositories {
 
 dependencies {
     implementation("com.beust:klaxon:5.6")
-    implementation("de.westnordost:countryboundaries:2.1")
+    implementation("de.westnordost:countryboundaries:3.0.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-io-core:0.7.0")
     implementation("com.esotericsoftware.yamlbeans:yamlbeans:1.17")
     implementation("org.jsoup:jsoup:1.18.3")
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.3")
-    implementation("com.charleskorn.kaml:kaml:0.72.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.8.1")
+    implementation("com.charleskorn.kaml:kaml:0.77.1")
     implementation("org.jetbrains:markdown:0.7.3")
 }
 

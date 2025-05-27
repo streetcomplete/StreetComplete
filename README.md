@@ -49,6 +49,13 @@ This software is released under the terms of the [GNU General Public License](ht
 
 ## Sponsors
 
+<a href="https://nlnet.nl/discovery/"><img src=".github/images/logo_nlnet.svg" alt="nlnet" height="100"/></a><br/>
+The **NLnet foundation** sponsored development on this app in four individual grants with funds from the European Commission:<br/>
+- A grant from <a href="https://nlnet.nl/project/StreetComplete-multiplatform/">2025</a> will allow Tobias Zwick to finish migrating the app to a multiplatform, so that it runs also on iOS (see <a href="https://github.com/streetcomplete/StreetComplete/issues/5421">ticket</a>)
+- In <a href="https://nlnet.nl/project/StreetComplete-Together/">2021</a>, a grant enabled Tobias Zwick to work about five months on the app - most notably, implement the overlays functionality and measuring with AR.
+- In <a href="https://www.openstreetmap.org/user/Mateusz%20Konieczny/diary/368849">2019</a> and <a href="https://www.openstreetmap.org/user/Mateusz%20Konieczny/diary/397825">2021</a>, Mateusz Konieczny each got a grant to work on StreetComplete with a focus on improvements on UI and data collection
+<br/>
+
 <a href="https://github.com/sponsors/westnordost"><picture><source media="(prefers-color-scheme: dark)" srcset=".github/images/logo_github_dark.svg"><img alt="GitHub Sponsors" width="80" src=".github/images/logo_github.svg"></picture></a> <a href="https://liberapay.com/westnordost"><img src=".github/images/logo_liberapay.svg" alt="Liberapay" width="80"/></a> <a href="https://www.patreon.com/westnordost"><picture><source media="(prefers-color-scheme: dark)" srcset=".github/images/logo_patreon_dark.svg"><img alt="Patreon" width="80" src=".github/images/logo_patreon.svg"></picture></a><br/>
 Many users are currently supporting this app through <a href="https://github.com/sponsors/westnordost">GitHub sponsors</a>, <a href="https://liberapay.com/westnordost">Liberapay</a> and <a href="https://www.patreon.com/westnordost">Patreon</a>. If you like the app, you can join them ☺️ to support the continued development and maintenance of the app.<br/>
 <br/>
@@ -62,12 +69,6 @@ Since mid 2020, **JawgMaps** provides their vector map tiles service to StreetCo
 <a href="https://bmbf.de/"><img src=".github/images/logo_bmbf.png" alt="German Federal Ministry of Education and Research" height="140"/></a><a href="https://prototypefund.de/"><img src=".github/images/logo_prototypefund.svg" alt="Prototype Fund" height="140"/></a><br/>
 Within the frame of **Prototype Fund** <a href="https://prototypefund.de/en/project/streetcomplete-for-ios/">round 15</a> (March 2024 to August 2024), the German Federal Ministry of Education and Research sponsored Tobias Zwick to work on StreetComplete for iOS (see [progress report](https://github.com/streetcomplete/StreetComplete/issues/5421#issuecomment-2332402123))<br/><br>
 Development on this app was also sponsored in <a href="https://prototypefund.de/en/project/streetcomplete/">round 8</a> (September 2020 to February 2021) of the Prototype fund, with focus on collecting more data points and on general improvements of this app.<br/>
-<br/>
-
-<a href="https://nlnet.nl/discovery/"><img src=".github/images/logo_nlnet.svg" alt="nlnet" height="100"/></a><br/>
-The **NLnet foundation** sponsored development on this app in three individual grants with funds from the European Commission:<br/>
-<a href="https://www.openstreetmap.org/user/Mateusz%20Konieczny/diary/368849">Two</a> <a href="https://www.openstreetmap.org/user/Mateusz%20Konieczny/diary/397825">grants</a> given to Mateusz Konieczny in 2019 and 2021 enabled him to work on StreetComplete for about one year in total, with a focus on clearer UI and improvements on data collection.
-Furthermore, <a href="https://nlnet.nl/project/StreetComplete-Together/">yet another grant</a> enabled Tobias Zwick to work about five months in 2021/2022 on - most notably - the overlays functionality and measuring with AR.<br/>
 <br/>
 
 <a href="https://osmfoundation.org/"><img src=".github/images/logo_osmf.png" alt="OpenStreetMap foundation" height="70"/></a><br/>

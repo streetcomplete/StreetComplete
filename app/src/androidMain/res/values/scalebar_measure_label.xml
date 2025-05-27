@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="meters_symbol">m</string>
+    <string name="kilometers_symbol">km</string>
+    <string name="feet_symbol">ft</string>
+    <string name="yards_symbol">yd</string>
+    <string name="miles_symbol">mi</string>
+</resources>

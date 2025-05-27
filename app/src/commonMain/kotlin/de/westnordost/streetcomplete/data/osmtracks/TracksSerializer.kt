@@ -1,0 +1,44 @@
+package de.westnordost.streetcomplete.data.osmtracks
+
+import de.westnordost.streetcomplete.util.ktx.attribute
+import de.westnordost.streetcomplete.util.ktx.endTag
+import de.westnordost.streetcomplete.util.ktx.startTag
+import kotlinx.datetime.Instant
+import nl.adaptivity.xmlutil.XmlWriter
+import nl.adaptivity.xmlutil.newWriter
+import nl.adaptivity.xmlutil.xmlStreaming
+
+class TracksSerializer {
+    fun serialize(trackpoints: List<Trackpoint>, creator: String? = null): String {
+        val buffer = StringBuilder()
+        xmlStreaming.newWriter(buffer).serializeToGpx(trackpoints, creator)
+        return buffer.toString()
+    }
+}
+
+private fun XmlWriter.serializeToGpx(trackpoints: List<Trackpoint>, creator: String? = null) {
+    startTag("gpx")
+    attribute("xmlns", "http://www.topografix.com/GPX/1/0")
+    attribute("version", "1.0")
+    creator?.let { attribute("creator", it) }
+    startTag("trk")
+    startTag("trkseg")
+    for (trackpoint in trackpoints) {
+        startTag("trkpt")
+        attribute("lat", trackpoint.position.latitude.toString())
+        attribute("lon", trackpoint.position.longitude.toString())
+        startTag("time")
+        text(Instant.fromEpochMilliseconds(trackpoint.time).toString())
+        endTag("time")
+        startTag("ele")
+        text(trackpoint.elevation.toString())
+        endTag("ele")
+        startTag("hdop")
+        text(trackpoint.accuracy.toString())
+        endTag("hdop")
+        endTag("trkpt")
+    }
+    endTag("trkseg")
+    endTag("trk")
+    endTag("gpx")
+}

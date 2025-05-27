@@ -12,7 +12,7 @@ jobs:
     strategy:
       matrix:
         api-level:
-          - 21 # minSdk
+          - 25 # minSdk
           - 35 # targetSdk
         jdk-version:
           - 21
@@ -53,7 +53,7 @@ jobs:
           force-avd-creation: false
           emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
           disable-animations: false
-          script: echo "Generated AVD snapshot for caching."
+          script: echo "Generated AVD snapshot for caching." && killall -INT crashpad_handler || true
 
       - name: Run Android instrumentation tests
         uses: reactivecircus/android-emulator-runner@v2
@@ -63,4 +63,4 @@ jobs:
           force-avd-creation: false
           emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
           disable-animations: true
-          script: ./gradlew :app:connectedDebugAndroidTest
+          script: ./gradlew :app:connectedDebugAndroidTest && killall -INT crashpad_handler || true

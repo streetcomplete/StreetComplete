@@ -1,7 +1,0 @@
-# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [RBC, CIBC, Instacoin, Scotiabank, TD, BMO, HoneyBadger, Coast Capital Savings, Vancity, DC Bank, Envision Financial, DCBank, TD Canada Trust, RBC Royal Bank, Bitcoiniacs]
-chargingStationOperators: [BC Hydro, ChargePoint, FLO, 'Tesla, Inc.', Flo, WesGroup, flo, ON the RUN, Ministry of Transportation and Infrastructure, TD Canada Trust, Sun Country Highway, Petro-Canada, On The Run, Co-op, City of Vancouver, BCIT]
-clothesContainerOperators: [Developmental Disabilities Association, Green Inspiration BC, Cerebral Palsy Association of BC, Canadian Diabetes Association, Big Brothers of Greater Vancouver Clothing Donation]
-defaultSpeedLimitHasUrbanOrRural: true
-officialLanguages: [en]
-parcelLockerBrand: [Amazon Hub, Amazon Locker]

@@ -1,6 +1,0 @@
-# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [Bank of America, Chase, Wells Fargo, BECU, U.S. Bank, KeyBank, Umpqua Bank, Citibank, RockItCoin, HomeStreet Bank, Banner Bank, Columbia Bank, WaFd Bank, WSECU, Numerica Credit Union, Global Credit Union, Cardtronics, Red Canoe Credit Union, Kitsap Credit Union, WECU, Seattle Metropolitan Credit Union, Peoples Bank, iQ Credit Union, Whatcom Educational Credit Union, Washington State Employees Credit Union, Union Bank, Twinstar Credit Union, TwinStar Credit Union, Timberland Bank, Seattle Credit Union, Riverview Community Bank, Red Canoe, Premier, Opus Bank, OnPoint, Navy Federal Credit Union, MetaBank, Heritage Bank, Hantle, First Financial Northwest Bank, Columbia Credit Union, Cathay Bank, Capital One, BECU (Burien Plaza), 1st Security Bank]
-chargingStationOperators: [ChargePoint, Blink, Volta, Electrify America, 'Tesla, Inc.', Shell Recharge Solutions, EVgo, FLO, BP Pulse, University of Washington, NRG Energy, eVgo, Tesla, GE, EVCS, volta, SemaConnect, Power Seattle, EV Connect, City of Seattle, Bellingham Nissan, Avista, AV aerovironment, 7-Eleven]
-clothesContainerOperators: [TexGreen, USAgain]
-defaultSpeedLimitHasUrbanOrRural: true
-parcelLockerBrand: [Amazon Hub, Amazon Locker, Amazon]

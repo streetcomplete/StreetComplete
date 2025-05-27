@@ -1,5 +1,0 @@
-# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [MSUFCU, Chase, Huntington Bank, Comerica Bank, Bank of America, PNC Bank, Fifth Third Bank, Citizens Bank, Michigan State University Federal Credit Union, Northland Area Federal Credit Union, MSU Federal Credit Union, University of Michigan Credit Union, Breakwater Federal Credit Union, Wells Fargo, The State Bank, Range Bank]
-chargingStationOperators: [ChargePoint, 'Tesla, Inc.', Blink, Consumers Energy, Electrify America, Wayne State University Parking and Transportation Services Department, Shell Recharge Solutions, Red E, adoba ecotel + suites, NRG Energy, Lansing Board of Water and Light, EVgo, Tanger Outlet Mall Howell, Hyatt Place, Ann Arbor Downtown Development Authority]
-defaultSpeedLimitHasUrbanOrRural: false
-parcelLockerBrand: [Amazon Locker]

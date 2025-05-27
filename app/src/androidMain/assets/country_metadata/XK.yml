@@ -1,0 +1,9 @@
+# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
+atmOperators: [TEB, BKT, NLB, Raiffeisen Bank, Raiffaisen Bank, ProCredit Bank, TEB Bank, Raiffeisen Bank Kosovo, NLB Banka, Banka Ekonomike, Raiffeisen, Banka Kombetare Tregtare, BPB]
+defaultSpeedLimitHasUrbanOrRural: true
+hasDailyAlternateSideParkingSign: true
+hasLivingStreet: true
+livingStreetSignStyle: vienna
+mobileCountryCode: 221
+officialLanguages: [sq, sr]
+popularReligions: [muslim]

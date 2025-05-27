@@ -1,22 +1,196 @@
+import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import java.io.FileInputStream
 import java.io.FileWriter
 import java.util.Properties
 
 plugins {
-    id("com.android.application")
-    kotlin("android")
-    kotlin("plugin.serialization") version "2.0.0"
-    kotlin("plugin.compose") version "2.0.0"
+    id("org.jetbrains.kotlin.multiplatform") version "2.1.21"
+    id("org.jetbrains.kotlin.plugin.serialization") version "2.1.21"
+    id("org.jetbrains.kotlin.plugin.compose") version "2.1.21"
+    id("com.android.application") version "8.9.3"
+    //id("org.jetbrains.compose") version "1.8.0" apply false
+}
+
+repositories {
+    google()
+    mavenCentral()
+    // for com.github.chrisbaines:PhotoView
+    maven { url = uri("https://www.jitpack.io") }
+}
+
+kotlin {
+    androidTarget {
+        @OptIn(ExperimentalKotlinGradlePluginApi::class)
+        compilerOptions {
+            jvmTarget.set(JvmTarget.JVM_11)
+        }
+    }
+
+    listOf(
+        iosX64(),
+        iosArm64(),
+        iosSimulatorArm64()
+    ).forEach { iosTarget ->
+        iosTarget.binaries.framework {
+            baseName = "StreetComplete"
+            isStatic = true
+        }
+    }
+
+    sourceSets {
+        androidMain {
+            dependencies {
+                // dependency injection
+                implementation(project.dependencies.platform("io.insert-koin:koin-bom:4.0.4"))
+                implementation("io.insert-koin:koin-core")
+                implementation("io.insert-koin:koin-android")
+                implementation("io.insert-koin:koin-androidx-workmanager")
+                implementation("io.insert-koin:koin-androidx-compose")
+
+                // Android stuff
+                implementation("com.google.android.material:material:1.12.0")
+                implementation("androidx.core:core-ktx:1.16.0")
+                implementation("androidx.appcompat:appcompat:1.7.0")
+                implementation("androidx.constraintlayout:constraintlayout:2.2.1")
+                implementation("androidx.annotation:annotation:1.9.1")
+                implementation("androidx.fragment:fragment-ktx:1.8.7")
+                implementation("androidx.recyclerview:recyclerview:1.4.0")
+                implementation("androidx.viewpager:viewpager:1.1.0")
+                implementation("androidx.localbroadcastmanager:localbroadcastmanager:1.1.0")
+
+                // Jetpack Compose
+                val composeBom = project.dependencies.platform("androidx.compose:compose-bom:2025.04.01")
+                implementation(composeBom)
+
+                implementation("androidx.compose.material:material")
+                implementation("androidx.activity:activity-compose")
+                // Jetpack Compose Previews
+                implementation("androidx.compose.ui:ui-tooling-preview")
+
+                implementation("androidx.navigation:navigation-compose:2.9.0")
+
+                implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.9.0")
+                implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.9.0")
+
+                // reorderable lists (raw Compose API is pretty complicated)
+                implementation("sh.calvin.reorderable:reorderable:2.4.3")
+
+                // multiplatform webview (for login via OAuth)
+                implementation("io.github.kevinnzou:compose-webview-multiplatform-android:1.9.40")
+
+                // photos
+                implementation("androidx.exifinterface:exifinterface:1.4.1")
+
+                // Kotlin
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.10.2")
+
+                // scheduling background jobs
+                implementation("androidx.work:work-runtime-ktx:2.10.1")
+
+                // HTTP Client
+                implementation("io.ktor:ktor-client-android:3.1.3")
+
+                // widgets
+                implementation("androidx.viewpager2:viewpager2:1.1.0")
+                implementation("me.grantland:autofittextview:0.2.1")
+                implementation("com.google.android.flexbox:flexbox:3.0.0")
+                implementation("com.github.chrisbanes:PhotoView:2.3.0")
+
+                // sharing presets/settings via QR Code
+                implementation("io.github.alexzhirkevich:qrose:1.0.1")
+                // for encoding information for the URL configuration (QR code)
+                implementation("com.ionspin.kotlin:bignum:0.3.10")
+
+                // map and location
+                implementation("org.maplibre.gl:android-sdk:11.8.8")
+            }
+        }
+        androidUnitTest {
+            dependencies {
+                implementation("org.mockito:mockito-core:5.17.0")
+                implementation(kotlin("test"))
+            }
+        }
+        androidInstrumentedTest {
+            dependencies {
+                implementation(kotlin("test"))
+                // android tests
+                implementation("androidx.test:runner:1.6.2")
+                implementation("androidx.test:rules:1.6.1")
+            }
+        }
+        commonMain {
+            dependencies {
+                // Kotlin
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2")
+
+                // settings
+                implementation("com.russhwolf:multiplatform-settings:1.3.0")
+
+                // I/O
+                implementation("org.jetbrains.kotlinx:kotlinx-io-core:0.7.0")
+
+                // SQLite
+                implementation("androidx.sqlite:sqlite:2.5.1")
+                implementation("androidx.sqlite:sqlite-bundled:2.5.1")
+
+                // HTTP client
+                implementation("io.ktor:ktor-client-core:3.1.3")
+                implementation("io.ktor:ktor-client-encoding:3.1.3")
+                // SHA256 hashing, used during OAuth authentication
+                implementation("org.kotlincrypto.hash:sha2:0.7.0")
+
+                // XML
+                implementation("io.github.pdvrieze.xmlutil:core:0.91.0")
+                implementation("io.github.pdvrieze.xmlutil:core-io:0.91.0")
+
+                // YAML
+                implementation("com.charleskorn.kaml:kaml:0.77.1")
+
+                // JSON
+                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.8.1")
+                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json-io:1.8.1")
+
+                // Date / time
+                implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.6.2")
+
+                // finding in which country we are for country-specific logic
+                implementation("de.westnordost:countryboundaries:3.0.0")
+
+                // finding OSM features
+                implementation("de.westnordost:osmfeatures:7.0")
+
+                // opening hours parser
+                implementation("de.westnordost:osm-opening-hours:0.2.0")
+            }
+        }
+        commonTest {
+            dependencies {
+                implementation(kotlin("test"))
+
+                implementation("io.ktor:ktor-client-mock:3.1.3")
+            }
+        }
+    }
 }
 
 android {
+    namespace = "de.westnordost.streetcomplete"
+    compileSdk = 35
+
+    defaultConfig {
+        applicationId = "de.westnordost.streetcomplete"
+        minSdk = 25
+        targetSdk = 35
+        versionCode = 6102
+        versionName = "61.1"
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
-        isCoreLibraryDesugaringEnabled = true
-    }
-    kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_11.toString()
     }
 
     signingConfigs {
@@ -24,20 +198,10 @@ android {
         }
     }
 
-    compileSdk = 35
     testOptions {
         unitTests {
             isReturnDefaultValues = true
         }
-    }
-
-    defaultConfig {
-        applicationId = "de.westnordost.streetcomplete"
-        minSdk = 21
-        targetSdk = 35
-        versionCode = 6006
-        versionName = "60.3"
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
@@ -48,14 +212,14 @@ android {
             proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
             testProguardFile("test-proguard-rules.pro")
         }
-        getByName("release") {
-            signingConfig = signingConfigs.getByName("release")
-            buildConfigField("boolean", "IS_GOOGLE_PLAY", "false")
-        }
         getByName("debug") {
             isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
             applicationIdSuffix = ".debug"
+            buildConfigField("boolean", "IS_GOOGLE_PLAY", "false")
+        }
+        getByName("release") {
+            signingConfig = signingConfigs.getByName("release")
             buildConfigField("boolean", "IS_GOOGLE_PLAY", "false")
         }
         create("releaseGooglePlay") {
@@ -83,11 +247,6 @@ android {
         )
         abortOnError = false
     }
-    namespace = "de.westnordost.streetcomplete"
-}
-
-composeCompiler {
-    enableStrongSkippingMode = true
 }
 
 val keystorePropertiesFile = rootProject.file("keystore.properties")
@@ -101,122 +260,6 @@ if (keystorePropertiesFile.exists()) {
     releaseSigningConfig.keyPassword = props.getProperty("keyPassword")
 }
 
-repositories {
-    google()
-    mavenCentral()
-}
-
-dependencies {
-    val mockitoVersion = "5.15.2"
-
-    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.5")
-
-    // tests
-    testImplementation("org.mockito:mockito-core:$mockitoVersion")
-    testImplementation(kotlin("test"))
-
-    androidTestImplementation("androidx.test:runner:1.6.2")
-    androidTestImplementation("androidx.test:rules:1.6.1")
-    androidTestImplementation("org.mockito:mockito-android:$mockitoVersion")
-    androidTestImplementation(kotlin("test"))
-
-    // dependency injection
-    implementation(platform("io.insert-koin:koin-bom:4.0.2"))
-    implementation("io.insert-koin:koin-core")
-    implementation("io.insert-koin:koin-android")
-    implementation("io.insert-koin:koin-androidx-workmanager")
-    implementation("io.insert-koin:koin-androidx-compose")
-
-    // Android stuff
-    implementation("com.google.android.material:material:1.12.0")
-    implementation("androidx.core:core-ktx:1.15.0")
-    implementation("androidx.appcompat:appcompat:1.7.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.2.1")
-    implementation("androidx.annotation:annotation:1.9.1")
-    implementation("androidx.fragment:fragment-ktx:1.8.6")
-    implementation("androidx.recyclerview:recyclerview:1.4.0")
-    implementation("androidx.viewpager:viewpager:1.1.0")
-    implementation("androidx.localbroadcastmanager:localbroadcastmanager:1.1.0")
-
-    // SQLite
-    implementation("androidx.sqlite:sqlite:2.5.0-rc03")
-    implementation("androidx.sqlite:sqlite-bundled:2.5.0-rc03")
-
-    // Jetpack Compose
-    val composeBom = platform("androidx.compose:compose-bom:2025.02.00")
-    implementation(composeBom)
-    androidTestImplementation(composeBom)
-    implementation("androidx.compose.material:material")
-    implementation("androidx.activity:activity-compose")
-    // Jetpack Compose Previews
-    implementation("androidx.compose.ui:ui-tooling-preview")
-    debugImplementation("androidx.compose.ui:ui-tooling")
-
-    implementation("androidx.navigation:navigation-compose:2.8.8")
-
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.7")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.7")
-
-    // reorderable lists (raw Compose API is pretty complicated)
-    implementation("sh.calvin.reorderable:reorderable:2.4.3")
-
-    // multiplatform webview (for login via OAuth)
-    implementation("io.github.kevinnzou:compose-webview-multiplatform-android:1.9.40")
-
-    // photos
-    implementation("androidx.exifinterface:exifinterface:1.4.0")
-
-    // settings
-    implementation("com.russhwolf:multiplatform-settings:1.3.0")
-
-    // Kotlin
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.1")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.10.1")
-    implementation("org.jetbrains.kotlinx:kotlinx-io-core:0.7.0")
-
-    // Date/time
-    api("org.jetbrains.kotlinx:kotlinx-datetime:0.6.2")
-
-    // scheduling background jobs
-    implementation("androidx.work:work-runtime-ktx:2.10.0")
-
-    // HTTP Client
-    implementation("io.ktor:ktor-client-core:3.1.1")
-    implementation("io.ktor:ktor-client-android:3.1.1")
-    testImplementation("io.ktor:ktor-client-mock:3.1.1")
-
-    // finding in which country we are for country-specific logic
-    implementation("de.westnordost:countryboundaries:2.1")
-    // finding a name for a feature without a name tag
-    implementation("de.westnordost:osmfeatures:7.0")
-
-    // widgets
-    implementation("androidx.viewpager2:viewpager2:1.1.0")
-    implementation("me.grantland:autofittextview:0.2.1")
-    implementation("com.google.android.flexbox:flexbox:3.0.0")
-
-    // sharing presets/settings via QR Code
-    implementation("io.github.alexzhirkevich:qrose:1.0.1")
-    // for encoding information for the URL configuration (QR code)
-    implementation("com.ionspin.kotlin:bignum:0.3.10")
-
-    // serialization
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.8.0")
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json-io:1.8.0")
-    implementation("com.charleskorn.kaml:kaml:0.72.0")
-    implementation("io.github.pdvrieze.xmlutil:core:0.90.3")
-
-    // map and location
-    // upgrading MapLibre blocked by https://github.com/maplibre/maplibre-native/issues/3309
-    implementation("org.maplibre.gl:android-sdk:11.8.0")
-
-    // opening hours parser
-    implementation("de.westnordost:osm-opening-hours:0.2.0")
-
-    // image view that allows zoom and pan
-    implementation("com.github.chrisbanes:PhotoView:2.3.0")
-}
-
 /** Localizations that should be pulled from POEditor */
 val bcp47ExportLanguages = setOf(
     "ar", "ast", "be", "bg", "bs", "ca", "cs", "da", "de", "el",
@@ -228,16 +271,16 @@ val bcp47ExportLanguages = setOf(
 )
 
 // see https://github.com/osmlab/name-suggestion-index/tags for latest version
-val nsiVersion = "v6.0.20250309"
+val nsiVersion = "v6.0.20250525"
 // see https://github.com/openstreetmap/id-tagging-schema/releases for latest version
-val presetsVersion = "v6.9.1"
+val presetsVersion = "v6.11.0"
 
 val poEditorProjectId = "97843"
 
 tasks.register("updateAvailableLanguages") {
     group = "streetcomplete"
     doLast {
-        val fileWriter = FileWriter("$projectDir/src/main/res/raw/languages.yml", false)
+        val fileWriter = FileWriter("$projectDir/src/androidMain/res/raw/languages.yml", false)
         fileWriter.write(bcp47ExportLanguages.joinToString("\n") { "- $it" })
         fileWriter.write("\n")
         fileWriter.close()
@@ -246,7 +289,7 @@ tasks.register("updateAvailableLanguages") {
 
 tasks.register<GetTranslatorCreditsTask>("updateTranslatorCredits") {
     group = "streetcomplete"
-    targetFile = "$projectDir/src/main/res/raw/credits_translators.yml"
+    targetFile = "$projectDir/src/androidMain/res/raw/credits_translators.yml"
     languageCodes = bcp47ExportLanguages
     cookie = properties["POEditorCookie"] as String
     phpsessid = properties["POEditorPHPSESSID"] as String
@@ -256,28 +299,28 @@ tasks.register<UpdatePresetsTask>("updatePresets") {
     group = "streetcomplete"
     version = presetsVersion
     languageCodes = bcp47ExportLanguages
-    targetDir = "$projectDir/src/main/assets/osmfeatures/default"
+    targetDir = "$projectDir/src/androidMain/assets/osmfeatures/default"
 }
 
 tasks.register<UpdateNsiPresetsTask>("updateNsiPresets") {
     group = "streetcomplete"
     version = nsiVersion
-    targetDir = "$projectDir/src/main/assets/osmfeatures/brands"
+    targetDir = "$projectDir/src/androidMain/assets/osmfeatures/brands"
 }
 
 // tasks.register<DownloadBrandLogosTask>("downloadBrandLogos") {
 //     group = "streetcomplete"
 //     version = nsiVersion
-//     targetDir = "$projectDir/src/main/assets/osmfeatures/brands"
+//     targetDir = "$projectDir/src/androidMain/assets/osmfeatures/brands"
 // }
 
 tasks.register<DownloadAndConvertPresetIconsTask>("downloadAndConvertPresetIcons") {
     group = "streetcomplete"
     version = presetsVersion
-    targetDir = "$projectDir/src/main/res/drawable/"
+    targetDir = "$projectDir/src/androidMain/res/drawable/"
     iconSize = 34
     transformName = { "ic_preset_" + it.replace('-', '_') }
-    indexFile = "$projectDir/src/main/java/de/westnordost/streetcomplete/view/PresetIconIndex.kt"
+    indexFile = "$projectDir/src/androidMain/kotlin/de/westnordost/streetcomplete/view/PresetIconIndex.kt"
 }
 
 tasks.register<UpdateAppTranslationsTask>("updateTranslations") {
@@ -285,7 +328,7 @@ tasks.register<UpdateAppTranslationsTask>("updateTranslations") {
     languageCodes = bcp47ExportLanguages
     apiToken = properties["POEditorAPIToken"] as String
     projectId = poEditorProjectId
-    targetFiles = { "$projectDir/src/main/res/values-$it/strings.xml" }
+    targetFiles = { "$projectDir/src/androidMain/res/values-$it/strings.xml" }
 }
 
 tasks.register<UpdateAppTranslationCompletenessTask>("updateTranslationCompleteness") {
@@ -294,18 +337,18 @@ tasks.register<UpdateAppTranslationCompletenessTask>("updateTranslationCompleten
     mustIncludeLanguagePercentage = 90
     apiToken = properties["POEditorAPIToken"] as String
     projectId = poEditorProjectId
-    targetFiles = { "$projectDir/src/main/res/values-$it/translation_info.xml" }
+    targetFiles = { "$projectDir/src/androidMain/res/values-$it/translation_info.xml" }
 }
 
 tasks.register<UpdateChangelogTask>("updateChangelog") {
     group = "streetcomplete"
     sourceFile = "$rootDir/CHANGELOG.md"
-    targetFile = "$projectDir/src/main/res/raw/changelog.html"
+    targetFile = "$projectDir/src/androidMain/res/raw/changelog.html"
 }
 
 tasks.register<UpdateMapStyleTask>("updateMapStyle") {
     group = "streetcomplete"
-    targetDir = "$projectDir/src/main/assets/map_theme"
+    targetDir = "$projectDir/src/androidMain/assets/map_theme"
     apiKey = "mL9X4SwxfsAGfojvGiion9hPKuGLKxPbogLyMbtakA2gJ3X88gcVlTSQ7OD6OfbZ"
     mapStyleBranch = "master"
 }
@@ -313,12 +356,12 @@ tasks.register<UpdateMapStyleTask>("updateMapStyle") {
 tasks.register<GenerateMetadataByCountryTask>("generateMetadataByCountry") {
     group = "streetcomplete"
     sourceDir = "$rootDir/res/country_metadata"
-    targetDir = "$projectDir/src/main/assets/country_metadata"
+    targetDir = "$projectDir/src/androidMain/assets/country_metadata"
 }
 
 tasks.register("copyDefaultStringsToEnStrings") {
     doLast {
-        File("$projectDir/src/main/res/values/strings.xml")
-            .copyTo(File("$projectDir/src/main/res/values-en/strings.xml"), true)
+        File("$projectDir/src/androidMain/res/values/strings.xml")
+            .copyTo(File("$projectDir/src/androidMain/res/values-en/strings.xml"), true)
     }
 }

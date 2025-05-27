@@ -1,0 +1,18 @@
+# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
+atmOperators: [Caixa Geral de Depósitos, Euronet, Crédito Agrícola, Multibanco, Santander Totta, Banco Santander, Novo Banco, Montepio, Millennium bcp, SIBS, Euronet Worldwide, MB Multibanco, Banco BPI, Millennium BCP, Santander, ATMExpress, ATM Express, EuroBic, BPI, Millennium, Bankinter, CGD, Banco Montepio, Caixa Agrícola, ATM, multibanco, Millenium bcp, Caixa de Crédito Agrícola, Branco BPI, Millenium, CCAM, BES, Abanca, SIBS Multibanco, Crédito Agricola, Cashzone, Banco CTT, novobanco, crédito agrícola, bankinter, Novobanco, Mind the Coin, Deutsche Bank, Credit Agricole, Cash Zone, Caixa Agricola, Barclays, Banco Popular, BCP Millenium, BBVA, ActivoBank]
+chargingStationOperators: [EDP, Galp Power, Powerdot, Atlante, True Kare, KLC Serviços, Tesla, Galp Geste, Repsol, Iberdrola, Prio.E, Helexia II, Sonae, Mobiletric, Charging Together, Mota Engil II, Maksu Services, MobiSmart, Moon, EcoInside, EV Power, Porsche, Loulé Concelho Global, Hexagonal Ocean, EMEL, Generation Journey, DTE, Ucharge, Cepsa, E-Plug, Veimonte, High Green Power, GreenCharge, Alfa Energia, Renault, Nissan, Luzigás, Bluecharge, Evio, DPC-Privado, Circuitos Energy Solutions, Cable Energia, Neureifen, NRG, EVIO, Cargga Inteligente, CapWatt]
+clothesContainerOperators: [Ultriplo, Humana Portugal, Ultriplo Lda, Wippytex, H Sarah Trading, Projeto Amigo, Fundação o Século, FILTEX & reciclagem, Câmara Municipal de Lisboa, Cáritas Diocesana de Lisboa, Cáritas, utriplo, Utriplo, Sarah Trading, ResiNorte, Cáritas Diocesana de Setúbal]
+defaultSpeedLimitHasUrbanOrRural: true
+hasAdvisoryCycleLane: false
+hasAdvisorySpeedLimitSign: true
+hasSlowZone: true
+mobileCountryCode: 268
+noParkingLineStyle: dashed yellow
+noStoppingLineStyle: yellow
+officialLanguages: [pt]
+orchardProduces: [olive, grape, chestnut, almond, orange, tomato, apple, pear, walnut, fig, peach, kiwi, blueberry, avocado, plum]
+parcelLockerBrand: [Locky CTT, Locky, Amazon Hub, InPost, DPD Pickup Station, DPD, Amazon, CTT, Amazon Locker]
+popularReligions: [christian, jewish, muslim]
+postboxesHaveCollectionTimes: true
+slowZoneLabelPosition: top
+slowZoneLabelText: zona
