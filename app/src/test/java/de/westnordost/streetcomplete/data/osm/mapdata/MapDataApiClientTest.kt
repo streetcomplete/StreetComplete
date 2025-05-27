@@ -34,7 +34,7 @@ class MapDataApiClientTest {
     }
 
     @Test fun getNode(): Unit = runBlocking {
-        assertEquals("Yangon", liveClient.getNode(NDDE_YANGON)?.tags?.get("name:en"))
+        assertEquals("Yangon", liveClient.getNode(NODE_YANGON)?.tags?.get("name:en"))
         assertNull(liveClient.getNode(0))
     }
 
@@ -202,7 +202,7 @@ class MapDataApiClientTest {
 
     // some elements that should exist on the live API
 
-    private val NDDE_YANGON = 26576175L
+    private val NODE_YANGON = 26576175L
     private val WAY_ODERHAFEN = 23564402L
     private val RELATION_HAMBURG = 451087L
 

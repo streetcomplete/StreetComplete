@@ -220,23 +220,23 @@ class AddOpeningHoursTest {
     }
 
     @Test fun `isApplicableTo returns true for known places with old opening hours`() {
-        val milisecondsFor400Days: Long = 1000L * 60 * 60 * 24 * 400
+        val millisecondsFor400Days: Long = 1000L * 60 * 60 * 24 * 400
         assertTrue(questType.isApplicableTo(
-            node(tags = mapOf("shop" to "sports", "name" to "Atze's Angelladen", "opening_hours" to "Mo-Fr 10:00-20:00"), timestamp = nowAsEpochMilliseconds() - milisecondsFor400Days)
+            node(tags = mapOf("shop" to "sports", "name" to "Atze's Angelladen", "opening_hours" to "Mo-Fr 10:00-20:00"), timestamp = nowAsEpochMilliseconds() - millisecondsFor400Days)
         ))
     }
 
     @Test fun `isApplicableTo returns false for closed shops with old opening hours`() {
-        val milisecondsFor400Days: Long = 1000L * 60 * 60 * 24 * 400
+        val millisecondsFor400Days: Long = 1000L * 60 * 60 * 24 * 400
         assertFalse(questType.isApplicableTo(
-            node(tags = mapOf("nonexisting:shop" to "sports", "name" to "Atze's Angelladen", "opening_hours" to "Mo-Fr 10:00-20:00"), timestamp = nowAsEpochMilliseconds() - milisecondsFor400Days)
+            node(tags = mapOf("nonexisting:shop" to "sports", "name" to "Atze's Angelladen", "opening_hours" to "Mo-Fr 10:00-20:00"), timestamp = nowAsEpochMilliseconds() - millisecondsFor400Days)
         ))
     }
 
     @Test fun `isApplicableTo returns true for parks with old opening hours`() {
-        val milisecondsFor400Days: Long = 1000L * 60 * 60 * 24 * 400
+        val millisecondsFor400Days: Long = 1000L * 60 * 60 * 24 * 400
         assertTrue(questType.isApplicableTo(
-            node(tags = mapOf("leisure" to "park", "name" to "Trolololo", "opening_hours" to "Mo-Fr 10:00-20:00"), timestamp = nowAsEpochMilliseconds() - milisecondsFor400Days)
+            node(tags = mapOf("leisure" to "park", "name" to "Trolololo", "opening_hours" to "Mo-Fr 10:00-20:00"), timestamp = nowAsEpochMilliseconds() - millisecondsFor400Days)
         ))
     }
 
