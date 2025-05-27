@@ -26,9 +26,7 @@ fun CountForm(count: Int, onCountChange: (Int) -> Unit, iconPainter: Painter ) {
         OutlinedTextField(
             value = count.toString(),
             onValueChange = { newText: String ->
-                if (newText.all { it.isDigit() }) {
-                    onCountChange(newText.toInt())
-                }
+                newText.toIntOrNull()?.let { onCountChange(it) }
             },
             modifier = Modifier.weight(1f),
             textStyle = MaterialTheme.typography.h3,
