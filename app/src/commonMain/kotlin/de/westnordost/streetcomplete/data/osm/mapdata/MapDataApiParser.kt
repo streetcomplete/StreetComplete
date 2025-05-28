@@ -96,4 +96,3 @@ private fun XmlReader.parseElementUpdates(): Map<ElementKey, ElementUpdate> = tr
     }
     result
 } catch (e: Exception) { throw SerializationException(e) }
-

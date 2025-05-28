@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.data.user.achievements
 
-
 data class Achievement(
     val id: String,
     val icon: Int,

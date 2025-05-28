@@ -41,5 +41,5 @@ data class ElementPolygonsGeometry(
 @SerialName("point")
 data class ElementPointGeometry(override val center: LatLon) : ElementGeometry() {
     @Transient
-    override val bounds : BoundingBox by lazy { BoundingBox(center, center) }
+    override val bounds: BoundingBox by lazy { BoundingBox(center, center) }
 }
