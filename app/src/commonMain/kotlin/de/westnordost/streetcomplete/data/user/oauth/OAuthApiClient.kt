@@ -15,9 +15,7 @@ import io.ktor.http.URLParserException
 import io.ktor.http.Url
 import io.ktor.http.contentType
 import io.ktor.http.decodeURLQueryComponent
-import io.ktor.http.encodeOAuth
 import io.ktor.http.takeFrom
-import io.ktor.utils.io.charsets.Charsets
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 import org.kotlincrypto.hash.sha2.SHA256

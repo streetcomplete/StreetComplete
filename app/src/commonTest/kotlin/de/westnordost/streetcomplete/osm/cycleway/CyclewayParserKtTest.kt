@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.osm.cycleway
 
+import de.westnordost.streetcomplete.osm.cycleway.Cycleway.*
 import de.westnordost.streetcomplete.osm.oneway.Direction
 import de.westnordost.streetcomplete.osm.oneway.Direction.*
-import de.westnordost.streetcomplete.osm.cycleway.Cycleway.*
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertNull

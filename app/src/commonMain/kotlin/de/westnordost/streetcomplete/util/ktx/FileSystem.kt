@@ -1,9 +1,9 @@
 package de.westnordost.streetcomplete.util.ktx
 
-import kotlinx.io.files.FileSystem
-import kotlinx.io.files.Path
 import kotlinx.io.IOException
 import kotlinx.io.files.FileNotFoundException
+import kotlinx.io.files.FileSystem
+import kotlinx.io.files.Path
 
 /**
  * Delete the given path, recursively if it is a directory.
