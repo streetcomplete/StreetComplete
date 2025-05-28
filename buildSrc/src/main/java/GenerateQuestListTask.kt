@@ -45,7 +45,7 @@ open class GenerateQuestListTask : DefaultTask() {
             listOf(noteQuestName) + questNameRegex.findAll(questFileContent).map { it.value }
 
         val questFiles = sourceDirectory.resolve("quests/").listFilesRecursively()
-        val strings = getStrings(projectDirectory.resolve("app/src/main/res/values/strings.xml"))
+        val strings = getStrings(projectDirectory.resolve("app/src/androidMain/res/values/strings.xml"))
         val repoQuests = questNames.mapIndexed { defaultPriority, name ->
             getRepoQuest(name, defaultPriority, questFiles, strings)
         }.sortedBy { it.wikiOrder }
