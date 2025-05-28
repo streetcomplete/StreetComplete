@@ -365,3 +365,6 @@ tasks.register("copyDefaultStringsToEnStrings") {
             .copyTo(File("$projectDir/src/androidMain/res/values-en/strings.xml"), true)
     }
 }
+dependencies {
+    implementation("androidx.compose.material3:material3-android:1.3.2")
+}
