@@ -1,46 +1,49 @@
 package de.westnordost.streetcomplete.ui.common
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.LocalTextStyle
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.TextField
 import androidx.compose.material.TextFieldColors
 import androidx.compose.material.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.times
 import de.westnordost.streetcomplete.data.meta.LengthUnit
 import de.westnordost.streetcomplete.osm.Length
 import de.westnordost.streetcomplete.ui.util.onlyDecimalDigits
 import de.westnordost.streetcomplete.ui.util.validFeetInput
 import de.westnordost.streetcomplete.ui.util.validInchInput
-import de.westnordost.streetcomplete.view.Text
 import kotlin.math.pow
+
+enum class FootInchAppearance { PRIME, UPPERCASE_ABBREVIATION }
 
 @Composable
 fun LengthInput(
-    selectedUnit: LengthUnit, currentLength: Length?,
+    selectedUnit: LengthUnit,
+    footInchAppearance: FootInchAppearance,
+    currentLength: Length?,
     syncLength: Boolean,
     onLengthChanged: (Length?) -> Unit,
     maxFeetDigits: Int,
     maxMeterDigits: Pair<Int, Int>,
     modifier: Modifier = Modifier,
     colors: TextFieldColors = TextFieldDefaults.textFieldColors(),
-    textStyle: TextStyle = MaterialTheme.typography.h4,
 ) {
     if (selectedUnit == LengthUnit.METER) {
         LengthInputMeters(
@@ -50,17 +53,16 @@ fun LengthInput(
             maxMeterDigits,
             modifier,
             colors,
-            textStyle = textStyle
         )
     } else if (selectedUnit == LengthUnit.FOOT_AND_INCH) {
         LengthInputFootInch(
             currentLength,
+            footInchAppearance,
             syncLength,
             onLengthChanged,
             maxFeetDigits,
             modifier,
             colors,
-            textStyle = textStyle
         )
     }
 }
@@ -73,7 +75,6 @@ private fun LengthInputMeters(
     maxMeterDigits: Pair<Int, Int>,
     modifier: Modifier,
     colors: TextFieldColors,
-    textStyle: TextStyle,
 ) {
     var lengthMeterText by remember { mutableStateOf("") }
 
@@ -109,7 +110,7 @@ private fun LengthInputMeters(
                 lengthMeterText = input
             }
         },
-        textStyle = textStyle.copy(textAlign = TextAlign.Center),
+        textStyle = LocalTextStyle.current.copy(textAlign = TextAlign.Center),
         modifier = modifier.width(130.dp),
         colors = colors,
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
@@ -119,12 +120,12 @@ private fun LengthInputMeters(
 @Composable
 private fun LengthInputFootInch(
     currentLength: Length?,
+    footInchAppearance: FootInchAppearance,
     syncLength: Boolean,
     onLengthChanged: (Length?) -> Unit,
     maxFeetDigits: Int,
     modifier: Modifier,
     colors: TextFieldColors,
-    textStyle: TextStyle,
 ) {
     Row(modifier = modifier) {
         var feet by remember {
@@ -172,14 +173,24 @@ private fun LengthInputFootInch(
                 }
 
             },
-            textStyle = textStyle.copy(textAlign = TextAlign.Center),
-            modifier = modifier
-                .width(95.dp),
+            modifier = modifier.width(37.5 * maxFeetDigits.dp),
             colors = colors,
+            textStyle = LocalTextStyle.current.copy(textAlign = TextAlign.Center),
+
+            singleLine = true,
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
         )
 
-        Text("'", style = textStyle, modifier = Modifier.padding(1.dp))
+        when (footInchAppearance) {
+            FootInchAppearance.PRIME -> Text("'", modifier = Modifier.padding(1.dp))
+            FootInchAppearance.UPPERCASE_ABBREVIATION -> Text(
+                "FT",
+                modifier = Modifier
+                    .padding(1.dp)
+                    .align(Alignment.CenterVertically)
+            )
+        }
+
 
         TextField(
             value = inches,
@@ -196,12 +207,21 @@ private fun LengthInputFootInch(
                     inches = value.toString()
                 }
             },
-            textStyle = textStyle.copy(textAlign = TextAlign.Center),
+            textStyle = LocalTextStyle.current.copy(textAlign = TextAlign.Center),
             modifier = Modifier.width(75.dp),
             colors = colors,
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
         )
-        Text("″", style = textStyle, modifier = Modifier.padding(1.dp))
+
+        when (footInchAppearance) {
+            FootInchAppearance.PRIME -> Text("''", modifier = Modifier.padding(1.dp))
+            FootInchAppearance.UPPERCASE_ABBREVIATION -> Text(
+                "IN",
+                modifier = Modifier
+                    .padding(1.dp)
+                    .align(Alignment.CenterVertically)
+            )
+        }
 
     }
 }
@@ -209,12 +229,15 @@ private fun LengthInputFootInch(
 @Composable
 @Preview(showBackground = true)
 private fun LengthInputPreview() {
-    LengthInput(
-        selectedUnit = LengthUnit.FOOT_AND_INCH,
-        currentLength = Length.FeetAndInches(22, 11),
-        syncLength = true,
-        onLengthChanged = {},
-        maxMeterDigits = Pair(2, 2),
-        maxFeetDigits = 2,
-    )
+    CompositionLocalProvider(LocalTextStyle provides MaterialTheme.typography.h4) {
+        LengthInput(
+            selectedUnit = LengthUnit.FOOT_AND_INCH,
+            footInchAppearance = FootInchAppearance.PRIME,
+            currentLength = Length.FeetAndInches(99, 11),
+            syncLength = true,
+            onLengthChanged = {},
+            maxMeterDigits = Pair(2, 2),
+            maxFeetDigits = 2,
+        )
+    }
 }

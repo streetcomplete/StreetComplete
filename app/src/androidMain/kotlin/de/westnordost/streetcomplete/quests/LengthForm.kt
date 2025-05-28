@@ -6,8 +6,11 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
-import androidx.compose.material.Button
+import androidx.compose.material.LocalTextStyle
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material3.FilledIconButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -16,6 +19,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.meta.LengthUnit
 import de.westnordost.streetcomplete.osm.Length
+import de.westnordost.streetcomplete.ui.common.FootInchAppearance
 import de.westnordost.streetcomplete.ui.common.LengthInput
 import de.westnordost.streetcomplete.ui.common.LengthUnitSelector
 import de.westnordost.streetcomplete.ui.common.MeasurementIcon
@@ -39,33 +43,36 @@ fun LengthForm(
         horizontalArrangement = Arrangement.End
     )
     {
-        LengthInput(
-            selectedUnit = selectedUnit.value,
-            currentLength = currentLength,
-            syncLength = syncLength,
-            onLengthChanged = onLengthChanged,
-            maxFeetDigits = maxFeetDigits,
-            maxMeterDigits = maxMeterDigits
-        )
+        CompositionLocalProvider(LocalTextStyle provides MaterialTheme.typography.h4) {
+            LengthInput(
+                selectedUnit = selectedUnit.value,
+                currentLength = currentLength,
+                syncLength = syncLength,
+                onLengthChanged = onLengthChanged,
+                maxFeetDigits = maxFeetDigits,
+                maxMeterDigits = maxMeterDigits,
+                footInchAppearance = FootInchAppearance.PRIME
+            )
 
-        LengthUnitSelector(
-            selectableUnits = selectableUnits,
-            selectedUnit = selectedUnit.value,
-            onUnitChanged = { selectedUnit.value = it },
-            modifier = Modifier.padding(5.dp)
-        )
+            LengthUnitSelector(
+                selectableUnits = selectableUnits,
+                selectedUnit = selectedUnit.value,
+                onUnitChanged = { selectedUnit.value = it },
+                modifier = Modifier.padding(5.dp)
+            )
 
-        Spacer(Modifier.width(25.dp))
+            Spacer(Modifier.width(25.dp))
 
-        if (showMeasureButton) {
-            MeasureButton(onClick = { takeMeasurementClick(selectedUnit.value) })
+            if (showMeasureButton) {
+                MeasureButton(onClick = { takeMeasurementClick(selectedUnit.value) })
+            }
         }
     }
 }
 
 @Composable
 private fun MeasureButton(onClick: () -> Unit) {
-    Button(onClick = { onClick() }) {
+    FilledIconButton(onClick = { onClick() }) {
         MeasurementIcon()
     }
 }

@@ -7,6 +7,7 @@ import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.LengthUnit
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.databinding.ComposeViewBinding
 import de.westnordost.streetcomplete.osm.Length
@@ -31,20 +32,16 @@ class AddMaxHeightForm : AbstractOsmQuestForm<MaxHeightAnswer>() {
         binding.composeViewBase.content {
             height = remember { mutableStateOf(null) }
 
-
-            when (countryInfo.countryCode) {
-                // "AU", "NZ", "US", "CA" -> MaxHeightForm(selectableUnits = listOf(LengthUnit.METER)) // TODO Mutcd
-                // "FI", "IS", "SE" -> MaxHeightForm(selectableUnits = listOf(LengthUnit.METER)) // TODO Fi
-                else -> MaxHeightForm(
-                    selectableUnits = countryInfo.lengthUnits,
-                    onLengthChanged = {
-                        height.value = it
-                        checkIsFormComplete()
-                    },
-                    maxFeetDigits = 2,
-                    maxMeterDigits = Pair(2, 2)
-                )
-            }
+            MaxHeightForm(
+                selectableUnits = listOf(LengthUnit.METER, LengthUnit.FOOT_AND_INCH),
+                onLengthChanged = {
+                    height.value = it
+                    checkIsFormComplete()
+                },
+                maxFeetDigits = 2,
+                maxMeterDigits = Pair(2, 2),
+                countryInfo = countryInfo
+            )
         }
 
         if (element.type == ElementType.WAY) {
