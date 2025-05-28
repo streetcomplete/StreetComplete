@@ -33,7 +33,7 @@ class AddMaxHeightForm : AbstractOsmQuestForm<MaxHeightAnswer>() {
             height = remember { mutableStateOf(null) }
 
             MaxHeightForm(
-                selectableUnits = listOf(LengthUnit.METER, LengthUnit.FOOT_AND_INCH),
+                selectableUnits = countryInfo.lengthUnits,
                 onLengthChanged = {
                     height.value = it
                     checkIsFormComplete()
