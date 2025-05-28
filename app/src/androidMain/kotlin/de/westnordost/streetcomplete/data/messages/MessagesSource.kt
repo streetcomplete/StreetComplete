@@ -3,7 +3,7 @@ package de.westnordost.streetcomplete.data.messages
 import com.russhwolf.settings.SettingsListener
 import de.westnordost.streetcomplete.ApplicationConstants.QUEST_COUNT_AT_WHICH_TO_SHOW_QUEST_SELECTION_HINT
 import de.westnordost.streetcomplete.BuildConfig
-import de.westnordost.streetcomplete.data.changelog.Changelog
+import de.westnordost.streetcomplete.data.changelog.readChangelog
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.data.preferences.QuestSelectionHintState
 import de.westnordost.streetcomplete.data.quest.Quest
@@ -15,6 +15,7 @@ import de.westnordost.streetcomplete.data.user.achievements.Achievement
 import de.westnordost.streetcomplete.data.user.achievements.AchievementsSource
 import de.westnordost.streetcomplete.data.user.achievements.Link
 import de.westnordost.streetcomplete.util.Listeners
+import de.westnordost.stretcomplete.resources.Res
 
 /** This class is to access user messages, which are basically dialogs that pop up when
  *  clicking on the mail icon, such as "you have a new OSM message in your inbox" etc. */
@@ -23,7 +24,7 @@ class MessagesSource(
     private val achievementsSource: AchievementsSource,
     private val visibleQuestsSource: VisibleQuestsSource,
     private val prefs: Preferences,
-    private val changelog: Changelog,
+    private val res: Res,
 ) {
     /* Must be a singleton because there is a listener that should respond to a change in the
      * database table */
@@ -102,7 +103,7 @@ class MessagesSource(
             if (lastVersion != null) {
                 val version = "v$lastVersion"
                 onNumberOfMessagesUpdated()
-                return Message.NewVersion(changelog.getChangelog(version))
+                return Message.NewVersion(res.readChangelog(version))
             }
         }
 

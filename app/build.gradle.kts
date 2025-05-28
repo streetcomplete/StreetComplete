@@ -365,7 +365,7 @@ tasks.register<UpdateAppTranslationCompletenessTask>("updateTranslationCompleten
 tasks.register<UpdateChangelogTask>("updateChangelog") {
     group = "streetcomplete"
     sourceFile = "$rootDir/CHANGELOG.md"
-    targetFile = "$projectDir/src/androidMain/res/raw/changelog.html"
+    targetFile = "$projectDir/src/commonMain/composeResources/files/changelog.html"
 }
 
 tasks.register<UpdateMapStyleTask>("updateMapStyle") {
