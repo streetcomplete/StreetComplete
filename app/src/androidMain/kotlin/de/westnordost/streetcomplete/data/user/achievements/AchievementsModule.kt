@@ -23,7 +23,6 @@ import de.westnordost.streetcomplete.quests.wheelchair_access.AddWheelchairAcces
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
-
 val achievementsModule = module {
     factory(named("Achievements")) { achievements }
     factory(named("Links")) { links }

@@ -59,18 +59,18 @@ fun findNodesAtCrossingsOf(
     waysByNodeId.entries.retainAll { (nodeId, ways) ->
 
         val barriers = barriersByNodeId.getValue(nodeId)
-        val neighbouringBarrierPositions = barriers
-            .flatMap { it.getNodeIdsNeighbouringNodeId(nodeId) }
+        val neighboringBarrierPositions = barriers
+            .flatMap { it.getNodeIdsNeighboringNodeId(nodeId) }
             .mapNotNull { mapData.getNode(it)?.position }
 
-        val neighbouringWayPositions = ways
-            .flatMap { it.getNodeIdsNeighbouringNodeId(nodeId) }
+        val neighboringWayPositions = ways
+            .flatMap { it.getNodeIdsNeighboringNodeId(nodeId) }
             .mapNotNull { mapData.getNode(it)?.position }
 
         /* So, surrounding the shared node X, in the simple case, we have
          *
-         * 1. position A, B neighbouring the shared node position which are part of a barrier way
-         * 2. position P, Q neighbouring the shared node position which are part of the moving way
+         * 1. position A, B neighboring the shared node position which are part of a barrier way
+         * 2. position P, Q neighboring the shared node position which are part of the moving way
          *
          * The way crosses the barrier if P is on one side of the polyline spanned by A,X,B and
          * Q is on the other side.
@@ -91,7 +91,7 @@ fun findNodesAtCrossingsOf(
          */
         val nodePos = mapData.getNode(nodeId)?.position
         return@retainAll nodePos != null &&
-            neighbouringWayPositions.anyCrossesAnyOf(neighbouringBarrierPositions, nodePos)
+            neighboringWayPositions.anyCrossesAnyOf(neighboringBarrierPositions, nodePos)
     }
 
     return waysByNodeId.map { (nodeId, ways) ->
@@ -103,8 +103,8 @@ fun findNodesAtCrossingsOf(
     }
 }
 
-/** get the node id(s) neighbouring to the given node id */
-private fun Way.getNodeIdsNeighbouringNodeId(nodeId: Long): List<Long> {
+/** get the node id(s) neighboring to the given node id */
+private fun Way.getNodeIdsNeighboringNodeId(nodeId: Long): List<Long> {
     val idx = nodeIds.indexOf(nodeId)
     if (idx == -1) return emptyList()
     val prevNodeId = if (idx > 0) nodeIds[idx - 1] else null

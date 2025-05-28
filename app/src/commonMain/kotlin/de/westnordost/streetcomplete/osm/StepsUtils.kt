@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.osm
 
-
 private val KEYS_THAT_SHOULD_BE_REMOVED_WHEN_CHANGING_TO_STEPS = listOf(
     "smoothness"
 ).map { it.toRegex() }

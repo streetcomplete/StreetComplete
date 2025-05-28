@@ -2,10 +2,10 @@ package de.westnordost.streetcomplete.osm.maxstay
 
 import de.westnordost.osm_opening_hours.model.OpeningHours
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.osm.updateWithCheckDate
 import de.westnordost.streetcomplete.osm.maxstay.MaxStay.Unit.DAYS
 import de.westnordost.streetcomplete.osm.maxstay.MaxStay.Unit.HOURS
 import de.westnordost.streetcomplete.osm.maxstay.MaxStay.Unit.MINUTES
+import de.westnordost.streetcomplete.osm.updateWithCheckDate
 import de.westnordost.streetcomplete.util.ktx.toShortString
 
 sealed interface MaxStay {

@@ -5,7 +5,8 @@ import de.westnordost.streetcomplete.osm.mtb_scale.MtbScale.*
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 
 data class MtbScale(
-    /* TODO no multiplatform annotation? @IntRange(from = 0, to = 6)*/ val value: Int,
+    /* TODO no multiplatform annotation? @IntRange(from = 0, to = 6)*/
+    val value: Int,
     val modifier: Modifier? = null
 ) {
     enum class Modifier(val value: Char?) {

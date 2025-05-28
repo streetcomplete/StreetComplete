@@ -1,39 +1,12 @@
-package de.westnordost.streetcomplete.osm
+package de.westnordost.streetcomplete.osm.maxspeed
 
 import de.westnordost.streetcomplete.data.meta.CountryInfos
 import de.westnordost.streetcomplete.data.meta.SpeedMeasurementUnit
 
-val MAXSPEED_TYPE_KEYS = setOf(
-    "source:maxspeed",
-    "zone:maxspeed",
-    "maxspeed:type",
-    "zone:traffic"
-)
-
-private val anyMaxSpeedTagKey = "~${(MAXSPEED_TYPE_KEYS + "maxspeed").joinToString("|")}"
-
-val isImplicitMaxSpeed = "(!maxspeed or $anyMaxSpeedTagKey ~ \"implicit|([A-Z-]+:.*)\")"
-
-val isInSlowZone = "$anyMaxSpeedTagKey ~ \"[A-Z-]+:(zone:?)?([1-9]|[1-2][0-9]|30)\""
-
-val isImplicitMaxSpeedButNotSlowZone = "$isImplicitMaxSpeed and !($isInSlowZone)"
-
-/** Functions to get speed in km/h from tags */
-
-fun getMaxspeedInKmh(tags: Map<String, String>): Float? {
-    val speed = tags["maxspeed"] ?: return null
-    return if (speed.endsWith(" mph")) {
-        val mphSpeed = speed.substring(0, speed.length - 4).toFloatOrNull()
-        if (mphSpeed != null) mphSpeed * 1.609344f else null
-    } else {
-        speed.toFloatOrNull()
-    }
-}
-
 private val zoneRegex = Regex("([A-Z-]+):(?:zone:?)?([0-9]+)")
 
 fun guessMaxspeedInKmh(tags: Map<String, String>, countryInfos: CountryInfos? = null): Float? {
-    for (key in (MAXSPEED_TYPE_KEYS + "maxspeed")) {
+    for (key in MAX_SPEED_TYPE_KEYS) {
         val value = tags[key] ?: continue
         when {
             value.endsWith("living_street")  -> return 10f

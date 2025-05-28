@@ -5,7 +5,7 @@ plugins {
     id("org.jetbrains.kotlin.plugin.compose") version "2.1.21"  apply false
     id("com.android.application") version "8.9.3" apply false
     id("com.android.library") version "8.9.3" apply false
-    //id("org.jetbrains.compose") version "1.8.0" apply false
+    // id("org.jetbrains.compose") version "1.8.0" apply false
 }
 
 val poEditorProjectId = "97843"
@@ -64,9 +64,11 @@ tasks.register<GenerateQuestListTask>("generateQuestList") {
     group = "streetcomplete"
     targetFile = "$projectDir/quest-list.csv"
     projectDirectory = projectDir
-    sourceDirectory = projectDir.resolve("app/src/androidMain/kotlin/de/westnordost/streetcomplete/")
+    questsDirectory = projectDir.resolve("app/src/androidMain/kotlin/de/westnordost/streetcomplete/quests/")
     iconsDirectory = projectDir.resolve("res/graphics/quest/")
-    noteQuestFile = sourceDirectory.resolve("data/osmnotes/notequests/OsmNoteQuestType.kt")
+    noteQuestFile = projectDir.resolve("app/src/androidMain/kotlin/de/westnordost/streetcomplete/data/osmnotes/notequests/OsmNoteQuestType.kt")
+    questsModuleFile = projectDir.resolve("app/src/androidMain/kotlin/de/westnordost/streetcomplete/quests/QuestsModule.kt")
+    stringsFile = projectDir.resolve("app/src/androidMain/res/values/strings.xml")
 }
 
 tasks.register<UpdateContributorStatisticsTask>("updateContributorStatistics") {
@@ -121,4 +123,3 @@ tasks.register("updateStreetCompleteData") {
         "app:downloadAndConvertPresetIcons"
     )
 }
-

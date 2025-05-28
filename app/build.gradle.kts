@@ -9,7 +9,7 @@ plugins {
     id("org.jetbrains.kotlin.plugin.serialization") version "2.1.21"
     id("org.jetbrains.kotlin.plugin.compose") version "2.1.21"
     id("com.android.application") version "8.9.3"
-    //id("org.jetbrains.compose") version "1.8.0" apply false
+    // id("org.jetbrains.compose") version "1.8.0" apply false
 }
 
 repositories {
@@ -242,6 +242,10 @@ android {
             "UseCompatLoadingForDrawables" // doesn't make sense for minSdk >= 21
         )
         abortOnError = false
+    }
+
+    dependencies {
+        debugImplementation("androidx.compose.ui:ui-tooling:1.8.2")
     }
 }
 

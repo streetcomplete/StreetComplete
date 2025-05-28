@@ -21,14 +21,14 @@ import de.westnordost.osm_opening_hours.model.Weekday
 import de.westnordost.osm_opening_hours.model.WeekdayRange
 import de.westnordost.osm_opening_hours.model.WeekdaysSelector
 import de.westnordost.streetcomplete.osm.opening_hours.model.CircularSection
+import de.westnordost.streetcomplete.osm.opening_hours.model.CollectionTimesRow
 import de.westnordost.streetcomplete.osm.opening_hours.model.Months
-import de.westnordost.streetcomplete.osm.opening_hours.model.TimeRange
-import de.westnordost.streetcomplete.osm.opening_hours.model.Weekdays
 import de.westnordost.streetcomplete.osm.opening_hours.model.OffDaysRow
 import de.westnordost.streetcomplete.osm.opening_hours.model.OpeningHoursRow
 import de.westnordost.streetcomplete.osm.opening_hours.model.OpeningMonthsRow
 import de.westnordost.streetcomplete.osm.opening_hours.model.OpeningWeekdaysRow
-import de.westnordost.streetcomplete.osm.opening_hours.model.CollectionTimesRow
+import de.westnordost.streetcomplete.osm.opening_hours.model.TimeRange
+import de.westnordost.streetcomplete.osm.opening_hours.model.Weekdays
 import kotlin.jvm.JvmName
 
 @JvmName("openingHoursRowsToOpeningHours")

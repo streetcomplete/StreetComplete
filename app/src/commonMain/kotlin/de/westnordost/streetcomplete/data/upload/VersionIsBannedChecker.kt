@@ -38,5 +38,3 @@ sealed interface BannedInfo {
     data class IsBanned(val reason: String?) : BannedInfo
     data object IsNotBanned : BannedInfo
 }
-
-
