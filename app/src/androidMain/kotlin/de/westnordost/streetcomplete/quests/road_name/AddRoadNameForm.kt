@@ -52,7 +52,7 @@ class AddRoadNameForm : AAddLocalizedNameForm<RoadNameAnswer>() {
 
         return nameSuggestionsSource.getNames(
             // only first and last point of polyline because a still unnamed section of road is
-            //  usually (if at all) a continuation of a neighbouring road section
+            //  usually (if at all) a continuation of a neighboring road section
             points = firstAndLast,
             // and hence we can also search only in a very small area only
             maxDistance = 30.0,

@@ -408,7 +408,7 @@ class SplitWayActionTest {
     }
 
     @Test fun `ignore if a way has been deleted when determining way orientation in relation`() {
-        /* while determining the orientation of the way in the relation, the neighbouring ways are
+        /* while determining the orientation of the way in the relation, the neighboring ways are
            downloaded and analyzed - if they do not exist anymore, this should not lead to a
            nullpointer exception */
         on(repos.getWay(1)).thenReturn(null)
