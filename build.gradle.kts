@@ -64,9 +64,11 @@ tasks.register<GenerateQuestListTask>("generateQuestList") {
     group = "streetcomplete"
     targetFile = "$projectDir/quest-list.csv"
     projectDirectory = projectDir
-    sourceDirectory = projectDir.resolve("app/src/androidMain/kotlin/de/westnordost/streetcomplete/")
+    questsDirectory = projectDir.resolve("app/src/androidMain/kotlin/de/westnordost/streetcomplete/quests/")
     iconsDirectory = projectDir.resolve("res/graphics/quest/")
-    noteQuestFile = sourceDirectory.resolve("data/osmnotes/notequests/OsmNoteQuestType.kt")
+    noteQuestFile = projectDir.resolve("app/src/androidMain/kotlin/de/westnordost/streetcomplete/data/osmnotes/notequests/OsmNoteQuestType.kt")
+    questsModuleFile = projectDir.resolve("app/src/androidMain/kotlin/de/westnordost/streetcomplete/quests/QuestsModule.kt")
+    stringsFile = projectDir.resolve("app/src/androidMain/res/values/strings.xml")
 }
 
 tasks.register<UpdateContributorStatisticsTask>("updateContributorStatistics") {
