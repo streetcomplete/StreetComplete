@@ -84,7 +84,7 @@ kotlin {
                 implementation(compose.foundation)
                 implementation(compose.material)
                 implementation(compose.ui)
-                //implementation(compose.components.resources) // use compose resources
+                implementation(compose.components.resources)
                 implementation(compose.components.uiToolingPreview)
 
                 // UI Navigation
@@ -257,6 +257,13 @@ android {
 
     dependencies {
         debugImplementation("androidx.compose.ui:ui-tooling:1.8.2")
+    }
+}
+
+compose {
+    resources {
+        publicResClass = true
+        packageOfResClass = "de.westnordost.stretcomplete.resources"
     }
 }
 
