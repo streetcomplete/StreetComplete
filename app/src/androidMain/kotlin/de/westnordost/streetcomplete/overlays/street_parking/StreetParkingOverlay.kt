@@ -8,7 +8,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 import de.westnordost.streetcomplete.osm.ALL_ROADS
-import de.westnordost.streetcomplete.osm.MAXSPEED_TYPE_KEYS
+import de.westnordost.streetcomplete.osm.maxspeed.MAX_SPEED_TYPE_KEYS
 import de.westnordost.streetcomplete.osm.isPrivateOnFoot
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.HALF_ON_STREET
@@ -78,7 +78,7 @@ private val streetParkingTaggingNotExpected by lazy { """
       or expressway = yes
       or tunnel = yes
       or junction = roundabout
-      or ~"${(MAXSPEED_TYPE_KEYS + "maxspeed").joinToString("|")}" ~ ".*:(rural|nsl_single|nsl_dual)"
+      or ~"${MAX_SPEED_TYPE_KEYS.joinToString("|")}" ~ ".*:(rural|nsl_single|nsl_dual)"
       or maxspeed >= 70
 """.toElementFilterExpression() }
 
