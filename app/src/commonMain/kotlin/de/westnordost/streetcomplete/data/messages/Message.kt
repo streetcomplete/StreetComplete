@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.data.messages
 
-import de.westnordost.streetcomplete.data.changelog.Changelog
+import de.westnordost.streetcomplete.data.res.Changelog
 import de.westnordost.streetcomplete.data.user.achievements.Achievement
 import de.westnordost.streetcomplete.data.user.achievements.Link
 

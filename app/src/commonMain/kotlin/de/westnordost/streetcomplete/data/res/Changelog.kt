@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.data.changelog
+package de.westnordost.streetcomplete.data.res
 
 import de.westnordost.streetcomplete.util.html.HtmlElementNode
 import de.westnordost.streetcomplete.util.html.HtmlNode
@@ -14,7 +14,7 @@ import kotlinx.coroutines.withContext
 typealias Changelog = Map<String, List<HtmlNode>>
 
 /** Return the app's changelog - a map of version name to a list of
- *  [HtmlNode][de.westnordost.streetcomplete.util.html.HtmlNode]s, sorted descending by version.
+ *  [HtmlNode][HtmlNode]s, sorted descending by version.
  *
  *  @param sinceVersion optionally only return the changes since the given version
  */
