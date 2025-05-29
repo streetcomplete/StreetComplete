@@ -5,7 +5,9 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -82,11 +84,14 @@ fun <T> SelectableImageItem(
                 border(4.dp, SelectionFrameColor)
             }
             .padding(2.dp)
+            .wrapContentHeight()
+            .fillMaxWidth()
     ) {
         imageBitmap?.let { bitmap ->
             Image(
                 bitmap = bitmap,
-                contentDescription = title
+                contentDescription = title,
+                modifier = Modifier.align(Alignment.Center)
             )
         }
         Box(
@@ -94,7 +99,6 @@ fun <T> SelectableImageItem(
                 .matchParentSize()
                 .background(SelectionColor.copy(alpha = animatedAlpha))
         )
-
         Text(
             text = title,
             style = TextStyle(

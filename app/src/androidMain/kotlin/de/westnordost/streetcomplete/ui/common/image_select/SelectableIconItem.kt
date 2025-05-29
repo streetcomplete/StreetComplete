@@ -7,10 +7,12 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.selection.selectable
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -24,9 +26,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shadow
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -88,42 +92,50 @@ fun <T> SelectableIconItem(
                 )
             }
             .conditional(isSelected) {
-                border(4.dp, SelectionFrameColor)
+                border(4.dp, SelectionFrameColor, RoundedCornerShape(5.dp))
+                    .background(SelectionColor.copy(alpha = animatedAlpha))
             }
+            .fillMaxWidth()
+            .wrapContentHeight()
             .padding(2.dp),
         contentAlignment = Alignment.Center
     ) {
         Box(
             modifier = Modifier
-                .matchParentSize()
-                .background(SelectionColor.copy(alpha = animatedAlpha))
-        )
-        Column(horizontalAlignment = Alignment.CenterHorizontally) {
-            imageBitmap?.let { bitmap ->
-                Image(
-                    bitmap = bitmap,
-                    contentDescription = title,
+                .wrapContentSize()
+
+        ) {
+            Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                imageBitmap?.let { bitmap ->
+                    Image(
+                        bitmap = bitmap,
+                        contentDescription = title,
+                        modifier = Modifier
+                            .wrapContentSize()
+                            .padding(start = 6.dp, end = 6.dp, top = 6.dp)
+                            .wrapContentSize(Alignment.Center),
+                        contentScale = ContentScale.Inside,
+                        alignment = Alignment.Center
+                    )
+                }
+
+                Text(
+                    text = title,
+                    textAlign = TextAlign.Center,
+                    style = TextStyle(
+                        color = Color.Black,
+                        fontSize = 12.sp,
+                        shadow = Shadow(
+                            color = Color.Gray,
+                            offset = Offset(2f, 2f),
+                            blurRadius = 4f
+                        )
+                    ),
                     modifier = Modifier
-                        .fillMaxSize()
-                        .wrapContentSize(Alignment.Center)
+                        .align(Alignment.CenterHorizontally)
+                        .padding(8.dp)
                 )
             }
-
-            Text(
-                text = title,
-                style = TextStyle(
-                    color = Color.Black,
-                    fontSize = 12.sp,
-                    shadow = Shadow(
-                        color = Color.Gray,
-                        offset = Offset(2f, 2f),
-                        blurRadius = 4f
-                    )
-                ),
-                modifier = Modifier
-                    .align(Alignment.CenterHorizontally)
-                    .padding(8.dp)
-            )
         }
     }
 }
