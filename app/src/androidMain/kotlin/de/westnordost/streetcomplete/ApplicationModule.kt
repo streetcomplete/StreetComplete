@@ -7,6 +7,7 @@ import de.westnordost.streetcomplete.util.DefaultResourceProvider
 import de.westnordost.streetcomplete.util.ResourceProvider
 import de.westnordost.streetcomplete.util.SoundFx
 import de.westnordost.streetcomplete.util.logs.DatabaseLogger
+import de.westnordost.stretcomplete.resources.Res
 import io.ktor.client.HttpClient
 import io.ktor.client.plugins.compression.ContentEncoding
 import io.ktor.client.plugins.defaultRequest
@@ -33,6 +34,7 @@ val appModule = module {
             identity()
         }
     } }
+    single<Res> { Res }
     single<FileSystem> { SystemFileSystem }
     single<ResourceProvider> { DefaultResourceProvider(androidContext(), get()) }
 }

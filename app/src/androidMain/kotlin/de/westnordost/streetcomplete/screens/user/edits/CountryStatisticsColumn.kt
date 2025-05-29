@@ -16,6 +16,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import de.westnordost.streetcomplete.data.flags.FlagAlignment
+import de.westnordost.streetcomplete.data.flags.FlagAlignments
 import de.westnordost.streetcomplete.data.user.statistics.CountryStatistics
 import de.westnordost.streetcomplete.ui.theme.GrassGreen
 
@@ -23,7 +25,7 @@ import de.westnordost.streetcomplete.ui.theme.GrassGreen
 @Composable
 fun CountryStatisticsColumn(
     statistics: List<CountryStatistics>,
-    flagAlignments: Map<String, FlagAlignment>,
+    flagAlignments: FlagAlignments,
     isCurrentWeek: Boolean,
     modifier: Modifier = Modifier,
     contentPadding: PaddingValues = PaddingValues(0.dp),

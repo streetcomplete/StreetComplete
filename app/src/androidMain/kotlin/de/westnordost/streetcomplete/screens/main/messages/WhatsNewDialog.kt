@@ -10,15 +10,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.changelog.Changelog
 import de.westnordost.streetcomplete.screens.about.ChangelogList
 import de.westnordost.streetcomplete.ui.common.dialogs.ScrollableAlertDialog
-import de.westnordost.streetcomplete.util.html.HtmlNode
 
 /** A dialog that shows the changelog */
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun WhatsNewDialog(
-    changelog: Map<String, List<HtmlNode>>,
+    changelog: Changelog,
     onDismissRequest: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
