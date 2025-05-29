@@ -25,12 +25,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.credits.Contributor
+import de.westnordost.streetcomplete.data.credits.Credits
 import de.westnordost.streetcomplete.ui.common.BackIcon
 import de.westnordost.streetcomplete.ui.common.BulletSpan
 import de.westnordost.streetcomplete.ui.common.HtmlText
@@ -106,9 +109,18 @@ private fun CreditsSections(
             HtmlText(stringResource(R.string.credits_contributors))
         }
         CreditsSection(stringResource(R.string.credits_translations_title)) {
-            val translatorsByDisplayLanguage = credits.translators
-                .map { Locale.forLanguageTag(it.key).displayName to it.value }
-                .sortedBy { it.first }
+            // sorted list of (language name, list of translators sorted by contributions descending)
+            val translatorsByDisplayLanguage = remember(credits.translatorsByLanguage) {
+                credits.translatorsByLanguage
+                    .map { (language, translators) ->
+                        val languageName = Locale.forLanguageTag(language).displayName
+                        val sortedTranslators = translators.entries
+                            .sortedByDescending { it.value }
+                            .map { it.key }
+                        languageName to sortedTranslators
+                    }
+                    .sortedBy { it.first }
+            }
 
             for ((language, translators) in translatorsByDisplayLanguage) {
                 Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {

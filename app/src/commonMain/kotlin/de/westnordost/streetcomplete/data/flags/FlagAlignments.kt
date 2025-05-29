@@ -1,19 +1,11 @@
-package de.westnordost.streetcomplete.data.res
+package de.westnordost.streetcomplete.data.flags
 
-import com.charleskorn.kaml.Yaml
+import de.westnordost.streetcomplete.ui.ktx.readYaml
 import de.westnordost.stretcomplete.resources.Res
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
-import kotlinx.serialization.decodeFromString
 
 typealias FlagAlignments = Map<String, FlagAlignment>
-
-suspend fun Res.readFlagAlignments(): FlagAlignments {
-    val yml = readBytes("files/flag_alignments.yml").decodeToString()
-    return withContext(Dispatchers.Default) { Yaml.default.decodeFromString<FlagAlignments>(yml) }
-}
 
 @Serializable
 enum class FlagAlignment {
@@ -24,3 +16,6 @@ enum class FlagAlignment {
     @SerialName("right") Right,
     @SerialName("stretch") Stretch;
 }
+
+suspend fun Res.readFlagAlignments(): FlagAlignments =
+    readYaml("files/flag_alignments.yml")

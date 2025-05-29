@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.screens.settings
 
-import android.content.res.Resources
 import androidx.compose.runtime.Stable
 import androidx.lifecycle.ViewModel
 import com.russhwolf.settings.SettingsListener
@@ -21,8 +20,10 @@ import de.westnordost.streetcomplete.data.visiblequests.QuestsHiddenController
 import de.westnordost.streetcomplete.data.visiblequests.QuestsHiddenSource
 import de.westnordost.streetcomplete.data.visiblequests.VisibleEditTypeSource
 import de.westnordost.streetcomplete.overlays.Overlay
+import de.westnordost.streetcomplete.ui.ktx.readYaml
 import de.westnordost.streetcomplete.util.ktx.getYamlObject
 import de.westnordost.streetcomplete.util.ktx.launch
+import de.westnordost.stretcomplete.resources.Res
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -61,7 +62,7 @@ data class QuestTypeCount(val total: Int, val enabled: Int)
 @Stable
 class SettingsViewModelImpl(
     private val prefs: Preferences,
-    private val resources: Resources,
+    private val res: Res,
     private val cleaner: Cleaner,
     private val hiddenQuestsController: QuestsHiddenController,
     private val questTypeRegistry: QuestTypeRegistry,
@@ -164,8 +165,8 @@ class SettingsViewModelImpl(
     }
 
     private fun updateSelectableLanguageCodes() {
-        launch(IO) {
-            selectableLanguageCodes.value = resources.getYamlObject<List<String>>(R.raw.languages)
+        launch {
+            selectableLanguageCodes.value = res.readYaml<List<String>>("files/languages.yml")
         }
     }
 

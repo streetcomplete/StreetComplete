@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.data.res
+package de.westnordost.streetcomplete.data.changelog
 
 import de.westnordost.streetcomplete.util.html.HtmlElementNode
 import de.westnordost.streetcomplete.util.html.HtmlNode

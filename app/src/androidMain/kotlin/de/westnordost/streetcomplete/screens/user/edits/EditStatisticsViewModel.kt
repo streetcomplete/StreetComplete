@@ -5,8 +5,8 @@ import androidx.compose.runtime.Stable
 import androidx.lifecycle.ViewModel
 import de.westnordost.streetcomplete.data.AllEditTypes
 import de.westnordost.streetcomplete.data.osm.edits.EditType
-import de.westnordost.streetcomplete.data.res.FlagAlignments
-import de.westnordost.streetcomplete.data.res.readFlagAlignments
+import de.westnordost.streetcomplete.data.flags.FlagAlignments
+import de.westnordost.streetcomplete.data.flags.readFlagAlignments
 import de.westnordost.streetcomplete.data.user.statistics.CountryStatistics
 import de.westnordost.streetcomplete.data.user.statistics.StatisticsSource
 import de.westnordost.streetcomplete.util.ktx.launch

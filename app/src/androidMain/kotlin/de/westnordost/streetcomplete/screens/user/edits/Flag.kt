@@ -12,7 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
-import de.westnordost.streetcomplete.data.res.FlagAlignment
+import de.westnordost.streetcomplete.data.flags.FlagAlignment
 import de.westnordost.streetcomplete.ui.ktx.innerBorder
 import de.westnordost.streetcomplete.ui.ktx.pxToDp
 import de.westnordost.stretcomplete.resources.Res

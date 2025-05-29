@@ -3,7 +3,7 @@ package de.westnordost.streetcomplete.data.messages
 import com.russhwolf.settings.SettingsListener
 import de.westnordost.streetcomplete.ApplicationConstants.QUEST_COUNT_AT_WHICH_TO_SHOW_QUEST_SELECTION_HINT
 import de.westnordost.streetcomplete.BuildConfig
-import de.westnordost.streetcomplete.data.res.readChangelog
+import de.westnordost.streetcomplete.data.changelog.readChangelog
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.data.preferences.QuestSelectionHintState
 import de.westnordost.streetcomplete.data.quest.Quest

@@ -2,8 +2,8 @@ package de.westnordost.streetcomplete.screens.about
 
 import androidx.compose.runtime.Stable
 import androidx.lifecycle.ViewModel
-import de.westnordost.streetcomplete.data.res.Changelog
-import de.westnordost.streetcomplete.data.res.readChangelog
+import de.westnordost.streetcomplete.data.changelog.Changelog
+import de.westnordost.streetcomplete.data.changelog.readChangelog
 import de.westnordost.streetcomplete.util.ktx.launch
 import de.westnordost.stretcomplete.resources.Res
 import kotlinx.coroutines.flow.MutableStateFlow
