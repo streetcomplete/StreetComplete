@@ -263,7 +263,7 @@ android {
 compose {
     resources {
         publicResClass = true
-        packageOfResClass = "de.westnordost.stretcomplete.resources"
+        packageOfResClass = "de.westnordost.streetcomplete.resources"
     }
 }
 

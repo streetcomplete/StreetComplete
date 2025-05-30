@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.ui.ktx
 
-import de.westnordost.stretcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.Res
 import platform.Foundation.NSBundle
 import platform.Foundation.NSFileManager
 

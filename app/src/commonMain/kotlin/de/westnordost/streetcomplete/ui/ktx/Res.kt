@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.ui.ktx
 
 import com.charleskorn.kaml.Yaml
-import de.westnordost.stretcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.Res
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.decodeFromString

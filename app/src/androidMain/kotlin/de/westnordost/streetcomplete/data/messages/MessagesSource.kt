@@ -15,7 +15,7 @@ import de.westnordost.streetcomplete.data.user.achievements.Achievement
 import de.westnordost.streetcomplete.data.user.achievements.AchievementsSource
 import de.westnordost.streetcomplete.data.user.achievements.Link
 import de.westnordost.streetcomplete.util.Listeners
-import de.westnordost.stretcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.Res
 
 /** This class is to access user messages, which are basically dialogs that pop up when
  *  clicking on the mail icon, such as "you have a new OSM message in your inbox" etc. */

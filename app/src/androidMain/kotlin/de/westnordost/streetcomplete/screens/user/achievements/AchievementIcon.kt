@@ -27,9 +27,9 @@ import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.ui.theme.titleLarge
 import de.westnordost.streetcomplete.ui.util.svgPath
-import de.westnordost.stretcomplete.resources.Res
-import de.westnordost.stretcomplete.resources.achievement_first_edit
-import de.westnordost.stretcomplete.resources.achievement_frame
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.achievement_first_edit
+import de.westnordost.streetcomplete.resources.achievement_frame
 import org.jetbrains.compose.resources.painterResource
 
 @Composable

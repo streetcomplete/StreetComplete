@@ -7,7 +7,7 @@ import de.westnordost.streetcomplete.util.DefaultResourceProvider
 import de.westnordost.streetcomplete.util.ResourceProvider
 import de.westnordost.streetcomplete.util.SoundFx
 import de.westnordost.streetcomplete.util.logs.DatabaseLogger
-import de.westnordost.stretcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.Res
 import io.ktor.client.HttpClient
 import io.ktor.client.plugins.compression.ContentEncoding
 import io.ktor.client.plugins.defaultRequest

@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.ui.ktx
 
-import de.westnordost.stretcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.Res
 
 actual fun Res.exists(path: String): Boolean {
     try {

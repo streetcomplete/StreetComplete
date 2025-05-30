@@ -15,8 +15,8 @@ import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.flags.FlagAlignment
 import de.westnordost.streetcomplete.ui.ktx.innerBorder
 import de.westnordost.streetcomplete.ui.ktx.pxToDp
-import de.westnordost.stretcomplete.resources.Res
-import de.westnordost.stretcomplete.resources.allDrawableResources
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.allDrawableResources
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
 

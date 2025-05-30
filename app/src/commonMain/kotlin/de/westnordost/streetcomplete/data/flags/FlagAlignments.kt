@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.data.flags
 
 import de.westnordost.streetcomplete.ui.ktx.readYaml
-import de.westnordost.stretcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.Res
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 

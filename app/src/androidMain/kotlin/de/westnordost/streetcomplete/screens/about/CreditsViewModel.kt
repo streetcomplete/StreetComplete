@@ -6,7 +6,7 @@ import de.westnordost.streetcomplete.data.credits.Contributor
 import de.westnordost.streetcomplete.data.credits.Credits
 import de.westnordost.streetcomplete.data.credits.readCredits
 import de.westnordost.streetcomplete.util.ktx.launch
-import de.westnordost.stretcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.Res
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 

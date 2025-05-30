@@ -10,7 +10,7 @@ import de.westnordost.streetcomplete.data.flags.readFlagAlignments
 import de.westnordost.streetcomplete.data.user.statistics.CountryStatistics
 import de.westnordost.streetcomplete.data.user.statistics.StatisticsSource
 import de.westnordost.streetcomplete.util.ktx.launch
-import de.westnordost.stretcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.Res
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

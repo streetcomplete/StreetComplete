@@ -23,7 +23,7 @@ import de.westnordost.streetcomplete.overlays.Overlay
 import de.westnordost.streetcomplete.ui.ktx.readYaml
 import de.westnordost.streetcomplete.util.ktx.getYamlObject
 import de.westnordost.streetcomplete.util.ktx.launch
-import de.westnordost.stretcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.Res
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
