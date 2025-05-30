@@ -32,7 +32,7 @@ fun LazyAchievementsGrid(
     ) {
         items(achievements) { (achievement, level) ->
             Box {
-                AchievementIcon(painterResource(achievement.icon), level = level)
+                achievement.icon?.let { AchievementIcon(painterResource(it), level) }
                 // clickable area as separate box because the ripple should be on top of all of it
                 // while the icon should not be clipped within the achievement frame
                 Box(

@@ -21,7 +21,7 @@ import kotlin.test.assertFailsWith
 
 class PhotoServiceApiClientTest {
 
-    private val picture = "src/test/resources/hai_phong_street.jpg"
+    private val picture = "src/commonTest/resources/hai_phong_street.jpg"
     private val fileSystem = SystemFileSystem
 
     @Test
@@ -42,7 +42,7 @@ class PhotoServiceApiClientTest {
 
     @Test
     fun `upload throws ConnectionException on such errors`(): Unit = runBlocking {
-        val pics = listOf("src/test/resources/hai_phong_street.jpg")
+        val pics = listOf(picture)
 
         assertFailsWith(ConnectionException::class) {
             client(MockEngine { throw IOException() }).upload(pics)
@@ -74,7 +74,7 @@ class PhotoServiceApiClientTest {
         assertEquals(1, mockEngine.requestHistory.size)
         assertEquals("http://example.com/activate.php", mockEngine.requestHistory[0].url.toString())
         assertEquals(ContentType.Application.Json, mockEngine.requestHistory[0].body.contentType)
-        assertEquals("{\"osm_note_id\": 123}", String(mockEngine.requestHistory[0].body.toByteArray()))
+        assertEquals("{\"osm_note_id\": 123}", mockEngine.requestHistory[0].body.toByteArray().decodeToString())
     }
 
     @Test
