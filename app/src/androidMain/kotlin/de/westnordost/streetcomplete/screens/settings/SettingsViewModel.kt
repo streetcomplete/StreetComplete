@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.screens.settings
 import androidx.compose.runtime.Stable
 import androidx.lifecycle.ViewModel
 import com.russhwolf.settings.SettingsListener
-import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.Cleaner
 import de.westnordost.streetcomplete.data.osm.edits.EditType
 import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
@@ -20,10 +19,9 @@ import de.westnordost.streetcomplete.data.visiblequests.QuestsHiddenController
 import de.westnordost.streetcomplete.data.visiblequests.QuestsHiddenSource
 import de.westnordost.streetcomplete.data.visiblequests.VisibleEditTypeSource
 import de.westnordost.streetcomplete.overlays.Overlay
-import de.westnordost.streetcomplete.ui.ktx.readYaml
-import de.westnordost.streetcomplete.util.ktx.getYamlObject
-import de.westnordost.streetcomplete.util.ktx.launch
 import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.ui.ktx.readYaml
+import de.westnordost.streetcomplete.util.ktx.launch
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

@@ -4,13 +4,13 @@ import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.Stable
 import androidx.lifecycle.ViewModel
 import de.westnordost.streetcomplete.data.AllEditTypes
-import de.westnordost.streetcomplete.data.osm.edits.EditType
 import de.westnordost.streetcomplete.data.flags.FlagAlignments
 import de.westnordost.streetcomplete.data.flags.readFlagAlignments
+import de.westnordost.streetcomplete.data.osm.edits.EditType
 import de.westnordost.streetcomplete.data.user.statistics.CountryStatistics
 import de.westnordost.streetcomplete.data.user.statistics.StatisticsSource
-import de.westnordost.streetcomplete.util.ktx.launch
 import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.util.ktx.launch
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

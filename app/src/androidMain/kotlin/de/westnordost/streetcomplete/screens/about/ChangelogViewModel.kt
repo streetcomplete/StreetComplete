@@ -4,8 +4,8 @@ import androidx.compose.runtime.Stable
 import androidx.lifecycle.ViewModel
 import de.westnordost.streetcomplete.data.changelog.Changelog
 import de.westnordost.streetcomplete.data.changelog.readChangelog
-import de.westnordost.streetcomplete.util.ktx.launch
 import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.util.ktx.launch
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 

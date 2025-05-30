@@ -7,10 +7,10 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.osm.ALL_ROADS
-import de.westnordost.streetcomplete.osm.maxspeed.MAX_SPEED_TYPE_KEYS
 import de.westnordost.streetcomplete.osm.cycleway_separate.SeparateCycleway
 import de.westnordost.streetcomplete.osm.cycleway_separate.parseSeparateCycleway
 import de.westnordost.streetcomplete.osm.isPrivateOnFoot
+import de.westnordost.streetcomplete.osm.maxspeed.MAX_SPEED_TYPE_KEYS
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk
 import de.westnordost.streetcomplete.osm.sidewalk.any
 import de.westnordost.streetcomplete.osm.sidewalk.parseSidewalkSides

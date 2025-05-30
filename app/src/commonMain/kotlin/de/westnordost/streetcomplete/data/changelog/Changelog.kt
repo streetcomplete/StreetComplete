@@ -1,10 +1,10 @@
 package de.westnordost.streetcomplete.data.changelog
 
+import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.util.html.HtmlElementNode
 import de.westnordost.streetcomplete.util.html.HtmlNode
 import de.westnordost.streetcomplete.util.html.HtmlTextNode
 import de.westnordost.streetcomplete.util.html.parseHtml
-import de.westnordost.streetcomplete.resources.Res
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 

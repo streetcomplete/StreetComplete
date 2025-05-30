@@ -21,10 +21,10 @@ import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.user.achievements.Link
 import de.westnordost.streetcomplete.data.user.achievements.LinkCategory
-import de.westnordost.streetcomplete.ui.theme.titleLarge
-import de.westnordost.streetcomplete.ui.theme.titleSmall
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.link_wiki
+import de.westnordost.streetcomplete.ui.theme.titleLarge
+import de.westnordost.streetcomplete.ui.theme.titleSmall
 import org.jetbrains.compose.resources.painterResource
 
 /** Display a single link category from the link collection */
