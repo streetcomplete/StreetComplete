@@ -5,5 +5,5 @@ import de.westnordost.streetcomplete.quests.AAddCountInput
 
 class AddMotorcycleParkingCapacityForm : AAddCountInput() {
     override val iconId = R.drawable.ic_motorcycle
-    override val initialCount get() = element.tags["capacity"]?.toIntOrNull() ?: 0
+    override val initialCount get() = element.tags["capacity"]?.toIntOrNull()
 }

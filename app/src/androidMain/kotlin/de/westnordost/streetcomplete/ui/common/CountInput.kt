@@ -9,7 +9,7 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -23,10 +23,12 @@ import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.ui.theme.extraLargeInput
 
+/** An outlined text field that accepts only integer input with an illustration that should display
+ *  the "unit" (steps, bicycles, ...) of what is input next to it */
 @Composable
 fun CountInput(
-    count: Int,
-    onCountChange: (Int) -> Unit,
+    count: Int?,
+    onCountChange: (Int?) -> Unit,
     iconPainter: Painter,
     modifier: Modifier = Modifier,
     textStyle: TextStyle = LocalTextStyle.current,
@@ -37,9 +39,14 @@ fun CountInput(
         horizontalArrangement = Arrangement.spacedBy(16.dp),
     ){
         OutlinedTextField(
-            value = count.toString(),
+            value = count?.toString().orEmpty(),
             onValueChange = { newText: String ->
-                newText.toIntOrNull()?.let { onCountChange(it) }
+                if (newText.isEmpty()) {
+                    onCountChange(null)
+                }
+                else {
+                    newText.toIntOrNull()?.let { onCountChange(it) }
+                }
             },
             modifier = Modifier.weight(1f),
             singleLine = true,
@@ -57,10 +64,10 @@ fun CountInput(
 @Composable
 @Preview
 private fun StepCountFormPreview() {
-    val count = remember { mutableIntStateOf(1) }
+    val count = remember { mutableStateOf<Int?>(1) }
     CountInput(
-        count = count.intValue,
-        onCountChange = { count.intValue = it },
+        count = count.value,
+        onCountChange = { count.value = it },
         iconPainter = painterResource(R.drawable.ic_step),
         textStyle = MaterialTheme.typography.extraLargeInput
     )

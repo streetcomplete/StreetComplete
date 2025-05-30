@@ -6,7 +6,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.runtime.MutableState
-import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
@@ -21,18 +21,18 @@ abstract class AAddCountInput : AbstractOsmQuestForm<Int>() {
 
     abstract val iconId: Int
 
-    abstract val initialCount: Int
+    abstract val initialCount: Int?
 
     override val contentLayoutResId = R.layout.compose_view
     private val binding by contentViewBinding(ComposeViewBinding::bind)
 
-    private lateinit var count: MutableState<Int>
+    private lateinit var count: MutableState<Int?>
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.composeViewBase.content {
             Surface {
-                count = rememberSaveable { mutableIntStateOf(initialCount) }
+                count = rememberSaveable { mutableStateOf(initialCount) }
                 CountInput(
                     count = count.value,
                     onCountChange = {
@@ -47,9 +47,9 @@ abstract class AAddCountInput : AbstractOsmQuestForm<Int>() {
         }
     }
 
-    override fun isFormComplete() = count.value > 0
+    override fun isFormComplete() = count.value?.let { it > 0 } == true
 
     override fun onClickOk() {
-        applyAnswer(count.value)
+        applyAnswer(count.value!!)
     }
 }
