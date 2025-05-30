@@ -14,6 +14,8 @@ import de.westnordost.streetcomplete.data.CacheTrimmer
 import de.westnordost.streetcomplete.data.CleanerWorker
 import de.westnordost.streetcomplete.data.Preloader
 import de.westnordost.streetcomplete.data.allEditTypesModule
+import de.westnordost.streetcomplete.data.atp.atpModule
+import de.westnordost.streetcomplete.data.atp.atpquests.atpQuestModule
 import de.westnordost.streetcomplete.data.dbModule
 import de.westnordost.streetcomplete.data.download.downloadModule
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesController
@@ -123,6 +125,8 @@ class StreetCompleteApplication : Application() {
                 messagesModule,
                 osmApiModule,
                 osmNoteQuestModule,
+                atpModule,
+                atpQuestModule,
                 osmQuestModule,
                 preferencesModule,
                 questModule,
