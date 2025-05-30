@@ -9,7 +9,7 @@ import androidx.compose.ui.res.painterResource
 import de.westnordost.streetcomplete.databinding.ComposeViewBinding
 import de.westnordost.streetcomplete.ui.common.CountInput
 
-abstract class AddCountInput : AbstractOsmQuestForm<Int>() {
+abstract class AAddCountInput : AbstractOsmQuestForm<Int>() {
 
     abstract val iconId: Int
 
