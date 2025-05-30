@@ -14,7 +14,9 @@ class NoteController(
     /* Must be a singleton because there is a listener that should respond to a change in the
      * database table */
 
-    /** Interface to be notified of new notes, updated notes and notes that have been deleted */
+    /** Interface to be notified of new notes, updated notes and notes that have been deleted,
+     *  to include also not yet synced changes use NotesWithEditsSource
+     */
     interface Listener {
         /** called when a number of notes has been added, updated or deleted */
         fun onUpdated(added: Collection<Note>, updated: Collection<Note>, deleted: Collection<Long>)
