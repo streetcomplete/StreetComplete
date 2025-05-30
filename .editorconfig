@@ -62,6 +62,14 @@ ktlint_standard_mixed-condition-operators = enabled
 ktlint_standard_kdoc = enabled
 ktlint_standard_square-brackets-spacing = enabled
 
+# disable all Ktlint rules in generated files
+[app/build/generated/**/*.{kt,kts}]
+ktlint_standard = disabled
+
+# see https://github.com/streetcomplete/StreetComplete/commit/4ed305009c42c3617a17bf06c57fa2a40e60d353#commitcomment-158225965
+[app/src/commonMain/kotlin/de/westnordost/streetcomplete/osm/WaysCrossingUtils.kt]
+ktlint_standard_filename = disabled
+
 [gradlew]
 indent_style = space
 indent_size = 4
