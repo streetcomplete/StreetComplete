@@ -14,7 +14,7 @@ enum class FlagAlignment {
     @SerialName("center") Center,
     @SerialName("center-right") CenterRight,
     @SerialName("right") Right,
-    @SerialName("stretch") Stretch;
+    @SerialName("stretch") Stretch
 }
 
 suspend fun Res.readFlagAlignments(): FlagAlignments =

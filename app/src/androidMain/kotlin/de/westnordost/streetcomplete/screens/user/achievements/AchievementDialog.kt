@@ -56,7 +56,7 @@ fun AchievementDialog(
         ) {
             DialogContentWithIconLayout(
                 icon = {
-                    AchievementIcon(painterResource(achievement.icon) , level)
+                    AchievementIcon(painterResource(achievement.icon), level)
                 },
                 content = { isLandscape ->
                     AchievementDetails(
