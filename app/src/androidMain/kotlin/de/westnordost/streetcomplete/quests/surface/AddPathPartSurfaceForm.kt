@@ -2,9 +2,9 @@ package de.westnordost.streetcomplete.quests.surface
 
 import de.westnordost.streetcomplete.osm.surface.Surface
 import de.westnordost.streetcomplete.osm.surface.toItems
-import de.westnordost.streetcomplete.quests.AImageListQuestForm
+import de.westnordost.streetcomplete.quests.AImageListQuestComposeForm
 
-class AddPathPartSurfaceForm : AImageListQuestForm<Surface, Surface>() {
+class AddPathPartSurfaceForm : AImageListQuestComposeForm<Surface, Surface>() {
     override val items get() = Surface.selectableValuesForWays.toItems()
 
     override val itemsPerRow = 3

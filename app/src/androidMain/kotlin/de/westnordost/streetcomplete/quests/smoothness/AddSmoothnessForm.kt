@@ -8,16 +8,22 @@ import android.view.LayoutInflater
 import android.view.View
 import androidx.annotation.DrawableRes
 import androidx.appcompat.app.AlertDialog
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.key
+import androidx.compose.ui.semantics.Role
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.osm.surface.Surface
 import de.westnordost.streetcomplete.osm.surface.asItem
-import de.westnordost.streetcomplete.quests.AImageListQuestForm
+import de.westnordost.streetcomplete.quests.AImageListQuestComposeForm
 import de.westnordost.streetcomplete.quests.AnswerItem
+import de.westnordost.streetcomplete.ui.common.image_select.ImageListItem
+import de.westnordost.streetcomplete.ui.common.image_select.SelectableIconRightItem
 import de.westnordost.streetcomplete.util.ktx.asImageSpan
 import de.westnordost.streetcomplete.util.ktx.couldBeSteps
 import de.westnordost.streetcomplete.view.image_select.ItemViewHolder
 
-class AddSmoothnessForm : AImageListQuestForm<Smoothness, SmoothnessAnswer>() {
+// todo: Get the emotes working, and use a one off item composable held in the same folder instead of IconRight
+class AddSmoothnessForm : AImageListQuestComposeForm<Smoothness, SmoothnessAnswer>() {
 
     override val otherAnswers get() = listOfNotNull(
         AnswerItem(R.string.quest_smoothness_wrong_surface) { surfaceWrong() },
@@ -27,13 +33,23 @@ class AddSmoothnessForm : AImageListQuestForm<Smoothness, SmoothnessAnswer>() {
 
     private val surfaceTag get() = element.tags["surface"]
 
+    override val itemContent =
+        @Composable { item: ImageListItem<Smoothness>, index: Int, onClick: () -> Unit, role: Role ->
+            key(item.item) {
+                SelectableIconRightItem(
+                    item = item.item,
+                    isSelected = item.checked,
+                    onClick = onClick,
+                    role = role
+                )
+            }
+        }
     override val items get() = Smoothness.entries.toItems(requireContext(), surfaceTag!!)
 
     override val itemsPerRow = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        imageSelector.cellLayoutId = R.layout.cell_labeled_icon_select_smoothness
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.quests.bike_parking_type
 
-import de.westnordost.streetcomplete.quests.AImageListQuestForm
+import de.westnordost.streetcomplete.quests.AImageListQuestComposeForm
 
-class AddBikeParkingTypeForm : AImageListQuestForm<BikeParkingType, BikeParkingType>() {
+class AddBikeParkingTypeForm : AImageListQuestComposeForm<BikeParkingType, BikeParkingType>() {
 
     override val items = BikeParkingType.entries.map { it.asItem() }
     override val itemsPerRow = 3

@@ -1,11 +1,11 @@
 package de.westnordost.streetcomplete.quests.barrier_bicycle_barrier_installation
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.AImageListQuestForm
+import de.westnordost.streetcomplete.quests.AImageListQuestComposeForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 
 class AddBicycleBarrierInstallationForm :
-    AImageListQuestForm<BicycleBarrierInstallation, BicycleBarrierInstallationAnswer>() {
+    AImageListQuestComposeForm<BicycleBarrierInstallation, BicycleBarrierInstallationAnswer>() {
 
     override val items = BicycleBarrierInstallation.entries.map { it.asItem() }
     override val itemsPerRow = 3

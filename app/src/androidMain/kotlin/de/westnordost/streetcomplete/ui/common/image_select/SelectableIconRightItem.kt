@@ -5,15 +5,10 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.BoxWithConstraints
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.layout.wrapContentSize
-import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -27,19 +22,17 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shadow
 import androidx.compose.ui.graphics.asImageBitmap
-import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toBitmap
-import de.westnordost.streetcomplete.quests.bicycle_repair_station.BicycleRepairStationService
-import de.westnordost.streetcomplete.quests.bicycle_repair_station.asItem
+import de.westnordost.streetcomplete.quests.segregated.CyclewaySegregation
+import de.westnordost.streetcomplete.quests.segregated.asItem
 import de.westnordost.streetcomplete.ui.ktx.conditional
 import de.westnordost.streetcomplete.ui.theme.SelectionColor
 import de.westnordost.streetcomplete.ui.theme.SelectionFrameColor
@@ -50,7 +43,7 @@ import de.westnordost.streetcomplete.view.ResText
 import de.westnordost.streetcomplete.view.image_select.DisplayItem
 
 @Composable
-fun <T> SelectableImageItem(
+fun <T> SelectableIconRightItem(
     item: DisplayItem<T>,
     isSelected: Boolean,
     onClick: () -> Unit,
@@ -61,7 +54,6 @@ fun <T> SelectableImageItem(
         targetValue = if (isSelected) 0.5f else 0f,
         label = "OverlayAlpha"
     )
-
     val context = LocalContext.current
     val imageBitmap = remember(item.image) {
         when (item.image) {
@@ -74,7 +66,6 @@ fun <T> SelectableImageItem(
             else -> null
         }
     }
-
     val title = remember(item.title) {
         when (item.title) {
             is ResText -> context.getString((item.title as ResText).resId)
@@ -82,8 +73,13 @@ fun <T> SelectableImageItem(
             null -> ""
         }
     }
-
-    var imageWidth by remember { mutableStateOf(0) }
+    val description = remember(item.description) {
+        when (item.description) {
+            is ResText -> context.getString((item.description as ResText).resId)
+            is CharSequenceText -> (item.description as CharSequenceText).text.toString()
+            null -> null
+        }
+    }
 
     Box(
         modifier = modifier
@@ -92,71 +88,56 @@ fun <T> SelectableImageItem(
                 onClick = onClick,
                 role = role
             )
-            .padding(2.dp)
-            .wrapContentSize()
+            .conditional(isSelected) {
+                border(4.dp, SelectionFrameColor)
+            }
+            .padding(2.dp),
+        contentAlignment = Alignment.CenterStart
     ) {
         Box(
             modifier = Modifier
-                .wrapContentSize()
-                .conditional(isSelected) {
-                    border(4.dp, SelectionFrameColor)
-                }
-                .padding(2.dp)
-        ) {
+                .matchParentSize()
+                .background(SelectionColor.copy(alpha = animatedAlpha))
+        )
+        Row (verticalAlignment = Alignment.CenterVertically) {
             imageBitmap?.let { bitmap ->
-                Box {
-                    Image(
-                        bitmap = bitmap,
-                        contentDescription = title,
-                        modifier = Modifier
-                            .align(Alignment.Center)
-                            .onSizeChanged {
-                                imageWidth = it.width
-                            }
+                Image(
+                    bitmap = bitmap,
+                    contentDescription = title,
+                    modifier = Modifier
+                        .wrapContentSize(Alignment.CenterStart)
+                )
+            }
+            Column(
+                horizontalAlignment = Alignment.Start,
+                modifier = Modifier.padding(start = 8.dp)) {
+                Text(
+                    text = title,
+                    style = TextStyle(
+                        color = Color.Black,
+                        fontSize = 13.sp
                     )
-
-                    Box(
-                        modifier = Modifier
-                            .background(SelectionColor.copy(alpha = animatedAlpha))
-                            .matchParentSize()
+                )
+                if (description != null) {
+                    Text(
+                        text = description,
+                        style = TextStyle(
+                            color = Color.Black,
+                        ),
                     )
-
-                    if (imageWidth > 0) {
-                        Text(
-                            text = title,
-                            style = TextStyle(
-                                color = Color.White,
-                                fontSize = 12.sp,
-                                fontWeight = FontWeight.Bold,
-                                shadow = Shadow(
-                                    color = Color.Black,
-                                    offset = Offset(2f, 2f),
-                                    blurRadius = 4f
-                                )
-                            ),
-                            textAlign = TextAlign.Center,
-                            modifier = Modifier
-                                .align(Alignment.BottomCenter)
-                                .width(with(LocalContext.current.resources.displayMetrics) {
-                                    (imageWidth / density).dp
-                                })
-                                .padding(8.dp)
-                        )
-                    }
                 }
             }
         }
     }
 }
 
-
 @Composable
 @Preview(showBackground = true)
-fun SelectableImagePreview() {
+fun SelectableIconRightItemPreview() {
     var selected by remember { mutableStateOf(false) }
 
-    SelectableImageItem(
-        item = BicycleRepairStationService.CHAIN_TOOL.asItem(),
+    SelectableIconRightItem(
+        item = CyclewaySegregation.SIDEWALK.asItem(isLeftHandTraffic = true),
         isSelected = selected,
         onClick = { selected = !selected }
     )

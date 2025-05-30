@@ -9,6 +9,7 @@ import de.westnordost.streetcomplete.view.image_select.ImageListPickerDialog
 import de.westnordost.streetcomplete.view.image_select.ImageSelectAdapter
 import de.westnordost.streetcomplete.view.image_select.Item
 
+// todo: Move to AImageListQuestComposeForm once it can handle the changes
 class AddRecyclingContainerMaterialsForm :
     AImageListQuestForm<List<RecyclingMaterial>, RecyclingContainerMaterialsAnswer>() {
 

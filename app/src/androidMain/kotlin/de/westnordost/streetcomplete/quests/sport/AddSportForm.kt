@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.sport
 
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
+import androidx.compose.runtime.Composable
 import androidx.compose.runtime.key
 import androidx.compose.ui.semantics.Role
 import de.westnordost.streetcomplete.R
@@ -22,7 +23,7 @@ class AddSportForm : AImageListQuestComposeForm<Sport, List<Sport>>() {
         .sortedBy { sportPosition(it.value!!.osmValue) }
 
     override val itemContent =
-        @androidx.compose.runtime.Composable { item: ImageListItem<Sport>, index: Int, onClick: () -> Unit, role: Role ->
+        @Composable { item: ImageListItem<Sport>, index: Int, onClick: () -> Unit, role: Role ->
             key(item.item) {
                 SelectableIconItem(
                     item = item.item,
