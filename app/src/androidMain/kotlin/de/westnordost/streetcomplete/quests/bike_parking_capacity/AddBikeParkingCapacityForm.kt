@@ -5,4 +5,5 @@ import de.westnordost.streetcomplete.quests.AAddCountInput
 
 class AddBikeParkingCapacityForm : AAddCountInput() {
     override val iconId = R.drawable.ic_bicycle
+    override val initialCount get() = element.tags["capacity"]?.toIntOrNull() ?: 0
 }

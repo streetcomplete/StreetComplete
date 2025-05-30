@@ -13,18 +13,20 @@ abstract class AAddCountInput : AbstractOsmQuestForm<Int>() {
 
     abstract val iconId: Int
 
+    abstract val initialCount: Int
+
     private val binding by contentViewBinding(ComposeViewBinding::bind)
 
-    private lateinit var capacity: MutableState<Int>
+    private lateinit var count: MutableState<Int>
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.composeViewBase.setContent {
-            capacity = rememberSaveable { mutableIntStateOf(element.tags["capacity"]?.toIntOrNull() ?: 0) }
+            count = rememberSaveable { mutableIntStateOf(initialCount) }
             CountInput(
-                count = capacity.value,
+                count = count.value,
                 onCountChange = {
-                    capacity.value = it
+                    count.value = it
                     checkIsFormComplete()
                 },
                 iconPainter = painterResource(iconId)
@@ -32,9 +34,9 @@ abstract class AAddCountInput : AbstractOsmQuestForm<Int>() {
         }
     }
 
-    override fun isFormComplete() = capacity.value > 0
+    override fun isFormComplete() = count.value > 0
 
     override fun onClickOk() {
-        applyAnswer(capacity.value)
+        applyAnswer(count.value)
     }
 }
