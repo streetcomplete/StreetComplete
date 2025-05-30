@@ -2,14 +2,20 @@ package de.westnordost.streetcomplete.quests
 
 import android.os.Bundle
 import android.view.View
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Surface
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.ComposeViewBinding
 import de.westnordost.streetcomplete.ui.common.CountInput
+import de.westnordost.streetcomplete.ui.theme.extraLargeInput
+import de.westnordost.streetcomplete.ui.util.content
 
 abstract class AAddCountInput : AbstractOsmQuestForm<Int>() {
 
@@ -24,16 +30,20 @@ abstract class AAddCountInput : AbstractOsmQuestForm<Int>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.composeViewBase.setContent {
-            count = rememberSaveable { mutableIntStateOf(initialCount) }
-            CountInput(
-                count = count.value,
-                onCountChange = {
-                    count.value = it
-                    checkIsFormComplete()
-                },
-                iconPainter = painterResource(iconId)
-            )
+        binding.composeViewBase.content {
+            Surface {
+                count = rememberSaveable { mutableIntStateOf(initialCount) }
+                CountInput(
+                    count = count.value,
+                    onCountChange = {
+                        count.value = it
+                        checkIsFormComplete()
+                    },
+                    iconPainter = painterResource(iconId),
+                    modifier = Modifier.padding(8.dp),
+                    textStyle = MaterialTheme.typography.extraLargeInput
+                )
+            }
         }
     }
 
