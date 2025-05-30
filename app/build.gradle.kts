@@ -370,7 +370,7 @@ tasks.register<DownloadAndConvertPresetIconsTask>("downloadAndConvertPresetIcons
     version = presetsVersion
     targetDir = "$projectDir/src/androidMain/res/drawable/"
     iconSize = 34
-    transformName = { "ic_preset_" + it.replace('-', '_') }
+    transformName = { "preset_" + it.replace('-', '_') }
     indexFile = "$projectDir/src/androidMain/kotlin/de/westnordost/streetcomplete/view/PresetIconIndex.kt"
 }
 

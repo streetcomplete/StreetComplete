@@ -83,9 +83,9 @@ private val streetParkingTaggingNotExpected by lazy { """
 """.toElementFilterExpression() }
 
 private val parkingLotAreaStyle = PolygonStyle(Color.BLUE)
-private val parkingLotPointStyle = PointStyle(R.drawable.ic_preset_temaki_car_parked)
-private val chicaneStyle = PointStyle(R.drawable.ic_preset_temaki_chicane_arrow)
-private val trafficCalmingStyle = PointStyle(R.drawable.ic_preset_temaki_diamond)
+private val parkingLotPointStyle = PointStyle(R.drawable.preset_temaki_car_parked)
+private val chicaneStyle = PointStyle(R.drawable.preset_temaki_chicane_arrow)
+private val trafficCalmingStyle = PointStyle(R.drawable.preset_temaki_diamond)
 
 private fun getNarrowingTrafficCalmingStyle(element: Element): Style? =
     when (parseNarrowingTrafficCalming(element.tags)) {

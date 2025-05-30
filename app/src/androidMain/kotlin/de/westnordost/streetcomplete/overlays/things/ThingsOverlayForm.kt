@@ -57,7 +57,7 @@ class ThingsOverlayForm : AbstractOverlayForm() {
             ?: BaseFeature(
                 id = "thing/unknown",
                 names = listOf(requireContext().getString(R.string.unknown_object)),
-                icon = "ic_preset_maki_marker_stroked",
+                icon = "preset_maki_marker_stroked",
                 tags = element.tags,
                 geometry = GeometryType.entries.toList()
             )
