@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.quests.orchard_produce
 
-import de.westnordost.streetcomplete.quests.AImageListQuestForm
+import de.westnordost.streetcomplete.quests.AImageListQuestComposeForm
 
-class AddOrchardProduceForm : AImageListQuestForm<OrchardProduce, List<OrchardProduce>>() {
+class AddOrchardProduceForm : AImageListQuestComposeForm<OrchardProduce, List<OrchardProduce>>() {
 
     private val producesMap = OrchardProduce.entries
         .map { it.asItem() }

@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.quests.recycling
 
-import de.westnordost.streetcomplete.quests.AImageListQuestForm
+import de.westnordost.streetcomplete.quests.AImageListQuestComposeForm
 
-class AddRecyclingTypeForm : AImageListQuestForm<RecyclingType, RecyclingType>() {
+class AddRecyclingTypeForm : AImageListQuestComposeForm<RecyclingType, RecyclingType>() {
 
     override val items = RecyclingType.entries.map { it.asItem() }
     override val itemsPerRow = 3

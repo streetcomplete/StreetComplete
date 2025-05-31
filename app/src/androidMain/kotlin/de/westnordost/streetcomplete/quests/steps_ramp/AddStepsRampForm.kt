@@ -3,39 +3,47 @@ package de.westnordost.streetcomplete.quests.steps_ramp
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AlertDialog
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.key
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.semantics.Role
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.AImageListQuestForm
+import de.westnordost.streetcomplete.quests.AImageListQuestComposeForm
 import de.westnordost.streetcomplete.quests.steps_ramp.StepsRamp.BICYCLE
-import de.westnordost.streetcomplete.quests.steps_ramp.StepsRamp.NONE
 import de.westnordost.streetcomplete.quests.steps_ramp.StepsRamp.STROLLER
 import de.westnordost.streetcomplete.quests.steps_ramp.StepsRamp.WHEELCHAIR
-import de.westnordost.streetcomplete.view.image_select.ImageSelectAdapter
+import de.westnordost.streetcomplete.ui.common.image_select.ImageListItem
+import de.westnordost.streetcomplete.ui.common.image_select.SelectableImageItem
 
-class AddStepsRampForm : AImageListQuestForm<StepsRamp, StepsRampAnswer>() {
+class AddStepsRampForm : AImageListQuestComposeForm<StepsRamp, StepsRampAnswer>() {
 
     override val items = StepsRamp.entries.map { it.asItem() }
     override val itemsPerRow = 2
     override val maxSelectableItems = -1
     override val moveFavoritesToFront = false
 
+    override val itemContent = @Composable { item: ImageListItem<StepsRamp>, index: Int, onClick: () -> Unit, role: Role ->
+        key(item.item) {
+            SelectableImageItem(
+                item = item.item,
+                isSelected = item.checked,
+                onClick = {
+                    if (item.item.value == StepsRamp.NONE) {
+                        currentItems.value = currentItems.value.map { if (it.item.value != StepsRamp.NONE) ImageListItem(it.item, false) else it }
+                    } else {
+                        currentItems.value = currentItems.value.map { if (it.item.value == StepsRamp.NONE) ImageListItem(it.item, false) else it }
+                    }
+                    onClick()
+                },
+                modifier = Modifier.fillMaxSize(),
+                role = role
+            )
+        }
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        // NONE is exclusive with the other options
-        imageSelector.listeners.add(object : ImageSelectAdapter.OnItemSelectionListener {
-            override fun onIndexSelected(index: Int) {
-                val noneIndex = imageSelector.indexOf(NONE)
-                if (index == noneIndex) {
-                    for (selectedIndex in imageSelector.selectedIndices) {
-                        if (selectedIndex != index) imageSelector.deselect(selectedIndex)
-                    }
-                } else {
-                    imageSelector.deselect(noneIndex)
-                }
-            }
-
-            override fun onIndexDeselected(index: Int) {}
-        })
     }
 
     override fun onClickOk(selectedItems: List<StepsRamp>) {
