@@ -196,6 +196,11 @@ android {
     }
 
     compileOptions {
+        // Core library desugaring is (solely) necessary because kotlinx.datetime uses java.time
+        // under the hood on JVM, which requires core library desugaring below min SDK API 26.
+        // See https://github.com/Kotlin/kotlinx-datetime?tab=readme-ov-file#using-in-your-projects
+        // If we ever increase the min SDK version to 26 or above, this could likely be removed.
+        isCoreLibraryDesugaringEnabled = true
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
@@ -269,6 +274,8 @@ compose {
 
 dependencies {
     debugImplementation(compose.uiTooling)
+    // see comment in android.compileOptions.isCoreLibraryDesugaringEnabled
+    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.5")
 }
 
 val keystorePropertiesFile = rootProject.file("keystore.properties")
