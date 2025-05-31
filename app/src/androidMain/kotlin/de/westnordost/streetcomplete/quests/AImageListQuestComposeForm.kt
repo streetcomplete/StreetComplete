@@ -25,6 +25,8 @@ import de.westnordost.streetcomplete.ui.common.image_select.ImageList
 import androidx.compose.ui.semantics.Role
 import de.westnordost.streetcomplete.ui.common.image_select.ImageListItem
 import de.westnordost.streetcomplete.ui.common.image_select.SelectableImageItem
+import de.westnordost.streetcomplete.util.logs.Log
+import de.westnordost.streetcomplete.util.takeFavorites
 import de.westnordost.streetcomplete.view.image_select.DisplayItem
 import org.koin.android.ext.android.inject
 
@@ -71,9 +73,16 @@ abstract class AImageListQuestComposeForm<I, T> : AbstractOsmQuestForm<T>() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        // TODO: deal with favourites
         super.onViewCreated(view, savedInstanceState)
-        currentItems.value = items.map { ImageListItem(it, false) }
+        currentItems.value = if ( items.size > itemsPerRow && moveFavoritesToFront) {
+            val favourites = prefs.getLastPicked(this::class.simpleName!!)
+                .map { itemsByString[it] }
+                .takeFavorites(n = itemsPerRow, history = 50)
+            Log.d("Temp", "Favourites: " + favourites.map { it.value.toString() })
+            (favourites + items).distinct().map { ImageListItem(it, false) }
+        } else {
+            items.map { ImageListItem(it, false) }
+        }
         refreshComposeView()
     }
     protected fun refreshComposeView() {
@@ -137,6 +146,7 @@ abstract class AImageListQuestComposeForm<I, T> : AbstractOsmQuestForm<T>() {
     override fun onClickOk() {
         if (currentItems.value.filter { it.checked }.map { it.item }.isNotEmpty()) {
             prefs.addLastPicked(this::class.simpleName!!, currentItems.value.filter { it.checked }.map { it.item }.map { it.value.toString() })
+            Log.d("Temp", "Saved items: " + currentItems.value.filter { it.checked }.map { it.item }.map { it.value.toString() })
             onClickOk(currentItems.value.filter { it.checked }.map { it.item }.map { it.value!! })
         }
     }
