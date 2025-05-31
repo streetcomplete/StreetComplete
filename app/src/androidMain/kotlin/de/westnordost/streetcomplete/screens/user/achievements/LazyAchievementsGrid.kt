@@ -14,6 +14,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.user.achievements.Achievement
 import de.westnordost.streetcomplete.data.user.achievements.achievements
+import org.jetbrains.compose.resources.painterResource
 
 @Composable
 fun LazyAchievementsGrid(
@@ -31,7 +32,7 @@ fun LazyAchievementsGrid(
     ) {
         items(achievements) { (achievement, level) ->
             Box {
-                AchievementIcon(icon = achievement.icon, level = level)
+                achievement.icon?.let { AchievementIcon(painterResource(it), level) }
                 // clickable area as separate box because the ripple should be on top of all of it
                 // while the icon should not be clipped within the achievement frame
                 Box(

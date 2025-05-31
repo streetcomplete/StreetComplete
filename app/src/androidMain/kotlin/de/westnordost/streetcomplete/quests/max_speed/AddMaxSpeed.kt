@@ -8,8 +8,8 @@ import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
-import de.westnordost.streetcomplete.osm.MAXSPEED_TYPE_KEYS
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.osm.maxspeed.MAX_SPEED_TYPE_KEYS
 import de.westnordost.streetcomplete.osm.surface.UNPAVED_SURFACES
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
@@ -19,7 +19,7 @@ class AddMaxSpeed : OsmFilterQuestType<MaxSpeedAnswer>() {
         ways with
          highway ~ motorway|trunk|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|busway
          and !maxspeed and !maxspeed:advisory and !maxspeed:forward and !maxspeed:backward
-         and ${MAXSPEED_TYPE_KEYS.joinToString(" and ") { "!$it" }}
+         and ${MAX_SPEED_TYPE_KEYS.joinToString(" and ") { "!$it" }}
          and surface !~ ${UNPAVED_SURFACES.joinToString("|")}
          and cyclestreet != yes and bicycle_road != yes
          and motor_vehicle !~ private|no

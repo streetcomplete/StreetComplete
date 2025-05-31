@@ -20,7 +20,7 @@ import de.westnordost.streetcomplete.osm.cycleway.any
 import de.westnordost.streetcomplete.osm.cycleway.applyTo
 import de.westnordost.streetcomplete.osm.cycleway.isAmbiguous
 import de.westnordost.streetcomplete.osm.cycleway.parseCyclewaySides
-import de.westnordost.streetcomplete.osm.isImplicitMaxSpeedButNotSlowZone
+import de.westnordost.streetcomplete.osm.maxspeed.FILTER_IS_IMPLICIT_MAX_SPEED_BUT_NOT_SLOW_ZONE
 import de.westnordost.streetcomplete.osm.surface.UNPAVED_SURFACES
 
 class AddCycleway(
@@ -131,7 +131,7 @@ private val roadsFilter by lazy { """
 private val untaggedRoadsFilter by lazy { """
     ways with (
         highway ~ primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified
-        or highway = residential and (maxspeed > 33 or $isImplicitMaxSpeedButNotSlowZone)
+        or highway = residential and (maxspeed > 33 or $FILTER_IS_IMPLICIT_MAX_SPEED_BUT_NOT_SLOW_ZONE)
       )
       and !cycleway
       and !cycleway:left
@@ -144,7 +144,7 @@ private val untaggedRoadsFilter by lazy { """
       and (
         !maxspeed
         or maxspeed > 20
-        or $isImplicitMaxSpeedButNotSlowZone
+        or $FILTER_IS_IMPLICIT_MAX_SPEED_BUT_NOT_SLOW_ZONE
       )
       and surface !~ ${UNPAVED_SURFACES.joinToString("|")}
       and ~bicycle|bicycle:backward|bicycle:forward !~ use_sidepath

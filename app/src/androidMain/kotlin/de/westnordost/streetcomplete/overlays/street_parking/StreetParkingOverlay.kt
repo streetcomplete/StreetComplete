@@ -8,10 +8,8 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 import de.westnordost.streetcomplete.osm.ALL_ROADS
-import de.westnordost.streetcomplete.osm.MAXSPEED_TYPE_KEYS
 import de.westnordost.streetcomplete.osm.isPrivateOnFoot
-import de.westnordost.streetcomplete.osm.traffic_calming.LaneNarrowingTrafficCalming
-import de.westnordost.streetcomplete.osm.traffic_calming.parseNarrowingTrafficCalming
+import de.westnordost.streetcomplete.osm.maxspeed.MAX_SPEED_TYPE_KEYS
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.HALF_ON_STREET
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.OFF_STREET
@@ -22,6 +20,8 @@ import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.STAGGERE
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.STREET_SIDE
 import de.westnordost.streetcomplete.osm.street_parking.StreetParking
 import de.westnordost.streetcomplete.osm.street_parking.parseStreetParkingSides
+import de.westnordost.streetcomplete.osm.traffic_calming.LaneNarrowingTrafficCalming
+import de.westnordost.streetcomplete.osm.traffic_calming.parseNarrowingTrafficCalming
 import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 import de.westnordost.streetcomplete.overlays.Color
 import de.westnordost.streetcomplete.overlays.Overlay
@@ -78,14 +78,14 @@ private val streetParkingTaggingNotExpected by lazy { """
       or expressway = yes
       or tunnel = yes
       or junction = roundabout
-      or ~"${(MAXSPEED_TYPE_KEYS + "maxspeed").joinToString("|")}" ~ ".*:(rural|nsl_single|nsl_dual)"
+      or ~"${MAX_SPEED_TYPE_KEYS.joinToString("|")}" ~ ".*:(rural|nsl_single|nsl_dual)"
       or maxspeed >= 70
 """.toElementFilterExpression() }
 
 private val parkingLotAreaStyle = PolygonStyle(Color.BLUE)
-private val parkingLotPointStyle = PointStyle(R.drawable.ic_preset_temaki_car_parked)
-private val chicaneStyle = PointStyle(R.drawable.ic_preset_temaki_chicane_arrow)
-private val trafficCalmingStyle = PointStyle(R.drawable.ic_preset_temaki_diamond)
+private val parkingLotPointStyle = PointStyle(R.drawable.preset_temaki_car_parked)
+private val chicaneStyle = PointStyle(R.drawable.preset_temaki_chicane_arrow)
+private val trafficCalmingStyle = PointStyle(R.drawable.preset_temaki_diamond)
 
 private fun getNarrowingTrafficCalmingStyle(element: Element): Style? =
     when (parseNarrowingTrafficCalming(element.tags)) {

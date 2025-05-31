@@ -16,7 +16,9 @@ class NotesWithEditsSource(
     private val noteEditsSource: NoteEditsSource,
     private val userDataSource: UserDataSource
 ) {
-    /** Interface to be notified of new notes, updated notes and notes that have been deleted */
+    /** Interface to be notified of new notes, updated notes and notes that have been deleted,
+        this includes not yet synced answers in addition to what NoteController would report
+     */
     interface Listener {
         fun onUpdated(added: Collection<Note>, updated: Collection<Note>, deleted: Collection<Long>)
 
@@ -26,7 +28,7 @@ class NotesWithEditsSource(
 
     private val noteControllerListener = object : NoteController.Listener {
         override fun onUpdated(added: Collection<Note>, updated: Collection<Note>, deleted: Collection<Long>) {
-            /* not include note creations: This is the update from the server, the update does not
+            /* note creations included only in part: This is the update from the server, the update does not
              * include the new notes we added ourselves. Implementation here would only need to be
              * changed if action type "REOPEN" or "CLOSE" is implemented */
             val noteCommentEdits = noteEditsSource.getAllUnsynced().filter { it.action != CREATE }

@@ -97,9 +97,11 @@ private fun BoxScope.IntroTutorialIllustration(
         }
 
         // drop pins on page 2
-        launch { pin1.animateTo(if (page == 2) 1f else 0f, tween(400, 400)) }
-        launch { pin2.animateTo(if (page == 2) 1f else 0f, tween(400, 600)) }
-        launch { pin3.animateTo(if (page == 2) 1f else 0f, tween(400, 800)) }
+        // extra delay when dropping because the view is obstructed by the permissions dialog
+        val extraDelay = if (page == 2) 2000 else 0
+        launch { pin1.animateTo(if (page == 2) 1f else 0f, tween(400, 400 + extraDelay)) }
+        launch { pin2.animateTo(if (page == 2) 1f else 0f, tween(400, 600 + extraDelay)) }
+        launch { pin3.animateTo(if (page == 2) 1f else 0f, tween(400, 800 + extraDelay)) }
 
         // checkmark on page 3
         if (page == 3) {

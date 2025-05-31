@@ -40,8 +40,8 @@ class PlacesOverlay(private val getFeature: (Element) -> Feature?) : Overlay {
             .map { element ->
                 // show disused places always with the icon for "disused shop" icon
                 val icon = getFeature(element)?.icon?.let { presetIconIndex[it] }
-                    ?: if (element.isDisusedPlace()) R.drawable.ic_preset_fas_store_alt_slash else null
-                    ?: R.drawable.ic_preset_maki_shop
+                    ?: if (element.isDisusedPlace()) R.drawable.preset_fas_store_alt_slash else null
+                    ?: R.drawable.preset_maki_shop
 
                 val label = getNameLabel(element.tags)
 

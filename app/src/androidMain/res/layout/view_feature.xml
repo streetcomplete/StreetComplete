@@ -13,7 +13,7 @@
         android:id="@+id/iconView"
         android:layout_width="34dp"
         android:layout_height="34dp"
-        tools:src="@drawable/ic_preset_fas_flask"
+        tools:src="@drawable/preset_fas_flask"
         android:padding="4dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"

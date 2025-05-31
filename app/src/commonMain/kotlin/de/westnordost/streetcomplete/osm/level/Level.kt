@@ -20,7 +20,6 @@ sealed interface Level {
     }
 }
 
-
 fun Level.intersects(other: Level): Boolean = when (this) {
     is Level.Single -> {
         when (other) {

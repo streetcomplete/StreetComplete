@@ -9,7 +9,7 @@ plugins {
     id("org.jetbrains.kotlin.plugin.serialization") version "2.1.21"
     id("org.jetbrains.kotlin.plugin.compose") version "2.1.21"
     id("com.android.application") version "8.9.3"
-    //id("org.jetbrains.compose") version "1.8.0" apply false
+    id("org.jetbrains.compose") version "1.8.1"
 }
 
 repositories {
@@ -39,87 +39,6 @@ kotlin {
     }
 
     sourceSets {
-        androidMain {
-            dependencies {
-                // dependency injection
-                implementation(project.dependencies.platform("io.insert-koin:koin-bom:4.0.4"))
-                implementation("io.insert-koin:koin-core")
-                implementation("io.insert-koin:koin-android")
-                implementation("io.insert-koin:koin-androidx-workmanager")
-                implementation("io.insert-koin:koin-androidx-compose")
-
-                // Android stuff
-                implementation("com.google.android.material:material:1.12.0")
-                implementation("androidx.core:core-ktx:1.16.0")
-                implementation("androidx.appcompat:appcompat:1.7.0")
-                implementation("androidx.constraintlayout:constraintlayout:2.2.1")
-                implementation("androidx.annotation:annotation:1.9.1")
-                implementation("androidx.fragment:fragment-ktx:1.8.7")
-                implementation("androidx.recyclerview:recyclerview:1.4.0")
-                implementation("androidx.viewpager:viewpager:1.1.0")
-                implementation("androidx.localbroadcastmanager:localbroadcastmanager:1.1.0")
-
-                // Jetpack Compose
-                val composeBom = project.dependencies.platform("androidx.compose:compose-bom:2025.04.01")
-                implementation(composeBom)
-
-                implementation("androidx.compose.material:material")
-                implementation("androidx.activity:activity-compose")
-                // Jetpack Compose Previews
-                implementation("androidx.compose.ui:ui-tooling-preview")
-
-                implementation("androidx.navigation:navigation-compose:2.9.0")
-
-                implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.9.0")
-                implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.9.0")
-
-                // reorderable lists (raw Compose API is pretty complicated)
-                implementation("sh.calvin.reorderable:reorderable:2.4.3")
-
-                // multiplatform webview (for login via OAuth)
-                implementation("io.github.kevinnzou:compose-webview-multiplatform-android:1.9.40")
-
-                // photos
-                implementation("androidx.exifinterface:exifinterface:1.4.1")
-
-                // Kotlin
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.10.2")
-
-                // scheduling background jobs
-                implementation("androidx.work:work-runtime-ktx:2.10.1")
-
-                // HTTP Client
-                implementation("io.ktor:ktor-client-android:3.1.3")
-
-                // widgets
-                implementation("androidx.viewpager2:viewpager2:1.1.0")
-                implementation("me.grantland:autofittextview:0.2.1")
-                implementation("com.google.android.flexbox:flexbox:3.0.0")
-                implementation("com.github.chrisbanes:PhotoView:2.3.0")
-
-                // sharing presets/settings via QR Code
-                implementation("io.github.alexzhirkevich:qrose:1.0.1")
-                // for encoding information for the URL configuration (QR code)
-                implementation("com.ionspin.kotlin:bignum:0.3.10")
-
-                // map and location
-                implementation("org.maplibre.gl:android-sdk:11.8.8")
-            }
-        }
-        androidUnitTest {
-            dependencies {
-                implementation("org.mockito:mockito-core:5.17.0")
-                implementation(kotlin("test"))
-            }
-        }
-        androidInstrumentedTest {
-            dependencies {
-                implementation(kotlin("test"))
-                // android tests
-                implementation("androidx.test:runner:1.6.2")
-                implementation("androidx.test:rules:1.6.1")
-            }
-        }
         commonMain {
             dependencies {
                 // Kotlin
@@ -159,6 +78,84 @@ kotlin {
 
                 // opening hours parser
                 implementation("de.westnordost:osm-opening-hours:0.2.0")
+
+                // UI (Compose)
+                implementation(compose.runtime)
+                implementation(compose.foundation)
+                implementation(compose.material)
+                implementation(compose.ui)
+                implementation(compose.components.resources)
+                implementation(compose.components.uiToolingPreview)
+
+                // UI Navigation
+                implementation("org.jetbrains.androidx.navigation:navigation-compose:2.9.0-beta01")
+
+                // UI ViewModel
+                implementation("org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-compose:2.9.0")
+
+                // UI widgets
+
+                // reorderable lists (raw Compose API is pretty complicated)
+                implementation("sh.calvin.reorderable:reorderable:2.4.3")
+
+                // multiplatform webview (for login via OAuth)
+                implementation("io.github.kevinnzou:compose-webview-multiplatform-android:1.9.40")
+
+                // sharing presets/settings via QR Code
+                implementation("io.github.alexzhirkevich:qrose:1.0.1")
+                // for encoding information for the URL configuration (QR code)
+                implementation("com.ionspin.kotlin:bignum:0.3.10")
+            }
+        }
+        androidMain {
+            dependencies {
+                // dependency injection
+                implementation(project.dependencies.platform("io.insert-koin:koin-bom:4.0.4"))
+                implementation("io.insert-koin:koin-core")
+                implementation("io.insert-koin:koin-android")
+                implementation("io.insert-koin:koin-androidx-workmanager")
+                implementation("io.insert-koin:koin-androidx-compose")
+
+                // Android stuff
+                implementation("com.google.android.material:material:1.12.0")
+                implementation("androidx.core:core-ktx:1.16.0")
+                implementation("androidx.appcompat:appcompat:1.7.0")
+                implementation("androidx.constraintlayout:constraintlayout:2.2.1")
+                implementation("androidx.annotation:annotation:1.9.1")
+                implementation("androidx.fragment:fragment-ktx:1.8.7")
+                implementation("androidx.recyclerview:recyclerview:1.4.0")
+                implementation("androidx.localbroadcastmanager:localbroadcastmanager:1.1.0")
+
+                // Compose
+                implementation(compose.preview)
+                implementation("androidx.activity:activity-compose:1.10.1")
+
+                // photos
+                implementation("androidx.exifinterface:exifinterface:1.4.1")
+
+                // Kotlin
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.10.2")
+
+                // scheduling background jobs
+                implementation("androidx.work:work-runtime-ktx:2.10.1")
+
+                // HTTP Client
+                implementation("io.ktor:ktor-client-android:3.1.3")
+
+                // widgets
+                implementation("androidx.viewpager2:viewpager2:1.1.0")
+                implementation("me.grantland:autofittextview:0.2.1")
+                implementation("com.google.android.flexbox:flexbox:3.0.0")
+                implementation("com.github.chrisbanes:PhotoView:2.3.0")
+
+                // map and location
+                implementation("org.maplibre.gl:android-sdk:11.8.8")
+            }
+        }
+        iosMain {
+            dependencies {
+                // HTTP client
+                implementation("io.ktor:ktor-client-darwin:3.1.3")
             }
         }
         commonTest {
@@ -166,6 +163,20 @@ kotlin {
                 implementation(kotlin("test"))
 
                 implementation("io.ktor:ktor-client-mock:3.1.3")
+            }
+        }
+        androidUnitTest {
+            dependencies {
+                implementation("org.mockito:mockito-core:5.17.0")
+                implementation(kotlin("test"))
+            }
+        }
+        androidInstrumentedTest {
+            dependencies {
+                implementation(kotlin("test"))
+                // android tests
+                implementation("androidx.test:runner:1.6.2")
+                implementation("androidx.test:rules:1.6.1")
             }
         }
     }
@@ -185,6 +196,11 @@ android {
     }
 
     compileOptions {
+        // Core library desugaring is (solely) necessary because kotlinx.datetime uses java.time
+        // under the hood on JVM, which requires core library desugaring below min SDK API 26.
+        // See https://github.com/Kotlin/kotlinx-datetime?tab=readme-ov-file#using-in-your-projects
+        // If we ever increase the min SDK version to 26 or above, this could likely be removed.
+        isCoreLibraryDesugaringEnabled = true
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
@@ -243,6 +259,23 @@ android {
         )
         abortOnError = false
     }
+
+    dependencies {
+        debugImplementation("androidx.compose.ui:ui-tooling:1.8.2")
+    }
+}
+
+compose {
+    resources {
+        publicResClass = true
+        packageOfResClass = "de.westnordost.streetcomplete.resources"
+    }
+}
+
+dependencies {
+    debugImplementation(compose.uiTooling)
+    // see comment in android.compileOptions.isCoreLibraryDesugaringEnabled
+    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.5")
 }
 
 val keystorePropertiesFile = rootProject.file("keystore.properties")
@@ -273,10 +306,39 @@ val presetsVersion = "v6.11.0"
 
 val poEditorProjectId = "97843"
 
+tasks.register<UpdateContributorStatisticsTask>("updateContributorStatistics") {
+    group = "streetcomplete"
+    skipCommits = setOf(
+        "ae7a244dd60ccfc91cf2dc01bf9e60c8d6a81616", // some weird force-merge or something
+        "f3bc67328c3be989835e44eb33e769f49da479e1", // just a large re-import of orchard-produce images
+        "9c6d3e25216d06a2c5afa71086949e1e195de926", // mechanical linting
+        "1908fc930397c17739e60c8da67f968361f52e89", // mechanical linting
+        "74b6424d3310f62a5c0f7b0071ee81c2308db4f6", // mechanically optimized all graphics in the repo back then
+        "4282c1e812764a2bb46c17bbdb0fd98aee598e83", // deletion of adding too many files prior
+        "a64d57efc3d8d51c564365088772fdac528ab069", // deletion of adding too many files prior
+        "7fb216b8360ee85d84b36ad3fb0b0ea0ebf9977d", // mechanical linting
+        "21aa1deabae7a563ba1475094f372590fb33d784", // mechanical linting
+        "fef6877852d6a19a7b85e6f3ed3b09ea7c6538ec", // mostly just moving a lot of packages around
+        "7a7d725154eb38d53936d154fc8011355679a8ae", // just moving packages around
+    )
+    val skipWords = listOf("lint", "linter", "reorder imports", "organize imports")
+    skipCommitRegex = Regex(".*\\b(${skipWords.joinToString("|")})\\b.*", RegexOption.IGNORE_CASE)
+    targetFile = "$projectDir/src/commonMain/composeResources/files/credits_contributors.yml"
+    // gradle, py, bat, java and mjs don't exist anymore in this repo but they used to
+    codeFileRegex = Regex(".*\\.(java|kt|kts|py|gradle|bat|mjs)$")
+    /* photos, illustrations, sounds ... but not yml, json, ... because most of these are updated
+       via gradle tasks */
+    assetFileRegex = Regex(".*\\.(jpe?g|png|svg|webp|wav)$", RegexOption.IGNORE_CASE)
+    /* drawable xmls, layout xmls, animation xmls ... but not strings because they are updated
+       via gradle tasks */
+    interfaceMarkupRegex = Regex(".*(anim|color|drawable|layout|menu|mipmap).*\\.xml$")
+    githubApiToken = properties["GithubApiToken"] as String
+}
+
 tasks.register("updateAvailableLanguages") {
     group = "streetcomplete"
     doLast {
-        val fileWriter = FileWriter("$projectDir/src/androidMain/res/raw/languages.yml", false)
+        val fileWriter = FileWriter("$projectDir/src/commonMain/composeResources/files/languages.yml", false)
         fileWriter.write(bcp47ExportLanguages.joinToString("\n") { "- $it" })
         fileWriter.write("\n")
         fileWriter.close()
@@ -285,7 +347,7 @@ tasks.register("updateAvailableLanguages") {
 
 tasks.register<GetTranslatorCreditsTask>("updateTranslatorCredits") {
     group = "streetcomplete"
-    targetFile = "$projectDir/src/androidMain/res/raw/credits_translators.yml"
+    targetFile = "$projectDir/src/commonMain/composeResources/files/credits_translators.yml"
     languageCodes = bcp47ExportLanguages
     cookie = properties["POEditorCookie"] as String
     phpsessid = properties["POEditorPHPSESSID"] as String
@@ -315,7 +377,7 @@ tasks.register<DownloadAndConvertPresetIconsTask>("downloadAndConvertPresetIcons
     version = presetsVersion
     targetDir = "$projectDir/src/androidMain/res/drawable/"
     iconSize = 34
-    transformName = { "ic_preset_" + it.replace('-', '_') }
+    transformName = { "preset_" + it.replace('-', '_') }
     indexFile = "$projectDir/src/androidMain/kotlin/de/westnordost/streetcomplete/view/PresetIconIndex.kt"
 }
 
@@ -339,7 +401,7 @@ tasks.register<UpdateAppTranslationCompletenessTask>("updateTranslationCompleten
 tasks.register<UpdateChangelogTask>("updateChangelog") {
     group = "streetcomplete"
     sourceFile = "$rootDir/CHANGELOG.md"
-    targetFile = "$projectDir/src/androidMain/res/raw/changelog.html"
+    targetFile = "$projectDir/src/commonMain/composeResources/files/changelog.html"
 }
 
 tasks.register<UpdateMapStyleTask>("updateMapStyle") {

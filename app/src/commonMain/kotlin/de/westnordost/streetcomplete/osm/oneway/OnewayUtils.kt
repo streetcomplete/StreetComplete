@@ -23,4 +23,3 @@ fun isNotOnewayForCyclists(tags: Map<String, String>, isLeftHandTraffic: Boolean
 fun isInContraflowOfOneway(tags: Map<String, String>, direction: Direction): Boolean =
     isForwardOneway(tags) && direction == Direction.BACKWARD
     || isReversedOneway(tags) && direction == Direction.FORWARD
-

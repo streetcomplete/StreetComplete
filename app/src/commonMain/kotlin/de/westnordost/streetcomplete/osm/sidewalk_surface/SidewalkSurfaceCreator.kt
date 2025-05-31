@@ -4,8 +4,8 @@ import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.expandSides
 import de.westnordost.streetcomplete.osm.hasCheckDateForKey
 import de.westnordost.streetcomplete.osm.mergeSides
-import de.westnordost.streetcomplete.osm.updateCheckDateForKey
 import de.westnordost.streetcomplete.osm.surface.applyTo
+import de.westnordost.streetcomplete.osm.updateCheckDateForKey
 
 fun LeftAndRightSidewalkSurface.applyTo(tags: Tags) {
     tags.expandSides("sidewalk", "surface")

@@ -19,19 +19,22 @@ import androidx.compose.ui.graphics.Matrix
 import androidx.compose.ui.graphics.Outline
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.graphics.drawscope.Stroke
-import androidx.compose.ui.graphics.vector.PathParser
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.graphics.vector.toPath
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
-import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.achievement_first_edit
+import de.westnordost.streetcomplete.resources.achievement_frame
 import de.westnordost.streetcomplete.ui.theme.titleLarge
+import de.westnordost.streetcomplete.ui.util.svgPath
+import org.jetbrains.compose.resources.painterResource
 
 @Composable
 fun AchievementIcon(
-    icon: Int,
+    painter: Painter,
     level: Int,
     modifier: Modifier = Modifier
 ) {
@@ -40,14 +43,14 @@ fun AchievementIcon(
         contentAlignment = Alignment.Center,
     ) {
         Image(
-            painter = painterResource(R.drawable.achievement_frame),
+            painter = painterResource(Res.drawable.achievement_frame),
             contentDescription = null,
             modifier = Modifier
                 .fillMaxSize(1f)
                 .shadow(elevation = 4.dp, shape = AchievementFrameShape)
         )
         Image(
-            painter = painterResource(icon),
+            painter = painter,
             contentDescription = null,
             modifier = Modifier.fillMaxSize(0.91f)
         )
@@ -80,9 +83,9 @@ private fun Modifier.levelLabelBackground() =
     .padding(horizontal = 10.dp, vertical = 4.dp)
 
 object AchievementFrameShape : Shape {
-    private val pathNodes = PathParser()
-        .parsePathString("m0.55404 0.97761c-0.029848 0.029846-0.078236 0.029846-0.10808 0l-0.42357-0.42357c-0.029848-0.029848-0.029848-0.078239 0-0.10808l0.42357-0.42357c0.029846-0.029846 0.078236-0.029846 0.10808 0l0.42357 0.42357c0.029846 0.029846 0.029846 0.078236 0 0.10808z")
-        .toNodes()
+    private val pathNodes = svgPath(
+        "m0.55404 0.97761c-0.029848 0.029846-0.078236 0.029846-0.10808 0l-0.42357-0.42357c-0.029848-0.029848-0.029848-0.078239 0-0.10808l0.42357-0.42357c0.029846-0.029846 0.078236-0.029846 0.10808 0l0.42357 0.42357c0.029846 0.029846 0.029846 0.078236 0 0.10808z"
+    )
 
     override fun createOutline(size: Size, layoutDirection: LayoutDirection, density: Density): Outline {
         val path = pathNodes.toPath()
@@ -94,5 +97,5 @@ object AchievementFrameShape : Shape {
 @Preview
 @Composable
 private fun PreviewAchievementIcon() {
-    AchievementIcon(icon = R.drawable.ic_achievement_first_edit, level = 8)
+    AchievementIcon(painter = painterResource(Res.drawable.achievement_first_edit), level = 8)
 }

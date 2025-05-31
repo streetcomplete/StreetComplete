@@ -150,7 +150,6 @@ open class DownloadAndConvertPresetIconsTask : DefaultTask() {
         vector.setAttribute("android:height", "${iconHeight}dp")
         vector.setAttribute("android:viewportWidth", width)
         vector.setAttribute("android:viewportHeight", height)
-        vector.setAttribute("android:tint", "?attr/colorControlNormal")
         drawable.appendChild(vector)
 
         for (i in 0 until root.childNodes.length) {
@@ -166,7 +165,7 @@ open class DownloadAndConvertPresetIconsTask : DefaultTask() {
             require(d != "") { "no path defined" }
 
             val path = drawable.createElement("path")
-            path.setAttribute("android:fillColor", "@android:color/white")
+            path.setAttribute("android:fillColor", "#000")
             path.setAttribute("android:pathData", makePathCompatible(d))
             vector.appendChild(path)
         }

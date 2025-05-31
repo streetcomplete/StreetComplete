@@ -15,15 +15,17 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalUriHandler
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.user.achievements.Link
 import de.westnordost.streetcomplete.data.user.achievements.LinkCategory
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.link_wiki
 import de.westnordost.streetcomplete.ui.theme.titleLarge
 import de.westnordost.streetcomplete.ui.theme.titleSmall
+import org.jetbrains.compose.resources.painterResource
 
 /** Display a single link category from the link collection */
 @Composable
@@ -90,7 +92,7 @@ private fun LinkRowPreview() {
         "https://wiki.openstreetmap.org",
         "OpenStreetMap Wiki",
         LinkCategory.INTRO,
-        R.drawable.ic_link_wiki,
+        Res.drawable.link_wiki,
         R.string.link_wiki_description
     ))
 }

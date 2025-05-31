@@ -17,9 +17,9 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.databinding.FragmentOverlayThingsBinding
 import de.westnordost.streetcomplete.osm.POPULAR_THING_FEATURE_IDS
 import de.westnordost.streetcomplete.osm.applyTo
-import de.westnordost.streetcomplete.osm.localized_name.applyTo
 import de.westnordost.streetcomplete.osm.asIfItWasnt
 import de.westnordost.streetcomplete.osm.isThing
+import de.westnordost.streetcomplete.osm.localized_name.applyTo
 import de.westnordost.streetcomplete.osm.toElement
 import de.westnordost.streetcomplete.osm.toPrefixedFeature
 import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
@@ -57,7 +57,7 @@ class ThingsOverlayForm : AbstractOverlayForm() {
             ?: BaseFeature(
                 id = "thing/unknown",
                 names = listOf(requireContext().getString(R.string.unknown_object)),
-                icon = "ic_preset_maki_marker_stroked",
+                icon = "preset_maki_marker_stroked",
                 tags = element.tags,
                 geometry = GeometryType.entries.toList()
             )

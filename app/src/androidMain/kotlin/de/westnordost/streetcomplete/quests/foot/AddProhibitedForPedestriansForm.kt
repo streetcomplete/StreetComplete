@@ -1,10 +1,10 @@
 package de.westnordost.streetcomplete.quests.foot
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.quests.AListQuestForm
 import de.westnordost.streetcomplete.quests.foot.ProhibitedForPedestriansAnswer.ACTUALLY_HAS_SIDEWALK
 import de.westnordost.streetcomplete.quests.foot.ProhibitedForPedestriansAnswer.NO
 import de.westnordost.streetcomplete.quests.foot.ProhibitedForPedestriansAnswer.YES
-import de.westnordost.streetcomplete.quests.AListQuestForm
 import de.westnordost.streetcomplete.ui.common.TextItem
 
 class AddProhibitedForPedestriansForm : AListQuestForm<ProhibitedForPedestriansAnswer>() {

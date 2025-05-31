@@ -28,6 +28,7 @@ import de.westnordost.streetcomplete.screens.user.links.LazyLinksColumn
 import de.westnordost.streetcomplete.ui.theme.AppTheme
 import de.westnordost.streetcomplete.ui.theme.headlineSmall
 import de.westnordost.streetcomplete.ui.theme.titleMedium
+import org.jetbrains.compose.resources.painterResource
 
 @Composable
 fun AchievementDialog(
@@ -55,7 +56,7 @@ fun AchievementDialog(
         ) {
             DialogContentWithIconLayout(
                 icon = {
-                    AchievementIcon(achievement.icon, level)
+                    achievement.icon?.let { AchievementIcon(painterResource(it), level) }
                 },
                 content = { isLandscape ->
                     AchievementDetails(
