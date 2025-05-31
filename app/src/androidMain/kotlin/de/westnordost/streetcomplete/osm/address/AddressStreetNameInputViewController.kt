@@ -35,7 +35,7 @@ class AddressStreetNameInputViewController(
 
     init {
         autoCorrectAbbreviationsViewController = AutoCorrectAbbreviationsViewController(streetNameInput)
-        autoCorrectAbbreviationsViewController.abbreviations = abbreviationsByLocale[countryLocale]
+        autoCorrectAbbreviationsViewController.abbreviations = abbreviationsByLocale[countryLocale.toLanguageTag()]
 
         streetNameInput.doAfterTextChanged { onInputChanged?.invoke() }
     }
