@@ -39,7 +39,7 @@ class AddOnewayForm : AImageListQuestComposeForm<OnewayAnswer, OnewayAnswer>() {
 
     override fun onMapOrientation(rotation: Double, tilt: Double) {
         mapRotation = rotation.toFloat()
-        currentItems.value = OnewayAnswer.entries.map { it.asItem(requireContext(), wayRotation - mapRotation) }
+        currentItems.value = OnewayAnswer.entries.mapIndexed { index, item -> ImageListItem(item.asItem(requireContext(), wayRotation - mapRotation), currentItems.value[index].checked) }
     }
 
     override fun onClickOk(selectedItems: List<OnewayAnswer>) {

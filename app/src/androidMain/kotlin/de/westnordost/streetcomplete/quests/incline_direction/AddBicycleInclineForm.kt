@@ -45,7 +45,7 @@ class AddBicycleInclineForm : AImageListQuestComposeForm<Incline, BicycleIncline
 
     override fun onMapOrientation(rotation: Double, tilt: Double) {
         mapRotation = rotation.toFloat()
-        currentItems.value = Incline.entries.map { it.asItem(requireContext(), wayRotation - mapRotation) }
+        currentItems.value = Incline.entries.mapIndexed { index, item -> ImageListItem(item.asItem(requireContext(), wayRotation - mapRotation), currentItems.value[index].checked) }
     }
 
     private fun confirmUpAndDown() {

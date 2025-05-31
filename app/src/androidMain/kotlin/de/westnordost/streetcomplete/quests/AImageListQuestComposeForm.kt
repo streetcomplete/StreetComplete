@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.material.Surface
@@ -18,14 +17,13 @@ import androidx.compose.runtime.key
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.databinding.ComposeViewBinding
+import de.westnordost.streetcomplete.ui.common.image_select.ImageList
+import androidx.compose.ui.semantics.Role
 import de.westnordost.streetcomplete.ui.common.image_select.ImageListItem
-import de.westnordost.streetcomplete.ui.common.image_select.MultiImageList
-import de.westnordost.streetcomplete.ui.common.image_select.RadioImageList
 import de.westnordost.streetcomplete.ui.common.image_select.SelectableImageItem
 import de.westnordost.streetcomplete.view.image_select.DisplayItem
 import org.koin.android.ext.android.inject
@@ -46,8 +44,7 @@ abstract class AImageListQuestComposeForm<I, T> : AbstractOsmQuestForm<T>() {
     protected open val moveFavoritesToFront = true
     /** items to display. May not be accessed before onCreate */
     protected abstract val items: List<DisplayItem<I>>
-    protected var currentItems: MutableState<List<DisplayItem<I>>> = mutableStateOf(emptyList())
-    protected var selectedItems: MutableState<List<DisplayItem<I>>> = mutableStateOf(emptyList())
+    protected var currentItems: MutableState<List<ImageListItem<I>>> = mutableStateOf(emptyList())
     /**
      * Return the composable used for a list item
      */
@@ -63,6 +60,9 @@ abstract class AImageListQuestComposeForm<I, T> : AbstractOsmQuestForm<T>() {
         }
     }
 
+    protected open val onItemSelected: (List<DisplayItem<I>>) -> Unit = { newItems ->
+        checkIsFormComplete()
+    }
     private lateinit var itemsByString: Map<String, DisplayItem<I>>
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -73,7 +73,7 @@ abstract class AImageListQuestComposeForm<I, T> : AbstractOsmQuestForm<T>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         // TODO: deal with favourites
         super.onViewCreated(view, savedInstanceState)
-        currentItems.value = items
+        currentItems.value = items.map { ImageListItem(it, false) }
         refreshComposeView()
     }
     protected fun refreshComposeView() {
@@ -96,40 +96,48 @@ abstract class AImageListQuestComposeForm<I, T> : AbstractOsmQuestForm<T>() {
                         ),
                         modifier = Modifier.padding(bottom = 8.dp).wrapContentSize()
                     )
-                    if (maxSelectableItems == 1) {
-                        RadioImageList(
-                            items = currentItems.value,
-                            itemsPerRow = itemsPerRow,
-                            onSelect = { newItems ->
-                                selectedItems.value = newItems
-                                checkIsFormComplete()
-                            },
-                            itemContent = itemContent,
-                            modifier = Modifier
-                                .fillMaxHeight())
-                    } else {
-                        MultiImageList(
-                            items = currentItems.value,
-                            itemsPerRow = itemsPerRow,
-                            maxSelectable = maxSelectableItems,
-                            onSelect = { newItems ->
-                                selectedItems.value = newItems
-                                checkIsFormComplete()
-                            },
-                            itemContent = itemContent,
-                            modifier = Modifier
-                                .fillMaxHeight())
-                    }
+                    ImageList(
+                        imageItems = currentItems.value,
+                        onClick = if ( maxSelectableItems == 1) onClickSingleItem else onClickMultiItem,
+                        modifier = Modifier.fillMaxHeight(),
+                        itemsPerRow = itemsPerRow,
+                        itemRole = if (maxSelectableItems == 1)  Role.RadioButton else Role.Checkbox,
+                        itemContent = { item, index, onClick, role ->
+                            key(item.item to items) {
+                                itemContent(item, index, onClick, role)
+                            }
+                        })
                 }
             }
         }
     }
 
-    override fun isFormComplete() = selectedItems.value.isNotEmpty()
+    val onClickSingleItem = { targetIndex: Int, targetItem: ImageListItem<I> ->
+        currentItems.value = currentItems.value.mapIndexed { currentIndex, currentItem ->
+            if (targetIndex == currentIndex)
+                ImageListItem(currentItem.item, !currentItem.checked)
+            else
+                ImageListItem(currentItem.item, false)
+        }
+        onItemSelected(currentItems.value.filter { it.checked }.map { it.item })
+    }
+
+   val onClickMultiItem = { targetIndex: Int, targetItem: ImageListItem<I> ->
+       if (targetItem.checked || maxSelectableItems <= 0 || currentItems.value.count { it.checked } < maxSelectableItems) {
+           currentItems.value = currentItems.value.mapIndexed { currentIndex, currentItem ->
+               if (targetIndex == currentIndex)
+                   ImageListItem(currentItem.item, !currentItem.checked)
+               else
+                   currentItem
+           }
+           onItemSelected(currentItems.value.filter { it.checked }.map { it.item })
+       }
+    }
+    override fun isFormComplete() = currentItems.value.filter { it.checked }.map { it.item }.isNotEmpty()
     override fun onClickOk() {
-        if (selectedItems.value.isNotEmpty()) {
-            prefs.addLastPicked(this::class.simpleName!!, selectedItems.value.map { it.value.toString() })
-            onClickOk(selectedItems.value.map { it.value!! })
+        if (currentItems.value.filter { it.checked }.map { it.item }.isNotEmpty()) {
+            prefs.addLastPicked(this::class.simpleName!!, currentItems.value.filter { it.checked }.map { it.item }.map { it.value.toString() })
+            onClickOk(currentItems.value.filter { it.checked }.map { it.item }.map { it.value!! })
         }
     }
     protected abstract fun onClickOk(selectedItems: List<I>)
