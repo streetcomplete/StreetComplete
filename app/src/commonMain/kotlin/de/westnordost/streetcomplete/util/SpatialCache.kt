@@ -9,6 +9,9 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.util.logs.Log
 import de.westnordost.streetcomplete.util.math.contains
 import de.westnordost.streetcomplete.util.math.isCompletelyInside
+import de.westnordost.streetcomplete.util.platform.linkedHashMapWithAccessOrder
+import kotlinx.atomicfu.locks.ReentrantLock
+import kotlinx.atomicfu.locks.withLock
 
 /**
  * Spatial cache containing items of type T that each must have an id of type K and a position
@@ -26,26 +29,38 @@ class SpatialCache<K, T>(
     private val getKey: T.() -> K,
     private val getPosition: T.() -> LatLon,
 ) {
-    private val byTile = LinkedHashMap<TilePos, HashSet<T>>((maxTiles / 0.75).toInt(), 0.75f, true)
-    private val byKey = initialCapacity?.let { HashMap<K, T>(it) } ?: HashMap<K, T>()
+    // to be threadsafe, any access to the cache must be synchronized
+    private val lock = ReentrantLock()
+
+    // note: It is only ordered by access on JVM/Android, not on other platforms.
+    // If this becomes a problem, might consider to use a library for caching, like Kache
+    private val byTile: LinkedHashMap<TilePos, HashSet<T>> =
+        linkedHashMapWithAccessOrder((maxTiles / 0.75).toInt(), 0.75f, true)
+    private val byKey: MutableMap<K, T> = initialCapacity?.let { HashMap(it) } ?: HashMap()
 
     /** Number of tiles containing at least one item. Empty tiles are disregarded, as
      *  they barely use memory, and keeping them may avoid unnecessary fetches from database */
-    val size get() = byTile.count { it.value.isNotEmpty() }
+    val size: Int get() = lock.withLock {
+        byTile.count { it.value.isNotEmpty() }
+    }
 
     /** @return a new list of all keys in the cache */
-    fun getKeys(): List<K> = synchronized(this) { byKey.keys.toList() }
+    fun getKeys(): List<K> = lock.withLock {
+        byKey.keys.toList()
+    }
 
     /** @return a new set of all tilePos in the cache */
-    fun getTiles(): Set<TilePos> = synchronized(this) { byTile.keys.toSet() }
+    fun getTiles(): Set<TilePos> = lock.withLock {
+        byTile.keys.toSet()
+    }
 
     /** @return the item with the given [key] if in cache */
-    fun get(key: K): T? = synchronized(this) {
+    fun get(key: K): T? = lock.withLock {
         byKey[key]
     }
 
     /** @return the items with the given [keys] that are in the cache */
-    fun getAll(keys: Collection<K>): List<T> = synchronized(this) {
+    fun getAll(keys: Collection<K>): List<T> = lock.withLock {
         keys.mapNotNull { byKey[it] }
     }
 
@@ -53,7 +68,7 @@ class SpatialCache<K, T>(
      * Removes the keys in [deleted] from cache
      * Puts the [updatedOrAdded] items into cache only if the containing tile is already cached
      */
-    fun update(updatedOrAdded: Iterable<T> = emptyList(), deleted: Iterable<K> = emptyList()) { synchronized(this) {
+    fun update(updatedOrAdded: Iterable<T> = emptyList(), deleted: Iterable<K> = emptyList()) { lock.withLock {
         for (key in deleted) {
             val item = byKey.remove(key) ?: continue
             byTile[item.getTilePos()]?.remove(item)
@@ -82,9 +97,11 @@ class SpatialCache<K, T>(
      * and item, it does not have to be inside the [bbox].
      * If the number of tiles exceeds maxTiles, only maxSize tiles are cached.
      */
-    fun replaceAllInBBox(items: Collection<T>, bbox: BoundingBox) { synchronized(this) {
+    fun replaceAllInBBox(items: Collection<T>, bbox: BoundingBox) { lock.withLock {
         val tiles = bbox.asListOfEnclosingTilePos()
-        val (completelyContainedTiles, incompleteTiles) = tiles.partition { it.asBoundingBox(tileZoom).isCompletelyInside(bbox) }
+        val (completelyContainedTiles, incompleteTiles) = tiles.partition {
+            it.asBoundingBox(tileZoom).isCompletelyInside(bbox)
+        }
         if (incompleteTiles.isNotEmpty()) {
             Log.w(TAG, "bbox does not align with tiles, clearing incomplete tiles from cache")
             for (tile in incompleteTiles) {
@@ -109,7 +126,7 @@ class SpatialCache<K, T>(
     }
 
     /** @return all items inside [bbox], items will be loaded if necessary via [fetch] */
-    fun get(bbox: BoundingBox): List<T> = synchronized(this) {
+    fun get(bbox: BoundingBox): List<T> = lock.withLock {
         val requiredTiles = bbox.asListOfEnclosingTilePos()
 
         val tilesToFetch = requiredTiles.filterNot { byTile.containsKey(it) }
@@ -133,7 +150,7 @@ class SpatialCache<K, T>(
     }
 
     /** Reduces cache size to the given number of non-empty [tiles]. */
-    fun trim(tiles: Int = maxTiles) { synchronized(this) {
+    fun trim(tiles: Int = maxTiles) { lock.withLock {
         while (size > tiles) {
             val firstNonEmptyTile = byTile.entries.firstOrNull { it.value.isNotEmpty() }?.key ?: return
             removeTile(firstNonEmptyTile)
@@ -150,7 +167,7 @@ class SpatialCache<K, T>(
     }
 
     /** Clears the cache */
-    fun clear() { synchronized(this) {
+    fun clear() { lock.withLock {
         byKey.clear()
         byTile.clear()
     } }

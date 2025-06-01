@@ -3,10 +3,8 @@ package de.westnordost.streetcomplete.data.osm.mapdata
 import de.westnordost.streetcomplete.data.elementfilter.ElementFilterExpression
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 
-private val filterExpCache: MutableMap<String, ElementFilterExpression> = HashMap()
-
 fun MapData.filter(expr: String): Sequence<Element> =
-    filter(getElementFilterExpression(expr))
+    filter(FilterExpressionCache.get(expr))
 
 fun MapData.filter(expr: ElementFilterExpression): Sequence<Element> {
     /* this is a considerate performance improvement over just iterating over the whole MapData
@@ -19,9 +17,9 @@ fun MapData.filter(expr: ElementFilterExpression): Sequence<Element> {
     }.filter(expr::matches)
 }
 
-private fun getElementFilterExpression(expr: String): ElementFilterExpression = synchronized(filterExpCache) {
-    if (!filterExpCache.containsKey(expr)) {
-        filterExpCache[expr] = expr.toElementFilterExpression()
-    }
-    return filterExpCache.getValue(expr)
+private object FilterExpressionCache {
+    private val cache = mutableMapOf<String, Lazy<ElementFilterExpression>>()
+
+    fun get(expr: String): ElementFilterExpression =
+        cache.getOrPut(expr) { lazy { expr.toElementFilterExpression() } }.value
 }
