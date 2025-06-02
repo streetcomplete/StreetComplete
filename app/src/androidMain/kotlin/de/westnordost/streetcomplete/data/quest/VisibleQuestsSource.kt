@@ -12,6 +12,8 @@ import de.westnordost.streetcomplete.data.visiblequests.TeamModeQuestFilter
 import de.westnordost.streetcomplete.data.visiblequests.VisibleEditTypeSource
 import de.westnordost.streetcomplete.util.Listeners
 import de.westnordost.streetcomplete.util.SpatialCache
+import kotlinx.atomicfu.locks.ReentrantLock
+import kotlinx.atomicfu.locks.withLock
 
 /**
  *  Access and listen to quests visible on the map.
@@ -45,6 +47,9 @@ class VisibleQuestsSource(
         /** Called when something has changed which should trigger any listeners to update all */
         fun onInvalidated()
     }
+
+    // see #5545
+    private val lock = ReentrantLock()
 
     private val listeners = Listeners<Listener>()
 
@@ -181,7 +186,7 @@ class VisibleQuestsSource(
         added: Collection<Quest> = emptyList(),
         deleted: Collection<QuestKey> = emptyList()
     ) {
-        synchronized(this) {
+        lock.withLock {
             val addedVisible = added.filter(::isVisible)
             if (addedVisible.isEmpty() && deleted.isEmpty()) return
 
@@ -191,7 +196,7 @@ class VisibleQuestsSource(
     }
 
     private fun invalidate() {
-        synchronized(this) {
+        lock.withLock {
             clearCache()
             listeners.forEach { it.onInvalidated() }
         }

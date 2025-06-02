@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.data.visiblequests
 
 import de.westnordost.streetcomplete.data.quest.QuestKey
 
+/** Source for seeing which quests have been hidden by user interaction. */
 interface QuestsHiddenSource {
 
     interface Listener {

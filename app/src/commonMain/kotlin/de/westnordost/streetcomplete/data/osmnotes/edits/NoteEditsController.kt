@@ -7,6 +7,8 @@ import de.westnordost.streetcomplete.data.osmnotes.Note
 import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
 import de.westnordost.streetcomplete.util.Listeners
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
+import kotlinx.atomicfu.locks.ReentrantLock
+import kotlinx.atomicfu.locks.withLock
 
 class NoteEditsController(
     private val editsDB: NoteEditsDao
@@ -15,6 +17,8 @@ class NoteEditsController(
      * database table */
 
     private val listeners = Listeners<NoteEditsSource.Listener>()
+
+    private val lock = ReentrantLock()
 
     fun add(
         noteId: Long,
@@ -36,7 +40,7 @@ class NoteEditsController(
             imagePaths.isNotEmpty(),
             track,
         )
-        synchronized(this) { editsDB.add(edit) }
+        lock.withLock { editsDB.add(edit) }
         onAddedEdit(edit)
     }
 
@@ -71,11 +75,11 @@ class NoteEditsController(
         editsDB.getOldestNeedingImagesActivation()
 
     fun markImagesActivated(id: Long): Boolean =
-        synchronized(this) { editsDB.markImagesActivated(id) }
+        lock.withLock { editsDB.markImagesActivated(id) }
 
     fun markSynced(edit: NoteEdit, note: Note) {
-        val markSyncedSuccess: Boolean
-        synchronized(this) {
+        var markSyncedSuccess = false
+        lock.withLock {
             if (edit.noteId != note.id) {
                 editsDB.updateNoteId(edit.noteId, note.id)
             }
@@ -94,9 +98,9 @@ class NoteEditsController(
         delete(edit)
 
     fun deleteSyncedOlderThan(timestamp: Long): Int {
-        val deletedCount: Int
-        val deleteEdits: List<NoteEdit>
-        synchronized(this) {
+        var deletedCount = 0
+        var deleteEdits = listOf<NoteEdit>()
+        lock.withLock {
             deleteEdits = editsDB.getSyncedOlderThan(timestamp)
             if (deleteEdits.isEmpty()) return 0
             deletedCount = editsDB.deleteAll(deleteEdits.map { it.id })
@@ -106,7 +110,7 @@ class NoteEditsController(
     }
 
     private fun delete(edit: NoteEdit): Boolean {
-        val deleteSuccess = synchronized(this) { editsDB.delete(edit.id) }
+        val deleteSuccess = lock.withLock { editsDB.delete(edit.id) }
         if (deleteSuccess) {
             onDeletedEdits(listOf(edit))
             return false
