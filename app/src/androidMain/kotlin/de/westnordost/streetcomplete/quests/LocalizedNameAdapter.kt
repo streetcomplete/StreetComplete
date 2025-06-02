@@ -343,7 +343,7 @@ class LocalizedNameAdapter(
             // load abbreviations from file in background
             viewLifecycleScope.launch {
                 autoCorrectAbbreviations.abbreviations = withContext(Dispatchers.IO) {
-                    abbreviationsByLocale?.get(Locale(localizedName.languageTag))
+                    abbreviationsByLocale?.get(localizedName.languageTag)
                 }
             }
         }

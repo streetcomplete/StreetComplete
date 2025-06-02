@@ -65,7 +65,7 @@ class AddRoadNameForm : AAddLocalizedNameForm<RoadNameAnswer>() {
         for ((languageTag, name) in adapter?.names.orEmpty()) {
             val languageTagWithFallback =
                 languageTag.takeIf { it.isNotEmpty() } ?: countryInfo.languageTag.orEmpty()
-            val abbr = abbrByLocale.get(Locale.forLanguageTag(languageTagWithFallback))
+            val abbr = abbrByLocale.get(languageTagWithFallback)
             val containsLocalizedAbbreviations = abbr?.containsAbbreviations(name) == true
 
             if (name.contains(".") || containsLocalizedAbbreviations) {
