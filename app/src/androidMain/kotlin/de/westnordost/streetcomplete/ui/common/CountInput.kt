@@ -37,14 +37,13 @@ fun CountInput(
         modifier = modifier,
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(16.dp),
-    ){
+    ) {
         OutlinedTextField(
             value = count?.toString().orEmpty(),
             onValueChange = { newText: String ->
                 if (newText.isEmpty()) {
                     onCountChange(null)
-                }
-                else {
+                } else {
                     newText.toIntOrNull()?.let { onCountChange(it) }
                 }
             },

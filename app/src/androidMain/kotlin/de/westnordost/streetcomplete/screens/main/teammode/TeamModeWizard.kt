@@ -276,7 +276,7 @@ private fun TeamSizeIllustration(teamSize: Int, maxTeamSize: Int, selectedIndex:
             exit = fadeOut()
         ) {
             val colorFilter = if (hasSelection) ColorFilter.saturation(animatedSelected) else null
-            val hand = Res.allDrawableResources["team_size_${i+1}"]
+            val hand = Res.allDrawableResources["team_size_${i + 1}"]
             if (hand != null) {
                 Image(
                     painter = painterResource(hand),

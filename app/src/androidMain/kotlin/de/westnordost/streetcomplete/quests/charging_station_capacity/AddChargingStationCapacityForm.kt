@@ -7,4 +7,3 @@ class AddChargingStationCapacityForm : AAddCountInput() {
     override val iconId = R.drawable.ic_electric_car
     override val initialCount get() = element.tags["capacity"]?.toIntOrNull()
 }
-
