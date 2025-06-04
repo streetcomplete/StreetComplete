@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.data
 
+import de.westnordost.streetcomplete.data.atp.AtpQuestsHiddenTable
 import de.westnordost.streetcomplete.data.atp.AtpTable
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesTable
 import de.westnordost.streetcomplete.data.logs.LogsTable
@@ -105,6 +106,7 @@ object DatabaseInitializer {
         db.exec(AtpTable.CREATE)
         db.exec(AtpTable.INDEX_CREATE)
         db.exec(AtpTable.SPATIAL_INDEX_CREATE)
+        db.exec(AtpQuestsHiddenTable.CREATE)
     }
 
     fun onUpgrade(db: Database, oldVersion: Int, newVersion: Int) {
@@ -264,6 +266,7 @@ object DatabaseInitializer {
             db.exec(AtpTable.CREATE)
             db.exec(AtpTable.INDEX_CREATE)
             db.exec(AtpTable.SPATIAL_INDEX_CREATE)
+            db.exec(AtpQuestsHiddenTable.CREATE)
         }
     }
 }

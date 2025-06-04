@@ -53,7 +53,8 @@ class AtpQuestController(
         override fun onUpdated(added: Collection<AtpEntry>, deleted: Collection<Long>) {
             // handle deletion somehow? TODO
             // probably do the same as class OsmQuestController did? TODO (in private val notesSourceListener = object : NotesWithEditsSource.Listener )
-            createQuestsForAtpEntries(added)
+            val quests = createQuestsForAtpEntries(added)
+            onUpdated(quests, deleted)
         }
 
         override fun onInvalidated() {
@@ -68,23 +69,23 @@ class AtpQuestController(
             updated: MapDataWithGeometry,
             deleted: Collection<ElementKey>,
         ) {
-            TODO("mapDataSourceListener - Not yet implemented - I guess that here POI creation/edit should be watched as it may cause")
+            //TODO("mapDataSourceListener - Not yet implemented - I guess that here POI creation/edit should be watched as it may cause")
         }
 
         override fun onReplacedForBBox(
             bbox: BoundingBox,
             mapDataWithGeometry: MapDataWithGeometry,
         ) {
-            TODO("Not yet implemented")
+            //TODO("Not yet implemented")
         }
 
         override fun onCleared() {
-            TODO("Not yet implemented")
+            //TODO("Not yet implemented")
         }
     }
 
     init {
-        atpDataSource.addListener(atpUpdatesListener)
+        atpDataSource.addListener(atpUpdatesListener) // TODO should I monitor AtpQuestController or AtpDataWithEditsSource
         noteSource.addListener(noteUpdatesListener)
         mapDataSource.addListener(mapDataSourceListener)
         // settingsListener = prefs.onAllShowNotesChanged { onInvalidated() }
@@ -115,13 +116,13 @@ class AtpQuestController(
         listeners.remove(listener)
     }
 
-    //private fun onUpdated(
-    //    quests: Collection<OsmCreateElementQuestType> = emptyList(),
-    //    deletedQuestIds: Collection<Long> = emptyList()
-    //) {
-    //    if (quests.isEmpty() && deletedQuestIds.isEmpty()) return
-    //    listeners.forEach { it.onUpdated(quests, deletedQuestIds) }
-    //}
+    private fun onUpdated(
+        quests: Collection<CreateElementQuest>,
+        deletedQuestIds: Collection<Long>
+    ) {
+        if (quests.isEmpty() && deletedQuestIds.isEmpty()) return
+        listeners.forEach { it.onUpdated(quests, deletedQuestIds) }
+    }
 
     private fun onInvalidated() {
         listeners.forEach { it.onInvalidated() }

@@ -1,5 +1,7 @@
 package de.westnordost.streetcomplete.data.quest.atp
 
+import android.os.Bundle
+import android.view.View
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AbstractQuestForm
 
@@ -20,10 +22,13 @@ class AtpCreateForm : AbstractQuestForm() {
         fun onNoteQuestClosed()
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
+     */
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val alreadyHidden = hiddenQuestsController.get(questKey) != null
+        //TODO val alreadyHidden = hiddenQuestsController.get(questKey) != null
+        /*
         setButtonPanelAnswers(listOf(
             if (alreadyHidden) {
                 AnswerItem(R.string.short_no_answer_on_button) { closeQuest() }
@@ -31,14 +36,7 @@ class AtpCreateForm : AbstractQuestForm() {
                 AnswerItem(R.string.quest_noteDiscussion_no) { hideQuest() }
             }
         ))
-
-        binding.noteInput.doAfterTextChanged { checkIsFormComplete() }
-
-        anonAvatar = requireContext().getDrawable(R.drawable.ic_osm_anon_avatar)!!.createBitmap()
-
-        viewLifecycleScope.launch {
-            val comments = withContext(Dispatchers.IO) { noteSource.get(noteId) }!!.comments
-            inflateNoteDiscussion(comments)
-        }
-     */
+        */
+        //binding.noteInput.doAfterTextChanged { checkIsFormComplete() }
+    }
 }

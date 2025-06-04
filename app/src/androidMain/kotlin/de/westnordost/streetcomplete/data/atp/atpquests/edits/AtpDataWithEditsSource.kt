@@ -6,6 +6,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
 import de.westnordost.streetcomplete.data.osmnotes.Note
 import de.westnordost.streetcomplete.data.osmnotes.NoteController
+import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction.CREATE
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsSource
 import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
@@ -14,7 +15,7 @@ import de.westnordost.streetcomplete.util.Listeners
 
 class AtpDataWithEditsSource(
     private val atpController: AtpController,
-    private val atpDataSource: AtpEditsSource, // holds unsynced ones (TODO: not implemented yet)
+    private val atpDataSource: AtpEditsSource, // holds unsynced ones (TODO: not implemented yet, do I even need this? what this would do?)
     private val userDataSource: UserDataSource
 ) {
     // TODO see MapDataWithEditsSource and NotesWithEditsSource
@@ -27,7 +28,32 @@ class AtpDataWithEditsSource(
         // TODO: try to take into account unsynced edits, otheriwse there is no point in this class
     }
 
+    private val atpControllerListener = object : AtpController.Listener {
+        override fun onUpdated(
+            added: Collection<AtpEntry>,
+            updated: Collection<AtpEntry>,
+            deleted: Collection<Long>
+        ) {
+            // TODO merge with applied edits? is it even needed like it is for notes?
+            //val noteCommentEdits = noteEditsSource.getAllUnsynced().filter { it.action != CREATE }
+            callOnUpdated(
+                //editsAppliedToNotes(added, noteCommentEdits),
+                //editsAppliedToNotes(updated, noteCommentEdits),
+                //deleted
+                added,
+                updated,
+                deleted
+            )
+        }
 
+        override fun onCleared() {
+            //TODO is it even needed //callOnCleared()
+        }
+    }
+
+    init {
+        atpController.addListener(atpControllerListener)
+    }
     interface Listener {
         fun onUpdated(added: Collection<AtpEntry>, deleted: Collection<Long>)
         fun onInvalidated()

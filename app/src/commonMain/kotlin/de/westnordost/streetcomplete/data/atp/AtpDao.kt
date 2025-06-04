@@ -13,6 +13,8 @@ import de.westnordost.streetcomplete.data.atp.AtpTable.Columns.OSM_ELEMENT_MATCH
 import de.westnordost.streetcomplete.data.atp.AtpTable.Columns.ATP_TAGS
 import de.westnordost.streetcomplete.data.atp.AtpTable.Columns.OSM_TAGS
 import de.westnordost.streetcomplete.data.atp.AtpTable.Columns.LAST_SYNC
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import kotlinx.serialization.json.Json
 
@@ -37,8 +39,8 @@ class AtpDao(private val db: Database) {
                 it.id,
                 it.position.latitude,
                 it.position.longitude,
-                it.osmElementMatchId,
-                it.osmElementMatchType,
+                it.osmMatch?.id,
+                it.osmMatch?.type.toString(),
                 Json.encodeToString(it.tagsInATP),
                 Json.encodeToString(it.tagsInOSM),
                 nowAsEpochMilliseconds()
@@ -84,24 +86,34 @@ class AtpDao(private val db: Database) {
         ID to id,
         LATITUDE to position.latitude,
         LONGITUDE to position.longitude,
-        OSM_ELEMENT_MATCH_ID to osmElementMatchId,
-        OSM_ELEMENT_MATCH_TYPE to osmElementMatchType,
+        OSM_ELEMENT_MATCH_ID to osmMatch?.id,
+        OSM_ELEMENT_MATCH_TYPE to osmMatch?.type,
         ATP_TAGS to Json.encodeToString(tagsInATP),
-        OSM_TAGS to Json.encodeToString(tagsInOSM),
+        OSM_TAGS to tagsInOSM?.let { Json.encodeToString(it) }, // TODO include tests for null and not null
         LAST_SYNC to nowAsEpochMilliseconds()
     )
 
     private fun CursorPosition.toAtpEntry(): AtpEntry {
-        val tagsInOsm = getStringOrNull(OSM_TAGS)?.let {
-            Json.decodeFromString<Map<String, String>>(it)
+        var tagsInOsm = getStringOrNull(OSM_TAGS)?.let {
+            if(it == "null") { // TODO: really? how it even happens?
+                null
+            } else {
+                Json.decodeFromString<Map<String, String>>(it)
+            }
+        }
+        val osmMatchId = getLongOrNull(OSM_ELEMENT_MATCH_ID)
+        val osmMatchType = getStringOrNull(OSM_ELEMENT_MATCH_TYPE)
+        val osmMatch = if(osmMatchId == null || osmMatchType == null) {
+            null
+        } else {
+            ElementKey( ElementType.valueOf(osmMatchType.uppercase()), osmMatchId)
         }
         val atpEntry = AtpEntry(
             LatLon(getDouble(LATITUDE), getDouble(LONGITUDE)),
             getLong(ID),
-            getLongOrNull(OSM_ELEMENT_MATCH_ID),
-            getStringOrNull(OSM_ELEMENT_MATCH_TYPE),
+            osmMatch,
             Json.decodeFromString(getString(ATP_TAGS)),
-            tagsInOsm
+            tagsInOsm,
         )
         return atpEntry
     }

@@ -6,6 +6,7 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.quest.AtpQuestKey
 import de.westnordost.streetcomplete.data.quest.OsmCreateElementQuestType
 import de.westnordost.streetcomplete.data.quest.OsmNoteQuestKey
 import de.westnordost.streetcomplete.data.quest.Quest
@@ -17,7 +18,7 @@ data class CreateElementQuest(
     override val type: OsmCreateElementQuestType<*>,
     override val position: LatLon
 )  : Quest {
-    override val key: OsmNoteQuestKey by lazy { OsmNoteQuestKey(id) } // TODO what should be here?
+    override val key: AtpQuestKey by lazy { AtpQuestKey(id) }
     override val markerLocations: Collection<LatLon> by lazy { listOf(position) }
     override val geometry: ElementGeometry get() = ElementPointGeometry(position)
 }
