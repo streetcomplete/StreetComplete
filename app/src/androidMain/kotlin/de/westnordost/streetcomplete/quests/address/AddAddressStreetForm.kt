@@ -5,6 +5,7 @@ import android.view.View
 import androidx.core.view.isGone
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.AbbreviationsByLocale
+import de.westnordost.streetcomplete.data.meta.NameSuggestionsSource
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.databinding.ViewStreetOrPlaceNameInputBinding
 import de.westnordost.streetcomplete.osm.address.PlaceName
@@ -12,7 +13,6 @@ import de.westnordost.streetcomplete.osm.address.StreetOrPlaceName
 import de.westnordost.streetcomplete.osm.address.StreetOrPlaceNameViewController
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
-import de.westnordost.streetcomplete.quests.NameSuggestionsSource
 import de.westnordost.streetcomplete.util.getNameAndLocationSpanned
 import org.koin.android.ext.android.inject
 import java.util.Locale

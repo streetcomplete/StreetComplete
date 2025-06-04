@@ -10,6 +10,7 @@ import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
 val metadataModule = module {
+    single { NameSuggestionsSource(get()) }
     single { AbbreviationsByLocale(get()) }
     single { CountryInfos(get()) }
     single<Lazy<CountryBoundaries>>(named("CountryBoundariesLazy")) {
