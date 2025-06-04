@@ -6,6 +6,8 @@ import de.westnordost.streetcomplete.util.Listeners
 import de.westnordost.streetcomplete.util.ktx.format
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.logs.Log
+import kotlinx.atomicfu.locks.ReentrantLock
+import kotlinx.atomicfu.locks.withLock
 
 /** Manages access to the notes storage */
 class NoteController(
@@ -25,6 +27,8 @@ class NoteController(
     }
     private val listeners = Listeners<Listener>()
 
+    private val lock = ReentrantLock()
+
     /** Replace all notes in the given bounding box with the given notes */
     fun putAllForBBox(bbox: BoundingBox, notes: Collection<Note>) {
         val time = nowAsEpochMilliseconds()
@@ -32,7 +36,7 @@ class NoteController(
         val oldNotesById = mutableMapOf<Long, Note>()
         val addedNotes = mutableListOf<Note>()
         val updatedNotes = mutableListOf<Note>()
-        synchronized(this) {
+        lock.withLock {
             dao.getAll(bbox).associateByTo(oldNotesById) { it.id }
 
             for (note in notes) {
@@ -58,7 +62,7 @@ class NoteController(
 
     /** delete a note because the note does not exist anymore on OSM (has been closed) */
     fun delete(noteId: Long) {
-        val deleteSuccess = synchronized(this) { dao.delete(noteId) }
+        val deleteSuccess = lock.withLock { dao.delete(noteId) }
         if (deleteSuccess) {
             onUpdated(deleted = listOf(noteId))
         }
@@ -66,21 +70,23 @@ class NoteController(
 
     /** put a note because the note has been created/changed on OSM */
     fun put(note: Note) {
-        val hasNote = synchronized(this) { dao.get(note.id) != null }
+        var hasNote = false
+        lock.withLock {
+            hasNote = dao.get(note.id) != null
+            dao.put(note)
+        }
 
         if (hasNote) {
             onUpdated(updated = listOf(note))
         } else {
             onUpdated(added = listOf(note))
         }
-
-        dao.put(note)
     }
 
     fun deleteOlderThan(timestamp: Long, limit: Int? = null): Int {
-        val ids: List<Long>
-        val deletedCount: Int
-        synchronized(this) {
+        var ids = listOf<Long>()
+        var deletedCount = 0
+        lock.withLock {
             ids = dao.getIdsOlderThan(timestamp, limit)
             if (ids.isEmpty()) return 0
 
@@ -95,7 +101,7 @@ class NoteController(
     }
 
     fun clear() {
-        dao.clear()
+        lock.withLock { dao.clear() }
         listeners.forEach { it.onCleared() }
     }
 
@@ -112,7 +118,11 @@ class NoteController(
         listeners.remove(listener)
     }
 
-    private fun onUpdated(added: Collection<Note> = emptyList(), updated: Collection<Note> = emptyList(), deleted: Collection<Long> = emptyList()) {
+    private fun onUpdated(
+        added: Collection<Note> = emptyList(),
+        updated: Collection<Note> = emptyList(),
+        deleted: Collection<Long> = emptyList()
+    ) {
         if (added.isEmpty() && updated.isEmpty() && deleted.isEmpty()) return
 
         listeners.forEach { it.onUpdated(added, updated, deleted) }

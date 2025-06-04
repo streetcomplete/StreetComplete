@@ -7,6 +7,8 @@ import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.util.Listeners
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.logs.Log
+import kotlinx.atomicfu.locks.ReentrantLock
+import kotlinx.atomicfu.locks.withLock
 
 class ElementEditsController(
     private val editsDB: ElementEditsDao,
@@ -18,6 +20,8 @@ class ElementEditsController(
      * database table */
 
     private val listeners = Listeners<ElementEditsSource.Listener>()
+
+    private val lock = ReentrantLock()
 
     /* ----------------------- Unsynced edits and syncing them -------------------------------- */
 
@@ -51,9 +55,9 @@ class ElementEditsController(
     /** Delete old synced (aka uploaded) edits older than the given timestamp. Used to clear
      *  the undo history */
     fun deleteSyncedOlderThan(timestamp: Long): Int {
-        val deletedCount: Int
-        val deleteEdits: List<ElementEdit>
-        synchronized(this) {
+        var deletedCount = 0
+        var deleteEdits: List<ElementEdit> = listOf()
+        lock.withLock {
             deleteEdits = editsDB.getSyncedOlderThan(timestamp)
             if (deleteEdits.isEmpty()) return 0
             val ids = deleteEdits.map { it.id }
@@ -79,8 +83,8 @@ class ElementEditsController(
         val idUpdatesMap = elementUpdates.idUpdates.associate {
             ElementKey(it.elementType, it.oldElementId) to it.newElementId
         }
-        val syncSuccess: Boolean
-        synchronized(this) {
+        var syncSuccess = false
+        lock.withLock {
             val editIdsToUpdate = elementUpdates.idUpdates.flatMapTo(HashSet()) {
                 editElementsDB.getAllByElement(it.elementType, it.oldElementId)
             }
@@ -129,7 +133,7 @@ class ElementEditsController(
     /* ------------------------------------ add/sync/delete ------------------------------------- */
 
     private fun add(edit: ElementEdit) {
-        synchronized(this) {
+        lock.withLock {
             editsDB.put(edit)
             editElementsDB.put(edit.id, edit.action.elementKeys)
             val createdElementsCount = edit.action.newElementsCount
@@ -144,10 +148,10 @@ class ElementEditsController(
     }
 
     private fun delete(edit: ElementEdit) {
-        val edits = mutableListOf<ElementEdit>()
-        val ids: List<Long>
-        synchronized(this) {
-            edits.addAll(getEditsBasedOnElementsCreatedByEdit(edit))
+        var edits = listOf<ElementEdit>()
+        var ids: List<Long> = listOf()
+        lock.withLock {
+            edits = getEditsBasedOnElementsCreatedByEdit(edit)
 
             ids = edits.map { it.id }
 
