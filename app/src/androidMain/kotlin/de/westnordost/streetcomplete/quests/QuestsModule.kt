@@ -251,8 +251,9 @@ fun questTypeRegistry(
         even if the quest's order is changed or new quests are added somewhere in the middle. Each new
         quest always gets a new sequential ordinal.
      */
-    1181 to AddOpeningHoursAtp(getFeature, atpOpeningHoursDao),
-    1182 to CreatePoiBasedOnAtp(),
+    // TODO: move this quests in appropriate location as far as priority goes
+    177 to AddOpeningHoursAtp(getFeature, atpOpeningHoursDao), // TODO should it be merged into AddOpeningHours? If not then massive duplciation must be fixed
+    176 to CreatePoiBasedOnAtp(),
 
     /* always first: notes - they mark a mistake in the data so potentially every quest for that
     element is based on wrong data while the note is not resolved */
