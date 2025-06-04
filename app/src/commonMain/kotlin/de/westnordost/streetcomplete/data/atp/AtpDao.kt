@@ -92,11 +92,8 @@ class AtpDao(private val db: Database) {
     )
 
     private fun CursorPosition.toAtpEntry(): AtpEntry {
-        val tagsInOsmText = getStringOrNull(OSM_TAGS)
-        val tagsInOsm = if(tagsInOsmText == null) {
-            null
-        } else {
-            Json.decodeFromString(tagsInOsmText)
+        val tagsInOsm = getStringOrNull(OSM_TAGS)?.let {
+            Json.decodeFromString<Map<String, String>>(it)
         }
         val atpEntry = AtpEntry(
             LatLon(getDouble(LATITUDE), getDouble(LONGITUDE)),
