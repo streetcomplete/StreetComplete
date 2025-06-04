@@ -1,5 +1,8 @@
 package de.westnordost.streetcomplete.data.atp
 
+import de.westnordost.streetcomplete.data.osm.mapdata.WayTables
+import de.westnordost.streetcomplete.data.osm.mapdata.WayTables.NAME_NODES
+
 object AtpTable {
     const val NAME = "atp_matches"
 
@@ -27,8 +30,12 @@ object AtpTable {
         );
     """
 
+    const val INDEX_CREATE = """
+        CREATE INDEX atp_id_index ON $NAME (${Columns.ID});
+    """
+
     const val SPATIAL_INDEX_CREATE = """
-        CREATE INDEX osm_notes_spatial_index ON $NAME (
+        CREATE INDEX atp_spatial_index ON $NAME (
             ${Columns.LATITUDE},
             ${Columns.LONGITUDE}
         );

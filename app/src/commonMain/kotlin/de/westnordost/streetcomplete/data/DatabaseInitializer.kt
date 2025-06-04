@@ -103,6 +103,8 @@ object DatabaseInitializer {
 
         // ATP data
         db.exec(AtpTable.CREATE)
+        db.exec(AtpTable.INDEX_CREATE)
+        db.exec(AtpTable.SPATIAL_INDEX_CREATE)
     }
 
     fun onUpgrade(db: Database, oldVersion: Int, newVersion: Int) {
@@ -260,6 +262,8 @@ object DatabaseInitializer {
         }
         if (oldVersion <= 19 && newVersion > 19) {
             db.exec(AtpTable.CREATE)
+            db.exec(AtpTable.INDEX_CREATE)
+            db.exec(AtpTable.SPATIAL_INDEX_CREATE)
         }
     }
 }
