@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.data.osm.edits.upload.changesets
 
-import de.westnordost.streetcomplete.ApplicationConstants
+import de.westnordost.streetcomplete.ApplicationConstantsAndroid
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.preferences.Preferences
@@ -94,7 +94,7 @@ class OpenChangesetsManagerTest {
 
         verify(changesetApiClient).open(mapOf(
             "source" to "my source",
-            "created_by" to ApplicationConstants.USER_AGENT,
+            "created_by" to ApplicationConstantsAndroid.USER_AGENT,
             "comment" to "test me",
             "locale" to "es-AR",
             "StreetComplete:quest_type" to questType.name

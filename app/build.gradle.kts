@@ -10,6 +10,7 @@ plugins {
     id("org.jetbrains.kotlin.plugin.compose") version "2.1.21"
     id("com.android.application") version "8.9.3"
     id("org.jetbrains.compose") version "1.8.1"
+    id("org.jetbrains.kotlinx.atomicfu") version "0.27.0"
 }
 
 repositories {

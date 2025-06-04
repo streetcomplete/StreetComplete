@@ -4,14 +4,13 @@ import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitWayAction
 
 object ApplicationConstants {
     const val NAME = "StreetComplete"
-    const val USER_AGENT = NAME + " " + BuildConfig.VERSION_NAME
     const val QUESTTYPE_TAG_KEY = NAME + ":quest_type"
+
+    const val OLD_DATABASE_NAME = "streetcomplete.db"
+    const val DATABASE_NAME = "streetcomplete_v2.db"
 
     const val MAX_DOWNLOADABLE_AREA_IN_SQKM = 12.0
     const val MIN_DOWNLOADABLE_AREA_IN_SQKM = 0.1
-
-    const val DATABASE_NAME = "streetcomplete_v2.db"
-    const val OLD_DATABASE_NAME = "streetcomplete.db"
 
     /** tile zoom at which the app downloads automatically and remembers which tiles have already
      *  been downloaded */
@@ -52,14 +51,8 @@ object ApplicationConstants {
     const val ATTACH_PHOTO_QUALITY = 65 // doesn't need to look super pretty
     const val ATTACH_PHOTO_MAX_SIZE = 1920 // Full HD
 
-    // name is "downloading" for historic reasons, not sure if it has any side-effects if it is changed now
-    const val NOTIFICATIONS_CHANNEL_SYNC = "downloading"
-    const val NOTIFICATIONS_ID_SYNC = 1
-
     // where to send the error reports to
     const val ERROR_REPORTS_EMAIL = "streetcomplete_errors@westnordost.de"
-
-    const val STREETMEASURE = "de.westnordost.streetmeasure"
 
     val IGNORED_RELATION_TYPES = setOf(
         // could be useful, but sometimes/often very very large

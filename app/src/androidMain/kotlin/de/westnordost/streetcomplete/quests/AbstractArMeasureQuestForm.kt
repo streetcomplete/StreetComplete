@@ -4,7 +4,7 @@ import android.content.ActivityNotFoundException
 import android.os.Bundle
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AlertDialog
-import de.westnordost.streetcomplete.ApplicationConstants.STREETMEASURE
+import de.westnordost.streetcomplete.ApplicationConstantsAndroid.STREETMEASURE
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.LengthUnit
 import de.westnordost.streetcomplete.osm.Length

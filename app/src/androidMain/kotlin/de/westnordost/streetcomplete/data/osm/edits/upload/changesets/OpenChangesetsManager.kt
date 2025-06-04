@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.data.osm.edits.upload.changesets
 
 import de.westnordost.streetcomplete.ApplicationConstants.QUESTTYPE_TAG_KEY
-import de.westnordost.streetcomplete.ApplicationConstants.USER_AGENT
+import de.westnordost.streetcomplete.ApplicationConstantsAndroid.USER_AGENT
 import de.westnordost.streetcomplete.data.ConflictException
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon

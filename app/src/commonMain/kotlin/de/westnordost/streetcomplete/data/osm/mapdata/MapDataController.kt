@@ -9,6 +9,8 @@ import de.westnordost.streetcomplete.util.Listeners
 import de.westnordost.streetcomplete.util.ktx.format
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.logs.Log
+import kotlinx.atomicfu.locks.ReentrantLock
+import kotlinx.atomicfu.locks.withLock
 
 /** Controller to access element data and its geometry and handle updates to it (from OSM API) */
 class MapDataController internal constructor(
@@ -39,27 +41,30 @@ class MapDataController internal constructor(
     private val listeners = Listeners<Listener>()
 
     private val cache = MapDataCache(
-        SPATIAL_CACHE_TILE_ZOOM,
-        SPATIAL_CACHE_TILES,
-        SPATIAL_CACHE_INITIAL_CAPACITY,
-        { bbox ->
+        tileZoom = SPATIAL_CACHE_TILE_ZOOM,
+        maxTiles = SPATIAL_CACHE_TILES,
+        initialCapacity = SPATIAL_CACHE_INITIAL_CAPACITY,
+        fetchMapData = { bbox ->
             val elements = elementDB.getAll(bbox)
             val elementGeometries = geometryDB.getAllEntries(
                 elements.mapNotNull { if (it !is Node) it.key else null }
             )
             elements to elementGeometries
         },
-        { nodeDB.getAll(it) },
+        fetchNodes = { noteIds ->
+            nodeDB.getAll(noteIds)
+        },
     )
+    private val lock = ReentrantLock()
 
     /** update element data with [mapData] in the given [bbox] (fresh data from the OSM API has been
      *  downloaded) */
     fun putAllForBBox(bbox: BoundingBox, mapData: MutableMapData) {
         val time = nowAsEpochMilliseconds()
 
-        val oldElementKeys: Set<ElementKey>
-        val geometryEntries: Collection<ElementGeometryEntry>
-        synchronized(this) {
+        var oldElementKeys: Set<ElementKey> = setOf()
+        var geometryEntries: Collection<ElementGeometryEntry> = listOf()
+        lock.withLock {
             // for incompletely downloaded relations, complete the map data (as far as possible) with
             // local data, i.e. with local nodes and ways (still) in local storage
             completeMapData(mapData)
@@ -99,9 +104,9 @@ class MapDataController internal constructor(
         // need mapData in order to create (updated) geometry
         val mapData = MutableMapData(elements)
 
-        val deletedKeys: List<ElementKey>
-        val geometryEntries: Collection<ElementGeometryEntry>
-        synchronized(this) {
+        var deletedKeys: List<ElementKey> = listOf()
+        var geometryEntries: Collection<ElementGeometryEntry> = listOf()
+        lock.withLock {
             completeMapData(mapData)
 
             geometryEntries = createGeometries(elements, mapData)
@@ -182,21 +187,38 @@ class MapDataController internal constructor(
         )
     }
 
-    override fun getNode(id: Long): Node? = cache.getElement(ElementType.NODE, id, elementDB::get) as? Node
-    override fun getWay(id: Long): Way? = cache.getElement(ElementType.WAY, id, elementDB::get) as? Way
-    override fun getRelation(id: Long): Relation? = cache.getElement(ElementType.RELATION, id, elementDB::get) as? Relation
+    override fun getNode(id: Long): Node? =
+        cache.getElement(ElementType.NODE, id, elementDB::get) as? Node
+
+    override fun getWay(id: Long): Way? =
+        cache.getElement(ElementType.WAY, id, elementDB::get) as? Way
+
+    override fun getRelation(id: Long): Relation? =
+        cache.getElement(ElementType.RELATION, id, elementDB::get) as? Relation
 
     fun getAll(elementKeys: Collection<ElementKey>): List<Element> =
         cache.getElements(elementKeys, elementDB::getAll)
 
-    fun getNodes(ids: Collection<Long>): List<Node> = cache.getNodes(ids, nodeDB::getAll)
-    fun getWays(ids: Collection<Long>): List<Way> = cache.getWays(ids, wayDB::getAll)
-    fun getRelations(ids: Collection<Long>): List<Relation> = cache.getRelations(ids, relationDB::getAll)
+    fun getNodes(ids: Collection<Long>): List<Node> =
+        cache.getNodes(ids, nodeDB::getAll)
 
-    override fun getWaysForNode(id: Long): List<Way> = cache.getWaysForNode(id, wayDB::getAllForNode)
-    override fun getRelationsForNode(id: Long): List<Relation> = cache.getRelationsForNode(id, relationDB::getAllForNode)
-    override fun getRelationsForWay(id: Long): List<Relation> = cache.getRelationsForWay(id, relationDB::getAllForWay)
-    override fun getRelationsForRelation(id: Long): List<Relation> = cache.getRelationsForRelation(id, relationDB::getAllForRelation)
+    fun getWays(ids: Collection<Long>): List<Way> =
+        cache.getWays(ids, wayDB::getAll)
+
+    fun getRelations(ids: Collection<Long>): List<Relation> =
+        cache.getRelations(ids, relationDB::getAll)
+
+    override fun getWaysForNode(id: Long): List<Way> =
+        cache.getWaysForNode(id, wayDB::getAllForNode)
+
+    override fun getRelationsForNode(id: Long): List<Relation> =
+        cache.getRelationsForNode(id, relationDB::getAllForNode)
+
+    override fun getRelationsForWay(id: Long): List<Relation> =
+        cache.getRelationsForWay(id, relationDB::getAllForWay)
+
+    override fun getRelationsForRelation(id: Long): List<Relation> =
+        cache.getRelationsForRelation(id, relationDB::getAllForRelation)
 
     override fun getWayComplete(id: Long): MapData? {
         val way = getWay(id) ?: return null
@@ -215,10 +237,10 @@ class MapDataController internal constructor(
     }
 
     fun deleteOlderThan(timestamp: Long, limit: Int? = null): Int {
-        val elements: List<ElementKey>
-        val elementCount: Int
-        val geometryCount: Int
-        synchronized(this) {
+        var elements: List<ElementKey> = listOf()
+        var elementCount = 0
+        var geometryCount = 0
+        lock.withLock {
             val relations = relationDB.getIdsOlderThan(timestamp, limit).map { ElementKey(ElementType.RELATION, it) }
             val ways = wayDB.getIdsOlderThan(timestamp, limit?.minus(relations.size)).map { ElementKey(ElementType.WAY, it) }
 
@@ -245,7 +267,7 @@ class MapDataController internal constructor(
     }
 
     fun clear() {
-        synchronized(this) {
+        lock.withLock {
             clearCache()
             elementDB.clear()
             geometryDB.clear()
@@ -254,9 +276,9 @@ class MapDataController internal constructor(
         onCleared()
     }
 
-    fun clearCache() = synchronized(this) { cache.clear() }
+    fun clearCache() = lock.withLock { cache.clear() }
 
-    fun trimCache() = synchronized(this) { cache.trim(SPATIAL_CACHE_TILES / 3) }
+    fun trimCache() = lock.withLock { cache.trim(SPATIAL_CACHE_TILES / 3) }
 
     fun addListener(listener: Listener) {
         listeners.add(listener)
@@ -269,7 +291,7 @@ class MapDataController internal constructor(
         updated: MutableMapDataWithGeometry = MutableMapDataWithGeometry(),
         deleted: Collection<ElementKey> = emptyList()
     ) {
-        if (updated.nodes.isEmpty() && updated.ways.isEmpty() && updated.relations.isEmpty() && deleted.isEmpty()) return
+        if (updated.isEmpty() && deleted.isEmpty()) return
 
         listeners.forEach { it.onUpdated(updated, deleted) }
     }
@@ -284,17 +306,20 @@ class MapDataController internal constructor(
 
     companion object {
         private const val TAG = "MapDataController"
+
+        // StyleableOverlayManager loads z16 tiles, but we want smaller tiles. Small tiles make db
+        // fetches for typical getMapDataWithGeometry calls noticeably faster than z16, as they
+        // usually only require a small area.
+        private const val SPATIAL_CACHE_TILE_ZOOM = 17
+
+        // Three times the maximum number of tiles that can be loaded at once in
+        // StyleableOverlayManager (translated from z16 tiles). We don't want to drop tiles from
+        // cache already when scrolling the map just a bit, especially considering automatic trim
+        // may temporarily reduce cache size to 2/3 of maximum.
+        private const val SPATIAL_CACHE_TILES = 192
+
+        // In a city this is roughly the number of nodes in ~20-40 z16 tiles
+        private const val SPATIAL_CACHE_INITIAL_CAPACITY = 100000
     }
 }
 
-// StyleableOverlayManager loads z16 tiles, but we want smaller tiles. Small tiles make db fetches for
-// typical getMapDataWithGeometry calls noticeably faster than z16, as they usually only require a small area.
-private const val SPATIAL_CACHE_TILE_ZOOM = 17
-
-// Three times the maximum number of tiles that can be loaded at once in StyleableOverlayManager (translated from z16 tiles).
-// We don't want to drop tiles from cache already when scrolling the map just a bit, especially
-// considering automatic trim may temporarily reduce cache size to 2/3 of maximum.
-private const val SPATIAL_CACHE_TILES = 192
-
-// In a city this is roughly the number of nodes in ~20-40 z16 tiles
-private const val SPATIAL_CACHE_INITIAL_CAPACITY = 100000

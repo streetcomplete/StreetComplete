@@ -31,7 +31,7 @@ This is a short and high-level overview what to find in which package
 
 - `quests` - Quest type definitions, quest forms and associated logic
 
-- `screens` - Everything for the different screens in the app: activities, fragments, adapters, dialogs, custom views, drawables, ...
+- `screens` - Everything for the different screens in the app: composables, widgets, painters, ...
   - `about` - About screen
   - `main` - Main screen: The map, the controls (buttons etc.), edit history sidebar, notifications
   - `measure` - AR measuring screen
@@ -44,4 +44,4 @@ This is a short and high-level overview what to find in which package
   - `location` - Utilities to request location (permission)
   - `math` - Math utilities, chiefly geodesy (math assuming a spherical Earth)
 
-- `view` - Generic views and related classes used in various places: dialogs, adapters, custom views, view controllers, drawables, ...
+- `ui` - Generic widgets and related classes used in various places: dialogs, custom composables, painters, ...
