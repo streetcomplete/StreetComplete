@@ -100,7 +100,7 @@ kotlin {
                 implementation("sh.calvin.reorderable:reorderable:2.4.3")
 
                 // multiplatform webview (for login via OAuth)
-                implementation("io.github.kevinnzou:compose-webview-multiplatform-android:1.9.40")
+                implementation("io.github.kevinnzou:compose-webview-multiplatform:1.9.40")
 
                 // sharing presets/settings via QR Code
                 implementation("io.github.alexzhirkevich:qrose:1.0.1")
