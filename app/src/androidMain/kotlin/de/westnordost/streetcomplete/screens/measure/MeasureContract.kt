@@ -6,7 +6,7 @@ import android.content.Context
 import android.content.Intent
 import androidx.activity.result.contract.ActivityResultContract
 import androidx.core.os.bundleOf
-import de.westnordost.streetcomplete.ApplicationConstants.STREETMEASURE
+import de.westnordost.streetcomplete.ApplicationConstantsAndroid.STREETMEASURE
 import de.westnordost.streetcomplete.data.meta.LengthUnit
 import de.westnordost.streetcomplete.osm.Length
 

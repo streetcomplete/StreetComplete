@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.data.osmnotes.edits
 
-import de.westnordost.streetcomplete.ApplicationConstants
+import de.westnordost.streetcomplete.ApplicationConstantsAndroid
 import de.westnordost.streetcomplete.data.ConflictException
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osmnotes.NoteController
@@ -214,9 +214,9 @@ class NoteEditsUploaderTest {
         on(notesApi.create(any(), any())).thenReturn(note)
         on(tracksApi.create(
             trackpoints = edit.track,
-            creator = ApplicationConstants.USER_AGENT,
+            creator = ApplicationConstantsAndroid.USER_AGENT,
             description = edit.text,
-            tags = listOf(ApplicationConstants.NAME)
+            tags = listOf(ApplicationConstantsAndroid.NAME)
         )).thenReturn(988L)
 
         upload()

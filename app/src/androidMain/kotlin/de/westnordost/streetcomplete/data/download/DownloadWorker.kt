@@ -11,7 +11,7 @@ import androidx.work.OutOfQuotaPolicy
 import androidx.work.WorkManager
 import androidx.work.WorkerParameters
 import androidx.work.workDataOf
-import de.westnordost.streetcomplete.ApplicationConstants
+import de.westnordost.streetcomplete.ApplicationConstantsAndroid
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.sync.createSyncNotification
 import kotlinx.serialization.encodeToString
@@ -30,7 +30,7 @@ class DownloadWorker(
 ) : CoroutineWorker(context, workerParams) {
 
     override suspend fun getForegroundInfo(): ForegroundInfo {
-        val notificationId = ApplicationConstants.NOTIFICATIONS_ID_SYNC
+        val notificationId = ApplicationConstantsAndroid.NOTIFICATIONS_ID_SYNC
         val cancelIntent = WorkManager.getInstance(context).createCancelPendingIntent(id)
         val notification = createSyncNotification(context, cancelIntent)
         return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {

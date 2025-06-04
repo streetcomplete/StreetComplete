@@ -5,8 +5,8 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 interface UploadProgressSource {
     interface Listener {
         fun onStarted() {}
-        fun onUploaded(questType: String, at: LatLon) {}
-        fun onDiscarded(questType: String, at: LatLon) {}
+        fun onUploaded(editType: String, at: LatLon) {}
+        fun onDiscarded(editType: String, at: LatLon) {}
         fun onError(e: Exception) {}
         fun onFinished() {}
     }

@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.quests
 
-import de.westnordost.streetcomplete.ApplicationConstants
+import de.westnordost.streetcomplete.ApplicationConstantsAndroid
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryChange
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
@@ -15,7 +15,7 @@ fun createNoteTextForTooLongTags(
 ): String =
     "Unable to answer \"$englishQuestTitle\" " +
     "for https://osm.org/${elementType.name.lowercase()}/$elementId " +
-    "via ${ApplicationConstants.USER_AGENT}:\n\n" +
+    "via ${ApplicationConstantsAndroid.USER_AGENT}:\n\n" +
     "One of the tags in the attempted edit exceeds the 255 character limit - \n\n" +
     changes.joinToString("\n") { when (it) {
         is StringMapEntryAdd -> "${it.key}=${it.value}"
