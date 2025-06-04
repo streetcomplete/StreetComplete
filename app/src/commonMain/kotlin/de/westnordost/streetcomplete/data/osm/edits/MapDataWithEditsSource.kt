@@ -30,6 +30,10 @@ import de.westnordost.streetcomplete.data.osm.mapdata.key
 import de.westnordost.streetcomplete.util.Listeners
 import de.westnordost.streetcomplete.util.math.contains
 import de.westnordost.streetcomplete.util.math.intersect
+import kotlinx.atomicfu.AtomicBoolean
+import kotlinx.atomicfu.atomic
+import kotlinx.atomicfu.locks.ReentrantLock
+import kotlinx.atomicfu.locks.withLock
 
 /** Source for map data. It combines the original data downloaded with the edits made.
  *
@@ -62,12 +66,11 @@ class MapDataWithEditsSource internal constructor(
     private val updatedElements = HashMap<ElementKey, Element>()
     private val updatedGeometries = HashMap<ElementKey, ElementGeometry?>()
 
-    // onReplacedForBBox may not be called in parallel
-    private val onReplacedForBBoxLock = Any()
+    private val lock = ReentrantLock()
 
-    // access to isReplacingForBBox is atomic (didn't want to pull in kotlinx-atomicfu dependency just for this)
-    private val isReplacingForBBoxLock = Any()
-    private var isReplacingForBBox: Boolean = false
+    // onReplacedForBBox may not be called in parallel
+    private val onReplacedForBBoxLock = ReentrantLock()
+    private val isReplacingForBBox: AtomicBoolean = atomic(false)
 
     private val updatesWhileReplacingBBox = MapDataWithGeometryUpdates()
 
@@ -76,7 +79,7 @@ class MapDataWithEditsSource internal constructor(
         override fun onUpdated(updated: MutableMapDataWithGeometry, deleted: Collection<ElementKey>) {
             val modifiedElements = ArrayList<Pair<Element, ElementGeometry?>>()
             val modifiedDeleted = ArrayList<ElementKey>()
-            synchronized(this) {
+            lock.withLock {
                 /* We don't want to callOnUpdated if none of the changes affects map data provided
                  * by MapDataWithEditsSource
                  * This is the case if
@@ -146,10 +149,10 @@ class MapDataWithEditsSource internal constructor(
         }
 
         override fun onReplacedForBBox(bbox: BoundingBox, mapDataWithGeometry: MutableMapDataWithGeometry) {
-            synchronized(onReplacedForBBoxLock) {
-                synchronized(isReplacingForBBoxLock) { isReplacingForBBox = true }
+            onReplacedForBBoxLock.withLock {
+                isReplacingForBBox.value = true
 
-                synchronized(this) {
+                lock.withLock {
                     rebuildLocalChanges()
                     modifyBBoxMapData(bbox, mapDataWithGeometry)
                 }
@@ -161,14 +164,14 @@ class MapDataWithEditsSource internal constructor(
                 val deleted = ArrayList(updatesWhileReplacingBBox.deleted)
                 updatesWhileReplacingBBox.clear()
 
-                synchronized(isReplacingForBBoxLock) { isReplacingForBBox = false }
+                isReplacingForBBox.value = false
 
                 callOnUpdated(updated, deleted)
             }
         }
 
         override fun onCleared() {
-            synchronized(this) {
+            lock.withLock {
                 deletedElements.clear()
                 updatedElements.clear()
                 updatedGeometries.clear()
@@ -180,8 +183,8 @@ class MapDataWithEditsSource internal constructor(
     private val elementEditsListener = object : ElementEditsSource.Listener {
         override fun onAddedEdit(edit: ElementEdit) {
             val mapData = MutableMapDataWithGeometry()
-            val elementsToDelete: Collection<ElementKey>
-            synchronized(this) {
+            var elementsToDelete: Collection<ElementKey> = listOf()
+            lock.withLock {
                 val mapDataUpdates = applyEdit(edit) ?: return
                 elementsToDelete = mapDataUpdates.deleted
                 for (element in mapDataUpdates.updated) {
@@ -200,8 +203,8 @@ class MapDataWithEditsSource internal constructor(
 
         override fun onDeletedEdits(edits: List<ElementEdit>) {
             val mapData = MutableMapDataWithGeometry()
-            val deletedElementKeys: MutableList<ElementKey>
-            synchronized(this) {
+            var deletedElementKeys: MutableList<ElementKey> = mutableListOf()
+            lock.withLock {
                 rebuildLocalChanges()
 
                 deletedElementKeys = edits
@@ -237,14 +240,14 @@ class MapDataWithEditsSource internal constructor(
         elementEditsController.addListener(elementEditsListener)
     }
 
-    override fun get(type: ElementType, id: Long): Element? = synchronized(this) {
+    override fun get(type: ElementType, id: Long): Element? = lock.withLock {
         val key = ElementKey(type, id)
         if (deletedElements.contains(key)) return null
 
         return updatedElements[key] ?: mapDataController.get(type, id)
     }
 
-    fun getGeometry(type: ElementType, id: Long): ElementGeometry? = synchronized(this) {
+    fun getGeometry(type: ElementType, id: Long): ElementGeometry? = lock.withLock {
         val key = ElementKey(type, id)
         if (deletedElements.contains(key)) return null
 
@@ -255,7 +258,7 @@ class MapDataWithEditsSource internal constructor(
         }
     }
 
-    fun getGeometries(keys: Collection<ElementKey>): List<ElementGeometryEntry> = synchronized(this) {
+    fun getGeometries(keys: Collection<ElementKey>): List<ElementGeometryEntry> = lock.withLock {
         val originalKeys = keys.filter { !deletedElements.contains(it) && !updatedGeometries.containsKey(it) }
         val updatedGeometries = keys.mapNotNull { key ->
             updatedGeometries[key]?.let { ElementGeometryEntry(key.type, key.id, it) }
@@ -264,7 +267,7 @@ class MapDataWithEditsSource internal constructor(
         return updatedGeometries + originalGeometries
     }
 
-    fun getMapDataWithGeometry(bbox: BoundingBox): MapDataWithGeometry = synchronized(this) {
+    fun getMapDataWithGeometry(bbox: BoundingBox): MapDataWithGeometry = lock.withLock {
         val mapDataWithGeometry = mapDataController.getMapDataWithGeometry(bbox)
         modifyBBoxMapData(bbox, mapDataWithGeometry)
         return mapDataWithGeometry
@@ -276,13 +279,13 @@ class MapDataWithEditsSource internal constructor(
     override fun getWay(id: Long): Way? = get(WAY, id) as? Way
     override fun getRelation(id: Long): Relation? = get(RELATION, id) as? Relation
 
-    override fun getWayComplete(id: Long): MapData? = synchronized(this) {
+    override fun getWayComplete(id: Long): MapData? = lock.withLock {
         val way = getWay(id) ?: return null
         val nodes = getWayNodes(way) ?: return null
         return MutableMapData(nodes + way)
     }
 
-    private fun getWayNodes(way: Way): Collection<Node>? = synchronized(this) {
+    private fun getWayNodes(way: Way): Collection<Node>? = lock.withLock {
         val ids = way.nodeIds.toSet()
         val nodes = getNodes(ids)
 
@@ -292,7 +295,7 @@ class MapDataWithEditsSource internal constructor(
         return nodes
     }
 
-    private fun getNodes(ids: Set<Long>): Collection<Node> = synchronized(this) {
+    private fun getNodes(ids: Set<Long>): Collection<Node> = lock.withLock {
         val nodes = mapDataController.getNodes(ids)
         val nodesById = HashMap<Long, Node>()
         nodes.associateByTo(nodesById) { it.id }
@@ -313,14 +316,14 @@ class MapDataWithEditsSource internal constructor(
         return nodesById.values
     }
 
-    override fun getRelationComplete(id: Long): MapData? = synchronized(this) {
+    override fun getRelationComplete(id: Long): MapData? = lock.withLock {
         val relation = getRelation(id) ?: return null
         val mapData = getRelationElements(relation)
         mapData.addAll(listOf(relation))
         return mapData
     }
 
-    private fun getRelationElements(relation: Relation): MutableMapData = synchronized(this) {
+    private fun getRelationElements(relation: Relation): MutableMapData = lock.withLock {
         val elements = ArrayList<Element>()
         for (member in relation.members) {
             // for way members, also get their nodes
@@ -343,7 +346,7 @@ class MapDataWithEditsSource internal constructor(
         return MutableMapData(elements)
     }
 
-    override fun getWaysForNode(id: Long): Collection<Way> = synchronized(this) {
+    override fun getWaysForNode(id: Long): Collection<Way> = lock.withLock {
         val waysById = HashMap<Long, Way>()
         mapDataController.getWaysForNode(id).associateByTo(waysById) { it.id }
 
@@ -368,13 +371,16 @@ class MapDataWithEditsSource internal constructor(
         return waysById.values
     }
 
-    override fun getRelationsForNode(id: Long): Collection<Relation> = getRelationsForElement(NODE, id)
+    override fun getRelationsForNode(id: Long): Collection<Relation> =
+        getRelationsForElement(NODE, id)
 
-    override fun getRelationsForWay(id: Long): Collection<Relation> = getRelationsForElement(WAY, id)
+    override fun getRelationsForWay(id: Long): Collection<Relation> =
+        getRelationsForElement(WAY, id)
 
-    override fun getRelationsForRelation(id: Long): Collection<Relation> = getRelationsForElement(RELATION, id)
+    override fun getRelationsForRelation(id: Long): Collection<Relation> =
+        getRelationsForElement(RELATION, id)
 
-    fun getRelationsForElement(type: ElementType, id: Long): Collection<Relation> = synchronized(this) {
+    fun getRelationsForElement(type: ElementType, id: Long): Collection<Relation> = lock.withLock {
         val relationsById = HashMap<Long, Relation>()
         val relations = when (type) {
             NODE -> mapDataController.getRelationsForNode(id)
@@ -406,7 +412,7 @@ class MapDataWithEditsSource internal constructor(
 
     /* ------------------------------------------------------------------------------------------ */
 
-    private fun modifyBBoxMapData(bbox: BoundingBox, mapData: MutableMapDataWithGeometry) = synchronized(this) {
+    private fun modifyBBoxMapData(bbox: BoundingBox, mapData: MutableMapDataWithGeometry) = lock.withLock {
         val addWays = ArrayList<Way>()
         for ((key, geometry) in updatedGeometries) {
             // we will deal with nodes at the end
@@ -450,7 +456,7 @@ class MapDataWithEditsSource internal constructor(
         }
     }
 
-    private fun rebuildLocalChanges() = synchronized(this) {
+    private fun rebuildLocalChanges() = lock.withLock {
         deletedElements.clear()
         updatedElements.clear()
         updatedGeometries.clear()
@@ -460,7 +466,7 @@ class MapDataWithEditsSource internal constructor(
         }
     }
 
-    private fun applyEdit(edit: ElementEdit): MapDataUpdates? = synchronized(this) {
+    private fun applyEdit(edit: ElementEdit): MapDataUpdates? = lock.withLock {
         val idProvider = elementEditsController.getIdProvider(edit.id)
 
         val mapDataChanges: MapDataChanges
@@ -539,10 +545,8 @@ class MapDataWithEditsSource internal constructor(
         if (updated.size == 0 && deleted.isEmpty()) return
         listeners.forEach { it.onUpdated(updated, deleted) }
 
-        synchronized(isReplacingForBBoxLock) {
-            if (isReplacingForBBox) {
-                updatesWhileReplacingBBox.add(updated, deleted)
-            }
+        if (isReplacingForBBox.value) {
+            updatesWhileReplacingBBox.add(updated, deleted)
         }
     }
     private fun callOnReplacedForBBox(bbox: BoundingBox, mapDataWithGeometry: MapDataWithGeometry) {
