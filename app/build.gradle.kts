@@ -45,6 +45,10 @@ kotlin {
                 // Kotlin
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2")
 
+                // Atomics, Locks, Synchronization
+                // Aparently only necessary as long as https://github.com/Kotlin/kotlinx-atomicfu/issues/145 is not solved
+                implementation("org.jetbrains.kotlinx:atomicfu:0.27.0")
+
                 // settings
                 implementation("com.russhwolf:multiplatform-settings:1.3.0")
 
