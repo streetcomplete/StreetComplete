@@ -11,8 +11,8 @@ package de.westnordost.streetcomplete.util.platform
  *
  * @throws IllegalArgumentException if [initialCapacity] is negative or [loadFactor] is non-positive
  */
-expect fun <K,V> linkedHashMapWithAccessOrder(
+expect fun <K, V> linkedHashMapWithAccessOrder(
     initialCapacity: Int,
     loadFactor: Float,
     accessOrder: Boolean
-) : LinkedHashMap<K,V>
+): LinkedHashMap<K, V>

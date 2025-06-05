@@ -322,4 +322,3 @@ class MapDataController internal constructor(
         private const val SPATIAL_CACHE_INITIAL_CAPACITY = 100000
     }
 }
-

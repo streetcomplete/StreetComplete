@@ -17,7 +17,6 @@ import de.westnordost.streetcomplete.quests.AAddLocalizedNameForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import org.koin.android.ext.android.inject
 import java.util.LinkedList
-import java.util.Locale
 
 class AddRoadNameForm : AAddLocalizedNameForm<RoadNameAnswer>() {
 
