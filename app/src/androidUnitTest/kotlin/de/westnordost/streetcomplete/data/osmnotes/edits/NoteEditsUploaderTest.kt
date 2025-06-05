@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.data.osmnotes.edits
 
-import de.westnordost.streetcomplete.ApplicationConstantsAndroid
+import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.ConflictException
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osmnotes.NoteController
@@ -19,6 +19,7 @@ import de.westnordost.streetcomplete.testutils.p
 import kotlinx.coroutines.cancelAndJoin
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
+import kotlinx.io.files.SystemFileSystem
 import org.mockito.ArgumentMatchers.anyLong
 import org.mockito.Mockito.times
 import org.mockito.Mockito.verify
@@ -38,6 +39,8 @@ class NoteEditsUploaderTest {
     private lateinit var uploader: NoteEditsUploader
     private lateinit var listener: OnUploadedChangeListener
 
+    private val fileSystem = SystemFileSystem
+
     @BeforeTest fun setUp(): Unit = runBlocking {
         notesApi = mock()
         noteController = mock()
@@ -54,7 +57,7 @@ class NoteEditsUploaderTest {
         imageUploader = mock()
         listener = mock()
 
-        uploader = NoteEditsUploader(noteEditsController, noteController, userDataSource, notesApi, tracksApi, imageUploader)
+        uploader = NoteEditsUploader(noteEditsController, noteController, userDataSource, notesApi, tracksApi, imageUploader, fileSystem)
         uploader.uploadedChangeListener = listener
     }
 
@@ -214,9 +217,9 @@ class NoteEditsUploaderTest {
         on(notesApi.create(any(), any())).thenReturn(note)
         on(tracksApi.create(
             trackpoints = edit.track,
-            creator = ApplicationConstantsAndroid.USER_AGENT,
+            creator = ApplicationConstants.USER_AGENT,
             description = edit.text,
-            tags = listOf(ApplicationConstantsAndroid.NAME)
+            tags = listOf(ApplicationConstants.NAME)
         )).thenReturn(988L)
 
         upload()
