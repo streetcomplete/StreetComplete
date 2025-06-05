@@ -78,7 +78,6 @@ abstract class AImageListQuestForm<I, T> : AbstractOsmQuestForm<T>() {
             val favourites = prefs.getLastPicked(this::class.simpleName!!)
                 .map { itemsByString[it] }
                 .takeFavorites(n = itemsPerRow, history = 50)
-            Log.d("Temp", "Favourites: " + favourites.map { it.value.toString() })
             (favourites + items).distinct().map { ImageListItem(it, false) }
         } else {
             items.map { ImageListItem(it, false) }
