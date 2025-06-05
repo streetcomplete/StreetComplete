@@ -10,6 +10,8 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.selection.selectable
+import androidx.compose.material.ContentAlpha
+import androidx.compose.material.LocalContentColor
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -114,7 +116,7 @@ fun <T> SelectableIconRightItem(
                 Text(
                     text = title,
                     style = TextStyle(
-                        color = Color.Black,
+                        color = LocalContentColor.current.copy(alpha = ContentAlpha.medium),
                         fontSize = 13.sp
                     )
                 )
@@ -122,7 +124,7 @@ fun <T> SelectableIconRightItem(
                     Text(
                         text = description,
                         style = TextStyle(
-                            color = Color.Black,
+                            color = LocalContentColor.current.copy(alpha = ContentAlpha.medium),
                         ),
                     )
                 }

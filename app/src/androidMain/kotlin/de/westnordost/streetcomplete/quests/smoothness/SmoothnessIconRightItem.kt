@@ -13,6 +13,8 @@ import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.text.InlineTextContent
 import androidx.compose.foundation.text.appendInlineContent
+import androidx.compose.material.ContentAlpha
+import androidx.compose.material.LocalContentColor
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -21,7 +23,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
@@ -132,7 +133,7 @@ fun <T> SmoothnessIconRightItem(
                 modifier = Modifier.padding(start = 8.dp)) {
                 Text(title,
                     style = TextStyle(
-                        color = Color.Black,
+                        color = LocalContentColor.current.copy(alpha = ContentAlpha.medium),
                         fontSize = 13.sp
                     ),
                     inlineContent = inlineContentMap
@@ -141,7 +142,7 @@ fun <T> SmoothnessIconRightItem(
                     Text(
                         text = description,
                         style = TextStyle(
-                            color = Color.Black,
+                            color = LocalContentColor.current.copy(alpha = ContentAlpha.medium),
                         ),
                     )
                 }

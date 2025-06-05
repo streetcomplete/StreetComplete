@@ -3,12 +3,16 @@ package de.westnordost.streetcomplete.quests
 
 import android.os.Bundle
 import android.view.View
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.material.ContentAlpha
+import androidx.compose.material.LocalContentColor
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -18,6 +22,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.preferences.Preferences
@@ -25,6 +30,7 @@ import de.westnordost.streetcomplete.databinding.ComposeViewBinding
 import de.westnordost.streetcomplete.ui.common.image_select.ImageList
 import de.westnordost.streetcomplete.ui.common.image_select.ImageListItem
 import de.westnordost.streetcomplete.ui.common.image_select.SelectableImageItem
+import de.westnordost.streetcomplete.ui.util.content
 import de.westnordost.streetcomplete.util.logs.Log
 import de.westnordost.streetcomplete.util.takeFavorites
 import de.westnordost.streetcomplete.view.image_select.DisplayItem
@@ -82,14 +88,8 @@ abstract class AImageListQuestForm<I, T> : AbstractOsmQuestForm<T>() {
         } else {
             items.map { ImageListItem(it, false) }
         }
-        refreshComposeView()
-    }
-    protected fun refreshComposeView() {
-        binding.composeViewBase.setContent {
-            Surface(
-                modifier = Modifier
-                    .fillMaxSize()
-            ) {
+        binding.composeViewBase.content {
+            Surface {
                 Column {
                     descriptionResId?.let {
                         Text(
@@ -101,6 +101,9 @@ abstract class AImageListQuestForm<I, T> : AbstractOsmQuestForm<T>() {
                         text = stringResource(
                             if (maxSelectableItems == 1) R.string.quest_select_hint
                             else R.string.quest_multiselect_hint
+                        ),
+                        style = TextStyle(
+                            color = LocalContentColor.current.copy(alpha = ContentAlpha.medium),
                         ),
                         modifier = Modifier.padding(bottom = 8.dp).wrapContentSize()
                     )

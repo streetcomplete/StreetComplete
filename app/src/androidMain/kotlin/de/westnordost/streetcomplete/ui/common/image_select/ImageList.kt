@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.ui.common.image_select
 
+import android.content.res.Configuration
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -103,5 +104,28 @@ fun ImageListPreview() {
                 isSelected = item.checked,
                 onClick = onClick,
                 role = role)
+    }
+}
+
+
+@Composable
+@Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
+fun ImageListDarkModePreview() {
+    var items by remember {
+        mutableStateOf(
+            BicycleRepairStationService.entries.map { ImageListItem(it.asItem(), false) })  }
+
+    ImageList(
+        imageItems = items,
+        onClick = { i, f ->
+            items = items.mapIndexed { index, item -> if (index == i ) ImageListItem(item.item, !item.checked) else item }
+        },
+        itemsPerRow = 3
+    ) { item, index, onClick, role ->
+        SelectableImageItem(
+            item = item.item,
+            isSelected = item.checked,
+            onClick = onClick,
+            role = role)
     }
 }

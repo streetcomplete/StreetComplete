@@ -13,6 +13,8 @@ import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.ContentAlpha
+import androidx.compose.material.LocalContentColor
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -123,7 +125,7 @@ fun <T> SelectableIconItem(
                     text = title,
                     textAlign = TextAlign.Center,
                     style = TextStyle(
-                        color = Color.Black,
+                        color = LocalContentColor.current.copy(alpha = ContentAlpha.medium),
                         fontSize = 12.sp,
                         shadow = Shadow(
                             color = Color.Gray,
