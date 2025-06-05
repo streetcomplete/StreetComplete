@@ -22,7 +22,6 @@ import de.westnordost.streetcomplete.util.ktx.asImageSpan
 import de.westnordost.streetcomplete.util.ktx.couldBeSteps
 import de.westnordost.streetcomplete.view.image_select.ItemViewHolder
 
-// todo: Get the emotes working, and use a one off item composable held in the same folder instead of IconRight
 class AddSmoothnessForm : AImageListQuestComposeForm<Smoothness, SmoothnessAnswer>() {
 
     override val otherAnswers get() = listOfNotNull(
@@ -36,7 +35,7 @@ class AddSmoothnessForm : AImageListQuestComposeForm<Smoothness, SmoothnessAnswe
     override val itemContent =
         @Composable { item: ImageListItem<Smoothness>, index: Int, onClick: () -> Unit, role: Role ->
             key(item.item) {
-                SelectableIconRightItem(
+                SmoothnessIconRightItem(
                     item = item.item,
                     isSelected = item.checked,
                     onClick = onClick,
