@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.quests.traffic_calming_type
 
-import de.westnordost.streetcomplete.quests.AImageListQuestComposeForm
+import de.westnordost.streetcomplete.quests.AImageListQuestForm
 
-class AddTrafficCalmingTypeForm : AImageListQuestComposeForm<TrafficCalmingType, TrafficCalmingType>() {
+class AddTrafficCalmingTypeForm : AImageListQuestForm<TrafficCalmingType, TrafficCalmingType>() {
 
     override val items = TrafficCalmingType.entries.map { it.asItem() }
 

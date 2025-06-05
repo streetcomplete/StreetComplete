@@ -6,12 +6,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.key
 import androidx.compose.ui.semantics.Role
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.AImageListQuestComposeForm
+import de.westnordost.streetcomplete.quests.AImageListQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.ui.common.image_select.ImageListItem
 import de.westnordost.streetcomplete.ui.common.image_select.SelectableIconItem
 
-class AddPostboxRoyalCypherForm : AImageListQuestComposeForm<PostboxRoyalCypher, PostboxRoyalCypher>() {
+class AddPostboxRoyalCypherForm : AImageListQuestForm<PostboxRoyalCypher, PostboxRoyalCypher>() {
 
     override val items = PostboxRoyalCypher.entries.mapNotNull { it.asItem() }
     override val itemsPerRow = 3

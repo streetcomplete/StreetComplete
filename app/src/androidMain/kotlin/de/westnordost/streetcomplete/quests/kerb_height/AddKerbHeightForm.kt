@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.quests.kerb_height
 
-import de.westnordost.streetcomplete.quests.AImageListQuestComposeForm
+import de.westnordost.streetcomplete.quests.AImageListQuestForm
 
-class AddKerbHeightForm : AImageListQuestComposeForm<KerbHeight, KerbHeight>() {
+class AddKerbHeightForm : AImageListQuestForm<KerbHeight, KerbHeight>() {
 
     override val items = KerbHeight.entries.map { it.asItem() }
     override val itemsPerRow = 2

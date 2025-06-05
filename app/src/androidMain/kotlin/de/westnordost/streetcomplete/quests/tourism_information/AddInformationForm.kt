@@ -4,11 +4,11 @@ import android.os.Bundle
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.key
 import androidx.compose.ui.semantics.Role
-import de.westnordost.streetcomplete.quests.AImageListQuestComposeForm
+import de.westnordost.streetcomplete.quests.AImageListQuestForm
 import de.westnordost.streetcomplete.ui.common.image_select.ImageListItem
 import de.westnordost.streetcomplete.ui.common.image_select.SelectableIconItem
 
-class AddInformationForm : AImageListQuestComposeForm<TourismInformation, TourismInformation>() {
+class AddInformationForm : AImageListQuestForm<TourismInformation, TourismInformation>() {
 
     override val itemsPerRow = 2
 

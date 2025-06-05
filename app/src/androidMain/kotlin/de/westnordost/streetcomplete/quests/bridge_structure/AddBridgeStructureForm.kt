@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.quests.bridge_structure
 
-import de.westnordost.streetcomplete.quests.AImageListQuestComposeForm
+import de.westnordost.streetcomplete.quests.AImageListQuestForm
 
-class AddBridgeStructureForm : AImageListQuestComposeForm<BridgeStructure, BridgeStructure>() {
+class AddBridgeStructureForm : AImageListQuestForm<BridgeStructure, BridgeStructure>() {
 
     override val items = BridgeStructure.entries.map { it.asItem() }
     override val itemsPerRow = 2

@@ -6,7 +6,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.key
 import androidx.compose.ui.semantics.Role
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.AImageListQuestComposeForm
+import de.westnordost.streetcomplete.quests.AImageListQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.ui.common.image_select.ImageListItem
 import de.westnordost.streetcomplete.ui.common.image_select.SelectableIconItem
@@ -15,7 +15,7 @@ import de.westnordost.streetcomplete.view.image_select.Item
 
 // todo: Move to AImageListQuestComposeForm once it can handle the changes
 class AddRecyclingContainerMaterialsForm :
-    AImageListQuestComposeForm<List<RecyclingMaterial>, RecyclingContainerMaterialsAnswer>() {
+    AImageListQuestForm<List<RecyclingMaterial>, RecyclingContainerMaterialsAnswer>() {
 
     override val descriptionResId = R.string.quest_recycling_materials_note
 

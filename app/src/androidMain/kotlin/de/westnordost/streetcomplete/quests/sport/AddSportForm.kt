@@ -6,13 +6,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.key
 import androidx.compose.ui.semantics.Role
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.AImageListQuestComposeForm
+import de.westnordost.streetcomplete.quests.AImageListQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.sport.Sport.MULTI
 import de.westnordost.streetcomplete.ui.common.image_select.ImageListItem
 import de.westnordost.streetcomplete.ui.common.image_select.SelectableIconItem
 
-class AddSportForm : AImageListQuestComposeForm<Sport, List<Sport>>() {
+class AddSportForm : AImageListQuestForm<Sport, List<Sport>>() {
 
     override val otherAnswers = listOf(
         AnswerItem(R.string.quest_sport_answer_multi) { applyMultiAnswer() }

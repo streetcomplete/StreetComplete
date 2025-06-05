@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.quests.parking_type
 
-import de.westnordost.streetcomplete.quests.AImageListQuestComposeForm
+import de.westnordost.streetcomplete.quests.AImageListQuestForm
 
-class AddParkingTypeForm : AImageListQuestComposeForm<ParkingType, ParkingType>() {
+class AddParkingTypeForm : AImageListQuestForm<ParkingType, ParkingType>() {
 
     override val items = ParkingType.entries.map { it.asItem() }
     override val itemsPerRow = 3

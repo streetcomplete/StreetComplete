@@ -9,14 +9,14 @@ import androidx.compose.runtime.key
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.semantics.Role
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.AImageListQuestComposeForm
+import de.westnordost.streetcomplete.quests.AImageListQuestForm
 import de.westnordost.streetcomplete.quests.steps_ramp.StepsRamp.BICYCLE
 import de.westnordost.streetcomplete.quests.steps_ramp.StepsRamp.STROLLER
 import de.westnordost.streetcomplete.quests.steps_ramp.StepsRamp.WHEELCHAIR
 import de.westnordost.streetcomplete.ui.common.image_select.ImageListItem
 import de.westnordost.streetcomplete.ui.common.image_select.SelectableImageItem
 
-class AddStepsRampForm : AImageListQuestComposeForm<StepsRamp, StepsRampAnswer>() {
+class AddStepsRampForm : AImageListQuestForm<StepsRamp, StepsRampAnswer>() {
 
     override val items = StepsRamp.entries.map { it.asItem() }
     override val itemsPerRow = 2

@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.quests.car_wash_type
 
-import de.westnordost.streetcomplete.quests.AImageListQuestComposeForm
+import de.westnordost.streetcomplete.quests.AImageListQuestForm
 
-class AddCarWashTypeForm : AImageListQuestComposeForm<CarWashType, List<CarWashType>>() {
+class AddCarWashTypeForm : AImageListQuestForm<CarWashType, List<CarWashType>>() {
 
     override val items = CarWashType.entries.map { it.asItem() }
     override val itemsPerRow = 3

@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.quests.power_attachment
 
-import de.westnordost.streetcomplete.quests.AImageListQuestComposeForm
+import de.westnordost.streetcomplete.quests.AImageListQuestForm
 
-class AddPowerAttachmentForm : AImageListQuestComposeForm<PowerAttachment, PowerAttachment>() {
+class AddPowerAttachmentForm : AImageListQuestForm<PowerAttachment, PowerAttachment>() {
 
     override val items = PowerAttachment.entries.map { it.asItem() }
     override val itemsPerRow = 3

@@ -4,11 +4,11 @@ import android.os.Bundle
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.key
 import androidx.compose.ui.semantics.Role
-import de.westnordost.streetcomplete.quests.AImageListQuestComposeForm
+import de.westnordost.streetcomplete.quests.AImageListQuestForm
 import de.westnordost.streetcomplete.ui.common.image_select.ImageListItem
 import de.westnordost.streetcomplete.ui.common.image_select.SelectableIconItem
 
-class AddPoliceTypeForm : AImageListQuestComposeForm<PoliceType, PoliceType>() {
+class AddPoliceTypeForm : AImageListQuestForm<PoliceType, PoliceType>() {
 
     override val items = PoliceType.entries.map { it.asItem() }
     override val itemsPerRow = 3

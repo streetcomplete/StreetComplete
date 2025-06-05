@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.quests.tracktype
 
-import de.westnordost.streetcomplete.quests.AImageListQuestComposeForm
+import de.westnordost.streetcomplete.quests.AImageListQuestForm
 
-class AddTracktypeForm : AImageListQuestComposeForm<Tracktype, Tracktype>() {
+class AddTracktypeForm : AImageListQuestForm<Tracktype, Tracktype>() {
 
     override val items = Tracktype.entries.map { it.asItem() }
 

@@ -5,11 +5,11 @@ import android.view.View
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.key
 import androidx.compose.ui.semantics.Role
-import de.westnordost.streetcomplete.quests.AImageListQuestComposeForm
+import de.westnordost.streetcomplete.quests.AImageListQuestForm
 import de.westnordost.streetcomplete.ui.common.image_select.ImageListItem
 import de.westnordost.streetcomplete.ui.common.image_select.SelectableIconRightItem
 
-class AddCyclewaySegregationForm : AImageListQuestComposeForm<CyclewaySegregation, CyclewaySegregation>() {
+class AddCyclewaySegregationForm : AImageListQuestForm<CyclewaySegregation, CyclewaySegregation>() {
 
     override val items get() =
         CyclewaySegregation.entries.map { it.asItem(countryInfo.isLeftHandTraffic) }

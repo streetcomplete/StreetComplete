@@ -5,13 +5,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.key
 import androidx.compose.ui.semantics.Role
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.AImageListQuestComposeForm
+import de.westnordost.streetcomplete.quests.AImageListQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.roof_shape.RoofShape.MANY
 import de.westnordost.streetcomplete.ui.common.image_select.ImageListItem
 import de.westnordost.streetcomplete.ui.common.image_select.SelectableIconItem
 
-class AddRoofShapeForm : AImageListQuestComposeForm<RoofShape, RoofShape>() {
+class AddRoofShapeForm : AImageListQuestForm<RoofShape, RoofShape>() {
 
     override val itemContent =
         @Composable { item: ImageListItem<RoofShape>, index: Int, onClick: () -> Unit, role: Role ->

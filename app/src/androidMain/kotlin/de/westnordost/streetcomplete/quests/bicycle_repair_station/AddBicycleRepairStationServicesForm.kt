@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.quests.bicycle_repair_station
 
-import de.westnordost.streetcomplete.quests.AImageListQuestComposeForm
+import de.westnordost.streetcomplete.quests.AImageListQuestForm
 
-class AddBicycleRepairStationServicesForm : AImageListQuestComposeForm<BicycleRepairStationService, List<BicycleRepairStationService>>() {
+class AddBicycleRepairStationServicesForm : AImageListQuestForm<BicycleRepairStationService, List<BicycleRepairStationService>>() {
 
     override val items get() = BicycleRepairStationService.entries.map { it.asItem() }
 

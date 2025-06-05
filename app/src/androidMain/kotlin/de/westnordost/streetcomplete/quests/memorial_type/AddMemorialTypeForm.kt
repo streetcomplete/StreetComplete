@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.quests.memorial_type
 
-import de.westnordost.streetcomplete.quests.AImageListQuestComposeForm
+import de.westnordost.streetcomplete.quests.AImageListQuestForm
 
-class AddMemorialTypeForm : AImageListQuestComposeForm<MemorialType, MemorialType>() {
+class AddMemorialTypeForm : AImageListQuestForm<MemorialType, MemorialType>() {
 
     override val items = MemorialType.entries.map { it.asItem() }
     override val itemsPerRow = 3

@@ -7,13 +7,13 @@ import androidx.compose.runtime.key
 import androidx.compose.ui.semantics.Role
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
-import de.westnordost.streetcomplete.quests.AImageListQuestComposeForm
+import de.westnordost.streetcomplete.quests.AImageListQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.ui.common.image_select.ImageListItem
 import de.westnordost.streetcomplete.ui.common.image_select.SelectableIconItem
 import de.westnordost.streetcomplete.util.math.getOrientationAtCenterLineInDegrees
 
-class AddBicycleInclineForm : AImageListQuestComposeForm<Incline, BicycleInclineAnswer>() {
+class AddBicycleInclineForm : AImageListQuestForm<Incline, BicycleInclineAnswer>() {
     override val otherAnswers = listOf(
         AnswerItem(R.string.quest_bicycle_incline_up_and_down) { confirmUpAndDown() }
     )

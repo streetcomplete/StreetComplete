@@ -1,9 +1,9 @@
 package de.westnordost.streetcomplete.quests.fire_hydrant_position
 
-import de.westnordost.streetcomplete.quests.AImageListQuestComposeForm
+import de.westnordost.streetcomplete.quests.AImageListQuestForm
 import de.westnordost.streetcomplete.view.image_select.DisplayItem
 
-class AddFireHydrantPositionForm : AImageListQuestComposeForm<FireHydrantPosition, FireHydrantPosition>() {
+class AddFireHydrantPositionForm : AImageListQuestForm<FireHydrantPosition, FireHydrantPosition>() {
 
     override val items: List<DisplayItem<FireHydrantPosition>> get() {
         val isPillar = element.tags["fire_hydrant:type"] == "pillar"
