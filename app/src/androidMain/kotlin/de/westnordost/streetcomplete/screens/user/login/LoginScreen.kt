@@ -40,7 +40,7 @@ import com.multiplatform.webview.web.WebView
 import com.multiplatform.webview.web.WebViewNavigator
 import com.multiplatform.webview.web.rememberWebViewNavigator
 import com.multiplatform.webview.web.rememberWebViewState
-import de.westnordost.streetcomplete.ApplicationConstantsAndroid
+import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.screens.user.login.LoginError.CommunicationError
 import de.westnordost.streetcomplete.screens.user.login.LoginError.RequiredPermissionsNotGranted
@@ -143,7 +143,7 @@ fun LoginScreen(
                     onCreated = {
                         val settings = webViewState.webSettings
                         settings.isJavaScriptEnabled = true
-                        settings.customUserAgentString = ApplicationConstantsAndroid.USER_AGENT
+                        settings.customUserAgentString = ApplicationConstants.USER_AGENT
                         settings.supportZoom = false
                     } as () -> Unit,
                 )

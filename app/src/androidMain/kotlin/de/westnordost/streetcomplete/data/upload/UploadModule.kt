@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.data.upload
 
-import de.westnordost.streetcomplete.ApplicationConstantsAndroid
+import de.westnordost.streetcomplete.ApplicationConstants
 import kotlinx.coroutines.sync.Mutex
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.workmanager.dsl.worker
@@ -8,7 +8,7 @@ import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
 val uploadModule = module {
-    factory { VersionIsBannedChecker(get(), "https://streetcomplete.app/banned_versions.txt", ApplicationConstantsAndroid.USER_AGENT) }
+    factory { VersionIsBannedChecker(get(), "https://streetcomplete.app/banned_versions.txt", ApplicationConstants.USER_AGENT) }
 
     single { Uploader(get(), get(), get(), get(), get(), get(), get(named("SerializeSync"))) }
     /* uploading and downloading should be serialized, i.e. may not run in parallel, to avoid

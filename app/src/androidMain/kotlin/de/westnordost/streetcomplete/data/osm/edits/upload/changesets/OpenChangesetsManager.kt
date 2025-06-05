@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.data.osm.edits.upload.changesets
 
-import de.westnordost.streetcomplete.ApplicationConstants.QUESTTYPE_TAG_KEY
-import de.westnordost.streetcomplete.ApplicationConstantsAndroid.USER_AGENT
+import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.ConflictException
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
@@ -29,7 +28,7 @@ class OpenChangesetsManager(
         val openChangeset = withContext(IO) { openChangesetsDB.get(type.name, source) }
             ?: return createChangeset(type, source, position)
 
-        if (createNewIfTooFarAway && position.distanceTo(openChangeset.lastPosition) > MAX_LAST_EDIT_DISTANCE) {
+        if (createNewIfTooFarAway && position.distanceTo(openChangeset.lastPosition) > ApplicationConstants.CHANGESET_MAX_LAST_EDIT_DISTANCE) {
             closeChangeset(openChangeset)
             return createChangeset(type, source, position)
         } else {
@@ -40,14 +39,14 @@ class OpenChangesetsManager(
     suspend fun createChangeset(type: ElementEditType, source: String, position: LatLon): Long {
         val changesetId = changesetApiClient.open(createChangesetTags(type, source))
         withContext(IO) { openChangesetsDB.put(OpenChangeset(type.name, source, changesetId, position)) }
-        changesetAutoCloser.enqueue(CLOSE_CHANGESETS_AFTER_INACTIVITY_OF)
+        changesetAutoCloser.enqueue(ApplicationConstants.CLOSE_CHANGESETS_AFTER_INACTIVITY_OF)
         Log.i(TAG, "Created changeset #$changesetId")
         return changesetId
     }
 
     suspend fun closeOldChangesets() {
         val timePassed = nowAsEpochMilliseconds() - prefs.lastEditTime
-        if (timePassed < CLOSE_CHANGESETS_AFTER_INACTIVITY_OF) return
+        if (timePassed < ApplicationConstants.CLOSE_CHANGESETS_AFTER_INACTIVITY_OF) return
 
         val openChangesets = withContext(IO) { openChangesetsDB.getAll() }
         openChangesets.forEach { closeChangeset(it) }
@@ -67,9 +66,9 @@ class OpenChangesetsManager(
     private fun createChangesetTags(type: ElementEditType, source: String) =
         mapOf(
             "comment" to type.changesetComment,
-            "created_by" to USER_AGENT,
+            "created_by" to ApplicationConstants.USER_AGENT,
             "locale" to Locale.getDefault().toLanguageTag(),
-            QUESTTYPE_TAG_KEY to type.name,
+            ApplicationConstants.QUESTTYPE_TAG_KEY to type.name,
             "source" to source
         )
 
@@ -78,6 +77,4 @@ class OpenChangesetsManager(
     }
 }
 
-private const val CLOSE_CHANGESETS_AFTER_INACTIVITY_OF = 1000L * 60 * 20 // 20min
 
-private const val MAX_LAST_EDIT_DISTANCE = 5000 // 5km

@@ -15,7 +15,7 @@ import android.view.animation.TranslateAnimation
 import androidx.core.graphics.toPointF
 import androidx.core.os.bundleOf
 import androidx.core.view.isGone
-import de.westnordost.streetcomplete.ApplicationConstantsAndroid
+import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction
@@ -152,7 +152,7 @@ class CreateNoteFragment : AbstractCreateNoteFragment() {
 
         binding.markerCreateLayout.markerLayoutContainer.visibility = View.INVISIBLE
 
-        val fullText = "$text\n\nvia ${ApplicationConstantsAndroid.USER_AGENT}"
+        val fullText = "$text\n\nvia ${ApplicationConstants.USER_AGENT}"
         viewLifecycleScope.launch {
             withContext(Dispatchers.IO) {
                 val recordedTrack =

@@ -26,7 +26,7 @@ val appModule = module {
     single { SoundFx(androidContext()) }
     single { HttpClient {
         defaultRequest {
-            userAgent(ApplicationConstantsAndroid.USER_AGENT)
+            userAgent(ApplicationConstants.USER_AGENT)
         }
         install(ContentEncoding) {
             gzip()

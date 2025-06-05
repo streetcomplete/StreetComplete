@@ -39,6 +39,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.BuildConfig
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.logs.format
@@ -139,7 +140,7 @@ private fun FiltersCounter(count: Int, modifier: Modifier = Modifier) {
 
 private fun Context.shareLog(logText: String) {
     val logTimestamp = LocalDateTime.now().toString()
-    val logTitle = "${BuildConfig.APPLICATION_ID}_${BuildConfig.VERSION_NAME}_$logTimestamp.log"
+    val logTitle = "${ApplicationConstants.NAME}_${BuildConfig.VERSION_NAME}_$logTimestamp.log"
 
     val shareIntent = Intent(Intent.ACTION_SEND).also {
         it.putExtra(Intent.EXTRA_TEXT, logText)

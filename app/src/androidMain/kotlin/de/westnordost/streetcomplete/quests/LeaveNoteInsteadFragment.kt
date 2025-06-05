@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.core.view.isGone
-import de.westnordost.streetcomplete.ApplicationConstantsAndroid
+import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
@@ -87,7 +87,7 @@ class LeaveNoteInsteadFragment : AbstractCreateNoteFragment() {
         val fullText = mutableListOf<String>()
         leaveNoteContext?.let { fullText += it }
         fullText += "– https://osm.org/${elementType.name.lowercase()}/$elementId"
-        fullText += "via ${ApplicationConstantsAndroid.USER_AGENT}:\n\n$text"
+        fullText += "via ${ApplicationConstants.USER_AGENT}:\n\n$text"
 
         viewLifecycleScope.launch {
             withContext(Dispatchers.IO) {

@@ -35,12 +35,12 @@ fun PreferenceCategory(
     modifier: Modifier = Modifier,
     content: @Composable ColumnScope.() -> Unit
 ) {
-    Column {
+    Column(modifier) {
         Divider()
         if (title != null) {
             Text(
                 text = title,
-                modifier = modifier.padding(top = 12.dp, start = 16.dp, end = 8.dp, bottom = 8.dp),
+                modifier = Modifier.padding(top = 12.dp, start = 16.dp, end = 8.dp, bottom = 8.dp),
                 color = MaterialTheme.colors.secondary,
                 style = MaterialTheme.typography.titleSmall
             )
@@ -73,7 +73,7 @@ fun Preference(
         )
     ) {
         Row(
-            modifier = modifier.fillMaxWidth(),
+            modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
         ) {

@@ -10,7 +10,7 @@ import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.OutOfQuotaPolicy
 import androidx.work.WorkManager
 import androidx.work.WorkerParameters
-import de.westnordost.streetcomplete.ApplicationConstantsAndroid
+import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.sync.createSyncNotification
 
 /** Collects and uploads all user changes: notes left, comments left on existing
@@ -22,7 +22,7 @@ class UploadWorker(
 ) : CoroutineWorker(context, workerParams) {
 
     override suspend fun getForegroundInfo(): ForegroundInfo {
-        val notificationId = ApplicationConstantsAndroid.NOTIFICATIONS_ID_SYNC
+        val notificationId = ApplicationConstants.NOTIFICATIONS_ID_SYNC
         val cancelIntent = WorkManager.getInstance(context).createCancelPendingIntent(id)
         val notification = createSyncNotification(context, cancelIntent)
         return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {

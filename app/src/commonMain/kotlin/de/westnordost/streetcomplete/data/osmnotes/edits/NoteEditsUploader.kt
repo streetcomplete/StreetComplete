@@ -1,12 +1,10 @@
 package de.westnordost.streetcomplete.data.osmnotes.edits
 
 import de.westnordost.streetcomplete.ApplicationConstants
-import de.westnordost.streetcomplete.ApplicationConstantsAndroid
 import de.westnordost.streetcomplete.data.ConflictException
 import de.westnordost.streetcomplete.data.osmnotes.NoteController
 import de.westnordost.streetcomplete.data.osmnotes.NotesApiClient
 import de.westnordost.streetcomplete.data.osmnotes.PhotoServiceApiClient
-import de.westnordost.streetcomplete.data.osmnotes.deleteImages
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction.COMMENT
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction.CREATE
 import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
@@ -18,10 +16,13 @@ import io.ktor.http.encodeURLPathPart
 import kotlinx.coroutines.CoroutineName
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.IO
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
+import kotlinx.io.files.FileSystem
+import kotlinx.io.files.Path
 
 class NoteEditsUploader(
     private val noteEditsController: NoteEditsController,
@@ -29,7 +30,8 @@ class NoteEditsUploader(
     private val userDataSource: UserDataSource,
     private val notesApi: NotesApiClient,
     private val tracksApi: TracksApiClient,
-    private val imageUploader: PhotoServiceApiClient
+    private val imageUploader: PhotoServiceApiClient,
+    private val fileSystem: FileSystem,
 ) {
     var uploadedChangeListener: OnUploadedChangeListener? = null
 
@@ -84,7 +86,7 @@ class NoteEditsUploader(
 
             Log.d(TAG,
                 "Uploaded a ${edit.action.name} to ${note.id}" +
-                " at ${edit.position.latitude}, ${edit.position.longitude}"
+                    " at ${edit.position.latitude}, ${edit.position.longitude}"
             )
             uploadedChangeListener?.onUploaded(NOTE, edit.position)
 
@@ -95,11 +97,14 @@ class NoteEditsUploader(
                 imageUploader.activate(note.id)
                 noteEditsController.markImagesActivated(note.id)
             }
-            deleteImages(edit.imagePaths)
+
+            for (imagePath in edit.imagePaths) {
+                fileSystem.delete(Path(imagePath), mustExist = false)
+            }
         } catch (e: ConflictException) {
             Log.d(TAG,
                 "Dropped a ${edit.action.name} to ${edit.noteId}" +
-                " at ${edit.position.latitude}, ${edit.position.longitude}: ${e.message}"
+                    " at ${edit.position.latitude}, ${edit.position.longitude}: ${e.message}"
             )
             uploadedChangeListener?.onDiscarded(NOTE, edit.position)
 
@@ -113,7 +118,9 @@ class NoteEditsUploader(
                 noteController.delete(edit.noteId)
             }
 
-            deleteImages(edit.imagePaths)
+            for (imagePath in edit.imagePaths) {
+                fileSystem.delete(Path(imagePath), mustExist = false)
+            }
         }
     }
 
@@ -134,7 +141,7 @@ class NoteEditsUploader(
         if (trackpoints.isEmpty()) return ""
         val trackId = tracksApi.create(
             trackpoints = trackpoints,
-            creator = ApplicationConstantsAndroid.USER_AGENT,
+            creator = ApplicationConstants.USER_AGENT,
             description = noteText,
             tags = listOf(ApplicationConstants.NAME)
         )

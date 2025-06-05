@@ -1,8 +1,39 @@
+import com.codingfeline.buildkonfig.compiler.FieldSpec.Type.STRING
+import com.codingfeline.buildkonfig.compiler.FieldSpec.Type.BOOLEAN
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import java.io.FileInputStream
 import java.io.FileWriter
 import java.util.Properties
+
+
+/** App version name, code and flavor */
+val appVersionName = "61.1"
+val appVersionCode = 6101
+
+/** Whether this build will be uploaded to Google Play / Apple AppStore */
+val appForMonopolisticAppStore = false
+
+/** Localizations the app should be available in */
+val bcp47ExportLanguages = setOf(
+    "ar", "ast", "be", "bg", "bs", "ca", "cs", "da", "de", "el",
+    "en", "en-AU", "en-GB", "eo", "es", "es-AR", "et", "eu",
+    "fa", "fi", "fr", "gl", "he", "hr", "hu", "hy",
+    "id", "it", "ja", "ko", "lt", "lv", "nb", "no", "nl", "nn", "pl", "pt", "pt-BR",
+    "ro", "ru", "sk", "sl", "sr-cyrl", "sr-latn", "sv", "sw", "th", "tr", "uk",
+    "zh", "zh-CN", "zh-HK", "zh-TW"
+)
+
+/** Version of the iD presets to use
+ *  see https://github.com/openstreetmap/id-tagging-schema/releases for latest version */
+val presetsVersion = "v6.11.0"
+
+/** Version of the Name Suggestion Index to use
+ *  see https://github.com/osmlab/name-suggestion-index/tags for latest version */
+val nsiVersion = "v6.0.20250525"
+
+/** Project ID of the crowdsource translation platform (from where to pull translations from) */
+val poEditorProjectId = "97843"
 
 plugins {
     id("org.jetbrains.kotlin.multiplatform") version "2.1.21"
@@ -11,6 +42,7 @@ plugins {
     id("com.android.application") version "8.9.3"
     id("org.jetbrains.compose") version "1.8.1"
     id("org.jetbrains.kotlinx.atomicfu") version "0.27.0"
+    id("com.codingfeline.buildkonfig") version "0.17.1"
 }
 
 repositories {
@@ -18,6 +50,28 @@ repositories {
     mavenCentral()
     // for com.github.chrisbaines:PhotoView
     maven { url = uri("https://www.jitpack.io") }
+}
+
+buildkonfig {
+    packageName = "de.westnordost.streetcomplete"
+    objectName = "BuildConfig"
+
+    defaultConfigs {
+        buildConfigField(BOOLEAN, "IS_FROM_MONOPOLISTIC_APP_STORE", appForMonopolisticAppStore.toString())
+        buildConfigField(STRING, "VERSION_NAME", appVersionName)
+        buildConfigField(BOOLEAN, "DEBUG", properties["debug"]!!.toString())
+    }
+
+    targetConfigs {
+        create("android") {
+            buildConfigField(STRING, "PLATFORM", "android")
+        }
+        for (ios in listOf("iosX64", "iosArm64", "iosSimulatorArm64")) {
+            create(ios) {
+                buildConfigField(STRING, "PLATFORM", "ios")
+            }
+        }
+    }
 }
 
 kotlin {
@@ -195,8 +249,8 @@ android {
         applicationId = "de.westnordost.streetcomplete"
         minSdk = 25
         targetSdk = 35
-        versionCode = 6102
-        versionName = "61.1"
+        versionCode = appVersionCode
+        versionName = appVersionName
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -228,11 +282,6 @@ android {
             // don't use proguard-android-optimize.txt, it is too aggressive, it is more trouble than it is worth
             proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
             testProguardFile("test-proguard-rules.pro")
-            buildConfigField(
-                type = "boolean",
-                name = "IS_MONOPOLISTIC_APP_STORE",
-                value = (properties["flavor"] == "monopolistic_app_store").toString()
-            )
         }
         getByName("debug") {
             isMinifyEnabled = false
@@ -246,7 +295,6 @@ android {
 
     buildFeatures {
         viewBinding = true
-        buildConfig = true
         compose = true
     }
 
@@ -292,23 +340,6 @@ if (keystorePropertiesFile.exists()) {
     releaseSigningConfig.keyAlias = props.getProperty("keyAlias")
     releaseSigningConfig.keyPassword = props.getProperty("keyPassword")
 }
-
-/** Localizations that should be pulled from POEditor */
-val bcp47ExportLanguages = setOf(
-    "ar", "ast", "be", "bg", "bs", "ca", "cs", "da", "de", "el",
-    "en", "en-AU", "en-GB", "eo", "es", "es-AR", "et", "eu",
-    "fa", "fi", "fr", "gl", "he", "hr", "hu", "hy",
-    "id", "it", "ja", "ko", "lt", "lv", "nb", "no", "nl", "nn", "pl", "pt", "pt-BR",
-    "ro", "ru", "sk", "sl", "sr-cyrl", "sr-latn", "sv", "sw", "th", "tr", "uk",
-    "zh", "zh-CN", "zh-HK", "zh-TW"
-)
-
-// see https://github.com/osmlab/name-suggestion-index/tags for latest version
-val nsiVersion = "v6.0.20250525"
-// see https://github.com/openstreetmap/id-tagging-schema/releases for latest version
-val presetsVersion = "v6.11.0"
-
-val poEditorProjectId = "97843"
 
 tasks.register<UpdateContributorStatisticsTask>("updateContributorStatistics") {
     group = "streetcomplete"
