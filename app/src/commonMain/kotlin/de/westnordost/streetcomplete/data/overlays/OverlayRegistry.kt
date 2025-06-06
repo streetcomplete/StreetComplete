@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.data.overlays
 
 import de.westnordost.streetcomplete.data.ObjectTypeRegistry
-import de.westnordost.streetcomplete.overlays.Overlay
 
 /** Every overlay must be registered here
  *

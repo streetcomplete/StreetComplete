@@ -1,7 +1,5 @@
 package de.westnordost.streetcomplete.data.overlays
 
-import de.westnordost.streetcomplete.overlays.Overlay
-
 interface SelectedOverlaySource {
     interface Listener {
         fun onSelectedOverlayChanged()

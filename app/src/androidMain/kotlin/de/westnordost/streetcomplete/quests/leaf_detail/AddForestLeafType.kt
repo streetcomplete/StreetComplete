@@ -7,11 +7,12 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.util.math.measuredMultiPolygonArea
 
-class AddForestLeafType : OsmElementQuestType<ForestLeafType> {
+class AddForestLeafType : OsmElementQuestType<ForestLeafType>, AndroidQuest {
     private val areaFilter by lazy { """
         ways, relations with (landuse = forest or natural = wood) and !leaf_type
     """.toElementFilterExpression() }

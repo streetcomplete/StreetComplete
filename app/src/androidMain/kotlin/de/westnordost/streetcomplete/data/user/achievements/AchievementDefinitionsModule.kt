@@ -89,15 +89,10 @@ import de.westnordost.streetcomplete.resources.link_wiki
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
-val achievementsModule = module {
+val achievementDefinitionsModule = module {
     factory(named("Achievements")) { achievements }
     factory(named("Links")) { links }
     factory(named("TypeAliases")) { typeAliases }
-    factory { UserAchievementsDao(get()) }
-    factory { UserLinksDao(get()) }
-
-    single<AchievementsSource> { get<AchievementsController>() }
-    single { AchievementsController(get(), get(), get(), get(), get(named("Achievements")), get(named("Links"))) }
 }
 
 // list of (quest) synonyms (this alternate name is mentioned to aid searching for this code)

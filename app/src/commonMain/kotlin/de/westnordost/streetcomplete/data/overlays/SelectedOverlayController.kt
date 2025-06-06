@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.data.overlays
 
 import com.russhwolf.settings.SettingsListener
 import de.westnordost.streetcomplete.data.preferences.Preferences
-import de.westnordost.streetcomplete.overlays.Overlay
 import de.westnordost.streetcomplete.util.Listeners
 
 class SelectedOverlayController(

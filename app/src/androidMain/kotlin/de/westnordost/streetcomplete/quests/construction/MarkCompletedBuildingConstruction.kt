@@ -3,12 +3,13 @@ package de.westnordost.streetcomplete.quests.construction
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BUILDING
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.toCheckDateString
 import de.westnordost.streetcomplete.osm.updateCheckDate
 
-class MarkCompletedBuildingConstruction : OsmFilterQuestType<CompletedConstructionAnswer>() {
+class MarkCompletedBuildingConstruction : OsmFilterQuestType<CompletedConstructionAnswer>(), AndroidQuest {
 
     override val elementFilter = """
         ways with

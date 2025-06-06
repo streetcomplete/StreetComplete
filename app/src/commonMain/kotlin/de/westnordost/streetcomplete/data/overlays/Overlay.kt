@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.overlays
+package de.westnordost.streetcomplete.data.overlays
 
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
@@ -19,9 +19,4 @@ interface Overlay : ElementEditType {
 
     /** return pairs of element to style for all elements in the map data that should be displayed */
     fun getStyledElements(mapData: MapDataWithGeometry): Sequence<Pair<Element, Style>>
-
-    /** returns the fragment in which the user can view/add the data or null if no form should be
-     * displayed for the given [element]. [element] is null for when a new element should be created
-     */
-    fun createForm(element: Element?): AbstractOverlayForm?
 }

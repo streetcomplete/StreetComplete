@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.overlays
+package de.westnordost.streetcomplete.data.overlays
 
 /** Default and common colors for overlays. This palette is selected to be suitable for use by
  *  color-blind people too, that is

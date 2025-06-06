@@ -10,10 +10,8 @@ import de.westnordost.streetcomplete.data.user.achievements.AchievementCondition
 import de.westnordost.streetcomplete.data.user.achievements.AchievementCondition.EditsOfTypeCount
 import de.westnordost.streetcomplete.data.user.achievements.AchievementCondition.TotalEditCount
 import de.westnordost.streetcomplete.data.user.statistics.StatisticsSource
-import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 import de.westnordost.streetcomplete.overlays.Overlay
 import de.westnordost.streetcomplete.overlays.Style
-import de.westnordost.streetcomplete.quests.AbstractQuestForm
 import de.westnordost.streetcomplete.testutils.any
 import de.westnordost.streetcomplete.testutils.mock
 import de.westnordost.streetcomplete.testutils.on
@@ -273,7 +271,6 @@ private object QuestOne : QuestType {
     override val icon = 0
     override val title = 0
     override val wikiLink: String? = null
-    override fun createForm(): AbstractQuestForm = mock()
     override val achievements = editTypeAchievements(listOf("thisAchievement", "mixedAchievement"))
 }
 
@@ -281,7 +278,6 @@ private object QuestTwo : QuestType {
     override val icon = 0
     override val title = 0
     override val wikiLink: String? = null
-    override fun createForm(): AbstractQuestForm = mock()
     override val achievements = editTypeAchievements(listOf("otherAchievement", "mixedAchievement"))
 }
 
@@ -291,7 +287,6 @@ private object OverlayOne : Overlay {
     override val wikiLink: String? = null
     override val changesetComment = ""
     override fun getStyledElements(mapData: MapDataWithGeometry) = emptySequence<Pair<Element, Style>>()
-    override fun createForm(element: Element?): AbstractOverlayForm? = null
 
     override val achievements = editTypeAchievements(listOf("otherAchievement", "mixedAchievement"))
 }

@@ -7,6 +7,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement
 import de.westnordost.streetcomplete.osm.ROADS_ASSUMED_TO_BE_PAVED
 import de.westnordost.streetcomplete.osm.Tags
@@ -16,7 +17,7 @@ import de.westnordost.streetcomplete.screens.measure.ArSupportChecker
 
 class AddRoadWidth(
     private val checkArSupport: ArSupportChecker
-) : OsmElementQuestType<WidthAnswer> {
+) : OsmElementQuestType<WidthAnswer>, AndroidQuest {
 
     private val nodeFilter by lazy { """
        nodes with

@@ -3,13 +3,14 @@ package de.westnordost.streetcomplete.quests.width
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.screens.measure.ArSupportChecker
 
 class AddCyclewayWidth(
     private val checkArSupport: ArSupportChecker
-) : OsmFilterQuestType<WidthAnswer>() {
+) : OsmFilterQuestType<WidthAnswer>(), AndroidQuest {
 
     /* All either exclusive cycleways or ways that are cycleway + footway (or bridleway) but
      *  segregated */

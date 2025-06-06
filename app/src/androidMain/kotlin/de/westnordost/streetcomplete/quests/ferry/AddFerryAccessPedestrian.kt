@@ -3,13 +3,14 @@ package de.westnordost.streetcomplete.quests.ferry
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.RARE
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.quests.YesNoQuestForm
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
-class AddFerryAccessPedestrian : OsmFilterQuestType<Boolean>() {
+class AddFerryAccessPedestrian : OsmFilterQuestType<Boolean>(), AndroidQuest {
 
     override val elementFilter = "ways, relations with route = ferry and !foot"
     override val changesetComment = "Specify ferry access for pedestrians"

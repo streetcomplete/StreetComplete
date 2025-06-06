@@ -3,12 +3,13 @@ package de.westnordost.streetcomplete.quests.tactile_paving
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BLIND
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.surface.PAVED_SURFACES
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 
-class AddTactilePavingSteps : OsmFilterQuestType<TactilePavingStepsAnswer>() {
+class AddTactilePavingSteps : OsmFilterQuestType<TactilePavingStepsAnswer>(), AndroidQuest {
 
     override val elementFilter = """
         ways with highway = steps

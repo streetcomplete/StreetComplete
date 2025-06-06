@@ -7,6 +7,7 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.quests.YesNoQuestForm
@@ -15,7 +16,7 @@ import de.westnordost.streetcomplete.util.ktx.toYesNo
 
 class AddAmenityCover(
     private val getFeature: (Element) -> Feature?
-) : OsmElementQuestType<Boolean> {
+) : OsmElementQuestType<Boolean>, AndroidQuest {
 
     private val nodesFilter by lazy { """
         nodes with
