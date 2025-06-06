@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.ui.common.image_select
 
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -16,11 +15,13 @@ import de.westnordost.streetcomplete.quests.bicycle_repair_station.asItem
 import de.westnordost.streetcomplete.view.image_select.DisplayItem
 
 @Composable
-fun <T> RadioImageList(items: List<DisplayItem<T>>,
+fun <T> RadioImageList(
+    items: List<DisplayItem<T>>,
     onSelect: (List<DisplayItem<T>>) -> Unit,
     modifier: Modifier = Modifier,
     itemsPerRow: Int = 4,
-    itemContent: @Composable (item: ImageListItem<T>, index: Int, onClick: () -> Unit, role: Role) -> Unit) {
+    itemContent: @Composable (item: ImageListItem<T>, index: Int, onClick: () -> Unit, role: Role) -> Unit
+) {
     var listItems by remember { mutableStateOf(items.map { ImageListItem(it, false) }) }
     LaunchedEffect(items) {
         listItems = items.map { ImageListItem(it, false) }

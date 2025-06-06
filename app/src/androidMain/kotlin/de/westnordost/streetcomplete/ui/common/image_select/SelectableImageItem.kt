@@ -5,15 +5,9 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.BoxWithConstraints
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.layout.wrapContentSize
-import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -41,6 +35,7 @@ import androidx.core.graphics.drawable.toBitmap
 import de.westnordost.streetcomplete.quests.bicycle_repair_station.BicycleRepairStationService
 import de.westnordost.streetcomplete.quests.bicycle_repair_station.asItem
 import de.westnordost.streetcomplete.ui.ktx.conditional
+import de.westnordost.streetcomplete.ui.ktx.pxToDp
 import de.westnordost.streetcomplete.ui.theme.SelectionColor
 import de.westnordost.streetcomplete.ui.theme.SelectionFrameColor
 import de.westnordost.streetcomplete.view.CharSequenceText
@@ -92,57 +87,45 @@ fun <T> SelectableImageItem(
                 onClick = onClick,
                 role = role
             )
-            .padding(2.dp)
-            .wrapContentSize()
     ) {
         Box(
             modifier = Modifier
-                .wrapContentSize()
                 .conditional(isSelected) {
                     border(4.dp, SelectionFrameColor)
                 }
-                .padding(2.dp)
+                .padding(4.dp)
+                .background(SelectionColor.copy(alpha = animatedAlpha))
         ) {
             imageBitmap?.let { bitmap ->
-                Box {
-                    Image(
-                        bitmap = bitmap,
-                        contentDescription = title,
-                        modifier = Modifier
-                            .align(Alignment.Center)
-                            .onSizeChanged {
-                                imageWidth = it.width
-                            }
-                    )
+                Image(
+                    bitmap = bitmap,
+                    contentDescription = title,
+                    modifier = Modifier
+                        .align(Alignment.Center)
+                        .onSizeChanged {
+                            imageWidth = it.width
+                        }
+                )
 
-                    Box(
+                if (imageWidth > 0) {
+                    Text(
+                        text = title,
+                        style = TextStyle(
+                            color = Color.White,
+                            fontSize = 12.sp,
+                            fontWeight = FontWeight.Bold,
+                            shadow = Shadow(
+                                color = Color.Black,
+                                offset = Offset(2f, 2f),
+                                blurRadius = 4f
+                            )
+                        ),
+                        textAlign = TextAlign.Center,
                         modifier = Modifier
-                            .background(SelectionColor.copy(alpha = animatedAlpha))
-                            .matchParentSize()
+                            .align(Alignment.BottomCenter)
+                            .width(imageWidth.pxToDp())
+                            .padding(8.dp)
                     )
-
-                    if (imageWidth > 0) {
-                        Text(
-                            text = title,
-                            style = TextStyle(
-                                color = Color.White,
-                                fontSize = 12.sp,
-                                fontWeight = FontWeight.Bold,
-                                shadow = Shadow(
-                                    color = Color.Black,
-                                    offset = Offset(2f, 2f),
-                                    blurRadius = 4f
-                                )
-                            ),
-                            textAlign = TextAlign.Center,
-                            modifier = Modifier
-                                .align(Alignment.BottomCenter)
-                                .width(with(LocalContext.current.resources.displayMetrics) {
-                                    (imageWidth / density).dp
-                                })
-                                .padding(8.dp)
-                        )
-                    }
                 }
             }
         }
