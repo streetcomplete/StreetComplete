@@ -1,9 +1,7 @@
 package de.westnordost.streetcomplete.quests
 
-
 import android.os.Bundle
 import android.view.View
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
@@ -12,7 +10,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.material.ContentAlpha
 import androidx.compose.material.LocalContentColor
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -31,7 +28,6 @@ import de.westnordost.streetcomplete.ui.common.image_select.ImageList
 import de.westnordost.streetcomplete.ui.common.image_select.ImageListItem
 import de.westnordost.streetcomplete.ui.common.image_select.SelectableImageItem
 import de.westnordost.streetcomplete.ui.util.content
-import de.westnordost.streetcomplete.util.logs.Log
 import de.westnordost.streetcomplete.util.takeFavorites
 import de.westnordost.streetcomplete.view.image_select.DisplayItem
 import org.koin.android.ext.android.inject
@@ -148,10 +144,8 @@ abstract class AImageListQuestForm<I, T> : AbstractOsmQuestForm<T>() {
     override fun onClickOk() {
         if (currentItems.value.filter { it.checked }.map { it.item }.isNotEmpty()) {
             prefs.addLastPicked(this::class.simpleName!!, currentItems.value.filter { it.checked }.map { it.item }.map { it.value.toString() })
-            Log.d("Temp", "Saved items: " + currentItems.value.filter { it.checked }.map { it.item }.map { it.value.toString() })
             onClickOk(currentItems.value.filter { it.checked }.map { it.item }.map { it.value!! })
         }
     }
     protected abstract fun onClickOk(selectedItems: List<I>)
-
 }
