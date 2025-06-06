@@ -51,7 +51,12 @@ val androidModule = module {
 
     // Cache dir
 
-    factory(named("AvatarsCacheDirectory")) { Path(androidContext().cacheDir.path, ApplicationConstants.AVATARS_CACHE_DIRECTORY) }
+    factory(named("AvatarsCacheDirectory")) {
+        Path(
+            androidContext().cacheDir.path,
+            ApplicationConstants.AVATARS_CACHE_DIRECTORY
+        )
+    }
 
     // Settings
 
