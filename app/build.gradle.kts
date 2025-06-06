@@ -59,7 +59,7 @@ buildkonfig {
     defaultConfigs {
         buildConfigField(BOOLEAN, "IS_FROM_MONOPOLISTIC_APP_STORE", appForMonopolisticAppStore.toString())
         buildConfigField(STRING, "VERSION_NAME", appVersionName)
-        buildConfigField(BOOLEAN, "DEBUG", properties["debug"]!!.toString())
+        buildConfigField(BOOLEAN, "DEBUG", properties["app.streetcomplete.debug"]!!.toString())
     }
 
     targetConfigs {
@@ -367,7 +367,7 @@ tasks.register<UpdateContributorStatisticsTask>("updateContributorStatistics") {
     /* drawable xmls, layout xmls, animation xmls ... but not strings because they are updated
        via gradle tasks */
     interfaceMarkupRegex = Regex(".*(anim|color|drawable|layout|menu|mipmap).*\\.xml$")
-    githubApiToken = properties["GithubApiToken"] as String
+    githubApiToken = properties["app.streetcomplete.GithubApiToken"] as String
 }
 
 tasks.register("updateAvailableLanguages") {
@@ -384,8 +384,8 @@ tasks.register<GetTranslatorCreditsTask>("updateTranslatorCredits") {
     group = "streetcomplete"
     targetFile = "$projectDir/src/commonMain/composeResources/files/credits_translators.yml"
     languageCodes = bcp47ExportLanguages
-    cookie = properties["POEditorCookie"] as String
-    phpsessid = properties["POEditorPHPSESSID"] as String
+    cookie = properties["app.streetcomplete.POEditorCookie"] as String
+    phpsessid = properties["app.streetcomplete.POEditorPHPSESSID"] as String
 }
 
 tasks.register<UpdatePresetsTask>("updatePresets") {
@@ -419,7 +419,7 @@ tasks.register<DownloadAndConvertPresetIconsTask>("downloadAndConvertPresetIcons
 tasks.register<UpdateAppTranslationsTask>("updateTranslations") {
     group = "streetcomplete"
     languageCodes = bcp47ExportLanguages
-    apiToken = properties["POEditorAPIToken"] as String
+    apiToken = properties["app.streetcomplete.POEditorAPIToken"] as String
     projectId = poEditorProjectId
     targetFiles = { "$projectDir/src/androidMain/res/values-$it/strings.xml" }
 }
@@ -428,7 +428,7 @@ tasks.register<UpdateAppTranslationCompletenessTask>("updateTranslationCompleten
     group = "streetcomplete"
     languageCodes = bcp47ExportLanguages
     mustIncludeLanguagePercentage = 90
-    apiToken = properties["POEditorAPIToken"] as String
+    apiToken = properties["app.streetcomplete.POEditorAPIToken"] as String
     projectId = poEditorProjectId
     targetFiles = { "$projectDir/src/androidMain/res/values-$it/translation_info.xml" }
 }
