@@ -6,6 +6,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.quest.OsmNoteQuestKey
 import de.westnordost.streetcomplete.data.quest.Quest
 import de.westnordost.streetcomplete.data.quest.QuestType
+import de.westnordost.streetcomplete.quests.note_discussion.OsmNoteQuestType
 
 /** Represents one task for the user to contribute to a public OSM note */
 data class OsmNoteQuestAndroid(
