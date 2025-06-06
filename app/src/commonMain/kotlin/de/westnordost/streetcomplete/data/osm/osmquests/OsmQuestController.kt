@@ -45,7 +45,6 @@ class OsmQuestController internal constructor(
     private val notesSource: NotesWithEditsSource,
     private val questTypeRegistry: QuestTypeRegistry,
     private val countryBoundaries: Lazy<CountryBoundaries>,
-    private val getAnalyzePriority: (OsmElementQuestType<*>) -> Int
 ) : OsmQuestSource {
 
     private val listeners = Listeners<OsmQuestSource.Listener>()
