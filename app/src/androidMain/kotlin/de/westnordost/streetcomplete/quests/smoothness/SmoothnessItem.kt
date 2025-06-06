@@ -76,6 +76,7 @@ fun Smoothness.getDescriptionResId(surface: String): Int? = when (surface) {
     "sett" -> settDescriptionResId
     "paving_stones" -> pavingStonesDescriptionResId
     "compacted", "gravel", "fine_gravel" -> compactedOrGravelDescriptionResId
+    "dirt" -> dirtDescriptionResId
     else -> null
 } ?: descriptionResIdFallback
 
@@ -93,6 +94,7 @@ fun Smoothness.getImageResId(surface: String): Int? = when (surface) {
     "paving_stones" -> pavingStonesImageResId
     "compacted" -> compactedImageResId
     "gravel", "fine_gravel" -> gravelImageResId
+    "dirt" -> dirtImageResId
     else -> null
 }
 
@@ -175,6 +177,25 @@ private val Smoothness.gravelImageResId get() = when (this) {
     HORRIBLE -> R.drawable.surface_unpaved_horrible
     VERY_HORRIBLE -> R.drawable.surface_unpaved_very_horrible
     IMPASSABLE -> R.drawable.surface_unpaved_impassable
+    else -> null
+}
+
+private val Smoothness.dirtImageResId get() = when (this) {
+    GOOD -> R.drawable.surface_dirt_good
+    INTERMEDIATE -> R.drawable.surface_dirt_intermediate
+    BAD -> R.drawable.surface_dirt_bad
+    VERY_BAD -> R.drawable.surface_dirt_very_bad
+    HORRIBLE -> R.drawable.surface_dirt_horrible
+    VERY_HORRIBLE -> R.drawable.surface_dirt_very_horrible
+    IMPASSABLE -> R.drawable.surface_unpaved_impassable
+    else -> null
+}
+
+private val Smoothness.dirtDescriptionResId get() = when (this) {
+    GOOD -> R.string.quest_smoothness_description_good_dirt
+    INTERMEDIATE -> R.string.quest_smoothness_description_intermediate_dirt
+    BAD -> R.string.quest_smoothness_description_bad_dirt
+    VERY_BAD -> R.string.quest_smoothness_description_very_bad_dirt
     else -> null
 }
 
