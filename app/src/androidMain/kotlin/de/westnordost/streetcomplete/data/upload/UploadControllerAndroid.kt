@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.pm.ServiceInfo
 import android.os.Build
 import androidx.work.CoroutineWorker
+import androidx.work.ExistingWorkPolicy
 import androidx.work.ForegroundInfo
 import androidx.work.OneTimeWorkRequest
 import androidx.work.OneTimeWorkRequestBuilder
@@ -13,8 +14,16 @@ import androidx.work.WorkerParameters
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.sync.createSyncNotification
 
-/** Collects and uploads all user changes: notes left, comments left on existing
- * notes and quests answered  */
+class UploadControllerAndroid(private val context: Context) : UploadController {
+    override fun upload(isUserInitiated: Boolean) {
+        WorkManager.getInstance(context).enqueueUniqueWork(
+            Uploader.TAG,
+            ExistingWorkPolicy.KEEP,
+            UploadWorker.createWorkRequest(isUserInitiated)
+        )
+    }
+}
+
 class UploadWorker(
     private val uploader: Uploader,
     private val context: Context,

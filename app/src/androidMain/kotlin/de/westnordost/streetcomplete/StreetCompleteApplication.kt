@@ -20,7 +20,6 @@ import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesControll
 import de.westnordost.streetcomplete.data.edithistory.EditHistoryController
 import de.westnordost.streetcomplete.data.edithistory.editHistoryModule
 import de.westnordost.streetcomplete.data.logs.logsModule
-import de.westnordost.streetcomplete.data.maptiles.maptilesModule
 import de.westnordost.streetcomplete.data.messages.messagesModule
 import de.westnordost.streetcomplete.data.meta.metadataModule
 import de.westnordost.streetcomplete.data.osm.created_elements.createdElementsModule
@@ -117,7 +116,6 @@ class StreetCompleteApplication : Application() {
                 elementGeometryModule,
                 mapDataModule,
                 mainModule,
-                maptilesModule,
                 metadataModule,
                 noteEditsModule,
                 notesModule,

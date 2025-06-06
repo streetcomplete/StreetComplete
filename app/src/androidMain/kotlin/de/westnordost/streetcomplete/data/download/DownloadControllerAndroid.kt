@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.pm.ServiceInfo.FOREGROUND_SERVICE_TYPE_DATA_SYNC
 import android.os.Build
 import androidx.work.CoroutineWorker
+import androidx.work.ExistingWorkPolicy
 import androidx.work.ForegroundInfo
 import androidx.work.OneTimeWorkRequest
 import androidx.work.OneTimeWorkRequestBuilder
@@ -14,15 +15,18 @@ import androidx.work.workDataOf
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.sync.createSyncNotification
-import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 
-/** Downloads all quests and tiles in a given area asynchronously.
- *
- * Generally, starting a new download cancels the old one. This is a feature; Consideration:
- * If you request a new area to be downloaded, you'll generally be more interested in your last
- * request than any request you made earlier and you want that as fast as possible.
- */
+class DownloadControllerAndroid(private val context: Context): DownloadController {
+    override fun download(bbox: BoundingBox, isUserInitiated: Boolean) {
+        WorkManager.getInstance(context).enqueueUniqueWork(
+            Downloader.TAG,
+            if (isUserInitiated) ExistingWorkPolicy.REPLACE else ExistingWorkPolicy.KEEP,
+            DownloadWorker.createWorkRequest(bbox, isUserInitiated)
+        )
+    }
+}
+
 class DownloadWorker(
     private val downloader: Downloader,
     private val context: Context,
