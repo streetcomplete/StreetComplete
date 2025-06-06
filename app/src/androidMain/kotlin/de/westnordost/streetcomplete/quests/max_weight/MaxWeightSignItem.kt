@@ -43,18 +43,44 @@ private fun MaxWeightSign.createBitmap(inflater: LayoutInflater, countryCode: St
         container.draw(this)
     }
 }
-
+fun MaxWeightSign.getSignType(countryCode: String) = when (this) {
+    MaxWeightSign.MAX_WEIGHT             -> getMaxWeightSignType(countryCode)
+    MaxWeightSign.MAX_GROSS_VEHICLE_MASS -> getMaxWeightMgvSignType(countryCode)
+    MaxWeightSign.MAX_AXLE_LOAD          -> getMaxWeightAxleLoadSignType(countryCode)
+    MaxWeightSign.MAX_TANDEM_AXLE_LOAD   -> getMaxWeightTandemAxleLoadSignType(countryCode)
+}
 fun MaxWeightSign.getLayoutResourceId(countryCode: String) = when (this) {
     MaxWeightSign.MAX_WEIGHT             -> getMaxWeightSignLayoutResId(countryCode)
     MaxWeightSign.MAX_GROSS_VEHICLE_MASS -> getMaxWeightMgvSignLayoutResId(countryCode)
     MaxWeightSign.MAX_AXLE_LOAD          -> getMaxWeightAxleLoadSignLayoutResId(countryCode)
     MaxWeightSign.MAX_TANDEM_AXLE_LOAD   -> getMaxWeightTandemAxleLoadSignLayoutResId(countryCode)
 }
+enum class MaxWeightSignCountyType {
+    US_TYPE,
+    FINISH_TYPE,
+    GERMAN_TYPE,
+    BRITISH_TYPE,
+    GENERAL_TYPE,
+}
 
+
+private fun getMaxWeightSignType(countryCode: String): MaxWeightSignCountyType = when ( countryCode) {
+    "AU", "CA", "US" -> MaxWeightSignCountyType.US_TYPE
+    "FI", "IS", "SE" -> MaxWeightSignCountyType.FINISH_TYPE
+    else ->             MaxWeightSignCountyType.GENERAL_TYPE
+}
 private fun getMaxWeightSignLayoutResId(countryCode: String): Int = when (countryCode) {
     "AU", "CA", "US" -> R.layout.quest_maxweight_sign_us
     "FI", "IS", "SE" -> R.layout.quest_maxweight_sign_fi
     else ->             R.layout.quest_maxweight_sign
+}
+
+private fun getMaxWeightMgvSignType(countryCode: String): MaxWeightSignCountyType = when ( countryCode) {
+    "AU", "CA", "US" -> MaxWeightSignCountyType.US_TYPE
+    "FI", "IS", "SE" -> MaxWeightSignCountyType.FINISH_TYPE
+    "DE" ->             MaxWeightSignCountyType.GERMAN_TYPE
+    "GB" ->             MaxWeightSignCountyType.BRITISH_TYPE
+    else ->             MaxWeightSignCountyType.GENERAL_TYPE
 }
 
 private fun getMaxWeightMgvSignLayoutResId(countryCode: String): Int = when (countryCode) {
@@ -65,12 +91,22 @@ private fun getMaxWeightMgvSignLayoutResId(countryCode: String): Int = when (cou
     else ->             R.layout.quest_maxweight_mgv_sign
 }
 
+private fun getMaxWeightAxleLoadSignType(countryCode: String): MaxWeightSignCountyType = when ( countryCode) {
+    "AU", "CA", "US" -> MaxWeightSignCountyType.US_TYPE
+    "FI", "IS", "SE" -> MaxWeightSignCountyType.FINISH_TYPE
+    else ->             MaxWeightSignCountyType.GENERAL_TYPE
+}
 private fun getMaxWeightAxleLoadSignLayoutResId(countryCode: String): Int = when (countryCode) {
     "AU", "CA", "US" -> R.layout.quest_maxweight_axleload_sign_us
     "FI", "IS", "SE" -> R.layout.quest_maxweight_axleload_sign_fi
     else ->             R.layout.quest_maxweight_axleload_sign
 }
 
+private fun getMaxWeightTandemAxleLoadSignType(countryCode: String): MaxWeightSignCountyType = when ( countryCode) {
+    "AU", "CA", "US" -> MaxWeightSignCountyType.US_TYPE
+    "FI", "IS", "SE" -> MaxWeightSignCountyType.FINISH_TYPE
+    else ->             MaxWeightSignCountyType.GENERAL_TYPE
+}
 private fun getMaxWeightTandemAxleLoadSignLayoutResId(countryCode: String): Int = when (countryCode) {
     "AU", "CA", "US" -> R.layout.quest_maxweight_tandem_axleload_sign_us
     "FI", "IS", "SE" -> R.layout.quest_maxweight_tandem_axleload_sign_fi
