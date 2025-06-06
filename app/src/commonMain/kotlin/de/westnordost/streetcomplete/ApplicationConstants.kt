@@ -70,6 +70,10 @@ object ApplicationConstants {
     // where to send the error reports to
     const val ERROR_REPORTS_EMAIL = "streetcomplete_errors@westnordost.de"
 
+    /** Which relation types to drop already during download, before persisting. This is a
+     *  performance improvement. Working properly with relations means we have to have it as
+     *  complete as possible. Some relations are extremely large, which would require to pull
+     *  a lot of elements from db into memory. */
     val IGNORED_RELATION_TYPES = setOf(
         // could be useful, but sometimes/often very very large
         "route", "route_master", "superroute", "network", "disused:route",

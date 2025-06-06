@@ -78,7 +78,7 @@ class OsmNoteQuestController(
 
     private fun createQuestForNote(note: Note): OsmNoteQuest? =
         if (note.shouldShowAsQuest(userDataSource.userId, showOnlyNotesPhrasedAsQuestions)) {
-            OsmNoteQuest(note.id, note.position)
+            createOsmNoteQuest(note.id, note.position)
         } else {
             null
         }
@@ -159,10 +159,8 @@ private fun Note.probablyContainsQuestion(): Boolean {
         "꘏", // Vai question mark
         "？", // full width question mark (often used in modern Chinese / Japanese)
     )
-    val questionMarkPattern = ".*[${questionMarksAroundTheWorld.joinToString("")}].*"
-
-    val text = comments.firstOrNull()?.text
-    return text?.matches(questionMarkPattern.toRegex(RegexOption.DOT_MATCHES_ALL)) ?: false
+    val text = comments.firstOrNull()?.text ?: return false
+    return text.lastIndexOfAny(questionMarksAroundTheWorld) != -1
 }
 
 private fun Note.containsSurveyRequiredMarker(): Boolean =
