@@ -22,7 +22,7 @@ class OpenChangesetsManagerTest {
     private lateinit var questType: OsmElementQuestType<*>
     private lateinit var changesetApiClient: ChangesetApiClient
     private lateinit var openChangesetsDB: OpenChangesetsDao
-    private lateinit var changesetAutoCloser: ChangesetAutoCloserAndroid
+    private lateinit var changesetAutoCloser: ChangesetAutoCloser
     private lateinit var manager: OpenChangesetsManager
     private lateinit var prefs: Preferences
 
