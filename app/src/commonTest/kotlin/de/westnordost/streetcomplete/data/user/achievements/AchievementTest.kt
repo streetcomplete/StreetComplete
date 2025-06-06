@@ -26,5 +26,5 @@ class AchievementTest {
     }
 
     private fun achievement(func: (Int) -> Int): Achievement =
-        Achievement("abc", 0, 0, 0, DaysActive, func, mapOf(), -1)
+        Achievement("abc", null, 0, 0, DaysActive, func, mapOf(), -1)
 }

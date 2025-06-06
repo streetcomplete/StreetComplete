@@ -6,6 +6,8 @@ import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestType
 import de.westnordost.streetcomplete.data.presets.EditTypePreset
 import de.westnordost.streetcomplete.data.presets.EditTypePresetsSource
 import de.westnordost.streetcomplete.util.Listeners
+import kotlinx.atomicfu.locks.ReentrantLock
+import kotlinx.atomicfu.locks.withLock
 
 /** Controller to set/get edit types as enabled or disabled. This controls only the visibility
  *  of edit types per user preference and does not take anything else into account that may
@@ -32,10 +34,12 @@ class VisibleEditTypeController(
         })
     }
 
-    /** in-memory cache of visible edit types */
+    /** in-memory cache of visible edit types of the currently selected preset. Must always be
+     *  kept in-sync with the database */
+    private val visibleEditsTypesLock = ReentrantLock()
     private var _visibleEditTypes: MutableMap<String, Boolean>? = null
     private val visibleEditTypes: MutableMap<String, Boolean>
-        get() = synchronized(this) {
+        get() = visibleEditsTypesLock.withLock {
             if (_visibleEditTypes == null) {
                 _visibleEditTypes = visibleEditTypeDao.getAll(selectedPresetId)
             }
@@ -51,7 +55,7 @@ class VisibleEditTypeController(
 
     fun setVisibility(editType: EditType, visible: Boolean, presetId: Long? = null) {
         val id = presetId ?: selectedPresetId
-        synchronized(this) {
+        visibleEditsTypesLock.withLock {
             visibleEditTypeDao.put(id, editType.name, visible)
             if (id == selectedPresetId) visibleEditTypes[editType.name] = visible
         }
@@ -63,7 +67,7 @@ class VisibleEditTypeController(
             .filter { it.key !is OsmNoteQuestType }
             .mapKeys { it.key.name }
         val id = presetId ?: selectedPresetId
-        synchronized(this) {
+        visibleEditsTypesLock.withLock {
             visibleEditTypeDao.putAll(id, editTypeNameVisibilities)
             if (id == selectedPresetId) {
                 for ((editTypeName, visible) in editTypeNameVisibilities) {
@@ -76,7 +80,7 @@ class VisibleEditTypeController(
 
     fun clearVisibilities(editTypes: Collection<EditType>, presetId: Long? = null) {
         val id = presetId ?: selectedPresetId
-        synchronized(this) {
+        visibleEditsTypesLock.withLock {
             visibleEditTypeDao.clear(id, editTypes.map { it.name })
             if (id == selectedPresetId) {
                 editTypes.forEach { visibleEditTypes.remove(it.name) }

@@ -333,7 +333,7 @@ If you are overwhelmed by the number of quests, you can always fine-tune which q
     <string name="about_title_sponsors">Sponsors</string>
     <string name="about_description_donate">Thank you for considering supporting this app! To see current donations and to donate yourself, tap on the respective platform:</string>
     <string name="about_description_donate_google_play3">"Thank you for considering supporting this app!
-You can find donation information on our website or project home, Google Play does not allow us to provide the link within the app."</string>
+You can find donation information on our website or project home, the app store policies do not allow us to provide the link within the app."</string>
 
     <string name="about_title_translate">Translate this app</string>
     <string name="about_description_translate">%1$s is translated %2$d%%</string>

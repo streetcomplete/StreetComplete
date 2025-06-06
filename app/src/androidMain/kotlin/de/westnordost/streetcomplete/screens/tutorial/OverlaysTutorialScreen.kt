@@ -159,7 +159,7 @@ private fun BoxScope.OverlaysTutorialIllustration(
 
             if (overlayPaint.value > 0.2f) {
                 Icon(
-                    painter = painterResource(R.drawable.ic_preset_fas_shopping_cart),
+                    painter = painterResource(R.drawable.preset_fas_shopping_cart),
                     contentDescription = null,
                     tint = Color.Black,
                     modifier = Modifier
@@ -169,7 +169,7 @@ private fun BoxScope.OverlaysTutorialIllustration(
             }
             if (overlayPaint.value > 0.7f) {
                 Icon(
-                    painter = painterResource(R.drawable.ic_preset_maki_fuel),
+                    painter = painterResource(R.drawable.preset_maki_fuel),
                     contentDescription = null,
                     tint = Color.Black,
                     modifier = Modifier

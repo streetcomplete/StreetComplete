@@ -23,7 +23,6 @@ val OSM_API_URL =
     if (USE_TEST_API) OSM_API_URL_TEST else OSM_API_URL_LIVE
 
 val osmApiModule = module {
-
     factory { Cleaner(get(), get(), get(), get(), get(), get()) }
     factory { CacheTrimmer(get(), get()) }
     factory { MapDataApiClient(get(), OSM_API_URL, get(), get(), get()) }

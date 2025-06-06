@@ -4,7 +4,7 @@ import android.content.ActivityNotFoundException
 import android.os.Bundle
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AlertDialog
-import de.westnordost.streetcomplete.ApplicationConstants.STREETMEASURE
+import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.LengthUnit
 import de.westnordost.streetcomplete.osm.Length
@@ -26,7 +26,7 @@ abstract class AbstractArMeasureQuestForm<T> : AbstractOsmQuestForm<T>() {
     override fun onResume() {
         super.onResume()
         // returned to app without StreetMeasure installed but requested install before
-        if (requestedARInstall && !requireContext().packageManager.isPackageInstalled(STREETMEASURE)) {
+        if (requestedARInstall && !requireContext().packageManager.isPackageInstalled(ApplicationConstants.STREETMEASURE)) {
             showDisableARMeasureQuestsDialog(R.string.quest_disable_message_not_installed)
         }
         requestedARInstall = false
@@ -46,7 +46,7 @@ abstract class AbstractArMeasureQuestForm<T> : AbstractOsmQuestForm<T>() {
         } catch (e: ActivityNotFoundException) {
             requestedARInstall = true
             requestedARMeasurement = false
-            context?.openUri("market://details?id=$STREETMEASURE")
+            context?.openUri("market://details?id=${ApplicationConstants.STREETMEASURE}")
         }
     }
 

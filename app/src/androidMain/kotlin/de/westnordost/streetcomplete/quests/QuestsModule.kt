@@ -188,9 +188,6 @@ import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
 val questsModule = module {
-    //TODO - what is source of factory keyword?
-    factory { NameSuggestionsSource(get()) }
-
     single {
         questTypeRegistry(
             get(),

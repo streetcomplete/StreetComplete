@@ -20,7 +20,7 @@
             android:id="@+id/featureIconView"
             android:layout_width="56dp"
             android:layout_height="56dp"
-            tools:src="@drawable/ic_preset_fas_flask"
+            tools:src="@drawable/preset_fas_flask"
             android:padding="4dp"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"

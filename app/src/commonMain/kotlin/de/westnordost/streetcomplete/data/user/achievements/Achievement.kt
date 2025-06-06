@@ -4,7 +4,7 @@ import org.jetbrains.compose.resources.DrawableResource
 
 data class Achievement(
     val id: String,
-    val icon: DrawableResource,
+    val icon: DrawableResource?,
     val title: Int,
     val description: Int?,
     val condition: AchievementCondition,

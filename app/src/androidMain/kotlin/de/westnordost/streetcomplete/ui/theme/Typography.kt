@@ -25,6 +25,9 @@ val Typography = Typography(
     )
 )
 
+/** For an input field that is the sole element on the screen */
+val Typography.extraLargeInput get() = h3
+
 // for easier conversion to M3
 val Typography.headlineLarge get() = h4
 val Typography.headlineSmall get() = h5

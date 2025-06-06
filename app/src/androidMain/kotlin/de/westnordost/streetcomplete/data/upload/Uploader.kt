@@ -30,13 +30,13 @@ class Uploader(
     private lateinit var bannedInfo: BannedInfo
 
     private val uploadedChangeRelay = object : OnUploadedChangeListener {
-        override fun onUploaded(questType: String, at: LatLon) {
-            listeners.forEach { it.onUploaded(questType, at) }
+        override fun onUploaded(editType: String, at: LatLon) {
+            listeners.forEach { it.onUploaded(editType, at) }
         }
 
-        override fun onDiscarded(questType: String, at: LatLon) {
+        override fun onDiscarded(editType: String, at: LatLon) {
             invalidateArea(at)
-            listeners.forEach { it.onDiscarded(questType, at) }
+            listeners.forEach { it.onDiscarded(editType, at) }
         }
     }
 

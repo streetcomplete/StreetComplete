@@ -5,7 +5,6 @@ import org.koin.dsl.module
 
 private const val STATISTICS_BACKEND_URL = "https://streetcomplete.app/statistics/"
 val statisticsModule = module {
-
     factory(named("EditTypeStatistics")) { EditTypeStatisticsDao(get(), EditTypeStatisticsTable.NAME) }
     factory(named("CountryStatistics")) { CountryStatisticsDao(get(), CountryStatisticsTable.NAME) }
 

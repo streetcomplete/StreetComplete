@@ -34,7 +34,7 @@ class ThingsOverlay(private val getFeature: (Element) -> Feature?) : Overlay {
                     ?: element.asIfItWasnt("disused")?.let { getFeature(it) }
                     ?: return@mapNotNull null
 
-                val icon = feature.icon?.let { presetIconIndex[it] } ?: R.drawable.ic_preset_maki_marker_stroked
+                val icon = feature.icon?.let { presetIconIndex[it] } ?: R.drawable.preset_maki_marker_stroked
 
                 val style = if (element is Node) {
                     PointStyle(icon)

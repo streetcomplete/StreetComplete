@@ -11,11 +11,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalLayoutDirection
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
-import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.building_levels_illustration
+import org.jetbrains.compose.resources.painterResource
 
 /** Shows the building illustration picture and stretches the green "ground" line to the whole
  *  width of the layout. */
@@ -34,7 +35,7 @@ fun BuildingLevelsIllustration(modifier: Modifier = Modifier) {
             LayoutDirection.Rtl -> -1f
         }
         Image(
-            painter = painterResource(R.drawable.building_levels_illustration),
+            painter = painterResource(Res.drawable.building_levels_illustration),
             contentDescription = "Illustration for building Levels",
             modifier = Modifier.scale(illustrationScale, 1f)
         )

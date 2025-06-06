@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.screens.about
 
-import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -14,13 +13,18 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.donation_github
+import de.westnordost.streetcomplete.resources.donation_liberapay
+import de.westnordost.streetcomplete.resources.donation_patreon
 import de.westnordost.streetcomplete.ui.common.dialogs.InfoDialog
 import de.westnordost.streetcomplete.ui.theme.titleLarge
+import org.jetbrains.compose.resources.painterResource
 
 @Composable
 fun DonationsDialog(
@@ -55,19 +59,19 @@ fun DonationPlatformItems(
     Column(modifier = modifier) {
         DonationPlatformItem(
             title = "GitHub Sponsors",
-            icon = R.drawable.ic_github,
+            painter = painterResource(Res.drawable.donation_github),
             url = "https://github.com/sponsors/westnordost",
             onClickLink
         )
         DonationPlatformItem(
             title = "Liberapay",
-            icon = R.drawable.ic_liberapay,
+            painter = painterResource(Res.drawable.donation_liberapay),
             url = "https://liberapay.com/westnordost",
             onClickLink
         )
         DonationPlatformItem(
             title = "Patreon",
-            icon = R.drawable.ic_patreon,
+            painter = painterResource(Res.drawable.donation_patreon),
             url = "https://patreon.com/westnordost",
             onClickLink
         )
@@ -77,7 +81,7 @@ fun DonationPlatformItems(
 @Composable
 fun DonationPlatformItem(
     title: String,
-    @DrawableRes icon: Int,
+    painter: Painter,
     url: String,
     onClickLink: (String) -> Unit,
     modifier: Modifier = Modifier
@@ -90,7 +94,7 @@ fun DonationPlatformItem(
         horizontalArrangement = Arrangement.spacedBy(8.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        Image(painterResource(icon), null)
+        Image(painter, null)
         Text(title, style = MaterialTheme.typography.titleLarge)
     }
 }

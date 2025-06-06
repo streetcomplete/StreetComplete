@@ -19,6 +19,8 @@ import de.westnordost.streetcomplete.screens.main.map.components.Pin
 import de.westnordost.streetcomplete.screens.main.map.components.PinsMapComponent
 import de.westnordost.streetcomplete.screens.main.map.maplibre.screenAreaToBoundingBox
 import de.westnordost.streetcomplete.util.math.contains
+import kotlinx.atomicfu.locks.ReentrantLock
+import kotlinx.atomicfu.locks.withLock
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -43,6 +45,7 @@ class QuestPinsManager(
 ) : DefaultLifecycleObserver {
 
     // draw order in which the quest types should be rendered on the map
+    private val questTypeOrdersLock = ReentrantLock()
     private val questTypeOrders: MutableMap<QuestType, Int> = mutableMapOf()
     // last displayed rect of (zoom 16) tiles
     private var lastDisplayedRect: TilesRect? = null
@@ -224,7 +227,7 @@ class QuestPinsManager(
         // this needs to be reinitialized when the quest order changes
         val sortedQuestTypes = questTypeRegistry.toMutableList()
         questTypeOrderSource.sort(sortedQuestTypes)
-        synchronized(questTypeOrders) {
+        questTypeOrdersLock.withLock {
             questTypeOrders.clear()
             sortedQuestTypes.forEachIndexed { index, questType ->
                 questTypeOrders[questType] = index
@@ -234,7 +237,7 @@ class QuestPinsManager(
 
     private fun createQuestPins(quest: Quest): List<Pin> {
         val props = quest.key.toProperties()
-        val order = synchronized(questTypeOrders) { questTypeOrders[quest.type] ?: 0 }
+        val order = questTypeOrdersLock.withLock { questTypeOrders[quest.type] ?: 0 }
         return quest.markerLocations.map { Pin(it, quest.type.icon, props, order) }
     }
 

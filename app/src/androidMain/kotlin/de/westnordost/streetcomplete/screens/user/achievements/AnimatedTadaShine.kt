@@ -14,9 +14,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
-import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.shine
+import org.jetbrains.compose.resources.painterResource
 
 @Composable
 fun AnimatedTadaShine(modifier: Modifier = Modifier) {
@@ -34,7 +35,7 @@ fun AnimatedTadaShine(modifier: Modifier = Modifier) {
 @Composable
 private fun TadaShine(modifier: Modifier = Modifier) {
     Image(
-        painter = painterResource(R.drawable.shine),
+        painter = painterResource(Res.drawable.shine),
         contentDescription = null,
         modifier = modifier
             .fillMaxSize()

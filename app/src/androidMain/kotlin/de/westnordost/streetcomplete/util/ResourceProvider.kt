@@ -5,6 +5,8 @@ import android.content.res.Configuration
 import androidx.annotation.StringRes
 import com.russhwolf.settings.SettingsListener
 import de.westnordost.streetcomplete.data.preferences.Preferences
+import kotlinx.atomicfu.locks.ReentrantLock
+import kotlinx.atomicfu.locks.withLock
 import java.util.Locale
 
 /**
@@ -28,13 +30,13 @@ class DefaultResourceProvider(
     @Volatile
     private var cachedLocaleContext: Context? = null
 
-    private val lock = Any()
+    private val lock = ReentrantLock()
 
     private var languageListener: SettingsListener? = null
 
     init {
         languageListener = preferences.onLanguageChanged { newLanguageCode ->
-            synchronized(lock) {
+            lock.withLock {
                 cachedLocale = null
                 cachedLocaleContext = null
             }
@@ -48,7 +50,7 @@ class DefaultResourceProvider(
         var localLocale = cachedLocale
 
         if (localContext == null || localLocale != currentAppLocale) {
-            synchronized(lock) {
+            lock.withLock {
                 localLocale = cachedLocale
                 if (cachedLocaleContext == null || localLocale != currentAppLocale) {
                     val overrideConfiguration = Configuration(context.resources.configuration)

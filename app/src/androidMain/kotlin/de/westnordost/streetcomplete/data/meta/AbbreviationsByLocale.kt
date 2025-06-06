@@ -1,31 +1,19 @@
 package de.westnordost.streetcomplete.data.meta
 
-import android.content.Context
-import android.content.res.Configuration
-import android.content.res.Resources
-import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.util.ktx.getYamlStringMap
-import java.util.Locale
+import android.content.res.AssetManager
+import com.charleskorn.kaml.Yaml
+import com.charleskorn.kaml.decodeFromStream
+import de.westnordost.streetcomplete.util.ktx.openOrNull
 
-class AbbreviationsByLocale(private val applicationContext: Context) {
-    private val byLanguageAbbreviations = HashMap<String, Abbreviations>()
+/** (Road) name abbreviations and their expansions, accessible by language tag */
+class AbbreviationsByLocale(private val assetManager: AssetManager) {
+    private val byLanguageAbbreviations = HashMap<String, Lazy<Abbreviations?>>()
 
-    operator fun get(locale: Locale): Abbreviations? {
-        val code = locale.toString()
-        if (!byLanguageAbbreviations.containsKey(code)) {
-            byLanguageAbbreviations[code] = load(locale)
+    operator fun get(languageTag: String): Abbreviations? =
+        byLanguageAbbreviations.getOrPut(languageTag) { lazy { load(languageTag) } }.value
+
+    private fun load(languageTag: String): Abbreviations? =
+        assetManager.openOrNull("abbreviations/$languageTag.yml")?.use {
+            Abbreviations(Yaml.default.decodeFromStream(it))
         }
-        return byLanguageAbbreviations[code]
-    }
-
-    private fun load(locale: Locale): Abbreviations {
-        val config = getResources(locale).getYamlStringMap(R.raw.abbreviations)
-        return Abbreviations(config)
-    }
-
-    private fun getResources(locale: Locale): Resources {
-        val configuration = Configuration(applicationContext.resources.configuration)
-        configuration.setLocale(locale)
-        return applicationContext.createConfigurationContext(configuration).resources
-    }
 }
