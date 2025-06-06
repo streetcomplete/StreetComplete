@@ -15,13 +15,6 @@ import de.westnordost.streetcomplete.data.osmnotes.Note
 import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
-import de.westnordost.streetcomplete.quests.address.AddHousenumber
-import de.westnordost.streetcomplete.quests.cycleway.AddCycleway
-import de.westnordost.streetcomplete.quests.existence.CheckExistence
-import de.westnordost.streetcomplete.quests.max_height.AddMaxHeight
-import de.westnordost.streetcomplete.quests.opening_hours.AddOpeningHours
-import de.westnordost.streetcomplete.quests.place_name.AddPlaceName
-import de.westnordost.streetcomplete.quests.shop_type.CheckShopExistence
 import de.westnordost.streetcomplete.util.Listeners
 import de.westnordost.streetcomplete.util.ktx.format
 import de.westnordost.streetcomplete.util.ktx.intersects
@@ -37,6 +30,7 @@ import kotlinx.atomicfu.locks.withLock
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.IO
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
@@ -50,7 +44,8 @@ class OsmQuestController internal constructor(
     private val mapDataSource: MapDataWithEditsSource,
     private val notesSource: NotesWithEditsSource,
     private val questTypeRegistry: QuestTypeRegistry,
-    private val countryBoundaries: Lazy<CountryBoundaries>
+    private val countryBoundaries: Lazy<CountryBoundaries>,
+    private val getAnalyzePriority: (OsmElementQuestType<*>) -> Int
 ) : OsmQuestSource {
 
     private val listeners = Listeners<OsmQuestSource.Listener>()
@@ -58,7 +53,7 @@ class OsmQuestController internal constructor(
     private val scope = CoroutineScope(SupervisorJob() + Dispatchers.Default)
 
     private val allQuestTypes get() = questTypeRegistry.filterIsInstance<OsmElementQuestType<*>>()
-        .sortedBy { it.chonkerIndex }
+        .sortedBy { getAnalyzePriority(it) }
 
     private val lock = ReentrantLock()
 
@@ -339,19 +334,4 @@ class OsmQuestController internal constructor(
     companion object {
         private const val TAG = "OsmQuestController"
     }
-}
-
-/** an index by which a list of quest types can be sorted so that quests that are the slowest to
- *  evaluate are evaluated first. This is a performance improvement because the evaluation is done
- *  in parallel on as many threads as there are CPU cores. So if all threads are done except one,
- *  all have to wait for that one thread. So, better enqueue the expensive work at the beginning. */
-private val OsmElementQuestType<*>.chonkerIndex: Int get() = when (this) {
-    is AddOpeningHours -> 0 // OpeningHoursParser, extensive filter
-    is CheckExistence -> 1 // FeatureDictionary, extensive filter
-    is CheckShopExistence -> 1 // FeatureDictionary, extensive filter
-    is AddHousenumber -> 1 // complex filter
-    is AddMaxHeight -> 1 // complex filter
-    is AddCycleway -> 2 // complex filter
-    is AddPlaceName -> 2 // FeatureDictionary, extensive filter
-    else -> 10
 }

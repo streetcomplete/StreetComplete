@@ -12,7 +12,6 @@ import de.westnordost.streetcomplete.data.osmtracks.TracksApiClient
 import de.westnordost.streetcomplete.data.osmtracks.TracksSerializer
 import de.westnordost.streetcomplete.data.user.UserApiClient
 import de.westnordost.streetcomplete.data.user.UserApiParser
-import org.koin.androidx.workmanager.dsl.worker
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
@@ -41,6 +40,4 @@ val osmApiModule = module {
     factory { ChangesetApiSerializer() }
 
     single { UnsyncedChangesCountSource(get(), get()) }
-
-    worker { CleanerWorker(get(), get(), get()) }
 }
