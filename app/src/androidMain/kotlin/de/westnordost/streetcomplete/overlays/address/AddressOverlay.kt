@@ -5,17 +5,18 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
+import de.westnordost.streetcomplete.data.overlays.AndroidOverlay
+import de.westnordost.streetcomplete.data.overlays.Color
+import de.westnordost.streetcomplete.data.overlays.Overlay
+import de.westnordost.streetcomplete.data.overlays.PointStyle
+import de.westnordost.streetcomplete.data.overlays.PolygonStyle
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.POSTMAN
-import de.westnordost.streetcomplete.overlays.Color
-import de.westnordost.streetcomplete.overlays.Overlay
-import de.westnordost.streetcomplete.overlays.PointStyle
-import de.westnordost.streetcomplete.overlays.PolygonStyle
 import de.westnordost.streetcomplete.quests.address.AddHousenumber
 import de.westnordost.streetcomplete.util.getShortHouseNumber
 
 class AddressOverlay(
     private val getCountryCodeByLocation: (location: LatLon) -> String?
-) : Overlay {
+) : Overlay, AndroidOverlay {
 
     override val title = R.string.overlay_addresses
     override val icon = R.drawable.ic_quest_housenumber

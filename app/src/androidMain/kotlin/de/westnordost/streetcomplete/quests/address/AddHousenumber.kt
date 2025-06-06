@@ -13,6 +13,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
+import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.POSTMAN
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.address.applyTo
@@ -21,7 +22,7 @@ import de.westnordost.streetcomplete.util.math.LatLonRaster
 import de.westnordost.streetcomplete.util.math.isCompletelyInside
 import de.westnordost.streetcomplete.util.math.isInMultipolygon
 
-class AddHousenumber : OsmElementQuestType<HouseNumberAnswer> {
+class AddHousenumber : OsmElementQuestType<HouseNumberAnswer>, AndroidQuest {
 
     override val changesetComment = "Survey housenumbers"
     override val wikiLink = "Key:addr"

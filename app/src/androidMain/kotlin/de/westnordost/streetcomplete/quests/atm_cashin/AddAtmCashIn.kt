@@ -6,12 +6,13 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.quests.YesNoQuestForm
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
-class AddAtmCashIn : OsmFilterQuestType<Boolean>() {
+class AddAtmCashIn : OsmFilterQuestType<Boolean>(), AndroidQuest {
 
     override val elementFilter = "nodes with amenity = atm and !cash_in"
     override val changesetComment = "Determine whether ATM allows depositing cash"

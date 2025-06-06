@@ -6,12 +6,13 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BLIND
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.isCrossing
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 
-class AddTactilePavingCrosswalk : OsmElementQuestType<TactilePavingCrosswalkAnswer> {
+class AddTactilePavingCrosswalk : OsmElementQuestType<TactilePavingCrosswalkAnswer>, AndroidQuest {
 
     private val crossingFilter by lazy { """
         nodes with

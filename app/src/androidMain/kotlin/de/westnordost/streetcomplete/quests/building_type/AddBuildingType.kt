@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests.building_type
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BUILDING
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.building.BuildingType
@@ -10,7 +11,7 @@ import de.westnordost.streetcomplete.osm.building.INVALID_BUILDING_TYPES
 import de.westnordost.streetcomplete.osm.building.OTHER_KEYS_POTENTIALLY_DESCRIBING_BUILDING_TYPE
 import de.westnordost.streetcomplete.osm.building.applyTo
 
-class AddBuildingType : OsmFilterQuestType<BuildingType>() {
+class AddBuildingType : OsmFilterQuestType<BuildingType>(), AndroidQuest {
 
     override val elementFilter = """
         ways, relations with

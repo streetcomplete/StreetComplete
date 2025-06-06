@@ -33,7 +33,6 @@ import de.westnordost.streetcomplete.data.osmnotes.edits.noteEditsModule
 import de.westnordost.streetcomplete.data.osmnotes.notequests.osmNoteQuestModule
 import de.westnordost.streetcomplete.data.osmnotes.notesModule
 import de.westnordost.streetcomplete.data.overlays.overlayModule
-import de.westnordost.streetcomplete.data.platform.platformModule
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.data.preferences.ResurveyIntervalsUpdater
 import de.westnordost.streetcomplete.data.preferences.Theme
@@ -44,6 +43,7 @@ import de.westnordost.streetcomplete.data.upload.uploadModule
 import de.westnordost.streetcomplete.data.urlconfig.urlConfigModule
 import de.westnordost.streetcomplete.data.user.UserLoginController
 import de.westnordost.streetcomplete.data.user.UserUpdater
+import de.westnordost.streetcomplete.data.user.achievements.achievementDefinitionsModule
 import de.westnordost.streetcomplete.data.user.achievements.achievementsModule
 import de.westnordost.streetcomplete.data.user.statistics.statisticsModule
 import de.westnordost.streetcomplete.data.user.userModule
@@ -104,6 +104,7 @@ class StreetCompleteApplication : Application() {
             workManagerFactory()
             modules(
                 achievementsModule,
+                achievementDefinitionsModule,
                 appModule,
                 aboutScreenModule,
                 userScreenModule,
@@ -139,7 +140,7 @@ class StreetCompleteApplication : Application() {
                 overlayModule,
                 urlConfigModule,
                 urlConfigModule,
-                platformModule
+                androidModule
             )
         }
 

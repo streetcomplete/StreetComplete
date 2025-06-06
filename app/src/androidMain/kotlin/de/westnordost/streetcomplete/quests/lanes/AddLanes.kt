@@ -3,13 +3,14 @@ package de.westnordost.streetcomplete.quests.lanes
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 import de.westnordost.streetcomplete.osm.ROADS_ASSUMED_TO_BE_PAVED
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.maxspeed.FILTER_IS_IMPLICIT_MAX_SPEED_BUT_NOT_SLOW_ZONE
 import de.westnordost.streetcomplete.osm.surface.PAVED_SURFACES
 
-class AddLanes : OsmFilterQuestType<LanesAnswer>() {
+class AddLanes : OsmFilterQuestType<LanesAnswer>(), AndroidQuest {
 
     override val elementFilter = """
         ways with

@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.data.platform
+package de.westnordost.streetcomplete.data.connection
 
 import android.content.Context
 import android.net.ConnectivityManager

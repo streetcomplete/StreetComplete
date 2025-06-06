@@ -6,12 +6,13 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.hasCheckDate
 import de.westnordost.streetcomplete.osm.updateCheckDate
 
-class AddStileType : OsmElementQuestType<StileTypeAnswer> {
+class AddStileType : OsmElementQuestType<StileTypeAnswer>, AndroidQuest {
 
     private val stileNodeFilter by lazy { """
         nodes with

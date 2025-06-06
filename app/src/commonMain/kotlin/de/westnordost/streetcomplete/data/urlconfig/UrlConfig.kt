@@ -1,10 +1,10 @@
 package de.westnordost.streetcomplete.data.urlconfig
 
 import de.westnordost.streetcomplete.data.ObjectTypeRegistry
+import de.westnordost.streetcomplete.data.overlays.Overlay
 import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
-import de.westnordost.streetcomplete.overlays.Overlay
 import io.ktor.http.decodeURLQueryComponent
 import io.ktor.http.encodeURLQueryComponent
 

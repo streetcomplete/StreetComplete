@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.data.visiblequests
 
 import de.westnordost.streetcomplete.data.AllEditTypes
 import de.westnordost.streetcomplete.data.osm.edits.EditType
-import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestType
 import de.westnordost.streetcomplete.data.presets.EditTypePreset
 import de.westnordost.streetcomplete.data.presets.EditTypePresetsSource
 import de.westnordost.streetcomplete.util.Listeners
@@ -54,6 +53,7 @@ class VisibleEditTypeController(
     }
 
     fun setVisibility(editType: EditType, visible: Boolean, presetId: Long? = null) {
+        if (!editType.visibilityEditable) return
         val id = presetId ?: selectedPresetId
         visibleEditsTypesLock.withLock {
             visibleEditTypeDao.put(id, editType.name, visible)
@@ -64,7 +64,7 @@ class VisibleEditTypeController(
 
     fun setVisibilities(editTypeVisibilities: Map<EditType, Boolean>, presetId: Long? = null) {
         val editTypeNameVisibilities = editTypeVisibilities
-            .filter { it.key !is OsmNoteQuestType }
+            .filter { it.key.visibilityEditable }
             .mapKeys { it.key.name }
         val id = presetId ?: selectedPresetId
         visibleEditsTypesLock.withLock {

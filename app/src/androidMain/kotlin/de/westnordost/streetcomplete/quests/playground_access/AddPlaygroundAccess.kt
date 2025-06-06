@@ -3,10 +3,11 @@ package de.westnordost.streetcomplete.quests.playground_access
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.Tags
 
-class AddPlaygroundAccess : OsmFilterQuestType<PlaygroundAccess>() {
+class AddPlaygroundAccess : OsmFilterQuestType<PlaygroundAccess>(), AndroidQuest {
 
     override val elementFilter = "nodes, ways, relations with leisure = playground and (!access or access = unknown)"
     override val changesetComment = "Specify access to playgrounds"

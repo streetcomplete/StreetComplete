@@ -3,12 +3,13 @@ package de.westnordost.streetcomplete.quests.parking_fee
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.fee.applyTo
 import de.westnordost.streetcomplete.osm.maxstay.applyTo
 
-class AddBikeParkingFee : OsmFilterQuestType<ParkingFeeAnswer>() {
+class AddBikeParkingFee : OsmFilterQuestType<ParkingFeeAnswer>(), AndroidQuest {
 
     // element selection logic by @DerDings in #2507
     override val elementFilter = """
