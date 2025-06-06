@@ -53,7 +53,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
 import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
-import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuest
+import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestAndroid
 import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
 import de.westnordost.streetcomplete.data.overlays.AndroidOverlay
 import de.westnordost.streetcomplete.data.overlays.Overlay
@@ -933,7 +933,7 @@ class MainActivity :
                 ?.takeIf { questsHiddenSource.get(OsmNoteQuestKey(it.id)) == null }
         }
         if (note != null) {
-            showQuestDetails(OsmNoteQuest(note.id, note.position))
+            showQuestDetails(OsmNoteQuestAndroid(note.id, note.position))
             return
         }
 
