@@ -7,11 +7,11 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestSource
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuest
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestSource
+import de.westnordost.streetcomplete.data.overlays.Overlay
 import de.westnordost.streetcomplete.data.overlays.SelectedOverlaySource
 import de.westnordost.streetcomplete.data.visiblequests.QuestsHiddenSource
 import de.westnordost.streetcomplete.data.visiblequests.TeamModeQuestFilter
 import de.westnordost.streetcomplete.data.visiblequests.VisibleEditTypeSource
-import de.westnordost.streetcomplete.overlays.Overlay
 import de.westnordost.streetcomplete.testutils.any
 import de.westnordost.streetcomplete.testutils.bbox
 import de.westnordost.streetcomplete.testutils.eq

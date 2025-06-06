@@ -16,7 +16,7 @@ import org.maplibre.android.geometry.LatLngBounds
 import org.maplibre.android.offline.OfflineManager
 import org.maplibre.android.offline.OfflineTilePyramidRegionDefinition
 
-class MapTilesDownloader(private val context: Context) {
+class MapTilesDownloaderAndroid(private val context: Context): MapTilesDownloader {
 
     init {
         try {
@@ -26,7 +26,7 @@ class MapTilesDownloader(private val context: Context) {
         } catch (_: Exception) { }
     }
 
-    suspend fun clear() {
+    override suspend fun clear() {
         try {
             OfflineManager.getInstance(context).awaitResetDatabase()
         } catch (e: Exception) {
@@ -34,7 +34,7 @@ class MapTilesDownloader(private val context: Context) {
         }
     }
 
-    suspend fun download(bbox: BoundingBox) = withContext(Dispatchers.IO) {
+    override suspend fun download(bbox: BoundingBox) = withContext(Dispatchers.IO) {
         val bounds = LatLngBounds.fromLatLngs(listOf(bbox.max.toLatLng(), bbox.min.toLatLng()))
         val pixelRatio = context.resources.displayMetrics.density
         val regionDefinition = OfflineTilePyramidRegionDefinition(styleUrl, bounds, 0.0, 16.0, pixelRatio)

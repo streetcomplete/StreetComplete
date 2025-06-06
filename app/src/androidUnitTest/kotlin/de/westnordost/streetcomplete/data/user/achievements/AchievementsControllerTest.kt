@@ -3,15 +3,15 @@ package de.westnordost.streetcomplete.data.user.achievements
 import de.westnordost.streetcomplete.data.AllEditTypes
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.overlays.Overlay
 import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
+import de.westnordost.streetcomplete.data.overlays.Style
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.user.achievements.AchievementCondition.DaysActive
 import de.westnordost.streetcomplete.data.user.achievements.AchievementCondition.EditsOfTypeCount
 import de.westnordost.streetcomplete.data.user.achievements.AchievementCondition.TotalEditCount
 import de.westnordost.streetcomplete.data.user.statistics.StatisticsSource
-import de.westnordost.streetcomplete.overlays.Overlay
-import de.westnordost.streetcomplete.overlays.Style
 import de.westnordost.streetcomplete.testutils.any
 import de.westnordost.streetcomplete.testutils.mock
 import de.westnordost.streetcomplete.testutils.on
