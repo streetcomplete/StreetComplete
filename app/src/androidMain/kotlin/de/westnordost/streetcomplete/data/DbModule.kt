@@ -1,11 +1,14 @@
 package de.westnordost.streetcomplete.data
 
+import android.content.Context
+import androidx.sqlite.driver.bundled.BundledSQLiteDriver
 import de.westnordost.streetcomplete.ApplicationConstants
 import org.koin.dsl.module
 
 val dbModule = module {
     single<Database> {
-        val sqLite = StreetCompleteSQLiteOpenHelper(get(), ApplicationConstants.DATABASE_NAME)
-        AndroidDatabase(sqLite.writableDatabase)
+        val databaseFilePath = get<Context>().getDatabasePath(ApplicationConstants.DATABASE_NAME).path
+        val databaseConnection = BundledSQLiteDriver().open(databaseFilePath)
+        StreetCompleteDatabase(databaseConnection)
     }
 }
