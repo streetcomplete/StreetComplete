@@ -24,9 +24,9 @@ import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.databinding.ComposeViewBinding
-import de.westnordost.streetcomplete.ui.common.image_select.ImageList
+import de.westnordost.streetcomplete.ui.common.image_select.ImageGrid
 import de.westnordost.streetcomplete.ui.common.image_select.ImageListItem
-import de.westnordost.streetcomplete.ui.common.image_select.SelectableImageItem
+import de.westnordost.streetcomplete.ui.common.image_select.SelectableImageCell
 import de.westnordost.streetcomplete.ui.util.content
 import de.westnordost.streetcomplete.util.takeFavorites
 import de.westnordost.streetcomplete.view.image_select.DisplayItem
@@ -54,7 +54,7 @@ abstract class AImageListQuestForm<I, T> : AbstractOsmQuestForm<T>() {
      */
     protected open val itemContent = @Composable { item: ImageListItem<I>, index: Int, onClick: () -> Unit, role: Role ->
         key(item.item) {
-            SelectableImageItem(
+            SelectableImageCell(
                 item = item.item,
                 isSelected = item.checked,
                 onClick = onClick,
@@ -103,7 +103,7 @@ abstract class AImageListQuestForm<I, T> : AbstractOsmQuestForm<T>() {
                         ),
                         modifier = Modifier.padding(bottom = 8.dp).wrapContentSize()
                     )
-                    ImageList(
+                    ImageGrid(
                         imageItems = currentItems.value,
                         onClick = if ( maxSelectableItems == 1) onClickSingleItem else onClickMultiItem,
                         modifier = Modifier.fillMaxHeight(),

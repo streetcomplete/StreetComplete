@@ -10,7 +10,7 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.quests.AImageListQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.ui.common.image_select.ImageListItem
-import de.westnordost.streetcomplete.ui.common.image_select.SelectableIconItem
+import de.westnordost.streetcomplete.ui.common.image_select.SelectableIconCell
 import de.westnordost.streetcomplete.util.math.getOrientationAtCenterLineInDegrees
 
 class AddBicycleInclineForm : AImageListQuestForm<Incline, BicycleInclineAnswer>() {
@@ -29,7 +29,7 @@ class AddBicycleInclineForm : AImageListQuestForm<Incline, BicycleInclineAnswer>
     override val itemContent =
         @Composable { item: ImageListItem<Incline>, index: Int, onClick: () -> Unit, role: Role ->
             key(item.item to (wayRotation - mapRotation)) {
-                SelectableIconItem(
+                SelectableIconCell(
                     item = item.item,
                     isSelected = item.checked,
                     onClick = onClick,

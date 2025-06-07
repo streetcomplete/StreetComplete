@@ -16,7 +16,7 @@ import de.westnordost.streetcomplete.quests.bicycle_repair_station.asItem
 import kotlin.math.max
 
 @Composable
-fun <T> ImageList(
+fun <T> ImageGrid(
     imageItems: List<ImageListItem<T>>,
     onClick: (index: Int, item: ImageListItem<T>) -> Unit,
     modifier: Modifier = Modifier,
@@ -87,19 +87,19 @@ fun <T> ImageList(
 
 @Composable
 @Preview(showBackground = true)
-fun ImageListPreview() {
+fun ImageGridPreview() {
     var items by remember {
         mutableStateOf(
             BicycleRepairStationService.entries.map { ImageListItem(it.asItem(), false) })  }
 
-    ImageList(
+    ImageGrid(
         imageItems = items,
         onClick = { i, f ->
         items = items.mapIndexed { index, item -> if (index == i ) ImageListItem(item.item, !item.checked) else item }
     },
         itemsPerRow = 3
     ) { item, index, onClick, role ->
-            SelectableImageItem(
+            SelectableImageCell(
                 item = item.item,
                 isSelected = item.checked,
                 onClick = onClick,
@@ -110,19 +110,19 @@ fun ImageListPreview() {
 
 @Composable
 @Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
-fun ImageListDarkModePreview() {
+fun ImageGridDarkModePreview() {
     var items by remember {
         mutableStateOf(
             BicycleRepairStationService.entries.map { ImageListItem(it.asItem(), false) })  }
 
-    ImageList(
+    ImageGrid(
         imageItems = items,
         onClick = { i, f ->
             items = items.mapIndexed { index, item -> if (index == i ) ImageListItem(item.item, !item.checked) else item }
         },
         itemsPerRow = 3
     ) { item, index, onClick, role ->
-        SelectableImageItem(
+        SelectableImageCell(
             item = item.item,
             isSelected = item.checked,
             onClick = onClick,

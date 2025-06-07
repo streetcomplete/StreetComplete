@@ -9,7 +9,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AImageListQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.ui.common.image_select.ImageListItem
-import de.westnordost.streetcomplete.ui.common.image_select.SelectableIconItem
+import de.westnordost.streetcomplete.ui.common.image_select.SelectableIconCell
 
 class AddPostboxRoyalCypherForm : AImageListQuestForm<PostboxRoyalCypher, PostboxRoyalCypher>() {
 
@@ -19,7 +19,7 @@ class AddPostboxRoyalCypherForm : AImageListQuestForm<PostboxRoyalCypher, Postbo
     override val itemContent =
         @Composable { item: ImageListItem<PostboxRoyalCypher>, index: Int, onClick: () -> Unit, role: Role ->
             key(item.item) {
-                SelectableIconItem(
+                SelectableIconCell(
                     item = item.item,
                     isSelected = item.checked,
                     onClick = onClick,

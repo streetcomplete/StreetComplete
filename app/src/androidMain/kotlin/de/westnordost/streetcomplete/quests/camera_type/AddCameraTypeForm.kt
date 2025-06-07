@@ -6,7 +6,7 @@ import androidx.compose.runtime.key
 import androidx.compose.ui.semantics.Role
 import de.westnordost.streetcomplete.quests.AImageListQuestForm
 import de.westnordost.streetcomplete.ui.common.image_select.ImageListItem
-import de.westnordost.streetcomplete.ui.common.image_select.SelectableIconItem
+import de.westnordost.streetcomplete.ui.common.image_select.SelectableIconCell
 
 class AddCameraTypeForm : AImageListQuestForm<CameraType, CameraType>() {
 
@@ -15,7 +15,7 @@ class AddCameraTypeForm : AImageListQuestForm<CameraType, CameraType>() {
 
     override val itemContent = @Composable { item: ImageListItem<CameraType>, index: Int, onClick: () -> Unit, role: Role ->
         key(item.item) {
-            SelectableIconItem(item = item.item,
+            SelectableIconCell(item = item.item,
                 isSelected = item.checked,
                 onClick = onClick,
                 role = role)

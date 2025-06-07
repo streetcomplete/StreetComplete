@@ -14,7 +14,7 @@ import de.westnordost.streetcomplete.quests.steps_ramp.StepsRamp.BICYCLE
 import de.westnordost.streetcomplete.quests.steps_ramp.StepsRamp.STROLLER
 import de.westnordost.streetcomplete.quests.steps_ramp.StepsRamp.WHEELCHAIR
 import de.westnordost.streetcomplete.ui.common.image_select.ImageListItem
-import de.westnordost.streetcomplete.ui.common.image_select.SelectableImageItem
+import de.westnordost.streetcomplete.ui.common.image_select.SelectableImageCell
 
 class AddStepsRampForm : AImageListQuestForm<StepsRamp, StepsRampAnswer>() {
 
@@ -25,7 +25,7 @@ class AddStepsRampForm : AImageListQuestForm<StepsRamp, StepsRampAnswer>() {
 
     override val itemContent = @Composable { item: ImageListItem<StepsRamp>, index: Int, onClick: () -> Unit, role: Role ->
         key(item.item) {
-            SelectableImageItem(
+            SelectableImageCell(
                 item = item.item,
                 isSelected = item.checked,
                 onClick = {

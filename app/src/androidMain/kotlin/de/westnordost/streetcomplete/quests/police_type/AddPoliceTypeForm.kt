@@ -6,7 +6,7 @@ import androidx.compose.runtime.key
 import androidx.compose.ui.semantics.Role
 import de.westnordost.streetcomplete.quests.AImageListQuestForm
 import de.westnordost.streetcomplete.ui.common.image_select.ImageListItem
-import de.westnordost.streetcomplete.ui.common.image_select.SelectableIconItem
+import de.westnordost.streetcomplete.ui.common.image_select.SelectableIconCell
 
 class AddPoliceTypeForm : AImageListQuestForm<PoliceType, PoliceType>() {
 
@@ -16,7 +16,7 @@ class AddPoliceTypeForm : AImageListQuestForm<PoliceType, PoliceType>() {
     override val itemContent =
         @Composable { item: ImageListItem<PoliceType>, index: Int, onClick: () -> Unit, role: Role ->
             key(item.item) {
-                SelectableIconItem(
+                SelectableIconCell(
                     item = item.item,
                     isSelected = item.checked,
                     onClick = onClick,

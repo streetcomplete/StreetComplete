@@ -7,7 +7,7 @@ import androidx.compose.runtime.key
 import androidx.compose.ui.semantics.Role
 import de.westnordost.streetcomplete.quests.AImageListQuestForm
 import de.westnordost.streetcomplete.ui.common.image_select.ImageListItem
-import de.westnordost.streetcomplete.ui.common.image_select.SelectableIconRightItem
+import de.westnordost.streetcomplete.ui.common.image_select.SelectableIconRightCell
 
 class AddCyclewaySegregationForm : AImageListQuestForm<CyclewaySegregation, CyclewaySegregation>() {
 
@@ -17,7 +17,7 @@ class AddCyclewaySegregationForm : AImageListQuestForm<CyclewaySegregation, Cycl
     override val itemContent =
         @Composable { item: ImageListItem<CyclewaySegregation>, index: Int, onClick: () -> Unit, role: Role ->
             key(item.item) {
-                SelectableIconRightItem(
+                SelectableIconRightCell(
                     item = item.item,
                     isSelected = item.checked,
                     onClick = onClick,

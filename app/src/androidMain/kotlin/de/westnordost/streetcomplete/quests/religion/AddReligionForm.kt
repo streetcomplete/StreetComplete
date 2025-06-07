@@ -9,14 +9,14 @@ import de.westnordost.streetcomplete.quests.AImageListQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.religion.Religion.MULTIFAITH
 import de.westnordost.streetcomplete.ui.common.image_select.ImageListItem
-import de.westnordost.streetcomplete.ui.common.image_select.SelectableIconItem
+import de.westnordost.streetcomplete.ui.common.image_select.SelectableIconCell
 
 class AddReligionForm : AImageListQuestForm<Religion, Religion>() {
 
     override val itemContent =
         @Composable { item: ImageListItem<Religion>, index: Int, onClick: () -> Unit, role: Role ->
             key(item.item) {
-                SelectableIconItem(
+                SelectableIconCell(
                     item = item.item,
                     isSelected = item.checked,
                     onClick = onClick,
