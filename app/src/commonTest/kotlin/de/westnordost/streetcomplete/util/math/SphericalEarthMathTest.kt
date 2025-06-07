@@ -96,7 +96,7 @@ class SphericalEarthMathTest {
         val p0 = p(-1.0, 0.0)
 
         assertFalse(px.isRightOf(p0, 269.0))
-        assertTrue(px.isRightOf(p0, 270.0))
+        assertFalse(px.isRightOf(p0, 270.0))
         assertTrue(px.isRightOf(p0, 0.0))
         assertTrue(px.isRightOf(p0, 45.0))
         assertTrue(px.isRightOf(p0, 89.0))

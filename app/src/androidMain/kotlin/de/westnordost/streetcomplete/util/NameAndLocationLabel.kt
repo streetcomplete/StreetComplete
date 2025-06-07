@@ -204,4 +204,4 @@ fun getShortHouseNumber(map: Map<String, String>): String? {
 private fun String.inBold(): String = "<b>${replaceHtmlEntities()}</b>"
 private fun String.inItalics(): String = "<i>${replaceHtmlEntities()}</i>"
 
-private fun String.withNonBreakingSpaces(): String = replace(' ', ' ')
+private fun String.withNonBreakingSpaces(): String = replace(' ', '\u00A0')

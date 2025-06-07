@@ -15,6 +15,9 @@ sealed interface Level {
                 for (i in 0..range.toInt()) {
                     yield(start + i)
                 }
+            } else {
+                yield(start)
+                yield(end)
             }
         }
     }

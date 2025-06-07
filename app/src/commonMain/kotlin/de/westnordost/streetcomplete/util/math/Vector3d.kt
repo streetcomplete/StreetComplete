@@ -23,10 +23,10 @@ class Vector3d(val x: Double, val y: Double, val z: Double) {
     operator fun unaryMinus() = Vector3d(-x, -y, -z)
 
     operator fun times(v: Double) = Vector3d(x * v, y * v, z * v)
-    operator fun div(v: Double) = Vector3d(x / v, x / v, x / v)
+    operator fun div(v: Double) = Vector3d(x / v, y / v, z / v)
 
     operator fun plus(o: Vector3d) = Vector3d(x + o.x, y + o.y, z + o.z)
-    operator fun minus(o: Vector3d) = Vector3d(x - o.x, y - o.y, z - o.y)
+    operator fun minus(o: Vector3d) = Vector3d(x - o.x, y - o.y, z - o.z)
 
     /** dot (scalar) product with [o] */
     operator fun times(o: Vector3d) = x * o.x + y * o.y + z * o.z

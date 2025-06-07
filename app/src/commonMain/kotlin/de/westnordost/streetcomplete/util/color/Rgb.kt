@@ -26,7 +26,7 @@ data class Rgb(val red: UByte, val green: UByte, val blue: UByte) {
         )
     }
 
-    /** return color as hexadecimal string "#rrggbbaa" */
+    /** return color as hexadecimal string "#rrggbb" */
     @OptIn(ExperimentalStdlibApi::class)
     fun toHexString(): String =
         "#" + red.toHexString() + green.toHexString() + blue.toHexString()

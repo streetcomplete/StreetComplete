@@ -11,7 +11,7 @@ class StringMapEntryAddTest {
         assertTrue(StringMapEntryAdd("a", "b").conflictsWith(mutableMapOf("a" to "c")))
     }
 
-    @Test fun `does not conflict if already added with different value`() {
+    @Test fun `does not conflict if already added with same value`() {
         assertFalse(StringMapEntryAdd("a", "b").conflictsWith(mutableMapOf("a" to "b")))
     }
 
