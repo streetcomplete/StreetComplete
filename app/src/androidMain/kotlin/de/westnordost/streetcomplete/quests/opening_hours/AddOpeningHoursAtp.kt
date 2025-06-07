@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests.opening_hours
 import de.westnordost.osm_opening_hours.parser.toOpeningHoursOrNull
 import de.westnordost.osmfeatures.Feature
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.atp.AtpDao
 import de.westnordost.streetcomplete.data.elementfilter.filters.RelativeDate
 import de.westnordost.streetcomplete.data.elementfilter.filters.TagOlderThan
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
@@ -19,7 +20,8 @@ import de.westnordost.streetcomplete.osm.updateWithCheckDate
 
 class AddOpeningHoursAtp(
     private val getFeature: (Element) -> Feature?,
-    private val atpOpeningHoursDao: (Element) -> Boolean
+    private val atpOpeningHoursDao: (Element) -> Boolean,
+    private val atpDao: AtpDao
 ) : OsmElementQuestType<OpeningHoursAnswer> {
 
     /* See also AddWheelchairAccessBusiness and AddPlaceName, which has a similar list and is/should
@@ -202,5 +204,12 @@ class AddOpeningHoursAtp(
 
     private fun hasFeatureName(element: Element) = getFeature(element)?.name != null
 
-    private fun atpClaimsItShouldBeResurveyed(element: Element) = atpOpeningHoursDao(element)
+    private fun atpClaimsItShouldBeResurveyed(element: Element): Boolean
+    = atpDao.getAllWithMatchingOsmElement(element).isNotEmpty()
+        // = atpOpeningHoursDao(element)
+        // TODO check opening hours whether they match or document why it is not needed?
+        // TODO why just presence of entry is enough
+        // TODO: is comparing/parsing opening hours even implemented?
+        // TODO maybe rely on age?
+        // TODO maybe check reported OSM match in ATP data and check has their opening hours changed since then
 }

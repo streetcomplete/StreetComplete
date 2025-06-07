@@ -13,6 +13,7 @@ import de.westnordost.streetcomplete.data.atp.AtpTable.Columns.OSM_ELEMENT_MATCH
 import de.westnordost.streetcomplete.data.atp.AtpTable.Columns.ATP_TAGS
 import de.westnordost.streetcomplete.data.atp.AtpTable.Columns.OSM_TAGS
 import de.westnordost.streetcomplete.data.atp.AtpTable.Columns.LAST_SYNC
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
@@ -60,6 +61,10 @@ class AtpDao(private val db: Database) {
     fun getAll(ids: Collection<Long>): List<AtpEntry> {
         if (ids.isEmpty()) return emptyList()
         return db.query(NAME, where = "$ID IN (${ids.joinToString(",")})") { it.toAtpEntry() }
+    }
+
+    fun getAllWithMatchingOsmElement(match: Element): List<AtpEntry> {
+        return db.query(NAME, where = "$OSM_ELEMENT_MATCH_ID = ${match.id} AND $OSM_ELEMENT_MATCH_TYPE = ${match.type}") { it.toAtpEntry() }
     }
 
     fun getIdsOlderThan(timestamp: Long, limit: Int? = null): List<Long> =
