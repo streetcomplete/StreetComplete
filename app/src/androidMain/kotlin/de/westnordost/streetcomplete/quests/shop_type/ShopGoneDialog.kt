@@ -83,6 +83,7 @@ class ShopGoneDialog(
 
     override fun show() {
         super.show()
+        updateOkButtonEnablement()
         // to override the default OK=dismiss() behavior
         getButton(DialogInterface.BUTTON_POSITIVE).setOnClickListener {
             when (selectedRadioButtonId) {
