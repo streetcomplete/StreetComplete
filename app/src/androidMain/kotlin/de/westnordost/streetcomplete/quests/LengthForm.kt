@@ -1,14 +1,16 @@
 package de.westnordost.streetcomplete.quests
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.material.IconButton
 import androidx.compose.material.LocalTextStyle
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material3.FilledIconButton
+import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.mutableStateOf
@@ -44,15 +46,18 @@ fun LengthForm(
     )
     {
         CompositionLocalProvider(LocalTextStyle provides MaterialTheme.typography.h4) {
-            LengthInput(
-                selectedUnit = selectedUnit.value,
-                currentLength = currentLength,
-                syncLength = syncLength,
-                onLengthChanged = onLengthChanged,
-                maxFeetDigits = maxFeetDigits,
-                maxMeterDigits = maxMeterDigits,
-                footInchAppearance = FootInchAppearance.PRIME
-            )
+            Surface {
+                LengthInput(
+                    selectedUnit = selectedUnit.value,
+                    currentLength = currentLength,
+                    syncLength = syncLength,
+                    onLengthChanged = onLengthChanged,
+                    maxFeetDigits = maxFeetDigits,
+                    maxMeterDigits = maxMeterDigits,
+                    footInchAppearance = FootInchAppearance.PRIME
+                )
+            }
+
 
             LengthUnitSelector(
                 selectableUnits = selectableUnits,
@@ -72,8 +77,10 @@ fun LengthForm(
 
 @Composable
 private fun MeasureButton(onClick: () -> Unit) {
-    FilledIconButton(onClick = { onClick() }) {
-        MeasurementIcon()
+    IconButton (onClick = { onClick() }, modifier = Modifier.background(MaterialTheme.colors.primary)) {
+        Surface (color = MaterialTheme.colors.primary) {
+            MeasurementIcon()
+        }
     }
 }
 
