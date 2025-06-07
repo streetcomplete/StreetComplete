@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.data.osmnotes
 
 import android.content.Context
 import de.westnordost.streetcomplete.ApplicationConstants
-import de.westnordost.streetcomplete.data.atp.AtpDownloader
 import kotlinx.io.files.Path
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
