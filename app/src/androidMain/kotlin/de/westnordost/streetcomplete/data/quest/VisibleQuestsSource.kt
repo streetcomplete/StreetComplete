@@ -1,5 +1,7 @@
 package de.westnordost.streetcomplete.data.quest
 
+import de.westnordost.streetcomplete.data.atp.atpquests.AtpQuestSource
+import de.westnordost.streetcomplete.data.atp.atpquests.CreateElementQuest
 import de.westnordost.streetcomplete.data.osm.edits.EditType
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
@@ -36,6 +38,7 @@ class VisibleQuestsSource(
     private val questTypeRegistry: QuestTypeRegistry,
     private val osmQuestSource: OsmQuestSource,
     private val osmNoteQuestSource: OsmNoteQuestSource,
+    private val atpQuestSource: AtpQuestSource,
     private val questsHiddenSource: QuestsHiddenSource,
     private val visibleEditTypeSource: VisibleEditTypeSource,
     private val teamModeQuestFilter: TeamModeQuestFilter,
@@ -73,6 +76,15 @@ class VisibleQuestsSource(
         }
     }
 
+    private val atpQuestSourceListener = object : AtpQuestSource.Listener {
+        override fun onUpdated(added: Collection<CreateElementQuest>, deleted: Collection<Long>) {
+            updateVisibleQuests(added, deleted.map { AtpQuestKey(it) })
+        }
+        override fun onInvalidated() {
+            // apparently the visibility of many different quests have changed
+            invalidate()
+        }
+    }
     private val questsHiddenSourceListener = object : QuestsHiddenSource.Listener {
         override fun onHid(key: QuestKey, timestamp: Long) {
             updateVisibleQuests(deleted = listOf(key))
@@ -82,6 +94,7 @@ class VisibleQuestsSource(
             val quest = when (key) {
                 is OsmQuestKey -> osmQuestSource.get(key)
                 is OsmNoteQuestKey -> osmNoteQuestSource.get(key.noteId)
+                is AtpQuestKey -> atpQuestSource.get(key.atpEntryId)
             } ?: return
             updateVisibleQuests(added = listOf(quest))
         }
@@ -126,6 +139,7 @@ class VisibleQuestsSource(
     init {
         osmQuestSource.addListener(osmQuestSourceListener)
         osmNoteQuestSource.addListener(osmNoteQuestSourceListener)
+        atpQuestSource.addListener(atpQuestSourceListener)
         questsHiddenSource.addListener(questsHiddenSourceListener)
         visibleEditTypeSource.addListener(visibleEditTypeSourceListener)
         teamModeQuestFilter.addListener(teamModeQuestFilterListener)
@@ -145,7 +159,8 @@ class VisibleQuestsSource(
 
         val quests =
             osmQuestSource.getAllInBBox(bbox, visibleQuestTypeNames) +
-            osmNoteQuestSource.getAllInBBox(bbox)
+            osmNoteQuestSource.getAllInBBox(bbox) +
+            atpQuestSource.getAllInBBox(bbox)
 
         return quests.filter { isVisible(it.key) && isVisibleInTeamMode(it) }
     }
@@ -154,6 +169,7 @@ class VisibleQuestsSource(
         val quest = cache.get(questKey) ?: when (questKey) {
             is OsmNoteQuestKey -> osmNoteQuestSource.get(questKey.noteId)
             is OsmQuestKey -> osmQuestSource.get(questKey)
+            is AtpQuestKey -> atpQuestSource.get(questKey.atpEntryId) // TODO document/ensure that it will be only one quest per atp-entry
         } ?: return null
         return if (isVisible(quest)) quest else null
     }
