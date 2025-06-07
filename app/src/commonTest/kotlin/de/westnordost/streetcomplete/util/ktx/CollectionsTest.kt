@@ -7,6 +7,7 @@ import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith
 import kotlin.test.assertNull
 import kotlin.test.assertTrue
+import kotlin.test.assertFalse
 
 class CollectionsTest {
 
@@ -93,4 +94,17 @@ class CollectionsTest {
         assertEquals(2, listOf(3, 4, 8).indexOfMaxBy { it })
         assertEquals(0, listOf(4, 0, -1).indexOfMaxBy { it })
     }
+
+    @Test fun `firstAndLast of empty list returns empty list`() {
+        assertTrue(listOf<Int>().firstAndLast().isEmpty())
+    }
+
+    @Test fun `firstAndLast of single element list`() {
+        assertEquals(listOf(1), listOf(1).firstAndLast())
+    }
+
+    @Test fun `firstAndLast of multi element list`() {
+        assertEquals(listOf(1, 3), listOf(1, 2, 3).firstAndLast())
+    }
+
 }
