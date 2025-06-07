@@ -1,7 +1,11 @@
 package de.westnordost.streetcomplete.util.ktx
 
 /** Return the first and last element of this list. If it contains only one element, just that one */
-fun <E> List<E>.firstAndLast() = if (size == 1) listOf(first()) else listOf(first(), last())
+fun <E> List<E>.firstAndLast() = when (size) {
+    0 -> listOf()
+    1 -> listOf(first())
+    else -> listOf(first(), last())
+}
 
 /** Return all except the first and last element of this list. If it contains less than two elements,
  *  it returns an empty list */
