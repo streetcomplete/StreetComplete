@@ -31,19 +31,19 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.ColorMatrix
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.zIndex
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.allDrawableResources
 import de.westnordost.streetcomplete.screens.tutorial.TutorialScreen
 import de.westnordost.streetcomplete.ui.common.BubblePile
 import de.westnordost.streetcomplete.ui.common.WheelPicker
@@ -55,6 +55,7 @@ import de.westnordost.streetcomplete.ui.theme.TeamColors
 import de.westnordost.streetcomplete.ui.theme.headlineLarge
 import de.westnordost.streetcomplete.ui.theme.selectionBackground
 import kotlinx.coroutines.delay
+import org.jetbrains.compose.resources.painterResource
 
 /** Wizard which enables team mode */
 @Composable
@@ -85,7 +86,11 @@ fun TeamModeWizard(
             ) {
                 when (it) {
                     false -> SplitQuestsIllustration(allQuestIconIds = allQuestIconIds)
-                    true -> TeamSizeIllustration(teamSize = teamSize, selectedIndex = selectedIndex)
+                    true -> TeamSizeIllustration(
+                        teamSize = teamSize,
+                        maxTeamSize = TeamColors.size,
+                        selectedIndex = selectedIndex
+                    )
                 }
             }
         }
@@ -255,8 +260,8 @@ private fun QuestPile(
 }
 
 @Composable
-private fun TeamSizeIllustration(teamSize: Int, selectedIndex: Int) {
-    for (i in hands.indices) {
+private fun TeamSizeIllustration(teamSize: Int, maxTeamSize: Int, selectedIndex: Int) {
+    for (i in 0..<maxTeamSize) {
         val hasSelection = selectedIndex >= 0
         val isSelected = selectedIndex == i
         val animatedSelected by animateFloatAsState(if (isSelected) 1f else 0f)
@@ -271,33 +276,21 @@ private fun TeamSizeIllustration(teamSize: Int, selectedIndex: Int) {
             exit = fadeOut()
         ) {
             val colorFilter = if (hasSelection) ColorFilter.saturation(animatedSelected) else null
-            Image(
-                painter = painterResource(hands[i]),
-                contentDescription = null,
-                colorFilter = colorFilter,
-                modifier = Modifier.fillMaxSize()
-            )
+            val hand = Res.allDrawableResources["team_size_${i + 1}"]
+            if (hand != null) {
+                Image(
+                    painter = painterResource(hand),
+                    contentDescription = null,
+                    colorFilter = colorFilter,
+                    modifier = Modifier.fillMaxSize()
+                )
+            }
         }
     }
 }
 
 private fun ColorFilter.Companion.saturation(sat: Float) =
     colorMatrix(ColorMatrix().also { it.setToSaturation(sat) })
-
-private val hands = listOf(
-    R.drawable.team_size_1,
-    R.drawable.team_size_2,
-    R.drawable.team_size_3,
-    R.drawable.team_size_4,
-    R.drawable.team_size_5,
-    R.drawable.team_size_6,
-    R.drawable.team_size_7,
-    R.drawable.team_size_8,
-    R.drawable.team_size_9,
-    R.drawable.team_size_10,
-    R.drawable.team_size_11,
-    R.drawable.team_size_12,
-)
 
 @Preview
 @Composable

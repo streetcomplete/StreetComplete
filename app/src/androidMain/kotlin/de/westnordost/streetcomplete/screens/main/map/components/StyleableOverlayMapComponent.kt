@@ -221,7 +221,7 @@ class StyleableOverlayMapComponent(
         val icons = styledElements.mapNotNull { it.style.getIcon() }
         mapImages.addOnce(icons) {
             val name = context.resources.getResourceEntryName(it)
-            val sdf = name.startsWith("ic_preset_")
+            val sdf = name.startsWith("preset_")
             createIconBitmap(context, it, sdf) to sdf
         }
         val features = styledElements.flatMap { it.toFeatures() }

@@ -20,6 +20,72 @@ import de.westnordost.streetcomplete.quests.traffic_signals_vibrate.AddTrafficSi
 import de.westnordost.streetcomplete.quests.way_lit.AddWayLit
 import de.westnordost.streetcomplete.quests.wheelchair_access.AddWheelchairAccessPublicTransport
 import de.westnordost.streetcomplete.quests.wheelchair_access.AddWheelchairAccessToilets
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.achievement_bicyclist
+import de.westnordost.streetcomplete.resources.achievement_blind
+import de.westnordost.streetcomplete.resources.achievement_building
+import de.westnordost.streetcomplete.resources.achievement_car
+import de.westnordost.streetcomplete.resources.achievement_citizen
+import de.westnordost.streetcomplete.resources.achievement_first_edit
+import de.westnordost.streetcomplete.resources.achievement_lifesaver
+import de.westnordost.streetcomplete.resources.achievement_outdoors
+import de.westnordost.streetcomplete.resources.achievement_pedestrian
+import de.westnordost.streetcomplete.resources.achievement_postman
+import de.westnordost.streetcomplete.resources.achievement_rare
+import de.westnordost.streetcomplete.resources.achievement_regular
+import de.westnordost.streetcomplete.resources.achievement_surveyor
+import de.westnordost.streetcomplete.resources.achievement_veg
+import de.westnordost.streetcomplete.resources.achievement_wheelchair
+import de.westnordost.streetcomplete.resources.link_backofyourhand
+import de.westnordost.streetcomplete.resources.link_brouter
+import de.westnordost.streetcomplete.resources.link_city_roads
+import de.westnordost.streetcomplete.resources.link_cyclosm
+import de.westnordost.streetcomplete.resources.link_every_door
+import de.westnordost.streetcomplete.resources.link_figuregrounder
+import de.westnordost.streetcomplete.resources.link_graphhopper
+import de.westnordost.streetcomplete.resources.link_haiku
+import de.westnordost.streetcomplete.resources.link_heigit
+import de.westnordost.streetcomplete.resources.link_ideditor
+import de.westnordost.streetcomplete.resources.link_indoorequal
+import de.westnordost.streetcomplete.resources.link_josm
+import de.westnordost.streetcomplete.resources.link_kartaview
+import de.westnordost.streetcomplete.resources.link_kontur
+import de.westnordost.streetcomplete.resources.link_learnosm
+import de.westnordost.streetcomplete.resources.link_mapcomplete
+import de.westnordost.streetcomplete.resources.link_mapillary
+import de.westnordost.streetcomplete.resources.link_mapy_tactile
+import de.westnordost.streetcomplete.resources.link_myosmatic
+import de.westnordost.streetcomplete.resources.link_neis_one
+import de.westnordost.streetcomplete.resources.link_notesreview
+import de.westnordost.streetcomplete.resources.link_ohsomehex
+import de.westnordost.streetcomplete.resources.link_opencampingmap
+import de.westnordost.streetcomplete.resources.link_openclimbing
+import de.westnordost.streetcomplete.resources.link_opengeofiction
+import de.westnordost.streetcomplete.resources.link_openorienteeringmap
+import de.westnordost.streetcomplete.resources.link_openstreetbrowser
+import de.westnordost.streetcomplete.resources.link_openstreetmap
+import de.westnordost.streetcomplete.resources.link_opnvkarte
+import de.westnordost.streetcomplete.resources.link_organic_maps
+import de.westnordost.streetcomplete.resources.link_osm_buildings
+import de.westnordost.streetcomplete.resources.link_osmand
+import de.westnordost.streetcomplete.resources.link_osmapp
+import de.westnordost.streetcomplete.resources.link_osmhydrant
+import de.westnordost.streetcomplete.resources.link_osmlab
+import de.westnordost.streetcomplete.resources.link_osrm
+import de.westnordost.streetcomplete.resources.link_panoramax
+import de.westnordost.streetcomplete.resources.link_photon
+import de.westnordost.streetcomplete.resources.link_prettymapp
+import de.westnordost.streetcomplete.resources.link_sunders
+import de.westnordost.streetcomplete.resources.link_touch_mapper
+import de.westnordost.streetcomplete.resources.link_transitous
+import de.westnordost.streetcomplete.resources.link_umap
+import de.westnordost.streetcomplete.resources.link_valhalla
+import de.westnordost.streetcomplete.resources.link_veggiekarte
+import de.westnordost.streetcomplete.resources.link_vespucci
+import de.westnordost.streetcomplete.resources.link_weeklyosm
+import de.westnordost.streetcomplete.resources.link_welcome_mat
+import de.westnordost.streetcomplete.resources.link_wheelmap
+import de.westnordost.streetcomplete.resources.link_wiki
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
@@ -65,7 +131,7 @@ val links = listOf(
         "https://wiki.openstreetmap.org",
         "OpenStreetMap Wiki",
         LinkCategory.INTRO,
-        R.drawable.ic_link_wiki,
+        Res.drawable.link_wiki,
         R.string.link_wiki_description
     ),
     Link(
@@ -73,7 +139,7 @@ val links = listOf(
         "https://community.openstreetmap.org",
         "OpenStreetMap Community Forum",
         LinkCategory.INTRO,
-        R.drawable.ic_link_openstreetmap,
+        Res.drawable.link_openstreetmap,
         R.string.link_forum_description
     ),
     Link(
@@ -81,7 +147,7 @@ val links = listOf(
         "https://osmcal.org",
         "OpenStreetMap Calendar",
         LinkCategory.INTRO,
-        R.drawable.ic_link_openstreetmap,
+        Res.drawable.link_openstreetmap,
         R.string.link_calendar_description
     ),
     Link(
@@ -89,7 +155,7 @@ val links = listOf(
         "https://welcome.openstreetmap.org",
         "Welcome Mat",
         LinkCategory.INTRO,
-        R.drawable.ic_link_welcome_mat,
+        Res.drawable.link_welcome_mat,
         R.string.link_welcome_mat_description
     ),
     Link(
@@ -97,7 +163,7 @@ val links = listOf(
         "https://learnosm.org/en/beginner/",
         "learnOSM",
         LinkCategory.INTRO,
-        R.drawable.ic_link_learnosm,
+        Res.drawable.link_learnosm,
         R.string.link_learnosm_description
     ),
     Link(
@@ -105,7 +171,7 @@ val links = listOf(
         "https://weeklyosm.eu/",
         "weeklyOSM",
         LinkCategory.INTRO,
-        R.drawable.ic_link_weeklyosm,
+        Res.drawable.link_weeklyosm,
         R.string.link_weeklyosm_description
     ),
     Link(
@@ -113,7 +179,7 @@ val links = listOf(
         "https://resultmaps.neis-one.org/",
         "ResultMaps",
         LinkCategory.INTRO,
-        R.drawable.ic_link_neis_one,
+        Res.drawable.link_neis_one,
         R.string.link_neis_one_description
     ),
     Link(
@@ -121,7 +187,7 @@ val links = listOf(
         "https://disaster.ninja/live/#position=11,46;zoom=3",
         "disaster.ninja",
         LinkCategory.INTRO,
-        R.drawable.ic_link_kontur,
+        Res.drawable.link_kontur,
         R.string.link_disaster_ninja_description
     ),
 
@@ -130,7 +196,7 @@ val links = listOf(
         "https://www.mapillary.com",
         "Mapillary",
         LinkCategory.INTRO,
-        R.drawable.ic_link_mapillary,
+        Res.drawable.link_mapillary,
         R.string.link_mapillary_description
     ),
 
@@ -139,7 +205,7 @@ val links = listOf(
         "https://kartaview.org/map/",
         "KartaView",
         LinkCategory.INTRO,
-        R.drawable.ic_link_kartaview,
+        Res.drawable.link_kartaview,
         R.string.link_openstreetcam_description
     ),
 
@@ -148,7 +214,7 @@ val links = listOf(
         "https://panoramax.fr/",
         "Panoramax",
         LinkCategory.INTRO,
-        R.drawable.ic_link_panoramax,
+        Res.drawable.link_panoramax,
         R.string.link_panoramax_description
     ),
 
@@ -157,7 +223,7 @@ val links = listOf(
         "https://hex.ohsome.org",
         "OSM History eXplorer",
         LinkCategory.INTRO,
-        R.drawable.ic_link_ohsomehex,
+        Res.drawable.link_ohsomehex,
         R.string.link_ohsomehex_description
     ),
 
@@ -168,7 +234,7 @@ val links = listOf(
         "https://ideditor.com",
         "iD",
         LinkCategory.EDITORS,
-        R.drawable.ic_link_ideditor,
+        Res.drawable.link_ideditor,
         R.string.link_ideditor_description
     ),
     Link(
@@ -176,7 +242,7 @@ val links = listOf(
         "https://vespucci.io",
         "Vespucci",
         LinkCategory.EDITORS,
-        R.drawable.ic_link_vespucci,
+        Res.drawable.link_vespucci,
         R.string.link_vespucci_description
     ),
     Link(
@@ -184,7 +250,7 @@ val links = listOf(
         "https://josm.openstreetmap.de",
         "JOSM",
         LinkCategory.EDITORS,
-        R.drawable.ic_link_josm,
+        Res.drawable.link_josm,
         R.string.link_josm_description
     ),
     Link(
@@ -192,7 +258,7 @@ val links = listOf(
         "https://ent8r.github.io/NotesReview/",
         "NotesReview",
         LinkCategory.EDITORS,
-        R.drawable.ic_link_notesreview,
+        Res.drawable.link_notesreview,
         R.string.link_notesreview_description
     ),
     Link(
@@ -200,7 +266,7 @@ val links = listOf(
         "https://every-door.app/",
         "Every Door",
         LinkCategory.EDITORS,
-        R.drawable.ic_link_every_door,
+        Res.drawable.link_every_door,
         R.string.link_every_door_description
     ),
     Link(
@@ -208,7 +274,7 @@ val links = listOf(
         "https://mapcomplete.org/",
         "MapComplete",
         LinkCategory.EDITORS,
-        R.drawable.ic_link_mapcomplete,
+        Res.drawable.link_mapcomplete,
         R.string.link_mapcomplete_description
     ),
 
@@ -219,7 +285,7 @@ val links = listOf(
         "https://openstreetbrowser.org",
         "OpenStreetBrowser",
         LinkCategory.MAPS,
-        R.drawable.ic_link_openstreetbrowser,
+        Res.drawable.link_openstreetbrowser,
         R.string.link_openstreetbrowser_description
     ),
     Link(
@@ -227,7 +293,7 @@ val links = listOf(
         "https://osmapp.org/",
         "OsmAPP",
         LinkCategory.MAPS,
-        R.drawable.ic_link_osmapp,
+        Res.drawable.link_osmapp,
         R.string.link_osmapp_description
     ),
     Link(
@@ -235,7 +301,7 @@ val links = listOf(
         "https://organicmaps.app/",
         "Organic Maps",
         LinkCategory.MAPS,
-        R.drawable.ic_link_organic_maps,
+        Res.drawable.link_organic_maps,
         R.string.link_organic_maps_description
     ),
     Link(
@@ -243,7 +309,7 @@ val links = listOf(
         "https://osmand.net/",
         "OsmAnd",
         LinkCategory.MAPS,
-        R.drawable.ic_link_osmand,
+        Res.drawable.link_osmand,
         R.string.link_osmand_description
     ),
     Link(
@@ -251,7 +317,7 @@ val links = listOf(
         "https://www.cyclosm.org",
         "CyclOSM",
         LinkCategory.MAPS,
-        R.drawable.ic_link_cyclosm,
+        Res.drawable.link_cyclosm,
         R.string.link_cyclosm_description
     ),
     Link(
@@ -259,7 +325,7 @@ val links = listOf(
         "https://öpnvkarte.de",
         "ÖPNVKarte",
         LinkCategory.MAPS,
-        R.drawable.ic_link_opnvkarte,
+        Res.drawable.link_opnvkarte,
         R.string.link_opnvkarte_description
     ),
     Link(
@@ -267,7 +333,7 @@ val links = listOf(
         "https://wheelmap.org",
         "wheelmap.org",
         LinkCategory.MAPS,
-        R.drawable.ic_link_wheelmap,
+        Res.drawable.link_wheelmap,
         R.string.link_wheelmap_description
     ),
     Link(
@@ -275,7 +341,7 @@ val links = listOf(
         "https://www.veggiekarte.de",
         "veggiekarte.de",
         LinkCategory.MAPS,
-        R.drawable.ic_link_veggiekarte,
+        Res.drawable.link_veggiekarte,
         R.string.link_openvegemap_description
     ),
     Link(
@@ -283,7 +349,7 @@ val links = listOf(
         "https://osmbuildings.org",
         "OSM Buildings",
         LinkCategory.MAPS,
-        R.drawable.ic_link_osm_buildings,
+        Res.drawable.link_osm_buildings,
         R.string.link_osm_buildings_description
     ),
     Link(
@@ -291,7 +357,7 @@ val links = listOf(
         "https://hapticke.mapy.cz/?x=14.4343228&y=50.0652972&z=19&lang=en",
         "Mapy.cz Tactile",
         LinkCategory.MAPS,
-        R.drawable.ic_link_mapy_tactile,
+        Res.drawable.link_mapy_tactile,
         R.string.link_mapy_tactile_description
     ),
     Link( // TODO no achievement yet
@@ -312,7 +378,7 @@ val links = listOf(
         "https://indoorequal.org",
         "indoor=",
         LinkCategory.MAPS,
-        R.drawable.ic_link_indoorequal,
+        Res.drawable.link_indoorequal,
         R.string.link_indoorequal_description
     ),
     Link(
@@ -320,7 +386,7 @@ val links = listOf(
         "https://www.osmhydrant.org",
         "OsmHydrant",
         LinkCategory.MAPS,
-        R.drawable.ic_link_osmhydrant,
+        Res.drawable.link_osmhydrant,
         R.string.link_osmhydrant_description
     ),
     Link(
@@ -328,7 +394,7 @@ val links = listOf(
         "https://sunders.uber.space/",
         "Surveillance under Surveillance",
         LinkCategory.MAPS,
-        R.drawable.ic_link_sunders,
+        Res.drawable.link_sunders,
         R.string.link_sunders_description
     ),
     // note: osmapp.org actually includes this as an overlay (not the background map, but the other
@@ -340,7 +406,7 @@ val links = listOf(
         "https://openclimbing.org/",
         "openclimbing.org",
         LinkCategory.MAPS,
-        R.drawable.ic_link_openclimbing,
+        Res.drawable.link_openclimbing,
         R.string.link_openclimbing_description
     ),
 
@@ -350,7 +416,7 @@ val links = listOf(
         "https://brouter.de/brouter-web/",
         "BRouter",
         LinkCategory.SHOWCASE,
-        R.drawable.ic_link_brouter,
+        Res.drawable.link_brouter,
         R.string.link_brouter_description
     ),
 
@@ -359,7 +425,7 @@ val links = listOf(
         "https://classic-maps.openrouteservice.org/directions?b=3",
         "Openrouteservice (Wheelchair)",
         LinkCategory.SHOWCASE,
-        R.drawable.ic_link_heigit,
+        Res.drawable.link_heigit,
         R.string.link_openrouteservice_wheelchair_description
     ),
     Link(
@@ -367,7 +433,7 @@ val links = listOf(
         "https://touch-mapper.org",
         "Touch Mapper",
         LinkCategory.SHOWCASE,
-        R.drawable.ic_link_touch_mapper,
+        Res.drawable.link_touch_mapper,
         R.string.link_touch_mapper_description
     ),
     Link(
@@ -375,7 +441,7 @@ val links = listOf(
         "https://nominatim.openstreetmap.org",
         "Nominatim",
         LinkCategory.SHOWCASE,
-        R.drawable.ic_link_openstreetmap,
+        Res.drawable.link_openstreetmap,
         R.string.link_nominatim_description
     ),
     Link(
@@ -383,7 +449,7 @@ val links = listOf(
         "https://photon.komoot.io",
         "Photon",
         LinkCategory.SHOWCASE,
-        R.drawable.ic_link_photon,
+        Res.drawable.link_photon,
         R.string.link_photon_description
     ),
     Link(
@@ -391,7 +457,7 @@ val links = listOf(
         "https://map.project-osrm.org",
         "OSRM",
         LinkCategory.SHOWCASE,
-        R.drawable.ic_link_osrm,
+        Res.drawable.link_osrm,
         R.string.link_osrm_description
     ),
     Link(
@@ -399,7 +465,7 @@ val links = listOf(
         "https://maps.openrouteservice.org",
         "Openrouteservice",
         LinkCategory.SHOWCASE,
-        R.drawable.ic_link_heigit,
+        Res.drawable.link_heigit,
         R.string.link_openrouteservice_description
     ),
     Link(
@@ -407,7 +473,7 @@ val links = listOf(
         "https://graphhopper.com/maps/",
         "GraphHopper",
         LinkCategory.SHOWCASE,
-        R.drawable.ic_link_graphhopper,
+        Res.drawable.link_graphhopper,
         R.string.link_graphhopper_description
     ),
     Link(
@@ -415,7 +481,7 @@ val links = listOf(
         "https://valhalla.openstreetmap.de/",
         "Valhalla",
         LinkCategory.SHOWCASE,
-        R.drawable.ic_link_valhalla,
+        Res.drawable.link_valhalla,
         R.string.link_valhalla_description
     ),
     Link(
@@ -423,7 +489,7 @@ val links = listOf(
         "https://transitous.org/",
         "Transitous",
         LinkCategory.SHOWCASE,
-        R.drawable.ic_link_transitous,
+        Res.drawable.link_transitous,
         R.string.link_transitous_description
     ),
 
@@ -433,7 +499,7 @@ val links = listOf(
         "https://umap.openstreetmap.fr",
         "uMap",
         LinkCategory.GOODIES,
-        R.drawable.ic_link_umap,
+        Res.drawable.link_umap,
         R.string.link_umap_description
     ),
     Link(
@@ -441,7 +507,7 @@ val links = listOf(
         "https://anvaka.github.io/city-roads",
         "city roads",
         LinkCategory.GOODIES,
-        R.drawable.ic_link_city_roads,
+        Res.drawable.link_city_roads,
         R.string.link_city_roads_description
     ),
     Link(
@@ -449,7 +515,7 @@ val links = listOf(
         "https://print.get-map.org",
         "MyOSMatic",
         LinkCategory.GOODIES,
-        R.drawable.ic_link_myosmatic,
+        Res.drawable.link_myosmatic,
         R.string.link_myosmatic_description
     ),
     Link(
@@ -457,7 +523,7 @@ val links = listOf(
         "https://osmlab.github.io/show-me-the-way",
         "show-me-the-way",
         LinkCategory.GOODIES,
-        R.drawable.ic_link_osmlab,
+        Res.drawable.link_osmlab,
         R.string.link_show_me_the_way_description
     ),
     Link(
@@ -465,7 +531,7 @@ val links = listOf(
         "https://satellitestud.io/osm-haiku/app",
         "OpenStreetMap Haiku",
         LinkCategory.GOODIES,
-        R.drawable.ic_link_haiku,
+        Res.drawable.link_haiku,
         R.string.link_osm_haiku_description
     ),
     Link(
@@ -473,7 +539,7 @@ val links = listOf(
         "https://oomap.co.uk/global/",
         "OpenOrienteeringMap",
         LinkCategory.GOODIES,
-        R.drawable.ic_link_openorienteeringmap,
+        Res.drawable.link_openorienteeringmap,
         R.string.link_openorienteeringmap_description
     ),
     Link(
@@ -481,7 +547,7 @@ val links = listOf(
         "https://hanshack.com/figuregrounder/",
         "Figuregrounder",
         LinkCategory.GOODIES,
-        R.drawable.ic_link_figuregrounder,
+        Res.drawable.link_figuregrounder,
         R.string.link_figuregrounder_description
     ),
     Link(
@@ -489,7 +555,7 @@ val links = listOf(
         "https://backofyourhand.com/",
         "Back Of Your Hand",
         LinkCategory.GOODIES,
-        R.drawable.ic_link_backofyourhand,
+        Res.drawable.link_backofyourhand,
         R.string.link_backofyourhand_description
     ),
     Link(
@@ -497,7 +563,7 @@ val links = listOf(
         "https://opencampingmap.org/",
         "Open Camping Map",
         LinkCategory.GOODIES,
-        R.drawable.ic_link_opencampingmap,
+        Res.drawable.link_opencampingmap,
         R.string.link_opencampingmap_description
     ),
     Link(
@@ -505,7 +571,7 @@ val links = listOf(
         "https://prettymapp.streamlit.app/",
         "Prettymapp",
         LinkCategory.GOODIES,
-        R.drawable.ic_link_prettymapp,
+        Res.drawable.link_prettymapp,
         R.string.link_prettymapp_description
     ),
     Link(
@@ -513,7 +579,7 @@ val links = listOf(
         "https://opengeofiction.net",
         "OpenGeofiction",
         LinkCategory.GOODIES,
-        R.drawable.ic_link_opengeofiction,
+        Res.drawable.link_opengeofiction,
         R.string.link_opengeofiction_description
     )
 )
@@ -525,7 +591,7 @@ val achievements = listOf(
 
     Achievement(
         "first_edit",
-        R.drawable.ic_achievement_first_edit,
+        Res.drawable.achievement_first_edit,
         R.string.achievement_first_edit_title,
         R.string.achievement_first_edit_description,
         TotalEditCount,
@@ -536,7 +602,7 @@ val achievements = listOf(
 
     Achievement(
         "surveyor",
-        R.drawable.ic_achievement_surveyor,
+        Res.drawable.achievement_surveyor,
         R.string.achievement_surveyor_title,
         R.string.achievement_surveyor_solved_X,
         TotalEditCount,
@@ -564,7 +630,7 @@ val achievements = listOf(
 
     Achievement(
         "regular",
-        R.drawable.ic_achievement_regular,
+        Res.drawable.achievement_regular,
         R.string.achievement_regular_title,
         R.string.achievement_regular_description,
         DaysActive,
@@ -592,7 +658,7 @@ val achievements = listOf(
 
     Achievement(
         EditTypeAchievement.RARE.id,
-        R.drawable.ic_achievement_rare,
+        Res.drawable.achievement_rare,
         R.string.achievement_rare_title,
         R.string.achievement_rare_solved_X,
         EditsOfTypeCount,
@@ -603,7 +669,7 @@ val achievements = listOf(
 
     Achievement(
         EditTypeAchievement.CAR.id,
-        R.drawable.ic_achievement_car,
+        Res.drawable.achievement_car,
         R.string.achievement_car_title,
         R.string.achievement_car_solved_X,
         EditsOfTypeCount,
@@ -623,7 +689,7 @@ val achievements = listOf(
 
     Achievement(
         EditTypeAchievement.VEG.id,
-        R.drawable.ic_achievement_veg,
+        Res.drawable.achievement_veg,
         R.string.achievement_veg_title,
         R.string.achievement_veg_solved_X,
         EditsOfTypeCount,
@@ -636,7 +702,7 @@ val achievements = listOf(
 
     Achievement(
         EditTypeAchievement.PEDESTRIAN.id,
-        R.drawable.ic_achievement_pedestrian,
+        Res.drawable.achievement_pedestrian,
         R.string.achievement_pedestrian_title,
         R.string.achievement_pedestrian_solved_X,
         EditsOfTypeCount,
@@ -650,7 +716,7 @@ val achievements = listOf(
 
     Achievement(
         EditTypeAchievement.BUILDING.id,
-        R.drawable.ic_achievement_building,
+        Res.drawable.achievement_building,
         R.string.achievement_building_title,
         R.string.achievement_building_solved_X,
         EditsOfTypeCount,
@@ -665,7 +731,7 @@ val achievements = listOf(
 
     Achievement(
         EditTypeAchievement.POSTMAN.id,
-        R.drawable.ic_achievement_postman,
+        Res.drawable.achievement_postman,
         R.string.achievement_postman_title,
         R.string.achievement_postman_solved_X,
         EditsOfTypeCount,
@@ -681,7 +747,7 @@ val achievements = listOf(
 
     Achievement(
         EditTypeAchievement.BLIND.id,
-        R.drawable.ic_achievement_blind,
+        Res.drawable.achievement_blind,
         R.string.achievement_blind_title,
         R.string.achievement_blind_solved_X,
         EditsOfTypeCount,
@@ -695,7 +761,7 @@ val achievements = listOf(
 
     Achievement(
         EditTypeAchievement.WHEELCHAIR.id,
-        R.drawable.ic_achievement_wheelchair,
+        Res.drawable.achievement_wheelchair,
         R.string.achievement_wheelchair_title,
         R.string.achievement_wheelchair_solved_X,
         EditsOfTypeCount,
@@ -709,7 +775,7 @@ val achievements = listOf(
 
     Achievement(
         EditTypeAchievement.BICYCLIST.id,
-        R.drawable.ic_achievement_bicyclist,
+        Res.drawable.achievement_bicyclist,
         R.string.achievement_bicyclist_title,
         R.string.achievement_bicyclist_solved_X,
         EditsOfTypeCount,
@@ -723,7 +789,7 @@ val achievements = listOf(
 
     Achievement(
         EditTypeAchievement.CITIZEN.id,
-        R.drawable.ic_achievement_citizen,
+        Res.drawable.achievement_citizen,
         R.string.achievement_citizen_title,
         R.string.achievement_citizen_solved_X,
         EditsOfTypeCount,
@@ -741,7 +807,7 @@ val achievements = listOf(
 
     Achievement(
         EditTypeAchievement.OUTDOORS.id,
-        R.drawable.ic_achievement_outdoors,
+        Res.drawable.achievement_outdoors,
         R.string.achievement_outdoors_title,
         R.string.achievement_outdoors_solved_X,
         EditsOfTypeCount,
@@ -756,7 +822,7 @@ val achievements = listOf(
 
     Achievement(
         EditTypeAchievement.LIFESAVER.id,
-        R.drawable.ic_achievement_lifesaver,
+        Res.drawable.achievement_lifesaver,
         R.string.achievement_lifesaver_title,
         R.string.achievement_lifesaver_solved_X,
         EditsOfTypeCount,

@@ -1,8 +1,10 @@
 package de.westnordost.streetcomplete.data.user.achievements
 
+import org.jetbrains.compose.resources.DrawableResource
+
 data class Achievement(
     val id: String,
-    val icon: Int,
+    val icon: DrawableResource?,
     val title: Int,
     val description: Int?,
     val condition: AchievementCondition,

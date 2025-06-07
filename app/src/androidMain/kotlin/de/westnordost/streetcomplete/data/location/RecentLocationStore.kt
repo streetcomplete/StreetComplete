@@ -4,14 +4,17 @@ import android.location.Location
 import de.westnordost.streetcomplete.util.ktx.elapsedDuration
 import de.westnordost.streetcomplete.util.ktx.toLatLon
 import de.westnordost.streetcomplete.util.math.flatDistanceTo
+import kotlinx.atomicfu.locks.ReentrantLock
+import kotlinx.atomicfu.locks.withLock
 import kotlin.time.Duration.Companion.minutes
 import kotlin.time.Duration.Companion.seconds
 
 class RecentLocationStore {
+    private val lock = ReentrantLock()
     private val recentLocations = ArrayDeque<Location>()
 
     /** returns a sequence of recent locations, with some minimum time and distance from each other */
-    fun get(): Sequence<Location> = synchronized(recentLocations) {
+    fun get(): Sequence<Location> = lock.withLock {
         var previousLocation: Location? = null
         recentLocations.reversed().asSequence().filter {
             val loc = previousLocation
@@ -30,7 +33,7 @@ class RecentLocationStore {
         }
     }
 
-    fun add(location: Location) = synchronized(recentLocations) {
+    fun add(location: Location) = lock.withLock {
         while (recentLocations.isNotEmpty()
             && recentLocations.first().elapsedDuration <= location.elapsedDuration - LOCATION_STORE_TIME
         ) {

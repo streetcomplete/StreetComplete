@@ -257,7 +257,7 @@ private fun achievement(
     unlockedLinks: Map<Int, List<Link>> = emptyMap(),
     maxLevel: Int = -1
 ): Achievement =
-    Achievement(id, 0, 0, 0, condition, func, unlockedLinks, maxLevel)
+    Achievement(id, null, 0, 0, condition, func, unlockedLinks, maxLevel)
 
 private fun links(vararg ids: String): List<Link> =
     ids.map { id -> Link(id, "url", "title", LinkCategory.INTRO, null, null) }

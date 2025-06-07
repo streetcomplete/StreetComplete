@@ -1,15 +1,15 @@
 package de.westnordost.streetcomplete.screens.user.edits
 
-import android.content.res.Resources
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.Stable
 import androidx.lifecycle.ViewModel
-import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.AllEditTypes
+import de.westnordost.streetcomplete.data.flags.FlagAlignments
+import de.westnordost.streetcomplete.data.flags.readFlagAlignments
 import de.westnordost.streetcomplete.data.osm.edits.EditType
 import de.westnordost.streetcomplete.data.user.statistics.CountryStatistics
 import de.westnordost.streetcomplete.data.user.statistics.StatisticsSource
-import de.westnordost.streetcomplete.util.ktx.getYamlStringMap
+import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.util.ktx.launch
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -31,7 +31,7 @@ abstract class EditStatisticsViewModel : ViewModel() {
     abstract fun queryCountryStatistics()
     abstract fun queryEditTypeStatistics()
 
-    abstract val flagAlignments: StateFlow<Map<String, FlagAlignment>?>
+    abstract val flagAlignments: StateFlow<FlagAlignments?>
 }
 
 @Immutable
@@ -41,7 +41,7 @@ data class EditTypeStatistics(val type: EditType, val count: Int)
 class EditStatisticsViewModelImpl(
     private val statisticsSource: StatisticsSource,
     private val allEditTypes: AllEditTypes,
-    private val resources: Resources,
+    private val res: Res,
 ) : EditStatisticsViewModel() {
 
     override val isSynchronizingStatistics = MutableStateFlow(statisticsSource.isSynchronizing)
@@ -54,7 +54,7 @@ class EditStatisticsViewModelImpl(
     override val countryStatisticsCurrentWeek = MutableStateFlow<List<CountryStatistics>?>(null)
     override val editTypeStatisticsCurrentWeek = MutableStateFlow<List<EditTypeStatistics>?>(null)
 
-    override val flagAlignments = MutableStateFlow<Map<String, FlagAlignment>?>(null)
+    override val flagAlignments = MutableStateFlow<FlagAlignments?>(null)
 
     // no updating of data implemented (because actually not needed. Not possible to add edits
     // while in this screen)
@@ -62,21 +62,7 @@ class EditStatisticsViewModelImpl(
     init {
         launch(IO) { hasEdits.value = statisticsSource.getEditCount() > 0 }
         launch(IO) { hasEditsCurrentWeek.value = statisticsSource.getCurrentWeekEditCount() > 0 }
-        launch(IO) {
-            flagAlignments.value = resources
-                .getYamlStringMap(R.raw.flag_alignments)
-                .mapValues {
-                    when (it.value) {
-                        "left" ->         FlagAlignment.Left
-                        "center-left" ->  FlagAlignment.CenterLeft
-                        "center" ->       FlagAlignment.Center
-                        "center-right" -> FlagAlignment.CenterRight
-                        "right" ->        FlagAlignment.Right
-                        "stretch" ->      FlagAlignment.Stretch
-                        else ->           throw IllegalArgumentException()
-                    }
-                }
-        }
+        launch(IO) { flagAlignments.value = res.readFlagAlignments() }
     }
 
     override fun queryCountryStatistics() {

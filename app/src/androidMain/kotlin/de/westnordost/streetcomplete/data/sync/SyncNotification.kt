@@ -9,8 +9,7 @@ import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.app.NotificationManagerCompat.IMPORTANCE_LOW
 import androidx.core.app.PendingIntentCompat
-import de.westnordost.streetcomplete.ApplicationConstants.NAME
-import de.westnordost.streetcomplete.ApplicationConstants.NOTIFICATIONS_CHANNEL_SYNC
+import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.screens.main.MainActivity
 
@@ -18,9 +17,9 @@ import de.westnordost.streetcomplete.screens.main.MainActivity
  *  and by the download service. */
 fun createSyncNotification(context: Context, cancelIntent: PendingIntent): Notification {
     val manager = NotificationManagerCompat.from(context)
-    if (manager.getNotificationChannelCompat(NOTIFICATIONS_CHANNEL_SYNC) == null) {
+    if (manager.getNotificationChannelCompat(ApplicationConstants.NOTIFICATIONS_CHANNEL_SYNC) == null) {
         manager.createNotificationChannel(
-            NotificationChannelCompat.Builder(NOTIFICATIONS_CHANNEL_SYNC, IMPORTANCE_LOW)
+            NotificationChannelCompat.Builder(ApplicationConstants.NOTIFICATIONS_CHANNEL_SYNC, IMPORTANCE_LOW)
                 .setName(context.getString(R.string.notification_channel_sync))
                 .build()
         )
@@ -31,9 +30,9 @@ fun createSyncNotification(context: Context, cancelIntent: PendingIntent): Notif
     // Intent has to be mutable, otherwise the intent flags defined above are not applied
     val mainActivityIntent = PendingIntentCompat.getActivity(context, 0, intent, 0, true)
 
-    return NotificationCompat.Builder(context, NOTIFICATIONS_CHANNEL_SYNC)
+    return NotificationCompat.Builder(context, ApplicationConstants.NOTIFICATIONS_CHANNEL_SYNC)
         .setSmallIcon(R.mipmap.ic_notification)
-        .setContentTitle(NAME)
+        .setContentTitle(ApplicationConstants.NAME)
         .setTicker(context.resources.getString(R.string.notification_syncing))
         .setContentIntent(cancelIntent)
         .setOngoing(true)

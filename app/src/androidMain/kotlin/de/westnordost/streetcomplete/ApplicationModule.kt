@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete
 
 import android.content.res.AssetManager
 import android.content.res.Resources
+import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.util.CrashReportExceptionHandler
 import de.westnordost.streetcomplete.util.DefaultResourceProvider
 import de.westnordost.streetcomplete.util.ResourceProvider
@@ -33,6 +34,7 @@ val appModule = module {
             identity()
         }
     } }
+    single<Res> { Res }
     single<FileSystem> { SystemFileSystem }
     single<ResourceProvider> { DefaultResourceProvider(androidContext(), get()) }
 }

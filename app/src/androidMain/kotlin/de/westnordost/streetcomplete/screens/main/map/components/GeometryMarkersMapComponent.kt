@@ -81,10 +81,10 @@ class GeometryMarkersMapComponent(
     }
 
     suspend fun putAll(markers: Iterable<Marker>) {
-        val icons = markers.map { it.icon ?: R.drawable.ic_preset_maki_circle }
+        val icons = markers.map { it.icon ?: R.drawable.preset_maki_circle }
         mapImages.addOnce(icons) {
             val name = context.resources.getResourceEntryName(it)
-            val sdf = name.startsWith("ic_preset_")
+            val sdf = name.startsWith("preset_")
             createIconBitmap(context, it, sdf) to sdf
         }
         for (marker in markers) {
@@ -117,7 +117,7 @@ private fun Marker.toFeatures(resources: Resources): List<Feature> {
     // point marker or any marker with title or icon
     if (icon != null || title != null || geometry is ElementPointGeometry) {
         val p = JsonObject()
-        val mustHaveIcon = icon ?: R.drawable.ic_preset_maki_circle
+        val mustHaveIcon = icon ?: R.drawable.preset_maki_circle
         p.addProperty("icon", resources.getResourceEntryName(mustHaveIcon))
         if (title != null) {
             p.addProperty("label", title)

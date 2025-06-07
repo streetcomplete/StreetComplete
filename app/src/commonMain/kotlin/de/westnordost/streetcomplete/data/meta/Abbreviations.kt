@@ -2,7 +2,8 @@ package de.westnordost.streetcomplete.data.meta
 
 import de.westnordost.streetcomplete.util.ktx.anyIndexed
 
-/** Road abbreviations for all languages */
+/** Holds abbreviations (for road names) and its expansions. E.g. in English, "st." would expand
+ *  to "street". */
 class Abbreviations(config: Map<String, String>) {
     private val abbreviations = config.map { (abbreviation, expansion) ->
         var pattern = abbreviation.lowercase()
@@ -35,7 +36,7 @@ class Abbreviations(config: Map<String, String>) {
         for ((regex, replacement) in abbreviations) {
             if (!regex.matches(word, isFirstWord, isLastWord)) continue
             val result = regex.replaceFirst(word, replacement)
-            return if (word.first().isTitleCase()) result.titlecase() else result
+            return if (word.first().isTitleCase()) result.capitalize() else result
         }
         return null
     }
@@ -73,4 +74,5 @@ private fun Regex.matches(
     return this.matches(word)
 }
 
-private fun String.titlecase() = get(0).titlecase() + substring(1)
+private fun String.capitalize() =
+    replaceFirstChar { if (it.isLowerCase()) it.titlecase() else it.toString() }
