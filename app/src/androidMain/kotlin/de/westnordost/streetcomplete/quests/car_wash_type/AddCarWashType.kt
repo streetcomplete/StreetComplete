@@ -3,13 +3,14 @@ package de.westnordost.streetcomplete.quests.car_wash_type
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.quests.car_wash_type.CarWashType.AUTOMATED
 import de.westnordost.streetcomplete.quests.car_wash_type.CarWashType.SELF_SERVICE
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
-class AddCarWashType : OsmFilterQuestType<List<CarWashType>>() {
+class AddCarWashType : OsmFilterQuestType<List<CarWashType>>(), AndroidQuest {
 
     override val elementFilter = "nodes, ways with amenity = car_wash and !automated and !self_service"
     override val changesetComment = "Specify car wash types"

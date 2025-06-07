@@ -7,6 +7,7 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.getLastCheckDateKeys
@@ -21,7 +22,7 @@ import kotlinx.datetime.toLocalDateTime
 
 class CheckOpeningHoursSigned(
     private val getFeature: (Element) -> Feature?
-) : OsmElementQuestType<Boolean> {
+) : OsmElementQuestType<Boolean>, AndroidQuest {
 
     private val filter by lazy { """
         nodes, ways with

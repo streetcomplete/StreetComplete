@@ -53,9 +53,13 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
 import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
-import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuest
+import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestAndroid
+import de.westnordost.streetcomplete.data.osmnotes.notequests.createOsmNoteQuest
 import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
+import de.westnordost.streetcomplete.data.overlays.AndroidOverlay
+import de.westnordost.streetcomplete.data.overlays.Overlay
 import de.westnordost.streetcomplete.data.preferences.Preferences
+import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.quest.OsmNoteQuestKey
 import de.westnordost.streetcomplete.data.quest.Quest
 import de.westnordost.streetcomplete.data.quest.QuestAutoSyncer
@@ -69,7 +73,6 @@ import de.westnordost.streetcomplete.osm.level.levelsIntersect
 import de.westnordost.streetcomplete.osm.level.parseLevelsOrNull
 import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 import de.westnordost.streetcomplete.overlays.IsShowingElement
-import de.westnordost.streetcomplete.overlays.Overlay
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AbstractQuestForm
 import de.westnordost.streetcomplete.quests.IsShowingQuestDetails
@@ -898,7 +901,7 @@ class MainActivity :
         val overlay = viewModel.selectedOverlay.value ?: return
         val mapFragment = mapFragment ?: return
 
-        val f = overlay.createForm(null) ?: return
+        val f = (overlay as? AndroidOverlay)?.createForm(null) ?: return
         if (f.arguments == null) f.arguments = bundleOf()
         val camera = mapFragment.cameraPosition
         val rotation = camera?.rotation ?: 0.0
@@ -931,12 +934,12 @@ class MainActivity :
                 ?.takeIf { questsHiddenSource.get(OsmNoteQuestKey(it.id)) == null }
         }
         if (note != null) {
-            showQuestDetails(OsmNoteQuest(note.id, note.position))
+            showQuestDetails(createOsmNoteQuest(note.id, note.position))
             return
         }
 
         val element = withContext(Dispatchers.IO) { mapDataWithEditsSource.get(elementKey.type, elementKey.id) } ?: return
-        val f = overlay.createForm(element) ?: return
+        val f = (overlay as? AndroidOverlay)?.createForm(element) ?: return
         if (f.arguments == null) f.arguments = bundleOf()
 
         val camera = mapFragment.cameraPosition
@@ -970,7 +973,7 @@ class MainActivity :
         val mapFragment = mapFragment ?: return
         if (isQuestDetailsCurrentlyDisplayedFor(quest.key)) return
 
-        val f = quest.type.createForm()
+        val f = (quest.type as? AndroidQuest)?.createForm() ?: return
         if (f.arguments == null) f.arguments = bundleOf()
 
         val camera = mapFragment.cameraPosition
@@ -979,7 +982,7 @@ class MainActivity :
         val args = AbstractQuestForm.createArguments(quest.key, quest.type, quest.geometry, rotation, tilt)
         f.requireArguments().putAll(args)
 
-        if (quest is OsmQuest) {
+        if (f is AbstractOsmQuestForm<*> && quest is OsmQuest) {
             val element = withContext(Dispatchers.IO) { mapDataWithEditsSource.get(quest.elementType, quest.elementId) } ?: return
             val osmArgs = AbstractOsmQuestForm.createArguments(element)
             f.requireArguments().putAll(osmArgs)

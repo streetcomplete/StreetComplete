@@ -3,10 +3,11 @@ package de.westnordost.streetcomplete.quests.parking_access
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.osm.Tags
 
-class AddBikeParkingAccess : OsmFilterQuestType<ParkingAccess>() {
+class AddBikeParkingAccess : OsmFilterQuestType<ParkingAccess>(), AndroidQuest {
 
     // Only include these bicycle_parking types, because access for these types is needed for
     // AddBikeParkingFee and because those are uncontroversial. See #2496 and #2517

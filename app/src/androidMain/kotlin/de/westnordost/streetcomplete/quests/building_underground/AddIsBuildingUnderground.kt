@@ -3,11 +3,12 @@ package de.westnordost.streetcomplete.quests.building_underground
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BUILDING
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.quests.YesNoQuestForm
 
-class AddIsBuildingUnderground : OsmFilterQuestType<Boolean>() {
+class AddIsBuildingUnderground : OsmFilterQuestType<Boolean>(), AndroidQuest {
 
     override val elementFilter = "ways, relations with building and layer ~ -[0-9]+ and !location"
     override val changesetComment = "Determine whether buildings are fully underground"
