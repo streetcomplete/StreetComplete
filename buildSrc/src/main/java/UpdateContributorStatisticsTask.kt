@@ -41,70 +41,113 @@ open class UpdateContributorStatisticsTask : DefaultTask() {
         val linesOfInterfaceMarkupChangedByCommit = mutableMapOf<String, Int>()
         val linesOfCodeChangedByCommit = mutableMapOf<String, Int>()
         val ignoredCommits = mutableSetOf<String>()
+
         ProcessBuilder(
             "git",
             "log",
             "--pretty=name: %an%nhash: %H%nsubject: %s%ntimestamp: %at",
             "--numstat",
         ).start().inputStream.bufferedReader().useLines { lines ->
-            var name = ""
-            var hash = ""
-            var subject = ""
-            var timestamp = 0L
+            val ctx = CommitContext()
             for (line in lines) {
-                when {
-                    line.startsWith("name: ") -> {
-                        name = line.substringAfter("name: ")
-                    }
-                    line.startsWith("hash: ") -> {
-                        hash = line.substringAfter("hash: ")
-                        timestamp = 0
-                    }
-                    line.startsWith("subject: ") -> {
-                        subject = line.substringAfter("subject: ")
-                    }
-                    line.startsWith("timestamp: ") -> {
-                        val t = line.substringAfter("timestamp: ").toLongOrNull() ?: 0L
-                        if (t > timestamp) timestamp = t
-                    }
-                    else -> {
-                        if (hash in skipCommits || skipCommitRegex?.matches(subject) == true) {
-                            ignoredCommits.add(hash)
-                            continue
-                        }
-
-                        val splits = line.split(Regex("\\s+"))
-                        if (splits.size != 3) continue
-
-                        val contributor = result.getOrPut(name) { Contributor(name) }
-                        val file = splits[2]
-
-                        val additions = splits[0].toIntOrNull() ?: 0
-                        val deletions = splits[1].toIntOrNull() ?: 0
-                        val changes = additions + deletions
-
-                        when {
-                            codeFileRegex.matches(file) -> {
-                                linesOfCodeChangedByCommit[hash] = changes + (linesOfCodeChangedByCommit[hash] ?: 0)
-                                contributor.linesOfCodeChanged += changes
-                            }
-                            assetFileRegex.matches(file) -> {
-                                assetFilesChangedByCommit[hash] = 1 + (assetFilesChangedByCommit[hash] ?: 0)
-                                contributor.assetFilesChanged++
-                            }
-                            interfaceMarkupRegex.matches(file) -> {
-                                linesOfInterfaceMarkupChangedByCommit[hash] = changes + (linesOfInterfaceMarkupChangedByCommit[hash] ?: 0)
-                                contributor.linesOfInterfaceMarkupChanged += changes
-                            }
-                        }
-                        if (timestamp > contributor.lastChangeTimestamp) {
-                            contributor.lastChangeTimestamp = timestamp
-                            contributor.hash = hash
-                        }
-                    }
+                if (!processMetaLine(line, ctx)) {
+                    processFileLine(
+                        line,
+                        ctx,
+                        result,
+                        assetFilesChangedByCommit,
+                        linesOfInterfaceMarkupChangedByCommit,
+                        linesOfCodeChangedByCommit,
+                        ignoredCommits
+                    )
                 }
             }
         }
+
+        printStatistics(
+            ignoredCommits,
+            linesOfCodeChangedByCommit,
+            assetFilesChangedByCommit,
+            linesOfInterfaceMarkupChangedByCommit
+        )
+
+        return result.values
+    }
+
+    private fun processMetaLine(line: String, ctx: CommitContext): Boolean = when {
+        line.startsWith("name: ") -> {
+            ctx.name = line.substringAfter("name: ")
+            true
+        }
+        line.startsWith("hash: ") -> {
+            ctx.hash = line.substringAfter("hash: ")
+            ctx.timestamp = 0
+            true
+        }
+        line.startsWith("subject: ") -> {
+            ctx.subject = line.substringAfter("subject: ")
+            true
+        }
+        line.startsWith("timestamp: ") -> {
+            val t = line.substringAfter("timestamp: ").toLongOrNull() ?: 0L
+            if (t > ctx.timestamp) ctx.timestamp = t
+            true
+        }
+        else -> false
+    }
+
+    @Suppress("LongParameterList")
+    private fun processFileLine(
+        line: String,
+        ctx: CommitContext,
+        result: MutableMap<String, Contributor>,
+        assetFilesChangedByCommit: MutableMap<String, Int>,
+        linesOfInterfaceMarkupChangedByCommit: MutableMap<String, Int>,
+        linesOfCodeChangedByCommit: MutableMap<String, Int>,
+        ignoredCommits: MutableSet<String>
+    ) {
+        if (ctx.hash in skipCommits || skipCommitRegex?.matches(ctx.subject) == true) {
+            ignoredCommits.add(ctx.hash)
+            return
+        }
+
+        val splits = line.split(Regex("\\s+"))
+        if (splits.size != 3) return
+
+        val contributor = result.getOrPut(ctx.name) { Contributor(ctx.name) }
+        val file = splits[2]
+
+        val additions = splits[0].toIntOrNull() ?: 0
+        val deletions = splits[1].toIntOrNull() ?: 0
+        val changes = additions + deletions
+
+        when {
+            codeFileRegex.matches(file) -> {
+                linesOfCodeChangedByCommit[ctx.hash] = changes + (linesOfCodeChangedByCommit[ctx.hash] ?: 0)
+                contributor.linesOfCodeChanged += changes
+            }
+            assetFileRegex.matches(file) -> {
+                assetFilesChangedByCommit[ctx.hash] = 1 + (assetFilesChangedByCommit[ctx.hash] ?: 0)
+                contributor.assetFilesChanged++
+            }
+            interfaceMarkupRegex.matches(file) -> {
+                linesOfInterfaceMarkupChangedByCommit[ctx.hash] = changes + (linesOfInterfaceMarkupChangedByCommit[ctx.hash] ?: 0)
+                contributor.linesOfInterfaceMarkupChanged += changes
+            }
+        }
+
+        if (ctx.timestamp > contributor.lastChangeTimestamp) {
+            contributor.lastChangeTimestamp = ctx.timestamp
+            contributor.hash = ctx.hash
+        }
+    }
+
+    private fun printStatistics(
+        ignoredCommits: Set<String>,
+        linesOfCodeChangedByCommit: Map<String, Int>,
+        assetFilesChangedByCommit: Map<String, Int>,
+        linesOfInterfaceMarkupChangedByCommit: Map<String, Int>
+    ) {
         println("ignored commits")
         println("--------------------------------------------------------")
         ignoredCommits.forEach { println("https://github.com/streetcomplete/StreetComplete/commit/$it") }
@@ -123,9 +166,14 @@ open class UpdateContributorStatisticsTask : DefaultTask() {
         println("--------------------------------------------------------")
         linesOfInterfaceMarkupChangedByCommit.entries.sortedByDescending { it.value }.subList(0, 50)
             .forEach { println("${it.value}\thttps://github.com/streetcomplete/StreetComplete/commit/${it.key}") }
-
-        return result.values
     }
+
+    private data class CommitContext(
+        var name: String = "",
+        var hash: String = "",
+        var subject: String = "",
+        var timestamp: Long = 0L
+    )
 
     private fun downloadGithubUserDetails(hash: String): GithubUser? {
         val url = URL("https://api.github.com/repos/streetcomplete/streetcomplete/commits/$hash")
