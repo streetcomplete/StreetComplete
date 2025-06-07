@@ -81,14 +81,15 @@ class QuestsHiddenControllerTest {
         )
     }
 
-    // TODO: modify calls below
     @Test fun countAll() {
         val h1 = OsmQuestHiddenAt(osmQuestKey(elementId = 1), 1)
         val h2 = NoteQuestHiddenAt(1L, 1)
+        val h3 = AtpQuestHiddenAt(1L, 1)
 
         on(osmDb.getAll()).thenReturn(listOf(h1))
         on(notesDb.getAll()).thenReturn(listOf(h2))
-        assertEquals(2, ctrl.countAll())
+        on(atpDb.getAll()).thenReturn(listOf(h2))
+        assertEquals(3, ctrl.countAll())
     }
 
     @Test fun `hide osm quest`() {
@@ -111,6 +112,16 @@ class QuestsHiddenControllerTest {
         verify(listener).onHid(q, 123)
     }
 
+    @Test fun `hide AllThePlaces quest`() {
+        val q = AtpQuestKey(1)
+        on(atpDb.getTimestamp(q.atpEntryId)).thenReturn(123L)
+
+        ctrl.hide(q)
+
+        verify(atpDb).add(q.atpEntryId)
+        verify(listener).onHid(q, 123)
+    }
+
     @Test fun `unhide osm quest`() {
         val q = osmQuestKey()
         on(osmDb.delete(q)).thenReturn(true).thenReturn(false)
@@ -125,6 +136,21 @@ class QuestsHiddenControllerTest {
     }
 
     @Test fun `unhide osm note quest`() {
+        val q = OsmNoteQuestKey(2)
+
+        on(notesDb.delete(q.noteId)).thenReturn(true).thenReturn(false)
+        on(notesDb.getTimestamp(q.noteId)).thenReturn(123).thenReturn(null)
+
+        assertTrue(ctrl.unhide(q))
+        assertFalse(ctrl.unhide(q))
+
+        verify(notesDb, times(2)).getTimestamp(q.noteId)
+        verify(notesDb, times(1)).delete(q.noteId)
+        verify(listener, times(1)).onUnhid(q, 123)
+    }
+
+    // TODO: modify calls below
+    @Test fun `unhide AllThePlaces quest`() {
         val q = OsmNoteQuestKey(2)
 
         on(notesDb.delete(q.noteId)).thenReturn(true).thenReturn(false)
