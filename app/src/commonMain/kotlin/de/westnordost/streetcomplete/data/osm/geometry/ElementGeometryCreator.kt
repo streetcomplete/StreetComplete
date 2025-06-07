@@ -38,7 +38,6 @@ class ElementGeometryCreator {
                 val positionsByWayId = mapData.getWaysNodePositions(element, allowIncomplete) ?: return null
                 return create(element, positionsByWayId)
             }
-            else -> return null
         }
     }
 

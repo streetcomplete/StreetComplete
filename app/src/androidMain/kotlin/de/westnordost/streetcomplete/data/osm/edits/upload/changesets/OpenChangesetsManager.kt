@@ -76,5 +76,3 @@ class OpenChangesetsManager(
         private const val TAG = "ChangesetManager"
     }
 }
-
-

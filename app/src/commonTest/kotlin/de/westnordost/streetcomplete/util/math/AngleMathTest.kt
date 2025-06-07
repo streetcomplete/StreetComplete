@@ -20,15 +20,15 @@ class AngleMathTest {
 
     @Test fun normalizeRadiansDouble() {
         assertEquals(0.0, normalizeRadians(0.0), 1e-12)
-        assertEquals(0.0, normalizeRadians(2*PI), 1e-12)
-        assertEquals(0.0, normalizeRadians(-2*PI), 1e-12)
-        assertEquals(PI/2, normalizeRadians(PI/2), 1e-12)
-        assertEquals(PI, normalizeRadians(3*PI), 1e-12)
-        assertEquals(PI, normalizeRadians(-3*PI), 1e-12)
-        assertEquals(-PI, normalizeRadians(3*PI, -PI), 1e-12)
+        assertEquals(0.0, normalizeRadians(2 * PI), 1e-12)
+        assertEquals(0.0, normalizeRadians(-2 * PI), 1e-12)
+        assertEquals(PI / 2, normalizeRadians(PI / 2), 1e-12)
+        assertEquals(PI, normalizeRadians(3 * PI), 1e-12)
+        assertEquals(PI, normalizeRadians(-3 * PI), 1e-12)
+        assertEquals(-PI, normalizeRadians(3 * PI, -PI), 1e-12)
         assertEquals(0.0, normalizeRadians(0.0, -PI), 1e-12)
-        assertEquals(PI/2, normalizeRadians(PI/2, -PI/2), 1e-12)
-        assertEquals(PI/2, normalizeRadians(-3*PI/2, -PI), 1e-12)
+        assertEquals(PI / 2, normalizeRadians(PI / 2, -PI / 2), 1e-12)
+        assertEquals(PI / 2, normalizeRadians(-3 * PI / 2, -PI), 1e-12)
     }
 
     @Test fun normalizeDegreesFloat() {
@@ -44,4 +44,3 @@ class AngleMathTest {
         assertEquals(225f, normalizeDegrees(-135f, -90f))
     }
 }
-
