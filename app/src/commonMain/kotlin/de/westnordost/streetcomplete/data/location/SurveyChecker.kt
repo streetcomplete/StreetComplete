@@ -11,7 +11,8 @@ import de.westnordost.streetcomplete.util.math.flatDistanceToArcs
 class SurveyChecker {
     private val recentLocations = RecentLocations(
         maxAge = ApplicationConstants.MAX_RECENT_LOCATIONS_AGE,
-        // we don't need to add elements to `recentLocations` when we check for a much larger distance
+        // we don't need to add elements to `recentLocations` every few meters when we check for a
+        // much larger distance
         minDistanceMeters = ApplicationConstants.MAX_DISTANCE_TO_ELEMENT_FOR_SURVEY / 2.0,
     )
 
