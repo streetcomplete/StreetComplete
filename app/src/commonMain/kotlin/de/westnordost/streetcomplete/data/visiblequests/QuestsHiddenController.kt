@@ -1,7 +1,9 @@
 package de.westnordost.streetcomplete.data.visiblequests
 
+import de.westnordost.streetcomplete.data.atp.atpquests.AtpQuestsHiddenDao
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestsHiddenDao
 import de.westnordost.streetcomplete.data.osmnotes.notequests.NoteQuestsHiddenDao
+import de.westnordost.streetcomplete.data.quest.AtpQuestKey
 import de.westnordost.streetcomplete.data.quest.OsmNoteQuestKey
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import de.westnordost.streetcomplete.data.quest.QuestKey
@@ -13,6 +15,7 @@ import kotlinx.atomicfu.locks.withLock
 class QuestsHiddenController(
     private val osmDb: OsmQuestsHiddenDao,
     private val notesDb: NoteQuestsHiddenDao,
+    private val atpDb: AtpQuestsHiddenDao,
 ) : QuestsHiddenSource, HideQuestController {
 
     /* Must be a singleton because there is a listener that should respond to a change in the
@@ -40,6 +43,7 @@ class QuestsHiddenController(
             when (key) {
                 is OsmQuestKey -> osmDb.add(key)
                 is OsmNoteQuestKey -> notesDb.add(key.noteId)
+                is AtpQuestKey -> atpDb.add(key.atpEntryId)
             }
             timestamp = getTimestamp(key) ?: return
             cache[key] = timestamp
@@ -55,6 +59,7 @@ class QuestsHiddenController(
             val result = when (key) {
                 is OsmQuestKey -> osmDb.delete(key)
                 is OsmNoteQuestKey -> notesDb.delete(key.noteId)
+                is AtpQuestKey -> atpDb.delete(key.atpEntryId)
             }
             if (!result) return false
             cache.remove(key)
@@ -67,6 +72,7 @@ class QuestsHiddenController(
         when (key) {
             is OsmQuestKey -> osmDb.getTimestamp(key)
             is OsmNoteQuestKey -> notesDb.getTimestamp(key.noteId)
+            is AtpQuestKey -> atpDb.getTimestamp(key.atpEntryId)
         }
 
     /** Un-hides all previously hidden quests by user interaction */

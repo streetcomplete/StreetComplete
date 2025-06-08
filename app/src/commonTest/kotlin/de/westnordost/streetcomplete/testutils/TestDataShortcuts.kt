@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.testutils
 
+import de.westnordost.streetcomplete.data.atp.AtpEntry
 import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChanges
@@ -8,7 +9,9 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTag
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.NODE
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.Relation
@@ -62,7 +65,7 @@ fun waysAsMembers(wayIds: List<Long>, role: String = ""): List<RelationMember> =
 
 fun pGeom(lat: Double = 0.0, lon: Double = 0.0) = ElementPointGeometry(p(lat, lon))
 
-fun note(
+fun note( // TODO: repeats "private fun createNote(" in NoteDaoTest - can it be avoided?
     id: Long = 1,
     position: LatLon = p(0.0, 0.0),
     timestamp: Long = 0,
@@ -115,4 +118,18 @@ fun edit(
     isSynced,
     action,
     isNearUserLocation
+)
+
+fun atpEntry( // TODO: duplicates "private fun createAtpEntry" - is it possible to resolve this duplication?
+    id: Long = 5,
+    position: LatLon = LatLon(1.0, 1.0),
+    osmMatch: ElementKey = ElementKey(NODE, 1),
+    tagsInATP: Map<String, String> = mapOf(),
+    tagsInOSM: Map<String, String> = mapOf()
+) = AtpEntry(
+    position = position,
+    id = id,
+    osmMatch = osmMatch,
+    tagsInATP = tagsInATP,
+    tagsInOSM = tagsInOSM
 )
