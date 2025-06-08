@@ -19,6 +19,7 @@ import kotlinx.coroutines.launch
 
 /** Deletes old unused persisted data in the background */
 class Cleaner(
+    // TODO add ATP here
     private val noteController: NoteController,
     private val mapDataController: MapDataController,
     private val questTypeRegistry: QuestTypeRegistry,
@@ -32,6 +33,7 @@ class Cleaner(
         val time = nowAsEpochMilliseconds()
 
         val oldDataTimestamp = nowAsEpochMilliseconds() - ApplicationConstants.DELETE_OLD_DATA_AFTER
+        // TODO add ATP here
         noteController.deleteOlderThan(oldDataTimestamp, MAX_DELETE_ELEMENTS)
         mapDataController.deleteOlderThan(oldDataTimestamp, MAX_DELETE_ELEMENTS)
         downloadedTilesController.deleteOlderThan(oldDataTimestamp)
@@ -48,6 +50,7 @@ class Cleaner(
         mapTilesDownloader.clear()
         downloadedTilesController.clear()
         mapDataController.clear()
+        // TODO add ATP here
         noteController.clear()
         logsController.clear()
         questTypeRegistry.forEach { it.deleteMetadataOlderThan(nowAsEpochMilliseconds()) }

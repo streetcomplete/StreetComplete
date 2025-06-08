@@ -6,6 +6,7 @@ import de.westnordost.streetcomplete.data.download.tiles.TilesRect
 import de.westnordost.streetcomplete.data.download.tiles.enclosingTilesRect
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
+import de.westnordost.streetcomplete.data.quest.AtpQuestKey
 import de.westnordost.streetcomplete.data.quest.OsmNoteQuestKey
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import de.westnordost.streetcomplete.data.quest.Quest
@@ -259,17 +260,25 @@ private const val MARKER_NOTE_ID = "note_id"
 
 private const val QUEST_GROUP_OSM = "osm"
 private const val QUEST_GROUP_OSM_NOTE = "osm_note"
+private const val QUEST_GROUP_ATP = "atp"
+private const val MARKER_ATP_ENTRY_ID = "note_id"
 
 private fun QuestKey.toProperties(): List<Pair<String, String>> = when (this) {
     is OsmNoteQuestKey -> listOf(
         MARKER_QUEST_GROUP to QUEST_GROUP_OSM_NOTE,
         MARKER_NOTE_ID to noteId.toString()
     )
+
     is OsmQuestKey -> listOf(
         MARKER_QUEST_GROUP to QUEST_GROUP_OSM,
         MARKER_ELEMENT_TYPE to elementType.name,
         MARKER_ELEMENT_ID to elementId.toString(),
         MARKER_QUEST_TYPE to questTypeName
+    )
+
+    is AtpQuestKey -> listOf(
+        MARKER_QUEST_GROUP to QUEST_GROUP_ATP,
+        MARKER_ATP_ENTRY_ID to atpEntryId.toString()
     )
 }
 
@@ -282,5 +291,7 @@ private fun Map<String, String>.toQuestKey(): QuestKey? = when (get(MARKER_QUEST
             getValue(MARKER_ELEMENT_ID).toLong(),
             getValue(MARKER_QUEST_TYPE)
         )
+    QUEST_GROUP_ATP ->
+        AtpQuestKey(getValue(MARKER_ATP_ENTRY_ID).toLong())
     else -> null
 }

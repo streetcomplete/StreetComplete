@@ -1,0 +1,15 @@
+package de.westnordost.streetcomplete.data.quest.atp
+
+import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.quest.AndroidQuest
+import de.westnordost.streetcomplete.data.quest.OsmCreateElementQuestType
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
+
+class CreatePoiBasedOnAtp: OsmCreateElementQuestType<CreatePoiBasedOnAtpAnswer>, AndroidQuest {
+    override fun createForm() = AtpCreateForm()
+    override val icon = R.drawable.ic_quest_dot // TODO: a radar icon? A plus icon?
+    override val title = R.string.quest_atp_add_missing_poi // TODO: proper title
+    override val wikiLink = "All the Places" // create dedicated import page? other documentation page? This one definitely does not explain enough in this context TODO
+    override val achievements = listOf(CITIZEN)
+    override val changesetComment = "Create POI surveyed by mapper, hint about missing entry was based on AllThePlaces data"
+}

@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.data.quest
 
+import de.westnordost.streetcomplete.data.atp.atpquests.AtpQuestSource
 import de.westnordost.streetcomplete.data.download.tiles.asBoundingBoxOfEnclosingTiles
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
@@ -35,6 +36,7 @@ class VisibleQuestsSourceTest {
     private lateinit var questsHiddenSource: QuestsHiddenSource
     private lateinit var questTypeRegistry: QuestTypeRegistry
     private lateinit var osmNoteQuestSource: OsmNoteQuestSource
+    private lateinit var atpQuestSource: AtpQuestSource
     private lateinit var visibleEditTypeSource: VisibleEditTypeSource
     private lateinit var teamModeQuestFilter: TeamModeQuestFilter
     private lateinit var selectedOverlaySource: SelectedOverlaySource
@@ -56,6 +58,7 @@ class VisibleQuestsSourceTest {
     @BeforeTest fun setUp() {
         osmNoteQuestSource = mock()
         osmQuestSource = mock()
+        atpQuestSource = mock()
         questsHiddenSource = mock()
         visibleEditTypeSource = mock()
         teamModeQuestFilter = mock()
@@ -91,7 +94,7 @@ class VisibleQuestsSourceTest {
         }
 
         source = VisibleQuestsSource(
-            questTypeRegistry, osmQuestSource, osmNoteQuestSource, questsHiddenSource,
+            questTypeRegistry, osmQuestSource, osmNoteQuestSource, atpQuestSource, questsHiddenSource,
             visibleEditTypeSource, teamModeQuestFilter, selectedOverlaySource
         )
 

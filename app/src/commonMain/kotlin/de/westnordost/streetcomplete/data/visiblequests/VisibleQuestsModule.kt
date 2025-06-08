@@ -12,7 +12,7 @@ val visibleQuestsModule = module {
     single { TeamModeQuestFilter(get(), get()) }
 
     single<QuestsHiddenSource> { get<QuestsHiddenController>() }
-    single { QuestsHiddenController(get(), get()) }
+    single { QuestsHiddenController(get(), get(), get()) }
 
     single<VisibleEditTypeSource> { get<VisibleEditTypeController>() }
     single { VisibleEditTypeController(get(), get(), get()) }
