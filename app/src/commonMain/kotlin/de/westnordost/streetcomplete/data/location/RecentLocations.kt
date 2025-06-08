@@ -20,7 +20,7 @@ class RecentLocations(
         locations.asSequence()
     }
 
-    fun add(location: Location) = lock.withLock {
+    fun add(location: Location): Unit = lock.withLock {
         // only add newer locations
         val firstDuration = locations.firstOrNull()?.elapsedDuration ?: Duration.ZERO
         if (firstDuration >= location.elapsedDuration) return@withLock
