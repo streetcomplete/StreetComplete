@@ -182,7 +182,7 @@ private fun LengthInputFootInch(
         )
 
         when (footInchAppearance) {
-            FootInchAppearance.PRIME -> Text("'", modifier = Modifier.padding(1.dp))
+            FootInchAppearance.PRIME -> Text("′", modifier = Modifier.padding(1.dp))
             FootInchAppearance.UPPERCASE_ABBREVIATION -> Text(
                 "FT",
                 modifier = Modifier
@@ -214,7 +214,7 @@ private fun LengthInputFootInch(
         )
 
         when (footInchAppearance) {
-            FootInchAppearance.PRIME -> Text("''", modifier = Modifier.padding(1.dp))
+            FootInchAppearance.PRIME -> Text("″", modifier = Modifier.padding(1.dp))
             FootInchAppearance.UPPERCASE_ABBREVIATION -> Text(
                 "IN",
                 modifier = Modifier
