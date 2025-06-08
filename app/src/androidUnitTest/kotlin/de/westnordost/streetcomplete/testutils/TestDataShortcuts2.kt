@@ -9,6 +9,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestHidden
 import de.westnordost.streetcomplete.data.osmnotes.Note
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuest
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestHidden
+import de.westnordost.streetcomplete.data.osmnotes.notequests.createOsmNoteQuest
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import de.westnordost.streetcomplete.data.quest.TestQuestTypeA
 
@@ -36,7 +37,7 @@ fun osmQuest(
 fun osmNoteQuest(
     id: Long = 1L,
     pos: LatLon = p()
-) = OsmNoteQuest(id, pos)
+) = createOsmNoteQuest(id, pos)
 
 fun osmQuestKey(
     elementType: ElementType = ElementType.NODE,
