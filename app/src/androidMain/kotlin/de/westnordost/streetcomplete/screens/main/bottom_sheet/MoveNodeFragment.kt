@@ -14,7 +14,7 @@ import androidx.lifecycle.lifecycleScope
 import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.AllEditTypes
-import de.westnordost.streetcomplete.data.location.RecentLocationStore
+import de.westnordost.streetcomplete.data.location.SurveyChecker
 import de.westnordost.streetcomplete.data.meta.CountryInfos
 import de.westnordost.streetcomplete.data.meta.LengthUnit
 import de.westnordost.streetcomplete.data.meta.getByLocation
@@ -40,11 +40,9 @@ import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.math.distanceTo
 import de.westnordost.streetcomplete.util.viewBinding
 import de.westnordost.streetcomplete.view.RoundRectOutlineProvider
-import de.westnordost.streetcomplete.view.checkIsSurvey
 import de.westnordost.streetcomplete.view.confirmIsSurvey
 import de.westnordost.streetcomplete.view.insets_animation.respectSystemInsets
 import kotlinx.coroutines.launch
-import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import org.koin.android.ext.android.inject
 import org.koin.core.qualifier.named
@@ -59,7 +57,7 @@ class MoveNodeFragment :
     private val allEditTypes: AllEditTypes by inject()
     private val countryBoundaries: Lazy<CountryBoundaries> by inject(named("CountryBoundariesLazy"))
     private val countryInfos: CountryInfos by inject()
-    private val recentLocationStore: RecentLocationStore by inject()
+    private val surveyChecker: SurveyChecker by inject()
 
     override val elementKey: ElementKey by lazy { node.key }
 
@@ -154,7 +152,7 @@ class MoveNodeFragment :
     }
 
     private suspend fun moveNodeTo(position: LatLon) {
-        val isSurvey = checkIsSurvey(ElementPointGeometry(position), recentLocationStore.get())
+        val isSurvey = surveyChecker.checkIsSurvey(ElementPointGeometry(position))
         if (isSurvey || confirmIsSurvey(requireContext())) {
             val action = MoveNodeAction(node, position)
             elementEditsController.add(editType, ElementPointGeometry(node.position), "survey", action, isSurvey)
