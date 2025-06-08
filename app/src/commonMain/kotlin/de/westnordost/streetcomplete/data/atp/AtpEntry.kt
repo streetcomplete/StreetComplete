@@ -14,4 +14,10 @@ data class AtpEntry(
     val osmMatch: ElementKey?,
     val tagsInATP: Map<String, String>,
     val tagsInOSM: Map<String, String>?,
+    val reportType: ReportType,
 )
+
+enum class ReportType {
+    MISSING_POI_IN_OPENSTREETMAP,
+    OPENING_HOURS_REPORTED_AS_OUTDATED_IN_OPENSTREETMAP,
+}
