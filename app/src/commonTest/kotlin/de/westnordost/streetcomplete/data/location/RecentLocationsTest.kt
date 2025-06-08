@@ -9,12 +9,12 @@ import kotlin.test.assertTrue
 import kotlin.time.Duration.Companion.seconds
 
 class RecentLocationsTest {
-    @Test fun `getAll returns nothing`() {
+    @Test fun `getAll returns nothing when empty`() {
         val r = RecentLocations(10.seconds, 1.0)
         assertTrue(r.getAll().toList().isEmpty())
     }
 
-    @Test fun `getAll one`() {
+    @Test fun `getAll returns one`() {
         val r = RecentLocations(10.seconds, 1.0)
         val l1 = Location(LatLon(0.0, 0.0), 1f, 1.seconds)
         r.add(l1)
@@ -25,7 +25,7 @@ class RecentLocationsTest {
         )
     }
 
-    @Test fun `getAll ordered by elapsedDuration descending`() {
+    @Test fun `getAll returns ordered by elapsedDuration descending`() {
         val r = RecentLocations(10.seconds, 1.0)
         val l1 = Location(LatLon(0.0, 0.0), 1f, 1.seconds)
         val l2 = Location(LatLon(1.0, 0.0), 1f, 2.seconds)
