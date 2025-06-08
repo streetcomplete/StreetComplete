@@ -105,7 +105,7 @@ class AtpDao(private val db: Database) {
     )
 
     private fun CursorPosition.toAtpEntry(): AtpEntry {
-        var tagsInOsm = getStringOrNull(OSM_TAGS)?.let {
+        val tagsInOsm = getStringOrNull(OSM_TAGS)?.let {
             if(it == "null") { // TODO: really? how it even happens?
                 null
             } else {
