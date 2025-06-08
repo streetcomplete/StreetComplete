@@ -13,9 +13,13 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun MaxHeightSignRound(resourceId: Int, content: @Composable () -> Unit) {
+fun MaxHeightSignRound(
+    resourceId: Int,
+    modifier: Modifier = Modifier,
+    content: @Composable () -> Unit
+) {
     Box(
-        modifier = Modifier
+        modifier = modifier
             .width(240.dp) // TODO Hardcoded size to keep the LengthInput inside the sign
             .height(240.dp)
     ) {

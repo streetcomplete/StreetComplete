@@ -42,11 +42,11 @@ fun MaxHeightForm(
     {
         CompositionLocalProvider(LocalTextStyle provides MaterialTheme.typography.h4) {
             MaxHeightSign(
-                countryInfo,
-                selectedUnit.value,
-                maxFeetDigits,
-                maxMeterDigits,
-                onLengthChanged
+                countryCode = countryInfo.countryCode,
+                selectedUnit = selectedUnit.value,
+                maxFeetDigits = maxFeetDigits,
+                maxMeterDigits = maxMeterDigits,
+                onLengthChanged = onLengthChanged
             )
         }
         LengthUnitSelector(

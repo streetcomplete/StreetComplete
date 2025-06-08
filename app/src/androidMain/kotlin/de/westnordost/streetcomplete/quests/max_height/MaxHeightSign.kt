@@ -1,9 +1,13 @@
 package de.westnordost.streetcomplete.quests.max_height
 
+import androidx.compose.foundation.layout.Column
+import androidx.compose.material.LocalTextStyle
+import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import de.westnordost.streetcomplete.data.meta.CountryInfo
-import de.westnordost.streetcomplete.data.meta.IncompleteCountryInfo
+import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.LengthUnit
 import de.westnordost.streetcomplete.osm.Length
 import de.westnordost.streetcomplete.ui.common.FootInchAppearance
@@ -11,14 +15,15 @@ import de.westnordost.streetcomplete.ui.common.LengthInput
 
 @Composable
 fun MaxHeightSign(
-    countryInfo: CountryInfo,
+    countryCode: String?,
     selectedUnit: LengthUnit,
     maxFeetDigits: Int,
     maxMeterDigits: Pair<Int, Int>,
+    modifier: Modifier = Modifier,
     onLengthChanged: (Length?) -> Unit,
 ) {
-    when (countryInfo.countryCode) {
-        "AU", "NZ", "US", "CA" -> MaxHeightSignMutcd {
+    when (countryCode) {
+        "AU", "NZ", "US", "CA" -> MaxHeightSignMutcd(modifier) {
             LengthInput(
                 selectedUnit = selectedUnit,
                 currentLength = null,
@@ -30,7 +35,10 @@ fun MaxHeightSign(
             )
         }
 
-        "FI", "IS", "SE" -> MaxHeightSignNordic {
+        "FI", "IS", "SE" -> MaxHeightSignRound(
+            resourceId = R.drawable.background_maxheight_sign_yellow,
+            modifier = modifier,
+        ) {
             LengthInput(
                 selectedUnit = selectedUnit,
                 currentLength = null,
@@ -42,7 +50,10 @@ fun MaxHeightSign(
             )
         }
 
-        else -> MaxHeightSignDefault {
+        else -> MaxHeightSignRound(
+            resourceId = R.drawable.background_maxheight_sign,
+            modifier = modifier
+        ) {
             LengthInput(
                 selectedUnit = selectedUnit,
                 currentLength = null,
@@ -59,12 +70,12 @@ fun MaxHeightSign(
 @Composable
 @Preview(showBackground = true)
 fun MaxHeightSignPreview() {
-    val countryInfo = CountryInfo(
-        infos = listOf(
-            IncompleteCountryInfo(
-                countryCode = "DE",
-            )
-        )
-    )
-    MaxHeightSign(countryInfo, LengthUnit.METER, 2, Pair(2, 2), {})
+    CompositionLocalProvider(LocalTextStyle provides MaterialTheme.typography.h4) {
+        Column {
+            MaxHeightSign("DE", LengthUnit.METER, 2, Pair(2, 2)) {}
+            MaxHeightSign("FI", LengthUnit.METER, 2, Pair(2, 2)) {}
+            MaxHeightSign("GB", LengthUnit.FOOT_AND_INCH, 2, Pair(2, 2)) {}
+            MaxHeightSign("US", LengthUnit.FOOT_AND_INCH, 2, Pair(2, 2)) {}
+        }
+    }
 }

@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.quests.max_height
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.IntrinsicSize
@@ -24,15 +23,19 @@ import de.westnordost.streetcomplete.ui.common.LengthInput
 import de.westnordost.streetcomplete.ui.theme.TrafficYellow
 
 @Composable
-fun MaxHeightSignMutcd(content: @Composable () -> Unit) {
+fun MaxHeightSignMutcd(
+    modifier: Modifier = Modifier,
+    content: @Composable () -> Unit
+) {
     CompositionLocalProvider(LocalTextStyle provides MaterialTheme.typography.h4) {
         Box(
-            modifier = Modifier
+            modifier = modifier
                 .width(IntrinsicSize.Max)
                 .height(IntrinsicSize.Min)
         ) {
             Surface(
-                color = TrafficYellow, modifier = Modifier
+                color = TrafficYellow,
+                modifier = Modifier
                     .fillMaxHeight()
                     .fillMaxWidth()
                     .border(
@@ -61,7 +64,6 @@ fun MaxHeightSignMutcdPreview() {
                 maxMeterDigits = Pair(2, 2),
                 footInchAppearance = FootInchAppearance.UPPERCASE_ABBREVIATION
             )
-
         }
     }
 }
