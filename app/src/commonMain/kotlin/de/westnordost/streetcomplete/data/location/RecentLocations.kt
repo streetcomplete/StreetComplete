@@ -35,7 +35,7 @@ class RecentLocations(
         // clear from deque all closer than `minDistanceMeters` to `location` OR newer than
         // `minTimeDifference`
         while (
-            locations.isNotEmpty() &&
+            locations.size > 1 &&
             locations.first().position.flatDistanceTo(location.position) < minDistanceMeters
         ) {
             locations.removeFirst()
