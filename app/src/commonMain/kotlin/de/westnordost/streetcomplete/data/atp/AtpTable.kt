@@ -15,6 +15,7 @@ object AtpTable {
         const val ATP_TAGS = "atp_tags"
         const val OSM_TAGS = "osm_tags"
         const val LAST_SYNC = "last_sync"
+        const val REPORT_TYPE = "report_type"
     }
 
     const val CREATE = """
@@ -27,6 +28,7 @@ object AtpTable {
             ${Columns.ATP_TAGS} text NOT NULL,
             ${Columns.OSM_TAGS} text NOT NULL,
             ${Columns.LAST_SYNC} int NOT NULL
+            ${Columns.REPORT_TYPE} text NOT NULL
         );
     """
 

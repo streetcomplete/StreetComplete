@@ -13,6 +13,7 @@ import de.westnordost.streetcomplete.data.atp.AtpTable.Columns.OSM_ELEMENT_MATCH
 import de.westnordost.streetcomplete.data.atp.AtpTable.Columns.ATP_TAGS
 import de.westnordost.streetcomplete.data.atp.AtpTable.Columns.OSM_TAGS
 import de.westnordost.streetcomplete.data.atp.AtpTable.Columns.LAST_SYNC
+import de.westnordost.streetcomplete.data.atp.AtpTable.Columns.REPORT_TYPE
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
@@ -101,7 +102,8 @@ class AtpDao(private val db: Database) {
         OSM_ELEMENT_MATCH_TYPE to osmMatch?.type?.name?.lowercase(),
         ATP_TAGS to Json.encodeToString(tagsInATP),
         OSM_TAGS to tagsInOSM?.let { Json.encodeToString(it) }, // TODO include tests for null and not null
-        LAST_SYNC to nowAsEpochMilliseconds()
+        LAST_SYNC to nowAsEpochMilliseconds(),
+        REPORT_TYPE to reportType.name.lowercase(),
     )
 
     private fun CursorPosition.toAtpEntry(): AtpEntry {
@@ -119,12 +121,15 @@ class AtpDao(private val db: Database) {
         } else {
             ElementKey( ElementType.valueOf(osmMatchType.uppercase()), osmMatchId)
         }
+        val reportType = ReportType.valueOf(getString(REPORT_TYPE).uppercase())
+
         val atpEntry = AtpEntry(
             LatLon(getDouble(LATITUDE), getDouble(LONGITUDE)),
             getLong(ID),
             osmMatch,
             Json.decodeFromString(getString(ATP_TAGS)),
             tagsInOsm,
+            reportType,
         )
         return atpEntry
     }

@@ -122,11 +122,13 @@ private fun createAtpEntry(
     position: LatLon = LatLon(1.0, 1.0),
     osmMatch: ElementKey = ElementKey(NODE, 1),
     tagsInATP: Map<String, String> = mapOf(),
-    tagsInOSM: Map<String, String> = mapOf()
+    tagsInOSM: Map<String, String> = mapOf(),
+    reportType: ReportType = ReportType.OPENING_HOURS_REPORTED_AS_OUTDATED_IN_OPENSTREETMAP,
 ) = AtpEntry(
         position = position,
         id = id,
         osmMatch = osmMatch,
         tagsInATP = tagsInATP,
-        tagsInOSM = tagsInOSM
+        tagsInOSM = tagsInOSM,
+        reportType = reportType,
     )
