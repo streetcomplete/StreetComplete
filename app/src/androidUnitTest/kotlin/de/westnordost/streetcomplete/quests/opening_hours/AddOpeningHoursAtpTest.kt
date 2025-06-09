@@ -21,7 +21,7 @@ import de.westnordost.streetcomplete.testutils.on
 
 class AddOpeningHoursAtpTest {
     val atpDb: AtpDao = mock()
-    private val questType = AddOpeningHoursAtp(mock(), mock(), atpDb)
+    private val questType = AddOpeningHoursAtp(mock(), atpDb)
 
     @Test fun `isApplicableTo returns false for known places with recently edited opening hours`() {
         assertFalse(questType.isApplicableTo(
@@ -42,7 +42,7 @@ class AddOpeningHoursAtpTest {
             tagsInOSM = osmTags,
             reportType = ReportType.OPENING_HOURS_REPORTED_AS_OUTDATED_IN_OPENSTREETMAP
         )))
-        val specialQuestType = AddOpeningHoursAtp(mock(), mock(), specialAtpDb)
+        val specialQuestType = AddOpeningHoursAtp(mock(), specialAtpDb)
         assertTrue(specialQuestType.isApplicableTo(
             node(id = 2, tags = osmTags, timestamp = nowAsEpochMilliseconds())
         ))

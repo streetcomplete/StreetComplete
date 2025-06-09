@@ -32,7 +32,6 @@ class AtpApiClient(
     //private val userAccessTokenSource: UserAccessTokenSource,
     //private val notesApiParser: NotesApiParser
 ) {
-    // TODO, rework into ATP version
     /**
      * Create a new note at the given location
      *
@@ -116,24 +115,23 @@ class AtpApiClient(
 
      */
 
+    // TODO, rework into ATP version, starting from one below
     /**
-     * Retrieve all open notes in the given area
+     * Retrieve all atp entries in the given area
      *
-     * @param bounds the area within the notes should be queried. This is usually limited at 25
-     *               square degrees. Check the server capabilities.
-     * @param limit number of entries returned at maximum. Any value between 1 and 10000
+     * @param bounds the area within the notes should be queried.
+     * @param limit number of entries returned at maximum. Any value between 1 and 10000 // TODO - keep?
      *
-     * @throws QueryTooBigException if the bounds area or the limit is too large
-     * @throws IllegalArgumentException if the bounds cross the 180th meridian
+     * @throws QueryTooBigException if the bounds area or the limit is too large// TODO - keep?
      * @throws ConnectionException if a temporary network connection problem occurs
      *
      * @return the incoming notes
      */
     /*
-    suspend fun getAllOpen(bounds: BoundingBox, limit: Int? = null): List<Note> = wrapApiClientExceptions {
-        if (bounds.crosses180thMeridian) {
-            throw IllegalArgumentException("Bounding box crosses 180th meridian")
-        }
+    suspend fun getAllAtpEntries(bounds: BoundingBox, limit: Int? = null): List<Note> = wrapApiClientExceptions {
+        // server has data split into graticules of one degree size
+        // do the same
+
 
         try {
             val response = httpClient.get(baseUrl + "notes") {
