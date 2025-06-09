@@ -45,7 +45,7 @@ class AtpDao(private val db: Database) {
                 it.osmMatch?.type.toString(),
                 Json.encodeToString(it.tagsInATP),
                 Json.encodeToString(it.tagsInOSM),
-                it.reportType,
+                it.reportType.name,
                 nowAsEpochMilliseconds()
             ) }
         )
