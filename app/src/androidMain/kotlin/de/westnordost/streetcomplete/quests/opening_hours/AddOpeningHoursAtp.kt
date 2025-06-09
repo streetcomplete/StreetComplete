@@ -202,29 +202,30 @@ class AddOpeningHoursAtp(
 
     private fun hasFeatureName(element: Element) = getFeature(element)?.name != null
 
-    private fun atpClaimsItShouldBeResurveyed(element: Element): Boolean
-    = atpDao.getAllWithMatchingOsmElement(ElementKey(element.type, element.id)).isNotEmpty()
+    // TODO remove it
+    private fun atpClaimsItShouldBeResurveyedHack(element: Element): Boolean = atpOpeningHoursDao(element)
 
-    private fun atpClaimsItShouldBeResurveyedBad(element: Element): Boolean {
+    private fun atpClaimsItShouldBeResurveyed(element: Element): Boolean {
         //Log.e("ATP", "atpClaimsItShouldBeResurveyed for element ${element}}")
         val entries = atpDao.getAllWithMatchingOsmElement(ElementKey(element.type, element.id))
         if(entries.isEmpty()){
             return false
         }
-        Log.e("ATP", "entries got$entries, (x${entries.size})")
+        Log.e("ATP", "entries got$entries, (x${entries.size}) for $element}")
         val returned = entries.any {
             // TODO: add test
             // entries about unrelated issues do not matter
             it.reportType == ReportType.OPENING_HOURS_REPORTED_AS_OUTDATED_IN_OPENSTREETMAP &&
                 // if tags changed, then report may be not applicable anymore
-                it.tagsInATP["brand"] == element.tags["brand"] &&
-                it.tagsInATP["name"] == element.tags["name"] &&
-                it.tagsInATP["opening_hours"] == element.tags["opening_hours"] &&
-                it.tagsInATP["check_date:opening_hours"] == element.tags["check_date:opening_hours"] &&
-                it.tagsInATP["opening_hours:signed"] == element.tags["opening_hours:signed"]
+                it.tagsInOSM?.get("brand") == element.tags["brand"] &&
+                it.tagsInOSM?.get("name") == element.tags["name"] &&
+                it.tagsInOSM?.get("opening_hours") == element.tags["opening_hours"] &&
+                it.tagsInOSM?.get("check_date:opening_hours") == element.tags["check_date:opening_hours"] &&
+                it.tagsInOSM?.get("opening_hours:signed") == element.tags["opening_hours:signed"]
         }
         Log.e("ATP", "ReportType" + entries[0].reportType.toString())
         Log.e("ATP", "tagsInATP[\"brand\"]" + entries[0].tagsInATP["brand"])
+        Log.e("ATP", "returned $returned")
         return returned
     }
 }
