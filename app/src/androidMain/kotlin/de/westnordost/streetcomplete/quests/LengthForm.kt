@@ -2,11 +2,16 @@ package de.westnordost.streetcomplete.quests
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.widthIn
+import androidx.compose.material.Button
+import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.IconButton
 import androidx.compose.material.LocalTextStyle
 import androidx.compose.material.MaterialTheme
@@ -77,10 +82,12 @@ fun LengthForm(
 
 @Composable
 private fun MeasureButton(onClick: () -> Unit) {
-    IconButton (onClick = { onClick() }, modifier = Modifier.background(MaterialTheme.colors.primary)) {
-        Surface (color = MaterialTheme.colors.primary) {
-            MeasurementIcon()
-        }
+    Button (
+        onClick = onClick,
+        modifier = Modifier.size(48.dp),
+        contentPadding = PaddingValues(8.dp),
+    ) {
+        MeasurementIcon()
     }
 }
 
