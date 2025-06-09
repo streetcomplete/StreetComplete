@@ -94,7 +94,7 @@ class AtpQuestController(
     private fun createQuestForAtpEntry(entry: AtpEntry): CreateElementQuest? {
         if (entry.reportType == ReportType.MISSING_POI_IN_OPENSTREETMAP) {
             // TODO allQuestTypes[0] is a hilarious hack of worst variety TODO (in other places I just assume single
-            return CreateElementQuest(entry.id, allQuestTypes[0], entry.position)
+            return CreateElementQuest(entry.id, entry,allQuestTypes[0], entry.position)
         } else {
             return null
         }

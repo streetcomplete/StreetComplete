@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.data.atp.atpquests
 
+import de.westnordost.streetcomplete.data.atp.AtpEntry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
@@ -9,7 +10,9 @@ import de.westnordost.streetcomplete.data.quest.Quest
 
 /** Represents one task for the user to contribute by reviewing proposed element creation */
 data class CreateElementQuest(
-    val id: Long, // TODO be clear to what id matches, probably id should be assigned by ATP API and be stable? Can I trust ATP itself with its id assignments?
+    val id: Long, // TODO be clear to what id matches, probably id should
+    // be assigned by ATP API and be stable? Can I trust ATP itself with its id assignments?
+    val atpEntry: AtpEntry, // At this point it is tightly bound with ATP
     override val type: OsmCreateElementQuestType<*>,
     override val position: LatLon
 )  : Quest {
