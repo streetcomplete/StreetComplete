@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.util.location
 
 import android.location.Location
-import de.westnordost.streetcomplete.util.ktx.elapsedDuration
 import kotlin.time.Duration.Companion.minutes
+import kotlin.time.Duration.Companion.nanoseconds
 
 // Based on https://web.archive.org/web/20180424190538/https://developer.android.com/guide/topics/location/strategies.html#BestEstimate
 
@@ -18,7 +18,7 @@ fun Location.isBetterThan(previous: Location?): Boolean {
     // Check whether the new location fix is newer or older
     // we use elapsedRealtimeNanos instead of epoch time because some devices have issues
     // that may lead to incorrect GPS location.time (e.g. GPS week rollover, but also others)
-    val locationTimeDiff = elapsedDuration - previous.elapsedDuration
+    val locationTimeDiff = elapsedRealtimeNanos.nanoseconds - previous.elapsedRealtimeNanos.nanoseconds
     val isMuchNewer = locationTimeDiff > 2.minutes
     val isMuchOlder = locationTimeDiff < (-2).minutes
     val isNewer = locationTimeDiff.isPositive()
