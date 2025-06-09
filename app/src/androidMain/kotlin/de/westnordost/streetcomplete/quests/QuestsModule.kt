@@ -245,7 +245,7 @@ fun questTypeRegistry(
      */
     // TODO: move this quests in appropriate location as far as priority goes
     177 to AddOpeningHoursAtp(getFeature, actualAtpOpeningHoursDao), // TODO should it be merged into AddOpeningHours? If not then massive duplciation must be fixed
-    176 to CreatePoiBasedOnAtp(),
+    176 to CreatePoiBasedOnAtp(getFeature),
 
     /* always first: notes - they mark a mistake in the data so potentially every quest for that
     element is based on wrong data while the note is not resolved */
