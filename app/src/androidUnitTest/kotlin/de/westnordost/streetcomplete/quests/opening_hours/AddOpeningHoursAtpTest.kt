@@ -6,6 +6,7 @@ import de.westnordost.streetcomplete.data.atp.ReportType
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.quests.answerApplied
 import de.westnordost.streetcomplete.testutils.mock
 import de.westnordost.streetcomplete.testutils.node
@@ -30,17 +31,19 @@ class AddOpeningHoursAtpTest {
 
     @Test fun `isApplicableTo returns true for known places with recently edited opening hours reported as outdated by ATP`() {
         val osmTags = mapOf("shop" to "sports", "name" to "Chrabąszcz", "opening_hours" to "Mo-Fr 10:00-20:00")
-        on(atpDb.getAllWithMatchingOsmElement(
-            ElementKey(ElementType.NODE, 1))
+        val specialAtpDb: AtpDao = mock()
+        on(specialAtpDb.getAllWithMatchingOsmElement(
+            ElementKey(ElementType.NODE, 2))
         ).thenReturn(listOf(AtpEntry(
-            position = TODO(),
+            position = LatLon(1.0, 1.0),
             id = 100,
             osmMatch = ElementKey(ElementType.NODE, 2),
             tagsInATP = mapOf("shop" to "sports", "name" to "Chrabąszcz", "opening_hours" to "Mo-Sa 10:00-20:00"),
             tagsInOSM = osmTags,
             reportType = ReportType.OPENING_HOURS_REPORTED_AS_OUTDATED_IN_OPENSTREETMAP
         )))
-        assertTrue(questType.isApplicableTo(
+        val specialQuestType = AddOpeningHoursAtp(mock(), mock(), specialAtpDb)
+        assertTrue(specialQuestType.isApplicableTo(
             node(id = 2, tags = osmTags, timestamp = nowAsEpochMilliseconds())
         ))
     }
