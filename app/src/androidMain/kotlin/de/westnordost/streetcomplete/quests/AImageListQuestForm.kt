@@ -130,7 +130,7 @@ abstract class AImageListQuestForm<I, T> : AbstractOsmQuestForm<T>() {
             else
                 ImageListItem(currentItem.item, false)
         }
-        onItemSelected(currentItems.value.filter { it.checked }.map { it.item })
+        onItemSelected(selectedItems)
     }
 
    val onClickMultiItem = { targetIndex: Int, targetItem: ImageListItem<I> ->
@@ -141,7 +141,7 @@ abstract class AImageListQuestForm<I, T> : AbstractOsmQuestForm<T>() {
                else
                    currentItem
            }
-           onItemSelected(currentItems.value.filter { it.checked }.map { it.item })
+           onItemSelected(selectedItems)
        }
     }
     override fun isFormComplete() = selectedItems.mapNotNull { it.value }.isNotEmpty()
