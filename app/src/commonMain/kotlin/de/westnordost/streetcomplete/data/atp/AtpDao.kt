@@ -36,7 +36,7 @@ class AtpDao(private val db: Database) {
         if (entries.isEmpty()) return
 
         db.replaceMany(NAME,
-            arrayOf(ID, LATITUDE, LONGITUDE, OSM_ELEMENT_MATCH_ID, OSM_ELEMENT_MATCH_TYPE, ATP_TAGS, OSM_TAGS, LAST_SYNC),
+            arrayOf(ID, LATITUDE, LONGITUDE, OSM_ELEMENT_MATCH_ID, OSM_ELEMENT_MATCH_TYPE, ATP_TAGS, OSM_TAGS, REPORT_TYPE, LAST_SYNC),
             entries.map { arrayOf(
                 it.id,
                 it.position.latitude,
@@ -45,6 +45,7 @@ class AtpDao(private val db: Database) {
                 it.osmMatch?.type.toString(),
                 Json.encodeToString(it.tagsInATP),
                 Json.encodeToString(it.tagsInOSM),
+                it.reportType.name,
                 nowAsEpochMilliseconds()
             ) }
         )
