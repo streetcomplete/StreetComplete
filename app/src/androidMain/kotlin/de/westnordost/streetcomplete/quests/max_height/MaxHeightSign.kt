@@ -25,49 +25,40 @@ fun MaxHeightSign(
     onLengthChanged: (Length?) -> Unit,
 ) {
     when (countryCode) {
-        "AU", "NZ", "US", "CA" -> RectangularSign(
-            modifier = modifier,
-            color = TrafficYellow,
-        ) {
-            LengthInput(
-                selectedUnit = selectedUnit,
-                currentLength = null,
-                syncLength = false,
-                onLengthChanged = onLengthChanged,
-                maxFeetDigits = maxFeetDigits,
-                maxMeterDigits = maxMeterDigits,
-                footInchAppearance = FootInchAppearance.UPPERCASE_ABBREVIATION
-            )
+        "AU", "NZ", "US", "CA" -> {
+            RectangularSign(
+                modifier = modifier,
+                color = TrafficYellow,
+            ) {
+                LengthInput(
+                    selectedUnit = selectedUnit,
+                    currentLength = null,
+                    syncLength = false,
+                    onLengthChanged = onLengthChanged,
+                    maxFeetDigits = maxFeetDigits,
+                    maxMeterDigits = maxMeterDigits,
+                    footInchAppearance = FootInchAppearance.UPPERCASE_ABBREVIATION
+                )
+            }
         }
-
-        "FI", "IS", "SE" -> MaxHeightSignRound(
-            resourceId = R.drawable.background_maxheight_sign_yellow,
-            modifier = modifier,
-        ) {
-            LengthInput(
-                selectedUnit = selectedUnit,
-                currentLength = null,
-                syncLength = false,
-                onLengthChanged = onLengthChanged,
-                maxFeetDigits = maxFeetDigits,
-                maxMeterDigits = maxMeterDigits,
-                footInchAppearance = FootInchAppearance.PRIME
-            )
-        }
-
-        else -> MaxHeightSignRound(
-            resourceId = R.drawable.background_maxheight_sign,
-            modifier = modifier
-        ) {
-            LengthInput(
-                selectedUnit = selectedUnit,
-                currentLength = null,
-                syncLength = false,
-                onLengthChanged = onLengthChanged,
-                maxFeetDigits = maxFeetDigits,
-                maxMeterDigits = maxMeterDigits,
-                footInchAppearance = FootInchAppearance.PRIME
-            )
+        else -> {
+            MaxHeightSignRound(
+                resourceId = when (countryCode) {
+                    "FI", "IS", "SE" -> R.drawable.background_maxheight_sign_yellow
+                    else ->             R.drawable.background_maxheight_sign
+                },
+                modifier = modifier
+            ) {
+                LengthInput(
+                    selectedUnit = selectedUnit,
+                    currentLength = null,
+                    syncLength = false,
+                    onLengthChanged = onLengthChanged,
+                    maxFeetDigits = maxFeetDigits,
+                    maxMeterDigits = maxMeterDigits,
+                    footInchAppearance = FootInchAppearance.PRIME
+                )
+            }
         }
     }
 }
