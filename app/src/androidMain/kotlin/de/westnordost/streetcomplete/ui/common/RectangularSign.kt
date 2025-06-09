@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests.max_height
+package de.westnordost.streetcomplete.ui.common
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -9,23 +9,27 @@ import androidx.compose.material.LocalContentColor
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import de.westnordost.streetcomplete.ui.theme.TrafficBlack
-import de.westnordost.streetcomplete.ui.theme.TrafficYellow
+import de.westnordost.streetcomplete.ui.theme.TrafficWhite
+import de.westnordost.streetcomplete.ui.theme.trafficContentColorFor
 
+/** A surface in the appearance of a rectangular traffic sign. */
 @Composable
-fun MaxHeightSignMutcd(
+fun RectangularSign(
     modifier: Modifier = Modifier,
+    color: Color = TrafficWhite,
     content: @Composable () -> Unit
 ) {
+    val contentColor = trafficContentColorFor(color)
     Box(
         modifier = modifier
-            .background(TrafficYellow, RoundedCornerShape(10.dp))
+            .background(color, RoundedCornerShape(10.dp))
             .padding(4.dp)
-            .border(4.dp, TrafficBlack, RoundedCornerShape(6.dp))
-            .padding(horizontal = 12.dp, vertical = 16.dp)
+            .border(4.dp, contentColor, RoundedCornerShape(6.dp))
+            .padding(16.dp)
     ) {
-        CompositionLocalProvider(LocalContentColor provides TrafficBlack) {
+        CompositionLocalProvider(LocalContentColor provides contentColor) {
             content()
         }
     }
