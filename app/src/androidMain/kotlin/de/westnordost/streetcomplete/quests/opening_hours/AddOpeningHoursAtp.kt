@@ -20,6 +20,7 @@ import de.westnordost.streetcomplete.osm.isPlaceOrDisusedPlace
 import de.westnordost.streetcomplete.osm.opening_hours.parser.isSupportedOpeningHours
 import de.westnordost.streetcomplete.osm.updateCheckDateForKey
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
+import de.westnordost.streetcomplete.util.logs.Log
 
 class AddOpeningHoursAtp(
     private val getFeature: (Element) -> Feature?,
@@ -153,12 +154,6 @@ class AddOpeningHoursAtp(
         // only show places that can be named somehow
         if (!hasName(element)) return false
 
-        /* don't show if it was recently checked (actually already checked by filter, but it is a
-           performance improvement to avoid parsing the opening hours en masse if possible) */
-        if (element.tags.containsKey("opening_hours")) {
-            if (!olderThan2Months.matches(element)) return false
-        }
-
         if(!atpClaimsItShouldBeResurveyed(element)) {
             return false
         }
@@ -207,12 +202,17 @@ class AddOpeningHoursAtp(
 
     private fun hasFeatureName(element: Element) = getFeature(element)?.name != null
 
-    private fun atpClaimsItShouldBeResurveyed(element: Element): Boolean {
+    private fun atpClaimsItShouldBeResurveyed(element: Element): Boolean
+    = atpDao.getAllWithMatchingOsmElement(ElementKey(element.type, element.id)).isNotEmpty()
+
+    private fun atpClaimsItShouldBeResurveyedBad(element: Element): Boolean {
+        //Log.e("ATP", "atpClaimsItShouldBeResurveyed for element ${element}}")
         val entries = atpDao.getAllWithMatchingOsmElement(ElementKey(element.type, element.id))
         if(entries.isEmpty()){
             return false
         }
-        return entries.any {
+        Log.e("ATP", "entries got$entries, (x${entries.size})")
+        val returned = entries.any {
             // TODO: add test
             // entries about unrelated issues do not matter
             it.reportType == ReportType.OPENING_HOURS_REPORTED_AS_OUTDATED_IN_OPENSTREETMAP &&
@@ -223,5 +223,8 @@ class AddOpeningHoursAtp(
                 it.tagsInATP["check_date:opening_hours"] == element.tags["check_date:opening_hours"] &&
                 it.tagsInATP["opening_hours:signed"] == element.tags["opening_hours:signed"]
         }
+        Log.e("ATP", "ReportType" + entries[0].reportType.toString())
+        Log.e("ATP", "tagsInATP[\"brand\"]" + entries[0].tagsInATP["brand"])
+        return returned
     }
 }
