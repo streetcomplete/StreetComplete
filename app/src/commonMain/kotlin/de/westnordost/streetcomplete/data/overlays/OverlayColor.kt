@@ -1,5 +1,7 @@
 package de.westnordost.streetcomplete.data.overlays
 
+import androidx.compose.ui.graphics.Color
+
 /** Default and common colors for overlays. This palette is selected to be suitable for use by
  *  color-blind people too, that is
  *
@@ -17,30 +19,28 @@ package de.westnordost.streetcomplete.data.overlays
  *   - the colors have been made more vibrant
  *   - and a few added
  *   - balanced to not be too close to the colors used on the background map
- *   - gray colour was added for emergency use
  *
- *   Also, it has been made so that black and crimson stand out, because these two are reserved in
+ *   Also, it has been made so that black and red stand out, because these two are reserved in
  *   all overlays as having a special meaning
  */
-object Color {
+object OverlayColor {
     // colors with reserved meanings
-    const val INVISIBLE = "#00000000" // "mapped separately" / "not relevant"
-    const val BLACK = "#0f0f0f" // "no" / "does not exist"
-    private const val RED = "#FF0000" // reserved
-    const val DATA_REQUESTED = RED // "not mapped" / "incomplete/invalid" / "data missing" / "outdated"
+    val Invisible = Color(0x00000000) // "mapped separately" / "not relevant"
+    val Black = Color(0xff0f0f0f) // "no" / "does not exist"
+    val Red = Color(0xffFF0000) // "not mapped" / "incomplete/invalid" / "data missing" / "outdated"
 
     // blue-ish
-    const val PURPLE = "#BF39A5"
-    const val BLUE = "#1A87E6"
-    const val SKY = "#2FACE8"
-    const val CYAN = "#30D4EE"
+    val Purple = Color(0xffBF39A5)
+    val Blue = Color(0xff1A87E6)
+    val Sky = Color(0xff2FACE8)
+    val Cyan = Color(0xff30D4EE)
     // green-ish
-    const val AQUAMARINE = "#10C1B8"
-    const val TEAL = "#0DA082"
+    val Aquamarine = Color(0xff10C1B8)
+    val Teal = Color(0xff0DA082)
     // orange-yellow
-    const val ORANGE = "#F37D1E"
-    const val GOLD = "#EEBD0D"
-    const val LIME = "#B6EF28"
+    val Orange = Color(0xffF37D1E)
+    val Gold = Color(0xffEEBD0D)
+    val Lime = Color(0xffB6EF28)
 
     // note that AQUAMARINE and TEAL look like SKY and BLUE for Blue-yellow color blind people
     // (~0.01% of population)

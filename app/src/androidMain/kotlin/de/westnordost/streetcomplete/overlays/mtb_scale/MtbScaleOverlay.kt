@@ -6,7 +6,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.overlays.AndroidOverlay
-import de.westnordost.streetcomplete.data.overlays.Color
+import de.westnordost.streetcomplete.data.overlays.OverlayColor
 import de.westnordost.streetcomplete.data.overlays.Overlay
 import de.westnordost.streetcomplete.data.overlays.PolylineStyle
 import de.westnordost.streetcomplete.data.overlays.StrokeStyle
@@ -46,7 +46,7 @@ class MtbScaleOverlay : Overlay, AndroidOverlay {
     private fun getStyle(element: Element): Style {
         val mtbScale = parseMtbScale(element.tags)
         val color = mtbScale.color
-            ?: if (isMtbTaggingExpected(element)) Color.DATA_REQUESTED else null
+            ?: if (isMtbTaggingExpected(element)) OverlayColor.Red else null
         return PolylineStyle(
             stroke = color?.let { StrokeStyle(it) },
             label = mtbScale?.value.toString()
@@ -65,12 +65,12 @@ private fun isMtbTaggingExpected(element: Element) =
     mtbTaggingExpectedFilter.matches(element)
 
 private val MtbScale?.color get() = when (this?.value) {
-    0 -> Color.BLUE
-    1 -> Color.CYAN
-    2 -> Color.LIME
-    3 -> Color.GOLD
-    4 -> Color.ORANGE
-    5 -> Color.PURPLE
-    6 -> Color.BLACK
+    0 -> OverlayColor.Blue
+    1 -> OverlayColor.Cyan
+    2 -> OverlayColor.Lime
+    3 -> OverlayColor.Gold
+    4 -> OverlayColor.Orange
+    5 -> OverlayColor.Purple
+    6 -> OverlayColor.Black
     else -> null
 }

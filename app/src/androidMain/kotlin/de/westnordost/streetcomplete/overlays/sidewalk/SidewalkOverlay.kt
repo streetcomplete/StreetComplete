@@ -6,7 +6,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.overlays.AndroidOverlay
-import de.westnordost.streetcomplete.data.overlays.Color
+import de.westnordost.streetcomplete.data.overlays.OverlayColor
 import de.westnordost.streetcomplete.data.overlays.Overlay
 import de.westnordost.streetcomplete.data.overlays.PolylineStyle
 import de.westnordost.streetcomplete.data.overlays.StrokeStyle
@@ -73,9 +73,9 @@ private fun getFootwayStyle(element: Element): PolylineStyle {
         parseSidewalkSides(element.tags)?.any { it == Sidewalk.YES } == true ->
             getSidewalkStyle(element)
         foot in listOf("yes", "designated") ->
-            PolylineStyle(StrokeStyle(Color.SKY))
+            PolylineStyle(StrokeStyle(OverlayColor.Sky))
         else ->
-            PolylineStyle(StrokeStyle(Color.INVISIBLE))
+            PolylineStyle(StrokeStyle(OverlayColor.Invisible))
     }
 }
 
@@ -93,9 +93,9 @@ private fun getSidewalkStyle(element: Element): PolylineStyle {
 private fun getStreetStrokeStyle(tags: Map<String, String>): StrokeStyle? =
     when {
         tags["highway"] == "pedestrian" ->
-            StrokeStyle(Color.SKY)
+            StrokeStyle(OverlayColor.Sky)
         tags["highway"] == "living_street" || tags["living_street"] == "yes" ->
-            StrokeStyle(Color.SKY, dashed = true)
+            StrokeStyle(OverlayColor.Sky, dashed = true)
         else -> null
     }
 
@@ -114,9 +114,9 @@ private fun sidewalkTaggingNotExpected(element: Element) =
     sidewalkTaggingNotExpectedFilter.matches(element)
 
 private fun Sidewalk?.getStyle(isNoSidewalkExpected: Lazy<Boolean>) = StrokeStyle(when (this) {
-    Sidewalk.YES ->      Color.SKY
-    Sidewalk.NO ->       Color.BLACK
-    Sidewalk.SEPARATE -> Color.INVISIBLE
-    Sidewalk.INVALID  -> Color.DATA_REQUESTED
-    null ->              if (isNoSidewalkExpected.value) Color.INVISIBLE else Color.DATA_REQUESTED
+    Sidewalk.YES ->      OverlayColor.Sky
+    Sidewalk.NO ->       OverlayColor.Black
+    Sidewalk.SEPARATE -> OverlayColor.Invisible
+    Sidewalk.INVALID  -> OverlayColor.Red
+    null ->              if (isNoSidewalkExpected.value) OverlayColor.Invisible else OverlayColor.Red
 })

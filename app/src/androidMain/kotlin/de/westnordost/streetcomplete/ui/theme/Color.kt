@@ -9,15 +9,17 @@ import androidx.compose.runtime.ReadOnlyComposable
 import androidx.compose.ui.graphics.Color
 
 /* Colors as they could be found on (illustrations of) traffic signs. */
-val TrafficRed = Color(0xffc1121c)
-val TrafficBlue = Color(0xff2255bb)
-val TrafficGreen = Color(0xff008351)
-val TrafficYellow = Color(0xffffd520)
-val TrafficBrown = Color(0xff73411f)
-val TrafficWhite = Color(0xffffffff)
-val TrafficBlack = Color(0xff000000)
-val TrafficGrayA = Color(0xff8e9291)
-val TrafficGrayB = Color(0xff4f5250)
+object TrafficSignColor {
+    val Red = Color(0xffc1121c)
+    val Blue = Color(0xff2255bb)
+    val Green = Color(0xff008351)
+    val Yellow = Color(0xffffd520)
+    val Brown = Color(0xff73411f)
+    val White = Color(0xffffffff)
+    val Black = Color(0xff000000)
+    val GrayA = Color(0xff8e9291)
+    val GrayB = Color(0xff4f5250)
+}
 
 /* Colors for the teams in team mode.  */
 val TeamColors = arrayOf(

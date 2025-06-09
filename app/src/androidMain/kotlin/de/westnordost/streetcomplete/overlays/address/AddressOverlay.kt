@@ -6,7 +6,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.overlays.AndroidOverlay
-import de.westnordost.streetcomplete.data.overlays.Color
+import de.westnordost.streetcomplete.data.overlays.OverlayColor
 import de.westnordost.streetcomplete.data.overlays.Overlay
 import de.westnordost.streetcomplete.data.overlays.PointStyle
 import de.westnordost.streetcomplete.data.overlays.PolygonStyle
@@ -53,7 +53,7 @@ class AddressOverlay(
             }
             .map {
                 val label = getShortHouseNumber(it.tags)
-                val color = if (label != null) Color.BLUE else Color.INVISIBLE
+                val color = if (label != null) OverlayColor.Blue else OverlayColor.Invisible
                 it to PolygonStyle(color = color, label = label)
             }
 

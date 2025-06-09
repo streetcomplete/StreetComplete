@@ -8,7 +8,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.overlays.AndroidOverlay
-import de.westnordost.streetcomplete.data.overlays.Color
+import de.westnordost.streetcomplete.data.overlays.OverlayColor
 import de.westnordost.streetcomplete.data.overlays.Overlay
 import de.westnordost.streetcomplete.data.overlays.PolylineStyle
 import de.westnordost.streetcomplete.data.overlays.StrokeStyle
@@ -76,20 +76,20 @@ private fun SeparateCycleway?.getColor() = when (this) {
     SeparateCycleway.NOT_ALLOWED,
     SeparateCycleway.NON_DESIGNATED_ON_FOOTWAY,
     SeparateCycleway.PATH ->
-        Color.BLACK
+        OverlayColor.Black
 
     SeparateCycleway.NON_SEGREGATED ->
-        Color.CYAN
+        OverlayColor.Cyan
 
     SeparateCycleway.SEGREGATED,
     SeparateCycleway.EXCLUSIVE,
     SeparateCycleway.EXCLUSIVE_WITH_SIDEWALK ->
-        Color.BLUE
+        OverlayColor.Blue
     SeparateCycleway.ALLOWED_ON_FOOTWAY ->
-        Color.AQUAMARINE
+        OverlayColor.Aquamarine
 
     null ->
-        Color.INVISIBLE
+        OverlayColor.Invisible
 }
 
 private fun getStreetCyclewayStyle(element: Element, countryInfo: CountryInfo): PolylineStyle {
@@ -113,13 +113,13 @@ private fun getStreetStrokeStyle(tags: Map<String, String>): StrokeStyle? {
 
     return when {
         isBicycleBoulevard ->
-            StrokeStyle(Color.GOLD, dashed = true)
+            StrokeStyle(OverlayColor.Gold, dashed = true)
         isPedestrian && isBicycleDesignated ->
-            StrokeStyle(Color.CYAN)
+            StrokeStyle(OverlayColor.Cyan)
         isPedestrian && isBicycleOk ->
-            StrokeStyle(Color.AQUAMARINE)
+            StrokeStyle(OverlayColor.Aquamarine)
         isPedestrian ->
-            StrokeStyle(Color.BLACK)
+            StrokeStyle(OverlayColor.Black)
         else ->
             null
     }
@@ -162,46 +162,46 @@ private fun Cycleway?.getStyle(
     isNoCyclewayExpected: () -> Boolean,
 ): StrokeStyle = when (this) {
     TRACK ->
-        StrokeStyle(Color.BLUE)
+        StrokeStyle(OverlayColor.Blue)
 
     EXCLUSIVE_LANE, UNSPECIFIED_LANE ->
         if (isAmbiguous(countryInfo)) {
-            StrokeStyle(Color.DATA_REQUESTED)
+            StrokeStyle(OverlayColor.Red)
         } else {
-            StrokeStyle(Color.GOLD)
+            StrokeStyle(OverlayColor.Gold)
         }
 
     ADVISORY_LANE, SUGGESTION_LANE, UNSPECIFIED_SHARED_LANE ->
         if (isAmbiguous(countryInfo)) {
-            StrokeStyle(Color.DATA_REQUESTED)
+            StrokeStyle(OverlayColor.Red)
         } else {
-            StrokeStyle(Color.ORANGE)
+            StrokeStyle(OverlayColor.Orange)
         }
 
     PICTOGRAMS ->
-        StrokeStyle(Color.ORANGE, dashed = true)
+        StrokeStyle(OverlayColor.Orange, dashed = true)
 
     BUSWAY ->
-        StrokeStyle(Color.LIME, dashed = true)
+        StrokeStyle(OverlayColor.Lime, dashed = true)
 
     SIDEWALK_EXPLICIT ->
-        StrokeStyle(Color.CYAN, dashed = false)
+        StrokeStyle(OverlayColor.Cyan, dashed = false)
 
     NONE ->
-        StrokeStyle(Color.BLACK)
+        StrokeStyle(OverlayColor.Black)
 
     SHOULDER, NONE_NO_ONEWAY ->
-        StrokeStyle(Color.BLACK, dashed = true)
+        StrokeStyle(OverlayColor.Black, dashed = true)
 
     SEPARATE ->
-        StrokeStyle(Color.INVISIBLE)
+        StrokeStyle(OverlayColor.Invisible)
 
     SIDEWALK_OK ->
-        StrokeStyle(Color.AQUAMARINE, dashed = true)
+        StrokeStyle(OverlayColor.Aquamarine, dashed = true)
 
     UNKNOWN, INVALID, UNKNOWN_LANE, UNKNOWN_SHARED_LANE ->
-        StrokeStyle(Color.DATA_REQUESTED)
+        StrokeStyle(OverlayColor.Red)
 
     null ->
-         StrokeStyle(if (isNoCyclewayExpected()) Color.INVISIBLE else Color.DATA_REQUESTED)
+         StrokeStyle(if (isNoCyclewayExpected()) OverlayColor.Invisible else OverlayColor.Red)
 }

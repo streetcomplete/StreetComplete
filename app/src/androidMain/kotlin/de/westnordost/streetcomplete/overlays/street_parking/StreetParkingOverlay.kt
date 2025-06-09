@@ -7,7 +7,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.overlays.AndroidOverlay
-import de.westnordost.streetcomplete.data.overlays.Color
+import de.westnordost.streetcomplete.data.overlays.OverlayColor
 import de.westnordost.streetcomplete.data.overlays.Overlay
 import de.westnordost.streetcomplete.data.overlays.PointStyle
 import de.westnordost.streetcomplete.data.overlays.PolygonStyle
@@ -83,7 +83,7 @@ private val streetParkingTaggingNotExpected by lazy { """
       or maxspeed >= 70
 """.toElementFilterExpression() }
 
-private val parkingLotAreaStyle = PolygonStyle(Color.BLUE)
+private val parkingLotAreaStyle = PolygonStyle(OverlayColor.Blue)
 private val parkingLotPointStyle = PointStyle(R.drawable.preset_temaki_car_parked)
 private val chicaneStyle = PointStyle(R.drawable.preset_temaki_chicane_arrow)
 private val trafficCalmingStyle = PointStyle(R.drawable.preset_temaki_diamond)
@@ -100,7 +100,7 @@ private fun getStreetParkingStyle(element: Element): Style {
     // not set but private or not expected to have a sidewalk -> do not highlight as missing
     if (parking == null) {
         if (isPrivateOnFoot(element) || streetParkingTaggingNotExpected.matches(element)) {
-            return PolylineStyle(StrokeStyle(Color.INVISIBLE))
+            return PolylineStyle(StrokeStyle(OverlayColor.Invisible))
         }
     }
 
@@ -116,24 +116,24 @@ private val ParkingPosition.isDashed: Boolean get() = when (this) {
     else -> false
 }
 
-private val ParkingPosition.color: String get() = when (this) {
+private val ParkingPosition.color get() = when (this) {
     ON_STREET, PAINTED_AREA_ONLY, STAGGERED_ON_STREET ->
-        Color.GOLD
+        OverlayColor.Gold
     HALF_ON_STREET, STAGGERED_HALF_ON_STREET ->
-        Color.AQUAMARINE
+        OverlayColor.Aquamarine
     OFF_STREET, STREET_SIDE ->
-        Color.BLUE
+        OverlayColor.Blue
 }
 
 private val StreetParking?.style: StrokeStyle get() = when (this) {
     is StreetParking.PositionAndOrientation ->
                                 StrokeStyle(position.color, position.isDashed)
 
-    StreetParking.None ->       StrokeStyle(Color.BLACK)
+    StreetParking.None ->       StrokeStyle(OverlayColor.Black)
 
-    StreetParking.Separate ->   StrokeStyle(Color.INVISIBLE)
+    StreetParking.Separate ->   StrokeStyle(OverlayColor.Invisible)
 
     StreetParking.Unknown,
     StreetParking.Incomplete,
-    null ->                     StrokeStyle(Color.DATA_REQUESTED)
+    null ->                     StrokeStyle(OverlayColor.Red)
 }

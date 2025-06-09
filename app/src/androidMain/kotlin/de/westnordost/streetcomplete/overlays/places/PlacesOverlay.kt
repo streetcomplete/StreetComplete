@@ -7,7 +7,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.overlays.AndroidOverlay
-import de.westnordost.streetcomplete.data.overlays.Color
+import de.westnordost.streetcomplete.data.overlays.OverlayColor
 import de.westnordost.streetcomplete.data.overlays.Overlay
 import de.westnordost.streetcomplete.data.overlays.PointStyle
 import de.westnordost.streetcomplete.data.overlays.PolygonStyle
@@ -49,7 +49,7 @@ class PlacesOverlay(private val getFeature: (Element) -> Feature?) : Overlay, An
                 val style = if (element is Node) {
                     PointStyle(icon, label)
                 } else {
-                    PolygonStyle(Color.INVISIBLE, icon, label)
+                    PolygonStyle(OverlayColor.Invisible, icon, label)
                 }
                 element to style
             } +

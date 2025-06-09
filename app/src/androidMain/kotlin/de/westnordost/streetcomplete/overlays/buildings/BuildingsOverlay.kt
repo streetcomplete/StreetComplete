@@ -5,7 +5,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.overlays.AndroidOverlay
-import de.westnordost.streetcomplete.data.overlays.Color
+import de.westnordost.streetcomplete.data.overlays.OverlayColor
 import de.westnordost.streetcomplete.data.overlays.Overlay
 import de.westnordost.streetcomplete.data.overlays.PolygonStyle
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BUILDING
@@ -56,7 +56,7 @@ class BuildingsOverlay : Overlay, AndroidOverlay {
             val building = createBuildingType(element.tags)
 
             val color = building?.color
-                ?: if (isBuildingTypeMissing(element.tags)) Color.DATA_REQUESTED else Color.INVISIBLE
+                ?: if (isBuildingTypeMissing(element.tags)) OverlayColor.Red else OverlayColor.Invisible
 
             // val height = estimateBuildingHeight(element.tags)
             // val minHeight = if (height != null) estimateMinBuildingHeight(element.tags) else null
@@ -76,27 +76,27 @@ class BuildingsOverlay : Overlay, AndroidOverlay {
     private val BuildingType.color get() = when (this) {
         // ~detached homes
         DETACHED, SEMI_DETACHED, HOUSEBOAT, BUNGALOW, STATIC_CARAVAN, HUT, FARM, -> // 10%
-            Color.BLUE
+            OverlayColor.Blue
 
         // ~non-detached homes
         HOUSE, DORMITORY, APARTMENTS, TERRACE, -> // 52%
-            Color.SKY
+            OverlayColor.Sky
 
         // unspecified residential
         RESIDENTIAL, -> // 12%
-            Color.CYAN
+            OverlayColor.Cyan
 
         // parking, sheds, outbuildings in general...
         OUTBUILDING, CARPORT, GARAGE, GARAGES, SHED, BOATHOUSE, SERVICE, ALLOTMENT_HOUSE,
         TENT, CONTAINER, GUARDHOUSE, -> // 11%
-            Color.LIME
+            OverlayColor.Lime
 
         // commercial, industrial, farm buildings
         COMMERCIAL, KIOSK, RETAIL, OFFICE, BRIDGE, HOTEL, PARKING,
         INDUSTRIAL, WAREHOUSE, HANGAR, STORAGE_TANK,
         FARM_AUXILIARY, SILO, GREENHOUSE,
         ROOF -> // 5%
-            Color.GOLD
+            OverlayColor.Gold
 
         // amenity buildings
         TRAIN_STATION, TRANSPORTATION,
@@ -104,12 +104,12 @@ class BuildingsOverlay : Overlay, AndroidOverlay {
         KINDERGARTEN, SCHOOL, COLLEGE, UNIVERSITY, SPORTS_CENTRE, STADIUM, GRANDSTAND,
         RELIGIOUS, CHURCH, CHAPEL, CATHEDRAL, MOSQUE, TEMPLE, PAGODA, SYNAGOGUE, SHRINE,
         TOILETS, -> // 2%
-            Color.ORANGE
+            OverlayColor.Orange
 
         // other/special
         HISTORIC, ABANDONED, RUINS, CONSTRUCTION, BUNKER, TOMB, TOWER,
         UNSUPPORTED ->
-            Color.PURPLE
+            OverlayColor.Purple
     }
 
     private fun isBuildingTypeMissing(tags: Map<String, String>): Boolean =

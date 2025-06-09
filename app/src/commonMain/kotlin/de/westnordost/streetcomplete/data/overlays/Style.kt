@@ -1,5 +1,7 @@
 package de.westnordost.streetcomplete.data.overlays
 
+import androidx.compose.ui.graphics.Color
+
 sealed interface Style
 
 data class PolylineStyle(
@@ -14,15 +16,15 @@ data class PolylineStyle(
 ) : Style
 
 data class StrokeStyle(
-    /** argb line color */
-    val color: String,
+    /** stroke color */
+    val color: Color,
     /** whether the line is dashed */
     val dashed: Boolean = false,
 )
 
 data class PolygonStyle(
-    /** rgb value as hex value, e.g. "#66ff00" */
-    val color: String,
+    /** polygon area color */
+    val color: Color,
     /** icon id to show on the point */
     val icon: Int? = null,
     /** label to show in the center of the area */

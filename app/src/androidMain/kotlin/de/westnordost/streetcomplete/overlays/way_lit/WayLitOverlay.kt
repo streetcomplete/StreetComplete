@@ -5,7 +5,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.overlays.AndroidOverlay
-import de.westnordost.streetcomplete.data.overlays.Color
+import de.westnordost.streetcomplete.data.overlays.OverlayColor
 import de.westnordost.streetcomplete.data.overlays.Overlay
 import de.westnordost.streetcomplete.data.overlays.PolygonStyle
 import de.westnordost.streetcomplete.data.overlays.PolylineStyle
@@ -40,7 +40,7 @@ private fun getStyle(element: Element): Style {
     val lit = parseLitStatus(element.tags)
     // not set but indoor or private -> do not highlight as missing
     val isNotSetButThatsOkay = lit == null && (isIndoor(element.tags) || isPrivateOnFoot(element))
-    val color = if (isNotSetButThatsOkay) Color.INVISIBLE else lit.color
+    val color = if (isNotSetButThatsOkay) OverlayColor.Invisible else lit.color
     return if (element.tags["area"] == "yes") {
         PolygonStyle(color, null)
     } else {
@@ -49,12 +49,12 @@ private fun getStyle(element: Element): Style {
 }
 
 private val LitStatus?.color get() = when (this) {
-    LitStatus.YES  ->          Color.LIME
-    LitStatus.UNSUPPORTED ->   Color.PURPLE
-    LitStatus.NIGHT_AND_DAY -> Color.AQUAMARINE
-    LitStatus.AUTOMATIC ->     Color.SKY
-    LitStatus.NO ->            Color.BLACK
-    null ->                    Color.DATA_REQUESTED
+    LitStatus.YES  ->          OverlayColor.Lime
+    LitStatus.UNSUPPORTED ->   OverlayColor.Purple
+    LitStatus.NIGHT_AND_DAY -> OverlayColor.Aquamarine
+    LitStatus.AUTOMATIC ->     OverlayColor.Sky
+    LitStatus.NO ->            OverlayColor.Black
+    null ->                    OverlayColor.Red
 }
 
 private fun isIndoor(tags: Map<String, String>): Boolean = tags["indoor"] == "yes"
