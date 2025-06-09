@@ -32,7 +32,7 @@ class AtpController(
         val oldEntriesById = mutableMapOf<Long, AtpEntry>()
         val addedEntries = mutableListOf<AtpEntry>()
         val updatedEntries = mutableListOf<AtpEntry>()
-        synchronized(this) {
+        synchronized(this) { // TODO: I copied this code. Why suddenly it is distinct from note code I copied from?
             dao.getAll(bbox).associateByTo(oldEntriesById) { it.id }
 
             for (entry in entries) {
@@ -51,7 +51,7 @@ class AtpController(
         val seconds = (nowAsEpochMilliseconds() - time) / 1000.0
         Log.i(TAG, "Persisted ${addedEntries.size} and deleted ${oldEntriesById.size} ATP entries in ${seconds.format(1)}s")
 
-        onUpdated(added = addedEntries, updated = updatedEntries, deleted = oldEntriesById.keys)
+        this@AtpController.onUpdated(added = addedEntries, updated = updatedEntries, deleted = oldEntriesById.keys)
     }
 
     fun get(entryId: Long): AtpEntry? = dao.get(entryId)
@@ -60,7 +60,7 @@ class AtpController(
     fun delete(entryId: Long) {
         val deleteSuccess = synchronized(this) { dao.delete(entryId) }
         if (deleteSuccess) {
-            onUpdated(deleted = listOf(entryId))
+            this@AtpController.onUpdated(deleted = listOf(entryId))
         }
     }
 
@@ -69,9 +69,9 @@ class AtpController(
         val hasNote = synchronized(this) { dao.get(note.id) != null }
 
         if (hasNote) {
-            onUpdated(updated = listOf(note))
+            this@AtpController.onUpdated(updated = listOf(note))
         } else {
-            onUpdated(added = listOf(note))
+            this@AtpController.onUpdated(added = listOf(note))
         }
 
         dao.put(note)
@@ -89,7 +89,7 @@ class AtpController(
 
         Log.i(TAG, "Deleted $deletedCount old notes")
 
-        onUpdated(deleted = ids)
+        this@AtpController.onUpdated(deleted = ids)
 
         return ids.size
     }
