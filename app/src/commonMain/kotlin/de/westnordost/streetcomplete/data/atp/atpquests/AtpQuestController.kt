@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.data.atp.atpquests
 
 import de.westnordost.streetcomplete.data.atp.AtpEntry
+import de.westnordost.streetcomplete.data.atp.ReportType
 import de.westnordost.streetcomplete.data.atp.atpquests.edits.AtpDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
@@ -91,9 +92,12 @@ class AtpQuestController(
         entries.mapNotNull { createQuestForAtpEntry(it) }
 
     private fun createQuestForAtpEntry(entry: AtpEntry): CreateElementQuest? {
-        // TODO: check should it be created first
-        // allQuestTypes[0] is a hilarious hack of worst variety TODO
-        return CreateElementQuest(entry.id, allQuestTypes[0], entry.position)
+        if (entry.reportType == ReportType.MISSING_POI_IN_OPENSTREETMAP) {
+            // TODO allQuestTypes[0] is a hilarious hack of worst variety TODO (in other places I just assume single
+            return CreateElementQuest(entry.id, allQuestTypes[0], entry.position)
+        } else {
+            return null
+        }
     }
 
     /* ---------------------------------------- Listener ---------------------------------------- */
