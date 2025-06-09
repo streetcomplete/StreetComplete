@@ -202,7 +202,10 @@ class AddOpeningHoursAtp(
 
     private fun hasFeatureName(element: Element) = getFeature(element)?.name != null
 
-    private fun atpClaimsItShouldBeResurveyed(element: Element): Boolean {
+    private fun atpClaimsItShouldBeResurveyed(element: Element): Boolean
+    = atpDao.getAllWithMatchingOsmElement(ElementKey(element.type, element.id)).isNotEmpty()
+
+    private fun atpClaimsItShouldBeResurveyedBad(element: Element): Boolean {
         //Log.e("ATP", "atpClaimsItShouldBeResurveyed for element ${element}}")
         val entries = atpDao.getAllWithMatchingOsmElement(ElementKey(element.type, element.id))
         if(entries.isEmpty()){
