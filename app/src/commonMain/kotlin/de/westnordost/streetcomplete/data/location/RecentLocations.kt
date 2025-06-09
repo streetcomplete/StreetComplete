@@ -6,18 +6,30 @@ import kotlinx.atomicfu.locks.withLock
 import kotlin.time.Duration
 
 /** A store of a list of recent locations. When adding new locations, locations older than [maxAge]
- *  are cleared and it is made sure that all locations are at least [minDistanceMeters] apart but
- *  the most recent location is always at the front. */
+ *  are cleared and it is made sure that when returned, all locations are at least
+ *  [minDistanceMeters] apart but the most recent location is always at the front. */
 class RecentLocations(
     private val maxAge: Duration,
     private val minDistanceMeters: Double,
+    private val minTimeDifference: Duration,
 ) {
     private val lock = ReentrantLock()
     private val locations = ArrayDeque<Location>()
 
     /** returns a sequence of recent locations, most recent locations first */
     fun getAll(): Sequence<Location> = lock.withLock {
-        locations.asSequence()
+        sequence<Location> {
+            var previous: Location? = null
+            for (location in locations) {
+                if (previous != null && (
+                    previous.elapsedDuration - location.elapsedDuration < minTimeDifference ||
+                    location.position.flatDistanceTo(previous.position) < minDistanceMeters
+                )) continue
+
+                yield(location)
+                previous = location
+            }
+        }
     }
 
     fun add(location: Location): Unit = lock.withLock {
@@ -32,14 +44,6 @@ class RecentLocations(
         ) {
             locations.removeLast()
         }
-        // clear from deque all closer than `minDistanceMeters` to `location`
-        while (
-            locations.size > 1 &&
-            locations.first().position.flatDistanceTo(location.position) < minDistanceMeters
-        ) {
-            locations.removeFirst()
-        }
-
         locations.addFirst(location)
     }
 }
