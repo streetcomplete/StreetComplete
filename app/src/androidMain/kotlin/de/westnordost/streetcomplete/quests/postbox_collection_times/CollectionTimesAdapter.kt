@@ -102,7 +102,7 @@ class CollectionTimesAdapter(
                 binding.weekdaysLabel.text = ""
             } else {
                 val locale = countryInfo.userPreferredLocale
-                binding.weekdaysLabel.text = times.weekdays.toLocalizedString(context.resources, locale)
+                binding.weekdaysLabel.text = times.weekdays.toLocalizedString(context.resources, locale.platformLocale)
             }
 
             binding.weekdaysLabel.setOnClickListener {
@@ -139,7 +139,7 @@ class CollectionTimesAdapter(
     }
 
     private fun openSetWeekdaysDialog(weekdays: Weekdays, callback: (weekdays: Weekdays) -> Unit) {
-        val locale = countryInfo.userPreferredLocale
+        val locale = countryInfo.userPreferredLocale.platformLocale
         WeekdaysPickerDialog.show(context, weekdays, locale, callback)
     }
 

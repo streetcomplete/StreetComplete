@@ -62,7 +62,7 @@ class AddParkingFeeForm : AbstractOsmQuestForm<ParkingFeeAnswer>() {
             ).also {
                 it.firstDayOfWorkweek = countryInfo.firstDayOfWorkweek
                 it.regularShoppingDays = countryInfo.regularShoppingDays
-                it.locale = countryInfo.userPreferredLocale
+                it.locale = countryInfo.userPreferredLocale.platformLocale
                 it.onInputChanged = { checkIsFormComplete() }
                 // user already answered that it depends on the time, so don't show the "at any time" option
                 it.selectableTimeRestrictions = listOf(ONLY_AT_HOURS, EXCEPT_AT_HOURS)
@@ -83,7 +83,7 @@ class AddParkingFeeForm : AbstractOsmQuestForm<ParkingFeeAnswer>() {
             ).also {
                 it.firstDayOfWorkweek = countryInfo.firstDayOfWorkweek
                 it.regularShoppingDays = countryInfo.regularShoppingDays
-                it.locale = countryInfo.userPreferredLocale
+                it.locale = countryInfo.userPreferredLocale.platformLocale
                 it.onInputChanged = { checkIsFormComplete() }
             }
         }

@@ -1,5 +1,7 @@
 package de.westnordost.streetcomplete.data.meta
 
+import androidx.compose.ui.text.intl.Locale
+
 /** the country locale, but preferring the user's set language if the country has several
  *  official languages and the user selected one of them, e.g. French in Switzerland */
 val CountryInfo.userPreferredLocale: Locale get() {

@@ -62,7 +62,7 @@ class AddOpeningHoursForm : AbstractOsmQuestForm<OpeningHoursAnswer>() {
         openingHoursAdapter = OpeningHoursAdapter(requireContext())
         openingHoursAdapter.firstDayOfWorkweek = countryInfo.firstDayOfWorkweek
         openingHoursAdapter.regularShoppingDays = countryInfo.regularShoppingDays
-        openingHoursAdapter.locale = countryInfo.userPreferredLocale
+        openingHoursAdapter.locale = countryInfo.userPreferredLocale.platformLocale
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
