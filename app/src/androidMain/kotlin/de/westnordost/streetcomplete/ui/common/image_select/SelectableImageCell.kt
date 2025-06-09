@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.selection.selectable
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -37,9 +38,6 @@ import androidx.core.graphics.drawable.toBitmap
 import de.westnordost.streetcomplete.quests.bicycle_repair_station.BicycleRepairStationService
 import de.westnordost.streetcomplete.quests.bicycle_repair_station.asItem
 import de.westnordost.streetcomplete.ui.ktx.conditional
-import de.westnordost.streetcomplete.ui.ktx.pxToDp
-import de.westnordost.streetcomplete.ui.theme.SelectionColor
-import de.westnordost.streetcomplete.ui.theme.SelectionFrameColor
 import de.westnordost.streetcomplete.view.CharSequenceText
 import de.westnordost.streetcomplete.view.DrawableImage
 import de.westnordost.streetcomplete.view.ResImage
@@ -91,7 +89,7 @@ fun <T> SelectableImageCell(
         Box(
             modifier = Modifier
                 .conditional(isSelected) {
-                    border(4.dp, SelectionFrameColor)
+                    border(4.dp, MaterialTheme.colors.secondary)
                 }
                 .padding(4.dp)
         ) {
@@ -101,7 +99,7 @@ fun <T> SelectableImageCell(
                     contentDescription = title,
                     modifier = Modifier
                         .align(Alignment.Center),
-                    colorFilter = ColorFilter.tint(SelectionColor.copy(alpha = animatedAlpha),
+                    colorFilter = ColorFilter.tint(MaterialTheme.colors.secondary.copy(alpha = animatedAlpha),
                         BlendMode.Color)
                 )
                 Text(

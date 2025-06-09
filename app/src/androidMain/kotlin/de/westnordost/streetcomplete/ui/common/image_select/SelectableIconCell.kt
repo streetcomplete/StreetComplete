@@ -31,8 +31,6 @@ import androidx.core.graphics.drawable.toBitmap
 import de.westnordost.streetcomplete.quests.boat_rental.BoatRental
 import de.westnordost.streetcomplete.quests.boat_rental.asItem
 import de.westnordost.streetcomplete.ui.ktx.conditional
-import de.westnordost.streetcomplete.ui.theme.SelectionColor
-import de.westnordost.streetcomplete.ui.theme.SelectionFrameColor
 import de.westnordost.streetcomplete.view.CharSequenceText
 import de.westnordost.streetcomplete.view.DrawableImage
 import de.westnordost.streetcomplete.view.ResImage
@@ -79,11 +77,11 @@ fun <T> SelectableIconCell(
                 role = role
             )
             .conditional(isSelected) {
-                border(4.dp, SelectionFrameColor, RoundedCornerShape(8.dp))
+                border(4.dp, MaterialTheme.colors.secondary, RoundedCornerShape(8.dp))
             }
             .padding(4.dp)
             .background(
-                color = SelectionColor.copy(alpha = animatedAlpha),
+                color = MaterialTheme.colors.secondary.copy(alpha = animatedAlpha),
                 shape = RoundedCornerShape(16.dp)
             ),
         contentAlignment = Alignment.Center

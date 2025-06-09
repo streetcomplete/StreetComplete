@@ -15,6 +15,7 @@ import androidx.compose.foundation.text.InlineTextContent
 import androidx.compose.foundation.text.appendInlineContent
 import androidx.compose.material.ContentAlpha
 import androidx.compose.material.LocalContentColor
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -40,8 +41,6 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.segregated.CyclewaySegregation
 import de.westnordost.streetcomplete.quests.segregated.asItem
 import de.westnordost.streetcomplete.ui.ktx.conditional
-import de.westnordost.streetcomplete.ui.theme.SelectionColor
-import de.westnordost.streetcomplete.ui.theme.SelectionFrameColor
 import de.westnordost.streetcomplete.view.CharSequenceText
 import de.westnordost.streetcomplete.view.DrawableImage
 import de.westnordost.streetcomplete.view.ResImage
@@ -109,7 +108,7 @@ fun <T> SmoothnessIconRightItem(
                 role = role
             )
             .conditional(isSelected) {
-                border(4.dp, SelectionFrameColor)
+                border(4.dp, MaterialTheme.colors.secondary)
             }
             .padding(2.dp),
         contentAlignment = Alignment.CenterStart
@@ -117,7 +116,7 @@ fun <T> SmoothnessIconRightItem(
         Box(
             modifier = Modifier
                 .matchParentSize()
-                .background(SelectionColor.copy(alpha = animatedAlpha))
+                .background(MaterialTheme.colors.secondary.copy(alpha = animatedAlpha))
         )
         Row (verticalAlignment = Alignment.CenterVertically) {
             imageBitmap?.let { bitmap ->

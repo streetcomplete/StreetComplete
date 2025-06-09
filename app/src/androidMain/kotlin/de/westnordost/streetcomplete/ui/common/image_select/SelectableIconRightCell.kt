@@ -31,8 +31,6 @@ import androidx.core.graphics.drawable.toBitmap
 import de.westnordost.streetcomplete.osm.building.BuildingType
 import de.westnordost.streetcomplete.osm.building.asItem
 import de.westnordost.streetcomplete.ui.ktx.conditional
-import de.westnordost.streetcomplete.ui.theme.SelectionColor
-import de.westnordost.streetcomplete.ui.theme.SelectionFrameColor
 import de.westnordost.streetcomplete.view.CharSequenceText
 import de.westnordost.streetcomplete.view.DrawableImage
 import de.westnordost.streetcomplete.view.ResImage
@@ -86,10 +84,10 @@ fun <T> SelectableIconRightCell(
                 role = role
             )
             .conditional(isSelected) {
-                border(4.dp, SelectionFrameColor, RoundedCornerShape(16.dp))
+                border(4.dp, MaterialTheme.colors.secondary, RoundedCornerShape(16.dp))
             }
             .background(
-                color = SelectionColor.copy(alpha = animatedAlpha),
+                color = MaterialTheme.colors.secondary.copy(alpha = animatedAlpha),
                 shape = RoundedCornerShape(16.dp)
             ),
         contentAlignment = Alignment.CenterStart
