@@ -24,7 +24,6 @@ import de.westnordost.streetcomplete.util.logs.Log
 
 class AddOpeningHoursAtp(
     private val getFeature: (Element) -> Feature?,
-    private val atpOpeningHoursDao: (Element) -> Boolean,
     private val atpDao: AtpDao
 ) : OsmElementQuestType<OpeningHoursAnswer>, AndroidQuest {
 
@@ -201,9 +200,6 @@ class AddOpeningHoursAtp(
         tags.containsKey("name") || tags.containsKey("brand")
 
     private fun hasFeatureName(element: Element) = getFeature(element)?.name != null
-
-    // TODO remove it
-    private fun atpClaimsItShouldBeResurveyedHack(element: Element): Boolean = atpOpeningHoursDao(element)
 
     private fun atpClaimsItShouldBeResurveyed(element: Element): Boolean {
         //Log.e("ATP", "atpClaimsItShouldBeResurveyed for element ${element}}")
