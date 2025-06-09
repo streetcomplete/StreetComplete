@@ -9,7 +9,7 @@ import androidx.core.view.doOnLayout
 import androidx.core.view.isGone
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
-import de.westnordost.streetcomplete.data.meta.AbbreviationsByLocale
+import de.westnordost.streetcomplete.data.meta.AbbreviationsByLanguage
 import de.westnordost.streetcomplete.data.meta.NameSuggestionsSource
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
@@ -45,6 +45,7 @@ import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsMapPositionAwar
 import de.westnordost.streetcomplete.util.getNameAndLocationSpanned
 import de.westnordost.streetcomplete.util.ktx.dpToPx
 import de.westnordost.streetcomplete.util.ktx.isArea
+import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.math.PositionOnWay
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import de.westnordost.streetcomplete.util.math.getPositionOnWays
@@ -57,7 +58,7 @@ class AddressOverlayForm : AbstractOverlayForm(), IsMapPositionAware {
     private val binding by contentViewBinding(FragmentOverlayAddressBinding::bind)
 
     private val mapDataWithEditsSource: MapDataWithEditsSource by inject()
-    private val abbreviationsByLocale: AbbreviationsByLocale by inject()
+    private val abbreviationsByLanguage: AbbreviationsByLanguage by inject()
     private val nameSuggestionsSource: NameSuggestionsSource by inject()
 
     private lateinit var numberOrNameInputCtrl: AddressNumberAndNameInputViewController
@@ -151,9 +152,10 @@ class AddressOverlayForm : AbstractOverlayForm(), IsMapPositionAware {
             streetNameInputContainer = streetOrPlaceBinding.streetNameInputContainer,
             streetNameInput = streetOrPlaceBinding.streetNameInput.apply { hint = lastStreetName },
             nameSuggestionsSource = nameSuggestionsSource,
-            abbreviationsByLocale = abbreviationsByLocale,
+            abbreviationsByLanguage = abbreviationsByLanguage,
             countryLocale = Locale.forLanguageTag(countryInfo.languageTag.orEmpty()),
-            startWithPlace = isShowingPlaceName
+            startWithPlace = isShowingPlaceName,
+            viewLifecycleScope = viewLifecycleScope
         )
         if (streetOrPlaceName != null) { // this changes back to street if it's null
             streetOrPlaceCtrl.streetOrPlaceName = streetOrPlaceName

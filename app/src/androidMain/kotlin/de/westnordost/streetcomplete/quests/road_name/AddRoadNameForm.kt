@@ -4,7 +4,7 @@ import android.content.DialogInterface
 import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
-import de.westnordost.streetcomplete.data.meta.AbbreviationsByLocale
+import de.westnordost.streetcomplete.data.meta.AbbreviationsByLanguage
 import de.westnordost.streetcomplete.data.meta.NameSuggestionsSource
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
@@ -15,6 +15,8 @@ import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.osm.localized_name.LocalizedName
 import de.westnordost.streetcomplete.quests.AAddLocalizedNameForm
 import de.westnordost.streetcomplete.quests.AnswerItem
+import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
+import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 import java.util.LinkedList
 
@@ -33,14 +35,14 @@ class AddRoadNameForm : AAddLocalizedNameForm<RoadNameAnswer>() {
         AnswerItem(R.string.quest_streetName_answer_cantType) { showKeyboardInfo() }
     )
 
-    private val abbrByLocale: AbbreviationsByLocale by inject()
+    private val abbrByLocale: AbbreviationsByLanguage by inject()
     private val nameSuggestionsSource: NameSuggestionsSource by inject()
 
     private val roadsWithNamesFilter =
         "ways with highway ~ ${(ALL_ROADS + ALL_PATHS).joinToString("|")} and name"
             .toElementFilterExpression()
 
-    override fun getAbbreviationsByLocale(): AbbreviationsByLocale = abbrByLocale
+    override fun getAbbreviationsByLocale(): AbbreviationsByLanguage = abbrByLocale
 
     override fun getLocalizedNameSuggestions(): List<List<LocalizedName>> {
         val firstAndLast = when (val geom = geometry) {
@@ -60,26 +62,32 @@ class AddRoadNameForm : AAddLocalizedNameForm<RoadNameAnswer>() {
     }
 
     override fun onClickOk(names: List<LocalizedName>) {
-        val possibleAbbreviations = LinkedList<String>()
-        for ((languageTag, name) in adapter?.names.orEmpty()) {
+        viewLifecycleScope.launch {
+            val possibleAbbreviations = LinkedList(getPossibleAbbreviations(names))
+            confirmPossibleAbbreviationsIfAny(possibleAbbreviations) {
+                val points = when (val g = geometry) {
+                    is ElementPolylinesGeometry -> g.polylines.first()
+                    is ElementPolygonsGeometry -> g.polygons.first()
+                    is ElementPointGeometry -> listOf(g.center)
+                }
+                applyAnswer(RoadName(names, element.id, points))
+            }
+        }
+    }
+
+    private suspend fun getPossibleAbbreviations(names: List<LocalizedName>): List<String> {
+        val possibleAbbreviations = ArrayList<String>()
+        for ((languageTag, name) in names) {
             val languageTagWithFallback =
                 languageTag.takeIf { it.isNotEmpty() } ?: countryInfo.languageTag.orEmpty()
-            val abbr = abbrByLocale.get(languageTagWithFallback)
+            val abbr = abbrByLocale[languageTagWithFallback]
             val containsLocalizedAbbreviations = abbr?.containsAbbreviations(name) == true
 
             if (name.contains(".") || containsLocalizedAbbreviations) {
                 possibleAbbreviations.add(name)
             }
         }
-
-        confirmPossibleAbbreviationsIfAny(possibleAbbreviations) {
-            val points = when (val g = geometry) {
-                is ElementPolylinesGeometry -> g.polylines.first()
-                is ElementPolygonsGeometry -> g.polygons.first()
-                is ElementPointGeometry -> listOf(g.center)
-            }
-            applyAnswer(RoadName(names, element.id, points))
-        }
+        return possibleAbbreviations
     }
 
     private fun selectNoStreetNameReason() {

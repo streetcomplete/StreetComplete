@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.core.view.isGone
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.meta.AbbreviationsByLocale
+import de.westnordost.streetcomplete.data.meta.AbbreviationsByLanguage
 import de.westnordost.streetcomplete.data.meta.NameSuggestionsSource
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.databinding.ViewStreetOrPlaceNameInputBinding
@@ -14,6 +14,7 @@ import de.westnordost.streetcomplete.osm.address.StreetOrPlaceNameViewController
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.util.getNameAndLocationSpanned
+import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import org.koin.android.ext.android.inject
 import java.util.Locale
 
@@ -21,7 +22,7 @@ class AddAddressStreetForm : AbstractOsmQuestForm<StreetOrPlaceName>() {
     override val contentLayoutResId = R.layout.view_street_or_place_name_input
     private val binding by contentViewBinding(ViewStreetOrPlaceNameInputBinding::bind)
 
-    private val abbreviationsByLocale: AbbreviationsByLocale by inject()
+    private val abbreviationsByLanguage: AbbreviationsByLanguage by inject()
     private val nameSuggestionsSource: NameSuggestionsSource by inject()
 
     private lateinit var streetOrPlaceCtrl: StreetOrPlaceNameViewController
@@ -53,9 +54,10 @@ class AddAddressStreetForm : AbstractOsmQuestForm<StreetOrPlaceName>() {
             streetNameInputContainer = binding.streetNameInputContainer,
             streetNameInput = binding.streetNameInput,
             nameSuggestionsSource = nameSuggestionsSource,
-            abbreviationsByLocale = abbreviationsByLocale,
+            abbreviationsByLanguage = abbreviationsByLanguage,
             countryLocale = Locale.forLanguageTag(countryInfo.languageTag.orEmpty()),
-            startWithPlace = isShowingPlaceName
+            startWithPlace = isShowingPlaceName,
+            viewLifecycleScope = viewLifecycleScope
         )
         streetOrPlaceCtrl.onInputChanged = { checkIsFormComplete() }
 

@@ -8,12 +8,13 @@ import android.widget.Spinner
 import androidx.core.view.isGone
 import androidx.core.widget.doAfterTextChanged
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.meta.AbbreviationsByLocale
+import de.westnordost.streetcomplete.data.meta.AbbreviationsByLanguage
 import de.westnordost.streetcomplete.data.meta.NameSuggestionsSource
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.osm.address.StreetOrPlaceNameViewController.StreetOrPlace.*
 import de.westnordost.streetcomplete.util.ktx.nonBlankTextOrNull
 import de.westnordost.streetcomplete.view.OnAdapterItemSelectedListener
+import kotlinx.coroutines.CoroutineScope
 import java.util.Locale
 
 /** Manages the input of a street name or alternatively (if not available) a place name.
@@ -27,12 +28,13 @@ class StreetOrPlaceNameViewController(
     private val streetNameInputContainer: View,
     private val streetNameInput: EditText,
     nameSuggestionsSource: NameSuggestionsSource,
-    abbreviationsByLocale: AbbreviationsByLocale,
+    abbreviationsByLanguage: AbbreviationsByLanguage,
     countryLocale: Locale,
     startWithPlace: Boolean,
+    viewLifecycleScope: CoroutineScope,
 ) {
     private val streetNameInputCtrl = AddressStreetNameInputViewController(
-        streetNameInput, nameSuggestionsSource, abbreviationsByLocale, countryLocale
+        streetNameInput, nameSuggestionsSource, abbreviationsByLanguage, countryLocale, viewLifecycleScope
     )
 
     var onInputChanged: (() -> Unit)? = null

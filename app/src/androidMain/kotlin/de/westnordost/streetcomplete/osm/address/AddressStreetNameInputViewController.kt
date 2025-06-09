@@ -3,13 +3,15 @@ package de.westnordost.streetcomplete.osm.address
 import android.widget.EditText
 import androidx.core.widget.doAfterTextChanged
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
-import de.westnordost.streetcomplete.data.meta.AbbreviationsByLocale
+import de.westnordost.streetcomplete.data.meta.AbbreviationsByLanguage
 import de.westnordost.streetcomplete.data.meta.NameSuggestionsSource
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.osm.ALL_PATHS
 import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.util.ktx.nonBlankTextOrNull
 import de.westnordost.streetcomplete.view.controller.AutoCorrectAbbreviationsViewController
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.launch
 import java.util.Locale
 
 /** Manages inputting a street name associated with an address. The user can either select it via a
@@ -18,8 +20,9 @@ import java.util.Locale
 class AddressStreetNameInputViewController(
     private val streetNameInput: EditText,
     private val nameSuggestionsSource: NameSuggestionsSource,
-    abbreviationsByLocale: AbbreviationsByLocale,
-    private val countryLocale: Locale
+    abbreviationsByLanguage: AbbreviationsByLanguage,
+    private val countryLocale: Locale,
+    private val viewLifecycleScope: CoroutineScope,
 ) {
     private val autoCorrectAbbreviationsViewController: AutoCorrectAbbreviationsViewController
 
@@ -35,7 +38,9 @@ class AddressStreetNameInputViewController(
 
     init {
         autoCorrectAbbreviationsViewController = AutoCorrectAbbreviationsViewController(streetNameInput)
-        autoCorrectAbbreviationsViewController.abbreviations = abbreviationsByLocale[countryLocale.toLanguageTag()]
+        viewLifecycleScope.launch {
+            autoCorrectAbbreviationsViewController.abbreviations = abbreviationsByLanguage[countryLocale.toLanguageTag()]
+        }
 
         streetNameInput.doAfterTextChanged { onInputChanged?.invoke() }
     }

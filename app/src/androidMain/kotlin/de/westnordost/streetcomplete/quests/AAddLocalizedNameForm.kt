@@ -9,7 +9,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.text.parseAsHtml
 import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.meta.AbbreviationsByLocale
+import de.westnordost.streetcomplete.data.meta.AbbreviationsByLanguage
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.osm.localized_name.LocalizedName
 import de.westnordost.streetcomplete.view.AdapterDataChangedWatcher
@@ -66,7 +66,7 @@ abstract class AAddLocalizedNameForm<T> : AbstractOsmQuestForm<T>() {
     protected open fun getSelectableLanguageTags(): List<String> =
         (countryInfo.officialLanguages + countryInfo.additionalStreetsignLanguages).distinct()
 
-    protected open fun getAbbreviationsByLocale(): AbbreviationsByLocale? = null
+    protected open fun getAbbreviationsByLocale(): AbbreviationsByLanguage? = null
 
     protected open fun getLocalizedNameSuggestions(): List<List<LocalizedName>>? = null
 
