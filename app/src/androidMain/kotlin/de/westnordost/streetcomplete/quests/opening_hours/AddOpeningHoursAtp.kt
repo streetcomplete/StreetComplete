@@ -4,6 +4,7 @@ import de.westnordost.osm_opening_hours.parser.toOpeningHoursOrNull
 import de.westnordost.osmfeatures.Feature
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.atp.AtpDao
+import de.westnordost.streetcomplete.data.atp.ReportType
 import de.westnordost.streetcomplete.data.elementfilter.filters.RelativeDate
 import de.westnordost.streetcomplete.data.elementfilter.filters.TagOlderThan
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
@@ -206,13 +207,21 @@ class AddOpeningHoursAtp(
 
     private fun hasFeatureName(element: Element) = getFeature(element)?.name != null
 
-    private fun atpClaimsItShouldBeResurveyed(element: Element): Boolean
-    // TODO: ElementKey silliness is here as otherwise AtpDaoTest was impossible - Element cannot be created, mock cannot be imported. How to solve it properly?
-    = atpDao.getAllWithMatchingOsmElement(ElementKey(element.type, element.id)).isNotEmpty()
-        // = atpOpeningHoursDao(element)
-        // TODO check opening hours whether they match or document why it is not needed?
-        // TODO why just presence of entry is enough
-        // TODO: is comparing/parsing opening hours even implemented?
-        // TODO maybe rely on age?
-        // TODO maybe check reported OSM match in ATP data and check has their opening hours changed since then
+    private fun atpClaimsItShouldBeResurveyed(element: Element): Boolean {
+        val entries = atpDao.getAllWithMatchingOsmElement(ElementKey(element.type, element.id))
+        if(entries.isEmpty()){
+            return false
+        }
+        return entries.any {
+            // TODO: add test
+            // entries about unrelated issues do not matter
+            it.reportType == ReportType.OPENING_HOURS_REPORTED_AS_OUTDATED_IN_OPENSTREETMAP &&
+                // if tags changed, then report may be not applicable anymore
+                it.tagsInATP["brand"] == element.tags["brand"] &&
+                it.tagsInATP["name"] == element.tags["name"] &&
+                it.tagsInATP["opening_hours"] == element.tags["opening_hours"] &&
+                it.tagsInATP["check_date:opening_hours"] == element.tags["check_date:opening_hours"] &&
+                it.tagsInATP["opening_hours:signed"] == element.tags["opening_hours:signed"]
+        }
+    }
 }

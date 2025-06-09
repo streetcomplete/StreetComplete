@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.testutils
 
 import de.westnordost.streetcomplete.data.atp.AtpEntry
+import de.westnordost.streetcomplete.data.atp.ReportType
 import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChanges
@@ -125,11 +126,13 @@ fun atpEntry( // TODO: duplicates "private fun createAtpEntry" - is it possible 
     position: LatLon = LatLon(1.0, 1.0),
     osmMatch: ElementKey = ElementKey(NODE, 1),
     tagsInATP: Map<String, String> = mapOf(),
-    tagsInOSM: Map<String, String> = mapOf()
+    tagsInOSM: Map<String, String> = mapOf(),
+    reportType: ReportType = ReportType.OPENING_HOURS_REPORTED_AS_OUTDATED_IN_OPENSTREETMAP,
 ) = AtpEntry(
     position = position,
     id = id,
     osmMatch = osmMatch,
     tagsInATP = tagsInATP,
-    tagsInOSM = tagsInOSM
+    tagsInOSM = tagsInOSM,
+    reportType = reportType,
 )
