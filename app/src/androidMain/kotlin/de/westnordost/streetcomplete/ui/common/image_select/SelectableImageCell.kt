@@ -15,6 +15,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.drawWithContent
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.BlendMode
 import androidx.compose.ui.graphics.Color
@@ -48,7 +49,6 @@ fun <T> SelectableImageCell(
         targetValue = if (isSelected) 0.5f else 0f,
         label = "OverlayAlpha"
     )
-
     val context = LocalContext.current
     val imageBitmap = remember(item.image) { item.image?.toBitmap(context)?.asImageBitmap() }
     val title = remember(item.title) { item.title?.toString(context) }
@@ -60,43 +60,39 @@ fun <T> SelectableImageCell(
                 onClick = onClick,
                 role = role
             )
+            .conditional(isSelected) {
+                border(4.dp, MaterialTheme.colors.secondary)
+            }
+            .padding(4.dp)
     ) {
-        Box(
-            modifier = Modifier
-                .conditional(isSelected) {
-                    border(4.dp, MaterialTheme.colors.secondary)
-                }
-                .padding(4.dp)
-        ) {
-            if (imageBitmap != null) {
-                Image(
-                    bitmap = imageBitmap,
-                    contentDescription = title,
-                    modifier = Modifier
-                        .align(Alignment.Center),
-                    colorFilter = ColorFilter.tint(MaterialTheme.colors.secondary.copy(alpha = animatedAlpha),
-                        BlendMode.Color)
+        if (imageBitmap != null) {
+            Image(
+                bitmap = imageBitmap,
+                contentDescription = title,
+                colorFilter = ColorFilter.tint(
+                    color = MaterialTheme.colors.secondary.copy(alpha = animatedAlpha),
+                    blendMode = BlendMode.Color
                 )
-            }
-            if (title != null) {
-                Text(
-                    text = title,
-                    style = TextStyle(
-                        color = Color.White,
-                        fontSize = 12.sp,
-                        fontWeight = FontWeight.Bold,
-                        shadow = Shadow(
-                            color = Color.Black,
-                            offset = Offset(2f, 2f),
-                            blurRadius = 4f
-                        )
-                    ),
-                    textAlign = TextAlign.Center,
-                    modifier = Modifier
-                        .align(Alignment.BottomCenter)
-                        .padding(8.dp)
-                )
-            }
+            )
+        }
+        if (title != null) {
+            Text(
+                text = title,
+                style = TextStyle(
+                    color = Color.White,
+                    fontSize = 12.sp,
+                    fontWeight = FontWeight.Bold,
+                    shadow = Shadow(
+                        color = Color.Black,
+                        offset = Offset(2f, 2f),
+                        blurRadius = 4f
+                    )
+                ),
+                textAlign = TextAlign.Center,
+                modifier = Modifier
+                    .align(Alignment.BottomCenter)
+                    .padding(8.dp)
+            )
         }
     }
 }

@@ -1,11 +1,9 @@
 package de.westnordost.streetcomplete.ui.common.image_select
 
-import android.R.attr.bitmap
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
@@ -46,13 +44,12 @@ fun <T> SelectableIconRightCell(
         targetValue = if (isSelected) 0.5f else 0f,
         label = "OverlayAlpha"
     )
-
     val context = LocalContext.current
     val imageBitmap = remember(item.image) { item.image?.toBitmap(context)?.asImageBitmap() }
     val title = remember(item.title) { item.title?.toString(context) }
     val description = remember(item.description) { item.description?.toString(context) }
 
-    Box(
+    Row(
         modifier = modifier
             .selectable(
                 selected = isSelected,
@@ -65,37 +62,33 @@ fun <T> SelectableIconRightCell(
             .background(
                 color = MaterialTheme.colors.secondary.copy(alpha = animatedAlpha),
                 shape = RoundedCornerShape(16.dp)
-            ),
-        contentAlignment = Alignment.CenterStart
+            )
+            .padding(8.dp),
+        verticalAlignment = Alignment.CenterVertically
     ) {
-        Row(
-            modifier = Modifier.padding(8.dp),
-            verticalAlignment = Alignment.CenterVertically
+        if (imageBitmap != null) {
+            Image(
+                bitmap = imageBitmap,
+                contentDescription = title
+            )
+        }
+        Column(
+            horizontalAlignment = Alignment.Start,
+            modifier = Modifier.padding(start = 8.dp)
         ) {
-            if (imageBitmap != null) {
-                Image(
-                    bitmap = imageBitmap,
-                    contentDescription = title
+            if (title != null) {
+                Text(
+                    text = title,
+                    style = MaterialTheme.typography.body1
                 )
             }
-            Column(
-                horizontalAlignment = Alignment.Start,
-                modifier = Modifier.padding(start = 8.dp)
-            ) {
-                if (title != null) {
-                    Text(
-                        text = title,
-                        style = MaterialTheme.typography.body1
-                    )
-                }
-                if (description != null) {
-                    Text(
-                        text = description,
-                        modifier = Modifier.padding(top = 4.dp),
-                        style = MaterialTheme.typography.body2,
-                        color = LocalContentColor.current.copy(alpha = ContentAlpha.medium),
-                    )
-                }
+            if (description != null) {
+                Text(
+                    text = description,
+                    modifier = Modifier.padding(top = 4.dp),
+                    style = MaterialTheme.typography.body2,
+                    color = LocalContentColor.current.copy(alpha = ContentAlpha.medium),
+                )
             }
         }
     }
