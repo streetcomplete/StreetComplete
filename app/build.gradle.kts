@@ -1,5 +1,5 @@
-import com.codingfeline.buildkonfig.compiler.FieldSpec.Type.STRING
 import com.codingfeline.buildkonfig.compiler.FieldSpec.Type.BOOLEAN
+import com.codingfeline.buildkonfig.compiler.FieldSpec.Type.STRING
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import java.io.FileInputStream
@@ -59,7 +59,7 @@ buildkonfig {
     defaultConfigs {
         buildConfigField(BOOLEAN, "IS_FROM_MONOPOLISTIC_APP_STORE", appForMonopolisticAppStore.toString())
         buildConfigField(STRING, "VERSION_NAME", appVersionName)
-        buildConfigField(BOOLEAN, "DEBUG", properties["debug"]!!.toString())
+        buildConfigField(BOOLEAN, "DEBUG", properties["app.streetcomplete.debug"]!!.toString())
     }
 
     targetConfigs {
@@ -102,6 +102,13 @@ kotlin {
                 // Atomics, Locks, Synchronization
                 // Aparently only necessary as long as https://github.com/Kotlin/kotlinx-atomicfu/issues/145 is not solved
                 implementation("org.jetbrains.kotlinx:atomicfu:0.27.0")
+
+                // Dependency injection
+                implementation(project.dependencies.platform("io.insert-koin:koin-bom:4.1.0-RC1"))
+                implementation("io.insert-koin:koin-core")
+                implementation("io.insert-koin:koin-compose")
+                implementation("io.insert-koin:koin-compose-viewmodel")
+                implementation("io.insert-koin:koin-androidx-compose-navigation")
 
                 // settings
                 implementation("com.russhwolf:multiplatform-settings:1.3.0")
@@ -147,7 +154,7 @@ kotlin {
                 implementation(compose.components.uiToolingPreview)
 
                 // UI Navigation
-                implementation("org.jetbrains.androidx.navigation:navigation-compose:2.9.0-beta01")
+                implementation("org.jetbrains.androidx.navigation:navigation-compose:2.9.0-beta02")
 
                 // UI ViewModel
                 implementation("org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-compose:2.9.0")
@@ -168,12 +175,9 @@ kotlin {
         }
         androidMain {
             dependencies {
-                // dependency injection
-                implementation(project.dependencies.platform("io.insert-koin:koin-bom:4.0.4"))
-                implementation("io.insert-koin:koin-core")
+                // Dependency injection
                 implementation("io.insert-koin:koin-android")
                 implementation("io.insert-koin:koin-androidx-workmanager")
-                implementation("io.insert-koin:koin-androidx-compose")
 
                 // Android stuff
                 implementation("com.google.android.material:material:1.12.0")
@@ -367,7 +371,7 @@ tasks.register<UpdateContributorStatisticsTask>("updateContributorStatistics") {
     /* drawable xmls, layout xmls, animation xmls ... but not strings because they are updated
        via gradle tasks */
     interfaceMarkupRegex = Regex(".*(anim|color|drawable|layout|menu|mipmap).*\\.xml$")
-    githubApiToken = properties["GithubApiToken"] as String
+    githubApiToken = properties["app.streetcomplete.GithubApiToken"] as String
 }
 
 tasks.register("updateAvailableLanguages") {
@@ -384,8 +388,8 @@ tasks.register<GetTranslatorCreditsTask>("updateTranslatorCredits") {
     group = "streetcomplete"
     targetFile = "$projectDir/src/commonMain/composeResources/files/credits_translators.yml"
     languageCodes = bcp47ExportLanguages
-    cookie = properties["POEditorCookie"] as String
-    phpsessid = properties["POEditorPHPSESSID"] as String
+    cookie = properties["app.streetcomplete.POEditorCookie"] as String
+    phpsessid = properties["app.streetcomplete.POEditorPHPSESSID"] as String
 }
 
 tasks.register<UpdatePresetsTask>("updatePresets") {
@@ -419,7 +423,7 @@ tasks.register<DownloadAndConvertPresetIconsTask>("downloadAndConvertPresetIcons
 tasks.register<UpdateAppTranslationsTask>("updateTranslations") {
     group = "streetcomplete"
     languageCodes = bcp47ExportLanguages
-    apiToken = properties["POEditorAPIToken"] as String
+    apiToken = properties["app.streetcomplete.POEditorAPIToken"] as String
     projectId = poEditorProjectId
     targetFiles = { "$projectDir/src/androidMain/res/values-$it/strings.xml" }
 }
@@ -428,7 +432,7 @@ tasks.register<UpdateAppTranslationCompletenessTask>("updateTranslationCompleten
     group = "streetcomplete"
     languageCodes = bcp47ExportLanguages
     mustIncludeLanguagePercentage = 90
-    apiToken = properties["POEditorAPIToken"] as String
+    apiToken = properties["app.streetcomplete.POEditorAPIToken"] as String
     projectId = poEditorProjectId
     targetFiles = { "$projectDir/src/androidMain/res/values-$it/translation_info.xml" }
 }

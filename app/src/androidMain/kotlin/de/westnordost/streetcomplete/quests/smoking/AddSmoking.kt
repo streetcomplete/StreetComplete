@@ -5,12 +5,13 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.isPlaceOrDisusedPlace
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 
-class AddSmoking : OsmFilterQuestType<SmokingAllowed>() {
+class AddSmoking : OsmFilterQuestType<SmokingAllowed>(), AndroidQuest {
     /*
         - some places are eligible as we assume they probably have seating (unless
           they are explicitly marked as having no seating at all):

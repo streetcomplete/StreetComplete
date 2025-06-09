@@ -14,13 +14,11 @@ import de.westnordost.streetcomplete.data.CacheTrimmer
 import de.westnordost.streetcomplete.data.CleanerWorker
 import de.westnordost.streetcomplete.data.Preloader
 import de.westnordost.streetcomplete.data.allEditTypesModule
-import de.westnordost.streetcomplete.data.dbModule
 import de.westnordost.streetcomplete.data.download.downloadModule
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesController
 import de.westnordost.streetcomplete.data.edithistory.EditHistoryController
 import de.westnordost.streetcomplete.data.edithistory.editHistoryModule
 import de.westnordost.streetcomplete.data.logs.logsModule
-import de.westnordost.streetcomplete.data.maptiles.maptilesModule
 import de.westnordost.streetcomplete.data.messages.messagesModule
 import de.westnordost.streetcomplete.data.meta.metadataModule
 import de.westnordost.streetcomplete.data.osm.created_elements.createdElementsModule
@@ -33,7 +31,6 @@ import de.westnordost.streetcomplete.data.osmnotes.edits.noteEditsModule
 import de.westnordost.streetcomplete.data.osmnotes.notequests.osmNoteQuestModule
 import de.westnordost.streetcomplete.data.osmnotes.notesModule
 import de.westnordost.streetcomplete.data.overlays.overlayModule
-import de.westnordost.streetcomplete.data.platform.platformModule
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.data.preferences.ResurveyIntervalsUpdater
 import de.westnordost.streetcomplete.data.preferences.Theme
@@ -44,6 +41,7 @@ import de.westnordost.streetcomplete.data.upload.uploadModule
 import de.westnordost.streetcomplete.data.urlconfig.urlConfigModule
 import de.westnordost.streetcomplete.data.user.UserLoginController
 import de.westnordost.streetcomplete.data.user.UserUpdater
+import de.westnordost.streetcomplete.data.user.achievements.achievementDefinitionsModule
 import de.westnordost.streetcomplete.data.user.achievements.achievementsModule
 import de.westnordost.streetcomplete.data.user.statistics.statisticsModule
 import de.westnordost.streetcomplete.data.user.userModule
@@ -104,11 +102,11 @@ class StreetCompleteApplication : Application() {
             workManagerFactory()
             modules(
                 achievementsModule,
+                achievementDefinitionsModule,
                 appModule,
                 aboutScreenModule,
                 userScreenModule,
                 createdElementsModule,
-                dbModule,
                 logsModule,
                 downloadModule,
                 editHistoryModule,
@@ -116,7 +114,6 @@ class StreetCompleteApplication : Application() {
                 elementGeometryModule,
                 mapDataModule,
                 mainModule,
-                maptilesModule,
                 metadataModule,
                 noteEditsModule,
                 notesModule,
@@ -139,7 +136,7 @@ class StreetCompleteApplication : Application() {
                 overlayModule,
                 urlConfigModule,
                 urlConfigModule,
-                platformModule
+                androidModule
             )
         }
 

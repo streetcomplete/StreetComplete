@@ -7,6 +7,7 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.LAST_CHECK_DATE_KEYS
 import de.westnordost.streetcomplete.osm.Tags
@@ -16,7 +17,7 @@ import de.westnordost.streetcomplete.osm.updateCheckDate
 
 class CheckShopExistence(
     private val getFeature: (Element) -> Feature?
-) : OsmElementQuestType<Unit> {
+) : OsmElementQuestType<Unit>, AndroidQuest {
     // opening hours quest acts as a de facto checker of shop existence, but some people disabled it.
     // separate from CheckExistence as very old shop with opening hours should show
     // opening hours resurvey quest rather than this one (which would cause edit date to be changed

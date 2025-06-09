@@ -7,6 +7,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BLIND
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.WHEELCHAIR
@@ -15,7 +16,7 @@ import de.westnordost.streetcomplete.osm.kerb.couldBeAKerb
 import de.westnordost.streetcomplete.osm.kerb.findAllKerbNodes
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 
-class AddKerbHeight : OsmElementQuestType<KerbHeight> {
+class AddKerbHeight : OsmElementQuestType<KerbHeight>, AndroidQuest {
 
     private val eligibleKerbsFilter by lazy { """
         nodes with

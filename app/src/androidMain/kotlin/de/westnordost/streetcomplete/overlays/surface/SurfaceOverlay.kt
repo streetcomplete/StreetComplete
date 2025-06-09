@@ -4,6 +4,13 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
+import de.westnordost.streetcomplete.data.overlays.AndroidOverlay
+import de.westnordost.streetcomplete.data.overlays.Color
+import de.westnordost.streetcomplete.data.overlays.Overlay
+import de.westnordost.streetcomplete.data.overlays.PolygonStyle
+import de.westnordost.streetcomplete.data.overlays.PolylineStyle
+import de.westnordost.streetcomplete.data.overlays.StrokeStyle
+import de.westnordost.streetcomplete.data.overlays.Style
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.*
 import de.westnordost.streetcomplete.osm.ALL_PATHS
 import de.westnordost.streetcomplete.osm.ALL_ROADS
@@ -11,18 +18,12 @@ import de.westnordost.streetcomplete.osm.isPrivateOnFoot
 import de.westnordost.streetcomplete.osm.surface.Surface
 import de.westnordost.streetcomplete.osm.surface.Surface.*
 import de.westnordost.streetcomplete.osm.surface.parseSurface
-import de.westnordost.streetcomplete.overlays.Color
-import de.westnordost.streetcomplete.overlays.Overlay
-import de.westnordost.streetcomplete.overlays.PolygonStyle
-import de.westnordost.streetcomplete.overlays.PolylineStyle
-import de.westnordost.streetcomplete.overlays.StrokeStyle
-import de.westnordost.streetcomplete.overlays.Style
 import de.westnordost.streetcomplete.quests.surface.AddCyclewayPartSurface
 import de.westnordost.streetcomplete.quests.surface.AddFootwayPartSurface
 import de.westnordost.streetcomplete.quests.surface.AddPathSurface
 import de.westnordost.streetcomplete.quests.surface.AddRoadSurface
 
-class SurfaceOverlay : Overlay {
+class SurfaceOverlay : Overlay, AndroidOverlay {
 
     override val title = R.string.overlay_surface
     override val icon = R.drawable.ic_quest_street_surface

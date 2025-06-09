@@ -5,11 +5,12 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.WHEELCHAIR
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.isPlaceOrDisusedPlace
 
-class AddWheelchairAccessBusiness : OsmFilterQuestType<WheelchairAccess>() {
+class AddWheelchairAccessBusiness : OsmFilterQuestType<WheelchairAccess>(), AndroidQuest {
 
     override val elementFilter = """
         nodes, ways with

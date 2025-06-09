@@ -26,13 +26,19 @@ data class Rgb(val red: UByte, val green: UByte, val blue: UByte) {
         )
     }
 
-    /** return color as hexadecimal string "#rrggbbaa" */
+    /**
+     * Return color as hexadecimal string in the form "#rrggbb". The alpha
+     * channel is not included because this class stores only RGB values.
+     */
     @OptIn(ExperimentalStdlibApi::class)
     fun toHexString(): String =
         "#" + red.toHexString() + green.toHexString() + blue.toHexString()
 }
 
-/** Creates RGB from string in the form "#rrggbb" */
+/**
+ * Creates RGB from a hexadecimal color string in the form "#rrggbb" or
+ * "#rrggbbaa". If an alpha value is present it will be ignored.
+ */
 @OptIn(ExperimentalStdlibApi::class, ExperimentalUnsignedTypes::class)
 fun String.toRgb(): Rgb {
     require(length == 7 || length == 9)

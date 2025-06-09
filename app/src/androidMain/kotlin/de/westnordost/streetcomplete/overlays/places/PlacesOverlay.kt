@@ -6,20 +6,21 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
+import de.westnordost.streetcomplete.data.overlays.AndroidOverlay
+import de.westnordost.streetcomplete.data.overlays.Color
+import de.westnordost.streetcomplete.data.overlays.Overlay
+import de.westnordost.streetcomplete.data.overlays.PointStyle
+import de.westnordost.streetcomplete.data.overlays.PolygonStyle
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement
 import de.westnordost.streetcomplete.osm.isDisusedPlace
 import de.westnordost.streetcomplete.osm.isPlaceOrDisusedPlace
-import de.westnordost.streetcomplete.overlays.Color
-import de.westnordost.streetcomplete.overlays.Overlay
-import de.westnordost.streetcomplete.overlays.PointStyle
-import de.westnordost.streetcomplete.overlays.PolygonStyle
 import de.westnordost.streetcomplete.quests.place_name.AddPlaceName
 import de.westnordost.streetcomplete.quests.shop_type.CheckShopType
 import de.westnordost.streetcomplete.quests.shop_type.SpecifyShopType
 import de.westnordost.streetcomplete.util.getNameLabel
 import de.westnordost.streetcomplete.view.presetIconIndex
 
-class PlacesOverlay(private val getFeature: (Element) -> Feature?) : Overlay {
+class PlacesOverlay(private val getFeature: (Element) -> Feature?) : Overlay, AndroidOverlay {
 
     override val title = R.string.overlay_places
     override val icon = R.drawable.ic_quest_shop
