@@ -49,6 +49,10 @@ abstract class AImageListQuestForm<I, T> : AbstractOsmQuestForm<T>() {
     /** items to display. May not be accessed before onCreate */
     protected abstract val items: List<DisplayItem<I>>
     protected var currentItems: MutableState<List<ImageListItem<I>>> = mutableStateOf(emptyList())
+
+    private val selectedItems: List<DisplayItem<I>> get() =
+        currentItems.value.filter { it.checked }.map { it.item }
+
     /**
      * Return the composable used for a list item
      */
@@ -140,11 +144,13 @@ abstract class AImageListQuestForm<I, T> : AbstractOsmQuestForm<T>() {
            onItemSelected(currentItems.value.filter { it.checked }.map { it.item })
        }
     }
-    override fun isFormComplete() = currentItems.value.filter { it.checked }.map { it.item }.isNotEmpty()
+    override fun isFormComplete() = selectedItems.mapNotNull { it.value }.isNotEmpty()
+
     override fun onClickOk() {
-        if (currentItems.value.filter { it.checked }.map { it.item }.isNotEmpty()) {
-            prefs.addLastPicked(this::class.simpleName!!, currentItems.value.filter { it.checked }.map { it.item }.map { it.value.toString() })
-            onClickOk(currentItems.value.filter { it.checked }.map { it.item }.map { it.value!! })
+        val values = selectedItems.mapNotNull { it.value }
+        if (values.isNotEmpty()) {
+            prefs.addLastPicked(this::class.simpleName!!, values.map { it.toString() })
+            onClickOk(values)
         }
     }
     protected abstract fun onClickOk(selectedItems: List<I>)
