@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.ui.common.image_select
 
+import android.R.attr.bitmap
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -26,16 +27,12 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.core.content.ContextCompat
-import androidx.core.graphics.drawable.toBitmap
 import de.westnordost.streetcomplete.osm.building.BuildingType
 import de.westnordost.streetcomplete.osm.building.asItem
 import de.westnordost.streetcomplete.ui.ktx.conditional
-import de.westnordost.streetcomplete.view.CharSequenceText
-import de.westnordost.streetcomplete.view.DrawableImage
-import de.westnordost.streetcomplete.view.ResImage
-import de.westnordost.streetcomplete.view.ResText
 import de.westnordost.streetcomplete.view.image_select.DisplayItem
+import de.westnordost.streetcomplete.view.toBitmap
+import de.westnordost.streetcomplete.view.toString
 
 @Composable
 fun <T> SelectableIconRightCell(
@@ -49,32 +46,11 @@ fun <T> SelectableIconRightCell(
         targetValue = if (isSelected) 0.5f else 0f,
         label = "OverlayAlpha"
     )
-    val context = LocalContext.current
-    val imageBitmap = remember(item.image) {
-        when (item.image) {
-            is ResImage -> {
-                val resDrawable = ContextCompat.getDrawable(context, (item.image as ResImage).resId)
-                resDrawable?.toBitmap(resDrawable.intrinsicWidth, resDrawable.intrinsicHeight)?.asImageBitmap()
-            }
 
-            is DrawableImage -> (item.image as DrawableImage).drawable.toBitmap().asImageBitmap()
-            else -> null
-        }
-    }
-    val title = remember(item.title) {
-        when (item.title) {
-            is ResText -> context.getString((item.title as ResText).resId)
-            is CharSequenceText -> (item.title as CharSequenceText).text.toString()
-            null -> ""
-        }
-    }
-    val description = remember(item.description) {
-        when (item.description) {
-            is ResText -> context.getString((item.description as ResText).resId)
-            is CharSequenceText -> (item.description as CharSequenceText).text.toString()
-            null -> null
-        }
-    }
+    val context = LocalContext.current
+    val imageBitmap = remember(item.image) { item.image?.toBitmap(context)?.asImageBitmap() }
+    val title = remember(item.title) { item.title?.toString(context) }
+    val description = remember(item.description) { item.description?.toString(context) }
 
     Box(
         modifier = modifier
@@ -96,9 +72,9 @@ fun <T> SelectableIconRightCell(
             modifier = Modifier.padding(8.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            imageBitmap?.let { bitmap ->
+            if (imageBitmap != null) {
                 Image(
-                    bitmap = bitmap,
+                    bitmap = imageBitmap,
                     contentDescription = title
                 )
             }
@@ -106,10 +82,12 @@ fun <T> SelectableIconRightCell(
                 horizontalAlignment = Alignment.Start,
                 modifier = Modifier.padding(start = 8.dp)
             ) {
-                Text(
-                    text = title,
-                    style = MaterialTheme.typography.body1
-                )
+                if (title != null) {
+                    Text(
+                        text = title,
+                        style = MaterialTheme.typography.body1
+                    )
+                }
                 if (description != null) {
                     Text(
                         text = description,

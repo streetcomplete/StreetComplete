@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.view
 
+import android.content.Context
 import android.view.Menu
 import android.widget.TextView
 import androidx.annotation.StringRes
@@ -18,6 +19,12 @@ fun TextView.setText(text: Text?) {
         null -> setText("")
     }
 }
+
+fun Text.toString(context: Context): String =
+    when (this) {
+        is ResText -> context.getString(resId)
+        is CharSequenceText -> text.toString()
+    }
 
 fun Menu.add(groupId: Int, itemId: Int, order: Int, text: Text) {
     when (text) {

@@ -2,17 +2,14 @@ package de.westnordost.streetcomplete.ui.common.image_select
 
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -24,7 +21,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.Shadow
 import androidx.compose.ui.graphics.asImageBitmap
-import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.TextStyle
@@ -33,16 +29,12 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.core.content.ContextCompat
-import androidx.core.graphics.drawable.toBitmap
 import de.westnordost.streetcomplete.quests.bicycle_repair_station.BicycleRepairStationService
 import de.westnordost.streetcomplete.quests.bicycle_repair_station.asItem
 import de.westnordost.streetcomplete.ui.ktx.conditional
-import de.westnordost.streetcomplete.view.CharSequenceText
-import de.westnordost.streetcomplete.view.DrawableImage
-import de.westnordost.streetcomplete.view.ResImage
-import de.westnordost.streetcomplete.view.ResText
 import de.westnordost.streetcomplete.view.image_select.DisplayItem
+import de.westnordost.streetcomplete.view.toBitmap
+import de.westnordost.streetcomplete.view.toString
 
 @Composable
 fun <T> SelectableImageCell(
@@ -58,25 +50,8 @@ fun <T> SelectableImageCell(
     )
 
     val context = LocalContext.current
-    val imageBitmap = remember(item.image) {
-        when (item.image) {
-            is ResImage -> {
-                val resDrawable = ContextCompat.getDrawable(context, (item.image as ResImage).resId)
-                resDrawable?.toBitmap(resDrawable.intrinsicWidth, resDrawable.intrinsicHeight)?.asImageBitmap()
-            }
-
-            is DrawableImage -> (item.image as DrawableImage).drawable.toBitmap().asImageBitmap()
-            else -> null
-        }
-    }
-
-    val title = remember(item.title) {
-        when (item.title) {
-            is ResText -> context.getString((item.title as ResText).resId)
-            is CharSequenceText -> (item.title as CharSequenceText).text.toString()
-            null -> ""
-        }
-    }
+    val imageBitmap = remember(item.image) { item.image?.toBitmap(context)?.asImageBitmap() }
+    val title = remember(item.title) { item.title?.toString(context) }
 
     Box(
         modifier = modifier
@@ -93,15 +68,17 @@ fun <T> SelectableImageCell(
                 }
                 .padding(4.dp)
         ) {
-            imageBitmap?.let { bitmap ->
+            if (imageBitmap != null) {
                 Image(
-                    bitmap = bitmap,
+                    bitmap = imageBitmap,
                     contentDescription = title,
                     modifier = Modifier
                         .align(Alignment.Center),
                     colorFilter = ColorFilter.tint(MaterialTheme.colors.secondary.copy(alpha = animatedAlpha),
                         BlendMode.Color)
                 )
+            }
+            if (title != null) {
                 Text(
                     text = title,
                     style = TextStyle(

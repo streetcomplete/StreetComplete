@@ -26,16 +26,12 @@ import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.core.content.ContextCompat
-import androidx.core.graphics.drawable.toBitmap
 import de.westnordost.streetcomplete.quests.boat_rental.BoatRental
 import de.westnordost.streetcomplete.quests.boat_rental.asItem
 import de.westnordost.streetcomplete.ui.ktx.conditional
-import de.westnordost.streetcomplete.view.CharSequenceText
-import de.westnordost.streetcomplete.view.DrawableImage
-import de.westnordost.streetcomplete.view.ResImage
-import de.westnordost.streetcomplete.view.ResText
 import de.westnordost.streetcomplete.view.image_select.DisplayItem
+import de.westnordost.streetcomplete.view.toBitmap
+import de.westnordost.streetcomplete.view.toString
 
 @Composable
 fun <T> SelectableIconCell(
@@ -50,24 +46,8 @@ fun <T> SelectableIconCell(
         label = "OverlayAlpha"
     )
     val context = LocalContext.current
-    val imageBitmap = remember(item.image) {
-        when (item.image) {
-            is ResImage -> {
-                val resDrawable = ContextCompat.getDrawable(context, (item.image as ResImage).resId)
-                resDrawable?.toBitmap(resDrawable.intrinsicWidth, resDrawable.intrinsicHeight)?.asImageBitmap()
-            }
-
-            is DrawableImage -> (item.image as DrawableImage).drawable.toBitmap().asImageBitmap()
-            else -> null
-        }
-    }
-    val title = remember(item.title) {
-        when (item.title) {
-            is ResText -> context.getString((item.title as ResText).resId)
-            is CharSequenceText -> (item.title as CharSequenceText).text.toString()
-            null -> ""
-        }
-    }
+    val imageBitmap = remember(item.image) { item.image?.toBitmap(context)?.asImageBitmap() }
+    val title = remember(item.title) { item.title?.toString(context) }
 
     Box(
         modifier = modifier
@@ -87,9 +67,9 @@ fun <T> SelectableIconCell(
         contentAlignment = Alignment.Center
     ) {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
-            imageBitmap?.let { bitmap ->
+            if (imageBitmap != null) {
                 Image(
-                    bitmap = bitmap,
+                    bitmap = imageBitmap,
                     contentDescription = title,
                     modifier = Modifier
                         .wrapContentSize(Alignment.Center),
@@ -97,15 +77,16 @@ fun <T> SelectableIconCell(
                     alignment = Alignment.Center
                 )
             }
-
-            Text(
-                text = title,
-                textAlign = TextAlign.Center,
-                style = MaterialTheme.typography.body1,
-                modifier = Modifier
-                    .align(Alignment.CenterHorizontally)
-                    .padding(8.dp)
-            )
+            if (title != null) {
+                Text(
+                    text = title,
+                    textAlign = TextAlign.Center,
+                    style = MaterialTheme.typography.body1,
+                    modifier = Modifier
+                        .align(Alignment.CenterHorizontally)
+                        .padding(8.dp)
+                )
+            }
         }
     }
 }
