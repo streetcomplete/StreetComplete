@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.ui.common.image_select
 
 import android.content.res.Configuration
+import androidx.compose.foundation.selection.selectableGroup
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -25,7 +26,7 @@ fun <T> ImageGrid(
     itemContent: @Composable (item: ImageListItem<T>, index: Int, onClick: () -> Unit, role: Role) -> Unit
 ) {
     Layout(
-        modifier = modifier,
+        modifier = modifier.selectableGroup(),
         content = {
             imageItems.forEachIndexed { index, item ->
                 itemContent(item, index, { onClick(index, item) }, itemRole)
