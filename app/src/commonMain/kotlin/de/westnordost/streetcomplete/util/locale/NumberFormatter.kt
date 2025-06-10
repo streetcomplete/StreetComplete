@@ -20,7 +20,7 @@ interface NumberFormatter {
         value: Number,
         minFractionDigits: Int = 0,
         maxFractionDigits: Int = 3,
-        useGrouping: Boolean = true,
+        useGrouping: Boolean = false,
     ): String
 
     /**
@@ -31,8 +31,14 @@ interface NumberFormatter {
      */
     fun parse(
         text: String,
-        allowGrouping: Boolean = true
+        allowGrouping: Boolean = false
     ): Number?
+
+    /** Return the decimal separator */
+    val decimalSeparator: Char
+
+    /** Return the grouping separator */
+    val groupingSeparator: Char
 }
 
 /**

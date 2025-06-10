@@ -10,7 +10,7 @@ private class NumberFormatterIos(locale: Locale?): NumberFormatter {
     private val format = NSNumberFormatter().also {
         it.numberStyle = NSNumberFormatterDecimalStyle
         it.locale = (locale ?: Locale.current).platformLocale
-        it.lenient = true
+        it.lenient = false
     }
 
     override fun format(
@@ -29,6 +29,12 @@ private class NumberFormatterIos(locale: Locale?): NumberFormatter {
         format.usesGroupingSeparator = allowGrouping
         return format.numberFromString(text) as? Number
     }
+
+    override val decimalSeparator: Char
+        get() = format.decimalSeparator.single()
+
+    override val groupingSeparator: Char
+        get() = format.groupingSeparator.single()
 }
 
 actual fun NumberFormatter(locale: Locale?): NumberFormatter = NumberFormatterIos(locale)

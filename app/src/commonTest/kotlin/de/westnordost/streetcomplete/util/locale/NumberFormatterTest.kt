@@ -40,7 +40,7 @@ class NumberFormatterTest {
     @Test fun `format defaults`() {
         assertEquals("0.112", NumberFormatter(en).format(0.112233))
         assertEquals("123", NumberFormatter(en).format(123))
-        assertEquals("10,000", NumberFormatter(en).format(10_000))
+        assertEquals("10000", NumberFormatter(en).format(10_000))
     }
 
     @Test fun parse() {
@@ -49,13 +49,25 @@ class NumberFormatterTest {
         assertEquals(1.5, NumberFormatter(en).parse("1.5"))
         assertEquals(1.5, NumberFormatter(fr).parse("1,5"))
 
-        // I'd love to have the Java NumberFormat behave this way, but it doesn't...
-        // fucking "lenient" parsing will result in "15" here...
-        //assertEquals(null, NumberFormatter(en).parse("1,5"))
-        //assertEquals(null, NumberFormatter(fr).parse("1.5"))
-        //assertEquals(null, NumberFormatter(en).parse("15,000,000.5", allowGrouping = false))
+        assertEquals(null, NumberFormatter(en).parse("1,5"))
+        assertEquals(null, NumberFormatter(fr).parse("1.5"))
+        assertEquals(null, NumberFormatter(en).parse("15,000,000.5", allowGrouping = false))
 
         assertEquals(1_000_000.5, NumberFormatter(en).parse("1000000.5", allowGrouping = true))
         assertEquals(1_000_000.5, NumberFormatter(en).parse("1,000,000.5", allowGrouping = true))
+    }
+
+    @Test fun separators() {
+        assertEquals(',', NumberFormatter(en).groupingSeparator)
+        assertEquals('.', NumberFormatter(en).decimalSeparator)
+
+        assertEquals('.', NumberFormatter(de).groupingSeparator)
+        assertEquals(',', NumberFormatter(de).decimalSeparator)
+
+        assertEquals(' ', NumberFormatter(fr).groupingSeparator)
+        assertEquals(',', NumberFormatter(fr).decimalSeparator)
+
+        assertEquals('٬', NumberFormatter(ar).groupingSeparator)
+        assertEquals('٫', NumberFormatter(ar).decimalSeparator)
     }
 }
