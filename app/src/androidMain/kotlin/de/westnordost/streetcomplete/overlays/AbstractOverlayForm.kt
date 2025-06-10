@@ -109,7 +109,6 @@ abstract class AbstractOverlayForm :
             return localizedContext.resources
         }
 
-    // only used for testing / only used for ShowQuestFormsScreen! Found no better way to do this
     var addElementEditsController: AddElementEditsController = elementEditsController
 
     // view / state
