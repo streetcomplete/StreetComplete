@@ -18,7 +18,7 @@ import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.meta.IncompleteCountryInfo
 import de.westnordost.streetcomplete.data.meta.LengthUnit
 import de.westnordost.streetcomplete.osm.Length
-import de.westnordost.streetcomplete.quests.max_height.MaxHeightSign
+import de.westnordost.streetcomplete.quests.max_height.MaxHeightSignInput
 import de.westnordost.streetcomplete.ui.common.LengthUnitSelector
 
 @Composable
@@ -41,7 +41,7 @@ fun MaxHeightForm(
     )
     {
         CompositionLocalProvider(LocalTextStyle provides MaterialTheme.typography.h4) {
-            MaxHeightSign(
+            MaxHeightSignInput(
                 countryCode = countryInfo.countryCode,
                 selectedUnit = selectedUnit.value,
                 maxFeetDigits = maxFeetDigits,

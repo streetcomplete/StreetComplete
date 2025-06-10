@@ -51,25 +51,24 @@ fun LengthForm(
     )
     {
         CompositionLocalProvider(LocalTextStyle provides MaterialTheme.typography.h4) {
-            Surface {
-                LengthInput(
+            LengthInput(
+                selectedUnit = selectedUnit.value,
+                currentLength = currentLength,
+                syncLength = syncLength,
+                onLengthChanged = onLengthChanged,
+                maxFeetDigits = maxFeetDigits,
+                maxMeterDigits = maxMeterDigits,
+                footInchAppearance = FootInchAppearance.PRIME
+            )
+
+            if (selectableUnits.size > 1) {
+                LengthUnitSelector(
+                    selectableUnits = selectableUnits,
                     selectedUnit = selectedUnit.value,
-                    currentLength = currentLength,
-                    syncLength = syncLength,
-                    onLengthChanged = onLengthChanged,
-                    maxFeetDigits = maxFeetDigits,
-                    maxMeterDigits = maxMeterDigits,
-                    footInchAppearance = FootInchAppearance.PRIME
+                    onUnitChanged = { selectedUnit.value = it },
+                    modifier = Modifier.padding(5.dp)
                 )
             }
-
-
-            LengthUnitSelector(
-                selectableUnits = selectableUnits,
-                selectedUnit = selectedUnit.value,
-                onUnitChanged = { selectedUnit.value = it },
-                modifier = Modifier.padding(5.dp)
-            )
 
             Spacer(Modifier.width(25.dp))
 
