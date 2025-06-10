@@ -9,8 +9,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.overlays.AndroidOverlay
 import de.westnordost.streetcomplete.data.overlays.OverlayColor
 import de.westnordost.streetcomplete.data.overlays.Overlay
-import de.westnordost.streetcomplete.data.overlays.PointStyle
-import de.westnordost.streetcomplete.data.overlays.PolygonStyle
+import de.westnordost.streetcomplete.data.overlays.OverlayStyle
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement
 import de.westnordost.streetcomplete.osm.isDisusedPlace
 import de.westnordost.streetcomplete.osm.isPlaceOrDisusedPlace
@@ -47,9 +46,9 @@ class PlacesOverlay(private val getFeature: (Element) -> Feature?) : Overlay, An
                 val label = getNameLabel(element.tags)
 
                 val style = if (element is Node) {
-                    PointStyle(icon, label)
+                    OverlayStyle.Point(icon, label)
                 } else {
-                    PolygonStyle(OverlayColor.Invisible, icon, label)
+                    OverlayStyle.Polygon(OverlayColor.Invisible, icon, label)
                 }
                 element to style
             } +
@@ -60,7 +59,7 @@ class PlacesOverlay(private val getFeature: (Element) -> Feature?) : Overlay, An
                   entrance
                   and !(addr:housenumber or addr:housename or addr:conscriptionnumber or addr:streetnumber)
             """)
-            .map { it to PointStyle(icon = null, label = "◽") }
+            .map { it to OverlayStyle.Point(icon = null, label = "◽") }
 
     override fun createForm(element: Element?) =
         // this check is necessary because the form shall not be shown for entrances

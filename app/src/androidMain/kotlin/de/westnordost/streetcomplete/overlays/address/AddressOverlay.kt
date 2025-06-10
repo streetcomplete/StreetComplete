@@ -8,8 +8,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.overlays.AndroidOverlay
 import de.westnordost.streetcomplete.data.overlays.OverlayColor
 import de.westnordost.streetcomplete.data.overlays.Overlay
-import de.westnordost.streetcomplete.data.overlays.PointStyle
-import de.westnordost.streetcomplete.data.overlays.PolygonStyle
+import de.westnordost.streetcomplete.data.overlays.OverlayStyle
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.POSTMAN
 import de.westnordost.streetcomplete.quests.address.AddHousenumber
 import de.westnordost.streetcomplete.util.getShortHouseNumber
@@ -42,7 +41,7 @@ class AddressOverlay(
             .map {
                 val label = getShortHouseNumber(it.tags) // or ▫
                 val icon = if (label != null) R.drawable.ic_address_dot else null
-                it to PointStyle(icon = icon, label = label ?: "◽")
+                it to OverlayStyle.Point(icon = icon, label = label ?: "◽")
             } +
         mapData
             .filter("ways, relations with building")
@@ -54,7 +53,7 @@ class AddressOverlay(
             .map {
                 val label = getShortHouseNumber(it.tags)
                 val color = if (label != null) OverlayColor.Blue else OverlayColor.Invisible
-                it to PolygonStyle(color = color, label = label)
+                it to OverlayStyle.Polygon(color = color, label = label)
             }
 
     override fun createForm(element: Element?) = AddressOverlayForm()

@@ -7,7 +7,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.overlays.AndroidOverlay
 import de.westnordost.streetcomplete.data.overlays.OverlayColor
 import de.westnordost.streetcomplete.data.overlays.Overlay
-import de.westnordost.streetcomplete.data.overlays.PolygonStyle
+import de.westnordost.streetcomplete.data.overlays.OverlayStyle
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BUILDING
 import de.westnordost.streetcomplete.osm.building.BuildingType
 import de.westnordost.streetcomplete.osm.building.BuildingType.*
@@ -61,7 +61,7 @@ class BuildingsOverlay : Overlay, AndroidOverlay {
             // val height = estimateBuildingHeight(element.tags)
             // val minHeight = if (height != null) estimateMinBuildingHeight(element.tags) else null
 
-            element to PolygonStyle(
+            element to OverlayStyle.Polygon(
                 color = color,
                 icon = building?.iconResId,
                 // TODO MapLibre: 3D buildings are disabled until

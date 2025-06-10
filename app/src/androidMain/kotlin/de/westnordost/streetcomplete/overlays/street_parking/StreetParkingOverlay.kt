@@ -9,11 +9,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.overlays.AndroidOverlay
 import de.westnordost.streetcomplete.data.overlays.OverlayColor
 import de.westnordost.streetcomplete.data.overlays.Overlay
-import de.westnordost.streetcomplete.data.overlays.PointStyle
-import de.westnordost.streetcomplete.data.overlays.PolygonStyle
-import de.westnordost.streetcomplete.data.overlays.PolylineStyle
-import de.westnordost.streetcomplete.data.overlays.StrokeStyle
-import de.westnordost.streetcomplete.data.overlays.Style
+import de.westnordost.streetcomplete.data.overlays.OverlayStyle
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.osm.isPrivateOnFoot
@@ -41,7 +37,7 @@ class StreetParkingOverlay : Overlay, AndroidOverlay {
     override val achievements = listOf(CAR)
     override val isCreateNodeEnabled = true
 
-    override fun getStyledElements(mapData: MapDataWithGeometry): Sequence<Pair<Element, Style>> =
+    override fun getStyledElements(mapData: MapDataWithGeometry): Sequence<Pair<Element, OverlayStyle>> =
         // roads
         mapData.filter("""
             ways with highway ~ trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|living_street|pedestrian|service
@@ -83,28 +79,28 @@ private val streetParkingTaggingNotExpected by lazy { """
       or maxspeed >= 70
 """.toElementFilterExpression() }
 
-private val parkingLotAreaStyle = PolygonStyle(OverlayColor.Blue)
-private val parkingLotPointStyle = PointStyle(R.drawable.preset_temaki_car_parked)
-private val chicaneStyle = PointStyle(R.drawable.preset_temaki_chicane_arrow)
-private val trafficCalmingStyle = PointStyle(R.drawable.preset_temaki_diamond)
+private val parkingLotAreaStyle = OverlayStyle.Polygon(OverlayColor.Blue)
+private val parkingLotPointStyle = OverlayStyle.Point(R.drawable.preset_temaki_car_parked)
+private val chicaneStyle = OverlayStyle.Point(R.drawable.preset_temaki_chicane_arrow)
+private val trafficCalmingStyle = OverlayStyle.Point(R.drawable.preset_temaki_diamond)
 
-private fun getNarrowingTrafficCalmingStyle(element: Element): Style? =
+private fun getNarrowingTrafficCalmingStyle(element: Element): OverlayStyle? =
     when (parseNarrowingTrafficCalming(element.tags)) {
         LaneNarrowingTrafficCalming.CHICANE -> chicaneStyle
         null -> null
         else -> trafficCalmingStyle
     }
 
-private fun getStreetParkingStyle(element: Element): Style {
+private fun getStreetParkingStyle(element: Element): OverlayStyle {
     val parking = parseStreetParkingSides(element.tags)
     // not set but private or not expected to have a sidewalk -> do not highlight as missing
     if (parking == null) {
         if (isPrivateOnFoot(element) || streetParkingTaggingNotExpected.matches(element)) {
-            return PolylineStyle(StrokeStyle(OverlayColor.Invisible))
+            return OverlayStyle.Polyline(OverlayStyle.Stroke(OverlayColor.Invisible))
         }
     }
 
-    return PolylineStyle(
+    return OverlayStyle.Polyline(
         stroke = null,
         strokeLeft = parking?.left.style,
         strokeRight = parking?.right.style
@@ -125,15 +121,15 @@ private val ParkingPosition.color get() = when (this) {
         OverlayColor.Blue
 }
 
-private val StreetParking?.style: StrokeStyle get() = when (this) {
+private val StreetParking?.style: OverlayStyle.Stroke get() = when (this) {
     is StreetParking.PositionAndOrientation ->
-                                StrokeStyle(position.color, position.isDashed)
+                                OverlayStyle.Stroke(position.color, position.isDashed)
 
-    StreetParking.None ->       StrokeStyle(OverlayColor.Black)
+    StreetParking.None ->       OverlayStyle.Stroke(OverlayColor.Black)
 
-    StreetParking.Separate ->   StrokeStyle(OverlayColor.Invisible)
+    StreetParking.Separate ->   OverlayStyle.Stroke(OverlayColor.Invisible)
 
     StreetParking.Unknown,
     StreetParking.Incomplete,
-    null ->                     StrokeStyle(OverlayColor.Red)
+    null ->                     OverlayStyle.Stroke(OverlayColor.Red)
 }

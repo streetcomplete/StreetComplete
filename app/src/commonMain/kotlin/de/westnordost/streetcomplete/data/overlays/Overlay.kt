@@ -18,5 +18,5 @@ interface Overlay : ElementEditType {
     val isCreateNodeEnabled: Boolean get() = false
 
     /** return pairs of element to style for all elements in the map data that should be displayed */
-    fun getStyledElements(mapData: MapDataWithGeometry): Sequence<Pair<Element, Style>>
+    fun getStyledElements(mapData: MapDataWithGeometry): Sequence<Pair<Element, OverlayStyle>>
 }

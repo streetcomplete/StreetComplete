@@ -8,10 +8,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.overlays.AndroidOverlay
 import de.westnordost.streetcomplete.data.overlays.OverlayColor
 import de.westnordost.streetcomplete.data.overlays.Overlay
-import de.westnordost.streetcomplete.data.overlays.PolygonStyle
-import de.westnordost.streetcomplete.data.overlays.PolylineStyle
-import de.westnordost.streetcomplete.data.overlays.StrokeStyle
-import de.westnordost.streetcomplete.data.overlays.Style
+import de.westnordost.streetcomplete.data.overlays.OverlayStyle
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.*
 import de.westnordost.streetcomplete.osm.ALL_PATHS
 import de.westnordost.streetcomplete.osm.ALL_ROADS
@@ -47,7 +44,7 @@ class SurfaceOverlay : Overlay, AndroidOverlay {
     override fun createForm(element: Element?) = SurfaceOverlayForm()
 }
 
-private fun getStyle(element: Element): Style {
+private fun getStyle(element: Element): OverlayStyle {
     val tags = element.tags
     val isArea = tags["area"] == "yes"
     val isSegregated = tags["segregated"] == "yes"
@@ -68,7 +65,7 @@ private fun getStyle(element: Element): Style {
     } else {
         parseSurface(tags["surface"]).getColor(element)
     }
-    return if (isArea) PolygonStyle(color) else PolylineStyle(StrokeStyle(color))
+    return if (isArea) OverlayStyle.Polygon(color) else OverlayStyle.Polyline(OverlayStyle.Stroke(color))
 }
 
 private fun Surface?.getColor(element: Element): Color =

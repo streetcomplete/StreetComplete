@@ -8,9 +8,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.overlays.AndroidOverlay
 import de.westnordost.streetcomplete.data.overlays.OverlayColor
 import de.westnordost.streetcomplete.data.overlays.Overlay
-import de.westnordost.streetcomplete.data.overlays.PolylineStyle
-import de.westnordost.streetcomplete.data.overlays.StrokeStyle
-import de.westnordost.streetcomplete.data.overlays.Style
+import de.westnordost.streetcomplete.data.overlays.OverlayStyle
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.*
 import de.westnordost.streetcomplete.osm.mtb_scale.MtbScale
 import de.westnordost.streetcomplete.osm.mtb_scale.parseMtbScale
@@ -43,12 +41,12 @@ class MtbScaleOverlay : Overlay, AndroidOverlay {
 
     override fun createForm(element: Element?) = MtbScaleOverlayForm()
 
-    private fun getStyle(element: Element): Style {
+    private fun getStyle(element: Element): OverlayStyle {
         val mtbScale = parseMtbScale(element.tags)
         val color = mtbScale.color
             ?: if (isMtbTaggingExpected(element)) OverlayColor.Red else null
-        return PolylineStyle(
-            stroke = color?.let { StrokeStyle(it) },
+        return OverlayStyle.Polyline(
+            stroke = color?.let { OverlayStyle.Stroke(it) },
             label = mtbScale?.value.toString()
         )
     }

@@ -8,8 +8,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.overlays.AndroidOverlay
 import de.westnordost.streetcomplete.data.overlays.OverlayColor
 import de.westnordost.streetcomplete.data.overlays.Overlay
-import de.westnordost.streetcomplete.data.overlays.PolylineStyle
-import de.westnordost.streetcomplete.data.overlays.StrokeStyle
+import de.westnordost.streetcomplete.data.overlays.OverlayStyle
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.osm.cycleway_separate.SeparateCycleway
@@ -62,7 +61,7 @@ class SidewalkOverlay : Overlay, AndroidOverlay {
     }
 }
 
-private fun getFootwayStyle(element: Element): PolylineStyle {
+private fun getFootwayStyle(element: Element): OverlayStyle.Polyline {
     val foot = element.tags["foot"] ?: when (element.tags["highway"]) {
         "footway", "steps" -> "designated"
         "path" -> "yes"
@@ -73,29 +72,29 @@ private fun getFootwayStyle(element: Element): PolylineStyle {
         parseSidewalkSides(element.tags)?.any { it == Sidewalk.YES } == true ->
             getSidewalkStyle(element)
         foot in listOf("yes", "designated") ->
-            PolylineStyle(StrokeStyle(OverlayColor.Sky))
+            OverlayStyle.Polyline(OverlayStyle.Stroke(OverlayColor.Sky))
         else ->
-            PolylineStyle(StrokeStyle(OverlayColor.Invisible))
+            OverlayStyle.Polyline(OverlayStyle.Stroke(OverlayColor.Invisible))
     }
 }
 
-private fun getSidewalkStyle(element: Element): PolylineStyle {
+private fun getSidewalkStyle(element: Element): OverlayStyle.Polyline {
     val sidewalks = parseSidewalkSides(element.tags)
     val isNoSidewalkExpected = lazy { sidewalkTaggingNotExpected(element) || isPrivateOnFoot(element) }
 
-    return PolylineStyle(
+    return OverlayStyle.Polyline(
         stroke = getStreetStrokeStyle(element.tags),
         strokeLeft = sidewalks?.left.getStyle(isNoSidewalkExpected),
         strokeRight = sidewalks?.right.getStyle(isNoSidewalkExpected)
     )
 }
 
-private fun getStreetStrokeStyle(tags: Map<String, String>): StrokeStyle? =
+private fun getStreetStrokeStyle(tags: Map<String, String>): OverlayStyle.Stroke? =
     when {
         tags["highway"] == "pedestrian" ->
-            StrokeStyle(OverlayColor.Sky)
+            OverlayStyle.Stroke(OverlayColor.Sky)
         tags["highway"] == "living_street" || tags["living_street"] == "yes" ->
-            StrokeStyle(OverlayColor.Sky, dashed = true)
+            OverlayStyle.Stroke(OverlayColor.Sky, dashed = true)
         else -> null
     }
 
@@ -113,7 +112,7 @@ private val sidewalkTaggingNotExpectedFilter by lazy { """
 private fun sidewalkTaggingNotExpected(element: Element) =
     sidewalkTaggingNotExpectedFilter.matches(element)
 
-private fun Sidewalk?.getStyle(isNoSidewalkExpected: Lazy<Boolean>) = StrokeStyle(when (this) {
+private fun Sidewalk?.getStyle(isNoSidewalkExpected: Lazy<Boolean>) = OverlayStyle.Stroke(when (this) {
     Sidewalk.YES ->      OverlayColor.Sky
     Sidewalk.NO ->       OverlayColor.Black
     Sidewalk.SEPARATE -> OverlayColor.Invisible

@@ -5,7 +5,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.overlays.Overlay
 import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
-import de.westnordost.streetcomplete.data.overlays.Style
+import de.westnordost.streetcomplete.data.overlays.OverlayStyle
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.user.achievements.AchievementCondition.DaysActive
@@ -286,7 +286,7 @@ private object OverlayOne : Overlay {
     override val title = 0
     override val wikiLink: String? = null
     override val changesetComment = ""
-    override fun getStyledElements(mapData: MapDataWithGeometry) = emptySequence<Pair<Element, Style>>()
+    override fun getStyledElements(mapData: MapDataWithGeometry) = emptySequence<Pair<Element, OverlayStyle>>()
 
     override val achievements = editTypeAchievements(listOf("otherAchievement", "mixedAchievement"))
 }

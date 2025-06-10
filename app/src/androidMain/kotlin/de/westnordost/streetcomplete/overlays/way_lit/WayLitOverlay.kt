@@ -7,10 +7,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.overlays.AndroidOverlay
 import de.westnordost.streetcomplete.data.overlays.OverlayColor
 import de.westnordost.streetcomplete.data.overlays.Overlay
-import de.westnordost.streetcomplete.data.overlays.PolygonStyle
-import de.westnordost.streetcomplete.data.overlays.PolylineStyle
-import de.westnordost.streetcomplete.data.overlays.StrokeStyle
-import de.westnordost.streetcomplete.data.overlays.Style
+import de.westnordost.streetcomplete.data.overlays.OverlayStyle
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.osm.ALL_PATHS
 import de.westnordost.streetcomplete.osm.ALL_ROADS
@@ -36,15 +33,15 @@ class WayLitOverlay : Overlay, AndroidOverlay {
     override fun createForm(element: Element?) = WayLitOverlayForm()
 }
 
-private fun getStyle(element: Element): Style {
+private fun getStyle(element: Element): OverlayStyle {
     val lit = parseLitStatus(element.tags)
     // not set but indoor or private -> do not highlight as missing
     val isNotSetButThatsOkay = lit == null && (isIndoor(element.tags) || isPrivateOnFoot(element))
     val color = if (isNotSetButThatsOkay) OverlayColor.Invisible else lit.color
     return if (element.tags["area"] == "yes") {
-        PolygonStyle(color, null)
+        OverlayStyle.Polygon(color, null)
     } else {
-        PolylineStyle(StrokeStyle(color))
+        OverlayStyle.Polyline(OverlayStyle.Stroke(color))
     }
 }
 

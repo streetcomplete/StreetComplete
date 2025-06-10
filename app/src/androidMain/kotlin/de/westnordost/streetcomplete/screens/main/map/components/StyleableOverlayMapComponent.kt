@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.res.Configuration
 import androidx.annotation.UiThread
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.compositeOver
 import androidx.compose.ui.graphics.toArgb
 import com.google.gson.JsonObject
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
@@ -13,10 +12,10 @@ import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.key
 import de.westnordost.streetcomplete.data.overlays.OverlayColor.Invisible
-import de.westnordost.streetcomplete.data.overlays.PointStyle
-import de.westnordost.streetcomplete.data.overlays.PolygonStyle
-import de.westnordost.streetcomplete.data.overlays.PolylineStyle
-import de.westnordost.streetcomplete.data.overlays.Style
+import de.westnordost.streetcomplete.data.overlays.OverlayStyle.Point
+import de.westnordost.streetcomplete.data.overlays.OverlayStyle.Polygon
+import de.westnordost.streetcomplete.data.overlays.OverlayStyle.Polyline
+import de.westnordost.streetcomplete.data.overlays.OverlayStyle
 import de.westnordost.streetcomplete.screens.main.map.createIconBitmap
 import de.westnordost.streetcomplete.screens.main.map.maplibre.MapImages
 import de.westnordost.streetcomplete.screens.main.map.maplibre.clear
@@ -218,7 +217,7 @@ class StyleableOverlayMapComponent(
 
     /** Show given map data with each the given style */
     suspend fun set(styledElements: Collection<StyledElement>) {
-        val icons = styledElements.mapNotNull { it.style.getIcon() }
+        val icons = styledElements.mapNotNull { it.overlayStyle.getIcon() }
         mapImages.addOnce(icons) {
             val name = context.resources.getResourceEntryName(it)
             val sdf = name.startsWith("preset_")
@@ -249,38 +248,38 @@ class StyleableOverlayMapComponent(
     private fun StyledElement.toFeatures(): List<Feature> {
         val p = getElementKeyProperties(element.key)
 
-        return when (style) {
-            is PointStyle -> {
-                if (style.icon != null) {
-                    p.addProperty("icon", context.resources.getResourceEntryName(style.icon))
+        return when (overlayStyle) {
+            is OverlayStyle.Point -> {
+                if (overlayStyle.icon != null) {
+                    p.addProperty("icon", context.resources.getResourceEntryName(overlayStyle.icon))
                 }
-                if (style.label != null) p.addProperty("label", style.label)
+                if (overlayStyle.label != null) p.addProperty("label", overlayStyle.label)
 
                 listOf(Feature.fromGeometry(geometry.center.toPoint(), p))
             }
-            is PolygonStyle -> {
-                if (style.color != Invisible) {
-                    p.addProperty("color", style.color.toRgbaString())
-                    p.addProperty("outline-color", style.color.darkened().toRgbaString())
+            is OverlayStyle.Polygon -> {
+                if (overlayStyle.color != Invisible) {
+                    p.addProperty("color", overlayStyle.color.toRgbaString())
+                    p.addProperty("outline-color", overlayStyle.color.darkened().toRgbaString())
                     p.addProperty("opacity", 0.8f)
                 } else {
                     p.addProperty("opacity", 0f)
                 }
 
-                if (style.height != null && style.color != Invisible) {
-                    p.addProperty("height", style.height)
-                    if (style.minHeight != null) {
-                        p.addProperty("min-height", style.minHeight.coerceAtMost(style.minHeight))
+                if (overlayStyle.height != null && overlayStyle.color != Invisible) {
+                    p.addProperty("height", overlayStyle.height)
+                    if (overlayStyle.minHeight != null) {
+                        p.addProperty("min-height", overlayStyle.minHeight.coerceAtMost(overlayStyle.minHeight))
                     }
                 }
 
                 val f = Feature.fromGeometry(geometry.toMapLibreGeometry(), p)
-                val point = if (style.label != null || style.icon != null) {
+                val point = if (overlayStyle.label != null || overlayStyle.icon != null) {
                     val pp = getElementKeyProperties(element.key)
-                    if (style.icon != null) {
-                        pp.addProperty("icon", context.resources.getResourceEntryName(style.icon))
+                    if (overlayStyle.icon != null) {
+                        pp.addProperty("icon", context.resources.getResourceEntryName(overlayStyle.icon))
                     }
-                    if (style.label != null) pp.addProperty("label", style.label)
+                    if (overlayStyle.label != null) pp.addProperty("label", overlayStyle.label)
                     Feature.fromGeometry(geometry.center.toPoint(), pp)
                 } else {
                     null
@@ -288,12 +287,12 @@ class StyleableOverlayMapComponent(
 
                 listOfNotNull(f, point)
             }
-            is PolylineStyle -> {
+            is OverlayStyle.Polyline -> {
                 val line = geometry.toMapLibreGeometry()
                 val width = getLineWidth(element.tags)
                 if (isBridge(element.tags)) p.addProperty("bridge", true)
 
-                val left = style.strokeLeft?.let {
+                val left = overlayStyle.strokeLeft?.let {
                     val p2 = p.deepCopy()
                     p2.addProperty("width", 3f)
                     p2.addProperty("offset", -(width / 2f + 1.5f))
@@ -306,7 +305,7 @@ class StyleableOverlayMapComponent(
                     Feature.fromGeometry(line, p2)
                 }
 
-                val right = style.strokeRight?.let {
+                val right = overlayStyle.strokeRight?.let {
                     val p2 = p.deepCopy()
                     p2.addProperty("width", 3f)
                     p2.addProperty("offset", +(width / 2f + 1.5f))
@@ -319,7 +318,7 @@ class StyleableOverlayMapComponent(
                     Feature.fromGeometry(line, p2)
                 }
 
-                val center = style.stroke.let {
+                val center = overlayStyle.stroke.let {
                     val p2 = p.deepCopy()
                     p2.addProperty("width", width)
                     if (it != null && it.color != Invisible) {
@@ -332,10 +331,10 @@ class StyleableOverlayMapComponent(
                     Feature.fromGeometry(line, p2)
                 }
 
-                val label = if (style.label != null) {
+                val label = if (overlayStyle.label != null) {
                     Feature.fromGeometry(
                         geometry.center.toPoint(),
-                        JsonObject().apply { addProperty("label", style.label) }
+                        JsonObject().apply { addProperty("label", overlayStyle.label) }
                     )
                 } else {
                     null
@@ -377,7 +376,7 @@ class StyleableOverlayMapComponent(
 data class StyledElement(
     val element: Element,
     val geometry: ElementGeometry,
-    val style: Style
+    val overlayStyle: OverlayStyle
 )
 
 private fun Color.darkened(): Color = Color(
@@ -406,8 +405,8 @@ private fun getLineWidth(tags: Map<String, String>): Float = when (tags["highway
 private fun isBridge(tags: Map<String, String>): Boolean =
     tags["bridge"] != null && tags["bridge"] != "no"
 
-private fun Style.getIcon(): Int? = when (this) {
-    is PointStyle -> icon
-    is PolygonStyle -> icon
-    is PolylineStyle -> null
+private fun OverlayStyle.getIcon(): Int? = when (this) {
+    is OverlayStyle.Point -> icon
+    is OverlayStyle.Polygon -> icon
+    is OverlayStyle.Polyline -> null
 }

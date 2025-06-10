@@ -8,8 +8,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.overlays.AndroidOverlay
 import de.westnordost.streetcomplete.data.overlays.OverlayColor
 import de.westnordost.streetcomplete.data.overlays.Overlay
-import de.westnordost.streetcomplete.data.overlays.PointStyle
-import de.westnordost.streetcomplete.data.overlays.PolygonStyle
+import de.westnordost.streetcomplete.data.overlays.OverlayStyle
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement
 import de.westnordost.streetcomplete.osm.asIfItWasnt
 import de.westnordost.streetcomplete.osm.isThingOrDisusedThing
@@ -38,9 +37,9 @@ class ThingsOverlay(private val getFeature: (Element) -> Feature?) : Overlay, An
                 val icon = feature.icon?.let { presetIconIndex[it] } ?: R.drawable.preset_maki_marker_stroked
 
                 val style = if (element is Node) {
-                    PointStyle(icon)
+                    OverlayStyle.Point(icon)
                 } else {
-                    PolygonStyle(OverlayColor.Invisible, icon)
+                    OverlayStyle.Polygon(OverlayColor.Invisible, icon)
                 }
                 element to style
             }
