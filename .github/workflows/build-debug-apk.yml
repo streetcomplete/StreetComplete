@@ -28,7 +28,7 @@ jobs:
         run: sed -i -e "s/versionName = \"\([^ ]*\).*\"/versionName = \"\1 (git $COMMIT_SHA)\"/"  app/build.gradle.kts
 
       - name: Build with Gradle
-        run: ./gradlew assembleDebug
+        run: ./gradlew assembleDebug -Papp.streetcomplete.debug=true
 
       - name: Rename APK
         run: mv app/build/outputs/apk/debug/app-debug.apk app/build/outputs/apk/debug/StreetComplete-debug-$COMMIT_SHA.apk
