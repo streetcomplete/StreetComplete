@@ -3,13 +3,6 @@ package de.westnordost.streetcomplete.data.atp.atpquests.edits
 import de.westnordost.streetcomplete.data.atp.AtpController
 import de.westnordost.streetcomplete.data.atp.AtpEntry
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
-import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
-import de.westnordost.streetcomplete.data.osmnotes.Note
-import de.westnordost.streetcomplete.data.osmnotes.NoteController
-import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction.CREATE
-import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsSource
-import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
-import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import de.westnordost.streetcomplete.data.user.UserDataSource
 import de.westnordost.streetcomplete.util.Listeners
 
@@ -55,7 +48,7 @@ class AtpDataWithEditsSource(
         atpController.addListener(atpControllerListener)
     }
     interface Listener {
-        fun onUpdated(added: Collection<AtpEntry>, deleted: Collection<Long>)
+        fun onUpdatedAtpElement(added: Collection<AtpEntry>, deleted: Collection<Long>)
         fun onInvalidated()
     }
     private val listeners = Listeners<AtpDataWithEditsSource.Listener>()
@@ -67,7 +60,7 @@ class AtpDataWithEditsSource(
         listeners.remove(listener)
     }
     private fun callOnUpdated(added: Collection<AtpEntry> = emptyList(), updated: Collection<AtpEntry> = emptyList(), deleted: Collection<Long> = emptyList()) {
-        listeners.forEach { it.onUpdated(added, deleted) }
+        listeners.forEach { it.onUpdatedAtpElement(added, deleted) }
     }
 
     fun getAll(bbox: BoundingBox): Collection<AtpEntry> {

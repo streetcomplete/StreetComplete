@@ -41,7 +41,7 @@ class AtpQuestController(
     }
 
     private val atpUpdatesListener = object : AtpDataWithEditsSource.Listener {
-        override fun onUpdated(added: Collection<AtpEntry>, deleted: Collection<Long>) {
+        override fun onUpdatedAtpElement(added: Collection<AtpEntry>, deleted: Collection<Long>) {
             // handle deletion somehow? TODO
             // probably do the same as class OsmQuestController did? TODO (in private val notesSourceListener = object : NotesWithEditsSource.Listener )
             val quests = createQuestsForAtpEntries(added)

@@ -73,7 +73,9 @@ class AtpCreateForm : AbstractQuestForm() {
         if(selectedLocation == null) {
             return
         } else {
-            applyEdit(CreateNodeAction(selectedLocation!!, entry.tagsInATP))
+            viewLifecycleScope.launch { // viewLifecycleScope is here via cargo cult - what it is doing and is it needed TODO
+                applyEdit(CreateNodeAction(selectedLocation!!, entry.tagsInATP))
+            }
         }
         /*
         val streetOrPlaceName = streetOrPlaceCtrl.streetOrPlaceName!!
@@ -196,6 +198,7 @@ class AtpCreateForm : AbstractQuestForm() {
     }
 
     // taken from AbstractOsmQuestForm, TODO - should common part reside somewhere?
+    // TODO: get "UH" button working, see above PRIORITY
     private fun assembleOtherAnswers(): List<IAnswerItem> {
         val answers = mutableListOf<IAnswerItem>()
 
@@ -226,11 +229,8 @@ class AtpCreateForm : AbstractQuestForm() {
         /** Called when the user successfully answered the quest */
         fun onEdited(editType: ElementEditType, geometry: ElementGeometry)
 
-        /** Called when the user chose to leave a note instead */
-        fun onComposeNote(editType: ElementEditType, element: Element, geometry: ElementGeometry, leaveNoteContext: String)
-
-        /** Called when the user chose to split the way */
-        fun onSplitWay(editType: ElementEditType, way: Way, geometry: ElementPolylinesGeometry)
+        /** Called when the user successfully answered the quest */
+        fun onRejectedAtpEntry(editType: ElementEditType, geometry: ElementGeometry)
 
         /** Called when the user chose to move the node */
         fun onMoveNode(editType: ElementEditType, node: Node)
