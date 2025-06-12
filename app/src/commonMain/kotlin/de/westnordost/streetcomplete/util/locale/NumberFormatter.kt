@@ -2,8 +2,13 @@ package de.westnordost.streetcomplete.util.locale
 
 import androidx.compose.ui.text.intl.Locale
 
-/** Locale-aware formatting and parsing of numbers */
-interface NumberFormatter {
+/**
+ * Locale-aware formatting and parsing of numbers
+ *
+ * @param locale Locale to use. If [locale] is `null`, the default locale (for formatting) will be
+ *   used.
+ * */
+expect class NumberFormatter(locale: Locale? = null) {
 
     /**
      * Format the given [value].
@@ -40,11 +45,3 @@ interface NumberFormatter {
     /** Return the grouping separator */
     val groupingSeparator: Char
 }
-
-/**
- * Create a new [NumberFormatter] instance.
- *
- * @param locale Locale to use. If [locale] is `null`, the default locale (for formatting) will be
- *   used.
- */
-expect fun NumberFormatter(locale: Locale? = null): NumberFormatter
