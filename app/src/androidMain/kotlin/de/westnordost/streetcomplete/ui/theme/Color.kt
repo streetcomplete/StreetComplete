@@ -21,6 +21,11 @@ object TrafficSignColor {
     val GrayB = Color(0xff4f5250)
 }
 
+fun trafficContentColorFor(color: Color): Color = when (color) {
+    TrafficWhite, TrafficYellow -> TrafficBlack
+    else -> TrafficWhite
+}
+
 /* Colors for the teams in team mode.  */
 val TeamColors = arrayOf(
     Color(0xfff44336),
