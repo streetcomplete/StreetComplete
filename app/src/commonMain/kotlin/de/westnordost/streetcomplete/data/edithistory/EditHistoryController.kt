@@ -1,6 +1,8 @@
 package de.westnordost.streetcomplete.data.edithistory
 
 import de.westnordost.streetcomplete.ApplicationConstants.MAX_UNDO_HISTORY_AGE
+import de.westnordost.streetcomplete.data.atp.atpquests.AtpQuestHidden
+import de.westnordost.streetcomplete.data.atp.atpquests.edits.AtpDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsController
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsSource
@@ -13,6 +15,7 @@ import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsController
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsSource
 import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestHidden
+import de.westnordost.streetcomplete.data.quest.AtpQuestKey
 import de.westnordost.streetcomplete.data.quest.OsmNoteQuestKey
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import de.westnordost.streetcomplete.data.quest.QuestKey
@@ -29,6 +32,7 @@ class EditHistoryController(
     private val hiddenQuestsController: QuestsHiddenController,
     private val notesSource: NotesWithEditsSource,
     private val mapDataSource: MapDataWithEditsSource,
+    private val atpDataWithEditsSource: AtpDataWithEditsSource,
     private val questTypeRegistry: QuestTypeRegistry,
 ) : EditHistorySource {
     private val listeners = Listeners<EditHistorySource.Listener>()
@@ -73,6 +77,10 @@ class EditHistoryController(
                 val geometry = mapDataSource.getGeometry(key.elementType, key.elementId) ?: return null
                 val questType = questTypeRegistry.getByName(key.questTypeName) as? OsmElementQuestType<*> ?: return null
                 OsmQuestHidden(key.elementType, key.elementId, questType, geometry, timestamp)
+            }
+            is AtpQuestKey -> {
+                val atpEntry = atpDataWithEditsSource.get(key.atpEntryId) ?: return null
+                AtpQuestHidden(atpEntry, timestamp)
             }
         }
     }

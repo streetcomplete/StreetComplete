@@ -38,6 +38,9 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.atp.AtpEntry
+import de.westnordost.streetcomplete.data.atp.atpquests.CreateElementQuest
+import de.westnordost.streetcomplete.data.atp.atpquests.edits.AtpDataWithEditsSource
 import de.westnordost.streetcomplete.data.download.tiles.asBoundingBoxOfEnclosingTiles
 import de.westnordost.streetcomplete.data.edithistory.EditKey
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
@@ -66,6 +69,7 @@ import de.westnordost.streetcomplete.data.quest.QuestAutoSyncer
 import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.VisibleQuestsSource
+import de.westnordost.streetcomplete.data.quest.atp.AtpCreateForm
 import de.westnordost.streetcomplete.data.visiblequests.QuestsHiddenSource
 import de.westnordost.streetcomplete.databinding.ActivityMainBinding
 import de.westnordost.streetcomplete.databinding.EffectQuestPlopBinding
@@ -111,6 +115,7 @@ import de.westnordost.streetcomplete.util.ktx.truncateTo6Decimals
 import de.westnordost.streetcomplete.util.location.FineLocationManager
 import de.westnordost.streetcomplete.util.location.LocationAvailabilityReceiver
 import de.westnordost.streetcomplete.util.location.LocationRequestFragment
+import de.westnordost.streetcomplete.util.logs.Log
 import de.westnordost.streetcomplete.util.math.area
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import de.westnordost.streetcomplete.util.math.enlargedBy
@@ -151,12 +156,14 @@ class MainActivity :
     AbstractOverlayForm.Listener,
     SplitWayFragment.Listener,
     NoteDiscussionForm.Listener,
+    AtpCreateForm.Listener,
     LeaveNoteInsteadFragment.Listener,
     CreateNoteFragment.Listener,
     MoveNodeFragment.Listener,
     // listeners to changes to data:
     VisibleQuestsSource.Listener,
     MapDataWithEditsSource.Listener,
+    AtpDataWithEditsSource.Listener,
     // rest
     ShowsGeometryMarkers {
 
@@ -165,6 +172,7 @@ class MainActivity :
     private val prefs: Preferences by inject()
     private val visibleQuestsSource: VisibleQuestsSource by inject()
     private val mapDataWithEditsSource: MapDataWithEditsSource by inject()
+    private val atpDataWithEditsSource: AtpDataWithEditsSource by inject()
     private val notesSource: NotesWithEditsSource by inject()
     private val questsHiddenSource: QuestsHiddenSource by inject()
     private val featureDictionary: Lazy<FeatureDictionary> by inject(named("FeatureDictionaryLazy"))
@@ -291,6 +299,7 @@ class MainActivity :
 
         visibleQuestsSource.addListener(this)
         mapDataWithEditsSource.addListener(this)
+        atpDataWithEditsSource.addListener(this)
         locationAvailabilityReceiver.addListener(::updateLocationAvailability)
 
         updateLocationAvailability(isLocationAvailable)
@@ -317,6 +326,7 @@ class MainActivity :
 
         visibleQuestsSource.removeListener(this)
         mapDataWithEditsSource.removeListener(this)
+        atpDataWithEditsSource.removeListener(this)
         locationAvailabilityReceiver.removeListener(::updateLocationAvailability)
 
         locationManager.removeUpdates()
@@ -529,6 +539,15 @@ class MainActivity :
         closeBottomSheet()
     }
 
+    /* ------------------------------ AtpDiscussionForm.Listener ------------------------------- */
+
+    override fun onRejectedAtpEntry(
+        editType: ElementEditType,
+        geometry: ElementGeometry,
+    ) {
+        closeBottomSheet()
+    }
+
     /* ------------------------------- CreateNoteFragment.Listener ------------------------------ */
 
     override fun onCreatedNote(position: LatLon) {
@@ -613,6 +632,22 @@ class MainActivity :
                 closeBottomSheet()
             }
         }
+    }
+
+    /* ---------------------------- AtpDataWithEditsSource.Listener ----------------------------- */
+
+    @AnyThread
+    override fun onUpdatedAtpElement(added: Collection<AtpEntry>, deleted: Collection<Long>) {
+        // TODO: support ATP handling
+        /*
+        lifecycleScope.launch {
+            val f = bottomSheetFragment
+            // open element has been deleted
+            if (f is IsShowingElement && f.elementKey in deleted) {
+                closeBottomSheet()
+            }
+        }
+        */
     }
 
     //endregion
@@ -988,6 +1023,13 @@ class MainActivity :
             f.requireArguments().putAll(osmArgs)
             showHighlightedElements(quest, element)
         }
+        if (f is AtpCreateForm && quest is CreateElementQuest) { // TODO fix ongoing confusion and mixing etween specific ATP creation quest and potentially wider class of OSMElementCreation quest - should I even try to support wider class of adder quests right now? Which parts are ATP specific and which are generic? Are more ATP quests viable?
+            val passingAtpArgs = AtpCreateForm.createArguments(quest.atpEntry) // use ATP equivalent of mapDataWithEditsSource like above?
+            f.requireArguments().putAll(passingAtpArgs)
+        }
+
+        // TODO: generalize showHighlightedElements or provide alternative one that does not get element feed into it - consult with Westnordost before refactoring it as it will be a bit obnoxious to implement
+        //showHighlightedElements(quest, element)
 
         showInBottomSheet(f)
 
