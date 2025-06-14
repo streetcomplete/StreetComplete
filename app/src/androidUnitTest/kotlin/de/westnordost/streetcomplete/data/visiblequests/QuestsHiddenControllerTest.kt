@@ -8,6 +8,7 @@ import de.westnordost.streetcomplete.data.osmnotes.notequests.NoteQuestHiddenAt
 import de.westnordost.streetcomplete.data.osmnotes.notequests.NoteQuestsHiddenDao
 import de.westnordost.streetcomplete.data.quest.AtpQuestKey
 import de.westnordost.streetcomplete.data.quest.OsmNoteQuestKey
+import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.testutils.mock
 import de.westnordost.streetcomplete.testutils.on
 import de.westnordost.streetcomplete.testutils.osmQuestKey
@@ -64,16 +65,29 @@ class QuestsHiddenControllerTest {
         val h2 = OsmQuestHiddenAt(osmQuestKey(elementId = 2), 123)
         val h3 = NoteQuestHiddenAt(2L, 500)
         val h4 = NoteQuestHiddenAt(3L, 123)
-        val h5 = AtpQuestHiddenAt(4L, 123)
+        val h5 = AtpQuestHiddenAt(4L, 23)
         val h6 = AtpQuestHiddenAt(5L, 100000)
 
         on(osmDb.getAll()).thenReturn(listOf(h1, h2))
         on(notesDb.getAll()).thenReturn(listOf(h3, h4))
         on(atpDb.getAll()).thenReturn(listOf(h5, h6))
 
+        assertEquals<Pair<QuestKey, Long>>(
+            Pair(AtpQuestKey(h6.allThePlacesEntryId), 100000),
+            ctrl.getAllNewerThan(123L)[0]
+        )
+        assertEquals<Pair<QuestKey, Long>>(
+            Pair(OsmNoteQuestKey(h3.noteId), 500L),
+            ctrl.getAllNewerThan(123L)[1]
+        )
+        assertEquals<Pair<QuestKey, Long>>(
+            Pair(h1.key, 250L),
+            ctrl.getAllNewerThan(123L)[2]
+        )
+        //TODO above works, below fails, why? Oh and below fails why claiming no difference
         assertEquals(
             listOf(
-                AtpQuestKey(atpEntryId = 5) to 100000,
+                AtpQuestKey(h6.allThePlacesEntryId) to 100000,
                 OsmNoteQuestKey(h3.noteId) to 500L,
                 h1.key to 250L,
             ),
