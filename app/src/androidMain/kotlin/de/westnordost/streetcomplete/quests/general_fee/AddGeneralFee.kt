@@ -16,7 +16,7 @@ class AddGeneralFee : OsmFilterQuestType<Boolean>(), AndroidQuest {
          (
            tourism ~ museum|gallery|caravan_site
            or leisure = beach_resort
-           or amenity = sanitary_dump_station
+           or amenity ~ sanitary_dump_station|shower|water_point
          )
          and access !~ private|no
          and !fee
@@ -27,7 +27,7 @@ class AddGeneralFee : OsmFilterQuestType<Boolean>(), AndroidQuest {
     override val achievements = listOf(CITIZEN)
 
     override fun getTitle(tags: Map<String, String>) =
-        if (tags["amenity"] == "sanitary_dump_station") {
+        if (tags["amenity"] != null) {
             R.string.quest_generalFee_title
         } else {
             R.string.quest_generalFee_title2
