@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.screens.main.map
 
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
+import de.westnordost.streetcomplete.data.atp.atpquests.AtpQuestHidden
 import de.westnordost.streetcomplete.data.edithistory.Edit
 import de.westnordost.streetcomplete.data.edithistory.EditHistorySource
 import de.westnordost.streetcomplete.data.edithistory.EditKey
@@ -13,6 +14,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestHidden
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEdit
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestHidden
+import de.westnordost.streetcomplete.data.quest.AtpQuestKey
 import de.westnordost.streetcomplete.data.quest.OsmNoteQuestKey
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import de.westnordost.streetcomplete.screens.main.edithistory.icon
@@ -108,11 +110,13 @@ private const val MARKER_ELEMENT_ID = "element_id"
 private const val MARKER_QUEST_TYPE = "quest_type"
 private const val MARKER_NOTE_ID = "note_id"
 private const val MARKER_ID = "id"
+private const val ATP_ENTRY_ID = "atp_id"
 
 private const val EDIT_TYPE_ELEMENT = "element"
 private const val EDIT_TYPE_NOTE = "note"
 private const val EDIT_TYPE_HIDE_OSM_NOTE_QUEST = "hide_osm_note_quest"
 private const val EDIT_TYPE_HIDE_OSM_QUEST = "hide_osm_quest"
+private const val EDIT_TYPE_HIDE_ATP_QUEST = "hide_atp_quest"
 
 private fun Edit.toProperties(): List<Pair<String, String>> = when (this) {
     is ElementEdit -> listOf(
@@ -133,6 +137,11 @@ private fun Edit.toProperties(): List<Pair<String, String>> = when (this) {
         MARKER_ELEMENT_ID to elementId.toString(),
         MARKER_QUEST_TYPE to questType.name
     )
+    is AtpQuestHidden -> listOf(
+        MARKER_EDIT_TYPE to EDIT_TYPE_HIDE_ATP_QUEST,
+        ATP_ENTRY_ID to atpEntry.id.toString()
+        // TODO add more context here? maybe?
+    )
     else -> throw IllegalArgumentException()
 }
 
@@ -149,5 +158,7 @@ private fun Map<String, String>.toEditKey(): EditKey? = when (get(MARKER_EDIT_TY
         ))
     EDIT_TYPE_HIDE_OSM_NOTE_QUEST ->
         QuestHiddenKey(OsmNoteQuestKey(getValue(MARKER_NOTE_ID).toLong()))
-    else -> null
+    EDIT_TYPE_HIDE_ATP_QUEST ->
+        QuestHiddenKey(AtpQuestKey(getValue(ATP_ENTRY_ID).toLong()))
+    else -> null // TODO: can we throw IllegalArgumentException() here ? why not?
 }

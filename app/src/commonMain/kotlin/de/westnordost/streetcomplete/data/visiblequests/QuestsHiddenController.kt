@@ -29,9 +29,11 @@ class QuestsHiddenController(
         cacheLock.withLock {
             val allOsmHidden = osmDb.getAll()
             val allNotesHidden = notesDb.getAll()
-            val result = HashMap<QuestKey, Long>(allOsmHidden.size + allNotesHidden.size)
+            val allAtpHidden = atpDb.getAll()
+            val result = HashMap<QuestKey, Long>(allOsmHidden.size + allNotesHidden.size + allAtpHidden.size)
             allOsmHidden.forEach { result[it.key] = it.timestamp }
             allNotesHidden.forEach { result[OsmNoteQuestKey(it.noteId)] = it.timestamp }
+            allAtpHidden.forEach { result[AtpQuestKey(it.allThePlacesEntryId)] = it.timestamp }
             result
         }
     }
@@ -79,7 +81,7 @@ class QuestsHiddenController(
     fun unhideAll(): Int {
         var unhidCount = 0
         cacheLock.withLock {
-            unhidCount = osmDb.deleteAll() + notesDb.deleteAll()
+            unhidCount = osmDb.deleteAll() + notesDb.deleteAll() + atpDb.deleteAll()
             cache.clear()
         }
         listeners.forEach { it.onUnhidAll() }

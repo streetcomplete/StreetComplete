@@ -23,10 +23,10 @@ class AtpQuestsHiddenDao(private val db: Database) {
         db.delete(NAME, where = "$ATP_ENTRY_ID = $allThePlacesEntryId") == 1
 
     fun getNewerThan(timestamp: Long): List<AtpQuestHiddenAt> =
-        db.query(NAME, where = "$TIMESTAMP > $timestamp") { it.toNoteQuestHiddenAt() }
+        db.query(NAME, where = "$TIMESTAMP > $timestamp") { it.toAtpQuestHiddenAt() }
 
     fun getAll(): List<AtpQuestHiddenAt> =
-        db.query(NAME) { it.toNoteQuestHiddenAt() }
+        db.query(NAME) { it.toAtpQuestHiddenAt() }
 
     fun deleteAll(): Int =
         db.delete(NAME)
@@ -35,7 +35,7 @@ class AtpQuestsHiddenDao(private val db: Database) {
         db.queryOne(NAME, columns = arrayOf("COUNT(*)")) { it.getInt("COUNT(*)") } ?: 0
 }
 
-private fun CursorPosition.toNoteQuestHiddenAt() =
+private fun CursorPosition.toAtpQuestHiddenAt() =
     AtpQuestHiddenAt(getLong(ATP_ENTRY_ID), getLong(TIMESTAMP))
 
 data class AtpQuestHiddenAt(val allThePlacesEntryId: Long, val timestamp: Long)

@@ -73,9 +73,9 @@ class QuestsHiddenControllerTest {
 
         assertEquals(
             listOf(
+                AtpQuestKey(atpEntryId = 5) to 100000,
                 OsmNoteQuestKey(h3.noteId) to 500L,
                 h1.key to 250L,
-                h6.allThePlacesEntryId to 5,
             ),
             ctrl.getAllNewerThan(123L)
         )
