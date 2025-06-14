@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.data.quest.atp
 
-import de.westnordost.osmfeatures.Feature
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
@@ -18,6 +17,6 @@ class CreatePoiBasedOnAtp() : OsmCreateElementQuestType<CreatePoiBasedOnAtpAnswe
     override val achievements = listOf(CITIZEN)
     override val changesetComment = "Create POI surveyed by mapper, hint about missing entry was based on AllThePlaces data"
 
-    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
+    override fun getHighlightedElementsGeneric(element: Element?, getMapData: () -> MapDataWithGeometry) =
         getMapData().asSequence().filter { it.isPlaceOrDisusedPlace() }
 }

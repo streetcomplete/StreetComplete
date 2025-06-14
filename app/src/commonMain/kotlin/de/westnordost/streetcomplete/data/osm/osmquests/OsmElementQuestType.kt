@@ -87,6 +87,12 @@ interface OsmElementQuestType<T> : QuestType, ElementEditType {
      *  any misunderstandings which element is meant that far apart. */
     val highlightedElementsRadius: Double get() = 30.0
 
+    override fun getHighlightedElementsGeneric(element: Element?, getMapData: () -> MapDataWithGeometry): Sequence<Element> {
+        return getHighlightedElements(element!!, getMapData)
+    }
+
+    fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) : Sequence<Element> = emptySequence()
+
     /** Applies the data from [answer] to the element that has last been edited at [timestampEdited]
      * with the given [tags] and the given [geometry].
      * The element is not directly modified, instead, a map of [tags] is modified */

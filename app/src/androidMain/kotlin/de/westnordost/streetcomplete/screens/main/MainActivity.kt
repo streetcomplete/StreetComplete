@@ -56,7 +56,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
 import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
-import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestAndroid
 import de.westnordost.streetcomplete.data.osmnotes.notequests.createOsmNoteQuest
 import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
 import de.westnordost.streetcomplete.data.overlays.AndroidOverlay
@@ -115,7 +114,6 @@ import de.westnordost.streetcomplete.util.ktx.truncateTo6Decimals
 import de.westnordost.streetcomplete.util.location.FineLocationManager
 import de.westnordost.streetcomplete.util.location.LocationAvailabilityReceiver
 import de.westnordost.streetcomplete.util.location.LocationRequestFragment
-import de.westnordost.streetcomplete.util.logs.Log
 import de.westnordost.streetcomplete.util.math.area
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import de.westnordost.streetcomplete.util.math.enlargedBy
@@ -189,11 +187,13 @@ class MainActivity :
     private var wasFollowingPosition: Boolean? = null
     private var wasNavigationMode: Boolean? = null
 
-    private val mapFragment: MainMapFragment? get() =
-        supportFragmentManager.findFragmentById(R.id.mapFragment) as MainMapFragment?
+    private val mapFragment: MainMapFragment?
+        get() =
+            supportFragmentManager.findFragmentById(R.id.mapFragment) as MainMapFragment?
 
-    private val bottomSheetFragment: Fragment? get() =
-        supportFragmentManager.findFragmentByTag(BOTTOM_SHEET)
+    private val bottomSheetFragment: Fragment?
+        get() =
+            supportFragmentManager.findFragmentByTag(BOTTOM_SHEET)
 
     /* +++++++++++++++++++++++++++++++++++++++ CALLBACKS ++++++++++++++++++++++++++++++++++++++++ */
 
@@ -203,13 +203,14 @@ class MainActivity :
         }
     }
 
-    private val requestLocationPermissionResultReceiver: BroadcastReceiver = object : BroadcastReceiver() {
-        override fun onReceive(context: Context, intent: Intent) {
-            if (!intent.getBooleanExtra(LocationRequestFragment.GRANTED, false)) {
-                toast(R.string.no_gps_no_quests, Toast.LENGTH_LONG)
+    private val requestLocationPermissionResultReceiver: BroadcastReceiver =
+        object : BroadcastReceiver() {
+            override fun onReceive(context: Context, intent: Intent) {
+                if (!intent.getBooleanExtra(LocationRequestFragment.GRANTED, false)) {
+                    toast(R.string.no_gps_no_quests, Toast.LENGTH_LONG)
+                }
             }
         }
-    }
 
     //region Lifecycle - Android Lifecycle Callbacks
 
@@ -459,14 +460,28 @@ class MainActivity :
         closeBottomSheet()
     }
 
-    override fun onComposeNote(editType: ElementEditType, element: Element, geometry: ElementGeometry, leaveNoteContext: String) {
+    override fun onComposeNote(
+        editType: ElementEditType,
+        element: Element,
+        geometry: ElementGeometry,
+        leaveNoteContext: String,
+    ) {
         showInBottomSheet(
-            LeaveNoteInsteadFragment.create(element.type, element.id, leaveNoteContext, geometry.center),
+            LeaveNoteInsteadFragment.create(
+                element.type,
+                element.id,
+                leaveNoteContext,
+                geometry.center
+            ),
             false
         )
     }
 
-    override fun onSplitWay(editType: ElementEditType, way: Way, geometry: ElementPolylinesGeometry) {
+    override fun onSplitWay(
+        editType: ElementEditType,
+        way: Way,
+        geometry: ElementPolylinesGeometry,
+    ) {
         val mapFragment = mapFragment ?: return
         showInBottomSheet(SplitWayFragment.create(editType, way, geometry))
         mapFragment.highlightGeometry(geometry)
@@ -483,7 +498,11 @@ class MainActivity :
 
     /* ------------------------------- SplitWayFragment.Listener -------------------------------- */
 
-    override fun onSplittedWay(editType: ElementEditType, way: Way, geometry: ElementPolylinesGeometry) {
+    override fun onSplittedWay(
+        editType: ElementEditType,
+        way: Way,
+        geometry: ElementPolylinesGeometry,
+    ) {
         showQuestSolvedAnimation(editType.icon, geometry.center)
         closeBottomSheet()
     }
@@ -492,7 +511,10 @@ class MainActivity :
 
     override fun onMoveNode(editType: ElementEditType, node: Node) {
         val mapFragment = mapFragment ?: return
-        showInBottomSheet(MoveNodeFragment.create(editType, node), clearPreviousHighlighting = false)
+        showInBottomSheet(
+            MoveNodeFragment.create(editType, node),
+            clearPreviousHighlighting = false
+        )
         mapFragment.clearSelectedPins()
         mapFragment.hideNonHighlightedPins()
         if (editType !is Overlay) {
@@ -616,7 +638,12 @@ class MainActivity :
             val f = bottomSheetFragment
             if (f !is IsShowingElement) return@launch
             val elementKey = f.elementKey ?: return@launch
-            val openElement = withContext(Dispatchers.IO) { mapDataWithEditsSource.get(elementKey.type, elementKey.id) }
+            val openElement = withContext(Dispatchers.IO) {
+                mapDataWithEditsSource.get(
+                    elementKey.type,
+                    elementKey.id
+                )
+            }
             // open element does not exist anymore after download
             if (openElement == null) {
                 closeBottomSheet()
@@ -754,9 +781,11 @@ class MainActivity :
             !viewModel.locationState.value.isEnabled -> {
                 requestLocation()
             }
+
             !mapFragment.isFollowingPosition -> {
                 setIsFollowingPosition(true)
             }
+
             else -> {
                 setIsNavigationMode(!mapFragment.isNavigationMode)
             }
@@ -793,7 +822,8 @@ class MainActivity :
             return null
         }
 
-        val enclosingBBox = displayArea.asBoundingBoxOfEnclosingTiles(ApplicationConstants.DOWNLOAD_TILE_ZOOM)
+        val enclosingBBox =
+            displayArea.asBoundingBoxOfEnclosingTiles(ApplicationConstants.DOWNLOAD_TILE_ZOOM)
         val areaInSqKm = enclosingBBox.area() / 1000000
         if (areaInSqKm > ApplicationConstants.MAX_DOWNLOADABLE_AREA_IN_SQKM) {
             toast(R.string.download_area_too_big, Toast.LENGTH_LONG)
@@ -833,8 +863,9 @@ class MainActivity :
         val uri = buildGeoUri(pos.latitude, pos.longitude, zoom)
 
         val intent = Intent(Intent.ACTION_VIEW, uri.toUri())
-        val otherMapAppInstalled = packageManager.queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY)
-            .any { !it.activityInfo.packageName.equals(packageName) }
+        val otherMapAppInstalled =
+            packageManager.queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY)
+                .any { !it.activityInfo.packageName.equals(packageName) }
         if (otherMapAppInstalled) {
             startActivity(intent)
         } else {
@@ -879,7 +910,10 @@ class MainActivity :
     private fun closeBottomSheet() {
         currentFocus?.hideKeyboard()
         if (bottomSheetFragment != null) {
-            supportFragmentManager.popBackStack(BOTTOM_SHEET, FragmentManager.POP_BACK_STACK_INCLUSIVE)
+            supportFragmentManager.popBackStack(
+                BOTTOM_SHEET,
+                FragmentManager.POP_BACK_STACK_INCLUSIVE
+            )
         }
         clearHighlighting()
         unfreezeMap()
@@ -894,7 +928,10 @@ class MainActivity :
         freezeMap()
         if (bottomSheetFragment != null) {
             if (clearPreviousHighlighting) clearHighlighting()
-            supportFragmentManager.popBackStack(BOTTOM_SHEET, FragmentManager.POP_BACK_STACK_INCLUSIVE)
+            supportFragmentManager.popBackStack(
+                BOTTOM_SHEET,
+                FragmentManager.POP_BACK_STACK_INCLUSIVE
+            )
         }
         val appearAnim = R.animator.quest_answer_form_appear
         val disappearAnim = R.animator.quest_answer_form_disappear
@@ -973,7 +1010,12 @@ class MainActivity :
             return
         }
 
-        val element = withContext(Dispatchers.IO) { mapDataWithEditsSource.get(elementKey.type, elementKey.id) } ?: return
+        val element = withContext(Dispatchers.IO) {
+            mapDataWithEditsSource.get(
+                elementKey.type,
+                elementKey.id
+            )
+        } ?: return
         val f = (overlay as? AndroidOverlay)?.createForm(element) ?: return
         if (f.arguments == null) f.arguments = bundleOf()
 
@@ -1014,23 +1056,27 @@ class MainActivity :
         val camera = mapFragment.cameraPosition
         val rotation = camera?.rotation ?: 0.0
         val tilt = camera?.tilt ?: 0.0
-        val args = AbstractQuestForm.createArguments(quest.key, quest.type, quest.geometry, rotation, tilt)
+        val args =
+            AbstractQuestForm.createArguments(quest.key, quest.type, quest.geometry, rotation, tilt)
         f.requireArguments().putAll(args)
 
         if (f is AbstractOsmQuestForm<*> && quest is OsmQuest) {
-            val element = withContext(Dispatchers.IO) { mapDataWithEditsSource.get(quest.elementType, quest.elementId) } ?: return
+            val element = withContext(Dispatchers.IO) {
+                mapDataWithEditsSource.get(
+                    quest.elementType,
+                    quest.elementId
+                )
+            } ?: return
             val osmArgs = AbstractOsmQuestForm.createArguments(element)
             f.requireArguments().putAll(osmArgs)
             showHighlightedElements(quest, element)
         }
         if (f is AtpCreateForm && quest is CreateElementQuest) { // TODO fix ongoing confusion and mixing etween specific ATP creation quest and potentially wider class of OSMElementCreation quest - should I even try to support wider class of adder quests right now? Which parts are ATP specific and which are generic? Are more ATP quests viable?
-            val passingAtpArgs = AtpCreateForm.createArguments(quest.atpEntry) // use ATP equivalent of mapDataWithEditsSource like above?
+            val passingAtpArgs =
+                AtpCreateForm.createArguments(quest.atpEntry) // use ATP equivalent of mapDataWithEditsSource like above?
             f.requireArguments().putAll(passingAtpArgs)
+            showHighlightedElementsAroundAtpEntryQuest(quest, quest.atpEntry)
         }
-
-        // TODO: generalize showHighlightedElements or provide alternative one that does not get element feed into it - consult with Westnordost before refactoring it as it will be a bit obnoxious to implement
-        //showHighlightedElements(quest, element)
-
         showInBottomSheet(f)
 
         mapFragment.startFocus(quest.geometry, getQuestFormInsets())
@@ -1041,7 +1087,32 @@ class MainActivity :
     }
 
     private fun showHighlightedElements(quest: OsmQuest, element: Element) {
-        val bbox = quest.geometry.bounds.enlargedBy(quest.type.highlightedElementsRadius)
+        return showHighlightedElementsShared(
+            quest,
+            element.tags,
+            null,
+            quest.type.highlightedElementsRadius
+        )
+    }
+
+    private fun showHighlightedElementsAroundAtpEntryQuest(
+        quest: CreateElementQuest,
+        atpEntry: AtpEntry,
+    ) {
+        // TODO is merge with showHighlightedElements a good idea?
+        // some challenges: it is not passing or having an element - changed that for nullable parameter - is it fine? Maybe effectively duplicating this function is nicer?
+        // passing highlightedElementsRadius is silly (maybe create interface used by both classes?)
+        val tags = atpEntry.tagsInATP
+        showHighlightedElementsShared(quest, tags, null, quest.type.highlightedElementsRadius)
+    }
+
+    private fun showHighlightedElementsShared(
+        quest: Quest,
+        tags: Map<String, String>,
+        element: Element?,
+        highlightedElementsRadius: Double,
+    ) {
+        val bbox = quest.geometry.bounds.enlargedBy(highlightedElementsRadius)
         var mapData: MapDataWithGeometry? = null
 
         fun getMapData(): MapDataWithGeometry {
@@ -1050,11 +1121,11 @@ class MainActivity :
             return data
         }
 
-        val levels = parseLevelsOrNull(element.tags)
+        val levels = parseLevelsOrNull(tags)
 
         lifecycleScope.launch(Dispatchers.Default) {
             val elements = withContext(Dispatchers.IO) {
-                quest.type.getHighlightedElements(element, ::getMapData)
+                quest.type.getHighlightedElementsGeneric(element, ::getMapData)
             }
 
             val markers = elements.mapNotNull { e ->
@@ -1064,7 +1135,7 @@ class MainActivity :
                 val eLevels = parseLevelsOrNull(e.tags)
                 if (!levels.levelsIntersect(eLevels)) return@mapNotNull null
                 // include only elements with the same layer, if any
-                if (element.tags["layer"] != e.tags["layer"]) return@mapNotNull null
+                if (tags["layer"] != e.tags["layer"]) return@mapNotNull null
 
                 val geometry = mapData?.getGeometry(e.type, e.id) ?: return@mapNotNull null
                 val icon = getIcon(featureDictionary.value, e)
