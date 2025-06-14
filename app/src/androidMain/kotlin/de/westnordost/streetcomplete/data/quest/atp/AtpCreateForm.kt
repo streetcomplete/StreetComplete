@@ -55,7 +55,6 @@ class AtpCreateForm : AbstractQuestForm() {
     private val featureDictionaryLazy: Lazy<FeatureDictionary> by inject(named("FeatureDictionaryLazy"))
     private val elementEditsController: ElementEditsController by inject()
 
-    override val contentLayoutResId = R.layout.quest_atp_create
     private lateinit var entry: AtpEntry private set
     private val featureDictionary: FeatureDictionary get() = featureDictionaryLazy.value
     var hideQuestController: HideQuestController = hiddenQuestsController
