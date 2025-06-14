@@ -10,7 +10,6 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.osm.isPlaceOrDisusedPlace
 
 class CreatePoiBasedOnAtp() : OsmCreateElementQuestType<CreatePoiBasedOnAtpAnswer>, AndroidQuest {
-    // do I actually need getFeature here? it gets passed to form somewhere else TODO
     override fun createForm() = AtpCreateForm()
     override val icon = R.drawable.ic_quest_dot // TODO: a radar icon? A plus icon?
     override val title = R.string.quest_atp_add_missing_poi_title
