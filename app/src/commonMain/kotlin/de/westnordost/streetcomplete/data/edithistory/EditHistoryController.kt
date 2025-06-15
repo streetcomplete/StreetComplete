@@ -126,7 +126,7 @@ class EditHistoryController(
         val result = ArrayList<Edit>()
         result += elementEditsController.getAll().filter { it.action !is IsRevertAction }
         result += noteEditsController.getAll()
-        //result += atpEditsController.getAll() TODO do we need it?
+        // atpEditsController not counted here, as these are not OpenStreetMap edits
         result += hiddenQuestsController.getAllNewerThan(maxAge).mapNotNull { (key, timestamp) ->
             createQuestHiddenEdit(key, timestamp)
         }
