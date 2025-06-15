@@ -1,5 +1,7 @@
 package de.westnordost.streetcomplete.data.edithistory
 
+import de.westnordost.streetcomplete.data.atp.AtpEditsController
+import de.westnordost.streetcomplete.data.atp.atpquests.edits.AtpDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsController
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsSource
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
@@ -28,6 +30,7 @@ class EditHistoryControllerTest {
 
     private lateinit var elementEditsController: ElementEditsController
     private lateinit var noteEditsController: NoteEditsController
+    private lateinit var atpEditsController: AtpEditsController
     private lateinit var hiddenQuestsController: QuestsHiddenController
     private lateinit var notesSource: NotesWithEditsSource
     private lateinit var mapDataSource: MapDataWithEditsSource
@@ -42,9 +45,11 @@ class EditHistoryControllerTest {
     @BeforeTest fun setUp() {
         elementEditsController = mock()
         noteEditsController = mock()
+        atpEditsController = mock()
         hiddenQuestsController = mock()
         notesSource = mock()
         mapDataSource = mock()
+        atpDataSource = mock()
         questTypeRegistry = QuestTypeRegistry(listOf(
             0 to QUEST_TYPE,
         ))
@@ -68,7 +73,7 @@ class EditHistoryControllerTest {
         }
 
         ctrl = EditHistoryController(
-            elementEditsController, noteEditsController, hiddenQuestsController, notesSource,
+            elementEditsController, noteEditsController, atpEditsController, hiddenQuestsController, notesSource,
             mapDataSource, questTypeRegistry
         )
         ctrl.addListener(listener)
@@ -124,6 +129,14 @@ class EditHistoryControllerTest {
     @Test fun `undo hid note quest`() {
         val e = noteQuestHidden()
         on(notesSource.get(e.note.id)).thenReturn(e.note)
+        on(hiddenQuestsController.get(e.questKey)).thenReturn(e.createdTimestamp)
+        ctrl.undo(e.key)
+        verify(hiddenQuestsController).unhide(e.questKey)
+    }
+
+    @Test fun `undo hid atp quest`() {
+        val e = atpQuestHidden()
+        //on(notesSource.get(e.note.id)).thenReturn(e.note) TODO remove
         on(hiddenQuestsController.get(e.questKey)).thenReturn(e.createdTimestamp)
         ctrl.undo(e.key)
         verify(hiddenQuestsController).unhide(e.questKey)

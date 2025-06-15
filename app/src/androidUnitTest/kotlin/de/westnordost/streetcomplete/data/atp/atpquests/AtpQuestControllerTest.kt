@@ -1,0 +1,269 @@
+package de.westnordost.streetcomplete.data.atp.atpquests
+
+import de.westnordost.streetcomplete.data.atp.atpquests.edits.AtpDataWithEditsSource
+import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
+import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
+import de.westnordost.streetcomplete.data.preferences.Preferences
+import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
+import de.westnordost.streetcomplete.data.quest.atp.CreatePoiBasedOnAtp
+import de.westnordost.streetcomplete.data.user.UserDataSource
+import de.westnordost.streetcomplete.data.user.UserLoginSource
+import de.westnordost.streetcomplete.testutils.any
+import de.westnordost.streetcomplete.testutils.atpEntry
+import de.westnordost.streetcomplete.testutils.bbox
+import de.westnordost.streetcomplete.testutils.mock
+import de.westnordost.streetcomplete.testutils.on
+import org.mockito.Mockito
+import org.mockito.Mockito.verify
+import kotlin.test.BeforeTest
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertFalse
+import kotlin.test.assertNull
+import kotlin.test.assertTrue
+
+class AtpQuestControllerTest {
+
+    private lateinit var mapDataSource: MapDataWithEditsSource
+    private lateinit var atpDataSource: AtpDataWithEditsSource
+    private lateinit var noteSource: NotesWithEditsSource
+    private lateinit var userDataSource: UserDataSource
+    private lateinit var userLoginSource: UserLoginSource
+    private lateinit var prefs: Preferences
+    private lateinit var registry: QuestTypeRegistry
+
+    private lateinit var ctrl: AtpQuestController
+    private lateinit var listener: AtpQuestSource.Listener
+
+    private lateinit var noteUpdatesListener: NotesWithEditsSource.Listener
+    private lateinit var userLoginListener: UserLoginSource.Listener
+
+    // TODO: adapt for ATP or delete
+    @BeforeTest
+    fun setUp() {
+        noteSource = mock()
+        mapDataSource = mock()
+        atpDataSource = mock()
+        userDataSource = mock()
+        userLoginSource = mock()
+        prefs = mock()
+        registry = mock()
+
+        listener = mock()
+
+        on(noteSource.addListener(any())).then { invocation ->
+            noteUpdatesListener = invocation.getArgument(0)
+            Unit
+        }
+
+        on(userLoginSource.addListener(any())).then { invocation ->
+            userLoginListener = invocation.getArgument(0)
+            Unit
+        }
+
+        ctrl = AtpQuestController(mapDataSource, atpDataSource, noteSource, registry)
+        ctrl.addListener(listener)
+    }
+
+    // TODO: adapt for ATP or delete
+    @Test
+    fun `get missing returns null`() {
+        on(noteSource.get(1)).thenReturn(null)
+        assertNull(ctrl.get(1))
+    }
+
+    @Test
+    fun getAll() {
+        val bbox = bbox()
+        val location = LatLon(1.0, 1.0)
+        val atpEntries = listOf(atpEntry(1, location), atpEntry(2, location), atpEntry(3, location))
+
+        on(atpDataSource.getAll(bbox)).thenReturn(atpEntries)
+
+        val expectedQuests = atpEntries.map {
+            CreateElementQuest(
+                it.id, it,
+                CreatePoiBasedOnAtp(), location
+            )
+        }
+
+        assertEquals(
+            expectedQuests,
+            ctrl.getAllInBBox(bbox) // TODO: fails, test logs claim bogus line that does not exist. !!fun!!
+        )
+    }
+
+    // is onCleared still needed? it got copied from notes test and interface TODO
+    @Test
+    fun `calls onInvalidated when cleared entries`() {
+        noteUpdatesListener.onCleared()
+        verify(listener).onInvalidated()
+    }
+
+    // TODO: adapt for ATP or delete (seems reasonable to test? but both updated notes and main onUpdated needs to be tested)
+    /*
+    @Test fun `calls onUpdated when notes changed`() {
+        on(prefs.showAllNotes).thenReturn(true)
+
+        noteUpdatesListener.onUpdated(
+            added = listOf(note(1)),
+            updated = listOf(note(2)),
+            deleted = listOf(3)
+        )
+
+        verify(listener).onUpdated(
+            added = argThat {
+                it.containsExactlyInAnyOrder(listOf(OsmNoteQuest(1, p()), OsmNoteQuest(2, p())))
+            },
+            deleted = argThat { it.containsExactlyInAnyOrder(listOf(3)) }
+        )
+    }
+    */
+
+    @Test
+    fun `isThereOsmAtpMatch matches on exact copies`() {
+        on(mapDataSource.getGeometry(ElementType.NODE, 1)).then {
+            val returned = mock<ElementPointGeometry>()
+            on(returned.center).thenReturn(LatLon(0.0, 0.0))
+            returned
+        }
+        assertTrue(
+            ctrl.isThereOsmAtpMatch(mapOf("name" to "Aldi", "shop" to "supermarket"), mapOf("name" to "Aldi", "shop" to "supermarket"),
+                ElementKey(ElementType.NODE, 1),
+                LatLon(0.0, 0.0)
+            )
+        )
+    }
+
+    @Test
+    fun `isThereOsmAtpMatch matches on rejected due to large distance`() {
+        on(mapDataSource.getGeometry(ElementType.NODE, 1)).then {
+            val returned = mock<ElementPointGeometry>()
+            on(returned.center).thenReturn(LatLon(0.0, 0.0))
+            returned
+        }
+        assertTrue(
+            ctrl.isThereOsmAtpMatch(mapOf("name" to "Aldi", "shop" to "supermarket"), mapOf("name" to "Aldi", "shop" to "supermarket"),
+                ElementKey(ElementType.NODE, 1),
+                LatLon(1.0, 0.0)
+            )
+        )
+    }
+
+    @Test
+    fun `isThereOsmAtpMatch matches despite capitalization difference`() {
+        on(mapDataSource.getGeometry(ElementType.NODE, 1)).then {
+            val returned = mock<ElementPointGeometry>()
+            on(returned.center).thenReturn(LatLon(0.0, 0.0))
+            returned
+        }
+        assertTrue(
+            ctrl.isThereOsmAtpMatch(mapOf("name" to "ALDI"), mapOf("name" to "Aldi"),
+            ElementKey(ElementType.NODE, 1),
+            LatLon(0.0, 0.0)
+            )
+        )
+    }
+
+    @Test
+    fun `isThereOsmAtpMatch rejects matches when nothing matches`() {
+        on(mapDataSource.getGeometry(ElementType.NODE, 1)).then {
+            val returned = mock<ElementPointGeometry>()
+            on(returned.center).thenReturn(LatLon(0.0, 0.0))
+            returned
+        }
+        assertFalse(
+            ctrl.isThereOsmAtpMatch(
+                mapOf("name" to "Foobar", "shop" to "convenience"),
+                mapOf("name" to "Platypus", "shop" to "trade"),
+                ElementKey(ElementType.NODE, 1),
+                LatLon(0.0, 0.0)
+            )
+        )
+    }
+
+    @Test
+    fun `isThereOsmAtpMatch allows matches between similar shop types`() {
+        on(mapDataSource.getGeometry(ElementType.NODE, 1)).then {
+            val returned = mock<ElementPointGeometry>()
+            on(returned.center).thenReturn(LatLon(0.0, 0.0))
+            returned
+        }
+        assertTrue(
+            ctrl.isThereOsmAtpMatch(
+                mapOf("name" to "Tesco", "shop" to "convenience"),
+                mapOf("name" to "Tesco", "shop" to "supermarket"),
+                ElementKey(ElementType.NODE, 1),
+                LatLon(0.0, 0.0)
+            )
+        )
+    }
+
+    /*
+    TODO: implement such improvements
+    @Test fun `isThereOsmAtpMatch does not detect match on completely mismatching names, also if type matches`() {
+        on(mapDataSource.getGeometry(ElementType.NODE, 1)).then {
+            val returned = mock<ElementPointGeometry>()
+            on(returned.center).thenReturn(LatLon(0.0, 0.0))
+            returned
+        }
+        assertFalse(ctrl.isThereOsmAtpMatch(
+            mapOf("name" to "Foobar", "shop" to "convenience"),
+            mapOf("name" to "Platypus", "shop" to "convenience")),
+            ElementKey(ElementType.NODE, 1),
+            LatLon(0.0, 0.0)
+        )
+    }
+
+    @Test fun `isThereOsmAtpMatch allows matches between similar shop types, also with subtle name differences`() {
+        on(mapDataSource.getGeometry(ElementType.NODE, 1)).then {
+            val returned = mock<ElementPointGeometry>()
+            on(returned.center).thenReturn(LatLon(0.0, 0.0))
+            returned
+        }
+        assertFalse(ctrl.isThereOsmAtpMatch(
+            mapOf("name" to "Tesco", "shop" to "convenience"),
+            mapOf("name" to "Tesco #123", "shop" to "supermarket")),
+            ElementKey(ElementType.NODE, 1),
+            LatLon(0.0, 0.0)
+        )
+    }
+     */
+    // TODO: see https://codeberg.org/matkoniecz/list_how_openstreetmap_can_be_improved_with_alltheplaces_data/src/branch/master/test_matching_logic.py for possible extension
+
+    @Test
+    fun `AllThePlaces entries with nearby items get no quest`() { // TODO - implement
+    }
+
+    @Test
+    fun `new AllThePlaces entries cause quest creation`() { // TODO - implement
+    }
+
+    @Test
+    fun `newly mapped POI near ATP quest causes it to disappear`() { // TODO - implement
+        // setup atp quest
+        // run addition of data
+        // confirm that atp quest is done
+        // I want to test     mapDataSourceListener.onUpdated
+        // but without mocking away confirmation that it was triggered
+        // or maybe I should test listener structure?
+        // how tests for pure osm equivalent is testing this? lets take look at OsmQuestControllerTest!
+        // TODO see and implement also
+        // @Test fun `updates quests on map data listener replace for bbox`() {
+
+        /// TODO add based on this - but for now figure out that ATP quest persisting story (reread that comment)
+        // @Test fun `updates quests on map data listener update for updated elements`() {
+    }
+
+    @Test
+    fun `new AllThePlaces entries with matching shop already results in no quest`() { // TODO - implement
+    }
+
+    @Test
+    fun `new map data cause quest creation`() { // TODO - implement
+    }
+}
