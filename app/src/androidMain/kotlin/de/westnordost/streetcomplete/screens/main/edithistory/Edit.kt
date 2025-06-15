@@ -30,7 +30,7 @@ val Edit.icon: Int get() = when (this) {
     is OsmNoteQuestHidden -> R.drawable.ic_quest_notes
     is OsmQuestHidden -> questType.icon
     is AtpQuestHidden -> CreatePoiBasedOnAtp().icon // TODO is there better way to do this? that looks ugly
-    else -> 0 // TODO: can we throw IllegalArgumentException() here ? That stumped me for few minutes. Can this code be triggered for legitimate reasons?
+    else -> 0
 }
 
 val Edit.overlayIcon: Int get() = when (this) {
@@ -71,7 +71,6 @@ fun Edit.getTitle(elementTags: Map<String, String>?): String = when (this) {
         stringResource(R.string.quest_noteDiscussion_title)
     }
     is AtpQuestHidden -> {
-        // TODO is there better way to do this?
         stringResource(R.string.quest_atp_add_missing_poi_title)
     }
     else -> throw IllegalArgumentException()
