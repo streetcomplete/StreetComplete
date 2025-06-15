@@ -93,7 +93,7 @@ class AtpQuestControllerTest {
 
         assertEquals(
             expectedQuests,
-            ctrl.getAllInBBox(bbox)
+            ctrl.getAllInBBox(bbox) // TODO: fails, test logs claim bogus line that does not exist. !!fun!!
         )
     }
 
@@ -123,6 +123,36 @@ class AtpQuestControllerTest {
         )
     }
     */
+
+    @Test
+    fun `isThereOsmAtpMatch matches on exact copies`() {
+        on(mapDataSource.getGeometry(ElementType.NODE, 1)).then {
+            val returned = mock<ElementPointGeometry>()
+            on(returned.center).thenReturn(LatLon(0.0, 0.0))
+            returned
+        }
+        assertTrue(
+            ctrl.isThereOsmAtpMatch(mapOf("name" to "Aldi", "shop" to "supermarket"), mapOf("name" to "Aldi", "shop" to "supermarket"),
+                ElementKey(ElementType.NODE, 1),
+                LatLon(0.0, 0.0)
+            )
+        )
+    }
+
+    @Test
+    fun `isThereOsmAtpMatch matches on rejected due to large distance`() {
+        on(mapDataSource.getGeometry(ElementType.NODE, 1)).then {
+            val returned = mock<ElementPointGeometry>()
+            on(returned.center).thenReturn(LatLon(0.0, 0.0))
+            returned
+        }
+        assertTrue(
+            ctrl.isThereOsmAtpMatch(mapOf("name" to "Aldi", "shop" to "supermarket"), mapOf("name" to "Aldi", "shop" to "supermarket"),
+                ElementKey(ElementType.NODE, 1),
+                LatLon(1.0, 0.0)
+            )
+        )
+    }
 
     @Test
     fun `isThereOsmAtpMatch matches despite capitalization difference`() {

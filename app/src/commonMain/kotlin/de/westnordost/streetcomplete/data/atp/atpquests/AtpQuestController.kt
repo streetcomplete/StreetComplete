@@ -16,6 +16,7 @@ import de.westnordost.streetcomplete.data.quest.OsmCreateElementQuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.util.Listeners
 import de.westnordost.streetcomplete.util.ktx.geometryType
+import de.westnordost.streetcomplete.util.logs.Log
 import de.westnordost.streetcomplete.util.math.distance
 import de.westnordost.streetcomplete.util.math.distanceTo
 import de.westnordost.streetcomplete.util.math.enlargedBy
@@ -109,8 +110,10 @@ class AtpQuestController(
             //TODO("mapDataSourceListener - Not yet implemented - I guess that here POI creation/edit should be watched as it may cause")
 
             // which kind of synchronization is needed here TODO, see OsmQuestController
-            val paddedBounds = updated.boundingBox!!.enlargedBy(ApplicationConstants.QUEST_FILTER_PADDING)
-            val candidates = atpDataSource.getAll(paddedBounds)
+            //val paddedBounds = updated.boundingBox.enlargedBy(ApplicationConstants.QUEST_FILTER_PADDING)
+            //val candidates = atpDataSource.getAll(paddedBounds)
+            // bbox is null, sadly TODO trying replacing
+
             val obsoleteQuestIds = mutableListOf<Long>()
             updated.forEach { osm ->
                 // TODO STUCK how can I get access to existing quests here?
@@ -121,14 +124,23 @@ class AtpQuestController(
                 // but it seems how note and osm element quests do things
                 // so maybe there is no better way?
 
-                // TODO: profile it whether it is too slow
-                candidates.forEach { atpCandidate ->
-                    if(isThereOsmAtpMatch(osm.tags, atpCandidate.tagsInATP, ElementKey(osm.type, osm.id), atpCandidate.position)) {
-                        val distance = updated.getGeometry(osm.type, osm.id)?.distance(atpCandidate.position)
-                        if (distance != null && distance < ApplicationConstants.QUEST_FILTER_PADDING) {
-                            obsoleteQuestIds.add(atpCandidate.id)
+                val paddedBounds = mapDataSource.getGeometry(osm.type, osm.id)?.bounds?.enlargedBy(
+                    ApplicationConstants.QUEST_FILTER_PADDING
+                )
+                if (paddedBounds == null) {
+                    Log.e("AAAAAAAAAAAAAAAAAAA", "why, why mapDataSource.getGeometry got me null?")
+                    // TODO: confirm that it is fine to skip such cases - when it may even happen? can I do !! here?
+                } else {
+                    val candidates = atpDataSource.getAll(paddedBounds)
+                    // TODO: profile it whether it is too slow
+                    candidates.forEach { atpCandidate ->
+                        if(isThereOsmAtpMatch(osm.tags, atpCandidate.tagsInATP, ElementKey(osm.type, osm.id), atpCandidate.position)) {
+                            val distance = updated.getGeometry(osm.type, osm.id)?.distance(atpCandidate.position)
+                            if (distance != null && distance < ApplicationConstants.QUEST_FILTER_PADDING) {
+                                obsoleteQuestIds.add(atpCandidate.id)
+                            }
+                            // TODO: add test for both within range and over range
                         }
-                        // TODO: add test for both within range and over range
                     }
                 }
             }
@@ -168,7 +180,6 @@ class AtpQuestController(
             candidates.forEach { atpCandidate ->
                 if(!filteredOutCandidates.contains(atpCandidate)) {
                     if(isThereOsmAtpMatch(osm.tags, atpCandidate.tagsInATP, ElementKey(osm.type, osm.id), atpCandidate.position)) {
-                        // TODO merge in that range calculation into function I guess
                         val distance = mapDataSource.getGeometry(osm.type, osm.id)?.distance(atpCandidate.position)
                         if (distance != null && distance < ApplicationConstants.QUEST_FILTER_PADDING) {
                             filteredOutCandidates.add(atpCandidate)
