@@ -33,9 +33,16 @@ import de.westnordost.streetcomplete.data.visiblequests.QuestsHiddenController
 import de.westnordost.streetcomplete.quests.AbstractQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.IAnswerItem
+import de.westnordost.streetcomplete.quests.getTitle
+import de.westnordost.streetcomplete.util.getLanguagesForFeatureDictionary
 import de.westnordost.streetcomplete.util.getNameAndLocationSpanned
+import de.westnordost.streetcomplete.util.getNameLabel
+import de.westnordost.streetcomplete.util.inBold
+import de.westnordost.streetcomplete.util.inItalics
+import de.westnordost.streetcomplete.util.ktx.getFeature
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.logs.Log
+import de.westnordost.streetcomplete.util.withNonBreakingSpaces
 import de.westnordost.streetcomplete.view.add
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -186,10 +193,19 @@ class AtpCreateForm : AbstractQuestForm() {
             return localizedContext.resources
         }
 
+    // For start, should users be allowed to create notes AT ALL?
     // taken from AbstractOsmQuestForm, TODO - should common part reside somewhere?
     protected fun composeNote() {
-
-        val questTitle = "CreatePoiBasedOnAtp" //TODO: do it properly //englishResources.getString(osmElementQuestType.getTitle(element.tags))
+        val questTitle = englishResources.getString(CreatePoiBasedOnAtp().getTitle(entry.tagsInATP))
+        // TODO whops? we have problem here
+        // TODO getNameAndLocationSpanned requires Element
+        // TODO we do not have an element as this quest does not operate on Elements
+        // TODO we cannot instantiate fake Element and feed it ATP tags as this class is unavailable here
+        // TODO create interface implement by Element and AtpEntry?
+        // TODO make Element instantition possible here somehow?
+        // TODO something else?
+        //val element = Element()
+        //val leaveNoteContextFail = getNameAndLocationSpanned(element, englishResources, featureDictionary)
         val hintLabel = "TODO" //well, TODO //getNameAndLocationSpanned(element, englishResources, featureDictionary)
         val leaveNoteContext = if (hintLabel.isNullOrBlank()) {
             "Unable to answer \"$questTitle\""
@@ -198,6 +214,19 @@ class AtpCreateForm : AbstractQuestForm() {
         }
         // TODO get it working, I guess
         //listener?.onComposeNote(osmElementQuestType, element, geometry, leaveNoteContext)
+    }
+
+    fun getLabelMimickingQuestLabel() {
+        val languages = getLanguagesForFeatureDictionary(resources.configuration)
+        val feature = featureDictionary
+        // also blocked: FeatureDictionary.getFeature demands Element
+        //?.getFeature(element, languages)
+        //?.name
+        //?.withNonBreakingSpaces()
+        //?.inItalics()
+        val name = getNameLabel(entry.tagsInATP)
+        //?.withNonBreakingSpaces()
+        //?.inBold()
     }
 
     // include equivalents of
