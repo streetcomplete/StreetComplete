@@ -14,6 +14,9 @@ import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
 import de.westnordost.streetcomplete.data.quest.OsmCreateElementQuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.util.Listeners
+import de.westnordost.streetcomplete.util.ktx.geometryType
+import de.westnordost.streetcomplete.util.math.distance
+import de.westnordost.streetcomplete.util.math.distanceTo
 import de.westnordost.streetcomplete.util.math.enlargedBy
 
 /** Used to get visible osm note quests */
@@ -74,6 +77,8 @@ class AtpQuestController(
                 val paddedBounds = BoundingBox(atpEntry.position, atpEntry.position) //..enlargedBy(ApplicationConstants.QUEST_FILTER_PADDING)
                 mapDataSource.getMapDataWithGeometry(paddedBounds).none { osm ->
                     isThereOsmAtpMatch(osm.tags, atpEntry.tagsInATP)
+                    // TODO: consider range
+                    // TODO: add test for both within range and over range
                 }
             }
             val quests = createQuestsForAtpEntries(added)
@@ -97,18 +102,30 @@ class AtpQuestController(
             //TODO("mapDataSourceListener - Not yet implemented - I guess that here POI creation/edit should be watched as it may cause")
 
             // which kind of synchronization is needed here TODO, see OsmQuestController
+            val paddedBounds = updated.boundingBox!!.enlargedBy(ApplicationConstants.QUEST_FILTER_PADDING)
+            val candidates = atpDataSource.getAll(paddedBounds)
+            val obsoleteQuestIds = mutableListOf<Long>()
             updated.forEach { osm ->
                 // TODO STUCK how can I get access to existing quests here?
                 // do I really need to do atpDataSource.getAll()
+                // and then filter droppable quests
                 // and then pass ids to obsoleteQuestIds so they will be deleted
                 // this seems silly
                 // but it seems how note and osm element quests do things
+                // so maybe there is no better way?
 
-                // TODO: for each element find CreateElementQuest quests in range
-                // TODO: check whether it new element tag list matches quest element tag list
                 // TODO: profile it whether it is too slow
+                candidates.forEach { atpCandidate ->
+                    if(isThereOsmAtpMatch(osm.tags, atpCandidate.tagsInATP)) {
+                        // TODO what about large shops where element may be within it but distance to center is still great?
+                        val distance = updated.getGeometry(osm.type, osm.id)?.distance(atpCandidate.position)
+                        if (distance != null && distance < ApplicationConstants.QUEST_FILTER_PADDING) {
+                            obsoleteQuestIds.add(atpCandidate.id)
+                        }
+                        // TODO: add test for both within range and over range
+                    }
+                }
             }
-            val obsoleteQuestIds = listOf<Long>() // TODO obviously calculate rather than pass empty
 
             // in theory changing name or retagging shop may cause new quests to appear - lets not support this
             // as most cases will ve false positives anyway and this would be expensive to check
@@ -145,6 +162,8 @@ class AtpQuestController(
             candidates.forEach { atpCandidate ->
                 if(!filteredOutCandidates.contains(atpCandidate)) {
                     if(isThereOsmAtpMatch(osm.tags, atpCandidate.tagsInATP)) {
+                        // TODO: consider range
+                        // TODO: add test for both within range and over range
                         filteredOutCandidates.add(atpCandidate)
                     }
                 }
