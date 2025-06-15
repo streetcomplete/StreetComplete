@@ -2,20 +2,25 @@ package de.westnordost.streetcomplete.data.atp.atpquests
 
 import de.westnordost.streetcomplete.data.atp.atpquests.edits.AtpDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
+import de.westnordost.streetcomplete.data.quest.atp.CreatePoiBasedOnAtp
 import de.westnordost.streetcomplete.data.user.UserDataSource
 import de.westnordost.streetcomplete.data.user.UserLoginSource
 import de.westnordost.streetcomplete.testutils.any
+import de.westnordost.streetcomplete.testutils.atpEntry
+import de.westnordost.streetcomplete.testutils.bbox
 import de.westnordost.streetcomplete.testutils.mock
 import de.westnordost.streetcomplete.testutils.on
 import org.mockito.Mockito.verify
 import kotlin.test.BeforeTest
 import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertFalse
 import kotlin.test.assertNull
 import kotlin.test.assertTrue
-import kotlin.test.assertFalse
 
 class AtpQuestControllerTest {
 
@@ -65,25 +70,23 @@ class AtpQuestControllerTest {
         assertNull(ctrl.get(1))
     }
 
-    // TODO: adapt for ATP or delete
-    // not doing all the tests for getAll again because it uses the same functions
 
-    // TODO: adapt for ATP or delete
-    /*
     @Test fun getAll() {
         val bbox = bbox()
-        val atpEntries = listOf(atpEntry(1), atpEntry(2), atpEntry(3))
+        val location = LatLon(1.0, 1.0)
+        val atpEntries = listOf(atpEntry(1, location), atpEntry(2, location), atpEntry(3, location))
 
         on(atpDataSource.getAll(bbox)).thenReturn(atpEntries)
 
-        val expectedQuests = notes.map { CreateElementQuest(it.id, it.position) }
+        val expectedQuests = atpEntries.map { CreateElementQuest(it.id, it,
+            CreatePoiBasedOnAtp(), location
+        ) }
 
         assertEquals(
             expectedQuests,
             ctrl.getAllInBBox(bbox)
         )
     }
-    */
 
     // is onCleared still needed? it got copied from notes test and interface TODO
     @Test fun `calls onInvalidated when cleared entries`() {
@@ -151,6 +154,23 @@ class AtpQuestControllerTest {
     @Test fun `new AllThePlaces entries cause quest creation`() { // TODO - implement
 
     }
+
+    @Test fun `newly mapped POI near ATP quest causes it to disappear`() { // TODO - implement
+        // setup atp quest
+        // run addition of data
+        // confirm that atp quest is done
+        // I want to test     mapDataSourceListener.onUpdated
+        // but without mocking away confirmation that it was triggered
+        // or maybe I should test listener structure?
+        // how tests for pure osm equivalent is testing this? lets take look at OsmQuestControllerTest!
+        // TODO see and implement also
+        // @Test fun `updates quests on map data listener replace for bbox`() {
+
+        /// TODO add based on this - but for now figure out that ATP quest persisting story (reread that comment)
+        // @Test fun `updates quests on map data listener update for updated elements`() {
+    }
+
+
 
     @Test fun `new AllThePlaces entries with matching shop already results in no quest`() { // TODO - implement
 
