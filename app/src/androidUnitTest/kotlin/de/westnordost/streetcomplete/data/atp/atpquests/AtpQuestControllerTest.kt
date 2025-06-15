@@ -151,6 +151,10 @@ class AtpQuestControllerTest {
     // TODO: see https://codeberg.org/matkoniecz/list_how_openstreetmap_can_be_improved_with_alltheplaces_data/src/branch/master/test_matching_logic.py for possible extension
 
 
+    @Test fun `AllThePlaces entries with nearby items get no quest`() { // TODO - implement
+
+    }
+
     @Test fun `new AllThePlaces entries cause quest creation`() { // TODO - implement
 
     }

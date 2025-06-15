@@ -61,13 +61,11 @@ class AtpCreateForm : AbstractQuestForm() {
 
     override fun onClickMapAt(position: LatLon, clickAreaSizeInMeters: Double): Boolean {
         selectedLocation = position
-        Log.e("ATP", "onClickMapAt activated")
         checkIsFormComplete()
         return true
     }
 
     override fun onClickOk() {
-        Log.e("ATP", "onClickOk activated")
         if(selectedLocation == null) {
             return
         } else {
@@ -75,38 +73,6 @@ class AtpCreateForm : AbstractQuestForm() {
                 applyEdit(CreateNodeAction(selectedLocation!!, entry.tagsInATP))
             }
         }
-        /*
-        val streetOrPlaceName = streetOrPlaceCtrl.streetOrPlaceName!!
-        lastWasPlaceName = streetOrPlaceName is PlaceName
-        applyAnswer(streetOrPlaceName)
-         */
-
-        /*
-        // TODO from ThingsOverlayForm
-    override fun onClickOk() {
-        if (element == null) {
-            val feature = featureCtrl.feature!!
-            val tags = HashMap<String, String>()
-            val builder = StringMapChangesBuilder(tags)
-            feature.applyTo(builder)
-            builder.create().applyTo(tags)
-            applyEdit(CreateNodeAction(geometry.center, tags))
-        }
-    }
-
-         */
-
-        // TODO from AbstractOsmQuestForm
-        /*
-        private fun createQuestChanges(answer: T): StringMapChanges {
-            val changesBuilder = StringMapChangesBuilder(element.tags)
-            osmElementQuestType.applyAnswerTo(answer, changesBuilder, geometry, element.timestampEdited)
-            val changes = changesBuilder.create()
-            require(!changes.isEmpty()) {
-                "${osmElementQuestType.name} was answered by the user but there are no changes!"
-            }
-            return changes
-        }*/
     }
 
     // from abstractOverlayForm - share code somehow?
@@ -135,7 +101,6 @@ class AtpCreateForm : AbstractQuestForm() {
         listener?.onEdited(CreatePoiBasedOnAtp(), geometry)
     }
     override fun isFormComplete(): Boolean {
-        Log.e("ATP", "isFormComplete activated")
         return selectedLocation != null
     }
 
@@ -149,7 +114,7 @@ class AtpCreateForm : AbstractQuestForm() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        //setTitle(getString(osmElementQuestType.getTitle(element.tags)))
+        // TODO: maybe should be more prominent?
         setTitleHintLabel(getNameAndLocationSpanned(Node(
             1,
             position = entry.position,
@@ -157,7 +122,6 @@ class AtpCreateForm : AbstractQuestForm() {
             version = 1,
             timestampEdited = 1,
         ), resources, featureDictionary))
-        //setObjNote(element.tags["note"])
     }
 
     override fun onStart() {
@@ -165,52 +129,17 @@ class AtpCreateForm : AbstractQuestForm() {
         updateButtonPanel()
     }
 
-    // taken from AbstractOsmQuestForm, TODO - should common part reside somewhere?
     protected fun updateButtonPanel() {
-        //val otherAnswersItem = AnswerItem(R.string.quest_generic_otherAnswers2) { showOtherAnswers() }
-        //setButtonPanelAnswers(listOf(otherAnswersItem) + buttonPanelAnswers)
-        val otherAnswersItem = AnswerItem(R.string.quest_generic_otherAnswers2) { showOtherAnswers() }
-        // TODO proper buttons
-        // This place does not exist
-        // This place is mapped already
-        val a = AnswerItem(R.string.quest_atp_add_missing_poi_mapped_already) { /*applyAnswer(false)*/ hideQuest() }
-        val b = AnswerItem(R.string.quest_atp_add_missing_poi_does_not_exist) { /*applyAnswer(true)*/ hideQuest() }
+        // TODO: create answers to send to API, not just hide quests
+        val mappedAlready = AnswerItem(R.string.quest_atp_add_missing_poi_mapped_already) { /*applyAnswer(false)*/ hideQuest() }
+        val missing = AnswerItem(R.string.quest_atp_add_missing_poi_does_not_exist) { /*applyAnswer(true)*/ hideQuest() }
+        val cantSay = AnswerItem(R.string.quest_generic_answer_notApplicable) { onClickCantSay() }
 
-        setButtonPanelAnswers(listOf(a, b, otherAnswersItem))
+        setButtonPanelAnswers(listOf(mappedAlready, missing, cantSay))
     }
 
     // taken from AbstractOsmQuestForm, TODO - should common part reside somewhere?
-    private fun showOtherAnswers() {
-        val otherAnswersButton = view?.findViewById<ViewGroup>(R.id.buttonPanel)?.children?.firstOrNull() ?: return
-        val answers = assembleOtherAnswers()
-        val popup = PopupMenu(requireContext(), otherAnswersButton)
-        for (i in answers.indices) {
-            val otherAnswer = answers[i]
-            val order = answers.size - i
-            popup.menu.add(Menu.NONE, i, order, otherAnswer.title)
-        }
-        popup.show()
-
-        popup.setOnMenuItemClickListener { item ->
-            answers[item.itemId].action()
-            true
-        }
-    }
-
-    // taken from AbstractOsmQuestForm, TODO - should common part reside somewhere?
-    // TODO: get "UH" button working, see above PRIORITY
-    private fun assembleOtherAnswers(): List<IAnswerItem> {
-        val answers = mutableListOf<IAnswerItem>()
-
-        answers.add(AnswerItem(R.string.quest_generic_answer_notApplicable) { onClickCantSay() })
-
-        //answers.addAll(otherAnswers)
-        return answers
-    }
-
-    // taken from AbstractOsmQuestForm, TODO - should common part reside somewhere?
-
-    protected fun onClickCantSay() {
+    private fun onClickCantSay() {
         context?.let { AlertDialog.Builder(it)
             .setTitle(R.string.quest_leave_new_note_title)
             .setMessage(R.string.quest_leave_new_note_description)
