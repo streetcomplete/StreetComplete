@@ -135,10 +135,7 @@ class AtpQuestController(
                     // TODO: profile it whether it is too slow
                     candidates.forEach { atpCandidate ->
                         if(isThereOsmAtpMatch(osm.tags, atpCandidate.tagsInATP, ElementKey(osm.type, osm.id), atpCandidate.position)) {
-                            val distance = updated.getGeometry(osm.type, osm.id)?.distance(atpCandidate.position)
-                            if (distance != null && distance < ApplicationConstants.QUEST_FILTER_PADDING) {
-                                obsoleteQuestIds.add(atpCandidate.id)
-                            }
+                            obsoleteQuestIds.add(atpCandidate.id)
                             // TODO: add test for both within range and over range
                         }
                     }
@@ -155,7 +152,19 @@ class AtpQuestController(
             bbox: BoundingBox,
             mapDataWithGeometry: MapDataWithGeometry,
         ) {
-            //TODO("Not yet implemented")
+            val paddedBounds = bbox.enlargedBy(ApplicationConstants.QUEST_FILTER_PADDING)
+            val obsoleteQuestIds = mutableListOf<Long>()
+            val candidates = atpDataSource.getAll(paddedBounds)
+            mapDataWithGeometry.forEach { osm ->
+                candidates.forEach { atpCandidate ->
+                    if(isThereOsmAtpMatch(osm.tags, atpCandidate.tagsInATP, ElementKey(osm.type, osm.id), atpCandidate.position)) {
+                        obsoleteQuestIds.add(atpCandidate.id)
+                        // TODO: add test for both within range and over range
+                    }
+                }
+            }
+            // TODO maybe quests outside downloaded area should not appear until OSM data is also downloaded to hide unwanted copies?
+            onUpdatingQuestList(emptyList<CreateElementQuest>(), obsoleteQuestIds)
         }
 
         override fun onCleared() {
@@ -180,10 +189,7 @@ class AtpQuestController(
             candidates.forEach { atpCandidate ->
                 if(!filteredOutCandidates.contains(atpCandidate)) {
                     if(isThereOsmAtpMatch(osm.tags, atpCandidate.tagsInATP, ElementKey(osm.type, osm.id), atpCandidate.position)) {
-                        val distance = mapDataSource.getGeometry(osm.type, osm.id)?.distance(atpCandidate.position)
-                        if (distance != null && distance < ApplicationConstants.QUEST_FILTER_PADDING) {
-                            filteredOutCandidates.add(atpCandidate)
-                        }
+                        filteredOutCandidates.add(atpCandidate)
                         // TODO: add test for both within range and over range
                     }
                 }
