@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.data.atp.atpquests
 
 import de.westnordost.streetcomplete.data.atp.atpquests.edits.AtpDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
 import de.westnordost.streetcomplete.data.preferences.Preferences
@@ -39,7 +40,8 @@ class AtpQuestControllerTest {
     private lateinit var userLoginListener: UserLoginSource.Listener
 
     // TODO: adapt for ATP or delete
-    @BeforeTest fun setUp() {
+    @BeforeTest
+    fun setUp() {
         noteSource = mock()
         mapDataSource = mock()
         atpDataSource = mock()
@@ -65,22 +67,26 @@ class AtpQuestControllerTest {
     }
 
     // TODO: adapt for ATP or delete
-    @Test fun `get missing returns null`() {
+    @Test
+    fun `get missing returns null`() {
         on(noteSource.get(1)).thenReturn(null)
         assertNull(ctrl.get(1))
     }
 
-
-    @Test fun getAll() {
+    @Test
+    fun getAll() {
         val bbox = bbox()
         val location = LatLon(1.0, 1.0)
         val atpEntries = listOf(atpEntry(1, location), atpEntry(2, location), atpEntry(3, location))
 
         on(atpDataSource.getAll(bbox)).thenReturn(atpEntries)
 
-        val expectedQuests = atpEntries.map { CreateElementQuest(it.id, it,
-            CreatePoiBasedOnAtp(), location
-        ) }
+        val expectedQuests = atpEntries.map {
+            CreateElementQuest(
+                it.id, it,
+                CreatePoiBasedOnAtp(), location
+            )
+        }
 
         assertEquals(
             expectedQuests,
@@ -89,7 +95,8 @@ class AtpQuestControllerTest {
     }
 
     // is onCleared still needed? it got copied from notes test and interface TODO
-    @Test fun `calls onInvalidated when cleared entries`() {
+    @Test
+    fun `calls onInvalidated when cleared entries`() {
         noteUpdatesListener.onCleared()
         verify(listener).onInvalidated()
     }
@@ -114,21 +121,42 @@ class AtpQuestControllerTest {
     }
     */
 
-    @Test fun `isThereOsmAtpMatch matches despite capitalization difference`() {
-        assertTrue(ctrl.isThereOsmAtpMatch(mapOf("name" to "ALDI"), mapOf("name" to "Aldi")))
-    }
-
-    @Test fun `isThereOsmAtpMatch rejects matches when nothing matches`() {
-        assertFalse(ctrl.isThereOsmAtpMatch(
-            mapOf("name" to "Foobar", "shop" to "convenience"),
-            mapOf("name" to "Platypus", "shop" to "trade"))
+    @Test
+    fun `isThereOsmAtpMatch matches despite capitalization difference`() {
+        on(mapDataSource.getGeometry(any(), any())).then {
+            val returned = mock<ElementGeometry>()
+            on(returned.center).then {
+                LatLon(0.0, 0.0)
+            }
+            returned
+        }
+        assertTrue(
+            ctrl.isThereOsmAtpMatch(mapOf("name" to "ALDI"), mapOf("name" to "Aldi"),
+            mock(),
+            LatLon(0.0, 0.0)
+            )
         )
     }
 
-    @Test fun `isThereOsmAtpMatch allows matches between similar shop types`() {
-        assertTrue(ctrl.isThereOsmAtpMatch(
-            mapOf("name" to "Tesco", "shop" to "convenience"),
-            mapOf("name" to "Tesco", "shop" to "supermarket"))
+    @Test
+    fun `isThereOsmAtpMatch rejects matches when nothing matches`() {
+        assertFalse(
+            ctrl.isThereOsmAtpMatch(
+                mapOf("name" to "Foobar", "shop" to "convenience"),
+                mapOf("name" to "Platypus", "shop" to "trade"),
+                mock(), LatLon(0.0, 0.0)
+            )
+        )
+    }
+
+    @Test
+    fun `isThereOsmAtpMatch allows matches between similar shop types`() {
+        assertTrue(
+            ctrl.isThereOsmAtpMatch(
+                mapOf("name" to "Tesco", "shop" to "convenience"),
+                mapOf("name" to "Tesco", "shop" to "supermarket"),
+                mock(), LatLon(0.0, 0.0)
+            )
         )
     }
 
@@ -150,16 +178,16 @@ class AtpQuestControllerTest {
      */
     // TODO: see https://codeberg.org/matkoniecz/list_how_openstreetmap_can_be_improved_with_alltheplaces_data/src/branch/master/test_matching_logic.py for possible extension
 
-
-    @Test fun `AllThePlaces entries with nearby items get no quest`() { // TODO - implement
-
+    @Test
+    fun `AllThePlaces entries with nearby items get no quest`() { // TODO - implement
     }
 
-    @Test fun `new AllThePlaces entries cause quest creation`() { // TODO - implement
-
+    @Test
+    fun `new AllThePlaces entries cause quest creation`() { // TODO - implement
     }
 
-    @Test fun `newly mapped POI near ATP quest causes it to disappear`() { // TODO - implement
+    @Test
+    fun `newly mapped POI near ATP quest causes it to disappear`() { // TODO - implement
         // setup atp quest
         // run addition of data
         // confirm that atp quest is done
@@ -174,14 +202,11 @@ class AtpQuestControllerTest {
         // @Test fun `updates quests on map data listener update for updated elements`() {
     }
 
-
-
-    @Test fun `new AllThePlaces entries with matching shop already results in no quest`() { // TODO - implement
-
+    @Test
+    fun `new AllThePlaces entries with matching shop already results in no quest`() { // TODO - implement
     }
 
-    @Test fun `new map data cause quest creation`() { // TODO - implement
-
+    @Test
+    fun `new map data cause quest creation`() { // TODO - implement
     }
-
 }

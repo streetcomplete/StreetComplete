@@ -7,6 +7,7 @@ import de.westnordost.streetcomplete.data.atp.atpquests.edits.AtpDataWithEditsSo
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestDao
 import de.westnordost.streetcomplete.data.osmnotes.Note
@@ -45,17 +46,23 @@ class AtpQuestController(
         }
     }
 
-    fun isThereOsmAtpMatch(osm: Map<String, String>, atp: Map<String, String>): Boolean {
+    fun isThereOsmAtpMatch(osm: Map<String, String>, atp: Map<String, String>, osmIdentifier: ElementKey, atpPosition: LatLon): Boolean {
+        fun isItWithinRange(osmIdentifier: ElementKey, atpPosition: LatLon): Boolean {
+            // TODO what about large shops where element may be within it but distance to center is still great?
+            val distance = mapDataSource.getGeometry(osmIdentifier.type, osmIdentifier.id)?.distance(atpPosition)
+            return distance != null && distance < ApplicationConstants.QUEST_FILTER_PADDING
+        }
+
         val atpNames = listOfNotNull(atp["name"]?.lowercase(), atp["brand"]?.lowercase())
         if (atpNames.contains(osm["name"]?.lowercase()) || atpNames.contains(osm["brand"]?.lowercase())) {
-            return true
+            return isItWithinRange(osmIdentifier, atpPosition)
         }
         //yes, with following any shop=convenience will block any shop=convenience
         //within range
         // this is extreme and tweaking is beneficial
         listOf("shop", "amenity", "leisure").forEach { mainKey ->
             if(atp[mainKey] != null && atp[mainKey] == osm[mainKey]) {
-                return true
+                return isItWithinRange(osmIdentifier, atpPosition)
             }
         }
         return false
@@ -76,7 +83,7 @@ class AtpQuestController(
                 // TODO is speed of this reasonable? I suspect that something more efficient is needed, profile
                 val paddedBounds = BoundingBox(atpEntry.position, atpEntry.position) //..enlargedBy(ApplicationConstants.QUEST_FILTER_PADDING)
                 mapDataSource.getMapDataWithGeometry(paddedBounds).none { osm ->
-                    isThereOsmAtpMatch(osm.tags, atpEntry.tagsInATP)
+                    isThereOsmAtpMatch(osm.tags, atpEntry.tagsInATP, ElementKey(osm.type, osm.id), atpEntry.position)
                     // TODO: consider range
                     // TODO: add test for both within range and over range
                 }
@@ -116,8 +123,7 @@ class AtpQuestController(
 
                 // TODO: profile it whether it is too slow
                 candidates.forEach { atpCandidate ->
-                    if(isThereOsmAtpMatch(osm.tags, atpCandidate.tagsInATP)) {
-                        // TODO what about large shops where element may be within it but distance to center is still great?
+                    if(isThereOsmAtpMatch(osm.tags, atpCandidate.tagsInATP, ElementKey(osm.type, osm.id), atpCandidate.position)) {
                         val distance = updated.getGeometry(osm.type, osm.id)?.distance(atpCandidate.position)
                         if (distance != null && distance < ApplicationConstants.QUEST_FILTER_PADDING) {
                             obsoleteQuestIds.add(atpCandidate.id)
@@ -161,10 +167,13 @@ class AtpQuestController(
         mapDataSource.getMapDataWithGeometry(paddedBounds).forEach { osm ->
             candidates.forEach { atpCandidate ->
                 if(!filteredOutCandidates.contains(atpCandidate)) {
-                    if(isThereOsmAtpMatch(osm.tags, atpCandidate.tagsInATP)) {
-                        // TODO: consider range
+                    if(isThereOsmAtpMatch(osm.tags, atpCandidate.tagsInATP, ElementKey(osm.type, osm.id), atpCandidate.position)) {
+                        // TODO merge in that range calculation into function I guess
+                        val distance = mapDataSource.getGeometry(osm.type, osm.id)?.distance(atpCandidate.position)
+                        if (distance != null && distance < ApplicationConstants.QUEST_FILTER_PADDING) {
+                            filteredOutCandidates.add(atpCandidate)
+                        }
                         // TODO: add test for both within range and over range
-                        filteredOutCandidates.add(atpCandidate)
                     }
                 }
             }
