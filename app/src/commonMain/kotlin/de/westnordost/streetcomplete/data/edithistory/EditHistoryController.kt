@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.data.edithistory
 
 import de.westnordost.streetcomplete.ApplicationConstants.MAX_UNDO_HISTORY_AGE
-import de.westnordost.streetcomplete.data.atp.AtpEditsController
 import de.westnordost.streetcomplete.data.atp.atpquests.AtpQuestHidden
 import de.westnordost.streetcomplete.data.atp.atpquests.edits.AtpDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
@@ -30,7 +29,6 @@ import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 class EditHistoryController(
     private val elementEditsController: ElementEditsController,
     private val noteEditsController: NoteEditsController,
-    private val atpEditsController: AtpEditsController, // is it needed? for now it is empty
     private val hiddenQuestsController: QuestsHiddenController,
     private val notesSource: NotesWithEditsSource,
     private val mapDataSource: MapDataWithEditsSource,
@@ -90,7 +88,6 @@ class EditHistoryController(
     init {
         elementEditsController.addListener(osmElementEditsListener)
         noteEditsController.addListener(osmNoteEditsListener)
-        //TODO atpQuestsController.addListener(atpEditsListener)
         hiddenQuestsController.addListener(questHiddenListener)
     }
 

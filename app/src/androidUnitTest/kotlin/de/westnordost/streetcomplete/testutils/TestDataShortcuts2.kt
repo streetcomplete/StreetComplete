@@ -1,5 +1,7 @@
 package de.westnordost.streetcomplete.testutils
 
+import de.westnordost.streetcomplete.data.atp.AtpEntry
+import de.westnordost.streetcomplete.data.atp.atpquests.AtpQuestHidden
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
@@ -44,5 +46,10 @@ fun osmQuestKey(
     elementId: Long = 1L,
     questTypeName: String = QUEST_TYPE.name
 ) = OsmQuestKey(elementType, elementId, questTypeName)
+
+fun atpQuestHidden(
+    atpEntry: AtpEntry = atpEntry(),
+    timestamp: Long = 123L
+) = AtpQuestHidden(atpEntry, timestamp)
 
 val QUEST_TYPE = TestQuestTypeA()

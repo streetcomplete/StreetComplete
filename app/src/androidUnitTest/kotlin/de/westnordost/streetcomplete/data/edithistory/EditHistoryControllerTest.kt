@@ -34,7 +34,6 @@ class EditHistoryControllerTest {
     private lateinit var hiddenQuestsController: QuestsHiddenController
     private lateinit var notesSource: NotesWithEditsSource
     private lateinit var mapDataSource: MapDataWithEditsSource
-    private lateinit var atpDataSource: AtpDataWithEditsSource
     private lateinit var questTypeRegistry: QuestTypeRegistry
     private lateinit var listener: EditHistorySource.Listener
     private lateinit var ctrl: EditHistoryController
@@ -75,7 +74,7 @@ class EditHistoryControllerTest {
 
         ctrl = EditHistoryController(
             elementEditsController, noteEditsController, atpEditsController, hiddenQuestsController, notesSource,
-            mapDataSource, atpDataSource, questTypeRegistry
+            mapDataSource, questTypeRegistry
         )
         ctrl.addListener(listener)
     }
@@ -130,6 +129,14 @@ class EditHistoryControllerTest {
     @Test fun `undo hid note quest`() {
         val e = noteQuestHidden()
         on(notesSource.get(e.note.id)).thenReturn(e.note)
+        on(hiddenQuestsController.get(e.questKey)).thenReturn(e.createdTimestamp)
+        ctrl.undo(e.key)
+        verify(hiddenQuestsController).unhide(e.questKey)
+    }
+
+    @Test fun `undo hid atp quest`() {
+        val e = atpQuestHidden()
+        //on(notesSource.get(e.note.id)).thenReturn(e.note) TODO remove
         on(hiddenQuestsController.get(e.questKey)).thenReturn(e.createdTimestamp)
         ctrl.undo(e.key)
         verify(hiddenQuestsController).unhide(e.questKey)
