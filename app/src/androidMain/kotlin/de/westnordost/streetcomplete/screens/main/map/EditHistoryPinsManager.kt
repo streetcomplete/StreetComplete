@@ -160,5 +160,5 @@ private fun Map<String, String>.toEditKey(): EditKey? = when (get(MARKER_EDIT_TY
         QuestHiddenKey(OsmNoteQuestKey(getValue(MARKER_NOTE_ID).toLong()))
     EDIT_TYPE_HIDE_ATP_QUEST ->
         QuestHiddenKey(AtpQuestKey(getValue(ATP_ENTRY_ID).toLong()))
-    else -> null // TODO: can we throw IllegalArgumentException() here ? why not?
+    else -> null
 }
