@@ -18,7 +18,7 @@ import de.westnordost.streetcomplete.util.math.enlargedBy
 
 /** Used to get visible osm note quests */
 class AtpQuestController(
-    private val mapDataSource: MapDataWithEditsSource, // TODO use it to skip cases where shop was created in meantime
+    private val mapDataSource: MapDataWithEditsSource,
     private val atpDataSource: AtpDataWithEditsSource, // TODO what exactly should be feed here?
     private val noteSource: NotesWithEditsSource, // Do I need it to suppress quests? Probably yes, TODO
     private val questTypeRegistry: QuestTypeRegistry,
