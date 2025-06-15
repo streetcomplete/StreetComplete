@@ -67,6 +67,7 @@ class AtpQuestController(
             // todo check whether ATP ids are actually unique
             // https://github.com/alltheplaces/alltheplaces/blob/master/DATA_FORMAT.md
             // TODO: I guess my API may ensure uniqueness? But it is not integer, it is text it seems
+            // use some hash function to convert string into longs?
 
             added.filter { atpEntry ->
                 // TODO is speed of this reasonable? I suspect that something more efficient is needed, profile
