@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.quests
 import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.osmfeatures.Feature
 import de.westnordost.osmfeatures.FeatureDictionary
-import de.westnordost.streetcomplete.data.atp.AtpDao
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.meta.CountryInfos
 import de.westnordost.streetcomplete.data.meta.getByLocation
@@ -114,7 +113,6 @@ import de.westnordost.streetcomplete.quests.motorcycle_parking_cover.AddMotorcyc
 import de.westnordost.streetcomplete.quests.note_discussion.OsmNoteQuestType
 import de.westnordost.streetcomplete.quests.oneway.AddOneway
 import de.westnordost.streetcomplete.quests.opening_hours.AddOpeningHours
-import de.westnordost.streetcomplete.quests.opening_hours.AddOpeningHoursAtp
 import de.westnordost.streetcomplete.quests.opening_hours_signed.CheckOpeningHoursSigned
 import de.westnordost.streetcomplete.quests.orchard_produce.AddOrchardProduce
 import de.westnordost.streetcomplete.quests.parcel_locker_brand.AddParcelLockerBrand
@@ -209,7 +207,6 @@ fun questTypeRegistry(
     arSupportChecker: ArSupportChecker,
     getCountryInfoByLocation: (LatLon) -> CountryInfo,
     getFeature: (Element) -> Feature?,
-    actualAtpOpeningHoursDao: AtpDao
 ) = QuestTypeRegistry(listOf(
 
     /*
@@ -244,7 +241,6 @@ fun questTypeRegistry(
         quest always gets a new sequential ordinal.
      */
     // TODO: move this quests in appropriate location as far as priority goes
-    177 to AddOpeningHoursAtp(getFeature, actualAtpOpeningHoursDao), // TODO should it be merged into AddOpeningHours? If not then massive duplciation must be fixed
     176 to CreatePoiBasedOnAtp(),
 
     /* always first: notes - they mark a mistake in the data so potentially every quest for that
