@@ -63,7 +63,7 @@ class AtpQuestController(
             // handle deletion somehow? TODO
             // probably do the same as class OsmQuestController did? TODO (in private val notesSourceListener = object : NotesWithEditsSource.Listener )
             // actually test passing deleted ids TODO
-            // todo actually hae ids to be passed
+            // todo actually have ids to be passed
             // todo check whether ATP ids are actually unique
             // https://github.com/alltheplaces/alltheplaces/blob/master/DATA_FORMAT.md
             // TODO: I guess my API may ensure uniqueness? But it is not integer, it is text it seems
