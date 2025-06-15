@@ -140,6 +140,13 @@ class AtpQuestControllerTest {
 
     @Test
     fun `isThereOsmAtpMatch rejects matches when nothing matches`() {
+        on(mapDataSource.getGeometry(any(), any())).then {
+            val returned = mock<ElementGeometry>()
+            on(returned.center).then {
+                LatLon(0.0, 0.0)
+            }
+            returned
+        }
         assertFalse(
             ctrl.isThereOsmAtpMatch(
                 mapOf("name" to "Foobar", "shop" to "convenience"),
@@ -151,6 +158,13 @@ class AtpQuestControllerTest {
 
     @Test
     fun `isThereOsmAtpMatch allows matches between similar shop types`() {
+        on(mapDataSource.getGeometry(any(), any())).then {
+            val returned = mock<ElementGeometry>()
+            on(returned.center).then {
+                LatLon(0.0, 0.0)
+            }
+            returned
+        }
         assertTrue(
             ctrl.isThereOsmAtpMatch(
                 mapOf("name" to "Tesco", "shop" to "convenience"),
