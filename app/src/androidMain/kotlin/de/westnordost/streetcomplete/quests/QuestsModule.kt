@@ -197,8 +197,7 @@ val questsModule = module {
             },
             { element ->
                 get<Lazy<FeatureDictionary>>(named("FeatureDictionaryLazy")).value.getFeature(element)
-            },
-            get()
+            }
         )
     }
 }
