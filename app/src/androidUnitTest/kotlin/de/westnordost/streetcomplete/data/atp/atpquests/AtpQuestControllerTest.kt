@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.data.atp.atpquests
 
 import de.westnordost.streetcomplete.data.atp.atpquests.edits.AtpDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
-import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
@@ -126,9 +126,8 @@ class AtpQuestControllerTest {
 
     @Test
     fun `isThereOsmAtpMatch matches despite capitalization difference`() {
-        // TODO: ElementGeometry.distance(point: LatLon) throws an exception
         on(mapDataSource.getGeometry(ElementType.NODE, 1)).then {
-            val returned = mock<ElementGeometry>()
+            val returned = mock<ElementPointGeometry>()
             on(returned.center).thenReturn(LatLon(0.0, 0.0))
             returned
         }
@@ -143,7 +142,7 @@ class AtpQuestControllerTest {
     @Test
     fun `isThereOsmAtpMatch rejects matches when nothing matches`() {
         on(mapDataSource.getGeometry(ElementType.NODE, 1)).then {
-            val returned = mock<ElementGeometry>()
+            val returned = mock<ElementPointGeometry>()
             on(returned.center).thenReturn(LatLon(0.0, 0.0))
             returned
         }
@@ -159,9 +158,8 @@ class AtpQuestControllerTest {
 
     @Test
     fun `isThereOsmAtpMatch allows matches between similar shop types`() {
-        // TODO: ElementGeometry.distance(point: LatLon) throws an exception
         on(mapDataSource.getGeometry(ElementType.NODE, 1)).then {
-            val returned = mock<ElementGeometry>()
+            val returned = mock<ElementPointGeometry>()
             on(returned.center).thenReturn(LatLon(0.0, 0.0))
             returned
         }
@@ -179,7 +177,7 @@ class AtpQuestControllerTest {
     TODO: implement such improvements
     @Test fun `isThereOsmAtpMatch does not detect match on completely mismatching names, also if type matches`() {
         on(mapDataSource.getGeometry(ElementType.NODE, 1)).then {
-            val returned = mock<ElementGeometry>()
+            val returned = mock<ElementPointGeometry>()
             on(returned.center).thenReturn(LatLon(0.0, 0.0))
             returned
         }
@@ -193,7 +191,7 @@ class AtpQuestControllerTest {
 
     @Test fun `isThereOsmAtpMatch allows matches between similar shop types, also with subtle name differences`() {
         on(mapDataSource.getGeometry(ElementType.NODE, 1)).then {
-            val returned = mock<ElementGeometry>()
+            val returned = mock<ElementPointGeometry>()
             on(returned.center).thenReturn(LatLon(0.0, 0.0))
             returned
         }
