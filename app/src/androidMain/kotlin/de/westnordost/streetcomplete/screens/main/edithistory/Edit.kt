@@ -29,7 +29,7 @@ val Edit.icon: Int get() = when (this) {
     }
     is OsmNoteQuestHidden -> R.drawable.ic_quest_notes
     is OsmQuestHidden -> questType.icon
-    is AtpQuestHidden -> CreatePoiBasedOnAtp().icon // TODO is there better way to do this? that looks ugly
+    is AtpQuestHidden -> CreatePoiBasedOnAtp().icon
     else -> 0
 }
 
