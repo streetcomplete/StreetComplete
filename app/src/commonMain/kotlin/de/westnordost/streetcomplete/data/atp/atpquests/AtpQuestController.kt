@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.data.atp.atpquests
 
+import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.atp.AtpEntry
 import de.westnordost.streetcomplete.data.atp.ReportType
 import de.westnordost.streetcomplete.data.atp.atpquests.edits.AtpDataWithEditsSource
@@ -13,6 +14,7 @@ import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
 import de.westnordost.streetcomplete.data.quest.OsmCreateElementQuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.util.Listeners
+import de.westnordost.streetcomplete.util.math.enlargedBy
 
 /** Used to get visible osm note quests */
 class AtpQuestController(
@@ -134,8 +136,22 @@ class AtpQuestController(
     override fun get(questId: Long): CreateElementQuest? =
         atpDataSource.get(questId)?.let { createQuestForAtpEntry(it) }
 
-    override fun getAllInBBox(bbox: BoundingBox): List<CreateElementQuest> =
-        createQuestsForAtpEntries(atpDataSource.getAll(bbox))
+    override fun getAllInBBox(bbox: BoundingBox): List<CreateElementQuest> {
+        val candidates = atpDataSource.getAll(bbox)
+        val paddedBounds = bbox.enlargedBy(ApplicationConstants.QUEST_FILTER_PADDING)
+        val filteredOutCandidates = mutableListOf<AtpEntry>()
+        mapDataSource.getMapDataWithGeometry(paddedBounds).forEach { osm ->
+            candidates.forEach { atpCandidate ->
+                if(!filteredOutCandidates.contains(atpCandidate)) {
+                    if(isThereOsmAtpMatch(osm.tags, atpCandidate.tagsInATP)) {
+                        filteredOutCandidates.add(atpCandidate)
+                    }
+                }
+            }
+        }
+        val filteredCandidates = candidates - filteredOutCandidates
+        return createQuestsForAtpEntries(filteredCandidates)
+    }
 
     private fun createQuestsForAtpEntries(entries: Collection<AtpEntry>): List<CreateElementQuest> =
         entries.mapNotNull { createQuestForAtpEntry(it) }
