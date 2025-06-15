@@ -3,6 +3,8 @@ package de.westnordost.streetcomplete.data.atp.atpquests
 import de.westnordost.streetcomplete.data.atp.atpquests.edits.AtpDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
 import de.westnordost.streetcomplete.data.preferences.Preferences
@@ -15,6 +17,7 @@ import de.westnordost.streetcomplete.testutils.atpEntry
 import de.westnordost.streetcomplete.testutils.bbox
 import de.westnordost.streetcomplete.testutils.mock
 import de.westnordost.streetcomplete.testutils.on
+import org.mockito.Mockito
 import org.mockito.Mockito.verify
 import kotlin.test.BeforeTest
 import kotlin.test.Test
@@ -123,16 +126,15 @@ class AtpQuestControllerTest {
 
     @Test
     fun `isThereOsmAtpMatch matches despite capitalization difference`() {
-        on(mapDataSource.getGeometry(any(), any())).then {
+        // TODO: ElementGeometry.distance(point: LatLon) throws an exception
+        on(mapDataSource.getGeometry(ElementType.NODE, 1)).then {
             val returned = mock<ElementGeometry>()
-            on(returned.center).then {
-                LatLon(0.0, 0.0)
-            }
+            on(returned.center).thenReturn(LatLon(0.0, 0.0))
             returned
         }
         assertTrue(
             ctrl.isThereOsmAtpMatch(mapOf("name" to "ALDI"), mapOf("name" to "Aldi"),
-            mock(),
+            ElementKey(ElementType.NODE, 1),
             LatLon(0.0, 0.0)
             )
         )
@@ -140,36 +142,35 @@ class AtpQuestControllerTest {
 
     @Test
     fun `isThereOsmAtpMatch rejects matches when nothing matches`() {
-        on(mapDataSource.getGeometry(any(), any())).then {
+        on(mapDataSource.getGeometry(ElementType.NODE, 1)).then {
             val returned = mock<ElementGeometry>()
-            on(returned.center).then {
-                LatLon(0.0, 0.0)
-            }
+            on(returned.center).thenReturn(LatLon(0.0, 0.0))
             returned
         }
         assertFalse(
             ctrl.isThereOsmAtpMatch(
                 mapOf("name" to "Foobar", "shop" to "convenience"),
                 mapOf("name" to "Platypus", "shop" to "trade"),
-                mock(), LatLon(0.0, 0.0)
+                ElementKey(ElementType.NODE, 1),
+                LatLon(0.0, 0.0)
             )
         )
     }
 
     @Test
     fun `isThereOsmAtpMatch allows matches between similar shop types`() {
-        on(mapDataSource.getGeometry(any(), any())).then {
+        // TODO: ElementGeometry.distance(point: LatLon) throws an exception
+        on(mapDataSource.getGeometry(ElementType.NODE, 1)).then {
             val returned = mock<ElementGeometry>()
-            on(returned.center).then {
-                LatLon(0.0, 0.0)
-            }
+            on(returned.center).thenReturn(LatLon(0.0, 0.0))
             returned
         }
         assertTrue(
             ctrl.isThereOsmAtpMatch(
                 mapOf("name" to "Tesco", "shop" to "convenience"),
                 mapOf("name" to "Tesco", "shop" to "supermarket"),
-                mock(), LatLon(0.0, 0.0)
+                ElementKey(ElementType.NODE, 1),
+                LatLon(0.0, 0.0)
             )
         )
     }
@@ -177,16 +178,30 @@ class AtpQuestControllerTest {
     /*
     TODO: implement such improvements
     @Test fun `isThereOsmAtpMatch does not detect match on completely mismatching names, also if type matches`() {
+        on(mapDataSource.getGeometry(ElementType.NODE, 1)).then {
+            val returned = mock<ElementGeometry>()
+            on(returned.center).thenReturn(LatLon(0.0, 0.0))
+            returned
+        }
         assertFalse(ctrl.isThereOsmAtpMatch(
             mapOf("name" to "Foobar", "shop" to "convenience"),
-            mapOf("name" to "Platypus", "shop" to "convenience"))
+            mapOf("name" to "Platypus", "shop" to "convenience")),
+            ElementKey(ElementType.NODE, 1),
+            LatLon(0.0, 0.0)
         )
     }
 
     @Test fun `isThereOsmAtpMatch allows matches between similar shop types, also with subtle name differences`() {
+        on(mapDataSource.getGeometry(ElementType.NODE, 1)).then {
+            val returned = mock<ElementGeometry>()
+            on(returned.center).thenReturn(LatLon(0.0, 0.0))
+            returned
+        }
         assertFalse(ctrl.isThereOsmAtpMatch(
             mapOf("name" to "Tesco", "shop" to "convenience"),
-            mapOf("name" to "Tesco #123", "shop" to "supermarket"))
+            mapOf("name" to "Tesco #123", "shop" to "supermarket")),
+            ElementKey(ElementType.NODE, 1),
+            LatLon(0.0, 0.0)
         )
     }
      */
