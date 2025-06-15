@@ -1026,11 +1026,8 @@ class MainActivity :
         if (f is AtpCreateForm && quest is CreateElementQuest) { // TODO fix ongoing confusion and mixing etween specific ATP creation quest and potentially wider class of OSMElementCreation quest - should I even try to support wider class of adder quests right now? Which parts are ATP specific and which are generic? Are more ATP quests viable?
             val passingAtpArgs = AtpCreateForm.createArguments(quest.atpEntry) // use ATP equivalent of mapDataWithEditsSource like above?
             f.requireArguments().putAll(passingAtpArgs)
+            showHighlightedElementsAroundAtpEntryQuest(quest, quest.atpEntry)
         }
-
-        // TODO: generalize showHighlightedElements or provide alternative one that does not get element feed into it - consult with Westnordost before refactoring it as it will be a bit obnoxious to implement
-        //showHighlightedElements(quest, element)
-
         showInBottomSheet(f)
 
         mapFragment.startFocus(quest.geometry, getQuestFormInsets())
@@ -1041,7 +1038,32 @@ class MainActivity :
     }
 
     private fun showHighlightedElements(quest: OsmQuest, element: Element) {
-        val bbox = quest.geometry.bounds.enlargedBy(quest.type.highlightedElementsRadius)
+        return showHighlightedElementsShared(
+            quest,
+            element.tags,
+            element,
+            quest.type.highlightedElementsRadius
+        )
+    }
+
+    private fun showHighlightedElementsAroundAtpEntryQuest(
+        quest: CreateElementQuest,
+        atpEntry: AtpEntry,
+    ) {
+        // TODO is merge with showHighlightedElements a good idea?
+        // some challenges: it is not passing or having an element - changed that for nullable parameter - is it fine? Maybe effectively duplicating this function is nicer?
+        // passing highlightedElementsRadius is silly (maybe create interface used by both classes?)
+        val tags = atpEntry.tagsInATP
+        showHighlightedElementsShared(quest, tags, null, quest.type.highlightedElementsRadius)
+    }
+
+    private fun showHighlightedElementsShared(
+        quest: Quest,
+        tags: Map<String, String>,
+        element: Element?,
+        highlightedElementsRadius: Double,
+    ) {
+        val bbox = quest.geometry.bounds.enlargedBy(highlightedElementsRadius)
         var mapData: MapDataWithGeometry? = null
 
         fun getMapData(): MapDataWithGeometry {
@@ -1050,11 +1072,11 @@ class MainActivity :
             return data
         }
 
-        val levels = parseLevelsOrNull(element.tags)
+        val levels = parseLevelsOrNull(tags)
 
         lifecycleScope.launch(Dispatchers.Default) {
             val elements = withContext(Dispatchers.IO) {
-                quest.type.getHighlightedElements(element, ::getMapData)
+                quest.type.getHighlightedElementsGeneric(element, ::getMapData)
             }
 
             val markers = elements.mapNotNull { e ->
@@ -1064,7 +1086,7 @@ class MainActivity :
                 val eLevels = parseLevelsOrNull(e.tags)
                 if (!levels.levelsIntersect(eLevels)) return@mapNotNull null
                 // include only elements with the same layer, if any
-                if (element.tags["layer"] != e.tags["layer"]) return@mapNotNull null
+                if (tags["layer"] != e.tags["layer"]) return@mapNotNull null
 
                 val geometry = mapData?.getGeometry(e.type, e.id) ?: return@mapNotNull null
                 val icon = getIcon(featureDictionary.value, e)

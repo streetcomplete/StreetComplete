@@ -25,5 +25,5 @@ interface QuestType : EditType {
     /** Elements that should be highlighted on the map alongside the selected one because they
      *  provide context for the given element. For example, nearby benches should be shown when
      *  answering a question for a bench so the user knows which of the benches is meant. */
-    fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry): Sequence<Element> = emptySequence()
+    fun getHighlightedElementsGeneric(element: Element?, getMapData: () -> MapDataWithGeometry): Sequence<Element> = emptySequence()
 }
