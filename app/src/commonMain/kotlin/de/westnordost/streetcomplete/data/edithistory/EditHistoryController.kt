@@ -32,7 +32,7 @@ class EditHistoryController(
     private val hiddenQuestsController: QuestsHiddenController,
     private val notesSource: NotesWithEditsSource,
     private val mapDataSource: MapDataWithEditsSource,
-    private val atpDataWithEditsSource: AtpDataWithEditsSource,
+    private val atpDataSource: AtpDataWithEditsSource,
     private val questTypeRegistry: QuestTypeRegistry,
 ) : EditHistorySource {
     private val listeners = Listeners<EditHistorySource.Listener>()
@@ -79,7 +79,7 @@ class EditHistoryController(
                 OsmQuestHidden(key.elementType, key.elementId, questType, geometry, timestamp)
             }
             is AtpQuestKey -> {
-                val atpEntry = atpDataWithEditsSource.get(key.atpEntryId) ?: return null
+                val atpEntry = atpDataSource.get(key.atpEntryId) ?: return null
                 AtpQuestHidden(atpEntry, timestamp)
             }
         }
