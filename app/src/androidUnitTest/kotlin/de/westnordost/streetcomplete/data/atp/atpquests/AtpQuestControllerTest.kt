@@ -3,9 +3,11 @@ package de.westnordost.streetcomplete.data.atp.atpquests
 import de.westnordost.streetcomplete.data.atp.atpquests.edits.AtpDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
@@ -91,9 +93,16 @@ class AtpQuestControllerTest {
             )
         }
 
+        val mapData = mock<MapDataWithGeometry>()
+        val mockElement1 = mock<Element>()
+        val mockElement2 = mock<Element>()
+        val elementList = listOf<Element>() // mockElement1, mockElement2
+        on(mapData.iterator()).thenReturn(elementList.iterator())
+        on(mapDataSource.getMapDataWithGeometry(any())).thenReturn(mapData)
+
         assertEquals(
             expectedQuests,
-            ctrl.getAllInBBox(bbox) // TODO: fails, test logs claim bogus line that does not exist. !!fun!!
+            ctrl.getAllInBBox(bbox)
         )
     }
 
