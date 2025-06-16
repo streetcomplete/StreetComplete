@@ -146,7 +146,7 @@ class AtpQuestControllerTest {
             on(returned.center).thenReturn(LatLon(0.0, 0.0))
             returned
         }
-        assertTrue(
+        assertFalse(
             ctrl.isThereOsmAtpMatch(mapOf("name" to "Aldi", "shop" to "supermarket"), mapOf("name" to "Aldi", "shop" to "supermarket"),
                 ElementKey(ElementType.NODE, 1),
                 LatLon(1.0, 0.0)
