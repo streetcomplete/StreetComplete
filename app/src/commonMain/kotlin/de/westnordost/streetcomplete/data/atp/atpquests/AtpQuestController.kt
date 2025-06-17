@@ -114,13 +114,15 @@ class AtpQuestController(
                 // but it seems how note and osm element quests do things
                 // so maybe there is no better way?
 
-                val paddedBounds = mapDataSource.getGeometry(osm.type, osm.id)?.bounds?.enlargedBy(
-                    ApplicationConstants.QUEST_FILTER_PADDING
-                )
-                if (paddedBounds == null) {
-                    Log.e("AAAAAAAAAAAAAAAAAAA", "why, why mapDataSource.getGeometry got me null?")
-                    // TODO: confirm that it is fine to skip such cases - when it may even happen? can I do !! here?
+                val geometry = mapDataSource.getGeometry(osm.type, osm.id)
+                if (geometry == null) {
+                    // TODO: in which cases it may happen? If it happens then we cannot do anything about it anyway
+                    // should we crash? log? If log, then with something better
+                    Log.e(TAG, "why, why mapDataSource.getGeometry got me null?")
                 } else {
+                    val paddedBounds = geometry.bounds.enlargedBy(
+                        ApplicationConstants.QUEST_FILTER_PADDING
+                    )
                     val candidates = atpDataSource.getAll(paddedBounds)
                     // TODO: profile it whether it is too slow
                     candidates.forEach { atpCandidate ->
@@ -228,5 +230,9 @@ class AtpQuestController(
 
     private fun onInvalidated() {
         listeners.forEach { it.onInvalidated() }
+    }
+
+    companion object {
+        private const val TAG = "AtpQuestController"
     }
 }
