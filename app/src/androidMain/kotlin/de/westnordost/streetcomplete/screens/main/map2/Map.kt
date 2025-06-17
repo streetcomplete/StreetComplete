@@ -38,6 +38,7 @@ fun Map(
     MaplibreMap(
         modifier = modifier,
         styleUri = Res.getUri("files/map_theme/empty.json"),
+        zoomRange = 0f..22f,
         cameraState = cameraState,
         styleState = styleState,
         options = MapOptions(
