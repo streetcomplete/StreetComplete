@@ -85,7 +85,6 @@ class AtpQuestController(
                 val paddedBounds = BoundingBox(atpEntry.position, atpEntry.position) //..enlargedBy(ApplicationConstants.QUEST_FILTER_PADDING)
                 mapDataSource.getMapDataWithGeometry(paddedBounds).none { osm ->
                     isThereOsmAtpMatch(osm.tags, atpEntry.tagsInATP, ElementKey(osm.type, osm.id), atpEntry.position)
-                    // TODO: consider range
                     // TODO: add test for both within range and over range
                 }
             }
