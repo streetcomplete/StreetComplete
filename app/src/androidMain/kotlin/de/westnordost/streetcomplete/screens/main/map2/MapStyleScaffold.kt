@@ -441,12 +441,6 @@ private fun BridgeAreasLayers(source: Source, colors: MapColors) {
         color = const(colors.building),
         width = byZoom(16 to 4.dp, 24 to 512.dp),
     )
-    FillLayer(
-        id = "water-areas-bridge",
-        source = source,
-        filter = feature.isBridge(),
-        color = const(colors.water),
-    )
 }
 
 @Composable @MaplibreComposable
