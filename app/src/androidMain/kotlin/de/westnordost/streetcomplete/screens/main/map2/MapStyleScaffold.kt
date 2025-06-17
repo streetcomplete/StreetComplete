@@ -185,7 +185,8 @@ private fun LandLayers(source: Source, colors: MapColors) {
         sourceLayer = "landuse",
         minZoom = 5f,
         filter = feature.inClass("pitch", "park", "grass", "cemetery"),
-        opacity = fadeInAtZoom(5f)
+        opacity = fadeInAtZoom(5f),
+        color = const(colors.green),
     )
     FillLayer(
         id = "landuse-forest",
