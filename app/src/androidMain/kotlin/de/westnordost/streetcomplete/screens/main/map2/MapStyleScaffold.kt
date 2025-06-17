@@ -201,8 +201,9 @@ private fun LandLayers(source: Source, colors: MapColors) {
         id = "landuse-pitch-outline",
         source = source,
         sourceLayer = "landuse",
-        minZoom = 16f,
+        minZoom = 15f,
         filter = feature.inClass("pitch"),
+        opacity = fadeInAtZoom(15f),
         color = const(colors.earth),
         width = byZoom(16 to 1.dp, 24 to 128.dp),
         offset = byZoom(16 to 0.5.dp, 24 to 64.dp)
@@ -386,8 +387,9 @@ private fun BarriersLayers(source: Source, colors: MapColors) {
         id = "barriers-large",
         source = source,
         sourceLayer = "structure",
-        minZoom = 16f,
+        minZoom = 15f,
         filter = feature.inType("city_wall", "dam", "cliff"),
+        opacity = fadeInAtZoom(15f),
         color = const(colors.buildingOutline),
         width = byZoom(16 to 4.dp, 24 to 768.dp),
     )
@@ -395,11 +397,12 @@ private fun BarriersLayers(source: Source, colors: MapColors) {
         id = "barriers-wall",
         source = source,
         sourceLayer = "structure",
-        minZoom = 16f,
+        minZoom = 15f,
         filter = all(
             feature.inClass("fence"),
             !feature.inType("city_wall"),
         ),
+        opacity = fadeInAtZoom(15f),
         color = const(colors.buildingOutline),
         width = byZoom(16 to 1.dp, 24 to 256.dp),
     )
@@ -407,8 +410,9 @@ private fun BarriersLayers(source: Source, colors: MapColors) {
         id = "barriers-hedges",
         source = source,
         sourceLayer = "structure",
-        minZoom = 16f,
+        minZoom = 15f,
         filter = feature.inClass("hedge"),
+        opacity = fadeInAtZoom(15f),
         color = const(colors.forest),
         width = byZoom(16 to 1.dp, 24 to 256.dp),
     )
@@ -481,7 +485,6 @@ private fun BoundaryLayer(source: Source, colors: MapColors) {
 
 @Composable @MaplibreComposable
 private fun LabelLayers(source: Source, colors: MapColors, languages: List<String>) {
-    val lineCenter = const(SymbolPlacement.LineCenter)
     val localizedName = feature.localizedName(languages)
 
     TextLayer(
@@ -519,7 +522,7 @@ private fun LabelLayers(source: Source, colors: MapColors, languages: List<Strin
         sourceLayer = "road",
         minZoom = 14f,
         filter = feature.isLines(),
-        placement = lineCenter,
+        //placement = const(SymbolPlacement.LineCenter),
         text = localizedName,
         color = const(colors.text),
         haloColor = const(colors.textOutline),
@@ -530,7 +533,7 @@ private fun LabelLayers(source: Source, colors: MapColors, languages: List<Strin
         sourceLayer = "waterway",
         minZoom = 14f,
         filter = all(!feature.isTunnel(), feature.inClass("stream", "river", "canal")),
-        placement = lineCenter,
+        placement = const(SymbolPlacement.LineCenter),
         text = localizedName,
         color = const(colors.textWater),
         haloColor = const(colors.textWaterOutline),
@@ -541,7 +544,7 @@ private fun LabelLayers(source: Source, colors: MapColors, languages: List<Strin
         sourceLayer = "waterway",
         minZoom = 16f,
         filter = all(!feature.isTunnel(), feature.inClass("stream", "ditch", "drain")),
-        placement = lineCenter,
+        placement = const(SymbolPlacement.LineCenter),
         text = localizedName,
         color = const(colors.textWater),
         haloColor = const(colors.textWaterOutline),
