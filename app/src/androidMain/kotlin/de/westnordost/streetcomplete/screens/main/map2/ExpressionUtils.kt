@@ -13,6 +13,7 @@ import dev.sargunv.maplibrecompose.expressions.dsl.condition
 import dev.sargunv.maplibrecompose.expressions.dsl.const
 import dev.sargunv.maplibrecompose.expressions.dsl.contains
 import dev.sargunv.maplibrecompose.expressions.dsl.convertToBoolean
+import dev.sargunv.maplibrecompose.expressions.dsl.convertToString
 import dev.sargunv.maplibrecompose.expressions.dsl.eq
 import dev.sargunv.maplibrecompose.expressions.dsl.exponential
 import dev.sargunv.maplibrecompose.expressions.dsl.feature
@@ -77,18 +78,16 @@ fun Feature.localizedName(
     languages: List<String>,
     nameKey: String,
     localizedNameKey: (String) -> String,
-    extraLocalizedNameKeys: List<String>
+    extraNameKeys: List<String>
 ): Expression<StringValue> {
-    val localizedNameKeys = languages.map(localizedNameKey) + extraLocalizedNameKeys
-    val getLocalizedName = coalesce(
-        *localizedNameKeys.map { feature.get(it).asString() }.toTypedArray()
-    )
-    val getName = feature.get(nameKey).asString()
+    val localizedNameKeys = languages.map(localizedNameKey) + extraNameKeys
+    val getLocalizedName = coalesce(*localizedNameKeys.map { feature.get(it) }.toTypedArray())
+    val getName = feature.get(nameKey).cast<StringValue>()
     return switch(
         // localized name set and different as main name -> show both
         condition(
-            test = all(getLocalizedName.convertToBoolean(), getName neq getLocalizedName),
-            output = getName + const("\n") + getLocalizedName
+            test = all(getLocalizedName.convertToBoolean(), getName neq getLocalizedName.cast()),
+            output = getName + const("\n") + getLocalizedName.cast()
         ),
         // otherwise just show the name
         fallback = getName

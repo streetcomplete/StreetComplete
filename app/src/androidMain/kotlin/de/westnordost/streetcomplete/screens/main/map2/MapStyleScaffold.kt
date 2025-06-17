@@ -18,7 +18,6 @@ import dev.sargunv.maplibrecompose.expressions.ast.Expression
 import dev.sargunv.maplibrecompose.expressions.dsl.Feature
 import dev.sargunv.maplibrecompose.expressions.dsl.all
 import dev.sargunv.maplibrecompose.expressions.dsl.asNumber
-import dev.sargunv.maplibrecompose.expressions.dsl.asString
 import dev.sargunv.maplibrecompose.expressions.dsl.const
 import dev.sargunv.maplibrecompose.expressions.dsl.feature
 import dev.sargunv.maplibrecompose.expressions.dsl.image
@@ -512,7 +511,7 @@ private fun LabelLayers(source: Source, colors: MapColors, languages: List<Strin
         source = source,
         sourceLayer = "housenum_label",
         minZoom = 18f,
-        text = feature.get("house_num").asString(),
+        text = feature.get("house_num").cast(),
         color = const(colors.text),
         haloColor = const(colors.textOutline),
     )
@@ -522,7 +521,7 @@ private fun LabelLayers(source: Source, colors: MapColors, languages: List<Strin
         sourceLayer = "road",
         minZoom = 14f,
         filter = feature.isLines(),
-        //placement = const(SymbolPlacement.LineCenter),
+        placement = const(SymbolPlacement.LineCenter),
         text = localizedName,
         color = const(colors.text),
         haloColor = const(colors.textOutline),
@@ -705,5 +704,5 @@ private fun Feature.localizedName(languages: List<String>) = localizedName(
     languages = languages,
     nameKey = "name",
     localizedNameKey = { "name_$it" },
-    extraLocalizedNameKeys = listOf("name_ltn")
+    extraNameKeys = listOf("name_ltn")
 )
