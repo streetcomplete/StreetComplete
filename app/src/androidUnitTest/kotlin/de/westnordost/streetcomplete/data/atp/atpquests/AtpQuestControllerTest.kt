@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.data.atp.atpquests
 
+import de.westnordost.streetcomplete.data.atp.AtpEntry
 import de.westnordost.streetcomplete.data.atp.atpquests.edits.AtpDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
@@ -43,6 +44,7 @@ class AtpQuestControllerTest {
 
     private lateinit var noteUpdatesListener: NotesWithEditsSource.Listener
     private lateinit var userLoginListener: UserLoginSource.Listener
+    private lateinit var atpUpdatesListener: AtpDataWithEditsSource.Listener
 
     @BeforeTest
     fun setUp() {
@@ -63,6 +65,11 @@ class AtpQuestControllerTest {
 
         on(userLoginSource.addListener(any())).then { invocation ->
             userLoginListener = invocation.getArgument(0)
+            Unit
+        }
+
+        on(atpDataSource.addListener(any())).then { invocation ->
+            atpUpdatesListener = invocation.getArgument(0)
             Unit
         }
 
@@ -244,11 +251,22 @@ class AtpQuestControllerTest {
     // TODO: see https://codeberg.org/matkoniecz/list_how_openstreetmap_can_be_improved_with_alltheplaces_data/src/branch/master/test_matching_logic.py for possible extension
 
     @Test
-    fun `AllThePlaces entries with nearby items get no quest`() { // TODO - implement
+    fun `new AllThePlaces entries cause quest creation`() { // TODO - implement
+        val elementList = listOf<Element>()
+        val mapData = mock<MapDataWithGeometry>()
+        on(mapData.iterator()).thenReturn(elementList.iterator())
+
+        val entry = atpEntry()
+        val added = listOf(entry)
+        val deleted = listOf<Long>()
+        atpUpdatesListener.onUpdatedAtpElement(added, deleted)
+        val expectedQuests = listOf<CreateElementQuest>(CreateElementQuest(entry.id, entry,CreatePoiBasedOnAtp(), entry.position))
+        val expectedDeletedIds = listOf<Long>()
+        verify(listener).onUpdated(expectedQuests, expectedDeletedIds)
     }
 
     @Test
-    fun `new AllThePlaces entries cause quest creation`() { // TODO - implement
+    fun `AllThePlaces entries with nearby items get no quest`() { // TODO - implement
     }
 
     @Test
@@ -269,6 +287,20 @@ class AtpQuestControllerTest {
 
     @Test
     fun `new AllThePlaces entries with matching shop already results in no quest`() { // TODO - implement
+        // onUpdatedAtpElement
+
+        val bbox = bbox()
+        val location = LatLon(1.0, 1.0)
+        val atpEntries = listOf(atpEntry(1, location), atpEntry(2, location), atpEntry(3, location))
+
+        on(atpDataSource.getAll(bbox)).thenReturn(atpEntries)
+        val mapData = mock<MapDataWithGeometry>()
+        val mockElement1 = mock<Element>()
+        val mockElement2 = mock<Element>()
+        val elementList = listOf<Element>() // mockElement1, mockElement2
+        on(mapData.iterator()).thenReturn(elementList.iterator())
+        on(mapDataSource.getMapDataWithGeometry(any())).thenReturn(mapData)
+
     }
 
     @Test
