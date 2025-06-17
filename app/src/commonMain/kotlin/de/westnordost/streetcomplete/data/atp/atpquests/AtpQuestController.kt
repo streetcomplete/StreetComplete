@@ -105,15 +105,6 @@ class AtpQuestController(
             updated: MapDataWithGeometry,
             deleted: Collection<ElementKey>,
         ) {
-            // TODO: if POI was added then it may obsolete some ATP quests
-            // I guess that being overly careful is not a great idea, hide too many ATP quests it is fine
-            //TODO("mapDataSourceListener - Not yet implemented - I guess that here POI creation/edit should be watched as it may cause")
-
-            // which kind of synchronization is needed here TODO, see OsmQuestController
-            //val paddedBounds = updated.boundingBox.enlargedBy(ApplicationConstants.QUEST_FILTER_PADDING)
-            //val candidates = atpDataSource.getAll(paddedBounds)
-            // bbox is null, sadly TODO trying replacing
-
             val obsoleteQuestIds = mutableListOf<Long>()
             updated.forEach { osm ->
                 // TODO STUCK how can I get access to existing quests here?
