@@ -44,7 +44,6 @@ class AtpQuestControllerTest {
     private lateinit var noteUpdatesListener: NotesWithEditsSource.Listener
     private lateinit var userLoginListener: UserLoginSource.Listener
 
-    // TODO: adapt for ATP or delete
     @BeforeTest
     fun setUp() {
         noteSource = mock()
