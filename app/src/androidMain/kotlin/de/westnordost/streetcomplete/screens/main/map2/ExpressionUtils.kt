@@ -5,6 +5,7 @@ import androidx.compose.ui.unit.TextUnit
 import dev.sargunv.maplibrecompose.expressions.ast.Expression
 import dev.sargunv.maplibrecompose.expressions.dsl.Feature
 import dev.sargunv.maplibrecompose.expressions.dsl.all
+import dev.sargunv.maplibrecompose.expressions.dsl.asBoolean
 import dev.sargunv.maplibrecompose.expressions.dsl.asNumber
 import dev.sargunv.maplibrecompose.expressions.dsl.asString
 import dev.sargunv.maplibrecompose.expressions.dsl.coalesce
@@ -51,7 +52,7 @@ fun Feature.has(key: String, value: Int) =
 
 /** Returns whether this feature has the given [key]-[value] pair */
 fun Feature.has(key: String, value: Boolean) =
-    get(key).asNumber() eq const(value)
+    get(key).asBoolean() eq const(value)
 
 /** Returns whether this feature has a [key]-value pair of which the value is in of the given
  * [values] */
