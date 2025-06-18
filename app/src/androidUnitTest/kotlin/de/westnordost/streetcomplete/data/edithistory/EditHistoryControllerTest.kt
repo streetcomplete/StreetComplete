@@ -75,7 +75,7 @@ class EditHistoryControllerTest {
         }
 
         ctrl = EditHistoryController(
-            elementEditsController, noteEditsController, hiddenQuestsController, notesSource,
+            elementEditsController, noteEditsController, atpEditsController, hiddenQuestsController, notesSource,
             mapDataSource, atpDataSource, questTypeRegistry
         )
         ctrl.addListener(listener)
@@ -137,6 +137,8 @@ class EditHistoryControllerTest {
     }
 
     @Test fun `undo hid atp quest`() {
+        // TODO: this test fails: is it indicating that you cannot unhide ATP quests?
+        // TODO: or is it about something else?
         val e = atpQuestHidden()
         //on(notesSource.get(e.note.id)).thenReturn(e.note) TODO remove
         on(hiddenQuestsController.get(e.questKey)).thenReturn(e.createdTimestamp)
