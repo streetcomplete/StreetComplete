@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.data.atp.atpquests
 
-import de.westnordost.streetcomplete.data.atp.AtpEntry
+import de.westnordost.streetcomplete.data.atp.ReportType
 import de.westnordost.streetcomplete.data.atp.atpquests.edits.AtpDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
@@ -11,16 +11,22 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
 import de.westnordost.streetcomplete.data.preferences.Preferences
+import de.westnordost.streetcomplete.data.quest.OsmCreateElementQuestType
+import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.quest.atp.CreatePoiBasedOnAtp
+import de.westnordost.streetcomplete.data.quest.atp.CreatePoiBasedOnAtpAnswer
 import de.westnordost.streetcomplete.data.user.UserDataSource
 import de.westnordost.streetcomplete.data.user.UserLoginSource
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement
 import de.westnordost.streetcomplete.testutils.any
 import de.westnordost.streetcomplete.testutils.atpEntry
 import de.westnordost.streetcomplete.testutils.bbox
 import de.westnordost.streetcomplete.testutils.mock
+import de.westnordost.streetcomplete.testutils.node
 import de.westnordost.streetcomplete.testutils.on
-import org.mockito.Mockito
+import org.mockito.ArgumentMatchers.anyList
+import org.mockito.Mockito.never
 import org.mockito.Mockito.verify
 import kotlin.test.BeforeTest
 import kotlin.test.Test
@@ -54,7 +60,9 @@ class AtpQuestControllerTest {
         userDataSource = mock()
         userLoginSource = mock()
         prefs = mock()
-        registry = mock()
+        registry = QuestTypeRegistry(listOf(
+            0 to MockQuestType
+        ))
 
         listener = mock()
 
@@ -251,22 +259,89 @@ class AtpQuestControllerTest {
     // TODO: see https://codeberg.org/matkoniecz/list_how_openstreetmap_can_be_improved_with_alltheplaces_data/src/branch/master/test_matching_logic.py for possible extension
 
     @Test
-    fun `new AllThePlaces entries cause quest creation`() { // TODO - implement
+    fun `new AllThePlaces entries cause quest creation`() {
         val elementList = listOf<Element>()
-        val mapData = mock<MapDataWithGeometry>()
-        on(mapData.iterator()).thenReturn(elementList.iterator())
+        val emptyMapData = mock<MapDataWithGeometry>()
+        on(emptyMapData.iterator()).thenReturn(elementList.iterator())
 
-        val entry = atpEntry()
+        on(mapDataSource.getMapDataWithGeometry(any())).thenReturn(emptyMapData)
+
+        val entry = atpEntry(reportType = ReportType.MISSING_POI_IN_OPENSTREETMAP)
         val added = listOf(entry)
         val deleted = listOf<Long>()
         atpUpdatesListener.onUpdatedAtpElement(added, deleted)
-        val expectedQuests = listOf<CreateElementQuest>(CreateElementQuest(entry.id, entry,CreatePoiBasedOnAtp(), entry.position))
+        val expectedQuests = listOf<CreateElementQuest>(CreateElementQuest(entry.id, entry,
+            MockQuestType, entry.position))
         val expectedDeletedIds = listOf<Long>()
         verify(listener).onUpdated(expectedQuests, expectedDeletedIds)
     }
 
     @Test
-    fun `AllThePlaces entries with nearby items get no quest`() { // TODO - implement
+    fun `AllThePlaces entries with matching nearby items get no quest`() {
+        val pos = LatLon(20.0, 40.0)
+        val osmTags = mapOf("shop" to "supermarket")
+        val atpTags = mapOf("shop" to "supermarket")
+
+        val elementList = listOf<Element>(node(1, pos, tags = osmTags))
+        val mapData = mock<MapDataWithGeometry>()
+        on(mapData.iterator()).thenReturn(elementList.iterator())
+        on(mapData.getGeometry(ElementType.NODE, 1)).thenReturn(ElementPointGeometry(pos))
+
+        on(mapDataSource.getMapDataWithGeometry(any())).thenReturn(mapData)
+
+        val entry = atpEntry(position = pos, tagsInATP = atpTags, reportType = ReportType.MISSING_POI_IN_OPENSTREETMAP)
+        val added = listOf(entry)
+        val deleted = listOf<Long>()
+        atpUpdatesListener.onUpdatedAtpElement(added, deleted)
+
+        verify(listener, never()).onUpdated(anyList(), anyList())
+    }
+
+    @Test
+    fun `AllThePlaces entries with matching far-away item gets quest`() {
+        val osmPos = LatLon(20.0, 40.0)
+        val atpPos = LatLon(20.0, 41.0)
+        val osmTags = mapOf("shop" to "supermarket")
+        val atpTags = mapOf("shop" to "supermarket")
+
+        val elementList = listOf<Element>(node(1, osmPos, tags = osmTags))
+        val mapData = mock<MapDataWithGeometry>()
+        on(mapData.iterator()).thenReturn(elementList.iterator())
+
+        on(mapDataSource.getMapDataWithGeometry(any())).thenReturn(mapData)
+
+        val entry = atpEntry(position = atpPos, tagsInATP = atpTags, reportType = ReportType.MISSING_POI_IN_OPENSTREETMAP)
+        val added = listOf(entry)
+        val deleted = listOf<Long>()
+        atpUpdatesListener.onUpdatedAtpElement(added, deleted)
+        val expectedQuests = listOf<CreateElementQuest>(CreateElementQuest(entry.id, entry,
+            MockQuestType, entry.position))
+        val expectedDeletedIds = listOf<Long>()
+
+        verify(listener).onUpdated(expectedQuests, expectedDeletedIds)
+    }
+
+    @Test
+    fun `AllThePlaces entries with mismatching nearby items gets quest`() {
+        val pos = LatLon(20.0, 40.0)
+        val osmTags = mapOf("shop" to "supermarket")
+        val atpTags = mapOf("shop" to "hairdresser")
+
+        val elementList = listOf<Element>(node(1, pos, tags = osmTags))
+        val mapData = mock<MapDataWithGeometry>()
+        on(mapData.iterator()).thenReturn(elementList.iterator())
+
+        on(mapDataSource.getMapDataWithGeometry(any())).thenReturn(mapData)
+
+        val entry = atpEntry(position = pos, tagsInATP = atpTags, reportType = ReportType.MISSING_POI_IN_OPENSTREETMAP)
+        val added = listOf(entry)
+        val deleted = listOf<Long>()
+        atpUpdatesListener.onUpdatedAtpElement(added, deleted)
+        val expectedQuests = listOf<CreateElementQuest>(CreateElementQuest(entry.id, entry,
+            MockQuestType, entry.position))
+        val expectedDeletedIds = listOf<Long>()
+
+        verify(listener).onUpdated(expectedQuests, expectedDeletedIds)
     }
 
     @Test
@@ -306,4 +381,12 @@ class AtpQuestControllerTest {
     @Test
     fun `new map data cause quest creation`() { // TODO - implement
     }
+}
+
+object MockQuestType : OsmCreateElementQuestType<String> {
+    override val icon: Int = 199
+    override val title: Int = 199
+    override val wikiLink: String? = null
+    override val achievements: List<EditTypeAchievement> = mock()
+    override val changesetComment: String = "changeset comment from MockQuestType"
 }
