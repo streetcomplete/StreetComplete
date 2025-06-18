@@ -3,12 +3,15 @@ package de.westnordost.streetcomplete.data.atp.atpquests
 import de.westnordost.streetcomplete.data.atp.ReportType
 import de.westnordost.streetcomplete.data.atp.atpquests.edits.AtpDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryEntry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.NODE
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.MutableMapDataWithGeometry
 import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.data.quest.OsmCreateElementQuestType
@@ -22,9 +25,11 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement
 import de.westnordost.streetcomplete.testutils.any
 import de.westnordost.streetcomplete.testutils.atpEntry
 import de.westnordost.streetcomplete.testutils.bbox
+import de.westnordost.streetcomplete.testutils.eq
 import de.westnordost.streetcomplete.testutils.mock
 import de.westnordost.streetcomplete.testutils.node
 import de.westnordost.streetcomplete.testutils.on
+import de.westnordost.streetcomplete.testutils.pGeom
 import org.mockito.ArgumentMatchers.anyList
 import org.mockito.Mockito.never
 import org.mockito.Mockito.verify
@@ -52,6 +57,8 @@ class AtpQuestControllerTest {
     private lateinit var userLoginListener: UserLoginSource.Listener
     private lateinit var atpUpdatesListener: AtpDataWithEditsSource.Listener
 
+    private lateinit var mapDataListener: MapDataWithEditsSource.Listener
+
     @BeforeTest
     fun setUp() {
         noteSource = mock()
@@ -78,6 +85,11 @@ class AtpQuestControllerTest {
 
         on(atpDataSource.addListener(any())).then { invocation ->
             atpUpdatesListener = invocation.getArgument(0)
+            Unit
+        }
+
+        on(mapDataSource.addListener(any())).then { invocation ->
+            mapDataListener = invocation.getArgument(0)
             Unit
         }
 
@@ -345,19 +357,28 @@ class AtpQuestControllerTest {
     }
 
     @Test
-    fun `newly mapped POI near ATP quest causes it to disappear`() { // TODO - implement
-        // setup atp quest
-        // run addition of data
-        // confirm that atp quest is done
-        // I want to test     mapDataSourceListener.onUpdated
-        // but without mocking away confirmation that it was triggered
-        // or maybe I should test listener structure?
-        // how tests for pure osm equivalent is testing this? lets take look at OsmQuestControllerTest!
-        // TODO see and implement also
-        // @Test fun `updates quests on map data listener replace for bbox`() {
+    fun `newly mapped POI near ATP quest causes it to disappear if it matches`() { // TODO - implement
 
-        /// TODO add based on this - but for now figure out that ATP quest persisting story (reread that comment)
-        // @Test fun `updates quests on map data listener update for updated elements`() {
+        val pos = LatLon(0.0, 10.0)
+        val geom = pGeom(pos.latitude, pos.longitude)
+        val tags = mapOf("shop" to "foobar")
+        val elements = listOf(
+            node(1, tags = tags),
+        )
+        val geometries = listOf(
+            ElementGeometryEntry(NODE, 1L, geom)
+        )
+
+        val mapData = MutableMapDataWithGeometry(elements, geometries)
+
+        on(mapDataSource.getMapDataWithGeometry(any())).thenReturn(mapData)
+
+        val entry = atpEntry(position = pos, tagsInATP = tags, reportType = ReportType.MISSING_POI_IN_OPENSTREETMAP)
+        on(atpDataSource.getAll(any())).thenReturn(listOf(entry))
+
+        mapDataListener.onUpdated(mapData, emptyList())
+
+        verify(listener).onUpdated(emptyList(), listOf(entry.id))
     }
 
     @Test
