@@ -13,7 +13,7 @@ import de.westnordost.streetcomplete.util.ktx.toYesNo
 class AddPitchLit : OsmFilterQuestType<Boolean>(), AndroidQuest {
 
     override val elementFilter = """
-        ways with (leisure = pitch or leisure = track)
+        ways with (leisure ~ pitch|track|fitness_station)
         and (access !~ private|no)
         and indoor != yes and (!building or building = no)
         and (
