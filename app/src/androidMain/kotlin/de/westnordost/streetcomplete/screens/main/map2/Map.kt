@@ -5,15 +5,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.intl.Locale
 import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.screens.main.map2.style.MapStyleJawg
 import dev.sargunv.maplibrecompose.compose.CameraState
 import dev.sargunv.maplibrecompose.compose.MaplibreMap
 import dev.sargunv.maplibrecompose.compose.StyleState
 import dev.sargunv.maplibrecompose.compose.rememberCameraState
 import dev.sargunv.maplibrecompose.compose.rememberStyleState
-import dev.sargunv.maplibrecompose.compose.source.rememberVectorSource
 import dev.sargunv.maplibrecompose.core.MapOptions
 import dev.sargunv.maplibrecompose.core.OrnamentOptions
-import dev.sargunv.maplibrecompose.core.source.TileSetOptions
 
 /**
  * A plain MapLibre Map with StreetComplete theme and localized names
@@ -24,8 +23,6 @@ fun Map(
     cameraState: CameraState = rememberCameraState(),
     styleState: StyleState = rememberStyleState(),
 ) {
-    //val style = if (isSystemInDarkTheme()) "streetcomplete-night" else "streetcomplete"
-
     // TODO maplibre-compose: The following gesture settings are missing (in MapOptions):
     //   flingThreshold = 250
     //   flingAnimationBaseTime = 500
@@ -46,16 +43,8 @@ fun Map(
         )
     ) {
         val languages = listOf(Locale.current.language)
-        val source = rememberVectorSource(
-            id = "jawg-streets",
-            tiles = listOf("https://tile.jawg.io/streets-v2+hillshade-v1/{z}/{x}/{y}.pbf?access-token=mL9X4SwxfsAGfojvGiion9hPKuGLKxPbogLyMbtakA2gJ3X88gcVlTSQ7OD6OfbZ"),
-            options = TileSetOptions(
-                maxZoom = 16,
-                attributionHtml = "<a href='https://www.openstreetmap.org/copyright' title='OpenStreetMap is open data licensed under ODbL' target='_blank'>&copy; OpenStreetMap contributors</a> | <a href='https://jawg.io?utm_medium=map&utm_source=attribution' title='Tiles Courtesy of Jawg Maps' target='_blank' class='jawg-attrib'>&copy; JawgMaps</a>"
-            )
-        )
-        MapStyleScaffold(
-            source = source,
+
+        MapStyleJawg(
             colors = if (isSystemInDarkTheme()) MapColors.Night else MapColors.Light,
             languages = languages,
         )

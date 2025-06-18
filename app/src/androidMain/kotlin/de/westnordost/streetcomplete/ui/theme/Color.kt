@@ -43,6 +43,8 @@ val GrassGreen = Color(0xff80b158)
 val GrassGray = Color(0xff888888)
 val LeafGreen = Color(0xff006a00)
 
+val LocationDot = Color(0xff536dfe)
+
 val LightColors = lightColors(
     primary = Color(0xff4141ba),
     primaryVariant = Color(0xff3939a3),
