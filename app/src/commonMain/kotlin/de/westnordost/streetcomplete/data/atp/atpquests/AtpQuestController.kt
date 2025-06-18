@@ -80,15 +80,14 @@ class AtpQuestController(
             // TODO: I guess my API may ensure uniqueness? But it is not integer, it is text it seems
             // use some hash function to convert string into longs?
 
-            added.filter { atpEntry ->
+            val filtered = added.filter { atpEntry ->
                 // TODO is speed of this reasonable? I suspect that something more efficient is needed, profile
                 val paddedBounds = BoundingBox(atpEntry.position, atpEntry.position) //..enlargedBy(ApplicationConstants.QUEST_FILTER_PADDING)
                 mapDataSource.getMapDataWithGeometry(paddedBounds).none { osm ->
-                    isThereOsmAtpMatch(osm.tags, atpEntry.tagsInATP, ElementKey(osm.type, osm.id), atpEntry.position)
-                    // TODO: add test for both within range and over range
+                    isThereOsmAtpMatch(osm.tags, atpEntry.tagsInATP, ElementKey(osm.type, osm.id), atpEntry.position) // true
                 }
             }
-            val quests = createQuestsForAtpEntries(added)
+            val quests = createQuestsForAtpEntries(filtered)
             onUpdatingQuestList(quests, deleted)
         }
 

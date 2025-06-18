@@ -285,9 +285,9 @@ class AtpQuestControllerTest {
         val elementList = listOf<Element>(node(1, pos, tags = osmTags))
         val mapData = mock<MapDataWithGeometry>()
         on(mapData.iterator()).thenReturn(elementList.iterator())
-        on(mapData.getGeometry(ElementType.NODE, 1)).thenReturn(ElementPointGeometry(pos))
 
         on(mapDataSource.getMapDataWithGeometry(any())).thenReturn(mapData)
+        on(mapDataSource.getGeometry(ElementType.NODE, 1)).thenReturn(ElementPointGeometry(pos))
 
         val entry = atpEntry(position = pos, tagsInATP = atpTags, reportType = ReportType.MISSING_POI_IN_OPENSTREETMAP)
         val added = listOf(entry)
