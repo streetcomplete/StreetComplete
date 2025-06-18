@@ -11,10 +11,19 @@ import de.westnordost.streetcomplete.util.ktx.toYesNo
 
 class AddGeneralFee : OsmFilterQuestType<Boolean>(), AndroidQuest {
 
+    // Bicycle charging station are amenity=charging_station with bicycle=yes/designated.
+    // We further exclude dual use charging stations as payment may be waived only for cyclists increasing risk of incorrect answers
     override val elementFilter = """
         nodes, ways with
          (
-           tourism ~ museum|gallery|caravan_site
+           (
+             amenity = charging_station
+             and bicycle ~ yes|designated
+             and (!motorcar or motorcar = no)
+             and (!motorcycle or motorcycle = no)
+             and (!truck or truck = no)
+           )
+           or tourism ~ museum|gallery|caravan_site
            or leisure = beach_resort
            or amenity ~ sanitary_dump_station|shower|water_point
          )
