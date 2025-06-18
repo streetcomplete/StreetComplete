@@ -289,7 +289,26 @@ class AtpQuestControllerTest {
     }
 
     @Test
-    fun `AllThePlaces entries with matching nearby items get no quest`() {
+    fun `new AllThePlaces entries with matching shop already results in no quest`() {
+        val pos = LatLon(20.0, 40.0)
+        val osmTags = mapOf("shop" to "supermarket")
+        val atpTags = mapOf("shop" to "supermarket")
+
+        val elementList = listOf<Element>(node(1, pos, tags = osmTags))
+        val mapData = mock<MapDataWithGeometry>()
+        on(mapData.iterator()).thenReturn(elementList.iterator())
+
+        on(mapDataSource.getMapDataWithGeometry(any())).thenReturn(mapData)
+
+        val entry = atpEntry(position = pos, reportType = ReportType.MISSING_POI_IN_OPENSTREETMAP, tagsInATP = atpTags)
+        val added = listOf(entry)
+        val deleted = listOf<Long>()
+        atpUpdatesListener.onUpdatedAtpElement(added, deleted)
+        verify(listener).onUpdated(emptyList(), emptyList())
+    }
+
+    @Test
+    fun `new AllThePlaces entries with already present matching nearby items get no quest`() {
         val pos = LatLon(20.0, 40.0)
         val osmTags = mapOf("shop" to "supermarket")
         val atpTags = mapOf("shop" to "supermarket")
@@ -310,7 +329,7 @@ class AtpQuestControllerTest {
     }
 
     @Test
-    fun `AllThePlaces entries with matching far-away item gets quest`() {
+    fun `new AllThePlaces entries with already present matching far-away item gets quest`() {
         val osmPos = LatLon(20.0, 40.0)
         val atpPos = LatLon(20.0, 41.0)
         val osmTags = mapOf("shop" to "supermarket")
@@ -357,21 +376,21 @@ class AtpQuestControllerTest {
     }
 
     @Test
-    fun `newly mapped POI near ATP quest causes it to disappear if it matches`() { // TODO - implement
-
+    fun `newly mapped POI near ATP quest causes it to disappear if it matches`() {
         val pos = LatLon(0.0, 10.0)
         val geom = pGeom(pos.latitude, pos.longitude)
         val tags = mapOf("shop" to "foobar")
-        val elements = listOf(
-            node(1, tags = tags),
-        )
+        val geometryElement = ElementGeometryEntry(NODE, 1L, geom)
         val geometries = listOf(
-            ElementGeometryEntry(NODE, 1L, geom)
+            geometryElement
         )
-
+        val elements = listOf(
+            node(geometryElement.elementId, tags = tags),
+        )
         val mapData = MutableMapDataWithGeometry(elements, geometries)
 
         on(mapDataSource.getMapDataWithGeometry(any())).thenReturn(mapData)
+        on(mapDataSource.getGeometry(geometryElement.elementType, geometryElement.elementId)).thenReturn(ElementPointGeometry(pos))
 
         val entry = atpEntry(position = pos, tagsInATP = tags, reportType = ReportType.MISSING_POI_IN_OPENSTREETMAP)
         on(atpDataSource.getAll(any())).thenReturn(listOf(entry))
@@ -379,24 +398,6 @@ class AtpQuestControllerTest {
         mapDataListener.onUpdated(mapData, emptyList())
 
         verify(listener).onUpdated(emptyList(), listOf(entry.id))
-    }
-
-    @Test
-    fun `new AllThePlaces entries with matching shop already results in no quest`() { // TODO - implement
-        // onUpdatedAtpElement
-
-        val bbox = bbox()
-        val location = LatLon(1.0, 1.0)
-        val atpEntries = listOf(atpEntry(1, location), atpEntry(2, location), atpEntry(3, location))
-
-        on(atpDataSource.getAll(bbox)).thenReturn(atpEntries)
-        val mapData = mock<MapDataWithGeometry>()
-        val mockElement1 = mock<Element>()
-        val mockElement2 = mock<Element>()
-        val elementList = listOf<Element>() // mockElement1, mockElement2
-        on(mapData.iterator()).thenReturn(elementList.iterator())
-        on(mapDataSource.getMapDataWithGeometry(any())).thenReturn(mapData)
-
     }
 
     @Test
