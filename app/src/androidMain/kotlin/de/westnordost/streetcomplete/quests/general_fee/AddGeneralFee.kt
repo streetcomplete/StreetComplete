@@ -16,7 +16,7 @@ class AddGeneralFee : OsmFilterQuestType<Boolean>(), AndroidQuest {
          (
            (""" +
         // Bicycle charging station are amenity=charging_station with bicycle=yes/designated.
-        // We further exclude dual use charging stations
+        // We further exclude dual use charging stations as payment may be waived only for cyclists increasing risk of incorrect answers
             """
              amenity=charging_station
              and bicycle ~ yes|designated
