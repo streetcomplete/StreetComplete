@@ -2,6 +2,7 @@
 quest-list.csv
 /keystore.properties
 /projectFilesBackup*/
+app/release
 *.iml
 .kotlin
 .gradle
