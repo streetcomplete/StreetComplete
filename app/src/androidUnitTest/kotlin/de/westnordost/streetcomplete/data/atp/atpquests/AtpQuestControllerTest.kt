@@ -399,10 +399,6 @@ class AtpQuestControllerTest {
 
         verify(listener).onUpdated(emptyList(), listOf(entry.id))
     }
-
-    @Test
-    fun `new map data cause quest creation`() { // TODO - implement
-    }
 }
 
 object MockQuestType : OsmCreateElementQuestType<String> {
