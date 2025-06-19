@@ -53,7 +53,7 @@ class AtpQuestController(
             // TODO is there some already implemented or reasonable to implement function?
             // should it be ignored?
             val distance = mapDataSource.getGeometry(osmIdentifier.type, osmIdentifier.id)?.distance(atpPosition)
-            return distance != null && distance < ApplicationConstants.QUEST_FILTER_PADDING
+            return distance != null && distance < ApplicationConstants.ATP_QUEST_FILTER_PADDING
         }
 
         val atpNames = listOfNotNull(atp["name"]?.lowercase(), atp["brand"]?.lowercase())
@@ -145,7 +145,7 @@ class AtpQuestController(
             bbox: BoundingBox,
             mapDataWithGeometry: MapDataWithGeometry,
         ) {
-            val paddedBounds = bbox.enlargedBy(ApplicationConstants.QUEST_FILTER_PADDING)
+            val paddedBounds = bbox.enlargedBy(ApplicationConstants.ATP_QUEST_FILTER_PADDING)
             val obsoleteQuestIds = mutableListOf<Long>()
             val candidates = atpDataSource.getAll(paddedBounds)
             mapDataWithGeometry.forEach { osm ->
@@ -176,7 +176,7 @@ class AtpQuestController(
 
     override fun getAllInBBox(bbox: BoundingBox): List<CreateElementQuest> {
         val candidates = atpDataSource.getAll(bbox)
-        val paddedBounds = bbox.enlargedBy(ApplicationConstants.QUEST_FILTER_PADDING)
+        val paddedBounds = bbox.enlargedBy(ApplicationConstants.ATP_QUEST_FILTER_PADDING)
         val filteredOutCandidates = mutableListOf<AtpEntry>()
         mapDataSource.getMapDataWithGeometry(paddedBounds).forEach { osm ->
             candidates.forEach { atpCandidate ->
