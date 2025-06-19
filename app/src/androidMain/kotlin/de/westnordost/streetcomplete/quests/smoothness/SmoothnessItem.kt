@@ -1,8 +1,6 @@
 package de.westnordost.streetcomplete.quests.smoothness
 
 import android.content.Context
-import android.text.Spannable
-import android.text.SpannableStringBuilder
 import androidx.annotation.DrawableRes
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.smoothness.Smoothness.BAD
@@ -13,7 +11,6 @@ import de.westnordost.streetcomplete.quests.smoothness.Smoothness.IMPASSABLE
 import de.westnordost.streetcomplete.quests.smoothness.Smoothness.INTERMEDIATE
 import de.westnordost.streetcomplete.quests.smoothness.Smoothness.VERY_BAD
 import de.westnordost.streetcomplete.quests.smoothness.Smoothness.VERY_HORRIBLE
-import de.westnordost.streetcomplete.util.ktx.asImageSpan
 import de.westnordost.streetcomplete.view.CharSequenceText
 import de.westnordost.streetcomplete.view.ResImage
 import de.westnordost.streetcomplete.view.ResText
@@ -29,21 +26,11 @@ fun Smoothness.asItem(context: Context, surface: String): DisplayItem<Smoothness
     val descriptionResId = getDescriptionResId(surface) ?: return null
 
     val title = context.getString(titleResId)
-    val stringBuilder = SpannableStringBuilder(title)
-    stringBuilder.append(" X") // one space char + one placeholder char for the image span
-
-    val iconDrawable = context.getDrawable(icon) ?: return null
-    stringBuilder.setSpan(
-        iconDrawable.asImageSpan(36, 36),
-        title.length + 1,
-        title.length + 2,
-        Spannable.SPAN_INCLUSIVE_INCLUSIVE
-    )
 
     return Item2(
         this,
         ResImage(imageResId),
-        CharSequenceText(stringBuilder),
+        CharSequenceText(title),
         ResText(descriptionResId)
     )
 }
