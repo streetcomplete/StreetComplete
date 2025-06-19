@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.data.atp.atpquests
 
+import de.westnordost.streetcomplete.data.atp.AtpEntry
 import de.westnordost.streetcomplete.data.atp.ReportType
 import de.westnordost.streetcomplete.data.atp.atpquests.edits.AtpDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
@@ -286,24 +287,34 @@ class AtpQuestControllerTest {
         verify(listener).onUpdated(expectedQuests, expectedDeletedIds)
     }
 
+
+    fun dataSetupForAtpEntryFetchedAmongExistingData(atpPos: LatLon, osmPos: LatLon, atpTags: Map<String, String>, osmTags: Map<String, String>, atpEntryId: Long = 10L): AtpEntry {
+        val element = node(1, osmPos, tags = osmTags)
+        val elementList = listOf<Element>(element)
+        val mapData = mock<MapDataWithGeometry>()
+        on(mapData.iterator()).thenReturn(elementList.iterator())
+
+        on(mapDataSource.getMapDataWithGeometry(any())).thenReturn(mapData)
+        on(mapDataSource.getGeometry(element.type, element.id)).thenReturn(ElementPointGeometry(osmPos))
+
+        val entry = atpEntry(position = atpPos, tagsInATP = atpTags, reportType = ReportType.MISSING_POI_IN_OPENSTREETMAP)
+        return entry
+    }
+
     @Test
     fun `new AllThePlaces entries with matching shop already results in no quest`() {
         val pos = LatLon(20.0, 40.0)
         val osmTags = mapOf("shop" to "supermarket")
         val atpTags = mapOf("shop" to "supermarket")
 
-        val elementList = listOf<Element>(node(1, pos, tags = osmTags))
-        val mapData = mock<MapDataWithGeometry>()
-        on(mapData.iterator()).thenReturn(elementList.iterator())
+        val entry = dataSetupForAtpEntryFetchedAmongExistingData(pos, pos, atpTags, osmTags)
 
-        on(mapDataSource.getMapDataWithGeometry(any())).thenReturn(mapData)
-
-        val entry = atpEntry(position = pos, reportType = ReportType.MISSING_POI_IN_OPENSTREETMAP, tagsInATP = atpTags)
         val added = listOf(entry)
         val deleted = listOf<Long>()
         atpUpdatesListener.onUpdatedAtpElement(added, deleted)
-        verify(listener).onUpdated(emptyList(), emptyList())
+        verify(listener, never()).onUpdated(anyList(), anyList())
     }
+
 
     @Test
     fun `new AllThePlaces entries with already present matching nearby items get no quest`() {
@@ -311,14 +322,8 @@ class AtpQuestControllerTest {
         val osmTags = mapOf("shop" to "supermarket")
         val atpTags = mapOf("shop" to "supermarket")
 
-        val elementList = listOf<Element>(node(1, pos, tags = osmTags))
-        val mapData = mock<MapDataWithGeometry>()
-        on(mapData.iterator()).thenReturn(elementList.iterator())
+        val entry = dataSetupForAtpEntryFetchedAmongExistingData(pos, pos, atpTags, osmTags)
 
-        on(mapDataSource.getMapDataWithGeometry(any())).thenReturn(mapData)
-        on(mapDataSource.getGeometry(ElementType.NODE, 1)).thenReturn(ElementPointGeometry(pos))
-
-        val entry = atpEntry(position = pos, tagsInATP = atpTags, reportType = ReportType.MISSING_POI_IN_OPENSTREETMAP)
         val added = listOf(entry)
         val deleted = listOf<Long>()
         atpUpdatesListener.onUpdatedAtpElement(added, deleted)
@@ -333,13 +338,8 @@ class AtpQuestControllerTest {
         val osmTags = mapOf("shop" to "supermarket")
         val atpTags = mapOf("shop" to "supermarket")
 
-        val elementList = listOf<Element>(node(1, osmPos, tags = osmTags))
-        val mapData = mock<MapDataWithGeometry>()
-        on(mapData.iterator()).thenReturn(elementList.iterator())
+        val entry = dataSetupForAtpEntryFetchedAmongExistingData(osmPos, atpPos, atpTags, osmTags)
 
-        on(mapDataSource.getMapDataWithGeometry(any())).thenReturn(mapData)
-
-        val entry = atpEntry(position = atpPos, tagsInATP = atpTags, reportType = ReportType.MISSING_POI_IN_OPENSTREETMAP)
         val added = listOf(entry)
         val deleted = listOf<Long>()
         atpUpdatesListener.onUpdatedAtpElement(added, deleted)
@@ -350,19 +350,15 @@ class AtpQuestControllerTest {
         verify(listener).onUpdated(expectedQuests, expectedDeletedIds)
     }
 
+
     @Test
     fun `new AllThePlaces entry arriving by update with mismatching nearby items creates quest`() {
         val pos = LatLon(20.0, 40.0)
         val osmTags = mapOf("shop" to "supermarket")
         val atpTags = mapOf("shop" to "hairdresser")
 
-        val elementList = listOf<Element>(node(1, pos, tags = osmTags))
-        val mapData = mock<MapDataWithGeometry>()
-        on(mapData.iterator()).thenReturn(elementList.iterator())
+        val entry = dataSetupForAtpEntryFetchedAmongExistingData(pos, pos, atpTags, osmTags)
 
-        on(mapDataSource.getMapDataWithGeometry(any())).thenReturn(mapData)
-
-        val entry = atpEntry(position = pos, tagsInATP = atpTags, reportType = ReportType.MISSING_POI_IN_OPENSTREETMAP)
         val added = listOf(entry)
         val deleted = listOf<Long>()
         atpUpdatesListener.onUpdatedAtpElement(added, deleted)
@@ -399,7 +395,7 @@ class AtpQuestControllerTest {
     }
 
     fun dataSetupForOnReplacedForBBox(atpPos: LatLon, osmPos: LatLon, atpTags: Map<String, String>, osmTags: Map<String, String>, atpEntryId: Long): MutableMapDataWithGeometry {
-        val entry = atpEntry(position = atpPos, tagsInATP = atpTags, reportType = ReportType.MISSING_POI_IN_OPENSTREETMAP)
+        val entry = atpEntry(atpEntryId, position = atpPos, tagsInATP = atpTags, reportType = ReportType.MISSING_POI_IN_OPENSTREETMAP)
         on(atpDataSource.getAll(any())).thenReturn(listOf(entry))
 
         val geom = pGeom(osmPos.latitude, osmPos.longitude)
@@ -442,7 +438,7 @@ class AtpQuestControllerTest {
         val bbox = pos.enclosingBoundingBox(300.0)
         mapDataListener.onReplacedForBBox(bbox, mapData)
 
-        verify(listener).onUpdated(emptyList(), emptyList())
+        verify(listener, never()).onUpdated(anyList(), anyList())
     }
 
     @Test
@@ -454,10 +450,10 @@ class AtpQuestControllerTest {
         val atpEntryId = 10L
 
         val mapData = dataSetupForOnReplacedForBBox(atpPos, osmPos, atpTags, osmTags, atpEntryId)
-        val bbox = osmPos.enclosingBoundingBox(300_000_000.0)
+        val bbox = osmPos.enclosingBoundingBox(6_000_000.0)
         mapDataListener.onReplacedForBBox(bbox, mapData)
 
-        verify(listener).onUpdated(emptyList(), emptyList())
+        verify(listener, never()).onUpdated(anyList(), anyList())
     }
 }
 
