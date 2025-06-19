@@ -139,6 +139,7 @@ class AtpQuestControllerTest {
     }
 
     // TODO: adapt for ATP or delete (seems reasonable to test? but both updated notes and main onUpdated needs to be tested)
+    //TODO: should notes hide ATP quests in the first place?
     /*
     @Test fun `calls onUpdated when notes changed`() {
         on(prefs.showAllNotes).thenReturn(true)
