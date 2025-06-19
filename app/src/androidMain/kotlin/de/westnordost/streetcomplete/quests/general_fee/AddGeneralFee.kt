@@ -23,9 +23,9 @@ class AddGeneralFee : OsmFilterQuestType<Boolean>(), AndroidQuest {
              and (!motorcycle or motorcycle = no)
              and (!truck or truck = no)
            )
-           or tourism ~ museum|gallery|caravan_site
-           or leisure = beach_resort
-           or amenity ~ sanitary_dump_station|shower|water_point
+           or tourism ~ museum|gallery|caravan_site|zoo|aquarium
+           or leisure ~ beach_resort|disc_golf_course
+           or amenity ~ sanitary_dump_station|shower|water_point|public_bath
          )
          and access !~ private|no
          and !fee
