@@ -17,7 +17,7 @@ class AddGeneralFee : OsmFilterQuestType<Boolean>(), AndroidQuest {
         nodes, ways with
          (
            (
-             amenity=charging_station
+             amenity = charging_station
              and bicycle ~ yes|designated
              and (!motorcar or motorcar = no)
              and (!motorcycle or motorcycle = no)
