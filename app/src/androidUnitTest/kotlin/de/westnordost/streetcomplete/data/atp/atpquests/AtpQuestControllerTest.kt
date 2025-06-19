@@ -15,21 +15,19 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MutableMapDataWithGeometry
 import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.data.quest.OsmCreateElementQuestType
-import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.quest.atp.CreatePoiBasedOnAtp
-import de.westnordost.streetcomplete.data.quest.atp.CreatePoiBasedOnAtpAnswer
 import de.westnordost.streetcomplete.data.user.UserDataSource
 import de.westnordost.streetcomplete.data.user.UserLoginSource
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement
 import de.westnordost.streetcomplete.testutils.any
 import de.westnordost.streetcomplete.testutils.atpEntry
 import de.westnordost.streetcomplete.testutils.bbox
-import de.westnordost.streetcomplete.testutils.eq
 import de.westnordost.streetcomplete.testutils.mock
 import de.westnordost.streetcomplete.testutils.node
 import de.westnordost.streetcomplete.testutils.on
 import de.westnordost.streetcomplete.testutils.pGeom
+import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import org.mockito.ArgumentMatchers.anyList
 import org.mockito.Mockito.never
 import org.mockito.Mockito.verify
@@ -329,7 +327,7 @@ class AtpQuestControllerTest {
     }
 
     @Test
-    fun `new AllThePlaces entries with already present matching far-away item gets quest`() {
+    fun `new AllThePlaces entry with already present matching far-away item gets quest`() {
         val osmPos = LatLon(20.0, 40.0)
         val atpPos = LatLon(20.0, 41.0)
         val osmTags = mapOf("shop" to "supermarket")
@@ -353,7 +351,7 @@ class AtpQuestControllerTest {
     }
 
     @Test
-    fun `AllThePlaces entries with mismatching nearby items gets quest`() {
+    fun `new AllThePlaces entry arriving by update with mismatching nearby items creates quest`() {
         val pos = LatLon(20.0, 40.0)
         val osmTags = mapOf("shop" to "supermarket")
         val atpTags = mapOf("shop" to "hairdresser")
@@ -376,7 +374,7 @@ class AtpQuestControllerTest {
     }
 
     @Test
-    fun `newly mapped POI near ATP quest causes it to disappear if it matches`() {
+    fun `newly mapped POI near ATP quest causes it to disappear as it matches`() {
         val pos = LatLon(0.0, 10.0)
         val geom = pGeom(pos.latitude, pos.longitude)
         val tags = mapOf("shop" to "foobar")
@@ -398,6 +396,68 @@ class AtpQuestControllerTest {
         mapDataListener.onUpdated(mapData, emptyList())
 
         verify(listener).onUpdated(emptyList(), listOf(entry.id))
+    }
+
+    fun dataSetupForOnReplacedForBBox(atpPos: LatLon, osmPos: LatLon, atpTags: Map<String, String>, osmTags: Map<String, String>, atpEntryId: Long): MutableMapDataWithGeometry {
+        val entry = atpEntry(position = atpPos, tagsInATP = atpTags, reportType = ReportType.MISSING_POI_IN_OPENSTREETMAP)
+        on(atpDataSource.getAll(any())).thenReturn(listOf(entry))
+
+        val geom = pGeom(osmPos.latitude, osmPos.longitude)
+        val geometryElement = ElementGeometryEntry(NODE, atpEntryId, geom)
+        val geometries = listOf(
+            geometryElement
+        )
+        val elements = listOf(
+            node(geometryElement.elementId, tags = osmTags),
+        )
+        val mapData = MutableMapDataWithGeometry(elements, geometries)
+
+        on(mapDataSource.getMapDataWithGeometry(any())).thenReturn(mapData)
+        on(mapDataSource.getGeometry(geometryElement.elementType, geometryElement.elementId)).thenReturn(ElementPointGeometry(osmPos))
+        return mapData
+    }
+
+    @Test
+    fun `onReplacedForBBox has matching data near existing ATP quest and causes it to disappear`() {
+        val pos = LatLon(0.0, 10.0)
+        val atpTags = mapOf("shop" to "foobar")
+        val osmTags = mapOf("shop" to "foobar")
+        val atpEntryId = 10L
+
+        val mapData = dataSetupForOnReplacedForBBox(pos, pos, atpTags, osmTags, atpEntryId)
+        val bbox = pos.enclosingBoundingBox(300.0)
+        mapDataListener.onReplacedForBBox(bbox, mapData)
+
+        verify(listener).onUpdated(emptyList(), listOf(atpEntryId))
+    }
+
+    @Test
+    fun `onReplacedForBBox has not matching data near existing ATP quest and does not cause it to disappear`() {
+        val pos = LatLon(0.0, 10.0)
+        val atpTags = mapOf("shop" to "foobar")
+        val osmTags = mapOf("shop" to "some_other_value")
+        val atpEntryId = 10L
+
+        val mapData = dataSetupForOnReplacedForBBox(pos, pos, atpTags, osmTags, atpEntryId)
+        val bbox = pos.enclosingBoundingBox(300.0)
+        mapDataListener.onReplacedForBBox(bbox, mapData)
+
+        verify(listener).onUpdated(emptyList(), emptyList())
+    }
+
+    @Test
+    fun `onReplacedForBBox has matching data far away from existing ATP quest and is not causing it to disappear`() {
+        val atpPos = LatLon(0.0, 10.0)
+        val osmPos = LatLon(0.0, 40.0)
+        val atpTags = mapOf("shop" to "foobar")
+        val osmTags = mapOf("shop" to "foobar")
+        val atpEntryId = 10L
+
+        val mapData = dataSetupForOnReplacedForBBox(atpPos, osmPos, atpTags, osmTags, atpEntryId)
+        val bbox = osmPos.enclosingBoundingBox(300_000_000.0)
+        mapDataListener.onReplacedForBBox(bbox, mapData)
+
+        verify(listener).onUpdated(emptyList(), emptyList())
     }
 }
 
