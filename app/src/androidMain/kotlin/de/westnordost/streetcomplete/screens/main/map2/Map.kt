@@ -23,15 +23,6 @@ fun Map(
     cameraState: CameraState = rememberCameraState(),
     styleState: StyleState = rememberStyleState(),
 ) {
-    // TODO maplibre-compose: The following gesture settings are missing (in MapOptions):
-    //   flingThreshold = 250
-    //   flingAnimationBaseTime = 500
-    //   isDisableRotateWhenScaling = true
-    //   // as workaround for https://github.com/maplibre/maplibre-native/issues/2792
-    //   moveGestureDetector.moveThreshold = resources.dpToPx(5f)
-    //   rotateGestureDetector.angleThreshold = 1.5f
-    //   shoveGestureDetector.pixelDeltaThreshold = resources.dpToPx(8f)
-
     MaplibreMap(
         modifier = modifier,
         styleUri = Res.getUri("files/map_theme/empty.json"),
