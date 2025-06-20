@@ -6,6 +6,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.screens.main.map2.MapColors
 import dev.sargunv.maplibrecompose.compose.MaplibreComposable
 import dev.sargunv.maplibrecompose.compose.layer.BackgroundLayer
@@ -30,6 +31,7 @@ import dev.sargunv.maplibrecompose.expressions.value.IconRotationAlignment
 import dev.sargunv.maplibrecompose.expressions.value.LineCap
 import dev.sargunv.maplibrecompose.expressions.value.LineJoin
 import dev.sargunv.maplibrecompose.expressions.value.SymbolPlacement
+import org.jetbrains.compose.resources.painterResource
 import kotlin.math.max
 
 /**
@@ -462,7 +464,7 @@ private fun OnewayArrowsLayer(source: Source, colors: MapColors) {
         filter = all(Feature.isLines(), Feature.has("oneway", true)),
         placement = const(SymbolPlacement.LineCenter),
         spacing = byZoom(17 to 200.dp, 24 to 25600.dp),
-        iconImage = image("oneway-arrow"),
+        iconImage = image(painterResource(Res.drawable.map_oneway_arrow)),
         iconColor = const(colors.onewayArrow),
         iconSize = byZoom(17 to 0.25f, 24 to 16.0f),
         iconPadding = const(5.dp),

@@ -26,6 +26,7 @@ fun Map(
     MaplibreMap(
         modifier = modifier,
         styleUri = Res.getUri("files/map_theme/empty.json"),
+        // TODO baseStyle = BaseStyle.Json(BASE_STYLE),
         zoomRange = 0f..22f,
         cameraState = cameraState,
         styleState = styleState,
@@ -41,3 +42,19 @@ fun Map(
         )
     }
 }
+
+// need to refer to the local (font) resources platform-independently
+private val BASE_STYLE = """
+    {
+      "version": 8,
+      "name": "Empty",
+      "metadata": {},
+      "sources": {},
+      "glyphs": "${
+        Res.getUri("files/map_theme/glyphs/Roboto Regular/0-255.pbf")
+            .replace("Roboto Regular", "{fontstack}")
+            .replace("0-255", "{range}")
+      }",
+      "layers": []
+    }
+    """.trimIndent()
