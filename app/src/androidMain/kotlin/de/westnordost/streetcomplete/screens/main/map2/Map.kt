@@ -5,7 +5,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.intl.Locale
 import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.screens.main.map.components.PinsMapComponent
+import de.westnordost.streetcomplete.screens.main.map2.style.CurrentLocationLayers
+import de.westnordost.streetcomplete.screens.main.map2.style.DownloadedAreaLayer
+import de.westnordost.streetcomplete.screens.main.map2.style.FocusedGeometryLayers
+import de.westnordost.streetcomplete.screens.main.map2.style.GeometryMarkersLayers
 import de.westnordost.streetcomplete.screens.main.map2.style.MapStyleJawg
+import de.westnordost.streetcomplete.screens.main.map2.style.PinsLayers
+import de.westnordost.streetcomplete.screens.main.map2.style.SelectedPinsLayer
+import de.westnordost.streetcomplete.screens.main.map2.style.StyleableOverlayLayers
 import dev.sargunv.maplibrecompose.compose.CameraState
 import dev.sargunv.maplibrecompose.compose.MaplibreMap
 import dev.sargunv.maplibrecompose.compose.StyleState
@@ -25,8 +33,7 @@ fun Map(
 ) {
     MaplibreMap(
         modifier = modifier,
-        styleUri = Res.getUri("files/map_theme/empty.json"),
-        // TODO baseStyle = BaseStyle.Json(BASE_STYLE),
+        baseStyle = BaseStyle.Json(BASE_STYLE),
         zoomRange = 0f..22f,
         cameraState = cameraState,
         styleState = styleState,
@@ -39,7 +46,28 @@ fun Map(
         MapStyleJawg(
             colors = if (isSystemInDarkTheme()) MapColors.Night else MapColors.Light,
             languages = languages,
+            belowRoadsContent = {
+                // left-and-right lines should be rendered behind the actual road
+                StyleableOverlayRoadSideLayers()
+            },
+            belowRoadsOnBridgeContent = {
+                // left-and-right lines should be rendered behind the actual bridge road
+                StyleableOverlayBridgeRoadSideLayers()
+            },
+            belowLabelsContent = {
+                // labels should be on top of other layers
+                DownloadedAreaLayer(tiles)
+                StyleableOverlayLayers()
+                TracksLayers()
+            },
         )
+        // these are always on top of everything else (including labels)
+        StyleableOverlayLabelLayers()
+        GeometryMarkersLayers(markers)
+        FocusedGeometryLayers(geometry)
+        CurrentLocationLayers(location, rotation)
+        PinsLayers(pins, onClickPin, onClickCluster)
+        SelectedPinsLayer(iconPainter, pinPositions)
     }
 }
 
@@ -51,7 +79,7 @@ private val BASE_STYLE = """
       "metadata": {},
       "sources": {},
       "glyphs": "${
-        Res.getUri("files/map_theme/glyphs/Roboto Regular/0-255.pbf")
+        Res.getUri("files/glyphs/Roboto Regular/0-255.pbf")
             .replace("Roboto Regular", "{fontstack}")
             .replace("0-255", "{range}")
       }",

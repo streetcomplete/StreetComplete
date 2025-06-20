@@ -28,13 +28,8 @@ import io.github.dellisd.spatialk.geojson.FeatureCollection
 import kotlinx.serialization.json.JsonElement
 import kotlinx.serialization.json.JsonPrimitive
 
-data class Marker(
-    val geometry: ElementGeometry,
-    /** drawable resource name */
-    val icon: String? = null,
-    val title: String? = null
-)
-
+/** Displays some generic geometry markers with an optional icon on the map. This is used to
+ *  show the geometry of elements surrounding the selected quest */
 @MaplibreComposable @Composable
 fun GeometryMarkersLayers(markers: Collection<Marker>) {
     val features = FeatureCollection(markers.flatMap { it.toGeoJsonFeature() })
@@ -76,6 +71,13 @@ fun GeometryMarkersLayers(markers: Collection<Marker>) {
         textOptional = const(true),
     )
 }
+
+data class Marker(
+    val geometry: ElementGeometry,
+    /** drawable resource name */
+    val icon: String? = null,
+    val title: String? = null
+)
 
 private typealias GeoJsonFeature = io.github.dellisd.spatialk.geojson.Feature
 

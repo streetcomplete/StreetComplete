@@ -16,7 +16,7 @@ import dev.sargunv.maplibrecompose.expressions.dsl.image
 import io.github.dellisd.spatialk.geojson.Polygon
 import org.jetbrains.compose.resources.painterResource
 
-/** Shows which areas have (not) been downloaded */
+/** Displays which areas have (not) been downloaded */
 @Composable @MaplibreComposable
 fun DownloadedAreaLayer(tiles: List<TilePos>) {
     // TODO is this recomposed all the time? In that case, remember the polygon holes

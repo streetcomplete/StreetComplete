@@ -6,6 +6,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.screens.main.map2.MapColors
 import dev.sargunv.maplibrecompose.compose.MaplibreComposable
@@ -492,68 +493,96 @@ private fun BoundaryLayer(source: Source, colors: MapColors) {
 @Composable @MaplibreComposable
 private fun LabelLayers(source: Source, colors: MapColors, languages: List<String>) {
     val localizedName = Feature.localizedName(languages)
+    val haloWidth = const(2.5.dp)
+    val textFont = const(listOf("Roboto Regular"))
+    val textSize = byZoom(1.0 to 13.sp, 24 to 64.sp)
+    val textPadding = const(12.dp)
 
-    TextLayer(
+    SymbolLayer(
         id = "labels-country",
         source = source,
         sourceLayer = "place_label",
         filter = Feature.inClass("country"),
         sortKey = Feature.get("scalerank").asNumber(),
-        text = localizedName,
-        color = const(colors.text),
-        haloColor = const(colors.textOutline),
+        textField = localizedName,
+        textColor = const(colors.text),
+        textHaloColor = const(colors.textOutline),
+        textHaloWidth = haloWidth,
+        textFont = textFont,
+        textSize = textSize,
+        textPadding = textPadding,
     )
-    TextLayer(
+    SymbolLayer(
         id = "labels-localities",
         source = source,
         sourceLayer = "place_label",
         filter = Feature.inClass("locality"),
         sortKey = Feature.get("scalerank").asNumber(),
-        text = localizedName,
-        color = const(colors.text),
-        haloColor = const(colors.textOutline),
+        textField = localizedName,
+        textColor = const(colors.text),
+        textHaloColor = const(colors.textOutline),
+        textHaloWidth = haloWidth,
+        textFont = textFont,
+        textSize = textSize,
+        textPadding = textPadding,
     )
-    TextLayer(
+    SymbolLayer(
         id = "labels-housenumbers",
         source = source,
         sourceLayer = "housenum_label",
         minZoom = 18f,
-        text = Feature.get("house_num").cast(),
-        color = const(colors.text),
-        haloColor = const(colors.textOutline),
+        textField = Feature.get("house_num").cast(),
+        textColor = const(colors.text),
+        textHaloColor = const(colors.textOutline),
+        textHaloWidth = haloWidth,
+        textFont = textFont,
+        textSize = textSize,
+        textPadding = textPadding,
     )
-    TextLayer(
+    SymbolLayer(
         id = "labels-road",
         source = source,
         sourceLayer = "road",
         minZoom = 14f,
         filter = Feature.isLines(),
         placement = const(SymbolPlacement.LineCenter),
-        text = localizedName,
-        color = const(colors.text),
-        haloColor = const(colors.textOutline),
+        textField = localizedName,
+        textColor = const(colors.text),
+        textHaloColor = const(colors.textOutline),
+        textHaloWidth = haloWidth,
+        textFont = textFont,
+        textSize = textSize,
+        textPadding = textPadding,
     )
-    TextLayer(
+    SymbolLayer(
         id = "labels-rivers",
         source = source,
         sourceLayer = "waterway",
         minZoom = 14f,
         filter = all(!Feature.isTunnel(), Feature.inClass("stream", "river", "canal")),
         placement = const(SymbolPlacement.LineCenter),
-        text = localizedName,
-        color = const(colors.textWater),
-        haloColor = const(colors.textWaterOutline),
+        textField = localizedName,
+        textColor = const(colors.textWater),
+        textHaloColor = const(colors.textWaterOutline),
+        textHaloWidth = haloWidth,
+        textFont = textFont,
+        textSize = textSize,
+        textPadding = textPadding,
     )
-    TextLayer(
+    SymbolLayer(
         id = "labels-streams",
         source = source,
         sourceLayer = "waterway",
         minZoom = 16f,
         filter = all(!Feature.isTunnel(), Feature.inClass("stream", "ditch", "drain")),
         placement = const(SymbolPlacement.LineCenter),
-        text = localizedName,
-        color = const(colors.textWater),
-        haloColor = const(colors.textWaterOutline),
+        textField = localizedName,
+        textColor = const(colors.textWater),
+        textHaloColor = const(colors.textWaterOutline),
+        textHaloWidth = haloWidth,
+        textFont = textFont,
+        textSize = textSize,
+        textPadding = textPadding,
     )
 }
 
