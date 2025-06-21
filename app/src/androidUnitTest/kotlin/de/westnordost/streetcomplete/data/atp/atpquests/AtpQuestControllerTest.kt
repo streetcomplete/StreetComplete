@@ -238,38 +238,6 @@ class AtpQuestControllerTest {
         )
     }
 
-    /*
-    TODO: implement such improvements
-    @Test fun `isThereOsmAtpMatch does not detect match on completely mismatching names, also if type matches`() {
-        on(mapDataSource.getGeometry(ElementType.NODE, 1)).then {
-            val returned = mock<ElementPointGeometry>()
-            on(returned.center).thenReturn(LatLon(0.0, 0.0))
-            returned
-        }
-        assertFalse(ctrl.isThereOsmAtpMatch(
-            mapOf("name" to "Foobar", "shop" to "convenience"),
-            mapOf("name" to "Platypus", "shop" to "convenience")),
-            ElementKey(ElementType.NODE, 1),
-            LatLon(0.0, 0.0)
-        )
-    }
-
-    @Test fun `isThereOsmAtpMatch allows matches between similar shop types, also with subtle name differences`() {
-        on(mapDataSource.getGeometry(ElementType.NODE, 1)).then {
-            val returned = mock<ElementPointGeometry>()
-            on(returned.center).thenReturn(LatLon(0.0, 0.0))
-            returned
-        }
-        assertFalse(ctrl.isThereOsmAtpMatch(
-            mapOf("name" to "Tesco", "shop" to "convenience"),
-            mapOf("name" to "Tesco #123", "shop" to "supermarket")),
-            ElementKey(ElementType.NODE, 1),
-            LatLon(0.0, 0.0)
-        )
-    }
-     */
-    // TODO: see https://codeberg.org/matkoniecz/list_how_openstreetmap_can_be_improved_with_alltheplaces_data/src/branch/master/test_matching_logic.py for possible extension
-
     @Test
     fun `new AllThePlaces entries cause quest creation`() {
         val elementList = listOf<Element>()
