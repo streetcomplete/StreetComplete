@@ -119,9 +119,7 @@ class AtpQuestControllerTest {
         }
 
         val mapData = mock<MapDataWithGeometry>()
-        val mockElement1 = mock<Element>()
-        val mockElement2 = mock<Element>()
-        val elementList = listOf<Element>() // mockElement1, mockElement2
+        val elementList = listOf<Element>()
         on(mapData.iterator()).thenReturn(elementList.iterator())
         on(mapDataSource.getMapDataWithGeometry(any())).thenReturn(mapData)
 
