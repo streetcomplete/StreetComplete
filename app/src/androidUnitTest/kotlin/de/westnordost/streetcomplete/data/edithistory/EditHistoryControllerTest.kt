@@ -137,8 +137,7 @@ class EditHistoryControllerTest {
     }
 
     @Test fun `undo hid atp quest`() {
-        // TODO: this test fails: is it indicating that you cannot unhide ATP quests?
-        // TODO: or is it about something else?
+        // TODO: this test fails: at the same test unhinding actually works. What is going on?
         val e = atpQuestHidden()
         //on(notesSource.get(e.note.id)).thenReturn(e.note) TODO remove
         on(hiddenQuestsController.get(e.questKey)).thenReturn(e.createdTimestamp)
