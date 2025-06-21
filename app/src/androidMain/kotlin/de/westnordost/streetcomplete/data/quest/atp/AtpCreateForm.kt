@@ -1,0 +1,248 @@
+package de.westnordost.streetcomplete.data.quest.atp
+
+import android.content.res.Configuration
+import android.content.res.Resources
+import android.location.Location
+import android.os.Bundle
+import android.view.Menu
+import android.view.View
+import android.view.ViewGroup
+import android.widget.PopupMenu
+import androidx.appcompat.app.AlertDialog
+import androidx.core.os.bundleOf
+import androidx.core.view.children
+import de.westnordost.osmfeatures.FeatureDictionary
+import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.atp.AtpEntry
+import de.westnordost.streetcomplete.data.osm.edits.AddElementEditsController
+import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
+import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
+import de.westnordost.streetcomplete.data.osm.edits.ElementEditsController
+import de.westnordost.streetcomplete.data.osm.edits.create.CreateNodeAction
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChanges
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.data.osm.mapdata.Node
+import de.westnordost.streetcomplete.data.osm.mapdata.Way
+import de.westnordost.streetcomplete.data.quest.QuestKey
+import de.westnordost.streetcomplete.data.visiblequests.HideQuestController
+import de.westnordost.streetcomplete.data.visiblequests.QuestsHiddenController
+import de.westnordost.streetcomplete.quests.AbstractQuestForm
+import de.westnordost.streetcomplete.quests.AnswerItem
+import de.westnordost.streetcomplete.quests.IAnswerItem
+import de.westnordost.streetcomplete.quests.getTitle
+import de.westnordost.streetcomplete.util.getLanguagesForFeatureDictionary
+import de.westnordost.streetcomplete.util.getNameAndLocationSpanned
+import de.westnordost.streetcomplete.util.getNameLabel
+import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import kotlinx.serialization.json.Json
+import org.koin.android.ext.android.inject
+import org.koin.core.qualifier.named
+import java.util.Locale
+import kotlin.getValue
+import kotlinx.coroutines.withContext
+
+//see NoteDiscussionForm TODO
+class AtpCreateForm : AbstractQuestForm() {
+    private val hiddenQuestsController: QuestsHiddenController by inject()
+    private val featureDictionaryLazy: Lazy<FeatureDictionary> by inject(named("FeatureDictionaryLazy"))
+    private val elementEditsController: ElementEditsController by inject()
+
+    private lateinit var entry: AtpEntry private set
+    private val featureDictionary: FeatureDictionary get() = featureDictionaryLazy.value
+    var hideQuestController: HideQuestController = hiddenQuestsController
+    var selectedLocation: LatLon? = null
+    var addElementEditsController: AddElementEditsController = elementEditsController
+
+    override fun onClickMapAt(position: LatLon, clickAreaSizeInMeters: Double): Boolean {
+        selectedLocation = position
+        checkIsFormComplete()
+        return true
+    }
+
+    override fun onClickOk() {
+        if(selectedLocation == null) {
+            return
+        } else {
+            viewLifecycleScope.launch { // viewLifecycleScope is here via cargo cult - what it is doing and is it needed TODO
+                applyEdit(CreateNodeAction(selectedLocation!!, entry.tagsInATP))
+            }
+        }
+    }
+
+    // from abstractOverlayForm - share code somehow?
+    protected fun applyEdit(answer: ElementEditAction, geometry: ElementGeometry = this.geometry) {
+        viewLifecycleScope.launch {
+            solve(answer, geometry)
+        }
+    }
+
+    // from abstractOverlayForm - share code somehow?
+    private suspend fun solve(action: ElementEditAction, geometry: ElementGeometry) {
+        /*
+        TODO activate
+        setLocked(true)
+        val isSurvey = checkIsSurvey(geometry, recentLocationStore.get())
+        if (!isSurvey && !confirmIsSurvey(requireContext())) {
+            setLocked(false)
+            return
+        }
+         */
+        val isSurvey = true // TODO: see above
+
+        withContext(Dispatchers.IO) {
+            addElementEditsController.add(CreatePoiBasedOnAtp(), geometry, "survey", action, isSurvey)
+        }
+        listener?.onEdited(CreatePoiBasedOnAtp(), geometry)
+    }
+    override fun isFormComplete(): Boolean {
+        return selectedLocation != null
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        val args = requireArguments()
+        entry = Json.decodeFromString(args.getString(ATP_ENTRY)!!)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        // TODO: maybe should be more prominent?
+        setTitleHintLabel(getNameAndLocationSpanned(Node(
+            1,
+            position = entry.position,
+            tags = entry.tagsInATP,
+            version = 1,
+            timestampEdited = 1,
+        ), resources, featureDictionary))
+    }
+
+    override fun onStart() {
+        super.onStart()
+        updateButtonPanel()
+    }
+
+    protected fun updateButtonPanel() {
+        // TODO: create answers to send to API, not just hide quests
+        val mappedAlready = AnswerItem(R.string.quest_atp_add_missing_poi_mapped_already) { /*applyAnswer(false)*/ hideQuest() }
+        val missing = AnswerItem(R.string.quest_atp_add_missing_poi_does_not_exist) { /*applyAnswer(true)*/ hideQuest() }
+        val cantSay = AnswerItem(R.string.quest_generic_answer_notApplicable) { onClickCantSay() }
+
+        setButtonPanelAnswers(listOf(mappedAlready, missing, cantSay))
+    }
+
+    // taken from AbstractOsmQuestForm, TODO - should common part reside somewhere?
+    private fun onClickCantSay() {
+        context?.let { AlertDialog.Builder(it)
+            .setTitle(R.string.quest_leave_new_note_title)
+            .setMessage(R.string.quest_leave_new_note_description)
+            .setNegativeButton(R.string.quest_leave_new_note_no) { _, _ -> hideQuest() }
+            .setPositiveButton(R.string.quest_leave_new_note_yes) { _, _ -> composeNote() }
+            .show()
+        }
+    }
+
+    // taken from AbstractOsmQuestForm, TODO - should common part reside somewhere?
+    // TODO should something listen using this listener?
+    interface Listener {
+        /** The GPS position at which the user is displayed at */
+        val displayedMapLocation: Location?
+
+        /** Called when the user successfully answered the quest */
+        fun onEdited(editType: ElementEditType, geometry: ElementGeometry)
+
+        /** Called when the user successfully answered the quest */
+        fun onRejectedAtpEntry(editType: ElementEditType, geometry: ElementGeometry)
+
+        /** Called when the user chose to move the node */
+        fun onMoveNode(editType: ElementEditType, node: Node)
+
+        /** Called when the user chose to hide the quest instead */
+        fun onQuestHidden(questKey: QuestKey)
+    }
+    private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
+
+    // taken from AbstractOsmQuestForm, TODO - should common part reside somewhere?
+    protected fun hideQuest() {
+        viewLifecycleScope.launch {
+            withContext(Dispatchers.IO) { hideQuestController.hide(questKey) }
+            listener?.onQuestHidden(questKey)
+        }
+    }
+
+    // taken from AbstractOsmQuestForm, TODO - should common part reside somewhere?
+    private val englishResources: Resources
+        get() {
+            val conf = Configuration(resources.configuration)
+            conf.setLocale(Locale.ENGLISH)
+            val localizedContext = super.requireContext().createConfigurationContext(conf)
+            return localizedContext.resources
+        }
+
+    // For start, should users be allowed to create notes AT ALL?
+    // taken from AbstractOsmQuestForm, TODO - should common part reside somewhere?
+    protected fun composeNote() {
+        val questTitle = englishResources.getString(CreatePoiBasedOnAtp().getTitle(entry.tagsInATP))
+        // TODO whops? we have problem here
+        // TODO getNameAndLocationSpanned requires Element
+        // TODO we do not have an element as this quest does not operate on Elements
+        // TODO we cannot instantiate fake Element and feed it ATP tags as this class is unavailable here
+        // TODO create interface implement by Element and AtpEntry?
+        // TODO make Element instantition possible here somehow?
+        // TODO something else?
+        //val element = Element()
+        //val leaveNoteContextFail = getNameAndLocationSpanned(element, englishResources, featureDictionary)
+        val hintLabel = "TODO" //well, TODO //getNameAndLocationSpanned(element, englishResources, featureDictionary)
+        val leaveNoteContext = if (hintLabel.isNullOrBlank()) {
+            "Unable to answer \"$questTitle\""
+        } else {
+            "Unable to answer \"$questTitle\" – $hintLabel"
+        }
+        // TODO get it working, I guess
+        //listener?.onComposeNote(osmElementQuestType, element, geometry, leaveNoteContext)
+    }
+
+    fun getLabelMimickingQuestLabel() {
+        val languages = getLanguagesForFeatureDictionary(resources.configuration)
+        val feature = featureDictionary
+        // also blocked: FeatureDictionary.getFeature demands Element
+        //?.getFeature(element, languages)
+        //?.name
+        //?.withNonBreakingSpaces()
+        //?.inItalics()
+        val name = getNameLabel(entry.tagsInATP)
+        //?.withNonBreakingSpaces()
+        //?.inBold()
+    }
+
+    // include equivalents of
+    //private val noteSource: NotesWithEditsSource by inject()
+    //private val noteEditsController: NoteEditsController by inject()
+    // to get ATP data from my API
+
+    /*
+    interface Listener {
+        /** Called when the user successfully answered the quest */
+        fun onNoteQuestSolved(questType: QuestType, noteId: Long, position: LatLon)
+        /** Called when the user did not answer the quest but also did not hide it */
+        fun onNoteQuestClosed()
+    }
+    private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
+     */
+
+    companion object {
+        private const val ATP_ENTRY = "atp_entry"
+
+        fun createArguments(entry: AtpEntry) = bundleOf(
+            ATP_ENTRY to Json.encodeToString(entry)
+        )
+    }
+}
