@@ -23,6 +23,7 @@ class AddWheelchairAccessBusiness : OsmFilterQuestType<WheelchairAccess>(), Andr
             or amenity = recycling and recycling_type = centre
             or amenity = social_facility and social_facility ~ food_bank|clothing_bank|soup_kitchen|dairy_kitchen
             or tourism = information and information = office
+            or tourism = wilderness_hut
             or """ +
 
         // The common list is shared by the opening hours quest and the wheelchair quest.
