@@ -4,12 +4,19 @@ import de.westnordost.streetcomplete.data.OSM_API_URL
 import de.westnordost.streetcomplete.data.osmnotes.AvatarsInNotesUpdater
 import de.westnordost.streetcomplete.data.osmnotes.NoteController
 import de.westnordost.streetcomplete.data.osmnotes.NotesApiClient
+import de.westnordost.streetcomplete.data.osmnotes.NotesApiParser
 import org.koin.dsl.module
 
 val atpModule = module {
     factory { AtpDao(get()) }
     factory { AtpDownloader(get(), get()) }
-    factory { AtpApiClient(get(), OSM_API_URL) } // TODO fix base URL, where it is even defined?
+    // TODO: connect to actual global API
+    // current holders:
+    // https://gist.github.com/matkoniecz/163c0bca9d03efc33d744f6091c91904
+    // https://codeberg.org/matkoniecz/experimental_read_only_api_for_atp_osm_work
+    val OSM_ATP_COMPARISON_API_BASE_URL = "https://gist.githubusercontent.com/matkoniecz/163c0bca9d03efc33d744f6091c91904/raw/dde2ea6e4b63435774a595ff5dcc42446af7b39b/datav4.geojson"
+    factory { AtpApiClient(get(), OSM_ATP_COMPARISON_API_BASE_URL, get()) }
+    factory { AtpApiParser() }
 
     single {
         AtpController(get()).apply {

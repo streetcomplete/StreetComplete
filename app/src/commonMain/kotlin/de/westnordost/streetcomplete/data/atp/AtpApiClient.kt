@@ -30,8 +30,9 @@ class AtpApiClient(
     private val httpClient: HttpClient,
     private val baseUrl: String,
     //private val userAccessTokenSource: UserAccessTokenSource,
-    //private val notesApiParser: NotesApiParser
+    private val atpApiParser: AtpApiParser
 ) {
+    // TODO remove dead code
     /**
      * Create a new note at the given location
      *
@@ -127,13 +128,17 @@ class AtpApiClient(
      *
      * @return the incoming notes
      */
-    /*
-    suspend fun getAllAtpEntries(bounds: BoundingBox, limit: Int? = null): List<Note> = wrapApiClientExceptions {
-        // server has data split into graticules of one degree size
+    suspend fun getAllAtpEntries(bounds: BoundingBox, limit: Int? = null): List<AtpEntry> = wrapApiClientExceptions {
+        // server will have data split into graticules of one degree size
         // do the same
 
 
         try {
+            val response = httpClient.get(baseUrl) {
+                // TODO query specific area(s) when API supports this
+                expectSuccess = true
+            }
+            /*
             val response = httpClient.get(baseUrl + "notes") {
                 //userAccessTokenSource.accessToken?.let { bearerAuth(it) }
                 parameter("bbox", bounds.toOsmApiString())
@@ -141,16 +146,12 @@ class AtpApiClient(
                 parameter("closed", 0)
                 expectSuccess = true
             }
+             */
             val source = response.bodyAsChannel().asSource().buffered()
-            return notesApiParser.parseNotes(source)
+            return atpApiParser.parseAtpEntries(source)
         } catch (e: ClientRequestException) {
-            if (e.response.status == HttpStatusCode.BadRequest) {
-                throw QueryTooBigException(e.message, e)
-            } else {
-                throw e
-            }
+            throw e
         }
     }
 
-     */
 }
