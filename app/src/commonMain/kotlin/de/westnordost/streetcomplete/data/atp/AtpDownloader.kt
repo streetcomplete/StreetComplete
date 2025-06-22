@@ -23,12 +23,6 @@ class AtpDownloader(
 
         val entries: Collection<AtpEntry> = atpApi.getAllAtpEntries(bbox)
 
-        /*
-        val entries = notesApi // TODO look at notesApi, create ATP API
-            .getAllOpen(bbox, 10000)
-            // exclude invalid notes (#1338)
-            .filter { it.comments.isNotEmpty() }
-        */
         val seconds = (nowAsEpochMilliseconds() - time) / 1000.0
         Log.i(TAG, "Downloaded ${entries.size} ATP entries in ${seconds.format(1)}s")
 
