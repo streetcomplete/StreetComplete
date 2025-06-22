@@ -53,7 +53,7 @@ class AddMaxPhysicalHeight(
         and expressway !~ yes
     """.toElementFilterExpression() }
     // explicitly removed motorway-style ways (highway=motorway*, motorroad/motorway=yes,
-    // expressway=yes) from ever being matched as measuring heights on these ways can be
+    // expressway=yes) from ever being matched as measuring heights on these ways likely is
     // extremely difficult and/or dangerous and/or illegal
 
     override val changesetComment = "Specify maximum physical heights"
