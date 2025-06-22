@@ -14,7 +14,8 @@ val atpModule = module {
     // current holders:
     // https://gist.github.com/matkoniecz/163c0bca9d03efc33d744f6091c91904
     // https://codeberg.org/matkoniecz/experimental_read_only_api_for_atp_osm_work
-    val OSM_ATP_COMPARISON_API_BASE_URL = "https://gist.githubusercontent.com/matkoniecz/163c0bca9d03efc33d744f6091c91904/raw/dde2ea6e4b63435774a595ff5dcc42446af7b39b/datav4.geojson"
+    // https://matkoniecz.codeberg.page/improving_openstreetmap_using_alltheplaces_dataset/read_only_api_prototype/lat_50/lon_20_gathered.geojson
+    val OSM_ATP_COMPARISON_API_BASE_URL = "https://matkoniecz.codeberg.page/improving_openstreetmap_using_alltheplaces_dataset/read_only_api_prototype/"
     factory { AtpApiClient(get(), OSM_ATP_COMPARISON_API_BASE_URL, get()) }
     factory { AtpApiParser() }
 
