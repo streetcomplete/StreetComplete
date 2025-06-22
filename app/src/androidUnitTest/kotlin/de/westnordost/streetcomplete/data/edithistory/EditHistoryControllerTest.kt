@@ -8,6 +8,7 @@ import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsController
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsSource
 import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
+import de.westnordost.streetcomplete.data.quest.AtpQuestKey
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.visiblequests.QuestsHiddenController
 import de.westnordost.streetcomplete.data.visiblequests.QuestsHiddenSource
@@ -137,11 +138,11 @@ class EditHistoryControllerTest {
     }
 
     @Test fun `undo hid atp quest`() {
-        // TODO: this test fails: at the same test unhinding actually works. What is going on?
         val e = atpQuestHidden()
-        //on(notesSource.get(e.note.id)).thenReturn(e.note) TODO remove
+        val editKey = QuestHiddenKey(questKey = e.questKey)
+        on(atpDataSource.get(e.questKey.atpEntryId)).thenReturn(e.atpEntry)
         on(hiddenQuestsController.get(e.questKey)).thenReturn(e.createdTimestamp)
-        ctrl.undo(e.key)
+        ctrl.undo(editKey)
         verify(hiddenQuestsController).unhide(e.questKey)
     }
 
