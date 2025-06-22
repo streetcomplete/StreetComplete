@@ -181,7 +181,6 @@ class AtpQuestController(
                 if(!filteredOutCandidates.contains(atpCandidate)) {
                     if(isThereOsmAtpMatch(osm.tags, atpCandidate.tagsInATP, ElementKey(osm.type, osm.id), atpCandidate.position)) {
                         filteredOutCandidates.add(atpCandidate)
-                        // TODO: add test for both within range and over range
                     }
                 }
             }
