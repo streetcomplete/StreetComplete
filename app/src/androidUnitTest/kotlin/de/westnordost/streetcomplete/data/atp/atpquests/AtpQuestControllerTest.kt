@@ -107,14 +107,19 @@ class AtpQuestControllerTest {
     fun `getAll created quests if map data is empty and does not obstruct it`() {
         val bbox = bbox()
         val location = LatLon(1.0, 1.0)
-        val atpEntries = listOf(atpEntry(1, location), atpEntry(2, location), atpEntry(3, location))
+        val atpEntries = listOf(
+            atpEntry(1, location, reportType = ReportType.MISSING_POI_IN_OPENSTREETMAP),
+            atpEntry(2, location, reportType = ReportType.MISSING_POI_IN_OPENSTREETMAP),
+            atpEntry(3, location, reportType = ReportType.MISSING_POI_IN_OPENSTREETMAP),
+        )
 
         on(atpDataSource.getAll(bbox)).thenReturn(atpEntries)
 
         val expectedQuests = atpEntries.map {
             CreateElementQuest(
                 it.id, it,
-                CreatePoiBasedOnAtp(), location
+                MockQuestType,
+                location
             )
         }
 
@@ -164,8 +169,8 @@ class AtpQuestControllerTest {
 
         val mapData = mock<MapDataWithGeometry>()
         val elementMatchingAtp = node(100, locationForAtpAndMatchingOsmItem, tags = tagsForAtpAndMatchingOsm)
-        val elementMatchingAtpButAway = node(101, locationForAtpAndMatchingOsmItem, tags = tagsForAtpAndMatchingOsm)
-        val elementNotMatchingAtp = node(102, locationForAtpAndMatchingOsmItem, tags = tagsForAtpAndMatchingOsm)
+        val elementMatchingAtpButAway = node(101, farAwayLocationForOsmItem, tags = tagsForAtpAndMatchingOsm)
+        val elementNotMatchingAtp = node(102, locationForAtpAndMatchingOsmItem, tags = tagsForOsmNotMatchingAtp)
         val elementList = listOf<Element>(elementMatchingAtp, elementMatchingAtpButAway, elementNotMatchingAtp)
         on(mapData.iterator()).thenReturn(elementList.iterator())
         on(mapDataSource.getMapDataWithGeometry(any())).thenReturn(mapData)
