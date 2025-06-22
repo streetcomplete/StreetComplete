@@ -167,7 +167,7 @@ class AtpQuestController(
     }
 
     init {
-        atpDataSource.addListener(atpUpdatesListener) // TODO should I monitor AtpQuestController or AtpDataWithEditsSource
+        atpDataSource.addListener(atpUpdatesListener)
         noteSource.addListener(noteUpdatesListener)
         mapDataSource.addListener(mapDataSourceListener)
     }
