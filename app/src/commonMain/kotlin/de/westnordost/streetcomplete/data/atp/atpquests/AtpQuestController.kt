@@ -104,7 +104,7 @@ class AtpQuestController(
             updated: MapDataWithGeometry,
             deleted: Collection<ElementKey>,
         ) {
-            val obsoleteQuestIds = mutableListOf<Long>()
+            val deletedQuestIds = mutableListOf<Long>()
             updated.forEach { osm ->
                 // TODO STUCK how can I get access to existing quests here?
                 // do I really need to do atpDataSource.getAll()
@@ -127,7 +127,7 @@ class AtpQuestController(
                     // TODO: profile it whether it is too slow
                     candidates.forEach { atpCandidate ->
                         if(isThereOsmAtpMatch(osm.tags, atpCandidate.tagsInATP, ElementKey(osm.type, osm.id), atpCandidate.position)) {
-                            obsoleteQuestIds.add(atpCandidate.id)
+                            deletedQuestIds.add(atpCandidate.id)
                             // TODO: what if this ATP entries were ineligible for quest already? and there was no quest?
                         }
                     }
@@ -137,7 +137,7 @@ class AtpQuestController(
             // in theory changing name or retagging shop may cause new quests to appear - lets not support this
             // as most cases will ve false positives anyway and this would be expensive to check
             // instead pass emptyList<CreateElementQuest>()
-            onUpdatingQuestList(emptyList<CreateElementQuest>(), obsoleteQuestIds)
+            onUpdatingQuestList(emptyList<CreateElementQuest>(), deletedQuestIds)
         }
 
         override fun onReplacedForBBox(
