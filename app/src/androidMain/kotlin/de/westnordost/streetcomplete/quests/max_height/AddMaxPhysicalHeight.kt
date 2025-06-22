@@ -9,6 +9,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement
 import de.westnordost.streetcomplete.osm.ALL_ROADS
+import de.westnordost.streetcomplete.osm.MOTORWAYS
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.screens.measure.ArSupportChecker
 
@@ -37,7 +38,7 @@ class AddMaxPhysicalHeight(
 
     private val wayFilter by lazy { """
         ways with
-        highway ~ ${ALL_ROADS.joinToString("|")}
+        highway ~ ${(ALL_ROADS - MOTORWAYS).joinToString("|")}
         and (
           maxheight = below_default
           or source:maxheight ~ ".*estimat.*"
@@ -47,7 +48,13 @@ class AddMaxPhysicalHeight(
         and !maxheight:physical
         and access !~ private|no
         and vehicle !~ private|no
+        and motorroad !~ yes
+        and motorway !~ yes
+        and expressway !~ yes
     """.toElementFilterExpression() }
+    // explicitly removed motorway-style ways (highway=motorway*, motorroad/motorway=yes,
+    // expressway=yes) from ever being matched as measuring heights on these ways can be
+    // extremely difficult and/or dangerous and/or illegal
 
     override val changesetComment = "Specify maximum physical heights"
     override val wikiLink = "Key:maxheight"
@@ -64,8 +71,8 @@ class AddMaxPhysicalHeight(
             && tags["man_made"] != "pipeline"
         // only the "below the bridge" situation may need some context
         return when {
-            isBelowBridge -> R.string.quest_maxheight_below_bridge_title
-            else          -> R.string.quest_maxheight_title
+            isBelowBridge -> R.string.quest_maxheight_physical_below_bridge_title
+            else          -> R.string.quest_maxheight_physical_title
         }
     }
 

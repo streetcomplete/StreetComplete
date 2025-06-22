@@ -1,11 +1,17 @@
 package de.westnordost.streetcomplete.osm
 
-val ALL_ROADS = setOf(
-    "motorway", "motorway_link", "trunk", "trunk_link",
-    "primary", "primary_link", "secondary", "secondary_link", "tertiary", "tertiary_link",
-    "unclassified", "residential", "living_street", "pedestrian",
-    "service", "track", "busway", "road",
-)
+val MOTORWAYS = setOf("motorway", "motorway_link")
+val TRUNKS    = setOf("trunk", "trunk_link")
+val PRIMARY   = setOf("primary", "primary_link")
+val SECONDARY = setOf("secondary", "secondary_link")
+val TERTIARY  = setOf("tertiary", "tertiary_link")
+
+val CLASSIFIED_ROADS = PRIMARY + SECONDARY + TERTIARY
+val PEDESTRIAN_ROADS = setOf("residential", "living_street", "pedestrian")
+val OTHER_ROADS      = setOf("unclassified", "service", "track", "busway", "road")
+
+val ALL_ROADS = MOTORWAYS + TRUNKS + CLASSIFIED_ROADS +
+                PEDESTRIAN_ROADS + OTHER_ROADS
 
 val ALL_PATHS = setOf(
     "footway", "cycleway", "path", "bridleway", "steps"
