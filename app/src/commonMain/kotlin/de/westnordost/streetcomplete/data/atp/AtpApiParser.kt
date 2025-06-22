@@ -21,7 +21,6 @@ class AtpApiParser {
             Log.e(TAG, "features entry missing in OSM_ATP API comparison response, this response is malformed")
             return emptyList()
         }
-        Log.e(TAG, features.toString())
         features.forEach { feature ->
             val geometry = feature.jsonObject["geometry"]?.jsonObject
             if(geometry == null) {
@@ -39,8 +38,6 @@ class AtpApiParser {
                 return@forEach
             }
             val properties = feature.jsonObject["properties"]?.jsonObject
-            Log.e(TAG, "properties: $properties")
-            Log.e(TAG, "properties[\"entry_id\"]: ${properties?.get("entry_id")}")
             if(properties == null) {
                 Log.e(TAG, "properties entry missing in OSM_ATP API comparison response, this response is malformed")
                 return@forEach
@@ -82,16 +79,7 @@ class AtpApiParser {
                 return@forEach
             }
             val tagsInOSM = properties["atp_tags"]?.jsonObject?.mapValues { it.value.toString() }
-
-
             val rawErrorValue = properties["error_type"]?.jsonPrimitive?.content
-            if ("OPENING_HOURS_REPORTED_AS_OUTDATED_IN_OPENSTREETMAP" == rawErrorValue.toString()) {
-                Log.d(TAG, "=OPENING_HOURS_REPORTED_AS_OUTDATED_IN_OPENSTREETMAP")
-            }
-            if ("MISSING_POI_IN_OPENSTREETMAP" == rawErrorValue.toString()) {
-                Log.d(TAG, "=MISSING_POI_IN_OPENSTREETMAP")
-            }
-
             val reportType = rawErrorValue.let { errorValue ->
                 when (errorValue) {
                     "MISSING_POI_IN_OPENSTREETMAP" -> {
