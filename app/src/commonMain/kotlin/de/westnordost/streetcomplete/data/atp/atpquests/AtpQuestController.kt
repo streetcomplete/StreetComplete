@@ -128,7 +128,6 @@ class AtpQuestController(
                     candidates.forEach { atpCandidate ->
                         if(isThereOsmAtpMatch(osm.tags, atpCandidate.tagsInATP, ElementKey(osm.type, osm.id), atpCandidate.position)) {
                             obsoleteQuestIds.add(atpCandidate.id)
-                            // TODO: add test for both within range and over range
                             // TODO: what if this ATP entries were ineligible for quest already? and there was no quest?
                         }
                     }
