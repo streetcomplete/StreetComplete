@@ -56,9 +56,9 @@ class AtpQuestController(
         if (atpNames.contains(osm["name"]?.lowercase()) || atpNames.contains(osm["brand"]?.lowercase())) {
             return isItWithinRange(osmIdentifier, atpPosition)
         }
-        //yes, with following any shop=convenience will block any shop=convenience
-        //within range
-        // this is extreme and tweaking is beneficial
+        // yes, with following any shop=convenience will block any shop=convenience
+        // within range
+        // this is extreme and making filter smarter may be an improvement
         listOf("shop", "amenity", "leisure", "office", "tourism", "craft", "healthcare", "attraction").forEach { mainKey ->
             if(atp[mainKey] != null && atp[mainKey] == osm[mainKey]) {
                 return isItWithinRange(osmIdentifier, atpPosition)
