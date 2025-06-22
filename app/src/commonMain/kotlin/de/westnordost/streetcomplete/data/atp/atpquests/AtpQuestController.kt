@@ -22,7 +22,7 @@ import de.westnordost.streetcomplete.util.math.enlargedBy
 class AtpQuestController(
     private val mapDataSource: MapDataWithEditsSource,
     private val atpDataSource: AtpDataWithEditsSource, // TODO what exactly should be feed here?
-    private val noteSource: NotesWithEditsSource, // Do I need it to suppress quests? Probably yes, TODO
+    private val noteSource: NotesWithEditsSource, // Do I need it to suppress quests? Probably no, TODO
     private val questTypeRegistry: QuestTypeRegistry,
 ) : AtpQuestSource {
     /* Must be a singleton because there is a listener that should respond to a change in the
