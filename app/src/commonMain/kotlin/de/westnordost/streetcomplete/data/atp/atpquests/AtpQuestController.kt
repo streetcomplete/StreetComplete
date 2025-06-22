@@ -27,7 +27,6 @@ class AtpQuestController(
     private val atpDataSource: AtpDataWithEditsSource, // TODO what exactly should be feed here?
     private val noteSource: NotesWithEditsSource, // Do I need it to suppress quests? Probably yes, TODO
     private val questTypeRegistry: QuestTypeRegistry,
-    //TODO? is it needed? private val prefs: Preferences,
 ) : AtpQuestSource {
     /* Must be a singleton because there is a listener that should respond to a change in the
      *  database table */
