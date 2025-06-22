@@ -129,6 +129,7 @@ class AtpQuestController(
                         if(isThereOsmAtpMatch(osm.tags, atpCandidate.tagsInATP, ElementKey(osm.type, osm.id), atpCandidate.position)) {
                             deletedQuestIds.add(atpCandidate.id)
                             // TODO: what if this ATP entries were ineligible for quest already? and there was no quest?
+                            // TODO: would listing them here again would harm anything?
                         }
                     }
                 }
@@ -152,6 +153,7 @@ class AtpQuestController(
                     if(isThereOsmAtpMatch(osm.tags, atpCandidate.tagsInATP, ElementKey(osm.type, osm.id), atpCandidate.position)) {
                         obsoleteQuestIds.add(atpCandidate.id)
                         // TODO: what if this ATP entries were ineligible for quest already? and there was no quest?
+                        // TODO: would listing them here again would harm anything?
                     }
                 }
             }
