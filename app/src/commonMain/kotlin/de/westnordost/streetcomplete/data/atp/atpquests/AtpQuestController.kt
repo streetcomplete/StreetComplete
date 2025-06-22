@@ -59,7 +59,7 @@ class AtpQuestController(
         //yes, with following any shop=convenience will block any shop=convenience
         //within range
         // this is extreme and tweaking is beneficial
-        listOf("shop", "amenity", "leisure").forEach { mainKey ->
+        listOf("shop", "amenity", "leisure", "office").forEach { mainKey ->
             if(atp[mainKey] != null && atp[mainKey] == osm[mainKey]) {
                 return isItWithinRange(osmIdentifier, atpPosition)
             }
