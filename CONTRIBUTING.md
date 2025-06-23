@@ -132,7 +132,6 @@ Materials in [`res/documentation`](res/documentation) also may be useful, it inc
 
 ### Created for StreetComplete
 
-* [parser](https://github.com/matkoniecz/Zazolc/tree/taginfo) by [@matkoniecz](https://github.com/matkoniecz) listing tags added by StreetComplete for [taginfo](https://taginfo.openstreetmap.org/projects/streetcomplete#tags)
 * [blacklistr](https://github.com/ENT8R/blacklistr) by [@ENT8R](https://github.com/ENT8R) for visualizing StreetComplete's country exclusion list
 * [NotesReview](https://github.com/ENT8R/NotesReview) by [@ENT8R](https://github.com/ENT8R) for reviewing notes with a specific keyword (here: `StreetComplete`)
 * [crops-parser](https://github.com/rugk/crops-parser) by [@rugk](https://github.com/rugk) for parsing data for the orchard quest
@@ -146,4 +145,5 @@ You may find more projects under [the StreetComplete tag](https://github.com/top
 #### Retired
 
 * [oneway-data-api](https://github.com/streetcomplete/oneway-data-api) by [@ENT8R](https://github.com/ENT8R) for getting oneway data from improveosm.org
+* [parser](https://github.com/matkoniecz/Zazolc/tree/taginfo) by [@matkoniecz](https://github.com/matkoniecz) listing tags added by StreetComplete for [taginfo](https://taginfo.openstreetmap.org/projects/streetcomplete#tags)
 
