@@ -261,7 +261,7 @@ private const val MARKER_NOTE_ID = "note_id"
 private const val QUEST_GROUP_OSM = "osm"
 private const val QUEST_GROUP_OSM_NOTE = "osm_note"
 private const val QUEST_GROUP_ATP = "atp"
-private const val MARKER_ATP_ENTRY_ID = "note_id"
+private const val MARKER_ATP_ENTRY_ID = "atp_entry_id"
 
 private fun QuestKey.toProperties(): List<Pair<String, String>> = when (this) {
     is OsmNoteQuestKey -> listOf(
