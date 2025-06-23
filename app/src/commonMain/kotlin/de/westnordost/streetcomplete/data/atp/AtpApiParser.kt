@@ -7,12 +7,18 @@ import de.westnordost.streetcomplete.util.logs.Log
 import kotlinx.io.Source
 import kotlinx.io.readString
 import kotlinx.serialization.json.Json
-import kotlinx.serialization.json.JsonObject
+import kotlinx.serialization.json.JsonElement
+import kotlinx.serialization.json.JsonNull
+import kotlinx.serialization.json.JsonPrimitive
 import kotlinx.serialization.json.jsonArray
 import kotlinx.serialization.json.jsonObject
 import kotlinx.serialization.json.jsonPrimitive
 
 class AtpApiParser {
+
+    fun isParsedNull(element: JsonElement?): Boolean {
+        return element is JsonPrimitive && element?.jsonPrimitive is JsonNull
+    }
     fun parseAtpEntries(source: Source) : List<AtpEntry> {
         val returned = mutableListOf<AtpEntry>()
         val jsonElement = Json.parseToJsonElement(source.readString())
@@ -22,63 +28,93 @@ class AtpApiParser {
             return emptyList()
         }
         features.forEach { feature ->
-            val geometry = feature.jsonObject["geometry"]?.jsonObject
-            if(geometry == null) {
-                Log.e(TAG, "geometry entry missing in OSM_ATP API comparison response, this response is malformed")
-                return@forEach
-            }
-            val lon = geometry["coordinates"]?.jsonArray[0]?.toString()?.toDoubleOrNull()
-            if(lon == null) {
-                Log.e(TAG, "lon entry missing in OSM_ATP API comparison response, this response is malformed")
-                return@forEach
-            }
-            val lat = geometry["coordinates"]?.jsonArray[1]?.toString()?.toDoubleOrNull()
-            if(lat == null) {
-                Log.e(TAG, "lat entry missing in OSM_ATP API comparison response, this response is malformed")
-                return@forEach
-            }
             val properties = feature.jsonObject["properties"]?.jsonObject
-            if(properties == null) {
-                Log.e(TAG, "properties entry missing in OSM_ATP API comparison response, this response is malformed")
+            if (properties == null) {
+                Log.e(
+                    TAG,
+                    "properties entry missing in OSM_ATP API comparison response, this response is malformed"
+                )
+                return@forEach
+            }
+            val lon = properties["atp_center"]?.jsonObject["lon"]?.toString()?.toDoubleOrNull()
+            if (lon == null) {
+                Log.e(
+                    TAG,
+                    "lon entry missing in OSM_ATP API comparison response, this response is malformed"
+                )
+                return@forEach
+            }
+            val lat = properties["atp_center"]?.jsonObject["lat"]?.toString()?.toDoubleOrNull()
+            if (lat == null) {
+                Log.e(
+                    TAG,
+                    "lat entry missing in OSM_ATP API comparison response, this response is malformed"
+                )
                 return@forEach
             }
             val id = properties["entry_id"]?.toString()?.toLongOrNull()
-            if(id == null) {
-                Log.e(TAG, "id entry missing in OSM_ATP API comparison response, this response is malformed")
+            if (id == null) {
+                Log.e(
+                    TAG,
+                    "id entry missing in OSM_ATP API comparison response, this response is malformed"
+                )
                 return@forEach
             }
-            val osmObjectType = properties["osm_object_type"]?.toString()
-            val osmObjectId = properties["osm_object_id"]?.toString()?.toLongOrNull()
-            val osmMatch = if(osmObjectType == null || osmObjectId == null) {
+            val rawOsmObjectId = properties["osm_object_id"]
+            val rawOsmObjectType = properties["osm_object_type"]
+            val osmObjectType = if(isParsedNull(rawOsmObjectType)) {
+                null
+            } else {
+                rawOsmObjectType?.jsonPrimitive?.content?.toString()
+            }
+            val osmObjectId = if(isParsedNull(rawOsmObjectId)) {
+                null
+            } else {
+                rawOsmObjectId?.jsonPrimitive?.content?.toLongOrNull()
+            }
+            val osmMatch = if (osmObjectType == null || osmObjectId == null) {
                 null
             } else {
                 when (osmObjectType) {
                     "node" -> {
                         ElementKey(ElementType.NODE, osmObjectId)
                     }
+
                     "way" -> {
                         ElementKey(ElementType.WAY, osmObjectId)
                     }
+
                     "relation" -> {
                         ElementKey(ElementType.RELATION, osmObjectId)
                     }
+
                     else -> {
-                        Log.e(TAG, "osm_object_type has invalid value OSM_ATP API comparison response, this response is malformed")
+                        Log.e(
+                            TAG,
+                            "osm_object_type has invalid value OSM_ATP API comparison response, this response is malformed"
+                        )
                         return@forEach
                     }
                 }
             }
             val unparsedAtpTags = properties["atp_tags"]?.jsonObject
-            if(unparsedAtpTags == null) {
-                Log.e(TAG, "tagsInATP entry missing in OSM_ATP API comparison response, this response is malformed")
+            if (unparsedAtpTags == null) {
+                Log.e(
+                    TAG,
+                    "tagsInATP entry missing in OSM_ATP API comparison response, this response is malformed"
+                )
                 return@forEach
             }
-            val tagsInATP = unparsedAtpTags.mapValues { it.value.toString() }
-            if(tagsInATP == null) {
-                Log.e(TAG, "tagsInATP entry missing in OSM_ATP API comparison response, this response is malformed")
-                return@forEach
+            val tagsInATP = unparsedAtpTags.mapValues {
+                it.value.jsonPrimitive.content
             }
-            val tagsInOSM = properties["atp_tags"]?.jsonObject?.mapValues { it.value.toString() }
+            val tagsInOSM = if (isParsedNull(properties["osm_match_tags"])) {
+                null
+            } else {
+                properties["osm_match_tags"]?.jsonObject?.mapValues {
+                    it.value.jsonPrimitive.content
+                }
+            }
             val rawErrorValue = properties["error_type"]?.jsonPrimitive?.content
             val reportType = rawErrorValue.let { errorValue ->
                 when (errorValue) {
