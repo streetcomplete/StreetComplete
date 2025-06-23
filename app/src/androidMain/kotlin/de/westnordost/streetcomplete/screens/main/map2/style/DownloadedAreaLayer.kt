@@ -6,6 +6,7 @@ import de.westnordost.streetcomplete.data.download.tiles.TilePos
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.toPolygon
 import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.downloaded_area_hatching
 import de.westnordost.streetcomplete.screens.main.map2.toPosition
 import dev.sargunv.maplibrecompose.compose.MaplibreComposable
 import dev.sargunv.maplibrecompose.compose.layer.FillLayer

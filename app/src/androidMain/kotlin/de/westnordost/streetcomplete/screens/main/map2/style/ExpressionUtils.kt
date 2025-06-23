@@ -82,7 +82,7 @@ fun Feature.localizedName(
 fun inMeters(
     width: Expression<NumberValue<Number>>,
     latitude: Double = 30.0
-): Expression<NumberValue<Number>> {
+): Expression<NumberValue<Dp>> {
     // the more north you go, the smaller of an area each mercator tile actually covers
     // the additional factor of 1.20 comes from a simple measuring test with a ruler on a
     // smartphone screen done at approx. latitude = 0 and latitude = 70, i.e. without it, lines are
@@ -92,17 +92,17 @@ fun inMeters(
         exponential(2f), zoom(),
         8 to width / const(256) / const(sizeFactor),
         24 to width * const(256) / const(sizeFactor)
-    )
+    ).dp
 }
 
 fun inMeters(
     width: Float,
     latitude: Double = 30.0
-): Expression<NumberValue<Number>> {
+): Expression<NumberValue<Dp>> {
     val sizeFactor = (kotlin.math.cos(PI * latitude / 180) * 1.2).toFloat()
     return interpolate(
         exponential(2f), zoom(),
         8 to const(width) / const(256) / const(sizeFactor),
         24 to const(width) * const(256) / const(sizeFactor)
-    )
+    ).dp
 }

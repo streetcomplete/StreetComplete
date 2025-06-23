@@ -32,6 +32,7 @@ import kotlinx.serialization.json.JsonPrimitive
  *  show the geometry of elements surrounding the selected quest */
 @MaplibreComposable @Composable
 fun GeometryMarkersLayers(markers: Collection<Marker>) {
+    // TODO is this recomposed all the time? In that case, remember the features
     val features = FeatureCollection(markers.flatMap { it.toGeoJsonFeature() })
     val source = rememberGeoJsonSource(
         id = "geometry-source",

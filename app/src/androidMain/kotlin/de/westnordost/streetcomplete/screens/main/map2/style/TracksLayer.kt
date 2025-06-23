@@ -2,9 +2,10 @@ package de.westnordost.streetcomplete.screens.main.map2.style
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.map_track_nyan
+import de.westnordost.streetcomplete.resources.map_track_nyan_record
 import de.westnordost.streetcomplete.ui.theme.Location
 import de.westnordost.streetcomplete.ui.theme.Recording
 import de.westnordost.streetcomplete.util.ktx.isApril1st
@@ -20,6 +21,7 @@ import dev.sargunv.maplibrecompose.expressions.dsl.image
 import dev.sargunv.maplibrecompose.expressions.dsl.switch
 import dev.sargunv.maplibrecompose.expressions.value.FloatValue
 import dev.sargunv.maplibrecompose.expressions.value.LineCap
+import org.jetbrains.compose.resources.painterResource
 
 /** Displays a path(s) walked on the map */
 @MaplibreComposable @Composable
@@ -57,7 +59,6 @@ private fun TracksLayerApril1st(
         ),
     )
 }
-
 
 @MaplibreComposable @Composable
 private fun TracksLayerDefault(

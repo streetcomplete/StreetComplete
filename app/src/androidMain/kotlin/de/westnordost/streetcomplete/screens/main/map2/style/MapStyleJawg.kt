@@ -8,6 +8,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.map_oneway_arrow
 import de.westnordost.streetcomplete.screens.main.map2.MapColors
 import dev.sargunv.maplibrecompose.compose.MaplibreComposable
 import dev.sargunv.maplibrecompose.compose.layer.BackgroundLayer

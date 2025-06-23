@@ -3,12 +3,12 @@ package de.westnordost.streetcomplete.screens.main.map2.style
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.DpOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.map_pin_circle
 import de.westnordost.streetcomplete.screens.main.map2.toPosition
 import dev.sargunv.maplibrecompose.compose.FeaturesClickHandler
 import dev.sargunv.maplibrecompose.compose.MaplibreComposable
@@ -37,6 +37,7 @@ import dev.sargunv.maplibrecompose.expressions.value.TranslateAnchor
 import io.github.dellisd.spatialk.geojson.FeatureCollection
 import io.github.dellisd.spatialk.geojson.Point
 import kotlinx.serialization.json.JsonPrimitive
+import org.jetbrains.compose.resources.painterResource
 
 /** Display pins on the map, e.g. quest pins or pins for recent edits */
 @MaplibreComposable @Composable
@@ -45,6 +46,7 @@ fun PinsLayers(
     onClickPin: FeaturesClickHandler? = null,
     onClickCluster: FeaturesClickHandler? = null,
 ) {
+    // TODO is this recomposed all the time? In that case, remember the features
     val source = rememberGeoJsonSource(
         id = "pins-source",
         data = GeoJsonData.Features(FeatureCollection(pins.map { it.toGeoJsonFeature() })),
