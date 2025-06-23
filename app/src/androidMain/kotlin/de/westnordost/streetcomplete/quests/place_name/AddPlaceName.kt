@@ -25,7 +25,6 @@ class AddPlaceName(
           or craft
           or amenity = recycling and recycling_type = centre
           or tourism = information and information = office
-          or tourism = wilderness_hut
           or """ +
 
         // The common list is shared by the opening hours quest and the wheelchair quest.
@@ -76,9 +75,12 @@ class AddPlaceName(
 
                 // name & wheelchair
                 "attraction",
-                "hotel", "guest_house", "motel", "hostel", "alpine_hut", "apartment", "resort", "camp_site", "caravan_site", "chalet" // accommodations
+                "hotel", "guest_house", "motel", "hostel", "alpine_hut", "apartment", "resort", "camp_site", "caravan_site", "chalet", // accommodations
 
-                // and tourism = information, see above
+                // name only
+                "wilderness_hut"
+
+                // and tourism = information, see abovegit
             ),
             "leisure" to arrayOf(
                 // common
