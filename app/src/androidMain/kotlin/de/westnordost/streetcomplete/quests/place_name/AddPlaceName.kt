@@ -80,7 +80,7 @@ class AddPlaceName(
                 // name only
                 "wilderness_hut"
 
-                // and tourism = information, see abovegit
+                // and tourism = information, see above
             ),
             "leisure" to arrayOf(
                 // common
