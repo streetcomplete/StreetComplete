@@ -139,6 +139,7 @@ Materials in [`res/documentation`](res/documentation) also may be useful, it inc
 * [sc-photo-service](https://github.com/streetcomplete/sc-photo-service) by [@exploide](https://github.com/exploide) allows StreetComplete to upload photos associated with OSM Notes
 * [sc-statistics-service](https://github.com/streetcomplete/sc-statistics-service) by [@westnordost](https://github.com/westnordost) aggregates and provides StreetComplete-related statistics about users.
 * [StreetComplete-taginfo-categorize](https://github.com/mnalis/StreetComplete-taginfo-categorize) by [@mnalis](https://github.com/mnalis) generates tags listed in [KEYS_THAT_SHOULD_BE_REMOVED_WHEN_PLACE_IS_REPLACED](https://github.com/streetcomplete/StreetComplete/blob/master/app/src/main/java/de/westnordost/streetcomplete/osm/Place.kt#L244)
+* [All The Places <-> OpenStreetMap matcher](https://codeberg.org/matkoniecz/list_how_openstreetmap_can_be_improved_with_alltheplaces_data#all-the-places-openstreetmap-matcher) - for comparison between OpenStreetMap and All The Places. Produced dataset is listed at [this website](https://matkoniecz.codeberg.page/improving_openstreetmap_using_alltheplaces_dataset/) and powers quests that detect missing points of interests
 
 You may find more projects under [the StreetComplete tag](https://github.com/topics/streetcomplete) on GitHub.
 
