@@ -34,6 +34,7 @@ class AddOpeningHours(
               or amenity = parking and parking = multi-storey
               or amenity = recycling and recycling_type = centre
               or amenity = social_facility and social_facility ~ food_bank|clothing_bank|soup_kitchen|dairy_kitchen
+              or amenity = toilets and (fee = yes or toilets:disposal = flush)
               or tourism = information and information = office
               or """ +
 
