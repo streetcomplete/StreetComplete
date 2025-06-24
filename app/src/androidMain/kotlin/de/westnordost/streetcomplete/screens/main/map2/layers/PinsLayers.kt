@@ -66,7 +66,6 @@ fun PinsLayers(
             zoom() lte const(CLUSTER_MAX_ZOOM),
             Feature.get("point_count").convertToNumber() gt const(1)
         ),
-        sortKey = const(50),
         iconImage = image(painterResource(Res.drawable.map_pin_circle)),
         iconSize = const(0.5f) + (log2(Feature.get("point_count").convertToNumber()) / const(10f)),
         iconAllowOverlap = const(true),
@@ -90,7 +89,6 @@ fun PinsLayers(
                 Feature.get("point_count").convertToNumber() lte const(1)
             )
         ),
-        sortKey = const(40),
         color = const(Color.White),
         radius = const(5.dp),
         strokeColor = const(Color(0xffaaaaaa)),
