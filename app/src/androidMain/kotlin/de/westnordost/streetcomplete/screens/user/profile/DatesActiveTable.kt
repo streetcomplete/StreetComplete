@@ -38,7 +38,7 @@ fun DatesActiveTable(
     datesActive: Set<LocalDate>,
     datesActiveRange: Int,
     modifier: Modifier = Modifier,
-    boxColor: Color = GrassGreen,
+    boxColor: Color = Color.GrassGreen,
     emptyBoxColor: Color = MaterialTheme.colors.surfaceContainer,
     textColor: Color = contentColorFor(MaterialTheme.colors.surface),
     cellPadding: Dp = 2.dp,

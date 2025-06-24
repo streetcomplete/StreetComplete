@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.screens.main.map2.layers
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.map_track_nyan
@@ -75,8 +76,8 @@ private fun TracksLayerDefault(
         dasharray = const(listOf(0, 2)),
         width = const(6.dp),
         color = switch(
-            condition(recording, const(Recording)),
-            fallback = const(Location)
+            condition(recording, const(Color.Recording)),
+            fallback = const(Color.Location)
         ),
     )
 }

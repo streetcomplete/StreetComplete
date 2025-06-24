@@ -41,13 +41,13 @@ fun CurrentLocationLayers(
         id = "accuracy",
         source = source,
         opacity = const(0.15f),
-        color = const(Location),
+        color = const(Color.Location),
         radius = inMeters(
             width = location.accuracy,
             latitude = location.position.latitude
         ),
         strokeOpacity = const(0.5f),
-        strokeColor = const(Location),
+        strokeColor = const(Color.Location),
         strokeWidth = const(1.dp),
         pitchAlignment = const(CirclePitchAlignment.Map),
     )
@@ -77,7 +77,7 @@ fun CurrentLocationLayers(
         CircleLayer(
             id = "location",
             source = source,
-            color = const(Location),
+            color = const(Color.Location),
             radius = const(8.dp),
             strokeColor = const(Color.White),
             strokeWidth = const(2.dp),

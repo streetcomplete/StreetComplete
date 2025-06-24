@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.screens.main.map2.layers
 
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
@@ -47,14 +48,14 @@ fun GeometryMarkersLayers(markers: Collection<Marker>) {
         source = source,
         filter = Feature.isArea(),
         opacity = const(0.3f),
-        color = const(GeometryMarker),
+        color = const(Color.GeometryMarker),
     )
     LineLayer(
         id = "geo-lines",
         source = source,
         filter = any(Feature.isArea(), Feature.isLines()),
         opacity = const(0.5f),
-        color = const(GeometryMarker),
+        color = const(Color.GeometryMarker),
         width = const(10.dp),
         cap = const(LineCap.Round),
         join = const(LineJoin.Round)
@@ -67,7 +68,7 @@ fun GeometryMarkersLayers(markers: Collection<Marker>) {
         iconSize = byZoom(17 to 0.5f, 19 to 1f),
         iconAllowOverlap = const(true),
         textField = Feature.get("label").convertToString(),
-        textColor = const(GeometryMarker),
+        textColor = const(Color.GeometryMarker),
         textSize = const(16.sp),
         textFont = const(listOf("Roboto Bold")),
         textAnchor = const(SymbolAnchor.Top),
