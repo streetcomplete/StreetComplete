@@ -48,9 +48,9 @@ class AddMaxPhysicalHeight(
         and !maxheight:physical
         and access !~ private|no
         and vehicle !~ private|no
-        and motorroad !~ yes
-        and motorway !~ yes
-        and expressway !~ yes
+        and motorroad != yes
+        and motorway != yes
+        and expressway != yes
     """.toElementFilterExpression() }
     // explicitly removed motorway-style ways (highway=motorway*, motorroad/motorway=yes,
     // expressway=yes) from ever being matched as measuring heights on these ways likely is
