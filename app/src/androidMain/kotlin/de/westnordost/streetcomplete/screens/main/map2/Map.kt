@@ -5,15 +5,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.intl.Locale
 import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.screens.main.map.components.PinsMapComponent
-import de.westnordost.streetcomplete.screens.main.map2.style.CurrentLocationLayers
-import de.westnordost.streetcomplete.screens.main.map2.style.DownloadedAreaLayer
-import de.westnordost.streetcomplete.screens.main.map2.style.FocusedGeometryLayers
-import de.westnordost.streetcomplete.screens.main.map2.style.GeometryMarkersLayers
-import de.westnordost.streetcomplete.screens.main.map2.style.MapStyleJawg
-import de.westnordost.streetcomplete.screens.main.map2.style.PinsLayers
-import de.westnordost.streetcomplete.screens.main.map2.style.SelectedPinsLayer
-import de.westnordost.streetcomplete.screens.main.map2.style.StyleableOverlayLayers
+import de.westnordost.streetcomplete.screens.main.map2.layers.CurrentLocationLayers
+import de.westnordost.streetcomplete.screens.main.map2.layers.DownloadedAreaLayer
+import de.westnordost.streetcomplete.screens.main.map2.layers.FocusedGeometryLayers
+import de.westnordost.streetcomplete.screens.main.map2.layers.GeometryMarkersLayers
+import de.westnordost.streetcomplete.screens.main.map2.layers.PinsLayers
+import de.westnordost.streetcomplete.screens.main.map2.layers.SelectedPinsLayer
+import de.westnordost.streetcomplete.screens.main.map2.layers.StyleableOverlayLabelLayer
+import de.westnordost.streetcomplete.screens.main.map2.layers.StyleableOverlayLayers
+import de.westnordost.streetcomplete.screens.main.map2.layers.StyleableOverlaySideLayer
 import dev.sargunv.maplibrecompose.compose.CameraState
 import dev.sargunv.maplibrecompose.compose.MaplibreMap
 import dev.sargunv.maplibrecompose.compose.StyleState
@@ -42,32 +42,35 @@ fun Map(
         )
     ) {
         val languages = listOf(Locale.current.language)
+        val colors = if (isSystemInDarkTheme()) MapColors.Night else MapColors.Light
 
-        MapStyleJawg(
-            colors = if (isSystemInDarkTheme()) MapColors.Night else MapColors.Light,
+        MapStyle(
+            colors = colors,
             languages = languages,
             belowRoadsContent = {
                 // left-and-right lines should be rendered behind the actual road
-                StyleableOverlayRoadSideLayers()
+                StyleableOverlaySideLayer(styleableOverlaySource, isBridge = false)
             },
             belowRoadsOnBridgeContent = {
                 // left-and-right lines should be rendered behind the actual bridge road
-                StyleableOverlayBridgeRoadSideLayers()
+                StyleableOverlaySideLayer(styleableOverlaySource, isBridge = true)
             },
             belowLabelsContent = {
                 // labels should be on top of other layers
                 DownloadedAreaLayer(tiles)
-                StyleableOverlayLayers()
+                StyleableOverlayLayers(styleableOverlaySource, onClickOverlay)
                 TracksLayers()
             },
+            aboveLabelsContent = {
+                // these are always on top of everything else (including labels)
+                StyleableOverlayLabelLayer(styleableOverlaySource, colors.text, colors.textOutline, onClickOverlay)
+                GeometryMarkersLayers(markers)
+                FocusedGeometryLayers(geometry)
+                CurrentLocationLayers(location, rotation)
+                PinsLayers(pins, onClickPin, onClickCluster)
+                SelectedPinsLayer(iconPainter, pinPositions)
+            }
         )
-        // these are always on top of everything else (including labels)
-        StyleableOverlayLabelLayers()
-        GeometryMarkersLayers(markers)
-        FocusedGeometryLayers(geometry)
-        CurrentLocationLayers(location, rotation)
-        PinsLayers(pins, onClickPin, onClickCluster)
-        SelectedPinsLayer(iconPainter, pinPositions)
     }
 }
 

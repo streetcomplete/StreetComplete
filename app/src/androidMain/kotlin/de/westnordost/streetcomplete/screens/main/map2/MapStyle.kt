@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.screens.main.map2.style
+package de.westnordost.streetcomplete.screens.main.map2
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
@@ -9,7 +9,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.map_oneway_arrow
-import de.westnordost.streetcomplete.screens.main.map2.MapColors
 import dev.sargunv.maplibrecompose.compose.MaplibreComposable
 import dev.sargunv.maplibrecompose.compose.layer.BackgroundLayer
 import dev.sargunv.maplibrecompose.compose.layer.CircleLayer
@@ -44,21 +43,27 @@ import kotlin.math.max
  * - [belowRoadsContent]: directly below roads and above landscape, buildings
  * - [belowRoadsOnBridgeContent]: same as above but below road bridges
  * - [belowLabelsContent]: above everything but labels
+ * - [aboveLabelsContent]: above everything
  * */
 @Composable @MaplibreComposable
-fun MapStyleJawg(
+fun MapStyle(
     colors: MapColors,
     languages: List<String>,
     belowRoadsContent: @Composable @MaplibreComposable () -> Unit = {},
     belowRoadsOnBridgeContent: @Composable @MaplibreComposable () -> Unit = {},
     belowLabelsContent: @Composable @MaplibreComposable () -> Unit = {},
+    aboveLabelsContent: @Composable @MaplibreComposable () -> Unit = {},
 ) {
+    val accessToken = "mL9X4SwxfsAGfojvGiion9hPKuGLKxPbogLyMbtakA2gJ3X88gcVlTSQ7OD6OfbZ"
     val source = rememberVectorSource(
         id = "jawg-streets",
-        tiles = listOf("https://tile.jawg.io/streets-v2+hillshade-v1/{z}/{x}/{y}.pbf?access-token=mL9X4SwxfsAGfojvGiion9hPKuGLKxPbogLyMbtakA2gJ3X88gcVlTSQ7OD6OfbZ"),
+        tiles = listOf("https://tile.jawg.io/streets-v2+hillshade-v1/{z}/{x}/{y}.pbf?access-token=$accessToken"),
         options = TileSetOptions(
             maxZoom = 16,
-            attributionHtml = "<a href='https://www.openstreetmap.org/copyright' title='OpenStreetMap is open data licensed under ODbL' target='_blank'>&copy; OpenStreetMap contributors</a> | <a href='https://jawg.io?utm_medium=map&utm_source=attribution' title='Tiles Courtesy of Jawg Maps' target='_blank' class='jawg-attrib'>&copy; JawgMaps</a>"
+            attributionHtml =
+                // TODO localization of attribution: map_attribution_osm
+                "<a href='https://www.openstreetmap.org/copyright'>&copy; OpenStreetMap contributors</a> " +
+                "<a href='https://jawg.io?utm_medium=map&utm_source=attribution'>&copy; JawgMaps</a>"
         )
     )
 
@@ -170,6 +175,8 @@ fun MapStyleJawg(
 
     // I don't know, kind of does not look good due to missing extrusion outline.
     //BuildingExtrudeLayer(source, colors)
+
+    aboveLabelsContent()
 }
 
 @Composable @MaplibreComposable

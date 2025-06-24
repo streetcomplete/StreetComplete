@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.screens.main.map2.style
+package de.westnordost.streetcomplete.screens.main.map2.layers
 
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.runtime.Composable
@@ -9,7 +9,7 @@ import androidx.compose.ui.unit.em
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.map_pin_circle
-import de.westnordost.streetcomplete.screens.main.map2.toPosition
+import de.westnordost.streetcomplete.screens.main.map2.toGeometry
 import dev.sargunv.maplibrecompose.compose.FeaturesClickHandler
 import dev.sargunv.maplibrecompose.compose.MaplibreComposable
 import dev.sargunv.maplibrecompose.compose.layer.CircleLayer
@@ -35,7 +35,6 @@ import dev.sargunv.maplibrecompose.expressions.dsl.sp
 import dev.sargunv.maplibrecompose.expressions.dsl.zoom
 import dev.sargunv.maplibrecompose.expressions.value.TranslateAnchor
 import io.github.dellisd.spatialk.geojson.FeatureCollection
-import io.github.dellisd.spatialk.geojson.Point
 import kotlinx.serialization.json.JsonPrimitive
 import org.jetbrains.compose.resources.painterResource
 
@@ -135,7 +134,7 @@ data class Pin(
 
 private fun Pin.toGeoJsonFeature() =
     io.github.dellisd.spatialk.geojson.Feature(
-        geometry = Point(position.toPosition()),
+        geometry = position.toGeometry(),
         properties = mapOf(
             "icon-image" to JsonPrimitive(icon),
             "icon-order" to JsonPrimitive(order + 50),

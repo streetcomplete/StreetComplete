@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.screens.main.map2.style
+package de.westnordost.streetcomplete.screens.main.map2.layers
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
@@ -45,16 +45,15 @@ private fun TracksLayerApril1st(
     source: Source,
     opacity: Expression<FloatValue>,
 ) {
+    val recording = Feature.get("recording").convertToBoolean()
+
     LineLayer(
         id = id,
         source = source,
         opacity = opacity,
         width = const(26.dp),
         pattern = switch(
-            condition(
-                test = Feature.get("recording").convertToBoolean(),
-                output = image(painterResource(Res.drawable.map_track_nyan_record))
-            ),
+            condition(recording, image(painterResource(Res.drawable.map_track_nyan_record))),
             fallback = image(painterResource(Res.drawable.map_track_nyan))
         ),
     )
@@ -66,6 +65,8 @@ private fun TracksLayerDefault(
     source: Source,
     opacity: Expression<FloatValue>,
 ) {
+    val recording = Feature.get("recording").convertToBoolean()
+
     LineLayer(
         id = id,
         source = source,
@@ -74,10 +75,7 @@ private fun TracksLayerDefault(
         dasharray = const(listOf(0, 2)),
         width = const(6.dp),
         color = switch(
-            condition(
-                test = Feature.get("recording").convertToBoolean(),
-                output = const(Recording)
-            ),
+            condition(recording, const(Recording)),
             fallback = const(Location)
         ),
     )

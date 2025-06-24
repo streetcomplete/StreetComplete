@@ -1,10 +1,15 @@
-package de.westnordost.streetcomplete.screens.main.map2.style
+package de.westnordost.streetcomplete.screens.main.map2.layers
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
+import de.westnordost.streetcomplete.screens.main.map2.byZoom
+import de.westnordost.streetcomplete.screens.main.map2.inMeters
+import de.westnordost.streetcomplete.screens.main.map2.isArea
+import de.westnordost.streetcomplete.screens.main.map2.isLines
+import de.westnordost.streetcomplete.screens.main.map2.isPoint
 import dev.sargunv.maplibrecompose.compose.FeaturesClickHandler
 import dev.sargunv.maplibrecompose.compose.MaplibreComposable
 import dev.sargunv.maplibrecompose.compose.layer.FillExtrusionLayer
@@ -17,7 +22,9 @@ import dev.sargunv.maplibrecompose.expressions.dsl.all
 import dev.sargunv.maplibrecompose.expressions.dsl.asNumber
 import dev.sargunv.maplibrecompose.expressions.dsl.condition
 import dev.sargunv.maplibrecompose.expressions.dsl.const
+import dev.sargunv.maplibrecompose.expressions.dsl.convertToBoolean
 import dev.sargunv.maplibrecompose.expressions.dsl.convertToColor
+import dev.sargunv.maplibrecompose.expressions.dsl.convertToNumber
 import dev.sargunv.maplibrecompose.expressions.dsl.convertToString
 import dev.sargunv.maplibrecompose.expressions.dsl.nil
 import dev.sargunv.maplibrecompose.expressions.dsl.offset
@@ -77,18 +84,22 @@ fun StyleableOverlayLayers(
     source: Source,
     onClick: FeaturesClickHandler? = null,
 ) {
+    val dashed = Feature.get("dashed").convertToBoolean()
+    val opacity = Feature.get("opacity").convertToNumber()
+    val color = Feature.get("color").convertToColor()
+    val outlineColor = Feature.get("outline-color").convertToColor()
+    val width = inMeters(Feature.get("width").asNumber())
+    val casingWidth = inMeters(0.5f)
+
     LineLayer(
         id = "overlay-lines-casing",
         source = source,
         minZoom = MIN_ZOOM,
-        filter = all(
-            Feature.isLines(),
-            !Feature.has("offset"),
-        ),
-        opacity = Feature.get("opacity").asNumber(),
-        color = Feature.get("outline-color").convertToColor(),
-        width = inMeters(0.5f),
-        gapWidth = inMeters(Feature.get("width").asNumber()),
+        filter = all(Feature.isLines(), !Feature.has("offset"), !dashed),
+        opacity = opacity,
+        color = outlineColor,
+        width = casingWidth,
+        gapWidth = width,
         cap = const(LineCap.Round),
         join = const(LineJoin.Round),
     )
@@ -97,30 +108,27 @@ fun StyleableOverlayLayers(
         source = source,
         minZoom = MIN_ZOOM,
         filter = Feature.isArea(),
-        opacity = Feature.get("opacity").asNumber(),
-        color = Feature.get("color").convertToColor(),
+        opacity = opacity,
+        color = color,
         onClick = onClick,
     )
     LineLayer(
         id = "overlay-lines",
         source = source,
         minZoom = MIN_ZOOM,
-        filter = all(
-            Feature.isLines(),
-            !Feature.has("offset"),
+        filter = all(Feature.isLines(), !Feature.has("offset")),
+        opacity = opacity,
+        color = color,
+        width = width,
+        dasharray = switch(
+            condition(dashed, const(listOf(1.5f, 1f))),
+            fallback = nil()
         ),
-        opacity = Feature.get("opacity").asNumber(),
-        color = Feature.get("color").convertToColor(),
-        width = inMeters(Feature.get("width").asNumber()),
         cap = switch(
-            condition(Feature.has("dashed"), const(LineCap.Butt)),
+            condition(dashed, const(LineCap.Butt)),
             fallback = const(LineCap.Round)
         ),
         join = const(LineJoin.Round),
-        dasharray = switch(
-            condition(Feature.has("dashed"), const(listOf(1.5f, 1f))),
-            fallback = nil()
-        ),
         onClick = onClick,
     )
     LineLayer(
@@ -128,9 +136,9 @@ fun StyleableOverlayLayers(
         source = source,
         minZoom = MIN_ZOOM,
         filter = Feature.isArea(),
-        opacity = Feature.get("opacity").asNumber(),
-        color = Feature.get("outline-color").convertToColor(),
-        width = inMeters(0.5f),
+        opacity = opacity,
+        color = outlineColor,
+        width = casingWidth,
         cap = const(LineCap.Round),
         join = const(LineJoin.Round),
     )
@@ -139,17 +147,23 @@ fun StyleableOverlayLayers(
         source = source,
         minZoom = MIN_ZOOM,
         filter = all(Feature.isArea(), Feature.has("height")),
-        opacity = Feature.get("opacity").asNumber(),
-        color = Feature.get("color").convertToColor(),
-        height = Feature.get("height").asNumber(),
-        base = Feature.get("min-height").asNumber()
+        // TODO there was a comment "// can't use get("opacity"), data expressions not supported" - true? (create a maplibre ticket at least)
+        opacity = opacity,
+        color = color,
+        height = Feature.get("height").convertToNumber(),
+        base = Feature.get("min-height").convertToNumber()
     )
 }
 
 /** Display styled left-right-of-line map data */
 @MaplibreComposable @Composable
 fun StyleableOverlaySideLayer(source: Source, isBridge: Boolean) {
-    val bridge = Feature.has("bridge")
+    val bridge = Feature.get("bridge").convertToBoolean()
+    val dashed = Feature.get("dashed").convertToBoolean()
+    val opacity = Feature.get("opacity").convertToNumber()
+    val color = Feature.get("color").convertToColor()
+    val width = inMeters(Feature.get("width").asNumber())
+    val offset = inMeters(Feature.get("offset").asNumber())
 
     LineLayer(
         id = "overlay-lines-side",
@@ -160,16 +174,16 @@ fun StyleableOverlaySideLayer(source: Source, isBridge: Boolean) {
             Feature.has("offset"),
             if (isBridge) bridge else !bridge
         ),
-        color = Feature.get("color").convertToColor(),
-        width = inMeters(Feature.get("width").asNumber()),
-        opacity = Feature.get("opacity").asNumber(),
-        offset = inMeters(Feature.get("offset").asNumber()),
+        color = color,
+        width = width,
+        opacity = opacity,
+        offset = offset,
         dasharray = switch(
-            condition(Feature.has("dashed"), const(listOf(1.5f, 1f))),
+            condition(dashed, const(listOf(1.5f, 1f))),
             fallback = nil()
         ),
         cap = switch(
-            condition(Feature.has("dashed"), const(LineCap.Butt)),
+            condition(dashed, const(LineCap.Butt)),
             fallback = const(LineCap.Round)
         ),
         join = const(LineJoin.Round),

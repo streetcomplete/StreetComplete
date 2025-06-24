@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.screens.main.map2.style
+package de.westnordost.streetcomplete.screens.main.map2.layers
 
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.ApplicationConstants
@@ -19,8 +19,7 @@ import org.jetbrains.compose.resources.painterResource
 
 /** Displays which areas have (not) been downloaded */
 @Composable @MaplibreComposable
-fun DownloadedAreaLayer(tiles: List<TilePos>) {
-    // TODO is this recomposed all the time? In that case, remember the polygon holes
+fun DownloadedAreaLayer(tiles: Collection<TilePos>) {
     val polygon = tiles.toHolesInWorldPolygon()
     val source = rememberGeoJsonSource(
         id = "downloaded-area-source",
@@ -37,7 +36,7 @@ fun DownloadedAreaLayer(tiles: List<TilePos>) {
 
 /** convert the given tile positions into a polygon that spans the whole world but has holes at
  *  where the tiles are at. */
-private fun List<TilePos>.toHolesInWorldPolygon(): Polygon {
+private fun Collection<TilePos>.toHolesInWorldPolygon(): Polygon {
     val zoom = ApplicationConstants.DOWNLOAD_TILE_ZOOM
     val world = listOf(
         LatLon(+90.0, -180.0),

@@ -35,23 +35,23 @@ fun GeoJsonBoundingBox.toBoundingBox(): BoundingBox =
         maxLongitude = northeast.longitude
     )
 
-fun ElementGeometry.toGeoJson(): Geometry = when (this) {
-    is ElementPointGeometry -> toGeoJson()
-    is ElementPolylinesGeometry -> toGeoJson()
-    is ElementPolygonsGeometry -> toGeoJson()
+fun ElementGeometry.toGeometry(): Geometry = when (this) {
+    is ElementPointGeometry -> toGeometry()
+    is ElementPolylinesGeometry -> toGeometry()
+    is ElementPolygonsGeometry -> toGeometry()
 }
 
-fun ElementPointGeometry.toGeoJson(): Point =
+fun ElementPointGeometry.toGeometry(): Point =
     Point(center.toPosition())
 
-fun ElementPolylinesGeometry.toGeoJson(): Geometry =
+fun ElementPolylinesGeometry.toGeometry(): Geometry =
     if (polylines.size == 1) {
         LineString(polylines.single().map { it.toPosition() })
     } else {
         MultiLineString(polylines.map { polyline -> polyline.map { it.toPosition() } })
     }
 
-fun ElementPolygonsGeometry.toGeoJson(): Geometry {
+fun ElementPolygonsGeometry.toGeometry(): Geometry {
     val outerRings = mutableListOf<List<LatLon>>()
     val innerRings = mutableListOf<List<LatLon>>()
     if (polygons.size == 1) {
@@ -86,6 +86,9 @@ fun ElementPolygonsGeometry.toGeoJson(): Geometry {
     }
     return MultiPolygon(groupedRings)
 }
+
+fun LatLon.toGeometry(): Point =
+    Point(Position(longitude = longitude, latitude = latitude))
 
 fun LatLon.toPosition(): Position =
     Position(longitude = longitude, latitude = latitude)

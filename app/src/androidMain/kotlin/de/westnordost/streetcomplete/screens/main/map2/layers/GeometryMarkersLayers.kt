@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.screens.main.map2.style
+package de.westnordost.streetcomplete.screens.main.map2.layers
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.unit.dp
@@ -8,7 +8,11 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
-import de.westnordost.streetcomplete.screens.main.map2.toGeoJson
+import de.westnordost.streetcomplete.screens.main.map2.byZoom
+import de.westnordost.streetcomplete.screens.main.map2.isArea
+import de.westnordost.streetcomplete.screens.main.map2.isLines
+import de.westnordost.streetcomplete.screens.main.map2.isPoint
+import de.westnordost.streetcomplete.screens.main.map2.toGeometry
 import de.westnordost.streetcomplete.ui.theme.GeometryMarker
 import dev.sargunv.maplibrecompose.compose.MaplibreComposable
 import dev.sargunv.maplibrecompose.compose.layer.FillLayer
@@ -20,6 +24,7 @@ import dev.sargunv.maplibrecompose.expressions.dsl.any
 import dev.sargunv.maplibrecompose.expressions.dsl.asString
 import dev.sargunv.maplibrecompose.expressions.dsl.const
 import dev.sargunv.maplibrecompose.expressions.dsl.Feature
+import dev.sargunv.maplibrecompose.expressions.dsl.convertToString
 import dev.sargunv.maplibrecompose.expressions.dsl.offset
 import dev.sargunv.maplibrecompose.expressions.value.LineCap
 import dev.sargunv.maplibrecompose.expressions.value.LineJoin
@@ -32,11 +37,9 @@ import kotlinx.serialization.json.JsonPrimitive
  *  show the geometry of elements surrounding the selected quest */
 @MaplibreComposable @Composable
 fun GeometryMarkersLayers(markers: Collection<Marker>) {
-    // TODO is this recomposed all the time? In that case, remember the features
-    val features = FeatureCollection(markers.flatMap { it.toGeoJsonFeature() })
     val source = rememberGeoJsonSource(
         id = "geometry-source",
-        data = GeoJsonData.Features(features)
+        data = GeoJsonData.Features(FeatureCollection(markers.flatMap { it.toGeoJsonFeature() }))
     )
 
     FillLayer(
@@ -63,7 +66,7 @@ fun GeometryMarkersLayers(markers: Collection<Marker>) {
         iconImage = Feature.get("icon"), // TODO get icon!!
         iconSize = byZoom(17 to 0.5f, 19 to 1f),
         iconAllowOverlap = const(true),
-        textField = Feature.get("label").asString(),
+        textField = Feature.get("label").convertToString(),
         textColor = const(GeometryMarker),
         textSize = const(16.sp),
         textFont = const(listOf("Roboto Bold")),
@@ -95,12 +98,12 @@ private fun Marker.toGeoJsonFeature(): List<GeoJsonFeature> {
         if (title != null) {
             p["label"] = JsonPrimitive(title)
         }
-        features.add(GeoJsonFeature(geometry.toGeoJson(), p))
+        features.add(GeoJsonFeature(geometry.toGeometry(), p))
     }
 
     // polygon / polylines marker(s)
     if (geometry is ElementPolygonsGeometry || geometry is ElementPolylinesGeometry) {
-        features.add(GeoJsonFeature(geometry.toGeoJson()))
+        features.add(GeoJsonFeature(geometry.toGeometry()))
     }
     return features
 }

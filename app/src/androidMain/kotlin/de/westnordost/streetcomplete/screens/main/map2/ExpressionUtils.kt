@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.screens.main.map2.style
+package de.westnordost.streetcomplete.screens.main.map2
 
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.TextUnit
@@ -9,6 +9,7 @@ import dev.sargunv.maplibrecompose.expressions.value.GeometryType
 import dev.sargunv.maplibrecompose.expressions.value.NumberValue
 import dev.sargunv.maplibrecompose.expressions.value.StringValue
 import kotlin.math.PI
+import kotlin.math.cos
 
 fun fadeInAtZoom(start: Float, range: Float = 1f, endOpacity: Float = 1f) =
     byZoom(start to 0f, start+range to endOpacity)
@@ -30,15 +31,15 @@ fun byZoom(vararg stops: Pair<Number, TextUnit>) =
 
 /** Returns whether this feature has the given [key]-[value] pair */
 fun Feature.has(key: String, value: String) =
-    get(key).asString() eq const(value)
+    get(key).convertToString() eq const(value)
 
 /** Returns whether this feature has the given [key]-[value] pair */
 fun Feature.has(key: String, value: Int) =
-    get(key).asNumber() eq const(value)
+    get(key).convertToNumber() eq const(value)
 
 /** Returns whether this feature has the given [key]-[value] pair */
 fun Feature.has(key: String, value: Boolean) =
-    get(key).asBoolean() eq const(value)
+    get(key).convertToBoolean() eq const(value)
 
 /** Returns whether this feature has a [key]-value pair of which the value is in of the given
  * [values] */
@@ -49,12 +50,16 @@ fun Feature.isPoint() =
     type() eq const(GeometryType.Point)
 
 fun Feature.isLines() =
-    const(listOf(const(GeometryType.LineString), const(GeometryType.MultiLineString)))
-        .contains(type())
+    any(
+        type() eq const(GeometryType.LineString),
+        type() eq const(GeometryType.MultiLineString)
+    )
 
 fun Feature.isArea() =
-    const(listOf(const(GeometryType.Polygon), const(GeometryType.MultiPolygon)))
-        .contains(type())
+    any(
+        type() eq const(GeometryType.Polygon),
+        type() eq const(GeometryType.MultiPolygon)
+    )
 
 /** Get an expression that resolves to the localized name.
  *  If the localized name in the user's [language] is the same as the primary name, then only this
@@ -87,7 +92,7 @@ fun inMeters(
     // the additional factor of 1.20 comes from a simple measuring test with a ruler on a
     // smartphone screen done at approx. latitude = 0 and latitude = 70, i.e. without it, lines are
     // drawn at both latitudes approximately 20% too large ¯\_(ツ)_/¯
-    val sizeFactor = (kotlin.math.cos(PI * latitude / 180) * 1.2).toFloat()
+    val sizeFactor = (cos(PI * latitude / 180) * 1.2).toFloat()
     return interpolate(
         exponential(2f), zoom(),
         8 to width / const(256) / const(sizeFactor),
@@ -99,7 +104,7 @@ fun inMeters(
     width: Float,
     latitude: Double = 30.0
 ): Expression<NumberValue<Dp>> {
-    val sizeFactor = (kotlin.math.cos(PI * latitude / 180) * 1.2).toFloat()
+    val sizeFactor = (cos(PI * latitude / 180) * 1.2).toFloat()
     return interpolate(
         exponential(2f), zoom(),
         8 to const(width) / const(256) / const(sizeFactor),

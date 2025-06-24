@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.screens.main.map2.style
+package de.westnordost.streetcomplete.screens.main.map2.layers
 
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.animateFloat
@@ -10,7 +10,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
-import de.westnordost.streetcomplete.screens.main.map2.toGeoJson
+import de.westnordost.streetcomplete.screens.main.map2.isArea
+import de.westnordost.streetcomplete.screens.main.map2.isLines
+import de.westnordost.streetcomplete.screens.main.map2.isPoint
+import de.westnordost.streetcomplete.screens.main.map2.toGeometry
 import dev.sargunv.maplibrecompose.compose.MaplibreComposable
 import dev.sargunv.maplibrecompose.compose.layer.CircleLayer
 import dev.sargunv.maplibrecompose.compose.layer.FillLayer
@@ -42,7 +45,7 @@ fun FocusedGeometryLayers(geometry: ElementGeometry) {
 
     val source = rememberGeoJsonSource(
         id = "focus-geometry-source",
-        data = GeoJsonData.Features(geometry.toGeoJson())
+        data = GeoJsonData.Features(geometry.toGeometry())
     )
 
     FillLayer(

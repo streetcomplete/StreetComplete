@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.screens.main.map2.style
+package de.westnordost.streetcomplete.screens.main.map2.layers
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
@@ -9,7 +9,8 @@ import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.map_location_nyan
 import de.westnordost.streetcomplete.resources.map_location_shadow
 import de.westnordost.streetcomplete.resources.map_location_view_direction
-import de.westnordost.streetcomplete.screens.main.map2.toPosition
+import de.westnordost.streetcomplete.screens.main.map2.inMeters
+import de.westnordost.streetcomplete.screens.main.map2.toGeometry
 import de.westnordost.streetcomplete.ui.theme.Location
 import de.westnordost.streetcomplete.util.ktx.isApril1st
 import dev.sargunv.maplibrecompose.compose.MaplibreComposable
@@ -21,7 +22,6 @@ import dev.sargunv.maplibrecompose.expressions.dsl.const
 import dev.sargunv.maplibrecompose.expressions.dsl.image
 import dev.sargunv.maplibrecompose.expressions.value.CirclePitchAlignment
 import dev.sargunv.maplibrecompose.expressions.value.IconPitchAlignment
-import io.github.dellisd.spatialk.geojson.Point
 import org.jetbrains.compose.resources.painterResource
 
 /** Displays the location + direction + accuracy marker on the map */
@@ -34,7 +34,7 @@ fun CurrentLocationLayers(
 
     val source = rememberGeoJsonSource(
         id = "location-source",
-        data = GeoJsonData.Features(Point(location.position.toPosition()))
+        data = GeoJsonData.Features(location.position.toGeometry())
     )
 
     CircleLayer(
