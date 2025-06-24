@@ -20,10 +20,9 @@ import org.jetbrains.compose.resources.painterResource
 /** Displays which areas have (not) been downloaded */
 @Composable @MaplibreComposable
 fun DownloadedAreaLayer(tiles: Collection<TilePos>) {
-    val polygon = tiles.toHolesInWorldPolygon()
     val source = rememberGeoJsonSource(
         id = "downloaded-area-source",
-        data = GeoJsonData.Features(polygon)
+        data = GeoJsonData.Features(tiles.toHolesInWorldPolygon())
     )
 
     FillLayer(
