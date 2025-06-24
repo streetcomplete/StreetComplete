@@ -18,7 +18,7 @@ import de.westnordost.streetcomplete.util.logs.Log
 import de.westnordost.streetcomplete.util.math.distance
 import de.westnordost.streetcomplete.util.math.enlargedBy
 
-/** Used to get visible osm note quests */
+/** Used to get visible atp quests */
 class AtpQuestController(
     private val mapDataSource: MapDataWithEditsSource,
     private val atpDataSource: AtpDataWithEditsSource, // TODO what exactly should be feed here?

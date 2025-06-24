@@ -13,7 +13,8 @@ import kotlinx.io.buffered
 import kotlin.math.floor
 
 /**
- * Creates, comments, closes, reopens and search for notes.
+ * Communicates with separate API providing ATP entries.
+ * TODO: also sends info when entries were wonky
  */
 class AtpApiClient(
     private val httpClient: HttpClient,
@@ -24,7 +25,7 @@ class AtpApiClient(
     /**
      * Retrieve all atp entries in the given area
      *
-     * @param bounds the area within the notes should be queried.
+     * @param bounds the area within where ATP entries should be queried.
      *
      * @throws ConnectionException if a temporary network connection problem occurs
      *
