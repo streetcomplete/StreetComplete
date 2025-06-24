@@ -147,8 +147,8 @@ fun StyleableOverlayLayers(
         source = source,
         minZoom = MIN_ZOOM,
         filter = all(Feature.isArea(), Feature.has("height")),
-        // TODO there was a comment "// can't use get("opacity"), data expressions not supported" - true? (create a maplibre ticket at least)
-        opacity = opacity,
+        // data-driven-styling not supported (see https://maplibre.org/maplibre-style-spec/layers/#fill-extrusion-opacity)
+        opacity = const(1f), // cannot use `opacity = opacity`
         color = color,
         height = Feature.get("height").convertToNumber(),
         base = Feature.get("min-height").convertToNumber()
