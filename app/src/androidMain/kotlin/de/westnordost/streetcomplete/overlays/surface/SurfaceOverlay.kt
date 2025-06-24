@@ -1,9 +1,14 @@
 package de.westnordost.streetcomplete.overlays.surface
 
+import androidx.compose.ui.graphics.Color
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
+import de.westnordost.streetcomplete.data.overlays.AndroidOverlay
+import de.westnordost.streetcomplete.data.overlays.OverlayColor
+import de.westnordost.streetcomplete.data.overlays.Overlay
+import de.westnordost.streetcomplete.data.overlays.OverlayStyle
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.*
 import de.westnordost.streetcomplete.osm.ALL_PATHS
 import de.westnordost.streetcomplete.osm.ALL_ROADS
@@ -11,18 +16,12 @@ import de.westnordost.streetcomplete.osm.isPrivateOnFoot
 import de.westnordost.streetcomplete.osm.surface.Surface
 import de.westnordost.streetcomplete.osm.surface.Surface.*
 import de.westnordost.streetcomplete.osm.surface.parseSurface
-import de.westnordost.streetcomplete.overlays.Color
-import de.westnordost.streetcomplete.overlays.Overlay
-import de.westnordost.streetcomplete.overlays.PolygonStyle
-import de.westnordost.streetcomplete.overlays.PolylineStyle
-import de.westnordost.streetcomplete.overlays.StrokeStyle
-import de.westnordost.streetcomplete.overlays.Style
 import de.westnordost.streetcomplete.quests.surface.AddCyclewayPartSurface
 import de.westnordost.streetcomplete.quests.surface.AddFootwayPartSurface
 import de.westnordost.streetcomplete.quests.surface.AddPathSurface
 import de.westnordost.streetcomplete.quests.surface.AddRoadSurface
 
-class SurfaceOverlay : Overlay {
+class SurfaceOverlay : Overlay, AndroidOverlay {
 
     override val title = R.string.overlay_surface
     override val icon = R.drawable.ic_quest_street_surface
@@ -45,7 +44,7 @@ class SurfaceOverlay : Overlay {
     override fun createForm(element: Element?) = SurfaceOverlayForm()
 }
 
-private fun getStyle(element: Element): Style {
+private fun getStyle(element: Element): OverlayStyle {
     val tags = element.tags
     val isArea = tags["area"] == "yes"
     val isSegregated = tags["segregated"] == "yes"
@@ -57,20 +56,21 @@ private fun getStyle(element: Element): Style {
         // take worst case for showing
         listOf(footwayColor, cyclewayColor).minBy { color ->
             when (color) {
-                Color.DATA_REQUESTED -> 0
-                Color.INVISIBLE -> 1
-                Color.BLACK -> 2
+                OverlayColor.Red -> 0
+                OverlayColor.Invisible -> 1
+                OverlayColor.Black -> 2
                 else -> 3
             }
         }
     } else {
         parseSurface(tags["surface"]).getColor(element)
     }
-    return if (isArea) PolygonStyle(color) else PolylineStyle(StrokeStyle(color))
+    return if (isArea) OverlayStyle.Polygon(color) else OverlayStyle.Polyline(OverlayStyle.Stroke(color))
 }
 
-private fun Surface?.getColor(element: Element): String =
-    this?.color ?: if (surfaceTaggingNotExpected(element)) Color.INVISIBLE else Color.DATA_REQUESTED
+private fun Surface?.getColor(element: Element): Color =
+    this?.color
+        ?: if (surfaceTaggingNotExpected(element)) OverlayColor.Invisible else OverlayColor.Red
 
 /*
  * Design considerations:
@@ -99,29 +99,29 @@ private fun Surface?.getColor(element: Element): String =
  */
 private val Surface.color get() = when (this) {
     ASPHALT, CONCRETE,
-        -> Color.BLUE
+        -> OverlayColor.Blue
     PAVING_STONES,
-        -> Color.SKY
+        -> OverlayColor.Sky
     CONCRETE_LANES, SETT,
-        -> Color.CYAN
+        -> OverlayColor.Cyan
     UNHEWN_COBBLESTONE, GRASS_PAVER,
-        -> Color.AQUAMARINE
+        -> OverlayColor.Aquamarine
     COMPACTED, FINE_GRAVEL,
-        -> Color.TEAL
+        -> OverlayColor.Teal
     DIRT, MUD, GROUND, WOODCHIPS,
-        -> Color.ORANGE
+        -> OverlayColor.Orange
     GRASS,
-        -> Color.LIME // greenish colour for grass is deliberate
+        -> OverlayColor.Lime // greenish colour for grass is deliberate
     SAND,
-        -> Color.GOLD // yellowish color for sand is deliberate
+        -> OverlayColor.Gold // yellowish color for sand is deliberate
     GRAVEL, PEBBLES, ROCK,
         // very different from above but unlikely to be used in same places, i.e. below are usually on bridges
     WOOD, METAL,
-        -> Color.PURPLE
+        -> OverlayColor.Purple
     UNSUPPORTED, PAVED, UNPAVED,
         // not encountered in normal situations, get the same as generic surface
     CLAY, ARTIFICIAL_TURF, RUBBER, ACRYLIC,
-        -> Color.BLACK
+        -> OverlayColor.Black
 }
 
 private fun surfaceTaggingNotExpected(element: Element) =

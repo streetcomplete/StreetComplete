@@ -1,5 +1,5 @@
-import com.codingfeline.buildkonfig.compiler.FieldSpec.Type.STRING
 import com.codingfeline.buildkonfig.compiler.FieldSpec.Type.BOOLEAN
+import com.codingfeline.buildkonfig.compiler.FieldSpec.Type.STRING
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import java.io.FileInputStream
@@ -103,6 +103,13 @@ kotlin {
                 // Aparently only necessary as long as https://github.com/Kotlin/kotlinx-atomicfu/issues/145 is not solved
                 implementation("org.jetbrains.kotlinx:atomicfu:0.27.0")
 
+                // Dependency injection
+                implementation(project.dependencies.platform("io.insert-koin:koin-bom:4.1.0-RC1"))
+                implementation("io.insert-koin:koin-core")
+                implementation("io.insert-koin:koin-compose")
+                implementation("io.insert-koin:koin-compose-viewmodel")
+                implementation("io.insert-koin:koin-androidx-compose-navigation")
+
                 // settings
                 implementation("com.russhwolf:multiplatform-settings:1.3.0")
 
@@ -147,7 +154,7 @@ kotlin {
                 implementation(compose.components.uiToolingPreview)
 
                 // UI Navigation
-                implementation("org.jetbrains.androidx.navigation:navigation-compose:2.9.0-beta01")
+                implementation("org.jetbrains.androidx.navigation:navigation-compose:2.9.0-beta02")
 
                 // UI ViewModel
                 implementation("org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-compose:2.9.0")
@@ -168,12 +175,9 @@ kotlin {
         }
         androidMain {
             dependencies {
-                // dependency injection
-                implementation(project.dependencies.platform("io.insert-koin:koin-bom:4.0.4"))
-                implementation("io.insert-koin:koin-core")
+                // Dependency injection
                 implementation("io.insert-koin:koin-android")
                 implementation("io.insert-koin:koin-androidx-workmanager")
-                implementation("io.insert-koin:koin-androidx-compose")
 
                 // Android stuff
                 implementation("com.google.android.material:material:1.12.0")

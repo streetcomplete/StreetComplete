@@ -4,18 +4,19 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
+import de.westnordost.streetcomplete.data.overlays.AndroidOverlay
+import de.westnordost.streetcomplete.data.overlays.OverlayColor
+import de.westnordost.streetcomplete.data.overlays.Overlay
+import de.westnordost.streetcomplete.data.overlays.OverlayStyle
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BUILDING
 import de.westnordost.streetcomplete.osm.building.BuildingType
 import de.westnordost.streetcomplete.osm.building.BuildingType.*
 import de.westnordost.streetcomplete.osm.building.OTHER_KEYS_POTENTIALLY_DESCRIBING_BUILDING_TYPE
 import de.westnordost.streetcomplete.osm.building.createBuildingType
 import de.westnordost.streetcomplete.osm.building.iconResId
-import de.westnordost.streetcomplete.overlays.Color
-import de.westnordost.streetcomplete.overlays.Overlay
-import de.westnordost.streetcomplete.overlays.PolygonStyle
 import de.westnordost.streetcomplete.quests.building_type.AddBuildingType
 
-class BuildingsOverlay : Overlay {
+class BuildingsOverlay : Overlay, AndroidOverlay {
 
     override val title = R.string.overlay_buildings
     override val icon = R.drawable.ic_quest_building
@@ -55,12 +56,12 @@ class BuildingsOverlay : Overlay {
             val building = createBuildingType(element.tags)
 
             val color = building?.color
-                ?: if (isBuildingTypeMissing(element.tags)) Color.DATA_REQUESTED else Color.INVISIBLE
+                ?: if (isBuildingTypeMissing(element.tags)) OverlayColor.Red else OverlayColor.Invisible
 
             // val height = estimateBuildingHeight(element.tags)
             // val minHeight = if (height != null) estimateMinBuildingHeight(element.tags) else null
 
-            element to PolygonStyle(
+            element to OverlayStyle.Polygon(
                 color = color,
                 icon = building?.iconResId,
                 // TODO MapLibre: 3D buildings are disabled until
@@ -75,27 +76,27 @@ class BuildingsOverlay : Overlay {
     private val BuildingType.color get() = when (this) {
         // ~detached homes
         DETACHED, SEMI_DETACHED, HOUSEBOAT, BUNGALOW, STATIC_CARAVAN, HUT, FARM, -> // 10%
-            Color.BLUE
+            OverlayColor.Blue
 
         // ~non-detached homes
         HOUSE, DORMITORY, APARTMENTS, TERRACE, -> // 52%
-            Color.SKY
+            OverlayColor.Sky
 
         // unspecified residential
         RESIDENTIAL, -> // 12%
-            Color.CYAN
+            OverlayColor.Cyan
 
         // parking, sheds, outbuildings in general...
         OUTBUILDING, CARPORT, GARAGE, GARAGES, SHED, BOATHOUSE, SERVICE, ALLOTMENT_HOUSE,
         TENT, CONTAINER, GUARDHOUSE, -> // 11%
-            Color.LIME
+            OverlayColor.Lime
 
         // commercial, industrial, farm buildings
         COMMERCIAL, KIOSK, RETAIL, OFFICE, BRIDGE, HOTEL, PARKING,
         INDUSTRIAL, WAREHOUSE, HANGAR, STORAGE_TANK,
         FARM_AUXILIARY, SILO, GREENHOUSE,
         ROOF -> // 5%
-            Color.GOLD
+            OverlayColor.Gold
 
         // amenity buildings
         TRAIN_STATION, TRANSPORTATION,
@@ -103,12 +104,12 @@ class BuildingsOverlay : Overlay {
         KINDERGARTEN, SCHOOL, COLLEGE, UNIVERSITY, SPORTS_CENTRE, STADIUM, GRANDSTAND,
         RELIGIOUS, CHURCH, CHAPEL, CATHEDRAL, MOSQUE, TEMPLE, PAGODA, SYNAGOGUE, SHRINE,
         TOILETS, -> // 2%
-            Color.ORANGE
+            OverlayColor.Orange
 
         // other/special
         HISTORIC, ABANDONED, RUINS, CONSTRUCTION, BUNKER, TOMB, TOWER,
         UNSUPPORTED ->
-            Color.PURPLE
+            OverlayColor.Purple
     }
 
     private fun isBuildingTypeMissing(tags: Map<String, String>): Boolean =

@@ -29,4 +29,7 @@ interface EditType {
      *  (e.g. often the requirement that the information is publicly available from the outside),
      *  are disabled by default. */
     val defaultDisabledMessage: Int get() = 0
+
+    /** Whether this edit type can be disabled in the user settings */
+    val visibilityEditable: Boolean get() = true
 }

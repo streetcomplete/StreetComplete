@@ -3,10 +3,11 @@ package de.westnordost.streetcomplete.quests.orchard_produce
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.osm.Tags
 
-class AddOrchardProduce : OsmFilterQuestType<List<OrchardProduce>>() {
+class AddOrchardProduce : OsmFilterQuestType<List<OrchardProduce>>(), AndroidQuest {
 
     override val elementFilter = """
         ways, relations with landuse = orchard

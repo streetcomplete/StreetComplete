@@ -23,7 +23,7 @@ import androidx.viewbinding.ViewBinding
 import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.location.RecentLocationStore
+import de.westnordost.streetcomplete.data.location.SurveyChecker
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.meta.CountryInfos
 import de.westnordost.streetcomplete.data.meta.getByLocation
@@ -41,6 +41,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.mapdata.key
+import de.westnordost.streetcomplete.data.overlays.Overlay
 import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
 import de.westnordost.streetcomplete.databinding.FragmentOverlayBinding
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsCloseableBottomSheet
@@ -58,13 +59,11 @@ import de.westnordost.streetcomplete.view.ResText
 import de.westnordost.streetcomplete.view.RoundRectOutlineProvider
 import de.westnordost.streetcomplete.view.Text
 import de.westnordost.streetcomplete.view.add
-import de.westnordost.streetcomplete.view.checkIsSurvey
 import de.westnordost.streetcomplete.view.confirmIsSurvey
 import de.westnordost.streetcomplete.view.insets_animation.respectSystemInsets
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import org.koin.android.ext.android.inject
 import org.koin.core.qualifier.named
@@ -80,7 +79,7 @@ abstract class AbstractOverlayForm :
     private val countryBoundaries: Lazy<CountryBoundaries> by inject(named("CountryBoundariesLazy"))
     private val overlayRegistry: OverlayRegistry by inject()
     private val mapDataWithEditsSource: MapDataWithEditsSource by inject()
-    private val recentLocationStore: RecentLocationStore by inject()
+    private val surveyChecker: SurveyChecker by inject()
     private val featureDictionaryLazy: Lazy<FeatureDictionary> by inject(named("FeatureDictionaryLazy"))
     protected val featureDictionary: FeatureDictionary get() = featureDictionaryLazy.value
     private var _countryInfo: CountryInfo? = null // lazy but resettable because based on lateinit var
@@ -428,7 +427,7 @@ abstract class AbstractOverlayForm :
 
     private suspend fun solve(action: ElementEditAction, geometry: ElementGeometry) {
         setLocked(true)
-        val isSurvey = checkIsSurvey(geometry, recentLocationStore.get())
+        val isSurvey = surveyChecker.checkIsSurvey(geometry)
         if (!isSurvey && !confirmIsSurvey(requireContext())) {
             setLocked(false)
             return

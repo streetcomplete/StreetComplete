@@ -4,11 +4,12 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
+import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.localized_name.applyTo
 
-class AddBusStopName : OsmFilterQuestType<BusStopNameAnswer>() {
+class AddBusStopName : OsmFilterQuestType<BusStopNameAnswer>(), AndroidQuest {
 
     // this filter needs to be kept somewhat in sync with the filter in AddBusStopNameForm
     override val elementFilter = """

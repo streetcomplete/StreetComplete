@@ -8,16 +8,19 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.changesApplied
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataChanges
+import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
 import de.westnordost.streetcomplete.testutils.mock
 import de.westnordost.streetcomplete.testutils.node
 import de.westnordost.streetcomplete.testutils.on
 import de.westnordost.streetcomplete.testutils.way
 import de.westnordost.streetcomplete.util.math.translate
+import de.westnordost.streetcomplete.util.ktx.copy
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith
+import kotlin.test.assertTrue
 
 internal class CreateNodeFromVertexActionTest {
     private lateinit var repos: MapDataRepository
@@ -64,9 +67,13 @@ internal class CreateNodeFromVertexActionTest {
 
         val data = CreateNodeFromVertexAction(n, changes, listOf(1L, 2L)).createUpdates(repos, provider)
 
-        val n2 = n.changesApplied(changes)
+        val expected = n.changesApplied(changes)
 
-        assertEquals(MapDataChanges(modifications = listOf(n2)), data)
+        assertTrue(data.creations.isEmpty())
+        assertTrue(data.deletions.isEmpty())
+
+        val resultNode = data.modifications.single() as Node
+        assertEquals(expected.copy(timestampEdited = resultNode.timestampEdited), resultNode)
     }
 
     @Test fun idsUpdatesApplied() {

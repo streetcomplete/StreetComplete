@@ -8,6 +8,7 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.util.ktx.containsAll
@@ -17,13 +18,13 @@ import de.westnordost.streetcomplete.util.math.isCompletelyInside
 import de.westnordost.streetcomplete.util.math.isInMultipolygon
 
 class AddIsAmenityIndoor(private val getFeature: (Element) -> Feature?) :
-    OsmElementQuestType<IsAmenityIndoorAnswer> {
+    OsmElementQuestType<IsAmenityIndoorAnswer>, AndroidQuest {
 
     private val nodesFilter by lazy { """
         nodes with
           (
             emergency ~ defibrillator|fire_extinguisher|fire_hose
-            or amenity ~ atm|telephone|parcel_locker|luggage_locker|locker|post_box|public_bookcase|give_box|ticket_validator|vending_machine
+            or amenity ~ atm|drinking_water|telephone|parcel_locker|luggage_locker|locker|post_box|public_bookcase|give_box|ticket_validator|vending_machine
             or amenity = clock and display != sundial
           )
           and access !~ private|no

@@ -19,7 +19,7 @@ import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.meta.AbbreviationsByLocale
+import de.westnordost.streetcomplete.data.meta.AbbreviationsByLanguage
 import de.westnordost.streetcomplete.osm.localized_name.LocalizedName
 import de.westnordost.streetcomplete.view.controller.AutoCorrectAbbreviationsViewController
 import kotlinx.coroutines.CoroutineScope
@@ -34,10 +34,10 @@ class LocalizedNameAdapter(
     initialNames: List<LocalizedName>,
     private val context: Context,
     private val languageTags: List<String>,
-    private val abbreviationsByLocale: AbbreviationsByLocale?,
+    private val abbreviationsByLanguage: AbbreviationsByLanguage?,
     namesSuggestions: List<List<LocalizedName>>?,
     private val addLanguageButton: View,
-    private val rowLayoutResId: Int = R.layout.row_localizedname
+    private val rowLayoutResId: Int = R.layout.row_localizedname,
 ) : RecyclerView.Adapter<LocalizedNameAdapter.ViewHolder>(), DefaultLifecycleObserver {
 
     var names: List<LocalizedName>
@@ -343,7 +343,7 @@ class LocalizedNameAdapter(
             // load abbreviations from file in background
             viewLifecycleScope.launch {
                 autoCorrectAbbreviations.abbreviations = withContext(Dispatchers.IO) {
-                    abbreviationsByLocale?.get(localizedName.languageTag)
+                    abbreviationsByLanguage?.get(localizedName.languageTag)
                 }
             }
         }

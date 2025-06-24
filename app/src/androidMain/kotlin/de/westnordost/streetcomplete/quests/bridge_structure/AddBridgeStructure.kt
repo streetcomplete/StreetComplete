@@ -3,10 +3,11 @@ package de.westnordost.streetcomplete.quests.bridge_structure
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BUILDING
 import de.westnordost.streetcomplete.osm.Tags
 
-class AddBridgeStructure : OsmFilterQuestType<BridgeStructure>() {
+class AddBridgeStructure : OsmFilterQuestType<BridgeStructure>(), AndroidQuest {
 
     override val elementFilter = """
         ways with

@@ -10,10 +10,11 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.Relation
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.osm.Tags
 
-class AddEntrance : OsmElementQuestType<EntranceAnswer> {
+class AddEntrance : OsmElementQuestType<EntranceAnswer>, AndroidQuest {
 
     private val withoutEntranceFilter by lazy { """
         nodes with

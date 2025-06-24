@@ -4,14 +4,14 @@ import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.bicycle_in_pedestrian_street.BicycleInPedestrianStreet.*
 
 enum class BicycleInPedestrianStreet {
-    /** Pedestrian area also designated for pedestrians (like shared-use path) */
+    /** Pedestrian area also designated for bicycles (like shared-use path) */
     DESIGNATED,
     /** Bicycles explicitly allowed in pedestrian area */
     ALLOWED,
     /** Bicycles explicitly not allowed in pedestrian area */
     NOT_ALLOWED,
     /** Nothing is signed about bicycles in pedestrian area (probably disallowed, but depends on
-     *  legislation */
+     *  legislation) */
     NOT_SIGNED
 }
 

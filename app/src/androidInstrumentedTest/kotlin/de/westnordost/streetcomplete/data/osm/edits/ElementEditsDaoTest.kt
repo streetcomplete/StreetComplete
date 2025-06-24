@@ -25,11 +25,11 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.osmquests.TestQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.TestQuestType2
+import de.westnordost.streetcomplete.data.overlays.Overlay
 import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
+import de.westnordost.streetcomplete.data.overlays.OverlayStyle
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement
-import de.westnordost.streetcomplete.overlays.Overlay
-import de.westnordost.streetcomplete.overlays.Style
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -339,8 +339,7 @@ private val TEST_QUEST_TYPE = TestQuestType()
 private val TEST_QUEST_TYPE2 = TestQuestType2()
 
 private object TestOverlay : Overlay {
-    override fun getStyledElements(mapData: MapDataWithGeometry) = sequenceOf<Pair<Element, Style>>()
-    override fun createForm(element: Element?) = null
+    override fun getStyledElements(mapData: MapDataWithGeometry) = sequenceOf<Pair<Element, OverlayStyle>>()
     override val changesetComment = "bla"
     override val icon = 0
     override val title = 0

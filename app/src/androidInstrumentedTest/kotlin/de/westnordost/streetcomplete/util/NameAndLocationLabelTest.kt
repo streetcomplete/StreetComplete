@@ -28,7 +28,7 @@ class NameAndLocationLabelTest {
 
     // https://github.com/streetcomplete/StreetComplete/issues/2512
     @Test fun newspaperVendingMachineWithName() {
-        assertEquals("Bild (Newspaper Vending Machine)", getQuestLabelForNode(mapOf(
+        assertEquals("Bild (Newspaper\u00A0Vending\u00A0Machine)", getQuestLabelForNode(mapOf(
             "amenity" to "vending_machine",
             "vending" to "newspapers",
             "name" to "Bild",
@@ -37,7 +37,7 @@ class NameAndLocationLabelTest {
 
     // https://github.com/streetcomplete/StreetComplete/issues/2512
     @Test fun newspaperVendingMachineWithBrand() {
-        assertEquals("Abendzeitung (Newspaper Vending Machine)", getQuestLabelForNode(mapOf(
+        assertEquals("Abendzeitung (Newspaper\u00A0Vending\u00A0Machine)", getQuestLabelForNode(mapOf(
             "amenity" to "vending_machine",
             "vending" to "newspapers",
             "brand" to "Abendzeitung",
@@ -46,7 +46,7 @@ class NameAndLocationLabelTest {
 
     // https://github.com/streetcomplete/StreetComplete/issues/2640
     @Test fun postBox() {
-        assertEquals("Deutsche Post (Mail Drop Box)", getQuestLabelForNode(mapOf(
+        assertEquals("Deutsche\u00A0Post (Mail\u00A0Drop\u00A0Box)", getQuestLabelForNode(mapOf(
             "amenity" to "post_box",
             "brand" to "Deutsche Post",
             "operator" to "Deutsche Post AG",
@@ -56,7 +56,7 @@ class NameAndLocationLabelTest {
 
     // https://github.com/streetcomplete/StreetComplete/issues/2806
     @Test fun namedBench() {
-        assertEquals("Sergey's Seat (Bench)", getQuestLabelForNode(mapOf(
+        assertEquals("Sergey's\u00A0Seat (Bench)", getQuestLabelForNode(mapOf(
             "amenity" to "bench",
             "name" to "Sergey's Seat",
             "ref" to "600913",
@@ -74,7 +74,7 @@ class NameAndLocationLabelTest {
 
     // https://github.com/streetcomplete/StreetComplete/issues/2840#issuecomment-831245075
     @Test fun schoki() {
-        assertEquals("Schoko Lädchen [3680] (Vending Machine)", getQuestLabelForNode(mapOf(
+        assertEquals("Schoko\u00A0Lädchen\u00A0[3680] (Vending\u00A0Machine)", getQuestLabelForNode(mapOf(
             "amenity" to "vending_machine",
             "ref" to "3680",
             "operator" to "Schoko Lädchen",
@@ -90,7 +90,7 @@ class NameAndLocationLabelTest {
 
     // https://github.com/streetcomplete/StreetComplete/issues/5427
     @Test fun roadWithName() {
-        assertEquals("Main Street (Residential Road)", getQuestLabelForWay(mapOf(
+        assertEquals("Main\u00A0Street (Residential\u00A0Road)", getQuestLabelForWay(mapOf(
             "highway" to "residential",
             "name" to "Main Street",
             "operator" to "Road Agency",
@@ -98,7 +98,7 @@ class NameAndLocationLabelTest {
     }
 
     @Test fun roadWitRef() {
-        assertEquals("A1 (Residential Road)", getQuestLabelForWay(mapOf(
+        assertEquals("A1 (Residential\u00A0Road)", getQuestLabelForWay(mapOf(
             "highway" to "residential",
             "ref" to "A1",
             "operator" to "Road Agency",
@@ -106,7 +106,7 @@ class NameAndLocationLabelTest {
     }
 
     @Test fun roadWithNameAndRef() {
-        assertEquals("Main Street [A1] (Residential Road)", getQuestLabelForWay(mapOf(
+        assertEquals("Main\u00A0Street\u00A0[A1] (Residential\u00A0Road)", getQuestLabelForWay(mapOf(
             "highway" to "residential",
             "name" to "Main Street",
             "ref" to "A1",

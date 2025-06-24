@@ -6,20 +6,20 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
+import de.westnordost.streetcomplete.data.overlays.AndroidOverlay
+import de.westnordost.streetcomplete.data.overlays.OverlayColor
+import de.westnordost.streetcomplete.data.overlays.Overlay
+import de.westnordost.streetcomplete.data.overlays.OverlayStyle
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement
 import de.westnordost.streetcomplete.osm.isDisusedPlace
 import de.westnordost.streetcomplete.osm.isPlaceOrDisusedPlace
-import de.westnordost.streetcomplete.overlays.Color
-import de.westnordost.streetcomplete.overlays.Overlay
-import de.westnordost.streetcomplete.overlays.PointStyle
-import de.westnordost.streetcomplete.overlays.PolygonStyle
 import de.westnordost.streetcomplete.quests.place_name.AddPlaceName
 import de.westnordost.streetcomplete.quests.shop_type.CheckShopType
 import de.westnordost.streetcomplete.quests.shop_type.SpecifyShopType
 import de.westnordost.streetcomplete.util.getNameLabel
 import de.westnordost.streetcomplete.view.presetIconIndex
 
-class PlacesOverlay(private val getFeature: (Element) -> Feature?) : Overlay {
+class PlacesOverlay(private val getFeature: (Element) -> Feature?) : Overlay, AndroidOverlay {
 
     override val title = R.string.overlay_places
     override val icon = R.drawable.ic_quest_shop
@@ -46,9 +46,9 @@ class PlacesOverlay(private val getFeature: (Element) -> Feature?) : Overlay {
                 val label = getNameLabel(element.tags)
 
                 val style = if (element is Node) {
-                    PointStyle(icon, label)
+                    OverlayStyle.Point(icon, label)
                 } else {
-                    PolygonStyle(Color.INVISIBLE, icon, label)
+                    OverlayStyle.Polygon(OverlayColor.Invisible, icon, label)
                 }
                 element to style
             } +
@@ -59,7 +59,7 @@ class PlacesOverlay(private val getFeature: (Element) -> Feature?) : Overlay {
                   entrance
                   and !(addr:housenumber or addr:housename or addr:conscriptionnumber or addr:streetnumber)
             """)
-            .map { it to PointStyle(icon = null, label = "◽") }
+            .map { it to OverlayStyle.Point(icon = null, label = "◽") }
 
     override fun createForm(element: Element?) =
         // this check is necessary because the form shall not be shown for entrances

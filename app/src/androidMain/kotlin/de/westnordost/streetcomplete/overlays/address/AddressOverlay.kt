@@ -5,17 +5,17 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
+import de.westnordost.streetcomplete.data.overlays.AndroidOverlay
+import de.westnordost.streetcomplete.data.overlays.OverlayColor
+import de.westnordost.streetcomplete.data.overlays.Overlay
+import de.westnordost.streetcomplete.data.overlays.OverlayStyle
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.POSTMAN
-import de.westnordost.streetcomplete.overlays.Color
-import de.westnordost.streetcomplete.overlays.Overlay
-import de.westnordost.streetcomplete.overlays.PointStyle
-import de.westnordost.streetcomplete.overlays.PolygonStyle
 import de.westnordost.streetcomplete.quests.address.AddHousenumber
 import de.westnordost.streetcomplete.util.getShortHouseNumber
 
 class AddressOverlay(
     private val getCountryCodeByLocation: (location: LatLon) -> String?
-) : Overlay {
+) : Overlay, AndroidOverlay {
 
     override val title = R.string.overlay_addresses
     override val icon = R.drawable.ic_quest_housenumber
@@ -41,7 +41,7 @@ class AddressOverlay(
             .map {
                 val label = getShortHouseNumber(it.tags) // or ▫
                 val icon = if (label != null) R.drawable.ic_address_dot else null
-                it to PointStyle(icon = icon, label = label ?: "◽")
+                it to OverlayStyle.Point(icon = icon, label = label ?: "◽")
             } +
         mapData
             .filter("ways, relations with building")
@@ -52,8 +52,8 @@ class AddressOverlay(
             }
             .map {
                 val label = getShortHouseNumber(it.tags)
-                val color = if (label != null) Color.BLUE else Color.INVISIBLE
-                it to PolygonStyle(color = color, label = label)
+                val color = if (label != null) OverlayColor.Blue else OverlayColor.Invisible
+                it to OverlayStyle.Polygon(color = color, label = label)
             }
 
     override fun createForm(element: Element?) = AddressOverlayForm()

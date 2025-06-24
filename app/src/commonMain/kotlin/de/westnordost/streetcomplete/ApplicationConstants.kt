@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete
 
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitWayAction
+import kotlin.time.Duration.Companion.minutes
 
 object ApplicationConstants {
     const val NAME = "StreetComplete"
@@ -48,6 +49,18 @@ object ApplicationConstants {
     /** minimum map zoom before allowing to create a note */
     const val NOTE_MIN_ZOOM = 15
 
+    /** Maximum distance the user's GPS location can be situated from the element he wants to edit
+     *  for it to be automatically considered a survey.
+     *
+     *  The distance is the minimum distance between the element geometry (e.g. a road) and the
+     *  track he left in the last [MAX_RECENT_LOCATIONS_AGE] duration, minus the GPS (in)accuracy
+     *  in meters for each point in that track.
+     *
+     *  Users should be encouraged to *really* go right there and check even if they think they
+     *  see it from afar already */
+    const val MAX_DISTANCE_TO_ELEMENT_FOR_SURVEY = 80.0 // m
+    val MAX_RECENT_LOCATIONS_AGE = 10.minutes
+
     /** when new quests that are appearing due to download of an area, show the hint that he can
      *  disable quests in the settings if more than X quests did appear */
     const val QUEST_COUNT_AT_WHICH_TO_SHOW_QUEST_SELECTION_HINT = 600
@@ -70,6 +83,10 @@ object ApplicationConstants {
     // where to send the error reports to
     const val ERROR_REPORTS_EMAIL = "streetcomplete_errors@westnordost.de"
 
+    /** Which relation types to drop already during download, before persisting. This is a
+     *  performance improvement. Working properly with relations means we have to have it as
+     *  complete as possible. Some relations are extremely large, which would require to pull
+     *  a lot of elements from db into memory. */
     val IGNORED_RELATION_TYPES = setOf(
         // could be useful, but sometimes/often very very large
         "route", "route_master", "superroute", "network", "disused:route",

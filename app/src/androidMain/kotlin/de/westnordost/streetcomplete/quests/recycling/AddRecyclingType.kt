@@ -6,13 +6,14 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.quests.recycling.RecyclingType.OVERGROUND_CONTAINER
 import de.westnordost.streetcomplete.quests.recycling.RecyclingType.RECYCLING_CENTRE
 import de.westnordost.streetcomplete.quests.recycling.RecyclingType.UNDERGROUND_CONTAINER
 
-class AddRecyclingType : OsmFilterQuestType<RecyclingType>() {
+class AddRecyclingType : OsmFilterQuestType<RecyclingType>(), AndroidQuest {
 
     override val elementFilter = "nodes, ways with amenity = recycling and !recycling_type"
     override val changesetComment = "Specify type of recycling amenities"

@@ -3,10 +3,11 @@ package de.westnordost.streetcomplete.quests.step_count
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.osm.Tags
 
-class AddStepCount : OsmFilterQuestType<Int>() {
+class AddStepCount : OsmFilterQuestType<Int>(), AndroidQuest {
 
     override val elementFilter = """
         ways with highway = steps
