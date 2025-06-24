@@ -96,10 +96,9 @@ class AtpQuestControllerTest {
         ctrl.addListener(listener)
     }
 
-    // TODO: adapt for ATP or delete
     @Test
     fun `get missing returns null`() {
-        on(noteSource.get(1)).thenReturn(null)
+        on(atpDataSource.get(1)).thenReturn(null)
         assertNull(ctrl.get(1))
     }
 
