@@ -71,8 +71,8 @@ class AddMaxPhysicalHeight(
             && tags["man_made"] != "pipeline"
         // only the "below the bridge" situation may need some context
         return when {
-            isBelowBridge -> R.string.quest_maxheight_physical_below_bridge_title
-            else          -> R.string.quest_maxheight_physical_title
+            isBelowBridge -> R.string.quest_maxheight_below_bridge_title
+            else          -> R.string.quest_maxheight_title
         }
     }
 
