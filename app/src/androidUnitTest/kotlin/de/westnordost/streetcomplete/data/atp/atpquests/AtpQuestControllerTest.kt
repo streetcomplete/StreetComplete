@@ -13,11 +13,9 @@ import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.NODE
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.MutableMapDataWithGeometry
-import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.data.quest.OsmCreateElementQuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
-import de.westnordost.streetcomplete.data.quest.atp.CreatePoiBasedOnAtp
 import de.westnordost.streetcomplete.data.user.UserDataSource
 import de.westnordost.streetcomplete.data.user.UserLoginSource
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement
@@ -43,7 +41,6 @@ class AtpQuestControllerTest {
 
     private lateinit var mapDataSource: MapDataWithEditsSource
     private lateinit var atpDataSource: AtpDataWithEditsSource
-    private lateinit var noteSource: NotesWithEditsSource
     private lateinit var userDataSource: UserDataSource
     private lateinit var userLoginSource: UserLoginSource
     private lateinit var prefs: Preferences
@@ -52,7 +49,6 @@ class AtpQuestControllerTest {
     private lateinit var ctrl: AtpQuestController
     private lateinit var listener: AtpQuestSource.Listener
 
-    private lateinit var noteUpdatesListener: NotesWithEditsSource.Listener
     private lateinit var userLoginListener: UserLoginSource.Listener
     private lateinit var atpUpdatesListener: AtpDataWithEditsSource.Listener
 
@@ -60,7 +56,6 @@ class AtpQuestControllerTest {
 
     @BeforeTest
     fun setUp() {
-        noteSource = mock()
         mapDataSource = mock()
         atpDataSource = mock()
         userDataSource = mock()
@@ -71,11 +66,6 @@ class AtpQuestControllerTest {
         ))
 
         listener = mock()
-
-        on(noteSource.addListener(any())).then { invocation ->
-            noteUpdatesListener = invocation.getArgument(0)
-            Unit
-        }
 
         on(userLoginSource.addListener(any())).then { invocation ->
             userLoginListener = invocation.getArgument(0)
@@ -92,7 +82,7 @@ class AtpQuestControllerTest {
             Unit
         }
 
-        ctrl = AtpQuestController(mapDataSource, atpDataSource, noteSource, registry)
+        ctrl = AtpQuestController(mapDataSource, atpDataSource, registry)
         ctrl.addListener(listener)
     }
 
@@ -189,30 +179,9 @@ class AtpQuestControllerTest {
     // is onCleared still needed? it got copied from notes test and interface TODO
     @Test
     fun `calls onInvalidated when cleared entries`() {
-        noteUpdatesListener.onCleared()
+        //noteUpdatesListener.onCleared()
         verify(listener).onInvalidated()
     }
-
-    // TODO: adapt for ATP or delete (seems reasonable to test? but both updated notes and main onUpdated needs to be tested)
-    //TODO: should notes hide ATP quests in the first place?
-    /*
-    @Test fun `calls onUpdated when notes changed`() {
-        on(prefs.showAllNotes).thenReturn(true)
-
-        noteUpdatesListener.onUpdated(
-            added = listOf(note(1)),
-            updated = listOf(note(2)),
-            deleted = listOf(3)
-        )
-
-        verify(listener).onUpdated(
-            added = argThat {
-                it.containsExactlyInAnyOrder(listOf(OsmNoteQuest(1, p()), OsmNoteQuest(2, p())))
-            },
-            deleted = argThat { it.containsExactlyInAnyOrder(listOf(3)) }
-        )
-    }
-    */
 
     @Test
     fun `isThereOsmAtpMatch matches on exact copies`() {

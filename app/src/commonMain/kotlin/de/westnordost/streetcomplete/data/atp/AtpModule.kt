@@ -1,10 +1,5 @@
 package de.westnordost.streetcomplete.data.atp
 
-import de.westnordost.streetcomplete.data.OSM_API_URL
-import de.westnordost.streetcomplete.data.osmnotes.AvatarsInNotesUpdater
-import de.westnordost.streetcomplete.data.osmnotes.NoteController
-import de.westnordost.streetcomplete.data.osmnotes.NotesApiClient
-import de.westnordost.streetcomplete.data.osmnotes.NotesApiParser
 import org.koin.dsl.module
 
 val atpModule = module {

@@ -7,5 +7,5 @@ val atpQuestModule = module {
 
     single<AtpQuestSource> { get<AtpQuestController>() }
 
-    single { AtpQuestController(get(), get(), get(), get()) }
+    single { AtpQuestController(get(), get(), get()) }
 }

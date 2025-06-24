@@ -9,8 +9,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
-import de.westnordost.streetcomplete.data.osmnotes.Note
-import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
 import de.westnordost.streetcomplete.data.quest.OsmCreateElementQuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.util.Listeners
@@ -22,7 +20,6 @@ import de.westnordost.streetcomplete.util.math.enlargedBy
 class AtpQuestController(
     private val mapDataSource: MapDataWithEditsSource,
     private val atpDataSource: AtpDataWithEditsSource, // TODO what exactly should be feed here?
-    private val noteSource: NotesWithEditsSource, // Do I need it to suppress quests? Probably no, TODO
     private val questTypeRegistry: QuestTypeRegistry,
 ) : AtpQuestSource {
     /* Must be a singleton because there is a listener that should respond to a change in the
@@ -31,17 +28,6 @@ class AtpQuestController(
     private val listeners = Listeners<AtpQuestSource.Listener>()
 
     private val allQuestTypes get() = questTypeRegistry.filterIsInstance<OsmCreateElementQuestType<*>>()
-
-    private val noteUpdatesListener = object : NotesWithEditsSource.Listener {
-        override fun onUpdated(added: Collection<Note>, updated: Collection<Note>, deleted: Collection<Long>) {
-            // probably do the same as class OsmQuestController did? TODO
-        }
-
-        override fun onCleared() {
-            // probably do the same as class OsmQuestController did? TODO
-            listeners.forEach { it.onInvalidated() }
-        }
-    }
 
     fun isThereOsmAtpMatch(osm: Map<String, String>, atp: Map<String, String>, osmIdentifier: ElementKey, atpPosition: LatLon): Boolean {
         fun isItWithinRange(osmIdentifier: ElementKey, atpPosition: LatLon): Boolean {
@@ -165,7 +151,6 @@ class AtpQuestController(
 
     init {
         atpDataSource.addListener(atpUpdatesListener)
-        noteSource.addListener(noteUpdatesListener)
         mapDataSource.addListener(mapDataSourceListener)
     }
 
