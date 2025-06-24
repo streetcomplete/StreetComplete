@@ -10,8 +10,9 @@ import de.westnordost.streetcomplete.data.quest.Quest
 
 /** Represents one task for the user to contribute by reviewing proposed element creation */
 data class CreateElementQuest(
-    val id: Long, // TODO be clear to what id matches, probably id should
-    // be assigned by ATP API and be stable? Can I trust ATP itself with its id assignments?
+    val id: Long, // may be a stable value associated with a given element
+    // but the same missing data may be represented by different one after ATP API data updates
+    // it is a hashed value of https://github.com/alltheplaces/alltheplaces/blob/master/DATA_FORMAT.md#identifier
     val atpEntry: AtpEntry, // At this point it is tightly bound with ATP
     override val type: OsmCreateElementQuestType<*>,
     override val position: LatLon
