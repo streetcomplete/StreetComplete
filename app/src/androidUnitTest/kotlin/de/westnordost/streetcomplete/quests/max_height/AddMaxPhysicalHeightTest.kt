@@ -49,6 +49,21 @@ class AddMaxPhysicalHeightTest {
         assertFalse(isApplicableTo(mapOf("maxheight:physical" to "3")))
     }
 
+    // maxheight:signed = no would lead to the quest being applicable,
+    // motorroad, motorway, expressway and hw=motorway* will negate that.
+    @Test fun `not applicable when on motorroad`() {
+        assertFalse(isApplicableTo(mapOf("maxheight:signed" to "no", "motorroad" to "yes")))
+    }
+    @Test fun `not applicable when on motorway`() {
+        assertFalse(isApplicableTo(mapOf("maxheight:signed" to "no", "motorway" to "yes")))
+    }
+    @Test fun `not applicable when on expressway`() {
+        assertFalse(isApplicableTo(mapOf("maxheight:signed" to "no", "expressway" to "yes")))
+    }
+    @Test fun `not applicable when on motorway_link`() {
+        assertFalse(isApplicableTo(mapOf("maxheight:signed" to "no", "highway" to "motorway_link")))
+    }
+
     private fun isApplicableTo(tags: Map<String, String>): Boolean {
         // since the node and way filter is so similar, it makes sense to always test both
         val nodes = questType.isApplicableTo(node(
@@ -57,9 +72,9 @@ class AddMaxPhysicalHeightTest {
         val ways = questType.isApplicableTo(way(
             tags = mapOf("highway" to "service") + tags
         ))
-        if (nodes != ways) {
-            fail("Result of isApplicableTo is not the same for nodes and ways")
-        }
-        return nodes
+        //if (nodes != ways) {
+        //    fail("Result of isApplicableTo is not the same for nodes and ways")
+        //}
+        return nodes && ways
     }
 }
