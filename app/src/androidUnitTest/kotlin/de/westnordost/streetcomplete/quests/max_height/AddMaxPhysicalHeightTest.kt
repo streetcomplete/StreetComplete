@@ -6,68 +6,63 @@ import de.westnordost.streetcomplete.testutils.way
 import kotlin.test.Test
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
-import kotlin.test.fail
 
 class AddMaxPhysicalHeightTest {
 
     private val questType = AddMaxPhysicalHeight(mock())
 
-    private val MAXHEIGHT_BELOW_DEFAULT    = mapOf("maxheight" to "below_default")
-    private val MAXHEIGHT_DEFAULT          = mapOf("maxheight" to "default")
-    private val MAXHEIGHT_NUMBER_VALUE     = mapOf("maxheight" to "3")
-    private val MAXHEIGHT_PHY_NUMBER_VALUE = mapOf("maxheight:physical" to "3")
-    private val MAXHEIGHT_SIGN_NO          = mapOf("maxheight:signed" to "no")
-    private val MAXHEIGHT_SOURCE_EST       = mapOf("source:maxheight" to "estimation")
-
     @Test fun `applicable if maxheight is below default`() {
-        assertTrue(isApplicableToHeightRestrictor(MAXHEIGHT_BELOW_DEFAULT))
-        assertTrue(isApplicableToRoad(MAXHEIGHT_BELOW_DEFAULT))
+        val tags = mapOf("maxheight" to "below_default")
+        assertTrue(isApplicableToHeightRestrictor(tags))
+        assertTrue(isApplicableToRoad(tags))
     }
 
     @Test fun `applicable if maxheight is only estimated`() {
-        assertTrue(isApplicableToHeightRestrictor(MAXHEIGHT_NUMBER_VALUE + MAXHEIGHT_SOURCE_EST))
-        assertTrue(isApplicableToRoad(MAXHEIGHT_NUMBER_VALUE + MAXHEIGHT_SOURCE_EST))
+        val tags = mapOf("maxheight" to "3", "source:maxheight" to "estimation")
+        assertTrue(isApplicableToHeightRestrictor(tags))
+        assertTrue(isApplicableToRoad(tags))
     }
 
     @Test fun `not applicable if maxheight is only estimated but default`() {
-        assertFalse(isApplicableToHeightRestrictor(MAXHEIGHT_DEFAULT + MAXHEIGHT_SOURCE_EST))
-        assertFalse(isApplicableToRoad(MAXHEIGHT_DEFAULT + MAXHEIGHT_SOURCE_EST))
+        val tags = mapOf("maxheight" to "default", "source:maxheight" to "estimation")
+        assertFalse(isApplicableToHeightRestrictor(tags))
+        assertFalse(isApplicableToRoad(tags))
     }
 
     @Test fun `applicable if maxheight is not signed`() {
-        assertTrue(isApplicableToHeightRestrictor(MAXHEIGHT_SIGN_NO))
-        assertTrue(isApplicableToRoad(MAXHEIGHT_SIGN_NO))
+        val tags = mapOf("maxheight:signed" to "no")
+        assertTrue(isApplicableToHeightRestrictor(tags))
+        assertTrue(isApplicableToRoad(tags))
     }
 
     @Test fun `not applicable if maxheight is not signed but maxheight is defined`() {
-        assertFalse(isApplicableToHeightRestrictor(MAXHEIGHT_SIGN_NO + MAXHEIGHT_NUMBER_VALUE))
-        assertFalse(isApplicableToRoad(MAXHEIGHT_SIGN_NO + MAXHEIGHT_NUMBER_VALUE))
+        val tags = mapOf("maxheight" to "3", "maxheight:signed" to "no")
+        assertFalse(isApplicableToHeightRestrictor(tags))
+        assertFalse(isApplicableToRoad(tags))
     }
 
     @Test fun `not applicable if maxheight is default`() {
-        assertFalse(isApplicableToHeightRestrictor(MAXHEIGHT_DEFAULT))
-        assertFalse(isApplicableToRoad(MAXHEIGHT_DEFAULT))
+        val tags = mapOf("maxheight" to "default")
+        assertFalse(isApplicableToHeightRestrictor(tags))
+        assertFalse(isApplicableToRoad(tags))
     }
 
     @Test fun `not applicable if physical maxheight is already defined`() {
-        assertFalse(isApplicableToHeightRestrictor(MAXHEIGHT_PHY_NUMBER_VALUE))
-        assertFalse(isApplicableToRoad(MAXHEIGHT_PHY_NUMBER_VALUE))
+        val tags = mapOf("maxheight:physical" to "3")
+        assertFalse(isApplicableToHeightRestrictor(tags))
+        assertFalse(isApplicableToRoad(tags))
     }
 
     @Test fun `not applicable when on motorroad`() {
-        assertTrue(isApplicableToHeightRestrictor(MAXHEIGHT_SIGN_NO))
         assertFalse(isApplicableToRoad(mapOf("motorroad" to "yes")))
     }
     @Test fun `not applicable when on motorway`() {
-        assertTrue(isApplicableToHeightRestrictor(MAXHEIGHT_SIGN_NO))
         assertFalse(isApplicableToRoad(mapOf("motorway" to "yes")))
     }
     @Test fun `not applicable when on expressway`() {
-        assertTrue(isApplicableToHeightRestrictor(MAXHEIGHT_SIGN_NO))
         assertFalse(isApplicableToRoad(mapOf("expressway" to "yes")))
     }
     @Test fun `not applicable when on motorway_link`() {
-        assertTrue(isApplicableToHeightRestrictor(MAXHEIGHT_SIGN_NO))
         assertFalse(isApplicableToRoad(mapOf("highway" to "motorway_link")))
     }
 
