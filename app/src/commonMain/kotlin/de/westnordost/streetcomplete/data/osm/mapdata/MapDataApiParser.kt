@@ -64,7 +64,7 @@ private fun XmlReader.parseMapData(ignoreRelationTypes: Set<String?>): MutableMa
         END_ELEMENT -> when (localName) {
             "node" -> result.add(Node(id!!, position!!, tags.orEmpty(), version!!, timestamp!!))
             "way" -> result.add(Way(id!!, nodes, tags.orEmpty(), version!!, timestamp!!))
-            "relation" -> if (tags.orEmpty()["type"] !in ignoreRelationTypes) {
+            "relation" -> if (tags.orEmpty()["type"] !in ignoreRelationTypes || tags.orEmpty()["route"] == "ferry") {
                 result.add(Relation(id!!, members, tags.orEmpty(), version!!, timestamp!!))
             }
         }

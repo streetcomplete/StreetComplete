@@ -12,7 +12,7 @@ import de.westnordost.streetcomplete.util.ktx.toYesNo
 
 class AddFerryAccessPedestrian : OsmFilterQuestType<Boolean>(), AndroidQuest {
 
-    override val elementFilter = "ways, relations with route = ferry and !foot"
+    override val elementFilter = "relations with route = ferry and !foot"
     override val changesetComment = "Specify ferry access for pedestrians"
     override val wikiLink = "Tag:route=ferry"
     override val icon = R.drawable.ic_quest_ferry_pedestrian

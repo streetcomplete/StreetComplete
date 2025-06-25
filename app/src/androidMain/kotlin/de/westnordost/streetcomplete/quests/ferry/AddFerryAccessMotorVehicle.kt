@@ -12,7 +12,7 @@ import de.westnordost.streetcomplete.util.ktx.toYesNo
 
 class AddFerryAccessMotorVehicle : OsmFilterQuestType<Boolean>(), AndroidQuest {
 
-    override val elementFilter = "ways, relations with route = ferry and !motor_vehicle"
+    override val elementFilter = "relations with route = ferry and !motor_vehicle"
     override val changesetComment = "Specify ferry access for motor vehicles"
     override val wikiLink = "Tag:route=ferry"
     override val icon = R.drawable.ic_quest_ferry
