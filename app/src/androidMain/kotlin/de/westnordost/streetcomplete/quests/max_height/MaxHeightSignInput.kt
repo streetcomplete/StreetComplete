@@ -16,7 +16,7 @@ import de.westnordost.streetcomplete.osm.Length
 import de.westnordost.streetcomplete.ui.common.FootInchAppearance
 import de.westnordost.streetcomplete.ui.common.LengthInput
 import de.westnordost.streetcomplete.ui.common.RectangularSign
-import de.westnordost.streetcomplete.ui.theme.TrafficYellow
+import de.westnordost.streetcomplete.ui.theme.TrafficSignColor
 
 @Composable
 fun MaxHeightSignInput(
@@ -31,7 +31,7 @@ fun MaxHeightSignInput(
         "AU", "NZ", "US", "CA" -> {
             RectangularSign(
                 modifier = modifier,
-                color = TrafficYellow,
+                color = TrafficSignColor.Yellow,
             ) {
                 LengthInput(
                     selectedUnit = selectedUnit,
