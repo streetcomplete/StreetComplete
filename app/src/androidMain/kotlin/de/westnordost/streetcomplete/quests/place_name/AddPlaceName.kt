@@ -24,6 +24,7 @@ class AddPlaceName(
           or office and office !~ no|vacant
           or craft
           or amenity = recycling and recycling_type = centre
+          or amenity = shelter and shelter_type = basic_hut
           or tourism = information and information = office
           or """ +
 
