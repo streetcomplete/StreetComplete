@@ -86,7 +86,7 @@ class AddPlaceName(
             "leisure" to arrayOf(
                 // common
                 "fitness_centre", "golf_course", "water_park", "miniature_golf", "bowling_alley",
-                "amusement_arcade", "adult_gaming_centre", "tanning_salon",
+                "amusement_arcade", "adult_gaming_centre", "tanning_salon", "sauna",
 
                 // name & wheelchair
                 "sports_centre", "stadium",
