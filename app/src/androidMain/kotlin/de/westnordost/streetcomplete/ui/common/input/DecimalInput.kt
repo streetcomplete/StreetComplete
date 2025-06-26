@@ -1,8 +1,10 @@
 package de.westnordost.streetcomplete.ui.common.input
 
 import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.LocalTextStyle
@@ -14,12 +16,16 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.intl.Locale
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.ui.common.TextField2
 import de.westnordost.streetcomplete.ui.common.TextFieldStyle
 import de.westnordost.streetcomplete.ui.common.colors
@@ -67,24 +73,26 @@ fun DecimalInput(
             maxFractionDigits = maxFractionDigits
         )
     }
-    var text by rememberSaveable(initialValue) {
-        mutableStateOf(initialValue?.let { formatter.format(it.absoluteValue) }.orEmpty())
+    var text by rememberSaveable(initialValue, stateSaver = TextFieldValue.Saver) {
+        mutableStateOf(
+            TextFieldValue(initialValue?.let { formatter.format(it.absoluteValue) }.orEmpty())
+        )
     }
 
     TextField2(
         value = text,
         onValueChange = { value ->
-            if (value.isEmpty()) {
+            if (value.text.isEmpty()) {
                 text = value
                 onValueChanged(null)
             }
-            else if (value.isOnlyDecimalDigits(
+            else if (value.text.isOnlyDecimalDigits(
                 decimalSeparator = formatter.decimalSeparator,
                 maxIntegerDigits = maxIntegerDigits,
                 maxFractionDigits = maxFractionDigits
             )) {
                 text = value
-                val newValue = formatter.parse(value)?.toDouble()
+                val newValue = formatter.parse(value.text)?.toDouble()
                 if (newValue != null) {
                     onValueChanged(newValue)
                 }
@@ -130,9 +138,17 @@ private fun String.isOnlyDecimalDigits(
 @Preview @Composable
 private fun DecimalInputPreview() {
     var number: Double? by remember { mutableStateOf(null) }
-    val format = NumberFormatter()
-    Row {
-        DecimalInput(null, onValueChanged = { number = it }, Modifier.weight(1f))
-        Text(number?.let { format.format(it) }.orEmpty(), Modifier.weight(1f))
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+    ) {
+        DecimalInput(
+            initialValue = null,
+            onValueChanged = { number = it },
+            maxIntegerDigits = 2,
+            maxFractionDigits = 2,
+            textStyle = LocalTextStyle.current.copy(textAlign = TextAlign.Center),
+            modifier = Modifier.width(80.dp),
+        )
+        Text(number?.toString().orEmpty(), Modifier.padding(16.dp))
     }
 }

@@ -33,6 +33,7 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.semantics.error
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.dp
@@ -122,6 +123,89 @@ fun TextField2(
             cursorBrush = SolidColor(colors.cursorColor(isError).value),
             decorationBox = style.getDecorationBox(
                 value = value,
+                enabled = enabled,
+                label = label,
+                placeholder = placeholder,
+                leadingIcon = leadingIcon,
+                trailingIcon = trailingIcon,
+                isError = isError,
+                visualTransformation = visualTransformation,
+                singleLine = singleLine,
+                interactionSource = interactionSource,
+                shape = shape,
+                colors = colors,
+                contentPadding = contentPadding
+            ),
+        )
+    }
+}
+
+@Composable
+fun TextField2(
+    value: TextFieldValue,
+    onValueChange: (TextFieldValue) -> Unit,
+    modifier: Modifier = Modifier,
+    style: TextFieldStyle = TextFieldStyle.Filled,
+    enabled: Boolean = true,
+    readOnly: Boolean = false,
+    textStyle: TextStyle = LocalTextStyle.current,
+    label: @Composable (() -> Unit)? = null,
+    placeholder: @Composable (() -> Unit)? = null,
+    leadingIcon: @Composable (() -> Unit)? = null,
+    trailingIcon: @Composable (() -> Unit)? = null,
+    isError: Boolean = false,
+    visualTransformation: VisualTransformation = VisualTransformation.None,
+    keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
+    keyboardActions: KeyboardActions = KeyboardActions(),
+    singleLine: Boolean = false,
+    maxLines: Int = if (singleLine) 1 else Int.MAX_VALUE,
+    minLines: Int = 1,
+    interactionSource: MutableInteractionSource? = null,
+    shape: Shape = style.shape,
+    colors: TextFieldColors = style.colors,
+    contentPadding: PaddingValues = style.getContentPadding(label != null),
+    autoFitFontSize: Boolean = false,
+) {
+    @Suppress("NAME_SHADOWING")
+    val interactionSource = interactionSource ?: remember { MutableInteractionSource() }
+    // If color is not provided via the text style, use content color as a default
+    val textColor = textStyle.color.takeOrElse { colors.textColor(enabled).value }
+    val mergedTextStyle = textStyle.merge(TextStyle(color = textColor))
+
+    AutoFitFontSize(
+        autoSize = autoFitFontSize,
+        value = value.text,
+        textStyle = mergedTextStyle,
+        contentPadding = contentPadding,
+        maxLines = maxLines,
+        modifier = modifier,
+    ) { scaledTextStyle ->
+        @OptIn(ExperimentalMaterialApi::class)
+        BasicTextField(
+            value = value,
+            onValueChange = onValueChange,
+            modifier = Modifier.textFieldDefaults(
+                style = style,
+                enabled = enabled,
+                label = label,
+                isError = isError,
+                interactionSource = interactionSource,
+                colors = colors,
+                density = LocalDensity.current,
+            ),
+            enabled = enabled,
+            readOnly = readOnly,
+            textStyle = scaledTextStyle,
+            keyboardOptions = keyboardOptions,
+            keyboardActions = keyboardActions,
+            singleLine = singleLine,
+            maxLines = maxLines,
+            minLines = minLines,
+            visualTransformation = visualTransformation,
+            interactionSource = interactionSource,
+            cursorBrush = SolidColor(colors.cursorColor(isError).value),
+            decorationBox = style.getDecorationBox(
+                value = value.text,
                 enabled = enabled,
                 label = label,
                 placeholder = placeholder,
