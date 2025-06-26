@@ -5,9 +5,15 @@ import java.text.DecimalFormatSymbols
 import java.text.NumberFormat
 import java.text.ParseException
 
-actual class NumberFormatter actual constructor(locale: Locale?) {
-
-    private val format =
+actual class NumberFormatter actual constructor(
+    locale: Locale?,
+    minIntegerDigits: Int,
+    maxIntegerDigits: Int,
+    minFractionDigits: Int,
+    maxFractionDigits: Int,
+    useGrouping: Boolean,
+) {
+    private val format: NumberFormat =
         if (locale != null) NumberFormat.getInstance(locale.platformLocale)
         else                NumberFormat.getInstance()
 
@@ -15,27 +21,26 @@ actual class NumberFormatter actual constructor(locale: Locale?) {
         if (locale != null) DecimalFormatSymbols.getInstance(locale.platformLocale)
         else                DecimalFormatSymbols.getInstance()
 
-    actual fun format(
-        value: Number,
-        minFractionDigits: Int,
-        maxFractionDigits: Int,
-        useGrouping: Boolean
-    ): String {
+    init {
         format.isGroupingUsed = useGrouping
+        format.minimumIntegerDigits = minIntegerDigits
+        format.maximumIntegerDigits = maxIntegerDigits
         format.minimumFractionDigits = minFractionDigits
         format.maximumFractionDigits = maxFractionDigits
+    }
+
+    actual fun format(value: Number): String {
         return format.format(value)
     }
 
-    actual fun parse(text: String, allowGrouping: Boolean): Number? {
-        // enforce strict parsing
+    actual fun parse(text: String): Number? {
+        // enforce strict parsing (Java parser is really lenient...)
         if (!text.all {
             it == symbols.decimalSeparator ||
-            it == symbols.groupingSeparator && allowGrouping ||
+            it == symbols.groupingSeparator && format.isGroupingUsed ||
             it.isDigit()
         }) return null
 
-        format.isGroupingUsed = allowGrouping
         return format.parseOrNull(text)
     }
 
