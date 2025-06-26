@@ -13,11 +13,18 @@ import androidx.compose.ui.unit.dp
 import kotlin.math.roundToInt
 
 @Composable
+fun BoxWithConstraintsScope.calculateTextFieldMaxFontSize(
+    text: String,
+    textStyle: TextStyle
+) : TextUnit =
+    // 2*16.dp is the default (and unchangable) material inner text field padding
+    calculateTextMaxFontSize(text, textStyle, 32.dp)
+
+@Composable
 fun BoxWithConstraintsScope.calculateTextMaxFontSize(
     text: String,
     textStyle: TextStyle,
     horizontalContentPadding: Dp = 0.dp,
-    maxLines: Int = 1,
 ): TextUnit {
     var fontSize = textStyle.fontSize
     val calculateParagraph = @Composable {
@@ -27,14 +34,10 @@ fun BoxWithConstraintsScope.calculateTextMaxFontSize(
             style = textStyle.copy(fontSize = fontSize),
             density = LocalDensity.current,
             fontFamilyResolver = LocalFontFamilyResolver.current,
-            maxLines = maxLines
         )
     }
     var paragraph = calculateParagraph()
-    while (
-        paragraph.maxIntrinsicWidth > (maxWidth - horizontalContentPadding).toPx() ||
-        paragraph.didExceedMaxLines
-    ) {
+    while (paragraph.maxIntrinsicWidth > (maxWidth - horizontalContentPadding).toPx()) {
         fontSize *= 0.9f
         paragraph = calculateParagraph()
     }
