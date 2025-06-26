@@ -31,7 +31,7 @@ class AtpApiClient(
      *
      * @return the incoming atp entries
      */
-    suspend fun getAllAtpEntries(bounds: BoundingBox, limit: Int? = null): List<AtpEntry> = wrapApiClientExceptions {
+    suspend fun getAllAtpEntries(bounds: BoundingBox): List<AtpEntry> = wrapApiClientExceptions {
         val gathered = mutableListOf<AtpEntry>()
 
         // TODO add tests
