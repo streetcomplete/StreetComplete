@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.ui.common
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.LocalContentColor
@@ -41,10 +40,16 @@ fun RectangularSign(
 }
 
 @Composable @Preview
-private fun RectangularSignPreview() {
-    Row {
-        RectangularSign { Text("a") }
-        RectangularSign(color = TrafficSignColor.Yellow) { Text("b") }
-        RectangularSign(color = TrafficSignColor.Blue) { Text("c") }
-    }
+private fun RectangularSignWhitePreview() {
+    RectangularSign { Text("a") }
+}
+
+@Composable @Preview
+private fun RectangularSignYellowPreview() {
+    RectangularSign(color = TrafficSignColor.Yellow) { Text("b") }
+}
+
+@Composable @Preview
+private fun RectangularSignBluePreview() {
+    RectangularSign(color = TrafficSignColor.Blue) { Text("c") }
 }
