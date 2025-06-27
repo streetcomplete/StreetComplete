@@ -1,6 +1,5 @@
-import de.westnordost.streetcomplete.data.atp.AtpApiParser
-import de.westnordost.streetcomplete.data.atp.AtpEntry
-import de.westnordost.streetcomplete.data.atp.ReportType
+package de.westnordost.streetcomplete.data.atp
+
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
