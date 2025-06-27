@@ -73,27 +73,32 @@ fun DecimalInput(
             maxFractionDigits = maxFractionDigits
         )
     }
-    var text by rememberSaveable(initialValue, stateSaver = TextFieldValue.Saver) {
+    var textFieldValue by remember(initialValue) {
         mutableStateOf(
             TextFieldValue(initialValue?.let { formatter.format(it.absoluteValue) }.orEmpty())
         )
     }
+    // keeping track of last value sent through onValueChange so that it is not called multiple
+    // times without recomposition in between (copied logic from BasicTextField)
+    var lastValue by remember(initialValue) { mutableStateOf(initialValue) }
 
     TextField2(
-        value = text,
-        onValueChange = { value ->
-            if (value.text.isEmpty()) {
-                text = value
+        value = textFieldValue,
+        onValueChange = { newTextFieldValue ->
+            if (newTextFieldValue.text.isEmpty() && lastValue != null) {
+                textFieldValue = newTextFieldValue
+                lastValue = null
                 onValueChanged(null)
             }
-            else if (value.text.isOnlyDecimalDigits(
+            else if (newTextFieldValue.text.isOnlyDecimalDigits(
                 decimalSeparator = formatter.decimalSeparator,
                 maxIntegerDigits = maxIntegerDigits,
                 maxFractionDigits = maxFractionDigits
             )) {
-                text = value
-                val newValue = formatter.parse(value.text)?.toDouble()
-                if (newValue != null) {
+                textFieldValue = newTextFieldValue
+                val newValue = formatter.parse(newTextFieldValue.text)?.toDouble()
+                if (newValue != null && lastValue != newValue) {
+                    lastValue = newValue
                     onValueChanged(newValue)
                 }
             }
