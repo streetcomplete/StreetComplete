@@ -34,7 +34,7 @@ class AddFerryAccessPedestrian : OsmElementQuestType<Boolean>, AndroidQuest {
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
         // This is the primary method that performs the full check with mapData
-        return mapData.ways.filter { element ->
+        return mapData.relations + mapData.ways.filter { element ->
             // First, a quick check with the preliminary filter
             if (!preliminaryFilter.matches(element)) return@filter false
             // Then, the detailed check which includes relation checks
@@ -43,13 +43,13 @@ class AddFerryAccessPedestrian : OsmElementQuestType<Boolean>, AndroidQuest {
     }
 
     override fun isApplicableTo(element: Element): Boolean? {
-        // Check if it's a ferry. If yes, check if its part of a ferry route via getApplicableElements.
+        // Check if it's a relation. If not its a way and is required not to be part of a relation.
         val tags = element.tags
-        if (tags["route"] == "ferry") {
-            return null
+        if (element.type == ElementType.RELATION) {
+            return true
         }
 
-        return true
+        return null
     }
 
     private fun isApplicableTo(element: Element, mapData: MapDataWithGeometry): Boolean {
@@ -58,11 +58,10 @@ class AddFerryAccessPedestrian : OsmElementQuestType<Boolean>, AndroidQuest {
         // Filter out ferries that are part of a ferry route relation
         if (tags["route"] == "ferry") {
             val isPartOfFerryRelation = mapData.relations.any { relation ->
-                relation.tags["type"] == "route" &&
-                    relation.tags["route"] == "ferry" &&
-                    relation.members.any { member ->
-                        member.type == ElementType.WAY && member.ref == element.id
-                    }
+                relation.tags["route"] == "ferry" &&
+                relation.members.any { member ->
+                    member.type == ElementType.WAY && member.ref == element.id
+                }
             }
             if (isPartOfFerryRelation) {
                 return false
