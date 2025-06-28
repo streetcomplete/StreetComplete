@@ -9,7 +9,7 @@ import de.westnordost.streetcomplete.testutils.way
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
-class AddFerryAccessTest {
+class AddFerryUtilsAccessTest {
 
     private val pedestrianQuest = AddFerryAccessPedestrian()
     private val motorQuest = AddFerryAccessMotorVehicle()

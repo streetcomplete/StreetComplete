@@ -51,23 +51,4 @@ class AddFerryAccessMotorVehicle : OsmElementQuestType<Boolean>, AndroidQuest {
 
         return null
     }
-
-    private fun isApplicableTo(element: Element, mapData: MapDataWithGeometry): Boolean {
-        val tags = element.tags
-
-        // Filter out ferries that are part of a ferry route relation
-        if (tags["route"] == "ferry") {
-            val isPartOfFerryRelation = mapData.relations.any { relation ->
-                relation.tags["route"] == "ferry" &&
-                    relation.members.any { member ->
-                        member.type == ElementType.WAY && member.ref == element.id
-                    }
-            }
-            if (isPartOfFerryRelation) {
-                return false
-            }
-        }
-
-        return true
-    }
 }
