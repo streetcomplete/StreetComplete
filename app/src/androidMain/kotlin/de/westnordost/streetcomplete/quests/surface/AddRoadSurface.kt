@@ -6,6 +6,8 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
+import de.westnordost.streetcomplete.osm.ALL_ROADS
+import de.westnordost.streetcomplete.osm.HIGHWAYS
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.surface.INVALID_SURFACES
 import de.westnordost.streetcomplete.osm.surface.INVALID_SURFACES_FOR_TRACKTYPES
@@ -17,10 +19,7 @@ class AddRoadSurface : OsmFilterQuestType<Surface>(), AndroidQuest {
 
     override val elementFilter = """
         ways with (
-          highway ~ ${listOf(
-            "primary", "primary_link", "secondary", "secondary_link", "tertiary", "tertiary_link",
-            "unclassified", "residential", "living_street", "pedestrian", "track", "busway",
-            ).joinToString("|")
+          highway ~ ${(ALL_ROADS - HIGHWAYS - setOf("road")).joinToString("|")
           }
           or highway = service and service !~ driveway|slipway
         )

@@ -6,8 +6,11 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
 import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
+import de.westnordost.streetcomplete.osm.MAJOR_ROADS
 import de.westnordost.streetcomplete.osm.ROADS_ASSUMED_TO_BE_PAVED
+import de.westnordost.streetcomplete.osm.TRUNKS
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.osm.UNCLASSIFIED_ROADS
 import de.westnordost.streetcomplete.osm.surface.PAVED_SURFACES
 import de.westnordost.streetcomplete.quests.foot.ProhibitedForPedestriansAnswer.ACTUALLY_HAS_SIDEWALK
 import de.westnordost.streetcomplete.quests.foot.ProhibitedForPedestriansAnswer.NO
@@ -37,7 +40,7 @@ class AddProhibitedForPedestrians : OsmFilterQuestType<ProhibitedForPedestriansA
            or if already bicycle=no/sidepath */
         // only roads where foot=X is not (almost) implied
         "and motorroad != yes " +
-        "and highway ~ trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified " +
+        "and highway ~ ${(TRUNKS + MAJOR_ROADS + UNCLASSIFIED_ROADS).joinToString("|")} " +
         // road probably not developed enough to issue a prohibition for pedestrians
         "and (surface ~ ${PAVED_SURFACES.joinToString("|")} or highway ~ ${ROADS_ASSUMED_TO_BE_PAVED.joinToString("|")})" +
         // fuzzy filter for above mentioned situations + developed-enough / non-rural roads

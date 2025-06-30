@@ -9,6 +9,10 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
 import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
+import de.westnordost.streetcomplete.osm.ALL_LINKS
+import de.westnordost.streetcomplete.osm.HIGHWAYS
+import de.westnordost.streetcomplete.osm.MAJOR_ROADS
+import de.westnordost.streetcomplete.osm.PUBLIC_AND_UNCLASSIFIED
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.maxspeed.MAX_SPEED_TYPE_KEYS
 import de.westnordost.streetcomplete.osm.surface.UNPAVED_SURFACES
@@ -18,7 +22,7 @@ class AddMaxSpeed : OsmFilterQuestType<MaxSpeedAnswer>(), AndroidQuest {
 
     override val elementFilter = """
         ways with
-         highway ~ motorway|trunk|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|busway
+         highway ~ ${(HIGHWAYS + MAJOR_ROADS + PUBLIC_AND_UNCLASSIFIED + setOf("residential") - ALL_LINKS).joinToString("|")}
          and !maxspeed and !maxspeed:advisory and !maxspeed:forward and !maxspeed:backward
          and ${MAX_SPEED_TYPE_KEYS.joinToString(" and ") { "!$it" }}
          and surface !~ ${UNPAVED_SURFACES.joinToString("|")}

@@ -9,6 +9,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
+import de.westnordost.streetcomplete.osm.ALL_PATHS_EXCEPT_STEPS
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.util.math.measuredLength
 
@@ -16,7 +17,7 @@ class AddBicycleIncline : OsmElementQuestType<BicycleInclineAnswer>, AndroidQues
 
     private val tagFilter by lazy { """
         ways with mtb:scale:uphill
-         and highway ~ footway|cycleway|path|bridleway|track
+         and highway ~ ${(ALL_PATHS_EXCEPT_STEPS + setOf("track")).joinToString("|")}
          and (!indoor or indoor = no)
          and area != yes
          and access !~ private|no

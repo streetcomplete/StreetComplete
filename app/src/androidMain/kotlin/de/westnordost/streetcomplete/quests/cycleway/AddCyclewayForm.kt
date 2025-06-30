@@ -5,6 +5,8 @@ import android.view.View
 import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.osm.MAJOR_ROADS
+import de.westnordost.streetcomplete.osm.UNCLASSIFIED_ROADS
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway
 import de.westnordost.streetcomplete.osm.cycleway.CyclewayAndDirection
 import de.westnordost.streetcomplete.osm.cycleway.LeftAndRightCycleway
@@ -121,7 +123,7 @@ class AddCyclewayForm : AStreetSideSelectForm<CyclewayAndDirection, LeftAndRight
 
     private val likelyNoBicycleContraflow = """
         ways with oneway:bicycle != no and (
-            oneway ~ yes|-1 and highway ~ primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified
+            oneway ~ yes|-1 and highway ~ ${(MAJOR_ROADS + UNCLASSIFIED_ROADS).joinToString("|")}
             or dual_carriageway = yes
             or junction ~ roundabout|circular
         )

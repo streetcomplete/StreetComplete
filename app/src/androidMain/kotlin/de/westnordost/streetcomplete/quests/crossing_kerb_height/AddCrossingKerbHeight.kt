@@ -10,6 +10,7 @@ import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BLIND
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.WHEELCHAIR
+import de.westnordost.streetcomplete.osm.PATH_FOR_FOOT_AND_CYCLE
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 import de.westnordost.streetcomplete.quests.kerb_height.AddKerbHeightForm
@@ -41,7 +42,7 @@ class AddCrossingKerbHeight : OsmElementQuestType<KerbHeight>, AndroidQuest {
     private val excludedWaysFilter by lazy { """
         ways with
           highway and access ~ private|no
-          or highway ~ footway|path|cycleway
+          or highway ~ ${PATH_FOR_FOOT_AND_CYCLE.joinToString("|")}
           or highway = service and service = driveway
           or sidewalk:both ~ none|no
           or sidewalk ~ none|no

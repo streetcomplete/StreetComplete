@@ -12,6 +12,11 @@ import de.westnordost.streetcomplete.data.overlays.Overlay
 import de.westnordost.streetcomplete.data.overlays.OverlayStyle
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 import de.westnordost.streetcomplete.osm.ALL_ROADS
+import de.westnordost.streetcomplete.osm.LOCAL_ACCESS_ROADS
+import de.westnordost.streetcomplete.osm.MAJOR_ROADS
+import de.westnordost.streetcomplete.osm.PEDESTRIAN_ONLY_ROADS
+import de.westnordost.streetcomplete.osm.TRUNKS
+import de.westnordost.streetcomplete.osm.UNCLASSIFIED_ROADS
 import de.westnordost.streetcomplete.osm.isPrivateOnFoot
 import de.westnordost.streetcomplete.osm.maxspeed.MAX_SPEED_TYPE_KEYS
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition
@@ -40,7 +45,7 @@ class StreetParkingOverlay : Overlay, AndroidOverlay {
     override fun getStyledElements(mapData: MapDataWithGeometry): Sequence<Pair<Element, OverlayStyle>> =
         // roads
         mapData.filter("""
-            ways with highway ~ trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|living_street|pedestrian|service
+            ways with highway ~ ${(TRUNKS + MAJOR_ROADS + LOCAL_ACCESS_ROADS + PEDESTRIAN_ONLY_ROADS + UNCLASSIFIED_ROADS + setOf("service")).joinToString("|")}
             and area != yes
         """).map { it to getStreetParkingStyle(it) } +
         // separate parking

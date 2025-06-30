@@ -10,7 +10,9 @@ import de.westnordost.streetcomplete.data.overlays.OverlayColor
 import de.westnordost.streetcomplete.data.overlays.Overlay
 import de.westnordost.streetcomplete.data.overlays.OverlayStyle
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
+import de.westnordost.streetcomplete.osm.ALL_PATHS
 import de.westnordost.streetcomplete.osm.ALL_ROADS
+import de.westnordost.streetcomplete.osm.TAGGING_NOT_ASSUMED
 import de.westnordost.streetcomplete.osm.cycleway_separate.SeparateCycleway
 import de.westnordost.streetcomplete.osm.cycleway_separate.parseSeparateCycleway
 import de.westnordost.streetcomplete.osm.isPrivateOnFoot
@@ -42,7 +44,7 @@ class SidewalkOverlay : Overlay, AndroidOverlay {
         // possible to add sidewalks to them. At least in NL, cycleways with sidewalks actually exist
         mapData.filter("""
             ways with (
-              highway ~ footway|steps|path|bridleway|cycleway
+              highway ~ ${ALL_PATHS.joinToString("|")}
             ) and area != yes
         """).map { it to getFootwayStyle(it) }
 
@@ -100,7 +102,7 @@ private fun getStreetStrokeStyle(tags: Map<String, String>): OverlayStyle.Stroke
 
 private val sidewalkTaggingNotExpectedFilter by lazy { """
     ways with
-      highway ~ track|living_street|pedestrian|service|motorway_link|motorway|busway
+      highway ~ ${TAGGING_NOT_ASSUMED.joinToString("|")}
       or motorroad = yes
       or expressway = yes
       or maxspeed <= 10
