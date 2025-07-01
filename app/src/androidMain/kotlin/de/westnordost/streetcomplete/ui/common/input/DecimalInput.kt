@@ -11,6 +11,7 @@ import androidx.compose.material.LocalTextStyle
 import androidx.compose.material.Text
 import androidx.compose.material.TextFieldColors
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -41,8 +42,8 @@ import kotlin.math.absoluteValue
  * */
 @Composable
 fun DecimalInput(
-    initialValue: Double?,
-    onValueChanged: (Double?) -> Unit,
+    value: Double?,
+    onValueChange: (Double?) -> Unit,
     modifier: Modifier = Modifier,
     maxIntegerDigits: Int = Int.MAX_VALUE,
     maxFractionDigits: Int = Int.MAX_VALUE,
@@ -72,33 +73,58 @@ fun DecimalInput(
             maxFractionDigits = maxFractionDigits
         )
     }
-    var textFieldValue by remember(initialValue) {
-        mutableStateOf(
-            TextFieldValue(initialValue?.let { formatter.format(it.absoluteValue) }.orEmpty())
-        )
+    // number value as text
+    val textValue = value?.let { formatter.format(it.absoluteValue) }.orEmpty()
+
+    // initialize the text state once, then on number text change, change only the text (not the
+    // caret position etc.).
+    // The following logic is pretty much copied from BasicTextField(value: String, … )
+    var textFieldValueState by remember { mutableStateOf(TextFieldValue(textValue)) }
+
+    // only replace text if passed value is actually different from the current text field content.
+    // Don't replace e.g. "0." with "0" because then when typing, a decimal separator would
+    // immediately be replaced with it being removed, lol
+    val valueDiffers = formatter.parse(textFieldValueState.text)?.toDouble() != value
+    val textFieldValue =
+        if (valueDiffers) textFieldValueState.copy(text = textValue)
+        else textFieldValueState
+
+    // ... and update the actual state only after composition (also copied from BasicTextField)
+    // (not entirely sure why this is necessary, but I guess Google engineers know what they are
+    // doing, so, copying that)
+    SideEffect {
+        if (
+            textFieldValue.selection != textFieldValueState.selection ||
+            textFieldValue.composition != textFieldValueState.composition
+        ) {
+            textFieldValueState = textFieldValue
+        }
     }
-    // keeping track of last value sent through onValueChange so that it is not called multiple
-    // times without recomposition in between (copied logic from BasicTextField)
-    var lastValue by remember(initialValue) { mutableStateOf(initialValue) }
+    // remember last value so to only call onValueChanged if it actually did change (also copied
+    // from BasicTextField)
+    var lastValue by remember(value) { mutableStateOf(value) }
 
     TextField2(
         value = textFieldValue,
-        onValueChange = { newTextFieldValue ->
-            if (newTextFieldValue.text.isEmpty() && lastValue != null) {
-                textFieldValue = newTextFieldValue
+        onValueChange = { newTextFieldValueState ->
+            // cleared input -> value now null
+            if (newTextFieldValueState.text.isEmpty() && lastValue != null) {
+                textFieldValueState = newTextFieldValueState
                 lastValue = null
-                onValueChanged(null)
+                onValueChange(null)
             }
-            else if (newTextFieldValue.text.isOnlyDecimalDigits(
+            // accept only decimal input
+            else if (newTextFieldValueState.text.isOnlyDecimalDigits(
                 decimalSeparator = formatter.decimalSeparator,
                 maxIntegerDigits = maxIntegerDigits,
                 maxFractionDigits = maxFractionDigits
             )) {
-                textFieldValue = newTextFieldValue
-                val newValue = formatter.parse(newTextFieldValue.text)?.toDouble()
+                textFieldValueState = newTextFieldValueState
+
+                val newValue = formatter.parse(newTextFieldValueState.text)?.toDouble()
                 if (newValue != null && lastValue != newValue) {
                     lastValue = newValue
-                    onValueChanged(newValue)
+                    onValueChange(newValue)
                 }
             }
         },
@@ -146,8 +172,8 @@ private fun DecimalInputPreview() {
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         DecimalInput(
-            initialValue = null,
-            onValueChanged = { number = it },
+            value = number,
+            onValueChange = { number = it },
             maxIntegerDigits = 2,
             maxFractionDigits = 2,
             textStyle = LocalTextStyle.current.copy(textAlign = TextAlign.Center),
