@@ -11,7 +11,6 @@ import androidx.compose.material.LocalTextStyle
 import androidx.compose.material.Text
 import androidx.compose.material.TextFieldColors
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -81,31 +80,21 @@ fun DecimalInput(
     // The following logic is pretty much copied from BasicTextField(value: String, … )
     var textFieldValueState by remember { mutableStateOf(TextFieldValue(textValue)) }
 
-    // only replace text if passed value is actually different from the current text field content.
+    // only replace text if passed value is actually a different decimal from the current text
+    // field content.
     // Don't replace e.g. "0." with "0" because then when typing, a decimal separator would
     // immediately be replaced with it being removed, lol
     val valueDiffers = formatter.parse(textFieldValueState.text)?.toDouble() != value
-    val textFieldValue =
-        if (valueDiffers) textFieldValueState.copy(text = textValue)
-        else textFieldValueState
-
-    // ... and update the actual state only after composition (also copied from BasicTextField)
-    // (not entirely sure why this is necessary, but I guess Google engineers know what they are
-    // doing, so, copying that)
-    SideEffect {
-        if (
-            textFieldValue.selection != textFieldValueState.selection ||
-            textFieldValue.composition != textFieldValueState.composition
-        ) {
-            textFieldValueState = textFieldValue
-        }
+    if (valueDiffers) {
+        textFieldValueState = textFieldValueState.copy(text = textValue)
     }
+
     // remember last value so to only call onValueChanged if it actually did change (also copied
     // from BasicTextField)
     var lastValue by remember(value) { mutableStateOf(value) }
 
     TextField2(
-        value = textFieldValue,
+        value = textFieldValueState,
         onValueChange = { newTextFieldValueState ->
             // cleared input -> value now null
             if (newTextFieldValueState.text.isEmpty() && lastValue != null) {

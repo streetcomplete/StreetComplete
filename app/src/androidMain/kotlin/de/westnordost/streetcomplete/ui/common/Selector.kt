@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.ExposedDropdownMenuBox
 import androidx.compose.material.ExposedDropdownMenuDefaults
+import androidx.compose.material.LocalTextStyle
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -60,15 +61,18 @@ fun <T> Selector(
             expanded = expanded,
             onDismissRequest = { expanded = false }
         ) {
-            items.forEach { unit ->
+            items.forEach { item ->
                 DropdownMenuItem(
                     onClick = {
-                        onSelectedItem(unit)
+                        if (item != selectedItem) {
+                            onSelectedItem(item)
+                        }
                         expanded = false
-                    }
+                    },
+                    textStyle = LocalTextStyle.current
                 ) {
                     Text(
-                        text = getItemText(unit),
+                        text = getItemText(item),
                         modifier = Modifier.align(Alignment.CenterVertically),
                         overflow = TextOverflow.Ellipsis
                     )

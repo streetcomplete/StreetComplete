@@ -3,11 +3,12 @@ package de.westnordost.streetcomplete.quests.max_height
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AlertDialog
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Modifier
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.meta.LengthUnit
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.databinding.ComposeViewBinding
 import de.westnordost.streetcomplete.osm.Length
@@ -33,14 +34,14 @@ class AddMaxHeightForm : AbstractOsmQuestForm<MaxHeightAnswer>() {
             height = remember { mutableStateOf(null) }
 
             MaxHeightForm(
+                length = height.value,
                 selectableUnits = countryInfo.lengthUnits,
-                onLengthChanged = {
+                onChange = {
                     height.value = it
                     checkIsFormComplete()
                 },
-                maxFeetDigits = 2,
-                maxMeterDigits = Pair(2, 2),
-                countryInfo = countryInfo
+                countryCode = countryInfo.countryCode,
+                modifier = Modifier.fillMaxWidth()
             )
         }
 

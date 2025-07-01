@@ -28,7 +28,7 @@ val Typography = Typography(
 /** For an input field that is the sole element on the screen */
 val Typography.extraLargeInput get() = h3
 
-/** For an input field that is almost the sole element on the screen */
+/** For an input field that is amongst a few input elements on the screen */
 val Typography.largeInput get() = h5
 
 // for easier conversion to M3

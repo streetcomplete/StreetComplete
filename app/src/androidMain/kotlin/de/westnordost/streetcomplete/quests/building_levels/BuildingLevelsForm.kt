@@ -29,6 +29,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.ui.theme.largeInput
 import de.westnordost.streetcomplete.ui.theme.titleLarge
 
 /** Form to input building levels and roof levels, with quick-select buttons */
@@ -67,7 +68,7 @@ fun BuildingLevelsForm(
                         isError = levels.isNotEmpty() && !levels.isValidLevel(),
                         keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Number, imeAction = ImeAction.Next),
                         singleLine = true,
-                        textStyle = MaterialTheme.typography.titleLarge.copy(
+                        textStyle = MaterialTheme.typography.largeInput.copy(
                             textAlign = TextAlign.Center
                         ),
                     )
@@ -88,7 +89,7 @@ fun BuildingLevelsForm(
                         isError = roofLevels.isNotEmpty() && !roofLevels.isValidLevel(),
                         keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Number, imeAction = ImeAction.Done),
                         singleLine = true,
-                        textStyle = MaterialTheme.typography.titleLarge.copy(
+                        textStyle = MaterialTheme.typography.largeInput.copy(
                             textAlign = TextAlign.Center
                         ),
                     )

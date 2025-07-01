@@ -4,12 +4,15 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.Text
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.meta.LengthUnit
 import de.westnordost.streetcomplete.databinding.ComposeViewBinding
 import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.osm.Length
@@ -27,7 +30,6 @@ class AddWidthForm : AbstractArMeasureQuestForm<WidthAnswer>() {
     private val checkArSupport: ArSupportChecker by inject()
     private var isARMeasurement: Boolean = false
     private lateinit var length: MutableState<Length?>
-    private lateinit var syncLength: MutableState<Boolean>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,44 +40,34 @@ class AddWidthForm : AbstractArMeasureQuestForm<WidthAnswer>() {
         super.onViewCreated(view, savedInstanceState)
 
         val isRoad = element.tags["highway"] in ALL_ROADS
-        val explanation = if (isRoad) getString(R.string.quest_road_width_explanation) else null
+        val arIsSupported = checkArSupport()
 
         binding.composeViewBase.content {
             length = remember { mutableStateOf(null) }
-            syncLength = remember { mutableStateOf(false) }
-            Column {
-                if(explanation != null) {
-                    Text(explanation)
+            Column(Modifier.fillMaxWidth()) {
+                if(isRoad) {
+                    Text(stringResource(R.string.quest_road_width_explanation))
                 }
 
                 LengthForm(
-                    currentLength = length.value,
-                    syncLength = syncLength.value,
-                    onLengthChanged = {
-                        syncLength.value = false
+                    length = length.value,
+                    onChange = {
                         isARMeasurement = false
                         length.value = it
                         checkIsFormComplete()
                     },
-                    maxFeetDigits = 3,
-                    maxMeterDigits = Pair(2, 2),
                     selectableUnits = countryInfo.lengthUnits,
-                    showMeasureButton = checkArSupport(),
-                    takeMeasurementClick = { takeMeasurement(it) },
+                    showMeasureButton = arIsSupported,
+                    onClickMeasure = { takeMeasurement(it, measureVertical = false) },
+                    modifier = Modifier.align(Alignment.CenterHorizontally),
                 )
             }
-
         }
     }
 
-    private fun takeMeasurement(unit: LengthUnit) {
-        takeMeasurement(unit, false)
-    }
-
     override fun onMeasured(length: Length) {
-        this.syncLength.value = true
-        this.length.value = length
         isARMeasurement = true
+        this.length.value = length
         checkIsFormComplete()
     }
 
