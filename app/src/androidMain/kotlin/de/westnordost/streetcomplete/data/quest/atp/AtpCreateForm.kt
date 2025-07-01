@@ -163,28 +163,6 @@ class AtpCreateForm : AbstractQuestForm() {
         }
     }
 
-    // taken from AbstractOsmQuestForm, TODO - should common part reside somewhere?
-    private val englishResources: Resources
-        get() {
-            val conf = Configuration(resources.configuration)
-            conf.setLocale(Locale.ENGLISH)
-            val localizedContext = super.requireContext().createConfigurationContext(conf)
-            return localizedContext.resources
-        }
-
-    fun getLabelMimickingQuestLabel() {
-        val languages = getLanguagesForFeatureDictionary(resources.configuration)
-        val feature = featureDictionary
-        // also blocked: FeatureDictionary.getFeature demands Element
-        //?.getFeature(element, languages)
-        //?.name
-        //?.withNonBreakingSpaces()
-        //?.inItalics()
-        val name = getNameLabel(entry.tagsInATP)
-        //?.withNonBreakingSpaces()
-        //?.inBold()
-    }
-
     companion object {
         private const val ATP_ENTRY = "atp_entry"
 
