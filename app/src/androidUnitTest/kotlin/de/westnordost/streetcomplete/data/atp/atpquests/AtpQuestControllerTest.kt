@@ -179,7 +179,7 @@ class AtpQuestControllerTest {
     // is onCleared still needed? it got copied from notes test and interface TODO
     @Test
     fun `calls onInvalidated when cleared entries`() {
-        //noteUpdatesListener.onCleared()
+        //atpUpdatesListener.onCleared()
         verify(listener).onInvalidated()
     }
 
