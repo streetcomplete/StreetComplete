@@ -105,7 +105,7 @@ class AtpQuestControllerTest {
         on(atpDataSource.getAll(bbox)).thenReturn(atpEntries)
 
         val expectedQuests = atpEntries.map {
-            CreateElementQuest(
+            CreateElementUsingAtpQuest(
                 it.id, it,
                 MockQuestType,
                 location
@@ -141,14 +141,14 @@ class AtpQuestControllerTest {
 
         on(atpDataSource.getAll(bbox)).thenReturn(atpEntries)
 
-        val expectedQuests = listOf<CreateElementQuest>(
-            CreateElementQuest(
+        val expectedQuests = listOf<CreateElementUsingAtpQuest>(
+            CreateElementUsingAtpQuest(
                 id = atpEntries[1].id,
                 atpEntry = atpEntries[1],
                 type = MockQuestType,
                 position = atpEntries[1].position,
             ),
-            CreateElementQuest(
+            CreateElementUsingAtpQuest(
                 id = atpEntries[2].id,
                 atpEntry = atpEntries[2],
                 type = MockQuestType,
@@ -276,7 +276,7 @@ class AtpQuestControllerTest {
         val added = listOf(entry)
         val deleted = listOf<Long>()
         atpUpdatesListener.onUpdatedAtpElement(added, deleted)
-        val expectedQuests = listOf<CreateElementQuest>(CreateElementQuest(entry.id, entry,
+        val expectedQuests = listOf<CreateElementUsingAtpQuest>(CreateElementUsingAtpQuest(entry.id, entry,
             MockQuestType, entry.position))
         val expectedDeletedIds = listOf<Long>()
         verify(listener).onUpdated(expectedQuests, expectedDeletedIds)
@@ -338,7 +338,7 @@ class AtpQuestControllerTest {
         val added = listOf(entry)
         val deleted = listOf<Long>()
         atpUpdatesListener.onUpdatedAtpElement(added, deleted)
-        val expectedQuests = listOf<CreateElementQuest>(CreateElementQuest(entry.id, entry,
+        val expectedQuests = listOf<CreateElementUsingAtpQuest>(CreateElementUsingAtpQuest(entry.id, entry,
             MockQuestType, entry.position))
         val expectedDeletedIds = listOf<Long>()
 
@@ -357,7 +357,7 @@ class AtpQuestControllerTest {
         val added = listOf(entry)
         val deleted = listOf<Long>()
         atpUpdatesListener.onUpdatedAtpElement(added, deleted)
-        val expectedQuests = listOf<CreateElementQuest>(CreateElementQuest(entry.id, entry,
+        val expectedQuests = listOf<CreateElementUsingAtpQuest>(CreateElementUsingAtpQuest(entry.id, entry,
             MockQuestType, entry.position))
         val expectedDeletedIds = listOf<Long>()
 

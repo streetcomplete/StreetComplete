@@ -9,9 +9,9 @@ import de.westnordost.streetcomplete.data.quest.OsmCreateElementQuestType
 import de.westnordost.streetcomplete.data.quest.Quest
 
 /** Represents one task for the user to contribute by reviewing proposed element creation */
-data class CreateElementQuest(
+data class CreateElementUsingAtpQuest(
     val id: Long, // may be a stable value associated with a given element, but stability is not promised, should be unique
-    val atpEntry: AtpEntry, // At this point it is tightly bound with ATP
+    val atpEntry: AtpEntry,
     override val type: OsmCreateElementQuestType<*>,
     override val position: LatLon
 )  : Quest {

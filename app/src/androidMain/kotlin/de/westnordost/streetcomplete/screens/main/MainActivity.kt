@@ -39,7 +39,7 @@ import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.atp.AtpEntry
-import de.westnordost.streetcomplete.data.atp.atpquests.CreateElementQuest
+import de.westnordost.streetcomplete.data.atp.atpquests.CreateElementUsingAtpQuest
 import de.westnordost.streetcomplete.data.atp.atpquests.edits.AtpDataWithEditsSource
 import de.westnordost.streetcomplete.data.download.tiles.asBoundingBoxOfEnclosingTiles
 import de.westnordost.streetcomplete.data.edithistory.EditKey
@@ -56,7 +56,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
 import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
-import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestAndroid
 import de.westnordost.streetcomplete.data.osmnotes.notequests.createOsmNoteQuest
 import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
 import de.westnordost.streetcomplete.data.overlays.AndroidOverlay
@@ -115,7 +114,6 @@ import de.westnordost.streetcomplete.util.ktx.truncateTo6Decimals
 import de.westnordost.streetcomplete.util.location.FineLocationManager
 import de.westnordost.streetcomplete.util.location.LocationAvailabilityReceiver
 import de.westnordost.streetcomplete.util.location.LocationRequestFragment
-import de.westnordost.streetcomplete.util.logs.Log
 import de.westnordost.streetcomplete.util.math.area
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import de.westnordost.streetcomplete.util.math.enlargedBy
@@ -1024,7 +1022,7 @@ class MainActivity :
             f.requireArguments().putAll(osmArgs)
             showHighlightedElements(quest, element)
         }
-        if (f is AtpCreateForm && quest is CreateElementQuest) { // TODO fix ongoing confusion and mixing between specific ATP creation quest and potentially wider class of OSMElementCreation quest - should I even try to support wider class of adder quests right now? Which parts are ATP specific and which are generic? Are more ATP quests viable?
+        if (f is AtpCreateForm && quest is CreateElementUsingAtpQuest) { // TODO fix ongoing confusion and mixing between specific ATP creation quest and potentially wider class of OSMElementCreation quest - should I even try to support wider class of adder quests right now? Which parts are ATP specific and which are generic? Are more ATP quests viable?
             val passingAtpArgs = AtpCreateForm.createArguments(quest.atpEntry)
             f.requireArguments().putAll(passingAtpArgs)
             showHighlightedElementsAroundAtpEntryQuest(quest, quest.atpEntry)
@@ -1048,7 +1046,7 @@ class MainActivity :
     }
 
     private fun showHighlightedElementsAroundAtpEntryQuest(
-        quest: CreateElementQuest,
+        quest: CreateElementUsingAtpQuest,
         atpEntry: AtpEntry,
     ) {
         // TODO is merge with showHighlightedElements a good idea?

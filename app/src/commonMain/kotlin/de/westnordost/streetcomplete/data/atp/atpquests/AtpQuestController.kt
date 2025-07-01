@@ -121,7 +121,7 @@ class AtpQuestController(
             // in theory changing name or retagging shop may cause new quests to appear - lets not support this
             // as most cases will ve false positives anyway and this would be expensive to check
             // instead pass emptyList<CreateElementQuest>()
-            onUpdatingQuestList(emptyList<CreateElementQuest>(), deletedQuestIds)
+            onUpdatingQuestList(emptyList<CreateElementUsingAtpQuest>(), deletedQuestIds)
         }
 
         override fun onReplacedForBBox(
@@ -141,7 +141,7 @@ class AtpQuestController(
                 }
             }
             // TODO maybe quests outside downloaded area should not appear until OSM data is also downloaded to hide unwanted copies?
-            onUpdatingQuestList(emptyList<CreateElementQuest>(), obsoleteQuestIds)
+            onUpdatingQuestList(emptyList<CreateElementUsingAtpQuest>(), obsoleteQuestIds)
         }
 
         override fun onCleared() {
@@ -154,10 +154,10 @@ class AtpQuestController(
         mapDataSource.addListener(mapDataSourceListener)
     }
 
-    override fun get(questId: Long): CreateElementQuest? =
+    override fun get(questId: Long): CreateElementUsingAtpQuest? =
         atpDataSource.get(questId)?.let { createQuestForAtpEntry(it) }
 
-    override fun getAllInBBox(bbox: BoundingBox): List<CreateElementQuest> {
+    override fun getAllInBBox(bbox: BoundingBox): List<CreateElementUsingAtpQuest> {
         val candidates = atpDataSource.getAll(bbox)
         val paddedBounds = bbox.enlargedBy(ApplicationConstants.ATP_QUEST_FILTER_PADDING)
         val filteredOutCandidates = mutableListOf<AtpEntry>()
@@ -174,10 +174,10 @@ class AtpQuestController(
         return createQuestsForAtpEntries(filteredCandidates)
     }
 
-    private fun createQuestsForAtpEntries(entries: Collection<AtpEntry>): List<CreateElementQuest> =
+    private fun createQuestsForAtpEntries(entries: Collection<AtpEntry>): List<CreateElementUsingAtpQuest> =
         entries.mapNotNull { createQuestForAtpEntry(it) }
 
-    private fun createQuestForAtpEntry(entry: AtpEntry): CreateElementQuest? {
+    private fun createQuestForAtpEntry(entry: AtpEntry): CreateElementUsingAtpQuest? {
         return if (entry.reportType == ReportType.MISSING_POI_IN_OPENSTREETMAP) {
             // TODO STUCK allQuestTypes[0] is a hilarious hack of worst variety TODO (in other places I just assume single
             // TODO STUCK maybe CreatePoiBasedOnAtp() and OsmCreateElementQuestType() should be merged?
@@ -187,7 +187,7 @@ class AtpQuestController(
             // TODO specifically, import de.westnordost.streetcomplete.data.quest.atp.CreatePoiBasedOnAtp
             // TODO fails as supposedly .atp. does not exist
             // TODO STUCK maybe because it is stuck in Android part of source code?
-            CreateElementQuest(entry.id, entry,allQuestTypes[0], entry.position)
+            CreateElementUsingAtpQuest(entry.id, entry,allQuestTypes[0], entry.position)
         } else {
             null
         }
@@ -204,7 +204,7 @@ class AtpQuestController(
     }
 
     private fun onUpdatingQuestList(
-        quests: Collection<CreateElementQuest>,
+        quests: Collection<CreateElementUsingAtpQuest>,
         deletedQuestIds: Collection<Long>
     ) {
         if (quests.isEmpty() && deletedQuestIds.isEmpty()) return

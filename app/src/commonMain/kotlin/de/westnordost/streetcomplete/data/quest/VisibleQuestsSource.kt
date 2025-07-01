@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.data.quest
 
 import de.westnordost.streetcomplete.data.atp.atpquests.AtpQuestSource
-import de.westnordost.streetcomplete.data.atp.atpquests.CreateElementQuest
+import de.westnordost.streetcomplete.data.atp.atpquests.CreateElementUsingAtpQuest
 import de.westnordost.streetcomplete.data.osm.edits.EditType
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
@@ -77,7 +77,7 @@ class VisibleQuestsSource(
     }
 
     private val atpQuestSourceListener = object : AtpQuestSource.Listener {
-        override fun onUpdated(added: Collection<CreateElementQuest>, deleted: Collection<Long>) {
+        override fun onUpdated(added: Collection<CreateElementUsingAtpQuest>, deleted: Collection<Long>) {
             updateVisibleQuests(added, deleted.map { AtpQuestKey(it) })
         }
         override fun onInvalidated() {
