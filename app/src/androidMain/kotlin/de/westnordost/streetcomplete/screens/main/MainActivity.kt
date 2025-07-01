@@ -1022,7 +1022,7 @@ class MainActivity :
             f.requireArguments().putAll(osmArgs)
             showHighlightedElements(quest, element)
         }
-        if (f is AtpCreateForm && quest is CreateElementUsingAtpQuest) { // TODO fix ongoing confusion and mixing between specific ATP creation quest and potentially wider class of OSMElementCreation quest - should I even try to support wider class of adder quests right now? Which parts are ATP specific and which are generic? Are more ATP quests viable?
+        if (f is AtpCreateForm && quest is CreateElementUsingAtpQuest) {
             val passingAtpArgs = AtpCreateForm.createArguments(quest.atpEntry)
             f.requireArguments().putAll(passingAtpArgs)
             showHighlightedElementsAroundAtpEntryQuest(quest, quest.atpEntry)
