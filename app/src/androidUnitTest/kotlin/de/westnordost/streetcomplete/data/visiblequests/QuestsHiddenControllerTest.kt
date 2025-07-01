@@ -85,6 +85,8 @@ class QuestsHiddenControllerTest {
             ctrl.getAllNewerThan(123L)[2]
         )
         //TODO above works, below fails, why? Oh and below fails while claiming no difference
+        // assertEquals is called on listOf in few places so it does not appear due to comparing
+        // specific list instances instead of actual content
         assertEquals(
             listOf(
                 AtpQuestKey(h6.allThePlacesEntryId) to 100000,
