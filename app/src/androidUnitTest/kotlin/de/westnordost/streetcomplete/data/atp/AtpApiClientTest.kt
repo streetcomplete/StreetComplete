@@ -62,9 +62,10 @@ class AtpApiClientTest {
             }
         }
         val client = AtpApiClient(HttpClient(splitGraticulesResponseMockEngine), "", apiParser)
-        val response = listOf(negative, positive)
+        val response = setOf(negative, positive)
 
-        assertEquals(response, client.getAllAtpEntries(bounds))
+        assertEquals(2, client.getAllAtpEntries(bounds).size) // ensure no duplicates
+        assertEquals(response, client.getAllAtpEntries(bounds).toSet()) // any order is fine
     }
 
     @Test fun `download handles split into four graticules`() = runBlocking {
@@ -97,9 +98,10 @@ class AtpApiClientTest {
             }
         }
         val client = AtpApiClient(HttpClient(splitGraticulesResponseMockEngine), "", apiParser)
-        val response = listOf(first, second, third, fourth)
+        val response = setOf(first, second, third, fourth)
 
-        assertEquals(response, client.getAllAtpEntries(bounds))
+        assertEquals(4, client.getAllAtpEntries(bounds).size) // ensure no duplicates
+        assertEquals(response, client.getAllAtpEntries(bounds).toSet()) // any order is fine
     }
 
     @Test fun `download handles split into two graticules on latitude axis`() = runBlocking {
@@ -132,8 +134,9 @@ class AtpApiClientTest {
             }
         }
         val client = AtpApiClient(HttpClient(splitGraticulesResponseMockEngine), "", apiParser)
-        val response = listOf(second, fourth)
+        val response = setOf(second, fourth)
 
-        assertEquals(response, client.getAllAtpEntries(bounds))
+        assertEquals(2, client.getAllAtpEntries(bounds).size) // ensure no duplicates
+        assertEquals(response, client.getAllAtpEntries(bounds).toSet()) // any order is fine
     }
 }
