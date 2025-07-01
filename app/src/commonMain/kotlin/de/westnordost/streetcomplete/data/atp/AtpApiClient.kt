@@ -34,9 +34,8 @@ class AtpApiClient(
     suspend fun getAllAtpEntries(bounds: BoundingBox): List<AtpEntry> = wrapApiClientExceptions {
         val gathered = mutableListOf<AtpEntry>()
 
-        // TODO add tests
-        for (longitudeAnchor in floor(bounds.min.longitude).toInt()..floor(bounds.min.longitude).toInt()) {
-            for (latitudeAnchor in floor(bounds.min.latitude).toInt()..floor(bounds.min.latitude).toInt()) {
+        for (longitudeAnchor in floor(bounds.min.longitude).toInt()..floor(bounds.max.longitude).toInt()) {
+            for (latitudeAnchor in floor(bounds.min.latitude).toInt()..floor(bounds.max.latitude).toInt()) {
                 val url = baseUrl + "lat_${latitudeAnchor}/lon_${longitudeAnchor}_gathered.geojson"
                 try {
                     val response = httpClient.get(url) { expectSuccess = true }
