@@ -84,8 +84,6 @@ class AtpDaoTest : ApplicationDbTestCase() {
         val third = createAtpEntry(3, osmMatch = ElementKey(WAY, 11))
         dao.putAll(listOf(first, second, third))
 
-        //assertEquals(listOf(first, second, third), dao.getAll(listOf(1, 2, 3)))
-
         assertEquals(listOf(first), dao.getAllWithMatchingOsmElement(ElementKey(NODE, 1)))
         assertEquals(listOf(), dao.getAllWithMatchingOsmElement(ElementKey(NODE, 2)))
         assertEquals(listOf(third), dao.getAllWithMatchingOsmElement(ElementKey(WAY, 11)))
