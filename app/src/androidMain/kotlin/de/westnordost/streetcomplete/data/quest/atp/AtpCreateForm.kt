@@ -14,6 +14,7 @@ import androidx.core.view.children
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.atp.AtpEntry
+import de.westnordost.streetcomplete.data.location.SurveyChecker
 import de.westnordost.streetcomplete.data.osm.edits.AddElementEditsController
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
@@ -38,6 +39,7 @@ import de.westnordost.streetcomplete.util.getLanguagesForFeatureDictionary
 import de.westnordost.streetcomplete.util.getNameAndLocationSpanned
 import de.westnordost.streetcomplete.util.getNameLabel
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
+import de.westnordost.streetcomplete.view.confirmIsSurvey
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -52,6 +54,7 @@ class AtpCreateForm : AbstractQuestForm() {
     private val hiddenQuestsController: QuestsHiddenController by inject()
     private val featureDictionaryLazy: Lazy<FeatureDictionary> by inject(named("FeatureDictionaryLazy"))
     private val elementEditsController: ElementEditsController by inject()
+    private val surveyChecker: SurveyChecker by inject()
 
     private lateinit var entry: AtpEntry private set
     private val featureDictionary: FeatureDictionary get() = featureDictionaryLazy.value
@@ -81,18 +84,13 @@ class AtpCreateForm : AbstractQuestForm() {
         }
     }
 
-    // from abstractOverlayForm - share code somehow?
     private suspend fun solve(action: ElementEditAction, geometry: ElementGeometry) {
-        /*
-        TODO activate
         setLocked(true)
-        val isSurvey = checkIsSurvey(geometry, recentLocationStore.get())
+        val isSurvey = surveyChecker.checkIsSurvey(geometry)
         if (!isSurvey && !confirmIsSurvey(requireContext())) {
             setLocked(false)
             return
         }
-         */
-        val isSurvey = true // TODO: see above
 
         withContext(Dispatchers.IO) {
             addElementEditsController.add(CreatePoiBasedOnAtp(), geometry, "survey", action, isSurvey)
