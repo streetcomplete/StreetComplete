@@ -185,21 +185,6 @@ class AtpCreateForm : AbstractQuestForm() {
         //?.inBold()
     }
 
-    // include equivalents of
-    //private val noteSource: NotesWithEditsSource by inject()
-    //private val noteEditsController: NoteEditsController by inject()
-    // to get ATP data from my API
-
-    /*
-    interface Listener {
-        /** Called when the user successfully answered the quest */
-        fun onNoteQuestSolved(questType: QuestType, noteId: Long, position: LatLon)
-        /** Called when the user did not answer the quest but also did not hide it */
-        fun onNoteQuestClosed()
-    }
-    private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
-     */
-
     companion object {
         private const val ATP_ENTRY = "atp_entry"
 
