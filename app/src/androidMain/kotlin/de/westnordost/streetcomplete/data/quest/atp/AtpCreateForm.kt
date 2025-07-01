@@ -48,7 +48,6 @@ import java.util.Locale
 import kotlin.getValue
 import kotlinx.coroutines.withContext
 
-//see NoteDiscussionForm TODO
 class AtpCreateForm : AbstractQuestForm() {
     private val hiddenQuestsController: QuestsHiddenController by inject()
     private val featureDictionaryLazy: Lazy<FeatureDictionary> by inject(named("FeatureDictionaryLazy"))
