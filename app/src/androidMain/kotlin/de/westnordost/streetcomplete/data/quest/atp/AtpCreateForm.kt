@@ -75,7 +75,6 @@ class AtpCreateForm : AbstractQuestForm() {
         }
     }
 
-    // from abstractOverlayForm - share code somehow?
     protected fun applyEdit(answer: ElementEditAction, geometry: ElementGeometry = this.geometry) {
         viewLifecycleScope.launch {
             solve(answer, geometry)
