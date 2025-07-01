@@ -169,7 +169,7 @@ class VisibleQuestsSource(
         val quest = cache.get(questKey) ?: when (questKey) {
             is OsmNoteQuestKey -> osmNoteQuestSource.get(questKey.noteId)
             is OsmQuestKey -> osmQuestSource.get(questKey)
-            is AtpQuestKey -> atpQuestSource.get(questKey.atpEntryId) // TODO document/ensure that it will be only one quest per atp-entry
+            is AtpQuestKey -> atpQuestSource.get(questKey.atpEntryId)
         } ?: return null
         return if (isVisible(quest)) quest else null
     }
