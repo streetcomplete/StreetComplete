@@ -1025,7 +1025,7 @@ class MainActivity :
             showHighlightedElements(quest, element)
         }
         if (f is AtpCreateForm && quest is CreateElementQuest) { // TODO fix ongoing confusion and mixing between specific ATP creation quest and potentially wider class of OSMElementCreation quest - should I even try to support wider class of adder quests right now? Which parts are ATP specific and which are generic? Are more ATP quests viable?
-            val passingAtpArgs = AtpCreateForm.createArguments(quest.atpEntry) // use ATP equivalent of mapDataWithEditsSource like above?
+            val passingAtpArgs = AtpCreateForm.createArguments(quest.atpEntry)
             f.requireArguments().putAll(passingAtpArgs)
             showHighlightedElementsAroundAtpEntryQuest(quest, quest.atpEntry)
         }
