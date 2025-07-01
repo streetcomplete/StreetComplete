@@ -130,20 +130,9 @@ class AtpCreateForm : AbstractQuestForm() {
         // TODO: create answers to send to API, not just hide quests
         val mappedAlready = AnswerItem(R.string.quest_atp_add_missing_poi_mapped_already) { /*applyAnswer(false)*/ hideQuest() }
         val missing = AnswerItem(R.string.quest_atp_add_missing_poi_does_not_exist) { /*applyAnswer(true)*/ hideQuest() }
-        val cantSay = AnswerItem(R.string.quest_generic_answer_notApplicable) { onClickCantSay() }
+        val cantSay = AnswerItem(R.string.quest_generic_answer_notApplicable) { hideQuest() /* no option to leave note */ }
 
         setButtonPanelAnswers(listOf(mappedAlready, missing, cantSay))
-    }
-
-    // taken from AbstractOsmQuestForm, TODO - should common part reside somewhere?
-    private fun onClickCantSay() {
-        context?.let { AlertDialog.Builder(it)
-            .setTitle(R.string.quest_leave_new_note_title)
-            .setMessage(R.string.quest_leave_new_note_description)
-            .setNegativeButton(R.string.quest_leave_new_note_no) { _, _ -> hideQuest() }
-            .setPositiveButton(R.string.quest_leave_new_note_yes) { _, _ -> composeNote() }
-            .show()
-        }
     }
 
     // taken from AbstractOsmQuestForm, TODO - should common part reside somewhere?
@@ -182,29 +171,6 @@ class AtpCreateForm : AbstractQuestForm() {
             val localizedContext = super.requireContext().createConfigurationContext(conf)
             return localizedContext.resources
         }
-
-    // For start, should users be allowed to create notes AT ALL?
-    // taken from AbstractOsmQuestForm, TODO - should common part reside somewhere?
-    protected fun composeNote() {
-        val questTitle = englishResources.getString(CreatePoiBasedOnAtp().getTitle(entry.tagsInATP))
-        // TODO whops? we have problem here
-        // TODO getNameAndLocationSpanned requires Element
-        // TODO we do not have an element as this quest does not operate on Elements
-        // TODO we cannot instantiate fake Element and feed it ATP tags as this class is unavailable here
-        // TODO create interface implement by Element and AtpEntry?
-        // TODO make Element instantition possible here somehow?
-        // TODO something else?
-        //val element = Element()
-        //val leaveNoteContextFail = getNameAndLocationSpanned(element, englishResources, featureDictionary)
-        val hintLabel = "TODO" //well, TODO //getNameAndLocationSpanned(element, englishResources, featureDictionary)
-        val leaveNoteContext = if (hintLabel.isNullOrBlank()) {
-            "Unable to answer \"$questTitle\""
-        } else {
-            "Unable to answer \"$questTitle\" – $hintLabel"
-        }
-        // TODO get it working, I guess
-        //listener?.onComposeNote(osmElementQuestType, element, geometry, leaveNoteContext)
-    }
 
     fun getLabelMimickingQuestLabel() {
         val languages = getLanguagesForFeatureDictionary(resources.configuration)
