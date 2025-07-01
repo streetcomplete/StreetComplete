@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests.max_height
 import android.os.Bundle
 import android.view.View
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.material.Surface
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -31,7 +32,7 @@ class AddMaxPhysicalHeightForm : AbstractArMeasureQuestForm<MaxPhysicalHeightAns
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.composeViewBase.content {
+        binding.composeViewBase.content { Surface {
             length = remember { mutableStateOf(null) }
             val arIsSupported = checkArSupport()
 
@@ -47,7 +48,7 @@ class AddMaxPhysicalHeightForm : AbstractArMeasureQuestForm<MaxPhysicalHeightAns
                 onClickMeasure = { takeMeasurement(it, measureVertical = true) },
                 modifier = Modifier.fillMaxWidth(),
             )
-        }
+        } }
     }
 
     override fun onMeasured(length: Length) {

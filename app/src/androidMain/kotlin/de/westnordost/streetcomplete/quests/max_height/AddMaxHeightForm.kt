@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.material.Surface
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -14,7 +15,6 @@ import de.westnordost.streetcomplete.databinding.ComposeViewBinding
 import de.westnordost.streetcomplete.osm.Length
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
-import de.westnordost.streetcomplete.quests.MaxHeightForm
 import de.westnordost.streetcomplete.ui.util.content
 
 class AddMaxHeightForm : AbstractOsmQuestForm<MaxHeightAnswer>() {
@@ -30,7 +30,16 @@ class AddMaxHeightForm : AbstractOsmQuestForm<MaxHeightAnswer>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.composeViewBase.content {
+        if (element.type == ElementType.WAY) {
+            setHint(
+                getString(
+                    R.string.quest_maxheight_split_way_hint,
+                    getString(R.string.quest_generic_answer_differs_along_the_way)
+                )
+            )
+        }
+
+        binding.composeViewBase.content { Surface {
             height = remember { mutableStateOf(null) }
 
             MaxHeightForm(
@@ -43,16 +52,7 @@ class AddMaxHeightForm : AbstractOsmQuestForm<MaxHeightAnswer>() {
                 countryCode = countryInfo.countryCode,
                 modifier = Modifier.fillMaxWidth()
             )
-        }
-
-        if (element.type == ElementType.WAY) {
-            setHint(
-                getString(
-                    R.string.quest_maxheight_split_way_hint,
-                    getString(R.string.quest_generic_answer_differs_along_the_way)
-                )
-            )
-        }
+        } }
     }
 
     override fun isFormComplete() = height.value != null

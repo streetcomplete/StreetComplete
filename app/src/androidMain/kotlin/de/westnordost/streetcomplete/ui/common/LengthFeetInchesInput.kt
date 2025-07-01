@@ -48,6 +48,7 @@ fun LengthFeetInchesInput(
         if (feet != null && inches != null) {
             onChange(Length.FeetAndInches(feet, inches))
         } else {
+            // while not both are specified, resulting Length remains null
             onChange(null)
         }
     }

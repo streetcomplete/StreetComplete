@@ -19,7 +19,7 @@ import kotlin.math.roundToInt
 fun BoxWithConstraintsScope.calculateTextMaxFontSize(
     text: String,
     textStyle: TextStyle,
-    minFontSize: TextUnit = 10.sp,
+    minFontSize: TextUnit = 8.sp,
     contentPadding: PaddingValues = PaddingValues(),
     maxLines: Int = 1,
 ): TextUnit {

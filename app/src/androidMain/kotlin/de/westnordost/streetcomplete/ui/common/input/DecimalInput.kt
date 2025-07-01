@@ -109,7 +109,8 @@ fun DecimalInput(
                 maxFractionDigits = maxFractionDigits
             )) {
                 textFieldValueState = newTextFieldValueState
-
+                // only report new value if it actually changed. E.g. "0" -> "0." -> "0.0" both are
+                // no change as they all parse to the same number
                 val newValue = formatter.parse(newTextFieldValueState.text)?.toDouble()
                 if (newValue != null && lastValue != newValue) {
                     lastValue = newValue

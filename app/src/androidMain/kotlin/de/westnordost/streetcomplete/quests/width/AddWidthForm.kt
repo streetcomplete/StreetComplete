@@ -5,11 +5,11 @@ import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import de.westnordost.streetcomplete.R
@@ -42,7 +42,7 @@ class AddWidthForm : AbstractArMeasureQuestForm<WidthAnswer>() {
         val isRoad = element.tags["highway"] in ALL_ROADS
         val arIsSupported = checkArSupport()
 
-        binding.composeViewBase.content {
+        binding.composeViewBase.content { Surface {
             length = remember { mutableStateOf(null) }
             Column(Modifier.fillMaxWidth()) {
                 if(isRoad) {
@@ -59,10 +59,10 @@ class AddWidthForm : AbstractArMeasureQuestForm<WidthAnswer>() {
                     selectableUnits = countryInfo.lengthUnits,
                     showMeasureButton = arIsSupported,
                     onClickMeasure = { takeMeasurement(it, measureVertical = false) },
-                    modifier = Modifier.align(Alignment.CenterHorizontally),
+                    modifier = Modifier.fillMaxWidth(),
                 )
             }
-        }
+        } }
     }
 
     override fun onMeasured(length: Length) {

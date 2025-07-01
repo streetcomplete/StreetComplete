@@ -1,10 +1,8 @@
-package de.westnordost.streetcomplete.quests
+package de.westnordost.streetcomplete.quests.max_height
 
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.ProvideTextStyle
@@ -16,7 +14,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -25,18 +22,12 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.LengthUnit
 import de.westnordost.streetcomplete.osm.Length
 import de.westnordost.streetcomplete.osm.unit
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.background_maxheight_sign
-import de.westnordost.streetcomplete.resources.background_maxheight_sign_mutcd
-import de.westnordost.streetcomplete.resources.background_maxheight_sign_yellow
 import de.westnordost.streetcomplete.ui.common.LengthFeetInchesInput
 import de.westnordost.streetcomplete.ui.common.LengthMetersInput
 import de.westnordost.streetcomplete.ui.common.Selector
 import de.westnordost.streetcomplete.ui.common.TextFieldStyle
 import de.westnordost.streetcomplete.ui.theme.extraLargeInput
 import de.westnordost.streetcomplete.ui.theme.largeInput
-import org.jetbrains.compose.resources.DrawableResource
-import org.jetbrains.compose.resources.painterResource
 
 /** Displays a form to input the max height, as specified on the sign. For clarity and fun, the
  *  input fields are shown on a sign background that resembles a maxheight sign in the given
@@ -60,14 +51,7 @@ fun MaxHeightForm(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(16.dp),
     ) {
-        val signBackground = painterResource(getMaxHeightSignDrawable(countryCode))
-        Box(
-            modifier = Modifier
-                .size(256.dp)
-                .drawBehind { with(signBackground) { draw(size) } }
-                .padding(48.dp),
-            contentAlignment = Alignment.Center,
-        ) {
+        MaxHeightSign(countryCode = countryCode) {
             when (selectedUnit) {
                 LengthUnit.METER -> {
                     ProvideTextStyle(MaterialTheme.typography.extraLargeInput.copy(fontWeight = FontWeight.Bold)) {
@@ -108,22 +92,6 @@ fun MaxHeightForm(
         }
     }
 }
-
-private fun getMaxHeightSignDrawable(countryCode: String?): DrawableResource =
-    when (countryCode) {
-        "FI", "IS", "SE", "NG", -> {
-            Res.drawable.background_maxheight_sign_yellow
-        }
-        // source: https://commons.wikimedia.org/wiki/File:Road_Warning_signs_around_the_World.svg
-        "AR", "AU", "BR", "BZ", "CA", "CL", "CO", "CR", "DO", "EC", "GT", "GY", "HN",
-        "ID", "IE", "JM", "JP", "LK", "LR", "MM", "MX", "MY", "NI", "NZ", "PA", "PE",
-        "PG","SV", "TH", "TL", "US", "UY", "VE", -> {
-            Res.drawable.background_maxheight_sign_mutcd
-        }
-        else -> {
-            Res.drawable.background_maxheight_sign
-        }
-    }
 
 @Preview @Composable
 fun MaxHeightFormPreview() {
