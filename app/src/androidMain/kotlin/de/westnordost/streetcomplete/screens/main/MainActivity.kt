@@ -621,6 +621,7 @@ class MainActivity :
             if (openElement == null) {
                 closeBottomSheet()
             }
+            // TODO: do I need support for ATP handling? probably yes
         }
     }
 
@@ -638,7 +639,7 @@ class MainActivity :
 
     @AnyThread
     override fun onUpdatedAtpElement(added: Collection<AtpEntry>, deleted: Collection<Long>) {
-        // TODO: support ATP handling
+        // TODO: support ATP handling - it is likely needed
         /*
         lifecycleScope.launch {
             val f = bottomSheetFragment
