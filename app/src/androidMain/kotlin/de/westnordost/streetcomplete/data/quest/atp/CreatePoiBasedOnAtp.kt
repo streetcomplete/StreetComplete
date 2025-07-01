@@ -13,7 +13,7 @@ class CreatePoiBasedOnAtp() : OsmCreateElementQuestType<CreatePoiBasedOnAtpAnswe
     override fun createForm() = AtpCreateForm()
     override val icon = R.drawable.ic_quest_dot // TODO: a radar icon? A plus icon?
     override val title = R.string.quest_atp_add_missing_poi_title
-    override val wikiLink = "All the Places" // create dedicated import page? other documentation page? This one definitely does not explain enough in this context TODO
+    override val wikiLink = "All the Places" // create dedicated import page? Is it even counting as import? other documentation page? This one definitely does not explain enough in this context TODO
     override val achievements = listOf(CITIZEN)
     override val changesetComment = "Create POI surveyed by mapper, hint about missing entry was based on AllThePlaces data"
 
