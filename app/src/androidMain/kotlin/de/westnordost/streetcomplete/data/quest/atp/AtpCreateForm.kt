@@ -135,8 +135,6 @@ class AtpCreateForm : AbstractQuestForm() {
         setButtonPanelAnswers(listOf(mappedAlready, missing, cantSay))
     }
 
-    // taken from AbstractOsmQuestForm, TODO - should common part reside somewhere?
-    // TODO should something listen using this listener?
     interface Listener {
         /** The GPS position at which the user is displayed at */
         val displayedMapLocation: Location?
@@ -145,6 +143,7 @@ class AtpCreateForm : AbstractQuestForm() {
         fun onEdited(editType: ElementEditType, geometry: ElementGeometry)
 
         /** Called when the user successfully answered the quest */
+        // TODO actually use that (or remove, if not needed)
         fun onRejectedAtpEntry(editType: ElementEditType, geometry: ElementGeometry)
 
         /** Called when the user chose to move the node */
@@ -155,7 +154,6 @@ class AtpCreateForm : AbstractQuestForm() {
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
-    // taken from AbstractOsmQuestForm, TODO - should common part reside somewhere?
     protected fun hideQuest() {
         viewLifecycleScope.launch {
             withContext(Dispatchers.IO) { hideQuestController.hide(questKey) }
