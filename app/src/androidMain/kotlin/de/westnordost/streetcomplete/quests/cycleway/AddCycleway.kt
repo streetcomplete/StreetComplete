@@ -117,7 +117,7 @@ class AddCycleway(
 // streets that may have cycleway tagging
 private val roadsFilter by lazy { """
     ways with
-      highway ~ primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|service|busway
+      highway ~ primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|service|busway|living_street
       and area != yes
       and motorroad != yes
       and expressway != yes

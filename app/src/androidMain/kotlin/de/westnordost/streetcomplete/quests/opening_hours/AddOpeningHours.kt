@@ -34,6 +34,7 @@ class AddOpeningHours(
               or amenity = parking and parking = multi-storey
               or amenity = recycling and recycling_type = centre
               or amenity = social_facility and social_facility ~ food_bank|clothing_bank|soup_kitchen|dairy_kitchen
+              or amenity = toilets and (fee = yes or toilets:disposal = flush)
               or tourism = information and information = office
               or """ +
 
@@ -73,7 +74,7 @@ class AddOpeningHours(
             "leisure" to arrayOf(
                 // common
                 "fitness_centre", "golf_course", "water_park", "miniature_golf", "bowling_alley",
-                "amusement_arcade", "adult_gaming_centre", "tanning_salon",
+                "amusement_arcade", "adult_gaming_centre", "tanning_salon", "sauna",
 
                 // not sports_centre, dance etc because these are often sports clubs which have no
                 // walk-in opening hours but training times
