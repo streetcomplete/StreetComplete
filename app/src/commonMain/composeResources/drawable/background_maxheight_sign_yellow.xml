@@ -1,17 +1,19 @@
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
-    android:width="112dp"
-    android:height="112dp"
-    android:viewportWidth="112"
-    android:viewportHeight="112">
-  <path
-      android:pathData="M56,56m-55.75,0a55.75,55.75 0,1 1,111.5 0a55.75,55.75 0,1 1,-111.5 0"
-      android:fillColor="#ffd520"
-      android:strokeColor="#ccc"
-      android:strokeWidth="0"/>
-  <path
-      android:pathData="M56,34 l-18,-18h36zM56,78 l18,18L38,96Z"
-      android:fillColor="#000"/>
-  <path
-      android:pathData="m56,2a54,54 0,0 0,-54 54,54 54,0 0,0 54,54 54,54 0,0 0,54 -54,54 54,0 0,0 -54,-54zM56,16a40,40 0,0 1,40 40,40 40,0 0,1 -40,40 40,40 0,0 1,-40 -40,40 40,0 0,1 40,-40z"
-      android:fillColor="#C1121C"/>
+android:width="256dp"
+android:height="256dp"
+android:viewportWidth="256"
+android:viewportHeight="256">
+<path
+    android:pathData="M128,128m-128,0a128,128 0,1 1,256 0a128,128 0,1 1,-256 0"
+    android:strokeWidth="0"
+    android:fillColor="#ffd520"/>
+<path
+    android:fillColor="#000"
+    android:pathData="m128,76 l-40,-40h80z"/>
+<path
+    android:fillColor="#000"
+    android:pathData="m128,180 l40,40h-80z"/>
+<path
+    android:pathData="m128,4c-68.18,0 -124,55.82 -124,124s55.82,124 124,124 124,-55.82 124,-124c0,-68.18 -55.82,-124 -124,-124zM128,36.15c50.5,0 91.85,41.35 91.85,91.85 0,50.5 -41.35,91.85 -91.85,91.85 -50.5,0 -91.85,-41.35 -91.85,-91.85 0,-50.5 41.35,-91.85 91.85,-91.85z"
+    android:fillColor="#c1121c"/>
 </vector>

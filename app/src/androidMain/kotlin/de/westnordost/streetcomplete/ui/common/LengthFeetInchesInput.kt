@@ -1,10 +1,12 @@
 package de.westnordost.streetcomplete.ui.common
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.LocalTextStyle
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.ProvideTextStyle
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
@@ -50,7 +52,11 @@ fun LengthFeetInchesInput(
         }
     }
 
-    Row(modifier = modifier) {
+    Row(
+        modifier = modifier,
+        horizontalArrangement = Arrangement.spacedBy(2.dp),
+        verticalAlignment = Alignment.Top,
+    ) {
         TextField2(
             value = feetState?.toString().orEmpty(),
             onValueChange = { value ->
@@ -72,7 +78,6 @@ fun LengthFeetInchesInput(
 
         Text(
             text = "′",
-            modifier = Modifier.align(Alignment.Top),
             fontSize = LocalTextStyle.current.fontSize * 2
         )
 
@@ -84,7 +89,6 @@ fun LengthFeetInchesInput(
                     callOnChanged()
                 }
             },
-
             modifier = Modifier.padding(start = 4.dp).weight(1f),
             style = style,
             autoFitFontSize = autoFitFontSize,
@@ -95,7 +99,6 @@ fun LengthFeetInchesInput(
 
         Text(
             text = "″",
-            modifier = Modifier.align(Alignment.Top),
             fontSize = LocalTextStyle.current.fontSize * 2
         )
     }
@@ -118,7 +121,7 @@ private fun isValidInchesInput(string: String): Boolean {
 @Composable @Preview
 private fun LengthFeetInchesInputPreview() {
     var feetInch: Length.FeetAndInches? by remember { mutableStateOf(Length.FeetAndInches(3, 11)) }
-    CompositionLocalProvider(LocalTextStyle provides MaterialTheme.typography.body1) {
+    ProvideTextStyle(MaterialTheme.typography.body1) {
         LengthFeetInchesInput(
             length = feetInch,
             onChange = { feetInch = it },

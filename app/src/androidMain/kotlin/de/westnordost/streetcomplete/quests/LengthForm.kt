@@ -10,6 +10,7 @@ import androidx.compose.material.Button
 import androidx.compose.material.Divider
 import androidx.compose.material.LocalTextStyle
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.ProvideTextStyle
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
@@ -59,7 +60,7 @@ fun LengthForm(
             horizontalArrangement = Arrangement.spacedBy(16.dp),
             verticalAlignment = Alignment.CenterVertically,
         ) {
-            CompositionLocalProvider(LocalTextStyle provides MaterialTheme.typography.largeInput) {
+            ProvideTextStyle(MaterialTheme.typography.largeInput) {
                 when (selectedUnit) {
                     LengthUnit.METER -> {
                         LengthMetersInput(
@@ -92,7 +93,8 @@ fun LengthForm(
                         onChange(null)
                     },
                     modifier = Modifier.width(112.dp),
-                    style = TextFieldStyle.Outlined
+                    style = TextFieldStyle.Outlined,
+                    label = { Text(stringResource(R.string.unit)) }
                 )
             }
         }

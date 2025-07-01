@@ -55,7 +55,7 @@ class AddMaxHeightForm : AbstractOsmQuestForm<MaxHeightAnswer>() {
         }
     }
 
-    override fun isFormComplete() = true
+    override fun isFormComplete() = height.value != null
 
     override fun onClickOk() {
         if (userSelectedUnrealisticHeight()) {

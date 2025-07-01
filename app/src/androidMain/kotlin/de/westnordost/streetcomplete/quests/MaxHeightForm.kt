@@ -6,11 +6,10 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.material.LocalTextStyle
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.ProvideTextStyle
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -18,8 +17,11 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawBehind
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.LengthUnit
 import de.westnordost.streetcomplete.osm.Length
 import de.westnordost.streetcomplete.osm.unit
@@ -68,7 +70,7 @@ fun MaxHeightForm(
         ) {
             when (selectedUnit) {
                 LengthUnit.METER -> {
-                    CompositionLocalProvider(LocalTextStyle provides MaterialTheme.typography.extraLargeInput) {
+                    ProvideTextStyle(MaterialTheme.typography.extraLargeInput.copy(fontWeight = FontWeight.Bold)) {
                         LengthMetersInput(
                             length = length as? Length.Meters,
                             onChange = onChange,
@@ -79,7 +81,7 @@ fun MaxHeightForm(
                     }
                 }
                 LengthUnit.FOOT_AND_INCH -> {
-                    CompositionLocalProvider(LocalTextStyle provides MaterialTheme.typography.largeInput) {
+                    ProvideTextStyle(MaterialTheme.typography.largeInput.copy(fontWeight = FontWeight.Bold)) {
                         LengthFeetInchesInput(
                             length = length as? Length.FeetAndInches,
                             onChange = onChange,
@@ -100,7 +102,8 @@ fun MaxHeightForm(
                     onChange(null)
                 },
                 modifier = Modifier.width(112.dp),
-                style = TextFieldStyle.Outlined
+                style = TextFieldStyle.Outlined,
+                label = { Text(stringResource(R.string.unit)) }
             )
         }
     }
@@ -108,13 +111,13 @@ fun MaxHeightForm(
 
 private fun getMaxHeightSignDrawable(countryCode: String?): DrawableResource =
     when (countryCode) {
-        "FI", "IS", "SE" -> {
+        "FI", "IS", "SE", "NG", -> {
             Res.drawable.background_maxheight_sign_yellow
         }
         // source: https://commons.wikimedia.org/wiki/File:Road_Warning_signs_around_the_World.svg
         "AR", "AU", "BR", "BZ", "CA", "CL", "CO", "CR", "DO", "EC", "GT", "GY", "HN",
         "ID", "IE", "JM", "JP", "LK", "LR", "MM", "MX", "MY", "NI", "NZ", "PA", "PE",
-        "PG","SV", "TH", "TL", "US", "UY", "VE" -> {
+        "PG","SV", "TH", "TL", "US", "UY", "VE", -> {
             Res.drawable.background_maxheight_sign_mutcd
         }
         else -> {
