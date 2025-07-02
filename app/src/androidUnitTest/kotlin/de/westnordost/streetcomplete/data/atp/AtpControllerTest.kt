@@ -49,33 +49,6 @@ class AtpControllerTest {
         assertEquals(ret, atpController.getAllPositions(bbox))
     }
 
-    @Test fun put() {
-        val atpEntry = atpEntry(1)
-
-        val listener = mock<AtpController.Listener>()
-        atpController.addListener(listener)
-        atpController.put(atpEntry)
-
-        verify(dao).put(atpEntry)
-
-        sleep(100)
-        verify(listener).onUpdated(eq(listOf(atpEntry)), eq(emptyList()), eq(emptyList()))
-    }
-
-    @Test fun `put existing`() {
-        val atpEntry = atpEntry(1)
-        val listener = mock<AtpController.Listener>()
-        on(dao.get(1L)).thenReturn(atpEntry)
-
-        atpController.addListener(listener)
-        atpController.put(atpEntry)
-
-        verify(dao).put(atpEntry)
-
-        sleep(100)
-        verify(listener).onUpdated(eq(emptyList()), eq(listOf(atpEntry)), eq(emptyList()))
-    }
-
     @Test fun delete() {
         val listener = mock<AtpController.Listener>()
         on(dao.delete(1L)).thenReturn(true)
@@ -103,7 +76,7 @@ class AtpControllerTest {
 
         atpController.addListener(listener)
         atpController.removeListener(listener)
-        atpController.put(mock())
+        atpController.clear()
         verifyNoInteractions(listener)
     }
 
