@@ -24,6 +24,7 @@ class AtpQuestsHiddenDaoTest : ApplicationDbTestCase() {
         dao.add(123L)
         assertNotNull(dao.getTimestamp(123L))
         assertTrue(dao.delete(123L))
+        assertFalse(dao.delete(123L))
         assertNull(dao.getTimestamp(123L))
     }
 
