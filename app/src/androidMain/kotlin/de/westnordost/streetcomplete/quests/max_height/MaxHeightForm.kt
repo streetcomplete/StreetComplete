@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.max_height
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.MaterialTheme
@@ -24,7 +25,7 @@ import de.westnordost.streetcomplete.osm.Length
 import de.westnordost.streetcomplete.osm.unit
 import de.westnordost.streetcomplete.ui.common.LengthFeetInchesInput
 import de.westnordost.streetcomplete.ui.common.LengthMetersInput
-import de.westnordost.streetcomplete.ui.common.Selector
+import de.westnordost.streetcomplete.ui.common.SelectButton
 import de.westnordost.streetcomplete.ui.common.TextFieldStyle
 import de.westnordost.streetcomplete.ui.theme.extraLargeInput
 import de.westnordost.streetcomplete.ui.theme.largeInput
@@ -46,11 +47,23 @@ fun MaxHeightForm(
     if (lengthUnitHasChanged) {
         selectedUnit = length.unit
     }
-    Column(
+    Row(
         modifier = modifier,
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.spacedBy(16.dp),
+        horizontalArrangement = Arrangement.spacedBy(16.dp),
+        verticalAlignment = Alignment.CenterVertically,
     ) {
+        if (selectableUnits.size > 1) {
+            SelectButton(
+                items = selectableUnits,
+                selectedItem = selectedUnit,
+                onSelectedItem = { unit ->
+                    selectedUnit = unit
+                    onChange(null)
+                }
+            ) {
+                Text(it.toString())
+            }
+        }
         MaxHeightSign(countryCode = countryCode) {
             when (selectedUnit) {
                 LengthUnit.METER -> {
@@ -76,19 +89,6 @@ fun MaxHeightForm(
                     }
                 }
             }
-        }
-        if (selectableUnits.size > 1) {
-            Selector(
-                items = selectableUnits,
-                selectedItem = selectedUnit,
-                onSelectedItem = { unit ->
-                    selectedUnit = unit
-                    onChange(null)
-                },
-                modifier = Modifier.width(112.dp),
-                style = TextFieldStyle.Outlined,
-                label = { Text(stringResource(R.string.unit)) }
-            )
         }
     }
 }

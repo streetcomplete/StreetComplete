@@ -28,7 +28,7 @@ import de.westnordost.streetcomplete.osm.unit
 import de.westnordost.streetcomplete.ui.common.LengthFeetInchesInput
 import de.westnordost.streetcomplete.ui.common.LengthMetersInput
 import de.westnordost.streetcomplete.ui.common.MeasurementIcon
-import de.westnordost.streetcomplete.ui.common.Selector
+import de.westnordost.streetcomplete.ui.common.SelectButton
 import de.westnordost.streetcomplete.ui.common.TextFieldStyle
 import de.westnordost.streetcomplete.ui.theme.largeInput
 
@@ -58,6 +58,19 @@ fun LengthForm(
             horizontalArrangement = Arrangement.spacedBy(16.dp),
             verticalAlignment = Alignment.CenterVertically,
         ) {
+            if (selectableUnits.size > 1) {
+                SelectButton(
+                    items = selectableUnits,
+                    selectedItem = selectedUnit,
+                    onSelectedItem = { unit ->
+                        selectedUnit = unit
+                        onChange(null)
+                    },
+                ) {
+                    Text(it.toString())
+                }
+            }
+
             ProvideTextStyle(MaterialTheme.typography.largeInput) {
                 when (selectedUnit) {
                     LengthUnit.METER -> {
@@ -82,19 +95,7 @@ fun LengthForm(
                     }
                 }
             }
-            if (selectableUnits.size > 1) {
-                Selector(
-                    items = selectableUnits,
-                    selectedItem = selectedUnit,
-                    onSelectedItem = { unit ->
-                        selectedUnit = unit
-                        onChange(null)
-                    },
-                    modifier = Modifier.width(112.dp),
-                    style = TextFieldStyle.Outlined,
-                    label = { Text(stringResource(R.string.unit)) }
-                )
-            }
+
         }
 
         if (showMeasureButton) {
