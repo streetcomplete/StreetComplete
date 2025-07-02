@@ -30,7 +30,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.ui.theme.largeInput
-import de.westnordost.streetcomplete.ui.theme.titleLarge
 
 /** Form to input building levels and roof levels, with quick-select buttons */
 @Composable

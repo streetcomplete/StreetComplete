@@ -104,10 +104,10 @@ fun DecimalInput(
             }
             // accept only decimal input
             else if (newTextFieldValueState.text.isOnlyDecimalDigits(
-                decimalSeparator = formatter.decimalSeparator,
-                maxIntegerDigits = maxIntegerDigits,
-                maxFractionDigits = maxFractionDigits
-            )) {
+                    decimalSeparator = formatter.decimalSeparator,
+                    maxIntegerDigits = maxIntegerDigits,
+                    maxFractionDigits = maxFractionDigits
+                )) {
                 textFieldValueState = newTextFieldValueState
                 // only report new value if it actually changed. E.g. "0" -> "0." -> "0.0" both are
                 // no change as they all parse to the same number

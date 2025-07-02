@@ -24,7 +24,9 @@ class AddPlaceName(
           or office and office !~ no|vacant
           or craft
           or amenity = recycling and recycling_type = centre
+          or amenity = shelter and shelter_type = basic_hut
           or tourism = information and information = office
+          or natural = cave_entrance and fee=yes
           or """ +
 
         // The common list is shared by the opening hours quest and the wheelchair quest.
@@ -85,7 +87,7 @@ class AddPlaceName(
             "leisure" to arrayOf(
                 // common
                 "fitness_centre", "golf_course", "water_park", "miniature_golf", "bowling_alley",
-                "amusement_arcade", "adult_gaming_centre", "tanning_salon",
+                "amusement_arcade", "adult_gaming_centre", "tanning_salon", "sauna",
 
                 // name & wheelchair
                 "sports_centre", "stadium",

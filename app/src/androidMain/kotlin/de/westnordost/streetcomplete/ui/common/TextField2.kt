@@ -274,11 +274,11 @@ private fun Modifier.textFieldDefaults(
             }
         )
     }
-    .defaultErrorSemantics(isError, "Error")
-    .defaultMinSize(
-        minWidth = TextFieldDefaults.MinWidth,
-        minHeight = TextFieldDefaults.MinHeight
-    )
+        .defaultErrorSemantics(isError, "Error")
+        .defaultMinSize(
+            minWidth = TextFieldDefaults.MinWidth,
+            minHeight = TextFieldDefaults.MinHeight
+        )
 
 private val OutlinedTextFieldTopPadding = 8.sp
 
@@ -289,15 +289,15 @@ private fun Modifier.defaultErrorSemantics(
 
 val TextFieldStyle.shape : Shape @Composable @ReadOnlyComposable
 get() = when (this) {
-    TextFieldStyle.Filled -> TextFieldDefaults.TextFieldShape
-    TextFieldStyle.Outlined -> TextFieldDefaults.OutlinedTextFieldShape
-}
+        TextFieldStyle.Filled -> TextFieldDefaults.TextFieldShape
+        TextFieldStyle.Outlined -> TextFieldDefaults.OutlinedTextFieldShape
+    }
 
 val TextFieldStyle.colors : TextFieldColors @Composable
 get() = when (this) {
-    TextFieldStyle.Filled -> TextFieldDefaults.textFieldColors()
-    TextFieldStyle.Outlined -> TextFieldDefaults.outlinedTextFieldColors()
-}
+        TextFieldStyle.Filled -> TextFieldDefaults.textFieldColors()
+        TextFieldStyle.Outlined -> TextFieldDefaults.outlinedTextFieldColors()
+    }
 
 @OptIn(ExperimentalMaterialApi::class)
 fun TextFieldStyle.getContentPadding(hasLabel: Boolean): PaddingValues = when (this) {
@@ -369,7 +369,7 @@ private fun TextFieldStyle.getDecorationBox(
                         shape = shape
                     )
                 },
-        )
+            )
     }
 }
 
