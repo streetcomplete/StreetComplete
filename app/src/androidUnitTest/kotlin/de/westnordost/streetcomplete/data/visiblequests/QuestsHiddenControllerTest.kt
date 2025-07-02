@@ -72,24 +72,9 @@ class QuestsHiddenControllerTest {
         on(notesDb.getAll()).thenReturn(listOf(h3, h4))
         on(atpDb.getAll()).thenReturn(listOf(h5, h6))
 
-        assertEquals<Pair<QuestKey, Long>>(
-            Pair(AtpQuestKey(h6.allThePlacesEntryId), 100000),
-            ctrl.getAllNewerThan(123L)[0]
-        )
-        assertEquals<Pair<QuestKey, Long>>(
-            Pair(OsmNoteQuestKey(h3.noteId), 500L),
-            ctrl.getAllNewerThan(123L)[1]
-        )
-        assertEquals<Pair<QuestKey, Long>>(
-            Pair(h1.key, 250L),
-            ctrl.getAllNewerThan(123L)[2]
-        )
-        //TODO above works, below fails, why? Oh and below fails while claiming no difference
-        // assertEquals is called on listOf in few places so it does not appear due to comparing
-        // specific list instances instead of actual content
         assertEquals(
             listOf(
-                AtpQuestKey(h6.allThePlacesEntryId) to 100000,
+                AtpQuestKey(h6.allThePlacesEntryId) to 100000L,
                 OsmNoteQuestKey(h3.noteId) to 500L,
                 h1.key to 250L,
             ),
