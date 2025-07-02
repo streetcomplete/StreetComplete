@@ -82,4 +82,28 @@ class AddFerryUtilsAccessTest {
         assertEquals(2, pedestrianQuest.getApplicableElements(mapData).toList().size)
         assertEquals(2, motorQuest.getApplicableElements(mapData).toList().size)
     }
+
+    @Test
+    fun `test with no ferry ways or relations`() {
+        val mapData = TestMapDataWithGeometry(
+            listOf(
+                node(1),
+                node(2),
+                node(3),
+                node(4),
+                way(5L, listOf(1, 2), mapOf(
+                    "route" to "not-ferry",
+                )),
+                way(7L, listOf(3, 4), mapOf(
+                    "route" to "not-ferry",
+                )),
+                rel(6L, listOf(member(ElementType.WAY, 5L), member(ElementType.WAY, 7L)), mapOf(
+                    "route" to "not-ferry",
+                    "type" to "not-ferry"
+                )),
+            ),
+        )
+        assertEquals(0, pedestrianQuest.getApplicableElements(mapData).toList().size)
+        assertEquals(0, motorQuest.getApplicableElements(mapData).toList().size)
+    }
 }

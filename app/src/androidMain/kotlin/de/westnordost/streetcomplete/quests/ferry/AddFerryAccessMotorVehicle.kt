@@ -4,7 +4,6 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
-import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.AndroidQuest
@@ -16,7 +15,7 @@ import de.westnordost.streetcomplete.util.ktx.toYesNo
 
 class AddFerryAccessMotorVehicle : OsmElementQuestType<Boolean>, AndroidQuest {
 
-    private val preliminaryFilter by lazy { "ways, relations with route = ferry and !motor_vehicle".toElementFilterExpression()
+    private val filter by lazy { "ways, relations with route = ferry and !motor_vehicle".toElementFilterExpression()
     }
     override val changesetComment = "Specify ferry access for motor vehicles"
     override val wikiLink = "Tag:route=ferry"
@@ -34,21 +33,21 @@ class AddFerryAccessMotorVehicle : OsmElementQuestType<Boolean>, AndroidQuest {
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
         // This is the primary method that performs the full check with mapData
-        return mapData.relations + mapData.ways.filter { element ->
+        return mapData.filter { element ->
             // First, a quick check with the preliminary filter
-            if (!preliminaryFilter.matches(element)) return@filter false
+            if (!filter.matches(element)) return@filter false
             // Then, the detailed check which includes relation checks
-            isApplicableTo(element, mapData)
+            !partOfFerryRoute(element, mapData)
         }
     }
 
     override fun isApplicableTo(element: Element): Boolean? {
-        // Check if it's a relation. If not its a way and is required not to be part of a relation.
+        // Check if it's a ferry. If yes, check if its part of a ferry route via getApplicableElements.
         val tags = element.tags
-        if (element.type == ElementType.RELATION) {
-            return true
+        if (tags["route"] == "ferry") {
+            return null
         }
 
-        return null
+        return false
     }
 }
