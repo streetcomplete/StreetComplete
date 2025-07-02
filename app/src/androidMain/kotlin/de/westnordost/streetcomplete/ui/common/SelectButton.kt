@@ -19,11 +19,12 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.datasource.LoremIpsum
 import androidx.compose.ui.unit.dp
-import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.ic_arrow_drop_down_24
+import org.jetbrains.compose.resources.painterResource
 import kotlin.collections.forEach
 
 /** A simple selector button to select from a couple of values.
@@ -58,7 +59,7 @@ fun <T> SelectButton(
         ) {
             itemContent(selectedItem)
             Icon(
-                painter = painterResource(R.drawable.ic_arrow_expand_down_24dp),
+                painter = painterResource(Res.drawable.ic_arrow_drop_down_24),
                 contentDescription = null,
                 modifier = Modifier
                     .padding(start = 8.dp)
