@@ -64,18 +64,6 @@ class AtpController(
         }
     }
 
-    /** put a note because the note has been created/changed on OSM TODO - is there an equivalent for ATP entries */
-    fun put(note: AtpEntry) {
-        val hasNote = synchronized(this) { dao.get(note.id) != null }
-
-        if (hasNote) {
-            this@AtpController.onUpdated(updated = listOf(note))
-        } else {
-            this@AtpController.onUpdated(added = listOf(note))
-        }
-
-        dao.put(note)
-    }
 
     fun deleteOlderThan(timestamp: Long, limit: Int? = null): Int {
         val ids: List<Long>
