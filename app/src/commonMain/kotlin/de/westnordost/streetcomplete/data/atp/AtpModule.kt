@@ -10,8 +10,5 @@ val atpModule = module {
     factory { AtpApiClient(get(), OSM_ATP_COMPARISON_API_BASE_URL, get()) }
     factory { AtpApiParser() }
 
-    single {
-        AtpController(get()).apply {
-        }
-    }
+    single { AtpController(get()) }
 }
