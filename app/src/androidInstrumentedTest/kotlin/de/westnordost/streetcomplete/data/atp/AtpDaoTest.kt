@@ -49,6 +49,7 @@ class AtpDaoTest : ApplicationDbTestCase() {
         dao.put(entry)
         assertTrue(dao.delete(entry.id))
         assertNull(dao.get(entry.id))
+        assertFalse(dao.delete(entry.id))
     }
 
     @Test fun getAllPositions() {
