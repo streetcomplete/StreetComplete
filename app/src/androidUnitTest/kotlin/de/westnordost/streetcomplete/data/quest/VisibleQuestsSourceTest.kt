@@ -122,10 +122,10 @@ class VisibleQuestsSourceTest {
         on(questsHiddenSource.get(any())).thenReturn(null)
 
         val quests = source.getAll(bbox)
-        assertEquals(9, quests.size)
         assertEquals(3, quests.filterIsInstance<OsmQuest>().size)
         assertEquals(2, quests.filterIsInstance<OsmNoteQuest>().size)
         assertEquals(4, quests.filterIsInstance<CreateElementUsingAtpQuest>().size)
+        assertEquals(9, quests.size)
     }
 
     @Test fun `getAll does not return those that are hidden by user`() {
