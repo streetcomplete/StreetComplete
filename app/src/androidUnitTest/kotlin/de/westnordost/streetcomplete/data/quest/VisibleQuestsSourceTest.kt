@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.data.quest
 
 import de.westnordost.streetcomplete.data.atp.atpquests.AtpQuestSource
+import de.westnordost.streetcomplete.data.atp.atpquests.CreateElementUsingAtpQuest
 import de.westnordost.streetcomplete.data.download.tiles.asBoundingBoxOfEnclosingTiles
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
@@ -10,10 +11,12 @@ import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuest
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestSource
 import de.westnordost.streetcomplete.data.overlays.Overlay
 import de.westnordost.streetcomplete.data.overlays.SelectedOverlaySource
+import de.westnordost.streetcomplete.data.quest.atp.CreatePoiBasedOnAtpAnswer
 import de.westnordost.streetcomplete.data.visiblequests.QuestsHiddenSource
 import de.westnordost.streetcomplete.data.visiblequests.TeamModeQuestFilter
 import de.westnordost.streetcomplete.data.visiblequests.VisibleEditTypeSource
 import de.westnordost.streetcomplete.testutils.any
+import de.westnordost.streetcomplete.testutils.atpQuest
 import de.westnordost.streetcomplete.testutils.bbox
 import de.westnordost.streetcomplete.testutils.eq
 import de.westnordost.streetcomplete.testutils.mock
@@ -36,7 +39,7 @@ class VisibleQuestsSourceTest {
     private lateinit var questsHiddenSource: QuestsHiddenSource
     private lateinit var questTypeRegistry: QuestTypeRegistry
     private lateinit var osmNoteQuestSource: OsmNoteQuestSource
-    private lateinit var atpQuestSource: AtpQuestSource // TODO add test that confirms that VisibleQuestsSource is using the AtpQuestSource correctly
+    private lateinit var atpQuestSource: AtpQuestSource
 
     private lateinit var visibleEditTypeSource: VisibleEditTypeSource
     private lateinit var teamModeQuestFilter: TeamModeQuestFilter
@@ -44,6 +47,7 @@ class VisibleQuestsSourceTest {
     private lateinit var source: VisibleQuestsSource
 
     private lateinit var noteQuestListener: OsmNoteQuestSource.Listener
+    private lateinit var atpQuestListener: AtpQuestSource.Listener
     private lateinit var questListener: OsmQuestSource.Listener
     private lateinit var questsHiddenListener: QuestsHiddenSource.Listener
     private lateinit var visibleEditTypeListener: VisibleEditTypeSource.Listener
@@ -71,6 +75,10 @@ class VisibleQuestsSourceTest {
 
         on(osmNoteQuestSource.addListener(any())).then { invocation ->
             noteQuestListener = (invocation.arguments[0] as OsmNoteQuestSource.Listener)
+            Unit
+        }
+        on(atpQuestSource.addListener(any())).then { invocation ->
+            atpQuestListener = (invocation.arguments[0] as AtpQuestSource.Listener)
             Unit
         }
         on(osmQuestSource.addListener(any())).then { invocation ->
@@ -107,22 +115,27 @@ class VisibleQuestsSourceTest {
         val bboxCacheWillRequest = bbox.asBoundingBoxOfEnclosingTiles(16)
         val osmQuests = questTypes.map { OsmQuest(it, ElementType.NODE, 1L, pGeom()) }
         val noteQuests = listOf(osmNoteQuest(0L, p(0.0, 0.0)), osmNoteQuest(1L, p(1.0, 1.0)))
+        val atpQuests = listOf(atpQuest(id=1L), atpQuest(id=10L), atpQuest(id=100L), atpQuest(id=1000L))
         on(osmQuestSource.getAllInBBox(bboxCacheWillRequest, questTypeNames)).thenReturn(osmQuests)
         on(osmNoteQuestSource.getAllInBBox(bboxCacheWillRequest)).thenReturn(noteQuests)
+        on(atpQuestSource.getAllInBBox(bboxCacheWillRequest)).thenReturn(atpQuests)
         on(questsHiddenSource.get(any())).thenReturn(null)
 
         val quests = source.getAll(bbox)
-        assertEquals(5, quests.size)
+        assertEquals(9, quests.size)
         assertEquals(3, quests.filterIsInstance<OsmQuest>().size)
         assertEquals(2, quests.filterIsInstance<OsmNoteQuest>().size)
+        assertEquals(4, quests.filterIsInstance<CreateElementUsingAtpQuest>().size)
     }
 
     @Test fun `getAll does not return those that are hidden by user`() {
         val bboxCacheWillRequest = bbox.asBoundingBoxOfEnclosingTiles(16)
         val osmQuests = questTypes.map { OsmQuest(it, ElementType.NODE, 1L, pGeom()) }
         val noteQuests = listOf(osmNoteQuest(0L, p(0.0, 0.0)), osmNoteQuest(1L, p(1.0, 1.0)))
+        val atpQuests = listOf(atpQuest(id=1L), atpQuest(id=10L), atpQuest(id=100L), atpQuest(id=1000L))
         on(osmQuestSource.getAllInBBox(bboxCacheWillRequest)).thenReturn(osmQuests)
         on(osmNoteQuestSource.getAllInBBox(bboxCacheWillRequest)).thenReturn(noteQuests)
+        on(atpQuestSource.getAllInBBox(bboxCacheWillRequest)).thenReturn(atpQuests)
 
         on(questsHiddenSource.get(any())).thenReturn(1)
 
@@ -134,8 +147,10 @@ class VisibleQuestsSourceTest {
         val bboxCacheWillRequest = bbox.asBoundingBoxOfEnclosingTiles(16)
         val osmQuest = OsmQuest(questTypes.first(), ElementType.NODE, 1L, pGeom())
         val noteQuest = osmNoteQuest(0L, p(0.0, 0.0))
+        val atpQuests = listOf(atpQuest(id=1L), atpQuest(id=10L), atpQuest(id=100L), atpQuest(id=1000L))
         on(osmQuestSource.getAllInBBox(bboxCacheWillRequest, questTypeNames)).thenReturn(listOf(osmQuest))
         on(osmNoteQuestSource.getAllInBBox(bboxCacheWillRequest)).thenReturn(listOf(noteQuest))
+        on(atpQuestSource.getAllInBBox(bboxCacheWillRequest)).thenReturn(atpQuests)
         on(questsHiddenSource.get(any())).thenReturn(null)
         on(teamModeQuestFilter.isVisible(any())).thenReturn(false)
         on(teamModeQuestFilter.isEnabled).thenReturn(true)
@@ -145,10 +160,12 @@ class VisibleQuestsSourceTest {
     }
 
     @Test fun `getAll does not return those that are invisible because of an overlay`() {
+        // TODO how ATP fits into this test? Should ATP be suppressed by some overlay? Maybe places, but I feel it is actually useful there
         val bboxCacheWillRequest = bbox.asBoundingBoxOfEnclosingTiles(16)
         on(osmQuestSource.getAllInBBox(bboxCacheWillRequest, listOf("TestQuestTypeA")))
             .thenReturn(listOf(OsmQuest(TestQuestTypeA(), ElementType.NODE, 1, ElementPointGeometry(bbox.min))))
         on(osmNoteQuestSource.getAllInBBox(bboxCacheWillRequest)).thenReturn(listOf())
+        on(atpQuestSource.getAllInBBox(bboxCacheWillRequest)).thenReturn(listOf())
         on(questsHiddenSource.get(any())).thenReturn(null)
 
         val overlay: Overlay = mock()
@@ -195,6 +212,24 @@ class VisibleQuestsSourceTest {
         verifyNoInteractions(listener)
     }
 
+    @Test fun `at quests added or removed triggers listener`() {
+        val quests = listOf(atpQuest(1L), atpQuest(2L))
+        val deleted = listOf(AtpQuestKey(3), AtpQuestKey(4))
+        on(questsHiddenSource.get(any())).thenReturn(null)
+
+        atpQuestListener.onUpdated(quests, listOf(3L, 4L))
+        verify(listener).onUpdated(eq(quests), eq(deleted))
+    }
+
+    @Test fun `atp quests added of invisible type does not trigger listener`() {
+        val quests = listOf(atpQuest(1L), atpQuest(2L))
+        on(visibleEditTypeSource.isVisible(any())).thenReturn(false)
+        on(questsHiddenSource.get(any())).thenReturn(null)
+
+        atpQuestListener.onUpdated(quests, emptyList())
+        verifyNoInteractions(listener)
+    }
+
     @Test fun `trigger invalidate listener if quest type visibilities changed`() {
         visibleEditTypeListener.onVisibilitiesChanged()
         verify(listener).onInvalidated()
@@ -202,6 +237,11 @@ class VisibleQuestsSourceTest {
 
     @Test fun `trigger invalidate listener if visible note quests were invalidated`() {
         noteQuestListener.onInvalidated()
+        verify(listener).onInvalidated()
+    }
+
+    @Test fun `trigger invalidate listener if visible atp quests were invalidated`() {
+        atpQuestListener.onInvalidated()
         verify(listener).onInvalidated()
     }
 
