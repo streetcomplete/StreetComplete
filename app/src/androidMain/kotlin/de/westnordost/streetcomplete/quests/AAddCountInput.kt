@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.ProvideTextStyle
 import androidx.compose.material.Surface
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
@@ -33,16 +34,17 @@ abstract class AAddCountInput : AbstractOsmQuestForm<Int>() {
         binding.composeViewBase.content {
             Surface {
                 count = rememberSaveable { mutableStateOf(initialCount) }
-                CountInput(
-                    count = count.value,
-                    onCountChange = {
-                        count.value = it
-                        checkIsFormComplete()
-                    },
-                    iconPainter = painterResource(iconId),
-                    modifier = Modifier.padding(8.dp),
-                    textStyle = MaterialTheme.typography.extraLargeInput
-                )
+                ProvideTextStyle(MaterialTheme.typography.extraLargeInput) {
+                    CountInput(
+                        count = count.value,
+                        onCountChange = {
+                            count.value = it
+                            checkIsFormComplete()
+                        },
+                        iconPainter = painterResource(iconId),
+                        modifier = Modifier.padding(8.dp),
+                    )
+                }
             }
         }
     }

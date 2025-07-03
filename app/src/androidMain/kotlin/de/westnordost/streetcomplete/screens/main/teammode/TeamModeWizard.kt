@@ -19,11 +19,10 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
-import androidx.compose.material.LocalTextStyle
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.ProvideTextStyle
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
@@ -146,7 +145,7 @@ private fun TeamModeTeamSizeInput(
         style = MaterialTheme.typography.body1,
         textAlign = TextAlign.Center
     )
-    CompositionLocalProvider(LocalTextStyle provides MaterialTheme.typography.headlineLarge) {
+    ProvideTextStyle(MaterialTheme.typography.headlineLarge) {
         WheelPicker(
             items = teamSizes,
             modifier = Modifier

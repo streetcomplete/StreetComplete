@@ -36,6 +36,7 @@ class AddOpeningHours(
               or amenity = social_facility and social_facility ~ food_bank|clothing_bank|soup_kitchen|dairy_kitchen
               or amenity = toilets and (fee = yes or toilets:disposal = flush)
               or tourism = information and information = office
+              or natural = cave_entrance and fee=yes
               or """ +
 
         // The common list is shared by the name quest, the opening hours quest and the wheelchair quest.

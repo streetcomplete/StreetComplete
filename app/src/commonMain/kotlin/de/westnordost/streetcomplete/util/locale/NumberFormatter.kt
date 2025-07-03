@@ -7,37 +7,28 @@ import androidx.compose.ui.text.intl.Locale
  *
  * @param locale Locale to use. If [locale] is `null`, the default locale (for formatting) will be
  *   used.
+ * @param minIntegerDigits Minimum number of integer digits when formatting
+ * @param maxIntegerDigits Maximum number of integer digits when formatting
+ * @param minFractionDigits Minimum number of fraction digits when formatting
+ * @param maxFractionDigits Maximum number of fraction digits when formatting
+ * @param useGrouping Whether to use grouping when formatting and whether to understand grouping
+ *   on parsing. E.g. in the United States, "10000" can be written as "10,000" whereas in France it
+ *   can be written as "10 000".
  * */
-expect class NumberFormatter(locale: Locale? = null) {
+expect class NumberFormatter(
+    locale: Locale? = null,
+    minIntegerDigits: Int = 1,
+    maxIntegerDigits: Int = 42,
+    minFractionDigits: Int = 0,
+    maxFractionDigits: Int = 3,
+    useGrouping: Boolean = false,
+) {
 
-    /**
-     * Format the given [value].
-     *
-     * @param minFractionDigits If the given [value] has less fraction digits, zeroes will be
-     *   inserted instead
-     *
-     * @param maxFractionDigits If the given [value] has more fraction digits, those will be cut off
-     *
-     * @param useGrouping Whether to use grouping. E.g. in the United States, "10000" can be written
-     *   as "10,000" whereas in France it can be written as "10 000".
-     */
-    fun format(
-        value: Number,
-        minFractionDigits: Int = 0,
-        maxFractionDigits: Int = 3,
-        useGrouping: Boolean = false,
-    ): String
+    /** Format the given [value]. */
+    fun format(value: Number): String
 
-    /**
-     * Parse the given [text]. Returns `null` if it cannot be parsed as a number
-     *
-     * @param allowGrouping Whether to understand grouped values. E.g. in the United States, "10000"
-     *   can be written as "10,000" whereas in France it can be written as "10 000".
-     */
-    fun parse(
-        text: String,
-        allowGrouping: Boolean = false
-    ): Number?
+    /** Parse the given [text]. Returns `null` if it cannot be parsed as a number */
+    fun parse(text: String): Number?
 
     /** Return the decimal separator */
     val decimalSeparator: Char

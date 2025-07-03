@@ -5,7 +5,6 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.LocalTextStyle
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -15,13 +14,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.ui.theme.extraLargeInput
 
 /** An outlined text field that accepts only integer input with an illustration that should display
  *  the "unit" (steps, bicycles, ...) of what is input next to it */
@@ -31,7 +28,6 @@ fun CountInput(
     onCountChange: (Int?) -> Unit,
     iconPainter: Painter,
     modifier: Modifier = Modifier,
-    textStyle: TextStyle = LocalTextStyle.current,
 ) {
     Row (
         modifier = modifier,
@@ -50,9 +46,9 @@ fun CountInput(
             modifier = Modifier.weight(1f),
             singleLine = true,
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-            textStyle = textStyle.copy(textAlign = TextAlign.Center),
+            textStyle = LocalTextStyle.current.copy(textAlign = TextAlign.Center),
         )
-        Text(text = "×", style = textStyle)
+        Text(text = "×")
         Image(
             painter = iconPainter,
             contentDescription = null
@@ -68,6 +64,5 @@ private fun StepCountFormPreview() {
         count = count.value,
         onCountChange = { count.value = it },
         iconPainter = painterResource(R.drawable.ic_step),
-        textStyle = MaterialTheme.typography.extraLargeInput
     )
 }
