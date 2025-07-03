@@ -65,20 +65,6 @@ class AtpDao(private val db: Database) {
         return db.query(NAME, where = "$ID IN (${ids.joinToString(",")})") { it.toAtpEntry() }
     }
 
-    // TODO Is this in a hot path? (I.e. how often is this called?)
-    // TODO (Currently, it doesn't seem to be called at all?)
-    // TODO But well, if it is called often, then you should add an index on these two to AtpTable.kt (and subsequently in DatabaseInitializer.kt)
-    // from code review
-    fun getAllWithMatchingOsmElement(match: ElementKey): List<AtpEntry> {
-        return db.query(NAME,
-            where = "$OSM_ELEMENT_MATCH_ID = ? AND $OSM_ELEMENT_MATCH_TYPE = ?",
-            args = arrayOf(
-                match.id,
-                match.type.toString(),
-            )
-        ) { it.toAtpEntry() }
-    }
-
     fun getIdsOlderThan(timestamp: Long, limit: Int? = null): List<Long> =
         if (limit != null && limit <= 0) {
             emptyList()

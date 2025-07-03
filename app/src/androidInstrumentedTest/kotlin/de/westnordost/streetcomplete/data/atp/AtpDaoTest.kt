@@ -79,17 +79,6 @@ class AtpDaoTest : ApplicationDbTestCase() {
         assertEquals(listOf(first, second), dao.getAll(listOf(1, 2)))
     }
 
-    @Test fun getAllWithMatchingOsmElement() {
-        val first = createAtpEntry(1, osmMatch = ElementKey(NODE, 1))
-        val second = createAtpEntry(2, osmMatch = ElementKey(RELATION, 1))
-        val third = createAtpEntry(3, osmMatch = ElementKey(WAY, 11))
-        dao.putAll(listOf(first, second, third))
-
-        assertEquals(listOf(first), dao.getAllWithMatchingOsmElement(ElementKey(NODE, 1)))
-        assertEquals(listOf(), dao.getAllWithMatchingOsmElement(ElementKey(NODE, 2)))
-        assertEquals(listOf(third), dao.getAllWithMatchingOsmElement(ElementKey(WAY, 11)))
-    }
-
     @Test fun deleteAllByIds() {
         dao.putAll(listOf(createAtpEntry(1), createAtpEntry(2), createAtpEntry(3)))
 
