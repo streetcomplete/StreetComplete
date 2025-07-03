@@ -36,7 +36,8 @@ class VisibleQuestsSourceTest {
     private lateinit var questsHiddenSource: QuestsHiddenSource
     private lateinit var questTypeRegistry: QuestTypeRegistry
     private lateinit var osmNoteQuestSource: OsmNoteQuestSource
-    private lateinit var atpQuestSource: AtpQuestSource
+    private lateinit var atpQuestSource: AtpQuestSource // TODO add test that confirms that VisibleQuestsSource is using the AtpQuestSource correctly
+
     private lateinit var visibleEditTypeSource: VisibleEditTypeSource
     private lateinit var teamModeQuestFilter: TeamModeQuestFilter
     private lateinit var selectedOverlaySource: SelectedOverlaySource
