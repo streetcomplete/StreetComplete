@@ -75,9 +75,9 @@ class AtpCreateForm : AbstractQuestForm() {
         }
 
         withContext(Dispatchers.IO) {
-            addElementEditsController.add(CreatePoiBasedOnAtp(), geometry, "survey", action, isSurvey)
+            addElementEditsController.add(CreatePoiBasedOnAtp, geometry, "survey", action, isSurvey)
         }
-        listener?.onEdited(CreatePoiBasedOnAtp(), geometry)
+        listener?.onEdited(CreatePoiBasedOnAtp, geometry)
     }
     override fun isFormComplete(): Boolean {
         return selectedLocation != null

@@ -9,7 +9,7 @@ import de.westnordost.streetcomplete.data.quest.OsmCreateElementQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.isPlaceOrDisusedPlace
 
-class CreatePoiBasedOnAtp() : OsmCreateElementQuestType<CreatePoiBasedOnAtpAnswer>, AndroidQuest {
+object CreatePoiBasedOnAtp : OsmCreateElementQuestType<CreatePoiBasedOnAtpAnswer>, AndroidQuest {
     override fun createForm() = AtpCreateForm()
     override val icon = R.drawable.ic_quest_dot // TODO: a radar icon? A plus icon?
     override val title = R.string.quest_atp_add_missing_poi_title
