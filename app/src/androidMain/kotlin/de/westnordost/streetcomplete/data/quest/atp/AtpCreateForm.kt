@@ -1,16 +1,9 @@
 package de.westnordost.streetcomplete.data.quest.atp
 
-import android.content.res.Configuration
-import android.content.res.Resources
 import android.location.Location
 import android.os.Bundle
-import android.view.Menu
 import android.view.View
-import android.view.ViewGroup
-import android.widget.PopupMenu
-import androidx.appcompat.app.AlertDialog
 import androidx.core.os.bundleOf
-import androidx.core.view.children
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.atp.AtpEntry
@@ -20,24 +13,15 @@ import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsController
 import de.westnordost.streetcomplete.data.osm.edits.create.CreateNodeAction
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChanges
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
-import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
-import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
-import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.data.visiblequests.HideQuestController
 import de.westnordost.streetcomplete.data.visiblequests.QuestsHiddenController
 import de.westnordost.streetcomplete.quests.AbstractQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
-import de.westnordost.streetcomplete.quests.IAnswerItem
-import de.westnordost.streetcomplete.quests.getTitle
-import de.westnordost.streetcomplete.util.getLanguagesForFeatureDictionary
 import de.westnordost.streetcomplete.util.getNameAndLocationSpanned
-import de.westnordost.streetcomplete.util.getNameLabel
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.view.confirmIsSurvey
 import kotlinx.coroutines.Dispatchers
@@ -46,9 +30,7 @@ import kotlinx.coroutines.withContext
 import kotlinx.serialization.json.Json
 import org.koin.android.ext.android.inject
 import org.koin.core.qualifier.named
-import java.util.Locale
 import kotlin.getValue
-import kotlinx.coroutines.withContext
 
 class AtpCreateForm : AbstractQuestForm() {
     private val hiddenQuestsController: QuestsHiddenController by inject()
