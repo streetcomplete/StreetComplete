@@ -26,7 +26,7 @@ object AtpTable {
             ${Columns.OSM_ELEMENT_MATCH_ID} int,
             ${Columns.OSM_ELEMENT_MATCH_TYPE} varchar(15),
             ${Columns.ATP_TAGS} text NOT NULL,
-            ${Columns.OSM_TAGS} text NOT NULL,
+            ${Columns.OSM_TAGS} text,
             ${Columns.LAST_SYNC} int NOT NULL,
             ${Columns.REPORT_TYPE} text NOT NULL
         );

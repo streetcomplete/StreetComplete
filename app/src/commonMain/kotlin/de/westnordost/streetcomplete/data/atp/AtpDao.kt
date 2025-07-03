@@ -44,7 +44,7 @@ class AtpDao(private val db: Database) {
                 it.osmMatch?.id,
                 it.osmMatch?.type.toString(),
                 Json.encodeToString(it.tagsInATP),
-                Json.encodeToString(it.tagsInOSM),
+                it.tagsInOSM?.let { Json.encodeToString(it) },
                 it.reportType.name,
                 nowAsEpochMilliseconds()
             ) }
@@ -109,11 +109,7 @@ class AtpDao(private val db: Database) {
 
     private fun CursorPosition.toAtpEntry(): AtpEntry {
         val tagsInOsm = getStringOrNull(OSM_TAGS)?.let {
-            if(it == "null") { // TODO: really? how it even happens?
-                null
-            } else {
-                Json.decodeFromString<Map<String, String>>(it)
-            }
+            Json.decodeFromString<Map<String, String>>(it)
         }
         val osmMatchId = getLongOrNull(OSM_ELEMENT_MATCH_ID)
         val osmMatchType = getStringOrNull(OSM_ELEMENT_MATCH_TYPE)
