@@ -212,7 +212,7 @@ class VisibleQuestsSourceTest {
         verifyNoInteractions(listener)
     }
 
-    @Test fun `at quests added or removed triggers listener`() {
+    @Test fun `atp quests added or removed triggers listener`() {
         val quests = listOf(atpQuest(1L), atpQuest(2L))
         val deleted = listOf(AtpQuestKey(3), AtpQuestKey(4))
         on(questsHiddenSource.get(any())).thenReturn(null)
