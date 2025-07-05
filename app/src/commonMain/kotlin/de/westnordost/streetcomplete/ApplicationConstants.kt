@@ -91,7 +91,7 @@ object ApplicationConstants {
     fun isRelationIgnored(tags: Map<String, String>): Boolean {
         val type = tags["type"] ?: return false
         return when (type) {
-            // could be useful, but sometimes/often very very large
+            // ignore non ferry relations since these are sometimes/often very very large
             "route" -> tags["route"] != "ferry"
             "route_master", "superroute", "network", "disused:route" -> true
 
