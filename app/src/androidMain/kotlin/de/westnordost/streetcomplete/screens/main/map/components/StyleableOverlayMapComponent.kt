@@ -12,10 +12,10 @@ import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.key
 import de.westnordost.streetcomplete.data.overlays.OverlayColor.Invisible
+import de.westnordost.streetcomplete.data.overlays.OverlayStyle
 import de.westnordost.streetcomplete.data.overlays.OverlayStyle.Point
 import de.westnordost.streetcomplete.data.overlays.OverlayStyle.Polygon
 import de.westnordost.streetcomplete.data.overlays.OverlayStyle.Polyline
-import de.westnordost.streetcomplete.data.overlays.OverlayStyle
 import de.westnordost.streetcomplete.screens.main.map.createIconBitmap
 import de.westnordost.streetcomplete.screens.main.map.maplibre.MapImages
 import de.westnordost.streetcomplete.screens.main.map.maplibre.clear
@@ -388,7 +388,7 @@ private fun Color.darkened(): Color = Color(
 
 private fun Color.toRgbaString(): String {
     val c = toArgb()
-    return "rgba(${(c shr 16) and 0xFF}, ${(c shr 8) and 0xFF}, ${c and 0xFF}, ${alpha})"
+    return "rgba(${(c shr 16) and 0xFF}, ${(c shr 8) and 0xFF}, ${c and 0xFF}, $alpha)"
 }
 
 /** mimics width of line as seen in StreetComplete map style */

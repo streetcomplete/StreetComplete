@@ -53,7 +53,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
 import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
-import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestAndroid
 import de.westnordost.streetcomplete.data.osmnotes.notequests.createOsmNoteQuest
 import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
 import de.westnordost.streetcomplete.data.overlays.AndroidOverlay

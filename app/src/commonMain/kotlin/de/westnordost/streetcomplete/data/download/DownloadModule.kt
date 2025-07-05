@@ -19,5 +19,4 @@ val downloadModule = module {
 
     single<DownloadedTilesSource> { get<DownloadedTilesController>() }
     single { DownloadedTilesController(get()) }
-
 }

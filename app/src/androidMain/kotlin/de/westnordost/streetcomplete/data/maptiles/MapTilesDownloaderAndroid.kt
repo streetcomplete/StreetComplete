@@ -16,7 +16,7 @@ import org.maplibre.android.geometry.LatLngBounds
 import org.maplibre.android.offline.OfflineManager
 import org.maplibre.android.offline.OfflineTilePyramidRegionDefinition
 
-class MapTilesDownloaderAndroid(private val context: Context): MapTilesDownloader {
+class MapTilesDownloaderAndroid(private val context: Context) : MapTilesDownloader {
 
     init {
         try {

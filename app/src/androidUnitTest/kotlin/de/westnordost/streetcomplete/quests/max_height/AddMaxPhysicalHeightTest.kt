@@ -75,5 +75,4 @@ class AddMaxPhysicalHeightTest {
         questType.isApplicableTo(way(
             tags = mapOf("highway" to "service") + tags
         ))
-
 }

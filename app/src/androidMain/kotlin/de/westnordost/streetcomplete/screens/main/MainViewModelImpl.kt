@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.screens.main
 import androidx.compose.ui.geometry.Offset
 import androidx.lifecycle.viewModelScope
 import de.westnordost.streetcomplete.data.UnsyncedChangesCountSource
+import de.westnordost.streetcomplete.data.connection.InternetConnectionState
 import de.westnordost.streetcomplete.data.download.DownloadController
 import de.westnordost.streetcomplete.data.download.DownloadProgressSource
 import de.westnordost.streetcomplete.data.messages.Message
@@ -18,7 +19,6 @@ import de.westnordost.streetcomplete.data.overlays.Overlay
 import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
 import de.westnordost.streetcomplete.data.overlays.SelectedOverlayController
 import de.westnordost.streetcomplete.data.overlays.SelectedOverlaySource
-import de.westnordost.streetcomplete.data.connection.InternetConnectionState
 import de.westnordost.streetcomplete.data.preferences.Autosync
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.data.presets.EditTypePresetsSource

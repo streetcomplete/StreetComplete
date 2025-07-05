@@ -12,7 +12,7 @@ import de.westnordost.streetcomplete.data.AuthorizationException
 import de.westnordost.streetcomplete.data.ConnectionException
 import java.util.concurrent.TimeUnit
 
-class ChangesetAutoCloserAndroid(private val context: Context): ChangesetAutoCloser {
+class ChangesetAutoCloserAndroid(private val context: Context) : ChangesetAutoCloser {
     override fun enqueue(delayInMilliseconds: Long) {
         WorkManager.getInstance(context).enqueueUniqueWork("AutoCloseChangesets", REPLACE,
             OneTimeWorkRequestBuilder<ChangesetAutoCloserWorker>()
