@@ -17,7 +17,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.sync.createSyncNotification
 import kotlinx.serialization.json.Json
 
-class DownloadControllerAndroid(private val context: Context): DownloadController {
+class DownloadControllerAndroid(private val context: Context) : DownloadController {
     override fun download(bbox: BoundingBox, isUserInitiated: Boolean) {
         WorkManager.getInstance(context).enqueueUniqueWork(
             Downloader.TAG,
