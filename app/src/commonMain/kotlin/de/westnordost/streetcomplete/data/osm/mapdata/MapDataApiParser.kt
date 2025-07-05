@@ -12,14 +12,17 @@ import nl.adaptivity.xmlutil.core.kxio.newReader
 import nl.adaptivity.xmlutil.xmlStreaming
 
 class MapDataApiParser {
-    fun parseMapData(source: Source, ignoreRelationTypes: Set<String?>): MutableMapData =
+    fun parseMapData(
+        source: Source,
+        ignoreRelationTypes: (tags: Map<String, String>) -> Boolean = { false }
+    ): MutableMapData =
         xmlStreaming.newReader(source).parseMapData(ignoreRelationTypes)
 
     fun parseElementUpdates(source: Source): Map<ElementKey, ElementUpdate> =
         xmlStreaming.newReader(source).parseElementUpdates()
 }
 
-private fun XmlReader.parseMapData(ignoreRelationTypes: Set<String?>): MutableMapData = try {
+private fun XmlReader.parseMapData(ignoreRelationTypes: (tags: Map<String, String>) -> Boolean): MutableMapData = try {
     val result = MutableMapData()
     var tags: MutableMap<String, String>? = null
     var nodes: MutableList<Long> = ArrayList()
@@ -64,7 +67,7 @@ private fun XmlReader.parseMapData(ignoreRelationTypes: Set<String?>): MutableMa
         END_ELEMENT -> when (localName) {
             "node" -> result.add(Node(id!!, position!!, tags.orEmpty(), version!!, timestamp!!))
             "way" -> result.add(Way(id!!, nodes, tags.orEmpty(), version!!, timestamp!!))
-            "relation" -> if (tags.orEmpty()["type"] !in ignoreRelationTypes) {
+            "relation" -> if (!ignoreRelationTypes(tags.orEmpty())) {
                 result.add(Relation(id!!, members, tags.orEmpty(), version!!, timestamp!!))
             }
         }

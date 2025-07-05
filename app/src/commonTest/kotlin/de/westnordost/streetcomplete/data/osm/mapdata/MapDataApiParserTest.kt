@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.data.osm.mapdata
 
+import de.westnordost.streetcomplete.ApplicationConstants
 import kotlinx.io.Buffer
 import kotlinx.io.writeString
 import kotlin.test.Test
@@ -11,7 +12,7 @@ class MapDataApiParserTest {
     @Test fun `parseMapData minimum`() {
         val buffer = Buffer()
         buffer.writeString("<osm></osm>")
-        val empty = MapDataApiParser().parseMapData(buffer, emptySet())
+        val empty = MapDataApiParser().parseMapData(buffer)
         assertEquals(0, empty.size)
         assertNull(empty.boundingBox)
     }
@@ -27,7 +28,7 @@ class MapDataApiParserTest {
             </osm>
         """)
 
-        val data = MapDataApiParser().parseMapData(buffer, emptySet())
+        val data = MapDataApiParser().parseMapData(buffer)
         assertEquals(nodesList.toSet(), data.nodes.toSet())
         assertEquals(waysList.toSet(), data.ways.toSet())
         assertEquals(relationsList.toSet(), data.relations.toSet())
@@ -44,7 +45,7 @@ class MapDataApiParserTest {
             </osm>
         """)
 
-        val empty = MapDataApiParser().parseMapData(buffer, setOf("route"))
+        val empty = MapDataApiParser().parseMapData(buffer, ApplicationConstants::isRelationIgnored)
         assertEquals(0, empty.size)
     }
 

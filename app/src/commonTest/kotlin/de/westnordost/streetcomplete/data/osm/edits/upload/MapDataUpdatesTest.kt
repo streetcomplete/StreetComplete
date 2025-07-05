@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.data.osm.edits.upload
 
+import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementIdUpdate
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.NODE
@@ -163,7 +164,7 @@ class MapDataUpdatesTest {
                 rel(2, listOf(member(NODE, 1), member(NODE, 2), member(NODE, 1))), // contains it multiple times
                 rel(3, listOf(member(WAY, 1), member(RELATION, 1), member(NODE, 2))) // contains it not
             ),
-            updates = mapOf(ElementKey(NODE, 1) to ElementUpdate.Delete)
+            updates = mapOf(ElementKey(NODE, 1) to ElementUpdate.Delete),
         )
         assertTrue(updates.idUpdates.isEmpty())
         assertEquals(listOf(ElementKey(NODE, 1)), updates.deleted)
@@ -180,7 +181,7 @@ class MapDataUpdatesTest {
                 rel(-4, tags = mapOf("type" to "route"))
             ),
             updates = mapOf(ElementKey(RELATION, -4) to ElementUpdate.Update(4, 1)),
-            ignoreRelationTypes = setOf("route")
+            ApplicationConstants::isRelationIgnored
         )
         assertTrue(updates.idUpdates.isEmpty())
         assertTrue(updates.updated.isEmpty())
@@ -194,7 +195,7 @@ class MapDataUpdatesTest {
                 rel(-4, tags = mapOf("type" to "route"))
             ),
             updates = mapOf(ElementKey(RELATION, -4) to ElementUpdate.Update(4, 1)),
-            ignoreRelationTypes = setOf("route")
+            ApplicationConstants::isRelationIgnored
         )
         assertTrue(updates.idUpdates.isEmpty())
         assertEquals(
