@@ -8,6 +8,11 @@ import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.POSTMAN
+import de.westnordost.streetcomplete.osm.ALL_LINKS
+import de.westnordost.streetcomplete.osm.LOCAL_ACCESS_ROADS
+import de.westnordost.streetcomplete.osm.MAJOR_ROADS
+import de.westnordost.streetcomplete.osm.PEDESTRIAN_ONLY_ROADS
+import de.westnordost.streetcomplete.osm.PUBLIC_AND_UNCLASSIFIED
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.localized_name.LocalizedName
 import de.westnordost.streetcomplete.osm.localized_name.applyTo
@@ -16,7 +21,7 @@ class AddRoadName : OsmFilterQuestType<RoadNameAnswer>(), AndroidQuest {
 
     override val elementFilter = """
         ways with
-          highway ~ primary|secondary|tertiary|unclassified|residential|living_street|pedestrian|busway
+          highway ~ ${(MAJOR_ROADS + PUBLIC_AND_UNCLASSIFIED + LOCAL_ACCESS_ROADS + PEDESTRIAN_ONLY_ROADS - ALL_LINKS).joinToString("|")}
           and !name and !name:left and !name:right
           and !ref
           and noname != yes

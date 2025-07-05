@@ -9,7 +9,11 @@ import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement
+import de.westnordost.streetcomplete.osm.ALL_LINKS
+import de.westnordost.streetcomplete.osm.MAJOR_ROADS
+import de.westnordost.streetcomplete.osm.PUBLIC_AND_UNCLASSIFIED
 import de.westnordost.streetcomplete.osm.ROADS_ASSUMED_TO_BE_PAVED
+import de.westnordost.streetcomplete.osm.TRUNKS
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.maxspeed.MAX_SPEED_TYPE_KEYS
 import de.westnordost.streetcomplete.osm.surface.PAVED_SURFACES
@@ -29,7 +33,7 @@ class AddRoadWidth(
     private val wayFilter by lazy { """
         ways with (
           (
-            highway ~ trunk|primary|secondary|tertiary|unclassified|residential|busway
+            highway ~ ${(TRUNKS + MAJOR_ROADS + PUBLIC_AND_UNCLASSIFIED + setOf("residential") - ALL_LINKS).joinToString("|")}
             and (lane_markings = no or lanes < 2)
           ) or (
             highway = residential

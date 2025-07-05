@@ -9,7 +9,14 @@ import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
+import de.westnordost.streetcomplete.osm.ALL_MAJOR_AND_HIGHWAYS
+import de.westnordost.streetcomplete.osm.HIGHWAYS
+import de.westnordost.streetcomplete.osm.MAJOR_ROADS
+import de.westnordost.streetcomplete.osm.PUBLIC_AND_UNCLASSIFIED
+import de.westnordost.streetcomplete.osm.TERTIARY
+import de.westnordost.streetcomplete.osm.TRUNKS
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.osm.UNCLASSIFIED_ROADS
 import de.westnordost.streetcomplete.osm.maxspeed.MAX_SPEED_TYPE_KEYS
 import de.westnordost.streetcomplete.osm.sidewalk.LeftAndRightSidewalk
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.INVALID
@@ -58,14 +65,14 @@ private val roadsFilter by lazy { """
     ways with
       (
         (
-          highway ~ trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|service|busway
+          highway ~ ${(TRUNKS + MAJOR_ROADS + PUBLIC_AND_UNCLASSIFIED + setOf("residential", "service")).joinToString("|")}
           and motorroad != yes
           and expressway != yes
           and foot != no
         )
         or
         (
-          highway ~ motorway|motorway_link|trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|service|busway
+          highway ~ ${(ALL_MAJOR_AND_HIGHWAYS + PUBLIC_AND_UNCLASSIFIED + setOf("residential", "service")).joinToString("|")}
           and (foot ~ yes|designated or bicycle ~ yes|designated)
         )
       )
@@ -85,7 +92,7 @@ private val roadsFilter by lazy { """
  */
 private val untaggedRoadsFilter by lazy { """
     ways with
-      highway ~ motorway|motorway_link|trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential
+      highway ~ ${(ALL_MAJOR_AND_HIGHWAYS + UNCLASSIFIED_ROADS + setOf("residential")).joinToString("|")}
       and !sidewalk and !sidewalk:both and !sidewalk:left and !sidewalk:right
       and (!maxspeed or maxspeed > 9 or maxspeed ~ [A-Z].*)
       and surface !~ ${UNPAVED_SURFACES.joinToString("|")}
@@ -94,7 +101,7 @@ private val untaggedRoadsFilter by lazy { """
         or highway = residential
         or ~"${MAX_SPEED_TYPE_KEYS.joinToString("|")}" ~ ".*:(urban|.*zone.*|nsl_restricted)"
         or maxspeed <= 60
-        or (foot ~ yes|designated and highway ~ motorway|motorway_link|trunk|trunk_link|primary|primary_link|secondary|secondary_link)
+        or (foot ~ yes|designated and highway ~ ${(ALL_MAJOR_AND_HIGHWAYS - TERTIARY).joinToString("|")})
       )
       and ~foot|bicycle|bicycle:backward|bicycle:forward !~ use_sidepath
       and ~cycleway|cycleway:left|cycleway:right|cycleway:both !~ separate

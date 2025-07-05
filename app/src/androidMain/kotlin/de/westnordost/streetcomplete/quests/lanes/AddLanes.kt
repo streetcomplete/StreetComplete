@@ -6,6 +6,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 import de.westnordost.streetcomplete.osm.ROADS_ASSUMED_TO_BE_PAVED
+import de.westnordost.streetcomplete.osm.ROADS_WITH_LANES
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.maxspeed.FILTER_IS_IMPLICIT_MAX_SPEED_BUT_NOT_SLOW_ZONE
 import de.westnordost.streetcomplete.osm.surface.PAVED_SURFACES
@@ -95,11 +96,4 @@ class AddLanes : OsmFilterQuestType<LanesAnswer>(), AndroidQuest {
         }
     }
 
-    companion object {
-        private val ROADS_WITH_LANES = listOf(
-            "motorway", "motorway_link", "trunk", "trunk_link", "primary", "primary_link",
-            "secondary", "secondary_link", "tertiary", "tertiary_link",
-            "unclassified", "busway",
-        )
-    }
 }

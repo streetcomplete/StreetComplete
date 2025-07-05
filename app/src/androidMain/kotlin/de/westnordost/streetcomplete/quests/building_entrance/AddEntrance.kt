@@ -12,6 +12,8 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
+import de.westnordost.streetcomplete.osm.ALL_PATHS
+import de.westnordost.streetcomplete.osm.PATH_FOR_EQUESTRIANS
 import de.westnordost.streetcomplete.osm.Tags
 
 class AddEntrance : OsmElementQuestType<EntranceAnswer>, AndroidQuest {
@@ -30,7 +32,7 @@ class AddEntrance : OsmElementQuestType<EntranceAnswer>, AndroidQuest {
 
     private val incomingWaysFilter by lazy { """
         ways with
-          highway ~ path|footway|steps|cycleway and area != yes and access !~ private|no
+          highway ~ ${(ALL_PATHS - PATH_FOR_EQUESTRIANS).joinToString("|")} and area != yes and access !~ private|no
     """.toElementFilterExpression() }
 
     private val excludedWaysFilter by lazy { """

@@ -29,7 +29,7 @@ class AddMaxHeight : OsmElementQuestType<MaxHeightAnswer>, AndroidQuest {
     private val roadsWithoutMaxHeightFilter by lazy { """
         ways with
         (
-          highway ~ motorway|motorway_link|trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|living_street|track|road|busway
+          highway ~ ${(ALL_ROADS - setOf("service")).joinToString("|")}
           or (highway = service and access !~ private|no and vehicle !~ private|no)
         )
         and $noMaxHeight

@@ -6,6 +6,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
+import de.westnordost.streetcomplete.osm.PATH_FOR_FOOT_AND_CYCLE
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.surface.PAVED_SURFACES
 import de.westnordost.streetcomplete.quests.segregated.CyclewaySegregation.*
@@ -20,7 +21,7 @@ class AddCyclewaySegregation : OsmFilterQuestType<CyclewaySegregation>(), Androi
           or (highway = cycleway and foot ~ designated|yes)
           or
             (
-            highway ~ path|footway|cycleway
+            highway ~ ${PATH_FOR_FOOT_AND_CYCLE.joinToString("|")}
             and (footway:surface or cycleway:surface)
             and foot !~ private|no
             and bicycle !~ private|no
@@ -30,7 +31,7 @@ class AddCyclewaySegregation : OsmFilterQuestType<CyclewaySegregation>(), Androi
         and area != yes
         and !(sidewalk or sidewalk:left or sidewalk:right or sidewalk:both)
         and !segregated
-        and ~path|footway|cycleway !~ link
+        and ~${PATH_FOR_FOOT_AND_CYCLE.joinToString("|")} !~ link
     """
     override val changesetComment = "Specify whether combined foot- and cycleways are segregated"
     override val wikiLink = "Key:segregated"

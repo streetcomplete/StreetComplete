@@ -5,6 +5,10 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
+import de.westnordost.streetcomplete.osm.MAJOR_ROADS
+import de.westnordost.streetcomplete.osm.TRUNKS
+import de.westnordost.streetcomplete.osm.LOCAL_ACCESS_ROADS
+import de.westnordost.streetcomplete.osm.PUBLIC_AND_UNCLASSIFIED
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.quests.max_weight.MaxWeightSign.MAX_AXLE_LOAD
 import de.westnordost.streetcomplete.quests.max_weight.MaxWeightSign.MAX_GROSS_VEHICLE_MASS
@@ -15,7 +19,7 @@ class AddMaxWeight : OsmFilterQuestType<MaxWeightAnswer>(), AndroidQuest {
 
     override val elementFilter = """
         ways with
-         highway ~ trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|living_street|service|busway
+         highway ~ ${(TRUNKS + MAJOR_ROADS + LOCAL_ACCESS_ROADS + PUBLIC_AND_UNCLASSIFIED + setOf("service")).joinToString("|")}
          and bridge and bridge != no
          and service != driveway
          and !maxweight and maxweight:signed != no

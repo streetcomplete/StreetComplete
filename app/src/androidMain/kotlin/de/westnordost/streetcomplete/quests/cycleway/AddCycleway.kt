@@ -14,6 +14,9 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
+import de.westnordost.streetcomplete.osm.LOCAL_ACCESS_ROADS
+import de.westnordost.streetcomplete.osm.MAJOR_ROADS
+import de.westnordost.streetcomplete.osm.PUBLIC_AND_UNCLASSIFIED
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway
 import de.westnordost.streetcomplete.osm.cycleway.LeftAndRightCycleway
@@ -117,7 +120,7 @@ class AddCycleway(
 // streets that may have cycleway tagging
 private val roadsFilter by lazy { """
     ways with
-      highway ~ primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|service|busway|living_street
+      highway ~ ${(MAJOR_ROADS + LOCAL_ACCESS_ROADS + PUBLIC_AND_UNCLASSIFIED + setOf("service")).joinToString("|")}
       and area != yes
       and motorroad != yes
       and expressway != yes

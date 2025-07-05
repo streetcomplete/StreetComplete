@@ -8,6 +8,7 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.WHEELCHAIR
+import de.westnordost.streetcomplete.osm.ALL_PATHS
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.changeToSteps
 import de.westnordost.streetcomplete.osm.surface.INVALID_SURFACES
@@ -16,7 +17,7 @@ import de.westnordost.streetcomplete.osm.surface.applyTo
 class AddPathSurface : OsmFilterQuestType<SurfaceOrIsStepsAnswer>(), AndroidQuest {
 
     override val elementFilter = """
-        ways with highway ~ path|footway|cycleway|bridleway|steps
+        ways with highway ~ ${ALL_PATHS.joinToString("|")}
         and segregated != yes
         and access !~ private|no
         and (!conveying or conveying = no)

@@ -12,7 +12,11 @@ import de.westnordost.streetcomplete.data.overlays.OverlayColor
 import de.westnordost.streetcomplete.data.overlays.Overlay
 import de.westnordost.streetcomplete.data.overlays.OverlayStyle
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement
+import de.westnordost.streetcomplete.osm.ALL_LINKS
 import de.westnordost.streetcomplete.osm.ALL_ROADS
+import de.westnordost.streetcomplete.osm.HIGHWAYS
+import de.westnordost.streetcomplete.osm.PATH_FOR_FOOT_AND_CYCLE
+import de.westnordost.streetcomplete.osm.TAGGING_NOT_ASSUMED
 import de.westnordost.streetcomplete.osm.bicycle_boulevard.BicycleBoulevard
 import de.westnordost.streetcomplete.osm.bicycle_boulevard.parseBicycleBoulevard
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway
@@ -53,7 +57,7 @@ class CyclewayOverlay(
         // separately mapped ways
         mapData.filter("""
             ways with
-              highway ~ cycleway|path|footway
+              highway ~ ${PATH_FOR_FOOT_AND_CYCLE.joinToString("|")}
               and horse != designated
               and area != yes
         """).map { it to getSeparateCyclewayStyle(it) }
@@ -126,7 +130,7 @@ private fun getStreetStrokeStyle(tags: Map<String, String>): OverlayStyle.Stroke
 
 private val cyclewayTaggingNotExpectedFilter by lazy { """
     ways with
-      highway ~ track|living_street|pedestrian|service|motorway_link|motorway|busway
+      highway ~ ${TAGGING_NOT_ASSUMED.joinToString("|")}
       or motorroad = yes
       or expressway = yes
       or maxspeed <= 20
@@ -140,7 +144,7 @@ private val cyclewayTaggingNotExpectedFilter by lazy { """
 private val cyclewayTaggingInContraflowNotExpectedFilter by lazy { """
     ways with
       dual_carriageway = yes
-      or highway ~ primary_link|secondary_link|tertiary_link
+      or highway ~ ${(ALL_LINKS - HIGHWAYS).joinToString("|")}
       or junction ~ roundabout|circular
 """.toElementFilterExpression() }
 

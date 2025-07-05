@@ -5,6 +5,9 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
+import de.westnordost.streetcomplete.osm.LIT_NON_RESIDENTIAL_ROADS
+import de.westnordost.streetcomplete.osm.LIT_RESIDENTIAL_ROADS
+import de.westnordost.streetcomplete.osm.LIT_WAYS
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.changeToSteps
 import de.westnordost.streetcomplete.osm.lit.applyTo
@@ -64,16 +67,4 @@ class AddWayLit : OsmFilterQuestType<WayLitOrIsStepsAnswer>(), AndroidQuest {
         }
     }
 
-    companion object {
-        private val LIT_RESIDENTIAL_ROADS = arrayOf(
-            "residential", "living_street", "pedestrian", "busway"
-        )
-
-        private val LIT_NON_RESIDENTIAL_ROADS = arrayOf(
-            "motorway", "motorway_link", "trunk", "trunk_link", "primary", "primary_link",
-            "secondary", "secondary_link", "tertiary", "tertiary_link", "unclassified", "service"
-        )
-
-        private val LIT_WAYS = arrayOf("footway", "cycleway", "steps")
-    }
 }

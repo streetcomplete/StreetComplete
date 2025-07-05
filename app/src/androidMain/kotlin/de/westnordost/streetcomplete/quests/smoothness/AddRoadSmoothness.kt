@@ -6,6 +6,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
+import de.westnordost.streetcomplete.osm.ROADS_TO_ASK_SMOOTHNESS_FOR
 import de.westnordost.streetcomplete.osm.Tags
 
 class AddRoadSmoothness : OsmFilterQuestType<SmoothnessAnswer>(), AndroidQuest {
@@ -49,11 +50,4 @@ class AddRoadSmoothness : OsmFilterQuestType<SmoothnessAnswer>(), AndroidQuest {
 // should only contain values that are in the Surface class
 val SURFACES_FOR_SMOOTHNESS = listOf(
     "asphalt", "concrete", "concrete:plates", "sett", "paving_stones", "compacted", "gravel", "fine_gravel"
-)
-
-private val ROADS_TO_ASK_SMOOTHNESS_FOR = arrayOf(
-    // "trunk","trunk_link","motorway","motorway_link", // too much, motorways are almost by definition smooth asphalt (or concrete)
-    "primary", "primary_link", "secondary", "secondary_link", "tertiary", "tertiary_link",
-    "unclassified", "residential", "living_street", "pedestrian", "track", "busway",
-    // "service", // this is too much (e.g. includes driveways), and the information value is very low
 )
