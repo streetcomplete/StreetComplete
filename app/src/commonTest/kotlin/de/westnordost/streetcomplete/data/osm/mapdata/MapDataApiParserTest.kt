@@ -45,7 +45,7 @@ class MapDataApiParserTest {
             </osm>
         """)
 
-        val empty = MapDataApiParser().parseMapData(buffer, ApplicationConstants::isRelationIgnored)
+        val empty = MapDataApiParser().parseMapData(buffer, ApplicationConstants::ignoreRelation)
         assertEquals(0, empty.size)
     }
 

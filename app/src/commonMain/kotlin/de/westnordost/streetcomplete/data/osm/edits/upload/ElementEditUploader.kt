@@ -87,6 +87,6 @@ class ElementEditUploader(
         } else {
             changesetManager.getOrCreateChangeset(edit.type, edit.source, edit.position, edit.isNearUserLocation)
         }
-        return mapDataApi.uploadChanges(changesetId, changes, ApplicationConstants::isRelationIgnored)
+        return mapDataApi.uploadChanges(changesetId, changes, ApplicationConstants::ignoreRelation)
     }
 }

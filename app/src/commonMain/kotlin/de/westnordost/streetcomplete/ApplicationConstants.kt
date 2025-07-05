@@ -88,7 +88,7 @@ object ApplicationConstants {
      *  complete as possible. Some relations are extremely large, which would require to pull
      *  a lot of elements from db into memory.
      */
-    fun isRelationIgnored(tags: Map<String, String>): Boolean {
+    fun ignoreRelation(tags: Map<String, String>): Boolean {
         val type = tags["type"] ?: return false
         return when (type) {
             // ignore non ferry relations since these are sometimes/often very very large

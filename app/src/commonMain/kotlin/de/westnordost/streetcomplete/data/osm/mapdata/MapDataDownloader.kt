@@ -32,7 +32,7 @@ class MapDataDownloader(
 
     private suspend fun getMapAndHandleTooBigQuery(bounds: BoundingBox): MutableMapData {
         try {
-            return mapDataApi.getMap(bounds, ApplicationConstants::isRelationIgnored)
+            return mapDataApi.getMap(bounds, ApplicationConstants::ignoreRelation)
         } catch (e: QueryTooBigException) {
             val mapData = MutableMapData()
             for (subBounds in bounds.splitIntoFour()) {

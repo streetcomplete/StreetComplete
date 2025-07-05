@@ -83,7 +83,7 @@ class MapDataApiClientTest {
     }
 
     @Test fun `getMap does not return relations of ignored type`(): Unit = runBlocking {
-        val hamburg = liveClient.getMap(AREA_NEAR_BUS_STATION, ApplicationConstants::isRelationIgnored)
+        val hamburg = liveClient.getMap(AREA_NEAR_BUS_STATION, ApplicationConstants::ignoreRelation)
         assertTrue(hamburg.relations.none { it.tags["type"] == "route" })
     }
 

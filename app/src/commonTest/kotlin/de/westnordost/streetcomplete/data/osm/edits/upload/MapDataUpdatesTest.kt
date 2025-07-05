@@ -181,7 +181,7 @@ class MapDataUpdatesTest {
                 rel(-4, tags = mapOf("type" to "route"))
             ),
             updates = mapOf(ElementKey(RELATION, -4) to ElementUpdate.Update(4, 1)),
-            ApplicationConstants::isRelationIgnored
+            ApplicationConstants::ignoreRelation
         )
         assertTrue(updates.idUpdates.isEmpty())
         assertTrue(updates.updated.isEmpty())
@@ -195,7 +195,7 @@ class MapDataUpdatesTest {
                 rel(-4, tags = mapOf("type" to "route"))
             ),
             updates = mapOf(ElementKey(RELATION, -4) to ElementUpdate.Update(4, 1)),
-            ApplicationConstants::isRelationIgnored
+            ApplicationConstants::ignoreRelation
         )
         assertTrue(updates.idUpdates.isEmpty())
         assertEquals(
