@@ -38,6 +38,9 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.atp.AtpEntry
+import de.westnordost.streetcomplete.data.atp.atpquests.CreateElementUsingAtpQuest
+import de.westnordost.streetcomplete.data.atp.atpquests.edits.AtpDataWithEditsSource
 import de.westnordost.streetcomplete.data.download.tiles.asBoundingBoxOfEnclosingTiles
 import de.westnordost.streetcomplete.data.edithistory.EditKey
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
@@ -53,7 +56,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
 import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
-import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestAndroid
 import de.westnordost.streetcomplete.data.osmnotes.notequests.createOsmNoteQuest
 import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
 import de.westnordost.streetcomplete.data.overlays.AndroidOverlay
@@ -66,6 +68,7 @@ import de.westnordost.streetcomplete.data.quest.QuestAutoSyncer
 import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.VisibleQuestsSource
+import de.westnordost.streetcomplete.data.quest.atp.AtpCreateForm
 import de.westnordost.streetcomplete.data.visiblequests.QuestsHiddenSource
 import de.westnordost.streetcomplete.databinding.ActivityMainBinding
 import de.westnordost.streetcomplete.databinding.EffectQuestPlopBinding
@@ -151,12 +154,14 @@ class MainActivity :
     AbstractOverlayForm.Listener,
     SplitWayFragment.Listener,
     NoteDiscussionForm.Listener,
+    AtpCreateForm.Listener,
     LeaveNoteInsteadFragment.Listener,
     CreateNoteFragment.Listener,
     MoveNodeFragment.Listener,
     // listeners to changes to data:
     VisibleQuestsSource.Listener,
     MapDataWithEditsSource.Listener,
+    AtpDataWithEditsSource.Listener,
     // rest
     ShowsGeometryMarkers {
 
@@ -165,6 +170,7 @@ class MainActivity :
     private val prefs: Preferences by inject()
     private val visibleQuestsSource: VisibleQuestsSource by inject()
     private val mapDataWithEditsSource: MapDataWithEditsSource by inject()
+    private val atpDataWithEditsSource: AtpDataWithEditsSource by inject()
     private val notesSource: NotesWithEditsSource by inject()
     private val questsHiddenSource: QuestsHiddenSource by inject()
     private val featureDictionary: Lazy<FeatureDictionary> by inject(named("FeatureDictionaryLazy"))
@@ -291,6 +297,7 @@ class MainActivity :
 
         visibleQuestsSource.addListener(this)
         mapDataWithEditsSource.addListener(this)
+        atpDataWithEditsSource.addListener(this)
         locationAvailabilityReceiver.addListener(::updateLocationAvailability)
 
         updateLocationAvailability(isLocationAvailable)
@@ -317,6 +324,7 @@ class MainActivity :
 
         visibleQuestsSource.removeListener(this)
         mapDataWithEditsSource.removeListener(this)
+        atpDataWithEditsSource.removeListener(this)
         locationAvailabilityReceiver.removeListener(::updateLocationAvailability)
 
         locationManager.removeUpdates()
@@ -529,6 +537,15 @@ class MainActivity :
         closeBottomSheet()
     }
 
+    /* ------------------------------ AtpDiscussionForm.Listener ------------------------------- */
+
+    override fun onRejectedAtpEntry(
+        editType: ElementEditType,
+        geometry: ElementGeometry,
+    ) {
+        closeBottomSheet()
+    }
+
     /* ------------------------------- CreateNoteFragment.Listener ------------------------------ */
 
     override fun onCreatedNote(position: LatLon) {
@@ -602,6 +619,7 @@ class MainActivity :
             if (openElement == null) {
                 closeBottomSheet()
             }
+            // TODO: do I need support for ATP handling? probably yes
         }
     }
 
@@ -613,6 +631,22 @@ class MainActivity :
                 closeBottomSheet()
             }
         }
+    }
+
+    /* ---------------------------- AtpDataWithEditsSource.Listener ----------------------------- */
+
+    @AnyThread
+    override fun onUpdatedAtpElement(added: Collection<AtpEntry>, deleted: Collection<Long>) {
+        // TODO: support ATP handling - it is likely needed
+        /*
+        lifecycleScope.launch {
+            val f = bottomSheetFragment
+            // open element has been deleted
+            if (f is IsShowingElement && f.elementKey in deleted) {
+                closeBottomSheet()
+            }
+        }
+        */
     }
 
     //endregion
@@ -988,7 +1022,11 @@ class MainActivity :
             f.requireArguments().putAll(osmArgs)
             showHighlightedElements(quest, element)
         }
-
+        if (f is AtpCreateForm && quest is CreateElementUsingAtpQuest) {
+            val passingAtpArgs = AtpCreateForm.createArguments(quest.atpEntry)
+            f.requireArguments().putAll(passingAtpArgs)
+            showHighlightedElementsAroundAtpEntryQuest(quest, quest.atpEntry)
+        }
         showInBottomSheet(f)
 
         mapFragment.startFocus(quest.geometry, getQuestFormInsets())
@@ -999,7 +1037,32 @@ class MainActivity :
     }
 
     private fun showHighlightedElements(quest: OsmQuest, element: Element) {
-        val bbox = quest.geometry.bounds.enlargedBy(quest.type.highlightedElementsRadius)
+        return showHighlightedElementsShared(
+            quest,
+            element.tags,
+            element,
+            quest.type.highlightedElementsRadius
+        )
+    }
+
+    private fun showHighlightedElementsAroundAtpEntryQuest(
+        quest: CreateElementUsingAtpQuest,
+        atpEntry: AtpEntry,
+    ) {
+        // TODO is merge with showHighlightedElements a good idea?
+        // some challenges: it is not passing or having an element - changed that for nullable parameter - is it fine? Maybe effectively duplicating this function is nicer?
+        // passing highlightedElementsRadius is silly (maybe create interface used by both classes?)
+        val tags = atpEntry.tagsInATP
+        showHighlightedElementsShared(quest, tags, null, quest.type.highlightedElementsRadius)
+    }
+
+    private fun showHighlightedElementsShared(
+        quest: Quest,
+        tags: Map<String, String>,
+        element: Element?,
+        highlightedElementsRadius: Double,
+    ) {
+        val bbox = quest.geometry.bounds.enlargedBy(highlightedElementsRadius)
         var mapData: MapDataWithGeometry? = null
 
         fun getMapData(): MapDataWithGeometry {
@@ -1008,11 +1071,11 @@ class MainActivity :
             return data
         }
 
-        val levels = parseLevelsOrNull(element.tags)
+        val levels = parseLevelsOrNull(tags)
 
         lifecycleScope.launch(Dispatchers.Default) {
             val elements = withContext(Dispatchers.IO) {
-                quest.type.getHighlightedElements(element, ::getMapData)
+                quest.type.getHighlightedElementsGeneric(element, ::getMapData)
             }
 
             val markers = elements.mapNotNull { e ->
@@ -1022,7 +1085,7 @@ class MainActivity :
                 val eLevels = parseLevelsOrNull(e.tags)
                 if (!levels.levelsIntersect(eLevels)) return@mapNotNull null
                 // include only elements with the same layer, if any
-                if (element.tags["layer"] != e.tags["layer"]) return@mapNotNull null
+                if (tags["layer"] != e.tags["layer"]) return@mapNotNull null
 
                 val geometry = mapData?.getGeometry(e.type, e.id) ?: return@mapNotNull null
                 val icon = getIcon(featureDictionary.value, e)
