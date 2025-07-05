@@ -33,7 +33,7 @@ class MapDataApiClient(
      *
      * @param changesetId id of the changeset to upload changes into
      * @param changes changes to upload.
-     * @param ignoreRelationTypes omit any updates to relations of the given types from the result.
+     * @param ignoreRelation omit any updates to relations of the given types from the result.
      *                            Such relations can still be referred to as relation members,
      *                            though, the relations themselves are just not included
      *
@@ -51,7 +51,7 @@ class MapDataApiClient(
     suspend fun uploadChanges(
         changesetId: Long,
         changes: MapDataChanges,
-        ignoreRelationTypes: (tags: Map<String, String>) -> Boolean = { false }
+        ignoreRelation: (tags: Map<String, String>) -> Boolean = { false }
     ): MapDataUpdates = wrapApiClientExceptions {
         try {
             val response = httpClient.post(baseUrl + "changeset/$changesetId/upload") {
@@ -62,7 +62,7 @@ class MapDataApiClient(
             val source = response.bodyAsChannel().asSource().buffered()
             val updates = parser.parseElementUpdates(source)
             val changedElements = changes.creations + changes.modifications + changes.deletions
-            return createMapDataUpdates(changedElements, updates, ignoreRelationTypes)
+            return createMapDataUpdates(changedElements, updates, ignoreRelation)
         } catch (e: ClientRequestException) {
             when (e.response.status) {
                 // current element version is outdated or current changeset has been closed already
@@ -88,7 +88,7 @@ class MapDataApiClient(
      *
      * @param bounds rectangle in which to query map data. May not cross the 180th meridian. This is
      * usually limited at 0.25 square degrees. Check the server capabilities.
-     * @param ignoreRelationTypes omit any relations of the given types from the result.
+     * @param ignoreRelation omit any relations of the given types from the result.
      *                            Such relations can still be referred to as relation members,
      *                            though, the relations themselves are just not included
      *
@@ -100,7 +100,7 @@ class MapDataApiClient(
      */
     suspend fun getMap(
         bounds: BoundingBox,
-        ignoreRelationTypes: (tags: Map<String, String>) -> Boolean = { false }
+        ignoreRelation: (tags: Map<String, String>) -> Boolean = { false }
     ): MutableMapData = wrapApiClientExceptions {
         if (bounds.crosses180thMeridian) {
             throw IllegalArgumentException("Bounding box crosses 180th meridian")
@@ -112,7 +112,7 @@ class MapDataApiClient(
                 expectSuccess = true
             }
             val source = response.bodyAsChannel().asSource().buffered()
-            return parser.parseMapData(source, ignoreRelationTypes)
+            return parser.parseMapData(source, ignoreRelation)
         } catch (e: ClientRequestException) {
             if (e.response.status == HttpStatusCode.BadRequest) {
                 throw QueryTooBigException(e.message, e)
