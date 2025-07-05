@@ -1,5 +1,25 @@
 # Changelog
 
+## vNext
+
+### Quest improvements
+- Max physical height: Clarify wording, don't ask for highways (#6367, #6362, #6363), by @kmpoppe
+- Motorcycle parking capacity: Don't ask if there are no markings at all (#6299), by @matkoniecz
+- Fee: Ask for many more types of places (#6345, #6353, #6357, #6382), by @paulklie
+- Indoor amenity: Also ask for drinking water spots (#6349), by @paulklie
+- Lit: Also ask for fitness stations (#6359), by @paulklie
+- Name: Also ask for saunas, wilderness and basic huts (#6365, #6358, #6368), thanks @paulklie
+- Internet access: Also ask for wilderness huts (#6365), by @paulklie
+- Opening times: Also ask for WCs, saunas, caves (#6374, #6368, #6382), by @paulklie
+- Bike paths: Ask users to resurvey after X years also on living streets (#6369)
+- Wheelchair access: Also ask for saunas, caves (#6368, #6382, #6383), thanks @paulklie
+- Vegan: Also ask for pastry shops (#6386), by @paulklie
+- (TODO: maybe collapse all these "also ask for" into one or a few entries, it's very fine-grained now)
+
+### Fixes
+- Fix a number of issues that may potentially cause bugs (#6307, #6311, #6315, #6317, #6321, #6332, #6322), by @RubenKelevra
+
+
 ## v61.1
 
 ### Fixes
