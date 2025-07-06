@@ -39,6 +39,4 @@ sealed interface OverlayStyle {
         /** label to show on the point */
         val label: String? = null,
     ) : OverlayStyle
-
 }
-

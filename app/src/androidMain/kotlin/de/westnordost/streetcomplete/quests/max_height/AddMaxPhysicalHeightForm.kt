@@ -2,22 +2,28 @@ package de.westnordost.streetcomplete.quests.max_height
 
 import android.os.Bundle
 import android.view.View
-import androidx.core.view.isGone
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.material.Surface
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.ui.Modifier
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.databinding.QuestLengthBinding
+import de.westnordost.streetcomplete.databinding.ComposeViewBinding
 import de.westnordost.streetcomplete.osm.Length
 import de.westnordost.streetcomplete.quests.AbstractArMeasureQuestForm
+import de.westnordost.streetcomplete.quests.LengthForm
 import de.westnordost.streetcomplete.screens.measure.ArSupportChecker
-import de.westnordost.streetcomplete.view.controller.LengthInputViewController
+import de.westnordost.streetcomplete.ui.util.content
 import org.koin.android.ext.android.inject
 
 class AddMaxPhysicalHeightForm : AbstractArMeasureQuestForm<MaxPhysicalHeightAnswer>() {
 
-    override val contentLayoutResId = R.layout.quest_length
-    private val binding by contentViewBinding(QuestLengthBinding::bind)
+    override val contentLayoutResId = R.layout.compose_view
+    private val binding by contentViewBinding(ComposeViewBinding::bind)
     private val checkArSupport: ArSupportChecker by inject()
     private var isARMeasurement: Boolean = false
-    private lateinit var lengthInput: LengthInputViewController
+    private lateinit var length: MutableState<Length?>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,37 +32,35 @@ class AddMaxPhysicalHeightForm : AbstractArMeasureQuestForm<MaxPhysicalHeightAns
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.composeViewBase.content { Surface {
+            length = remember { mutableStateOf(null) }
+            val arIsSupported = checkArSupport()
 
-        lengthInput = binding.lengthInput.let {
-            LengthInputViewController(it.unitSelect, it.metersContainer, it.metersInput, it.feetInchesContainer, it.feetInput, it.inchesInput)
-        }
-        lengthInput.unitSelectItemResId = R.layout.spinner_item_centered_large
-        lengthInput.isCompactMode = true
-        lengthInput.maxFeetDigits = 2
-        lengthInput.maxMeterDigits = Pair(2, 2)
-        lengthInput.selectableUnits = countryInfo.lengthUnits
-        lengthInput.onInputChanged = {
-            isARMeasurement = false
-            checkIsFormComplete()
-        }
-        binding.measureButton.isGone = !checkArSupport()
-        binding.measureButton.setOnClickListener { takeMeasurement() }
-    }
-
-    private fun takeMeasurement() {
-        val lengthUnit = lengthInput.unit ?: return
-        takeMeasurement(lengthUnit, true)
+            LengthForm(
+                length = length.value,
+                onChange = {
+                    isARMeasurement = false
+                    length.value = it
+                    checkIsFormComplete()
+                },
+                selectableUnits = countryInfo.lengthUnits,
+                showMeasureButton = arIsSupported,
+                onClickMeasure = { takeMeasurement(it, measureVertical = true) },
+                modifier = Modifier.fillMaxWidth(),
+            )
+        } }
     }
 
     override fun onMeasured(length: Length) {
-        lengthInput.length = length
         isARMeasurement = true
+        this.length.value = length
+        checkIsFormComplete()
     }
 
-    override fun isFormComplete(): Boolean = lengthInput.length != null
+    override fun isFormComplete(): Boolean = length.value != null
 
     override fun onClickOk() {
-        applyAnswer(MaxPhysicalHeightAnswer(lengthInput.length!!, isARMeasurement))
+        applyAnswer(MaxPhysicalHeightAnswer(length.value!!, isARMeasurement))
     }
 
     override fun onSaveInstanceState(outState: Bundle) {

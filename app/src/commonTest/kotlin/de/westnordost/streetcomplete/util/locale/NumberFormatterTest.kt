@@ -19,22 +19,24 @@ class NumberFormatterTest {
     }
 
     @Test fun `format digit limits`() {
-        assertEquals("1.12", NumberFormatter(en).format(1.12345, maxFractionDigits = 2))
-        assertEquals("1.00", NumberFormatter(en).format(1, minFractionDigits = 2))
+        assertEquals("1.12", NumberFormatter(en, maxFractionDigits = 2).format(1.12345))
+        assertEquals("1.00", NumberFormatter(en, minFractionDigits = 2).format(1))
+        assertEquals("23", NumberFormatter(en, maxIntegerDigits = 2).format(123))
+        assertEquals("01", NumberFormatter(en, minIntegerDigits = 2).format(1))
     }
 
     @Test fun `format with grouping`() {
-        assertEquals("1,000,000.5", NumberFormatter(en).format(1_000_000.5, useGrouping = true))
-        assertEquals("1 000 000,5", NumberFormatter(fr).format(1_000_000.5, useGrouping = true))
-        assertEquals("1.000.000,5", NumberFormatter(de).format(1_000_000.5, useGrouping = true))
-        assertEquals("١٬٠٠٠٬٠٠٠٫٥", NumberFormatter(ar).format(1_000_000.5, useGrouping = true))
+        assertEquals("1,000,000.5", NumberFormatter(en, useGrouping = true).format(1_000_000.5))
+        assertEquals("1 000 000,5", NumberFormatter(fr, useGrouping = true).format(1_000_000.5))
+        assertEquals("1.000.000,5", NumberFormatter(de, useGrouping = true).format(1_000_000.5))
+        assertEquals("١٬٠٠٠٬٠٠٠٫٥", NumberFormatter(ar, useGrouping = true).format(1_000_000.5))
     }
 
     @Test fun `format without grouping`() {
-        assertEquals("1000000.5", NumberFormatter(en).format(1_000_000.5, useGrouping = false))
-        assertEquals("1000000,5", NumberFormatter(fr).format(1_000_000.5, useGrouping = false))
-        assertEquals("1000000,5", NumberFormatter(de).format(1_000_000.5, useGrouping = false))
-        assertEquals("١٠٠٠٠٠٠٫٥", NumberFormatter(ar).format(1_000_000.5, useGrouping = false))
+        assertEquals("1000000.5", NumberFormatter(en, useGrouping = false).format(1_000_000.5))
+        assertEquals("1000000,5", NumberFormatter(fr, useGrouping = false).format(1_000_000.5))
+        assertEquals("1000000,5", NumberFormatter(de, useGrouping = false).format(1_000_000.5))
+        assertEquals("١٠٠٠٠٠٠٫٥", NumberFormatter(ar, useGrouping = false).format(1_000_000.5))
     }
 
     @Test fun `format defaults`() {
@@ -51,10 +53,10 @@ class NumberFormatterTest {
 
         assertEquals(null, NumberFormatter(en).parse("1,5"))
         assertEquals(null, NumberFormatter(fr).parse("1.5"))
-        assertEquals(null, NumberFormatter(en).parse("15,000,000.5", allowGrouping = false))
+        assertEquals(null, NumberFormatter(en, useGrouping = false).parse("15,000,000.5"))
 
-        assertEquals(1_000_000.5, NumberFormatter(en).parse("1000000.5", allowGrouping = true))
-        assertEquals(1_000_000.5, NumberFormatter(en).parse("1,000,000.5", allowGrouping = true))
+        assertEquals(1_000_000.5, NumberFormatter(en, useGrouping = true).parse("1000000.5"))
+        assertEquals(1_000_000.5, NumberFormatter(en, useGrouping = true).parse("1,000,000.5"))
     }
 
     @Test fun separators() {

@@ -15,6 +15,7 @@ import androidx.compose.material.Icon
 import androidx.compose.material.LocalContentAlpha
 import androidx.compose.material.LocalTextStyle
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.ProvideTextStyle
 import androidx.compose.material.Switch
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -45,7 +46,7 @@ fun PreferenceCategory(
                 style = MaterialTheme.typography.titleSmall
             )
         }
-        CompositionLocalProvider(LocalTextStyle provides MaterialTheme.typography.body1) {
+        ProvideTextStyle(MaterialTheme.typography.body1) {
             Column {
                 content()
             }
