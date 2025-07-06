@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="vector" width="320" height="144" version="1.1" viewBox="0 0 320 144" xmlns="http://www.w3.org/2000/svg">
+ <g>
+  <path id="path" d="m32 10h256c21.89 0 22 0.0457 22 22v202c0 21.954-0.11035 22-22 22h-256c-21.89 0-22-0.0457-22-22v-202c0-21.954 0.11036-22 22-22z" fill="#fff" stroke="#c1121c" stroke-width="20"/>
+  <path d="m52 112h216m-104 0v52" stroke="#000" stroke-width="8"/>
+  <path d="m108 36h-40m20 0v56" fill="none" stroke="#000" stroke-width="8"/>
+ </g>
+</svg>
