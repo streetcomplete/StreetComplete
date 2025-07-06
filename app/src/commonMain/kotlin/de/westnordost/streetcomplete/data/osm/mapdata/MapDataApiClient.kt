@@ -33,9 +33,10 @@ class MapDataApiClient(
      *
      * @param changesetId id of the changeset to upload changes into
      * @param changes changes to upload.
-     * @param ignoreRelation omit any updates to relations of the given types from the result.
-     *                            Such relations can still be referred to as relation members,
-     *                            though, the relations themselves are just not included
+```suggestion
+     * @param ignoreRelation omit any relations for which the given function returns true.
+     *                       Such relations can still be referred to as relation members,
+     *                       though, the relations themselves are just not included
      *
      * @throws ConflictException if the changeset has already been closed, there is a conflict for
      *                           the elements being uploaded or the user who created the changeset
@@ -88,9 +89,9 @@ class MapDataApiClient(
      *
      * @param bounds rectangle in which to query map data. May not cross the 180th meridian. This is
      * usually limited at 0.25 square degrees. Check the server capabilities.
-     * @param ignoreRelation omit any relations of the given types from the result.
-     *                            Such relations can still be referred to as relation members,
-     *                            though, the relations themselves are just not included
+     * @param ignoreRelation omit any relations for which the given function returns true.
+     *                       Such relations can still be referred to as relation members,
+     *                       though, the relations themselves are just not included
      *
      * @throws QueryTooBigException if the bounds area is too large or too many elements would be returned
      * @throws IllegalArgumentException if the bounds cross the 180th meridian.
