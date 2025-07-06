@@ -17,7 +17,10 @@ class AddChargingStationCapacity : OsmFilterQuestType<Int>(), AndroidQuest {
         nodes, ways with
           amenity = charging_station
           and !capacity
-          and bicycle != yes and scooter != yes and motorcar != no
+          and bicycle !~ yes|designated
+          and scooter !~ yes|designated
+          and motorcar != no
+          and motor_vehicle != no
           and access !~ private|no
     """
     override val changesetComment = "Specify charging stations capacities"
