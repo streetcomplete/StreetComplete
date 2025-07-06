@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests.fire_hydrant_diameter
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.absoluteOffset
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
@@ -36,18 +37,19 @@ import org.jetbrains.compose.resources.painterResource
 fun HydrantDiameterSign(
     countryCode: String?,
     modifier: Modifier = Modifier,
-    content: @Composable () -> Unit,
+    content: @Composable BoxScope.() -> Unit,
 ) {
     val sign = getHydrantDiameterSign(countryCode)
     CompositionLocalProvider(LocalContentColor provides sign.contentColor) {
         Box(modifier) {
             Image(painterResource(sign.background), null)
             Box(
-                contentAlignment = Alignment.Center,
                 modifier = Modifier
                     .absoluteOffset(x = sign.contentOffset.x, y = sign.contentOffset.y)
-                    .size(sign.contentSize)
-            ) { content() }
+                    .size(sign.contentSize),
+                contentAlignment = Alignment.Center,
+                content = content
+            )
         }
     }
 }
@@ -77,7 +79,7 @@ private enum class FireHydrantDiameterSign(
     Hu(Res.drawable.fire_hydrant_sign_hu, Black, DpOffset(120.dp, 20.dp), DpSize(148.dp, 88.dp)),
     Nl(Res.drawable.fire_hydrant_sign_nl, White, DpOffset(92.dp, 132.dp), DpSize(176.dp, 88.dp)),
     Pl(Res.drawable.fire_hydrant_sign_pl, White, DpOffset(128.dp, 24.dp), DpSize(160.dp, 88.dp)),
-    Ua(Res.drawable.fire_hydrant_sign_ua, Blue, DpOffset(120.dp, 144.dp), DpSize(148.dp, 88.dp)),
+    Ua(Res.drawable.fire_hydrant_sign_ua, Blue, DpOffset(120.dp, 144.dp), DpSize(138.dp, 88.dp)),
 }
 
 
