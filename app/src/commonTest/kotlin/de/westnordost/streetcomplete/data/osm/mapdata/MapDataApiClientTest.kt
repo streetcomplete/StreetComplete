@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.data.osm.mapdata
 
+import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.AuthorizationException
 import de.westnordost.streetcomplete.data.ConflictException
 import de.westnordost.streetcomplete.data.QueryTooBigException
@@ -82,7 +83,7 @@ class MapDataApiClientTest {
     }
 
     @Test fun `getMap does not return relations of ignored type`(): Unit = runBlocking {
-        val hamburg = liveClient.getMap(AREA_NEAR_BUS_STATION, setOf("route"))
+        val hamburg = liveClient.getMap(AREA_NEAR_BUS_STATION, ApplicationConstants::ignoreRelation)
         assertTrue(hamburg.relations.none { it.tags["type"] == "route" })
     }
 
