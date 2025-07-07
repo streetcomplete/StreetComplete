@@ -11,7 +11,7 @@ import de.westnordost.streetcomplete.osm.isPlaceOrDisusedPlace
 
 object CreatePoiBasedOnAtp : OsmCreateElementQuestType<CreatePoiBasedOnAtpAnswer>, AndroidQuest {
     override fun createForm() = AtpCreateForm()
-    override val icon = R.drawable.ic_quest_dot // TODO: a radar icon? A plus icon?
+    override val icon = R.drawable.ic_quest_dot // TODO: a radar icon? A plus icon? See https://github.com/streetcomplete/StreetComplete/pull/6302#issuecomment-3046628887
     override val title = R.string.quest_atp_add_missing_poi_title
     override val wikiLink = "All the Places" // create dedicated import page? Is it even counting as import? other documentation page? This one definitely does not explain enough in this context TODO
     override val achievements = listOf(CITIZEN)
