@@ -25,6 +25,7 @@ import de.westnordost.streetcomplete.resources.fire_hydrant_sign_hu
 import de.westnordost.streetcomplete.resources.fire_hydrant_sign_nl
 import de.westnordost.streetcomplete.resources.fire_hydrant_sign_pl
 import de.westnordost.streetcomplete.resources.fire_hydrant_sign_ua
+import de.westnordost.streetcomplete.ui.common.AbsoluteBox
 import de.westnordost.streetcomplete.ui.theme.TrafficSignColor.White
 import de.westnordost.streetcomplete.ui.theme.TrafficSignColor.Blue
 import de.westnordost.streetcomplete.ui.theme.TrafficSignColor.Black
@@ -41,7 +42,7 @@ fun HydrantDiameterSign(
 ) {
     val sign = getHydrantDiameterSign(countryCode)
     CompositionLocalProvider(LocalContentColor provides sign.contentColor) {
-        Box(modifier) {
+        AbsoluteBox(modifier) {
             Image(painterResource(sign.background), null)
             Box(
                 modifier = Modifier
