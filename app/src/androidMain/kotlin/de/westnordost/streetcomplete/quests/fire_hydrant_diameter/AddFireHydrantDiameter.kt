@@ -37,7 +37,8 @@ class AddFireHydrantDiameter : OsmFilterQuestType<FireHydrantDiameterAnswer>(), 
         "HU",
         "PL",
         "FI",
-        "NL"
+        "NL",
+        "UA",
     )
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_fireHydrant_diameter_title
@@ -49,8 +50,12 @@ class AddFireHydrantDiameter : OsmFilterQuestType<FireHydrantDiameterAnswer>(), 
 
     override fun applyAnswerTo(answer: FireHydrantDiameterAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {
-            is FireHydrantDiameter ->       tags["fire_hydrant:diameter"] = answer.toOsmValue()
-            is NoFireHydrantDiameterSign -> tags["fire_hydrant:diameter:signed"] = "no"
+            is FireHydrantDiameter -> {
+                tags["fire_hydrant:diameter"] = answer.toOsmValue()
+            }
+            is FireHydrantDiameterAnswer.NoSign -> {
+                tags["fire_hydrant:diameter:signed"] = "no"
+            }
         }
     }
 }
