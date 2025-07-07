@@ -93,6 +93,7 @@ import de.westnordost.streetcomplete.quests.general_fee.AddGeneralFee
 import de.westnordost.streetcomplete.quests.grit_bin_seasonal.AddGritBinSeasonal
 import de.westnordost.streetcomplete.quests.hairdresser.AddHairdresserCustomers
 import de.westnordost.streetcomplete.quests.handrail.AddHandrail
+import de.westnordost.streetcomplete.quests.handwashing.AddHandwashing
 import de.westnordost.streetcomplete.quests.incline_direction.AddBicycleIncline
 import de.westnordost.streetcomplete.quests.incline_direction.AddStepsIncline
 import de.westnordost.streetcomplete.quests.internet_access.AddInternetAccess
@@ -489,6 +490,7 @@ fun questTypeRegistry(
     // shop and others, but have to go inside
     120 to AddBabyChangingTable(), // used by OsmAnd in the object description, have to go inside
     121 to AddWheelchairAccessToiletsPart(), // have to go inside
+    139 to AddHandwashing(), // have to go inside
 
     133 to AddFuelSelfService(),
     156 to CheckShopExistence(getFeature), // after opening hours and similar so they will be preferred if enabled
