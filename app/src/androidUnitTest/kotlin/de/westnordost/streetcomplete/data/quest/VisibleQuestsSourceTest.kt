@@ -160,7 +160,6 @@ class VisibleQuestsSourceTest {
     }
 
     @Test fun `getAll does not return those that are invisible because of an overlay`() {
-        // TODO how ATP fits into this test? Should ATP be suppressed by some overlay? Maybe places, but I feel it is actually useful there
         val bboxCacheWillRequest = bbox.asBoundingBoxOfEnclosingTiles(16)
         on(osmQuestSource.getAllInBBox(bboxCacheWillRequest, listOf("TestQuestTypeA")))
             .thenReturn(listOf(OsmQuest(TestQuestTypeA(), ElementType.NODE, 1, ElementPointGeometry(bbox.min))))
