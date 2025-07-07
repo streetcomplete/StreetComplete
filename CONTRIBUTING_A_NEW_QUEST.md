@@ -84,7 +84,7 @@ Implementing a quest by duplicating and modifiying an existing one is the recomm
 
 Search across the code for part of a question or other text specific to this quest. For example "the name of this place?".
 
-You will find an [XML file](app/src/main/res/values/strings.xml) with an entry looking like this:
+You will find an [XML file](app/src/androidMain/res/values/strings.xml) with an entry looking like this:
 
 ```xml
     <string name="quest_placeName_title">"What’s the name of this place?"</string>
@@ -250,7 +250,7 @@ override fun getTitle(tags: Map<String, String>) = R.string.quest_is_defibrillat
 
 It is a message displayed to the user, code here passes a [reference](https://developer.android.com/guide/topics/resources/string-resource) to the string. You can change it to the new, not yet existing one and use a built in tool to place text.
 
-Actual strings sit in [app/src/main/res/values/strings.xml](app/src/main/res/values/strings.xml)
+Actual strings sit in [app/src/androidMain/res/values/strings.xml](app/src/main/res/values/strings.xml)
 
 There are separate files with translated text, but do not worry about it - [translations are handled separately](CONTRIBUTING.md#translating-the-app).
 
@@ -458,10 +458,10 @@ Images should be free of visual debris, not misleading. Though it is fine to use
 
 Photos go to a different folder than SVGs: they can be used directly by the build process so put them into folders
 
-- [mdpi](app/src/main/res/drawable-mdpi) - 384 pixels for images, with three square images in each row it would be 128 x 128 pixels for each)
-- [hdpi](app/src/main/res/drawable-hdpi) - 576 pixels for images (192 x 192 pixels in case of three square images in each row)
-- [xhdpi](app/src/main/res/drawable-xhdpi) - 768 pixels for images (256 x 256 pixels in case of three square images in each row)
-- [xxhdpi](app/src/main/res/drawable-xxhdpi) - 1152 pixels (384 x 384 pixels in case of three square images in each row)
+- [mdpi](app/src/androidMain/res/drawable-mdpi) - 384 pixels for images, with three square images in each row it would be 128 x 128 pixels for each)
+- [hdpi](app/src/androidMain/res/drawable-hdpi) - 576 pixels for images (192 x 192 pixels in case of three square images in each row)
+- [xhdpi](app/src/androidMain/res/drawable-xhdpi) - 768 pixels for images (256 x 256 pixels in case of three square images in each row)
+- [xxhdpi](app/src/androidMain/res/drawable-xxhdpi) - 1152 pixels (384 x 384 pixels in case of three square images in each row)
 
 Each of these folders should hold the same image resized to a different resolution. While testing various images it is enough to put one into any of the folders.
 
@@ -471,7 +471,7 @@ Please make sure that the images do not take too much disk space. Most useful wa
 
 [GIMP](https://gimp.org/) allows such previews while saving JPG files, and there are also online tools like [squoosh](https://squoosh.app/) which allow for quick visual comparison if you prefer that.
 
-After adding a photo, remember to update [the credits file](app/src/main/res/authors.txt) (different to the one for icons).
+After adding a photo, remember to update [the credits file](app/src/androidMain/res/authors.txt) (different to the one for icons).
 
 ## Resurvey
 
