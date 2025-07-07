@@ -35,4 +35,3 @@ fun HydrantDiameterForm(
         )
     }
 }
-// TODO max length
