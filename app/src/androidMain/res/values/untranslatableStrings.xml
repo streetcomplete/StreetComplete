@@ -16,9 +16,7 @@
     <!-- Placeholders: e.g. "es - Español  (Spanish)" -->
     <string name="quest_streetName_menuItem_language_native">%1$s – %2$s (%3$s)</string>
     <!-- Placeholders: e.g. "bg - Bulgarian, Cryllic" -->
-    <string name="quest_streetName_menuItem_language_with_script_simple">%1$s – %2$s, %3$s</string>
-    <!-- Placeholders: e.g. "bg - български (Bulgarian), Cryllic" -->
-    <string name="quest_streetName_menuItem_language_with_script_native">%1$s – %2$s (%3$s), %4$s</string>
+    <string name="quest_streetName_menuItem_with_script">%1$s, %2$s</string>
 
     <string name="quest_postboxRoyalCypher_type_eiir" translatable="false">E II R</string>
     <string name="quest_postboxRoyalCypher_type_gvir" translatable="false">G VI R</string>

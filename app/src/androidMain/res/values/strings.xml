@@ -1610,6 +1610,7 @@ If there are no signs along the whole street which apply for the highlighted sec
 
     <string name="quest_streetName_title">"What’s the name of this street?"</string>
     <string name="quest_streetName_description">"as written on the street sign, abbreviations are expanded:"</string>
+    <string name="quest_streetName_add_language">Add language</string>
     <string name="quest_streetName_answer_cantType">"Can’t type the characters on the sign"</string>
     <string name="quest_streetName_cantType_title">Missing keyboard layout?</string>
     <string name="quest_streetName_cantType_description">"If you use a default keyboard, chances are that you can simply enable the keyboard layout for the language you need in the input method settings.

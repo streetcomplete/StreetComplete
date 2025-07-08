@@ -74,7 +74,7 @@ class LocalizedNameAdapter(
         putDefaultLocalizedNameSuggestion()
 
         addLanguageButton.setOnClickListener { v ->
-            showLanguageSelectMenu(v, getNotAddedLanguageTags()) { add(it) }
+            //showLanguageSelectMenu(v, getNotAddedLanguageTags()) { add(it) }
         }
 
         updateAddLanguageButtonVisibility()
@@ -146,62 +146,6 @@ class LocalizedNameAdapter(
         notifyItemInserted(insertIndex)
 
         updateAddLanguageButtonVisibility()
-    }
-
-    /** Show a context menu above the given [view] where the user can select one language from the
-     * [languageTagList], which will be passed to the [callback] */
-    private fun showLanguageSelectMenu(
-        view: View,
-        languageTagList: List<String>,
-        callback: (String) -> Unit
-    ) {
-        if (languageTagList.isEmpty()) return
-
-        val popup = PopupMenu(context, view)
-        for ((i, languageTag) in languageTagList.withIndex()) {
-            popup.menu.add(NONE, i, NONE, getLanguageMenuItemTitle(languageTag))
-        }
-
-        popup.setOnMenuItemClickListener { item ->
-            callback(languageTagList[item.itemId])
-            true
-        }
-        popup.show()
-    }
-
-    private fun getLanguageMenuItemTitle(languageTag: String): String {
-        if (languageTag.isEmpty()) return context.getString(R.string.quest_streetName_menuItem_nolanguage)
-        if (languageTag == "international") return context.getString(R.string.quest_streetName_menuItem_international)
-        val isRomanization = languageTag.endsWith("Latn")
-        val locale = Locale.forLanguageTag(languageTag)
-
-        val displayLanguage = locale.displayLanguage
-        val nativeDisplayLanguage = locale.getDisplayLanguage(locale)
-        return if (!isRomanization) {
-            if (displayLanguage == nativeDisplayLanguage) {
-                String.format(
-                    context.getString(R.string.quest_streetName_menuItem_language_simple),
-                    languageTag, displayLanguage
-                )
-            } else {
-                String.format(
-                    context.getString(R.string.quest_streetName_menuItem_language_native),
-                    languageTag, nativeDisplayLanguage, displayLanguage
-                )
-            }
-        } else {
-            if (displayLanguage == nativeDisplayLanguage) {
-                String.format(
-                    context.getString(R.string.quest_streetName_menuItem_language_with_script_simple),
-                    languageTag, displayLanguage, locale.displayScript
-                )
-            } else {
-                String.format(
-                    context.getString(R.string.quest_streetName_menuItem_language_with_script_native),
-                    languageTag, nativeDisplayLanguage, displayLanguage, locale.displayScript
-                )
-            }
-        }
     }
 
     /** Show a context menu above the given [view] where the user can select one key from the
@@ -307,11 +251,11 @@ class LocalizedNameAdapter(
                     notAddedLanguageTags.add(0, "")
                 }
 
-                showLanguageSelectMenu(v, notAddedLanguageTags) { languageTag ->
-                    localizedName.languageTag = languageTag
-                    updateLanguage(languageTag)
-                    updateAddLanguageButtonVisibility()
-                }
+                //showLanguageSelectMenu(v, notAddedLanguageTags) { languageTag ->
+                //    localizedName.languageTag = languageTag
+                //    updateLanguage(languageTag)
+                //    updateAddLanguageButtonVisibility()
+                //}
             }
         }
 
