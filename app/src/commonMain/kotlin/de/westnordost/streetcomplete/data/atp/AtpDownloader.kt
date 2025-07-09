@@ -19,16 +19,17 @@ class AtpDownloader(
     private val atpController: AtpController
 ) {
     suspend fun download(bbox: BoundingBox) {
-        val time = nowAsEpochMilliseconds()
-
-        val entries: Collection<AtpEntry> = atpApi.getAllAtpEntries(bbox)
-
-        val seconds = (nowAsEpochMilliseconds() - time) / 1000.0
-        Log.i(TAG, "Downloaded ${entries.size} ATP entries in ${seconds.format(1)}s")
-
-        yield()
-
-        withContext(Dispatchers.IO) { atpController.putAllForBBox(bbox, entries) }
+        try {
+            // ATP data download failing should not take down entire download
+            val time = nowAsEpochMilliseconds()
+            val entries: Collection<AtpEntry> = atpApi.getAllAtpEntries(bbox)
+            val seconds = (nowAsEpochMilliseconds() - time) / 1000.0
+            Log.i(TAG, "Downloaded ${entries.size} ATP entries in ${seconds.format(1)}s")
+            yield()
+            withContext(Dispatchers.IO) { atpController.putAllForBBox(bbox, entries) }
+        } catch (e: Exception) {
+            Log.w(TAG, e.message.orEmpty(), e)
+        }
     }
 
     companion object {
