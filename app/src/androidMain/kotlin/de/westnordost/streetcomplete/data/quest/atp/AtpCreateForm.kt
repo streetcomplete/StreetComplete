@@ -38,6 +38,7 @@ class AtpCreateForm : AbstractQuestForm() {
     private val elementEditsController: ElementEditsController by inject()
     private val surveyChecker: SurveyChecker by inject()
 
+    override val contentLayoutResId = R.layout.quest_atp_create
     private lateinit var entry: AtpEntry private set
     private val featureDictionary: FeatureDictionary get() = featureDictionaryLazy.value
     var hideQuestController: HideQuestController = hiddenQuestsController
