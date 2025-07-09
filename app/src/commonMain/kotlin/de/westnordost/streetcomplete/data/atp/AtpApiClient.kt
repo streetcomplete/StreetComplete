@@ -28,10 +28,14 @@ class AtpApiClient(
      * @param bounds the area within where ATP entries should be queried.
      *
      * @throws ConnectionException if a temporary network connection problem occurs
+     * @throws IllegalArgumentException if the bounds cross the 180th meridian.
      *
      * @return the incoming atp entries
      */
     suspend fun getAllAtpEntries(bounds: BoundingBox): List<AtpEntry> = wrapApiClientExceptions {
+        if (bounds.crosses180thMeridian) {
+            throw IllegalArgumentException("Bounding box crosses 180th meridian")
+        }
         val gathered = mutableListOf<AtpEntry>()
 
         for (longitudeAnchor in floor(bounds.min.longitude).toInt()..floor(bounds.max.longitude).toInt()) {
