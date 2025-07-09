@@ -6,6 +6,8 @@ import de.westnordost.streetcomplete.util.Listeners
 import de.westnordost.streetcomplete.util.ktx.format
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.logs.Log
+import kotlinx.atomicfu.locks.ReentrantLock
+import kotlinx.atomicfu.locks.withLock
 
 /** Manages access to the ATP data storage */
 class AtpController(
@@ -23,6 +25,8 @@ class AtpController(
     }
     private val listeners = Listeners<Listener>()
 
+    private val lock = ReentrantLock()
+
     /** Replace all entries in the given bounding box with the given entries */
     fun putAllForBBox(bbox: BoundingBox, entries: Collection<AtpEntry>) {
         val time = nowAsEpochMilliseconds()
@@ -30,7 +34,7 @@ class AtpController(
         val oldEntriesById = mutableMapOf<Long, AtpEntry>()
         val addedEntries = mutableListOf<AtpEntry>()
         val updatedEntries = mutableListOf<AtpEntry>()
-        synchronized(this) { // TODO: I copied this code. Why suddenly it is distinct from note code I copied from?
+        lock.withLock {
             dao.getAll(bbox).associateByTo(oldEntriesById) { it.id }
 
             for (entry in entries) {
