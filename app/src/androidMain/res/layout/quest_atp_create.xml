@@ -6,35 +6,13 @@
     android:orientation="vertical">
 
     <TextView
-        android:text=" HELLO WORLD! "
+        android:text="@string/quest_atp_add_missing_poi_interface_explanation"
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/ImageSelectLabel"
+        style="@style/TextAppearance.Body"
         android:maxLines="3"
         android:padding="8dp"
         tools:ignore="HardcodedText" />
-    <Button
-        android:id="@+id/mappedAlreadyButton"
-        android:text="@string/quest_atp_add_missing_poi_mapped_already"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-    <Button
-        android:id="@+id/missingPlaceButton"
-        android:text="@string/quest_atp_add_missing_poi_does_not_exist"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-    <EditText
-        android:id="@+id/noteInput"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textMultiLine|textCapSentences"
-        android:scrollbars="vertical"
-        android:gravity="top|start"
-        android:minLines="3"
-        android:maxLines="12"
-        android:background="@drawable/background_edittext_outline"
-        />
-
 
 </LinearLayout>
