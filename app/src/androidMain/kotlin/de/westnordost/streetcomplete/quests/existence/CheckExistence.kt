@@ -44,6 +44,7 @@ class CheckExistence(
             or amenity = grit_bin and seasonal = no
             or amenity = vending_machine and vending ~ parking_tickets|public_transport_tickets
             or amenity = ticket_validator
+            or amenity = bicycle_repair_station
             or tourism = information and information ~ board|terminal|map
             or advertising ~ column|board|poster_box
             or (highway = emergency_access_point or emergency = access_point) and ref
