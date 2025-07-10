@@ -50,10 +50,11 @@ This software is released under the terms of the [GNU General Public License](ht
 ## Sponsors
 
 <a href="https://nlnet.nl/discovery/"><img src=".github/images/logo_nlnet.svg" alt="nlnet" height="100"/></a><br/>
-The **NLnet foundation** sponsored development on this app in four individual grants with funds from the European Commission:<br/>
+The **NLnet foundation** sponsored development on this app in five individual grants with funds from the European Commission:<br/>
 - A grant from <a href="https://nlnet.nl/project/StreetComplete-multiplatform/">2025</a> will allow Tobias Zwick to finish migrating the app to a multiplatform, so that it runs also on iOS (see <a href="https://github.com/streetcomplete/StreetComplete/issues/5421">ticket</a>)
 - In <a href="https://nlnet.nl/project/StreetComplete-Together/">2021</a>, a grant enabled Tobias Zwick to work about five months on the app - most notably, implement the overlays functionality and measuring with AR.
 - In <a href="https://www.openstreetmap.org/user/Mateusz%20Konieczny/diary/368849">2019</a> and <a href="https://www.openstreetmap.org/user/Mateusz%20Konieczny/diary/397825">2021</a>, Mateusz Konieczny each got a grant to work on StreetComplete with a focus on improvements on UI and data collection
+- In 2025, Mateusz Konieczny got a grant to work on [attempt to use All The Places dataset](https://github.com/streetcomplete/StreetComplete/pull/6302) within StreetComplete
 <br/>
 
 <a href="https://github.com/sponsors/westnordost"><picture><source media="(prefers-color-scheme: dark)" srcset=".github/images/logo_github_dark.svg"><img alt="GitHub Sponsors" width="80" src=".github/images/logo_github.svg"></picture></a> <a href="https://liberapay.com/westnordost"><img src=".github/images/logo_liberapay.svg" alt="Liberapay" width="80"/></a> <a href="https://www.patreon.com/westnordost"><picture><source media="(prefers-color-scheme: dark)" srcset=".github/images/logo_patreon_dark.svg"><img alt="Patreon" width="80" src=".github/images/logo_patreon.svg"></picture></a><br/>
