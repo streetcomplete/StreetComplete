@@ -1,8 +1,11 @@
 package de.westnordost.streetcomplete.quests.ferry
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
-import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.RARE
@@ -10,9 +13,10 @@ import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.quests.YesNoQuestForm
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
-class AddFerryAccessMotorVehicle : OsmFilterQuestType<Boolean>(), AndroidQuest {
+class AddFerryAccessMotorVehicle : OsmElementQuestType<Boolean>, AndroidQuest {
 
-    override val elementFilter = "ways, relations with route = ferry and !motor_vehicle"
+    private val filter by lazy { "ways, relations with route = ferry and !motor_vehicle".toElementFilterExpression()
+    }
     override val changesetComment = "Specify ferry access for motor vehicles"
     override val wikiLink = "Tag:route=ferry"
     override val icon = R.drawable.ic_quest_ferry
@@ -25,5 +29,25 @@ class AddFerryAccessMotorVehicle : OsmFilterQuestType<Boolean>(), AndroidQuest {
 
     override fun applyAnswerTo(answer: Boolean, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags["motor_vehicle"] = answer.toYesNo()
+    }
+
+    override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
+        // This is the primary method that performs the full check with mapData
+        return mapData.filter { element ->
+            // First, a quick check with the preliminary filter
+            if (!filter.matches(element)) return@filter false
+            // Then, the detailed check which includes relation checks
+            !partOfFerryRoute(element, mapData)
+        }
+    }
+
+    override fun isApplicableTo(element: Element): Boolean? {
+        // Check if it's a ferry. If yes, check if its part of a ferry route via getApplicableElements.
+        val tags = element.tags
+        if (tags["route"] == "ferry") {
+            return null
+        }
+
+        return false
     }
 }
