@@ -1,9 +1,11 @@
 package de.westnordost.streetcomplete.data.meta
 
+import androidx.compose.runtime.Immutable
 import de.westnordost.streetcomplete.util.ktx.anyIndexed
 
 /** Holds abbreviations (for road names) and its expansions. E.g. in English, "st." would expand
  *  to "street". */
+@Immutable
 class Abbreviations(config: Map<String, String>) {
     private val abbreviations = config.map { (abbreviation, expansion) ->
         var pattern = abbreviation.lowercase()
