@@ -66,9 +66,8 @@ fun LengthForm(
                         selectedUnit = unit
                         onChange(null)
                     },
-                ) {
-                    Text(it.toString())
-                }
+                    itemContent = { Text(it.toString())}
+                )
             }
 
             ProvideTextStyle(MaterialTheme.typography.largeInput) {

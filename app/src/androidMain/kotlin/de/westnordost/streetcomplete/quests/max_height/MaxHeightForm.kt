@@ -59,10 +59,9 @@ fun MaxHeightForm(
                 onSelectedItem = { unit ->
                     selectedUnit = unit
                     onChange(null)
-                }
-            ) {
-                Text(it.toString())
-            }
+                },
+                itemContent = { Text(it.toString()) }
+            )
         }
         MaxHeightSign(countryCode = countryCode) {
             when (selectedUnit) {
