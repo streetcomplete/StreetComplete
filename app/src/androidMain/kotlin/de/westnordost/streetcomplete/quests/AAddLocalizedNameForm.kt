@@ -48,7 +48,9 @@ abstract class AAddLocalizedNameForm<T> : AbstractOsmQuestForm<T>() {
         }
 
         binding.composeViewBase.content { Surface {
-            localizedNames = remember { mutableStateOf(listOf()) }
+            localizedNames = remember {
+                mutableStateOf(listOf(LocalizedName(countryInfo.language.orEmpty(), "")))
+            }
 
             LocalizedNamesForm(
                 localizedNames = localizedNames.value,
@@ -70,7 +72,7 @@ abstract class AAddLocalizedNameForm<T> : AbstractOsmQuestForm<T>() {
     final override fun onClickOk() {
         val possibleAbbreviations = ArrayDeque(getPossibleAbbreviations(
             localizedNames = localizedNames.value,
-            defaultLanguage = countryInfo.languageTag,
+            defaultLanguage = countryInfo.language,
             abbreviationsByLanguage = abbreviationsByLanguage
         ))
 
