@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.address
 
 import android.os.Bundle
 import android.view.View
+import androidx.compose.ui.text.intl.Locale
 import androidx.core.view.isGone
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.AbbreviationsByLanguage
@@ -16,7 +17,6 @@ import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.util.getNameAndLocationSpanned
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import org.koin.android.ext.android.inject
-import java.util.Locale
 
 class AddAddressStreetForm : AbstractOsmQuestForm<StreetOrPlaceName>() {
     override val contentLayoutResId = R.layout.view_street_or_place_name_input
@@ -55,7 +55,7 @@ class AddAddressStreetForm : AbstractOsmQuestForm<StreetOrPlaceName>() {
             streetNameInput = binding.streetNameInput,
             nameSuggestionsSource = nameSuggestionsSource,
             abbreviationsByLanguage = abbreviationsByLanguage,
-            countryLocale = Locale.forLanguageTag(countryInfo.languageTag.orEmpty()),
+            countryLocale = Locale(countryInfo.languageTag.orEmpty()),
             startWithPlace = isShowingPlaceName,
             viewLifecycleScope = viewLifecycleScope
         )

@@ -1,10 +1,10 @@
 package de.westnordost.streetcomplete.quests.bus_stop_name
 
-import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.meta.AbbreviationsByLanguage
 import de.westnordost.streetcomplete.data.meta.NameSuggestionsSource
-import de.westnordost.streetcomplete.databinding.QuestLocalizednameBinding
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.osm.localized_name.LocalizedName
 import de.westnordost.streetcomplete.quests.AAddLocalizedNameForm
 import de.westnordost.streetcomplete.quests.AnswerItem
@@ -14,13 +14,8 @@ import org.koin.android.ext.android.inject
 
 class AddBusStopNameForm : AAddLocalizedNameForm<BusStopNameAnswer>() {
 
+    private val abbrByLocale: AbbreviationsByLanguage by inject()
     private val nameSuggestionsSource: NameSuggestionsSource by inject()
-
-    override val contentLayoutResId = R.layout.quest_localizedname
-    private val binding by contentViewBinding(QuestLocalizednameBinding::bind)
-
-    override val addLanguageButton get() = binding.addLanguageButton
-    override val namesList get() = binding.namesList
 
     override val otherAnswers = listOf(
         AnswerItem(R.string.quest_placeName_no_name_answer) {
@@ -42,13 +37,16 @@ class AddBusStopNameForm : AAddLocalizedNameForm<BusStopNameAnswer>() {
         and name
     """.toElementFilterExpression()
 
-    override fun getLocalizedNameSuggestions(): List<List<LocalizedName>> =
-        nameSuggestionsSource.getNames(
-            // bus stops are usually not that large, we can just take the center for the dist check
-            points = listOf(geometry.center),
-            maxDistance = 250.0,
-            filter = busStopsWithNamesFilter
-        )
+    override fun onClickMapAt(position: LatLon, clickAreaSizeInMeters: Double): Boolean {
+        nameSuggestionsSource.getNames(position, clickAreaSizeInMeters, busStopsWithNamesFilter)
+            .firstOrNull()
+            ?.let { localizedNames.value = it }
+
+        return true
+    }
+
+    // because bus stops are often named after streets
+    override fun getAbbreviationsByLanguage() = abbrByLocale
 
     override fun onClickOk(names: List<LocalizedName>) {
         applyAnswer(BusStopName(names))

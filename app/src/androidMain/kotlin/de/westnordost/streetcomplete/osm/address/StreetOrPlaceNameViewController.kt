@@ -5,6 +5,7 @@ import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.EditText
 import android.widget.Spinner
+import androidx.compose.ui.text.intl.Locale
 import androidx.core.view.isGone
 import androidx.core.widget.doAfterTextChanged
 import de.westnordost.streetcomplete.R
@@ -15,7 +16,6 @@ import de.westnordost.streetcomplete.osm.address.StreetOrPlaceNameViewController
 import de.westnordost.streetcomplete.util.ktx.nonBlankTextOrNull
 import de.westnordost.streetcomplete.view.OnAdapterItemSelectedListener
 import kotlinx.coroutines.CoroutineScope
-import java.util.Locale
 
 /** Manages the input of a street name or alternatively (if not available) a place name.
  *

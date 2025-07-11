@@ -47,7 +47,7 @@ fun LocalizedNamesForm(
     onChanged: (List<LocalizedName>) -> Unit,
     languageTags: List<String>,
     modifier: Modifier = Modifier,
-    abbreviationsByLanguage: Map<String, Abbreviations> = emptyMap(),
+    abbreviationsByLanguage: Map<String, Abbreviations?> = emptyMap(),
 ) {
     val selectableLanguageTags = remember(languageTags, localizedNames) {
         languageTags - localizedNames.map { it.languageTag }
