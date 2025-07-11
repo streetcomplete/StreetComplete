@@ -127,9 +127,9 @@ class AddRoadNameForm : AAddLocalizedNameForm<RoadNameAnswer>() {
                     leaveNote -> composeNote()
                     noName    -> confirmNoStreetName()
                     else      -> applyAnswer(when (answer) {
-                        linkRoad    -> RoadIsLinkRoad
-                        serviceRoad -> RoadIsServiceRoad
-                        trackRoad   -> RoadIsTrack
+                        linkRoad    -> RoadNameAnswer.IsLinkRoad
+                        serviceRoad -> RoadNameAnswer.IsServiceRoad
+                        trackRoad   -> RoadNameAnswer.IsTrack
                         else        -> throw IllegalStateException()
                     })
                 }
@@ -150,7 +150,7 @@ class AddRoadNameForm : AAddLocalizedNameForm<RoadNameAnswer>() {
         AlertDialog.Builder(requireContext())
             .setTitle(R.string.quest_name_answer_noName_confirmation_title)
             .setMessage(R.string.quest_streetName_answer_noName_confirmation_description)
-            .setPositiveButton(R.string.quest_name_noName_confirmation_positive) { _, _ -> applyAnswer(NoRoadName) }
+            .setPositiveButton(R.string.quest_name_noName_confirmation_positive) { _, _ -> applyAnswer(RoadNameAnswer.NoName) }
             .setNegativeButton(R.string.quest_generic_confirmation_no, null)
             .show()
     }

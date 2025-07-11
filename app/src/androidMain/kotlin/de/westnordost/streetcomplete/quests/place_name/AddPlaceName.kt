@@ -138,7 +138,7 @@ class AddPlaceName(
 
     override fun applyAnswerTo(answer: PlaceNameAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {
-            is NoPlaceNameSign -> {
+            is PlaceNameAnswer.NoNameSign -> {
                 tags["name:signed"] = "no"
             }
             is PlaceName -> {

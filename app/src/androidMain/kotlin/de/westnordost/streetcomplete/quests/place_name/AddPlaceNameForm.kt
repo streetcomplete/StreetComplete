@@ -16,19 +16,15 @@ class AddPlaceNameForm : AAddLocalizedNameForm<PlaceNameAnswer>() {
     override val namesList get() = binding.namesList
 
     override val otherAnswers = listOf(
-        AnswerItem(R.string.quest_placeName_no_name_answer) { confirmNoName() }
+        AnswerItem(R.string.quest_placeName_no_name_answer) {
+            confirmNoName(requireContext()) { applyAnswer(PlaceNameAnswer.NoNameSign) }
+        },
+        AnswerItem(R.string.quest_streetName_answer_cantType) {
+            showKeyboardInfo(requireContext())
+        }
     )
 
     override fun onClickOk(names: List<LocalizedName>) {
         applyAnswer(PlaceName(names))
-    }
-
-    private fun confirmNoName() {
-        val ctx = context ?: return
-        AlertDialog.Builder(ctx)
-            .setTitle(R.string.quest_generic_confirmation_title)
-            .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ -> applyAnswer(NoPlaceNameSign) }
-            .setNegativeButton(R.string.quest_generic_confirmation_no, null)
-            .show()
     }
 }

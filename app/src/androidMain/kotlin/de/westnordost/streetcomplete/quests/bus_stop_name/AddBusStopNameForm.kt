@@ -8,6 +8,8 @@ import de.westnordost.streetcomplete.databinding.QuestLocalizednameBinding
 import de.westnordost.streetcomplete.osm.localized_name.LocalizedName
 import de.westnordost.streetcomplete.quests.AAddLocalizedNameForm
 import de.westnordost.streetcomplete.quests.AnswerItem
+import de.westnordost.streetcomplete.view.localized_name.confirmNoName
+import de.westnordost.streetcomplete.view.localized_name.showKeyboardInfo
 import org.koin.android.ext.android.inject
 
 class AddBusStopNameForm : AAddLocalizedNameForm<BusStopNameAnswer>() {
@@ -21,8 +23,12 @@ class AddBusStopNameForm : AAddLocalizedNameForm<BusStopNameAnswer>() {
     override val namesList get() = binding.namesList
 
     override val otherAnswers = listOf(
-        AnswerItem(R.string.quest_placeName_no_name_answer) { confirmNoName() },
-        AnswerItem(R.string.quest_streetName_answer_cantType) { showKeyboardInfo() }
+        AnswerItem(R.string.quest_placeName_no_name_answer) {
+            confirmNoName(requireContext()) { applyAnswer(BusStopNameAnswer.NoName) }
+        },
+        AnswerItem(R.string.quest_streetName_answer_cantType) {
+            showKeyboardInfo(requireContext())
+        }
     )
 
     // this filter needs to be kept somewhat in sync with the filter in AddBusStopName
@@ -46,13 +52,5 @@ class AddBusStopNameForm : AAddLocalizedNameForm<BusStopNameAnswer>() {
 
     override fun onClickOk(names: List<LocalizedName>) {
         applyAnswer(BusStopName(names))
-    }
-
-    private fun confirmNoName() {
-        AlertDialog.Builder(requireContext())
-            .setTitle(R.string.quest_name_answer_noName_confirmation_title)
-            .setPositiveButton(R.string.quest_name_noName_confirmation_positive) { _, _ -> applyAnswer(NoBusStopName) }
-            .setNegativeButton(R.string.quest_generic_confirmation_no, null)
-            .show()
     }
 }
