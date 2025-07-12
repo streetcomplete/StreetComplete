@@ -38,7 +38,7 @@ class Abbreviations(config: Map<String, String>) {
         for ((regex, replacement) in abbreviations) {
             if (!regex.matches(word, isFirstWord, isLastWord)) continue
             val result = regex.replaceFirst(word, replacement)
-            return if (word.first().isTitleCase()) result.capitalize() else result
+            return if (word.first().isUpperCase()) result.capitalize() else result
         }
         return null
     }
@@ -77,4 +77,4 @@ private fun Regex.matches(
 }
 
 private fun String.capitalize() =
-    replaceFirstChar { if (it.isLowerCase()) it.titlecase() else it.toString() }
+    replaceFirstChar { if (it.isLowerCase()) it.uppercase() else it.toString() }
