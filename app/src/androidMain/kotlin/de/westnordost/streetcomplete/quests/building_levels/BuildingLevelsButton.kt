@@ -8,9 +8,10 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
-import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.ic_building_levels_illustration
+import org.jetbrains.compose.resources.painterResource
 
 /** A button that shows (previous) building levels and roof levels */
 @Composable
@@ -28,7 +29,7 @@ fun BuildingLevelsButton(
                 modifier = Modifier.align(Alignment.Bottom)
             )
             Image(
-                painter = painterResource(R.drawable.ic_building_levels_illustration),
+                painter = painterResource(Res.drawable.ic_building_levels_illustration),
                 contentDescription = "Building Illustration"
             )
             Text(
