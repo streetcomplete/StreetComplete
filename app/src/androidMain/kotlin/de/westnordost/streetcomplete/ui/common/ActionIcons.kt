@@ -5,15 +5,31 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.ic_arrow_back_24
+import de.westnordost.streetcomplete.resources.ic_camera_measure_24
+import de.westnordost.streetcomplete.resources.ic_chevron_next_24
+import de.westnordost.streetcomplete.resources.ic_clear_24
+import de.westnordost.streetcomplete.resources.ic_content_copy_24
+import de.westnordost.streetcomplete.resources.ic_crosshair_32
+import de.westnordost.streetcomplete.resources.ic_email_24
+import de.westnordost.streetcomplete.resources.ic_file_download_24
+import de.westnordost.streetcomplete.resources.ic_file_upload_24
+import de.westnordost.streetcomplete.resources.ic_menu_24
+import de.westnordost.streetcomplete.resources.ic_open_in_browser_24
+import de.westnordost.streetcomplete.resources.ic_overlay_24
+import de.westnordost.streetcomplete.resources.ic_stop_recording_24
+import de.westnordost.streetcomplete.resources.ic_team_mode_24
+import org.jetbrains.compose.resources.painterResource
 
 @Composable
 fun BackIcon() {
-    Icon(painterResource(R.drawable.ic_arrow_back_24dp), stringResource(R.string.action_back))
+    Icon(painterResource(Res.drawable.ic_arrow_back_24), stringResource(R.string.action_back))
 }
 
 @Composable
 fun ClearIcon() {
-    Icon(painterResource(R.drawable.ic_clear_24dp), stringResource(R.string.action_clear))
+    Icon(painterResource(Res.drawable.ic_clear_24), stringResource(R.string.action_clear))
 }
 
 @Composable
@@ -28,17 +44,17 @@ fun SearchIcon() {
 
 @Composable
 fun CopyIcon() {
-    Icon(painterResource(R.drawable.ic_content_copy_24dp), stringResource(android.R.string.copy))
+    Icon(painterResource(Res.drawable.ic_content_copy_24), stringResource(android.R.string.copy))
 }
 
 @Composable
 fun OpenInBrowserIcon() {
-    Icon(painterResource(R.drawable.ic_open_in_browser_24dp), stringResource(R.string.action_open_in_browser))
+    Icon(painterResource(Res.drawable.ic_open_in_browser_24), stringResource(R.string.action_open_in_browser))
 }
 
 @Composable
 fun NextScreenIcon() {
-    Icon(painterResource(R.drawable.ic_chevron_next_24dp), null)
+    Icon(painterResource(Res.drawable.ic_chevron_next_24), null)
 }
 
 @Composable
@@ -48,32 +64,32 @@ fun UndoIcon() {
 
 @Composable
 fun OverlaysIcon() {
-    Icon(painterResource(R.drawable.ic_overlay_black_24dp), stringResource(R.string.action_overlays))
+    Icon(painterResource(Res.drawable.ic_overlay_24), stringResource(R.string.action_overlays))
 }
 
 @Composable
 fun UploadIcon() {
-    Icon(painterResource(R.drawable.ic_file_upload_24dp), stringResource(R.string.action_upload))
+    Icon(painterResource(Res.drawable.ic_file_upload_24), stringResource(R.string.action_upload))
 }
 
 @Composable
 fun DownloadIcon() {
-    Icon(painterResource(R.drawable.ic_file_download_24dp), stringResource(R.string.action_download))
+    Icon(painterResource(Res.drawable.ic_file_download_24), stringResource(R.string.action_download))
 }
 
 @Composable
 fun TeamModeIcon() {
-    Icon(painterResource(R.drawable.ic_team_mode_24dp), stringResource(R.string.team_mode))
+    Icon(painterResource(Res.drawable.ic_team_mode_24), stringResource(R.string.team_mode))
 }
 
 @Composable
 fun MessagesIcon() {
-    Icon(painterResource(R.drawable.ic_email_24dp), stringResource(R.string.action_messages))
+    Icon(painterResource(Res.drawable.ic_email_24), stringResource(R.string.action_messages))
 }
 
 @Composable
 fun MenuIcon() {
-    Icon(painterResource(R.drawable.ic_menu_24dp), stringResource(R.string.map_btn_menu))
+    Icon(painterResource(Res.drawable.ic_menu_24), stringResource(R.string.map_btn_menu))
 }
 
 @Composable
@@ -88,15 +104,15 @@ fun ZoomOutIcon() {
 
 @Composable
 fun StopRecordingIcon() {
-    Icon(painterResource(R.drawable.ic_stop_recording_24dp), stringResource(R.string.map_btn_stop_track))
+    Icon(painterResource(Res.drawable.ic_stop_recording_24), stringResource(R.string.map_btn_stop_track))
 }
 
 @Composable
 fun LargeCreateIcon() {
-    Icon(painterResource(R.drawable.ic_crosshair_32dp), stringResource(R.string.action_create_new_poi))
+    Icon(painterResource(Res.drawable.ic_crosshair_32), stringResource(R.string.action_create_new_poi))
 }
 
 @Composable
 fun MeasurementIcon() {
-    Icon(painterResource(R.drawable.ic_camera_measure_24dp), stringResource(R.string.ar_measure))
+    Icon(painterResource(Res.drawable.ic_camera_measure_24), stringResource(R.string.ar_measure))
 }

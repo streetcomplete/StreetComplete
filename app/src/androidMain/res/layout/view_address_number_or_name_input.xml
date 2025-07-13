@@ -16,6 +16,7 @@
         android:paddingTop="4dp"
         android:paddingBottom="4dp"
         app:drawableStartCompat="@drawable/ic_arrow_expand_down_24dp"
+        app:tint="?android:attr/textColorPrimary"
         android:background="?android:attr/selectableItemBackground"
         android:textColor="@color/text"
         android:text="@string/quest_address_house_number_label"/>
@@ -51,6 +52,7 @@
         android:paddingTop="4dp"
         android:paddingBottom="4dp"
         app:drawableStartCompat="@drawable/ic_arrow_expand_right_24dp"
+        app:tint="?android:attr/textColorPrimary"
         android:background="?android:attr/selectableItemBackground"
         android:textColor="@color/text"
         android:text="@string/quest_address_house_name_label" />

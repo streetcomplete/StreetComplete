@@ -1,12 +1,5 @@
 <resources>
 
-    <style name="MapProgressBar.Horizontal" parent="Widget.AppCompat.ProgressBar.Horizontal">
-        <item name="android:progressDrawable">@drawable/map_progress</item>
-        <item name="android:indeterminateDrawable">@drawable/map_progress</item>
-        <item name="android:minHeight">6dip</item>
-        <item name="android:maxHeight">6dip</item>
-    </style>
-
     <!-- +++++++++++++++++++++++++++++++++++ Dialogs +++++++++++++++++++++++++++++++++++++++++++ -->
 
     <style name="DialogWindowTitle.Bubble" parent="android:Widget">

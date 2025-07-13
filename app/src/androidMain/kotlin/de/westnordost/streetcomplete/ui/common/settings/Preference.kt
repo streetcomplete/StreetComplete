@@ -22,13 +22,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.Hyphens
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.ic_chevron_next_24
 import de.westnordost.streetcomplete.ui.theme.titleSmall
+import org.jetbrains.compose.resources.painterResource
 
 @Composable
 fun PreferenceCategory(
@@ -134,7 +135,7 @@ private fun PreferencePreview() {
             onClick = {},
             description = "A long description which may actually be several lines long, so it should wrap."
         ) {
-            Icon(painterResource(R.drawable.ic_chevron_next_24dp), null)
+            Icon(painterResource(Res.drawable.ic_chevron_next_24), null)
         }
 
         Preference(

@@ -12,11 +12,12 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.ic_location_24
+import org.jetbrains.compose.resources.painterResource
 
 /** Small floating button on top of the map */
 @OptIn(ExperimentalMaterialApi::class)
@@ -48,6 +49,6 @@ fun MapButton(
 @Composable
 private fun PreviewMapButton() {
     MapButton(onClick = {}) {
-        Icon(painterResource(R.drawable.ic_location_24dp), null)
+        Icon(painterResource(Res.drawable.ic_location_24), null)
     }
 }

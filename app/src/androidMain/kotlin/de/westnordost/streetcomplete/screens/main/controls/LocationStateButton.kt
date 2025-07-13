@@ -8,15 +8,21 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.ic_location_24
+import de.westnordost.streetcomplete.resources.ic_location_disabled_24
+import de.westnordost.streetcomplete.resources.ic_location_navigation_24
+import de.westnordost.streetcomplete.resources.ic_location_navigation_no_location_24
+import de.westnordost.streetcomplete.resources.ic_location_no_location_24
 import kotlinx.coroutines.delay
+import org.jetbrains.compose.resources.painterResource
 
 /** State of location updates */
 enum class LocationState {
@@ -45,7 +51,7 @@ fun LocationStateButton(
     enabled: Boolean = true
 ) {
     var iconResource by remember(state, isNavigationMode) {
-        mutableIntStateOf(getIcon(state, isNavigationMode))
+        mutableStateOf(getIcon(state, isNavigationMode))
     }
 
     MapButton(
@@ -74,14 +80,14 @@ fun LocationStateButton(
 private fun getIcon(state: LocationState, isNavigationMode: Boolean) = when (state) {
     LocationState.DENIED,
     LocationState.ALLOWED ->
-        R.drawable.ic_location_disabled_24dp
+        Res.drawable.ic_location_disabled_24
     LocationState.ENABLED,
     LocationState.SEARCHING ->
-        if (isNavigationMode) R.drawable.ic_location_navigation_no_location_24dp
-        else R.drawable.ic_location_no_location_24dp
+        if (isNavigationMode) Res.drawable.ic_location_navigation_no_location_24
+        else Res.drawable.ic_location_no_location_24
     LocationState.UPDATING ->
-        if (isNavigationMode) R.drawable.ic_location_navigation_24dp
-        else R.drawable.ic_location_24dp
+        if (isNavigationMode) Res.drawable.ic_location_navigation_24
+        else Res.drawable.ic_location_24
 }
 
 @Preview

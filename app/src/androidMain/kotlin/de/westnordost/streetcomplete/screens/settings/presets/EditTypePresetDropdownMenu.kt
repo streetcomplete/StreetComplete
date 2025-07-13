@@ -13,7 +13,12 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.ic_content_copy_24
+import de.westnordost.streetcomplete.resources.ic_edit_24
+import de.westnordost.streetcomplete.resources.ic_share_24
 import de.westnordost.streetcomplete.ui.common.DropdownMenuItem
+import org.jetbrains.compose.resources.painterResource
 
 /** The dropdown menu that shows when tapping on the more button */
 @Composable
@@ -36,20 +41,20 @@ fun EditTypePresetDropdownMenu(
             DropdownMenuItem(onClick = { onDismissRequest(); onRename() }) {
                 TextWithIcon(
                     text = stringResource(R.string.quest_presets_rename),
-                    painter = painterResource(R.drawable.ic_edit_24dp)
+                    painter = painterResource(Res.drawable.ic_edit_24)
                 )
             }
         }
         DropdownMenuItem(onClick = { onDismissRequest(); onDuplicate() }) {
             TextWithIcon(
                 text = stringResource(R.string.quest_presets_duplicate),
-                painter = painterResource(R.drawable.ic_content_copy_24dp)
+                painter = painterResource(Res.drawable.ic_content_copy_24)
             )
         }
         DropdownMenuItem(onClick = { onDismissRequest(); onShare() }) {
             TextWithIcon(
                 text = stringResource(R.string.quest_presets_share),
-                painter = painterResource(R.drawable.ic_share_24dp)
+                painter = painterResource(Res.drawable.ic_share_24)
             )
         }
         if (!isDefaultPreset) {

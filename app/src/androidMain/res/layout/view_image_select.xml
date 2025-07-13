@@ -35,6 +35,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/ic_arrow_expand_down_24dp"
+        app:tint="?android:attr/textColorPrimary"
         android:padding="4dp"
         app:layout_constrainedWidth="true"
         app:layout_constraintStart_toEndOf="@id/selectTextView"
