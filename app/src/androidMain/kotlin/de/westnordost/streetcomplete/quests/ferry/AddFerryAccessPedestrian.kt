@@ -5,6 +5,8 @@ import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpressio
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.Way
+import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
@@ -15,7 +17,8 @@ import de.westnordost.streetcomplete.util.ktx.toYesNo
 
 class AddFerryAccessPedestrian : OsmElementQuestType<Boolean>, AndroidQuest {
 
-    private val filter by lazy { "ways, relations with route = ferry and !foot".toElementFilterExpression()
+    private val filter by lazy {
+        "ways, relations with route = ferry and !foot".toElementFilterExpression()
     }
     override val changesetComment = "Specify ferry access for pedestrians"
     override val wikiLink = "Tag:route=ferry"
@@ -32,22 +35,17 @@ class AddFerryAccessPedestrian : OsmElementQuestType<Boolean>, AndroidQuest {
     }
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
-        // This is the primary method that performs the full check with mapData
-        return mapData.filter { element ->
-            // First, a quick check with the preliminary filter
-            if (!filter.matches(element)) return@filter false
-            // Then, the detailed check which includes relation checks
-            !partOfFerryRoute(element, mapData)
-        }
+        // see comment in AddFerryAccessMotorVehicle
+        val wayIdsInFerryRoutes = wayIdsInFerryRoutes(mapData.relations)
+        return mapData
+            .filter(filter)
+            .filter { it !is Way || it.id !in wayIdsInFerryRoutes }
+            .asIterable()
     }
 
     override fun isApplicableTo(element: Element): Boolean? {
-        // Check if it's a ferry. If yes, check if its part of a ferry route via getApplicableElements.
-        val tags = element.tags
-        if (tags["route"] == "ferry") {
-            return null
-        }
-
-        return false
+        if (!filter.matches(element)) return false
+        if (element is Way) return null
+        return true
     }
 }
