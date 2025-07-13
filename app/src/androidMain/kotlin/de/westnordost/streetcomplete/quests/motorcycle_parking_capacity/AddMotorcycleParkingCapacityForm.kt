@@ -1,9 +1,10 @@
 package de.westnordost.streetcomplete.quests.motorcycle_parking_capacity
 
-import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AAddCountInput
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.count_motorcycle
 
 class AddMotorcycleParkingCapacityForm : AAddCountInput() {
-    override val iconId = R.drawable.ic_motorcycle
+    override val icon = Res.drawable.count_motorcycle
     override val initialCount get() = element.tags["capacity"]?.toIntOrNull()
 }

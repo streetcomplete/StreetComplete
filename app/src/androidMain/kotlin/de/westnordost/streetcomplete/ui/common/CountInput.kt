@@ -13,12 +13,13 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.count_step
+import org.jetbrains.compose.resources.painterResource
 
 /** An outlined text field that accepts only integer input with an illustration that should display
  *  the "unit" (steps, bicycles, ...) of what is input next to it */
@@ -63,6 +64,6 @@ private fun StepCountFormPreview() {
     CountInput(
         count = count.value,
         onCountChange = { count.value = it },
-        iconPainter = painterResource(R.drawable.ic_step),
+        iconPainter = painterResource(Res.drawable.count_step),
     )
 }
