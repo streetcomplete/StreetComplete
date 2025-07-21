@@ -4,6 +4,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Row
 import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.OutlinedButton
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -21,11 +22,11 @@ fun BuildingLevelsButton(
     roofLevels: Int?,
     modifier: Modifier = Modifier,
 ) {
-    Button(onClick = onClick, modifier = modifier) {
+    OutlinedButton(onClick = onClick, modifier = modifier) {
         Row(verticalAlignment = Alignment.CenterVertically) {
             Text(
                 text = levels.toString(),
-                style = MaterialTheme.typography.caption,
+                style = MaterialTheme.typography.body2,
                 modifier = Modifier.align(Alignment.Bottom)
             )
             Image(
@@ -34,7 +35,7 @@ fun BuildingLevelsButton(
             )
             Text(
                 text = roofLevels?.toString() ?: " ",
-                style = MaterialTheme.typography.caption,
+                style = MaterialTheme.typography.body2,
                 modifier = Modifier.align(Alignment.Top)
             )
         }
