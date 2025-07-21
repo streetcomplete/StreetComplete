@@ -63,6 +63,7 @@ class CheckExistence(
             or amenity = waste_basket
             or amenity = recycling and recycling_type = container
             or amenity = toilets
+            or amenity = shower
             or amenity = drinking_water
             or man_made = planter
           )
