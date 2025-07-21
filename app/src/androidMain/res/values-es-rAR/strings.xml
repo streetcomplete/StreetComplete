@@ -44,7 +44,7 @@
     <string name="upload_error">"Hubo un error al subir las respuestas"</string>
     <string name="download_area_too_big">"Acercá un poco más el mapa"</string>
     <string name="confirmation_cancel_prev_download_title">"¿Querés cancelar la descarga en curso y buscar tareas en la ubicación actual?"</string>
-    <string name="turn_on_location_request">"La ubicación esta desactivada. ¿Querés ir a los ajustes para activarla?"</string>
+    <string name="turn_on_location_request">"La ubicación está desactivada. ¿Querés ir a los ajustes para activarla?"</string>
     <string name="no_location_permission_warning">"Es necesario que el programa acceda a tu ubicación para mostrarla en el mapa y ver tareas cercanas."</string>
     <string name="about_title_authors">"Agradecimientos"</string>
     <string name="about_title_repository">"Repositorio de código"</string>
@@ -117,7 +117,7 @@ Sin embargo, antes de subir cualquier cambio, la aplicación comprueba si la ver
 
 Esta app busca información incompleta en tu barrio y la muestra en un mapa con marcadores. Podés completarla respondiendo preguntas simples en el lugar.
 
-La información que agregues se sube directo a OpenStreetMap con tu nombre, sin usar otros programas."</string>
+La información que agregues se sube directamente a OpenStreetMap con tu nombre, sin usar otros programas."</string>
     <string name="quest_name_answer_noName">"No tiene nombre…"</string>
     <string name="quest_name_answer_noName_confirmation_title">"¿Seguro que no tiene nombre?"</string>
     <string name="quest_name_noName_confirmation_positive">"Seguro, no tiene nombre"</string>
@@ -202,7 +202,7 @@ Si no hay carteles en la parte seleccionada se usarán los límites de velocidad
     <string name="quest_streetName_cantType_title">"¿No tenés el idioma del teclado adecuado?"</string>
     <string name="quest_streetName_cantType_open_settings">"Abrir ajustes"</string>
     <string name="quest_streetName_cantType_open_store">"Abrir tienda"</string>
-    <string name="quest_streetName_cantType_description">"Si usás el teclado estándar es posible que puedas cambiar el idioma en sus ajustes de entrada, échale un vistazo.
+    <string name="quest_streetName_cantType_description">"Si usás el teclado estándar es posible que puedas cambiar el idioma en sus ajustes de entrada, echale un vistazo.
 
 Pero recordá que siempre podés descargar aplicaciones de teclado alternativas desde la tienda que sean más completas, aplicaciones del estilo a «Google Gboard», «SwiftKey» o el teclado «Multiling O»."</string>
     <string name="quest_streetName_menuItem_nolanguage">"(sin especificar)"</string>
@@ -457,7 +457,7 @@ Parcial significa que se puede entrar con la silla y usar los baños, pero sin b
     <string name="quest_maxspeed_answer_noSign2">"Sin cartel, se aplica la velocidad genérica"</string>
     <string name="quest_openingHours_no_sign">"El horario no está escrito"</string>
     <string name="quest_buildingType_sports_centre">"Centro deportivo"</string>
-    <string name="quest_buildingType_toilets">"Baños o aseos"</string>
+    <string name="quest_buildingType_toilets">"Baños"</string>
     <string name="quest_maxspeed_sign_question">"¿Qué define el límite de velocidad?"</string>
     <string name="quest_segregated_title">"¿Cómo están dispuestos acá el camino peatonal y el carril bici?"</string>
     <string name="dialog_tutorial_upload">"Para subir los cambios manualmente usá este botón en la barra de herramientas."</string>
@@ -474,14 +474,14 @@ Parcial significa que se puede entrar con la silla y usar los baños, pero sin b
     <string name="action_deselect_all">"Deseleccionar todo"</string>
     <string name="quest_buildingType_retail_description">"incluyendo edificios para restaurantes, cafés…"</string>
     <string name="quest_openingHours_timeSelect_next">"Siguiente"</string>
-    <string name="quest_tracktype_title">"¿Cuál es el nivel de dureza de este camino?"</string>
+    <string name="quest_tracktype_title">"¿Cuál es el nivel de rugosidad de este camino?"</string>
     <string name="quest_tracktype_grade1">"Sólido y firme"</string>
     <string name="quest_tracktype_grade4">"Bastante suave, un poco suelto"</string>
     <string name="quest_tracktype_grade5">"Suave y suelto"</string>
     <string name="quest_building_underground_title">"¿Este edificio está completamente bajo tierra?"</string>
     <string name="quest_wheelchairAccess_limited_description_outside">"Parcialmente significa que no hay más de un escalón para poder entrar."</string>
     <string name="quest_wheelchairAccess_outside_title">"¿Este lugar es accesible para personas en silla de ruedas?"</string>
-    <string name="quest_traffic_signals_button_title">"¿Estas luces de tráfico tienen botón para pedir luz verde?"</string>
+    <string name="quest_traffic_signals_button_title">"¿Estos semáforos tienen botón para pedir luz verde?"</string>
     <string name="quest_motorcycleParkingCapacity_title">"¿Cuántas motos se pueden estacionar acá?"</string>
     <string name="quest_motorcycleParkingCoveredStatus_title">"¿Está este estacionamiento cubierto (protegido de la lluvia)?"</string>
     <string name="default_disabled_msg_maxspeed">"Este tipo de pregunta viene desactivada de forma predeterminada porque por lo general habría que buscar carteles de límite de velocidad en toda la calle, no solo de la sección resaltada. Puede ser demasiado trabajo para completar una sola tarea."</string>
@@ -500,7 +500,7 @@ Parcial significa que se puede entrar con la silla y usar los baños, pero sin b
     <string name="map_application_missing">"No hay otra aplicación para mapas instalada"</string>
     <string name="label_housenumber">"número de casa"</string>
     <string name="label_blocknumber">"número de manzana"</string>
-    <string name="quest_busStopShelter_covered">"Toda la parada esta cubierta"</string>
+    <string name="quest_busStopShelter_covered">"Toda la parada está cubierta"</string>
     <string name="quest_ferry_pedestrian_title">"¿Transporta personas?"</string>
     <string name="quest_ferry_motor_vehicle_title">"¿Transporta vehículos motorizados?"</string>
     <string name="quest_leave_new_note_photos_are_useful">"Agregar una foto hará que la nota sea mucho más útil."</string>
@@ -510,7 +510,7 @@ Parcial significa que se puede entrar con la silla y usar los baños, pero sin b
     <string name="quest_leaf_type_broadleaved">"Planifolio, de hoja ancha y plana"</string>
     <string name="quest_leaf_type_mixed">"Hay de los dos tipos"</string>
     <string name="quest_cyclewayPartSurface_title">"¿De qué está hecho el carril bici?"</string>
-    <string name="quest_generic_answer_differs_along_the_way">"Diferencia a lo largo del camino…"</string>
+    <string name="quest_generic_answer_differs_along_the_way">"Es diferente a lo largo del camino…"</string>
     <string name="quest_split_way_description">"Si difiere a lo largo del camino, el primer paso es dividirlo, luego podés responder en cada tramo por separado. ¿Querés empezar ahora?"</string>
     <string name="quest_split_way_tutorial">"Tocá el camino para dividirlo en los puntos donde hay un cambio. Intentá hacerlo con precisión. Podés acercarte un poco para verlo mejor, si querés."</string>
     <string name="quest_split_way_too_imprecise">"Probá acercando el mapa un poco más"</string>
@@ -633,7 +633,7 @@ Para terminar, tené cuidado: No te distraigas y mirá a tu alrededor. No entres
     <string name="achievement_surveyor_title">"Topógrafo"</string>
     <string name="achievement_surveyor_solved_X">"¡Resolviste %d tareas! ¡Seguí desbloqueando más logros relacionados con OSM y otras aplicaciones y proyectos de mapeo!"</string>
     <string name="achievement_regular_title">"Colaborador asiduo"</string>
-    <string name="achievement_regular_description">"¡Llevas %d días aportando datos a OSM con esta aplicación! Los voluntarios como vos son los que hacen de OSM algo grande, ¡gracias por tanto esfuerzo! ❤"</string>
+    <string name="achievement_regular_description">"¡Llevás %d días aportando datos a OSM con esta aplicación! Los voluntarios como vos son los que hacen de OSM algo grande, ¡gracias por tanto esfuerzo! ❤"</string>
     <string name="achievement_bicyclist_title">"Ciclista"</string>
     <string name="achievement_bicyclist_solved_X">"¡Resolviste %d tareas que ayudan a los ciclistas!"</string>
     <string name="achievement_wheelchair_title">"Movilidad"</string>
@@ -656,7 +656,7 @@ Tené en cuenta que esta aplicación solo pide el número de puerta de un edific
     <string name="unread_messages_button">"Abrir bandeja de entrada"</string>
     <string name="action_about2">"Acerca de"</string>
     <string name="map_btn_menu">"Menú"</string>
-    <string name="privacy_html_statistics">"&lt;p&gt;La información que ves en tu perfil proviene de tu historial público de cambios en OpenStreetMap y se junta en mi servidor. &lt;/p&gt;"</string>
+    <string name="privacy_html_statistics">"&lt;p&gt;La información que ves en tu perfil proviene de tu historial público de cambios en OpenStreetMap y se recopila en mi servidor. &lt;/p&gt;"</string>
     <string name="confirmation_authorize_now_note2">"También podés hacerlo más tarde en tu perfil."</string>
     <string name="credits_art_contributors_title">"Artistas colaboradores"</string>
     <string name="credits_projects_contributors_title">"Proyectos de desarrollo para StreetComplete"</string>
@@ -907,7 +907,6 @@ Los datos se actualizan cada %1$s días y los datos sin utilizar se eliminan aut
     <string name="quest_traffic_calming_type_island">"Isla"</string>
     <string name="quest_traffic_calming_type_chicane">"Chicana."</string>
     <string name="quest_traffic_calming_type_rumble_strip">"Bandas sonoras."</string>
-    <string name="quest_surface_value_concrete_plates">"Losas de hormigón"</string>
     <string name="quest_surface_value_concrete_lanes">"Roderas de cemento u hormigón para vehículos"</string>
     <string name="quest_fireHydrant_diameter_title">"¿Qué diámetro de toma está especificado en esta boca de incendio?"</string>
     <string name="quest_diet_answer_no_food">"No tiene comida."</string>
@@ -1072,7 +1071,7 @@ También podés dejar una nota (con foto)."</string>
     <string name="quest_shop_type_title2">"¿Qué tipo de local es este?"</string>
     <string name="quest_smoking_title2">"¿Está permitido fumar acá?"</string>
     <string name="quest_smoothness_title">"¿Cómo calificarías la rugosidad de la superficie?"</string>
-    <string name="quest_summit_register_title2">"¿Hay algún comprobante en la caja registradora de la cumbre?"</string>
+    <string name="quest_summit_register_title2">"¿Hay algún registro de cumbre?"</string>
     <string name="quest_surface_title">"¿Qué tipo de superficie tiene?"</string>
     <string name="quest_toiletAvailability_title">"¿Hay algún baño acá?"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title2">"¿El baño de este lugar es accesible para sillas de ruedas?"</string>
@@ -1094,7 +1093,7 @@ También podés dejar una nota (con foto)."</string>
     <string name="quest_bicycle_rental_capacity_title">"¿Cuál es el tope de bicis de alquiler que admite?"</string>
     <string name="quest_bicycle_rental_type_title">"¿De qué tipo de alquiler de bici estamos hablando?"</string>
     <string name="quest_bicycle_rental_type_docking_station">"Una estación base con anclajes"</string>
-    <string name="quest_bicycle_rental_type_dropoff_point">"Punto de anclaje (las bicis se guardan de forma individual)"</string>
+    <string name="quest_bicycle_rental_type_dropoff_point">"Punto de entrega/recogida (las bicis se guardan de forma individual)"</string>
     <string name="quest_bicycle_rental_type_human">"Alquiler de bicis con personal"</string>
     <string name="quest_bicycle_rental_type_shop_with_rental">"Bicicletería que también las alquila"</string>
     <string name="quest_bicycle_shop_repair_title">"¿Acá se reparan bicis?"</string>
@@ -1154,7 +1153,7 @@ También podés dejar una nota (con foto)."</string>
     <string name="quest_camp_type_backcountry">"Campamento al aire libre (sin instalaciones)"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Este diámetro no parece muy realista, suele estar entre %1$d y %2$d."</string>
     <string name="quest_recycling_type_pet">"Solo polietileno"</string>
-    <string name="street_parking_street_width">"Anchura de la calle: %s"</string>
+    <string name="street_parking_street_width">"Ancho de la calle: %s"</string>
     <string name="overlay_street_parking">"Estacionamiento"</string>
     <string name="link_ohsomehex_description">"Explorá los datos de OSM en todas las categorías, desde la perspectiva general hasta los objetos individuales en el espacio y el tiempo"</string>
     <string name="link_opencampingmap_description">"Un mapa de campings"</string>
@@ -1197,7 +1196,7 @@ También podés dejar una nota (con foto)."</string>
     <string name="urlconfig_apply_message">"¿Querés guardar y seleccionar el preajuste «%1$s» como predeterminado en tu dispositivo?"</string>
     <string name="urlconfig_apply_message_overwrite">"Cuidado: al hacerlo se sobrescribirá el preajuste con el mismo nombre"</string>
     <string name="urlconfig_switch_hint">"Podés elegir qué preajustes entre los que tengas guardados están activos desde la pantalla de configuración."</string>
-    <string name="quest_bicycle_parking_type_two_tier">"Aparcabicicletas de dos niveles"</string>
+    <string name="quest_bicycle_parking_type_two_tier">"Bicicletero de dos niveles"</string>
     <string name="user_profile_current_week_title">"En los últimos 7 días"</string>
     <string name="user_profile_dates_mapped">"Días en los que completaste algún dato"</string>
     <string name="quest_cycleway_value_advisory_lane">"carril-bici sugerido"</string>
@@ -1215,7 +1214,7 @@ También podés dejar una nota (con foto)."</string>
     <string name="move_node_action_description">"Moviste el nodo"</string>
     <string name="quest_cycleway_value_shoulder">"no hay nada, pero la banquina se puede usar para ir en bici"</string>
     <string name="quest_placeName_no_name_answer">"No parece que haya ningún cartel"</string>
-    <string name="quest_road_width_unusualInput_confirmation_description">"Esta anchura parece poco realista. Recordá que tiene que ser la distancia de una vereda a la otra, incluyendo los estacionamientos en la calle, los carriles bici, etc."</string>
+    <string name="quest_road_width_unusualInput_confirmation_description">"Este ancho parece poco realista. Recordá que tiene que ser la distancia de una vereda a la otra, incluyendo los estacionamientos en la calle, los carriles bici, etc."</string>
     <string name="overlay_cycleway">"Carriles bici"</string>
     <string name="bicycle_boulevard_is_a">"Es una %1$s"</string>
     <string name="bicycle_boulevard_is_not_a">"No es una %1$s"</string>
@@ -1250,6 +1249,8 @@ También podés dejar una nota (con foto)."</string>
     <string name="overlay_surface">"Superficies"</string>
     <string name="overlay_path_surface_segregated">"Dividido entre bicis y peatones"</string>
     <string name="quest_crossing_title2">"¿Hay un cruce acá?"</string>
+    <string name="quest_crossing_yes">"Sí, con la intención de ser un cruce"</string>
+    <string name="quest_crossing_no">"No está destinado a ser un cruce, pero igual se puede cruzar (ej. senderos informales)"</string>
     <string name="quest_crossing_prohibited">"No, está prohibido cruzar o es imposible"</string>
     <string name="quest_hairdresser_title">"¿A quién atiende esta peluquería?"</string>
     <string name="quest_hairdresser_male_and_female">"A cualquiera, es unisex"</string>
@@ -1266,8 +1267,8 @@ También podés dejar una nota (con foto)."</string>
     <string name="quest_tactilePaving_steps_top">"Solo en la parte superior"</string>
     <string name="quest_tactilePaving_steps_bottom">"Solo en la parte inferior"</string>
     <string name="overlay_addresses_no_entrance">"Acá no hay ninguna puerta..."</string>
-    <string name="quest_cycleway_value_sidewalk2">"Camino de uso compartido"</string>
-    <string name="quest_cycleway_value_sidewalk_dual2">"Camino de uso compartido, ambas direcciones"</string>
+    <string name="quest_cycleway_value_sidewalk2">"Vereda compartida"</string>
+    <string name="quest_cycleway_value_sidewalk_dual2">"Vereda compartida, ambas direcciones"</string>
     <string name="overlays_tutorial_title">"Capas de visualización"</string>
     <string name="overlays_tutorial_intro">"Mirá, ahora tenés otra forma de editar cosas"</string>
     <string name="overlays_tutorial_display">"Cada capa muestra una categoría distinta de cosas por hacer; como ver solo «locales» o filtrar por distintas partes de la infraestructura urbana, como «veredas».
@@ -1338,7 +1339,7 @@ Algunas capas también permiten meter datos que faltan a través del marcador co
     <string name="lit_value_unsupported">"Otro tipo de iluminación que no esté en la aplicación"</string>
     <string name="quest_generic_otherAnswers2">"Eh..."</string>
     <string name="quest_pedestrian_crossing_signals2">"¿Hay algún semáforo que muestre cuando se cruza acá?"</string>
-    <string name="quest_moped_access_title">"¿Hay alguna señal que indique accesopara ciclomotores en este carril bici?"</string>
+    <string name="quest_moped_access_title">"¿Hay alguna señal que indique acceso para ciclomotores en este carril bici?"</string>
     <string name="quest_moped_access_allowed">"No hay señal"</string>
     <string name="quest_moped_access_designated">"Hay una señal que indica que este carril es para ciclomotores"</string>
     <string name="quest_moped_access_forbidden">"Hay una señal que prohíbe ciclomotores"</string>
@@ -1350,23 +1351,23 @@ Algunas capas también permiten meter datos que faltan a través del marcador co
     <string name="quest_buildingLevels_hint">"Para los edificios en pendiente, la numeración de niveles comienza a partir del nivel del suelo del lado más bajo.
 
 Un nivel cuenta como altura del techo cuando sus ventanas están en el techo. Por lo que los techos con nivel cero no son necesariamente planos, sino que no son suficientemente altos para un nivel entero."</string>
-    <string name="quest_parcel_locker_brand">"¿Cual es la marca de este buzón de paquetería?"</string>
-    <string name="quest_powerPolesMaterial_is_terminal">"Hay una linea eléctrica anclada al edificio"</string>
+    <string name="quest_parcel_locker_brand">"¿Cuál es la marca de este buzón de paquetería?"</string>
+    <string name="quest_powerPolesMaterial_is_terminal">"Hay una línea eléctrica anclada al edificio"</string>
     <string name="quest_cycleway_value_sidewalk_ok">"No hay, pero las señales permiten ir en bici por la vereda"</string>
     <string name="separate_cycleway_no_signed">"Una señal prohíbe expresamente ir en bicicleta"</string>
     <string name="separate_cycleway_footway_allowed_sign">"Calzada peatonal, pero permite ir en bicicleta"</string>
-    <string name="quest_bicycle_parking_type_floor">"Area designada"</string>
+    <string name="quest_bicycle_parking_type_floor">"Área designada"</string>
     <string name="link_osmapp_description">"Un mapa con distintas capas, como escalada o esquí."</string>
     <string name="action_back">"Volver"</string>
     <string name="action_clear">"Limpiar"</string>
     <string name="action_more">"Más"</string>
     <string name="action_open_in_browser">"Abrir en el navegador"</string>
     <string name="about_category_contribute">"Contribuir"</string>
-    <string name="pref_category_quests">"Desafíos"</string>
+    <string name="pref_category_quests">"Tareas"</string>
     <string name="pref_title_language_select2">"Idioma"</string>
     <string name="pref_title_resurvey_intervals_summary">"Con qué frecuencia se te puede pedir que confirmes si la información del mapa sigue siendo correcta."</string>
     <string name="questList_disabled_by_default">"Desactivado de forma predeterminada"</string>
-    <string name="action_manage_presets_summary">"Con qué nombre se debe guardar el desafío seleccionado a continuación."</string>
+    <string name="action_manage_presets_summary">"Con qué nombre se debe guardar la tarea seleccionada a continuación."</string>
     <string name="quest_multiselect_hint">"Seleccioná todos los que correspondan:"</string>
     <string name="quest_barrier_opening_width_gate">"¿Cuál es el ancho de la apertura acá?"</string>
     <string name="bridge">"En puente"</string>
@@ -1384,8 +1385,67 @@ Un nivel cuenta como altura del techo cuando sus ventanas están en el techo. Po
     <string name="quest_cycleway_value_sidewalk_ok_dual">"No hay nada, pero hay señales que permiten ir en bici por la vereda en ambos sentidos"</string>
     <string name="quest_surface_value_rubber">"Gránulos de goma"</string>
     <string name="quest_surface_value_acrylic">"Resina sintética"</string>
-    <string name="action_messages">"Show messages"</string>
-    <string name="action_create_new_poi">"Create new"</string>
-    <string name="auth_error">"Authorization error. Try logging in again."</string>
-    <string name="quest_accessible_for_pedestrians_sidewalk">"Actually, there is a sidewalk."</string>
+    <string name="action_messages">"Mostrar mensajes"</string>
+    <string name="action_create_new_poi">"Crear nuevo"</string>
+    <string name="auth_error">"Error de autorización. Probá iniciar sesión de nuevo."</string>
+    <string name="quest_accessible_for_pedestrians_sidewalk">"En realidad, hay una vereda."</string>
+    <string name="quest_bicycle_repair_station_services_title">"¿Qué equipamiento para bicis hay disponible acá?"</string>
+    <string name="quest_bicycle_repair_station_pump">"Inflador"</string>
+    <string name="quest_bicycle_repair_station_tools">"Varias herramientas"</string>
+    <string name="quest_bicycle_repair_station_stand">"Soporte de trabajo"</string>
+    <string name="quest_bicycle_repair_station_chain_tool">"Cortacadena"</string>
+    <string name="quest_boat_rental_title">"¿Qué tipo de embarcaciones se alquilan acá?"</string>
+    <string name="quest_boat_rental_motorboat">"Lancha"</string>
+    <string name="quest_boat_rental_jetski">"Jetski"</string>
+    <string name="quest_boat_rental_sailboat">"Velero"</string>
+    <string name="quest_boat_rental_pedalboat">"Pedalera"</string>
+    <string name="quest_boat_rental_kayak">"Kayak"</string>
+    <string name="quest_boat_rental_canoe">"Canoa"</string>
+    <string name="quest_boat_rental_houseboat">"Casa flotante"</string>
+    <string name="quest_boat_rental_rowboat">"Bote a remo"</string>
+    <string name="quest_boat_rental_raft">"Balsa"</string>
+    <string name="quest_boat_rental_surfboard">"Tabla de surf"</string>
+    <string name="quest_boat_rental_sailboard">"Tabla de windsurf"</string>
+    <string name="quest_boat_rental_yacht">"Yate"</string>
+    <string name="quest_boat_rental_standup_paddleboard">"Stand Up Paddleboard (SUP)"</string>
+    <string name="quest_powerAttachment_title">"¿Cómo está sujeta esta línea eléctrica?"</string>
+    <string name="quest_powerAttachment_suspension">"Colgada desde arriba"</string>
+    <string name="quest_powerAttachment_anchor">"Anclada horizontalmente"</string>
+    <string name="quest_powerAttachment_pin">"Sostenida desde abajo"</string>
+    <string name="pedestrian_zone_designated">"Designado para ciclismo acá"</string>
+    <string name="pedestrian_zone_allowed_sign">"Un cartel permite andar en bici acá"</string>
+    <string name="pedestrian_zone_no_sign">"Ningún cartel explícito sobre andar en bici acá"</string>
+    <string name="team_mode_description_overlay_hint">"Si usás capas, cada uno de ustedes debería usar una distinta, ya que solo las misiones se dividen."</string>
+    <string name="quest_dietType_glutenfree_name_title">"¿Se ofrecen productos sin TACC acá?"</string>
+    <string name="quest_dietType_explanation_glutenfree">"Preparar productos sin TACC requiere conocimiento, ya que especias y salsas comunes pueden contener gluten. La comida sin TACC debería estar explícitamente etiquetada como tal."</string>
+    <string name="quest_construction_minor_title">"¿Está terminada la obra menor acá?"</string>
+    <string name="map_attribution">"Atribución del mapa"</string>
+    <string name="link_panoramax_description">"Un software libre y de código abierto y servicio sin fines de lucro para compartir fotos a nivel de calle generadas por la comunidad."</string>
+    <string name="link_opengeofiction_description">"¿Cansado de mapear la realidad? ¡Creá mapas ficticios de forma colaborativa!"</string>
+    <string name="link_openclimbing_description">"Un mapa de sitios de escalada"</string>
+    <string name="pref_title_zoom_buttons">"Mostrar botones de zoom del mapa"</string>
+    <string name="overlay_mtb_scale">"Dificultad MTB"</string>
+    <string name="overlay_mtb_scale_0">"Grado 0"</string>
+    <string name="overlay_mtb_scale_0_description">"Superficie firme, con buen agarre, compactada o natural; sin obstáculos; pendiente suave; curvas amplias."</string>
+    <string name="overlay_mtb_scale_1">"Grado 1"</string>
+    <string name="overlay_mtb_scale_1_description">"Terreno parcialmente suelto con raíces pequeñas, piedras, erosión o surcos de agua; ≤ 40 % de pendiente; obstáculos que se pueden rodar; se requiere técnica de manejo básica."</string>
+    <string name="overlay_mtb_scale_2">"Grado 2"</string>
+    <string name="overlay_mtb_scale_2_description">"Terreno suelto con raíces y rocas más grandes, bajadas planas/pequeños escalones, hasta 70 % de pendiente; curvas cerradas fáciles; se requiere frenado avanzado y cambio de peso."</string>
+    <string name="overlay_mtb_scale_3">"Grado 3"</string>
+    <string name="overlay_mtb_scale_3_description">"Terreno resbaladizo y suelto con pedregales, rocas grandes, raíces grandes y piedras, escalones altos y travesías complicadas; curvas cerradas muy pronunciadas, &gt; 70 % de pendiente; se requiere muy buen equilibrio y frenado preciso."</string>
+    <string name="overlay_mtb_scale_4">"Grado 4"</string>
+    <string name="overlay_mtb_scale_4_description">"Obstáculos desafiantes y técnicos: rocas grandes, raíces, pedregales, rampas empinadas; curvas en horquilla con giro, bajadas planas con golpes de pedal; se requiere equilibrio perfecto, frenado preciso y reposicionamiento de la rueda trasera."</string>
+    <string name="overlay_mtb_scale_5">"Grado 5"</string>
+    <string name="overlay_mtb_scale_5_description">"Terreno rocoso ultra empinado con subidas a contrapendiente, campos de rocas, desprendimientos, curvas en horquilla con giro y obstáculos, bajadas altas consecutivas y árboles caídos. Es imposible llevar la bici al hombro para sortear obstáculos; es ineludible rodar. Se requiere maestría en trial."</string>
+    <string name="overlay_mtb_scale_6">"Grado 6"</string>
+    <string name="overlay_mtb_scale_6_description">"Terreno peligroso e intransitable, no apto para mountain bike."</string>
+    <string name="default_disabled_overlay_domain_expert">"Esta capa está deshabilitada por defecto porque necesitás ser un experto en el tema para registrar estos datos con precisión."</string>
+    <string name="pref_title_overlays">"Selección de capas"</string>
+    <string name="pref_overlays_reset">"¿Restablecer la activación de capas a la configuración predeterminada?"</string>
+    <string name="overlay">"Capa"</string>
+    <string name="enable_overlay_confirmation_title">"¿Habilitar esta capa?"</string>
+    <string name="link_transitous_description">"Rutas de transporte público libres y de código abierto, neutrales al proveedor."</string>
+    <string name="compass">"Brújula"</string>
+    <string name="quest_tracktype_grade2">"Mayormente firme"</string>
+    <string name="quest_tracktype_grade3">"Mixto"</string>
 </resources>

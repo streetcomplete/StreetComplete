@@ -2,7 +2,7 @@
 additionalStreetsignLanguages: [en]
 atmOperators: [Arab Bank, Housing Bank, Cairo Amman Bank, Jordan Kuwait Bank, Jordan Islamic Bank, دائرة الجمارك الأردنية, Salwa Islamic Bank, Islamic International Arab Bank, Bank al Etihad]
 centerLineStyle: yellow
-chargingStationOperators: [JoPetrol]
+chargingStationOperators: [Tesla, JoPetrol]
 firstDayOfWorkweek: Su
 mobileCountryCode: 416
 noParkingSignStyle: vienna

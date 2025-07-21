@@ -1,7 +1,6 @@
 import com.esotericsoftware.yamlbeans.YamlConfig
 import com.esotericsoftware.yamlbeans.YamlReader
 import com.esotericsoftware.yamlbeans.YamlWriter
-import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.Input
@@ -20,12 +19,12 @@ import java.net.URL
  *  popularSports: [soccer, tennis]  */
 open class GenerateMetadataByCountryTask : DefaultTask() {
 
-    @get:Input var sourceDir: String? = null
-    @get:Input var targetDir: String? = null
+    @get:Input lateinit var sourceDir: String
+    @get:Input lateinit var targetDir: String
 
     @TaskAction fun run() {
-        val sourceDir = sourceDir?.let { File(it) } ?: return
-        val targetDir = targetDir?.let { File(it) } ?: return
+        val sourceDir = File(sourceDir)
+        val targetDir = File(targetDir)
         val githubDirectoryListingUrl = URL("https://api.github.com/repos/streetcomplete/countrymetadata/contents/data")
 
         // create / clear target directory

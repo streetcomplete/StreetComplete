@@ -919,7 +919,6 @@ Data blir oppdatert etter %1$s dager og ubrukte data blir automatisk slettet ett
     <string name="quest_traffic_calming_type_island">"Trafikkøy"</string>
     <string name="quest_traffic_calming_type_chicane">"Sideforskyvning"</string>
     <string name="quest_traffic_calming_type_rumble_strip">"Rumlestripe(r)"</string>
-    <string name="quest_surface_value_concrete_plates">"Betongelementer"</string>
     <string name="quest_surface_value_concrete_lanes">"Spor med betongplater"</string>
     <string name="quest_fireHydrant_diameter_title">"Hvilken diameter er dokumentert på selve brannhydranten?"</string>
     <string name="quest_diet_answer_no_food">"Ingen servering"</string>

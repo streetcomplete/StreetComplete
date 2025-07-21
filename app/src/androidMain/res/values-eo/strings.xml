@@ -908,7 +908,6 @@ Datumoj estas refreŝigitaj post %1$s tagoj kaj neuzataj datumoj aŭtomate estas
     <string name="quest_traffic_calming_type_island">"Insulo"</string>
     <string name="quest_traffic_calming_type_chicane">"Devigita(j) kurbo(j)"</string>
     <string name="quest_traffic_calming_type_rumble_strip">"Skuiĝa(j) stripo(j)"</string>
-    <string name="quest_surface_value_concrete_plates">"Betonaj platoj"</string>
     <string name="quest_surface_value_concrete_lanes">"Betonaj vojeroj"</string>
     <string name="quest_fireHydrant_diameter_title">"Kiu diametro estas specifita sur la signo por ĉi tiu fajra hidranto?"</string>
     <string name="quest_diet_answer_no_food">"Ĝi ne havas manĝaĵon"</string>

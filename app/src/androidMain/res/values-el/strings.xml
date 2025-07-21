@@ -905,7 +905,6 @@
     <string name="quest_traffic_calming_type_island">"Νησίδα"</string>
     <string name="quest_traffic_calming_type_chicane">"Σκόπιμη καμπύλη(ες)"</string>
     <string name="quest_traffic_calming_type_rumble_strip">"Λωρίδα(ες)"</string>
-    <string name="quest_surface_value_concrete_plates">"Πλάκες από μπετόν"</string>
     <string name="quest_surface_value_concrete_lanes">"Λωρίδες από μπετόν"</string>
     <string name="quest_fireHydrant_diameter_title">"Ποια διάμετρος καθορίζεται στην πινακίδα για αυτόν τον πυροσβεστικό κρουνό;"</string>
     <string name="quest_diet_answer_no_food">"Δεν έχει φαγητό"</string>
@@ -1447,4 +1446,7 @@
     <string name="overlay">"Επικάλυψη"</string>
     <string name="enable_overlay_confirmation_title">"Ενεργοποίηση αυτής της επικάλυψης;"</string>
     <string name="link_transitous_description">"Δωρεάν και ανοιχτού κώδικα δρομολόγηση δημόσιων συγκοινωνιών με ουδέτερο πάροχο"</string>
+    <string name="compass">"Πυξίδα"</string>
+    <string name="quest_tracktype_grade2">"Κυρίως συμπαγής"</string>
+    <string name="quest_tracktype_grade3">"Μίγμα"</string>
 </resources>

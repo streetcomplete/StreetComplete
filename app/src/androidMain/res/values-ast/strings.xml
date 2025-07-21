@@ -911,7 +911,6 @@ Los datos actualícense cada %1$s díes y los datos ensin usar elimínense autom
     <string name="quest_traffic_calming_type_island">"Islla"</string>
     <string name="quest_traffic_calming_type_chicane">"Curves reductores de velocidá."</string>
     <string name="quest_traffic_calming_type_rumble_strip">"Bandes rugoses."</string>
-    <string name="quest_surface_value_concrete_plates">"Lloses de formigón"</string>
     <string name="quest_surface_value_concrete_lanes">"Roderes de formigón pa vehículos"</string>
     <string name="quest_fireHydrant_diameter_title">"¿Qué diámetru de toma ta especificáu nesti hidrante?"</string>
     <string name="quest_diet_answer_no_food">"Nun tien comida."</string>

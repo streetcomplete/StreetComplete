@@ -918,7 +918,6 @@ Andmeid uuendatakse automaatselt %1$s päeva järel ning kustutatakse %2$s päev
     <string name="quest_traffic_calming_type_island">"Eraldussaar"</string>
     <string name="quest_traffic_calming_type_chicane">"Tahtlik(ud) kurv(id)"</string>
     <string name="quest_traffic_calming_type_rumble_strip">"Täristi(d)"</string>
-    <string name="quest_surface_value_concrete_plates">"Betoonplaadid tee laiuses"</string>
     <string name="quest_surface_value_concrete_lanes">"Betoonplaadid rattaroobastes"</string>
     <string name="quest_fireHydrant_diameter_title">"Missugune toru läbimõõt on kirjas tuletõrjehüdrandi sildil?"</string>
     <string name="quest_diet_answer_no_food">"Siin ei pakuta toitu"</string>
@@ -1432,4 +1431,38 @@ Korrust loetakse katusekorruseks, kui tema aknad on katuse sees. Ning katused ü
     <string name="pedestrian_zone_allowed_sign">"Silt lubab siin jalgrattaga sõitmist"</string>
     <string name="pedestrian_zone_no_sign">"Pole ühest silti, mis kirjeldaks jalgrattasõidu lubatust"</string>
     <string name="team_mode_description_overlay_hint">"Kui kasutate ülekatteid, siis kõik peaks kasutama erinevaid, sest nimelt ülesanded on kõigil erinevad."</string>
+    <string name="quest_dietType_glutenfree_name_title">"Kas siin pakutakse gluteenivabu toite?"</string>
+    <string name="quest_dietType_explanation_glutenfree">"Kuna tavalised koostisosad, vürtsid ja kastmed võivad sisaldada gluteeni, siis gluteenivabade toitude valmistamine eeldab oskusteavet. Seega ka üldjuhul on toit vastavalt märgitud."</string>
+    <string name="quest_construction_minor_title">"Kas siinsed väiksemad teetööd on lõpetatud?"</string>
+    <string name="map_attribution">"Viitamine kaardi õiguste omanikule"</string>
+    <string name="link_panoramax_description">"Vaba ja avatud lähtekoodiga ning kasumit mittetaotlev teenus ühistööna kogutud tänavatasandi piltide jagamiseks"</string>
+    <string name="link_opengeofiction_description">"Kas oled tüdinenud päriselu kaardistamisest? Ühistöö korras saad luua ka väljamõeldud kaarte!"</string>
+    <string name="link_openclimbing_description">"Ronimiskohtade kaart"</string>
+    <string name="pref_title_zoom_buttons">"Näita kaardi suuminuppe"</string>
+    <string name="overlay_mtb_scale">"Raskusaste MTB skaalal"</string>
+    <string name="overlay_mtb_scale_0">"Raskusaste: 0"</string>
+    <string name="overlay_mtb_scale_0_description">"Tihe kruus või tambitud maapind, takistused puuduvad, laiad kurvid"</string>
+    <string name="overlay_mtb_scale_1">"Raskusaste: 1"</string>
+    <string name="overlay_mtb_scale_1_description">"Natuke lahtist kruusa või pinnast, väikesed takistused, laiad kurvid, ≤ 40 % kalle, piisab rattasõidu standardoskustest"</string>
+    <string name="overlay_mtb_scale_2">"Raskusaste: 2"</string>
+    <string name="overlay_mtb_scale_2_description">"Palju lahtist kruusa või pinnast, suuremad kivid, suured takistused, treppis tee, kuni 70% kalle, sõitja peab tundma keerukaid pidurdusvõtteid ja tasakaalu jagamist."</string>
+    <string name="overlay_mtb_scale_3">"Raskusaste: 3"</string>
+    <string name="overlay_mtb_scale_3_description">"Väga lahtine ja libisev kruus või pinnas, suured kivid, suured takistused, järsud kurvisilmused &gt; 70% kalle, sõitja peab tundma ülikeerukaid pidurdusvõtteid ja väga täpset tasakaalu jagamist.
+"</string>
+    <string name="overlay_mtb_scale_4">"Raskusaste: 4"</string>
+    <string name="overlay_mtb_scale_4_description">"Täiesti lahtine kruus ja väiksemad kivid, ülijärsud pöörded, ohtlikud kurvisilmused, järsud kukkumised, sõitja peab oskama ülitäpselt pidurdada, tabama täpselt tasakaalu ning oskama tagaratta asukohta muuta.
+"</string>
+    <string name="overlay_mtb_scale_5">"Raskusaste: 5"</string>
+    <string name="overlay_mtb_scale_5_description">"Üliraske rada, ülijärsud nõlvad, kivikülvid, väiksema maalihke võimalus, ohtlikud takistustega kurvisilmused, kõrged kukkumised, langenud puud. Ratast pole võimalik takistustest mööda tõsta, edasi pääseb vaid rattal ning eeldab meistersõitja ja traielioskusi."</string>
+    <string name="overlay_mtb_scale_6">"Raskusaste: 6"</string>
+    <string name="overlay_mtb_scale_6_description">"Ohtlik ja läbipääsmatu maastik, mis ei sobi mägirattasõiduks."</string>
+    <string name="default_disabled_overlay_domain_expert">"See ülekate vaikimisi pole kasutusel - andmete korrektseks ülestähendamiseks peaksid olema selle valdkonna ekspert."</string>
+    <string name="pref_title_overlays">"Ülekatte valik"</string>
+    <string name="pref_overlays_reset">"Kas lähtestad vaikimisi ülekatte seadistused?"</string>
+    <string name="overlay">"Ülekate"</string>
+    <string name="enable_overlay_confirmation_title">"Kas võtad selle ülekatte kasutusele?"</string>
+    <string name="link_transitous_description">"Teenusepakkujast sõltumatu ja neutraalne avatud lähtekoodiga teekonna koostamine ühistranspordis"</string>
+    <string name="compass">"Kompass"</string>
+    <string name="quest_tracktype_grade2">"Peamiselt kõva: sillutamata tee, kruus, kivi või kõva pinnas"</string>
+    <string name="quest_tracktype_grade3">"Ühtlane segu kõvadest ja pehmetest materjalidest"</string>
 </resources>

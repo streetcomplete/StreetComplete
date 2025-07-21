@@ -916,7 +916,6 @@ Duomenys atnaujinami po %1$s dienų, o nepanaudoti duomenys ištrinami po %2$s d
     <string name="quest_traffic_calming_type_island">"Sala"</string>
     <string name="quest_traffic_calming_type_chicane">"Tyčinis (-iai) išlenkimas (-ai)"</string>
     <string name="quest_traffic_calming_type_rumble_strip">"Rumbelinė (-ės) juosta (-os)"</string>
-    <string name="quest_surface_value_concrete_plates">"Betono plokštės"</string>
     <string name="quest_surface_value_concrete_lanes">"Betono juostos"</string>
     <string name="quest_fireHydrant_diameter_title">"Koks šio gaisrinio hidranto skersmuo nurodytas ženkle?"</string>
     <string name="quest_diet_answer_no_food">"Jame nėra maisto"</string>

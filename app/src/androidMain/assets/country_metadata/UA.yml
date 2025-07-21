@@ -1,7 +1,7 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [ПриватБанк, Альфа-Банк, Ukrsibbank, Акціонерне товариство "Державний ощадний банк України", Ощадбанк, UkrSibbank, УкрСиббанк, Райффайзен Банк, Sense Bank, Приватбанк, Raiffeisen Bank, ПУМБ, Райффайзен Банк Аваль, Сенс Банк, Укрексімбанк, Euronet, Укргазбанк, KredoBank, Кредобанк, Crédit Agricole, Аваль, Правекс-Банк, ПСБ, UniCredit Bank, Райфайзен Банк Аваль, Credit Agricole, Privatbank, ПАТ "Укрсоцбанк", Shitcoins.club, Укрсиббанк, Промінвестбанк, Полтава-Банк, Райфайзен банк Аваль, Банк Південний, PrivatBank, MTB Bank, приватбанк, Південний, Індустріалбанк, UGB, ЦРБ, Таскомбанк, Банк Форум, Акордбанк, OTP Bank]
+atmOperators: [ПриватБанк, Альфа-Банк, Ukrsibbank, Акціонерне товариство "Державний ощадний банк України", Ощадбанк, UkrSibbank, УкрСиббанк, Райффайзен Банк, Sense Bank, Приватбанк, Raiffeisen Bank, ПУМБ, Райффайзен Банк Аваль, Сенс Банк, Укрексімбанк, Euronet, Укргазбанк, KredoBank, Кредобанк, Crédit Agricole, Аваль, Правекс-Банк, ПСБ, UniCredit Bank, Райфайзен Банк Аваль, Credit Agricole, Privatbank, ПАТ "Укрсоцбанк", Shitcoins.club, Укрсиббанк, Промінвестбанк, Полтава-Банк, Райфайзен банк Аваль, Банк Південний, UGB, PrivatBank, MTB Bank, приватбанк, Південний, Індустріалбанк, OTP Bank, ЦРБ, Таскомбанк, Банк Форум, Акордбанк]
 centerLineStyle: white
-chargingStationOperators: [Перша національна мережа електрозаправних комплексів Тока, Toka, AutoEnterprise, Одеська міська рада, ЕлектроДрайв, ElectroUA, EcoFactor, Autoenterprise, Ionity, Перша національна мережа електрозаправних комплексів "Тока", Yasno, Eva Chargers, Автоэнтерпрайз, Автоентерпрайз, АвтоЭнтерпрайз, Get-Charging, Electro UA, Infinite Charge, Go To-U, Faster, Ecofactor, Тока, ionity.ua, ionity, UGV Chargers, Silver Fox Energy, Infinite Chage, IONITY, GO TO-U, FLASH, Eva Charges, АвтоЕнтерпрайз, WOG, Tesla Club Ukraine, Eva Charge, AutoVolt, AutoEnterprise 201]
+chargingStationOperators: [Перша національна мережа електрозаправних комплексів Тока, Toka, AutoEnterprise, EVA Chargers, Одеська міська рада, ЕлектроДрайв, ElectroUA, EcoFactor, Autoenterprise, Ionity, Перша національна мережа електрозаправних комплексів "Тока", Yasno, Автоэнтерпрайз, Автоентерпрайз, АвтоЭнтерпрайз, UGV Chargers, Electro UA, Go To-U, Get-Charging, Faster, Ecofactor, Тока, ionity.ua, ionity, Silver Fox Energy, Infinite Chage, IONITY, GO TO-U, FLASH, WOG, Tesla Club Ukraine, AutoVolt, AutoEnterprise 201]
 clothesContainerOperators: [Зелений промінь, Кошик добра, Кошик Добра, Емаус-Оселя]
 defaultSpeedLimitHasUrbanOrRural: true
 edgeLineStyle: white
@@ -15,7 +15,7 @@ noParkingLineStyle: dashed yellow
 noStoppingLineStyle: yellow
 officialLanguages: [uk, ru]
 orchardProduces: [apple, tomato, grape, plum, chilli_pepper, sweet_pepper, walnut, pear, cherry, strawberry, apricot, raspberry, peach, hop, hazelnut, blueberry]
-parcelLockerBrand: [Нова Пошта, Нова пошта, Meest, Rozetka, Епіцентр К]
+parcelLockerBrand: [Нова Пошта, Нова пошта, Епіцентр К, Meest, Rozetka]
 popularReligions: [christian, muslim, jewish]
 postboxesHaveCollectionTimes: true
 slowZoneLabelPosition: top

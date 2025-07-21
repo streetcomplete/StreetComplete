@@ -12,17 +12,15 @@ import java.util.Locale
 /** Update the presets metadata and its translations for use with the de.westnordost:osmfeatures
  *  library */
 open class UpdatePresetsTask : DefaultTask() {
-    @get:Input var languageCodes: Collection<String>? = null
-    @get:Input var targetDir: String? = null
-    @get:Input var version: String? = null
+    @get:Input lateinit var languageCodes: Collection<String>
+    @get:Input lateinit var targetDir: String
+    @get:Input lateinit var version: String
 
     @TaskAction fun run() {
-        val targetDir = targetDir ?: return
         /* eagerly also fetch different variants of a language (e.g. "en-NZ" also when just "en"
            is specified as well as "sr" if just "sr-Cyrl" is specified). Hence, we only look at the
            language code */
-        val exportLanguages = languageCodes?.map { Locale(Locale.forLanguageTag(it).language) }
-        val version = version ?: return
+        val exportLanguages = languageCodes.map { Locale.of(Locale.forLanguageTag(it).language) }
 
         // copy and reduce the presets.json
         val presetsFile = File("$targetDir/presets.json")
@@ -32,8 +30,8 @@ open class UpdatePresetsTask : DefaultTask() {
         val localizationMetadataList = fetchLocalizationMetadata()
         for (localizationMetadata in localizationMetadataList) {
             val locale = localizationMetadata.locale
-            val languageLocale = Locale(locale.language)
-            if (exportLanguages != null && !exportLanguages.any { it == languageLocale }) continue
+            val languageLocale = Locale.of(locale.language)
+            if (!exportLanguages.any { it == languageLocale }) continue
 
             val javaLanguageTag = locale.toLanguageTag()
             println(javaLanguageTag)

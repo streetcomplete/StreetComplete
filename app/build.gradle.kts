@@ -8,14 +8,14 @@ import java.util.Properties
 
 
 /** App version name, code and flavor */
-val appVersionName = "61.1"
-val appVersionCode = 6101
+val appVersionName = "61.2"
+val appVersionCode = 6102
 
 /** Whether this build will be uploaded to Google Play / Apple AppStore */
 val appForMonopolisticAppStore = false
 
 /** Localizations the app should be available in */
-val bcp47ExportLanguages = setOf(
+val bcp47ExportLanguages = setOf<String>(
     "ar", "ast", "be", "bg", "bs", "ca", "cs", "da", "de", "el",
     "en", "en-AU", "en-GB", "eo", "es", "es-AR", "et", "eu",
     "fa", "fi", "fr", "gl", "he", "hr", "hu", "hy",
@@ -30,18 +30,18 @@ val presetsVersion = "v6.11.0"
 
 /** Version of the Name Suggestion Index to use
  *  see https://github.com/osmlab/name-suggestion-index/tags for latest version */
-val nsiVersion = "v6.0.20250525"
+val nsiVersion = "v6.0.20250720"
 
 /** Project ID of the crowdsource translation platform (from where to pull translations from) */
 val poEditorProjectId = "97843"
 
 plugins {
-    id("org.jetbrains.kotlin.multiplatform") version "2.1.21"
-    id("org.jetbrains.kotlin.plugin.serialization") version "2.1.21"
-    id("org.jetbrains.kotlin.plugin.compose") version "2.1.21"
+    id("org.jetbrains.kotlin.multiplatform") version "2.2.0"
+    id("org.jetbrains.kotlin.plugin.serialization") version "2.2.0"
+    id("org.jetbrains.kotlin.plugin.compose") version "2.2.0"
     id("com.android.application") version "8.10.1"
-    id("org.jetbrains.compose") version "1.8.1"
-    id("org.jetbrains.kotlinx.atomicfu") version "0.27.0"
+    id("org.jetbrains.compose") version "1.8.2"
+    id("org.jetbrains.kotlinx.atomicfu") version "0.29.0"
     id("com.codingfeline.buildkonfig") version "0.17.1"
 }
 
@@ -101,10 +101,10 @@ kotlin {
 
                 // Atomics, Locks, Synchronization
                 // Aparently only necessary as long as https://github.com/Kotlin/kotlinx-atomicfu/issues/145 is not solved
-                implementation("org.jetbrains.kotlinx:atomicfu:0.27.0")
+                implementation("org.jetbrains.kotlinx:atomicfu:0.29.0")
 
                 // Dependency injection
-                implementation(project.dependencies.platform("io.insert-koin:koin-bom:4.1.0-RC1"))
+                implementation(project.dependencies.platform("io.insert-koin:koin-bom:4.1.0"))
                 implementation("io.insert-koin:koin-core")
                 implementation("io.insert-koin:koin-compose")
                 implementation("io.insert-koin:koin-compose-viewmodel")
@@ -114,24 +114,24 @@ kotlin {
                 implementation("com.russhwolf:multiplatform-settings:1.3.0")
 
                 // I/O
-                implementation("org.jetbrains.kotlinx:kotlinx-io-core:0.7.0")
+                implementation("org.jetbrains.kotlinx:kotlinx-io-core:0.8.0")
 
                 // HTTP client
-                implementation("io.ktor:ktor-client-core:3.1.3")
-                implementation("io.ktor:ktor-client-encoding:3.1.3")
+                implementation("io.ktor:ktor-client-core:3.2.2")
+                implementation("io.ktor:ktor-client-encoding:3.2.2")
                 // SHA256 hashing, used during OAuth authentication
                 implementation("org.kotlincrypto.hash:sha2:0.7.0")
 
                 // XML
-                implementation("io.github.pdvrieze.xmlutil:core:0.91.0")
-                implementation("io.github.pdvrieze.xmlutil:core-io:0.91.0")
+                implementation("io.github.pdvrieze.xmlutil:core:0.91.1")
+                implementation("io.github.pdvrieze.xmlutil:core-io:0.91.1")
 
                 // YAML
-                implementation("com.charleskorn.kaml:kaml:0.77.1")
+                implementation("com.charleskorn.kaml:kaml:0.85.0")
 
                 // JSON
-                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.8.1")
-                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json-io:1.8.1")
+                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.9.0")
+                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json-io:1.9.0")
 
                 // Date / time
                 implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.6.2")
@@ -154,18 +154,18 @@ kotlin {
                 implementation(compose.components.uiToolingPreview)
 
                 // UI Navigation
-                implementation("org.jetbrains.androidx.navigation:navigation-compose:2.9.0-beta02")
+                implementation("org.jetbrains.androidx.navigation:navigation-compose:2.9.0-beta03")
 
                 // UI ViewModel
-                implementation("org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-compose:2.9.0")
+                implementation("org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-compose:2.9.1")
 
                 // UI widgets
 
                 // reorderable lists (raw Compose API is pretty complicated)
-                implementation("sh.calvin.reorderable:reorderable:2.4.3")
+                implementation("sh.calvin.reorderable:reorderable:2.5.1")
 
                 // multiplatform webview (for login via OAuth)
-                implementation("io.github.kevinnzou:compose-webview-multiplatform:1.9.40")
+                implementation("io.github.kevinnzou:compose-webview-multiplatform:2.0.1")
 
                 // sharing presets/settings via QR Code
                 implementation("io.github.alexzhirkevich:qrose:1.0.1")
@@ -182,10 +182,10 @@ kotlin {
                 // Android stuff
                 implementation("com.google.android.material:material:1.12.0")
                 implementation("androidx.core:core-ktx:1.16.0")
-                implementation("androidx.appcompat:appcompat:1.7.0")
+                implementation("androidx.appcompat:appcompat:1.7.1")
                 implementation("androidx.constraintlayout:constraintlayout:2.2.1")
                 implementation("androidx.annotation:annotation:1.9.1")
-                implementation("androidx.fragment:fragment-ktx:1.8.7")
+                implementation("androidx.fragment:fragment-ktx:1.8.8")
                 implementation("androidx.recyclerview:recyclerview:1.4.0")
                 implementation("androidx.localbroadcastmanager:localbroadcastmanager:1.1.0")
 
@@ -200,10 +200,10 @@ kotlin {
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.10.2")
 
                 // scheduling background jobs
-                implementation("androidx.work:work-runtime-ktx:2.10.1")
+                implementation("androidx.work:work-runtime-ktx:2.10.2")
 
                 // HTTP Client
-                implementation("io.ktor:ktor-client-android:3.1.3")
+                implementation("io.ktor:ktor-client-android:3.2.2")
 
                 // widgets
                 implementation("androidx.viewpager2:viewpager2:1.1.0")
@@ -212,7 +212,7 @@ kotlin {
                 implementation("com.github.chrisbanes:PhotoView:2.3.0")
 
                 // map and location
-                implementation("org.maplibre.gl:android-sdk:11.8.8")
+                implementation("org.maplibre.gl:android-sdk:11.12.1")
             }
         }
         iosMain {
@@ -317,7 +317,7 @@ android {
     }
 
     dependencies {
-        debugImplementation("androidx.compose.ui:ui-tooling:1.8.2")
+        debugImplementation("androidx.compose.ui:ui-tooling:1.8.3")
     }
 }
 

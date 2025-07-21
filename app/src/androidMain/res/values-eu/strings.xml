@@ -914,7 +914,6 @@ Ikus itzazu aukera posible guztiak: batzuetan ez da oso argia, adibidez errepide
     <string name="quest_traffic_calming_type_island">"Uhartea"</string>
     <string name="quest_traffic_calming_type_chicane">"Apropos egindako bihurguneak"</string>
     <string name="quest_traffic_calming_type_rumble_strip">"Burrunba errenkada(k)"</string>
-    <string name="quest_surface_value_concrete_plates">"Porlanezko plakak"</string>
     <string name="quest_surface_value_concrete_lanes">"Porlanezko errailak"</string>
     <string name="quest_fireHydrant_diameter_title">"Zein da ur-hargune honetan aipatzen den diametroa?"</string>
     <string name="quest_diet_answer_no_food">"Ez du janaririk"</string>
