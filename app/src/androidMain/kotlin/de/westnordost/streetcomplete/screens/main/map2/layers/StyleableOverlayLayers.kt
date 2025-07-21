@@ -17,7 +17,6 @@ import dev.sargunv.maplibrecompose.compose.layer.FillLayer
 import dev.sargunv.maplibrecompose.compose.layer.LineLayer
 import dev.sargunv.maplibrecompose.compose.layer.SymbolLayer
 import dev.sargunv.maplibrecompose.core.source.Source
-import dev.sargunv.maplibrecompose.expressions.dsl.Feature
 import dev.sargunv.maplibrecompose.expressions.dsl.all
 import dev.sargunv.maplibrecompose.expressions.dsl.asNumber
 import dev.sargunv.maplibrecompose.expressions.dsl.condition
@@ -26,6 +25,8 @@ import dev.sargunv.maplibrecompose.expressions.dsl.convertToBoolean
 import dev.sargunv.maplibrecompose.expressions.dsl.convertToColor
 import dev.sargunv.maplibrecompose.expressions.dsl.convertToNumber
 import dev.sargunv.maplibrecompose.expressions.dsl.convertToString
+import dev.sargunv.maplibrecompose.expressions.dsl.feature
+import dev.sargunv.maplibrecompose.expressions.dsl.image
 import dev.sargunv.maplibrecompose.expressions.dsl.nil
 import dev.sargunv.maplibrecompose.expressions.dsl.offset
 import dev.sargunv.maplibrecompose.expressions.dsl.not
@@ -49,22 +50,22 @@ fun StyleableOverlayLabelLayer(
         id = "overlay-symbols",
         source = source,
         minZoom = 17f,
-        filter = Feature.isPoint(),
+        filter = feature.isPoint(),
         zOrder = const(SymbolZOrder.Source),
-        iconImage = Feature.get("icon"), // TODO
+        iconImage = image(feature["icon"]), // TODO
         iconSize = byZoom(17 to 0.5f, 19 to 1f),
         iconColor = const(color),
         iconHaloColor = const(haloColor),
         iconHaloWidth = const(2.5.dp),
         iconAllowOverlap = const(true),
-        textField = Feature.get("label").convertToString(),
+        textField = feature["label"].convertToString(),
         textColor = const(color),
         textHaloColor = const(haloColor),
         textHaloWidth = const(2.5.dp),
         textFont = const(listOf("Roboto Regular")),
         textAnchor = const(SymbolAnchor.Top),
         textOffset = switch(
-            condition(Feature.has("icon"), offset(0.em, 1.em)),
+            condition(feature.has("icon"), offset(0.em, 1.em)),
             fallback = offset(0.em, 0.em)
         ),
         textSize = const(16.sp),
@@ -84,18 +85,18 @@ fun StyleableOverlayLayers(
     source: Source,
     onClick: FeaturesClickHandler? = null,
 ) {
-    val dashed = Feature.get("dashed").convertToBoolean()
-    val opacity = Feature.get("opacity").convertToNumber()
-    val color = Feature.get("color").convertToColor()
-    val outlineColor = Feature.get("outline-color").convertToColor()
-    val width = inMeters(Feature.get("width").asNumber())
+    val dashed = feature["dashed"].convertToBoolean()
+    val opacity = feature["opacity"].convertToNumber()
+    val color = feature["color"].convertToColor()
+    val outlineColor = feature["outline-color"].convertToColor()
+    val width = inMeters(feature["width"].asNumber())
     val casingWidth = inMeters(0.5f)
 
     LineLayer(
         id = "overlay-lines-casing",
         source = source,
         minZoom = MIN_ZOOM,
-        filter = all(Feature.isLines(), !Feature.has("offset"), !dashed),
+        filter = all(feature.isLines(), !feature.has("offset"), !dashed),
         opacity = opacity,
         color = outlineColor,
         width = casingWidth,
@@ -107,7 +108,7 @@ fun StyleableOverlayLayers(
         id = "overlay-fills",
         source = source,
         minZoom = MIN_ZOOM,
-        filter = Feature.isArea(),
+        filter = feature.isArea(),
         opacity = opacity,
         color = color,
         onClick = onClick,
@@ -116,7 +117,7 @@ fun StyleableOverlayLayers(
         id = "overlay-lines",
         source = source,
         minZoom = MIN_ZOOM,
-        filter = all(Feature.isLines(), !Feature.has("offset")),
+        filter = all(feature.isLines(), !feature.has("offset")),
         opacity = opacity,
         color = color,
         width = width,
@@ -135,7 +136,7 @@ fun StyleableOverlayLayers(
         id = "overlay-fills-outline",
         source = source,
         minZoom = MIN_ZOOM,
-        filter = Feature.isArea(),
+        filter = feature.isArea(),
         opacity = opacity,
         color = outlineColor,
         width = casingWidth,
@@ -146,32 +147,32 @@ fun StyleableOverlayLayers(
         id = "overlay-heights",
         source = source,
         minZoom = MIN_ZOOM,
-        filter = all(Feature.isArea(), Feature.has("height")),
+        filter = all(feature.isArea(), feature.has("height")),
         // data-driven-styling not supported (see https://maplibre.org/maplibre-style-spec/layers/#fill-extrusion-opacity)
         opacity = const(1f), // cannot use `opacity = opacity`
         color = color,
-        height = Feature.get("height").convertToNumber(),
-        base = Feature.get("min-height").convertToNumber()
+        height = feature["height"].convertToNumber(),
+        base = feature["min-height"].convertToNumber()
     )
 }
 
 /** Display styled left-right-of-line map data */
 @MaplibreComposable @Composable
 fun StyleableOverlaySideLayer(source: Source, isBridge: Boolean) {
-    val bridge = Feature.get("bridge").convertToBoolean()
-    val dashed = Feature.get("dashed").convertToBoolean()
-    val opacity = Feature.get("opacity").convertToNumber()
-    val color = Feature.get("color").convertToColor()
-    val width = inMeters(Feature.get("width").asNumber())
-    val offset = inMeters(Feature.get("offset").asNumber())
+    val bridge = feature["bridge"].convertToBoolean()
+    val dashed = feature["dashed"].convertToBoolean()
+    val opacity = feature["opacity"].convertToNumber()
+    val color = feature["color"].convertToColor()
+    val width = inMeters(feature["width"].asNumber())
+    val offset = inMeters(feature["offset"].asNumber())
 
     LineLayer(
         id = "overlay-lines-side",
         source = source,
         minZoom = MIN_ZOOM,
         filter = all(
-            Feature.isLines(),
-            Feature.has("offset"),
+            feature.isLines(),
+            feature.has("offset"),
             if (isBridge) bridge else !bridge
         ),
         color = color,

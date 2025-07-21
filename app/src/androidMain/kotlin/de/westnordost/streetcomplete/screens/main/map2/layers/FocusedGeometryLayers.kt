@@ -20,9 +20,9 @@ import dev.sargunv.maplibrecompose.compose.layer.FillLayer
 import dev.sargunv.maplibrecompose.compose.layer.LineLayer
 import dev.sargunv.maplibrecompose.compose.source.rememberGeoJsonSource
 import dev.sargunv.maplibrecompose.core.source.GeoJsonData
-import dev.sargunv.maplibrecompose.expressions.dsl.Feature
 import dev.sargunv.maplibrecompose.expressions.dsl.any
 import dev.sargunv.maplibrecompose.expressions.dsl.const
+import dev.sargunv.maplibrecompose.expressions.dsl.feature
 import dev.sargunv.maplibrecompose.expressions.value.LineCap
 import dev.sargunv.maplibrecompose.expressions.value.LineJoin
 import kotlin.math.PI
@@ -44,21 +44,20 @@ fun FocusedGeometryLayers(geometry: ElementGeometry) {
     val circleRadius = ((breathing + 1) * 10).dp // 10..20
 
     val source = rememberGeoJsonSource(
-        id = "focus-geometry-source",
         data = GeoJsonData.Features(geometry.toGeometry())
     )
 
     FillLayer(
         id = "focus-geo-fill",
         source = source,
-        filter = Feature.isArea(),
+        filter = feature.isArea(),
         opacity = const(0.3f),
         color = const(MaterialTheme.colors.secondary),
     )
     LineLayer(
         id = "focus-geo-lines",
         source = source,
-        filter = any(Feature.isArea(), Feature.isLines()),
+        filter = any(feature.isArea(), feature.isLines()),
         opacity = const(opacity),
         color = const(MaterialTheme.colors.secondary),
         width = const(lineWidth),
@@ -68,7 +67,7 @@ fun FocusedGeometryLayers(geometry: ElementGeometry) {
     CircleLayer(
         id = "focus-geo-circle",
         source = source,
-        filter = Feature.isPoint(),
+        filter = feature.isPoint(),
         opacity = const(opacity),
         color = const(MaterialTheme.colors.secondary),
         radius = const(circleRadius),

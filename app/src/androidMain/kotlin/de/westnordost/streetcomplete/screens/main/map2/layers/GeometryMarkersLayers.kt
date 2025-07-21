@@ -22,14 +22,15 @@ import dev.sargunv.maplibrecompose.compose.layer.SymbolLayer
 import dev.sargunv.maplibrecompose.compose.source.rememberGeoJsonSource
 import dev.sargunv.maplibrecompose.core.source.GeoJsonData
 import dev.sargunv.maplibrecompose.expressions.dsl.any
-import dev.sargunv.maplibrecompose.expressions.dsl.asString
 import dev.sargunv.maplibrecompose.expressions.dsl.const
-import dev.sargunv.maplibrecompose.expressions.dsl.Feature
 import dev.sargunv.maplibrecompose.expressions.dsl.convertToString
+import dev.sargunv.maplibrecompose.expressions.dsl.feature
+import dev.sargunv.maplibrecompose.expressions.dsl.image
 import dev.sargunv.maplibrecompose.expressions.dsl.offset
 import dev.sargunv.maplibrecompose.expressions.value.LineCap
 import dev.sargunv.maplibrecompose.expressions.value.LineJoin
 import dev.sargunv.maplibrecompose.expressions.value.SymbolAnchor
+import io.github.dellisd.spatialk.geojson.Feature
 import io.github.dellisd.spatialk.geojson.FeatureCollection
 import kotlinx.serialization.json.JsonElement
 import kotlinx.serialization.json.JsonPrimitive
@@ -39,21 +40,20 @@ import kotlinx.serialization.json.JsonPrimitive
 @MaplibreComposable @Composable
 fun GeometryMarkersLayers(markers: Collection<Marker>) {
     val source = rememberGeoJsonSource(
-        id = "geometry-source",
         data = GeoJsonData.Features(FeatureCollection(markers.flatMap { it.toGeoJsonFeature() }))
     )
 
     FillLayer(
         id = "geo-fill",
         source = source,
-        filter = Feature.isArea(),
+        filter = feature.isArea(),
         opacity = const(0.3f),
         color = const(Color.GeometryMarker),
     )
     LineLayer(
         id = "geo-lines",
         source = source,
-        filter = any(Feature.isArea(), Feature.isLines()),
+        filter = any(feature.isArea(), feature.isLines()),
         opacity = const(0.5f),
         color = const(Color.GeometryMarker),
         width = const(10.dp),
@@ -63,11 +63,11 @@ fun GeometryMarkersLayers(markers: Collection<Marker>) {
     SymbolLayer(
         id = "geo-symbols",
         source = source,
-        filter = Feature.isPoint(),
-        iconImage = Feature.get("icon"), // TODO get icon!!
+        filter = feature.isPoint(),
+        iconImage = image(feature["icon"]), // TODO get icon!!
         iconSize = byZoom(17 to 0.5f, 19 to 1f),
         iconAllowOverlap = const(true),
-        textField = Feature.get("label").convertToString(),
+        textField = feature["label"].convertToString(),
         textColor = const(Color.GeometryMarker),
         textSize = const(16.sp),
         textFont = const(listOf("Roboto Bold")),
@@ -84,10 +84,8 @@ data class Marker(
     val title: String? = null
 )
 
-private typealias GeoJsonFeature = io.github.dellisd.spatialk.geojson.Feature
-
-private fun Marker.toGeoJsonFeature(): List<GeoJsonFeature> {
-    val features = ArrayList<GeoJsonFeature>(3)
+private fun Marker.toGeoJsonFeature(): List<Feature> {
+    val features = ArrayList<Feature>(3)
     // point marker or any marker with title or icon
     if (icon != null || title != null || geometry is ElementPointGeometry) {
         val p = HashMap<String, JsonElement>(2)
@@ -99,12 +97,12 @@ private fun Marker.toGeoJsonFeature(): List<GeoJsonFeature> {
         if (title != null) {
             p["label"] = JsonPrimitive(title)
         }
-        features.add(GeoJsonFeature(geometry.toGeometry(), p))
+        features.add(Feature(geometry.toGeometry(), p))
     }
 
     // polygon / polylines marker(s)
     if (geometry is ElementPolygonsGeometry || geometry is ElementPolylinesGeometry) {
-        features.add(GeoJsonFeature(geometry.toGeometry()))
+        features.add(Feature(geometry.toGeometry()))
     }
     return features
 }

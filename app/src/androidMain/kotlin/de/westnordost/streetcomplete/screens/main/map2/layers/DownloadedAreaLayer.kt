@@ -21,7 +21,6 @@ import org.jetbrains.compose.resources.painterResource
 @Composable @MaplibreComposable
 fun DownloadedAreaLayer(tiles: Collection<TilePos>) {
     val source = rememberGeoJsonSource(
-        id = "downloaded-area-source",
         data = GeoJsonData.Features(tiles.toHolesInWorldPolygon())
     )
 

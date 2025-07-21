@@ -33,7 +33,6 @@ fun CurrentLocationLayers(
     // TODO animate accuracy, position
 
     val source = rememberGeoJsonSource(
-        id = "location-source",
         data = GeoJsonData.Features(location.position.toGeometry())
     )
 

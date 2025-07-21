@@ -14,10 +14,10 @@ import dev.sargunv.maplibrecompose.compose.MaplibreComposable
 import dev.sargunv.maplibrecompose.compose.layer.LineLayer
 import dev.sargunv.maplibrecompose.core.source.Source
 import dev.sargunv.maplibrecompose.expressions.ast.Expression
-import dev.sargunv.maplibrecompose.expressions.dsl.Feature
 import dev.sargunv.maplibrecompose.expressions.dsl.condition
 import dev.sargunv.maplibrecompose.expressions.dsl.const
 import dev.sargunv.maplibrecompose.expressions.dsl.convertToBoolean
+import dev.sargunv.maplibrecompose.expressions.dsl.feature
 import dev.sargunv.maplibrecompose.expressions.dsl.image
 import dev.sargunv.maplibrecompose.expressions.dsl.switch
 import dev.sargunv.maplibrecompose.expressions.value.FloatValue
@@ -46,7 +46,7 @@ private fun TracksLayerApril1st(
     source: Source,
     opacity: Expression<FloatValue>,
 ) {
-    val recording = Feature.get("recording").convertToBoolean()
+    val recording = feature["recording"].convertToBoolean()
 
     LineLayer(
         id = id,
@@ -66,7 +66,7 @@ private fun TracksLayerDefault(
     source: Source,
     opacity: Expression<FloatValue>,
 ) {
-    val recording = Feature.get("recording").convertToBoolean()
+    val recording = feature["recording"].convertToBoolean()
 
     LineLayer(
         id = id,

@@ -159,7 +159,7 @@ kotlin {
                 // UI widgets
 
                 // Map
-                implementation("dev.sargunv.maplibre-compose:maplibre-compose:0.9.1")
+                implementation("dev.sargunv.maplibre-compose:maplibre-compose:0.10.1")
 
                 // reorderable lists (raw Compose API is pretty complicated)
                 implementation("sh.calvin.reorderable:reorderable:2.5.1")

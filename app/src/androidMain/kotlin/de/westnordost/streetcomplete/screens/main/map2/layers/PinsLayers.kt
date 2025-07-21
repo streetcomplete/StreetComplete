@@ -17,7 +17,6 @@ import dev.sargunv.maplibrecompose.compose.layer.SymbolLayer
 import dev.sargunv.maplibrecompose.compose.source.rememberGeoJsonSource
 import dev.sargunv.maplibrecompose.core.source.GeoJsonData
 import dev.sargunv.maplibrecompose.core.source.GeoJsonOptions
-import dev.sargunv.maplibrecompose.expressions.dsl.Feature
 import dev.sargunv.maplibrecompose.expressions.dsl.all
 import dev.sargunv.maplibrecompose.expressions.dsl.any
 import dev.sargunv.maplibrecompose.expressions.dsl.const
@@ -25,6 +24,7 @@ import dev.sargunv.maplibrecompose.expressions.dsl.convertToNumber
 import dev.sargunv.maplibrecompose.expressions.dsl.convertToString
 import dev.sargunv.maplibrecompose.expressions.dsl.plus
 import dev.sargunv.maplibrecompose.expressions.dsl.div
+import dev.sargunv.maplibrecompose.expressions.dsl.feature
 import dev.sargunv.maplibrecompose.expressions.dsl.gt
 import dev.sargunv.maplibrecompose.expressions.dsl.gte
 import dev.sargunv.maplibrecompose.expressions.dsl.image
@@ -34,6 +34,7 @@ import dev.sargunv.maplibrecompose.expressions.dsl.offset
 import dev.sargunv.maplibrecompose.expressions.dsl.sp
 import dev.sargunv.maplibrecompose.expressions.dsl.zoom
 import dev.sargunv.maplibrecompose.expressions.value.TranslateAnchor
+import io.github.dellisd.spatialk.geojson.Feature
 import io.github.dellisd.spatialk.geojson.FeatureCollection
 import kotlinx.serialization.json.JsonPrimitive
 import org.jetbrains.compose.resources.painterResource
@@ -47,7 +48,6 @@ fun PinsLayers(
 ) {
     // TODO is this recomposed all the time? In that case, remember the features
     val source = rememberGeoJsonSource(
-        id = "pins-source",
         data = GeoJsonData.Features(FeatureCollection(pins.map { it.toGeoJsonFeature() })),
         options = GeoJsonOptions(
             cluster = true,
@@ -64,14 +64,14 @@ fun PinsLayers(
         filter = all(
             zoom() gte const(CLUSTER_MIN_ZOOM),
             zoom() lte const(CLUSTER_MAX_ZOOM),
-            Feature.get("point_count").convertToNumber() gt const(1)
+            feature["point_count"].convertToNumber() gt const(1)
         ),
         iconImage = image(painterResource(Res.drawable.map_pin_circle)),
-        iconSize = const(0.5f) + (log2(Feature.get("point_count").convertToNumber()) / const(10f)),
+        iconSize = const(0.5f) + (log2(feature["point_count"].convertToNumber()) / const(10f)),
         iconAllowOverlap = const(true),
         iconIgnorePlacement = const(true),
-        textField = Feature.get("point_count").convertToString(),
-        textSize = (const(15f) + (log2(Feature.get("point_count").convertToNumber()) / const(1.5f))).sp,
+        textField = feature["point_count"].convertToString(),
+        textSize = (const(15f) + (log2(feature["point_count"].convertToNumber()) / const(1.5f))).sp,
         textFont = const(listOf("Roboto Regular")),
         textOffset = offset(0.em, 0.1.em),
         textAllowOverlap = const(true),
@@ -86,7 +86,7 @@ fun PinsLayers(
             zoom() gt const(CLUSTER_MAX_ZOOM),
             all(
                 zoom() gte const(CLUSTER_MIN_ZOOM),
-                Feature.get("point_count").convertToNumber() lte const(1)
+                feature["point_count"].convertToNumber() lte const(1)
             )
         ),
         color = const(Color.White),
@@ -101,8 +101,8 @@ fun PinsLayers(
         source = source,
         minZoom = CLUSTER_MAX_ZOOM.toFloat(),
         filter = zoom() gt const(CLUSTER_MAX_ZOOM),
-        sortKey = Feature.get("icon-order").convertToNumber(),
-        iconImage = image(Feature.get("icon-image")), // TODO
+        sortKey = feature["icon-order"].convertToNumber(),
+        iconImage = image(feature["icon-image"]), // TODO
         // constant icon size because click area would become a bit too small and more
         // importantly, dynamic size per zoom + collision doesn't work together well, it
         // results in a lot of flickering.
@@ -131,7 +131,7 @@ data class Pin(
 )
 
 private fun Pin.toGeoJsonFeature() =
-    io.github.dellisd.spatialk.geojson.Feature(
+    Feature(
         geometry = position.toGeometry(),
         properties = mapOf(
             "icon-image" to JsonPrimitive(icon),

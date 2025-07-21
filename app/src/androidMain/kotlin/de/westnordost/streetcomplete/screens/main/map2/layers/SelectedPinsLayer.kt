@@ -15,9 +15,10 @@ import dev.sargunv.maplibrecompose.compose.MaplibreComposable
 import dev.sargunv.maplibrecompose.compose.layer.SymbolLayer
 import dev.sargunv.maplibrecompose.compose.source.rememberGeoJsonSource
 import dev.sargunv.maplibrecompose.core.source.GeoJsonData
-import dev.sargunv.maplibrecompose.expressions.dsl.Feature
 import dev.sargunv.maplibrecompose.expressions.dsl.const
+import dev.sargunv.maplibrecompose.expressions.dsl.feature
 import dev.sargunv.maplibrecompose.expressions.dsl.image
+import io.github.dellisd.spatialk.geojson.Feature
 import io.github.dellisd.spatialk.geojson.FeatureCollection
 import kotlinx.serialization.json.JsonPrimitive
 
@@ -37,10 +38,9 @@ fun SelectedPinsLayer(icon: String, pinPositions: Collection<LatLon>) {
     }
 
     val source = rememberGeoJsonSource(
-        id = "selected-pins-source",
         data = GeoJsonData.Features(
             FeatureCollection(pinPositions.map {
-                io.github.dellisd.spatialk.geojson.Feature(
+                Feature(
                     geometry = it.toGeometry(),
                     properties = mapOf("icon-image" to JsonPrimitive(icon))
                 )
@@ -51,7 +51,7 @@ fun SelectedPinsLayer(icon: String, pinPositions: Collection<LatLon>) {
     SymbolLayer(
         id = "selected-pins-layer",
         source = source,
-        iconImage = image(Feature.get("icon-image")), // TODO
+        iconImage = image(feature["icon-image"]), // TODO
         iconSize = const(pinsSize.value),
         iconPadding = const(PaddingValues.Absolute(
             left = 2.5.dp,

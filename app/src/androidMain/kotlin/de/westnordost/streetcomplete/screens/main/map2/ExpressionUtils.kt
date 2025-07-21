@@ -47,18 +47,18 @@ fun Feature.hasAny(key: String, values: List<String>) =
     const(values).contains(get(key))
 
 fun Feature.isPoint() =
-    type() eq const(GeometryType.Point)
+    geometryType() eq const(GeometryType.Point)
 
 fun Feature.isLines() =
     any(
-        type() eq const(GeometryType.LineString),
-        type() eq const(GeometryType.MultiLineString)
+        geometryType() eq const(GeometryType.LineString),
+        geometryType() eq const(GeometryType.MultiLineString)
     )
 
 fun Feature.isArea() =
     any(
-        type() eq const(GeometryType.Polygon),
-        type() eq const(GeometryType.MultiPolygon)
+        geometryType() eq const(GeometryType.Polygon),
+        geometryType() eq const(GeometryType.MultiPolygon)
     )
 
 /** Get an expression that resolves to the localized name.
