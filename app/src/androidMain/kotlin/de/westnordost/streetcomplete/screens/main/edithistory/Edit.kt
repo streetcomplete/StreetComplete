@@ -50,7 +50,7 @@ val Edit.overlayIcon: DrawableResource? get() = when (this) {
     }
     is OsmNoteQuestHidden -> Res.drawable.undo_visibility
     is OsmQuestHidden -> Res.drawable.undo_visibility
-    is AtpQuestHidden -> R.drawable.ic_undo_visibility
+    is AtpQuestHidden -> Res.drawable.undo_visibility
     else -> null
 }
 
