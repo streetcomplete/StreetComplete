@@ -1,16 +1,16 @@
 - name: "Tobias Zwick"
   githubUsername: "westnordost"
-  linesOfCodeChanged: 508370
-  linesOfInterfaceMarkupChanged: 155592
-  assetFilesChanged: 2199
+  linesOfCodeChanged: 518269
+  linesOfInterfaceMarkupChanged: 161727
+  assetFilesChanged: 2207
 - name: "Mateusz Konieczny"
   githubUsername: "matkoniecz"
-  linesOfCodeChanged: 22211
+  linesOfCodeChanged: 22243
   linesOfInterfaceMarkupChanged: 5233
   assetFilesChanged: 636
 - name: "Flo Edelmann"
   githubUsername: "FloEdelmann"
-  linesOfCodeChanged: 21529
+  linesOfCodeChanged: 21809
   linesOfInterfaceMarkupChanged: 3733
   assetFilesChanged: 152
 - name: "Helium314"
@@ -72,6 +72,11 @@
   githubUsername: "goldbattle"
   linesOfCodeChanged: 1123
   linesOfInterfaceMarkupChanged: 62
+- name: "Kai Michael Poppe"
+  githubUsername: "kmpoppe"
+  linesOfCodeChanged: 987
+  linesOfInterfaceMarkupChanged: 869
+  assetFilesChanged: 44
 - name: "David Dean"
   githubUsername: "dbdean"
   linesOfCodeChanged: 963
@@ -84,11 +89,10 @@
 - name: "Peter Newman"
   githubUsername: "peternewman"
   linesOfCodeChanged: 909
-- name: "Kai Michael Poppe"
-  githubUsername: "kmpoppe"
-  linesOfCodeChanged: 869
-  linesOfInterfaceMarkupChanged: 869
-  assetFilesChanged: 44
+- name: "Lars Toenning"
+  githubUsername: "ltoenning"
+  linesOfCodeChanged: 860
+  linesOfInterfaceMarkupChanged: 649
 - name: "Wieland"
   githubUsername: "wielandb"
   linesOfCodeChanged: 851
@@ -97,6 +101,10 @@
 - name: "Krzysztof Krason"
   linesOfCodeChanged: 738
   assetFilesChanged: 22
+- name: "Katrina Knight"
+  githubUsername: "GaeaKat"
+  linesOfCodeChanged: 629
+  linesOfInterfaceMarkupChanged: 259
 - name: "Enno Hermann"
   githubUsername: "eginhard"
   linesOfCodeChanged: 524
@@ -105,10 +113,6 @@
   linesOfCodeChanged: 444
   linesOfInterfaceMarkupChanged: 165
   assetFilesChanged: 1
-- name: "Katrina Knight"
-  githubUsername: "GaeaKat"
-  linesOfCodeChanged: 424
-  linesOfInterfaceMarkupChanged: 251
 - name: "naposm"
   githubUsername: "naposm"
   linesOfCodeChanged: 399
@@ -123,6 +127,9 @@
   linesOfCodeChanged: 344
   linesOfInterfaceMarkupChanged: 1956
   assetFilesChanged: 56
+- name: "arthedain"
+  githubUsername: "paulklie"
+  linesOfCodeChanged: 325
 - name: "Irakliy Kukava"
   githubUsername: "irakliy01"
   linesOfCodeChanged: 302
@@ -136,6 +143,10 @@
   linesOfCodeChanged: 264
   linesOfInterfaceMarkupChanged: 101
   assetFilesChanged: 25
+- name: "Ercalvez"
+  githubUsername: "Ercalvez"
+  linesOfCodeChanged: 241
+  linesOfInterfaceMarkupChanged: 155
 - name: "darken"
   githubUsername: "d4rken"
   linesOfCodeChanged: 230
@@ -153,6 +164,9 @@
   githubUsername: "TacoTheDank"
   linesOfCodeChanged: 176
   linesOfInterfaceMarkupChanged: 131
+- name: "@RubenKelevra"
+  githubUsername: "RubenKelevra"
+  linesOfCodeChanged: 152
 - name: "Binnette"
   githubUsername: "Binnette"
   linesOfCodeChanged: 149
@@ -261,9 +275,6 @@
   linesOfCodeChanged: 13
 - name: "Redd"
   githubUsername: "agent-redd"
-  linesOfCodeChanged: 12
-- name: "RubenKelevra"
-  githubUsername: "RubenKelevra"
   linesOfCodeChanged: 12
 - name: "Kyℓe Hensel"
   githubUsername: "k-yle"

@@ -914,7 +914,6 @@ Datele sunt actualizate după %1$s zile, iar datele neutilizate sunt șterse dup
     <string name="quest_traffic_calming_type_island">"Insulă"</string>
     <string name="quest_traffic_calming_type_chicane">"Curb(ă/e) intenționate"</string>
     <string name="quest_traffic_calming_type_rumble_strip">"Marcaje rezonatoare"</string>
-    <string name="quest_surface_value_concrete_plates">"Plăci de beton"</string>
     <string name="quest_surface_value_concrete_lanes">"Benzi de beton"</string>
     <string name="quest_fireHydrant_diameter_title">"Ce diametru este specificat pe semnul hidrantului?"</string>
     <string name="quest_diet_answer_no_food">"Nu are mâncare"</string>

@@ -83,6 +83,7 @@ The info you enter is directly added to OpenStreetMap in your name, without the 
     <string name="quest_generic_hasFeature_yes">"Yes"</string>
     <string name="quest_generic_hasFeature_no">"No"</string>
     <string name="quest_generic_hasFeature_optional">"Optionally"</string>
+
     <!-- aka "exclusively". E.g. "Does this restaurant have vegan food?" - "It only has vegan food!"-->
     <string name="quest_hasFeature_only">Only</string>
     <string name="quest_generic_hasFeature_no_leave_note">"No (leave note)"</string>
@@ -239,7 +240,7 @@ Additionally, some overlays allow you to add new data at the position of a displ
 
     <!-- AR Measure screen -->
 
-    <string name="ar_measure">Measure</string>
+    <string name="ar_measure">Take Measurement</string>
     <string name="ar_core_error_sdk_too_old">This app is too old, try updating.</string>
     <string name="ar_core_tracking_error_bad_state">Something went wrong. Try restarting the measuring.</string>
     <string name="ar_core_tracking_error_insufficient_light">Too dark here</string>
@@ -333,7 +334,7 @@ If you are overwhelmed by the number of quests, you can always fine-tune which q
     <string name="about_title_sponsors">Sponsors</string>
     <string name="about_description_donate">Thank you for considering supporting this app! To see current donations and to donate yourself, tap on the respective platform:</string>
     <string name="about_description_donate_google_play3">"Thank you for considering supporting this app!
-You can find donation information on our website or project home, Google Play does not allow us to provide the link within the app."</string>
+You can find donation information on our website or project home, the app store policies do not allow us to provide the link within the app."</string>
 
     <string name="about_title_translate">Translate this app</string>
     <string name="about_description_translate">%1$s is translated %2$d%%</string>
@@ -1189,8 +1190,8 @@ If any lanes are reserved for buses, please leave a note instead."</string>
 
     <string name="quest_lit_title">"Is it lit here?"</string>
 
-    <string name="quest_maxheight_title">"What’s the height limit here?"</string>
-    <string name="quest_maxheight_below_bridge_title">What’s the height limit below the bridge?</string>
+    <string name="quest_maxheight_title">"What’s the measured height here?"</string>
+    <string name="quest_maxheight_below_bridge_title">What’s the measured height below the bridge?</string>
     <string name="quest_maxheight_sign_title">"What height limit is indicated here?"</string>
     <string name="quest_maxheight_answer_noSign">There is no sign…</string>
     <string name="quest_maxheight_split_way_hint">This question is also asked for roads that run under bridges, roofs, overhead pipes etc.\nAlso, if it doesn’t apply for the whole highlighted section, consider answering “%s”.</string>
@@ -1786,6 +1787,7 @@ Partially means that a wheelchair can enter and use the restroom, but no handrai
     <string name="overlay_things">Things</string>
     <string name="disused">disused</string>
     <string name="unknown_object">Unknown object</string>
+    <string name="or">"or"</string>
 
     <string name="overlay_street_parking">Street parking</string>
 

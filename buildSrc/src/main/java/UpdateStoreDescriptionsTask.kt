@@ -6,15 +6,11 @@ import java.io.File
 /** Update the metadata that contain the store descriptions for the app (for F-Droid) */
 open class UpdateStoreDescriptionsTask : DefaultTask() {
 
-    @get:Input var projectId: String? = null
-    @get:Input var apiToken: String? = null
-    @get:Input var targetDir: String? = null
+    @get:Input lateinit var projectId: String
+    @get:Input lateinit var apiToken: String
+    @get:Input lateinit var targetDir: String
 
     @TaskAction fun run() {
-        val targetDir = targetDir ?: return
-        val apiToken = apiToken ?: return
-        val projectId = projectId ?: return
-
         val languageCodes = fetchAvailableLocalizations(apiToken, projectId).map { it.code }
 
         for (languageCode in languageCodes) {

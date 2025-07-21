@@ -915,7 +915,6 @@ Dati tiek atjaunināti pēc %1$s dienām un neizmantotie dati tiek automātiski 
     <string name="quest_traffic_calming_type_island">"Saliņa"</string>
     <string name="quest_traffic_calming_type_chicane">"Speciāls līkums"</string>
     <string name="quest_traffic_calming_type_rumble_strip">"Rūcošā loksne"</string>
-    <string name="quest_surface_value_concrete_plates">"Betona plāksnes"</string>
     <string name="quest_surface_value_concrete_lanes">"Betona sliedes"</string>
     <string name="quest_fireHydrant_diameter_title">"Kāds diametrs ir norādīts uz zīmes šim ugunsdzēsības hidrantam?"</string>
     <string name="quest_diet_answer_no_food">"Tajā nav ēdiens"</string>

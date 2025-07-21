@@ -17,12 +17,11 @@ import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.AppBarDefaults
 import androidx.compose.material.IconButton
-import androidx.compose.material.LocalTextStyle
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.ProvideTextStyle
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
@@ -153,7 +152,7 @@ private fun CreditsSection(
             text = title,
             style = MaterialTheme.typography.titleLarge
         )
-        CompositionLocalProvider(LocalTextStyle provides MaterialTheme.typography.body2) {
+        ProvideTextStyle(MaterialTheme.typography.body2) {
             Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
                 content()
             }

@@ -15,7 +15,6 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.ContentAlpha
 import androidx.compose.material.LocalContentColor
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
@@ -25,11 +24,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.style.Hyphens
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.ui.theme.titleLarge
+import de.westnordost.streetcomplete.ui.common.TextField2
+import de.westnordost.streetcomplete.ui.theme.largeInput
 
 /** Form to input building levels and roof levels, with quick-select buttons */
 @Composable
@@ -58,16 +60,19 @@ fun BuildingLevelsForm(
                 ) {
                     Text(
                         text = stringResource(R.string.quest_buildingLevels_levelsLabel2),
-                        style = MaterialTheme.typography.body2,
+                        style = MaterialTheme.typography.caption.copy(hyphens = Hyphens.Auto),
                         color = LocalContentColor.current.copy(alpha = ContentAlpha.medium),
                     )
-                    OutlinedTextField(
+                    TextField2(
                         value = levels,
                         onValueChange = onLevelsChange,
                         isError = levels.isNotEmpty() && !levels.isValidLevel(),
-                        keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Number, imeAction = ImeAction.Next),
+                        keyboardOptions = KeyboardOptions.Default.copy(
+                            keyboardType = KeyboardType.Number,
+                            imeAction = ImeAction.Next
+                        ),
                         singleLine = true,
-                        textStyle = MaterialTheme.typography.titleLarge.copy(
+                        textStyle = MaterialTheme.typography.largeInput.copy(
                             textAlign = TextAlign.Center
                         ),
                     )
@@ -82,20 +87,23 @@ fun BuildingLevelsForm(
                     horizontalAlignment = Alignment.Start,
                     verticalArrangement = Arrangement.SpaceBetween
                 ) {
-                    OutlinedTextField(
+                    TextField2(
                         value = roofLevels,
                         onValueChange = onRoofLevelsChange,
                         isError = roofLevels.isNotEmpty() && !roofLevels.isValidLevel(),
-                        keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Number, imeAction = ImeAction.Done),
+                        keyboardOptions = KeyboardOptions.Default.copy(
+                            keyboardType = KeyboardType.Number,
+                            imeAction = ImeAction.Done
+                        ),
                         singleLine = true,
-                        textStyle = MaterialTheme.typography.titleLarge.copy(
+                        textStyle = MaterialTheme.typography.largeInput.copy(
                             textAlign = TextAlign.Center
                         ),
                     )
                     Text(
                         text = stringResource(R.string.quest_buildingLevels_roofLevelsLabel2),
                         textAlign = TextAlign.Start,
-                        style = MaterialTheme.typography.body2,
+                        style = MaterialTheme.typography.caption.copy(hyphens = Hyphens.Auto),
                         color = LocalContentColor.current.copy(alpha = ContentAlpha.medium),
                     )
                 }
@@ -115,7 +123,7 @@ private fun String.isValidLevel(): Boolean =
     toIntOrNull()?.takeIf { it >= 0 } != null
 
 @Composable
-@Preview(showBackground = true)
+@Preview(showBackground = true, locale = "de", widthDp = 320)
 @Preview(showBackground = true, locale = "ar")
 private fun BuildingLevelsFormPreview() {
     val levels = remember { mutableStateOf("55") }

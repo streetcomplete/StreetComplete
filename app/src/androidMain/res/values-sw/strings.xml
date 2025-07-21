@@ -890,7 +890,6 @@ Kabla ya kupakia mabadiliko yako, programu hukagua na &lt;a href=\" https://www.
     <string name="quest_traffic_calming_type_island">"Kisiwa"</string>
     <string name="quest_traffic_calming_type_chicane">"Mipindo ya makusudi"</string>
     <string name="quest_traffic_calming_type_rumble_strip">"Vipande vya rambo"</string>
-    <string name="quest_surface_value_concrete_plates">"Sahani nzito"</string>
     <string name="quest_surface_value_concrete_lanes">"Njia za zege"</string>
     <string name="quest_fireHydrant_diameter_title">"Ni kipenyo gani kilichoainishwa kwenye ishara ya bomba hili la kuzima moto?"</string>
     <string name="quest_diet_answer_no_food">"Haina chakula"</string>

@@ -920,7 +920,6 @@ Podatki se osvežijo vsakih %1$s dni, neuporabljeni podatki pa se samodejno izbr
     <string name="quest_traffic_calming_type_island">"Otok"</string>
     <string name="quest_traffic_calming_type_chicane">"Namerni ovinki"</string>
     <string name="quest_traffic_calming_type_rumble_strip">"Tresoče črte"</string>
-    <string name="quest_surface_value_concrete_plates">"Betonske plošče"</string>
     <string name="quest_surface_value_concrete_lanes">"Betonski pasovi"</string>
     <string name="quest_fireHydrant_diameter_title">"Kakšen je premer hidranta, specificiran na njegovi oznaki?"</string>
     <string name="quest_diet_answer_no_food">"Nima hrane"</string>

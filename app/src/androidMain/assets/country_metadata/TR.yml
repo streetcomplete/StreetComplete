@@ -1,7 +1,7 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [Türkiye İş Bankası, Akbank, Ziraat Bankası, Yapı Kredi, Garanti Bankası, Denizbank, QNB Finansbank, Halkbank, Vakıfbank, TEB, ING, HSBC, İş Bankası, PTT, Şekerbank, Ziraat Bankası ATM, Akbank ATM, Kuveyt Türk, Vakıfbank ATM, Garanti BBVA, DenizBank, Ziraat, Garanti, Bankamatik, Finansbank, Deniz Bank, Halkbank ATM, Ziraat Bankasi, Türkiye Finans, Garanti Bankası ATM, İş Bankası ATM, YapiKredi, Yapı Kredi Bankası, Yapı Kredi ATM, VakıfBank, Türkiye İş Bankası Bankamatik, Halk Bankası, VakifBank, Banka ATM'leri, Türkiye Bankasi, Shitcoins.club, QNB, ING Bank, AkBank]
-chargingStationOperators: [SHARZ, ZES, Astor Enerji, VOLTRUN, Sharz, 'Tesla, Inc.', Eşarj, TOGG, EŞARJ, Renault, Tunçmatik, Trugo, zes, WAT Mobilite, Shell, Sharz.net]
-clothesContainerOperators: [Maltepe Belediyesi, İlkadım Belediyesi, Ümraniye Belediyesi, Ortaca Belediyesi, Çerkezköy Belediyesi, Kızılay, Kütahya Belediyesi]
+atmOperators: [Türkiye İş Bankası, Akbank, Yapı Kredi, Ziraat Bankası, Garanti Bankası, Denizbank, Halkbank, Vakıfbank, QNB Finansbank, TEB, ING, QNB, HSBC, İş Bankası, PTT, Şekerbank, Ziraat Bankası ATM, Akbank ATM, Kuveyt Türk, Vakıfbank ATM, Garanti BBVA, DenizBank, Garanti, Ziraat, Bankamatik, Finansbank, Halkbank ATM, Deniz Bank, İş Bankası ATM, Ziraat Bankasi, Türkiye Finans, Garanti Bankası ATM, Yapı Kredi Bankası, Yapı Kredi ATM, YapiKredi, VakıfBank, Türkiye İş Bankası Bankamatik, Halk Bankası, Banka ATM'leri, VakifBank, Türkiye Bankasi, TAM, Shitcoins.club, ING Bank, AkBank]
+chargingStationOperators: [SHARZ, ZES, Astor Enerji, VOLTRUN, Tesla, Sharz, Eşarj, TOGG, 'Tesla, Inc.', EŞARJ, Renault, Tunçmatik, Trugo, zes, WAT Mobilite, Shell, Sharz.net]
+clothesContainerOperators: [Maltepe Belediyesi, İlkadım Belediyesi, Sivas Belediyesi, Ümraniye Belediyesi, Ortaca Belediyesi, Çerkezköy Belediyesi, Kızılay, Kütahya Belediyesi]
 defaultSpeedLimitHasUrbanOrRural: true
 hasLivingStreet: true
 livingStreetSignStyle: vienna

@@ -466,7 +466,7 @@ Caso contrário, pode descarregar outro teclado na loja de aplicações. Alguns 
     <string name="dialog_tutorial_upload">"Para enviar as suas alterações manualmente, use o botão do menu principal com o seguinte aspeto."</string>
     <string name="quest_segregated_separated">"São separadas uma da outra"</string>
     <string name="quest_segregated_mixed">"Os ciclistas e peões partilham a mesma pista"</string>
-    <string name="quest_maxheight_title">"Qual é o limite de altura aqui?"</string>
+    <string name="quest_maxheight_title">"Qual é a altura medida aqui?"</string>
     <string name="quest_maxheight_answer_noSign">"Não existe sinal…"</string>
     <string name="quest_maxheight_unusualInput_confirmation_description">"Esta altura não é plausível. Tem a certeza que está correta?"</string>
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
@@ -478,7 +478,7 @@ Caso contrário, pode descarregar outro teclado na loja de aplicações. Alguns 
     <string name="quest_buildingType_retail_description">"edifícios de restaurantes, cafés, lojas…"</string>
     <string name="quest_openingHours_timeSelect_next">"Seguinte"</string>
     <string name="quest_tracktype_title">"Qual é a firmeza da superfície deste trilho?"</string>
-    <string name="quest_tracktype_grade1">"Pavimentado"</string>
+    <string name="quest_tracktype_grade1">"Sólido"</string>
     <string name="quest_tracktype_grade4">"Maioritariamente suave"</string>
     <string name="quest_tracktype_grade5">"Suave"</string>
     <string name="quest_building_underground_title">"Este edifício é totalmente subterrâneo?"</string>
@@ -632,7 +632,7 @@ Mantenha-se em segurança: preste atenção ao que se passa em seu redor ao usar
     <string name="link_openorienteeringmap_description">"Crie mapas que podem ser impressos para a modalidade de orientação"</string>
     <string name="link_openstreetbrowser_description">"Um mapa para navegar por elementos no mapa do OpenStreetMap por categoria"</string>
     <string name="link_weeklyosm_description">"O blogue de notícias semanais sobre o que está a acontecer no mundo do OpenStreetMap"</string>
-    <string name="link_figuregrounder_description">"Crie pósteres com diagramas com o fundo de uma cidade ou bairro"</string>
+    <string name="link_figuregrounder_description">"Crie cartazes com um fundo de diagrama de uma cidade ou bairro"</string>
     <string name="achievement_first_edit_title">"Primeira missão resolvida"</string>
     <string name="achievement_first_edit_description">"Bem-vindo(a) à comunidade OpenStreetMap! No seu perfil pode ver mais informações sobre o tipo de missões que resolveu."</string>
     <string name="achievement_surveyor_title">"Mapeador"</string>
@@ -760,7 +760,7 @@ conquista"</string>
     <string name="quest_lanes_answer_noLanes">"Vias sem marcação"</string>
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">"Tem 1 via de trânsito para virar à esquerda em cada sentido"</string>
     <string name="quest_address_answer_no_housenumber_message2b">"Está correto?"</string>
-    <string name="quest_maxheight_below_bridge_title">"Qual é o limite de altura por baixo da ponte?"</string>
+    <string name="quest_maxheight_below_bridge_title">"Qual é a altura medida por baixo da ponte?"</string>
     <string name="quest_maxheight_split_way_hint">"Esta pergunta também é feita para estradas que passam por baixo de pontes, telhados, tubos suspensos, etc.
 Caso não se aplique a toda a secção destacada, pode responder “%s”."</string>
     <string name="quest_tactile_paving_kerb_title">"Este lancil tem pavimento tátil?"</string>
@@ -919,7 +919,6 @@ Se ficar sobrecarregado com o número de missões, pode sempre ajustar as missõ
     <string name="quest_traffic_calming_type_island">"Ilha no meio da via"</string>
     <string name="quest_traffic_calming_type_chicane">"Curva(s) deliberada(s)"</string>
     <string name="quest_traffic_calming_type_rumble_strip">"Faixas sonoras"</string>
-    <string name="quest_surface_value_concrete_plates">"Placas de cimento"</string>
     <string name="quest_surface_value_concrete_lanes">"2 faixas de cimento"</string>
     <string name="quest_fireHydrant_diameter_title">"Qual é o diâmetro especificado nesta boca de incêndio?"</string>
     <string name="quest_diet_answer_no_food">"Não tem comida"</string>
@@ -1351,7 +1350,7 @@ Além disso, algumas camadas, como a camada de endereços, permitem adicionar no
     <string name="quest_leafType_tree_title">"Esta árvore tem agulhas ou folhas?"</string>
     <string name="quest_bbq_fuel_gas">"Gás"</string>
     <string name="about_description_donate_google_play3">"Obrigado por considerar apoiar esta aplicação!
-Pode encontrar informações sobre donativos no nosso site ou na página inicial do projeto. O Google Play não nos permite fornecer a hiperligação na aplicação."</string>
+Pode encontrar informações sobre donativos no nosso site ou na página inicial do projeto. As políticas da loja de aplicações não nos permitem disponibilizar a hiperligação na aplicação."</string>
     <string name="quest_isAmenityIndoor_outside_covered">"Não no interior, mas coberto"</string>
     <string name="lit_value_unsupported">"Estado específico de iluminado que não é selecionável nesta aplicação"</string>
     <string name="quest_generic_otherAnswers2">"Outra…"</string>
@@ -1462,4 +1461,7 @@ Um andar conta como um andar de telhado quando as suas janelas estão no telhado
     <string name="overlay">"Sobreposição"</string>
     <string name="enable_overlay_confirmation_title">"Ativar esta sobreposição?"</string>
     <string name="link_transitous_description">"Fornecedor de rotas de transportes públicos neutras, gratuitas e de fonte aberta"</string>
+    <string name="compass">"Bússola"</string>
+    <string name="quest_tracktype_grade2">"Maioritariamente sólido"</string>
+    <string name="quest_tracktype_grade3">"Mistura"</string>
 </resources>

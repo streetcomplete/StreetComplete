@@ -17,8 +17,4 @@
     <color name="matched_search_text">#6fff</color>
 
     <color name="smoothness_vehicle_tyre">#70808b</color>
-
-    <!-- for fading out images -->
-    <color name="fade_out">#303030</color>
-    <color name="fade_out_transparent">#00303030</color>
 </resources>

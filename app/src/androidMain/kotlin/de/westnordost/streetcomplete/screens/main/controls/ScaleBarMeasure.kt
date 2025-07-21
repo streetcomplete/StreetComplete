@@ -17,7 +17,7 @@ interface ScaleBarMeasure {
     /** one unit of this measure in meters */
     val unitInMeters: Double
 
-    /** List of stops, sorted ascending, at which the scalebar should show */
+    /** List of stops, sorted ascending, at which the scale bar should show */
     val stops: List<Double>
 
     @Composable public fun getText(stop: Double): String

@@ -10,8 +10,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.painterResource
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.ic_calendar_month_24
 import de.westnordost.streetcomplete.ui.common.ClearIcon
 import de.westnordost.streetcomplete.util.dateTimeToString
 import de.westnordost.streetcomplete.util.ktx.now
@@ -20,6 +21,7 @@ import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalDateTime
 import kotlinx.datetime.LocalTime
+import org.jetbrains.compose.resources.painterResource
 import java.util.Locale
 import kotlin.coroutines.resume
 
@@ -46,7 +48,7 @@ fun DateTimeSelectField(
                     onValueChange(context.pickDateTime(value ?: LocalDateTime.now()))
                 }
             }) {
-                Icon(painterResource(R.drawable.ic_calendar_month_24dp), null)
+                Icon(painterResource(Res.drawable.ic_calendar_month_24), null)
             }
         },
         trailingIcon = if (value != null) {

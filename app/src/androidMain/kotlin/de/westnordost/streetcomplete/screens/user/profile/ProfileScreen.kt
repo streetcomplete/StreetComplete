@@ -44,9 +44,13 @@ import androidx.compose.ui.unit.coerceAtMost
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.ic_open_in_browser_24
+import de.westnordost.streetcomplete.resources.ic_star_48
 import de.westnordost.streetcomplete.ui.ktx.toDp
 import de.westnordost.streetcomplete.ui.theme.headlineLarge
 import de.westnordost.streetcomplete.ui.theme.titleLarge
+import org.jetbrains.compose.resources.painterResource
 import java.util.Locale
 
 /** Shows the user profile: username, avatar, star count and a hint regarding unpublished changes */
@@ -121,7 +125,7 @@ fun ProfileScreen(viewModel: ProfileViewModel) {
             Button(onClick = {
                 uriHandler.openUri("https://www.openstreetmap.org/user/" + viewModel.userName.value)
             }) {
-                Icon(painterResource(R.drawable.ic_open_in_browser_24dp), null)
+                Icon(painterResource(Res.drawable.ic_open_in_browser_24), null)
                 Spacer(Modifier.width(8.dp))
                 Text(stringResource(R.string.osm_profile).uppercase())
             }
@@ -268,7 +272,7 @@ private fun StarCount(count: Int) {
         verticalAlignment = Alignment.CenterVertically
     ) {
         Icon(
-            painter = painterResource(R.drawable.ic_star_48dp),
+            painter = painterResource(Res.drawable.ic_star_48),
             contentDescription = null,
             modifier = Modifier.size(32.sp.toDp()) // icon should scale with the text
         )

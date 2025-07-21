@@ -25,7 +25,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalDensity
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -33,8 +32,13 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.ic_open_in_browser_24
+import de.westnordost.streetcomplete.resources.mail_back
+import de.westnordost.streetcomplete.resources.mail_front
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import org.jetbrains.compose.resources.painterResource
 import kotlin.math.abs
 
 /** Dialog that shows a message that the user has X unread messages in his OSM inbox */
@@ -107,10 +111,10 @@ private fun Envelope(
         modifier = modifier,
         contentAlignment = Alignment.TopCenter
     ) {
-        Image(painterResource(R.drawable.mail_back), null)
+        Image(painterResource(Res.drawable.mail_back), null)
         if (opening > 0.5f) Image(openMailPainter(progress = opening), null)
         content()
-        Image(painterResource(R.drawable.mail_front), null)
+        Image(painterResource(Res.drawable.mail_front), null)
         if (opening <= 0.5f) Image(openMailPainter(progress = opening), null)
     }
 }
@@ -139,7 +143,7 @@ private fun UnreadMessagesContent(
                     horizontalArrangement = Arrangement.spacedBy(8.dp),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    Icon(painterResource(R.drawable.ic_open_in_browser_24dp), null)
+                    Icon(painterResource(Res.drawable.ic_open_in_browser_24), null)
                     Text(stringResource(R.string.unread_messages_button))
                 }
             }

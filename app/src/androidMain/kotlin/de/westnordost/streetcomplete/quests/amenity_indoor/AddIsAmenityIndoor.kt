@@ -24,7 +24,7 @@ class AddIsAmenityIndoor(private val getFeature: (Element) -> Feature?) :
         nodes with
           (
             emergency ~ defibrillator|fire_extinguisher|fire_hose
-            or amenity ~ atm|telephone|parcel_locker|luggage_locker|locker|post_box|public_bookcase|give_box|ticket_validator|vending_machine
+            or amenity ~ atm|drinking_water|telephone|parcel_locker|luggage_locker|locker|post_box|public_bookcase|give_box|ticket_validator|shower|vending_machine
             or amenity = clock and display != sundial
           )
           and access !~ private|no
