@@ -93,7 +93,7 @@ class AddPlaceName(
                 "sports_centre", "stadium",
 
                 // name only
-                "dance", "nature_reserve", "marina", "horse_riding",
+                "dance", "nature_reserve", "marina", "horse_riding", "trampoline_park",
             ),
             "landuse" to arrayOf(
                 "cemetery", "allotments"
