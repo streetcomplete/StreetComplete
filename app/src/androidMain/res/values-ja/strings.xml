@@ -63,7 +63,7 @@
     <string name="quest_openingHours_public_holidays">"祝日"</string>
     <string name="quest_openingHours_public_holidays_short">"祝日"</string>
     <string name="quest_openingHours_open_end">"無期限"</string>
-    <string name="quest_openingHours_answer_247">"24時間 週7日"</string>
+    <string name="quest_openingHours_answer_247">"24時間 年中無休"</string>
     <string name="quest_openingHours_answer_seasonal_opening_hours">"月ごとに異なる…"</string>
     <string name="quest_openingHours_answer_no_regular_opening_hours">"定期営業時間なし…"</string>
     <string name="quest_openingHours_comment_title">"営業時間の説明"</string>
@@ -173,7 +173,7 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_manySports_confirmation_generic">"汎用"</string>
     <string name="quest_sport_manySports_confirmation_title">"多くのスポーツを選んています"</string>
     <string name="quest_toiletsFee_title">"これらのトイレは有料ですか?"</string>
-    <string name="quest_tactilePaving_title_crosswalk">"この横断歩道には点字ブロックがありますか?"</string>
+    <string name="quest_tactilePaving_title_crosswalk">"この横断歩道の両端には点字ブロックがありますか?"</string>
     <string name="quest_source_dialog_title">"この場所で実際に確認しましたか?"</string>
     <string name="quest_source_dialog_note">"調査で見つかった情報のみを入力してください。"</string>
     <string name="quest_bicycleParkingCoveredStatus_title">"この駐輪場は屋根がありますか (雨から守られていますか)?"</string>
@@ -492,7 +492,7 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_motorcycleParkingCoveredStatus_title">"このオートバイの駐車場に屋根はありますか? (雨から守られていますか)"</string>
     <string name="default_disabled_msg_maxspeed">"このクエストタイプの質問に答えるためには強調表示されている部分だけではなく、通り全域の速度制限標識を確認する必要があるためデフォルトで無効になっています。場合によっては1つのクエストを解決するのに非常に労力がかかるでしょう。"</string>
     <string name="pref_title_quests_restore_hidden">"非表示にしたクエストを元に戻す"</string>
-    <string name="on_level">"レベル %s です"</string>
+    <string name="on_level">"フロア番号 %s"</string>
     <string name="underground">"地下"</string>
     <string name="quest_sidewalk_value_yes">"歩道"</string>
     <string name="quest_sidewalk_value_no">"歩道なし"</string>
@@ -873,8 +873,8 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_camera_type_fixed">"固定式"</string>
     <string name="quest_camera_type_panning">"首振り"</string>
     <string name="about_title_faq">"FAQ"</string>
-    <string name="quest_buildingLevels_title2">"このビルは地下何階ですか?"</string>
-    <string name="quest_buildingLevels_title_buildingPart2">"この建物部分は地下何階建てですか?"</string>
+    <string name="quest_buildingLevels_title2">"このビルは地上何階ですか?"</string>
+    <string name="quest_buildingLevels_title_buildingPart2">"この建物部分は地上何階建てですか?"</string>
     <string name="pref_subtitle_quests_preset_name">"プリセット: %s"</string>
     <string name="default_disabled_msg_roofShape">"屋根の形は道路から見えにくいことが多いため、このクエストタイプはデフォルトで無効になっています。また、このクエストタイプは非常に時間がかかります。ほとんどの場合、自宅で航空写真からマッピングする方が簡単で効率的です。"</string>
     <string name="quest_religion_animist">"アニミスト"</string>
@@ -920,7 +920,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_traffic_calming_type_island">"島"</string>
     <string name="quest_traffic_calming_type_chicane">"意図的な曲線"</string>
     <string name="quest_traffic_calming_type_rumble_strip">"ランブルストリップ"</string>
-    <string name="quest_surface_value_concrete_plates">"コンクリート平板"</string>
     <string name="quest_surface_value_concrete_lanes">"コンクリート・レーン"</string>
     <string name="quest_fireHydrant_diameter_title">"この消火栓の標識には、直径はどのくらいと書いてありますか?"</string>
     <string name="quest_diet_answer_no_food">"食事なし"</string>
@@ -968,7 +967,7 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_fireHydrant_position_sidewalk">"歩道で"</string>
     <string name="quest_fireHydrant_position_parking_lot">"駐車場で"</string>
     <string name="quest_generic_hasFeature_yes_leave_note">"はい（メモを残す）"</string>
-    <string name="quest_smoothness_square_title">"この正方形の表面品質はどれくらいですか?"</string>
+    <string name="quest_smoothness_square_title">"この広場の表面品質はどれくらいですか?"</string>
     <string name="quest_smoothness_road_title">"ここのこの道路の表面品質はどれくらいですか?"</string>
     <string name="quest_smoothness_title_excellent">"滑らかで平ら"</string>
     <string name="quest_smoothness_title_good">"おおむね平ら"</string>
@@ -1077,7 +1076,7 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_existence_title2">"これは今もありますか？"</string>
     <string name="quest_generalFee_title2">"ここは入場料が必要ですか？"</string>
     <string name="quest_internet_access_title">"この場所はどんなインターネット接続を提供していますか?"</string>
-    <string name="quest_level_title2">"この場所はどのレベル番号にありますか?"</string>
+    <string name="quest_level_title2">"この場所はどのフロア番号にありますか?（日本の1階は0）"</string>
     <string name="quest_lit_title">"ここに街灯がありますか？"</string>
     <string name="quest_openingHours_title">"ここの開業時間は何時ですか？"</string>
     <string name="quest_openingHours_signed_title">"ここの開業時間は表示されていますか？"</string>
@@ -1120,8 +1119,8 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_building_entrance_title">"これはどんな建物の入り口ですか?"</string>
     <string name="quest_building_entrance_main">"公共の建物の正面玄関"</string>
     <string name="quest_building_entrance_staircase">"階段の吹き抜けの入り口(例:アパートの建物)"</string>
-    <string name="quest_building_entrance_service">"サービスエントランス"</string>
-    <string name="quest_building_entrance_exit">"終了のみ"</string>
+    <string name="quest_building_entrance_service">"通用口"</string>
+    <string name="quest_building_entrance_exit">"出口専用"</string>
     <string name="quest_building_entrance_emergency_exit">"非常口のみ"</string>
     <string name="quest_building_entrance_shop">"店頭入口"</string>
     <string name="quest_building_entrance_yes">"その他エントランスタイプ"</string>
@@ -1157,7 +1156,7 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_entrance_reference_reference_label">"エントランスラベル:"</string>
     <string name="quest_entrance_reference_flat_range_label">"フラットレンジ:"</string>
     <string name="quest_entrance_reference_flat_range_to">"to"</string>
-    <string name="default_disabled_msg_overlay">"このクエストタイプは、このデータの入力と更新をより効果的かつ効率的に行えるオーバーレイがすでに存在するため、デフォルトてわは無効になっています。"</string>
+    <string name="default_disabled_msg_overlay">"このクエストタイプは、このデータの入力と更新をより効果的かつ効率的に行えるオーバーレイがすでに存在するため、デフォルトでは無効になっています。"</string>
     <string name="quest_camp_drinking_water_title">"ここではキャンパーが自由に水を飲むことができますか。"</string>
     <string name="quest_camp_shower_title">"ここにシャワーはありますか?"</string>
     <string name="quest_camp_power_supply_title">"ここには、お客様が携帯電話やノートパソコンなどを充電できる方法はありますか?"</string>
@@ -1265,6 +1264,8 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="overlay_surface">"路面"</string>
     <string name="overlay_path_surface_segregated">"自転車道と歩道が分かれる"</string>
     <string name="quest_crossing_title2">"ここに横断歩道はありますか。"</string>
+    <string name="quest_crossing_yes">"はい。横断を目的としています"</string>
+    <string name="quest_crossing_no">"横断を目的としたものではないが、横断は可能（例：非公式の歩道）"</string>
     <string name="quest_crossing_prohibited">"いいえ、横断は禁止または不可能です"</string>
     <string name="quest_hairdresser_title">"この美容院にはどんなお客さんが来るんですか?"</string>
     <string name="quest_hairdresser_male_and_female">"だれでも"</string>
@@ -1289,6 +1290,9 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
 
 データは異なる色付けがされており、これまでに登録されたものが分かりやすく見えるようになっています。
 データがない箇所は赤で表示されます。"</string>
+    <string name="overlays_tutorial_edit">"ハイライト表示されたデータをタップすると、表示または編集できます。クエストと同様に、ルートを分割したり、メモを報告したりすることもできます。
+
+さらに、一部のオーバーレイでは、アドレス オーバーレイなど、表示された十字線の位置に新しいデータを追加できます。"</string>
     <string name="quest_crossing_kerb_height_title">"この横断歩道の、歩道と車道の間の段差の高さはどのくらいですか？"</string>
     <string name="quest_maxheight_sign_title">"高さ制限はどのくらいですか?"</string>
     <string name="quest_leave_new_note_as_answer">"この場合、状況がわかるようにメモを残す必要があります。"</string>
@@ -1304,14 +1308,18 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_defibrillator_location">"このAEDはどこに設置されていますか？"</string>
     <string name="quest_defibrillator_location_description">"このAEDの設置場所について簡潔に説明してください(例 “スタッフルームの中”)"</string>
     <string name="quest_generalFee_title">"これを使うのにお金を払う必要がありますか。"</string>
+    <string name="about_title_logs">"ログ (%1$d)"</string>
     <string name="about_summary_logs">"エラー報告で使用する"</string>
     <string name="action_filter">"フィルター"</string>
     <string name="action_share">"ログを共有"</string>
     <string name="about_title_show_logs">"ログを閲覧"</string>
+    <string name="label_log_level">"ログレベル"</string>
     <string name="label_log_newer_than">"から"</string>
     <string name="label_log_older_than">"まで"</string>
+    <string name="label_log_message_contains">"メッセージに含まれる語"</string>
     <string name="pref_title_quests_restore_hidden_summary">"非表示にしたクエストの数: %d"</string>
     <string name="link_every_door_description">"AndroidおよびiOS用のパワフルなPOIエディター"</string>
+    <string name="link_forum_description">"助けが必要？最新の情報を知りたい？世界中のコミュニティが集う賑やかな場所で、あなたも交流してみよう！"</string>
     <string name="quest_disable_action">"無効にする"</string>
     <string name="quest_disable_title">"このクエストタイプを無効にしますか？"</string>
     <string name="quest_disable_message_not_installed">"StreetMeasureが(まだ)インストールされていません。"</string>
@@ -1321,6 +1329,7 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_buildingType_tent">"テント"</string>
     <string name="quest_buildingType_tomb">"墓石"</string>
     <string name="quest_buildingType_tower">"塔"</string>
+    <string name="quest_buildingType_tower_description">"あらゆる種類の塔"</string>
     <string name="quest_buildingType_under_construction">"建設中"</string>
     <string name="overlay_buildings">"建物"</string>
     <string name="quest_pedestrian_crossing_markings">"この横断歩道は地面にマークがありますか？"</string>
@@ -1330,5 +1339,28 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="unknown_object">"不明なオブジェクト"</string>
     <string name="quest_leafType_tree_title">"この木には針葉または広葉がついていますか。"</string>
     <string name="quest_bbq_fuel_gas">"ガス"</string>
+    <string name="about_description_donate_google_play3">"このアプリの支援をご検討いただき、ありがとうございます。
+寄付の詳細については公式ウェブサイトまたはプロジェクトのホームページをご覧ください。なお、アプリストアのポリシーにより、アプリ内では直接リンクをご案内できません。"</string>
     <string name="quest_pedestrian_crossing_signals2">"ここに横断時に確認する信号機はありますか？"</string>
+    <string name="quest_moped_access_title">"この自転車道に原付の通行可否を示す標識はありますか？"</string>
+    <string name="quest_moped_access_allowed">"標識はありません"</string>
+    <string name="quest_moped_access_designated">"この自転車道には原付の通行を認める標識があります"</string>
+    <string name="quest_moped_access_forbidden">"原付を禁止する標識があります"</string>
+    <string name="default_disabled_msg_visible_sign_moped">"このクエストタイプはデフォルトでは無効になっています。原付の通行可否は、通常自転車道の始点や終点に特定の標識でのみ示されるためです。"</string>
+    <string name="quest_buildingLevels_hint">"傾斜地に建つ建物の場合、階数は最も低い側の地面を基準に数えます。
+
+屋根部分に窓がある階は屋根の階数として扱われます。なお、屋根の階数が0でもその屋根が平らであるとは限らず、単に屋根の高さが1階分に満たないだけの場合もあります。"</string>
+    <string name="quest_leafType_tree_is_just_a_stump">"それはただの木の切り株です"</string>
+    <string name="quest_board_name_title">"この掲示板のタイトルは何ですか？"</string>
+    <string name="quest_boat_rental_title">"ここではどのタイプのボートをレンタルできますか？"</string>
+    <string name="quest_boat_rental_motorboat">"モーターボート"</string>
+    <string name="quest_boat_rental_jetski">"ジェットスキー"</string>
+    <string name="quest_boat_rental_kayak">"カヤック"</string>
+    <string name="quest_boat_rental_canoe">"カヌー"</string>
+    <string name="quest_boat_rental_surfboard">"サーフボード"</string>
+    <string name="pref_title_zoom_buttons">"マップ上にズームボタンを表示する"</string>
+    <string name="pref_title_overlays">"オーバーレイの選択"</string>
+    <string name="pref_overlays_reset">"オーバーレイの有効/無効を既定値にリセットしますか？"</string>
+    <string name="overlay">"オーバーレイ"</string>
+    <string name="enable_overlay_confirmation_title">"このオーバーレイを有効にしますか？"</string>
 </resources>

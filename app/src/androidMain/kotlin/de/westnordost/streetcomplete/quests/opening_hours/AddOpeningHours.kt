@@ -35,8 +35,9 @@ class AddOpeningHours(
               or amenity = recycling and recycling_type = centre
               or amenity = social_facility and social_facility ~ food_bank|clothing_bank|soup_kitchen|dairy_kitchen
               or amenity = toilets and (fee = yes or toilets:disposal = flush)
+              or amenity = shower and (fee = yes or indoor = yes or location = indoor)
               or tourism = information and information = office
-              or natural = cave_entrance and fee=yes
+              or natural = cave_entrance and fee = yes
               or """ +
 
         // The common list is shared by the name quest, the opening hours quest and the wheelchair quest.
@@ -47,7 +48,7 @@ class AddOpeningHours(
             "amenity" to arrayOf(
                 // common
                 "restaurant", "cafe", "ice_cream", "fast_food", "bar", "pub", "biergarten",         // eat & drink
-                "food_court", "nightclub",
+                "food_court", "nightclub", "hookah_lounge",
                 "cinema", "planetarium", "casino",                                                  // amenities
                 "townhall", "courthouse", "embassy", "community_centre", "youth_centre", "library", // civic
                 "driving_school", "music_school", "prep_school", "language_school", "dive_centre",  // learning
@@ -56,7 +57,7 @@ class AddOpeningHours(
                 "bank", "bureau_de_change", "money_transfer", "post_office", "marketplace",         // commercial
                 "internet_cafe", "payment_centre",
                 "car_wash", "car_rental", "fuel",                                                   // car stuff
-                "dentist", "doctors", "clinic", "pharmacy", "veterinary",                           // health
+                "dentist", "doctors", "clinic", "pharmacy", "veterinary", "veterinary_pharmacy",    // health
                 "animal_boarding", "animal_shelter", "animal_breeding",                             // animals
                 "coworking_space",                                                                  // work
 
@@ -86,13 +87,15 @@ class AddOpeningHours(
                 "employment_agency", "diplomatic", "coworking", "energy_supplier",
                 "estate_agent", "lawyer", "telecommunication", "educational_institution",
                 "association", "ngo", "it", "accountant", "property_management",
+                "bail_bond_agent",
             ),
             "craft" to arrayOf(
                 // common
                 "carpenter", "shoemaker", "tailor", "photographer", "dressmaker",
                 "electronics_repair", "key_cutter", "stonemason", "bookbinder",
                 "jeweller", "sailmaker", "jeweller", "watchmaker", "clockmaker",
-                "locksmith",  "window_construction",
+                "locksmith",  "window_construction", "signmaker", "upholsterer",
+                "electrician", "boatbuilder",
             ),
             "healthcare" to arrayOf(
                 // common

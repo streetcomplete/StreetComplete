@@ -17,6 +17,7 @@
         android:padding="8dp"
         android:background="?android:attr/selectableItemBackground"
         app:srcCompat="@drawable/ic_add_24dp"
+        app:tint="?android:attr/textColorPrimary"
         android:contentDescription="+"
         tools:ignore="HardcodedText" />
 
@@ -28,6 +29,7 @@
         android:padding="8dp"
         android:background="?android:attr/selectableItemBackground"
         app:srcCompat="@drawable/ic_subtract_24dp"
+        app:tint="?android:attr/textColorPrimary"
         android:contentDescription="-"
         tools:ignore="HardcodedText"/>
 

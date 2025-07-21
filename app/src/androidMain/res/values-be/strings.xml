@@ -919,7 +919,6 @@
     <string name="quest_traffic_calming_type_island">"Астравок бяспекі"</string>
     <string name="quest_traffic_calming_type_chicane">"Наўмысная(-ыя) крывая(-ыя)"</string>
     <string name="quest_traffic_calming_type_rumble_strip">"Паласа (паласы) вібрацыі"</string>
-    <string name="quest_surface_value_concrete_plates">"Бетонныя пліты"</string>
     <string name="quest_surface_value_concrete_lanes">"Бетонныя палосы"</string>
     <string name="quest_fireHydrant_diameter_title">"Які дыяметр паказаны на таблічцы гэтага пажарнага гідранта?"</string>
     <string name="quest_diet_answer_no_food">"У яго няма ежы"</string>
@@ -1411,6 +1410,7 @@
     <string name="quest_boat_rental_title">"Якія лодкі тут здаюць напракат?"</string>
     <string name="quest_boat_rental_motorboat">"Маторка"</string>
     <string name="quest_boat_rental_kayak">"Каяк"</string>
+    <string name="quest_boat_rental_canoe">"Каноэ"</string>
     <string name="quest_powerAttachment_title">"Як трымаецца гэтая лінія электраперадачы?"</string>
     <string name="quest_powerAttachment_suspension">"Ізалятары зверху"</string>
     <string name="quest_powerAttachment_anchor">"Фіксуецца гарызантальна"</string>

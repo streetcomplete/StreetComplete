@@ -902,7 +902,6 @@
     <string name="quest_traffic_calming_type_island">"Остров"</string>
     <string name="quest_traffic_calming_type_chicane">"Допълнителен завой(-и)"</string>
     <string name="quest_traffic_calming_type_rumble_strip">"Шумна маркировка"</string>
-    <string name="quest_surface_value_concrete_plates">"Бетонни плочи"</string>
     <string name="quest_surface_value_concrete_lanes">"Бетонни ленти"</string>
     <string name="quest_fireHydrant_diameter_title">"Какъв диаметър е посочен на знака на пожарния хидрант?"</string>
     <string name="quest_diet_answer_no_food">"Без храна"</string>

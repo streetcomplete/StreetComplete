@@ -55,7 +55,7 @@
     <string name="confirmation_authorize_now">"Aby opublikować swoje odpowiedzi musisz dokonać autoryzacji za pomocą konta użytkownika OSM. Chcesz się zalogować teraz?"</string>
     <string name="not_authorized">"Brak autoryzacji"</string>
     <string name="version_banned_message">"Ta wersja StreetComplete jest przestarzała! Zaktualizuj aplikację."</string>
-    <string name="no_gps_no_quests">"Aby automatycznie szukać zadań wokół ciebie, włącz lokalizacje."</string>
+    <string name="no_gps_no_quests">"Aby automatycznie szukać zadań wokół ciebie, włącz lokalizację."</string>
     <string name="later">"Później"</string>
     <string name="quest_streetName_answer_noProperStreet_link">"Po prostu łączy dwie drogi"</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">"Inne (zostaw notatkę)"</string>
@@ -918,7 +918,6 @@ Dane są odświeżane automatycznie po %1$s dniach a nieużyte kasowane automaty
     <string name="quest_traffic_calming_type_island">"Wysepka"</string>
     <string name="quest_traffic_calming_type_chicane">"Wymuszony slalom"</string>
     <string name="quest_traffic_calming_type_rumble_strip">"Dudniące paski/pasek"</string>
-    <string name="quest_surface_value_concrete_plates">"Betonowe płyty"</string>
     <string name="quest_surface_value_concrete_lanes">"Betonowe pasy"</string>
     <string name="quest_fireHydrant_diameter_title">"Jaka średnica jest na znaku tego hydrantu?"</string>
     <string name="quest_diet_answer_no_food">"Nie ma jedzenia"</string>
@@ -1446,7 +1445,9 @@ Poziom liczy się jako poziom dachu, gdy jego okna znajdują się w dachu, w zwi
     <string name="overlay_mtb_scale_1">"Stopień 1"</string>
     <string name="overlay_mtb_scale_1_description">"Teren częściowo luźny z małymi korzeniami, kamieniami, erozją lub koleinami wodnymi; nachylenie ≤40%; przeszkody nadające się do pokonania na torze; wymagana podstawowa technika jazdy."</string>
     <string name="overlay_mtb_scale_2">"Stopień 2"</string>
+    <string name="overlay_mtb_scale_2_description">"Luźny teren z większymi korzeniami i skałami, płaskie spadki / małe stopnie, do 70% nachylenia; łatwe zakręty; wymagane zaawansowane hamowanie i zmiana balansu."</string>
     <string name="overlay_mtb_scale_3">"Stopień 3"</string>
+    <string name="overlay_mtb_scale_3_description">"Śliski, luźny teren z osypiskami, głazami, dużymi korzeniami i skałami, wysokimi stopniami i trudnymi trawersami; ciasne zakręty, nachylenie &gt; 70%; wymagana bardzo dobra równowaga i precyzyjne hamowanie."</string>
     <string name="overlay_mtb_scale_4">"Stopień 4"</string>
     <string name="overlay_mtb_scale_4_description">"Trudne i techniczne przeszkody: wielkie głazy, korzenie, piargi, strome podjazdy; nawroty na pivotach, płaskie zeskoki z ryzykiem uderzenia pedałami; wymagana perfekcyjna równowaga, precyzyjne hamowanie i zmiana pozycji tylnego koła."</string>
     <string name="overlay_mtb_scale_5">"Stopień 5"</string>
@@ -1459,4 +1460,7 @@ Poziom liczy się jako poziom dachu, gdy jego okna znajdują się w dachu, w zwi
     <string name="overlay">"Nakładka"</string>
     <string name="enable_overlay_confirmation_title">"Włączyć tą nakładkę?"</string>
     <string name="link_transitous_description">"Bezpłatne i otwarte, neutralne dla dostawców rozwiązanie do planowania tras transportu publicznego"</string>
+    <string name="compass">"Kompas"</string>
+    <string name="quest_tracktype_grade2">"Droga utwardzona"</string>
+    <string name="quest_tracktype_grade3">"Droga częściowo utwardzona"</string>
 </resources>

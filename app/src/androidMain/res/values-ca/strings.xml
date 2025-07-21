@@ -916,7 +916,6 @@ Les dades s'actualitzen després de %1$s dies i les dades no utilitzades s'elimi
     <string name="quest_traffic_calming_type_island">"Illa"</string>
     <string name="quest_traffic_calming_type_chicane">"Corbes deliverades"</string>
     <string name="quest_traffic_calming_type_rumble_strip">"Bandes Sonores"</string>
-    <string name="quest_surface_value_concrete_plates">"Plaques de formigó"</string>
     <string name="quest_surface_value_concrete_lanes">"Línies de formigó"</string>
     <string name="quest_fireHydrant_diameter_title">"Quin és el diàmetre d'aquesta boca d'incendis?"</string>
     <string name="quest_diet_answer_no_food">"No té menjar"</string>

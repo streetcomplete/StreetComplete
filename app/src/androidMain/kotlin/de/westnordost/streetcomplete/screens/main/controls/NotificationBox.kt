@@ -15,10 +15,11 @@ import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.ic_email_24
+import org.jetbrains.compose.resources.painterResource
 
 /** Notification shown usually shown on the top end corner of e.g. a button */
 @Composable
@@ -45,7 +46,7 @@ fun NotificationBox(
 private fun PreviewMapButtonWithNotification() {
     Box {
         MapButton(onClick = {}) {
-            Icon(painterResource(R.drawable.ic_email_24dp), null)
+            Icon(painterResource(Res.drawable.ic_email_24), null)
         }
         Box(Modifier.align(Alignment.TopEnd)) {
             NotificationBox { Text(text = "999") }

@@ -18,6 +18,7 @@ class AddVegan : OsmFilterQuestType<DietAvailabilityAnswer>(), AndroidQuest {
         nodes, ways with
         (
           amenity = ice_cream
+          or shop = pastry
           or diet:vegetarian ~ yes|only and
           (
             amenity ~ restaurant|cafe|fast_food|food_court and food != no

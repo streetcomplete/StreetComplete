@@ -914,7 +914,6 @@ Data disegarkan setelah %1$s hari dan data yang tidak digunakan dihapus setelah 
     <string name="quest_traffic_calming_type_island">"Pulau"</string>
     <string name="quest_traffic_calming_type_chicane">"Kurva yang disengaja"</string>
     <string name="quest_traffic_calming_type_rumble_strip">"Strip gemuruh"</string>
-    <string name="quest_surface_value_concrete_plates">"Pelat beton"</string>
     <string name="quest_surface_value_concrete_lanes">"Jalur beton"</string>
     <string name="quest_fireHydrant_diameter_title">"Berapa diameter yang dijelaskan pada tanda di hidran kebakaran ini?"</string>
     <string name="quest_diet_answer_no_food">"Tidak ada makanan"</string>

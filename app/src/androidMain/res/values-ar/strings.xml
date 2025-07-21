@@ -918,7 +918,6 @@
     <string name="quest_traffic_calming_type_island">"جزيرة"</string>
     <string name="quest_traffic_calming_type_chicane">"منحنى/ات حادة"</string>
     <string name="quest_traffic_calming_type_rumble_strip">"مطبات متعددة ومتتالية"</string>
-    <string name="quest_surface_value_concrete_plates">"ألواح خرسانية"</string>
     <string name="quest_surface_value_concrete_lanes">"مسارات خرسانية"</string>
     <string name="quest_fireHydrant_diameter_title">"ما القطر المحدد على علامة صنبور إطفاء الحرائق هذا؟"</string>
     <string name="quest_diet_answer_no_food">"ليس لديها طعام"</string>
@@ -1357,4 +1356,5 @@
     <string name="quest_isAmenityIndoor_outside_covered">"ليس في الداخل، لكنه مغطى"</string>
     <string name="lit_value_unsupported">"حالة إضاءة محددة لا يمكن تحديدها في هذا التطبيق"</string>
     <string name="quest_generic_otherAnswers2">"ااااااا..."</string>
+    <string name="map_attribution">"إسناد الخريطة"</string>
 </resources>

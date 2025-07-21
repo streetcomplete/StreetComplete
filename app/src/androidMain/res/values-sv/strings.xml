@@ -920,7 +920,6 @@ Kartdata uppdateras efter %1$s dagar och oanvänd data raderas automatiskt efter
     <string name="quest_traffic_calming_type_island">"Refug"</string>
     <string name="quest_traffic_calming_type_chicane">"Sidoförskjutning (chikan)"</string>
     <string name="quest_traffic_calming_type_rumble_strip">"Räfflor"</string>
-    <string name="quest_surface_value_concrete_plates">"Betongplattor"</string>
     <string name="quest_surface_value_concrete_lanes">"Betongkörspår"</string>
     <string name="quest_fireHydrant_diameter_title">"Vilken diameter står angiven för denna brandpost?"</string>
     <string name="quest_diet_answer_no_food">"Ingen mat"</string>
@@ -1435,4 +1434,14 @@ En våning räknas som en takvåning när dess fönster finns i taket. Det följ
     <string name="pedestrian_zone_no_sign">"Det finns ingen skylt om cykling"</string>
     <string name="team_mode_description_overlay_hint">"Om ni använder extralager bör ni inte använda samma lager som varandra eftersom bara uppdragen är uppdelade."</string>
     <string name="quest_dietType_glutenfree_name_title">"Erbjuds glutenfria produkter här?"</string>
+    <string name="pref_title_zoom_buttons">"Visa kartzoomknappar"</string>
+    <string name="overlay_mtb_scale">"MTB-svårighetsgrad"</string>
+    <string name="default_disabled_overlay_domain_expert">"Det här lagret är inaktiverat som standard eftersom karteringen av det kräver ämneskunskaper inom området."</string>
+    <string name="pref_title_overlays">"Lagerval"</string>
+    <string name="pref_overlays_reset">"Återställ lagerregler till standard?"</string>
+    <string name="overlay">"Lager"</string>
+    <string name="enable_overlay_confirmation_title">"Aktivera detta lager?"</string>
+    <string name="compass">"Kompass"</string>
+    <string name="quest_tracktype_grade2">"Mestadels fast"</string>
+    <string name="quest_tracktype_grade3">"Blandning"</string>
 </resources>

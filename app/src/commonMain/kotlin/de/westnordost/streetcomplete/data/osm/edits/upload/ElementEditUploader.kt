@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.data.osm.edits.upload
 
+import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.ApplicationConstants.EDIT_ACTIONS_NOT_ALLOWED_TO_USE_LOCAL_CHANGES
-import de.westnordost.streetcomplete.ApplicationConstants.IGNORED_RELATION_TYPES
 import de.westnordost.streetcomplete.data.ConflictException
 import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
 import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
@@ -87,6 +87,6 @@ class ElementEditUploader(
         } else {
             changesetManager.getOrCreateChangeset(edit.type, edit.source, edit.position, edit.isNearUserLocation)
         }
-        return mapDataApi.uploadChanges(changesetId, changes, IGNORED_RELATION_TYPES)
+        return mapDataApi.uploadChanges(changesetId, changes, ApplicationConstants::ignoreRelation)
     }
 }

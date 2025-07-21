@@ -91,19 +91,26 @@ object ApplicationConstants {
     /** Which relation types to drop already during download, before persisting. This is a
      *  performance improvement. Working properly with relations means we have to have it as
      *  complete as possible. Some relations are extremely large, which would require to pull
-     *  a lot of elements from db into memory. */
-    val IGNORED_RELATION_TYPES = setOf(
-        // could be useful, but sometimes/often very very large
-        "route", "route_master", "superroute", "network", "disused:route",
-        // very large, not useful for SC
-        "boundary",
-        // can easily span very large areas, not useful for SC
-        "water", "waterway", "watershed", "collection",
-        // questionable relation type: members could easily span multiple continents
-        "person",
-        // no wiki entry, sounds like it could span large areas
-        "power", "pipeline", "railway"
-    )
+     *  a lot of elements from db into memory.
+     */
+    fun ignoreRelation(tags: Map<String, String>): Boolean {
+        val type = tags["type"] ?: return false
+        return when (type) {
+            // ignore non ferry relations since these are sometimes/often very very large
+            "route" -> tags["route"] != "ferry"
+            "route_master", "superroute", "network", "disused:route" -> true
+
+            // very large, not useful for SC
+            "boundary" -> true
+            // can easily span very large areas, not useful for SC
+            "water", "waterway", "watershed", "collection" -> true
+            // questionable relation type: members could easily span multiple continents
+            "person" -> true
+            // no wiki entry, sounds like it could span large areas
+            "power", "pipeline", "railway" -> true
+            else -> false
+        }
+    }
 
     val EDIT_ACTIONS_NOT_ALLOWED_TO_USE_LOCAL_CHANGES = setOf(
         /* because this action may edit route relations but route relations are not persisted

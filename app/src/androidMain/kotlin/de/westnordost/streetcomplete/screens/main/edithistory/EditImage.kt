@@ -8,6 +8,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import de.westnordost.streetcomplete.data.edithistory.Edit
+import org.jetbrains.compose.resources.painterResource
 
 /** Icon representing an edit (main icon + overlay icon) */
 @Composable
@@ -21,7 +22,7 @@ fun EditImage(
             Image(painterResource(edit.icon), null)
         }
         val overlayIcon = edit.overlayIcon
-        if (overlayIcon != 0) {
+        if (overlayIcon != null) {
             Image(
                 painter = painterResource(overlayIcon),
                 contentDescription = null,

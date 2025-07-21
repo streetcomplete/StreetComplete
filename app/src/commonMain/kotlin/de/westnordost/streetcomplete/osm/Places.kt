@@ -89,6 +89,7 @@ private val IS_PLACE_EXPRESSION by lazy {
             "pharmacy",
             "social_facility",
             "veterinary",
+            "veterinary_pharmacy",
 
             // entertainment, arts & culture
             "archive",

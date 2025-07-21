@@ -911,7 +911,6 @@ Všimnite si všetkých možností: v niektorých prípadoch nemusí byť zrejm�
     <string name="quest_traffic_calming_type_island">"Ostrovček"</string>
     <string name="quest_traffic_calming_type_chicane">"Šikana"</string>
     <string name="quest_traffic_calming_type_rumble_strip">"Hlučný pás"</string>
-    <string name="quest_surface_value_concrete_plates">"Betónové panely"</string>
     <string name="quest_surface_value_concrete_lanes">"Betónové pruhy"</string>
     <string name="quest_fireHydrant_diameter_title">"Aký priemer je uvedený na značke tohto hydrantu?"</string>
     <string name="quest_diet_answer_no_food">"Nemá žiadne jedlá"</string>

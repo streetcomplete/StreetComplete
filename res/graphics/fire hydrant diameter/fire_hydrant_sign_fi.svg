@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg id="vector" version="1.1" viewBox="0 0 735 392" xmlns="http://www.w3.org/2000/svg">
- <path d="m24.5 24.5h686v931h-686v-931z" fill="#fff" stroke="#033d86" stroke-width="49"/>
- <path d="m196 196v24.5h159.25v318.5h-19.6v73.5h63.699v-73.5h-19.6v-318.5h159.25v-24.5h-343z" fill="#033d86"/>
- <path d="m0 0h735v980h-735z" fill="none"/>
+<svg id="vector" width="320" height="144" version="1.1" viewBox="0 0 320 144" xmlns="http://www.w3.org/2000/svg">
+ <path d="m10 10h300v408h-300z" fill="#fff" stroke="#25b" stroke-width="20"/>
+ <path d="m84 116h72v140h-8v32h24v-32h-8v-140h72v-8h-152z" fill="#25b" stroke-width=".43537"/>
+ <path d="m0 0h320v426.67h-320z" fill="none" stroke-width=".43537"/>
 </svg>

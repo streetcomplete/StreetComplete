@@ -14,13 +14,10 @@ import java.net.URL
  *
  *  Unused, it is just too much to deliver them with the app. */
 open class DownloadBrandLogosTask : DefaultTask() {
-    @get:Input var targetDir: String? = null
-    @get:Input var version: String? = null
+    @get:Input lateinit var targetDir: String
+    @get:Input lateinit var version: String
 
     @TaskAction fun run() {
-        val targetDir = targetDir ?: return
-        val version = version ?: return
-
         val presetsUrl = URL("https://raw.githubusercontent.com/osmlab/name-suggestion-index/$version/dist/presets/nsi-id-presets.min.json")
         val nsiPresetsJson = Parser.default().parse(presetsUrl.openStream()) as JsonObject
         /* NSI uses (atm) a slightly different format than the normal presets: The presets are in

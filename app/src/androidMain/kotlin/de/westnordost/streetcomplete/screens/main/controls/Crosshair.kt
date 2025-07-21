@@ -10,18 +10,19 @@ import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.PreviewLightDark
-import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.crosshair
 import de.westnordost.streetcomplete.ui.theme.AppTheme
 import de.westnordost.streetcomplete.ui.theme.getOpenQuestFormMapPadding
+import org.jetbrains.compose.resources.painterResource
 
 /** A crosshair at the position at which a new POI should be created */
 @Composable
 fun Crosshair(modifier: Modifier = Modifier) {
     BoxWithConstraints(modifier.fillMaxSize()) {
         Icon(
-            painter = painterResource(R.drawable.crosshair),
+            painter = painterResource(Res.drawable.crosshair),
             contentDescription = null,
             modifier = Modifier
                 .align(Alignment.Center)

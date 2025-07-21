@@ -907,7 +907,6 @@ Los datos se actualizan cada %1$s días y los datos sin utilizar se eliminan aut
     <string name="quest_traffic_calming_type_island">"Isla"</string>
     <string name="quest_traffic_calming_type_chicane">"Chicane (curvas reductoras de velocidad)."</string>
     <string name="quest_traffic_calming_type_rumble_strip">"Bandas rugosas."</string>
-    <string name="quest_surface_value_concrete_plates">"Losas de hormigón"</string>
     <string name="quest_surface_value_concrete_lanes">"Roderas de cemento u hormigón para vehículos"</string>
     <string name="quest_fireHydrant_diameter_title">"¿Qué diámetro de toma está especificado en esta boca de incendio?"</string>
     <string name="quest_diet_answer_no_food">"No tiene comida."</string>
@@ -1417,4 +1416,5 @@ La planta de arriba cuenta como «tejado» si el tejado tiene ventanas. Por lo q
     <string name="pedestrian_zone_allowed_sign">"Hay señales que permiten ir en bici"</string>
     <string name="pedestrian_zone_no_sign">"Sin señales sobre ir en bici"</string>
     <string name="team_mode_description_overlay_hint">"Si utilizáis superposiciones, cada persona debe utilizar una diferente, ya que sólo se dividen las misiones."</string>
+    <string name="map_attribution">"Atribución del mapa"</string>
 </resources>

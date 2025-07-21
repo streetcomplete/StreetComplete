@@ -915,7 +915,6 @@
     <string name="quest_traffic_calming_type_island">"Острво"</string>
     <string name="quest_traffic_calming_type_chicane">"Вештачке/намерне кривине"</string>
     <string name="quest_traffic_calming_type_rumble_strip">"Вибро-звучне траке"</string>
-    <string name="quest_surface_value_concrete_plates">"Плочасти бетон"</string>
     <string name="quest_surface_value_concrete_lanes">"Бетонске саобраћ. траке"</string>
     <string name="quest_fireHydrant_diameter_title">"Који је пречник написан на знаку хидранта?"</string>
     <string name="quest_diet_answer_no_food">"Нема хране"</string>

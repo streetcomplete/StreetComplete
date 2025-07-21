@@ -914,7 +914,6 @@
     <string name="quest_traffic_calming_type_island">"جزیره"</string>
     <string name="quest_traffic_calming_type_chicane">"پیچ(های) سرعت‌گیر"</string>
     <string name="quest_traffic_calming_type_rumble_strip">"نوار(های) لرزاننده"</string>
-    <string name="quest_surface_value_concrete_plates">"صفحات بتنی"</string>
     <string name="quest_surface_value_concrete_lanes">"خطوط بتنی"</string>
     <string name="quest_fireHydrant_diameter_title">"چه قطری روی تابلوی این شیر آتش‌نشانی مشخص شده است؟"</string>
     <string name="quest_diet_answer_no_food">"خوراک ندارد"</string>

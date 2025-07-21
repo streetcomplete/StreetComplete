@@ -35,7 +35,7 @@ class AddWheelchairAccessBusiness : OsmFilterQuestType<WheelchairAccess>(), Andr
             "amenity" to arrayOf(
                 // common
                 "restaurant", "cafe", "ice_cream", "fast_food", "bar", "pub", "biergarten",         // eat & drink
-                "food_court", "nightclub",
+                "food_court", "nightclub", "hookah_lounge",
                 "cinema", "planetarium", "casino",                                                  // amenities
                 "townhall", "courthouse", "embassy", "community_centre", "youth_centre", "library", // civic
                 "driving_school", "music_school", "prep_school", "language_school", "dive_centre",  // learning
@@ -44,7 +44,7 @@ class AddWheelchairAccessBusiness : OsmFilterQuestType<WheelchairAccess>(), Andr
                 "bank", "bureau_de_change", "money_transfer", "post_office", "marketplace",         // commercial
                 "internet_cafe", "payment_centre",
                 "car_wash", "car_rental", "fuel",                                                   // car stuff
-                "dentist", "doctors", "clinic", "pharmacy", "veterinary",                           // health
+                "dentist", "doctors", "clinic", "pharmacy", "veterinary", "veterinary_pharmacy",    // health
                 "animal_boarding", "animal_shelter", "animal_breeding",                             // animals
                 "coworking_space",                                                                  // work
 
@@ -84,6 +84,7 @@ class AddWheelchairAccessBusiness : OsmFilterQuestType<WheelchairAccess>(), Andr
                 "employment_agency", "diplomatic", "coworking",
                 "estate_agent", "lawyer", "telecommunication", "educational_institution",
                 "association", "ngo", "it", "accountant", "property_management",
+                "bail_bond_agent",
 
                 // name & wheelchair
                 "political_party", "therapist"
@@ -93,7 +94,8 @@ class AddWheelchairAccessBusiness : OsmFilterQuestType<WheelchairAccess>(), Andr
                 "carpenter", "shoemaker", "tailor", "photographer", "dressmaker",
                 "electronics_repair", "key_cutter", "stonemason", "bookbinder",
                 "jeweller", "sailmaker", "jeweller", "watchmaker", "clockmaker",
-                "locksmith",  "window_construction",
+                "locksmith",  "window_construction", "upholsterer",
+                "electrician", "boatbuilder",
 
                 // name & wheelchair
                 "winery"

@@ -38,7 +38,7 @@ class AddPlaceName(
             "amenity" to arrayOf(
                 // common
                 "restaurant", "cafe", "ice_cream", "fast_food", "bar", "pub", "biergarten",         // eat & drink
-                "food_court", "nightclub",
+                "food_court", "nightclub", "hookah_lounge",
                 "cinema", "planetarium", "casino",                                                  // amenities
                 "townhall", "courthouse", "embassy", "community_centre", "youth_centre", "library", // civic
                 "driving_school", "music_school", "prep_school", "language_school", "dive_centre",  // learning
@@ -47,7 +47,7 @@ class AddPlaceName(
                 "bank", "bureau_de_change", "money_transfer", "post_office", "marketplace",         // commercial
                 "internet_cafe", "payment_centre",
                 "car_wash", "car_rental", "fuel",                                                   // car stuff
-                "dentist", "doctors", "clinic", "pharmacy", "veterinary",                           // health
+                "dentist", "doctors", "clinic", "pharmacy", "veterinary", "veterinary_pharmacy",    // health
                 "animal_boarding", "animal_shelter", "animal_breeding",                             // animals
                 "coworking_space",                                                                  // work
 
@@ -93,7 +93,7 @@ class AddPlaceName(
                 "sports_centre", "stadium",
 
                 // name only
-                "dance", "nature_reserve", "marina", "horse_riding",
+                "dance", "nature_reserve", "marina", "horse_riding", "trampoline_park",
             ),
             "landuse" to arrayOf(
                 "cemetery", "allotments"

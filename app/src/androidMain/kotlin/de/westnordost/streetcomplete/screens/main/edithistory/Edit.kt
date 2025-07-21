@@ -18,6 +18,12 @@ import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestHidden
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.atp.CreatePoiBasedOnAtp
 import de.westnordost.streetcomplete.quests.getTitle
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.undo_delete
+import de.westnordost.streetcomplete.resources.undo_move_node
+import de.westnordost.streetcomplete.resources.undo_split
+import de.westnordost.streetcomplete.resources.undo_visibility
+import org.jetbrains.compose.resources.DrawableResource
 
 val Edit.icon: Int get() = when (this) {
     is ElementEdit -> type.icon
@@ -33,19 +39,19 @@ val Edit.icon: Int get() = when (this) {
     else -> 0
 }
 
-val Edit.overlayIcon: Int get() = when (this) {
+val Edit.overlayIcon: DrawableResource? get() = when (this) {
     is ElementEdit -> {
         when (action) {
-            is DeletePoiNodeAction -> R.drawable.ic_undo_delete
-            is SplitWayAction -> R.drawable.ic_undo_split
-            is MoveNodeAction -> R.drawable.ic_undo_move_node
-            else -> 0
+            is DeletePoiNodeAction -> Res.drawable.undo_delete
+            is SplitWayAction -> Res.drawable.undo_split
+            is MoveNodeAction -> Res.drawable.undo_move_node
+            else -> null
         }
     }
-    is OsmNoteQuestHidden -> R.drawable.ic_undo_visibility
-    is OsmQuestHidden -> R.drawable.ic_undo_visibility
+    is OsmNoteQuestHidden -> Res.drawable.undo_visibility
+    is OsmQuestHidden -> Res.drawable.undo_visibility
     is AtpQuestHidden -> R.drawable.ic_undo_visibility
-    else -> 0
+    else -> null
 }
 
 @Composable

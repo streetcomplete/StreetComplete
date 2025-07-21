@@ -41,7 +41,8 @@ class AddTrafficSignalsVibration : OsmElementQuestType<Boolean>, AndroidQuest {
     override val enabledInCountries = AllCountriesExcept(
         "BG", // see https://github.com/streetcomplete/StreetComplete/issues/5846
         "FI", // see https://github.com/streetcomplete/StreetComplete/issues/5791
-        "RU" // see https://github.com/streetcomplete/StreetComplete/issues/4021
+        "RU", // see https://github.com/streetcomplete/StreetComplete/issues/4021
+        "CZ"
     )
 
     override val hint = R.string.quest_traffic_signals_vibrate_description

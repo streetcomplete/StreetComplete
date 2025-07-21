@@ -20,7 +20,7 @@ class MtbScaleKtTest {
     }
 
     @Test fun `parse scale`() {
-        for (modifier in MtbScale.Modifier.entries) {
+        for (modifier in MtbScale.Mod.entries) {
             val mod = modifier.value?.toString().orEmpty()
             for (i in 0..6) {
                 assertEquals(MtbScale(i, modifier), parse("$i$mod"))
@@ -35,7 +35,7 @@ class MtbScaleKtTest {
         )
         assertEquals(
             setOf(StringMapEntryAdd("mtb:scale", "3+")),
-            MtbScale(3, MtbScale.Modifier.PLUS).appliedTo(mapOf())
+            MtbScale(3, MtbScale.Mod.PLUS).appliedTo(mapOf())
         )
         assertEquals(
             setOf(StringMapEntryModify("mtb:scale", "grade2", "2")),
@@ -63,7 +63,7 @@ class MtbScaleKtTest {
     @Test fun `applyTo with specified modifier overwrites modifier`() {
         assertEquals(
             setOf(StringMapEntryModify("mtb:scale", "2+", "2")),
-            MtbScale(2, MtbScale.Modifier.NONE).appliedTo(mapOf("mtb:scale" to "2+"))
+            MtbScale(2, MtbScale.Mod.NONE).appliedTo(mapOf("mtb:scale" to "2+"))
         )
     }
 }

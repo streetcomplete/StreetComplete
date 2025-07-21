@@ -5,7 +5,6 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.LocalTextStyle
-import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
@@ -13,12 +12,13 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.count_step
+import org.jetbrains.compose.resources.painterResource
 
 /** An outlined text field that accepts only integer input with an illustration that should display
  *  the "unit" (steps, bicycles, ...) of what is input next to it */
@@ -34,7 +34,7 @@ fun CountInput(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(16.dp),
     ) {
-        OutlinedTextField(
+        TextField2(
             value = count?.toString().orEmpty(),
             onValueChange = { newText: String ->
                 if (newText.isEmpty()) {
@@ -63,6 +63,6 @@ private fun StepCountFormPreview() {
     CountInput(
         count = count.value,
         onCountChange = { count.value = it },
-        iconPainter = painterResource(R.drawable.ic_step),
+        iconPainter = painterResource(Res.drawable.count_step),
     )
 }

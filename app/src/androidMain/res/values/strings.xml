@@ -83,6 +83,7 @@ The info you enter is directly added to OpenStreetMap in your name, without the 
     <string name="quest_generic_hasFeature_yes">"Yes"</string>
     <string name="quest_generic_hasFeature_no">"No"</string>
     <string name="quest_generic_hasFeature_optional">"Optionally"</string>
+
     <!-- aka "exclusively". E.g. "Does this restaurant have vegan food?" - "It only has vegan food!"-->
     <string name="quest_hasFeature_only">Only</string>
     <string name="quest_generic_hasFeature_no_leave_note">"No (leave note)"</string>
@@ -239,7 +240,7 @@ Additionally, some overlays allow you to add new data at the position of a displ
 
     <!-- AR Measure screen -->
 
-    <string name="ar_measure">Measure</string>
+    <string name="ar_measure">Take Measurement</string>
     <string name="ar_core_error_sdk_too_old">This app is too old, try updating.</string>
     <string name="ar_core_tracking_error_bad_state">Something went wrong. Try restarting the measuring.</string>
     <string name="ar_core_tracking_error_insufficient_light">Too dark here</string>
@@ -1791,6 +1792,7 @@ Partially means that a wheelchair can enter and use the restroom, but no handrai
     <string name="overlay_things">Things</string>
     <string name="disused">disused</string>
     <string name="unknown_object">Unknown object</string>
+    <string name="or">"or"</string>
 
     <string name="overlay_street_parking">Street parking</string>
 

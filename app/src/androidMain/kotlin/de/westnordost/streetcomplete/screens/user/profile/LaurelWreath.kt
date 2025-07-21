@@ -12,10 +12,12 @@ import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.drawscope.inset
 import androidx.compose.ui.graphics.drawscope.withTransform
 import androidx.compose.ui.graphics.painter.Painter
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
-import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.laurel_leaf_ending
+import de.westnordost.streetcomplete.resources.laurel_leaf_pair
 import de.westnordost.streetcomplete.ui.theme.LeafGreen
+import org.jetbrains.compose.resources.painterResource
 
 @Composable
 fun LaurelWreath(
@@ -25,9 +27,9 @@ fun LaurelWreath(
 ) {
     if (progress < 0.1f) return
 
-    val leafPair = painterResource(R.drawable.laurel_leaf_pair)
-    val leafPairGrowing = painterResource(R.drawable.laurel_leaf_pair)
-    val leafSingle = painterResource(R.drawable.laurel_leaf_ending)
+    val leafPair = painterResource(Res.drawable.laurel_leaf_pair)
+    val leafPairGrowing = painterResource(Res.drawable.laurel_leaf_pair)
+    val leafSingle = painterResource(Res.drawable.laurel_leaf_ending)
 
     Box(modifier.aspectRatio(1f).drawBehind {
         val maxLeafs = 10f
