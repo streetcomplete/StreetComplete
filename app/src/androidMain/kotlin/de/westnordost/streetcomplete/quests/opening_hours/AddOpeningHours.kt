@@ -57,7 +57,7 @@ class AddOpeningHours(
                 "bank", "bureau_de_change", "money_transfer", "post_office", "marketplace",         // commercial
                 "internet_cafe", "payment_centre",
                 "car_wash", "car_rental", "fuel",                                                   // car stuff
-                "dentist", "doctors", "clinic", "pharmacy", "veterinary",                           // health
+                "dentist", "doctors", "clinic", "pharmacy", "veterinary", "veterinary_pharmacy",    // health
                 "animal_boarding", "animal_shelter", "animal_breeding",                             // animals
                 "coworking_space",                                                                  // work
 
