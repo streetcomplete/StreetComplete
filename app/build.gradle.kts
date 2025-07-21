@@ -11,9 +11,6 @@ import java.util.Properties
 val appVersionName = "61.2"
 val appVersionCode = 6102
 
-/** Whether this build will be uploaded to Google Play / Apple AppStore */
-val appForMonopolisticAppStore = false
-
 /** Localizations the app should be available in */
 val bcp47ExportLanguages = setOf<String>(
     "ar", "ast", "be", "bg", "bs", "ca", "cs", "da", "de", "el",
@@ -57,7 +54,7 @@ buildkonfig {
     objectName = "BuildConfig"
 
     defaultConfigs {
-        buildConfigField(BOOLEAN, "IS_FROM_MONOPOLISTIC_APP_STORE", appForMonopolisticAppStore.toString())
+        buildConfigField(BOOLEAN, "IS_FROM_MONOPOLISTIC_APP_STORE", properties["app.streetcomplete.monopolistic_app_store"]!!.toString())
         buildConfigField(STRING, "VERSION_NAME", appVersionName)
         buildConfigField(BOOLEAN, "DEBUG", properties["app.streetcomplete.debug"]!!.toString())
     }
