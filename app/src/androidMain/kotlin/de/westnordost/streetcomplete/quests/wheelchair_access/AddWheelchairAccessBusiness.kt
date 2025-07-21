@@ -84,6 +84,7 @@ class AddWheelchairAccessBusiness : OsmFilterQuestType<WheelchairAccess>(), Andr
                 "employment_agency", "diplomatic", "coworking",
                 "estate_agent", "lawyer", "telecommunication", "educational_institution",
                 "association", "ngo", "it", "accountant", "property_management",
+                "bail_bond_agent",
 
                 // name & wheelchair
                 "political_party", "therapist"
