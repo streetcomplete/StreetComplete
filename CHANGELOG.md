@@ -3,18 +3,17 @@
 ## v61.2
 
 ### Quest improvements
-- Ask many quests (Fee, lit, name, internet access, opening hours, wheelchair access, …) for many more shops and amenities (#6345, #6349, #6353, #6357, #6358, #6359, #6365, #6368, #6374, #6382, #6383, #6386, #6396), by @paulklie
+- Ask many quests (Fee, lit, name, internet access, opening hours, wheelchair access, …) for many more shops and amenities (#6345, #6349, #6353, #6357, #6358, #6359, #6365, #6368, #6374, #6382, #6383, #6386, #6396, #6397), by @paulklie
 - Max physical height: Clarify wording, don't ask for highways (#6367, #6362, #6363), by @kmpoppe
 - Motorcycle parking capacity: Don't ask if there are no markings at all (#6299), by @matkoniecz
-- Bike paths: Ask users to resurvey after periodically also on living streets (#6369)
+- Bike paths: Ask users to resurvey periodically also on living streets (#6369)
 - Fire hydrant diameter: Also ask in Ukraine (#6395)
-- Check existence: Also ask for bicycle repair stations periodically (#6397), by @paulklie
 - Entrance type: Don't ask for entrances that (potentially) don't lead outside on street-level (#6392)
 
 ### Fixes
 - Charging station car capacity: Don't ask for charging stations designated for bicycles etc. (#6388), by @paulklie
 - Fix a number of issues that may potentially cause bugs (#6307, #6311, #6315, #6317, #6321, #6332, #6322), by @RubenKelevra
-- Ferry routes: Only ask for actual ferry lines, not just connections that were merely mapped for the renderer (#6387, #6375), by @paulklie
+- Ferry routes: Only ask for actual ferry lines, not just connections (#6387, #6375), by @paulklie
 
 ## v61.1
 
