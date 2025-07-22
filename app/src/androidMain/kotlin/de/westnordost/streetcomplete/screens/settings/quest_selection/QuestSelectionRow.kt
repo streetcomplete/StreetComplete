@@ -33,6 +33,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.surface.AddRoadSurface
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.ic_drag_vertical_24
+import org.jetbrains.compose.resources.painterResource
 
 /** Single item in the quest selection list. Shows icon + title, whether it is enabled and whether
  *  it is disabled by default / disabled in the country one is in */
@@ -50,7 +53,7 @@ fun QuestSelectionRow(
         verticalAlignment = Alignment.CenterVertically,
     ) {
         if (item.isInteractionEnabled) {
-            Icon(painterResource(R.drawable.ic_drag_vertical), "Reorder")
+            Icon(painterResource(Res.drawable.ic_drag_vertical_24), "Reorder")
         } else {
             Spacer(Modifier.size(24.dp))
         }

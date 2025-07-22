@@ -915,7 +915,6 @@ I dati vengono aggiornati dopo %1$s giorni e i dati inutilizzati vengono cancell
     <string name="quest_traffic_calming_type_island">"Isola"</string>
     <string name="quest_traffic_calming_type_chicane">"Curve obbligate"</string>
     <string name="quest_traffic_calming_type_rumble_strip">"Strisce rumorose"</string>
-    <string name="quest_surface_value_concrete_plates">"Lastre di cemento"</string>
     <string name="quest_surface_value_concrete_lanes">"Linee in cemento"</string>
     <string name="quest_fireHydrant_diameter_title">"Qual è il diametro indicato sulla targa dell'idrante?"</string>
     <string name="quest_diet_answer_no_food">"Non ha alcun cibo"</string>
@@ -1432,7 +1431,7 @@ Un piano del tetto va contato quando ci sono finestre nel tetto. Quindi, un tett
     <string name="quest_dietType_glutenfree_name_title">"Qui si servono prodotti senza glutine?"</string>
     <string name="quest_dietType_explanation_glutenfree">"La preparazione di prodotti senza glutine richiede una formazione specifica, perché anche spezie e salse comuni possono contenere glutine. I prodotti senza glutine sono segnalati da etichette apposite."</string>
     <string name="quest_construction_minor_title">"I lavori stradali secondari qui sono finiti?"</string>
-    <string name="map_attribution">"Attribuzione mappa"</string>
+    <string name="map_attribution">"Attribuzione della mappa"</string>
     <string name="link_panoramax_description">"Un software gratuito e open source è un servizio non profit per condividere foto a livello strada"</string>
     <string name="link_opengeofiction_description">"Stanco di mappare la realtà? Crea mappe fittizie con altri utenti!"</string>
     <string name="link_openclimbing_description">"Una mappa per i punti di arrampicata"</string>
@@ -1456,4 +1455,6 @@ Un piano del tetto va contato quando ci sono finestre nel tetto. Quindi, un tett
     <string name="pref_overlays_reset">"Ripristinare l'abilitazione del livello?"</string>
     <string name="overlay">"Livello"</string>
     <string name="enable_overlay_confirmation_title">"Abilitare questo livello?"</string>
+    <string name="compass">"Bussola"</string>
+    <string name="quest_tracktype_grade3">"Miscela"</string>
 </resources>

@@ -14,15 +14,18 @@ import androidx.compose.material.contentColorFor
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.ic_star_32
+import de.westnordost.streetcomplete.resources.ic_star_halo_32
 import de.westnordost.streetcomplete.ui.common.CounterWithHalo
 import de.westnordost.streetcomplete.ui.common.TextWithHalo
 import de.westnordost.streetcomplete.ui.theme.titleLarge
 import de.westnordost.streetcomplete.ui.theme.titleSmall
+import org.jetbrains.compose.resources.painterResource
 
 /** View that displays the user's quest answer counter */
 @Composable
@@ -51,12 +54,12 @@ fun StarsCounter(
                 )
             }
             Icon(
-                painter = painterResource(R.drawable.ic_star_halo_32dp),
+                painter = painterResource(Res.drawable.ic_star_halo_32),
                 contentDescription = null,
                 tint = haloColor
             )
             Icon(
-                painter = painterResource(R.drawable.ic_star_32dp),
+                painter = painterResource(Res.drawable.ic_star_32),
                 contentDescription = null,
                 tint = contentColorFor(surfaceColor)
             )

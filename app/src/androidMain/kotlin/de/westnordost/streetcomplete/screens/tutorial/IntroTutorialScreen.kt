@@ -15,9 +15,7 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
@@ -31,12 +29,17 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewScreenSizes
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.logo_osm_magnifier
+import de.westnordost.streetcomplete.resources.logo_osm_map
+import de.westnordost.streetcomplete.resources.logo_osm_map_lighting
 import de.westnordost.streetcomplete.screens.main.controls.LocationState
 import de.westnordost.streetcomplete.screens.main.controls.LocationStateButton
 import de.westnordost.streetcomplete.ui.common.Pin
 import de.westnordost.streetcomplete.ui.theme.headlineLarge
 import de.westnordost.streetcomplete.ui.theme.titleLarge
 import kotlinx.coroutines.launch
+import org.jetbrains.compose.resources.painterResource
 
 /** Shows a short tutorial for first-time users */
 @Composable
@@ -123,12 +126,12 @@ private fun BoxScope.IntroTutorialIllustration(
                 }
         ) {
             Image(
-                painter = painterResource(R.drawable.logo_osm_map),
+                painter = painterResource(Res.drawable.logo_osm_map),
                 contentDescription = null,
                 modifier = Modifier.fillMaxSize()
             )
             Image(
-                painter = painterResource(R.drawable.logo_osm_map_lighting),
+                painter = painterResource(Res.drawable.logo_osm_map_lighting),
                 contentDescription = null,
                 modifier = Modifier
                     .fillMaxSize()
@@ -174,7 +177,7 @@ private fun BoxScope.IntroTutorialIllustration(
         )
 
         Image(
-            painter = painterResource(R.drawable.logo_osm_magnifier),
+            painter = painterResource(Res.drawable.logo_osm_magnifier),
             contentDescription = null,
             modifier = Modifier
                 .size(225.dp)

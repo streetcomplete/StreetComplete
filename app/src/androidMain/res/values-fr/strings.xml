@@ -921,7 +921,6 @@ Si vous êtes submergé par le nombre de quêtes, vous pouvez choisir quelles qu
     <string name="quest_traffic_calming_type_island">"Ilot"</string>
     <string name="quest_traffic_calming_type_chicane">"Chicane(s)"</string>
     <string name="quest_traffic_calming_type_rumble_strip">"Bande(s) rugueuse(s)"</string>
-    <string name="quest_surface_value_concrete_plates">"Plaques de béton"</string>
     <string name="quest_surface_value_concrete_lanes">"Voies en béton"</string>
     <string name="quest_fireHydrant_diameter_title">"Quel est le diamètre indiqué sur le panneau de cette bouche d’incendie ?"</string>
     <string name="quest_diet_answer_no_food">"Pas de nourriture"</string>
@@ -997,24 +996,24 @@ Alternativement, vous pouvez laisser une note (avec une photo)."</string>
     <string name="quest_smoothness_description_very_bad_paving_stones">"Pavés manquants, endommagés, trous, ou dommages importants"</string>
     <string name="quest_smoothness_description_very_bad_compacted_gravel">"Pierres grossières, nids-de-poules profonds, bosses, érosion et autres dommages"</string>
     <string name="quest_smoothness_description_horrible">"Praticable seulement avec un véhicule tout-terrain ou à pied"</string>
-    <string name="quest_smoothness_description_very_horrible">"Praticable seulement avec un véhicule tout-terrain spécialisé"</string>
-    <string name="quest_smoothness_description_impassable">"Praticable uniquement à pieds"</string>
+    <string name="quest_smoothness_description_very_horrible">"Uniquement praticable en véhicule tout-terrain ou à pied"</string>
+    <string name="quest_smoothness_description_impassable">"Non carrossable, praticable seulement à pied"</string>
     <string name="quest_smoothness_wrong_surface">"La surface est différente"</string>
     <string name="quest_smoothness_surface_value">"La surface est tagguée comme :"</string>
     <string name="quest_smoothness_obstacle">"Il y a un obstacle"</string>
-    <string name="quest_smoothness_obstacle_hint">"Veuillez donner une réponse générale pour l’homogénéité de la surface. Les obstacles ponctuels, comme les dos d’âne ou les ralentisseurs peuvent être ignorés. Les obstacles répétés ou inattendus doivent être pris en compte dans la réponse."</string>
+    <string name="quest_smoothness_obstacle_hint">"Veuillez donner une réponse générale pour l’homogénéité de la surface. Les obstacles ponctuels comme les bordures, dos d'âne ou bovistop peuvent être ignorés. Les obstacles répétés ou inattendus doivent être pris en compte dans la réponse."</string>
     <string name="quest_smoothness_hint">"🚲, 🚗, 🚙, … indique pour quel véhicule la surface est adaptée. Cela concerne l’état global, et non pas les dommages unitaires éventuels."</string>
     <string name="link_osmhydrant_description">"Chercher, ajouter et éditer des casernes de pompiers et des poteaux incendie"</string>
     <string name="achievement_lifesaver_title">"Sauveteur"</string>
     <string name="achievement_lifesaver_solved_X">"Vous avez résolu %d quêtes aidant les services d’urgence et de premier secours !"</string>
     <string name="quest_fuelSelfService_title">"Les pompes sont-elles en libre-service dans cette station-essence ?"</string>
-    <string name="default_disabled_msg_difficult_and_time_consuming">"Ce type de quête est désactivé par défaut car elles demandent beaucoup de temps, et il est souvent difficile d’y répondre correctement. Vous ne devriez activer ce type de quête que si vous êtes certain de vouloir rajouter ce type d’informations à la carte."</string>
+    <string name="default_disabled_msg_difficult_and_time_consuming">"Ce type de quête est désactivé par défaut car elles sont chronophages ou qu'il est difficile d’y répondre correctement. N'activez ce type de quête que si vous êtes certain de vouloir ajouter ce type d’informations à la carte."</string>
     <string name="quest_smoothness_description_good_compacted_gravel">"Gravier ou sable compacté, avec quelques irrégularités"</string>
     <string name="quest_barrier_path_intersection">"De quelle façon ce chemin croise t’il cette barrière ?"</string>
     <string name="quest_barrier_road_intersection">"De quelle façon cette route croise t’elle cette barrière ?"</string>
     <string name="quest_sidewalk_value_separate">"indiqué séparément sur la carte"</string>
     <string name="no_camera_permission_warning_title">"Permission d’accès à la caméra"</string>
-    <string name="no_camera_permission_warning">"La permission est nécessaire pour prendre des photos et mesurer les distances en réalité augmentée."</string>
+    <string name="no_camera_permission_warning">"L'autorisation est requise pour mesurer des distances avec l'appareil photo."</string>
     <string name="ar_core_error_sdk_too_old">"Cette application est trop ancienne, essayez de la mettre à jour."</string>
     <string name="ar_core_tracking_error_bad_state">"Quelque chose s’est mal passé. Essayez de redémarrer la mesure."</string>
     <string name="ar_core_tracking_error_insufficient_light">"Il fait trop sombre ici"</string>
@@ -1463,4 +1462,7 @@ Un niveau compte comme un niveau de toit lorsque ses fenêtres se trouvent dans 
     <string name="overlay">"Superposition"</string>
     <string name="enable_overlay_confirmation_title">"Activer cette superposition ?"</string>
     <string name="link_transitous_description">"Itinéraire de transport public libre, gratuit et open source, indépendant du fournisseur"</string>
+    <string name="compass">"Boussole"</string>
+    <string name="quest_tracktype_grade2">"Plutôt solide"</string>
+    <string name="quest_tracktype_grade3">"Mixte"</string>
 </resources>

@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:drawableStart="@drawable/ic_search_24dp"
         android:drawablePadding="12dp"
+        android:drawableTint="?android:attr/textColorPrimary"
         android:padding="16dp"
         android:background="@null"
         android:hint="@string/quest_shop_gone_replaced_answer_hint"

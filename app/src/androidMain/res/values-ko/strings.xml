@@ -921,7 +921,6 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="quest_traffic_calming_type_island">"교통섬"</string>
     <string name="quest_traffic_calming_type_chicane">"인위적 급커브"</string>
     <string name="quest_traffic_calming_type_rumble_strip">"진동을 주는 띠"</string>
-    <string name="quest_surface_value_concrete_plates">"콘크리트 판"</string>
     <string name="quest_surface_value_concrete_lanes">"콘크리트 차로"</string>
     <string name="quest_fireHydrant_diameter_title">"이 소화전 표지판에 표시된 직경은 얼마인가요?"</string>
     <string name="quest_diet_answer_no_food">"음식이 없음"</string>

@@ -168,28 +168,6 @@ class AddEntranceTest {
     }
 
     @Test
-    fun `applicable to buildings with negative layer`() {
-        val mapData = TestMapDataWithGeometry(
-            listOf(
-                node(1),
-                node(2),
-                node(3),
-                node(4),
-                node(30),
-                way(1L, listOf(1, 2, 3, 4), mapOf(
-                    "building" to "apartments",
-                    "layer" to "-3",
-                    "location" to "surface",
-                )),
-                way(2L, listOf(3, 30), mapOf(
-                    "highway" to "footway",
-                )),
-            ),
-        )
-        assertEquals(1, questType.getApplicableElements(mapData).toList().size)
-    }
-
-    @Test
     fun `not applicable to footway entering rooftop which may be without an actual entrance`() {
         // see https://github.com/streetcomplete/StreetComplete/issues/4805
         val mapDataWithRoof = generalTestDataWithWayThroughBuilding(mapOf(

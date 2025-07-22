@@ -10,17 +10,18 @@ import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.ComposeViewBinding
 import de.westnordost.streetcomplete.ui.common.CountInput
 import de.westnordost.streetcomplete.ui.theme.extraLargeInput
 import de.westnordost.streetcomplete.ui.util.content
+import org.jetbrains.compose.resources.DrawableResource
+import org.jetbrains.compose.resources.painterResource
 
 abstract class AAddCountInput : AbstractOsmQuestForm<Int>() {
 
-    abstract val iconId: Int
+    abstract val icon: DrawableResource
 
     abstract val initialCount: Int?
 
@@ -41,7 +42,7 @@ abstract class AAddCountInput : AbstractOsmQuestForm<Int>() {
                             count.value = it
                             checkIsFormComplete()
                         },
-                        iconPainter = painterResource(iconId),
+                        iconPainter = painterResource(icon),
                         modifier = Modifier.padding(8.dp),
                     )
                 }

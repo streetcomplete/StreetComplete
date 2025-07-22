@@ -71,7 +71,6 @@ fun MaxHeightForm(
                             length = length as? Length.Meters,
                             onChange = onChange,
                             maxMeterDigits = Pair(3, 2),
-                            style = TextFieldStyle.Outlined,
                             autoFitFontSize = true,
                         )
                     }
@@ -82,7 +81,6 @@ fun MaxHeightForm(
                             length = length as? Length.FeetAndInches,
                             onChange = onChange,
                             maxFeetDigits = 3,
-                            style = TextFieldStyle.Outlined,
                             autoFitFontSize = true,
                         )
                     }

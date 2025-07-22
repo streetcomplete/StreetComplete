@@ -915,7 +915,6 @@ Podaci se osvežavaju svakih %1$s dana, dok se nekorišćeni podaci automatski b
     <string name="quest_traffic_calming_type_island">"Ostrvo"</string>
     <string name="quest_traffic_calming_type_chicane">"Veštačke/namerne krivine"</string>
     <string name="quest_traffic_calming_type_rumble_strip">"Vibro-zvučne trake"</string>
-    <string name="quest_surface_value_concrete_plates">"Pločasti beton"</string>
     <string name="quest_surface_value_concrete_lanes">"Betonske saobrać. trake"</string>
     <string name="quest_fireHydrant_diameter_title">"Koji je prečnik napisan na znaku hidranta?"</string>
     <string name="quest_diet_answer_no_food">"Nema hrane"</string>

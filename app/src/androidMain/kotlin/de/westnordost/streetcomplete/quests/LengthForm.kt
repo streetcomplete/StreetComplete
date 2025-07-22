@@ -29,7 +29,6 @@ import de.westnordost.streetcomplete.ui.common.LengthFeetInchesInput
 import de.westnordost.streetcomplete.ui.common.LengthMetersInput
 import de.westnordost.streetcomplete.ui.common.MeasurementIcon
 import de.westnordost.streetcomplete.ui.common.SelectButton
-import de.westnordost.streetcomplete.ui.common.TextFieldStyle
 import de.westnordost.streetcomplete.ui.theme.largeInput
 
 /** Displays a form to input and/or measure the length, in meter or feet+inch */
@@ -78,7 +77,6 @@ fun LengthForm(
                             onChange = onChange,
                             maxMeterDigits = Pair(3, 2),
                             modifier = Modifier.weight(1f),
-                            style = TextFieldStyle.Outlined,
                             autoFitFontSize = true,
                         )
                     }
@@ -88,7 +86,6 @@ fun LengthForm(
                             onChange = onChange,
                             maxFeetDigits = 3,
                             modifier = Modifier.weight(1f),
-                            style = TextFieldStyle.Outlined,
                             autoFitFontSize = true,
                         )
                     }
@@ -111,7 +108,7 @@ fun LengthForm(
 
 @Composable
 private fun MeasureButton(onClick: () -> Unit) {
-    Button (
+    Button(
         onClick = onClick,
     ) {
         MeasurementIcon()

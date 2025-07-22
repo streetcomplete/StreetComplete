@@ -1,4 +1,3 @@
-import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.Input
@@ -9,9 +8,9 @@ import java.io.File
  */
 open class UpdateWebsiteTranslationsTask : DefaultTask() {
 
-    @get:Input var projectId: String? = null
-    @get:Input var apiToken: String? = null
-    @get:Input var targetDir: String? = null
+    @get:Input lateinit var projectId: String
+    @get:Input lateinit var apiToken: String
+    @get:Input lateinit var targetDir: String
 
     private val requiredKeys = setOf(
         "store_listing_short_description",
@@ -39,10 +38,6 @@ open class UpdateWebsiteTranslationsTask : DefaultTask() {
     )
 
     @TaskAction fun run() {
-        val targetDir = targetDir ?: return
-        val apiToken = apiToken ?: return
-        val projectId = projectId ?: return
-
         val languageCodes = fetchAvailableLocalizations(apiToken, projectId).map { it.code }
         val json = Json {
             prettyPrint = true

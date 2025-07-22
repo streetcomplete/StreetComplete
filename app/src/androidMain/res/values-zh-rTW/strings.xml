@@ -916,7 +916,6 @@
     <string name="quest_traffic_calming_type_island">"分隔島"</string>
     <string name="quest_traffic_calming_type_chicane">"刻意曲線 "</string>
     <string name="quest_traffic_calming_type_rumble_strip">"隆隆帶"</string>
-    <string name="quest_surface_value_concrete_plates">"混凝土板 "</string>
     <string name="quest_surface_value_concrete_lanes">"混凝土巷道"</string>
     <string name="quest_fireHydrant_diameter_title">"這個消防栓的標誌上顯示的直徑是多少？ "</string>
     <string name="quest_diet_answer_no_food">"這裡沒有食物"</string>

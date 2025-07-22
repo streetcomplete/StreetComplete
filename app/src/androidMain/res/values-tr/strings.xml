@@ -4,7 +4,7 @@
     <string name="oauth_communication_error">"Yetkilendirme sunucusuna erişilemiyor"</string>
     <string name="oauth_failed_permissions">"Yetkilendirme başarısız: İstenen bütün izinlerin verilmesi gerekiyor"</string>
     <string name="pref_category_communication">"İletişim"</string>
-    <string name="pref_category_display">"Görüntü"</string>
+    <string name="pref_category_display">"Görünüm"</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">"Tüm notları göster"</string>
     <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"Soru olarak ifade edilmeyen notlar da gösteriliyor"</string>
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"Soru şeklinde ifade edilmeyen notlar yoksayılıyor"</string>
@@ -45,7 +45,7 @@
     <string name="download_area_too_big">"Lütfen daha da yakınlaştırın"</string>
     <string name="confirmation_cancel_prev_download_title">"Geçerli indirme durdurulup burası indirilsin mi?"</string>
     <string name="turn_on_location_request">"Konum kapalı. Açmak için Ayarlar'a gidilsin mi?"</string>
-    <string name="no_location_permission_warning">"Çevrenizdeki görevleri taramak ve haritada konumunuzu göstermek için izniniz gerekiyor."</string>
+    <string name="no_location_permission_warning">"Haritadaki konumunuzu göstermek ve bölgenizdeki veriyi indirmek için konum izni gerekli."</string>
     <string name="about_title_authors">"Emeği geçenler"</string>
     <string name="about_title_repository">"Projenin Ana Sayfası"</string>
     <string name="about_title_report_error">"Hata bildir"</string>
@@ -916,7 +916,6 @@ Tüm seçenekleri değerlendir! Bazı durumlar net olmayabilir. Çift yönde bis
     <string name="quest_traffic_calming_type_island">"Ada"</string>
     <string name="quest_traffic_calming_type_chicane">"Kasıtlı kıvrım/eğri(ler)"</string>
     <string name="quest_traffic_calming_type_rumble_strip">"Rumble şeridi(leri)"</string>
-    <string name="quest_surface_value_concrete_plates">"Beton levhalar"</string>
     <string name="quest_surface_value_concrete_lanes">"Beton yollar"</string>
     <string name="quest_fireHydrant_diameter_title">"Bu yangın musluğunun çapı tabelasında ne olarak belirtilmiş?"</string>
     <string name="quest_diet_answer_no_food">"Yemeği yok"</string>
@@ -1427,4 +1426,25 @@ Bir seviye, pencereleri çatıda olduğunda bir çatı seviyesi olarak sayılır
     <string name="pedestrian_zone_allowed_sign">"Bisiklet sürmeye izin veren bir tabela var"</string>
     <string name="pedestrian_zone_no_sign">"Bisiklet sürme ile ilgili bir tabela yok"</string>
     <string name="team_mode_description_overlay_hint">"Eğer katmanları kullanacaksanız, her biriniz farklı bir katman seçmelisiniz. Böylece görevler bölünmüş olur."</string>
+    <string name="quest_dietType_glutenfree_name_title">"Burada glutensiz ürünler satılıyor mu?"</string>
+    <string name="quest_dietType_explanation_glutenfree">"Glutensiz ürünler üretmek uzmanlık gerektirir çünkü baharatlar soslar gibi malzemelerde de gluten bulunabilir. Glutensiz ürün özellikle glutensiz olduğu belirtilmelidir."</string>
+    <string name="quest_construction_minor_title">"Buradaki ufak yol çalışması bitti mi?"</string>
+    <string name="map_attribution">"Harita atıfları"</string>
+    <string name="link_panoramax_description">"Kitleden sokak fotoğraflarını paylaşan kâr amacı gütmeyen ücretsiz ve açık kaynaklı bir uygulama."</string>
+    <string name="link_opengeofiction_description">"Gerçek dünyanın haritasıyla uğraşmaktan sıkıldınız mı? El birliğiyle hayali haritalar oluşturun!"</string>
+    <string name="link_openclimbing_description">"Tırmanış noktalarını gösteren bir harita"</string>
+    <string name="pref_title_zoom_buttons">"Harita büyütüp küçültme tuşlarını göster"</string>
+    <string name="overlay_mtb_scale">"Dağ bisikleti zorluğu"</string>
+    <string name="overlay_mtb_scale_0_description">"Sıkı, tutuşlu, sıkıştırılmış ya da doğal yüzey; Engel yok; Hafif yokuş; Geniş virajlar."</string>
+    <string name="overlay_mtb_scale_1_description">"Küçük kökler, taşlar, aşınma veya su yollarıyla kısmen gevşek topraklı yol; ≤40% eğim; Yuvarlanabilir cisimler; Temel sürüş tecrübesi gerekli."</string>
+    <string name="overlay_mtb_scale_2_description">"Daha büyük kökler ve taşlar, keskin yokuşlar/küçük merdivenler, %70'e kadar eğim; basit u-kıvrımlar; gelişmiş fren ve denge tekniği gerekli."</string>
+    <string name="overlay_mtb_scale_3_description">"Büyük kökler, kayalar, taşlar, keskin düşüşler ve virajlar; dar u-kıvrımları, &gt;70% eğim; kaygan ve gevşek zemin. Çok gelişmiş denge ve fren kontrolü gerekli."</string>
+    <string name="overlay_mtb_scale_6_description">"Tehlikeli ve geçilemez arazi, bisiklet sürmek için uygun değil."</string>
+    <string name="pref_title_overlays">"Katman seçimi"</string>
+    <string name="pref_overlays_reset">"Katman izinlerini sıfırla?"</string>
+    <string name="overlay">"Katman"</string>
+    <string name="enable_overlay_confirmation_title">"Bu katmanı aç?"</string>
+    <string name="compass">"Pusula"</string>
+    <string name="quest_tracktype_grade2">"Genel olarak düzgün"</string>
+    <string name="quest_tracktype_grade3">"Karışım"</string>
 </resources>

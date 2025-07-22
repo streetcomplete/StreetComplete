@@ -8,22 +8,20 @@ import java.util.Locale
 /** Update the Android string resources (translations) for all the given language codes */
 open class UpdateAppTranslationsTask : DefaultTask() {
 
-    @get:Input var projectId: String? = null
-    @get:Input var apiToken: String? = null
-    @get:Input var languageCodes: Collection<String>? = null
+    @get:Input lateinit var projectId: String
+    @get:Input lateinit var apiToken: String
+    @get:Input lateinit var languageCodes: Collection<String>
     @get:Input var targetFiles: ((androidResCode: String) -> String)? = null
 
     @TaskAction fun run() {
         val targetFiles = targetFiles ?: return
-        val apiToken = apiToken ?: return
-        val projectId = projectId ?: return
-        val exportLanguages = languageCodes?.map { Locale.forLanguageTag(it) }
+        val exportLanguages = languageCodes.map { Locale.forLanguageTag(it) }
 
         val languageTags = fetchAvailableLocalizations(apiToken, projectId).map { it.code }
         for (languageTag in languageTags) {
             val locale = Locale.forLanguageTag(languageTag)
 
-            if (exportLanguages != null && !exportLanguages.any { it == locale }) continue
+            if (!exportLanguages.any { it == locale }) continue
             // en-us is the source language
             if (locale == Locale.US) continue
 
