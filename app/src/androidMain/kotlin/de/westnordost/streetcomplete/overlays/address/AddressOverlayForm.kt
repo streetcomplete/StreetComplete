@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
+import androidx.compose.ui.text.intl.Locale
 import androidx.core.view.doOnLayout
 import androidx.core.view.isGone
 import de.westnordost.streetcomplete.R
@@ -50,7 +51,6 @@ import de.westnordost.streetcomplete.util.math.PositionOnWay
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import de.westnordost.streetcomplete.util.math.getPositionOnWays
 import org.koin.android.ext.android.inject
-import java.util.Locale
 
 class AddressOverlayForm : AbstractOverlayForm(), IsMapPositionAware {
 
@@ -153,7 +153,7 @@ class AddressOverlayForm : AbstractOverlayForm(), IsMapPositionAware {
             streetNameInput = streetOrPlaceBinding.streetNameInput.apply { hint = lastStreetName },
             nameSuggestionsSource = nameSuggestionsSource,
             abbreviationsByLanguage = abbreviationsByLanguage,
-            countryLocale = Locale.forLanguageTag(countryInfo.languageTag.orEmpty()),
+            countryLocale = Locale(countryInfo.languageTag.orEmpty()),
             startWithPlace = isShowingPlaceName,
             viewLifecycleScope = viewLifecycleScope
         )

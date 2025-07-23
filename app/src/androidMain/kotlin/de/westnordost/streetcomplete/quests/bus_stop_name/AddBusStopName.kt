@@ -35,7 +35,7 @@ class AddBusStopName : OsmFilterQuestType<BusStopNameAnswer>(), AndroidQuest {
 
     override fun applyAnswerTo(answer: BusStopNameAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {
-            is NoBusStopName -> {
+            BusStopNameAnswer.NoName -> {
                 tags["name:signed"] = "no"
             }
             is BusStopName -> {

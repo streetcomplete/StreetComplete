@@ -88,6 +88,17 @@ internal class LocalizedNameTest {
         )
     }
 
+    @Test fun `apply localized names trims name`() {
+        assertEquals(
+            setOf(
+                StringMapEntryAdd("name", "A Name"),
+            ),
+            listOf(
+                LocalizedName("", " A Name "),
+            ).appliedTo(mapOf())
+        )
+    }
+
     @Test fun `apply localized names removes noname and variants`() {
         assertEquals(
             setOf(
