@@ -47,14 +47,14 @@ fun Button2(
 }
 
 val ButtonStyle.elevation : ButtonElevation? @Composable
-    get() = when (this) {
+get() = when (this) {
         ButtonStyle.Default -> ButtonDefaults.elevation()
         ButtonStyle.Outlined -> null
         ButtonStyle.Text -> null
     }
 
 val ButtonStyle.shape : Shape @Composable @ReadOnlyComposable
-    get() = when (this) {
+get() = when (this) {
         ButtonStyle.Default -> MaterialTheme.shapes.small
         ButtonStyle.Outlined -> MaterialTheme.shapes.small
         ButtonStyle.Text -> MaterialTheme.shapes.small
@@ -75,7 +75,7 @@ get() = when (this) {
     }
 
 val ButtonStyle.contentPadding : PaddingValues
-get() = when (this) {
+    get() = when (this) {
         ButtonStyle.Default -> ButtonDefaults.ContentPadding
         ButtonStyle.Outlined -> ButtonDefaults.ContentPadding
         ButtonStyle.Text -> ButtonDefaults.TextButtonContentPadding

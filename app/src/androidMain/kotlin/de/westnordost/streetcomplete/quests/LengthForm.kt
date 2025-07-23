@@ -65,7 +65,7 @@ fun LengthForm(
                         selectedUnit = unit
                         onChange(null)
                     },
-                    itemContent = { Text(it.toString())}
+                    itemContent = { Text(it.toString()) }
                 )
             }
 

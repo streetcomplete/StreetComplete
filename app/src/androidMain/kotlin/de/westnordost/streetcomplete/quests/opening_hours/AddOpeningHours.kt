@@ -87,7 +87,7 @@ class AddOpeningHours(
                 "employment_agency", "diplomatic", "coworking", "energy_supplier",
                 "estate_agent", "lawyer", "telecommunication", "educational_institution",
                 "association", "ngo", "it", "accountant", "property_management",
-                "bail_bond_agent",
+                "bail_bond_agent", "financial_advisor",
             ),
             "craft" to arrayOf(
                 // common
