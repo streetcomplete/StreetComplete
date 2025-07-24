@@ -14,15 +14,15 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.ic_calendar_month_24
 import de.westnordost.streetcomplete.ui.common.ClearIcon
-import de.westnordost.streetcomplete.util.dateTimeToString
 import de.westnordost.streetcomplete.util.ktx.now
+import de.westnordost.streetcomplete.util.locale.DateFormatStyle
+import de.westnordost.streetcomplete.util.locale.LocalDateTimeFormatter
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalDateTime
 import kotlinx.datetime.LocalTime
 import org.jetbrains.compose.resources.painterResource
-import java.util.Locale
 import kotlin.coroutines.resume
 
 @Composable
@@ -33,10 +33,13 @@ fun DateTimeSelectField(
     label: @Composable (() -> Unit)? = null,
 ) {
     val scope = rememberCoroutineScope()
-    val locale = Locale.getDefault()
+    val dateFormatter = LocalDateTimeFormatter(
+        dateStyle = DateFormatStyle.Medium,
+        timeStyle = DateFormatStyle.Short
+    )
     val context = LocalContext.current
     OutlinedTextField(
-        value = value?.let { dateTimeToString(locale, it) } ?: "",
+        value = value?.let { dateFormatter.format(it) }.orEmpty(),
         onValueChange = { },
         // TODO Compose modifier.clickable { } does not work, so, need to click on icon
         modifier = modifier,

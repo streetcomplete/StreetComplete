@@ -27,9 +27,9 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.multiplatform.webview.request.RequestInterceptor
@@ -47,7 +47,6 @@ import de.westnordost.streetcomplete.screens.user.login.LoginError.RequiredPermi
 import de.westnordost.streetcomplete.ui.common.BackIcon
 import de.westnordost.streetcomplete.ui.theme.titleLarge
 import de.westnordost.streetcomplete.util.ktx.toast
-import java.util.Locale
 
 /** Leads user through the OAuth 2 auth flow to login */
 @Composable
@@ -94,7 +93,7 @@ fun LoginScreen(
             val webViewState = rememberWebViewState(
                 url = viewModel.authorizationRequestUrl,
                 additionalHttpHeaders = mapOf(
-                    "Accept-Language" to Locale.getDefault().toLanguageTag()
+                    "Accept-Language" to Locale.current.toLanguageTag()
                 )
             )
 

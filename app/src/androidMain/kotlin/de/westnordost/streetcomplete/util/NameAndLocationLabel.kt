@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.util
 
 import android.content.res.Resources
 import android.text.Spanned
+import androidx.compose.ui.text.intl.Locale
 import androidx.core.text.parseAsHtml
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
@@ -9,7 +10,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.util.html.replaceHtmlEntities
 import de.westnordost.streetcomplete.util.ktx.getFeature
-import java.util.Locale
 
 fun getNameAndLocationSpanned(
     element: Element,
@@ -34,7 +34,7 @@ fun getNameAndLocationHtml(
     val name = getNameLabel(element.tags)
         ?.withNonBreakingSpaces()
         ?.inBold()
-    val taxon = getTreeTaxon(element.tags, Locale.getDefault().language)
+    val taxon = getTreeTaxon(element.tags, Locale.current.language)
 
     val featureEx = if (taxon != null && feature != null) {
         resources.getString(R.string.label_feature_taxon, feature, taxon)
