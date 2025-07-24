@@ -14,10 +14,11 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.intl.Locale
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.ui.common.CenteredLargeTitleHint
-import java.util.Locale
+import de.westnordost.streetcomplete.util.ktx.displayRegion
 
 /** Shows a screen in which the user can enable and disable quests as well as re-order them */
 @Composable
@@ -30,7 +31,7 @@ fun QuestSelectionScreen(
     val searchText by viewModel.searchText.collectAsStateWithLifecycle()
 
     val displayCountry = remember {
-        viewModel.currentCountry?.let { Locale("", it).displayCountry } ?: "Atlantis"
+        viewModel.currentCountry?.let { getCountryName(it) } ?: "Atlantis"
     }
 
     val filteredQuests by viewModel.filteredQuests.collectAsStateWithLifecycle()
@@ -67,3 +68,7 @@ fun QuestSelectionScreen(
         }
     }
 }
+
+private fun getCountryName(countryCode: String): String =
+    // we don't use the language, but we need it for correct construction of the languageTag
+    Locale("en-$countryCode").displayRegion ?: countryCode
