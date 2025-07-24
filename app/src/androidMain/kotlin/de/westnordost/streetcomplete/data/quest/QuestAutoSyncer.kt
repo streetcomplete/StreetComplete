@@ -21,8 +21,8 @@ import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.data.upload.UploadController
 import de.westnordost.streetcomplete.data.user.UserLoginSource
 import de.westnordost.streetcomplete.data.visiblequests.TeamModeQuestFilter
-import de.westnordost.streetcomplete.util.ktx.format
 import de.westnordost.streetcomplete.util.ktx.toLatLon
+import de.westnordost.streetcomplete.util.ktx.truncate
 import de.westnordost.streetcomplete.util.location.FineLocationManager
 import de.westnordost.streetcomplete.util.logs.Log
 import kotlinx.coroutines.CoroutineName
@@ -161,7 +161,7 @@ class QuestAutoSyncer(
         if (!isConnected) return
         if (downloadProgressSource.isDownloadInProgress) return
 
-        Log.i(TAG, "Checking whether to automatically download new quests at ${pos.latitude.format(7)},${pos.longitude.format(7)}")
+        Log.i(TAG, "Checking whether to automatically download new quests at ${pos.latitude.truncate(7)},${pos.longitude.truncate(7)}")
 
         coroutineScope.launch {
             val downloadStrategy = if (isWifi) wifiDownloadStrategy else mobileDataDownloadStrategy

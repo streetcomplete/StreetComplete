@@ -8,6 +8,7 @@ import de.westnordost.streetcomplete.screens.main.map.maplibre.awaitResetDatabas
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toLatLng
 import de.westnordost.streetcomplete.util.ktx.format
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
+import de.westnordost.streetcomplete.util.ktx.truncate
 import de.westnordost.streetcomplete.util.logs.Log
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -47,7 +48,7 @@ class MapTilesDownloaderAndroid(private val context: Context) : MapTilesDownload
             val time = nowAsEpochMilliseconds()
             val status = offlineRegion.awaitDownload()
             val seconds = (nowAsEpochMilliseconds() - time) / 1000.0
-            Log.i(TAG, "Downloaded ${status.completedTileCount} tiles (${status.completedTileSize / 1000}kB) in ${seconds.format(1)}s")
+            Log.i(TAG, "Downloaded ${status.completedTileCount} tiles (${status.completedTileSize / 1000}kB) in ${seconds.truncate(1)}s")
             // note that the numbers include tiles that were already on device
             //  no idea how to check which tiles were really downloaded (other than in android log for MapLibre)
             // status.requiredResourceCount and status.completedResourceSize might be interesting too
