@@ -105,8 +105,8 @@ class AtpQuestController(
                     candidates.forEach { atpCandidate ->
                         if(isThereOsmAtpMatch(osm.tags, atpCandidate.tagsInATP, ElementKey(osm.type, osm.id), atpCandidate.position)) {
                             deletedQuestIds.add(atpCandidate.id)
-                            // TODO: what if this ATP entries were ineligible for quest already? and there was no quest?
-                            // TODO: would listing them here again would harm anything?
+                            // ATP entries already ineligible for quest will be also listed
+                            // this is fine
                         }
                     }
                 }
@@ -129,8 +129,8 @@ class AtpQuestController(
                 candidates.forEach { atpCandidate ->
                     if(isThereOsmAtpMatch(osm.tags, atpCandidate.tagsInATP, ElementKey(osm.type, osm.id), atpCandidate.position)) {
                         obsoleteQuestIds.add(atpCandidate.id)
-                        // TODO: what if this ATP entries were ineligible for quest already? and there was no quest?
-                        // TODO: would listing them here again would harm anything?
+                        // ATP entries already ineligible for quest will be also listed
+                        // this is fine
                     }
                 }
             }

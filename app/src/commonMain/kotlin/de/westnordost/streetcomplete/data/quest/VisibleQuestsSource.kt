@@ -200,7 +200,7 @@ class VisibleQuestsSource(
 
     private fun updateVisibleQuests(
         added: Collection<Quest> = emptyList(),
-        deleted: Collection<QuestKey> = emptyList()
+        deleted: Collection<QuestKey> = emptyList() // quests deleted already may be listed again
     ) {
         lock.withLock {
             val addedVisible = added.filter(::isVisible)
