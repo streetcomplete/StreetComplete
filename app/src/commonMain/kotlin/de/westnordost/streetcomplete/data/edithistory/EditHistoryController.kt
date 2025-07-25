@@ -118,7 +118,7 @@ class EditHistoryController(
             val timestamp = hiddenQuestsController.get(key.questKey)
             if (timestamp != null) createQuestHiddenEdit(key.questKey, timestamp) else null
         }
-        //TODO is AtpQuestKey -> atpEditsController.get(key.id)
+        //TODO API (once proper ATP API exists) is AtpQuestKey -> atpEditsController.get(key.id)
     }
 
     override fun getAll(): List<Edit> {

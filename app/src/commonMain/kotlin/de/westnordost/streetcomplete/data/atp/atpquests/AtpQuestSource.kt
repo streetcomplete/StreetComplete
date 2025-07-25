@@ -3,7 +3,7 @@ package de.westnordost.streetcomplete.data.atp.atpquests
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 
 interface AtpQuestSource {
-    // TODO see OsmQuestSource and OsmNoteQuestSource
+    // TODO API REQUIRES API see OsmQuestSource and OsmNoteQuestSource
     interface Listener {
         fun onUpdated(added: Collection<CreateElementUsingAtpQuest>, deleted: Collection<Long>)
         fun onInvalidated()
