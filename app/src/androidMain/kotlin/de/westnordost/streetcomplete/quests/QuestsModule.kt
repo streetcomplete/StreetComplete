@@ -239,7 +239,7 @@ fun questTypeRegistry(
         even if the quest's order is changed or new quests are added somewhere in the middle. Each new
         quest always gets a new sequential ordinal.
      */
-    // TODO: move this quests in appropriate location as far as priority goes
+    // TODO LATER: move this quests in appropriate location as far as priority goes
     176 to CreatePoiBasedOnAtp,
 
     /* always first: notes - they mark a mistake in the data so potentially every quest for that
