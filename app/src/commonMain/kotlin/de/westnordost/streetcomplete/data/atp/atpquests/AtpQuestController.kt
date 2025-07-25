@@ -87,11 +87,7 @@ class AtpQuestController(
 
                 if (!osm.tags.isEmpty()) { // TODO maybe both incoming ATP entries and OSM entries should be filtered? Maybe require it to be either place or thing to avoid maintaining even more filters? To check only places, not every tagged node?
                     val geometry = mapDataSource.getGeometry(osm.type, osm.id)
-                    if (geometry == null) {
-                        // TODO: in which cases it may happen? If it happens then we cannot do anything about it anyway
-                        // should we crash? log? If log, then with something better
-                        Log.e(TAG, "why, why mapDataSource.getGeometry got me null?")
-                    } else {
+                    if (geometry != null) {
                         val paddedBounds = geometry.bounds.enlargedBy(
                             ApplicationConstants.QUEST_FILTER_PADDING
                         )
