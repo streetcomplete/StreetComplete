@@ -92,7 +92,7 @@ class AtpDao(private val db: Database) {
         OSM_ELEMENT_MATCH_ID to osmMatch?.id,
         OSM_ELEMENT_MATCH_TYPE to osmMatch?.type?.name?.lowercase(),
         ATP_TAGS to Json.encodeToString(tagsInATP),
-        OSM_TAGS to tagsInOSM?.let { Json.encodeToString(it) }, // TODO include tests for null and not null
+        OSM_TAGS to tagsInOSM?.let { Json.encodeToString(it) },
         LAST_SYNC to nowAsEpochMilliseconds(),
         REPORT_TYPE to reportType.name.lowercase(),
     )
