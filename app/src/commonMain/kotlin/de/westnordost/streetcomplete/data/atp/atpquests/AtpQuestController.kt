@@ -52,9 +52,6 @@ class AtpQuestController(
 
     private val atpUpdatesListener = object : AtpDataWithEditsSource.Listener {
         override fun onUpdatedAtpElements(added: Collection<AtpEntry>, deleted: Collection<Long>) {
-            // handle deletion somehow? TODO
-            // probably do the same as class OsmQuestController did? TODO (in private val notesSourceListener = object : NotesWithEditsSource.Listener )
-            // actually test passing deleted ids TODO
             val filtered = added.filter { atpEntry ->
                 // TODO is speed of this reasonable? I suspect that something more efficient is needed, profile
                 val paddedBounds = BoundingBox(atpEntry.position, atpEntry.position) //..enlargedBy(ApplicationConstants.QUEST_FILTER_PADDING)

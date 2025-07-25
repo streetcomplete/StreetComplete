@@ -365,6 +365,16 @@ class AtpQuestControllerTest {
     }
 
     @Test
+    fun `deleted AllThePlaces entry causes quest to be marked for deletion`() {
+        val added = listOf<AtpEntry>()
+        val deleted = listOf<Long>(10L)
+        atpUpdatesListener.onUpdatedAtpElements(added, deleted)
+        val expectedQuests = listOf<CreateElementUsingAtpQuest>()
+        val expectedDeletedIds = listOf<Long>(10L)
+        verify(listener).onUpdated(expectedQuests, expectedDeletedIds)
+    }
+
+    @Test
     fun `newly mapped POI near ATP quest causes it to disappear as it matches`() {
         val pos = LatLon(0.0, 10.0)
         val geom = pGeom(pos.latitude, pos.longitude)
@@ -388,6 +398,7 @@ class AtpQuestControllerTest {
 
         verify(listener).onUpdated(emptyList(), listOf(entry.id))
     }
+
 
     fun dataSetupForOnReplacedForBBox(atpPos: LatLon, osmPos: LatLon, atpTags: Map<String, String>, osmTags: Map<String, String>, atpEntryId: Long): MutableMapDataWithGeometry {
         val entry = atpEntry(atpEntryId, position = atpPos, tagsInATP = atpTags, reportType = ReportType.MISSING_POI_IN_OPENSTREETMAP)
