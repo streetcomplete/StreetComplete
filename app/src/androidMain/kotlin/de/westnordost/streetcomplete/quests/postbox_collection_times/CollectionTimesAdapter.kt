@@ -7,16 +7,16 @@ import android.view.ViewGroup
 import androidx.core.view.isInvisible
 import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.data.meta.CountryInfo
-import de.westnordost.streetcomplete.data.meta.userPreferredLocale
 import de.westnordost.streetcomplete.databinding.QuestTimesWeekdayRowBinding
 import de.westnordost.streetcomplete.osm.opening_hours.model.CollectionTimesRow
 import de.westnordost.streetcomplete.osm.opening_hours.model.Weekdays
 import de.westnordost.streetcomplete.osm.opening_hours.model.toLocalizedString
 import de.westnordost.streetcomplete.osm.opening_hours.parser.toOpeningHours
 import de.westnordost.streetcomplete.quests.opening_hours.WeekdaysPickerDialog
-import de.westnordost.streetcomplete.util.timeOfDayToString
+import de.westnordost.streetcomplete.util.locale.DateFormatStyle
+import de.westnordost.streetcomplete.util.locale.LocalTimeFormatter
 import de.westnordost.streetcomplete.view.dialogs.TimePickerDialog
-import java.util.Locale
+import kotlinx.datetime.LocalTime
 
 class CollectionTimesAdapter(
     private val context: Context,
@@ -34,6 +34,8 @@ class CollectionTimesAdapter(
             field = value
             notifyDataSetChanged()
         }
+
+    private val timeFormatter = LocalTimeFormatter(style = DateFormatStyle.Short)
 
     fun createCollectionTimes() = collectionTimesRows.toOpeningHours()
 
@@ -111,7 +113,8 @@ class CollectionTimesAdapter(
                     notifyItemChanged(adapterPosition)
                 }
             }
-            binding.hoursLabel.text = timeOfDayToString(Locale.getDefault(), times.time)
+            val localTime = LocalTime.fromSecondOfDay(times.time * 60)
+            binding.hoursLabel.text = timeFormatter.format(localTime)
             binding.hoursLabel.setOnClickListener {
                 openSetTimeDialog(times.time) { minutes ->
                     times.time = minutes

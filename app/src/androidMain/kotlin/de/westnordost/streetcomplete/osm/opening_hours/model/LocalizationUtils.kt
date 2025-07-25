@@ -1,47 +1,52 @@
 package de.westnordost.streetcomplete.osm.opening_hours.model
 
 import android.content.res.Resources
+import androidx.compose.ui.text.intl.Locale
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.util.timeOfDayToString
-import java.text.DateFormatSymbols
-import java.util.Locale
+import de.westnordost.streetcomplete.util.ktx.getDisplayName
+import de.westnordost.streetcomplete.util.ktx.getShortDisplayName
+import de.westnordost.streetcomplete.util.locale.DateFormatStyle
+import de.westnordost.streetcomplete.util.locale.LocalTimeFormatter
+import kotlinx.datetime.DayOfWeek
+import kotlinx.datetime.LocalTime
+import kotlinx.datetime.Month
 import kotlin.text.StringBuilder
 
-fun Months.Companion.getNames(locale: Locale): Array<String> {
-    val symbols = DateFormatSymbols.getInstance(locale)
-    val result = symbols.months.copyOf(MONTHS_COUNT)
-    return result.requireNoNulls()
+fun Months.Companion.getNames(locale: Locale? = null): Array<String> =
+    (1..12).map { Month(it).getDisplayName(locale) }.toTypedArray()
+
+fun Weekdays.Companion.getNames(r: Resources, locale: Locale? = null): Array<String> {
+    val weekdayNames = (1..7).map { DayOfWeek(it).getDisplayName(locale) }
+    val phName = r.getString(R.string.quest_openingHours_public_holidays)
+    return (weekdayNames + phName).toTypedArray()
 }
 
-fun Weekdays.Companion.getNames(r: Resources, locale: Locale): Array<String> {
-    val symbols = DateFormatSymbols.getInstance(locale)
-    val result = symbols.weekdays.toIso8601Order().copyOf(OSM_ABBR_WEEKDAYS.size)
-    result[PUBLIC_HOLIDAY] = r.getString(R.string.quest_openingHours_public_holidays)
-    return result.requireNoNulls()
+fun Weekdays.Companion.getShortNames(r: Resources, locale: Locale? = null): Array<String> {
+    val weekdayNames = (1..7).map { DayOfWeek(it).getShortDisplayName(locale) }
+    val phName = r.getString(R.string.quest_openingHours_public_holidays_short)
+    return (weekdayNames + phName).toTypedArray()
 }
 
-fun Weekdays.Companion.getShortNames(r: Resources, locale: Locale): Array<String> {
-    val symbols = DateFormatSymbols.getInstance(locale)
-    val result = symbols.shortWeekdays.toIso8601Order().copyOf(OSM_ABBR_WEEKDAYS.size)
-    result[PUBLIC_HOLIDAY] = r.getString(R.string.quest_openingHours_public_holidays_short)
-    return result.requireNoNulls()
-}
+fun Months.toLocalizedString(locale: Locale? = null): String =
+    toStringUsing(Months.getNames(locale), ", ", "–")
 
-private fun Array<String>.toIso8601Order() = Array(7) { this[1 + (it + 1) % 7] }
+fun Weekdays.toLocalizedString(r: Resources, locale: Locale? = null) =
+    toStringUsing(Weekdays.getShortNames(r, locale), ", ", "–")
 
-fun Months.toLocalizedString(locale: Locale): String =
-    toStringUsing(Months.Companion.getNames(locale), ", ", "–")
-
-fun Weekdays.toLocalizedString(r: Resources, locale: Locale) =
-    toStringUsing(Weekdays.Companion.getShortNames(r, locale), ", ", "–")
-
-fun TimeRange.toLocalizedString(locale: Locale): String {
+fun TimeRange.toLocalizedString(locale: Locale? = null): String {
+    val formatter = LocalTimeFormatter(locale, style = DateFormatStyle.Short)
     val sb = StringBuilder()
-    sb.append(timeOfDayToString(locale, start))
+    val startTime = LocalTime.fromSecondOfDay((start % (24 * 60)) * 60)
+    sb.append(formatter.format(startTime))
     if (start != end || !isOpenEnded) {
         sb.append("–")
-        var displayEnd = timeOfDayToString(locale, end % (24 * 60))
-        if (displayEnd == "00:00") displayEnd = "24:00"
+        val endTime = LocalTime.fromSecondOfDay((end % (24 * 60)) * 60)
+        // so a range from 0:00 to 0:00 (=next day) is shown as 0:00–24:00
+        // this doesn't affect the 12 hour clock, as 0:00 is formatted as 12:00 AM
+        var displayEnd = formatter.format(endTime)
+        if (endTime.hour == 0 && endTime.minute == 0 && displayEnd.startsWith("0")) {
+            displayEnd = displayEnd.replaceFirst("00?".toRegex(), "24")
+        }
         sb.append(displayEnd)
     }
     if (isOpenEnded) sb.append("+")
