@@ -91,7 +91,7 @@ class AtpQuestController(
                 // but it seems how note and osm element quests do things
                 // so maybe there is no better way?
 
-                if (!osm.tags.isEmpty()) { // TODO maybe both incoming ATP entries and OSM entries should be filtered? To check only places, not every tagged node?
+                if (!osm.tags.isEmpty()) { // TODO maybe both incoming ATP entries and OSM entries should be filtered? Maybe require it to be either place or thing to avoid maintaining even more filters? To check only places, not every tagged node?
                     val geometry = mapDataSource.getGeometry(osm.type, osm.id)
                     if (geometry == null) {
                         // TODO: in which cases it may happen? If it happens then we cannot do anything about it anyway
