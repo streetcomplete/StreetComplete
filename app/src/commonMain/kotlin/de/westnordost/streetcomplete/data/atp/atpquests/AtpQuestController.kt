@@ -119,7 +119,7 @@ class AtpQuestController(
             }
 
             // in theory changing name or retagging shop may cause new quests to appear - lets not support this
-            // as most cases will ve false positives anyway and this would be expensive to check
+            // as most cases will be false positives anyway and this would be expensive to check
             // instead pass emptyList<CreateElementQuest>()
             onUpdatingQuestList(emptyList<CreateElementUsingAtpQuest>(), deletedQuestIds)
         }
