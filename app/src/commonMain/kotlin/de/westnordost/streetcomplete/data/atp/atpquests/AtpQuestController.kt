@@ -178,8 +178,8 @@ class AtpQuestController(
             // TODO STUCK allQuestTypes[0] is a hilarious hack of worst variety TODO (in other places I just assume single
             // TODO STUCK maybe CreatePoiBasedOnAtp() and OsmCreateElementQuestType() should be merged?
             // TODO STUCK but simple
-            //  type = CreatePoiBasedOnAtp()
-            // TODO does not work
+            // type = CreatePoiBasedOnAtp()
+            // does not work
             // TODO specifically, import de.westnordost.streetcomplete.data.quest.atp.CreatePoiBasedOnAtp
             // TODO fails as supposedly .atp. does not exist
             // TODO STUCK maybe because it is stuck in Android part of source code?
