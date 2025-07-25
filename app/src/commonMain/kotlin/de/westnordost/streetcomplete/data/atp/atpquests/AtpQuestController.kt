@@ -145,7 +145,7 @@ class AtpQuestController(
         }
 
         override fun onCleared() {
-            //TODO("Not yet implemented")
+            listeners.forEach { it.onInvalidated() }
         }
     }
 
