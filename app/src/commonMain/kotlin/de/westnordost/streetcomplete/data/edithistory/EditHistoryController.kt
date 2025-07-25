@@ -119,7 +119,6 @@ class EditHistoryController(
             if (timestamp != null) createQuestHiddenEdit(key.questKey, timestamp) else null
         }
         //TODO is AtpQuestKey -> atpEditsController.get(key.id)
-        //TODO else -> throw IllegalArgumentException() // TODO can we add this here? like undo has?
     }
 
     override fun getAll(): List<Edit> {
