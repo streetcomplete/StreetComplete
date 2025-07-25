@@ -31,9 +31,6 @@ class AtpQuestController(
 
     fun isThereOsmAtpMatch(osm: Map<String, String>, atp: Map<String, String>, osmIdentifier: ElementKey, atpPosition: LatLon): Boolean {
         fun isItWithinRange(osmIdentifier: ElementKey, atpPosition: LatLon): Boolean {
-            // TODO what about large shops where element may be within it but distance to center is still great?
-            // TODO is there some already implemented or reasonable to implement function?
-            // should it be ignored?
             val distance = mapDataSource.getGeometry(osmIdentifier.type, osmIdentifier.id)?.distance(atpPosition)
             return distance != null && distance < ApplicationConstants.ATP_QUEST_FILTER_PADDING
         }
