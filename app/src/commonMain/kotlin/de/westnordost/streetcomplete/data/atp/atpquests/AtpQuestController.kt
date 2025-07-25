@@ -177,8 +177,8 @@ class AtpQuestController(
             // TODO STUCK but simple
             // type = CreatePoiBasedOnAtp()
             // does not work
-            // TODO specifically, import de.westnordost.streetcomplete.data.quest.atp.CreatePoiBasedOnAtp
-            // TODO fails as supposedly .atp. does not exist
+            // specifically, import de.westnordost.streetcomplete.data.quest.atp.CreatePoiBasedOnAtp
+            // fails as supposedly .atp. does not exist
             // TODO STUCK maybe because it is stuck in Android part of source code?
             CreateElementUsingAtpQuest(entry.id, entry,allQuestTypes[0], entry.position)
         } else {
