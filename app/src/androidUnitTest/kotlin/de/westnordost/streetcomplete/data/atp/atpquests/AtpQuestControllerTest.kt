@@ -275,7 +275,7 @@ class AtpQuestControllerTest {
         val entry = atpEntry(reportType = ReportType.MISSING_POI_IN_OPENSTREETMAP)
         val added = listOf(entry)
         val deleted = listOf<Long>()
-        atpUpdatesListener.onUpdatedAtpElement(added, deleted)
+        atpUpdatesListener.onUpdatedAtpElements(added, deleted)
         val expectedQuests = listOf<CreateElementUsingAtpQuest>(CreateElementUsingAtpQuest(entry.id, entry,
             MockQuestType, entry.position))
         val expectedDeletedIds = listOf<Long>()
@@ -306,7 +306,7 @@ class AtpQuestControllerTest {
 
         val added = listOf(entry)
         val deleted = listOf<Long>()
-        atpUpdatesListener.onUpdatedAtpElement(added, deleted)
+        atpUpdatesListener.onUpdatedAtpElements(added, deleted)
         verify(listener, never()).onUpdated(anyList(), anyList())
     }
 
@@ -321,7 +321,7 @@ class AtpQuestControllerTest {
 
         val added = listOf(entry)
         val deleted = listOf<Long>()
-        atpUpdatesListener.onUpdatedAtpElement(added, deleted)
+        atpUpdatesListener.onUpdatedAtpElements(added, deleted)
 
         verify(listener, never()).onUpdated(anyList(), anyList())
     }
@@ -337,7 +337,7 @@ class AtpQuestControllerTest {
 
         val added = listOf(entry)
         val deleted = listOf<Long>()
-        atpUpdatesListener.onUpdatedAtpElement(added, deleted)
+        atpUpdatesListener.onUpdatedAtpElements(added, deleted)
         val expectedQuests = listOf<CreateElementUsingAtpQuest>(CreateElementUsingAtpQuest(entry.id, entry,
             MockQuestType, entry.position))
         val expectedDeletedIds = listOf<Long>()
@@ -356,7 +356,7 @@ class AtpQuestControllerTest {
 
         val added = listOf(entry)
         val deleted = listOf<Long>()
-        atpUpdatesListener.onUpdatedAtpElement(added, deleted)
+        atpUpdatesListener.onUpdatedAtpElements(added, deleted)
         val expectedQuests = listOf<CreateElementUsingAtpQuest>(CreateElementUsingAtpQuest(entry.id, entry,
             MockQuestType, entry.position))
         val expectedDeletedIds = listOf<Long>()

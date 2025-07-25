@@ -636,7 +636,7 @@ class MainActivity :
     /* ---------------------------- AtpDataWithEditsSource.Listener ----------------------------- */
 
     @AnyThread
-    override fun onUpdatedAtpElement(added: Collection<AtpEntry>, deleted: Collection<Long>) {
+    override fun onUpdatedAtpElements(added: Collection<AtpEntry>, deleted: Collection<Long>) {
         // TODO: support ATP handling - it is likely needed
         /*
         lifecycleScope.launch {
