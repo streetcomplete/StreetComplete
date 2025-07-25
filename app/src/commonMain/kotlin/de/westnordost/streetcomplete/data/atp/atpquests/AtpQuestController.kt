@@ -91,22 +91,24 @@ class AtpQuestController(
                 // but it seems how note and osm element quests do things
                 // so maybe there is no better way?
 
-                val geometry = mapDataSource.getGeometry(osm.type, osm.id)
-                if (geometry == null) {
-                    // TODO: in which cases it may happen? If it happens then we cannot do anything about it anyway
-                    // should we crash? log? If log, then with something better
-                    Log.e(TAG, "why, why mapDataSource.getGeometry got me null?")
-                } else {
-                    val paddedBounds = geometry.bounds.enlargedBy(
-                        ApplicationConstants.QUEST_FILTER_PADDING
-                    )
-                    val candidates = atpDataSource.getAll(paddedBounds)
-                    // TODO: profile it whether it is too slow
-                    candidates.forEach { atpCandidate ->
-                        if(isThereOsmAtpMatch(osm.tags, atpCandidate.tagsInATP, ElementKey(osm.type, osm.id), atpCandidate.position)) {
-                            deletedQuestIds.add(atpCandidate.id)
-                            // ATP entries already ineligible for quest will be also listed
-                            // this is fine
+                if (!osm.tags.isEmpty()) { // TODO maybe both incoming ATP entries and OSM entries should be filtered? To check only places, not every tagged node?
+                    val geometry = mapDataSource.getGeometry(osm.type, osm.id)
+                    if (geometry == null) {
+                        // TODO: in which cases it may happen? If it happens then we cannot do anything about it anyway
+                        // should we crash? log? If log, then with something better
+                        Log.e(TAG, "why, why mapDataSource.getGeometry got me null?")
+                    } else {
+                        val paddedBounds = geometry.bounds.enlargedBy(
+                            ApplicationConstants.QUEST_FILTER_PADDING
+                        )
+                        val candidates = atpDataSource.getAll(paddedBounds)
+                        // TODO: profile it whether it is too slow
+                        candidates.forEach { atpCandidate ->
+                            if(isThereOsmAtpMatch(osm.tags, atpCandidate.tagsInATP, ElementKey(osm.type, osm.id), atpCandidate.position)) {
+                                deletedQuestIds.add(atpCandidate.id)
+                                // ATP entries already ineligible for quest will be also listed
+                                // this is fine
+                            }
                         }
                     }
                 }
