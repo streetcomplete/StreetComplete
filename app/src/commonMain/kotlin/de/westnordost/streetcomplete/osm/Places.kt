@@ -259,7 +259,7 @@ private val KEYS_THAT_SHOULD_BE_REMOVED_WHEN_PLACE_IS_REPLACED = listOf(
     "camera", "water", "fireplace", "outdoor", "blacksmith", "electronics", "fan", "piercing",
     "stationery", "sensory_friendly(:.*)?", "street_vendor",
     // obsoleted information
-    "(demolished|abandoned:disused)(:[^b][^u][^i].*)?", "was:.*", "not:.*", "damage", "created_by",
+    "(demolished|abandoned|disused)(:(?!bui).+)?", "was:.*", "not:.*", "damage", "created_by",
     "check_date", "opening_date", "last_checked", "checked_exists:date", "pharmacy_survey",
     "old_ref", "update", "import_uuid", "review", "fixme:atp",
     // classifications / links to external databases
