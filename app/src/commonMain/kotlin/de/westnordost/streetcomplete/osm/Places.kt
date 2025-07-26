@@ -257,7 +257,7 @@ private val KEYS_THAT_SHOULD_BE_REMOVED_WHEN_PLACE_IS_REPLACED = listOf(
     "vacant", "insurance(:.*)?", "caravan", "gift", "bicycle", "bicycle_rental", "insulation",
     "communication", "mall", "model", "empty", "wood", "hunting", "motorcycle", "trailer",
     "camera", "water", "fireplace", "outdoor", "blacksmith", "electronics", "fan", "piercing",
-    "stationery",
+    "stationery", "sensory_friendly(:.*)?", "street_vendor",
     // obsoleted information
     "abandoned(:.*)?", "disused(:.*)?", "was:.*", "not:.*", "damage", "created_by", "check_date",
     "opening_date", "last_checked", "checked_exists:date", "pharmacy_survey", "old_ref", "update",
@@ -268,9 +268,9 @@ private val KEYS_THAT_SHOULD_BE_REMOVED_WHEN_PLACE_IS_REPLACED = listOf(
     "transiscope", "opendata:type", "local_ref", "official_ref",
     // names and identifications
     "name_?[1-9]?(:.*)?", ".*_name_?[1-9]?(:.*)?", "noname", "branch(:.*)?", "brand(:.*)?",
-    "not:brand(:.*)?", "network(:wikidata)?", "operator(:.*)?", "operator_type", "ref",
-    "ref:vatin", "designation", "SEP:CLAVEESC", "identifier", "ref:FR:SIRET", "ref:FR:SIREN",
-    "ref:FR:NAF",
+    "not:brand(:.*)?", "network(:.*)?", "operator(:.*)?", "operator_type", "ref", "ref:vatin",
+    "designation", "SEP:CLAVEESC", "identifier", "ref:FR:SIRET", "ref:FR:SIREN", "ref:FR:NAF",
+    "(old_)?ref:FR:prix-carburants",
     // contacts
     "contact_person", "contact(:.*)?", "phone(:.*)?", "phone_?[1-9]?", "emergency:phone",
     "emergency_telephone_code",
@@ -279,7 +279,7 @@ private val KEYS_THAT_SHOULD_BE_REMOVED_WHEN_PLACE_IS_REPLACED = listOf(
     "url", "url:official", "source_ref:url", "owner",
     // payments
     "payment(:.*)?", "payment_multi_fee", "currency(:.*)?", "cash_withdrawal(:.*)?", "fee",
-    "charge", "charge_fee", "money_transfer", "donation:compensation",
+    "charge", "charge_fee", "money_transfer", "donation:compensation", "paypoint",
     // generic shop/craft attributes
     "seasonal", "time", "opening_hours(:.*)?", "check_(in|out)", "wifi", "internet",
     "internet_access(:.*)?", "second_hand", "self_service", "automated", "license:.*",
@@ -291,7 +291,7 @@ private val KEYS_THAT_SHOULD_BE_REMOVED_WHEN_PLACE_IS_REPLACED = listOf(
     "webshop", "operational_status.*", "status", "drive_through", "surveillance(:.*)?",
     "outdoor_seating", "indoor_seating", "colour", "access_simple", "floor", "product_category",
     "guide", "source_url", "category", "kids_area", "kids_area:indoor", "resort", "since", "state",
-    "temporary", "self_checkout", "audio_loop",
+    "temporary", "self_checkout", "audio_loop", "related_law(:.*)?", "official_status(:.*)?",
     // food and drink details
     "bar", "cafe", "coffee", "microroasting", "microbrewery", "brewery", "real_ale", "taproom",
     "training", "distillery", "drink(:.*)?", "cocktails", "alcohol", "wine([:_].*)?",
@@ -299,7 +299,7 @@ private val KEYS_THAT_SHOULD_BE_REMOVED_WHEN_PLACE_IS_REPLACED = listOf(
     "produced_on_site", "restaurant", "food", "pastry", "pastry_shop", "product", "produce",
     "chocolate", "fair_trade", "butcher", "reservation(:.*)?", "takeaway(:.*)?", "delivery(:.*)?",
     "caterer", "real_fire", "flour_fortified", "highchair", "fast_food", "pub", "snack",
-    "confectionery",
+    "confectionery", "drinking_water:refill",
     // related to repair shops/crafts
     "service(:.*)?", "motorcycle:.*", "repair", ".*:repair", "electronics_repair(:.*)?",
     "workshop",
@@ -320,14 +320,14 @@ private val KEYS_THAT_SHOULD_BE_REMOVED_WHEN_PLACE_IS_REPLACED = listOf(
     "post_addr", "scope", "ESTADO", "NIVSOCIO", "NO", "EMP_EST", "COD_HAB", "CLA_PERS", "CLA_PRES",
     "snis_code:.*", "hfac_bed", "hfac_type", "nature", "moph_code", "IJSN:.*", "massgis:id",
     "OGD-Stmk:.*", "paho:.*", "panchayath", "pbf_contract", "pcode", "pe:minsa:.*", "who:.*",
-    "pharmacy:category", "tactile_paving", "HF_(ID|TYPE|N_EN)", "RoadConn", "bin",
+    "pharmacy:category", "tactile_paving", "HF_(ID|TYPE|N_EN)", "RoadConn", "bin", "hiv(:.*)?",
     // accommodation & layout
     "rooms", "stars", "accommodation", "beds", "capacity(:persons)?", "laundry_service",
     "guest_house",
     // amenity=place_of_worship
     "deanery", "subject:(wikidata|wikipedia|wikimedia_commons)", "church", "church:type",
     // schools
-    "capacity:(pupils|teachers)", "grades", "population:pupils:.*",
+    "capacity:(pupils|teachers)", "grades", "population:pupils(:.*)?",
     "school:(FR|gender|trust|type|type_idn)", "primary",
     // clubs
     "animal(_breeding|_training)?", "billiards(:.*)?", "board_game", "sport_1", "sport:boating",
@@ -344,7 +344,7 @@ private val KEYS_THAT_SHOULD_BE_REMOVED_WHEN_PLACE_IS_REPLACED = listOf(
     "zoo", "shooting", "commons", "groomer", "group_only", "hazard", "identity", "interaction",
     "logo", "maxheight", "provides", "regional", "scale", "site", "plots", "allotments",
     "local_food", "monitoring:pedestrian", "recording:automated", "yacht", "background_music",
-    "url:spaceapi",
+    "url:spaceapi", "openfire",
     // misc specific attributes
     "clothes", "shoes", "tailor", "beauty", "tobacco", "carpenter", "furniture", "lottery",
     "sport", "dispensing", "tailor:.*", "gambling", "material", "raw_material", "stonemason",
@@ -363,11 +363,13 @@ private val KEYS_THAT_SHOULD_BE_REMOVED_WHEN_PLACE_IS_REPLACED = listOf(
     "telecom(munication)?", "service_times", "kitchen:facilities", "it:(type|sales)",
     "cannabis:cbd", "bath:type", "bath:(open_air|sand_bath)", "animal_boarding", "animal_shelter",
     "mattress", "screen", "monitoring:weather", "public", "theatre", "culture", "library",
-    "cooperative",
-    "camp_site", "camping", "emergency(:.*)?", "evacuation_cent(er|re)", "education",
-    "engineering", "forestry", "foundation", "lawyer", "logistics", "military", "community_centre",
-    "bank", "operational", "users_(PLWD|boy|elderly|female|girl|men)",
+    "cooperative(:.*)?", "winery", "curtain", "lawyer(:.*)?", "local_authority(:.*)?", "equipment",
+    "hackerspace",
+    "camp_site", "camping", "bbq", "static_caravans", "emergency(:.*)?", "evacuation_cent(er|re)",
+    "education", "engineering", "forestry", "foundation", "lawyer", "logistics", "military",
+    "community_centre", "bank", "operational", "users_(PLWD|boy|elderly|female|girl|men)",
     "Comments?", "comments?", "entrance:(width|step_count|kerb:height)", "fenced", "motor_vehicle",
+    "shelter",
 )
     .flatMap { listOf(it, "source:$it", "check_date:$it") }
     .map { it.toRegex() }
