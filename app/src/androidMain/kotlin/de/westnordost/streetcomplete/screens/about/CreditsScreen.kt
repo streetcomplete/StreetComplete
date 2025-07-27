@@ -29,6 +29,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.credits.Contributor
@@ -37,7 +38,7 @@ import de.westnordost.streetcomplete.ui.common.BackIcon
 import de.westnordost.streetcomplete.ui.common.BulletSpan
 import de.westnordost.streetcomplete.ui.common.HtmlText
 import de.westnordost.streetcomplete.ui.theme.titleLarge
-import java.util.Locale
+import de.westnordost.streetcomplete.util.ktx.displayName
 
 /** Shows the credits of this app */
 @Composable
@@ -112,7 +113,7 @@ private fun CreditsSections(
             val translatorsByDisplayLanguage = remember(credits.translatorsByLanguage) {
                 credits.translatorsByLanguage
                     .map { (language, translators) ->
-                        val languageName = Locale.forLanguageTag(language).displayName
+                        val languageName = Locale(language).displayName ?: language
                         val sortedTranslators = translators.entries
                             .sortedByDescending { it.value }
                             .map { it.key }

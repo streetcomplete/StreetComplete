@@ -2,10 +2,10 @@ package de.westnordost.streetcomplete.quests.opening_hours
 
 import android.content.Context
 import androidx.appcompat.app.AlertDialog
+import androidx.compose.ui.text.intl.Locale
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.osm.opening_hours.model.Months
 import de.westnordost.streetcomplete.osm.opening_hours.model.getNames
-import java.util.Locale
 
 object MonthsPickerDialog {
 
@@ -13,7 +13,7 @@ object MonthsPickerDialog {
         val selection = months?.selection ?: BooleanArray(Months.MONTHS_COUNT)
 
         val localeMonthsNames = Months.getNames(locale)
-        val monthsNames = Months.getNames(Locale.getDefault())
+        val monthsNames = Months.getNames()
 
         val names = localeMonthsNames.mapIndexed { index, localeMonthName ->
             val monthName = monthsNames[index]

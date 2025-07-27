@@ -25,6 +25,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.ApplicationConstants.DELETE_OLD_DATA_AFTER
 import de.westnordost.streetcomplete.ApplicationConstants.REFRESH_DATA_AFTER
@@ -42,9 +43,9 @@ import de.westnordost.streetcomplete.ui.common.dialogs.InfoDialog
 import de.westnordost.streetcomplete.ui.common.dialogs.SimpleListPickerDialog
 import de.westnordost.streetcomplete.ui.common.settings.Preference
 import de.westnordost.streetcomplete.ui.common.settings.PreferenceCategory
-import de.westnordost.streetcomplete.util.ktx.format
+import de.westnordost.streetcomplete.util.ktx.getDisplayName
+import de.westnordost.streetcomplete.util.locale.NumberFormatter
 import org.jetbrains.compose.resources.painterResource
-import java.util.Locale
 
 /** Shows the settings lists */
 @Composable
@@ -223,11 +224,11 @@ fun SettingsScreen(
             onDismissRequest = { showDeleteCacheConfirmation = false },
             onConfirmed = { viewModel.deleteCache() },
             text = {
-                val locale = Locale.getDefault()
+                val numberFormatter = NumberFormatter(Locale.current, maxFractionDigits = 1)
                 Text(stringResource(
                     R.string.delete_cache_dialog_message,
-                    (1.0 * REFRESH_DATA_AFTER / (24 * 60 * 60 * 1000)).format(locale, 1),
-                    (1.0 * DELETE_OLD_DATA_AFTER / (24 * 60 * 60 * 1000)).format(locale, 1)
+                    numberFormatter.format(1.0 * REFRESH_DATA_AFTER / (24 * 60 * 60 * 1000)),
+                    numberFormatter.format(1.0 * DELETE_OLD_DATA_AFTER / (24 * 60 * 60 * 1000))
                 ))
             },
             confirmButtonText = stringResource(R.string.delete_confirmation)
@@ -325,6 +326,6 @@ private val Theme.titleResId: Int get() = when (this) {
 
 private fun getLanguageDisplayName(languageTag: String): String? {
     if (languageTag.isEmpty()) return null
-    val locale = Locale.forLanguageTag(languageTag)
-    return locale.getDisplayName(locale)
+    val locale = Locale(languageTag)
+    return locale.getDisplayName(locale) ?: languageTag
 }
