@@ -43,7 +43,7 @@ import de.westnordost.streetcomplete.ui.common.dialogs.InfoDialog
 import de.westnordost.streetcomplete.ui.common.dialogs.SimpleListPickerDialog
 import de.westnordost.streetcomplete.ui.common.settings.Preference
 import de.westnordost.streetcomplete.ui.common.settings.PreferenceCategory
-import de.westnordost.streetcomplete.util.ktx.getName
+import de.westnordost.streetcomplete.util.ktx.getDisplayName
 import de.westnordost.streetcomplete.util.locale.NumberFormatter
 import org.jetbrains.compose.resources.painterResource
 
@@ -327,5 +327,5 @@ private val Theme.titleResId: Int get() = when (this) {
 private fun getLanguageDisplayName(languageTag: String): String? {
     if (languageTag.isEmpty()) return null
     val locale = Locale(languageTag)
-    return locale.getName(locale) ?: languageTag
+    return locale.getDisplayName(locale) ?: languageTag
 }

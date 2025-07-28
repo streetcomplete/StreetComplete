@@ -16,6 +16,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
@@ -31,7 +32,8 @@ import de.westnordost.streetcomplete.screens.user.profile.getLocalRankCurrentWee
 import de.westnordost.streetcomplete.screens.user.profile.getLocalRankProgress
 import de.westnordost.streetcomplete.ui.common.OpenInBrowserIcon
 import de.westnordost.streetcomplete.ui.theme.headlineSmall
-import java.util.Locale
+import de.westnordost.streetcomplete.util.ktx.displayRegion
+import de.westnordost.streetcomplete.util.ktx.getDisplayRegion
 
 /** Shows the details for a certain country as a dialog. */
 @Composable
@@ -79,7 +81,8 @@ private fun CountryInfoDetails(
     modifier: Modifier = Modifier,
 ) {
     val uriHandler = LocalUriHandler.current
-    val countryLocale = Locale("", countryCode)
+    val countryLocale = Locale("en-$countryCode")
+    val countryName = countryLocale.displayRegion ?: countryLocale.region
 
     Column(
         modifier = modifier.verticalScroll(rememberScrollState()),
@@ -88,7 +91,7 @@ private fun CountryInfoDetails(
     ) {
         if (rank != null) {
             Text(
-                text = stringResource(R.string.user_statistics_country_rank2, Locale("", countryCode).displayCountry),
+                text = stringResource(R.string.user_statistics_country_rank2, countryName),
                 style = MaterialTheme.typography.headlineSmall,
                 textAlign = if (isLandscape) TextAlign.Start else TextAlign.Center
             )
@@ -110,13 +113,15 @@ private fun CountryInfoDetails(
 
         OutlinedButton(
             onClick = {
-                val britishCountryName = countryLocale.getDisplayCountry(Locale.UK)
-                uriHandler.openUri("https://wiki.openstreetmap.org/wiki/$britishCountryName")
+                val britishCountryName = countryLocale.getDisplayRegion(Locale("en-GB"))
+                if (britishCountryName != null) {
+                    uriHandler.openUri("https://wiki.openstreetmap.org/wiki/$britishCountryName")
+                }
             }
         ) {
             OpenInBrowserIcon()
             Text(
-                text = stringResource(R.string.user_statistics_country_wiki_link, countryLocale.displayCountry),
+                text = stringResource(R.string.user_statistics_country_wiki_link, countryName),
                 modifier = Modifier.padding(start = 8.dp),
                 textAlign = if (isLandscape) TextAlign.Start else TextAlign.Center
             )
