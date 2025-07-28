@@ -25,10 +25,6 @@ class AddRoadNameForm : AAddLocalizedNameForm<RoadNameAnswer>() {
         AnswerItem(R.string.quest_streetName_answer_cantType) { showKeyboardInfo(requireContext()) }
     )
 
-    // TODO quest_streetName_description should be displayed on top but that hardly works while
-    //   the parent (AAddLocalizedNameForm) defines the composables. Same with this "road name sign
-    //   styling", which is anyway somewhat more awkward to do in compose anyway
-
     private val roadsWithNamesFilter =
         "ways with highway ~ ${(ALL_ROADS + ALL_PATHS).joinToString("|")} and name"
             .toElementFilterExpression()

@@ -991,6 +991,8 @@ A level counts as a roof level when its windows are in the roof. Subsequently, r
     <string name="quest_busStopLit_title2">"Is this stop lit?"</string>
     <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
     <string name="quest_busStopName_title2">"What’s the name of this stop?"</string>
+    <!-- very similar naming as "quest_streetName_hint" -->
+    <string name="quest_stopName_hint">"You can apply the same name as another stop by tapping on it on the map. "</string>
     <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
     <string name="quest_busStopRef_title2">"What number or code identifies this stop?"</string>
     <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
@@ -1610,7 +1612,7 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_steps_ramp_wheelchair">Wheelchair ramp</string>
 
     <string name="quest_streetName_title">"What’s the name of this street?"</string>
-    <string name="quest_streetName_description">"as written on the street sign, abbreviations are expanded:"</string>
+    <string name="quest_streetName_hint">"Abbreviations like "Rd." are automatically expanded. Also, you can apply the same name as an adjacent section by tapping on it on the map."</string>
     <string name="quest_streetName_add_language">Add language</string>
     <string name="quest_streetName_answer_cantType">"Can’t type the characters on the sign"</string>
     <string name="quest_streetName_cantType_title">Missing keyboard layout?</string>

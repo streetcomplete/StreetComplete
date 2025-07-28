@@ -5,7 +5,6 @@ import android.view.View
 import androidx.compose.material.Surface
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.Abbreviations
 import de.westnordost.streetcomplete.data.meta.AbbreviationsByLanguage
@@ -28,17 +27,23 @@ abstract class AAddLocalizedNameForm<T> : AbstractOsmQuestForm<T>() {
     private val prefs: Preferences by inject()
     protected lateinit var localizedNames: MutableState<List<LocalizedName>>
     protected var abbreviationsByLanguage: Map<String, Abbreviations?> = emptyMap()
+    private lateinit var selectableLanguages: List<String>
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        val languages = getSelectableLanguageTags().toMutableList()
+        val preferredLanguage = prefs.preferredLanguageForNames
+        if (preferredLanguage != null) {
+            if (languages.remove(preferredLanguage)) {
+                languages.add(0, preferredLanguage)
+            }
+        }
+        selectableLanguages = languages
+        localizedNames = mutableStateOf(listOf(LocalizedName(countryInfo.language.orEmpty(), "")))
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        val selectableLanguages = getSelectableLanguageTags().toMutableList()
-        val preferredLanguage = prefs.preferredLanguageForNames
-        if (preferredLanguage != null) {
-            if (selectableLanguages.remove(preferredLanguage)) {
-                selectableLanguages.add(0, preferredLanguage)
-            }
-        }
 
         val abbrs = getAbbreviationsByLanguage()
         if (abbrs != null) {
@@ -48,10 +53,6 @@ abstract class AAddLocalizedNameForm<T> : AbstractOsmQuestForm<T>() {
         }
 
         binding.composeViewBase.content { Surface {
-            localizedNames = remember {
-                mutableStateOf(listOf(LocalizedName(countryInfo.language.orEmpty(), "")))
-            }
-
             LocalizedNamesForm(
                 localizedNames = localizedNames.value,
                 onChanged = {
