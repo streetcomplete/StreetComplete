@@ -36,7 +36,7 @@ import de.westnordost.streetcomplete.data.meta.Abbreviations
 import de.westnordost.streetcomplete.osm.localized_name.LocalizedName
 import de.westnordost.streetcomplete.ui.common.ButtonStyle
 import de.westnordost.streetcomplete.ui.common.SelectButton
-import de.westnordost.streetcomplete.util.ktx.name
+import de.westnordost.streetcomplete.util.ktx.displayName
 
 /** Edit a list of [localizedNames] of at most [languageTags] different languages.
  *  Optionally, given a [abbreviationsByLanguage], abbreviations in the input will be
@@ -188,7 +188,7 @@ private fun getLanguageMenuItemTitle(languageTag: String): String {
     if (languageTag == "international") return stringResource(R.string.quest_streetName_menuItem_international)
     val locale = Locale(languageTag)
 
-    val languageName = locale.name
+    val languageName = locale.displayName
 
     return if (languageName == null) {
         languageTag
