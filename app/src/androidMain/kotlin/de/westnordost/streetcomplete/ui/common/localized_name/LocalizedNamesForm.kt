@@ -130,7 +130,9 @@ private fun LocalizedNameRow(
     val languageTag = localizedName.languageTag
 
     var nameState by remember { mutableStateOf(TextFieldValue(localizedName.name)) }
-    nameState = nameState.copy(text = localizedName.name)
+    if (localizedName.name != nameState.text) {
+        nameState = nameState.copy(text = localizedName.name)
+    }
 
     Row(
         horizontalArrangement = Arrangement.spacedBy(8.dp),
@@ -154,7 +156,10 @@ private fun LocalizedNameRow(
 
         ExpandAbbreviationsTextField(
             value = nameState,
-            onValueChange = {  onChange(localizedName.copy(name = it.text)) },
+            onValueChange = {
+                nameState = it
+                onChange(localizedName.copy(name = it.text))
+            },
             abbreviations = abbreviations,
             modifier = Modifier.weight(1f),
             keyboardOptions = KeyboardOptions(
