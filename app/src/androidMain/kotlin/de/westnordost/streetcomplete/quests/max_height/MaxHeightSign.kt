@@ -23,12 +23,13 @@ import org.jetbrains.compose.resources.painterResource
 @Composable
 fun MaxHeightSign(
     countryCode: String?,
+    modifier: Modifier = Modifier,
     content: @Composable BoxScope.() -> Unit,
 ) {
     val signBackground = painterResource(getMaxHeightSignDrawable(countryCode))
     CompositionLocalProvider(LocalContentColor provides TrafficSignColor.Black) {
         Box(
-            modifier = Modifier
+            modifier = modifier
                 .size(256.dp)
                 .drawBehind { with(signBackground) { draw(size) } }
                 .padding(48.dp),
