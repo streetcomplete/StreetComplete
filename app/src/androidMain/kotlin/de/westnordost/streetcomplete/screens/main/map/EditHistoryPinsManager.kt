@@ -140,7 +140,6 @@ private fun Edit.toProperties(): List<Pair<String, String>> = when (this) {
     is AtpQuestHidden -> listOf(
         MARKER_EDIT_TYPE to EDIT_TYPE_HIDE_ATP_QUEST,
         ATP_ENTRY_ID to atpEntry.id.toString()
-        // TODO add more context here? maybe?
     )
     else -> throw IllegalArgumentException()
 }
