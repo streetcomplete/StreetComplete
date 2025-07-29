@@ -620,6 +620,7 @@ class MainActivity :
                 closeBottomSheet()
             }
             // TODO: do I need support for ATP handling? probably yes
+            // I need to detect whether quest referring to now gone ATP entry is opened
         }
     }
 
