@@ -64,7 +64,7 @@ class AtpQuestController(
         }
 
         override fun onInvalidated() {
-            // probably do the same as class OsmQuestController did? TODO
+            // probably do the same as class OsmQuestController did? TODO LATER - maybe not needed at all? If used, add test, if not used at the end - purge
             listeners.forEach { it.onInvalidated() }
         }
     }
