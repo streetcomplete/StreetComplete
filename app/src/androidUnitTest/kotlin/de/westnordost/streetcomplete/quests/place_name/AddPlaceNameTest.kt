@@ -14,7 +14,7 @@ class AddPlaceNameTest {
     @Test fun `apply no name answer`() {
         assertEquals(
             setOf(StringMapEntryAdd("name:signed", "no")),
-            questType.answerApplied(NoPlaceNameSign)
+            questType.answerApplied(PlaceNameAnswer.NoNameSign)
         )
     }
 
