@@ -125,8 +125,7 @@ class AtpCreateForm : AbstractQuestForm() {
         /** Called when the user successfully answered the quest */
         fun onEdited(editType: ElementEditType, geometry: ElementGeometry)
 
-        /** Called when the user successfully answered the quest */
-        // TODO actually use that (or remove, if not needed)
+        // TODO API actually use that (or remove, if not needed)
         fun onRejectedAtpEntry(editType: ElementEditType, geometry: ElementGeometry)
 
         /** Called when the user chose to move the node */
