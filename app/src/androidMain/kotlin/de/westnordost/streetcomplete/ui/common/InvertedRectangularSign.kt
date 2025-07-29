@@ -18,11 +18,11 @@ import de.westnordost.streetcomplete.ui.theme.TrafficSignColor
 import de.westnordost.streetcomplete.ui.theme.trafficSignContentColorFor
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
-/** A surface in the appearance of a rectangular traffic sign. */
+/** A surface in the appearance of a rectangular traffic sign but with inverted colors. */
 @Composable
-fun RectangularSign(
+fun InvertedRectangularSign(
     modifier: Modifier = Modifier,
-    color: Color = TrafficSignColor.White,
+    color: Color = TrafficSignColor.Black,
     content: @Composable BoxScope.() -> Unit
 ) {
     val contentColor = trafficSignContentColorFor(color)
@@ -31,10 +31,10 @@ fun RectangularSign(
             .border(Dp.Hairline, Color.LightGray, RoundedCornerShape(10.dp))
             .background(color, RoundedCornerShape(10.dp))
             .padding(4.dp)
-            .border(4.dp, contentColor, RoundedCornerShape(6.dp))
+            .background(contentColor, RoundedCornerShape(6.dp))
             .padding(4.dp)
     ) {
-        CompositionLocalProvider(LocalContentColor provides contentColor) {
+        CompositionLocalProvider(LocalContentColor provides color) {
             content()
         }
     }
@@ -42,15 +42,15 @@ fun RectangularSign(
 
 @Composable @Preview
 private fun RectangularSignWhitePreview() {
-    RectangularSign { Text("a") }
+    InvertedRectangularSign { Text("a") }
 }
 
 @Composable @Preview
 private fun RectangularSignYellowPreview() {
-    RectangularSign(color = TrafficSignColor.Yellow) { Text("b") }
+    InvertedRectangularSign(color = TrafficSignColor.Yellow) { Text("b") }
 }
 
 @Composable @Preview
 private fun RectangularSignBluePreview() {
-    RectangularSign(color = TrafficSignColor.Blue) { Text("c") }
+    InvertedRectangularSign(color = TrafficSignColor.Blue) { Text("c") }
 }
