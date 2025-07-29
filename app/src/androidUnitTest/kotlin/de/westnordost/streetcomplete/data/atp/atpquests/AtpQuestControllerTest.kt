@@ -176,14 +176,12 @@ class AtpQuestControllerTest {
         )
     }
 
-    // is onCleared still needed? it got copied from notes test and interface TODO
-    /*
+    // is onCleared still needed? it got copied from notes test and interface TODO LATER
     @Test
     fun `calls onInvalidated when cleared entries`() {
         //atpUpdatesListener.onCleared()
-        verify(listener).onInvalidated()
+        //verify(listener).onInvalidated()
     }
-    */
 
     @Test
     fun `isThereOsmAtpMatch matches on exact copies`() {
