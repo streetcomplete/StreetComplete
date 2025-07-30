@@ -20,17 +20,13 @@ import kotlin.math.max
 /** Download the SVG preset icons referred to by the iD presets and convert them to Android
  *  drawables. */
 open class DownloadAndConvertPresetIconsTask : DefaultTask() {
-    @get:Input var targetDir: String? = null
-    @get:Input var version: String? = null
+    @get:Input lateinit var targetDir: String
+    @get:Input lateinit var version: String
     @get:Input var iconSize: Int = 14
     @get:Input var transformName: (String) -> String = { it }
-    @get:Input var indexFile: String? = null
+    @get:Input lateinit var indexFile: String
 
     @TaskAction fun run() {
-        val targetDir = targetDir ?: return
-        val indexFile = indexFile ?: return
-        val version = version ?: return
-
         val icons = getIconNames(version)
 
         val index = ArrayList<Pair<String, String>>(icons.size)
@@ -150,7 +146,6 @@ open class DownloadAndConvertPresetIconsTask : DefaultTask() {
         vector.setAttribute("android:height", "${iconHeight}dp")
         vector.setAttribute("android:viewportWidth", width)
         vector.setAttribute("android:viewportHeight", height)
-        vector.setAttribute("android:tint", "?attr/colorControlNormal")
         drawable.appendChild(vector)
 
         for (i in 0 until root.childNodes.length) {
@@ -166,7 +161,7 @@ open class DownloadAndConvertPresetIconsTask : DefaultTask() {
             require(d != "") { "no path defined" }
 
             val path = drawable.createElement("path")
-            path.setAttribute("android:fillColor", "@android:color/white")
+            path.setAttribute("android:fillColor", "#000")
             path.setAttribute("android:pathData", makePathCompatible(d))
             vector.appendChild(path)
         }
@@ -243,7 +238,7 @@ open class DownloadAndConvertPresetIconsTask : DefaultTask() {
                 "https://raw.githubusercontent.com/FortAwesome/Font-Awesome/master/svgs/brands/$file.svg",
             )
             "roentgen" -> listOf(
-                "https://raw.githubusercontent.com/enzet/Roentgen/main/icons/roentgen_$file.svg"
+                "https://raw.githubusercontent.com/enzet/Roentgen/main/icons/$file.svg"
             )
             else -> null
         }

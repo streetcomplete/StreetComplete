@@ -1,0 +1,13 @@
+# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
+additionalValidHousenumberRegex: \p{L}?(?:\p{N}{1,4}(?:\s?(?:bis|ter|kép|\p{L}))?/)*\p{N}{1,4}(?:\s?(?:bis|ter|kép|\p{L})(?:\s(?:bis|ter|kép|\p{L}))?)?
+atmOperators: [BIDV, Vietcombank, Techcombank, Agribank, VietinBank, Sacombank, Agribank - ATM, VPBank, Techcombank - ATM, ACB, Saigon Bank - ATM, TPBank, Vietinbank - ATM, Vietcombank - ATM, BIDV - ATM, Dong A - ATM, HSBC, SHB, Ngân hàng MB, Vietinbank, MB, SHB - ATM, Eab - ATM, BIDV - Pos, BIDV - May Pos - ATM, VIB, MB Bank, Eximbank, Dongabank - ATM, DongA Bank, Southerbank - ATM, Saigonbank, Saigon Bank, SCB - ATM, Ngân hàng Quân đội, Dongabank, Eximbank - ATM, Vikki Bank, SeABank, HSBC - ATM, ANZ, Sacombank - ATM, Ngân hàng TMCP Đông Á, Military Bank - ATM, ACB - ATM, Vpbank - ATM, Eab, BIDV - Pos - ATM, OCB, MBBank, Habubank - ATM, SCB, Militarybank - ATM, Military Bank, MSB, MHB Bank - ATM, BitcoinVN, ANZ - ATM, Vietbank, VP Bank, Shinhan Bank, SeA Bank, OCB - ATM, Msb - ATM, Maritime Bank, MB - ATM, Abbank - ATM, vietcombank, agribank, Vietnam – Russia Bank, Vietinbank - Atm, Vietin Bank, VietcomBank, Techombank, Techcom Bank, SeABank ATM, MHB - ATM, HDBank, Bidv, AgriBank, ATM Techcombank, ATM Sacombank, ABBank]
+centerLineStyle: white
+chargingStationOperators: [VinFast]
+defaultSpeedLimitHasUrbanOrRural: true
+hasDailyAlternateSideParkingSign: true
+mobileCountryCode: 452
+officialLanguages: [vi]
+orchardProduces: [rubber, coffee, cashew_nut, coconut, banana, pepper, tea, guava, mango, mangosteen, orange, chilli_pepper, sweet_pepper, grapefruit, pineapple, grape]
+popularReligions: [chinese_folk, buddhist, christian, caodaism]
+popularSports: [soccer, tennis, badminton, australian_football, sepak_takraw]
+postboxesHaveCollectionTimes: true

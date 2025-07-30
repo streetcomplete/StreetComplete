@@ -1,6 +1,0 @@
-# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [U.S. Bank, Wells Fargo, LibertyX, CoinFlip, BitcoinNW, Zions Bank]
-chargingStationOperators: [Electrify America, 'Tesla, Inc.', Volta, ChargePoint]
-clothesContainerOperators: [Eco World]
-defaultSpeedLimitHasUrbanOrRural: false
-parcelLockerBrand: [Amazon Locker]

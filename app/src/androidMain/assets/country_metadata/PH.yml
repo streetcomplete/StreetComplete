@@ -1,0 +1,17 @@
+# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
+advisorySpeedLimitSignStyle: yellow
+atmOperators: [BDO, BPI, Landbank, Metrobank, RCBC, PNB, Land Bank of the Philippines, Bank of the Philippine Islands, PSBank, Security Bank, Chinabank, BDO Unibank, Euronet, Bank of Commerce, DBP, 'Pito AxM Platform, Inc.', EastWest Unibank, China Bank, Philippine National Bank, BDO Network Bank, Bancnet, Metropolitan Bank and Trust Company, Luzon Development Bank, Development Bank of the Philippines, Veterans Bank, UnionBank, Security Bank Corporation, Rizal Commercial Banking Corporation, Philippine Savings Bank, Philippine Business Bank, 7-Eleven, 'BDO Unibank, Inc.', Asia United Bank, UCPB Savings Bank, LandBank, Land Bank, Robinsons Bank Corporation, First Consolidated Bank, UCPB, One Network Bank, Landbank of the Philippines, China Banking Corporation, Banco de Oro, Robinsons Bank, Maybank, China Bank Savings, Unionbank, PBCom, MetroBank, Land Bank ATM, East West Banking Corporation, Allied Bank, United Coconut Planters Bank, Union Bank of the Philippines, Producers Bank, Philippine Veterans Bank, PS Bank, PBCOM, Metrobank ATM, Eastwest Unibank, EastWest, DBP ATM, Citibank, Bank of the Philippine Island, BPI Family Savings Bank, BDO ATM]
+centerLineStyle: white
+chargingStationOperators: [eSakay]
+defaultSpeedLimitHasUrbanOrRural: true
+hasAdvisorySpeedLimitSign: true
+hasNoStandingSign: true
+mobileCountryCode: 515
+noParkingSignStyle: mutcd
+noStandingSignStyle: mutcd text waiting
+noStoppingSignStyle: mutcd
+officialLanguages: [en, fil, es, ceb, ilo, hil]
+orchardProduces: [coconut, rubber, guava, mango, mangosteen, banana, coffee, pineapple, cacao, cashew_nut, tomato, papaya, chilli_pepper, sweet_pepper, avocado, grapefruit, agave, pepper]
+popularSports: [basketball, tennis, soccer, volleyball]
+postboxesHaveCollectionTimes: true
+workweekDays: 6

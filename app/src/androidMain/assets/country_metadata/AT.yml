@@ -1,0 +1,25 @@
+# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
+advisoryCycleLaneStyle: white dashes
+atmOperators: [Raiffeisen, BAWAG PSK, Raiffeisenbank, Euronet, Volksbank, Sparkasse, Erste Bank, BAWAG, Kurant, bank99, Oberbank, ICCash, PSA, Bank Austria, Bawag, First Data, BTV, Spar, BKS Bank, Steiermärkische Sparkasse, Sparkasse Oberösterreich, BAWAG P.S.K., Raiffeisen Bank, Bawag PSK, Salzburger Sparkasse, Raiffeisen Wien, Kremser Bank und Sparkassen AG, ICCash Services, Denizbank, IC Cash, Hypo, Bankomat, bank 99, Tiroler Sparkasse, Sparkasse Imst AG, Sparda Bank, Raiffeisenbank Wr. Neustadt-Schneebergland, Raiffeisenbank Sillian, Hypo Salzburg, Global ATM Network, Bank Burgenland, Volksbank Vorarlberg, VKB-Bank, Sparkasse Niederösterreich, Sparkasse Imst, Reiffeisenbank, Raika, Raiffeisenbank Innkreis Mitte, Raiffeisen Landesbank, Marchfelder Bank, Maestro, Hypo Tirol, Euronet Worldwide, DenizBank, Bankhaus Spängler, fiserv, Volksbank Kufstein, Steiermärkische Bank, Sparkasse Kufstein, Sparda-Bank, Santander, Salzburger Sparkasse Bank AG, SPAR, Raiffeisenkasse, Raiffeisenbank am Hofsteig, Raiffeisenbank Ybbstal, Raiffeisenbank Stockerau eGen, Raiffeisenbank Region Baden, Raiffeisenbank Amstetten-Ybbs, RLB, PSK, PSA Payment Services Austria, Hypo Vorarlberg, Billa Plus, Bankhaus Schelhammer & Schattera, BTV Vier Länder Bank]
+chargingStationOperators: [illwerke vkw, Wien Energie GmbH, EVN, Wien Energie, SMATRICS, Energie AG, Energie Steiermark, bike-energy, Salzburg AG, Linz AG, Bosch eBike Systems, da emobil, Lidl, Kelag, 'Tesla, Inc.', TIWAG, ÖAMTC, Tesla, Ionity, Ella, Smatrics, Burgenland Energie AG, Turmstrom, Wels Strom E-Mobil, ChargePoint, Energieversorgung Kleinwalsertal GesmbH, ella, Stadtwerke Klagenfurt, KEBA, Shell Recharge Solutions, IKB, EVN AG, OMV, Eni, illwerke vkw AG, Tesla Motors Austria GmbH, SMATRICS GmbH & Co KG, Moon, Linz AG Strom, Lidl Österreich GmbH, Lebensland Kärnten, IAM – Institut für Technologie und alternative Mobilität, da emobil GmbH & Co KG, Stadtwerke Wörgl, Spar, Evn, Energie Graz, A1, ÖBB-Infrastruktur, max.center, has.to.be gmbh, be.ENERGISED, Stadtwerke Kufstein, Eurospar, Energie Burgenland, Telekom Austria, Stadtwerke Kitzbühel, Smartrics, Innsbrucker Kommunalbetriebe, EnerCharge, AT*GOE, Öko Styria, vkw vlotte, tim, TIWAG-Tiroler Wasserkraft AG, Stadtwerke Trofaiach 22 kW, Shell Recharge, Shell, Mer Germany GmbH, Envesta, Energie Steiermark AG, Energie Graz GmbH & Co KG, Energie AG Oberösterreich, Electrodrive Salzburg, AAE Naturstrom]
+clothesContainerOperators: [Humana, Caritas, Kolping, Holding Graz, MA 48, Rotes Kreuz, MA48, TAO, Volkshilfe, TEXAID Austria, Öpula, Wiener Rotes Kreuz, Stadt Wien / Kolping, Linz AG Abfall, HUMANA, Verein Humana, Graz Holding, WAMS, GABL, Verein Wams, Textil Verwertung GmbH, Pongauer ArbeitsProjekt, GVU Melk, GVA Baden, Stadtbetriebe Steyr, Stadt Graz, Pongauer Arbeitsprojekt, PAP, Carla]
+defaultSpeedLimitHasUrbanOrRural: true
+exclusiveCycleLaneStyle: white
+hasAdvisoryCycleLane: true
+hasAdvisorySpeedLimitSign: false
+hasBicycleBoulevard: true
+hasDailyAlternateSideParkingSign: true
+hasLivingStreet: true
+hasSlowZone: true
+livingStreetSignStyle: vienna
+mobileCountryCode: 232
+noParkingLineStyle: dashed yellow
+noStoppingLineStyle: yellow
+officialLanguages: [de]
+orchardProduces: [grape, apple, strawberry, apricot, pear, hop, plum, blueberry, tomato, peach, walnut, chilli_pepper, sweet_pepper, raspberry, cherry]
+parcelLockerBrand: [Myflexbox, Post Abholstation, Amazon Hub, Tamburi, Amazon Locker, MYFLEXBOX, Post, DHL Packstation, AlzaBox, tamburi, myflexbox, Amazon, Österreichische Post, GLS, Amazon Hub Locker, A1]
+popularSports: [soccer, tennis, equestrian, beachvolleyball]
+postboxesHaveCollectionTimes: true
+regularShoppingDays: 5
+slowZoneLabelPosition: bottom
+slowZoneLabelText: Zone

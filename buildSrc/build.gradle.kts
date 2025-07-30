@@ -3,6 +3,12 @@ repositories {
     mavenCentral()
 }
 
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
 dependencies {
     implementation("com.beust:klaxon:5.6")
     implementation("de.westnordost:countryboundaries:3.0.0")

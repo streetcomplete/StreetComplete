@@ -29,9 +29,11 @@ const val noteQuestPackageName = "note_discussion"
 open class GenerateQuestListTask : DefaultTask() {
     @get:Input lateinit var targetFile: String
     @get:InputDirectory lateinit var projectDirectory: File
-    @get:InputDirectory lateinit var sourceDirectory: File
+    @get:InputDirectory lateinit var questsDirectory: File
     @get:InputDirectory lateinit var iconsDirectory: File
     @get:InputFile lateinit var noteQuestFile: File
+    @get:InputFile lateinit var questsModuleFile: File
+    @get:InputFile lateinit var stringsFile: File
 
     private lateinit var wikiQuests: List<WikiQuest>
 
@@ -39,13 +41,13 @@ open class GenerateQuestListTask : DefaultTask() {
     fun run() {
         wikiQuests = parseWikiTable(getWikiTableContent())
 
-        val questFileContent = sourceDirectory.resolve("quests/QuestsModule.kt").readText()
+        val questFileContent = questsModuleFile.readText()
         val questNameRegex = Regex("(?<=^ {4}\\d+ to )[A-Z][a-zA-Z]+(?=\\()", RegexOption.MULTILINE)
         val questNames =
             listOf(noteQuestName) + questNameRegex.findAll(questFileContent).map { it.value }
 
-        val questFiles = sourceDirectory.resolve("quests/").listFilesRecursively()
-        val strings = getStrings(projectDirectory.resolve("app/src/main/res/values/strings.xml"))
+        val questFiles = questsDirectory.listFilesRecursively()
+        val strings = getStrings()
         val repoQuests = questNames.mapIndexed { defaultPriority, name ->
             getRepoQuest(name, defaultPriority, questFiles, strings)
         }.sortedBy { it.wikiOrder }
@@ -53,7 +55,7 @@ open class GenerateQuestListTask : DefaultTask() {
         writeCsvFile(repoQuests)
     }
 
-    private fun getStrings(stringsFile: File): Map<String, String> {
+    private fun getStrings(): Map<String, String> {
         fun normalizeString(string: String) = string
             .trim('"') // strip optional quotes around the string
             .replace("\\n", "\n") // replace \n with real newline characters

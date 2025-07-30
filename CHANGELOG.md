@@ -1,5 +1,39 @@
 # Changelog
 
+## v61.2
+
+### Quest improvements
+- Ask many quests (Fee, lit, name, internet access, opening hours, wheelchair access, …) for many more shops and amenities (#6345, #6349, #6353, #6357, #6358, #6359, #6365, #6368, #6374, #6382, #6383, #6386, #6396, #6397), by @paulklie, a few more by @matkoniecz
+- Max physical height: Clarify wording, don't ask for highways (#6367, #6362, #6363), by @kmpoppe
+- Motorcycle parking capacity: Don't ask if there are no markings at all (#6299), by @matkoniecz
+- Bike paths: Ask users to resurvey periodically also on living streets (#6369)
+- Fire hydrant diameter: Also ask in Ukraine (#6395)
+- Entrance type: Don't ask for entrances that (potentially) don't lead outside on street-level (#6392)
+- Traffic signals vibration: Don't ask in Czech Republic (#6224), by @matkoniecz
+
+### Fixes
+- Charging station car capacity: Don't ask for charging stations designated for bicycles etc. (#6388), by @paulklie
+- Fix a number of issues that may potentially cause bugs (#6307, #6311, #6315, #6317, #6321, #6332, #6322), by @RubenKelevra
+- Ferry routes: Only ask for actual ferry lines, not just connections (#6387, #6375), by @paulklie
+
+## v61.1
+
+### Fixes
+- Fix map attribution was shown in front of Next-button in tutorial 😬 (#6255)
+- Fix opening the app at certain location would open it always at that location (#6264)
+- Wheelchair accessible toilets: Fix "no" answer shouldn't imply that there are toilets at all (#6257)
+- Places overlay: Fix some brand features were not selectable (#6267)
+- Building levels: Fix keyboard popped up automatically (#6284)
+
+### Improvements 
+- Halal: Also ask for vegan-only places (#6280), by @mnalis
+- Road width: Disable by default (#6256)
+- Track type: Use better pictures (#6242), by @Caerbannog
+- Track type: Align wording with wiki (#6272)
+- Max speed: For implicit max speeds, tag the country subdivision when it is relevant (#6259)
+- Surface: Remove concrete plates as selectable option (#6290)
+- Specify Shop type: Clear properties related to the previous shop when answering that it is vacant now (#6291)
+
 ## v61.0
 
 ### Android below 7.1 no longer supported (#6210)

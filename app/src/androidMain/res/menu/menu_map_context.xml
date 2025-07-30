@@ -1,0 +1,13 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" tools:context=".MainFragment">
+
+    <item android:id="@+id/action_create_note"
+        android:title="@string/map_btn_create_note"
+        android:orderInCategory="1"/>
+    <item android:id="@+id/action_create_track"
+        android:title="@string/map_btn_create_track"
+        android:orderInCategory="2"/>
+    <item android:id="@+id/action_open_location"
+        android:title="@string/action_open_location"
+        android:orderInCategory="3" />
+</menu>

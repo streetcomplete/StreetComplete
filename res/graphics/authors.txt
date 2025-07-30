@@ -523,7 +523,7 @@ religion/
     bahai.svg                        https://commons.wikimedia.org/wiki/File:Bahai_star.svg
     confucian.svg
     confucian2.svg
-    shinto.svg                       https://commons.wikimedia.org/wiki/File:Shinto_torii_vermillion.svg
+    shinto.svg
     taoist.svg
     chinese_folk.svg                 https://commons.wikimedia.org/wiki/File:Chinese_lu_symbol_-_%E7%A6%84.svg
     caodaist.svg
