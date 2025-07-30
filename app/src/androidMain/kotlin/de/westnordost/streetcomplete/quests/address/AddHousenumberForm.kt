@@ -106,7 +106,7 @@ class AddHousenumberForm : AbstractOsmQuestForm<HouseNumberAnswer>() {
 
     private fun showMultipleNumbersHint() {
         activity?.let { AlertDialog.Builder(it)
-            .setMessage(R.string.quest_housenumber_multiple_numbers_description)
+            .setMessage(R.string.quest_housenumber_multiple_numbers_description2)
             .setPositiveButton(android.R.string.ok, null)
             .show()
         }
