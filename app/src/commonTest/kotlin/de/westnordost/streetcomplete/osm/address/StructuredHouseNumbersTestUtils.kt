@@ -1,14 +1,5 @@
 package de.westnordost.streetcomplete.osm.address
 
-fun numbers(vararg part: StructuredHouseNumbersPart) =
-    StructuredHouseNumbers(part.toList())
-
-fun range(start: StructuredHouseNumber, end: StructuredHouseNumber) =
-    StructuredHouseNumbersPart.Range(start, end)
-
-fun single(s: StructuredHouseNumber) =
-    StructuredHouseNumbersPart.Single(s)
-
 fun simple(number: Int) =
     StructuredHouseNumber.Simple(number)
 

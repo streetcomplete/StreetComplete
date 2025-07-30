@@ -3,26 +3,15 @@ package de.westnordost.streetcomplete.osm.address
 import de.westnordost.streetcomplete.util.StringWithCursor
 
 /**
- * parses 99999/a, 9/a, 99/9, 99a, 99 a, 9 / a, "95-98", "5,5a,6", "5d-5f, 7", "5-1" etc. into an
- * appropriate data structure or return null if it cannot be parsed
+ * parses 99999/a, 9/a, 99/9, 99a, 99 a, 9 / a, "5,5a,6", 7", "5-1" etc. into an
+ * appropriate data structure or return null if it cannot be parsed.
+ *
+ * Ranges are no longer supported or suggested in the app, because they cause ambiguity. (E.g.
+ * housenumbers in Korea are very commonly in a format like "5-1" and these are *not* ranges)
  */
 fun parseHouseNumbers(string: String): StructuredHouseNumbers? {
     return StructuredHouseNumbers(string.split(",").map { part ->
-        val range = part.split("-")
-        when (range.size) {
-            1 -> StructuredHouseNumbersPart.Single(parseHouseNumberParts(range[0]) ?: return null)
-            2 -> {
-                val start = parseHouseNumberParts(range[0]) ?: return null
-                val end = parseHouseNumberParts(range[1]) ?: return null
-                if (start < end) {
-                    StructuredHouseNumbersPart.Range(start, end)
-                } else {
-                    // reverse ranges are interpreted like sub-housenumbers, i.e. 4-2 is about the same as 4/2
-                    StructuredHouseNumbersPart.Single(parseHouseNumberParts(part) ?: return null)
-                }
-            }
-            else -> return null
-        }
+        parseHouseNumberParts(part) ?: return null
     })
 }
 
@@ -31,7 +20,7 @@ private fun parseHouseNumberParts(string: String): StructuredHouseNumber? {
     val houseNumber = c.nextMatchesAndAdvance("\\p{N}{1,5}".toRegex())?.value?.toIntOrNull() ?: return null
     if (c.isAtEnd()) return StructuredHouseNumber.Simple(houseNumber)
 
-    val separatorWithNumber = c.nextMatchesAndAdvance("(\\s?[/-]\\s?)(\\p{N})".toRegex())
+    val separatorWithNumber = c.nextMatchesAndAdvance("(\\s?[/-]\\s?)(\\p{N}{1,3})".toRegex())
     if (separatorWithNumber != null) {
         if (!c.isAtEnd()) return null
         return StructuredHouseNumber.WithNumber(

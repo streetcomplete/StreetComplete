@@ -1,11 +1,11 @@
 package de.westnordost.streetcomplete.osm.address
 
 /** Structured representation of an `addr:housenumber` string */
-data class StructuredHouseNumbers(val list: List<StructuredHouseNumbersPart>) {
+data class StructuredHouseNumbers(val list: List<StructuredHouseNumber>) {
     override fun toString() = list.joinToString(",")
 
     /** Return the previous/next house number, e.g. with [step] = +1, "3c" becomes
-     *  "4", "1/7" becomes "2", "1-9" becomes "10" etc.
+     *  "4", "1/7" becomes "2", "2-9" becomes "3" etc.
      *  If no step exists, null is returned. */
     fun step(step: Int): StructuredHouseNumber.Simple? {
         return boundingHouseNumber(step)?.step(step)
@@ -20,74 +20,12 @@ data class StructuredHouseNumbers(val list: List<StructuredHouseNumbersPart>) {
 
     private fun boundingHouseNumber(step: Int): StructuredHouseNumber? {
         return when {
-            step > 0 -> allHouseNumbers().max()
-            step < 0 -> allHouseNumbers().min()
+            step > 0 -> list.max()
+            step < 0 -> list.min()
             else -> null
         }
     }
-
-    private fun allHouseNumbers(): Collection<StructuredHouseNumber> {
-        return list.flatMap {
-            when (it) {
-                is StructuredHouseNumbersPart.Range -> listOf(it.start, it.end)
-                is StructuredHouseNumbersPart.Single -> listOf(it.single)
-            }
-        }
-    }
 }
-
-//region HouseNumbersPart
-
-sealed interface StructuredHouseNumbersPart : Comparable<StructuredHouseNumbersPart> {
-    override fun compareTo(other: StructuredHouseNumbersPart): Int = when (this) {
-        is Single -> when (other) {
-            // e.g. 12c < 15
-            is Single -> sign(
-                single.compareTo(other.single)
-            )
-            // e.g. 10 < 12-14, but 10 ≮ 8-12 (and also not bigger than)
-            is Range -> sign(
-                single.compareTo(other.start),
-                single.compareTo(other.end)
-            )
-        }
-        is Range -> when (other) {
-            // e.g. 12-14 < 16a, but 12-14 ≮ 13 (and also not bigger than)
-            is Single -> sign(
-                start.compareTo(other.single),
-                end.compareTo(other.single)
-            )
-            // e.g. 8-14 < 16-18 but not if the ranges intersect
-            is Range -> sign(
-                start.compareTo(other.start),
-                start.compareTo(other.end),
-                end.compareTo(other.start),
-                end.compareTo(other.end)
-            )
-        }
-    }
-
-    /** e.g. 5a-12, 100-20/1 */
-    data class Range(
-        val start: StructuredHouseNumber,
-        val end: StructuredHouseNumber
-    ) : StructuredHouseNumbersPart {
-        override fun toString() = "$start-$end"
-    }
-
-    /** e.g. 5a */
-    data class Single(val single: StructuredHouseNumber) : StructuredHouseNumbersPart {
-        override fun toString() = "$single"
-    }
-}
-
-private fun sign(vararg numbers: Int): Int = when {
-    numbers.all { it > 0 } -> 1
-    numbers.all { it < 0 } -> -1
-    else -> 0
-}
-
-//endregion
 
 //region StructuredHouseNumber
 
@@ -149,7 +87,10 @@ sealed interface StructuredHouseNumber : Comparable<StructuredHouseNumber> {
             val isUpperOrLowercaseLetter =
                 c.category == CharCategory.LOWERCASE_LETTER ||
                 c.category == CharCategory.UPPERCASE_LETTER
-            return if (isUpperOrLowercaseLetter) copy(letter = c.toString()) else null
+            if (!isUpperOrLowercaseLetter) {
+                return if (step < 0) Simple(number) else null
+            }
+            return copy(letter = c.toString())
         }
     }
     /** e.g. 12/3 */
@@ -161,7 +102,10 @@ sealed interface StructuredHouseNumber : Comparable<StructuredHouseNumber> {
         override fun toString() = "$number$separator$number2"
         override fun minorStep(step: Int): StructuredHouseNumber? {
             val n = number2 + step
-            return if (n >= 1) copy(number2 = n) else null
+            if (n < 1) {
+                return if (step < 0) Simple(number) else null
+            }
+            return copy(number2 = n)
         }
     }
 }
