@@ -30,7 +30,7 @@ class AddBoardType : OsmFilterQuestType<BoardTypeAnswer>(), AndroidQuest {
     override fun getTitle(tags: Map<String, String>) = R.string.quest_board_type_title
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter("nodes with tourism = information and information = board")
+        getMapData().filter("nodes with tourism = information")
 
     override fun createForm() = AddBoardTypeForm()
 
