@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.ReadOnlyComposable
 import androidx.compose.ui.res.stringResource
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.atp.atpquests.AtpQuestHidden
 import de.westnordost.streetcomplete.data.edithistory.Edit
 import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
 import de.westnordost.streetcomplete.data.osm.edits.delete.DeletePoiNodeAction
@@ -15,6 +16,7 @@ import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction.COMMENT
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction.CREATE
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestHidden
 import de.westnordost.streetcomplete.data.quest.QuestType
+import de.westnordost.streetcomplete.data.quest.atp.CreatePoiBasedOnAtp
 import de.westnordost.streetcomplete.quests.getTitle
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.undo_delete
@@ -33,6 +35,7 @@ val Edit.icon: Int get() = when (this) {
     }
     is OsmNoteQuestHidden -> R.drawable.ic_quest_notes
     is OsmQuestHidden -> questType.icon
+    is AtpQuestHidden -> CreatePoiBasedOnAtp.icon
     else -> 0
 }
 
@@ -47,6 +50,7 @@ val Edit.overlayIcon: DrawableResource? get() = when (this) {
     }
     is OsmNoteQuestHidden -> Res.drawable.undo_visibility
     is OsmQuestHidden -> Res.drawable.undo_visibility
+    is AtpQuestHidden -> Res.drawable.undo_visibility
     else -> null
 }
 
@@ -71,6 +75,9 @@ fun Edit.getTitle(elementTags: Map<String, String>?): String = when (this) {
     }
     is OsmNoteQuestHidden -> {
         stringResource(R.string.quest_noteDiscussion_title)
+    }
+    is AtpQuestHidden -> {
+        stringResource(R.string.quest_atp_add_missing_poi_title)
     }
     else -> throw IllegalArgumentException()
 }
