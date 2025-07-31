@@ -1148,6 +1148,8 @@ A level counts as a roof level when its windows are in the roof. Subsequently, r
 
     <string name="quest_handrail_title">Do these steps have a handrail?</string>
 
+    <string name="quest_handwashing_title">"Can you wash your hands here?"</string>
+
     <string name="quest_internet_access_title">What kind of internet connection does this place offer?</string>
     <string name="quest_internet_access_wlan">Wi-Fi</string>
     <string name="quest_internet_access_wired">Wired (LAN)</string>
