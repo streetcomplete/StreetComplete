@@ -9,8 +9,8 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.DialogQuestAddressNoHousenumberBinding
 import de.westnordost.streetcomplete.databinding.ViewAddressNumberOrNameInputBinding
 import de.westnordost.streetcomplete.osm.address.AddressNumberAndNameInputViewController
-import de.westnordost.streetcomplete.osm.address.HouseAndBlockNumber
-import de.westnordost.streetcomplete.osm.address.HouseNumberAndBlock
+import de.westnordost.streetcomplete.osm.address.BlockNumberAndHouseNumber
+import de.westnordost.streetcomplete.osm.address.BlockAndHouseNumber
 import de.westnordost.streetcomplete.osm.address.looksInvalid
 import de.westnordost.streetcomplete.osm.address.streetHouseNumber
 import de.westnordost.streetcomplete.osm.building.BuildingType
@@ -151,10 +151,10 @@ class AddHousenumberForm : AbstractOsmQuestForm<HouseNumberAnswer>() {
         val isUnusual = number?.looksInvalid(countryInfo.additionalValidHousenumberRegex) == true
         confirmHouseNumber(isUnusual) {
             applyAnswer(AddressNumberOrName(number, numberOrNameInputCtrl.houseName))
-            if (number is HouseAndBlockNumber) {
+            if (number is BlockNumberAndHouseNumber) {
                 number.blockNumber.let { lastBlockNumber = it }
             }
-            lastBlock = (number as? HouseNumberAndBlock)?.block
+            lastBlock = (number as? BlockAndHouseNumber)?.block
             number?.streetHouseNumber?.let { lastHouseNumber = it }
         }
     }

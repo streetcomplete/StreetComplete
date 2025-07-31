@@ -8,13 +8,13 @@ sealed interface AddressNumber
 
 data class HouseNumber(val houseNumber: String) : AddressNumber
 data class ConscriptionNumber(val conscriptionNumber: String, val streetNumber: String? = null) : AddressNumber
-data class HouseAndBlockNumber(val houseNumber: String, val blockNumber: String) : AddressNumber
-data class HouseNumberAndBlock(val houseNumber: String, val block: String) : AddressNumber
+data class BlockNumberAndHouseNumber(val blockNumber: String, val houseNumber: String) : AddressNumber
+data class BlockAndHouseNumber(val block: String, val houseNumber: String) : AddressNumber
 
 val AddressNumber.streetHouseNumber: String? get() = when (this) {
     is HouseNumber -> houseNumber
-    is HouseAndBlockNumber -> houseNumber
-    is HouseNumberAndBlock -> houseNumber
+    is BlockNumberAndHouseNumber -> houseNumber
+    is BlockAndHouseNumber -> houseNumber
     // not conscription number because there is no logical succession
     else -> null
 }
@@ -32,18 +32,18 @@ fun AddressNumber.applyTo(tags: Tags) {
     when (this) {
         is ConscriptionNumber -> {
             tags["addr:conscriptionnumber"] = conscriptionNumber
-            if (streetNumber != null) {
+            if (!streetNumber.isNullOrEmpty()) {
                 tags["addr:streetnumber"] = streetNumber
                 tags["addr:housenumber"] = streetNumber
             } else {
                 tags["addr:housenumber"] = conscriptionNumber
             }
         }
-        is HouseAndBlockNumber -> {
+        is BlockNumberAndHouseNumber -> {
             tags["addr:housenumber"] = houseNumber
             tags["addr:block_number"] = blockNumber
         }
-        is HouseNumberAndBlock -> {
+        is BlockAndHouseNumber -> {
             tags["addr:housenumber"] = houseNumber
             tags["addr:block"] = block
         }
@@ -64,8 +64,8 @@ fun parseAddressNumber(tags: Map<String, String>): AddressNumber? {
         val blockNumber = tags["addr:block_number"]
         val block = tags["addr:block"]
         return when {
-            blockNumber != null -> HouseAndBlockNumber(houseNumber, blockNumber)
-            block != null -> HouseNumberAndBlock(houseNumber, block)
+            blockNumber != null -> BlockNumberAndHouseNumber(blockNumber, houseNumber)
+            block != null -> BlockAndHouseNumber(block, houseNumber)
             else -> HouseNumber(houseNumber)
         }
     }

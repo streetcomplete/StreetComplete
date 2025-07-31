@@ -15,9 +15,9 @@ fun AddressNumber.looksInvalid(additionalValidHouseNumberRegex: String?): Boolea
             !conscriptionNumber.matches(VALID_CONSCRIPTION_NUMBER_REGEX) || streetNumber != null && !streetNumber.matches(validHouseNumberRegex)
         is HouseNumber ->
             !houseNumber.matches(validHouseNumberRegex)
-        is HouseAndBlockNumber ->
+        is BlockNumberAndHouseNumber ->
             !houseNumber.matches(validHouseNumberRegex) || !blockNumber.matches(VALID_BLOCK_NUMBER_REGEX)
-        is HouseNumberAndBlock ->
+        is BlockAndHouseNumber ->
             !houseNumber.matches(validHouseNumberRegex)
     }
 }

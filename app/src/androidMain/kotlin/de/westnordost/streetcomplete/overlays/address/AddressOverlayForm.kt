@@ -30,8 +30,8 @@ import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.databinding.FragmentOverlayAddressBinding
 import de.westnordost.streetcomplete.osm.address.AddressNumber
 import de.westnordost.streetcomplete.osm.address.AddressNumberAndNameInputViewController
-import de.westnordost.streetcomplete.osm.address.HouseAndBlockNumber
-import de.westnordost.streetcomplete.osm.address.HouseNumberAndBlock
+import de.westnordost.streetcomplete.osm.address.BlockNumberAndHouseNumber
+import de.westnordost.streetcomplete.osm.address.BlockAndHouseNumber
 import de.westnordost.streetcomplete.osm.address.PlaceName
 import de.westnordost.streetcomplete.osm.address.StreetName
 import de.westnordost.streetcomplete.osm.address.StreetOrPlaceName
@@ -122,7 +122,7 @@ class AddressOverlayForm : AbstractOverlayForm(), IsMapPositionAware {
             }
         isShowingHouseName = savedInstanceState?.getBoolean(SHOW_HOUSE_NAME) ?: (houseName != null)
         isShowingBlock = savedInstanceState?.getBoolean(SHOW_BLOCK)
-            ?: addressNumber?.let { it is HouseNumberAndBlock } ?: (lastBlock != null)
+            ?: addressNumber?.let { it is BlockAndHouseNumber } ?: (lastBlock != null)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -280,8 +280,8 @@ class AddressOverlayForm : AbstractOverlayForm(), IsMapPositionAware {
         lastWasPlace = streetOrPlaceName is PlaceName
 
         number?.streetHouseNumber?.let { lastHouseNumber = it }
-        lastBlockNumber = if (number is HouseAndBlockNumber) number.blockNumber else null
-        lastBlock = if (number is HouseNumberAndBlock) number.block else null
+        lastBlockNumber = if (number is BlockNumberAndHouseNumber) number.blockNumber else null
+        lastBlock = if (number is BlockAndHouseNumber) number.block else null
         lastPlaceName = if (streetOrPlaceName is PlaceName) streetOrPlaceName.name else null
         lastStreetName = if (streetOrPlaceName is StreetName) streetOrPlaceName.name else null
 
