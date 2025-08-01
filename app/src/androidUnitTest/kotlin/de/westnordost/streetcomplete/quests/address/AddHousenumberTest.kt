@@ -196,7 +196,7 @@ class AddHousenumberTest {
     @Test fun `apply wrong building type answer`() {
         assertEquals(
             setOf(StringMapEntryModify("building", "residential", "yes")),
-            questType.answerAppliedTo(WrongBuildingType, mapOf("building" to "residential"))
+            questType.answerAppliedTo(HouseNumberAnswer.WrongBuildingType, mapOf("building" to "residential"))
         )
     }
 }

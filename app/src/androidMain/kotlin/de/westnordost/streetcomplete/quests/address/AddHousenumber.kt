@@ -156,7 +156,7 @@ class AddHousenumber : OsmElementQuestType<HouseNumberAnswer>, AndroidQuest {
                     }
                 }
             }
-            WrongBuildingType -> {
+            HouseNumberAnswer.WrongBuildingType -> {
                 tags["building"] = "yes"
             }
         }
