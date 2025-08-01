@@ -3,22 +3,22 @@ package de.westnordost.streetcomplete.quests.address
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.text.BasicText
-import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.foundation.text.TextAutoSize
 import androidx.compose.material.ContentAlpha
 import androidx.compose.material.LocalContentColor
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.ProvideTextStyle
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.Hyphens
 import androidx.compose.ui.text.style.TextAlign
@@ -26,14 +26,14 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.osm.address.BlockAndHouseNumber
-import de.westnordost.streetcomplete.ui.common.TextField2
+import de.westnordost.streetcomplete.ui.ktx.pxToDp
 import de.westnordost.streetcomplete.ui.theme.largeInput
 
-/** Form to input a block + housenumber. Since there is no uniform look, there's no styling.
+/** Form to input a block + housenumber. Since there is no uniform look, there's no custom styling.
  *
- *  When the user didn't input the block yet and applies the [suggestion] for the housenumber, the
- *  suggestion for the block will be applied, too. There are no stepper controls on the block
- *  because block (names) can be somewhat free-form */
+ *  When the user didn't input the block yet and inputs something into the housenumber field, the
+ *  block number will be filled with the suggestion.
+ *  */
 @Composable
 fun BlockAndHouseNumberForm(
     value: BlockAndHouseNumber,
@@ -41,66 +41,61 @@ fun BlockAndHouseNumberForm(
     modifier: Modifier = Modifier,
     suggestion: BlockAndHouseNumber? = null,
 ) {
-    val inputStyle = MaterialTheme.typography.largeInput.copy(textAlign = TextAlign.Center)
+    val inputStyle = MaterialTheme.typography.largeInput
     val labelStyle = MaterialTheme.typography.caption.copy(
         hyphens = Hyphens.Auto,
         textAlign = TextAlign.Center,
         color = LocalContentColor.current.copy(alpha = ContentAlpha.medium)
     )
 
-    Row(
+    val useBlockSuggestion = value.block.isEmpty() && !suggestion?.block.isNullOrEmpty()
+
+    var blockInputHeightPx by remember { mutableIntStateOf(0) }
+
+    Column(
         modifier = modifier,
-        horizontalArrangement = Arrangement.spacedBy(8.dp)
+        verticalArrangement = Arrangement.spacedBy(4.dp)
     ) {
-        Column(
-            modifier = Modifier.width(128.dp),
-            verticalArrangement = Arrangement.spacedBy(4.dp),
-            horizontalAlignment = Alignment.CenterHorizontally,
-        ) {
-            TextField2(
-                value = value.block,
-                onValueChange = { onValueChange(value.copy(block = it)) },
-                placeholder = { if (suggestion != null) {
-                    BasicText(
-                        text = suggestion.block,
-                        style = inputStyle.copy(color = inputStyle.color.copy(alpha = 0.2f)),
-                        modifier = Modifier.fillMaxWidth(),
-                        maxLines = 1,
-                        autoSize = TextAutoSize.StepBased(maxFontSize = inputStyle.fontSize)
+        ProvideTextStyle(inputStyle) {
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(8.dp)
+            ) {
+                Row {
+                    AddressNumberInput(
+                        value = value.block,
+                        onValueChange = { onValueChange(value.copy(block = it)) },
+                        suggestion = suggestion?.block,
+                        modifier = Modifier
+                            .width(64.dp)
+                            .onSizeChanged { blockInputHeightPx = it.height },
                     )
-                } },
-                keyboardOptions = KeyboardOptions(autoCorrectEnabled = false),
-                textStyle = inputStyle,
-                autoFitFontSize = true,
-                singleLine = true,
-            )
-            Text(
-                text = stringResource(R.string.label_block),
-                style = labelStyle,
-            )
+                    BlockStepperButton(
+                        value = if (useBlockSuggestion) suggestion.block else value.block,
+                        onValueChange = { onValueChange(value.copy(block = it)) },
+                        modifier = Modifier.width(48.dp).height(blockInputHeightPx.pxToDp())
+                    )
+                }
+                Text("-")
+                HouseNumberInput(
+                    value = value.houseNumber,
+                    onValueChange = {
+                        onValueChange(value.copy(
+                            houseNumber = it,
+                            block = if (useBlockSuggestion) suggestion.block else value.block
+                        ))
+                    },
+                    modifier = Modifier.width(192.dp),
+                    suggestion = suggestion?.houseNumber
+                )
+            }
         }
-        Column(
-            modifier = Modifier.width(192.dp),
-            verticalArrangement = Arrangement.spacedBy(4.dp),
-            horizontalAlignment = Alignment.CenterHorizontally,
-        ) {
-            HouseNumberInput(
-                value = value.houseNumber,
-                onValueChange = { houseNumber, usedSuggestion ->
-                    onValueChange(value.copy(
-                        houseNumber = houseNumber,
-                        block =
-                            if (usedSuggestion && suggestion != null) suggestion.block
-                            else value.block
-                    ))
-                },
-                suggestion = suggestion?.houseNumber,
-                textStyle = inputStyle,
-            )
-            Text(
-                text = stringResource(R.string.label_housenumber),
-                style = labelStyle,
-            )
+        ProvideTextStyle(labelStyle) {
+            Row(horizontalArrangement = Arrangement.spacedBy(8.dp),) {
+                Text(stringResource(R.string.label_block))
+                Text("-")
+                Text(stringResource(R.string.label_housenumber))
+            }
         }
     }
 }

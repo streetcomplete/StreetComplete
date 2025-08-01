@@ -8,8 +8,6 @@ import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.WindowInsets
-import androidx.compose.foundation.layout.isImeVisible
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.widthIn
@@ -18,6 +16,7 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.ContentAlpha
 import androidx.compose.material.LocalContentColor
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.ProvideTextStyle
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
@@ -27,12 +26,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
-import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.Hyphens
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -40,8 +37,6 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.osm.address.ConscriptionNumber
-import de.westnordost.streetcomplete.ui.common.SwitchKeyboardPopupButton
-import de.westnordost.streetcomplete.ui.common.TextField2
 import de.westnordost.streetcomplete.ui.theme.TrafficSignColor
 import de.westnordost.streetcomplete.ui.theme.largeInput
 import de.westnordost.streetcomplete.ui.theme.trafficSignContentColorFor
@@ -62,15 +57,7 @@ fun ConscriptionNumberForm(
     countryCode: String?,
     modifier: Modifier = Modifier
 ) {
-    var isAbc by remember { mutableStateOf(false) }
-    val keyboardType = if (isAbc) KeyboardType.Text else KeyboardType.Number
-
-    var isConscriptionFocused by remember { mutableStateOf(false) }
-    var isOrientationNumberFocused by remember { mutableStateOf(false) }
-    val showSwitchKeyboardPopup =
-        (isConscriptionFocused || isOrientationNumberFocused) && WindowInsets.isImeVisible
-
-    val inputStyle = MaterialTheme.typography.largeInput.copy(textAlign = TextAlign.Center)
+    val inputStyle = MaterialTheme.typography.largeInput
     val labelStyle = MaterialTheme.typography.caption.copy(
         hyphens = Hyphens.Auto,
         textAlign = TextAlign.Center,
@@ -89,19 +76,17 @@ fun ConscriptionNumberForm(
                 countryCode = countryCode,
                 modifier = Modifier.width(96.dp),
             ) {
-                TextField2(
-                    value = value.conscriptionNumber,
-                    onValueChange = { onValueChange(value.copy(conscriptionNumber = it)) },
-                    modifier = Modifier.onFocusChanged { isConscriptionFocused = it.isFocused },
-                    keyboardOptions = KeyboardOptions(
-                        keyboardType = keyboardType,
-                        autoCorrectEnabled = false,
-                        imeAction = ImeAction.Next,
-                    ),
-                    textStyle = inputStyle,
-                    autoFitFontSize = true,
-                    singleLine = true,
-                )
+                /* Even though conscription numbers are always numbers, we don't force digit-only
+                 * input here, because on conscription number plates, one will sometimes find a
+                 * number like "I. 1234", which also specifies the subdivision number or something
+                 * like that */
+                ProvideTextStyle(inputStyle) {
+                    AddressNumberInput(
+                        value = value.conscriptionNumber,
+                        onValueChange = { onValueChange(value.copy(conscriptionNumber = it)) },
+                        keyboardOptions = KeyboardOptions(imeAction = ImeAction.Next),
+                    )
+                }
             }
             Text(
                 text = stringResource(R.string.quest_housenumber_conscription_number),
@@ -125,20 +110,14 @@ fun ConscriptionNumberForm(
                 confusion as when the suggestion is shown, it might suggest that this field is
                 mandatory rather than optional
                 */
-                TextField2(
-                    value = value.streetNumber.orEmpty(),
-                    onValueChange = {
-                        onValueChange(value.copy(streetNumber = it.takeIf { it.isNotBlank() }))
-                    },
-                    modifier = Modifier.onFocusChanged { isOrientationNumberFocused = it.isFocused },
-                    keyboardOptions = KeyboardOptions(
-                        keyboardType = keyboardType,
-                        autoCorrectEnabled = false,
-                    ),
-                    textStyle = inputStyle,
-                    autoFitFontSize = true,
-                    singleLine = true,
-                )
+                ProvideTextStyle(inputStyle) {
+                    AddressNumberInput(
+                        value = value.streetNumber.orEmpty(),
+                        onValueChange = {
+                            onValueChange(value.copy(streetNumber = it.takeIf { it.isNotBlank() }))
+                        },
+                    )
+                }
             }
 
             Text(
@@ -146,12 +125,6 @@ fun ConscriptionNumberForm(
                 style = labelStyle,
             )
         }
-    }
-    if (showSwitchKeyboardPopup) {
-        SwitchKeyboardPopupButton(
-            isAbc = isAbc,
-            onChange = { isAbc = it },
-        )
     }
 }
 
