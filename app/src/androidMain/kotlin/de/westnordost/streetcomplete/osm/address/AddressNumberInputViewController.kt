@@ -50,18 +50,24 @@ class AddressNumberInputViewController(
 
             val houseNumber = houseNumberInput?.nonBlankTextOrNull ?: return null
             return when {
-                blockNumberInput != null -> blockNumberInput.nonBlankTextOrNull?.let { HouseAndBlockNumber(houseNumber, it) }
-                blockInput != null -> blockInput.nonBlankTextOrNull?.let { HouseNumberAndBlock(houseNumber, it) }
+                blockNumberInput != null -> blockNumberInput.nonBlankTextOrNull?.let { BlockNumberAndHouseNumber(
+                    it,
+                    houseNumber
+                ) }
+                blockInput != null -> blockInput.nonBlankTextOrNull?.let { BlockAndHouseNumber(
+                    it,
+                    houseNumber
+                ) }
                 else -> HouseNumber(houseNumber)
             }
         }
         set(value) {
             when (value) {
-                is HouseAndBlockNumber -> {
+                is BlockNumberAndHouseNumber -> {
                     houseNumberInput?.setText(value.houseNumber)
                     blockNumberInput?.setText(value.blockNumber)
                 }
-                is HouseNumberAndBlock -> {
+                is BlockAndHouseNumber -> {
                     houseNumberInput?.setText(value.houseNumber)
                     blockInput?.setText(value.block)
                 }

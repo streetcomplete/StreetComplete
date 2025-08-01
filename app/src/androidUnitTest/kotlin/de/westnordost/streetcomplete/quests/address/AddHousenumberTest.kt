@@ -8,7 +8,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.osm.address.ConscriptionNumber
-import de.westnordost.streetcomplete.osm.address.HouseAndBlockNumber
+import de.westnordost.streetcomplete.osm.address.BlockNumberAndHouseNumber
 import de.westnordost.streetcomplete.osm.address.HouseNumber
 import de.westnordost.streetcomplete.quests.answerApplied
 import de.westnordost.streetcomplete.quests.answerAppliedTo
@@ -182,7 +182,7 @@ class AddHousenumberTest {
                 StringMapEntryAdd("addr:block_number", "123"),
                 StringMapEntryAdd("addr:housenumber", "12A")
             ),
-            questType.answerApplied(AddressNumberOrName(HouseAndBlockNumber("12A", "123"), null))
+            questType.answerApplied(AddressNumberOrName(BlockNumberAndHouseNumber("123", "12A"), null))
         )
     }
 
@@ -196,7 +196,7 @@ class AddHousenumberTest {
     @Test fun `apply wrong building type answer`() {
         assertEquals(
             setOf(StringMapEntryModify("building", "residential", "yes")),
-            questType.answerAppliedTo(WrongBuildingType, mapOf("building" to "residential"))
+            questType.answerAppliedTo(HouseNumberAnswer.WrongBuildingType, mapOf("building" to "residential"))
         )
     }
 }

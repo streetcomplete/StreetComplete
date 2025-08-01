@@ -43,7 +43,7 @@ class AddressNumberTest {
                 StringMapEntryAdd("addr:housenumber", "3"),
                 StringMapEntryAdd("addr:block_number", "5"),
             ),
-            HouseAndBlockNumber("3", "5").appliedTo(mapOf())
+            BlockNumberAndHouseNumber("5", "3").appliedTo(mapOf())
         )
     }
 
@@ -75,7 +75,7 @@ class AddressNumberTest {
                 StringMapEntryModify("addr:block_number", "12", "4"),
                 StringMapEntryDelete("addr:block", "F"),
             ),
-            HouseAndBlockNumber("123", "4").appliedTo(mapOf(
+            BlockNumberAndHouseNumber("4", "123").appliedTo(mapOf(
                 "addr:housenumber" to "100",
                 "addr:conscriptionnumber" to "ABC",
                 "addr:streetnumber" to "45",
@@ -94,7 +94,7 @@ class AddressNumberTest {
                 StringMapEntryDelete("addr:block_number", "12"),
                 StringMapEntryModify("addr:block", "F", "G"),
             ),
-            HouseNumberAndBlock("123", "G").appliedTo(mapOf(
+            BlockAndHouseNumber("G", "123").appliedTo(mapOf(
                 "addr:housenumber" to "100",
                 "addr:conscriptionnumber" to "ABC",
                 "addr:streetnumber" to "45",

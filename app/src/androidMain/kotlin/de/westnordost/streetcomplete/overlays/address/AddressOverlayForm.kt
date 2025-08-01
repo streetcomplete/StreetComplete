@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
+import androidx.compose.ui.text.intl.Locale
 import androidx.core.view.doOnLayout
 import androidx.core.view.isGone
 import de.westnordost.streetcomplete.R
@@ -29,8 +30,8 @@ import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.databinding.FragmentOverlayAddressBinding
 import de.westnordost.streetcomplete.osm.address.AddressNumber
 import de.westnordost.streetcomplete.osm.address.AddressNumberAndNameInputViewController
-import de.westnordost.streetcomplete.osm.address.HouseAndBlockNumber
-import de.westnordost.streetcomplete.osm.address.HouseNumberAndBlock
+import de.westnordost.streetcomplete.osm.address.BlockNumberAndHouseNumber
+import de.westnordost.streetcomplete.osm.address.BlockAndHouseNumber
 import de.westnordost.streetcomplete.osm.address.PlaceName
 import de.westnordost.streetcomplete.osm.address.StreetName
 import de.westnordost.streetcomplete.osm.address.StreetOrPlaceName
@@ -50,7 +51,6 @@ import de.westnordost.streetcomplete.util.math.PositionOnWay
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import de.westnordost.streetcomplete.util.math.getPositionOnWays
 import org.koin.android.ext.android.inject
-import java.util.Locale
 
 class AddressOverlayForm : AbstractOverlayForm(), IsMapPositionAware {
 
@@ -122,7 +122,7 @@ class AddressOverlayForm : AbstractOverlayForm(), IsMapPositionAware {
             }
         isShowingHouseName = savedInstanceState?.getBoolean(SHOW_HOUSE_NAME) ?: (houseName != null)
         isShowingBlock = savedInstanceState?.getBoolean(SHOW_BLOCK)
-            ?: addressNumber?.let { it is HouseNumberAndBlock } ?: (lastBlock != null)
+            ?: addressNumber?.let { it is BlockAndHouseNumber } ?: (lastBlock != null)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -153,7 +153,7 @@ class AddressOverlayForm : AbstractOverlayForm(), IsMapPositionAware {
             streetNameInput = streetOrPlaceBinding.streetNameInput.apply { hint = lastStreetName },
             nameSuggestionsSource = nameSuggestionsSource,
             abbreviationsByLanguage = abbreviationsByLanguage,
-            countryLocale = Locale.forLanguageTag(countryInfo.languageTag.orEmpty()),
+            countryLocale = Locale(countryInfo.languageTag.orEmpty()),
             startWithPlace = isShowingPlaceName,
             viewLifecycleScope = viewLifecycleScope
         )
@@ -280,8 +280,8 @@ class AddressOverlayForm : AbstractOverlayForm(), IsMapPositionAware {
         lastWasPlace = streetOrPlaceName is PlaceName
 
         number?.streetHouseNumber?.let { lastHouseNumber = it }
-        lastBlockNumber = if (number is HouseAndBlockNumber) number.blockNumber else null
-        lastBlock = if (number is HouseNumberAndBlock) number.block else null
+        lastBlockNumber = if (number is BlockNumberAndHouseNumber) number.blockNumber else null
+        lastBlock = if (number is BlockAndHouseNumber) number.block else null
         lastPlaceName = if (streetOrPlaceName is PlaceName) streetOrPlaceName.name else null
         lastStreetName = if (streetOrPlaceName is StreetName) streetOrPlaceName.name else null
 
