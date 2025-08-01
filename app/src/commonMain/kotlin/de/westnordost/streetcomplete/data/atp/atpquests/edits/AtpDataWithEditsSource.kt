@@ -18,7 +18,7 @@ class AtpDataWithEditsSource(
     fun get(entryId: Long): AtpEntry? {
         var entry = atpController.get(entryId)
         return entry
-        // TODO: try to take into account unsynced edits, otheriwse there is no point in this class
+        // TODO LATER API: try to take into account unsynced edits, otheriwse there is no point in this class
     }
 
     private val atpControllerListener = object : AtpController.Listener {
