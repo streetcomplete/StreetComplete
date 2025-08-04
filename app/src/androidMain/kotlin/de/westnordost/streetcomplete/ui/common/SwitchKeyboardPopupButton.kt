@@ -50,7 +50,9 @@ fun SwitchKeyboardPopupButton(
                 modifier = Modifier
             ) {
                 Text(
-                    text = if (isAbc) "ABC" else "123", letterSpacing = 0.sp,
+                    // shows what it changes to, not what it currently is, just like other mode
+                    // change buttons on the keyboard (e.g. "?123")
+                    text = if (isAbc) "123" else "ABC", letterSpacing = 0.sp,
                     style = MaterialTheme.typography.button
                 )
                 Icon(painterResource(Res.drawable.ic_keyboard_24), null)
