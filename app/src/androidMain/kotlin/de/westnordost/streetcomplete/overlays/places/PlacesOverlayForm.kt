@@ -279,8 +279,11 @@ private suspend fun createEditAction(
 
     val hasAddedNames = newNames.isNotEmpty() && newNames.containsAll(previousNames)
     val hasChangedNames = previousNames != newNames
-    val hasChangedFeature = newFeature.id != previousFeature?.id
-    val hasChangedFeatureType = previousFeature?.featureId != newFeature.featureId
+    val hasChangedId = newFeature.id != previousFeature?.id
+    val hasChangedFeatureId = previousFeature?.featureId != newFeature.featureId
+    val isFeatureSubtype =
+        previousFeature != null
+        && (newFeature.isChildOf(previousFeature) || previousFeature.isChildOf(newFeature))
     val wasVacant = element != null && element.isDisusedPlace()
     val isVacant = newFeature.id == "shop/vacant"
     val wasBrand =  previousFeature?.isSuggestion == true
