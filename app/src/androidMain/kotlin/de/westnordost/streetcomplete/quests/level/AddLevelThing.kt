@@ -35,8 +35,12 @@ class AddLevelThing : OsmElementQuestType<String>, AndroidQuest {
     private val filter by lazy { """
         nodes with
           (
-            emergency ~ defibrillator|fire_extinguisher|fire_hose|first_aid_kit
-            or amenity ~ atm|drinking_water|telephone|toilets|parcel_locker|luggage_locker|locker|post_box|public_bookcase|ticket_validator|shower|vending_machine
+            emergency ~ defibrillator|first_aid_kit
+            or amenity ~ atm|drinking_water|fountain|payment_validator|food_sharing|payment_terminal|give_box|telephone|toilets|parcel_locker|luggage_locker|locker|post_box|lounge|photo_booth|security_booth|smoking_area|public_bookcase|ticket_validator|shower|vending_machine
+            or man_made = water_tap
+            or historic = memorial
+            or tourism ~ artwork|viewpoint
+            or tourism = information and information !~ office|visitor_centre
           )
           and !level
           and !location or location = outdoor
