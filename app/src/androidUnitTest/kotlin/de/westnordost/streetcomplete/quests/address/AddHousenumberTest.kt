@@ -1,5 +1,7 @@
 package de.westnordost.streetcomplete.quests.address
 
+import de.westnordost.streetcomplete.data.meta.CountryInfo
+import de.westnordost.streetcomplete.data.meta.IncompleteCountryInfo
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
@@ -7,8 +9,6 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
-import de.westnordost.streetcomplete.osm.address.ConscriptionNumber
-import de.westnordost.streetcomplete.osm.address.BlockNumberAndHouseNumber
 import de.westnordost.streetcomplete.osm.address.HouseNumber
 import de.westnordost.streetcomplete.quests.answerApplied
 import de.westnordost.streetcomplete.quests.answerAppliedTo
@@ -24,7 +24,7 @@ import kotlin.test.assertNull
 
 class AddHousenumberTest {
 
-    private val questType = AddHousenumber()
+    private val questType = AddHousenumber({ CountryInfo(listOf(IncompleteCountryInfo("DE"))) })
 
     @Test fun `does not create quest for generic building`() {
         val building = way(1L, NODES1, mapOf("building" to "yes"))
@@ -152,37 +152,6 @@ class AddHousenumberTest {
         assertEquals(
             setOf(StringMapEntryAdd("addr:housename", "La Escalera")),
             questType.answerApplied(AddressNumberOrName(null, "La Escalera"))
-        )
-    }
-
-    @Test fun `apply conscription number answer`() {
-        assertEquals(
-            setOf(
-                StringMapEntryAdd("addr:conscriptionnumber", "I.123"),
-                StringMapEntryAdd("addr:housenumber", "I.123")
-            ),
-            questType.answerApplied(AddressNumberOrName(ConscriptionNumber("I.123"), null))
-        )
-    }
-
-    @Test fun `apply conscription and street number answer`() {
-        assertEquals(
-            setOf(
-                StringMapEntryAdd("addr:conscriptionnumber", "I.123"),
-                StringMapEntryAdd("addr:streetnumber", "12b"),
-                StringMapEntryAdd("addr:housenumber", "12b")
-            ),
-            questType.answerApplied(AddressNumberOrName(ConscriptionNumber("I.123", "12b"), null))
-        )
-    }
-
-    @Test fun `apply block and house number answer`() {
-        assertEquals(
-            setOf(
-                StringMapEntryAdd("addr:block_number", "123"),
-                StringMapEntryAdd("addr:housenumber", "12A")
-            ),
-            questType.answerApplied(AddressNumberOrName(BlockNumberAndHouseNumber("123", "12A"), null))
         )
     }
 

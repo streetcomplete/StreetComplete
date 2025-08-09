@@ -53,7 +53,7 @@ class AddressNumberTest {
                 StringMapEntryAdd("addr:housenumber", "3"),
                 StringMapEntryAdd("addr:block", "5"),
             ),
-            BlockAndHouseNumber("5", "3").appliedTo(mapOf(), countryCode = "JP")
+            BlockAndHouseNumber("5", "3").appliedTo(mapOf())
         )
     }
 
