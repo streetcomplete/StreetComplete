@@ -17,29 +17,25 @@
             android:id="@+id/select_flat_range_and_code"
             android:text="@string/quest_entrance_reference_select_flat_range_and_code"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/Dialog.OutlinedButton.WithNightModeSupport"/>
+            android:layout_height="wrap_content"/>
 
         <Button
             android:id="@+id/select_flat_range_only"
             android:text="@string/quest_entrance_reference_select_flat_range_only"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/Dialog.OutlinedButton.WithNightModeSupport"/>
+            android:layout_height="wrap_content"/>
 
         <Button
             android:id="@+id/select_code_only"
             android:text="@string/quest_entrance_reference_select_code_only"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/Dialog.OutlinedButton.WithNightModeSupport"/>
+            android:layout_height="wrap_content"/>
 
         <Button
             android:id="@+id/nothing_signed"
             android:text="@string/quest_entrance_reference_nothing_signed"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/Dialog.OutlinedButton.WithNightModeSupport"/>
+            android:layout_height="wrap_content"/>
 
     </LinearLayout>
 
