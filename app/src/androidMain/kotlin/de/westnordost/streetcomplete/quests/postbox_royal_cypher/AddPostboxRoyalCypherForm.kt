@@ -2,14 +2,31 @@ package de.westnordost.streetcomplete.quests.postbox_royal_cypher
 
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.key
+import androidx.compose.ui.semantics.Role
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AImageListQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
+import de.westnordost.streetcomplete.ui.common.image_select.ImageListItem
+import de.westnordost.streetcomplete.ui.common.image_select.SelectableIconCell
 
 class AddPostboxRoyalCypherForm : AImageListQuestForm<PostboxRoyalCypher, PostboxRoyalCypher>() {
 
     override val items = PostboxRoyalCypher.entries.mapNotNull { it.asItem() }
     override val itemsPerRow = 3
+
+    override val itemContent =
+        @Composable { item: ImageListItem<PostboxRoyalCypher>, index: Int, onClick: () -> Unit, role: Role ->
+            key(item.item) {
+                SelectableIconCell(
+                    item = item.item,
+                    isSelected = item.checked,
+                    onClick = onClick,
+                    role = role
+                )
+            }
+        }
 
     override val otherAnswers = listOf(
         AnswerItem(R.string.quest_postboxRoyalCypher_type_none) { confirmNoCypher() }
@@ -17,7 +34,7 @@ class AddPostboxRoyalCypherForm : AImageListQuestForm<PostboxRoyalCypher, Postbo
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        imageSelector.cellLayoutId = R.layout.cell_icon_select_with_label_below
+
     }
 
     override fun onClickOk(selectedItems: List<PostboxRoyalCypher>) {
