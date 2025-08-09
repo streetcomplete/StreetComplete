@@ -4,7 +4,19 @@ import de.westnordost.streetcomplete.osm.Tags
 
 /** The number part of an address, i.e. usually the house number. In some regions, addresses are
  *  instead expressed by conscription numbers or house+block numbers */
-sealed interface AddressNumber
+sealed interface AddressNumber {
+    fun isEmpty(): Boolean = when (this) {
+        is BlockAndHouseNumber -> block.isEmpty() && houseNumber.isEmpty()
+        is ConscriptionNumber -> conscriptionNumber.isEmpty() && streetNumber.isNullOrEmpty()
+        is HouseNumber -> houseNumber.isEmpty()
+    }
+
+    fun isComplete(): Boolean = when (this) {
+        is BlockAndHouseNumber -> block.isNotEmpty() && houseNumber.isNotEmpty()
+        is ConscriptionNumber -> conscriptionNumber.isNotEmpty()
+        is HouseNumber -> houseNumber.isNotEmpty()
+    }
+}
 
 data class HouseNumber(val houseNumber: String) : AddressNumber
 data class ConscriptionNumber(val conscriptionNumber: String, val streetNumber: String? = null) : AddressNumber
@@ -13,8 +25,7 @@ data class BlockAndHouseNumber(val block: String, val houseNumber: String) : Add
 val AddressNumber.streetHouseNumber: String? get() = when (this) {
     is HouseNumber -> houseNumber
     is BlockAndHouseNumber -> houseNumber
-    // not conscription number because there is no logical succession
-    else -> null
+    is ConscriptionNumber -> streetNumber
 }
 
 fun AddressNumber.applyTo(tags: Tags, countryCode: String?) {
