@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.address
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
@@ -22,7 +23,9 @@ import de.westnordost.streetcomplete.util.math.LatLonRaster
 import de.westnordost.streetcomplete.util.math.isCompletelyInside
 import de.westnordost.streetcomplete.util.math.isInMultipolygon
 
-class AddHousenumber : OsmElementQuestType<HouseNumberAnswer>, AndroidQuest {
+class AddHousenumber(
+    private val getCountryInfoByLocation: (location: LatLon) -> CountryInfo,
+) : OsmElementQuestType<HouseNumberAnswer>, AndroidQuest {
 
     override val changesetComment = "Survey housenumbers"
     override val wikiLink = "Key:addr"
@@ -150,7 +153,8 @@ class AddHousenumber : OsmElementQuestType<HouseNumberAnswer>, AndroidQuest {
                 if (answer.number == null && answer.name == null) {
                     tags["nohousenumber"] = "yes"
                 } else {
-                    answer.number?.applyTo(tags)
+                    val countryCode = getCountryInfoByLocation(geometry.center).countryCode
+                    answer.number?.applyTo(tags, countryCode)
                     if (answer.name != null) {
                         tags["addr:housename"] = answer.name
                     }
