@@ -43,7 +43,17 @@ class AddressNumberTest {
                 StringMapEntryAdd("addr:housenumber", "3"),
                 StringMapEntryAdd("addr:block_number", "5"),
             ),
-            BlockNumberAndHouseNumber("5", "3").appliedTo(mapOf())
+            BlockAndHouseNumber("5", "3").appliedTo(mapOf(), countryCode = "JP")
+        )
+    }
+
+    @Test fun `applyTo house and block`() {
+        assertEquals(
+            setOf(
+                StringMapEntryAdd("addr:housenumber", "3"),
+                StringMapEntryAdd("addr:block", "5"),
+            ),
+            BlockAndHouseNumber("5", "3").appliedTo(mapOf(), countryCode = "JP")
         )
     }
 
@@ -75,13 +85,13 @@ class AddressNumberTest {
                 StringMapEntryModify("addr:block_number", "12", "4"),
                 StringMapEntryDelete("addr:block", "F"),
             ),
-            BlockNumberAndHouseNumber("4", "123").appliedTo(mapOf(
+            BlockAndHouseNumber("4", "123").appliedTo(mapOf(
                 "addr:housenumber" to "100",
                 "addr:conscriptionnumber" to "ABC",
                 "addr:streetnumber" to "45",
                 "addr:block_number" to "12",
                 "addr:block" to "F",
-            ))
+            ), countryCode = "JP")
         )
     }
 
@@ -124,8 +134,8 @@ class AddressNumberTest {
     }
 }
 
-private fun AddressNumber.appliedTo(tags: Map<String, String>): Set<StringMapEntryChange> {
+private fun AddressNumber.appliedTo(tags: Map<String, String>, countryCode: String? = null): Set<StringMapEntryChange> {
     val cb = StringMapChangesBuilder(tags)
-    applyTo(cb)
+    applyTo(cb, countryCode)
     return cb.create().changes
 }

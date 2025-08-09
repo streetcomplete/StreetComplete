@@ -8,18 +8,16 @@ sealed interface AddressNumber
 
 data class HouseNumber(val houseNumber: String) : AddressNumber
 data class ConscriptionNumber(val conscriptionNumber: String, val streetNumber: String? = null) : AddressNumber
-data class BlockNumberAndHouseNumber(val blockNumber: String, val houseNumber: String) : AddressNumber
 data class BlockAndHouseNumber(val block: String, val houseNumber: String) : AddressNumber
 
 val AddressNumber.streetHouseNumber: String? get() = when (this) {
     is HouseNumber -> houseNumber
-    is BlockNumberAndHouseNumber -> houseNumber
     is BlockAndHouseNumber -> houseNumber
     // not conscription number because there is no logical succession
     else -> null
 }
 
-fun AddressNumber.applyTo(tags: Tags) {
+fun AddressNumber.applyTo(tags: Tags, countryCode: String?) {
     // first, clear all...
     listOf(
         "addr:housenumber",
@@ -39,13 +37,10 @@ fun AddressNumber.applyTo(tags: Tags) {
                 tags["addr:housenumber"] = conscriptionNumber
             }
         }
-        is BlockNumberAndHouseNumber -> {
-            tags["addr:housenumber"] = houseNumber
-            tags["addr:block_number"] = blockNumber
-        }
         is BlockAndHouseNumber -> {
             tags["addr:housenumber"] = houseNumber
-            tags["addr:block"] = block
+            if (countryCode == "JP") tags["addr:block_number"] = block
+            else tags["addr:block"] = block
         }
         is HouseNumber -> {
             tags["addr:housenumber"] = houseNumber
@@ -64,7 +59,7 @@ fun parseAddressNumber(tags: Map<String, String>): AddressNumber? {
         val blockNumber = tags["addr:block_number"]
         val block = tags["addr:block"]
         return when {
-            blockNumber != null -> BlockNumberAndHouseNumber(blockNumber, houseNumber)
+            blockNumber != null -> BlockAndHouseNumber(blockNumber, houseNumber)
             block != null -> BlockAndHouseNumber(block, houseNumber)
             else -> HouseNumber(houseNumber)
         }
