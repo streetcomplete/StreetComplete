@@ -32,7 +32,7 @@ import de.westnordost.streetcomplete.ui.common.TextField2
  *  - certain common text styling (monospace, centered) */
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
-fun AddressNumberInput(
+fun AnAddressNumberInput(
     value: String,
     onValueChange: (String) -> Unit,
     modifier: Modifier = Modifier,

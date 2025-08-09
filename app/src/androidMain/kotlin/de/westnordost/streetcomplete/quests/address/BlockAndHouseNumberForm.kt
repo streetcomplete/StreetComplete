@@ -62,7 +62,7 @@ fun BlockAndHouseNumberForm(
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 Row {
-                    AddressNumberInput(
+                    AnAddressNumberInput(
                         value = value.block,
                         onValueChange = { onValueChange(value.copy(block = it)) },
                         suggestion = suggestion?.block,

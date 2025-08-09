@@ -55,7 +55,7 @@ fun ConscriptionNumberForm(
     value: ConscriptionNumber,
     onValueChange: (ConscriptionNumber) -> Unit,
     countryCode: String?,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     val inputStyle = MaterialTheme.typography.largeInput
     val labelStyle = MaterialTheme.typography.caption.copy(
@@ -81,7 +81,7 @@ fun ConscriptionNumberForm(
                  * number like "I. 1234", which also specifies the subdivision number or something
                  * like that */
                 ProvideTextStyle(inputStyle) {
-                    AddressNumberInput(
+                    AnAddressNumberInput(
                         value = value.conscriptionNumber,
                         onValueChange = { onValueChange(value.copy(conscriptionNumber = it)) },
                         keyboardOptions = KeyboardOptions(imeAction = ImeAction.Next),
@@ -111,7 +111,7 @@ fun ConscriptionNumberForm(
                 mandatory rather than optional
                 */
                 ProvideTextStyle(inputStyle) {
-                    AddressNumberInput(
+                    AnAddressNumberInput(
                         value = value.streetNumber.orEmpty(),
                         onValueChange = {
                             onValueChange(value.copy(streetNumber = it.takeIf { it.isNotBlank() }))

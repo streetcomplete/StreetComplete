@@ -39,7 +39,7 @@ fun HouseNumberInput(
     var houseNumberInputHeightPx by remember { mutableIntStateOf(0) }
 
     Row(modifier = modifier) {
-        AddressNumberInput(
+        AnAddressNumberInput(
             value = value,
             onValueChange = { if (it != value) onValueChange(it) },
             suggestion = suggestion,
