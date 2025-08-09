@@ -45,9 +45,9 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.ui.ktx.isItemAtIndexFullyVisible
 import de.westnordost.streetcomplete.ui.ktx.plus
 import de.westnordost.streetcomplete.ui.theme.titleSmall
+import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import de.westnordost.streetcomplete.util.ktx.toast
 import kotlinx.coroutines.launch
-import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import java.text.DateFormat
 
@@ -69,7 +69,7 @@ fun EditHistorySidebar(
     val context = LocalContext.current
 
     var showUndoDialog by remember { mutableStateOf(false) }
-    var editElement by remember { mutableStateOf<Element?>(null) }
+    var editElement by rememberSerializable { mutableStateOf<Element?>(null) }
 
     // scrolling to selected item
     val selectedIndex = remember(selectedEdit) {

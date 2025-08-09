@@ -79,7 +79,7 @@ class PlacesOverlayForm : AbstractOverlayForm() {
         val element = element ?: return null
 
         return getFeatureDictionaryFeature(element)
-            ?: if (element.isDisusedPlace()) vacantShopFeature else null
+            ?: (if (element.isDisusedPlace()) vacantShopFeature else null)
             ?: BaseFeature(
                 id = "shop/unknown",
                 names = listOf(requireContext().getString(R.string.unknown_shop_title)),
@@ -251,6 +251,10 @@ class PlacesOverlayForm : AbstractOverlayForm() {
 /** return the id of the feature, without any brand stuff */
 private val Feature.featureId get() = if (isSuggestion) id.substringBeforeLast("/") else id
 
+/** Whether this feature is a subtype of another feature */
+private fun Feature.isChildOf(other: Feature): Boolean =
+    id.startsWith(other.id)
+
 /** return whether the feature has a fixed name which cannot be changed */
 private val Feature.hasFixedName get() =
     addTags.containsKey("name") && preserveTags.none { it.containsMatchIn("name") }
@@ -275,8 +279,11 @@ private suspend fun createEditAction(
 
     val hasAddedNames = newNames.isNotEmpty() && newNames.containsAll(previousNames)
     val hasChangedNames = previousNames != newNames
-    val hasChangedFeature = newFeature.id != previousFeature?.id
-    val hasChangedFeatureType = previousFeature?.featureId != newFeature.featureId
+    val hasChangedId = newFeature.id != previousFeature?.id
+    val hasChangedFeatureId = previousFeature?.featureId != newFeature.featureId
+    val isFeatureSubtype =
+        previousFeature != null
+        && (newFeature.isChildOf(previousFeature) || previousFeature.isChildOf(newFeature))
     val wasVacant = element != null && element.isDisusedPlace()
     val isVacant = newFeature.id == "shop/vacant"
     val wasBrand =  previousFeature?.isSuggestion == true
@@ -284,20 +291,22 @@ private suspend fun createEditAction(
 
     val shouldNotReplaceShop =
         // a brand preset was applied, but neither names nor feature type changed (see #5940)
-        !hasChangedNames && !hasChangedFeatureType
+        !hasChangedNames && !hasChangedFeatureId
         // name(s) were added but feature wasn't changed at all; user wouldn't be able to answer if
         // the place changed or not anyway, so rather keep previous information
-        || hasAddedNames && !hasChangedFeature
+        || hasAddedNames && !hasChangedId
         // place has been added, nothing to replace
         || element == null
     val shouldAlwaysReplaceShop =
         // the feature is or was a brand feature and the type has changed -> definitely different
         // place now; If the name and/or feature changed, the user might just have corrected the
-        // spelling or corrected the type (e.g. kindergarten -> childcare), so it is better to ask
-        (isBrand || wasBrand) && hasChangedFeatureType
+        // spelling or corrected the type (e.g. kindergarten -> childcare), so it is better to ask.
+        // Also, a place might have been tagged as fast food before and now it is pizza fast food,
+        // this should not lead to auto-replacing (see #6406)
+        (isBrand || wasBrand) && !isFeatureSubtype
         // was vacant before but not anymore (-> cleans up any previous tags that may be
         // associated with the old place)
-        || wasVacant && hasChangedFeature
+        || wasVacant && hasChangedId
         // it's vacant now
         || isVacant
 
