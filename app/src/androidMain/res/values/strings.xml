@@ -1187,6 +1187,7 @@ If any lanes are reserved for buses, please leave a note instead."</string>
     <string name="quest_leafType_tree_is_just_a_stump">"It’s just a tree stump"</string>
 
     <string name="quest_level_title2">On which level number is this place located?</string>
+    <string name="quest_level_thing_title">On which level number is this thing located?</string>
 
     <string name="quest_lit_title">"Is it lit here?"</string>
 
