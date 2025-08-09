@@ -17,6 +17,8 @@ fun AddressNumberOrNameForm(
     onValueChange: (AddressNumberOrName) -> Unit,
     countryCode: String?,
     modifier: Modifier = Modifier,
+    houseNumberSuggestion: String? = null,
+    blockSuggestion: String? = null,
 ) {
     Column(modifier = modifier) {
         Details(
@@ -27,6 +29,8 @@ fun AddressNumberOrNameForm(
                 value = value.number ?: HouseNumber(""),
                 onValueChange = { onValueChange(value.copy(number = it)) },
                 countryCode = countryCode,
+                houseNumberSuggestion = houseNumberSuggestion,
+                blockSuggestion = blockSuggestion,
             )
         }
         Details(
