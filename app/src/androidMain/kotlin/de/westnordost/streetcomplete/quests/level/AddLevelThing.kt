@@ -62,23 +62,23 @@ class AddLevelThing : OsmElementQuestType<String>, AndroidQuest {
             .mapNotNull { mapData.getGeometry(it.type, it.id) as? ElementPolygonsGeometry }
         if (mallGeometries.isEmpty()) return emptyList()
 
-        // get all shops that have level tagged
+        // get all elements that have level tagged
         val thingsWithLevel = mapData.filter { thingsWithLevelFilter.matches(it) }
         if (thingsWithLevel.isEmpty()) return emptyList()
 
-        // with this, find malls that contain shops that have different levels tagged
+        // with this, find malls that contain elements that have different levels tagged
         val multiLevelMallGeometries = mallGeometries.filter { mallGeometry ->
             var level: String? = null
-            for (shop in thingsWithLevel) {
-                val pos = mapData.getGeometry(shop.type, shop.id)?.center ?: continue
+            for (element in thingsWithLevel) {
+                val pos = mapData.getGeometry(element.type, element.id)?.center ?: continue
                 if (!mallGeometry.bounds.contains(pos)) continue
                 if (!pos.isInMultipolygon(mallGeometry.polygons)) continue
 
-                if (shop.tags.containsKey("level")) {
+                if (element.tags.containsKey("level")) {
                     if (level != null) {
-                        if (level != shop.tags["level"]) return@filter true
+                        if (level != element.tags["level"]) return@filter true
                     } else {
-                        level = shop.tags["level"]
+                        level = element.tags["level"]
                     }
                 }
             }
@@ -86,24 +86,24 @@ class AddLevelThing : OsmElementQuestType<String>, AndroidQuest {
         }
         if (multiLevelMallGeometries.isEmpty()) return emptyList()
 
-        // now, return all shops that have no level tagged and are inside those multi-level malls
-        val shopsWithoutLevel = mapData
+        // now, return all things that have no level tagged and are inside those multi-level malls
+        val elementsWithoutLevel = mapData
             .filter { filter.matches(it) }
             .toMutableList()
-        if (shopsWithoutLevel.isEmpty()) return emptyList()
+        if (elementsWithoutLevel.isEmpty()) return emptyList()
 
         val result = mutableListOf<Element>()
 
         for (mallGeometry in multiLevelMallGeometries) {
-            val it = shopsWithoutLevel.iterator()
+            val it = elementsWithoutLevel.iterator()
             while (it.hasNext()) {
-                val shop = it.next()
-                val pos = mapData.getGeometry(shop.type, shop.id)?.center ?: continue
+                val element = it.next()
+                val pos = mapData.getGeometry(element.type, element.id)?.center ?: continue
                 if (!mallGeometry.bounds.contains(pos)) continue
                 if (!pos.isInMultipolygon(mallGeometry.polygons)) continue
 
-                result.add(shop)
-                it.remove() // shop can only be in one mall
+                result.add(element)
+                it.remove() // thing can only be in one mall
             }
         }
         return result
@@ -111,7 +111,7 @@ class AddLevelThing : OsmElementQuestType<String>, AndroidQuest {
 
     override fun isApplicableTo(element: Element): Boolean? {
         if (!filter.matches(element)) return false
-        // for shops with no level, we actually need to look at geometry in order to find if it is
+        // for things with no level, we actually need to look at geometry in order to find if it is
         // contained within any multi-level mall
         return null
     }
