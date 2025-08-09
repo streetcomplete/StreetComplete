@@ -73,6 +73,11 @@ object ApplicationConstants {
     //  e.g. AddRecyclingContainerMaterials, AddCycleway
     const val QUEST_FILTER_PADDING = 20.0 // m
 
+    /** ATP quest gets a larger padding
+     *  In some cases ATP entries are near OSM objects, but offset is larger than QUEST_FILTER_PADDING
+     *  Note that download still uses QUEST_FILTER_PADDING, that should be fine overall
+     */
+    const val ATP_QUEST_FILTER_PADDING = 50.0 // m
     const val AVATARS_CACHE_DIRECTORY = "osm_user_avatars"
 
     const val SC_PHOTO_SERVICE_URL = "https://streetcomplete.app/photo-upload/" // must have trailing /
