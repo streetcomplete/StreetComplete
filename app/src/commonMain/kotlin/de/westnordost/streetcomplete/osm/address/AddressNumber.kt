@@ -1,9 +1,11 @@
 package de.westnordost.streetcomplete.osm.address
 
 import de.westnordost.streetcomplete.osm.Tags
+import kotlinx.serialization.Serializable
 
 /** The number part of an address, i.e. usually the house number. In some regions, addresses are
  *  instead expressed by conscription numbers or house+block numbers */
+@Serializable
 sealed interface AddressNumber {
     fun isEmpty(): Boolean = when (this) {
         is BlockAndHouseNumber -> block.isEmpty() && houseNumber.isEmpty()
@@ -18,8 +20,11 @@ sealed interface AddressNumber {
     }
 }
 
+@Serializable
 data class HouseNumber(val houseNumber: String) : AddressNumber
+@Serializable
 data class ConscriptionNumber(val conscriptionNumber: String, val streetNumber: String? = null) : AddressNumber
+@Serializable
 data class BlockAndHouseNumber(val block: String, val houseNumber: String) : AddressNumber
 
 val AddressNumber.streetHouseNumber: String? get() = when (this) {
