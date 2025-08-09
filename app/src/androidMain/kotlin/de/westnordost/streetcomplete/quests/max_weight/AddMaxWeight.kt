@@ -1,34 +1,47 @@
 package de.westnordost.streetcomplete.quests.max_weight
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
-import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.Way
+import de.westnordost.streetcomplete.data.osm.mapdata.filter
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.quests.ferry.wayIdsInFerryRoutes
 import de.westnordost.streetcomplete.quests.max_weight.MaxWeightSign.MAX_AXLE_LOAD
 import de.westnordost.streetcomplete.quests.max_weight.MaxWeightSign.MAX_GROSS_VEHICLE_MASS
 import de.westnordost.streetcomplete.quests.max_weight.MaxWeightSign.MAX_TANDEM_AXLE_LOAD
 import de.westnordost.streetcomplete.quests.max_weight.MaxWeightSign.MAX_WEIGHT
 
-class AddMaxWeight : OsmFilterQuestType<MaxWeightAnswer>(), AndroidQuest {
+class AddMaxWeight : OsmElementQuestType<MaxWeightAnswer>, AndroidQuest {
 
-    override val elementFilter = """
-        ways with
-         highway ~ trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|living_street|service|busway
-         and bridge and bridge != no
-         and service != driveway
+    private val filter by lazy {
+        """ways, relations with
+         (
+             highway ~ trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|living_street|service|busway
+             and bridge and bridge != no
+             and service != driveway
+             and motor_vehicle !~ private|no
+         )
+         or
+         (
+            route = ferry
+            and motor_vehicle = yes
+         )
          and !maxweight and maxweight:signed != no
          and !maxaxleload
          and !maxbogieweight
          and !maxweight:hgv and !maxweight:bus and !maxweight:hgv_articulated and !maxweight:tourist_bus and !maxweight:coach
          and !maxweightrating and !maxweightrating:hgv and !maxweightrating:bus and !hgv
          and !maxunladenweight and !maxunladenweight:hgv and !maxunladenweight:bus
-         and motor_vehicle !~ private|no
          and vehicle !~ private|no
          and (access !~ private|no or (foot and foot !~ private|no))
          and area != yes
-    """
+    """.toElementFilterExpression() }
     override val changesetComment = "Specify maximum allowed weights"
     override val wikiLink = "Key:maxweight"
     override val icon = R.drawable.ic_quest_max_weight
@@ -48,6 +61,23 @@ class AddMaxWeight : OsmFilterQuestType<MaxWeightAnswer>(), AndroidQuest {
                 tags["maxweight:signed"] = "no"
             }
         }
+    }
+
+    override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
+        // the quest shall not be asked for ways tagged with route=ferry that are part of a relation
+        // also tagged with route=ferry because that makes the former not actually a "real" ferry
+        // route (╯°□°）╯︵ ┻━┻. Tagging mistake or not, it is very common tagging (#6373)
+        val wayIdsInFerryRoutes = wayIdsInFerryRoutes(mapData.relations)
+        return mapData
+            .filter(filter)
+            .filter { it !is Way || it.id !in wayIdsInFerryRoutes }
+            .asIterable()
+    }
+
+    override fun isApplicableTo(element: Element): Boolean? {
+        if (!filter.matches(element)) return false
+        if (element is Way) return null
+        return true
     }
 }
 
