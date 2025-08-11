@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.quests.address
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.alpha
 import de.westnordost.streetcomplete.osm.address.StructuredHouseNumber
 import de.westnordost.streetcomplete.osm.address.StructuredHouseNumbers
 import de.westnordost.streetcomplete.ui.common.StepperButton
@@ -21,7 +20,7 @@ fun HouseNumberStepperButton(
     StepperButton(
         onIncrease = { if (next != null) { onValueChange(next) } },
         onDecrease = { if (prev != null) { onValueChange(prev) } },
-        modifier = modifier.alpha(if (next == null && prev == null) 0f else 1f),
+        modifier = modifier,
         increaseEnabled = next != null,
         decreaseEnabled = prev != null,
     )

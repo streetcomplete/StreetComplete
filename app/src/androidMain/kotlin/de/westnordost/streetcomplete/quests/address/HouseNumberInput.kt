@@ -48,7 +48,7 @@ fun HouseNumberInput(
                 .onSizeChanged { houseNumberInputHeightPx = it.height }
         )
         // only show any stepper button if there is a suggestion to start from
-        if (suggestion != null) {
+        if (!suggestion.isNullOrEmpty()) {
             val useSuggestion = value.isEmpty() && suggestion.isNotEmpty()
             val valueOrSuggestion = if (useSuggestion) suggestion else value
 

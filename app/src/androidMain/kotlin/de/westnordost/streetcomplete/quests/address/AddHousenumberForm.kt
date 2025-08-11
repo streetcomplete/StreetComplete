@@ -3,9 +3,13 @@ package de.westnordost.streetcomplete.quests.address
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AlertDialog
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.Surface
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.ComposeViewBinding
 import de.westnordost.streetcomplete.databinding.DialogQuestAddressNoHousenumberBinding
@@ -42,10 +46,13 @@ class AddHousenumberForm : AbstractOsmQuestForm<HouseNumberAnswer>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.composeViewBase.content {
+        binding.composeViewBase.content { Surface {
             address = rememberSerializable { mutableStateOf(AddressNumberOrName(null, null)) }
 
-            Surface {
+            Box(
+                modifier = Modifier.fillMaxWidth(),
+                contentAlignment = Alignment.Center
+            ) {
                 if (address.value.name != null) {
                     AddressNumberOrNameForm(
                         value = address.value,
@@ -54,6 +61,7 @@ class AddHousenumberForm : AbstractOsmQuestForm<HouseNumberAnswer>() {
                             checkIsFormComplete()
                         },
                         countryCode = countryInfo.countryCode,
+                        modifier = Modifier.fillMaxWidth(),
                         houseNumberSuggestion = lastHouseNumber,
                         blockSuggestion = lastBlock,
                     )
@@ -70,23 +78,22 @@ class AddHousenumberForm : AbstractOsmQuestForm<HouseNumberAnswer>() {
                     )
                 }
             }
-        }
+        } }
     }
 
     /* ------------------------------------- Other answers -------------------------------------- */
 
     private fun createBlockAnswerItem(): IAnswerItem? {
-        if (countryInfo.countryCode == "JP") return null
+        if (countryInfo.countryCode in listOf("JP", "CZ", "SK")) return null
         return when (address.value.number) {
             is BlockAndHouseNumber ->
                 AnswerItem(R.string.quest_address_answer_no_block) {
                     address.value = address.value.copy(number = HouseNumber(""))
                 }
-            is HouseNumber ->
+            else ->
                 AnswerItem(R.string.quest_address_answer_block) {
                     address.value = address.value.copy(number = BlockAndHouseNumber("", ""))
                 }
-            else -> null
         }
     }
 
@@ -151,8 +158,8 @@ class AddHousenumberForm : AbstractOsmQuestForm<HouseNumberAnswer>() {
         }
     }
     override fun isFormComplete(): Boolean =
-        address.value.number?.isComplete() == false ||
-        address.value.name?.isEmpty() == false
+        address.value.number?.isComplete() == true ||
+        address.value.name?.isNotEmpty() == true
 
     override fun isRejectingClose(): Boolean =
         address.value.number?.isEmpty() == false ||

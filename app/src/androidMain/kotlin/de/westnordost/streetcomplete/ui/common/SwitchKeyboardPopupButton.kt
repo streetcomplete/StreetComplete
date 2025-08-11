@@ -2,8 +2,10 @@ package de.westnordost.streetcomplete.ui.common
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.systemBars
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Icon
@@ -14,6 +16,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.IntRect
 import androidx.compose.ui.unit.IntSize
@@ -36,10 +40,18 @@ fun SwitchKeyboardPopupButton(
     onChange: (isAbc: Boolean) -> Unit,
     alignment: Alignment = Alignment.BottomStart,
 ) {
-    Popup(ScreenAlignmentPopupPositionProvider(alignment)) {
+    val screenPadding = WindowInsets.systemBars
+    val density = LocalDensity.current
+    val layoutDirection = LocalLayoutDirection.current
+    Popup(ScreenAlignmentPopupPositionProvider(
+        alignment = alignment,
+        windowPaddingLeft = screenPadding.getLeft(density, layoutDirection),
+        windowPaddingTop = screenPadding.getTop(density),
+    )) {
         Surface(
             onClick = { onChange(!isAbc) },
-            modifier = Modifier.size(64.dp).padding(8.dp),
+            modifier = Modifier.size(64.dp)
+                .padding(8.dp),
             color = Color.Black,
             contentColor = Color.White,
             shape = CircleShape,
@@ -61,7 +73,11 @@ fun SwitchKeyboardPopupButton(
     }
 }
 
-private class ScreenAlignmentPopupPositionProvider(val alignment: Alignment) : PopupPositionProvider {
+private class ScreenAlignmentPopupPositionProvider(
+    val alignment: Alignment,
+    val windowPaddingLeft: Int,
+    val windowPaddingTop: Int,
+) : PopupPositionProvider {
     override fun calculatePosition(
         anchorBounds: IntRect,
         windowSize: IntSize,
@@ -69,6 +85,6 @@ private class ScreenAlignmentPopupPositionProvider(val alignment: Alignment) : P
         popupContentSize: IntSize,
     ): IntOffset {
         val point = alignment.align(popupContentSize, windowSize, layoutDirection)
-        return point
+        return point + IntOffset(x = windowPaddingLeft, y = windowPaddingTop)
     }
 }

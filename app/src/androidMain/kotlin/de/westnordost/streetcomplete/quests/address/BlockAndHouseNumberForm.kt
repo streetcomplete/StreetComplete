@@ -61,20 +61,22 @@ fun BlockAndHouseNumberForm(
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
-                Row {
+                Row(Modifier.width(112.dp)) {
                     AnAddressNumberInput(
                         value = value.block,
                         onValueChange = { onValueChange(value.copy(block = it)) },
                         suggestion = suggestion?.block,
                         modifier = Modifier
-                            .width(64.dp)
+                            .weight(1f)
                             .onSizeChanged { blockInputHeightPx = it.height },
                     )
-                    BlockStepperButton(
-                        value = if (useBlockSuggestion) suggestion.block else value.block,
-                        onValueChange = { onValueChange(value.copy(block = it)) },
-                        modifier = Modifier.width(48.dp).height(blockInputHeightPx.pxToDp())
-                    )
+                    if (!suggestion?.block.isNullOrEmpty()) {
+                        BlockStepperButton(
+                            value = if (useBlockSuggestion) suggestion.block else value.block,
+                            onValueChange = { onValueChange(value.copy(block = it)) },
+                            modifier = Modifier.width(48.dp).height(blockInputHeightPx.pxToDp())
+                        )
+                    }
                 }
                 Text("-")
                 HouseNumberInput(

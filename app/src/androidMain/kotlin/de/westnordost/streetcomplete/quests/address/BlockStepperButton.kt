@@ -19,7 +19,7 @@ fun BlockStepperButton(
     StepperButton(
         onIncrease = { if (next != null) { onValueChange(next) } },
         onDecrease = { if (prev != null) { onValueChange(prev) } },
-        modifier = modifier.alpha(if (next == null && prev == null) 0f else 1f),
+        modifier = modifier,
         increaseEnabled = next != null,
         decreaseEnabled = prev != null,
     )
@@ -27,9 +27,9 @@ fun BlockStepperButton(
 
 private fun stepBlock(value: String, step: Int): String? {
     // step block numbers
-    if (value.isDigitsOnly()) {
+    if (value.isNotEmpty() && value.isDigitsOnly()) {
         val result = value.toInt() + step
-        if (step < 1) return null
+        if (result < 1) return null
         return result.toString()
     }
     // step block single-letters
