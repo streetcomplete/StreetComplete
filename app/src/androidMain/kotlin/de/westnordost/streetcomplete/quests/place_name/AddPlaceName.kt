@@ -92,6 +92,9 @@ class AddPlaceName(
                 // name & wheelchair
                 "sports_centre", "stadium",
 
+                // name & opening hours
+                "trampoline_park",
+
                 // name only
                 "dance", "nature_reserve", "marina", "horse_riding", "trampoline_park",
                 "bathing_place",
