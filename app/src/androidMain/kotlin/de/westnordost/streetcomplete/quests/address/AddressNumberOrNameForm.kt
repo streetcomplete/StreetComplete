@@ -6,6 +6,10 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.Text
 import androidx.compose.material.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -23,13 +27,18 @@ fun AddressNumberOrNameForm(
     houseNumberSuggestion: String? = null,
     blockSuggestion: String? = null,
 ) {
+    val hasNumber = value.number != null
+    val hasName = value.name != null
+    var numberExpanded by rememberSaveable(hasNumber) { mutableStateOf(hasNumber) }
+    var nameExpanded by rememberSaveable(hasName) { mutableStateOf(hasName) }
+
     Column(modifier = modifier) {
-        val hasNumberInput = value.number?.isEmpty() == false
         Details(
-            expanded = true or hasNumberInput,
+            expanded = numberExpanded,
+            onExpandedChange = { numberExpanded = it },
             summary = { Text(stringResource(R.string.quest_address_house_number_label)) },
             modifier = Modifier.fillMaxWidth(),
-            enabled = !hasNumberInput
+            enabled = value.number?.isEmpty() != false
         ) {
             Box(
                 modifier = Modifier.fillMaxWidth(),
@@ -43,20 +52,18 @@ fun AddressNumberOrNameForm(
                     blockSuggestion = blockSuggestion,
                 )
             }
-
         }
-        val hasNameInput = value.name?.isEmpty() == false
         Details(
-            expanded = false or hasNameInput,
+            expanded = nameExpanded,
+            onExpandedChange = { nameExpanded = it },
             summary = { Text(stringResource(R.string.quest_address_house_name_label)) },
             modifier = Modifier.fillMaxWidth(),
-            enabled = !hasNameInput
+            enabled = value.name?.isEmpty() != false
         ) {
             TextField(
                 value = value.name.orEmpty(),
-                onValueChange = { name ->
-                    onValueChange(value.copy(name = name.takeIf { it.isNotBlank() }))
-                }
+                onValueChange = { onValueChange(value.copy(name = it)) },
+                modifier = Modifier.fillMaxWidth()
             )
         }
     }

@@ -150,12 +150,12 @@ class AddHousenumber(
     override fun applyAnswerTo(answer: HouseNumberAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {
             is AddressNumberOrName -> {
-                if (answer.number == null && answer.name == null) {
+                if (answer.number?.isEmpty() != false && answer.name.isNullOrEmpty()) {
                     tags["nohousenumber"] = "yes"
                 } else {
                     val countryCode = getCountryInfoByLocation(geometry.center).countryCode
                     answer.number?.applyTo(tags, countryCode)
-                    if (answer.name != null) {
+                    if (!answer.name.isNullOrEmpty()) {
                         tags["addr:housename"] = answer.name
                     }
                 }

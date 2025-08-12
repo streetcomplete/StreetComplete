@@ -130,7 +130,10 @@ class AddHousenumberForm : AbstractOsmQuestForm<HouseNumberAnswer>() {
     /* ----------------------------------- Show house name -------------------------------------- */
 
     private fun showHouseName() {
-        address.value = address.value.copy(name = "")
+        address.value = AddressNumberOrName(
+            name = "",
+            number = address.value.number?.takeIf { !it.isEmpty() }
+        )
     }
 
     /* ----------------------------------- Commit answer ---------------------------------------- */

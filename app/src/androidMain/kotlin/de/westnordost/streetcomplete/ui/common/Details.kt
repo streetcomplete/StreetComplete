@@ -10,13 +10,12 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material.ContentAlpha
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Icon
-import androidx.compose.material.LocalContentAlpha
-import androidx.compose.material.LocalTextStyle
+import androidx.compose.material.LocalContentColor
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.ProvideTextStyle
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -38,24 +37,21 @@ import org.jetbrains.compose.resources.painterResource
 @Composable
 fun Details(
     expanded: Boolean,
+    onExpandedChange: (Boolean) -> Unit,
     summary: @Composable () -> Unit,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
     content: @Composable () -> Unit,
 ) {
-    var expandedState by rememberSaveable(expanded) { mutableStateOf(expanded) }
     val alpha = if (enabled) ContentAlpha.high else ContentAlpha.disabled
     Column(modifier) {
         Surface(
-            checked = expandedState,
-            onCheckedChange = { expandedState = it },
+            checked = expanded,
+            onCheckedChange = onExpandedChange,
             shape = MaterialTheme.shapes.medium,
             enabled = enabled,
         ) {
-            CompositionLocalProvider(
-                LocalTextStyle provides MaterialTheme.typography.button,
-                LocalContentAlpha provides alpha
-            ) {
+            ProvideTextStyle(MaterialTheme.typography.button) {
                 Row (
                     modifier = Modifier.padding(start = 8.dp, end = 16.dp, top = 8.dp, bottom = 8.dp),
                     horizontalArrangement = Arrangement.spacedBy(8.dp),
@@ -64,13 +60,14 @@ fun Details(
                     Icon(
                         painter = painterResource(Res.drawable.ic_arrow_drop_down_24),
                         contentDescription = null,
-                        modifier = Modifier.rotate(if (expandedState) 0f else 270f)
+                        modifier = Modifier.rotate(if (expanded) 0f else 270f),
+                        tint = LocalContentColor.current.copy(alpha = alpha)
                     )
                     Box { summary() }
                 }
             }
         }
-        AnimatedVisibility(visible = expandedState) {
+        AnimatedVisibility(visible = expanded) {
             Box {
                 content()
             }
@@ -81,8 +78,10 @@ fun Details(
 @Preview @Composable
 private fun DetailsPreview() {
     val text = LoremIpsum(10).values.joinToString(" ")
+    var expanded by rememberSaveable { mutableStateOf(false) }
     Details(
-        expanded = true,
+        expanded = expanded,
+        onExpandedChange = { expanded = it },
         summary = { Text("Click me!") },
         modifier = Modifier.fillMaxWidth(),
     ) {
