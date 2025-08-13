@@ -94,6 +94,7 @@ class AddPlaceName(
 
                 // name only
                 "dance", "nature_reserve", "marina", "horse_riding", "trampoline_park",
+                "bathing_place",
             ),
             "landuse" to arrayOf(
                 "cemetery", "allotments"
