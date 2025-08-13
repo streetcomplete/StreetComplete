@@ -22,7 +22,7 @@ class AddDrinkingWater : OsmFilterQuestType<DrinkingWater>(), AndroidQuest {
         and !drinking_water
         and !drinking_water:legal
         and drinking_water:signed != no
-        and !drinking_water:legal:signed != no
+        and drinking_water:legal:signed != no
         and amenity != drinking_water
         and (!intermittent or intermittent = no)
         and (!seasonal or seasonal = no)
