@@ -64,9 +64,7 @@ class AddMaxWeight : OsmElementQuestType<MaxWeightAnswer>, AndroidQuest {
     }
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
-        // the quest shall not be asked for ways tagged with route=ferry that are part of a relation
-        // also tagged with route=ferry because that makes the former not actually a "real" ferry
-        // route (╯°□°）╯︵ ┻━┻. Tagging mistake or not, it is very common tagging (#6373)
+        // copied from AddFerryAccessMotorVehicle - see comment there why this filtering is necessary
         val wayIdsInFerryRoutes = wayIdsInFerryRoutes(mapData.relations)
         return mapData
             .filter(filter)
