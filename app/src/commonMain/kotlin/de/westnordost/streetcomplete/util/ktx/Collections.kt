@@ -77,7 +77,7 @@ inline fun <T, R : Comparable<R>> Iterable<T>.indexOfMaxBy(selector: (T) -> R): 
 fun <T> Collection<T>.containsExactlyInAnyOrder(other: Collection<T>): Boolean {
     if (size != other.size) return false
     if (this === other) return true
-
-    fun Collection<T>.toCountMap() = groupingBy { it }.eachCount()
     return toCountMap() == other.toCountMap()
 }
+
+private fun <T>  Collection<T>.toCountMap() = groupingBy { it }.eachCount()
