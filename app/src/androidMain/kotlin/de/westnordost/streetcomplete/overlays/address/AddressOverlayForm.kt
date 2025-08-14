@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
+import androidx.compose.ui.text.intl.Locale
 import androidx.core.view.doOnLayout
 import androidx.core.view.isGone
 import de.westnordost.streetcomplete.R
@@ -28,9 +29,8 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.databinding.FragmentOverlayAddressBinding
 import de.westnordost.streetcomplete.osm.address.AddressNumber
-import de.westnordost.streetcomplete.osm.address.AddressNumberAndNameInputViewController
-import de.westnordost.streetcomplete.osm.address.HouseAndBlockNumber
-import de.westnordost.streetcomplete.osm.address.HouseNumberAndBlock
+//import de.westnordost.streetcomplete.osm.address.AddressNumberAndNameInputViewController
+import de.westnordost.streetcomplete.osm.address.BlockAndHouseNumber
 import de.westnordost.streetcomplete.osm.address.PlaceName
 import de.westnordost.streetcomplete.osm.address.StreetName
 import de.westnordost.streetcomplete.osm.address.StreetOrPlaceName
@@ -50,7 +50,6 @@ import de.westnordost.streetcomplete.util.math.PositionOnWay
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import de.westnordost.streetcomplete.util.math.getPositionOnWays
 import org.koin.android.ext.android.inject
-import java.util.Locale
 
 class AddressOverlayForm : AbstractOverlayForm(), IsMapPositionAware {
 
@@ -61,7 +60,7 @@ class AddressOverlayForm : AbstractOverlayForm(), IsMapPositionAware {
     private val abbreviationsByLanguage: AbbreviationsByLanguage by inject()
     private val nameSuggestionsSource: NameSuggestionsSource by inject()
 
-    private lateinit var numberOrNameInputCtrl: AddressNumberAndNameInputViewController
+//    private lateinit var numberOrNameInputCtrl: AddressNumberAndNameInputViewController
     private lateinit var streetOrPlaceCtrl: StreetOrPlaceNameViewController
 
     private var addressNumber: AddressNumber? = null
@@ -122,7 +121,7 @@ class AddressOverlayForm : AbstractOverlayForm(), IsMapPositionAware {
             }
         isShowingHouseName = savedInstanceState?.getBoolean(SHOW_HOUSE_NAME) ?: (houseName != null)
         isShowingBlock = savedInstanceState?.getBoolean(SHOW_BLOCK)
-            ?: addressNumber?.let { it is HouseNumberAndBlock } ?: (lastBlock != null)
+            ?: addressNumber?.let { it is BlockAndHouseNumber } ?: (lastBlock != null)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -153,7 +152,7 @@ class AddressOverlayForm : AbstractOverlayForm(), IsMapPositionAware {
             streetNameInput = streetOrPlaceBinding.streetNameInput.apply { hint = lastStreetName },
             nameSuggestionsSource = nameSuggestionsSource,
             abbreviationsByLanguage = abbreviationsByLanguage,
-            countryLocale = Locale.forLanguageTag(countryInfo.languageTag.orEmpty()),
+            countryLocale = Locale(countryInfo.languageTag.orEmpty()),
             startWithPlace = isShowingPlaceName,
             viewLifecycleScope = viewLifecycleScope
         )
@@ -167,9 +166,11 @@ class AddressOverlayForm : AbstractOverlayForm(), IsMapPositionAware {
             streetOrPlaceBinding.streetOrPlaceSelect.isGone = true
         }
 
+        /*
         val layoutResId = getCountrySpecificAddressNumberLayoutResId(countryInfo.countryCode)
-            ?: if (isShowingBlock) R.layout.view_house_number_and_block else R.layout.view_house_number
+            ?: /* if (isShowingBlock) R.layout.view_house_number_and_block else */ R.layout.view_house_number
         showNumberOrNameInput(layoutResId)
+         */
 
         addEntrance = savedInstanceState?.getBoolean(ADD_ENTRANCE) ?: true
     }
@@ -216,13 +217,13 @@ class AddressOverlayForm : AbstractOverlayForm(), IsMapPositionAware {
     }
 
     private fun showNumberOrNameInput(layoutResId: Int) {
-        binding.addressNumberOrNameContainer.countrySpecificContainer.removeAllViews() // need to remove previous view
+/*        binding.addressNumberOrNameContainer.countrySpecificContainer.removeAllViews() // need to remove previous view
         val numberOrNameBinding = binding.addressNumberOrNameContainer
         val numberView = layoutInflater.inflate(
             layoutResId,
             numberOrNameBinding.countrySpecificContainer
         )
-        val blockInput = numberView.findViewById<EditText?>(R.id.blockInput)
+        //val blockInput = numberView.findViewById<EditText?>(R.id.blockInput)
 
         numberOrNameInputCtrl = AddressNumberAndNameInputViewController(
             toggleHouseNameButton = numberOrNameBinding.toggleHouseNameButton,
@@ -232,9 +233,9 @@ class AddressOverlayForm : AbstractOverlayForm(), IsMapPositionAware {
             activity = requireActivity(),
             houseNumberInput = numberView.findViewById<EditText?>(R.id.houseNumberInput)?.apply { hint = lastHouseNumber },
             blockNumberInput = numberView.findViewById<EditText?>(R.id.blockNumberInput)?.apply { hint = lastBlockNumber },
-            blockInput = blockInput?.apply { hint = lastBlock },
-            conscriptionNumberInput = numberView.findViewById(R.id.conscriptionNumberInput),
-            streetNumberInput = numberView.findViewById(R.id.streetNumberInput),
+            blockInput = null,//blockInput?.apply { hint = lastBlock },
+            conscriptionNumberInput = null,// TODO numberView.findViewById(R.id.conscriptionNumberInput),
+            streetNumberInput = null,// TODO numberView.findViewById(R.id.streetNumberInput),
             toggleKeyboardButton = numberOrNameBinding.toggleKeyboardButton,
             addButton = numberView.findViewById(R.id.addButton),
             subtractButton = numberView.findViewById(R.id.subtractButton),
@@ -251,7 +252,7 @@ class AddressOverlayForm : AbstractOverlayForm(), IsMapPositionAware {
             numberOrNameBinding.toggleAddressNumberButton.isGone = true
             numberOrNameBinding.toggleHouseNameButton.isGone = true
         }
-        isShowingBlock = blockInput != null
+        //isShowingBlock = blockInput != null*/
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -265,23 +266,24 @@ class AddressOverlayForm : AbstractOverlayForm(), IsMapPositionAware {
     override fun onClickMapAt(position: LatLon, clickAreaSizeInMeters: Double): Boolean =
         streetOrPlaceCtrl.selectStreetAt(position, clickAreaSizeInMeters)
 
-    override fun hasChanges(): Boolean =
-        numberOrNameInputCtrl.addressNumber != addressNumber
+    override fun hasChanges(): Boolean = true
+/*        numberOrNameInputCtrl.addressNumber != addressNumber
         || numberOrNameInputCtrl.houseName != houseName
         || streetOrPlaceCtrl.streetOrPlaceName != streetOrPlaceName
+*/
 
-    override fun isFormComplete(): Boolean =
-        numberOrNameInputCtrl.isComplete && streetOrPlaceCtrl.streetOrPlaceName != null
+    override fun isFormComplete(): Boolean = true
+//        numberOrNameInputCtrl.isComplete && streetOrPlaceCtrl.streetOrPlaceName != null
 
     override fun onClickOk() {
+        /*
         val number = numberOrNameInputCtrl.addressNumber
         val name = numberOrNameInputCtrl.houseName
         val streetOrPlaceName = streetOrPlaceCtrl.streetOrPlaceName
         lastWasPlace = streetOrPlaceName is PlaceName
 
         number?.streetHouseNumber?.let { lastHouseNumber = it }
-        lastBlockNumber = if (number is HouseAndBlockNumber) number.blockNumber else null
-        lastBlock = if (number is HouseNumberAndBlock) number.block else null
+        lastBlock = if (number is BlockAndHouseNumber) number.block else null
         lastPlaceName = if (streetOrPlaceName is PlaceName) streetOrPlaceName.name else null
         lastStreetName = if (streetOrPlaceName is StreetName) streetOrPlaceName.name else null
 
@@ -304,30 +306,51 @@ class AddressOverlayForm : AbstractOverlayForm(), IsMapPositionAware {
             val tagChanges = StringMapChangesBuilder(mapOf())
             addChanges(tagChanges, number, name, streetOrPlaceName)
             applyEdit(CreateNodeAction(geometry.center, tagChanges))
-        }
+        }*/
+    }
+
+
+    private fun addChanges(
+        tagChanges: StringMapChangesBuilder,
+        number: AddressNumber?,
+        name: String?,
+        streetOrPlaceName: StreetOrPlaceName?
+    ) {
+        number?.applyTo(tagChanges, countryInfo.countryCode)
+        name?.let { tagChanges["addr:housename"] = it }
+        streetOrPlaceName?.applyTo(tagChanges)
+        tagChanges.remove("noaddress")
+        tagChanges.remove("nohousenumber")
     }
 
     /* --------------------------------- Show/Toggle block input -------------------------------- */
 
     private fun createBlockAnswerItem(): IAnswerItem? =
+        null
+    /*
         if (getCountrySpecificAddressNumberLayoutResId(countryInfo.countryCode) == null) {
             if (isShowingBlock) {
                 AnswerItem(R.string.quest_address_answer_no_block) { showNumberOrNameInput(R.layout.view_house_number) }
             } else {
-                AnswerItem(R.string.quest_address_answer_block) { showNumberOrNameInput(R.layout.view_house_number_and_block) }
+                AnswerItem(R.string.quest_address_answer_block) { /*showNumberOrNameInput(R.layout.view_house_number_and_block)*/ }
             }
         } else {
             null
         }
 
+     */
+
     /* ------------------------------ Show house name / place name ------------------------------ */
 
     private fun showHouseName() {
+        /*
         isShowingHouseName = true
         binding.addressNumberOrNameContainer.toggleAddressNumberButton.isGone = false
         binding.addressNumberOrNameContainer.toggleHouseNameButton.isGone = false
         numberOrNameInputCtrl.setHouseNameViewExpanded(true)
         binding.addressNumberOrNameContainer.houseNameInput.requestFocus()
+
+         */
     }
 
     private fun showPlaceName() {
@@ -363,19 +386,6 @@ class AddressOverlayForm : AbstractOverlayForm(), IsMapPositionAware {
     }
 }
 
-private fun addChanges(
-    tagChanges: StringMapChangesBuilder,
-    number: AddressNumber?,
-    name: String?,
-    streetOrPlaceName: StreetOrPlaceName?
-) {
-    number?.applyTo(tagChanges)
-    name?.let { tagChanges["addr:housename"] = it }
-    streetOrPlaceName?.applyTo(tagChanges)
-    tagChanges.remove("noaddress")
-    tagChanges.remove("nohousenumber")
-}
-
 private fun createRemoveAddressElementEditAction(element: Element): ElementEditAction {
     if (element is Node && element.tags.all { isAddressTag(it.key, it.value) }) {
         return DeletePoiNodeAction(element)
@@ -401,10 +411,3 @@ private fun isAddressTag(key: String, value: String): Boolean =
     key.startsWith("note:addr:") ||
     key == "noaddress" ||
     key == "nohousenumber"
-
-private fun getCountrySpecificAddressNumberLayoutResId(countryCode: String): Int? = when (countryCode) {
-    "JP" -> R.layout.view_house_number_japan
-    "CZ" -> R.layout.view_house_number_czechia
-    "SK" -> R.layout.view_house_number_slovakia
-    else -> null
-}

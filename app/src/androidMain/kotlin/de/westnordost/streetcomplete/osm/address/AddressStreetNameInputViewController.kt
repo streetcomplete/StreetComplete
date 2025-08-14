@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.osm.address
 
 import android.widget.EditText
+import androidx.compose.ui.text.intl.Locale
 import androidx.core.widget.doAfterTextChanged
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.meta.AbbreviationsByLanguage
@@ -11,8 +12,6 @@ import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.util.ktx.nonBlankTextOrNull
 import de.westnordost.streetcomplete.view.controller.AutoCorrectAbbreviationsViewController
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.launch
-import java.util.Locale
 
 /** Manages inputting a street name associated with an address. The user can either select it via a
  *  coordinate (see [selectStreetAt]) or by typing a name. If the name is an abbreviation, it is
@@ -50,7 +49,7 @@ class AddressStreetNameInputViewController(
     fun selectStreetAt(position: LatLon, radiusInMeters: Double): Boolean {
         val namesByLocale = nameSuggestionsSource
             .getNames(
-                points = listOf(position),
+                position = position,
                 maxDistance = radiusInMeters,
                 filter = roadsWithNamesFilter
             )
