@@ -38,6 +38,7 @@ class AddOpeningHours(
               or amenity = shower and (fee = yes or indoor = yes or location = indoor)
               or tourism = information and information = office
               or natural = cave_entrance and fee = yes
+              or tower:type = observation and fee = yes
               or """ +
 
         // The common list is shared by the name quest, the opening hours quest and the wheelchair quest.
