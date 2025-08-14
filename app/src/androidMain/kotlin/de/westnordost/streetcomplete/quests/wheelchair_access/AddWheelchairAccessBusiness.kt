@@ -94,7 +94,7 @@ class AddWheelchairAccessBusiness : OsmFilterQuestType<WheelchairAccess>(), Andr
                 "carpenter", "shoemaker", "tailor", "photographer", "dressmaker",
                 "electronics_repair", "key_cutter", "stonemason", "bookbinder",
                 "jeweller", "sailmaker", "jeweller", "watchmaker", "clockmaker",
-                "locksmith",  "window_construction", "upholsterer",
+                "locksmith",  "window_construction", "signmaker", "upholsterer",
                 "electrician", "boatbuilder",
 
                 // name & wheelchair
