@@ -81,7 +81,7 @@ class AddWheelchairAccessBusiness : OsmFilterQuestType<WheelchairAccess>(), Andr
             "office" to arrayOf(
                 // common
                 "insurance", "government", "travel_agent", "tax_advisor", "religion",
-                "employment_agency", "diplomatic", "coworking",
+                "employment_agency", "diplomatic", "coworking", "energy_supplier",
                 "estate_agent", "lawyer", "telecommunication", "educational_institution",
                 "association", "ngo", "it", "accountant", "property_management",
                 "bail_bond_agent", "financial_advisor",
