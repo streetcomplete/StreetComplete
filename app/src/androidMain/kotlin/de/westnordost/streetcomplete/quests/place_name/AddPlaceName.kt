@@ -70,6 +70,7 @@ class AddPlaceName(
                 "social_facility", "nursing_home", "childcare", "retirement_home", "social_centre", // social
                 "monastery",                                                             // religious
                 "kindergarten", "school", "college", "university", "research_institute", // education
+                "dojo",                                                                  // sport
             ),
             "tourism" to arrayOf(
                 // common
@@ -97,7 +98,7 @@ class AddPlaceName(
 
                 // name only
                 "dance", "nature_reserve", "marina", "horse_riding", "trampoline_park",
-                "bathing_place",
+                "bathing_place", "escape_game",
             ),
             "landuse" to arrayOf(
                 "cemetery", "allotments"
