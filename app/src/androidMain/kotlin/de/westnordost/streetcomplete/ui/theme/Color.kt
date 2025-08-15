@@ -42,11 +42,13 @@ val TeamColors = arrayOf(
     Color(0xff655555),
 )
 
-val White = Color(0xffffffff)
+val Color.Companion.GrassGreen get() = Color(0xff80b158)
+val Color.Companion.GrassGray get() = Color(0xff888888)
+val Color.Companion.LeafGreen get() = Color(0xff006a00)
 
-val GrassGreen = Color(0xff80b158)
-val GrassGray = Color(0xff888888)
-val LeafGreen = Color(0xff006a00)
+val Color.Companion.Location get() = Color(0xff536dfe)
+val Color.Companion.GeometryMarker get() = Color(0xffD140D0)
+val Color.Companion.Recording get() = Color(0xfffe1616)
 
 val LightColors = lightColors(
     primary = Color(0xff4141ba),
