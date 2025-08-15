@@ -43,8 +43,7 @@ class AddLevelThing : OsmElementQuestType<String>, AndroidQuest {
             or tourism = information and information !~ office|visitor_centre
           )
           and !level
-          and !location or location = outdoor
-          and (name or brand or noname = yes or name:signed = no)
+          and location != outdoor
     """.toElementFilterExpression() }
 
     override val changesetComment = "Determine on which level things are in a building"
