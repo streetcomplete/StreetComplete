@@ -20,7 +20,7 @@ class AddShelterCapacity : OsmFilterQuestType<Int>(), AndroidQuest {
               amenity = shelter
               and shelter_type = basic_hut
             )
-            or tourism=wilderness_hut
+            or tourism = wilderness_hut
           )
           and !capacity
           and !capacity:persons
