@@ -11,15 +11,14 @@ class AddStepCount : OsmFilterQuestType<Int>(), AndroidQuest {
 
     override val elementFilter = """
         nodes, ways with
-        ((
+        (
+          (
             highway = steps
             and (!indoor or indoor = no)
             and (!conveying or conveying = no)
+          )
+          or tower:type = observation
         )
-        or
-        (
-            tower:type = observation
-        ))
         and access !~ private|no
         and !step_count
     """
