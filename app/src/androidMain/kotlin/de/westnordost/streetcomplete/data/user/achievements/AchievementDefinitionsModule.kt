@@ -292,11 +292,11 @@ val links = listOf(
         R.string.link_osmapp_description
     ),
     Link(
-        "organic_maps",
-        "https://organicmaps.app/",
-        "Organic Maps",
+        "co_maps",
+        "https://comaps.app/",
+        "CoMaps",
         LinkCategory.MAPS,
-        Res.drawable.link_organic_maps,
+        Res.drawable.link_co_maps,
         R.string.link_organic_maps_description
     ),
     Link(
