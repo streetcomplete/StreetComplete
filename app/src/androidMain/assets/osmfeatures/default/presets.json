@@ -568,6 +568,34 @@
       "type": "boundary"
     }
   },
+  "type/site/climbing/crag": {
+    "icon": "temaki-climbing",
+    "geometry": ["relation"],
+    "tags": {
+      "type": "site",
+      "climbing": "crag"
+    },
+    "addTags": {
+      "climbing": "crag",
+      "site": "climbing",
+      "sport": "climbing",
+      "type": "site"
+    }
+  },
+  "type/site/climbing/area": {
+    "icon": "temaki-climbing",
+    "geometry": ["relation"],
+    "tags": {
+      "climbing": "area",
+      "type": "site"
+    },
+    "addTags": {
+      "climbing": "area",
+      "site": "climbing",
+      "sport": "climbing",
+      "type": "site"
+    }
+  },
   "type/route/trolleybus": {
     "icon": "temaki-trolleybus",
     "geometry": ["relation"],
@@ -702,6 +730,20 @@
     "tags": {
       "type": "route",
       "route": "detour"
+    }
+  },
+  "type/route/climbing": {
+    "icon": "temaki-climbing",
+    "geometry": ["relation"],
+    "tags": {
+      "type": "route",
+      "route": "climbing"
+    },
+    "addTags": {
+      "climbing": "route",
+      "route": "climbing",
+      "sport": "climbing",
+      "type": "route"
     }
   },
   "type/route/bus": {
@@ -1970,7 +2012,7 @@
     }
   },
   "shop/frame": {
-    "icon": "fas-vector-square",
+    "icon": "temaki-portrait-framed",
     "geometry": ["point", "area"],
     "tags": {
       "shop": "frame"
@@ -7510,6 +7552,13 @@
       "historic": "archaeological_site"
     }
   },
+  "historic/aircraft": {
+    "icon": "roentgen-plane",
+    "geometry": ["point", "area"],
+    "tags": {
+      "historic": "aircraft"
+    }
+  },
   "historic/memorial/plaque": {
     "icon": "temaki-plaque",
     "geometry": ["point", "vertex"],
@@ -9401,6 +9450,39 @@
     "geometry": ["point", "area"],
     "tags": {
       "club": "scout"
+    }
+  },
+  "climbing/route_bottom": {
+    "icon": "temaki-abseiling",
+    "geometry": ["point", "vertex"],
+    "tags": {
+      "climbing": "route_bottom"
+    },
+    "addTags": {
+      "sport": "climbing",
+      "climbing": "route_bottom"
+    }
+  },
+  "climbing/route": {
+    "icon": "temaki-climbing",
+    "geometry": ["line", "point"],
+    "tags": {
+      "climbing": "route"
+    },
+    "addTags": {
+      "climbing": "route",
+      "sport": "climbing"
+    }
+  },
+  "climbing/crag": {
+    "icon": "temaki-climbing",
+    "geometry": ["point"],
+    "tags": {
+      "climbing": "crag"
+    },
+    "addTags": {
+      "sport": "climbing",
+      "climbing": "crag"
     }
   },
   "cemetery/sector": {
@@ -12876,6 +12958,14 @@
       "amenity": "clinic",
       "healthcare": "clinic",
       "healthcare:speciality": "abortion"
+    }
+  },
+  "amenity/cafe/teahouse": {
+    "icon": "maki-cafe",
+    "geometry": ["point", "area"],
+    "tags": {
+      "amenity": "cafe",
+      "cuisine": "tea"
     }
   },
   "amenity/cafe/coffee_shop": {

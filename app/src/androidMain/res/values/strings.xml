@@ -1097,9 +1097,8 @@ A level counts as a roof level when its windows are in the roof. Subsequently, r
 
     <string name="quest_drinking_water_title2">Is the water potable here?</string>
     <string name="quest_drinking_water_potable_signed">Safe to drink (signed)</string>
-    <string name="quest_drinking_water_potable_unsigned">Safe to drink (unsigned)</string>
     <string name="quest_drinking_water_not_potable_signed">Not safe to drink (signed)</string>
-    <string name="quest_drinking_water_not_potable_unsigned">Not safe to drink (unsigned)</string>
+    <string name="quest_drinking_water_potable_unsigned2">No sign</string>
 
     <string name="quest_drinking_water_type_title2">Is drinking water available here? If so, what is its source?</string>
     <string name="quest_drinking_water_type_generic_water_fountain">Other water fountain</string>

@@ -363,7 +363,6 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
     <string name="quest_fee_answer_hours">"Závisí od času a dňa…"</string>
     <string name="quest_fee_add_times">"Pridať časy"</string>
     <string name="quest_housenumber_multiple_numbers">"Má viacero domových čísel"</string>
-    <string name="quest_housenumber_multiple_numbers_description">"Môžete jednoducho zadať čísla domov oddelené čiarkou alebo rozsah. Napríklad 1,3 alebo 2–6."</string>
     <string name="quest_bicycle_parking_type_stand">"Stojan (opora pre rám bicykla)"</string>
     <string name="quest_bicycle_parking_type_wheelbender">"Malý stojan (opora iba pre koleso)"</string>
     <string name="quest_bicycle_parking_type_shed">"Kôlňa"</string>
@@ -792,9 +791,7 @@ Všimnite si všetkých možností: v niektorých prípadoch nemusí byť zrejm�
     <string name="quest_bicycle_parking_fee_title">"Platí sa tu za parkovanie bicykla?"</string>
     <string name="quest_buildingType_house_description2">"samostatne stojaci rodinný dom"</string>
     <string name="quest_drinking_water_potable_signed">"Pitná voda (značená)"</string>
-    <string name="quest_drinking_water_potable_unsigned">"Pitná voda (neznačená)"</string>
     <string name="quest_drinking_water_not_potable_signed">"Nepitná voda (značená)"</string>
-    <string name="quest_drinking_water_not_potable_unsigned">"Nepitná voda (neznačená)"</string>
     <string name="quest_postboxRoyalCypher_title">"Je na tejto poštovej schránke kráľovský znak?"</string>
     <string name="quest_postboxRoyalCypher_type_none">"Nie je vidno žiadno kráľovský monogram"</string>
     <string name="quest_postboxRoyalCypher_type_scottish_crown">"Škótska koruna"</string>
@@ -1255,6 +1252,8 @@ Presunúť ho teraz?"</string>
     <string name="overlay_surface">"Povrchy"</string>
     <string name="overlay_path_surface_segregated">"Rozdelené na cyklo a pešiu časť"</string>
     <string name="quest_crossing_title2">"Nachádza sa tu prechod?"</string>
+    <string name="quest_crossing_yes">"Áno, určené k prechodu"</string>
+    <string name="quest_crossing_no">"Nie je určené k prechodu, avšak je možný prechod (napr. neformálne chodníky)"</string>
     <string name="quest_crossing_prohibited">"Nie, prechod je zakázaný alebo nemožný"</string>
     <string name="quest_hairdresser_title">"Akí zákazníci navštevujú kaderníctvo?"</string>
     <string name="quest_hairdresser_male_and_female">"Ktokoľvek"</string>
@@ -1421,4 +1420,17 @@ Poschodie sa počíta ako strešné, ak má okna v streche. Podobne, strechy bez
     <string name="pedestrian_zone_designated">"Určené pre bicyklovanie"</string>
     <string name="pedestrian_zone_allowed_sign">"Značka povoľuje jazdu na bicykli"</string>
     <string name="pedestrian_zone_no_sign">"Žiadne výslovné označenie o cyklistike tu nie je"</string>
+    <string name="team_mode_description_overlay_hint">"Ak používate prekrytia, každý z vás by mal použiť iné, pretože rozdelené sú iba úlohy."</string>
+    <string name="quest_dietType_glutenfree_name_title">"Ponúkajú sa tu bezlepkové výrobky?"</string>
+    <string name="quest_dietType_explanation_glutenfree">"Príprava bezlepkových výrobkov si vyžaduje znalosti, pretože bežné koreniny a omáčky môžu obsahovať lepok. Bezlepkové potraviny by mali byť ako také výslovne označené."</string>
+    <string name="quest_construction_minor_title">"Sú tieto menšie cestné práce dokončené?"</string>
+    <string name="link_opengeofiction_description">"Už vás nebaví mapovať realitu? Spoločne si vytvorte fiktívne mapy!"</string>
+    <string name="link_openclimbing_description">"Mapa lezeckých miest"</string>
+    <string name="overlay_mtb_scale">"MTB obtiažnosť"</string>
+    <string name="overlay_mtb_scale_0_description">"Pevný, priľnavý alebo prírodný povrch; žiadne prekážky; mierny sklon; široké zákruty."</string>
+    <string name="overlay_mtb_scale_2_description">"Sypký terén s väčšími koreňmi a kameňmi, ploché zrázy/nízke schody, sklon do 70 %; ľahké serpentiny; vyžaduje sa dôkladné brzdenie a prenášanie váhy."</string>
+    <string name="overlay_mtb_scale_3_description">"Klzký, sypký terén so suťami, balvanmi, veľkými koreňmi a kameňmi, vysokými schodmi a zložitými traverzmi; úzke serpentiny, sklon &gt; 70 %; vyžaduje sa veľmi dobrá rovnováha a presné brzdenie."</string>
+    <string name="overlay_mtb_scale_6_description">"Nebezpečný a nepriechodný terén, nevhodný pre horskú cyklistiku."</string>
+    <string name="compass">"Kompas"</string>
+    <string name="quest_tracktype_grade2">"Prevažne pevný"</string>
 </resources>

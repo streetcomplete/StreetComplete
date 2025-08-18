@@ -6,5 +6,4 @@ import de.westnordost.streetcomplete.resources.count_bicycle
 
 class AddBikeParkingCapacityForm : AAddCountInput() {
     override val icon = Res.drawable.count_bicycle
-    override val initialCount get() = element.tags["capacity"]?.toIntOrNull()
 }

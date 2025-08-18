@@ -75,13 +75,16 @@
           "terms": "parkir sepeda"
         },
         "amenity/bicycle_parking/building": {
-          "name": "Garasi Parkir Sepeda"
+          "name": "Garasi Parkir Sepeda",
+          "terms": "garasi sepeda,gedung parkir,parkir sepeda"
         },
         "amenity/bicycle_parking/lockers": {
-          "name": "Loker Sepeda"
+          "name": "Loker Sepeda",
+          "terms": "parkir sepeda"
         },
         "amenity/bicycle_parking/shed": {
-          "name": "Parkir Sepeda Teduh"
+          "name": "Parkir Sepeda Teduh",
+          "terms": "parkir sepeda"
         },
         "amenity/bicycle_rental": {
           "name": "Penyewaan Sepeda",
@@ -104,6 +107,10 @@
         "amenity/cafe": {
           "name": "Kafe",
           "terms": "warung kopi,bistro,teh,thai,kopi,kafe,cafe,warkop,jamu"
+        },
+        "amenity/cafe/bubble_tea": {
+          "name": "Teh Boba",
+          "terms": "boba,bubble milk tea,pearl milk tea,taiwanese tea drink,tapioca,pearl tea,boba drink"
         },
         "amenity/cafe/coffee_shop": {
           "name": "Kedai Kopi"
@@ -237,7 +244,8 @@
           "terms": "kantor pemadam kebakaran,damkar"
         },
         "amenity/food_court": {
-          "name": "Restoran Lesehan"
+          "name": "Taman Jajan",
+          "terms": "food court,taman jajan,lesehan,pujasera,pusat jajanan serbaada"
         },
         "amenity/fountain": {
           "name": "Air Mancur"
@@ -275,6 +283,10 @@
         },
         "amenity/motorcycle_parking": {
           "name": "Parkir Motor"
+        },
+        "amenity/motorcycle_rental": {
+          "name": "Sewa Sepeda Bermotor",
+          "terms": "rental motor,rental moped"
         },
         "amenity/music_school": {
           "name": "Sekolah Musik"
@@ -433,6 +445,10 @@
         "amenity/shelter/public_transport": {
           "name": "Hotel Transit"
         },
+        "amenity/shower": {
+          "name": "Kamar Mandi",
+          "terms": "wc,toilet"
+        },
         "amenity/smoking_area": {
           "name": "Ruang khusus merokok"
         },
@@ -567,6 +583,10 @@
         },
         "barrier/hedge": {
           "name": "Pagar Tanaman"
+        },
+        "barrier/height_restrictor": {
+          "name": "Pembatas Ketinggian",
+          "terms": "height barrier,height restriction barrier,maxheight,max height,maximum height measurer,tinggi max"
         },
         "barrier/kerb": {
           "name": "Kerb Jalan"
@@ -966,6 +986,9 @@
         "ford_line": {
           "name": "Arung sebidang dengan air"
         },
+        "golf/cartpath": {
+          "name": "Jalur Mobil Golf"
+        },
         "golf/fairway": {
           "name": "Jalur Golf"
         },
@@ -974,6 +997,9 @@
         },
         "golf/hole": {
           "name": "Lubang Golf"
+        },
+        "golf/path": {
+          "name": "Jalur Pejalan Kaki Golf"
         },
         "healthcare": {
           "name": "Fasilitas Kesehatan",
@@ -1032,7 +1058,7 @@
           "terms": "bridleway,kuda,jejak,jalan kuda"
         },
         "highway/bus_stop": {
-          "name": "Perhentian Bus"
+          "name": "Halte Bus"
         },
         "highway/construction": {
           "name": "Jalan dalam Pembangunan"
@@ -1053,9 +1079,16 @@
           "name": "Tempat Penyebrangan / Zebra Kros"
         },
         "highway/cycleway": {
-          "name": "Jalur Sepeda"
+          "name": "Jalur Sepeda",
+          "terms": "jalur sepeda"
         },
         "highway/cycleway/crossing": {
+          "name": "Jalur Penyebrangan Sepeda"
+        },
+        "highway/cycleway/crossing/bicycle_foot": {
+          "name": "Jalur Penyebrangan Sepeda & Pejalan Kaki"
+        },
+        "highway/cycleway/crossing/unmarked": {
           "name": "Jalur Penyebrangan Sepeda"
         },
         "highway/emergency_access_point": {
@@ -1112,7 +1145,16 @@
           "terms": "jalan penghubung bebas hambatan"
         },
         "highway/path": {
-          "name": "Jalur"
+          "name": "Jalur (umum)"
+        },
+        "highway/path/crossing": {
+          "name": "Jalur Penyebrangan Sepeda & Pejalan Kaki"
+        },
+        "highway/path/crossing/traffic_signals": {
+          "name": "Jalur Penyebrangan Sepeda & Pejalan Kaki dengan Lalin"
+        },
+        "highway/path/crossing/uncontrolled": {
+          "name": "Jalur Penyebrangan Sepeda & Pejalan Kaki Bermarka"
         },
         "highway/pedestrian_area": {
           "name": "Area Pejalan Kaki",
@@ -1275,8 +1317,14 @@
           "name": "Tugu Peringatan",
           "terms": "tugu peringatan"
         },
+        "historic/memorial/blue_plaque-GB-IE": {
+          "name": "Plakat Biru"
+        },
         "historic/memorial/plaque": {
           "name": "Plakat Peringatan"
+        },
+        "historic/memorial/stolperstein-EU": {
+          "name": "Batu Sandungan"
         },
         "historic/monument": {
           "name": "Monumen",
@@ -1367,6 +1415,10 @@
         "landuse/construction": {
           "name": "Area Konstruksi",
           "terms": "pembangunan,bangun,konstruksi"
+        },
+        "landuse/education": {
+          "name": "Kawasan Pendidikan",
+          "terms": "fasilitas pendidikan,kampus,sekolah"
         },
         "landuse/farm": {
           "name": "Pertanian"
@@ -1569,6 +1621,9 @@
           "name": "Lapangan Basket",
           "terms": "lapangan basket"
         },
+        "leisure/pitch/equestrian": {
+          "name": "Lapangan Pacuan Kuda"
+        },
         "leisure/pitch/skateboard": {
           "name": "Arena Papan Seluncur",
           "terms": "skating,skateboarding"
@@ -1599,6 +1654,13 @@
         },
         "leisure/sports_centre": {
           "name": "Gedung Pusat Olahraga"
+        },
+        "leisure/sports_centre/climbing": {
+          "name": "Panjat Tebing",
+          "terms": "climbing gym,panjat tebing,panjat"
+        },
+        "leisure/sports_centre/horse_racing": {
+          "name": "Lapangan Balapan Kuda"
         },
         "leisure/stadium": {
           "name": "Stadion",
@@ -2206,6 +2268,9 @@
           "name": "PLTG",
           "terms": "pembangkit listrik"
         },
+        "power/plant/source/hydro": {
+          "name": "PLTA"
+        },
         "power/plant/source/method/photovoltaic": {
           "name": "PLTS",
           "terms": "pembangkit listrik,surya"
@@ -2219,7 +2284,8 @@
           "terms": "pembangkit listrik"
         },
         "power/plant/source/solar": {
-          "name": "PLTS"
+          "name": "PLTS",
+          "terms": "panel surya,sel surya"
         },
         "power/plant/source/waste": {
           "name": "PLTSa",
@@ -2243,10 +2309,17 @@
           "name": "Trafo"
         },
         "public_transport/platform/bus_point": {
-          "name": "Perhentian Bis"
+          "name": "Halte Bis"
         },
         "public_transport/platform/bus_tram_point": {
           "name": "Halte Bis dan Tram"
+        },
+        "public_transport/platform/subway": {
+          "name": "Peron Kereta Metro",
+          "terms": "mrt,subway"
+        },
+        "public_transport/platform/subway_point": {
+          "name": "Stasiun / Peron Kereta Metro"
         },
         "public_transport/platform/train": {
           "name": "Peron Kereta"
@@ -2268,6 +2341,10 @@
         "public_transport/station_ferry": {
           "name": "Pelabuhan Feri"
         },
+        "public_transport/station_subway": {
+          "name": "Stasiun Kereta Metro",
+          "terms": "mrt,subway"
+        },
         "public_transport/station_train": {
           "name": "Stasiun Kereta"
         },
@@ -2288,7 +2365,7 @@
           "name": "Rel Tidak Terpakai"
         },
         "railway/level_crossing": {
-          "name": "Perlintasan Sebidang",
+          "name": "Perlintasan Rel Sebidang",
           "terms": "penyeberangan,penyebrangan,zebra cross,crossing"
         },
         "railway/light_rail": {
@@ -2322,12 +2399,11 @@
           "name": "Stasiun Kereta"
         },
         "railway/subway": {
-          "name": "Rel Kereta Bawah Tanah",
-          "terms": "mrt",
-          "aliases": "Rel Subway\nTrek Subway"
+          "name": "Rel Kereta Metro",
+          "terms": "mrt,subway"
         },
         "railway/subway_entrance": {
-          "name": "Pintu Terowongan"
+          "name": "Pintu Terowongan Kereta Metro"
         },
         "railway/switch": {
           "name": "Wesel"
@@ -2461,6 +2537,9 @@
           "name": "Jasa Cuci Kering",
           "terms": "dry clean"
         },
+        "shop/electrical": {
+          "terms": "kabel,listrik,kipas,led,lampu,daya,kawat"
+        },
         "shop/electronics": {
           "name": "Toko Elektronik"
         },
@@ -2523,6 +2602,10 @@
         },
         "shop/hifi": {
           "name": "Toko Hifi"
+        },
+        "shop/houseware": {
+          "name": "Toko Parabot Rumah",
+          "terms": "perabotan"
         },
         "shop/interior_decoration": {
           "name": "Toko Dekorasi Interior",
@@ -2602,6 +2685,10 @@
         "shop/photo": {
           "name": "Toko Fotografi"
         },
+        "shop/psychic": {
+          "name": "Dukun",
+          "terms": "cenayang,indigo"
+        },
         "shop/pyrotechnics": {
           "name": "Toko Kembang Api"
         },
@@ -2642,6 +2729,9 @@
         },
         "shop/tea": {
           "name": "Toko Teh"
+        },
+        "shop/telecommunication": {
+          "name": "Toko telekomunikasi"
         },
         "shop/ticket": {
           "name": "Penjual Tiket"
@@ -2733,7 +2823,7 @@
         },
         "tourism/camp_site": {
           "name": "Perkemahan",
-          "aliases": "Tempat Berkemah"
+          "terms": "kemah,berkemah,kemping"
         },
         "tourism/caravan_site": {
           "name": "Taman RV"
@@ -2807,6 +2897,16 @@
           "name": "Pita Kejut",
           "terms": "marka kejut,pita penggaduh,garis kejut,rumble strip"
         },
+        "traffic_sign": {
+          "name": "Rambu Lalu Lintas",
+          "terms": "rambu lalin,marka"
+        },
+        "traffic_sign/city_limit": {
+          "name": "Rambu Batas Wilayah"
+        },
+        "traffic_sign/maxspeed": {
+          "name": "Rambu Batas Kecepatan"
+        },
         "type/boundary": {
           "name": "Batas"
         },
@@ -2853,6 +2953,10 @@
         "type/route/road": {
           "name": "Rute Jalan"
         },
+        "type/route/subway": {
+          "name": "Rute Kereta Metro",
+          "terms": "mrt,subway"
+        },
         "type/route/train": {
           "name": "Rute Kereta"
         },
@@ -2879,6 +2983,9 @@
         },
         "waterway/drain": {
           "name": "Saluran / Irigasi"
+        },
+        "waterway/lock_gate": {
+          "name": "Pintu Air"
         },
         "waterway/river": {
           "name": "Sungai",

@@ -469,6 +469,9 @@
         "amenity/nightclub": {
           "name": "Noćni klub"
         },
+        "amenity/nightclub/lgbtq": {
+          "name": "LGBTQ+ Noćni klub"
+        },
         "amenity/parcel_locker": {
           "name": "Ormarić za pakete"
         },
@@ -503,8 +506,20 @@
         "amenity/place_of_worship/christian": {
           "name": "Kršćanska crkva"
         },
+        "amenity/place_of_worship/jewish": {
+          "name": "Židovska sinagoga"
+        },
         "amenity/place_of_worship/muslim": {
           "name": "Muslimanska džamija"
+        },
+        "amenity/place_of_worship/shinto": {
+          "name": "Shinto oltar"
+        },
+        "amenity/place_of_worship/sikh": {
+          "name": "Sikh hram"
+        },
+        "amenity/place_of_worship/taoist": {
+          "name": "Tao hram"
         },
         "amenity/planetarium": {
           "name": "Planetarij",
@@ -609,6 +624,9 @@
         "amenity/restaurant/pizza": {
           "name": "Pizzeria"
         },
+        "amenity/restaurant/ramen": {
+          "name": "Ramen restoran"
+        },
         "amenity/restaurant/seafood": {
           "name": "Riblji restoran"
         },
@@ -660,6 +678,9 @@
         },
         "amenity/social_facility/homeless_shelter": {
           "name": "Sklonište za beskućnike"
+        },
+        "amenity/stripclub": {
+          "name": "Striptiz klub"
         },
         "amenity/studio": {
           "name": "Studio"
@@ -735,6 +756,9 @@
         "amenity/vending_machine/excrement_bags": {
           "name": "Vrećice za pseći izmet"
         },
+        "amenity/vending_machine/feminine_hygiene": {
+          "name": "Automat za žensku higijenu"
+        },
         "amenity/vending_machine/food": {
           "name": "Automat za prodaju hrane"
         },
@@ -752,6 +776,9 @@
         },
         "amenity/vending_machine/parking_tickets": {
           "name": "Automat za parkirališne karte"
+        },
+        "amenity/vending_machine/pizza": {
+          "name": "Automat prodaju pizze"
         },
         "amenity/vending_machine/public_transport_tickets": {
           "name": "Automat za karte za javni prijevoz"
@@ -799,9 +826,18 @@
         "attraction": {
           "name": "Atrakcija"
         },
+        "attraction/amusement_ride": {
+          "name": "Vožnja u zabavnom parku"
+        },
         "attraction/animal": {
           "name": "Životinjska nastamba",
           "terms": "životinja,kavez,akvarij,terarij,dupinarij,safari,lav,majmun,slon,riba,insekt,zmija,zoološki,zoo"
+        },
+        "attraction/big_wheel": {
+          "name": "Panoramski kotač"
+        },
+        "attraction/bumper_car": {
+          "name": "Električni autići za sudaranje"
         },
         "attraction/bungee_jumping": {
           "name": "Bungee skokovi"
@@ -812,6 +848,9 @@
         },
         "attraction/maze": {
           "name": "Labirint"
+        },
+        "attraction/roller_coaster": {
+          "name": "Vlak smrti"
         },
         "attraction/train": {
           "name": "Turistički vlakić"
@@ -826,7 +865,8 @@
           "name": "Blok"
         },
         "barrier/bollard": {
-          "name": "Stup"
+          "name": "Stup",
+          "terms": "stupić"
         },
         "barrier/border_control": {
           "name": "Granični prijelaz"
@@ -1015,7 +1055,8 @@
           "name": "Zgrada hotela"
         },
         "building/house": {
-          "name": "Kuća"
+          "name": "Kuća",
+          "terms": "kuća,dom"
         },
         "building/houseboat": {
           "name": "Brod-kuća"
@@ -1181,6 +1222,9 @@
         "craft/locksmith": {
           "name": "Bravar"
         },
+        "craft/metal_construction": {
+          "name": "Obrađivač metala"
+        },
         "craft/painter": {
           "name": "Slikar"
         },
@@ -1269,6 +1313,9 @@
           "name": "Garaža hitne pomoći",
           "terms": "garaža hitne pomoći,stanica hitne pomoći,stanica za hitnu pomoć,hitna pomoć"
         },
+        "emergency/defibrillator": {
+          "name": "Defibrilator"
+        },
         "emergency/fire_extinguisher": {
           "name": "Aparat za gašenje požara",
           "terms": "vatrogasni aparat"
@@ -1300,6 +1347,9 @@
         },
         "emergency/phone": {
           "name": "Telefon za nuždu"
+        },
+        "emergency/siren": {
+          "name": "Sirena"
         },
         "entrance": {
           "name": "Ulaz / izlaz",
@@ -1650,6 +1700,9 @@
         "historic": {
           "name": "Povijesno područje"
         },
+        "historic/aircraft": {
+          "name": "Povijesna letjelica"
+        },
         "historic/archaeological_site": {
           "name": "Arheološko područje"
         },
@@ -1736,6 +1789,9 @@
         },
         "indoor/wall": {
           "name": "Unutarnji zid"
+        },
+        "internet_access/wlan": {
+          "name": "Wi-Fi pristupna točka"
         },
         "junction": {
           "name": "Križanje"
@@ -1833,6 +1889,9 @@
         "landuse/orchard": {
           "name": "Voćnjak"
         },
+        "landuse/plant_nursery": {
+          "name": "Rasadnik biljaka"
+        },
         "landuse/pond": {
           "name": "Ribnjak, Jezerce, Bara"
         },
@@ -1853,6 +1912,9 @@
         },
         "landuse/residential/apartments": {
           "name": "Apartmanski kompleks"
+        },
+        "landuse/residential/trailer_park": {
+          "name": "Park za mobilne kućice"
         },
         "landuse/retail": {
           "name": "Trgovačka zona"
@@ -1881,6 +1943,9 @@
           "name": "Zelena površina po kojoj se može hodati - u UK",
           "terms": "zelena površina,zelena površina po kojoj se može hodati,zajednička zelena površina"
         },
+        "leisure/dance": {
+          "name": "Plesna dvorana"
+        },
         "leisure/dancing_school": {
           "name": "Plesna škola"
         },
@@ -1889,6 +1954,9 @@
         },
         "leisure/dog_park": {
           "name": "Park za pse"
+        },
+        "leisure/escape_game": {
+          "name": "Escape Room"
         },
         "leisure/firepit": {
           "name": "Ložište"
@@ -1899,6 +1967,9 @@
         "leisure/fitness_centre": {
           "name": "Zatvoreni prostor za vježbanje",
           "terms": "teretana,aerobik,pilates"
+        },
+        "leisure/fitness_centre/yoga": {
+          "name": "Joga studio"
         },
         "leisure/fitness_station": {
           "name": "Vanjski prostor za vježbanje"
@@ -2003,6 +2074,9 @@
         },
         "leisure/pitch/handball": {
           "name": "Teren za rukomet"
+        },
+        "leisure/pitch/padel": {
+          "name": "Padel teren"
         },
         "leisure/pitch/paintball": {
           "name": "Teren za paintball"
@@ -2206,6 +2280,9 @@
         "man_made/manhole": {
           "name": "Šaht"
         },
+        "man_made/mast": {
+          "name": "Jarbol"
+        },
         "man_made/mast/communication/radio": {
           "name": "Radijska antena"
         },
@@ -2309,6 +2386,9 @@
         },
         "man_made/tunnel": {
           "name": "Površina tunela"
+        },
+        "man_made/video_wall": {
+          "name": "Digitalni ekran"
         },
         "man_made/wastewater_plant": {
           "name": "Pogon za pročiščivanje otpadnih voda",
@@ -2524,6 +2604,9 @@
         "natural/wetland": {
           "name": "Močvara",
           "terms": "močvara,močvarno tlo"
+        },
+        "natural/wood": {
+          "name": "Prirodno drvo"
         },
         "noexit/yes": {
           "name": "Bez izlaza"
@@ -2975,6 +3058,9 @@
         "railway/train_wash": {
           "name": "Praonica vagona"
         },
+        "railway/tram": {
+          "name": "Tramvajska pruga"
+        },
         "railway/tram_level_crossing": {
           "name": "Prijelaz preko tramvajske pruge",
           "terms": "prijelaz preko tramvajske pruge"
@@ -3335,6 +3421,9 @@
         },
         "shop/newsagent": {
           "name": "Kiosk s novinama"
+        },
+        "shop/nuts": {
+          "name": "Prodavaonica orašastih plodova"
         },
         "shop/optician": {
           "name": "Optičar",

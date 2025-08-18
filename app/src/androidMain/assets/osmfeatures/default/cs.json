@@ -257,6 +257,10 @@
           "name": "Občerstvení s kavárnou",
           "terms": "americano,várka,kafe,kavárna,káva,café,cappuccino,kakao,obchod s kávou,překapávaná,espresso,horké nápoje,latte,macchiato,čaj"
         },
+        "amenity/cafe/teahouse": {
+          "name": "Čajovna",
+          "terms": "čajový domek,čajový dům,čajový pokoj,čajová místnost,pití čaje"
+        },
         "amenity/car_pooling": {
           "name": "Stanice spolujízdy",
           "terms": "sdílení aut,spolujízda,sdílení výtahu,sdílení jízdy"
@@ -1895,6 +1899,18 @@
           "name": "Hřbitovní oddíl",
           "terms": "pohřebiště,hřbitov,krchov,kostel,kolumbárium,hřbitovy,krchovy,mauzoleum,hrobka"
         },
+        "climbing/crag": {
+          "name": "Skalní stěna",
+          "terms": "lezecká stěna,horolezecká stěna,lezecké místo,místo pro lezení,skály,skála,lezecké cesty,lezecká cesta,horolezení,lezení,boulder,lezecký sektor,věž,skalní věž"
+        },
+        "climbing/route": {
+          "name": "Lezecká cesta",
+          "terms": "lezecká trasa,lezecký výstup,cesta,výstup,výlez,spára,horolezecká cesta,trasa,lezecká délka"
+        },
+        "climbing/route_bottom": {
+          "name": "Lezecká cesta (začátek)",
+          "terms": "horolezení,lezecká cesta,spodek cesty,začátek skály,lezecká oblast,lezecký sektor,věž"
+        },
         "club": {
           "name": "Klub",
           "terms": "sociální"
@@ -2198,7 +2214,7 @@
           "terms": "požární zátka,studna na požární vodu,podzemní hydrant"
         },
         "emergency/fire_service_inlet": {
-          "name": "Přípojka hasičského sboru",
+          "name": "Přípojka požárního vodovodu",
           "terms": "přívod stavebního hydrantu,nabitá stoupačka,přívod suchého stoupacího potrubí,suché stoupací potrubí,fdc,přívod požární ochrany,přívod požárního sprinkleru,přívod stoupačky,stoupací potrubí,přívod mokré stoupačky,mokré stoupací potrubí"
         },
         "emergency/first_aid_kit": {
@@ -2805,6 +2821,10 @@
           "name": "Památné místo",
           "terms": "historické místo,hrad,pevnost,zámeček,zámek,ruina,hradiště,archeologické místo,archeologické naleziště"
         },
+        "historic/aircraft": {
+          "name": "Historické letadlo",
+          "terms": "historický letoun,staré letadlo,létací stroj,létající stroj,blériot,zastaralé letadlo"
+        },
         "historic/archaeological_site": {
           "name": "Archeologické naleziště",
           "terms": "archeologické naleziště,vykopávky,archeologický průzkum"
@@ -2852,6 +2872,10 @@
         "historic/memorial": {
           "name": "Památník",
           "terms": "pamětihodnost,památník,pomník,hrdina"
+        },
+        "historic/memorial/blue_plaque-GB-IE": {
+          "name": "Modrá plaketa",
+          "terms": "modrá pamětní deska"
         },
         "historic/memorial/plaque": {
           "name": "Pamětní deska",
@@ -6328,6 +6352,10 @@
           "name": "Autobusová trasa",
           "terms": "autobusová trasa,autobusová linka,autobus,bus,autobusové spojení,autobusový spoj"
         },
+        "type/route/climbing": {
+          "name": "Lezecká cesta",
+          "terms": "lezecká trasa,lezecký výstup,cesta,výstup,výlez,spára,horolezecká cesta,trasa,lezecká délka"
+        },
         "type/route/detour": {
           "name": "Trasa objížďky",
           "terms": "objížďka,trasa objížďky,náhradní trasa"
@@ -6403,6 +6431,14 @@
         "type/site": {
           "name": "Uskupení",
           "terms": "site,uskupení,seskupení,skupina,seznam,místo"
+        },
+        "type/site/climbing/area": {
+          "name": "Lezecká oblast",
+          "terms": "lezecké místo,skalní oblast,oblast pro lezení,horolezecká oblast,skály,lezecký prostor,lezecký region"
+        },
+        "type/site/climbing/crag": {
+          "name": "Skalní stěna",
+          "terms": "lezecká stěna,horolezecká stěna,lezecké místo,místo pro lezení,skály,skála,lezecké cesty,lezecká cesta,horolezení,lezení,boulder"
         },
         "type/waterway": {
           "name": "Vodní tok",

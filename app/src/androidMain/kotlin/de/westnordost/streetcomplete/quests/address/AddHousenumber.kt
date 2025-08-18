@@ -200,6 +200,7 @@ private val buildingsWithMissingAddressFilter by lazy { """
       and !addr:streetnumber
       and !noaddress
       and !nohousenumber
+      and addr:housenumber:signed != no
 """.toElementFilterExpression() }
 
 private val buildingTypesThatShouldHaveAddresses = listOf(

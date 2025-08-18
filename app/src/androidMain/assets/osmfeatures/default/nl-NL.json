@@ -759,7 +759,7 @@
           "name": "Ingang/uitgang van parkeergarage"
         },
         "amenity/parking_space": {
-          "name": "Parkeerplaats",
+          "name": "Parkeervak",
           "terms": "individuele parkeerplaats,parkeervak"
         },
         "amenity/parking_space/disabled": {
@@ -2780,6 +2780,9 @@
           "name": "Gedenkteken",
           "terms": "gedenkteken"
         },
+        "historic/memorial/blue_plaque-GB-IE": {
+          "name": "Blue plaque"
+        },
         "historic/memorial/plaque": {
           "name": "Gedenkplaat",
           "terms": "herinnering,herdenking,plakkaat,bord,nagedachtenis"
@@ -3966,8 +3969,8 @@
           "terms": "ravijn,talud"
         },
         "natural/scrub": {
-          "name": "Scrubland",
-          "terms": "kreupelhout,ruigte,savanne,prairie,pampa"
+          "name": "Struik",
+          "terms": "struik"
         },
         "natural/shingle": {
           "name": "Kiezelstrand"

@@ -2033,6 +2033,9 @@
           "name": "Memorial",
           "terms": "memorial"
         },
+        "historic/memorial/blue_plaque-GB-IE": {
+          "name": "Placa blava"
+        },
         "historic/memorial/plaque": {
           "name": "Placa commemorativa"
         },
