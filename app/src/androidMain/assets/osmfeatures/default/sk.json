@@ -438,6 +438,10 @@
         "amenity/doctors/surgery": {
           "name": "Chirurg"
         },
+        "amenity/doctors/trauma": {
+          "name": "Úrazový chirurg",
+          "terms": "urazovy chirurg,úrazová chirurgia,urazova chirurgia,traumatológ,traumatolog"
+        },
         "amenity/doctors/urology": {
           "name": "Urológ"
         },
@@ -1513,7 +1517,8 @@
           "name": "Farmárska neobytná budova"
         },
         "building/fire_station": {
-          "name": "Budova hasičskej stanice"
+          "name": "Budova hasičskej stanice",
+          "terms": "budova hasickej stanice,hasičská stanica,hasicska stanica,požiarna stanica,poziarna stanica,požiarna zbrojnica,poziarna zbrojnica,hasičská zbrojnica,hasicska zbrojnica"
         },
         "building/garage": {
           "name": "Súkromná garáž",
@@ -1938,17 +1943,27 @@
           "terms": "civilná ochrana,civilna ochrana"
         },
         "emergency/fire_alarm": {
-          "name": "Hlásič požiaru"
+          "name": "Hlásič požiaru",
+          "terms": "hlasic poziaru,požiarny alarm,poziarny alarm"
         },
         "emergency/fire_extinguisher": {
           "name": "Hasiaci prístroj"
         },
         "emergency/fire_hose": {
-          "name": "Hasiaca hadica"
+          "name": "Požiarna hadica",
+          "terms": "poziarna hadica"
         },
         "emergency/fire_hydrant": {
           "name": "Požiarny hydrant",
           "terms": "poziarny hydrant,hydrant,zdroj vody,hadica,uzáver vod,uzaver vody"
+        },
+        "emergency/fire_hydrant/pillar": {
+          "name": "Stĺpik požiarneho hydrantu",
+          "terms": "stlpik poziarneho hydrantu,nadzemný hydrant,nadzemny hydrant,hydrantový stĺpik,hydrantovy stlpik"
+        },
+        "emergency/fire_hydrant/underground": {
+          "name": "Podzemný požiarny hydrant",
+          "terms": "podzemny poziarny hydrant,podzemný hydrant,podzemny hydrant"
         },
         "emergency/fire_service_inlet": {
           "name": "Prípojka požiarneho vodovodu",
@@ -2511,11 +2526,14 @@
         },
         "historic/manor": {
           "name": "Kaštieľ",
-          "terms": "kastiel,dom panstva,pansky dom"
+          "terms": "kastiel,dom panstva,panský dom,pansky dom,šlachtické sídlo,slachticke sidlo,kúria,kuria,zámoček,zamocek"
         },
         "historic/memorial": {
           "name": "Pamätník",
           "terms": "pamätihodnosť,pamatihodnost,pamatnik,pomnik,pamätník,pomník,snp,hrdina"
+        },
+        "historic/memorial/blue_plaque-GB-IE": {
+          "name": "Modrá plaketa"
         },
         "historic/memorial/plaque": {
           "name": "Pamätná tabuľa",
@@ -2623,7 +2641,7 @@
         },
         "landuse/farmland": {
           "name": "Pestovateľská plocha",
-          "terms": "pole,polia,záhrady,zahrady,pestovatelska plocha"
+          "terms": "pole,polia,pestovatelska plocha,poľnohospodárska pôda,polnohospodarska poda,pôda,poda"
         },
         "landuse/farmyard": {
           "name": "Farma",
@@ -4797,7 +4815,8 @@
           "name": "Obchod s módnymi doplnkami"
         },
         "shop/fireplace": {
-          "name": "Obchod s krbmi a kachľami"
+          "name": "Obchod s krbmi a kachľami",
+          "terms": "obchod s kachľami,obchod s kachlami,krby,kachle,krbové kachle"
         },
         "shop/fishing": {
           "name": "Obchod s rybárskymi potrebami"
@@ -4847,7 +4866,7 @@
           "terms": "darcekovy obchod,obchod s darcekmi,obchod s darčekmi,suveníry,suveniry"
         },
         "shop/greengrocer": {
-          "name": "Predajňa ovocia alebo zeleniny",
+          "name": "Predajňa ovocia a zeleniny",
           "terms": "predajna ovocia alebo zeleniny,zelovoc,ovocie,zelenina,ovocie zelenina,ovocie a zelenina"
         },
         "shop/hairdresser": {

@@ -363,8 +363,6 @@ U suprotnom možete preuzeti drugu tipkovnicu u trgovini aplikacija. Popularne t
     <string name="quest_fee_answer_hours">"Ovisi o satu i danu…"</string>
     <string name="quest_fee_add_times">"Dodaj vremena"</string>
     <string name="quest_housenumber_multiple_numbers">"Ima više kućnih brojeva"</string>
-    <string name="quest_housenumber_multiple_numbers_description">"Možete jednostavno unijeti kućne brojeve odvojene zarezom, ili raspone.
-Na primjer 1,3 ili 2–6."</string>
     <string name="quest_bicycle_parking_type_stand">"Klamerica (pridržava cijelu ramu)"</string>
     <string name="quest_bicycle_parking_type_wheelbender">"Spirala (pridržava samo kotač)"</string>
     <string name="quest_bicycle_parking_type_shed">"Šupa"</string>
@@ -796,9 +794,7 @@ Ako su neke trake rezervirane za autobuse, umjesto toga ostavite bilješku."</st
     <string name="quest_bicycle_parking_fee_title">"Naplaćuje li se parkiranje bicikla ovdje?"</string>
     <string name="quest_buildingType_house_description2">"Obiteljska kuća (bez okućnice)"</string>
     <string name="quest_drinking_water_potable_signed">"Sigurno za piće (s oznakom)"</string>
-    <string name="quest_drinking_water_potable_unsigned">"Sigurno za piće (bez oznake)"</string>
     <string name="quest_drinking_water_not_potable_signed">"Nije za piće (s oznakom)"</string>
-    <string name="quest_drinking_water_not_potable_unsigned">"Nije za piće (bez oznake)"</string>
     <string name="quest_postboxRoyalCypher_title">"Koja je kraljevska šifra na ovom poštanskom sandučiću?"</string>
     <string name="quest_postboxRoyalCypher_type_none">"Nije vidljiva kraljevska šifra"</string>
     <string name="quest_postboxRoyalCypher_type_scottish_crown">"Škotska Kruna"</string>

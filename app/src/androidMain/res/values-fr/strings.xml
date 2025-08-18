@@ -69,7 +69,7 @@
     <string name="quest_openingHours_comment_title">"Indiquez les horaires d’ouverture"</string>
     <string name="quest_openingHours_comment_description">"Soyez concis, utilisez de préférence la formulation de la pancarte, p. ex. « sur rendez-vous ». L’absence de pancarte ne signifie pas forcément qu’il n’y a pas d’horaires d’ouverture réguliers."</string>
     <string name="quest_roofShape_title">"Quelle forme a le toit de ce bâtiment ?"</string>
-    <string name="quest_roofShape_select_one">"Sélectionner une forme :"</string>
+    <string name="quest_roofShape_select_one">"Sélectionner une :"</string>
     <string name="quest_roofShape_show_more">"Plus de formes…"</string>
     <string name="quest_roofShape_answer_many">"Il a plusieurs formes différentes"</string>
     <string name="map_btn_zoom_out">"Zoom arrière"</string>
@@ -192,7 +192,7 @@ S’il n’y a pas de panneau applicable à ce tronçon le long de la voie, les 
     <string name="quest_sport_gaelic_games">"Jeux gaéliques"</string>
     <string name="quest_sport_sepak_takraw">"Sepak Takraw"</string>
     <string name="quest_wheelchairAccess_limited">"En partie"</string>
-    <string name="quest_bikeParkingCapacity_hint">"Notez que la plupart des arceaux peuvent accueillir un vélo de chaque côté."</string>
+    <string name="quest_bikeParkingCapacity_hint">"Notez que la plupart des arceaux peuvent accueillir un vélo de chaque côté, et pour les râteliers, vous devrez peut-être estimer combien vous pouvez en garer."</string>
     <string name="quest_sport_roller_skating">"Patin à roulettes"</string>
     <string name="quest_wheelchairAccess_limited_description_business">"« En partie » signifie qu’il n’y a pas plus d’une marche pour accéder au lieu et que la plupart des pièces à l’intérieur sont accessibles en fauteuil roulant."</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">"« En partie » signifie qu’il n’y a qu’une seule marche pour y accéder."</string>
@@ -363,7 +363,6 @@ Sinon, vous pouvez télécharger un autre clavier dans l’app store. Les clavie
     <string name="quest_fee_answer_hours">"Dépend du jour et de l’heure…"</string>
     <string name="quest_fee_add_times">"Ajouter des horaires"</string>
     <string name="quest_housenumber_multiple_numbers">"Il y a plusieurs numéros de maison"</string>
-    <string name="quest_housenumber_multiple_numbers_description">"Vous pouvez simplement saisir des numéros séparés par des virgules, ou des intervalles.\nPar exemple : 1,3 ou 2-6."</string>
     <string name="quest_bicycle_parking_type_stand">"Arceaux (soutient le cadre du vélo)"</string>
     <string name="quest_bicycle_parking_type_wheelbender">"Râteliers (pince-roues)"</string>
     <string name="quest_bicycle_parking_type_shed">"Abri collectif"</string>
@@ -466,7 +465,7 @@ Sinon, vous pouvez télécharger un autre clavier dans l’app store. Les clavie
     <string name="dialog_tutorial_upload">"Pour envoyer vos modifications manuellement, utilisez le bouton du menu principal qui ressemble à ceci."</string>
     <string name="quest_segregated_separated">"Séparés l’un de l’autre"</string>
     <string name="quest_segregated_mixed">"Cyclistes et piétons partagent le même espace"</string>
-    <string name="quest_maxheight_title">"Quelle est la limite de hauteur à cet endroit ?"</string>
+    <string name="quest_maxheight_title">"Quelle est la hauteur mesurée ici ?"</string>
     <string name="quest_maxheight_answer_noSign">"Il n’y a pas de panneau…"</string>
     <string name="quest_maxheight_unusualInput_confirmation_description">"Cette hauteur semble improbable. Cette réponse est-elle correcte ?"</string>
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
@@ -760,7 +759,7 @@ accomplis"</string>
     <string name="quest_lanes_answer_noLanes">"Pas de voies peintes"</string>
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">"Il y a une voie à double sens pour le tourne-à-gauche"</string>
     <string name="quest_address_answer_no_housenumber_message2b">"Est-ce correct ?"</string>
-    <string name="quest_maxheight_below_bridge_title">"Quelle est la limite de hauteur sous le pont ?"</string>
+    <string name="quest_maxheight_below_bridge_title">"Quelle est la hauteur mesurée sous le pont ?"</string>
     <string name="quest_maxheight_split_way_hint">"Cette question est aussi posée pour les routes qui passent sous des ponts, des toits, des tuyauteries aériennes, etc.
 Si cela ne concerne pas la totalité de la voie, vous pouvez répondre « %s »."</string>
     <string name="quest_tactile_paving_kerb_title">"Y a t-il un revêtement podotactile à cet endroit ?"</string>
@@ -800,9 +799,7 @@ Prenez garde de voire toutes les options, certains cas sont non triviaux, comme 
     <string name="quest_bicycle_parking_fee_title">"Doit-on payer pour garer son vélo ici ?"</string>
     <string name="quest_buildingType_house_description2">"maison familiale mitoyenne"</string>
     <string name="quest_drinking_water_potable_signed">"Eau potable (panneau)"</string>
-    <string name="quest_drinking_water_potable_unsigned">"Eau potable (sans panneau)"</string>
     <string name="quest_drinking_water_not_potable_signed">"Eau non potable (panneau)"</string>
-    <string name="quest_drinking_water_not_potable_unsigned">"Eau non potable (sans panneau)"</string>
     <string name="quest_postboxRoyalCypher_title">"Quel est le monogramme royal de cette boîte aux lettres ?"</string>
     <string name="quest_postboxRoyalCypher_type_none">"Aucun monogramme royal visible"</string>
     <string name="quest_postboxRoyalCypher_type_scottish_crown">"La Couronne d’Écosse"</string>
@@ -1001,19 +998,19 @@ Alternativement, vous pouvez laisser une note (avec une photo)."</string>
     <string name="quest_smoothness_wrong_surface">"La surface est différente"</string>
     <string name="quest_smoothness_surface_value">"La surface est tagguée comme :"</string>
     <string name="quest_smoothness_obstacle">"Il y a un obstacle"</string>
-    <string name="quest_smoothness_obstacle_hint">"Veuillez donner une réponse générale pour l’homogénéité de la surface. Les obstacles ponctuels comme les bordures, dos d'âne ou bovistop peuvent être ignorés. Les obstacles répétés ou inattendus doivent être pris en compte dans la réponse."</string>
+    <string name="quest_smoothness_obstacle_hint">"Veuillez donner une réponse générale pour l’homogénéité de la surface. Les obstacles ponctuels comme les bordures, dos d’âne ou bovistop peuvent être ignorés. Les obstacles répétés ou inattendus doivent être pris en compte dans la réponse."</string>
     <string name="quest_smoothness_hint">"🚲, 🚗, 🚙, … indique pour quel véhicule la surface est adaptée. Cela concerne l’état global, et non pas les dommages unitaires éventuels."</string>
     <string name="link_osmhydrant_description">"Chercher, ajouter et éditer des casernes de pompiers et des poteaux incendie"</string>
     <string name="achievement_lifesaver_title">"Sauveteur"</string>
     <string name="achievement_lifesaver_solved_X">"Vous avez résolu %d quêtes aidant les services d’urgence et de premier secours !"</string>
     <string name="quest_fuelSelfService_title">"Les pompes sont-elles en libre-service dans cette station-essence ?"</string>
-    <string name="default_disabled_msg_difficult_and_time_consuming">"Ce type de quête est désactivé par défaut car elles sont chronophages ou qu'il est difficile d’y répondre correctement. N'activez ce type de quête que si vous êtes certain de vouloir ajouter ce type d’informations à la carte."</string>
+    <string name="default_disabled_msg_difficult_and_time_consuming">"Ce type de quête est désactivé par défaut car elles sont chronophages ou qu'il est difficile d’y répondre correctement. N’activez ce type de quête que si vous êtes certain de vouloir ajouter ce type d’informations à la carte."</string>
     <string name="quest_smoothness_description_good_compacted_gravel">"Gravier ou sable compacté, avec quelques irrégularités"</string>
     <string name="quest_barrier_path_intersection">"De quelle façon ce chemin croise t’il cette barrière ?"</string>
     <string name="quest_barrier_road_intersection">"De quelle façon cette route croise t’elle cette barrière ?"</string>
     <string name="quest_sidewalk_value_separate">"indiqué séparément sur la carte"</string>
     <string name="no_camera_permission_warning_title">"Permission d’accès à la caméra"</string>
-    <string name="no_camera_permission_warning">"L'autorisation est requise pour mesurer des distances avec l'appareil photo."</string>
+    <string name="no_camera_permission_warning">"L’autorisation est requise pour mesurer des distances avec l’appareil photo."</string>
     <string name="ar_core_error_sdk_too_old">"Cette application est trop ancienne, essayez de la mettre à jour."</string>
     <string name="ar_core_tracking_error_bad_state">"Quelque chose s’est mal passé. Essayez de redémarrer la mesure."</string>
     <string name="ar_core_tracking_error_insufficient_light">"Il fait trop sombre ici"</string>
@@ -1160,7 +1157,7 @@ Faites la même chose pour l’autre côté, si présent."</string>
     <string name="default_disabled_msg_overlay">"Cette quête est désactivée par défaut car il existe une surcouche qui est plus facile à réaliser et plus efficace pour mettre à jour ces données."</string>
     <string name="quest_camp_drinking_water_title">"L’eau potable est elle disponible librement pour les hôtes ?"</string>
     <string name="quest_camp_shower_title">"Y a-t-il des douches ici ?"</string>
-    <string name="quest_camp_power_supply_title">"Y a-t-il la possibilité pour les clients de recharger leur téléphone, ordinateur portable, etc. ici ?"</string>
+    <string name="quest_camp_power_supply_title">"Y a-t-il des prises électriques disponibles pour les clients ?"</string>
     <string name="quest_camp_type_title">"Qui peut camper ici ?"</string>
     <string name="quest_camp_type_tents_and_caravans">"Tentes et camping-cars, caravanes, …"</string>
     <string name="quest_camp_type_caravans_only">"Seulement les camping-cars, caravanes, …"</string>
@@ -1343,7 +1340,7 @@ De plus, certaines surcouches vous permettent d’ajouter de nouvelles données 
     <string name="quest_buildingType_tower_description">"Tout type de tour"</string>
     <string name="quest_buildingType_under_construction">"En cours de construction"</string>
     <string name="overlay_buildings">"Bâtiments"</string>
-    <string name="quest_pedestrian_crossing_markings">"Est-ce que ce passage piéton est peint sur la chaussée ?"</string>
+    <string name="quest_pedestrian_crossing_markings">"Ce passage piéton est-il marqué sur la chaussée ?"</string>
     <string name="overlay_places">"Lieux"</string>
     <string name="overlay_things">"Objets"</string>
     <string name="disused">"désaffecté"</string>
@@ -1351,7 +1348,7 @@ De plus, certaines surcouches vous permettent d’ajouter de nouvelles données 
     <string name="quest_leafType_tree_title">"Cet arbre a-t-il des aiguilles ou des feuilles ?"</string>
     <string name="quest_bbq_fuel_gas">"Gaz"</string>
     <string name="about_description_donate_google_play3">"Merci d’envisager de soutenir cette application !
-Vous pouvez trouver des informations sur les dons sur notre site web ou sur la page d’accueil du projet. Google Play ne nous permet pas de fournir le lien dans l’application."</string>
+Vous pouvez trouver des informations sur les dons sur notre site web ou sur la page d’accueil du projet. Les politiques des boutiques d'applications ne nous permettent pas de fournir le lien dans l’application."</string>
     <string name="quest_isAmenityIndoor_outside_covered">"Pas à l’intérieur, mais couvert"</string>
     <string name="lit_value_unsupported">"État éclairé spécifique qui ne peut pas être sélectionné dans cette application"</string>
     <string name="quest_generic_otherAnswers2">"Euh…"</string>
