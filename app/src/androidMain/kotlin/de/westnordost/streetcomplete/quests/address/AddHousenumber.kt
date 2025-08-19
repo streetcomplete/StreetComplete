@@ -149,7 +149,7 @@ class AddHousenumber(
 
     override fun applyAnswerTo(answer: HouseNumberAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {
-            is AddressNumberOrName -> {
+            is AddressNumberAndName -> {
                 if (answer.number?.isEmpty() != false && answer.name.isNullOrEmpty()) {
                     tags["nohousenumber"] = "yes"
                 } else {

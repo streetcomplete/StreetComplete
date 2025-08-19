@@ -8,5 +8,12 @@ sealed interface HouseNumberAnswer {
 }
 
 @Serializable
-data class AddressNumberOrName(val number: AddressNumber?, val name: String?) : HouseNumberAnswer
+data class AddressNumberAndName(val number: AddressNumber?, val name: String?) : HouseNumberAnswer {
+
+    fun isEmpty(): Boolean =
+        number?.isEmpty() != false && name?.isEmpty() != false
+
+    fun isComplete(): Boolean =
+        number?.isComplete() == true || name?.isNotEmpty() == true
+}
 

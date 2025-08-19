@@ -144,21 +144,21 @@ class AddHousenumberTest {
     @Test fun `apply house number answer`() {
         assertEquals(
             setOf(StringMapEntryAdd("addr:housenumber", "99b")),
-            questType.answerApplied(AddressNumberOrName(HouseNumber("99b"), null))
+            questType.answerApplied(AddressNumberAndName(HouseNumber("99b"), null))
         )
     }
 
     @Test fun `apply house name answer`() {
         assertEquals(
             setOf(StringMapEntryAdd("addr:housename", "La Escalera")),
-            questType.answerApplied(AddressNumberOrName(null, "La Escalera"))
+            questType.answerApplied(AddressNumberAndName(null, "La Escalera"))
         )
     }
 
     @Test fun `apply no house number answer`() {
         assertEquals(
             setOf(StringMapEntryAdd("nohousenumber", "yes")),
-            questType.answerApplied(AddressNumberOrName(null, null))
+            questType.answerApplied(AddressNumberAndName(null, null))
         )
     }
 

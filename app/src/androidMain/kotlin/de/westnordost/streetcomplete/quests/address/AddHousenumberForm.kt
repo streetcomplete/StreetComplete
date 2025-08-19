@@ -3,12 +3,10 @@ package de.westnordost.streetcomplete.quests.address
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AlertDialog
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.Surface
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.ComposeViewBinding
@@ -41,43 +39,25 @@ class AddHousenumberForm : AbstractOsmQuestForm<HouseNumberAnswer>() {
             AnswerItem(R.string.quest_housenumber_multiple_numbers) { showMultipleNumbersHint() }
         )
 
-    private lateinit var address: MutableState<AddressNumberOrName>
+    private lateinit var addressNumberAndName: MutableState<AddressNumberAndName>
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         binding.composeViewBase.content { Surface {
-            address = rememberSerializable { mutableStateOf(AddressNumberOrName(null, null)) }
+            addressNumberAndName = rememberSerializable { mutableStateOf(AddressNumberAndName(null, null)) }
 
-            Box(
+            AddressNumberAndNameForm(
+                value = addressNumberAndName.value,
+                onValueChange = {
+                    addressNumberAndName.value = it
+                    checkIsFormComplete()
+                },
+                countryCode = countryInfo.countryCode,
                 modifier = Modifier.fillMaxWidth(),
-                contentAlignment = Alignment.Center
-            ) {
-                if (address.value.name != null) {
-                    AddressNumberOrNameForm(
-                        value = address.value,
-                        onValueChange = {
-                            address.value = it
-                            checkIsFormComplete()
-                        },
-                        countryCode = countryInfo.countryCode,
-                        modifier = Modifier.fillMaxWidth(),
-                        houseNumberSuggestion = lastHouseNumber,
-                        blockSuggestion = lastBlock,
-                    )
-                } else {
-                    AddressNumberForm(
-                        value = address.value.number ?: HouseNumber(""),
-                        onValueChange = {
-                            address.value = address.value.copy(number = it)
-                            checkIsFormComplete()
-                        },
-                        countryCode = countryInfo.countryCode,
-                        houseNumberSuggestion = lastHouseNumber,
-                        blockSuggestion = lastBlock,
-                    )
-                }
-            }
+                houseNumberSuggestion = lastHouseNumber,
+                blockSuggestion = lastBlock,
+            )
         } }
     }
 
@@ -85,14 +65,14 @@ class AddHousenumberForm : AbstractOsmQuestForm<HouseNumberAnswer>() {
 
     private fun createBlockAnswerItem(): IAnswerItem? {
         if (countryInfo.countryCode in listOf("JP", "CZ", "SK")) return null
-        return when (address.value.number) {
+        return when (addressNumberAndName.value.number) {
             is BlockAndHouseNumber ->
                 AnswerItem(R.string.quest_address_answer_no_block) {
-                    address.value = address.value.copy(number = HouseNumber(""))
+                    addressNumberAndName.value = addressNumberAndName.value.copy(number = HouseNumber(""))
                 }
             else ->
                 AnswerItem(R.string.quest_address_answer_block) {
-                    address.value = address.value.copy(number = BlockAndHouseNumber("", ""))
+                    addressNumberAndName.value = addressNumberAndName.value.copy(number = BlockAndHouseNumber("", ""))
                 }
         }
     }
@@ -122,7 +102,7 @@ class AddHousenumberForm : AbstractOsmQuestForm<HouseNumberAnswer>() {
 
         AlertDialog.Builder(requireContext())
             .setView(dialogBinding.root)
-            .setPositiveButton(R.string.quest_generic_hasFeature_yes) { _, _ -> applyAnswer(AddressNumberOrName(null, null)) }
+            .setPositiveButton(R.string.quest_generic_hasFeature_yes) { _, _ -> applyAnswer(AddressNumberAndName(null, null)) }
             .setNegativeButton(R.string.quest_generic_hasFeature_no) { _, _ -> applyAnswer(HouseNumberAnswer.WrongBuildingType) }
             .show()
     }
@@ -130,19 +110,19 @@ class AddHousenumberForm : AbstractOsmQuestForm<HouseNumberAnswer>() {
     /* ----------------------------------- Show house name -------------------------------------- */
 
     private fun showHouseName() {
-        address.value = AddressNumberOrName(
+        addressNumberAndName.value = AddressNumberAndName(
             name = "",
-            number = address.value.number?.takeIf { !it.isEmpty() }
+            number = addressNumberAndName.value.number?.takeIf { !it.isEmpty() }
         )
     }
 
     /* ----------------------------------- Commit answer ---------------------------------------- */
 
     override fun onClickOk() {
-        val number = address.value.number
+        val number = addressNumberAndName.value.number
         val isUnusual = number?.looksInvalid(countryInfo.additionalValidHousenumberRegex) == true
         confirmHouseNumber(isUnusual) {
-            applyAnswer(address.value)
+            applyAnswer(addressNumberAndName.value)
             lastBlock = (number as? BlockAndHouseNumber)?.block
             number?.streetHouseNumber?.let { lastHouseNumber = it }
         }
@@ -161,12 +141,10 @@ class AddHousenumberForm : AbstractOsmQuestForm<HouseNumberAnswer>() {
         }
     }
     override fun isFormComplete(): Boolean =
-        address.value.number?.isComplete() == true ||
-        address.value.name?.isNotEmpty() == true
+        addressNumberAndName.value.isComplete()
 
     override fun isRejectingClose(): Boolean =
-        address.value.number?.isEmpty() == false ||
-        address.value.name?.isEmpty() == false
+        !addressNumberAndName.value.isEmpty()
 
     companion object {
         private var lastBlock: String? = null
