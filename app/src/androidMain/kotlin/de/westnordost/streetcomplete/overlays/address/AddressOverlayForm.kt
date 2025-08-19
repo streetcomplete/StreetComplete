@@ -120,7 +120,7 @@ class AddressOverlayForm : AbstractOverlayForm(), IsMapPositionAware {
         originalStreetOrPlaceName =
             element?.tags?.get("addr:street")?.let { StreetName(it) }
             ?: element?.tags?.get("addr:place")?.let { PlaceName(it) }
-            ?: if (lastWasPlace) PlaceName("") else StreetName("")
+            ?: if (lastWasPlaceName) PlaceName("") else StreetName("")
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -260,7 +260,7 @@ class AddressOverlayForm : AbstractOverlayForm(), IsMapPositionAware {
         val name = addressNumberAndName.value.name
         val streetOrPlaceName = streetOrPlaceName.value
 
-        lastWasPlace = streetOrPlaceName is PlaceName
+        lastWasPlaceName = streetOrPlaceName is PlaceName
         number?.streetHouseNumber?.let { lastHouseNumber = it }
         lastBlock = if (number is BlockAndHouseNumber) number.block else null
         lastPlaceName = if (streetOrPlaceName is PlaceName) streetOrPlaceName.name else null
@@ -349,7 +349,7 @@ class AddressOverlayForm : AbstractOverlayForm(), IsMapPositionAware {
         private var lastPlaceName: String? = null
         private var lastStreetName: String? = null
 
-        private var lastWasPlace: Boolean = false
+        private var lastWasPlaceName: Boolean = false
     }
 }
 
