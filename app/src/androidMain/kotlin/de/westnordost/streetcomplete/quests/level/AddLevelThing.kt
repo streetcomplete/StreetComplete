@@ -10,6 +10,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.osm.isThing
 import de.westnordost.streetcomplete.util.math.contains
 import de.westnordost.streetcomplete.util.math.isInMultipolygon
 
@@ -28,22 +29,6 @@ class AddLevelThing : OsmElementQuestType<String>, AndroidQuest {
 
     private val thingsWithLevelFilter by lazy { """
         nodes, ways, relations with level
-    """.toElementFilterExpression() }
-
-    /* only nodes because ways/relations are not likely to be floating around freely in a mall
-     * outline */
-    private val filter by lazy { """
-        nodes with
-          (
-            emergency ~ defibrillator|first_aid_kit
-            or amenity ~ atm|drinking_water|fountain|payment_validator|food_sharing|payment_terminal|give_box|telephone|toilets|parcel_locker|luggage_locker|locker|post_box|lounge|photo_booth|security_booth|smoking_area|public_bookcase|ticket_validator|shower|vending_machine
-            or man_made = water_tap
-            or historic = memorial
-            or tourism ~ artwork|viewpoint
-            or tourism = information and information !~ office|visitor_centre
-          )
-          and !level
-          and location != outdoor
     """.toElementFilterExpression() }
 
     override val changesetComment = "Determine on which level things are in a building"
@@ -91,7 +76,7 @@ class AddLevelThing : OsmElementQuestType<String>, AndroidQuest {
 
         // now, return all things that have no level tagged and are inside those multi-level malls
         val elementsWithoutLevel = mapData
-            .filter { filter.matches(it) }
+            .filter { it.isThing() }
             .toMutableList()
         if (elementsWithoutLevel.isEmpty()) return emptyList()
 
@@ -113,7 +98,7 @@ class AddLevelThing : OsmElementQuestType<String>, AndroidQuest {
     }
 
     override fun isApplicableTo(element: Element): Boolean? {
-        if (!filter.matches(element)) return false
+        if (!element.isThing()) return false
         // for things with no level, we actually need to look at geometry in order to find if it is
         // contained within any multi-level mall
         return null
