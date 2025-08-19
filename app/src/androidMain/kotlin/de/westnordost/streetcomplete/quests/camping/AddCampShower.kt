@@ -18,7 +18,10 @@ class AddCampShower : OsmFilterQuestType<Boolean>(), AndroidQuest {
      * values from other editors, and we don't want to damage them */
     override val elementFilter = """
         nodes, ways with
-          tourism ~ camp_site|alpine_hut|wilderness_hut and (
+          (
+            tourism ~ camp_site|alpine_hut|wilderness_hut
+            or leisure = bathing_place
+          ) and (
             !shower
             or shower older today -4 years and shower ~ yes|no
           )

@@ -7,6 +7,7 @@ import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith
 import kotlin.test.assertNull
 import kotlin.test.assertTrue
+import kotlin.test.assertFalse
 
 class CollectionsTest {
 
@@ -92,5 +93,17 @@ class CollectionsTest {
     @Test fun `indexOfMaxBy with some elements`() {
         assertEquals(2, listOf(3, 4, 8).indexOfMaxBy { it })
         assertEquals(0, listOf(4, 0, -1).indexOfMaxBy { it })
+    }
+
+    @Test fun `containsExactlyInAnyOrder ignores order`() {
+        assertTrue(listOf(1, 2, 3).containsExactlyInAnyOrder(listOf(3, 2, 1)))
+    }
+
+    @Test fun `containsExactlyInAnyOrder checks duplicate counts`() {
+        assertFalse(listOf(1, 1, 2).containsExactlyInAnyOrder(listOf(1, 2, 2)))
+    }
+
+    @Test fun `containsExactlyInAnyOrder with duplicates`() {
+        assertTrue(listOf(1, 1, 2).containsExactlyInAnyOrder(listOf(1, 2, 1)))
     }
 }

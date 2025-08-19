@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.Surface
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
@@ -16,6 +15,7 @@ import de.westnordost.streetcomplete.osm.Length
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.ui.util.content
+import de.westnordost.streetcomplete.ui.util.rememberSerializable
 
 class AddMaxHeightForm : AbstractOsmQuestForm<MaxHeightAnswer>() {
 
@@ -40,7 +40,7 @@ class AddMaxHeightForm : AbstractOsmQuestForm<MaxHeightAnswer>() {
         }
 
         binding.composeViewBase.content { Surface {
-            height = remember { mutableStateOf(null) }
+            height = rememberSerializable { mutableStateOf(null) }
 
             MaxHeightForm(
                 length = height.value,
