@@ -112,7 +112,7 @@ class AddLevel : OsmElementQuestType<String>, AndroidQuest {
         return null
     }
 
-    override fun createForm() = AddLevelForm()
+    override fun createForm() = AddLevelForm(false)
 
     override fun applyAnswerTo(answer: String, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags["level"] = answer
