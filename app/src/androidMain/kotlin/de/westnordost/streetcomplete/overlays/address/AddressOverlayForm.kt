@@ -4,13 +4,17 @@ import android.content.res.Configuration
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AlertDialog
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Surface
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import androidx.core.view.doOnLayout
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
@@ -76,6 +80,7 @@ class AddressOverlayForm : AbstractOverlayForm(), IsMapPositionAware {
 
     private lateinit var addressNumberAndName: MutableState<AddressNumberAndName>
     private lateinit var streetOrPlaceName: MutableState<StreetOrPlaceName>
+    private lateinit var showSelect: MutableState<Boolean>
 
     private var addEntrance: Boolean = true
         set(value) {
@@ -142,13 +147,16 @@ class AddressOverlayForm : AbstractOverlayForm(), IsMapPositionAware {
         }
         setMarkerIcon(R.drawable.ic_quest_housenumber)
 
-        binding.composeViewBase.content { Surface {
+        binding.composeViewBase.content { Surface(Modifier.padding(bottom = 48.dp)) {
             addressNumberAndName = rememberSerializable { mutableStateOf(originalAddressNumberAndName) }
             streetOrPlaceName = rememberSerializable { mutableStateOf(originalStreetOrPlaceName) }
+            showSelect = rememberSaveable { mutableStateOf(lastWasPlaceName) }
 
             Column(
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier
+                    .fillMaxWidth(),
                 horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 StreetOrPlaceNameForm(
                     value = streetOrPlaceName.value,
@@ -159,6 +167,7 @@ class AddressOverlayForm : AbstractOverlayForm(), IsMapPositionAware {
                     modifier = Modifier.fillMaxWidth(),
                     streetNameSuggestion = lastStreetName,
                     placeNameSuggestion = lastPlaceName,
+                    showSelect = showSelect.value
                 )
                 AddressNumberAndNameForm(
                     value = addressNumberAndName.value,
@@ -241,7 +250,8 @@ class AddressOverlayForm : AbstractOverlayForm(), IsMapPositionAware {
             .firstOrNull()
             ?.find { it.languageTag.isEmpty() }
             ?.name
-            ?: return false
+            // still consume event even when there is no named road at this position
+            ?: return true
 
         streetOrPlaceName.value = StreetName(name)
         return true
@@ -328,6 +338,7 @@ class AddressOverlayForm : AbstractOverlayForm(), IsMapPositionAware {
 
     private fun showPlaceName() {
         streetOrPlaceName.value = PlaceName("")
+        showSelect.value = true
     }
 
     /* -------------------------------------- Remove address ------------------------------------ */

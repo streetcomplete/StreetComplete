@@ -46,31 +46,27 @@ fun HouseNumberInput(
             suggestion = suggestion,
             modifier = Modifier
                 .weight(1f)
-                .padding(horizontal = if (suggestion.isNullOrEmpty()) 48.dp else 0.dp)
                 .onSizeChanged { houseNumberInputHeightPx = it.height }
         )
-        // only show any stepper button if there is a suggestion to start from
-        if (!suggestion.isNullOrEmpty()) {
-            val useSuggestion = value.isEmpty() && suggestion.isNotEmpty()
-            val valueOrSuggestion = if (useSuggestion) suggestion else value
+        val useSuggestion = value.isEmpty() && !suggestion.isNullOrEmpty()
+        val valueOrSuggestion = if (useSuggestion) suggestion else value
 
-            val houseNumbers = remember(valueOrSuggestion) { parseHouseNumbers(valueOrSuggestion) }
+        val houseNumbers = remember(valueOrSuggestion) { parseHouseNumbers(valueOrSuggestion) }
 
-            val stepperModifier = Modifier
-                .width(48.dp)
-                .height(houseNumberInputHeightPx.pxToDp())
+        val stepperModifier = Modifier
+            .width(48.dp)
+            .height(houseNumberInputHeightPx.pxToDp())
 
-            HouseNumberStepperButton(
-                value = houseNumbers,
-                onValueChange = { onValueChange(it.toString()) },
-                modifier = stepperModifier
-            )
-            HouseNumberMinorStepperButton(
-                value = houseNumbers,
-                onValueChange = { onValueChange(it.toString()) },
-                modifier = stepperModifier
-            )
-        }
+        HouseNumberStepperButton(
+            value = houseNumbers,
+            onValueChange = { onValueChange(it.toString()) },
+            modifier = stepperModifier
+        )
+        HouseNumberMinorStepperButton(
+            value = houseNumbers,
+            onValueChange = { onValueChange(it.toString()) },
+            modifier = stepperModifier
+        )
     }
 }
 

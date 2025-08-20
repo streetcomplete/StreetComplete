@@ -4,7 +4,6 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.ContentAlpha
 import androidx.compose.material.LocalContentColor
@@ -69,16 +68,13 @@ fun BlockAndHouseNumberForm(
                         suggestion = suggestion?.block,
                         modifier = Modifier
                             .weight(1f)
-                            .padding(horizontal = if (suggestion?.block.isNullOrEmpty()) 24.dp else 0.dp)
                             .onSizeChanged { blockInputHeightPx = it.height },
                     )
-                    if (!suggestion?.block.isNullOrEmpty()) {
-                        BlockStepperButton(
-                            value = if (useBlockSuggestion) suggestion.block else value.block,
-                            onValueChange = { onValueChange(value.copy(block = it)) },
-                            modifier = Modifier.width(48.dp).height(blockInputHeightPx.pxToDp())
-                        )
-                    }
+                    BlockStepperButton(
+                        value = if (useBlockSuggestion) suggestion.block else value.block,
+                        onValueChange = { onValueChange(value.copy(block = it)) },
+                        modifier = Modifier.width(48.dp).height(blockInputHeightPx.pxToDp())
+                    )
                 }
                 Text("-")
                 HouseNumberInput(
