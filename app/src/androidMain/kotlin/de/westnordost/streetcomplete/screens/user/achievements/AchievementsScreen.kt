@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.screens.user.achievements
 
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.WindowInsetsSides
@@ -27,29 +28,31 @@ import de.westnordost.streetcomplete.ui.ktx.plus
 @Composable
 fun AchievementsScreen(viewModel: AchievementsViewModel) {
     val achievements by viewModel.achievements.collectAsState()
-    val hasNoAchievements by remember { derivedStateOf { achievements?.isNotEmpty() != true } }
+    val hasAchievements by remember { derivedStateOf { achievements?.isNotEmpty() == true } }
 
     var showAchievement by remember { mutableStateOf<Pair<Achievement, Int>?>(null) }
 
-    achievements?.let {
-        val insets = WindowInsets.safeDrawing.only(
-            WindowInsetsSides.Horizontal + WindowInsetsSides.Bottom
-        ).asPaddingValues()
-        LazyAchievementsGrid(
-            achievements = it,
-            onClickAchievement = { achievement, level ->
-                showAchievement = achievement to level
-            },
-            modifier = Modifier.fillMaxSize().consumeWindowInsets(insets),
-            contentPadding = insets + PaddingValues(16.dp)
-        )
-    }
-    if (hasNoAchievements) {
-        val isSynchronizingStatistics by viewModel.isSynchronizingStatistics.collectAsState()
-        CenteredLargeTitleHint(stringResource(
-            if (isSynchronizingStatistics) R.string.stats_are_syncing
-            else R.string.achievements_empty
-        ))
+    Box {
+        achievements?.let {
+            val insets = WindowInsets.safeDrawing.only(
+                WindowInsetsSides.Horizontal + WindowInsetsSides.Bottom
+            ).asPaddingValues()
+            LazyAchievementsGrid(
+                achievements = it,
+                onClickAchievement = { achievement, level ->
+                    showAchievement = achievement to level
+                },
+                modifier = Modifier.fillMaxSize().consumeWindowInsets(insets),
+                contentPadding = insets + PaddingValues(16.dp)
+            )
+        }
+        if (!hasAchievements) {
+            val isSynchronizingStatistics by viewModel.isSynchronizingStatistics.collectAsState()
+            CenteredLargeTitleHint(stringResource(
+                if (isSynchronizingStatistics) R.string.stats_are_syncing
+                else R.string.achievements_empty
+            ))
+        }
     }
 
     showAchievement?.let { (achievement, level) ->

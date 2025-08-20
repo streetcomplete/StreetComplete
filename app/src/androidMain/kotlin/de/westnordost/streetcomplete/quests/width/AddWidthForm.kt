@@ -9,7 +9,6 @@ import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import de.westnordost.streetcomplete.R
@@ -21,6 +20,7 @@ import de.westnordost.streetcomplete.quests.AbstractArMeasureQuestForm
 import de.westnordost.streetcomplete.quests.LengthForm
 import de.westnordost.streetcomplete.screens.measure.ArSupportChecker
 import de.westnordost.streetcomplete.ui.util.content
+import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import org.koin.android.ext.android.inject
 
 class AddWidthForm : AbstractArMeasureQuestForm<WidthAnswer>() {
@@ -43,7 +43,7 @@ class AddWidthForm : AbstractArMeasureQuestForm<WidthAnswer>() {
         val arIsSupported = checkArSupport()
 
         binding.composeViewBase.content { Surface {
-            length = remember { mutableStateOf(null) }
+            length = rememberSerializable { mutableStateOf(null) }
             Column(Modifier.fillMaxWidth()) {
                 if(isRoad) {
                     Text(stringResource(R.string.quest_road_width_explanation))

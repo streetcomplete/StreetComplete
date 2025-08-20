@@ -23,7 +23,7 @@ class AddIsAmenityIndoor(private val getFeature: (Element) -> Feature?) :
     private val nodesFilter by lazy { """
         nodes with
           (
-            emergency ~ defibrillator|fire_extinguisher|fire_hose
+            emergency ~ defibrillator|fire_extinguisher|fire_hose|first_aid_kit
             or amenity ~ atm|drinking_water|telephone|parcel_locker|luggage_locker|locker|post_box|public_bookcase|give_box|ticket_validator|shower|vending_machine
             or amenity = clock and display != sundial
           )
