@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.Surface
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
@@ -36,6 +37,7 @@ class AddAddressStreetForm : AbstractOsmQuestForm<StreetOrPlaceName>() {
             .toElementFilterExpression()
 
     private lateinit var streetOrPlaceName: MutableState<StreetOrPlaceName>
+    private lateinit var showSelect: MutableState<Boolean>
 
     override val otherAnswers = listOf(
         AnswerItem(R.string.quest_address_street_no_named_streets) { showPlaceName() }
@@ -53,6 +55,7 @@ class AddAddressStreetForm : AbstractOsmQuestForm<StreetOrPlaceName>() {
             streetOrPlaceName = rememberSerializable { mutableStateOf(
                 if (lastWasPlaceName) PlaceName("") else StreetName("")
             ) }
+            showSelect = rememberSaveable { mutableStateOf(lastWasPlaceName) }
 
             StreetOrPlaceNameForm(
                 value = streetOrPlaceName.value,
@@ -61,8 +64,8 @@ class AddAddressStreetForm : AbstractOsmQuestForm<StreetOrPlaceName>() {
                     checkIsFormComplete()
                 },
                 modifier = Modifier.fillMaxWidth(),
+                showSelect = showSelect.value
             )
-            // TODO initially don't show the spinner for street name or place name select?
         } }
     }
 
@@ -78,6 +81,7 @@ class AddAddressStreetForm : AbstractOsmQuestForm<StreetOrPlaceName>() {
             ?: return false
 
         streetOrPlaceName.value = StreetName(name)
+        checkIsFormComplete()
         return true
     }
 
@@ -91,6 +95,8 @@ class AddAddressStreetForm : AbstractOsmQuestForm<StreetOrPlaceName>() {
 
     private fun showPlaceName() {
         streetOrPlaceName.value = PlaceName("")
+        showSelect.value = true
+        checkIsFormComplete()
     }
 
     companion object {
