@@ -95,13 +95,12 @@ fun TextField2(
         textStyle = mergedTextStyle,
         contentPadding = contentPadding,
         maxLines = maxLines,
-        modifier = modifier,
     ) { scaledTextStyle ->
         @OptIn(ExperimentalMaterialApi::class)
         BasicTextField(
             value = value,
             onValueChange = onValueChange,
-            modifier = Modifier.textFieldDefaults(
+            modifier = modifier.textFieldDefaults(
                 style = style,
                 enabled = enabled,
                 label = label,
@@ -178,13 +177,12 @@ fun TextField2(
         textStyle = mergedTextStyle,
         contentPadding = contentPadding,
         maxLines = maxLines,
-        modifier = modifier,
     ) { scaledTextStyle ->
         @OptIn(ExperimentalMaterialApi::class)
         BasicTextField(
             value = value,
             onValueChange = onValueChange,
-            modifier = Modifier.textFieldDefaults(
+            modifier = modifier.textFieldDefaults(
                 style = style,
                 enabled = enabled,
                 label = label,
@@ -230,11 +228,10 @@ private fun AutoFitFontSize(
     textStyle: TextStyle,
     contentPadding: PaddingValues,
     maxLines: Int,
-    modifier: Modifier = Modifier,
     content: @Composable (textStyle: TextStyle) -> Unit,
 ) {
     if (autoSize) {
-        BoxWithConstraints(modifier) {
+        BoxWithConstraints {
             val fontSize = calculateTextMaxFontSize(
                 text = value,
                 textStyle = textStyle,
@@ -244,7 +241,7 @@ private fun AutoFitFontSize(
             content(textStyle.copy(fontSize = fontSize))
         }
     } else {
-        Box(modifier) {
+        Box {
             content(textStyle)
         }
     }
