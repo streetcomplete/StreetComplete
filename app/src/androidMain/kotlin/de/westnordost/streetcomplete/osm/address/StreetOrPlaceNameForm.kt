@@ -34,6 +34,7 @@ fun StreetOrPlaceNameForm(
     value: StreetOrPlaceName,
     onValueChange: (StreetOrPlaceName) -> Unit,
     modifier: Modifier = Modifier,
+    showSelect: Boolean = true,
     streetNameSuggestion: String? = null,
     placeNameSuggestion: String? = null,
 ) {
@@ -42,21 +43,23 @@ fun StreetOrPlaceNameForm(
     val textStyle = MaterialTheme.typography.largeInput.copy(textAlign = TextAlign.Center)
 
     Column(modifier = modifier) {
-        SelectButton(
-            items = selections,
-            selectedItem = value,
-            onSelectedItem = onValueChange,
-            style = ButtonStyle.Text,
-            enabled = value.name.isEmpty(),
-            itemContent = {
-                Text(stringResource(
-                    when (value) {
-                        is StreetName -> R.string.quest_address_street_street_name_label
-                        is PlaceName -> R.string.quest_address_street_place_name_label
-                    }
-                ))
-            }
-        )
+        if (showSelect) {
+            SelectButton(
+                items = selections,
+                selectedItem = value,
+                onSelectedItem = onValueChange,
+                style = ButtonStyle.Text,
+                enabled = value.name.isEmpty(),
+                itemContent = {
+                    Text(stringResource(
+                        when (it) {
+                            is StreetName -> R.string.quest_address_street_street_name_label
+                            is PlaceName -> R.string.quest_address_street_place_name_label
+                        }
+                    ))
+                }
+            )
+        }
 
         when (value) {
             is StreetName -> {
@@ -83,7 +86,7 @@ fun StreetOrPlaceNameForm(
                             painter = painterResource(Res.drawable.town_silhouette),
                             alignment = Alignment.BottomCenter,
                             contentScale = ContentScale.Inside,
-                            alpha = 0.2f,
+                            alpha = 0.15f,
                         ),
                     suggestion = placeNameSuggestion,
                     textStyle = textStyle,
