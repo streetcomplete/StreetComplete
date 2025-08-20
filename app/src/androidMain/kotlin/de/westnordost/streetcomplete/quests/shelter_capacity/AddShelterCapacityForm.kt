@@ -6,5 +6,4 @@ import de.westnordost.streetcomplete.resources.count_sleeping_bag
 
 class AddShelterCapacityForm : AAddCountInput() {
     override val icon = Res.drawable.count_sleeping_bag
-    override val initialCount get() = element.tags["capacity"]?.toIntOrNull()
 }
