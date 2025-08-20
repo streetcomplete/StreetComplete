@@ -57,6 +57,8 @@ class AddLevelForm(private val includeThings: Boolean) : AbstractOsmQuestForm<St
         val mapData = withContext(Dispatchers.IO) { mapDataSource.getMapDataWithGeometry(bbox) }
 
         val shopsWithLevels = mapData.filter {
+            // The AddLevel quest only shows places on the same level, while the AddLevelThing quest
+            // shows Things AND Places
             if (includeThings) {
                 it.tags["level"] != null && (it.isPlaceOrDisusedPlace() || it.isThing())
             } else {
