@@ -43,6 +43,8 @@ fun AddressNumber.applyTo(tags: Tags, countryCode: String?) {
         "addr:block"
     ).forEach { tags.remove(it) }
 
+    if (!isComplete()) return
+
     when (this) {
         is ConscriptionNumber -> {
             tags["addr:conscriptionnumber"] = conscriptionNumber

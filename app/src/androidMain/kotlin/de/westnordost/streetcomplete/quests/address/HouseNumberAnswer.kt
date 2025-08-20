@@ -14,6 +14,5 @@ data class AddressNumberAndName(val number: AddressNumber?, val name: String?) :
         number?.isEmpty() != false && name?.isEmpty() != false
 
     fun isComplete(): Boolean =
-        number?.isComplete() == true || name?.isNotEmpty() == true
+        number?.isComplete() == true || name?.isNotEmpty() == true && number?.isEmpty() != false
 }
-

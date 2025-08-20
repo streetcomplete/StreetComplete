@@ -45,7 +45,10 @@ class AddHousenumberForm : AbstractOsmQuestForm<HouseNumberAnswer>() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.composeViewBase.content { Surface {
-            addressNumberAndName = rememberSerializable { mutableStateOf(AddressNumberAndName(null, null)) }
+            addressNumberAndName = rememberSerializable {
+                val number = if (lastWasBlock) BlockAndHouseNumber("", "") else HouseNumber("")
+                mutableStateOf(AddressNumberAndName(number, null))
+            }
 
             AddressNumberAndNameForm(
                 value = addressNumberAndName.value,
@@ -119,11 +122,12 @@ class AddHousenumberForm : AbstractOsmQuestForm<HouseNumberAnswer>() {
     /* ----------------------------------- Commit answer ---------------------------------------- */
 
     override fun onClickOk() {
-        val number = addressNumberAndName.value.number
+        val number = addressNumberAndName.value.number?.takeIf { !it.isEmpty() }
         val isUnusual = number?.looksInvalid(countryInfo.additionalValidHousenumberRegex) == true
         confirmHouseNumber(isUnusual) {
             applyAnswer(addressNumberAndName.value)
             lastBlock = (number as? BlockAndHouseNumber)?.block
+            lastWasBlock = number is BlockAndHouseNumber
             number?.streetHouseNumber?.let { lastHouseNumber = it }
         }
     }
@@ -149,5 +153,6 @@ class AddHousenumberForm : AbstractOsmQuestForm<HouseNumberAnswer>() {
     companion object {
         private var lastBlock: String? = null
         private var lastHouseNumber: String? = null
+        private var lastWasBlock: Boolean = false
     }
 }
