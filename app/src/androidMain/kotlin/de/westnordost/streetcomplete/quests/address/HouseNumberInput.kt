@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests.address
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.ProvideTextStyle
@@ -45,6 +46,7 @@ fun HouseNumberInput(
             suggestion = suggestion,
             modifier = Modifier
                 .weight(1f)
+                .padding(horizontal = if (suggestion.isNullOrEmpty()) 48.dp else 0.dp)
                 .onSizeChanged { houseNumberInputHeightPx = it.height }
         )
         // only show any stepper button if there is a suggestion to start from
