@@ -9,6 +9,7 @@ import androidx.compose.material.LocalContentColor
 import androidx.compose.material.LocalTextStyle
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
+import androidx.compose.material.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -23,7 +24,6 @@ import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.town_silhouette
 import de.westnordost.streetcomplete.ui.common.ButtonStyle
 import de.westnordost.streetcomplete.ui.common.SelectButton
-import de.westnordost.streetcomplete.ui.common.TextField2
 import de.westnordost.streetcomplete.ui.theme.largeInput
 import org.jetbrains.compose.resources.painterResource
 
@@ -104,7 +104,7 @@ private fun NameInput(
     suggestion: String? = null,
     textStyle: TextStyle = LocalTextStyle.current,
 ) {
-    TextField2(
+    TextField(
         value = value,
         onValueChange = onValueChange,
         modifier = modifier,
@@ -119,7 +119,5 @@ private fun NameInput(
             )
         } } else null,
         textStyle = textStyle,
-        singleLine = true,
-        autoFitFontSize = true,
     )
 }
