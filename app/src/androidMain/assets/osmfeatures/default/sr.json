@@ -2033,11 +2033,11 @@
           "name": "Почетак стазе"
         },
         "highway/trunk": {
-          "name": "Мотопут",
+          "name": "Брзи пут",
           "terms": "пут резервисани за саобраћај моторних возила,брза саобраћајница"
         },
         "highway/trunk_link": {
-          "name": "Прилаз мотопуту"
+          "name": "Прилаз брзом путу"
         },
         "highway/turning_circle": {
           "name": "Окретница"
@@ -2089,6 +2089,9 @@
         "historic/memorial": {
           "name": "Меморијал",
           "terms": "споменик,спомен-комплекс"
+        },
+        "historic/memorial/blue_plaque-GB-IE": {
+          "name": "Плава плоча"
         },
         "historic/memorial/plaque": {
           "name": "Спомен-плоча"
@@ -3947,6 +3950,9 @@
         "shop/carpet": {
           "name": "Продавница тепиха"
         },
+        "shop/catalogue": {
+          "name": "Каталошка продавница"
+        },
         "shop/charity": {
           "name": "Хуманитарна продавница"
         },
@@ -4000,6 +4006,12 @@
         },
         "shop/cosmetics": {
           "name": "Продавница козметике"
+        },
+        "shop/country_store": {
+          "name": "Продавница сеоске опреме"
+        },
+        "shop/craft": {
+          "name": "Радња за уметничке и занатске материјале"
         },
         "shop/curtain": {
           "name": "Продавница завеса"
@@ -4095,6 +4107,9 @@
         },
         "shop/greengrocer": {
           "name": "Пиљар"
+        },
+        "shop/groundskeeping": {
+          "name": "Продавница опреме за травњаке и баште"
         },
         "shop/hairdresser": {
           "name": "Фризер"
@@ -4565,7 +4580,7 @@
           "name": "Ограничење брзине"
         },
         "traffic_sign/variable_message": {
-          "name": "Променљиви саобраћајни знак"
+          "name": "Саобраћајни знак са изменљивим порукама"
         },
         "type/boundary": {
           "name": "Граница"

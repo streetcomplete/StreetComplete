@@ -257,6 +257,10 @@
           "name": "咖啡館",
           "terms": "咖啡館,咖啡廳,咖啡店"
         },
+        "amenity/cafe/teahouse": {
+          "name": "茶馆",
+          "terms": "茶馆,茶楼,茶室,茶社,茶舍"
+        },
         "amenity/car_pooling": {
           "name": "拼车站",
           "terms": "拼车站"
@@ -1895,6 +1899,18 @@
           "name": "公墓分區",
           "terms": "公墓分區"
         },
+        "climbing/crag": {
+          "name": "攀岩点",
+          "terms": "攀岩,峭壁,攀爬"
+        },
+        "climbing/route": {
+          "name": "攀爬路线",
+          "terms": "攀岩,攀爬,攀爬路线"
+        },
+        "climbing/route_bottom": {
+          "name": "攀岩路線起點",
+          "terms": "攀岩路線起點"
+        },
         "club": {
           "name": "俱樂部",
           "terms": "club,會所"
@@ -2805,6 +2821,10 @@
           "name": "歷史遺跡",
           "terms": "historic site,史跡,史蹟,歷史遺址,歷史遺跡,歷史景點"
         },
+        "historic/aircraft": {
+          "name": "旧飞机",
+          "terms": "古代,古,旧,老,历史,飞机,客机,军机,货机,固定翼"
+        },
         "historic/archaeological_site": {
           "name": "考古地點",
           "terms": "archaeological site,考古地,考古地點,考古遺址"
@@ -2852,6 +2872,10 @@
         "historic/memorial": {
           "name": "細紀念碑",
           "terms": "memorial,碑,紀念碑,紀念館,細紀念碑"
+        },
+        "historic/memorial/blue_plaque-GB-IE": {
+          "name": "藍色紀念牌",
+          "terms": "蓝色,牌匾,蓝牌"
         },
         "historic/memorial/plaque": {
           "name": "紀念牌",
@@ -6328,6 +6352,10 @@
           "name": "巴士路綫",
           "terms": "bus route,公共汽車路線,巴士路綫"
         },
+        "type/route/climbing": {
+          "name": "攀爬路线",
+          "terms": "攀岩,攀爬,攀爬路线"
+        },
         "type/route/detour": {
           "name": "繞道路綫",
           "terms": "detour route,繞道,繞道路綫,繞道路線"
@@ -6403,6 +6431,14 @@
         "type/site": {
           "name": "建築群",
           "terms": "一群建築"
+        },
+        "type/site/climbing/area": {
+          "name": "攀爬区域",
+          "terms": "攀爬区域"
+        },
+        "type/site/climbing/crag": {
+          "name": "攀岩点",
+          "terms": "攀岩,峭壁,攀爬"
         },
         "type/waterway": {
           "name": "水道",

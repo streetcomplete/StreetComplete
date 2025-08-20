@@ -584,7 +584,7 @@
           "terms": "food court,zona ristorazione,area cibo,ristoranti,cibo,food lounge"
         },
         "amenity/fountain": {
-          "name": "Fontana (decorativa)",
+          "name": "Fontana decorativa",
           "terms": "fontana"
         },
         "amenity/fuel": {
@@ -2373,7 +2373,7 @@
           "terms": "precedenza,dare precedenza,cartello"
         },
         "highway/ladder": {
-          "name": "Scala"
+          "name": "Scala a pioli"
         },
         "highway/living_street": {
           "name": "Strada residenziale prevalentemente pedonale",
@@ -2411,7 +2411,7 @@
           "name": "Passerella di legno"
         },
         "highway/path/crossing": {
-          "name": "Attraversamento ciclabile e pedonale"
+          "name": "Attraversamento ciclopedonale"
         },
         "highway/path/informal": {
           "name": "Percorso informale"
@@ -2501,7 +2501,7 @@
           "terms": "display di velocità"
         },
         "highway/steps": {
-          "name": "Scale",
+          "name": "Scalinata",
           "terms": "scale,scalinata,gradini"
         },
         "highway/steps/conveying": {
@@ -2604,6 +2604,9 @@
         "historic/memorial": {
           "name": "Memoriale",
           "terms": "memoriale"
+        },
+        "historic/memorial/blue_plaque-GB-IE": {
+          "name": "Targa Blu"
         },
         "historic/memorial/plaque": {
           "name": "Targa commemorativa",
@@ -2871,7 +2874,7 @@
           "terms": "videogiochi,videogame,simulatori,guida,flipper,gettoni"
         },
         "leisure/bandstand": {
-          "name": "Chiosco della musica"
+          "name": "Palco"
         },
         "leisure/beach_resort": {
           "name": "Stabilimento balneare",
@@ -3217,6 +3220,9 @@
           "name": "Pista (sport non motoristici)",
           "terms": "circuito,pista,ippodromo"
         },
+        "leisure/track/athletics": {
+          "name": "Pista di atletica"
+        },
         "leisure/track/athletics/javelin_throw": {
           "name": "Pista del giavellotto"
         },
@@ -3229,6 +3235,15 @@
         },
         "leisure/track/athletics/running": {
           "name": "Pista da corsa"
+        },
+        "leisure/track/athletics/sprint": {
+          "name": "Pista corsa di velocità"
+        },
+        "leisure/track/athletics/steeplechase": {
+          "name": "Pista steeplechase"
+        },
+        "leisure/track/athletics/triple_jump": {
+          "name": "Pista del salto triplo"
         },
         "leisure/track/cycling": {
           "name": "Pista per ciclismo",
@@ -4086,7 +4101,8 @@
           "terms": "blocco,caseggiato,manzana,gruppo,edifici,palazzi"
         },
         "place/farm": {
-          "name": "Fattoria o cascina"
+          "name": "Fattoria",
+          "aliases": "Cascina"
         },
         "place/hamlet": {
           "name": "Piccolo borgo",

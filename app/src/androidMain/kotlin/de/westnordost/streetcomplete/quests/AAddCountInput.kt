@@ -23,8 +23,6 @@ abstract class AAddCountInput : AbstractOsmQuestForm<Int>() {
 
     abstract val icon: DrawableResource
 
-    abstract val initialCount: Int?
-
     override val contentLayoutResId = R.layout.compose_view
     private val binding by contentViewBinding(ComposeViewBinding::bind)
 
@@ -34,7 +32,7 @@ abstract class AAddCountInput : AbstractOsmQuestForm<Int>() {
         super.onViewCreated(view, savedInstanceState)
         binding.composeViewBase.content {
             Surface {
-                count = rememberSaveable { mutableStateOf(initialCount) }
+                count = rememberSaveable { mutableStateOf(null) }
                 ProvideTextStyle(MaterialTheme.typography.extraLargeInput) {
                     CountInput(
                         count = count.value,

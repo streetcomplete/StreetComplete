@@ -38,6 +38,7 @@ class AddOpeningHours(
               or amenity = shower and (fee = yes or indoor = yes or location = indoor)
               or tourism = information and information = office
               or natural = cave_entrance and fee = yes
+              or tower:type = observation and fee = yes
               or """ +
 
         // The common list is shared by the name quest, the opening hours quest and the wheelchair quest.
@@ -77,6 +78,9 @@ class AddOpeningHours(
                 // common
                 "fitness_centre", "golf_course", "water_park", "miniature_golf", "bowling_alley",
                 "amusement_arcade", "adult_gaming_centre", "tanning_salon", "sauna",
+
+                // name & opening hours
+                "trampoline_park",
 
                 // not sports_centre, dance etc because these are often sports clubs which have no
                 // walk-in opening hours but training times

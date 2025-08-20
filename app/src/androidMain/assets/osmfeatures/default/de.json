@@ -281,6 +281,10 @@
           "name": "Kaffeehaus",
           "terms": "americano,gebräu,kaffee,café,cappuccino,kakao,tropf,espresso,heiße getränke,latte,macchiato,tee,verlängerter,brauner"
         },
+        "amenity/cafe/teahouse": {
+          "name": "Teehaus",
+          "terms": "teestube,teeraum,tee,teezeremonie"
+        },
         "amenity/car_pooling": {
           "name": "Car-Pooling-Station",
           "terms": "car sharing,car pooling,mitfahren"
@@ -1934,6 +1938,18 @@
           "terms": "friedhof,friedwald,kirchhof,beerdigung,columbarium,mausoleum,grab,gräber,gräberfeld",
           "aliases": "Friedhofsektor"
         },
+        "climbing/crag": {
+          "name": "Kletterfelsen",
+          "terms": "klippe,kletterfels,kletterwand,klettergipfel"
+        },
+        "climbing/route": {
+          "name": "Kletterroute",
+          "terms": "klettersteig,kletterlinie,kletterpfad"
+        },
+        "climbing/route_bottom": {
+          "name": "Unteres Ende der Kletterroute",
+          "terms": "beginn der kletterroute"
+        },
         "club": {
           "name": "Verein",
           "terms": "verein,klub"
@@ -2859,6 +2875,10 @@
           "name": "Historische Stätte",
           "terms": "historische stätte"
         },
+        "historic/aircraft": {
+          "name": "Historisches Flugzeug",
+          "terms": "flugzeug"
+        },
         "historic/archaeological_site": {
           "name": "Archäologische Stätte",
           "terms": "archäologische stätte,ausgrabungsstätte,ausgrabung"
@@ -2906,6 +2926,10 @@
         "historic/memorial": {
           "name": "Denkmal",
           "terms": "denkmal,mahnmal"
+        },
+        "historic/memorial/blue_plaque-GB-IE": {
+          "name": "Blue Plaque",
+          "terms": "blaue plakette"
         },
         "historic/memorial/plaque": {
           "name": "Gedenktafel",
@@ -5323,8 +5347,8 @@
           "terms": "gefahrenleuchtfeuer"
         },
         "seamark/beacon_lateral": {
-          "name": "Seitliche Tonne",
-          "terms": "seitliche tonne,laterales seezeichen,lateraltonne"
+          "name": "Seitliche Bake",
+          "terms": "seitliche bake,seitliche tonne,laterales seezeichen,lateraltonne"
         },
         "seamark/buoy_lateral": {
           "name": "Seitliche Tonne",
@@ -6401,6 +6425,10 @@
           "name": "Buslinie",
           "terms": "buslinie,stadtbuslinie,regionalbuslinie,expressbuslinie,fernbuslinie"
         },
+        "type/route/climbing": {
+          "name": "Kletterroute",
+          "terms": "klettersteig,kletterlinie,kletterpfad"
+        },
         "type/route/detour": {
           "name": "Umleitungsstrecke",
           "terms": "umleitungsstrecke"
@@ -6476,6 +6504,14 @@
         "type/site": {
           "name": "Standort",
           "terms": "standort,stelle,grundstück,platz,ort,site"
+        },
+        "type/site/climbing/area": {
+          "name": "Klettergebiet",
+          "terms": "kletterzone,kletterareal"
+        },
+        "type/site/climbing/crag": {
+          "name": "Kletterfelsen",
+          "terms": "klippe,kletterfels,kletterwand,klettergipfel"
         },
         "type/waterway": {
           "name": "Wasserstraße",

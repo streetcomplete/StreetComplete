@@ -362,7 +362,6 @@ Ja tādu opciju nav, jūs varat instalēt citu tastatūras lietotni caur lietot�
     <string name="quest_fee_answer_hours">"Atkarīgs no laika un dienas…"</string>
     <string name="quest_fee_add_times">"Pievienot laikus"</string>
     <string name="quest_housenumber_multiple_numbers">"Ir vairāki māju numuri"</string>
-    <string name="quest_housenumber_multiple_numbers_description">"Jūs varat ievadīt ar komatu atdalītus māju numurs vai apgabalus.\nPiemēram: 1,3 vai 2-6."</string>
     <string name="quest_bicycle_parking_type_stand">"Stends (atbalsta velosipēda rāmi)"</string>
     <string name="quest_bicycle_parking_type_wheelbender">"Riteņa novietne (atbalsta tikai ratu)"</string>
     <string name="quest_bicycle_parking_type_shed">"Sķūnis"</string>
@@ -796,9 +795,7 @@ Ja kādas joslas ir rezervētas autobusiem, lūdzu, atstājiet piezīmi."</strin
     <string name="quest_bicycle_parking_fee_title">"Vai ir jāmaksā, lai šeit novietotu velosipēdu?"</string>
     <string name="quest_buildingType_house_description2">"Vienas ģimenes ne-savrupmājas. Piem., viena no rindu mājām."</string>
     <string name="quest_drinking_water_potable_signed">"Drošs dzeršanai (ir zīme)"</string>
-    <string name="quest_drinking_water_potable_unsigned">"Drošs dzeršanai (nav zīmes)"</string>
     <string name="quest_drinking_water_not_potable_signed">"Nav drošs dzeršanai (ir zīme)"</string>
-    <string name="quest_drinking_water_not_potable_unsigned">"Nav drošs dzeršanai (nav zīmes)"</string>
     <string name="quest_postboxRoyalCypher_title">"Kāds ir karaliskais šifrs uz šīs pastkastes?"</string>
     <string name="quest_postboxRoyalCypher_type_none">"Nav redzams karaliskais šifrs"</string>
     <string name="quest_postboxRoyalCypher_type_scottish_crown">"Skotijas kronis"</string>

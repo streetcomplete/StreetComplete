@@ -257,6 +257,10 @@
           "name": "咖啡館",
           "terms": "咖啡館,咖啡廳,咖啡店"
         },
+        "amenity/cafe/teahouse": {
+          "name": "茶館",
+          "terms": "茶館,茶樓,茶室,茶社,茶舍"
+        },
         "amenity/car_pooling": {
           "name": "汽車共乘站",
           "terms": "汽車共乘站"
@@ -1895,6 +1899,18 @@
           "name": "公墓分區",
           "terms": "公墓分區"
         },
+        "climbing/crag": {
+          "name": "攀岩點",
+          "terms": "攀岩,峭壁,攀爬"
+        },
+        "climbing/route": {
+          "name": "攀爬路线",
+          "terms": "攀岩,攀爬,攀爬路線"
+        },
+        "climbing/route_bottom": {
+          "name": "攀岩路線起點",
+          "terms": "攀岩路線起點"
+        },
         "club": {
           "name": "俱樂部",
           "terms": "俱樂部"
@@ -2805,6 +2821,10 @@
           "name": "史蹟",
           "terms": "史蹟,歷史遺跡,古蹟"
         },
+        "historic/aircraft": {
+          "name": "舊飛機",
+          "terms": "古代,古,舊,老,歷史,飛機,客機,軍機,貨機,固定翼"
+        },
         "historic/archaeological_site": {
           "name": "考古遺址",
           "terms": "考古遺址"
@@ -2852,6 +2872,10 @@
         "historic/memorial": {
           "name": "紀念物",
           "terms": "紀念物"
+        },
+        "historic/memorial/blue_plaque-GB-IE": {
+          "name": "藍色紀念牌",
+          "terms": "藍色,牌匾,藍牌"
         },
         "historic/memorial/plaque": {
           "name": "紀念牌",
@@ -6326,6 +6350,10 @@
           "name": "公車路線",
           "terms": "客運路線,巴士路線"
         },
+        "type/route/climbing": {
+          "name": "攀爬路線",
+          "terms": "攀岩,攀爬,攀爬路線"
+        },
         "type/route/detour": {
           "name": "繞道路線",
           "terms": "改道路線"
@@ -6401,6 +6429,14 @@
         "type/site": {
           "name": "地點",
           "terms": "點位,場地"
+        },
+        "type/site/climbing/area": {
+          "name": "攀爬區域",
+          "terms": "攀爬區域"
+        },
+        "type/site/climbing/crag": {
+          "name": "攀岩點",
+          "terms": "攀岩,峭壁,攀爬"
         },
         "type/waterway": {
           "name": "水路",
