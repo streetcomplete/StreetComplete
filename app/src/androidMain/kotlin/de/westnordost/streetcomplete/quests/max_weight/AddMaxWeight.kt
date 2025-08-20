@@ -19,19 +19,8 @@ import de.westnordost.streetcomplete.quests.max_weight.MaxWeightSign.MAX_WEIGHT
 
 class AddMaxWeight : OsmElementQuestType<MaxWeightAnswer>, AndroidQuest {
 
-    private val filter by lazy {
+    private val generalFilter by lazy {
         """ways, relations with
-         (
-             highway ~ trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|living_street|service|busway
-             and bridge and bridge != no
-             and service != driveway
-             and motor_vehicle !~ private|no
-         )
-         or
-         (
-            route = ferry
-            and motor_vehicle = yes
-         )
          and !maxweight and maxweight:signed != no
          and !maxaxleload
          and !maxbogieweight
@@ -42,6 +31,21 @@ class AddMaxWeight : OsmElementQuestType<MaxWeightAnswer>, AndroidQuest {
          and (access !~ private|no or (foot and foot !~ private|no))
          and area != yes
     """.toElementFilterExpression() }
+
+    private val highwayFilter by lazy {
+        """ways with
+         highway ~ trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|living_street|service|busway
+         and bridge and bridge != no
+         and service != driveway
+         and motor_vehicle !~ private|no
+    """.toElementFilterExpression() }
+
+    private val ferryFilter by lazy {
+        """ways, relations with
+         route = ferry
+         and motor_vehicle = yes
+        """.toElementFilterExpression() }
+
     override val changesetComment = "Specify maximum allowed weights"
     override val wikiLink = "Key:maxweight"
     override val icon = R.drawable.ic_quest_max_weight
@@ -67,14 +71,18 @@ class AddMaxWeight : OsmElementQuestType<MaxWeightAnswer>, AndroidQuest {
         // copied from AddFerryAccessMotorVehicle - see comment there why this filtering is necessary
         val wayIdsInFerryRoutes = wayIdsInFerryRoutes(mapData.relations)
         return mapData
-            .filter(filter)
+            .filter(generalFilter)
             .filter { it !is Way || it.id !in wayIdsInFerryRoutes }
             .asIterable()
     }
 
     override fun isApplicableTo(element: Element): Boolean? {
-        if (!filter.matches(element)) return false
-        if (element is Way) return null
+        if (!generalFilter.matches(element)) return false
+        if (element is Way) {
+            if (highwayFilter.matches(element)) return true
+            if (ferryFilter.matches(element)) return null
+            return false
+        }
         return true
     }
 }
