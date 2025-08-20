@@ -7,9 +7,9 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.databinding.QuestLevelBinding
 import de.westnordost.streetcomplete.osm.isPlaceOrDisusedPlace
-import de.westnordost.streetcomplete.osm.isThing
 import de.westnordost.streetcomplete.osm.level.Level
 import de.westnordost.streetcomplete.osm.level.levelsIntersect
 import de.westnordost.streetcomplete.osm.level.parseLevelsOrNull
@@ -29,7 +29,7 @@ import org.koin.android.ext.android.inject
 import kotlin.math.ceil
 import kotlin.math.floor
 
-class AddLevelForm(private val includeThings: Boolean) : AbstractOsmQuestForm<String>() {
+open class AddLevelForm() : AbstractOsmQuestForm<String>() {
 
     private val mapDataSource: MapDataWithEditsSource by inject()
 
@@ -52,19 +52,18 @@ class AddLevelForm(private val includeThings: Boolean) : AbstractOsmQuestForm<St
         viewLifecycleScope.launch { initializeButtons() }
     }
 
+    open suspend fun filter(mapData: MapDataWithGeometry): List<Element> = mapData.filter {
+        // The AddLevel quest only shows places on the same level, while the AddLevelThing quest
+        // shows Things AND Places
+
+        it.tags["level"] != null && it.isPlaceOrDisusedPlace()
+    }
+
     private suspend fun initializeButtons() {
         val bbox = geometry.center.enclosingBoundingBox(50.0)
         val mapData = withContext(Dispatchers.IO) { mapDataSource.getMapDataWithGeometry(bbox) }
 
-        val shopsWithLevels = mapData.filter {
-            // The AddLevel quest only shows places on the same level, while the AddLevelThing quest
-            // shows Things AND Places
-            if (includeThings) {
-                it.tags["level"] != null && (it.isPlaceOrDisusedPlace() || it.isThing())
-            } else {
-                it.tags["level"] != null && it.isPlaceOrDisusedPlace()
-            }
-        }
+        val shopsWithLevels = filter(mapData)
 
         shopElementsAndGeometry = shopsWithLevels.mapNotNull { e ->
             mapData.getGeometry(e.type, e.id)?.let { geometry -> e to geometry }
