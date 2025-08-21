@@ -55,20 +55,6 @@
         <item name="android:paddingBottom">6dp</item>
     </style>
 
-    <!-- ++++++++++++++++++++++++++++++ Address edit texts +++++++++++++++++++++++++++++++++++++ -->
-
-    <style name="HouseNumberEditText">
-        <item name="android:textColor">#fff</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:textColorHint">#2fff</item>
-        <item name="android:textSize">@dimen/x_large_input</item>
-        <item name="android:inputType">number</item>
-        <item name="android:gravity">center</item>
-        <item name="android:maxLines">1</item>
-        <item name="android:padding">8dp</item>
-        <item name="android:minHeight">80dp</item>
-    </style>
-
     <!-- ++++++++++++++++++++++++++++++++ FAB-like buttons +++++++++++++++++++++++++++++++++++++ -->
 
     <style name="RoundWhiteButton">
