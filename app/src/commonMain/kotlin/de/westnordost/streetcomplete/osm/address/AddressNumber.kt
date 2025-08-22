@@ -7,25 +7,28 @@ import kotlinx.serialization.Serializable
  *  instead expressed by conscription numbers or house+block numbers */
 @Serializable
 sealed interface AddressNumber {
-    fun isEmpty(): Boolean = when (this) {
-        is BlockAndHouseNumber -> block.isEmpty() && houseNumber.isEmpty()
-        is ConscriptionNumber -> conscriptionNumber.isEmpty() && streetNumber.isNullOrEmpty()
-        is HouseNumber -> houseNumber.isEmpty()
-    }
-
-    fun isComplete(): Boolean = when (this) {
-        is BlockAndHouseNumber -> block.isNotEmpty() && houseNumber.isNotEmpty()
-        is ConscriptionNumber -> conscriptionNumber.isNotEmpty()
-        is HouseNumber -> houseNumber.isNotEmpty()
-    }
+    fun isEmpty(): Boolean
+    fun isComplete(): Boolean
 }
 
 @Serializable
-data class HouseNumber(val houseNumber: String) : AddressNumber
+data class HouseNumber(val houseNumber: String) : AddressNumber {
+    override fun isEmpty(): Boolean = houseNumber.isEmpty()
+    override fun isComplete(): Boolean = houseNumber.isNotEmpty()
+}
 @Serializable
-data class ConscriptionNumber(val conscriptionNumber: String, val streetNumber: String? = null) : AddressNumber
+data class ConscriptionNumber(
+    val conscriptionNumber: String,
+    val streetNumber: String? = null
+) : AddressNumber {
+    override fun isEmpty(): Boolean = conscriptionNumber.isEmpty() && streetNumber.isNullOrEmpty()
+    override fun isComplete(): Boolean = conscriptionNumber.isNotEmpty()
+}
 @Serializable
-data class BlockAndHouseNumber(val block: String, val houseNumber: String) : AddressNumber
+data class BlockAndHouseNumber(val block: String, val houseNumber: String) : AddressNumber {
+    override fun isEmpty(): Boolean = block.isEmpty() && houseNumber.isEmpty()
+    override fun isComplete(): Boolean = block.isNotEmpty() && houseNumber.isNotEmpty()
+}
 
 val AddressNumber.streetHouseNumber: String? get() = when (this) {
     is HouseNumber -> houseNumber
