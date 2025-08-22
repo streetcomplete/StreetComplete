@@ -54,19 +54,11 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <TextView
-        android:id="@+id/nameLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="@string/name_label"/>
-
-    <!-- extra padding because the OK button overlaps with the delete-button for the lowermost
-         item if the "add language" button is not shown anymore -->
     <include
-        android:id="@+id/nameContainer"
+        android:id="@+id/names"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        layout="@layout/quest_localizedname" />
+        android:layout_marginTop="8.dp"
+        layout="@layout/compose_view"/>
 
 </LinearLayout>

@@ -1,8 +1,10 @@
 package de.westnordost.streetcomplete.osm.localized_name
 
 import de.westnordost.streetcomplete.osm.Tags
+import kotlinx.serialization.Serializable
 import kotlin.collections.iterator
 
+@Serializable
 data class LocalizedName(val languageTag: String, val name: String)
 
 /** OSM tags to map of language code -> name.

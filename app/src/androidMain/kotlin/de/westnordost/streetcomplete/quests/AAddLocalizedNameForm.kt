@@ -13,6 +13,7 @@ import de.westnordost.streetcomplete.databinding.ComposeViewBinding
 import de.westnordost.streetcomplete.osm.localized_name.LocalizedName
 import de.westnordost.streetcomplete.ui.common.localized_name.LocalizedNamesForm
 import de.westnordost.streetcomplete.ui.util.content
+import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.view.localized_name.confirmPossibleAbbreviationsIfAny
 import de.westnordost.streetcomplete.view.localized_name.getPossibleAbbreviations
@@ -39,7 +40,6 @@ abstract class AAddLocalizedNameForm<T> : AbstractOsmQuestForm<T>() {
             }
         }
         selectableLanguages = languages
-        localizedNames = mutableStateOf(listOf(LocalizedName(countryInfo.language.orEmpty(), "")))
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -53,6 +53,10 @@ abstract class AAddLocalizedNameForm<T> : AbstractOsmQuestForm<T>() {
         }
 
         binding.composeViewBase.content { Surface {
+            localizedNames = rememberSerializable {
+                mutableStateOf(listOf(LocalizedName(countryInfo.language.orEmpty(), "")))
+            }
+
             LocalizedNamesForm(
                 localizedNames = localizedNames.value,
                 onChanged = {
