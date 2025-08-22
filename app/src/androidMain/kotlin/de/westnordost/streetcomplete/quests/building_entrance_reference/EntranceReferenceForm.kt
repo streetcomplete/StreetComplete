@@ -23,6 +23,7 @@ import de.westnordost.streetcomplete.quests.address.AnAddressNumberInput
 import de.westnordost.streetcomplete.ui.common.SelectButton
 import de.westnordost.streetcomplete.ui.theme.largeInput
 
+/** Form to input an entrance reference - either a flat range, a ref code or both */
 @Composable
 fun EntranceReferenceForm(
     value: EntranceReference?,

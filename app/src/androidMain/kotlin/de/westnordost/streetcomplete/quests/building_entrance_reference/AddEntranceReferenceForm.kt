@@ -27,7 +27,7 @@ class AddEntranceReferenceForm : AbstractOsmQuestForm<EntranceReferenceAnswer>()
         super.onViewCreated(view, savedInstanceState)
 
         binding.composeViewBase.content { Surface {
-            entranceReference = rememberSerializable { mutableStateOf(null) }
+            entranceReference = rememberSerializable { mutableStateOf(lastEntranceReference?.clear()) }
 
             EntranceReferenceForm(
                 value = entranceReference.value,
@@ -46,6 +46,7 @@ class AddEntranceReferenceForm : AbstractOsmQuestForm<EntranceReferenceAnswer>()
     }
 
     override fun onClickOk() {
+        lastEntranceReference = entranceReference.value
         applyAnswer(entranceReference.value!!)
     }
 
@@ -54,4 +55,8 @@ class AddEntranceReferenceForm : AbstractOsmQuestForm<EntranceReferenceAnswer>()
 
     override fun isRejectingClose(): Boolean =
         entranceReference.value != null
+
+    companion object {
+        private var lastEntranceReference: EntranceReference? = null
+    }
 }
