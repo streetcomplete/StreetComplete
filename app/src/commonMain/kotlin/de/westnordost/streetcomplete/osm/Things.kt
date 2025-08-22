@@ -249,6 +249,7 @@ private val IS_THING_EXPRESSION by lazy {
         or attraction
         or boundary = marker
         or fitness_station
+        or toilets:disposal
         or leisure = pitch and sport ~ chess|table_soccer|table_tennis|teqball
         or playground
         or public_transport = platform and (
