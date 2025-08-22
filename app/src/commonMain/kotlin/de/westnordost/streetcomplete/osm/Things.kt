@@ -248,6 +248,7 @@ private val IS_THING_EXPRESSION by lazy {
         or amenity = recycling and recycling_type = container
         or attraction
         or boundary = marker
+        or fitness_station
         or leisure = pitch and sport ~ chess|table_soccer|table_tennis|teqball
         or playground
         or public_transport = platform and (
