@@ -61,7 +61,7 @@ class PlacesOverlayForm : AbstractOverlayForm() {
     private lateinit var vacantShopFeature: Feature
 
     override val otherAnswers get() = listOfNotNull(
-        AnswerItem(R.string.quest_shop_gone_vacant_answer) { setVacant() }.takeIf { originalFeature != vacantShopFeature },
+        createVacantAnswer(),
         createNoNameAnswer()
     )
 
@@ -188,6 +188,12 @@ class PlacesOverlayForm : AbstractOverlayForm() {
             AnswerItem(R.string.quest_placeName_no_name_answer) { setNoName() }
         }
     }
+
+    private fun createVacantAnswer(): AnswerItem? = if (originalFeature == vacantShopFeature) {
+            null
+        } else {
+            AnswerItem(R.string.quest_shop_gone_vacant_answer)  { setVacant() }
+        }
 
     private fun setNoName() {
         isNoName = true
