@@ -7,6 +7,8 @@ import androidx.compose.ui.draw.alpha
 import androidx.core.text.isDigitsOnly
 import de.westnordost.streetcomplete.ui.common.StepperButton
 
+/** Stepper button to increase/decrease block (numbers). Will increase or decrease block numbers and
+ *  also blocks that are single letters */
 @Composable
 fun BlockStepperButton(
     value: String,
