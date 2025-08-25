@@ -9,6 +9,7 @@ import de.westnordost.streetcomplete.data.maptiles.MapTilesDownloader
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataDownloader
 import de.westnordost.streetcomplete.data.osmnotes.NotesDownloader
+import de.westnordost.streetcomplete.data.atp.AtpDownloader
 import de.westnordost.streetcomplete.data.user.UserLoginController
 import de.westnordost.streetcomplete.util.Listeners
 import de.westnordost.streetcomplete.util.ktx.format
@@ -24,6 +25,7 @@ import kotlin.math.max
 
 /** Downloads all the things */
 class Downloader(
+    private val atpDownloader: AtpDownloader,
     private val notesDownloader: NotesDownloader,
     private val mapDataDownloader: MapDataDownloader,
     private val mapTilesDownloader: MapTilesDownloader,
@@ -68,6 +70,7 @@ class Downloader(
             mutex.withLock {
                 coroutineScope {
                     // all downloaders run concurrently
+                    launch { atpDownloader.download(tilesBbox) }
                     launch { notesDownloader.download(tilesBbox) }
                     launch { mapDataDownloader.download(tilesBbox) }
                     launch { mapTilesDownloader.download(tilesBbox) }

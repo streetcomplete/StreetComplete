@@ -1,6 +1,9 @@
 package de.westnordost.streetcomplete.data.edithistory
 
 import de.westnordost.streetcomplete.ApplicationConstants.MAX_UNDO_HISTORY_AGE
+import de.westnordost.streetcomplete.data.atp.AtpEditsController
+import de.westnordost.streetcomplete.data.atp.atpquests.AtpQuestHidden
+import de.westnordost.streetcomplete.data.atp.atpquests.edits.AtpDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsController
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsSource
@@ -13,6 +16,7 @@ import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsController
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsSource
 import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestHidden
+import de.westnordost.streetcomplete.data.quest.AtpQuestKey
 import de.westnordost.streetcomplete.data.quest.OsmNoteQuestKey
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import de.westnordost.streetcomplete.data.quest.QuestKey
@@ -26,9 +30,11 @@ import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 class EditHistoryController(
     private val elementEditsController: ElementEditsController,
     private val noteEditsController: NoteEditsController,
+    private val atpEditsController: AtpEditsController,
     private val hiddenQuestsController: QuestsHiddenController,
     private val notesSource: NotesWithEditsSource,
     private val mapDataSource: MapDataWithEditsSource,
+    private val atpDataSource: AtpDataWithEditsSource,
     private val questTypeRegistry: QuestTypeRegistry,
 ) : EditHistorySource {
     private val listeners = Listeners<EditHistorySource.Listener>()
@@ -74,12 +80,17 @@ class EditHistoryController(
                 val questType = questTypeRegistry.getByName(key.questTypeName) as? OsmElementQuestType<*> ?: return null
                 OsmQuestHidden(key.elementType, key.elementId, questType, geometry, timestamp)
             }
+            is AtpQuestKey -> {
+                val atpEntry = atpDataSource.get(key.atpEntryId) ?: return null
+                AtpQuestHidden(atpEntry, timestamp)
+            }
         }
     }
 
     init {
         elementEditsController.addListener(osmElementEditsListener)
         noteEditsController.addListener(osmNoteEditsListener)
+        //atpEditsController.addListener(osmNoteEditsListener) // what it is even doing? TODO
         hiddenQuestsController.addListener(questHiddenListener)
     }
 
@@ -91,6 +102,7 @@ class EditHistoryController(
             is NoteEdit -> noteEditsController.undo(edit)
             is OsmNoteQuestHidden -> hiddenQuestsController.unhide(edit.questKey)
             is OsmQuestHidden -> hiddenQuestsController.unhide(edit.questKey)
+            is AtpQuestHidden -> hiddenQuestsController.unhide(edit.questKey)
             else -> throw IllegalArgumentException()
         }
     }
@@ -106,6 +118,7 @@ class EditHistoryController(
             val timestamp = hiddenQuestsController.get(key.questKey)
             if (timestamp != null) createQuestHiddenEdit(key.questKey, timestamp) else null
         }
+        //TODO API (once proper ATP API exists) is AtpQuestKey -> atpEditsController.get(key.id)
     }
 
     override fun getAll(): List<Edit> {
@@ -114,6 +127,7 @@ class EditHistoryController(
         val result = ArrayList<Edit>()
         result += elementEditsController.getAll().filter { it.action !is IsRevertAction }
         result += noteEditsController.getAll()
+        // atpEditsController not counted here, as these are not OpenStreetMap edits
         result += hiddenQuestsController.getAllNewerThan(maxAge).mapNotNull { (key, timestamp) ->
             createQuestHiddenEdit(key, timestamp)
         }
