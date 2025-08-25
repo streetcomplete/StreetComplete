@@ -37,7 +37,7 @@ class AddBoardName : OsmFilterQuestType<BoardNameAnswer>(), AndroidQuest {
 
     override fun applyAnswerTo(answer: BoardNameAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {
-            is NoBoardName -> {
+            is BoardNameAnswer.NoName -> {
                 tags["noname"] = "yes"
             }
             is BoardName -> {

@@ -2,10 +2,12 @@ package de.westnordost.streetcomplete.osm.address
 
 import de.westnordost.streetcomplete.osm.Tags
 
-sealed interface StreetOrPlaceName
+sealed interface StreetOrPlaceName {
+    val name: String
+}
 
-data class StreetName(val name: String) : StreetOrPlaceName
-data class PlaceName(val name: String) : StreetOrPlaceName
+data class StreetName(override val name: String) : StreetOrPlaceName
+data class PlaceName(override val name: String) : StreetOrPlaceName
 
 fun StreetOrPlaceName.applyTo(tags: Tags) {
     when (this) {

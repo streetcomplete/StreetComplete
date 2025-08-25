@@ -1,25 +1,42 @@
 package de.westnordost.streetcomplete.osm.address
 
 import de.westnordost.streetcomplete.osm.Tags
+import kotlinx.serialization.Serializable
 
 /** The number part of an address, i.e. usually the house number. In some regions, addresses are
  *  instead expressed by conscription numbers or house+block numbers */
-sealed interface AddressNumber
+@Serializable
+sealed interface AddressNumber {
+    fun isEmpty(): Boolean
+    fun isComplete(): Boolean
+}
 
-data class HouseNumber(val houseNumber: String) : AddressNumber
-data class ConscriptionNumber(val conscriptionNumber: String, val streetNumber: String? = null) : AddressNumber
-data class HouseAndBlockNumber(val houseNumber: String, val blockNumber: String) : AddressNumber
-data class HouseNumberAndBlock(val houseNumber: String, val block: String) : AddressNumber
+@Serializable
+data class HouseNumber(val houseNumber: String) : AddressNumber {
+    override fun isEmpty(): Boolean = houseNumber.isEmpty()
+    override fun isComplete(): Boolean = houseNumber.isNotEmpty()
+}
+@Serializable
+data class ConscriptionNumber(
+    val conscriptionNumber: String,
+    val streetNumber: String? = null
+) : AddressNumber {
+    override fun isEmpty(): Boolean = conscriptionNumber.isEmpty() && streetNumber.isNullOrEmpty()
+    override fun isComplete(): Boolean = conscriptionNumber.isNotEmpty()
+}
+@Serializable
+data class BlockAndHouseNumber(val block: String, val houseNumber: String) : AddressNumber {
+    override fun isEmpty(): Boolean = block.isEmpty() && houseNumber.isEmpty()
+    override fun isComplete(): Boolean = block.isNotEmpty() && houseNumber.isNotEmpty()
+}
 
 val AddressNumber.streetHouseNumber: String? get() = when (this) {
     is HouseNumber -> houseNumber
-    is HouseAndBlockNumber -> houseNumber
-    is HouseNumberAndBlock -> houseNumber
-    // not conscription number because there is no logical succession
-    else -> null
+    is BlockAndHouseNumber -> houseNumber
+    is ConscriptionNumber -> streetNumber
 }
 
-fun AddressNumber.applyTo(tags: Tags) {
+fun AddressNumber.applyTo(tags: Tags, countryCode: String?) {
     // first, clear all...
     listOf(
         "addr:housenumber",
@@ -29,23 +46,22 @@ fun AddressNumber.applyTo(tags: Tags) {
         "addr:block"
     ).forEach { tags.remove(it) }
 
+    if (!isComplete()) return
+
     when (this) {
         is ConscriptionNumber -> {
             tags["addr:conscriptionnumber"] = conscriptionNumber
-            if (streetNumber != null) {
+            if (!streetNumber.isNullOrEmpty()) {
                 tags["addr:streetnumber"] = streetNumber
                 tags["addr:housenumber"] = streetNumber
             } else {
                 tags["addr:housenumber"] = conscriptionNumber
             }
         }
-        is HouseAndBlockNumber -> {
+        is BlockAndHouseNumber -> {
             tags["addr:housenumber"] = houseNumber
-            tags["addr:block_number"] = blockNumber
-        }
-        is HouseNumberAndBlock -> {
-            tags["addr:housenumber"] = houseNumber
-            tags["addr:block"] = block
+            if (countryCode == "JP") tags["addr:block_number"] = block
+            else tags["addr:block"] = block
         }
         is HouseNumber -> {
             tags["addr:housenumber"] = houseNumber
@@ -64,8 +80,8 @@ fun parseAddressNumber(tags: Map<String, String>): AddressNumber? {
         val blockNumber = tags["addr:block_number"]
         val block = tags["addr:block"]
         return when {
-            blockNumber != null -> HouseAndBlockNumber(houseNumber, blockNumber)
-            block != null -> HouseNumberAndBlock(houseNumber, block)
+            blockNumber != null -> BlockAndHouseNumber(blockNumber, houseNumber)
+            block != null -> BlockAndHouseNumber(block, houseNumber)
             else -> HouseNumber(houseNumber)
         }
     }

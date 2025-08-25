@@ -388,7 +388,7 @@ fun questTypeRegistry(
     167 to AddParcelLockerBrand(),
 
     // address: usually only visible when just in front + sometimes requires to take "other answer"
-    75 to AddHousenumber(),
+    75 to AddHousenumber(getCountryInfoByLocation),
     76 to AddAddressStreet(),
 
     // shops: text input / opening hours input take longer than other quests

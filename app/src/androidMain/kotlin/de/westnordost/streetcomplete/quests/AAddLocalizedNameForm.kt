@@ -1,134 +1,101 @@
 package de.westnordost.streetcomplete.quests
 
-import android.content.Intent
 import android.os.Bundle
-import android.provider.Settings
-import android.text.Html
 import android.view.View
-import androidx.appcompat.app.AlertDialog
-import androidx.core.text.parseAsHtml
-import androidx.recyclerview.widget.RecyclerView
+import androidx.compose.material.Surface
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateOf
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.Abbreviations
 import de.westnordost.streetcomplete.data.meta.AbbreviationsByLanguage
 import de.westnordost.streetcomplete.data.preferences.Preferences
+import de.westnordost.streetcomplete.databinding.ComposeViewBinding
 import de.westnordost.streetcomplete.osm.localized_name.LocalizedName
-import de.westnordost.streetcomplete.view.AdapterDataChangedWatcher
-import kotlinx.serialization.json.Json
+import de.westnordost.streetcomplete.ui.common.localized_name.LocalizedNamesForm
+import de.westnordost.streetcomplete.ui.util.content
+import de.westnordost.streetcomplete.ui.util.rememberSerializable
+import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
+import de.westnordost.streetcomplete.view.localized_name.confirmPossibleAbbreviationsIfAny
+import de.westnordost.streetcomplete.view.localized_name.getPossibleAbbreviations
+import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
-import java.util.Queue
 
 abstract class AAddLocalizedNameForm<T> : AbstractOsmQuestForm<T>() {
 
-    protected abstract val addLanguageButton: View
-    protected abstract val namesList: RecyclerView
+    override val contentLayoutResId = R.layout.compose_view
+    private val binding by contentViewBinding(ComposeViewBinding::bind)
 
     private val prefs: Preferences by inject()
+    protected lateinit var localizedNames: MutableState<List<LocalizedName>>
+    protected var abbreviationsByLanguage: Map<String, Abbreviations?> = emptyMap()
+    private lateinit var selectableLanguages: List<String>
 
-    open val adapterRowLayoutResId = R.layout.row_localizedname
-
-    protected var adapter: LocalizedNameAdapter? = null
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        val languages = getSelectableLanguageTags().toMutableList()
+        val preferredLanguage = prefs.preferredLanguageForNames
+        if (preferredLanguage != null) {
+            if (languages.remove(preferredLanguage)) {
+                languages.add(0, preferredLanguage)
+            }
+        }
+        selectableLanguages = languages
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        initLocalizedNameAdapter(
-            savedInstanceState?.getString(LOCALIZED_NAMES_DATA)?.let { Json.decodeFromString(it) }
-        )
-    }
-
-    private fun initLocalizedNameAdapter(data: MutableList<LocalizedName>? = null) {
-        val selectableLanguages = getSelectableLanguageTags().toMutableList()
-        val preferredLanguage = prefs.preferredLanguageForNames
-        if (preferredLanguage != null) {
-            if (selectableLanguages.remove(preferredLanguage)) {
-                selectableLanguages.add(0, preferredLanguage)
+        val abbrs = getAbbreviationsByLanguage()
+        if (abbrs != null) {
+            viewLifecycleScope.launch {
+                abbreviationsByLanguage = selectableLanguages.associateWith { abbrs[it] }
             }
         }
 
-        val adapter = LocalizedNameAdapter(
-            data.orEmpty(),
-            requireContext(),
-            selectableLanguages,
-            getAbbreviationsByLocale(),
-            getLocalizedNameSuggestions(),
-            addLanguageButton,
-            adapterRowLayoutResId
-        )
-        adapter.addOnNameChangedListener { checkIsFormComplete() }
-        adapter.registerAdapterDataObserver(AdapterDataChangedWatcher { checkIsFormComplete() })
-        lifecycle.addObserver(adapter)
-        this.adapter = adapter
-        namesList.adapter = adapter
-        namesList.isNestedScrollingEnabled = false
-        checkIsFormComplete()
+        binding.composeViewBase.content { Surface {
+            localizedNames = rememberSerializable {
+                mutableStateOf(listOf(LocalizedName(countryInfo.language.orEmpty(), "")))
+            }
+
+            LocalizedNamesForm(
+                localizedNames = localizedNames.value,
+                onChanged = {
+                    localizedNames.value = it
+                    checkIsFormComplete()
+                },
+                languageTags = selectableLanguages,
+                abbreviationsByLanguage = abbreviationsByLanguage,
+            )
+        } }
     }
 
     protected open fun getSelectableLanguageTags(): List<String> =
         (countryInfo.officialLanguages + countryInfo.additionalStreetsignLanguages).distinct()
 
-    protected open fun getAbbreviationsByLocale(): AbbreviationsByLanguage? = null
-
-    protected open fun getLocalizedNameSuggestions(): List<List<LocalizedName>>? = null
-
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-        adapter?.names?.let { outState.putString(LOCALIZED_NAMES_DATA, Json.encodeToString(it)) }
-    }
+    protected open fun getAbbreviationsByLanguage(): AbbreviationsByLanguage? = null
 
     final override fun onClickOk() {
-        onClickOk(adapter?.names.orEmpty())
+        val possibleAbbreviations = ArrayDeque(getPossibleAbbreviations(
+            localizedNames = localizedNames.value,
+            defaultLanguage = countryInfo.language,
+            abbreviationsByLanguage = abbreviationsByLanguage
+        ))
 
-        val firstLanguage = adapter?.names?.firstOrNull()?.languageTag?.takeIf { it.isNotBlank() }
+        confirmPossibleAbbreviationsIfAny(requireContext(), possibleAbbreviations) {
+            onClickOk(localizedNames.value)
+        }
+
+        val firstLanguage = localizedNames.value.firstOrNull()?.languageTag?.takeIf { it.isNotBlank() }
         if (firstLanguage != null) prefs.preferredLanguageForNames = firstLanguage
     }
 
     abstract fun onClickOk(names: List<LocalizedName>)
 
-    protected fun confirmPossibleAbbreviationsIfAny(names: Queue<String>, onConfirmedAll: () -> Unit) {
-        if (names.isEmpty()) {
-            onConfirmedAll()
-        } else {
-            /* recursively call self on confirm until the list of not-abbreviations to confirm is
-               through */
-            val name = names.remove()
-            confirmPossibleAbbreviation(name) { confirmPossibleAbbreviationsIfAny(names, onConfirmedAll) }
-        }
-    }
-
-    private fun confirmPossibleAbbreviation(name: String, onConfirmed: () -> Unit) {
-        val title = resources.getString(
-            R.string.quest_streetName_nameWithAbbreviations_confirmation_title_name,
-            "<i>" + Html.escapeHtml(name) + "</i>"
-        ).parseAsHtml()
-
-        AlertDialog.Builder(requireContext())
-            .setTitle(title)
-            .setMessage(R.string.quest_streetName_nameWithAbbreviations_confirmation_description)
-            .setPositiveButton(R.string.quest_streetName_nameWithAbbreviations_confirmation_positive) { _, _ -> onConfirmed() }
-            .setNegativeButton(R.string.quest_generic_confirmation_no, null)
-            .show()
-    }
-
-    protected fun showKeyboardInfo() {
-        AlertDialog.Builder(requireContext())
-            .setTitle(R.string.quest_streetName_cantType_title)
-            .setMessage(R.string.quest_streetName_cantType_description)
-            .setPositiveButton(R.string.quest_streetName_cantType_open_settings) { _, _ ->
-                startActivity(Intent(Settings.ACTION_SETTINGS))
-            }
-            .setNeutralButton(R.string.quest_streetName_cantType_open_store) { _, _ ->
-                val intent = Intent(Intent.ACTION_MAIN)
-                intent.addCategory(Intent.CATEGORY_APP_MARKET)
-                startActivity(intent)
-            }
-            .setNegativeButton(android.R.string.cancel, null)
-            .show()
-    }
-
     override fun isFormComplete(): Boolean =
-        adapter?.names.orEmpty().isNotEmpty()
+        localizedNames.value.isNotEmpty()
+        && localizedNames.value.all { it.name.isNotBlank() }
 
-    companion object {
-        private const val LOCALIZED_NAMES_DATA = "localized_names_data"
-    }
+    override fun isRejectingClose(): Boolean =
+        localizedNames.value.isNotEmpty()
+        && localizedNames.value.any { it.name.isNotBlank() }
 }

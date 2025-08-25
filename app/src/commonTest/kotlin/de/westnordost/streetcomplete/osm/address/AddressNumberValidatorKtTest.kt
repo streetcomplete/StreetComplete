@@ -28,16 +28,4 @@ class AddressNumberValidatorKtTest {
         assertFalse("123456".matches(r))
         assertFalse("1234 5".matches(r))
     }
-
-    @Test
-    fun `blocknumber regex`() {
-        val r = VALID_BLOCK_NUMBER_REGEX
-        assertTrue("1".matches(r))
-        assertTrue("1234".matches(r))
-        assertFalse("12345".matches(r))
-
-        assertTrue("1234a".matches(r))
-        assertTrue("1234 a".matches(r))
-        assertFalse("1234 ab".matches(r))
-    }
 }
