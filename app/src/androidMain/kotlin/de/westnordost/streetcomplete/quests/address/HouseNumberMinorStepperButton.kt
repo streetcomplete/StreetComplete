@@ -9,7 +9,7 @@ import de.westnordost.streetcomplete.osm.address.StructuredHouseNumber
 import de.westnordost.streetcomplete.osm.address.StructuredHouseNumbers
 import de.westnordost.streetcomplete.ui.common.StepperButton
 
-/** Stepper button to minor-increase/decrease a house number (e.g. 12c -> 12a or 12c) */
+/** Stepper button to minor-increase/decrease a house number (e.g. 12b -> 12a or 12c) */
 @Composable
 fun HouseNumberMinorStepperButton(
     value: StructuredHouseNumbers?,
