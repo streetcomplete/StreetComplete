@@ -8,6 +8,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import de.westnordost.streetcomplete.data.quest.QuestType
+import de.westnordost.streetcomplete.screens.settings.debug.ShowMapScreen
 import de.westnordost.streetcomplete.screens.settings.debug.ShowQuestFormsScreen
 import de.westnordost.streetcomplete.screens.settings.overlay_selection.OverlaySelectionScreen
 import de.westnordost.streetcomplete.screens.settings.presets.EditTypePresetsScreen
@@ -42,6 +43,7 @@ import org.koin.androidx.compose.koinViewModel
                 onClickPresetSelection = { navController.navigate(SettingsDestination.EditTypePresets) },
                 onClickQuestSelection = { navController.navigate(SettingsDestination.QuestSelection) },
                 onClickOverlaySelection = { navController.navigate(SettingsDestination.OverlaySelection) },
+                onClickShowMap = { navController.navigate(SettingsDestination.ShowMap) },
                 onClickBack = ::goBack
             )
         }
@@ -70,6 +72,11 @@ import org.koin.androidx.compose.koinViewModel
                 onClickBack = ::goBack,
             )
         }
+        composable(SettingsDestination.ShowMap) {
+            ShowMapScreen(
+                onClickBack = ::goBack,
+            )
+        }
     }
 }
 
@@ -79,4 +86,5 @@ object SettingsDestination {
     const val QuestSelection = "quest_selection"
     const val OverlaySelection = "overlay_selection"
     const val ShowQuestForms = "show_quest_forms"
+    const val ShowMap = "show_map"
 }
