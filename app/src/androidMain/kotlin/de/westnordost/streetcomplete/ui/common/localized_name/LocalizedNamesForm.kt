@@ -12,6 +12,7 @@ import androidx.compose.material.IconButton
 import androidx.compose.material.LocalTextStyle
 import androidx.compose.material.ProvideTextStyle
 import androidx.compose.material.Text
+import androidx.compose.material.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.ReadOnlyComposable
 import androidx.compose.runtime.getValue
@@ -32,22 +33,18 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.meta.Abbreviations
 import de.westnordost.streetcomplete.osm.localized_name.LocalizedName
 import de.westnordost.streetcomplete.ui.common.ButtonStyle
 import de.westnordost.streetcomplete.ui.common.SelectButton
 import de.westnordost.streetcomplete.util.ktx.displayName
 
-/** Edit a list of [localizedNames] of at most [languageTags] different languages.
- *  Optionally, given a [abbreviationsByLanguage], abbreviations in the input will be
- *  auto-completed. */
+/** Edit a list of [localizedNames] of at most [languageTags] different languages.*/
 @Composable
 fun LocalizedNamesForm(
     localizedNames: List<LocalizedName>,
     onChanged: (List<LocalizedName>) -> Unit,
     languageTags: List<String>,
     modifier: Modifier = Modifier,
-    abbreviationsByLanguage: Map<String, Abbreviations?> = emptyMap(),
 ) {
     val selectableLanguageTags = remember(languageTags, localizedNames) {
         languageTags - localizedNames.map { it.languageTag }
@@ -88,7 +85,6 @@ fun LocalizedNamesForm(
                         onChanged(result)
                     },
                     languageTags = selectableLanguageTagsInThisRow,
-                    abbreviations = abbreviationsByLanguage[localizedNames[i].languageTag],
                     isDeleteVisible = !isFirst,
                 )
             }
@@ -123,7 +119,6 @@ private fun LocalizedNameRow(
     onChange: (LocalizedName) -> Unit,
     onDelete: () -> Unit,
     languageTags: List<String>,
-    abbreviations: Abbreviations?,
     isDeleteVisible: Boolean,
     modifier: Modifier = Modifier,
 ) {
@@ -154,13 +149,12 @@ private fun LocalizedNameRow(
             )
         }
 
-        ExpandAbbreviationsTextField(
+        TextField(
             value = nameState,
             onValueChange = {
                 nameState = it
                 onChange(localizedName.copy(name = it.text))
             },
-            abbreviations = abbreviations,
             modifier = Modifier.weight(1f),
             keyboardOptions = KeyboardOptions(
                 hintLocales =

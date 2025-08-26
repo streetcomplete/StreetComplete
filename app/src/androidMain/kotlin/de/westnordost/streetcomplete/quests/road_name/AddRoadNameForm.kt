@@ -4,7 +4,6 @@ import android.content.DialogInterface
 import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
-import de.westnordost.streetcomplete.data.meta.AbbreviationsByLanguage
 import de.westnordost.streetcomplete.data.meta.NameSuggestionsSource
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.osm.ALL_PATHS
@@ -17,7 +16,6 @@ import org.koin.android.ext.android.inject
 
 class AddRoadNameForm : AAddLocalizedNameForm<RoadNameAnswer>() {
 
-    private val abbrByLocale: AbbreviationsByLanguage by inject()
     private val nameSuggestionsSource: NameSuggestionsSource by inject()
 
     override val otherAnswers = listOf(
@@ -36,8 +34,6 @@ class AddRoadNameForm : AAddLocalizedNameForm<RoadNameAnswer>() {
 
         return true
     }
-
-    override fun getAbbreviationsByLanguage(): AbbreviationsByLanguage = abbrByLocale
 
     override fun onClickOk(names: List<LocalizedName>) {
         applyAnswer(RoadName(names))

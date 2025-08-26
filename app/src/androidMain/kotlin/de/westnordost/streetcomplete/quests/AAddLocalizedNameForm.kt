@@ -6,18 +6,12 @@ import androidx.compose.material.Surface
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.meta.Abbreviations
-import de.westnordost.streetcomplete.data.meta.AbbreviationsByLanguage
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.databinding.ComposeViewBinding
 import de.westnordost.streetcomplete.osm.localized_name.LocalizedName
 import de.westnordost.streetcomplete.ui.common.localized_name.LocalizedNamesForm
 import de.westnordost.streetcomplete.ui.util.content
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
-import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
-import de.westnordost.streetcomplete.view.localized_name.confirmPossibleAbbreviationsIfAny
-import de.westnordost.streetcomplete.view.localized_name.getPossibleAbbreviations
-import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 
 abstract class AAddLocalizedNameForm<T> : AbstractOsmQuestForm<T>() {
@@ -27,7 +21,6 @@ abstract class AAddLocalizedNameForm<T> : AbstractOsmQuestForm<T>() {
 
     private val prefs: Preferences by inject()
     protected lateinit var localizedNames: MutableState<List<LocalizedName>>
-    protected var abbreviationsByLanguage: Map<String, Abbreviations?> = emptyMap()
     private lateinit var selectableLanguages: List<String>
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,13 +38,6 @@ abstract class AAddLocalizedNameForm<T> : AbstractOsmQuestForm<T>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val abbrs = getAbbreviationsByLanguage()
-        if (abbrs != null) {
-            viewLifecycleScope.launch {
-                abbreviationsByLanguage = selectableLanguages.associateWith { abbrs[it] }
-            }
-        }
-
         binding.composeViewBase.content { Surface {
             localizedNames = rememberSerializable {
                 mutableStateOf(listOf(LocalizedName(countryInfo.language.orEmpty(), "")))
@@ -64,7 +50,6 @@ abstract class AAddLocalizedNameForm<T> : AbstractOsmQuestForm<T>() {
                     checkIsFormComplete()
                 },
                 languageTags = selectableLanguages,
-                abbreviationsByLanguage = abbreviationsByLanguage,
             )
         } }
     }
@@ -72,18 +57,8 @@ abstract class AAddLocalizedNameForm<T> : AbstractOsmQuestForm<T>() {
     protected open fun getSelectableLanguageTags(): List<String> =
         (countryInfo.officialLanguages + countryInfo.additionalStreetsignLanguages).distinct()
 
-    protected open fun getAbbreviationsByLanguage(): AbbreviationsByLanguage? = null
-
     final override fun onClickOk() {
-        val possibleAbbreviations = ArrayDeque(getPossibleAbbreviations(
-            localizedNames = localizedNames.value,
-            defaultLanguage = countryInfo.language,
-            abbreviationsByLanguage = abbreviationsByLanguage
-        ))
-
-        confirmPossibleAbbreviationsIfAny(requireContext(), possibleAbbreviations) {
-            onClickOk(localizedNames.value)
-        }
+        onClickOk(localizedNames.value)
 
         val firstLanguage = localizedNames.value.firstOrNull()?.languageTag?.takeIf { it.isNotBlank() }
         if (firstLanguage != null) prefs.preferredLanguageForNames = firstLanguage

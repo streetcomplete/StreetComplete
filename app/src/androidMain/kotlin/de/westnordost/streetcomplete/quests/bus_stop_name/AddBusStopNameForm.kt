@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.quests.bus_stop_name
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
-import de.westnordost.streetcomplete.data.meta.AbbreviationsByLanguage
 import de.westnordost.streetcomplete.data.meta.NameSuggestionsSource
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.osm.localized_name.LocalizedName
@@ -14,7 +13,6 @@ import org.koin.android.ext.android.inject
 
 class AddBusStopNameForm : AAddLocalizedNameForm<BusStopNameAnswer>() {
 
-    private val abbrByLocale: AbbreviationsByLanguage by inject()
     private val nameSuggestionsSource: NameSuggestionsSource by inject()
 
     override val otherAnswers = listOf(
@@ -44,9 +42,6 @@ class AddBusStopNameForm : AAddLocalizedNameForm<BusStopNameAnswer>() {
 
         return true
     }
-
-    // because bus stops are often named after streets
-    override fun getAbbreviationsByLanguage() = abbrByLocale
 
     override fun onClickOk(names: List<LocalizedName>) {
         applyAnswer(BusStopName(names))
