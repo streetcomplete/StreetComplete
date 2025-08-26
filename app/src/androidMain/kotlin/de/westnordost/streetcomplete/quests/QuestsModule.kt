@@ -142,6 +142,7 @@ import de.westnordost.streetcomplete.quests.sanitary_dump_station.AddSanitaryDum
 import de.westnordost.streetcomplete.quests.seating.AddSeating
 import de.westnordost.streetcomplete.quests.segregated.AddCyclewaySegregation
 import de.westnordost.streetcomplete.quests.self_service.AddSelfServiceLaundry
+import de.westnordost.streetcomplete.quests.shelter_capacity.AddShelterCapacity
 import de.westnordost.streetcomplete.quests.shop_type.CheckShopExistence
 import de.westnordost.streetcomplete.quests.shop_type.CheckShopType
 import de.westnordost.streetcomplete.quests.shop_type.SpecifyShopType
@@ -468,6 +469,8 @@ fun questTypeRegistry(
     116 to AddCampShower(),
     117 to AddCampPower(),
     162 to AddSanitaryDumpStation(),
+
+    177 to AddShelterCapacity(),
 
     // toilets
     118 to AddToiletAvailability(), // shown in OsmAnd descriptions
