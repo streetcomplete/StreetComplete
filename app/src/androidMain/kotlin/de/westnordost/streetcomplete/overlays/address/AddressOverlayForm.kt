@@ -174,6 +174,7 @@ class AddressOverlayForm : AbstractOverlayForm(), IsMapPositionAware {
                     onValueChange = {
                         addressNumberAndName.value = it
 
+                        // apply suggestion
                         if (streetOrPlaceName.value.name.isEmpty()) {
                             when (streetOrPlaceName.value) {
                                 is PlaceName -> {
