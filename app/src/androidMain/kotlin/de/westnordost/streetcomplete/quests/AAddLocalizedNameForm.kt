@@ -2,9 +2,15 @@ package de.westnordost.streetcomplete.quests
 
 import android.os.Bundle
 import android.view.View
+import androidx.compose.foundation.layout.Column
+import androidx.compose.material.ContentAlpha
+import androidx.compose.material.LocalContentColor
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
+import androidx.compose.material.Text
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.ui.res.stringResource
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.databinding.ComposeViewBinding
@@ -43,16 +49,28 @@ abstract class AAddLocalizedNameForm<T> : AbstractOsmQuestForm<T>() {
                 mutableStateOf(listOf(LocalizedName(countryInfo.language.orEmpty(), "")))
             }
 
-            LocalizedNamesForm(
-                localizedNames = localizedNames.value,
-                onChanged = {
-                    localizedNames.value = it
-                    checkIsFormComplete()
-                },
-                languageTags = selectableLanguages,
-            )
+            Column {
+                if (showAbbreviationsHint()) {
+                    Text(
+                        text = stringResource(R.string.quest_streetName_abbreviation_instruction),
+                        style = MaterialTheme.typography.caption.copy(
+                            color = LocalContentColor.current.copy(alpha = ContentAlpha.medium)
+                        )
+                    )
+                }
+                LocalizedNamesForm(
+                    localizedNames = localizedNames.value,
+                    onChanged = {
+                        localizedNames.value = it
+                        checkIsFormComplete()
+                    },
+                    languageTags = selectableLanguages,
+                )
+            }
         } }
     }
+
+    protected open fun showAbbreviationsHint(): Boolean = false
 
     protected open fun getSelectableLanguageTags(): List<String> =
         (countryInfo.officialLanguages + countryInfo.additionalStreetsignLanguages).distinct()

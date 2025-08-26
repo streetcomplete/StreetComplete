@@ -35,6 +35,8 @@ class AddRoadNameForm : AAddLocalizedNameForm<RoadNameAnswer>() {
         return true
     }
 
+    override fun showAbbreviationsHint(): Boolean = true
+
     override fun onClickOk(names: List<LocalizedName>) {
         applyAnswer(RoadName(names))
     }

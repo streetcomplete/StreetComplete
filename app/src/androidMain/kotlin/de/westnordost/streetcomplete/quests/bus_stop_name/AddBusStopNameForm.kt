@@ -35,6 +35,8 @@ class AddBusStopNameForm : AAddLocalizedNameForm<BusStopNameAnswer>() {
         and name
     """.toElementFilterExpression()
 
+    override fun showAbbreviationsHint(): Boolean = true
+
     override fun onClickMapAt(position: LatLon, clickAreaSizeInMeters: Double): Boolean {
         nameSuggestionsSource.getNames(position, clickAreaSizeInMeters, busStopsWithNamesFilter)
             .firstOrNull()
