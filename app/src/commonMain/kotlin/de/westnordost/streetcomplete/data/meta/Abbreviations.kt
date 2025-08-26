@@ -1,9 +1,11 @@
 package de.westnordost.streetcomplete.data.meta
 
+import androidx.compose.runtime.Immutable
 import de.westnordost.streetcomplete.util.ktx.anyIndexed
 
 /** Holds abbreviations (for road names) and its expansions. E.g. in English, "st." would expand
  *  to "street". */
+@Immutable
 class Abbreviations(config: Map<String, String>) {
     private val abbreviations = config.map { (abbreviation, expansion) ->
         var pattern = abbreviation.lowercase()
@@ -36,7 +38,12 @@ class Abbreviations(config: Map<String, String>) {
         for ((regex, replacement) in abbreviations) {
             if (!regex.matches(word, isFirstWord, isLastWord)) continue
             val result = regex.replaceFirst(word, replacement)
-            return if (word.first().isTitleCase()) result.capitalize() else result
+            val first = word.first()
+            return when {
+                first.isUpperCase() -> result.replaceFirstChar { it.uppercase() }
+                first.isTitleCase() -> result.replaceFirstChar { it.titlecase() }
+                else -> result
+            }
         }
         return null
     }
@@ -73,6 +80,3 @@ private fun Regex.matches(
 
     return this.matches(word)
 }
-
-private fun String.capitalize() =
-    replaceFirstChar { if (it.isLowerCase()) it.titlecase() else it.toString() }

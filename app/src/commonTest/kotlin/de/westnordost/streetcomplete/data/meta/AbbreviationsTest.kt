@@ -14,7 +14,7 @@ class AbbreviationsTest {
 
     @Test fun `ignores case`() {
         val abbr = Abbreviations(mapOf("sTr" to "straße"))
-        assertEquals("straße", abbr.getExpansion("StR", true, true))
+        assertEquals("Straße", abbr.getExpansion("StR", true, true))
     }
 
     @Test fun `expects own word by default`() {
