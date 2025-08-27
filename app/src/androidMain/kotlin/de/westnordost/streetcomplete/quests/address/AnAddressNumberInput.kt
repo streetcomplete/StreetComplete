@@ -9,6 +9,7 @@ import androidx.compose.foundation.text.BasicText
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.text.TextAutoSize
 import androidx.compose.material.LocalTextStyle
+import androidx.compose.material.ProvideTextStyle
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -21,6 +22,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.style.TextAlign
+import de.westnordost.streetcomplete.ui.common.AutoFitTextFieldFontSize
 import de.westnordost.streetcomplete.ui.common.SwitchKeyboardPopupButton
 import de.westnordost.streetcomplete.ui.common.TextField2
 
@@ -51,40 +53,41 @@ fun AnAddressNumberInput(
     var isFocused by remember { mutableStateOf(false) }
     val showSwitchKeyboardPopup = isFocused && WindowInsets.isImeVisible
 
-    val textStyle = LocalTextStyle.current.copy(
+    ProvideTextStyle(LocalTextStyle.current.copy(
         textAlign = TextAlign.Center,
         // to avoid the size of the text changing when going from e.g. "123j" to "123k"
         fontFamily = FontFamily.Monospace,
-    )
+    )) {
+        AutoFitTextFieldFontSize(
+            value = valueState.text,
+            modifier = modifier
+        ) {
+            TextField2(
+                value = valueState,
+                onValueChange = {
+                    valueState = it
+                    onValueChange(valueState.text)
+                },
+                placeholder = if (!suggestion.isNullOrEmpty()) { {
+                    val textStyle = LocalTextStyle.current
+                    BasicText(
+                        text = suggestion,
+                        style = textStyle.copy(color = textStyle.color.copy(alpha = 0.2f)),
+                        // so that the text aligns center, just like the actual text
+                        modifier = Modifier.fillMaxWidth(),
+                        maxLines = 1,
+                        autoSize = TextAutoSize.StepBased(maxFontSize = textStyle.fontSize)
+                    )
+                } } else null,
+                keyboardOptions = keyboardOptions.copy(
+                    keyboardType = keyboardType,
+                    autoCorrectEnabled = false,
+                ),
+                modifier = Modifier.onFocusChanged { isFocused = it.isFocused },
+                singleLine = true,
+            )
+        }
 
-    Box(
-        modifier = modifier
-    ) {
-        TextField2(
-            value = valueState,
-            onValueChange = {
-                valueState = it
-                onValueChange(valueState.text)
-            },
-            placeholder = if (!suggestion.isNullOrEmpty()) { {
-                BasicText(
-                    text = suggestion,
-                    style = textStyle.copy(color = textStyle.color.copy(alpha = 0.2f)),
-                    // so that the text aligns center, just like the actual text
-                    modifier = Modifier.fillMaxWidth(),
-                    maxLines = 1,
-                    autoSize = TextAutoSize.StepBased(maxFontSize = textStyle.fontSize)
-                )
-            } } else null,
-            textStyle = textStyle,
-            keyboardOptions = keyboardOptions.copy(
-                keyboardType = keyboardType,
-                autoCorrectEnabled = false,
-            ),
-            modifier = Modifier.onFocusChanged { isFocused = it.isFocused },
-            autoFitFontSize = true,
-            singleLine = true,
-        )
         if (showSwitchKeyboardPopup) {
             SwitchKeyboardPopupButton(
                 isAbc = isAbc,

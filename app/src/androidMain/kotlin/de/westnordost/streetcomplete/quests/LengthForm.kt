@@ -29,6 +29,7 @@ import de.westnordost.streetcomplete.ui.common.LengthFeetInchesInput
 import de.westnordost.streetcomplete.ui.common.LengthMetersInput
 import de.westnordost.streetcomplete.ui.common.MeasurementIcon
 import de.westnordost.streetcomplete.ui.common.SelectButton
+import de.westnordost.streetcomplete.ui.theme.extraLargeInput
 import de.westnordost.streetcomplete.ui.theme.largeInput
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 
@@ -70,29 +71,28 @@ fun LengthForm(
                 )
             }
 
-            ProvideTextStyle(MaterialTheme.typography.largeInput) {
-                when (selectedUnit) {
-                    LengthUnit.METER -> {
+            when (selectedUnit) {
+                LengthUnit.METER -> {
+                    ProvideTextStyle(MaterialTheme.typography.extraLargeInput) {
                         LengthMetersInput(
                             length = length as? Length.Meters,
                             onChange = onChange,
                             maxMeterDigits = Pair(3, 2),
                             modifier = Modifier.weight(1f),
-                            autoFitFontSize = true,
                         )
                     }
-                    LengthUnit.FOOT_AND_INCH -> {
+                }
+                LengthUnit.FOOT_AND_INCH -> {
+                    ProvideTextStyle(MaterialTheme.typography.largeInput) {
                         LengthFeetInchesInput(
                             length = length as? Length.FeetAndInches,
                             onChange = onChange,
                             maxFeetDigits = 3,
                             modifier = Modifier.weight(1f),
-                            autoFitFontSize = true,
                         )
                     }
                 }
             }
-
         }
 
         if (showMeasureButton) {
