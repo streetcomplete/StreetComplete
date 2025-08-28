@@ -23,7 +23,7 @@ class AddMaxWeightForm : AbstractOsmQuestForm<MaxWeightAnswer>() {
         AnswerItem(R.string.quest_generic_answer_noSign) { confirmNoSign() }
     )
 
-    private lateinit var sign: MutableState<MaxWeightSign?>
+    private lateinit var type: MutableState<MaxWeightType?>
     private lateinit var weight: MutableState<Weight?>
 
     private val weightLimitUnits get() = countryInfo.weightLimitUnits
@@ -32,7 +32,7 @@ class AddMaxWeightForm : AbstractOsmQuestForm<MaxWeightAnswer>() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.composeViewBase.content { Surface {
-            sign = rememberSerializable { mutableStateOf(null) }
+            type = rememberSerializable { mutableStateOf(null) }
             weight = rememberSerializable { mutableStateOf(null) }
 
             TODO()
@@ -54,7 +54,7 @@ class AddMaxWeightForm : AbstractOsmQuestForm<MaxWeightAnswer>() {
     }
 
     private fun applyMaxWeightFormAnswer() {
-        applyAnswer(MaxWeight(sign.value!!, weight.value!!))
+        applyAnswer(MaxWeight(type.value!!, weight.value!!))
     }
 
     private fun onUnsupportedSign() {
@@ -69,7 +69,7 @@ class AddMaxWeightForm : AbstractOsmQuestForm<MaxWeightAnswer>() {
     private fun confirmNoSign() {
         activity?.let { AlertDialog.Builder(it)
             .setTitle(R.string.quest_generic_confirmation_title)
-            .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ -> applyAnswer(NoMaxWeightSign) }
+            .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ -> applyAnswer(MaxWeightAnswer.NoSign) }
             .setNegativeButton(R.string.quest_generic_confirmation_no, null)
             .show()
         }
@@ -85,7 +85,7 @@ class AddMaxWeightForm : AbstractOsmQuestForm<MaxWeightAnswer>() {
         }
     }
 
-    override fun isFormComplete() = sign.value != null && weight.value != null
+    override fun isFormComplete() = type.value != null && weight.value != null
 
-    override fun isRejectingClose() = sign.value != null || weight.value != null
+    override fun isRejectingClose() = type.value != null || weight.value != null
 }

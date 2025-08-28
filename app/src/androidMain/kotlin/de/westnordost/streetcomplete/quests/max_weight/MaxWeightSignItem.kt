@@ -1,36 +1,48 @@
 package de.westnordost.streetcomplete.quests.max_weight
 
-import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.sign_maxaxleload
+import de.westnordost.streetcomplete.resources.sign_maxaxleload_mutcd
+import de.westnordost.streetcomplete.resources.sign_maxaxleload_yellow
+import de.westnordost.streetcomplete.resources.sign_maxbogieweight
+import de.westnordost.streetcomplete.resources.sign_maxbogieweight_mutcd
+import de.westnordost.streetcomplete.resources.sign_maxbogieweight_yellow
+import de.westnordost.streetcomplete.resources.sign_maxweight
+import de.westnordost.streetcomplete.resources.sign_maxweight_mutcd
+import de.westnordost.streetcomplete.resources.sign_maxweight_yellow
+import de.westnordost.streetcomplete.resources.sign_maxweightrating_gb
+import de.westnordost.streetcomplete.resources.sign_maxweightrating_hgv
+import de.westnordost.streetcomplete.resources.sign_maxweightrating_hgv_de
+import de.westnordost.streetcomplete.resources.sign_maxweightrating_hgv_yellow
+import de.westnordost.streetcomplete.resources.sign_maxweightrating_mutcd
+import org.jetbrains.compose.resources.DrawableResource
 
-fun MaxWeightSign.getLayoutResourceId(countryCode: String) = when (this) {
-    MaxWeightSign.MAX_WEIGHT             -> getMaxWeightSignLayoutResId(countryCode)
-    MaxWeightSign.MAX_GROSS_VEHICLE_MASS -> getMaxWeightMgvSignLayoutResId(countryCode)
-    MaxWeightSign.MAX_AXLE_LOAD          -> getMaxWeightAxleLoadSignLayoutResId(countryCode)
-    MaxWeightSign.MAX_TANDEM_AXLE_LOAD   -> getMaxWeightTandemAxleLoadSignLayoutResId(countryCode)
-}
-
-private fun getMaxWeightSignLayoutResId(countryCode: String): Int = when (countryCode) {
-    "AU", "CA", "US" -> R.layout.quest_maxweight_sign_us
-    "FI", "IS", "SE" -> R.layout.quest_maxweight_sign_fi
-    else ->             R.layout.quest_maxweight_sign
-}
-
-private fun getMaxWeightMgvSignLayoutResId(countryCode: String): Int = when (countryCode) {
-    "AU", "CA", "US" -> R.layout.quest_maxweight_mgv_sign_us
-    "FI", "IS", "SE" -> R.layout.quest_maxweight_mgv_sign_fi
-    "DE" ->             R.layout.quest_maxweight_mgv_sign_de
-    "GB" ->             R.layout.quest_maxweight_mgv_sign_gb
-    else ->             R.layout.quest_maxweight_mgv_sign
-}
-
-private fun getMaxWeightAxleLoadSignLayoutResId(countryCode: String): Int = when (countryCode) {
-    "AU", "CA", "US" -> R.layout.quest_maxweight_axleload_sign_us
-    "FI", "IS", "SE" -> R.layout.quest_maxweight_axleload_sign_fi
-    else ->             R.layout.quest_maxweight_axleload_sign
-}
-
-private fun getMaxWeightTandemAxleLoadSignLayoutResId(countryCode: String): Int = when (countryCode) {
-    "AU", "CA", "US" -> R.layout.quest_maxweight_tandem_axleload_sign_us
-    "FI", "IS", "SE" -> R.layout.quest_maxweight_tandem_axleload_sign_fi
-    else ->             R.layout.quest_maxweight_tandem_axleload_sign
+fun MaxWeightType.getIcon(countryCode: String): DrawableResource? = when (this) {
+    MaxWeightType.MAX_WEIGHT -> when (countryCode) {
+        "AU", "CA", "US" -> Res.drawable.sign_maxweight_mutcd
+        "FI", "IS", "SE" -> Res.drawable.sign_maxweight_yellow
+        else ->             Res.drawable.sign_maxweight
+    }
+    MaxWeightType.MAX_WEIGHT_RATING -> when (countryCode) {
+        "AU", "CA", "US" -> Res.drawable.sign_maxweightrating_mutcd
+        "GB" ->             Res.drawable.sign_maxweightrating_gb
+        else ->             null
+    }
+    MaxWeightType.MAX_WEIGHT_RATING_HGV -> when (countryCode) {
+        "AU", "CA", "US" -> null
+        "FI", "IS", "SE"->  Res.drawable.sign_maxweightrating_hgv_yellow
+        "DE" ->             Res.drawable.sign_maxweightrating_hgv_de
+        "GB" ->             null
+        else ->             Res.drawable.sign_maxweightrating_hgv
+    }
+    MaxWeightType.MAX_AXLE_LOAD -> when (countryCode) {
+        "AU", "CA", "US" -> Res.drawable.sign_maxaxleload_mutcd
+        "FI", "IS", "SE" -> Res.drawable.sign_maxaxleload_yellow
+        else ->             Res.drawable.sign_maxaxleload
+    }
+    MaxWeightType.MAX_TANDEM_AXLE_LOAD -> when (countryCode) {
+        "AU", "CA", "US" -> Res.drawable.sign_maxbogieweight_mutcd
+        "FI", "IS", "SE" -> Res.drawable.sign_maxbogieweight_yellow
+        else ->             Res.drawable.sign_maxbogieweight
+    }
 }

@@ -6,10 +6,6 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.quests.max_weight.MaxWeightSign.MAX_AXLE_LOAD
-import de.westnordost.streetcomplete.quests.max_weight.MaxWeightSign.MAX_GROSS_VEHICLE_MASS
-import de.westnordost.streetcomplete.quests.max_weight.MaxWeightSign.MAX_TANDEM_AXLE_LOAD
-import de.westnordost.streetcomplete.quests.max_weight.MaxWeightSign.MAX_WEIGHT
 
 class AddMaxWeight : OsmFilterQuestType<MaxWeightAnswer>(), AndroidQuest {
 
@@ -42,18 +38,11 @@ class AddMaxWeight : OsmFilterQuestType<MaxWeightAnswer>(), AndroidQuest {
     override fun applyAnswerTo(answer: MaxWeightAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {
             is MaxWeight -> {
-                tags[answer.sign.osmKey] = answer.weight.toString()
+                answer.applyTo(tags)
             }
-            is NoMaxWeightSign -> {
+            is MaxWeightAnswer.NoSign -> {
                 tags["maxweight:signed"] = "no"
             }
         }
     }
-}
-
-private val MaxWeightSign.osmKey get() = when (this) {
-    MAX_WEIGHT             -> "maxweight"
-    MAX_GROSS_VEHICLE_MASS -> "maxweightrating"
-    MAX_AXLE_LOAD          -> "maxaxleload"
-    MAX_TANDEM_AXLE_LOAD   -> "maxbogieweight"
 }
