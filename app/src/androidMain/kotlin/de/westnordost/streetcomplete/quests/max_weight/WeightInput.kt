@@ -32,7 +32,7 @@ fun WeightInputMutcd(
         modifier = modifier,
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        AutoFitTextFieldFontSize(value?.toShortString().orEmpty()) {
+        AutoFitTextFieldFontSize(value?.toString().orEmpty()) {
             DecimalInput(
                 value = value,
                 onValueChange = onValueChange,
@@ -69,8 +69,8 @@ fun WeightInput(
     ) {
         Text(" ") // just so that the input is centered
         AutoFitTextFieldFontSize(
-            value = value?.toShortString().orEmpty(),
-            modifier = Modifier.width(96.dp)
+            value = value?.toString().orEmpty(),
+            modifier = Modifier.width(112.dp)
         ) {
             DecimalInput(
                 value = value,

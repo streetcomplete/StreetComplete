@@ -17,6 +17,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.osm.Length
 import de.westnordost.streetcomplete.ui.common.input.DecimalInput
+import de.westnordost.streetcomplete.util.ktx.toShortString
 
 /** Input field to input a length in meters */
 @Composable
@@ -33,7 +34,7 @@ fun LengthMetersInput(
         horizontalArrangement = Arrangement.spacedBy(8.dp)
     ) {
         AutoFitTextFieldFontSize(
-            value = length?.meters?.toString().orEmpty(),
+            value = length?.meters?.toShortString().orEmpty(),
             modifier = Modifier.weight(1f)
         ) {
             DecimalInput(
