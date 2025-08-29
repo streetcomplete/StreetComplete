@@ -16,7 +16,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.ui.common.ProhibitorySign
 import de.westnordost.streetcomplete.ui.common.RectangularSign
@@ -31,11 +30,7 @@ fun MaxWeightSign(
     color: Color = TrafficSignColor.White,
     content: @Composable ColumnScope.() -> Unit,
 ) {
-    val textStyle = MaterialTheme.typography.extraLargeInput.copy(
-        textAlign = TextAlign.Center,
-        fontWeight = FontWeight.Bold,
-    )
-    ProvideTextStyle(textStyle) {
+    ProvideTextStyle(MaterialTheme.typography.extraLargeInput.copy(fontWeight = FontWeight.Bold)) {
         ProhibitorySign(
             modifier = modifier.size(256.dp),
             color = color
@@ -63,16 +58,10 @@ fun MaxWeightSignMutcd(
             verticalArrangement = Arrangement.spacedBy(4.dp),
             modifier = Modifier.padding(4.dp),
         ) {
-            ProvideTextStyle(MaterialTheme.typography.largeInput.copy(
-                textAlign = TextAlign.Center,
-                fontWeight = FontWeight.Bold,
-            )) {
+            ProvideTextStyle(MaterialTheme.typography.largeInput.copy(fontWeight = FontWeight.Bold)) {
                 Text(text)
             }
-            ProvideTextStyle(MaterialTheme.typography.extraLargeInput.copy(
-                textAlign = TextAlign.Center,
-                fontWeight = FontWeight.Bold,
-            )) {
+            ProvideTextStyle(MaterialTheme.typography.extraLargeInput.copy(fontWeight = FontWeight.Bold)) {
                 content()
             }
         }
@@ -87,10 +76,7 @@ fun MaxWeightSignExtra(
     signContent: @Composable BoxScope.() -> Unit,
     extraContent: @Composable BoxScope.() -> Unit,
 ) {
-    val textStyle = MaterialTheme.typography.extraLargeInput.copy(
-        textAlign = TextAlign.Center,
-        fontWeight = FontWeight.Bold,
-    )
+    val textStyle = MaterialTheme.typography.extraLargeInput.copy(fontWeight = FontWeight.Bold)
     ProvideTextStyle(textStyle) {
         Column(
             modifier = modifier,
