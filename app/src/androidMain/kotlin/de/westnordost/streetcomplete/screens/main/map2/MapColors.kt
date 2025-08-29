@@ -1,0 +1,102 @@
+package de.westnordost.streetcomplete.screens.main.map2
+
+import androidx.compose.runtime.Immutable
+import androidx.compose.ui.graphics.Color
+
+@Immutable
+data class MapColors(
+    val earth: Color,
+    val water: Color,
+    val waterShore: Color,
+    val green: Color,
+    val forest: Color,
+    val town: Color,
+    val building: Color,
+    val buildingOutline: Color,
+    val barrier: Color,
+    val pointBarrier: Color,
+    val adminBoundary: Color,
+    val railway: Color,
+    val aeroway: Color,
+    val path: Color,
+    val steps: Color,
+    val road: Color,
+    val roadOutline: Color,
+    val pedestrian: Color,
+    val motorway: Color,
+    val motorwayOutline: Color,
+    val text: Color,
+    val textOutline: Color,
+    val textWater: Color,
+    val textWaterOutline: Color,
+    val privateOverlay: Color,
+    val hillshadeLight: Color,
+    val hillshadeShadow: Color,
+    val onewayArrow: Color
+) {
+    companion object
+}
+
+val MapColors.Companion.Light get() = mapColorsLight
+private val mapColorsLight = MapColors(
+    earth = Color(0xfff3eacc),
+    water = Color(0xff6688dd),
+    waterShore = Color(0xffaabbee),
+    green = Color(0xffc6ddaa),
+    forest = Color(0xffa8c884),
+    town = Color(0xfff3dacd),
+    building = Color(204, 214, 238),
+    buildingOutline = Color(185, 195, 217),
+    barrier = Color(185, 195, 217),
+    pointBarrier = Color(0xff888888),
+    adminBoundary = Color(0xffee3399),
+    railway = Color(0xff9999aa),
+    aeroway = Color(0xffffffff),
+    path = Color(0xffccaa99),
+    steps = Color(0xfff6eee6),
+    road = Color(0xffffffff),
+    roadOutline = Color(0xffccaa99),
+    pedestrian = Color(0xfff6eee6),
+    motorway = Color(0xffffaa88),
+    motorwayOutline = Color(0xffaa8888),
+    text = Color(0xff112244),
+    textOutline = Color(0xffffffff),
+    textWater = Color(0xffffffff),
+    textWaterOutline = Color(0xff334499),
+    privateOverlay = Color(0xfff3dacd),
+    hillshadeLight = Color.hsl(0.86f, 1f, 0.95f),
+    hillshadeShadow = Color.hsl(0.07f, 1f, 0.4f),
+    onewayArrow = Color(0xff888888),
+)
+
+val MapColors.Companion.Night get() = mapColorsNight
+private val mapColorsNight = MapColors(
+    earth = Color(0xff2e2e48),
+    water = Color(0xff000022),
+    waterShore = Color(0xff222288),
+    green = Color(0xff363054),
+    forest = Color(0xff403962),
+    town = Color(0xff3d364e),
+    building = Color(41, 92, 92, 204),
+    buildingOutline = Color(31, 82, 82, 204),
+    barrier = Color(31, 82, 82, 204),
+    pointBarrier = Color(0xff9999ff),
+    adminBoundary = Color(0xffee7722),
+    railway = Color(0xff9966cc),
+    aeroway = Color(0xff555599),
+    path = Color(0xff554477),
+    steps = Color(0xff554e7e),
+    road = Color(0xff555599),
+    roadOutline = Color(0xff554477),
+    pedestrian = Color(0xff554e7e),
+    motorway = Color(0xff666699),
+    motorwayOutline = Color(0xff9999ff),
+    text = Color(0xffccccff),
+    textOutline = Color(0xff2e2e48),
+    textWater = Color(0xff2e2e48),
+    textWaterOutline = Color(0xffccccff),
+    privateOverlay = Color(0xff3d364e),
+    hillshadeLight = Color.hsl(0.94f, 0.3f, 0.5f),
+    hillshadeShadow = Color.hsl(0.94f, 0.8f, 0.0f),
+    onewayArrow = Color(0xffccccff),
+)
