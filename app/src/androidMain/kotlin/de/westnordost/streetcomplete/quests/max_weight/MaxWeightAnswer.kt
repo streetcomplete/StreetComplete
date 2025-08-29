@@ -18,9 +18,9 @@ fun MaxWeight.applyTo(tags: Tags) {
 }
 
 private val MaxWeightType.osmKey get() = when (this) {
-    MAX_WEIGHT                 -> "maxweight"
+    MAX_WEIGHT            -> "maxweight"
     MAX_WEIGHT_RATING     -> "maxweightrating"
     MAX_WEIGHT_RATING_HGV -> "maxweightrating:hgv"
-    MAX_AXLE_LOAD              -> "maxaxleload"
-    MAX_TANDEM_AXLE_LOAD       -> "maxbogieweight"
+    MAX_AXLE_LOAD         -> "maxaxleload"
+    MAX_TANDEM_AXLE_LOAD  -> "maxbogieweight"
 }
