@@ -2094,6 +2094,9 @@
         "historic/memorial": {
           "name": "Memorial"
         },
+        "historic/memorial/blue_plaque-GB-IE": {
+          "name": "Blue Plaque"
+        },
         "historic/memorial/plaque": {
           "name": "Commemorative Plaque"
         },

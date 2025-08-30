@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.ui.common
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.LocalTextStyle
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -25,25 +26,28 @@ fun LengthMetersInput(
     maxMeterDigits: Pair<Int, Int>,
     modifier: Modifier = Modifier,
     style: TextFieldStyle = TextFieldStyle.Filled,
-    autoFitFontSize: Boolean = false,
 ) {
     Row(
         modifier = modifier,
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(8.dp)
     ) {
-        DecimalInput(
-            value = length?.meters,
-            onValueChange = { meters ->
-                onChange(meters?.let { Length.Meters(it) })
-            },
-            modifier = Modifier.weight(1f),
-            maxIntegerDigits = maxMeterDigits.first,
-            maxFractionDigits = maxMeterDigits.second,
-            style = style,
-            autoFitFontSize = autoFitFontSize,
-            textStyle = LocalTextStyle.current.copy(textAlign = TextAlign.Center),
-        )
+        AutoFitTextFieldFontSize(
+            value = length?.meters?.toString().orEmpty(),
+            modifier = Modifier.weight(1f)
+        ) {
+            DecimalInput(
+                value = length?.meters,
+                onValueChange = { meters ->
+                    onChange(meters?.let { Length.Meters(it) })
+                },
+                modifier = Modifier.fillMaxWidth(),
+                maxIntegerDigits = maxMeterDigits.first,
+                maxFractionDigits = maxMeterDigits.second,
+                style = style,
+                textStyle = LocalTextStyle.current.copy(textAlign = TextAlign.Center),
+            )
+        }
         Text("m")
     }
 }

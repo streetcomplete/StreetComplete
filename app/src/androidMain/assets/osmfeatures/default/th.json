@@ -34,7 +34,7 @@
           "terms": "ป้ายตั้งโฆษณา"
         },
         "aerialway": {
-          "name": "คุณลักษณะทางกระเช้าขนส่ง"
+          "name": "คุณลักษณะทางกระเช้า"
         },
         "aerialway/cable_car": {
           "name": "รถกระเช้า",
@@ -104,7 +104,7 @@
           "terms": "เกทสนามบิน,ประตูสนามบิน"
         },
         "aeroway/hangar": {
-          "name": "โรงเก็บเครื่องบิน",
+          "name": "โรงเก็บอากาศยาน",
           "terms": "โรงเก็บเครื่องบิน"
         },
         "aeroway/helipad": {
@@ -124,23 +124,23 @@
           "terms": "ตำแหน่งจอดอากาศยาน"
         },
         "aeroway/runway": {
-          "name": "รันเวย์",
-          "terms": "รันเวย์"
+          "name": "ทางวิ่งเครื่องบิน",
+          "terms": "รันเวย์,runway"
         },
         "aeroway/spaceport": {
           "name": "ท่าอวกาศยาน",
           "terms": "ท่าอวกาศยาน,ฐานปล่อยจรวด,คอสโมโดรม"
         },
         "aeroway/taxiway": {
-          "name": "แท็กซี่เวย์",
-          "terms": "แท็กซี่เวย์"
+          "name": "ทางขับเครื่องบิน",
+          "terms": "แท็กซี่เวย์,taxiway"
         },
         "aeroway/terminal": {
           "name": "อาคารสนามบิน",
           "terms": "อาคารสนามบิน"
         },
         "aeroway/windsock": {
-          "name": "ถุงลมบอกทิศทาง",
+          "name": "กรวยลมบอกทิศทาง",
           "terms": "ถุงลมบอกทิศทาง"
         },
         "allotments/plot": {
@@ -239,7 +239,7 @@
           "terms": "โรงเก็บเรือ"
         },
         "amenity/bureau_de_change": {
-          "name": "ร้านรับแลกเงินตรา",
+          "name": "ร้านแลกเปลี่ยนเงินตราต่างประเทศ",
           "terms": "ร้านรับแลกเงินตรา,จุดแลกเปลี่ยนเงินตรา"
         },
         "amenity/bus_station": {
@@ -256,6 +256,10 @@
         "amenity/cafe/coffee_shop": {
           "name": "ร้านกาแฟ",
           "terms": "ร้านกาแฟ"
+        },
+        "amenity/cafe/teahouse": {
+          "name": "ร้านใบชา",
+          "terms": "ร้านใบชา"
         },
         "amenity/car_pooling": {
           "name": "สถานีคาร์พูล",
@@ -1453,11 +1457,11 @@
           "terms": "การควบคุมเขตแดน,ตระเวนชายแดน"
         },
         "barrier/bump_gate": {
-          "name": "ประตูกันกระแทก",
+          "name": "ประตูชนเปิด",
           "terms": "ประตูกันกระแทก"
         },
         "barrier/bus_trap": {
-          "name": "กับดักรถประจำทาง",
+          "name": "กับดักรถยนต์",
           "terms": "กับดักรถประจำทาง"
         },
         "barrier/cable_barrier": {
@@ -1586,7 +1590,7 @@
           "terms": "บันไดติดข้างรั้ว"
         },
         "barrier/swing_gate": {
-          "name": "ประตูกั้นแบบเปิดสวิง",
+          "name": "ประตูบานพับเปิดข้าง",
           "terms": "ประตูกั้นแบบเปิดสวิง"
         },
         "barrier/toll_booth": {
@@ -1746,7 +1750,7 @@
           "terms": "เรือนกระจก"
         },
         "building/hangar": {
-          "name": "โรงเก็บเครื่องบิน",
+          "name": "อาคารโรงเก็บอากาศยาน",
           "terms": "โรงเก็บเครื่องบิน"
         },
         "building/hospital": {
@@ -1896,6 +1900,18 @@
         "cemetery/sector": {
           "name": "ส่วนย่อยสุสาน",
           "terms": "ส่วนย่อยสุสาน"
+        },
+        "climbing/crag": {
+          "name": "ปีนผา",
+          "terms": "ปีนหน้าผา"
+        },
+        "climbing/route": {
+          "name": "เส้นทางการปีนเขา",
+          "terms": "เส้นทางการปีนเขา"
+        },
+        "climbing/route_bottom": {
+          "name": "จุดเริ่มต้นการปืนเขา",
+          "terms": "จุดเริ่มต้นการปืนเขา"
         },
         "club": {
           "name": "สโมสร",
@@ -2807,6 +2823,10 @@
           "name": "พื้นที่ประวัติศาสตร์",
           "terms": "พื้นที่ประวัติศาสตร์,สถานที่ประวัติศาสตร์"
         },
+        "historic/aircraft": {
+          "name": "อากาศยานทางประวัติศาสตร์",
+          "terms": "อากาศยานประวัติศาสตร์"
+        },
         "historic/archaeological_site": {
           "name": "แหล่งโบราณคดี",
           "terms": "แหล่งโบราณคดี"
@@ -2854,6 +2874,10 @@
         "historic/memorial": {
           "name": "อนุสรณ์",
           "terms": "อนุสรณ์,อนุสรณ์สถาน"
+        },
+        "historic/memorial/blue_plaque-GB-IE": {
+          "name": "หมุดสีฟ้า",
+          "terms": "หมุดฟ้า"
         },
         "historic/memorial/plaque": {
           "name": "แผ่นหินที่ละลึก",
@@ -2982,7 +3006,7 @@
           "terms": "พื้นที่ฟาร์ม"
         },
         "landuse/flowerbed": {
-          "name": "ลานดอกไม้",
+          "name": "แปลงดอกไม้",
           "terms": "ลานดอกไม้"
         },
         "landuse/forest": {
@@ -5225,7 +5249,7 @@
         },
         "railway/yard": {
           "name": "ลานรถไฟ",
-          "terms": "ลานรถไฟ,อู่รถไฟ,ย่านรถไฟ"
+          "terms": "ลานรถไฟ,อู่รถไฟ,ย่านรถไฟ,ที่จอดรถไฟ,ลานจอดรถไฟ"
         },
         "relation": {
           "name": "ความสัมพันธ์",
@@ -6331,6 +6355,10 @@
           "name": "เส้นทางรถประจำทาง",
           "terms": "เส้นทางรถประจำทาง"
         },
+        "type/route/climbing": {
+          "name": "เส้นทางปีนเขา",
+          "terms": "เส้นทางการปีนเขา"
+        },
         "type/route/detour": {
           "name": "เส้นทางเบี่ยง",
           "terms": "เส้นทางเบี่ยง"
@@ -6406,6 +6434,14 @@
         "type/site": {
           "name": "พื้นที่",
           "terms": "พื้นที่"
+        },
+        "type/site/climbing/area": {
+          "name": "พื้นที่การปีนเขา",
+          "terms": "พื้นที่การปีนเขา"
+        },
+        "type/site/climbing/crag": {
+          "name": "ปีนผา",
+          "terms": "ปีนหน้าผา"
         },
         "type/waterway": {
           "name": "ทางน้ำ",

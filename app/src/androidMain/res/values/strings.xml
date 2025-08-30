@@ -996,6 +996,8 @@ A level counts as a roof level when its windows are in the roof. Subsequently, r
     <string name="quest_busStopLit_title2">"Is this stop lit?"</string>
     <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
     <string name="quest_busStopName_title2">"What’s the name of this stop?"</string>
+    <!-- very similar naming as "quest_streetName_hint" -->
+    <string name="quest_stopName_hint">"You can apply the same name as another stop by tapping on it on the map. "</string>
     <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
     <string name="quest_busStopRef_title2">"What number or code identifies this stop?"</string>
     <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
@@ -1004,6 +1006,8 @@ A level counts as a roof level when its windows are in the roof. Subsequently, r
     <string name="quest_busStopShelter_covered">Whole stop is covered</string>
     <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
     <string name="quest_busStopTactilePaving_title">"Does this stop have tactile paving?"</string>
+
+    <string name="quest_shelter_capacity_title">"How many people can sleep here?"</string>
 
     <string name="quest_camera_type_title">What type of surveillance camera is this?</string>
     <string name="quest_camera_type_dome">Dome</string>
@@ -1100,9 +1104,8 @@ A level counts as a roof level when its windows are in the roof. Subsequently, r
 
     <string name="quest_drinking_water_title2">Is the water potable here?</string>
     <string name="quest_drinking_water_potable_signed">Safe to drink (signed)</string>
-    <string name="quest_drinking_water_potable_unsigned">Safe to drink (unsigned)</string>
     <string name="quest_drinking_water_not_potable_signed">Not safe to drink (signed)</string>
-    <string name="quest_drinking_water_not_potable_unsigned">Not safe to drink (unsigned)</string>
+    <string name="quest_drinking_water_potable_unsigned2">No sign</string>
 
     <string name="quest_drinking_water_type_title2">Is drinking water available here? If so, what is its source?</string>
     <string name="quest_drinking_water_type_generic_water_fountain">Other water fountain</string>
@@ -1152,6 +1155,8 @@ A level counts as a roof level when its windows are in the roof. Subsequently, r
     <string name="quest_hairdresser_not_signed">Not signed</string>
 
     <string name="quest_handrail_title">Do these steps have a handrail?</string>
+
+    <string name="quest_handwashing_title">"Can you wash your hands here?"</string>
 
     <string name="quest_internet_access_title">What kind of internet connection does this place offer?</string>
     <string name="quest_internet_access_wlan">Wi-Fi</string>
@@ -1278,6 +1283,7 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_openingHours_add_hours">"Add hours"</string>
     <string name="quest_openingHours_add_weekdays">"Add days of the week"</string>
     <string name="quest_openingHours_add_off_days">"Add off days"</string>
+    <string name="quest_openingHours_delete">"Delete"</string>
     <string name="quest_openingHours_off_day">"Off day"</string>
     <string name="quest_openingHours_unspecified_range">"Not specified"</string>
     <string name="quest_openingHours_chooseMonthsTitle">"Select months"</string>
@@ -1614,7 +1620,9 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_steps_ramp_wheelchair">Wheelchair ramp</string>
 
     <string name="quest_streetName_title">"What’s the name of this street?"</string>
-    <string name="quest_streetName_description">"as written on the street sign, abbreviations are expanded:"</string>
+    <string name="quest_streetName_hint">"You can apply the same name as an adjacent section by tapping on it on the map."</string>
+    <string name="quest_streetName_abbreviation_instruction">"Abbreviations like e.g. “Rd” should be expanded."</string>
+    <string name="quest_streetName_add_language">Add language</string>
     <string name="quest_streetName_answer_cantType">"Can’t type the characters on the sign"</string>
     <string name="quest_streetName_cantType_title">Missing keyboard layout?</string>
     <string name="quest_streetName_cantType_description">"If you use a default keyboard, chances are that you can simply enable the keyboard layout for the language you need in the input method settings.
@@ -1632,9 +1640,6 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_name_answer_noName_confirmation_title">"Really no name?"</string>
     <string name="quest_name_noName_confirmation_positive">"Yes, no name"</string>
     <string name="quest_streetName_answer_noName_confirmation_description">"Sometimes the street sign is only at one end of the street. Also, note that there may not be extra street signs for side streets that belong to a bigger street. Usually, any street with houses has a name."</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"Abbreviation in the name %s?"</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"If the name can be spelled without an abbreviation, then it should be expanded. Many common abbreviations are expanded automatically while you type, but probably not all."</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"No abbreviation"</string>
     <string name="quest_streetName_menuItem_nolanguage">(unspecified)</string>
     <string name="quest_streetName_menuItem_international">international</string>
 

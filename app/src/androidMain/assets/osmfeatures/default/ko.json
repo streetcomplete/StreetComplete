@@ -257,6 +257,9 @@
           "name": "커피숍",
           "terms": "커피숍,다방"
         },
+        "amenity/cafe/teahouse": {
+          "name": "찻집"
+        },
         "amenity/car_pooling": {
           "name": "카풀링 스테이션",
           "terms": "카풀링 스테이션"
@@ -2410,8 +2413,8 @@
           "terms": "승마 도로,마도,마로"
         },
         "highway/bus_guideway": {
-          "name": "버스 전용 안내로",
-          "terms": "버스 가이드웨이,버스 안내로"
+          "name": "버스 유도로",
+          "terms": "버스 가이드웨이,버스 전용궤도,버스 유도로,구속유도형,유도 버스"
         },
         "highway/bus_stop": {
           "name": "버스 정류장"
@@ -2431,6 +2434,9 @@
         "highway/crossing": {
           "name": "횡단보도",
           "terms": "횡단보도,횡단도,횡단로"
+        },
+        "highway/crossing/informal": {
+          "name": "비공식적인 횡단보도"
         },
         "highway/crossing/traffic_signals": {
           "name": "보행자 신호등이 있는 횡단보도",
@@ -2555,8 +2561,8 @@
           "terms": "사다리"
         },
         "highway/living_street": {
-          "name": "주택가 거리",
-          "terms": "생활도로,보행자 우선도로"
+          "name": "보행자 우선도로",
+          "terms": "생활도로,보행자 우선도로,주택가 거리"
         },
         "highway/milestone": {
           "name": "거리 이정표",
@@ -2742,12 +2748,12 @@
           "terms": "코스 시작/끝"
         },
         "highway/trunk": {
-          "name": "도시고속도로",
+          "name": "간선 도로",
           "terms": "고속화도로,도시고속도로"
         },
         "highway/trunk_link": {
-          "name": "고속화도로 연결로",
-          "terms": "고속화도로 연결로"
+          "name": "간선 도로 연결로",
+          "terms": "고속화도로 연결로,도시고속도로 연결로"
         },
         "highway/turning_circle": {
           "name": "쿨데삭 (컬드색)",
@@ -2812,6 +2818,9 @@
         "historic/memorial": {
           "name": "기념물",
           "terms": "기념관"
+        },
+        "historic/memorial/blue_plaque-GB-IE": {
+          "name": "파란색 명판"
         },
         "historic/memorial/plaque": {
           "name": "기념 명판",
@@ -2906,8 +2915,8 @@
           "name": "웅덩이"
         },
         "landuse/brownfield": {
-          "name": "재개발 부지",
-          "terms": "재개발 부지"
+          "name": "버려진 부지",
+          "terms": "버려진 부지"
         },
         "landuse/cemetery": {
           "name": "묘역",
@@ -4276,7 +4285,7 @@
           "terms": "젖은 초원"
         },
         "natural/wood": {
-          "name": "자연림",
+          "name": "숲",
           "terms": "숲"
         },
         "network/type/node_network-DE-NL-BE-LU": {
@@ -4488,6 +4497,9 @@
           "name": "치료사 사무소",
           "terms": "치료사 사무실"
         },
+        "office/translator": {
+          "name": "번역 사무소"
+        },
         "office/travel_agent": {
           "name": "여행사"
         },
@@ -4560,7 +4572,7 @@
           "name": "농장"
         },
         "place/hamlet": {
-          "name": "반",
+          "name": "자연마을 · 반",
           "terms": "작은 마을"
         },
         "place/island": {
@@ -4588,8 +4600,8 @@
           "terms": "필지"
         },
         "place/quarter": {
-          "name": "하위 자치구 / 지구",
-          "terms": "하위 자치구 / 지구"
+          "name": "동",
+          "terms": "동"
         },
         "place/square": {
           "name": "광장",
@@ -4924,11 +4936,11 @@
         },
         "public_transport/platform/trolleybus": {
           "name": "트롤리버스 승강장",
-          "terms": "트롤리버스 승강장"
+          "terms": "트롤리버스 승강장,무궤도전차 승강장"
         },
         "public_transport/platform/trolleybus_point": {
           "name": "트롤리버스 정류소",
-          "terms": "트롤리버스 정류소,트롤리버스 정류장,트롤리버스 정거장"
+          "terms": "트롤리버스 정류소,트롤리버스 정류장,트롤리버스 정거장,무궤도전차 정류장"
         },
         "public_transport/platform_point": {
           "name": "대중교통 정거장 / 승강장",
@@ -5119,8 +5131,8 @@
           "terms": "지하철역 입구"
         },
         "railway/switch": {
-          "name": "철도 스위치",
-          "terms": "철도 스위치"
+          "name": "철도 분기기",
+          "terms": "스위치,분기기,선로변환기,선로전환기"
         },
         "railway/train_wash": {
           "name": "기차 세차장",
@@ -5529,6 +5541,9 @@
         "shop/hairdresser": {
           "name": "미용실",
           "terms": "이발소,미장원"
+        },
+        "shop/hairdresser/barber": {
+          "name": "미용실"
         },
         "shop/hairdresser_supply": {
           "name": "미용실 용품 가게",
@@ -6107,8 +6122,8 @@
           "terms": "초커"
         },
         "traffic_calming/cushion": {
-          "name": "차별 과속방지턱",
-          "terms": "차별 과속방지턱"
+          "name": "패드형 과속방지턱 (스피드 쿠션)",
+          "terms": "스피드 쿠션,과속방지쿠션,패드형 과속방지턱"
         },
         "traffic_calming/dip": {
           "name": "딥",

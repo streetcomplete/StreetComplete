@@ -363,7 +363,6 @@ Parcialmente significa que um cadeirante pode entrar e usar o banheiro, mas não
     <string name="quest_fee_answer_hours">"Depende do dia e horário…"</string>
     <string name="quest_fee_add_times">"Adicionar horários"</string>
     <string name="quest_housenumber_multiple_numbers">"Tem múltipla numeração"</string>
-    <string name="quest_housenumber_multiple_numbers_description">"Pode digitar os números separados por vírgulas ou intervalos. Por exemplo 1,3 ou 2–6."</string>
     <string name="quest_bicycle_parking_type_stand">"Suporte (para o quadro)"</string>
     <string name="quest_bicycle_parking_type_wheelbender">"Suporte de roda (suporta apenas uma roda)"</string>
     <string name="quest_bicycle_parking_type_shed">"Abrigo"</string>
@@ -799,9 +798,7 @@ Observe todas as opções disponíveis: alguns casos não são óbvios, como uma
     <string name="quest_bicycle_parking_fee_title">"Precisa pagar para estacionar uma bicicleta aqui?"</string>
     <string name="quest_buildingType_house_description2">"casa unifamiliar não independente, p. ex. uma casa geminada singular"</string>
     <string name="quest_drinking_water_potable_signed">"Seguro para beber (assinado)"</string>
-    <string name="quest_drinking_water_potable_unsigned">"Seguro para beber (sem assinatura)"</string>
     <string name="quest_drinking_water_not_potable_signed">"Não é seguro beber (assinado)"</string>
-    <string name="quest_drinking_water_not_potable_unsigned">"Não é seguro beber (sem assinatura)"</string>
     <string name="quest_postboxRoyalCypher_title">"Qual é a cifra real nesta caixa de correio?"</string>
     <string name="quest_postboxRoyalCypher_type_none">"Nenhuma cifra real é visível"</string>
     <string name="quest_postboxRoyalCypher_type_scottish_crown">"A coroa da Escócia"</string>
