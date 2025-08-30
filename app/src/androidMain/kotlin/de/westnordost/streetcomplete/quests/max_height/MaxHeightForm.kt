@@ -25,6 +25,7 @@ import de.westnordost.streetcomplete.ui.common.LengthMetersInput
 import de.westnordost.streetcomplete.ui.common.SelectButton
 import de.westnordost.streetcomplete.ui.theme.extraLargeInput
 import de.westnordost.streetcomplete.ui.theme.largeInput
+import de.westnordost.streetcomplete.ui.util.rememberSerializable
 
 /** Displays a form to input the max height, as specified on the sign. For clarity and fun, the
  *  input fields are shown on a sign background that resembles a maxheight sign in the given
@@ -37,7 +38,7 @@ fun MaxHeightForm(
     countryCode: String?,
     modifier: Modifier = Modifier,
 ) {
-    var selectedUnit by remember { mutableStateOf(length?.unit ?: selectableUnits[0]) }
+    var selectedUnit by rememberSerializable { mutableStateOf(length?.unit ?: selectableUnits[0]) }
     // only change the unit when the new `length` has a different unit than we have currently
     val lengthUnitHasChanged = length != null && length.unit != selectedUnit
     if (lengthUnitHasChanged) {

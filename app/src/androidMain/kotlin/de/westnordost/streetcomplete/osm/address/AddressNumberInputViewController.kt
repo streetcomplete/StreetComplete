@@ -127,7 +127,7 @@ class AddressNumberInputViewController(
     private fun addToHouseNumberInput(add: Int) {
         val input = houseNumberInput ?: return
         val prev = input.nonBlankTextOrNull ?: input.nonBlankHintOrNull ?: return
-        val newHouseNumber = addToHouseNumber(prev, add) ?: return
+        val newHouseNumber = parseHouseNumbers(prev)?.step(add)?.number?.toString() ?: return
         input.setText(newHouseNumber)
         input.setSelection(newHouseNumber.length)
     }

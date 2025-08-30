@@ -18,6 +18,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -44,7 +45,7 @@ fun QuestSelectionTopAppBar(
     onSearchChange: (String) -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    var showSearch by remember { mutableStateOf(false) }
+    var showSearch by rememberSaveable { mutableStateOf(false) }
 
     fun setShowSearch(value: Boolean) {
         showSearch = value

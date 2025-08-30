@@ -29,6 +29,7 @@ class AddAirCompressor : OsmFilterQuestType<Boolean>(), AndroidQuest {
     override val wikiLink = "Key:compressed_air"
     override val icon = R.drawable.ic_quest_car_air_compressor
     override val achievements = listOf(CAR, BICYCLIST)
+    override val isReplacePlaceEnabled = true
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_air_pump_compressor_title
 

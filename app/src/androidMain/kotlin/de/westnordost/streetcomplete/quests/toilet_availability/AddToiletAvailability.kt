@@ -19,6 +19,7 @@ class AddToiletAvailability : OsmFilterQuestType<Boolean>(), AndroidQuest {
           shop ~ mall|department_store
           or highway ~ services|rest_area
           or tourism ~ camp_site|caravan_site|wilderness_hut
+          or leisure = bathing_place
         )
         and !toilets
     """
