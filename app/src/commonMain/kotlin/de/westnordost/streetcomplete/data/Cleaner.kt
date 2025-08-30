@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.data
 
 import de.westnordost.streetcomplete.ApplicationConstants
+import de.westnordost.streetcomplete.data.atp.AtpController
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesController
 import de.westnordost.streetcomplete.data.logs.LogsController
 import de.westnordost.streetcomplete.data.maptiles.MapTilesDownloader
@@ -21,6 +22,7 @@ import kotlinx.coroutines.launch
 class Cleaner(
     private val noteController: NoteController,
     private val mapDataController: MapDataController,
+    private val atpController: AtpController,
     private val questTypeRegistry: QuestTypeRegistry,
     private val downloadedTilesController: DownloadedTilesController,
     private val logsController: LogsController,
@@ -34,6 +36,7 @@ class Cleaner(
         val oldDataTimestamp = nowAsEpochMilliseconds() - ApplicationConstants.DELETE_OLD_DATA_AFTER
         noteController.deleteOlderThan(oldDataTimestamp, MAX_DELETE_ELEMENTS)
         mapDataController.deleteOlderThan(oldDataTimestamp, MAX_DELETE_ELEMENTS)
+        atpController.deleteOlderThan(oldDataTimestamp, MAX_DELETE_ELEMENTS)
         downloadedTilesController.deleteOlderThan(oldDataTimestamp)
         // do this after cleaning map data and notes, because some metadata rely on map data
         questTypeRegistry.forEach { it.deleteMetadataOlderThan(oldDataTimestamp) }
@@ -48,6 +51,7 @@ class Cleaner(
         mapTilesDownloader.clear()
         downloadedTilesController.clear()
         mapDataController.clear()
+        atpController.clear()
         noteController.clear()
         logsController.clear()
         questTypeRegistry.forEach { it.deleteMetadataOlderThan(nowAsEpochMilliseconds()) }
