@@ -491,9 +491,9 @@ fun questTypeRegistry(
     132 to AddAcceptsCash(),
 
     // shop and others, but have to go inside
+    176 to AddHandwashing(), // have to go inside, but only your toilet, not potentially others
     120 to AddBabyChangingTable(), // used by OsmAnd in the object description, have to go inside
     121 to AddWheelchairAccessToiletsPart(), // have to go inside
-    176 to AddHandwashing(), // have to go inside
 
     133 to AddFuelSelfService(),
     156 to CheckShopExistence(getFeature), // after opening hours and similar so they will be preferred if enabled
