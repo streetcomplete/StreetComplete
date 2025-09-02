@@ -20,7 +20,7 @@ class AddLevelThing : OsmElementQuestType<String>, AndroidQuest {
      * like small airport terminals, like Mo Chit 2 in Bangkok*/
     private val mallFilter by lazy { """
         ways, relations with
-         shop = mall
+         shop ~ department_store|mall
          or aeroway = terminal
          or railway = station
          or amenity = bus_station
