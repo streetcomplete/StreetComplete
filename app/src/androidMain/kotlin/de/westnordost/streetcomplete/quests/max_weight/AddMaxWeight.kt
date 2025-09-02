@@ -5,6 +5,7 @@ import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpressio
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.Relation
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
@@ -21,7 +22,7 @@ class AddMaxWeight : OsmElementQuestType<MaxWeightAnswer>, AndroidQuest {
 
     private val generalFilter by lazy {
         """ways, relations with
-         and !maxweight and maxweight:signed != no
+         !maxweight and maxweight:signed != no
          and !maxaxleload
          and !maxbogieweight
          and !maxweight:hgv and !maxweight:bus and !maxweight:hgv_articulated and !maxweight:tourist_bus and !maxweight:coach
@@ -72,6 +73,7 @@ class AddMaxWeight : OsmElementQuestType<MaxWeightAnswer>, AndroidQuest {
         val wayIdsInFerryRoutes = wayIdsInFerryRoutes(mapData.relations)
         return mapData
             .filter(generalFilter)
+            .filter { ferryFilter.matches(it) || highwayFilter.matches(it) }
             .filter { it !is Way || it.id !in wayIdsInFerryRoutes }
             .asIterable()
     }
@@ -83,7 +85,10 @@ class AddMaxWeight : OsmElementQuestType<MaxWeightAnswer>, AndroidQuest {
             if (ferryFilter.matches(element)) return null
             return false
         }
-        return true
+        if (element is Relation) {
+            return ferryFilter.matches(element)
+        }
+        return false
     }
 }
 
