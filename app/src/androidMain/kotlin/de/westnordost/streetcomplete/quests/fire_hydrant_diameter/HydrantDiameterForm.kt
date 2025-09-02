@@ -1,11 +1,14 @@
 package de.westnordost.streetcomplete.quests.fire_hydrant_diameter
 
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.ProvideTextStyle
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
+import de.westnordost.streetcomplete.ui.common.AutoFitTextFieldFontSize
 import de.westnordost.streetcomplete.ui.common.TextField2
 import de.westnordost.streetcomplete.ui.theme.extraLargeInput
 
@@ -21,17 +24,22 @@ fun HydrantDiameterForm(
         countryCode = countryCode,
         modifier = modifier,
     ) {
-        TextField2(
-            value = value?.toString().orEmpty(),
-            onValueChange = { value ->
-                if (value.isEmpty() || value.all { it.isDigit() } && value.length <= 4) {
-                    onValueChange(value.toIntOrNull())
-                }
-            },
-            singleLine = true,
-            textStyle = MaterialTheme.typography.extraLargeInput.copy(textAlign = TextAlign.Center),
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-            autoFitFontSize = true
-        )
+        val textStyle = MaterialTheme.typography.extraLargeInput.copy(textAlign = TextAlign.Center)
+        val stringValue = value?.toString().orEmpty()
+        ProvideTextStyle(textStyle) {
+            AutoFitTextFieldFontSize(stringValue) {
+                TextField2(
+                    value = stringValue,
+                    onValueChange = { value ->
+                        if (value.isEmpty() || value.all { it.isDigit() } && value.length <= 4) {
+                            onValueChange(value.toIntOrNull())
+                        }
+                    },
+                    modifier = Modifier.fillMaxWidth(),
+                    singleLine = true,
+                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+                )
+            }
+        }
     }
 }

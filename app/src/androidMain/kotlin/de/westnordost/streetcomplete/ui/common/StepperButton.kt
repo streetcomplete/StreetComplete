@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.Divider
@@ -36,6 +37,12 @@ fun StepperButton(
     modifier: Modifier = Modifier,
     increaseEnabled: Boolean = true,
     decreaseEnabled: Boolean = true,
+    increaseContent: @Composable RowScope.() -> Unit = {
+        Icon(painterResource(Res.drawable.ic_up_24), "+")
+    },
+    decreaseContent: @Composable RowScope.() -> Unit = {
+        Icon(painterResource(Res.drawable.ic_down_24), "-")
+    },
     style: ButtonStyle = ButtonStyle.Outlined
 ) {
     ButtonGroup(
@@ -52,9 +59,8 @@ fun StepperButton(
                 style = style,
                 enabled = increaseEnabled,
                 contentPadding = PaddingValues(0.dp),
-            ) {
-                Icon(painterResource(Res.drawable.ic_up_24), "+")
-            }
+                content = increaseContent
+            )
             Divider()
             ButtonGroupButton(
                 modifier = Modifier.weight(1f),
@@ -62,9 +68,8 @@ fun StepperButton(
                 style = style,
                 enabled = decreaseEnabled,
                 contentPadding = PaddingValues(0.dp),
-            ) {
-                Icon(painterResource(Res.drawable.ic_down_24), "-")
-            }
+                content = decreaseContent
+            )
         }
     }
 }

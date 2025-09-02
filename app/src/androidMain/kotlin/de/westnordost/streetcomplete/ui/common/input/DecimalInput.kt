@@ -62,7 +62,6 @@ fun DecimalInput(
     shape: Shape = style.shape,
     colors: TextFieldColors = style.colors,
     contentPadding: PaddingValues = style.getContentPadding(label != null),
-    autoFitFontSize: Boolean = false,
 ) {
     val locale = Locale.current
     val formatter = remember(locale, maxIntegerDigits, maxFractionDigits) {
@@ -136,7 +135,6 @@ fun DecimalInput(
         shape = shape,
         colors = colors,
         contentPadding = contentPadding,
-        autoFitFontSize = autoFitFontSize
     )
 }
 

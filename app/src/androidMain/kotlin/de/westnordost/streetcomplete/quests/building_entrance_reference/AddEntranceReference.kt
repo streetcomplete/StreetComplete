@@ -16,7 +16,7 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.Tags
 
-class AddEntranceReference : OsmElementQuestType<EntranceAnswer>, AndroidQuest {
+class AddEntranceReference : OsmElementQuestType<EntranceReferenceAnswer>, AndroidQuest {
 
     private val buildingFilter by lazy { """
         ways, relations with
@@ -102,19 +102,19 @@ class AddEntranceReference : OsmElementQuestType<EntranceAnswer>, AndroidQuest {
 
     override fun createForm() = AddEntranceReferenceForm()
 
-    override fun applyAnswerTo(answer: EntranceAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: EntranceReferenceAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {
             is FlatRange -> {
-                tags["addr:flats"] = answer.flatRange
+                tags["addr:flats"] = answer.start + "-" + answer.end
             }
             is ReferenceCode -> {
-                tags["ref"] = answer.referenceCode
+                tags["ref"] = answer.value
             }
             is ReferenceCodeAndFlatRange -> {
-                tags["addr:flats"] = answer.flatRange
-                tags["ref"] = answer.referenceCode
+                tags["addr:flats"] = answer.flatRange.start + "-" + answer.flatRange.end
+                tags["ref"] = answer.referenceCode.value
             }
-            Unsigned -> {
+            EntranceReferenceAnswer.NotSigned -> {
                 tags["ref:signed"] = "no"
             }
         }

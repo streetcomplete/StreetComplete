@@ -22,7 +22,7 @@ class AddBikeParkingCapacity : OsmFilterQuestType<Int>(), AndroidQuest {
            !capacity
            or (
              bicycle_parking ~ stands|wall_loops|safe_loops|handlebar_holder
-             and capacity older today -4 years
+             and capacity older today -8 years
            )
          )
     """

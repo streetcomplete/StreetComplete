@@ -39,18 +39,9 @@ fun MaxHeightSign(
     }
 }
 
-private fun getMaxHeightSignDrawable(countryCode: String?): DrawableResource =
-    when (countryCode) {
-        "FI", "IS", "SE", "NG", -> {
-            Res.drawable.maxheight_sign_yellow
-        }
-        // source: https://commons.wikimedia.org/wiki/File:Road_Warning_signs_around_the_World.svg
-        "AR", "AU", "BR", "BZ", "CA", "CL", "CO", "CR", "DO", "EC", "GT", "GY", "HN",
-        "ID", "IE", "JM", "JP", "LK", "LR", "MM", "MX", "MY", "NI", "NZ", "PA", "PE",
-        "PG","SV", "TH", "TL", "US", "UY", "VE", -> {
-            Res.drawable.maxheight_sign_mutcd
-        }
-        else -> {
-            Res.drawable.maxheight_sign
-        }
-    }
+// source: https://commons.wikimedia.org/wiki/Category:SVG_prohibitory_road_signs_%E2%80%93_height_limit
+private fun getMaxHeightSignDrawable(countryCode: String?): DrawableResource = when (countryCode) {
+    "FI", "IS", "SE", "NG", -> Res.drawable.maxheight_sign_yellow
+    "AU", "CA", "US", ->  Res.drawable.maxheight_sign_mutcd
+    else -> Res.drawable.maxheight_sign
+}
