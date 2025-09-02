@@ -20,6 +20,8 @@ import de.westnordost.streetcomplete.quests.max_weight.MaxWeightSign.MAX_WEIGHT
 
 class AddMaxWeight : OsmElementQuestType<MaxWeightAnswer>, AndroidQuest {
 
+    // We ask for the maximum weight of bridges and ferries.
+    // The general filter is used for both:
     private val generalFilter by lazy {
         """ways, relations with
          !maxweight and maxweight:signed != no
@@ -82,10 +84,12 @@ class AddMaxWeight : OsmElementQuestType<MaxWeightAnswer>, AndroidQuest {
         if (!generalFilter.matches(element)) return false
         if (element is Way) {
             if (highwayFilter.matches(element)) return true
+            // This way may be part of a ferry relation, in which case we will not ask
             if (ferryFilter.matches(element)) return null
             return false
         }
         if (element is Relation) {
+            // Highway relations are not matched
             return ferryFilter.matches(element)
         }
         return false
