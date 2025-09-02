@@ -66,6 +66,7 @@ class CheckExistence(
             or amenity = shower
             or amenity = drinking_water
             or man_made = planter
+            or amenity = shelter
           )
           and (${lastChecked(6.0)})
         ) or (
