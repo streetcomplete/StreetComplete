@@ -1,5 +1,21 @@
 # Changelog
 
+## v61.3
+
+### Quest improvements
+- Ask some quests (fee, opening hours, name, indoor, step count…) for more places and things (#5316, #5318, #5319, #6402, #6429, #6430, #6432 …), thanks @matkoniecz, @paulklie
+- Potable water: Don't force user to answer whether a water source without any sign is potable or not (#6421)
+- Other small refinements (#6410, #6418, #6408, #6422 …), thanks @mnalis, @burrscurr
+
+### Fixes
+- Don't show achievements the user hasn't unlock yet (#6435)
+- Show text about no unlocked links/achievements yet correctly
+- Max height: Fix text was white on white in dark mode (#6409)
+- Opening hours: Fix times were not displayed correctly around the hour clocks are put forward/backward (DST) (#6188)
+- Surface smoothness: Fix crash when encountering concrete plates (#6424) 
+- Bike parking capacity: Don't show previous value on re-survey (#6443)
+- Places overlay: Don't auto-replace a feature if the new one is a subtype of the previous one or the other way round but ask user (#6406)
+
 ## v61.2
 
 ### Quest improvements

@@ -4,90 +4,41 @@ import android.content.DialogInterface
 import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
-import de.westnordost.streetcomplete.data.meta.AbbreviationsByLanguage
 import de.westnordost.streetcomplete.data.meta.NameSuggestionsSource
-import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
-import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
-import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
-import de.westnordost.streetcomplete.databinding.QuestRoadnameBinding
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.osm.ALL_PATHS
 import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.osm.localized_name.LocalizedName
 import de.westnordost.streetcomplete.quests.AAddLocalizedNameForm
 import de.westnordost.streetcomplete.quests.AnswerItem
-import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
-import kotlinx.coroutines.launch
+import de.westnordost.streetcomplete.view.localized_name.showKeyboardInfo
 import org.koin.android.ext.android.inject
-import java.util.LinkedList
 
 class AddRoadNameForm : AAddLocalizedNameForm<RoadNameAnswer>() {
 
-    override val contentLayoutResId = R.layout.quest_roadname
-    private val binding by contentViewBinding(QuestRoadnameBinding::bind)
-
-    override val addLanguageButton get() = binding.addLanguageButton
-    override val namesList get() = binding.namesList
-
-    override val adapterRowLayoutResId = R.layout.quest_roadname_row
+    private val nameSuggestionsSource: NameSuggestionsSource by inject()
 
     override val otherAnswers = listOf(
         AnswerItem(R.string.quest_name_answer_noName) { selectNoStreetNameReason() },
-        AnswerItem(R.string.quest_streetName_answer_cantType) { showKeyboardInfo() }
+        AnswerItem(R.string.quest_streetName_answer_cantType) { showKeyboardInfo(requireContext()) }
     )
-
-    private val abbrByLocale: AbbreviationsByLanguage by inject()
-    private val nameSuggestionsSource: NameSuggestionsSource by inject()
 
     private val roadsWithNamesFilter =
         "ways with highway ~ ${(ALL_ROADS + ALL_PATHS).joinToString("|")} and name"
             .toElementFilterExpression()
 
-    override fun getAbbreviationsByLocale(): AbbreviationsByLanguage = abbrByLocale
+    override fun onClickMapAt(position: LatLon, clickAreaSizeInMeters: Double): Boolean {
+        nameSuggestionsSource.getNames(position, clickAreaSizeInMeters, roadsWithNamesFilter)
+            .firstOrNull()
+            ?.let { localizedNames.value = it }
 
-    override fun getLocalizedNameSuggestions(): List<List<LocalizedName>> {
-        val firstAndLast = when (val geom = geometry) {
-            is ElementPolylinesGeometry -> geom.polylines.first()
-            is ElementPolygonsGeometry -> geom.polygons.first()
-            is ElementPointGeometry -> listOf(geom.center)
-        }.let { listOf(it.first(), it.last()) }
-
-        return nameSuggestionsSource.getNames(
-            // only first and last point of polyline because a still unnamed section of road is
-            //  usually (if at all) a continuation of a neighboring road section
-            points = firstAndLast,
-            // and hence we can also search only in a very small area only
-            maxDistance = 30.0,
-            filter = roadsWithNamesFilter
-        )
+        return true
     }
+
+    override fun showAbbreviationsHint(): Boolean = true
 
     override fun onClickOk(names: List<LocalizedName>) {
-        viewLifecycleScope.launch {
-            val possibleAbbreviations = LinkedList(getPossibleAbbreviations(names))
-            confirmPossibleAbbreviationsIfAny(possibleAbbreviations) {
-                val points = when (val g = geometry) {
-                    is ElementPolylinesGeometry -> g.polylines.first()
-                    is ElementPolygonsGeometry -> g.polygons.first()
-                    is ElementPointGeometry -> listOf(g.center)
-                }
-                applyAnswer(RoadName(names, element.id, points))
-            }
-        }
-    }
-
-    private suspend fun getPossibleAbbreviations(names: List<LocalizedName>): List<String> {
-        val possibleAbbreviations = ArrayList<String>()
-        for ((languageTag, name) in names) {
-            val languageTagWithFallback =
-                languageTag.takeIf { it.isNotEmpty() } ?: countryInfo.languageTag.orEmpty()
-            val abbr = abbrByLocale[languageTagWithFallback]
-            val containsLocalizedAbbreviations = abbr?.containsAbbreviations(name) == true
-
-            if (name.contains(".") || containsLocalizedAbbreviations) {
-                possibleAbbreviations.add(name)
-            }
-        }
-        return possibleAbbreviations
+        applyAnswer(RoadName(names))
     }
 
     private fun selectNoStreetNameReason() {
@@ -127,9 +78,9 @@ class AddRoadNameForm : AAddLocalizedNameForm<RoadNameAnswer>() {
                     leaveNote -> composeNote()
                     noName    -> confirmNoStreetName()
                     else      -> applyAnswer(when (answer) {
-                        linkRoad    -> RoadIsLinkRoad
-                        serviceRoad -> RoadIsServiceRoad
-                        trackRoad   -> RoadIsTrack
+                        linkRoad    -> RoadNameAnswer.IsLinkRoad
+                        serviceRoad -> RoadNameAnswer.IsServiceRoad
+                        trackRoad   -> RoadNameAnswer.IsTrack
                         else        -> throw IllegalStateException()
                     })
                 }
@@ -150,7 +101,7 @@ class AddRoadNameForm : AAddLocalizedNameForm<RoadNameAnswer>() {
         AlertDialog.Builder(requireContext())
             .setTitle(R.string.quest_name_answer_noName_confirmation_title)
             .setMessage(R.string.quest_streetName_answer_noName_confirmation_description)
-            .setPositiveButton(R.string.quest_name_noName_confirmation_positive) { _, _ -> applyAnswer(NoRoadName) }
+            .setPositiveButton(R.string.quest_name_noName_confirmation_positive) { _, _ -> applyAnswer(RoadNameAnswer.NoName) }
             .setNegativeButton(R.string.quest_generic_confirmation_no, null)
             .show()
     }

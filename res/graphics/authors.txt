@@ -415,6 +415,7 @@ quest/
     road_construction.svg
     roof_shape.svg
     seating.svg
+    shelter_capacity.svg
     shower.svg
     sidewalk.svg
     sidewalk_surface.svg             @krisdoodle45 (based on way_surface.svg)
@@ -444,6 +445,7 @@ quest/
     toilets_wheelchair.svg
     tractor.svg
     traffic_lights.svg
+    washing_hands.svg               modified from Twemoji: U+1FAF1
     way_surface.svg
     way_surface_detail.svg          Tobias Zwick (CC-BY-SA 4.0) (based on street_surface_detail.svg), recoloured background by Flo Edelmann
     way_width.svg
@@ -577,6 +579,9 @@ royal cypher/
 sanitary dump station/
     sign1.svg
     sign2.svg
+
+shelter_capacity/
+    sleeping_bag.svg
 
 sidewalk/
     no.svg
