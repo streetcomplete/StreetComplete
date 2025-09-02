@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.ui.common
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.LocalTextStyle
@@ -9,7 +10,6 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.ProvideTextStyle
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -31,7 +31,6 @@ fun LengthFeetInchesInput(
     maxFeetDigits: Int,
     modifier: Modifier = Modifier,
     style: TextFieldStyle = TextFieldStyle.Filled,
-    autoFitFontSize: Boolean = false,
 ) {
     var feetState by remember { mutableStateOf(length?.feet) }
     var inchesState by remember { mutableStateOf(length?.inches) }
@@ -58,45 +57,55 @@ fun LengthFeetInchesInput(
         horizontalArrangement = Arrangement.spacedBy(2.dp),
         verticalAlignment = Alignment.Top,
     ) {
-        TextField2(
-            value = feetState?.toString().orEmpty(),
-            onValueChange = { value ->
-                if (value.isEmpty() || isValidFeetInput(value, maxFeetDigits)) {
-                    feetState = value.toIntOrNull()
-                    callOnChanged()
-                }
-            },
-            modifier = Modifier.weight(1f),
-            style = style,
-            autoFitFontSize = autoFitFontSize,
-            textStyle = LocalTextStyle.current.copy(textAlign = TextAlign.Center),
-            singleLine = true,
-            keyboardOptions = KeyboardOptions(
-                keyboardType = KeyboardType.Number,
-                imeAction = ImeAction.Next
-            ),
-        )
+        val feet = feetState?.toString().orEmpty()
+        AutoFitTextFieldFontSize(
+            value = feet,
+            modifier = Modifier.weight(1f)
+        ) {
+            TextField2(
+                value = feet,
+                onValueChange = { value ->
+                    if (value.isEmpty() || isValidFeetInput(value, maxFeetDigits)) {
+                        feetState = value.toIntOrNull()
+                        callOnChanged()
+                    }
+                },
+                modifier = Modifier.fillMaxWidth(),
+                style = style,
+                textStyle = LocalTextStyle.current.copy(textAlign = TextAlign.Center),
+                singleLine = true,
+                keyboardOptions = KeyboardOptions(
+                    keyboardType = KeyboardType.Number,
+                    imeAction = ImeAction.Next
+                ),
+            )
+        }
 
         Text(
             text = "′",
             fontSize = LocalTextStyle.current.fontSize * 2
         )
 
-        TextField2(
-            value = inchesState?.toString().orEmpty(),
-            onValueChange = { value ->
-                if (value.isEmpty() || isValidInchesInput(value)) {
-                    inchesState = value.toIntOrNull()
-                    callOnChanged()
-                }
-            },
-            modifier = Modifier.padding(start = 4.dp).weight(1f),
-            style = style,
-            autoFitFontSize = autoFitFontSize,
-            textStyle = LocalTextStyle.current.copy(textAlign = TextAlign.Center),
-            singleLine = true,
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-        )
+        val inches = inchesState?.toString().orEmpty()
+        AutoFitTextFieldFontSize(
+            value = inches,
+            modifier = Modifier.padding(start = 4.dp).weight(1f)
+        ) {
+            TextField2(
+                value = inches,
+                onValueChange = { value ->
+                    if (value.isEmpty() || isValidInchesInput(value)) {
+                        inchesState = value.toIntOrNull()
+                        callOnChanged()
+                    }
+                },
+                modifier = Modifier.fillMaxWidth(),
+                style = style,
+                textStyle = LocalTextStyle.current.copy(textAlign = TextAlign.Center),
+                singleLine = true,
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+            )
+        }
 
         Text(
             text = "″",

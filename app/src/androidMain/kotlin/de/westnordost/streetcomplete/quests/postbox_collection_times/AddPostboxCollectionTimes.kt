@@ -41,9 +41,10 @@ class AddPostboxCollectionTimes : OsmElementQuestType<CollectionTimesAnswer>, An
     override val enabledInCountries = NoCountriesExcept(
         // definitely, seen pictures:
         "AU", "NZ", "VU", "MY", "SG", "TH", "VN", "LA", "MM", "IN", "BD", "NP", "LK", "BT", "PK", "TW", "HK",
-        "MO", "CN", "KR", "JP", "RU", "BY", "LT", "LV", "FI", "SE", "NO", "DK", "GB", "IE", "IS", "NL", "BE",
+        "MO", "CN", "KR", "JP", "RU", "BY", "LT", "LV", "FI", "SE", "NO", "GB", "IE", "IS", "NL", "BE",
         "FR", "AD", "ES", "PT", "CH", "LI", "AT", "DE", "LU", "MC", "IT", "SM", "MT", "PL", "EE", "CA", "US",
         "UA", "SK", "CZ", "HU", "RO", "MD", "BG", "SI", "HR", "IL", "ZA", "GR", "UZ", "ME", "CY", "TR", "LB",
+        // for Denmark see https://github.com/streetcomplete/StreetComplete/issues/6455
         // these only maybe/sometimes (Oceania, Cambodia, North Korea):
         "BN", "KH", "ID", "TL", "PG", "KP", "PH",
         // unknown but all countries around have it (former Yugoslavia):

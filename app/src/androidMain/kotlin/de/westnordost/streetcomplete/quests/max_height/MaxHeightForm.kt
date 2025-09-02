@@ -1,8 +1,7 @@
 package de.westnordost.streetcomplete.quests.max_height
 
-import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.ProvideTextStyle
@@ -44,11 +43,34 @@ fun MaxHeightForm(
     if (lengthUnitHasChanged) {
         selectedUnit = length.unit
     }
-    Row(
+    Box(
         modifier = modifier,
-        horizontalArrangement = Arrangement.spacedBy(16.dp),
-        verticalAlignment = Alignment.CenterVertically,
     ) {
+        MaxHeightSign(
+            countryCode = countryCode,
+            modifier = Modifier.align(Alignment.Center)
+        ) {
+            when (selectedUnit) {
+                LengthUnit.METER -> {
+                    ProvideTextStyle(MaterialTheme.typography.extraLargeInput.copy(fontWeight = FontWeight.Bold)) {
+                        LengthMetersInput(
+                            length = length as? Length.Meters,
+                            onChange = onChange,
+                            maxMeterDigits = Pair(3, 2),
+                        )
+                    }
+                }
+                LengthUnit.FOOT_AND_INCH -> {
+                    ProvideTextStyle(MaterialTheme.typography.largeInput.copy(fontWeight = FontWeight.Bold)) {
+                        LengthFeetInchesInput(
+                            length = length as? Length.FeetAndInches,
+                            onChange = onChange,
+                            maxFeetDigits = 3,
+                        )
+                    }
+                }
+            }
+        }
         if (selectableUnits.size > 1) {
             SelectButton(
                 items = selectableUnits,
@@ -59,30 +81,6 @@ fun MaxHeightForm(
                 },
                 itemContent = { Text(it.toString()) }
             )
-        }
-        MaxHeightSign(countryCode = countryCode) {
-            when (selectedUnit) {
-                LengthUnit.METER -> {
-                    ProvideTextStyle(MaterialTheme.typography.extraLargeInput.copy(fontWeight = FontWeight.Bold)) {
-                        LengthMetersInput(
-                            length = length as? Length.Meters,
-                            onChange = onChange,
-                            maxMeterDigits = Pair(3, 2),
-                            autoFitFontSize = true,
-                        )
-                    }
-                }
-                LengthUnit.FOOT_AND_INCH -> {
-                    ProvideTextStyle(MaterialTheme.typography.largeInput.copy(fontWeight = FontWeight.Bold)) {
-                        LengthFeetInchesInput(
-                            length = length as? Length.FeetAndInches,
-                            onChange = onChange,
-                            maxFeetDigits = 3,
-                            autoFitFontSize = true,
-                        )
-                    }
-                }
-            }
         }
     }
 }

@@ -93,6 +93,7 @@ import de.westnordost.streetcomplete.quests.general_fee.AddGeneralFee
 import de.westnordost.streetcomplete.quests.grit_bin_seasonal.AddGritBinSeasonal
 import de.westnordost.streetcomplete.quests.hairdresser.AddHairdresserCustomers
 import de.westnordost.streetcomplete.quests.handrail.AddHandrail
+import de.westnordost.streetcomplete.quests.handwashing.AddHandwashing
 import de.westnordost.streetcomplete.quests.incline_direction.AddBicycleIncline
 import de.westnordost.streetcomplete.quests.incline_direction.AddStepsIncline
 import de.westnordost.streetcomplete.quests.internet_access.AddInternetAccess
@@ -141,6 +142,7 @@ import de.westnordost.streetcomplete.quests.sanitary_dump_station.AddSanitaryDum
 import de.westnordost.streetcomplete.quests.seating.AddSeating
 import de.westnordost.streetcomplete.quests.segregated.AddCyclewaySegregation
 import de.westnordost.streetcomplete.quests.self_service.AddSelfServiceLaundry
+import de.westnordost.streetcomplete.quests.shelter_capacity.AddShelterCapacity
 import de.westnordost.streetcomplete.quests.shop_type.CheckShopExistence
 import de.westnordost.streetcomplete.quests.shop_type.CheckShopType
 import de.westnordost.streetcomplete.quests.shop_type.SpecifyShopType
@@ -388,7 +390,7 @@ fun questTypeRegistry(
     167 to AddParcelLockerBrand(),
 
     // address: usually only visible when just in front + sometimes requires to take "other answer"
-    75 to AddHousenumber(),
+    75 to AddHousenumber(getCountryInfoByLocation),
     76 to AddAddressStreet(),
 
     // shops: text input / opening hours input take longer than other quests
@@ -468,6 +470,8 @@ fun questTypeRegistry(
     117 to AddCampPower(),
     162 to AddSanitaryDumpStation(),
 
+    177 to AddShelterCapacity(),
+
     // toilets
     118 to AddToiletAvailability(), // shown in OsmAnd descriptions
     119 to AddToiletsFee(), // used by OsmAnd in the object description
@@ -489,6 +493,7 @@ fun questTypeRegistry(
     // shop and others, but have to go inside
     120 to AddBabyChangingTable(), // used by OsmAnd in the object description, have to go inside
     121 to AddWheelchairAccessToiletsPart(), // have to go inside
+    176 to AddHandwashing(), // have to go inside
 
     133 to AddFuelSelfService(),
     156 to CheckShopExistence(getFeature), // after opening hours and similar so they will be preferred if enabled

@@ -37,6 +37,8 @@ class AddAddressStreet : OsmElementQuestType<StreetOrPlaceName>, AndroidQuest {
     override val enabledInCountries = AllCountriesExcept("JP")
     override val achievements = listOf(POSTMAN)
 
+    override val hint = R.string.quest_streetName_hint
+
     override fun getTitle(tags: Map<String, String>) = R.string.quest_address_street_title2
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
