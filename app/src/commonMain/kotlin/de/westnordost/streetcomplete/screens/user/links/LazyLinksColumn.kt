@@ -10,10 +10,10 @@ import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.PreviewScreenSizes
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.user.achievements.Link
 import de.westnordost.streetcomplete.data.user.achievements.links
+import org.jetbrains.compose.ui.tooling.preview.Preview
 
 @Composable
 fun LazyGroupedLinksColumn(
@@ -71,7 +71,7 @@ private fun LazyLinksGrid(
     )
 }
 
-@PreviewScreenSizes
+@Preview
 @Composable
 private fun PreviewLazyGroupedLinksColumn() {
     LazyGroupedLinksColumn(

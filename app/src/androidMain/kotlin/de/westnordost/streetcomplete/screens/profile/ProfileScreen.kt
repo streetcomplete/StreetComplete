@@ -28,7 +28,6 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.OutlinedButton
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.ReadOnlyComposable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -38,21 +37,30 @@ import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.graphics.painter.BitmapPainter
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.platform.LocalUriHandler
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.unit.coerceAtMost
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.avatar_osm_anonymous
 import de.westnordost.streetcomplete.resources.ic_open_in_browser_24
 import de.westnordost.streetcomplete.resources.ic_star_48
+import de.westnordost.streetcomplete.resources.osm_profile
+import de.westnordost.streetcomplete.resources.unsynced_quests_description
+import de.westnordost.streetcomplete.resources.user_logout
+import de.westnordost.streetcomplete.resources.user_profile_achievement_levels
+import de.westnordost.streetcomplete.resources.user_profile_all_time_title
+import de.westnordost.streetcomplete.resources.user_profile_current_week_title
+import de.westnordost.streetcomplete.resources.user_profile_dates_mapped
+import de.westnordost.streetcomplete.resources.user_profile_days_active
+import de.westnordost.streetcomplete.resources.user_profile_global_rank
+import de.westnordost.streetcomplete.resources.user_profile_local_rank
 import de.westnordost.streetcomplete.ui.ktx.toDp
 import de.westnordost.streetcomplete.ui.theme.headlineLarge
 import de.westnordost.streetcomplete.ui.theme.titleLarge
 import de.westnordost.streetcomplete.util.ktx.displayRegion
 import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 
 /** Shows the user profile: username, avatar, star count and a hint regarding unpublished changes */
 @OptIn(ExperimentalLayoutApi::class)
@@ -90,7 +98,7 @@ fun ProfileScreen(viewModel: ProfileViewModel) {
         ) {
             Image(
                 painter = userAvatarFile?.let { getAvatarPainter(it.toString()) }
-                    ?: painterResource(R.drawable.ic_osm_anon_avatar),
+                    ?: painterResource(Res.drawable.avatar_osm_anonymous),
                 contentDescription = null,
                 modifier = Modifier
                     .size(100.dp)
@@ -107,7 +115,7 @@ fun ProfileScreen(viewModel: ProfileViewModel) {
                 if (unsyncedChangesCount > 0) {
                     Text(
                         text = stringResource(
-                            R.string.unsynced_quests_description,
+                            Res.string.unsynced_quests_description,
                             unsyncedChangesCount
                         ),
                         style = MaterialTheme.typography.body2
@@ -128,10 +136,10 @@ fun ProfileScreen(viewModel: ProfileViewModel) {
             }) {
                 Icon(painterResource(Res.drawable.ic_open_in_browser_24), null)
                 Spacer(Modifier.width(8.dp))
-                Text(stringResource(R.string.osm_profile).uppercase())
+                Text(stringResource(Res.string.osm_profile).uppercase())
             }
             OutlinedButton(onClick = { viewModel.logOutUser() }) {
-                Text(stringResource(R.string.user_logout).uppercase())
+                Text(stringResource(Res.string.user_logout).uppercase())
             }
         }
 
@@ -140,7 +148,7 @@ fun ProfileScreen(viewModel: ProfileViewModel) {
         // Statistics
 
         Text(
-            text = stringResource(R.string.user_profile_all_time_title),
+            text = stringResource(Res.string.user_profile_all_time_title),
             style = MaterialTheme.typography.titleLarge
         )
 
@@ -172,7 +180,7 @@ fun ProfileScreen(viewModel: ProfileViewModel) {
             verticalAlignment = Alignment.CenterVertically
         ) {
             Text(
-                text = stringResource(R.string.user_profile_current_week_title),
+                text = stringResource(Res.string.user_profile_current_week_title),
                 style = MaterialTheme.typography.titleLarge
             )
             StarCount(editCountCurrentWeek)
@@ -193,7 +201,7 @@ fun ProfileScreen(viewModel: ProfileViewModel) {
             }
         }
         Text(
-            text = stringResource(R.string.user_profile_dates_mapped),
+            text = stringResource(Res.string.user_profile_dates_mapped),
             style = MaterialTheme.typography.titleLarge
         )
         BoxWithConstraints {
@@ -219,7 +227,7 @@ private fun LocalRankBadge(rank: Int, countryCode: String, delay: Int) {
 @Composable
 private fun RankBadge(rank: Int, delay: Int) {
     LaurelWreathBadge(
-        label = stringResource(R.string.user_profile_global_rank),
+        label = stringResource(Res.string.user_profile_global_rank),
         value = "#$rank",
         progress = getRankProgress(rank),
         animationDelay = delay
@@ -229,7 +237,7 @@ private fun RankBadge(rank: Int, delay: Int) {
 @Composable
 private fun DaysActiveBadge(days: Int, delay: Int) {
     LaurelWreathBadge(
-        label = stringResource(R.string.user_profile_days_active),
+        label = stringResource(Res.string.user_profile_days_active),
         value = days.toString(),
         progress = ((days + 20) / 100f).coerceAtMost(1f),
         animationDelay = delay
@@ -239,7 +247,7 @@ private fun DaysActiveBadge(days: Int, delay: Int) {
 @Composable
 private fun AchievementLevelsBadge(levels: Int, delay: Int) {
     LaurelWreathBadge(
-        label = stringResource(R.string.user_profile_achievement_levels),
+        label = stringResource(Res.string.user_profile_achievement_levels),
         value = levels.toString(),
         progress = ((levels / 2) / 100f).coerceAtMost(1f),
         animationDelay = delay
@@ -259,7 +267,7 @@ private fun LocalRankCurrentWeekBadge(rank: Int, countryCode: String, delay: Int
 @Composable
 private fun RankCurrentWeekBadge(rank: Int, delay: Int) {
     LaurelWreathBadge(
-        label = stringResource(R.string.user_profile_global_rank),
+        label = stringResource(Res.string.user_profile_global_rank),
         value = "#$rank",
         progress = getRankCurrentWeekProgress(rank),
         animationDelay = delay
@@ -284,9 +292,9 @@ private fun StarCount(count: Int) {
     }
 }
 
-@Composable @ReadOnlyComposable
+@Composable
 private fun getLocalRankText(countryCode: String): String =
-    stringResource(R.string.user_profile_local_rank, getCountryName(countryCode))
+    stringResource(Res.string.user_profile_local_rank, getCountryName(countryCode))
 
 private fun getCountryName(countryCode: String): String =
     // we don't use the language, but we need it for correct construction of the languageTag

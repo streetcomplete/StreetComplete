@@ -19,12 +19,17 @@ import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.about_title_privacy_statement
+import de.westnordost.streetcomplete.resources.privacy_html
+import de.westnordost.streetcomplete.resources.privacy_html_image_upload2
+import de.westnordost.streetcomplete.resources.privacy_html_statistics
+import de.westnordost.streetcomplete.resources.privacy_html_tileserver2
 import de.westnordost.streetcomplete.ui.common.BackIcon
 import de.westnordost.streetcomplete.ui.common.HtmlText
 import de.westnordost.streetcomplete.util.html.tryParseHtml
+import org.jetbrains.compose.resources.stringResource
 
 /** Shows the privacy statement */
 @Composable
@@ -33,17 +38,17 @@ fun PrivacyStatementScreen(
 ) {
     Column(Modifier.fillMaxSize()) {
         TopAppBar(
-            title = { Text(stringResource(R.string.about_title_privacy_statement)) },
+            title = { Text(stringResource(Res.string.about_title_privacy_statement)) },
             windowInsets = AppBarDefaults.topAppBarWindowInsets,
             navigationIcon = { IconButton(onClick = onClickBack) { BackIcon() } },
         )
         SelectionContainer {
             HtmlText(
                 html =
-                    tryParseHtml(stringResource(R.string.privacy_html)) +
-                    tryParseHtml(stringResource(R.string.privacy_html_tileserver2, "JawgMaps", "https://www.jawg.io/en/confidentiality/")) +
-                    tryParseHtml(stringResource(R.string.privacy_html_statistics)) +
-                    tryParseHtml(stringResource(R.string.privacy_html_image_upload2)),
+                    tryParseHtml(stringResource(Res.string.privacy_html)) +
+                    tryParseHtml(stringResource(Res.string.privacy_html_tileserver2, "JawgMaps", "https://www.jawg.io/en/confidentiality/")) +
+                    tryParseHtml(stringResource(Res.string.privacy_html_statistics)) +
+                    tryParseHtml(stringResource(Res.string.privacy_html_image_upload2)),
                 modifier = Modifier
                     .fillMaxWidth()
                     .verticalScroll(rememberScrollState())

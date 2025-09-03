@@ -14,8 +14,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.text.drawText
 import androidx.compose.ui.text.rememberTextMeasurer
-import androidx.compose.ui.tooling.preview.Devices
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Constraints
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.LayoutDirection
@@ -29,6 +27,7 @@ import kotlinx.datetime.LocalDate
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.minus
 import kotlinx.datetime.toLocalDateTime
+import org.jetbrains.compose.ui.tooling.preview.Preview
 import java.text.DateFormatSymbols
 import kotlin.math.ceil
 
@@ -127,8 +126,6 @@ fun DatesActiveTable(
 }
 
 @Preview
-@Preview(locale = "ar", fontScale = 1.8f) // right-to-left and large text
-@Preview(device = Devices.NEXUS_7) // large screen
 @Composable
 private fun DatesActivePreview() {
     DatesActiveTable(

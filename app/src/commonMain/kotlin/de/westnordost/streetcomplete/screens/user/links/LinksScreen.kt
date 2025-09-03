@@ -15,11 +15,13 @@ import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.links_empty
+import de.westnordost.streetcomplete.resources.stats_are_syncing
 import de.westnordost.streetcomplete.ui.common.CenteredLargeTitleHint
 import de.westnordost.streetcomplete.ui.ktx.plus
+import org.jetbrains.compose.resources.stringResource
 
 /** Shows the user's unlocked links */
 @Composable
@@ -41,8 +43,8 @@ fun LinksScreen(viewModel: LinksViewModel) {
         if (!hasLinks) {
             val isSynchronizingStatistics by viewModel.isSynchronizingStatistics.collectAsState()
             CenteredLargeTitleHint(stringResource(
-                if (isSynchronizingStatistics) R.string.stats_are_syncing
-                else R.string.links_empty
+                if (isSynchronizingStatistics) Res.string.stats_are_syncing
+                else Res.string.links_empty
             ))
         }
     }

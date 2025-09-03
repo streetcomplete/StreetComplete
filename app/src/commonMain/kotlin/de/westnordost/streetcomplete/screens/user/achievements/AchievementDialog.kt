@@ -10,25 +10,24 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Devices
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.tooling.preview.PreviewLightDark
-import androidx.compose.ui.tooling.preview.PreviewScreenSizes
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
-import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.user.achievements.Achievement
 import de.westnordost.streetcomplete.data.user.achievements.Link
 import de.westnordost.streetcomplete.data.user.achievements.achievements
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.achievements_unlocked_link
+import de.westnordost.streetcomplete.resources.achievements_unlocked_links
 import de.westnordost.streetcomplete.screens.user.DialogContentWithIconLayout
 import de.westnordost.streetcomplete.screens.user.links.LazyLinksColumn
 import de.westnordost.streetcomplete.ui.theme.AppTheme
 import de.westnordost.streetcomplete.ui.theme.headlineSmall
 import de.westnordost.streetcomplete.ui.theme.titleMedium
 import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
+import org.jetbrains.compose.ui.tooling.preview.Preview
 
 @Composable
 fun AchievementDialog(
@@ -99,8 +98,8 @@ private fun AchievementDetails(
         }
         if (unlockedLinks.isNotEmpty()) {
             val unlockedLinksText = stringResource(
-                if (unlockedLinks.size == 1) R.string.achievements_unlocked_link
-                else R.string.achievements_unlocked_links
+                if (unlockedLinks.size == 1) Res.string.achievements_unlocked_link
+                else Res.string.achievements_unlocked_links
             )
             Text(
                 text = unlockedLinksText,
@@ -114,9 +113,7 @@ private fun AchievementDetails(
     }
 }
 
-@Preview(device = Devices.NEXUS_5) // darn small device
-@PreviewScreenSizes
-@PreviewLightDark
+@Preview
 @Composable
 private fun PreviewAchievementDetailsDialog() {
     AppTheme {

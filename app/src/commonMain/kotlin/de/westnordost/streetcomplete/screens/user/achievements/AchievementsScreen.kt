@@ -17,12 +17,14 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.user.achievements.Achievement
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.achievements_empty
+import de.westnordost.streetcomplete.resources.stats_are_syncing
 import de.westnordost.streetcomplete.ui.common.CenteredLargeTitleHint
 import de.westnordost.streetcomplete.ui.ktx.plus
+import org.jetbrains.compose.resources.stringResource
 
 /** Shows the icons for all achieved achievements and opens a dialog to show the details on click. */
 @Composable
@@ -49,8 +51,8 @@ fun AchievementsScreen(viewModel: AchievementsViewModel) {
         if (!hasAchievements) {
             val isSynchronizingStatistics by viewModel.isSynchronizingStatistics.collectAsState()
             CenteredLargeTitleHint(stringResource(
-                if (isSynchronizingStatistics) R.string.stats_are_syncing
-                else R.string.achievements_empty
+                if (isSynchronizingStatistics) Res.string.stats_are_syncing
+                else Res.string.achievements_empty
             ))
         }
     }

@@ -22,11 +22,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.scale
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.letsgo
+import de.westnordost.streetcomplete.resources.next
 import de.westnordost.streetcomplete.ui.ktx.conditional
 import kotlinx.coroutines.launch
+import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun PagerControls(
@@ -69,7 +71,7 @@ fun PagerControls(
             onClick = ::onClickNext,
             enabled = nextIsEnabled(state.currentPage)
         ) {
-            Text(stringResource(if (state.isOnLastPage()) R.string.letsgo else R.string.next))
+            Text(stringResource(if (state.isOnLastPage()) Res.string.letsgo else Res.string.next))
         }
     }
 }

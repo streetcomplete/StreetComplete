@@ -15,17 +15,28 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalUriHandler
-import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.user.achievements.Link
 import de.westnordost.streetcomplete.data.user.achievements.LinkCategory
 import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.link_category_editors_description
+import de.westnordost.streetcomplete.resources.link_category_editors_title
+import de.westnordost.streetcomplete.resources.link_category_goodies_description
+import de.westnordost.streetcomplete.resources.link_category_goodies_title
+import de.westnordost.streetcomplete.resources.link_category_intro_description
+import de.westnordost.streetcomplete.resources.link_category_intro_title
+import de.westnordost.streetcomplete.resources.link_category_maps_description
+import de.westnordost.streetcomplete.resources.link_category_maps_title
+import de.westnordost.streetcomplete.resources.link_category_showcase_description
+import de.westnordost.streetcomplete.resources.link_category_showcase_title
 import de.westnordost.streetcomplete.resources.link_wiki
+import de.westnordost.streetcomplete.resources.link_wiki_description
 import de.westnordost.streetcomplete.ui.theme.titleLarge
 import de.westnordost.streetcomplete.ui.theme.titleSmall
+import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
+import org.jetbrains.compose.ui.tooling.preview.Preview
 
 /** Display a single link category from the link collection */
 @Composable
@@ -37,20 +48,20 @@ fun LinkCategoryRow(category: LinkCategory, modifier: Modifier = Modifier) {
     }
 }
 
-private val LinkCategory.title: Int get() = when (this) {
-    LinkCategory.INTRO -> R.string.link_category_intro_title
-    LinkCategory.EDITORS -> R.string.link_category_editors_title
-    LinkCategory.MAPS -> R.string.link_category_maps_title
-    LinkCategory.SHOWCASE -> R.string.link_category_showcase_title
-    LinkCategory.GOODIES -> R.string.link_category_goodies_title
+private val LinkCategory.title: StringResource get() = when (this) {
+    LinkCategory.INTRO -> Res.string.link_category_intro_title
+    LinkCategory.EDITORS -> Res.string.link_category_editors_title
+    LinkCategory.MAPS -> Res.string.link_category_maps_title
+    LinkCategory.SHOWCASE -> Res.string.link_category_showcase_title
+    LinkCategory.GOODIES -> Res.string.link_category_goodies_title
 }
 
-private val LinkCategory.description: Int get() = when (this) {
-    LinkCategory.INTRO -> R.string.link_category_intro_description
-    LinkCategory.EDITORS -> R.string.link_category_editors_description
-    LinkCategory.SHOWCASE -> R.string.link_category_showcase_description
-    LinkCategory.MAPS -> R.string.link_category_maps_description
-    LinkCategory.GOODIES -> R.string.link_category_goodies_description
+private val LinkCategory.description: StringResource get() = when (this) {
+    LinkCategory.INTRO -> Res.string.link_category_intro_description
+    LinkCategory.EDITORS -> Res.string.link_category_editors_description
+    LinkCategory.SHOWCASE -> Res.string.link_category_showcase_description
+    LinkCategory.MAPS -> Res.string.link_category_maps_description
+    LinkCategory.GOODIES -> Res.string.link_category_goodies_description
 }
 
 /** Display a single link from the link collection */
@@ -93,6 +104,6 @@ private fun LinkRowPreview() {
         "OpenStreetMap Wiki",
         LinkCategory.INTRO,
         Res.drawable.link_wiki,
-        R.string.link_wiki_description
+        Res.string.link_wiki_description
     ))
 }

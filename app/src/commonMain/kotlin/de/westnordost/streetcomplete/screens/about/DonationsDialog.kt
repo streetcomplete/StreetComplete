@@ -14,17 +14,18 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
-import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.about_description_donate
+import de.westnordost.streetcomplete.resources.about_description_donate_google_play3
 import de.westnordost.streetcomplete.resources.donation_github
 import de.westnordost.streetcomplete.resources.donation_liberapay
 import de.westnordost.streetcomplete.resources.donation_patreon
 import de.westnordost.streetcomplete.ui.common.dialogs.InfoDialog
 import de.westnordost.streetcomplete.ui.theme.titleLarge
 import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
+import org.jetbrains.compose.ui.tooling.preview.Preview
 
 @Composable
 fun DonationsDialog(
@@ -36,7 +37,7 @@ fun DonationsDialog(
         confirmButton = { /* no buttons, click outside to close */ },
         text = {
             Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                Text(stringResource(R.string.about_description_donate))
+                Text(stringResource(Res.string.about_description_donate))
                 DonationPlatformItems(onClickLink, modifier = Modifier.fillMaxWidth())
             }
         }
@@ -47,7 +48,7 @@ fun DonationsDialog(
 fun DonationsGooglePlayDialog(onDismissRequest: () -> Unit) {
     InfoDialog(
         onDismissRequest = onDismissRequest,
-        text = { Text(stringResource(R.string.about_description_donate_google_play3)) }
+        text = { Text(stringResource(Res.string.about_description_donate_google_play3)) }
     )
 }
 

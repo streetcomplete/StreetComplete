@@ -19,14 +19,13 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
-import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.logs.LogLevel
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.ic_check_circle_24
 import de.westnordost.streetcomplete.resources.ic_circle_outline_24
+import de.westnordost.streetcomplete.resources.label_log_level
 import de.westnordost.streetcomplete.ui.theme.AppTheme
 import de.westnordost.streetcomplete.ui.theme.logDebug
 import de.westnordost.streetcomplete.ui.theme.logError
@@ -34,6 +33,7 @@ import de.westnordost.streetcomplete.ui.theme.logInfo
 import de.westnordost.streetcomplete.ui.theme.logVerbose
 import de.westnordost.streetcomplete.ui.theme.logWarning
 import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
@@ -47,7 +47,7 @@ fun LogLevelFilterChips(
         modifier = modifier
     ) {
         Text(
-            text = stringResource(R.string.label_log_level),
+            text = stringResource(Res.string.label_log_level),
             style = MaterialTheme.typography.caption
         )
         FlowRow(

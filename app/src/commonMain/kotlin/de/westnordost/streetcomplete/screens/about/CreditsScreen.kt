@@ -26,19 +26,27 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.unit.dp
-import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.credits.Contributor
 import de.westnordost.streetcomplete.data.credits.Credits
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.about_title_authors
+import de.westnordost.streetcomplete.resources.credits_art_contributors_title
+import de.westnordost.streetcomplete.resources.credits_author_title
+import de.westnordost.streetcomplete.resources.credits_contributors
+import de.westnordost.streetcomplete.resources.credits_contributors_title
+import de.westnordost.streetcomplete.resources.credits_main_contributors_title
+import de.westnordost.streetcomplete.resources.credits_projects_contributors_title
+import de.westnordost.streetcomplete.resources.credits_translations_title
 import de.westnordost.streetcomplete.ui.common.BackIcon
 import de.westnordost.streetcomplete.ui.common.BulletSpan
 import de.westnordost.streetcomplete.ui.common.HtmlText
 import de.westnordost.streetcomplete.ui.theme.titleLarge
 import de.westnordost.streetcomplete.util.ktx.displayName
+import org.jetbrains.compose.resources.stringResource
 
 /** Shows the credits of this app */
 @Composable
@@ -50,7 +58,7 @@ fun CreditsScreen(
 
     Column(Modifier.fillMaxSize()) {
         TopAppBar(
-            title = { Text(stringResource(R.string.about_title_authors)) },
+            title = { Text(stringResource(Res.string.about_title_authors)) },
             windowInsets = AppBarDefaults.topAppBarWindowInsets,
             navigationIcon = { IconButton(onClick = onClickBack) { BackIcon() } },
         )
@@ -80,35 +88,35 @@ private fun CreditsSections(
         modifier = modifier,
         verticalArrangement = Arrangement.spacedBy(32.dp),
     ) {
-        CreditsSection(stringResource(R.string.credits_author_title)) {
+        CreditsSection(stringResource(Res.string.credits_author_title)) {
             HtmlText(
                 html = credits.mainContributors.first().toTextWithLink(),
                 style = TextStyle(fontWeight = FontWeight.Bold),
             )
         }
-        CreditsSection(stringResource(R.string.credits_main_contributors_title)) {
+        CreditsSection(stringResource(Res.string.credits_main_contributors_title)) {
             for (contributor in credits.mainContributors.drop(1)) {
                 BulletSpan { HtmlText(contributor.toTextWithLink()) }
             }
         }
-        CreditsSection(stringResource(R.string.credits_projects_contributors_title)) {
+        CreditsSection(stringResource(Res.string.credits_projects_contributors_title)) {
             for (contributor in credits.projectsContributors) {
                 BulletSpan { HtmlText(contributor) }
             }
         }
-        CreditsSection(stringResource(R.string.credits_art_contributors_title)) {
+        CreditsSection(stringResource(Res.string.credits_art_contributors_title)) {
             for (contributor in credits.artContributors) {
                 BulletSpan { HtmlText(contributor) }
             }
         }
-        CreditsSection(stringResource(R.string.credits_contributors_title)) {
+        CreditsSection(stringResource(Res.string.credits_contributors_title)) {
             for (contributor in credits.codeContributors) {
                 BulletSpan { HtmlText(contributor.toTextWithLink()) }
             }
             BulletSpan { Text("…") }
-            HtmlText(stringResource(R.string.credits_contributors))
+            HtmlText(stringResource(Res.string.credits_contributors))
         }
-        CreditsSection(stringResource(R.string.credits_translations_title)) {
+        CreditsSection(stringResource(Res.string.credits_translations_title)) {
             // sorted list of (language name, list of translators sorted by contributions descending)
             val translatorsByDisplayLanguage = remember(credits.translatorsByLanguage) {
                 credits.translatorsByLanguage

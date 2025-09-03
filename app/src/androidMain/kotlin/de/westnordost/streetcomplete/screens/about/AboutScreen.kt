@@ -23,11 +23,31 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.integerResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.tooling.preview.Preview
 import de.westnordost.streetcomplete.BuildConfig
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.about_category_contribute
+import de.westnordost.streetcomplete.resources.about_category_feedback
+import de.westnordost.streetcomplete.resources.about_category_help
+import de.westnordost.streetcomplete.resources.about_description_translate
+import de.westnordost.streetcomplete.resources.about_summary_donate
+import de.westnordost.streetcomplete.resources.about_summary_logs
+import de.westnordost.streetcomplete.resources.about_title_authors
+import de.westnordost.streetcomplete.resources.about_title_changelog
+import de.westnordost.streetcomplete.resources.about_title_donate
+import de.westnordost.streetcomplete.resources.about_title_faq
+import de.westnordost.streetcomplete.resources.about_title_feedback
+import de.westnordost.streetcomplete.resources.about_title_intro
+import de.westnordost.streetcomplete.resources.about_title_license
+import de.westnordost.streetcomplete.resources.about_title_privacy_statement
+import de.westnordost.streetcomplete.resources.about_title_rate
+import de.westnordost.streetcomplete.resources.about_title_report_error
+import de.westnordost.streetcomplete.resources.about_title_repository
+import de.westnordost.streetcomplete.resources.about_title_show_logs
+import de.westnordost.streetcomplete.resources.about_title_translate
+import de.westnordost.streetcomplete.resources.action_about2
 import de.westnordost.streetcomplete.screens.tutorial.IntroTutorialScreen
 import de.westnordost.streetcomplete.ui.common.AnimatedScreenVisibility
 import de.westnordost.streetcomplete.ui.common.BackIcon
@@ -36,6 +56,7 @@ import de.westnordost.streetcomplete.ui.common.OpenInBrowserIcon
 import de.westnordost.streetcomplete.ui.common.settings.Preference
 import de.westnordost.streetcomplete.ui.common.settings.PreferenceCategory
 import de.westnordost.streetcomplete.util.ktx.displayLanguage
+import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun AboutScreen(
@@ -53,7 +74,7 @@ fun AboutScreen(
 
     Column(Modifier.fillMaxSize()) {
         TopAppBar(
-            title = { Text(stringResource(R.string.action_about2)) },
+            title = { Text(stringResource(Res.string.action_about2)) },
             windowInsets = AppBarDefaults.topAppBarWindowInsets,
             navigationIcon = { IconButton(onClick = onClickBack) { BackIcon() } },
         )
@@ -67,7 +88,7 @@ fun AboutScreen(
             PreferenceCategory(null) {
 
                 Preference(
-                    name = stringResource(R.string.about_title_changelog),
+                    name = stringResource(Res.string.about_title_changelog),
                     onClick = { onClickChangelog() },
                 ) {
                     Text("v" + BuildConfig.VERSION_NAME)
@@ -75,12 +96,12 @@ fun AboutScreen(
                 }
 
                 Preference(
-                    name = stringResource(R.string.about_title_authors),
+                    name = stringResource(Res.string.about_title_authors),
                     onClick = { onClickCredits() },
                 ) { NextScreenIcon() }
 
                 Preference(
-                    name = stringResource(R.string.about_title_license),
+                    name = stringResource(Res.string.about_title_license),
                     onClick = { uriHandler.openUri("https://www.gnu.org/licenses/gpl-3.0.html") },
                 ) {
                     Text("GPLv3")
@@ -88,69 +109,69 @@ fun AboutScreen(
                 }
 
                 Preference(
-                    name = stringResource(R.string.about_title_privacy_statement),
+                    name = stringResource(Res.string.about_title_privacy_statement),
                     onClick = { onClickPrivacyStatement() },
                 ) { NextScreenIcon() }
             }
 
-            PreferenceCategory(stringResource(R.string.about_category_help)) {
+            PreferenceCategory(stringResource(Res.string.about_category_help)) {
                 Preference(
-                    name = stringResource(R.string.about_title_intro),
+                    name = stringResource(Res.string.about_title_intro),
                     onClick = { showIntroTutorial = true },
                 )
 
                 Preference(
-                    name = stringResource(R.string.about_title_faq),
+                    name = stringResource(Res.string.about_title_faq),
                     onClick = { uriHandler.openUri("https://wiki.openstreetmap.org/wiki/StreetComplete/FAQ") },
                 ) { OpenInBrowserIcon() }
 
                 Preference(
-                    name = stringResource(R.string.about_title_report_error),
+                    name = stringResource(Res.string.about_title_report_error),
                     onClick = { uriHandler.openUri("https://github.com/streetcomplete/StreetComplete/issues") },
                 ) { OpenInBrowserIcon() }
 
                 Preference(
-                    name = stringResource(R.string.about_title_show_logs),
+                    name = stringResource(Res.string.about_title_show_logs),
                     onClick = { onClickLogs() },
-                    description = stringResource(R.string.about_summary_logs),
+                    description = stringResource(Res.string.about_summary_logs),
                 ) { NextScreenIcon() }
             }
 
-            PreferenceCategory(stringResource(R.string.about_category_contribute)) {
+            PreferenceCategory(stringResource(Res.string.about_category_contribute)) {
 
                 Preference(
-                    name = stringResource(R.string.about_title_donate),
+                    name = stringResource(Res.string.about_title_donate),
                     onClick = { showDonateDialog = true },
-                    description = stringResource(R.string.about_summary_donate),
+                    description = stringResource(Res.string.about_summary_donate),
                 )
 
                 Preference(
-                    name = stringResource(R.string.about_title_translate),
+                    name = stringResource(Res.string.about_title_translate),
                     onClick = { uriHandler.openUri("https://poeditor.com/join/project/IE4GC127Ki") },
                     description = stringResource(
-                        R.string.about_description_translate,
+                        Res.string.about_description_translate,
                         Locale.current.displayLanguage ?: Locale.current.language,
                         integerResource(R.integer.translation_completeness)
                     )
                 ) { OpenInBrowserIcon() }
 
                 Preference(
-                    name = stringResource(R.string.about_title_repository),
+                    name = stringResource(Res.string.about_title_repository),
                     onClick = { uriHandler.openUri("https://github.com/streetcomplete/StreetComplete") },
                 ) { OpenInBrowserIcon() }
             }
 
-            PreferenceCategory(stringResource(R.string.about_category_feedback)) {
+            PreferenceCategory(stringResource(Res.string.about_category_feedback)) {
 
                 if (context.isInstalledViaGooglePlay()) {
                     Preference(
-                        name = stringResource(R.string.about_title_rate),
+                        name = stringResource(Res.string.about_title_rate),
                         onClick = { uriHandler.openUri("market://details?id=${context.packageName}") },
                     ) { OpenInBrowserIcon() }
                 }
 
                 Preference(
-                    name = stringResource(R.string.about_title_feedback),
+                    name = stringResource(Res.string.about_title_feedback),
                     onClick = { uriHandler.openUri("https://github.com/streetcomplete/StreetComplete/discussions") },
                 ) { OpenInBrowserIcon() }
             }

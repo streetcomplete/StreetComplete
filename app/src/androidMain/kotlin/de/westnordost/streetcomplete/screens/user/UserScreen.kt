@@ -26,15 +26,18 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.min
-import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.ic_achievements_24
 import de.westnordost.streetcomplete.resources.ic_bookmarks_24
 import de.westnordost.streetcomplete.resources.ic_profile_24
 import de.westnordost.streetcomplete.resources.ic_star_24
+import de.westnordost.streetcomplete.resources.user_achievements_title
+import de.westnordost.streetcomplete.resources.user_links_title
+import de.westnordost.streetcomplete.resources.user_profile
+import de.westnordost.streetcomplete.resources.user_profile_title
+import de.westnordost.streetcomplete.resources.user_quests_title
 import de.westnordost.streetcomplete.screens.user.achievements.AchievementsScreen
 import de.westnordost.streetcomplete.screens.user.edits.EditStatisticsScreen
 import de.westnordost.streetcomplete.screens.user.links.LinksScreen
@@ -42,8 +45,10 @@ import de.westnordost.streetcomplete.screens.user.profile.ProfileScreen
 import de.westnordost.streetcomplete.ui.common.BackIcon
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.DrawableResource
+import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.painterResource
-import org.koin.androidx.compose.koinViewModel
+import org.jetbrains.compose.resources.stringResource
+import org.koin.compose.viewmodel.koinViewModel
 
 /** Shows the tabs with the user profile, user statistics, achievements and links */
 @Composable
@@ -92,7 +97,7 @@ private fun UserScreenTopAppBar(
     ) {
         Column {
             TopAppBar(
-                title = { Text(stringResource(R.string.user_profile)) },
+                title = { Text(stringResource(Res.string.user_profile)) },
                 windowInsets = AppBarDefaults.topAppBarWindowInsets,
                 navigationIcon = { IconButton(onClick = onClickBack) { BackIcon() } },
                 elevation = 0.dp
@@ -110,7 +115,7 @@ private fun UserScreenTopAppBar(
                 ) {
                     for (tab in UserTab.entries) {
                         val icon = painterResource(tab.icon)
-                        val text = stringResource(tab.textId)
+                        val text = stringResource(tab.text)
                         val index = tab.ordinal
                         val showText = min(maxWidth, maxHeight) >= 600.dp
                         Tab(
@@ -132,22 +137,22 @@ private fun UserScreenTopAppBar(
 
 private enum class UserTab(
     val icon: DrawableResource,
-    val textId: Int,
+    val text: StringResource,
 ) {
     Profile(
         icon = Res.drawable.ic_profile_24,
-        textId = R.string.user_profile_title,
+        text = Res.string.user_profile_title,
     ),
     Statistics(
         icon = Res.drawable.ic_star_24,
-        textId = R.string.user_quests_title,
+        text = Res.string.user_quests_title,
     ),
     Achievements(
         icon = Res.drawable.ic_achievements_24,
-        textId = R.string.user_achievements_title
+        text = Res.string.user_achievements_title
     ),
     Links(
         icon = Res.drawable.ic_bookmarks_24,
-        textId = R.string.user_links_title
+        text = Res.string.user_links_title
     ),
 }

@@ -23,14 +23,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.changelog.Changelog
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.about_title_changelog
 import de.westnordost.streetcomplete.ui.common.BackIcon
 import de.westnordost.streetcomplete.ui.common.HtmlText
 import de.westnordost.streetcomplete.ui.ktx.plus
 import de.westnordost.streetcomplete.ui.theme.titleLarge
+import org.jetbrains.compose.resources.stringResource
 
 /** Shows the full changelog */
 @Composable
@@ -42,7 +43,7 @@ fun ChangelogScreen(
 
     Column(Modifier.fillMaxSize()) {
         TopAppBar(
-            title = { Text(stringResource(R.string.about_title_changelog)) },
+            title = { Text(stringResource(Res.string.about_title_changelog)) },
             windowInsets = AppBarDefaults.topAppBarWindowInsets,
             navigationIcon = { IconButton(onClick = onClickBack) { BackIcon() } },
         )

@@ -14,13 +14,17 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
-import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.action_reset
+import de.westnordost.streetcomplete.resources.pref_overlays_reset
+import de.westnordost.streetcomplete.resources.pref_subtitle_quests_preset_name
+import de.westnordost.streetcomplete.resources.pref_title_overlays
 import de.westnordost.streetcomplete.ui.common.BackIcon
 import de.westnordost.streetcomplete.ui.common.DropdownMenuItem
 import de.westnordost.streetcomplete.ui.common.MoreIcon
 import de.westnordost.streetcomplete.ui.common.dialogs.ConfirmationDialog
+import org.jetbrains.compose.resources.stringResource
 
 /** Top bar for the overlay selection screen */
 @Composable
@@ -43,12 +47,12 @@ fun OverlaySelectionTopAppBar(
 private fun OverlaySelectionTitle(currentPresetName: String) {
     Column {
         Text(
-            text = stringResource(R.string.pref_title_overlays),
+            text = stringResource(Res.string.pref_title_overlays),
             maxLines = 1,
             overflow = TextOverflow.Ellipsis
         )
         Text(
-            text = stringResource(R.string.pref_subtitle_quests_preset_name, currentPresetName),
+            text = stringResource(Res.string.pref_subtitle_quests_preset_name, currentPresetName),
             maxLines = 1,
             overflow = TextOverflow.Ellipsis,
             style = MaterialTheme.typography.body1,
@@ -73,7 +77,7 @@ private fun OverlaySelectionTopBarActions(
                 showResetDialog = true
                 showActionsDropdown = false
             }) {
-                Text(stringResource(R.string.action_reset))
+                Text(stringResource(Res.string.action_reset))
             }
         }
     }
@@ -82,7 +86,7 @@ private fun OverlaySelectionTopBarActions(
         ConfirmationDialog(
             onDismissRequest = { showResetDialog = false },
             onConfirmed = onReset,
-            text = { Text(stringResource(R.string.pref_overlays_reset)) },
+            text = { Text(stringResource(Res.string.pref_overlays_reset)) },
         )
     }
 }
