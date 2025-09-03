@@ -5,6 +5,10 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.quests.AListQuestForm
 import de.westnordost.streetcomplete.quests.crossing.CrossingAnswer.*
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.quest_crossing_no
+import de.westnordost.streetcomplete.resources.quest_crossing_prohibited
+import de.westnordost.streetcomplete.resources.quest_crossing_yes
 import de.westnordost.streetcomplete.ui.common.TextItem
 import org.koin.android.ext.android.inject
 
@@ -12,9 +16,9 @@ class AddCrossingForm : AListQuestForm<CrossingAnswer>() {
     private val mapDataSource: MapDataWithEditsSource by inject()
 
     override val items = listOf(
-        TextItem(YES, R.string.quest_crossing_yes),
-        TextItem(INFORMAL, R.string.quest_crossing_no),
-        TextItem(PROHIBITED, R.string.quest_crossing_prohibited),
+        TextItem(YES, Res.string.quest_crossing_yes),
+        TextItem(INFORMAL, Res.string.quest_crossing_no),
+        TextItem(PROHIBITED, Res.string.quest_crossing_prohibited),
     )
     /*
         PROHIBITED is not possible for sidewalks or crossings (=separately mapped sidewalk

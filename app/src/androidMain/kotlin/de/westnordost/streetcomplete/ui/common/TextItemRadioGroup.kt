@@ -18,6 +18,13 @@ import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.quest_accepts_cards_credit_only
+import de.westnordost.streetcomplete.resources.quest_accepts_cards_debit_and_credit
+import de.westnordost.streetcomplete.resources.quest_accepts_cards_dedit_only
+import de.westnordost.streetcomplete.resources.quest_accepts_cards_unavailable
+import org.jetbrains.compose.resources.StringResource
+import org.jetbrains.compose.resources.stringResource
 
 /** A radio button group composed of a list of [options]. */
 @Composable
@@ -43,7 +50,7 @@ fun <T> TextItemRadioGroup(
                     onClick = null,
                 )
                 Text(
-                    text = stringResource(option.titleId),
+                    text = stringResource(option.title),
                     modifier = Modifier
                         .align(Alignment.CenterVertically)
                         .padding(horizontal = 16.dp)
@@ -59,14 +66,14 @@ private fun TextItemRadioGroupFormPreview() {
     var selectedOption by remember { mutableStateOf<TextItem<Int>?>(null) }
     TextItemRadioGroup(
         options = listOf(
-            TextItem(0, R.string.quest_accepts_cards_debit_and_credit),
-            TextItem(1, R.string.quest_accepts_cards_credit_only),
-            TextItem(2, R.string.quest_accepts_cards_dedit_only),
-            TextItem(3, R.string.quest_accepts_cards_unavailable),
+            TextItem(0, Res.string.quest_accepts_cards_debit_and_credit),
+            TextItem(1, Res.string.quest_accepts_cards_credit_only),
+            TextItem(2, Res.string.quest_accepts_cards_dedit_only),
+            TextItem(3, Res.string.quest_accepts_cards_unavailable),
         ),
         onSelectionChange = { selectedOption = it },
         currentOption = selectedOption
     )
 }
 
-data class TextItem<T>(val value: T, val titleId: Int)
+data class TextItem<T>(val value: T, val title: StringResource)
