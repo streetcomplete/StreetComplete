@@ -31,6 +31,13 @@ class AddLevelThing : OsmElementQuestType<String>, AndroidQuest {
         nodes, ways, relations with level
     """.toElementFilterExpression() }
 
+    /* only nodes because ways/relations are not likely to be floating around freely in a mall
+     * outline */
+    private val filter by lazy { """
+        nodes with
+          !level
+    """.toElementFilterExpression() }
+
     override val changesetComment = "Determine on which level things are in a building"
     override val wikiLink = "Key:level"
     override val icon = R.drawable.ic_quest_level_thing
@@ -73,7 +80,7 @@ class AddLevelThing : OsmElementQuestType<String>, AndroidQuest {
 
         // now, return all things that have no level tagged and are inside those multi-level malls
         val elementsWithoutLevel = mapData
-            .filter { it.isThing() }
+            .filter { filter.matches(it) && it.isThing() }
             .toMutableList()
         if (elementsWithoutLevel.isEmpty()) return emptyList()
 
@@ -95,7 +102,7 @@ class AddLevelThing : OsmElementQuestType<String>, AndroidQuest {
     }
 
     override fun isApplicableTo(element: Element): Boolean? {
-        if (!element.isThing()) return false
+        if (!filter.matches(element) || !element.isThing()) return false
         // for things with no level, we actually need to look at geometry in order to find if it is
         // contained within any multi-level mall
         return null
