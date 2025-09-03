@@ -24,12 +24,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.platform.LocalLayoutDirection
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.tooling.preview.datasource.LoremIpsum
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.ic_arrow_drop_down_24
 import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.ui.tooling.preview.Preview
 import kotlin.collections.forEach
 
 /** A simple selector button to select from a couple of values.
@@ -116,9 +115,10 @@ fun <T> SelectButton(
     }
 }
 
-@Preview @Composable
+@Preview
+@Composable
 private fun LengthInputSelectorPreview() {
-    val words = remember { LoremIpsum(10).values.joinToString(" ").split(' ') }
+    val words = remember { "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam".split(' ') }
     var selected by remember { mutableStateOf(words[0]) }
     SelectButton(
         items = words,

@@ -14,14 +14,11 @@ import androidx.compose.material.ProvideTextStyle
 import androidx.compose.material.Text
 import androidx.compose.material.TextField
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.ReadOnlyComposable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
@@ -30,13 +27,22 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.text.intl.LocaleList
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.osm.localized_name.LocalizedName
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.ic_add_24
+import de.westnordost.streetcomplete.resources.ic_delete_24
+import de.westnordost.streetcomplete.resources.quest_openingHours_delete
+import de.westnordost.streetcomplete.resources.quest_streetName_add_language
+import de.westnordost.streetcomplete.resources.quest_streetName_menuItem_language
+import de.westnordost.streetcomplete.resources.quest_streetName_menuItem_international
+import de.westnordost.streetcomplete.resources.quest_streetName_menuItem_nolanguage
 import de.westnordost.streetcomplete.ui.common.ButtonStyle
 import de.westnordost.streetcomplete.ui.common.SelectButton
 import de.westnordost.streetcomplete.util.ktx.displayName
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
+import org.jetbrains.compose.ui.tooling.preview.Preview
 
 /** Edit a list of [localizedNames] of at most [languageTags] different languages.*/
 @Composable
@@ -104,8 +110,8 @@ fun LocalizedNamesForm(
                 itemContent = { Text(getLanguageMenuItemTitle(it)) }
             ) {
                 Icon(
-                    painter = painterResource(R.drawable.ic_add_24dp),
-                    contentDescription = stringResource(R.string.quest_streetName_add_language)
+                    painter = painterResource(Res.drawable.ic_add_24),
+                    contentDescription = stringResource(Res.string.quest_streetName_add_language)
                 )
             }
         }
@@ -170,8 +176,8 @@ private fun LocalizedNameRow(
                 onClick = onDelete,
             ) {
                 Icon(
-                    painter = painterResource(R.drawable.ic_delete_24dp),
-                    contentDescription = stringResource(R.string.quest_openingHours_delete)
+                    painter = painterResource(Res.drawable.ic_delete_24),
+                    contentDescription = stringResource(Res.string.quest_openingHours_delete)
                 )
             }
         } else {
@@ -181,10 +187,9 @@ private fun LocalizedNameRow(
 }
 
 @Composable
-@ReadOnlyComposable
 private fun getLanguageMenuItemTitle(languageTag: String): String {
-    if (languageTag.isEmpty()) return stringResource(R.string.quest_streetName_menuItem_nolanguage)
-    if (languageTag == "international") return stringResource(R.string.quest_streetName_menuItem_international)
+    if (languageTag.isEmpty()) return stringResource(Res.string.quest_streetName_menuItem_nolanguage)
+    if (languageTag == "international") return stringResource(Res.string.quest_streetName_menuItem_international)
     val locale = Locale(languageTag)
 
     val languageName = locale.displayName
@@ -192,11 +197,12 @@ private fun getLanguageMenuItemTitle(languageTag: String): String {
     return if (languageName == null) {
         languageTag
     } else {
-        stringResource(R.string.quest_streetName_menuItem_language, languageTag, languageName)
+        stringResource(Res.string.quest_streetName_menuItem_language, languageTag, languageName)
     }
 }
 
-@Preview @Composable
+@Preview
+@Composable
 private fun LocalizedNamesFormPreview() {
     var localizedNames: List<LocalizedName> by remember { mutableStateOf(emptyList()) }
     LocalizedNamesForm(

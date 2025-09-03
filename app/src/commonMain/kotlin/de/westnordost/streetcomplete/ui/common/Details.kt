@@ -23,12 +23,11 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.tooling.preview.datasource.LoremIpsum
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.ic_arrow_drop_down_24
 import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.ui.tooling.preview.Preview
 
 /** Like the HTML &lt;details&gt; element or a section controlled by
  *  [disclosure controls](https://developer.apple.com/design/human-interface-guidelines/disclosure-controls)
@@ -75,9 +74,10 @@ fun Details(
     }
 }
 
-@Preview @Composable
+@Preview
+@Composable
 private fun DetailsPreview() {
-    val text = LoremIpsum(10).values.joinToString(" ")
+    val text = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam"
     var expanded by rememberSaveable { mutableStateOf(false) }
     Details(
         expanded = expanded,

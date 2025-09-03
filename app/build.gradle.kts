@@ -460,7 +460,7 @@ tasks.register("copyDefaultStringsToEnStrings") {
     doLast {
         File("$projectDir/src/androidMain/res/values/strings.xml")
             .copyTo(File("$projectDir/src/androidMain/res/values-en/strings.xml"), true)
-        File("$projectDir/src/commonMain/composeResources/values/strings.xml")
+        File("$projectDir/src/androidMain/res/values/strings.xml")
             .copyTo(File("$projectDir/src/commonMain/composeResources/values-en/strings.xml"), true)
     }
 }

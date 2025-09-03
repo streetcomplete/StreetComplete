@@ -11,12 +11,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.TextLayoutResult
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.ui.theme.AppTheme
 import de.westnordost.streetcomplete.ui.util.toAnnotatedString
 import de.westnordost.streetcomplete.util.html.HtmlNode
 import de.westnordost.streetcomplete.util.html.tryParseHtml
+import org.jetbrains.compose.ui.tooling.preview.Preview
 
 @Composable
 fun HtmlText(
@@ -70,7 +70,7 @@ fun HtmlText(
     )
 }
 
-@PreviewLightDark
+@Preview
 @Composable
 private fun HtmlTextPreview() {
     AppTheme { Surface {
