@@ -34,8 +34,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.platform.LocalDensity
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.LinkAnnotation
 import androidx.compose.ui.text.TextLinkStyles
 import androidx.compose.ui.text.TextStyle
@@ -46,8 +44,12 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Popup
 import androidx.compose.ui.window.PopupProperties
-import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.ic_info_outline_24
+import de.westnordost.streetcomplete.resources.map_attribution
 import de.westnordost.streetcomplete.screens.main.controls.ktx.Reverse
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 
 /**
  * Info button from which an attribution popup text is expanded from. The attribution text retracts
@@ -172,8 +174,8 @@ private fun Modifier.widthIfSpecified(width: Dp) =
 @Composable
 private fun InfoIcon(modifier: Modifier = Modifier) {
     Icon(
-        painter = painterResource(R.drawable.ic_info_outline_24dp),
-        contentDescription = stringResource(R.string.map_attribution),
+        painter = painterResource(Res.drawable.ic_info_outline_24),
+        contentDescription = stringResource(Res.string.map_attribution),
         modifier = modifier,
     )
 }

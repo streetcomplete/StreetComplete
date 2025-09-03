@@ -15,7 +15,10 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.overlays.Overlay
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.overlay_none
 import de.westnordost.streetcomplete.ui.common.DropdownMenuItem
+import org.jetbrains.compose.resources.stringResource
 
 /** Dropdown menu for selecting an overlay */
 @Composable
@@ -33,7 +36,7 @@ fun OverlaySelectionDropdownMenu(
     ) {
         DropdownMenuItem(onClick = { onDismissRequest(); onSelect(null) }) {
             Text(
-                text = stringResource(R.string.overlay_none),
+                text = stringResource(Res.string.overlay_none),
                 modifier = Modifier.padding(start = 48.dp)
             )
         }

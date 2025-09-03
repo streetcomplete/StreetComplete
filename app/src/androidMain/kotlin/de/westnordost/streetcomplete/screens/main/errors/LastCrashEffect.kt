@@ -6,8 +6,9 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.res.stringResource
-import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.crash_title
+import org.jetbrains.compose.resources.stringResource
 
 /** Offer to report the last occurred crash */
 @Composable
@@ -23,7 +24,7 @@ fun LastCrashEffect(
         SendErrorReportDialog(
             onDismissRequest = { showErrorDialog = false },
             onConfirmed = { onReport(lastReport) },
-            title = stringResource(R.string.crash_title)
+            title = stringResource(Res.string.crash_title)
         )
     }
 }

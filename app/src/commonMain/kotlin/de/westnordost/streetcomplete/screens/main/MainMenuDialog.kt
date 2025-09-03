@@ -24,22 +24,29 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
-import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.action_about2
+import de.westnordost.streetcomplete.resources.action_download
+import de.westnordost.streetcomplete.resources.action_settings
+import de.westnordost.streetcomplete.resources.action_upload
 import de.westnordost.streetcomplete.resources.ic_info_outline_48
 import de.westnordost.streetcomplete.resources.ic_profile_48
 import de.westnordost.streetcomplete.resources.ic_settings_48
+import de.westnordost.streetcomplete.resources.team_mode
+import de.westnordost.streetcomplete.resources.team_mode_exit
+import de.westnordost.streetcomplete.resources.user_login
+import de.westnordost.streetcomplete.resources.user_profile
 import de.westnordost.streetcomplete.screens.main.controls.NotificationBox
 import de.westnordost.streetcomplete.screens.main.teammode.TeamModeColorCircle
 import de.westnordost.streetcomplete.ui.common.DownloadIcon
 import de.westnordost.streetcomplete.ui.common.TeamModeIcon
 import de.westnordost.streetcomplete.ui.common.UploadIcon
 import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
@@ -77,25 +84,25 @@ fun MainMenuDialog(
                         onClick = { onDismissRequest(); onClickProfile() },
                         icon = { Icon(painterResource(Res.drawable.ic_profile_48), null) },
                         text = stringResource(
-                            if (isLoggedIn) R.string.user_profile else R.string.user_login
+                            if (isLoggedIn) Res.string.user_profile else Res.string.user_login
                         ),
                     )
                     BigMenuButton(
                         onClick = { onDismissRequest(); onClickSettings() },
                         icon = { Icon(painterResource(Res.drawable.ic_settings_48), null) },
-                        text = stringResource(R.string.action_settings),
+                        text = stringResource(Res.string.action_settings),
                     )
                     BigMenuButton(
                         onClick = { onDismissRequest(); onClickAbout() },
                         icon = { Icon(painterResource(Res.drawable.ic_info_outline_48), null) },
-                        text = stringResource(R.string.action_about2),
+                        text = stringResource(Res.string.action_about2),
                     )
                 }
                 Divider()
                 CompactMenuButton(
                     onClick = { onDismissRequest(); onClickDownload() },
                     icon = { DownloadIcon() },
-                    text = stringResource(R.string.action_download),
+                    text = stringResource(Res.string.action_download),
                 )
                 if (unsyncedEditsCount != null) {
                     CompactMenuButton(
@@ -108,7 +115,7 @@ fun MainMenuDialog(
                                 }
                             }
                         },
-                        text = stringResource(R.string.action_upload),
+                        text = stringResource(Res.string.action_upload),
                         enabled = !isUploadingOrDownloading,
                     )
                 }
@@ -116,7 +123,7 @@ fun MainMenuDialog(
                     CompactMenuButton(
                         onClick = { onDismissRequest(); onClickEnterTeamMode() },
                         icon = { TeamModeIcon() },
-                        text = stringResource(R.string.team_mode)
+                        text = stringResource(Res.string.team_mode)
                     )
                 } else {
                     CompactMenuButton(
@@ -127,7 +134,7 @@ fun MainMenuDialog(
                                 modifier = Modifier.size(24.dp)
                             )
                         },
-                        text = stringResource(R.string.team_mode_exit)
+                        text = stringResource(Res.string.team_mode_exit)
                     )
                 }
             }

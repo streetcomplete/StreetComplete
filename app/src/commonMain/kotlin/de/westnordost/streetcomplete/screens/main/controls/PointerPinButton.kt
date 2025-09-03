@@ -23,16 +23,17 @@ import androidx.compose.ui.graphics.Matrix
 import androidx.compose.ui.graphics.Outline
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.graphics.vector.toPath
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
-import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.location_dot_small
 import de.westnordost.streetcomplete.ui.ktx.proportionalAbsoluteOffset
 import de.westnordost.streetcomplete.ui.ktx.proportionalPadding
 import de.westnordost.streetcomplete.ui.util.svgPath
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.ui.tooling.preview.Preview
 import kotlin.math.PI
 import kotlin.math.cos
 import kotlin.math.sin
@@ -111,6 +112,6 @@ private fun PreviewPointerPinButton() {
         infiniteRepeatable(tween(12000, 0, LinearEasing)),
     )
     PointerPinButton(onClick = {}, rotate = rotation) {
-        Image(painterResource(R.drawable.location_dot_small), null)
+        Image(painterResource(Res.drawable.location_dot_small), null)
     }
 }

@@ -12,7 +12,12 @@ import androidx.compose.ui.res.stringResource
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.AuthorizationException
 import de.westnordost.streetcomplete.data.ConnectionException
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.auth_error
+import de.westnordost.streetcomplete.resources.download_error
+import de.westnordost.streetcomplete.resources.download_server_error
 import de.westnordost.streetcomplete.util.ktx.toast
+import org.jetbrains.compose.resources.stringResource
 
 /** Depending on the type of error, either display or conditionally offer to report the last
  *  occurred error during download */
@@ -43,7 +48,7 @@ fun LastDownloadErrorEffect(
         SendErrorReportDialog(
             onDismissRequest = { showDownloadErrorDialog = false },
             onConfirmed = { onReportError(lastError) },
-            title = stringResource(R.string.download_error)
+            title = stringResource(Res.string.download_error)
         )
     }
 }

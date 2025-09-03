@@ -7,12 +7,14 @@ import androidx.compose.material.Text
 import androidx.compose.material.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.changelog.Changelog
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.ok
+import de.westnordost.streetcomplete.resources.title_whats_new
 import de.westnordost.streetcomplete.screens.about.ChangelogList
 import de.westnordost.streetcomplete.ui.common.dialogs.ScrollableAlertDialog
+import org.jetbrains.compose.resources.stringResource
 
 /** A dialog that shows the changelog */
 @OptIn(ExperimentalLayoutApi::class)
@@ -25,7 +27,7 @@ fun WhatsNewDialog(
     ScrollableAlertDialog(
         onDismissRequest = onDismissRequest,
         modifier = modifier,
-        title = { Text(stringResource(R.string.title_whats_new)) },
+        title = { Text(stringResource(Res.string.title_whats_new)) },
         content = {
             ChangelogList(
                 changelog = changelog,
@@ -35,7 +37,7 @@ fun WhatsNewDialog(
         },
         buttons = {
             TextButton(onClick = onDismissRequest) {
-                Text(stringResource(android.R.string.ok))
+                Text(stringResource(Res.string.ok))
             }
         }
     )

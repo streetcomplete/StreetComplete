@@ -25,20 +25,21 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalDensity
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
-import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.ic_open_in_browser_24
 import de.westnordost.streetcomplete.resources.mail_back
 import de.westnordost.streetcomplete.resources.mail_front
+import de.westnordost.streetcomplete.resources.unread_messages_button
+import de.westnordost.streetcomplete.resources.unread_messages_message
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
+import org.jetbrains.compose.ui.tooling.preview.Preview
 import kotlin.math.abs
 
 /** Dialog that shows a message that the user has X unread messages in his OSM inbox */
@@ -135,7 +136,7 @@ private fun UnreadMessagesContent(
             modifier = Modifier.padding(24.dp)
         ) {
             Text(
-                text = stringResource(R.string.unread_messages_message, unreadMessageCount),
+                text = stringResource(Res.string.unread_messages_message, unreadMessageCount),
                 textAlign = TextAlign.Center,
             )
             Button(onClick = onClickOpenMessages) {
@@ -144,7 +145,7 @@ private fun UnreadMessagesContent(
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Icon(painterResource(Res.drawable.ic_open_in_browser_24), null)
-                    Text(stringResource(R.string.unread_messages_button))
+                    Text(stringResource(Res.string.unread_messages_button))
                 }
             }
         }

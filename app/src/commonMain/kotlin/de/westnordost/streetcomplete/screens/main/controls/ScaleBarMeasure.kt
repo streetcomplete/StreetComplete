@@ -1,15 +1,17 @@
 package de.westnordost.streetcomplete.screens.main.controls
 
-import android.icu.util.LocaleData
-import android.icu.util.ULocale
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.intl.Locale
-import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.feet_symbol
+import de.westnordost.streetcomplete.resources.kilometers_symbol
+import de.westnordost.streetcomplete.resources.meters_symbol
+import de.westnordost.streetcomplete.resources.miles_symbol
+import de.westnordost.streetcomplete.resources.yards_symbol
 import de.westnordost.streetcomplete.screens.main.controls.ScaleBarMeasure.FeetAndMiles
 import de.westnordost.streetcomplete.screens.main.controls.ScaleBarMeasure.Metric
 import de.westnordost.streetcomplete.screens.main.controls.ScaleBarMeasure.YardsAndMiles
+import org.jetbrains.compose.resources.stringResource
 import kotlin.math.pow
 
 /** A measure to show in the scale bar */
@@ -31,9 +33,9 @@ interface ScaleBarMeasure {
         @Composable
         override fun getText(stop: Double): String =
             if (stop >= 1000) {
-                (stop / 1000).formatForDisplay(stringResource(R.string.kilometers_symbol))
+                (stop / 1000).formatForDisplay(stringResource(Res.string.kilometers_symbol))
             } else {
-                stop.formatForDisplay(stringResource(R.string.meters_symbol))
+                stop.formatForDisplay(stringResource(Res.string.meters_symbol))
             }
     }
 
@@ -54,9 +56,9 @@ interface ScaleBarMeasure {
         @Composable
         override fun getText(stop: Double): String =
             if (stop >= FEET_IN_MILE) {
-                (stop / FEET_IN_MILE).formatForDisplay(stringResource(R.string.miles_symbol))
+                (stop / FEET_IN_MILE).formatForDisplay(stringResource(Res.string.miles_symbol))
             } else {
-                stop.formatForDisplay(stringResource(R.string.feet_symbol))
+                stop.formatForDisplay(stringResource(Res.string.feet_symbol))
             }
     }
 
@@ -77,9 +79,9 @@ interface ScaleBarMeasure {
         @Composable
         override fun getText(stop: Double): String =
             if (stop >= YARDS_IN_MILE) {
-                (stop / YARDS_IN_MILE).formatForDisplay(stringResource(R.string.miles_symbol))
+                (stop / YARDS_IN_MILE).formatForDisplay(stringResource(Res.string.miles_symbol))
             } else {
-                stop.formatForDisplay(stringResource(R.string.yards_symbol))
+                stop.formatForDisplay(stringResource(Res.string.yards_symbol))
             }
     }
 }
@@ -94,18 +96,7 @@ private fun buildStops(mantissas: List<Int>, exponents: IntRange) = buildList {
 }
 
 /** use system locale APIs for the primary scale bar measure */
-@Composable
-internal fun systemDefaultPrimaryMeasure(): ScaleBarMeasure? {
-    if (android.os.Build.VERSION.SDK_INT < 28) return null
-    val locales = LocalContext.current.resources.configuration.locales
-    if (locales.isEmpty) return null
-    return when (LocaleData.getMeasurementSystem(ULocale.forLocale(locales[0]))) {
-        LocaleData.MeasurementSystem.SI -> Metric
-        LocaleData.MeasurementSystem.US -> FeetAndMiles
-        LocaleData.MeasurementSystem.UK -> YardsAndMiles
-        else -> null
-    }
-}
+@Composable internal expect fun systemDefaultPrimaryMeasure(): ScaleBarMeasure?
 
 /** if the system APIs don't provide a primary measure, fall back to our hardcoded lists */
 internal fun fallbackDefaultPrimaryMeasure(region: String?): ScaleBarMeasure =
