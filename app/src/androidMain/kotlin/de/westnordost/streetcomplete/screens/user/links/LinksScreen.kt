@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.screens.user.links
 
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.WindowInsetsSides
@@ -24,23 +25,25 @@ import de.westnordost.streetcomplete.ui.ktx.plus
 @Composable
 fun LinksScreen(viewModel: LinksViewModel) {
     val links by viewModel.links.collectAsState()
-    val hasNoLinks by remember { derivedStateOf { links?.isNotEmpty() != true } }
+    val hasLinks by remember { derivedStateOf { links?.isNotEmpty() == true } }
 
-    links?.let {
-        val insets = WindowInsets.safeDrawing.only(
-            WindowInsetsSides.Horizontal + WindowInsetsSides.Bottom
-        ).asPaddingValues()
-        LazyGroupedLinksColumn(
-            allLinks = it,
-            modifier = Modifier.fillMaxSize().consumeWindowInsets(insets),
-            contentPadding = insets + PaddingValues(16.dp)
-        )
-    }
-    if (hasNoLinks) {
-        val isSynchronizingStatistics by viewModel.isSynchronizingStatistics.collectAsState()
-        CenteredLargeTitleHint(stringResource(
-            if (isSynchronizingStatistics) R.string.stats_are_syncing
-            else R.string.links_empty
-        ))
+    Box {
+        links?.let {
+            val insets = WindowInsets.safeDrawing.only(
+                WindowInsetsSides.Horizontal + WindowInsetsSides.Bottom
+            ).asPaddingValues()
+            LazyGroupedLinksColumn(
+                allLinks = it,
+                modifier = Modifier.fillMaxSize().consumeWindowInsets(insets),
+                contentPadding = insets + PaddingValues(16.dp)
+            )
+        }
+        if (!hasLinks) {
+            val isSynchronizingStatistics by viewModel.isSynchronizingStatistics.collectAsState()
+            CenteredLargeTitleHint(stringResource(
+                if (isSynchronizingStatistics) R.string.stats_are_syncing
+                else R.string.links_empty
+            ))
+        }
     }
 }

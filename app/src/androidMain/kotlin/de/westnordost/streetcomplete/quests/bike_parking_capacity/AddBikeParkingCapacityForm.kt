@@ -1,9 +1,9 @@
 package de.westnordost.streetcomplete.quests.bike_parking_capacity
 
-import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AAddCountInput
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.count_bicycle
 
 class AddBikeParkingCapacityForm : AAddCountInput() {
-    override val iconId = R.drawable.ic_bicycle
-    override val initialCount get() = element.tags["capacity"]?.toIntOrNull()
+    override val icon = Res.drawable.count_bicycle
 }

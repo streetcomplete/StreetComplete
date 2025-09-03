@@ -17,12 +17,11 @@ import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.AppBarDefaults
 import androidx.compose.material.IconButton
-import androidx.compose.material.LocalTextStyle
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.ProvideTextStyle
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
@@ -30,6 +29,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.credits.Contributor
@@ -38,7 +38,7 @@ import de.westnordost.streetcomplete.ui.common.BackIcon
 import de.westnordost.streetcomplete.ui.common.BulletSpan
 import de.westnordost.streetcomplete.ui.common.HtmlText
 import de.westnordost.streetcomplete.ui.theme.titleLarge
-import java.util.Locale
+import de.westnordost.streetcomplete.util.ktx.displayName
 
 /** Shows the credits of this app */
 @Composable
@@ -113,7 +113,7 @@ private fun CreditsSections(
             val translatorsByDisplayLanguage = remember(credits.translatorsByLanguage) {
                 credits.translatorsByLanguage
                     .map { (language, translators) ->
-                        val languageName = Locale.forLanguageTag(language).displayName
+                        val languageName = Locale(language).displayName ?: language
                         val sortedTranslators = translators.entries
                             .sortedByDescending { it.value }
                             .map { it.key }
@@ -153,7 +153,7 @@ private fun CreditsSection(
             text = title,
             style = MaterialTheme.typography.titleLarge
         )
-        CompositionLocalProvider(LocalTextStyle provides MaterialTheme.typography.body2) {
+        ProvideTextStyle(MaterialTheme.typography.body2) {
             Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
                 content()
             }

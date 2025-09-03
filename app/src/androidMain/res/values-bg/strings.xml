@@ -361,7 +361,6 @@
     <string name="quest_fee_answer_hours">"Зависи от деня и часа"</string>
     <string name="quest_fee_add_times">"Добавете времена"</string>
     <string name="quest_housenumber_multiple_numbers">"Има няколко номера"</string>
-    <string name="quest_housenumber_multiple_numbers_description">"Можете да зададете няколко номера разделени със запетая или началния и крайния разделени с тире. Например 1,3 или 2–6"</string>
     <string name="quest_bicycle_parking_type_stand">"Висок (заключва се рамката)"</string>
     <string name="quest_bicycle_parking_type_wheelbender">"Ниска скоба (за едното колело)"</string>
     <string name="quest_bicycle_parking_type_shed">"Навес"</string>
@@ -783,9 +782,7 @@
     <string name="quest_bicycle_parking_fee_title">"Плаща ли се паркингът за велосипеди?"</string>
     <string name="quest_buildingType_house_description2">"Еднофамилна къща прилепена за друга"</string>
     <string name="quest_drinking_water_potable_signed">"Добра е за пиене (има табела)"</string>
-    <string name="quest_drinking_water_potable_unsigned">"Добра е за пиене (няма табела)"</string>
     <string name="quest_drinking_water_not_potable_signed">"Не е за пиене (има табела)"</string>
-    <string name="quest_drinking_water_not_potable_unsigned">"Не е за пиене (няма табела)"</string>
     <string name="quest_postboxRoyalCypher_title">"Какъв кралски герб има тази пощенска кутия?"</string>
     <string name="quest_postboxRoyalCypher_type_none">"Не се вижда кралски герб"</string>
     <string name="quest_postboxRoyalCypher_type_scottish_crown">"Шотландска корона"</string>
@@ -902,7 +899,6 @@
     <string name="quest_traffic_calming_type_island">"Остров"</string>
     <string name="quest_traffic_calming_type_chicane">"Допълнителен завой(-и)"</string>
     <string name="quest_traffic_calming_type_rumble_strip">"Шумна маркировка"</string>
-    <string name="quest_surface_value_concrete_plates">"Бетонни плочи"</string>
     <string name="quest_surface_value_concrete_lanes">"Бетонни ленти"</string>
     <string name="quest_fireHydrant_diameter_title">"Какъв диаметър е посочен на знака на пожарния хидрант?"</string>
     <string name="quest_diet_answer_no_food">"Без храна"</string>
@@ -1368,4 +1364,8 @@
     <string name="action_manage_presets_summary">"Под чието име е запазен изборът на мисия по-долу."</string>
     <string name="quest_multiselect_hint">"Изберете всички приложими:"</string>
     <string name="quest_barrier_opening_width_gate">"Каква е ширината на отвора тук?"</string>
+    <string name="about_category_help">"Помощ"</string>
+    <string name="quest_surface_value_rubber">"Гумени гранули"</string>
+    <string name="quest_surface_value_acrylic">"Изкуствена гума"</string>
+    <string name="action_messages">"Показване на съобщенията"</string>
 </resources>

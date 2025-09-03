@@ -3,11 +3,12 @@ package de.westnordost.streetcomplete.quests.smoothness
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 import de.westnordost.streetcomplete.osm.Tags
 
-class AddRoadSmoothness : OsmFilterQuestType<SmoothnessAnswer>() {
+class AddRoadSmoothness : OsmFilterQuestType<SmoothnessAnswer>(), AndroidQuest {
 
     override val elementFilter = """
         ways with (

@@ -8,13 +8,14 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BUILDING
 import de.westnordost.streetcomplete.osm.BUILDINGS_WITH_LEVELS
 import de.westnordost.streetcomplete.osm.Tags
 
 class AddRoofShape(
     private val getCountryInfoByLocation: (location: LatLon) -> CountryInfo,
-) : OsmElementQuestType<RoofShape> {
+) : OsmElementQuestType<RoofShape>, AndroidQuest {
 
     private val filter by lazy { """
         ways, relations with

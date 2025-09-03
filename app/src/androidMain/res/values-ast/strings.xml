@@ -362,8 +362,6 @@ Pero recuerda que siempre puedes descargar aplicaciones de tecláu alternatives 
     <string name="quest_fee_answer_hours">"Según el día y la hora…"</string>
     <string name="quest_fee_add_times">"Añader hores"</string>
     <string name="quest_housenumber_multiple_numbers">"Tien dellos númberos"</string>
-    <string name="quest_housenumber_multiple_numbers_description">"Puedes inxertar los númberos separtaos por comes o rangos.
-Por casu: 1,3 o 2–6."</string>
     <string name="quest_bicycle_parking_type_stand">"Portabicicletes altu (de cuadru)"</string>
     <string name="quest_bicycle_parking_type_wheelbender">"Portabicicletes de rueda"</string>
     <string name="quest_bicycle_parking_type_shed">"Tendeyón"</string>
@@ -792,9 +790,7 @@ Repara en toles opciones disponibles: a veces nun ye tan obvio, como en víes d'
     <string name="quest_bicycle_parking_fee_title">"¿Hai que pagar p'aparcar equí una bici? "</string>
     <string name="quest_buildingType_house_description2">"vivienda unifamiliar non independiente"</string>
     <string name="quest_drinking_water_potable_signed">"Potable (señalizao)"</string>
-    <string name="quest_drinking_water_potable_unsigned">"Potable (non señalizao)"</string>
     <string name="quest_drinking_water_not_potable_signed">"Non potable (señalizao)"</string>
-    <string name="quest_drinking_water_not_potable_unsigned">"Non potable (non señalizao)"</string>
     <string name="quest_postboxRoyalCypher_title">"¿Cuál ye'l monograma real del buzón?"</string>
     <string name="quest_postboxRoyalCypher_type_none">"Nun hay monograma real nengún"</string>
     <string name="quest_postboxRoyalCypher_type_scottish_crown">"La corona d'Escocia"</string>
@@ -911,7 +907,6 @@ Los datos actualícense cada %1$s díes y los datos ensin usar elimínense autom
     <string name="quest_traffic_calming_type_island">"Islla"</string>
     <string name="quest_traffic_calming_type_chicane">"Curves reductores de velocidá."</string>
     <string name="quest_traffic_calming_type_rumble_strip">"Bandes rugoses."</string>
-    <string name="quest_surface_value_concrete_plates">"Lloses de formigón"</string>
     <string name="quest_surface_value_concrete_lanes">"Roderes de formigón pa vehículos"</string>
     <string name="quest_fireHydrant_diameter_title">"¿Qué diámetru de toma ta especificáu nesti hidrante?"</string>
     <string name="quest_diet_answer_no_food">"Nun tien comida."</string>

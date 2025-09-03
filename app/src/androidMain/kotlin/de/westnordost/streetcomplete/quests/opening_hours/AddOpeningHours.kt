@@ -10,6 +10,7 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.isPlaceOrDisusedPlace
@@ -19,7 +20,7 @@ import de.westnordost.streetcomplete.osm.updateWithCheckDate
 
 class AddOpeningHours(
     private val getFeature: (Element) -> Feature?
-) : OsmElementQuestType<OpeningHoursAnswer> {
+) : OsmElementQuestType<OpeningHoursAnswer>, AndroidQuest {
 
     /* See also AddWheelchairAccessBusiness and AddPlaceName, which has a similar list and is/should
        be ordered in the same way for better overview */
@@ -33,7 +34,13 @@ class AddOpeningHours(
               or amenity = parking and parking = multi-storey
               or amenity = recycling and recycling_type = centre
               or amenity = social_facility and social_facility ~ food_bank|clothing_bank|soup_kitchen|dairy_kitchen
+              or amenity = toilets and (fee = yes or toilets:disposal = flush)
+              or amenity = shower and (fee = yes or indoor = yes or location = indoor)
               or tourism = information and information = office
+              or natural = cave_entrance and fee = yes
+              or tower:type = observation and fee = yes
+              or leisure = garden and fee = yes
+              or leisure = park and fee = yes
               or """ +
 
         // The common list is shared by the name quest, the opening hours quest and the wheelchair quest.
@@ -44,7 +51,7 @@ class AddOpeningHours(
             "amenity" to arrayOf(
                 // common
                 "restaurant", "cafe", "ice_cream", "fast_food", "bar", "pub", "biergarten",         // eat & drink
-                "food_court", "nightclub",
+                "food_court", "nightclub", "hookah_lounge",
                 "cinema", "planetarium", "casino",                                                  // amenities
                 "townhall", "courthouse", "embassy", "community_centre", "youth_centre", "library", // civic
                 "driving_school", "music_school", "prep_school", "language_school", "dive_centre",  // learning
@@ -53,7 +60,7 @@ class AddOpeningHours(
                 "bank", "bureau_de_change", "money_transfer", "post_office", "marketplace",         // commercial
                 "internet_cafe", "payment_centre",
                 "car_wash", "car_rental", "fuel",                                                   // car stuff
-                "dentist", "doctors", "clinic", "pharmacy", "veterinary",                           // health
+                "dentist", "doctors", "clinic", "pharmacy", "veterinary", "veterinary_pharmacy",    // health
                 "animal_boarding", "animal_shelter", "animal_breeding",                             // animals
                 "coworking_space",                                                                  // work
 
@@ -72,7 +79,10 @@ class AddOpeningHours(
             "leisure" to arrayOf(
                 // common
                 "fitness_centre", "golf_course", "water_park", "miniature_golf", "bowling_alley",
-                "amusement_arcade", "adult_gaming_centre", "tanning_salon",
+                "amusement_arcade", "adult_gaming_centre", "tanning_salon", "sauna",
+
+                // name & opening hours
+                "trampoline_park",
 
                 // not sports_centre, dance etc because these are often sports clubs which have no
                 // walk-in opening hours but training times
@@ -83,13 +93,15 @@ class AddOpeningHours(
                 "employment_agency", "diplomatic", "coworking", "energy_supplier",
                 "estate_agent", "lawyer", "telecommunication", "educational_institution",
                 "association", "ngo", "it", "accountant", "property_management",
+                "bail_bond_agent", "financial_advisor",
             ),
             "craft" to arrayOf(
                 // common
                 "carpenter", "shoemaker", "tailor", "photographer", "dressmaker",
                 "electronics_repair", "key_cutter", "stonemason", "bookbinder",
                 "jeweller", "sailmaker", "jeweller", "watchmaker", "clockmaker",
-                "locksmith",  "window_construction",
+                "locksmith",  "window_construction", "signmaker", "upholsterer",
+                "electrician", "boatbuilder",
             ),
             "healthcare" to arrayOf(
                 // common
@@ -120,6 +132,12 @@ class AddOpeningHours(
         )
         and opening_hours:signed != no
     """).toElementFilterExpression() }
+    // name filter is there to ensure that place name quest triggers first, so that object is identified if possible
+    // Otherwise, in situation of two shops of the similar type with names A and B following may happen
+    // (1) mapper answers for one object with opening hours for shop A 
+    // (2) this or different mapper may answer that it is named B
+    // what would result in bad opening hours
+    // this filter reduces risk of this happening and also makes this quest less confusing to answer
 
     override val changesetComment = "Survey opening hours"
     override val wikiLink = "Key:opening_hours"

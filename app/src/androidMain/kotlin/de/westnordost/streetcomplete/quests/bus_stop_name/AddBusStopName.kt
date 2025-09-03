@@ -4,11 +4,12 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
+import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.localized_name.applyTo
 
-class AddBusStopName : OsmFilterQuestType<BusStopNameAnswer>() {
+class AddBusStopName : OsmFilterQuestType<BusStopNameAnswer>(), AndroidQuest {
 
     // this filter needs to be kept somewhat in sync with the filter in AddBusStopNameForm
     override val elementFilter = """
@@ -28,13 +29,15 @@ class AddBusStopName : OsmFilterQuestType<BusStopNameAnswer>() {
     override val icon = R.drawable.ic_quest_bus_stop_name
     override val achievements = listOf(PEDESTRIAN)
 
+    override val hint = R.string.quest_stopName_hint
+
     override fun getTitle(tags: Map<String, String>) = R.string.quest_busStopName_title2
 
     override fun createForm() = AddBusStopNameForm()
 
     override fun applyAnswerTo(answer: BusStopNameAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {
-            is NoBusStopName -> {
+            BusStopNameAnswer.NoName -> {
                 tags["name:signed"] = "no"
             }
             is BusStopName -> {

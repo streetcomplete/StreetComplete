@@ -5,6 +5,7 @@ import android.content.Context
 import android.text.format.DateFormat
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.compose.ui.text.intl.Locale
 import androidx.core.view.isInvisible
 import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.R
@@ -23,7 +24,6 @@ import de.westnordost.streetcomplete.osm.opening_hours.parser.toOpeningHours
 import de.westnordost.streetcomplete.quests.opening_hours.MonthsPickerDialog
 import de.westnordost.streetcomplete.quests.opening_hours.TimeRangePickerDialog
 import de.westnordost.streetcomplete.quests.opening_hours.WeekdaysPickerDialog
-import java.util.Locale
 
 class OpeningHoursAdapter(private val context: Context) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -47,7 +47,7 @@ class OpeningHoursAdapter(private val context: Context) :
     /** Set to change which weekdays are pre-checked in the weekday-select dialog */
     var regularShoppingDays: Int = 6
     /** Locale of the weekday names etc. */
-    var locale: Locale = Locale.getDefault()
+    var locale: Locale = Locale.current
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -260,7 +260,7 @@ class OpeningHoursAdapter(private val context: Context) :
                 }
             }
 
-            binding.hoursLabel.text = row.timeRange.toLocalizedString(Locale.getDefault())
+            binding.hoursLabel.text = row.timeRange.toLocalizedString()
             binding.hoursLabel.setOnClickListener {
                 openSetTimeRangeDialog(row.timeRange) { timeRange ->
                     row.timeRange = timeRange

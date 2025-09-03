@@ -22,7 +22,7 @@ class CircularSectionTest {
     @Test fun intersect() {
         val cs = CircularSection(0, 10)
         val tooHigh = CircularSection(11, 12)
-        val tooLow = CircularSection(11, 12)
+        val tooLow = CircularSection(-2, -1)
         val touchesUpperEnd = CircularSection(10, 10)
         val touchesLowerEnd = CircularSection(-1, 0)
         val contains = CircularSection(-10, 20)

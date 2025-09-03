@@ -3,12 +3,13 @@ package de.westnordost.streetcomplete.quests.sanitary_dump_station
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.quests.YesNoQuestForm
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
-class AddSanitaryDumpStation : OsmFilterQuestType<Boolean>() {
+class AddSanitaryDumpStation : OsmFilterQuestType<Boolean>(), AndroidQuest {
 
     override val elementFilter = """
         nodes, ways with

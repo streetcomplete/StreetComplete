@@ -27,6 +27,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
 import de.westnordost.streetcomplete.data.preferences.Preferences
+import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.visiblequests.HideQuestController
@@ -136,30 +137,32 @@ class SettingsActivity : BaseActivity(), AbstractOsmQuestForm.Listener {
         val (element, geometry) = createMockElementWithGeometry(questType)
         val quest = OsmQuest(questType, element.type, element.id, geometry)
 
-        val f = questType.createForm()
+        val f = (questType as? AndroidQuest)?.createForm() ?: return
         if (f.arguments == null) f.arguments = bundleOf()
         f.requireArguments().putAll(
             AbstractQuestForm.createArguments(quest.key, quest.type, geometry, 30.0, 0.0)
         )
-        f.requireArguments().putAll(AbstractOsmQuestForm.createArguments(element))
-        f.hideQuestController = object : HideQuestController {
-            override fun hide(key: QuestKey) {}
-        }
-        f.addElementEditsController = object : AddElementEditsController {
-            override fun add(
-                type: ElementEditType,
-                geometry: ElementGeometry,
-                source: String,
-                action: ElementEditAction,
-                isNearUserLocation: Boolean
-            ) {
-                when (action) {
-                    is DeletePoiNodeAction -> {
-                        message("Deleted node")
-                    }
-                    is UpdateElementTagsAction -> {
-                        val tagging = action.changes.changes.joinToString("\n")
-                        message("Tagging\n$tagging")
+        if (f is AbstractOsmQuestForm<*>) {
+            f.requireArguments().putAll(AbstractOsmQuestForm.createArguments(element))
+            f.hideQuestController = object : HideQuestController {
+                override fun hide(key: QuestKey) {}
+            }
+            f.addElementEditsController = object : AddElementEditsController {
+                override fun add(
+                    type: ElementEditType,
+                    geometry: ElementGeometry,
+                    source: String,
+                    action: ElementEditAction,
+                    isNearUserLocation: Boolean
+                ) {
+                    when (action) {
+                        is DeletePoiNodeAction -> {
+                            message("Deleted node")
+                        }
+                        is UpdateElementTagsAction -> {
+                            val tagging = action.changes.changes.joinToString("\n")
+                            message("Tagging\n$tagging")
+                        }
                     }
                 }
             }

@@ -5,16 +5,16 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
+import de.westnordost.streetcomplete.data.overlays.AndroidOverlay
+import de.westnordost.streetcomplete.data.overlays.Overlay
+import de.westnordost.streetcomplete.data.overlays.OverlayColor
+import de.westnordost.streetcomplete.data.overlays.OverlayStyle
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement
 import de.westnordost.streetcomplete.osm.asIfItWasnt
 import de.westnordost.streetcomplete.osm.isThingOrDisusedThing
-import de.westnordost.streetcomplete.overlays.Color
-import de.westnordost.streetcomplete.overlays.Overlay
-import de.westnordost.streetcomplete.overlays.PointStyle
-import de.westnordost.streetcomplete.overlays.PolygonStyle
 import de.westnordost.streetcomplete.view.presetIconIndex
 
-class ThingsOverlay(private val getFeature: (Element) -> Feature?) : Overlay {
+class ThingsOverlay(private val getFeature: (Element) -> Feature?) : Overlay, AndroidOverlay {
 
     override val title = R.string.overlay_things
     override val icon = R.drawable.ic_quest_dot
@@ -37,9 +37,9 @@ class ThingsOverlay(private val getFeature: (Element) -> Feature?) : Overlay {
                 val icon = feature.icon?.let { presetIconIndex[it] } ?: R.drawable.preset_maki_marker_stroked
 
                 val style = if (element is Node) {
-                    PointStyle(icon)
+                    OverlayStyle.Point(icon)
                 } else {
-                    PolygonStyle(Color.INVISIBLE, icon)
+                    OverlayStyle.Polygon(OverlayColor.Invisible, icon)
                 }
                 element to style
             }

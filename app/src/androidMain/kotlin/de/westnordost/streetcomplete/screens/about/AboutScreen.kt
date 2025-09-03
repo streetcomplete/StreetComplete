@@ -24,6 +24,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.integerResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.tooling.preview.Preview
 import de.westnordost.streetcomplete.BuildConfig
 import de.westnordost.streetcomplete.R
@@ -34,7 +35,7 @@ import de.westnordost.streetcomplete.ui.common.NextScreenIcon
 import de.westnordost.streetcomplete.ui.common.OpenInBrowserIcon
 import de.westnordost.streetcomplete.ui.common.settings.Preference
 import de.westnordost.streetcomplete.ui.common.settings.PreferenceCategory
-import java.util.Locale
+import de.westnordost.streetcomplete.util.ktx.displayLanguage
 
 @Composable
 fun AboutScreen(
@@ -128,7 +129,7 @@ fun AboutScreen(
                     onClick = { uriHandler.openUri("https://poeditor.com/join/project/IE4GC127Ki") },
                     description = stringResource(
                         R.string.about_description_translate,
-                        Locale.getDefault().displayLanguage,
+                        Locale.current.displayLanguage ?: Locale.current.language,
                         integerResource(R.integer.translation_completeness)
                     )
                 ) { OpenInBrowserIcon() }
@@ -157,7 +158,7 @@ fun AboutScreen(
     }
 
     if (showDonateDialog) {
-        if (BuildConfig.IS_GOOGLE_PLAY) {
+        if (BuildConfig.IS_FROM_MONOPOLISTIC_APP_STORE) {
             DonationsGooglePlayDialog { showDonateDialog = false }
         } else {
             DonationsDialog(

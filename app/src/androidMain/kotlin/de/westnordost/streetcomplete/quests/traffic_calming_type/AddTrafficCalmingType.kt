@@ -3,11 +3,12 @@ package de.westnordost.streetcomplete.quests.traffic_calming_type
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.osm.Tags
 
-class AddTrafficCalmingType : OsmFilterQuestType<TrafficCalmingType>() {
+class AddTrafficCalmingType : OsmFilterQuestType<TrafficCalmingType>(), AndroidQuest {
 
     override val elementFilter = "nodes with traffic_calming = yes"
     override val changesetComment = "Specify traffic calming types"

@@ -1,12 +1,5 @@
 <resources>
 
-    <style name="MapProgressBar.Horizontal" parent="Widget.AppCompat.ProgressBar.Horizontal">
-        <item name="android:progressDrawable">@drawable/map_progress</item>
-        <item name="android:indeterminateDrawable">@drawable/map_progress</item>
-        <item name="android:minHeight">6dip</item>
-        <item name="android:maxHeight">6dip</item>
-    </style>
-
     <!-- +++++++++++++++++++++++++++++++++++ Dialogs +++++++++++++++++++++++++++++++++++++++++++ -->
 
     <style name="DialogWindowTitle.Bubble" parent="android:Widget">
@@ -40,10 +33,6 @@
         <item name="android:letterSpacing">-0.01</item>
     </style>
 
-    <style name="Dialog.OutlinedButton.WithNightModeSupport" parent="Widget.MaterialComponents.Button.OutlinedButton">
-        <item name="android:textColor">@color/text_based_on_main_colors</item>
-    </style>
-
 
     <!-- +++++++++++++++++++++++++++++ Opening hours input +++++++++++++++++++++++++++++++++++++ -->
 
@@ -64,33 +53,6 @@
         <item name="android:paddingEnd">8dp</item>
         <item name="android:paddingTop">6dp</item>
         <item name="android:paddingBottom">6dp</item>
-    </style>
-
-    <!-- ++++++++++++++++++++++++++++++ Address edit texts +++++++++++++++++++++++++++++++++++++ -->
-
-    <style name="HouseNumberEditText">
-        <item name="android:textColor">#fff</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:textColorHint">#2fff</item>
-        <item name="android:textSize">@dimen/x_large_input</item>
-        <item name="android:inputType">number</item>
-        <item name="android:gravity">center</item>
-        <item name="android:maxLines">1</item>
-        <item name="android:padding">8dp</item>
-        <item name="android:minHeight">80dp</item>
-        <item name="android:background">@drawable/background_housenumber_sign</item>
-    </style>
-
-    <style name="BlockNumberEditText" parent="HouseNumberEditText">
-        <item name="android:textSize">@dimen/large_input</item>
-        <item name="android:minHeight">60dp</item>
-        <item name="android:background">@null</item>
-    </style>
-
-    <style name="HouseNameEditText" parent="HouseNumberEditText">
-        <item name="android:textSize">@dimen/large_input</item>
-        <item name="android:padding">8dp</item>
-        <item name="android:minHeight">48dp</item>
     </style>
 
     <!-- ++++++++++++++++++++++++++++++++ FAB-like buttons +++++++++++++++++++++++++++++++++++++ -->

@@ -24,8 +24,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.ApplicationConstants.DELETE_OLD_DATA_AFTER
 import de.westnordost.streetcomplete.ApplicationConstants.REFRESH_DATA_AFTER
@@ -34,6 +34,8 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.preferences.Autosync
 import de.westnordost.streetcomplete.data.preferences.ResurveyIntervals
 import de.westnordost.streetcomplete.data.preferences.Theme
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.ic_file_upload_48
 import de.westnordost.streetcomplete.ui.common.BackIcon
 import de.westnordost.streetcomplete.ui.common.NextScreenIcon
 import de.westnordost.streetcomplete.ui.common.dialogs.ConfirmationDialog
@@ -41,8 +43,9 @@ import de.westnordost.streetcomplete.ui.common.dialogs.InfoDialog
 import de.westnordost.streetcomplete.ui.common.dialogs.SimpleListPickerDialog
 import de.westnordost.streetcomplete.ui.common.settings.Preference
 import de.westnordost.streetcomplete.ui.common.settings.PreferenceCategory
-import de.westnordost.streetcomplete.util.ktx.format
-import java.util.Locale
+import de.westnordost.streetcomplete.util.ktx.getDisplayName
+import de.westnordost.streetcomplete.util.locale.NumberFormatter
+import org.jetbrains.compose.resources.painterResource
 
 /** Shows the settings lists */
 @Composable
@@ -221,11 +224,11 @@ fun SettingsScreen(
             onDismissRequest = { showDeleteCacheConfirmation = false },
             onConfirmed = { viewModel.deleteCache() },
             text = {
-                val locale = Locale.getDefault()
+                val numberFormatter = NumberFormatter(Locale.current, maxFractionDigits = 1)
                 Text(stringResource(
                     R.string.delete_cache_dialog_message,
-                    (1.0 * REFRESH_DATA_AFTER / (24 * 60 * 60 * 1000)).format(locale, 1),
-                    (1.0 * DELETE_OLD_DATA_AFTER / (24 * 60 * 60 * 1000)).format(locale, 1)
+                    numberFormatter.format(1.0 * REFRESH_DATA_AFTER / (24 * 60 * 60 * 1000)),
+                    numberFormatter.format(1.0 * DELETE_OLD_DATA_AFTER / (24 * 60 * 60 * 1000))
                 ))
             },
             confirmButtonText = stringResource(R.string.delete_confirmation)
@@ -244,7 +247,7 @@ fun SettingsScreen(
             onDismissRequest = { showUploadTutorialInfo = false },
             text = {
                 Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                    Icon(painterResource(R.drawable.ic_file_upload_48dp), null)
+                    Icon(painterResource(Res.drawable.ic_file_upload_48), null)
                     Text(stringResource(R.string.dialog_tutorial_upload))
                 }
             },
@@ -323,6 +326,6 @@ private val Theme.titleResId: Int get() = when (this) {
 
 private fun getLanguageDisplayName(languageTag: String): String? {
     if (languageTag.isEmpty()) return null
-    val locale = Locale.forLanguageTag(languageTag)
-    return locale.getDisplayName(locale)
+    val locale = Locale(languageTag)
+    return locale.getDisplayName(locale) ?: languageTag
 }

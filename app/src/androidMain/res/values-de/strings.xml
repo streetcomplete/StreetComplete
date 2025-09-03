@@ -363,7 +363,6 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="quest_fee_answer_hours">"Abhängig von Tag und Uhrzeit …"</string>
     <string name="quest_fee_add_times">"Zeiten hinzufügen"</string>
     <string name="quest_housenumber_multiple_numbers">"Hat mehrere Hausnummern"</string>
-    <string name="quest_housenumber_multiple_numbers_description">"Du kannst Hausnummern einfach kommasepariert oder als Spanne angeben.\nZum Beispiel 1,3 oder 2-6."</string>
     <string name="quest_bicycle_parking_type_stand">"Bügel (hält den Fahrradrahmen)"</string>
     <string name="quest_bicycle_parking_type_wheelbender">"Felgenkiller (hält nur das Vorderrad)"</string>
     <string name="quest_bicycle_parking_type_shed">"Schuppen"</string>
@@ -390,7 +389,7 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="quest_buildingType_answer_construction_site">"Wird noch errichtet"</string>
     <string name="quest_buildingType_residential">"Wohngebäude"</string>
     <string name="quest_buildingType_residential_description">"Gebäude, in dem Leute wohnen"</string>
-    <string name="quest_buildingType_house">"Haus"</string>
+    <string name="quest_buildingType_house">"Wohnhaus"</string>
     <string name="quest_buildingType_apartments_description">"Haus für mehrere Familien, im Erdgeschoss befinden sich gelegentlich Läden"</string>
     <string name="quest_buildingType_apartments">"Mehrfamilienhaus"</string>
     <string name="quest_buildingType_detached">"Frei stehendes Haus"</string>
@@ -466,7 +465,7 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="dialog_tutorial_upload">"Um deine Änderungen manuell hochzuladen, nutze den Knopf im Menü, der so aussieht."</string>
     <string name="quest_segregated_separated">"Getrennt voneinander"</string>
     <string name="quest_segregated_mixed">"Der Weg wird gemeinsam genutzt"</string>
-    <string name="quest_maxheight_title">"Was ist die Durchfahrtshöhe hier?"</string>
+    <string name="quest_maxheight_title">"Welche Durchfahrtshöhe misst man hier?"</string>
     <string name="quest_maxheight_answer_noSign">"Es gibt kein Schild …"</string>
     <string name="quest_maxheight_unusualInput_confirmation_description">"Diese Höhe sieht ungewöhnlich aus. Bist du sicher, dass sie korrekt ist?"</string>
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
@@ -632,7 +631,7 @@ Denke auch daran, dich nicht in Gefahr zu begeben: Achte auf deine Umgebung und 
     <string name="link_openorienteeringmap_description">"Ausdruckbare Karten für Orientierungsläufe"</string>
     <string name="link_openstreetbrowser_description">"OpenStreetMap-Kartenmerkmale erkunden"</string>
     <string name="link_weeklyosm_description">"Blog mit wöchentlichen Neuigkeiten über alles aus der Welt von OpenStreetMap"</string>
-    <string name="link_figuregrounder_description">"Figur-Grund-Diagrammposter einer Stadt oder Umgebung erstellen"</string>
+    <string name="link_figuregrounder_description">"Schwarzplan einer Stadt oder Umgebung erstellen"</string>
     <string name="achievement_first_edit_title">"Erste Aufgabe gelöst"</string>
     <string name="achievement_first_edit_description">"Willkommen in der OpenStreetMap-Community! Im Profilbereich kannst du mehr zu deinen gelösten Aufgaben sehen."</string>
     <string name="achievement_surveyor_title">"Landvermesser"</string>
@@ -760,7 +759,7 @@ Erfolge"</string>
     <string name="quest_lanes_answer_noLanes">"Keine markierten Fahrstreifen"</string>
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">"Hat eine gemeinsame Linksabbiegerspur für beide Richtungen"</string>
     <string name="quest_address_answer_no_housenumber_message2b">"Ist das korrekt?"</string>
-    <string name="quest_maxheight_below_bridge_title">"Was ist die Durchfahrtshöhe unter dieser Brücke?"</string>
+    <string name="quest_maxheight_below_bridge_title">"Welche Durchfahrtshöhe misst man unter dieser Brücke?"</string>
     <string name="quest_maxheight_split_way_hint">"Diese Frage wird auch für Straßen gestellt, die unter Brücken, Dächern usw. verlaufen.
 Wenn die Maximalhöhe nicht für die gesamte Strecke gilt, kannst du auch mit „%s“ antworten."</string>
     <string name="quest_tactile_paving_kerb_title">"Hat dieser Bordstein eine taktile Pflasterung für Blinde?"</string>
@@ -800,9 +799,7 @@ Beachte alle Auswahlmöglichkeiten: manche Kombinationen sind nicht offensichtli
     <string name="quest_bicycle_parking_fee_title">"Fallen hier Parkgebühren für Fahrräder an?"</string>
     <string name="quest_buildingType_house_description2">"nicht freistehendes Einfamilienhaus, z. B. einzelnes Reihenhaus"</string>
     <string name="quest_drinking_water_potable_signed">"Trinkwasser (beschildert)"</string>
-    <string name="quest_drinking_water_potable_unsigned">"Trinkwasser (nicht beschildert)"</string>
     <string name="quest_drinking_water_not_potable_signed">"kein Trinkwasser (beschildert)"</string>
-    <string name="quest_drinking_water_not_potable_unsigned">"kein Trinkwasser (nicht beschildert)"</string>
     <string name="quest_postboxRoyalCypher_title">"Welches königliche Monogramm ist auf diesem Postkasten zu sehen?"</string>
     <string name="quest_postboxRoyalCypher_type_none">"Kein Monogramm sichtbar"</string>
     <string name="quest_postboxRoyalCypher_type_scottish_crown">"Die Krone von Schottland"</string>
@@ -921,7 +918,6 @@ Falls du von der Flut der Aufgaben überwältigt bist, kannst du in den Einstell
     <string name="quest_traffic_calming_type_island">"Verkehrsinsel"</string>
     <string name="quest_traffic_calming_type_chicane">"Absichtliche Kurve(n)"</string>
     <string name="quest_traffic_calming_type_rumble_strip">"Rüttelstreifen"</string>
-    <string name="quest_surface_value_concrete_plates">"Betonplatten"</string>
     <string name="quest_surface_value_concrete_lanes">"Fahrspuren aus Beton"</string>
     <string name="quest_fireHydrant_diameter_title">"Welcher Durchmesser steht auf dem Schild für diesen Hydranten?"</string>
     <string name="quest_diet_answer_no_food">"Hier gibt es nichts zu essen"</string>
@@ -1353,7 +1349,7 @@ Einige Overlays ermöglichen außerdem das Hinzufügen neuer Daten an der Positi
     <string name="quest_leafType_tree_title">"Hat dieser Baum Nadeln oder Blätter?"</string>
     <string name="quest_bbq_fuel_gas">"Gas"</string>
     <string name="about_description_donate_google_play3">"Danke, dass du erwägst, diese App zu unterstützen!
-Du kannst Informationen zu Spenden auf unserer Website oder Projektseite finden. Google Play erlaubt uns nicht, sie direkt aus der App heraus zu verlinken."</string>
+Du kannst Informationen zu Spenden auf unserer Website oder Projektseite finden. Die App-Store-Regeln erlauben uns nicht, sie direkt aus der App heraus zu verlinken."</string>
     <string name="quest_isAmenityIndoor_outside_covered">"Nicht drinnen, aber überdacht"</string>
     <string name="lit_value_unsupported">"Spezifischer Beleuchtungsstatus, der in dieser App nicht wählbar ist"</string>
     <string name="quest_generic_otherAnswers2">"Äh …"</string>
@@ -1438,7 +1434,7 @@ Eine Ebene zählt als Dachebene, wenn sich die Fenster im Dach befinden. Dächer
     <string name="quest_dietType_glutenfree_name_title">"Gibt es hier glutenfreie Produkte?"</string>
     <string name="quest_dietType_explanation_glutenfree">"Die Zubereitung von glutenfreien Produkten erfordert Sachkenntnis, da gängige Gewürze und Soßen Gluten enthalten können. Glutenfreie Lebensmittel sollten ausdrücklich gekennzeichnet sein."</string>
     <string name="quest_construction_minor_title">"Sind die kleineren Straßenbauarbeiten hier abgeschlossen?"</string>
-    <string name="map_attribution">"Namensnennung der Karte"</string>
+    <string name="map_attribution">"Kartenattribution"</string>
     <string name="link_panoramax_description">"Eine kostenlose und quelloffene Software und ein gemeinnütziger Dienst für das Teilen von Straßenfotos per Crowdsourcing"</string>
     <string name="link_opengeofiction_description">"Keine Lust mehr, die Realität zu kartieren? Erstellt gemeinsam fiktive Karten!"</string>
     <string name="link_openclimbing_description">"Eine Karte mit Kletterorten"</string>

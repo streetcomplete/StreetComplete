@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.address
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
@@ -13,6 +14,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
+import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.POSTMAN
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.address.applyTo
@@ -21,13 +23,14 @@ import de.westnordost.streetcomplete.util.math.LatLonRaster
 import de.westnordost.streetcomplete.util.math.isCompletelyInside
 import de.westnordost.streetcomplete.util.math.isInMultipolygon
 
-class AddHousenumber : OsmElementQuestType<HouseNumberAnswer> {
+class AddHousenumber(
+    private val getCountryInfoByLocation: (location: LatLon) -> CountryInfo,
+) : OsmElementQuestType<HouseNumberAnswer>, AndroidQuest {
 
     override val changesetComment = "Survey housenumbers"
     override val wikiLink = "Key:addr"
     override val icon = R.drawable.ic_quest_housenumber
     override val achievements = listOf(POSTMAN)
-    // See overview here: https://ent8r.github.io/blacklistr/?streetcomplete=address/AddHousenumber.kt
     override val enabledInCountries = AllCountriesExcept(
         "LU", // https://github.com/streetcomplete/StreetComplete/pull/1943
         "LV", // https://github.com/streetcomplete/StreetComplete/issues/4597
@@ -146,17 +149,18 @@ class AddHousenumber : OsmElementQuestType<HouseNumberAnswer> {
 
     override fun applyAnswerTo(answer: HouseNumberAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {
-            is AddressNumberOrName -> {
-                if (answer.number == null && answer.name == null) {
+            is AddressNumberAndName -> {
+                if (answer.number?.isEmpty() != false && answer.name.isNullOrEmpty()) {
                     tags["nohousenumber"] = "yes"
                 } else {
-                    answer.number?.applyTo(tags)
-                    if (answer.name != null) {
+                    val countryCode = getCountryInfoByLocation(geometry.center).countryCode
+                    answer.number?.applyTo(tags, countryCode)
+                    if (!answer.name.isNullOrEmpty()) {
                         tags["addr:housename"] = answer.name
                     }
                 }
             }
-            WrongBuildingType -> {
+            HouseNumberAnswer.WrongBuildingType -> {
                 tags["building"] = "yes"
             }
         }
@@ -196,6 +200,7 @@ private val buildingsWithMissingAddressFilter by lazy { """
       and !addr:streetnumber
       and !noaddress
       and !nohousenumber
+      and addr:housenumber:signed != no
 """.toElementFilterExpression() }
 
 private val buildingTypesThatShouldHaveAddresses = listOf(

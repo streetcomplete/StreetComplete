@@ -7,13 +7,14 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
+import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BLIND
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.isCrossingWithTrafficSignals
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
-class AddTrafficSignalsVibration : OsmElementQuestType<Boolean> {
+class AddTrafficSignalsVibration : OsmElementQuestType<Boolean>, AndroidQuest {
 
     private val crossingFilter by lazy { """
         nodes with
@@ -40,7 +41,8 @@ class AddTrafficSignalsVibration : OsmElementQuestType<Boolean> {
     override val enabledInCountries = AllCountriesExcept(
         "BG", // see https://github.com/streetcomplete/StreetComplete/issues/5846
         "FI", // see https://github.com/streetcomplete/StreetComplete/issues/5791
-        "RU" // see https://github.com/streetcomplete/StreetComplete/issues/4021
+        "RU", // see https://github.com/streetcomplete/StreetComplete/issues/4021
+        "CZ"
     )
 
     override val hint = R.string.quest_traffic_signals_vibrate_description

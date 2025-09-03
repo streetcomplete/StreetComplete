@@ -7,6 +7,7 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.isPlaceOrDisusedPlace
@@ -14,7 +15,7 @@ import de.westnordost.streetcomplete.osm.localized_name.applyTo
 
 class AddPlaceName(
     private val getFeature: (Element) -> Feature?
-) : OsmElementQuestType<PlaceNameAnswer> {
+) : OsmElementQuestType<PlaceNameAnswer>, AndroidQuest {
 
     private val filter by lazy { ("""
         nodes, ways with
@@ -23,7 +24,9 @@ class AddPlaceName(
           or office and office !~ no|vacant
           or craft
           or amenity = recycling and recycling_type = centre
+          or amenity = shelter and shelter_type = basic_hut
           or tourism = information and information = office
+          or natural = cave_entrance and fee=yes
           or """ +
 
         // The common list is shared by the opening hours quest and the wheelchair quest.
@@ -35,7 +38,7 @@ class AddPlaceName(
             "amenity" to arrayOf(
                 // common
                 "restaurant", "cafe", "ice_cream", "fast_food", "bar", "pub", "biergarten",         // eat & drink
-                "food_court", "nightclub",
+                "food_court", "nightclub", "hookah_lounge",
                 "cinema", "planetarium", "casino",                                                  // amenities
                 "townhall", "courthouse", "embassy", "community_centre", "youth_centre", "library", // civic
                 "driving_school", "music_school", "prep_school", "language_school", "dive_centre",  // learning
@@ -44,7 +47,7 @@ class AddPlaceName(
                 "bank", "bureau_de_change", "money_transfer", "post_office", "marketplace",         // commercial
                 "internet_cafe", "payment_centre",
                 "car_wash", "car_rental", "fuel",                                                   // car stuff
-                "dentist", "doctors", "clinic", "pharmacy", "veterinary",                           // health
+                "dentist", "doctors", "clinic", "pharmacy", "veterinary", "veterinary_pharmacy",    // health
                 "animal_boarding", "animal_shelter", "animal_breeding",                             // animals
                 "coworking_space",                                                                  // work
 
@@ -67,6 +70,7 @@ class AddPlaceName(
                 "social_facility", "nursing_home", "childcare", "retirement_home", "social_centre", // social
                 "monastery",                                                             // religious
                 "kindergarten", "school", "college", "university", "research_institute", // education
+                "dojo",                                                                  // sport
             ),
             "tourism" to arrayOf(
                 // common
@@ -74,20 +78,27 @@ class AddPlaceName(
 
                 // name & wheelchair
                 "attraction",
-                "hotel", "guest_house", "motel", "hostel", "alpine_hut", "apartment", "resort", "camp_site", "caravan_site", "chalet" // accommodations
+                "hotel", "guest_house", "motel", "hostel", "alpine_hut", "apartment", "resort", "camp_site", "caravan_site", "chalet", // accommodations
+
+                // name only
+                "wilderness_hut"
 
                 // and tourism = information, see above
             ),
             "leisure" to arrayOf(
                 // common
                 "fitness_centre", "golf_course", "water_park", "miniature_golf", "bowling_alley",
-                "amusement_arcade", "adult_gaming_centre", "tanning_salon",
+                "amusement_arcade", "adult_gaming_centre", "tanning_salon", "sauna",
 
                 // name & wheelchair
                 "sports_centre", "stadium",
 
+                // name & opening hours
+                "trampoline_park",
+
                 // name only
-                "dance", "nature_reserve", "marina", "horse_riding",
+                "dance", "nature_reserve", "marina", "horse_riding", "trampoline_park",
+                "bathing_place", "escape_game",
             ),
             "landuse" to arrayOf(
                 "cemetery", "allotments"
@@ -132,7 +143,7 @@ class AddPlaceName(
 
     override fun applyAnswerTo(answer: PlaceNameAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {
-            is NoPlaceNameSign -> {
+            is PlaceNameAnswer.NoNameSign -> {
                 tags["name:signed"] = "no"
             }
             is PlaceName -> {

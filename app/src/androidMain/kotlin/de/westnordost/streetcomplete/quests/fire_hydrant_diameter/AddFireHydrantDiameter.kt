@@ -6,11 +6,12 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.LIFESAVER
 import de.westnordost.streetcomplete.osm.Tags
 
-class AddFireHydrantDiameter : OsmFilterQuestType<FireHydrantDiameterAnswer>() {
+class AddFireHydrantDiameter : OsmFilterQuestType<FireHydrantDiameterAnswer>(), AndroidQuest {
 
     override val elementFilter = """
         nodes with
@@ -36,7 +37,8 @@ class AddFireHydrantDiameter : OsmFilterQuestType<FireHydrantDiameterAnswer>() {
         "HU",
         "PL",
         "FI",
-        "NL"
+        "NL",
+        "UA",
     )
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_fireHydrant_diameter_title
@@ -48,8 +50,12 @@ class AddFireHydrantDiameter : OsmFilterQuestType<FireHydrantDiameterAnswer>() {
 
     override fun applyAnswerTo(answer: FireHydrantDiameterAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {
-            is FireHydrantDiameter ->       tags["fire_hydrant:diameter"] = answer.toOsmValue()
-            is NoFireHydrantDiameterSign -> tags["fire_hydrant:diameter:signed"] = "no"
+            is FireHydrantDiameter -> {
+                tags["fire_hydrant:diameter"] = answer.toOsmValue()
+            }
+            is FireHydrantDiameterAnswer.NoSign -> {
+                tags["fire_hydrant:diameter:signed"] = "no"
+            }
         }
     }
 }

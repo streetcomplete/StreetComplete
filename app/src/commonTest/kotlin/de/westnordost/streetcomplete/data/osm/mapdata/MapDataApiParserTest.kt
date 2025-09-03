@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.data.osm.mapdata
 
+import de.westnordost.streetcomplete.ApplicationConstants
 import kotlinx.io.Buffer
 import kotlinx.io.writeString
 import kotlin.test.Test
@@ -11,7 +12,7 @@ class MapDataApiParserTest {
     @Test fun `parseMapData minimum`() {
         val buffer = Buffer()
         buffer.writeString("<osm></osm>")
-        val empty = MapDataApiParser().parseMapData(buffer, emptySet())
+        val empty = MapDataApiParser().parseMapData(buffer)
         assertEquals(0, empty.size)
         assertNull(empty.boundingBox)
     }
@@ -27,11 +28,29 @@ class MapDataApiParserTest {
             </osm>
         """)
 
-        val data = MapDataApiParser().parseMapData(buffer, emptySet())
+        val data = MapDataApiParser().parseMapData(buffer)
         assertEquals(nodesList.toSet(), data.nodes.toSet())
         assertEquals(waysList.toSet(), data.ways.toSet())
         assertEquals(relationsList.toSet(), data.relations.toSet())
         assertEquals(BoundingBox(53.0, 9.0, 53.01, 9.01), data.boundingBox)
+    }
+
+    // #6466
+    @Test fun `parseMapData with XML character references`() {
+        val buffer = Buffer()
+        buffer.writeString("""
+            <osm>
+            <node id="123" version="1" changeset="1" timestamp="2019-03-15T01:52:25Z" lat="53" lon="9">
+            <tag k="inscription" v="BRETT S. HALL&#10;July 4, 1962" />
+            </node>
+            </osm>
+        """)
+        val data = MapDataApiParser().parseMapData(buffer)
+        val node = data.nodes.single()
+        assertEquals(
+            "BRETT S. HALL\nJuly 4, 1962",
+            node.tags["inscription"]
+        )
     }
 
     @Test fun `parseMapData with ignored relation types`() {
@@ -44,7 +63,7 @@ class MapDataApiParserTest {
             </osm>
         """)
 
-        val empty = MapDataApiParser().parseMapData(buffer, setOf("route"))
+        val empty = MapDataApiParser().parseMapData(buffer, ApplicationConstants::ignoreRelation)
         assertEquals(0, empty.size)
     }
 

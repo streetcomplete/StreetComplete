@@ -1,12 +1,44 @@
 # Changelog
 
+## v61.3
+
+### Quest improvements
+- Ask some quests (fee, opening hours, name, indoor, step count…) for more places and things (#5316, #5318, #5319, #6402, #6429, #6430, #6432 …), thanks @matkoniecz, @paulklie
+- Potable water: Don't force user to answer whether a water source without any sign is potable or not (#6421)
+- Other small refinements (#6410, #6418, #6408, #6422 …), thanks @mnalis, @burrscurr
+
+### Fixes
+- Don't show achievements the user hasn't unlock yet (#6435)
+- Show text about no unlocked links/achievements yet correctly
+- Max height: Fix text was white on white in dark mode (#6409)
+- Opening hours: Fix times were not displayed correctly around the hour clocks are put forward/backward (DST) (#6188)
+- Surface smoothness: Fix crash when encountering concrete plates (#6424) 
+- Bike parking capacity: Don't show previous value on re-survey (#6443)
+- Places overlay: Don't auto-replace a feature if the new one is a subtype of the previous one or the other way round but ask user (#6406)
+
+## v61.2
+
+### Quest improvements
+- Ask many quests (Fee, lit, name, internet access, opening hours, wheelchair access, …) for many more shops and amenities (#6345, #6349, #6353, #6357, #6358, #6359, #6365, #6368, #6374, #6382, #6383, #6386, #6396, #6397), by @paulklie, a few more by @matkoniecz
+- Max physical height: Clarify wording, don't ask for highways (#6367, #6362, #6363), by @kmpoppe
+- Motorcycle parking capacity: Don't ask if there are no markings at all (#6299), by @matkoniecz
+- Bike paths: Ask users to resurvey periodically also on living streets (#6369)
+- Fire hydrant diameter: Also ask in Ukraine (#6395)
+- Entrance type: Don't ask for entrances that (potentially) don't lead outside on street-level (#6392)
+- Traffic signals vibration: Don't ask in Czech Republic (#6224), by @matkoniecz
+
+### Fixes
+- Charging station car capacity: Don't ask for charging stations designated for bicycles etc. (#6388), by @paulklie
+- Fix a number of issues that may potentially cause bugs (#6307, #6311, #6315, #6317, #6321, #6332, #6322), by @RubenKelevra
+- Ferry routes: Only ask for actual ferry lines, not just connections (#6387, #6375), by @paulklie
+
 ## v61.1
 
 ### Fixes
 - Fix map attribution was shown in front of Next-button in tutorial 😬 (#6255)
 - Fix opening the app at certain location would open it always at that location (#6264)
 - Wheelchair accessible toilets: Fix "no" answer shouldn't imply that there are toilets at all (#6257)
-- Places overlay: Fix some brand features were not selectable (#6272)
+- Places overlay: Fix some brand features were not selectable (#6267)
 - Building levels: Fix keyboard popped up automatically (#6284)
 
 ### Improvements 

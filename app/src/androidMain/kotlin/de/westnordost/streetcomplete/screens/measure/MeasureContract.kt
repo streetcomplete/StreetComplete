@@ -6,7 +6,7 @@ import android.content.Context
 import android.content.Intent
 import androidx.activity.result.contract.ActivityResultContract
 import androidx.core.os.bundleOf
-import de.westnordost.streetcomplete.ApplicationConstants.STREETMEASURE
+import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.meta.LengthUnit
 import de.westnordost.streetcomplete.osm.Length
 
@@ -18,7 +18,7 @@ class MeasureContract : ActivityResultContract<MeasureContract.Params, Length?>(
             LengthUnit.METER -> "meter"
             LengthUnit.FOOT_AND_INCH -> "foot_and_inch"
         }
-        val intent = context.packageManager.getLaunchIntentForPackage(STREETMEASURE)
+        val intent = context.packageManager.getLaunchIntentForPackage(ApplicationConstants.STREETMEASURE)
             ?: throw ActivityNotFoundException()
         intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
         val attributes = context.obtainStyledAttributes(intArrayOf(android.R.attr.colorAccent))

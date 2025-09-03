@@ -6,10 +6,11 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BUILDING
 import de.westnordost.streetcomplete.osm.Tags
 
-class AddPowerPolesMaterial : OsmFilterQuestType<PowerPolesMaterialAnswer>() {
+class AddPowerPolesMaterial : OsmFilterQuestType<PowerPolesMaterialAnswer>(), AndroidQuest {
 
     override val elementFilter = """
         nodes with

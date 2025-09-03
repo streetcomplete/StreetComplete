@@ -6,18 +6,22 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.quests.YesNoQuestForm
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
-class AddCampShower : OsmFilterQuestType<Boolean>() {
+class AddCampShower : OsmFilterQuestType<Boolean>(), AndroidQuest {
 
     /* We only resurvey shower = yes and shower = no, as it might have more detailed
      * values from other editors, and we don't want to damage them */
     override val elementFilter = """
         nodes, ways with
-          tourism ~ camp_site|alpine_hut|wilderness_hut and (
+          (
+            tourism ~ camp_site|alpine_hut|wilderness_hut
+            or leisure = bathing_place
+          ) and (
             !shower
             or shower older today -4 years and shower ~ yes|no
           )

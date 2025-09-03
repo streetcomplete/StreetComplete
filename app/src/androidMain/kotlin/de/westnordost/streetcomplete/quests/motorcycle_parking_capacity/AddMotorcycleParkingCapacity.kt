@@ -6,16 +6,18 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 
-class AddMotorcycleParkingCapacity : OsmFilterQuestType<Int>() {
+class AddMotorcycleParkingCapacity : OsmFilterQuestType<Int>(), AndroidQuest {
 
     override val elementFilter = """
         nodes, ways with amenity = motorcycle_parking
          and access !~ private|no
          and (!capacity or capacity older today -4 years)
+         and markings != no
     """
     override val changesetComment = "Specify motorcycle parking capacities"
     override val wikiLink = "Tag:amenity=motorcycle_parking"

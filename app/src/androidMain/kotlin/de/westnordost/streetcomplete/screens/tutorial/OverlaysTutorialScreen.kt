@@ -37,11 +37,15 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.PreviewScreenSizes
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.ic_overlay_24
+import de.westnordost.streetcomplete.resources.logo_osm_map
 import de.westnordost.streetcomplete.screens.main.controls.MapButton
 import de.westnordost.streetcomplete.screens.user.achievements.AnimatedTadaShine
 import de.westnordost.streetcomplete.ui.theme.headlineLarge
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import org.jetbrains.compose.resources.painterResource
 
 @Composable
 fun OverlaysTutorialScreen(
@@ -146,7 +150,7 @@ private fun BoxScope.OverlaysTutorialIllustration(
                 }
         ) {
             Image(
-                painter = painterResource(R.drawable.logo_osm_map),
+                painter = painterResource(Res.drawable.logo_osm_map),
                 contentDescription = null,
                 modifier = Modifier.fillMaxSize()
             )
@@ -227,7 +231,7 @@ private fun BoxScope.OverlaysTutorialIllustration(
             AnimatedTadaShine()
             MapButton(onClick = {}) {
                 Icon(
-                    painter = painterResource(R.drawable.ic_overlay_black_24dp),
+                    painter = painterResource(Res.drawable.ic_overlay_24),
                     contentDescription = null,
                 )
             }

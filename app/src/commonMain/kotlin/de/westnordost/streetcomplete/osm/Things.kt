@@ -215,7 +215,7 @@ private val IS_THING_EXPRESSION by lazy {
             // "survey_point" - this can be very very small -> verifiability issue
             //                  danger that mapper deletes it because he can't find it
             // "telephone_box" - it just describes the structure, but not its use
-            // "utility_pole" - usually a vertex
+            "utility_pole", // usually a vertex, but not necessarily
             "video_wall", // basically an advertising=*
             "water_tap",
             "water_well",
@@ -228,6 +228,9 @@ private val IS_THING_EXPRESSION by lazy {
             "stone", // theoretically it can be detached from the rest of the landscape
             "tree",
             "tree_stump",
+        ),
+        "power" to listOf(
+            "pole",
         ),
         "tourism" to listOf(
             "artwork",
@@ -245,6 +248,7 @@ private val IS_THING_EXPRESSION by lazy {
         or amenity = recycling and recycling_type = container
         or attraction
         or boundary = marker
+        or fitness_station
         or leisure = pitch and sport ~ chess|table_soccer|table_tennis|teqball
         or playground
         or public_transport = platform and (

@@ -15,19 +15,21 @@ import androidx.compose.material.Icon
 import androidx.compose.material.LocalContentAlpha
 import androidx.compose.material.LocalTextStyle
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.ProvideTextStyle
 import androidx.compose.material.Switch
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.Hyphens
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.ic_chevron_next_24
 import de.westnordost.streetcomplete.ui.theme.titleSmall
+import org.jetbrains.compose.resources.painterResource
 
 @Composable
 fun PreferenceCategory(
@@ -35,17 +37,17 @@ fun PreferenceCategory(
     modifier: Modifier = Modifier,
     content: @Composable ColumnScope.() -> Unit
 ) {
-    Column {
+    Column(modifier) {
         Divider()
         if (title != null) {
             Text(
                 text = title,
-                modifier = modifier.padding(top = 12.dp, start = 16.dp, end = 8.dp, bottom = 8.dp),
+                modifier = Modifier.padding(top = 12.dp, start = 16.dp, end = 8.dp, bottom = 8.dp),
                 color = MaterialTheme.colors.secondary,
                 style = MaterialTheme.typography.titleSmall
             )
         }
-        CompositionLocalProvider(LocalTextStyle provides MaterialTheme.typography.body1) {
+        ProvideTextStyle(MaterialTheme.typography.body1) {
             Column {
                 content()
             }
@@ -73,7 +75,7 @@ fun Preference(
         )
     ) {
         Row(
-            modifier = modifier.fillMaxWidth(),
+            modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
         ) {
@@ -133,7 +135,7 @@ private fun PreferencePreview() {
             onClick = {},
             description = "A long description which may actually be several lines long, so it should wrap."
         ) {
-            Icon(painterResource(R.drawable.ic_chevron_next_24dp), null)
+            Icon(painterResource(Res.drawable.ic_chevron_next_24), null)
         }
 
         Preference(

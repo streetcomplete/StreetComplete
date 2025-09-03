@@ -3,17 +3,24 @@ package de.westnordost.streetcomplete.quests.step_count
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.osm.Tags
 
-class AddStepCount : OsmFilterQuestType<Int>() {
+class AddStepCount : OsmFilterQuestType<Int>(), AndroidQuest {
 
     override val elementFilter = """
-        ways with highway = steps
-         and (!indoor or indoor = no)
-         and access !~ private|no
-         and (!conveying or conveying = no)
-         and !step_count
+        nodes, ways with
+        (
+          (
+            highway = steps
+            and (!indoor or indoor = no)
+            and (!conveying or conveying = no)
+          )
+          or tower:type = observation
+        )
+        and access !~ private|no
+        and !step_count
     """
     override val changesetComment = "Specify step counts"
     override val wikiLink = "Key:step_count"

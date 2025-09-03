@@ -2321,6 +2321,9 @@
         "historic/memorial": {
           "name": "Muistomerkki"
         },
+        "historic/memorial/blue_plaque-GB-IE": {
+          "name": "Sininen muistolaatta"
+        },
         "historic/memorial/plaque": {
           "name": "Muistolaatta"
         },

@@ -363,8 +363,6 @@
     <string name="quest_fee_answer_hours">"Залежыць ад часу і дня"</string>
     <string name="quest_fee_add_times">"Дадаць гадзіны"</string>
     <string name="quest_housenumber_multiple_numbers">"Каля будынка некалькі нумароў"</string>
-    <string name="quest_housenumber_multiple_numbers_description">"Увядзіце дыяпазон або некалькі значэнняў, падзеленых коскай.
-Напрыклад: 1,3 ці 2-6."</string>
     <string name="quest_bicycle_parking_type_stand">"Стойка (для рам ровараў)"</string>
     <string name="quest_bicycle_parking_type_wheelbender">"Трымальнік (толькі для колаў)"</string>
     <string name="quest_bicycle_parking_type_shed">"Абгароджаны навес"</string>
@@ -799,9 +797,7 @@
     <string name="quest_bicycle_parking_fee_title">"Гэта платная стаянка для ровара?"</string>
     <string name="quest_buildingType_house_description2">"Прыватны дом"</string>
     <string name="quest_drinking_water_potable_signed">"Пітная вада (ёсць знак)"</string>
-    <string name="quest_drinking_water_potable_unsigned">"Пiтная вада (няма знака)"</string>
     <string name="quest_drinking_water_not_potable_signed">"Ня пітная вада (ёсць знак)"</string>
-    <string name="quest_drinking_water_not_potable_unsigned">"Ня пітная вада (няма знака)"</string>
     <string name="quest_postboxRoyalCypher_title">"Які Каралеўскі шыфр на гэтай паштовай скрыні?"</string>
     <string name="quest_postboxRoyalCypher_type_none">"Каралеўскага шыфра не відаць"</string>
     <string name="quest_postboxRoyalCypher_type_scottish_crown">"Карона Шатландыі"</string>
@@ -919,7 +915,6 @@
     <string name="quest_traffic_calming_type_island">"Астравок бяспекі"</string>
     <string name="quest_traffic_calming_type_chicane">"Наўмысная(-ыя) крывая(-ыя)"</string>
     <string name="quest_traffic_calming_type_rumble_strip">"Паласа (паласы) вібрацыі"</string>
-    <string name="quest_surface_value_concrete_plates">"Бетонныя пліты"</string>
     <string name="quest_surface_value_concrete_lanes">"Бетонныя палосы"</string>
     <string name="quest_fireHydrant_diameter_title">"Які дыяметр паказаны на таблічцы гэтага пажарнага гідранта?"</string>
     <string name="quest_diet_answer_no_food">"У яго няма ежы"</string>
@@ -1411,6 +1406,7 @@
     <string name="quest_boat_rental_title">"Якія лодкі тут здаюць напракат?"</string>
     <string name="quest_boat_rental_motorboat">"Маторка"</string>
     <string name="quest_boat_rental_kayak">"Каяк"</string>
+    <string name="quest_boat_rental_canoe">"Каноэ"</string>
     <string name="quest_powerAttachment_title">"Як трымаецца гэтая лінія электраперадачы?"</string>
     <string name="quest_powerAttachment_suspension">"Ізалятары зверху"</string>
     <string name="quest_powerAttachment_anchor">"Фіксуецца гарызантальна"</string>

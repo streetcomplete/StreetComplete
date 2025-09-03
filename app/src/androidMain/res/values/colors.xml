@@ -10,7 +10,6 @@
 
     <color name="text">#000</color>
     <color name="text_based_on_main_colors">@color/primary</color>
-    <color name="monochrome_icon">#333</color>
     <color name="inverted_background">#666</color>
 
     <color name="selection">#66ff6600</color>
@@ -53,9 +52,4 @@
     <color name="smoothness_vehicle_tyre">#292f33</color>
 
     <color name="pressed">#ddd</color>
-
-
-    <!-- for fading out images -->
-    <color name="fade_out">#fff</color>
-    <color name="fade_out_transparent">#00FFFFFF</color>
 </resources>

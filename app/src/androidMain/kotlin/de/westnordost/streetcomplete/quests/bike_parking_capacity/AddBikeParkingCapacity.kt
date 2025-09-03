@@ -6,11 +6,12 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 
-class AddBikeParkingCapacity : OsmFilterQuestType<Int>() {
+class AddBikeParkingCapacity : OsmFilterQuestType<Int>(), AndroidQuest {
 
     override val elementFilter = """
         nodes, ways with
@@ -21,7 +22,7 @@ class AddBikeParkingCapacity : OsmFilterQuestType<Int>() {
            !capacity
            or (
              bicycle_parking ~ stands|wall_loops|safe_loops|handlebar_holder
-             and capacity older today -4 years
+             and capacity older today -8 years
            )
          )
     """

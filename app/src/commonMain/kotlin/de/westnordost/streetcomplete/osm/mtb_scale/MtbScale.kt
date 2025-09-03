@@ -5,11 +5,14 @@ import de.westnordost.streetcomplete.osm.mtb_scale.MtbScale.*
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 
 data class MtbScale(
-    /* TODO no multiplatform annotation? @IntRange(from = 0, to = 6)*/
     val value: Int,
-    val modifier: Modifier? = null
+    val modifier: Mod? = null
 ) {
-    enum class Modifier(val value: Char?) {
+    init {
+        require(value in 0..6) { "Mtb scale value must be between 0 and 6." }
+    }
+
+    enum class Mod(val value: Char?) {
         PLUS('+'),
         MINUS('-'),
         NONE(null)
@@ -24,7 +27,7 @@ fun parseMtbScale(tags: Map<String, String>): MtbScale? {
     if (value < 0 || value > 6) return null
 
     val modifierValue = scale.getOrNull(1)
-    val modifier = Modifier.entries.find { it.value == modifierValue } ?: return null
+    val modifier = Mod.entries.find { it.value == modifierValue } ?: return null
 
     return MtbScale(value, modifier)
 }

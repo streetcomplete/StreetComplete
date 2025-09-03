@@ -5,6 +5,7 @@ import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import androidx.annotation.LayoutRes
+import androidx.compose.ui.text.intl.Locale
 import androidx.core.view.isGone
 import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.R
@@ -12,7 +13,6 @@ import de.westnordost.streetcomplete.osm.opening_hours.model.OpeningHoursRow
 import de.westnordost.streetcomplete.quests.opening_hours.adapter.OpeningHoursAdapter
 import de.westnordost.streetcomplete.view.AdapterDataChangedWatcher
 import de.westnordost.streetcomplete.view.OnAdapterItemSelectedListener
-import java.util.Locale
 
 /** Manages inputting a time restriction, either inclusive or exclusive, based on opening hours.
  *

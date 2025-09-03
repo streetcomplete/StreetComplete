@@ -40,14 +40,19 @@ import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.unit.coerceAtMost
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.ic_open_in_browser_24
+import de.westnordost.streetcomplete.resources.ic_star_48
 import de.westnordost.streetcomplete.ui.ktx.toDp
 import de.westnordost.streetcomplete.ui.theme.headlineLarge
 import de.westnordost.streetcomplete.ui.theme.titleLarge
-import java.util.Locale
+import de.westnordost.streetcomplete.util.ktx.displayRegion
+import org.jetbrains.compose.resources.painterResource
 
 /** Shows the user profile: username, avatar, star count and a hint regarding unpublished changes */
 @OptIn(ExperimentalLayoutApi::class)
@@ -121,7 +126,7 @@ fun ProfileScreen(viewModel: ProfileViewModel) {
             Button(onClick = {
                 uriHandler.openUri("https://www.openstreetmap.org/user/" + viewModel.userName.value)
             }) {
-                Icon(painterResource(R.drawable.ic_open_in_browser_24dp), null)
+                Icon(painterResource(Res.drawable.ic_open_in_browser_24), null)
                 Spacer(Modifier.width(8.dp))
                 Text(stringResource(R.string.osm_profile).uppercase())
             }
@@ -268,7 +273,7 @@ private fun StarCount(count: Int) {
         verticalAlignment = Alignment.CenterVertically
     ) {
         Icon(
-            painter = painterResource(R.drawable.ic_star_48dp),
+            painter = painterResource(Res.drawable.ic_star_48),
             contentDescription = null,
             modifier = Modifier.size(32.sp.toDp()) // icon should scale with the text
         )
@@ -281,7 +286,11 @@ private fun StarCount(count: Int) {
 
 @Composable @ReadOnlyComposable
 private fun getLocalRankText(countryCode: String): String =
-    stringResource(R.string.user_profile_local_rank, Locale("", countryCode).displayCountry)
+    stringResource(R.string.user_profile_local_rank, getCountryName(countryCode))
+
+private fun getCountryName(countryCode: String): String =
+    // we don't use the language, but we need it for correct construction of the languageTag
+    Locale("en-$countryCode").displayRegion ?: countryCode
 
 private fun getAvatarPainter(filename: String?): Painter? =
     filename?.let { BitmapFactory.decodeFile(it) }?.asImageBitmap()?.let { BitmapPainter(it) }

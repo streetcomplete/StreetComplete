@@ -192,7 +192,7 @@ Ha az utcában az egész kijelölt szakaszon nincs jelzőtábla, akkor az alapé
     <string name="quest_sport_gaelic_games">"Kelta játékok"</string>
     <string name="quest_sport_sepak_takraw">"Sepak takraw (maláj csapatjáték)"</string>
     <string name="quest_wheelchairAccess_limited">"Részben"</string>
-    <string name="quest_bikeParkingCapacity_hint">"Vedd figyelembe, hogy a legtöbb támasz mindkét oldalán tárolható egy-egy kerékpár."</string>
+    <string name="quest_bikeParkingCapacity_hint">"Vedd figyelembe, hogy általában egy-egy kerékpár az állvány mindkét oldalán parkolhat, és meg kell becsülnöd, hogy hány fér el."</string>
     <string name="quest_sport_roller_skating">"Görkorcsolya"</string>
     <string name="quest_wheelchairAccess_limited_description_business">"A „részben” azt jelenti, hogy a bejáratnál egy, legfeljebb bokáig érő (7 cm) lépcsőfok van, és a legtöbb helyiség használható kerekesszékkel."</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">"A „részben” azt jelenti, hogy egy, legfeljebb bokáig érő (7 cm) lépcsőfokon kell átjutni."</string>
@@ -363,7 +363,6 @@ A „részben” azt jelenti, hogy kerekesszékkel ugyan be lehet menni és lehe
     <string name="quest_fee_answer_hours">"Naptól és napszaktól függ…"</string>
     <string name="quest_fee_add_times">"Időpontok hozzáadása"</string>
     <string name="quest_housenumber_multiple_numbers">"Több házszáma van"</string>
-    <string name="quest_housenumber_multiple_numbers_description">"A házszámokat megadhatod vesszővel elválasztva vagy tartományként is.\nPéldául 1,3 vagy 2–6."</string>
     <string name="quest_bicycle_parking_type_stand">"U-, P- vagy hasonló támasz (a vázat rögzíti)"</string>
     <string name="quest_bicycle_parking_type_wheelbender">"Kerékgörbítő (csak a kereket rögzíti)"</string>
     <string name="quest_bicycle_parking_type_shed">"Zárt tároló"</string>
@@ -463,10 +462,10 @@ A „részben” azt jelenti, hogy kerekesszékkel ugyan be lehet menni és lehe
     <string name="quest_buildingType_toilets">"WC"</string>
     <string name="quest_maxspeed_sign_question">"Mi határozza meg a sebességkorlátozást?"</string>
     <string name="quest_segregated_title">"Hogyan van kialakítva itt a gyalog- és a kerékpárút?"</string>
-    <string name="dialog_tutorial_upload">"Módosításaid kézi feltöltéséhez használd az eszköztáron lévő gombot, amely így néz ki."</string>
+    <string name="dialog_tutorial_upload">"Módosításaid kézi feltöltéséhez használd a főmenüben található gombot, amely így néz ki."</string>
     <string name="quest_segregated_separated">"El vannak választva egymástól"</string>
     <string name="quest_segregated_mixed">"A kerékpárosok és a gyalogosok ugyanazt az utat használják"</string>
-    <string name="quest_maxheight_title">"Mekkora itt a magasságkorlátozás?"</string>
+    <string name="quest_maxheight_title">"Mekkora a mért maximális magasság?"</string>
     <string name="quest_maxheight_answer_noSign">"Nincs jelzőtábla…"</string>
     <string name="quest_maxheight_unusualInput_confirmation_description">"Ez a magasság valószínűtlen. Biztosan helyes?"</string>
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
@@ -478,7 +477,7 @@ A „részben” azt jelenti, hogy kerekesszékkel ugyan be lehet menni és lehe
     <string name="quest_buildingType_retail_description">"többek között éttermek, kávéházak stb. épületei"</string>
     <string name="quest_openingHours_timeSelect_next">"Következő"</string>
     <string name="quest_tracktype_title">"Mennyire szilárd a mezőgazdasági út a felülete?"</string>
-    <string name="quest_tracktype_grade1">"Burkolt"</string>
+    <string name="quest_tracktype_grade1">"Szilárd"</string>
     <string name="quest_tracktype_grade4">"Viszonylag puha"</string>
     <string name="quest_tracktype_grade5">"Puha"</string>
     <string name="quest_building_underground_title">"Teljesen a föld alatt van ez az épület?"</string>
@@ -631,7 +630,7 @@ Végezetül, légy óvatos: figyelj a környezetedre, és ne lépj magánterüle
     <string name="link_openorienteeringmap_description">"Nyomtatható tájfutótérképet tud készíteni"</string>
     <string name="link_openstreetbrowser_description">"Térkép, amelyen az OpenStreetMap térképadatok kategóriák szerint böngészhetők"</string>
     <string name="link_weeklyosm_description">"Heti hír blog arról, hogy mi történik éppen az OpenStreetMap világában"</string>
-    <string name="link_figuregrounder_description">"Egy város vagy környék beépítettségét megjelenítő térkép alkotása poszterekhez"</string>
+    <string name="link_figuregrounder_description">"Egy város vagy környék beépítettségét megjelenítő plakátjainak elkészítése"</string>
     <string name="achievement_first_edit_title">"Első megoldott kérdés"</string>
     <string name="achievement_first_edit_description">"Köszöntünk az OpenStreetMap közösségében! A profil menüben további információt találsz minden kérdéstípushoz, amit megoldottál."</string>
     <string name="achievement_surveyor_title">"Felmérő"</string>
@@ -759,7 +758,7 @@ szintje"</string>
     <string name="quest_lanes_answer_noLanes">"Nincsenek felfestve sávok"</string>
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">"Kétirányú balra kanyarodó sávval rendelkezik (USA és Kanada)"</string>
     <string name="quest_address_answer_no_housenumber_message2b">"Ez helyes?"</string>
-    <string name="quest_maxheight_below_bridge_title">"Mekkora a magasságkorlátozás a híd alatt?"</string>
+    <string name="quest_maxheight_below_bridge_title">"Mekkora a mért maximális magasság a híd alatt?"</string>
     <string name="quest_maxheight_split_way_hint">"Ezt a kérdést a hidak, tetők, csővezetékek stb. alatt futó utaknál is feltesszük.
 Ha nem a kiemeléssel látható egész útra érvényes, akkor inkább válaszold ezt: „%s”."</string>
     <string name="quest_tactile_paving_kerb_title">"Van vakvezető burkolat ezen a járdaszegélyen?"</string>
@@ -799,9 +798,7 @@ Vedd figyelembe az összes lehetséges választ: néhány esetben nem egyértelm
     <string name="quest_bicycle_parking_fee_title">"Fizetős ez a kerékpárparkoló?"</string>
     <string name="quest_buildingType_house_description2">"nem magában álló családi ház, pl. sorház része"</string>
     <string name="quest_drinking_water_potable_signed">"Biztonságosan iható (jelzett)"</string>
-    <string name="quest_drinking_water_potable_unsigned">"Biztonságosan iható (jelzetlen)"</string>
     <string name="quest_drinking_water_not_potable_signed">"Nem iható biztonságosan (jelzett)"</string>
-    <string name="quest_drinking_water_not_potable_unsigned">"Nem iható biztonságosan (jelzetlen)"</string>
     <string name="quest_postboxRoyalCypher_title">"Milyen királyi monogram található ezen a postaládán?"</string>
     <string name="quest_postboxRoyalCypher_type_none">"Nem látható rajta királyi monogram"</string>
     <string name="quest_postboxRoyalCypher_type_scottish_crown">"Skócia koronája"</string>
@@ -893,7 +890,9 @@ Az adatok %1$s nap után frissülnek, a nem használt adatok pedig %2$s nap utá
     <string name="quest_bollard_type_foldable2">"Összecsukható (kulccsal vagy anélkül)"</string>
     <string name="no_search_results">"Nincs találat"</string>
     <string name="quest_selection_hint_title">"Túl sok a tennivaló?"</string>
-    <string name="quest_selection_hint_message">"A közreműködésnek elsősorban szórakoztatónak kell lennie! Ha a kérdések nagy száma megterhelő, akkor a beállításokban finomhangolhatod, hogy mely kérdések és milyen sorrendben jelenjenek meg."</string>
+    <string name="quest_selection_hint_message">"A közreműködésnek elsősorban szórakoztatónak kell lennie!
+
+Ha a küldetések számát túl soknak találod, a beállításokban bármikor finomhangolhatod, hogy mely küldetések és milyen sorrendben jelenjenek meg neked."</string>
     <string name="quest_presets_preset_add">"Tárolt beállítás hozzáadása"</string>
     <string name="quest_presets_preset_name">"Tárolt beállítás neve"</string>
     <string name="quest_presets_default_name">"Alapértelmezett"</string>
@@ -918,7 +917,6 @@ Az adatok %1$s nap után frissülnek, a nem használt adatok pedig %2$s nap utá
     <string name="quest_traffic_calming_type_island">"Sziget"</string>
     <string name="quest_traffic_calming_type_chicane">"Sávelhúzás (sikán)"</string>
     <string name="quest_traffic_calming_type_rumble_strip">"Rázó bordázat"</string>
-    <string name="quest_surface_value_concrete_plates">"Betonlapok"</string>
     <string name="quest_surface_value_concrete_lanes">"Betonsávok"</string>
     <string name="quest_fireHydrant_diameter_title">"Milyen átmérő van megadva a tűzcsap tábláján?"</string>
     <string name="quest_diet_answer_no_food">"Nincs étel"</string>
@@ -1156,7 +1154,7 @@ Tedd meg a másiknál is, ha van olyan."</string>
     <string name="quest_entrance_reference_flat_range_label">"Lakásszámok:"</string>
     <string name="quest_entrance_reference_flat_range_to">"eddig:"</string>
     <string name="default_disabled_msg_overlay">"Ez a kérdéstípus alapértelmezés szerint ki van kapcsolva, mivel van olyan rátét, amellyel hatékonyabb ilyen adatok bevitele és frissítése."</string>
-    <string name="quest_camp_drinking_water_title">"Az ivóvíz szabadon hozzáférhető a táborozók számára?"</string>
+    <string name="quest_camp_drinking_water_title">"A vendégek számára szabadon hozzáférhető az ivóvíz?"</string>
     <string name="quest_camp_shower_title">"Vannak itt zuhanyzók?"</string>
     <string name="quest_camp_power_supply_title">"Vannak a vendégek számára használható konnektorok?"</string>
     <string name="quest_camp_type_title">"Kik táborozhatnak itt?"</string>
@@ -1326,7 +1324,7 @@ Ezenkívül egyes rétegek, például a cím réteg, új adatok hozzáadását i
     <string name="link_mapcomplete_description">"Tematikus OSM-térképek gyűjteménye, amelyek egy-egy funkciót jelenítenek meg és biztosítják ezek szerkesztését"</string>
     <string name="link_forum_description">"Segítségre van szükséged? Szeretnél olvasni arról, mi zajlik? Gyere, és vegyülj el, itt nyüzsögnek a közösségek a világ minden tájáról!"</string>
     <string name="link_calendar_description">"Vannak OpenStreetMap-események vagy közösségi találkozók a közeledben? (Ha nincsenek, hozzáadhatod a sajátodat!)"</string>
-    <string name="link_prettymapp_description">"Készíts szép, többszínű fali térképeket városrészekről"</string>
+    <string name="link_prettymapp_description">"Készíts szép, többszínű fali térképeket a környékről"</string>
     <string name="quest_disable_action">"Letiltás"</string>
     <string name="quest_disable_title">"Letiltod ezt a kérdéstípust?"</string>
     <string name="quest_disable_message_not_installed">"A StreetMeasure nincs telepítve (még)."</string>
@@ -1350,7 +1348,7 @@ Ezenkívül egyes rétegek, például a cím réteg, új adatok hozzáadását i
     <string name="quest_leafType_tree_title">"Ez a fa tűlevelű vagy lombos?"</string>
     <string name="quest_bbq_fuel_gas">"Gáz"</string>
     <string name="about_description_donate_google_play3">"Köszönjük, hogy az alkalmazás támogatására készülsz!
-Támogatással kapcsolatos információkat a honlapunkon vagy a projekt kezdőoldalán talász, a Google Play nem engedi, hogy a hivatkozásokat az alkalmazásban megadjuk."</string>
+Támogatással kapcsolatos információkat a honlapunkon vagy a projekt kezdőoldalán talász, az alkalmazásbolt irányelvei nem engedik, hogy a hivatkozásokat az alkalmazásban megadjuk."</string>
     <string name="quest_isAmenityIndoor_outside_covered">"Nem beltéri, de fedett"</string>
     <string name="lit_value_unsupported">"Olyan kivilágítási mód, amelyet nem kínál fel ez az alkalmazás"</string>
     <string name="quest_generic_otherAnswers2">"Hmm…"</string>
@@ -1359,7 +1357,7 @@ Támogatással kapcsolatos információkat a honlapunkon vagy a projekt kezdőol
     <string name="quest_moped_access_allowed">"Nincs tábla"</string>
     <string name="quest_moped_access_designated">"Tábla engedélyezi a segédmotoros kerékpárok közlekedését ezen a kerékpárúton"</string>
     <string name="quest_moped_access_forbidden">"Tábla tiltja a segédmotoros kerékpárok közlekedését ezen a kerékpárúton"</string>
-    <string name="default_disabled_msg_visible_sign_moped">"Ez a kérdéstípus alapértelmezése szerint le van tiltva, mivel a segédmotoros kerékpárok behajtását csak a kerékpárút elején és végén jelölik táblával."</string>
+    <string name="default_disabled_msg_visible_sign_moped">"Ez a küldetéstípus alapértelmezés szerint le van tiltva, mivel a segédmotoros kerékpárok behajtását csak a kerékpárút elején és végén jelölik táblával."</string>
     <string name="quest_arrow_tutorial">"Az ábrán látható nyilak a térképen lévő út irányát mutatják a jelölő pozíciójában. Próbáld meg elforgatni a térképet, és meg fogod érteni."</string>
     <string name="info">"További információ"</string>
     <string name="quest_accessible_for_pedestrians_prohibited">"Tiltott."</string>
@@ -1433,7 +1431,7 @@ Egy szint akkor számít tetőszintnek, ha az ablakai a tetőben vannak. A nulla
     <string name="pedestrian_zone_no_sign">"Nincs kifejezett jelzés kerékpározásról"</string>
     <string name="team_mode_description_overlay_hint">"Ha rátéteket használtok, mindegyikőtöknek másikat kell használnia, mivel csak a küldetések vannak felosztva."</string>
     <string name="quest_dietType_glutenfree_name_title">"Kínálnak itt gluténmentes termékeket?"</string>
-    <string name="quest_dietType_explanation_glutenfree">"A gluténmentes termékek elkészítése tudást igényel, mivel a szokásos fűszerek és szószok glutént tartalmazhatnak. A gluténmentes ételeket kifejezetten így kell jelölni."</string>
+    <string name="quest_dietType_explanation_glutenfree">"A gluténmentes termékek elkészítése ismereteket, tudást igényel, mivel a szokásos fűszerek és szószok glutént tartalmazhatnak. A gluténmentes ételeket kifejezetten így kell jelölni."</string>
     <string name="quest_construction_minor_title">"Befejeződött az itteni kisebb útépítés?"</string>
     <string name="map_attribution">"Térkép-attribúció"</string>
     <string name="link_panoramax_description">"Ingyenes és nyílt forráskódú szoftver és nonprofit szolgáltatás közösségi készítésű utcaszintű képek megosztásához"</string>
@@ -1442,16 +1440,26 @@ Egy szint akkor számít tetőszintnek, ha az ablakai a tetőben vannak. A nulla
     <string name="pref_title_zoom_buttons">"Térképnagyító gombok megjelenítése"</string>
     <string name="overlay_mtb_scale">"MTB-nehézség"</string>
     <string name="overlay_mtb_scale_0">"0 fokozat"</string>
+    <string name="overlay_mtb_scale_0_description">"Szilárd, keményre tömörített vagy természetes felület; nincsenek akadályok; enyhe lejtők és emelkedők; széles kanyarok."</string>
     <string name="overlay_mtb_scale_1">"1 fokozat"</string>
+    <string name="overlay_mtb_scale_1_description">"Részben laza terep, apró gyökerekkel, kövekkel, erózióval vagy vízmosásokkal; ≤ 40 % lejtő; gördíthető akadályok; alapvető lovaglási technika szükséges."</string>
     <string name="overlay_mtb_scale_2">"2 fokozat"</string>
+    <string name="overlay_mtb_scale_2_description">"Laza terep nagyobb gyökerekkel és sziklákkal, kis lépcsők/lapos ugratók, akár 70%-os emelkedő és lejtő; könnyű hajtűkanyarok; fejlett fékezés és súlyáthelyezés szükséges."</string>
     <string name="overlay_mtb_scale_3">"3 fokozat"</string>
+    <string name="overlay_mtb_scale_3_description">"Csúszós, laza terep törmelékkel, kövekkel, nagy gyökerekkel és sziklákkal, magas lépcsőkkel és trükkös átkelésekkel; szűk hajtűkanyarok, nagyobb mint 70 %-os emelkedő és lejtő; nagyon jó egyensúlyt és pontos fékezést igényel."</string>
     <string name="overlay_mtb_scale_4">"4 fokozat"</string>
+    <string name="overlay_mtb_scale_4_description">"Kihívást jelentő technikai akadályok: nagy sziklák, gyökerek, törmelék, meredek rámpák; lendületváltások, lapos ugratók; tökéletes egyensúly, pontos fékezés és súlypontáthelyezés szükséges."</string>
     <string name="overlay_mtb_scale_5">"5 fokozat"</string>
+    <string name="overlay_mtb_scale_5_description">"Ultra-meredek, tömbös terep sziklamezőkkel, földcsuszamlásokkal, akadályokkal tarkított lendületváltásokkal, egymás utáni magas ugratókkal és kidőlt fákkal. A kerékpárhordozás az akadályok körül lehetetlen; elkerülhetetlen a lovaglás. Mesteri tudás szükséges."</string>
     <string name="overlay_mtb_scale_6">"6 fokozat"</string>
+    <string name="overlay_mtb_scale_6_description">"Veszélyes és járhatatlan terep, hegyi kerékpározásra nem alkalmas."</string>
     <string name="default_disabled_overlay_domain_expert">"Ez a rátét alapértelmezés szerint le van tiltva, mivel az adatok precíz felvételéhez a téma szakértőjének kell lenni."</string>
     <string name="pref_title_overlays">"Rátétek kiválasztása"</string>
     <string name="pref_overlays_reset">"Alapértelmezettre állítod az engedélyezett rátéteket?"</string>
     <string name="overlay">"Rátét"</string>
     <string name="enable_overlay_confirmation_title">"Engedélyezed ezt a rátétet?"</string>
     <string name="link_transitous_description">"Szolgáltatófüggetlen, ingyenes és nyílt forráskódú tömegközlekedési útvonaltervező"</string>
+    <string name="compass">"Iránytű"</string>
+    <string name="quest_tracktype_grade2">"Többnyire szilárd"</string>
+    <string name="quest_tracktype_grade3">"Keverék"</string>
 </resources>

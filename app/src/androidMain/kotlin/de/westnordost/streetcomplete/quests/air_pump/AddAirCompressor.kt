@@ -6,6 +6,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 import de.westnordost.streetcomplete.osm.Tags
@@ -13,7 +14,7 @@ import de.westnordost.streetcomplete.osm.updateWithCheckDate
 import de.westnordost.streetcomplete.quests.YesNoQuestForm
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
-class AddAirCompressor : OsmFilterQuestType<Boolean>() {
+class AddAirCompressor : OsmFilterQuestType<Boolean>(), AndroidQuest {
 
     override val elementFilter = """
         nodes, ways with
@@ -28,6 +29,7 @@ class AddAirCompressor : OsmFilterQuestType<Boolean>() {
     override val wikiLink = "Key:compressed_air"
     override val icon = R.drawable.ic_quest_car_air_compressor
     override val achievements = listOf(CAR, BICYCLIST)
+    override val isReplacePlaceEnabled = true
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_air_pump_compressor_title
 

@@ -6,17 +6,21 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 
-class AddChargingStationCapacity : OsmFilterQuestType<Int>() {
+class AddChargingStationCapacity : OsmFilterQuestType<Int>(), AndroidQuest {
 
     override val elementFilter = """
         nodes, ways with
           amenity = charging_station
           and !capacity
-          and bicycle != yes and scooter != yes and motorcar != no
+          and bicycle !~ yes|designated
+          and scooter !~ yes|designated
+          and motorcar != no
+          and motor_vehicle != no
           and access !~ private|no
     """
     override val changesetComment = "Specify charging stations capacities"

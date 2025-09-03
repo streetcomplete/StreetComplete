@@ -6,12 +6,13 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.quests.YesNoQuestForm
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
-class AddCampPower : OsmFilterQuestType<Boolean>() {
+class AddCampPower : OsmFilterQuestType<Boolean>(), AndroidQuest {
 
     /* We only resurvey power_supply = yes and power_supply = no, as it might have more detailed
      * values from other editors, and we don't want to damage them */
