@@ -52,7 +52,7 @@ Projet réalisé par:
 |===
 
 
-Tuteur référent de l'équipe: mailto:ludo.pradel@protonmail.com[Ludo Pradel]
+Tuteur référent de l'équipe: mailto:ludo.pradel@protonmail.com[Ludo Pradel] +
 Tuteur client de l'équipe: mailto:yahn.formanczak@univ-tlse2.fr[Yahn Formanczak]
 
 == Besoin du client
