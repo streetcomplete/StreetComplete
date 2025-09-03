@@ -34,9 +34,6 @@ class AddLevelThing : OsmElementQuestType<String>, AndroidQuest {
     override val changesetComment = "Determine on which level things are in a building"
     override val wikiLink = "Key:level"
     override val icon = R.drawable.ic_quest_level_thing
-    /* disabled because in a mall with multiple levels, if there are nodes with no level defined,
-     * it really makes no sense to tag something as vacant if the level is not known. Instead, if
-     * the user cannot find the thing on any level in the mall, delete the element completely. */
     override val isReplacePlaceEnabled = false
     override val isDeleteElementEnabled = true
     override val achievements = listOf(CITIZEN)
