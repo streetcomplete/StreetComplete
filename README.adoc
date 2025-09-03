@@ -81,5 +81,5 @@ Cette section regroupe tous les documents liés à la conception, au développem
 |===
 
 === Registre de télétravail
-- Exemple : **06/11/2024** : de 9h30 à 12h30
-- etc.
+- **03/09/2024** : de 14h15 à 17h15
+- **04/09/2024** : de 9h30 à 12h30
