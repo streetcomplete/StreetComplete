@@ -66,12 +66,11 @@ class CheckExistence(
             or amenity = shower
             or amenity = drinking_water
             or man_made = planter
-            or amenity = shelter
           )
           and (${lastChecked(6.0)})
         ) or (
           (
-            amenity ~ bicycle_parking|motorcycle_parking|taxi
+            amenity ~ bicycle_parking|motorcycle_parking|taxi|shelter
           )
           and (${lastChecked(10.0)})
         ) or (
