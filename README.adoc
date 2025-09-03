@@ -52,7 +52,8 @@ Projet réalisé par:
 |===
 
 
-Tuteur enseignant de l'équipe: mailto:jean-michel.bruel@univ-tlse2.fr[Jean-Michel Bruel]
+Tuteur référent de l'équipe: mailto:ludo.pradel@protonmail.com[Ludo Pradel]
+Tuteur client de l'équipe: mailto:yahn.formanczak@univ-tlse2.fr[Yahn Formanczak]
 
 == Besoin du client
 Street Complete est une application Android ayant pour but d’améliorer la qualité des données d’Open Street Map avec des enquêtes sur le terrain.
