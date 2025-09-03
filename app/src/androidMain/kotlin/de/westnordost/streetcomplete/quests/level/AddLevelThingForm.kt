@@ -8,7 +8,7 @@ import de.westnordost.streetcomplete.quests.level.AddLevelForm
 
 class AddLevelThingForm : AddLevelForm() {
 
-    override suspend fun filter(mapData: MapDataWithGeometry): List<Element> = mapData.filter {
+    override fun filter(mapData: MapDataWithGeometry): List<Element> = mapData.filter {
         // The AddLevel quest only shows places on the same level, while the AddLevelThing quest
         // shows Things AND Places
 

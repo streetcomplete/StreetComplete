@@ -5,7 +5,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.osm.isPlaceOrDisusedPlace
 
 open class AddLevelForm : AAddLevelForm() {
-     override suspend fun filter(mapData: MapDataWithGeometry): List<Element> = mapData.filter {
+     override fun filter(mapData: MapDataWithGeometry): List<Element> = mapData.filter {
         // The AddLevel quest only shows places on the same level, while the AddLevelThing quest
         // shows Things AND Places
 

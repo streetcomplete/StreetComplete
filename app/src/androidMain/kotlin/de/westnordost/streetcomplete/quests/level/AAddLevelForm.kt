@@ -30,7 +30,7 @@ import kotlin.math.floor
 
 abstract class AAddLevelForm : AbstractOsmQuestForm<String>() {
 
-    abstract suspend fun filter(mapData: MapDataWithGeometry): List<Element>
+    abstract fun filter(mapData: MapDataWithGeometry): List<Element>
 
     private val mapDataSource: MapDataWithEditsSource by inject()
 
