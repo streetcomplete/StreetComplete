@@ -32,7 +32,7 @@ endif::[]
 :baseURL: github.com/HugoTHOLLON/StreetCompleteSAE_S5
 
 // Tags
-image:https://img.shields.io/badge/License-MPL%202.0-brightgreen.svg[License: MPL-2.0, link="https://opensource.org/licenses/MPL-2.0"]
+image:https://img.shields.io/badge/License-GPLv3-blue.svg[License: GPL-3.0, link="https://www.gnu.org/licenses/gpl-3.0"]
 //---------------------------------------------------------------
 
 toc::[]
