@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.contentColorFor
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.geometry.Offset
@@ -13,6 +14,7 @@ import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.text.drawText
+import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.text.rememberTextMeasurer
 import androidx.compose.ui.unit.Constraints
 import androidx.compose.ui.unit.Dp
@@ -21,14 +23,18 @@ import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.ui.ktx.pxToDp
 import de.westnordost.streetcomplete.ui.theme.GrassGreen
 import de.westnordost.streetcomplete.ui.theme.surfaceContainer
+import de.westnordost.streetcomplete.util.ktx.getNarrowDisplayName
+import de.westnordost.streetcomplete.util.ktx.getShortDisplayName
 import de.westnordost.streetcomplete.util.ktx.systemTimeNow
 import kotlinx.datetime.DateTimeUnit
+import kotlinx.datetime.DayOfWeek
 import kotlinx.datetime.LocalDate
+import kotlinx.datetime.Month
 import kotlinx.datetime.TimeZone
+import kotlinx.datetime.isoDayNumber
 import kotlinx.datetime.minus
 import kotlinx.datetime.toLocalDateTime
 import org.jetbrains.compose.ui.tooling.preview.Preview
-import java.text.DateFormatSymbols
 import kotlin.math.ceil
 
 /** Draws a github-style like days-active graphic */
@@ -43,21 +49,20 @@ fun DatesActiveTable(
     cellPadding: Dp = 2.dp,
     cellCornerRadius: Dp = 6.dp,
 ) {
+    val locale = Locale.current
+    val weekdays = remember(locale) { DayOfWeek.entries.map { it.getShortDisplayName(locale) } }
+    val months = remember(locale) { Month.entries.map { it.getNarrowDisplayName(locale) } }
+
     BoxWithConstraints(modifier) {
         // no data, no table
         if (datesActiveRange <= 0) return@BoxWithConstraints
 
-        val dayOffset = 7 - systemTimeNow().toLocalDateTime(TimeZone.UTC).dayOfWeek.value
-
+        val dayOffset = 7 - systemTimeNow().toLocalDateTime(TimeZone.UTC).dayOfWeek.isoDayNumber
         val verticalCells = 7 // days in a week
         val horizontalCells = ceil((dayOffset + datesActiveRange).toDouble() / verticalCells).toInt()
 
         val textMeasurer = rememberTextMeasurer(12)
-
         val textStyle = MaterialTheme.typography.body2
-        val symbols = DateFormatSymbols.getInstance()
-        val weekdays = Array(7) { symbols.shortWeekdays[1 + (it + 1) % 7] }
-        val months = symbols.shortMonths
 
         val weekdayColumnWidth = weekdays.maxOf { textMeasurer.measure(it, textStyle).size.width }.pxToDp()
         val textHeight = textMeasurer.measure(months[0], textStyle).size.height.pxToDp()
@@ -113,7 +118,7 @@ fun DatesActiveTable(
                 if (date.dayOfMonth == 1) {
                     drawText(
                         textMeasurer.measure(
-                            text = months[date.month.value - 1],
+                            text = months[date.month.ordinal],
                             style = textStyle
                         ),
                         color = textColor,
