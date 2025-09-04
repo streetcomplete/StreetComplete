@@ -151,6 +151,7 @@ kotlin {
                 implementation(compose.components.uiToolingPreview)
 
                 // UI Navigation
+                implementation("org.jetbrains.compose.ui:ui-backhandler:1.8.2")
                 implementation("org.jetbrains.androidx.navigation:navigation-compose:2.9.0-beta05")
 
                 // UI ViewModel
