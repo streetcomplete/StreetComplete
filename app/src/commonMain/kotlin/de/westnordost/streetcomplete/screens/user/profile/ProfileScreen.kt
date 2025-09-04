@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.screens.user.profile
 
-import android.graphics.BitmapFactory
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.BoxWithConstraints
@@ -33,9 +32,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.asImageBitmap
-import androidx.compose.ui.graphics.painter.BitmapPainter
-import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.unit.coerceAtMost
@@ -58,6 +54,7 @@ import de.westnordost.streetcomplete.resources.user_profile_local_rank
 import de.westnordost.streetcomplete.ui.ktx.toDp
 import de.westnordost.streetcomplete.ui.theme.headlineLarge
 import de.westnordost.streetcomplete.ui.theme.titleLarge
+import de.westnordost.streetcomplete.util.image.fileBitmapPainter
 import de.westnordost.streetcomplete.util.ktx.displayRegion
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
@@ -97,7 +94,8 @@ fun ProfileScreen(viewModel: ProfileViewModel) {
             horizontalArrangement = Arrangement.spacedBy(16.dp)
         ) {
             Image(
-                painter = userAvatarFile?.let { getAvatarPainter(it.toString()) }
+                painter =
+                    userAvatarFile?.let { fileBitmapPainter(it.toString()) }
                     ?: painterResource(Res.drawable.avatar_osm_anonymous),
                 contentDescription = null,
                 modifier = Modifier
@@ -299,8 +297,5 @@ private fun getLocalRankText(countryCode: String): String =
 private fun getCountryName(countryCode: String): String =
     // we don't use the language, but we need it for correct construction of the languageTag
     Locale("en-$countryCode").displayRegion ?: countryCode
-
-private fun getAvatarPainter(filename: String?): Painter? =
-    filename?.let { BitmapFactory.decodeFile(it) }?.asImageBitmap()?.let { BitmapPainter(it) }
 
 private fun getAnimationDelay(step: Int) = step * 500
