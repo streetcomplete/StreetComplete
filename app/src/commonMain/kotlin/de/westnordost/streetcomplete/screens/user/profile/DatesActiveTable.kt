@@ -50,8 +50,8 @@ fun DatesActiveTable(
     cellCornerRadius: Dp = 6.dp,
 ) {
     val locale = Locale.current
-    val weekdays = remember(locale) { DayOfWeek.entries.map { it.getShortDisplayName(locale) } }
-    val months = remember(locale) { Month.entries.map { it.getNarrowDisplayName(locale) } }
+    val weekdays = remember(locale) { DayOfWeek.entries.map { it.getNarrowDisplayName(locale) } }
+    val months = remember(locale) { Month.entries.map { it.getShortDisplayName(locale) } }
 
     BoxWithConstraints(modifier) {
         // no data, no table
