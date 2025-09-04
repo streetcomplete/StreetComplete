@@ -459,9 +459,10 @@ tasks.register<GenerateMetadataByCountryTask>("generateMetadataByCountry") {
 
 tasks.register("copyDefaultStringsToEnStrings") {
     doLast {
-        File("$projectDir/src/androidMain/res/values/strings.xml")
-            .copyTo(File("$projectDir/src/androidMain/res/values-en/strings.xml"), true)
-        File("$projectDir/src/androidMain/res/values/strings.xml")
-            .copyTo(File("$projectDir/src/commonMain/composeResources/values-en/strings.xml"), true)
+        val sourceStrings = File("$projectDir/src/androidMain/res/values/strings.xml")
+
+        sourceStrings.copyTo(File("$projectDir/src/androidMain/res/values-en/strings.xml"), true)
+        sourceStrings.copyTo(File("$projectDir/src/commonMain/composeResources/values-en/strings.xml"), true)
+        sourceStrings.copyTo(File("$projectDir/src/commonMain/composeResources/values/strings.xml"), true)
     }
 }

@@ -36,7 +36,7 @@ open class UpdateAppTranslationsTask : DefaultTask() {
             val text = """<?xml version="1.0" encoding="utf-8"?>
 <resources>
 ${translations.entries.joinToString("\n") { (key, value) ->
-"    <string name=\"$key\">\"${value.escapeXml().replace("\"", "\\\"")}\"</string>"
+"    <string name=\"$key\">${value.escapeXml().replace("'", "\\'")}</string>"
 } }
 </resources>"""
             for (androidResCode in androidResCodes) {
