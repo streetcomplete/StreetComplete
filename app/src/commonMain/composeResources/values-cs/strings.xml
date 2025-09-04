@@ -197,7 +197,7 @@ Pokud nejsou podél celé cesty žádné značky, které by omezovaly rychlost v
     <string name="quest_sport_roller_skating">Kolečkové bruslení</string>
     <string name="quest_wheelchairAccess_limited_description_business">Částečně znamená, že tu není víc než jeden schod bránící v přístupu a že většina místností v budově je přístupná na invalidním vozíku.</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">Částečně znamená, že tu není víc než jeden schod bránící v přístupu.</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">Je v názvu %s zkratka?</string>
+    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">Je v názvu %1$s zkratka?</string>
     <string name="quest_recycling_type_title">Jaký je toto typ recyklačního zařízení?</string>
     <string name="recycling_centre">Středisko</string>
     <string name="overground_recycling_container">Kontejner</string>
@@ -355,7 +355,7 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="quest_religion_for_place_of_worship_answer_multi">pro jakékoliv náboženství</string>
     <string name="quest_religion_sikh">Sikhismus</string>
     <string name="quest_religion_jain">Džinismus</string>
-    <string name="quest_religion_bahai">Bahá\'í</string>
+    <string name="quest_religion_bahai">Bahá'í</string>
     <string name="quest_religion_caodaist">Kaodaismus</string>
     <string name="quest_religion_chinese_folk">Čínské lidové náboženství</string>
     <string name="quest_religion_for_wayside_shrine_title">Jaké náboženství reprezentuje toto posvátné místo?</string>
@@ -379,7 +379,7 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="quest_construction_footway_title">Je stavba tohoto chodníku dokončená?</string>
     <string name="quest_construction_generic_title">Je stavba této cesty dokončená?</string>
     <string name="quest_construction_building_title">Je stavba této budovy dokončená?</string>
-    <string name="questList_disabled_in_country">Nezobrazuje se v %s</string>
+    <string name="questList_disabled_in_country">Nezobrazuje se v %1$s</string>
     <string name="quest_select_hint_most_specific">Vyberte nejvíce odpovídající možnost:</string>
     <string name="quest_generic_item_confirmation">Opravdu ji nemůžete určit konkrétněji?</string>
     <string name="privacy_html_third_party_quest_sources">&lt;p&gt;Pro některé úkoly se stahují i další data od třetích stran.&lt;/p&gt;
@@ -492,7 +492,7 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="quest_motorcycleParkingCoveredStatus_title">Má toto parkoviště pro motocykly střechu (ochranu proti dešti)?</string>
     <string name="default_disabled_msg_maxspeed">Tento typ úkolů je ve výchozím nastavení zakázán, protože pro nalezení cedulí s rychlostním omezením je obvykle nutné zkontrolovat celou ulici a ne pouze zvýrazněnou část. To může být náročnější vzhledem k tomu, že jde o vyřešení pouze jednoho úkolu.</string>
     <string name="pref_title_quests_restore_hidden">Obnovit skryté úkoly</string>
-    <string name="on_level">na podlaží %s</string>
+    <string name="on_level">na podlaží %1$s</string>
     <string name="underground">v podzemí</string>
     <string name="quest_sidewalk_value_yes">chodník</string>
     <string name="quest_sidewalk_value_no">bez chodníku</string>
@@ -586,8 +586,8 @@ A nakonec, nezapomeňte na bezpečnost – všímejte si vašeho okolí a nevstu
     <string name="achievements_empty">Zatím jste nedosáhli na žádný úspěch</string>
     <string name="links_empty">Zatím nemáte žádné odkazy</string>
     <string name="quests_empty">Zatím jste nepublikovali žádné odpovědi na úkoly</string>
-    <string name="unsynced_quests_description">plus %d zatím nepublikovaných změn.</string>
-    <string name="unsynced_quests_not_logged_in_description">Máte %d zatím nepublikovaných změn. Musíte se přihlásit, abyste je mohli nahrát.</string>
+    <string name="unsynced_quests_description">plus %1$d zatím nepublikovaných změn.</string>
+    <string name="unsynced_quests_not_logged_in_description">Máte %1$d zatím nepublikovaných změn. Musíte se přihlásit, abyste je mohli nahrát.</string>
     <string name="user_quests_title">Vyřešené úkoly</string>
     <string name="user_achievements_title">Úspěchy</string>
     <string name="user_links_title">Kolekce odkazů</string>
@@ -639,28 +639,28 @@ A nakonec, nezapomeňte na bezpečnost – všímejte si vašeho okolí a nevstu
     <string name="achievement_first_edit_title">Vyřešili jste první úkol</string>
     <string name="achievement_first_edit_description">Vítejte v OpenStreetMap komunitě! Na své profilové obrazovce naleznete více informací týkajících se všech vámi vyřešených typů úkolů.</string>
     <string name="achievement_surveyor_title">Topograf</string>
-    <string name="achievement_surveyor_solved_X">Vyřešili jste %d úkolů! Pokračujte dál, abyste odemkli další úspěchy, které obsahují odkazy na OSM a další map se týkající aplikace a projekty!</string>
+    <string name="achievement_surveyor_solved_X">Vyřešili jste %1$d úkolů! Pokračujte dál, abyste odemkli další úspěchy, které obsahují odkazy na OSM a další map se týkající aplikace a projekty!</string>
     <string name="achievement_regular_title">Pravidelný přispěvatel</string>
-    <string name="achievement_regular_description">Pomocí této aplikace jste přispívali do OSM po dobu %d dní! Pravidelní přispěvatelé jsou pro OSM velmi důležití. Děkujeme vám za vaše odhodlání!</string>
+    <string name="achievement_regular_description">Pomocí této aplikace jste přispívali do OSM po dobu %1$d dní! Pravidelní přispěvatelé jsou pro OSM velmi důležití. Děkujeme vám za vaše odhodlání!</string>
     <string name="achievement_bicyclist_title">Cyklista</string>
-    <string name="achievement_bicyclist_solved_X">Vyřešili jste %d úkolů, které pomůžou cyklistům!</string>
+    <string name="achievement_bicyclist_solved_X">Vyřešili jste %1$d úkolů, které pomůžou cyklistům!</string>
     <string name="achievement_wheelchair_title">Mobilita</string>
-    <string name="achievement_wheelchair_solved_X">Vyřešili jste %d úkolů, které zjednoduší vozíčkářům pohyb po městě!</string>
+    <string name="achievement_wheelchair_solved_X">Vyřešili jste %1$d úkolů, které zjednoduší vozíčkářům pohyb po městě!</string>
     <string name="achievement_postman_title">Pošťák</string>
-    <string name="achievement_postman_solved_X">Pomohli jste lokalizovat %d  adres!
+    <string name="achievement_postman_solved_X">Pomohli jste lokalizovat %1$d  adres!
 Tato data jsou důležitá nejen pro pošťáky, ale i pro navigační systémy.</string>
     <string name="achievement_building_title">Výškáč</string>
-    <string name="achievement_building_solved_X">Vyřešili jste %d úkolů, které se týkají budov.
+    <string name="achievement_building_solved_X">Vyřešili jste %1$d úkolů, které se týkají budov.
 Pamatujte, že tato aplikace se zeptá na číslo budovy až po určení jejího druhu.</string>
     <string name="achievement_blind_title">Šestý smysl</string>
-    <string name="achievement_blind_solved_X">Vyřešili jste %d úkolů, které můžou pomoci zrakově postiženým.</string>
+    <string name="achievement_blind_solved_X">Vyřešili jste %1$d úkolů, které můžou pomoci zrakově postiženým.</string>
     <string name="achievement_pedestrian_title">Běžec</string>
-    <string name="achievement_pedestrian_solved_X">Vyřešili jste %d úkolů, které jsou zajímavé pro běžce a chodce!</string>
+    <string name="achievement_pedestrian_solved_X">Vyřešili jste %1$d úkolů, které jsou zajímavé pro běžce a chodce!</string>
     <string name="achievement_veg_title">Milovník zvířat</string>
-    <string name="achievement_veg_solved_X">Vyřešili jste %d úkolů, které by mohly zajímat lidi na bezmasé dietě!</string>
+    <string name="achievement_veg_solved_X">Vyřešili jste %1$d úkolů, které by mohly zajímat lidi na bezmasé dietě!</string>
     <string name="achievement_car_title">Cesťák</string>
-    <string name="achievement_car_solved_X">Vyřešili jste %d úkolů, které vylepšují informace o infrastruktuře ulic.</string>
-    <string name="unread_messages_message">Máte %d  nepřečtené příchozí zprávy</string>
+    <string name="achievement_car_solved_X">Vyřešili jste %1$d úkolů, které vylepšují informace o infrastruktuře ulic.</string>
+    <string name="unread_messages_message">Máte %1$d  nepřečtené příchozí zprávy</string>
     <string name="unread_messages_button">Otevřít příchozí zprávy</string>
     <string name="action_about2">O aplikaci</string>
     <string name="map_btn_menu">Nabídka</string>
@@ -670,12 +670,12 @@ Pamatujte, že tato aplikace se zeptá na číslo budovy až po určení jejího
     <string name="credits_projects_contributors_title">Projekty pro StreetComplete</string>
     <string name="credits_main_contributors_title">Hlavní přispěvatelé</string>
     <string name="stats_are_syncing">Vaše statistiky se stále synchronizují. Vraťte se sem později.</string>
-    <string name="user_statistics_country_wiki_link">OSM Wiki %s</string>
+    <string name="user_statistics_country_wiki_link">OSM Wiki %1$s</string>
     <string name="user_statistics_filter_by_country">podle země</string>
     <string name="user_statistics_filter_by_quest_type">podle úkolu</string>
     <string name="user_profile_global_rank">Pořadí globální</string>
     <string name="user_profile_local_rank">Pořadí
-%s</string>
+%1$s</string>
     <string name="user_profile_days_active">Aktivní dny</string>
     <string name="user_profile_achievement_levels">Úspěchy</string>
     <string name="quest_address_street_no_named_streets">Nepatří k žádné pojmenované ulici…</string>
@@ -700,8 +700,8 @@ Pamatujte, že tato aplikace se zeptá na číslo budovy až po určení jejího
     <string name="quest_board_type_map_description">Pokud se cedule týká konkrétního tématu, specifikujte ho, prosím, bez ohledu na to, jestli je na ní i mapa. Například na cedulích týkajících se veřejné dopravy bývá mapa s trasami autobusů. Pokud nenaleznete téma mezi odpověďmi, zvažte, prosím, jestli nezanecháte poznámku.</string>
     <string name="quest_streetName_menuItem_international">mezinárodní</string>
     <string name="quest_buildingType_terrace2">Řadové domy</string>
-    <string name="at_housename">Název budovy %s</string>
-    <string name="at_housenumber">číslo domu %s</string>
+    <string name="at_housename">Název budovy %1$s</string>
+    <string name="at_housenumber">číslo domu %1$s</string>
     <string name="quest_openingHours_add_off_days">Přidat dny, kdy je zavřeno</string>
     <string name="quest_openingHours_off_day">Zavřeno</string>
     <string name="quest_openingHours_unspecified_range">Neurčeno</string>
@@ -736,11 +736,11 @@ Pamatujte, že tato aplikace se zeptá na číslo budovy až po určení jejího
     <string name="quest_charging_station_operator_title">Kdo provozuje tuto dobíjecí stanici?</string>
     <string name="link_indoorequal_description">Objevte vnitřní mapy nákupních středisek, nádraží atd.</string>
     <string name="achievement_rare_title">Lovec pokladů</string>
-    <string name="achievement_rare_solved_X">Našli jste a vyřešili %d úkolů, které jsou vyřešeny opravdu velmi zřídka. Gratulujeme!</string>
+    <string name="achievement_rare_solved_X">Našli jste a vyřešili %1$d úkolů, které jsou vyřešeny opravdu velmi zřídka. Gratulujeme!</string>
     <string name="achievement_citizen_title">Občan</string>
-    <string name="achievement_citizen_solved_X">Vyřešili jste %d úkolů užitečných pro každodenní život ve městě!</string>
+    <string name="achievement_citizen_solved_X">Vyřešili jste %1$d úkolů užitečných pro každodenní život ve městě!</string>
     <string name="achievement_outdoors_title">Outdoorák</string>
-    <string name="achievement_outdoors_solved_X">Vyřešili jste %d úkolů užitečných pro lidi, kteří rádi chodí do přírody!</string>
+    <string name="achievement_outdoors_solved_X">Vyřešili jste %1$d úkolů užitečných pro lidi, kteří rádi chodí do přírody!</string>
     <string name="quest_pedestrian_crossing_island">Má tento přechod pro chodce ostrůvek?</string>
     <string name="quest_generic_answer_noSign">Není tu žádná značka</string>
     <string name="quest_steps_ramp_separate_wheelchair">Je rampa pro invalidní vozíky na mapě zobrazená jako samostatná cesta?</string>
@@ -763,7 +763,7 @@ Pamatujte, že tato aplikace se zeptá na číslo budovy až po určení jejího
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">Má obousměrný pruh pro odbočení vlevo (v ČR není)</string>
     <string name="quest_address_answer_no_housenumber_message2b">Je to správně?</string>
     <string name="quest_maxheight_below_bridge_title">Jaké je výškové omezení pod mostem?</string>
-    <string name="quest_maxheight_split_way_hint">Pokud to neplatí pro celou cestu, zvažte odpověď „%s“.</string>
+    <string name="quest_maxheight_split_way_hint">Pokud to neplatí pro celou cestu, zvažte odpověď „%1$s“.</string>
     <string name="quest_tactile_paving_kerb_title">Je na tomto obrubníku hmatová dlažba?</string>
     <string name="quest_kerb_height_title">Jaká je výška tohoto obrubníku?</string>
     <string name="quest_kerb_height_flush">Na stejné úrovni s povrchem cesty</string>
@@ -819,9 +819,9 @@ Pokud jsou tu pruhy pro autobusy, napište to prosím do poznámky.</string>
     <string name="hid_action_description">Skryli jste to</string>
     <string name="split_way_action_description">Rozdělili jste cestu</string>
     <string name="deleted_poi_action_description">Smazali jste to</string>
-    <string name="added_tag_action_title">Přidáno %s</string>
-    <string name="removed_tag_action_title">Odstraněno %s</string>
-    <string name="changed_tag_action_title">Aktualizováno na %s</string>
+    <string name="added_tag_action_title">Přidáno %1$s</string>
+    <string name="removed_tag_action_title">Odstraněno %1$s</string>
+    <string name="changed_tag_action_title">Aktualizováno na %1$s</string>
     <string name="pref_title_delete_cache">Promazat mezipaměť</string>
     <string name="pref_title_delete_cache_summary">Pokud si myslíte, že jsou data zastaralá</string>
     <string name="delete_confirmation">Smazat</string>
@@ -871,7 +871,7 @@ Data jsou obnovena po %1$s dnech a nepoužitá data jsou smazána automaticky po
     <string name="about_title_faq">FAQ</string>
     <string name="quest_buildingLevels_title2">Kolik pater nad suterénem má tato budova?</string>
     <string name="quest_buildingLevels_title_buildingPart2">Kolik pater nad suterénem má tato část budovy?</string>
-    <string name="pref_subtitle_quests_preset_name">předvolba: %s</string>
+    <string name="pref_subtitle_quests_preset_name">předvolba: %1$s</string>
     <string name="default_disabled_msg_roofShape">Tento typ úkolů je ve výchozím nastavení zakázán, protože tvar střechy často není snadno viditelný z ulice. Tento typ úkolů je také poněkud časově náročný; ve většině případů je snazší a efektivnější toto mapovat doma podle leteckých snímků.</string>
     <string name="quest_religion_animist">Animismus</string>
     <string name="quest_construction_steps_title">Jsou tyto schody hotové?</string>
@@ -898,7 +898,7 @@ Pokud jste zavaleni velkým množstvím úkolů, můžete si vždy v nastavení 
     <string name="quest_presets_preset_name">Název předvolby</string>
     <string name="quest_presets_default_name">Výchozí</string>
     <string name="quest_presets_selected">Vybráno</string>
-    <string name="quest_presets_delete_message">Smazat předvolbu „%s“? Výběr úkolů a jejich pořadí budou nenávratně ztraceny.</string>
+    <string name="quest_presets_delete_message">Smazat předvolbu „%1$s“? Výběr úkolů a jejich pořadí budou nenávratně ztraceny.</string>
     <string name="notification_syncing">Synchronizace dat…</string>
     <string name="notification_channel_sync">Synchronizovat data</string>
     <string name="quest_board_type_sport">Sport, cvičení</string>
@@ -937,7 +937,7 @@ Pokud jste zavaleni velkým množstvím úkolů, můžete si vždy v nastavení 
     <string name="quest_barrier_bicycle_type_multiple">Šikana – více než dvě překážky</string>
     <string name="language_default">Jazyk systému
 </string>
-    <string name="on_floor">ve %s patře:</string>
+    <string name="on_floor">ve %1$s patře:</string>
     <string name="select_street_parking_orientation">Vyberte orientaci směrem k cestě:</string>
     <string name="select_street_parking_position">Vyberte polohu:</string>
     <string name="select_street_parking_no">Jsou tu nějaké dopravní značky nebo značení?</string>
@@ -1003,7 +1003,7 @@ Také můžete napsat poznámku (s fotografií)</string>
     <string name="quest_smoothness_hint">🚲, 🚗, 🚙… indikuje, pro jaká vozidla je povrch vhodný. Důležitější než jednotlivá poškození je celkový stav povrchu.</string>
     <string name="link_osmhydrant_description">Vyhledávejte, přidávejte a upravujte hasičské stanice a požární hydranty</string>
     <string name="achievement_lifesaver_title">Záchranář</string>
-    <string name="achievement_lifesaver_solved_X">Vyřešili jste %d úkolů, které pomůžou záchranářům!</string>
+    <string name="achievement_lifesaver_solved_X">Vyřešili jste %1$d úkolů, které pomůžou záchranářům!</string>
     <string name="quest_fuelSelfService_title">Můžete si u této čerpací stanice sami natankovat?</string>
     <string name="default_disabled_msg_difficult_and_time_consuming">Tento typ úkolů je ve výchozím nastavení zakázán, protože jejich řešení může být časově náročné a často je obtížné. Tento typ úkolů byste měli povolit pouze v případě, že jste opravdu odhodláni přidat tento druh dat.</string>
     <string name="quest_smoothness_description_good_compacted_gravel">Tvrdý, velmi málo volného štěrku nebo písku</string>
@@ -1166,7 +1166,7 @@ Totéž udělejte i pro druhou stranu, pokud je přítomna.</string>
     <string name="quest_camp_type_backcountry">Táboření v přírodě (bez zázemí)</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">Tento průměr vypadá nepravděpodobně, obvykle se pohybuje mezi %1$d a %2$d.</string>
     <string name="quest_recycling_type_pet">Jen PET</string>
-    <string name="street_parking_street_width">Šířka ulice: %s</string>
+    <string name="street_parking_street_width">Šířka ulice: %1$s</string>
     <string name="overlay_street_parking">Parkování na ulici</string>
     <string name="link_ohsomehex_description">Objevujte data OSM napříč měřítky, od velkého obrázku po jednotlivé objekty, v prostoru a čase</string>
     <string name="link_opencampingmap_description">Mapa kempů</string>
@@ -1213,7 +1213,7 @@ Totéž udělejte i pro druhou stranu, pokud je přítomna.</string>
     <string name="user_profile_current_week_title">Posledních 7 dní</string>
     <string name="user_profile_dates_mapped">Dny, kdy jste naposledy mapovali</string>
     <string name="quest_cycleway_value_advisory_lane">doporučený pruh pro cyklisty</string>
-    <string name="urlconfig_scan_qr_code_again2">Po instalaci aplikace znovu naskenujte QR kód nebo klikněte na &lt;a href="%s"&gt;tento odkaz&lt;/a&gt; pro použití předvolby.</string>
+    <string name="urlconfig_scan_qr_code_again2">Po instalaci aplikace znovu naskenujte QR kód nebo klikněte na &lt;a href="%1$s"&gt;tento odkaz&lt;/a&gt; pro použití předvolby.</string>
     <string name="confirmation_replace_shop_title">Je tu teď něco jiného?</string>
     <string name="confirmation_replace_shop_message">V takovém případě se změnily i otevírací hodiny, kontaktní informace apod.</string>
     <string name="confirmation_replace_shop_yes">Teď je tu něco jiného</string>
@@ -1223,7 +1223,7 @@ Totéž udělejte i pro druhou stranu, pokud je přítomna.</string>
 Chcete ho posunout?</string>
     <string name="node_moved_not_far_enough">Prosím posuňte ještě dál</string>
     <string name="node_moved_too_far">Posunuto příliš daleko. Zvažte přidání poznámky</string>
-    <string name="node_moved">Přesunuto o %s</string>
+    <string name="node_moved">Přesunuto o %1$s</string>
     <string name="move_node_description">Posunujte mapou, až se toto místo dostane do správné pozice. Použijte zoom a zkuste dosáhnout co nejvyšší přesnosti. Dejte si prosím pozor, že vaše zobrazená pozice může být méně přesná, než se zobrazuje.</string>
     <string name="move_node_action_description">Posunuli jste uzel</string>
     <string name="quest_cycleway_value_shoulder">není, ale krajnice je použitelná pro cyklisty</string>
@@ -1321,7 +1321,7 @@ Některé překryvné vrstvy navíc umožňují přidávat nová data na pozici 
     <string name="label_log_older_than">Do</string>
     <string name="label_log_message_contains">Zpráva obsahuje</string>
     <string name="title_logs_filters">Filtrovat zprávy</string>
-    <string name="pref_title_quests_restore_hidden_summary">Počet skrytých úkolů: %d</string>
+    <string name="pref_title_quests_restore_hidden_summary">Počet skrytých úkolů: %1$d</string>
     <string name="link_every_door_description">Výkonný editor POI pro Android a iOS</string>
     <string name="link_mapcomplete_description">Soubor tématických map OSM, kde každá ukazuje a umožňuje upravit jeden druh vlastností</string>
     <string name="link_forum_description">Potřebujete pomoc? Chcete si přečíst, co se děje? Přijďte a zapojte se, je tu rušno s aktivitou komunit z celého světa!</string>
@@ -1393,7 +1393,7 @@ Podlaží se počítají jako střešní, pokud jejich okna jsou ve střeše. Te
     <string name="quest_camp_power_supply_hint">Mohou to být zásuvky přímo v prostoru kempu, zásuvky v pomocných budovách přístupných hostům, nabíječky pro telefony, laptopy atd.</string>
     <string name="quest_barrier_opening_width_bollard">Jaká je nejširší mezera, kterou lze projít?</string>
     <string name="user_profile_all_time_title">Celkově</string>
-    <string name="user_statistics_country_rank2">Pořadí v %s</string>
+    <string name="user_statistics_country_rank2">Pořadí v %1$s</string>
     <string name="quest_leafType_tree_is_just_a_stump">Je to jen pařez</string>
     <string name="quest_board_name_title">Jaký je název této informační tabule?</string>
     <string name="quest_crossing_hint">Neformální cesta křížící silnici:</string>

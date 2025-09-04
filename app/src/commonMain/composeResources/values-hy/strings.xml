@@ -176,7 +176,7 @@
     <string name="quest_sport_roller_skating">Գլորաչմուշկ</string>
     <string name="quest_wheelchairAccess_limited_description_business">Մասնակիորեն նշանակում է, որ չկա ավելի շատ, քան կոճ-բարձր քայլը տեղ մուտք ունենալու համար, եւ որ սենյակների մեծ մասը մատչելի է սայլակով:</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">Մասնակիորեն նշանակում է, որ այն չկա, քան կոճ `դրա մուտքը:</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">Հիասթափություն %s անունով:</string>
+    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">Հիասթափություն %1$s անունով:</string>
     <string name="quest_recycling_type_title">Ինչ տեսակի վերամշակման օբյեկտ է սա:</string>
     <string name="recycling_centre">Կենտրոն</string>
     <string name="overground_recycling_container">Բեռնարկղ</string>
@@ -355,7 +355,7 @@
     <string name="quest_construction_footway_title">Ավարտված է այս ոտքը:</string>
     <string name="quest_construction_generic_title">Ավարտված է այս ճանապարհը:</string>
     <string name="quest_construction_building_title">Ավարտված է այս շենքը:</string>
-    <string name="questList_disabled_in_country">Երբեք չի ցուցադրվել %s</string>
+    <string name="questList_disabled_in_country">Երբեք չի ցուցադրվել %1$s</string>
     <string name="quest_select_hint_most_specific">Ընտրեք առավել հատուկը, որը տեղավորվում է.</string>
     <string name="quest_generic_item_confirmation">Համոզված եք, որ այն կարող եք ավելի շատ պարզել:</string>
     <string name="privacy_html_third_party_quest_sources">&lt;p&gt;Որոշ որոնումների համար որոշ լրացուցիչ տվյալներ են ներբեռնվում երրորդ կողմերից:&lt;/p&gt;</string>
@@ -461,7 +461,7 @@
     <string name="quest_motorcycleParkingCoveredStatus_title">Արդյոք այս մոտոցիկլետը ծածկված է (պաշտպանված անձրեւից):</string>
     <string name="default_disabled_msg_maxspeed">Այս որոնման տեսակը անջատված է լռելյայն, քանի որ սովորաբար ձեզանից պահանջվում է ստուգել ամբողջ փողոցը արագության սահմանափակումների համար, ոչ միայն ընդգծված հատվածը: Սա երբեմն կարող է լինել բավականին ձգվող պարզապես մեկ որոնման լուծման համար:</string>
     <string name="pref_title_quests_restore_hidden">Վերականգնել թաքնված որոնումները</string>
-    <string name="on_level">%s-րդ հարկում</string>
+    <string name="on_level">%1$s-րդ հարկում</string>
     <string name="underground">ստորգետնյա</string>
     <string name="quest_sidewalk_value_yes">մայթ</string>
     <string name="quest_sidewalk_value_no">ոչ մի մայթ</string>
@@ -555,8 +555,8 @@
     <string name="achievements_empty">Դուք դեռ ձեռքբերումներ չունեք</string>
     <string name="links_empty">Դուք դեռ հղումներ չունեք</string>
     <string name="quests_empty">Դուք դեռ չեք հրապարակել որոնման պատասխաններ</string>
-    <string name="unsynced_quests_description">Գումարած %d -ը դեռ հրապարակված փոփոխություններ չի հրապարակվում:</string>
-    <string name="unsynced_quests_not_logged_in_description">Դուք ունեք %d դեռ հրապարակված փոփոխություններ: Դուք պետք է մուտք գործեք, որպեսզի դրանք վերբեռնվեն:</string>
+    <string name="unsynced_quests_description">Գումարած %1$d -ը դեռ հրապարակված փոփոխություններ չի հրապարակվում:</string>
+    <string name="unsynced_quests_not_logged_in_description">Դուք ունեք %1$d դեռ հրապարակված փոփոխություններ: Դուք պետք է մուտք գործեք, որպեսզի դրանք վերբեռնվեն:</string>
     <string name="user_quests_title">Լուծված որոնումներից</string>
     <string name="user_achievements_title">Ձեռքբերումներ</string>
     <string name="user_links_title">Հղումների հավաքածու</string>
@@ -608,28 +608,28 @@
     <string name="achievement_first_edit_title">Առաջին որոնումը լուծվեց</string>
     <string name="achievement_first_edit_description">Բարի գալուստ OpenstreetMap համայնք: Ձեր պրոֆիլի էկրանին դուք կարող եք տեսնել ավելի շատ տեղեկություններ ձեր լուծած յուրաքանչյուր որոնման տիպի համար:</string>
     <string name="achievement_surveyor_title">Հետազոտող</string>
-    <string name="achievement_surveyor_solved_X">Դուք լուծել եք %d որոնումներից: Շարունակեք բացել ավելի շատ ձեռքբերումներ, որոնք պարունակում են հղումներ OSM- ի եւ քարտեզի հետ կապված այլ ծրագրերի եւ նախագծերի հետ:</string>
+    <string name="achievement_surveyor_solved_X">Դուք լուծել եք %1$d որոնումներից: Շարունակեք բացել ավելի շատ ձեռքբերումներ, որոնք պարունակում են հղումներ OSM- ի եւ քարտեզի հետ կապված այլ ծրագրերի եւ նախագծերի հետ:</string>
     <string name="achievement_regular_title">Կանոնավոր</string>
-    <string name="achievement_regular_description">Այս հավելվածով դուք նպաստեցիք %d օրեր OSM- ին: Կանոնավոր ներդրողներն են OSM- ի ողնաշարը, շնորհակալություն ձեր նվիրվածության համար: ❤</string>
+    <string name="achievement_regular_description">Այս հավելվածով դուք նպաստեցիք %1$d օրեր OSM- ին: Կանոնավոր ներդրողներն են OSM- ի ողնաշարը, շնորհակալություն ձեր նվիրվածության համար: ❤</string>
     <string name="achievement_bicyclist_title">Հեծանվորդ</string>
-    <string name="achievement_bicyclist_solved_X">Դուք լուծել եք %d որոնում, որոնք օգնում են հեծանվորդներին:</string>
+    <string name="achievement_bicyclist_solved_X">Դուք լուծել եք %1$d որոնում, որոնք օգնում են հեծանվորդներին:</string>
     <string name="achievement_wheelchair_title">Շարժականություն</string>
-    <string name="achievement_wheelchair_solved_X">Դուք լուծել եք %d որոնում, որոնք օգնում են սայլակի օգտագործողներին շրջել քաղաք:</string>
+    <string name="achievement_wheelchair_solved_X">Դուք լուծել եք %1$d որոնում, որոնք օգնում են սայլակի օգտագործողներին շրջել քաղաք:</string>
     <string name="achievement_postman_title">Փոստատար</string>
-    <string name="achievement_postman_solved_X">Դուք օգնեցիք գտնել %d հասցեները:
+    <string name="achievement_postman_solved_X">Դուք օգնեցիք գտնել %1$d հասցեները:
 Այս տվյալներն անհրաժեշտ են ոչ միայն փոստատարի, այլեւ նավիգացիոն ցանկացած համակարգի համար:</string>
     <string name="achievement_building_title">Բարձրահաշվ</string>
-    <string name="achievement_building_solved_X">Դուք լուծել եք %d շենքերի հետ կապված որոնում:
+    <string name="achievement_building_solved_X">Դուք լուծել եք %1$d շենքերի հետ կապված որոնում:
 Նկատի ունեցեք, որ այս ծրագիրը խնդրում է շենքի համարը միայն դրա տեսակի որոշելուց հետո:</string>
     <string name="achievement_blind_title">Վեցերորդ իմաստ</string>
-    <string name="achievement_blind_solved_X">Դուք լուծել եք %d որոնումն, որոնք հետաքրքիր են տեսողական խնդիր ունեցողների համար:</string>
+    <string name="achievement_blind_solved_X">Դուք լուծել եք %1$d որոնումն, որոնք հետաքրքիր են տեսողական խնդիր ունեցողների համար:</string>
     <string name="achievement_pedestrian_title">Վազող</string>
-    <string name="achievement_pedestrian_solved_X">Դուք լուծել եք %d -ի որոնումներից, որոնք հետաքրքիր են ոտքով մարդկանց համար:</string>
+    <string name="achievement_pedestrian_solved_X">Դուք լուծել եք %1$d -ի որոնումներից, որոնք հետաքրքիր են ոտքով մարդկանց համար:</string>
     <string name="achievement_veg_title">Բարի կենդանիներին</string>
-    <string name="achievement_veg_solved_X">Դուք լուծում եք %d -ի որոնումներից, որոնք հետաքրքիր են ոչ մսի դիետայի վրա ապրող մարդկանց համար:</string>
+    <string name="achievement_veg_solved_X">Դուք լուծում եք %1$d -ի որոնումներից, որոնք հետաքրքիր են ոչ մսի դիետայի վրա ապրող մարդկանց համար:</string>
     <string name="achievement_car_title">Ճանապարհին</string>
-    <string name="achievement_car_solved_X">Դուք լուծել եք %d որոնում, որոնք մանրուքներ են բարելավում փողոցային ենթակառուցվածքների վրա։</string>
-    <string name="unread_messages_message">Դուք ունեք %d Race Race հաղորդագրություններ ձեր մուտքի արկղում</string>
+    <string name="achievement_car_solved_X">Դուք լուծել եք %1$d որոնում, որոնք մանրուքներ են բարելավում փողոցային ենթակառուցվածքների վրա։</string>
+    <string name="unread_messages_message">Դուք ունեք %1$d Race Race հաղորդագրություններ ձեր մուտքի արկղում</string>
     <string name="unread_messages_button">Բացեք ներարկղ</string>
     <string name="action_about2">Մասին</string>
     <string name="map_btn_menu">Մենյու</string>
@@ -639,13 +639,13 @@
     <string name="credits_projects_contributors_title">Ծրագրեր, որոնք արվել են փողոցային մասնաճյուղի համար</string>
     <string name="credits_main_contributors_title">Հիմնական ներդրողներ</string>
     <string name="stats_are_syncing">Ձեր վիճակագրությունը դեռ համաժամեցվում է: Ստուգեք այս էկրանը ավելի ուշ:</string>
-    <string name="user_statistics_country_wiki_link">Քարտեզագրում պորտալ %s</string>
+    <string name="user_statistics_country_wiki_link">Քարտեզագրում պորտալ %1$s</string>
     <string name="user_statistics_filter_by_country">ըստ երկրի</string>
     <string name="user_statistics_filter_by_quest_type">ըստ որոնման տեսակի</string>
     <string name="user_profile_global_rank">Համաշխարհային
 աստիճան</string>
     <string name="user_profile_local_rank">Դասակարգել
-%s</string>
+%1$s</string>
     <string name="user_profile_days_active">Օր
 ակտիվ</string>
     <string name="user_profile_achievement_levels">Նվաճում
@@ -671,8 +671,8 @@
     <string name="quest_board_type_map_description">Եթե ​​խորհուրդը որոշակի թեմայի մասին է, ապա նշեք այն, անկախ նրանից, թե արդյոք այն նույնպես ներառում է քարտեզ: Օրինակ, հասարակական տրանսպորտի խորհուրդը կարող է ունենալ ավտոբուսի երթուղու քարտեզ: Եթե ​​թեման նշված չէ առկա պատասխանների մեջ, փոխարենը հաշվի առեք գրությունը թողնելը:</string>
     <string name="quest_streetName_menuItem_international">միջազգային</string>
     <string name="quest_buildingType_terrace2">Տող տներ</string>
-    <string name="at_housename">Տան անուն %s</string>
-    <string name="at_housenumber">Տան համարը %s</string>
+    <string name="at_housename">Տան անուն %1$s</string>
+    <string name="at_housenumber">Տան համարը %1$s</string>
     <string name="quest_openingHours_add_off_days">Ավելացնել օրեր</string>
     <string name="quest_openingHours_off_day">Անշարժ</string>
     <string name="quest_openingHours_unspecified_range">Նշված չէ</string>
@@ -706,11 +706,11 @@
     <string name="quest_charging_station_operator_title">Ով է այս լիցքավորման կայանի օպերատորը:</string>
     <string name="link_indoorequal_description">Բացահայտեք առեւտրի փակ քարտեզներ, երկաթուղային կայաններ եւ այլն:</string>
     <string name="achievement_rare_title">Գանձերի որս</string>
-    <string name="achievement_rare_solved_X">Դուք գտել եւ լուծել եք %d որոնումներից, որոնք իսկապես հազվադեպ են ավարտվում, շնորհավորանքներ:</string>
+    <string name="achievement_rare_solved_X">Դուք գտել եւ լուծել եք %1$d որոնումներից, որոնք իսկապես հազվադեպ են ավարտվում, շնորհավորանքներ:</string>
     <string name="achievement_citizen_title">Քաղաքացի</string>
-    <string name="achievement_citizen_solved_X">Դուք լուծում եք %d որոնումներից, որոնք օգտակար են քաղաքում առօրյա կյանքի համար:</string>
+    <string name="achievement_citizen_solved_X">Դուք լուծում եք %1$d որոնումներից, որոնք օգտակար են քաղաքում առօրյա կյանքի համար:</string>
     <string name="achievement_outdoors_title">Դրսում</string>
-    <string name="achievement_outdoors_solved_X">Դուք լուծել եք %d որոնում, որոնք օգտակար են բացօթյա մարդկանց համար:</string>
+    <string name="achievement_outdoors_solved_X">Դուք լուծել եք %1$d որոնում, որոնք օգտակար են բացօթյա մարդկանց համար:</string>
     <string name="quest_pedestrian_crossing_island">Արդյոք այս հետիոտնային անցումը կղզի ունի:</string>
     <string name="quest_generic_answer_noSign">Նշան չկա</string>
     <string name="quest_steps_ramp_separate_wheelchair">Արդյոք սայլակի թեքահարթակը ցուցադրվում է որպես առանձին ձեւ:</string>
@@ -733,7 +733,7 @@
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">Այն ունի երկկողմանի ձախ շրջադարձուղի</string>
     <string name="quest_address_answer_no_housenumber_message2b">Սա ճիշտ է:</string>
     <string name="quest_maxheight_below_bridge_title">Որն է կամրջի տակ գտնվող բարձրության սահմանը:</string>
-    <string name="quest_maxheight_split_way_hint">Եթե ​​այն չի կիրառվում ամբողջ ճանապարհով, հաշվի առեք պատասխանել «%s» -ին:</string>
+    <string name="quest_maxheight_split_way_hint">Եթե ​​այն չի կիրառվում ամբողջ ճանապարհով, հաշվի առեք պատասխանել «%1$s» -ին:</string>
     <string name="quest_tactile_paving_kerb_title">Այստեղ կա այս եզրափակչի շոշափելի սալահատակ:</string>
     <string name="quest_kerb_height_title">Որն է այս եզրագծի բարձրությունը:</string>
     <string name="quest_kerb_height_flush">Նույն մակարդակը, ինչպես ճանապարհի մակերեսը</string>
@@ -791,9 +791,9 @@
     <string name="hid_action_description">Դուք թաքցրել եք</string>
     <string name="split_way_action_description">Դուք բաժանում եք ճանապարհը</string>
     <string name="deleted_poi_action_description">Դուք ջնջել եք այն</string>
-    <string name="added_tag_action_title">Ավելացված է %s</string>
-    <string name="removed_tag_action_title">Հանված %s</string>
-    <string name="changed_tag_action_title">Թարմացվել է %s</string>
+    <string name="added_tag_action_title">Ավելացված է %1$s</string>
+    <string name="removed_tag_action_title">Հանված %1$s</string>
+    <string name="changed_tag_action_title">Թարմացվել է %1$s</string>
     <string name="pref_title_delete_cache">Delete նջել քեշը</string>
     <string name="pref_title_delete_cache_summary">Եթե ​​կարծում եք, որ որոշ տվյալներ հնացած են</string>
     <string name="delete_confirmation">Ջնջել</string>
@@ -843,7 +843,7 @@
     <string name="about_title_faq">ՀՏՀ</string>
     <string name="quest_buildingLevels_title2">Քանի մակարդակ ունի նկուղը այս շենքը:</string>
     <string name="quest_buildingLevels_title_buildingPart2">Քանի մակարդակ է նկուղից վերեւում:</string>
-    <string name="pref_subtitle_quests_preset_name">Նախադրված. %s</string>
+    <string name="pref_subtitle_quests_preset_name">Նախադրված. %1$s</string>
     <string name="default_disabled_msg_roofShape">Այս որոնման տեսակը անջատված է լռելյայն, քանի որ տանիքի ձեւերը հաճախ հեշտությամբ չեն երեւում փողոցից: Այս որոնման տեսակը նույնպես բավականին ժամանակատար է. Շատ դեպքերում դա ավելի հեշտ է եւ ավելի արդյունավետ, դա տանը քարտեզագրելու համար:</string>
     <string name="quest_religion_animist">Անիմիստ</string>
     <string name="quest_construction_steps_title">Արդյոք այս քայլերն ավարտված են:</string>
@@ -868,7 +868,7 @@
     <string name="quest_presets_preset_name">Նախադրված անուն</string>
     <string name="quest_presets_default_name">Լռելյայն</string>
     <string name="quest_presets_selected">Ընտրված</string>
-    <string name="quest_presets_delete_message">հանել նջել «%s»: Դրա համար որոնման ընտրությունը եւ պատվերը անփոխարինելի կլինեն:</string>
+    <string name="quest_presets_delete_message">հանել նջել «%1$s»: Դրա համար որոնման ընտրությունը եւ պատվերը անփոխարինելի կլինեն:</string>
     <string name="notification_syncing">Համաժամեցման տվյալներ …</string>
     <string name="notification_channel_sync">Համաժամացման տվյալներ</string>
     <string name="quest_board_type_sport">Սպորտ, վարժություններ</string>
@@ -906,7 +906,7 @@
     <string name="quest_barrier_bicycle_type_double">Chicane - պատնեշ յուրաքանչյուր կողմում</string>
     <string name="quest_barrier_bicycle_type_multiple">Chicane - ավելի քան երկու խոչընդոտ</string>
     <string name="language_default">Համակարգի լռելյայն</string>
-    <string name="on_floor">Հատակի վրա %s</string>
+    <string name="on_floor">Հատակի վրա %1$s</string>
     <string name="select_street_parking_orientation">Ընտրեք կողմնորոշումը դեպի ճանապարհը.</string>
     <string name="select_street_parking_position">Ընտրեք դիրքը.</string>
     <string name="select_street_parking_no">Ցանկացած նշան կամ ճանապարհի նշում այստեղ:</string>
@@ -972,7 +972,7 @@
     <string name="quest_smoothness_hint">🚲, 🚗, 🚙, … նշեք, թե որ մեքենայի համար մակերեսը պետք է օգտագործվի: Կարեւորը մեծ պատկերն է, քան միայնակ վնասները:</string>
     <string name="link_osmhydrant_description">Փնտրել, ավելացնել եւ խմբագրել հրշեջ կայաններ եւ հրդեհային հիդրաններ</string>
     <string name="achievement_lifesaver_title">Լուրեր</string>
-    <string name="achievement_lifesaver_solved_X">Դուք լուծել եք %d որոնումներից, որոնք օգնում են շտապ օգնության եւ առաջին պատասխանողներին:</string>
+    <string name="achievement_lifesaver_solved_X">Դուք լուծել եք %1$d որոնումներից, որոնք օգնում են շտապ օգնության եւ առաջին պատասխանողներին:</string>
     <string name="quest_fuelSelfService_title">Կարող եք այստեղ գազ մղել:</string>
     <string name="default_disabled_msg_difficult_and_time_consuming">Այս որոնման տեսակը անջատված է լռելյայն, քանի որ այն բավականին ժամանակատար է եւ հաճախ դժվար է ճիշտ ընտրություն կատարել: Դուք պետք է միայն միացնեք այս որոնման տեսակը, եթե իսկապես պարտավոր եք ավելացնել այսպիսի տվյալներ:</string>
     <string name="quest_smoothness_description_good_compacted_gravel">Կոշտ փաթեթավորված, շատ քիչ չամրացված մանրախիճ կամ ավազ</string>
@@ -1101,7 +1101,7 @@
     <string name="quest_camp_type_tents_only">Միայն վրաններ</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">Տրամագիծը սովորաբար լինում է %1$d-ի և %2$d-ի միջև։</string>
     <string name="quest_recycling_type_pet">Միայն PET</string>
-    <string name="street_parking_street_width">Փողոցի լայնություն` %s</string>
+    <string name="street_parking_street_width">Փողոցի լայնություն` %1$s</string>
     <string name="overlay_street_parking">Կայանատեղիներ</string>
     <string name="link_opencampingmap_description">Ճամբարների քարտեզ</string>
     <string name="quest_address_street_street_name_label">Փողոցի անուն`</string>

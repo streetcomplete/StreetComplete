@@ -195,7 +195,7 @@ Als er geen verkeersborden staan die van toepassing zijn op het geselecteerde st
     <string name="quest_sport_roller_skating">Rolschaatsen</string>
     <string name="quest_wheelchairAccess_limited_description_business">"Gedeeltelijk" betekent dat er een hooguit enkelhoge opstap is om het gebouw te binnen te gaan en dat de meeste ruimtes binnen rolstoeltoegankelijk zijn.</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">"Gedeeltelijk" betekent dat er een hooguit enkelhoge opstap is om naar binnen te gaan.</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">Afkorting in de naam %s?</string>
+    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">Afkorting in de naam %1$s?</string>
     <string name="quest_recycling_type_title">Welke soort recycling is dit?</string>
     <string name="recycling_centre">Recyclinginleverpunt</string>
     <string name="overground_recycling_container">Container bovengronds</string>
@@ -217,14 +217,14 @@ Anders kan je een ander toetsenbord downloaden in de App Store. Populaire toetse
     <string name="credits_contributors_title">Code mede-auteurs</string>
     <string name="credits_author_title">Auteur en onderhouder</string>
     <string name="quest_maxspeed_answer_living_street">Dit is een woonerf</string>
-    <string name="quest_maxspeed_answer_living_street_confirmation_title">Dus, is er zo\'n bord?</string>
+    <string name="quest_maxspeed_answer_living_street_confirmation_title">Dus, is er zo'n bord?</string>
     <string name="quest_orchard_produce_title">Wat wordt hier geteeld?</string>
     <string name="produce_grapes">Druiven</string>
     <string name="produce_agaves">Agave</string>
     <string name="produce_almonds">Amandelen</string>
     <string name="produce_apples">Appels</string>
     <string name="produce_apricots">Abrikozen</string>
-    <string name="produce_avocados">Avocado\'s</string>
+    <string name="produce_avocados">Avocado's</string>
     <string name="produce_bananas">Bananen</string>
     <string name="produce_blueberries">Bosbessen</string>
     <string name="produce_cacao">Cacao</string>
@@ -237,21 +237,21 @@ Anders kan je een ander toetsenbord downloaden in de App Store. Populaire toetse
     <string name="produce_dates">Dadels</string>
     <string name="produce_figs">Vijgen</string>
     <string name="produce_grapefruits">Grapefruits</string>
-    <string name="produce_guavas">Guave\'s</string>
+    <string name="produce_guavas">Guave's</string>
     <string name="produce_hazelnuts">Hazelnoten</string>
     <string name="produce_hops">Hop</string>
     <string name="produce_jojoba">Jojoba</string>
-    <string name="produce_kiwis">Kiwi\'s</string>
+    <string name="produce_kiwis">Kiwi's</string>
     <string name="produce_kola_nuts">Kolanoten</string>
     <string name="produce_lemons">Citroenen</string>
     <string name="produce_limes">Limoenen</string>
-    <string name="produce_mangos">Mango\'s</string>
+    <string name="produce_mangos">Mango's</string>
     <string name="produce_mate">Maté</string>
     <string name="produce_nutmeg">Nootmuskaat</string>
     <string name="produce_oil_palms">Palmolie</string>
     <string name="produce_olives">Olijven</string>
     <string name="produce_oranges">Sinaasappelen</string>
-    <string name="produce_papayas">Papaya\'s</string>
+    <string name="produce_papayas">Papaya's</string>
     <string name="produce_peaches">Perziken</string>
     <string name="produce_pears">Peren</string>
     <string name="produce_chili">Chilipeper</string>
@@ -351,7 +351,7 @@ Anders kan je een ander toetsenbord downloaden in de App Store. Populaire toetse
     <string name="quest_religion_for_place_of_worship_answer_multi">Verschillende religies</string>
     <string name="quest_religion_sikh">Het Sikhisme</string>
     <string name="quest_religion_jain">Het Jaïnisme</string>
-    <string name="quest_religion_bahai">Het Bahá\'í-geloof</string>
+    <string name="quest_religion_bahai">Het Bahá'í-geloof</string>
     <string name="quest_religion_caodaist">Het Caodaisme</string>
     <string name="quest_religion_chinese_folk">De Chinese-Volksreligie</string>
     <string name="quest_religion_for_wayside_shrine_title">Welke religie wordt vertegenwoordigd door dit heiligdom of gedenkteken?</string>
@@ -375,7 +375,7 @@ Anders kan je een ander toetsenbord downloaden in de App Store. Populaire toetse
     <string name="quest_construction_footway_title">Is dit voetpad voltooid?</string>
     <string name="quest_construction_generic_title">Is deze weg voltooid?</string>
     <string name="quest_construction_building_title">Is dit gebouw voltooid?</string>
-    <string name="questList_disabled_in_country">Nooit getoond in %s</string>
+    <string name="questList_disabled_in_country">Nooit getoond in %1$s</string>
     <string name="quest_select_hint_most_specific">Selecteer het meest specifieke dat past:</string>
     <string name="quest_generic_item_confirmation">Ben je er zeker van dat je dit niet specifieker kunt benoemen?</string>
     <string name="privacy_html_third_party_quest_sources">&lt;p&gt;Voor sommige vragen wordt er extra informatie van derde partijen gedownload.&lt;/p&gt;</string>
@@ -428,7 +428,7 @@ Anders kan je een ander toetsenbord downloaden in de App Store. Populaire toetse
     <string name="quest_buildingType_university">Universiteitsgebouw</string>
     <string name="quest_buildingType_government">Overheidsgebouw</string>
     <string name="quest_buildingType_carport">Carport</string>
-    <string name="quest_buildingType_carport_description">Een dak waar auto\'s onder gestald kunnen worden</string>
+    <string name="quest_buildingType_carport_description">Een dak waar auto's onder gestald kunnen worden</string>
     <string name="quest_buildingType_garage">Enkele garage</string>
     <string name="quest_buildingType_garages">Meerdere garages</string>
     <string name="quest_buildingType_parking">Parkeergebouw</string>
@@ -470,7 +470,7 @@ Anders kan je een ander toetsenbord downloaden in de App Store. Populaire toetse
     <string name="quest_noteDiscussion_closed2">Gesloten door %1$s, %2$s</string>
     <string name="quest_noteDiscussion_reopen2">Heropend door %1$s, %2$s</string>
     <string name="quest_noteDiscussion_hide2">Verborgen door %1$s, %2$s</string>
-    <string name="privacy_html_image_upload2">&lt;p&gt;Foto\'s die je aan een notitie toevoegt, worden naar mijn server geüpload en enkele dagen nadat deze notitie is verwerkt, verwijderd. De metagegevens worden verwijderd voordat ze worden geüpload.&lt;/p&gt;</string>
+    <string name="privacy_html_image_upload2">&lt;p&gt;Foto's die je aan een notitie toevoegt, worden naar mijn server geüpload en enkele dagen nadat deze notitie is verwerkt, verwijderd. De metagegevens worden verwijderd voordat ze worden geüpload.&lt;/p&gt;</string>
     <string name="action_deselect_all">Deselecteer alles</string>
     <string name="quest_buildingType_retail_description">Inclusief gebouwen van restaurants, cafés, winkels…</string>
     <string name="quest_openingHours_timeSelect_next">Volgende</string>
@@ -486,7 +486,7 @@ Anders kan je een ander toetsenbord downloaden in de App Store. Populaire toetse
     <string name="quest_motorcycleParkingCoveredStatus_title">Is deze motorparkeerplaats overdekt?</string>
     <string name="default_disabled_msg_maxspeed">Dit type vraag is standaard uitgeschakeld, omdat je normaal een hele straat moet controleren op snelheidsborden/signalen, niet alleen het aangegeven stuk weg. Het kan daarom soms veel moeite kosten om één enkele vraag op te lossen.</string>
     <string name="pref_title_quests_restore_hidden">Herstel verborgen vragen</string>
-    <string name="on_level">op niveau %s</string>
+    <string name="on_level">op niveau %1$s</string>
     <string name="underground">ondergronds</string>
     <string name="quest_sidewalk_value_yes">trottoir</string>
     <string name="quest_sidewalk_value_no">geen trottoir</string>
@@ -579,8 +579,8 @@ Tenslotte, zorg altijd voor je eigen veiligheid. Wees bewust van je omgeving en 
     <string name="achievements_empty">Je hebt nog geen bijdragen.</string>
     <string name="links_empty">Je hebt nog geen links</string>
     <string name="quests_empty">Je hebt nog geen antwoorden gepubliceerd.</string>
-    <string name="unsynced_quests_description">Plus %d nog niet gepubliceerde antwoorden.</string>
-    <string name="unsynced_quests_not_logged_in_description">Je hebt %d nog niet gepubliceerde antwoorden. Je moet inloggen om ze te kunnen uploaden.</string>
+    <string name="unsynced_quests_description">Plus %1$d nog niet gepubliceerde antwoorden.</string>
+    <string name="unsynced_quests_not_logged_in_description">Je hebt %1$d nog niet gepubliceerde antwoorden. Je moet inloggen om ze te kunnen uploaden.</string>
     <string name="user_quests_title">Beantwoorde vragen</string>
     <string name="user_achievements_title">Prestaties</string>
     <string name="user_links_title">Linkverzameling</string>
@@ -613,8 +613,8 @@ Tenslotte, zorg altijd voor je eigen veiligheid. Wees bewust van je omgeving en 
     <string name="link_learnosm_description">Nieuw bij OpenStreetMap? Dit is een beginnershandleiding</string>
     <string name="link_neis_one_description">Een enorme verzameling statistieken voor OpenStreetMap-bijdragers, zoals waar en hoe je hebt bijgedragen, wie er nog meer om je heen is plus scoreborden</string>
     <string name="link_welcome_mat_description">Algemene informatie over OpenStreetMap en hoe u als organisatie met OSM kunt werken</string>
-    <string name="link_mapillary_description">Een service en app voor het delen van door vrijwilligers gemaakte foto\'s op straatniveau met expliciete toestemming voor gebruik voor OSM.</string>
-    <string name="link_openstreetcam_description">Een service en app voor het delen van door vrijwilligers gemaakte foto\'s op straatniveau met expliciete toestemming voor gebruik voor OSM</string>
+    <string name="link_mapillary_description">Een service en app voor het delen van door vrijwilligers gemaakte foto's op straatniveau met expliciete toestemming voor gebruik voor OSM.</string>
+    <string name="link_openstreetcam_description">Een service en app voor het delen van door vrijwilligers gemaakte foto's op straatniveau met expliciete toestemming voor gebruik voor OSM</string>
     <string name="link_openrouteservice_wheelchair_description">Bocht-voor-bochtnavigatie voor rolstoelgebruikers</string>
     <string name="link_nominatim_description">De geocoder voor OSM-gegevens, gebruikt door veel andere diensten</string>
     <string name="link_city_roads_description">Geef alle wegen van een stad weer, om af te drukken op t-shirts, mokken, …</string>
@@ -632,28 +632,28 @@ Tenslotte, zorg altijd voor je eigen veiligheid. Wees bewust van je omgeving en 
     <string name="achievement_first_edit_title">Eerste vraag opgelost</string>
     <string name="achievement_first_edit_description">Welkom bij de OpenStreetMap-community! In je profielscherm kun je meer informatie zien over elk vraagtype dat je hebt opgelost.</string>
     <string name="achievement_surveyor_title">Landmeter</string>
-    <string name="achievement_surveyor_solved_X">Je heb %d vragen opgelost! Blijf doorgaan met het ontgrendelen van meer prestaties die links bevatten naar OSM en andere kaartgerelateerde apps en projecten!</string>
+    <string name="achievement_surveyor_solved_X">Je heb %1$d vragen opgelost! Blijf doorgaan met het ontgrendelen van meer prestaties die links bevatten naar OSM en andere kaartgerelateerde apps en projecten!</string>
     <string name="achievement_regular_title">Regelmatig</string>
-    <string name="achievement_regular_description">Je hebt %d dagen bijgedragen aan OSM met deze app! Vaste bijdragers zijn de ruggengraat van OSM, bedankt voor uw toewijding! ❤</string>
+    <string name="achievement_regular_description">Je hebt %1$d dagen bijgedragen aan OSM met deze app! Vaste bijdragers zijn de ruggengraat van OSM, bedankt voor uw toewijding! ❤</string>
     <string name="achievement_bicyclist_title">Fietser</string>
-    <string name="achievement_bicyclist_solved_X">Je hebt %d vragen opgelost die fietsers helpen!</string>
+    <string name="achievement_bicyclist_solved_X">Je hebt %1$d vragen opgelost die fietsers helpen!</string>
     <string name="achievement_wheelchair_title">Mobiliteit</string>
-    <string name="achievement_wheelchair_solved_X">Je hebt %d vragen opgelost waarmee rolstoelgebruikers de stad kunnen verkennen!</string>
+    <string name="achievement_wheelchair_solved_X">Je hebt %1$d vragen opgelost waarmee rolstoelgebruikers de stad kunnen verkennen!</string>
     <string name="achievement_postman_title">Postbode</string>
-    <string name="achievement_postman_solved_X">Je hebt geholpen %d adressen te lokaliseren!
+    <string name="achievement_postman_solved_X">Je hebt geholpen %1$d adressen te lokaliseren!
 Deze gegevens zijn niet alleen essentieel voor de postbode, maar ook voor elk navigatiesysteem.</string>
     <string name="achievement_building_title">Hoogbouw</string>
-    <string name="achievement_building_solved_X">Je hebt %d gebouw-gerelateerde vragen opgelost.
+    <string name="achievement_building_solved_X">Je hebt %1$d gebouw-gerelateerde vragen opgelost.
 Let op dat deze app pas naar het huisnummer van een gebouw vraagt nadat het gebouwtype is bepaald.</string>
     <string name="achievement_blind_title">Zesde zintuig</string>
-    <string name="achievement_blind_solved_X">Je hebt %d vragen beantwoord die interessant zijn voor slechtzienden.</string>
+    <string name="achievement_blind_solved_X">Je hebt %1$d vragen beantwoord die interessant zijn voor slechtzienden.</string>
     <string name="achievement_pedestrian_title">Voetganger</string>
-    <string name="achievement_pedestrian_solved_X">Je hebt %d vragen opgelost die interessant zijn voor mensen te voet!</string>
+    <string name="achievement_pedestrian_solved_X">Je hebt %1$d vragen opgelost die interessant zijn voor mensen te voet!</string>
     <string name="achievement_veg_title">Vriendelijk voor dieren</string>
-    <string name="achievement_veg_solved_X">Je hebt %d vragen opgelost die interessant zijn voor mensen die geen vlees eten!</string>
+    <string name="achievement_veg_solved_X">Je hebt %1$d vragen opgelost die interessant zijn voor mensen die geen vlees eten!</string>
     <string name="achievement_car_title">Op de weg</string>
-    <string name="achievement_car_solved_X">Je hebt %d vragen opgelost die de details van straten verbeteren en zo de straat in OpenStreetMap gezet!</string>
-    <string name="unread_messages_message">Je hebt %d ongelezen berichten in je postvak</string>
+    <string name="achievement_car_solved_X">Je hebt %1$d vragen opgelost die de details van straten verbeteren en zo de straat in OpenStreetMap gezet!</string>
+    <string name="unread_messages_message">Je hebt %1$d ongelezen berichten in je postvak</string>
     <string name="unread_messages_button">Open postvak</string>
     <string name="action_about2">Over</string>
     <string name="map_btn_menu">Menu</string>
@@ -663,11 +663,11 @@ Let op dat deze app pas naar het huisnummer van een gebouw vraagt nadat het gebo
     <string name="credits_projects_contributors_title">Projecten gemaakt voor StreetComplete</string>
     <string name="credits_main_contributors_title">Belangrijkste bijdragers</string>
     <string name="stats_are_syncing">Je statistieken worden nog gesynchroniseerd. Probeer het later opnieuw.</string>
-    <string name="user_statistics_country_wiki_link">Mappers portaal %s</string>
+    <string name="user_statistics_country_wiki_link">Mappers portaal %1$s</string>
     <string name="user_statistics_filter_by_country">per land</string>
     <string name="user_statistics_filter_by_quest_type">per vraagtype</string>
     <string name="user_profile_global_rank">Wereldwijde rang</string>
-    <string name="user_profile_local_rank">Rang in %s</string>
+    <string name="user_profile_local_rank">Rang in %1$s</string>
     <string name="user_profile_days_active">Dagen actief</string>
     <string name="user_profile_achievement_levels">Prestatieniveaus</string>
     <string name="quest_address_street_no_named_streets">Het hoort niet bij een straat met een naam.</string>
@@ -691,8 +691,8 @@ Let op dat deze app pas naar het huisnummer van een gebouw vraagt nadat het gebo
     <string name="quest_board_type_map_description">Als het bord over een bepaald onderwerp gaat, geef dit dan aan, ongeacht of het ook een kaart bevat. Zo kan een OV-bord een busroutekaart hebben. Als het onderwerp niet tussen de beschikbare antwoorden staat, overweeg dan om een notitie achter te laten.</string>
     <string name="quest_streetName_menuItem_international">Internationaal</string>
     <string name="quest_buildingType_terrace2">Rijtjeshuizen</string>
-    <string name="at_housename">Naam van het gebouw %s</string>
-    <string name="at_housenumber">huisnummer %s</string>
+    <string name="at_housename">Naam van het gebouw %1$s</string>
+    <string name="at_housenumber">huisnummer %1$s</string>
     <string name="quest_openingHours_add_off_days">Voeg sluitingsdagen toe</string>
     <string name="quest_openingHours_off_day">Sluitingsdag</string>
     <string name="quest_openingHours_unspecified_range">Niet aangegeven</string>
@@ -726,11 +726,11 @@ Let op dat deze app pas naar het huisnummer van een gebouw vraagt nadat het gebo
     <string name="quest_charging_station_operator_title">Welk bedrijf exploiteert dit oplaadpunt?</string>
     <string name="link_indoorequal_description">Ontdek kaarten van de binnenkant van winkelcentra, stations, enz.</string>
     <string name="achievement_rare_title">Op jacht naar de schat</string>
-    <string name="achievement_rare_solved_X">Je hebt %d vragen gevonden en beantwoord die zelden ingevuld worden, gefeliciteerd!</string>
+    <string name="achievement_rare_solved_X">Je hebt %1$d vragen gevonden en beantwoord die zelden ingevuld worden, gefeliciteerd!</string>
     <string name="achievement_citizen_title">Burger</string>
-    <string name="achievement_citizen_solved_X">Je hebt %d vragen beantwoord die nuttig zijn voor het dagelijks leven in de stad.</string>
+    <string name="achievement_citizen_solved_X">Je hebt %1$d vragen beantwoord die nuttig zijn voor het dagelijks leven in de stad.</string>
     <string name="achievement_outdoors_title">In de vrije natuur</string>
-    <string name="achievement_outdoors_solved_X">Je hebt %d vragen opgelost die nuttig zijn voor mensen in de vrije natuur!</string>
+    <string name="achievement_outdoors_solved_X">Je hebt %1$d vragen opgelost die nuttig zijn voor mensen in de vrije natuur!</string>
     <string name="quest_pedestrian_crossing_island">Heeft deze oversteekplaats een vluchtheuvel?</string>
     <string name="quest_generic_answer_noSign">Er is geen bord</string>
     <string name="quest_steps_ramp_separate_wheelchair">Is de rolstoelhelling apart aangegeven op de kaart?</string>
@@ -745,15 +745,15 @@ Let op dat deze app pas naar het huisnummer van een gebouw vraagt nadat het gebo
     <string name="quest_buildingType_abandoned_description">ongebruikt gebouw waarvan de oorspronkelijke functie of bestemming onbekend is</string>
     <string name="quest_buildingType_ruins">Ruïne</string>
     <string name="quest_buildingType_ruins_description">vervallen, verwoest en niet-identificeerbaar gebouw</string>
-    <string name="quest_charging_station_capacity_title">Hoeveel auto\'s kunnen tegelijk bij dit oplaadstation worden opgeladen?</string>
+    <string name="quest_charging_station_capacity_title">Hoeveel auto's kunnen tegelijk bij dit oplaadstation worden opgeladen?</string>
     <string name="link_disaster_ninja_description">Kaart met recente natuurrampen, interessant voor humanitaire kaartenmakers. Toont ook veel interessante statistieken om te analyseren hoe goed in kaart gebracht en actueel plaatsen zijn.</string>
-    <string name="quest_lanes_title">Hoeveel rijstroken voor auto\'s heeft deze weg?</string>
+    <string name="quest_lanes_title">Hoeveel rijstroken voor auto's heeft deze weg?</string>
     <string name="quest_lanes_answer_lanes">Gemarkeerde rijstroken</string>
     <string name="quest_lanes_answer_noLanes">Geen gemarkeerde rijstroken</string>
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">Het heeft een tweerichtingsstrook voor linksaf slaan</string>
     <string name="quest_address_answer_no_housenumber_message2b">Is dit correct?</string>
     <string name="quest_maxheight_below_bridge_title">Wat is de maximumhoogte onder deze brug?</string>
-    <string name="quest_maxheight_split_way_hint">Als het niet voor de hele weg geldt, overweeg dan "%s" te antwoorden.</string>
+    <string name="quest_maxheight_split_way_hint">Als het niet voor de hele weg geldt, overweeg dan "%1$s" te antwoorden.</string>
     <string name="quest_tactile_paving_kerb_title">Is er voelbare bestrating bij deze stoeprand?</string>
     <string name="quest_kerb_height_title">Wat is de hoogte van deze stoeprand?</string>
     <string name="quest_kerb_height_flush">Even hoog als de weg</string>
@@ -775,7 +775,7 @@ Let op dat deze app pas naar het huisnummer van een gebouw vraagt nadat het gebo
     <string name="quest_shop_gone_replaced_answer_hint">Voer de soort winkel hier in</string>
     <string name="quest_shop_vacant_type_title">Deze winkel stond leeg. Wat is hier nu?</string>
     <string name="quest_lanes_answer_lanes_odd2">Het aantal rijstroken verschilt per kant.</string>
-    <string name="default_disabled_msg_go_inside_regional_warning">Dit type vraag is standaard uitgeschakeld omdat het in sommige regio\'s niet nuttig is en je waarschijnlijk naar binnen moet gaan om een ​​vraag van dit type te kunnen beantwoorden.</string>
+    <string name="default_disabled_msg_go_inside_regional_warning">Dit type vraag is standaard uitgeschakeld omdat het in sommige regio's niet nuttig is en je waarschijnlijk naar binnen moet gaan om een ​​vraag van dit type te kunnen beantwoorden.</string>
     <string name="quest_dietType_explanation_kosher">Koosjere producten moeten worden bereid volgens speciale regels, waarbij kasjroet-certificeringsinstanties de producten in overeenstemming certificeren.</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">Hier is geen fietspad.</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">Tik zoals gewoonlijk op de ene kant van de afbeelding, selecteer een passend antwoord en doe hetzelfde voor de andere kant.
@@ -809,9 +809,9 @@ Let op alle beschikbare opties: sommige gevallen liggen niet voor de hand, zoals
     <string name="hid_action_description">Je hebt het verborgen</string>
     <string name="split_way_action_description">Je hebt de weg gesplitst</string>
     <string name="deleted_poi_action_description">Je hebt het verwijderd</string>
-    <string name="added_tag_action_title">%s toegevoegd</string>
-    <string name="removed_tag_action_title">%s verwijderd</string>
-    <string name="changed_tag_action_title">Geüpdate naar %s</string>
+    <string name="added_tag_action_title">%1$s toegevoegd</string>
+    <string name="removed_tag_action_title">%1$s verwijderd</string>
+    <string name="changed_tag_action_title">Geüpdate naar %1$s</string>
     <string name="pref_title_delete_cache">Verwijder cachegeheugen</string>
     <string name="pref_title_delete_cache_summary">Als je denkt dat sommige gegevens verouderd zijn</string>
     <string name="delete_confirmation">Verwijder</string>
@@ -861,8 +861,8 @@ Gegevens worden ververst na %1$s dagen en ongebruikte gegevens worden automatisc
     <string name="about_title_faq">Veelgestelde vragen</string>
     <string name="quest_buildingLevels_title2">Hoeveel verdiepingen boven de kelder heeft dit gebouw?</string>
     <string name="quest_buildingLevels_title_buildingPart2">Hoeveel verdiepingen boven de kelder heeft dit gebouwdeel?</string>
-    <string name="pref_subtitle_quests_preset_name">Voorinstelling: %s</string>
-    <string name="default_disabled_msg_roofShape">Dit type vraag is standaard uitgeschakeld, omdat de dakvormen vaak niet gemakkelijk te zien zijn vanaf de straat. Deze vraag kost ook veel tijd; meestal is het makkelijker en efficiënter om dit thuis met hulp van luchtfoto\'s aan de kaart toe te voegen</string>
+    <string name="pref_subtitle_quests_preset_name">Voorinstelling: %1$s</string>
+    <string name="default_disabled_msg_roofShape">Dit type vraag is standaard uitgeschakeld, omdat de dakvormen vaak niet gemakkelijk te zien zijn vanaf de straat. Deze vraag kost ook veel tijd; meestal is het makkelijker en efficiënter om dit thuis met hulp van luchtfoto's aan de kaart toe te voegen</string>
     <string name="quest_religion_animist">Animisme</string>
     <string name="quest_construction_steps_title">Is deze trap voltooid?</string>
     <string name="pref_quests_deselect_all">Alle vragen deselecteren?</string>
@@ -886,7 +886,7 @@ Gegevens worden ververst na %1$s dagen en ongebruikte gegevens worden automatisc
     <string name="quest_presets_preset_name">Voorinstelling naam</string>
     <string name="quest_presets_default_name">Standaardnaam</string>
     <string name="quest_presets_selected">Gekozen</string>
-    <string name="quest_presets_delete_message">Voorinstelling "%s" verwijderen? De vraagkeuze en -volgorde zal voorgoed verloren gaan.</string>
+    <string name="quest_presets_delete_message">Voorinstelling "%1$s" verwijderen? De vraagkeuze en -volgorde zal voorgoed verloren gaan.</string>
     <string name="notification_syncing">Gegevens synchronizeren…</string>
     <string name="notification_channel_sync">Synchronizeer gegevens</string>
     <string name="quest_board_type_sport">Sport, Oefeningen</string>
@@ -924,7 +924,7 @@ Gegevens worden ververst na %1$s dagen en ongebruikte gegevens worden automatisc
     <string name="quest_barrier_bicycle_type_double">Chicane - doorgang tussen twee hekken</string>
     <string name="quest_barrier_bicycle_type_multiple">Chicane - doorgang door meer dan 2 hekken</string>
     <string name="language_default">Standaardinstelling</string>
-    <string name="on_floor">op verdieping %s</string>
+    <string name="on_floor">op verdieping %1$s</string>
     <string name="select_street_parking_orientation">Selecteer de postitie ten op zichte van de rijbaan:</string>
     <string name="select_street_parking_position">Selecteer positie:</string>
     <string name="select_street_parking_no">Zijn er hier borden of weg makeringen?</string>
@@ -990,7 +990,7 @@ U kunt ook een notitie achterlaten (met een foto)</string>
     <string name="quest_smoothness_hint">🚲, 🚗, 🚙, … geven aan voor welke voertuigen de ondergrond geschikt moet zijn. Waar het om gaat is het grote geheel in plaats van enkele schade.</string>
     <string name="link_osmhydrant_description">Zoek, voeg toe en bewerk brandweerkazernes en brandkranen</string>
     <string name="achievement_lifesaver_title">redder in nood</string>
-    <string name="achievement_lifesaver_solved_X">Je hebt %d vragen opgelost die hulpdiensten en eerstehulpverleners helpen!</string>
+    <string name="achievement_lifesaver_solved_X">Je hebt %1$d vragen opgelost die hulpdiensten en eerstehulpverleners helpen!</string>
     <string name="quest_fuelSelfService_title">Kunt u zelf tanken bij dit tankstation?</string>
     <string name="default_disabled_msg_difficult_and_time_consuming">Dit type vraag is standaard uitgeschakeld omdat het nogal tijdrovend en vaak moeilijk is om de juiste keuze te maken. Je moet dit type vraag alleen inschakelen als je echt toegewijd bent om dit soort gegevens toe te voegen.</string>
     <string name="quest_smoothness_description_good_compacted_gravel">Stevige ondergrond, heel weinig los grind of zand</string>
@@ -998,7 +998,7 @@ U kunt ook een notitie achterlaten (met een foto)</string>
     <string name="quest_barrier_road_intersection">Hoe wordt deze weg versperd?</string>
     <string name="quest_sidewalk_value_separate">trottoir, maar apart getoond op de kaart</string>
     <string name="no_camera_permission_warning_title">Camerarechten</string>
-    <string name="no_camera_permission_warning">De rechten zijn nodig om foto\'s te kunnen maken en om met de camera afstanden te meten.</string>
+    <string name="no_camera_permission_warning">De rechten zijn nodig om foto's te kunnen maken en om met de camera afstanden te meten.</string>
     <string name="ar_core_error_sdk_too_old">Deze app is te oud, probeer te updaten.</string>
     <string name="ar_core_tracking_error_bad_state">Er ging iets mis. Probeer de meting te herstarten.</string>
     <string name="ar_core_tracking_error_insufficient_light">Te donker hier</string>
@@ -1019,7 +1019,7 @@ Doe hetzelfde voor de andere zijde, als aanwezig.</string>
     <string name="quest_road_width_explanation">De rijbaanbreedte van stoeprand tot stoeprand: dit omvat alles op het straatoppervlak, zoals parkeren op straat of fietspaden op de rijbaan, maar sluit alles daarbuiten uit, zoals trottoirs, fietspaden of parkeren naast de rijbaan.</string>
     <string name="quest_sidewalk_answer_none">Helemaal geen trottoir</string>
     <string name="link_osmand_description">Mobiele app voor online en offline kaartweergave en navigatie</string>
-    <string name="link_sunders_description">Een kaart met camera\'s en bewakingsapparatuur</string>
+    <string name="link_sunders_description">Een kaart met camera's en bewakingsapparatuur</string>
     <string name="ar_core_tracking_error_no_plane_hit">Ga dichter naar de pijl maar pas op voor het verkeer!</string>
     <string name="quest_sidewalk_surface_title">Wat is het oppervlak van het trottoir hier?</string>
     <string name="quest_tactilePaving_incorrect">Alleen aan één kant</string>
@@ -1046,7 +1046,7 @@ Doe hetzelfde voor de andere zijde, als aanwezig.</string>
     <string name="quest_accepts_cash_title2">Wordt hier contante betaling geaccepteerd?</string>
     <string name="quest_address_street_title2">In welke straat is dit?</string>
     <string name="quest_airConditioning_title">Heeft deze plaats airconditioning?</string>
-    <string name="quest_baby_changing_table_title2">Heeft deze plek een plek om baby\'s te verschonen?</string>
+    <string name="quest_baby_changing_table_title2">Heeft deze plek een plek om baby's te verschonen?</string>
     <string name="quest_busStopBench_title2">Is er een bankje bij deze halte?</string>
     <string name="quest_busStopBin_title2">Is er een afvalbak bij deze halte?</string>
     <string name="quest_busStopLit_title2">Is deze halte verlicht?</string>
@@ -1153,7 +1153,7 @@ Doe hetzelfde voor de andere zijde, als aanwezig.</string>
     <string name="quest_camp_type_backcountry">Wildkamperen (geen faciliteiten)</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">Deze diameter lijkt onwaarschijnlijk, deze ligt meestal tussen %1$d en %2$d.</string>
     <string name="quest_recycling_type_pet">Alleen PET</string>
-    <string name="street_parking_street_width">Straatbreedte: %s</string>
+    <string name="street_parking_street_width">Straatbreedte: %1$s</string>
     <string name="overlay_street_parking">Parkeren op straat.</string>
     <string name="link_ohsomehex_description">Verken OSM data op verschillende schalen, van het grote geheel tot individuele objecten in ruimte en tijd</string>
     <string name="link_opencampingmap_description">Een kaart met kampeerplaatsen</string>
@@ -1200,7 +1200,7 @@ Doe hetzelfde voor de andere zijde, als aanwezig.</string>
     <string name="user_profile_current_week_title">Deze week</string>
     <string name="user_profile_dates_mapped">Dagen waarop je recentelijk voor Street Complete actief bent geweest</string>
     <string name="quest_cycleway_value_advisory_lane">aanbevolen fietsstrook</string>
-    <string name="urlconfig_scan_qr_code_again2">Scan na het installeren van de app de QR code opnieuw of klik op &lt;a href="%s"&gt;deze link&lt;/a&gt; om de voorinstelling toe te passen.</string>
+    <string name="urlconfig_scan_qr_code_again2">Scan na het installeren van de app de QR code opnieuw of klik op &lt;a href="%1$s"&gt;deze link&lt;/a&gt; om de voorinstelling toe te passen.</string>
     <string name="confirmation_replace_shop_title">Is dit een andere plaats?</string>
     <string name="confirmation_replace_shop_message">Maar dan moet ook de openingsuren, contact informatie etc. worden veranderd. </string>
     <string name="confirmation_replace_shop_yes">Andere plaats</string>
@@ -1210,7 +1210,7 @@ Doe hetzelfde voor de andere zijde, als aanwezig.</string>
 Nu verplaatsen?</string>
     <string name="node_moved_not_far_enough">Verplaats het alstublieft verder</string>
     <string name="node_moved_too_far">Te ver verplaatst. Overweeg een notitie achter te laten</string>
-    <string name="node_moved">Verplaatst met %s</string>
+    <string name="node_moved">Verplaatst met %1$s</string>
     <string name="move_node_description">Versleep de kaart om het element op de juiste positie te plaatsen. Gebruik de zoomfunctie en probeer zo precies mogelijk te zijn. Houd er rekening mee dat uw weergegeven locatie mogelijk minder exact is dan weergegeven.</string>
     <string name="move_node_action_description">Je hebt het element verplaatst</string>
     <string name="quest_cycleway_value_shoulder">geen, maar de vluchtstrook is bruikbaar voor fietsers</string>
@@ -1308,7 +1308,7 @@ Bovendien kun je met sommige lagen nieuwe gegevens toevoegen op de positie van h
     <string name="label_log_older_than">Tot</string>
     <string name="label_log_message_contains">Bericht bevat</string>
     <string name="title_logs_filters">Filter berichten</string>
-    <string name="pref_title_quests_restore_hidden_summary">Aantal verborgen vragen: %d</string>
+    <string name="pref_title_quests_restore_hidden_summary">Aantal verborgen vragen: %1$d</string>
     <string name="link_every_door_description">Krachtige POI-editor voor Android en iOS</string>
     <string name="link_mapcomplete_description">Verzameling thematische OSM-kaarten die elk één soort object tonen en waarmee u één soort object kunt bewerken</string>
     <string name="link_forum_description">Hulp nodig? Wil je lezen wat er aan de hand is? Kom samen, het bruist van de activiteiten van gemeenschappen over de hele wereld!</string>
@@ -1380,7 +1380,7 @@ Een verdieping telt als dakverdieping als er ramen in het dak zijn. Daken die ni
     <string name="quest_camp_power_supply_hint">Denk hierbij aan stopcontacten direct bij de kampeerplaatsen, stopcontacten in een servicegebouw dat toegankelijk is voor gasten, of een speciaal oplaadstation voor telefoons, laptops, etc.</string>
     <string name="quest_barrier_opening_width_bollard">Wat is de breedste doorgang die je hier kunt passeren?</string>
     <string name="user_profile_all_time_title">Totaal</string>
-    <string name="user_statistics_country_rank2">Rang in %s</string>
+    <string name="user_statistics_country_rank2">Rang in %1$s</string>
     <string name="quest_leafType_tree_is_just_a_stump">Het is een boomstronk</string>
     <string name="quest_board_name_title">Wat is de titel van dit informatiebord?</string>
     <string name="quest_crossing_hint">Een informeel pad dat een weg kruist:</string>
@@ -1424,7 +1424,7 @@ Een verdieping telt als dakverdieping als er ramen in het dak zijn. Daken die ni
     <string name="quest_dietType_explanation_glutenfree">Glutenvrije producten klaarmaken vereist kennis, omdat veel gewone specerijen en sauzen gluten kunnen bevatten. Glutenvrij eten is als zodanig gelabeld.</string>
     <string name="quest_construction_minor_title">Is het netwerk van kleine wegen hier compleet?</string>
     <string name="map_attribution">Kaart attributie</string>
-    <string name="link_panoramax_description">Een gratis en open source software en dienst zonder winstoogmerk om door het publiek gemaakte foto\'s op straatniveau te delen</string>
+    <string name="link_panoramax_description">Een gratis en open source software en dienst zonder winstoogmerk om door het publiek gemaakte foto's op straatniveau te delen</string>
     <string name="link_opengeofiction_description">Genoeg van de echte wereld in kaart brengen? Maak samen fantasiekaarten!</string>
     <string name="link_openclimbing_description">Een kaart voor klimsport</string>
     <string name="pref_title_zoom_buttons">Laat zoomknoppen zien</string>
@@ -1452,7 +1452,7 @@ Een verdieping telt als dakverdieping als er ramen in het dak zijn. Daken die ni
     <string name="compass">Kompas</string>
     <string name="quest_tracktype_grade2">Voornamelijk vast</string>
     <string name="quest_tracktype_grade3">Mengsel</string>
-    <string name="quest_housenumber_multiple_numbers_description2">Voer hier door komma\'s gescheiden getallen in.\nBijvoorbeeld 1,3 of 2b,4,6.</string>
+    <string name="quest_housenumber_multiple_numbers_description2">Voer hier door komma's gescheiden getallen in.\nBijvoorbeeld 1,3 of 2b,4,6.</string>
     <string name="quest_drinking_water_potable_unsigned2">Geen markering</string>
     <string name="or">of</string>
 </resources>

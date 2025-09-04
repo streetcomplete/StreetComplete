@@ -94,7 +94,7 @@ See rakendus ei jaga sinu GPSi asukohta mitte ühegi osapoolega. Seda kasutataks
 See rakendus suhtleb otseselt OSMi serveritega.&lt;br/&gt;
 Enne muudatuste üleslaadimist rakendus kontrollib minu serveris seda &lt;a href="https://www.westnordost.de/streetcomplete/banned_versions.txt"&gt;lihtsat tekstifaili&lt;/a&gt; ja tuvastab, et rakenduse versioon ei ole keelatud versioonide loendis. Sellise ennetava kontrolli eesmärk on tagada võmalus blokeerida võimalike vigaste rakenduste versioonide kasutamine ja sellega välistada vigaste andmete üleslaadimine OSMi serveritesse.&lt;/p&gt;</string>
     <string name="autosync_on">Sees</string>
-    <string name="autosync_only_on_wifi">Ainult Wi-Fi\'ga</string>
+    <string name="autosync_only_on_wifi">Ainult Wi-Fi'ga</string>
     <string name="autosync_off">Väljas</string>
     <string name="quest_streetSurface_title">Mis on selle tee pinnakate?</string>
     <string name="quest_surface_value_paved">Sillutatud (üldine)</string>
@@ -117,7 +117,7 @@ Enne muudatuste üleslaadimist rakendus kontrollib minu serveris seda &lt;a href
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">Kus see tänav asub?</string>
     <string name="quest_address_title">Mis on selle maja number?</string>
     <string name="store_listing_short_description">Rakendus OpenStreetMapi parandamiseks</string>
-    <string name="store_listing_full_description">Aita StreetComplete\'i abil OpenStreetMapi täiendada!
+    <string name="store_listing_full_description">Aita StreetComplete'i abil OpenStreetMapi täiendada!
 
 See rakendus leiab sinu lähikonnast puuduvad kaardiandmed ja kuvab need kaardil ülesannetena. Neid ülesandeid saad lahendada konkreetse asukoha vaatlemisel ja lihtsatele küsimustele vastates ning sellega täiendad kaardiandmeid.
 
@@ -196,7 +196,7 @@ Kui esiletõstetud teelõigul pole kogu tee ulatuses piirkiiruse liiklusmärke, 
     <string name="quest_sport_roller_skating">Rulluisutamine</string>
     <string name="quest_wheelchairAccess_limited_description_business">Osaliselt tähendab, et sissepääsu juures pole rohkem kui üks kuni pahkluu-kõrgune aste ning suurem osa ruumidest on ratastooliga ligipääsetavad.</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">Osaliselt tähendab, et ligipääsu juures pole rohkem kui üks kuni pahkluu-kõrgune aste.</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">Lühend nimes %s?</string>
+    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">Lühend nimes %1$s?</string>
     <string name="quest_recycling_type_title">Missugune jäätme- ja taaskasutusteenus see on?</string>
     <string name="recycling_centre">Jäätmejaam</string>
     <string name="overground_recycling_container">Taaskasutuskonteiner</string>
@@ -353,7 +353,7 @@ Osaline juurdepääs tähendab, et ratastooliga on võimalik tualettruumi sisse 
     <string name="quest_religion_for_place_of_worship_answer_multi">paljude uskude kasutuseses</string>
     <string name="quest_religion_sikh">Sikhism</string>
     <string name="quest_religion_jain">Džainism</string>
-    <string name="quest_religion_bahai">Baha\'i usk</string>
+    <string name="quest_religion_bahai">Baha'i usk</string>
     <string name="quest_religion_caodaist">Cao Dai</string>
     <string name="quest_religion_chinese_folk">Hiina rahvausk</string>
     <string name="quest_religion_for_wayside_shrine_title">Mis usuga on see pühamu seotud?</string>
@@ -377,7 +377,7 @@ Osaline juurdepääs tähendab, et ratastooliga on võimalik tualettruumi sisse 
     <string name="quest_construction_footway_title">Kas selle jalgtee ehitamine on lõppenud?</string>
     <string name="quest_construction_generic_title">Kas selle tee või raja ehitamine on lõppenud?</string>
     <string name="quest_construction_building_title">Kas hoone ehitamine on lõppenud?</string>
-    <string name="questList_disabled_in_country">Ei näidata kunagi riigis: %s</string>
+    <string name="questList_disabled_in_country">Ei näidata kunagi riigis: %1$s</string>
     <string name="quest_select_hint_most_specific">Vali üks mis kõige täpsemalt sobib:</string>
     <string name="quest_generic_item_confirmation">Kas sa oled kindel, et ei suuda seda täpsemalt tuvastada?</string>
     <string name="privacy_html_third_party_quest_sources">&lt;p&gt;Mõnede ülesannete puhul laaditakse alla täiendavaid andmeid kolmandatelt osapooltelt.&lt;/p&gt;</string>
@@ -488,7 +488,7 @@ Osaline juurdepääs tähendab, et ratastooliga on võimalik tualettruumi sisse 
     <string name="quest_motorcycleParkingCoveredStatus_title">Kas sel mootorrattaparklal on katus (mis kaitseb vihma eest)?</string>
     <string name="default_disabled_msg_maxspeed">Kuna sa peaksid ülesande lahendamiseks mitte selle esiletõstetud lõigu, vaid kogu tänava kiiruspiirangute märkide leidmiseks üle vaatama, siis see ülesande tüüp pole vaikimisi kasutusel. Tegemist võib olla väga ajamahuka tegevusega ühe ülesande lahendamiseks.</string>
     <string name="pref_title_quests_restore_hidden">Taasta peidetud ülesanded</string>
-    <string name="on_level">%s. korrusel</string>
+    <string name="on_level">%1$s. korrusel</string>
     <string name="underground">Maa all</string>
     <string name="quest_sidewalk_value_yes">kõnnitee</string>
     <string name="quest_sidewalk_value_no">kõnnitee puudub</string>
@@ -580,8 +580,8 @@ Ning lõpuks, palun tegutse turvaliselt - palun jälgi oma ümbruskonda ja liikl
     <string name="achievements_empty">Sul pole veel ühtegi saavutust</string>
     <string name="links_empty">Sul pole veel linke</string>
     <string name="quests_empty">Sa pole veel avaldanud ühtegi muudatust</string>
-    <string name="unsynced_quests_description">ning %d avaldamata muudatust.</string>
-    <string name="unsynced_quests_not_logged_in_description">Sul on %d avaldamata muudatust. Nende üleslaadimiseks palun logi sisse.</string>
+    <string name="unsynced_quests_description">ning %1$d avaldamata muudatust.</string>
+    <string name="unsynced_quests_not_logged_in_description">Sul on %1$d avaldamata muudatust. Nende üleslaadimiseks palun logi sisse.</string>
     <string name="user_quests_title">Muudatused</string>
     <string name="user_achievements_title">Saavutused</string>
     <string name="user_links_title">Linkide kogu</string>
@@ -633,44 +633,44 @@ Ning lõpuks, palun tegutse turvaliselt - palun jälgi oma ümbruskonda ja liikl
     <string name="achievement_first_edit_title">Esimene ülesanne on lahendatud</string>
     <string name="achievement_first_edit_description">Tere tulemast OpenStreetMapi kogukonda! Oma profiilivaates näed rohkem teavet sinu lahendatud ülesannete kohta.</string>
     <string name="achievement_surveyor_title">Kohtvaatleja</string>
-    <string name="achievement_surveyor_solved_X">Sa oled lahendanud %d ülesannet! Kui jätkad lahendamist, siis aegamööda avanevad uued OpenStreetMapi lingid ja muud kaardistamisega seotud lingid!</string>
+    <string name="achievement_surveyor_solved_X">Sa oled lahendanud %1$d ülesannet! Kui jätkad lahendamist, siis aegamööda avanevad uued OpenStreetMapi lingid ja muud kaardistamisega seotud lingid!</string>
     <string name="achievement_regular_title">Igapäevane osaleja</string>
-    <string name="achievement_regular_description">Sa oled selle rakendusega teinud OpenStreetMapile %d päeva kaastööd! Regulaarsed kaasautorid on OSMi põhilised vedajad, täname sind pühendumuse eest! ❤</string>
+    <string name="achievement_regular_description">Sa oled selle rakendusega teinud OpenStreetMapile %1$d päeva kaastööd! Regulaarsed kaasautorid on OSMi põhilised vedajad, täname sind pühendumuse eest! ❤</string>
     <string name="achievement_bicyclist_title">Rattur</string>
-    <string name="achievement_bicyclist_solved_X">Sa oled lahendanud %d ülesannet, mis aitavad rattureid!</string>
+    <string name="achievement_bicyclist_solved_X">Sa oled lahendanud %1$d ülesannet, mis aitavad rattureid!</string>
     <string name="achievement_wheelchair_title">Liikuvus</string>
-    <string name="achievement_wheelchair_solved_X">Sa oled lahendanud %d ülesannet, mis on abiks ratastooli kasutajatele!</string>
+    <string name="achievement_wheelchair_solved_X">Sa oled lahendanud %1$d ülesannet, mis on abiks ratastooli kasutajatele!</string>
     <string name="achievement_postman_title">Postiljon</string>
-    <string name="achievement_postman_solved_X">Sa oled tuvastanud %d aadressi!
+    <string name="achievement_postman_solved_X">Sa oled tuvastanud %1$d aadressi!
 See on väga abiks erinevatele navigatsioonisüsteemidele ning posti- ja kulleriteenuste pakkujatele.</string>
     <string name="achievement_building_title">Kõrghoone</string>
-    <string name="achievement_building_solved_X">Sa oled lahendanud %d ehitistega seotud ülesannet.
+    <string name="achievement_building_solved_X">Sa oled lahendanud %1$d ehitistega seotud ülesannet.
 Palun arvesta, et rakendus küsib majanumbrit alles peale hoone tüübi tuvastamist.</string>
     <string name="achievement_blind_title">Kuues meel</string>
-    <string name="achievement_blind_solved_X">Sa oled lahendanud %d ülesannet, mis on abiks pimedatele ja lühinägelikele.</string>
+    <string name="achievement_blind_solved_X">Sa oled lahendanud %1$d ülesannet, mis on abiks pimedatele ja lühinägelikele.</string>
     <string name="achievement_pedestrian_title">Jooksja</string>
-    <string name="achievement_pedestrian_solved_X">Sa oled lahendanud %d ülesannet, mis aitavad jalakäijaid!</string>
+    <string name="achievement_pedestrian_solved_X">Sa oled lahendanud %1$d ülesannet, mis aitavad jalakäijaid!</string>
     <string name="achievement_veg_title">Loomasõber</string>
-    <string name="achievement_veg_solved_X">Sa oled lahendanud %d ülesannet, mis aitavad neid, kes toituvad lihavabalt!</string>
+    <string name="achievement_veg_solved_X">Sa oled lahendanud %1$d ülesannet, mis aitavad neid, kes toituvad lihavabalt!</string>
     <string name="achievement_car_title">Maanteehunt</string>
-    <string name="achievement_car_solved_X">Sa oled lahendanud %d ülesannet tänavate ja teede kohta!</string>
-    <string name="unread_messages_message">Sul on saabunud sõnumite kaustas %d lugemata sõnumit</string>
+    <string name="achievement_car_solved_X">Sa oled lahendanud %1$d ülesannet tänavate ja teede kohta!</string>
+    <string name="unread_messages_message">Sul on saabunud sõnumite kaustas %1$d lugemata sõnumit</string>
     <string name="unread_messages_button">Ava saabunud sõnumite kaust</string>
     <string name="action_about2">Teave</string>
     <string name="map_btn_menu">Menüü</string>
     <string name="privacy_html_statistics">&lt;p&gt;Sinu profiilis näidatud andmed on koondatud sinu OpenStreetMapi kaastööde avalikult leitavast ajaloost ning see koond paikneb minu serveris.&lt;/p&gt;</string>
     <string name="confirmation_authorize_now_note2">Sa võid seda oma profiilivaatest ka hiljem teha.</string>
     <string name="credits_art_contributors_title">Illustraatorid</string>
-    <string name="credits_projects_contributors_title">StreetComplete\'i jaoks loodud projektid</string>
+    <string name="credits_projects_contributors_title">StreetComplete'i jaoks loodud projektid</string>
     <string name="credits_main_contributors_title">Põhilised kaasautorid</string>
     <string name="stats_are_syncing">Sinu statistika on veel sünkroniseerimisel. Palun pöördu selle vaate juurde hiljem tagasi.</string>
-    <string name="user_statistics_country_wiki_link">Kaardiportaal: %s</string>
+    <string name="user_statistics_country_wiki_link">Kaardiportaal: %1$s</string>
     <string name="user_statistics_filter_by_country">maa kaupa</string>
     <string name="user_statistics_filter_by_quest_type">tüübi kaupa</string>
     <string name="user_profile_global_rank">Kogu
 maailmas</string>
     <string name="user_profile_local_rank">Koht riigis:
-%s</string>
+%1$s</string>
     <string name="user_profile_days_active">Päevi
 kaardistamisel</string>
     <string name="user_profile_achievement_levels">Saavutuste
@@ -696,8 +696,8 @@ tasemeid</string>
     <string name="quest_board_type_map_description">Kui infotahvel kajastab mingit teemat, siis palun määratle see, sõltumata asjaolust, et seal on ka kaart. Näiteks ühistranspordi infotahvel võib ju sisaldada liinide kaarti. Kui teema pole vastuste loendis, siis pigem lisa märkus.</string>
     <string name="quest_streetName_menuItem_international">rahvusvaheline</string>
     <string name="quest_buildingType_terrace2">Ridamaja</string>
-    <string name="at_housename">Maja nimi %s</string>
-    <string name="at_housenumber">majanumber %s</string>
+    <string name="at_housename">Maja nimi %1$s</string>
+    <string name="at_housenumber">majanumber %1$s</string>
     <string name="quest_openingHours_add_off_days">Lisa vabad päevad</string>
     <string name="quest_openingHours_off_day">Vaba päev</string>
     <string name="quest_openingHours_unspecified_range">Määratlemata</string>
@@ -731,11 +731,11 @@ tasemeid</string>
     <string name="quest_charging_station_operator_title">Kelle laadimisjaam see on?</string>
     <string name="link_indoorequal_description">Tutvu ostukeskuste, raudteejaamade ja muude siseruumide kaartidega.</string>
     <string name="achievement_rare_title">Aardejaht</string>
-    <string name="achievement_rare_solved_X">Sa leidsid ja lahendasid %d ülesannet, mille lahendamine õnnestub harva. Õnnitleme!</string>
+    <string name="achievement_rare_solved_X">Sa leidsid ja lahendasid %1$d ülesannet, mille lahendamine õnnestub harva. Õnnitleme!</string>
     <string name="achievement_citizen_title">Kodanik</string>
-    <string name="achievement_citizen_solved_X">Sa oled lahendanud %d ülesannet, mis hõlbustavad igapäevast elu linnas!</string>
+    <string name="achievement_citizen_solved_X">Sa oled lahendanud %1$d ülesannet, mis hõlbustavad igapäevast elu linnas!</string>
     <string name="achievement_outdoors_title">Vabas õhus liikuja</string>
-    <string name="achievement_outdoors_solved_X">Sa oled lahendanud %d ülesannet, mis aitavad looduses liikujaid!</string>
+    <string name="achievement_outdoors_solved_X">Sa oled lahendanud %1$d ülesannet, mis aitavad looduses liikujaid!</string>
     <string name="quest_pedestrian_crossing_island">Kas sel ülekäigurajal on ohutussaar?</string>
     <string name="quest_generic_answer_noSign">Silti pole</string>
     <string name="quest_steps_ramp_separate_wheelchair">Kas kaldtee ratastooli jaoks on kaardil eraldi teena näidatud?</string>
@@ -759,7 +759,7 @@ tasemeid</string>
     <string name="quest_address_answer_no_housenumber_message2b">Kas see on õige?</string>
     <string name="quest_maxheight_below_bridge_title">Mis on selle silla kõrguspiirang?</string>
     <string name="quest_maxheight_split_way_hint">Sama küsimust küsime ka sildade, katuste, torude ja muude sarnase objektide alt kulgevate teede kohta.
-Isegi, kui see olek ei kehti kogu esiletõstetud lõigu kohta, siis kaalu vastusena „%s“.</string>
+Isegi, kui see olek ei kehti kogu esiletõstetud lõigu kohta, siis kaalu vastusena „%1$s“.</string>
     <string name="quest_tactile_paving_kerb_title">Kas selle äärekivi peal või kõrval on kompesillutis?</string>
     <string name="quest_kerb_height_title">Mis on selle äärekivi kõrgus?</string>
     <string name="quest_kerb_height_flush">Samal tasemel teega</string>
@@ -818,9 +818,9 @@ Kõik tiimi liikmed näevad erinevaid ülesandeid.</string>
     <string name="hid_action_description">Sa peitsid ta</string>
     <string name="split_way_action_description">Sa jagasid tee kaheks</string>
     <string name="deleted_poi_action_description">Sa kustutasid huvipunkti</string>
-    <string name="added_tag_action_title">Sa lisasid %s</string>
-    <string name="removed_tag_action_title">Sa eemaldasid %s</string>
-    <string name="changed_tag_action_title">Sa uuendasid %s</string>
+    <string name="added_tag_action_title">Sa lisasid %1$s</string>
+    <string name="removed_tag_action_title">Sa eemaldasid %1$s</string>
+    <string name="changed_tag_action_title">Sa uuendasid %1$s</string>
     <string name="pref_title_delete_cache">Kustuta puhverdatud andmed</string>
     <string name="pref_title_delete_cache_summary">Kui sa arvad, et osa andmeid on aegunud</string>
     <string name="delete_confirmation">Kas kustutame?</string>
@@ -870,7 +870,7 @@ Andmeid uuendatakse automaatselt %1$s päeva järel ning kustutatakse %2$s päev
     <string name="about_title_faq">KKK</string>
     <string name="quest_buildingLevels_title2">Mitu korrust on sellel hoone ülalpool keldrit?</string>
     <string name="quest_buildingLevels_title_buildingPart2">Mitu korrust on sellel hooneosal ülalpool keldrit?</string>
-    <string name="pref_subtitle_quests_preset_name">eelvalikule: %s</string>
+    <string name="pref_subtitle_quests_preset_name">eelvalikule: %1$s</string>
     <string name="default_disabled_msg_roofShape">Kuna katuste kuju pole tänavalt kergesti nähtav, siis see ülesande tüüp pole vaikimisi kasutusel. Antud üleanne on ka väga ajamahukas; sama teemat on tavaliselt lihtsam ja tõhusam kaardistada sateliidi- või ortofotode alusel kodust.</string>
     <string name="quest_religion_animist">Animism</string>
     <string name="quest_construction_steps_title">Kas treppide ehitamine on lõppenud?</string>
@@ -895,7 +895,7 @@ Andmeid uuendatakse automaatselt %1$s päeva järel ning kustutatakse %2$s päev
     <string name="quest_presets_preset_name">Eelseadistuse nimi</string>
     <string name="quest_presets_default_name">Vaikimisi eelseadistus</string>
     <string name="quest_presets_selected">Valitud</string>
-    <string name="quest_presets_delete_message">Kas kustutame eelvaliku „%s“? Ülesannete valik ja järjekord lähevad pöördumatult kaotsi.</string>
+    <string name="quest_presets_delete_message">Kas kustutame eelvaliku „%1$s“? Ülesannete valik ja järjekord lähevad pöördumatult kaotsi.</string>
     <string name="notification_syncing">Sünkroniseerime andmeid…</string>
     <string name="notification_channel_sync">Sünkroniseeri andmeid</string>
     <string name="quest_board_type_sport">Sport ja treeningud</string>
@@ -933,7 +933,7 @@ Andmeid uuendatakse automaatselt %1$s päeva järel ning kustutatakse %2$s päev
     <string name="quest_barrier_bicycle_type_double">Suunamuutetakistus - üks kummalgi poolel</string>
     <string name="quest_barrier_bicycle_type_multiple">Suunamuutetakistus - enam, kui kaks sellist</string>
     <string name="language_default">Süsteemi keel</string>
-    <string name="on_floor">%s. korrusel</string>
+    <string name="on_floor">%1$s. korrusel</string>
     <string name="select_street_parking_orientation">Vali paiknemine tee suhtes:</string>
     <string name="select_street_parking_position">Vali paiknemine:</string>
     <string name="select_street_parking_no">Kas siin on mõni liiklusmärk või teekatte märgistus?</string>
@@ -999,7 +999,7 @@ Alternatiivina võid lisada ingliskeelse märkuse (koos fotoga).</string>
     <string name="quest_smoothness_hint">🚲, 🚗, 🚙,… märgi mis liiklusvahendid saaks sel pinnakattel liikuda. Oluline on tervikpilt, mitte mõned üksikud ohtlikud kohad.</string>
     <string name="link_osmhydrant_description">Otsi, lisa ja muuda päästedepoosid ja tuletõrjehüdrante</string>
     <string name="achievement_lifesaver_title">Elupäästja</string>
-    <string name="achievement_lifesaver_solved_X">Sa oled lahendanud %d ülesannet, mis aitavad kiirabi- ja päästeteenistusi!</string>
+    <string name="achievement_lifesaver_solved_X">Sa oled lahendanud %1$d ülesannet, mis aitavad kiirabi- ja päästeteenistusi!</string>
     <string name="quest_fuelSelfService_title">Kas siin tanklas on iseteenindus lubatud?</string>
     <string name="default_disabled_msg_difficult_and_time_consuming">Kuna õige valiku tegemine on väga ajamahukas või raske, siis see ülesande tüüp pole vaikimisi kasutusel. Lülita ta sisse vaid siis, kui sa tõesti oled valmis neid andmeid lisama.</string>
     <string name="quest_smoothness_description_good_compacted_gravel">Kõva pinnas, väga vähe lahtist kruusa või liiva</string>
@@ -1162,7 +1162,7 @@ Kui sama on ka teisel teepoolel, siis korda tegevust.</string>
     <string name="quest_camp_type_backcountry">Kämping kõnnumaal (teenused puuduvad)</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">Diameeter tundub ebaloogiline, tavaliselt see jääb %1$d ja %2$d vahele.</string>
     <string name="quest_recycling_type_pet">Vaid PET-plastikust pudelid ja pakid</string>
-    <string name="street_parking_street_width">Tänava laius: %s</string>
+    <string name="street_parking_street_width">Tänava laius: %1$s</string>
     <string name="overlay_street_parking">Parkimine tänaval</string>
     <string name="link_ohsomehex_description">Uuri OSMi andmeid ajas ja ruumis alates väga suurest üldpildist kuni üksikute objektideni</string>
     <string name="link_opencampingmap_description">Laagripaikade kaart</string>
@@ -1209,7 +1209,7 @@ Kui sama on ka teisel teepoolel, siis korda tegevust.</string>
     <string name="user_profile_current_week_title">Viimased 7 päeva</string>
     <string name="user_profile_dates_mapped">Päevad, mil oled viimati kaardistanud</string>
     <string name="quest_cycleway_value_advisory_lane">soovitatav jalgrattarada (piirdeta)</string>
-    <string name="urlconfig_scan_qr_code_again2">Kui soovid sead eelseadistust uuesti kasutusele võtta, siis peale rakenduse paigaldamist skaneeri seda QR-koodi või klõpsi &lt;a href="%s"&gt;sead linki&lt;/a&gt;.</string>
+    <string name="urlconfig_scan_qr_code_again2">Kui soovid sead eelseadistust uuesti kasutusele võtta, siis peale rakenduse paigaldamist skaneeri seda QR-koodi või klõpsi &lt;a href="%1$s"&gt;sead linki&lt;/a&gt;.</string>
     <string name="confirmation_replace_shop_title">Kas tegemist on muu asutuse, teenuse või äriga?</string>
     <string name="confirmation_replace_shop_message">Sel juhul pead kindlasti muutma ka lahtiolekuaegu, kontaktandmeid ja muud olulist.</string>
     <string name="confirmation_replace_shop_yes">Nüüd uues kohas</string>
@@ -1219,7 +1219,7 @@ Kui sama on ka teisel teepoolel, siis korda tegevust.</string>
 Kas nihutame kohe?</string>
     <string name="node_moved_not_far_enough">Palun teisalda ta edasi</string>
     <string name="node_moved_too_far">Teisaldasid liiga kaugele. Pigem jäta selle juhtumi kohta märkus</string>
-    <string name="node_moved">Teisaldaja: %s</string>
+    <string name="node_moved">Teisaldaja: %1$s</string>
     <string name="move_node_description">Objekti liigutamiseks õigesse kohta lohista kaarti. Kasuta suumimist ja ürita olla võimalikult täpne. Palun arvesta, et asukohatuvastus võib võrreldes sinu tegeliku asukohaga sind paigutada natuke teise kohta.</string>
     <string name="move_node_action_description">Sa teisaldasid sõlme või objekti</string>
     <string name="quest_cycleway_value_shoulder">puudub, aga ratturid saavad tee õlga kasutada</string>
@@ -1243,7 +1243,7 @@ Kas nihutame kohe?</string>
     <string name="measure_info_html_description">&lt;p&gt;ARCore mõnikord (algselt) eeldab, et maapind on kõrgemal või madalamal, kui ta tegelikult on. Sellega võib tekkida mõõteviga, mis võib veelgi suureneda, kui kallutad telefoni silmapiiri suunas.&lt;/p&gt;
 &lt;p&gt;Horisontaalse mõõtmise viga saad vältida sel viisil, et sätid alg- ja lõppunkti kaadrisse nii, et suunad telefoni otse alla (nii et näed ülalt valget noolt).&lt;/p&gt;
 &lt;p&gt;Püstloodis mõõtmiste puhul kontrolli, et vaadates eri suundadest algpunkt ei tunduks liikuma maapinna suhtes.&lt;/p&gt;</string>
-    <string name="privacy_html_arcore">See rakendus kasutab tööks &lt;a href="https://play.google.com/store/apps/details?id=com.google.ar.core"&gt;teenust Google Play Services for AR&lt;/a&gt; (ARCore), mille teenusepakkujaks on Google ja mis juhendub &lt;a href="https://policies.google.com/privacy"&gt;Google\'i privaatsuspoliitikast&lt;/a&gt;.</string>
+    <string name="privacy_html_arcore">See rakendus kasutab tööks &lt;a href="https://play.google.com/store/apps/details?id=com.google.ar.core"&gt;teenust Google Play Services for AR&lt;/a&gt; (ARCore), mille teenusepakkujaks on Google ja mis juhendub &lt;a href="https://policies.google.com/privacy"&gt;Google'i privaatsuspoliitikast&lt;/a&gt;.</string>
     <string name="default_disabled_msg_seasonal">See ülesanne on vaikimisi mitteaktiivne, sest ta võib eeldada olude tuvastatamist eri aastaaegadel.</string>
     <string name="quest_gritBinSeasonal_title">Kas ta on siin väljas ka talvel?</string>
     <string name="street_parking_staggered_on_street">Tänaval vaheldumisi pooltel</string>
@@ -1317,7 +1317,7 @@ Lisaks saad mõnede ülekatete, näiteks aadresside, puhul saad lisada sihikuiko
     <string name="label_log_older_than">Kuni</string>
     <string name="label_log_message_contains">Sõnum sisaldab</string>
     <string name="title_logs_filters">Filtreeri sõnumeid</string>
-    <string name="pref_title_quests_restore_hidden_summary">Peidetud ülesandeid: %d</string>
+    <string name="pref_title_quests_restore_hidden_summary">Peidetud ülesandeid: %1$d</string>
     <string name="link_every_door_description">Huvipunktide haldusrakendus Androidi ja iOSi jaoks</string>
     <string name="link_mapcomplete_description">Temaatiliste OpenStreetMapi kaartide kogu, neist igapks näitab ja võimaldab muuta ühte tüüpi andmeid</string>
     <string name="link_forum_description">Kas vajad abi? Tahad teada, mis on toimumas? Tule ja suhtle, siin kogukonnas leidub osalejaid üle ilma!</string>
@@ -1388,7 +1388,7 @@ Korrust loetakse katusekorruseks, kui tema aknad on katuse sees. Ning katused ü
     <string name="quest_camp_power_supply_hint">See võib tähendada nii pistikupesi igal peatus- või telkimisplatsil, kui ka klientide kasutuses olevas teenuste hoones, aga ka eraldi laadimisjaamu telefonide ja sülearvutite jaoks.</string>
     <string name="quest_barrier_opening_width_bollard">Suurim laius, millega siit läbi pääseb?</string>
     <string name="user_profile_all_time_title">Kokkuvõte läbi aegade</string>
-    <string name="user_statistics_country_rank2">Edetabel: %s</string>
+    <string name="user_statistics_country_rank2">Edetabel: %1$s</string>
     <string name="quest_leafType_tree_is_just_a_stump">See on vaid känd</string>
     <string name="quest_board_name_title">Mis on selle infotahvli pealkiri?</string>
     <string name="quest_crossing_hint">Mitteametlik rada ületamas teed:</string>

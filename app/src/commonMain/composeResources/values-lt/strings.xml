@@ -197,7 +197,7 @@ Jei visoje gatvėje nėra ženklų, kurie galioja pažymėtoje dalyje, taikomas 
     <string name="quest_sport_roller_skating">Riedučiai</string>
     <string name="quest_wheelchairAccess_limited_description_business">Dalinai reiškia, kad yra ne daugiau vieno laiptelio patenkant į vietą ir kad dauguma kambarių viduje pasiekiami vežimėlyje.</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">Dalinai reiškia, kad yra ne daugiau vieno laiptelio įeinant.</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">Sutrumpinimas pavadinime %s?</string>
+    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">Sutrumpinimas pavadinime %1$s?</string>
     <string name="quest_recycling_type_title">Koks šio atliekų surinkimo įrenginio tipas?</string>
     <string name="recycling_centre">Centras</string>
     <string name="overground_recycling_container">Konteineris</string>
@@ -378,7 +378,7 @@ Dalinai reiškia, kad vežimėlis gali įvažiuoti ir naudotis tualetu, bet nėr
     <string name="quest_construction_footway_title">Ar šio pėsčiųjų tako statyba baigta?</string>
     <string name="quest_construction_generic_title">Ar šio kelio statyba baigta?</string>
     <string name="quest_construction_building_title">Ar šio pastato statyba baigta?</string>
-    <string name="questList_disabled_in_country">Niekada nerodoma %s</string>
+    <string name="questList_disabled_in_country">Niekada nerodoma %1$s</string>
     <string name="quest_select_hint_most_specific">Parinkite tiksliausiai tinkančią:</string>
     <string name="quest_generic_item_confirmation">Ar tikrai negalite tiksliau nustatyti?</string>
     <string name="privacy_html_third_party_quest_sources">&lt;p&gt;Kai kurioms užduotims, šiek tiek papildomų duomenų atsiunčiama iš trečiųjų šalių.&lt;/p&gt;</string>
@@ -489,7 +489,7 @@ Dalinai reiškia, kad vežimėlis gali įvažiuoti ir naudotis tualetu, bet nėr
     <string name="quest_motorcycleParkingCoveredStatus_title">Ar ši motociklų stovėjimo vieta dengta (apsaugota nuo lietaus)?</string>
     <string name="default_disabled_msg_maxspeed">Šis užduočių tipas išjungtas, nes jūsų paprastai prašoma patikrinti apribojimus visoje gatvėje, ne tik pažymėtoje vietoje. Gali būti labai sunku išspręsti net vieną užduotį.</string>
     <string name="pref_title_quests_restore_hidden">Atstatyti paslėptas užduotis</string>
-    <string name="on_level">lygyje %s</string>
+    <string name="on_level">lygyje %1$s</string>
     <string name="underground">po žeme</string>
     <string name="quest_sidewalk_value_yes">šaligatvis</string>
     <string name="quest_sidewalk_value_no">nėra šaligatvio</string>
@@ -581,8 +581,8 @@ Galų gale visada būkite atidūs: stebėkite aplinką ir neikite į privačias 
     <string name="achievements_empty">Jūs dar neturite pasiekimų</string>
     <string name="links_empty">Jūs dar neturite ryšių</string>
     <string name="quests_empty">Jūs dar nepublikavote užduočių atsakymų</string>
-    <string name="unsynced_quests_description">plius %d dar nepaskelbtų pakeitimų.</string>
-    <string name="unsynced_quests_not_logged_in_description">Jūs turite %d nenusiųstų pakeitimų. Turite prisijungti, kad juos įkeltumėte.</string>
+    <string name="unsynced_quests_description">plius %1$d dar nepaskelbtų pakeitimų.</string>
+    <string name="unsynced_quests_not_logged_in_description">Jūs turite %1$d nenusiųstų pakeitimų. Turite prisijungti, kad juos įkeltumėte.</string>
     <string name="user_quests_title">Išspręstos užduotys</string>
     <string name="user_achievements_title">Pasiekimai</string>
     <string name="user_links_title">Nuorodų kolekcija</string>
@@ -634,28 +634,28 @@ Galų gale visada būkite atidūs: stebėkite aplinką ir neikite į privačias 
     <string name="achievement_first_edit_title">Išspręsta pirma užduotis</string>
     <string name="achievement_first_edit_description">Sveikiname prisijungus prie OpenStreetMap bendruomenės! Jūsų profilio ekrane rasite daugiau informacijos apie kiekvieną išspręstą užduotį.</string>
     <string name="achievement_surveyor_title">Matininkas</string>
-    <string name="achievement_surveyor_solved_X">Jūs išsprendėte %d užduočių! Tęskite, kad atrakintumėte daugiau pasiekimų, kuriuos yra nuorodos į OSM ir kitas su žemėlapiais susijusias aplikacijas ir projektus!</string>
+    <string name="achievement_surveyor_solved_X">Jūs išsprendėte %1$d užduočių! Tęskite, kad atrakintumėte daugiau pasiekimų, kuriuos yra nuorodos į OSM ir kitas su žemėlapiais susijusias aplikacijas ir projektus!</string>
     <string name="achievement_regular_title">Pastovus</string>
-    <string name="achievement_regular_description">Jūs su šia aplikacija skyrėte %d dienų OSM. Pastovūs talkininkai sudaro OSM stuburą, ačiū už indėlį! ❤</string>
+    <string name="achievement_regular_description">Jūs su šia aplikacija skyrėte %1$d dienų OSM. Pastovūs talkininkai sudaro OSM stuburą, ačiū už indėlį! ❤</string>
     <string name="achievement_bicyclist_title">Dviratininkas</string>
-    <string name="achievement_bicyclist_solved_X">Jūs išsprendėte %d užduočių, padedančių dviratininkams!</string>
+    <string name="achievement_bicyclist_solved_X">Jūs išsprendėte %1$d užduočių, padedančių dviratininkams!</string>
     <string name="achievement_wheelchair_title">Mobilumas</string>
-    <string name="achievement_wheelchair_solved_X">Jūs išsprendėte %d užduočių padedančių žmonėms su negalia judėti!</string>
+    <string name="achievement_wheelchair_solved_X">Jūs išsprendėte %1$d užduočių padedančių žmonėms su negalia judėti!</string>
     <string name="achievement_postman_title">Paštininkas</string>
-    <string name="achievement_postman_solved_X">Jūs padėjote rasti %d adresus!
+    <string name="achievement_postman_solved_X">Jūs padėjote rasti %1$d adresus!
 Šie duomenys kritiniai ne tik paštininkams, bet ir visoms kitoms navigacijos sistemoms.</string>
     <string name="achievement_building_title">Aukštis</string>
-    <string name="achievement_building_solved_X">Jūs išsprendėte %d su pastatais susijusias užduotis.
+    <string name="achievement_building_solved_X">Jūs išsprendėte %1$d su pastatais susijusias užduotis.
 Pastebėtina, kad ši aplikacija klausia namo numerio tik po to, kai nustatytas jo tipas.</string>
     <string name="achievement_blind_title">Šeštas pojūtis</string>
-    <string name="achievement_blind_solved_X">Jūs išsprendėte %d užduočių, skirtų žmonėms, turintiems regėjimo negalią.</string>
+    <string name="achievement_blind_solved_X">Jūs išsprendėte %1$d užduočių, skirtų žmonėms, turintiems regėjimo negalią.</string>
     <string name="achievement_pedestrian_title">Bėgikas</string>
-    <string name="achievement_pedestrian_solved_X">Jūs išsprendėte %d užduotis, kurios svarbios pėstiesiems!</string>
+    <string name="achievement_pedestrian_solved_X">Jūs išsprendėte %1$d užduotis, kurios svarbios pėstiesiems!</string>
     <string name="achievement_veg_title">Gyvūnų draugas</string>
-    <string name="achievement_veg_solved_X">Jūs išsprendėte %d užduotis, kurios svarbios žmonėms, gyvenantiems be mėsos!</string>
+    <string name="achievement_veg_solved_X">Jūs išsprendėte %1$d užduotis, kurios svarbios žmonėms, gyvenantiems be mėsos!</string>
     <string name="achievement_car_title">Kelyje</string>
-    <string name="achievement_car_solved_X">Jūs išsprendėte %d užduočių, kurios gerina informaciją apie gatvių infrastruktūrą ir įtraukia gatvę į OpenStreetMap!</string>
-    <string name="unread_messages_message">Jūs turite %d neperskaitytų žinučių jūsų paštadėžėje</string>
+    <string name="achievement_car_solved_X">Jūs išsprendėte %1$d užduočių, kurios gerina informaciją apie gatvių infrastruktūrą ir įtraukia gatvę į OpenStreetMap!</string>
+    <string name="unread_messages_message">Jūs turite %1$d neperskaitytų žinučių jūsų paštadėžėje</string>
     <string name="unread_messages_button">Atverti paštadėžę</string>
     <string name="action_about2">Apie</string>
     <string name="map_btn_menu">Meniu</string>
@@ -665,13 +665,13 @@ Pastebėtina, kad ši aplikacija klausia namo numerio tik po to, kai nustatytas 
     <string name="credits_projects_contributors_title">Projektai sukurti StreetComplete</string>
     <string name="credits_main_contributors_title">Pagrindiniai talkininkai</string>
     <string name="stats_are_syncing">Jūsų statistika vis dar atnaujinama. Grįžkite čia vėliau.</string>
-    <string name="user_statistics_country_wiki_link">Žymėjimo portalas %s</string>
+    <string name="user_statistics_country_wiki_link">Žymėjimo portalas %1$s</string>
     <string name="user_statistics_filter_by_country">pagal šalį</string>
     <string name="user_statistics_filter_by_quest_type">pagal užduoties tipą</string>
     <string name="user_profile_global_rank">Vieta
 pasaulyje</string>
     <string name="user_profile_local_rank">Vieta
-%s</string>
+%1$s</string>
     <string name="user_profile_days_active">Aktyvumo
 dienų</string>
     <string name="user_profile_achievement_levels">Pasiekimų lygis</string>
@@ -696,8 +696,8 @@ dienų</string>
     <string name="quest_board_type_map_description">Jei lenta yra apie konkrečią temą, prašome ją nurodyti, nepriklausomai nuo to, ar joje yra žemėlapis. Pavyzdžiui viešo transporto lentoje gali būti autobusų maršrutų žemėlapis. Jei temos nėra galimuose atsakymuose, galbūt geriau būtų palikti pastabą.</string>
     <string name="quest_streetName_menuItem_international">tarptautinis</string>
     <string name="quest_buildingType_terrace2">Pastatų eilė</string>
-    <string name="at_housename">Namo pavadinimas %s</string>
-    <string name="at_housenumber">namo numeris %s</string>
+    <string name="at_housename">Namo pavadinimas %1$s</string>
+    <string name="at_housenumber">namo numeris %1$s</string>
     <string name="quest_openingHours_add_off_days">Pridėti nedarbo dienas</string>
     <string name="quest_openingHours_off_day">Nedarbo diena</string>
     <string name="quest_openingHours_unspecified_range">Nenurodyta</string>
@@ -731,11 +731,11 @@ dienų</string>
     <string name="quest_charging_station_operator_title">Kas yra šios įkrovimo stotelės operatorius?</string>
     <string name="link_indoorequal_description">Atraskite prekybos centrų, geležinkelio stočių ir kt. vidaus žemėlapius.</string>
     <string name="achievement_rare_title">Lobių medžioklė</string>
-    <string name="achievement_rare_solved_X">Radote ir išsprendėte %d retai atliekamų užduočių, sveikiname!</string>
+    <string name="achievement_rare_solved_X">Radote ir išsprendėte %1$d retai atliekamų užduočių, sveikiname!</string>
     <string name="achievement_citizen_title">Pilietis</string>
-    <string name="achievement_citizen_solved_X">Jūs išsprendėte %d užduočių, naudingų kasdieniame miesto gyvenime!</string>
+    <string name="achievement_citizen_solved_X">Jūs išsprendėte %1$d užduočių, naudingų kasdieniame miesto gyvenime!</string>
     <string name="achievement_outdoors_title">Lauko erdvė</string>
-    <string name="achievement_outdoors_solved_X">Išsprendėte %d užduočių, naudingų lauko entuziastams!</string>
+    <string name="achievement_outdoors_solved_X">Išsprendėte %1$d užduočių, naudingų lauko entuziastams!</string>
     <string name="quest_pedestrian_crossing_island">Ar ši perėja turi saugumo salelę?</string>
     <string name="quest_generic_answer_noSign">Čia nėra ženklo</string>
     <string name="quest_steps_ramp_separate_wheelchair">Ar neįgaliųjų vežimėlių rampa žemėlapyje pavaizduota kaip atskiras kelias?</string>
@@ -758,7 +758,7 @@ dienų</string>
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">Čia yra dviejų krypčių kairiojo posūkio juosta</string>
     <string name="quest_address_answer_no_housenumber_message2b">Ar tai teisinga?</string>
     <string name="quest_maxheight_below_bridge_title">Koks yra aukščio apribojimas po tiltu?</string>
-    <string name="quest_maxheight_split_way_hint">Jei tai netaikoma visam keliui, apsvarstykite galimybę atsakyti "%s".</string>
+    <string name="quest_maxheight_split_way_hint">Jei tai netaikoma visam keliui, apsvarstykite galimybę atsakyti "%1$s".</string>
     <string name="quest_tactile_paving_kerb_title">Ar ant šio bortelio yra taktilinis grindinys?</string>
     <string name="quest_kerb_height_title">Koks šio bortelio aukštis?</string>
     <string name="quest_kerb_height_flush">Tokio pat lygio kaip kelio danga</string>
@@ -816,9 +816,9 @@ Atkreipkite dėmesį į visas galimas parinktis: kai kurie atvejai nėra akivaiz
     <string name="hid_action_description">Jūs jį paslėpėte</string>
     <string name="split_way_action_description">Jūs padalijote kelią</string>
     <string name="deleted_poi_action_description">Jūs jį ištrynėte</string>
-    <string name="added_tag_action_title">Pridėta %s</string>
-    <string name="removed_tag_action_title">Pašalinta %s</string>
-    <string name="changed_tag_action_title">Atnaujinta į %s</string>
+    <string name="added_tag_action_title">Pridėta %1$s</string>
+    <string name="removed_tag_action_title">Pašalinta %1$s</string>
+    <string name="changed_tag_action_title">Atnaujinta į %1$s</string>
     <string name="pref_title_delete_cache">Išvalyti laikiną atmintį</string>
     <string name="pref_title_delete_cache_summary">Jei manote, kad kai kurie duomenys yra pasenę</string>
     <string name="delete_confirmation">Ištrinti</string>
@@ -868,7 +868,7 @@ Duomenys atnaujinami po %1$s dienų, o nepanaudoti duomenys ištrinami po %2$s d
     <string name="about_title_faq">DUK</string>
     <string name="quest_buildingLevels_title2">Kiek rūsio aukštų turi šis pastatas?</string>
     <string name="quest_buildingLevels_title_buildingPart2">Kiek aukštų virš rūsio turi ši pastato dalis?</string>
-    <string name="pref_subtitle_quests_preset_name">Išankstinis nustatymas: %s</string>
+    <string name="pref_subtitle_quests_preset_name">Išankstinis nustatymas: %1$s</string>
     <string name="default_disabled_msg_roofShape">Šis paieškos tipas pagal numatytuosius nustatymus yra išjungtas, nes stogo formos dažnai nėra gerai matomos iš gatvės. Šis užduoties tipas taip pat užima nemažai laiko; daugeliu atvejų paprasčiau ir efektyviau tai kartografuoti iš aerofotografinių nuotraukų namuose.</string>
     <string name="quest_religion_animist">Animistai</string>
     <string name="quest_construction_steps_title">Ar šie veiksmai atlikti?</string>
@@ -893,7 +893,7 @@ Duomenys atnaujinami po %1$s dienų, o nepanaudoti duomenys ištrinami po %2$s d
     <string name="quest_presets_preset_name">Iš anksto nustatytas pavadinimas</string>
     <string name="quest_presets_default_name">Numatytoji</string>
     <string name="quest_presets_selected">Pasirinkta</string>
-    <string name="quest_presets_delete_message">Ištrinti “%s” išankstinį nustatymą? Bus negrįžtamai prarastas jo užduočių pasirinkimas ir užsakymas.</string>
+    <string name="quest_presets_delete_message">Ištrinti “%1$s” išankstinį nustatymą? Bus negrįžtamai prarastas jo užduočių pasirinkimas ir užsakymas.</string>
     <string name="notification_syncing">Duomenų sinchronizavimas...</string>
     <string name="notification_channel_sync">Sinchronizavimo duomenys</string>
     <string name="quest_board_type_sport">Sportas, Pratimai</string>
@@ -931,7 +931,7 @@ Duomenys atnaujinami po %1$s dienų, o nepanaudoti duomenys ištrinami po %2$s d
     <string name="quest_barrier_bicycle_type_double">"Chicane" - barjerai iš abiejų pusių</string>
     <string name="quest_barrier_bicycle_type_multiple">Šikana - daugiau nei du barjerai</string>
     <string name="language_default">Sistemos numatytieji nustatymai</string>
-    <string name="on_floor">ant grindų %s</string>
+    <string name="on_floor">ant grindų %1$s</string>
     <string name="select_street_parking_orientation">Pasirinkite orientaciją į važiuojamąją dalį:</string>
     <string name="select_street_parking_position">Pasirinkite poziciją:</string>
     <string name="select_street_parking_no">Ar čia yra koks nors kelio ženklas ar ženklinimas?</string>
@@ -997,7 +997,7 @@ Arba galite palikti pastabą (su nuotrauka).</string>
     <string name="quest_smoothness_hint">🚲, 🚗, 🚙, 🚙,... nurodo, kokioms transporto priemonėms paviršius turėtų būti tinkamas naudoti. Svarbiau yra bendras vaizdas, o ne pavieniai pavojai.</string>
     <string name="link_osmhydrant_description">Ieškoti, pridėti ir redaguoti gaisrines stotis ir gaisrinius hidrantus</string>
     <string name="achievement_lifesaver_title">Gelbėtojas</string>
-    <string name="achievement_lifesaver_solved_X">Išsprendėte %d užduočių, kurios padeda skubios pagalbos tarnyboms ir pirmosios pagalbos tarnyboms!</string>
+    <string name="achievement_lifesaver_solved_X">Išsprendėte %1$d užduočių, kurios padeda skubios pagalbos tarnyboms ir pirmosios pagalbos tarnyboms!</string>
     <string name="quest_fuelSelfService_title">Ar šioje degalinėje galima savitarna?</string>
     <string name="default_disabled_msg_difficult_and_time_consuming">Šis užduočių tipas pagal nutylėjimą yra išjungtas, nes teisingai pasirinkti užima daug laiko arba yra sudėtinga. Šį užduoties tipą įjunkite tik tuo atveju, jei tikrai esate pasiryžę pridėti tokio pobūdžio duomenų.</string>
     <string name="quest_smoothness_description_good_compacted_gravel">Kietai supiltas, labai mažai biraus žvyro ar smėlio</string>
@@ -1155,7 +1155,7 @@ Tą patį padarykite ir kitoje pusėje, jei yra.</string>
     <string name="quest_camp_power_supply_title">Ar yra galimybė klientams pasikrauti savo telefoną, kompiuterį ar kt.?</string>
     <string name="quest_camp_type_title">Kas galėtų čia stovyklauti?</string>
     <string name="quest_recycling_type_pet">Tik PET plastikas</string>
-    <string name="street_parking_street_width">Gatvės plotis: %s</string>
+    <string name="street_parking_street_width">Gatvės plotis: %1$s</string>
     <string name="overlay_street_parking">Parkavimas gatvėje</string>
     <string name="link_opencampingmap_description">Stovyklaviečių žemėlapis</string>
     <string name="quest_atm_cashin_title">Ar šiame bankomate galima įnešti pinigų?</string>

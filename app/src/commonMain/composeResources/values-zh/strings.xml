@@ -197,7 +197,7 @@
     <string name="quest_sport_roller_skating">轮滑</string>
     <string name="quest_wheelchairAccess_limited_description_business">部分是指进入该场所的台阶不超过脚踝，内部大部分房间可供轮椅进出。</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">部分是指进入这里的台阶不能超过脚踝高。</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">%s 的简称或缩写是？</string>
+    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">%1$s 的简称或缩写是？</string>
     <string name="quest_recycling_type_title">这是哪一种资源回收设施？</string>
     <string name="recycling_centre">资源回收中心</string>
     <string name="overground_recycling_container">资源回收容器</string>
@@ -378,7 +378,7 @@
     <string name="quest_construction_footway_title">这条步行道是否已完工？</string>
     <string name="quest_construction_generic_title">这条小径是否已完工？</string>
     <string name="quest_construction_building_title">这栋建筑是否已完工？</string>
-    <string name="questList_disabled_in_country">从不在 %s 显示</string>
+    <string name="questList_disabled_in_country">从不在 %1$s 显示</string>
     <string name="quest_select_hint_most_specific">选择最合适的一项：</string>
     <string name="quest_generic_item_confirmation">您确定无法更具体地确定吗？</string>
     <string name="privacy_html_third_party_quest_sources">&lt;p&gt;为了完成某些任务，系统会下载来自第三方的附加数据。&lt;/p&gt;</string>
@@ -489,7 +489,7 @@
     <string name="quest_motorcycleParkingCoveredStatus_title">该摩托车停车场是否有遮雨棚？</string>
     <string name="default_disabled_msg_maxspeed">此任务类型默认禁用，因为您通常需要检查整条街道的限速标志，而不仅仅是高亮显示的路段。有时，仅为完成一个任务就需要花费大量精力。</string>
     <string name="pref_title_quests_restore_hidden">恢复隐藏任务</string>
-    <string name="on_level">在第 %s 层</string>
+    <string name="on_level">在第 %1$s 层</string>
     <string name="underground">地下</string>
     <string name="quest_sidewalk_value_yes">人行道</string>
     <string name="quest_sidewalk_value_no">没有人行道</string>
@@ -583,8 +583,8 @@
     <string name="achievements_empty">您尚未获得任何成就</string>
     <string name="links_empty">您尚未获得任何链接</string>
     <string name="quests_empty">您尚未发布任何编辑</string>
-    <string name="unsynced_quests_description">剩余 %d 个未推送的变更。</string>
-    <string name="unsynced_quests_not_logged_in_description">您有 %d 处变更尚未发布。您需要登录才能上传它们。</string>
+    <string name="unsynced_quests_description">剩余 %1$d 个未推送的变更。</string>
+    <string name="unsynced_quests_not_logged_in_description">您有 %1$d 处变更尚未发布。您需要登录才能上传它们。</string>
     <string name="user_quests_title">个编辑</string>
     <string name="user_achievements_title">成就</string>
     <string name="user_links_title">链接集合</string>
@@ -636,27 +636,27 @@
     <string name="achievement_first_edit_title">已完成第一个任务</string>
     <string name="achievement_first_edit_description">欢迎来到OpenStreetMap社区！在你的资料页面，可以看到更多关于每一种你所完成任务的信息。</string>
     <string name="achievement_surveyor_title">勘测员</string>
-    <string name="achievement_surveyor_solved_X">你完成了%d个任务！完成更多以解锁更多成就，包括OSM和其它地图相关应用和项目的链接！</string>
+    <string name="achievement_surveyor_solved_X">你完成了%1$d个任务！完成更多以解锁更多成就，包括OSM和其它地图相关应用和项目的链接！</string>
     <string name="achievement_regular_title">常客</string>
-    <string name="achievement_regular_description">你已经使用这个应用向OSM贡献共%d天！长期贡献者是OSM的中流砥柱，谢谢你的贡献！❤</string>
+    <string name="achievement_regular_description">你已经使用这个应用向OSM贡献共%1$d天！长期贡献者是OSM的中流砥柱，谢谢你的贡献！❤</string>
     <string name="achievement_bicyclist_title">骑自行车的人</string>
-    <string name="achievement_bicyclist_solved_X">你完成了%d项可以帮助骑手任务！</string>
+    <string name="achievement_bicyclist_solved_X">你完成了%1$d项可以帮助骑手任务！</string>
     <string name="achievement_wheelchair_title">机动性</string>
-    <string name="achievement_wheelchair_solved_X">你完成了%d项任务，帮助了轮椅用户的出行！</string>
+    <string name="achievement_wheelchair_solved_X">你完成了%1$d项任务，帮助了轮椅用户的出行！</string>
     <string name="achievement_postman_title">邮差</string>
-    <string name="achievement_postman_solved_X">你帮助定位了 %d 个地址！这些数据对邮递员和任何导航系统都很重要。</string>
+    <string name="achievement_postman_solved_X">你帮助定位了 %1$d 个地址！这些数据对邮递员和任何导航系统都很重要。</string>
     <string name="achievement_building_title">高楼</string>
-    <string name="achievement_building_solved_X">你完成了%d项建筑相关的任务。
+    <string name="achievement_building_solved_X">你完成了%1$d项建筑相关的任务。
 本应用仅在确定了建筑类型后才会询问门牌号。</string>
     <string name="achievement_blind_title">第六感</string>
-    <string name="achievement_blind_solved_X">你完成了%d项与视障人群相关的任务。</string>
+    <string name="achievement_blind_solved_X">你完成了%1$d项与视障人群相关的任务。</string>
     <string name="achievement_pedestrian_title">跑者</string>
-    <string name="achievement_pedestrian_solved_X">你完成了%d项与步行人群相关的任务。</string>
+    <string name="achievement_pedestrian_solved_X">你完成了%1$d项与步行人群相关的任务。</string>
     <string name="achievement_veg_title">善待动物</string>
-    <string name="achievement_veg_solved_X">你完成了 %d 项与无肉饮食人群相关的任务！</string>
+    <string name="achievement_veg_solved_X">你完成了 %1$d 项与无肉饮食人群相关的任务！</string>
     <string name="achievement_car_title">在路上</string>
-    <string name="achievement_car_solved_X">您完成了 %d 个任务，完善了街道设施的细节，真正为 OpenStreetMap 增添了“街道”信息！</string>
-    <string name="unread_messages_message">你的收件箱中有 %d 条未读消息</string>
+    <string name="achievement_car_solved_X">您完成了 %1$d 个任务，完善了街道设施的细节，真正为 OpenStreetMap 增添了“街道”信息！</string>
+    <string name="unread_messages_message">你的收件箱中有 %1$d 条未读消息</string>
     <string name="unread_messages_button">打开收件箱</string>
     <string name="action_about2">关于</string>
     <string name="map_btn_menu">菜单</string>
@@ -666,11 +666,11 @@
     <string name="credits_projects_contributors_title">为StreetComplete制作的项目</string>
     <string name="credits_main_contributors_title">主要贡献者</string>
     <string name="stats_are_syncing">您的统计信息仍在同步中。请稍后再来查看。</string>
-    <string name="user_statistics_country_wiki_link">绘图传送门 %s</string>
+    <string name="user_statistics_country_wiki_link">绘图传送门 %1$s</string>
     <string name="user_statistics_filter_by_country">依据国家</string>
     <string name="user_statistics_filter_by_quest_type">依据任务类型</string>
     <string name="user_profile_global_rank">全球排名</string>
-    <string name="user_profile_local_rank">在%s排名</string>
+    <string name="user_profile_local_rank">在%1$s排名</string>
     <string name="user_profile_days_active">活跃天数</string>
     <string name="user_profile_achievement_levels">成就等级</string>
     <string name="quest_address_street_no_named_streets">它不属于一条命名的街道……</string>
@@ -695,8 +695,8 @@
     <string name="quest_board_type_map_description">如果这个板块是关于一个特定的主题，请注明，不管它是否也包括地图。例如，一个公共交通板块可能有一个公交线路图。如果该主题没有列在可供选择的答案中，请考虑留下一个注释。</string>
     <string name="quest_streetName_menuItem_international">国际</string>
     <string name="quest_buildingType_terrace2">排屋</string>
-    <string name="at_housename">房屋名称 %s</string>
-    <string name="at_housenumber">房屋编号 %s</string>
+    <string name="at_housename">房屋名称 %1$s</string>
+    <string name="at_housenumber">房屋编号 %1$s</string>
     <string name="quest_openingHours_add_off_days">添加休息日</string>
     <string name="quest_openingHours_off_day">休息日</string>
     <string name="quest_openingHours_unspecified_range">未指明</string>
@@ -730,11 +730,11 @@
     <string name="quest_charging_station_operator_title">谁是这个充电站的运营商？</string>
     <string name="link_indoorequal_description">探索商场、火车站等场所的室内地图。</string>
     <string name="achievement_rare_title">寻宝</string>
-    <string name="achievement_rare_solved_X">您找到并完成了 %d 个完成度十分稀少的任务，恭喜！</string>
+    <string name="achievement_rare_solved_X">您找到并完成了 %1$d 个完成度十分稀少的任务，恭喜！</string>
     <string name="achievement_citizen_title">市民</string>
-    <string name="achievement_citizen_solved_X">您完成了 %d 个对城镇日常生活有用的任务！</string>
+    <string name="achievement_citizen_solved_X">您完成了 %1$d 个对城镇日常生活有用的任务！</string>
     <string name="achievement_outdoors_title">在户外</string>
-    <string name="achievement_outdoors_solved_X">您完成了 %d 个对户外爱好者有用的任务！</string>
+    <string name="achievement_outdoors_solved_X">您完成了 %1$d 个对户外爱好者有用的任务！</string>
     <string name="quest_pedestrian_crossing_island">该人行横道有行人安全岛吗？</string>
     <string name="quest_generic_answer_noSign">这没有任何标志</string>
     <string name="quest_steps_ramp_separate_wheelchair">轮椅坡道在地图上是否分开标注？</string>
@@ -816,9 +816,9 @@
     <string name="hid_action_description">您已将其隐藏</string>
     <string name="split_way_action_description">您已分割路径</string>
     <string name="deleted_poi_action_description">您已将其删除</string>
-    <string name="added_tag_action_title">已添加 %s</string>
-    <string name="removed_tag_action_title">已移除 %s</string>
-    <string name="changed_tag_action_title">已更新为 %s</string>
+    <string name="added_tag_action_title">已添加 %1$s</string>
+    <string name="removed_tag_action_title">已移除 %1$s</string>
+    <string name="changed_tag_action_title">已更新为 %1$s</string>
     <string name="pref_title_delete_cache">删除缓存</string>
     <string name="pref_title_delete_cache_summary">如果你认为有些资料过时了</string>
     <string name="delete_confirmation">删除</string>
@@ -868,7 +868,7 @@
     <string name="about_title_faq">常见问题与解答</string>
     <string name="quest_buildingLevels_title2">这座建筑的地下室以上有几层？</string>
     <string name="quest_buildingLevels_title_buildingPart2">该建筑部分在地下室以上有几层？</string>
-    <string name="pref_subtitle_quests_preset_name">预设: %s</string>
+    <string name="pref_subtitle_quests_preset_name">预设: %1$s</string>
     <string name="default_disabled_msg_roofShape">此任务类型默认禁用，因为屋顶形状通常难以从街道上轻易看清。而且，完成此类任务相当耗时；多数情况下，在家通过航空影像绘制此信息更为简便高效。</string>
     <string name="quest_religion_animist">万物有灵论/泛灵论者</string>
     <string name="quest_construction_steps_title">这些台阶完工了吗？</string>
@@ -895,7 +895,7 @@
     <string name="quest_presets_preset_name">预设名称</string>
     <string name="quest_presets_default_name">默认</string>
     <string name="quest_presets_selected">已选中</string>
-    <string name="quest_presets_delete_message">删除预设 "%s" ？该预设的任务选择和顺序将永久丢失。</string>
+    <string name="quest_presets_delete_message">删除预设 "%1$s" ？该预设的任务选择和顺序将永久丢失。</string>
     <string name="notification_syncing">同步数据中…</string>
     <string name="notification_channel_sync">同步数据</string>
     <string name="quest_board_type_sport">运动，锻炼</string>
@@ -933,7 +933,7 @@
     <string name="quest_barrier_bicycle_type_double">减速栏杆 - 两侧都有栏杆</string>
     <string name="quest_barrier_bicycle_type_multiple">减速栏杆 - 超过两个栏杆</string>
     <string name="language_default">系统预设值</string>
-    <string name="on_floor">在 %s 层</string>
+    <string name="on_floor">在 %1$s 层</string>
     <string name="select_street_parking_orientation">选择朝向道路的方向：</string>
     <string name="select_street_parking_position">选择位置：</string>
     <string name="select_street_parking_no">这里有任何标志或道路标记吗？</string>
@@ -1000,7 +1000,7 @@
     <string name="quest_smoothness_hint">🚲、🚗、🚙、… 表明表面适用于哪些车辆。重要的是全局而不是单一的危险。</string>
     <string name="link_osmhydrant_description">查询、添加并编辑消防站和消防栓</string>
     <string name="achievement_lifesaver_title">救生员</string>
-    <string name="achievement_lifesaver_solved_X">你解决了 %d 个能够帮助应急响应部门的任务！</string>
+    <string name="achievement_lifesaver_solved_X">你解决了 %1$d 个能够帮助应急响应部门的任务！</string>
     <string name="quest_fuelSelfService_title">该加油站允许自助加油吗？</string>
     <string name="default_disabled_msg_difficult_and_time_consuming">这种任务类型在默认情况下是禁用的，因为它相当耗费时间，而且往往很难做出正确的选择。只有当你真的致力于添加这种数据时，你才应该启用这种任务类型。</string>
     <string name="quest_smoothness_description_good_compacted_gravel">硬质铺料，很少有松散的砾石或沙子</string>
@@ -1163,7 +1163,7 @@
     <string name="quest_camp_type_backcountry">偏远地区露营（无基础设施）</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">这个直径看起来难以置信，它通常介于 %1$d 和 %2$d 之间。</string>
     <string name="quest_recycling_type_pet">仅限PET塑料瓶</string>
-    <string name="street_parking_street_width">街道宽度：%s</string>
+    <string name="street_parking_street_width">街道宽度：%1$s</string>
     <string name="overlay_street_parking">路边停车</string>
     <string name="link_ohsomehex_description">在空间和时间上探索从大图景到单个物体的各种尺度的OSM数据</string>
     <string name="link_opencampingmap_description">一张露营地地图</string>
@@ -1210,7 +1210,7 @@
     <string name="user_profile_current_week_title">最近7天</string>
     <string name="user_profile_dates_mapped">你最近绘制的天数</string>
     <string name="quest_cycleway_value_advisory_lane">建议性（advisory ）自行车道</string>
-    <string name="urlconfig_scan_qr_code_again2">安装应用程序后，再次扫描二维码或点击&lt;a href="%s"&gt;此链接&lt;/a&gt;以应用预设。</string>
+    <string name="urlconfig_scan_qr_code_again2">安装应用程序后，再次扫描二维码或点击&lt;a href="%1$s"&gt;此链接&lt;/a&gt;以应用预设。</string>
     <string name="confirmation_replace_shop_title">它现在位于不同地点吗？</string>
     <string name="confirmation_replace_shop_message">在这种情况下，营业时间、联系信息等也要随之改变。</string>
     <string name="confirmation_replace_shop_yes">已是不同的地点</string>
@@ -1220,7 +1220,7 @@
 要现在移动它吗？</string>
     <string name="node_moved_not_far_enough">请移动得更远一点</string>
     <string name="node_moved_too_far">移动得太远了。考虑留下一条注记吧</string>
-    <string name="node_moved">已移动 %s</string>
+    <string name="node_moved">已移动 %1$s</string>
     <string name="move_node_description">拖动地图，将要素放在正确的位置。使用缩放功能，并尽可能地精确。请注意，你显示所在的位置可能没有事实上的那么准确。</string>
     <string name="move_node_action_description">您已移动节点</string>
     <string name="quest_cycleway_value_shoulder">无，但有路肩可供骑车人使用</string>
@@ -1318,7 +1318,7 @@
     <string name="label_log_older_than">到</string>
     <string name="label_log_message_contains">信息内容包含</string>
     <string name="title_logs_filters">过滤信息</string>
-    <string name="pref_title_quests_restore_hidden_summary">隐藏的任务数量：%d</string>
+    <string name="pref_title_quests_restore_hidden_summary">隐藏的任务数量：%1$d</string>
     <string name="link_every_door_description">适用于 Android 和 iOS 的强大 POI 编辑器</string>
     <string name="link_mapcomplete_description">OSM 主题地图的集合，每个地图都显示并允许您编辑一种特征</string>
     <string name="link_forum_description">需要帮忙？想了解发生了什么吗？快来参加吧，这里充满了来自全球各地的社区活动！</string>
@@ -1389,7 +1389,7 @@
     <string name="quest_camp_power_supply_hint">这可以指营位上的插座、公共服务设施内供客人使用的插座，或是为手机、笔记本电脑等设备专设的充电站。</string>
     <string name="quest_barrier_opening_width_bollard">此处可通过的最大宽度是多少？</string>
     <string name="user_profile_all_time_title">所有时间</string>
-    <string name="user_statistics_country_rank2">在 %s 的排名</string>
+    <string name="user_statistics_country_rank2">在 %1$s 的排名</string>
     <string name="quest_leafType_tree_is_just_a_stump">这只是个树桩</string>
     <string name="quest_board_name_title">这块公告牌的标题是什么？</string>
     <string name="quest_crossing_hint">横穿道路的便道：</string>

@@ -196,7 +196,7 @@ Dacă nu există indicatoare de-a lungul întregii străzi care se aplică pentr
     <string name="quest_sport_roller_skating">Patine cu rotile</string>
     <string name="quest_wheelchairAccess_limited_description_business">Parțial înseamnă că nu este mai mult de o treaptă înaltă până la gleznă pentru a intra în locație și că majoritatea spațiilor din interior sunt accesibile unui scaun cu rotile.</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">Parțial înseamnă că nu este mai mult de o treaptă înaltă până la gleznă pentru a-l accesa.</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">Există abrevieri în numele %s?</string>
+    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">Există abrevieri în numele %1$s?</string>
     <string name="quest_recycling_type_title">Ce tip de unitate pentru reciclare este?</string>
     <string name="recycling_centre">Centru de reciclare</string>
     <string name="overground_recycling_container">Container</string>
@@ -377,7 +377,7 @@ Parțial înseamnă că o persoană cu scaun cu rotile poate intra și folosi to
     <string name="quest_construction_footway_title">S-a finalizat acest pasaj?</string>
     <string name="quest_construction_generic_title">Este finalizată calea?</string>
     <string name="quest_construction_building_title">Este finalizată clădirea?</string>
-    <string name="questList_disabled_in_country">Niciodată arătat în %s</string>
+    <string name="questList_disabled_in_country">Niciodată arătat în %1$s</string>
     <string name="quest_select_hint_most_specific">Selectați ce se potrivește cel mai bine:</string>
     <string name="quest_generic_item_confirmation">Sigur nu puteți afla mai exact?</string>
     <string name="privacy_html_third_party_quest_sources">&lt;p&gt;Pentru unele misiuni, sunt descărcate unele date suplimentare de la terți.&lt;/p&gt;</string>
@@ -489,7 +489,7 @@ la parter</string>
     <string name="quest_motorcycleParkingCoveredStatus_title">Parcarea de motociclete este acoperită (protejată de ploaie)?</string>
     <string name="default_disabled_msg_maxspeed">Acest tip de misiune este dezactivat implicit, fiindcă trebuie să verificați întreaga stradă pentru indicatoare de limitare a vitezei, nu doar secțiunea evidențiată. Asta necesită uneori destulă muncă pentru a rezolva o doar singură misiune.</string>
     <string name="pref_title_quests_restore_hidden">Reactivează întrebările ascunse</string>
-    <string name="on_level">la nivelul %s</string>
+    <string name="on_level">la nivelul %1$s</string>
     <string name="underground">subteran</string>
     <string name="quest_sidewalk_value_yes">trotuar</string>
     <string name="quest_sidewalk_value_no">nu este trotuar</string>
@@ -581,8 +581,8 @@ Caută automat detaliile ce lipsesc din vecinătate, cum ar fi piste pentru bici
     <string name="achievements_empty">Nu aveți încă realizări</string>
     <string name="links_empty">Nu aveți încă linkuri</string>
     <string name="quests_empty">Nu ați publicat încă niciun răspuns la misiuni</string>
-    <string name="unsynced_quests_description">plus %d modificări nepublicate.</string>
-    <string name="unsynced_quests_not_logged_in_description">Aveți %d modificări nepublicate. Trebuie să vă autentificați pentru a putea fi urcate pe server.</string>
+    <string name="unsynced_quests_description">plus %1$d modificări nepublicate.</string>
+    <string name="unsynced_quests_not_logged_in_description">Aveți %1$d modificări nepublicate. Trebuie să vă autentificați pentru a putea fi urcate pe server.</string>
     <string name="user_quests_title">Misiuni rezolvate</string>
     <string name="user_achievements_title">Realizări</string>
     <string name="user_links_title">Colecție de legături</string>
@@ -634,28 +634,28 @@ Caută automat detaliile ce lipsesc din vecinătate, cum ar fi piste pentru bici
     <string name="achievement_first_edit_title">Prima misiune rezolvată</string>
     <string name="achievement_first_edit_description">Bine ați venit în comunitatea OpenStreetMap! Pe ecranul profilului dumneavoastră puteți vedea mai multe informații pentru fiecare tip de misiune rezolvat.</string>
     <string name="achievement_surveyor_title">Topograf</string>
-    <string name="achievement_surveyor_solved_X">Ați rezolvat %d misiuni! Continuați, pentru a debloca mai multe realizări ce conțin linkuri către OSM și alte aplicații și proiecte legate de hartă!</string>
+    <string name="achievement_surveyor_solved_X">Ați rezolvat %1$d misiuni! Continuați, pentru a debloca mai multe realizări ce conțin linkuri către OSM și alte aplicații și proiecte legate de hartă!</string>
     <string name="achievement_regular_title">Standard</string>
-    <string name="achievement_regular_description">Ați contribuit %d zile la OSM cu această aplicație! Colaboratorii frecvenți sunt coloana vertebrală a OSM, mulțumim pentru dedicare! ❤</string>
+    <string name="achievement_regular_description">Ați contribuit %1$d zile la OSM cu această aplicație! Colaboratorii frecvenți sunt coloana vertebrală a OSM, mulțumim pentru dedicare! ❤</string>
     <string name="achievement_bicyclist_title">Biciclist</string>
-    <string name="achievement_bicyclist_solved_X">Ați rezolvat %d misiuni ce ajută bicicliștii!</string>
+    <string name="achievement_bicyclist_solved_X">Ați rezolvat %1$d misiuni ce ajută bicicliștii!</string>
     <string name="achievement_wheelchair_title">Mobilitate</string>
-    <string name="achievement_wheelchair_solved_X">Ați rezolvat %d misiuni care îi ajută pe utilizatorii de scaune cu rotile să meargă prin oraș!</string>
+    <string name="achievement_wheelchair_solved_X">Ați rezolvat %1$d misiuni care îi ajută pe utilizatorii de scaune cu rotile să meargă prin oraș!</string>
     <string name="achievement_postman_title">Poștaș</string>
-    <string name="achievement_postman_solved_X">Ați ajutat la localizarea a %d adrese!
+    <string name="achievement_postman_solved_X">Ați ajutat la localizarea a %1$d adrese!
 Aceste date sunt esențiale nu numai pentru poștaș, ci și pentru orice sistem de navigație.</string>
     <string name="achievement_building_title">Zgârie-nori</string>
-    <string name="achievement_building_solved_X">Ați rezolvat %d misiuni legate de clădiri.
+    <string name="achievement_building_solved_X">Ați rezolvat %1$d misiuni legate de clădiri.
 Rețineți că această aplicație solicită numărul unei clădiri numai după ce tipul său a fost determinat.</string>
     <string name="achievement_blind_title">Al șaselea simț</string>
-    <string name="achievement_blind_solved_X">Ați rezolvat %d misiuni relevante pentru persoanele cu deficiențe de vedere.</string>
+    <string name="achievement_blind_solved_X">Ați rezolvat %1$d misiuni relevante pentru persoanele cu deficiențe de vedere.</string>
     <string name="achievement_pedestrian_title">Alergător</string>
-    <string name="achievement_pedestrian_solved_X">Ați rezolvat %d misiuni de interes pentru pietoni!</string>
+    <string name="achievement_pedestrian_solved_X">Ați rezolvat %1$d misiuni de interes pentru pietoni!</string>
     <string name="achievement_veg_title">Bun cu animalele</string>
-    <string name="achievement_veg_solved_X">Ați rezolvat %d misiuni relevante pentru persoanele care trăiesc cu o dietă fără carne!</string>
+    <string name="achievement_veg_solved_X">Ați rezolvat %1$d misiuni relevante pentru persoanele care trăiesc cu o dietă fără carne!</string>
     <string name="achievement_car_title">Pe drum</string>
-    <string name="achievement_car_solved_X">Ați rezolvat %d misiuni ce îmbunătățesc detaliile infrastructurii stradale, punând "strada" pe OpenStreetMap!</string>
-    <string name="unread_messages_message">Aveți %d mesaje necitite în căsuța de e-mail</string>
+    <string name="achievement_car_solved_X">Ați rezolvat %1$d misiuni ce îmbunătățesc detaliile infrastructurii stradale, punând "strada" pe OpenStreetMap!</string>
+    <string name="unread_messages_message">Aveți %1$d mesaje necitite în căsuța de e-mail</string>
     <string name="unread_messages_button">Deschide căsuța de mail</string>
     <string name="action_about2">Despre</string>
     <string name="map_btn_menu">Meniu</string>
@@ -665,13 +665,13 @@ Rețineți că această aplicație solicită numărul unei clădiri numai după 
     <string name="credits_projects_contributors_title">Proiecte realizate pentru StreetComplete</string>
     <string name="credits_main_contributors_title">Principalii colaboratori</string>
     <string name="stats_are_syncing">Statisticile încă se sincronizează. Verificați acest ecran mai târziu.</string>
-    <string name="user_statistics_country_wiki_link">Portal de cartografiere %s</string>
+    <string name="user_statistics_country_wiki_link">Portal de cartografiere %1$s</string>
     <string name="user_statistics_filter_by_country">după țară</string>
     <string name="user_statistics_filter_by_quest_type">după tipul de misiune</string>
     <string name="user_profile_global_rank">Rang
 global</string>
     <string name="user_profile_local_rank">Rang în
-%s</string>
+%1$s</string>
     <string name="user_profile_days_active">Zile de
 activitate</string>
     <string name="user_profile_achievement_levels">Realizări obținute</string>
@@ -696,8 +696,8 @@ activitate</string>
     <string name="quest_board_type_map_description">Dacă plăcuța este despre un anumit subiect, vă rugăm să îl specificați, indiferent dacă acesta include și o hartă. De exemplu, o placă de transport public poate avea o hartă a rutelor de autobuz. Dacă subiectul nu este listat printre răspunsurile disponibile, vă recomandăm să lăsați o notă.</string>
     <string name="quest_streetName_menuItem_international">internațional</string>
     <string name="quest_buildingType_terrace2">Case așezate pe rânduri</string>
-    <string name="at_housename">numele casei %s</string>
-    <string name="at_housenumber">numărul casei %s</string>
+    <string name="at_housename">numele casei %1$s</string>
+    <string name="at_housenumber">numărul casei %1$s</string>
     <string name="quest_openingHours_add_off_days">Adaugă zile libere</string>
     <string name="quest_openingHours_off_day">Zile libere</string>
     <string name="quest_openingHours_unspecified_range">Nespecificat</string>
@@ -731,11 +731,11 @@ activitate</string>
     <string name="quest_charging_station_operator_title">Care este operatorul aceastei stații de încărcare?</string>
     <string name="link_indoorequal_description">Descoperiți hărți interioare ale mall-urilor, gărilor etc.</string>
     <string name="achievement_rare_title">Vânătoare de comori</string>
-    <string name="achievement_rare_solved_X">Ați găsit și ați rezolvat %d misiuni ce sunt finalizate foarte rar, felicitări!</string>
+    <string name="achievement_rare_solved_X">Ați găsit și ați rezolvat %1$d misiuni ce sunt finalizate foarte rar, felicitări!</string>
     <string name="achievement_citizen_title">Cetățean</string>
-    <string name="achievement_citizen_solved_X">Ați rezolvat %d misiuni utile pentru viața de zi cu zi din oraș!</string>
+    <string name="achievement_citizen_solved_X">Ați rezolvat %1$d misiuni utile pentru viața de zi cu zi din oraș!</string>
     <string name="achievement_outdoors_title">În aer liber</string>
-    <string name="achievement_outdoors_solved_X">Ați rezolvat %d misiuni utile pentru entuziaștii plimbărilor în aer liber!</string>
+    <string name="achievement_outdoors_solved_X">Ați rezolvat %1$d misiuni utile pentru entuziaștii plimbărilor în aer liber!</string>
     <string name="quest_pedestrian_crossing_island">Are trecerea de pietoni o insulă?</string>
     <string name="quest_generic_answer_noSign">Nu este niciun indicator</string>
     <string name="quest_steps_ramp_separate_wheelchair">Rampa pentru scaunul cu rotile este afișată drept cale separată pe hartă?</string>
@@ -758,7 +758,7 @@ activitate</string>
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">Este un viraj la stânga cu două benzi</string>
     <string name="quest_address_answer_no_housenumber_message2b">Este corect?</string>
     <string name="quest_maxheight_below_bridge_title">Care este limita de înălțime la trecerea pe sub pod?</string>
-    <string name="quest_maxheight_split_way_hint">Dacă nu se aplică pe întregul drum, luați în considerare să răspundeți "%s".</string>
+    <string name="quest_maxheight_split_way_hint">Dacă nu se aplică pe întregul drum, luați în considerare să răspundeți "%1$s".</string>
     <string name="quest_tactile_paving_kerb_title">Există pavaj tactil pe această bordură?</string>
     <string name="quest_kerb_height_title">Care este înălțimea aceste borduri?</string>
     <string name="quest_kerb_height_flush">La același nivel ca suprafața drumului</string>
@@ -814,9 +814,9 @@ Dacă există benzi rezervate autobuzelor, vă rugăm să lăsați o notă.</str
     <string name="hid_action_description">Ați ascuns-o</string>
     <string name="split_way_action_description">Ați împărțit calea</string>
     <string name="deleted_poi_action_description">L-ați șters</string>
-    <string name="added_tag_action_title">S-a adăugat %s</string>
-    <string name="removed_tag_action_title">S-a șters %s</string>
-    <string name="changed_tag_action_title">S-a actualizat la %s</string>
+    <string name="added_tag_action_title">S-a adăugat %1$s</string>
+    <string name="removed_tag_action_title">S-a șters %1$s</string>
+    <string name="changed_tag_action_title">S-a actualizat la %1$s</string>
     <string name="pref_title_delete_cache">Șterge cache-ul</string>
     <string name="pref_title_delete_cache_summary">Dacă suspectați că unele date sunt învechite</string>
     <string name="delete_confirmation">Șterge</string>
@@ -866,7 +866,7 @@ Datele sunt actualizate după %1$s zile, iar datele neutilizate sunt șterse dup
     <string name="about_title_faq">FAQ</string>
     <string name="quest_buildingLevels_title2">Câte niveluri deasupra solului are această clădire?</string>
     <string name="quest_buildingLevels_title_buildingPart2">Câte niveluri deasupra solului are această parte de clădire?</string>
-    <string name="pref_subtitle_quests_preset_name">Preset: %s</string>
+    <string name="pref_subtitle_quests_preset_name">Preset: %1$s</string>
     <string name="default_disabled_msg_roofShape">Acest tip de misiune este dezactivat implicit, deoarece formele acoperișului de multe ori nu sunt vizibile de pe stradă. Totodată, acest tip de misiune consumă destul de mult timp; în majoritatea cazurilor, este mai ușor și mai eficient să cartografiați de acasă acest lucru, folosind imagini aeriene.</string>
     <string name="quest_religion_animist">Animist</string>
     <string name="quest_construction_steps_title">Sunt treptele finalizate?</string>
@@ -891,7 +891,7 @@ Datele sunt actualizate după %1$s zile, iar datele neutilizate sunt șterse dup
     <string name="quest_presets_preset_name">Nume preset</string>
     <string name="quest_presets_default_name">Implicit</string>
     <string name="quest_presets_selected">Selectat</string>
-    <string name="quest_presets_delete_message">Stergeți preset-ul "%s"? Misiunile activate și ordinea lor se vor pierde irevocabil.</string>
+    <string name="quest_presets_delete_message">Stergeți preset-ul "%1$s"? Misiunile activate și ordinea lor se vor pierde irevocabil.</string>
     <string name="notification_syncing">Se sincronizează datele…</string>
     <string name="notification_channel_sync">Sincronizare date</string>
     <string name="quest_board_type_sport">Sport, Exerciții</string>
@@ -929,7 +929,7 @@ Datele sunt actualizate după %1$s zile, iar datele neutilizate sunt șterse dup
     <string name="quest_barrier_bicycle_type_double">Șicană - barieră de fiecare parte</string>
     <string name="quest_barrier_bicycle_type_multiple">Șicană - mai mult de două bariere</string>
     <string name="language_default">Setarea implicită a sistemului</string>
-    <string name="on_floor">la etajul %s</string>
+    <string name="on_floor">la etajul %1$s</string>
     <string name="select_street_parking_orientation">Selectați orientarea față de drum:</string>
     <string name="select_street_parking_position">Selectați poziția:</string>
     <string name="select_street_parking_no">Există indicatoare sau marcaje?</string>
@@ -995,7 +995,7 @@ Alternativ, puteți lăsa o notă (cu fotografie).</string>
     <string name="quest_smoothness_hint">🚲, 🚗, 🚙,… indică pentru ce vehicule ar trebui să fie utilizabilă suprafața. Contează mai mult ideea generală decât pericole punctuale.</string>
     <string name="link_osmhydrant_description">Căutați, adăugați și editați stații de pompieri și hidranți</string>
     <string name="achievement_lifesaver_title">Salvato(r/are) de vieți</string>
-    <string name="achievement_lifesaver_solved_X">Ați rezolvat %d misiuni ce ajută serviciile de urgență și echipajele de intervenție la fața locului!</string>
+    <string name="achievement_lifesaver_solved_X">Ați rezolvat %1$d misiuni ce ajută serviciile de urgență și echipajele de intervenție la fața locului!</string>
     <string name="quest_fuelSelfService_title">Benzinăria permite autoservirea?</string>
     <string name="default_disabled_msg_difficult_and_time_consuming">Acest tip de misiune este dezactivat implicit fiindcă este fie consumatoare de timp, fie este greu de luat decizia corectă. Activați acest tip de misiune doar dacă sunteți dedicat(ă) adăugării acestui tip de informații.</string>
     <string name="quest_smoothness_description_good_compacted_gravel">Bine compactat, doar puțin pietriș liber sau nisip</string>
@@ -1158,7 +1158,7 @@ Faceți același lucru și pentru partea cealaltă, dacă este prezentă.</strin
     <string name="quest_camp_type_backcountry">Campare (fără facilități)</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">Acest diametru pare implauzibil, este de obicei între %1$d și %2$d.</string>
     <string name="quest_recycling_type_pet">Doar PET</string>
-    <string name="street_parking_street_width">Lățimea străzii: %s</string>
+    <string name="street_parking_street_width">Lățimea străzii: %1$s</string>
     <string name="overlay_street_parking">Parcare pe stradă</string>
     <string name="link_ohsomehex_description">Explorați datele OSM, de la vederea de ansamblu până la obiecte individuale, în spațiu și timp</string>
     <string name="link_opencampingmap_description">O hartă a locurilor de campare</string>
@@ -1205,7 +1205,7 @@ Faceți același lucru și pentru partea cealaltă, dacă este prezentă.</strin
     <string name="user_profile_current_week_title">Ultimele 7 zile</string>
     <string name="user_profile_dates_mapped">Zile cât ați cartografiat recent</string>
     <string name="quest_cycleway_value_advisory_lane">pistă recomandată pentru biciclete</string>
-    <string name="urlconfig_scan_qr_code_again2">După instalarea aplicației, scanați codul QR din nou sau dați click &lt;a href="%s"&gt;aici&lt;/a&gt; pentru a aplica preset-ul.</string>
+    <string name="urlconfig_scan_qr_code_again2">După instalarea aplicației, scanați codul QR din nou sau dați click &lt;a href="%1$s"&gt;aici&lt;/a&gt; pentru a aplica preset-ul.</string>
     <string name="confirmation_replace_shop_title">Este un magazin diferit acum?</string>
     <string name="confirmation_replace_shop_message">În acest caz, orele de funcționare, informațiie de contact, etc. vor trebui modificate deasemenea.</string>
     <string name="confirmation_replace_shop_yes">Magazin diferit</string>
@@ -1215,7 +1215,7 @@ Faceți același lucru și pentru partea cealaltă, dacă este prezentă.</strin
 Doriți să îl mutați acum?</string>
     <string name="node_moved_not_far_enough">Mutați-l mai departe</string>
     <string name="node_moved_too_far">Mutat prea departe. Aveți în vedere lăsarea unei note</string>
-    <string name="node_moved">Mutat cu %s</string>
+    <string name="node_moved">Mutat cu %1$s</string>
     <string name="move_node_description">Trageți de hartă pentru a plasa obiectul în poziția corectă. Folosiți funcția de mărire și încercați să fiți cât mai exact posibil. Fiți conștient că locația dumneavoastră afișată poate fi mai puțin exactă decât este afișat.</string>
     <string name="move_node_action_description">Ați mutat nodul</string>
     <string name="quest_cycleway_value_shoulder">absentă, dar acostamentul este utilizabil de către cicliști</string>
@@ -1313,7 +1313,7 @@ Datele lipsă sunt mereu arătate cu roșu.</string>
     <string name="label_log_older_than">La</string>
     <string name="label_log_message_contains">Mesajul conține</string>
     <string name="title_logs_filters">Filtrare mesaje</string>
-    <string name="pref_title_quests_restore_hidden_summary">Numărul de misiuni ascunse: %d</string>
+    <string name="pref_title_quests_restore_hidden_summary">Numărul de misiuni ascunse: %1$d</string>
     <string name="link_every_door_description">Editor POI eficient pentru Android și iOS</string>
     <string name="link_mapcomplete_description">Colecție de hărți tematice OSM care prezintă și vă permit să editați fiecare tip de caracteristică</string>
     <string name="link_forum_description">Aveți nevoie de ajutor? Vreți să citiți ce se întâmplă? Veniți și faceți cunoștință, este plin de activitate din partea comunităților din întreaga lume!</string>

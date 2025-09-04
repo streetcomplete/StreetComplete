@@ -78,7 +78,7 @@
 &lt;h2&gt;תרומות ישירות&lt;/h2&gt;
 &lt;p&gt;
 ראשית כל, יש להבין בעם האפליקציה הזו, יוצרים תרומות אמיתיות וישירות לטובת OpenStreetMap.&lt;br/&gt;
-כל תרומה שתיעשה באפליקציה זו נוספת ישירות למפה, אין גורם צד ג\' בדרך בין האפליקציה לבין תשתיות OSM.
+כל תרומה שתיעשה באפליקציה זו נוספת ישירות למפה, אין גורם צד ג' בדרך בין האפליקציה לבין תשתיות OSM.
 &lt;/p&gt;
 &lt;p&gt;
 עריכה אנונימית של OpenStreetMap אינה אפשרית. כל שינוי שנעשה (והתאריך והמיקום שלו) מיוחסים לחשבון ה-OSM שלך וניתנים לצפייה באופן פומבי באתר האינטרנט openstreetmap.org. היות וב-StreetComplete יש להשתמש רק לסקירה במקום, זה מגלה איפה ומתי השתמשת באפליקציה.
@@ -196,7 +196,7 @@
     <string name="quest_sport_roller_skating">החלקה על גלגיליות</string>
     <string name="quest_wheelchairAccess_limited_description_business">הכוונה בחלקית היא שאין צורך לעבור מדרגה גבוהה יותר מגובה הקרסול כדי לגשת למקום ורוב החדרים נגישים באמצעות כסא גלגלים.</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">הכוונה בחלקית היא שאין צורך לעבור מדרגה גבוהה יותר מגובה הקרסול כדי לגשת לשם.</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">האם יש ראשי תיבות בשם %s?</string>
+    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">האם יש ראשי תיבות בשם %1$s?</string>
     <string name="quest_recycling_type_title">איזה סוג של מתקן מחזור זה?</string>
     <string name="recycling_centre">מרכז מחזור</string>
     <string name="overground_recycling_container">מיכל</string>
@@ -255,7 +255,7 @@
     <string name="produce_papayas">פאפאיה</string>
     <string name="produce_peaches">אפרסקים</string>
     <string name="produce_pears">אגסים</string>
-    <string name="produce_chili">צ\'ילי</string>
+    <string name="produce_chili">צ'ילי</string>
     <string name="produce_persimmons">אפרסמונים</string>
     <string name="produce_pineapples">אננס</string>
     <string name="produce_pepper">פלפלים</string>
@@ -350,7 +350,7 @@
     <string name="quest_religion_taoist">טאויזם</string>
     <string name="quest_religion_for_place_of_worship_answer_multi">לשימוש כל הדתות</string>
     <string name="quest_religion_sikh">סיקית</string>
-    <string name="quest_religion_jain">ג\'ייניזם</string>
+    <string name="quest_religion_jain">ג'ייניזם</string>
     <string name="quest_religion_bahai">בני אמונת הבהאים</string>
     <string name="quest_religion_caodaist">קאו דאי</string>
     <string name="quest_religion_chinese_folk">דת סינית עממית</string>
@@ -375,7 +375,7 @@
     <string name="quest_construction_footway_title">האם שביל הולכי רגל זה הושלם?</string>
     <string name="quest_construction_generic_title">האם שביל זה הושלם?</string>
     <string name="quest_construction_building_title">האם בניית בנין זה הושלמה?</string>
-    <string name="questList_disabled_in_country">לעולם לא מוצג ב-%s</string>
+    <string name="questList_disabled_in_country">לעולם לא מוצג ב-%1$s</string>
     <string name="quest_select_hint_most_specific">יש לבחור את הפריט המתאים ביותר:</string>
     <string name="quest_generic_item_confirmation">בטוח שלא ניתן לקבוע באופן מפורט יותר?</string>
     <string name="quest_generic_hasFeature_no_leave_note">לא (נא להשאיר הערה)</string>
@@ -394,7 +394,7 @@
     <string name="quest_buildingType_semi_detached">בית קרקע מבודד למחצה</string>
     <string name="quest_buildingType_terrace_description">שורה ישרה של בתי משפחה דומים</string>
     <string name="quest_buildingType_hotel">בית מלון</string>
-    <string name="quest_buildingType_dormitory">מעונות (סטודנטים וכד\')</string>
+    <string name="quest_buildingType_dormitory">מעונות (סטודנטים וכד')</string>
     <string name="quest_buildingType_houseboat">בית סירה</string>
     <string name="quest_buildingType_bungalow">בונגלו</string>
     <string name="quest_buildingType_static_caravan">בית נייד</string>
@@ -484,7 +484,7 @@
     <string name="quest_motorcycleParkingCoveredStatus_title">האם חניון אופנועים זה מקורה (מוגן מפני גשם)?</string>
     <string name="default_disabled_msg_maxspeed">סוג משימה זו מוסתרת כברירת מחדל בגלל שיש לבדוק את שלטי הגבלת המהירות לאורך כל הרחוב ולא רק בחלקים המסומנים. לעיתים זו עלולה להיות עבודה מרובה רק לשם השלמת המשימה.</string>
     <string name="pref_title_quests_restore_hidden">החזרת משימות מוסתרות</string>
-    <string name="on_level">בקומה %s</string>
+    <string name="on_level">בקומה %1$s</string>
     <string name="underground">תת-קרקעי</string>
     <string name="quest_sidewalk_value_yes">מדרכה</string>
     <string name="quest_sidewalk_value_no">ללא מדרכה</string>
@@ -577,8 +577,8 @@
     <string name="achievements_empty">עדיין אין לך הישגים</string>
     <string name="links_empty">עדיין אין לך קישורים</string>
     <string name="quests_empty">עדיין לא פרסמת תשובות למשימות</string>
-    <string name="unsynced_quests_description">ועוד %d שינויים שטרם פורסמו.</string>
-    <string name="unsynced_quests_not_logged_in_description">יש לך %d שינויים שטרם פורסמו. יש להתחבר כדי להעלות אותם.</string>
+    <string name="unsynced_quests_description">ועוד %1$d שינויים שטרם פורסמו.</string>
+    <string name="unsynced_quests_not_logged_in_description">יש לך %1$d שינויים שטרם פורסמו. יש להתחבר כדי להעלות אותם.</string>
     <string name="user_quests_title">משימות שבוצעו</string>
     <string name="user_achievements_title">הישגים</string>
     <string name="user_links_title">אוסף קישורים</string>
@@ -627,27 +627,27 @@
     <string name="achievement_first_edit_title">משימה ראשונה הושלמה</string>
     <string name="achievement_first_edit_description">ברוך/ה הבא/ה לקהילת OpenStreetMap! במסך הפרופיל שלך ניתן לראות עוד לכבי כל משימת חקר שפתרת.</string>
     <string name="achievement_surveyor_title">סוקר</string>
-    <string name="achievement_surveyor_solved_X">פתרת %d משימות חקר! המשך/י לעוד הישגים שמכילים קישורים ל-OSM ויישומים ופרויקטים  הקשורים למפות.</string>
+    <string name="achievement_surveyor_solved_X">פתרת %1$d משימות חקר! המשך/י לעוד הישגים שמכילים קישורים ל-OSM ויישומים ופרויקטים  הקשורים למפות.</string>
     <string name="achievement_regular_title">רגיל</string>
-    <string name="achievement_regular_description">תרמת במשך %d ימים ל-OSM עם יישום זה! תורמים קבועים הם עמוד השדרה של OSM, תודה על ההתמדה! ❤</string>
+    <string name="achievement_regular_description">תרמת במשך %1$d ימים ל-OSM עם יישום זה! תורמים קבועים הם עמוד השדרה של OSM, תודה על ההתמדה! ❤</string>
     <string name="achievement_bicyclist_title">רוכב אופניים</string>
-    <string name="achievement_bicyclist_solved_X">פתרת %d משימות מחקר שעוזרות לרוכבי אופניים!</string>
+    <string name="achievement_bicyclist_solved_X">פתרת %1$d משימות מחקר שעוזרות לרוכבי אופניים!</string>
     <string name="achievement_wheelchair_title">ניידות</string>
-    <string name="achievement_wheelchair_solved_X">פתרת %d משימות מחקר שעוזרות למשתמשי כיסאות גלגלים להתנייד ברחבי העיר!</string>
+    <string name="achievement_wheelchair_solved_X">פתרת %1$d משימות מחקר שעוזרות למשתמשי כיסאות גלגלים להתנייד ברחבי העיר!</string>
     <string name="achievement_postman_title">דוור</string>
-    <string name="achievement_postman_solved_X">עזרת לאתר %d כתובות!
+    <string name="achievement_postman_solved_X">עזרת לאתר %1$d כתובות!
 מידע זה חיוני לא רק לדוורים אלא גם למערכות ניווט.</string>
-    <string name="achievement_building_solved_X">פתרת %d משימות מחקר שקשורות לבניינים.
+    <string name="achievement_building_solved_X">פתרת %1$d משימות מחקר שקשורות לבניינים.
 הערה: יישום זה מבקש מספרי בתים של בניינים רק לאחר שנקבע סוג הבניין.</string>
     <string name="achievement_blind_title">חוש שישי</string>
-    <string name="achievement_blind_solved_X">פתרת %d משימות מחקר שמעניינות בעלי לקויות ראיה.</string>
+    <string name="achievement_blind_solved_X">פתרת %1$d משימות מחקר שמעניינות בעלי לקויות ראיה.</string>
     <string name="achievement_pedestrian_title">אצן</string>
-    <string name="achievement_pedestrian_solved_X">פתרת %d משימות מחקר שמעניינות הולכי רגל!</string>
+    <string name="achievement_pedestrian_solved_X">פתרת %1$d משימות מחקר שמעניינות הולכי רגל!</string>
     <string name="achievement_veg_title">סוגי חיות</string>
-    <string name="achievement_veg_solved_X">פתרת %d משימות מחקר שמעניינות אנשים שחיים על תזונה ללא בשר!</string>
+    <string name="achievement_veg_solved_X">פתרת %1$d משימות מחקר שמעניינות אנשים שחיים על תזונה ללא בשר!</string>
     <string name="achievement_car_title">בדרך</string>
-    <string name="achievement_car_solved_X">פתרת %d שאלות מחקר שמשפרות את הפרטים לגבי תשתית הרחוב, ובכך שמת את ה-"street" ב-OpenStreetMap!</string>
-    <string name="unread_messages_message">יש לך %d הודעות שלא נקראו בתיבת הדואר הנכנס שלך</string>
+    <string name="achievement_car_solved_X">פתרת %1$d שאלות מחקר שמשפרות את הפרטים לגבי תשתית הרחוב, ובכך שמת את ה-"street" ב-OpenStreetMap!</string>
+    <string name="unread_messages_message">יש לך %1$d הודעות שלא נקראו בתיבת הדואר הנכנס שלך</string>
     <string name="unread_messages_button">פתח תיבת דואר נכנס</string>
     <string name="action_about2">אודות</string>
     <string name="map_btn_menu">תפריט</string>
@@ -680,8 +680,8 @@
     <string name="quest_board_type_map_description">אם השלט הוא לגבי נושא ספציפי, נא לציין אותו, גם אם השלט כולל גם מפה. לדוגמא שלט לגבי תחבורה ציבורית עשוי לכלול גם מפת נתיבי אוטובוסים. אם הנושא איננו מופיע בתשובות האפשריות, נא לשקול להשאיר הערה במקום.</string>
     <string name="quest_streetName_menuItem_international">בינלאומי</string>
     <string name="quest_buildingType_terrace2">בתי שורות</string>
-    <string name="at_housename">שם בית %s</string>
-    <string name="at_housenumber">מספר בית %s</string>
+    <string name="at_housename">שם בית %1$s</string>
+    <string name="at_housenumber">מספר בית %1$s</string>
     <string name="quest_openingHours_add_off_days">הוספת ימי חופשה</string>
     <string name="quest_openingHours_off_day">ימי חופשה</string>
     <string name="quest_openingHours_unspecified_range">לא מוגדר</string>
@@ -713,11 +713,11 @@
     <string name="quest_charging_station_operator_title">מי הוא המפעיל של עמדת טעינה זו?</string>
     <string name="link_indoorequal_description">גלה/י מפות של המרחב הפנימי של קניונים, תחנות רכבת ועוד.</string>
     <string name="achievement_rare_title">צייד אוצרות</string>
-    <string name="achievement_rare_solved_X">מצאת ופתרת %d משימות מחקר שמושלמות לעיתים נדירות, כל הכבוד!</string>
+    <string name="achievement_rare_solved_X">מצאת ופתרת %1$d משימות מחקר שמושלמות לעיתים נדירות, כל הכבוד!</string>
     <string name="achievement_citizen_title">אזרח</string>
-    <string name="achievement_citizen_solved_X">פתרת %d משימות מחקר ששימושיות לחיי יום-יום בעיר!</string>
+    <string name="achievement_citizen_solved_X">פתרת %1$d משימות מחקר ששימושיות לחיי יום-יום בעיר!</string>
     <string name="achievement_outdoors_title">המרחבים הפתוחים</string>
-    <string name="achievement_outdoors_solved_X">פתרת %d משימות מחקר שימושיות לאוהבי המרחבים הפתוחים!</string>
+    <string name="achievement_outdoors_solved_X">פתרת %1$d משימות מחקר שימושיות לאוהבי המרחבים הפתוחים!</string>
     <string name="quest_pedestrian_crossing_island">האם במעבר חצייה זה יש אי תנועה?</string>
     <string name="quest_generic_answer_noSign">אין תמרור או שלט</string>
     <string name="quest_steps_ramp_separate_wheelchair">האם רמפת כיסאות הגלגלים מוצגת כדרך נפרדת על המפה?</string>
@@ -740,7 +740,7 @@
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">יש נתיב פניה שמאלה דו-סטרי</string>
     <string name="quest_address_answer_no_housenumber_message2b">האם זה נכון?</string>
     <string name="quest_maxheight_below_bridge_title">מהי מגבלת הגובה מתחת לגשר?</string>
-    <string name="quest_maxheight_split_way_hint">אם התשובה איננה מתאימה לדרך כולה, ניתן לשקול לענות "%s".</string>
+    <string name="quest_maxheight_split_way_hint">אם התשובה איננה מתאימה לדרך כולה, ניתן לשקול לענות "%1$s".</string>
     <string name="quest_tactile_paving_kerb_title">האם יש ריצוף מישושי על שפת המדרכה כאן?</string>
     <string name="quest_kerb_height_title">מהו גובה שפת המדרכה כאן?</string>
     <string name="quest_kerb_height_flush">בגובה פני הדרך</string>
@@ -795,9 +795,9 @@
     <string name="hid_action_description">הוסתר על ידך</string>
     <string name="split_way_action_description">הדרך פוצלה על ידך</string>
     <string name="deleted_poi_action_description">נמחק על ידך</string>
-    <string name="added_tag_action_title">נוסף %s</string>
-    <string name="removed_tag_action_title">הוסר %s</string>
-    <string name="changed_tag_action_title">עודכן ל-%s</string>
+    <string name="added_tag_action_title">נוסף %1$s</string>
+    <string name="removed_tag_action_title">הוסר %1$s</string>
+    <string name="changed_tag_action_title">עודכן ל-%1$s</string>
     <string name="pref_title_delete_cache">מחיקת זיכרון מטמון</string>
     <string name="pref_title_delete_cache_summary">אם לדעתך חלק מהמידע מיושן</string>
     <string name="delete_confirmation">מחק</string>
@@ -818,7 +818,7 @@
     <string name="quest_barrier_type_height_restrictor">תמרור הגבלת גובה</string>
     <string name="quest_barrier_full_height_turnstile">קרוסלה בגובה מלא</string>
     <string name="quest_barrier_type_turnstile">קרוסלה</string>
-    <string name="quest_barrier_type_passage">מעבר דרך קיר/גדר/כד\'</string>
+    <string name="quest_barrier_type_passage">מעבר דרך קיר/גדר/כד'</string>
     <string name="quest_barrier_type_debris_pile">ערימת הריסות</string>
     <string name="quest_barrier_type_stile_squeezer">מעבר צר בחומה</string>
     <string name="quest_barrier_type_stile_ladder">מעבר סולם מעל חומה</string>
@@ -884,7 +884,7 @@
     <string name="quest_access_private">רק בעל(י) רשות</string>
     <string name="quest_postboxCollectionTimes_resurvey_title">האם זמני האיסוף של תיבת דואר זו עדיין נכונים?</string>
     <string name="language_default">ברירת המחדל של המערכת</string>
-    <string name="on_floor">בקומה %s</string>
+    <string name="on_floor">בקומה %1$s</string>
     <string name="select_street_parking_orientation">נא לבחור כיוון ביחס לכביש:</string>
     <string name="select_street_parking_position">נא לבחור מיקום:</string>
     <string name="select_street_parking_no">האם יש כאן תמרור או סימון על הכביש?</string>
@@ -943,7 +943,7 @@
     <string name="quest_smoothness_hint">🚲, 🚗, 🚙,… נא לציין אלו כלי רכב יכולים להשתמש במשטח. הדגש הוא על התמונה בגדול יותר מאשר על מפגעים בודדים.</string>
     <string name="link_osmhydrant_description">חיפוש, הוספה ועריכה של תחנות כיבוי אש וברזי כיבוי</string>
     <string name="achievement_lifesaver_title">מציל חיים</string>
-    <string name="achievement_lifesaver_solved_X">פתרת %d שאלות מחקר שעוזרות לשירותי הצלה וחירום!</string>
+    <string name="achievement_lifesaver_solved_X">פתרת %1$d שאלות מחקר שעוזרות לשירותי הצלה וחירום!</string>
     <string name="quest_fuelSelfService_title">האם תחנת דלק זו מאפשרת שירות עצמי?</string>
     <string name="default_disabled_msg_difficult_and_time_consuming">סוג שאלות מחקר זה מנוטרל כברירת מחדל מכיוון שהן דורשות זמן רב או שקשה לבחור בהן את התשובה הנכונה. נא לאפשר סוג שאלות מחקר זה רק אם את/ה באמת מחוייב/ת להוסיף סוג מידע שכזה.</string>
     <string name="quest_barrier_path_intersection">איך הנתיב הזה חוצה את המחסום כאן?</string>
@@ -1084,13 +1084,13 @@
     <string name="quest_entrance_reference_flat_range_to">עד</string>
     <string name="quest_camp_drinking_water_title">האם יש מי שתייה זמינים למי שישן כאן?</string>
     <string name="quest_camp_shower_title">האם יש כאן מקלחות?</string>
-    <string name="quest_camp_power_supply_title">האם יש כאן אפשרות ללקוחות להטעין טלפון, לפטופ וכו\'?</string>
+    <string name="quest_camp_power_supply_title">האם יש כאן אפשרות ללקוחות להטעין טלפון, לפטופ וכו'?</string>
     <string name="quest_camp_type_title">מי יכול לעשות כאן קמפינג?</string>
     <string name="quest_camp_type_tents_and_caravans">גם אוהלים וגם קרוואנים, נגררים, ...</string>
     <string name="quest_camp_type_caravans_only">רק קרוואנים, נגררים, ...</string>
     <string name="quest_camp_type_tents_only">אוהלים בלבד</string>
     <string name="quest_camp_type_backcountry">לינת שטח (אין מתקנים תומכים)</string>
-    <string name="street_parking_street_width">רוחב רחוב: %s</string>
+    <string name="street_parking_street_width">רוחב רחוב: %1$s</string>
     <string name="overlay_street_parking">חניה ברחוב</string>
     <string name="link_opencampingmap_description">מפה של אתרי קמפינג</string>
     <string name="quest_atm_cashin_title">האם אפשר להפקיד מזומן בכספומט זה?</string>
@@ -1130,7 +1130,7 @@
     <string name="user_profile_current_week_title">7 ימים אחרונים</string>
     <string name="user_profile_dates_mapped">ימים שבהם מיפית לאחרונה</string>
     <string name="confirmation_replace_shop_title">האם זה מקום שונה עכשיו?</string>
-    <string name="confirmation_replace_shop_message">במקרה זה, שעות הפתיחה, פרטי הקשר וכו\' יצטרכו להשתנות גם הם.</string>
+    <string name="confirmation_replace_shop_message">במקרה זה, שעות הפתיחה, פרטי הקשר וכו' יצטרכו להשתנות גם הם.</string>
     <string name="confirmation_replace_shop_yes">מקום שונה עכשיו</string>
     <string name="confirmation_replace_shop_no">עדיין אותו מקום</string>
     <string name="move_node">זה במיקום מעט שונה...</string>
@@ -1138,11 +1138,11 @@
 להזיז אותו עכשיו?</string>
     <string name="node_moved_not_far_enough">נא להזיז אותו יותר</string>
     <string name="node_moved_too_far">הזזת רחוק מידי. נא לשקול להשאיר הערה</string>
-    <string name="node_moved">הזזת ב-%s</string>
+    <string name="node_moved">הזזת ב-%1$s</string>
     <string name="move_node_description">נא לגרור את המפה כדי למקם את האובייקט במיקום הנכון. נא להשתמש בפונקציית הזום ולנסות להיות מדוייקים ככל האפשר. נא לשים לב שהמיקום העצמי שמוצג עשוי להיות פחות מדויק ממה שמוצג.</string>
     <string name="quest_cycleway_value_shoulder">אין, אבל השול ניתו לשימוש על ידי רוכבים</string>
     <string name="quest_placeName_no_name_answer">אין שלט שם...</string>
-    <string name="quest_road_width_unusualInput_confirmation_description">הרוחב נראה לא סביר. נא לזכור, זה אמור להיות הרוחב ממדרכה למדרכה, כולל חנייה ברחוב, נתיבי אופניים וכו\'.</string>
+    <string name="quest_road_width_unusualInput_confirmation_description">הרוחב נראה לא סביר. נא לזכור, זה אמור להיות הרוחב ממדרכה למדרכה, כולל חנייה ברחוב, נתיבי אופניים וכו'.</string>
     <string name="overlay_cycleway">נתיבי אופניים</string>
     <string name="bicycle_boulevard_is_a">זה %1$s</string>
     <string name="bicycle_boulevard_is_not_a">זה לא %1$s</string>

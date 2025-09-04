@@ -193,7 +193,7 @@ Si no hay señales en la parte seleccionada se utilizarán los límites de veloc
     <string name="quest_sport_roller_skating">Patinaje sobre ruedas</string>
     <string name="quest_wheelchairAccess_limited_description_business">Parcialmente significa que no hay más de un peldaño en todo el recorrido y que se puede acceder a la mayor parte de las salas en silla de ruedas.</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">Parcialmente significa que no hay más de un peldaño en todo el recorrido.</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">¿«%s» contiene alguna abreviatura?</string>
+    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">¿«%1$s» contiene alguna abreviatura?</string>
     <string name="quest_recycling_type_title">¿Qué tipo de estructura de reciclado es?</string>
     <string name="recycling_centre">Centro de reciclado</string>
     <string name="overground_recycling_container">Contenedor</string>
@@ -350,7 +350,7 @@ Parcial es que se pueda entrar con la silla y utilizar los baños, pero sin pasa
     <string name="quest_religion_for_place_of_worship_answer_multi">sirve para cualquier religión</string>
     <string name="quest_religion_sikh">Sijismo (sikh)</string>
     <string name="quest_religion_jain">Jainismo</string>
-    <string name="quest_religion_bahai">Bahaísmo (fe bahá\'í)</string>
+    <string name="quest_religion_bahai">Bahaísmo (fe bahá'í)</string>
     <string name="quest_religion_caodaist">Caodaísmo (Cao Đài)</string>
     <string name="quest_religion_chinese_folk">Religión tradicional china</string>
     <string name="quest_religion_for_wayside_shrine_title">¿Este templo está dedicado a alguna religión en particular?</string>
@@ -374,7 +374,7 @@ Parcial es que se pueda entrar con la silla y utilizar los baños, pero sin pasa
     <string name="quest_construction_footway_title">¿Este sendero está terminado?</string>
     <string name="quest_construction_generic_title">¿Esta vía está terminada?</string>
     <string name="quest_construction_building_title">¿El edificio está terminado?</string>
-    <string name="questList_disabled_in_country">Nunca se muestra en %s</string>
+    <string name="questList_disabled_in_country">Nunca se muestra en %1$s</string>
     <string name="quest_select_hint_most_specific">La opción, cuanto más específica, mejor:</string>
     <string name="quest_generic_item_confirmation">¿Seguro que no puedes afinar tu selección algo más?</string>
     <string name="privacy_html_third_party_quest_sources">&lt;p&gt;En algunas tareas se descargan datos adicionales de terceros.&lt;/p&gt;</string>
@@ -485,7 +485,7 @@ Parcial es que se pueda entrar con la silla y utilizar los baños, pero sin pasa
     <string name="quest_motorcycleParkingCoveredStatus_title">¿Está este estacionamiento de motos cubierto (protegido de la lluvia)?</string>
     <string name="default_disabled_msg_maxspeed">Este tipo de pregunta está desactivada por defecto porque normalmente se requiere que compruebes toda la calle, no solo la sección resaltada. Puede ser demasiado trabajo para completar una sola tarea.</string>
     <string name="pref_title_quests_restore_hidden">Mostrar tareas ocultas</string>
-    <string name="on_level">en el nivel %s</string>
+    <string name="on_level">en el nivel %1$s</string>
     <string name="underground">subterránea</string>
     <string name="quest_sidewalk_value_yes">acera</string>
     <string name="quest_sidewalk_value_no">no hay acera</string>
@@ -577,8 +577,8 @@ Y ya para terminar, ten cuidado: No te despistes y mira a tu alrededor. No entre
     <string name="achievements_empty">Todavía no tienes ningún logro</string>
     <string name="links_empty">Todavía no tienes ningún enlace</string>
     <string name="quests_empty">Todavía no has resuelto ninguna tarea</string>
-    <string name="unsynced_quests_description">y más de %d cambios todavía sin subir.</string>
-    <string name="unsynced_quests_not_logged_in_description">Tienes %d cambios sin subir. Necesitas iniciar sesión para publicarlos.</string>
+    <string name="unsynced_quests_description">y más de %1$d cambios todavía sin subir.</string>
+    <string name="unsynced_quests_not_logged_in_description">Tienes %1$d cambios sin subir. Necesitas iniciar sesión para publicarlos.</string>
     <string name="user_quests_title">Tareas completadas</string>
     <string name="user_achievements_title">Logros</string>
     <string name="user_links_title">Colección de enlaces</string>
@@ -630,28 +630,28 @@ Y ya para terminar, ten cuidado: No te despistes y mira a tu alrededor. No entre
     <string name="achievement_first_edit_title">Primera tarea resuelta</string>
     <string name="achievement_first_edit_description">¡Te damos la bienvenida a la comunidad de OpenStreetMap! En la sección de «mi perfil» puedes ver más información sobre los tipos de tarea que has resuelto.</string>
     <string name="achievement_surveyor_title">Topógrafo</string>
-    <string name="achievement_surveyor_solved_X">¡Has resuelto %d tareas! ¡Sigue desbloqueando más logros relacionados con OSM y otras aplicaciones y proyectos de mapeo!</string>
+    <string name="achievement_surveyor_solved_X">¡Has resuelto %1$d tareas! ¡Sigue desbloqueando más logros relacionados con OSM y otras aplicaciones y proyectos de mapeo!</string>
     <string name="achievement_regular_title">Colaborador asiduo</string>
-    <string name="achievement_regular_description">¡Has estado %d días aportando datos a OSM con esta aplicación! Los voluntarios de pro como tú sois los que hacéis de OSM algo grande, ¡gracias por tanto esfuerzo! ❤</string>
+    <string name="achievement_regular_description">¡Has estado %1$d días aportando datos a OSM con esta aplicación! Los voluntarios de pro como tú sois los que hacéis de OSM algo grande, ¡gracias por tanto esfuerzo! ❤</string>
     <string name="achievement_bicyclist_title">Ciclista</string>
-    <string name="achievement_bicyclist_solved_X">¡Has resuelto %d tareas que ayudan a los ciclistas!</string>
+    <string name="achievement_bicyclist_solved_X">¡Has resuelto %1$d tareas que ayudan a los ciclistas!</string>
     <string name="achievement_wheelchair_title">Movilidad</string>
-    <string name="achievement_wheelchair_solved_X">¡Has resuelto %d tareas que ayudan a los usuarios en silla de ruedas a moverse por la ciudad!</string>
+    <string name="achievement_wheelchair_solved_X">¡Has resuelto %1$d tareas que ayudan a los usuarios en silla de ruedas a moverse por la ciudad!</string>
     <string name="achievement_postman_title">Cartero</string>
-    <string name="achievement_postman_solved_X">¡Has puesto %d direcciones en el mapa!
+    <string name="achievement_postman_solved_X">¡Has puesto %1$d direcciones en el mapa!
 Estos datos son esenciales no solo para tu cartero sino también para cualquier sistema de navegación.</string>
     <string name="achievement_building_title">Rascacielos</string>
-    <string name="achievement_building_solved_X">Has resuelto %d tareas de edificios.
+    <string name="achievement_building_solved_X">Has resuelto %1$d tareas de edificios.
 Ten en cuenta que esta aplicación solo pide el número de portal de un edificio tras saber el tipo de edificio que es.</string>
     <string name="achievement_blind_title">Sexto sentido</string>
-    <string name="achievement_blind_solved_X">Has resuelto %d tareas que ayudan a personas con visibilidad reducida.</string>
+    <string name="achievement_blind_solved_X">Has resuelto %1$d tareas que ayudan a personas con visibilidad reducida.</string>
     <string name="achievement_pedestrian_title">Corredor</string>
-    <string name="achievement_pedestrian_solved_X">¡Has resuelto %d tareas útiles para viandantes!</string>
+    <string name="achievement_pedestrian_solved_X">¡Has resuelto %1$d tareas útiles para viandantes!</string>
     <string name="achievement_veg_title">Amigo de los animales</string>
-    <string name="achievement_veg_solved_X">¡Has resuelto %d tareas útiles para veganos y vegetarianos!</string>
+    <string name="achievement_veg_solved_X">¡Has resuelto %1$d tareas útiles para veganos y vegetarianos!</string>
     <string name="achievement_car_title">En ruta</string>
-    <string name="achievement_car_solved_X">¡Has resuelto %d tareas, mejorando así los detalles de infraestructura de calles y exteriores, recalcando el buen nombre de OpenStreetMap!</string>
-    <string name="unread_messages_message">Tienes %d mensajes sin leer en tu bandeja de entrada</string>
+    <string name="achievement_car_solved_X">¡Has resuelto %1$d tareas, mejorando así los detalles de infraestructura de calles y exteriores, recalcando el buen nombre de OpenStreetMap!</string>
+    <string name="unread_messages_message">Tienes %1$d mensajes sin leer en tu bandeja de entrada</string>
     <string name="unread_messages_button">Abrir bandeja de entrada</string>
     <string name="action_about2">Acerca de</string>
     <string name="map_btn_menu">Menú</string>
@@ -661,12 +661,12 @@ Ten en cuenta que esta aplicación solo pide el número de portal de un edificio
     <string name="credits_projects_contributors_title">Proyectos de desarrollo para StreetComplete</string>
     <string name="credits_main_contributors_title">Colaboradores principales</string>
     <string name="stats_are_syncing">Tus estadísticas aún se están sincronizando, vuelve más tarde.</string>
-    <string name="user_statistics_country_wiki_link">Portal de mapeo %s</string>
+    <string name="user_statistics_country_wiki_link">Portal de mapeo %1$s</string>
     <string name="user_statistics_filter_by_country">por país</string>
     <string name="user_statistics_filter_by_quest_type">por tipo de pregunta</string>
     <string name="user_profile_global_rank">Clasificación</string>
     <string name="user_profile_local_rank">Clasificación en
-%s</string>
+%1$s</string>
     <string name="user_profile_days_active">Días activo</string>
     <string name="user_profile_achievement_levels">Logros y niveles</string>
     <string name="quest_address_street_no_named_streets">No pertenece a una calle con nombre…</string>
@@ -690,8 +690,8 @@ Ten en cuenta que esta aplicación solo pide el número de portal de un edificio
     <string name="quest_board_type_map_description">Si el cartel es sobre un tema en particular déjalo claro y afina tu selección, sin importar el mapa que pueda tener. Por ejemplo; un cartel de transporte público puede tener un mapa con una ruta de autobús. Si el tema no aparece en la lista deja una nota.</string>
     <string name="quest_streetName_menuItem_international">internacional</string>
     <string name="quest_buildingType_terrace2">Casas adosadas</string>
-    <string name="at_housename">Nombre de la casa %s</string>
-    <string name="at_housenumber">número de casa %s</string>
+    <string name="at_housename">Nombre de la casa %1$s</string>
+    <string name="at_housenumber">número de casa %1$s</string>
     <string name="quest_openingHours_add_off_days">Añadir días libres</string>
     <string name="quest_openingHours_off_day">Día libre</string>
     <string name="quest_openingHours_unspecified_range">Sin especificar</string>
@@ -725,11 +725,11 @@ Ten en cuenta que esta aplicación solo pide el número de portal de un edificio
     <string name="quest_charging_station_operator_title">¿Quién es el operador de esta estación de carga?</string>
     <string name="link_indoorequal_description">Descubre mapas interiores de centros comerciales, estaciones de tren y otros.</string>
     <string name="achievement_rare_title">Búsqueda del tesoro</string>
-    <string name="achievement_rare_solved_X">¡Has encontrado y resuelto %d tareas con las que pocos se atreven, muy bien hecho!</string>
+    <string name="achievement_rare_solved_X">¡Has encontrado y resuelto %1$d tareas con las que pocos se atreven, muy bien hecho!</string>
     <string name="achievement_citizen_title">Ciudadano</string>
-    <string name="achievement_citizen_solved_X">¡Has resuelto %d tareas urbanas del día a día!</string>
+    <string name="achievement_citizen_solved_X">¡Has resuelto %1$d tareas urbanas del día a día!</string>
     <string name="achievement_outdoors_title">Al aire libre</string>
-    <string name="achievement_outdoors_solved_X">¡Has completado %d tareas orientadas al aire libre!</string>
+    <string name="achievement_outdoors_solved_X">¡Has completado %1$d tareas orientadas al aire libre!</string>
     <string name="quest_pedestrian_crossing_island">¿Este paso de peatones tiene una isla o punto intermedio?</string>
     <string name="quest_generic_answer_noSign">No hay señal</string>
     <string name="quest_steps_ramp_separate_wheelchair">¿Se muestra la rampa para sillas de ruedas como una vía separada en el mapa?</string>
@@ -752,7 +752,7 @@ Ten en cuenta que esta aplicación solo pide el número de portal de un edificio
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">Tiene un carril central de espera (de giro o almacenamiento) para ambas direcciones</string>
     <string name="quest_address_answer_no_housenumber_message2b">¿Es esto correcto?</string>
     <string name="quest_maxheight_below_bridge_title">¿Cuál es el límite de altura debajo del puente?</string>
-    <string name="quest_maxheight_split_way_hint">Si no es igual en toda la vía, puedes responder «%s».</string>
+    <string name="quest_maxheight_split_way_hint">Si no es igual en toda la vía, puedes responder «%1$s».</string>
     <string name="quest_tactile_paving_kerb_title">¿Hay pavimento táctil bordeando las aceras?</string>
     <string name="quest_kerb_height_title">¿Cuál es la altura de este bordillo?</string>
     <string name="quest_kerb_height_flush">Al mismo nivel que la superficie de la calzada
@@ -807,9 +807,9 @@ Ten en cuenta que esta aplicación solo pide el número de portal de un edificio
     <string name="hid_action_description">Lo has ocultado</string>
     <string name="split_way_action_description">Has dividido el camino</string>
     <string name="deleted_poi_action_description">Lo has borrado</string>
-    <string name="added_tag_action_title">«%s» añadido</string>
-    <string name="removed_tag_action_title">«%s» eliminado</string>
-    <string name="changed_tag_action_title">Actualizado a «%s»</string>
+    <string name="added_tag_action_title">«%1$s» añadido</string>
+    <string name="removed_tag_action_title">«%1$s» eliminado</string>
+    <string name="changed_tag_action_title">Actualizado a «%1$s»</string>
     <string name="pref_title_delete_cache">Borrar caché</string>
     <string name="pref_title_delete_cache_summary">Si crees que hay datos obsoletos</string>
     <string name="delete_confirmation">Borrar</string>
@@ -859,7 +859,7 @@ Los datos se actualizan cada %1$s días y los datos sin utilizar se eliminan aut
     <string name="about_title_faq">Preguntas frecuentes</string>
     <string name="quest_buildingLevels_title2">¿Cuántas plantas o pisos tiene este edificio? Contando desde el suelo.</string>
     <string name="quest_buildingLevels_title_buildingPart2">¿Cuántas plantas o pisos tiene esta parte de edificio? Contando desde el suelo.</string>
-    <string name="pref_subtitle_quests_preset_name">Preajuste: %s</string>
+    <string name="pref_subtitle_quests_preset_name">Preajuste: %1$s</string>
     <string name="default_disabled_msg_roofShape">Este tipo de tarea viene desactivada de serie porque las formas de los tejados no se ven muy bien a nivel de calle, estas tareas suelen llevar mucho rato y es mejor hacerlo desde casa con la imagen por satélite en una pantalla grande.</string>
     <string name="quest_religion_animist">Animismo</string>
     <string name="quest_construction_steps_title">¿Se han completado estos pasos?</string>
@@ -884,7 +884,7 @@ Los datos se actualizan cada %1$s días y los datos sin utilizar se eliminan aut
     <string name="quest_presets_preset_name">Nombre del preajuste</string>
     <string name="quest_presets_default_name">De serie</string>
     <string name="quest_presets_selected">Elegido</string>
-    <string name="quest_presets_delete_message">¿Quieres borrar el preajuste «%s»? La selección de las tareas elegidas y su orden se perderán.</string>
+    <string name="quest_presets_delete_message">¿Quieres borrar el preajuste «%1$s»? La selección de las tareas elegidas y su orden se perderán.</string>
     <string name="notification_syncing">Sincronizando datos…</string>
     <string name="notification_channel_sync">Sincronizar datos</string>
     <string name="quest_board_type_sport">Deporte, Ejercicios</string>
@@ -922,7 +922,7 @@ Los datos se actualizan cada %1$s días y los datos sin utilizar se eliminan aut
     <string name="quest_barrier_bicycle_type_double">Chicane; un bloque a cada lado</string>
     <string name="quest_barrier_bicycle_type_multiple">Chicane; más de dos bloques</string>
     <string name="language_default">Idioma del sistema</string>
-    <string name="on_floor">En el piso %s:</string>
+    <string name="on_floor">En el piso %1$s:</string>
     <string name="select_street_parking_orientation">Elige la modalidad de aparcamiento/estacionamiento:</string>
     <string name="select_street_parking_position">Elige la posición:</string>
     <string name="select_street_parking_no">¿Ves alguna señal o marca en el suelo?</string>
@@ -988,7 +988,7 @@ También puedes dejar una nota (con foto).</string>
     <string name="quest_smoothness_hint">🚲, 🚗, 🚙, … indican el tipo de vehículo que puede transitar por la vía, en líneas generales, más allá de problemas puntuales que lo impidan.</string>
     <string name="link_osmhydrant_description">Busca, pon y edita parques de bomberos y bocas de incendio</string>
     <string name="achievement_lifesaver_title">Salvavidas</string>
-    <string name="achievement_lifesaver_solved_X">¡Has completado %d tareas que mejoran la vida de los servicios de emergencia y primeros auxilios!</string>
+    <string name="achievement_lifesaver_solved_X">¡Has completado %1$d tareas que mejoran la vida de los servicios de emergencia y primeros auxilios!</string>
     <string name="quest_fuelSelfService_title">¿Esta gasolinera es de autoservicio?</string>
     <string name="default_disabled_msg_difficult_and_time_consuming">Completar este tipo de tarea lleva mucho rato y a veces cuesta elegir la opción correcta; actívala solo si tienes muchas ganas de rellenar este tipo de información.</string>
     <string name="quest_smoothness_description_good_compacted_gravel">Bien compactado, con poca gravilla suelta o arena</string>
@@ -1150,7 +1150,7 @@ También puedes dejar una nota (con foto).</string>
     <string name="quest_camp_type_backcountry">Campamento al aire libre (sin instalaciones)</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">Este diámetro no parece muy realista, suele estar entre %1$d y %2$d.</string>
     <string name="quest_recycling_type_pet">Solo polietileno</string>
-    <string name="street_parking_street_width">Anchura de la calle: %s</string>
+    <string name="street_parking_street_width">Anchura de la calle: %1$s</string>
     <string name="overlay_street_parking">Aparcamiento/Estacionamiento</string>
     <string name="link_ohsomehex_description">Explora los datos de OSM en todas las categorías, desde la perspectiva general hasta los objetos individuales en el espacio y el tiempo</string>
     <string name="link_opencampingmap_description">Un mapa de campings</string>
@@ -1197,7 +1197,7 @@ También puedes dejar una nota (con foto).</string>
     <string name="user_profile_current_week_title">En los últimos 7 días</string>
     <string name="user_profile_dates_mapped">Días en los que has rellenado algún dato</string>
     <string name="quest_cycleway_value_advisory_lane">carril donde las bicis tienen prioridad</string>
-    <string name="urlconfig_scan_qr_code_again2">Tras instalar la aplicación, escanea el código QR o haz clic en &lt;a href="%s"&gt;este enlace&lt;/a&gt; para importar el preajuste compartido.</string>
+    <string name="urlconfig_scan_qr_code_again2">Tras instalar la aplicación, escanea el código QR o haz clic en &lt;a href="%1$s"&gt;este enlace&lt;/a&gt; para importar el preajuste compartido.</string>
     <string name="confirmation_replace_shop_title">¿El negocio ha cambiado?</string>
     <string name="confirmation_replace_shop_message">En ese caso el horario de apertura, la información de contacto, y otras cosas también habrán cambiado.</string>
     <string name="confirmation_replace_shop_yes">Ha cambiado</string>
@@ -1206,7 +1206,7 @@ También puedes dejar una nota (con foto).</string>
     <string name="quest_move_node_message">Puedes corregir su posición moviendo el marcador. ¿Quieres hacerlo ahora mismo?</string>
     <string name="node_moved_not_far_enough">Muévalo más lejos</string>
     <string name="node_moved_too_far">Lo has movido demasiado lejos. Considera dejar una nota</string>
-    <string name="node_moved">Movido por %s</string>
+    <string name="node_moved">Movido por %1$s</string>
     <string name="move_node_description">Desplaza el mapa para ubicar el punto en la posición correcta. Amplía lo máximo posible para actuar con precisión. Ten en cuenta que el marcador que señala tu posición suele tener un margen de error.</string>
     <string name="move_node_action_description">Has movido el nodo</string>
     <string name="quest_cycleway_value_shoulder">no hay nada, pero los ciclistas pueden usar el arcén</string>
@@ -1303,7 +1303,7 @@ Algunas capas también permiten meter datos que faltan a través del marcador co
     <string name="label_log_older_than">A</string>
     <string name="label_log_message_contains">El mensaje contiene</string>
     <string name="title_logs_filters">Filtrar mensajes</string>
-    <string name="pref_title_quests_restore_hidden_summary">Cantidad de tareas ocultas: %d</string>
+    <string name="pref_title_quests_restore_hidden_summary">Cantidad de tareas ocultas: %1$d</string>
     <string name="link_every_door_description">Un completo editor de puntos de información cartográfica para Android e iOS</string>
     <string name="link_mapcomplete_description">Una colección temática de mapas con datos de OSM que enseñan y te dejan cambiar algo en concreto</string>
     <string name="link_forum_description">¿Buscas ayuda? ¿Quieres estar al día? Ven y únete a la comunidad, está llena de gente y es de lo más internacional.</string>
@@ -1373,7 +1373,7 @@ La planta de arriba cuenta como «tejado» si el tejado tiene ventanas. Por lo q
     <string name="quest_camp_power_supply_hint">Valen tanto enchufes individuales en cada parcela, como un edificio con enchufes para huéspedes o una estación de carga para teléfonos y otros dispositivos.</string>
     <string name="quest_barrier_opening_width_bollard">¿Cuál es el ancho real para poder atravesar esto?</string>
     <string name="user_profile_all_time_title">General</string>
-    <string name="user_statistics_country_rank2">Clasificación para %s</string>
+    <string name="user_statistics_country_rank2">Clasificación para %1$s</string>
     <string name="quest_leafType_tree_is_just_a_stump">Es solo un tocón de árbol</string>
     <string name="quest_board_name_title">¿Cuál es el título de este panel informativo?</string>
     <string name="quest_crossing_hint">Un sendero informal que cruza una calle:</string>

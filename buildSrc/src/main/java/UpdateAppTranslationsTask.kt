@@ -11,10 +11,10 @@ open class UpdateAppTranslationsTask : DefaultTask() {
     @get:Input lateinit var projectId: String
     @get:Input lateinit var apiToken: String
     @get:Input lateinit var languageCodes: Collection<String>
-    @get:Input var targetFileFns: List<((androidResCode: String) -> String)>? = null
+    @get:Input lateinit var targetFilesAndroid: ((androidResCode: String) -> String)
+    @get:Input lateinit var targetFiles: ((androidResCode: String) -> String)
 
     @TaskAction fun run() {
-        val targetFileFns = targetFileFns ?: return
         val exportLanguages = languageCodes.map { Locale.forLanguageTag(it) }
 
         val languageTags = fetchAvailableLocalizations(apiToken, projectId).map { it.code }
@@ -33,18 +33,33 @@ open class UpdateAppTranslationsTask : DefaultTask() {
 
             // download the translation and save it in the appropriate directory
             val translations = fetchLocalizationJson(apiToken, projectId, languageTag)
+
+            val androidText = """<?xml version="1.0" encoding="utf-8"?>
+<resources>
+${translations.entries.joinToString("\n") { (key, value) ->
+                "    <string name=\"$key\">\"${value.escapeXml().replace("\"", "\\\"")}\"</string>"
+            } }
+</resources>"""
+            for (androidResCode in androidResCodes) {
+                val file = File(targetFilesAndroid(androidResCode))
+                File(file.parent).mkdirs()
+                file.writeText(androidText)
+            }
+
             val text = """<?xml version="1.0" encoding="utf-8"?>
 <resources>
 ${translations.entries.joinToString("\n") { (key, value) ->
-"    <string name=\"$key\">${value.escapeXml().replace("'", "\\'")}</string>"
+    val xmlValue = value
+        .escapeXml()
+        .replace("%s", "%1\$s") // https://youtrack.jetbrains.com/issue/CMP-8385
+        .replace("%d", "%1\$d") // https://youtrack.jetbrains.com/issue/CMP-8385
+"    <string name=\"$key\">$xmlValue</string>"
 } }
 </resources>"""
             for (androidResCode in androidResCodes) {
-                for (targetFileFn in targetFileFns) {
-                    val file = File(targetFileFn(androidResCode))
-                    File(file.parent).mkdirs()
-                    file.writeText(text)
-                }
+                val file = File(targetFiles(androidResCode))
+                File(file.parent).mkdirs()
+                file.writeText(text)
             }
         }
     }

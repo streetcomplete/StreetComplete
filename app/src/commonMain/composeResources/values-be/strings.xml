@@ -196,7 +196,7 @@
     <string name="quest_sport_roller_skating">Катанне на роліках</string>
     <string name="quest_wheelchairAccess_limited_description_business">«Часткова» азначае, што трэба пераадолець не больш за адну прыступку для доступу ва ўстанову і што ўсе пакоі ўнутры даступныя для інвалідных калясак.</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">«Часткова» азначае, што трэба пераадолець не больш за адну прыступку.</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">У назве %s ёсць абрэвіяцыя?</string>
+    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">У назве %1$s ёсць абрэвіяцыя?</string>
     <string name="quest_recycling_type_title">Якога тыпу гэты аб’ект перапрацоўкі?</string>
     <string name="recycling_centre">Цэнтр</string>
     <string name="overground_recycling_container">Кантэйнер</string>
@@ -377,7 +377,7 @@
     <string name="quest_construction_footway_title">Рамонт гэтай пешаходнай дарожкі завершаны?</string>
     <string name="quest_construction_generic_title">Рамонт гэтай дарожкі завершаны?</string>
     <string name="quest_construction_building_title">Гэты будынак дабудаваны?</string>
-    <string name="questList_disabled_in_country">Ніколі не паказваюцца ў краіне %s</string>
+    <string name="questList_disabled_in_country">Ніколі не паказваюцца ў краіне %1$s</string>
     <string name="quest_select_hint_most_specific">Абярыце варыянт, які падыходзіць найбольш дакладна:</string>
     <string name="quest_generic_item_confirmation">Вы ўпэўненыя, што не можаце даць больш дакладнае апісанне?</string>
     <string name="privacy_html_third_party_quest_sources">&lt;p&gt;Для некаторых заданняў дадатковыя даныя спампоўваюцца са старонніх крыніц.&lt;/p&gt;</string>
@@ -488,7 +488,7 @@
     <string name="quest_motorcycleParkingCoveredStatus_title">Ці забяспечана гэтая паркоўка для матацыклаў падстрэшкам ад дажджу?</string>
     <string name="default_disabled_msg_maxspeed">Гэтае заданне выключана па змаўчанні, таму што звычайна патрабуе праверыць усю вуліцу на знакі абмежавання хуткасці, не толькі падсветлены сегмент. Гэта можа быць дастаткова доўгім для аднаго задання.</string>
     <string name="pref_title_quests_restore_hidden">Аднавіць схаваныя заданні</string>
-    <string name="on_level">на узроўню %s</string>
+    <string name="on_level">на узроўню %1$s</string>
     <string name="underground">падземнае</string>
     <string name="quest_sidewalk_value_yes">тратуар</string>
     <string name="quest_sidewalk_value_no">няма тратуара</string>
@@ -582,8 +582,8 @@
     <string name="achievements_empty">У вас пакуль няма дасягненняў</string>
     <string name="links_empty">У вас пакуль няма спасылак</string>
     <string name="quests_empty">Вы яшчэ не апублікавалі правак</string>
-    <string name="unsynced_quests_description">а таксама %d неадпраўленых змен.</string>
-    <string name="unsynced_quests_not_logged_in_description">У вас ёсць %d неапублікаваных правак. Вам трэба ўвайсцi, каб іх адправіць.</string>
+    <string name="unsynced_quests_description">а таксама %1$d неадпраўленых змен.</string>
+    <string name="unsynced_quests_not_logged_in_description">У вас ёсць %1$d неапублікаваных правак. Вам трэба ўвайсцi, каб іх адправіць.</string>
     <string name="user_quests_title">Праўкі</string>
     <string name="user_achievements_title">Дасягненні</string>
     <string name="user_links_title">Калекцыя спасылак</string>
@@ -635,28 +635,28 @@
     <string name="achievement_first_edit_title">Першае заданне выканана</string>
     <string name="achievement_first_edit_description">Сардэчна запрашаем у супольнасць OpenStreetMap! Вы можаце знайсці інфармацыю пра ўсе выкананыя заданні на старонцы вашага профілю.</string>
     <string name="achievement_surveyor_title">Тапограф</string>
-    <string name="achievement_surveyor_solved_X">Вы вырашылі %d заданняў! Працягвайце ў тым жа духу каб адкрыць новыя дасягненні са спасылкамі на праграмы і праекты, якія звязаны з OSM і іншымі картамі!</string>
+    <string name="achievement_surveyor_solved_X">Вы вырашылі %1$d заданняў! Працягвайце ў тым жа духу каб адкрыць новыя дасягненні са спасылкамі на праграмы і праекты, якія звязаны з OSM і іншымі картамі!</string>
     <string name="achievement_regular_title">Заўсёднік(-ца)</string>
-    <string name="achievement_regular_description">Вы адпраўлялі праўкі ў OSM %d дзён! OSM трымаецца на пастаянных удзельніках. Дзякуй за вашу прыхільнасць! ❤</string>
+    <string name="achievement_regular_description">Вы адпраўлялі праўкі ў OSM %1$d дзён! OSM трымаецца на пастаянных удзельніках. Дзякуй за вашу прыхільнасць! ❤</string>
     <string name="achievement_bicyclist_title">Раварыст(-ка)</string>
-    <string name="achievement_bicyclist_solved_X">Вы выканалі %d заданняў для дапамогі раварыстам!</string>
+    <string name="achievement_bicyclist_solved_X">Вы выканалі %1$d заданняў для дапамогі раварыстам!</string>
     <string name="achievement_wheelchair_title">Мабільнасць</string>
-    <string name="achievement_wheelchair_solved_X">Вы выканалі %d заданняў, карысных для гараджан на інвалідных калясках!</string>
+    <string name="achievement_wheelchair_solved_X">Вы выканалі %1$d заданняў, карысных для гараджан на інвалідных калясках!</string>
     <string name="achievement_postman_title">Паштальён(-ка)</string>
-    <string name="achievement_postman_solved_X">Вы дапамаглі ўдакладніць %d адрасоў і іншых паштовых аб’ектаў!
+    <string name="achievement_postman_solved_X">Вы дапамаглі ўдакладніць %1$d адрасоў і іншых паштовых аб’ектаў!
 Гэтыя даныя неабходны не толькі паштальёнам, але і ўсім сістэмам навігацыі.</string>
     <string name="achievement_building_title">Шматпавярховік</string>
-    <string name="achievement_building_solved_X">Вы выканалі %d заданняў пра будынкі.
+    <string name="achievement_building_solved_X">Вы выканалі %1$d заданняў пра будынкі.
 Заўважце, што праграма пытаецца пра нумар дома толькі для будынкаў з вядомым тыпам.</string>
     <string name="achievement_blind_title">Шостае пачуццё</string>
-    <string name="achievement_blind_solved_X">Вы выканалі %d заданняў, карысных людзям з абмежаваннямі па зроку.</string>
+    <string name="achievement_blind_solved_X">Вы выканалі %1$d заданняў, карысных людзям з абмежаваннямі па зроку.</string>
     <string name="achievement_pedestrian_title">Бягун(-ня)</string>
-    <string name="achievement_pedestrian_solved_X">Вы выканалі %d заданняў, карысных для тых, хто перасоўваецца на сваіх дваіх!</string>
+    <string name="achievement_pedestrian_solved_X">Вы выканалі %1$d заданняў, карысных для тых, хто перасоўваецца на сваіх дваіх!</string>
     <string name="achievement_veg_title">Сябар жывёл</string>
-    <string name="achievement_veg_solved_X">Вы выканалі %d заданняў, якія дапамагаюць людзям на немясной дыеце!</string>
+    <string name="achievement_veg_solved_X">Вы выканалі %1$d заданняў, якія дапамагаюць людзям на немясной дыеце!</string>
     <string name="achievement_car_title">У дарозе</string>
-    <string name="achievement_car_solved_X">Вы выканалі %d заданняў, якія паляпшаюць звесткі пра вулічную інфраструктуру, дадаўшы вуліцу ў OpenStreetMap!</string>
-    <string name="unread_messages_message">У вас %d непрачытаных уваходных паведамленняў</string>
+    <string name="achievement_car_solved_X">Вы выканалі %1$d заданняў, якія паляпшаюць звесткі пра вулічную інфраструктуру, дадаўшы вуліцу ў OpenStreetMap!</string>
+    <string name="unread_messages_message">У вас %1$d непрачытаных уваходных паведамленняў</string>
     <string name="unread_messages_button">Перайсці ў Уваходныя</string>
     <string name="action_about2">Аб праграме</string>
     <string name="map_btn_menu">Меню</string>
@@ -666,13 +666,13 @@
     <string name="credits_projects_contributors_title">Праекты, зробленыя для StreetComplete</string>
     <string name="credits_main_contributors_title">Асноўныя ўдзельнікі</string>
     <string name="stats_are_syncing">Ваша статыстыка сінхранізуецца. Праверце яе тут пазней.</string>
-    <string name="user_statistics_country_wiki_link">Картаграфічны партал %s</string>
+    <string name="user_statistics_country_wiki_link">Картаграфічны партал %1$s</string>
     <string name="user_statistics_filter_by_country">паводле краiны</string>
     <string name="user_statistics_filter_by_quest_type">паводле тыпу</string>
     <string name="user_profile_global_rank">Глабальны
 рэйтынг</string>
     <string name="user_profile_local_rank">Рэйтынг ў 
-%s</string>
+%1$s</string>
     <string name="user_profile_days_active">Актыўных
 дзён</string>
     <string name="user_profile_achievement_levels">Узровень
@@ -698,8 +698,8 @@
     <string name="quest_board_type_map_description">Калі дошка прысвечана пэўнай тэме, укажыце яе, незалежна ад таго, ці ёсць на ёй карта. Напрыклад, на табло грамадскага транспарта можа быць карта аўтобусных маршрутаў. Калі тэма адсутнічае ў спісе даступных адказаў, пакіньце замест гэтага нататку.</string>
     <string name="quest_streetName_menuItem_international">мiжнароднае</string>
     <string name="quest_buildingType_terrace2">Шэраг дамоў</string>
-    <string name="at_housename">Назва дома %s</string>
-    <string name="at_housenumber">нумар дома %s</string>
+    <string name="at_housename">Назва дома %1$s</string>
+    <string name="at_housenumber">нумар дома %1$s</string>
     <string name="quest_openingHours_add_off_days">Дадаць выходныя дні</string>
     <string name="quest_openingHours_off_day">Выхадны</string>
     <string name="quest_openingHours_unspecified_range">Не пазначана</string>
@@ -733,11 +733,11 @@
     <string name="quest_charging_station_operator_title">Хто з’яўляецца аператарам гэтай зараднай станцыі?</string>
     <string name="link_indoorequal_description">Адкрыйце для сябе карты гандлёвых цэнтраў, вакзалаў і т.д.</string>
     <string name="achievement_rare_title">Паляванне за скарбамі</string>
-    <string name="achievement_rare_solved_X">Вы знайшлі і выканалі %d заданняў, якія выконваюцца вельмі рэдка, віншуем!</string>
+    <string name="achievement_rare_solved_X">Вы знайшлі і выканалі %1$d заданняў, якія выконваюцца вельмі рэдка, віншуем!</string>
     <string name="achievement_citizen_title">Грамадзянiн</string>
-    <string name="achievement_citizen_solved_X">Вы выканалі %d заданняў, карысных у паўсядзённым гарадскім жыцці!</string>
+    <string name="achievement_citizen_solved_X">Вы выканалі %1$d заданняў, карысных у паўсядзённым гарадскім жыцці!</string>
     <string name="achievement_outdoors_title">На вулiцы</string>
-    <string name="achievement_outdoors_solved_X">Вы выканалі %d заданняў, карысных для аматараў актыўнага адпачынку!</string>
+    <string name="achievement_outdoors_solved_X">Вы выканалі %1$d заданняў, карысных для аматараў актыўнага адпачынку!</string>
     <string name="quest_pedestrian_crossing_island">Ці ёсць у гэтага пешаходнага пераходу астравок бяспекі?</string>
     <string name="quest_generic_answer_noSign">Тут няма знака</string>
     <string name="quest_steps_ramp_separate_wheelchair">Ці адлюстроўваецца пандус для інвалідных калясак на карце як асобная дарога?</string>
@@ -761,7 +761,7 @@
     <string name="quest_address_answer_no_housenumber_message2b">Гэта правiльна?</string>
     <string name="quest_maxheight_below_bridge_title">Якое абмежаванне па вышыні пад гэтым мастом?</string>
     <string name="quest_maxheight_split_way_hint">Гэтае пытанне таксама задаецца для дарог, якія праходзяць пад мастамі, дахамі, падвеснымі трубаправодамі і г.д.
-Калі гэта не тычыцца ўсяго вылучанага ўчастка, разгледзьце магчымасць адказаць «%s».</string>
+Калі гэта не тычыцца ўсяго вылучанага ўчастка, разгледзьце магчымасць адказаць «%1$s».</string>
     <string name="quest_tactile_paving_kerb_title">Ці ёсць тактыльная плітка на гэтым бардзюры?</string>
     <string name="quest_kerb_height_title">Якая вышыня у гэтага бардзюра?</string>
     <string name="quest_kerb_height_flush">На адным узроўні з дарожным пакрыццём</string>
@@ -818,9 +818,9 @@
     <string name="hid_action_description">Вы схавалі гэта</string>
     <string name="split_way_action_description">Вы падзялілі шлях</string>
     <string name="deleted_poi_action_description">Вы выдалілі гэта</string>
-    <string name="added_tag_action_title">Дададзена %s</string>
-    <string name="removed_tag_action_title">Выдалена %s</string>
-    <string name="changed_tag_action_title">Абноўлена на %s</string>
+    <string name="added_tag_action_title">Дададзена %1$s</string>
+    <string name="removed_tag_action_title">Выдалена %1$s</string>
+    <string name="changed_tag_action_title">Абноўлена на %1$s</string>
     <string name="pref_title_delete_cache">Выдалiць кэш</string>
     <string name="pref_title_delete_cache_summary">Калі вы лічыце, што даныя састарэлі</string>
     <string name="delete_confirmation">Выдалiць</string>
@@ -870,7 +870,7 @@
     <string name="about_title_faq">Частыя пытанні</string>
     <string name="quest_buildingLevels_title2">Колькі паверхаў над падвалам у гэтага будынка?</string>
     <string name="quest_buildingLevels_title_buildingPart2">Колькі паверхаў над падвалам у гэтай часткі будынка?</string>
-    <string name="pref_subtitle_quests_preset_name">для набора налад: %s</string>
+    <string name="pref_subtitle_quests_preset_name">для набора налад: %1$s</string>
     <string name="default_disabled_msg_roofShape">Гэты тып заданняў прадвызначана адключаны, бо форму даху часта нялёгка распазнаць з вуліцы. Гэты тып заданняў таксама даволі часазатратны; у большасці выпадкаў прасцей і больш эфектыўна супаставіць звесткі дома з дапамогай аэрафотаздымкаў.</string>
     <string name="quest_religion_animist">Анiмiст</string>
     <string name="quest_construction_steps_title">Рамонт гэтай лесвiцы завершаны?</string>
@@ -895,7 +895,7 @@
     <string name="quest_presets_preset_name">Назва набора налад</string>
     <string name="quest_presets_default_name">Прадвызначана</string>
     <string name="quest_presets_selected">Вылучанае</string>
-    <string name="quest_presets_delete_message">Выдаліць прадвызначаную наладу «%s»? Вылучэнне заданняў і іх парадак будуць незваротна страчаны.</string>
+    <string name="quest_presets_delete_message">Выдаліць прадвызначаную наладу «%1$s»? Вылучэнне заданняў і іх парадак будуць незваротна страчаны.</string>
     <string name="notification_syncing">Сінхранізацыя…</string>
     <string name="notification_channel_sync">Сiнхр. даных</string>
     <string name="quest_board_type_sport">Спорт, Практыкаванні</string>
@@ -933,7 +933,7 @@
     <string name="quest_barrier_bicycle_type_double">Змейка - бар’ер з кожнага боку</string>
     <string name="quest_barrier_bicycle_type_multiple">Змейка - больш за два бар’еры</string>
     <string name="language_default">Сістэмная па змаўчанні</string>
-    <string name="on_floor">на паверсе %s:</string>
+    <string name="on_floor">на паверсе %1$s:</string>
     <string name="select_street_parking_orientation">Абярыце арыентацыю ў адносінах да праезнай часткі:</string>
     <string name="select_street_parking_position">Абярыце пазіцыю:</string>
     <string name="select_street_parking_no">Тут ёсць які-небудзь знак ці дарожная разметка?</string>
@@ -999,7 +999,7 @@
     <string name="quest_smoothness_hint">🚲, 🚗, 🚙, … укажыце, якія аўтамабілі могуць выкарыстоўваць паверхню. Важная агульная карціна, а не адзінкавыя пашкоджанні.</string>
     <string name="link_osmhydrant_description">Знайсці, дадаць або змяніць пажарныя дэпо і пажарныя краны</string>
     <string name="achievement_lifesaver_title">Выратавальнік</string>
-    <string name="achievement_lifesaver_solved_X">Вы вырашылі %d заданняў, якія дапамогуць аварыйным службам і ратавальнікам!</string>
+    <string name="achievement_lifesaver_solved_X">Вы вырашылі %1$d заданняў, якія дапамогуць аварыйным службам і ратавальнікам!</string>
     <string name="quest_fuelSelfService_title">Ці можаце вы самі заправіцца бензінам на гэтай запраўцы?</string>
     <string name="default_disabled_msg_difficult_and_time_consuming">Гэты тып задання прадвызначана адключаны, бо ён займае даволі шмат часу і часта патрабуе складаных выбараў. Уключайце гэты тып заданняў толькі ў тым выпадку, калі вы сапраўды маеце намер дадаць гэтыя даныя.</string>
     <string name="quest_smoothness_description_good_compacted_gravel">Шчыльна ўтрамбаваны, вельмі мала друзлага жвіру ці пяску</string>
@@ -1163,7 +1163,7 @@
     <string name="quest_camp_type_backcountry">Кемпінг у сельскай мясцовасці (без камфорту)</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">Гэты дыяметр выглядае непраўдападобным, звычайна ён знаходзіцца паміж %1$d і %2$d.</string>
     <string name="quest_recycling_type_pet">толькi  ПЭТ</string>
-    <string name="street_parking_street_width">Шырыня вуліцы: %s</string>
+    <string name="street_parking_street_width">Шырыня вуліцы: %1$s</string>
     <string name="overlay_street_parking">Вулiчная стаянка</string>
     <string name="link_ohsomehex_description">Вывучайце даныя OSM на розных маштабах: ад агульнай карціны да асобных аб’ектаў у прасторы і часе</string>
     <string name="link_opencampingmap_description">Карта кемпінгаў</string>
@@ -1210,7 +1210,7 @@
     <string name="user_profile_current_week_title">Апошнія 7 дзён</string>
     <string name="user_profile_dates_mapped">Нядаўнія дні калі вы займаліся мапінгам</string>
     <string name="quest_cycleway_value_advisory_lane">рэкамендуемая паласа для раварыстаў</string>
-    <string name="urlconfig_scan_qr_code_again2">Пасля ўсталявання праграмы, зноў праскануйце QR-код або націсніце на &lt;a href="%s"&gt;гэту спасылку&lt;/a&gt; каб прымяніць набор налад.</string>
+    <string name="urlconfig_scan_qr_code_again2">Пасля ўсталявання праграмы, зноў праскануйце QR-код або націсніце на &lt;a href="%1$s"&gt;гэту спасылку&lt;/a&gt; каб прымяніць набор налад.</string>
     <string name="confirmation_replace_shop_title">Гэта зараз іншае месца?</string>
     <string name="confirmation_replace_shop_message">У такім выпадку час працы, кантактная інфармацыя і г.д. таксама змянiлiся.</string>
     <string name="confirmation_replace_shop_yes">Цяпер гэта іншае месца</string>
@@ -1220,7 +1220,7 @@
 Перамясціць яе?</string>
     <string name="node_moved_not_far_enough">Калі ласка, перасуньце крыху далей.</string>
     <string name="node_moved_too_far">Занадта далёка. Можа варта пакінуць нататку?</string>
-    <string name="node_moved">Перамешчана на %s</string>
+    <string name="node_moved">Перамешчана на %1$s</string>
     <string name="move_node_description">Перамясціце мапу каб змясціць кропку на карэктнае месца. Выкарыстоўвайце маштабаванне каб дабіцца максімальнай дакладнасці. Майце на ўвазе, што ваша месцазнаходжанне можа быць не такім дакладным.</string>
     <string name="move_node_action_description">Вы перамясцілі кропку</string>
     <string name="quest_cycleway_value_shoulder">не, але раварысты могуць выкарыстоўваць узбочыну</string>
@@ -1280,7 +1280,7 @@
     <string name="quest_cycleway_value_sidewalk_dual2">дарожка агульнага карыстання ў абодва бакі</string>
     <string name="overlays_tutorial_title">Накладкi</string>
     <string name="overlays_tutorial_intro">Вы знайшлі новы спосаб рэдагавання даных!</string>
-    <string name="overlays_tutorial_display">Кожная накладка адлюстроўвае адзін тып даных, напрыклад, крамы або \'вулічныя паверхні\'.
+    <string name="overlays_tutorial_display">Кожная накладка адлюстроўвае адзін тып даных, напрыклад, крамы або 'вулічныя паверхні'.
 
 Даныя вылучаюцца рознымі колерамі, каб даць вам добры агляд таго, што было запісана да гэтага часу.
 Адсутныя даныя заўсёды паказваюцца чырвоным колерам.</string>
@@ -1316,7 +1316,7 @@
     <string name="label_log_older_than">Да</string>
     <string name="label_log_message_contains">Паведамленне змяшчае</string>
     <string name="title_logs_filters">Фільтраваць паведамленні</string>
-    <string name="pref_title_quests_restore_hidden_summary">Колькасць схаваных заданняў: %d</string>
+    <string name="pref_title_quests_restore_hidden_summary">Колькасць схаваных заданняў: %1$d</string>
     <string name="link_every_door_description">Магутны рэдактар POI для Android і iOS</string>
     <string name="link_mapcomplete_description">Калекцыя тэматычных карт OSM, кожная з якіх паказвае і дазваляе рэдагаваць адзін від аб’ектаў</string>
     <string name="link_forum_description">Патрэбна дапамога? Хочаце прачытаць, што адбываецца? Прыходзьце і далучайцеся, тут кіпіць актыўнасць суполак па ўсім свеце!</string>
@@ -1387,7 +1387,7 @@
     <string name="quest_camp_power_supply_hint">Гэта могуць быць разеткі непасрэдна каля лагерных месцаў, разеткі ў службовым будынку, даступным для гасцей, альбо адмысловая станцыя зарадкі для тэлефонаў, ноўтбукаў і г.д.</string>
     <string name="quest_barrier_opening_width_bollard">Якая большая шырыня праходу тут?</string>
     <string name="user_profile_all_time_title">Агулам</string>
-    <string name="user_statistics_country_rank2">Рэйтынг у %s</string>
+    <string name="user_statistics_country_rank2">Рэйтынг у %1$s</string>
     <string name="quest_leafType_tree_is_just_a_stump">Гэта проста пень</string>
     <string name="quest_board_name_title">Якая назва ў гэтай інфармацыйнай дошкі?</string>
     <string name="quest_crossing_hint">Стыхійная сцежка, якая перасякае дарогу:</string>

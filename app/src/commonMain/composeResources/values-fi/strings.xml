@@ -196,7 +196,7 @@ Jos koko tien varrella ei ole nopeusrajoitusmerkiä, joka pätee korostettuun ko
     <string name="quest_sport_roller_skating">Rullaluistelu</string>
     <string name="quest_wheelchairAccess_limited_description_business">Osittain tarkoittaa, että sisäänpääsyllä on enintään nilkan korkuinen askelma ja että sisällä useimmat huoneet ovat kuljettavissa pyörätuolilla.</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">Osittain tarkoittaa, että pääsyllä on enintään nilkan korkuinen askelma.</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">Lyhenne nimessä %s?</string>
+    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">Lyhenne nimessä %1$s?</string>
     <string name="quest_recycling_type_title">Millainen kierrätyspaikka tämä on?</string>
     <string name="recycling_centre">Keskus</string>
     <string name="overground_recycling_container">Säiliö</string>
@@ -377,7 +377,7 @@ Osittain tarkoittaa, että WC:hen pääsee pöyrätuolilla, mutta tarjolla ei v�
     <string name="quest_construction_footway_title">Onko tämä jalkakäytävä valmis?</string>
     <string name="quest_construction_generic_title">Onko tämä tie valmis?</string>
     <string name="quest_construction_building_title">Onko rakennustyö valmis?</string>
-    <string name="questList_disabled_in_country">Ei näy koskaan maassa %s</string>
+    <string name="questList_disabled_in_country">Ei näy koskaan maassa %1$s</string>
     <string name="quest_select_hint_most_specific">Valitse tarkin vaihtoehto joka sopii:</string>
     <string name="quest_generic_item_confirmation">Oletko varma, että et voi määritellä sitä tarkemmin?</string>
     <string name="privacy_html_third_party_quest_sources">&lt;p&gt;Osa tehtävistä lataa tietoa kolmansien osapuolien lähteistä.&lt;/p&gt;</string>
@@ -488,7 +488,7 @@ Osittain tarkoittaa, että WC:hen pääsee pöyrätuolilla, mutta tarjolla ei v�
     <string name="quest_motorcycleParkingCoveredStatus_title">Onko tämä moottoripyöräpysäkki katoksellinen (suojattu sateelta)?</string>
     <string name="default_disabled_msg_maxspeed">Tämä tehtävätyyppi on oletusarvoisesti pois käytöstä, koska joutuisit yleensä tarkistamaan nopeusrajoituskyltit koko tieltä, ei pelkästään valitulta kohdalta. Tämä voi joskus olla työlästä vain yhden tehtävän ratkaisemiseksi.</string>
     <string name="pref_title_quests_restore_hidden">Palauta piilotetut tehtävät</string>
-    <string name="on_level">kerroksessa %s</string>
+    <string name="on_level">kerroksessa %1$s</string>
     <string name="underground">maan alla</string>
     <string name="quest_sidewalk_value_yes">Jalkakäytävä</string>
     <string name="quest_sidewalk_value_no">Ei jalkakäytävää</string>
@@ -582,8 +582,8 @@ Viimeiseksi, muista turvallisuus: huomioi ympäristösi äläkä mene yksityisal
     <string name="achievements_empty">Sinulla ei vielä ole saavutuksia</string>
     <string name="links_empty">Sinulla ei ole vielä linkkejä</string>
     <string name="quests_empty">Et ole julkaissut yhtään muokkausta vielä</string>
-    <string name="unsynced_quests_description">sekä %d julkaisematonta muutosta.</string>
-    <string name="unsynced_quests_not_logged_in_description">Sinulla on %d julkaisematonta muutosta. Sinun on kirjauduttava sisään lähettääksesi ne.</string>
+    <string name="unsynced_quests_description">sekä %1$d julkaisematonta muutosta.</string>
+    <string name="unsynced_quests_not_logged_in_description">Sinulla on %1$d julkaisematonta muutosta. Sinun on kirjauduttava sisään lähettääksesi ne.</string>
     <string name="user_quests_title">Muokkaukset</string>
     <string name="user_achievements_title">Saavutukset</string>
     <string name="user_links_title">Linkkikokoelma</string>
@@ -635,28 +635,28 @@ Viimeiseksi, muista turvallisuus: huomioi ympäristösi äläkä mene yksityisal
     <string name="achievement_first_edit_title">Ensimmäinen Tehtävä Ratkaistu</string>
     <string name="achievement_first_edit_description">Tervetuloa OpenStreetMap-yhteisöön! Profiilitiedoissasi näet lisätietoja jokaisesta tehtävätyypistä jonka olet ratkaissut.</string>
     <string name="achievement_surveyor_title">Maanmittaaja</string>
-    <string name="achievement_surveyor_solved_X">Ratkaisit %d asiaa! Jatka edelleen saadaksesi seuraavan tason saavutuksen, joka sisältää OSM:ään ja muihin kartoitusprojekteihin sekä -sovelluksiin liittyviä linkkejä!</string>
+    <string name="achievement_surveyor_solved_X">Ratkaisit %1$d asiaa! Jatka edelleen saadaksesi seuraavan tason saavutuksen, joka sisältää OSM:ään ja muihin kartoitusprojekteihin sekä -sovelluksiin liittyviä linkkejä!</string>
     <string name="achievement_regular_title">Tavallinen</string>
-    <string name="achievement_regular_description">Osallistuit OSM:n täydentämiseen %d päivän ajan tällä sovelluksella! Säännölliset kartoittajat ovat OSM:n tukiranka, kiitos osallistumisesta! ♥️</string>
+    <string name="achievement_regular_description">Osallistuit OSM:n täydentämiseen %1$d päivän ajan tällä sovelluksella! Säännölliset kartoittajat ovat OSM:n tukiranka, kiitos osallistumisesta! ♥️</string>
     <string name="achievement_bicyclist_title">Pyöräilijä</string>
-    <string name="achievement_bicyclist_solved_X">Ratkaisit %d asiaa, jotka helpottavat pyöräilijöitä!</string>
+    <string name="achievement_bicyclist_solved_X">Ratkaisit %1$d asiaa, jotka helpottavat pyöräilijöitä!</string>
     <string name="achievement_wheelchair_title">Liikkuvuus</string>
-    <string name="achievement_wheelchair_solved_X">Ratkaisit %d tehtävää, jotka helpottavat pyörätuolilla liikkumista!</string>
+    <string name="achievement_wheelchair_solved_X">Ratkaisit %1$d tehtävää, jotka helpottavat pyörätuolilla liikkumista!</string>
     <string name="achievement_postman_title">Posteljooni</string>
-    <string name="achievement_postman_solved_X">Autoit paikantamaan %d osoitetta ja muita postitietoja!
+    <string name="achievement_postman_solved_X">Autoit paikantamaan %1$d osoitetta ja muita postitietoja!
 Tämä tieto ei auta ainoastaan posteljoonia, vaan myös mitä tahansa navigointia.</string>
     <string name="achievement_building_title">Monikerroksinen</string>
-    <string name="achievement_building_solved_X">Ratkaisit %d rakennuksiin liittyvää asiaa.
+    <string name="achievement_building_solved_X">Ratkaisit %1$d rakennuksiin liittyvää asiaa.
 Huomioi, että sovellus kysyy talonumeroa vasta talotyypin määrittelyn jälkeen.</string>
     <string name="achievement_blind_title">Kuudes aisti</string>
-    <string name="achievement_blind_solved_X">Ratkaisit %d tehtävää, jotka auttavat näkörajoitteisia.</string>
+    <string name="achievement_blind_solved_X">Ratkaisit %1$d tehtävää, jotka auttavat näkörajoitteisia.</string>
     <string name="achievement_pedestrian_title">Juoksija</string>
-    <string name="achievement_pedestrian_solved_X">Ratkaisit %d tehtävää, jotka kiinnostavat jalankulkijoita!</string>
+    <string name="achievement_pedestrian_solved_X">Ratkaisit %1$d tehtävää, jotka kiinnostavat jalankulkijoita!</string>
     <string name="achievement_veg_title">Eläinten ystävä</string>
-    <string name="achievement_veg_solved_X">Ratkaisit %d tehtävää, jotka kiinnostavat lihatonta ruokavaliota noudattavia ihmisiä!</string>
+    <string name="achievement_veg_solved_X">Ratkaisit %1$d tehtävää, jotka kiinnostavat lihatonta ruokavaliota noudattavia ihmisiä!</string>
     <string name="achievement_car_title">Maantie on kuuma</string>
-    <string name="achievement_car_solved_X">Ratkaisit %d katuinfrastruktuuria parantavaa asiaa!</string>
-    <string name="unread_messages_message">Sinulla on %d lukematonta viestiä postilaatikossasi</string>
+    <string name="achievement_car_solved_X">Ratkaisit %1$d katuinfrastruktuuria parantavaa asiaa!</string>
+    <string name="unread_messages_message">Sinulla on %1$d lukematonta viestiä postilaatikossasi</string>
     <string name="unread_messages_button">Avaa postilaatikko</string>
     <string name="action_about2">Tietoa</string>
     <string name="map_btn_menu">Valikko</string>
@@ -666,12 +666,12 @@ Huomioi, että sovellus kysyy talonumeroa vasta talotyypin määrittelyn jälkee
     <string name="credits_projects_contributors_title">StreetCompletelle tehdyt projektit</string>
     <string name="credits_main_contributors_title">Pääasialliset tekijät</string>
     <string name="stats_are_syncing">Tilastosi synkronointi on kesken. Tarkista myöhemmin tilanne.</string>
-    <string name="user_statistics_country_wiki_link">Kartoitusportaali %s</string>
+    <string name="user_statistics_country_wiki_link">Kartoitusportaali %1$s</string>
     <string name="user_statistics_filter_by_country">maittain</string>
     <string name="user_statistics_filter_by_quest_type">tehtävittäin</string>
     <string name="user_profile_global_rank">Globaali-
 sijoitus</string>
-    <string name="user_profile_local_rank">%s-
+    <string name="user_profile_local_rank">%1$s-
 sijoitus</string>
     <string name="user_profile_days_active">Aktiivisia 
 päiviä</string>
@@ -698,8 +698,8 @@ taso</string>
     <string name="quest_board_type_map_description">Jos taulu koskee tiettyä aihetta, määrittele se huolimatta siitä, sisältääkö se myös kartan. Esimerkiksi julkisen liikenteen infotaulussa voi olla bussireittikartta. Jos taulun aihetta ei löydy tarjolla olevista vastausvaihtoehdoista, harkitse ilmoituksen jättämistä.</string>
     <string name="quest_streetName_menuItem_international">kansainvälinen</string>
     <string name="quest_buildingType_terrace2">Rivitaloja</string>
-    <string name="at_housename">Talon nimi %s</string>
-    <string name="at_housenumber">talon numero %s</string>
+    <string name="at_housename">Talon nimi %1$s</string>
+    <string name="at_housenumber">talon numero %1$s</string>
     <string name="quest_openingHours_add_off_days">Lisää kiinniolopäivät</string>
     <string name="quest_openingHours_off_day">Suljettu</string>
     <string name="quest_openingHours_unspecified_range">Ei määritelty</string>
@@ -733,11 +733,11 @@ taso</string>
     <string name="quest_charging_station_operator_title">Kenen operoima latausasema tämä on?</string>
     <string name="link_indoorequal_description">Tutustu kauppakeskusten, rautatieasemien yms. sisäkarttoihin</string>
     <string name="achievement_rare_title">Aarrejahti</string>
-    <string name="achievement_rare_solved_X">Löysit ja ratkaisit %d todella harvoin suoritettua tehtävää, onnittelut!</string>
+    <string name="achievement_rare_solved_X">Löysit ja ratkaisit %1$d todella harvoin suoritettua tehtävää, onnittelut!</string>
     <string name="achievement_citizen_title">Kansalainen</string>
-    <string name="achievement_citizen_solved_X">Olet ratkaissut %d tehtävää, jotka ovat hyödyllisiä jokapäiväisessä kaupunkielämässä!</string>
+    <string name="achievement_citizen_solved_X">Olet ratkaissut %1$d tehtävää, jotka ovat hyödyllisiä jokapäiväisessä kaupunkielämässä!</string>
     <string name="achievement_outdoors_title">Ulkona</string>
-    <string name="achievement_outdoors_solved_X">Olet ratkaissut %d ulkoilijoille hyödyllistä tehtävää!</string>
+    <string name="achievement_outdoors_solved_X">Olet ratkaissut %1$d ulkoilijoille hyödyllistä tehtävää!</string>
     <string name="quest_pedestrian_crossing_island">Onko tällä suojatiellä liikenteenjakaja?</string>
     <string name="quest_generic_answer_noSign">Täällä ei ole merkkiä</string>
     <string name="quest_steps_ramp_separate_wheelchair">Onko pyörätuoliramppi kuvattu erillisenä reittinä kartalla?</string>
@@ -760,7 +760,7 @@ taso</string>
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">Siinä on kaksisuuntainen kaista vasemmalle</string>
     <string name="quest_address_answer_no_housenumber_message2b">Onko tämä oikein?</string>
     <string name="quest_maxheight_below_bridge_title">Mikä on korkeusrajoitus sillan alla?</string>
-    <string name="quest_maxheight_split_way_hint">Tämä kysymys kysytään myös teiltä, jotka kulkevat sillan, katon, ylimenevien putkien jne. alta. Lisäksi, jos se ei koske koko korostettua osuutta, harkitse vastaamaan "%s".</string>
+    <string name="quest_maxheight_split_way_hint">Tämä kysymys kysytään myös teiltä, jotka kulkevat sillan, katon, ylimenevien putkien jne. alta. Lisäksi, jos se ei koske koko korostettua osuutta, harkitse vastaamaan "%1$s".</string>
     <string name="quest_tactile_paving_kerb_title">Onko täällä jalkakäytävässä kosketuspäällysteitä?</string>
     <string name="quest_kerb_height_title">Mikä on tämän reunakivetyksen korkeus?</string>
     <string name="quest_kerb_height_flush">Tienpinnan kanssa samalla tasolla</string>
@@ -818,9 +818,9 @@ Jokainen teistä näkee sitten eri tehtäviä.</string>
     <string name="hid_action_description">Piilotit sen</string>
     <string name="split_way_action_description">Jaoit tien</string>
     <string name="deleted_poi_action_description">Poistit sen</string>
-    <string name="added_tag_action_title">Lisäsit %s</string>
-    <string name="removed_tag_action_title">Poistit %s</string>
-    <string name="changed_tag_action_title">Päivitit %s</string>
+    <string name="added_tag_action_title">Lisäsit %1$s</string>
+    <string name="removed_tag_action_title">Poistit %1$s</string>
+    <string name="changed_tag_action_title">Päivitit %1$s</string>
     <string name="pref_title_delete_cache">Poista välimuisti</string>
     <string name="pref_title_delete_cache_summary">Jos arvelet jonkin tiedon olevan vanhentunutta</string>
     <string name="delete_confirmation">Poista</string>
@@ -870,7 +870,7 @@ Tiedot päivitetään %1$s päivän välein ja käyttämättömät tiedot poiste
     <string name="about_title_faq">UKK</string>
     <string name="quest_buildingLevels_title2">Kuinka monta kerrosta rakennuksessa on kellarin yläpuolella?</string>
     <string name="quest_buildingLevels_title_buildingPart2">Kuinka monta kerrosta rakennuksen osassa on kellarin yläpuolella?</string>
-    <string name="pref_subtitle_quests_preset_name">esiasetukselle: %s</string>
+    <string name="pref_subtitle_quests_preset_name">esiasetukselle: %1$s</string>
     <string name="default_disabled_msg_roofShape">Tämä tehtävätyyppi on oletusarvoisesti pois käytöstä, koska kattojen muodot eivät yleensä ole helposti nähtävissä kadulta. Tämä tehtävätyyppi vie myös melko paljon aikaa: monissa tapauksissa on helpompaa ja tehokkaampaa kartoittaa tämä kotoa ilmakuvien avulla.</string>
     <string name="quest_religion_animist">Animismi</string>
     <string name="quest_construction_steps_title">Onko nämä askelmat rakennettu?</string>
@@ -895,7 +895,7 @@ Tiedot päivitetään %1$s päivän välein ja käyttämättömät tiedot poiste
     <string name="quest_presets_preset_name">Esiasetuksen nimi</string>
     <string name="quest_presets_default_name">Oletus</string>
     <string name="quest_presets_selected">Valittu</string>
-    <string name="quest_presets_delete_message">Poista esiasetus "%s"? Sen tehtävävalikoima ja järjestys menetetään peruuttamattomasti.</string>
+    <string name="quest_presets_delete_message">Poista esiasetus "%1$s"? Sen tehtävävalikoima ja järjestys menetetään peruuttamattomasti.</string>
     <string name="notification_syncing">Synkronoidaan tietoja…</string>
     <string name="notification_channel_sync">Tietojen synkronointi</string>
     <string name="quest_board_type_sport">Urheilu, harjoittelu</string>
@@ -933,7 +933,7 @@ Tiedot päivitetään %1$s päivän välein ja käyttämättömät tiedot poiste
     <string name="quest_barrier_bicycle_type_double">Sikaani - este molemmilla puolilla</string>
     <string name="quest_barrier_bicycle_type_multiple">Sikaani - yli kaksi estettä</string>
     <string name="language_default">Järjestelmän oletus</string>
-    <string name="on_floor">kerroksessa %s</string>
+    <string name="on_floor">kerroksessa %1$s</string>
     <string name="select_street_parking_orientation">Valitse suunta ajorataan nähden:</string>
     <string name="select_street_parking_position">Valitse sijainti:</string>
     <string name="select_street_parking_no">Onko täällä liikenne- tai katumerkintöjä?</string>
@@ -999,7 +999,7 @@ Vaihtoehtoisesti voit jättää ilmoituksen (kuvan kanssa).</string>
     <string name="quest_smoothness_hint">🚲, 🚗, 🚙,… osoittaa, mille ajoneuvoille pinnan tulisi olla käyttökelpoinen. Tärkeämpää on suurpiirteinen määrittely yksittäisten vaurioiden sijaan.</string>
     <string name="link_osmhydrant_description">Etsi, lisää ja muokkaa paloasemia ja paloposteja</string>
     <string name="achievement_lifesaver_title">Hengenpelastaja</string>
-    <string name="achievement_lifesaver_solved_X">Ratkaisit %d tehtävää, jotka auttavat pelastuspalveluja ja ensiapuhenkilöitä!</string>
+    <string name="achievement_lifesaver_solved_X">Ratkaisit %1$d tehtävää, jotka auttavat pelastuspalveluja ja ensiapuhenkilöitä!</string>
     <string name="quest_fuelSelfService_title">Onko tämä itsepalveluasema?</string>
     <string name="default_disabled_msg_difficult_and_time_consuming">Tämä tehtävätyyppi on oletusarvoisesti pois käytöstä, koska se on joko aikaa vievä tai siihen on vaikea vastata oikein. Ota tämä tehtävätyyppi käyttöön vain, jos olet todella sitoutunut lisäämään tällaisia tietoja.</string>
     <string name="quest_smoothness_description_good_compacted_gravel">Kovapintainen, hyvin vähän irtonaista soraa tai hiekkaa</string>
@@ -1162,7 +1162,7 @@ Tee sama toiselle puolelle mikäli tarpeellista.</string>
     <string name="quest_camp_type_backcountry">Erämaatelttailu (ei palveluja)</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">Tämä halkaisija vaikuttaa epätodennäköiseltä, se on yleensä välillä %1$d - %2$d.</string>
     <string name="quest_recycling_type_pet">Vain PET-muovi</string>
-    <string name="street_parking_street_width">Kadun leveys: %s</string>
+    <string name="street_parking_street_width">Kadun leveys: %1$s</string>
     <string name="overlay_street_parking">Katupysäköinti</string>
     <string name="link_ohsomehex_description">Tutki OSM-tietoja eri mittakaavassa kokonaisuudesta yksittäisiin objekteihin tilan ja ajan yli</string>
     <string name="link_opencampingmap_description">Kartta leirintäalueista</string>
@@ -1209,7 +1209,7 @@ Tee sama toiselle puolelle mikäli tarpeellista.</string>
     <string name="user_profile_current_week_title">Viimeiset 7 päivää</string>
     <string name="user_profile_dates_mapped">Päivät, jolloin olet kartoittanut</string>
     <string name="quest_cycleway_value_advisory_lane">pyöräkaista</string>
-    <string name="urlconfig_scan_qr_code_again2">Sovelluksen asennuksen jälkeen skannaa QR-koodi uudelleen tai napsauta &lt;a href="%s"&gt;tätä linkkiä&lt;/a&gt; toteuttaaksesi esiasetuksen.</string>
+    <string name="urlconfig_scan_qr_code_again2">Sovelluksen asennuksen jälkeen skannaa QR-koodi uudelleen tai napsauta &lt;a href="%1$s"&gt;tätä linkkiä&lt;/a&gt; toteuttaaksesi esiasetuksen.</string>
     <string name="confirmation_replace_shop_title">Onko tämä nyt eri paikka?</string>
     <string name="confirmation_replace_shop_message">Siinä tapauksessa aukioloajat, yhteystiedot jne. ovat myös muuttuneet.</string>
     <string name="confirmation_replace_shop_yes">Eri paikka nyt</string>
@@ -1219,7 +1219,7 @@ Tee sama toiselle puolelle mikäli tarpeellista.</string>
 Haluatko siirtää nyt?</string>
     <string name="node_moved_not_far_enough">Siirrä se kauemmaksi</string>
     <string name="node_moved_too_far">Siirretty liian kauas. Voisit kenties jättää ilmoituksen</string>
-    <string name="node_moved">Siirtänyt %s</string>
+    <string name="node_moved">Siirtänyt %1$s</string>
     <string name="move_node_description">Sijoita karttakohde oikeaan paikkaan vetämällä karttaa.  Käytä zoomaustoimintoa ja yritä olla mahdollisimman tarkka.  Huomaa, että näytetty sijaintisi ei välttämättä ole tarkka.</string>
     <string name="move_node_action_description">Siirsit pistettä</string>
     <string name="quest_cycleway_value_shoulder">ei mitään, mutta piennar on pyöräilijöiden käytettävissä</string>
@@ -1317,7 +1317,7 @@ Lisäksi jotkin tasot sallivat uuden tiedon lisäämisen tähtäimen osoittamaan
     <string name="label_log_older_than">Päättyy</string>
     <string name="label_log_message_contains">Viesti sisältää</string>
     <string name="title_logs_filters">Suodata viestejä</string>
-    <string name="pref_title_quests_restore_hidden_summary">Piilotettujen tehtävien määrä: %d</string>
+    <string name="pref_title_quests_restore_hidden_summary">Piilotettujen tehtävien määrä: %1$d</string>
     <string name="link_every_door_description">Tehokas POI-muokkain Androidille ja iOS:lle</string>
     <string name="link_mapcomplete_description">Kokoelma OSM-karttoja aihepiireittäin, joista jokainen näyttää ja antaa muokata tietynlaisia asioita</string>
     <string name="link_forum_description">Tarvitsetko apua? Haluatko tietää mitä tapahtuu? Tule ja osallistu, täällä on paljon toimintaa yhteistöistä ympäri maailmaa!</string>
@@ -1389,7 +1389,7 @@ Kerros lasketaan kattokerrokseksi kun sen ikkunat ovat katossa. Katot, joissa ei
     <string name="quest_camp_power_supply_hint">Se voisi olla pistorasia leirintäalueella, pistorasioita vieraiden käytettävissä olevassa huoltorakennuksessa, latausasema puhelimille, kannettaville, jne.</string>
     <string name="quest_barrier_opening_width_bollard">Mikä on levein väli josta voi kulkea läpi?</string>
     <string name="user_profile_all_time_title">Kokonaissijoitus</string>
-    <string name="user_statistics_country_rank2">%s-sijoitus</string>
+    <string name="user_statistics_country_rank2">%1$s-sijoitus</string>
     <string name="quest_leafType_tree_is_just_a_stump">Se on pelkkä puunkanto</string>
     <string name="quest_board_name_title">Mikä on tämän infotaulun otsikko?</string>
     <string name="quest_crossing_hint">Tien yli kulkeva epävirallinen reitti:</string>

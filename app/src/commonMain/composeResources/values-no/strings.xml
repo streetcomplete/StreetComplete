@@ -196,7 +196,7 @@ Hvis det ikke fins noe fartsgrenseskilt for veien som den markerte strekningen e
     <string name="quest_sport_roller_skating">Rulleskøyter</string>
     <string name="quest_wheelchairAccess_limited_description_business">Delvis betyr at det ikke er mer enn ett trappetrinn inn til stedet og at de fleste rom på innsiden er tilgjengelige med rullestol.</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">Delvis betyr at det ikke er mer enn ett trappetrinn inn til stedet.</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">Forkortelse i navnet %s?</string>
+    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">Forkortelse i navnet %1$s?</string>
     <string name="quest_recycling_type_title">Hva slags returpunkt er dette?</string>
     <string name="recycling_centre">Gjenvinningsstasjon</string>
     <string name="overground_recycling_container">Konteiner</string>
@@ -377,7 +377,7 @@ Hvis ikke kan du laste ned et tastatur med støtte for flere språk i app-butikk
     <string name="quest_construction_footway_title">Er denne gangveien ferdigstilt?</string>
     <string name="quest_construction_generic_title">Er denne stien ferdigstilt?</string>
     <string name="quest_construction_building_title">Er denne bygningen ferdigstilt?</string>
-    <string name="questList_disabled_in_country">Vis aldri i %s</string>
+    <string name="questList_disabled_in_country">Vis aldri i %1$s</string>
     <string name="quest_select_hint_most_specific">Velg det mest spesifikke som passer:</string>
     <string name="quest_generic_item_confirmation">Er du sikker på at det ikke kan fastsettes mer presist?</string>
     <string name="privacy_html_third_party_quest_sources">&lt;p&gt;For noen oppdrag blir tilleggsdata lastet ned fra tredjeparter.&lt;/p&gt;</string>
@@ -488,7 +488,7 @@ Hvis ikke kan du laste ned et tastatur med støtte for flere språk i app-butikk
     <string name="quest_motorcycleParkingCoveredStatus_title">Er motorsykkelparkeringen under tak (beskyttet mot regn)?</string>
     <string name="default_disabled_msg_maxspeed">Denne oppdragstypen er ikke aktivt som standard fordi man vanligvis må kontrollere hele strekningen for fartsgrenser, og ikke bare den viste strekningen. Dette kan ofte være en lang vei kun for ett oppdrag.</string>
     <string name="pref_title_quests_restore_hidden">Gjennopprett skulte oppdrag</string>
-    <string name="on_level">på nivå %s</string>
+    <string name="on_level">på nivå %1$s</string>
     <string name="underground">underjordisk</string>
     <string name="quest_sidewalk_value_yes">fortau</string>
     <string name="quest_sidewalk_value_no">ingen fortau</string>
@@ -582,8 +582,8 @@ Sist, men ikke minst, ta vare på din egen sikkerhet: Vær oppmerksom på omgive
     <string name="achievements_empty">Du har ingen bragder enda</string>
     <string name="links_empty">Du har ikke noen lenker enda</string>
     <string name="quests_empty">Du har ikke offentliggjort noen svar på oppdrag enda</string>
-    <string name="unsynced_quests_description">og %d endringer som ikke er offentliggjort.</string>
-    <string name="unsynced_quests_not_logged_in_description">Du har %d endringer som du ikke har offentliggjort enda. Du må logge inn for å offentliggjøre dem.</string>
+    <string name="unsynced_quests_description">og %1$d endringer som ikke er offentliggjort.</string>
+    <string name="unsynced_quests_not_logged_in_description">Du har %1$d endringer som du ikke har offentliggjort enda. Du må logge inn for å offentliggjøre dem.</string>
     <string name="user_quests_title">Løste oppdrag</string>
     <string name="user_achievements_title">Bradger</string>
     <string name="user_links_title">Lenkesamling</string>
@@ -635,28 +635,28 @@ Sist, men ikke minst, ta vare på din egen sikkerhet: Vær oppmerksom på omgive
     <string name="achievement_first_edit_title">Første løste oppdrag</string>
     <string name="achievement_first_edit_description">Velkommen til OpenStreetMap-felleskapet! På profilsiden kan du lese mer om de ulike oppdragstypene du har løst.</string>
     <string name="achievement_surveyor_title">Landmåler</string>
-    <string name="achievement_surveyor_solved_X">Du har løst %d oppdrag! Fortsett slik for å låse opp flere bragder som inneholder lenker til OSM og andre kartrelaterte apper og prosjekter!</string>
+    <string name="achievement_surveyor_solved_X">Du har løst %1$d oppdrag! Fortsett slik for å låse opp flere bragder som inneholder lenker til OSM og andre kartrelaterte apper og prosjekter!</string>
     <string name="achievement_regular_title">Stamgjest</string>
-    <string name="achievement_regular_description">Du har bidrat i %d dager til OSM med appen! Regelmessige bidragsytere utgjør ryggraden til OSM, så takk for at du er så engasjert! ❤</string>
+    <string name="achievement_regular_description">Du har bidrat i %1$d dager til OSM med appen! Regelmessige bidragsytere utgjør ryggraden til OSM, så takk for at du er så engasjert! ❤</string>
     <string name="achievement_bicyclist_title">Syklist</string>
-    <string name="achievement_bicyclist_solved_X">Du har løst %d oppdrag som helper syklister!</string>
+    <string name="achievement_bicyclist_solved_X">Du har løst %1$d oppdrag som helper syklister!</string>
     <string name="achievement_wheelchair_title">Mobilitet</string>
-    <string name="achievement_wheelchair_solved_X">Du har løst %d oppdrag som hjelper rullestolbrukere!</string>
+    <string name="achievement_wheelchair_solved_X">Du har løst %1$d oppdrag som hjelper rullestolbrukere!</string>
     <string name="achievement_postman_title">Postmann</string>
-    <string name="achievement_postman_solved_X">Du har bekreftet %d adresser!
+    <string name="achievement_postman_solved_X">Du har bekreftet %1$d adresser!
 Ikke bare postmannen har bruk for dette - det har alle navigasjonssystem.</string>
     <string name="achievement_building_title">Huseier</string>
-    <string name="achievement_building_solved_X">Du har løst %d bygningsoppdrag.
+    <string name="achievement_building_solved_X">Du har løst %1$d bygningsoppdrag.
 Merk at appen bare ber om husnummeret etter at hustypen er angitt.</string>
     <string name="achievement_blind_title">Sjette sans</string>
-    <string name="achievement_blind_solved_X">Du har løst %d oppdrag som er nyttige for synshemmede.</string>
+    <string name="achievement_blind_solved_X">Du har løst %1$d oppdrag som er nyttige for synshemmede.</string>
     <string name="achievement_pedestrian_title">Løper</string>
-    <string name="achievement_pedestrian_solved_X">Du har løst %d oppdrag som er nyttige for fotgjengere!</string>
+    <string name="achievement_pedestrian_solved_X">Du har løst %1$d oppdrag som er nyttige for fotgjengere!</string>
     <string name="achievement_veg_title">Dyrevenn</string>
-    <string name="achievement_veg_solved_X">Du har løst %d oppdrag som er interessante for de som ikke spiser kjøtt!</string>
+    <string name="achievement_veg_solved_X">Du har løst %1$d oppdrag som er interessante for de som ikke spiser kjøtt!</string>
     <string name="achievement_car_title">På veien</string>
-    <string name="achievement_car_solved_X">Du har løst %d oppdrag som forbedrer detaljnivået på gateinformasjonen - slik at OpenStreetMap lever opp til navnet sitt!</string>
-    <string name="unread_messages_message">Du har %d uleste meldinger i innboksen</string>
+    <string name="achievement_car_solved_X">Du har løst %1$d oppdrag som forbedrer detaljnivået på gateinformasjonen - slik at OpenStreetMap lever opp til navnet sitt!</string>
+    <string name="unread_messages_message">Du har %1$d uleste meldinger i innboksen</string>
     <string name="unread_messages_button">Åpne innboks</string>
     <string name="action_about2">Om</string>
     <string name="map_btn_menu">Meny</string>
@@ -666,13 +666,13 @@ Merk at appen bare ber om husnummeret etter at hustypen er angitt.</string>
     <string name="credits_projects_contributors_title">Prosjekter laget for StreetComplete</string>
     <string name="credits_main_contributors_title">Hovedbidragsyter</string>
     <string name="stats_are_syncing">Synkroniserer statistikken. Kom tilbake senere.</string>
-    <string name="user_statistics_country_wiki_link">Kartleggingsportal %s</string>
+    <string name="user_statistics_country_wiki_link">Kartleggingsportal %1$s</string>
     <string name="user_statistics_filter_by_country">pr land</string>
     <string name="user_statistics_filter_by_quest_type">pr oppdragstype</string>
     <string name="user_profile_global_rank">Global
 plassering</string>
     <string name="user_profile_local_rank">Plassering i
-%s</string>
+%1$s</string>
     <string name="user_profile_days_active">Dager
 aktiv</string>
     <string name="user_profile_achievement_levels">Prestasjons-
@@ -698,8 +698,8 @@ nivåer</string>
     <string name="quest_board_type_map_description">Oppgi om en informasjonstavle omhandler et spesifikt emne, uavhengig av om den også viser et kart. For eksempel kan en informasjonstavle for offentlig transport inneholde et kart over bussrutene. Hvis du ikke finner emnet blant alternativene kan du lage en merknad i stedet.</string>
     <string name="quest_streetName_menuItem_international">internasjonal</string>
     <string name="quest_buildingType_terrace2">Rekkehus</string>
-    <string name="at_housename">Husnavn %s</string>
-    <string name="at_housenumber">Husnummer %s</string>
+    <string name="at_housename">Husnavn %1$s</string>
+    <string name="at_housenumber">Husnummer %1$s</string>
     <string name="quest_openingHours_add_off_days">Hvilke dager er det stengt?</string>
     <string name="quest_openingHours_off_day">Stengt</string>
     <string name="quest_openingHours_unspecified_range">Ikke spesifisert</string>
@@ -733,11 +733,11 @@ nivåer</string>
     <string name="quest_charging_station_operator_title">Hvilket selskap opererer denne ladestasjonen?</string>
     <string name="link_indoorequal_description">Oppdag innendørskart av kjøpesentere, jernbanestasjoner, osv.</string>
     <string name="achievement_rare_title">Skattejakt</string>
-    <string name="achievement_rare_solved_X">Gratulerer, du har funnet og løst %d oppdrag som løses veldig sjeldent!</string>
+    <string name="achievement_rare_solved_X">Gratulerer, du har funnet og løst %1$d oppdrag som løses veldig sjeldent!</string>
     <string name="achievement_citizen_title">Innbygger</string>
-    <string name="achievement_citizen_solved_X">Du har løst %d oppdrag som er nyttige i bylivet!</string>
+    <string name="achievement_citizen_solved_X">Du har løst %1$d oppdrag som er nyttige i bylivet!</string>
     <string name="achievement_outdoors_title">Utendørs</string>
-    <string name="achievement_outdoors_solved_X">Du har løst %d oppdrag som er nyttige for friluftsfolk!</string>
+    <string name="achievement_outdoors_solved_X">Du har løst %1$d oppdrag som er nyttige for friluftsfolk!</string>
     <string name="quest_pedestrian_crossing_island">Har denne fotgjengerovergangen en øy?</string>
     <string name="quest_generic_answer_noSign">Det er ikke noe skilt</string>
     <string name="quest_steps_ramp_separate_wheelchair">Er rullestolrampen vist som en adskilt vei på kartet?</string>
@@ -761,7 +761,7 @@ nivåer</string>
     <string name="quest_address_answer_no_housenumber_message2b">Er dette korrekt?</string>
     <string name="quest_maxheight_below_bridge_title">Hva er høydebegrensningen under denne broen?</string>
     <string name="quest_maxheight_split_way_hint">Spørsmålet stilles også for veier under broer, tak, rørgater, osv.
-Og, hvis det ikke gjelder hele strekningen bør du svare «%s».</string>
+Og, hvis det ikke gjelder hele strekningen bør du svare «%1$s».</string>
     <string name="quest_tactile_paving_kerb_title">Er det taktile ledelinjer på fortauskanten her?</string>
     <string name="quest_kerb_height_title">Hvor høy er fortauskanten?</string>
     <string name="quest_kerb_height_flush">Samme nivå som veien</string>
@@ -819,9 +819,9 @@ Legg merke til alle tilgjengelige alternativer! Noen tilfeller er ikke åpenbare
     <string name="hid_action_description">Du skjulte det</string>
     <string name="split_way_action_description">Du delte veien</string>
     <string name="deleted_poi_action_description">Du slettet det</string>
-    <string name="added_tag_action_title">La til %s</string>
-    <string name="removed_tag_action_title">Fjernet %s</string>
-    <string name="changed_tag_action_title">Endret til %s</string>
+    <string name="added_tag_action_title">La til %1$s</string>
+    <string name="removed_tag_action_title">Fjernet %1$s</string>
+    <string name="changed_tag_action_title">Endret til %1$s</string>
     <string name="pref_title_delete_cache">Slett mellomlager</string>
     <string name="pref_title_delete_cache_summary">Hvis du tror kartdata er utdaterte</string>
     <string name="delete_confirmation">Slett</string>
@@ -871,7 +871,7 @@ Data blir oppdatert etter %1$s dager og ubrukte data blir automatisk slettet ett
     <string name="about_title_faq">Ofte stilte spørsmål</string>
     <string name="quest_buildingLevels_title2">Hvor mange etasjer over kjeller har denne bygningen?</string>
     <string name="quest_buildingLevels_title_buildingPart2">Hvor mange etasjer over kjeller har denne bygningsdelen?</string>
-    <string name="pref_subtitle_quests_preset_name">Standardvalg: %s</string>
+    <string name="pref_subtitle_quests_preset_name">Standardvalg: %1$s</string>
     <string name="default_disabled_msg_roofShape">Denne oppdragstypen blir normalt ikke vist fordi takformen ofte er vanskelig å se fra gaten. Denne oppdragstypen er også ganske tidskrevende, og som regel enklere og mer effektivt å kartlegge hjemmefra ved å bruke flyfoto.</string>
     <string name="quest_religion_animist">Animisme</string>
     <string name="quest_construction_steps_title">Er trappene ferdigbygget?</string>
@@ -896,7 +896,7 @@ Data blir oppdatert etter %1$s dager og ubrukte data blir automatisk slettet ett
     <string name="quest_presets_preset_name">Navn på oppdragsoppsett</string>
     <string name="quest_presets_default_name">Standard</string>
     <string name="quest_presets_selected">Valgt</string>
-    <string name="quest_presets_delete_message">Slette oppsettet «%s»? Oppdragsoppsettet vil slettes for alltid.</string>
+    <string name="quest_presets_delete_message">Slette oppsettet «%1$s»? Oppdragsoppsettet vil slettes for alltid.</string>
     <string name="notification_syncing">Synkroniserer…</string>
     <string name="notification_channel_sync">Synkroniser</string>
     <string name="quest_board_type_sport">Sport, øvelser</string>
@@ -934,7 +934,7 @@ Data blir oppdatert etter %1$s dager og ubrukte data blir automatisk slettet ett
     <string name="quest_barrier_bicycle_type_double">Innsnevring på begge sider</string>
     <string name="quest_barrier_bicycle_type_multiple">Innsnevring med mer enn to barrierer</string>
     <string name="language_default">Systemvalgt</string>
-    <string name="on_floor">i etasje %s</string>
+    <string name="on_floor">i etasje %1$s</string>
     <string name="select_street_parking_orientation">Velg orientering i forhold til veien:</string>
     <string name="select_street_parking_position">Velg posisjon:</string>
     <string name="select_street_parking_no">Skilt eller oppmerking her?</string>
@@ -1000,7 +1000,7 @@ Alternativt, lag en merknad (med bilde).</string>
     <string name="quest_smoothness_hint">🚲, 🚗, 🚙, … velg hva slags kjøretøy som bør være greie å bruke på denne overflaten. Det store bildet er viktigere enn enkelte skader.</string>
     <string name="link_osmhydrant_description">Finn, legg til og endre brannstasjoner og brannhydranter</string>
     <string name="achievement_lifesaver_title">Livredder</string>
-    <string name="achievement_lifesaver_solved_X">Du har løst %d oppdrag som hjelper nødetater og førstehjelpere!</string>
+    <string name="achievement_lifesaver_solved_X">Du har løst %1$d oppdrag som hjelper nødetater og førstehjelpere!</string>
     <string name="quest_fuelSelfService_title">Kan du fylle drivstoff selv her?</string>
     <string name="default_disabled_msg_difficult_and_time_consuming">Denne oppgavetypen er i utgangspunktet deaktivert fordi det er ganske tidkrevende og ofte vanskelig å velge riktig. Du bør bare aktivere denne oppgavetypen hvis du virkelig ønsker å løse dem.</string>
     <string name="quest_smoothness_description_good_compacted_gravel">Hardpakket, veldig lite løs grus eller sand</string>
@@ -1163,7 +1163,7 @@ Om mulig, gjør det samme for den andre siden.</string>
     <string name="quest_camp_type_backcountry">Friluftscamping (ingen fasiliteter)</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">Diameteren virker usannsynlig da den vanligvis er mellom %1$d og %2$d.</string>
     <string name="quest_recycling_type_pet">Kun PET</string>
-    <string name="street_parking_street_width">Gatebredde: %s</string>
+    <string name="street_parking_street_width">Gatebredde: %1$s</string>
     <string name="overlay_street_parking">Gateparkering</string>
     <string name="link_ohsomehex_description">Utforsk OSM data fra det store bildet og ned til detaljene gjennom rom og tid</string>
     <string name="link_opencampingmap_description">Et kart over campingsteder</string>
@@ -1210,7 +1210,7 @@ Om mulig, gjør det samme for den andre siden.</string>
     <string name="user_profile_current_week_title">Denne uka</string>
     <string name="user_profile_dates_mapped">Dine nylige kartleggingsdager</string>
     <string name="quest_cycleway_value_advisory_lane">anbefalt sykkelfelt</string>
-    <string name="urlconfig_scan_qr_code_again2">Etter å ha installert appen, skann QR-koden igjen eller klikk &lt;a href="%s"&gt;denne linken&lt;/a&gt; for bruke oppdragssettet.</string>
+    <string name="urlconfig_scan_qr_code_again2">Etter å ha installert appen, skann QR-koden igjen eller klikk &lt;a href="%1$s"&gt;denne linken&lt;/a&gt; for bruke oppdragssettet.</string>
     <string name="confirmation_replace_shop_title">Er det en annen butikk nå?</string>
     <string name="confirmation_replace_shop_message">I så fall har åpningstid, kontaktinformasjon osv. også endret seg.</string>
     <string name="confirmation_replace_shop_yes">En annen butikk nå</string>
@@ -1220,7 +1220,7 @@ Om mulig, gjør det samme for den andre siden.</string>
 Vil du flytte den nå?</string>
     <string name="node_moved_not_far_enough">Vennligst flytt den litt til</string>
     <string name="node_moved_too_far">Flyttet for langt. Legg gjerne igjen en merknad</string>
-    <string name="node_moved">Flyttet av %s</string>
+    <string name="node_moved">Flyttet av %1$s</string>
     <string name="move_node_description">Dra kartet for å finne riktig posisjon. Forstørr kartutsnittet og prøv å være så nøyaktig som mulig. Vær oppmerksom på at indikatoren for din posisjon i kartet ikke alltid er 100 % nøyaktig.</string>
     <string name="move_node_action_description">Du flyttet noden</string>
     <string name="quest_cycleway_value_shoulder">ingen, men veiskulderen kan brukes av syklister</string>
@@ -1318,7 +1318,7 @@ I tillegg tillater noen typer kartlag at du legger til nye data der trådkorset 
     <string name="label_log_older_than">Til</string>
     <string name="label_log_message_contains">Meldingen inneholder</string>
     <string name="title_logs_filters">Filtrer meldingene</string>
-    <string name="pref_title_quests_restore_hidden_summary">Antall skjulte oppdrags: %d</string>
+    <string name="pref_title_quests_restore_hidden_summary">Antall skjulte oppdrags: %1$d</string>
     <string name="link_every_door_description">Kraftig POI-redigeringsverktøy for Android og iOS</string>
     <string name="link_mapcomplete_description">Samling av tematiske OSM-kart som hver for seg viser og lar deg redigere én type egenskap</string>
     <string name="link_forum_description">Trenger du hjelp? Vil du få med deg hva som skjer? Bli med og solialiser deg, det yrer av aktivitet fra lokalsamfunn over hele kloden!</string>
@@ -1388,7 +1388,7 @@ En etasje regnes som taketasje når vinduene er i taket. Deretter er tak med nul
     <string name="quest_camp_power_supply_hint">Dette kan være kontakter ved teltplassen, inne i fasilitets-bygninger eller dedikerte ladesteder for elektronisk utstyr.</string>
     <string name="quest_barrier_opening_width_bollard">Hvor bred er den største åpningen her?</string>
     <string name="user_profile_all_time_title">Totalt</string>
-    <string name="user_statistics_country_rank2">Rangering i %s</string>
+    <string name="user_statistics_country_rank2">Rangering i %1$s</string>
     <string name="quest_leafType_tree_is_just_a_stump">Kun en stubbe</string>
     <string name="quest_board_name_title">Hva er overskriften på dette infomasjonsskiltet?</string>
     <string name="quest_crossing_hint">En sti som krysser en vei:</string>

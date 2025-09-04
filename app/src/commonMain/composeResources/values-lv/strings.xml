@@ -196,7 +196,7 @@ Ja nav zīmes, kas iezīmētajā ceļa daļā norāda ātruma ierobežojumu, tie
     <string name="quest_sport_roller_skating">Skrituļošana</string>
     <string name="quest_wheelchairAccess_limited_description_business">“Daļēji” nozīmē, ka piekļuvi vietai nebloķē pakāpieni, kas būtu augstāki par potīti un ka vairums istabu ir pieejami ar ratiņkrēsliem.</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">“Daļēji” nozīmē, ka piekļuvi vietai nebloķē pakāpieni, kas būtu augstāki par potīti.</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">Nosaukumā %s ir saīsinājums?</string>
+    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">Nosaukumā %1$s ir saīsinājums?</string>
     <string name="quest_recycling_type_title">Kāda veida šķirošanas iestāde/vieta šī ir?</string>
     <string name="recycling_centre">Šķirošanas centrs</string>
     <string name="overground_recycling_container">Konteineris</string>
@@ -376,7 +376,7 @@ Ja tādu opciju nav, jūs varat instalēt citu tastatūras lietotni caur lietot�
     <string name="quest_construction_footway_title">Vai šī gājēju taka ir pabeigta?</string>
     <string name="quest_construction_generic_title">Vai šis ceļš ir pabeigts?</string>
     <string name="quest_construction_building_title">Vai šī ēka ir pabeigta?</string>
-    <string name="questList_disabled_in_country">Nekad nerāda valstī %s</string>
+    <string name="questList_disabled_in_country">Nekad nerāda valstī %1$s</string>
     <string name="quest_select_hint_most_specific">Izvēlieties visspecifiskāko, kas atbilst:</string>
     <string name="quest_generic_item_confirmation">Vai tiešām nevarat noteikt vēl specifiskāk?</string>
     <string name="privacy_html_third_party_quest_sources">&lt;p&gt;Dažiem uzdevumiem tiek lejupielādēti papildu dati no trešajām pusēm.&lt;/p&gt;</string>
@@ -487,7 +487,7 @@ Ja tādu opciju nav, jūs varat instalēt citu tastatūras lietotni caur lietot�
     <string name="quest_motorcycleParkingCoveredStatus_title">Vai šī motociklu stāvvieta ir nosegta (pasargāta no lietus)?</string>
     <string name="default_disabled_msg_maxspeed">Pēc noklusējuma šis uzdevuma veids ir izslēgts, jo lai noskaidrotu ātruma ierobežojumus, ir jāapseko visa iela, ne tikai izvēlētais nogrieznis. Varētu nākties šķērsot lielus attālumus, lai izpildītu vienu uzdevumu.</string>
     <string name="pref_title_quests_restore_hidden">Atjaunot paslēptos uzdevumus</string>
-    <string name="on_level">līmenī %s</string>
+    <string name="on_level">līmenī %1$s</string>
     <string name="underground">pazemē</string>
     <string name="quest_sidewalk_value_yes">ietve</string>
     <string name="quest_sidewalk_value_no">ietves nav</string>
@@ -580,8 +580,8 @@ Pats galvenais, atcerieties ievērot drošību: apzinieties savu apkārtni un ne
     <string name="achievements_empty">Jums vēl nav neviens sasniegums</string>
     <string name="links_empty">Jums vēl nav saišu</string>
     <string name="quests_empty">Jūs vēl neesat publicējis labojumus</string>
-    <string name="unsynced_quests_description">plus vēl %d nepublicētas izmaiņas.</string>
-    <string name="unsynced_quests_not_logged_in_description">Jums ir %d vēl nepublicētas izmaiņas. Lai tās augšupielādētu, jums jāierakstās.</string>
+    <string name="unsynced_quests_description">plus vēl %1$d nepublicētas izmaiņas.</string>
+    <string name="unsynced_quests_not_logged_in_description">Jums ir %1$d vēl nepublicētas izmaiņas. Lai tās augšupielādētu, jums jāierakstās.</string>
     <string name="user_quests_title">Labojumi</string>
     <string name="user_achievements_title">Sasniegumi</string>
     <string name="user_links_title">Saišu kolekcija</string>
@@ -633,28 +633,28 @@ Pats galvenais, atcerieties ievērot drošību: apzinieties savu apkārtni un ne
     <string name="achievement_first_edit_title">Izpildīts pirmais uzdevums</string>
     <string name="achievement_first_edit_description">Laipni lūdzam OpenStreetMap kopienā! Savā profila ekrānā jūs varat uzzināt vairāk par uzdevumu veidiem, ko esat atrisinājuši.</string>
     <string name="achievement_surveyor_title">Mērnieks</string>
-    <string name="achievement_surveyor_solved_X">Jūs esat izpildījis %d uzdevumus! Tā turpiniet, lai atbloķētu vēl vairāk sasniegumus, kas satur saites uz OSM un citām ar kartēm saistītām lietotnēm un projektiem!</string>
+    <string name="achievement_surveyor_solved_X">Jūs esat izpildījis %1$d uzdevumus! Tā turpiniet, lai atbloķētu vēl vairāk sasniegumus, kas satur saites uz OSM un citām ar kartēm saistītām lietotnēm un projektiem!</string>
     <string name="achievement_regular_title">Pastāvīgais</string>
-    <string name="achievement_regular_description">Jūs esat devis ieguldījumu OSM ar šo lietotni %d dienas. Pastāvīgie atbalstītāji veido OSM pamatu, paldies par jūsu apņēmību! ❤</string>
+    <string name="achievement_regular_description">Jūs esat devis ieguldījumu OSM ar šo lietotni %1$d dienas. Pastāvīgie atbalstītāji veido OSM pamatu, paldies par jūsu apņēmību! ❤</string>
     <string name="achievement_bicyclist_title">Velosipēdists</string>
-    <string name="achievement_bicyclist_solved_X">Jūs atrisinājāt %d uzdevumus, kas palīdz velosipēdistiem!</string>
+    <string name="achievement_bicyclist_solved_X">Jūs atrisinājāt %1$d uzdevumus, kas palīdz velosipēdistiem!</string>
     <string name="achievement_wheelchair_title">Mobilitāte</string>
-    <string name="achievement_wheelchair_solved_X">Jūs atrisinājāt %d uzdevumus, kas palīdz cilvēkiem ratiņkrēslos!</string>
+    <string name="achievement_wheelchair_solved_X">Jūs atrisinājāt %1$d uzdevumus, kas palīdz cilvēkiem ratiņkrēslos!</string>
     <string name="achievement_postman_title">Pastnieks</string>
-    <string name="achievement_postman_solved_X">Jūs palīdzējāt noteikt %d adreses!
+    <string name="achievement_postman_solved_X">Jūs palīdzējāt noteikt %1$d adreses!
 Šie dati ir būtiski ne tikai pasta piegādātājiem, bet jebkurai navigācijas sistēmai.</string>
     <string name="achievement_building_title">Augstceltne</string>
-    <string name="achievement_building_solved_X">Jūs atrisinājāt %d uzdevumus, kas saistīti ar ēkām.
+    <string name="achievement_building_solved_X">Jūs atrisinājāt %1$d uzdevumus, kas saistīti ar ēkām.
 Ņemiet vērā, ka šī lietotne jautā mājas numuru tikai tad, kad ir noteikts tās tips.</string>
     <string name="achievement_blind_title">Sestā maņa</string>
-    <string name="achievement_blind_solved_X">Jūs atrisinājāt %d uzdevumus, kas ir būtiski vājredzīgajiem.</string>
+    <string name="achievement_blind_solved_X">Jūs atrisinājāt %1$d uzdevumus, kas ir būtiski vājredzīgajiem.</string>
     <string name="achievement_pedestrian_title">Skrējējs</string>
-    <string name="achievement_pedestrian_solved_X">Jūs atrisinājāt %d uzdevumus, kas ir interesanti kājāmgājējiem!</string>
+    <string name="achievement_pedestrian_solved_X">Jūs atrisinājāt %1$d uzdevumus, kas ir interesanti kājāmgājējiem!</string>
     <string name="achievement_veg_title">Laipns pret dzīvniekiem</string>
-    <string name="achievement_veg_solved_X">Jūs atrisinājāt %d uzdevumus, kas ir svarīgi cilvēkiem, kuri neēd gaļu!</string>
+    <string name="achievement_veg_solved_X">Jūs atrisinājāt %1$d uzdevumus, kas ir svarīgi cilvēkiem, kuri neēd gaļu!</string>
     <string name="achievement_car_title">Ceļā</string>
-    <string name="achievement_car_solved_X">Jūs atrisinājāt %d uzdevumus, kas uzlabo detalizētību informācijā par ceļu infrastruktūru!</string>
-    <string name="unread_messages_message">Jūsu pastkastē ir %d nelasītas ziņas</string>
+    <string name="achievement_car_solved_X">Jūs atrisinājāt %1$d uzdevumus, kas uzlabo detalizētību informācijā par ceļu infrastruktūru!</string>
+    <string name="unread_messages_message">Jūsu pastkastē ir %1$d nelasītas ziņas</string>
     <string name="unread_messages_button">Atvērt pastkasti</string>
     <string name="action_about2">Par</string>
     <string name="map_btn_menu">Izvēlne</string>
@@ -664,12 +664,12 @@ Pats galvenais, atcerieties ievērot drošību: apzinieties savu apkārtni un ne
     <string name="credits_projects_contributors_title">Projekti, kas ir veidoti StreetComplete lietotnei</string>
     <string name="credits_main_contributors_title">Galvenie veidotāji</string>
     <string name="stats_are_syncing">Jūsu statistika vēl tiek sinhronizēta. Lūdzu, apskatiet šo ekrānu vēlāk.</string>
-    <string name="user_statistics_country_wiki_link">Kartēšanas portāls %s</string>
+    <string name="user_statistics_country_wiki_link">Kartēšanas portāls %1$s</string>
     <string name="user_statistics_filter_by_country">pēc valsts</string>
     <string name="user_statistics_filter_by_quest_type">pēc veida</string>
     <string name="user_profile_global_rank">Globālais rangs</string>
     <string name="user_profile_local_rank">Rangs valstī
-%s</string>
+%1$s</string>
     <string name="user_profile_days_active">Dienas
 aktīvas</string>
     <string name="user_profile_achievement_levels">Sasniegumu
@@ -695,8 +695,8 @@ līmeņi</string>
     <string name="quest_board_type_map_description">Ja dēlis ir par kādu specifisku tēmu, lūdzu, to norādiet, neatkarīgi no tā, vai tajā ir arī karte. Piemēram, sabiedriskā transporta dēlim varētu būt klāt maršruta karte. Ja tēma nav pieejamo atbilžu sarakstā, apsveriet iespēju pievienot piezīmi.</string>
     <string name="quest_streetName_menuItem_international">starptautiski</string>
     <string name="quest_buildingType_terrace2">Rindu mājas</string>
-    <string name="at_housename">mājas nosaukums %s</string>
-    <string name="at_housenumber">mājas numurs %s</string>
+    <string name="at_housename">mājas nosaukums %1$s</string>
+    <string name="at_housenumber">mājas numurs %1$s</string>
     <string name="quest_openingHours_add_off_days">Pievienot brīvdienas</string>
     <string name="quest_openingHours_off_day">Brīvdiena</string>
     <string name="quest_openingHours_unspecified_range">Nav norādīts</string>
@@ -730,11 +730,11 @@ līmeņi</string>
     <string name="quest_charging_station_operator_title">Kas ir šīs uzlādes stacijas ekspluatants?</string>
     <string name="link_indoorequal_description">Atklāj iekštelpu kartes tirdzniecības centriem, stacijām utt.</string>
     <string name="achievement_rare_title">Dārgumu medības</string>
-    <string name="achievement_rare_solved_X">Jūs atradāt un atrisinājāt %d uzdevumus, kas reti tiek izpildīti, apsveicam!</string>
+    <string name="achievement_rare_solved_X">Jūs atradāt un atrisinājāt %1$d uzdevumus, kas reti tiek izpildīti, apsveicam!</string>
     <string name="achievement_citizen_title">Pilsonis</string>
-    <string name="achievement_citizen_solved_X">Jūs atrisinājāt %d uzdevumus, kas ir noderīgi pilsētas ikdienas dzīvē!</string>
+    <string name="achievement_citizen_solved_X">Jūs atrisinājāt %1$d uzdevumus, kas ir noderīgi pilsētas ikdienas dzīvē!</string>
     <string name="achievement_outdoors_title">Ārtelpas</string>
-    <string name="achievement_outdoors_solved_X">Jūs atrisinājāt %d uzdevumus, kas noder ārtelpu entuziastiem!</string>
+    <string name="achievement_outdoors_solved_X">Jūs atrisinājāt %1$d uzdevumus, kas noder ārtelpu entuziastiem!</string>
     <string name="quest_pedestrian_crossing_island">Vai šai gājēju pārejai ir saliņa?</string>
     <string name="quest_generic_answer_noSign">Zīmes nav</string>
     <string name="quest_steps_ramp_separate_wheelchair">Vai ratiņkrēsla rampa tiek attēlota kā atsevišķs ceļš uz kartes?</string>
@@ -757,7 +757,7 @@ līmeņi</string>
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">Ir divvirzienu kreisā pagrieziena josla</string>
     <string name="quest_address_answer_no_housenumber_message2b">Vai tas ir pareizi?</string>
     <string name="quest_maxheight_below_bridge_title">Kāds ir šī tilta augstuma limits?</string>
-    <string name="quest_maxheight_split_way_hint">Ja tas neattiecas uz visu ceļu, apsveriet iespēju atbildēt “%s”.</string>
+    <string name="quest_maxheight_split_way_hint">Ja tas neattiecas uz visu ceļu, apsveriet iespēju atbildēt “%1$s”.</string>
     <string name="quest_tactile_paving_kerb_title">Vai šai ietves apmalei ir segums ar reljefu?</string>
     <string name="quest_kerb_height_title">Kāds ir šīs ietves apmales augstums?</string>
     <string name="quest_kerb_height_flush">Tāds pats kā ceļa virsma</string>
@@ -815,9 +815,9 @@ Ja kādas joslas ir rezervētas autobusiem, lūdzu, atstājiet piezīmi.</string
     <string name="hid_action_description">Jūs to paslēpāt</string>
     <string name="split_way_action_description">Jūs sadalījāt ceļu</string>
     <string name="deleted_poi_action_description">Jūs to izdzēsāt</string>
-    <string name="added_tag_action_title">Pievienoja %s</string>
-    <string name="removed_tag_action_title">Izņēma %s</string>
-    <string name="changed_tag_action_title">Atjaunināja uz %s</string>
+    <string name="added_tag_action_title">Pievienoja %1$s</string>
+    <string name="removed_tag_action_title">Izņēma %1$s</string>
+    <string name="changed_tag_action_title">Atjaunināja uz %1$s</string>
     <string name="pref_title_delete_cache">Dzēst kešatmiņu</string>
     <string name="pref_title_delete_cache_summary">Ja uzskatāt, ka kādi dati ir novecojuši</string>
     <string name="delete_confirmation">Dzēst</string>
@@ -867,7 +867,7 @@ Dati tiek atjaunināti pēc %1$s dienām un neizmantotie dati tiek automātiski 
     <string name="about_title_faq">B.U.J.</string>
     <string name="quest_buildingLevels_title2">Cik daudz stāvu virs pagraba ir šai ēkai?</string>
     <string name="quest_buildingLevels_title_buildingPart2">Cik daudz stāvu virs pagraba ir šai ēkas daļai?</string>
-    <string name="pref_subtitle_quests_preset_name">Priekšiestatījums: %s</string>
+    <string name="pref_subtitle_quests_preset_name">Priekšiestatījums: %1$s</string>
     <string name="default_disabled_msg_roofShape">Šis uzdevumu veids pēc noklusējuma ir izslēgts, jo jumtu formas no ielas puses nereti ir grūti saskatīt. Šis uzdevumu veids arī ir diezgan laikietilpīgs; vairumā gadījumu šo informāciju ir vieglāk iegūt mājās no aerofoto.</string>
     <string name="quest_religion_animist">Animisms</string>
     <string name="quest_construction_steps_title">Vai šie soļi ir izpildīti?</string>
@@ -892,7 +892,7 @@ Dati tiek atjaunināti pēc %1$s dienām un neizmantotie dati tiek automātiski 
     <string name="quest_presets_preset_name">Pirekšiestatījuma nosaukums</string>
     <string name="quest_presets_default_name">Noklusējuma</string>
     <string name="quest_presets_selected">Izvēlēts</string>
-    <string name="quest_presets_delete_message">Dzēst priekšiestatījumu “%s”? Uzdevumu atlase un secība tiks neatgriezeniski zaudēta.</string>
+    <string name="quest_presets_delete_message">Dzēst priekšiestatījumu “%1$s”? Uzdevumu atlase un secība tiks neatgriezeniski zaudēta.</string>
     <string name="notification_syncing">Sinhronizē datus…</string>
     <string name="notification_channel_sync">Sinhroni dati</string>
     <string name="quest_board_type_sport">Sports, vingrošana</string>
@@ -930,7 +930,7 @@ Dati tiek atjaunināti pēc %1$s dienām un neizmantotie dati tiek automātiski 
     <string name="quest_barrier_bicycle_type_double">Čikāne — barjera katrā pusē</string>
     <string name="quest_barrier_bicycle_type_multiple">Čikāne — vairāk kā divas barjeras</string>
     <string name="language_default">Sistēmas noklusējuma</string>
-    <string name="on_floor">stāvā %s</string>
+    <string name="on_floor">stāvā %1$s</string>
     <string name="select_street_parking_orientation">Izvēlieties orientāciju pret autoceļu:</string>
     <string name="select_street_parking_position">Izvēlieties novietojumu:</string>
     <string name="select_street_parking_no">Vai šeit ir kādas zīmes vai ceļa marķējums?</string>
@@ -996,7 +996,7 @@ Vai arī atstājiet piezīmi (ar fotogrāfiju).</string>
     <string name="quest_smoothness_hint">🚲, 🚗, 🚙, … norādiet, kuriem transporta līdzekļiem šī virsma ir atbilstoša. Svarīgākās ir lielās līnijas, nevis atsevišķi apdraudējumi.</string>
     <string name="link_osmhydrant_description">Uzmeklēt un rediģēt ugunsdzēsības hidrantus</string>
     <string name="achievement_lifesaver_title">Dzīvības glābējs</string>
-    <string name="achievement_lifesaver_solved_X">Jūs atrisinājāt %d uzdevumus, kas palīdz operatīvajiem servisiem un glābējiem</string>
+    <string name="achievement_lifesaver_solved_X">Jūs atrisinājāt %1$d uzdevumus, kas palīdz operatīvajiem servisiem un glābējiem</string>
     <string name="quest_fuelSelfService_title">Vai šī degvielas uzpildes stacija atļauj pašapkalpošanos?</string>
     <string name="default_disabled_msg_difficult_and_time_consuming">Šis uzdevums pēc noklusējuma ir izslēgts, jo tas aizņem daudz laika un nereti ir grūti veikt pareizo izvēli. Jums šos uzdevumus vajadzētu ieslēgt tikai tad, ja tiešām vēlaties ievadīti šāda veida datus.</string>
     <string name="quest_smoothness_description_good_compacted_gravel">Cieši saspiesta smalka grants vai smilts</string>
@@ -1159,7 +1159,7 @@ Dariet to arī otrai pusei, ja tāda ir.</string>
     <string name="quest_camp_type_backcountry">Nomaļš kempings (nav labiekārtots)</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">Šis diametrs izskatās neticams, tas parasti ir starp %1$d un %2$d.</string>
     <string name="quest_recycling_type_pet">Tikai PET</string>
-    <string name="street_parking_street_width">Ielas platums: %s</string>
+    <string name="street_parking_street_width">Ielas platums: %1$s</string>
     <string name="overlay_street_parking">Stāvvieta pie ielas</string>
     <string name="link_ohsomehex_description">Izpētiet OSM datus dažādos mērogos — no lielās ainas līdz atsevišķiem objektiem telpā un laikā</string>
     <string name="link_opencampingmap_description">Karte ar kempingiem</string>
@@ -1206,7 +1206,7 @@ Dariet to arī otrai pusei, ja tāda ir.</string>
     <string name="user_profile_current_week_title">Pēdējās 7 dienas</string>
     <string name="user_profile_dates_mapped">Dienas, kurās esat nesen kartējis</string>
     <string name="quest_cycleway_value_advisory_lane">rekomendējošā velojosla</string>
-    <string name="urlconfig_scan_qr_code_again2">Pēc lietotnes instalēšanas, atkal skenējiet QR kodu un spiediet &lt;a href="%s"&gt;šo saiti&lt;/a&gt;, lai pielietotu priekšiestatījumu.</string>
+    <string name="urlconfig_scan_qr_code_again2">Pēc lietotnes instalēšanas, atkal skenējiet QR kodu un spiediet &lt;a href="%1$s"&gt;šo saiti&lt;/a&gt;, lai pielietotu priekšiestatījumu.</string>
     <string name="confirmation_replace_shop_title">Vai tā tagad ir cita vieta?</string>
     <string name="confirmation_replace_shop_message">Tādā gadījumā būs jāmaina arī darba laiks, kontaktinformācija utt.</string>
     <string name="confirmation_replace_shop_yes">Tagad cita vieta</string>
@@ -1216,7 +1216,7 @@ Dariet to arī otrai pusei, ja tāda ir.</string>
 Pārvietot tagad?</string>
     <string name="node_moved_not_far_enough">Pārvietot tālāk</string>
     <string name="node_moved_too_far">Pārvietots pārāk tālu. Apsveriet iespēju atstāt piezīmi</string>
-    <string name="node_moved">Pārvietots par %s</string>
+    <string name="node_moved">Pārvietots par %1$s</string>
     <string name="move_node_description">Velciet karti, lai novietotu elementu pareizajā vietā. Izmantojiet tuvināšanas funkciju un mēģiniet būt pēc iespējas precīzāki. Ņemiet vērā, ka jūsu attēlotā vieta varētu būt mazāk precīza, kā attēlots.</string>
     <string name="move_node_action_description">Jūs pārvietojāt mezglu</string>
     <string name="quest_cycleway_value_shoulder">nav, bet malu var izmantot velosipēdisti</string>
@@ -1314,7 +1314,7 @@ Turklāt daži pārklājumi ļauj pievienot jaunus datus parādītā krustpunkta
     <string name="label_log_older_than">Līdz</string>
     <string name="label_log_message_contains">Ziņojums satur</string>
     <string name="title_logs_filters">Filtrēt ziņojumus</string>
-    <string name="pref_title_quests_restore_hidden_summary">Slēpto uzdevumu skaits: %d</string>
+    <string name="pref_title_quests_restore_hidden_summary">Slēpto uzdevumu skaits: %1$d</string>
     <string name="link_every_door_description">Jaudīgs POI redaktors Android un iOS sistēmām</string>
     <string name="link_mapcomplete_description">Tematisku OSM karšu kolekcija, kur katra karte rāda un ļauj rediģēt viena veida objektus</string>
     <string name="link_forum_description">Vajadzīga palīdzība? Vai vēlaties izlasīt, kas notiek? Nāciet un čupojaties, tā ir rosīga kopiena visā pasaulē!</string>
@@ -1385,7 +1385,7 @@ Stāvs tiek uzskatīts par jumta stāvu, ja tā logi atrodas jumtā. Attiecīgi,
     <string name="quest_camp_power_supply_hint">Tās varētu būt kontaktligzdas tieši nometnes laukumos, kontaktligzdas servisa ēkā, kas ir pieejama viesiem, īpaša uzlādes stacija tālruņiem, klēpjdatoriem utt.</string>
     <string name="quest_barrier_opening_width_bollard">Kāda ir visplašākā sprauga, caur kuru šeit var iziet?</string>
     <string name="user_profile_all_time_title">Kopā</string>
-    <string name="user_statistics_country_rank2">Rangs valstī %s</string>
+    <string name="user_statistics_country_rank2">Rangs valstī %1$s</string>
     <string name="quest_leafType_tree_is_just_a_stump">Tas ir tikai celms</string>
     <string name="quest_board_name_title">Kāds ir šī informācijas dēļa virsraksts?</string>
     <string name="quest_crossing_hint">Neoficiāla taka, kas šķērso ceļu:</string>

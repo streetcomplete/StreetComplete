@@ -195,7 +195,7 @@
     <string name="quest_sport_roller_skating">اسکیت</string>
     <string name="quest_wheelchairAccess_limited_description_business">تا اندازه‌ای یعنی نهایتاً یک پله به ارتفاع قوزک پا برای دسترسی به مکان وجود دارد و همچنین بیشتر اتاق‌های داخلی دسترسی ویلچر دارند.</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">تا اندازه‌ای یعنی نهایتاً یک پله به ارتفاع قوزک پا برای دسترسی به آن وجود دارد.</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">در نام %s مخفف هست؟</string>
+    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">در نام %1$s مخفف هست؟</string>
     <string name="quest_recycling_type_title">این تأسیسات بازیافت از چه نوعی است؟</string>
     <string name="recycling_centre">مرکز بازیافت</string>
     <string name="overground_recycling_container">مخزن</string>
@@ -376,7 +376,7 @@
     <string name="quest_construction_footway_title">آیا این پیاده‌رو تکمیل است؟</string>
     <string name="quest_construction_generic_title">آیا این راه کامل شده است؟</string>
     <string name="quest_construction_building_title">آیا این ساختمان کامل شده است؟</string>
-    <string name="questList_disabled_in_country">در %s نشان داده نمی‌شود</string>
+    <string name="questList_disabled_in_country">در %1$s نشان داده نمی‌شود</string>
     <string name="quest_select_hint_most_specific">مشخص‌ترین مورد متناسب را انتخاب کنید:</string>
     <string name="quest_generic_item_confirmation">مطمئن هستید که مشخص‌تر از این نمی‌شود انتخاب کرد؟</string>
     <string name="privacy_html_third_party_quest_sources">&lt;p&gt; برای برخی از جُستارها، اطلاعات اضافی از شخص سوم بارگیری می‌شود.&lt;/p&gt;</string>
@@ -487,7 +487,7 @@
     <string name="quest_motorcycleParkingCoveredStatus_title">آیا این پارکینگ موتورسیکلت سرپوشیده است؟ (از باران محافظت می‌شود)</string>
     <string name="default_disabled_msg_maxspeed">این نوع جُستار به‌طور پیشفرض غیرفعال است زیرا معمولاً لازم است نه فقط بخش انتخاب‌شده را، بلکه سرتاسر خیابان را برای تابلوهای محدودیت سرعت بررسی کنید. این موضوع گاهی زمان فعالیت زیادی می‌طلبد آن هم برای حل‌کردن فقط یک جُستار.</string>
     <string name="pref_title_quests_restore_hidden">بازگرداندن جُستارهای پنهان</string>
-    <string name="on_level">در طبقه %s</string>
+    <string name="on_level">در طبقه %1$s</string>
     <string name="underground">زیر زمین</string>
     <string name="quest_sidewalk_value_yes">پیاده‌رو</string>
     <string name="quest_sidewalk_value_no">بدون پیاده‌رو</string>
@@ -580,8 +580,8 @@
     <string name="achievements_empty">شما هنوز دستاوردی ندارید</string>
     <string name="links_empty">شما هنوز پیوندی ندارید</string>
     <string name="quests_empty">شما پاسخ هیچ جُستاری را نداده‌اید</string>
-    <string name="unsynced_quests_description">%d جُستار ویرایش شده هنوز منتشر نشده است.</string>
-    <string name="unsynced_quests_not_logged_in_description">شما هنوز %d تغییر را منتشر نکرده‌اید. برای بارگذاری آنها باید وارد سامانه شوید.</string>
+    <string name="unsynced_quests_description">%1$d جُستار ویرایش شده هنوز منتشر نشده است.</string>
+    <string name="unsynced_quests_not_logged_in_description">شما هنوز %1$d تغییر را منتشر نکرده‌اید. برای بارگذاری آنها باید وارد سامانه شوید.</string>
     <string name="user_quests_title">پاسخ به جُستارها</string>
     <string name="user_achievements_title">دستاوردها</string>
     <string name="user_links_title">پیوند مجموعه</string>
@@ -633,27 +633,27 @@
     <string name="achievement_first_edit_title">اولین جُستار حل شد</string>
     <string name="achievement_first_edit_description">به اجتماع نقشه متن باز OSM خوش‌آمدید! در نمایه خود می‌توانید اطلاعات بیشتری را درباره هر گونه جُستاری که پاسخ داده‌اید مشاهده کنید.</string>
     <string name="achievement_surveyor_title">نقشه‌بردار</string>
-    <string name="achievement_surveyor_solved_X">شما به %d جُستار پاسخ داده‌اید! ادامه دهید تا دستاوردهای بیشتری حاوی پیوندهایی به OSM و سایر برنامه‌ها و پروژه‌های مرتبط با نقشه کسب نمایید!</string>
+    <string name="achievement_surveyor_solved_X">شما به %1$d جُستار پاسخ داده‌اید! ادامه دهید تا دستاوردهای بیشتری حاوی پیوندهایی به OSM و سایر برنامه‌ها و پروژه‌های مرتبط با نقشه کسب نمایید!</string>
     <string name="achievement_regular_title">منظم</string>
-    <string name="achievement_regular_description">شما %d روز با این برنامه به OSM یاری رسانده‌اید! مشارکت‌کنندگان فعال، ستون فقرات OSM هستند. سپاس از مشارکت و هم‌بخشی شما! ❤🙏</string>
+    <string name="achievement_regular_description">شما %1$d روز با این برنامه به OSM یاری رسانده‌اید! مشارکت‌کنندگان فعال، ستون فقرات OSM هستند. سپاس از مشارکت و هم‌بخشی شما! ❤🙏</string>
     <string name="achievement_bicyclist_title">دوچرخه‌سوار</string>
-    <string name="achievement_bicyclist_solved_X">شما %d جُستار را حل نموده‌اید که به دوچرخه‌سواران کمک می‌کند!</string>
+    <string name="achievement_bicyclist_solved_X">شما %1$d جُستار را حل نموده‌اید که به دوچرخه‌سواران کمک می‌کند!</string>
     <string name="achievement_wheelchair_title">جابجایی</string>
-    <string name="achievement_wheelchair_solved_X">شما %d جُستاری را حل نموده‌اید که کمک می‌کند کاربران صندلی چرخدار راحت‌تر در شهر رفت‌وآمد کنند!</string>
+    <string name="achievement_wheelchair_solved_X">شما %1$d جُستاری را حل نموده‌اید که کمک می‌کند کاربران صندلی چرخدار راحت‌تر در شهر رفت‌وآمد کنند!</string>
     <string name="achievement_postman_title">نامه‌رسان</string>
-    <string name="achievement_postman_solved_X">شما به مکان‌یابی %d آدرس کمک کردید!
+    <string name="achievement_postman_solved_X">شما به مکان‌یابی %1$d آدرس کمک کردید!
 این داده‌ها نه‌تنها برای نامه‌رسان‌ها بلکه برای هر سامانه ناوبری ضروری است.</string>
     <string name="achievement_building_title">بلندمرتبه</string>
-    <string name="achievement_building_solved_X">شما %d جُستار مربوط به ساختمان‌ها را حل کردید. دقت نمایید که این برنامه فقط پس از مشخص شدن نوع ساختمان، شماره آن را می‌پرسد.</string>
+    <string name="achievement_building_solved_X">شما %1$d جُستار مربوط به ساختمان‌ها را حل کردید. دقت نمایید که این برنامه فقط پس از مشخص شدن نوع ساختمان، شماره آن را می‌پرسد.</string>
     <string name="achievement_blind_title">حس ششم</string>
-    <string name="achievement_blind_solved_X">شما %d جُستار موردنیاز افراد کم‌بینا را پاسخ دادید.</string>
+    <string name="achievement_blind_solved_X">شما %1$d جُستار موردنیاز افراد کم‌بینا را پاسخ دادید.</string>
     <string name="achievement_pedestrian_title">دَوَندِه</string>
-    <string name="achievement_pedestrian_solved_X">شما %d جُستار مورد نیاز افراد پیاده را پاسخ دادید!</string>
+    <string name="achievement_pedestrian_solved_X">شما %1$d جُستار مورد نیاز افراد پیاده را پاسخ دادید!</string>
     <string name="achievement_veg_title">مهربان با حیوانات</string>
-    <string name="achievement_veg_solved_X">شما %d جُستار موردعلاقهٔ افراد با رژیم غذایی بدون گوشت را پاسخ دادید!</string>
+    <string name="achievement_veg_solved_X">شما %1$d جُستار موردعلاقهٔ افراد با رژیم غذایی بدون گوشت را پاسخ دادید!</string>
     <string name="achievement_car_title">در جاده</string>
-    <string name="achievement_car_solved_X">شما %d جُستاری که جزئیات خیابان را تکمیل می‌کند پاسخ داده و آن را در نقشه متن باز OSM ثبت کردید!</string>
-    <string name="unread_messages_message">شما %d پیام ناخوانده در صندوق پیام دارید</string>
+    <string name="achievement_car_solved_X">شما %1$d جُستاری که جزئیات خیابان را تکمیل می‌کند پاسخ داده و آن را در نقشه متن باز OSM ثبت کردید!</string>
+    <string name="unread_messages_message">شما %1$d پیام ناخوانده در صندوق پیام دارید</string>
     <string name="unread_messages_button">گشودن صندوق پیام</string>
     <string name="action_about2">درباره</string>
     <string name="map_btn_menu">منو</string>
@@ -663,11 +663,11 @@
     <string name="credits_projects_contributors_title">پروژه‌های ساخته شده برای StreetComplete</string>
     <string name="credits_main_contributors_title">مشارکت‌کنندگان اصلی</string>
     <string name="stats_are_syncing">آمار شما همچنان در حال همگام سازی است. بعداً این صفحه را بررسی کنید.</string>
-    <string name="user_statistics_country_wiki_link">نقشه‌برداری پویا %s</string>
+    <string name="user_statistics_country_wiki_link">نقشه‌برداری پویا %1$s</string>
     <string name="user_statistics_filter_by_country">براساس کشور</string>
     <string name="user_statistics_filter_by_quest_type">براساس نوع جُستار</string>
     <string name="user_profile_global_rank">رتبه‌بندی جهانی</string>
-    <string name="user_profile_local_rank">رتبه‌بندی در %s</string>
+    <string name="user_profile_local_rank">رتبه‌بندی در %1$s</string>
     <string name="user_profile_days_active">روزهای فعالیت</string>
     <string name="user_profile_achievement_levels">سطح پیشرفت</string>
     <string name="quest_address_street_no_named_streets">وابسته به خیابانی که نامگذاری نشده است</string>
@@ -691,8 +691,8 @@
     <string name="quest_board_type_map_description">اگر تابلو در مورد یک موضوع خاص است، لطفاً آن را مشخص کنید، صرف نظر از اینکه این نقشه نیز در آن قرار دارد یا خیر. برای مثال، تابلوی حمل‌ونقل عمومی می‌تواند نقشه مسیر اتوبوس را داشته باشد. اگر موضوع در میان پاسخ‌های موجود ذکر نشده است، لطفاً به جای آن یادداشت بگذارید.</string>
     <string name="quest_streetName_menuItem_international">بین‌المللی</string>
     <string name="quest_buildingType_terrace2">خانه‌های ردیفی</string>
-    <string name="at_housename">نام خانه %s</string>
-    <string name="at_housenumber">شماره خانه %s:</string>
+    <string name="at_housename">نام خانه %1$s</string>
+    <string name="at_housenumber">شماره خانه %1$s:</string>
     <string name="quest_openingHours_add_off_days">افزودن روزهای حراج</string>
     <string name="quest_openingHours_off_day">روز حراج</string>
     <string name="quest_openingHours_unspecified_range">مشخص نشده</string>
@@ -726,11 +726,11 @@
     <string name="quest_charging_station_operator_title">متصدی این ایستگاه شارژ کیست؟</string>
     <string name="link_indoorequal_description">نقشه‌های داخلی مراکز خرید، ایستگاه‌های راه‌آهن و غیره را بیابید.</string>
     <string name="achievement_rare_title">شکارچی گنج</string>
-    <string name="achievement_rare_solved_X">شما %d جُستار را یافتید و پاسخ دادید که هنوز ناتمام بوده‌اند، تبریک می گویم!</string>
+    <string name="achievement_rare_solved_X">شما %1$d جُستار را یافتید و پاسخ دادید که هنوز ناتمام بوده‌اند، تبریک می گویم!</string>
     <string name="achievement_citizen_title">رتبه عالی</string>
-    <string name="achievement_citizen_solved_X">شما %d جُستار مفید در زندگی روزمره این شهر را پاسخ دادید!</string>
+    <string name="achievement_citizen_solved_X">شما %1$d جُستار مفید در زندگی روزمره این شهر را پاسخ دادید!</string>
     <string name="achievement_outdoors_title">فضای پیرامون</string>
-    <string name="achievement_outdoors_solved_X">شما %d جُستار مفید برای گردشگران را پاسخ دادید!</string>
+    <string name="achievement_outdoors_solved_X">شما %1$d جُستار مفید برای گردشگران را پاسخ دادید!</string>
     <string name="quest_pedestrian_crossing_island">آیا این گذرگاهِ پیاده، جزیره دارد؟</string>
     <string name="quest_generic_answer_noSign">اینجا تابلو ندارد</string>
     <string name="quest_steps_ramp_separate_wheelchair">آیا سطح شیب‌دار صندلی چرخدار به صورت راه جداگانه روی نقشه نمایش داده می شود؟</string>
@@ -754,7 +754,7 @@
 </string>
     <string name="quest_address_answer_no_housenumber_message2b">آیا این درست است؟</string>
     <string name="quest_maxheight_below_bridge_title">محدودیت ارتفاع زیر پل چقدر است؟</string>
-    <string name="quest_maxheight_split_way_hint">اگر برای کل راه اعمال نمی‌شود، پاسخ "%s" را در نظر بگیرید.</string>
+    <string name="quest_maxheight_split_way_hint">اگر برای کل راه اعمال نمی‌شود، پاسخ "%1$s" را در نظر بگیرید.</string>
     <string name="quest_tactile_paving_kerb_title">آیا اینجا جدول در کناره مسیر وجود دارد؟</string>
     <string name="quest_kerb_height_title">ارتفاع این جدول چقدر است؟</string>
     <string name="quest_kerb_height_flush">هم‌سطح جاده</string>
@@ -812,9 +812,9 @@
     <string name="hid_action_description">شما آن را پنهان کردید</string>
     <string name="split_way_action_description">راه را تقسیم کردید</string>
     <string name="deleted_poi_action_description">شما آن را حذف کردید</string>
-    <string name="added_tag_action_title">%s اضافه شد</string>
-    <string name="removed_tag_action_title">%s حذف شد</string>
-    <string name="changed_tag_action_title">به %s به‌روزرسانی شد</string>
+    <string name="added_tag_action_title">%1$s اضافه شد</string>
+    <string name="removed_tag_action_title">%1$s حذف شد</string>
+    <string name="changed_tag_action_title">به %1$s به‌روزرسانی شد</string>
     <string name="pref_title_delete_cache">حافظه پنهان را حذف کنید</string>
     <string name="pref_title_delete_cache_summary">اگر فکر می‌کنید برخی از داده‌ها قدیمی شده</string>
     <string name="delete_confirmation">حذف</string>
@@ -866,7 +866,7 @@
     <string name="about_title_faq">پرسش</string>
     <string name="quest_buildingLevels_title2">این ساختمان چند طبقه از روی سطح زمین دارد؟</string>
     <string name="quest_buildingLevels_title_buildingPart2">این بخش از ساختمان چند طبقه روی زمین دارد؟</string>
-    <string name="pref_subtitle_quests_preset_name">پیش‌تنظیم: %s</string>
+    <string name="pref_subtitle_quests_preset_name">پیش‌تنظیم: %1$s</string>
     <string name="default_disabled_msg_roofShape">این نوع جُستار به طور پیشفرض غیرفعال است زیرا شکل سقف، معمولاً از خیابان به راحتی دیده نمی‌شود. همچنین این نوع جُستار بسیار وقت‌گیر است؛ در بیشتر موارد ترسیم آن در خانه و از روی تصاویر هوایی آسان‌تر و کارآمدتر است.</string>
     <string name="quest_religion_animist">متحرک</string>
     <string name="quest_construction_steps_title">آیا این مراحل تکمیل شده است؟</string>
@@ -891,7 +891,7 @@
     <string name="quest_presets_preset_name">نام پیش‌تنظیم</string>
     <string name="quest_presets_default_name">پیشفرض</string>
     <string name="quest_presets_selected">انتخابی</string>
-    <string name="quest_presets_delete_message">پیش‌تنظیم "%s" حذف شود؟ انتخاب و ترتیب جُستارهای آن به طور برگشت ناپذیری از بین می‌رود.</string>
+    <string name="quest_presets_delete_message">پیش‌تنظیم "%1$s" حذف شود؟ انتخاب و ترتیب جُستارهای آن به طور برگشت ناپذیری از بین می‌رود.</string>
     <string name="notification_syncing">همگام سازی داده‌ها…</string>
     <string name="notification_channel_sync">همگام سازی داده</string>
     <string name="quest_board_type_sport">ورزش، تمرینات</string>
@@ -929,7 +929,7 @@
     <string name="quest_barrier_bicycle_type_double">مانع - مانع در هر طرف</string>
     <string name="quest_barrier_bicycle_type_multiple">مانع - بیش از دو مانع</string>
     <string name="language_default">پیش‌فرض سیستم</string>
-    <string name="on_floor">در طبقه %s:</string>
+    <string name="on_floor">در طبقه %1$s:</string>
     <string name="select_street_parking_orientation">انتخاب جهت در راستای مسیر:</string>
     <string name="select_street_parking_position">انتخاب موقعیت:</string>
     <string name="select_street_parking_no">آیا تابلو یا علامت جاده‌ای در اینجا وجود دارد؟ </string>
@@ -995,7 +995,7 @@
     <string name="quest_smoothness_hint">🚲، 🚗، 🚙، … مشخص می‌کند سطح برای کدام وسایل نقلیه باید مناسب باشد. آنچه اهمیت دارد، تصویر کلی است تا مشکلات تک‌و‌توک.</string>
     <string name="link_osmhydrant_description">جستجو، افزودن و ویرایش ایستگاه‌های آتش‌نشانی و شیر آتش‌نشانی</string>
     <string name="achievement_lifesaver_title">نجات‌دهنده</string>
-    <string name="achievement_lifesaver_solved_X">شما %d جُستاری را که به خدمات اضطراری و اولین پاسخ دهندگان کمک می کند، حل نمودید!</string>
+    <string name="achievement_lifesaver_solved_X">شما %1$d جُستاری را که به خدمات اضطراری و اولین پاسخ دهندگان کمک می کند، حل نمودید!</string>
     <string name="quest_fuelSelfService_title">آیا خود شخص می‌تواند در این جایگاه سوخت، نازل را بردارد؟</string>
     <string name="default_disabled_msg_difficult_and_time_consuming">این نوع جُستار به طور پیشفرض غیرفعال است زیرا یا بسیار وقت‌گیر است یا انتخاب درست اغلب دشوار است. فقط در صورتی این نوع جُستار را فعال کنید که واقعاً دنبال اضافه‌کردن این نوع داده باشید.</string>
     <string name="quest_smoothness_description_good_compacted_gravel">شن و ماسه سست و سخت فشرده شده و بسیار کم</string>
@@ -1158,7 +1158,7 @@
     <string name="quest_camp_type_backcountry">چادر زنی در خارج شهر (بدون امکانات)</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">به نظر می‌رسد این قطر درست نباشد، معمولاً اندازهٔ آن بین %1$d و %2$d است.</string>
     <string name="quest_recycling_type_pet">فقط حیوان‌خانگی</string>
-    <string name="street_parking_street_width">پهنای‌ خیابان: %s</string>
+    <string name="street_parking_street_width">پهنای‌ خیابان: %1$s</string>
     <string name="overlay_street_parking">پارکینگ خیابانی</string>
     <string name="link_ohsomehex_description">داده‌های OSM را در محتوایی از تصاویر بزرگ گرفته تا مناظر منحصر بفرد در مکان و زمان جستجو نمایید.</string>
     <string name="link_opencampingmap_description">نقشه اُردوگاه‌ها</string>
@@ -1205,7 +1205,7 @@
     <string name="user_profile_current_week_title">در 7 روز گذشته</string>
     <string name="user_profile_dates_mapped">روزهایی که اخیراً نقشه‌‌کشی کرده‌اید</string>
     <string name="quest_cycleway_value_advisory_lane">خط دوچرخه پیشنهادی</string>
-    <string name="urlconfig_scan_qr_code_again2">بعد از نصب برنامه، کد QR را اسکن کنید یا روی &lt;a href="%s"&gt;این لینک&lt;/a&gt; کلیک کنید تا پیش‌تنظیم اعمال گردد.</string>
+    <string name="urlconfig_scan_qr_code_again2">بعد از نصب برنامه، کد QR را اسکن کنید یا روی &lt;a href="%1$s"&gt;این لینک&lt;/a&gt; کلیک کنید تا پیش‌تنظیم اعمال گردد.</string>
     <string name="confirmation_replace_shop_title">حالا مکان دیگری است؟</string>
     <string name="confirmation_replace_shop_message">در این صورت، ساعات کار، اطلاعات تماس و غیره هم تغییر می‌کند.</string>
     <string name="confirmation_replace_shop_yes">الان مکان دیگری است</string>
@@ -1215,7 +1215,7 @@
 اکنون جابجا کنم؟</string>
     <string name="node_moved_not_far_enough">لطفا آن را بیشتر حرکت دهید</string>
     <string name="node_moved_too_far">خیلی دور رفت. یک یادداشت بگذارید</string>
-    <string name="node_moved">توسط %s منتقل شد</string>
+    <string name="node_moved">توسط %1$s منتقل شد</string>
     <string name="move_node_description">نقشه را بکشید تا نشانه در مکان صحیح قرار گیرد. از بزرگنمایی استفاده کنید و سعی کنید تا حد امکان دقیق باشید. لطفاً توجه داشته باشید که مکان نمایش داده شده شما ممکن است دقیق تر از چیزی باشد که نشان داده شده است.</string>
     <string name="move_node_action_description">شما گره را جابجا کردید</string>
     <string name="quest_cycleway_value_shoulder">هیچ‌کدام، ولی شانه مسیر برای دوچرخه‌سواران قابل استفاده است</string>
@@ -1313,7 +1313,7 @@
     <string name="label_log_older_than">به</string>
     <string name="label_log_message_contains">پیام شامل</string>
     <string name="title_logs_filters">پالایش پیام‌ها</string>
-    <string name="pref_title_quests_restore_hidden_summary">تعداد مأموریت‌های پنهان: %d</string>
+    <string name="pref_title_quests_restore_hidden_summary">تعداد مأموریت‌های پنهان: %1$d</string>
     <string name="link_every_door_description">ویرایشگر قدرتمند POI برای اندروید و iOS</string>
     <string name="link_mapcomplete_description">مجموعه‌ای از نقشه‌های OSM موضوعی که هر کدام نشان می‌دهند و به شما امکان می‌دهند یک نوع ویژگی را ویرایش کنید</string>
     <string name="link_forum_description">کمک خواستن؟ می‌خواهید بخوانید چه خبر است؟ بیایید و با هم ترکیب شوید، با فعالیت‌های جوامع در سراسر جهان!</string>
@@ -1385,7 +1385,7 @@
     <string name="quest_camp_power_supply_hint">این می تواند پریزهایی مستقیماً در اردوگاه، پریزهایی در یک ساختمان خدماتی قابل دسترسی برای مهمانان، یک ایستگاه شارژ اختصاصی برای تلفن، لپ تاپ و غیره باشد.</string>
     <string name="quest_barrier_opening_width_bollard">عریض ترین شکافی که در اینجا می توان از آن عبور کرد چیست؟</string>
     <string name="user_profile_all_time_title">به طور کلی</string>
-    <string name="user_statistics_country_rank2">رتبه‌بندی در %s</string>
+    <string name="user_statistics_country_rank2">رتبه‌بندی در %1$s</string>
     <string name="quest_leafType_tree_is_just_a_stump">فقط یک کُنده درخت است</string>
     <string name="quest_board_name_title">عنوان این تابلوی اطلاعات چیست؟</string>
     <string name="quest_crossing_hint">یک مسیر غیررسمی که از جاده عبور می‌کند:</string>

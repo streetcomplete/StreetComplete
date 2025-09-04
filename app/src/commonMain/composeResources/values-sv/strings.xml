@@ -196,7 +196,7 @@ Om det inte finns några skyltar längs hela vägen som gäller för den markera
     <string name="quest_sport_roller_skating">Rullskridskor</string>
     <string name="quest_wheelchairAccess_limited_description_business">Delvis innebär att det inte krävs mer än ett enda ankelhögt trappsteg för att komma åt det och att de flesta rum inuti är rullstolsanpassade.</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">Delvis innebär att det inte krävs mer än ett enda ankelhögt trappsteg för att komma åt det.</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">Är det en förkortning i namnet %s?</string>
+    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">Är det en förkortning i namnet %1$s?</string>
     <string name="quest_recycling_type_title">Vilken typ av återvinningsstation är det här?</string>
     <string name="recycling_centre">Återvinningscentral</string>
     <string name="overground_recycling_container">Godsbehållare</string>
@@ -353,7 +353,7 @@ Delvis betyder att rullstolsanvändare kan komma in och använda toaletten men a
     <string name="quest_religion_for_place_of_worship_answer_multi">Alla religioner kan utövas</string>
     <string name="quest_religion_sikh">Sikhism</string>
     <string name="quest_religion_jain">Jainism</string>
-    <string name="quest_religion_bahai">Bahá\'í</string>
+    <string name="quest_religion_bahai">Bahá'í</string>
     <string name="quest_religion_caodaist">Cao Ðài</string>
     <string name="quest_religion_chinese_folk">Kinesisk folkreligion</string>
     <string name="quest_religion_for_wayside_shrine_title">Vilken religion utövas vid den här helgedomen?</string>
@@ -377,7 +377,7 @@ Delvis betyder att rullstolsanvändare kan komma in och använda toaletten men a
     <string name="quest_construction_footway_title">Är den här gångvägen färdigställd?</string>
     <string name="quest_construction_generic_title">Är den här vägen färdigställd?</string>
     <string name="quest_construction_building_title">Är den här byggnaden färdigställd?</string>
-    <string name="questList_disabled_in_country">Visas aldrig i %s</string>
+    <string name="questList_disabled_in_country">Visas aldrig i %1$s</string>
     <string name="quest_select_hint_most_specific">Välj det mest detaljerade svaret som passar:</string>
     <string name="quest_generic_item_confirmation">Är du säker på att du inte kan svara mer specifikt?</string>
     <string name="privacy_html_third_party_quest_sources">&lt;p&gt;För vissa uppdrag kommer ytterligare data från tredje part att hämtas.&lt;/p&gt;</string>
@@ -488,7 +488,7 @@ Delvis betyder att rullstolsanvändare kan komma in och använda toaletten men a
     <string name="quest_motorcycleParkingCoveredStatus_title">Har denna motorcykelparkering tak (skyddad från regn)?</string>
     <string name="default_disabled_msg_maxspeed">Uppdragstypen är inaktiverad som standard eftersom du vanligtvis måste kontrollera hela gatan efter hastighetsbegränsningsskyltar, inte bara den markerade delen. Detta kan ibland vara ganska mycket jobb bara för att lösa ett enda uppdrag.</string>
     <string name="pref_title_quests_restore_hidden">Återställ dolda uppdrag</string>
-    <string name="on_level">på våningsplan %s</string>
+    <string name="on_level">på våningsplan %1$s</string>
     <string name="underground">underjordisk</string>
     <string name="quest_sidewalk_value_yes">trottoar</string>
     <string name="quest_sidewalk_value_no">ingen trottoar</string>
@@ -582,8 +582,8 @@ Slutligen, kom ihåg att ta det säkra före det osäkra: var medveten om din om
     <string name="achievements_empty">Du har inga prestationer ännu</string>
     <string name="links_empty">Du har inga länkar ännu</string>
     <string name="quests_empty">Du har inte publicerat några redigeringar ännu</string>
-    <string name="unsynced_quests_description">plus %d ännu inte publicerade ändringar.</string>
-    <string name="unsynced_quests_not_logged_in_description">Du har %d ännu inte publicerade ändringar. Du måste logga in för att få dem skickade.</string>
+    <string name="unsynced_quests_description">plus %1$d ännu inte publicerade ändringar.</string>
+    <string name="unsynced_quests_not_logged_in_description">Du har %1$d ännu inte publicerade ändringar. Du måste logga in för att få dem skickade.</string>
     <string name="user_quests_title">Redigeringar</string>
     <string name="user_achievements_title">Prestationer</string>
     <string name="user_links_title">Länksamling</string>
@@ -635,28 +635,28 @@ Slutligen, kom ihåg att ta det säkra före det osäkra: var medveten om din om
     <string name="achievement_first_edit_title">Första uppdraget löst</string>
     <string name="achievement_first_edit_description">Välkommen till OpenStreetMap-gemenskapen! På din profilskärm kan du se mer information om varje uppdragstyp som du har löst.</string>
     <string name="achievement_surveyor_title">Lantmätare</string>
-    <string name="achievement_surveyor_solved_X">Du löste %d uppdrag! Fortsätt att låsa upp fler prestationer som innehåller länkar till OSM och andra kartrelaterade appar och projekt!</string>
+    <string name="achievement_surveyor_solved_X">Du löste %1$d uppdrag! Fortsätt att låsa upp fler prestationer som innehåller länkar till OSM och andra kartrelaterade appar och projekt!</string>
     <string name="achievement_regular_title">Stammis</string>
-    <string name="achievement_regular_description">Du bidrog %d dagar till OSM med denna app! Regelbundna bidragsgivare är ryggraden i OSM, tack för ditt engagemang! ❤</string>
+    <string name="achievement_regular_description">Du bidrog %1$d dagar till OSM med denna app! Regelbundna bidragsgivare är ryggraden i OSM, tack för ditt engagemang! ❤</string>
     <string name="achievement_bicyclist_title">Cyklist</string>
-    <string name="achievement_bicyclist_solved_X">Du löste %d uppdrag som hjälper cyklister!</string>
+    <string name="achievement_bicyclist_solved_X">Du löste %1$d uppdrag som hjälper cyklister!</string>
     <string name="achievement_wheelchair_title">Rörlighet</string>
-    <string name="achievement_wheelchair_solved_X">Du löste %d uppdrag som hjälper rullstolsanvändare ta sig runt i staden!</string>
+    <string name="achievement_wheelchair_solved_X">Du löste %1$d uppdrag som hjälper rullstolsanvändare ta sig runt i staden!</string>
     <string name="achievement_postman_title">Brevbärare</string>
-    <string name="achievement_postman_solved_X">Du hjälpte till att hitta %d adresser och andra postfaciliteter!
+    <string name="achievement_postman_solved_X">Du hjälpte till att hitta %1$d adresser och andra postfaciliteter!
 Dessa uppgifter är viktiga inte bara för brevbäraren utan också för alla navigationssystem.</string>
     <string name="achievement_building_title">Höghus</string>
-    <string name="achievement_building_solved_X">Du löste %d byggnadsrelaterade uppdrag.
+    <string name="achievement_building_solved_X">Du löste %1$d byggnadsrelaterade uppdrag.
 Observera att appen ber om husnummer för en byggnad först efter att dess typ har fastställts.</string>
     <string name="achievement_blind_title">Sjätte sinne</string>
-    <string name="achievement_blind_solved_X">Du löste %d uppdrag som är intressanta för synskadade.</string>
+    <string name="achievement_blind_solved_X">Du löste %1$d uppdrag som är intressanta för synskadade.</string>
     <string name="achievement_pedestrian_title">Löpare</string>
-    <string name="achievement_pedestrian_solved_X">Du löste %d uppdrag som är intressanta för personer till fots!</string>
+    <string name="achievement_pedestrian_solved_X">Du löste %1$d uppdrag som är intressanta för personer till fots!</string>
     <string name="achievement_veg_title">Djurvän</string>
-    <string name="achievement_veg_solved_X">Du löste %d uppdrag som är intressanta för personer som lever på en köttfri diet!</string>
+    <string name="achievement_veg_solved_X">Du löste %1$d uppdrag som är intressanta för personer som lever på en köttfri diet!</string>
     <string name="achievement_car_title">På god väg</string>
-    <string name="achievement_car_solved_X">Du löste %d uppdrag som förbättrar detaljer på gator och vägar och du är verkligen på god väg(!) till toppen!</string>
-    <string name="unread_messages_message">Du har %d olästa meddelanden i inkorgen</string>
+    <string name="achievement_car_solved_X">Du löste %1$d uppdrag som förbättrar detaljer på gator och vägar och du är verkligen på god väg(!) till toppen!</string>
+    <string name="unread_messages_message">Du har %1$d olästa meddelanden i inkorgen</string>
     <string name="unread_messages_button">Öppna inkorgen</string>
     <string name="action_about2">Om</string>
     <string name="map_btn_menu">Meny</string>
@@ -666,13 +666,13 @@ Observera att appen ber om husnummer för en byggnad först efter att dess typ h
     <string name="credits_projects_contributors_title">Projekt som gjorts för StreetComplete</string>
     <string name="credits_main_contributors_title">Huvudsakliga bidragsgivare</string>
     <string name="stats_are_syncing">Din statistik synkroniseras fortfarande. Kontrollera denna skärm senare.</string>
-    <string name="user_statistics_country_wiki_link">Kartläggningsportal %s</string>
+    <string name="user_statistics_country_wiki_link">Kartläggningsportal %1$s</string>
     <string name="user_statistics_filter_by_country">efter land</string>
     <string name="user_statistics_filter_by_quest_type">efter uppdragstyp</string>
     <string name="user_profile_global_rank">Global
 rang</string>
     <string name="user_profile_local_rank">Rang i
-%s</string>
+%1$s</string>
     <string name="user_profile_days_active">Dagar
 aktiv</string>
     <string name="user_profile_achievement_levels">Prestations-
@@ -698,8 +698,8 @@ nivåer</string>
     <string name="quest_board_type_map_description">Om tavlan handlar om ett visst ämne, ange det, oavsett om det också innehåller en karta. Till exempel kan en kollektivtrafikstavla ha en bussruttkarta. Om ämnet inte är listat bland de tillgängliga svaren, överväg att lämna en anteckning istället.</string>
     <string name="quest_streetName_menuItem_international">internationell</string>
     <string name="quest_buildingType_terrace2">Radhus</string>
-    <string name="at_housename">husnamn %s</string>
-    <string name="at_housenumber">husnummer %s</string>
+    <string name="at_housename">husnamn %1$s</string>
+    <string name="at_housenumber">husnummer %1$s</string>
     <string name="quest_openingHours_add_off_days">Lägg till lediga dagar</string>
     <string name="quest_openingHours_off_day">Ledig dag</string>
     <string name="quest_openingHours_unspecified_range">Inte angivet</string>
@@ -733,11 +733,11 @@ nivåer</string>
     <string name="quest_charging_station_operator_title">Vem är operatören för denna laddstation?</string>
     <string name="link_indoorequal_description">Upptäck inomhuskartor över köpcentrum, järnvägsstationer, osv.</string>
     <string name="achievement_rare_title">Skattjakt</string>
-    <string name="achievement_rare_solved_X">Du hittade och löste %d uppdrag som verkligen genomförs sällan, grattis!</string>
+    <string name="achievement_rare_solved_X">Du hittade och löste %1$d uppdrag som verkligen genomförs sällan, grattis!</string>
     <string name="achievement_citizen_title">Medborgare</string>
-    <string name="achievement_citizen_solved_X">Du löste %d uppdrag som är användbara i vardagslivet i stan!</string>
+    <string name="achievement_citizen_solved_X">Du löste %1$d uppdrag som är användbara i vardagslivet i stan!</string>
     <string name="achievement_outdoors_title">Friluftsliv</string>
-    <string name="achievement_outdoors_solved_X">Du löste %d uppdrag som är användbara för friluftsmänniskor!</string>
+    <string name="achievement_outdoors_solved_X">Du löste %1$d uppdrag som är användbara för friluftsmänniskor!</string>
     <string name="quest_pedestrian_crossing_island">Har detta övergångsställe en refug?</string>
     <string name="quest_generic_answer_noSign">Det finns ingen skylt</string>
     <string name="quest_steps_ramp_separate_wheelchair">Visas rullstolsrampen som en separat väg på kartan?</string>
@@ -761,7 +761,7 @@ nivåer</string>
     <string name="quest_address_answer_no_housenumber_message2b">Är detta rätt?</string>
     <string name="quest_maxheight_below_bridge_title">Vad är maxhöjden under bron?</string>
     <string name="quest_maxheight_split_way_hint">Denna fråga ställs också för vägar som går under broar, tak, rör etc.
-Om det inte gäller hela vägen, överväg att svara "%s".</string>
+Om det inte gäller hela vägen, överväg att svara "%1$s".</string>
     <string name="quest_tactile_paving_kerb_title">Finns det taktil beläggning på denna trottoarkant här?</string>
     <string name="quest_kerb_height_title">Vad är höjden på denna trottoarkant?</string>
     <string name="quest_kerb_height_flush">Samma nivå som vägytan</string>
@@ -820,9 +820,9 @@ Var och en i gruppen kommer då att se olika uppdrag.</string>
     <string name="hid_action_description">Du gömde den</string>
     <string name="split_way_action_description">Du delade vägen</string>
     <string name="deleted_poi_action_description">Du tog bort den</string>
-    <string name="added_tag_action_title">Lade till %s</string>
-    <string name="removed_tag_action_title">Tog bort %s</string>
-    <string name="changed_tag_action_title">Uppdaterade till %s</string>
+    <string name="added_tag_action_title">Lade till %1$s</string>
+    <string name="removed_tag_action_title">Tog bort %1$s</string>
+    <string name="changed_tag_action_title">Uppdaterade till %1$s</string>
     <string name="pref_title_delete_cache">Ta bort cache</string>
     <string name="pref_title_delete_cache_summary">Om du tror att datat är föråldrat</string>
     <string name="delete_confirmation">Ta bort</string>
@@ -872,7 +872,7 @@ Kartdata uppdateras efter %1$s dagar och oanvänd data raderas automatiskt efter
     <string name="about_title_faq">FAQ</string>
     <string name="quest_buildingLevels_title2">Hur många våningar ovanför källaren har den här byggnaden?</string>
     <string name="quest_buildingLevels_title_buildingPart2">Hur många våningar ovanför källaren har den här byggnadsdelen?</string>
-    <string name="pref_subtitle_quests_preset_name">Grupp: %s</string>
+    <string name="pref_subtitle_quests_preset_name">Grupp: %1$s</string>
     <string name="default_disabled_msg_roofShape">Uppdragstypen är inaktiverad som standard eftersom det kan vara svårt att se takformen. Uppdraget är också ganska tidskrävande och det kan vara enklare att kartlägga detta från flygfoton hemma vid datorn.</string>
     <string name="quest_religion_animist">Animism</string>
     <string name="quest_construction_steps_title">Är trappan färdigställd?</string>
@@ -897,7 +897,7 @@ Kartdata uppdateras efter %1$s dagar och oanvänd data raderas automatiskt efter
     <string name="quest_presets_preset_name">Namn på grupp</string>
     <string name="quest_presets_default_name">Standard</string>
     <string name="quest_presets_selected">Markerad</string>
-    <string name="quest_presets_delete_message">Ta bort gruppen "%s"? Uppdragsvalet och -ordningen kommer att gå förlorad för evigt.</string>
+    <string name="quest_presets_delete_message">Ta bort gruppen "%1$s"? Uppdragsvalet och -ordningen kommer att gå förlorad för evigt.</string>
     <string name="notification_syncing">Synkroniserar data…</string>
     <string name="notification_channel_sync">Synkronisera data</string>
     <string name="quest_board_type_sport">Sport, Övning</string>
@@ -935,7 +935,7 @@ Kartdata uppdateras efter %1$s dagar och oanvänd data raderas automatiskt efter
     <string name="quest_barrier_bicycle_type_double">Labyrintfålla - en grind på varje sida</string>
     <string name="quest_barrier_bicycle_type_multiple">Labyrintfålla - tre eller fler grindar</string>
     <string name="language_default">Systemstandard</string>
-    <string name="on_floor">på våning %s:</string>
+    <string name="on_floor">på våning %1$s:</string>
     <string name="select_street_parking_orientation">Välj orientering mot väg:</string>
     <string name="select_street_parking_position">Välj position:</string>
     <string name="select_street_parking_no">Någon skylt eller vägmarkering här?</string>
@@ -1001,7 +1001,7 @@ Du kan också lämna en anteckning (med bild).</string>
     <string name="quest_smoothness_hint">🚲, 🚗, 🚙, … ange för vilka fordon ytan bör vara användbar. Det viktiga är helhetsbilden, inte enskilda faror.</string>
     <string name="link_osmhydrant_description">Hitta, lägg till och redigera brandstationer och brandposter</string>
     <string name="achievement_lifesaver_title">Livräddare</string>
-    <string name="achievement_lifesaver_solved_X">Du löste %d uppdrag som hjälper räddningstjänsten och utryckningspersonal!</string>
+    <string name="achievement_lifesaver_solved_X">Du löste %1$d uppdrag som hjälper räddningstjänsten och utryckningspersonal!</string>
     <string name="quest_fuelSelfService_title">Får du tanka på egen hand här?</string>
     <string name="default_disabled_msg_difficult_and_time_consuming">Uppdragstypen är inaktiverad som standard eftersom det antingen är tidskrävande eller svårt att göra rätt val. Du bör bara aktivera uppdragstypen om du är riktigt engagerad i att lägga till denna typ av data.</string>
     <string name="quest_smoothness_description_good_compacted_gravel">Hårt packat, väldigt lite löst grus eller sand</string>
@@ -1164,7 +1164,7 @@ Gör detta för varje sida som finns.</string>
     <string name="quest_camp_type_backcountry">Vildmarkscamping (inga faciliteter)</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">Diametern verkar osannolik, den brukar vanligtvis vara mellan %1$d och %2$d.</string>
     <string name="quest_recycling_type_pet">Endast PET</string>
-    <string name="street_parking_street_width">Gatubredd: %s</string>
+    <string name="street_parking_street_width">Gatubredd: %1$s</string>
     <string name="overlay_street_parking">Gatuparkering</string>
     <string name="link_ohsomehex_description">Utforska OSM-data från stort till smått och genom tid och rum</string>
     <string name="link_opencampingmap_description">En karta som visar campingplatser</string>
@@ -1211,7 +1211,7 @@ Gör detta för varje sida som finns.</string>
     <string name="user_profile_current_week_title">Senaste veckan</string>
     <string name="user_profile_dates_mapped">Dagar när du har karterat</string>
     <string name="quest_cycleway_value_advisory_lane">rekommenderat cykelfält</string>
-    <string name="urlconfig_scan_qr_code_again2">Efter att ha installerat appen, skanna QR-koden igen och tryck på &lt;a href="%s"&gt;den här länken&lt;/a&gt; för att aktivera gruppen.</string>
+    <string name="urlconfig_scan_qr_code_again2">Efter att ha installerat appen, skanna QR-koden igen och tryck på &lt;a href="%1$s"&gt;den här länken&lt;/a&gt; för att aktivera gruppen.</string>
     <string name="confirmation_replace_shop_title">Är det ett annat ställe nu?</string>
     <string name="confirmation_replace_shop_message">I så fall kommer öppettiderna, kontaktinformation, m.m. att ha ändrats med.</string>
     <string name="confirmation_replace_shop_yes">Annat ställe nu</string>
@@ -1221,7 +1221,7 @@ Gör detta för varje sida som finns.</string>
 Flytta den?</string>
     <string name="node_moved_not_far_enough">Vänligen flytta den längre</string>
     <string name="node_moved_too_far">För lång flytt. Lämna en anteckning istället</string>
-    <string name="node_moved">Flyttad av %s</string>
+    <string name="node_moved">Flyttad av %1$s</string>
     <string name="move_node_description">Dra i kartan för att placera i rätt läge. Använd zoomfunktionen och var så noggrann du kan. Observa att det visade läget kan vara mindre exakt än vad som visas.</string>
     <string name="move_node_action_description">Du flyttade på punkten</string>
     <string name="quest_cycleway_value_shoulder">ingen, men vägrenen kan användas av cyklister</string>
@@ -1319,7 +1319,7 @@ Vissa extralager låter dig dessutom lägga till ny data på hårkorsets positio
     <string name="label_log_older_than">Till</string>
     <string name="label_log_message_contains">Meddelandet innehåller</string>
     <string name="title_logs_filters">Filtrera meddelanden</string>
-    <string name="pref_title_quests_restore_hidden_summary">Antal gömda uppdrag: %d</string>
+    <string name="pref_title_quests_restore_hidden_summary">Antal gömda uppdrag: %1$d</string>
     <string name="link_every_door_description">Kraftfull intressepunktsredigerare för Android och iOS</string>
     <string name="link_mapcomplete_description">Samling av OSM-kartor som var och en visar och låter dig redigera objekt på ett tema</string>
     <string name="link_forum_description">Behöver du hjälp? Vill du hänga med i vad som händer i gemenskapen? Kom till forumet och möt folk från hela världen!</string>
@@ -1390,7 +1390,7 @@ En våning räknas som en takvåning när dess fönster finns i taket. Det följ
     <string name="quest_camp_power_supply_hint">Det kan vara eluttag vid campingplatsen, i en servicebyggnad i närheten, en laddstation, osv.</string>
     <string name="quest_barrier_opening_width_bollard">Hur bred är den största öppningen här?</string>
     <string name="user_profile_all_time_title">Totalt</string>
-    <string name="user_statistics_country_rank2">Rang i %s</string>
+    <string name="user_statistics_country_rank2">Rang i %1$s</string>
     <string name="quest_leafType_tree_is_just_a_stump">Det är bara en trästubbe</string>
     <string name="quest_board_name_title">Vad har den här informationstavlan för rubrik?</string>
     <string name="quest_crossing_hint">En informell stig som korsar en väg:</string>

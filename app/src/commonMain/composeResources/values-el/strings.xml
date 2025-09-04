@@ -33,7 +33,7 @@
     <string name="quest_openingHours_chooseWeekdaysTitle">Επίλεξε μέρες εβδομάδας</string>
     <string name="quest_openingHours_24_7_confirmation">Με άλλα λόγια, είναι ανοιχτά κάθε ώρα, κάθε μέρα;</string>
     <string name="quest_noteDiscussion_title">Εχεις να προσθέσεις κάτι σε αυτή την σημείωση;</string>
-    <string name="quest_noteDiscussion_no">Όχι, κρύψ\'το</string>
+    <string name="quest_noteDiscussion_no">Όχι, κρύψ'το</string>
     <string name="quest_noteDiscussion_anonymous">Ανώνυμα</string>
     <string name="confirmation_discard_title">Απόρριψη εισαγωγής;</string>
     <string name="confirmation_discard_positive">Απόρριψη</string>
@@ -43,7 +43,7 @@
     <string name="download_error">Σφάλμα κατά την σάρωση για αποστολές</string>
     <string name="upload_error">Σφάλμα κατά την μεταφόρτωση των απαντήσεων</string>
     <string name="download_area_too_big">Παρακαλούμε μεγεθύνετε επιπλέον</string>
-    <string name="confirmation_cancel_prev_download_title">Σταμάτημα της τρέχουσας σάρωσης και αντ\' αυτού σάρωση εδώ;</string>
+    <string name="confirmation_cancel_prev_download_title">Σταμάτημα της τρέχουσας σάρωσης και αντ' αυτού σάρωση εδώ;</string>
     <string name="turn_on_location_request">Η τοποθεσία είναι κλειστή. Άνοιγμα των Ρυθμίσεων για ενεργοποίηση τώρα;</string>
     <string name="no_location_permission_warning">Η τοποθεσία σας είναι απαραίτητη για την σάρωση αποστολών στην περιοχή σας.</string>
     <string name="about_title_authors">Ευχαριστίες</string>
@@ -196,7 +196,7 @@
     <string name="quest_sport_roller_skating">Πατινάζ με ρόλερ</string>
     <string name="quest_wheelchairAccess_limited_description_business">Εν μέρει σημαίνει ότι δεν υπάρχει παρά ένα μόνο βήμα για την πρόσβαση στην επιχείρηση και ότι τα περισσότερα δωμάτια στο εσωτερικό είναι προσβάσιμα σε αναπηρικά καροτσάκια.</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">Εν μέρει σημαίνει ότι δεν υπάρχει παρά ένα μόνο βήμα για την πρόσβαση εκεί.</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">Σύντμηση στο όνομα %s;</string>
+    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">Σύντμηση στο όνομα %1$s;</string>
     <string name="quest_recycling_type_title">Τι είδους εγκατάσταση ανακύκλωσης είναι αυτή;</string>
     <string name="recycling_centre">Κέντρο</string>
     <string name="overground_recycling_container">Δοχείο</string>
@@ -377,7 +377,7 @@
     <string name="quest_construction_footway_title">Είναι αυτός ο πεζόδρομος ολοκληρωμένος;</string>
     <string name="quest_construction_generic_title">Είναι αυτή η διαδρομή ολοκληρωμένη;</string>
     <string name="quest_construction_building_title">Είναι αυτό το κτίριο ολοκληρωμένο;</string>
-    <string name="questList_disabled_in_country">Δεν εμφανίζεται ποτέ σε %s</string>
+    <string name="questList_disabled_in_country">Δεν εμφανίζεται ποτέ σε %1$s</string>
     <string name="quest_select_hint_most_specific">Επιλέξτε το πιο συγκεκριμένο που ταιριάζει:</string>
     <string name="quest_generic_item_confirmation">Είστε σίγουροι ότι δεν μπορείτε να το προσδιορίσετε πιο συγκεκριμένα;</string>
     <string name="privacy_html_third_party_quest_sources">&lt;p&gt;Για κάποιες αποστολές, κατεβάζονται ορισμένα πρόσθετα δεδομένα από τρίτα μέρη.&lt;/p&gt;</string>
@@ -488,7 +488,7 @@
     <string name="quest_motorcycleParkingCoveredStatus_title">Αυτό το πάρκινγκ μοτοσυκλετών καλύπτεται (προστατεύεται από τη βροχή);</string>
     <string name="default_disabled_msg_maxspeed">Αυτός ο τύπος αποστολής είναι απενεργοποιημένος από προεπιλογή, επειδή συνήθως απαιτείται να ελέγχετε ολόκληρη την οδό για πινακίδες ορίων ταχύτητας και όχι μόνο για το επισημασμένο τμήμα. Αυτό μπορεί μερικές φορές να είναι αρκετό απλά για να λύσει μια μόνο αποστολή.</string>
     <string name="pref_title_quests_restore_hidden">Επαναφορά κρυφών αποστολών</string>
-    <string name="on_level">στο επίπεδο %s</string>
+    <string name="on_level">στο επίπεδο %1$s</string>
     <string name="underground">Υπόγειος</string>
     <string name="quest_sidewalk_value_yes">πεζοδρόμιο</string>
     <string name="quest_sidewalk_value_no">χωρίς πεζοδρόμιο</string>
@@ -526,7 +526,7 @@
     <string name="quest_ref_answer_noRef">Δεν εμφανίζεται αριθμός αναφοράς…</string>
     <string name="quest_street_side_puzzle_tutorial">Ο δρόμος στην εικόνα περιστρέφεται όπως και στον χάρτη στη θέση της ακίδας.</string>
     <string name="quest_recycling_materials_title">Τι μπορεί να αφεθεί εδώ για ανακύκλωση;</string>
-    <string name="quest_recycling_materials_note">Εάν κάτι διαφορετικό μπορεί να ανακυκλωθεί από τα επιλεγμένα εδώ, παρακαλώ αφήστε μια σημείωση αντ\' αυτού.</string>
+    <string name="quest_recycling_materials_note">Εάν κάτι διαφορετικό μπορεί να ανακυκλωθεί από τα επιλεγμένα εδώ, παρακαλώ αφήστε μια σημείωση αντ' αυτού.</string>
     <string name="quest_recycling_type_batteries">Μπαταρίες</string>
     <string name="quest_recycling_type_cans">Κονσέρβες</string>
     <string name="quest_recycling_type_clothes">Ρούχα</string>
@@ -577,8 +577,8 @@
     <string name="achievements_empty">Δεν έχετε ακόμη επιτεύγματα</string>
     <string name="links_empty">Δεν έχετε ακόμη συνδέσμους</string>
     <string name="quests_empty">Δεν έχετε δημοσιεύσει ακόμη απαντήσεις από αποστολή</string>
-    <string name="unsynced_quests_description">συν %d δεν έχουν δημοσιευτεί ακόμη αλλαγές.</string>
-    <string name="unsynced_quests_not_logged_in_description">Έχετε %d μη δημοσιευμένες αλλαγές ακόμη. Πρέπει να συνδεθείτε για να τις ανεβάσετε.</string>
+    <string name="unsynced_quests_description">συν %1$d δεν έχουν δημοσιευτεί ακόμη αλλαγές.</string>
+    <string name="unsynced_quests_not_logged_in_description">Έχετε %1$d μη δημοσιευμένες αλλαγές ακόμη. Πρέπει να συνδεθείτε για να τις ανεβάσετε.</string>
     <string name="user_quests_title">Λυμένα Ερωτήματα</string>
     <string name="user_achievements_title">Επιτεύγματα</string>
     <string name="user_links_title">Συλλογή συνδέσμων</string>
@@ -630,26 +630,26 @@
     <string name="achievement_first_edit_title">Η Πρώτη Αποστολή Επιλύθηκε</string>
     <string name="achievement_first_edit_description">Καλώς ήλθατε στην κοινότητα OpenStreetMap! Στην οθόνη του προφίλ σας, μπορείτε να δείτε περισσότερες πληροφορίες για κάθε τύπο αποστολής που επιλύσατε.</string>
     <string name="achievement_surveyor_title">Επιθεωρητής</string>
-    <string name="achievement_surveyor_solved_X">Επιλύσατε %d αποστολές! Συνεχίστε να ξεκλειδώνετε περισσότερα επιτεύγματα που περιέχουν συνδέσμους προς το OSM και άλλες εφαρμογές και έργα που σχετίζονται με το χάρτη!</string>
+    <string name="achievement_surveyor_solved_X">Επιλύσατε %1$d αποστολές! Συνεχίστε να ξεκλειδώνετε περισσότερα επιτεύγματα που περιέχουν συνδέσμους προς το OSM και άλλες εφαρμογές και έργα που σχετίζονται με το χάρτη!</string>
     <string name="achievement_regular_title">Τακτικοί</string>
-    <string name="achievement_regular_description">Συνεισφέρατε %d ημέρες στο OSM με αυτήν την εφαρμογή! Οι τακτικοί συντελεστές είναι η ραχοκοκαλιά του OSM, ευχαριστώ για την αφοσίωσή σας! ❤</string>
+    <string name="achievement_regular_description">Συνεισφέρατε %1$d ημέρες στο OSM με αυτήν την εφαρμογή! Οι τακτικοί συντελεστές είναι η ραχοκοκαλιά του OSM, ευχαριστώ για την αφοσίωσή σας! ❤</string>
     <string name="achievement_bicyclist_title">Ποδηλάτης</string>
-    <string name="achievement_bicyclist_solved_X">Επιλύσατε %d αποστολές που βοηθούν τους ποδηλάτες!</string>
+    <string name="achievement_bicyclist_solved_X">Επιλύσατε %1$d αποστολές που βοηθούν τους ποδηλάτες!</string>
     <string name="achievement_wheelchair_title">Κινητικότητα</string>
-    <string name="achievement_wheelchair_solved_X">Επιλύσατε %d αποστολές που βοηθούν τους χρήστες αναπηρικών αμαξιδίων να μετακινούνται στην πόλη!</string>
+    <string name="achievement_wheelchair_solved_X">Επιλύσατε %1$d αποστολές που βοηθούν τους χρήστες αναπηρικών αμαξιδίων να μετακινούνται στην πόλη!</string>
     <string name="achievement_postman_title">Ταχυδρόμος</string>
-    <string name="achievement_postman_solved_X">Βοηθήσατε να εντοπίσετε %d διευθύνσεις! Αυτά τα δεδομένα είναι απαραίτητα όχι μόνο για τον ταχυδρόμο αλλά και για οποιοδήποτε σύστημα πλοήγησης.</string>
+    <string name="achievement_postman_solved_X">Βοηθήσατε να εντοπίσετε %1$d διευθύνσεις! Αυτά τα δεδομένα είναι απαραίτητα όχι μόνο για τον ταχυδρόμο αλλά και για οποιοδήποτε σύστημα πλοήγησης.</string>
     <string name="achievement_building_title">Πολυώροφο</string>
-    <string name="achievement_building_solved_X">Επιλύσατε %d αποστολές σχετικές με κτήρια. Λάβετε υπόψη ότι αυτή η εφαρμογή ζητά τον αριθμό οικίας ενός κτηρίου μόνο αφού προσδιοριστεί ο τύπος του.</string>
+    <string name="achievement_building_solved_X">Επιλύσατε %1$d αποστολές σχετικές με κτήρια. Λάβετε υπόψη ότι αυτή η εφαρμογή ζητά τον αριθμό οικίας ενός κτηρίου μόνο αφού προσδιοριστεί ο τύπος του.</string>
     <string name="achievement_blind_title">Έκτη Αίσθηση</string>
-    <string name="achievement_blind_solved_X">Επιλύσατε %d αποστολές που είναι ενδιαφέρουσες για άτομα με προβλήματα όρασης.</string>
+    <string name="achievement_blind_solved_X">Επιλύσατε %1$d αποστολές που είναι ενδιαφέρουσες για άτομα με προβλήματα όρασης.</string>
     <string name="achievement_pedestrian_title">Δρομέας</string>
-    <string name="achievement_pedestrian_solved_X">Επιλύσατε %d αποστολές που είναι ενδιαφέρουσες για τους ανθρώπους με τα πόδια!</string>
+    <string name="achievement_pedestrian_solved_X">Επιλύσατε %1$d αποστολές που είναι ενδιαφέρουσες για τους ανθρώπους με τα πόδια!</string>
     <string name="achievement_veg_title">Ευγενικός με τα Ζώα</string>
-    <string name="achievement_veg_solved_X">Λύσατε %d αποστολές που είναι ενδιαφέρουσες για άτομα που ζουν σε δίαιτα χωρίς κρέας!</string>
+    <string name="achievement_veg_solved_X">Λύσατε %1$d αποστολές που είναι ενδιαφέρουσες για άτομα που ζουν σε δίαιτα χωρίς κρέας!</string>
     <string name="achievement_car_title">Στο δρόμο</string>
-    <string name="achievement_car_solved_X">Επιλύσατε %d αποστολές που βελτιώνουν τις λεπτομέρειες της οδικής υποδομής, τοποθετώντας το “δρόμο” στο OpenStreetMap!</string>
-    <string name="unread_messages_message">Έχετε %d αδιάβαστα μηνύματα στα εισερχόμενά σας</string>
+    <string name="achievement_car_solved_X">Επιλύσατε %1$d αποστολές που βελτιώνουν τις λεπτομέρειες της οδικής υποδομής, τοποθετώντας το “δρόμο” στο OpenStreetMap!</string>
+    <string name="unread_messages_message">Έχετε %1$d αδιάβαστα μηνύματα στα εισερχόμενά σας</string>
     <string name="unread_messages_button">Ανοίξτε τα Εισερχόμενα</string>
     <string name="action_about2">Σχετικά</string>
     <string name="map_btn_menu">Μενού</string>
@@ -659,11 +659,11 @@
     <string name="credits_projects_contributors_title">Έργα που έγιναν για το StreetComplete</string>
     <string name="credits_main_contributors_title">Κύριοι συνεισφέροντες</string>
     <string name="stats_are_syncing">Τα στατιστικά σας συγχρονίζονται ακόμη. Ελέγξτε αυτήν την οθόνη αργότερα.</string>
-    <string name="user_statistics_country_wiki_link">Πύλη Χαρτογράφησης %s</string>
+    <string name="user_statistics_country_wiki_link">Πύλη Χαρτογράφησης %1$s</string>
     <string name="user_statistics_filter_by_country">ανά χώρα</string>
     <string name="user_statistics_filter_by_quest_type">ανά τύπο αποστολής</string>
     <string name="user_profile_global_rank">Παγκόσμια κατάταξη</string>
-    <string name="user_profile_local_rank">Κατάταξη σε %s</string>
+    <string name="user_profile_local_rank">Κατάταξη σε %1$s</string>
     <string name="user_profile_days_active">Ενεργές ημέρες</string>
     <string name="user_profile_achievement_levels">Επίπεδα επιτευγμάτων</string>
     <string name="quest_address_street_no_named_streets">Δεν ανήκει σε ονομασμένο δρόμο</string>
@@ -687,8 +687,8 @@
     <string name="quest_board_type_map_description">Εάν ο πίνακας αφορά ένα συγκεκριμένο θέμα, προσδιορίστε το, ανεξάρτητα από το εάν περιλαμβάνει επίσης έναν χάρτη. Για παράδειγμα, μια δημόσια συγκοινωνία μπορεί να έχει χάρτη διαδρομής λεωφορείου. Εάν το θέμα δεν περιλαμβάνεται στις διαθέσιμες απαντήσεις, σκεφτείτε το ενδεχόμενο να αφήσετε μια σημείωση.</string>
     <string name="quest_streetName_menuItem_international">διεθνές</string>
     <string name="quest_buildingType_terrace2">Σειρά σπιτιών</string>
-    <string name="at_housename">όνομα οικίας %s</string>
-    <string name="at_housenumber">αριθμός σπιτιού %s</string>
+    <string name="at_housename">όνομα οικίας %1$s</string>
+    <string name="at_housenumber">αριθμός σπιτιού %1$s</string>
     <string name="quest_openingHours_add_off_days">Προσθέστε ρεπό</string>
     <string name="quest_openingHours_off_day">Ρεπό</string>
     <string name="quest_openingHours_unspecified_range">Δεν διευκρινίζεται</string>
@@ -722,11 +722,11 @@
     <string name="quest_charging_station_operator_title">Ποιος είναι ο διαχειριστής αυτού του σταθμού φόρτισης;</string>
     <string name="link_indoorequal_description">Ανακαλύψτε εσωτερικούς χάρτες εμπορικών κέντρων, σιδηροδρομικών σταθμών κ.λπ.</string>
     <string name="achievement_rare_title">Κυνήγι θησαυρού</string>
-    <string name="achievement_rare_solved_X">Βρήκατε και επιλύσατε %d αποστολές που ολοκληρώνονται πολύ σπάνια, συγχαρητήρια!</string>
+    <string name="achievement_rare_solved_X">Βρήκατε και επιλύσατε %1$d αποστολές που ολοκληρώνονται πολύ σπάνια, συγχαρητήρια!</string>
     <string name="achievement_citizen_title">Πολίτης</string>
-    <string name="achievement_citizen_solved_X">Λύσατε %d αποστολές χρήσιμες για την καθημερινή ζωή στην πόλη!</string>
+    <string name="achievement_citizen_solved_X">Λύσατε %1$d αποστολές χρήσιμες για την καθημερινή ζωή στην πόλη!</string>
     <string name="achievement_outdoors_title">Ύπαιθρο</string>
-    <string name="achievement_outdoors_solved_X">Λύσατε %d αποστολές που είναι χρήσιμες για άτομα της υπαίθρου!</string>
+    <string name="achievement_outdoors_solved_X">Λύσατε %1$d αποστολές που είναι χρήσιμες για άτομα της υπαίθρου!</string>
     <string name="quest_pedestrian_crossing_island">Έχει νησίδα αυτή η διάβαση πεζών;</string>
     <string name="quest_generic_answer_noSign">Δεν υπάρχει πινακίδα</string>
     <string name="quest_steps_ramp_separate_wheelchair">Η ράμπα αναπηρικού αμαξίδιου εμφανίζεται ως ξεχωριστή γραμμή στον χάρτη;</string>
@@ -749,7 +749,7 @@
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">Διαθέτει αμφίδρομη αριστερή λωρίδα</string>
     <string name="quest_address_answer_no_housenumber_message2b">Είναι αυτό σωστό?</string>
     <string name="quest_maxheight_below_bridge_title">Ποιο είναι το όριο ύψους κάτω από τη γέφυρα;</string>
-    <string name="quest_maxheight_split_way_hint">Εάν δεν ισχύει για όλη την διαδρομή, σκεφτείτε να απαντήσετε "%s".</string>
+    <string name="quest_maxheight_split_way_hint">Εάν δεν ισχύει για όλη την διαδρομή, σκεφτείτε να απαντήσετε "%1$s".</string>
     <string name="quest_tactile_paving_kerb_title">Υπάρχει ανάγλυφη επίστρωση σε αυτό το κράσπεδο εδώ;</string>
     <string name="quest_kerb_height_title">Ποιο είναι το ύψος αυτού του κράσπεδου;</string>
     <string name="quest_kerb_height_flush">Ίδιο επίπεδο με την επιφάνεια του δρόμου</string>
@@ -805,9 +805,9 @@
     <string name="hid_action_description">Το έκρυψες</string>
     <string name="split_way_action_description">Χωρίζεις τον δρόμο</string>
     <string name="deleted_poi_action_description">Το διαγράψατε</string>
-    <string name="added_tag_action_title">Προστέθηκε %s</string>
-    <string name="removed_tag_action_title">Αφαιρέθηκε %s</string>
-    <string name="changed_tag_action_title">Ενημερώθηκε σε %s</string>
+    <string name="added_tag_action_title">Προστέθηκε %1$s</string>
+    <string name="removed_tag_action_title">Αφαιρέθηκε %1$s</string>
+    <string name="changed_tag_action_title">Ενημερώθηκε σε %1$s</string>
     <string name="pref_title_delete_cache">Διαγραφή προσωρινής μνήμης</string>
     <string name="pref_title_delete_cache_summary">Εάν πιστεύετε ότι ορισμένα δεδομένα είναι παλιά</string>
     <string name="delete_confirmation">Διαγραφή</string>
@@ -857,7 +857,7 @@
     <string name="about_title_faq">Συχνές ερωτήσεις</string>
     <string name="quest_buildingLevels_title2">Πόσα επίπεδα πάνω από το υπόγειο έχει αυτό το κτίριο;</string>
     <string name="quest_buildingLevels_title_buildingPart2">Πόσα επίπεδα πάνω από το υπόγειο έχει αυτό το τμήμα του κτιρίου;</string>
-    <string name="pref_subtitle_quests_preset_name">Προεπιλογή: %s</string>
+    <string name="pref_subtitle_quests_preset_name">Προεπιλογή: %1$s</string>
     <string name="default_disabled_msg_roofShape">Αυτός ο τύπος αποστολής είναι απενεργοποιημένος από προεπιλογή, επειδή συχνά το σχήμα της στέγης δεν είναι εύκολα ορατό από τον δρόμο. Αυτός ο τύπος αποστολής είναι επίσης αρκετά χρονοβόρος - στις περισσότερες περιπτώσεις είναι πιο εύκολο και αποτελεσματικό να γίνει η χαρτογράφηση από αεροφωτογραφίες στο σπίτι.</string>
     <string name="quest_religion_animist">Ανιμισμός</string>
     <string name="quest_construction_steps_title">Έχουν ολοκληρωθεί αυτά τα σκαλοπάτια;</string>
@@ -882,7 +882,7 @@
     <string name="quest_presets_preset_name">Όνομα προεπιλογής</string>
     <string name="quest_presets_default_name">Προεπιλογή</string>
     <string name="quest_presets_selected">Επιλεγμένα</string>
-    <string name="quest_presets_delete_message">Διαγραφή προεπιλογής "%s"; Η επιλογή και η σειρά αποστολής για αυτήν θα χαθούν αμετάκλητα.</string>
+    <string name="quest_presets_delete_message">Διαγραφή προεπιλογής "%1$s"; Η επιλογή και η σειρά αποστολής για αυτήν θα χαθούν αμετάκλητα.</string>
     <string name="notification_syncing">Συγχρονίζονται τα δεδομένα…</string>
     <string name="notification_channel_sync">Συγχρονισμός δεδομένων</string>
     <string name="quest_board_type_sport">Αθλητισμός, Ασκήσεις</string>
@@ -920,7 +920,7 @@
     <string name="quest_barrier_bicycle_type_double">Σικέιν - μπάρες σε κάθε πλευρά</string>
     <string name="quest_barrier_bicycle_type_multiple">Σικέιν - περισσότερες από δύο μπάρες</string>
     <string name="language_default">Προεπιλογή συστήματος</string>
-    <string name="on_floor">στον όροφο %s:</string>
+    <string name="on_floor">στον όροφο %1$s:</string>
     <string name="select_street_parking_orientation">Επιλέξτε προσανατολισμό προς το δρόμο:</string>
     <string name="select_street_parking_position">Επιλέξτε θέση:</string>
     <string name="select_street_parking_no">Υπάρχει κάποια πινακίδα ή οδική σήμανση εδώ;</string>
@@ -985,8 +985,8 @@
     <string name="quest_smoothness_hint">🚲, 🚗, 🚙, … υποδείξτε για ποια οχήματα η επιφάνεια πρέπει να είναι εντάξει για χρήση. Αυτό που έχει σημασία είναι η μεγάλη εικόνα και όχι οι μεμονωμένες ζημιές.</string>
     <string name="link_osmhydrant_description">Αναζητήστε, προσθέστε και επεξεργαστείτε πυροσβεστικούς σταθμούς και κρουνούς</string>
     <string name="achievement_lifesaver_title">Διασώστης</string>
-    <string name="achievement_lifesaver_solved_X">Λύσατε %d αποστολές που βοηθούν τις υπηρεσίες έκτακτης ανάγκης και τους διασώστες!</string>
-    <string name="quest_fuelSelfService_title">Μπορείτε να γεμίσετε καύσιμα μόνοι σας σ\' αυτό το βενζινάδικο;</string>
+    <string name="achievement_lifesaver_solved_X">Λύσατε %1$d αποστολές που βοηθούν τις υπηρεσίες έκτακτης ανάγκης και τους διασώστες!</string>
+    <string name="quest_fuelSelfService_title">Μπορείτε να γεμίσετε καύσιμα μόνοι σας σ' αυτό το βενζινάδικο;</string>
     <string name="default_disabled_msg_difficult_and_time_consuming">Αυτός ο τύπος αποστολής είναι απενεργοποιημένος από προεπιλογή επειδή είναι αρκετά χρονοβόρος και συχνά δύσκολο να γίνει η σωστή επιλογή. Θα πρέπει να τον ενεργοποιήσετε μόνο εάν δεσμεύεστε πραγματικά να προσθέσετε αυτού του είδους τα δεδομένα.</string>
     <string name="quest_smoothness_description_good_compacted_gravel">Σκληρή επιφάνεια, λίγο χαλαρό χαλίκι ή άμμος</string>
     <string name="quest_barrier_path_intersection">Πώς διασχίζει αυτό το μονοπάτι τις μπάρες εδώ;</string>
@@ -1047,7 +1047,7 @@
     <string name="quest_busStopLit_title2">Είναι φωτισμένη αυτή η στάση;</string>
     <string name="quest_busStopName_title2">Πώς ονομάζεται αυτή η στάση;</string>
     <string name="quest_busStopRef_title2">Ποιος είναι ο αριθμός αναφοράς αυτής της στάσης;</string>
-    <string name="quest_busStopShelter_title2">Υπάρχει στέγαστρο σ\' αυτή τη στάση;</string>
+    <string name="quest_busStopShelter_title2">Υπάρχει στέγαστρο σ' αυτή τη στάση;</string>
     <string name="quest_busStopTactilePaving_title">Αυτή η στάση έχει ανάγλυφη πλακόστρωση;</string>
     <string name="quest_dietType_halal_name_title2">Προσφέρονται προϊόντα χαλάλ εδώ;</string>
     <string name="quest_dietType_kosher_name_title2">Προσφέρονται προϊόντα kosher εδώ;</string>
@@ -1148,7 +1148,7 @@
     <string name="quest_camp_type_backcountry">Υπαίθριο κάμπινγκ (χωρίς εγκαταστάσεις)</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">Αυτή η διάμετρος φαίνεται απίθανη, είναι συνήθως μεταξύ %1$d και %2$d.</string>
     <string name="quest_recycling_type_pet">PET μόνο</string>
-    <string name="street_parking_street_width">Πλάτος δρόμου: %s</string>
+    <string name="street_parking_street_width">Πλάτος δρόμου: %1$s</string>
     <string name="overlay_street_parking">Πάρκινγκ στο δρόμο</string>
     <string name="link_ohsomehex_description">Εξερευνήστε OSM δεδομένα σε κλίμακες από τη μεγάλη εικόνα έως μεμονωμένα αντικείμενα στο χώρο και στο χρόνο</string>
     <string name="link_opencampingmap_description">Χάρτης με κάμπινγκ</string>
@@ -1195,7 +1195,7 @@
     <string name="user_profile_current_week_title">Τελευταίες 7 μέρες</string>
     <string name="user_profile_dates_mapped">Ημέρες που χαρτογραφήσατε πρόσφατα</string>
     <string name="quest_cycleway_value_advisory_lane">προειδοποίηση ποδηλατόδρομου</string>
-    <string name="urlconfig_scan_qr_code_again2">Μετά την εγκατάσταση της εφαρμογής, σαρώστε ξανά το QR ή κάντε κλικ στον &lt;a href="%s"&gt; σύνδεσμο&lt;/a&gt; για εφαρμογή της προεπιλογής.</string>
+    <string name="urlconfig_scan_qr_code_again2">Μετά την εγκατάσταση της εφαρμογής, σαρώστε ξανά το QR ή κάντε κλικ στον &lt;a href="%1$s"&gt; σύνδεσμο&lt;/a&gt; για εφαρμογή της προεπιλογής.</string>
     <string name="confirmation_replace_shop_title">Είναι διαφορετικό μέρος τώρα;</string>
     <string name="confirmation_replace_shop_message">Σε αυτήν την περίπτωση, οι ώρες λειτουργίας, τα στοιχεία επικοινωνίας κ.λπ. θα έχουν αλλάξει επίσης.</string>
     <string name="confirmation_replace_shop_yes">Διαφορετικό μέρος τώρα</string>
@@ -1205,7 +1205,7 @@
 Μετακίνηση τώρα;</string>
     <string name="node_moved_not_far_enough">Μετακινήστε το και άλλο</string>
     <string name="node_moved_too_far">Μετακινήθηκε πολύ μακριά. Σκεφτείτε να αφήσετε μία σημείωση</string>
-    <string name="node_moved">Μετακινήθηκε από %s</string>
+    <string name="node_moved">Μετακινήθηκε από %1$s</string>
     <string name="move_node_description">Σύρετε τον χάρτη για να τοποθετήσετε το χαρακτηριστικό στη σωστή θέση. Χρησιμοποιήστε τη λειτουργία ζουμ και προσπαθήστε να είστε όσο το δυνατόν ακριβέστεροι. Λάβετε υπόψη ότι η εμφανιζόμενη τοποθεσία σας μπορεί να είναι λιγότερο ακριβής από αυτή που εμφανίζεται.</string>
     <string name="move_node_action_description">Μετακινήσατε τον κόμβο</string>
     <string name="quest_cycleway_value_shoulder">κανένας, αλλά η λωρίδα μπορεί να χρησιμοποιηθεί για ποδηλάτες</string>
@@ -1303,7 +1303,7 @@
     <string name="label_log_older_than">Μέχρι</string>
     <string name="label_log_message_contains">Το μήνυμα περιέχει</string>
     <string name="title_logs_filters">Φιλτράρισμα μηνυμάτων</string>
-    <string name="pref_title_quests_restore_hidden_summary">Αριθμός κρυφών αποστολών: %d</string>
+    <string name="pref_title_quests_restore_hidden_summary">Αριθμός κρυφών αποστολών: %1$d</string>
     <string name="link_every_door_description">Ισχυρό πρόγραμμα επεξεργασίας POI για Android και iOS</string>
     <string name="link_mapcomplete_description">Συλλογή θεματικών χαρτών OSM που ο καθένας εμφανίζει και επιτρέπει να επεξεργαστείτε ένα είδος λειτουργίας</string>
     <string name="link_forum_description">Χρειάζεστε βοήθεια? Θέλετε να διαβάσετε τι συμβαίνει; Ελάτε να συναναστραφείτε, είναι γεμάτο με δραστηριότητες από κοινότητες σε όλο τον κόσμο!</string>
@@ -1374,7 +1374,7 @@
     <string name="quest_camp_power_supply_hint">Αυτό θα μπορούσε να είναι πρίζες απευθείας στους χώρους κατασκήνωσης, πρίζες σε ένα κτίριο υπηρεσιών προσβάσιμο από επισκέπτες, ένας ειδικός σταθμός φόρτισης για τηλέφωνα, φορητούς υπολογιστές κ.λπ.</string>
     <string name="quest_barrier_opening_width_bollard">Ποιο είναι το μεγαλύτερο κενό που μπορεί να περάσει κανείς εδώ;</string>
     <string name="user_profile_all_time_title">Συνολικά</string>
-    <string name="user_statistics_country_rank2">Κατάταξη σε %s</string>
+    <string name="user_statistics_country_rank2">Κατάταξη σε %1$s</string>
     <string name="quest_leafType_tree_is_just_a_stump">Είναι απλά ένας κομμένος κορμός δέντρου</string>
     <string name="quest_board_name_title">Ποιος είναι ο τίτλος αυτού του πίνακα πληροφοριών;</string>
     <string name="quest_crossing_hint">Ένα άτυπο μονοπάτι που διασχίζει έναν δρόμο:</string>

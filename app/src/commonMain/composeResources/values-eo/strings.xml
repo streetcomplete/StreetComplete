@@ -196,7 +196,7 @@ Se nenia indikilo kiu aplikiĝus por la ĉi-montrita parto aperas en la tuta str
     <string name="quest_sport_roller_skating">Rulŝuado</string>
     <string name="quest_wheelchairAccess_limited_description_business">Parte signifas, ke estas ne pli ol unu ŝtupo por atingi la lokon kaj la plejmulto de ĉambroj ene estas atingeblaj por rulseĝoj.</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">“Parte” signifas, ke nur unu ŝtupeto bezonas esti transirita.</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">Ĉu estas mallongigoj en la nomo %s?</string>
+    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">Ĉu estas mallongigoj en la nomo %1$s?</string>
     <string name="quest_recycling_type_title">Kia reciklaĵo estas ĉi tio?</string>
     <string name="recycling_centre">Reciklejo</string>
     <string name="overground_recycling_container">Reciklujo</string>
@@ -377,7 +377,7 @@ Parte signifas, ke rulseĝo povas eniri kaj uzi la ripozejon, sed neniu manplato
     <string name="quest_construction_footway_title">Ĉu ĉi tiu piedvojo estas finita?</string>
     <string name="quest_construction_generic_title">Ĉu ĉi tiu vojo estas finita?</string>
     <string name="quest_construction_building_title">Ĉu ĉi tiu konstruaĵo estas finita?</string>
-    <string name="questList_disabled_in_country">Neniam montrita en %s</string>
+    <string name="questList_disabled_in_country">Neniam montrita en %1$s</string>
     <string name="quest_select_hint_most_specific">Elektu la plej specifan, kiu taŭgas:</string>
     <string name="quest_generic_item_confirmation">Ĉu vi certas ne povi identifigi ĝin pli precize?</string>
     <string name="privacy_html_third_party_quest_sources">&lt;p&gt;Por kelkaj taskoj, aldona datumo de eksteraj liverantoj elŝutigas.&lt;/p&gt;</string>
@@ -488,7 +488,7 @@ Parte signifas, ke rulseĝo povas eniri kaj uzi la ripozejon, sed neniu manplato
     <string name="quest_motorcycleParkingCoveredStatus_title">Ĉu ĉi tiu motorcikla parkado estas kovrita (protektita kontraŭ pluvo)?</string>
     <string name="default_disabled_msg_maxspeed">Ĉi tia tasko estas malebiligita defaŭlte ĉar vi kutime devas kontroli la tuton de la vojo, ne nur la markitan parton, por trovi trafikŝildojn kun  rapideclimoj. Tio povas esti multe da laboro por solvi unu tasko.</string>
     <string name="pref_title_quests_restore_hidden">Remontri kaŝitajn taskojn</string>
-    <string name="on_level">je nivelo %s</string>
+    <string name="on_level">je nivelo %1$s</string>
     <string name="underground">subtere</string>
     <string name="quest_sidewalk_value_yes">Trotuaro</string>
     <string name="quest_sidewalk_value_no">Ne trotuaro</string>
@@ -581,8 +581,8 @@ Fine, memoru resti sekura: Estu konscia pri via ĉirkaŭaĵo kaj ne eniru privat
     <string name="achievements_empty">Vi ne havas atingojn ĝis nun</string>
     <string name="links_empty">Vi ne havas ligojn ĝis nun</string>
     <string name="quests_empty">Vi ne publikigis taskajn respondojn ĝis nun</string>
-    <string name="unsynced_quests_description">plus %d ankoraŭ ne publikigitaj ŝanĝoj.</string>
-    <string name="unsynced_quests_not_logged_in_description">Vi ankoraŭ ne publikigis %d ŝanĝojn. Vi devas ensaluti por alŝuti ilin.</string>
+    <string name="unsynced_quests_description">plus %1$d ankoraŭ ne publikigitaj ŝanĝoj.</string>
+    <string name="unsynced_quests_not_logged_in_description">Vi ankoraŭ ne publikigis %1$d ŝanĝojn. Vi devas ensaluti por alŝuti ilin.</string>
     <string name="user_quests_title">Taskoj Solvitaj</string>
     <string name="user_achievements_title">Atingoj</string>
     <string name="user_links_title">Ligila kolekto</string>
@@ -633,26 +633,26 @@ Fine, memoru resti sekura: Estu konscia pri via ĉirkaŭaĵo kaj ne eniru privat
     <string name="achievement_first_edit_description">Bonvenon al la komunumo OpenStreetMap! En via profila ekrano, vi povas vidi pliajn informojn por ĉiu tasko, kiun vi solvis.</string>
     <string name="achievement_surveyor_title">Geodeziisto</string>
     <string name="achievement_regular_title">Regula</string>
-    <string name="achievement_regular_description">Vi kontribuis %d tagojn al OSM per ĉi tiu aplikaĵo! Regulaj kontribuantoj estas la spino de OSM, dankon pro via dediĉo! ❤</string>
+    <string name="achievement_regular_description">Vi kontribuis %1$d tagojn al OSM per ĉi tiu aplikaĵo! Regulaj kontribuantoj estas la spino de OSM, dankon pro via dediĉo! ❤</string>
     <string name="achievement_bicyclist_title">Biciklisto</string>
-    <string name="achievement_bicyclist_solved_X">Vi solvis %d taskojn, kiuj helpas al biciklistoj!</string>
+    <string name="achievement_bicyclist_solved_X">Vi solvis %1$d taskojn, kiuj helpas al biciklistoj!</string>
     <string name="achievement_wheelchair_title">Movebleco</string>
-    <string name="achievement_wheelchair_solved_X">Vi solvis %d taskojn kiuj helpas al rulseĝaj uzantoj trairi la urbon!</string>
+    <string name="achievement_wheelchair_solved_X">Vi solvis %1$d taskojn kiuj helpas al rulseĝaj uzantoj trairi la urbon!</string>
     <string name="achievement_postman_title">Leterportisto</string>
-    <string name="achievement_postman_solved_X">Vi helpis trovi %d adresojn!
+    <string name="achievement_postman_solved_X">Vi helpis trovi %1$d adresojn!
 Ĉi tiuj datumoj estas esencaj ne nur por la leterportisto, sed ankaŭ por iu ajn navigacia sistemo.</string>
     <string name="achievement_building_title">Altaĵo</string>
-    <string name="achievement_building_solved_X">Vi solvis %d taskojn pri konstruaĵoj.
+    <string name="achievement_building_solved_X">Vi solvis %1$d taskojn pri konstruaĵoj.
 Rimarku, ke ĉi tiu aplikaĵo petas la domnumeron de konstruaĵo nur post kiam ĝia speco estas determinita.</string>
     <string name="achievement_blind_title">Sesa Senco</string>
-    <string name="achievement_blind_solved_X">Vi solvis %d taskojn, kiuj estas interesaj por vidhandikapitoj.</string>
+    <string name="achievement_blind_solved_X">Vi solvis %1$d taskojn, kiuj estas interesaj por vidhandikapitoj.</string>
     <string name="achievement_pedestrian_title">Piediranto</string>
-    <string name="achievement_pedestrian_solved_X">Vi solvis %d taskojn, kiuj estas interesaj por piediraj homoj!</string>
+    <string name="achievement_pedestrian_solved_X">Vi solvis %1$d taskojn, kiuj estas interesaj por piediraj homoj!</string>
     <string name="achievement_veg_title">Afabla al Bestoj</string>
-    <string name="achievement_veg_solved_X">Vi solvis %d taskojn, kiuj estas interesaj por homoj, kiuj vivas per senviando-dieto!</string>
+    <string name="achievement_veg_solved_X">Vi solvis %1$d taskojn, kiuj estas interesaj por homoj, kiuj vivas per senviando-dieto!</string>
     <string name="achievement_car_title">Survoje</string>
-    <string name="achievement_car_solved_X">Vi solvis %d taskojn, kiuj plibonigas detalojn pri la strata infrastrukturo, metante la "Street" (straton) en OpenStreetMap!</string>
-    <string name="unread_messages_message">Vi havas %d ne legitajn mesaĝojn en via ricevujo</string>
+    <string name="achievement_car_solved_X">Vi solvis %1$d taskojn, kiuj plibonigas detalojn pri la strata infrastrukturo, metante la "Street" (straton) en OpenStreetMap!</string>
+    <string name="unread_messages_message">Vi havas %1$d ne legitajn mesaĝojn en via ricevujo</string>
     <string name="unread_messages_button">Malfermi ricevujon</string>
     <string name="action_about2">Pri</string>
     <string name="map_btn_menu">Menuo</string>
@@ -662,13 +662,13 @@ Rimarku, ke ĉi tiu aplikaĵo petas la domnumeron de konstruaĵo nur post kiam �
     <string name="credits_projects_contributors_title">Projektoj faritaj por StreetComplete</string>
     <string name="credits_main_contributors_title">Ĉefaj kontribuantoj</string>
     <string name="stats_are_syncing">Viaj statistikoj ankoraŭ sinkronigas. Kontrolu ĉi tiun ekranon poste.</string>
-    <string name="user_statistics_country_wiki_link">Portalo de Mapado %s</string>
+    <string name="user_statistics_country_wiki_link">Portalo de Mapado %1$s</string>
     <string name="user_statistics_filter_by_country">per lando</string>
     <string name="user_statistics_filter_by_quest_type">laŭ taskospeco</string>
     <string name="user_profile_global_rank">Tutmonda
 rango</string>
     <string name="user_profile_local_rank">Rango en
-%s</string>
+%1$s</string>
     <string name="user_profile_days_active">Tagoj
 aktiva</string>
     <string name="user_profile_achievement_levels">Niveloj de atingoj</string>
@@ -691,8 +691,8 @@ aktiva</string>
     <string name="quest_board_type_map_description">Se la tabulo havus apartan temon, bonvole specifu ĝin, sendepende ĉu ĝi ankaŭ montrus mapon. Ekzemple publika transporto tabulo montrus mapon de la itineroj de la aŭtobusoj. Se la temo ne estas en la listo de la elektablajn respondojn, bonvole konsideru fari noton.</string>
     <string name="quest_streetName_menuItem_international">internacia</string>
     <string name="quest_buildingType_terrace2">Vicdomoj</string>
-    <string name="at_housename">Nomo de domo %s</string>
-    <string name="at_housenumber">domnumero %s</string>
+    <string name="at_housename">Nomo de domo %1$s</string>
+    <string name="at_housenumber">domnumero %1$s</string>
     <string name="quest_openingHours_add_off_days">Aldonu fermitajn tagojn</string>
     <string name="quest_openingHours_off_day">Fermita tago</string>
     <string name="quest_openingHours_unspecified_range">Ne specifita</string>
@@ -726,11 +726,11 @@ aktiva</string>
     <string name="quest_charging_station_operator_title">Kiu estas la funkciigisto de ĉi tiu ŝargstacio?</string>
     <string name="link_indoorequal_description">Malkovru endomajn mapojn de centroj, fervojaj stacioj ktp.</string>
     <string name="achievement_rare_title">Trezora ĉasado</string>
-    <string name="achievement_rare_solved_X">Vi trovis kaj solvis %d taskojn kiuj estas plenumitaj vere malofte, gratulon!</string>
+    <string name="achievement_rare_solved_X">Vi trovis kaj solvis %1$d taskojn kiuj estas plenumitaj vere malofte, gratulon!</string>
     <string name="achievement_citizen_title">Civitano</string>
-    <string name="achievement_citizen_solved_X">Vi solvis %d taskojn utilajn por ĉiutaga vivo en la urbo!</string>
+    <string name="achievement_citizen_solved_X">Vi solvis %1$d taskojn utilajn por ĉiutaga vivo en la urbo!</string>
     <string name="achievement_outdoors_title">Ekstere</string>
-    <string name="achievement_outdoors_solved_X">Vi solvis %d serĉojn utilajn por subĉielaj entuziasmuloj!</string>
+    <string name="achievement_outdoors_solved_X">Vi solvis %1$d serĉojn utilajn por subĉielaj entuziasmuloj!</string>
     <string name="quest_pedestrian_crossing_island">Ĉu ĉi tiu piedira transirejo havas insulon?</string>
     <string name="quest_generic_answer_noSign">Ne estas signo</string>
     <string name="quest_steps_ramp_separate_wheelchair">Ĉu la rulseĝa rampo estas afiŝita kiel aparta vojo surmape?</string>
@@ -752,7 +752,7 @@ aktiva</string>
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">Ĝi havas duflankan maldekstran turnan vojeron</string>
     <string name="quest_address_answer_no_housenumber_message2b">Ĉu ĉi tio estas ĝusta?</string>
     <string name="quest_maxheight_below_bridge_title">Kio estas la alteca limo sub la ponto?</string>
-    <string name="quest_maxheight_split_way_hint">Se ĝi ne validas por la tuta vojo, konsideru respondi "%s".</string>
+    <string name="quest_maxheight_split_way_hint">Se ĝi ne validas por la tuta vojo, konsideru respondi "%1$s".</string>
     <string name="quest_tactile_paving_kerb_title">Ĉu ĉi tiu trotuarrando havas taktilan pavimon?</string>
     <string name="quest_kerb_height_title">Kiom alta estas ĉi tiu trotuarrando?</string>
     <string name="quest_kerb_height_flush">Sama nivelo kiel vojsurfaco</string>
@@ -809,9 +809,9 @@ Kontrolu ĉiujn opciojn: kelkaj kazoj ne estas evidentaj, kiel unudirekta vojo k
     <string name="hid_action_description">Vi kaŝis ĝin</string>
     <string name="split_way_action_description">Vi disigas la vojon</string>
     <string name="deleted_poi_action_description">Vi forigis ĝin</string>
-    <string name="added_tag_action_title">Aldonita %s</string>
-    <string name="removed_tag_action_title">Forigis %s</string>
-    <string name="changed_tag_action_title">Ĝisdatigita al %s</string>
+    <string name="added_tag_action_title">Aldonita %1$s</string>
+    <string name="removed_tag_action_title">Forigis %1$s</string>
+    <string name="changed_tag_action_title">Ĝisdatigita al %1$s</string>
     <string name="pref_title_delete_cache">Forigi kaŝmemoron</string>
     <string name="pref_title_delete_cache_summary">Se vi pensas, ke iuj datumoj estas malĝisdataj</string>
     <string name="delete_confirmation">Forigi</string>
@@ -861,7 +861,7 @@ Datumoj estas refreŝigitaj post %1$s tagoj kaj neuzataj datumoj aŭtomate estas
     <string name="about_title_faq">Oftaj Demandoj</string>
     <string name="quest_buildingLevels_title2">Kiom da etaĝoj super la kelo havas ĉi tiu konstruaĵo?</string>
     <string name="quest_buildingLevels_title_buildingPart2">Kiom da etaĝoj super la kelo havas ĉi tiu konstruaĵparto?</string>
-    <string name="pref_subtitle_quests_preset_name">Antaŭdifino: %s</string>
+    <string name="pref_subtitle_quests_preset_name">Antaŭdifino: %1$s</string>
     <string name="default_disabled_msg_roofShape">Ĉi tia tasko estas malebiligita defaŭlte ĉar la tipoj de tegmentoj estas malfacile videblaj de la strato. Tia tasko ankaŭ estas temporaba. Plejofte estas plifacila mapi tion de aeraj bildaroj hejme.</string>
     <string name="quest_religion_animist">Animismo</string>
     <string name="quest_construction_steps_title">Ĉu ĉi tiuj paŝoj estas finitaj?</string>
@@ -886,7 +886,7 @@ Datumoj estas refreŝigitaj post %1$s tagoj kaj neuzataj datumoj aŭtomate estas
     <string name="quest_presets_preset_name">Antaŭagorda nomo</string>
     <string name="quest_presets_default_name">Defaŭlte</string>
     <string name="quest_presets_selected">Elektita</string>
-    <string name="quest_presets_delete_message">Forigi antaŭagordon “%s”? La taska elekto kaj ordo por ĝi estos nerevokeble perditaj.</string>
+    <string name="quest_presets_delete_message">Forigi antaŭagordon “%1$s”? La taska elekto kaj ordo por ĝi estos nerevokeble perditaj.</string>
     <string name="notification_syncing">Sinkronigante datumojn…</string>
     <string name="notification_channel_sync">Sinkronigi Dateno</string>
     <string name="quest_board_type_sport">Sporto, Ekzercoj</string>
@@ -923,7 +923,7 @@ Datumoj estas refreŝigitaj post %1$s tagoj kaj neuzataj datumoj aŭtomate estas
     <string name="quest_barrier_bicycle_type_double">Baro - baroj de ambaŭ flankoj unu post la alia</string>
     <string name="quest_barrier_bicycle_type_multiple">Baro - pli ol du baroj</string>
     <string name="language_default">Sistema defaŭlto</string>
-    <string name="on_floor">sur la etaĝo %s</string>
+    <string name="on_floor">sur la etaĝo %1$s</string>
     <string name="select_street_parking_orientation">Elektu orientiĝon al vojo:</string>
     <string name="select_street_parking_position">Elektu lokon:</string>
     <string name="select_street_parking_no">Iu signo aŭ vojmarko ĉi tie?</string>
@@ -985,7 +985,7 @@ Alternative, vi povas lasi noton (kun foto).</string>
     <string name="quest_smoothness_hint">🚲, 🚗, 🚙, ... indikas por kiuj veturiloj la surfaco estu uzebla. Kio gravas estas la granda bildo prefere ol unuopaj danĝeroj.</string>
     <string name="link_osmhydrant_description">Serĉu, aldonu kaj redaktu fajrobrigadistojn kaj fajrohidrantojn</string>
     <string name="achievement_lifesaver_title">Vivdaŭrulo</string>
-    <string name="achievement_lifesaver_solved_X">Vi solvis %d taskojn kiuj helpas krizservojn kaj unuajn respondantojn!</string>
+    <string name="achievement_lifesaver_solved_X">Vi solvis %1$d taskojn kiuj helpas krizservojn kaj unuajn respondantojn!</string>
     <string name="quest_fuelSelfService_title">Ĉu ĉi tiu benzinstacio permesas memservon?</string>
     <string name="default_disabled_msg_difficult_and_time_consuming">Ĉi tiu tasko-tipo estas malebligita defaŭlte ĉar ĝi estas aŭ multe da tempo aŭ malfacile fari la ĝustan elekton. Ebligu ĉi tiun taskon -tipon se vi vere kompromitas aldoni ĉi tiun specon de datumoj.</string>
     <string name="quest_barrier_path_intersection">Kiel ĉi tiu vojo transiras la baron ĉi tie?</string>
@@ -1146,7 +1146,7 @@ Faru la samon por la alia flanko, se ĝi ĉeestas.</string>
     <string name="quest_camp_type_backcountry">Sovaĝa tendaro (sen servejoj)</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">Ĉi tiu diametro aspektas neplaĉebla, ĝi kutime estas inter %1$d kaj %2$d.</string>
     <string name="quest_recycling_type_pet">Nur PET</string>
-    <string name="street_parking_street_width">Strata larĝo: %s</string>
+    <string name="street_parking_street_width">Strata larĝo: %1$s</string>
     <string name="overlay_street_parking">Strata parkado</string>
     <string name="link_opencampingmap_description">Monda mapo de kampadejoj</string>
     <string name="quest_atm_cashin_title">Ĉu oni povas enmeti monon per ĉi tiu bankaŭtomato?</string>
@@ -1192,7 +1192,7 @@ Faru la samon por la alia flanko, se ĝi ĉeestas.</string>
     <string name="user_profile_current_week_title">Ĉi semajno</string>
     <string name="user_profile_dates_mapped">Tagoj dum tiuj vi mapis lastatempe</string>
     <string name="quest_cycleway_value_advisory_lane">Surstrate markita biciklovojo</string>
-    <string name="urlconfig_scan_qr_code_again2">Post instali la aplikaĵon, skanu la QR-kodon denove aŭ alklaku &lt;a href="%s"&gt;ĉi tiun ligilon&lt;/a&gt; por apliki antaŭagordojn.</string>
+    <string name="urlconfig_scan_qr_code_again2">Post instali la aplikaĵon, skanu la QR-kodon denove aŭ alklaku &lt;a href="%1$s"&gt;ĉi tiun ligilon&lt;/a&gt; por apliki antaŭagordojn.</string>
     <string name="confirmation_replace_shop_title">Ĉu tio nun estas alia vendejo?</string>
     <string name="confirmation_replace_shop_message">Tiukaze ankaŭ la malfermhoroj, kontaktdatumo, ktp. ŝanĝiĝus.</string>
     <string name="confirmation_replace_shop_yes">Alia vendejo</string>
@@ -1202,7 +1202,7 @@ Faru la samon por la alia flanko, se ĝi ĉeestas.</string>
 Movu ĝin nun?</string>
     <string name="node_moved_not_far_enough">Bonvole movu ĝin pli fore</string>
     <string name="node_moved_too_far">Movis tro fore. Bonvole konsideru fari noton</string>
-    <string name="node_moved">Moviĝis je %s</string>
+    <string name="node_moved">Moviĝis je %1$s</string>
     <string name="move_node_description">Ŝovu la mapon por meti la simbolon al la ĝusta loko. Provu uzi la zom-funkcion por esti plej preciza. Bonvole pripensu ke via montrita pozicio estus malakurata.</string>
     <string name="move_node_action_description">Vi movis la punkton</string>
     <string name="quest_cycleway_value_shoulder">neniu, sed la vojflanko estas usebla biciklante</string>
@@ -1293,7 +1293,7 @@ Aldone kelkaj supertavoloj ebligas aldoni novajn datumojn ĉe la pozicio de la c
     <string name="label_log_older_than">Ĝis</string>
     <string name="label_log_message_contains">Mesaĝo enhavas</string>
     <string name="title_logs_filters">Filtri mesaĝojn</string>
-    <string name="pref_title_quests_restore_hidden_summary">Nombro de kaŝitaj taskoj: %d</string>
+    <string name="pref_title_quests_restore_hidden_summary">Nombro de kaŝitaj taskoj: %1$d</string>
     <string name="quest_disable_action">Malebligi</string>
     <string name="quest_disable_title">Ĉu malebligi tia tipo de taskoj?</string>
     <string name="quest_disable_message_not_installed">StreetMeasure (ankoraŭ) ne estas instalita.</string>
@@ -1352,7 +1352,7 @@ Etaĝo estas tegmenta etaĝo (mansardo) se la fenestroj de ĝi estus en la tegme
     <string name="quest_camp_power_supply_hint">Tiu estus ŝtopilingoj ĉe la tendejoj, ŝtopilingoj ĉe la servkonstruaĵo por la gastoj, destinata ŝargstacio por poŝtelefonoj, tekkomputiloj, ktp.</string>
     <string name="quest_barrier_opening_width_bollard">Kio estas la plej larĝa apertaĵo kiu estas trairebla ĉi tie?</string>
     <string name="user_profile_all_time_title">Entute</string>
-    <string name="user_statistics_country_rank2">Rango en %s</string>
+    <string name="user_statistics_country_rank2">Rango en %1$s</string>
     <string name="quest_leafType_tree_is_just_a_stump">Nur estas stumpo de trunko</string>
     <string name="quest_board_name_title">Kio estas la surskribo de tiu informtabulo?</string>
     <string name="quest_crossing_hint">Pado kiu kruciĝas straton:</string>

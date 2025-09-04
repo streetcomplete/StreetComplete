@@ -199,7 +199,7 @@
     <string name="quest_sport_roller_skating">التزلج بحذاء العجلات</string>
     <string name="quest_wheelchairAccess_limited_description_business">يعني جزئيًا أنه لا يوجد أكثر من عتبة واحدة للوصول إلى المكان وأن معظم الغرف بالداخل يمكن الوصول إليها بواسطة الكراسي المتحركة.</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">تعني جزئيًا أنه لا يوجد أكثر من عتبة واحدة للوصول إليه.</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">اختصار في الاسم %s؟</string>
+    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">اختصار في الاسم %1$s؟</string>
     <string name="quest_recycling_type_title">ما نوع مرفق إعادة التدوير هذا؟</string>
     <string name="recycling_centre">مركز</string>
     <string name="overground_recycling_container">حاوية - وعاء</string>
@@ -380,7 +380,7 @@
     <string name="quest_construction_footway_title">هل طريق المشاة هذا مكتمل الرسم؟</string>
     <string name="quest_construction_generic_title">هل اكتمل رسم هذا الطريق؟</string>
     <string name="quest_construction_building_title">هل اكتمل رسم هذا المبنى؟</string>
-    <string name="questList_disabled_in_country">لم يظهر في %s</string>
+    <string name="questList_disabled_in_country">لم يظهر في %1$s</string>
     <string name="quest_select_hint_most_specific">اختر الإجابة الأكثر دقة:</string>
     <string name="quest_generic_item_confirmation">هل أنت متأكد من أنك لا تستطيع التحديد بدقة أكبر؟</string>
     <string name="privacy_html_third_party_quest_sources">&lt;p&gt; بالنسبة لبعض الاستعلامات، يتم تنزيل بعض البيانات الإضافية من جهات خارجية.&lt;/p&gt;</string>
@@ -491,7 +491,7 @@
     <string name="quest_motorcycleParkingCoveredStatus_title">هل موقف الدراجات النارية هذا مغطى (محمي من المطر) ؟</string>
     <string name="default_disabled_msg_maxspeed">يتم تعطيل هذا النوع من المهام افتراضيًا حيث تحتاج عادةً إلى التحقق من علامات ولافتات حدود السرعة على طول الطريق وبأكمله وليس فقط الجزء المميز. قد يستغرق الأمر أحيانًا وقتًا طويلاً لإكمال مهمة واحدة.</string>
     <string name="pref_title_quests_restore_hidden">استعادة المهام المخفية</string>
-    <string name="on_level">في طابق %s</string>
+    <string name="on_level">في طابق %1$s</string>
     <string name="underground">تحت الارض</string>
     <string name="quest_sidewalk_value_yes">يوجد رصيف</string>
     <string name="quest_sidewalk_value_no">لايوجد رصيف</string>
@@ -585,8 +585,8 @@
     <string name="achievements_empty">ليس لديك انجازات حتى الان</string>
     <string name="links_empty">ليس لديك روابط حتى الان</string>
     <string name="quests_empty">لم تنشر أي إجابات للمهمة حتى الآن</string>
-    <string name="unsynced_quests_description">بالإضافة إلى %d لم يتم نشر التغييرات بعد</string>
-    <string name="unsynced_quests_not_logged_in_description">لديك %d تغييرات لم تنشرها بعد. تحتاج إلى تسجيل الدخول لتقوم برفعها.</string>
+    <string name="unsynced_quests_description">بالإضافة إلى %1$d لم يتم نشر التغييرات بعد</string>
+    <string name="unsynced_quests_not_logged_in_description">لديك %1$d تغييرات لم تنشرها بعد. تحتاج إلى تسجيل الدخول لتقوم برفعها.</string>
     <string name="user_quests_title">أسئلة ومهام تم حلها</string>
     <string name="user_achievements_title">إنجازات</string>
     <string name="user_links_title">مجموعة من الروابط</string>
@@ -638,28 +638,28 @@
     <string name="achievement_first_edit_title">تم حل المهمة الأولى</string>
     <string name="achievement_first_edit_description">مرحبًا بك في مجتمع خريطة الشارع المفتوحة! في شاشة ملف التعريف الخاص بك، يمكنك رؤية المزيد من المعلومات حسب نوع المهمة التي قمت بحلها.</string>
     <string name="achievement_surveyor_title">مساح ومتقصي أراضي</string>
-    <string name="achievement_surveyor_solved_X">لقد قمت بحل %d مهمة! استمر في فتح المزيد من الإنجازات التي تحتوي على روابط إلى خريطة الشارع المفتوحة والتطبيقات والمشاريع الأخرى ذات الصلة بالخريطة!</string>
+    <string name="achievement_surveyor_solved_X">لقد قمت بحل %1$d مهمة! استمر في فتح المزيد من الإنجازات التي تحتوي على روابط إلى خريطة الشارع المفتوحة والتطبيقات والمشاريع الأخرى ذات الصلة بالخريطة!</string>
     <string name="achievement_regular_title">منتظم - عادي</string>
-    <string name="achievement_regular_description">لقد ساهمت بـ%d أيام في خريطة الشارع المفتوحة باستخدام هذا التطبيق! المساهمون المنتظمون هم الأساس لخريطة الشارع المفتوحة، شكرًا لتفانيكم وجهودكم! ❤</string>
+    <string name="achievement_regular_description">لقد ساهمت بـ%1$d أيام في خريطة الشارع المفتوحة باستخدام هذا التطبيق! المساهمون المنتظمون هم الأساس لخريطة الشارع المفتوحة، شكرًا لتفانيكم وجهودكم! ❤</string>
     <string name="achievement_bicyclist_title">دراج</string>
-    <string name="achievement_bicyclist_solved_X">لقد قمت بحل %d مهمة تساعد راكبي الدراجات!</string>
+    <string name="achievement_bicyclist_solved_X">لقد قمت بحل %1$d مهمة تساعد راكبي الدراجات!</string>
     <string name="achievement_wheelchair_title">إمكانية التنقل</string>
-    <string name="achievement_wheelchair_solved_X">لقد قمت بحل %d من المهام التي تساعد مستخدمي الكراسي المتحركة على التجول في المدينة!</string>
+    <string name="achievement_wheelchair_solved_X">لقد قمت بحل %1$d من المهام التي تساعد مستخدمي الكراسي المتحركة على التجول في المدينة!</string>
     <string name="achievement_postman_title">ساعي البريد</string>
-    <string name="achievement_postman_solved_X">لقد ساعدت في تحديد موقع %d عناوين!
+    <string name="achievement_postman_solved_X">لقد ساعدت في تحديد موقع %1$d عناوين!
 هذه البيانات ضرورية ليس فقط لساعي البريد ولكن أيضًا لأي نظام ملاحة.</string>
     <string name="achievement_building_title">ناطحة سحاب</string>
-    <string name="achievement_building_solved_X">لقد قمت بحل %d من المهام المتعلقة بالبناء.
+    <string name="achievement_building_solved_X">لقد قمت بحل %1$d من المهام المتعلقة بالبناء.
 لاحظ أن هذا التطبيق يسأل عن رقم المنزل للمبنى فقط بعد تحديد نوعه.</string>
     <string name="achievement_blind_title">حاسة سادسة</string>
-    <string name="achievement_blind_solved_X">لقد قمت بحل %d مهمة مثيرة للاهتمام لضعاف البصر.</string>
+    <string name="achievement_blind_solved_X">لقد قمت بحل %1$d مهمة مثيرة للاهتمام لضعاف البصر.</string>
     <string name="achievement_pedestrian_title">عداء</string>
-    <string name="achievement_pedestrian_solved_X">لقد قمت بحل%d مهمة مفيدة للمشاة!</string>
+    <string name="achievement_pedestrian_solved_X">لقد قمت بحل%1$d مهمة مفيدة للمشاة!</string>
     <string name="achievement_veg_title">لطيف مع الحيوانات</string>
-    <string name="achievement_veg_solved_X">لقد حللت %d من المهام التي تهم الأشخاص الذين يتبعون نظامًا غذائيًا خالٍ من اللحوم!</string>
+    <string name="achievement_veg_solved_X">لقد حللت %1$d من المهام التي تهم الأشخاص الذين يتبعون نظامًا غذائيًا خالٍ من اللحوم!</string>
     <string name="achievement_car_title">على الطريق</string>
-    <string name="achievement_car_solved_X">لقد قمت بحل %d من المهام التي تعمل على تحسين التفاصيل في البنية التحتية للشوارع ، ووضع الشارع في خريطة الشارع المفتوحة!</string>
-    <string name="unread_messages_message">لديك %d رسائل غير مقروءة في علبة الوارد الخاصة بك</string>
+    <string name="achievement_car_solved_X">لقد قمت بحل %1$d من المهام التي تعمل على تحسين التفاصيل في البنية التحتية للشوارع ، ووضع الشارع في خريطة الشارع المفتوحة!</string>
+    <string name="unread_messages_message">لديك %1$d رسائل غير مقروءة في علبة الوارد الخاصة بك</string>
     <string name="unread_messages_button">افتح البريد الوارد</string>
     <string name="action_about2">حول</string>
     <string name="map_btn_menu">قائمة</string>
@@ -669,11 +669,11 @@
     <string name="credits_projects_contributors_title">المشاريع المعدة لـ StreetComplete</string>
     <string name="credits_main_contributors_title">المساهمون الرئيسيون</string>
     <string name="stats_are_syncing">لا تزال إحصاءاتك قيد المزامنة. تحقق من هذه الشاشة لاحقًا.</string>
-    <string name="user_statistics_country_wiki_link">بوابة الخريطة %s</string>
+    <string name="user_statistics_country_wiki_link">بوابة الخريطة %1$s</string>
     <string name="user_statistics_filter_by_country">حسب البلد</string>
     <string name="user_statistics_filter_by_quest_type">حسب نوع المهمة</string>
     <string name="user_profile_global_rank">التصنيف العالمي</string>
-    <string name="user_profile_local_rank">مرتبة في %s</string>
+    <string name="user_profile_local_rank">مرتبة في %1$s</string>
     <string name="user_profile_days_active">أيام
 ناشط</string>
     <string name="user_profile_achievement_levels">الإنجازات
@@ -699,8 +699,8 @@
     <string name="quest_board_type_map_description">إذا كانت اللوحة تدور حول موضوع معين، فيرجى تحديده، بغض النظر عما إذا كان يتضمن أيضًا خريطة. على سبيل المثال، قد تحتوي لوحة النقل العام على خريطة طريق للحافلات. إذا لم يكن الموضوع مدرجًا ضمن الإجابات المتاحة، فيرجى التفكير في ترك ملاحظة بدلاً من ذلك.</string>
     <string name="quest_streetName_menuItem_international">عالمي</string>
     <string name="quest_buildingType_terrace2">منازل متجاورة على شكل صف</string>
-    <string name="at_housename">اسم المنزل %s</string>
-    <string name="at_housenumber">رقم المنزل %s</string>
+    <string name="at_housename">اسم المنزل %1$s</string>
+    <string name="at_housenumber">رقم المنزل %1$s</string>
     <string name="quest_openingHours_add_off_days">أضف أيام إجازة</string>
     <string name="quest_openingHours_off_day">يوم عطلة</string>
     <string name="quest_openingHours_unspecified_range">غير محدد</string>
@@ -734,11 +734,11 @@
     <string name="quest_charging_station_operator_title">من هو مشغل محطة الشحن هذه؟</string>
     <string name="link_indoorequal_description">اكتشف الخرائط الداخلية للمراكز التجارية ومحطات السكك الحديدية وما إلى ذلك</string>
     <string name="achievement_rare_title">البحث عن الكنز</string>
-    <string name="achievement_rare_solved_X">لقد وجدت وحللت %d مهمة نادرًا ما يتم إكمالها، تهانينا!</string>
+    <string name="achievement_rare_solved_X">لقد وجدت وحللت %1$d مهمة نادرًا ما يتم إكمالها، تهانينا!</string>
     <string name="achievement_citizen_title">مواطن</string>
-    <string name="achievement_citizen_solved_X">لقد قمت بحل %d مهمة مفيدة للحياة اليومية في المدينة!</string>
+    <string name="achievement_citizen_solved_X">لقد قمت بحل %1$d مهمة مفيدة للحياة اليومية في المدينة!</string>
     <string name="achievement_outdoors_title">خارج المباني وفي الهواء الطلق</string>
-    <string name="achievement_outdoors_solved_X">لقد قمت بحل %d مهمة مفيدة للأشخاص الذين يعيشون خارج المباني!</string>
+    <string name="achievement_outdoors_solved_X">لقد قمت بحل %1$d مهمة مفيدة للأشخاص الذين يعيشون خارج المباني!</string>
     <string name="quest_pedestrian_crossing_island">هل معبر المشاة هذا مجهز بجزيرة مشاة (أرض تفصل بين مساري الطريق)؟</string>
     <string name="quest_generic_answer_noSign">لا توجد علامة أو لافتة</string>
     <string name="quest_steps_ramp_separate_wheelchair">هل منحدر الكرسي المتحرك موضح كطريق مستقل على الخريطة؟</string>
@@ -761,7 +761,7 @@
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">يوجد مسار ذو اتجاهين للانعطاف إلى اليسار</string>
     <string name="quest_address_answer_no_housenumber_message2b">هل هذا صحيح؟</string>
     <string name="quest_maxheight_below_bridge_title">ما هو حد الارتفاع للمرور تحت الجسر؟</string>
-    <string name="quest_maxheight_split_way_hint">إذا لم يكن هذا منطبقاً على الطريق بالكامل، ففكر في الإجابة "%s".</string>
+    <string name="quest_maxheight_split_way_hint">إذا لم يكن هذا منطبقاً على الطريق بالكامل، ففكر في الإجابة "%1$s".</string>
     <string name="quest_tactile_paving_kerb_title">هل توجد رصيف بارز للمكفوفين على الرصيف هنا؟</string>
     <string name="quest_kerb_height_title">ما هو ارتفاع هذا الرصيف؟</string>
     <string name="quest_kerb_height_flush">نفس مستوى سطح الطريق</string>
@@ -817,9 +817,9 @@
     <string name="hid_action_description">لقد أخفيت ذلك</string>
     <string name="split_way_action_description">أنت تجزء الطريق</string>
     <string name="deleted_poi_action_description">قمت بحذفه</string>
-    <string name="added_tag_action_title">تمت إضافة %s</string>
-    <string name="removed_tag_action_title">تمت إزالة %s</string>
-    <string name="changed_tag_action_title">تم التحديث إلى %s</string>
+    <string name="added_tag_action_title">تمت إضافة %1$s</string>
+    <string name="removed_tag_action_title">تمت إزالة %1$s</string>
+    <string name="changed_tag_action_title">تم التحديث إلى %1$s</string>
     <string name="pref_title_delete_cache">حذف ذاكرة التخزين المؤقت</string>
     <string name="pref_title_delete_cache_summary">إذا كنت تعتقد أن بعض البيانات قديمة</string>
     <string name="delete_confirmation">حذف</string>
@@ -870,7 +870,7 @@
     <string name="about_title_faq">التعليمات</string>
     <string name="quest_buildingLevels_title2">كم عدد المستويات التي فوق القبو والتي يحتوي عليها هذا المبنى؟</string>
     <string name="quest_buildingLevels_title_buildingPart2">كم عدد المستويات التي فوق الطابق السفلي الذي يحتويه جزء المبنى هذا؟</string>
-    <string name="pref_subtitle_quests_preset_name">القالب: %s</string>
+    <string name="pref_subtitle_quests_preset_name">القالب: %1$s</string>
     <string name="default_disabled_msg_roofShape">يتم تعطيل نوع المهمة هذا افتراضيًا لأن أشكال السقف غالبًا ما تكون غير مرئية بسهولة من الشارع، كما أن هذا النوع من المهام أيضًا يستغرق وقتًا طويلاً؛ لذا في معظم الحالات ، يكون من الأسهل والأكثر كفاءة تحديد هذا الأمر من خلال الصور الجوية في المنزل.</string>
     <string name="quest_religion_animist">روحاني</string>
     <string name="quest_construction_steps_title">هل اكتملت هذه الخطوات؟</string>
@@ -895,7 +895,7 @@
     <string name="quest_presets_preset_name">اسم القالب</string>
     <string name="quest_presets_default_name">الافتراضي</string>
     <string name="quest_presets_selected">محدد</string>
-    <string name="quest_presets_delete_message">هل تريد حذف القالب "%s" ؟  اختيار المهمة وترتيبها سيضيعان بشكل نهائي.</string>
+    <string name="quest_presets_delete_message">هل تريد حذف القالب "%1$s" ؟  اختيار المهمة وترتيبها سيضيعان بشكل نهائي.</string>
     <string name="notification_syncing">جار مزامنة البيانات</string>
     <string name="notification_channel_sync">قُم بمزامنة البيانات</string>
     <string name="quest_board_type_sport">رياضة، تمارين</string>
@@ -933,7 +933,7 @@
     <string name="quest_barrier_bicycle_type_double">منعطف صناعي - حاجز على كل جانب</string>
     <string name="quest_barrier_bicycle_type_multiple">منعطف صناعي - أكثر من حاجزين</string>
     <string name="language_default">حسب إعدادات النظام الافتراضية</string>
-    <string name="on_floor">على الدور %s
+    <string name="on_floor">على الدور %1$s
 </string>
     <string name="select_street_parking_orientation">حدد الاتجاه نحو الطريق:</string>
     <string name="select_street_parking_position">حدد الموضع:</string>
@@ -1002,7 +1002,7 @@
     <string name="quest_smoothness_hint">🚲, 🚗, 🚙,… قم بالتأشير على المركبات التي يكون السطح صالحًا للاستخدام فيها، ما يهم هو المخاطر العمومية وليس الفردية.</string>
     <string name="link_osmhydrant_description">البحث وإضافة وتحرير محطات الإطفاء وصنابير إطفاء الحرائق</string>
     <string name="achievement_lifesaver_title">المنقذ</string>
-    <string name="achievement_lifesaver_solved_X">لقد قمت بحل %d من المهام التي تساعد خدمات الطوارئ والمستجيبين الأوائل!</string>
+    <string name="achievement_lifesaver_solved_X">لقد قمت بحل %1$d من المهام التي تساعد خدمات الطوارئ والمستجيبين الأوائل!</string>
     <string name="quest_fuelSelfService_title">هل تسمح محطة الوقود هذه بالخدمة الذاتية؟</string>
     <string name="default_disabled_msg_difficult_and_time_consuming">يتم تعطيل نوع المهمة هذا افتراضيًا لأنه يستغرق وقتًا طويلاً أو يصعب اتخاذ القرار الصحيح، قم بتمكينه فقط إذا كنت ملتزمًا حقًا بإضافة هذا النوع من البيانات.</string>
     <string name="quest_smoothness_description_good_compacted_gravel">معبأ بشدة ، قليل جدا من الحصى أو الرمل السائب</string>
@@ -1166,7 +1166,7 @@
     <string name="quest_camp_type_backcountry">التخييم في Backcountry (لا توجد مرافق)</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">هذا القطر يبدو غير صحيح، إنه عادةً بين %1$d و %2$d.</string>
     <string name="quest_recycling_type_pet">PET فقط</string>
-    <string name="street_parking_street_width">عرض الشارع: %s</string>
+    <string name="street_parking_street_width">عرض الشارع: %1$s</string>
     <string name="overlay_street_parking">وقوف السيارات في الشارع</string>
     <string name="link_ohsomehex_description">استكشف بيانات OSM عبر المقاييس بدءًا من الصورة الكبيرة وحتى الكائنات الفردية عبر المكان والزمان</string>
     <string name="link_opencampingmap_description">خريطة مواقع المعسكرات</string>
@@ -1213,7 +1213,7 @@
     <string name="user_profile_current_week_title">اخر 7 ايام</string>
     <string name="user_profile_dates_mapped">الأيام التي حددتها مؤخرًا</string>
     <string name="quest_cycleway_value_advisory_lane">حارة إرشادية للدراجات</string>
-    <string name="urlconfig_scan_qr_code_again2">بعد تثبيت التطبيق ، امسح رمز الاستجابة السريعة ضوئيًا مرة أخرى أو انقر على &lt;a href="%s"&gt; هذا الرابط &lt;/a&gt; لتطبيق الإعداد المسبق.</string>
+    <string name="urlconfig_scan_qr_code_again2">بعد تثبيت التطبيق ، امسح رمز الاستجابة السريعة ضوئيًا مرة أخرى أو انقر على &lt;a href="%1$s"&gt; هذا الرابط &lt;/a&gt; لتطبيق الإعداد المسبق.</string>
     <string name="confirmation_replace_shop_title">هل هو مكان مختلف الآن؟</string>
     <string name="confirmation_replace_shop_message">في هذه الحالة ، ستتغير أيضًا ساعات العمل ومعلومات الاتصال وما إلى ذلك.</string>
     <string name="confirmation_replace_shop_yes">مكان مختلف الآن</string>
@@ -1223,7 +1223,7 @@
 أنحركها الآن؟</string>
     <string name="node_moved_not_far_enough">رجاء أبعدها أكثر</string>
     <string name="node_moved_too_far">حُرِّكت بعيدًا جدًا، فكر بترك ملاحظة.</string>
-    <string name="node_moved">حُرِّك بمقدار %s</string>
+    <string name="node_moved">حُرِّك بمقدار %1$s</string>
     <string name="move_node_description">اسحب الخريطة لتضع الميزة في مكانها الصحيح، استخدم خاصية المكبر وحاول بأن تكون دقيقًا قدر المستطاع، ورجاء ضع في بالك بأن موقعك الظاهر في الخريطة قد لا يكون مطابقًا تمامًا للواقع.</string>
     <string name="move_node_action_description">لقد حركت النقطة</string>
     <string name="quest_cycleway_value_shoulder">ولا واحدة، ولكن الكتف يمكن استخدامه للدراجين</string>
@@ -1320,7 +1320,7 @@
     <string name="label_log_older_than">إلى</string>
     <string name="label_log_message_contains">الرسالة تتضمن</string>
     <string name="title_logs_filters">صَفِّ/فلتر الرسائل</string>
-    <string name="pref_title_quests_restore_hidden_summary">عدد المهام الخفية: %d</string>
+    <string name="pref_title_quests_restore_hidden_summary">عدد المهام الخفية: %1$d</string>
     <string name="link_every_door_description">معدِّل نقاط اهتمام فعّال للأندرويد والiOS</string>
     <string name="link_mapcomplete_description">مجموعة من السمات لخرائط OSM والتي يظهر كل منها نوعًا معينًا من الميزات ويسمح لك بالتعديل عليه</string>
     <string name="link_forum_description">أتحتاج لمساعدة؟ أتريد بأن تقرأ عمّا يحدث؟ تعال وامرح، إنها مليئة بالفعاليات من المجتمعات من كل أنحاء العالم!</string>

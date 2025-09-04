@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="action_settings">Налаштування</string>
-    <string name="oauth_communication_error">Неможливо зв\'язатися з сервером для авторизації</string>
+    <string name="oauth_communication_error">Неможливо зв'язатися з сервером для авторизації</string>
     <string name="oauth_failed_permissions">Помилка авторизації: вам потрібні всі перелічені дозволи</string>
-    <string name="pref_category_communication">Зв\'язок</string>
+    <string name="pref_category_communication">Зв'язок</string>
     <string name="pref_category_display">Відображення</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">Показувати всі нотатки</string>
     <string name="pref_summaryOn_show_notes_not_phrased_as_questions">Також показувати нотатки, не сформульовані у вигляді питань</string>
@@ -16,7 +16,7 @@
     <string name="quest_generic_confirmation_yes">Так, підтверджую</string>
     <string name="quest_generic_confirmation_no">Я перевірю</string>
     <string name="quest_leave_new_note_title">Залишити натомість нотатку?</string>
-    <string name="quest_leave_new_note_description">Ви можете залишити нотатку на цьому місці, щоб хтось з інших учасників міг лишити відгук або розв\'язати її</string>
+    <string name="quest_leave_new_note_description">Ви можете залишити нотатку на цьому місці, щоб хтось з інших учасників міг лишити відгук або розв'язати її</string>
     <string name="quest_leave_new_note_yes">Залишити нотатку</string>
     <string name="quest_leave_new_note_no">Сховати</string>
     <string name="quest_streetName_title">Яка назва у цієї дороги?</string>
@@ -57,7 +57,7 @@
     <string name="version_banned_message">Ція версія StreetComplete дуже застаріла. Оновіть версію!</string>
     <string name="no_gps_no_quests">Для автоматичного пошуку завдань поруч із вами увімкніть позиціювання</string>
     <string name="later">Пізніше</string>
-    <string name="quest_streetName_answer_noProperStreet_link">Це лише з\'єднання двох доріг</string>
+    <string name="quest_streetName_answer_noProperStreet_link">Це лише з'єднання двох доріг</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">Щось інше (залишити нотатку)</string>
     <string name="about_title_privacy_statement">Заява про конфіденційність</string>
     <string name="quest_openingHours_public_holidays">святкові дні</string>
@@ -67,7 +67,7 @@
     <string name="quest_openingHours_answer_seasonal_opening_hours">Залежить від місяця…</string>
     <string name="quest_openingHours_answer_no_regular_opening_hours">Немає встановленого графіку роботи…</string>
     <string name="quest_openingHours_comment_title">Опишіть графік роботи</string>
-    <string name="quest_openingHours_comment_description">Будьте лаконічні, за можливостю використовуйте дані з табличок (наприклад, «за призначенням»). Відсутність табличок не обов\'язково означає особливий режим роботи.</string>
+    <string name="quest_openingHours_comment_description">Будьте лаконічні, за можливостю використовуйте дані з табличок (наприклад, «за призначенням»). Відсутність табличок не обов'язково означає особливий режим роботи.</string>
     <string name="quest_roofShape_title">Якої форми дах цієї будівлі?</string>
     <string name="quest_roofShape_select_one">Оберіть:</string>
     <string name="quest_roofShape_show_more">Показати ще…</string>
@@ -81,7 +81,7 @@
 Усі ваші правки потрапляють прямо на мапу, і між цим застосунком та інфраструктурою OSM немає посередників.
 &lt;/p&gt;
 &lt;p&gt;
-Анонімне редагування OpenStreetMap неможливе, тому будь-які зміни ви робите через свій обліковий запис OSM. Це значить, що час, дані та локація ваших правок показуються публічно на сайті OpenStreetMap і прив\'язані до вашого облікового запису.
+Анонімне редагування OpenStreetMap неможливе, тому будь-які зміни ви робите через свій обліковий запис OSM. Це значить, що час, дані та локація ваших правок показуються публічно на сайті OpenStreetMap і прив'язані до вашого облікового запису.
 &lt;/p&gt;
 
 &lt;h2&gt;Місцезнаходження&lt;/h2&gt;
@@ -120,7 +120,7 @@
     <string name="store_listing_short_description">Застосунок — дослідник OpenStreetMap</string>
     <string name="store_listing_full_description">Допоможіть покращити OpenStreetMap разом із StreetComplete!
 
-Цей застосунок знаходить дані неподалік від вас, які можна доповнити та розширити, та показує їх на мапі у вигляді позначок. Кожен із них можна розв\'язати, відповівши на просте питання, після чого дані потраплять на сайт.
+Цей застосунок знаходить дані неподалік від вас, які можна доповнити та розширити, та показує їх на мапі у вигляді позначок. Кожен із них можна розв'язати, відповівши на просте питання, після чого дані потраплять на сайт.
 
 Інформація, яку ви вказуєте, завантажується на OpenStreetMap від вашого імені, і вам не потрібно використовувати для цього будь-який інший редактор.</string>
     <string name="quest_name_answer_noName">Без назви…</string>
@@ -132,8 +132,8 @@
     <string name="crash_compose_email">Написати лист</string>
     <string name="no_email_client">У вас немає встановленого поштового клієнта.</string>
     <string name="pref_title_keep_screen_on">Не блокувати екран</string>
-    <string name="download_server_error">Помилка з\'єднання під час пошуку завдань. Спробуйте пізніше.</string>
-    <string name="upload_server_error">Помилка з\'єднання під час завантаження відповідей. Спробуйте пізніше.</string>
+    <string name="download_server_error">Помилка з'єднання під час пошуку завдань. Спробуйте пізніше.</string>
+    <string name="upload_server_error">Помилка з'єднання під час завантаження відповідей. Спробуйте пізніше.</string>
     <string name="quest_generic_hasFeature_yes">Так</string>
     <string name="quest_generic_hasFeature_no">Ні</string>
     <string name="quest_bikeParkingCapacity_title">Скільки велосипедів тут можна припаркувати?</string>
@@ -196,8 +196,8 @@
     <string name="quest_sport_roller_skating">Катання на роликах</string>
     <string name="quest_wheelchairAccess_limited_description_business">«Частково» значить, що для доступу треба зробити не більше кроку і що більшість кімнат всередині обладнані для інвалідних візків.</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">«Частково» значить, що для доступу треба зробити не більше кроку.</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">Скорочення в назві %s?</string>
-    <string name="quest_recycling_type_title">Якого типу цей об\'єкт переробки?</string>
+    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">Скорочення в назві %1$s?</string>
+    <string name="quest_recycling_type_title">Якого типу цей об'єкт переробки?</string>
     <string name="recycling_centre">Центр</string>
     <string name="overground_recycling_container">Контейнер</string>
     <string name="underground_recycling_container">Підземний контейнер</string>
@@ -290,8 +290,8 @@
     <string name="quest_buildingLevels_levelsLabel2">звичайні поверхи (без даху)</string>
     <string name="quest_buildingLevels_answer_multipleLevels">По-різному для різних частин будівлі</string>
     <string name="quest_buildingLevels_answer_description">У цьому випадку просто введіть значення найвищої частини будівлі.</string>
-    <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">Чи відокремлені фізично проїзні шляхи цієї дороги (наприклад, бар\'єром)? Від цього залежить типове значення максимальної швидкості.</string>
-    <string name="about_category_feedback">Зворотній зв\'язок</string>
+    <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">Чи відокремлені фізично проїзні шляхи цієї дороги (наприклад, бар'єром)? Від цього залежить типове значення максимальної швидкості.</string>
+    <string name="about_category_feedback">Зворотній зв'язок</string>
     <string name="quest_leave_new_note_photo">Прикріпити фото</string>
     <string name="quest_leave_new_note_photo_delete_title">Видалити зображення?</string>
     <string name="quest_cycleway_value_track">велодоріжка</string>
@@ -309,8 +309,8 @@
     <string name="undo_confirm_positive">Скасувати</string>
     <string name="undo_confirm_negative">Залишити</string>
     <string name="quest_hasFeature_only">Лише</string>
-    <string name="quest_dietType_explanation_vegan">Веганські страви не містять продуктів тваринного походження (без м\'яса, молочних продуктів, яєць і т. д.)</string>
-    <string name="quest_dietType_explanation_vegetarian">Вегетаріанські страви не містять м\'яса, риби та птиці.</string>
+    <string name="quest_dietType_explanation_vegan">Веганські страви не містять продуктів тваринного походження (без м'яса, молочних продуктів, яєць і т. д.)</string>
+    <string name="quest_dietType_explanation_vegetarian">Вегетаріанські страви не містять м'яса, риби та птиці.</string>
     <string name="quest_dietType_explanation">Відповідайте «так», тільки якщо місце надає належні варіанти харчування для цієї дієти. Ігноруйте закуски і т. п.</string>
     <string name="quest_carWashType_title">Якого типу ця автомийка?</string>
     <string name="quest_carWashType_automated">Автоматична</string>
@@ -319,16 +319,16 @@
     <string name="enable_quest_confirmation_title">Увімкнути цей тип квестів?</string>
     <string name="default_disabled_msg_go_inside">Цей тип квесту є типово вимкненим, тому що вам, скоріш за все, доведеться відвідати місця, щоб відповісти на питання.</string>
     <string name="quest_housenumber_conscription_number">Наскрізна нумерація</string>
-    <string name="quest_housenumber_street_number_optional">Номер орієнтації (необов\'язково)</string>
+    <string name="quest_housenumber_street_number_optional">Номер орієнтації (необов'язково)</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">Також велодоріжка з іншого боку…</string>
     <string name="quest_openingHours_emptyAnswer">Потрібно описати, що вказано у розкладі. Якщо він не вивішаний, дізнайтеся час роботи усередині.</string>
     <string name="quest_cycleway_value_none_but_no_oneway">ніхто, але велосипедисти можуть їздити по дорозі в обох напрямках</string>
     <string name="quest_streetName_answer_noName_question">Чому в неї немає назви?</string>
-    <string name="quest_streetName_answer_noProperStreet_service2">Це щось на зразок під\'їзної дороги або стоянки</string>
+    <string name="quest_streetName_answer_noProperStreet_service2">Це щось на зразок під'їзної дороги або стоянки</string>
     <string name="quest_streetName_answer_noProperStreet_track2">Це сільськогосподарська чи лісогосподарська дорога</string>
     <string name="quest_streetName_answer_noName_noname">Нічого з перерахованого, просто немає назви</string>
     <string name="quest_wheelchairAccess_description_toilets">Знак інвалідного візка, який може бути вказаний, якщо туалети доступні.
-«Частково» означає, що на інвалідному візку можна в\'їхати та користуватись туалетом, але поручні та адаптований рукомийник відсутні.</string>
+«Частково» означає, що на інвалідному візку можна в'їхати та користуватись туалетом, але поручні та адаптований рукомийник відсутні.</string>
     <string name="map_btn_create_note">Створити нову нотатку</string>
     <string name="create_new_note_unprecise">Приблизьте для створення нотатки</string>
     <string name="create_new_note_description">Ви можете залишити нотатку, щоб інші учасники дізналися про проблему, яка має тут місце. Налаштуйте позицію примітки, переміщаючи мапу.</string>
@@ -338,7 +338,7 @@
     <string name="quest_bridge_structure_title">Яка структура цього моста?</string>
     <string name="quest_internet_access_wlan">Wi-Fi</string>
     <string name="quest_internet_access_wired">Дротовий (LAN)</string>
-    <string name="quest_internet_access_terminal">Комп\'ютер з інтернет-доступом</string>
+    <string name="quest_internet_access_terminal">Комп'ютер з інтернет-доступом</string>
     <string name="quest_internet_access_no">Без доступу</string>
     <string name="quest_bench_backrest_title">Чи мая ця лавка спинку?</string>
     <string name="quest_bench_answer_picnic_table">Це стіл для пікніка</string>
@@ -377,7 +377,7 @@
     <string name="quest_construction_footway_title">Ця пішохідна доріжка відремонтована?</string>
     <string name="quest_construction_generic_title">Цей шлях відремонтований?</string>
     <string name="quest_construction_building_title">Цей дім добудований?</string>
-    <string name="questList_disabled_in_country">Не показується в країні %s</string>
+    <string name="questList_disabled_in_country">Не показується в країні %1$s</string>
     <string name="quest_select_hint_most_specific">Оберіть те, що підходить найбільше:</string>
     <string name="quest_generic_item_confirmation">Ви впевнені, що не можете визначити це більш детально?</string>
     <string name="privacy_html_third_party_quest_sources">&lt;p&gt; Для деяких квестів завантажуються додаткові дані зі сторонніх джерел.&lt;/p&gt;</string>
@@ -394,7 +394,7 @@
     <string name="quest_buildingType_apartments_description">будинок для декількох сімей, може мати роздрібні торгівельні точки на першому поверсі</string>
     <string name="quest_buildingType_apartments">Багатоквартирний будинок</string>
     <string name="quest_buildingType_detached">Особняк</string>
-    <string name="quest_buildingType_detached_description">окремо стоячий дім для однієї сім\'ї</string>
+    <string name="quest_buildingType_detached_description">окремо стоячий дім для однієї сім'ї</string>
     <string name="quest_buildingType_semi_detached">Напівособняк</string>
     <string name="quest_buildingType_terrace_description">лінійний ряд подібних односімейних будинків</string>
     <string name="quest_buildingType_hotel">Готель</string>
@@ -473,23 +473,23 @@
     <string name="quest_noteDiscussion_closed2">Закрито %1$s, %2$s</string>
     <string name="quest_noteDiscussion_reopen2">Повторно відкрито %1$s, %2$s</string>
     <string name="quest_noteDiscussion_hide2">Сховано %1$s, %2$s</string>
-    <string name="privacy_html_image_upload2">&lt;p&gt;Фото, які ви додаєте до нотатки завантажуються на мій сервер і видаляються через деякий час після її розв\'язання. Метадані видаляються перед надсиланням&lt;/p&gt;</string>
+    <string name="privacy_html_image_upload2">&lt;p&gt;Фото, які ви додаєте до нотатки завантажуються на мій сервер і видаляються через деякий час після її розв'язання. Метадані видаляються перед надсиланням&lt;/p&gt;</string>
     <string name="action_deselect_all">Зняти вибір з усіх</string>
     <string name="quest_buildingType_retail_description">Включаючи будівлі для ресторанів, кафе, …</string>
     <string name="quest_openingHours_timeSelect_next">Далі</string>
     <string name="quest_tracktype_title">Наскільки тверде покриття цього шляху?</string>
     <string name="quest_tracktype_grade1">Тверде</string>
-    <string name="quest_tracktype_grade4">В основному м\'яке</string>
-    <string name="quest_tracktype_grade5">М\'яке</string>
+    <string name="quest_tracktype_grade4">В основному м'яке</string>
+    <string name="quest_tracktype_grade5">М'яке</string>
     <string name="quest_building_underground_title">Чи є ця будівля повністю під землею?</string>
     <string name="quest_wheelchairAccess_limited_description_outside">Частково означає що одного кроку достатньо для доступу</string>
     <string name="quest_wheelchairAccess_outside_title">Чи є доступ для людей у візках?</string>
     <string name="quest_traffic_signals_button_title">Чи вмикається пішохідний світлофор кнопкою?</string>
     <string name="quest_motorcycleParkingCapacity_title">Скільки мотоциклів ту може розташовуватись?</string>
     <string name="quest_motorcycleParkingCoveredStatus_title">Ця парковка для мотоциклів крита (захищена від дощу)?</string>
-    <string name="default_disabled_msg_maxspeed">Цей тип квесту є типово вимкненим, оскільки зазвичай потрібно перевірити всю вулицю на наявність знаків обмеження швидкості, а не лише виділений відрізок. Іноді це може бути достатньо великим завданням лише для розв\'язання одного квесту.</string>
+    <string name="default_disabled_msg_maxspeed">Цей тип квесту є типово вимкненим, оскільки зазвичай потрібно перевірити всю вулицю на наявність знаків обмеження швидкості, а не лише виділений відрізок. Іноді це може бути достатньо великим завданням лише для розв'язання одного квесту.</string>
     <string name="pref_title_quests_restore_hidden">Відновити приховані завдання</string>
-    <string name="on_level">на %s поверсі</string>
+    <string name="on_level">на %1$s поверсі</string>
     <string name="underground">під землею</string>
     <string name="quest_sidewalk_value_yes">тротуар</string>
     <string name="quest_sidewalk_value_no">немає тротуару</string>
@@ -573,17 +573,17 @@
     <string name="tutorial_intro">З StreetComplete набагато простіше додавати дані в OpenStreetMap. Він автоматично шукає відсутні деталі навколо Вас: велосипедні смуги, номери будинків, час роботи та багато іншого…</string>
     <string name="tutorial_solving_quests">Знайдені відсутні дані будуть з’являтися на вашій мапі як квести.
 
-Ви можете розпочати їх розв\'язання відразу, а пізніше увійти в систему, щоб опублікувати.</string>
+Ви можете розпочати їх розв'язання відразу, а пізніше увійти в систему, щоб опублікувати.</string>
     <string name="tutorial_stay_safe">Якщо Ви не впевнені, Ви можете завжди відповісти "Важко сказати" та залишити нотатку.
 
-Насамкінець, пам\'ятайте про безпеку: будьте уважні навколо себе та не заходьте на приватну територію.</string>
+Насамкінець, пам'ятайте про безпеку: будьте уважні навколо себе та не заходьте на приватну територію.</string>
     <string name="tutorial_happy_mapping">Успішного мапінгу!</string>
     <string name="achievements_empty">У вас ще немає досягнень</string>
     <string name="links_empty">У вас ще немає посилань</string>
     <string name="quests_empty">Ви ще не опублікували відповідей на квести</string>
-    <string name="unsynced_quests_description">і %d ще не опублікованих змін.</string>
-    <string name="unsynced_quests_not_logged_in_description">Ви маєте %d ще не опублікованих змін. Вам потрібно увійти, щоб їх надіслати.</string>
-    <string name="user_quests_title">Розв\'язані квести</string>
+    <string name="unsynced_quests_description">і %1$d ще не опублікованих змін.</string>
+    <string name="unsynced_quests_not_logged_in_description">Ви маєте %1$d ще не опублікованих змін. Вам потрібно увійти, щоб їх надіслати.</string>
+    <string name="user_quests_title">Розв'язані квести</string>
     <string name="user_achievements_title">Досягнення</string>
     <string name="user_links_title">Колекція посилань</string>
     <string name="user_profile_title">Профіль</string>
@@ -606,9 +606,9 @@
     <string name="link_openvegemap_description">Відкрийте для себе вегетаріанські та веганські ресторани у своєму місті</string>
     <string name="link_touch_mapper_description">Створюйте тактильні мапи легко для будь-якої адреси</string>
     <string name="link_mapy_tactile_description">Тактильні мапи для людей із вадами зору в різних масштабах</string>
-    <string name="link_josm_description">Повнофункціональний редактор OSM для комп\'ютера. Це потужний інструмент для постійних авторів.</string>
+    <string name="link_josm_description">Повнофункціональний редактор OSM для комп'ютера. Це потужний інструмент для постійних авторів.</string>
     <string name="link_vespucci_description">Розширений редактор OSM для Android</string>
-    <string name="link_ideditor_description">Простий редактор OSM у веб оглядачі. Оптимізований для комп\'ютерів або великих планшетів</string>
+    <string name="link_ideditor_description">Простий редактор OSM у веб оглядачі. Оптимізований для комп'ютерів або великих планшетів</string>
     <string name="link_umap_description">Швидко створюйте карти зі спеціальними даними та вставляйте їх на свій сайт</string>
     <string name="link_opnvkarte_description">Мапа маршрутів та зупинок громадського транспорту</string>
     <string name="link_wiki_description">Вікі - це ваш початок для всього, що стосується OpenStreetMap</string>
@@ -631,30 +631,30 @@
     <string name="link_openstreetbrowser_description">Мапа для перегляду можливостей OpenStreetMap за категоріями</string>
     <string name="link_weeklyosm_description">Блог щотижневих новин про те, що відбувається у світі OpenStreetMap</string>
     <string name="link_figuregrounder_description">Створіть плакати з діаграмою міста або району</string>
-    <string name="achievement_first_edit_title">Перший квест розв\'язано</string>
-    <string name="achievement_first_edit_description">Ласкаво просимо до спільноти OpenStreetMap! На екрані свого профілю ви можете побачити більше інформації про кожен розв\'язаний тип квесту</string>
+    <string name="achievement_first_edit_title">Перший квест розв'язано</string>
+    <string name="achievement_first_edit_description">Ласкаво просимо до спільноти OpenStreetMap! На екрані свого профілю ви можете побачити більше інформації про кожен розв'язаний тип квесту</string>
     <string name="achievement_surveyor_title">Дослідник</string>
-    <string name="achievement_surveyor_solved_X">Ви розв\'язали %d квестів! Продовжуйте відкривати більше досягнень, які містять посилання на OSM та інші застосунки та проєкти, пов’язані з мапою!</string>
+    <string name="achievement_surveyor_solved_X">Ви розв'язали %1$d квестів! Продовжуйте відкривати більше досягнень, які містять посилання на OSM та інші застосунки та проєкти, пов’язані з мапою!</string>
     <string name="achievement_regular_title">Статист</string>
-    <string name="achievement_regular_description">Ви працюєте %d днів в OSM завдяки цьому застосунку! Постійні учасники є основою OSM, дякуємо за вашу відданість! ❤</string>
+    <string name="achievement_regular_description">Ви працюєте %1$d днів в OSM завдяки цьому застосунку! Постійні учасники є основою OSM, дякуємо за вашу відданість! ❤</string>
     <string name="achievement_bicyclist_title">Велосипедист</string>
-    <string name="achievement_bicyclist_solved_X">Ви розв\'язали %d квестів для допомоги велосипедистам!</string>
+    <string name="achievement_bicyclist_solved_X">Ви розв'язали %1$d квестів для допомоги велосипедистам!</string>
     <string name="achievement_wheelchair_title">Мобільність</string>
-    <string name="achievement_wheelchair_solved_X">Ви розв\'язали %d квестів, які допомагають інвалідам на візках пересуватися містом!</string>
+    <string name="achievement_wheelchair_solved_X">Ви розв'язали %1$d квестів, які допомагають інвалідам на візках пересуватися містом!</string>
     <string name="achievement_postman_title">Поштар</string>
-    <string name="achievement_postman_solved_X">Ви допомогли знайти %d адресу!
+    <string name="achievement_postman_solved_X">Ви допомогли знайти %1$d адресу!
 Ці дані важливі не лише для листоноші, а й для будь-якої навігаційної системи.</string>
     <string name="achievement_building_title">Підйом нагору</string>
-    <string name="achievement_building_solved_X">Ви розв\'язали %d квестів споруд. Зверніть увагу, що цей застосунок запитує адресу будівлі, тільки коли був вказаний його тип.</string>
+    <string name="achievement_building_solved_X">Ви розв'язали %1$d квестів споруд. Зверніть увагу, що цей застосунок запитує адресу будівлі, тільки коли був вказаний його тип.</string>
     <string name="achievement_blind_title">Шосте чуття</string>
-    <string name="achievement_blind_solved_X">Ви розв\'язали %d квестів, які цікаві людям з вадами зору</string>
+    <string name="achievement_blind_solved_X">Ви розв'язали %1$d квестів, які цікаві людям з вадами зору</string>
     <string name="achievement_pedestrian_title">Бігун</string>
-    <string name="achievement_pedestrian_solved_X">Ви розв\'язали %d квестів, які цікаві пішим людям!</string>
+    <string name="achievement_pedestrian_solved_X">Ви розв'язали %1$d квестів, які цікаві пішим людям!</string>
     <string name="achievement_veg_title">Захисник тварин</string>
-    <string name="achievement_veg_solved_X">Ви розв\'язали %d квестів, цікавих для людей, які не вживають м\'яса!</string>
+    <string name="achievement_veg_solved_X">Ви розв'язали %1$d квестів, цікавих для людей, які не вживають м'яса!</string>
     <string name="achievement_car_title">В дорозі</string>
-    <string name="achievement_car_solved_X">Ви розв\'язали %d квестів, які покращують деталі вуличної інфраструктури, додавши вулицю в OpenStreetMap!</string>
-    <string name="unread_messages_message">У вашій поштовій скриньці є %d непрочитаних повідомлень</string>
+    <string name="achievement_car_solved_X">Ви розв'язали %1$d квестів, які покращують деталі вуличної інфраструктури, додавши вулицю в OpenStreetMap!</string>
+    <string name="unread_messages_message">У вашій поштовій скриньці є %1$d непрочитаних повідомлень</string>
     <string name="unread_messages_button">Відкрити Вхідні</string>
     <string name="action_about2">Про</string>
     <string name="map_btn_menu">Меню</string>
@@ -664,12 +664,12 @@
     <string name="credits_projects_contributors_title">Проєкти, створені для StreetComplete</string>
     <string name="credits_main_contributors_title">Основні співавтори</string>
     <string name="stats_are_syncing">Ваша статистика все ще синхронізується. Перевірте цей екран пізніше.</string>
-    <string name="user_statistics_country_wiki_link">Картографічний портал %s</string>
+    <string name="user_statistics_country_wiki_link">Картографічний портал %1$s</string>
     <string name="user_statistics_filter_by_country">за країною</string>
     <string name="user_statistics_filter_by_quest_type">за типом квесту</string>
     <string name="user_profile_global_rank">Загальний рейтинг</string>
     <string name="user_profile_local_rank">Рейтинг у
-%s</string>
+%1$s</string>
     <string name="user_profile_days_active">Активних днів</string>
     <string name="user_profile_achievement_levels">Рівень досягнень</string>
     <string name="quest_address_street_no_named_streets">Вона не належить до названої вулиці</string>
@@ -693,8 +693,8 @@
     <string name="quest_board_type_map_description">Якщо дошка стосується певної теми, будь ласка, вкажіть її, незалежно від того, чи містить вона також мапу. Наприклад, дошка громадського транспорту може мати мапу автобусних маршрутів. Якщо тема не вказана серед доступних відповідей, залиште нотатку.</string>
     <string name="quest_streetName_menuItem_international">міжнародна</string>
     <string name="quest_buildingType_terrace2">Ряд будинків</string>
-    <string name="at_housename">Назва дому %s</string>
-    <string name="at_housenumber">будинок номер %s</string>
+    <string name="at_housename">Назва дому %1$s</string>
+    <string name="at_housenumber">будинок номер %1$s</string>
     <string name="quest_openingHours_add_off_days">Додати вихідні</string>
     <string name="quest_openingHours_off_day">Вихідні</string>
     <string name="quest_openingHours_unspecified_range">Не вказано</string>
@@ -717,22 +717,22 @@
     <string name="quest_traffic_signals_vibrate_description">Підказка: Часто це вібраційна кнопка або обертовий конус на нижній стороні корпусу кнопки світлофора.</string>
     <string name="quest_buildingType_bungalow_description2">маленький окремо стоячий дім (літня дача, святковий котедж, хатина…)</string>
     <string name="quest_railway_crossing_barrier_title2">Які бар’єри використовуються на цьому залізничному переїзді?</string>
-    <string name="quest_railway_crossing_barrier_none2">Без бар\'єрів</string>
+    <string name="quest_railway_crossing_barrier_none2">Без бар'єрів</string>
     <string name="quest_steps_ramp_title">Чи мають ці сходи пандус? Який?</string>
     <string name="quest_steps_ramp_none">немає (робочого) пандуса</string>
-    <string name="quest_steps_ramp_bicycle">З\'їзд для велосипеда</string>
-    <string name="quest_steps_ramp_stroller">З\'їзд для дитячої коляски</string>
+    <string name="quest_steps_ramp_bicycle">З'їзд для велосипеда</string>
+    <string name="quest_steps_ramp_stroller">З'їзд для дитячої коляски</string>
     <string name="quest_steps_ramp_wheelchair">Пандус для інвалідного візка</string>
     <string name="quest_atm_operator_title">Як називається банк цього банкомата?</string>
     <string name="quest_clothes_container_operator_title">Хто збирає пожертви у цей контейнер для одягу?</string>
     <string name="quest_charging_station_operator_title">Хто є оператором цієї зарядної станції?</string>
     <string name="link_indoorequal_description">Відкрийте для себе внутрішні плани торгових центрів, залізничних станцій тощо.</string>
     <string name="achievement_rare_title">Полювання за скарбами</string>
-    <string name="achievement_rare_solved_X">Ви знайшли та розв\'язали %d квестів, які виконуються дуже рідко, вітаємо!</string>
+    <string name="achievement_rare_solved_X">Ви знайшли та розв'язали %1$d квестів, які виконуються дуже рідко, вітаємо!</string>
     <string name="achievement_citizen_title">Житель</string>
-    <string name="achievement_citizen_solved_X">Ви розв\'язали %d квестів, які корисні для повсякденного життя в місті!</string>
+    <string name="achievement_citizen_solved_X">Ви розв'язали %1$d квестів, які корисні для повсякденного життя в місті!</string>
     <string name="achievement_outdoors_title">Зовні</string>
-    <string name="achievement_outdoors_solved_X">Ви розв\'язали %d квестів, які корисні для людей на природі!</string>
+    <string name="achievement_outdoors_solved_X">Ви розв'язали %1$d квестів, які корисні для людей на природі!</string>
     <string name="quest_pedestrian_crossing_island">Чи є на цьому пішохідному переході острівець безпеки?</string>
     <string name="quest_generic_answer_noSign">Знаку немає</string>
     <string name="quest_steps_ramp_separate_wheelchair">Чи показується пандус для інвалідного візка окремо на мапі?</string>
@@ -755,13 +755,13 @@
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">Він має подвійну смугу лівого повороту</string>
     <string name="quest_address_answer_no_housenumber_message2b">Це правильно?</string>
     <string name="quest_maxheight_below_bridge_title">Яка гранична висота під мостом?</string>
-    <string name="quest_maxheight_split_way_hint">Якщо це стосується не всього шляху, розгляньте відповідь "%s".</string>
+    <string name="quest_maxheight_split_way_hint">Якщо це стосується не всього шляху, розгляньте відповідь "%1$s".</string>
     <string name="quest_tactile_paving_kerb_title">На цьому бордюрі є тактильна бруківка?</string>
     <string name="quest_kerb_height_title">Яка висота цього бордюра?</string>
     <string name="quest_kerb_height_flush">Одного рівня з поверхнею дороги</string>
     <string name="quest_kerb_height_lowered">Трошки вищий за дорогу</string>
     <string name="quest_kerb_height_raised">Високий бордюр</string>
-    <string name="quest_kerb_height_lowered_ramp">Бордюрний з\'їзд</string>
+    <string name="quest_kerb_height_lowered_ramp">Бордюрний з'їзд</string>
     <string name="quest_lanes_answer_lanes_description2">Вкажіть загальну кількість позначених смуг руху (в обох напрямках), які можна використовувати в автомобільному русі. Велосипедні та спеціальні паркувальні смуги не враховуються.
 Якщо будь-яка смуга зарезервована для автобусів, залиште нотатку.</string>
     <string name="quest_lanes_answer_lanes_description_one_side2">Вкажіть тут кількість позначених смуг, які можна використовувати для автомобільного руху. Але велосипедні та спеціальні паркувальні смуги не враховуються.
@@ -811,9 +811,9 @@
     <string name="hid_action_description">Ви приховали це</string>
     <string name="split_way_action_description">Ви розділили шлях</string>
     <string name="deleted_poi_action_description">Ви видаляєте це</string>
-    <string name="added_tag_action_title">Додано %s</string>
-    <string name="removed_tag_action_title">Видалено %s</string>
-    <string name="changed_tag_action_title">Змінено %s</string>
+    <string name="added_tag_action_title">Додано %1$s</string>
+    <string name="removed_tag_action_title">Видалено %1$s</string>
+    <string name="changed_tag_action_title">Змінено %1$s</string>
     <string name="pref_title_delete_cache">Очистити кеш</string>
     <string name="pref_title_delete_cache_summary">Якщо ви думаєте що дані застарілі</string>
     <string name="delete_confirmation">Видалити</string>
@@ -827,7 +827,7 @@
     <string name="quest_barrier_type_bollard">Стовпчик</string>
     <string name="quest_barrier_type_chain">Ланцюг</string>
     <string name="quest_barrier_type_rope">Мотузка</string>
-    <string name="quest_barrier_type_wire_gate">З\'ємна секція з дроту</string>
+    <string name="quest_barrier_type_wire_gate">З'ємна секція з дроту</string>
     <string name="quest_barrier_type_cattle_grid">Перешкоди для худоби</string>
     <string name="quest_barrier_type_block">Массивний блок</string>
     <string name="quest_barrier_jersey_barrier">Модульний відбійник</string>
@@ -863,7 +863,7 @@
     <string name="about_title_faq">ЧаПи</string>
     <string name="quest_buildingLevels_title2">Скільки поверхів над підвалом має цей будинок?</string>
     <string name="quest_buildingLevels_title_buildingPart2">Скільки поверхів над підвалом має ця частина будинку?</string>
-    <string name="pref_subtitle_quests_preset_name">Заготовка: %s</string>
+    <string name="pref_subtitle_quests_preset_name">Заготовка: %1$s</string>
     <string name="default_disabled_msg_roofShape">Цей тип квесту вимкнено за замовчуванням, оскільки форми даху часто нелегко побачити з вулиці. Цей тип квесту також займає більше часу; здебільшого простіше та ефективніше розпізнати з аерознімків удома.</string>
     <string name="quest_religion_animist">Анімізм</string>
     <string name="quest_construction_steps_title">Ці кроки завершені?</string>
@@ -877,9 +877,9 @@
     <string name="team_mode_choose_color2">Далі, кожен повинен вибрати свій колір. Виберіть свій:</string>
     <string name="link_organic_maps_description">Застосунок карт для мандрівників, туристів та велосипедистів, який працює автономно</string>
     <string name="quest_kerb_height_no">Без бордюру</string>
-    <string name="quest_barrier_type_stepover_wooden">Дерев\'яний перелаз</string>
-    <string name="quest_barrier_type_stepover_stone">Кам\'яний перелаз</string>
-    <string name="quest_bollard_type_removable">З\'ємний (з/без ключа)</string>
+    <string name="quest_barrier_type_stepover_wooden">Дерев'яний перелаз</string>
+    <string name="quest_barrier_type_stepover_stone">Кам'яний перелаз</string>
+    <string name="quest_bollard_type_removable">З'ємний (з/без ключа)</string>
     <string name="quest_bollard_type_foldable2">Складний (з/без ключа)</string>
     <string name="no_search_results">Нічого не знайдено</string>
     <string name="quest_selection_hint_title">Забагато роботи?</string>
@@ -888,7 +888,7 @@
     <string name="quest_presets_preset_name">Назва заготовки</string>
     <string name="quest_presets_default_name">За замовчуванням</string>
     <string name="quest_presets_selected">Вибрано</string>
-    <string name="quest_presets_delete_message">Видалити заготовку "%s"? Вибір і параметри квесту будуть втрачені безповоротно.</string>
+    <string name="quest_presets_delete_message">Видалити заготовку "%1$s"? Вибір і параметри квесту будуть втрачені безповоротно.</string>
     <string name="notification_syncing">Синхронізація даних…</string>
     <string name="notification_channel_sync">Синхронізувати дані</string>
     <string name="quest_board_type_sport">Спорт, Вправи</string>
@@ -919,14 +919,14 @@
     <string name="quest_access_customers">Будь-який відвідувач закладу (наприклад, лише клієнти)</string>
     <string name="quest_access_private">Лише особа(-и) з дозволом</string>
     <string name="quest_postboxCollectionTimes_resurvey_title">Чи час забору кореспонденції для цієї скриньки все ще вірний?</string>
-    <string name="quest_bicycle_barrier_type_title">Який це тип велобар\'єру?</string>
+    <string name="quest_bicycle_barrier_type_title">Який це тип велобар'єру?</string>
     <string name="quest_barrier_bicycle_type_diagonal">Діагональ на шляху</string>
     <string name="quest_barrier_bicycle_type_tilted">Вузький проїзд, менший у напрямку верха</string>
-    <string name="quest_barrier_bicycle_type_single">Проїзд між двома бар\'єрами</string>
-    <string name="quest_barrier_bicycle_type_double">Шикана - бар\'єр з кожної сторони</string>
-    <string name="quest_barrier_bicycle_type_multiple">Шикана - більше, ніж два бар\'єри</string>
+    <string name="quest_barrier_bicycle_type_single">Проїзд між двома бар'єрами</string>
+    <string name="quest_barrier_bicycle_type_double">Шикана - бар'єр з кожної сторони</string>
+    <string name="quest_barrier_bicycle_type_multiple">Шикана - більше, ніж два бар'єри</string>
     <string name="language_default">Визначається системою</string>
-    <string name="on_floor">на поверсі %s:</string>
+    <string name="on_floor">на поверсі %1$s:</string>
     <string name="select_street_parking_orientation">Оберіть орієнтацію відносно дороги:</string>
     <string name="select_street_parking_position">Вибрати місце</string>
     <string name="select_street_parking_no">Чи є тут знак чи дорожня розмітка?</string>
@@ -992,7 +992,7 @@
     <string name="quest_smoothness_hint">🚲, 🚗, 🚙,… вкажіть, для яких транспортних засобів придатне покриття. Важлива загальна картина, а не окремі перешкоди.</string>
     <string name="link_osmhydrant_description">Пошук, додавання та редагування пожежних станцій та гідрантів</string>
     <string name="achievement_lifesaver_title">Рятувальник</string>
-    <string name="achievement_lifesaver_solved_X">Ти розвʼязав %d завдань для допомоги рятувальним службам та екстреної допомоги!</string>
+    <string name="achievement_lifesaver_solved_X">Ти розвʼязав %1$d завдань для допомоги рятувальним службам та екстреної допомоги!</string>
     <string name="quest_fuelSelfService_title">Чи можливе на цій заправці самообслуговування?</string>
     <string name="default_disabled_msg_difficult_and_time_consuming">Цей тип квесту зазвичай вимкнений тому що складно зробити правильний вибір або квест потребує багато часу. Вмикайте цей тип квесту тільки тоді, коли ви справді впевнені, додаючи цей тип даних.</string>
     <string name="quest_smoothness_description_good_compacted_gravel">Твердоущільнений, трохи сипучого гравію чи піску</string>
@@ -1060,7 +1060,7 @@
     <string name="quest_dietType_vegan_title2">Чи є тут веганські страви в меню?</string>
     <string name="quest_dietType_vegetarian_title2">Чи є тут вегетаріанські страви в меню?</string>
     <string name="quest_drinking_water_title2">Тут можна пити воду?</string>
-    <string name="quest_existence_title2">Цей об\'єкт ще тут?</string>
+    <string name="quest_existence_title2">Цей об'єкт ще тут?</string>
     <string name="quest_generalFee_title2">Тут потрібно платити за вхід?</string>
     <string name="quest_internet_access_title">Який тип інтернет-зʼєднання надається тут?</string>
     <string name="quest_level_title2">На якому поверсі це знаходиться?</string>
@@ -1105,7 +1105,7 @@
     <string name="quest_bicycle_shop_second_hand_no_bicycles">Тут взагалі не продають велосипеди</string>
     <string name="quest_building_entrance_title">Який це вхід до будівлі?</string>
     <string name="quest_building_entrance_main">Головний вхід до загальнодоступної будівлі</string>
-    <string name="quest_building_entrance_staircase">Вхід до під\'їзду</string>
+    <string name="quest_building_entrance_staircase">Вхід до під'їзду</string>
     <string name="quest_building_entrance_service">Службовий вхід</string>
     <string name="quest_building_entrance_exit">Тільки вихід</string>
     <string name="quest_building_entrance_emergency_exit">Аварійний вихід</string>
@@ -1136,11 +1136,11 @@
     <string name="quest_generic_answer_is_indoors">Це в будівлі</string>
     <string name="quest_summit_cross_title">Чи є хрест на цій вершині?</string>
     <string name="quest_entrance_reference">Як підписаний цей вхід?</string>
-    <string name="quest_entrance_reference_select_flat_range_and_code">Номер під\'їзду та діапазон квартир</string>
+    <string name="quest_entrance_reference_select_flat_range_and_code">Номер під'їзду та діапазон квартир</string>
     <string name="quest_entrance_reference_select_flat_range_only">Діапазон квартир</string>
-    <string name="quest_entrance_reference_select_code_only">Номер під\'їзду</string>
+    <string name="quest_entrance_reference_select_code_only">Номер під'їзду</string>
     <string name="quest_entrance_reference_nothing_signed">Немає таблички з номером чи діапазоном квартир</string>
-    <string name="quest_entrance_reference_reference_label">Номер під\'їзду:</string>
+    <string name="quest_entrance_reference_reference_label">Номер під'їзду:</string>
     <string name="quest_entrance_reference_flat_range_label">Діапазон квартир:</string>
     <string name="quest_entrance_reference_flat_range_to">—</string>
     <string name="default_disabled_msg_overlay">Цей тип квесту вимкнено за замовчуванням, бо є накладний шар, за допомогою якого ефективніше вводити та оновлювати ці дані.</string>
@@ -1154,7 +1154,7 @@
     <string name="quest_camp_type_backcountry">Кемпінг без облаштунків</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">Діаметр виглядає помилковим, зазвичай він від %1$d до %2$d.</string>
     <string name="quest_recycling_type_pet">Лише ПЕТ</string>
-    <string name="street_parking_street_width">Ширина дороги: %s</string>
+    <string name="street_parking_street_width">Ширина дороги: %1$s</string>
     <string name="overlay_street_parking">Вуличне паркування</string>
     <string name="link_ohsomehex_description">Досліджуйте дані OSM у масштабах від великої картини до окремих об’єктів у просторі та часі</string>
     <string name="link_opencampingmap_description">Мапа кемпінгів</string>
@@ -1174,7 +1174,7 @@
     <string name="quest_drinking_water_type_hand_pump">Ручна помпа</string>
     <string name="quest_drinking_water_type_water_well_no_pump">Криниця без помпи</string>
     <string name="quest_drinking_water_type_spring">Джерело</string>
-    <string name="quest_drinking_water_type_disused">Об\'єкт питної води, що не використовується</string>
+    <string name="quest_drinking_water_type_disused">Об'єкт питної води, що не використовується</string>
     <string name="overlay_addresses">Адреси</string>
     <string name="name_label">Назва:</string>
     <string name="unknown_shop_title">Щось інше</string>
@@ -1201,7 +1201,7 @@
     <string name="user_profile_current_week_title">Останні 7 днів</string>
     <string name="user_profile_dates_mapped">Дні, що ви займались картографуванням</string>
     <string name="quest_cycleway_value_advisory_lane">рекомеднована смуга для велосипедів</string>
-    <string name="urlconfig_scan_qr_code_again2">Після встановлення програми знову відскануйте QR-код або натисніть &lt;a href="%s"&gt;це посилання&lt;/a&gt;, щоб застосувати попередні налаштування.</string>
+    <string name="urlconfig_scan_qr_code_again2">Після встановлення програми знову відскануйте QR-код або натисніть &lt;a href="%1$s"&gt;це посилання&lt;/a&gt;, щоб застосувати попередні налаштування.</string>
     <string name="confirmation_replace_shop_title">Зараз тут інший заклад?</string>
     <string name="confirmation_replace_shop_message">У цьому випадку зміниться час роботи, контактна інформація тощо.</string>
     <string name="confirmation_replace_shop_yes">Тепер тут інший заклад</string>
@@ -1211,7 +1211,7 @@
 Спробувати зараз?</string>
     <string name="node_moved_not_far_enough">Перемістіть його далі</string>
     <string name="node_moved_too_far">Переїхав занадто далеко. Залиште записку</string>
-    <string name="node_moved">Переміщено %s</string>
+    <string name="node_moved">Переміщено %1$s</string>
     <string name="move_node_description">Перетягніть карту, щоб розмістити об’єкт у правильному місці. Використовуйте функцію масштабування та намагайтеся бути максимально точним. Майте на увазі, що ваше відображене місцезнаходження може бути менш точним, ніж показано.</string>
     <string name="move_node_action_description">Ви пересунули точку</string>
     <string name="quest_cycleway_value_shoulder">немає, але можна їхати по узбіччі</string>
@@ -1309,7 +1309,7 @@
     <string name="label_log_older_than">До</string>
     <string name="label_log_message_contains">Запис з</string>
     <string name="title_logs_filters">Фільтрувати записи</string>
-    <string name="pref_title_quests_restore_hidden_summary">Кількість прихованих квестів: %d</string>
+    <string name="pref_title_quests_restore_hidden_summary">Кількість прихованих квестів: %1$d</string>
     <string name="link_every_door_description">Потужний редактор POI для Android та iOS</string>
     <string name="link_mapcomplete_description">Колекція тематичних карт OSM, кожна з яких показує та дозволяє редагувати один тип обʼєктів</string>
     <string name="link_forum_description">Потрібна допомога? Хочете почитати, що відбувається? Приходьте та спілкуйтеся, тут кипить активність спільнот з усього світу!</string>
@@ -1381,7 +1381,7 @@
     <string name="quest_camp_power_supply_hint">Це можуть бути розетки безпосередньо на території табору, розетки в службовій будівлі, доступній для гостей, спеціальна станція для зарядки телефонів, ноутбуків тощо.</string>
     <string name="quest_barrier_opening_width_bollard">Яка тут найбільша ширина проміжку для проходу?</string>
     <string name="user_profile_all_time_title">Загалом</string>
-    <string name="user_statistics_country_rank2">Місце в %s</string>
+    <string name="user_statistics_country_rank2">Місце в %1$s</string>
     <string name="quest_leafType_tree_is_just_a_stump">Це просто пень</string>
     <string name="quest_board_name_title">Яка назва цієї інформаційної дошки?</string>
     <string name="quest_crossing_hint">Неформальна стежка, що перетинає дорогу:</string>
@@ -1435,7 +1435,7 @@
     <string name="overlay_mtb_scale_2_description">Пухка місцевість з великим корінням та камінням, плоскі перепади/невеликі сходи, ухил до 70%; легкі круті повороти; потрібне розширене гальмування та перенесення ваги.</string>
     <string name="overlay_mtb_scale_3_description">Слизька, пухка місцевість з осипом, брилами, великим корінням та камінням, високими сходами та складними траверсами; круті повороти, ухил &gt;70%; потрібні дуже хороший баланс та точне гальмування.</string>
     <string name="overlay_mtb_scale_4_description">Складні та технічні перешкоди: великі брили, коріння, осип, круті пандуси; поворотні серпантини, плоскі спуски з натисканням на педалі; ідеальний баланс, точне гальмування та зміна положення заднього колеса.</string>
-    <string name="overlay_mtb_scale_5_description">Надзвичайно крута кам\'яна місцевість із зустрічними підйомами, брилами, зсувами, серпантином із перешкодами, високими перепадами один за одним та поваленими деревами. Перенесення велосипеда навколо перешкод неможливе; їзда неминуча. Потрібні навички триалу.</string>
+    <string name="overlay_mtb_scale_5_description">Надзвичайно крута кам'яна місцевість із зустрічними підйомами, брилами, зсувами, серпантином із перешкодами, високими перепадами один за одним та поваленими деревами. Перенесення велосипеда навколо перешкод неможливе; їзда неминуча. Потрібні навички триалу.</string>
     <string name="overlay_mtb_scale_6_description">Небезпечна та непрохідна місцевість, непридатна для катання на гірському велосипеді.</string>
     <string name="default_disabled_overlay_domain_expert">Це накладання вимкнено за замовчуванням, оскільки вам потрібно бути експертом у предметній області, щоб точно записувати цю інформацію.</string>
     <string name="pref_title_overlays">Вибір накладання</string>

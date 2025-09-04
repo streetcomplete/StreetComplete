@@ -196,7 +196,7 @@
     <string name="quest_sport_roller_skating">Ролери</string>
     <string name="quest_wheelchairAccess_limited_description_business">„Делимично“ значи да има мање од једног степеника висине за приступ, и да је већина просторија унутар доступна инвалидским колицима.</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">„Делимично“ значи да има мање од једног степеника висине за приступ.</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">Да ли је то скраћеница у називу %s?</string>
+    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">Да ли је то скраћеница у називу %1$s?</string>
     <string name="quest_recycling_type_title">О каквој врсти рециклаже се ради?</string>
     <string name="recycling_centre">Рециклажни центар</string>
     <string name="overground_recycling_container">Контејнер</string>
@@ -377,7 +377,7 @@
     <string name="quest_construction_footway_title">Да ли је завршен овај тротоар?</string>
     <string name="quest_construction_generic_title">Да ли је завршен овај пут?</string>
     <string name="quest_construction_building_title">Да ли је завршен овај објекат?</string>
-    <string name="questList_disabled_in_country">Никад се не приказује у %s</string>
+    <string name="questList_disabled_in_country">Никад се не приказује у %1$s</string>
     <string name="quest_select_hint_most_specific">Одаберите најпрецизнији одговор:</string>
     <string name="quest_generic_item_confirmation">Да ли сте сигурни да не можете прецизније одредити?</string>
     <string name="privacy_html_third_party_quest_sources">&lt;p&gt;За неке задатке се преузимају додатни подаци трећих страна.&lt;/p&gt;</string>
@@ -488,7 +488,7 @@
     <string name="quest_motorcycleParkingCoveredStatus_title">Да ли је овај паркинг за моторе наткривен (пружа ли заштиту од кише)?</string>
     <string name="default_disabled_msg_maxspeed">Ова врста задатка је иницијално искључена јер обично морате проверити целу улицу за ограничења брзине, а не само истакнути део. Ово некад може бити прилично напорно да би се решио само један задатак.</string>
     <string name="pref_title_quests_restore_hidden">Врати скривене задатке</string>
-    <string name="on_level">на спрату %s</string>
+    <string name="on_level">на спрату %1$s</string>
     <string name="underground">под земљом</string>
     <string name="quest_sidewalk_value_yes">има тротоар</string>
     <string name="quest_sidewalk_value_no">нема тротоар</string>
@@ -582,8 +582,8 @@
     <string name="achievements_empty">Још немате постигнућа</string>
     <string name="links_empty">Још немате веза</string>
     <string name="quests_empty">Још  нисте објавили ни један одговор</string>
-    <string name="unsynced_quests_description">и %d необјављених измена.</string>
-    <string name="unsynced_quests_not_logged_in_description">Имате %d необјављених измена. Морате се пријавити како би их послали.</string>
+    <string name="unsynced_quests_description">и %1$d необјављених измена.</string>
+    <string name="unsynced_quests_not_logged_in_description">Имате %1$d необјављених измена. Морате се пријавити како би их послали.</string>
     <string name="user_quests_title">Решени задаци</string>
     <string name="user_achievements_title">Постигнућа</string>
     <string name="user_links_title">Збирка веза</string>
@@ -635,28 +635,28 @@
     <string name="achievement_first_edit_title">Решили сте први задатак</string>
     <string name="achievement_first_edit_description">Добродошли у OpenStreetMap заједницу! У вашем профилу можете видети више информација о свакој врсти задатка који сте решили.</string>
     <string name="achievement_surveyor_title">Геодета</string>
-    <string name="achievement_surveyor_solved_X">Решили сте %d задатака! Наставите тако и откључајте још достигнућа која садрже OSM везе и друге пројекате и програме у вези са картама!</string>
+    <string name="achievement_surveyor_solved_X">Решили сте %1$d задатака! Наставите тако и откључајте још достигнућа која садрже OSM везе и друге пројекате и програме у вези са картама!</string>
     <string name="achievement_regular_title">Редован сарадник</string>
-    <string name="achievement_regular_description">Овом апликацијом сте доприносили %d дана на OSM! Редовни сарадници су основ OSM платформе, хвала вам на преданости! ❤</string>
+    <string name="achievement_regular_description">Овом апликацијом сте доприносили %1$d дана на OSM! Редовни сарадници су основ OSM платформе, хвала вам на преданости! ❤</string>
     <string name="achievement_bicyclist_title">Бициклиста</string>
-    <string name="achievement_bicyclist_solved_X">Решили сте %d задатака који помажу бициклистима!</string>
+    <string name="achievement_bicyclist_solved_X">Решили сте %1$d задатака који помажу бициклистима!</string>
     <string name="achievement_wheelchair_title">Мобилност</string>
-    <string name="achievement_wheelchair_solved_X">Решили сте %d задатака који помажу особама у инвалидским колицима да се крећу градом!</string>
+    <string name="achievement_wheelchair_solved_X">Решили сте %1$d задатака који помажу особама у инвалидским колицима да се крећу градом!</string>
     <string name="achievement_postman_title">Поштар</string>
-    <string name="achievement_postman_solved_X">Помогли сте да се пронађе %d адреса!
+    <string name="achievement_postman_solved_X">Помогли сте да се пронађе %1$d адреса!
 Ови подаци су значајни не само поштарима већ сваком навигационом систему.</string>
     <string name="achievement_building_title">Вишеспратница</string>
-    <string name="achievement_building_solved_X">Решили сте %d задатака у вези са грађевинама.
+    <string name="achievement_building_solved_X">Решили сте %1$d задатака у вези са грађевинама.
 Имајте на уму да овај програм пита за кућни број тек након што се одреди тип грађевине.</string>
     <string name="achievement_blind_title">Шесто чуло</string>
-    <string name="achievement_blind_solved_X">Решили сте %d задатака који су корисни слабовидим особама.</string>
+    <string name="achievement_blind_solved_X">Решили сте %1$d задатака који су корисни слабовидим особама.</string>
     <string name="achievement_pedestrian_title">Тркач</string>
-    <string name="achievement_pedestrian_solved_X">Решили сте %d задатака који су корисни пешацима!</string>
+    <string name="achievement_pedestrian_solved_X">Решили сте %1$d задатака који су корисни пешацима!</string>
     <string name="achievement_veg_title">Љубитељ животиња</string>
-    <string name="achievement_veg_solved_X">Решили сте %d задатака који су корисни људима који не користе месо у исхрани!</string>
+    <string name="achievement_veg_solved_X">Решили сте %1$d задатака који су корисни људима који не користе месо у исхрани!</string>
     <string name="achievement_car_title">Путник</string>
-    <string name="achievement_car_solved_X">Решили сте %d задатака који унапређују детаље уличне инфраструктуре!</string>
-    <string name="unread_messages_message">Имате %d непрочитане поруке у сандучету</string>
+    <string name="achievement_car_solved_X">Решили сте %1$d задатака који унапређују детаље уличне инфраструктуре!</string>
+    <string name="unread_messages_message">Имате %1$d непрочитане поруке у сандучету</string>
     <string name="unread_messages_button">Отвори сандуче</string>
     <string name="action_about2">О програму</string>
     <string name="map_btn_menu">Мени</string>
@@ -666,13 +666,13 @@
     <string name="credits_projects_contributors_title">Пројекти направљени за StreetComplete</string>
     <string name="credits_main_contributors_title">Главни сарадници</string>
     <string name="stats_are_syncing">Ваша статистика се још увек синхронизује. Проверите овај екран касније.</string>
-    <string name="user_statistics_country_wiki_link">Картографски портал %s</string>
+    <string name="user_statistics_country_wiki_link">Картографски портал %1$s</string>
     <string name="user_statistics_filter_by_country">по земљама</string>
     <string name="user_statistics_filter_by_quest_type">по врсти задатка</string>
     <string name="user_profile_global_rank">Светска
 ранг листа</string>
     <string name="user_profile_local_rank">Ранг у
-%s</string>
+%1$s</string>
     <string name="user_profile_days_active">Активни
 дани</string>
     <string name="user_profile_achievement_levels">Достигнућа</string>
@@ -697,8 +697,8 @@
     <string name="quest_board_type_map_description">Ако је табла о одређеној теми, наведите је, без обзира на то да ли укључује и карту. На пример, табла јавног превоза може имати карту аутобуских линија. Ако теме нема у наведеним одговорима, размислите да је оставите као напомену.</string>
     <string name="quest_streetName_menuItem_international">међународна</string>
     <string name="quest_buildingType_terrace2">Куће у низу</string>
-    <string name="at_housename">назив куће %s</string>
-    <string name="at_housenumber">кућни број %s</string>
+    <string name="at_housename">назив куће %1$s</string>
+    <string name="at_housenumber">кућни број %1$s</string>
     <string name="quest_openingHours_add_off_days">Додајте нерадне дане</string>
     <string name="quest_openingHours_off_day">Нерадни дани</string>
     <string name="quest_openingHours_unspecified_range">Није наведено</string>
@@ -732,11 +732,11 @@
     <string name="quest_charging_station_operator_title">Ко је оператер ове станице за пуњење?</string>
     <string name="link_indoorequal_description">Откријте карте унутрашњости тржних центара, железничких станица, итд.</string>
     <string name="achievement_rare_title">Лов на благо</string>
-    <string name="achievement_rare_solved_X">Пронашли сте и решили %d задатака који се заиста ретко решавају, честитамо!</string>
+    <string name="achievement_rare_solved_X">Пронашли сте и решили %1$d задатака који се заиста ретко решавају, честитамо!</string>
     <string name="achievement_citizen_title">Грађанин</string>
-    <string name="achievement_citizen_solved_X">Решили сте %d задатака корисних за свакодневни живот у граду!</string>
+    <string name="achievement_citizen_solved_X">Решили сте %1$d задатака корисних за свакодневни живот у граду!</string>
     <string name="achievement_outdoors_title">Под ведрим небом</string>
-    <string name="achievement_outdoors_solved_X">Решили сте %d задатака корисних људима који бораве у природи!</string>
+    <string name="achievement_outdoors_solved_X">Решили сте %1$d задатака корисних људима који бораве у природи!</string>
     <string name="quest_pedestrian_crossing_island">Да ли овај пешачки прелаз има острво?</string>
     <string name="quest_generic_answer_noSign">Нема знака</string>
     <string name="quest_steps_ramp_separate_wheelchair">Да ли је рампа за инвалидска колица приказана одвојено на карти?</string>
@@ -759,7 +759,7 @@
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">Има двосмерну траку за скретање лево</string>
     <string name="quest_address_answer_no_housenumber_message2b">Да ли је ово тачно?</string>
     <string name="quest_maxheight_below_bridge_title">Које је ограничење висине испод моста?</string>
-    <string name="quest_maxheight_split_way_hint">Ако се не примењује на цео пут, размислите да одговорите "%s".</string>
+    <string name="quest_maxheight_split_way_hint">Ако се не примењује на цео пут, размислите да одговорите "%1$s".</string>
     <string name="quest_tactile_paving_kerb_title">Постоји ли трака водиља за слепе на овом ивичњаку?</string>
     <string name="quest_kerb_height_title">Која је висина овог ивичњака?</string>
     <string name="quest_kerb_height_flush">Исти ниво као и пут</string>
@@ -815,9 +815,9 @@
     <string name="hid_action_description">Сакрили сте</string>
     <string name="split_way_action_description">Разделили сте линију</string>
     <string name="deleted_poi_action_description">Избрисали сте</string>
-    <string name="added_tag_action_title">Додато је %s</string>
-    <string name="removed_tag_action_title">Уклоњено је %s</string>
-    <string name="changed_tag_action_title">Ажурирано је %s</string>
+    <string name="added_tag_action_title">Додато је %1$s</string>
+    <string name="removed_tag_action_title">Уклоњено је %1$s</string>
+    <string name="changed_tag_action_title">Ажурирано је %1$s</string>
     <string name="pref_title_delete_cache">Избриши кеш</string>
     <string name="pref_title_delete_cache_summary">Уколико мислите да су подаци застарели</string>
     <string name="delete_confirmation">Избриши</string>
@@ -867,7 +867,7 @@
     <string name="about_title_faq">Честа питања</string>
     <string name="quest_buildingLevels_title2">Колико спратова изнад подрума има ова грађевина?</string>
     <string name="quest_buildingLevels_title_buildingPart2">Колико спратова изнад подрума има ова грађевина?</string>
-    <string name="pref_subtitle_quests_preset_name">Група задатака: %s</string>
+    <string name="pref_subtitle_quests_preset_name">Група задатака: %1$s</string>
     <string name="default_disabled_msg_roofShape">Ова врста задатака је онемогућена јер се облици кровова често не виде добро са улице. Такође, одузимају доста врмена. Углавном је лакше и ефикасније кровове означити од куће, преко снимака из ваздуха.</string>
     <string name="quest_religion_animist">Анимизам</string>
     <string name="quest_construction_steps_title">Да ли су ове степенице завршене?</string>
@@ -892,7 +892,7 @@
     <string name="quest_presets_preset_name">Назив групе задатака</string>
     <string name="quest_presets_default_name">Основно</string>
     <string name="quest_presets_selected">Одабрано</string>
-    <string name="quest_presets_delete_message">Желите ли да избришете групу задатака „%s“? Избор и редослед задатака у групи ће бити трајно изгубљен.</string>
+    <string name="quest_presets_delete_message">Желите ли да избришете групу задатака „%1$s“? Избор и редослед задатака у групи ће бити трајно изгубљен.</string>
     <string name="notification_syncing">Синхронизација података…</string>
     <string name="notification_channel_sync">Синхр. податке</string>
     <string name="quest_board_type_sport">Спорт, вежбе</string>
@@ -930,7 +930,7 @@
     <string name="quest_barrier_bicycle_type_double">Намерно скретање (шикана) – препрека са обе стране</string>
     <string name="quest_barrier_bicycle_type_multiple">Намерно скретање (шикана) – више од две препреке</string>
     <string name="language_default">Исти као уређај</string>
-    <string name="on_floor">на спрату %s</string>
+    <string name="on_floor">на спрату %1$s</string>
     <string name="select_street_parking_orientation">Одаберите смер у односу на пут</string>
     <string name="select_street_parking_position">Одаберите позицију паркинга</string>
     <string name="select_street_parking_no">Да ли овде постоји знак или ознака на улици?</string>
@@ -996,7 +996,7 @@
     <string name="quest_smoothness_hint">🚲, 🚗, 🚙, … указује за које типове возила је подлога погодна за коришћење. Оно што је битно је шта слика, а не појединачна оштећења.</string>
     <string name="link_osmhydrant_description">Тражите, додајте и мењајте противпожарне станице и хидранте</string>
     <string name="achievement_lifesaver_title">Спасилац</string>
-    <string name="achievement_lifesaver_solved_X">Решили сте %d задатака који помажу хитним службама!</string>
+    <string name="achievement_lifesaver_solved_X">Решили сте %1$d задатака који помажу хитним службама!</string>
     <string name="quest_fuelSelfService_title">Да ли овде можете сами да наточите гориво?</string>
     <string name="default_disabled_msg_difficult_and_time_consuming">Овај задатак је искључен јер је јако временски захтеван и тешко је направити добар избор. Треба га укључити само ако сте баш решени да додајете овакве типове података.</string>
     <string name="quest_smoothness_description_good_compacted_gravel">Доста компактан, са мало шљунка или песка који се круни</string>
@@ -1159,7 +1159,7 @@
     <string name="quest_camp_type_backcountry">Забачено камповање (без објеката)</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">Овај промер изгледа нереално, обично је између %1$d и %2$d.</string>
     <string name="quest_recycling_type_pet">Само PET амбалажа</string>
-    <string name="street_parking_street_width">Ширина улице: %s</string>
+    <string name="street_parking_street_width">Ширина улице: %1$s</string>
     <string name="overlay_street_parking">Паркинг на улици</string>
     <string name="link_ohsomehex_description">Истражите OSM податке кроз простор из даљине, од велике слике до појединачних објеката</string>
     <string name="link_opencampingmap_description">Карта места за камповање</string>
@@ -1206,7 +1206,7 @@
     <string name="user_profile_current_week_title">Последњих 7 дана</string>
     <string name="user_profile_dates_mapped">Дани којима сте недавно картирали</string>
     <string name="quest_cycleway_value_advisory_lane">препоручена трака за бицикле</string>
-    <string name="urlconfig_scan_qr_code_again2">Након инсталирања апликације, поново очитајте QR кôд или додирните &lt;a href="%s"&gt;ову везу&lt;/a&gt; како бисте применили предложак.</string>
+    <string name="urlconfig_scan_qr_code_again2">Након инсталирања апликације, поново очитајте QR кôд или додирните &lt;a href="%1$s"&gt;ову везу&lt;/a&gt; како бисте применили предложак.</string>
     <string name="confirmation_replace_shop_title">Да ли је сада друго место?</string>
     <string name="confirmation_replace_shop_message">У том случају, радно време, контакт подаци и др. се такође мењају.</string>
     <string name="confirmation_replace_shop_yes">Сада је друго место</string>
@@ -1215,7 +1215,7 @@
     <string name="quest_move_node_message">Можете исправити позицију померањем објекта. Желите ли да га померити?</string>
     <string name="node_moved_not_far_enough">Померите га још</string>
     <string name="node_moved_too_far">Предалеко је померен. Оставите напомену</string>
-    <string name="node_moved">Померено %s</string>
+    <string name="node_moved">Померено %1$s</string>
     <string name="move_node_description">Померите карту да поставите објекат на исправно место. Увеличајте и покушајте да будете што прецизнији. Имајте на уму да приказана локација може бити другачија од стварне.</string>
     <string name="move_node_action_description">Померили сте тачку</string>
     <string name="quest_cycleway_value_shoulder">нема, али са стране је солидно за бициклисте</string>
@@ -1313,7 +1313,7 @@
     <string name="label_log_older_than">до</string>
     <string name="label_log_message_contains">Да порука садржи</string>
     <string name="title_logs_filters">Филтрирање порука</string>
-    <string name="pref_title_quests_restore_hidden_summary">Број сакривених задатака: %d</string>
+    <string name="pref_title_quests_restore_hidden_summary">Број сакривених задатака: %1$d</string>
     <string name="link_every_door_description">Моћан POI уређивач за Android и iOS</string>
     <string name="link_mapcomplete_description">Колекције OSM тематских карата која свака приказује и пружа могућност уређивања посебног типа података</string>
     <string name="link_forum_description">Потребна вам је помоћ? Желите да прочитате шта се дешава? Дођите и дружите се, врви од активности заједница широм света!</string>
@@ -1385,7 +1385,7 @@
     <string name="quest_camp_power_supply_hint">То могу бити извучене утичнице на парцелама кампа, утичнице у заједничком простору за госте, места за пуњење телефона и преносних рачунара, и сл.</string>
     <string name="quest_barrier_opening_width_bollard">Који је најшири пролаз кроз који се може проћи?</string>
     <string name="user_profile_all_time_title">Свеукупни резултати</string>
-    <string name="user_statistics_country_rank2">Ранг у %s</string>
+    <string name="user_statistics_country_rank2">Ранг у %1$s</string>
     <string name="quest_leafType_tree_is_just_a_stump">То је само пањ</string>
     <string name="quest_board_name_title">Који је наслов ове табле за обавештења?</string>
     <string name="quest_crossing_hint">Неформална стаза за прелаз пута:</string>

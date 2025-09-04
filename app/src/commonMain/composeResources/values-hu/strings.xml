@@ -196,7 +196,7 @@ Ha az utcában az egész kijelölt szakaszon nincs jelzőtábla, akkor az alapé
     <string name="quest_sport_roller_skating">Görkorcsolya</string>
     <string name="quest_wheelchairAccess_limited_description_business">A „részben” azt jelenti, hogy a bejáratnál egy, legfeljebb bokáig érő (7 cm) lépcsőfok van, és a legtöbb helyiség használható kerekesszékkel.</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">A „részben” azt jelenti, hogy egy, legfeljebb bokáig érő (7 cm) lépcsőfokon kell átjutni.</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">Van rövidítés ebben a névben: %s?</string>
+    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">Van rövidítés ebben a névben: %1$s?</string>
     <string name="quest_recycling_type_title">Ez milyen típusú újrahasznosító létesítmény?</string>
     <string name="recycling_centre">Központ</string>
     <string name="overground_recycling_container">Konténer</string>
@@ -377,7 +377,7 @@ A „részben” azt jelenti, hogy kerekesszékkel ugyan be lehet menni és lehe
     <string name="quest_construction_footway_title">Befejezték már ezt a gyalogutat?</string>
     <string name="quest_construction_generic_title">Befejezték már ezt az utat?</string>
     <string name="quest_construction_building_title">Befejezték már ezt az épületet?</string>
-    <string name="questList_disabled_in_country">Soha nem jelenik meg itt: %s</string>
+    <string name="questList_disabled_in_country">Soha nem jelenik meg itt: %1$s</string>
     <string name="quest_select_hint_most_specific">Válaszd ki a leginkább rá jellemzőt:</string>
     <string name="quest_generic_item_confirmation">Biztos, hogy nem tudod pontosabban meghatározni?</string>
     <string name="privacy_html_third_party_quest_sources">&lt;p&gt;Egyes kérdésekhez más, harmadik féltől származó adatok is letöltésre kerülnek.&lt;/p&gt;</string>
@@ -488,7 +488,7 @@ A „részben” azt jelenti, hogy kerekesszékkel ugyan be lehet menni és lehe
     <string name="quest_motorcycleParkingCoveredStatus_title">Fedett (esőtől védett) ez a motorkerékpár-parkoló?</string>
     <string name="default_disabled_msg_maxspeed">Ez a kérdéstípus alapértelmezésben ki van kapcsolva, mert általában nem csak a kiemelt szakaszt, hanem az egész utcát végig kellene nézni a sebességkorlátozások szempontjából. Ez eléggé elnyújthatja ennek az egyetlen kérdésnek a megválaszolását.</string>
     <string name="pref_title_quests_restore_hidden">Elrejtett kérdések visszaállítása</string>
-    <string name="on_level">a(z) %s. szinten</string>
+    <string name="on_level">a(z) %1$s. szinten</string>
     <string name="underground">föld alatt</string>
     <string name="quest_sidewalk_value_yes">járda</string>
     <string name="quest_sidewalk_value_no">nincs járda</string>
@@ -581,8 +581,8 @@ Végezetül, légy óvatos: figyelj a környezetedre, és ne lépj magánterüle
     <string name="achievements_empty">Még nincsenek kitüntetéseid</string>
     <string name="links_empty">Még nincsenek hivatkozásaid</string>
     <string name="quests_empty">Még nem küldtél be egy választ sem a kérdésekre</string>
-    <string name="unsynced_quests_description">plusz %d még nem közzétett módosítás.</string>
-    <string name="unsynced_quests_not_logged_in_description">Van %d db, még nem közzétett módosításod. Jelentkezz be, hogy feltölthesd őket.</string>
+    <string name="unsynced_quests_description">plusz %1$d még nem közzétett módosítás.</string>
+    <string name="unsynced_quests_not_logged_in_description">Van %1$d db, még nem közzétett módosításod. Jelentkezz be, hogy feltölthesd őket.</string>
     <string name="user_quests_title">Megoldott kérdések</string>
     <string name="user_achievements_title">Kitüntetések</string>
     <string name="user_links_title">Hivatkozásgyűjtemény</string>
@@ -634,28 +634,28 @@ Végezetül, légy óvatos: figyelj a környezetedre, és ne lépj magánterüle
     <string name="achievement_first_edit_title">Első megoldott kérdés</string>
     <string name="achievement_first_edit_description">Köszöntünk az OpenStreetMap közösségében! A profil menüben további információt találsz minden kérdéstípushoz, amit megoldottál.</string>
     <string name="achievement_surveyor_title">Felmérő</string>
-    <string name="achievement_surveyor_solved_X">%d kérdést megoldottál! Folytasd Csak így tovább a következő kitüntetések feloldásához, amelyek az OSM-mel és más térképekkel kapcsolatos alkalmazásokra és projektekre mutató hivatkozásokat tartalmaznak!</string>
+    <string name="achievement_surveyor_solved_X">%1$d kérdést megoldottál! Folytasd Csak így tovább a következő kitüntetések feloldásához, amelyek az OSM-mel és más térképekkel kapcsolatos alkalmazásokra és projektekre mutató hivatkozásokat tartalmaznak!</string>
     <string name="achievement_regular_title">Rendszeres</string>
-    <string name="achievement_regular_description">%d napon közreműködtél az OSM fejlesztésében ezzel az alkalmazással! A rendszeres közreműködők alkotják az OSM gerincét, köszönjük az elkötelezettségedet! ❤</string>
+    <string name="achievement_regular_description">%1$d napon közreműködtél az OSM fejlesztésében ezzel az alkalmazással! A rendszeres közreműködők alkotják az OSM gerincét, köszönjük az elkötelezettségedet! ❤</string>
     <string name="achievement_bicyclist_title">Kerékpáros</string>
-    <string name="achievement_bicyclist_solved_X">%d kérdést megoldottál, amelyek a kerékpárosokat segítik!</string>
+    <string name="achievement_bicyclist_solved_X">%1$d kérdést megoldottál, amelyek a kerékpárosokat segítik!</string>
     <string name="achievement_wheelchair_title">Mobilitás</string>
-    <string name="achievement_wheelchair_solved_X">%d kérdést megoldottál, amelyek a kerekesszékesek városi közlekedését segítik!</string>
+    <string name="achievement_wheelchair_solved_X">%1$d kérdést megoldottál, amelyek a kerekesszékesek városi közlekedését segítik!</string>
     <string name="achievement_postman_title">Postás</string>
-    <string name="achievement_postman_solved_X">Segítettél megtalálni %d címet és egyéb postai szolgáltatásokat!
+    <string name="achievement_postman_solved_X">Segítettél megtalálni %1$d címet és egyéb postai szolgáltatásokat!
 Ez az adat létfontosságú nemcsak a postásoknak, hanem valamennyi navigációs rendszer számára is.</string>
     <string name="achievement_building_title">Felhőkarcoló</string>
-    <string name="achievement_building_solved_X">%d épülettel kapcsolatos kérdést megoldottál.
+    <string name="achievement_building_solved_X">%1$d épülettel kapcsolatos kérdést megoldottál.
 Ez az app csak akkor kérdezi meg egy épület házszámát, ha a típusa már meg lett adva.</string>
     <string name="achievement_blind_title">Hatodik érzék</string>
-    <string name="achievement_blind_solved_X">%d kérdést megoldottál, amelyek a látássérültek számára hasznosak.</string>
+    <string name="achievement_blind_solved_X">%1$d kérdést megoldottál, amelyek a látássérültek számára hasznosak.</string>
     <string name="achievement_pedestrian_title">Futó</string>
-    <string name="achievement_pedestrian_solved_X">%d kérdést megoldottál, amelyek a gyalogosok számára hasznosak!</string>
+    <string name="achievement_pedestrian_solved_X">%1$d kérdést megoldottál, amelyek a gyalogosok számára hasznosak!</string>
     <string name="achievement_veg_title">Állatbarát</string>
-    <string name="achievement_veg_solved_X">%d kérdést megoldottál, amelyek a húsmentes étrendet folytatók számára hasznosak!</string>
+    <string name="achievement_veg_solved_X">%1$d kérdést megoldottál, amelyek a húsmentes étrendet folytatók számára hasznosak!</string>
     <string name="achievement_car_title">Úton</string>
-    <string name="achievement_car_solved_X">%d kérdést megoldottál, amelyek az utcai infrastruktúrához adtak további részleteket, értelmet adva így a „street”-nek az OpenStreetMapben!</string>
-    <string name="unread_messages_message">A postaládádban %d olvasatlan üzeneted van</string>
+    <string name="achievement_car_solved_X">%1$d kérdést megoldottál, amelyek az utcai infrastruktúrához adtak további részleteket, értelmet adva így a „street”-nek az OpenStreetMapben!</string>
+    <string name="unread_messages_message">A postaládádban %1$d olvasatlan üzeneted van</string>
     <string name="unread_messages_button">Postaláda megnyitása</string>
     <string name="action_about2">Névjegy</string>
     <string name="map_btn_menu">Menü</string>
@@ -665,13 +665,13 @@ Ez az app csak akkor kérdezi meg egy épület házszámát, ha a típusa már m
     <string name="credits_projects_contributors_title">StreetComplete-hez felhasznált projektek</string>
     <string name="credits_main_contributors_title">Fő közreműködők</string>
     <string name="stats_are_syncing">A statisztikáid még frissítés alatt állnak. Nézz vissza később.</string>
-    <string name="user_statistics_country_wiki_link">%s térképportál</string>
+    <string name="user_statistics_country_wiki_link">%1$s térképportál</string>
     <string name="user_statistics_filter_by_country">ország szerint</string>
     <string name="user_statistics_filter_by_quest_type">kérdéstípus szerint</string>
     <string name="user_profile_global_rank">Globális
 helyezés</string>
     <string name="user_profile_local_rank">Helyezés itt:
-%s</string>
+%1$s</string>
     <string name="user_profile_days_active">Aktív
 napok</string>
     <string name="user_profile_achievement_levels">Kitüntetések
@@ -697,8 +697,8 @@ szintje</string>
     <string name="quest_board_type_map_description">Ha a tábla egy bizonyos témáról szól, akkor azt add meg, függetlenül attól, hogy egy térkép is szerepel rajta. Például egy tömegközlekedési tábla tartalmazhat egy buszútvonalakat ábrázoló térképet. Ha a téma nem szerepel a lehetséges válaszok között, akkor írj egy jegyzetet.</string>
     <string name="quest_streetName_menuItem_international">nemzetközi</string>
     <string name="quest_buildingType_terrace2">Sorházak</string>
-    <string name="at_housename">ház neve: %s</string>
-    <string name="at_housenumber">házszám: %s</string>
+    <string name="at_housename">ház neve: %1$s</string>
+    <string name="at_housenumber">házszám: %1$s</string>
     <string name="quest_openingHours_add_off_days">Szabadnapok hozzáadása</string>
     <string name="quest_openingHours_off_day">Szabadnap</string>
     <string name="quest_openingHours_unspecified_range">Nincs megadva</string>
@@ -732,11 +732,11 @@ szintje</string>
     <string name="quest_charging_station_operator_title">Ki az üzemeltetője ennek a töltőállomásnak?</string>
     <string name="link_indoorequal_description">Plázák, vasútállomások, stb. beltéri térképei</string>
     <string name="achievement_rare_title">Kincsvadász</string>
-    <string name="achievement_rare_solved_X">%d olyan kérdést megtaláltál és megoldottál, amiket nagyon ritkán szoktak megoldani, gratulálok!</string>
+    <string name="achievement_rare_solved_X">%1$d olyan kérdést megtaláltál és megoldottál, amiket nagyon ritkán szoktak megoldani, gratulálok!</string>
     <string name="achievement_citizen_title">Városlakó</string>
-    <string name="achievement_citizen_solved_X">%d olyan kérdést megoldottál, amik a városi mindennapi élethez hasznosak!</string>
+    <string name="achievement_citizen_solved_X">%1$d olyan kérdést megoldottál, amik a városi mindennapi élethez hasznosak!</string>
     <string name="achievement_outdoors_title">Túrázó</string>
-    <string name="achievement_outdoors_solved_X">%d olyan kérdést megoldottál, amik a túrázók számára hasznosak!</string>
+    <string name="achievement_outdoors_solved_X">%1$d olyan kérdést megoldottál, amik a túrázók számára hasznosak!</string>
     <string name="quest_pedestrian_crossing_island">Van a gyalogátkelőhelyen járdasziget?</string>
     <string name="quest_generic_answer_noSign">Nincs tábla</string>
     <string name="quest_steps_ramp_separate_wheelchair">A kerekesszékes rámpa külön vonalként szerepel a térképen?</string>
@@ -760,7 +760,7 @@ szintje</string>
     <string name="quest_address_answer_no_housenumber_message2b">Ez helyes?</string>
     <string name="quest_maxheight_below_bridge_title">Mekkora a mért maximális magasság a híd alatt?</string>
     <string name="quest_maxheight_split_way_hint">Ezt a kérdést a hidak, tetők, csővezetékek stb. alatt futó utaknál is feltesszük.
-Ha nem a kiemeléssel látható egész útra érvényes, akkor inkább válaszold ezt: „%s”.</string>
+Ha nem a kiemeléssel látható egész útra érvényes, akkor inkább válaszold ezt: „%1$s”.</string>
     <string name="quest_tactile_paving_kerb_title">Van vakvezető burkolat ezen a járdaszegélyen?</string>
     <string name="quest_kerb_height_title">Milyen magas ez a járdaszegély?</string>
     <string name="quest_kerb_height_flush">Az útfelülettel megegyező</string>
@@ -818,9 +818,9 @@ Vedd figyelembe az összes lehetséges választ: néhány esetben nem egyértelm
     <string name="hid_action_description">Elrejtetted</string>
     <string name="split_way_action_description">Felosztottad a vonalat</string>
     <string name="deleted_poi_action_description">Törölted</string>
-    <string name="added_tag_action_title">Hozzáadva: %s</string>
-    <string name="removed_tag_action_title">Eltávolítva: %s</string>
-    <string name="changed_tag_action_title">Módosítva: %s</string>
+    <string name="added_tag_action_title">Hozzáadva: %1$s</string>
+    <string name="removed_tag_action_title">Eltávolítva: %1$s</string>
+    <string name="changed_tag_action_title">Módosítva: %1$s</string>
     <string name="pref_title_delete_cache">Gyorsítótár törlése</string>
     <string name="pref_title_delete_cache_summary">Ha úgy gondolod, hogy néhány adat elavult</string>
     <string name="delete_confirmation">Törlés</string>
@@ -870,7 +870,7 @@ Az adatok %1$s nap után frissülnek, a nem használt adatok pedig %2$s nap utá
     <string name="about_title_faq">GYIK</string>
     <string name="quest_buildingLevels_title2">A pince fölött hány szintje van az épületnek?</string>
     <string name="quest_buildingLevels_title_buildingPart2">A pince fölött hány szintje van az épületrésznek?</string>
-    <string name="pref_subtitle_quests_preset_name">tárolt beállítás: %s</string>
+    <string name="pref_subtitle_quests_preset_name">tárolt beállítás: %1$s</string>
     <string name="default_disabled_msg_roofShape">Ez a kérdéstípus alapértelmezés szerint le van tiltva, mert a tetőformák az utcáról gyakran nehezen láthatók. Ez a kérdéstípus ráadásul meglehetősen időigényes is; az esetek többségében könnyebb és hatékonyabb ezt otthon légi felvételek segítségével feltérképezni.</string>
     <string name="quest_religion_animist">Animista</string>
     <string name="quest_construction_steps_title">Elkészült már ez a lépcső?</string>
@@ -897,7 +897,7 @@ Ha a küldetések számát túl soknak találod, a beállításokban bármikor f
     <string name="quest_presets_preset_name">Tárolt beállítás neve</string>
     <string name="quest_presets_default_name">Alapértelmezett</string>
     <string name="quest_presets_selected">Kijelölve</string>
-    <string name="quest_presets_delete_message">Törlöd ezt a tárolt beállítást: „%s”? A kiválasztott kérdések és sorrendjük véglegesen elvész.</string>
+    <string name="quest_presets_delete_message">Törlöd ezt a tárolt beállítást: „%1$s”? A kiválasztott kérdések és sorrendjük véglegesen elvész.</string>
     <string name="notification_syncing">Adatok szinkronizálása…</string>
     <string name="notification_channel_sync">Adatok szinkronizálása</string>
     <string name="quest_board_type_sport">Sport, gyakorlatok</string>
@@ -935,7 +935,7 @@ Ha a küldetések számát túl soknak találod, a beállításokban bármikor f
     <string name="quest_barrier_bicycle_type_double">S-kanyar két eltolt akadállyal</string>
     <string name="quest_barrier_bicycle_type_multiple">S-kanyar legalább három akadállyal</string>
     <string name="language_default">Rendszer alapértelmezett</string>
-    <string name="on_floor">%s. emeleten</string>
+    <string name="on_floor">%1$s. emeleten</string>
     <string name="select_street_parking_orientation">Az úttesthez viszonyított irányultság kiválasztása:</string>
     <string name="select_street_parking_position">Helyzet kiválasztása:</string>
     <string name="select_street_parking_no">Van itt tábla vagy útburkolati jel?</string>
@@ -1001,7 +1001,7 @@ Másik megoldásként írhatsz egy jegyzetet (fényképpel).</string>
     <string name="quest_smoothness_hint">🚲, 🚗, 🚙, … add meg, hogy a felület mely járművekkel használható. Az összkép számít, nem az egyedi veszélyek.</string>
     <string name="link_osmhydrant_description">Tűzoltóságok és tűzcsapok keresése, hozzáadása és szerkesztése</string>
     <string name="achievement_lifesaver_title">Életmentő</string>
-    <string name="achievement_lifesaver_solved_X">Választ adtál %d olyan kérdésre, amellyel a mentőknek, a tűzoltóknak és más segélyszolgálatoknak nyújtottál segítséget!</string>
+    <string name="achievement_lifesaver_solved_X">Választ adtál %1$d olyan kérdésre, amellyel a mentőknek, a tűzoltóknak és más segélyszolgálatoknak nyújtottál segítséget!</string>
     <string name="quest_fuelSelfService_title">Tankolhatsz önkiszolgáló módon ezen a benzinkúton?</string>
     <string name="default_disabled_msg_difficult_and_time_consuming">Ez a kérdéstípus alapértelmezés szerint ki van kapcsolva, mert elég időigényes és gyakran nehéz helyesen válaszolni rá. Csak akkor engedélyezd, ha valóban elkötelezett vagy ilyen jellegű adatok hozzáadása iránt.</string>
     <string name="quest_smoothness_description_good_compacted_gravel">Keményre tömörített; nagyon kevés laza kavics vagy homok</string>
@@ -1164,7 +1164,7 @@ Tedd meg a másiknál is, ha van olyan.</string>
     <string name="quest_camp_type_backcountry">Vadkemping (létesítmények nélküli)</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">Ez az átmérő valószínűtlennek tűnik, általában %1$d és %2$d között szokott lenni.</string>
     <string name="quest_recycling_type_pet">Csak PET</string>
-    <string name="street_parking_street_width">Az utca szélessége: %s</string>
+    <string name="street_parking_street_width">Az utca szélessége: %1$s</string>
     <string name="overlay_street_parking">Közúti parkolás</string>
     <string name="link_ohsomehex_description">Az OSM-adatok feltárása a teljes képtől az egyes objektumokig terjedő léptékekben, térben és időben</string>
     <string name="link_opencampingmap_description">Kempingek térképe</string>
@@ -1211,7 +1211,7 @@ Tedd meg a másiknál is, ha van olyan.</string>
     <string name="user_profile_current_week_title">Egy héten belül</string>
     <string name="user_profile_dates_mapped">Térképezéssel töltött napok</string>
     <string name="quest_cycleway_value_advisory_lane">nyitott kerékpársáv (fehér szaggatott vonal)</string>
-    <string name="urlconfig_scan_qr_code_again2">Az alkalmazás telepítése után olvasd le újra a QR-kódot, vagy kattints &lt;a href="%s"&gt;erre a hivatkozásra&lt;/a&gt; a tárolt beállítás alkalmazásához.</string>
+    <string name="urlconfig_scan_qr_code_again2">Az alkalmazás telepítése után olvasd le újra a QR-kódot, vagy kattints &lt;a href="%1$s"&gt;erre a hivatkozásra&lt;/a&gt; a tárolt beállítás alkalmazásához.</string>
     <string name="confirmation_replace_shop_title">Ez most egy másik üzlet?</string>
     <string name="confirmation_replace_shop_message">Ebben az esetben a nyitvatartási idő, az elérhetőségek stb. is megváltoztak.</string>
     <string name="confirmation_replace_shop_yes">Ez egy másik üzlet lett</string>
@@ -1221,7 +1221,7 @@ Tedd meg a másiknál is, ha van olyan.</string>
 Elmozdítod?</string>
     <string name="node_moved_not_far_enough">Mozgasd távolabb</string>
     <string name="node_moved_too_far">Túl messzire került. Fontold meg inkább jegyzet írását</string>
-    <string name="node_moved">Áthelyezve %s-rel</string>
+    <string name="node_moved">Áthelyezve %1$s-rel</string>
     <string name="move_node_description">Mozgasd a térképet, hogy a megfelelő pozícióba kerüljön az objektum. Használd a nagyítást, és igyekezz a lehető legpontosabban meghatározni a helyet. Vedd figyelembe, hogy a saját megjelenített pozíciód nem feltétlenül annyira pontos, mint amilyennek látszik.</string>
     <string name="move_node_action_description">Áthelyezted a pontot</string>
     <string name="quest_cycleway_value_shoulder">nincs, de a burkolt padka kerékpározásra alkalmas</string>
@@ -1319,7 +1319,7 @@ Ezenkívül egyes rétegek, például a cím réteg, új adatok hozzáadását i
     <string name="label_log_older_than">Eddig</string>
     <string name="label_log_message_contains">Az üzenet tartalma</string>
     <string name="title_logs_filters">Üzenetszűrő</string>
-    <string name="pref_title_quests_restore_hidden_summary">Rejtett kérdések száma: %d</string>
+    <string name="pref_title_quests_restore_hidden_summary">Rejtett kérdések száma: %1$d</string>
     <string name="link_every_door_description">Hatékony POI-szerkesztő Android és iOS rendszerekre</string>
     <string name="link_mapcomplete_description">Tematikus OSM-térképek gyűjteménye, amelyek egy-egy funkciót jelenítenek meg és biztosítják ezek szerkesztését</string>
     <string name="link_forum_description">Segítségre van szükséged? Szeretnél olvasni arról, mi zajlik? Gyere, és vegyülj el, itt nyüzsögnek a közösségek a világ minden tájáról!</string>
@@ -1390,7 +1390,7 @@ Egy szint akkor számít tetőszintnek, ha az ablakai a tetőben vannak. A nulla
     <string name="quest_camp_power_supply_hint">Ez lehet közvetlenül a táborhelyeken található konnektor, konnektor a vendégek által hozzáférhető kiszolgáló épületben, vagy külön töltőállomás telefonok, laptopok stb. számára.</string>
     <string name="quest_barrier_opening_width_bollard">Mekkora a legszélesebb rés, amin itt át lehet menni?</string>
     <string name="user_profile_all_time_title">Összesítés</string>
-    <string name="user_statistics_country_rank2">Helyezés itt: %s</string>
+    <string name="user_statistics_country_rank2">Helyezés itt: %1$s</string>
     <string name="quest_leafType_tree_is_just_a_stump">Ez csak egy tuskó</string>
     <string name="quest_board_name_title">Mi a címe ennek az információs táblának?</string>
     <string name="quest_crossing_hint">Egy utat keresztező, nem hivatalos ösvény:</string>
