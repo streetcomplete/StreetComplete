@@ -84,8 +84,8 @@ class AddEntrance : OsmElementQuestType<EntranceAnswer>, AndroidQuest {
 
     override fun applyAnswerTo(answer: EntranceAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {
-            DeadEnd -> tags["noexit"] = "yes"
-            is EntranceExistsAnswer -> tags["entrance"] = answer.osmValue
+            EntranceAnswer.IsDeadEnd -> tags["noexit"] = "yes"
+            is EntranceType -> tags["entrance"] = answer.osmValue
         }
     }
 }

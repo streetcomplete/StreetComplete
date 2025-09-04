@@ -80,6 +80,9 @@ The info you enter is directly added to OpenStreetMap in your name, without the 
 
     <!-- Generic strings used in various quests -->
 
+    <string name="ok">"OK"</string>
+    <string name="cancel">"Cancel"</string>
+
     <string name="quest_generic_hasFeature_yes">"Yes"</string>
     <string name="quest_generic_hasFeature_no">"No"</string>
     <string name="quest_generic_hasFeature_optional">"Optionally"</string>
@@ -641,6 +644,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="enable_quest_confirmation_title">Enable this quest type?</string>
     <string name="enable_overlay_confirmation_title">Enable this overlay?</string>
 
+    <string name="action_copy">Copy</string>
 
     <!-- Managing edit type presets screen -->
 

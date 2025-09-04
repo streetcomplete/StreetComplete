@@ -43,6 +43,7 @@ import de.westnordost.streetcomplete.data.user.UserLoginController
 import de.westnordost.streetcomplete.data.user.UserUpdater
 import de.westnordost.streetcomplete.data.user.achievements.achievementDefinitionsModule
 import de.westnordost.streetcomplete.data.user.achievements.achievementsModule
+import de.westnordost.streetcomplete.data.user.achievements.editTypeAliasesModule
 import de.westnordost.streetcomplete.data.user.statistics.statisticsModule
 import de.westnordost.streetcomplete.data.user.userModule
 import de.westnordost.streetcomplete.data.visiblequests.visibleQuestsModule
@@ -103,6 +104,7 @@ class StreetCompleteApplication : Application() {
             modules(
                 achievementsModule,
                 achievementDefinitionsModule,
+                editTypeAliasesModule,
                 appModule,
                 aboutScreenModule,
                 userScreenModule,

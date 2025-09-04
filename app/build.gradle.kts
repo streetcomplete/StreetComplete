@@ -422,7 +422,10 @@ tasks.register<UpdateAppTranslationsTask>("updateTranslations") {
     languageCodes = bcp47ExportLanguages
     apiToken = properties["app.streetcomplete.POEditorAPIToken"] as String
     projectId = poEditorProjectId
-    targetFiles = { "$projectDir/src/androidMain/res/values-$it/strings.xml" }
+    targetFileFns = listOf(
+        { "$projectDir/src/androidMain/res/values-$it/strings.xml" },
+        { "$projectDir/src/commonMain/composeResources/values-$it/strings.xml" }
+    )
 }
 
 tasks.register<UpdateAppTranslationCompletenessTask>("updateTranslationCompleteness") {
@@ -431,7 +434,7 @@ tasks.register<UpdateAppTranslationCompletenessTask>("updateTranslationCompleten
     mustIncludeLanguagePercentage = 90
     apiToken = properties["app.streetcomplete.POEditorAPIToken"] as String
     projectId = poEditorProjectId
-    targetFiles = { "$projectDir/src/androidMain/res/values-$it/translation_info.xml" }
+    targetFiles = { "$projectDir/src/commonMain/composeResources/values-$it/translation_info.xml" }
 }
 
 tasks.register<UpdateChangelogTask>("updateChangelog") {
@@ -457,5 +460,7 @@ tasks.register("copyDefaultStringsToEnStrings") {
     doLast {
         File("$projectDir/src/androidMain/res/values/strings.xml")
             .copyTo(File("$projectDir/src/androidMain/res/values-en/strings.xml"), true)
+        File("$projectDir/src/androidMain/res/values/strings.xml")
+            .copyTo(File("$projectDir/src/commonMain/composeResources/values-en/strings.xml"), true)
     }
 }

@@ -9,10 +9,9 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.quests.camping.CampType.BACKCOUNTRY
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
-class AddCampType : OsmFilterQuestType<CampType>(), AndroidQuest {
+class AddCampType : OsmFilterQuestType<CampTypeAnswer>(), AndroidQuest {
 
     override val elementFilter = """
         nodes, ways with
@@ -34,10 +33,10 @@ class AddCampType : OsmFilterQuestType<CampType>(), AndroidQuest {
 
     override fun createForm() = AddCampTypeForm()
 
-    override fun applyAnswerTo(answer: CampType, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: CampTypeAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {
-            BACKCOUNTRY -> tags["backcountry"] = "yes"
-            else -> {
+            CampTypeAnswer.IsBackcountry -> tags["backcountry"] = "yes"
+            is Campers -> {
                 tags["tents"] = answer.tents.toYesNo()
                 tags["caravans"] = answer.caravans.toYesNo()
             }

@@ -21,19 +21,18 @@ import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Devices
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.tooling.preview.PreviewLightDark
-import androidx.compose.ui.tooling.preview.PreviewScreenSizes
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
-import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.EditType
 import de.westnordost.streetcomplete.quests.recycling.AddRecyclingType
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.user_statistics_quest_wiki_link
 import de.westnordost.streetcomplete.screens.user.DialogContentWithIconLayout
 import de.westnordost.streetcomplete.ui.common.OpenInBrowserIcon
 import de.westnordost.streetcomplete.ui.theme.headlineSmall
+import org.jetbrains.compose.resources.stringResource
+import org.jetbrains.compose.ui.tooling.preview.Preview
 
 /** Shows the details for a certain quest type in a custom dialog. */
 @Composable
@@ -97,7 +96,7 @@ private fun EditTypeDetails(
             ) {
                 OpenInBrowserIcon()
                 Text(
-                    text = stringResource(R.string.user_statistics_quest_wiki_link),
+                    text = stringResource(Res.string.user_statistics_quest_wiki_link),
                     modifier = Modifier.padding(start = 8.dp),
                     textAlign = if (isLandscape) TextAlign.Start else TextAlign.Center
                 )
@@ -106,9 +105,7 @@ private fun EditTypeDetails(
     }
 }
 
-@Preview(device = Devices.NEXUS_5) // darn small device
-@PreviewScreenSizes
-@PreviewLightDark
+@Preview
 @Composable
 private fun PreviewEditTypeDialog() {
     EditTypeDialog(

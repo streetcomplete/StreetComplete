@@ -12,10 +12,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import de.westnordost.osmfeatures.FeatureDictionary
-import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.edithistory.Edit
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.undo_confirm_negative
+import de.westnordost.streetcomplete.resources.undo_confirm_positive
+import de.westnordost.streetcomplete.resources.undo_confirm_title2
 import de.westnordost.streetcomplete.ui.common.dialogs.ScrollableAlertDialog
+import org.jetbrains.compose.resources.stringResource
 
 /** Confirmation dialog for undoing an edit. Shows details about an edit */
 @OptIn(ExperimentalLayoutApi::class)
@@ -29,7 +33,7 @@ fun UndoDialog(
 ) {
     ScrollableAlertDialog(
         onDismissRequest = onDismissRequest,
-        title = { Text(stringResource(R.string.undo_confirm_title2)) },
+        title = { Text(stringResource(Res.string.undo_confirm_title2)) },
         content = {
             Box(Modifier
                 .verticalScroll(rememberScrollState())
@@ -40,10 +44,10 @@ fun UndoDialog(
         },
         buttons = {
             TextButton(onClick = onDismissRequest) {
-                Text(stringResource(R.string.undo_confirm_negative))
+                Text(stringResource(Res.string.undo_confirm_negative))
             }
             TextButton(onClick = { onConfirmed(); onDismissRequest() }) {
-                Text(stringResource(R.string.undo_confirm_positive))
+                Text(stringResource(Res.string.undo_confirm_positive))
             }
         },
         height = 360.dp

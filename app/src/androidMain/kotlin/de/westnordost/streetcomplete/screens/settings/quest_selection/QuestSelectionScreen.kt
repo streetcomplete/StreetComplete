@@ -13,12 +13,14 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.intl.Locale
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.no_search_results
+import de.westnordost.streetcomplete.resources.quest_presets_default_name
 import de.westnordost.streetcomplete.ui.common.CenteredLargeTitleHint
 import de.westnordost.streetcomplete.util.ktx.displayRegion
+import org.jetbrains.compose.resources.stringResource
 
 /** Shows a screen in which the user can enable and disable quests as well as re-order them */
 @Composable
@@ -38,7 +40,7 @@ fun QuestSelectionScreen(
 
     Column(Modifier.fillMaxSize()) {
         QuestSelectionTopAppBar(
-            currentPresetName = currentPresetName ?: stringResource(R.string.quest_presets_default_name),
+            currentPresetName = currentPresetName ?: stringResource(Res.string.quest_presets_default_name),
             onClickBack = onClickBack,
             onUnselectAll = { viewModel.unselectAll() },
             onReset = { viewModel.resetAll() },
@@ -47,7 +49,7 @@ fun QuestSelectionScreen(
         )
 
         if (filteredQuests.isEmpty()) {
-            CenteredLargeTitleHint(stringResource(R.string.no_search_results))
+            CenteredLargeTitleHint(stringResource(Res.string.no_search_results))
         } else {
             val insets = WindowInsets.safeDrawing.only(
                 WindowInsetsSides.Horizontal + WindowInsetsSides.Bottom

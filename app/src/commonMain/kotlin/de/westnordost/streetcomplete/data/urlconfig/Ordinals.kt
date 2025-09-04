@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.data.urlconfig
 
 import com.ionspin.kotlin.bignum.integer.BigInteger
+import kotlin.jvm.JvmInline
 
 @JvmInline
 value class Ordinals(private val value: Set<Int>) : Set<Int> by value

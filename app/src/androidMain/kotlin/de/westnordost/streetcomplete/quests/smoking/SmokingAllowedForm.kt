@@ -1,16 +1,18 @@
 package de.westnordost.streetcomplete.quests.smoking
 
-import de.westnordost.streetcomplete.R
+import androidx.compose.foundation.layout.BoxScope
+import androidx.compose.material.Text
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.quests.AListQuestForm
 import de.westnordost.streetcomplete.quests.smoking.SmokingAllowed.NO
 import de.westnordost.streetcomplete.quests.smoking.SmokingAllowed.OUTSIDE
 import de.westnordost.streetcomplete.quests.smoking.SmokingAllowed.SEPARATED
 import de.westnordost.streetcomplete.quests.smoking.SmokingAllowed.YES
-import de.westnordost.streetcomplete.ui.common.TextItem
+import org.jetbrains.compose.resources.stringResource
 
-class SmokingAllowedForm : AListQuestForm<SmokingAllowed>() {
+class SmokingAllowedForm : AListQuestForm<SmokingAllowed, SmokingAllowed>() {
 
-    override val items: List<TextItem<SmokingAllowed>> get() {
+    override val items: List<SmokingAllowed> get() {
         val tags = element.tags
         val isAlreadyOutdoor =
             tags["leisure"] == "outdoor_seating" || tags["amenity"] == "biergarten" ||
@@ -21,10 +23,14 @@ class SmokingAllowedForm : AListQuestForm<SmokingAllowed>() {
             // nightclubs etc. might have outside smoking areas even when there is no seating outside
 
         return listOfNotNull(
-            TextItem(NO, R.string.quest_smoking_no),
-            if (isAlreadyOutdoor || noOutdoorSmoking) null else TextItem(OUTSIDE, R.string.quest_smoking_outside),
-            TextItem(SEPARATED, R.string.quest_smoking_separated),
-            TextItem(YES, R.string.quest_smoking_yes),
+            NO,
+            if (isAlreadyOutdoor || noOutdoorSmoking) null else OUTSIDE,
+            SEPARATED,
+            YES,
         )
+    }
+
+    @Composable override fun BoxScope.ItemContent(item: SmokingAllowed) {
+        Text(stringResource(item.text))
     }
 }

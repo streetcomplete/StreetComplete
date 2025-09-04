@@ -31,11 +31,13 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.surface.AddRoadSurface
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.ic_drag_vertical_24
+import de.westnordost.streetcomplete.resources.questList_disabled_by_default
+import de.westnordost.streetcomplete.resources.questList_disabled_in_country
 import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 
 /** Single item in the quest selection list. Shows icon + title, whether it is enabled and whether
  *  it is disabled by default / disabled in the country one is in */
@@ -72,10 +74,10 @@ fun QuestSelectionRow(
                 style = MaterialTheme.typography.body1,
             )
             if (!item.enabledInCurrentCountry) {
-                DisabledHint(stringResource(R.string.questList_disabled_in_country, displayCountry))
+                DisabledHint(stringResource(Res.string.questList_disabled_in_country, displayCountry))
             }
             if (item.questType.defaultDisabledMessage != 0) {
-                DisabledHint(stringResource(R.string.questList_disabled_by_default))
+                DisabledHint(stringResource(Res.string.questList_disabled_by_default))
             }
         }
         Box(

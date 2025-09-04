@@ -44,7 +44,7 @@ open class UpdateAppTranslationCompletenessTask : DefaultTask() {
                 targetFile.writeText("""
                     <?xml version="1.0" encoding="utf-8"?>
                     <resources>
-                      <integer name="translation_completeness">$completedPercentage</integer>
+                      <string name="translation_completeness">$completedPercentage</string>
                     </resources>
 
                 """.trimIndent())

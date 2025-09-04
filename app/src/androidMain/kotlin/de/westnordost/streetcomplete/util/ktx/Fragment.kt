@@ -9,8 +9,6 @@ import kotlinx.coroutines.flow.FlowCollector
 import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.launch
 
-fun Fragment.openUri(uri: String) = context?.openUri(uri) ?: false
-
 val Fragment.childFragmentManagerOrNull: FragmentManager? get() =
     if (host != null) childFragmentManager else null
 

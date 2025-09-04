@@ -1,21 +1,24 @@
 package de.westnordost.streetcomplete.quests.crossing
 
 import androidx.appcompat.app.AlertDialog
+import androidx.compose.foundation.layout.BoxScope
+import androidx.compose.material.Text
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.quests.AListQuestForm
 import de.westnordost.streetcomplete.quests.crossing.CrossingAnswer.*
-import de.westnordost.streetcomplete.ui.common.TextItem
+import org.jetbrains.compose.resources.stringResource
 import org.koin.android.ext.android.inject
 
-class AddCrossingForm : AListQuestForm<CrossingAnswer>() {
+class AddCrossingForm : AListQuestForm<CrossingAnswer, CrossingAnswer>() {
     private val mapDataSource: MapDataWithEditsSource by inject()
 
-    override val items = listOf(
-        TextItem(YES, R.string.quest_crossing_yes),
-        TextItem(INFORMAL, R.string.quest_crossing_no),
-        TextItem(PROHIBITED, R.string.quest_crossing_prohibited),
-    )
+    override val items = CrossingAnswer.entries
+
+    @Composable override fun BoxScope.ItemContent(item: CrossingAnswer) {
+        Text(stringResource(item.text))
+    }
     /*
         PROHIBITED is not possible for sidewalks or crossings (=separately mapped sidewalk
         infrastructure) because if the crossing does not exist, it would require to also
@@ -29,7 +32,7 @@ class AddCrossingForm : AListQuestForm<CrossingAnswer>() {
         deleting the crossing ways (I would say... it is in edge case...)
      */
     override fun onClickOk() {
-        if (checkedItem.value?.value == PROHIBITED && isOnSidewalkOrCrossing()) {
+        if (checkedItem.value == PROHIBITED && isOnSidewalkOrCrossing()) {
             AlertDialog.Builder(requireContext())
                 .setMessage(R.string.quest_leave_new_note_as_answer)
                 .setPositiveButton(R.string.quest_leave_new_note_yes) { _, _ -> composeNote() }

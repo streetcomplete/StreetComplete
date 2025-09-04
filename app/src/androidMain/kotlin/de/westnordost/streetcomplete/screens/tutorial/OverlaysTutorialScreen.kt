@@ -32,20 +32,24 @@ import androidx.compose.ui.graphics.TransformOrigin
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.PreviewScreenSizes
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.ic_overlay_24
 import de.westnordost.streetcomplete.resources.logo_osm_map
+import de.westnordost.streetcomplete.resources.overlays_tutorial_display
+import de.westnordost.streetcomplete.resources.overlays_tutorial_edit
+import de.westnordost.streetcomplete.resources.overlays_tutorial_intro
+import de.westnordost.streetcomplete.resources.overlays_tutorial_title
 import de.westnordost.streetcomplete.screens.main.controls.MapButton
 import de.westnordost.streetcomplete.screens.user.achievements.AnimatedTadaShine
 import de.westnordost.streetcomplete.ui.theme.headlineLarge
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
+import org.jetbrains.compose.ui.tooling.preview.Preview
 
 @Composable
 fun OverlaysTutorialScreen(
@@ -242,12 +246,12 @@ private fun BoxScope.OverlaysTutorialIllustration(
 @Composable
 private fun OverlaysTutorialStepIntroText() {
     Text(
-        text = stringResource(R.string.overlays_tutorial_title),
+        text = stringResource(Res.string.overlays_tutorial_title),
         style = MaterialTheme.typography.headlineLarge,
         textAlign = TextAlign.Center,
     )
     Text(
-        text = stringResource(R.string.overlays_tutorial_intro),
+        text = stringResource(Res.string.overlays_tutorial_intro),
         style = MaterialTheme.typography.body1,
         modifier = Modifier.padding(top = 24.dp),
         textAlign = TextAlign.Center,
@@ -257,7 +261,7 @@ private fun OverlaysTutorialStepIntroText() {
 @Composable
 private fun OverlaysTutorialStepDisplayText() {
     Text(
-        text = stringResource(R.string.overlays_tutorial_display),
+        text = stringResource(Res.string.overlays_tutorial_display),
         style = MaterialTheme.typography.body1,
         textAlign = TextAlign.Center,
     )
@@ -266,13 +270,13 @@ private fun OverlaysTutorialStepDisplayText() {
 @Composable
 private fun OverlaysTutorialStepEditText() {
     Text(
-        text = stringResource(R.string.overlays_tutorial_edit),
+        text = stringResource(Res.string.overlays_tutorial_edit),
         style = MaterialTheme.typography.body1,
         textAlign = TextAlign.Center,
     )
 }
 
-@PreviewScreenSizes
+@Preview
 @Composable
 private fun PreviewOverlaysTutorialScreen() {
     OverlaysTutorialScreen({}, {})

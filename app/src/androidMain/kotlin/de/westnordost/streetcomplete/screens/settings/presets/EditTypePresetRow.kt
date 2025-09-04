@@ -18,13 +18,19 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.delete_confirmation
+import de.westnordost.streetcomplete.resources.quest_presets_default_name
+import de.westnordost.streetcomplete.resources.quest_presets_delete_message
+import de.westnordost.streetcomplete.resources.quest_presets_duplicate
+import de.westnordost.streetcomplete.resources.quest_presets_preset_name
+import de.westnordost.streetcomplete.resources.quest_presets_rename
 import de.westnordost.streetcomplete.ui.common.MoreIcon
 import de.westnordost.streetcomplete.ui.common.dialogs.ConfirmationDialog
 import de.westnordost.streetcomplete.ui.common.dialogs.TextInputDialog
+import org.jetbrains.compose.resources.stringResource
+import org.jetbrains.compose.ui.tooling.preview.Preview
 
 @Composable
 fun EditTypePresetRow(
@@ -42,7 +48,7 @@ fun EditTypePresetRow(
     var showDuplicateDialog by remember { mutableStateOf(false) }
     var showShareDialog by remember { mutableStateOf(false) }
 
-    val name = item.name.ifEmpty { stringResource(R.string.quest_presets_default_name) }
+    val name = item.name.ifEmpty { stringResource(Res.string.quest_presets_default_name) }
 
     Row(
         modifier = modifier.height(IntrinsicSize.Min),
@@ -88,26 +94,26 @@ fun EditTypePresetRow(
         TextInputDialog(
             onDismissRequest = { showRenameDialog = false },
             onConfirmed = { onRename(it) },
-            title = { Text(stringResource(R.string.quest_presets_rename)) },
+            title = { Text(stringResource(Res.string.quest_presets_rename)) },
             text = name,
-            textInputLabel = { Text(stringResource(R.string.quest_presets_preset_name)) }
+            textInputLabel = { Text(stringResource(Res.string.quest_presets_preset_name)) }
         )
     }
     if (showDuplicateDialog) {
         TextInputDialog(
             onDismissRequest = { showDuplicateDialog = false },
             onConfirmed = { onDuplicate(it) },
-            title = { Text(stringResource(R.string.quest_presets_duplicate)) },
+            title = { Text(stringResource(Res.string.quest_presets_duplicate)) },
             text = name,
-            textInputLabel = { Text(stringResource(R.string.quest_presets_preset_name)) }
+            textInputLabel = { Text(stringResource(Res.string.quest_presets_preset_name)) }
         )
     }
     if (showDeleteDialog) {
         ConfirmationDialog(
             onDismissRequest = { showDeleteDialog = false },
             onConfirmed = onDelete,
-            text = { Text(stringResource(R.string.quest_presets_delete_message, name)) },
-            confirmButtonText = stringResource(R.string.delete_confirmation),
+            text = { Text(stringResource(Res.string.quest_presets_delete_message, name)) },
+            confirmButtonText = stringResource(Res.string.delete_confirmation),
         )
     }
     if (showShareDialog && item.url != null) {

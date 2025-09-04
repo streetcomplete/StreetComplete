@@ -35,13 +35,18 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalLayoutDirection
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.action_manage_presets
+import de.westnordost.streetcomplete.resources.ic_add_24
+import de.westnordost.streetcomplete.resources.quest_presets_preset_add
+import de.westnordost.streetcomplete.resources.quest_presets_preset_name
+import de.westnordost.streetcomplete.resources.quest_presets_selected
 import de.westnordost.streetcomplete.ui.common.BackIcon
 import de.westnordost.streetcomplete.ui.common.dialogs.TextInputDialog
 import de.westnordost.streetcomplete.ui.theme.titleMedium
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 
 /** Shows a screen in which the user can select which preset of edit type selections he wants to
  *  use. */
@@ -53,7 +58,7 @@ import de.westnordost.streetcomplete.ui.theme.titleMedium
 
     Column(Modifier.fillMaxSize()) {
         TopAppBar(
-            title = { Text(stringResource(R.string.action_manage_presets)) },
+            title = { Text(stringResource(Res.string.action_manage_presets)) },
             windowInsets = AppBarDefaults.topAppBarWindowInsets,
             navigationIcon = { IconButton(onClick = onClickBack) { BackIcon() } },
         )
@@ -76,8 +81,8 @@ import de.westnordost.streetcomplete.ui.theme.titleMedium
                     .padding(insets)
             ) {
                 Icon(
-                    painter = painterResource(R.drawable.ic_add_24dp),
-                    contentDescription = stringResource(R.string.quest_presets_preset_add)
+                    painter = painterResource(Res.drawable.ic_add_24),
+                    contentDescription = stringResource(Res.string.quest_presets_preset_add)
                 )
             }
         }
@@ -87,8 +92,8 @@ import de.westnordost.streetcomplete.ui.theme.titleMedium
         TextInputDialog(
             onDismissRequest = { showAddDialog = false },
             onConfirmed = { viewModel.add(it) },
-            title = { Text(stringResource(R.string.quest_presets_preset_add)) },
-            textInputLabel = { Text(stringResource(R.string.quest_presets_preset_name)) }
+            title = { Text(stringResource(Res.string.quest_presets_preset_add)) },
+            textInputLabel = { Text(stringResource(Res.string.quest_presets_preset_name)) }
         )
     }
 }
@@ -142,12 +147,12 @@ private fun EditTypePresetsHeader(modifier: Modifier = Modifier) {
                 .padding(horizontal = 16.dp, vertical = 8.dp)
         ) {
             Text(
-                text = stringResource(R.string.quest_presets_preset_name),
+                text = stringResource(Res.string.quest_presets_preset_name),
                 modifier = Modifier.weight(1f),
                 style = MaterialTheme.typography.titleMedium
             )
             Text(
-                text = stringResource(R.string.quest_presets_selected),
+                text = stringResource(Res.string.quest_presets_selected),
                 style = MaterialTheme.typography.titleMedium
             )
         }

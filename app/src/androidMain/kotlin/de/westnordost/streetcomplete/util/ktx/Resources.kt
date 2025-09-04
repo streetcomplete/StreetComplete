@@ -15,12 +15,6 @@ import de.westnordost.streetcomplete.view.ResImage
 inline fun <reified T> Resources.getYamlObject(@RawRes id: Int): T =
     Yaml.default.decodeFromStream(openRawResource(id))
 
-/** shortcut for [getYamlObject] with included type information */
-fun Resources.getYamlStringMap(@RawRes id: Int): Map<String, String> = this.getYamlObject(id)
-
-fun Resources.getRawTextFile(@RawRes id: Int) =
-    openRawResource(id).bufferedReader().use { it.readText() }
-
 fun Resources.getBitmapDrawable(@DrawableRes id: Int): BitmapDrawable =
     getDrawable(id).asBitmapDrawable(this)
 
