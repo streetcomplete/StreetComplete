@@ -82,4 +82,4 @@ Cette section regroupe tous les documents liés à la conception, au développem
 
 === Registre de télétravail
 - **03/09/2024** : de 14h15 à 17h15 ↴
-- **04/09/2024** : de 9h30 à 12h30 → https://github.com/HugoTHOLLON/StreetCompleteSAE_S5/tree/master/docs/ODJ-CR/CR-TT-04-09-2025.pdf[Lien vers le CR]
+- **04/09/2024** : de 9h30 à 12h30 → https://github.com/HugoTHOLLON/StreetCompleteSAE_S5/tree/master/docs/ODJ-CR/CR-TT-04-09-25.pdf[Lien vers le CR]
