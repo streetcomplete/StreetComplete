@@ -1,5 +1,7 @@
 package de.westnordost.streetcomplete.ui.common
 
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
@@ -13,48 +15,46 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.quest_accepts_cards_credit_only
 import de.westnordost.streetcomplete.resources.quest_accepts_cards_debit_and_credit
 import de.westnordost.streetcomplete.resources.quest_accepts_cards_dedit_only
 import de.westnordost.streetcomplete.resources.quest_accepts_cards_unavailable
-import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.stringResource
 
 /** A radio button group composed of a list of [options]. */
 @Composable
-fun <T> TextItemRadioGroup(
-    options: List<TextItem<T>>,
-    onSelectionChange: (TextItem<T>) -> Unit,
-    currentOption: TextItem<T>?,
+fun <T> RadioGroup(
+    options: List<T>,
+    onSelectionChange: (T) -> Unit,
+    selectedOption: T?,
+    itemContent: @Composable BoxScope.(T) -> Unit,
     modifier: Modifier = Modifier
 ) {
     Column(modifier) {
         options.forEach { option ->
             Row(Modifier
                 .selectable(
-                    selected = (option == currentOption),
+                    selected = (option == selectedOption),
                     onClick = { onSelectionChange(option) },
                     role = Role.RadioButton
                 )
                 .padding(vertical = 8.dp)
             ) {
                 RadioButton(
-                    selected = option == currentOption,
+                    selected = option == selectedOption,
                     // the whole row should be selectable, not only the radio button
                     onClick = null,
                 )
-                Text(
-                    text = stringResource(option.title),
-                    modifier = Modifier
-                        .align(Alignment.CenterVertically)
-                        .padding(horizontal = 16.dp)
-                )
+                Box(Modifier
+                    .align(Alignment.CenterVertically)
+                    .padding(horizontal = 16.dp),
+                ) {
+                    itemContent(option)
+                }
             }
         }
     }
@@ -63,17 +63,20 @@ fun <T> TextItemRadioGroup(
 @Composable
 @Preview(showBackground = true)
 private fun TextItemRadioGroupFormPreview() {
-    var selectedOption by remember { mutableStateOf<TextItem<Int>?>(null) }
-    TextItemRadioGroup(
-        options = listOf(
-            TextItem(0, Res.string.quest_accepts_cards_debit_and_credit),
-            TextItem(1, Res.string.quest_accepts_cards_credit_only),
-            TextItem(2, Res.string.quest_accepts_cards_dedit_only),
-            TextItem(3, Res.string.quest_accepts_cards_unavailable),
-        ),
+    var selectedOption by remember { mutableStateOf<Int?>(null) }
+    RadioGroup(
+        options = listOf(0,1,2,3),
         onSelectionChange = { selectedOption = it },
-        currentOption = selectedOption
+        selectedOption = selectedOption,
+        itemContent = {
+            val text = when (it) {
+                0 -> Res.string.quest_accepts_cards_debit_and_credit
+                1 -> Res.string.quest_accepts_cards_credit_only
+                2 -> Res.string.quest_accepts_cards_dedit_only
+                3 -> Res.string.quest_accepts_cards_unavailable
+                else -> null
+            }
+            text?.let { Text(stringResource(text)) }
+        }
     )
 }
-
-data class TextItem<T>(val value: T, val title: StringResource)

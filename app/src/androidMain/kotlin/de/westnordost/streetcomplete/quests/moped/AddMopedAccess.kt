@@ -8,7 +8,7 @@ import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement
 import de.westnordost.streetcomplete.osm.Tags
 
-class AddMopedAccess : OsmFilterQuestType<AddMopedAccessAnswer>(), AndroidQuest {
+class AddMopedAccess : OsmFilterQuestType<MopedAccessAnswer>(), AndroidQuest {
 
     override val elementFilter = """
         ways with (
@@ -32,11 +32,11 @@ class AddMopedAccess : OsmFilterQuestType<AddMopedAccessAnswer>(), AndroidQuest 
 
     override fun createForm() = AddMopedAccessForm()
 
-    override fun applyAnswerTo(answer: AddMopedAccessAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: MopedAccessAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {
-            AddMopedAccessAnswer.NO_SIGN ->  tags["moped:signed"] = "no"
-            AddMopedAccessAnswer.FORBIDDEN ->  tags["moped"] = "no"
-            AddMopedAccessAnswer.DESIGNATED ->  tags["moped"] = "designated"
+            MopedAccessAnswer.NO_SIGN ->  tags["moped:signed"] = "no"
+            MopedAccessAnswer.FORBIDDEN ->  tags["moped"] = "no"
+            MopedAccessAnswer.DESIGNATED ->  tags["moped"] = "designated"
         }
     }
 }

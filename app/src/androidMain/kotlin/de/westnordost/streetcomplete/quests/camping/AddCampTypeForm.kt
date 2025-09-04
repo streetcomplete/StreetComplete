@@ -1,27 +1,22 @@
 package de.westnordost.streetcomplete.quests.camping
 
+import androidx.compose.foundation.layout.BoxScope
+import androidx.compose.material.Text
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AListQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
-import de.westnordost.streetcomplete.quests.camping.CampType.BACKCOUNTRY
-import de.westnordost.streetcomplete.quests.camping.CampType.CARAVANS_ONLY
-import de.westnordost.streetcomplete.quests.camping.CampType.TENTS_AND_CARAVANS
-import de.westnordost.streetcomplete.quests.camping.CampType.TENTS_ONLY
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.quest_camp_type_caravans_only
-import de.westnordost.streetcomplete.resources.quest_camp_type_tents_and_caravans
-import de.westnordost.streetcomplete.resources.quest_camp_type_tents_only
-import de.westnordost.streetcomplete.ui.common.TextItem
+import org.jetbrains.compose.resources.stringResource
 
-class AddCampTypeForm : AListQuestForm<CampType>() {
+class AddCampTypeForm : AListQuestForm<CampTypeAnswer, Campers>() {
 
-    override val items = listOf(
-        TextItem(TENTS_AND_CARAVANS, Res.string.quest_camp_type_tents_and_caravans),
-        TextItem(TENTS_ONLY, Res.string.quest_camp_type_tents_only),
-        TextItem(CARAVANS_ONLY, Res.string.quest_camp_type_caravans_only),
-    )
+    override val items = Campers.entries
+
+    @Composable override fun BoxScope.ItemContent(item: Campers) {
+        Text(stringResource(item.text))
+    }
 
     override val otherAnswers get() = listOfNotNull(
-        AnswerItem(R.string.quest_camp_type_backcountry) { applyAnswer(BACKCOUNTRY) },
+        AnswerItem(R.string.quest_camp_type_backcountry) { applyAnswer(CampTypeAnswer.IsBackcountry) },
     )
 }

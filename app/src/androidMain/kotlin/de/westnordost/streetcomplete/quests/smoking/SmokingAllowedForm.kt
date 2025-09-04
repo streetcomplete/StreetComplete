@@ -1,20 +1,18 @@
 package de.westnordost.streetcomplete.quests.smoking
 
+import androidx.compose.foundation.layout.BoxScope
+import androidx.compose.material.Text
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.quests.AListQuestForm
 import de.westnordost.streetcomplete.quests.smoking.SmokingAllowed.NO
 import de.westnordost.streetcomplete.quests.smoking.SmokingAllowed.OUTSIDE
 import de.westnordost.streetcomplete.quests.smoking.SmokingAllowed.SEPARATED
 import de.westnordost.streetcomplete.quests.smoking.SmokingAllowed.YES
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.quest_smoking_no
-import de.westnordost.streetcomplete.resources.quest_smoking_outside
-import de.westnordost.streetcomplete.resources.quest_smoking_separated
-import de.westnordost.streetcomplete.resources.quest_smoking_yes
-import de.westnordost.streetcomplete.ui.common.TextItem
+import org.jetbrains.compose.resources.stringResource
 
-class SmokingAllowedForm : AListQuestForm<SmokingAllowed>() {
+class SmokingAllowedForm : AListQuestForm<SmokingAllowed, SmokingAllowed>() {
 
-    override val items: List<TextItem<SmokingAllowed>> get() {
+    override val items: List<SmokingAllowed> get() {
         val tags = element.tags
         val isAlreadyOutdoor =
             tags["leisure"] == "outdoor_seating" || tags["amenity"] == "biergarten" ||
@@ -25,10 +23,14 @@ class SmokingAllowedForm : AListQuestForm<SmokingAllowed>() {
             // nightclubs etc. might have outside smoking areas even when there is no seating outside
 
         return listOfNotNull(
-            TextItem(NO, Res.string.quest_smoking_no),
-            if (isAlreadyOutdoor || noOutdoorSmoking) null else TextItem(OUTSIDE, Res.string.quest_smoking_outside),
-            TextItem(SEPARATED, Res.string.quest_smoking_separated),
-            TextItem(YES, Res.string.quest_smoking_yes),
+            NO,
+            if (isAlreadyOutdoor || noOutdoorSmoking) null else OUTSIDE,
+            SEPARATED,
+            YES,
         )
+    }
+
+    @Composable override fun BoxScope.ItemContent(item: SmokingAllowed) {
+        Text(stringResource(item.text))
     }
 }

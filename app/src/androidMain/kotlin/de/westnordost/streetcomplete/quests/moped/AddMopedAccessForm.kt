@@ -1,20 +1,16 @@
 package de.westnordost.streetcomplete.quests.moped
 
+import androidx.compose.foundation.layout.BoxScope
+import androidx.compose.material.Text
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.quests.AListQuestForm
-import de.westnordost.streetcomplete.quests.moped.AddMopedAccessAnswer.DESIGNATED
-import de.westnordost.streetcomplete.quests.moped.AddMopedAccessAnswer.FORBIDDEN
-import de.westnordost.streetcomplete.quests.moped.AddMopedAccessAnswer.NO_SIGN
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.quest_moped_access_allowed
-import de.westnordost.streetcomplete.resources.quest_moped_access_designated
-import de.westnordost.streetcomplete.resources.quest_moped_access_forbidden
-import de.westnordost.streetcomplete.ui.common.TextItem
+import org.jetbrains.compose.resources.stringResource
 
-class AddMopedAccessForm : AListQuestForm<AddMopedAccessAnswer>() {
+class AddMopedAccessForm : AListQuestForm<MopedAccessAnswer, MopedAccessAnswer>() {
 
-    override val items = listOf(
-        TextItem(DESIGNATED, Res.string.quest_moped_access_designated),
-        TextItem(FORBIDDEN, Res.string.quest_moped_access_forbidden),
-        TextItem(NO_SIGN, Res.string.quest_moped_access_allowed)
-    )
+    override val items = MopedAccessAnswer.entries
+
+    @Composable override fun BoxScope.ItemContent(item: MopedAccessAnswer) {
+        Text(stringResource(item.text))
+    }
 }
