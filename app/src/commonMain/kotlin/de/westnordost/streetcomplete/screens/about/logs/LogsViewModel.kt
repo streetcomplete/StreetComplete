@@ -11,6 +11,7 @@ import de.westnordost.streetcomplete.util.ktx.toEpochMilli
 import de.westnordost.streetcomplete.util.ktx.toLocalDate
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.IO
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted

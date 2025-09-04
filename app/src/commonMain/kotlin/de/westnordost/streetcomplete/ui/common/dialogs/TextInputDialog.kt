@@ -18,10 +18,13 @@ import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextRange
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.window.DialogProperties
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.cancel
+import de.westnordost.streetcomplete.resources.ok
+import org.jetbrains.compose.resources.stringResource
 
 /** Dialog with which to input text. OK button is only clickable if text is not blank. */
 @Composable
@@ -52,11 +55,11 @@ fun TextInputDialog(
                 enabled = value.text.isNotBlank(),
                 onClick = { onDismissRequest(); onConfirmed(value.text) }
             ) {
-                Text(stringResource(android.R.string.ok))
+                Text(stringResource(Res.string.ok))
             }
         },
         dismissButton = {
-            TextButton(onClick = onDismissRequest) { Text(stringResource(android.R.string.cancel)) }
+            TextButton(onClick = onDismissRequest) { Text(stringResource(Res.string.cancel)) }
         },
         modifier = modifier,
         title = title,

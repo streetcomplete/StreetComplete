@@ -10,7 +10,8 @@ import de.westnordost.streetcomplete.data.presets.EditTypePresetsSource
 import de.westnordost.streetcomplete.data.visiblequests.VisibleEditTypeController
 import de.westnordost.streetcomplete.data.visiblequests.VisibleEditTypeSource
 import de.westnordost.streetcomplete.util.ktx.launch
-import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.IO
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
@@ -66,7 +67,7 @@ class OverlaySelectionViewModelImpl(
     }
 
     private fun updateSelectedEditTypePresetName() {
-        launch(IO) {
+        launch(Dispatchers.IO) {
             selectedEditTypePresetName.value = editTypePresetsSource.selectedEditTypePresetName
         }
     }
@@ -77,19 +78,19 @@ class OverlaySelectionViewModelImpl(
     }
 
     override fun select(overlay: Overlay, selected: Boolean) {
-        launch(IO) {
+        launch(Dispatchers.IO) {
             visibleEditTypeController.setVisibility(overlay, selected)
         }
     }
 
     override fun resetAll() {
-        launch(IO) {
+        launch(Dispatchers.IO) {
             visibleEditTypeController.clearVisibilities(overlayRegistry)
         }
     }
 
     private fun initOverlays() {
-        launch(IO) {
+        launch(Dispatchers.IO) {
             overlays.value = overlayRegistry.map {
                 OverlaySelection(it, visibleEditTypeController.isVisible(it))
             }

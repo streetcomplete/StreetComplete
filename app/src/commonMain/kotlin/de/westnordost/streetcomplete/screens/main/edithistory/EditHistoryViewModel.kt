@@ -17,8 +17,9 @@ import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestHidden
 import de.westnordost.streetcomplete.util.ktx.launch
 import de.westnordost.streetcomplete.util.ktx.toLocalDateTime
-import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.IO
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -74,7 +75,7 @@ class EditHistoryViewModelImpl(
 
     override suspend fun getEditElement(edit: Edit): Element? {
         val key = edit.primaryElementKey ?: return null
-        return withContext(IO) { mapDataSource.get(key.type, key.id) }
+        return withContext(Dispatchers.IO) { mapDataSource.get(key.type, key.id) }
     }
 
     override suspend fun getEditGeometry(edit: Edit): ElementGeometry = when (edit) {
@@ -93,7 +94,7 @@ class EditHistoryViewModelImpl(
     }
 
     override fun undo(editKey: EditKey) {
-        launch(IO) {
+        launch(Dispatchers.IO) {
             editHistoryController.undo(editKey)
         }
     }
@@ -159,7 +160,7 @@ class EditHistoryViewModelImpl(
     }
 
     private fun updateEdits() {
-        launch(IO) {
+        launch(Dispatchers.IO) {
             edits.value = editHistoryController.getAll().sortedBy { it.createdTimestamp }
             if (edits.value.isEmpty()) hideSidebar()
         }

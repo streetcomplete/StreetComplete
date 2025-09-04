@@ -10,12 +10,12 @@ import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.PreviewLightDark
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.crosshair
 import de.westnordost.streetcomplete.ui.theme.AppTheme
 import de.westnordost.streetcomplete.ui.theme.getOpenQuestFormMapPadding
 import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.ui.tooling.preview.Preview
 
 /** A crosshair at the position at which a new POI should be created */
 @Composable
@@ -32,7 +32,7 @@ fun Crosshair(modifier: Modifier = Modifier) {
     }
 }
 
-@PreviewLightDark
+@Preview
 @Composable
 private fun PreviewCrosshair() {
     AppTheme {

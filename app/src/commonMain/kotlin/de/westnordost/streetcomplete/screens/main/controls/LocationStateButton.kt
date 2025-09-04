@@ -12,17 +12,17 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
-import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.ic_location_24
 import de.westnordost.streetcomplete.resources.ic_location_disabled_24
 import de.westnordost.streetcomplete.resources.ic_location_navigation_24
 import de.westnordost.streetcomplete.resources.ic_location_navigation_no_location_24
 import de.westnordost.streetcomplete.resources.ic_location_no_location_24
+import de.westnordost.streetcomplete.resources.map_btn_gps_tracking
 import kotlinx.coroutines.delay
 import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
+import org.jetbrains.compose.ui.tooling.preview.Preview
 
 /** State of location updates */
 enum class LocationState {
@@ -71,7 +71,7 @@ fun LocationStateButton(
         }
         Icon(
             painter = painterResource(iconResource),
-            contentDescription = stringResource(R.string.map_btn_gps_tracking),
+            contentDescription = stringResource(Res.string.map_btn_gps_tracking),
             tint = if (isFollowing) MaterialTheme.colors.secondary else LocalContentColor.current
         )
     }

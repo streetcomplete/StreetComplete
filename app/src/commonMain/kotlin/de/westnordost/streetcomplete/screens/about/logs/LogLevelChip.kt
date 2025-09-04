@@ -19,7 +19,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.logs.LogLevel
 import de.westnordost.streetcomplete.resources.Res
@@ -34,6 +33,7 @@ import de.westnordost.streetcomplete.ui.theme.logVerbose
 import de.westnordost.streetcomplete.ui.theme.logWarning
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
+import org.jetbrains.compose.ui.tooling.preview.Preview
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
@@ -103,7 +103,7 @@ val LogLevel.color: Color @Composable get() = when (this) {
     LogLevel.ERROR -> MaterialTheme.colors.logError
 }
 
-@PreviewLightDark
+@Preview
 @Composable
 private fun LogLevelFilterChipsPreview() {
     AppTheme { Surface {

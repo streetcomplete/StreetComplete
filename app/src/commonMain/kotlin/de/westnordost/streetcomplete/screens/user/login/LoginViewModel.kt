@@ -17,6 +17,7 @@ import de.westnordost.streetcomplete.data.user.oauth.OAuthException
 import de.westnordost.streetcomplete.util.ktx.launch
 import de.westnordost.streetcomplete.util.logs.Log
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.IO
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update

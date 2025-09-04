@@ -12,12 +12,12 @@ import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.drawscope.inset
 import androidx.compose.ui.graphics.drawscope.withTransform
 import androidx.compose.ui.graphics.painter.Painter
-import androidx.compose.ui.tooling.preview.Preview
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.laurel_leaf_ending
 import de.westnordost.streetcomplete.resources.laurel_leaf_pair
 import de.westnordost.streetcomplete.ui.theme.LeafGreen
 import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.ui.tooling.preview.Preview
 
 @Composable
 fun LaurelWreath(
@@ -76,7 +76,8 @@ fun LaurelWreath(
     })
 }
 
-@Preview @Composable
+@Preview
+@Composable
 private fun LaurelWreathBadgePreview() {
     LaurelWreath(progress = 1.0f)
 }

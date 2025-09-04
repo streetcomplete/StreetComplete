@@ -13,10 +13,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.ui.ktx.dpToSp
 import de.westnordost.streetcomplete.ui.theme.TeamColors
+import org.jetbrains.compose.ui.tooling.preview.Preview
 
 /** Circle showing the color and letter of the selected team mode index.
  *  A size should be provided, as it has no intrinsic size*/

@@ -16,7 +16,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.semantics.Role
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.quest_accepts_cards_credit_only
@@ -24,6 +23,7 @@ import de.westnordost.streetcomplete.resources.quest_accepts_cards_debit_and_cre
 import de.westnordost.streetcomplete.resources.quest_accepts_cards_dedit_only
 import de.westnordost.streetcomplete.resources.quest_accepts_cards_unavailable
 import org.jetbrains.compose.resources.stringResource
+import org.jetbrains.compose.ui.tooling.preview.Preview
 
 /** A radio button group composed of a list of [options]. */
 @Composable
@@ -61,7 +61,7 @@ fun <T> RadioGroup(
 }
 
 @Composable
-@Preview(showBackground = true)
+@Preview
 private fun TextItemRadioGroupFormPreview() {
     var selectedOption by remember { mutableStateOf<Int?>(null) }
     RadioGroup(

@@ -11,7 +11,8 @@ import de.westnordost.streetcomplete.data.user.statistics.CountryStatistics
 import de.westnordost.streetcomplete.data.user.statistics.StatisticsSource
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.util.ktx.launch
-import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.IO
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 
@@ -60,21 +61,21 @@ class EditStatisticsViewModelImpl(
     // while in this screen)
 
     init {
-        launch(IO) { hasEdits.value = statisticsSource.getEditCount() > 0 }
-        launch(IO) { hasEditsCurrentWeek.value = statisticsSource.getCurrentWeekEditCount() > 0 }
-        launch(IO) { flagAlignments.value = res.readFlagAlignments() }
+        launch(Dispatchers.IO) { hasEdits.value = statisticsSource.getEditCount() > 0 }
+        launch(Dispatchers.IO) { hasEditsCurrentWeek.value = statisticsSource.getCurrentWeekEditCount() > 0 }
+        launch(Dispatchers.IO) { flagAlignments.value = res.readFlagAlignments() }
     }
 
     override fun queryCountryStatistics() {
         if (countryStatistics.value == null) {
-            launch(IO) {
+            launch(Dispatchers.IO) {
                 countryStatistics.value = statisticsSource
                     .getCountryStatistics()
                     .sortedByDescending { it.count }
             }
         }
         if (countryStatisticsCurrentWeek.value == null) {
-            launch(IO) {
+            launch(Dispatchers.IO) {
                 countryStatisticsCurrentWeek.value = statisticsSource
                     .getCurrentWeekCountryStatistics()
                     .sortedByDescending { it.count }
@@ -84,7 +85,7 @@ class EditStatisticsViewModelImpl(
 
     override fun queryEditTypeStatistics() {
         if (editTypeStatistics.value == null) {
-            launch(IO) {
+            launch(Dispatchers.IO) {
                 editTypeStatistics.value = statisticsSource
                     .getEditTypeStatistics()
                     .mapNotNull { createCompleteEditTypeStatistics(it.type, it.count) }
@@ -92,7 +93,7 @@ class EditStatisticsViewModelImpl(
             }
         }
         if (editTypeStatisticsCurrentWeek.value == null) {
-            launch(IO) {
+            launch(Dispatchers.IO) {
                 editTypeStatisticsCurrentWeek.value = statisticsSource
                     .getCurrentWeekEditTypeStatistics()
                     .mapNotNull { createCompleteEditTypeStatistics(it.type, it.count) }

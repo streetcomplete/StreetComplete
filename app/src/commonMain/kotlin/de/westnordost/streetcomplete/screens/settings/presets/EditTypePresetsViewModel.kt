@@ -9,7 +9,8 @@ import de.westnordost.streetcomplete.data.urlconfig.UrlConfigController
 import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderController
 import de.westnordost.streetcomplete.data.visiblequests.VisibleEditTypeController
 import de.westnordost.streetcomplete.util.ktx.launch
-import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.IO
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
@@ -74,7 +75,7 @@ class EditTypePresetsViewModelImpl(
     }
 
     init {
-        launch(IO) {
+        launch(Dispatchers.IO) {
             val selectedId = editTypePresetsController.selectedId
             presets.value = buildList {
                 add(EditTypePreset(0, ""))
@@ -89,26 +90,26 @@ class EditTypePresetsViewModelImpl(
     }
 
     override fun add(name: String) {
-        launch(IO) {
+        launch(Dispatchers.IO) {
             val newPresetId = editTypePresetsController.add(name)
             editTypePresetsController.selectedId = newPresetId
         }
     }
 
     override fun rename(presetId: Long, name: String) {
-        launch(IO) {
+        launch(Dispatchers.IO) {
             editTypePresetsController.rename(presetId, name)
         }
     }
 
     override fun select(presetId: Long) {
-        launch(IO) {
+        launch(Dispatchers.IO) {
             editTypePresetsController.selectedId = presetId
         }
     }
 
     override fun duplicate(presetId: Long, name: String) {
-        launch(IO) {
+        launch(Dispatchers.IO) {
             val newPresetId = editTypePresetsController.add(name)
             questTypeOrderController.copyOrders(presetId, newPresetId)
             visibleEditTypeController.copyVisibilities(presetId, newPresetId)
@@ -117,13 +118,13 @@ class EditTypePresetsViewModelImpl(
     }
 
     override fun delete(presetId: Long) {
-        launch(IO) {
+        launch(Dispatchers.IO) {
             editTypePresetsController.delete(presetId)
         }
     }
 
     override fun queryUrlConfig(presetId: Long) {
-        launch(IO) {
+        launch(Dispatchers.IO) {
             val url = urlConfigController.create(presetId)
             presets.update { presets ->
                 presets.map { if (it.id == presetId) it.copy(url = url) else it }
