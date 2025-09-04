@@ -434,7 +434,7 @@ tasks.register<UpdateAppTranslationCompletenessTask>("updateTranslationCompleten
     mustIncludeLanguagePercentage = 90
     apiToken = properties["app.streetcomplete.POEditorAPIToken"] as String
     projectId = poEditorProjectId
-    targetFiles = { "$projectDir/src/androidMain/res/values-$it/translation_info.xml" }
+    targetFiles = { "$projectDir/src/commonMain/composeResources/values-$it/translation_info.xml" }
 }
 
 tasks.register<UpdateChangelogTask>("updateChangelog") {
