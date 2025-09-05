@@ -60,11 +60,27 @@ Street Complete est une application Android ayant pour but d’améliorer la qua
 L’application fonctionne avec une partie de gamification et invite aux modifications sous forme de quêtes thématiques.
 
 == Objectif
-Le projet aura pour but de contribuer au projet open-source en développant une ou plusieurs fonctionnalités demandées sous forme de tickets et d'être intégrer au dépôt principal. 
+
+Monter en compétence sur :
+
+- Le modèle de données OSM
+- Kotlin et Kotlin Multiplatform
+- Android Studio et l’environnement mobile
+
+Réaliser des contributions au projet open source StreetComplete :
+
+- Ajout ou amélioration de quêtes simples
+- Début de migration d’éléments de l’UI vers *Compose Multiplatform*
+- Participation non-code : documentation, traduction, collecte de données
 
 == Réalisations 
 
-Cette section regroupe tous les documents liés à la conception, au développement et à l’utilisation de l'application, organisés par catégories principales.
+Cette section regroupe tous les documents liés au projet :
+
+- link:docs/doc_tech.adoc[Documentation technique]
+- link:docs/doc_user.adoc[Guide utilisateur]
+- link:docs/Devis.pdf[Chiffrage du projet]
+- link:https://github.com/users/HugoTHOLLON/projects/4/views/1[Backlog produit et board GitHub]
 
 == Travail d'équipe
 
