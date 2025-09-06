@@ -107,7 +107,6 @@ fun <T> SelectButton(
                         }
                         expanded = false
                     },
-                    textStyle = LocalTextStyle.current
                 ) {
                     itemContent(item)
                 }

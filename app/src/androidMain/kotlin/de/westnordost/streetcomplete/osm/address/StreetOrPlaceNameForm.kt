@@ -18,7 +18,6 @@ import androidx.compose.ui.draw.paint
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.style.TextAlign
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.town_silhouette
@@ -39,8 +38,6 @@ fun StreetOrPlaceNameForm(
     placeNameSuggestion: String? = null,
 ) {
     val selections = remember { listOf(StreetName(""), PlaceName("")) }
-
-    val textStyle = MaterialTheme.typography.largeInput.copy(textAlign = TextAlign.Center)
 
     Column(modifier = modifier) {
         if (showSelect) {
@@ -68,7 +65,7 @@ fun StreetOrPlaceNameForm(
                     onValueChange = { onValueChange(StreetName(it)) },
                     modifier = Modifier.fillMaxWidth(),
                     suggestion = streetNameSuggestion,
-                    textStyle = textStyle,
+                    textStyle = MaterialTheme.typography.largeInput,
                 )
                 Text(
                     text = stringResource(R.string.quest_address_street_hint2),
@@ -89,7 +86,7 @@ fun StreetOrPlaceNameForm(
                             alpha = 0.15f,
                         ),
                     suggestion = placeNameSuggestion,
-                    textStyle = textStyle,
+                    textStyle = MaterialTheme.typography.largeInput,
                 )
             }
         }

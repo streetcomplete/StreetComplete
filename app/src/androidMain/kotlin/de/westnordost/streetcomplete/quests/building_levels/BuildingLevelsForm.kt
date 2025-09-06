@@ -71,9 +71,7 @@ fun BuildingLevelsForm(
                             imeAction = ImeAction.Next
                         ),
                         singleLine = true,
-                        textStyle = MaterialTheme.typography.largeInput.copy(
-                            textAlign = TextAlign.Center
-                        ),
+                        textStyle = MaterialTheme.typography.largeInput,
                     )
                 }
                 // same height as BuildingLevelsIllustration
@@ -95,9 +93,7 @@ fun BuildingLevelsForm(
                             imeAction = ImeAction.Done
                         ),
                         singleLine = true,
-                        textStyle = MaterialTheme.typography.largeInput.copy(
-                            textAlign = TextAlign.Center
-                        ),
+                        textStyle = MaterialTheme.typography.largeInput,
                     )
                     Text(
                         text = stringResource(R.string.quest_buildingLevels_roofLevelsLabel2),

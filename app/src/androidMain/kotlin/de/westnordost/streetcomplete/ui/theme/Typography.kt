@@ -5,6 +5,7 @@ import androidx.compose.ui.text.font.DeviceFontFamilyName
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 
 private val material2 = Typography()
 
@@ -26,10 +27,14 @@ val Typography = Typography(
 )
 
 /** For an input field that is the sole element on the screen */
-val Typography.extraLargeInput get() = h3
+val Typography.extraLargeInput get() = h3.copy(
+    textAlign = TextAlign.Center
+)
 
 /** For an input field that is amongst a few input elements on the screen */
-val Typography.largeInput get() = h5
+val Typography.largeInput get() = h5.copy(
+    textAlign = TextAlign.Center
+)
 
 // for easier conversion to M3
 val Typography.headlineLarge get() = h4
