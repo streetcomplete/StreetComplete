@@ -27,18 +27,6 @@ class AddLevel : OsmElementQuestType<String>, AndroidQuest {
          or public_transport = station
     """.toElementFilterExpression() }
 
-    private val thingsWithLevelFilter by lazy { """
-        nodes, ways, relations with level
-    """.toElementFilterExpression() }
-
-    /* only nodes because ways/relations are not likely to be floating around freely in a mall
-     * outline */
-    private val filter by lazy { """
-        nodes with
-          !level
-          and (name or brand or noname = yes or name:signed = no)
-    """.toElementFilterExpression() }
-
     override val changesetComment = "Determine on which level shops are in a building"
     override val wikiLink = "Key:level"
     override val icon = R.drawable.ic_quest_level
@@ -62,24 +50,7 @@ class AddLevel : OsmElementQuestType<String>, AndroidQuest {
         val thingsWithLevel = mapData.filter { thingsWithLevelFilter.matches(it) }
         if (thingsWithLevel.isEmpty()) return emptyList()
 
-        // with this, find malls that contain shops that have different levels tagged
-        val multiLevelMallGeometries = mallGeometries.filter { mallGeometry ->
-            var level: String? = null
-            for (shop in thingsWithLevel) {
-                val pos = mapData.getGeometry(shop.type, shop.id)?.center ?: continue
-                if (!mallGeometry.bounds.contains(pos)) continue
-                if (!pos.isInMultipolygon(mallGeometry.polygons)) continue
-
-                if (shop.tags.containsKey("level")) {
-                    if (level != null) {
-                        if (level != shop.tags["level"]) return@filter true
-                    } else {
-                        level = shop.tags["level"]
-                    }
-                }
-            }
-            return@filter false
-        }
+        val multiLevelMallGeometries = getMultiLevelMallGeometries(mallGeometries, thingsWithLevel, mapData)
         if (multiLevelMallGeometries.isEmpty()) return emptyList()
 
         // now, return all shops that have no level tagged and are inside those multi-level malls
