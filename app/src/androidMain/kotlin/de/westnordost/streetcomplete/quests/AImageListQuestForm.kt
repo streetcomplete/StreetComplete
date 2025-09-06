@@ -2,37 +2,43 @@ package de.westnordost.streetcomplete.quests
 
 import android.os.Bundle
 import android.view.View
-import androidx.core.view.isGone
-import androidx.recyclerview.widget.GridLayoutManager
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.material.ContentAlpha
+import androidx.compose.material.LocalContentColor
+import androidx.compose.material.Surface
+import androidx.compose.material.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.key
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.preferences.Preferences
-import de.westnordost.streetcomplete.databinding.QuestGenericListBinding
+import de.westnordost.streetcomplete.databinding.ComposeViewBinding
+import de.westnordost.streetcomplete.ui.common.image_select.ImageGrid
+import de.westnordost.streetcomplete.ui.common.image_select.ImageListItem
+import de.westnordost.streetcomplete.ui.common.image_select.SelectableImageCell
+import de.westnordost.streetcomplete.ui.util.content
 import de.westnordost.streetcomplete.util.takeFavorites
 import de.westnordost.streetcomplete.view.image_select.DisplayItem
-import de.westnordost.streetcomplete.view.image_select.ImageSelectAdapter
 import org.koin.android.ext.android.inject
 
-/**
- * Abstract class for quests with a list of images and one or several to select.
- *
- * I is the type of each item in the image list (a simple model object). In MVC, this would
- * be the view model.
- *
- * T is the type of the answer object (also a simple model object) created by the quest
- * form and consumed by the quest type. In MVC, this would be the model.
- */
 abstract class AImageListQuestForm<I, T> : AbstractOsmQuestForm<T>() {
-
-    final override val contentLayoutResId = R.layout.quest_generic_list
-    private val binding by contentViewBinding(QuestGenericListBinding::bind)
-
+    final override val contentLayoutResId = R.layout.compose_view
+    private val binding by contentViewBinding(ComposeViewBinding::bind)
     private val prefs: Preferences by inject()
-
     override val defaultExpanded = false
 
     protected open val descriptionResId: Int? = null
-
-    protected lateinit var imageSelector: ImageSelectAdapter<I>
 
     protected open val itemsPerRow = 4
     /** return -1 for any number. Default: 1  */
@@ -42,77 +48,110 @@ abstract class AImageListQuestForm<I, T> : AbstractOsmQuestForm<T>() {
     protected open val moveFavoritesToFront = true
     /** items to display. May not be accessed before onCreate */
     protected abstract val items: List<DisplayItem<I>>
+    protected var currentItems: MutableState<List<ImageListItem<I>>> = mutableStateOf(emptyList())
 
+    private val selectedItems: List<DisplayItem<I>> get() =
+        currentItems.value.filter { it.checked }.map { it.item }
+
+    /**
+     * Return the composable used for a list item
+     */
+    protected open val itemContent = @Composable { item: ImageListItem<I>, index: Int, onClick: () -> Unit, role: Role ->
+        key(item.item) {
+            SelectableImageCell(
+                item = item.item,
+                isSelected = item.checked,
+                onClick = onClick,
+                modifier = Modifier.fillMaxSize(),
+                role = role
+            )
+        }
+    }
+
+    protected open val onItemSelected: (List<DisplayItem<I>>) -> Unit = { newItems ->
+        checkIsFormComplete()
+    }
     private lateinit var itemsByString: Map<String, DisplayItem<I>>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        imageSelector = ImageSelectAdapter(maxSelectableItems)
         itemsByString = items.associateBy { it.value.toString() }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        binding.descriptionLabel.isGone = descriptionResId == null
-        descriptionResId?.let { binding.descriptionLabel.setText(it) }
-
-        binding.list.layoutManager = GridLayoutManager(activity, itemsPerRow)
-        binding.list.isNestedScrollingEnabled = false
-
-        binding.selectHintLabel.setText(
-            if (maxSelectableItems == 1) R.string.quest_roofShape_select_one
-            else R.string.quest_multiselect_hint
-        )
-
-        imageSelector.listeners.add(object : ImageSelectAdapter.OnItemSelectionListener {
-            override fun onIndexSelected(index: Int) {
-                checkIsFormComplete()
-            }
-
-            override fun onIndexDeselected(index: Int) {
-                checkIsFormComplete()
-            }
-        })
-
-        imageSelector.items = moveFavouritesToFront(items)
-        if (savedInstanceState != null) {
-            val selectedIndices = savedInstanceState.getIntegerArrayList(SELECTED_INDICES)!!
-            imageSelector.select(selectedIndices)
-        }
-        binding.list.adapter = imageSelector
-    }
-
-    override fun onClickOk() {
-        val values = imageSelector.selectedItems
-        if (values.isNotEmpty()) {
-            prefs.addLastPicked(this::class.simpleName!!, values.map { it.value.toString() })
-            onClickOk(values.map { it.value!! })
-        }
-    }
-
-    protected abstract fun onClickOk(selectedItems: List<I>)
-
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-        // note: the view might be not available anymore at this point!
-        outState.putIntegerArrayList(SELECTED_INDICES, ArrayList(imageSelector.selectedIndices))
-    }
-
-    override fun isFormComplete() = imageSelector.selectedIndices.isNotEmpty()
-
-    private fun moveFavouritesToFront(originalList: List<DisplayItem<I>>): List<DisplayItem<I>> {
-        if (originalList.size > itemsPerRow && moveFavoritesToFront) {
+        currentItems.value = if ( items.size > itemsPerRow && moveFavoritesToFront) {
             val favourites = prefs.getLastPicked(this::class.simpleName!!)
                 .map { itemsByString[it] }
                 .takeFavorites(n = itemsPerRow, history = 50)
-            return (favourites + originalList).distinct()
+            (favourites + items).distinct().map { ImageListItem(it, false) }
         } else {
-            return originalList
+            items.map { ImageListItem(it, false) }
+        }
+        binding.composeViewBase.content {
+            Surface {
+                Column {
+                    descriptionResId?.let {
+                        Text(
+                            text = stringResource(it),
+                            modifier = Modifier.fillMaxWidth()
+                        )
+                    }
+                    Text(
+                        text = stringResource(
+                            if (maxSelectableItems == 1) R.string.quest_select_hint
+                            else R.string.quest_multiselect_hint
+                        ),
+                        style = TextStyle(
+                            color = LocalContentColor.current.copy(alpha = ContentAlpha.medium),
+                        ),
+                        modifier = Modifier.padding(bottom = 8.dp).wrapContentSize()
+                    )
+                    ImageGrid(
+                        imageItems = currentItems.value,
+                        onClick = if ( maxSelectableItems == 1) onClickSingleItem else onClickMultiItem,
+                        modifier = Modifier.fillMaxHeight(),
+                        itemsPerRow = itemsPerRow,
+                        itemRole = if (maxSelectableItems == 1)  Role.RadioButton else Role.Checkbox,
+                        itemContent = { item, index, onClick, role ->
+                            key(item.item to items) {
+                                itemContent(item, index, onClick, role)
+                            }
+                        })
+                }
+            }
         }
     }
 
-    companion object {
-        private const val SELECTED_INDICES = "selected_indices"
+    val onClickSingleItem = { targetIndex: Int, targetItem: ImageListItem<I> ->
+        currentItems.value = currentItems.value.mapIndexed { currentIndex, currentItem ->
+            if (targetIndex == currentIndex)
+                ImageListItem(currentItem.item, !currentItem.checked)
+            else
+                ImageListItem(currentItem.item, false)
+        }
+        onItemSelected(selectedItems)
     }
+
+   val onClickMultiItem = { targetIndex: Int, targetItem: ImageListItem<I> ->
+       if (targetItem.checked || maxSelectableItems <= 0 || currentItems.value.count { it.checked } < maxSelectableItems) {
+           currentItems.value = currentItems.value.mapIndexed { currentIndex, currentItem ->
+               if (targetIndex == currentIndex)
+                   ImageListItem(currentItem.item, !currentItem.checked)
+               else
+                   currentItem
+           }
+           onItemSelected(selectedItems)
+       }
+    }
+    override fun isFormComplete() = selectedItems.mapNotNull { it.value }.isNotEmpty()
+
+    override fun onClickOk() {
+        val values = selectedItems.mapNotNull { it.value }
+        if (values.isNotEmpty()) {
+            prefs.addLastPicked(this::class.simpleName!!, values.map { it.toString() })
+            onClickOk(values)
+        }
+    }
+    protected abstract fun onClickOk(selectedItems: List<I>)
 }
