@@ -17,7 +17,7 @@ class AddDrinkingWater : OsmFilterQuestType<DrinkingWater>(), AndroidQuest {
           man_made = water_tap
           or man_made = water_well
           or natural = spring
-          or fountain = stone_block
+          or amenity = fountain and fountain = stone_block
         )
         and access !~ private|no and indoor != yes
         and !drinking_water
