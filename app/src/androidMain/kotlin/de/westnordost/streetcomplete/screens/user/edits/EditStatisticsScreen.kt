@@ -30,12 +30,19 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.quests_empty
+import de.westnordost.streetcomplete.resources.stats_are_syncing
+import de.westnordost.streetcomplete.resources.user_profile_all_time_title
+import de.westnordost.streetcomplete.resources.user_profile_current_week_title
+import de.westnordost.streetcomplete.resources.user_statistics_filter_by_country
+import de.westnordost.streetcomplete.resources.user_statistics_filter_by_quest_type
 import de.westnordost.streetcomplete.ui.common.CenteredLargeTitleHint
 import de.westnordost.streetcomplete.ui.ktx.plus
 import kotlinx.coroutines.launch
+import org.jetbrains.compose.resources.StringResource
+import org.jetbrains.compose.resources.stringResource
 
 /** Shows the user's edit statistics, alternatively either grouped by edit type or by country */
 @Composable
@@ -76,7 +83,7 @@ fun EditStatisticsScreen(
                             Tab(
                                 selected = page == index,
                                 onClick = { scope.launch { pagerState.animateScrollToPage(index) } },
-                                text = { Text(stringResource(tab.textId)) }
+                                text = { Text(stringResource(tab.text)) }
                             )
                         }
                     }
@@ -121,8 +128,8 @@ fun EditStatisticsScreen(
             val isSynchronizingStatistics by viewModel.isSynchronizingStatistics.collectAsState()
             CenteredLargeTitleHint(
                 stringResource(
-                    if (isSynchronizingStatistics) R.string.stats_are_syncing
-                    else R.string.quests_empty
+                    if (isSynchronizingStatistics) Res.string.stats_are_syncing
+                    else Res.string.quests_empty
                 )
             )
         }
@@ -134,14 +141,14 @@ fun EditStatisticsScreen(
                 .windowInsetsPadding(WindowInsets.safeDrawing)
         ) {
             Text(stringResource(
-                if (isCurrentWeek) R.string.user_profile_current_week_title
-                else R.string.user_profile_all_time_title
+                if (isCurrentWeek) Res.string.user_profile_current_week_title
+                else Res.string.user_profile_all_time_title
             ))
         }
     }
 }
 
-private enum class EditStatisticsTab(val textId: Int) {
-    ByType(textId = R.string.user_statistics_filter_by_quest_type),
-    ByCountry(textId = R.string.user_statistics_filter_by_country)
+private enum class EditStatisticsTab(val text: StringResource) {
+    ByType(text = Res.string.user_statistics_filter_by_quest_type),
+    ByCountry(text = Res.string.user_statistics_filter_by_country)
 }

@@ -9,6 +9,8 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.removeCheckDatesForKey
 import de.westnordost.streetcomplete.osm.sidewalk_surface.applyTo
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.default_disabled_msg_difficult_and_time_consuming
 
 class AddSidewalkSurface : OsmFilterQuestType<SidewalkSurfaceAnswer>(), AndroidQuest {
 
@@ -32,7 +34,7 @@ class AddSidewalkSurface : OsmFilterQuestType<SidewalkSurfaceAnswer>(), AndroidQ
     override val wikiLink = "Key:sidewalk"
     override val icon = R.drawable.ic_quest_sidewalk_surface
     override val achievements = listOf(PEDESTRIAN, WHEELCHAIR)
-    override val defaultDisabledMessage = R.string.default_disabled_msg_difficult_and_time_consuming
+    override val defaultDisabledMessage = Res.string.default_disabled_msg_difficult_and_time_consuming
 
     override val hint = R.string.quest_street_side_puzzle_tutorial
 

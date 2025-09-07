@@ -5,8 +5,6 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.ReadOnlyComposable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
-import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.edithistory.Edit
 import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
 import de.westnordost.streetcomplete.data.osm.edits.create.CreateNodeAction
@@ -22,8 +20,19 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTag
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestHidden
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEdit
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestHidden
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.added_tag_action_title
+import de.westnordost.streetcomplete.resources.changed_tag_action_title
+import de.westnordost.streetcomplete.resources.create_node_action_description
+import de.westnordost.streetcomplete.resources.deleted_poi_action_description
+import de.westnordost.streetcomplete.resources.hid_action_description
+import de.westnordost.streetcomplete.resources.move_node_action_description
+import de.westnordost.streetcomplete.resources.removed_tag_action_title
+import de.westnordost.streetcomplete.resources.split_way_action_description
 import de.westnordost.streetcomplete.ui.common.HtmlText
 import de.westnordost.streetcomplete.util.html.replaceHtmlEntities
+import org.jetbrains.compose.resources.StringResource
+import org.jetbrains.compose.resources.stringResource
 
 /** Shows what an edit changed. */
 @Composable
@@ -37,26 +46,26 @@ fun EditDescription(
                 is UpdateElementTagsAction ->
                     TagUpdatesList(edit.action.changes.changes, modifier)
                 is DeletePoiNodeAction ->
-                    Text(stringResource(R.string.deleted_poi_action_description), modifier)
+                    Text(stringResource(Res.string.deleted_poi_action_description), modifier)
                 is SplitWayAction ->
-                    Text(stringResource(R.string.split_way_action_description), modifier)
+                    Text(stringResource(Res.string.split_way_action_description), modifier)
                 is CreateNodeAction ->
                     Column(modifier) {
-                        Text(stringResource(R.string.create_node_action_description))
+                        Text(stringResource(Res.string.create_node_action_description))
                         TagList(edit.action.tags)
                     }
                 is CreateNodeFromVertexAction ->
                     TagUpdatesList(edit.action.changes.changes, modifier)
                 is MoveNodeAction ->
-                    Text(stringResource(R.string.move_node_action_description), modifier)
+                    Text(stringResource(Res.string.move_node_action_description), modifier)
             }
         }
         is NoteEdit ->
             Text(edit.text.orEmpty(), modifier)
         is OsmQuestHidden ->
-            Text(stringResource(R.string.hid_action_description), modifier)
+            Text(stringResource(Res.string.hid_action_description), modifier)
         is OsmNoteQuestHidden ->
-            Text(stringResource(R.string.hid_action_description), modifier)
+            Text(stringResource(Res.string.hid_action_description), modifier)
     }
 }
 
@@ -101,7 +110,6 @@ private fun Map<String, String>.toHtml(): String {
 }
 
 @Composable
-@ReadOnlyComposable
 private fun Collection<StringMapEntryChange>.toHtml(): String {
     val result = StringBuilder()
     result.append("<ul>")
@@ -115,7 +123,6 @@ private fun Collection<StringMapEntryChange>.toHtml(): String {
 }
 
 @Composable
-@ReadOnlyComposable
 private fun StringMapEntryChange.toHtml(): String {
     val k = key.replaceHtmlEntities()
     val v = when (this) {
@@ -129,14 +136,14 @@ private fun StringMapEntryChange.toHtml(): String {
         is StringMapEntryDelete -> "<s>$k = $v</s>"
         is StringMapEntryModify -> linkedKey(k) + " = $v"
     }
-    return stringResource(titleResId, "<tt>$tag</tt>")
+    return stringResource(title, "<tt>$tag</tt>")
 }
 
 private fun linkedKey(key: String): String =
     "<a href=\"https://wiki.openstreetmap.org/wiki/Key:$key\">$key</a>"
 
-private val StringMapEntryChange.titleResId: Int get() = when (this) {
-    is StringMapEntryAdd -> R.string.added_tag_action_title
-    is StringMapEntryModify -> R.string.changed_tag_action_title
-    is StringMapEntryDelete -> R.string.removed_tag_action_title
+private val StringMapEntryChange.title: StringResource get() = when (this) {
+    is StringMapEntryAdd -> Res.string.added_tag_action_title
+    is StringMapEntryModify -> Res.string.changed_tag_action_title
+    is StringMapEntryDelete -> Res.string.removed_tag_action_title
 }

@@ -23,15 +23,19 @@ import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.TransformOrigin
 import androidx.compose.ui.graphics.graphicsLayer
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
-import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.ok
+import de.westnordost.streetcomplete.resources.quest_selection_hint_message
+import de.westnordost.streetcomplete.resources.quest_selection_hint_title
+import de.westnordost.streetcomplete.resources.quest_streetName_cantType_open_settings
 import de.westnordost.streetcomplete.ui.common.BubblePile
 import de.westnordost.streetcomplete.ui.common.dialogs.AlertDialogLayout
 import de.westnordost.streetcomplete.ui.ktx.proportionalAbsoluteOffset
 import kotlinx.coroutines.delay
+import org.jetbrains.compose.resources.stringResource
 
 /** Dialog that tells the user that he can turn off some boring quests in the setting. */
 @OptIn(ExperimentalLayoutApi::class)
@@ -86,19 +90,19 @@ fun QuestSelectionHintDialog(
                     .width(280.dp)
                     .alpha(content.value)
                     .shadow(24.dp),
-                title = { Text(stringResource(R.string.quest_selection_hint_title)) },
+                title = { Text(stringResource(Res.string.quest_selection_hint_title)) },
                 content = {
                     Text(
-                        text = stringResource(R.string.quest_selection_hint_message),
+                        text = stringResource(Res.string.quest_selection_hint_message),
                         modifier = Modifier.padding(horizontal = 24.dp)
                     )
                 },
                 buttons = {
                     TextButton(onClick = { onDismissRequest(); onClickOpenSettings() }) {
-                        Text(stringResource(R.string.quest_streetName_cantType_open_settings))
+                        Text(stringResource(Res.string.quest_streetName_cantType_open_settings))
                     }
                     TextButton(onClick = onDismissRequest) {
-                        Text(stringResource(android.R.string.ok))
+                        Text(stringResource(Res.string.ok))
                     }
                 }
             )

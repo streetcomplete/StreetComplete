@@ -34,7 +34,7 @@ class AddBbqFuel : OsmFilterQuestType<BbqFuelAnswer>(), AndroidQuest {
     override fun applyAnswerTo(answer: BbqFuelAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {
             is BbqFuel -> tags["fuel"] = answer.osmValue
-            IsFirePitAnswer -> {
+            BbqFuelAnswer.IsFirePit -> {
                 tags.remove("amenity")
                 tags["leisure"] = "firepit"
             }

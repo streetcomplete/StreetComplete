@@ -6,6 +6,8 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.default_disabled_msg_difficult_and_time_consuming
 
 class AddOrchardProduce : OsmFilterQuestType<List<OrchardProduce>>(), AndroidQuest {
 
@@ -18,7 +20,7 @@ class AddOrchardProduce : OsmFilterQuestType<List<OrchardProduce>>(), AndroidQue
     override val wikiLink = "Tag:landuse=orchard"
     override val icon = R.drawable.ic_quest_apple
     override val achievements = listOf(OUTDOORS)
-    override val defaultDisabledMessage = R.string.default_disabled_msg_difficult_and_time_consuming
+    override val defaultDisabledMessage = Res.string.default_disabled_msg_difficult_and_time_consuming
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_orchard_produce_title
 

@@ -29,6 +29,7 @@ import androidx.compose.material.TextFieldDefaults
 import androidx.compose.material.TopAppBar
 import androidx.compose.material.primarySurface
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -39,13 +40,14 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.intl.LocaleList
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.quest.QuestType
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.no_search_results
 import de.westnordost.streetcomplete.ui.common.BackIcon
 import de.westnordost.streetcomplete.ui.common.CenteredLargeTitleHint
 import de.westnordost.streetcomplete.ui.common.ExpandableSearchField
 import de.westnordost.streetcomplete.ui.common.SearchIcon
+import org.jetbrains.compose.resources.stringResource
 
 /** Searchable and clickable quest list as a full screen */
 @Composable
@@ -54,9 +56,9 @@ fun ShowQuestFormsScreen(
     onClickQuestType: (QuestType) -> Unit,
     onClickBack: () -> Unit,
 ) {
-    val searchText by viewModel.searchText.collectAsStateWithLifecycle()
+    val searchText by viewModel.searchText.collectAsState()
 
-    val filteredQuests by viewModel.filteredQuests.collectAsStateWithLifecycle()
+    val filteredQuests by viewModel.filteredQuests.collectAsState()
 
     Column(Modifier.fillMaxSize()) {
         ShowQuestFormsTopAppBar(
@@ -66,7 +68,7 @@ fun ShowQuestFormsScreen(
         )
 
         if (filteredQuests.isEmpty()) {
-            CenteredLargeTitleHint(stringResource(R.string.no_search_results))
+            CenteredLargeTitleHint(stringResource(Res.string.no_search_results))
         } else {
             val insets = WindowInsets.safeDrawing.only(
                 WindowInsetsSides.Horizontal + WindowInsetsSides.Bottom
