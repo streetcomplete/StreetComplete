@@ -21,8 +21,7 @@ abstract class AListQuestForm<T, I : T> : AbstractOsmQuestForm<T>() {
     protected abstract val items: List<I>
     protected lateinit var checkedItem: MutableState<I?>
 
-    @Composable
-    protected abstract fun BoxScope.ItemContent(item: I)
+    @Composable protected abstract fun BoxScope.ItemContent(item: I)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

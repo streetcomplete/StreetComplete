@@ -10,8 +10,7 @@ class AddEntranceForm : AListQuestForm<EntranceAnswer, EntranceAnswer>() {
 
     override val items = EntranceType.entries + EntranceAnswer.IsDeadEnd
 
-    @Composable
-    override fun BoxScope.ItemContent(item: EntranceAnswer) {
+    @Composable override fun BoxScope.ItemContent(item: EntranceAnswer) {
         Text(stringResource(item.text))
     }
 }
