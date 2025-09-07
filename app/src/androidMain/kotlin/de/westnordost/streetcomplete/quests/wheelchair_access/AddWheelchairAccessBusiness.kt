@@ -9,6 +9,8 @@ import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.WHEELCHAIR
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.isPlaceOrDisusedPlace
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.default_disabled_msg_go_inside
 
 class AddWheelchairAccessBusiness : OsmFilterQuestType<WheelchairAccess>(), AndroidQuest {
 
@@ -81,10 +83,10 @@ class AddWheelchairAccessBusiness : OsmFilterQuestType<WheelchairAccess>(), Andr
             "office" to arrayOf(
                 // common
                 "insurance", "government", "travel_agent", "tax_advisor", "religion",
-                "employment_agency", "diplomatic", "coworking",
+                "employment_agency", "diplomatic", "coworking", "energy_supplier",
                 "estate_agent", "lawyer", "telecommunication", "educational_institution",
                 "association", "ngo", "it", "accountant", "property_management",
-                "bail_bond_agent",
+                "bail_bond_agent", "financial_advisor",
 
                 // name & wheelchair
                 "political_party", "therapist"
@@ -94,7 +96,7 @@ class AddWheelchairAccessBusiness : OsmFilterQuestType<WheelchairAccess>(), Andr
                 "carpenter", "shoemaker", "tailor", "photographer", "dressmaker",
                 "electronics_repair", "key_cutter", "stonemason", "bookbinder",
                 "jeweller", "sailmaker", "jeweller", "watchmaker", "clockmaker",
-                "locksmith",  "window_construction", "upholsterer",
+                "locksmith",  "window_construction", "signmaker", "upholsterer",
                 "electrician", "boatbuilder",
 
                 // name & wheelchair
@@ -119,7 +121,7 @@ class AddWheelchairAccessBusiness : OsmFilterQuestType<WheelchairAccess>(), Andr
     override val icon = R.drawable.ic_quest_wheelchair_shop
     override val isReplacePlaceEnabled = true
     override val achievements = listOf(WHEELCHAIR)
-    override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside
+    override val defaultDisabledMessage = Res.string.default_disabled_msg_go_inside
 
     override val hint = R.string.quest_wheelchairAccess_limited_description_business
 

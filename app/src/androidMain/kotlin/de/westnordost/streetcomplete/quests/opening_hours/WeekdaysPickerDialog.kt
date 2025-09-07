@@ -2,10 +2,10 @@ package de.westnordost.streetcomplete.quests.opening_hours
 
 import android.content.Context
 import androidx.appcompat.app.AlertDialog
+import androidx.compose.ui.text.intl.Locale
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.osm.opening_hours.model.Weekdays
 import de.westnordost.streetcomplete.osm.opening_hours.model.getNames
-import java.util.Locale
 
 object WeekdaysPickerDialog {
 
@@ -13,7 +13,7 @@ object WeekdaysPickerDialog {
         val selection = weekdays?.selection ?: BooleanArray(Weekdays.OSM_ABBR_WEEKDAYS.size)
 
         val localeWeekdayNames = Weekdays.getNames(context.resources, locale)
-        val weekdayNames = Weekdays.getNames(context.resources, Locale.getDefault())
+        val weekdayNames = Weekdays.getNames(context.resources)
 
         val names = localeWeekdayNames.mapIndexed { index, localeWeekdayName ->
             val weekdayName = weekdayNames[index]

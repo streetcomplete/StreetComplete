@@ -58,9 +58,9 @@ class AchievementsController(
 
     /** Get the user's granted achievements and their level */
     override fun getAchievements(): List<Pair<Achievement, Int>> =
-        userAchievementsDao.getAll().mapNotNull {
-            val achievement = achievementsById[it.key]
-            if (achievement != null) achievement to it.value else null
+        userAchievementsDao.getAll().mapNotNull { (name, level) ->
+            val achievement = achievementsById[name]
+            if (achievement != null && level > 0) achievement to level else null
         }
 
     /** Get the user's unlocked links */
@@ -82,7 +82,9 @@ class AchievementsController(
 
     /** Look at and grant all achievements and their links */
     private fun updateAllAchievementsSilently() {
-        val unlockedAchievements = allAchievements.map { it to getAchievedLevel(it) }
+        val unlockedAchievements = allAchievements
+            .map { it to getAchievedLevel(it) }
+            .filter { (_, level) -> level > 0 }
         val unlockedLinks = mutableListOf<Link>()
         for ((achievement, achievedLevel) in unlockedAchievements) {
             for (level in 1..achievedLevel) {

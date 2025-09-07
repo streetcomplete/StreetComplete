@@ -5,7 +5,7 @@ import kotlinx.serialization.Serializable
 import kotlin.collections.iterator
 
 @Serializable
-data class LocalizedName(var languageTag: String, var name: String)
+data class LocalizedName(val languageTag: String, val name: String)
 
 /** OSM tags to map of language code -> name.
  *
@@ -65,9 +65,11 @@ fun List<LocalizedName>.applyTo(tags: Tags) {
 
     // language is only specified explicitly in OSM (usually) if there is more than one name specified
     if (size == 1) {
-        tags["name"] = first().name
+        tags["name"] = first().name.trim()
     } else {
-        for ((language, name) in this) {
+        for (entry in this) {
+            val language = entry.languageTag
+            val name = entry.name.trim()
             val key = when (language) {
                 "" -> "name"
                 "international" -> "int_name"
@@ -79,7 +81,7 @@ fun List<LocalizedName>.applyTo(tags: Tags) {
         // but if there is more than one language, ensure that a "main" name is also specified
         if (find { it.languageTag == "" } == null) {
             // use the name specified in the topmost row for that
-            tags["name"] = first().name
+            tags["name"] = first().name.trim()
         }
     }
 }

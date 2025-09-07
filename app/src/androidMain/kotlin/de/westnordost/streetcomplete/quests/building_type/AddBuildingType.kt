@@ -10,6 +10,8 @@ import de.westnordost.streetcomplete.osm.building.BuildingType
 import de.westnordost.streetcomplete.osm.building.INVALID_BUILDING_TYPES
 import de.westnordost.streetcomplete.osm.building.OTHER_KEYS_POTENTIALLY_DESCRIBING_BUILDING_TYPE
 import de.westnordost.streetcomplete.osm.building.applyTo
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.default_disabled_msg_overlay
 
 class AddBuildingType : OsmFilterQuestType<BuildingType>(), AndroidQuest {
 
@@ -26,7 +28,7 @@ class AddBuildingType : OsmFilterQuestType<BuildingType>(), AndroidQuest {
     override val wikiLink = "Key:building"
     override val icon = R.drawable.ic_quest_building
     override val achievements = listOf(BUILDING)
-    override val defaultDisabledMessage = R.string.default_disabled_msg_overlay
+    override val defaultDisabledMessage = Res.string.default_disabled_msg_overlay
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_buildingType_title
 

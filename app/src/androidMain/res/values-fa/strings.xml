@@ -9,7 +9,7 @@
     <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"و همچنین نمایش یادداشت‌هایی که پرسشی نیستند"</string>
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"نادیده‌گرفتن یادداشت‌هایی که پرسشی نیستند"</string>
     <string name="map_btn_gps_tracking">"من را دنبال کن"</string>
-    <string name="map_attribution_osm">"© مشارکت‌کنندگان در نقشه‌متن‌باز"</string>
+    <string name="map_attribution_osm">"© مشارکت‌کنندگان در اوپن‌استریت‌مپ"</string>
     <string name="quest_generic_otherAnswers">"پاسخ‌های دیگر…"</string>
     <string name="quest_generic_answer_notApplicable">"نمی‌توان اظهار نظر کرد …"</string>
     <string name="quest_generic_confirmation_title">"اطمینان دارید؟"</string>
@@ -39,9 +39,9 @@
     <string name="confirmation_discard_positive">"باطل کردن"</string>
     <string name="action_download">"کاوش جُستارهای اینجا"</string>
     <string name="action_upload">"بارگذاری پاسخ‌ها"</string>
-    <string name="no_changes">"شما هیچگونه پاسخی ندادید"</string>
-    <string name="download_error">"خطا هنگام پویش جُستارها"</string>
-    <string name="upload_error">"خطا در زمان بارگذاری پاسخ‌ها"</string>
+    <string name="no_changes">"شما هیچ پاسخی ندادید"</string>
+    <string name="download_error">"خطا هنگام بارگیری"</string>
+    <string name="upload_error">"خطا هنگام بارگذاری"</string>
     <string name="download_area_too_big">"لطفاً بزرگنمایی را بیشتر کنید"</string>
     <string name="confirmation_cancel_prev_download_title">"جستجوی کنونی را باطل می‌کنید و در عوض اینجا جستجو شود؟"</string>
     <string name="turn_on_location_request">"ردیابی مکانی خاموش است. منوی تنظیمات برای روشن‌کردن آن باز شود؟"</string>
@@ -362,7 +362,6 @@
     <string name="quest_fee_answer_hours">"بستگی به ساعت و روز دارد…"</string>
     <string name="quest_fee_add_times">"افزودن زمان"</string>
     <string name="quest_housenumber_multiple_numbers">"این ساختمان شماره‌های متعدد دارد"</string>
-    <string name="quest_housenumber_multiple_numbers_description">"شماره‌های خانه را با کاما جدا کنید یا به شکل از-تا بنویسید.\nمانند 1,3 یا 2-6."</string>
     <string name="quest_bicycle_parking_type_stand">"ایستاده (بدنهٔ دوچرخه را نگه می‌دارد)"</string>
     <string name="quest_bicycle_parking_type_wheelbender">"چرخ‌بند (فقط چرخ را نگه می‌دارد)"</string>
     <string name="quest_bicycle_parking_type_shed">"اتاقک"</string>
@@ -793,9 +792,7 @@
     <string name="quest_bicycle_parking_fee_title">"آیا برای پارک دوچرخه در اینجا باید هزینه پرداخت کرد؟"</string>
     <string name="quest_buildingType_house_description2">"خانه متصل و تک‌خانواری"</string>
     <string name="quest_drinking_water_potable_signed">"آب شرب (تایید شده)"</string>
-    <string name="quest_drinking_water_potable_unsigned">"آب شرب (تایید نشده)"</string>
     <string name="quest_drinking_water_not_potable_signed">"آب غیرقابل شرب (تایید شده)"</string>
-    <string name="quest_drinking_water_not_potable_unsigned">"آب غیرقابل شرب (تایید نشده)"</string>
     <string name="quest_postboxRoyalCypher_title">"رمز ملی روی این صندوق پستی چیست؟"</string>
     <string name="quest_postboxRoyalCypher_type_none">"هیچ رمز ملی قابل مشاهده نیست"</string>
     <string name="quest_postboxRoyalCypher_type_scottish_crown">"تاج اسکاتلند"</string>
@@ -1428,4 +1425,41 @@
     <string name="pedestrian_zone_allowed_sign">"علامت اجازه دوچرخه سواری در این مسیر"</string>
     <string name="pedestrian_zone_no_sign">"در این محل هیچ علامتی برای مسیر اختصاصی دوچرخه سواری وجود ندارد"</string>
     <string name="team_mode_description_overlay_hint">"اگر از پوشش ها استفاده می کنید ، هر یک از شما باید از یک پوشش متفاوت استفاده کنید ، زیرا فقط جُستارها تقسیم می شوند."</string>
+    <string name="quest_dietType_glutenfree_name_title">"آیا در این مکان محصولات بدون گلوتن ارائه می شوند؟"</string>
+    <string name="quest_dietType_explanation_glutenfree">"
+"</string>
+    <string name="quest_construction_minor_title">"آیا عملیات راه سازی جزئی در این مکان تکمیل شده است؟"</string>
+    <string name="map_attribution">"انتساب نقشه"</string>
+    <string name="link_panoramax_description">"نرم‌افزار رایگان، متن‌باز و سرویس غیرانتفاعی برای اشتراک‌گذاری عکس‌های مشارکتی سطح خیابان"</string>
+    <string name="link_opengeofiction_description">"از نقشه کشی واقعیت خسته شده اید؟ به صورت مشارکتی نقشه های خیالی بسازید!"</string>
+    <string name="link_openclimbing_description">"نقشه ای از ورزش های کوه نوردی
+"</string>
+    <string name="pref_title_zoom_buttons">"نشان دادن گزینه های بزرگنمایی نقشه"</string>
+    <string name="overlay_mtb_scale">"سختی دوچرخه کوهستان (MTB)"</string>
+    <string name="overlay_mtb_scale_0">"درجه 0"</string>
+    <string name="overlay_mtb_scale_0_description">"سطح فشرده یا طبیعیِ محکم و چسبنده؛ بدون مانع؛ شیب ملایم؛ پیچ‌های باز."</string>
+    <string name="overlay_mtb_scale_1">"درجه 1"</string>
+    <string name="overlay_mtb_scale_1_description">"زمین نسبتاً شل با ریشه‌ها، سنگ‌ها، فرسایش یا شیارهای آبی کوچک؛ شیب ≤ ۴۰٪؛ موانع قابل عبور با دوچرخه؛ نیاز به تکنیک پایه‌ای دوچرخه‌سواری."</string>
+    <string name="overlay_mtb_scale_2">"درجه 2"</string>
+    <string name="overlay_mtb_scale_2_description">"زمین شل با ریشه‌ها و سنگ‌های بزرگ، پرش‌های تخت/پله‌های کوچک، شیب تا ۷۰٪؛ پیچ‌های فرمانی ساده؛ نیاز به تکنیک‌های پیشرفتهٔ ترمزگیری و جابه‌جایی وزن."</string>
+    <string name="overlay_mtb_scale_3">"درجه 3"</string>
+    <string name="overlay_mtb_scale_3_description">"زمین لیز و شل با خرده‌سنگ، تخته‌سنگ‌ها، ریشه‌ها و سنگ‌های بزرگ، پله‌های بلند و گذرگاه‌های فریبنده؛ پیچ‌های فرمانی تنگ، شیب &gt; ۷۰٪؛ نیاز به تعادل عالی و ترمزگیری دقیق."</string>
+    <string name="overlay_mtb_scale_4">"درجه 4"</string>
+    <string name="overlay_mtb_scale_4_description">"موانع چالش‌برانگیز و فنی: تخته‌سنگ‌ها، ریشه‌ها، خرده‌سنگ، رمپ‌های شیبدار؛ پیچ‌های محوری، پرش‌های تخت با خطر برخورد پدال؛ نیاز به تعادل بی‌عیب، ترمزگیری دقیق و جابه‌جایی چرخ عقب."</string>
+    <string name="overlay_mtb_scale_5">"درجه 5"</string>
+    <string name="overlay_mtb_scale_5_description">"زمینه‌سنگلاخی فوق‌شیبدار با سربالایی‌های معکوس، میدان‌های تخته‌سنگ، زمین‌لغزش‌ها، پیچ‌های محوری با موانع، پرش‌های بلند پشت‌سرهم و درختان افتاده. حمل دوچرخه دور موانع غیرممکن؛ دوچرخه‌سواری اجتناب‌ناپذیر. نیاز به تسلط بر تکنیک‌های تریال."</string>
+    <string name="overlay_mtb_scale_6">"درجه 6"</string>
+    <string name="overlay_mtb_scale_6_description">"زمین بسیار خطرناک و غیرقابل عبور، غیرقابل استفاده برای دوچرخه‌کوهستان."</string>
+    <string name="default_disabled_overlay_domain_expert">"این لایه به‌طور پیش‌فرض غیرفعال است، زیرا برای ثبت دقیق این داده‌ها باید متخصص حوزه تخصصی مربوطه باشید."</string>
+    <string name="pref_title_overlays">"انتخابگر لایه‌ها"</string>
+    <string name="pref_overlays_reset">"بازنشانی فعال‌سازی لایه‌ها به حالت پیش‌فرض؟"</string>
+    <string name="overlay">"لایه‌ها"</string>
+    <string name="enable_overlay_confirmation_title">"فعال‌سازی این لایه؟"</string>
+    <string name="link_transitous_description">"سرویسی رایگان، متن‌باز و مستقل از اپراتور برای مسیریابی حمل‌ونقل عمومی"</string>
+    <string name="compass">"قطب‌نما"</string>
+    <string name="quest_tracktype_grade2">"عمدتاً محکم"</string>
+    <string name="quest_tracktype_grade3">"ناهموار"</string>
+    <string name="quest_housenumber_multiple_numbers_description2">"می‌توانید شماره خانه‌ها را با کاما از هم جدا کنید.\nبرای مثال ۱،۳ یا ۲ب،۴،۶."</string>
+    <string name="quest_drinking_water_potable_unsigned2">"بدون علامت"</string>
+    <string name="or">"یا"</string>
 </resources>

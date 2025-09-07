@@ -23,6 +23,8 @@ import de.westnordost.streetcomplete.osm.cycleway.isAmbiguous
 import de.westnordost.streetcomplete.osm.cycleway.parseCyclewaySides
 import de.westnordost.streetcomplete.osm.maxspeed.FILTER_IS_IMPLICIT_MAX_SPEED_BUT_NOT_SLOW_ZONE
 import de.westnordost.streetcomplete.osm.surface.UNPAVED_SURFACES
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.default_disabled_msg_overlay
 
 class AddCycleway(
     private val getCountryInfoByLocation: (location: LatLon) -> CountryInfo,
@@ -32,7 +34,7 @@ class AddCycleway(
     override val wikiLink = "Key:cycleway"
     override val icon = R.drawable.ic_quest_bicycleway
     override val achievements = listOf(BICYCLIST)
-    override val defaultDisabledMessage = R.string.default_disabled_msg_overlay
+    override val defaultDisabledMessage = Res.string.default_disabled_msg_overlay
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
         getMapData().filter("""

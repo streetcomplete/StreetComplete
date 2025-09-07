@@ -38,6 +38,9 @@ class AddOpeningHours(
               or amenity = shower and (fee = yes or indoor = yes or location = indoor)
               or tourism = information and information = office
               or natural = cave_entrance and fee = yes
+              or tower:type = observation and fee = yes
+              or leisure = garden and fee = yes
+              or leisure = park and fee = yes
               or """ +
 
         // The common list is shared by the name quest, the opening hours quest and the wheelchair quest.
@@ -78,6 +81,9 @@ class AddOpeningHours(
                 "fitness_centre", "golf_course", "water_park", "miniature_golf", "bowling_alley",
                 "amusement_arcade", "adult_gaming_centre", "tanning_salon", "sauna",
 
+                // name & opening hours
+                "trampoline_park",
+
                 // not sports_centre, dance etc because these are often sports clubs which have no
                 // walk-in opening hours but training times
             ),
@@ -87,7 +93,7 @@ class AddOpeningHours(
                 "employment_agency", "diplomatic", "coworking", "energy_supplier",
                 "estate_agent", "lawyer", "telecommunication", "educational_institution",
                 "association", "ngo", "it", "accountant", "property_management",
-                "bail_bond_agent",
+                "bail_bond_agent", "financial_advisor",
             ),
             "craft" to arrayOf(
                 // common
@@ -126,6 +132,12 @@ class AddOpeningHours(
         )
         and opening_hours:signed != no
     """).toElementFilterExpression() }
+    // name filter is there to ensure that place name quest triggers first, so that object is identified if possible
+    // Otherwise, in situation of two shops of the similar type with names A and B following may happen
+    // (1) mapper answers for one object with opening hours for shop A 
+    // (2) this or different mapper may answer that it is named B
+    // what would result in bad opening hours
+    // this filter reduces risk of this happening and also makes this quest less confusing to answer
 
     override val changesetComment = "Survey opening hours"
     override val wikiLink = "Key:opening_hours"

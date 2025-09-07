@@ -8,6 +8,8 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.WHEELCHAIR
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.default_disabled_msg_go_inside
 
 class AddWheelchairAccessToiletsPart : OsmFilterQuestType<WheelchairAccessToiletsPartAnswer>(), AndroidQuest {
 
@@ -33,7 +35,7 @@ class AddWheelchairAccessToiletsPart : OsmFilterQuestType<WheelchairAccessToilet
     override val icon = R.drawable.ic_quest_toilets_wheelchair
     override val isReplacePlaceEnabled = true
     override val achievements = listOf(RARE, WHEELCHAIR)
-    override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside
+    override val defaultDisabledMessage = Res.string.default_disabled_msg_go_inside
 
     override val hint = R.string.quest_wheelchairAccess_description_toilets
     override val hintImages = listOf(R.drawable.wheelchair_sign)

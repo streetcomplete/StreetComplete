@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.data.meta
 
+import androidx.compose.ui.text.intl.Locale
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -193,5 +194,16 @@ data class CountryInfo(private val infos: List<IncompleteCountryInfo>) {
         get() {
             val lang = officialLanguages.firstOrNull() ?: return null
             return "$lang-$countryCode"
+        }
+
+    /** the country locale, but preferring the user's set language if the country has several
+     *  official languages and the user selected one of them, e.g. French in Switzerland */
+    val userPreferredLocale: Locale
+        get() {
+            if (officialLanguages.isEmpty()) return Locale.current
+
+            val locales = officialLanguages.map { Locale("$it-$countryCode") }
+            val preferredLocale = locales.find { it.language == Locale.current.language }
+            return preferredLocale ?: locales.first()
         }
 }

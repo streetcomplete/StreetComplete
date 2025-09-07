@@ -13,7 +13,10 @@ class AddWheelchairAccessOutside : OsmFilterQuestType<WheelchairAccess>(), Andro
 
     override val elementFilter = """
         nodes, ways, relations with
-         leisure = dog_park
+         (
+          leisure = dog_park
+          or tower:type = observation
+         )
          and access !~ no|private
          and (!wheelchair or wheelchair older today -8 years)
     """

@@ -2,13 +2,13 @@ package de.westnordost.streetcomplete.util
 
 import android.content.Context
 import android.os.Build
+import androidx.compose.ui.text.intl.Locale
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.BuildConfig
 import de.westnordost.streetcomplete.data.logs.LogsController
 import de.westnordost.streetcomplete.data.logs.format
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import kotlinx.io.IOException
-import java.util.Locale
 
 /** Exception handler that takes care of storing the last crash as a file.
  *  When a crash occurs, the stack trace is saved to [crashReportFile] so that it can be accessed
@@ -61,7 +61,7 @@ class CrashReportExceptionHandler(
         report.append("""
             App version: ${BuildConfig.VERSION_NAME}
             Device: ${Build.BRAND}  ${Build.DEVICE}, Android ${Build.VERSION.RELEASE}
-            Locale: ${Locale.getDefault()}
+            Locale: ${Locale.current}
 
             Stack trace:
 

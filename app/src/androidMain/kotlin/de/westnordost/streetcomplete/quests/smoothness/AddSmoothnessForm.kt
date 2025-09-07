@@ -11,6 +11,7 @@ import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.osm.surface.Surface
 import de.westnordost.streetcomplete.osm.surface.asItem
+import de.westnordost.streetcomplete.osm.surface.parseSurface
 import de.westnordost.streetcomplete.quests.AImageListQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.util.ktx.asImageSpan
@@ -63,7 +64,7 @@ class AddSmoothnessForm : AImageListQuestForm<Smoothness, SmoothnessAnswer>() {
     }
 
     private fun surfaceWrong() {
-        val surfaceType = Surface.entries.find { it.osmValue == surfaceTag }!!
+        val surfaceType = surfaceTag?.let { parseSurface(it) } ?: return
         showWrongSurfaceDialog(surfaceType)
     }
 

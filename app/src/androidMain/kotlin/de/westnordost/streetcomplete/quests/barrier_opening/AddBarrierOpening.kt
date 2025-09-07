@@ -13,7 +13,10 @@ import de.westnordost.streetcomplete.osm.ALL_PATHS
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.quests.width.AddWidthForm
 import de.westnordost.streetcomplete.quests.width.WidthAnswer
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.default_disabled_msg_no_ar
 import de.westnordost.streetcomplete.screens.measure.ArSupportChecker
+import org.jetbrains.compose.resources.StringResource
 
 class AddBarrierOpening(
     private val checkArSupport: ArSupportChecker
@@ -43,8 +46,8 @@ class AddBarrierOpening(
     override val icon = R.drawable.ic_quest_wheelchair_width
     override val achievements = listOf(BICYCLIST, WHEELCHAIR)
     override val isDeleteElementEnabled = true
-    override val defaultDisabledMessage: Int
-        get() = if (!checkArSupport()) R.string.default_disabled_msg_no_ar else 0
+    override val defaultDisabledMessage: StringResource?
+        get() = if (!checkArSupport()) Res.string.default_disabled_msg_no_ar else null
 
     override fun getTitle(tags: Map<String, String>) =
         if (tags["barrier"] == "bollard" || tags["barrier"] == "block" || tags["cycle_barrier"] == "diagonal") {

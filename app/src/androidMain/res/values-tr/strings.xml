@@ -363,7 +363,6 @@ Vurgulu alandaki cadde boyunca hiçbir işaret yoksa varsayılan hız sınırlar
     <string name="quest_fee_answer_hours">"Zamana ve güne bağlı…"</string>
     <string name="quest_fee_add_times">"Zaman ekle"</string>
     <string name="quest_housenumber_multiple_numbers">"Birden fazla ev numarasına sahip"</string>
-    <string name="quest_housenumber_multiple_numbers_description">"Virgülle ayrılmış ev numaralarını veya aralıklarını girebilirsiniz. Örneğin 1,3 veya 2–6."</string>
     <string name="quest_bicycle_parking_type_stand">"Stand (bisiklet çerçevesini destekler)"</string>
     <string name="quest_bicycle_parking_type_wheelbender">"Jant Çamurluk (sadece jantları destekler)"</string>
     <string name="quest_bicycle_parking_type_shed">"Kulübe"</string>
@@ -798,9 +797,7 @@ Tüm seçenekleri değerlendir! Bazı durumlar net olmayabilir. Çift yönde bis
     <string name="quest_bicycle_parking_fee_title">"Buraya bisiklet park etmek için ödeme yapmanız gerekiyor mu?"</string>
     <string name="quest_buildingType_house_description2">"müstakil olmayan tek aileli ev, örn. tek sıralı ev"</string>
     <string name="quest_drinking_water_potable_signed">"İçmek için uygun (İşaretli)"</string>
-    <string name="quest_drinking_water_potable_unsigned">"İçmek için uygun (İşaretsiz)"</string>
     <string name="quest_drinking_water_not_potable_signed">"İçmek için uygun değil (İşaretli)"</string>
-    <string name="quest_drinking_water_not_potable_unsigned">"İçmek için uygun değil (İşaretsiz)"</string>
     <string name="quest_postboxRoyalCypher_title">"Bu posta kutusundaki kraliyet kodu nedir?"</string>
     <string name="quest_postboxRoyalCypher_type_none">"Kraliyet şifresi görünmüyor"</string>
     <string name="quest_postboxRoyalCypher_type_scottish_crown">"İskoçya Tacı"</string>

@@ -6,5 +6,4 @@ import de.westnordost.streetcomplete.resources.count_electric_car
 
 class AddChargingStationCapacityForm : AAddCountInput() {
     override val icon = Res.drawable.count_electric_car
-    override val initialCount get() = element.tags["capacity"]?.toIntOrNull()
 }
