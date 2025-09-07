@@ -996,7 +996,7 @@ A level counts as a roof level when its windows are in the roof. Subsequently, r
     <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
     <string name="quest_busStopName_title2">What’s the name of this stop?</string>
     <!-- very similar naming as "quest_streetName_hint" -->
-    <string name="quest_stopName_hint">You can apply the same name as another stop by tapping on it on the map. </string>
+    <string name="quest_stopName_hint">"You can apply the same name as another stop by tapping on it on the map."</string>
     <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
     <string name="quest_busStopRef_title2">What number or code identifies this stop?</string>
     <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
