@@ -41,11 +41,12 @@ import androidx.compose.ui.layout.boundsInRoot
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLayoutDirection
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.messages.Message
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.location_dot_small
+import de.westnordost.streetcomplete.resources.map_attribution_osm
 import de.westnordost.streetcomplete.screens.about.AboutActivity
 import de.westnordost.streetcomplete.screens.main.controls.AttributionButton
 import de.westnordost.streetcomplete.screens.main.controls.AttributionLink
@@ -83,6 +84,8 @@ import de.westnordost.streetcomplete.ui.ktx.pxToDp
 import de.westnordost.streetcomplete.util.ktx.sendErrorReportEmail
 import de.westnordost.streetcomplete.util.ktx.toast
 import kotlinx.coroutines.launch
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 import kotlin.math.PI
 import kotlin.math.abs
 
@@ -160,7 +163,7 @@ fun MainScreen(
     val mapTilt = mapCamera?.tilt ?: 0.0
 
     val mapAttribution = listOf(
-        AttributionLink(stringResource(R.string.map_attribution_osm), "https://osm.org/copyright"),
+        AttributionLink(stringResource(Res.string.map_attribution_osm), "https://osm.org/copyright"),
         AttributionLink("© JawgMaps", "https://jawg.io")
     )
 
@@ -227,7 +230,7 @@ fun MainScreen(
                 onClick = onClickLocationPointer,
                 rotate = rotation.toFloat(),
                 modifier = Modifier.absoluteOffset(offset.x.pxToDp(), offset.y.pxToDp()),
-            ) { Image(painterResource(R.drawable.location_dot_small), null) }
+            ) { Image(painterResource(Res.drawable.location_dot_small), null) }
         }
 
         Box(Modifier

@@ -35,7 +35,7 @@ class AddBoardType : OsmFilterQuestType<BoardTypeAnswer>(), AndroidQuest {
     override fun createForm() = AddBoardTypeForm()
 
     override fun applyAnswerTo(answer: BoardTypeAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
-        if (answer is NoBoardJustMap) {
+        if (answer is BoardTypeAnswer.NoBoardJustMap) {
             tags["information"] = "map"
         } else if (answer is BoardType) {
             tags["board_type"] = answer.osmValue

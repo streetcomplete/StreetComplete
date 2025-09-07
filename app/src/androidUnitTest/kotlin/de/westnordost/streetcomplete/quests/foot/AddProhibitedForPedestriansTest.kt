@@ -15,14 +15,14 @@ class AddProhibitedForPedestriansTest {
     @Test fun `apply yes answer`() {
         assertEquals(
             setOf(StringMapEntryAdd("foot", "no")),
-            questType.answerApplied(YES)
+            questType.answerApplied(PROHIBITED)
         )
     }
 
     @Test fun `apply no answer`() {
         assertEquals(
             setOf(StringMapEntryAdd("foot", "yes")),
-            questType.answerApplied(NO)
+            questType.answerApplied(ALLOWED)
         )
     }
 

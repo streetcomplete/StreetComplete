@@ -13,6 +13,8 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.osm.mtb_scale.MtbScale
 import de.westnordost.streetcomplete.osm.mtb_scale.parseMtbScale
 import de.westnordost.streetcomplete.osm.surface.UNPAVED_SURFACES
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.default_disabled_overlay_domain_expert
 
 class MtbScaleOverlay : Overlay, AndroidOverlay {
 
@@ -21,7 +23,7 @@ class MtbScaleOverlay : Overlay, AndroidOverlay {
     override val changesetComment = "Specify MTB difficulty"
     override val wikiLink: String = "Key:mtb:scale"
     override val achievements = listOf(BICYCLIST, OUTDOORS)
-    override val defaultDisabledMessage = R.string.default_disabled_overlay_domain_expert
+    override val defaultDisabledMessage = Res.string.default_disabled_overlay_domain_expert
 
     override fun getStyledElements(mapData: MapDataWithGeometry) =
         mapData.filter("""

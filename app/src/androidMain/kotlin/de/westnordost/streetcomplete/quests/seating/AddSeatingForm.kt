@@ -1,18 +1,15 @@
 package de.westnordost.streetcomplete.quests.seating
 
-import de.westnordost.streetcomplete.R
+import androidx.compose.foundation.layout.BoxScope
+import androidx.compose.material.Text
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.quests.AListQuestForm
-import de.westnordost.streetcomplete.quests.seating.Seating.INDOOR_AND_OUTDOOR
-import de.westnordost.streetcomplete.quests.seating.Seating.NO
-import de.westnordost.streetcomplete.quests.seating.Seating.ONLY_INDOOR
-import de.westnordost.streetcomplete.quests.seating.Seating.ONLY_OUTDOOR
-import de.westnordost.streetcomplete.ui.common.TextItem
+import org.jetbrains.compose.resources.stringResource
 
-class AddSeatingForm : AListQuestForm<Seating>() {
-    override val items = listOf(
-        TextItem(INDOOR_AND_OUTDOOR, R.string.quest_seating_indoor_and_outdoor),
-        TextItem(ONLY_INDOOR, R.string.quest_seating_indoor_only),
-        TextItem(ONLY_OUTDOOR, R.string.quest_seating_outdoor_only),
-        TextItem(NO, R.string.quest_seating_takeaway),
-    )
+class AddSeatingForm : AListQuestForm<Seating, Seating>() {
+    override val items = Seating.entries
+
+    @Composable override fun BoxScope.ItemContent(item: Seating) {
+        Text(stringResource(item.text))
+    }
 }
