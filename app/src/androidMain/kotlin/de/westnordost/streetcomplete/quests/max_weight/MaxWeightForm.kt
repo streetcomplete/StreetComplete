@@ -7,8 +7,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
-import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.WeightMeasurementUnit
 import de.westnordost.streetcomplete.quests.max_weight.MaxWeightType.MAX_AXLE_LOAD
 import de.westnordost.streetcomplete.quests.max_weight.MaxWeightType.MAX_TANDEM_AXLE_LOAD
@@ -32,8 +30,10 @@ import de.westnordost.streetcomplete.resources.maxweight_sign_weightrating_hgv_d
 import de.westnordost.streetcomplete.resources.maxweight_sign_weightrating_hgv_mutcd
 import de.westnordost.streetcomplete.resources.maxweight_sign_weightrating_hgv_yellow
 import de.westnordost.streetcomplete.resources.maxweight_sign_weightrating_mutcd
+import de.westnordost.streetcomplete.resources.quest_maxweight_select_sign
 import de.westnordost.streetcomplete.ui.common.Button2
 import org.jetbrains.compose.resources.DrawableResource
+import org.jetbrains.compose.resources.stringResource
 
 // TODO
 @Composable
@@ -54,7 +54,7 @@ fun MaxWeightForm(
             onClick = { showSelectionDialog = true },
             modifier = modifier,
         ) {
-            Text(stringResource(R.string.quest_maxweight_select_sign))
+            Text(stringResource(Res.string.quest_maxweight_select_sign))
         }
     } else {
         MaxWeightSignForm(

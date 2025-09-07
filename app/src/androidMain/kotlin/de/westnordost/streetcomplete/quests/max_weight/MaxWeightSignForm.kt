@@ -13,7 +13,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.meta.WeightMeasurementUnit
 import de.westnordost.streetcomplete.quests.max_weight.MaxWeightType.*
@@ -24,6 +23,7 @@ import de.westnordost.streetcomplete.resources.maxweight_hgv
 import de.westnordost.streetcomplete.ui.common.SelectButton
 import de.westnordost.streetcomplete.ui.theme.TrafficSignColor
 import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.ui.tooling.preview.Preview
 
 /** A form to input the weight [value] (and [unit]) for a single max weight sign. The signs shown
  *  should look similar to how the signs actually look in the country with the given [countryCode]
@@ -122,7 +122,8 @@ fun MaxWeightSignForm(
     }
 }
 
-@Preview @Composable
+@Preview
+@Composable
 private fun MaxWeightSignFormPreview() {
     var country by remember { mutableStateOf("DE") }
     val countries = remember { listOf("DE", "FI", "US") }
