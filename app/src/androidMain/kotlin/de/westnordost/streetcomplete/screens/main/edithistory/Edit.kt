@@ -53,7 +53,7 @@ val Edit.overlayIcon: DrawableResource? get() = when (this) {
     else -> null
 }
 
-// TODO should convert to returning StringResource when migrated to compose
+// TODO compose should convert to returning StringResource when migrated to compose
 @Composable
 fun Edit.getTitle(elementTags: Map<String, String>?): String = when (this) {
     is ElementEdit -> {
