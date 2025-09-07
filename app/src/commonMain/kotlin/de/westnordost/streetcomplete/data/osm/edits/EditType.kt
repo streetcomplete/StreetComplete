@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.data.osm.edits
 
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement
+import org.jetbrains.compose.resources.StringResource
 
 interface EditType {
     /** the icon resource id used to display this edit type (in edit history, statistics, on map if
@@ -22,13 +23,13 @@ interface EditType {
     /** towards which achievements solving an edit of this type should count */
     val achievements: List<EditTypeAchievement>
 
-    /** the string resource id that explains why this edit type is disabled by default or zero if it
+    /** the string resource that explains why this edit type is disabled by default or zero if it
      *  is not disabled by default.
      *
      *  E.g. quest types that do not fully fulfill the [quest guidelines](https://github.com/streetcomplete/StreetComplete/blob/master/QUEST_GUIDELINES.md),
      *  (e.g. often the requirement that the information is publicly available from the outside),
      *  are disabled by default. */
-    val defaultDisabledMessage: Int get() = 0
+    val defaultDisabledMessage: StringResource? get() = null
 
     /** Whether this edit type can be disabled in the user settings */
     val visibilityEditable: Boolean get() = true

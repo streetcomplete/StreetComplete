@@ -24,8 +24,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.platform.LocalLayoutDirection
-import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.quests.note_discussion.OsmNoteQuestType
@@ -38,6 +36,7 @@ import de.westnordost.streetcomplete.resources.quest_type
 import de.westnordost.streetcomplete.ui.common.dialogs.ConfirmationDialog
 import de.westnordost.streetcomplete.ui.theme.titleMedium
 import org.jetbrains.compose.resources.stringResource
+import org.jetbrains.compose.ui.tooling.preview.Preview
 import sh.calvin.reorderable.ReorderableItem
 import sh.calvin.reorderable.rememberReorderableLazyListState
 
@@ -120,7 +119,7 @@ fun QuestSelectionList(
                                 item = item,
                                 onToggleSelection = { isSelected ->
                                     // when enabling quest that is disabled by default, require confirmation
-                                    if (isSelected && item.questType.defaultDisabledMessage != 0) {
+                                    if (isSelected && item.questType.defaultDisabledMessage != null) {
                                         showEnableQuestDialog = item.questType
                                     } else {
                                         onSelect(item.questType, isSelected)
@@ -141,7 +140,7 @@ fun QuestSelectionList(
             onDismissRequest = { showEnableQuestDialog = null },
             onConfirmed = { onSelect(questType, true) },
             title = { Text(stringResource(Res.string.enable_quest_confirmation_title)) },
-            text = { Text(stringResource(questType.defaultDisabledMessage)) }
+            text = { Text(questType.defaultDisabledMessage?.let { stringResource(it) }.orEmpty()) }
         )
     }
 }

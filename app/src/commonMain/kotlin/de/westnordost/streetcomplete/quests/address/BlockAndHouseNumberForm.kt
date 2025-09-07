@@ -19,15 +19,17 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.onSizeChanged
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.Hyphens
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.osm.address.BlockAndHouseNumber
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.label_block
+import de.westnordost.streetcomplete.resources.label_housenumber
 import de.westnordost.streetcomplete.ui.ktx.pxToDp
 import de.westnordost.streetcomplete.ui.theme.largeInput
+import org.jetbrains.compose.resources.stringResource
+import org.jetbrains.compose.ui.tooling.preview.Preview
 
 /** Form to input a block + housenumber. Since there is no uniform look, there's no custom styling.
  *
@@ -92,9 +94,9 @@ fun BlockAndHouseNumberForm(
         }
         ProvideTextStyle(labelStyle) {
             Row(horizontalArrangement = Arrangement.spacedBy(8.dp),) {
-                Text(stringResource(R.string.label_block))
+                Text(stringResource(Res.string.label_block))
                 Text("-")
-                Text(stringResource(R.string.label_housenumber))
+                Text(stringResource(Res.string.label_housenumber))
             }
         }
     }

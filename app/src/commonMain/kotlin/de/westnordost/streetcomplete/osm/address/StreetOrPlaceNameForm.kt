@@ -16,16 +16,18 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.paint
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
-import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.quest_address_street_hint2
+import de.westnordost.streetcomplete.resources.quest_address_street_place_name_label
+import de.westnordost.streetcomplete.resources.quest_address_street_street_name_label
 import de.westnordost.streetcomplete.resources.town_silhouette
 import de.westnordost.streetcomplete.ui.common.ButtonStyle
 import de.westnordost.streetcomplete.ui.common.SelectButton
 import de.westnordost.streetcomplete.ui.theme.largeInput
 import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 
 /** Input form for street name associated with an address or place name if there is no named
  *  street. */
@@ -53,8 +55,8 @@ fun StreetOrPlaceNameForm(
                 itemContent = {
                     Text(stringResource(
                         when (it) {
-                            is StreetName -> R.string.quest_address_street_street_name_label
-                            is PlaceName -> R.string.quest_address_street_place_name_label
+                            is StreetName -> Res.string.quest_address_street_street_name_label
+                            is PlaceName -> Res.string.quest_address_street_place_name_label
                         }
                     ))
                 }
@@ -71,7 +73,7 @@ fun StreetOrPlaceNameForm(
                     textStyle = textStyle,
                 )
                 Text(
-                    text = stringResource(R.string.quest_address_street_hint2),
+                    text = stringResource(Res.string.quest_address_street_hint2),
                     color = LocalContentColor.current.copy(alpha = ContentAlpha.medium),
                     style = MaterialTheme.typography.caption
                 )

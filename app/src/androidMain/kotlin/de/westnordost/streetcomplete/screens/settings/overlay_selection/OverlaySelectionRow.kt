@@ -56,7 +56,7 @@ fun OverlaySelectionRow(
                 modifier = Modifier.alpha(alpha),
                 style = MaterialTheme.typography.body1,
             )
-            if (item.overlay.defaultDisabledMessage != 0) {
+            if (item.overlay.defaultDisabledMessage != null) {
                 DisabledHint(stringResource(Res.string.questList_disabled_by_default))
             }
         }

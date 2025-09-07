@@ -17,7 +17,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.edithistory.Edit
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
@@ -28,6 +27,7 @@ import de.westnordost.streetcomplete.quests.recycling.AddRecyclingType
 import de.westnordost.streetcomplete.screens.main.controls.MapButton
 import de.westnordost.streetcomplete.ui.common.UndoIcon
 import de.westnordost.streetcomplete.ui.theme.selectionBackground
+import org.jetbrains.compose.ui.tooling.preview.Preview
 
 /** One item in the edit history sidebar list. Selectable and when selected, an undo button is
  *  clickable. */

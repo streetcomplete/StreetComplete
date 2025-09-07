@@ -14,7 +14,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.meta.LengthUnit
 import de.westnordost.streetcomplete.osm.Length
@@ -25,6 +24,7 @@ import de.westnordost.streetcomplete.ui.common.SelectButton
 import de.westnordost.streetcomplete.ui.theme.extraLargeInput
 import de.westnordost.streetcomplete.ui.theme.largeInput
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
+import org.jetbrains.compose.ui.tooling.preview.Preview
 
 /** Displays a form to input the max height, as specified on the sign. For clarity and fun, the
  *  input fields are shown on a sign background that resembles a maxheight sign in the given
@@ -85,7 +85,8 @@ fun MaxHeightForm(
     }
 }
 
-@Preview @Composable
+@Preview
+@Composable
 fun MaxHeightFormPreview() {
     var length: Length? by remember { mutableStateOf(Length.Meters(10.00)) }
 

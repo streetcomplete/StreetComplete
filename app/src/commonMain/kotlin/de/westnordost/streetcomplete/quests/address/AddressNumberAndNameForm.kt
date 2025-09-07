@@ -12,10 +12,12 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
-import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.osm.address.HouseNumber
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.quest_address_house_name_label
+import de.westnordost.streetcomplete.resources.quest_address_house_number_label
 import de.westnordost.streetcomplete.ui.common.Details
+import org.jetbrains.compose.resources.stringResource
 
 /** Form to input a housenumber and/or name. If [value]`.name` is null, the name input is not
  *  shown at all, not even retracted,  but only the housenumber input. */
@@ -43,7 +45,7 @@ fun AddressNumberAndNameForm(
                 Details(
                     expanded = numberExpanded,
                     onExpandedChange = { numberExpanded = it },
-                    summary = { Text(stringResource(R.string.quest_address_house_number_label)) },
+                    summary = { Text(stringResource(Res.string.quest_address_house_number_label)) },
                     modifier = Modifier.fillMaxWidth(),
                     enabled = value.number?.isEmpty() != false
                 ) {
@@ -63,7 +65,7 @@ fun AddressNumberAndNameForm(
                 Details(
                     expanded = nameExpanded,
                     onExpandedChange = { nameExpanded = it },
-                    summary = { Text(stringResource(R.string.quest_address_house_name_label)) },
+                    summary = { Text(stringResource(Res.string.quest_address_house_name_label)) },
                     modifier = Modifier.fillMaxWidth(),
                     enabled = value.name.isEmpty()
                 ) {

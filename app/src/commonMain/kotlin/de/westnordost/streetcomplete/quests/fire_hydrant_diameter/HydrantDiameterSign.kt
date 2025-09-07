@@ -13,7 +13,6 @@ import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.DpOffset
 import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.dp
@@ -31,6 +30,7 @@ import de.westnordost.streetcomplete.ui.theme.TrafficSignColor.Blue
 import de.westnordost.streetcomplete.ui.theme.TrafficSignColor.Black
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.ui.tooling.preview.Preview
 
 /** A box of fixed size showing a hydrant diameter sign in the background, places its content at the
  *  correct position */
@@ -84,7 +84,8 @@ private enum class FireHydrantDiameterSign(
 }
 
 
-@Preview @Composable
+@Preview
+@Composable
 private fun HydrantDiameterSignFormPreview() {
     HydrantDiameterSign("UA") { Box(Modifier.fillMaxSize().background(Color.Gray)) }
 }

@@ -18,13 +18,13 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.LengthUnit
 import de.westnordost.streetcomplete.osm.Length
 import de.westnordost.streetcomplete.osm.unit
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.ar_measure
+import de.westnordost.streetcomplete.resources.or
 import de.westnordost.streetcomplete.ui.common.LengthFeetInchesInput
 import de.westnordost.streetcomplete.ui.common.LengthMetersInput
 import de.westnordost.streetcomplete.ui.common.MeasurementIcon
@@ -32,6 +32,8 @@ import de.westnordost.streetcomplete.ui.common.SelectButton
 import de.westnordost.streetcomplete.ui.theme.extraLargeInput
 import de.westnordost.streetcomplete.ui.theme.largeInput
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
+import org.jetbrains.compose.resources.stringResource
+import org.jetbrains.compose.ui.tooling.preview.Preview
 
 /** Displays a form to input and/or measure the length, in meter or feet+inch */
 @Composable
@@ -98,7 +100,7 @@ fun LengthForm(
         if (showMeasureButton) {
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Divider(Modifier.weight(1f))
-                Text(stringResource(R.string.or), Modifier.padding(horizontal = 16.dp))
+                Text(stringResource(Res.string.or), Modifier.padding(horizontal = 16.dp))
                 Divider(Modifier.weight(1f))
             }
 
@@ -114,7 +116,7 @@ private fun MeasureButton(onClick: () -> Unit) {
     ) {
         MeasurementIcon()
         Spacer(Modifier.width(8.dp))
-        Text(stringResource(R.string.ar_measure))
+        Text(stringResource(Res.string.ar_measure))
     }
 }
 

@@ -21,16 +21,18 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.Hyphens
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.quest_buildingLevels_levelsLabel2
+import de.westnordost.streetcomplete.resources.quest_buildingLevels_roofLevelsLabel2
 import de.westnordost.streetcomplete.ui.common.TextField2
 import de.westnordost.streetcomplete.ui.theme.largeInput
+import org.jetbrains.compose.resources.stringResource
 
 /** Form to input building levels and roof levels, with quick-select buttons */
 @Composable
@@ -58,7 +60,7 @@ fun BuildingLevelsForm(
                     verticalArrangement = Arrangement.SpaceBetween
                 ) {
                     Text(
-                        text = stringResource(R.string.quest_buildingLevels_levelsLabel2),
+                        text = stringResource(Res.string.quest_buildingLevels_levelsLabel2),
                         style = MaterialTheme.typography.caption.copy(hyphens = Hyphens.Auto),
                         color = LocalContentColor.current.copy(alpha = ContentAlpha.medium),
                     )
@@ -100,7 +102,7 @@ fun BuildingLevelsForm(
                         ),
                     )
                     Text(
-                        text = stringResource(R.string.quest_buildingLevels_roofLevelsLabel2),
+                        text = stringResource(Res.string.quest_buildingLevels_roofLevelsLabel2),
                         textAlign = TextAlign.Start,
                         style = MaterialTheme.typography.caption.copy(hyphens = Hyphens.Auto),
                         color = LocalContentColor.current.copy(alpha = ContentAlpha.medium),

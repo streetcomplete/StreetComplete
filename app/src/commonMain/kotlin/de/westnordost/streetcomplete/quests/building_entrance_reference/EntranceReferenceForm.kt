@@ -14,14 +14,22 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.Hyphens
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.address.AnAddressNumberInput
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.quest_entrance_reference_flat_range_label
+import de.westnordost.streetcomplete.resources.quest_entrance_reference_flat_range_to
+import de.westnordost.streetcomplete.resources.quest_entrance_reference_reference_label
+import de.westnordost.streetcomplete.resources.quest_entrance_reference_select_code_only
+import de.westnordost.streetcomplete.resources.quest_entrance_reference_select_flat_range_and_code
+import de.westnordost.streetcomplete.resources.quest_entrance_reference_select_flat_range_only
+import de.westnordost.streetcomplete.resources.quest_select_hint
 import de.westnordost.streetcomplete.ui.common.SelectButton
 import de.westnordost.streetcomplete.ui.theme.largeInput
+import org.jetbrains.compose.resources.StringResource
+import org.jetbrains.compose.resources.stringResource
 
 /** Form to input an entrance reference - either a flat range, a ref code or both */
 @Composable
@@ -46,9 +54,9 @@ fun EntranceReferenceForm(
             items = selectableItems,
             onSelectedItem = onValueChange,
             selectedItem = value,
-            itemContent = { Text(stringResource(it.textId)) },
+            itemContent = { Text(stringResource(it.text)) },
             content = {
-                Text(stringResource(value?.textId ?: R.string.quest_select_hint))
+                Text(stringResource(value?.text ?: Res.string.quest_select_hint))
             },
         )
         if (value is EntranceReference) {
@@ -80,7 +88,7 @@ fun EntranceReferenceForm(
                                 color = LocalContentColor.current.copy(alpha = ContentAlpha.medium)
                             )
                             Text(
-                                text = stringResource(R.string.quest_entrance_reference_reference_label),
+                                text = stringResource(Res.string.quest_entrance_reference_reference_label),
                                 style = labelStyle,
                             )
                             ReferenceCodeInput(
@@ -89,7 +97,7 @@ fun EntranceReferenceForm(
                                 modifier = Modifier.width(128.dp)
                             )
                             Text(
-                                text = stringResource(R.string.quest_entrance_reference_flat_range_label),
+                                text = stringResource(Res.string.quest_entrance_reference_flat_range_label),
                                 style = labelStyle,
                             )
                             FlatRangeInput(
@@ -121,7 +129,7 @@ private fun FlatRangeInput(
             onValueChange = { onValueChange(value.copy(start = it)) },
             modifier = Modifier.weight(0.5f)
         )
-        Text(stringResource(R.string.quest_entrance_reference_flat_range_to))
+        Text(stringResource(Res.string.quest_entrance_reference_flat_range_to))
         AnAddressNumberInput(
             value = value.end,
             onValueChange = { onValueChange(value.copy(end = it)) },
@@ -143,8 +151,8 @@ private fun ReferenceCodeInput(
     )
 }
 
-private val EntranceReference.textId: Int get() = when (this) {
-    is ReferenceCodeAndFlatRange -> R.string.quest_entrance_reference_select_flat_range_and_code
-    is FlatRange -> R.string.quest_entrance_reference_select_flat_range_only
-    is ReferenceCode -> R.string.quest_entrance_reference_select_code_only
+private val EntranceReference.text: StringResource get() = when (this) {
+    is ReferenceCodeAndFlatRange -> Res.string.quest_entrance_reference_select_flat_range_and_code
+    is FlatRange -> Res.string.quest_entrance_reference_select_flat_range_only
+    is ReferenceCode -> Res.string.quest_entrance_reference_select_code_only
 }

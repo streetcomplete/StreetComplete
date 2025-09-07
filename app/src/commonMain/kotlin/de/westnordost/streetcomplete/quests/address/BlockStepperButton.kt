@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.quests.address
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.alpha
 import androidx.core.text.isDigitsOnly
 import de.westnordost.streetcomplete.ui.common.StepperButton
 
