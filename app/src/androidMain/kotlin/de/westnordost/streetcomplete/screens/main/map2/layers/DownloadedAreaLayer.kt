@@ -8,14 +8,14 @@ import de.westnordost.streetcomplete.data.osm.mapdata.toPolygon
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.downloaded_area_hatching
 import de.westnordost.streetcomplete.screens.main.map2.toPosition
-import dev.sargunv.maplibrecompose.compose.MaplibreComposable
-import dev.sargunv.maplibrecompose.compose.layer.FillLayer
-import dev.sargunv.maplibrecompose.compose.source.rememberGeoJsonSource
-import dev.sargunv.maplibrecompose.core.source.GeoJsonData
-import dev.sargunv.maplibrecompose.expressions.dsl.const
-import dev.sargunv.maplibrecompose.expressions.dsl.image
 import io.github.dellisd.spatialk.geojson.Polygon
 import org.jetbrains.compose.resources.painterResource
+import org.maplibre.compose.expressions.dsl.const
+import org.maplibre.compose.expressions.dsl.image
+import org.maplibre.compose.layers.FillLayer
+import org.maplibre.compose.sources.GeoJsonData
+import org.maplibre.compose.sources.rememberGeoJsonSource
+import org.maplibre.compose.util.MaplibreComposable
 
 /** Displays which areas have (not) been downloaded */
 @Composable @MaplibreComposable

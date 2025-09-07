@@ -2,12 +2,30 @@ package de.westnordost.streetcomplete.screens.main.map2
 
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.TextUnit
-import dev.sargunv.maplibrecompose.expressions.ast.Expression
-import dev.sargunv.maplibrecompose.expressions.dsl.Feature
-import dev.sargunv.maplibrecompose.expressions.dsl.*
-import dev.sargunv.maplibrecompose.expressions.value.GeometryType
-import dev.sargunv.maplibrecompose.expressions.value.NumberValue
-import dev.sargunv.maplibrecompose.expressions.value.StringValue
+import org.maplibre.compose.expressions.ast.Expression
+import org.maplibre.compose.expressions.dsl.Feature
+import org.maplibre.compose.expressions.dsl.all
+import org.maplibre.compose.expressions.dsl.any
+import org.maplibre.compose.expressions.dsl.coalesce
+import org.maplibre.compose.expressions.dsl.condition
+import org.maplibre.compose.expressions.dsl.const
+import org.maplibre.compose.expressions.dsl.contains
+import org.maplibre.compose.expressions.dsl.convertToBoolean
+import org.maplibre.compose.expressions.dsl.convertToNumber
+import org.maplibre.compose.expressions.dsl.convertToString
+import org.maplibre.compose.expressions.dsl.div
+import org.maplibre.compose.expressions.dsl.dp
+import org.maplibre.compose.expressions.dsl.eq
+import org.maplibre.compose.expressions.dsl.exponential
+import org.maplibre.compose.expressions.dsl.interpolate
+import org.maplibre.compose.expressions.dsl.neq
+import org.maplibre.compose.expressions.dsl.plus
+import org.maplibre.compose.expressions.dsl.switch
+import org.maplibre.compose.expressions.dsl.times
+import org.maplibre.compose.expressions.dsl.zoom
+import org.maplibre.compose.expressions.value.GeometryType
+import org.maplibre.compose.expressions.value.NumberValue
+import org.maplibre.compose.expressions.value.StringValue
 import kotlin.math.PI
 import kotlin.math.cos
 

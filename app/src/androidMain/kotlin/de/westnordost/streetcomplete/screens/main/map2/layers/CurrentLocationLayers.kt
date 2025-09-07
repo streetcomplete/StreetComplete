@@ -13,16 +13,16 @@ import de.westnordost.streetcomplete.screens.main.map2.inMeters
 import de.westnordost.streetcomplete.screens.main.map2.toGeometry
 import de.westnordost.streetcomplete.ui.theme.Location
 import de.westnordost.streetcomplete.util.ktx.isApril1st
-import dev.sargunv.maplibrecompose.compose.MaplibreComposable
-import dev.sargunv.maplibrecompose.compose.layer.CircleLayer
-import dev.sargunv.maplibrecompose.compose.layer.SymbolLayer
-import dev.sargunv.maplibrecompose.compose.source.rememberGeoJsonSource
-import dev.sargunv.maplibrecompose.core.source.GeoJsonData
-import dev.sargunv.maplibrecompose.expressions.dsl.const
-import dev.sargunv.maplibrecompose.expressions.dsl.image
-import dev.sargunv.maplibrecompose.expressions.value.CirclePitchAlignment
-import dev.sargunv.maplibrecompose.expressions.value.IconPitchAlignment
 import org.jetbrains.compose.resources.painterResource
+import org.maplibre.compose.expressions.dsl.const
+import org.maplibre.compose.expressions.dsl.image
+import org.maplibre.compose.expressions.value.CirclePitchAlignment
+import org.maplibre.compose.expressions.value.IconPitchAlignment
+import org.maplibre.compose.layers.CircleLayer
+import org.maplibre.compose.layers.SymbolLayer
+import org.maplibre.compose.sources.GeoJsonData
+import org.maplibre.compose.sources.rememberGeoJsonSource
+import org.maplibre.compose.util.MaplibreComposable
 
 /** Displays the location + direction + accuracy marker on the map */
 @Composable @MaplibreComposable

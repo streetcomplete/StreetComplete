@@ -11,20 +11,21 @@ import androidx.compose.ui.unit.DpOffset
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.screens.main.map2.toGeometry
-import dev.sargunv.maplibrecompose.compose.MaplibreComposable
-import dev.sargunv.maplibrecompose.compose.layer.SymbolLayer
-import dev.sargunv.maplibrecompose.compose.source.rememberGeoJsonSource
-import dev.sargunv.maplibrecompose.core.source.GeoJsonData
-import dev.sargunv.maplibrecompose.expressions.dsl.const
-import dev.sargunv.maplibrecompose.expressions.dsl.feature
-import dev.sargunv.maplibrecompose.expressions.dsl.image
 import io.github.dellisd.spatialk.geojson.Feature
 import io.github.dellisd.spatialk.geojson.FeatureCollection
 import kotlinx.serialization.json.JsonPrimitive
+import org.maplibre.compose.expressions.dsl.const
+import org.maplibre.compose.expressions.dsl.feature
+import org.maplibre.compose.expressions.dsl.image
+import org.maplibre.compose.layers.SymbolLayer
+import org.maplibre.compose.sources.GeoJsonData
+import org.maplibre.compose.sources.rememberGeoJsonSource
+import org.maplibre.compose.util.MaplibreComposable
 
 /** Displays "selected" pins. Those pins should always be shown on top of pins displayed by
  *  [PinsLayers] */
-@MaplibreComposable @Composable
+@MaplibreComposable
+@Composable
 fun SelectedPinsLayer(icon: String, pinPositions: Collection<LatLon>) {
     val pinsSize = remember { Animatable(0.5f) }
     LaunchedEffect(pinPositions) {

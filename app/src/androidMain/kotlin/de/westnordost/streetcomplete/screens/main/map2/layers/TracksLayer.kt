@@ -10,22 +10,23 @@ import de.westnordost.streetcomplete.resources.map_track_nyan_record
 import de.westnordost.streetcomplete.ui.theme.Location
 import de.westnordost.streetcomplete.ui.theme.Recording
 import de.westnordost.streetcomplete.util.ktx.isApril1st
-import dev.sargunv.maplibrecompose.compose.MaplibreComposable
-import dev.sargunv.maplibrecompose.compose.layer.LineLayer
-import dev.sargunv.maplibrecompose.core.source.Source
-import dev.sargunv.maplibrecompose.expressions.ast.Expression
-import dev.sargunv.maplibrecompose.expressions.dsl.condition
-import dev.sargunv.maplibrecompose.expressions.dsl.const
-import dev.sargunv.maplibrecompose.expressions.dsl.convertToBoolean
-import dev.sargunv.maplibrecompose.expressions.dsl.feature
-import dev.sargunv.maplibrecompose.expressions.dsl.image
-import dev.sargunv.maplibrecompose.expressions.dsl.switch
-import dev.sargunv.maplibrecompose.expressions.value.FloatValue
-import dev.sargunv.maplibrecompose.expressions.value.LineCap
 import org.jetbrains.compose.resources.painterResource
+import org.maplibre.compose.expressions.ast.Expression
+import org.maplibre.compose.expressions.dsl.condition
+import org.maplibre.compose.expressions.dsl.const
+import org.maplibre.compose.expressions.dsl.convertToBoolean
+import org.maplibre.compose.expressions.dsl.feature
+import org.maplibre.compose.expressions.dsl.image
+import org.maplibre.compose.expressions.dsl.switch
+import org.maplibre.compose.expressions.value.FloatValue
+import org.maplibre.compose.expressions.value.LineCap
+import org.maplibre.compose.layers.LineLayer
+import org.maplibre.compose.sources.Source
+import org.maplibre.compose.util.MaplibreComposable
 
 /** Displays a path(s) walked on the map */
-@MaplibreComposable @Composable
+@MaplibreComposable
+@Composable
 fun TracksLayer(
     id: String,
     source: Source,

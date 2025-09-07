@@ -10,37 +10,39 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.map_pin_circle
 import de.westnordost.streetcomplete.screens.main.map2.toGeometry
-import dev.sargunv.maplibrecompose.compose.FeaturesClickHandler
-import dev.sargunv.maplibrecompose.compose.MaplibreComposable
-import dev.sargunv.maplibrecompose.compose.layer.CircleLayer
-import dev.sargunv.maplibrecompose.compose.layer.SymbolLayer
-import dev.sargunv.maplibrecompose.compose.source.rememberGeoJsonSource
-import dev.sargunv.maplibrecompose.core.source.GeoJsonData
-import dev.sargunv.maplibrecompose.core.source.GeoJsonOptions
-import dev.sargunv.maplibrecompose.expressions.dsl.all
-import dev.sargunv.maplibrecompose.expressions.dsl.any
-import dev.sargunv.maplibrecompose.expressions.dsl.const
-import dev.sargunv.maplibrecompose.expressions.dsl.convertToNumber
-import dev.sargunv.maplibrecompose.expressions.dsl.convertToString
-import dev.sargunv.maplibrecompose.expressions.dsl.plus
-import dev.sargunv.maplibrecompose.expressions.dsl.div
-import dev.sargunv.maplibrecompose.expressions.dsl.feature
-import dev.sargunv.maplibrecompose.expressions.dsl.gt
-import dev.sargunv.maplibrecompose.expressions.dsl.gte
-import dev.sargunv.maplibrecompose.expressions.dsl.image
-import dev.sargunv.maplibrecompose.expressions.dsl.log2
-import dev.sargunv.maplibrecompose.expressions.dsl.lte
-import dev.sargunv.maplibrecompose.expressions.dsl.offset
-import dev.sargunv.maplibrecompose.expressions.dsl.sp
-import dev.sargunv.maplibrecompose.expressions.dsl.zoom
-import dev.sargunv.maplibrecompose.expressions.value.TranslateAnchor
 import io.github.dellisd.spatialk.geojson.Feature
 import io.github.dellisd.spatialk.geojson.FeatureCollection
 import kotlinx.serialization.json.JsonPrimitive
 import org.jetbrains.compose.resources.painterResource
+import org.maplibre.android.style.expressions.Expression.log2
+import org.maplibre.compose.expressions.dsl.all
+import org.maplibre.compose.expressions.dsl.any
+import org.maplibre.compose.expressions.dsl.const
+import org.maplibre.compose.expressions.dsl.convertToNumber
+import org.maplibre.compose.expressions.dsl.convertToString
+import org.maplibre.compose.expressions.dsl.div
+import org.maplibre.compose.expressions.dsl.feature
+import org.maplibre.compose.expressions.dsl.gt
+import org.maplibre.compose.expressions.dsl.gte
+import org.maplibre.compose.expressions.dsl.image
+import org.maplibre.compose.expressions.dsl.log2
+import org.maplibre.compose.expressions.dsl.lte
+import org.maplibre.compose.expressions.dsl.offset
+import org.maplibre.compose.expressions.dsl.plus
+import org.maplibre.compose.expressions.dsl.sp
+import org.maplibre.compose.expressions.dsl.zoom
+import org.maplibre.compose.expressions.value.TranslateAnchor
+import org.maplibre.compose.layers.CircleLayer
+import org.maplibre.compose.layers.SymbolLayer
+import org.maplibre.compose.sources.GeoJsonData
+import org.maplibre.compose.sources.GeoJsonOptions
+import org.maplibre.compose.sources.rememberGeoJsonSource
+import org.maplibre.compose.util.FeaturesClickHandler
+import org.maplibre.compose.util.MaplibreComposable
 
 /** Display pins on the map, e.g. quest pins or pins for recent edits */
-@MaplibreComposable @Composable
+@MaplibreComposable
+@Composable
 fun PinsLayers(
     pins: Collection<Pin>,
     onClickPin: FeaturesClickHandler? = null,

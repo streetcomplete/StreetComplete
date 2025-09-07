@@ -14,22 +14,23 @@ import de.westnordost.streetcomplete.screens.main.map2.isArea
 import de.westnordost.streetcomplete.screens.main.map2.isLines
 import de.westnordost.streetcomplete.screens.main.map2.isPoint
 import de.westnordost.streetcomplete.screens.main.map2.toGeometry
-import dev.sargunv.maplibrecompose.compose.MaplibreComposable
-import dev.sargunv.maplibrecompose.compose.layer.CircleLayer
-import dev.sargunv.maplibrecompose.compose.layer.FillLayer
-import dev.sargunv.maplibrecompose.compose.layer.LineLayer
-import dev.sargunv.maplibrecompose.compose.source.rememberGeoJsonSource
-import dev.sargunv.maplibrecompose.core.source.GeoJsonData
-import dev.sargunv.maplibrecompose.expressions.dsl.any
-import dev.sargunv.maplibrecompose.expressions.dsl.const
-import dev.sargunv.maplibrecompose.expressions.dsl.feature
-import dev.sargunv.maplibrecompose.expressions.value.LineCap
-import dev.sargunv.maplibrecompose.expressions.value.LineJoin
+import org.maplibre.compose.expressions.dsl.any
+import org.maplibre.compose.expressions.dsl.const
+import org.maplibre.compose.expressions.dsl.feature
+import org.maplibre.compose.expressions.value.LineCap
+import org.maplibre.compose.expressions.value.LineJoin
+import org.maplibre.compose.layers.CircleLayer
+import org.maplibre.compose.layers.FillLayer
+import org.maplibre.compose.layers.LineLayer
+import org.maplibre.compose.sources.GeoJsonData
+import org.maplibre.compose.sources.rememberGeoJsonSource
+import org.maplibre.compose.util.MaplibreComposable
 import kotlin.math.PI
 import kotlin.math.cos
 
 /** Display focused element geometry. */
-@MaplibreComposable @Composable
+@MaplibreComposable
+@Composable
 fun FocusedGeometryLayers(geometry: ElementGeometry) {
     // breathing effect for highlight
     val highlightTransition = rememberInfiniteTransition()

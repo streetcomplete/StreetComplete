@@ -14,14 +14,13 @@ import de.westnordost.streetcomplete.screens.main.map2.layers.SelectedPinsLayer
 import de.westnordost.streetcomplete.screens.main.map2.layers.StyleableOverlayLabelLayer
 import de.westnordost.streetcomplete.screens.main.map2.layers.StyleableOverlayLayers
 import de.westnordost.streetcomplete.screens.main.map2.layers.StyleableOverlaySideLayer
-import dev.sargunv.maplibrecompose.compose.CameraState
-import dev.sargunv.maplibrecompose.compose.MaplibreMap
-import dev.sargunv.maplibrecompose.compose.StyleState
-import dev.sargunv.maplibrecompose.compose.rememberCameraState
-import dev.sargunv.maplibrecompose.compose.rememberStyleState
-import dev.sargunv.maplibrecompose.core.BaseStyle
-import dev.sargunv.maplibrecompose.core.MapOptions
-import dev.sargunv.maplibrecompose.core.OrnamentOptions
+import org.maplibre.compose.camera.CameraState
+import org.maplibre.compose.camera.rememberCameraState
+import org.maplibre.compose.map.MapOptions
+import org.maplibre.compose.map.MaplibreMap
+import org.maplibre.compose.style.BaseStyle
+import org.maplibre.compose.style.StyleState
+import org.maplibre.compose.style.rememberStyleState
 
 /**
  * A plain MapLibre Map with StreetComplete theme and localized names

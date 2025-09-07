@@ -15,29 +15,30 @@ import de.westnordost.streetcomplete.screens.main.map2.isLines
 import de.westnordost.streetcomplete.screens.main.map2.isPoint
 import de.westnordost.streetcomplete.screens.main.map2.toGeometry
 import de.westnordost.streetcomplete.ui.theme.GeometryMarker
-import dev.sargunv.maplibrecompose.compose.MaplibreComposable
-import dev.sargunv.maplibrecompose.compose.layer.FillLayer
-import dev.sargunv.maplibrecompose.compose.layer.LineLayer
-import dev.sargunv.maplibrecompose.compose.layer.SymbolLayer
-import dev.sargunv.maplibrecompose.compose.source.rememberGeoJsonSource
-import dev.sargunv.maplibrecompose.core.source.GeoJsonData
-import dev.sargunv.maplibrecompose.expressions.dsl.any
-import dev.sargunv.maplibrecompose.expressions.dsl.const
-import dev.sargunv.maplibrecompose.expressions.dsl.convertToString
-import dev.sargunv.maplibrecompose.expressions.dsl.feature
-import dev.sargunv.maplibrecompose.expressions.dsl.image
-import dev.sargunv.maplibrecompose.expressions.dsl.offset
-import dev.sargunv.maplibrecompose.expressions.value.LineCap
-import dev.sargunv.maplibrecompose.expressions.value.LineJoin
-import dev.sargunv.maplibrecompose.expressions.value.SymbolAnchor
 import io.github.dellisd.spatialk.geojson.Feature
 import io.github.dellisd.spatialk.geojson.FeatureCollection
 import kotlinx.serialization.json.JsonElement
 import kotlinx.serialization.json.JsonPrimitive
+import org.maplibre.compose.expressions.dsl.any
+import org.maplibre.compose.expressions.dsl.const
+import org.maplibre.compose.expressions.dsl.convertToString
+import org.maplibre.compose.expressions.dsl.feature
+import org.maplibre.compose.expressions.dsl.image
+import org.maplibre.compose.expressions.dsl.offset
+import org.maplibre.compose.expressions.value.LineCap
+import org.maplibre.compose.expressions.value.LineJoin
+import org.maplibre.compose.expressions.value.SymbolAnchor
+import org.maplibre.compose.layers.FillLayer
+import org.maplibre.compose.layers.LineLayer
+import org.maplibre.compose.layers.SymbolLayer
+import org.maplibre.compose.sources.GeoJsonData
+import org.maplibre.compose.sources.rememberGeoJsonSource
+import org.maplibre.compose.util.MaplibreComposable
 
 /** Displays some generic geometry markers with an optional icon on the map. This is used to
  *  show the geometry of elements surrounding the selected quest */
-@MaplibreComposable @Composable
+@MaplibreComposable
+@Composable
 fun GeometryMarkersLayers(markers: Collection<Marker>) {
     val source = rememberGeoJsonSource(
         data = GeoJsonData.Features(FeatureCollection(markers.flatMap { it.toGeoJsonFeature() }))
