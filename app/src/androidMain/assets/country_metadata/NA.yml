@@ -1,0 +1,13 @@
+# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
+centerLineStyle: white
+defaultSpeedLimitHasUrbanOrRural: true
+edgeLineStyle: yellow
+hasLivingStreet: true
+isLeftHandTraffic: true
+livingStreetSignStyle: sadc
+mobileCountryCode: 649
+noParkingSignStyle: sadc
+noStoppingLineStyle: red
+noStoppingSignStyle: sadc
+officialLanguages: [en, af]
+orchardProduces: [grape, tomato, orange, date, chilli_pepper, sweet_pepper, guava, mango, mangosteen]

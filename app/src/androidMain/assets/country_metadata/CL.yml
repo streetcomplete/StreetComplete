@@ -1,0 +1,9 @@
+# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
+centerLineStyle: white
+defaultSpeedLimitHasUrbanOrRural: true
+mobileCountryCode: 730
+noEntrySignStyle: arrow
+noParkingSignStyle: mutcd latin
+noStoppingSignStyle: mutcd latin
+officialLanguages: [es]
+orchardProduces: [grape, walnut, cherry, apple, avocado, hazelnut, olive, cranberry, plum, peach, tomato, almond, kiwi, pear, lemon, lime]

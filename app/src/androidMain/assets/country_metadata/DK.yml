@@ -1,0 +1,20 @@
+# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
+advisoryCycleLaneStyle: white dashes without pictogram
+atmOperators: [Danske Bank, Nordea, Euronet, Sydbank, Arbejdernes Landsbank, Jyske Bank, Sparekassen Danmark, Spar Nord, Nokas, Djurslands Bank, Sparekassen Thy, Nordjyske Bank, Lån & Spar, Sparekassen Vendsyssel, Sparekassen Sjælland, Ringkøbing Landbobank, Nykredit, Nokas Verdihåndtering AS, Middelfart Sparekasse, Lån & Spar Bank, Jutlander Bank, Euronet Worldwide, Andelskassen, vestjysk bank, Vestjysk Bank, SparekassenThy, Sparekassen Sjælland-Fyn, Sparekassen Kronjylland, SparNord, Skjern Bank, Ringkjøbing Landbobank, Loomis, Kontanten, Handelsbanken, DKK]
+chargingStationOperators: [Clever, E.ON, OK, Norlys, Spirii, Circle K, Monta, EWII, E. On Danmark, Shell Recharge Solutions, Q8, Tesla, Sperto, E.On Danmark, E-On, 'Tesla, Inc.', Allego, CLEVER A/S, Uno-X, e-on, Merkur, Base2Charge, Clever A/S, Lidl, Ringkøbing-Skjern Kommune, eon, Ionity, Sønderborg Kommune, Shell, ChargePoint, Ø Strøm, Spirii Go, EON, Københavns Kommune, Eviny, e on, ViggoEnergy, Q8 Danmark, MoveAbout, EVlink, Drivee, Clever & E-on, CIRCLE K, Électricité de France, SEF, Hotel Fredericia, E-on, CLEVER, Aura, Aalborg Kommune]
+clothesContainerOperators: [Røde Kors, Dansk Røde Kors, Københavns Kommune, Red Barnet, Frelsens Hær, Kredsløb, Folkekirkens Nødhjælp, Red Cross, UFF, Trasborg, Røde kors, Humana, Blå Kors]
+defaultSpeedLimitHasUrbanOrRural: true
+exclusiveCycleLaneStyle: white
+hasAdvisoryCycleLane: true
+hasAdvisorySpeedLimitSign: true
+hasBicycleBoulevard: true
+hasLivingStreet: true
+hasSlowZone: true
+livingStreetSignStyle: vienna
+mobileCountryCode: 238
+officialLanguages: [da]
+orchardProduces: [apple, strawberry, pear, cherry, blueberry, plum, raspberry, tomato]
+parcelLockerBrand: [Pakkeboksen, PostNord, Instabox, instabox, Nærboks, postnord]
+postboxesHaveCollectionTimes: true
+slowZoneLabelPosition: bottom
+slowZoneLabelText: Zone

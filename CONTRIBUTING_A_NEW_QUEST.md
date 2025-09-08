@@ -72,11 +72,11 @@ Base the new quest on one that exists already.
 
 Find one that has the same type of interface as the one that you are trying to implement.
 
-Are you trying to implement a quest that will have a simple yes/no answer? Take the [`AddBusStopLit`](app/src/main/java/de/westnordost/streetcomplete/quests/bus_stop_lit/AddBusStopLit.kt) quest as a base. Or [`AddTracktype`](app/src/main/java/de/westnordost/streetcomplete/quests/tracktype/AddTracktype.kt) where the mapper will be selecting from one of some presented images.
+Are you trying to implement a quest that will have a simple yes/no answer? Take the [`AddBusStopLit`](app/src/androidMain/kotlin/de/westnordost/streetcomplete/quests/bus_stop_lit/AddBusStopLit.kt) quest as a base. Or [`AddTracktype`](app/src/androidMain/kotlin/de/westnordost/streetcomplete/quests/tracktype/AddTracktype.kt) where the mapper will be selecting from one of some presented images.
 
-If it is going to be asked for POIs and should be disabled by default, then [`AddWheelchairAccessBusiness`](app/src/main/java/de/westnordost/streetcomplete/quests/wheelchair_access/AddWheelchairAccessBusiness.kt) may be a good base.
+If it is going to be asked for POIs and should be disabled by default, then [`AddWheelchairAccessBusiness`](app/src/androidMain/kotlin/de/westnordost/streetcomplete/quests/wheelchair_access/AddWheelchairAccessBusiness.kt) may be a good base.
 
-Quests are grouped in [one folder](app/src/main/java/de/westnordost/streetcomplete/quests).
+Quests are grouped in [one folder](app/src/androidMain/kotlin/de/westnordost/streetcomplete/quests).
 
 Implementing a quest by duplicating and modifiying an existing one is the recommended method.
 
@@ -84,7 +84,7 @@ Implementing a quest by duplicating and modifiying an existing one is the recomm
 
 Search across the code for part of a question or other text specific to this quest. For example "the name of this place?".
 
-You will find an [XML file](app/src/main/res/values/strings.xml) with an entry looking like this:
+You will find an [XML file](app/src/androidMain/res/values/strings.xml) with an entry looking like this:
 
 ```xml
     <string name="quest_placeName_title">"What’s the name of this place?"</string>
@@ -92,7 +92,7 @@ You will find an [XML file](app/src/main/res/values/strings.xml) with an entry l
 
 The identifier `quest_placeName_title` is a string reference, used in the code to allow translations.
 
-Search for this identifier in `*.kt` files, it should appear in the quest file (in this case [AddPlaceName.kt](app/src/main/java/de/westnordost/streetcomplete/quests/place_name/AddPlaceName.kt)).
+Search for this identifier in `*.kt` files, it should appear in the quest file (in this case [AddPlaceName.kt](app/src/androidMain/kotlin/de/westnordost/streetcomplete/quests/place_name/AddPlaceName.kt)).
 
 This method can often be used to locate relevant code.
 
@@ -114,13 +114,13 @@ This can be also used to locate relevant code, especially helpful if some change
 
 # Copying
 
-Duplicate the relevant quest folder from [`app/src/main/java/de/westnordost/streetcomplete/quests`](app/src/main/java/de/westnordost/streetcomplete). Some contain multiple quests, in such case delete unnecessary files.
+Duplicate the relevant quest folder from [`app/src/androidMain/kotlin/de/westnordost/streetcomplete/quests`](app/src/androidMain/kotlin/de/westnordost/streetcomplete/quests). Some contain multiple quests, in such case delete unnecessary files.
 
 Some quests are entirely defined in a single file, some have additional answer class, custom interface or utility classes.
 
-For example, lets imagine that new quest will ask whether an [AED](https://wiki.openstreetmap.org/wiki/Tag:emergency%3Ddefibrillator) is placed indoors or outdoors. A very similar in mechanics quest with simple yes/no question is for example [quest asking "Is this bicycle parking covered (protected from rain)?"](app/src/main/java/de/westnordost/streetcomplete/quests/bike_parking_cover/AddBikeParkingCover.kt).
+For example, lets imagine that new quest will ask whether an [AED](https://wiki.openstreetmap.org/wiki/Tag:emergency%3Ddefibrillator) is placed indoors or outdoors. A very similar in mechanics quest with simple yes/no question is for example [quest asking "Is this bicycle parking covered (protected from rain)?"](app/src/androidMain/kotlin/de/westnordost/streetcomplete/quests/bike_parking_cover/AddBikeParkingCover.kt).
 
-So, as the first step: lets copy [`app/src/main/java/de/westnordost/streetcomplete/quests/bike_parking_cover/`](app/src/main/java/de/westnordost/streetcomplete/quests/bike_parking_cover) folder into `app/src/main/java/de/westnordost/streetcomplete/quests/defibrillator/`.
+So, as the first step: lets copy [`app/src/androidMain/kotlin/de/westnordost/streetcomplete/quests/bike_parking_cover/`](app/src/androidMain/kotlin/de/westnordost/streetcomplete/quests/bike_parking_cover) folder into `app/src/androidMain/kotlin/de/westnordost/streetcomplete/quests/defibrillator/`.
 
 This is done in [this commit](https://github.com/matkoniecz/StreetComplete_quest_creation_tutorial/commit/7d9ad571f521055a4c5a0006743762fd16e4c9d6) in the demonstration repository.
 
@@ -138,11 +138,11 @@ See [this step](https://github.com/matkoniecz/StreetComplete_quest_creation_tuto
 
 # Add the quest to the list of active ones
 
-Adjust [QuestsModule.kt](app/src/main/java/de/westnordost/streetcomplete/quests/QuestsModule.kt) file. It contains a big list of active quests, ordered by priority. Read [what governs their priority](app/src/main/java/de/westnordost/streetcomplete/quests/QuestsModule.kt#L217-L247) but do not worry too much, it can be tweaked later.
+Adjust [QuestsModule.kt](app/src/androidMain/kotlin/de/westnordost/streetcomplete/quests/QuestsModule.kt) file. It contains a big list of active quests, ordered by priority. Read [what governs their priority](app/src/androidMain/kotlin/de/westnordost/streetcomplete/quests/QuestsModule.kt#L217-L247) but do not worry too much, it can be tweaked later.
 
 Each quest is associated with a number in this list. These numbers are used to identify the quest uniquely and can be used to save presets as QR codes. When adding a new quest, use the next consecutive number that is not yet in the list. Put the quest in order of priority, even if it means the numbers are not sorted.
 
-You can use this command to get last used quest number (which you need to increment by one): `sed -ne 's/^ *\([0-9]\+\) .*$/\1/p' app/src/main/java/de/westnordost/streetcomplete/quests/QuestsModule.kt | sort -g | tail -n1`
+You can use this command to get last used quest number (which you need to increment by one): `sed -ne 's/^ *\([0-9]\+\) .*$/\1/p' app/src/androidMain/kotlin/de/westnordost/streetcomplete/quests/QuestsModule.kt | sort -g | tail -n1`
 
 Add your quest to the list so that it will be loaded by the app.
 
@@ -153,8 +153,6 @@ See [this step](https://github.com/matkoniecz/StreetComplete_quest_creation_tuto
 # Modify the template
 
 At this point the prepared template can be modified to achieve the intended effect.
-
-See for example [simple yes/no quest asking whether AED is indoor or outdoor](https://github.com/matkoniecz/StreetComplete_quest_creation_tutorial/blob/a9fd3efe96cbc6241b3b0f65d4a2be27f1c6afb8/app/src/main/java/de/westnordost/streetcomplete/quests/defibrillator/AddIsDefibrillatorIndoor.kt).
 
 ## Element selection
 
@@ -181,7 +179,7 @@ This query will be limited to objects which fulfill some requirements.
 - `and !indoor`
   - and `indoor` key must not be present at all, to show only ones where this tag is still missing
 
-See the documentation of [`ElementFilterExpression`](app/src/main/java/de/westnordost/streetcomplete/data/elementfilter/ElementFilterExpression.kt) for a complete documentation of the syntax. You can look around some quests to see more examples of such element filter expressions.
+See the documentation of [`ElementFilterExpression`](app/src/androidMain/kotlin/de/westnordost/streetcomplete/data/elementfilter/ElementFilterExpression.kt) for a complete documentation of the syntax. You can look around some quests to see more examples of such element filter expressions.
 
 
 See [this step](https://github.com/matkoniecz/StreetComplete_quest_creation_tutorial/commit/2726ff1c7b3121825e808c4566e6e534392121b3) in the example repository.
@@ -238,7 +236,7 @@ See [this step](https://github.com/matkoniecz/StreetComplete_quest_creation_tuto
 override val achievements = listOf(LIFESAVER)
 ```
 
-In quest achievements, list what is relevant to the given quest, see the full list of available ones in [AchievementsModule.kt](app/src/main/java/de/westnordost/streetcomplete/data/user/achievements/AchievementsModule.kt)
+In quest achievements, list what is relevant to the given quest, see the full list of available ones in [AchievementsModule.kt](app/src/androidMain/kotlin/de/westnordost/streetcomplete/data/user/achievements/AchievementsModule.kt)
 
 See [this step](https://github.com/matkoniecz/StreetComplete_quest_creation_tutorial/commit/f043440b43ad84d321c7aae4fd03095c34af8eb4) in the example repository.
 
@@ -250,7 +248,7 @@ override fun getTitle(tags: Map<String, String>) = R.string.quest_is_defibrillat
 
 It is a message displayed to the user, code here passes a [reference](https://developer.android.com/guide/topics/resources/string-resource) to the string. You can change it to the new, not yet existing one and use a built in tool to place text.
 
-Actual strings sit in [app/src/main/res/values/strings.xml](app/src/main/res/values/strings.xml)
+Actual strings sit in [app/src/androidMain/res/values/strings.xml](app/src/androidMain/res/values/strings.xml)
 
 There are separate files with translated text, but do not worry about it - [translations are handled separately](CONTRIBUTING.md#translating-the-app).
 
@@ -266,11 +264,11 @@ Form defines the interface used by mappers.
 
 In this case, the simplest possible form is used.
 
-But sometimes more complex ones are needed, see for example [AddBridgeStructure.kt](app/src/main/java/de/westnordost/streetcomplete/quests/bridge_structure/AddBridgeStructure.kt)
+But sometimes more complex ones are needed, see for example [AddBridgeStructure.kt](app/src/androidMain/kotlin/de/westnordost/streetcomplete/quests/bridge_structure/AddBridgeStructure.kt)
 
 `override fun createForm() = AddBridgeStructureForm()`
 
-With the form defined in [AddBridgeStructureForm](app/src/main/java/de/westnordost/streetcomplete/quests/bridge_structure/AddBridgeStructureForm.kt)
+With the form defined in [AddBridgeStructureForm](app/src/androidMain/kotlin/de/westnordost/streetcomplete/quests/bridge_structure/AddBridgeStructureForm.kt)
 
 ## applyAnswerTo
 
@@ -311,7 +309,7 @@ override fun getHighlightedElements(element: Element, getMapData: () -> MapDataW
 
 which causes nearby `emergency = defibrillator` nodes to be shown.
 
-Also [see other optional properties](app/src/main/java/de/westnordost/streetcomplete/data/osm/osmquests/OsmElementQuestType.kt).
+Also [see other optional properties](app/src/androidMain/kotlin/de/westnordost/streetcomplete/data/osm/osmquests/OsmElementQuestType.kt).
 
 See [this step](https://github.com/matkoniecz/StreetComplete_quest_creation_tutorial/commit/1d648e56562d16a5dc3588ca7de8558f97d5919a) in the example repository.
 
@@ -435,7 +433,7 @@ Article about [null safety related syntax](https://kotlinlang.org/docs/null-safe
 As mentioned, the user interface must leave no space for misunderstandings, it must be concise and quick and easy to use. Also sounds obvious, but you will quickly find out that a balance must be found between covering all the edge cases and designing the form to be as straightforward and clutterless as possible.
 
 - Design the main form clutter-free so that it is straightforward for the majority of use cases.
-- Allow to answer popular edge cases, but don't clutter up the main form with that. A good pattern is to move such answers into the "Uh..." (otherAnswers) menu. E.g. look at the [opening hours quest](app/src/main/java/de/westnordost/streetcomplete/quests/opening_hours/AddOpeningHoursForm.kt#L45-L53). That menu should also be used when user might have doubts on how to answer a specific situation.
+- Allow to answer popular edge cases, but don't clutter up the main form with that. A good pattern is to move such answers into the "Uh..." (otherAnswers) menu. E.g. look at the [opening hours quest](app/src/androidMain/kotlin/de/westnordost/streetcomplete/quests/opening_hours/AddOpeningHoursForm.kt#L45-L53). That menu should also be used when user might have doubts on how to answer a specific situation.
 - Don't rely on the "leave a note" fallback too much. It is not intended and does not work as a regular answer but is designed to cover the case that the question was invalid itself because it was based on wrong data like i.e. the place does not exist anymore.
 - The information the user should fill in should be as atomic as possible. Users are impatient, i.e. do not let them fill out a whole address with street name etc. when just the house number is fine too.
 - "A picture is worth a thousand words": Often the term for certain things may not be enough to convey the meaning of certain predefined answers. Do you know what a wheelbender is? You will know if you see the photo.
@@ -458,10 +456,10 @@ Images should be free of visual debris, not misleading. Though it is fine to use
 
 Photos go to a different folder than SVGs: they can be used directly by the build process so put them into folders
 
-- [mdpi](app/src/main/res/drawable-mdpi) - 384 pixels for images, with three square images in each row it would be 128 x 128 pixels for each)
-- [hdpi](app/src/main/res/drawable-hdpi) - 576 pixels for images (192 x 192 pixels in case of three square images in each row)
-- [xhdpi](app/src/main/res/drawable-xhdpi) - 768 pixels for images (256 x 256 pixels in case of three square images in each row)
-- [xxhdpi](app/src/main/res/drawable-xxhdpi) - 1152 pixels (384 x 384 pixels in case of three square images in each row)
+- [mdpi](app/src/androidMain/res/drawable-mdpi) - 384 pixels for images, with three square images in each row it would be 128 x 128 pixels for each)
+- [hdpi](app/src/androidMain/res/drawable-hdpi) - 576 pixels for images (192 x 192 pixels in case of three square images in each row)
+- [xhdpi](app/src/androidMain/res/drawable-xhdpi) - 768 pixels for images (256 x 256 pixels in case of three square images in each row)
+- [xxhdpi](app/src/androidMain/res/drawable-xxhdpi) - 1152 pixels (384 x 384 pixels in case of three square images in each row)
 
 Each of these folders should hold the same image resized to a different resolution. While testing various images it is enough to put one into any of the folders.
 
@@ -471,13 +469,13 @@ Please make sure that the images do not take too much disk space. Most useful wa
 
 [GIMP](https://gimp.org/) allows such previews while saving JPG files, and there are also online tools like [squoosh](https://squoosh.app/) which allow for quick visual comparison if you prefer that.
 
-After adding a photo, remember to update [the credits file](app/src/main/res/authors.txt) (different to the one for icons).
+After adding a photo, remember to update [the credits file](app/src/androidMain/res/authors.txt) (different to the one for icons).
 
 ## Resurvey
 
 Some quests are asked not only when a tag is missing but also when it is likely to be outdated. To achieve this `elementFilter` needs to query not only elements missing some tags.
 
-Typical code is in [quest asking about motorcycle parking capacity](app/src/main/java/de/westnordost/streetcomplete/quests/motorcycle_parking_capacity/AddMotorcycleParkingCapacity.kt):
+Typical code is in [quest asking about motorcycle parking capacity](app/src/androidMain/kotlin/de/westnordost/streetcomplete/quests/motorcycle_parking_capacity/AddMotorcycleParkingCapacity.kt):
 
 ```kotlin
 override val elementFilter = """
@@ -510,15 +508,15 @@ Matches like `surface ~ earth|dirt|ground` are possible and are evaluated as "`s
 `access !~ private|no` will be evaluated to "`access` is neither `private` nor `no`"
 
 
-But using regexp like `surface ~ ^(.*)[0-9]$` is [also possible](app/src/test/java/de/westnordost/streetcomplete/data/elementfilter/filters/ElementFilterOverpassKtTest.kt#L79-L88).
+But using regexp like `surface ~ ^(.*)[0-9]$` is [also possible](app/src/commonTest/kotlin/de/westnordost/streetcomplete/data/elementfilter/filters/ElementFilterOverpassKtTest.kt#L79-L88).
 
-It is possible to check for [age of elements](app/src/main/java/de/westnordost/streetcomplete/quests/construction/MarkCompletedHighwayConstruction.kt#L14-L18) or implement a [fully custom tag parsing](app/src/main/java/de/westnordost/streetcomplete/quests/opening_hours/AddOpeningHours.kt#L144-L159), still combined with filter syntax.
+It is possible to check for [age of elements](app/src/androidMain/kotlin/de/westnordost/streetcomplete/quests/construction/MarkCompletedHighwayConstruction.kt#L14-L18) or implement a [fully custom tag parsing](app/src/androidMain/kotlin/de/westnordost/streetcomplete/quests/opening_hours/AddOpeningHours.kt#L144-L159), still combined with filter syntax.
 
-It is possible to share and reuse [information about tagging schemes](app/src/main/java/de/westnordost/streetcomplete/quests/surface/AddRoadSurface.kt#L28).
+It is possible to share and reuse [information about tagging schemes](app/src/androidMain/kotlin/de/westnordost/streetcomplete/quests/surface/AddRoadSurface.kt#L28).
 
-(this info is gathered [here](app/src/main/java/de/westnordost/streetcomplete/osm))
+(this info is gathered [here](app/src/androidMain/kotlin/de/westnordost/streetcomplete/osm))
 
-Even more complex ones using different class bases are possible. Such as what was needed by the [address quest](app/src/main/java/de/westnordost/streetcomplete/quests/address/AddAddressStreet.kt) or the [crossing quest](app/src/main/java/de/westnordost/streetcomplete/quests/crossing/AddCrossing.kt) but it is better to start from something simpler.
+Even more complex ones using different class bases are possible. Such as what was needed by the [address quest](app/src/androidMain/kotlin/de/westnordost/streetcomplete/quests/address/AddAddressStreet.kt) or the [crossing quest](app/src/androidMain/kotlin/de/westnordost/streetcomplete/quests/crossing/AddCrossing.kt) but it is better to start from something simpler.
 
 It allows it to make complex geometry checks, but writing them is also far more complex.
 
@@ -526,9 +524,9 @@ It allows it to make complex geometry checks, but writing them is also far more 
 
 Some quests should be enabled only in some countries or disabled in a specific countries.
 
-[`override val enabledInCountries = NoCountriesExcept("SE")`](app/src/main/java/de/westnordost/streetcomplete/quests/accepts_cash/AddAcceptsCash.kt) - enabled only in Sweden.
+[`override val enabledInCountries = NoCountriesExcept("SE")`](app/src/androidMain/kotlin/de/westnordost/streetcomplete/quests/accepts_cash/AddAcceptsCash.kt) - enabled only in Sweden.
 
-[`override val enabledInCountries = AllCountriesExcept("US", "CA")`](app/src/main/java/de/westnordost/streetcomplete/quests/address/AddHousenumber.kt) - not enabled in USA or Canada
+[`override val enabledInCountries = AllCountriesExcept("US", "CA")`](app/src/androidMain/kotlin/de/westnordost/streetcomplete/quests/address/AddHousenumber.kt) - not enabled in USA or Canada
 
 ## `defaultDisabledMessage`
 
@@ -548,7 +546,7 @@ For nodes within ways, the node will remain and tags will be removed.
 ## `hint` & `hintImages` (info button)
 
 When there are doubts on the question itself (terms used, etc.), how to answer or how to find the answer, more information can be provided via info button text & images.
-Examples for such info button would be explanation of what is halal, what is [tactile paving](app/src/main/java/de/westnordost/streetcomplete/quests/tactile_paving/AddTactilePavingBusStop.kt#L33-L38), what is a sanitary dump station, when a level counts as a roof level and when as a normal level, explanation of the street side puzzle UI, etc.
+Examples for such info button would be explanation of what is halal, what is [tactile paving](app/src/androidMain/kotlin/de/westnordost/streetcomplete/quests/tactile_paving/AddTactilePavingBusStop.kt#L33-L38), what is a sanitary dump station, when a level counts as a roof level and when as a normal level, explanation of the street side puzzle UI, etc.
 
 Instructions for answering the quest should instead be directly visible either in the quest title or a label on the form always shown with the answers. For example, when asked for the name of a road, a label instructs the user to expand abbreviated road names. When asked about whether a restaurant offers vegetarian options, it is clarified that one should only answer "yes" if these are proper options (not just a salad or whatever).
 
@@ -556,4 +554,4 @@ For doubts on how to answer specific situations, like e.g. when asked for the op
 
 ## Per-country quest behaviour modification
 
-While quests should generally be tailored to function in whole world similarly, if really needed one can use `countryInfo` to modify behaviour of the quest in specific country, see e.g. [AddTrafficSignalsVibrationForm.kt](app/src/main/java/de/westnordost/streetcomplete/quests/traffic_signals_vibrate/AddTrafficSignalsVibrationForm.kt) for example usage.
+While quests should generally be tailored to function in whole world similarly, if really needed one can use `countryInfo` to modify behaviour of the quest in specific country, see e.g. [AddTrafficSignalsVibrationForm.kt](app/src/androidMain/kotlin/de/westnordost/streetcomplete/quests/traffic_signals_vibrate/AddTrafficSignalsVibrationForm.kt) for example usage.

@@ -16,14 +16,11 @@ import java.net.URL
  *  all because they exist only in select countries and the user will only be editing usually in one
  *  country per session anyways. */
 open class UpdateNsiPresetsTask : DefaultTask() {
-    @get:Input var targetDir: String? = null
-    @get:Input var version: String? = null
+    @get:Input lateinit var targetDir: String
+    @get:Input lateinit var version: String
 
     @TaskAction
     fun run() {
-        val targetDir = targetDir ?: return
-        val version = version ?: return
-
         val presetsUrl = URL("https://raw.githubusercontent.com/osmlab/name-suggestion-index/$version/dist/presets/nsi-id-presets.min.json")
         val nsiPresetsJson = Parser.default().parse(presetsUrl.openStream()) as JsonObject
         /* NSI uses (atm) a slightly different format than the normal presets: The presets are in
@@ -39,8 +36,23 @@ open class UpdateNsiPresetsTask : DefaultTask() {
         // remove presets with locationSets that cannot be parsed by osmfeatures library
         presets.values.retainAll { value ->
             val locationSet = (value as JsonObject)["locationSet"] as? JsonObject
-            val include = locationSet?.get("include") as? JsonArray<*>
-            val exclude = locationSet?.get("exclude") as? JsonArray<*>
+            val include = locationSet?.get("include") as? JsonArray<Any?>
+            val exclude = locationSet?.get("exclude") as? JsonArray<Any?>
+            // remove unsupported includes. This ensures that presets that are *also* shown in
+            // unsupported regions are at least shown in those that are supported (see #6267).
+            // But only if then at least one include is left (because no includes would mean
+            // "available everywhere").
+            if (include != null) {
+                val validIncludes = include.filter { countryCodeIsParsable(it) }
+                if (validIncludes != include && validIncludes.isNotEmpty()) {
+                    include.clear()
+                    include.addAll(validIncludes)
+                }
+            }
+            // ALL (remaining) includes and excludes must be parsable. E.g. a preset that should be
+            // available in all of USA except in a 50km radius around Whateverdale should be
+            // excluded completely, as the alternative would be to also show it in Whateverdale and
+            // that would be a problem (cause there is usually good reason why it was excluded)
             return@retainAll include.orEmpty().all { countryCodeIsParsable(it) }
                 && exclude.orEmpty().all { countryCodeIsParsable(it) }
         }

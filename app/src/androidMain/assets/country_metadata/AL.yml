@@ -1,0 +1,11 @@
+# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
+atmOperators: [Banka Kombëtare Tregtare, Raiffeisen Bank, OTP Bank, Union Bank, Fibank, Tirana Bank, Credins Bank, Intesa Sanpaolo, BKT, Euronet, otpbank, otp bank, Raiffeisenbank, ALPHA BANK]
+chargingStationOperators: [Lux Taxi, eMobility Albania, Clean Taxi, King Taxi, EVBox, ena]
+defaultSpeedLimitHasUrbanOrRural: true
+hasDailyAlternateSideParkingSign: true
+hasLivingStreet: true
+livingStreetSignStyle: vienna
+mobileCountryCode: 276
+officialLanguages: [sq]
+orchardProduces: [olive, grape, tomato, apple, chilli_pepper, sweet_pepper, plum, chestnut, hop, cherry, fig, peach, pear, lemon, lime, orange, date]
+postboxesHaveCollectionTimes: true

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- e.g. "Backstübchen :house number 123" -->
+    <string name="label_location_name">%2$s :%1$s</string>
+    <!-- e.g. "on floor 3 - house number 123 " -->
+    <string name="label_housenumber_location">%2$s- %1$s</string>
+    <!-- e.g. "(Fitness Centre) McFit" -->
+    <string name="label_name_feature">(%2$s) %1$s</string>
+    <!-- e.g. "Eastern white pine - Coniferous Tree" -->
+    <string name="label_feature_taxon">%2$s - %1$s</string>
+
+    <string name="quest_streetName_menuItem_language">%2$s – %1$s</string>
+</resources>
+
+<!-- TODO compose this would ideally be located in values-ldrtl/untranslatableStrings.xml or
+     similar, but this is not supported (yet):
+     https://youtrack.jetbrains.com/issue/CMP-8902/Resources-Support-qualifiers-for-writing-direction
+-->

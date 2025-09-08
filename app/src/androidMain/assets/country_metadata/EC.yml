@@ -1,0 +1,9 @@
+# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
+atmOperators: [Banco Pichincha, Banco Internacional, Banco de Guayaquil, Cooperativa de Ahorro y Credito 23 de Julio, Banco del Austro]
+centerLineStyle: yellow
+defaultSpeedLimitHasUrbanOrRural: true
+mobileCountryCode: 740
+noParkingSignStyle: mutcd latin
+noStoppingSignStyle: mutcd latin
+officialLanguages: [es, qu]
+orchardProduces: [cacao, banana, coffee, orange, guava, mango, mangosteen, rubber, lemon, lime, avocado, pineapple, papaya, agave, pear, coconut, chilli_pepper, sweet_pepper, pepper]

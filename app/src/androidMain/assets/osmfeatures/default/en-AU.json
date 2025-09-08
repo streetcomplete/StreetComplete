@@ -1,0 +1,844 @@
+{
+  "en-AU": {
+    "presets": {
+      "presets": {
+        "advertising/poster_box": {
+          "terms": "lollylop,snowshoe,city light"
+        },
+        "aerialway/zip_line": {
+          "name": "Flying Fox"
+        },
+        "aeroway/jet_bridge": {
+          "name": "Aerobridge"
+        },
+        "allotments/plot": {
+          "name": "Individual Allotment Plot"
+        },
+        "amenity/arts_centre": {
+          "name": "Arts Centre"
+        },
+        "amenity/bbq": {
+          "name": "Barbeque",
+          "terms": "bbq,grill,barbecue,barbeque",
+          "aliases": "BBQ"
+        },
+        "amenity/bicycle_parking/building": {
+          "name": "Bicycle Parking Building"
+        },
+        "amenity/cafe": {
+          "name": "Café",
+          "terms": "bistro,coffee,tea,cafe"
+        },
+        "amenity/cafe/bubble_tea": {
+          "name": "Bubble Tea Shop",
+          "terms": "boba,bubble milk tea,pearl milk tea,taiwanese tea drink,tapioca,pearl tea,boba drink,cafe"
+        },
+        "amenity/cafe/coffee_shop": {
+          "name": "Cafe",
+          "terms": "americano,cold brew,brew,cafe,café,caffe,caffè,cappuccino,cocoa,coffee shop,drip,espresso,flat white,hot drinks,latte,macchiato,tea"
+        },
+        "amenity/childcare": {
+          "name": "Childcare",
+          "aliases": "Daycare"
+        },
+        "amenity/clinic/dialysis": {
+          "name": "Dialysis Centre"
+        },
+        "amenity/community_centre": {
+          "name": "Community Centre"
+        },
+        "amenity/community_centre/lgbtq": {
+          "name": "LGBTQ+ Community Centre"
+        },
+        "amenity/community_centre/youth_centre": {
+          "name": "Youth Centre"
+        },
+        "amenity/conference_centre": {
+          "name": "Convention Centre"
+        },
+        "amenity/dive_centre": {
+          "name": "Dive Centre"
+        },
+        "amenity/doctors/general": {
+          "name": "General Practitioner"
+        },
+        "amenity/doctors/haematology": {
+          "name": "Haematologist"
+        },
+        "amenity/exhibition_centre": {
+          "name": "Exposition Centre"
+        },
+        "amenity/fast_food/donut": {
+          "name": "Doughnut Fast Food"
+        },
+        "amenity/fuel": {
+          "name": "Service Station",
+          "terms": "service station,petrol station",
+          "aliases": "Petrol Station"
+        },
+        "amenity/ice_cream/frozen_yogurt": {
+          "name": "Frozen Yoghurt Shop"
+        },
+        "amenity/internet_cafe": {
+          "name": "Internet Café",
+          "terms": "cybercafe,taxiphone,teleboutique,coffee,cafe,net,lanhouse,internet cafe"
+        },
+        "amenity/kindergarten": {
+          "name": "Preschool Grounds"
+        },
+        "amenity/parking": {
+          "name": "Car Park",
+          "terms": "automobile parking,car lot,parking lot,car parking,rv parking,truck parking,vehicle parking",
+          "aliases": "Parking Lot"
+        },
+        "amenity/parking/multi-storey": {
+          "name": "Multistorey Car Park",
+          "terms": "car,indoor parking,multistorey car park,parkade,parking building,parking deck,parking garage,parking ramp,parking structure,multilevel parking garage"
+        },
+        "amenity/parking/park_ride": {
+          "name": "Park & Ride Car Park",
+          "aliases": "Commuter Car Park"
+        },
+        "amenity/parking_entrance": {
+          "name": "Car Park Building Entrance / Exit",
+          "terms": "parking garage entrace/exit,parking garage entrace,parking garage exit,carpark entrance,car park entrance"
+        },
+        "amenity/payment_centre": {
+          "name": "Payment Centre"
+        },
+        "amenity/pharmacy": {
+          "name": "Pharmacy"
+        },
+        "amenity/post_box": {
+          "name": "Post Box"
+        },
+        "amenity/prep_school": {
+          "name": "Exam Preparation"
+        },
+        "amenity/ranger_station": {
+          "name": "Park Ranger Office"
+        },
+        "amenity/recycling_centre": {
+          "name": "Recycling Centre"
+        },
+        "amenity/restaurant/barbecue": {
+          "name": "Barbeque Restaurant",
+          "terms": "barbecue restaurant,barbeque restaurant,bar,bbq,canteen,dine,dining,dinner,drive-in,eat,grill,lunch,table"
+        },
+        "amenity/sanitary_dump_station": {
+          "name": "Caravan Toilet Disposal"
+        },
+        "amenity/shelter/public_transport": {
+          "name": "Public Transport Shelter"
+        },
+        "amenity/social_centre": {
+          "name": "Social Centre"
+        },
+        "amenity/social_facility/group_home": {
+          "name": "Retirement Home",
+          "terms": "old,senior,living,care home,assisted living,elderly,retirement,retire,aged care,aged"
+        },
+        "amenity/taxi": {
+          "name": "Taxi Rank"
+        },
+        "amenity/theatre": {
+          "name": "Theatre"
+        },
+        "amenity/theatre/type/amphi": {
+          "name": "Amphitheatre"
+        },
+        "amenity/toilets": {
+          "name": "Toilets",
+          "aliases": "Bathroom\nLavatory\nWater Closet\nRestroom"
+        },
+        "amenity/trolley_bay": {
+          "name": "Trolley Bay"
+        },
+        "amenity/vacuum_cleaner": {
+          "name": "Vehicle Vacuum Cleaning Station"
+        },
+        "amenity/vehicle_inspection": {
+          "terms": "car inspection,mot test,mot centre"
+        },
+        "amenity/vending_machine/elongated_coin": {
+          "name": "Elongated Coin Vending Machine"
+        },
+        "amenity/vending_machine/excrement_bags": {
+          "name": "Dog Poo Bag Dispenser",
+          "terms": "poo,excrement bags,poop,waste,dog,animal,pet"
+        },
+        "amenity/vending_machine/feminine_hygiene": {
+          "terms": "condom,tampon,pad,woman,women,menstrual hygiene products,personal care,rubber"
+        },
+        "amenity/vending_machine/fuel": {
+          "name": "Fuel vending machine"
+        },
+        "amenity/vending_machine/public_transport_tickets": {
+          "name": "Public Transport Ticket Vending Machine"
+        },
+        "amenity/vending_machine/sweets": {
+          "name": "Sweets Vending Machine",
+          "terms": "sweets,candy,lollies"
+        },
+        "amenity/waste_basket": {
+          "name": "Rubbish Bin"
+        },
+        "amenity/waste_disposal": {
+          "name": "Skip Bin"
+        },
+        "amenity/water_point": {
+          "terms": "water faucet,water point,water tap,water source,water spigot,rv drinking water,campervan drinking water"
+        },
+        "amenity/watering_place": {
+          "terms": "trough"
+        },
+        "amenity/weighbridge": {
+          "name": "Weighbridge",
+          "terms": "weigh station,truck scale",
+          "aliases": "Truck Scale"
+        },
+        "barrier/kerb": {
+          "name": "Kerb",
+          "terms": "curb"
+        },
+        "barrier/kerb/flush": {
+          "name": "Flush Kerb",
+          "terms": "flush curb,even curb,level curb,tactile curb,even kerb,level kerb,tactile kerb"
+        },
+        "barrier/kerb/lowered": {
+          "name": "Lowered Kerb",
+          "terms": "lowered curb,curb cut,kerb cut,kerb ramp,curb ramp,dropped kerb,pram ramp"
+        },
+        "barrier/kerb/raised": {
+          "name": "Raised Kerb",
+          "terms": "raised curb"
+        },
+        "barrier/kerb/rolled": {
+          "name": "Rolled Kerb",
+          "terms": "rolled curb"
+        },
+        "barrier/lift_gate": {
+          "name": "Lift gate"
+        },
+        "building/apartments": {
+          "terms": "flat building,flats"
+        },
+        "building/detached": {
+          "terms": "freestanding house"
+        },
+        "building/house/terraced": {
+          "name": "Terraced house"
+        },
+        "building/kindergarten": {
+          "name": "Preschool Building"
+        },
+        "building/pavilion": {
+          "terms": "sports,pavilion"
+        },
+        "building/riding_hall": {
+          "name": "Indoor Horse Riding Arena",
+          "aliases": "Indoor Riding Arena\nHorse Riding Hall"
+        },
+        "building/static_caravan": {
+          "name": "Static Caravan"
+        },
+        "building/terrace": {
+          "name": "Terraced Houses"
+        },
+        "club/sport": {
+          "terms": "athletics club,sporting club,sports association,sports society,sport club"
+        },
+        "craft/confectionery": {
+          "terms": "sweets,candy,lollies"
+        },
+        "emergency/fire_hose": {
+          "terms": "fire hose reel,fhr,riser,dry riser,standpipe,stand pipe"
+        },
+        "emergency/fire_service_inlet": {
+          "name": "Fire Brigade Connection"
+        },
+        "entrance/emergency_ward_entrance": {
+          "name": "Emergency Department Entrance"
+        },
+        "golf/bunker": {
+          "name": "Golf Bunker"
+        },
+        "healthcare/birthing_center": {
+          "name": "Birthing Centre"
+        },
+        "healthcare/blood_donation": {
+          "name": "Blood Donor Centre"
+        },
+        "healthcare/counselling": {
+          "name": "Counselling Centre"
+        },
+        "highway/bridleway": {
+          "name": "Bridleway"
+        },
+        "highway/cycleway/bicycle_foot": {
+          "name": "Shared Path",
+          "terms": "cycle & foot path,bicycle and foot path,bike and pedestrian path,green way,greenway,mixed-use trail,multi-use trail,segregated trail,shared path,shared use path,rail trail"
+        },
+        "highway/cycleway/crossing/bicycle_foot": {
+          "name": "Shared Path Crossing",
+          "terms": "cycle & foot crossing,bicycle and foot crosswalk,bike and pedestrian crossing,cycleway,cycling,cyclist"
+        },
+        "highway/cycleway/traffic_island_shared": {
+          "name": "Shared Path Refuge Island"
+        },
+        "highway/elevator": {
+          "name": "Lift",
+          "terms": "elevator"
+        },
+        "highway/elevator_line": {
+          "name": "Inclined Lift",
+          "terms": "inclined elevator,cable railway"
+        },
+        "highway/escape": {
+          "name": "Escape Lane"
+        },
+        "highway/footway": {
+          "name": "Walkway",
+          "terms": "foot path,footpath,path,track,hike,hiking,promenade,trackway,trail,walk",
+          "aliases": "Footpath"
+        },
+        "highway/footway/access_aisle": {
+          "terms": "access aisle,accessible van loading zone,disabled parking access zone,parking access zone,parking lot aisle,striped zone,tow zone,tow-away zone,towaway zone,wheelchair aisle"
+        },
+        "highway/footway/informal": {
+          "name": "Informal Walkway",
+          "aliases": "Informal Footpath"
+        },
+        "highway/footway/sidewalk": {
+          "name": "Footpath (alongside a road)",
+          "terms": "foot path,footpath,pavement,sidepath,sidewalk"
+        },
+        "highway/give_way": {
+          "name": "Give Way Sign",
+          "terms": "yield,sign"
+        },
+        "highway/living_street": {
+          "name": "Living Street",
+          "aliases": "Shared Zone"
+        },
+        "highway/milestone": {
+          "name": "Road Milestone"
+        },
+        "highway/path/crossing": {
+          "name": "Path Crossing"
+        },
+        "highway/path/crossing/traffic_signals": {
+          "name": "Path Crossing With Pedestrian Signals"
+        },
+        "highway/street_lamp": {
+          "name": "Street Light",
+          "terms": "streetlamp,street lamp,lamp,light,gaslight"
+        },
+        "highway/track": {
+          "name": "Track / Land-Access Road",
+          "terms": "fire trail",
+          "aliases": "Fire Trail\nManagement Trail"
+        },
+        "highway/traffic_signals": {
+          "name": "Traffic Lights",
+          "terms": "light,stoplight,traffic light,traffic signals"
+        },
+        "indoor/elevator": {
+          "name": "Indoor Lift Shaft"
+        },
+        "landuse/allotments": {
+          "name": "Allotment Garden"
+        },
+        "landuse/harbour": {
+          "name": "Harbour"
+        },
+        "landuse/military/range": {
+          "terms": "shooting range,shooting,range,gun,army,military,defence force"
+        },
+        "landuse/residential/apartments": {
+          "name": "Apartment Complex"
+        },
+        "leisure/adult_gaming_centre": {
+          "name": "Adult Gaming Centre"
+        },
+        "leisure/bandstand": {
+          "terms": "bandstand"
+        },
+        "leisure/bleachers": {
+          "name": "Stands"
+        },
+        "leisure/fitness_centre": {
+          "name": "Gym / Fitness Centre"
+        },
+        "leisure/fitness_station": {
+          "name": "Outdoor Exercise Equipment"
+        },
+        "leisure/horse_riding": {
+          "name": "Horseback Riding Centre"
+        },
+        "leisure/indoor_play": {
+          "name": "Indoor Play Centre"
+        },
+        "leisure/pitch/athletics": {
+          "name": "Athletics Pitch"
+        },
+        "leisure/pitch/equestrian": {
+          "name": "Horse Riding / Rodeo Arena"
+        },
+        "leisure/pitch/rugby_league": {
+          "name": "Rugby League Pitch"
+        },
+        "leisure/pitch/rugby_union": {
+          "name": "Rugby Union Pitch"
+        },
+        "leisure/pitch/soccer": {
+          "name": "Soccer Field"
+        },
+        "leisure/pitch/table_soccer": {
+          "name": "Table Football Table"
+        },
+        "leisure/slipway": {
+          "name": "Boat Ramp"
+        },
+        "leisure/sports_centre": {
+          "name": "Sports Centre / Complex"
+        },
+        "leisure/sports_centre/horse_racing": {
+          "name": "Horse Racecourse",
+          "aliases": "Hippodrome"
+        },
+        "leisure/track/athletics": {
+          "name": "Athletics runway"
+        },
+        "man_made/fuel_pump": {
+          "name": "Fuel Pump",
+          "terms": "petrol,fuel,gasoline,propane,diesel,lng,cng,biodiesel,gas pump"
+        },
+        "man_made/groyne": {
+          "name": "Groyne",
+          "terms": "groin"
+        },
+        "man_made/survey_point": {
+          "name": "Survey Marker"
+        },
+        "natural/cape": {
+          "terms": "point"
+        },
+        "natural/wetland/mangrove": {
+          "terms": "mangrove"
+        },
+        "office/employment_agency": {
+          "terms": "job,career,careers,vocational,vocation,occupation"
+        },
+        "office/estate_agent": {
+          "name": "Real Estate Agent"
+        },
+        "office/it": {
+          "terms": "computer,information,software,technology,tech,it,ict,information technology"
+        },
+        "office/union": {
+          "name": "Union Office"
+        },
+        "place/neighbourhood": {
+          "name": "Neighbourhood"
+        },
+        "place/suburb": {
+          "name": "Suburb"
+        },
+        "playground/slide": {
+          "name": "Slide",
+          "aliases": "Slippery Dip"
+        },
+        "playground/zipwire": {
+          "name": "Playground Flying Fox"
+        },
+        "power/line": {
+          "name": "High Voltage Power Line"
+        },
+        "public_transport/platform": {
+          "name": "Public Transport Platform"
+        },
+        "public_transport/platform/subway": {
+          "name": "Metro Train Platform",
+          "terms": "metro,platform,public transit,public transportation,rail,subway,track,transit,transportation,underground,tube"
+        },
+        "public_transport/platform/subway_point": {
+          "name": "Metro Train Stop / Platform"
+        },
+        "public_transport/platform_point": {
+          "name": "Public Transport Stop / Platform"
+        },
+        "public_transport/station": {
+          "name": "Public Transport Station"
+        },
+        "public_transport/station_subway": {
+          "name": "Metro Train Station"
+        },
+        "public_transport/stop_area": {
+          "name": "Public Transport Stop Area"
+        },
+        "public_transport/stop_position": {
+          "name": "Public Transport Stopping Location"
+        },
+        "public_transport/stop_position_subway": {
+          "name": "Metro Train Stopping Location"
+        },
+        "railway/rail": {
+          "terms": "railway"
+        },
+        "railway/subway": {
+          "name": "Metro Train Track"
+        },
+        "railway/subway_entrance": {
+          "name": "Metro Train Entrance"
+        },
+        "shop/alcohol": {
+          "name": "Bottle Shop (Alcohol Shop)",
+          "terms": "alcohol,beer,booze,wine,bottle shop,bottle o"
+        },
+        "shop/appliance": {
+          "name": "Appliance Shop"
+        },
+        "shop/art": {
+          "name": "Art Shop"
+        },
+        "shop/baby_goods": {
+          "name": "Baby Goods Shop"
+        },
+        "shop/bag": {
+          "name": "Bag/Luggage Shop"
+        },
+        "shop/bathroom_furnishing": {
+          "name": "Bathroom Furnishing Shop"
+        },
+        "shop/bed": {
+          "name": "Bed Shop"
+        },
+        "shop/beverages": {
+          "name": "Beverages Shop"
+        },
+        "shop/boat": {
+          "name": "Boat Shop"
+        },
+        "shop/books": {
+          "name": "Bookshop"
+        },
+        "shop/brewing_supplies": {
+          "name": "Brewing Supply Shop"
+        },
+        "shop/camera": {
+          "name": "Camera Equipment Shop"
+        },
+        "shop/car_parts": {
+          "name": "Car Parts Shop"
+        },
+        "shop/caravan": {
+          "name": "Caravan Dealership"
+        },
+        "shop/carpet": {
+          "name": "Carpet Shop"
+        },
+        "shop/catalogue": {
+          "name": "Catalogue Shop"
+        },
+        "shop/charity": {
+          "name": "Charity Shop"
+        },
+        "shop/cheese": {
+          "name": "Cheese Shop",
+          "terms": "cheesemonger"
+        },
+        "shop/chemist": {
+          "name": "Pharmacy",
+          "terms": "chemist"
+        },
+        "shop/chocolate": {
+          "name": "Chocolate Shop",
+          "terms": "chocolatier"
+        },
+        "shop/clothes": {
+          "name": "Clothing Shop"
+        },
+        "shop/clothes/second_hand": {
+          "name": "Secondhand Clothing Shop"
+        },
+        "shop/clothes/suits": {
+          "name": "Suit shop"
+        },
+        "shop/clothes/underwear": {
+          "name": "Underwear Shop"
+        },
+        "shop/clothes/wedding": {
+          "name": "Wedding Clothes Shop"
+        },
+        "shop/clothes/workwear": {
+          "name": "Workwear Shop"
+        },
+        "shop/coffee": {
+          "name": "Coffee Ingredients Store"
+        },
+        "shop/computer": {
+          "name": "Computer Shop"
+        },
+        "shop/confectionery": {
+          "name": "Sweet Shop",
+          "terms": "sweets,candy,lollies"
+        },
+        "shop/convenience": {
+          "name": "Convenience Store",
+          "terms": "dairy,superette,convenience store,convenience shop,corner store,corner shop"
+        },
+        "shop/copyshop": {
+          "name": "Copyshop"
+        },
+        "shop/cosmetics": {
+          "name": "Cosmetics Shop"
+        },
+        "shop/craft": {
+          "name": "Arts & Crafts Shop"
+        },
+        "shop/curtain": {
+          "name": "Curtain Shop"
+        },
+        "shop/dairy": {
+          "name": "Milk Product Shop"
+        },
+        "shop/deli": {
+          "name": "Delicatessen"
+        },
+        "shop/doityourself": {
+          "name": "DIY Shop"
+        },
+        "shop/electrical": {
+          "name": "Electrical Equipment Shop"
+        },
+        "shop/electronics": {
+          "name": "Electronics Shop"
+        },
+        "shop/erotic": {
+          "name": "Erotic Shop"
+        },
+        "shop/erotic/lgbtq": {
+          "name": "LGBTQ+ Erotic Shop"
+        },
+        "shop/fabric": {
+          "name": "Fabric Shop"
+        },
+        "shop/farm": {
+          "name": "Farm Shop"
+        },
+        "shop/fashion": {
+          "name": "Fashion Shop"
+        },
+        "shop/fashion_accessories": {
+          "name": "Fashion Accessories Shop"
+        },
+        "shop/fireplace": {
+          "name": "Fireplace Shop"
+        },
+        "shop/frozen_food": {
+          "name": "Frozen Food Shop"
+        },
+        "shop/furniture": {
+          "name": "Furniture Shop"
+        },
+        "shop/games": {
+          "name": "Tabletop Game Shop"
+        },
+        "shop/garden_centre": {
+          "name": "Garden Centre"
+        },
+        "shop/general": {
+          "name": "General Shop"
+        },
+        "shop/hairdresser": {
+          "terms": "barber"
+        },
+        "shop/hairdresser_supply": {
+          "name": "Hairdresser Supply Shop"
+        },
+        "shop/hardware": {
+          "name": "Hardware Shop"
+        },
+        "shop/health_food": {
+          "name": "Health Food Shop"
+        },
+        "shop/hearing_aids": {
+          "name": "Hearing Aids Shop"
+        },
+        "shop/hifi": {
+          "name": "Hifi Shop"
+        },
+        "shop/honey": {
+          "name": "Honey Shop"
+        },
+        "shop/houseware": {
+          "terms": "homeware,kitchenware,linen,crockery"
+        },
+        "shop/interior_decoration": {
+          "name": "Interior Decoration Shop"
+        },
+        "shop/jewelry": {
+          "name": "Jewellery Store"
+        },
+        "shop/kitchen": {
+          "name": "Kitchen Design Shop"
+        },
+        "shop/leather": {
+          "name": "Leather Shop"
+        },
+        "shop/lighting": {
+          "name": "Lighting Shop"
+        },
+        "shop/mall": {
+          "name": "Shopping Centre",
+          "terms": "mall,shopping center"
+        },
+        "shop/medical_supply": {
+          "name": "Medical Supply Shop"
+        },
+        "shop/military_surplus": {
+          "name": "Military Surplus Shop"
+        },
+        "shop/mobile_phone": {
+          "name": "Mobile Phone Shop"
+        },
+        "shop/music": {
+          "name": "Music Shop"
+        },
+        "shop/musical_instrument": {
+          "name": "Musical Instrument Shop"
+        },
+        "shop/newsagent": {
+          "name": "Newsagency"
+        },
+        "shop/nutrition_supplements": {
+          "name": "Nutrition Supplements Shop"
+        },
+        "shop/outdoor": {
+          "name": "Outdoors Shop"
+        },
+        "shop/paint": {
+          "name": "Paint Shop"
+        },
+        "shop/party": {
+          "name": "Party Supply Shop"
+        },
+        "shop/pasta": {
+          "name": "Pasta Shop"
+        },
+        "shop/pawnbroker": {
+          "name": "Pawnbroker"
+        },
+        "shop/perfumery": {
+          "name": "Perfume Shop"
+        },
+        "shop/pet": {
+          "name": "Pet Shop"
+        },
+        "shop/photo": {
+          "name": "Photography Shop"
+        },
+        "shop/pottery": {
+          "name": "Pottery Shop"
+        },
+        "shop/printer_ink": {
+          "name": "Printer Ink Shop"
+        },
+        "shop/pyrotechnics": {
+          "name": "Fireworks Shop"
+        },
+        "shop/radiotechnics": {
+          "name": "Radio/Electronic Component Shop"
+        },
+        "shop/religion": {
+          "name": "Religious Shop"
+        },
+        "shop/rice": {
+          "name": "Rice Shop"
+        },
+        "shop/second_hand": {
+          "name": "Secondhand shop"
+        },
+        "shop/shoes": {
+          "name": "Shoe Shop"
+        },
+        "shop/sports": {
+          "name": "Sporting Goods Shop"
+        },
+        "shop/stationery": {
+          "name": "Stationery Shop"
+        },
+        "shop/swimming_pool": {
+          "name": "Pool Supply Shop"
+        },
+        "shop/tea": {
+          "name": "Tea Shop (Retail)"
+        },
+        "shop/telecommunication": {
+          "name": "Telecom Retail Shop"
+        },
+        "shop/toys": {
+          "name": "Toy Shop"
+        },
+        "shop/tyres": {
+          "name": "Tyre Shop"
+        },
+        "shop/vacuum_cleaner": {
+          "name": "Vacuum Cleaner Shop"
+        },
+        "shop/variety_store": {
+          "name": "Discount shop"
+        },
+        "shop/video": {
+          "name": "Video/DVD Shop"
+        },
+        "shop/video_games": {
+          "name": "Video Games Shop"
+        },
+        "shop/wholesale": {
+          "name": "Wholesale Shop / Cash & Carry"
+        },
+        "shop/window_blind": {
+          "name": "Window Blind Shop"
+        },
+        "telecom/data_center": {
+          "name": "Data Centre"
+        },
+        "tourism/apartment": {
+          "name": "Holiday Apartment"
+        },
+        "tourism/camp_site": {
+          "name": "Camp Site"
+        },
+        "tourism/caravan_site": {
+          "name": "Caravan Site"
+        },
+        "tourism/chalet": {
+          "terms": "bach,crib"
+        },
+        "tourism/information/office": {
+          "name": "Visitor Centre"
+        },
+        "tourism/viewpoint": {
+          "name": "Lookout"
+        },
+        "type/public_transport/stop_area_group": {
+          "name": "Public Transport Stop Area Group"
+        },
+        "type/restriction/no_straight_on": {
+          "name": "No Straight On"
+        },
+        "type/restriction/only_straight_on": {
+          "name": "Straight On Only"
+        },
+        "type/route/horse": {
+          "name": "Horse Riding Route"
+        },
+        "type/route/subway": {
+          "name": "Metro Train Route"
+        }
+      }
+    }
+  }
+}

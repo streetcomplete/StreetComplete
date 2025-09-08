@@ -1,0 +1,7 @@
+# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
+atmOperators: [M&T Bank, Bank of America, Wells Fargo, PNC Bank, Truist, Chase, State Employees Credit Union, Bitstop, Fulton Bank, Navy Federal Credit Union, Capital One, SunTrust, Johns Hopkins Federal Credit Union, GetCoins, Freedom Federal Credit Union, APGFCU]
+chargingStationOperators: [ChargePoint, 'Tesla, Inc.', Volta, Blink, EVgo, Shell Recharge Solutions, SWTCH, BGE, Baltimore Gas and Electric, EVSmart, Electric Vehicle Institute, eVgo, Electrify America, EVCS, greenlots, Tesla, NRG Energy, Delmarva Power, SemaCharge, Ikea, EV Institute, BWI Airport]
+clothesContainerOperators: [Planet Aid, JJ Recycling]
+defaultSpeedLimitHasUrbanOrRural: true
+noStoppingLineStyle: yellow on curb
+parcelLockerBrand: [Amazon Hub, Amazon Locker]

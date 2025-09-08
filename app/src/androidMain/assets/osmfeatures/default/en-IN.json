@@ -1,0 +1,11 @@
+{
+  "en-IN": {
+    "presets": {
+      "presets": {
+        "amenity/theatre/type/amphi": {
+          "name": "Amphitheatre"
+        }
+      }
+    }
+  }
+}

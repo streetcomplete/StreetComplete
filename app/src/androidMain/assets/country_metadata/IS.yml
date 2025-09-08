@@ -1,0 +1,17 @@
+# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
+atmOperators: [Íslandsbanki, Arion banki, Landsbankinn, Hraðbanki, Arion Banki, Tomato, Landsbanki, Arionbanki]
+chargingStationOperators: [Orka náttúrunnar, Ísorka, eONE, Orkubú Vestfjarða, N1, 'Tesla, Inc.', Orkan, Tesla, Reykjavik, Orka Náttúrunnar, ON, Isorka]
+clothesContainerOperators: [Sorpa]
+edgeLineStyle: white dashes
+exclusiveCycleLaneStyle: white dashes
+hasAdvisoryCycleLane: false
+hasAdvisorySpeedLimitSign: false
+hasLivingStreet: true
+hasSlowZone: true
+livingStreetSignStyle: vienna
+mobileCountryCode: 274
+noEntrySignStyle: yellow
+officialLanguages: [is]
+orchardProduces: [tomato]
+parcelLockerBrand: [Pósturinn]
+postboxesHaveCollectionTimes: true

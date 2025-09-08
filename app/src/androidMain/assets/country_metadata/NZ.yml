@@ -1,0 +1,20 @@
+# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
+advisorySpeedLimitSignStyle: yellow
+centerLineStyle: white
+defaultSpeedLimitHasUrbanOrRural: true
+hasAdvisorySpeedLimitSign: true
+hasLivingStreet: true
+hasSlowZone: true
+isLeftHandTraffic: true
+livingStreetSignStyle: australia
+mobileCountryCode: 530
+noEntrySignStyle: no entry on white
+noParkingLineStyle: dashed yellow
+noParkingSignStyle: vienna variant
+noStoppingSignStyle: vienna
+officialLanguages: [en]
+orchardProduces: [grape, kiwi, apple, avocado, cherry, blueberry, peach, orange, tomato, apricot, walnut, plum, hop, lemon, lime, pear]
+popularReligions: [christian, hindu, buddhist]
+popularSports: [tennis, bowls, golf, netball, basketball, soccer, rugby, cricket]
+postboxesHaveCollectionTimes: true
+postboxesHaveRoyalCypher: false

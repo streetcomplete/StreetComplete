@@ -1,0 +1,10 @@
+# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
+centerLineStyle: yellow
+defaultSpeedLimitHasUrbanOrRural: true
+mobileCountryCode: 722
+noEntrySignStyle: default
+noParkingSignStyle: mutcd latin
+noStoppingSignStyle: mutcd latin
+officialLanguages: [es]
+orchardProduces: [grape, mate, olive, lemon, lime, tea, orange, pear, apple, plum, tomato, walnut, peach, banana, grapefruit, chilli_pepper, sweet_pepper]
+popularSports: [soccer, tennis, basketball, paddle_tennis, field_hockey, rugby]

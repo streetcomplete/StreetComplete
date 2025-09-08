@@ -1,0 +1,5 @@
+# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
+atmOperators: [Bank of America, Regions Bank, Regions, Fifth Third Bank, Truist, SunTrust, Heritage Bank, ORNL Federal Credit Union, Knoxville TVA Employees Credit Union, Fort Campbell Federal Credit Union, First Horizon Bank, Eastman Credit Union]
+chargingStationOperators: ['Tesla, Inc.', ChargePoint, NRG Energy, Electrify America, Blink]
+defaultSpeedLimitHasUrbanOrRural: true
+parcelLockerBrand: [Amazon Locker]
