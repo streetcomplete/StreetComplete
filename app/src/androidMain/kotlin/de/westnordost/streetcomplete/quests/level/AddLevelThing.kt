@@ -6,6 +6,7 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
@@ -15,6 +16,10 @@ import de.westnordost.streetcomplete.util.math.contains
 import de.westnordost.streetcomplete.util.math.isInMultipolygon
 
 class AddLevelThing : OsmElementQuestType<String>, AndroidQuest {
+
+    /* only nodes because ways/relations are not likely to be floating around freely in a mall
+     * outline */
+    private val filter by lazy { "nodes with !level".toElementFilterExpression() }
 
     /* including any kind of public transport station because even really large bus stations feel
      * like small airport terminals, like Mo Chit 2 in Bangkok*/
@@ -43,30 +48,27 @@ class AddLevelThing : OsmElementQuestType<String>, AndroidQuest {
             .mapNotNull { mapData.getGeometry(it.type, it.id) as? ElementPolygonsGeometry }
         if (mallGeometries.isEmpty()) return emptyList()
 
-        // get all elements that have level tagged
-        val thingsWithLevel = mapData.filter { thingsWithLevelFilter.matches(it) }
-        if (thingsWithLevel.isEmpty()) return emptyList()
-
-        val multiLevelMallGeometries = getMultiLevelMallGeometries(mallGeometries, thingsWithLevel, mapData)
+        val multiLevelMallGeometries = getMultiLevelMallGeometries(mallGeometries, mapData)
         if (multiLevelMallGeometries.isEmpty()) return emptyList()
 
         // now, return all things that have no level tagged and are inside those multi-level malls
-        val elementsWithoutLevel = mapData
-            .filter { filter.matches(it) && it.isThing() }
+        val thingsWithoutLevel = mapData
+            .filter(filter)
+            .filter { it.isThing() }
             .toMutableList()
-        if (elementsWithoutLevel.isEmpty()) return emptyList()
+        if (thingsWithoutLevel.isEmpty()) return emptyList()
 
         val result = mutableListOf<Element>()
 
         for (mallGeometry in multiLevelMallGeometries) {
-            val it = elementsWithoutLevel.iterator()
+            val it = thingsWithoutLevel.iterator()
             while (it.hasNext()) {
-                val element = it.next()
-                val pos = mapData.getGeometry(element.type, element.id)?.center ?: continue
+                val thing = it.next()
+                val pos = mapData.getGeometry(thing.type, thing.id)?.center ?: continue
                 if (!mallGeometry.bounds.contains(pos)) continue
                 if (!pos.isInMultipolygon(mallGeometry.polygons)) continue
 
-                result.add(element)
+                result.add(thing)
                 it.remove() // thing can only be in one mall
             }
         }
