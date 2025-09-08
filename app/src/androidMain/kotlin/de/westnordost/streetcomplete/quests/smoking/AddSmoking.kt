@@ -10,6 +10,8 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.isPlaceOrDisusedPlace
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.default_disabled_msg_go_inside_regional_warning
 
 class AddSmoking : OsmFilterQuestType<SmokingAllowed>(), AndroidQuest {
     /*
@@ -44,7 +46,7 @@ class AddSmoking : OsmFilterQuestType<SmokingAllowed>(), AndroidQuest {
     override val icon = R.drawable.ic_quest_smoking
     override val isReplacePlaceEnabled = true
     override val achievements = listOf(CITIZEN)
-    override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside_regional_warning
+    override val defaultDisabledMessage = Res.string.default_disabled_msg_go_inside_regional_warning
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_smoking_title2
 

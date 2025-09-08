@@ -17,6 +17,7 @@ class AddDrinkingWater : OsmFilterQuestType<DrinkingWater>(), AndroidQuest {
           man_made = water_tap
           or man_made = water_well
           or natural = spring
+          or amenity = fountain and fountain = stone_block
         )
         and access !~ private|no and indoor != yes
         and !drinking_water
@@ -52,7 +53,18 @@ class AddDrinkingWater : OsmFilterQuestType<DrinkingWater>(), AndroidQuest {
     override fun createForm() = AddDrinkingWaterForm()
 
     override fun applyAnswerTo(answer: DrinkingWater, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
-        tags["drinking_water"] = answer.osmValue
-        answer.osmLegalValue?.let { tags["drinking_water:legal"] = it }
+        when (answer) {
+            DrinkingWater.POTABLE_SIGNED -> {
+                tags["drinking_water"] = "yes"
+                tags["drinking_water:legal"] = "yes"
+            }
+            DrinkingWater.NOT_POTABLE_SIGNED -> {
+                tags["drinking_water"] = "no"
+                tags["drinking_water:legal"] = "no"
+            }
+            DrinkingWater.UNSIGNED -> {
+                tags["drinking_water:signed"] = "no"
+            }
+        }
     }
 }

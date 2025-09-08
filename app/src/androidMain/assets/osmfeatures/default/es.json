@@ -257,6 +257,10 @@
           "name": "Cafetería",
           "terms": "americano,cerveza,café,capuchino,cacao,cafetería,goteo,espresso,bebidas calientes,café con leche,macchiato,té,latte"
         },
+        "amenity/cafe/teahouse": {
+          "name": "Casa de té",
+          "terms": "salón de té,tetería,establecimiento de té"
+        },
         "amenity/car_pooling": {
           "name": "Estación de vehículo compartido (Carpooling)",
           "terms": "vehículo compartido,auto compartido,carro compartido,coche compartido,carpooling"
@@ -1894,6 +1898,18 @@
           "name": "Sección del cementerio",
           "terms": "cementerio,cementerio de la iglesia,columbario,mausoleo,tumba"
         },
+        "climbing/crag": {
+          "name": "Zona de escalada",
+          "terms": "zona de escalada,sector de escalada"
+        },
+        "climbing/route": {
+          "name": "Ruta de escalada",
+          "terms": "ruta de escalada,vía de escalada,recorrido de escalada"
+        },
+        "climbing/route_bottom": {
+          "name": "Inicio de la ruta de escalada",
+          "terms": "inicio de la ruta de escalada,punto de inicio,comienzo de la vía"
+        },
         "club": {
           "name": "Clubs",
           "terms": "asociación,logia,social,voluntariado,servicio,religioso,político,intercambio,cultural,deportivo,caridad,radio,arte,astronomía,juegos,ajedrez,bicicleta,cine,cocina,gastronomía,fan,anime,música,pesca,linux,caza,motocicletas,nudismo,veteranos"
@@ -2804,6 +2820,10 @@
           "name": "Lugar histórico",
           "terms": "lugar histórico,sitio histórico"
         },
+        "historic/aircraft": {
+          "name": "Aeronave histórica",
+          "terms": "avión antiguo,aeronave de época,avión histórico"
+        },
         "historic/archaeological_site": {
           "name": "Yacimiento arqueológico",
           "terms": "sitio arqueológico,yacimiento arqueológico"
@@ -2851,6 +2871,10 @@
         "historic/memorial": {
           "name": "Monumento conmemorativo",
           "terms": "monumento conmemorativo,memorial,estatua,busto"
+        },
+        "historic/memorial/blue_plaque-GB-IE": {
+          "name": "Placa azul",
+          "terms": "placa conmemorativa azul,placa histórica,señal azul histórica"
         },
         "historic/memorial/plaque": {
           "name": "Placa conmemorativa",
@@ -6327,6 +6351,10 @@
           "name": "Ruta de bus",
           "terms": "ruta de autobús,ruta de bus,línea de autobús,recorrido,trayecto,itinerario,autobus,autobús,bus,buses,colectivo,micro,guagua,recorrido de bus"
         },
+        "type/route/climbing": {
+          "name": "Ruta de escalada",
+          "terms": "ruta de escalada,vía de escalada,recorrido de escalada"
+        },
         "type/route/detour": {
           "name": "Ruta de desvío",
           "terms": "ruta de desvío,dirección alternativa,alternativa,ruta,itinerario alternativo"
@@ -6402,6 +6430,14 @@
         "type/site": {
           "name": "Sitio",
           "terms": "sitio,lugar,zona,emplazamiento,terreno,instalación,espacio,área"
+        },
+        "type/site/climbing/area": {
+          "name": "Área de escalada",
+          "terms": "área de escalada,zona de escalada,sector de escalada"
+        },
+        "type/site/climbing/crag": {
+          "name": "Zona de escalada",
+          "terms": "zona de escalada,sector de escalada"
         },
         "type/waterway": {
           "name": "Vía fluvial",

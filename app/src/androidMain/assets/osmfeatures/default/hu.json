@@ -2514,6 +2514,9 @@
           "name": "Emlékmű",
           "terms": "emlékhely"
         },
+        "historic/memorial/blue_plaque-GB-IE": {
+          "name": "Kék tábla"
+        },
         "historic/memorial/plaque": {
           "name": "Emléktábla"
         },

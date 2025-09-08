@@ -257,6 +257,10 @@
           "name": "コーヒー専門店",
           "terms": "コーヒー専門店,珈琲専門店,喫茶店,カフェ,珈琲,コーヒー"
         },
+        "amenity/cafe/teahouse": {
+          "name": "ティールーム",
+          "terms": "ティーハウス,茶屋"
+        },
         "amenity/car_pooling": {
           "name": "カープール",
           "terms": "カープール,レンタカー"
@@ -2808,6 +2812,10 @@
           "name": "史跡",
           "terms": "史跡,歴史的建造物,歴史"
         },
+        "historic/aircraft": {
+          "name": "歴史的飛行機",
+          "terms": "歴史的航空機,歴史的飛行機"
+        },
         "historic/archaeological_site": {
           "name": "遺跡",
           "terms": "遺跡,貝塚,古墳,史跡,歴史"
@@ -2855,6 +2863,9 @@
         "historic/memorial": {
           "name": "記念碑",
           "terms": "記念碑,石碑,石仏,像,歴史,銅像,彫刻,公園"
+        },
+        "historic/memorial/blue_plaque-GB-IE": {
+          "name": "ブルー・プラーク"
         },
         "historic/memorial/plaque": {
           "name": "銘板",

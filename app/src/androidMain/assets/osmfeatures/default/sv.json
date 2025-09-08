@@ -257,6 +257,10 @@
           "name": "Kaffehus",
           "terms": "kaffehus,café,americano,bryggkaffe,cappuccino,kakao,kaffe,espresso,varma drycker,latte,macchiato,te,kaffeaffär,kaffeshop"
         },
+        "amenity/cafe/teahouse": {
+          "name": "Tehus",
+          "terms": "tesalong,tearum,tehus,tebod,tebar,tecafé,te,svart te,grönt te,gult te,vitt te,oolong-te,varma drycker,the,thehus,thesalong,thebar"
+        },
         "amenity/car_pooling": {
           "name": "Bilpoolstation",
           "terms": "bilpoolstation,bilpool,bildelning,hyrbil,lånebil"
@@ -1895,6 +1899,18 @@
           "name": "Kyrkogårdssektionen",
           "terms": "kyrkogårdssektionen,begravningsplats,kyrkogård,gravgård,mausoleum,grav,kvarte,sektion,område,gravområde,gravsektion"
         },
+        "climbing/crag": {
+          "name": "Klätterklippa",
+          "terms": "klätterklippa,klippa,klättring,klättervägg,klätterberg,klippvägg,klipphäll,klippformation,klätterområde,sportklättring,tradklättring,bouldering,klätterställe"
+        },
+        "climbing/route": {
+          "name": "Klätterled",
+          "terms": "klättring,klippklättring,klätterled,sportklättring,klättertur,klätterlinje,klätterväg,klätterproblem,led"
+        },
+        "climbing/route_bottom": {
+          "name": "Startpunkt för klätterled",
+          "terms": "klätterled,sportklättring,ledstart,startpunkt,start för klättring,klätterområde,klätterklippa"
+        },
         "club": {
           "name": "Klubb",
           "terms": "klubb,socialt,förening,klubblokal,föreningslokal,sällskap,sammanslutning"
@@ -2805,6 +2821,10 @@
           "name": "Historisk plats",
           "terms": "historisk plats,historia,arv,historik"
         },
+        "historic/aircraft": {
+          "name": "Historiskt flygplan",
+          "terms": "historiskt flygplan,veteranflygplan,museiflygplan,flyghistoriskt objekt,gate guardian,utställt flygplan,flygplansmonument"
+        },
         "historic/archaeological_site": {
           "name": "Arkeologisk plats",
           "terms": "arkeologisk plats,arkeologi,utgrävning,historisk plats,historia,ruin"
@@ -2852,6 +2872,10 @@
         "historic/memorial": {
           "name": "Minnesmärke",
           "terms": "minnesmärke,minnessten,minnestavla,monument"
+        },
+        "historic/memorial/blue_plaque-GB-IE": {
+          "name": "Blå minnestavla",
+          "terms": "blå minnesskylt,minnesskylt,historisk skylt,kulturminnesskylt,plakett,informationsskylt,historisk markör,blå plakett"
         },
         "historic/memorial/plaque": {
           "name": "Minnestavla",
@@ -6329,6 +6353,10 @@
           "name": "Busslinje",
           "terms": "bussrutt,bussväg,bussled,busslinje"
         },
+        "type/route/climbing": {
+          "name": "Klätterled",
+          "terms": "klättring,klippklättring,klätterled,sportklättring,klättertur,klätterlinje,klätterväg,klätterproblem,led"
+        },
         "type/route/detour": {
           "name": "Alternativ rutt",
           "terms": "alternativ rutt,alternativ väg,omväg"
@@ -6404,6 +6432,14 @@
         "type/site": {
           "name": "Plats",
           "terms": "plats,ställe,läge,anläggning"
+        },
+        "type/site/climbing/area": {
+          "name": "Klätterområde",
+          "terms": "klätterområde,klättersektor,klätterregion,klippområde,klättringsområde,klätterzon,klätterställe,klätterklippa,klätterplats"
+        },
+        "type/site/climbing/crag": {
+          "name": "Klätterklippa",
+          "terms": "klätterklippa,klippa,klättring,klättervägg,klätterberg,klippvägg,klipphäll,klippformation,klätterområde,sportklättring,tradklättring,bouldering,klätterställe"
         },
         "type/waterway": {
           "name": "Vattenväg",
