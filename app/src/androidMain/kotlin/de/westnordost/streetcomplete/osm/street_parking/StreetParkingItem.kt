@@ -82,7 +82,7 @@ fun StreetParking.PositionAndOrientation.asItem(context: Context, isUpsideDown: 
 /** An icon for a street parking is square and shows always the same car so it is easier to spot
  *  the variation that matters(on kerb, half on kerb etc) */
 private fun StreetParking.PositionAndOrientation.getDialogIcon(context: Context, isUpsideDown: Boolean): Image =
-    DrawableImage(StreetParkingDrawable(context, orientation, position, isUpsideDown, 128, 128, R.drawable.ic_car1))
+    DrawableImage(StreetParkingDrawable(context, orientation, position, isUpsideDown, 128, 128, R.drawable.car1))
 
 /** An image for a street parking to be displayed shows a wide variety of different cars so that
  *  it looks nicer and/or closer to reality */

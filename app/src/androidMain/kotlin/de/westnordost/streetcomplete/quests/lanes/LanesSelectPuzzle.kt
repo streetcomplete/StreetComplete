@@ -387,16 +387,16 @@ private const val CAR_SPEED_VARIATION = 0.2f // as fraction: 1 = 100% variation
 private const val CAR_SPARSITY = 1f
 
 private val CAR_RES_IDS = listOf(
-    R.drawable.ic_car1,
-    R.drawable.ic_car1a,
-    R.drawable.ic_car1b,
-    R.drawable.ic_car2,
-    R.drawable.ic_car2a,
-    R.drawable.ic_car2b,
-    R.drawable.ic_car3,
-    R.drawable.ic_car3a,
-    R.drawable.ic_car4,
-    R.drawable.ic_car5,
+    R.drawable.car1,
+    R.drawable.car1a,
+    R.drawable.car1b,
+    R.drawable.car2,
+    R.drawable.car2a,
+    R.drawable.car2b,
+    R.drawable.car3,
+    R.drawable.car3a,
+    R.drawable.car4,
+    R.drawable.car5,
 )
 
 private class CarState(forwardDirection: Boolean, bitmaps: List<Bitmap>) {
