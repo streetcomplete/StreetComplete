@@ -134,14 +134,14 @@ class AddOpeningHours(
     """).toElementFilterExpression() }
     // name filter is there to ensure that place name quest triggers first, so that object is identified if possible
     // Otherwise, in situation of two shops of the similar type with names A and B following may happen
-    // (1) mapper answers for one object with opening hours for shop A 
+    // (1) mapper answers for one object with opening hours for shop A
     // (2) this or different mapper may answer that it is named B
     // what would result in bad opening hours
     // this filter reduces risk of this happening and also makes this quest less confusing to answer
 
     override val changesetComment = "Survey opening hours"
     override val wikiLink = "Key:opening_hours"
-    override val icon = R.drawable.ic_quest_opening_hours
+    override val icon = R.drawable.quest_opening_hours
     override val isReplacePlaceEnabled = true
     override val achievements = listOf(CITIZEN)
 

@@ -22,7 +22,7 @@ class AddTreeLeafType : OsmFilterQuestType<TreeLeafTypeAnswer>(), AndroidQuest {
     """
     override val changesetComment = "Specify leaf types"
     override val wikiLink = "Key:leaf_type"
-    override val icon = R.drawable.ic_quest_leaf
+    override val icon = R.drawable.quest_leaf
     override val isDeleteElementEnabled = true
     override val achievements = listOf(OUTDOORS)
     override val defaultDisabledMessage = Res.string.default_disabled_msg_difficult_and_time_consuming

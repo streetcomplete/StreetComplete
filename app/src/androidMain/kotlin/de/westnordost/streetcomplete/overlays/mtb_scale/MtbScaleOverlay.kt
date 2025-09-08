@@ -19,7 +19,7 @@ import de.westnordost.streetcomplete.resources.default_disabled_overlay_domain_e
 class MtbScaleOverlay : Overlay, AndroidOverlay {
 
     override val title = R.string.overlay_mtb_scale
-    override val icon = R.drawable.ic_quest_mtb
+    override val icon = R.drawable.quest_mtb
     override val changesetComment = "Specify MTB difficulty"
     override val wikiLink: String = "Key:mtb:scale"
     override val achievements = listOf(BICYCLIST, OUTDOORS)

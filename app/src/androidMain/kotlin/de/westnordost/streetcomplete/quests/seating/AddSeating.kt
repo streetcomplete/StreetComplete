@@ -26,7 +26,7 @@ class AddSeating : OsmFilterQuestType<Seating>(), AndroidQuest {
     """
     override val changesetComment = "Survey whether places have seating"
     override val wikiLink = "Key:outdoor_seating"
-    override val icon = R.drawable.ic_quest_seating
+    override val icon = R.drawable.quest_seating
     override val isReplacePlaceEnabled = true
     override val achievements = listOf(CITIZEN)
     override val defaultDisabledMessage = Res.string.default_disabled_msg_seasonal

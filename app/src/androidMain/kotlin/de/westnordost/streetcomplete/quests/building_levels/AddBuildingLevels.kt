@@ -27,7 +27,7 @@ class AddBuildingLevels : OsmFilterQuestType<BuildingLevels>(), AndroidQuest {
     """
     override val changesetComment = "Specify building and roof levels"
     override val wikiLink = "Key:building:levels"
-    override val icon = R.drawable.ic_quest_building_levels
+    override val icon = R.drawable.quest_building_levels
     override val achievements = listOf(BUILDING)
     override val defaultDisabledMessage = Res.string.default_disabled_msg_difficult_and_time_consuming
 

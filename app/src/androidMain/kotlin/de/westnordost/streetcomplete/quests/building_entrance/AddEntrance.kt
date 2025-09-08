@@ -44,7 +44,7 @@ class AddEntrance : OsmElementQuestType<EntranceAnswer>, AndroidQuest {
 
     override val changesetComment = "Specify type of entrances"
     override val wikiLink = "Key:entrance"
-    override val icon = R.drawable.ic_quest_door
+    override val icon = R.drawable.quest_door
     override val achievements = listOf(PEDESTRIAN)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_building_entrance_title

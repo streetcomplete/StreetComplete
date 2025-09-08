@@ -19,7 +19,7 @@ import de.westnordost.streetcomplete.quests.building_type.AddBuildingType
 class BuildingsOverlay : Overlay, AndroidOverlay {
 
     override val title = R.string.overlay_buildings
-    override val icon = R.drawable.ic_quest_building
+    override val icon = R.drawable.quest_building
     override val changesetComment = "Survey buildings"
     override val wikiLink = "Key:building"
     override val achievements = listOf(BUILDING)

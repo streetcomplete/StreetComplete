@@ -18,7 +18,7 @@ class AddSport : OsmFilterQuestType<List<Sport>>(), AndroidQuest {
     // treat ambiguous values as if it is not set
     override val changesetComment = "Specify sport played on pitches"
     override val wikiLink = "Key:sport"
-    override val icon = R.drawable.ic_quest_sport
+    override val icon = R.drawable.quest_sport
     override val achievements = listOf(OUTDOORS)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_sport_title

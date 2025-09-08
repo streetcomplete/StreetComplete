@@ -25,7 +25,7 @@ import de.westnordost.streetcomplete.quests.sidewalk.AddSidewalk
 class SidewalkOverlay : Overlay, AndroidOverlay {
 
     override val title = R.string.overlay_sidewalk
-    override val icon = R.drawable.ic_quest_sidewalk
+    override val icon = R.drawable.quest_sidewalk
     override val changesetComment = "Specify whether roads have sidewalks"
     override val wikiLink: String = "Key:sidewalk"
     override val achievements = listOf(PEDESTRIAN)

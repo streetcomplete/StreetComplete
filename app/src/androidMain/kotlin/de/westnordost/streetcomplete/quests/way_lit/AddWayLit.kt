@@ -51,7 +51,7 @@ class AddWayLit : OsmFilterQuestType<WayLitOrIsStepsAnswer>(), AndroidQuest {
 
     override val changesetComment = "Specify whether ways are lit"
     override val wikiLink = "Key:lit"
-    override val icon = R.drawable.ic_quest_lantern
+    override val icon = R.drawable.quest_lantern
     override val achievements = listOf(PEDESTRIAN)
     override val defaultDisabledMessage = Res.string.default_disabled_msg_overlay
 

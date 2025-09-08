@@ -30,7 +30,7 @@ class AddPathSmoothness : OsmFilterQuestType<SmoothnessAnswer>(), AndroidQuest {
     """
     override val changesetComment = "Specify paths smoothness"
     override val wikiLink = "Key:smoothness"
-    override val icon = R.drawable.ic_quest_way_surface_detail
+    override val icon = R.drawable.quest_way_surface_detail
     override val achievements = listOf(WHEELCHAIR, BICYCLIST)
     override val defaultDisabledMessage = Res.string.default_disabled_msg_difficult_and_time_consuming
 

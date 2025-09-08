@@ -74,7 +74,7 @@ class LaneNarrowingTrafficCalmingForm :
             }
         }
 
-        setMarkerIcon(R.drawable.ic_quest_choker)
+        setMarkerIcon(R.drawable.quest_choker)
         setMarkerVisibility(false)
 
         originalLaneNarrowingTrafficCalming = element?.tags?.let { parseNarrowingTrafficCalming(it) }

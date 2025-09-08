@@ -28,7 +28,7 @@ class AddAmenityCover(
     """.toElementFilterExpression() }
     override val changesetComment = "Specify whether various amenities are covered"
     override val wikiLink = "Key:covered"
-    override val icon = R.drawable.ic_quest_picnic_table_cover
+    override val icon = R.drawable.quest_picnic_table_cover
     override val isDeleteElementEnabled = true
     override val achievements = listOf(OUTDOORS)
 

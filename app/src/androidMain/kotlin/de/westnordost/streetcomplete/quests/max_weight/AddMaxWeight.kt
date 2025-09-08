@@ -51,7 +51,7 @@ class AddMaxWeight : OsmElementQuestType<MaxWeightAnswer>, AndroidQuest {
 
     override val changesetComment = "Specify maximum allowed weights"
     override val wikiLink = "Key:maxweight"
-    override val icon = R.drawable.ic_quest_max_weight
+    override val icon = R.drawable.quest_max_weight
     override val hasMarkersAtEnds = true
     override val achievements = listOf(CAR)
 

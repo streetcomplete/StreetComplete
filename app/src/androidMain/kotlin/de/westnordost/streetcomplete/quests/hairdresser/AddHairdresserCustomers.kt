@@ -23,7 +23,7 @@ class AddHairdresserCustomers : OsmFilterQuestType<HairdresserCustomers>(), Andr
     """
     override val changesetComment = "Survey hairdresser's customers"
     override val wikiLink = "Tag:shop=hairdresser"
-    override val icon = R.drawable.ic_quest_hairdresser
+    override val icon = R.drawable.quest_hairdresser
     override val isReplacePlaceEnabled = true
     override val achievements = listOf(CITIZEN)
 

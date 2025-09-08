@@ -29,7 +29,7 @@ class AddPostboxCollectionTimes : OsmElementQuestType<CollectionTimesAnswer>, An
 
     override val changesetComment = "Survey postbox collection times"
     override val wikiLink = "Key:collection_times"
-    override val icon = R.drawable.ic_quest_mail
+    override val icon = R.drawable.quest_mail
     override val isDeleteElementEnabled = true
     override val achievements = listOf(POSTMAN)
 

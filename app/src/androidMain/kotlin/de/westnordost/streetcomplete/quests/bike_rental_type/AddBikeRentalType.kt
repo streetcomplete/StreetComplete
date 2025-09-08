@@ -21,7 +21,7 @@ class AddBikeRentalType : OsmFilterQuestType<BikeRentalTypeAnswer>(), AndroidQue
     """
     override val changesetComment = "Specify bicycle rental types"
     override val wikiLink = "Key:bicycle_rental"
-    override val icon = R.drawable.ic_quest_bicycle_rental
+    override val icon = R.drawable.quest_bicycle_rental
     override val isDeleteElementEnabled = true
     override val achievements = listOf(BICYCLIST)
 
