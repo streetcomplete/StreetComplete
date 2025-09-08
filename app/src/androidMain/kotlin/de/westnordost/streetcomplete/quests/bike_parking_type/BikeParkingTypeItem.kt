@@ -1,31 +1,48 @@
 package de.westnordost.streetcomplete.quests.bike_parking_type
 
-import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.bike_parking_type.BikeParkingType.*
-import de.westnordost.streetcomplete.view.image_select.Item
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.bicycle_parking_type_building
+import de.westnordost.streetcomplete.resources.bicycle_parking_type_floor
+import de.westnordost.streetcomplete.resources.bicycle_parking_type_handlebarholder
+import de.westnordost.streetcomplete.resources.bicycle_parking_type_lockers
+import de.westnordost.streetcomplete.resources.bicycle_parking_type_safeloops
+import de.westnordost.streetcomplete.resources.bicycle_parking_type_shed
+import de.westnordost.streetcomplete.resources.bicycle_parking_type_stand
+import de.westnordost.streetcomplete.resources.bicycle_parking_type_two_tier
+import de.westnordost.streetcomplete.resources.bicycle_parking_type_wheelbenders
+import de.westnordost.streetcomplete.resources.quest_bicycle_parking_type_building
+import de.westnordost.streetcomplete.resources.quest_bicycle_parking_type_floor
+import de.westnordost.streetcomplete.resources.quest_bicycle_parking_type_handlebarholder
+import de.westnordost.streetcomplete.resources.quest_bicycle_parking_type_locker
+import de.westnordost.streetcomplete.resources.quest_bicycle_parking_type_safeloops
+import de.westnordost.streetcomplete.resources.quest_bicycle_parking_type_shed
+import de.westnordost.streetcomplete.resources.quest_bicycle_parking_type_stand
+import de.westnordost.streetcomplete.resources.quest_bicycle_parking_type_two_tier
+import de.westnordost.streetcomplete.resources.quest_bicycle_parking_type_wheelbender
+import org.jetbrains.compose.resources.DrawableResource
+import org.jetbrains.compose.resources.StringResource
 
-fun BikeParkingType.asItem() = Item(this, iconResId, titleResId)
-
-private val BikeParkingType.titleResId: Int get() = when (this) {
-    STANDS ->           R.string.quest_bicycle_parking_type_stand
-    WALL_LOOPS ->       R.string.quest_bicycle_parking_type_wheelbender
-    SAFE_LOOPS ->       R.string.quest_bicycle_parking_type_safeloops
-    SHED ->             R.string.quest_bicycle_parking_type_shed
-    LOCKERS ->          R.string.quest_bicycle_parking_type_locker
-    BUILDING ->         R.string.quest_bicycle_parking_type_building
-    HANDLEBAR_HOLDER -> R.string.quest_bicycle_parking_type_handlebarholder
-    TWO_TIER ->         R.string.quest_bicycle_parking_type_two_tier
-    FLOOR ->            R.string.quest_bicycle_parking_type_floor
+val BikeParkingType.title: StringResource get() = when (this) {
+    STANDS ->           Res.string.quest_bicycle_parking_type_stand
+    WALL_LOOPS ->       Res.string.quest_bicycle_parking_type_wheelbender
+    SAFE_LOOPS ->       Res.string.quest_bicycle_parking_type_safeloops
+    SHED ->             Res.string.quest_bicycle_parking_type_shed
+    LOCKERS ->          Res.string.quest_bicycle_parking_type_locker
+    BUILDING ->         Res.string.quest_bicycle_parking_type_building
+    HANDLEBAR_HOLDER -> Res.string.quest_bicycle_parking_type_handlebarholder
+    TWO_TIER ->         Res.string.quest_bicycle_parking_type_two_tier
+    FLOOR ->            Res.string.quest_bicycle_parking_type_floor
 }
 
-private val BikeParkingType.iconResId: Int get() = when (this) {
-    STANDS ->           R.drawable.bicycle_parking_type_stand
-    WALL_LOOPS ->       R.drawable.bicycle_parking_type_wheelbenders
-    SAFE_LOOPS ->       R.drawable.bicycle_parking_type_safeloops
-    SHED ->             R.drawable.bicycle_parking_type_shed
-    LOCKERS ->          R.drawable.bicycle_parking_type_lockers
-    BUILDING ->         R.drawable.bicycle_parking_type_building
-    HANDLEBAR_HOLDER -> R.drawable.bicycle_parking_type_handlebarholder
-    TWO_TIER ->         R.drawable.bicycle_parking_type_two_tier
-    FLOOR ->            R.drawable.bicycle_parking_type_floor
+val BikeParkingType.icon: DrawableResource get() = when (this) {
+    STANDS ->           Res.drawable.bicycle_parking_type_stand
+    WALL_LOOPS ->       Res.drawable.bicycle_parking_type_wheelbenders
+    SAFE_LOOPS ->       Res.drawable.bicycle_parking_type_safeloops
+    SHED ->             Res.drawable.bicycle_parking_type_shed
+    LOCKERS ->          Res.drawable.bicycle_parking_type_lockers
+    BUILDING ->         Res.drawable.bicycle_parking_type_building
+    HANDLEBAR_HOLDER -> Res.drawable.bicycle_parking_type_handlebarholder
+    TWO_TIER ->         Res.drawable.bicycle_parking_type_two_tier
+    FLOOR ->            Res.drawable.bicycle_parking_type_floor
 }

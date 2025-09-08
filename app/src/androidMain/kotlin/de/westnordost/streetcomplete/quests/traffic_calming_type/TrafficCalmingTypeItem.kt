@@ -1,36 +1,44 @@
 package de.westnordost.streetcomplete.quests.traffic_calming_type
 
-import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.traffic_calming_type.TrafficCalmingType.BUMP
-import de.westnordost.streetcomplete.quests.traffic_calming_type.TrafficCalmingType.CHICANE
-import de.westnordost.streetcomplete.quests.traffic_calming_type.TrafficCalmingType.CHOKER
-import de.westnordost.streetcomplete.quests.traffic_calming_type.TrafficCalmingType.CUSHION
-import de.westnordost.streetcomplete.quests.traffic_calming_type.TrafficCalmingType.HUMP
-import de.westnordost.streetcomplete.quests.traffic_calming_type.TrafficCalmingType.ISLAND
-import de.westnordost.streetcomplete.quests.traffic_calming_type.TrafficCalmingType.RUMBLE_STRIP
-import de.westnordost.streetcomplete.quests.traffic_calming_type.TrafficCalmingType.TABLE
-import de.westnordost.streetcomplete.view.image_select.Item
+import de.westnordost.streetcomplete.quests.traffic_calming_type.TrafficCalmingType.*
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.quest_traffic_calming_type_bump
+import de.westnordost.streetcomplete.resources.quest_traffic_calming_type_chicane
+import de.westnordost.streetcomplete.resources.quest_traffic_calming_type_choker
+import de.westnordost.streetcomplete.resources.quest_traffic_calming_type_cushion
+import de.westnordost.streetcomplete.resources.quest_traffic_calming_type_hump
+import de.westnordost.streetcomplete.resources.quest_traffic_calming_type_island
+import de.westnordost.streetcomplete.resources.quest_traffic_calming_type_rumble_strip
+import de.westnordost.streetcomplete.resources.quest_traffic_calming_type_table
+import de.westnordost.streetcomplete.resources.traffic_calming_bump
+import de.westnordost.streetcomplete.resources.traffic_calming_chicane
+import de.westnordost.streetcomplete.resources.traffic_calming_choker
+import de.westnordost.streetcomplete.resources.traffic_calming_cushion
+import de.westnordost.streetcomplete.resources.traffic_calming_hump
+import de.westnordost.streetcomplete.resources.traffic_calming_island
+import de.westnordost.streetcomplete.resources.traffic_calming_rumble_strip
+import de.westnordost.streetcomplete.resources.traffic_calming_table
+import org.jetbrains.compose.resources.DrawableResource
+import org.jetbrains.compose.resources.StringResource
 
-fun TrafficCalmingType.asItem() = Item(this, iconResId, titleResId)
-
-private val TrafficCalmingType.titleResId: Int get() = when (this) {
-    BUMP ->         R.string.quest_traffic_calming_type_bump
-    HUMP ->         R.string.quest_traffic_calming_type_hump
-    TABLE ->        R.string.quest_traffic_calming_type_table
-    CUSHION ->      R.string.quest_traffic_calming_type_cushion
-    ISLAND ->       R.string.quest_traffic_calming_type_island
-    CHOKER ->       R.string.quest_traffic_calming_type_choker
-    CHICANE ->      R.string.quest_traffic_calming_type_chicane
-    RUMBLE_STRIP -> R.string.quest_traffic_calming_type_rumble_strip
+val TrafficCalmingType.title: StringResource get() = when (this) {
+    BUMP ->         Res.string.quest_traffic_calming_type_bump
+    HUMP ->         Res.string.quest_traffic_calming_type_hump
+    TABLE ->        Res.string.quest_traffic_calming_type_table
+    CUSHION ->      Res.string.quest_traffic_calming_type_cushion
+    ISLAND ->       Res.string.quest_traffic_calming_type_island
+    CHOKER ->       Res.string.quest_traffic_calming_type_choker
+    CHICANE ->      Res.string.quest_traffic_calming_type_chicane
+    RUMBLE_STRIP -> Res.string.quest_traffic_calming_type_rumble_strip
 }
 
-private val TrafficCalmingType.iconResId: Int get() = when (this) {
-    BUMP ->         R.drawable.traffic_calming_bump
-    HUMP ->         R.drawable.traffic_calming_hump
-    TABLE ->        R.drawable.traffic_calming_table
-    CUSHION ->      R.drawable.traffic_calming_cushion
-    ISLAND ->       R.drawable.traffic_calming_island
-    CHOKER ->       R.drawable.traffic_calming_choker
-    CHICANE ->      R.drawable.traffic_calming_chicane
-    RUMBLE_STRIP -> R.drawable.traffic_calming_rumble_strip
+val TrafficCalmingType.icon: DrawableResource get() = when (this) {
+    BUMP ->         Res.drawable.traffic_calming_bump
+    HUMP ->         Res.drawable.traffic_calming_hump
+    TABLE ->        Res.drawable.traffic_calming_table
+    CUSHION ->      Res.drawable.traffic_calming_cushion
+    ISLAND ->       Res.drawable.traffic_calming_island
+    CHOKER ->       Res.drawable.traffic_calming_choker
+    CHICANE ->      Res.drawable.traffic_calming_chicane
+    RUMBLE_STRIP -> Res.drawable.traffic_calming_rumble_strip
 }

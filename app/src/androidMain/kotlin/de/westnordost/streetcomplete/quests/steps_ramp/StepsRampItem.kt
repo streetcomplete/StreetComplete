@@ -1,24 +1,28 @@
 package de.westnordost.streetcomplete.quests.steps_ramp
 
-import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.steps_ramp.StepsRamp.BICYCLE
-import de.westnordost.streetcomplete.quests.steps_ramp.StepsRamp.NONE
-import de.westnordost.streetcomplete.quests.steps_ramp.StepsRamp.STROLLER
-import de.westnordost.streetcomplete.quests.steps_ramp.StepsRamp.WHEELCHAIR
-import de.westnordost.streetcomplete.view.image_select.Item
+import de.westnordost.streetcomplete.quests.steps_ramp.StepsRamp.*
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.quest_steps_ramp_bicycle
+import de.westnordost.streetcomplete.resources.quest_steps_ramp_none
+import de.westnordost.streetcomplete.resources.quest_steps_ramp_stroller
+import de.westnordost.streetcomplete.resources.quest_steps_ramp_wheelchair
+import de.westnordost.streetcomplete.resources.ramp_bicycle
+import de.westnordost.streetcomplete.resources.ramp_none
+import de.westnordost.streetcomplete.resources.ramp_stroller
+import de.westnordost.streetcomplete.resources.ramp_wheelchair
+import org.jetbrains.compose.resources.DrawableResource
+import org.jetbrains.compose.resources.StringResource
 
-fun StepsRamp.asItem() = Item(this, iconResId, titleResId)
-
-private val StepsRamp.titleResId: Int get() = when (this) {
-    NONE ->       R.string.quest_steps_ramp_none
-    BICYCLE ->    R.string.quest_steps_ramp_bicycle
-    STROLLER ->   R.string.quest_steps_ramp_stroller
-    WHEELCHAIR -> R.string.quest_steps_ramp_wheelchair
+val StepsRamp.title: StringResource get() = when (this) {
+    NONE ->       Res.string.quest_steps_ramp_none
+    BICYCLE ->    Res.string.quest_steps_ramp_bicycle
+    STROLLER ->   Res.string.quest_steps_ramp_stroller
+    WHEELCHAIR -> Res.string.quest_steps_ramp_wheelchair
 }
 
-private val StepsRamp.iconResId: Int get() = when (this) {
-    NONE ->       R.drawable.ramp_none
-    BICYCLE ->    R.drawable.ramp_bicycle
-    STROLLER ->   R.drawable.ramp_stroller
-    WHEELCHAIR -> R.drawable.ramp_wheelchair
+val StepsRamp.icon: DrawableResource get() = when (this) {
+    NONE ->       Res.drawable.ramp_none
+    BICYCLE ->    Res.drawable.ramp_bicycle
+    STROLLER ->   Res.drawable.ramp_stroller
+    WHEELCHAIR -> Res.drawable.ramp_wheelchair
 }

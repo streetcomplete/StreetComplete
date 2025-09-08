@@ -1,24 +1,28 @@
 package de.westnordost.streetcomplete.quests.fire_hydrant
 
-import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.fire_hydrant.FireHydrantType.PILLAR
-import de.westnordost.streetcomplete.quests.fire_hydrant.FireHydrantType.PIPE
-import de.westnordost.streetcomplete.quests.fire_hydrant.FireHydrantType.UNDERGROUND
-import de.westnordost.streetcomplete.quests.fire_hydrant.FireHydrantType.WALL
-import de.westnordost.streetcomplete.view.image_select.Item
+import de.westnordost.streetcomplete.quests.fire_hydrant.FireHydrantType.*
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.fire_hydrant_pillar
+import de.westnordost.streetcomplete.resources.fire_hydrant_pipe
+import de.westnordost.streetcomplete.resources.fire_hydrant_underground
+import de.westnordost.streetcomplete.resources.fire_hydrant_wall
+import de.westnordost.streetcomplete.resources.quest_fireHydrant_type_pillar
+import de.westnordost.streetcomplete.resources.quest_fireHydrant_type_pipe
+import de.westnordost.streetcomplete.resources.quest_fireHydrant_type_underground
+import de.westnordost.streetcomplete.resources.quest_fireHydrant_type_wall
+import org.jetbrains.compose.resources.DrawableResource
+import org.jetbrains.compose.resources.StringResource
 
-fun FireHydrantType.asItem() = Item(this, iconResId, titleResId)
-
-private val FireHydrantType.titleResId: Int get() = when (this) {
-    PILLAR ->      R.string.quest_fireHydrant_type_pillar
-    UNDERGROUND -> R.string.quest_fireHydrant_type_underground
-    WALL ->        R.string.quest_fireHydrant_type_wall
-    PIPE ->        R.string.quest_fireHydrant_type_pipe
+val FireHydrantType.title: StringResource get() = when (this) {
+    PILLAR ->      Res.string.quest_fireHydrant_type_pillar
+    UNDERGROUND -> Res.string.quest_fireHydrant_type_underground
+    WALL ->        Res.string.quest_fireHydrant_type_wall
+    PIPE ->        Res.string.quest_fireHydrant_type_pipe
 }
 
-private val FireHydrantType.iconResId: Int get() = when (this) {
-    PILLAR ->      R.drawable.fire_hydrant_pillar
-    UNDERGROUND -> R.drawable.fire_hydrant_underground
-    WALL ->        R.drawable.fire_hydrant_wall
-    PIPE ->        R.drawable.fire_hydrant_pipe
+val FireHydrantType.icon: DrawableResource get() = when (this) {
+    PILLAR ->      Res.drawable.fire_hydrant_pillar
+    UNDERGROUND -> Res.drawable.fire_hydrant_underground
+    WALL ->        Res.drawable.fire_hydrant_wall
+    PIPE ->        Res.drawable.fire_hydrant_pipe
 }

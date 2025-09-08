@@ -40,7 +40,7 @@ class AddBikeRentalType : OsmFilterQuestType<BikeRentalTypeAnswer>(), AndroidQue
                     tags["shop"] = "rental"
                 }
             }
-            is BikeShopWithRental -> {
+            is BikeRentalTypeAnswer.BikeShopWithRental -> {
                 tags.remove("amenity")
                 tags["shop"] = "bicycle"
                 tags["service:bicycle:rental"] = "yes"

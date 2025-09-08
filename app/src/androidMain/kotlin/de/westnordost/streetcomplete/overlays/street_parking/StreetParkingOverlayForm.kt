@@ -8,9 +8,9 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChanges
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
 import de.westnordost.streetcomplete.osm.oneway.isForwardOneway
 import de.westnordost.streetcomplete.osm.oneway.isReversedOneway
-import de.westnordost.streetcomplete.osm.street_parking.DISPLAYED_PARKING_POSITIONS
 import de.westnordost.streetcomplete.osm.street_parking.LeftAndRightStreetParking
 import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation
+import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition
 import de.westnordost.streetcomplete.osm.street_parking.StreetParking
 import de.westnordost.streetcomplete.osm.street_parking.StreetParkingDrawable
 import de.westnordost.streetcomplete.osm.street_parking.applyTo
@@ -19,11 +19,7 @@ import de.westnordost.streetcomplete.osm.street_parking.asStreetSideItem
 import de.westnordost.streetcomplete.osm.street_parking.parseStreetParkingSides
 import de.westnordost.streetcomplete.osm.street_parking.validOrNullValues
 import de.westnordost.streetcomplete.overlays.AStreetSideSelectOverlayForm
-import de.westnordost.streetcomplete.overlays.street_parking.ParkingSelection.DIAGONAL
-import de.westnordost.streetcomplete.overlays.street_parking.ParkingSelection.NO
-import de.westnordost.streetcomplete.overlays.street_parking.ParkingSelection.PARALLEL
-import de.westnordost.streetcomplete.overlays.street_parking.ParkingSelection.PERPENDICULAR
-import de.westnordost.streetcomplete.overlays.street_parking.ParkingSelection.SEPARATE
+import de.westnordost.streetcomplete.overlays.street_parking.ParkingSelection.*
 import de.westnordost.streetcomplete.view.DrawableImage
 import de.westnordost.streetcomplete.view.Image
 import de.westnordost.streetcomplete.view.ResImage
@@ -119,7 +115,7 @@ class StreetParkingOverlayForm : AStreetSideSelectOverlayForm<StreetParking>() {
         ParkingSelection.entries.map { it.asItem(context, isLeftHandTraffic) }
 
     private fun getParkingPositionItems(context: Context, orientation: ParkingOrientation) =
-        DISPLAYED_PARKING_POSITIONS
+        ParkingPosition.displayedValues
             .map { StreetParking.PositionAndOrientation(orientation, it) }
             .map { it.asItem(context, isLeftHandTraffic) }
 
@@ -154,8 +150,8 @@ private fun ParkingSelection.getDialogIcon(context: Context, isUpsideDown: Boole
     PARALLEL -> createParkingOrientationImage(context, isUpsideDown, ParkingOrientation.PARALLEL)
     DIAGONAL -> createParkingOrientationImage(context, isUpsideDown, ParkingOrientation.DIAGONAL)
     PERPENDICULAR -> createParkingOrientationImage(context, isUpsideDown, ParkingOrientation.PERPENDICULAR)
-    SEPARATE -> ResImage(R.drawable.ic_floating_separate)
-    NO -> ResImage(R.drawable.ic_floating_no)
+    SEPARATE -> ResImage(R.drawable.floating_separate)
+    NO -> ResImage(R.drawable.floating_no)
 }
 
 private fun ParkingSelection.asItem(context: Context, isUpsideDown: Boolean) =

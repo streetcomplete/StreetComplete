@@ -1,19 +1,24 @@
 package de.westnordost.streetcomplete.quests.powerpoles_material
 
-import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.powerpoles_material.PowerPolesMaterial.*
-import de.westnordost.streetcomplete.view.image_select.Item
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.power_pole_concrete
+import de.westnordost.streetcomplete.resources.power_pole_steel
+import de.westnordost.streetcomplete.resources.power_pole_wood
+import de.westnordost.streetcomplete.resources.quest_powerPolesMaterial_concrete
+import de.westnordost.streetcomplete.resources.quest_powerPolesMaterial_metal
+import de.westnordost.streetcomplete.resources.quest_powerPolesMaterial_wood
+import org.jetbrains.compose.resources.DrawableResource
+import org.jetbrains.compose.resources.StringResource
 
-fun PowerPolesMaterial.asItem() = Item(this, iconResId, titleResId)
-
-private val PowerPolesMaterial.titleResId: Int? get() = when (this) {
-    WOOD ->     R.string.quest_powerPolesMaterial_wood
-    STEEL ->    R.string.quest_powerPolesMaterial_metal
-    CONCRETE -> R.string.quest_powerPolesMaterial_concrete
+val PowerPolesMaterial.title: StringResource? get() = when (this) {
+    WOOD ->     Res.string.quest_powerPolesMaterial_wood
+    STEEL ->    Res.string.quest_powerPolesMaterial_metal
+    CONCRETE -> Res.string.quest_powerPolesMaterial_concrete
 }
 
-private val PowerPolesMaterial.iconResId: Int? get() = when (this) {
-    WOOD ->     R.drawable.power_pole_wood
-    STEEL ->    R.drawable.power_pole_steel
-    CONCRETE -> R.drawable.power_pole_concrete
+val PowerPolesMaterial.icon: DrawableResource? get() = when (this) {
+    WOOD ->     Res.drawable.power_pole_wood
+    STEEL ->    Res.drawable.power_pole_steel
+    CONCRETE -> Res.drawable.power_pole_concrete
 }

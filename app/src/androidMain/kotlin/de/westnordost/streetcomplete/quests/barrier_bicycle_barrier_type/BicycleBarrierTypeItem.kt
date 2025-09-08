@@ -1,27 +1,32 @@
 package de.westnordost.streetcomplete.quests.barrier_bicycle_barrier_type
 
-import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.barrier_bicycle_barrier_type.BicycleBarrierType.DIAGONAL
-import de.westnordost.streetcomplete.quests.barrier_bicycle_barrier_type.BicycleBarrierType.DOUBLE
-import de.westnordost.streetcomplete.quests.barrier_bicycle_barrier_type.BicycleBarrierType.SINGLE
-import de.westnordost.streetcomplete.quests.barrier_bicycle_barrier_type.BicycleBarrierType.TILTED
-import de.westnordost.streetcomplete.quests.barrier_bicycle_barrier_type.BicycleBarrierType.TRIPLE
-import de.westnordost.streetcomplete.view.image_select.Item
+import de.westnordost.streetcomplete.quests.barrier_bicycle_barrier_type.BicycleBarrierType.*
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.barrier_bicycle_barrier_diagonal
+import de.westnordost.streetcomplete.resources.barrier_bicycle_barrier_double
+import de.westnordost.streetcomplete.resources.barrier_bicycle_barrier_single
+import de.westnordost.streetcomplete.resources.barrier_bicycle_barrier_tilted
+import de.westnordost.streetcomplete.resources.barrier_bicycle_barrier_triple
+import de.westnordost.streetcomplete.resources.quest_barrier_bicycle_type_diagonal
+import de.westnordost.streetcomplete.resources.quest_barrier_bicycle_type_double
+import de.westnordost.streetcomplete.resources.quest_barrier_bicycle_type_multiple
+import de.westnordost.streetcomplete.resources.quest_barrier_bicycle_type_single
+import de.westnordost.streetcomplete.resources.quest_barrier_bicycle_type_tilted
+import org.jetbrains.compose.resources.DrawableResource
+import org.jetbrains.compose.resources.StringResource
 
-fun BicycleBarrierType.asItem() = Item(this, iconResId, titleResId)
-
-private val BicycleBarrierType.titleResId: Int get() = when (this) {
-    SINGLE ->   R.string.quest_barrier_bicycle_type_single
-    DOUBLE ->   R.string.quest_barrier_bicycle_type_double
-    TRIPLE ->   R.string.quest_barrier_bicycle_type_multiple
-    DIAGONAL -> R.string.quest_barrier_bicycle_type_diagonal
-    TILTED ->   R.string.quest_barrier_bicycle_type_tilted
+val BicycleBarrierType.title: StringResource get() = when (this) {
+    SINGLE ->   Res.string.quest_barrier_bicycle_type_single
+    DOUBLE ->   Res.string.quest_barrier_bicycle_type_double
+    TRIPLE ->   Res.string.quest_barrier_bicycle_type_multiple
+    DIAGONAL -> Res.string.quest_barrier_bicycle_type_diagonal
+    TILTED ->   Res.string.quest_barrier_bicycle_type_tilted
 }
 
-private val BicycleBarrierType.iconResId: Int get() = when (this) {
-    SINGLE ->   R.drawable.barrier_bicycle_barrier_single
-    DOUBLE ->   R.drawable.barrier_bicycle_barrier_double
-    TRIPLE ->   R.drawable.barrier_bicycle_barrier_triple
-    DIAGONAL -> R.drawable.barrier_bicycle_barrier_diagonal
-    TILTED ->   R.drawable.barrier_bicycle_barrier_tilted
+val BicycleBarrierType.icon: DrawableResource get() = when (this) {
+    SINGLE ->   Res.drawable.barrier_bicycle_barrier_single
+    DOUBLE ->   Res.drawable.barrier_bicycle_barrier_double
+    TRIPLE ->   Res.drawable.barrier_bicycle_barrier_triple
+    DIAGONAL -> Res.drawable.barrier_bicycle_barrier_diagonal
+    TILTED ->   Res.drawable.barrier_bicycle_barrier_tilted
 }

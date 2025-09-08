@@ -1,195 +1,192 @@
 package de.westnordost.streetcomplete.osm.cycleway
 
-import android.content.Context
-import android.graphics.Canvas
-import android.graphics.drawable.Drawable
-import androidx.appcompat.graphics.drawable.DrawableWrapperCompat
-import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway.*
 import de.westnordost.streetcomplete.osm.oneway.Direction.*
-import de.westnordost.streetcomplete.util.ktx.advisoryCycleLaneMirroredResId
-import de.westnordost.streetcomplete.util.ktx.advisoryCycleLaneResId
-import de.westnordost.streetcomplete.util.ktx.dualCycleLaneMirroredResId
-import de.westnordost.streetcomplete.util.ktx.dualCycleLaneResId
-import de.westnordost.streetcomplete.util.ktx.exclusiveCycleLaneMirroredResId
-import de.westnordost.streetcomplete.util.ktx.exclusiveCycleLaneResId
-import de.westnordost.streetcomplete.util.ktx.noEntrySignDrawableResId
-import de.westnordost.streetcomplete.util.ktx.pictogramCycleLaneMirroredResId
-import de.westnordost.streetcomplete.util.ktx.pictogramCycleLaneResId
-import de.westnordost.streetcomplete.view.DrawableImage
-import de.westnordost.streetcomplete.view.Image
-import de.westnordost.streetcomplete.view.ResImage
-import de.westnordost.streetcomplete.view.ResText
-import de.westnordost.streetcomplete.view.controller.StreetSideItem
-import de.westnordost.streetcomplete.view.image_select.Item2
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.cycleway_bus_lane
+import de.westnordost.streetcomplete.resources.cycleway_bus_lane_l
+import de.westnordost.streetcomplete.resources.cycleway_none
+import de.westnordost.streetcomplete.resources.cycleway_none_in_selection
+import de.westnordost.streetcomplete.resources.cycleway_none_no_oneway
+import de.westnordost.streetcomplete.resources.cycleway_none_no_oneway_l
+import de.westnordost.streetcomplete.resources.cycleway_separate
+import de.westnordost.streetcomplete.resources.cycleway_shoulder
+import de.westnordost.streetcomplete.resources.cycleway_sidewalk_explicit
+import de.westnordost.streetcomplete.resources.cycleway_sidewalk_explicit_dual
+import de.westnordost.streetcomplete.resources.cycleway_sidewalk_explicit_l
+import de.westnordost.streetcomplete.resources.cycleway_sidewalk_ok
+import de.westnordost.streetcomplete.resources.cycleway_sidewalk_ok_both
+import de.westnordost.streetcomplete.resources.cycleway_sidewalk_ok_l
+import de.westnordost.streetcomplete.resources.cycleway_track
+import de.westnordost.streetcomplete.resources.cycleway_track_dual
+import de.westnordost.streetcomplete.resources.cycleway_track_dual_l
+import de.westnordost.streetcomplete.resources.cycleway_track_l
+import de.westnordost.streetcomplete.resources.floating_separate
+import de.westnordost.streetcomplete.resources.quest_cycleway_value_advisory_lane
+import de.westnordost.streetcomplete.resources.quest_cycleway_value_bus_lane
+import de.westnordost.streetcomplete.resources.quest_cycleway_value_lane
+import de.westnordost.streetcomplete.resources.quest_cycleway_value_lane_dual
+import de.westnordost.streetcomplete.resources.quest_cycleway_value_none
+import de.westnordost.streetcomplete.resources.quest_cycleway_value_none_and_oneway
+import de.westnordost.streetcomplete.resources.quest_cycleway_value_none_but_no_oneway
+import de.westnordost.streetcomplete.resources.quest_cycleway_value_separate
+import de.westnordost.streetcomplete.resources.quest_cycleway_value_shared
+import de.westnordost.streetcomplete.resources.quest_cycleway_value_shoulder
+import de.westnordost.streetcomplete.resources.quest_cycleway_value_sidewalk2
+import de.westnordost.streetcomplete.resources.quest_cycleway_value_sidewalk_dual2
+import de.westnordost.streetcomplete.resources.quest_cycleway_value_sidewalk_ok
+import de.westnordost.streetcomplete.resources.quest_cycleway_value_sidewalk_ok_dual
+import de.westnordost.streetcomplete.resources.quest_cycleway_value_track
+import de.westnordost.streetcomplete.resources.quest_cycleway_value_track_dual
+import de.westnordost.streetcomplete.util.ktx.advisoryCycleLaneDrawable
+import de.westnordost.streetcomplete.util.ktx.advisoryCycleLaneMirroredDrawable
+import de.westnordost.streetcomplete.util.ktx.dualCycleLaneDrawable
+import de.westnordost.streetcomplete.util.ktx.dualCycleLaneMirroredDrawable
+import de.westnordost.streetcomplete.util.ktx.exclusiveCycleLaneDrawable
+import de.westnordost.streetcomplete.util.ktx.exclusiveCycleLaneMirroredDrawable
+import de.westnordost.streetcomplete.util.ktx.pictogramCycleLaneDrawable
+import de.westnordost.streetcomplete.util.ktx.pictogramCycleLaneMirroredDrawable
+import org.jetbrains.compose.resources.DrawableResource
+import org.jetbrains.compose.resources.StringResource
 
-fun CyclewayAndDirection.asDialogItem(
+// TODO dialog icon needs to be rotated 180 degrees if countryInfo.isLeftHandTraffic == true
+
+fun CyclewayAndDirection.getDialogIcon(
     isRight: Boolean,
-    isContraflowInOneway: Boolean,
-    context: Context,
     countryInfo: CountryInfo
-) =
-    Item2(
-        this,
-        getDialogIcon(context, isRight, countryInfo),
-        ResText(getTitleResId(isContraflowInOneway))
-    )
-
-fun CyclewayAndDirection.asStreetSideItem(
-    isRight: Boolean,
-    isContraflowInOneway: Boolean,
-    countryInfo: CountryInfo
-) =
-    StreetSideItem(
-        this,
-        getIconResId(isRight, countryInfo),
-        getTitleResId(isContraflowInOneway),
-        getDialogIconResId(isRight, countryInfo),
-        cycleway.getFloatingIconResId(isContraflowInOneway, countryInfo.noEntrySignDrawableResId)
-    )
-
-private fun CyclewayAndDirection.getDialogIcon(
-    context: Context,
-    isRight: Boolean,
-    countryInfo: CountryInfo
-): Image {
-    val id = getDialogIconResId(isRight, countryInfo)
-    return if (countryInfo.isLeftHandTraffic) {
-        DrawableImage(Rotate180Degrees(context.getDrawable(id)!!))
-    } else {
-        ResImage(id)
-    }
-}
-
-private fun CyclewayAndDirection.getDialogIconResId(isRight: Boolean, countryInfo: CountryInfo): Int =
+): DrawableResource? =
     when (cycleway) {
-        NONE ->     R.drawable.ic_cycleway_none_in_selection
-        SEPARATE -> R.drawable.ic_cycleway_separate
-        else ->     getIconResId(isRight, countryInfo)
+        NONE ->     Res.drawable.cycleway_none_in_selection
+        SEPARATE -> Res.drawable.cycleway_separate
+        else ->     getIcon(isRight, countryInfo)
     }
 
-private class Rotate180Degrees(drawable: Drawable) : DrawableWrapperCompat(drawable) {
-    override fun draw(canvas: Canvas) {
-        canvas.scale(-1f, -1f, bounds.width() / 2f, bounds.height() / 2f)
-        drawable?.bounds = bounds
-        drawable?.draw(canvas)
+fun Cycleway.getFloatingIcon(
+    isContraflowInOneway: Boolean,
+    noEntrySignDrawable: DrawableResource
+): DrawableResource? =
+    when (this) {
+        NONE ->     if (isContraflowInOneway) noEntrySignDrawable else null
+        SEPARATE -> Res.drawable.floating_separate
+        else ->     null
     }
-}
 
-private fun Cycleway.getFloatingIconResId(isContraflowInOneway: Boolean, noEntrySignDrawableResId: Int): Int? = when (this) {
-    NONE ->     if (isContraflowInOneway) noEntrySignDrawableResId else null
-    SEPARATE -> R.drawable.ic_floating_separate
-    else ->     null
-}
+fun CyclewayAndDirection.getIcon(
+    isRight: Boolean,
+    countryInfo: CountryInfo
+): DrawableResource? =
+    when (direction) {
+        BOTH -> cycleway.getDualTrafficIcon(countryInfo)
+        else -> {
+            val isForward = (direction == FORWARD)
+            val showMirrored = isForward xor isRight
+            if (showMirrored) {
+                cycleway.getLeftHandTrafficIcon(countryInfo)
+            } else {
+                cycleway.getRightHandTrafficIcon(countryInfo)
+            }
+        }
+    }
 
-private fun CyclewayAndDirection.getIconResId(isRight: Boolean, countryInfo: CountryInfo): Int = when (direction) {
-    BOTH -> cycleway.getDualTrafficIconResId(countryInfo)
-    else -> {
-        val isForward = (direction == FORWARD)
-        val showMirrored = isForward xor isRight
-        if (showMirrored) {
-            cycleway.getLeftHandTrafficIconResId(countryInfo)
-        } else {
-            cycleway.getRightHandTrafficIconResId(countryInfo)
-        }
+private fun Cycleway.getDualTrafficIcon(countryInfo: CountryInfo): DrawableResource? =
+    when (this) {
+        UNSPECIFIED_LANE, EXCLUSIVE_LANE ->
+            if (countryInfo.isLeftHandTraffic) {
+                countryInfo.dualCycleLaneMirroredDrawable
+            } else {
+                countryInfo.dualCycleLaneDrawable
+            }
+        TRACK ->
+            if (countryInfo.isLeftHandTraffic) {
+                Res.drawable.cycleway_track_dual_l
+            } else {
+                Res.drawable.cycleway_track_dual
+            }
+        SIDEWALK_EXPLICIT -> Res.drawable.cycleway_sidewalk_explicit_dual
+        SIDEWALK_OK ->       Res.drawable.cycleway_sidewalk_ok_both
+        else ->              null
     }
-}
 
-private fun Cycleway.getDualTrafficIconResId(countryInfo: CountryInfo): Int = when (this) {
-    UNSPECIFIED_LANE, EXCLUSIVE_LANE ->
-        if (countryInfo.isLeftHandTraffic) {
-            countryInfo.dualCycleLaneMirroredResId
-        } else {
-            countryInfo.dualCycleLaneResId
-        }
-    TRACK ->
-        if (countryInfo.isLeftHandTraffic) {
-            R.drawable.ic_cycleway_track_dual_l
-        } else {
-            R.drawable.ic_cycleway_track_dual
-        }
-    SIDEWALK_EXPLICIT ->                   R.drawable.ic_cycleway_sidewalk_explicit_dual
-    SIDEWALK_OK ->                         R.drawable.ic_cycleway_sidewalk_ok_both
-    else ->                                0
-}
+private fun Cycleway.getRightHandTrafficIcon(countryInfo: CountryInfo): DrawableResource? =
+    when (this) {
+        UNSPECIFIED_LANE ->  countryInfo.exclusiveCycleLaneDrawable
+        EXCLUSIVE_LANE ->    countryInfo.exclusiveCycleLaneDrawable
+        ADVISORY_LANE ->     countryInfo.advisoryCycleLaneDrawable
+        SUGGESTION_LANE ->   countryInfo.advisoryCycleLaneDrawable
+        TRACK ->             Res.drawable.cycleway_track
+        NONE ->              Res.drawable.cycleway_none
+        NONE_NO_ONEWAY ->    Res.drawable.cycleway_none_no_oneway
+        PICTOGRAMS ->        countryInfo.pictogramCycleLaneDrawable
+        SIDEWALK_EXPLICIT -> Res.drawable.cycleway_sidewalk_explicit
+        SIDEWALK_OK ->       Res.drawable.cycleway_sidewalk_ok
+        BUSWAY ->            Res.drawable.cycleway_bus_lane
+        SEPARATE ->          Res.drawable.cycleway_none
+        SHOULDER ->          Res.drawable.cycleway_shoulder
+        else -> null
+    }
 
-private fun Cycleway.getRightHandTrafficIconResId(countryInfo: CountryInfo): Int = when (this) {
-    UNSPECIFIED_LANE ->  countryInfo.exclusiveCycleLaneResId
-    EXCLUSIVE_LANE ->    countryInfo.exclusiveCycleLaneResId
-    ADVISORY_LANE ->     countryInfo.advisoryCycleLaneResId
-    SUGGESTION_LANE ->   countryInfo.advisoryCycleLaneResId
-    TRACK ->             R.drawable.ic_cycleway_track
-    NONE ->              R.drawable.ic_cycleway_none
-    NONE_NO_ONEWAY ->    R.drawable.ic_cycleway_none_no_oneway
-    PICTOGRAMS ->        countryInfo.pictogramCycleLaneResId
-    SIDEWALK_EXPLICIT -> R.drawable.ic_cycleway_sidewalk_explicit
-    SIDEWALK_OK ->       R.drawable.ic_cycleway_sidewalk_ok
-    BUSWAY ->            R.drawable.ic_cycleway_bus_lane
-    SEPARATE ->          R.drawable.ic_cycleway_none
-    SHOULDER ->          R.drawable.ic_cycleway_shoulder
-    else -> 0
-}
+private fun Cycleway.getLeftHandTrafficIcon(countryInfo: CountryInfo): DrawableResource? =
+    when (this) {
+        UNSPECIFIED_LANE ->  countryInfo.exclusiveCycleLaneMirroredDrawable
+        EXCLUSIVE_LANE ->    countryInfo.exclusiveCycleLaneMirroredDrawable
+        ADVISORY_LANE ->     countryInfo.advisoryCycleLaneMirroredDrawable
+        SUGGESTION_LANE ->   countryInfo.advisoryCycleLaneMirroredDrawable
+        TRACK ->             Res.drawable.cycleway_track_l
+        NONE ->              Res.drawable.cycleway_none
+        NONE_NO_ONEWAY ->    Res.drawable.cycleway_none_no_oneway_l
+        PICTOGRAMS ->        countryInfo.pictogramCycleLaneMirroredDrawable
+        SIDEWALK_EXPLICIT -> Res.drawable.cycleway_sidewalk_explicit_l
+        SIDEWALK_OK ->       Res.drawable.cycleway_sidewalk_ok_l
+        BUSWAY ->            Res.drawable.cycleway_bus_lane_l
+        SEPARATE ->          Res.drawable.cycleway_none
+        SHOULDER ->          Res.drawable.cycleway_shoulder
+        else -> null
+    }
 
-private fun Cycleway.getLeftHandTrafficIconResId(countryInfo: CountryInfo): Int = when (this) {
-    UNSPECIFIED_LANE ->  countryInfo.exclusiveCycleLaneMirroredResId
-    EXCLUSIVE_LANE ->    countryInfo.exclusiveCycleLaneMirroredResId
-    ADVISORY_LANE ->     countryInfo.advisoryCycleLaneMirroredResId
-    SUGGESTION_LANE ->   countryInfo.advisoryCycleLaneMirroredResId
-    TRACK ->             R.drawable.ic_cycleway_track_l
-    NONE ->              R.drawable.ic_cycleway_none
-    NONE_NO_ONEWAY ->    R.drawable.ic_cycleway_none_no_oneway_l
-    PICTOGRAMS ->        countryInfo.pictogramCycleLaneMirroredResId
-    SIDEWALK_EXPLICIT -> R.drawable.ic_cycleway_sidewalk_explicit_l
-    SIDEWALK_OK ->       R.drawable.ic_cycleway_sidewalk_ok_l
-    BUSWAY ->            R.drawable.ic_cycleway_bus_lane_l
-    SEPARATE ->          R.drawable.ic_cycleway_none
-    SHOULDER ->          R.drawable.ic_cycleway_shoulder
-    else -> 0
-}
-
-private fun CyclewayAndDirection.getTitleResId(isContraflowInOneway: Boolean): Int = when (cycleway) {
-    UNSPECIFIED_LANE, EXCLUSIVE_LANE -> {
-        if (direction == BOTH) {
-            R.string.quest_cycleway_value_lane_dual
-        } else {
-            R.string.quest_cycleway_value_lane
+fun CyclewayAndDirection.getTitle(isContraflowInOneway: Boolean): StringResource? =
+    when (cycleway) {
+        UNSPECIFIED_LANE, EXCLUSIVE_LANE -> {
+            if (direction == BOTH) {
+                Res.string.quest_cycleway_value_lane_dual
+            } else {
+                Res.string.quest_cycleway_value_lane
+            }
         }
-    }
-    TRACK -> {
-        if (direction == BOTH) {
-            R.string.quest_cycleway_value_track_dual
-        } else {
-            R.string.quest_cycleway_value_track
+        TRACK -> {
+            if (direction == BOTH) {
+                Res.string.quest_cycleway_value_track_dual
+            } else {
+                Res.string.quest_cycleway_value_track
+            }
         }
-    }
-    SIDEWALK_EXPLICIT -> {
-        if (direction == BOTH) {
-            R.string.quest_cycleway_value_sidewalk_dual2
-        } else {
-            R.string.quest_cycleway_value_sidewalk2
+        SIDEWALK_EXPLICIT -> {
+            if (direction == BOTH) {
+                Res.string.quest_cycleway_value_sidewalk_dual2
+            } else {
+                Res.string.quest_cycleway_value_sidewalk2
+            }
         }
-    }
-    NONE -> {
-        if (isContraflowInOneway) {
-            R.string.quest_cycleway_value_none_and_oneway
-        } else {
-            R.string.quest_cycleway_value_none
+        NONE -> {
+            if (isContraflowInOneway) {
+                Res.string.quest_cycleway_value_none_and_oneway
+            } else {
+                Res.string.quest_cycleway_value_none
+            }
         }
-    }
-    ADVISORY_LANE,
-    SUGGESTION_LANE ->   R.string.quest_cycleway_value_advisory_lane
-    NONE_NO_ONEWAY ->    R.string.quest_cycleway_value_none_but_no_oneway
-    PICTOGRAMS ->        R.string.quest_cycleway_value_shared
-    BUSWAY ->            R.string.quest_cycleway_value_bus_lane
-    SEPARATE ->          R.string.quest_cycleway_value_separate
-    SHOULDER ->          R.string.quest_cycleway_value_shoulder
-    SIDEWALK_OK ->       {
-        if (direction == BOTH) {
-            R.string.quest_cycleway_value_sidewalk_ok_dual
-        } else {
-            R.string.quest_cycleway_value_sidewalk_ok
+        ADVISORY_LANE,
+        SUGGESTION_LANE ->   Res.string.quest_cycleway_value_advisory_lane
+        NONE_NO_ONEWAY ->    Res.string.quest_cycleway_value_none_but_no_oneway
+        PICTOGRAMS ->        Res.string.quest_cycleway_value_shared
+        BUSWAY ->            Res.string.quest_cycleway_value_bus_lane
+        SEPARATE ->          Res.string.quest_cycleway_value_separate
+        SHOULDER ->          Res.string.quest_cycleway_value_shoulder
+        SIDEWALK_OK ->       {
+            if (direction == BOTH) {
+                Res.string.quest_cycleway_value_sidewalk_ok_dual
+            } else {
+                Res.string.quest_cycleway_value_sidewalk_ok
+            }
         }
+        else -> null
     }
-    else -> 0
-}

@@ -1,39 +1,48 @@
 package de.westnordost.streetcomplete.quests.memorial_type
 
-import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.memorial_type.MemorialType.BUST
-import de.westnordost.streetcomplete.quests.memorial_type.MemorialType.OBELISK
-import de.westnordost.streetcomplete.quests.memorial_type.MemorialType.PLAQUE
-import de.westnordost.streetcomplete.quests.memorial_type.MemorialType.SCULPTURE
-import de.westnordost.streetcomplete.quests.memorial_type.MemorialType.STATUE
-import de.westnordost.streetcomplete.quests.memorial_type.MemorialType.STONE
-import de.westnordost.streetcomplete.quests.memorial_type.MemorialType.STONE_STELE
-import de.westnordost.streetcomplete.quests.memorial_type.MemorialType.WAR_MEMORIAL
-import de.westnordost.streetcomplete.quests.memorial_type.MemorialType.WOODEN_STELE
-import de.westnordost.streetcomplete.view.image_select.Item
+import de.westnordost.streetcomplete.quests.memorial_type.MemorialType.*
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.memorial_type_bust
+import de.westnordost.streetcomplete.resources.memorial_type_obelisk
+import de.westnordost.streetcomplete.resources.memorial_type_plaque
+import de.westnordost.streetcomplete.resources.memorial_type_sculpture
+import de.westnordost.streetcomplete.resources.memorial_type_statue
+import de.westnordost.streetcomplete.resources.memorial_type_stele_stone
+import de.westnordost.streetcomplete.resources.memorial_type_stele_wooden
+import de.westnordost.streetcomplete.resources.memorial_type_stone
+import de.westnordost.streetcomplete.resources.memorial_type_war_memorial
+import de.westnordost.streetcomplete.resources.quest_memorialType_bust
+import de.westnordost.streetcomplete.resources.quest_memorialType_obelisk
+import de.westnordost.streetcomplete.resources.quest_memorialType_plaque
+import de.westnordost.streetcomplete.resources.quest_memorialType_sculpture
+import de.westnordost.streetcomplete.resources.quest_memorialType_statue
+import de.westnordost.streetcomplete.resources.quest_memorialType_stele_stone
+import de.westnordost.streetcomplete.resources.quest_memorialType_stele_wooden
+import de.westnordost.streetcomplete.resources.quest_memorialType_stone
+import de.westnordost.streetcomplete.resources.quest_memorialType_war_memorial
+import org.jetbrains.compose.resources.DrawableResource
+import org.jetbrains.compose.resources.StringResource
 
-fun MemorialType.asItem() = Item(this, iconResId, titleResId)
-
-private val MemorialType.titleResId: Int get() = when (this) {
-    STATUE ->       R.string.quest_memorialType_statue
-    BUST ->         R.string.quest_memorialType_bust
-    PLAQUE ->       R.string.quest_memorialType_plaque
-    WAR_MEMORIAL -> R.string.quest_memorialType_war_memorial
-    STONE ->        R.string.quest_memorialType_stone
-    OBELISK ->      R.string.quest_memorialType_obelisk
-    WOODEN_STELE -> R.string.quest_memorialType_stele_wooden
-    STONE_STELE ->  R.string.quest_memorialType_stele_stone
-    SCULPTURE ->    R.string.quest_memorialType_sculpture
+val MemorialType.title: StringResource get() = when (this) {
+    STATUE ->       Res.string.quest_memorialType_statue
+    BUST ->         Res.string.quest_memorialType_bust
+    PLAQUE ->       Res.string.quest_memorialType_plaque
+    WAR_MEMORIAL -> Res.string.quest_memorialType_war_memorial
+    STONE ->        Res.string.quest_memorialType_stone
+    OBELISK ->      Res.string.quest_memorialType_obelisk
+    WOODEN_STELE -> Res.string.quest_memorialType_stele_wooden
+    STONE_STELE ->  Res.string.quest_memorialType_stele_stone
+    SCULPTURE ->    Res.string.quest_memorialType_sculpture
 }
 
-private val MemorialType.iconResId: Int get() = when (this) {
-    STATUE ->       R.drawable.memorial_type_statue
-    BUST ->         R.drawable.memorial_type_bust
-    PLAQUE ->       R.drawable.memorial_type_plaque
-    WAR_MEMORIAL -> R.drawable.memorial_type_war_memorial
-    STONE ->        R.drawable.memorial_type_stone
-    OBELISK ->      R.drawable.memorial_type_obelisk
-    WOODEN_STELE -> R.drawable.memorial_type_stele_wooden
-    STONE_STELE ->  R.drawable.memorial_type_stele_stone
-    SCULPTURE ->    R.drawable.memorial_type_sculpture
+val MemorialType.icon: DrawableResource get() = when (this) {
+    STATUE ->       Res.drawable.memorial_type_statue
+    BUST ->         Res.drawable.memorial_type_bust
+    PLAQUE ->       Res.drawable.memorial_type_plaque
+    WAR_MEMORIAL -> Res.drawable.memorial_type_war_memorial
+    STONE ->        Res.drawable.memorial_type_stone
+    OBELISK ->      Res.drawable.memorial_type_obelisk
+    WOODEN_STELE -> Res.drawable.memorial_type_stele_wooden
+    STONE_STELE ->  Res.drawable.memorial_type_stele_stone
+    SCULPTURE ->    Res.drawable.memorial_type_sculpture
 }

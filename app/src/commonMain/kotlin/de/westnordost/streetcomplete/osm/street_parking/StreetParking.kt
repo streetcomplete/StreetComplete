@@ -38,7 +38,18 @@ enum class ParkingPosition {
     STREET_SIDE,
     STAGGERED_ON_STREET,
     STAGGERED_HALF_ON_STREET,
-    PAINTED_AREA_ONLY
+    PAINTED_AREA_ONLY;
+
+    companion object {
+        val displayedValues = listOf(
+            ON_STREET,
+            HALF_ON_STREET,
+            OFF_STREET,
+            STREET_SIDE,
+            STAGGERED_ON_STREET,
+            STAGGERED_HALF_ON_STREET
+        )
+    }
 }
 
 fun LeftAndRightStreetParking.validOrNullValues(): LeftAndRightStreetParking {

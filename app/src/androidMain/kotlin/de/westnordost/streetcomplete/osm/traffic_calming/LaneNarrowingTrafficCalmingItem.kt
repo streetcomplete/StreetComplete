@@ -1,23 +1,24 @@
 package de.westnordost.streetcomplete.osm.traffic_calming
 
-import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.osm.traffic_calming.LaneNarrowingTrafficCalming.*
-import de.westnordost.streetcomplete.view.image_select.DisplayItem
-import de.westnordost.streetcomplete.view.image_select.Item
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.lane_narrowing_traffic_calming_chicane
+import de.westnordost.streetcomplete.resources.lane_narrowing_traffic_calming_choked_island
+import de.westnordost.streetcomplete.resources.lane_narrowing_traffic_calming_choker
+import de.westnordost.streetcomplete.resources.lane_narrowing_traffic_calming_island
+import org.jetbrains.compose.resources.DrawableResource
+import org.jetbrains.compose.resources.StringResource
 
-fun LaneNarrowingTrafficCalming.asItem(): DisplayItem<LaneNarrowingTrafficCalming> =
-    Item(this, iconResId, titleResId)
-
-private val LaneNarrowingTrafficCalming.iconResId: Int get() = when (this) {
-    CHOKER -> R.drawable.lane_narrowing_traffic_calming_choker
-    ISLAND -> R.drawable.lane_narrowing_traffic_calming_island
-    CHICANE -> R.drawable.lane_narrowing_traffic_calming_chicane
-    CHOKED_ISLAND -> R.drawable.lane_narrowing_traffic_calming_choked_island
+val LaneNarrowingTrafficCalming.icon: DrawableResource get() = when (this) {
+    CHOKER -> Res.drawable.lane_narrowing_traffic_calming_choker
+    ISLAND -> Res.drawable.lane_narrowing_traffic_calming_island
+    CHICANE -> Res.drawable.lane_narrowing_traffic_calming_chicane
+    CHOKED_ISLAND -> Res.drawable.lane_narrowing_traffic_calming_choked_island
 }
 
-private val LaneNarrowingTrafficCalming.titleResId: Int get() = when (this) {
-    CHOKER -> R.string.lane_narrowing_traffic_calming_choker
-    ISLAND -> R.string.lane_narrowing_traffic_calming_island
-    CHICANE -> R.string.lane_narrowing_traffic_calming_chicane
-    CHOKED_ISLAND -> R.string.lane_narrowing_traffic_calming_choked_island
+val LaneNarrowingTrafficCalming.titleResId: StringResource get() = when (this) {
+    CHOKER -> Res.string.lane_narrowing_traffic_calming_choker
+    ISLAND -> Res.string.lane_narrowing_traffic_calming_island
+    CHICANE -> Res.string.lane_narrowing_traffic_calming_chicane
+    CHOKED_ISLAND -> Res.string.lane_narrowing_traffic_calming_choked_island
 }

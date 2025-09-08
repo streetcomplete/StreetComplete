@@ -1,27 +1,23 @@
 package de.westnordost.streetcomplete.quests.oneway
 
-import android.content.Context
-import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.view.DrawableImage
-import de.westnordost.streetcomplete.view.ResText
-import de.westnordost.streetcomplete.view.RotatedCircleDrawable
-import de.westnordost.streetcomplete.view.image_select.DisplayItem
-import de.westnordost.streetcomplete.view.image_select.Item2
+import de.westnordost.streetcomplete.quests.oneway.OnewayAnswer.*
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.oneway_no
+import de.westnordost.streetcomplete.resources.oneway_yes
+import de.westnordost.streetcomplete.resources.oneway_yes_reverse
+import de.westnordost.streetcomplete.resources.quest_oneway2_dir
+import de.westnordost.streetcomplete.resources.quest_oneway2_no_oneway
+import org.jetbrains.compose.resources.DrawableResource
+import org.jetbrains.compose.resources.StringResource
 
-fun OnewayAnswer.asItem(context: Context, rotation: Float): DisplayItem<OnewayAnswer> {
-    val drawable = RotatedCircleDrawable(context.getDrawable(iconResId)!!)
-    drawable.rotation = rotation
-    return Item2(this, DrawableImage(drawable), ResText(titleResId))
+val OnewayAnswer.title: StringResource get() = when (this) {
+    FORWARD -> Res.string.quest_oneway2_dir
+    BACKWARD -> Res.string.quest_oneway2_dir
+    NO_ONEWAY -> Res.string.quest_oneway2_no_oneway
 }
 
-private val OnewayAnswer.titleResId: Int get() = when (this) {
-    OnewayAnswer.FORWARD -> R.string.quest_oneway2_dir
-    OnewayAnswer.BACKWARD -> R.string.quest_oneway2_dir
-    OnewayAnswer.NO_ONEWAY -> R.string.quest_oneway2_no_oneway
-}
-
-private val OnewayAnswer.iconResId: Int get() = when (this) {
-    OnewayAnswer.FORWARD -> R.drawable.ic_oneway_yes
-    OnewayAnswer.BACKWARD -> R.drawable.ic_oneway_yes_reverse
-    OnewayAnswer.NO_ONEWAY -> R.drawable.ic_oneway_no
+val OnewayAnswer.icon: DrawableResource get() = when (this) {
+    FORWARD -> Res.drawable.oneway_yes
+    BACKWARD -> Res.drawable.oneway_yes_reverse
+    NO_ONEWAY -> Res.drawable.oneway_no
 }

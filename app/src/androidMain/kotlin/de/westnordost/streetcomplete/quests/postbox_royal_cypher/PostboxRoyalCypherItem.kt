@@ -1,44 +1,46 @@
 package de.westnordost.streetcomplete.quests.postbox_royal_cypher
 
-import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.postbox_royal_cypher.PostboxRoyalCypher.CHARLES_III
-import de.westnordost.streetcomplete.quests.postbox_royal_cypher.PostboxRoyalCypher.EDWARD_VII
-import de.westnordost.streetcomplete.quests.postbox_royal_cypher.PostboxRoyalCypher.EDWARD_VIII
-import de.westnordost.streetcomplete.quests.postbox_royal_cypher.PostboxRoyalCypher.ELIZABETH_II
-import de.westnordost.streetcomplete.quests.postbox_royal_cypher.PostboxRoyalCypher.GEORGE_V
-import de.westnordost.streetcomplete.quests.postbox_royal_cypher.PostboxRoyalCypher.GEORGE_VI
-import de.westnordost.streetcomplete.quests.postbox_royal_cypher.PostboxRoyalCypher.NONE
-import de.westnordost.streetcomplete.quests.postbox_royal_cypher.PostboxRoyalCypher.SCOTTISH_CROWN
-import de.westnordost.streetcomplete.quests.postbox_royal_cypher.PostboxRoyalCypher.VICTORIA
-import de.westnordost.streetcomplete.view.image_select.DisplayItem
-import de.westnordost.streetcomplete.view.image_select.Item
+import de.westnordost.streetcomplete.quests.postbox_royal_cypher.PostboxRoyalCypher.*
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.postbox_royal_cypher_ciiir
+import de.westnordost.streetcomplete.resources.postbox_royal_cypher_eiir
+import de.westnordost.streetcomplete.resources.postbox_royal_cypher_eviiir
+import de.westnordost.streetcomplete.resources.postbox_royal_cypher_eviir
+import de.westnordost.streetcomplete.resources.postbox_royal_cypher_gr
+import de.westnordost.streetcomplete.resources.postbox_royal_cypher_gvir
+import de.westnordost.streetcomplete.resources.postbox_royal_cypher_scottish_crown
+import de.westnordost.streetcomplete.resources.postbox_royal_cypher_vr
+import de.westnordost.streetcomplete.resources.quest_postboxRoyalCypher_type_ciiir
+import de.westnordost.streetcomplete.resources.quest_postboxRoyalCypher_type_eiir
+import de.westnordost.streetcomplete.resources.quest_postboxRoyalCypher_type_eviiir
+import de.westnordost.streetcomplete.resources.quest_postboxRoyalCypher_type_eviir
+import de.westnordost.streetcomplete.resources.quest_postboxRoyalCypher_type_gr
+import de.westnordost.streetcomplete.resources.quest_postboxRoyalCypher_type_gvir
+import de.westnordost.streetcomplete.resources.quest_postboxRoyalCypher_type_scottish_crown
+import de.westnordost.streetcomplete.resources.quest_postboxRoyalCypher_type_vr
+import org.jetbrains.compose.resources.DrawableResource
+import org.jetbrains.compose.resources.StringResource
 
-fun PostboxRoyalCypher.asItem(): DisplayItem<PostboxRoyalCypher>? {
-    val iconResId = iconResId ?: return null
-    val titleResId = titleResId ?: return null
-    return Item(this, iconResId, titleResId)
-}
-
-private val PostboxRoyalCypher.titleResId: Int? get() = when (this) {
-    ELIZABETH_II ->   R.string.quest_postboxRoyalCypher_type_eiir
-    GEORGE_V ->       R.string.quest_postboxRoyalCypher_type_gr
-    GEORGE_VI ->      R.string.quest_postboxRoyalCypher_type_gvir
-    VICTORIA ->       R.string.quest_postboxRoyalCypher_type_vr
-    EDWARD_VII ->     R.string.quest_postboxRoyalCypher_type_eviir
-    SCOTTISH_CROWN -> R.string.quest_postboxRoyalCypher_type_scottish_crown
-    EDWARD_VIII ->    R.string.quest_postboxRoyalCypher_type_eviiir
-    CHARLES_III ->    R.string.quest_postboxRoyalCypher_type_ciiir
+val PostboxRoyalCypher.title: StringResource? get() = when (this) {
+    ELIZABETH_II ->   Res.string.quest_postboxRoyalCypher_type_eiir
+    GEORGE_V ->       Res.string.quest_postboxRoyalCypher_type_gr
+    GEORGE_VI ->      Res.string.quest_postboxRoyalCypher_type_gvir
+    VICTORIA ->       Res.string.quest_postboxRoyalCypher_type_vr
+    EDWARD_VII ->     Res.string.quest_postboxRoyalCypher_type_eviir
+    SCOTTISH_CROWN -> Res.string.quest_postboxRoyalCypher_type_scottish_crown
+    EDWARD_VIII ->    Res.string.quest_postboxRoyalCypher_type_eviiir
+    CHARLES_III ->    Res.string.quest_postboxRoyalCypher_type_ciiir
     NONE ->           null
 }
 
-private val PostboxRoyalCypher.iconResId: Int? get() = when (this) {
-    ELIZABETH_II ->   R.drawable.ic_postbox_royal_cypher_eiir
-    GEORGE_V ->       R.drawable.ic_postbox_royal_cypher_gr
-    GEORGE_VI ->      R.drawable.ic_postbox_royal_cypher_gvir
-    VICTORIA ->       R.drawable.ic_postbox_royal_cypher_vr
-    EDWARD_VII ->     R.drawable.ic_postbox_royal_cypher_eviir
-    SCOTTISH_CROWN -> R.drawable.ic_postbox_royal_cypher_scottish_crown
-    EDWARD_VIII ->    R.drawable.ic_postbox_royal_cypher_eviiir
-    CHARLES_III ->    R.drawable.ic_postbox_royal_cypher_ciiir
+val PostboxRoyalCypher.icon: DrawableResource? get() = when (this) {
+    ELIZABETH_II ->   Res.drawable.postbox_royal_cypher_eiir
+    GEORGE_V ->       Res.drawable.postbox_royal_cypher_gr
+    GEORGE_VI ->      Res.drawable.postbox_royal_cypher_gvir
+    VICTORIA ->       Res.drawable.postbox_royal_cypher_vr
+    EDWARD_VII ->     Res.drawable.postbox_royal_cypher_eviir
+    SCOTTISH_CROWN -> Res.drawable.postbox_royal_cypher_scottish_crown
+    EDWARD_VIII ->    Res.drawable.postbox_royal_cypher_eviiir
+    CHARLES_III ->    Res.drawable.postbox_royal_cypher_ciiir
     NONE ->           null
 }
