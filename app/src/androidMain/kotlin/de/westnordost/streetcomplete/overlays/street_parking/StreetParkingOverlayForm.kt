@@ -48,8 +48,8 @@ class StreetParkingOverlayForm : AStreetSideSelectOverlayForm<StreetParking>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        streetSideSelect.defaultPuzzleImageLeft = ResImage(if (isLeftSideUpsideDown) R.drawable.ic_street_side_unknown_l else R.drawable.ic_street_side_unknown)
-        streetSideSelect.defaultPuzzleImageRight = ResImage(if (isRightSideUpsideDown) R.drawable.ic_street_side_unknown_l else R.drawable.ic_street_side_unknown)
+        streetSideSelect.defaultPuzzleImageLeft = ResImage(if (isLeftSideUpsideDown) R.drawable.street_side_unknown_l else R.drawable.street_side_unknown)
+        streetSideSelect.defaultPuzzleImageRight = ResImage(if (isRightSideUpsideDown) R.drawable.street_side_unknown_l else R.drawable.street_side_unknown)
 
         val width = element!!.tags["width"]
         binding.hintTextView.text = if (width != null) {

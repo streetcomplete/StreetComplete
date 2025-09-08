@@ -37,7 +37,7 @@
                 android:paddingEnd="6dp"
                 android:paddingTop="6dp"
                 android:scaleType="fitCenter"
-                app:srcCompat="@drawable/ic_lanes_marked"
+                app:srcCompat="@drawable/lanes_marked"
                 android:adjustViewBounds="true"/>
 
             <TextView
@@ -65,7 +65,7 @@
                 android:paddingEnd="6dp"
                 android:paddingTop="6dp"
                 android:scaleType="fitCenter"
-                app:srcCompat="@drawable/ic_lanes_unmarked"
+                app:srcCompat="@drawable/lanes_unmarked"
                 android:adjustViewBounds="true"/>
 
             <TextView
@@ -93,7 +93,7 @@
                 android:paddingEnd="6dp"
                 android:paddingTop="6dp"
                 android:scaleType="fitCenter"
-                app:srcCompat="@drawable/ic_lanes_marked_odd"
+                app:srcCompat="@drawable/lanes_marked_odd"
                 android:adjustViewBounds="true"/>
 
             <TextView

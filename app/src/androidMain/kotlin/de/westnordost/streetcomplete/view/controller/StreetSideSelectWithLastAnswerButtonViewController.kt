@@ -53,13 +53,13 @@ class StreetSideSelectWithLastAnswerButtonViewController<I>(
         }
 
     /** image to display when no selection has been made */
-    var defaultPuzzleImageLeft: Image = ResImage(R.drawable.ic_street_side_unknown)
+    var defaultPuzzleImageLeft: Image = ResImage(R.drawable.street_side_unknown)
         set(value) {
             field = value
             if (left == null) puzzleView.setLeftSideImage(value)
         }
 
-    var defaultPuzzleImageRight: Image = ResImage(R.drawable.ic_street_side_unknown)
+    var defaultPuzzleImageRight: Image = ResImage(R.drawable.street_side_unknown)
         set(value) {
             field = value
             if (right == null) puzzleView.setRightSideImage(value)

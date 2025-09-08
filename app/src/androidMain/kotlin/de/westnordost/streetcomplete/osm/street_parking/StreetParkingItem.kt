@@ -53,9 +53,9 @@ private fun StreetParking.getIcon(context: Context, isUpsideDown: Boolean, isRig
     is StreetParking.PositionAndOrientation ->
         getIcon(context, isUpsideDown, isRightSide)
     StreetParking.None, StreetParking.Separate ->
-        ResImage(R.drawable.ic_street_none)
+        ResImage(R.drawable.street_none)
     StreetParking.Unknown, StreetParking.Incomplete ->
-        ResImage(if (isUpsideDown) R.drawable.ic_street_side_unknown_l else R.drawable.ic_street_side_unknown)
+        ResImage(if (isUpsideDown) R.drawable.street_side_unknown_l else R.drawable.street_side_unknown)
 }
 
 /** Icon that should be shown as the icon in a selection dialog */
@@ -67,7 +67,7 @@ private fun StreetParking.getDialogIcon(context: Context, isUpsideDown: Boolean)
     StreetParking.Separate ->
         ResImage(R.drawable.floating_separate)
     StreetParking.Incomplete, StreetParking.Unknown ->
-        ResImage(if (isUpsideDown) R.drawable.ic_street_side_unknown_l else R.drawable.ic_street_side_unknown)
+        ResImage(if (isUpsideDown) R.drawable.street_side_unknown_l else R.drawable.street_side_unknown)
 }
 
 /** Icon that should be shown as the floating icon in the street side select puzzle */

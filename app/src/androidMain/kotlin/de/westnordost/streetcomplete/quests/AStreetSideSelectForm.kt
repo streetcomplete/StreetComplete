@@ -49,7 +49,7 @@ abstract class AStreetSideSelectForm<I, T> : AbstractOsmQuestForm<T>() {
         streetSideSelect.isEnabled = !isDisplayingPrevious
         streetSideSelect.onClickSide = ::onClickSide
         streetSideSelect.offsetPuzzleRotation = (geometry as ElementPolylinesGeometry).getOrientationAtCenterLineInDegrees()
-        val defaultPuzzleImage = ResImage(if (countryInfo.isLeftHandTraffic) R.drawable.ic_street_side_unknown_l else R.drawable.ic_street_side_unknown)
+        val defaultPuzzleImage = ResImage(if (countryInfo.isLeftHandTraffic) R.drawable.street_side_unknown_l else R.drawable.street_side_unknown)
         streetSideSelect.defaultPuzzleImageLeft = defaultPuzzleImage
         streetSideSelect.defaultPuzzleImageRight = defaultPuzzleImage
         streetSideSelect.updateLastSelectionButton()
