@@ -159,7 +159,7 @@ class OpeningHoursAdapter(private val context: Context) :
     }
 
     fun addNewOffDays() {
-        openSetWeekdaysDialog(null) { weekdays -> addOffDays(weekdays) }
+        openSetWeekdaysDialog(getOffDaysSuggestion()) { weekdays -> addOffDays(weekdays) }
     }
 
     private fun addOffDays(weekdays: Weekdays) {
@@ -315,6 +315,23 @@ class OpeningHoursAdapter(private val context: Context) :
             return Weekdays(result)
         }
         return Weekdays()
+    }
+
+    private fun getOffDaysSuggestion(): Weekdays {
+        // Returns all days that are not selected
+        val mentionedWorkdays = BooleanArray(Weekdays.OSM_ABBR_WEEKDAYS.size)
+        for (row in rows) {
+            if (row is OpeningWeekdaysRow) {
+                row.weekdays.selection.forEachIndexed { index, b ->
+                    if (b) mentionedWorkdays[index] = true
+                }
+            }
+        }
+        val unmentionedWorkdays = BooleanArray(Weekdays.OSM_ABBR_WEEKDAYS.size)
+        mentionedWorkdays.forEachIndexed { index, b ->
+            unmentionedWorkdays[index] = !b
+        }
+        return Weekdays(unmentionedWorkdays)
     }
 
     private fun openSetWeekdaysDialog(weekdays: Weekdays?, callback: (Weekdays) -> Unit) {
