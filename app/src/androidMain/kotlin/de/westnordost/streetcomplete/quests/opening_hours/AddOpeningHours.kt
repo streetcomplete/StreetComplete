@@ -65,7 +65,7 @@ class AddOpeningHours(
                 "coworking_space",                                                                  // work
 
                 // name & opening hours
-                "boat_rental"
+                "boat_rental", "vehicle_inspection",
 
                 // not ATM because too often it's simply 24/7 and too often it is confused with
                 // a bank that might be just next door because the app does not tell the user what
