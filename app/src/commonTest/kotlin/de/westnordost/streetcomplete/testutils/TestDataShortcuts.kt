@@ -121,7 +121,7 @@ fun edit(
     isNearUserLocation
 )
 
-fun atpEntry( // TODO: duplicates "private fun createAtpEntry" - is it possible to resolve this duplication?
+fun atpEntry(
     id: Long = 5,
     position: LatLon = LatLon(1.0, 1.0),
     osmMatch: ElementKey = ElementKey(NODE, 1),
