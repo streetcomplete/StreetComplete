@@ -13,7 +13,6 @@ import de.westnordost.streetcomplete.osm.building.BuildingType
 import de.westnordost.streetcomplete.osm.building.BuildingType.*
 import de.westnordost.streetcomplete.osm.building.OTHER_KEYS_POTENTIALLY_DESCRIBING_BUILDING_TYPE
 import de.westnordost.streetcomplete.osm.building.createBuildingType
-import de.westnordost.streetcomplete.osm.building.iconResId
 import de.westnordost.streetcomplete.quests.building_type.AddBuildingType
 
 class BuildingsOverlay : Overlay, AndroidOverlay {
