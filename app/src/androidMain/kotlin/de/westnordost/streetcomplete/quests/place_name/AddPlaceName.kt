@@ -52,7 +52,7 @@ class AddPlaceName(
                 "coworking_space",                                                                  // work
 
                 // name & opening hours
-                "boat_rental", "vehicle_inspection",
+                "boat_rental", "vehicle_inspection", "motorcycle_rental",
 
                 // name & wheelchair
                 "theatre",                                        // culture
