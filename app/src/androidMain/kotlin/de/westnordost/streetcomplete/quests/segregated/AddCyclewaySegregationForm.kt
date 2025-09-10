@@ -15,6 +15,7 @@ class AddCyclewaySegregationForm : AImageListQuestForm<CyclewaySegregation, Cycl
     @Composable override fun BoxScope.ItemContent(item: CyclewaySegregation) {
         ImageWithDescription(
             painter = painterResource(item.getIcon(countryInfo.isLeftHandTraffic)),
+            title = null,
             description = stringResource(item.title)
         )
     }
