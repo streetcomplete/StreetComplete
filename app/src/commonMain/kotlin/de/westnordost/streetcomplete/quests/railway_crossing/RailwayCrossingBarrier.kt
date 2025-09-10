@@ -15,7 +15,7 @@ enum class RailwayCrossingBarrier(val osmValue: String?) {
     CHICANE(null);
 
     companion object {
-        fun getSelectableValues(isPedestrianCrossing: Boolean) =
+        fun getSelectableValues(isPedestrianCrossing: Boolean): List<RailwayCrossingBarrier> =
             if (isPedestrianCrossing) {
                 listOf(NO, CHICANE, GATE, FULL)
             } else {

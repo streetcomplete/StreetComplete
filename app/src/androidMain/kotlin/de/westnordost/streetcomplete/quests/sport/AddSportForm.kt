@@ -1,11 +1,15 @@
 package de.westnordost.streetcomplete.quests.sport
 
-import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
+import androidx.compose.foundation.layout.BoxScope
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AImageListQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.sport.Sport.MULTI
+import de.westnordost.streetcomplete.ui.common.image_select.ImageWithLabel
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 
 class AddSportForm : AImageListQuestForm<Sport, List<Sport>>() {
 
@@ -13,15 +17,15 @@ class AddSportForm : AImageListQuestForm<Sport, List<Sport>>() {
         AnswerItem(R.string.quest_sport_answer_multi) { applyMultiAnswer() }
     )
 
-    override val items get() = Sport.entries
-        .mapNotNull { it.asItem() }
-        .sortedBy { sportPosition(it.value!!.osmValue) }
+    override val items get() = (Sport.entries - MULTI).sortedBy { sportPosition(it.osmValue) }
 
     override val maxSelectableItems = -1
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        imageSelector.cellLayoutId = R.layout.cell_icon_select_with_label_below
+    @Composable override fun BoxScope.ItemContent(item: Sport) {
+        ImageWithLabel(
+            item.icon?.let { painterResource(it) },
+            item.title?.let { stringResource(it) }
+        )
     }
 
     override fun onClickOk(selectedItems: List<Sport>) {

@@ -55,12 +55,6 @@ import de.westnordost.streetcomplete.resources.surface_unpaved_area
 import de.westnordost.streetcomplete.resources.surface_wood
 import de.westnordost.streetcomplete.resources.surface_woodchips
 import de.westnordost.streetcomplete.resources.unknown_surface_title
-import de.westnordost.streetcomplete.view.DrawableImage
-import de.westnordost.streetcomplete.view.ResImage
-import de.westnordost.streetcomplete.view.ResText
-import de.westnordost.streetcomplete.view.RotatedCircleDrawable
-import de.westnordost.streetcomplete.view.controller.StreetSideDisplayItem
-import de.westnordost.streetcomplete.view.controller.StreetSideItem2
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.StringResource
 

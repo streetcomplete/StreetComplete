@@ -1,10 +1,15 @@
 package de.westnordost.streetcomplete.quests.religion
 
 import android.os.Bundle
+import androidx.compose.foundation.layout.BoxScope
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AImageListQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.religion.Religion.MULTIFAITH
+import de.westnordost.streetcomplete.ui.common.image_select.ImageWithLabel
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 
 class AddReligionForm : AImageListQuestForm<Religion, Religion>() {
 
@@ -12,9 +17,8 @@ class AddReligionForm : AImageListQuestForm<Religion, Religion>() {
         AnswerItem(R.string.quest_religion_for_place_of_worship_answer_multi) { applyAnswer(MULTIFAITH) }
     )
 
-    override val items get() = Religion.entries
-        .mapNotNull { it.asItem() }
-        .sortedBy { religionPosition(it.value!!.osmValue) }
+    override val items get() = (Religion.entries - MULTIFAITH)
+        .sortedBy { religionPosition(it.osmValue) }
 
     fun religionPosition(osmValue: String): Int {
         val position = countryInfo.popularReligions.indexOf(osmValue)
@@ -25,9 +29,11 @@ class AddReligionForm : AImageListQuestForm<Religion, Religion>() {
         return position
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        imageSelector.cellLayoutId = R.layout.cell_icon_select_with_label_below
+    @Composable override fun BoxScope.ItemContent(item: Religion) {
+        ImageWithLabel(
+            item.icon?.let { painterResource(it) },
+            item.title?.let { stringResource(it) }
+        )
     }
 
     override fun onClickOk(selectedItems: List<Religion>) {

@@ -18,8 +18,7 @@ class AddRecyclingContainerMaterialsForm :
         AnswerItem(R.string.quest_recycling_materials_answer_waste) { confirmJustTrash() }
     )
 
-    override val items get() = RecyclingMaterial.selectableValues.map { it.asItem() }
-
+    override val items = RecyclingMaterial.selectableValues.map { it.asItem() }
     override val maxSelectableItems = -1
 
     private val isAnyGlassRecyclable get() = countryInfo.isUsuallyAnyGlassRecyclableInContainers

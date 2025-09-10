@@ -11,13 +11,13 @@ import de.westnordost.streetcomplete.resources.quest_powerPolesMaterial_wood
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.StringResource
 
-val PowerPolesMaterial.title: StringResource? get() = when (this) {
+val PowerPolesMaterial.title: StringResource get() = when (this) {
     WOOD ->     Res.string.quest_powerPolesMaterial_wood
     STEEL ->    Res.string.quest_powerPolesMaterial_metal
     CONCRETE -> Res.string.quest_powerPolesMaterial_concrete
 }
 
-val PowerPolesMaterial.icon: DrawableResource? get() = when (this) {
+val PowerPolesMaterial.icon: DrawableResource get() = when (this) {
     WOOD ->     Res.drawable.power_pole_wood
     STEEL ->    Res.drawable.power_pole_steel
     CONCRETE -> Res.drawable.power_pole_concrete

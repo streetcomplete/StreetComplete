@@ -2,14 +2,13 @@ package de.westnordost.streetcomplete.quests
 
 import android.os.Bundle
 import android.view.View
+import androidx.compose.foundation.layout.BoxScope
+import androidx.compose.runtime.Composable
 import androidx.core.view.isGone
-import androidx.recyclerview.widget.GridLayoutManager
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.databinding.QuestGenericListBinding
 import de.westnordost.streetcomplete.util.takeFavorites
-import de.westnordost.streetcomplete.view.image_select.DisplayItem
-import de.westnordost.streetcomplete.view.image_select.ImageSelectAdapter
 import org.koin.android.ext.android.inject
 
 /**
@@ -32,8 +31,6 @@ abstract class AImageListQuestForm<I, T> : AbstractOsmQuestForm<T>() {
 
     protected open val descriptionResId: Int? = null
 
-    protected lateinit var imageSelector: ImageSelectAdapter<I>
-
     protected open val itemsPerRow = 4
     /** return -1 for any number. Default: 1  */
     protected open val maxSelectableItems = 1
@@ -41,15 +38,16 @@ abstract class AImageListQuestForm<I, T> : AbstractOsmQuestForm<T>() {
      *  items do not all fit into one line */
     protected open val moveFavoritesToFront = true
     /** items to display. May not be accessed before onCreate */
-    protected abstract val items: List<DisplayItem<I>>
+    protected abstract val items: List<I>
 
-    private lateinit var itemsByString: Map<String, DisplayItem<I>>
+    private lateinit var itemsByString: Map<String, I>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        imageSelector = ImageSelectAdapter(maxSelectableItems)
-        itemsByString = items.associateBy { it.value.toString() }
+        itemsByString = items.associateBy { it.toString() }
     }
+
+    @Composable protected abstract fun BoxScope.ItemContent(item: I)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -57,51 +55,27 @@ abstract class AImageListQuestForm<I, T> : AbstractOsmQuestForm<T>() {
         binding.descriptionLabel.isGone = descriptionResId == null
         descriptionResId?.let { binding.descriptionLabel.setText(it) }
 
-        binding.list.layoutManager = GridLayoutManager(activity, itemsPerRow)
-        binding.list.isNestedScrollingEnabled = false
-
         binding.selectHintLabel.setText(
             if (maxSelectableItems == 1) R.string.quest_roofShape_select_one
             else R.string.quest_multiselect_hint
         )
 
-        imageSelector.listeners.add(object : ImageSelectAdapter.OnItemSelectionListener {
-            override fun onIndexSelected(index: Int) {
-                checkIsFormComplete()
-            }
-
-            override fun onIndexDeselected(index: Int) {
-                checkIsFormComplete()
-            }
-        })
-
-        imageSelector.items = moveFavouritesToFront(items)
-        if (savedInstanceState != null) {
-            val selectedIndices = savedInstanceState.getIntegerArrayList(SELECTED_INDICES)!!
-            imageSelector.select(selectedIndices)
-        }
-        binding.list.adapter = imageSelector
+        // TODO moveFavouritesToFront(items)
     }
 
     override fun onClickOk() {
-        val values = imageSelector.selectedItems
+        val values = listOf<I>() // TODO
         if (values.isNotEmpty()) {
-            prefs.addLastPicked(this::class.simpleName!!, values.map { it.value.toString() })
-            onClickOk(values.map { it.value!! })
+            prefs.addLastPicked(this::class.simpleName!!, values.map { it.toString() })
+            onClickOk(values.map { it })
         }
     }
 
     protected abstract fun onClickOk(selectedItems: List<I>)
 
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-        // note: the view might be not available anymore at this point!
-        outState.putIntegerArrayList(SELECTED_INDICES, ArrayList(imageSelector.selectedIndices))
-    }
+    override fun isFormComplete() = false // TODO imageSelector.selectedIndices.isNotEmpty()
 
-    override fun isFormComplete() = imageSelector.selectedIndices.isNotEmpty()
-
-    private fun moveFavouritesToFront(originalList: List<DisplayItem<I>>): List<DisplayItem<I>> {
+    private fun moveFavouritesToFront(originalList: List<I>): List<I> {
         if (originalList.size > itemsPerRow && moveFavoritesToFront) {
             val favourites = prefs.getLastPicked(this::class.simpleName!!)
                 .map { itemsByString[it] }
@@ -110,9 +84,5 @@ abstract class AImageListQuestForm<I, T> : AbstractOsmQuestForm<T>() {
         } else {
             return originalList
         }
-    }
-
-    companion object {
-        private const val SELECTED_INDICES = "selected_indices"
     }
 }
