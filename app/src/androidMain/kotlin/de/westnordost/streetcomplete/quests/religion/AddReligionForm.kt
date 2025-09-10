@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.quests.religion
 
-import android.os.Bundle
 import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
@@ -30,10 +29,7 @@ class AddReligionForm : AImageListQuestForm<Religion, Religion>() {
     }
 
     @Composable override fun BoxScope.ItemContent(item: Religion) {
-        ImageWithLabel(
-            item.icon?.let { painterResource(it) },
-            item.title?.let { stringResource(it) }
-        )
+        ImageWithLabel(painterResource(item.icon), stringResource(item.title))
     }
 
     override fun onClickOk(selectedItems: List<Religion>) {

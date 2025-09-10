@@ -22,10 +22,7 @@ class AddSportForm : AImageListQuestForm<Sport, List<Sport>>() {
     override val maxSelectableItems = -1
 
     @Composable override fun BoxScope.ItemContent(item: Sport) {
-        ImageWithLabel(
-            item.icon?.let { painterResource(it) },
-            item.title?.let { stringResource(it) }
-        )
+        ImageWithLabel(painterResource(item.icon), stringResource(item.title))
     }
 
     override fun onClickOk(selectedItems: List<Sport>) {

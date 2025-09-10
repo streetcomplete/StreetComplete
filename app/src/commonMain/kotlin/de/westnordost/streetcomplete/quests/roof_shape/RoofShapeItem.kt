@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.roof_shape
 
 import de.westnordost.streetcomplete.quests.roof_shape.RoofShape.*
 import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.empty_96
 import de.westnordost.streetcomplete.resources.roof_cone
 import de.westnordost.streetcomplete.resources.roof_dome
 import de.westnordost.streetcomplete.resources.roof_double_saltbox
@@ -20,7 +21,7 @@ import de.westnordost.streetcomplete.resources.roof_saltbox
 import de.westnordost.streetcomplete.resources.roof_skillion
 import org.jetbrains.compose.resources.DrawableResource
 
-val RoofShape.icon: DrawableResource? get() = when (this) {
+val RoofShape.icon: DrawableResource get() = when (this) {
     GABLED ->            Res.drawable.roof_gabled
     HIPPED ->            Res.drawable.roof_hipped
     FLAT ->              Res.drawable.roof_flat
@@ -37,5 +38,5 @@ val RoofShape.icon: DrawableResource? get() = when (this) {
     ROUND_GABLED ->      Res.drawable.roof_round_gabled
     ONION ->             Res.drawable.roof_onion
     CONE ->              Res.drawable.roof_cone
-    MANY ->              null
+    MANY ->              Res.drawable.empty_96
 }

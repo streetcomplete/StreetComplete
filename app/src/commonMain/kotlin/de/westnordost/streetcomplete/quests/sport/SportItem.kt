@@ -2,7 +2,9 @@ package de.westnordost.streetcomplete.quests.sport
 
 import de.westnordost.streetcomplete.quests.sport.Sport.*
 import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.empty_96
 import de.westnordost.streetcomplete.resources.quest_sport_american_football
+import de.westnordost.streetcomplete.resources.quest_sport_answer_multi
 import de.westnordost.streetcomplete.resources.quest_sport_archery
 import de.westnordost.streetcomplete.resources.quest_sport_athletics
 import de.westnordost.streetcomplete.resources.quest_sport_australian_football
@@ -71,8 +73,8 @@ import de.westnordost.streetcomplete.resources.sport_volleyball
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.StringResource
 
-val Sport.title: StringResource? get() = when (this) {
-    MULTI ->               null
+val Sport.title: StringResource get() = when (this) {
+    MULTI ->               Res.string.quest_sport_answer_multi
     SOCCER ->              Res.string.quest_sport_soccer
     TENNIS ->              Res.string.quest_sport_tennis
     BASKETBALL ->          Res.string.quest_sport_basketball
@@ -108,8 +110,8 @@ val Sport.title: StringResource? get() = when (this) {
     SEPAK_TAKRAW ->        Res.string.quest_sport_sepak_takraw
 }
 
-val Sport.icon: DrawableResource? get() = when (this) {
-    MULTI ->               null
+val Sport.icon: DrawableResource get() = when (this) {
+    MULTI ->               Res.drawable.empty_96
     SOCCER ->              Res.drawable.sport_soccer
     TENNIS ->              Res.drawable.sport_tennis
     BASKETBALL ->          Res.drawable.sport_basketball

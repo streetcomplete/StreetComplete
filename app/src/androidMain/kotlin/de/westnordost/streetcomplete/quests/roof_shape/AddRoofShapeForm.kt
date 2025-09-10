@@ -18,7 +18,7 @@ class AddRoofShapeForm : AImageListQuestForm<RoofShape, RoofShape>() {
     override val items = RoofShape.entries - MANY
 
     @Composable override fun BoxScope.ItemContent(item: RoofShape) {
-        item.icon?.let { Image(painterResource(it), null)  }
+        Image(painterResource(item.icon), null)
     }
 
     override fun onClickOk(selectedItems: List<RoofShape>) {
