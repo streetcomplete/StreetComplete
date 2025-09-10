@@ -110,7 +110,7 @@ class AddHousenumberForm : AbstractOsmQuestForm<HouseNumberAnswer>() {
 
     private fun showNoHouseNumberDialog(buildingType: BuildingType) {
         val dialogBinding = ComposeViewBinding.inflate(layoutInflater)
-        binding.composeViewBase.content { Surface(Modifier.padding(24.dp)) {
+        dialogBinding.composeViewBase.content { Surface(Modifier.padding(24.dp)) {
             Column {
                 Text(stringResource(Res.string.quest_address_answer_no_housenumber_message1))
                 ImageWithDescription(
