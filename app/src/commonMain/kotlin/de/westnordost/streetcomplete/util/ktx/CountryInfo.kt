@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.util.ktx
 
-import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.cycleway_lane_dashed_both_white
@@ -76,23 +75,6 @@ import de.westnordost.streetcomplete.resources.street_marking_yellow_on_curb
 import de.westnordost.streetcomplete.resources.street_marking_yellow_white_dashes_on_curb
 import de.westnordost.streetcomplete.resources.street_marking_yellow_zig_zag
 import org.jetbrains.compose.resources.DrawableResource
-
-val CountryInfo.advisorySpeedLimitSignLayoutResId: Int? get() = when (advisorySpeedLimitSignStyle) {
-    "blue" -> R.layout.quest_maxspeed_advisory_blue
-    "yellow" -> R.layout.quest_maxspeed_advisory_yellow
-    "white" -> R.layout.quest_maxspeed_advisory_white
-    else -> null
-}
-
-val CountryInfo.livingStreetSignDrawableResId: Int? get() = when (livingStreetSignStyle) {
-    "vienna"    -> R.drawable.living_street
-    "sadc"      -> R.drawable.living_street_sadc
-    "russia"    -> R.drawable.living_street_russia
-    "france"    -> R.drawable.living_street_france
-    "australia" -> R.drawable.living_street_australia
-    "mexico"    -> R.drawable.living_street_mexico
-    else        -> null
-}
 
 val CountryInfo.noEntrySignDrawable: DrawableResource get() = when (noEntrySignStyle) {
     "default"           -> Res.drawable.no_entry_sign_default
