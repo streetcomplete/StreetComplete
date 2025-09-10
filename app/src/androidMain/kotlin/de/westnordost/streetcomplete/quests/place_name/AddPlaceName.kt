@@ -66,7 +66,7 @@ class AddPlaceName(
                 // name only
                 "studio",                                                                // culture
                 "events_venue", "exhibition_centre", "music_venue",                      // events
-                "prison", "fire_station",                                                // civic
+                "prison", "fire_station", "bus_station",                                 // civic
                 "social_facility", "nursing_home", "childcare", "retirement_home", "social_centre", // social
                 "monastery",                                                             // religious
                 "kindergarten", "school", "college", "university", "research_institute", // education
