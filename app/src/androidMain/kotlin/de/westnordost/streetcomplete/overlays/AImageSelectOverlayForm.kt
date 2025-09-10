@@ -20,15 +20,13 @@ abstract class AImageSelectOverlayForm<I> : AbstractOverlayForm() {
 
     protected open val itemsPerRow = 2
     /** items to display. May not be accessed before onCreate */
-    protected abstract val items: List<DisplayItem<I>>
+    protected abstract val items: List<I>
     /** items to that are selectable. May not be accessed before onCreate */
-    protected open val selectableItems: List<DisplayItem<I>> get() = items
+    protected open val selectableItems: List<I> get() = items
     /** item to display as last picked answer. May not be accessed before onCreate */
-    protected open val lastPickedItem: DisplayItem<I>? = null
+    protected open val lastPickedItem: I? = null
 
-    protected open val cellLayoutId: Int = R.layout.cell_icon_select_with_label_below
-
-    var selectedItem: DisplayItem<I>? = null
+    var selectedItem: I? = null
         set(value) {
             field = value
             updateSelectedCell()

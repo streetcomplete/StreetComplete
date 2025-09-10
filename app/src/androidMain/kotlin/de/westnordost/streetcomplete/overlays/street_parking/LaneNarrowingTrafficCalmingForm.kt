@@ -18,7 +18,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.osm.traffic_calming.LaneNarrowingTrafficCalming
 import de.westnordost.streetcomplete.osm.traffic_calming.applyTo
-import de.westnordost.streetcomplete.osm.traffic_calming.asItem
 import de.westnordost.streetcomplete.osm.traffic_calming.parseNarrowingTrafficCalming
 import de.westnordost.streetcomplete.overlays.AImageSelectOverlayForm
 import de.westnordost.streetcomplete.overlays.AnswerItem
@@ -34,7 +33,7 @@ class LaneNarrowingTrafficCalmingForm :
 
     private val mapDataWithEditsSource: MapDataWithEditsSource by inject()
 
-    override val items get() = LaneNarrowingTrafficCalming.entries.map { it.asItem() }
+    override val items get() = LaneNarrowingTrafficCalming.entries
 
     private var originalLaneNarrowingTrafficCalming: LaneNarrowingTrafficCalming? = null
 
@@ -78,7 +77,7 @@ class LaneNarrowingTrafficCalmingForm :
         setMarkerVisibility(false)
 
         originalLaneNarrowingTrafficCalming = element?.tags?.let { parseNarrowingTrafficCalming(it) }
-        selectedItem = originalLaneNarrowingTrafficCalming?.asItem()
+        selectedItem = originalLaneNarrowingTrafficCalming
     }
 
     private fun initCreatingPointOnWay() {
@@ -115,10 +114,10 @@ class LaneNarrowingTrafficCalmingForm :
         super.isFormComplete() && (element != null || positionOnWay != null)
 
     override fun hasChanges(): Boolean =
-        selectedItem?.value != originalLaneNarrowingTrafficCalming
+        selectedItem != originalLaneNarrowingTrafficCalming
 
     override fun onClickOk() {
-        val answer = selectedItem!!.value!!
+        val answer = selectedItem!!
         val element = element
         val positionOnWay = positionOnWay
         if (element != null) {
