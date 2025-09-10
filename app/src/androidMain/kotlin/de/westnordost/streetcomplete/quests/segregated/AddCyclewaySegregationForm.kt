@@ -1,20 +1,22 @@
 package de.westnordost.streetcomplete.quests.segregated
 
-import android.os.Bundle
-import android.view.View
-import de.westnordost.streetcomplete.R
+import androidx.compose.foundation.layout.BoxScope
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.quests.AImageListQuestForm
+import de.westnordost.streetcomplete.ui.common.image_select.ImageWithDescription
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 
 class AddCyclewaySegregationForm : AImageListQuestForm<CyclewaySegregation, CyclewaySegregation>() {
 
-    override val items get() =
-        CyclewaySegregation.entries.map { it.asItem(countryInfo.isLeftHandTraffic) }
-
+    override val items = CyclewaySegregation.entries
     override val itemsPerRow = 1
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        imageSelector.cellLayoutId = R.layout.cell_labeled_icon_select_right
+    @Composable override fun BoxScope.ItemContent(item: CyclewaySegregation) {
+        ImageWithDescription(
+            painter = painterResource(item.getIcon(countryInfo.isLeftHandTraffic)),
+            description = stringResource(item.title)
+        )
     }
 
     override fun onClickOk(selectedItems: List<CyclewaySegregation>) {

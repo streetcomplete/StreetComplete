@@ -83,6 +83,17 @@ val Smoothness.icon: DrawableResource get() = when (this) {
     IMPASSABLE ->    Res.drawable.smoothness_pedestrian
 }
 
+val Smoothness.emoji: String get() = when (this) {
+    EXCELLENT ->     "🛹"
+    GOOD ->          "🛴"
+    INTERMEDIATE ->  "🚲"
+    BAD ->           "🚗"
+    VERY_BAD ->      "🚙"
+    HORRIBLE ->      "🛻"
+    VERY_HORRIBLE -> "🚜"
+    IMPASSABLE ->    "🚶"
+}
+
 val Smoothness.title: StringResource get() = when (this) {
     EXCELLENT ->     Res.string.quest_smoothness_title_excellent
     GOOD ->          Res.string.quest_smoothness_title_good
@@ -94,7 +105,7 @@ val Smoothness.title: StringResource get() = when (this) {
     IMPASSABLE ->    Res.string.quest_smoothness_title_impassable
 }
 
-fun Smoothness.getDescription(surface: String): StringResource? = when (surface) {
+fun Smoothness.getDescription(surface: String?): StringResource? = when (surface) {
     "asphalt", "concrete", "concrete:plates" -> pavedDescription
     "sett" -> settDescription
     "paving_stones" -> pavingStonesDescription
@@ -109,7 +120,7 @@ private val Smoothness.descriptionFallback: StringResource? get() = when (this) 
     else -> null
 }
 
-fun Smoothness.getImage(surface: String): DrawableResource? = when (surface) {
+fun Smoothness.getImage(surface: String?): DrawableResource? = when (surface) {
     "asphalt" -> asphaltImage
     "concrete", "concrete:plates" -> concreteImage
     "sett" -> settImage

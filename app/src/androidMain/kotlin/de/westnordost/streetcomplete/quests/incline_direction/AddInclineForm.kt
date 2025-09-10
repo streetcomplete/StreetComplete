@@ -33,7 +33,7 @@ class AddInclineForm : AImageListQuestForm<Incline, Incline>() {
     @Composable override fun BoxScope.ItemContent(item: Incline) {
         ImageWithLabel(
             painter = painterResource(item.icon),
-            text = stringResource(Res.string.quest_steps_incline_up),
+            label = stringResource(Res.string.quest_steps_incline_up),
             imageRotation = wayRotation.floatValue - mapRotation.floatValue
         )
     }

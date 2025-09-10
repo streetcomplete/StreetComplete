@@ -18,14 +18,13 @@ class AddRecyclingContainerMaterialsForm :
         AnswerItem(R.string.quest_recycling_materials_answer_waste) { confirmJustTrash() }
     )
 
-    override val items = RecyclingMaterial.selectableValues.map { it.asItem() }
+    override val items = RecyclingMaterial.selectableValues
     override val maxSelectableItems = -1
 
     private val isAnyGlassRecyclable get() = countryInfo.isUsuallyAnyGlassRecyclableInContainers
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        imageSelector.cellLayoutId = R.layout.cell_icon_select_with_label_below
         imageSelector.listeners.add(object : ImageSelectAdapter.OnItemSelectionListener {
             override fun onIndexSelected(index: Int) {
                 val value = imageSelector.items[index].value!!

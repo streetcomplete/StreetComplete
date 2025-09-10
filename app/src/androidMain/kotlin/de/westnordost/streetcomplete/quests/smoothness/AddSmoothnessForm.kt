@@ -1,24 +1,32 @@
 package de.westnordost.streetcomplete.quests.smoothness
 
-import android.content.Context
-import android.os.Bundle
-import android.text.Spannable
-import android.text.SpannableStringBuilder
 import android.view.LayoutInflater
-import android.view.View
-import androidx.annotation.DrawableRes
 import androidx.appcompat.app.AlertDialog
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxScope
+import androidx.compose.foundation.layout.padding
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.osm.surface.Surface
-import de.westnordost.streetcomplete.osm.surface.asItem
 import de.westnordost.streetcomplete.osm.surface.parseSurface
 import de.westnordost.streetcomplete.quests.AImageListQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
-import de.westnordost.streetcomplete.util.ktx.asImageSpan
+import de.westnordost.streetcomplete.ui.common.image_select.ImageWithDescription
 import de.westnordost.streetcomplete.util.ktx.couldBeSteps
 import de.westnordost.streetcomplete.view.image_select.ItemViewHolder
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 
 class AddSmoothnessForm : AImageListQuestForm<Smoothness, SmoothnessAnswer>() {
+
+    private val surfaceTag get() = element.tags["surface"]
+    override val items = Smoothness.entries
+
+    override val itemsPerRow = 1
+    override val moveFavoritesToFront = false
 
     override val otherAnswers get() = listOfNotNull(
         AnswerItem(R.string.quest_smoothness_wrong_surface) { surfaceWrong() },
@@ -26,30 +34,20 @@ class AddSmoothnessForm : AImageListQuestForm<Smoothness, SmoothnessAnswer>() {
         AnswerItem(R.string.quest_smoothness_obstacle) { showObstacleHint() }
     )
 
-    private val surfaceTag get() = element.tags["surface"]
-
-    override val items get() = Smoothness.entries.toItems(requireContext(), surfaceTag!!)
-
-    override val itemsPerRow = 1
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        imageSelector.cellLayoutId = R.layout.cell_labeled_icon_select_smoothness
+    @Composable override fun BoxScope.ItemContent(item: Smoothness) {
+        Box {
+            ImageWithDescription(
+                painter = item.getImage(surfaceTag)?.let { painterResource(it) },
+                title = stringResource(item.title),
+                description = item.getDescription(surfaceTag)?.let { stringResource(it) }
+            )
+            Image(
+                painter = painterResource(item.icon),
+                contentDescription = item.emoji,
+                modifier = Modifier.padding(8.dp)
+            )
+        }
     }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        val context = requireContext()
-        val description = context.getString(R.string.quest_smoothness_hint)
-        val stringBuilder = SpannableStringBuilder(description)
-        stringBuilder.replaceEmojiWithImageSpan(context, "🚲", R.drawable.ic_smoothness_city_bike)
-        stringBuilder.replaceEmojiWithImageSpan(context, "🚗", R.drawable.ic_smoothness_car)
-        stringBuilder.replaceEmojiWithImageSpan(context, "🚙", R.drawable.ic_smoothness_suv)
-        setHint(stringBuilder)
-    }
-
-    override val moveFavoritesToFront = false
 
     override fun onClickOk(selectedItems: List<Smoothness>) {
         applyAnswer(SmoothnessValueAnswer(selectedItems.single()))
@@ -88,19 +86,4 @@ class AddSmoothnessForm : AImageListQuestForm<Smoothness, SmoothnessAnswer>() {
         } else {
             null
         }
-}
-
-private fun SpannableStringBuilder.replaceEmojiWithImageSpan(
-    context: Context,
-    emoji: String,
-    @DrawableRes drawableResId: Int
-) {
-    val iconDrawable = context.getDrawable(drawableResId) ?: return
-    val index = this.indexOf(emoji)
-    this.setSpan(
-        iconDrawable.asImageSpan(36, 36),
-        index,
-        index + emoji.length,
-        Spannable.SPAN_INCLUSIVE_INCLUSIVE
-    )
 }

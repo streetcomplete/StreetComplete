@@ -32,7 +32,7 @@ class AddOnewayForm : AImageListQuestForm<OnewayAnswer, OnewayAnswer>() {
     @Composable override fun BoxScope.ItemContent(item: OnewayAnswer) {
         ImageWithLabel(
             painter = painterResource(item.icon),
-            text = stringResource(item.title),
+            label = stringResource(item.title),
             imageRotation = wayRotation.floatValue - mapRotation.floatValue
         )
     }

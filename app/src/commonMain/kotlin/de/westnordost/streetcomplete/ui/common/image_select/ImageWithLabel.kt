@@ -4,6 +4,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -19,7 +20,7 @@ import de.westnordost.streetcomplete.ui.ktx.conditional
 @Composable
 fun ImageWithLabel(
     painter: Painter?,
-    text: String?,
+    label: String?,
     modifier: Modifier = Modifier,
     imageRotation: Float? = null
 ) {
@@ -37,10 +38,11 @@ fun ImageWithLabel(
                 modifier = imageModifier,
             )
         }
-        if (text != null) {
+        if (label != null) {
             Text(
-                text = text,
+                text = label,
                 textAlign = TextAlign.Center,
+                style = MaterialTheme.typography.body2,
                 modifier = Modifier.padding(8.dp)
             )
         }
