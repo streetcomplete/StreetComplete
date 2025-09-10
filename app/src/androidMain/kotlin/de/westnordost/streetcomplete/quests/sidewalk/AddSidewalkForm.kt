@@ -7,8 +7,6 @@ import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.NO
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.SEPARATE
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.YES
-import de.westnordost.streetcomplete.osm.sidewalk.asItem
-import de.westnordost.streetcomplete.osm.sidewalk.asStreetSideItem
 import de.westnordost.streetcomplete.quests.AStreetSideSelectForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.view.image_select.ImageListPickerDialog
@@ -29,7 +27,7 @@ class AddSidewalkForm : AStreetSideSelectForm<Sidewalk, LeftAndRightSidewalk>() 
     }
 
     override fun onClickSide(isRight: Boolean) {
-        val items = listOf(YES, NO, SEPARATE).mapNotNull { it.asItem() }
+        val items = listOf(YES, NO, SEPARATE)
         ImageListPickerDialog(requireContext(), items, R.layout.cell_icon_select_with_label_below, 2) { item ->
             streetSideSelect.replacePuzzleSide(item.value!!.asStreetSideItem()!!, isRight)
         }.show()

@@ -22,7 +22,6 @@ import de.westnordost.streetcomplete.resources.street_parking_street_side
 import de.westnordost.streetcomplete.view.DrawableImage
 import de.westnordost.streetcomplete.view.Image
 import de.westnordost.streetcomplete.view.ResImage
-import de.westnordost.streetcomplete.view.ResText
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.StringResource
 

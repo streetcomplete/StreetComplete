@@ -14,20 +14,23 @@ import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition
 import de.westnordost.streetcomplete.osm.street_parking.StreetParking
 import de.westnordost.streetcomplete.osm.street_parking.StreetParkingDrawable
 import de.westnordost.streetcomplete.osm.street_parking.applyTo
-import de.westnordost.streetcomplete.osm.street_parking.asItem
-import de.westnordost.streetcomplete.osm.street_parking.asStreetSideItem
 import de.westnordost.streetcomplete.osm.street_parking.parseStreetParkingSides
 import de.westnordost.streetcomplete.osm.street_parking.validOrNullValues
 import de.westnordost.streetcomplete.overlays.AStreetSideSelectOverlayForm
 import de.westnordost.streetcomplete.overlays.street_parking.ParkingSelection.*
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.street_parking_diagonal
+import de.westnordost.streetcomplete.resources.street_parking_no
+import de.westnordost.streetcomplete.resources.street_parking_parallel
+import de.westnordost.streetcomplete.resources.street_parking_perpendicular
+import de.westnordost.streetcomplete.resources.street_parking_separate
 import de.westnordost.streetcomplete.view.DrawableImage
 import de.westnordost.streetcomplete.view.Image
 import de.westnordost.streetcomplete.view.ResImage
 import de.westnordost.streetcomplete.view.ResText
-import de.westnordost.streetcomplete.view.image_select.DisplayItem
 import de.westnordost.streetcomplete.view.image_select.ImageListPickerDialog
-import de.westnordost.streetcomplete.view.image_select.Item2
 import kotlinx.serialization.json.Json
+import org.jetbrains.compose.resources.StringResource
 
 class StreetParkingOverlayForm : AStreetSideSelectOverlayForm<StreetParking>() {
 
@@ -138,12 +141,12 @@ private enum class ParkingSelection {
     NO
 }
 
-private val ParkingSelection.titleResId: Int get() = when (this) {
-    PARALLEL -> R.string.street_parking_parallel
-    DIAGONAL -> R.string.street_parking_diagonal
-    PERPENDICULAR -> R.string.street_parking_perpendicular
-    SEPARATE -> R.string.street_parking_separate
-    NO -> R.string.street_parking_no
+private val ParkingSelection.title: StringResource get() = when (this) {
+    PARALLEL -> Res.string.street_parking_parallel
+    DIAGONAL -> Res.string.street_parking_diagonal
+    PERPENDICULAR -> Res.string.street_parking_perpendicular
+    SEPARATE -> Res.string.street_parking_separate
+    NO -> Res.string.street_parking_no
 }
 
 private fun ParkingSelection.getDialogIcon(context: Context, isUpsideDown: Boolean): Image = when (this) {
@@ -153,9 +156,6 @@ private fun ParkingSelection.getDialogIcon(context: Context, isUpsideDown: Boole
     SEPARATE -> ResImage(R.drawable.floating_separate)
     NO -> ResImage(R.drawable.floating_no)
 }
-
-private fun ParkingSelection.asItem(context: Context, isUpsideDown: Boolean) =
-    Item2(this, getDialogIcon(context, isUpsideDown), ResText(titleResId))
 
 private fun createParkingOrientationImage(
     context: Context,
