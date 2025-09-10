@@ -17,7 +17,6 @@ import de.westnordost.streetcomplete.osm.ALL_PATHS
 import de.westnordost.streetcomplete.osm.changeToSteps
 import de.westnordost.streetcomplete.osm.surface.Surface
 import de.westnordost.streetcomplete.osm.surface.applyTo
-import de.westnordost.streetcomplete.osm.surface.asItem
 import de.westnordost.streetcomplete.osm.surface.parseSurface
 import de.westnordost.streetcomplete.osm.surface.updateCommonSurfaceFromFootAndCyclewaySurface
 import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
@@ -26,9 +25,7 @@ import de.westnordost.streetcomplete.overlays.IAnswerItem
 import de.westnordost.streetcomplete.util.getLanguagesForFeatureDictionary
 import de.westnordost.streetcomplete.util.ktx.couldBeSteps
 import de.westnordost.streetcomplete.util.ktx.valueOfOrNull
-import de.westnordost.streetcomplete.view.image_select.DisplayItem
 import de.westnordost.streetcomplete.view.image_select.ImageListPickerDialog
-import de.westnordost.streetcomplete.view.image_select.ItemViewHolder
 import de.westnordost.streetcomplete.view.setImage
 import org.koin.android.ext.android.inject
 
@@ -38,8 +35,7 @@ class SurfaceOverlayForm : AbstractOverlayForm() {
 
     private val prefs: Preferences by inject()
 
-    private val selectableItems: List<DisplayItem<Surface>> get() =
-        Surface.selectableValuesForWays.map { it.asItem() }
+    private val selectableItems: List<Surface> get() = Surface.selectableValuesForWays
 
     private val lastPickedSurface: Surface? get() =
         prefs.getLastPicked(this::class.simpleName!!)
@@ -65,8 +61,6 @@ class SurfaceOverlayForm : AbstractOverlayForm() {
             field = value
             updateSelectedCell(binding.cycleway, value)
         }
-
-    private val cellLayoutId: Int = R.layout.cell_labeled_image_select
 
     private var isSegregatedLayout = false
 
