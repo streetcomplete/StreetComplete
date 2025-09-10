@@ -16,7 +16,6 @@ import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.util.ktx.numberOrNull
 import de.westnordost.streetcomplete.util.ktx.showKeyboard
-import de.westnordost.streetcomplete.view.image_select.ImageListPickerDialog
 import de.westnordost.streetcomplete.view.inputfilter.acceptDecimalDigits
 
 class AddMaxWeightForm : AbstractOsmQuestForm<MaxWeightAnswer>() {
@@ -83,14 +82,7 @@ class AddMaxWeightForm : AbstractOsmQuestForm<MaxWeightAnswer>() {
     }
 
     private fun showSignSelectionDialog() {
-        val ctx = context ?: return
-        val items = MaxWeightSign.entries.map {
-            it.asItem(layoutInflater, countryInfo.countryCode)
-        }
-        ImageListPickerDialog(ctx, items, R.layout.cell_labeled_icon_select, 2) { selected ->
-            selected.value?.let { setMaxWeightSign(it) }
-            checkIsFormComplete()
-        }.show()
+        // TODO defunct until #6477 is merged
     }
 
     private fun setMaxWeightSign(sign: MaxWeightSign) {
