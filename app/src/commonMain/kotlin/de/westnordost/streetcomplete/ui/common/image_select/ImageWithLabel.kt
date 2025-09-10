@@ -16,7 +16,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.ui.ktx.conditional
 
-/** Just an image with a label below, centered horizontally */
+/** Just an image with a label below, centered horizontally. The image can be rotated. */
 @Composable
 fun ImageWithLabel(
     painter: Painter?,
