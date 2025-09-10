@@ -262,34 +262,3 @@ class StreetSideSelectWithLastAnswerButtonViewController<I>(
     private fun isStreetDisplayedUpsideDown(): Boolean =
         normalizeDegrees(puzzleView.streetRotation, -180f).absoluteValue > 90f
 }
-
-interface StreetSideDisplayItem<T> {
-    val value: T
-    /** shown on road view */
-    val image: Image
-    val title: Text?
-    /** shown in "last used" popup and during object selection */
-    val icon: Image
-    val floatingIcon: Image?
-}
-
-data class StreetSideItem<T>(
-    override val value: T,
-    @DrawableRes val imageId: Int,
-    @StringRes val titleId: Int? = null,
-    @DrawableRes val iconId: Int = imageId,
-    @DrawableRes val floatingIconId: Int? = null
-) : StreetSideDisplayItem<T> {
-    override val image: Image get() = ResImage(imageId)
-    override val title: Text? get() = titleId?.let { ResText(it) }
-    override val icon: Image get() = ResImage(iconId)
-    override val floatingIcon: Image? get() = floatingIconId?.let { ResImage(it) }
-}
-
-data class StreetSideItem2<T>(
-    override val value: T,
-    override val image: Image,
-    override val title: Text? = null,
-    override val icon: Image = image,
-    override val floatingIcon: Image? = null
-) : StreetSideDisplayItem<T>
