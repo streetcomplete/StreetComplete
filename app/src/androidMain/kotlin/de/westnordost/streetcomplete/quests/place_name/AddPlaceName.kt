@@ -52,7 +52,7 @@ class AddPlaceName(
                 "coworking_space",                                                                  // work
 
                 // name & opening hours
-                "boat_rental", "vehicle_inspection", "motorcycle_rental",
+                "boat_rental", "vehicle_inspection", "motorcycle_rental", "crematorium",
 
                 // name & wheelchair
                 "theatre",                                        // culture
@@ -65,7 +65,7 @@ class AddPlaceName(
 
                 // name only
                 "studio",                                                                // culture
-                "events_venue", "exhibition_centre", "music_venue",                      // events
+                "events_venue", "exhibition_centre", "music_venue", "funeral_hall",      // events
                 "prison", "fire_station", "bus_station",                                 // civic
                 "social_facility", "nursing_home", "childcare", "retirement_home", "social_centre", // social
                 "monastery",                                                             // religious
