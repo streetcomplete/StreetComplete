@@ -2,13 +2,7 @@ package de.westnordost.streetcomplete.osm.street_parking
 
 import android.content.Context
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.HALF_ON_STREET
-import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.OFF_STREET
-import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.ON_STREET
-import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.PAINTED_AREA_ONLY
-import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.STAGGERED_HALF_ON_STREET
-import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.STAGGERED_ON_STREET
-import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.STREET_SIDE
+import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.*
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.floating_separate
 import de.westnordost.streetcomplete.resources.street_parking_half_on_kerb
@@ -27,14 +21,14 @@ import org.jetbrains.compose.resources.StringResource
 
 /** Functions to display a (parsed) street parking in the UI */
 
-private val StreetParking.title: StringResource? get() = when (this) {
+val StreetParking.title: StringResource? get() = when (this) {
     is StreetParking.PositionAndOrientation ->
         position.title
     StreetParking.None ->
         Res.string.street_parking_no
     StreetParking.Separate ->
         Res.string.street_parking_separate
-    StreetParking.Unknown,StreetParking.Incomplete ->
+    StreetParking.Unknown, StreetParking.Incomplete ->
         null
 }
 
@@ -49,7 +43,7 @@ private fun StreetParking.getIcon(context: Context, isUpsideDown: Boolean, isRig
 }
 
 /** Icon that should be shown as the icon in a selection dialog */
-private fun StreetParking.getDialogIcon(context: Context, isUpsideDown: Boolean): Image = when (this) {
+fun StreetParking.getDialogIcon(context: Context, isUpsideDown: Boolean): Image = when (this) {
     is StreetParking.PositionAndOrientation ->
         getDialogIcon(context, isUpsideDown)
     StreetParking.None ->

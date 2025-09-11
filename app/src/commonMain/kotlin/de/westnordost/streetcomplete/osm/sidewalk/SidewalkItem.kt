@@ -16,8 +16,6 @@ import de.westnordost.streetcomplete.resources.sidewalk_yes
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.StringResource
 
-// TODO ==INVALID -> don't show at all
-
 val Sidewalk.icon: DrawableResource? get() = when (this) {
     YES -> Res.drawable.sidewalk_yes
     NO -> Res.drawable.sidewalk_no

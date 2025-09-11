@@ -1,21 +1,35 @@
 package de.westnordost.streetcomplete.quests.sidewalk
 
 import androidx.appcompat.app.AlertDialog
+import androidx.compose.foundation.layout.BoxScope
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.osm.sidewalk.LeftAndRightSidewalk
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.NO
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.SEPARATE
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.YES
+import de.westnordost.streetcomplete.osm.sidewalk.icon
+import de.westnordost.streetcomplete.osm.sidewalk.title
 import de.westnordost.streetcomplete.quests.AStreetSideSelectForm
 import de.westnordost.streetcomplete.quests.AnswerItem
-import de.westnordost.streetcomplete.view.image_select.ImageListPickerDialog
+import de.westnordost.streetcomplete.ui.common.image_select.ImageWithLabel
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 
 class AddSidewalkForm : AStreetSideSelectForm<Sidewalk, LeftAndRightSidewalk>() {
 
     override val otherAnswers: List<AnswerItem> = listOf(
         AnswerItem(R.string.quest_sidewalk_answer_none) { noSidewalksHereHint() }
     )
+
+    @Composable override fun BoxScope.DialogItemContent(item: Sidewalk, isRight: Boolean) {
+        val icon = item.icon
+        val title = item.title
+        if (icon != null && title != null) {
+            ImageWithLabel(painterResource(icon), stringResource(title))
+        }
+    }
 
     private fun noSidewalksHereHint() {
         activity?.let { AlertDialog.Builder(it)
@@ -40,5 +54,4 @@ class AddSidewalkForm : AStreetSideSelectForm<Sidewalk, LeftAndRightSidewalk>() 
 
     override fun serialize(item: Sidewalk) = item.name
     override fun deserialize(str: String) = Sidewalk.valueOf(str)
-    override fun asStreetSideItem(item: Sidewalk, isRight: Boolean) = item.asStreetSideItem()!!
 }

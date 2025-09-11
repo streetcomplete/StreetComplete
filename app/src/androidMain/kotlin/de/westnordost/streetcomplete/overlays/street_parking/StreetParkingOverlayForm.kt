@@ -3,6 +3,8 @@ package de.westnordost.streetcomplete.overlays.street_parking
 import android.content.Context
 import android.os.Bundle
 import android.view.View
+import androidx.compose.foundation.layout.BoxScope
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
@@ -14,7 +16,9 @@ import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition
 import de.westnordost.streetcomplete.osm.street_parking.StreetParking
 import de.westnordost.streetcomplete.osm.street_parking.StreetParkingDrawable
 import de.westnordost.streetcomplete.osm.street_parking.applyTo
+import de.westnordost.streetcomplete.osm.street_parking.getDialogIcon
 import de.westnordost.streetcomplete.osm.street_parking.parseStreetParkingSides
+import de.westnordost.streetcomplete.osm.street_parking.title
 import de.westnordost.streetcomplete.osm.street_parking.validOrNullValues
 import de.westnordost.streetcomplete.overlays.AStreetSideSelectOverlayForm
 import de.westnordost.streetcomplete.overlays.street_parking.ParkingSelection.*
@@ -24,13 +28,14 @@ import de.westnordost.streetcomplete.resources.street_parking_no
 import de.westnordost.streetcomplete.resources.street_parking_parallel
 import de.westnordost.streetcomplete.resources.street_parking_perpendicular
 import de.westnordost.streetcomplete.resources.street_parking_separate
+import de.westnordost.streetcomplete.ui.common.image_select.ImageWithLabel
 import de.westnordost.streetcomplete.view.DrawableImage
 import de.westnordost.streetcomplete.view.Image
 import de.westnordost.streetcomplete.view.ResImage
-import de.westnordost.streetcomplete.view.ResText
-import de.westnordost.streetcomplete.view.image_select.ImageListPickerDialog
 import kotlinx.serialization.json.Json
 import org.jetbrains.compose.resources.StringResource
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 
 class StreetParkingOverlayForm : AStreetSideSelectOverlayForm<StreetParking>() {
 
@@ -47,6 +52,17 @@ class StreetParkingOverlayForm : AStreetSideSelectOverlayForm<StreetParking>() {
 
     // just a shortcut
     private val isLeftHandTraffic get() = countryInfo.isLeftHandTraffic
+
+    @Composable override fun BoxScope.DialogItemContent(item: StreetParking, isRight: Boolean) {
+        val title = item.title
+        val isUpsideDown = isUpsideDown(isRight)
+        if (title != null) {
+            ImageWithLabel(
+                painterResource(item.getDialogIcon(isUpsideDown)),
+                stringResource(title)
+            )
+        }
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -79,8 +95,6 @@ class StreetParkingOverlayForm : AStreetSideSelectOverlayForm<StreetParking>() {
 
     override fun serialize(item: StreetParking) = Json.encodeToString(item)
     override fun deserialize(str: String) = Json.decodeFromString<StreetParking>(str)
-    override fun asStreetSideItem(item: StreetParking, isRight: Boolean) =
-        item.asStreetSideItem(requireContext(), isUpsideDown(isRight), isRight)
 
     private fun isUpsideDown(isRight: Boolean) =
         if (isRight) isRightSideUpsideDown else isLeftSideUpsideDown

@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
+import androidx.compose.foundation.layout.BoxScope
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
@@ -13,13 +15,12 @@ import de.westnordost.streetcomplete.osm.bicycle_boulevard.parseBicycleBoulevard
 import de.westnordost.streetcomplete.osm.bicycle_in_pedestrian_street.BicycleInPedestrianStreet
 import de.westnordost.streetcomplete.osm.bicycle_in_pedestrian_street.applyTo
 import de.westnordost.streetcomplete.osm.bicycle_in_pedestrian_street.parseBicycleInPedestrianStreet
-import de.westnordost.streetcomplete.osm.cycleway.Cycleway
 import de.westnordost.streetcomplete.osm.cycleway.CyclewayAndDirection
 import de.westnordost.streetcomplete.osm.cycleway.LeftAndRightCycleway
 import de.westnordost.streetcomplete.osm.cycleway.applyTo
-import de.westnordost.streetcomplete.osm.cycleway.asDialogItem
-import de.westnordost.streetcomplete.osm.cycleway.asStreetSideItem
+import de.westnordost.streetcomplete.osm.cycleway.getDialogIcon
 import de.westnordost.streetcomplete.osm.cycleway.getSelectableCycleways
+import de.westnordost.streetcomplete.osm.cycleway.getTitle
 import de.westnordost.streetcomplete.osm.cycleway.parseCyclewaySides
 import de.westnordost.streetcomplete.osm.cycleway.selectableOrNullValues
 import de.westnordost.streetcomplete.osm.cycleway.wasNoOnewayForCyclistsButNowItIs
@@ -29,10 +30,11 @@ import de.westnordost.streetcomplete.overlays.AStreetSideSelectOverlayForm
 import de.westnordost.streetcomplete.overlays.AnswerItem
 import de.westnordost.streetcomplete.overlays.AnswerItem2
 import de.westnordost.streetcomplete.overlays.IAnswerItem
+import de.westnordost.streetcomplete.ui.common.image_select.ImageWithLabel
 import de.westnordost.streetcomplete.util.ktx.toast
-import de.westnordost.streetcomplete.view.controller.StreetSideDisplayItem
-import de.westnordost.streetcomplete.view.image_select.ImageListPickerDialog
 import kotlinx.serialization.json.Json
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 
 class StreetCyclewayOverlayForm : AStreetSideSelectOverlayForm<CyclewayAndDirection>() {
 
@@ -59,6 +61,19 @@ class StreetCyclewayOverlayForm : AStreetSideSelectOverlayForm<CyclewayAndDirect
         val direction = streetSideSelect.getPuzzleSide(isRight)?.value?.direction
             ?: Direction.getDefault(isRight, isLeftHandTraffic)
         return isInContraflowOfOneway(element!!.tags, direction)
+    }
+
+    @Composable override fun BoxScope.DialogItemContent(item: CyclewayAndDirection, isRight: Boolean) {
+        val isContraflowInOneway = isContraflowInOneway(isRight)
+        val icon = item.getDialogIcon(isRight, countryInfo, isContraflowInOneway)
+        val title = item.getTitle(isContraflowInOneway)
+        if (icon != null && title != null) {
+            ImageWithLabel(
+                painter = painterResource(icon),
+                label = stringResource(title),
+                imageRotation = if (countryInfo.isLeftHandTraffic) 180f else 0f
+            )
+        }
     }
 
     /* ---------------------------------------- lifecycle --------------------------------------- */
@@ -262,14 +277,6 @@ class StreetCyclewayOverlayForm : AStreetSideSelectOverlayForm<CyclewayAndDirect
 
     override fun serialize(item: CyclewayAndDirection) = Json.encodeToString(item)
     override fun deserialize(str: String) = Json.decodeFromString<CyclewayAndDirection>(str)
-    override fun asStreetSideItem(item: CyclewayAndDirection, isRight: Boolean): StreetSideDisplayItem<CyclewayAndDirection> {
-        val isContraflowInOneway = isContraflowInOneway(isRight)
-        // NONE_NO_ONEWAY is displayed as simply NONE if not in contraflow because the former makes
-        // only really sense in contraflow. This can only happen when applying the side(s) via the
-        // last answer button
-        val item2 = if (item.cycleway == Cycleway.NONE_NO_ONEWAY && !isContraflowInOneway) item.copy(cycleway = Cycleway.NONE) else item
-        return item2.asStreetSideItem(isRight, isContraflowInOneway, countryInfo)
-    }
 
     companion object {
         private const val BICYCLE_BOULEVARD = "bicycle_boulevard"

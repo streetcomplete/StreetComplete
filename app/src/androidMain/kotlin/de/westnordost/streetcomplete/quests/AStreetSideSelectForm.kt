@@ -2,13 +2,14 @@ package de.westnordost.streetcomplete.quests
 
 import android.os.Bundle
 import android.view.View
+import androidx.compose.foundation.layout.BoxScope
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.databinding.QuestStreetSidePuzzleWithLastAnswerButtonBinding
 import de.westnordost.streetcomplete.util.math.getOrientationAtCenterLineInDegrees
 import de.westnordost.streetcomplete.view.ResImage
-import de.westnordost.streetcomplete.view.controller.StreetSideDisplayItem
 import de.westnordost.streetcomplete.view.controller.StreetSideSelectWithLastAnswerButtonViewController
 import org.koin.android.ext.android.inject
 
@@ -31,6 +32,8 @@ abstract class AStreetSideSelectForm<I, T> : AbstractOsmQuestForm<T>() {
             streetSideSelect.isEnabled = !value
             updateButtonPanel()
         }
+
+    @Composable abstract fun BoxScope.DialogItemContent(item: I, isRight: Boolean)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -92,7 +95,6 @@ abstract class AStreetSideSelectForm<I, T> : AbstractOsmQuestForm<T>() {
 
     protected abstract fun serialize(item: I): String
     protected abstract fun deserialize(str: String): I
-    protected abstract fun asStreetSideItem(item: I, isRight: Boolean): StreetSideDisplayItem<I>
 
     /* --------------------------------------- apply answer ------------------------------------- */
 

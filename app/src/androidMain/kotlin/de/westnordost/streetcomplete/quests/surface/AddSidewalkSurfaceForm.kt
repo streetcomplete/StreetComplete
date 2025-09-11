@@ -2,28 +2,38 @@ package de.westnordost.streetcomplete.quests.surface
 
 import android.os.Bundle
 import android.view.View
+import androidx.compose.foundation.layout.BoxScope
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk
 import de.westnordost.streetcomplete.osm.sidewalk.parseSidewalkSides
 import de.westnordost.streetcomplete.osm.sidewalk_surface.LeftAndRightSidewalkSurface
 import de.westnordost.streetcomplete.osm.surface.Surface
-import de.westnordost.streetcomplete.osm.surface.asStreetSideItem
-import de.westnordost.streetcomplete.osm.surface.toItems
+import de.westnordost.streetcomplete.osm.surface.icon
+import de.westnordost.streetcomplete.osm.surface.title
 import de.westnordost.streetcomplete.quests.AStreetSideSelectForm
 import de.westnordost.streetcomplete.quests.AnswerItem
+import de.westnordost.streetcomplete.ui.common.image_select.ImageWithLabel
 import de.westnordost.streetcomplete.view.controller.StreetSideSelectWithLastAnswerButtonViewController.Sides.BOTH
 import de.westnordost.streetcomplete.view.controller.StreetSideSelectWithLastAnswerButtonViewController.Sides.LEFT
 import de.westnordost.streetcomplete.view.controller.StreetSideSelectWithLastAnswerButtonViewController.Sides.RIGHT
-import de.westnordost.streetcomplete.view.image_select.DisplayItem
-import de.westnordost.streetcomplete.view.image_select.ImageListPickerDialog
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 
 class AddSidewalkSurfaceForm : AStreetSideSelectForm<Surface, SidewalkSurfaceAnswer>() {
 
-    private val items: List<DisplayItem<Surface>> = Surface.selectableValuesForWays.toItems()
+    private val items: List<Surface> = Surface.selectableValuesForWays
 
     override val otherAnswers = listOf(
         AnswerItem(R.string.quest_sidewalk_answer_different) { applyAnswer(SidewalkIsDifferent) }
     )
+
+    @Composable override fun BoxScope.DialogItemContent(item: Surface, isRight: Boolean) {
+        ImageWithLabel(
+            item.icon?.let { painterResource(it) },
+            stringResource(item.title)
+        )
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -68,6 +78,4 @@ class AddSidewalkSurfaceForm : AStreetSideSelectForm<Surface, SidewalkSurfaceAns
 
     override fun serialize(item: Surface) = item.name
     override fun deserialize(str: String) = Surface.valueOf(str)
-    override fun asStreetSideItem(item: Surface, isRight: Boolean) =
-        item.asStreetSideItem(resources)
 }

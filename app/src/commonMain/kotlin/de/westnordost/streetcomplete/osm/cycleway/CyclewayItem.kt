@@ -50,16 +50,15 @@ import de.westnordost.streetcomplete.util.ktx.pictogramCycleLaneMirroredDrawable
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.StringResource
 
-// TODO dialog icon needs to be rotated 180 degrees if countryInfo.isLeftHandTraffic == true
-
 fun CyclewayAndDirection.getDialogIcon(
     isRight: Boolean,
-    countryInfo: CountryInfo
+    countryInfo: CountryInfo,
+    isContraflowInOneway: Boolean,
 ): DrawableResource? =
     when (cycleway) {
         NONE ->     Res.drawable.cycleway_none_in_selection
         SEPARATE -> Res.drawable.cycleway_separate
-        else ->     getIcon(isRight, countryInfo)
+        else ->     getIcon(isRight, countryInfo, isContraflowInOneway)
     }
 
 fun Cycleway.getFloatingIcon(
@@ -74,7 +73,8 @@ fun Cycleway.getFloatingIcon(
 
 fun CyclewayAndDirection.getIcon(
     isRight: Boolean,
-    countryInfo: CountryInfo
+    countryInfo: CountryInfo,
+    isContraflowInOneway: Boolean
 ): DrawableResource? =
     when (direction) {
         BOTH -> cycleway.getDualTrafficIcon(countryInfo)
@@ -82,9 +82,9 @@ fun CyclewayAndDirection.getIcon(
             val isForward = (direction == FORWARD)
             val showMirrored = isForward xor isRight
             if (showMirrored) {
-                cycleway.getLeftHandTrafficIcon(countryInfo)
+                cycleway.getLeftHandTrafficIcon(countryInfo, isContraflowInOneway)
             } else {
-                cycleway.getRightHandTrafficIcon(countryInfo)
+                cycleway.getRightHandTrafficIcon(countryInfo, isContraflowInOneway)
             }
         }
     }
@@ -108,7 +108,10 @@ private fun Cycleway.getDualTrafficIcon(countryInfo: CountryInfo): DrawableResou
         else ->              null
     }
 
-private fun Cycleway.getRightHandTrafficIcon(countryInfo: CountryInfo): DrawableResource? =
+private fun Cycleway.getRightHandTrafficIcon(
+    countryInfo: CountryInfo,
+    isContraflowInOneway: Boolean
+): DrawableResource? =
     when (this) {
         UNSPECIFIED_LANE ->  countryInfo.exclusiveCycleLaneDrawable
         EXCLUSIVE_LANE ->    countryInfo.exclusiveCycleLaneDrawable
@@ -116,7 +119,13 @@ private fun Cycleway.getRightHandTrafficIcon(countryInfo: CountryInfo): Drawable
         SUGGESTION_LANE ->   countryInfo.advisoryCycleLaneDrawable
         TRACK ->             Res.drawable.cycleway_track
         NONE ->              Res.drawable.cycleway_none
-        NONE_NO_ONEWAY ->    Res.drawable.cycleway_none_no_oneway
+        NONE_NO_ONEWAY -> {
+            if (isContraflowInOneway) {
+                Res.drawable.cycleway_none_no_oneway
+            } else {
+                Res.drawable.cycleway_none
+            }
+        }
         PICTOGRAMS ->        countryInfo.pictogramCycleLaneDrawable
         SIDEWALK_EXPLICIT -> Res.drawable.cycleway_sidewalk_explicit
         SIDEWALK_OK ->       Res.drawable.cycleway_sidewalk_ok
@@ -126,7 +135,10 @@ private fun Cycleway.getRightHandTrafficIcon(countryInfo: CountryInfo): Drawable
         else -> null
     }
 
-private fun Cycleway.getLeftHandTrafficIcon(countryInfo: CountryInfo): DrawableResource? =
+private fun Cycleway.getLeftHandTrafficIcon(
+    countryInfo: CountryInfo,
+    isContraflowInOneway: Boolean
+): DrawableResource? =
     when (this) {
         UNSPECIFIED_LANE ->  countryInfo.exclusiveCycleLaneMirroredDrawable
         EXCLUSIVE_LANE ->    countryInfo.exclusiveCycleLaneMirroredDrawable
@@ -134,7 +146,13 @@ private fun Cycleway.getLeftHandTrafficIcon(countryInfo: CountryInfo): DrawableR
         SUGGESTION_LANE ->   countryInfo.advisoryCycleLaneMirroredDrawable
         TRACK ->             Res.drawable.cycleway_track_l
         NONE ->              Res.drawable.cycleway_none
-        NONE_NO_ONEWAY ->    Res.drawable.cycleway_none_no_oneway_l
+        NONE_NO_ONEWAY -> {
+            if (isContraflowInOneway) {
+                Res.drawable.cycleway_none_no_oneway_l
+            } else {
+                Res.drawable.cycleway_none
+            }
+        }
         PICTOGRAMS ->        countryInfo.pictogramCycleLaneMirroredDrawable
         SIDEWALK_EXPLICIT -> Res.drawable.cycleway_sidewalk_explicit_l
         SIDEWALK_OK ->       Res.drawable.cycleway_sidewalk_ok_l
@@ -176,7 +194,13 @@ fun CyclewayAndDirection.getTitle(isContraflowInOneway: Boolean): StringResource
         }
         ADVISORY_LANE,
         SUGGESTION_LANE ->   Res.string.quest_cycleway_value_advisory_lane
-        NONE_NO_ONEWAY ->    Res.string.quest_cycleway_value_none_but_no_oneway
+        NONE_NO_ONEWAY -> {
+            if (isContraflowInOneway) {
+                Res.string.quest_cycleway_value_none_but_no_oneway
+            } else {
+                Res.string.quest_cycleway_value_none
+            }
+        }
         PICTOGRAMS ->        Res.string.quest_cycleway_value_shared
         BUSWAY ->            Res.string.quest_cycleway_value_bus_lane
         SEPARATE ->          Res.string.quest_cycleway_value_separate
