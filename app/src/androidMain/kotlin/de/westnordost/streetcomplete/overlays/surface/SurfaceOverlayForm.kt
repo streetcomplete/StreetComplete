@@ -25,7 +25,6 @@ import de.westnordost.streetcomplete.overlays.IAnswerItem
 import de.westnordost.streetcomplete.util.getLanguagesForFeatureDictionary
 import de.westnordost.streetcomplete.util.ktx.couldBeSteps
 import de.westnordost.streetcomplete.util.ktx.valueOfOrNull
-import de.westnordost.streetcomplete.view.image_select.ImageListPickerDialog
 import de.westnordost.streetcomplete.view.setImage
 import org.koin.android.ext.android.inject
 
