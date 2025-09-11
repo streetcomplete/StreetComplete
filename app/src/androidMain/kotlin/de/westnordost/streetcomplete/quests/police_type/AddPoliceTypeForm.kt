@@ -1,18 +1,26 @@
 package de.westnordost.streetcomplete.quests.police_type
 
-import android.os.Bundle
-import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.AImageListQuestForm
+import androidx.compose.runtime.key
+import androidx.compose.ui.semantics.Role
+import de.westnordost.streetcomplete.quests.AImageListQuestComposeForm
+import de.westnordost.streetcomplete.ui.common.image_select.ImageListItem
+import de.westnordost.streetcomplete.ui.common.image_select.SelectableIconItem
 
-class AddPoliceTypeForm : AImageListQuestForm<PoliceType, PoliceType>() {
+class AddPoliceTypeForm : AImageListQuestComposeForm<PoliceType, PoliceType>() {
 
     override val items = PoliceType.entries.map { it.asItem() }
+    override val itemContent =
+        @androidx.compose.runtime.Composable { item: ImageListItem<PoliceType>, index: Int, onClick: () -> Unit, role: Role ->
+            key(item.item) {
+                SelectableIconItem(
+                    item = item.item,
+                    isSelected = item.checked,
+                    onClick = onClick,
+                    role = role
+                )
+            }
+        }
     override val itemsPerRow = 3
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        imageSelector.cellLayoutId = R.layout.cell_icon_select_with_label_below
-    }
 
     override fun onClickOk(selectedItems: List<PoliceType>) {
         applyAnswer(selectedItems.single())
