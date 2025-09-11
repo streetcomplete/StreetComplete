@@ -7,7 +7,6 @@ import androidx.compose.material.ProvideTextStyle
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.text.style.TextAlign
 import de.westnordost.streetcomplete.ui.common.AutoFitTextFieldFontSize
 import de.westnordost.streetcomplete.ui.common.TextField2
 import de.westnordost.streetcomplete.ui.theme.extraLargeInput
@@ -24,9 +23,8 @@ fun HydrantDiameterForm(
         countryCode = countryCode,
         modifier = modifier,
     ) {
-        val textStyle = MaterialTheme.typography.extraLargeInput.copy(textAlign = TextAlign.Center)
         val stringValue = value?.toString().orEmpty()
-        ProvideTextStyle(textStyle) {
+        ProvideTextStyle(MaterialTheme.typography.extraLargeInput) {
             AutoFitTextFieldFontSize(stringValue) {
                 TextField2(
                     value = stringValue,

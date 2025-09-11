@@ -5,7 +5,8 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.LocalContentColor
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -19,9 +20,11 @@ import de.westnordost.streetcomplete.ui.theme.TrafficSignColor
 import de.westnordost.streetcomplete.ui.theme.trafficSignContentColorFor
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
-/** A surface in the appearance of a rectangular traffic sign. */
+/** A surface in the appearance of a prohibitory traffic sign (Vienna convention).
+ *  Should define a fixed size.
+ *  */
 @Composable
-fun RectangularSign(
+fun ProhibitorySign(
     modifier: Modifier = Modifier,
     color: Color = TrafficSignColor.White,
     content: @Composable BoxScope.() -> Unit
@@ -29,12 +32,13 @@ fun RectangularSign(
     val contentColor = trafficSignContentColorFor(color)
     Box(
         modifier = modifier
-            .border(Dp.Hairline, Color.LightGray, RoundedCornerShape(10.dp))
-            .background(color, RoundedCornerShape(10.dp))
+            .border(Dp.Hairline, Color.LightGray, CircleShape)
+            .background(color, CircleShape)
             .padding(4.dp)
-            .border(4.dp, contentColor, RoundedCornerShape(6.dp))
-            .padding(4.dp),
-        contentAlignment = Alignment.Center,
+            .background(TrafficSignColor.Red, CircleShape)
+            .padding(32.dp)
+            .background(color, CircleShape),
+        contentAlignment = Alignment.Center
     ) {
         CompositionLocalProvider(LocalContentColor provides contentColor) {
             content()
@@ -43,16 +47,6 @@ fun RectangularSign(
 }
 
 @Composable @Preview
-private fun RectangularSignWhitePreview() {
-    RectangularSign { Text("a") }
-}
-
-@Composable @Preview
-private fun RectangularSignYellowPreview() {
-    RectangularSign(color = TrafficSignColor.Yellow) { Text("b") }
-}
-
-@Composable @Preview
-private fun RectangularSignBluePreview() {
-    RectangularSign(color = TrafficSignColor.Blue) { Text("c") }
+private fun ProhibitorySignPreview() {
+    ProhibitorySign(Modifier.size(256.dp)) { Text("a") }
 }
