@@ -27,21 +27,23 @@ class AddOpeningHours(
     private val filter by lazy { ("""
         nodes, ways with
         (
-          (
             (
-              shop and shop !~ no|vacant
-              or amenity = bicycle_parking and bicycle_parking = building
-              or amenity = parking and parking = multi-storey
-              or amenity = recycling and recycling_type = centre
-              or amenity = social_facility and social_facility ~ food_bank|clothing_bank|soup_kitchen|dairy_kitchen
-              or amenity = toilets and (fee = yes or toilets:disposal = flush)
-              or amenity = shower and (fee = yes or indoor = yes or location = indoor)
-              or tourism = information and information = office
-              or natural = cave_entrance and fee = yes
-              or tower:type = observation and fee = yes
-              or leisure = garden and fee = yes
-              or leisure = park and fee = yes
-              or """ +
+              (
+                (
+                    (
+                      shop and shop !~ no|vacant
+                      or amenity = bicycle_parking and bicycle_parking = building
+                      or amenity = parking and parking = multi-storey
+                      or amenity = recycling and recycling_type = centre
+                      or amenity = social_facility and social_facility ~ food_bank|clothing_bank|soup_kitchen|dairy_kitchen
+                      or amenity = toilets and (fee = yes or toilets:disposal = flush)
+                      or amenity = shower and (fee = yes or indoor = yes or location = indoor)
+                      or tourism = information and information = office
+                      or natural = cave_entrance and fee = yes
+                      or tower:type = observation and fee = yes
+                      or leisure = garden and fee = yes
+                      or leisure = park and fee = yes
+                      or """ +
 
         // The common list is shared by the name quest, the opening hours quest and the wheelchair quest.
         // So when adding other tags to the common list keep in mind that they need to be appropriate for all those quests.
@@ -112,29 +114,36 @@ class AddOpeningHours(
                 "blood_bank", "nutrition_counselling",
             ),
         ).map { it.key + " ~ " + it.value.joinToString("|") }.joinToString("\n or ") + "\n" + """
+                    )
+                    and (!opening_hours or opening_hours older today -1 years)
+                  )
+                )
+                and
+                (
+                    name
+                    or brand
+                    or noname = yes
+                    or name:signed = no
+                )
             )
-            and (!opening_hours or opening_hours older today -1 years)
-          )
-          or (
-            opening_hours older today -1 years
-            and (
-              leisure = park
-              or barrier
-              or amenity ~ toilets|bicycle_rental|charging_station
+            or (
+                opening_hours older today -1 years
+                and (
+                  leisure ~ park|garden|beach_resort|sports_centre|disc_golf_course|nature_reserve|playground
+                  or barrier
+                  or tourism = attraction
+                  or amenity ~ toilets|bicycle_rental|charging_station|place_of_worship|parking|research_institute|shower|grave_yard|kitchen|marketplace
+                  or railway = station
+                  or aeroway = terminal
+                )
             )
-          )
         )
         and access !~ private|no
-        and (
-          name or brand or noname = yes or name:signed = no
-          or barrier
-          or amenity ~ toilets|bicycle_rental
-        )
         and opening_hours:signed != no
     """).toElementFilterExpression() }
     // name filter is there to ensure that place name quest triggers first, so that object is identified if possible
     // Otherwise, in situation of two shops of the similar type with names A and B following may happen
-    // (1) mapper answers for one object with opening hours for shop A 
+    // (1) mapper answers for one object with opening hours for shop A
     // (2) this or different mapper may answer that it is named B
     // what would result in bad opening hours
     // this filter reduces risk of this happening and also makes this quest less confusing to answer
