@@ -358,6 +358,7 @@ quest/
     laundry.svg
     leaf.svg
     level.svg
+    level_thing.svg
     mail.svg
     mail_ref.svg
     max_width.svg
