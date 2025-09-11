@@ -4,16 +4,19 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.compose.foundation.layout.BoxScope
+import androidx.compose.runtime.Composable
 import androidx.core.view.children
 import androidx.core.view.isGone
 import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.CellLastPickedButtonBinding
 import de.westnordost.streetcomplete.databinding.FragmentGroupedOverlayImageSelectBinding
+import de.westnordost.streetcomplete.ui.common.image_select.Group
 import de.westnordost.streetcomplete.view.setImage
 
 /** Abstract base class for any overlay form in which the user selects a grouped item */
-abstract class AGroupedImageSelectOverlayForm<I> : AbstractOverlayForm() {
+abstract class AGroupedImageSelectOverlayForm<G: Group<I>, I> : AbstractOverlayForm() {
     // mostly copy-pasta from AImageSelectOverlayForm / AGroupedImageListQuestForm :-(
 
     final override val contentLayoutResId = R.layout.fragment_grouped_overlay_image_select
@@ -22,24 +25,25 @@ abstract class AGroupedImageSelectOverlayForm<I> : AbstractOverlayForm() {
     protected open val itemsPerRow = 1
 
     /** all items to display. May not be accessed before onCreate */
-    protected abstract val allItems: List<GroupableDisplayItem<I>>
+    protected abstract val allItems: List<G>
     /** items to display that are shown as last picked answers. May not be accessed before onCreate */
-    protected open val lastPickedItems: List<GroupableDisplayItem<I>> = emptyList()
+    protected open val lastPickedItems: List<I> = emptyList()
 
-    protected open val cellLayoutId: Int = R.layout.cell_labeled_icon_select_with_description
-    protected open val groupCellLayoutId: Int = R.layout.cell_labeled_icon_select_with_description_group
+    private lateinit var itemsByString: Map<String, I>
 
-    private lateinit var itemsByString: Map<String, GroupableDisplayItem<I>>
-
-    var selectedItem: GroupableDisplayItem<I>? = null
+    var selectedItem: I? = null
         set(value) {
             field = value
             updateSelectedCell()
         }
 
+    @Composable protected abstract fun BoxScope.GroupContent(item: G)
+
+    @Composable protected abstract fun BoxScope.ItemContent(item: I)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        itemsByString = allItems.mapNotNull { it.items }.flatten().associateBy { it.value.toString() }
+        itemsByString = allItems.flatMap { it.items }.associateBy { it.toString() }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -82,12 +86,12 @@ abstract class AGroupedImageSelectOverlayForm<I> : AbstractOverlayForm() {
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        outState.putString(SELECTED, selectedItem?.value?.toString())
+        outState.putString(SELECTED, selectedItem?.toString())
     }
 
     /* -------------------------------------- apply answer -------------------------------------- */
 
-    override fun isFormComplete() = selectedItem?.value != null
+    override fun isFormComplete() = selectedItem != null
 
     /* --------------------------------------- fav items ---------------------------------------- */
 
@@ -103,7 +107,7 @@ abstract class AGroupedImageSelectOverlayForm<I> : AbstractOverlayForm() {
 }
 
 private class LastPickedAdapter<I>(
-    private val items: List<GroupableDisplayItem<I>>,
+    private val items: List<I>,
     private val onItemClicked: (position: Int) -> Unit
 ) : RecyclerView.Adapter<LastPickedAdapter<I>.ViewHolder>() {
 
@@ -116,7 +120,7 @@ private class LastPickedAdapter<I>(
             itemView.setOnClickListener { onItemClicked(bindingAdapterPosition) }
         }
 
-        fun onBind(item: GroupableDisplayItem<I>) {
+        fun onBind(item: I) {
             binding.root.setImage(item.image)
         }
     }
