@@ -1,6 +1,8 @@
 package de.westnordost.streetcomplete.osm.mtb_scale
 
+import de.westnordost.streetcomplete.osm.mtb_scale.MtbScale.Value.*
 import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.empty_107
 import de.westnordost.streetcomplete.resources.mtb_scale_0
 import de.westnordost.streetcomplete.resources.mtb_scale_1
 import de.westnordost.streetcomplete.resources.mtb_scale_2
@@ -24,35 +26,32 @@ import de.westnordost.streetcomplete.resources.overlay_mtb_scale_6_description
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.StringResource
 
-val MtbScale.title: StringResource? get() = when (value) {
-    0 -> Res.string.overlay_mtb_scale_0
-    1 -> Res.string.overlay_mtb_scale_1
-    2 -> Res.string.overlay_mtb_scale_2
-    3 -> Res.string.overlay_mtb_scale_3
-    4 -> Res.string.overlay_mtb_scale_4
-    5 -> Res.string.overlay_mtb_scale_5
-    6 -> Res.string.overlay_mtb_scale_6
-    else -> null
+val MtbScale.title: StringResource get() = when (value) {
+    ZERO -> Res.string.overlay_mtb_scale_0
+    ONE -> Res.string.overlay_mtb_scale_1
+    TWO -> Res.string.overlay_mtb_scale_2
+    THREE -> Res.string.overlay_mtb_scale_3
+    FOUR -> Res.string.overlay_mtb_scale_4
+    FIVE -> Res.string.overlay_mtb_scale_5
+    SIX -> Res.string.overlay_mtb_scale_6
 }
 
-val MtbScale.description: StringResource? get() = when (value) {
-    0 -> Res.string.overlay_mtb_scale_0_description
-    1 -> Res.string.overlay_mtb_scale_1_description
-    2 -> Res.string.overlay_mtb_scale_2_description
-    3 -> Res.string.overlay_mtb_scale_3_description
-    4 -> Res.string.overlay_mtb_scale_4_description
-    5 -> Res.string.overlay_mtb_scale_5_description
-    6 -> Res.string.overlay_mtb_scale_6_description
-    else -> null
+val MtbScale.description: StringResource get() = when (value) {
+    ZERO -> Res.string.overlay_mtb_scale_0_description
+    ONE -> Res.string.overlay_mtb_scale_1_description
+    TWO -> Res.string.overlay_mtb_scale_2_description
+    THREE -> Res.string.overlay_mtb_scale_3_description
+    FOUR -> Res.string.overlay_mtb_scale_4_description
+    FIVE -> Res.string.overlay_mtb_scale_5_description
+    SIX -> Res.string.overlay_mtb_scale_6_description
 }
 
-private val MtbScale.icon: DrawableResource? get() = when (value) {
-    0 -> Res.drawable.mtb_scale_0
-    1 -> Res.drawable.mtb_scale_1
-    2 -> Res.drawable.mtb_scale_2
-    3 -> Res.drawable.mtb_scale_3
-    4 -> Res.drawable.mtb_scale_4
-    5 -> Res.drawable.mtb_scale_5
-    6 -> null
-    else -> null
+val MtbScale.icon: DrawableResource get() = when (value) {
+    ZERO -> Res.drawable.mtb_scale_0
+    ONE -> Res.drawable.mtb_scale_1
+    TWO -> Res.drawable.mtb_scale_2
+    THREE -> Res.drawable.mtb_scale_3
+    FOUR -> Res.drawable.mtb_scale_4
+    FIVE -> Res.drawable.mtb_scale_5
+    SIX -> Res.drawable.empty_107
 }

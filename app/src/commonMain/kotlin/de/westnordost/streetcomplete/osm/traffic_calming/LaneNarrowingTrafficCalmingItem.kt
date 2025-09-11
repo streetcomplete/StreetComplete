@@ -16,7 +16,7 @@ val LaneNarrowingTrafficCalming.icon: DrawableResource get() = when (this) {
     CHOKED_ISLAND -> Res.drawable.lane_narrowing_traffic_calming_choked_island
 }
 
-val LaneNarrowingTrafficCalming.titleResId: StringResource get() = when (this) {
+val LaneNarrowingTrafficCalming.title: StringResource get() = when (this) {
     CHOKER -> Res.string.lane_narrowing_traffic_calming_choker
     ISLAND -> Res.string.lane_narrowing_traffic_calming_island
     CHICANE -> Res.string.lane_narrowing_traffic_calming_chicane

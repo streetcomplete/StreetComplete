@@ -2,19 +2,27 @@ package de.westnordost.streetcomplete.overlays.cycleway
 
 import android.os.Bundle
 import android.view.View
+import androidx.compose.foundation.layout.BoxScope
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.osm.cycleway_separate.SeparateCycleway
 import de.westnordost.streetcomplete.osm.cycleway_separate.applyTo
+import de.westnordost.streetcomplete.osm.cycleway_separate.getIcon
 import de.westnordost.streetcomplete.osm.cycleway_separate.parseSeparateCycleway
+import de.westnordost.streetcomplete.osm.cycleway_separate.title
 import de.westnordost.streetcomplete.overlays.AImageSelectOverlayForm
+import de.westnordost.streetcomplete.ui.common.image_select.ImageWithDescription
 import de.westnordost.streetcomplete.util.ktx.valueOfOrNull
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 import org.koin.android.ext.android.inject
 
 class SeparateCyclewayForm : AImageSelectOverlayForm<SeparateCycleway>() {
 
     override val items = SeparateCycleway.entries
+    override val itemsPerRow = 1
 
     private val prefs: Preferences by inject()
 
@@ -23,9 +31,17 @@ class SeparateCyclewayForm : AImageSelectOverlayForm<SeparateCycleway>() {
             .map { valueOfOrNull<SeparateCycleway>(it) }
             .firstOrNull()
 
-    override val itemsPerRow = 1
+    @Composable override fun BoxScope.ItemContent(item: SeparateCycleway) {
+        ImageWithDescription(
+            painter = painterResource(item.getIcon(countryInfo.isLeftHandTraffic)),
+            title = null,
+            description = stringResource(item.title)
+        )
+    }
 
     private var originalCycleway: SeparateCycleway? = null
+
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

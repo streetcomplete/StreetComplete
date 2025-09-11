@@ -2,6 +2,8 @@ package de.westnordost.streetcomplete.overlays.way_lit
 
 import android.os.Bundle
 import android.view.View
+import androidx.compose.foundation.layout.BoxScope
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
@@ -13,11 +15,16 @@ import de.westnordost.streetcomplete.osm.lit.LitStatus.NIGHT_AND_DAY
 import de.westnordost.streetcomplete.osm.lit.LitStatus.NO
 import de.westnordost.streetcomplete.osm.lit.LitStatus.YES
 import de.westnordost.streetcomplete.osm.lit.applyTo
+import de.westnordost.streetcomplete.osm.lit.icon
 import de.westnordost.streetcomplete.osm.lit.parseLitStatus
+import de.westnordost.streetcomplete.osm.lit.title
 import de.westnordost.streetcomplete.overlays.AImageSelectOverlayForm
 import de.westnordost.streetcomplete.overlays.AnswerItem
+import de.westnordost.streetcomplete.ui.common.image_select.ImageWithLabel
 import de.westnordost.streetcomplete.util.ktx.couldBeSteps
 import de.westnordost.streetcomplete.util.ktx.valueOfOrNull
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 import org.koin.android.ext.android.inject
 
 class WayLitOverlayForm : AImageSelectOverlayForm<LitStatus>() {
@@ -39,6 +46,10 @@ class WayLitOverlayForm : AImageSelectOverlayForm<LitStatus>() {
     override val otherAnswers get() = listOfNotNull(
         createConvertToStepsAnswer()
     )
+
+    @Composable override fun BoxScope.ItemContent(item: LitStatus) {
+        ImageWithLabel(painterResource(item.icon), stringResource(item.title))
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
