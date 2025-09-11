@@ -17,6 +17,7 @@ import de.westnordost.streetcomplete.resources.car3
 import de.westnordost.streetcomplete.resources.car3a
 import de.westnordost.streetcomplete.resources.car4
 import de.westnordost.streetcomplete.resources.car5
+import de.westnordost.streetcomplete.resources.car_nyan
 import de.westnordost.streetcomplete.resources.floating_no
 import de.westnordost.streetcomplete.resources.floating_separate
 import de.westnordost.streetcomplete.resources.street_broad
