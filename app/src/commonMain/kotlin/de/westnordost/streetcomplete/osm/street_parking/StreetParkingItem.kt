@@ -58,7 +58,7 @@ val StreetParking.title: StringResource? get() = when (this) {
 
 /** Image that should be shown in the street side select puzzle */
 @Composable
-private fun StreetParking.painter(isUpsideDown: Boolean, isRightSide: Boolean): Painter = when (this) {
+fun StreetParking.painter(isUpsideDown: Boolean, isRightSide: Boolean): Painter = when (this) {
     is StreetParking.PositionAndOrientation ->
         painter(isUpsideDown, isRightSide)
     StreetParking.None, StreetParking.Separate ->
@@ -81,7 +81,7 @@ fun StreetParking.dialogPainter(isUpsideDown: Boolean): Painter = when (this) {
 }
 
 /** Icon that should be shown as the floating icon in the street side select puzzle */
-private val StreetParking.floatingIcon: DrawableResource? get() = when (this) {
+val StreetParking.floatingIcon: DrawableResource? get() = when (this) {
     StreetParking.Separate -> Res.drawable.floating_separate
     else -> null
 }

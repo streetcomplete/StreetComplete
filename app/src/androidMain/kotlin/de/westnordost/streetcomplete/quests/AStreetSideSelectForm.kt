@@ -8,6 +8,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.databinding.QuestStreetSidePuzzleWithLastAnswerButtonBinding
+import de.westnordost.streetcomplete.ui.common.street_side_select.StreetSideItem
 import de.westnordost.streetcomplete.util.math.getOrientationAtCenterLineInDegrees
 import de.westnordost.streetcomplete.view.ResImage
 import de.westnordost.streetcomplete.view.controller.StreetSideSelectWithLastAnswerButtonViewController
@@ -34,6 +35,8 @@ abstract class AStreetSideSelectForm<I, T> : AbstractOsmQuestForm<T>() {
         }
 
     @Composable abstract fun BoxScope.DialogItemContent(item: I, isRight: Boolean)
+
+    @Composable abstract fun getStreetSideItem(item: I, isRight: Boolean): StreetSideItem
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

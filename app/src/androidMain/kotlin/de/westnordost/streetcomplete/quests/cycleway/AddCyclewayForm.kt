@@ -10,6 +10,8 @@ import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpressio
 import de.westnordost.streetcomplete.osm.cycleway.CyclewayAndDirection
 import de.westnordost.streetcomplete.osm.cycleway.LeftAndRightCycleway
 import de.westnordost.streetcomplete.osm.cycleway.getDialogIcon
+import de.westnordost.streetcomplete.osm.cycleway.getFloatingIcon
+import de.westnordost.streetcomplete.osm.cycleway.getIcon
 import de.westnordost.streetcomplete.osm.cycleway.getSelectableCycleways
 import de.westnordost.streetcomplete.osm.cycleway.getTitle
 import de.westnordost.streetcomplete.osm.cycleway.parseCyclewaySides
@@ -21,6 +23,8 @@ import de.westnordost.streetcomplete.quests.AStreetSideSelectForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.IAnswerItem
 import de.westnordost.streetcomplete.ui.common.image_select.ImageWithLabel
+import de.westnordost.streetcomplete.ui.common.street_side_select.StreetSideItem
+import de.westnordost.streetcomplete.util.ktx.noEntrySignDrawable
 import de.westnordost.streetcomplete.util.ktx.toast
 import de.westnordost.streetcomplete.view.controller.StreetSideSelectWithLastAnswerButtonViewController
 import de.westnordost.streetcomplete.view.controller.StreetSideSelectWithLastAnswerButtonViewController.Sides.BOTH
@@ -79,6 +83,15 @@ class AddCyclewayForm : AStreetSideSelectForm<CyclewayAndDirection, LeftAndRight
                 imageRotation = if (countryInfo.isLeftHandTraffic) 180f else 0f
             )
         }
+    }
+
+    @Composable override fun getStreetSideItem(item: CyclewayAndDirection, isRight: Boolean): StreetSideItem? {
+        val isContraflowInOneway = isContraflowInOneway(isRight)
+        return StreetSideItem(
+            image = item.getIcon(isRight, countryInfo, isContraflowInOneway)?.let { painterResource(it) },
+            title = item.getTitle(isContraflowInOneway)?.let { stringResource(it) },
+            floatingIcon = item.cycleway.getFloatingIcon(isContraflowInOneway, countryInfo.noEntrySignDrawable)?.let { painterResource(it) }
+        )
     }
 
     /* ---------------------------------------- lifecycle --------------------------------------- */

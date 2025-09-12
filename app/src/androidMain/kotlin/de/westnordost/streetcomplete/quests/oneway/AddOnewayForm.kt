@@ -9,7 +9,7 @@ import androidx.compose.runtime.remember
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.quests.AImageListQuestForm
 import de.westnordost.streetcomplete.ui.common.image_select.ImageWithLabel
-import de.westnordost.streetcomplete.ui.util.CircularClippedPainter
+import de.westnordost.streetcomplete.ui.util.ClipCirclePainter
 import de.westnordost.streetcomplete.util.math.getOrientationAtCenterLineInDegrees
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
@@ -34,7 +34,7 @@ class AddOnewayForm : AImageListQuestForm<OnewayAnswer, OnewayAnswer>() {
     @Composable override fun BoxScope.ItemContent(item: OnewayAnswer) {
         val painter = painterResource(item.icon)
         ImageWithLabel(
-            painter = remember(painter) { CircularClippedPainter(painter) },
+            painter = remember(painter) { ClipCirclePainter(painter) },
             label = stringResource(item.title),
             imageRotation = wayRotation.floatValue - mapRotation.floatValue
         )

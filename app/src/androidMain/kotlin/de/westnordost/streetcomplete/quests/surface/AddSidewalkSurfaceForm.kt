@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk
 import de.westnordost.streetcomplete.osm.sidewalk.parseSidewalkSides
@@ -13,7 +14,11 @@ import de.westnordost.streetcomplete.osm.surface.icon
 import de.westnordost.streetcomplete.osm.surface.title
 import de.westnordost.streetcomplete.quests.AStreetSideSelectForm
 import de.westnordost.streetcomplete.quests.AnswerItem
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.sidewalk_illustration_yes
 import de.westnordost.streetcomplete.ui.common.image_select.ImageWithLabel
+import de.westnordost.streetcomplete.ui.common.street_side_select.StreetSideItem
+import de.westnordost.streetcomplete.ui.util.ClipCirclePainter
 import de.westnordost.streetcomplete.view.controller.StreetSideSelectWithLastAnswerButtonViewController.Sides.BOTH
 import de.westnordost.streetcomplete.view.controller.StreetSideSelectWithLastAnswerButtonViewController.Sides.LEFT
 import de.westnordost.streetcomplete.view.controller.StreetSideSelectWithLastAnswerButtonViewController.Sides.RIGHT
@@ -32,6 +37,15 @@ class AddSidewalkSurfaceForm : AStreetSideSelectForm<Surface, SidewalkSurfaceAns
         ImageWithLabel(
             item.icon?.let { painterResource(it) },
             stringResource(item.title)
+        )
+    }
+
+    @Composable override fun getStreetSideItem(item: Surface, isRight: Boolean): StreetSideItem {
+        val icon = item.icon?.let { painterResource(it) }
+        return StreetSideItem(
+            image = painterResource(Res.drawable.sidewalk_illustration_yes),
+            title = stringResource(item.title),
+            floatingIcon = remember(icon) { icon?.let { ClipCirclePainter(it) } }
         )
     }
 

@@ -17,13 +17,17 @@ import de.westnordost.streetcomplete.osm.street_parking.StreetParking
 import de.westnordost.streetcomplete.osm.street_parking.StreetParkingSelection
 import de.westnordost.streetcomplete.osm.street_parking.applyTo
 import de.westnordost.streetcomplete.osm.street_parking.dialogPainter
+import de.westnordost.streetcomplete.osm.street_parking.floatingIcon
+import de.westnordost.streetcomplete.osm.street_parking.painter
 import de.westnordost.streetcomplete.osm.street_parking.parseStreetParkingSides
 import de.westnordost.streetcomplete.osm.street_parking.title
 import de.westnordost.streetcomplete.osm.street_parking.validOrNullValues
 import de.westnordost.streetcomplete.overlays.AStreetSideSelectOverlayForm
 import de.westnordost.streetcomplete.ui.common.image_select.ImageWithLabel
+import de.westnordost.streetcomplete.ui.common.street_side_select.StreetSideItem
 import de.westnordost.streetcomplete.view.ResImage
 import kotlinx.serialization.json.Json
+import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
 class StreetParkingOverlayForm : AStreetSideSelectOverlayForm<StreetParking>() {
@@ -51,6 +55,16 @@ class StreetParkingOverlayForm : AStreetSideSelectOverlayForm<StreetParking>() {
                 stringResource(title)
             )
         }
+    }
+
+    @Composable
+    override fun getStreetSideItem(item: StreetParking, isRight: Boolean): StreetSideItem {
+        val isUpsideDown = isUpsideDown(isRight)
+        return StreetSideItem(
+            image = item.painter(isUpsideDown, isRight),
+            title = item.title?.let { stringResource(it) },
+            floatingIcon = item.floatingIcon?.let { painterResource(it) }
+        )
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

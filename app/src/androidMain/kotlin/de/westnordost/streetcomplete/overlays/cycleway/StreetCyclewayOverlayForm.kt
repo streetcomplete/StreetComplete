@@ -19,6 +19,8 @@ import de.westnordost.streetcomplete.osm.cycleway.CyclewayAndDirection
 import de.westnordost.streetcomplete.osm.cycleway.LeftAndRightCycleway
 import de.westnordost.streetcomplete.osm.cycleway.applyTo
 import de.westnordost.streetcomplete.osm.cycleway.getDialogIcon
+import de.westnordost.streetcomplete.osm.cycleway.getFloatingIcon
+import de.westnordost.streetcomplete.osm.cycleway.getIcon
 import de.westnordost.streetcomplete.osm.cycleway.getSelectableCycleways
 import de.westnordost.streetcomplete.osm.cycleway.getTitle
 import de.westnordost.streetcomplete.osm.cycleway.parseCyclewaySides
@@ -31,6 +33,8 @@ import de.westnordost.streetcomplete.overlays.AnswerItem
 import de.westnordost.streetcomplete.overlays.AnswerItem2
 import de.westnordost.streetcomplete.overlays.IAnswerItem
 import de.westnordost.streetcomplete.ui.common.image_select.ImageWithLabel
+import de.westnordost.streetcomplete.ui.common.street_side_select.StreetSideItem
+import de.westnordost.streetcomplete.util.ktx.noEntrySignDrawable
 import de.westnordost.streetcomplete.util.ktx.toast
 import kotlinx.serialization.json.Json
 import org.jetbrains.compose.resources.painterResource
@@ -74,6 +78,15 @@ class StreetCyclewayOverlayForm : AStreetSideSelectOverlayForm<CyclewayAndDirect
                 imageRotation = if (countryInfo.isLeftHandTraffic) 180f else 0f
             )
         }
+    }
+
+    @Composable override fun getStreetSideItem(item: CyclewayAndDirection, isRight: Boolean): StreetSideItem? {
+        val isContraflowInOneway = isContraflowInOneway(isRight)
+        return StreetSideItem(
+            image = item.getIcon(isRight, countryInfo, isContraflowInOneway)?.let { painterResource(it) },
+            title = item.getTitle(isContraflowInOneway)?.let { stringResource(it) },
+            floatingIcon = item.cycleway.getFloatingIcon(isContraflowInOneway, countryInfo.noEntrySignDrawable)?.let { painterResource(it) }
+        )
     }
 
     /* ---------------------------------------- lifecycle --------------------------------------- */

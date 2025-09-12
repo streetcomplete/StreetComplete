@@ -4,13 +4,16 @@ import android.os.Bundle
 import android.view.View
 import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.painter.Painter
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.databinding.FragmentOverlayStreetSidePuzzleWithLastAnswerButtonBinding
+import de.westnordost.streetcomplete.ui.common.street_side_select.StreetSideItem
 import de.westnordost.streetcomplete.util.math.getOrientationAtCenterLineInDegrees
 import de.westnordost.streetcomplete.view.ResImage
 import de.westnordost.streetcomplete.view.controller.StreetSideSelectWithLastAnswerButtonViewController
+import org.jetbrains.compose.resources.StringResource
 import org.koin.android.ext.android.inject
 
 /** Abstract base class for any overlay form in which the user selects items for the left and
@@ -27,6 +30,8 @@ abstract class AStreetSideSelectOverlayForm<I> : AbstractOverlayForm() {
     protected lateinit var streetSideSelect: StreetSideSelectWithLastAnswerButtonViewController<I>
 
     @Composable abstract fun BoxScope.DialogItemContent(item: I, isRight: Boolean)
+
+    @Composable abstract fun getStreetSideItem(item: I, isRight: Boolean): StreetSideItem
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

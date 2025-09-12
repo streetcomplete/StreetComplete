@@ -8,7 +8,7 @@ import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.graphics.drawscope.clipPath
 import androidx.compose.ui.graphics.painter.Painter
 
-class CircularClippedPainter(private val painter: Painter) : Painter() {
+class ClipCirclePainter(private val painter: Painter) : Painter() {
     override val intrinsicSize: Size get() = painter.intrinsicSize
 
     override fun DrawScope.onDraw() {
