@@ -129,12 +129,13 @@ class AddOpeningHours(
             or (
                 opening_hours older today -1 years
                 and (
-                  leisure ~ park|garden|beach_resort|sports_centre|disc_golf_course|nature_reserve|playground
+                  leisure ~ park|garden|beach_resort|sports_centre|disc_golf_course|nature_reserve|playground|fitness_station
                   or barrier
                   or tourism = attraction
                   or amenity ~ toilets|bicycle_rental|charging_station|place_of_worship|parking|research_institute|shower|grave_yard|kitchen|marketplace
                   or railway = station
                   or aeroway = terminal
+                  or man_made = observatory
                 )
             )
         )
