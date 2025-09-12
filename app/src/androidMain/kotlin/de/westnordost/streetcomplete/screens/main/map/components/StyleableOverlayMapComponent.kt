@@ -269,7 +269,7 @@ class StyleableOverlayMapComponent(
                 if (overlayStyle.height != null && overlayStyle.color != Invisible) {
                     p.addProperty("height", overlayStyle.height)
                     if (overlayStyle.minHeight != null) {
-                        p.addProperty("min-height", overlayStyle.minHeight.coerceAtMost(overlayStyle.minHeight))
+                        p.addProperty("min-height", overlayStyle.minHeight.coerceAtMost(overlayStyle.height))
                     }
                 }
 
