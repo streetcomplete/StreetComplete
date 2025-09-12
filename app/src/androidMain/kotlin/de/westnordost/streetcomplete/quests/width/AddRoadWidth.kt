@@ -58,7 +58,7 @@ class AddRoadWidth(
 
     override val changesetComment = "Determine road widths"
     override val wikiLink = "Key:width"
-    override val icon = R.drawable.ic_quest_street_width
+    override val icon = R.drawable.quest_street_width
     override val achievements = listOf(EditTypeAchievement.CAR)
     override val defaultDisabledMessage: StringResource? get() =
         if (!checkArSupport()) Res.string.default_disabled_msg_no_ar

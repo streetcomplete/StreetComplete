@@ -34,7 +34,7 @@ class AddGeneralFee : OsmFilterQuestType<Boolean>(), AndroidQuest {
     """
     override val changesetComment = "Specify whether places take fees to visit"
     override val wikiLink = "Key:fee"
-    override val icon = R.drawable.ic_quest_fee
+    override val icon = R.drawable.quest_fee
     override val achievements = listOf(CITIZEN)
 
     override fun getTitle(tags: Map<String, String>) =

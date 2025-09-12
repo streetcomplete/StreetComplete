@@ -15,7 +15,7 @@ class AddSelfServiceLaundry : OsmFilterQuestType<SelfServiceLaundry>(), AndroidQ
     override val elementFilter = "nodes, ways with shop = laundry and !self_service"
     override val changesetComment = "Survey whether laundries provide self-service"
     override val wikiLink = "Tag:shop=laundry"
-    override val icon = R.drawable.ic_quest_laundry
+    override val icon = R.drawable.quest_laundry
     override val isReplacePlaceEnabled = true
     override val achievements = listOf(CITIZEN)
 

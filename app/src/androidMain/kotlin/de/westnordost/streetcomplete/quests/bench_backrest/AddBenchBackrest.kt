@@ -27,7 +27,7 @@ class AddBenchBackrest : OsmFilterQuestType<BenchBackrestAnswer>(), AndroidQuest
     """
     override val changesetComment = "Survey whether benches have backrests"
     override val wikiLink = "Tag:amenity=bench"
-    override val icon = R.drawable.ic_quest_bench_poi
+    override val icon = R.drawable.quest_bench_poi
     override val isDeleteElementEnabled = true
     override val achievements = listOf(PEDESTRIAN, OUTDOORS)
 

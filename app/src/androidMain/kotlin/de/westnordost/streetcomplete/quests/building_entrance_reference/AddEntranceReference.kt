@@ -44,7 +44,7 @@ class AddEntranceReference : OsmElementQuestType<EntranceReferenceAnswer>, Andro
 
     override val changesetComment = "Specify entrance identifications"
     override val wikiLink = "Key:ref"
-    override val icon = R.drawable.ic_quest_door_address
+    override val icon = R.drawable.quest_door_address
     override val achievements = listOf(CITIZEN, BLIND)
     override val enabledInCountries = NoCountriesExcept(
         "PL", // Poland - own knowledge of Mateusz Konieczny https://github.com/streetcomplete/StreetComplete/issues/3064#issuecomment-879447168

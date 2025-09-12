@@ -52,5 +52,5 @@ fun Pin(
 @Composable
 @Preview
 private fun PinPreview() {
-    Pin(painterResource(R.drawable.ic_quest_recycling))
+    Pin(painterResource(R.drawable.quest_recycling))
 }

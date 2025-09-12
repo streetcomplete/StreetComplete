@@ -20,7 +20,7 @@ class AddFuelSelfService : OsmFilterQuestType<Boolean>(), AndroidQuest {
     """
     override val changesetComment = "Survey whether fuel stations provide self-service"
     override val wikiLink = "Key:self_service"
-    override val icon = R.drawable.ic_quest_fuel_self_service
+    override val icon = R.drawable.quest_fuel_self_service
     override val achievements = listOf(CAR)
     override val enabledInCountries = NoCountriesExcept("IT", "UK")
 

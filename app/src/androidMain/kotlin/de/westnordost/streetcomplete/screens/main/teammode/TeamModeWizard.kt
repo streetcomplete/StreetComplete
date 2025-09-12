@@ -303,12 +303,12 @@ private fun PreviewTeamModeWizard() {
         onDismissRequest = { },
         onFinished = { _, _ -> },
         allQuestIconIds = listOf(
-            R.drawable.ic_quest_bicycle_parking,
-            R.drawable.ic_quest_building,
-            R.drawable.ic_quest_drinking_water,
-            R.drawable.ic_quest_notes,
-            R.drawable.ic_quest_street_surface,
-            R.drawable.ic_quest_wheelchair,
+            R.drawable.quest_bicycle_parking,
+            R.drawable.quest_building,
+            R.drawable.quest_drinking_water,
+            R.drawable.quest_notes,
+            R.drawable.quest_street_surface,
+            R.drawable.quest_wheelchair,
         )
     )
 }

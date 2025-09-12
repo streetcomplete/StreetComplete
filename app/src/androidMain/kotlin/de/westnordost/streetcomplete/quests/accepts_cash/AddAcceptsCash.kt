@@ -55,7 +55,7 @@ class AddAcceptsCash : OsmFilterQuestType<Boolean>(), AndroidQuest {
 
     override val changesetComment = "Survey whether payment with cash is accepted"
     override val wikiLink = "Key:payment"
-    override val icon = R.drawable.ic_quest_cash
+    override val icon = R.drawable.quest_cash
     override val isReplacePlaceEnabled = true
     override val enabledInCountries = NoCountriesExcept(
         "FI", // https://github.com/streetcomplete/StreetComplete/issues/5500

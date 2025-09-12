@@ -18,7 +18,7 @@ class AddOrchardProduce : OsmFilterQuestType<List<OrchardProduce>>(), AndroidQue
     """
     override val changesetComment = "Specify orchard produces"
     override val wikiLink = "Tag:landuse=orchard"
-    override val icon = R.drawable.ic_quest_apple
+    override val icon = R.drawable.quest_apple
     override val achievements = listOf(OUTDOORS)
     override val defaultDisabledMessage = Res.string.default_disabled_msg_difficult_and_time_consuming
 

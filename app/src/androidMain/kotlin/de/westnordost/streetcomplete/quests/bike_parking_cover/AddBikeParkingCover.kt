@@ -23,7 +23,7 @@ class AddBikeParkingCover : OsmFilterQuestType<Boolean>(), AndroidQuest {
     """
     override val changesetComment = "Specify bicycle parkings covers"
     override val wikiLink = "Tag:amenity=bicycle_parking"
-    override val icon = R.drawable.ic_quest_bicycle_parking_cover
+    override val icon = R.drawable.quest_bicycle_parking_cover
     override val isDeleteElementEnabled = true
     override val achievements = listOf(BICYCLIST)
 

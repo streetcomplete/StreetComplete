@@ -27,7 +27,7 @@ class AddTactilePavingBusStop : OsmFilterQuestType<Boolean>(), AndroidQuest {
     """
     override val changesetComment = "Specify whether public transport stops have tactile paving"
     override val wikiLink = "Key:tactile_paving"
-    override val icon = R.drawable.ic_quest_blind_bus
+    override val icon = R.drawable.quest_blind_bus
     override val enabledInCountries = COUNTRIES_WHERE_TACTILE_PAVING_IS_COMMON
     override val achievements = listOf(BLIND)
 

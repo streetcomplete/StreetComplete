@@ -22,7 +22,7 @@ class AddWheelchairAccessOutside : OsmFilterQuestType<WheelchairAccess>(), Andro
     """
     override val changesetComment = "Survey wheelchair accessibility of outside places"
     override val wikiLink = "Key:wheelchair"
-    override val icon = R.drawable.ic_quest_toilets_wheelchair
+    override val icon = R.drawable.quest_toilets_wheelchair
     override val achievements = listOf(RARE, WHEELCHAIR)
 
     override val hint = R.string.quest_wheelchairAccess_limited_description_outside

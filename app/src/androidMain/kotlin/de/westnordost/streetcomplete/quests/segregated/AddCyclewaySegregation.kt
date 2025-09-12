@@ -34,7 +34,7 @@ class AddCyclewaySegregation : OsmFilterQuestType<CyclewaySegregation>(), Androi
     """
     override val changesetComment = "Specify whether combined foot- and cycleways are segregated"
     override val wikiLink = "Key:segregated"
-    override val icon = R.drawable.ic_quest_path_segregation
+    override val icon = R.drawable.quest_path_segregation
     override val achievements = listOf(BICYCLIST, OUTDOORS)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_segregated_title

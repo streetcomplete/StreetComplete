@@ -15,7 +15,7 @@ class AddCarWashType : OsmFilterQuestType<List<CarWashType>>(), AndroidQuest {
     override val elementFilter = "nodes, ways with amenity = car_wash and !automated and !self_service"
     override val changesetComment = "Specify car wash types"
     override val wikiLink = "Tag:amenity=car_wash"
-    override val icon = R.drawable.ic_quest_car_wash
+    override val icon = R.drawable.quest_car_wash
     override val achievements = listOf(CAR)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_carWashType_title

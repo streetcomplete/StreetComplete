@@ -30,7 +30,7 @@ class AddBicycleRepairStationServices : OsmFilterQuestType<List<BicycleRepairSta
 
     override val changesetComment = "Specify features of bicycle repair stations"
     override val wikiLink = "Tag:amenity=bicycle_repair_station"
-    override val icon = R.drawable.ic_quest_bicycle_repair_amenity
+    override val icon = R.drawable.quest_bicycle_repair_amenity
     override val isDeleteElementEnabled = true
     override val achievements = listOf(BICYCLIST)
 

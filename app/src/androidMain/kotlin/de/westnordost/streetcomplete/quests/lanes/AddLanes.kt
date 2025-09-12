@@ -32,7 +32,7 @@ class AddLanes : OsmFilterQuestType<LanesAnswer>(), AndroidQuest {
 
     override val changesetComment = "Determine roads lane count"
     override val wikiLink = "Key:lanes"
-    override val icon = R.drawable.ic_quest_street_lanes
+    override val icon = R.drawable.quest_street_lanes
     override val achievements = listOf(CAR)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_lanes_title

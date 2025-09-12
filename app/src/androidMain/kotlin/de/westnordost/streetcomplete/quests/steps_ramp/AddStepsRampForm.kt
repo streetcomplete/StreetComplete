@@ -1,41 +1,28 @@
 package de.westnordost.streetcomplete.quests.steps_ramp
 
-import android.os.Bundle
-import android.view.View
 import androidx.appcompat.app.AlertDialog
+import androidx.compose.foundation.layout.BoxScope
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AImageListQuestForm
 import de.westnordost.streetcomplete.quests.steps_ramp.StepsRamp.BICYCLE
-import de.westnordost.streetcomplete.quests.steps_ramp.StepsRamp.NONE
 import de.westnordost.streetcomplete.quests.steps_ramp.StepsRamp.STROLLER
 import de.westnordost.streetcomplete.quests.steps_ramp.StepsRamp.WHEELCHAIR
-import de.westnordost.streetcomplete.view.image_select.ImageSelectAdapter
+import de.westnordost.streetcomplete.ui.common.image_select.ImageWithLabel
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 
 class AddStepsRampForm : AImageListQuestForm<StepsRamp, StepsRampAnswer>() {
 
-    override val items = StepsRamp.entries.map { it.asItem() }
+    override val items = StepsRamp.entries
     override val itemsPerRow = 2
     override val maxSelectableItems = -1
     override val moveFavoritesToFront = false
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    // TODO deselect all others if NONE is selected
 
-        // NONE is exclusive with the other options
-        imageSelector.listeners.add(object : ImageSelectAdapter.OnItemSelectionListener {
-            override fun onIndexSelected(index: Int) {
-                val noneIndex = imageSelector.indexOf(NONE)
-                if (index == noneIndex) {
-                    for (selectedIndex in imageSelector.selectedIndices) {
-                        if (selectedIndex != index) imageSelector.deselect(selectedIndex)
-                    }
-                } else {
-                    imageSelector.deselect(noneIndex)
-                }
-            }
-
-            override fun onIndexDeselected(index: Int) {}
-        })
+    @Composable override fun BoxScope.ItemContent(item: StepsRamp) {
+        ImageWithLabel(painterResource(item.icon), stringResource(item.title))
     }
 
     override fun onClickOk(selectedItems: List<StepsRamp>) {

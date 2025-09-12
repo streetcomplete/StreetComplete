@@ -5,9 +5,6 @@ import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AImageListQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
-import de.westnordost.streetcomplete.view.image_select.ImageListPickerDialog
-import de.westnordost.streetcomplete.view.image_select.ImageSelectAdapter
-import de.westnordost.streetcomplete.view.image_select.Item
 
 class AddRecyclingContainerMaterialsForm :
     AImageListQuestForm<List<RecyclingMaterial>, RecyclingContainerMaterialsAnswer>() {
@@ -18,15 +15,13 @@ class AddRecyclingContainerMaterialsForm :
         AnswerItem(R.string.quest_recycling_materials_answer_waste) { confirmJustTrash() }
     )
 
-    override val items get() = RecyclingMaterial.selectableValues.map { it.asItem() }
-
+    override val items = RecyclingMaterial.selectableValues
     override val maxSelectableItems = -1
 
     private val isAnyGlassRecyclable get() = countryInfo.isUsuallyAnyGlassRecyclableInContainers
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        imageSelector.cellLayoutId = R.layout.cell_icon_select_with_label_below
         imageSelector.listeners.add(object : ImageSelectAdapter.OnItemSelectionListener {
             override fun onIndexSelected(index: Int) {
                 val value = imageSelector.items[index].value!!

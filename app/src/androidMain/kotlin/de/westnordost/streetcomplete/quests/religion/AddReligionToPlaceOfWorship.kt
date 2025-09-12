@@ -20,7 +20,7 @@ class AddReligionToPlaceOfWorship : OsmFilterQuestType<Religion>(), AndroidQuest
     """
     override val changesetComment = "Specify religion for places of worship"
     override val wikiLink = "Key:religion"
-    override val icon = R.drawable.ic_quest_religion
+    override val icon = R.drawable.quest_religion
     override val achievements = listOf(CITIZEN)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_religion_for_place_of_worship_title

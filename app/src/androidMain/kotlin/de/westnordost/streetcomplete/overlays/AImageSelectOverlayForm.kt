@@ -3,13 +3,12 @@ package de.westnordost.streetcomplete.overlays
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import androidx.compose.foundation.layout.BoxScope
+import androidx.compose.runtime.Composable
 import androidx.core.view.children
 import androidx.core.view.isGone
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.FragmentOverlayImageSelectBinding
-import de.westnordost.streetcomplete.view.image_select.DisplayItem
-import de.westnordost.streetcomplete.view.image_select.ImageListPickerDialog
-import de.westnordost.streetcomplete.view.image_select.ItemViewHolder
 import de.westnordost.streetcomplete.view.setImage
 
 /** Abstract base class for any overlay form in which the user selects an image item */
@@ -20,19 +19,19 @@ abstract class AImageSelectOverlayForm<I> : AbstractOverlayForm() {
 
     protected open val itemsPerRow = 2
     /** items to display. May not be accessed before onCreate */
-    protected abstract val items: List<DisplayItem<I>>
+    protected abstract val items: List<I>
     /** items to that are selectable. May not be accessed before onCreate */
-    protected open val selectableItems: List<DisplayItem<I>> get() = items
+    protected open val selectableItems: List<I> get() = items
     /** item to display as last picked answer. May not be accessed before onCreate */
-    protected open val lastPickedItem: DisplayItem<I>? = null
+    protected open val lastPickedItem: I? = null
 
-    protected open val cellLayoutId: Int = R.layout.cell_icon_select_with_label_below
-
-    var selectedItem: DisplayItem<I>? = null
+    var selectedItem: I? = null
         set(value) {
             field = value
             updateSelectedCell()
         }
+
+    @Composable protected abstract fun BoxScope.ItemContent(item: I)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

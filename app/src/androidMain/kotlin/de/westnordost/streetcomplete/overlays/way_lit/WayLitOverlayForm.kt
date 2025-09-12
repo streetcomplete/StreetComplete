@@ -2,6 +2,8 @@ package de.westnordost.streetcomplete.overlays.way_lit
 
 import android.os.Bundle
 import android.view.View
+import androidx.compose.foundation.layout.BoxScope
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
@@ -13,27 +15,30 @@ import de.westnordost.streetcomplete.osm.lit.LitStatus.NIGHT_AND_DAY
 import de.westnordost.streetcomplete.osm.lit.LitStatus.NO
 import de.westnordost.streetcomplete.osm.lit.LitStatus.YES
 import de.westnordost.streetcomplete.osm.lit.applyTo
-import de.westnordost.streetcomplete.osm.lit.asItem
+import de.westnordost.streetcomplete.osm.lit.icon
 import de.westnordost.streetcomplete.osm.lit.parseLitStatus
+import de.westnordost.streetcomplete.osm.lit.title
 import de.westnordost.streetcomplete.overlays.AImageSelectOverlayForm
 import de.westnordost.streetcomplete.overlays.AnswerItem
+import de.westnordost.streetcomplete.ui.common.image_select.ImageWithLabel
 import de.westnordost.streetcomplete.util.ktx.couldBeSteps
 import de.westnordost.streetcomplete.util.ktx.valueOfOrNull
-import de.westnordost.streetcomplete.view.image_select.DisplayItem
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 import org.koin.android.ext.android.inject
 
 class WayLitOverlayForm : AImageSelectOverlayForm<LitStatus>() {
 
-    override val items: List<DisplayItem<LitStatus>> = LitStatus.entries.map { it.asItem() }
+    override val items: List<LitStatus> = LitStatus.entries
 
-    override val selectableItems: List<DisplayItem<LitStatus>> =
-        listOf(YES, NO, AUTOMATIC, NIGHT_AND_DAY).map { it.asItem() }
+    override val selectableItems: List<LitStatus> =
+        listOf(YES, NO, AUTOMATIC, NIGHT_AND_DAY)
 
     private val prefs: Preferences by inject()
 
-    override val lastPickedItem: DisplayItem<LitStatus>? get() =
+    override val lastPickedItem: LitStatus? get() =
         prefs.getLastPicked(this::class.simpleName!!)
-            .map { valueOfOrNull<LitStatus>(it)?.asItem() }
+            .map { valueOfOrNull<LitStatus>(it) }
             .firstOrNull()
 
     private var originalLitStatus: LitStatus? = null
@@ -42,20 +47,24 @@ class WayLitOverlayForm : AImageSelectOverlayForm<LitStatus>() {
         createConvertToStepsAnswer()
     )
 
+    @Composable override fun BoxScope.ItemContent(item: LitStatus) {
+        ImageWithLabel(painterResource(item.icon), stringResource(item.title))
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         originalLitStatus = parseLitStatus(element!!.tags)
-        selectedItem = originalLitStatus?.asItem()
+        selectedItem = originalLitStatus
     }
 
     override fun hasChanges(): Boolean =
-        selectedItem?.value != originalLitStatus
+        selectedItem != originalLitStatus
 
     override fun onClickOk() {
-        prefs.addLastPicked(this::class.simpleName!!, selectedItem!!.value!!.name)
+        prefs.addLastPicked(this::class.simpleName!!, selectedItem!!.name)
         val tagChanges = StringMapChangesBuilder(element!!.tags)
-        selectedItem!!.value!!.applyTo(tagChanges)
+        selectedItem!!.applyTo(tagChanges)
         applyEdit(UpdateElementTagsAction(element!!, tagChanges.create()))
     }
 

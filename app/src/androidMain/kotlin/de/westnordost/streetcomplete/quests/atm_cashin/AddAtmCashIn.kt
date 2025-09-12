@@ -17,7 +17,7 @@ class AddAtmCashIn : OsmFilterQuestType<Boolean>(), AndroidQuest {
     override val elementFilter = "nodes with amenity = atm and !cash_in"
     override val changesetComment = "Determine whether ATM allows depositing cash"
     override val wikiLink = "Key:cash_in"
-    override val icon = R.drawable.ic_quest_money
+    override val icon = R.drawable.quest_money
     override val isDeleteElementEnabled = true
     override val achievements = listOf(CITIZEN)
 

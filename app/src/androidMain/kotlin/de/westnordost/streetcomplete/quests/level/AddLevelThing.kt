@@ -34,7 +34,7 @@ class AddLevelThing : OsmElementQuestType<String>, AndroidQuest {
 
     override val changesetComment = "Determine on which level things are in a building"
     override val wikiLink = "Key:level"
-    override val icon = R.drawable.ic_quest_level_thing
+    override val icon = R.drawable.quest_level_thing
     override val isReplacePlaceEnabled = false
     override val isDeleteElementEnabled = true
     override val achievements = listOf(CITIZEN)
