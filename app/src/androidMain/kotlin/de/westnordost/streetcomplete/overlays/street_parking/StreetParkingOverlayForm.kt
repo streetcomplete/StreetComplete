@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.overlays.street_parking
 
-import android.content.Context
+import android.R.attr.entries
 import android.os.Bundle
 import android.view.View
 import androidx.compose.foundation.layout.BoxScope
@@ -14,27 +14,16 @@ import de.westnordost.streetcomplete.osm.street_parking.LeftAndRightStreetParkin
 import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition
 import de.westnordost.streetcomplete.osm.street_parking.StreetParking
-import de.westnordost.streetcomplete.osm.street_parking.StreetParkingDrawable
+import de.westnordost.streetcomplete.osm.street_parking.StreetParkingSelection
 import de.westnordost.streetcomplete.osm.street_parking.applyTo
-import de.westnordost.streetcomplete.osm.street_parking.getDialogIcon
+import de.westnordost.streetcomplete.osm.street_parking.dialogPainter
 import de.westnordost.streetcomplete.osm.street_parking.parseStreetParkingSides
 import de.westnordost.streetcomplete.osm.street_parking.title
 import de.westnordost.streetcomplete.osm.street_parking.validOrNullValues
 import de.westnordost.streetcomplete.overlays.AStreetSideSelectOverlayForm
-import de.westnordost.streetcomplete.overlays.street_parking.ParkingSelection.*
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.street_parking_diagonal
-import de.westnordost.streetcomplete.resources.street_parking_no
-import de.westnordost.streetcomplete.resources.street_parking_parallel
-import de.westnordost.streetcomplete.resources.street_parking_perpendicular
-import de.westnordost.streetcomplete.resources.street_parking_separate
 import de.westnordost.streetcomplete.ui.common.image_select.ImageWithLabel
-import de.westnordost.streetcomplete.view.DrawableImage
-import de.westnordost.streetcomplete.view.Image
 import de.westnordost.streetcomplete.view.ResImage
 import kotlinx.serialization.json.Json
-import org.jetbrains.compose.resources.StringResource
-import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
 class StreetParkingOverlayForm : AStreetSideSelectOverlayForm<StreetParking>() {
@@ -58,7 +47,7 @@ class StreetParkingOverlayForm : AStreetSideSelectOverlayForm<StreetParking>() {
         val isUpsideDown = isUpsideDown(isRight)
         if (title != null) {
             ImageWithLabel(
-                painterResource(item.getDialogIcon(isUpsideDown)),
+                item.dialogPainter(isUpsideDown),
                 stringResource(title)
             )
         }
@@ -103,7 +92,7 @@ class StreetParkingOverlayForm : AStreetSideSelectOverlayForm<StreetParking>() {
 
     override fun onClickSide(isRight: Boolean) {
         val ctx = context ?: return
-        val items = getParkingItems(ctx)
+        val items = getParkingItems()
         ImageListPickerDialog(ctx, items, R.layout.cell_icon_select_with_label_below, 2, R.string.select_street_parking_orientation) {
             when (it.value!!) {
                 NO -> onSelectedSide(StreetParking.None, isRight)
@@ -117,7 +106,7 @@ class StreetParkingOverlayForm : AStreetSideSelectOverlayForm<StreetParking>() {
 
     private fun showParkingPositionDialog(orientation: ParkingOrientation, isRight: Boolean) {
         val ctx = context ?: return
-        val items = getParkingPositionItems(ctx, orientation)
+        val items = getParkingPositionItems(orientation)
         ImageListPickerDialog(ctx, items, R.layout.labeled_icon_button_cell, 2, R.string.select_street_parking_position) {
             onSelectedSide(it.value!!, isRight)
         }.show()
@@ -128,13 +117,10 @@ class StreetParkingOverlayForm : AStreetSideSelectOverlayForm<StreetParking>() {
         streetSideSelect.replacePuzzleSide(parking.asStreetSideItem(ctx, isUpsideDown(isRight), isRight), isRight)
     }
 
-    private fun getParkingItems(context: Context): List<DisplayItem<ParkingSelection>> =
-        ParkingSelection.entries.map { it.asItem(context, isLeftHandTraffic) }
+    private fun getParkingItems(): List<StreetParkingSelection> = entries
 
-    private fun getParkingPositionItems(context: Context, orientation: ParkingOrientation) =
-        ParkingPosition.displayedValues
-            .map { StreetParking.PositionAndOrientation(orientation, it) }
-            .map { it.asItem(context, isLeftHandTraffic) }
+    private fun getParkingPositionItems(orientation: ParkingOrientation) =
+        ParkingPosition.displayedValues.map { StreetParking.PositionAndOrientation(orientation, it) }
 
     /* --------------------------------------- apply answer ------------------------------------- */
 
@@ -146,34 +132,3 @@ class StreetParkingOverlayForm : AStreetSideSelectOverlayForm<StreetParking>() {
         applyEdit(UpdateElementTagsAction(element!!, tagChanges.create()))
     }
 }
-
-private enum class ParkingSelection {
-    PARALLEL,
-    DIAGONAL,
-    PERPENDICULAR,
-    SEPARATE,
-    NO
-}
-
-private val ParkingSelection.title: StringResource get() = when (this) {
-    PARALLEL -> Res.string.street_parking_parallel
-    DIAGONAL -> Res.string.street_parking_diagonal
-    PERPENDICULAR -> Res.string.street_parking_perpendicular
-    SEPARATE -> Res.string.street_parking_separate
-    NO -> Res.string.street_parking_no
-}
-
-private fun ParkingSelection.getDialogIcon(context: Context, isUpsideDown: Boolean): Image = when (this) {
-    PARALLEL -> createParkingOrientationImage(context, isUpsideDown, ParkingOrientation.PARALLEL)
-    DIAGONAL -> createParkingOrientationImage(context, isUpsideDown, ParkingOrientation.DIAGONAL)
-    PERPENDICULAR -> createParkingOrientationImage(context, isUpsideDown, ParkingOrientation.PERPENDICULAR)
-    SEPARATE -> ResImage(R.drawable.floating_separate)
-    NO -> ResImage(R.drawable.floating_no)
-}
-
-private fun createParkingOrientationImage(
-    context: Context,
-    isUpsideDown: Boolean,
-    parkingOrientation: ParkingOrientation,
-) =
-    DrawableImage(StreetParkingDrawable(context, parkingOrientation, null, isUpsideDown, 128, 128, R.drawable.car1))

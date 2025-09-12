@@ -57,7 +57,7 @@ class StreetParkingPainter(
                 val carPainter = carPainters[Random(seed).nextInt(carPainters.size)]
                 val carHeight = carPainter.intrinsicSize.height * carWidth / carPainter.intrinsicSize.width
                 val paddingY = (height / carCount - carHeight) / 2
-                val carY = (1f * height / carCount * i + paddingY + phase * height) % (height * repeats)
+                val carY = (height / carCount * i + paddingY + phase * height) % (height * repeats)
                 translate(left = carX, top = carY) {
                     rotate(degrees = carRotation, pivot = Offset(carWidth / 2, carHeight / 2)) {
                         with(carPainter) {
