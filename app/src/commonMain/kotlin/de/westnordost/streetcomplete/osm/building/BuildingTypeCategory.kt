@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.osm.building
 
 import de.westnordost.streetcomplete.osm.building.BuildingType.*
-import de.westnordost.streetcomplete.ui.common.image_select.Group
+import de.westnordost.streetcomplete.ui.common.item_select.Group
 
 enum class BuildingTypeCategory(
     val type: BuildingType?,

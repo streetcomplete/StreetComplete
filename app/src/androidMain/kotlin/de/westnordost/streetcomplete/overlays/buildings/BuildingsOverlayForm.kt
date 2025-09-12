@@ -15,7 +15,7 @@ import de.westnordost.streetcomplete.osm.building.description
 import de.westnordost.streetcomplete.osm.building.icon
 import de.westnordost.streetcomplete.osm.building.title
 import de.westnordost.streetcomplete.overlays.AGroupedImageSelectOverlayForm
-import de.westnordost.streetcomplete.ui.common.image_select.ImageWithDescription
+import de.westnordost.streetcomplete.ui.common.item_select.ImageWithDescription
 import de.westnordost.streetcomplete.util.getNameAndLocationSpanned
 import de.westnordost.streetcomplete.util.ktx.valueOfOrNull
 import de.westnordost.streetcomplete.util.takeFavorites

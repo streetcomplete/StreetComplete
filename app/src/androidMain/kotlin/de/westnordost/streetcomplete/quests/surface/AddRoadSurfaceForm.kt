@@ -6,7 +6,7 @@ import de.westnordost.streetcomplete.osm.surface.Surface
 import de.westnordost.streetcomplete.osm.surface.icon
 import de.westnordost.streetcomplete.osm.surface.title
 import de.westnordost.streetcomplete.quests.AImageListQuestForm
-import de.westnordost.streetcomplete.ui.common.image_select.ImageWithLabel
+import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 

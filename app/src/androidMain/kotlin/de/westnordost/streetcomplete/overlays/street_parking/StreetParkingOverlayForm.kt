@@ -23,7 +23,7 @@ import de.westnordost.streetcomplete.osm.street_parking.parseStreetParkingSides
 import de.westnordost.streetcomplete.osm.street_parking.title
 import de.westnordost.streetcomplete.osm.street_parking.validOrNullValues
 import de.westnordost.streetcomplete.overlays.AStreetSideSelectOverlayForm
-import de.westnordost.streetcomplete.ui.common.image_select.ImageWithLabel
+import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
 import de.westnordost.streetcomplete.ui.common.street_side_select.StreetSideItem
 import de.westnordost.streetcomplete.view.ResImage
 import kotlinx.serialization.json.Json

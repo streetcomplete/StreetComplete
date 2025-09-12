@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.databinding.QuestGenericListBinding
-import de.westnordost.streetcomplete.ui.common.image_select.Group
+import de.westnordost.streetcomplete.ui.common.item_select.Group
 import de.westnordost.streetcomplete.util.takeFavorites
 import org.koin.android.ext.android.inject
 

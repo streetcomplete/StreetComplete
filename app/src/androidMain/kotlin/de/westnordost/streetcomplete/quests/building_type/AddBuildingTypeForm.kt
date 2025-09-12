@@ -11,7 +11,7 @@ import de.westnordost.streetcomplete.osm.building.icon
 import de.westnordost.streetcomplete.osm.building.title
 import de.westnordost.streetcomplete.quests.AGroupedImageListQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
-import de.westnordost.streetcomplete.ui.common.image_select.ImageWithDescription
+import de.westnordost.streetcomplete.ui.common.item_select.ImageWithDescription
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 

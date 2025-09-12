@@ -15,7 +15,7 @@ import de.westnordost.streetcomplete.osm.mtb_scale.icon
 import de.westnordost.streetcomplete.osm.mtb_scale.parseMtbScale
 import de.westnordost.streetcomplete.osm.mtb_scale.title
 import de.westnordost.streetcomplete.overlays.AImageSelectOverlayForm
-import de.westnordost.streetcomplete.ui.common.image_select.ImageWithDescription
+import de.westnordost.streetcomplete.ui.common.item_select.ImageWithDescription
 import de.westnordost.streetcomplete.util.ktx.dpToPx
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource

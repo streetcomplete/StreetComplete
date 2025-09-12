@@ -22,7 +22,7 @@ import de.westnordost.streetcomplete.osm.oneway.isInContraflowOfOneway
 import de.westnordost.streetcomplete.quests.AStreetSideSelectForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.IAnswerItem
-import de.westnordost.streetcomplete.ui.common.image_select.ImageWithLabel
+import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
 import de.westnordost.streetcomplete.ui.common.street_side_select.StreetSideItem
 import de.westnordost.streetcomplete.util.ktx.noEntrySignDrawable
 import de.westnordost.streetcomplete.util.ktx.toast

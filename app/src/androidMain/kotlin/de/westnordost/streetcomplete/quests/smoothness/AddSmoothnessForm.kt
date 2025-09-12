@@ -22,8 +22,8 @@ import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.quest_address_answer_no_housenumber_message2b
 import de.westnordost.streetcomplete.resources.quest_smoothness_surface_value
-import de.westnordost.streetcomplete.ui.common.image_select.ImageWithDescription
-import de.westnordost.streetcomplete.ui.common.image_select.ImageWithLabel
+import de.westnordost.streetcomplete.ui.common.item_select.ImageWithDescription
+import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
 import de.westnordost.streetcomplete.ui.util.content
 import de.westnordost.streetcomplete.util.ktx.couldBeSteps
 import org.jetbrains.compose.resources.painterResource

@@ -32,7 +32,7 @@ import de.westnordost.streetcomplete.overlays.AStreetSideSelectOverlayForm
 import de.westnordost.streetcomplete.overlays.AnswerItem
 import de.westnordost.streetcomplete.overlays.AnswerItem2
 import de.westnordost.streetcomplete.overlays.IAnswerItem
-import de.westnordost.streetcomplete.ui.common.image_select.ImageWithLabel
+import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
 import de.westnordost.streetcomplete.ui.common.street_side_select.StreetSideItem
 import de.westnordost.streetcomplete.util.ktx.noEntrySignDrawable
 import de.westnordost.streetcomplete.util.ktx.toast

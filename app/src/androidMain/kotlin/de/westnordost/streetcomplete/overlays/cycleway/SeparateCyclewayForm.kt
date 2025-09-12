@@ -13,7 +13,7 @@ import de.westnordost.streetcomplete.osm.cycleway_separate.getIcon
 import de.westnordost.streetcomplete.osm.cycleway_separate.parseSeparateCycleway
 import de.westnordost.streetcomplete.osm.cycleway_separate.title
 import de.westnordost.streetcomplete.overlays.AImageSelectOverlayForm
-import de.westnordost.streetcomplete.ui.common.image_select.ImageWithDescription
+import de.westnordost.streetcomplete.ui.common.item_select.ImageWithDescription
 import de.westnordost.streetcomplete.util.ktx.valueOfOrNull
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource

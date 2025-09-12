@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.ui.common.image_select
+package de.westnordost.streetcomplete.ui.common.item_select
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column

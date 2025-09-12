@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.CellLastPickedButtonBinding
 import de.westnordost.streetcomplete.databinding.FragmentGroupedOverlayImageSelectBinding
-import de.westnordost.streetcomplete.ui.common.image_select.Group
+import de.westnordost.streetcomplete.ui.common.item_select.Group
 import de.westnordost.streetcomplete.view.setImage
 
 /** Abstract base class for any overlay form in which the user selects a grouped item */
