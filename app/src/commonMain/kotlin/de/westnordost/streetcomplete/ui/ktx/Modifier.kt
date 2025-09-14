@@ -4,7 +4,6 @@ import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -131,12 +130,14 @@ fun Modifier.backgroundWithPadding(
 
 fun Modifier.selectionFrame(
     isSelected: Boolean,
-    color: Color = Color.Unspecified
+    color: Color = Color.Unspecified,
+    shape: Shape? = null,
 ): Modifier = this.composed {
     val color = if (color == Color.Unspecified) MaterialTheme.colors.secondary else color
+    val shape = shape ?: MaterialTheme.shapes.small
     val alpha by animateFloatAsState(if (isSelected) 1f else 0f)
     this
-        .border(2.dp, color.copy(alpha = alpha), RoundedCornerShape(10.dp))
-        .clip(RoundedCornerShape(6.dp))
+        .border(2.dp, color.copy(alpha = alpha), shape)
+        .clip(shape)
         .background(color.copy(alpha = alpha * 0.33f))
 }

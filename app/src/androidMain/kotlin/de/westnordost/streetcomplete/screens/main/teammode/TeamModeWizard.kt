@@ -9,8 +9,6 @@ import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
@@ -19,6 +17,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.selection.selectable
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.ProvideTextStyle
 import androidx.compose.material.Text
@@ -51,11 +50,10 @@ import de.westnordost.streetcomplete.ui.common.BubblePile
 import de.westnordost.streetcomplete.ui.common.WheelPicker
 import de.westnordost.streetcomplete.ui.common.WheelPickerState
 import de.westnordost.streetcomplete.ui.common.rememberWheelPickerState
-import de.westnordost.streetcomplete.ui.ktx.conditional
+import de.westnordost.streetcomplete.ui.ktx.selectionFrame
 import de.westnordost.streetcomplete.ui.ktx.toPx
 import de.westnordost.streetcomplete.ui.theme.TeamColors
 import de.westnordost.streetcomplete.ui.theme.headlineLarge
-import de.westnordost.streetcomplete.ui.theme.selectionBackground
 import kotlinx.coroutines.delay
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
@@ -181,16 +179,12 @@ private fun TeamModeColorSelect(
         modifier = Modifier.padding(top = 24.dp)
     ) {
         for (index in 0..<teamSize) {
+            val isSelected = selectedIndex == index
             TeamModeColorCircle(
                 index = index,
                 modifier = Modifier
-                    .clickable { onSelectedIndex(index) }
-                    .conditional(selectedIndex == index) {
-                        background(
-                            color = MaterialTheme.colors.selectionBackground,
-                            shape = MaterialTheme.shapes.small
-                        )
-                    }
+                    .selectionFrame(isSelected)
+                    .selectable(isSelected) { onSelectedIndex(index) }
                     .padding(8.dp)
                     .width(56.dp)
             )
