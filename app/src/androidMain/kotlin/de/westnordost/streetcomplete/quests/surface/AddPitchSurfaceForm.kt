@@ -15,7 +15,10 @@ class AddPitchSurfaceForm : AItemSelectQuestForm<Surface, Surface>() {
     override val itemsPerRow = 3
 
     @Composable override fun ItemContent(item: Surface) {
-        ImageWithLabel(item.icon?.let { painterResource(it) }, stringResource(item.title))
+        val icon = item.icon
+        if (icon != null) {
+            ImageWithLabel(painterResource(icon), stringResource(item.title))
+        }
     }
 
     override fun onClickOk(selectedItem: Surface) {

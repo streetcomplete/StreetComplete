@@ -34,10 +34,10 @@ class AddSidewalkSurfaceForm : AStreetSideSelectForm<Surface, SidewalkSurfaceAns
     )
 
     @Composable override fun BoxScope.DialogItemContent(item: Surface, isRight: Boolean) {
-        ImageWithLabel(
-            item.icon?.let { painterResource(it) },
-            stringResource(item.title)
-        )
+        val icon = item.icon
+        if (icon != null) {
+            ImageWithLabel(painterResource(icon), stringResource(item.title))
+        }
     }
 
     @Composable override fun getStreetSideItem(item: Surface, isRight: Boolean): StreetSideItem {
