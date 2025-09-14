@@ -1,8 +1,16 @@
 package de.westnordost.streetcomplete.ui.ktx
 
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.composed
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.draw.drawWithContent
 import androidx.compose.ui.geometry.Offset
@@ -18,6 +26,7 @@ import androidx.compose.ui.graphics.drawscope.inset
 import androidx.compose.ui.layout.layout
 import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.dp
 
 @Composable
 fun Modifier.conditional(
@@ -118,4 +127,16 @@ fun Modifier.backgroundWithPadding(
     path.translate(Offset(paddingLeft, paddingTop))
 
     drawPath(path, color = color)
+}
+
+fun Modifier.selectionFrame(
+    isSelected: Boolean,
+    color: Color = Color.Unspecified
+): Modifier = this.composed {
+    val color = if (color == Color.Unspecified) MaterialTheme.colors.secondary else color
+    val alpha by animateFloatAsState(if (isSelected) 1f else 0f)
+    this
+        .border(2.dp, color.copy(alpha = alpha), RoundedCornerShape(10.dp))
+        .clip(RoundedCornerShape(6.dp))
+        .background(color.copy(alpha = alpha * 0.33f))
 }

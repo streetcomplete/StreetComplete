@@ -1,23 +1,21 @@
 package de.westnordost.streetcomplete.quests.bicycle_repair_station
 
-import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.runtime.Composable
-import de.westnordost.streetcomplete.quests.AImageListQuestForm
+import de.westnordost.streetcomplete.quests.AItemsSelectQuestForm
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
-class AddBicycleRepairStationServicesForm : AImageListQuestForm<BicycleRepairStationService, List<BicycleRepairStationService>>() {
+class AddBicycleRepairStationServicesForm : AItemsSelectQuestForm<BicycleRepairStationService, Set<BicycleRepairStationService>>() {
 
     override val items = BicycleRepairStationService.entries
-    override val maxSelectableItems = -1
     override val itemsPerRow = 3
 
-    @Composable override fun BoxScope.ItemContent(item: BicycleRepairStationService) {
+    @Composable override fun ItemContent(item: BicycleRepairStationService) {
         ImageWithLabel(painterResource(item.icon), stringResource(item.title))
     }
 
-    override fun onClickOk(selectedItems: List<BicycleRepairStationService>) {
+    override fun onClickOk(selectedItems: Set<BicycleRepairStationService>) {
         applyAnswer(selectedItems)
     }
 }

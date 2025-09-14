@@ -12,7 +12,7 @@ import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.updateCheckDate
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
-class AddBicycleRepairStationServices : OsmFilterQuestType<List<BicycleRepairStationService>>(), AndroidQuest {
+class AddBicycleRepairStationServices : OsmFilterQuestType<Set<BicycleRepairStationService>>(), AndroidQuest {
 
     override val elementFilter = """
         nodes, ways with
@@ -44,7 +44,7 @@ class AddBicycleRepairStationServices : OsmFilterQuestType<List<BicycleRepairSta
             amenity ~ bicycle_repair_station|compressed_air
         """)
 
-    override fun applyAnswerTo(answer: List<BicycleRepairStationService>, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: Set<BicycleRepairStationService>, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         for (entry in BicycleRepairStationService.entries) {
             tags["service:bicycle:${entry.value}"] = (entry in answer).toYesNo()
         }

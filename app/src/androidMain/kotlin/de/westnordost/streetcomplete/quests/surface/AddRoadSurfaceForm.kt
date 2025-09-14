@@ -1,26 +1,24 @@
 package de.westnordost.streetcomplete.quests.surface
 
-import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.osm.surface.Surface
 import de.westnordost.streetcomplete.osm.surface.icon
 import de.westnordost.streetcomplete.osm.surface.title
-import de.westnordost.streetcomplete.quests.AImageListQuestForm
+import de.westnordost.streetcomplete.quests.AItemSelectQuestForm
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
-class AddRoadSurfaceForm : AImageListQuestForm<Surface, Surface>() {
+class AddRoadSurfaceForm : AItemSelectQuestForm<Surface, Surface>() {
     override val items get() = Surface.selectableValuesForWays
 
     override val itemsPerRow = 3
 
-    @Composable override fun BoxScope.ItemContent(item: Surface) {
+    @Composable override fun ItemContent(item: Surface) {
         ImageWithLabel(item.icon?.let { painterResource(it) }, stringResource(item.title))
     }
 
-    override fun onClickOk(selectedItems: List<Surface>) {
-        val surface = selectedItems.single()
-        applyAnswer(surface)
+    override fun onClickOk(selectedItem: Surface) {
+        applyAnswer(selectedItem)
     }
 }

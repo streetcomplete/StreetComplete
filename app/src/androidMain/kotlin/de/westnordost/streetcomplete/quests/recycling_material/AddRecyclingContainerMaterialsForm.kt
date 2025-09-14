@@ -3,11 +3,11 @@ package de.westnordost.streetcomplete.quests.recycling_material
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.AImageListQuestForm
+import de.westnordost.streetcomplete.quests.AItemsSelectQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 
 class AddRecyclingContainerMaterialsForm :
-    AImageListQuestForm<List<RecyclingMaterial>, RecyclingContainerMaterialsAnswer>() {
+    AItemsSelectQuestForm<List<RecyclingMaterial>, RecyclingContainerMaterialsAnswer>() {
 
     override val descriptionResId = R.string.quest_recycling_materials_note
 
@@ -16,7 +16,6 @@ class AddRecyclingContainerMaterialsForm :
     )
 
     override val items = RecyclingMaterial.selectableValues
-    override val maxSelectableItems = -1
 
     private val isAnyGlassRecyclable get() = countryInfo.isUsuallyAnyGlassRecyclableInContainers
 

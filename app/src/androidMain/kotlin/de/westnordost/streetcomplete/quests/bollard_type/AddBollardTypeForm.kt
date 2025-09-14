@@ -1,15 +1,14 @@
 package de.westnordost.streetcomplete.quests.bollard_type
 
-import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.AImageListQuestForm
+import de.westnordost.streetcomplete.quests.AItemSelectQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
-class AddBollardTypeForm : AImageListQuestForm<BollardType, BollardTypeAnswer>() {
+class AddBollardTypeForm : AItemSelectQuestForm<BollardType, BollardTypeAnswer>() {
 
     override val items = BollardType.entries
     override val itemsPerRow = 3
@@ -20,11 +19,11 @@ class AddBollardTypeForm : AImageListQuestForm<BollardType, BollardTypeAnswer>()
         },
     )
 
-    @Composable override fun BoxScope.ItemContent(item: BollardType) {
+    @Composable override fun ItemContent(item: BollardType) {
         ImageWithLabel(painterResource(item.icon), stringResource(item.title))
     }
 
-    override fun onClickOk(selectedItems: List<BollardType>) {
-        applyAnswer(selectedItems.single())
+    override fun onClickOk(selectedItem: BollardType) {
+        applyAnswer(selectedItem)
     }
 }

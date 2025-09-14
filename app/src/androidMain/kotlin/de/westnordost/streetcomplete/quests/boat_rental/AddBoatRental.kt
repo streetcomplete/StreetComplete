@@ -8,7 +8,7 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.RARE
 import de.westnordost.streetcomplete.osm.Tags
 
-class AddBoatRental : OsmFilterQuestType<List<BoatRental>>(), AndroidQuest {
+class AddBoatRental : OsmFilterQuestType<Set<BoatRental>>(), AndroidQuest {
 
     override val elementFilter = """
         nodes, ways with
@@ -27,7 +27,7 @@ class AddBoatRental : OsmFilterQuestType<List<BoatRental>>(), AndroidQuest {
 
     override fun createForm() = AddBoatRentalForm()
 
-    override fun applyAnswerTo(answer: List<BoatRental>, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: Set<BoatRental>, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         answer.forEach { tags[it.osmValue] = "yes" }
         // remove ambiguous ones that should have been specified correctly by the user's answer
         DEPRECATED_RENTALS.forEach { tags.remove(it) }

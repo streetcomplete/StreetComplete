@@ -1,16 +1,15 @@
 package de.westnordost.streetcomplete.quests.religion
 
-import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.AImageListQuestForm
+import de.westnordost.streetcomplete.quests.AItemSelectQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.religion.Religion.MULTIFAITH
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
-class AddReligionForm : AImageListQuestForm<Religion, Religion>() {
+class AddReligionForm : AItemSelectQuestForm<Religion, Religion>() {
 
     override val otherAnswers = listOf(
         AnswerItem(R.string.quest_religion_for_place_of_worship_answer_multi) { applyAnswer(MULTIFAITH) }
@@ -28,11 +27,11 @@ class AddReligionForm : AImageListQuestForm<Religion, Religion>() {
         return position
     }
 
-    @Composable override fun BoxScope.ItemContent(item: Religion) {
+    @Composable override fun ItemContent(item: Religion) {
         ImageWithLabel(painterResource(item.icon), stringResource(item.title))
     }
 
-    override fun onClickOk(selectedItems: List<Religion>) {
-        applyAnswer(selectedItems.single())
+    override fun onClickOk(selectedItem: Religion) {
+        applyAnswer(selectedItem)
     }
 }

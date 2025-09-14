@@ -1,17 +1,16 @@
 package de.westnordost.streetcomplete.quests.sport
 
 import androidx.appcompat.app.AlertDialog
-import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.AImageListQuestForm
+import de.westnordost.streetcomplete.quests.AItemsSelectQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.sport.Sport.MULTI
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
-class AddSportForm : AImageListQuestForm<Sport, List<Sport>>() {
+class AddSportForm : AItemsSelectQuestForm<Sport, Set<Sport>>() {
 
     override val otherAnswers = listOf(
         AnswerItem(R.string.quest_sport_answer_multi) { applyMultiAnswer() }
@@ -19,13 +18,11 @@ class AddSportForm : AImageListQuestForm<Sport, List<Sport>>() {
 
     override val items get() = (Sport.entries - MULTI).sortedBy { sportPosition(it.osmValue) }
 
-    override val maxSelectableItems = -1
-
-    @Composable override fun BoxScope.ItemContent(item: Sport) {
+    @Composable override fun ItemContent(item: Sport) {
         ImageWithLabel(painterResource(item.icon), stringResource(item.title))
     }
 
-    override fun onClickOk(selectedItems: List<Sport>) {
+    override fun onClickOk(selectedItems: Set<Sport>) {
         if (selectedItems.size > 3) {
             AlertDialog.Builder(requireContext())
                 .setTitle(R.string.quest_sport_manySports_confirmation_title)
@@ -39,7 +36,7 @@ class AddSportForm : AImageListQuestForm<Sport, List<Sport>>() {
     }
 
     private fun applyMultiAnswer() {
-        applyAnswer(listOf(MULTI))
+        applyAnswer(setOf(MULTI))
     }
 
     private fun sportPosition(osmValue: String): Int {

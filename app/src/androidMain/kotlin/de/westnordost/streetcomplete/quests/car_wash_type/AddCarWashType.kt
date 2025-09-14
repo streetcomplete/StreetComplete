@@ -10,7 +10,7 @@ import de.westnordost.streetcomplete.quests.car_wash_type.CarWashType.AUTOMATED
 import de.westnordost.streetcomplete.quests.car_wash_type.CarWashType.SELF_SERVICE
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
-class AddCarWashType : OsmFilterQuestType<List<CarWashType>>(), AndroidQuest {
+class AddCarWashType : OsmFilterQuestType<Set<CarWashType>>(), AndroidQuest {
 
     override val elementFilter = "nodes, ways with amenity = car_wash and !automated and !self_service"
     override val changesetComment = "Specify car wash types"
@@ -22,7 +22,7 @@ class AddCarWashType : OsmFilterQuestType<List<CarWashType>>(), AndroidQuest {
 
     override fun createForm() = AddCarWashTypeForm()
 
-    override fun applyAnswerTo(answer: List<CarWashType>, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: Set<CarWashType>, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         val isAutomated = answer.contains(AUTOMATED)
         tags["automated"] = isAutomated.toYesNo()
 

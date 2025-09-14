@@ -1,10 +1,9 @@
 package de.westnordost.streetcomplete.quests.steps_ramp
 
 import androidx.appcompat.app.AlertDialog
-import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.AImageListQuestForm
+import de.westnordost.streetcomplete.quests.AItemsSelectQuestForm
 import de.westnordost.streetcomplete.quests.steps_ramp.StepsRamp.BICYCLE
 import de.westnordost.streetcomplete.quests.steps_ramp.StepsRamp.STROLLER
 import de.westnordost.streetcomplete.quests.steps_ramp.StepsRamp.WHEELCHAIR
@@ -12,20 +11,19 @@ import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
-class AddStepsRampForm : AImageListQuestForm<StepsRamp, StepsRampAnswer>() {
+class AddStepsRampForm : AItemsSelectQuestForm<StepsRamp, StepsRampAnswer>() {
 
     override val items = StepsRamp.entries
     override val itemsPerRow = 2
-    override val maxSelectableItems = -1
     override val moveFavoritesToFront = false
 
     // TODO deselect all others if NONE is selected
 
-    @Composable override fun BoxScope.ItemContent(item: StepsRamp) {
+    @Composable override fun ItemContent(item: StepsRamp) {
         ImageWithLabel(painterResource(item.icon), stringResource(item.title))
     }
 
-    override fun onClickOk(selectedItems: List<StepsRamp>) {
+    override fun onClickOk(selectedItems: Set<StepsRamp>) {
         if (selectedItems.contains(WHEELCHAIR)) {
             confirmWheelchairRampIsSeparate { isSeparate ->
                 val wheelchairRampStatus =

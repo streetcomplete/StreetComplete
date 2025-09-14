@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.quests.smoothness
 import androidx.appcompat.app.AlertDialog
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Surface
@@ -17,7 +16,7 @@ import de.westnordost.streetcomplete.osm.surface.Surface
 import de.westnordost.streetcomplete.osm.surface.icon
 import de.westnordost.streetcomplete.osm.surface.parseSurface
 import de.westnordost.streetcomplete.osm.surface.title
-import de.westnordost.streetcomplete.quests.AImageListQuestForm
+import de.westnordost.streetcomplete.quests.AItemSelectQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.quest_address_answer_no_housenumber_message2b
@@ -29,7 +28,7 @@ import de.westnordost.streetcomplete.util.ktx.couldBeSteps
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
-class AddSmoothnessForm : AImageListQuestForm<Smoothness, SmoothnessAnswer>() {
+class AddSmoothnessForm : AItemSelectQuestForm<Smoothness, SmoothnessAnswer>() {
 
     private val surfaceTag get() = element.tags["surface"]
     override val items = Smoothness.entries
@@ -43,7 +42,7 @@ class AddSmoothnessForm : AImageListQuestForm<Smoothness, SmoothnessAnswer>() {
         AnswerItem(R.string.quest_smoothness_obstacle) { showObstacleHint() }
     )
 
-    @Composable override fun BoxScope.ItemContent(item: Smoothness) {
+    @Composable override fun ItemContent(item: Smoothness) {
         Box {
             ImageWithDescription(
                 painter = item.getImage(surfaceTag)?.let { painterResource(it) },
@@ -58,8 +57,8 @@ class AddSmoothnessForm : AImageListQuestForm<Smoothness, SmoothnessAnswer>() {
         }
     }
 
-    override fun onClickOk(selectedItems: List<Smoothness>) {
-        applyAnswer(SmoothnessValueAnswer(selectedItems.single()))
+    override fun onClickOk(selectedItem: Smoothness) {
+        applyAnswer(SmoothnessValueAnswer(selectedItem))
     }
 
     private fun showObstacleHint() {

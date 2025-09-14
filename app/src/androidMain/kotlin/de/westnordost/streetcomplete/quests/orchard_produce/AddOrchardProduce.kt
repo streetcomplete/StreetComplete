@@ -9,7 +9,7 @@ import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.default_disabled_msg_difficult_and_time_consuming
 
-class AddOrchardProduce : OsmFilterQuestType<List<OrchardProduce>>(), AndroidQuest {
+class AddOrchardProduce : OsmFilterQuestType<Set<OrchardProduce>>(), AndroidQuest {
 
     override val elementFilter = """
         ways, relations with landuse = orchard
@@ -26,7 +26,7 @@ class AddOrchardProduce : OsmFilterQuestType<List<OrchardProduce>>(), AndroidQue
 
     override fun createForm() = AddOrchardProduceForm()
 
-    override fun applyAnswerTo(answer: List<OrchardProduce>, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: Set<OrchardProduce>, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags["produce"] = answer.joinToString(";") { it.osmValue }
 
         val landuse = answer.singleOrNull()?.osmLanduseValue
