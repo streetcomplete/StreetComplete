@@ -4,8 +4,8 @@ import de.westnordost.streetcomplete.osm.building.BuildingType.*
 import de.westnordost.streetcomplete.ui.common.item_select.Group
 
 enum class BuildingTypeCategory(
-    val type: BuildingType?,
-    override val items: List<BuildingType>
+    override val item: BuildingType?,
+    override val children: List<BuildingType>
 ) : Group<BuildingType> {
     RESIDENTIAL(
         BuildingType.RESIDENTIAL, listOf(

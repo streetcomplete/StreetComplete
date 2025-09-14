@@ -28,15 +28,15 @@ fun <I, G: Group<I>> GroupedItemSelect(
     selectedItem: I?,
     selectedGroup: G?,
     onSelect: (group: G?, item: I?) -> Unit,
-    modifier: Modifier = Modifier,
     groupContent: @Composable (group: G) -> Unit,
     itemContent: @Composable (item: I) -> Unit,
+    modifier: Modifier = Modifier,
 ) {
     // to know which item belongs to which group
     val itemGroup = remember(groups) {
         val map = HashMap<I, G>()
         for (group in groups) {
-            for (item in group.items) {
+            for (item in group.children) {
                 map.put(item, group)
             }
         }
@@ -75,9 +75,10 @@ fun <I, G: Group<I>> GroupedItemSelect(
                     modifier = Modifier.padding(8.dp).rotate(if (isExpanded) 0f else 270f),
                 )
             }
+            // TODO scroll to just expanded group?
             // and the expanded group
             AnimatedVisibility(visible = isExpanded) {
-                for (item in group.items) {
+                for (item in group.children) {
                     Box(Modifier
                         .fillMaxWidth()
                         .padding(start = 16.dp)

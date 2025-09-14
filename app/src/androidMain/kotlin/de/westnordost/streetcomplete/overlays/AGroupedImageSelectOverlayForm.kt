@@ -43,7 +43,7 @@ abstract class AGroupedImageSelectOverlayForm<G: Group<I>, I> : AbstractOverlayF
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        itemsByString = allItems.flatMap { it.items }.associateBy { it.toString() }
+        itemsByString = allItems.flatMap { it.children }.associateBy { it.toString() }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

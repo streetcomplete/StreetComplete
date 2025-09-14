@@ -40,7 +40,7 @@ abstract class AItemSelectQuestForm<I, T> : AbstractOsmQuestForm<T>() {
     protected open val moveFavoritesToFront = true
     /** items to display. May not be accessed before onCreate */
     protected abstract val items: List<I>
-    private lateinit var reorderedItems: List<I>
+    private lateinit var actualItems: List<I>
     protected lateinit var selectedItem: MutableState<I?>
 
     private lateinit var itemsByString: Map<String, I>
@@ -48,7 +48,7 @@ abstract class AItemSelectQuestForm<I, T> : AbstractOsmQuestForm<T>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         itemsByString = items.associateBy { it.toString() }
-        reorderedItems = if (items.size > itemsPerRow && moveFavoritesToFront) {
+        actualItems = if (items.size > itemsPerRow && moveFavoritesToFront) {
             moveFavouritesToFront(items)
         } else items
     }
@@ -63,7 +63,7 @@ abstract class AItemSelectQuestForm<I, T> : AbstractOsmQuestForm<T>() {
                 Text(stringResource(Res.string.quest_roofShape_select_one))
                 ItemSelect(
                     columns = SimpleGridCells.Fixed(itemsPerRow),
-                    items = reorderedItems,
+                    items = actualItems,
                     selectedItem = selectedItem.value,
                     onSelect = {
                         selectedItem.value = it
