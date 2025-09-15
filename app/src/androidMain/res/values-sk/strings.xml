@@ -2,7 +2,7 @@
 <resources>
     <string name="action_settings">"Nastavenia"</string>
     <string name="oauth_communication_error">"Autorizačný server nie je dostupný"</string>
-    <string name="oauth_failed_permissions">"Autorizácia zlyhala: Všetky oprávnenia v zozname musia byť udelené"</string>
+    <string name="oauth_failed_permissions">"Autorizácia zlyhala: Musia byť udelené všetky oprávnenia v zozname"</string>
     <string name="pref_category_communication">"Komunikácia"</string>
     <string name="pref_category_display">"Zobrazenie"</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">"Zobraziť všetky poznámky"</string>
@@ -21,7 +21,7 @@
     <string name="quest_leave_new_note_no">"Schovať"</string>
     <string name="quest_streetName_title">"Aký je názov tejto ulice?"</string>
     <string name="quest_streetName_description">"ako je napísané na značke, skratky rozpísané:"</string>
-    <string name="quest_streetName_answer_noName_confirmation_description">"Ceduľa s názvom ulice niekedy môžu byť iba na jednom konci ulice. Pamätajte, že bočné ulice patriace k väčšej ulici nemusia mať ceduľu s menom. Ulice s domami sú obvykle pomenované."</string>
+    <string name="quest_streetName_answer_noName_confirmation_description">"Ceduľa s názvom ulice niekedy môžu byť iba na jednom konci ulice. Pamätajte, že bočné ulice patriace k väčšej ulici nemusia mať separátnu ceduľu s jej názovm. Ulice s domami sú obvykle pomenované."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"Ak je možné napísať názov bez skratky, tak by mal byť rozpísany. Veľa bežných skratiek bude rozpísaných počas písania, ale asi nie všetky."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"Neobsahuje skratku"</string>
     <string name="quest_openingHours_start_time">"čas otvorenia"</string>
@@ -31,7 +31,7 @@
     <string name="quest_openingHours_add_weekdays">"Pridať dni v týždni"</string>
     <string name="quest_openingHours_chooseMonthsTitle">"Vybrať mesiace"</string>
     <string name="quest_openingHours_chooseWeekdaysTitle">"Vyberte dni v týždni"</string>
-    <string name="quest_openingHours_24_7_confirmation">"Inými slovami, je otvorené kedykoľvek každý deň?"</string>
+    <string name="quest_openingHours_24_7_confirmation">"Inými slovami, je otvorené kedykoľvek, neustále, každý deň?"</string>
     <string name="quest_noteDiscussion_title">"Môžete prispieť k tejto poznámke?"</string>
     <string name="quest_noteDiscussion_no">"Nie, schovať"</string>
     <string name="quest_noteDiscussion_anonymous">"Anonym"</string>
@@ -44,7 +44,7 @@
     <string name="upload_error">"Pri nahrávaní odpovedí nastala chyba"</string>
     <string name="download_area_too_big">"Prosím, ešte priblížte"</string>
     <string name="confirmation_cancel_prev_download_title">"Zastaviť aktuálne vyhľadávanie a hľadať radšej tu?"</string>
-    <string name="turn_on_location_request">"Lokalizácia je vypnutá. Otvoriť nastavenia teraz?"</string>
+    <string name="turn_on_location_request">"Lokalizácia je vypnutá. Chcete otvoriť nastavenia a zapnúť ju?"</string>
     <string name="no_location_permission_warning">"Povolenie je potrebné pre zobrazenie vašej polohy na mape a pre vyhľadávanie úloh vo vašom okolí."</string>
     <string name="about_title_authors">"Autori"</string>
     <string name="about_title_repository">"Domov projektu"</string>
@@ -61,7 +61,7 @@
     <string name="quest_streetName_answer_noProperStreet_leaveNote">"Niečo iné (nechať poznámku)"</string>
     <string name="about_title_privacy_statement">"Vyhlásenie o ochrane súkromia"</string>
     <string name="quest_openingHours_public_holidays">"Sviatky"</string>
-    <string name="quest_openingHours_public_holidays_short">"Št. sv."</string>
+    <string name="quest_openingHours_public_holidays_short">"Št. sviatok"</string>
     <string name="quest_openingHours_open_end">"Do odchodu posledného návštevníka"</string>
     <string name="quest_openingHours_answer_247">"Otvorené 24/7"</string>
     <string name="quest_openingHours_answer_seasonal_opening_hours">"Líši sa podľa mesiaca…"</string>
@@ -192,7 +192,7 @@ Ak pozdĺž cesty nie je žiadna značka obmedzujúca rýchlosť na zvýraznenej
     <string name="quest_sport_gaelic_games">"Galské hry"</string>
     <string name="quest_sport_sepak_takraw">"Sepak Takraw"</string>
     <string name="quest_wheelchairAccess_limited">"Čiastočne"</string>
-    <string name="quest_bikeParkingCapacity_hint">"Nezabudnite, že na veľa stojanov sa dajú bicykle zaparkovať z oboch strán."</string>
+    <string name="quest_bikeParkingCapacity_hint">"Nezabudnite, že na veľa stojanoch sa dajú bicykle zaparkovať z oboch strán."</string>
     <string name="quest_sport_roller_skating">"Kolieskové korčuľovanie"</string>
     <string name="quest_wheelchairAccess_limited_description_business">"Čiastočne znamená, že pri vchode nie je väčší schod ako výška členku a väčšina izieb vo vnútri je bezbariérová."</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">"Čiastočne znamená, že tu nie je väčší schod ako výška členku brániaci prístupu."</string>
@@ -202,7 +202,7 @@ Ak pozdĺž cesty nie je žiadna značka obmedzujúca rýchlosť na zvýraznenej
     <string name="overground_recycling_container">"Kontajner"</string>
     <string name="underground_recycling_container">"Podzemný kontajner"</string>
     <string name="quest_streetName_answer_cantType">"Nemôžem napísať znak na značke"</string>
-    <string name="quest_streetName_cantType_title">"Chýba na klávesnici znaky?"</string>
+    <string name="quest_streetName_cantType_title">"Chýbajú na klávesnici znaky?"</string>
     <string name="quest_streetName_cantType_open_settings">"Otvoriť nastavenia"</string>
     <string name="quest_streetName_cantType_open_store">"Otvoriť obchod"</string>
     <string name="quest_streetName_cantType_description">"Ak používate prednastavenú klávesnicu, je možné, že stačí ak v nastaveniach povolíte rozloženie klávesnice pre jazyk, ktorý potrebujete.
@@ -238,7 +238,7 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
     <string name="produce_dates">"Ďatle"</string>
     <string name="produce_figs">"Figy"</string>
     <string name="produce_grapefruits">"Grepy"</string>
-    <string name="produce_guavas">"Guajavy"</string>
+    <string name="produce_guavas">"Guávy"</string>
     <string name="produce_hazelnuts">"Lieskové orechy"</string>
     <string name="produce_hops">"Chmeľ"</string>
     <string name="produce_jojoba">"Jojoba"</string>
@@ -258,7 +258,7 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
     <string name="produce_chili">"Čili"</string>
     <string name="produce_persimmons">"Kaki"</string>
     <string name="produce_pineapples">"Ananásy"</string>
-    <string name="produce_pepper">"Čierne korenie"</string>
+    <string name="produce_pepper">"Papriky"</string>
     <string name="produce_pistachios">"Pistácie"</string>
     <string name="produce_plums">"Slivky"</string>
     <string name="produce_raspberries">"Maliny"</string>
@@ -310,9 +310,9 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
     <string name="undo_confirm_negative">"Zrušiť"</string>
     <string name="quest_hasFeature_only">"Iba"</string>
     <string name="quest_dietType_explanation_vegan">"Vegánske jedlá neobsahujú produkty zo zvierat (žiadne mäso, ryby, mliečne produkty, vajíčka, med, …)."</string>
-    <string name="quest_dietType_explanation_vegetarian">"Vegetariánske jedlá neobsahujú mäso."</string>
+    <string name="quest_dietType_explanation_vegetarian">"Vegetariánske jedlá neobsahujú mäso, ryby či hydinu."</string>
     <string name="quest_dietType_explanation">"Odpovedzte „Áno“, iba ak miesto poskytuje porovnateľný výber jedál pre túto diétu - ignoruje predkrmy a pod."</string>
-    <string name="quest_carWashType_title">"Aký je toto druh autoumyvárky?"</string>
+    <string name="quest_carWashType_title">"Aký druh autoumyvárky to je?"</string>
     <string name="quest_carWashType_automated">"Automatická"</string>
     <string name="quest_carWashType_selfService">"Samoobsluha"</string>
     <string name="quest_carWashType_service">"Zamestnanci umývajú auto"</string>
@@ -1204,7 +1204,7 @@ To isté urobte pre druhú stranu, ak tu je."</string>
     <string name="quest_cycleway_value_advisory_lane">"odporúčaný cyklistický pruh"</string>
     <string name="urlconfig_scan_qr_code_again2">"Po nainštalovaní aplikácie znovu naskenujte QR kód alebo kliknite &lt;a href=\"%s\"&gt;this link&lt;/a&gt; na použitie predvoľby."</string>
     <string name="confirmation_replace_shop_title">"Je tu teraz niečo iné ?"</string>
-    <string name="confirmation_replace_shop_message">"V takom prípade sa zmenia aj otváracie hodiny, kontaktné informácie atď."</string>
+    <string name="confirmation_replace_shop_message">"V takom prípade sa zmenili aj otváracie hodiny, kontaktné informácie, a pod."</string>
     <string name="confirmation_replace_shop_yes">"Teraz je tu niečo iné"</string>
     <string name="confirmation_replace_shop_no">"Stále rovnaké miesto"</string>
     <string name="move_node">"Je to v trochu inej polohe..."</string>
@@ -1221,7 +1221,7 @@ Presunúť ho teraz?"</string>
     <string name="overlay_cycleway">"Cyklotrasy"</string>
     <string name="bicycle_boulevard_is_a">"Je to %1$s"</string>
     <string name="bicycle_boulevard_is_not_a">"Nieje to %1$s"</string>
-    <string name="bicycle_boulevard">"Cyklistický bulvár"</string>
+    <string name="bicycle_boulevard">"Cyklistická cestička"</string>
     <string name="separate_cycleway_no_or_allowed">"Chodník, nie je značenie o cyklistoch (jazda na bicykli môže byť povolená)"</string>
     <string name="separate_cycleway_non_segregated">"Spoločná cesta"</string>
     <string name="separate_cycleway_segregated">"Oddelená cesta pre cyklistov a chodcov"</string>
@@ -1364,7 +1364,7 @@ Poschodie sa počíta ako strešné, ak má okna v streche. Podobne, strechy bez
     <string name="quest_bicycle_parking_type_floor">"Vymedzená oblasť"</string>
     <string name="link_osmapp_description">"Mapa s rôznymi vrstvami, napríklad pre horolezectvo alebo lyžovanie"</string>
     <string name="action_back">"Späť"</string>
-    <string name="action_clear">"Jasné"</string>
+    <string name="action_clear">"Vyčistiť"</string>
     <string name="action_more">"Viac"</string>
     <string name="action_open_in_browser">"Otvoriť v prehliadači"</string>
     <string name="about_category_contribute">"Prispieť"</string>
@@ -1373,7 +1373,7 @@ Poschodie sa počíta ako strešné, ak má okna v streche. Podobne, strechy bez
     <string name="pref_title_resurvey_intervals_summary">"Ako často sa zobrazuje výzva na potvrdenie, či sú predtým zmapované údaje stále správne."</string>
     <string name="questList_disabled_by_default">"Predvolene vypnuté"</string>
     <string name="action_manage_presets_summary">"Pod akým názvom je uložený výber úloh uvedený nižšie."</string>
-    <string name="quest_multiselect_hint">"Vyberte všetky, ktoré sa vzťahujú:"</string>
+    <string name="quest_multiselect_hint">"Vyberte všetky, ktoré platia:"</string>
     <string name="quest_barrier_opening_width_gate">"Aká je tu šírka medzery?"</string>
     <string name="bridge">"na moste"</string>
     <string name="about_title_intro">"Zobraziť úvod"</string>
@@ -1386,7 +1386,7 @@ Poschodie sa počíta ako strešné, ak má okna v streche. Podobne, strechy bez
     <string name="quest_board_name_title">"Aký je nápis tejto informačnej tabule?"</string>
     <string name="quest_crossing_hint">"Neformálny chodník križujúci cestu:"</string>
     <string name="note_for_object">"Ďalšia osoba poznamenala:"</string>
-    <string name="quest_bicycle_parking_type_safeloops">"Bezpečné slučky (podopiera koleso a rám)"</string>
+    <string name="quest_bicycle_parking_type_safeloops">"Bezpečnostné slučky (podopiera koleso a rám)"</string>
     <string name="quest_cycleway_value_sidewalk_ok_dual">"žiadne, ale značka povoľuje jazdu na bicykli v oboch smeroch"</string>
     <string name="quest_surface_value_rubber">"Gumové granule"</string>
     <string name="quest_surface_value_acrylic">"Syntetická živica"</string>
@@ -1403,19 +1403,19 @@ Poschodie sa počíta ako strešné, ak má okna v streche. Podobne, strechy bez
     <string name="quest_boat_rental_motorboat">"Motorový čln"</string>
     <string name="quest_boat_rental_jetski">"Vodné skútre"</string>
     <string name="quest_boat_rental_sailboat">"Plachetnica"</string>
-    <string name="quest_boat_rental_pedalboat">"Pedalboat"</string>
+    <string name="quest_boat_rental_pedalboat">"Loďka na pedálovanie"</string>
     <string name="quest_boat_rental_kayak">"Kajak"</string>
     <string name="quest_boat_rental_canoe">"Kanoe"</string>
-    <string name="quest_boat_rental_houseboat">"Hausbót"</string>
+    <string name="quest_boat_rental_houseboat">"Obytná loďka"</string>
     <string name="quest_boat_rental_rowboat">"Veslica"</string>
     <string name="quest_boat_rental_raft">"Raft"</string>
     <string name="quest_boat_rental_surfboard">"Surfovacia doska"</string>
     <string name="quest_boat_rental_sailboard">"Sailboard"</string>
     <string name="quest_boat_rental_yacht">"Jachta"</string>
-    <string name="quest_boat_rental_standup_paddleboard">"Paddleboard (SUP)"</string>
+    <string name="quest_boat_rental_standup_paddleboard">"Paddleboard na státie"</string>
     <string name="quest_powerAttachment_title">"Ako je toto elektrické vedenie pripojené?"</string>
     <string name="quest_powerAttachment_suspension">"Podporované zhora"</string>
-    <string name="quest_powerAttachment_anchor">"Pevne vodorovne"</string>
+    <string name="quest_powerAttachment_anchor">"Pripevnené vodorovne"</string>
     <string name="quest_powerAttachment_pin">"Podporované zdola"</string>
     <string name="pedestrian_zone_designated">"Určené pre bicyklovanie"</string>
     <string name="pedestrian_zone_allowed_sign">"Značka povoľuje jazdu na bicykli"</string>
@@ -1424,13 +1424,36 @@ Poschodie sa počíta ako strešné, ak má okna v streche. Podobne, strechy bez
     <string name="quest_dietType_glutenfree_name_title">"Ponúkajú sa tu bezlepkové výrobky?"</string>
     <string name="quest_dietType_explanation_glutenfree">"Príprava bezlepkových výrobkov si vyžaduje znalosti, pretože bežné koreniny a omáčky môžu obsahovať lepok. Bezlepkové potraviny by mali byť ako také výslovne označené."</string>
     <string name="quest_construction_minor_title">"Sú tieto menšie cestné práce dokončené?"</string>
+    <string name="map_attribution">"Priradenie mapy"</string>
+    <string name="link_panoramax_description">"Bezplatný verejný software a neziskový servis na zdieľanie fotiek verejných priestranstiev od používateľov"</string>
     <string name="link_opengeofiction_description">"Už vás nebaví mapovať realitu? Spoločne si vytvorte fiktívne mapy!"</string>
     <string name="link_openclimbing_description">"Mapa lezeckých miest"</string>
+    <string name="pref_title_zoom_buttons">"Zobraziť tlačidlá na priblíženie mapy"</string>
     <string name="overlay_mtb_scale">"MTB obtiažnosť"</string>
+    <string name="overlay_mtb_scale_0">"Trieda 0"</string>
     <string name="overlay_mtb_scale_0_description">"Pevný, priľnavý alebo prírodný povrch; žiadne prekážky; mierny sklon; široké zákruty."</string>
+    <string name="overlay_mtb_scale_1">"Trieda 1"</string>
+    <string name="overlay_mtb_scale_1_description">"Miestami uvoľňujúci sa nestabilný terén s malými koreňmi, kamienkami, eróziou povrchu alebo vodnými tokmi; ≤40%-né stúpanie; po prekážkach sa dá skĺznuť; vyžadované základné cyklistické techniky."</string>
+    <string name="overlay_mtb_scale_2">"Trieda 2"</string>
     <string name="overlay_mtb_scale_2_description">"Sypký terén s väčšími koreňmi a kameňmi, ploché zrázy/nízke schody, sklon do 70 %; ľahké serpentiny; vyžaduje sa dôkladné brzdenie a prenášanie váhy."</string>
+    <string name="overlay_mtb_scale_3">"Trieda 3"</string>
     <string name="overlay_mtb_scale_3_description">"Klzký, sypký terén so suťami, balvanmi, veľkými koreňmi a kameňmi, vysokými schodmi a zložitými traverzmi; úzke serpentiny, sklon &gt; 70 %; vyžaduje sa veľmi dobrá rovnováha a presné brzdenie."</string>
+    <string name="overlay_mtb_scale_4">"Trieda 4"</string>
+    <string name="overlay_mtb_scale_4_description">"Náročné a technické prekážky: veľké skaly, korene, sutiny, strmé svahy a rampy; serpentíny, spády s pretáčaním pedálov; Vyžaduje sa perfektný balans, presné brzdenie a vhodné premiestňovanie zadného kolesa za účelom jazdy."</string>
+    <string name="overlay_mtb_scale_5">"Trieda 5"</string>
+    <string name="overlay_mtb_scale_5_description">"Veľmi strmý kamenistý nerovný terén s protiľahlými stúpaniami, balvanmi, zosuvmi pôdy, serpentínmi s prekážkami, neustále spády a popadané stromy. Nie je možné bycikel medzi prekážkami prenášať; nedá sa vyhnúť jazde a byciklovaniu. Je vyžadovaná expertná znalosť trate."</string>
+    <string name="overlay_mtb_scale_6">"Trieda 6"</string>
     <string name="overlay_mtb_scale_6_description">"Nebezpečný a nepriechodný terén, nevhodný pre horskú cyklistiku."</string>
+    <string name="default_disabled_overlay_domain_expert">"Toto prekrytie mapy je v základe zakázané, nakoľko musíte byť expertom v obore, aby ste ho vedeli presne vyhodnotiť."</string>
+    <string name="pref_title_overlays">"Výber prekrytia mapy"</string>
+    <string name="pref_overlays_reset">"Vrátiť prekrytia mapy k tým pôvodným?"</string>
+    <string name="overlay">"Prekrytie mapy"</string>
+    <string name="enable_overlay_confirmation_title">"Povoliť toto prekrytie mapy?"</string>
+    <string name="link_transitous_description">"Poskytujeme neutrálny, bezplatný a otvorený zdrojový kód pre navigáciu vo verejnej doprave"</string>
     <string name="compass">"Kompas"</string>
     <string name="quest_tracktype_grade2">"Prevažne pevný"</string>
+    <string name="quest_tracktype_grade3">"Zmes"</string>
+    <string name="quest_housenumber_multiple_numbers_description2">"Môžete zadať aj čísla domu oddelené čiarkami. Napríklad 1,3 alebo 2b,4,6."</string>
+    <string name="quest_drinking_water_potable_unsigned2">"Bez označenia"</string>
+    <string name="or">"alebo"</string>
 </resources>

@@ -6,6 +6,7 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
@@ -16,6 +17,14 @@ import de.westnordost.streetcomplete.util.math.isInMultipolygon
 
 class AddLevel : OsmElementQuestType<String>, AndroidQuest {
 
+    /* only nodes because ways/relations are not likely to be floating around freely in a mall
+     * outline */
+    private val filter by lazy { """
+        nodes with
+          !level
+          and (name or brand or noname = yes or name:signed = no)
+    """.toElementFilterExpression() }
+
     /* including any kind of public transport station because even really large bus stations feel
      * like small airport terminals, like Mo Chit 2 in Bangkok*/
     private val mallFilter by lazy { """
@@ -25,18 +34,6 @@ class AddLevel : OsmElementQuestType<String>, AndroidQuest {
          or railway = station
          or amenity = bus_station
          or public_transport = station
-    """.toElementFilterExpression() }
-
-    private val thingsWithLevelFilter by lazy { """
-        nodes, ways, relations with level
-    """.toElementFilterExpression() }
-
-    /* only nodes because ways/relations are not likely to be floating around freely in a mall
-     * outline */
-    private val filter by lazy { """
-        nodes with
-          !level
-          and (name or brand or noname = yes or name:signed = no)
     """.toElementFilterExpression() }
 
     override val changesetComment = "Determine on which level shops are in a building"
@@ -58,33 +55,13 @@ class AddLevel : OsmElementQuestType<String>, AndroidQuest {
             .mapNotNull { mapData.getGeometry(it.type, it.id) as? ElementPolygonsGeometry }
         if (mallGeometries.isEmpty()) return emptyList()
 
-        // get all shops that have level tagged
-        val thingsWithLevel = mapData.filter { thingsWithLevelFilter.matches(it) }
-        if (thingsWithLevel.isEmpty()) return emptyList()
-
-        // with this, find malls that contain shops that have different levels tagged
-        val multiLevelMallGeometries = mallGeometries.filter { mallGeometry ->
-            var level: String? = null
-            for (shop in thingsWithLevel) {
-                val pos = mapData.getGeometry(shop.type, shop.id)?.center ?: continue
-                if (!mallGeometry.bounds.contains(pos)) continue
-                if (!pos.isInMultipolygon(mallGeometry.polygons)) continue
-
-                if (shop.tags.containsKey("level")) {
-                    if (level != null) {
-                        if (level != shop.tags["level"]) return@filter true
-                    } else {
-                        level = shop.tags["level"]
-                    }
-                }
-            }
-            return@filter false
-        }
+        val multiLevelMallGeometries = getMultiLevelMallGeometries(mallGeometries, mapData)
         if (multiLevelMallGeometries.isEmpty()) return emptyList()
 
         // now, return all shops that have no level tagged and are inside those multi-level malls
         val shopsWithoutLevel = mapData
-            .filter { filter.matches(it) && it.isPlace() }
+            .filter(filter)
+            .filter { it.isPlace() }
             .toMutableList()
         if (shopsWithoutLevel.isEmpty()) return emptyList()
 

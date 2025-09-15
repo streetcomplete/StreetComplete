@@ -102,6 +102,7 @@ import de.westnordost.streetcomplete.quests.lanes.AddLanes
 import de.westnordost.streetcomplete.quests.leaf_detail.AddForestLeafType
 import de.westnordost.streetcomplete.quests.leaf_detail.AddTreeLeafType
 import de.westnordost.streetcomplete.quests.level.AddLevel
+import de.westnordost.streetcomplete.quests.level.AddLevelThing
 import de.westnordost.streetcomplete.quests.max_height.AddMaxHeight
 import de.westnordost.streetcomplete.quests.max_height.AddMaxPhysicalHeight
 import de.westnordost.streetcomplete.quests.max_speed.AddMaxSpeed
@@ -449,6 +450,7 @@ fun questTypeRegistry(
     108 to AddOrchardProduce(), // difficult to find out if the orchard does not carry fruits right now
 
     109 to AddLevel(), // requires to search for the place on several levels (or at least find a mall map)
+    178 to AddLevelThing(), // requires to search for the place on several levels (or at least find a mall map)
 
     110 to AddAirConditioning(), // often visible from the outside across the street, if not, visible/feelable inside
 
@@ -491,9 +493,9 @@ fun questTypeRegistry(
     132 to AddAcceptsCash(),
 
     // shop and others, but have to go inside
+    176 to AddHandwashing(), // have to go inside, but only your toilet, not potentially others
     120 to AddBabyChangingTable(), // used by OsmAnd in the object description, have to go inside
     121 to AddWheelchairAccessToiletsPart(), // have to go inside
-    176 to AddHandwashing(), // have to go inside
 
     133 to AddFuelSelfService(),
     156 to CheckShopExistence(getFeature), // after opening hours and similar so they will be preferred if enabled

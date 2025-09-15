@@ -10,14 +10,16 @@ import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.ui.res.stringResource
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.databinding.ComposeViewBinding
 import de.westnordost.streetcomplete.osm.localized_name.LocalizedName
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.quest_streetName_abbreviation_instruction
 import de.westnordost.streetcomplete.ui.common.localized_name.LocalizedNamesForm
 import de.westnordost.streetcomplete.ui.util.content
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
+import org.jetbrains.compose.resources.stringResource
 import org.koin.android.ext.android.inject
 
 abstract class AAddLocalizedNameForm<T> : AbstractOsmQuestForm<T>() {
@@ -52,7 +54,7 @@ abstract class AAddLocalizedNameForm<T> : AbstractOsmQuestForm<T>() {
             Column {
                 if (showAbbreviationsHint()) {
                     Text(
-                        text = stringResource(R.string.quest_streetName_abbreviation_instruction),
+                        text = stringResource(Res.string.quest_streetName_abbreviation_instruction),
                         style = MaterialTheme.typography.caption.copy(
                             color = LocalContentColor.current.copy(alpha = ContentAlpha.medium)
                         )

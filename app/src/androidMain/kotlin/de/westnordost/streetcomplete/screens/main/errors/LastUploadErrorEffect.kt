@@ -8,12 +8,14 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.stringResource
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.AuthorizationException
 import de.westnordost.streetcomplete.data.ConnectionException
 import de.westnordost.streetcomplete.data.upload.VersionBannedException
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.upload_error
 import de.westnordost.streetcomplete.util.ktx.toast
+import org.jetbrains.compose.resources.stringResource
 
 /** Depending on the type of error, either display or conditionally offer to report the last
  *  occurred error during upload */
@@ -55,7 +57,7 @@ fun LastUploadErrorEffect(
         SendErrorReportDialog(
             onDismissRequest = { showUploadErrorDialog = false },
             onConfirmed = { onReportError(lastError) },
-            title = stringResource(R.string.upload_error)
+            title = stringResource(Res.string.upload_error)
         )
     }
 }

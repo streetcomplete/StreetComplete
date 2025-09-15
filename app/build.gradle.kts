@@ -151,6 +151,7 @@ kotlin {
                 implementation(compose.components.uiToolingPreview)
 
                 // UI Navigation
+                implementation("org.jetbrains.compose.ui:ui-backhandler:1.8.2")
                 implementation("org.jetbrains.androidx.navigation:navigation-compose:2.9.0-beta05")
 
                 // UI ViewModel
@@ -422,7 +423,8 @@ tasks.register<UpdateAppTranslationsTask>("updateTranslations") {
     languageCodes = bcp47ExportLanguages
     apiToken = properties["app.streetcomplete.POEditorAPIToken"] as String
     projectId = poEditorProjectId
-    targetFiles = { "$projectDir/src/androidMain/res/values-$it/strings.xml" }
+    targetFilesAndroid = { "$projectDir/src/androidMain/res/values-$it/strings.xml" }
+    targetFiles = { "$projectDir/src/commonMain/composeResources/values-$it/strings.xml" }
 }
 
 tasks.register<UpdateAppTranslationCompletenessTask>("updateTranslationCompleteness") {
@@ -431,7 +433,7 @@ tasks.register<UpdateAppTranslationCompletenessTask>("updateTranslationCompleten
     mustIncludeLanguagePercentage = 90
     apiToken = properties["app.streetcomplete.POEditorAPIToken"] as String
     projectId = poEditorProjectId
-    targetFiles = { "$projectDir/src/androidMain/res/values-$it/translation_info.xml" }
+    targetFiles = { "$projectDir/src/commonMain/composeResources/values-$it/translation_info.xml" }
 }
 
 tasks.register<UpdateChangelogTask>("updateChangelog") {
@@ -455,7 +457,10 @@ tasks.register<GenerateMetadataByCountryTask>("generateMetadataByCountry") {
 
 tasks.register("copyDefaultStringsToEnStrings") {
     doLast {
-        File("$projectDir/src/androidMain/res/values/strings.xml")
-            .copyTo(File("$projectDir/src/androidMain/res/values-en/strings.xml"), true)
+        val sourceStrings = File("$projectDir/src/androidMain/res/values/strings.xml")
+
+        sourceStrings.copyTo(File("$projectDir/src/androidMain/res/values-en/strings.xml"), true)
+        sourceStrings.copyTo(File("$projectDir/src/commonMain/composeResources/values-en/strings.xml"), true)
+        sourceStrings.copyTo(File("$projectDir/src/commonMain/composeResources/values/strings.xml"), true)
     }
 }
