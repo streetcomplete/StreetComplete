@@ -65,12 +65,12 @@ private fun isMtbTaggingExpected(element: Element) =
     mtbTaggingExpectedFilter.matches(element)
 
 private val MtbScale?.color get() = when (this?.value) {
-    0 -> OverlayColor.Blue
-    1 -> OverlayColor.Cyan
-    2 -> OverlayColor.Lime
-    3 -> OverlayColor.Gold
-    4 -> OverlayColor.Orange
-    5 -> OverlayColor.Purple
-    6 -> OverlayColor.Black
+    MtbScale.Value.ZERO -> OverlayColor.Blue
+    MtbScale.Value.ONE -> OverlayColor.Cyan
+    MtbScale.Value.TWO -> OverlayColor.Lime
+    MtbScale.Value.THREE -> OverlayColor.Gold
+    MtbScale.Value.FOUR -> OverlayColor.Orange
+    MtbScale.Value.FIVE -> OverlayColor.Purple
+    MtbScale.Value.SIX -> OverlayColor.Black
     else -> null
 }
