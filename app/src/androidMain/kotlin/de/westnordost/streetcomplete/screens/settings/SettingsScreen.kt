@@ -95,13 +95,13 @@ fun SettingsScreen(
     onClickPresetSelection: () -> Unit,
     onClickQuestSelection: () -> Unit,
     onClickOverlaySelection: () -> Unit,
+    onClickLanguageSelection: () -> Unit,
     onClickBack: () -> Unit,
 ) {
     val hiddenQuestCount by viewModel.hiddenQuestCount.collectAsState()
     val questTypeCount by viewModel.questTypeCount.collectAsState()
     val overlayCount by viewModel.overlayCount.collectAsState()
     val selectedPresetName by viewModel.selectedEditTypePresetName.collectAsState()
-    val selectableLanguageCodes by viewModel.selectableLanguageCodes.collectAsState()
 
     val resurveyIntervals by viewModel.resurveyIntervals.collectAsState()
     val showAllNotes by viewModel.showAllNotes.collectAsState()
@@ -116,7 +116,6 @@ fun SettingsScreen(
     var showUploadTutorialInfo by remember { mutableStateOf(false) }
 
     var showThemeSelect by remember { mutableStateOf(false) }
-    var showLanguageSelect by remember { mutableStateOf(false) }
     var showAutosyncSelect by remember { mutableStateOf(false) }
     var showResurveyIntervalsSelect by remember { mutableStateOf(false) }
 
@@ -197,12 +196,13 @@ fun SettingsScreen(
 
                 Preference(
                     name = stringResource(Res.string.pref_title_language_select2),
-                    onClick = { showLanguageSelect = true },
+                    onClick = onClickLanguageSelection,
                 ) {
                     Text(
                         selectedLanguage?.let { getLanguageDisplayName(it) }
                             ?: stringResource(Res.string.language_default)
                     )
+                    NextScreenIcon()
                 }
 
                 Preference(
@@ -326,24 +326,6 @@ fun SettingsScreen(
             itemContent = { Text(stringResource(it.title)) },
             title = { Text(stringResource(Res.string.pref_title_resurvey_intervals)) },
             selectedItem = resurveyIntervals,
-        )
-    }
-    val codes = selectableLanguageCodes
-    if (showLanguageSelect && codes != null) {
-        val namesByCode = remember(codes) { codes.associateWith { getLanguageDisplayName(it) } }
-        val sortedCodes = listOf(null) + codes.sortedBy { namesByCode[it]?.lowercase() }
-        SimpleListPickerDialog(
-            onDismissRequest = { showLanguageSelect = false },
-            items = sortedCodes,
-            onItemSelected = { viewModel.setSelectedLanguage(it) },
-            itemContent = { item ->
-                Text(
-                    item?.let { getLanguageDisplayName(it) }
-                        ?: stringResource(Res.string.language_default)
-                )
-            },
-            title = { Text(stringResource(Res.string.pref_title_language_select2)) },
-            selectedItem = selectedLanguage,
         )
     }
 }
