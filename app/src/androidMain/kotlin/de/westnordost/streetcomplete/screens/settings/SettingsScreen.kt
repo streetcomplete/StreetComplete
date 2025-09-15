@@ -78,9 +78,9 @@ import de.westnordost.streetcomplete.ui.common.BackIcon
 import de.westnordost.streetcomplete.ui.common.NextScreenIcon
 import de.westnordost.streetcomplete.ui.common.dialogs.ConfirmationDialog
 import de.westnordost.streetcomplete.ui.common.dialogs.InfoDialog
-import de.westnordost.streetcomplete.ui.common.dialogs.SimpleListPickerDialog
 import de.westnordost.streetcomplete.ui.common.settings.Preference
 import de.westnordost.streetcomplete.ui.common.settings.PreferenceCategory
+import de.westnordost.streetcomplete.ui.common.settings.Select
 import de.westnordost.streetcomplete.util.ktx.getDisplayName
 import de.westnordost.streetcomplete.util.locale.NumberFormatter
 import org.jetbrains.compose.resources.StringResource
@@ -165,7 +165,15 @@ fun SettingsScreen(
                     onClick = { showResurveyIntervalsSelect = true },
                     description = stringResource(Res.string.pref_title_resurvey_intervals_summary)
                 ) {
-                    Text(stringResource(resurveyIntervals.title))
+                    Select(
+                        items = ResurveyIntervals.entries,
+                        selectedItem = resurveyIntervals,
+                        onSelected = { viewModel.setResurveyIntervals(it) },
+                        expanded = showResurveyIntervalsSelect,
+                        onDismissRequest = { showResurveyIntervalsSelect = false }
+                    ) {
+                        Text(stringResource(it.title))
+                    }
                 }
 
                 Preference(
@@ -188,7 +196,18 @@ fun SettingsScreen(
                     name = stringResource(Res.string.pref_title_sync2),
                     onClick = { showAutosyncSelect = true }
                 ) {
-                    Text(stringResource(autosync.title))
+                    Select(
+                        items = Autosync.entries,
+                        selectedItem = autosync,
+                        onSelected = {
+                            viewModel.setAutosync(it)
+                            if (it != Autosync.ON) {
+                                showUploadTutorialInfo = true
+                            }
+                        },
+                        expanded = showAutosyncSelect,
+                        onDismissRequest = { showAutosyncSelect = false },
+                    ) { Text(stringResource(it.title)) }
                 }
             }
 
@@ -209,7 +228,13 @@ fun SettingsScreen(
                     name = stringResource(Res.string.pref_title_theme_select),
                     onClick = { showThemeSelect = true },
                 ) {
-                    Text(stringResource(theme.title))
+                    Select(
+                        items = Theme.entries,
+                        selectedItem = theme,
+                        onSelected = { viewModel.setTheme(it) },
+                        expanded = showThemeSelect,
+                        onDismissRequest = { showThemeSelect = false }
+                    ) { Text(stringResource(it.title)) }
                 }
 
                 Preference(
@@ -291,41 +316,6 @@ fun SettingsScreen(
                     Text(stringResource(Res.string.dialog_tutorial_upload))
                 }
             },
-        )
-    }
-    if (showThemeSelect) {
-        SimpleListPickerDialog(
-            onDismissRequest = { showThemeSelect = false },
-            items = Theme.entries,
-            onItemSelected = { viewModel.setTheme(it) },
-            itemContent = { Text(stringResource(it.title)) },
-            title = { Text(stringResource(Res.string.pref_title_theme_select)) },
-            selectedItem = theme,
-        )
-    }
-    if (showAutosyncSelect) {
-        SimpleListPickerDialog(
-            onDismissRequest = { showAutosyncSelect = false },
-            items = Autosync.entries,
-            onItemSelected = {
-                viewModel.setAutosync(it)
-                if (it != Autosync.ON) {
-                    showUploadTutorialInfo = true
-                }
-            },
-            itemContent = { Text(stringResource(it.title)) },
-            title = { Text(stringResource(Res.string.pref_title_sync2)) },
-            selectedItem = autosync,
-        )
-    }
-    if (showResurveyIntervalsSelect) {
-        SimpleListPickerDialog(
-            onDismissRequest = { showResurveyIntervalsSelect = false },
-            items = ResurveyIntervals.entries,
-            onItemSelected = { viewModel.setResurveyIntervals(it) },
-            itemContent = { Text(stringResource(it.title)) },
-            title = { Text(stringResource(Res.string.pref_title_resurvey_intervals)) },
-            selectedItem = resurveyIntervals,
         )
     }
 }
