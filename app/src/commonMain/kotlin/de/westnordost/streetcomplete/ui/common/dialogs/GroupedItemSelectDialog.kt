@@ -27,8 +27,8 @@ import de.westnordost.streetcomplete.ui.common.item_select.Group
 import de.westnordost.streetcomplete.ui.common.item_select.GroupedItemSelect
 import org.jetbrains.compose.resources.stringResource
 
-/** Simple item select dialog, somewhat similar to SimpleListPickerDialog only that we have a grid
- *  of items here instead of a list of radio buttons. */
+/** Grouped item select dialog, somewhat similar to ItemSelectDialog only that we have a have a
+ *  grouping of values. */
 @Composable
 fun <I, G: Group<I>> GroupedItemSelectDialog(
     onDismissRequest: () -> Unit,
@@ -90,6 +90,4 @@ fun <I, G: Group<I>> GroupedItemSelectDialog(
         contentColor = contentColor,
         properties = properties,
     )
-
-
 }

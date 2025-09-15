@@ -7,7 +7,6 @@ import androidx.annotation.AnyThread
 import androidx.core.view.isGone
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
-import de.westnordost.streetcomplete.databinding.QuestLanesSelectTypeBinding
 import de.westnordost.streetcomplete.databinding.QuestStreetLanesPuzzleBinding
 import de.westnordost.streetcomplete.osm.oneway.isForwardOneway
 import de.westnordost.streetcomplete.osm.oneway.isOneway
