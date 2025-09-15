@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.quests
 
 import android.os.Bundle
 import android.view.View
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -10,6 +9,8 @@ import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.cheonjaeung.compose.grid.SimpleGridCells
@@ -18,7 +19,6 @@ import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.databinding.ComposeViewBinding
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.quest_multiselect_hint
-import de.westnordost.streetcomplete.resources.quest_roofShape_select_one
 import de.westnordost.streetcomplete.ui.common.item_select.ItemsSelect
 import de.westnordost.streetcomplete.ui.util.content
 import de.westnordost.streetcomplete.util.takeFavorites
@@ -61,6 +61,7 @@ abstract class AItemsSelectQuestForm<I, T> : AbstractOsmQuestForm<T>() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.composeViewBase.content { Surface {
+            selectedItems = remember { mutableStateOf(emptySet()) }
             Column {
                 Text(
                     text = stringResource(Res.string.quest_multiselect_hint),
