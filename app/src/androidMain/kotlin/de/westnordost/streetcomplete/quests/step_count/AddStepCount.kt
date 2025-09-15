@@ -17,7 +17,7 @@ class AddStepCount : OsmFilterQuestType<Int>(), AndroidQuest {
             and (!indoor or indoor = no)
             and (!conveying or conveying = no)
           )
-           or man_made = tower and tower:type = observation and !emergency and building!=fire_lookout
+          or man_made = tower and tower:type = observation and !emergency and building != fire_lookout
         )
         and access !~ private|no
         and !step_count
