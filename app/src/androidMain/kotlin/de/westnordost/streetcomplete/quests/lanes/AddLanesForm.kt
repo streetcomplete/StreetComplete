@@ -306,9 +306,3 @@ class AddLanesForm : AbstractOsmQuestForm<LanesAnswer>() {
         private const val CENTER_LEFT_TURN_LANE = "center_left_turn_lane"
     }
 }
-
-private enum class LanesType {
-    MARKED,
-    MARKED_SIDES,
-    UNMARKED
-}
