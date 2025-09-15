@@ -91,7 +91,11 @@ Cette section regroupe tous les documents liés au projet :
 | N°0 - Semaine 36  | N/A | Pas de réunion | [A remplir]
 | N°1 - Semaine 37 à 38  | https://github.com/HugoTHOLLON/StreetCompleteSAE_S5/tree/master/docs/ODJ-CR/ODJ-Sprint-1-09-09-25.pdf[Lien vers l'ODJ]
 
-                https://github.com/HugoTHOLLON/StreetCompleteSAE_S5/tree/master/docs/ODJ-CR/CR-Sprint-1-09-09-25.pdf[Lien vers le CR] | [A remplir] | [A remplir]
+                https://github.com/HugoTHOLLON/StreetCompleteSAE_S5/tree/master/docs/ODJ-CR/CR-Sprint-1-09-09-25.pdf[Lien vers le CR]
+                
+                https://github.com/HugoTHOLLON/StreetCompleteSAE_S5/tree/master/docs/ODJ-CR/ODJ-Sprint-1-15-09-25.pdf[Lien vers l'ODJ 2]
+
+                https://github.com/HugoTHOLLON/StreetCompleteSAE_S5/tree/master/docs/ODJ-CR/CR-Sprint-1-15-09-25.pdf[Lien vers le CR 2] | [A remplir] | [A remplir]
 | N°2 - Semaine 39 à 40  | [A remplir] | [A remplir] | [A remplir]
 | N°3 - Semaine 41 à 43  | [A remplir] | [A remplir] | [A remplir]
 | N°4 - Semaine 44 à 48  | [A remplir] | [A remplir] | [A remplir]
