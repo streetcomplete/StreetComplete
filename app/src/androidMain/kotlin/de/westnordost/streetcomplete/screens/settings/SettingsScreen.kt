@@ -298,9 +298,9 @@ fun SettingsScreen(
             onDismissRequest = { showThemeSelect = false },
             items = Theme.entries,
             onItemSelected = { viewModel.setTheme(it) },
+            itemContent = { Text(stringResource(it.title)) },
             title = { Text(stringResource(Res.string.pref_title_theme_select)) },
             selectedItem = theme,
-            getItemName = { stringResource(it.title) }
         )
     }
     if (showAutosyncSelect) {
@@ -313,9 +313,9 @@ fun SettingsScreen(
                     showUploadTutorialInfo = true
                 }
             },
+            itemContent = { Text(stringResource(it.title)) },
             title = { Text(stringResource(Res.string.pref_title_sync2)) },
             selectedItem = autosync,
-            getItemName = { stringResource(it.title) }
         )
     }
     if (showResurveyIntervalsSelect) {
@@ -323,9 +323,9 @@ fun SettingsScreen(
             onDismissRequest = { showResurveyIntervalsSelect = false },
             items = ResurveyIntervals.entries,
             onItemSelected = { viewModel.setResurveyIntervals(it) },
+            itemContent = { Text(stringResource(it.title)) },
             title = { Text(stringResource(Res.string.pref_title_resurvey_intervals)) },
             selectedItem = resurveyIntervals,
-            getItemName = { stringResource(it.title) }
         )
     }
     val codes = selectableLanguageCodes
@@ -336,12 +336,14 @@ fun SettingsScreen(
             onDismissRequest = { showLanguageSelect = false },
             items = sortedCodes,
             onItemSelected = { viewModel.setSelectedLanguage(it) },
+            itemContent = { item ->
+                Text(
+                    item?.let { getLanguageDisplayName(it) }
+                        ?: stringResource(Res.string.language_default)
+                )
+            },
             title = { Text(stringResource(Res.string.pref_title_language_select2)) },
             selectedItem = selectedLanguage,
-            getItemName = { item ->
-                item?.let { getLanguageDisplayName(it) }
-                    ?: stringResource(Res.string.language_default)
-            }
         )
     }
 }

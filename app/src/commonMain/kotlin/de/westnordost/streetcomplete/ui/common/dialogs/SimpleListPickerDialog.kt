@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.ui.common.dialogs
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
@@ -45,10 +46,10 @@ fun <T> SimpleListPickerDialog(
     onDismissRequest: () -> Unit,
     items: List<T>,
     onItemSelected: (T) -> Unit,
+    itemContent: (@Composable (T) -> Unit),
     modifier: Modifier = Modifier,
     title: (@Composable () -> Unit)? = null,
     selectedItem: T? = null,
-    getItemName: (@Composable (T) -> String) = { it.toString() },
     width: Dp? = null,
     shape: Shape = MaterialTheme.shapes.medium,
     backgroundColor: Color = MaterialTheme.colors.surface,
@@ -103,11 +104,9 @@ fun <T> SimpleListPickerDialog(
                                     .clickable { select(item) }
                                     .padding(horizontal = 24.dp)
                             ) {
-                                Text(
-                                    text = getItemName(item),
-                                    style = MaterialTheme.typography.body1,
-                                    modifier = Modifier.weight(1f),
-                                )
+                                Box(modifier = Modifier.weight(1f)) {
+                                    itemContent(item)
+                                }
                                 RadioButton(
                                     selected = selected == item,
                                     onClick = { select(item) }
@@ -130,9 +129,9 @@ private fun PreviewSimpleListPickerDialog() {
         onDismissRequest = {},
         items = items,
         onItemSelected = {},
+        itemContent = { Text("Item $it") },
         title = { Text("Select something") },
         selectedItem = 2,
-        getItemName = { "Item $it" },
         width = 200.dp
     )
 }
