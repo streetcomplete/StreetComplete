@@ -5,6 +5,7 @@ import android.view.View
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -59,8 +60,11 @@ abstract class AItemSelectQuestForm<I, T> : AbstractOsmQuestForm<T>() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.composeViewBase.content { Surface {
-            Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                Text(stringResource(Res.string.quest_roofShape_select_one))
+            Column {
+                Text(
+                    text = stringResource(Res.string.quest_roofShape_select_one),
+                    modifier = Modifier.padding(bottom = 8.dp)
+                )
                 ItemSelect(
                     columns = SimpleGridCells.Fixed(itemsPerRow),
                     items = actualItems,

@@ -3,9 +3,9 @@ package de.westnordost.streetcomplete.quests
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AlertDialog
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -62,10 +62,11 @@ abstract class AGroupedItemSelectQuestForm<G: Group<I>, I, T> : AbstractOsmQuest
         super.onViewCreated(view, savedInstanceState)
 
         binding.composeViewBase.content { Surface {
-            Column(
-                verticalArrangement = Arrangement.spacedBy(8.dp),
-            ) {
-                Text(stringResource(Res.string.quest_select_hint_most_specific))
+            Column {
+                Text(
+                    text = stringResource(Res.string.quest_select_hint_most_specific),
+                    modifier = Modifier.padding(bottom = 8.dp)
+                )
                 GroupedItemSelect(
                     groups = groups,
                     topItems = actualTopItems,

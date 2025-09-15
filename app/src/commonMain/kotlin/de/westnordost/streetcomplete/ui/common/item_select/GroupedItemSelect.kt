@@ -25,8 +25,8 @@ import org.jetbrains.compose.resources.painterResource
 fun <I, G: Group<I>> GroupedItemSelect(
     groups: List<G>,
     topItems: List<I>,
-    selectedItem: I?,
     selectedGroup: G?,
+    selectedItem: I?,
     onSelect: (group: G?, item: I?) -> Unit,
     groupContent: @Composable (group: G) -> Unit,
     itemContent: @Composable (item: I) -> Unit,

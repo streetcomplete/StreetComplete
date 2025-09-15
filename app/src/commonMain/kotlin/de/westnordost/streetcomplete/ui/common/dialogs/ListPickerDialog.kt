@@ -1,14 +1,15 @@
 package de.westnordost.streetcomplete.ui.common.dialogs
 
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.foundation.selection.selectable
 import androidx.compose.material.ContentAlpha
 import androidx.compose.material.Divider
 import androidx.compose.material.LocalContentAlpha
@@ -29,7 +30,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
-import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.DialogProperties
 import de.westnordost.streetcomplete.resources.Res
@@ -51,8 +51,6 @@ fun <T> ListPickerDialog(
     modifier: Modifier = Modifier,
     title: (@Composable () -> Unit)? = null,
     selectedItem: T? = null,
-    width: Dp? = null,
-    height: Dp? = null,
     shape: Shape = MaterialTheme.shapes.medium,
     backgroundColor: Color = MaterialTheme.colors.surface,
     contentColor: Color = contentColorFor(backgroundColor),
@@ -78,18 +76,19 @@ fun <T> ListPickerDialog(
                 if (state.canScrollBackward) Divider()
                 LazyColumn(state = state) {
                     items(items) { item ->
+                        val isSelected = selected == item
                         Row(
                             horizontalArrangement = Arrangement.spacedBy(16.dp),
                             verticalAlignment = Alignment.CenterVertically,
                             modifier = Modifier
-                                .clickable { selected = item }
+                                .selectable(isSelected) { selected = item }
                                 .padding(horizontal = 24.dp)
                         ) {
                             Box(modifier = Modifier.weight(1f)) {
                                 itemContent(item)
                             }
                             RadioButton(
-                                selected = selected == item,
+                                selected = isSelected,
                                 onClick = { selected = item }
                             )
                         }
@@ -112,8 +111,6 @@ fun <T> ListPickerDialog(
                 Text(stringResource(Res.string.ok))
             }
         },
-        width = width,
-        height = height,
         shape = shape,
         backgroundColor = backgroundColor,
         contentColor = contentColor,
@@ -132,6 +129,6 @@ private fun PreviewListPickerDialog() {
         itemContent = { Text("Item $it") },
         title = { Text("Select something") },
         selectedItem = 2,
-        width = 260.dp
+        modifier = Modifier.width(260.dp)
     )
 }
