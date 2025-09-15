@@ -27,10 +27,9 @@ import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 
-@Composable
 fun Modifier.conditional(
     condition: Boolean,
-    modifier: @Composable Modifier.() -> Modifier
+    modifier: Modifier.() -> Modifier
 ): Modifier =
     if (condition) then(modifier(Modifier)) else this
 
