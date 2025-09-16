@@ -57,7 +57,7 @@ fun LanguageSelectionScreen(
         selectableLanguages?.associateWith { getLanguageDisplayName(it) }.orEmpty()
     } }
 
-    var searchText by remember { mutableStateOf("") }
+    var searchText by rememberSaveable { mutableStateOf("") }
 
     // languages are sorted alphabetically by their display name
     val sortedAndFilteredSelectableLanguages by remember { derivedStateOf {
