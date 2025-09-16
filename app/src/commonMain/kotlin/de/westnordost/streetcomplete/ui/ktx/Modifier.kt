@@ -5,7 +5,6 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.material.MaterialTheme
-import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.composed
@@ -133,10 +132,10 @@ fun Modifier.selectionFrame(
     shape: Shape? = null,
 ): Modifier = this.composed {
     val color = if (color == Color.Unspecified) MaterialTheme.colors.secondary else color
-    val shape = shape ?: MaterialTheme.shapes.small
+    val shape = shape ?: MaterialTheme.shapes.medium
     val alpha by animateFloatAsState(if (isSelected) 1f else 0f)
     this
-        .border(2.dp, color.copy(alpha = alpha), shape)
         .clip(shape)
-        .background(color.copy(alpha = alpha * 0.33f))
+        .background(color.copy(alpha = alpha * 0.4f), shape)
+        .border(2.dp, color.copy(alpha = alpha * 0.8f), shape)
 }

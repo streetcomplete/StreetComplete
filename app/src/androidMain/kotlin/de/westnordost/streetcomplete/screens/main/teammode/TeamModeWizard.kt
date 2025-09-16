@@ -175,7 +175,8 @@ private fun TeamModeColorSelect(
         textAlign = TextAlign.Center
     )
     FlowRow(
-        horizontalArrangement = Arrangement.Center,
+        horizontalArrangement = Arrangement.spacedBy(4.dp, Alignment.CenterHorizontally),
+        verticalArrangement = Arrangement.spacedBy(4.dp, Alignment.CenterVertically),
         modifier = Modifier.padding(top = 24.dp)
     ) {
         for (index in 0..<teamSize) {

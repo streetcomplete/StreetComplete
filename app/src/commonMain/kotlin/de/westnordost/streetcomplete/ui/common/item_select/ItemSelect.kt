@@ -1,9 +1,13 @@
 package de.westnordost.streetcomplete.ui.common.item_select
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import com.cheonjaeung.compose.grid.SimpleGridCells
 import com.cheonjaeung.compose.grid.VerticalGrid
 import de.westnordost.streetcomplete.ui.ktx.selectionFrame
@@ -20,13 +24,18 @@ fun <I> ItemSelect(
 ) {
     VerticalGrid(
         columns = columns,
-        modifier = modifier
+        modifier = modifier,
+        horizontalArrangement = Arrangement.spacedBy(4.dp),
+        verticalArrangement = Arrangement.spacedBy(4.dp),
     ) {
         for (item in items) {
             val isSelected = item == selectedItem
-            Box(Modifier
-                .selectionFrame(isSelected)
-                .selectable(isSelected) { onSelect(if (isSelected) null else item) }
+            Box(
+                modifier = Modifier
+                    .selectionFrame(isSelected)
+                    .selectable(isSelected) { onSelect(if (isSelected) null else item) }
+                    .padding(4.dp),
+                contentAlignment = Alignment.Center,
             ) {
                 itemContent(item)
             }

@@ -47,11 +47,11 @@ fun EditHistoryItem(
         contentAlignment = Alignment.Center,
         modifier = modifier
             .background(backgroundColor)
+            .selectionFrame(selected)
             .selectable(
                 selected = selected,
                 onClick = onSelect
-            )
-            .selectionFrame(selected),
+            ),
     ) {
         Box(
             Modifier

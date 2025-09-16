@@ -2,10 +2,12 @@ package de.westnordost.streetcomplete.quests
 
 import android.os.Bundle
 import android.view.View
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.ContentAlpha
+import androidx.compose.material.LocalContentAlpha
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -13,6 +15,7 @@ import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.unit.dp
 import com.cheonjaeung.compose.grid.SimpleGridCells
 import de.westnordost.streetcomplete.R
@@ -64,9 +67,11 @@ abstract class AItemSelectQuestForm<I, T> : AbstractOsmQuestForm<T>() {
         binding.composeViewBase.content { Surface {
             selectedItem = remember { mutableStateOf(null) }
             Column {
+
                 Text(
                     text = stringResource(Res.string.quest_roofShape_select_one),
-                    modifier = Modifier.padding(bottom = 8.dp)
+                    style = MaterialTheme.typography.body2,
+                    modifier = Modifier.padding(bottom = 8.dp).alpha(ContentAlpha.medium)
                 )
                 ItemSelect(
                     columns = SimpleGridCells.Fixed(itemsPerRow),
