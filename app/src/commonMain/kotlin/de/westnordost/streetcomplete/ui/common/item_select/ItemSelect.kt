@@ -33,8 +33,7 @@ fun <I> ItemSelect(
             Box(
                 modifier = Modifier
                     .selectionFrame(isSelected)
-                    .selectable(isSelected) { onSelect(if (isSelected) null else item) }
-                    .padding(4.dp),
+                    .selectable(isSelected) { onSelect(if (isSelected) null else item) },
                 contentAlignment = Alignment.Center,
             ) {
                 itemContent(item)

@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.ui.common.item_select
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.MaterialTheme
@@ -27,6 +28,7 @@ fun ImageWithLabel(
     Column(
         modifier = modifier,
         horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.spacedBy(2.dp)
     ) {
         if (painter != null) {
             Image(
@@ -42,7 +44,7 @@ fun ImageWithLabel(
                 text = label,
                 textAlign = TextAlign.Center,
                 style = MaterialTheme.typography.caption.copy(hyphens = Hyphens.Auto),
-                modifier = Modifier.padding(4.dp)
+                modifier = Modifier.padding(2.dp)
             )
         }
     }

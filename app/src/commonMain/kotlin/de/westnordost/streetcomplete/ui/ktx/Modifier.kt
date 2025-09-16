@@ -21,6 +21,7 @@ import androidx.compose.ui.graphics.addOutline
 import androidx.compose.ui.graphics.drawOutline
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.drawscope.inset
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.layout
 import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.Dp
@@ -133,9 +134,13 @@ fun Modifier.selectionFrame(
 ): Modifier = this.composed {
     val color = if (color == Color.Unspecified) MaterialTheme.colors.secondary else color
     val shape = shape ?: MaterialTheme.shapes.medium
-    val alpha by animateFloatAsState(if (isSelected) 1f else 0f)
+    val selected by animateFloatAsState(if (isSelected) 1f else 0f)
     this
         .clip(shape)
-        .background(color.copy(alpha = alpha * 0.4f), shape)
-        .border(2.dp, color.copy(alpha = alpha * 0.8f), shape)
+        .background(color.copy(alpha = selected * 0.4f), shape)
+        .border(2.dp, color.copy(alpha = selected * 0.8f), shape)
+        .graphicsLayer(
+            scaleX = 1f - selected * 0.075f,
+            scaleY = 1f - selected * 0.075f,
+            alpha = 1f - selected * 0.2f)
 }
