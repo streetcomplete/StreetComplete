@@ -67,7 +67,6 @@ abstract class AItemSelectQuestForm<I, T> : AbstractOsmQuestForm<T>() {
         binding.composeViewBase.content { Surface {
             selectedItem = remember { mutableStateOf(null) }
             Column {
-
                 Text(
                     text = stringResource(Res.string.quest_roofShape_select_one),
                     style = MaterialTheme.typography.body2,

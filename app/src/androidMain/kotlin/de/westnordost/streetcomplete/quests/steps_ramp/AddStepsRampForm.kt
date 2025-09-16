@@ -17,8 +17,6 @@ class AddStepsRampForm : AItemsSelectQuestForm<StepsRamp, StepsRampAnswer>() {
     override val itemsPerRow = 2
     override val moveFavoritesToFront = false
 
-    // TODO deselect all others if NONE is selected
-
     @Composable override fun ItemContent(item: StepsRamp) {
         ImageWithLabel(painterResource(item.icon), stringResource(item.title))
     }
