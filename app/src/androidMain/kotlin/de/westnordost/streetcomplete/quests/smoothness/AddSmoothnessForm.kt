@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.R
@@ -77,7 +78,7 @@ class AddSmoothnessForm : AItemSelectQuestForm<Smoothness, SmoothnessAnswer>() {
     private fun showWrongSurfaceDialog(surface: Surface) {
         val dialogBinding = ComposeViewBinding.inflate(layoutInflater)
         dialogBinding.composeViewBase.content { Surface(Modifier.padding(24.dp)) {
-            Column {
+            Column(horizontalAlignment = Alignment.CenterHorizontally) {
                 Text(stringResource(Res.string.quest_smoothness_surface_value))
                 ImageWithLabel(
                     painter = surface.icon?.let { painterResource(it) },
