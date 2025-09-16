@@ -13,7 +13,7 @@ class AddRailwayCrossingBarrierForm : AItemSelectQuestForm<RailwayCrossingBarrie
         return RailwayCrossingBarrier.getSelectableValues(isPedestrian)
     }
 
-    override val itemsPerRow = 4
+    override val itemsPerRow = 2
 
     @Composable override fun ItemContent(item: RailwayCrossingBarrier) {
         ImageWithLabel(

@@ -8,7 +8,7 @@ import org.jetbrains.compose.resources.painterResource
 class AddBridgeStructureForm : AItemSelectQuestForm<BridgeStructure, BridgeStructure>() {
 
     override val items = BridgeStructure.entries
-    override val itemsPerRow = 2
+    override val itemsPerRow = 1
 
     @Composable override fun ItemContent(item: BridgeStructure) {
         Image(painterResource(item.icon), null)
