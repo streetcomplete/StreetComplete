@@ -28,11 +28,11 @@ class AddOpeningHours(
         nodes, ways with
         (
             (
-              (
-              shop and shop !~ no|vacant
-              or amenity = social_facility and social_facility ~ food_bank|clothing_bank|soup_kitchen|dairy_kitchen
-              or natural = cave_entrance and fee = yes
-              or """ +
+                (
+                    shop and shop !~ no|vacant
+                    or amenity = social_facility and social_facility ~ food_bank|clothing_bank|soup_kitchen|dairy_kitchen
+                    or natural = cave_entrance and fee = yes
+                    or """ +
 
 // The common list is shared by the name quest, the opening hours quest and the wheelchair quest.
 // So when adding other tags to the common list keep in mind that they need to be appropriate for all those quests.
@@ -116,13 +116,13 @@ mapOf(
             or (
                 opening_hours older today -1 years
                 and (
-                  leisure ~ park|garden|beach_resort|sports_centre|disc_golf_course|nature_reserve|playground|fitness_station
-                  or barrier
-                  or tourism = attraction
-                  or amenity ~ toilets|bicycle_rental|charging_station|place_of_worship|parking|research_institute|shower|grave_yard|kitchen|marketplace
-                  or railway = station
-                  or aeroway = terminal
-                  or man_made = observatory
+                    leisure ~ park|garden|beach_resort|sports_centre|disc_golf_course|nature_reserve|playground|fitness_station
+                    or barrier
+                    or tourism = attraction
+                    or amenity ~ toilets|bicycle_rental|charging_station|place_of_worship|parking|research_institute|shower|grave_yard|kitchen|marketplace
+                    or railway = station
+                    or aeroway = terminal
+                    or man_made = observatory
                 )
             )
             or (
@@ -174,8 +174,6 @@ mapOf(
 
     override fun isApplicableTo(element: Element): Boolean {
         if (!filter.matches(element)) return false
-        // only show places that can be named somehow
-        if (!hasName(element)) return false
         // no opening_hours yet -> new survey
         val ohStr = element.tags["opening_hours"] ?: return true
         /* don't show if it was recently checked (actually already checked by filter, but it is a
@@ -213,11 +211,4 @@ mapOf(
         }
         tags.remove("opening_hours:covid19")
     }
-
-    private fun hasName(element: Element) = hasProperName(element.tags) || hasFeatureName(element)
-
-    private fun hasProperName(tags: Map<String, String>): Boolean =
-        tags.containsKey("name") || tags.containsKey("brand")
-
-    private fun hasFeatureName(element: Element) = getFeature(element)?.name != null
 }
