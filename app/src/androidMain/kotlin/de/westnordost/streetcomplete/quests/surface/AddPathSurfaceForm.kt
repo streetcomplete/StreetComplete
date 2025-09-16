@@ -24,10 +24,7 @@ class AddPathSurfaceForm : AItemSelectQuestForm<Surface, SurfaceOrIsStepsAnswer>
     override val itemsPerRow = 3
 
     @Composable override fun ItemContent(item: Surface) {
-        val icon = item.icon
-        if (icon != null) {
-            ImageWithLabel(painterResource(icon), stringResource(item.title))
-        }
+        ImageWithLabel(item.icon?.let { painterResource(it) }, stringResource(item.title))
     }
 
     override fun onClickOk(selectedItem: Surface) {

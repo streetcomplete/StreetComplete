@@ -31,7 +31,7 @@ import org.jetbrains.compose.resources.stringResource
 class AddSmoothnessForm : AItemSelectQuestForm<Smoothness, SmoothnessAnswer>() {
 
     private val surfaceTag get() = element.tags["surface"]
-    override val items = Smoothness.entries
+    override val items get() = Smoothness.entries.filter { it.getImage(surfaceTag) != null }
 
     override val itemsPerRow = 1
     override val moveFavoritesToFront = false
