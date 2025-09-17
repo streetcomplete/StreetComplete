@@ -15,7 +15,6 @@ import de.westnordost.streetcomplete.resources.quest_recycling_type_glass_bottle
 import de.westnordost.streetcomplete.resources.quest_recycling_type_green_waste
 import de.westnordost.streetcomplete.resources.quest_recycling_type_paper
 import de.westnordost.streetcomplete.resources.quest_recycling_type_pet
-import de.westnordost.streetcomplete.resources.quest_recycling_type_plastic
 import de.westnordost.streetcomplete.resources.quest_recycling_type_plastic_bottles
 import de.westnordost.streetcomplete.resources.quest_recycling_type_plastic_bottles_and_cartons
 import de.westnordost.streetcomplete.resources.quest_recycling_type_plastic_generic
@@ -92,7 +91,7 @@ val List<RecyclingMaterial>.icon: DrawableResource get() = when (this) {
 }
 
 val List<RecyclingMaterial>.title: StringResource get() = when (this) {
-    listOf(PLASTIC) -> Res.string.quest_recycling_type_plastic
+    //listOf(PLASTIC) -> Res.string.quest_recycling_type_plastic
     listOf(PLASTIC_BOTTLES, BEVERAGE_CARTONS) -> Res.string.quest_recycling_type_plastic_bottles_and_cartons
     else -> first().title
 }

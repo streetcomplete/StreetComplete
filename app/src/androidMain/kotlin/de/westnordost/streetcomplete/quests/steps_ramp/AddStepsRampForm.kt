@@ -21,6 +21,16 @@ class AddStepsRampForm : AItemsSelectQuestForm<StepsRamp, StepsRampAnswer>() {
         ImageWithLabel(painterResource(item.icon), stringResource(item.title))
     }
 
+    override fun onSelect(item: StepsRamp, selected: Boolean) {
+        selectedItems.value = if (selected) {
+            if (item == StepsRamp.NONE) setOf(item)
+            else selectedItems.value + item - StepsRamp.NONE
+        } else {
+            selectedItems.value - item
+        }
+        checkIsFormComplete()
+    }
+
     override fun onClickOk(selectedItems: Set<StepsRamp>) {
         if (selectedItems.contains(WHEELCHAIR)) {
             confirmWheelchairRampIsSeparate { isSeparate ->
