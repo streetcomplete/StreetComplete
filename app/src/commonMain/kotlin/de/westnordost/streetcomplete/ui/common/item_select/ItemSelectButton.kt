@@ -4,10 +4,9 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.ButtonDefaults
+import androidx.compose.material.Card
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Icon
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -45,11 +44,11 @@ fun <I> ItemSelectButton(
 ) {
     var expanded by remember { mutableStateOf(false) }
 
-    Surface(
+    Card(
         onClick = { expanded = !expanded },
         modifier = modifier,
-        shape = MaterialTheme.shapes.medium,
         border = ButtonDefaults.outlinedBorder,
+        elevation = 0.dp,
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically,

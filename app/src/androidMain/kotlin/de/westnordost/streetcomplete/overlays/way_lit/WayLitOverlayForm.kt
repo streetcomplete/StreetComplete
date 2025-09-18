@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.overlays.way_lit
 
 import android.os.Bundle
-import androidx.compose.foundation.layout.BoxScope
+import androidx.compose.foundation.Image
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
@@ -46,8 +46,12 @@ class WayLitOverlayForm : AItemSelectOverlayForm<LitStatus>() {
         createConvertToStepsAnswer()
     )
 
-    @Composable override fun BoxScope.ItemContent(item: LitStatus) {
+    @Composable override fun ItemContent(item: LitStatus) {
         ImageWithLabel(painterResource(item.icon), stringResource(item.title))
+    }
+
+    @Composable override fun LastPickedItemContent(item: LitStatus) {
+        Image(painterResource(item.icon), stringResource(item.title))
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

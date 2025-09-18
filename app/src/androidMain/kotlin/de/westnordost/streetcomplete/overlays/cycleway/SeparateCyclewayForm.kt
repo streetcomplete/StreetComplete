@@ -1,8 +1,7 @@
 package de.westnordost.streetcomplete.overlays.cycleway
 
 import android.os.Bundle
-import android.view.View
-import androidx.compose.foundation.layout.BoxScope
+import androidx.compose.foundation.Image
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
@@ -31,12 +30,16 @@ class SeparateCyclewayForm : AItemSelectOverlayForm<SeparateCycleway>() {
             .map { valueOfOrNull<SeparateCycleway>(it) }
             .firstOrNull()
 
-    @Composable override fun BoxScope.ItemContent(item: SeparateCycleway) {
+    @Composable override fun ItemContent(item: SeparateCycleway) {
         ImageWithDescription(
             painter = painterResource(item.getIcon(countryInfo.isLeftHandTraffic)),
             title = null,
             description = stringResource(item.title)
         )
+    }
+
+    @Composable override fun LastPickedItemContent(item: SeparateCycleway) {
+        Image(painterResource(item.getIcon(countryInfo.isLeftHandTraffic)), stringResource(item.title))
     }
 
     private var originalCycleway: SeparateCycleway? = null
@@ -45,12 +48,6 @@ class SeparateCyclewayForm : AItemSelectOverlayForm<SeparateCycleway>() {
         super.onCreate(savedInstanceState)
         originalCycleway = parseSeparateCycleway(element!!.tags)
         selectedItem.value = originalCycleway
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-
     }
 
     override fun hasChanges(): Boolean = selectedItem.value != originalCycleway
