@@ -24,6 +24,17 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.ComposeViewBinding
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.quest_multiselect_hint
+import de.westnordost.streetcomplete.resources.quest_recycling_materials_note
+import de.westnordost.streetcomplete.ui.common.dialogs.SimpleItemSelectDialog
+import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
+import de.westnordost.streetcomplete.ui.common.item_select.ItemsSelect
+import de.westnordost.streetcomplete.ui.util.content
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
+
+typealias RecyclingMaterialsItem = List<RecyclingMaterial>
 
 class AddRecyclingContainerMaterialsForm : AbstractOsmQuestForm<RecyclingContainerMaterialsAnswer>() {
 
