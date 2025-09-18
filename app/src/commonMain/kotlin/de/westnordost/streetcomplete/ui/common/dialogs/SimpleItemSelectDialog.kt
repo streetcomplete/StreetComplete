@@ -60,6 +60,7 @@ fun <I> SimpleItemSelectDialog(
                         selectedItem = null,
                         onSelect = { if (it != null) select(it) },
                         itemContent = itemContent,
+                        modifier = Modifier.padding(bottom = 24.dp)
                     )
                 }
             },
