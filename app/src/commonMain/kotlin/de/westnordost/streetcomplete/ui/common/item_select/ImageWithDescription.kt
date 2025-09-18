@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -13,7 +14,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.text.style.Hyphens
+import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.dp
+import de.westnordost.streetcomplete.ui.ktx.conditional
 
 /** Just an image with a description text to the right, centered vertically */
 @Composable
@@ -22,6 +25,7 @@ fun ImageWithDescription(
     title: String?,
     description: String?,
     modifier: Modifier = Modifier,
+    imageSize: DpSize? = null,
 ) {
     Row(
         modifier = modifier,
@@ -32,7 +36,9 @@ fun ImageWithDescription(
             Image(
                 painter = painter,
                 contentDescription = null,
-                modifier = Modifier.clip(MaterialTheme.shapes.medium)
+                modifier = Modifier
+                    .conditional(imageSize != null) { size(imageSize!!) }
+                    .clip(MaterialTheme.shapes.medium)
             )
         }
         Column(modifier = Modifier.weight(1f).padding(4.dp)) {

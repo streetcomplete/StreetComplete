@@ -19,7 +19,7 @@ import androidx.compose.ui.window.DialogProperties
 import com.cheonjaeung.compose.grid.SimpleGridCells
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.quest_select_hint
-import de.westnordost.streetcomplete.ui.common.item_select.ItemSelect
+import de.westnordost.streetcomplete.ui.common.item_select.ItemSelectGrid
 import org.jetbrains.compose.resources.stringResource
 
 /** Simple item select dialog, somewhat similar to SimpleListPickerDialog only that we have a grid
@@ -54,7 +54,7 @@ fun <I> SimpleItemSelectDialog(
             content = {
                 Column(Modifier.padding(horizontal = 24.dp)) {
                     if (scrollState.canScrollBackward) Divider()
-                    ItemSelect(
+                    ItemSelectGrid(
                         columns = columns,
                         items = items,
                         selectedItem = null,

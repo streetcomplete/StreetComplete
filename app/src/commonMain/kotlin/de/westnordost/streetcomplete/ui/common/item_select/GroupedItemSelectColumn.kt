@@ -10,7 +10,6 @@ import androidx.compose.foundation.selection.selectable
 import androidx.compose.material.Divider
 import androidx.compose.material.Icon
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
@@ -22,7 +21,7 @@ import org.jetbrains.compose.resources.painterResource
 
 /** List of grouped items where one item can be selected */
 @Composable
-fun <I, G: Group<I>> GroupedItemSelect(
+fun <I, G: Group<I>> GroupedItemSelectColumn(
     groups: List<G>,
     topItems: List<I>,
     selectedGroup: G?,
@@ -32,18 +31,6 @@ fun <I, G: Group<I>> GroupedItemSelect(
     itemContent: @Composable (item: I) -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    // to know which item belongs to which group
-    val itemGroup = remember(groups) {
-        val map = HashMap<I, G>()
-        for (group in groups) {
-            for (item in group.children) {
-                map.put(item, group)
-            }
-        }
-        return@remember map
-    }
-    val expandedGroup = selectedGroup ?: selectedItem?.let { itemGroup[it] }
-
     Column(modifier = modifier) {
         // top items first...
         for (item in topItems) {
@@ -58,34 +45,44 @@ fun <I, G: Group<I>> GroupedItemSelect(
         }
         // then the groups
         for (group in groups) {
-            val isSelected = group == selectedGroup
-            val isExpanded = group == expandedGroup
+            val isGroupSelected = group == selectedGroup && selectedItem == null
+            val isGroupExpanded = group == selectedGroup
             Divider(thickness = 2.dp)
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                Box(Modifier
-                    .weight(1f)
-                    .selectionFrame(isSelected)
-                    .selectable(isSelected) { onSelect(if (isSelected) null else group, null) }
-                ) {
+            Row(
+                modifier = Modifier
+                    .selectionFrame(isGroupSelected)
+                    .selectable(isGroupSelected) {
+                        onSelect(if (isGroupSelected) null else group, null)
+                    },
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Box(Modifier.weight(1f)) {
                     groupContent(group)
                 }
                 Icon(
                     painter = painterResource(Res.drawable.ic_arrow_drop_down_24),
                     contentDescription = null,
-                    modifier = Modifier.padding(8.dp).rotate(if (isExpanded) 0f else 270f),
+                    modifier = Modifier
+                        .padding(8.dp)
+                        .rotate(if (isGroupExpanded) 0f else 270f),
                 )
             }
-            // TODO scroll to just expanded group?
             // and the expanded group
-            AnimatedVisibility(visible = isExpanded) {
-                for (item in group.children) {
-                    Box(Modifier
-                        .fillMaxWidth()
-                        .padding(start = 16.dp)
-                        .selectionFrame(isSelected)
-                        .selectable(isSelected) { onSelect(null, if (isSelected) null else item) }
-                    ) {
-                        itemContent(item)
+            AnimatedVisibility(visible = isGroupExpanded) {
+                Column {
+                    for (item in group.children) {
+                        val isItemSelected = item == selectedItem
+                        Box(Modifier
+                            .fillMaxWidth()
+                            .padding(start = 40.dp)
+                            .selectionFrame(isItemSelected)
+                            .selectable(isItemSelected) {
+                                if (isItemSelected) onSelect(null, null)
+                                else onSelect(group, item)
+                            }
+                        ) {
+                            itemContent(item)
+                        }
                     }
                 }
             }

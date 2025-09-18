@@ -2,6 +2,8 @@ package de.westnordost.streetcomplete.quests.building_type
 
 import androidx.appcompat.app.AlertDialog
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.unit.DpSize
+import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.osm.building.BuildingType
 import de.westnordost.streetcomplete.osm.building.BuildingTypeCategory
@@ -29,7 +31,8 @@ class AddBuildingTypeForm : AGroupedItemSelectQuestForm<BuildingTypeCategory, Bu
         ImageWithDescription(
             painter = painterResource(item.icon),
             title = stringResource(item.title),
-            description = item.description?.let { stringResource(it) }
+            description = item.description?.let { stringResource(it) },
+            imageSize = DpSize(48.dp, 48.dp)
         )
     }
 
@@ -37,7 +40,8 @@ class AddBuildingTypeForm : AGroupedItemSelectQuestForm<BuildingTypeCategory, Bu
         ImageWithDescription(
             painter = painterResource(item.icon),
             title = stringResource(item.title),
-            description = item.description?.let { stringResource(it) }
+            description = item.description?.let { stringResource(it) },
+            imageSize = DpSize(48.dp, 48.dp),
         )
     }
 

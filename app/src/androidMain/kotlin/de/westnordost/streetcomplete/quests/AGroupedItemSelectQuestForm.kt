@@ -3,13 +3,19 @@ package de.westnordost.streetcomplete.quests
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AlertDialog
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
+import androidx.compose.material.ContentAlpha
+import androidx.compose.material.LocalContentAlpha
+import androidx.compose.material.LocalTextStyle
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.R
@@ -18,7 +24,7 @@ import de.westnordost.streetcomplete.databinding.ComposeViewBinding
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.quest_select_hint_most_specific
 import de.westnordost.streetcomplete.ui.common.item_select.Group
-import de.westnordost.streetcomplete.ui.common.item_select.GroupedItemSelect
+import de.westnordost.streetcomplete.ui.common.item_select.GroupedItemSelectColumn
 import de.westnordost.streetcomplete.ui.util.content
 import de.westnordost.streetcomplete.util.takeFavorites
 import org.jetbrains.compose.resources.stringResource
@@ -43,8 +49,8 @@ abstract class AGroupedItemSelectQuestForm<G: Group<I>, I, T> : AbstractOsmQuest
     /** items to display that are shown on the top. May not be accessed before onCreate */
     protected abstract val topItems: List<I>
     private lateinit var actualTopItems: List<I>
-    protected lateinit var selectedGroup: MutableState<G?>
-    protected lateinit var selectedItem: MutableState<I?>
+    protected val selectedGroup: MutableState<G?> = mutableStateOf(null)
+    protected val selectedItem: MutableState<I?> = mutableStateOf(null)
 
     private lateinit var itemsByString: Map<String, I>
 
@@ -62,12 +68,14 @@ abstract class AGroupedItemSelectQuestForm<G: Group<I>, I, T> : AbstractOsmQuest
         super.onViewCreated(view, savedInstanceState)
 
         binding.composeViewBase.content { Surface {
-            Column {
-                Text(
-                    text = stringResource(Res.string.quest_select_hint_most_specific),
-                    modifier = Modifier.padding(bottom = 8.dp)
-                )
-                GroupedItemSelect(
+            Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                CompositionLocalProvider(
+                    LocalContentAlpha provides ContentAlpha.medium,
+                    LocalTextStyle provides MaterialTheme.typography.body2
+                ) {
+                    Text(stringResource(Res.string.quest_select_hint_most_specific))
+                }
+                GroupedItemSelectColumn(
                     groups = groups,
                     topItems = actualTopItems,
                     selectedItem = selectedItem.value,

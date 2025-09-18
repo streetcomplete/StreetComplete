@@ -4,6 +4,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -14,6 +15,7 @@ import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.text.style.Hyphens
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.ui.ktx.conditional
 
@@ -23,7 +25,8 @@ fun ImageWithLabel(
     painter: Painter?,
     label: String?,
     modifier: Modifier = Modifier,
-    imageRotation: Float? = null
+    imageRotation: Float? = null,
+    imageSize: DpSize? = null,
 ) {
     Column(
         modifier = modifier,
@@ -36,6 +39,7 @@ fun ImageWithLabel(
                 contentDescription = null,
                 modifier = Modifier
                     .clip(MaterialTheme.shapes.medium)
+                    .conditional(imageSize != null) { size(imageSize!!) }
                     .conditional(imageRotation != null) { rotate(imageRotation!!) },
             )
         }

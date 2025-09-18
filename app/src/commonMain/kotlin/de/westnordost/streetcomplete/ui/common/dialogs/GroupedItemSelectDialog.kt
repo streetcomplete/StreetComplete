@@ -24,7 +24,7 @@ import de.westnordost.streetcomplete.resources.cancel
 import de.westnordost.streetcomplete.resources.ok
 import de.westnordost.streetcomplete.resources.quest_select_hint_most_specific
 import de.westnordost.streetcomplete.ui.common.item_select.Group
-import de.westnordost.streetcomplete.ui.common.item_select.GroupedItemSelect
+import de.westnordost.streetcomplete.ui.common.item_select.GroupedItemSelectColumn
 import org.jetbrains.compose.resources.stringResource
 
 /** Grouped item select dialog, somewhat similar to ItemSelectDialog only that we have a have a
@@ -54,7 +54,7 @@ fun <I, G: Group<I>> GroupedItemSelectDialog(
         title = { Text(stringResource(Res.string.quest_select_hint_most_specific)) },
         content = {
             if (scrollState.canScrollBackward) Divider()
-            GroupedItemSelect(
+            GroupedItemSelectColumn(
                 groups = groups,
                 topItems = emptyList(),
                 selectedGroup = selectedGroup,
