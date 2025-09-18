@@ -1,21 +1,18 @@
-package de.westnordost.streetcomplete.quests.oneway
+package de.westnordost.streetcomplete.quests.bothway
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
-import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.AndroidQuest
-import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
-import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.osm.estimateUsableRoadwayWidth
-import de.westnordost.streetcomplete.quests.oneway.BothwayAnswer.BACKWARD
-import de.westnordost.streetcomplete.quests.oneway.BothwayAnswer.FORWARD
-import de.westnordost.streetcomplete.quests.oneway.BothwayAnswer.NO_ONEWAY
+import de.westnordost.streetcomplete.quests.bothway.BothwayAnswer.BOTHWAY
+import de.westnordost.streetcomplete.quests.bothway.BothwayAnswer.UPWARD
+import de.westnordost.streetcomplete.quests.bothway.BothwayAnswer.DOWNWARD
+
 
 class AddBothway : OsmElementQuestType<BothwayAnswer>, AndroidQuest {
 
@@ -45,9 +42,9 @@ class AddBothway : OsmElementQuestType<BothwayAnswer>, AndroidQuest {
 
     override fun applyAnswerTo(answer: BothwayAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags["oneway"] = when (answer) {
-            FORWARD -> "yes"
-            BACKWARD -> "-1"
-            NO_ONEWAY -> "no"
+            UPWARD -> "yes"
+            DOWNWARD -> "-1"
+            BOTHWAY -> "no"
         }
     }
 }

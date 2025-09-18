@@ -1,7 +1,7 @@
-package de.westnordost.streetcomplete.quests.oneway
+package de.westnordost.streetcomplete.quests.bothway
 
 enum class BothwayAnswer {
-    FORWARD,
-    BACKWARD,
-    NO_ONEWAY
+    UPWARD,
+    DOWNWARD,
+    BOTHWAY
 }

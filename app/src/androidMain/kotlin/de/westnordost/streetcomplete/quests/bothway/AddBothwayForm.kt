@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests.oneway
+package de.westnordost.streetcomplete.quests.bothway
 
 import android.os.Bundle
 import de.westnordost.streetcomplete.R
