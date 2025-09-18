@@ -55,9 +55,6 @@ fun EntranceReferenceForm(
             onSelectedItem = onValueChange,
             selectedItem = value,
             itemContent = { Text(stringResource(it.text)) },
-            content = {
-                Text(stringResource(value?.text ?: Res.string.quest_select_hint))
-            },
         )
         if (value is EntranceReference) {
             ProvideTextStyle(MaterialTheme.typography.largeInput) {

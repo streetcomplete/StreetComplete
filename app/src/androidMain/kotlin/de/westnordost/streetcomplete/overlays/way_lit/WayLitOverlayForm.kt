@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.overlays.way_lit
 
 import android.os.Bundle
-import android.view.View
 import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
@@ -18,7 +17,7 @@ import de.westnordost.streetcomplete.osm.lit.applyTo
 import de.westnordost.streetcomplete.osm.lit.icon
 import de.westnordost.streetcomplete.osm.lit.parseLitStatus
 import de.westnordost.streetcomplete.osm.lit.title
-import de.westnordost.streetcomplete.overlays.AImageSelectOverlayForm
+import de.westnordost.streetcomplete.overlays.AItemSelectOverlayForm
 import de.westnordost.streetcomplete.overlays.AnswerItem
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
 import de.westnordost.streetcomplete.util.ktx.couldBeSteps
@@ -27,7 +26,7 @@ import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import org.koin.android.ext.android.inject
 
-class WayLitOverlayForm : AImageSelectOverlayForm<LitStatus>() {
+class WayLitOverlayForm : AItemSelectOverlayForm<LitStatus>() {
 
     override val items: List<LitStatus> = LitStatus.entries
 
@@ -51,20 +50,20 @@ class WayLitOverlayForm : AImageSelectOverlayForm<LitStatus>() {
         ImageWithLabel(painterResource(item.icon), stringResource(item.title))
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
 
         originalLitStatus = parseLitStatus(element!!.tags)
-        selectedItem = originalLitStatus
+        selectedItem.value = originalLitStatus
     }
 
     override fun hasChanges(): Boolean =
-        selectedItem != originalLitStatus
+        selectedItem.value != originalLitStatus
 
     override fun onClickOk() {
-        prefs.addLastPicked(this::class.simpleName!!, selectedItem!!.name)
+        prefs.addLastPicked(this::class.simpleName!!, selectedItem.value!!.name)
         val tagChanges = StringMapChangesBuilder(element!!.tags)
-        selectedItem!!.applyTo(tagChanges)
+        selectedItem.value!!.applyTo(tagChanges)
         applyEdit(UpdateElementTagsAction(element!!, tagChanges.create()))
     }
 

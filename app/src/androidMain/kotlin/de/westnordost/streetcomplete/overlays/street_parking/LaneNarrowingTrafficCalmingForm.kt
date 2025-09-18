@@ -23,7 +23,7 @@ import de.westnordost.streetcomplete.osm.traffic_calming.applyTo
 import de.westnordost.streetcomplete.osm.traffic_calming.icon
 import de.westnordost.streetcomplete.osm.traffic_calming.title
 import de.westnordost.streetcomplete.osm.traffic_calming.parseNarrowingTrafficCalming
-import de.westnordost.streetcomplete.overlays.AImageSelectOverlayForm
+import de.westnordost.streetcomplete.overlays.AItemSelectOverlayForm
 import de.westnordost.streetcomplete.overlays.AnswerItem
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsMapPositionAware
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
@@ -36,7 +36,7 @@ import org.jetbrains.compose.resources.stringResource
 import org.koin.android.ext.android.inject
 
 class LaneNarrowingTrafficCalmingForm :
-    AImageSelectOverlayForm<LaneNarrowingTrafficCalming>(), IsMapPositionAware {
+    AItemSelectOverlayForm<LaneNarrowingTrafficCalming>(), IsMapPositionAware {
 
     private val mapDataWithEditsSource: MapDataWithEditsSource by inject()
 
@@ -74,6 +74,13 @@ class LaneNarrowingTrafficCalmingForm :
         ImageWithLabel(painterResource(item.icon), stringResource(item.title))
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        originalLaneNarrowingTrafficCalming = element?.tags?.let { parseNarrowingTrafficCalming(it) }
+        selectedItem.value = originalLaneNarrowingTrafficCalming
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -86,9 +93,6 @@ class LaneNarrowingTrafficCalmingForm :
 
         setMarkerIcon(R.drawable.quest_choker)
         setMarkerVisibility(false)
-
-        originalLaneNarrowingTrafficCalming = element?.tags?.let { parseNarrowingTrafficCalming(it) }
-        selectedItem = originalLaneNarrowingTrafficCalming
     }
 
     private fun initCreatingPointOnWay() {
@@ -125,10 +129,10 @@ class LaneNarrowingTrafficCalmingForm :
         super.isFormComplete() && (element != null || positionOnWay != null)
 
     override fun hasChanges(): Boolean =
-        selectedItem != originalLaneNarrowingTrafficCalming
+        selectedItem.value != originalLaneNarrowingTrafficCalming
 
     override fun onClickOk() {
-        val answer = selectedItem!!
+        val answer = selectedItem.value!!
         val element = element
         val positionOnWay = positionOnWay
         if (element != null) {

@@ -49,7 +49,7 @@ class MtbScaleOverlay : Overlay, AndroidOverlay {
             ?: if (isMtbTaggingExpected(element)) OverlayColor.Red else null
         return OverlayStyle.Polyline(
             stroke = color?.let { OverlayStyle.Stroke(it) },
-            label = mtbScale?.value.toString()
+            label = mtbScale?.value?.toString()
         )
     }
 }

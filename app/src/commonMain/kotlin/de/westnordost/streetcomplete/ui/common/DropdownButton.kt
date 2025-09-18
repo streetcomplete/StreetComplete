@@ -5,8 +5,6 @@ import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.RowScope
-import androidx.compose.foundation.layout.calculateEndPadding
-import androidx.compose.foundation.layout.calculateStartPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.ButtonColors
 import androidx.compose.material.ButtonElevation
@@ -23,11 +21,13 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Shape
-import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.ic_arrow_drop_down_24
+import de.westnordost.streetcomplete.resources.quest_select_hint
+import de.westnordost.streetcomplete.ui.ktx.minus
 import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import kotlin.collections.forEach
 
@@ -56,18 +56,15 @@ fun <T> DropdownButton(
     contentPadding: PaddingValues = style.contentPadding,
     showDropDownArrow: Boolean = true,
     itemContent: @Composable (RowScope.(item: T) -> Unit),
-    content: @Composable (RowScope.() -> Unit) = { selectedItem?.let { itemContent(it) } }
+    content: @Composable (RowScope.() -> Unit) = {
+        if (selectedItem != null) itemContent(selectedItem)
+        else Text(stringResource(Res.string.quest_select_hint))
+    }
 ) {
     var expanded by remember { mutableStateOf(false) }
 
     val revisedContentPadding = if (showDropDownArrow) {
-        val layoutDirection = LocalLayoutDirection.current
-        PaddingValues(
-            start = contentPadding.calculateStartPadding(layoutDirection),
-            top = contentPadding.calculateTopPadding(),
-            end = contentPadding.calculateEndPadding(layoutDirection) - 8.dp,
-            bottom = contentPadding.calculateBottomPadding(),
-        )
+        contentPadding - PaddingValues(end = 8.dp)
     } else {
         contentPadding
     }

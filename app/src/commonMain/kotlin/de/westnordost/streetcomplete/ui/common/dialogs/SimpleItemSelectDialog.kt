@@ -1,11 +1,9 @@
 package de.westnordost.streetcomplete.ui.common.dialogs
 
-import androidx.compose.foundation.gestures.Orientation
-import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.material.Divider
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.contentColorFor
@@ -52,17 +50,17 @@ fun <I> SimpleItemSelectDialog(
             modifier = modifier,
             title = { Text(stringResource(Res.string.quest_select_hint)) },
             content = {
-                Column(Modifier.padding(horizontal = 24.dp)) {
-                    if (scrollState.canScrollBackward) Divider()
+                Column(Modifier
+                    .verticalScroll(scrollState)
+                    .padding(horizontal = 24.dp),
+                ) {
                     ItemSelectGrid(
                         columns = columns,
                         items = items,
                         selectedItem = null,
                         onSelect = { if (it != null) select(it) },
-                        modifier = Modifier.scrollable(scrollState, Orientation.Vertical),
                         itemContent = itemContent,
                     )
-                    if (scrollState.canScrollForward) Divider()
                 }
             },
             shape = shape,
