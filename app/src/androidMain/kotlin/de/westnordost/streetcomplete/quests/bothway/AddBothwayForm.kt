@@ -6,7 +6,7 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.quests.AImageListQuestForm
 import de.westnordost.streetcomplete.util.math.getOrientationAtCenterLineInDegrees
 
-class AddOnewayForm : AImageListQuestForm<BothwayAnswer, BothwayAnswer>() {
+class AddBothwayForm : AImageListQuestForm<BothwayAnswer, BothwayAnswer>() {
 
     override val items get() =
         BothwayAnswer.entries.map { it.asItem(requireContext(), wayRotation - mapRotation) }

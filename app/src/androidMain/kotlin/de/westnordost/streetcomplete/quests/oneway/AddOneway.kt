@@ -12,11 +12,11 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.estimateUsableRoadwayWidth
-import de.westnordost.streetcomplete.quests.oneway.OnewayAnswer.BACKWARD
-import de.westnordost.streetcomplete.quests.oneway.OnewayAnswer.FORWARD
-import de.westnordost.streetcomplete.quests.oneway.OnewayAnswer.NO_ONEWAY
+import de.westnordost.streetcomplete.quests.oneway.BothwayAnswer.BACKWARD
+import de.westnordost.streetcomplete.quests.oneway.BothwayAnswer.FORWARD
+import de.westnordost.streetcomplete.quests.oneway.BothwayAnswer.NO_ONEWAY
 
-class AddOneway : OsmElementQuestType<OnewayAnswer>, AndroidQuest {
+class AddOneway : OsmElementQuestType<BothwayAnswer>, AndroidQuest {
 
     /** find all roads */
     private val allRoadsFilter by lazy { """
@@ -82,9 +82,9 @@ class AddOneway : OsmElementQuestType<OnewayAnswer>, AndroidQuest {
         return usableWidth <= 4f
     }
 
-    override fun createForm() = AddOnewayForm()
+    override fun createForm() = AddBothwayForm()
 
-    override fun applyAnswerTo(answer: OnewayAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: BothwayAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags["oneway"] = when (answer) {
             FORWARD -> "yes"
             BACKWARD -> "-1"
