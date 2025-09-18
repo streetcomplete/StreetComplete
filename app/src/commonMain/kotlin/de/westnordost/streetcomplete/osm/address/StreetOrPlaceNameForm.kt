@@ -24,7 +24,7 @@ import de.westnordost.streetcomplete.resources.quest_address_street_place_name_l
 import de.westnordost.streetcomplete.resources.quest_address_street_street_name_label
 import de.westnordost.streetcomplete.resources.town_silhouette
 import de.westnordost.streetcomplete.ui.common.ButtonStyle
-import de.westnordost.streetcomplete.ui.common.SelectButton
+import de.westnordost.streetcomplete.ui.common.DropdownButton
 import de.westnordost.streetcomplete.ui.theme.largeInput
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
@@ -46,7 +46,7 @@ fun StreetOrPlaceNameForm(
 
     Column(modifier = modifier) {
         if (showSelect) {
-            SelectButton(
+            DropdownButton(
                 items = selections,
                 selectedItem = value,
                 onSelectedItem = onValueChange,

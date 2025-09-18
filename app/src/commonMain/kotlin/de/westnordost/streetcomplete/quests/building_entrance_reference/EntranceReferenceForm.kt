@@ -26,7 +26,7 @@ import de.westnordost.streetcomplete.resources.quest_entrance_reference_select_c
 import de.westnordost.streetcomplete.resources.quest_entrance_reference_select_flat_range_and_code
 import de.westnordost.streetcomplete.resources.quest_entrance_reference_select_flat_range_only
 import de.westnordost.streetcomplete.resources.quest_select_hint
-import de.westnordost.streetcomplete.ui.common.SelectButton
+import de.westnordost.streetcomplete.ui.common.DropdownButton
 import de.westnordost.streetcomplete.ui.theme.largeInput
 import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.stringResource
@@ -50,7 +50,7 @@ fun EntranceReferenceForm(
                 FlatRange("", "")
             )
         }
-        SelectButton(
+        DropdownButton(
             items = selectableItems,
             onSelectedItem = onValueChange,
             selectedItem = value,

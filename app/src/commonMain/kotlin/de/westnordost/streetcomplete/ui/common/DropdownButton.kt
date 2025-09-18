@@ -41,7 +41,7 @@ import kotlin.collections.forEach
  *  */
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
-fun <T> SelectButton(
+fun <T> DropdownButton(
     items: List<T>,
     onSelectedItem: (T) -> Unit,
     modifier: Modifier = Modifier,
@@ -120,7 +120,7 @@ fun <T> SelectButton(
 private fun LengthInputSelectorPreview() {
     val words = remember { "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam".split(' ') }
     var selected by remember { mutableStateOf(words[0]) }
-    SelectButton(
+    DropdownButton(
         items = words,
         selectedItem = selected,
         onSelectedItem = { selected = it },
