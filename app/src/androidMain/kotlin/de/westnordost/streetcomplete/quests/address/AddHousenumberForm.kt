@@ -11,6 +11,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.ComposeViewBinding
@@ -116,7 +117,8 @@ class AddHousenumberForm : AbstractOsmQuestForm<HouseNumberAnswer>() {
                 ImageWithDescription(
                     painter = painterResource(buildingType.icon),
                     title = stringResource(buildingType.title),
-                    description = buildingType.description?.let { stringResource(it) }
+                    description = buildingType.description?.let { stringResource(it) },
+                    imageSize = DpSize(48.dp, 48.dp),
                 )
                 Text(stringResource(Res.string.quest_address_answer_no_housenumber_message2b))
             }
