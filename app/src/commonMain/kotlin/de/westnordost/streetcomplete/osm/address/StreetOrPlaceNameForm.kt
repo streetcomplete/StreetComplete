@@ -42,8 +42,6 @@ fun StreetOrPlaceNameForm(
 ) {
     val selections = remember { listOf(StreetName(""), PlaceName("")) }
 
-    val textStyle = MaterialTheme.typography.largeInput.copy(textAlign = TextAlign.Center)
-
     Column(modifier = modifier) {
         if (showSelect) {
             DropdownButton(
@@ -70,7 +68,7 @@ fun StreetOrPlaceNameForm(
                     onValueChange = { onValueChange(StreetName(it)) },
                     modifier = Modifier.fillMaxWidth(),
                     suggestion = streetNameSuggestion,
-                    textStyle = textStyle,
+                    textStyle = MaterialTheme.typography.largeInput,
                 )
                 Text(
                     text = stringResource(Res.string.quest_address_street_hint2),
@@ -91,7 +89,7 @@ fun StreetOrPlaceNameForm(
                             alpha = 0.15f,
                         ),
                     suggestion = placeNameSuggestion,
-                    textStyle = textStyle,
+                    textStyle = MaterialTheme.typography.largeInput,
                 )
             }
         }

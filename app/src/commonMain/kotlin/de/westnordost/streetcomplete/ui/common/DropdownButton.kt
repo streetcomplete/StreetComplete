@@ -103,7 +103,6 @@ fun <T> DropdownButton(
                         }
                         expanded = false
                     },
-                    textStyle = LocalTextStyle.current
                 ) {
                     itemContent(item)
                 }
