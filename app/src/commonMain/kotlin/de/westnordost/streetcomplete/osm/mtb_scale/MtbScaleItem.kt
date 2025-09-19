@@ -26,7 +26,7 @@ import de.westnordost.streetcomplete.resources.overlay_mtb_scale_6_description
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.StringResource
 
-val MtbScale.title: StringResource get() = when (value) {
+val MtbScale.Value.title: StringResource get() = when (this) {
     ZERO -> Res.string.overlay_mtb_scale_0
     ONE -> Res.string.overlay_mtb_scale_1
     TWO -> Res.string.overlay_mtb_scale_2
@@ -36,7 +36,7 @@ val MtbScale.title: StringResource get() = when (value) {
     SIX -> Res.string.overlay_mtb_scale_6
 }
 
-val MtbScale.description: StringResource get() = when (value) {
+val MtbScale.Value.description: StringResource get() = when (this) {
     ZERO -> Res.string.overlay_mtb_scale_0_description
     ONE -> Res.string.overlay_mtb_scale_1_description
     TWO -> Res.string.overlay_mtb_scale_2_description
@@ -46,7 +46,7 @@ val MtbScale.description: StringResource get() = when (value) {
     SIX -> Res.string.overlay_mtb_scale_6_description
 }
 
-val MtbScale.icon: DrawableResource get() = when (value) {
+val MtbScale.Value.icon: DrawableResource get() = when (this) {
     ZERO -> Res.drawable.mtb_scale_0
     ONE -> Res.drawable.mtb_scale_1
     TWO -> Res.drawable.mtb_scale_2

@@ -20,22 +20,22 @@ import org.jetbrains.compose.resources.stringResource
 import org.koin.android.ext.android.inject
 import kotlin.getValue
 
-class MtbScaleOverlayForm : AItemSelectOverlayForm<MtbScale>() {
+class MtbScaleOverlayForm : AItemSelectOverlayForm<MtbScale.Value>() {
 
-    override val items = MtbScale.Value.entries.map { MtbScale(it) }
+    override val items = MtbScale.Value.entries
     override val itemsPerRow = 1
 
     private val prefs: Preferences by inject()
 
-    private var originalMtbScale: MtbScale? = null
+    private var originalMtbScale: MtbScale.Value? = null
 
-    override val lastPickedItem: MtbScale? get() =
+    override val lastPickedItem: MtbScale.Value? get() =
         prefs.getLastPicked(this::class.simpleName!!)
-            .map { valueOfOrNull<MtbScale.Value>(it)?.let { MtbScale(it) } }
+            .map { valueOfOrNull<MtbScale.Value>(it) }
             .firstOrNull()
 
 
-    @Composable override fun ItemContent(item: MtbScale) {
+    @Composable override fun ItemContent(item: MtbScale.Value) {
         ImageWithDescription(
             painter = painterResource(item.icon),
             title = stringResource(item.title),
@@ -43,23 +43,23 @@ class MtbScaleOverlayForm : AItemSelectOverlayForm<MtbScale>() {
         )
     }
 
-    @Composable override fun LastPickedItemContent(item: MtbScale) {
+    @Composable override fun LastPickedItemContent(item: MtbScale.Value) {
         Text(stringResource(item.title))
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        originalMtbScale = parseMtbScale(element!!.tags)
+        originalMtbScale = parseMtbScale(element!!.tags)?.value
         selectedItem.value = originalMtbScale
     }
 
-    override fun hasChanges(): Boolean = selectedItem != originalMtbScale
+    override fun hasChanges(): Boolean = selectedItem.value != originalMtbScale
 
     override fun onClickOk() {
-        prefs.addLastPicked(this::class.simpleName!!, selectedItem.value!!.value.name)
+        prefs.addLastPicked(this::class.simpleName!!, selectedItem.value!!.name)
         val tagChanges = StringMapChangesBuilder(element!!.tags)
-        selectedItem.value!!.applyTo(tagChanges)
+        MtbScale(selectedItem.value!!).applyTo(tagChanges)
         applyEdit(UpdateElementTagsAction(element!!, tagChanges.create()))
     }
 }
