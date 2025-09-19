@@ -6,18 +6,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.runtime.Composable
-import androidx.core.view.children
-import androidx.core.view.isGone
 import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.CellLastPickedButtonBinding
 import de.westnordost.streetcomplete.databinding.FragmentGroupedOverlayImageSelectBinding
 import de.westnordost.streetcomplete.ui.common.item_select.Group
-import de.westnordost.streetcomplete.view.setImage
 
 /** Abstract base class for any overlay form in which the user selects a grouped item */
-abstract class AGroupedImageSelectOverlayForm<G: Group<I>, I> : AbstractOverlayForm() {
-    // mostly copy-pasta from AImageSelectOverlayForm / AGroupedImageListQuestForm :-(
+abstract class AGroupedItemSelectOverlayForm<G: Group<I>, I> : AbstractOverlayForm() {
+    // mostly copy-pasta from AItemSelectOverlayForm / AGroupedItemSelectQuestForm :-(
 
     final override val contentLayoutResId = R.layout.fragment_grouped_overlay_image_select
     private val binding by contentViewBinding(FragmentGroupedOverlayImageSelectBinding::bind)

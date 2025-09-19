@@ -14,7 +14,7 @@ import de.westnordost.streetcomplete.osm.building.createBuildingType
 import de.westnordost.streetcomplete.osm.building.description
 import de.westnordost.streetcomplete.osm.building.icon
 import de.westnordost.streetcomplete.osm.building.title
-import de.westnordost.streetcomplete.overlays.AGroupedImageSelectOverlayForm
+import de.westnordost.streetcomplete.overlays.AGroupedItemSelectOverlayForm
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithDescription
 import de.westnordost.streetcomplete.util.getNameAndLocationSpanned
 import de.westnordost.streetcomplete.util.ktx.valueOfOrNull
@@ -23,7 +23,7 @@ import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import org.koin.android.ext.android.inject
 
-class BuildingsOverlayForm : AGroupedImageSelectOverlayForm<BuildingTypeCategory, BuildingType>() {
+class BuildingsOverlayForm : AGroupedItemSelectOverlayForm<BuildingTypeCategory, BuildingType>() {
 
     private val prefs: Preferences by inject()
 
