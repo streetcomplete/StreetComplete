@@ -10,15 +10,15 @@ data class Weight(
     val value: Double,
     val unit: WeightMeasurementUnit,
 ) {
-    fun toMetricTons(): Double = when (unit) {
-        METRIC_TON -> value
-        SHORT_TON -> value * 0.90718474
-        POUND -> value * 0.45359237 / 1000.0
+    fun toMetricTons(): Double = value * when (unit) {
+        METRIC_TON -> 1.0
+        SHORT_TON -> 0.90718474
+        POUND -> 0.45359237 / 1000.0
     }
 
-    fun toOsmString(): String = when (unit) {
-        METRIC_TON -> value.toShortString()
-        SHORT_TON -> value.toShortString() + " st"
-        POUND -> "$value lbs"
+    fun toOsmString(): String = value.toShortString() + when (unit) {
+        METRIC_TON -> ""
+        SHORT_TON -> " st"
+        POUND -> " lbs"
     }
 }

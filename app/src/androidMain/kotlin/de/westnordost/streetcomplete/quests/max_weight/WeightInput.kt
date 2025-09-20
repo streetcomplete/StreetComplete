@@ -9,13 +9,13 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.meta.WeightMeasurementUnit
 import de.westnordost.streetcomplete.ui.common.AutoFitTextFieldFontSize
 import de.westnordost.streetcomplete.ui.common.ButtonStyle
-import de.westnordost.streetcomplete.ui.common.SelectButton
+import de.westnordost.streetcomplete.ui.common.DropdownButton
 import de.westnordost.streetcomplete.ui.common.input.DecimalInput
-import de.westnordost.streetcomplete.util.ktx.toShortString
 
 /** Weight input for MUTCD (-inspired) countries. It is possible that different units are used,
  *  e.g. pounds / (short) tons in the US, metric tons anywhere else. */
@@ -26,11 +26,13 @@ fun WeightInputMutcd(
     onValueChange: (Double?) -> Unit,
     onUnitChange: (WeightMeasurementUnit) -> Unit,
     selectableUnits: List<WeightMeasurementUnit>,
+    unitTextStyle: TextStyle,
     modifier: Modifier = Modifier
 ) {
     Column(
         modifier = modifier,
         horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.spacedBy(4.dp)
     ) {
         AutoFitTextFieldFontSize(value?.toString().orEmpty()) {
             DecimalInput(
@@ -42,15 +44,23 @@ fun WeightInputMutcd(
             )
         }
         if (selectableUnits.size > 1) {
-            SelectButton(
+            DropdownButton(
                 items = selectableUnits,
                 onSelectedItem = onUnitChange,
                 selectedItem = unit,
                 style = ButtonStyle.Text,
-                itemContent = { Text(it.displayString.uppercase()) }
+                itemContent = {
+                    Text(
+                        text = it.displayString.uppercase(),
+                        style = unitTextStyle,
+                    )
+                }
             )
         } else {
-            Text(unit.displayString.uppercase())
+            Text(
+                text = unit.displayString.uppercase(),
+                style = unitTextStyle,
+            )
         }
     }
 }

@@ -3,9 +3,12 @@ package de.westnordost.streetcomplete.quests.max_weight
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AlertDialog
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.Surface
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.ui.Modifier
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.ComposeViewBinding
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
@@ -35,7 +38,20 @@ class AddMaxWeightForm : AbstractOsmQuestForm<MaxWeightAnswer>() {
             type = rememberSerializable { mutableStateOf(null) }
             weight = rememberSerializable { mutableStateOf(null) }
 
-            TODO()
+            MaxWeightForm(
+                type = type.value,
+                onSelectType = {
+                    type.value = it
+                    checkIsFormComplete()
+                },
+                weight = weight.value,
+                onChangeWeight = {
+                    weight.value = it
+                    checkIsFormComplete()
+                },
+                countryCode = countryInfo.countryCode,
+                selectableUnits = weightLimitUnits,
+            )
         } }
     }
 

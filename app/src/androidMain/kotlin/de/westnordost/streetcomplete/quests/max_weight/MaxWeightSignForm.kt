@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Icon
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -20,36 +21,53 @@ import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.maxweight_axleload
 import de.westnordost.streetcomplete.resources.maxweight_bogieweight
 import de.westnordost.streetcomplete.resources.maxweight_hgv
-import de.westnordost.streetcomplete.ui.common.SelectButton
+import de.westnordost.streetcomplete.ui.common.DropdownButton
 import de.westnordost.streetcomplete.ui.theme.TrafficSignColor
+import de.westnordost.streetcomplete.ui.theme.largeInput
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
-/** A form to input the weight [value] (and [unit]) for a single max weight sign. The signs shown
+/** A form to input the [weight] for a single max weight sign [type]. The signs shown
  *  should look similar to how the signs actually look in the country with the given [countryCode]
  */
 @Composable
 fun MaxWeightSignForm(
-    // TODO or use weight: Weight? (keep value and unit internally)
     type: MaxWeightType,
-    value: Double?,
-    unit: WeightMeasurementUnit,
-    onValueChange: (Double?) -> Unit,
-    onUnitChange: (WeightMeasurementUnit) -> Unit,
+    weight: Weight?,
+    onWeightChange: (Weight?) -> Unit,
     countryCode: String,
     selectableUnits: List<WeightMeasurementUnit>,
     modifier: Modifier = Modifier,
 ) {
+    var value by remember { mutableStateOf(weight?.value) }
+    var unit by remember { mutableStateOf(
+        weight?.unit ?: selectableUnits.firstOrNull() ?: WeightMeasurementUnit.METRIC_TON
+    ) }
+    if (weight != null) {
+        if (weight.value != value) value = weight.value
+        if (weight.unit != unit) unit = weight.unit
+    }
+    val onValueChange = { newValue: Double? ->
+        value = newValue
+        onWeightChange(newValue?.let { Weight(it, unit) })
+    }
+    val onUnitChange = { newUnit: WeightMeasurementUnit ->
+        unit = newUnit
+        onWeightChange(value?.let { Weight(it, newUnit) })
+    }
+
     val color =
         if (countryCode in listOf("FI", "IS", "SE")) TrafficSignColor.Yellow
         else TrafficSignColor.White
+
+    val unitTextStyle = MaterialTheme.typography.largeInput
 
     Box(modifier) {
         when (type) {
             MAX_WEIGHT -> when (countryCode) {
                 "AU", "CA", "US" ->
                     MaxWeightSignMutcd("WEIGHT LIMIT") {
-                        WeightInputMutcd(value, unit, onValueChange, onUnitChange, selectableUnits)
+                        WeightInputMutcd(value, unit, onValueChange, onUnitChange, selectableUnits, unitTextStyle)
                     }
                 else ->
                     MaxWeightSign(color = color) {
@@ -59,7 +77,7 @@ fun MaxWeightSignForm(
             MAX_WEIGHT_RATING -> when (countryCode) {
                 "AU", "CA", "US" ->
                     MaxWeightSignMutcd("GVWR LIMIT") {
-                        WeightInputMutcd(value, unit, onValueChange, onUnitChange, selectableUnits)
+                        WeightInputMutcd(value, unit, onValueChange, onUnitChange, selectableUnits, unitTextStyle)
                     }
                 "DE" ->
                     MaxWeightSignExtra(
@@ -76,7 +94,7 @@ fun MaxWeightSignForm(
             MAX_WEIGHT_RATING_HGV -> when (countryCode) {
                 "AU", "CA", "US" ->
                     MaxWeightSignMutcd("TRUCK GVWR LIMIT") {
-                        WeightInputMutcd(value, unit, onValueChange, onUnitChange, selectableUnits)
+                        WeightInputMutcd(value, unit, onValueChange, onUnitChange, selectableUnits, unitTextStyle)
                     }
                 "DE" ->
                     MaxWeightSignExtra(
@@ -99,7 +117,7 @@ fun MaxWeightSignForm(
             MAX_AXLE_LOAD -> when (countryCode) {
                 "AU", "CA", "US" ->
                     MaxWeightSignMutcd("AXLE WEIGHT LIMIT") {
-                        WeightInputMutcd(value, unit, onValueChange, onUnitChange, selectableUnits)
+                        WeightInputMutcd(value, unit, onValueChange, onUnitChange, selectableUnits, unitTextStyle)
                     }
                 else ->
                     MaxWeightSign(color = color) {
@@ -110,7 +128,7 @@ fun MaxWeightSignForm(
             MAX_TANDEM_AXLE_LOAD -> when (countryCode) {
                 "AU", "CA", "US" ->
                     MaxWeightSignMutcd("TANDEM AXLE WEIGHT LIMIT") {
-                        WeightInputMutcd(value, unit, onValueChange, onUnitChange, selectableUnits)
+                        WeightInputMutcd(value, unit, onValueChange, onUnitChange, selectableUnits, unitTextStyle)
                     }
                 else ->
                     MaxWeightSign(color = color) {
@@ -130,17 +148,16 @@ private fun MaxWeightSignFormPreview() {
 
     var maxWeightType by remember { mutableStateOf(MAX_WEIGHT) }
 
-    var value by remember { mutableStateOf<Double?>(null) }
-    var unit by remember { mutableStateOf(WeightMeasurementUnit.METRIC_TON) }
+    var weight by remember { mutableStateOf<Weight?>(null) }
 
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
-        SelectButton(
+        DropdownButton(
             items = countries,
             onSelectedItem = { country = it },
             selectedItem = country,
             itemContent = { Text(it) }
         )
-        SelectButton(
+        DropdownButton(
             items = MaxWeightType.entries,
             onSelectedItem = { maxWeightType = it },
             selectedItem = maxWeightType,
@@ -148,10 +165,8 @@ private fun MaxWeightSignFormPreview() {
         )
         MaxWeightSignForm(
             type = maxWeightType,
-            value = value,
-            unit = unit,
-            onValueChange = { value = it },
-            onUnitChange = { unit = it },
+            weight = weight,
+            onWeightChange = { weight = it },
             countryCode = country,
             selectableUnits = WeightMeasurementUnit.entries,
         )
