@@ -31,6 +31,7 @@ import de.westnordost.streetcomplete.quests.barrier_type.AddStileType
 import de.westnordost.streetcomplete.quests.bbq_fuel.AddBbqFuel
 import de.westnordost.streetcomplete.quests.bench_backrest.AddBenchBackrest
 import de.westnordost.streetcomplete.quests.bicycle_repair_station.AddBicycleRepairStationServices
+import de.westnordost.streetcomplete.quests.bike_charging_station_capacity.AddBikeChargingStationCapacity
 import de.westnordost.streetcomplete.quests.bike_parking_capacity.AddBikeParkingCapacity
 import de.westnordost.streetcomplete.quests.bike_parking_cover.AddBikeParkingCover
 import de.westnordost.streetcomplete.quests.bike_parking_type.AddBikeParkingType
@@ -407,6 +408,8 @@ fun questTypeRegistry(
     85 to AddAtmCashIn(),
 
     86 to AddClothingBinOperator(),
+
+    179 to AddBikeChargingStationCapacity(),
 
     87 to AddChargingStationCapacity(),
     88 to AddChargingStationOperator(),

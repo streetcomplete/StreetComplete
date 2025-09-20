@@ -777,6 +777,8 @@ Before uploading your changes, the app checks with a &lt;a href="https://www.wes
     <string name="quest_barrier_bicycle_installation_openable">Openable</string>
     <string name="quest_barrier_bicycle_installation_removable">Removable</string>
 
+    <string name="quest_bicycle_charging_station_capacity_title">How many bicycle can be charged here at the same time?</string>
+
     <string name="quest_bicycle_incline_title">Which direction leads upwards here?</string>
     <string name="quest_bicycle_incline_up_and_down">It’s up and down hops</string>
 
