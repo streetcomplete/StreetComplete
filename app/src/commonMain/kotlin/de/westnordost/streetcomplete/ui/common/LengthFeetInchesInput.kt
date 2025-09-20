@@ -72,7 +72,6 @@ fun LengthFeetInchesInput(
                 },
                 modifier = Modifier.fillMaxWidth(),
                 style = style,
-                textStyle = LocalTextStyle.current.copy(textAlign = TextAlign.Center),
                 singleLine = true,
                 keyboardOptions = KeyboardOptions(
                     keyboardType = KeyboardType.Number,
@@ -101,7 +100,6 @@ fun LengthFeetInchesInput(
                 },
                 modifier = Modifier.fillMaxWidth(),
                 style = style,
-                textStyle = LocalTextStyle.current.copy(textAlign = TextAlign.Center),
                 singleLine = true,
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
             )

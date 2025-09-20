@@ -19,7 +19,7 @@ import de.westnordost.streetcomplete.resources.default_disabled_overlay_domain_e
 class MtbScaleOverlay : Overlay, AndroidOverlay {
 
     override val title = R.string.overlay_mtb_scale
-    override val icon = R.drawable.ic_quest_mtb
+    override val icon = R.drawable.quest_mtb
     override val changesetComment = "Specify MTB difficulty"
     override val wikiLink: String = "Key:mtb:scale"
     override val achievements = listOf(BICYCLIST, OUTDOORS)
@@ -49,7 +49,7 @@ class MtbScaleOverlay : Overlay, AndroidOverlay {
             ?: if (isMtbTaggingExpected(element)) OverlayColor.Red else null
         return OverlayStyle.Polyline(
             stroke = color?.let { OverlayStyle.Stroke(it) },
-            label = mtbScale?.value.toString()
+            label = mtbScale?.value?.toString()
         )
     }
 }
@@ -65,12 +65,12 @@ private fun isMtbTaggingExpected(element: Element) =
     mtbTaggingExpectedFilter.matches(element)
 
 private val MtbScale?.color get() = when (this?.value) {
-    0 -> OverlayColor.Blue
-    1 -> OverlayColor.Cyan
-    2 -> OverlayColor.Lime
-    3 -> OverlayColor.Gold
-    4 -> OverlayColor.Orange
-    5 -> OverlayColor.Purple
-    6 -> OverlayColor.Black
+    MtbScale.Value.ZERO -> OverlayColor.Blue
+    MtbScale.Value.ONE -> OverlayColor.Cyan
+    MtbScale.Value.TWO -> OverlayColor.Lime
+    MtbScale.Value.THREE -> OverlayColor.Gold
+    MtbScale.Value.FOUR -> OverlayColor.Orange
+    MtbScale.Value.FIVE -> OverlayColor.Purple
+    MtbScale.Value.SIX -> OverlayColor.Black
     else -> null
 }

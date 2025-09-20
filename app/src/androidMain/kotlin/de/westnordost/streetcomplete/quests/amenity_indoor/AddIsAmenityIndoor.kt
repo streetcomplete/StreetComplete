@@ -47,7 +47,7 @@ class AddIsAmenityIndoor(private val getFeature: (Element) -> Feature?) :
 
     override val changesetComment = "Determine whether amenities are inside buildings"
     override val wikiLink = "Key:indoor"
-    override val icon = R.drawable.ic_quest_building_inside
+    override val icon = R.drawable.quest_building_inside
     override val achievements = listOf(CITIZEN)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_is_amenity_inside_title

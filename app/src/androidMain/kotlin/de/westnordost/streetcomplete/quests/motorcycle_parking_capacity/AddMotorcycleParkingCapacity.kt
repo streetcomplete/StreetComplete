@@ -21,7 +21,7 @@ class AddMotorcycleParkingCapacity : OsmFilterQuestType<Int>(), AndroidQuest {
     """
     override val changesetComment = "Specify motorcycle parking capacities"
     override val wikiLink = "Tag:amenity=motorcycle_parking"
-    override val icon = R.drawable.ic_quest_motorcycle_parking_capacity
+    override val icon = R.drawable.quest_motorcycle_parking_capacity
     override val isDeleteElementEnabled = true
     override val achievements = listOf(CAR)
 

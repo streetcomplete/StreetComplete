@@ -33,7 +33,7 @@ class CyclewayOverlay(
 ) : Overlay, AndroidOverlay {
 
     override val title = R.string.overlay_cycleway
-    override val icon = R.drawable.ic_quest_bicycleway
+    override val icon = R.drawable.quest_bicycleway
     override val changesetComment = "Specify whether there are cycleways"
     override val wikiLink: String = "Key:cycleway"
     override val achievements = listOf(EditTypeAchievement.BICYCLIST)

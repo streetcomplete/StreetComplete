@@ -20,7 +20,7 @@ import de.westnordost.streetcomplete.osm.Length
 import de.westnordost.streetcomplete.osm.unit
 import de.westnordost.streetcomplete.ui.common.LengthFeetInchesInput
 import de.westnordost.streetcomplete.ui.common.LengthMetersInput
-import de.westnordost.streetcomplete.ui.common.SelectButton
+import de.westnordost.streetcomplete.ui.common.DropdownButton
 import de.westnordost.streetcomplete.ui.theme.extraLargeInput
 import de.westnordost.streetcomplete.ui.theme.largeInput
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
@@ -72,7 +72,7 @@ fun MaxHeightForm(
             }
         }
         if (selectableUnits.size > 1) {
-            SelectButton(
+            DropdownButton(
                 items = selectableUnits,
                 selectedItem = selectedUnit,
                 onSelectedItem = { unit ->

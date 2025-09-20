@@ -29,7 +29,7 @@ class AddAcceptsCards : OsmFilterQuestType<CardAcceptance>(), AndroidQuest {
     """
     override val changesetComment = "Survey whether payment with cards is accepted"
     override val wikiLink = "Key:payment"
-    override val icon = R.drawable.ic_quest_card
+    override val icon = R.drawable.quest_card
     override val isReplacePlaceEnabled = true
     override val achievements = listOf(CITIZEN)
     override val defaultDisabledMessage = Res.string.default_disabled_msg_go_inside

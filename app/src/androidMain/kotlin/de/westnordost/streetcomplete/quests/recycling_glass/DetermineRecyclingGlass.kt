@@ -25,7 +25,7 @@ class DetermineRecyclingGlass : OsmFilterQuestType<RecyclingGlass>(), AndroidQue
     """
     override val changesetComment = "Determine whether any glass or just glass bottles can be recycled here"
     override val wikiLink = "Key:recycling"
-    override val icon = R.drawable.ic_quest_recycling_glass
+    override val icon = R.drawable.quest_recycling_glass
     // see isUsuallyAnyGlassRecyclableInContainers.yml
     override val enabledInCountries = AllCountriesExcept("CZ")
     override val isDeleteElementEnabled = true

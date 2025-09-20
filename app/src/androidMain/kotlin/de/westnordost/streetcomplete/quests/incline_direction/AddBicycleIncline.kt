@@ -25,7 +25,7 @@ class AddBicycleIncline : OsmElementQuestType<BicycleInclineAnswer>, AndroidQues
 
     override val changesetComment = "Specify which way leads up (where mtb:scale:uphill is present)"
     override val wikiLink = "Key:incline"
-    override val icon = R.drawable.ic_quest_bicycle_incline
+    override val icon = R.drawable.quest_bicycle_incline
     override val achievements = listOf(BICYCLIST)
     override val hasMarkersAtEnds = false
 

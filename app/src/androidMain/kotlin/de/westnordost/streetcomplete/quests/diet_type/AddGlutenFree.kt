@@ -30,7 +30,7 @@ class AddGlutenFree : OsmFilterQuestType<DietAvailabilityAnswer>(), AndroidQuest
     """
     override val changesetComment = "Specify whether places are gluten-free"
     override val wikiLink = "Key:diet:gluten_free"
-    override val icon = R.drawable.ic_quest_glutenfree
+    override val icon = R.drawable.quest_glutenfree
     override val isReplacePlaceEnabled = true
     override val achievements = listOf(CITIZEN)
     override val defaultDisabledMessage = Res.string.default_disabled_msg_go_inside

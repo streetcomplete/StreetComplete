@@ -22,7 +22,7 @@ class AddFerryAccessMotorVehicle : OsmElementQuestType<Boolean>, AndroidQuest {
     }
     override val changesetComment = "Specify ferry access for motor vehicles"
     override val wikiLink = "Tag:route=ferry"
-    override val icon = R.drawable.ic_quest_ferry
+    override val icon = R.drawable.quest_ferry
     override val hasMarkersAtEnds = true
     override val achievements = listOf(RARE, CAR)
 

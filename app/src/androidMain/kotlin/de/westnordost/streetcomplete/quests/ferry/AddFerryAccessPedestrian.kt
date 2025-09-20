@@ -22,7 +22,7 @@ class AddFerryAccessPedestrian : OsmElementQuestType<Boolean>, AndroidQuest {
     }
     override val changesetComment = "Specify ferry access for pedestrians"
     override val wikiLink = "Tag:route=ferry"
-    override val icon = R.drawable.ic_quest_ferry_pedestrian
+    override val icon = R.drawable.quest_ferry_pedestrian
     override val hasMarkersAtEnds = true
     override val achievements = listOf(RARE, PEDESTRIAN)
 

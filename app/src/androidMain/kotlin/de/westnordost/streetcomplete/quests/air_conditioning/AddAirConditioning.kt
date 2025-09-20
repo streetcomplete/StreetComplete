@@ -28,7 +28,7 @@ class AddAirConditioning : OsmFilterQuestType<Boolean>(), AndroidQuest {
     """
     override val changesetComment = "Survey availability of air conditioning"
     override val wikiLink = "Key:air_conditioning"
-    override val icon = R.drawable.ic_quest_snow_poi
+    override val icon = R.drawable.quest_snow_poi
     override val isReplacePlaceEnabled = true
     override val achievements = listOf(CITIZEN)
     override val defaultDisabledMessage = Res.string.default_disabled_msg_go_inside_regional_warning

@@ -5,4 +5,4 @@
     android:id="@+id/nationalSpeedLimitImage"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:srcCompat="@drawable/ic_national_speed_limit"/>
+    app:srcCompat="@drawable/national_speed_limit"/>
