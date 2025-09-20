@@ -87,6 +87,7 @@ import de.westnordost.streetcomplete.quests.fire_hydrant.AddFireHydrantType
 import de.westnordost.streetcomplete.quests.fire_hydrant_diameter.AddFireHydrantDiameter
 import de.westnordost.streetcomplete.quests.fire_hydrant_position.AddFireHydrantPosition
 import de.westnordost.streetcomplete.quests.fire_hydrant_ref.AddFireHydrantRef
+import de.westnordost.streetcomplete.quests.first_aid_kit.AddFirstAidKitLocation
 import de.westnordost.streetcomplete.quests.foot.AddProhibitedForPedestrians
 import de.westnordost.streetcomplete.quests.fuel_service.AddFuelSelfService
 import de.westnordost.streetcomplete.quests.general_fee.AddGeneralFee
@@ -464,6 +465,8 @@ fun questTypeRegistry(
 
     113 to AddIsAmenityIndoor(getFeature), // need to go inside in case it is inside (or gone)
     161 to AddDefibrillatorLocation(), // need to go inside in case it is inside (or gone)
+
+    183 to AddFirstAidKitLocation(), // need to go inside in case it is inside (or gone)
 
     // inside camping sites
     114 to AddCampType(),
