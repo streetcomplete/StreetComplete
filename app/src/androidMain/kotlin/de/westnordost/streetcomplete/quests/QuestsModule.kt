@@ -121,6 +121,7 @@ import de.westnordost.streetcomplete.quests.parcel_locker_brand.AddParcelLockerB
 import de.westnordost.streetcomplete.quests.parking_access.AddBikeParkingAccess
 import de.westnordost.streetcomplete.quests.parking_access.AddParkingAccess
 import de.westnordost.streetcomplete.quests.parking_fee.AddBikeParkingFee
+import de.westnordost.streetcomplete.quests.parking_fee.AddMotorcycleParkingFee
 import de.westnordost.streetcomplete.quests.parking_fee.AddParkingFee
 import de.westnordost.streetcomplete.quests.parking_type.AddParkingType
 import de.westnordost.streetcomplete.quests.pitch_lit.AddPitchLit
@@ -302,6 +303,7 @@ fun questTypeRegistry(
     // motorcycle parking
     30 to AddMotorcycleParkingCover(),
     31 to AddMotorcycleParkingCapacity(), // counting + number input required but usually well visible
+    180 to AddMotorcycleParkingFee(),
 
     // air pump, may require some checking within a garage forecourt
     32 to AddAirCompressor(),
