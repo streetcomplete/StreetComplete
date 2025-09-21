@@ -1,0 +1,63 @@
+= Documentation technique de l'application android
+:icons: font
+:models: models
+:experimental:
+:incremental:
+:numbered:
+:toc: macro
+:window: _blank
+:correction!:
+
+toc::[]
+
+Date : 04/09/2025 +
+Equipe : 1A-1 +
+Client : Yahn Formanczak +
+Projet : Street Complete +
+
+== Description du projet
+
+=== Équipe
+
+L'équipe était composée de cinq membres avec les rôles suivants :
+
+- *Hugo Thollon* : Scrum Master
+- *Naria Savary* : Product Owner
+- *Pablo Marquet* : Développeur
+- *Raphaël Lamothe* : Développeur
+- *Nicolas* : Développeur
+
+=== Contexte du projet
+A REMPLIR
+
+=== Objectifs du projet
+
+**Problématique :**  
+A REMPLIR
+
+**Objectif :**  
+A REMPLIR
+
+== Fonctionnement du projet 
+
+Pour des informations supplémentaires :
+A REMPLIR
+
+== Description des Fichiers
+A REMPLIR
+
+== Dépendances
+
+Le projet utilise les dépendances suivantes :
+A REMPLIR
+
+== Instructions de Déploiement
+A REMPLIR
+
+== Maintenance
+
+Pour maintenir le projet, suivez ces étapes :
+A REMPLIR
+
+== Conclusion
+A REMPLIR

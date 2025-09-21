@@ -1,0 +1,68 @@
+= Documentation utilisateur de l'application android
+:icons: font
+:models: models
+:experimental:
+:incremental:
+:numbered:
+:toc: macro
+:window: _blank
+:correction!:
+
+toc::[]
+
+Date : 04/09/2025 +
+Equipe : 1A-1 +
+Client : Yahn Formanczak +
+Projet : Street Complete +
+
+== Description du projet
+
+=== Équipe
+
+L'équipe était composée de cinq membres avec les rôles suivants :
+
+- *Hugo Thollon* : Scrum Master
+- *Naria Savary* : Product Owner
+- *Pablo Marquet* : Développeur
+- *Raphaël Lamothe* : Développeur
+- *Nicolas* : Développeur
+
+=== Contexte du projet
+A REMPLIR
+
+=== Objectifs du projet
+
+**Problématique :**  
+A REMPLIR
+
+**Objectif :**  
+
+Validation technique :
+A REMPLIR
+
+Expérience utilisateur :
+A REMPLIR
+
+Affichage et contenu :
+A REMPLIR
+
+Fonctionnalités clés :
+A REMPLIR
+
+Robustesse et sécurité :
+A REMPLIR
+
+Alignement avec les objectifs de la communauté :
+A REMPLIR
+
+== Fonctionnement du projet 
+A REMPLIR
+
+== Fonctionnalités 
+A REMPLIR
+
+== Support et Contact
+A REMPLIR
+
+== Conclusion
+A REMPLIR
