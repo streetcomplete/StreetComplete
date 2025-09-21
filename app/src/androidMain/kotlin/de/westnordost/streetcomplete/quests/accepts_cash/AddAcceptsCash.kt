@@ -11,6 +11,8 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.isPlaceOrDisusedPlace
 import de.westnordost.streetcomplete.quests.YesNoQuestForm
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.default_disabled_msg_go_inside
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
 class AddAcceptsCash : OsmFilterQuestType<Boolean>(), AndroidQuest {
@@ -62,7 +64,7 @@ class AddAcceptsCash : OsmFilterQuestType<Boolean>(), AndroidQuest {
         "NL", // https://github.com/streetcomplete/StreetComplete/issues/4826
     )
     override val achievements = listOf(CITIZEN)
-    override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside
+    override val defaultDisabledMessage = Res.string.default_disabled_msg_go_inside
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_accepts_cash_title2
 

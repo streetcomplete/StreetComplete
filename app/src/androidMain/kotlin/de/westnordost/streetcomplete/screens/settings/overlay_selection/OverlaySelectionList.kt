@@ -19,16 +19,19 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalLayoutDirection
-import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.overlays.Overlay
 import de.westnordost.streetcomplete.overlays.mtb_scale.MtbScaleOverlay
 import de.westnordost.streetcomplete.overlays.street_parking.StreetParkingOverlay
 import de.westnordost.streetcomplete.overlays.surface.SurfaceOverlay
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.enable_overlay_confirmation_title
+import de.westnordost.streetcomplete.resources.overlay
+import de.westnordost.streetcomplete.resources.quest_enabled
 import de.westnordost.streetcomplete.ui.common.dialogs.ConfirmationDialog
 import de.westnordost.streetcomplete.ui.theme.titleMedium
+import org.jetbrains.compose.resources.stringResource
+import org.jetbrains.compose.ui.tooling.preview.Preview
 
 /** List of overlays to individually enable or disable */
 @Composable
@@ -61,7 +64,7 @@ fun OverlaySelectionList(
                         item = item,
                         onToggleSelection = { isSelected ->
                             // when enabling overlay that is disabled by default, require confirmation
-                            if (isSelected && item.overlay.defaultDisabledMessage != 0) {
+                            if (isSelected && item.overlay.defaultDisabledMessage != null) {
                                 showEnableOverlayDialog = item.overlay
                             } else {
                                 onSelect(item.overlay, isSelected)
@@ -78,8 +81,8 @@ fun OverlaySelectionList(
         ConfirmationDialog(
             onDismissRequest = { showEnableOverlayDialog = null },
             onConfirmed = { onSelect(overlay, true) },
-            title = { Text(stringResource(R.string.enable_overlay_confirmation_title)) },
-            text = { Text(stringResource(overlay.defaultDisabledMessage)) }
+            title = { Text(stringResource(Res.string.enable_overlay_confirmation_title)) },
+            text = { Text(overlay.defaultDisabledMessage?.let { stringResource(it) }.orEmpty()) }
         )
     }
 }
@@ -93,12 +96,12 @@ private fun OverlaySelectionHeader(modifier: Modifier = Modifier) {
                 .padding(horizontal = 16.dp, vertical = 8.dp)
         ) {
             Text(
-                text = stringResource(R.string.overlay),
+                text = stringResource(Res.string.overlay),
                 modifier = Modifier.weight(1f),
                 style = MaterialTheme.typography.titleMedium
             )
             Text(
-                text = stringResource(R.string.quest_enabled),
+                text = stringResource(Res.string.quest_enabled),
                 style = MaterialTheme.typography.titleMedium
             )
         }

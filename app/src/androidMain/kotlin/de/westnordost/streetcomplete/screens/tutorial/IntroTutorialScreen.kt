@@ -22,17 +22,20 @@ import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.TransformOrigin
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Devices
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.tooling.preview.PreviewScreenSizes
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.logo_osm_magnifier
 import de.westnordost.streetcomplete.resources.logo_osm_map
 import de.westnordost.streetcomplete.resources.logo_osm_map_lighting
+import de.westnordost.streetcomplete.resources.no_location_permission_warning
+import de.westnordost.streetcomplete.resources.tutorial_happy_mapping
+import de.westnordost.streetcomplete.resources.tutorial_intro
+import de.westnordost.streetcomplete.resources.tutorial_solving_quests
+import de.westnordost.streetcomplete.resources.tutorial_stay_safe
+import de.westnordost.streetcomplete.resources.tutorial_welcome_to_osm
+import de.westnordost.streetcomplete.resources.tutorial_welcome_to_osm_subtitle
 import de.westnordost.streetcomplete.screens.main.controls.LocationState
 import de.westnordost.streetcomplete.screens.main.controls.LocationStateButton
 import de.westnordost.streetcomplete.ui.common.Pin
@@ -40,6 +43,8 @@ import de.westnordost.streetcomplete.ui.theme.headlineLarge
 import de.westnordost.streetcomplete.ui.theme.titleLarge
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
+import org.jetbrains.compose.ui.tooling.preview.Preview
 
 /** Shows a short tutorial for first-time users */
 @Composable
@@ -202,12 +207,12 @@ private fun BoxScope.IntroTutorialIllustration(
 @Composable
 private fun IntroTutorialStep0Text() {
     Text(
-        text = stringResource(R.string.tutorial_welcome_to_osm),
+        text = stringResource(Res.string.tutorial_welcome_to_osm),
         style = MaterialTheme.typography.headlineLarge,
         textAlign = TextAlign.Center
     )
     Text(
-        text = stringResource(R.string.tutorial_welcome_to_osm_subtitle),
+        text = stringResource(Res.string.tutorial_welcome_to_osm_subtitle),
         style = MaterialTheme.typography.titleLarge,
         textAlign = TextAlign.Center,
         modifier = Modifier.padding(top = 24.dp)
@@ -217,12 +222,12 @@ private fun IntroTutorialStep0Text() {
 @Composable
 private fun IntroTutorialStep1Text() {
     Text(
-        text = stringResource(R.string.tutorial_intro),
+        text = stringResource(Res.string.tutorial_intro),
         style = MaterialTheme.typography.body1,
         textAlign = TextAlign.Center
     )
     Text(
-        text = stringResource(R.string.no_location_permission_warning),
+        text = stringResource(Res.string.no_location_permission_warning),
         style = MaterialTheme.typography.body1,
         textAlign = TextAlign.Center,
         modifier = Modifier.padding(top = 24.dp)
@@ -232,7 +237,7 @@ private fun IntroTutorialStep1Text() {
 @Composable
 private fun IntroTutorialStep2Text() {
     Text(
-        text = stringResource(R.string.tutorial_solving_quests),
+        text = stringResource(Res.string.tutorial_solving_quests),
         style = MaterialTheme.typography.body1,
         textAlign = TextAlign.Center,
     )
@@ -241,20 +246,19 @@ private fun IntroTutorialStep2Text() {
 @Composable
 private fun IntroTutorialStep3Text() {
     Text(
-        text = stringResource(R.string.tutorial_stay_safe),
+        text = stringResource(Res.string.tutorial_stay_safe),
         style = MaterialTheme.typography.body1,
         textAlign = TextAlign.Center,
     )
     Text(
-        text = stringResource(R.string.tutorial_happy_mapping),
+        text = stringResource(Res.string.tutorial_happy_mapping),
         style = MaterialTheme.typography.headlineLarge,
         textAlign = TextAlign.Center,
         modifier = Modifier.padding(top = 24.dp)
     )
 }
 
-@Preview(device = Devices.NEXUS_5) // darn small device
-@PreviewScreenSizes
+@Preview
 @Composable
 private fun PreviewIntroTutorialScreen() {
     IntroTutorialScreen({}, {}, {})

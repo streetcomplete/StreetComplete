@@ -90,13 +90,13 @@ class VisibleEditTypeController(
     }
 
     override fun isVisible(editType: EditType): Boolean =
-        visibleEditTypes[editType.name] ?: (editType.defaultDisabledMessage <= 0)
+        visibleEditTypes[editType.name] ?: (editType.defaultDisabledMessage == null)
 
     override fun getVisible(presetId: Long?): Set<EditType> {
         val visibilities = visibleEditTypeDao.getAll(presetId ?: selectedPresetId)
 
         return allEditTypes.filter { editType ->
-            visibilities[editType.name] ?: (editType.defaultDisabledMessage <= 0)
+            visibilities[editType.name] ?: (editType.defaultDisabledMessage == null)
         }.toSet()
     }
 

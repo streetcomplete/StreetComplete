@@ -1,12 +1,13 @@
 package de.westnordost.streetcomplete.data.user.achievements
 
 import org.jetbrains.compose.resources.DrawableResource
+import org.jetbrains.compose.resources.StringResource
 
 data class Achievement(
     val id: String,
     val icon: DrawableResource?,
-    val title: Int,
-    val description: Int?,
+    val title: StringResource,
+    val description: StringResource?,
     val condition: AchievementCondition,
     val pointsNeededToAdvanceFunction: (Int) -> Int,
     val unlockedLinks: Map<Int, List<Link>>,

@@ -14,6 +14,7 @@ import de.westnordost.streetcomplete.quests.accepts_cash.AddAcceptsCash
 import de.westnordost.streetcomplete.quests.access_point_ref.AddAccessPointRef
 import de.westnordost.streetcomplete.quests.address.AddAddressStreet
 import de.westnordost.streetcomplete.quests.address.AddHousenumber
+import de.westnordost.streetcomplete.quests.aerialway.AddAerialwayBicycleAccess
 import de.westnordost.streetcomplete.quests.air_conditioning.AddAirConditioning
 import de.westnordost.streetcomplete.quests.air_pump.AddAirCompressor
 import de.westnordost.streetcomplete.quests.amenity_cover.AddAmenityCover
@@ -31,6 +32,7 @@ import de.westnordost.streetcomplete.quests.barrier_type.AddStileType
 import de.westnordost.streetcomplete.quests.bbq_fuel.AddBbqFuel
 import de.westnordost.streetcomplete.quests.bench_backrest.AddBenchBackrest
 import de.westnordost.streetcomplete.quests.bicycle_repair_station.AddBicycleRepairStationServices
+import de.westnordost.streetcomplete.quests.bike_charging_station_capacity.AddBikeChargingStationCapacity
 import de.westnordost.streetcomplete.quests.bike_parking_capacity.AddBikeParkingCapacity
 import de.westnordost.streetcomplete.quests.bike_parking_cover.AddBikeParkingCover
 import de.westnordost.streetcomplete.quests.bike_parking_type.AddBikeParkingType
@@ -87,6 +89,7 @@ import de.westnordost.streetcomplete.quests.fire_hydrant.AddFireHydrantType
 import de.westnordost.streetcomplete.quests.fire_hydrant_diameter.AddFireHydrantDiameter
 import de.westnordost.streetcomplete.quests.fire_hydrant_position.AddFireHydrantPosition
 import de.westnordost.streetcomplete.quests.fire_hydrant_ref.AddFireHydrantRef
+import de.westnordost.streetcomplete.quests.first_aid_kit.AddFirstAidKitLocation
 import de.westnordost.streetcomplete.quests.foot.AddProhibitedForPedestrians
 import de.westnordost.streetcomplete.quests.fuel_service.AddFuelSelfService
 import de.westnordost.streetcomplete.quests.general_fee.AddGeneralFee
@@ -102,6 +105,7 @@ import de.westnordost.streetcomplete.quests.lanes.AddLanes
 import de.westnordost.streetcomplete.quests.leaf_detail.AddForestLeafType
 import de.westnordost.streetcomplete.quests.leaf_detail.AddTreeLeafType
 import de.westnordost.streetcomplete.quests.level.AddLevel
+import de.westnordost.streetcomplete.quests.level.AddLevelThing
 import de.westnordost.streetcomplete.quests.max_height.AddMaxHeight
 import de.westnordost.streetcomplete.quests.max_height.AddMaxPhysicalHeight
 import de.westnordost.streetcomplete.quests.max_speed.AddMaxSpeed
@@ -119,6 +123,7 @@ import de.westnordost.streetcomplete.quests.parcel_locker_brand.AddParcelLockerB
 import de.westnordost.streetcomplete.quests.parking_access.AddBikeParkingAccess
 import de.westnordost.streetcomplete.quests.parking_access.AddParkingAccess
 import de.westnordost.streetcomplete.quests.parking_fee.AddBikeParkingFee
+import de.westnordost.streetcomplete.quests.parking_fee.AddMotorcycleParkingFee
 import de.westnordost.streetcomplete.quests.parking_fee.AddParkingFee
 import de.westnordost.streetcomplete.quests.parking_type.AddParkingType
 import de.westnordost.streetcomplete.quests.pitch_lit.AddPitchLit
@@ -139,6 +144,7 @@ import de.westnordost.streetcomplete.quests.religion.AddReligionToWaysideShrine
 import de.westnordost.streetcomplete.quests.road_name.AddRoadName
 import de.westnordost.streetcomplete.quests.roof_shape.AddRoofShape
 import de.westnordost.streetcomplete.quests.sanitary_dump_station.AddSanitaryDumpStation
+import de.westnordost.streetcomplete.quests.scooter_charging_station_capacity.AddScooterChargingStationCapacity
 import de.westnordost.streetcomplete.quests.seating.AddSeating
 import de.westnordost.streetcomplete.quests.segregated.AddCyclewaySegregation
 import de.westnordost.streetcomplete.quests.self_service.AddSelfServiceLaundry
@@ -300,6 +306,7 @@ fun questTypeRegistry(
     // motorcycle parking
     30 to AddMotorcycleParkingCover(),
     31 to AddMotorcycleParkingCapacity(), // counting + number input required but usually well visible
+    180 to AddMotorcycleParkingFee(),
 
     // air pump, may require some checking within a garage forecourt
     32 to AddAirCompressor(),
@@ -407,6 +414,10 @@ fun questTypeRegistry(
 
     86 to AddClothingBinOperator(),
 
+    179 to AddBikeChargingStationCapacity(),
+
+    181 to AddScooterChargingStationCapacity(),
+
     87 to AddChargingStationCapacity(),
     88 to AddChargingStationOperator(),
 
@@ -437,6 +448,9 @@ fun questTypeRegistry(
     101 to AddFerryAccessPedestrian(),
     102 to AddFerryAccessMotorVehicle(),
 
+    //aerialway: usually visible from looking at the aerialway, but not always...
+    181 to AddAerialwayBicycleAccess(),
+
     103 to AddProhibitedForPedestrians(), // need to understand the pedestrian situation
 
     104 to MarkCompletedHighwayConstruction(), // need to look the whole way
@@ -450,6 +464,7 @@ fun questTypeRegistry(
     108 to AddOrchardProduce(), // difficult to find out if the orchard does not carry fruits right now
 
     109 to AddLevel(), // requires to search for the place on several levels (or at least find a mall map)
+    178 to AddLevelThing(), // requires to search for the place on several levels (or at least find a mall map)
 
     110 to AddAirConditioning(), // often visible from the outside across the street, if not, visible/feelable inside
 
@@ -463,6 +478,8 @@ fun questTypeRegistry(
 
     113 to AddIsAmenityIndoor(getFeature), // need to go inside in case it is inside (or gone)
     161 to AddDefibrillatorLocation(), // need to go inside in case it is inside (or gone)
+
+    183 to AddFirstAidKitLocation(), // need to go inside in case it is inside (or gone)
 
     // inside camping sites
     114 to AddCampType(),
@@ -492,9 +509,9 @@ fun questTypeRegistry(
     132 to AddAcceptsCash(),
 
     // shop and others, but have to go inside
+    176 to AddHandwashing(), // have to go inside, but only your toilet, not potentially others
     120 to AddBabyChangingTable(), // used by OsmAnd in the object description, have to go inside
     121 to AddWheelchairAccessToiletsPart(), // have to go inside
-    176 to AddHandwashing(), // have to go inside
 
     133 to AddFuelSelfService(),
     156 to CheckShopExistence(getFeature), // after opening hours and similar so they will be preferred if enabled

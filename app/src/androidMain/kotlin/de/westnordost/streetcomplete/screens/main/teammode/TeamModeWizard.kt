@@ -35,14 +35,17 @@ import androidx.compose.ui.draw.scale
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.ColorMatrix
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.zIndex
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.allDrawableResources
+import de.westnordost.streetcomplete.resources.team_mode
+import de.westnordost.streetcomplete.resources.team_mode_choose_color2
+import de.westnordost.streetcomplete.resources.team_mode_description
+import de.westnordost.streetcomplete.resources.team_mode_description_overlay_hint
+import de.westnordost.streetcomplete.resources.team_mode_team_size_label2
 import de.westnordost.streetcomplete.screens.tutorial.TutorialScreen
 import de.westnordost.streetcomplete.ui.common.BubblePile
 import de.westnordost.streetcomplete.ui.common.WheelPicker
@@ -55,6 +58,8 @@ import de.westnordost.streetcomplete.ui.theme.headlineLarge
 import de.westnordost.streetcomplete.ui.theme.selectionBackground
 import kotlinx.coroutines.delay
 import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
+import org.jetbrains.compose.ui.tooling.preview.Preview
 
 /** Wizard which enables team mode */
 @Composable
@@ -117,18 +122,18 @@ fun TeamModeWizard(
 @Composable
 private fun TeamModeDescription() {
     Text(
-        text = stringResource(R.string.team_mode),
+        text = stringResource(Res.string.team_mode),
         style = MaterialTheme.typography.headlineLarge,
         textAlign = TextAlign.Center,
     )
     Text(
-        text = stringResource(R.string.team_mode_description),
+        text = stringResource(Res.string.team_mode_description),
         style = MaterialTheme.typography.body1,
         textAlign = TextAlign.Center,
         modifier = Modifier.padding(top = 24.dp)
     )
     Text(
-        text = stringResource(R.string.team_mode_description_overlay_hint),
+        text = stringResource(Res.string.team_mode_description_overlay_hint),
         style = MaterialTheme.typography.body1,
         textAlign = TextAlign.Center,
         modifier = Modifier.padding(top = 24.dp)
@@ -141,7 +146,7 @@ private fun TeamModeTeamSizeInput(
     teamSizeState: WheelPickerState
 ) {
     Text(
-        text = stringResource(R.string.team_mode_team_size_label2),
+        text = stringResource(Res.string.team_mode_team_size_label2),
         style = MaterialTheme.typography.body1,
         textAlign = TextAlign.Center
     )
@@ -167,7 +172,7 @@ private fun TeamModeColorSelect(
     onSelectedIndex: (Int) -> Unit,
 ) {
     Text(
-        text = stringResource(R.string.team_mode_choose_color2),
+        text = stringResource(Res.string.team_mode_choose_color2),
         style = MaterialTheme.typography.body1,
         textAlign = TextAlign.Center
     )
@@ -176,15 +181,14 @@ private fun TeamModeColorSelect(
         modifier = Modifier.padding(top = 24.dp)
     ) {
         for (index in 0..<teamSize) {
+            val selectionBackground = MaterialTheme.colors.selectionBackground
+            val selectionShape = MaterialTheme.shapes.small
             TeamModeColorCircle(
                 index = index,
                 modifier = Modifier
                     .clickable { onSelectedIndex(index) }
                     .conditional(selectedIndex == index) {
-                        background(
-                            color = MaterialTheme.colors.selectionBackground,
-                            shape = MaterialTheme.shapes.small
-                        )
+                        background(selectionBackground, selectionShape)
                     }
                     .padding(8.dp)
                     .width(56.dp)
