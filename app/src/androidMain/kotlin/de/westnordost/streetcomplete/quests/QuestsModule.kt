@@ -45,6 +45,7 @@ import de.westnordost.streetcomplete.quests.board_name.AddBoardName
 import de.westnordost.streetcomplete.quests.board_type.AddBoardType
 import de.westnordost.streetcomplete.quests.boat_rental.AddBoatRental
 import de.westnordost.streetcomplete.quests.bollard_type.AddBollardType
+import de.westnordost.streetcomplete.quests.bothway.AddBothway
 import de.westnordost.streetcomplete.quests.bridge_structure.AddBridgeStructure
 import de.westnordost.streetcomplete.quests.building_entrance.AddEntrance
 import de.westnordost.streetcomplete.quests.building_entrance_reference.AddEntranceReference
@@ -441,7 +442,7 @@ fun questTypeRegistry(
 
     166 to AddMopedAccess(),
 
-    182 to Bothway
+    182 to AddBothway(),
     /* ↓ 3.quests that may need some exploration / walking around --------------------------- */
 
     // ferry: usually visible from looking at the boat, but not always...
