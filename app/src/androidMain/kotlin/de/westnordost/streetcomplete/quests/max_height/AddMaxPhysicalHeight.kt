@@ -11,7 +11,10 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement
 import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.osm.MOTORWAYS
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.default_disabled_msg_no_ar
 import de.westnordost.streetcomplete.screens.measure.ArSupportChecker
+import org.jetbrains.compose.resources.StringResource
 
 class AddMaxPhysicalHeight(
     private val checkArSupport: ArSupportChecker
@@ -60,8 +63,8 @@ class AddMaxPhysicalHeight(
     override val wikiLink = "Key:maxheight"
     override val icon = R.drawable.ic_quest_max_height_measure
     override val achievements = listOf(EditTypeAchievement.CAR)
-    override val defaultDisabledMessage: Int
-        get() = if (!checkArSupport()) R.string.default_disabled_msg_no_ar else 0
+    override val defaultDisabledMessage: StringResource?
+        get() = if (!checkArSupport()) Res.string.default_disabled_msg_no_ar else null
 
     override fun getTitle(tags: Map<String, String>): Int {
         val isBelowBridge = tags["amenity"] != "parking_entrance"

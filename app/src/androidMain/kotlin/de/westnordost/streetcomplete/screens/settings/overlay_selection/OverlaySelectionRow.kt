@@ -24,7 +24,9 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.unit.dp
-import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.questList_disabled_by_default
+import org.jetbrains.compose.resources.stringResource
 
 /** Single item in the overlay selection list. Shows icon + title, whether it is enabled and
  *  whether it is disabled by default */
@@ -54,8 +56,8 @@ fun OverlaySelectionRow(
                 modifier = Modifier.alpha(alpha),
                 style = MaterialTheme.typography.body1,
             )
-            if (item.overlay.defaultDisabledMessage != 0) {
-                DisabledHint(stringResource(R.string.questList_disabled_by_default))
+            if (item.overlay.defaultDisabledMessage != null) {
+                DisabledHint(stringResource(Res.string.questList_disabled_by_default))
             }
         }
         Box(

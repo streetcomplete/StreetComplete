@@ -35,22 +35,25 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.BuildConfig
-import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.logs.format
 import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.about_title_logs
+import de.westnordost.streetcomplete.resources.action_filter
+import de.westnordost.streetcomplete.resources.action_share
 import de.westnordost.streetcomplete.resources.ic_filter_list_24
 import de.westnordost.streetcomplete.resources.ic_share_24
+import de.westnordost.streetcomplete.resources.no_search_results
 import de.westnordost.streetcomplete.ui.common.BackIcon
 import de.westnordost.streetcomplete.ui.common.CenteredLargeTitleHint
 import de.westnordost.streetcomplete.ui.ktx.isScrolledToEnd
 import de.westnordost.streetcomplete.util.ktx.now
 import kotlinx.datetime.LocalDateTime
 import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 
 /** Shows the app logs */
 @Composable
@@ -71,7 +74,7 @@ fun LogsScreen(
 
     Column(Modifier.fillMaxSize()) {
         TopAppBar(
-            title = { Text(stringResource(R.string.about_title_logs, logs.size)) },
+            title = { Text(stringResource(Res.string.about_title_logs, logs.size)) },
             windowInsets = AppBarDefaults.topAppBarWindowInsets,
             navigationIcon = { IconButton(onClick = onClickBack) { BackIcon() } },
             actions = {
@@ -79,7 +82,7 @@ fun LogsScreen(
                     Box {
                         Icon(
                             painter = painterResource(Res.drawable.ic_filter_list_24),
-                            contentDescription = stringResource(R.string.action_filter)
+                            contentDescription = stringResource(Res.string.action_filter)
                         )
                         if (filtersCount > 0) {
                             FiltersCounter(filtersCount, Modifier.align(Alignment.TopEnd))
@@ -90,13 +93,13 @@ fun LogsScreen(
                 IconButton(onClick = { context.shareLog(viewModel.logs.value.format()) }) {
                     Icon(
                         painter = painterResource(Res.drawable.ic_share_24),
-                        contentDescription = stringResource(R.string.action_share)
+                        contentDescription = stringResource(Res.string.action_share)
                     )
                 }
             }
         )
         if (logs.isEmpty()) {
-            CenteredLargeTitleHint(stringResource(R.string.no_search_results))
+            CenteredLargeTitleHint(stringResource(Res.string.no_search_results))
         } else {
             val insets = WindowInsets.safeDrawing.only(
                 WindowInsetsSides.Horizontal + WindowInsetsSides.Bottom
