@@ -9,12 +9,12 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.quests.bothway.BothwayAnswer.BOTHWAY
-import de.westnordost.streetcomplete.quests.bothway.BothwayAnswer.UPWARD
-import de.westnordost.streetcomplete.quests.bothway.BothwayAnswer.DOWNWARD
+import de.westnordost.streetcomplete.quests.bothway.AerialBothWayAnswer.BOTHWAY
+import de.westnordost.streetcomplete.quests.bothway.AerialBothWayAnswer.UPWARD
+import de.westnordost.streetcomplete.quests.bothway.AerialBothWayAnswer.DOWNWARD
 
 
-class AddBothway : OsmElementQuestType<BothwayAnswer>, AndroidQuest {
+class AddAerialBothWay : OsmElementQuestType<AerialBothWayAnswer>, AndroidQuest {
 
     private val elementFilter by lazy { """
         ways with aerialway and aerialway !~ cable_car|zipline and !oneway
@@ -38,9 +38,9 @@ class AddBothway : OsmElementQuestType<BothwayAnswer>, AndroidQuest {
         return elementFilter.matches(element)
     }
 
-    override fun createForm() = AddBothwayForm()
+    override fun createForm() = AddAerialBothWayForm()
 
-    override fun applyAnswerTo(answer: BothwayAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: AerialBothWayAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags["oneway"] = when (answer) {
             UPWARD -> "yes"
             DOWNWARD -> "-1"
