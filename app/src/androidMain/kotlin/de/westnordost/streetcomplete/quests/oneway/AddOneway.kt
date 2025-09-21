@@ -12,11 +12,11 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.estimateUsableRoadwayWidth
-import de.westnordost.streetcomplete.quests.oneway.BothwayAnswer.BACKWARD
-import de.westnordost.streetcomplete.quests.oneway.BothwayAnswer.FORWARD
-import de.westnordost.streetcomplete.quests.oneway.BothwayAnswer.NO_ONEWAY
+import de.westnordost.streetcomplete.quests.oneway.OnewayAnswer.BACKWARD
+import de.westnordost.streetcomplete.quests.oneway.OnewayAnswer.FORWARD
+import de.westnordost.streetcomplete.quests.oneway.OnewayAnswer.NO_ONEWAY
 
-class AddOneway : OsmElementQuestType<BothwayAnswer>, AndroidQuest {
+class AddOneway : OsmElementQuestType<OnewayAnswer>, AndroidQuest {
 
     /** find all roads */
     private val allRoadsFilter by lazy { """
@@ -64,7 +64,7 @@ class AddOneway : OsmElementQuestType<BothwayAnswer>, AndroidQuest {
              */
             // check if the way has connections to other roads at both ends
             (connectionCountByNodeIds[it.nodeIds.first()] ?: 0) > 1 &&
-            (connectionCountByNodeIds[it.nodeIds.last()] ?: 0) > 1
+                (connectionCountByNodeIds[it.nodeIds.last()] ?: 0) > 1
         }
     }
 
@@ -82,9 +82,9 @@ class AddOneway : OsmElementQuestType<BothwayAnswer>, AndroidQuest {
         return usableWidth <= 4f
     }
 
-    override fun createForm() = AddBothwayForm()
+    override fun createForm() = AddOnewayForm()
 
-    override fun applyAnswerTo(answer: BothwayAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: OnewayAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags["oneway"] = when (answer) {
             FORWARD -> "yes"
             BACKWARD -> "-1"
