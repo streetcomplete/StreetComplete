@@ -35,7 +35,6 @@ _Last Update: 19/09/2025_
 
 // Tags
 image:https://img.shields.io/badge/License-GPLv3-blue.svg[License: GPL-3.0, link="https://www.gnu.org/licenses/gpl-3.0"]
-//---------------------------------------------------------------
 
 toc::[]
 
@@ -109,4 +108,3 @@ Cette section regroupe tous les documents liés au projet :
 - **04/09/2024** : de 9h30 à 12h30 → https://github.com/HugoTHOLLON/StreetCompleteSAE_S5/tree/master/docs/ODJ-CR/CR-TT-04-09-25.pdf[Lien vers le CR]
 - **10/09/2024** : de 9h30 à 17h15 → Pas de réunion, avancement de chacun de son côté
 - **18/09/2024** : de 9h30 à 12h30 → Pas de réunion car réunion de sprint à venir très bientôt
-

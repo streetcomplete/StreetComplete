@@ -868,6 +868,11 @@ Before uploading your changes, the app checks with a &lt;a href="https://www.wes
     <string name="quest_bollard_type_fixed">Fixed (not removable)</string>
     <string name="quest_bollard_type_not_bollard">Not a bollard, but some other barrier</string>
 
+    <string name="quest_bothway_title">In what direction can you ride this ?</string>
+    <string name="quest_bothway_answer_bothway">This can be used bothway.</string>
+    <string name="quest_bothway_answer_upwards">This can only lead upwards.</string>
+    <string name="quest_bothway_answer_downwards">This can only lead downwards.</string>
+
     <string name="quest_bridge_structure_title">What’s the structure of this bridge?</string>
 
     <string name="quest_building_entrance_title">What kind of building entrance is this?</string>
