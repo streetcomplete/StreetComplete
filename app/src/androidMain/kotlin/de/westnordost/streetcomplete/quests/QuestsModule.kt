@@ -447,8 +447,8 @@ fun questTypeRegistry(
     101 to AddFerryAccessPedestrian(),
     102 to AddFerryAccessMotorVehicle(),
 
-    //aerialway: usually visible from looking at the aerialway, but not always...
-    181 to AddAerialwayBicycleAccess(),
+    //aerial way: usually visible from looking at the aerial way, but not always...
+    183 to AddAerialwayBicycleAccess(),
 
     103 to AddProhibitedForPedestrians(), // need to understand the pedestrian situation
 
