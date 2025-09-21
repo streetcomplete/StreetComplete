@@ -141,6 +141,7 @@ import de.westnordost.streetcomplete.quests.religion.AddReligionToWaysideShrine
 import de.westnordost.streetcomplete.quests.road_name.AddRoadName
 import de.westnordost.streetcomplete.quests.roof_shape.AddRoofShape
 import de.westnordost.streetcomplete.quests.sanitary_dump_station.AddSanitaryDumpStation
+import de.westnordost.streetcomplete.quests.scooter_charging_station_capacity.AddScooterChargingStationCapacity
 import de.westnordost.streetcomplete.quests.seating.AddSeating
 import de.westnordost.streetcomplete.quests.segregated.AddCyclewaySegregation
 import de.westnordost.streetcomplete.quests.self_service.AddSelfServiceLaundry
@@ -410,6 +411,8 @@ fun questTypeRegistry(
     86 to AddClothingBinOperator(),
 
     179 to AddBikeChargingStationCapacity(),
+
+    181 to AddScooterChargingStationCapacity(),
 
     87 to AddChargingStationCapacity(),
     88 to AddChargingStationOperator(),
