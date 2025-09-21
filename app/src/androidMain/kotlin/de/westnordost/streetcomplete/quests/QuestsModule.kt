@@ -430,6 +430,7 @@ fun questTypeRegistry(
 
     166 to AddMopedAccess(),
 
+    182 to Bothway
     /* ↓ 3.quests that may need some exploration / walking around --------------------------- */
 
     // ferry: usually visible from looking at the boat, but not always...
