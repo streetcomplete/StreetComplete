@@ -5,7 +5,10 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.height
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import androidx.core.view.doOnLayout
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
@@ -17,7 +20,6 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
-import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.osm.traffic_calming.LaneNarrowingTrafficCalming
 import de.westnordost.streetcomplete.osm.traffic_calming.applyTo
@@ -29,7 +31,6 @@ import de.westnordost.streetcomplete.overlays.AnswerItem
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsMapPositionAware
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
 import de.westnordost.streetcomplete.util.ktx.dpToPx
-import de.westnordost.streetcomplete.util.ktx.valueOfOrNull
 import de.westnordost.streetcomplete.util.math.PositionOnWay
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import de.westnordost.streetcomplete.util.math.getPositionOnWays
@@ -41,7 +42,6 @@ class LaneNarrowingTrafficCalmingForm :
     AItemSelectOverlayForm<LaneNarrowingTrafficCalming>(), IsMapPositionAware {
 
     private val mapDataWithEditsSource: MapDataWithEditsSource by inject()
-    private val prefs: Preferences by inject()
 
     override val items get() = LaneNarrowingTrafficCalming.entries
 
@@ -63,11 +63,6 @@ class LaneNarrowingTrafficCalmingForm :
         ways with highway ~ ${ALL_ROADS.joinToString("|")} and area != yes
     """.toElementFilterExpression()
 
-    override val lastPickedItem: LaneNarrowingTrafficCalming? get() =
-        prefs.getLastPicked(this::class.simpleName!!)
-            .map { valueOfOrNull<LaneNarrowingTrafficCalming>(it) }
-            .firstOrNull()
-
     override val otherAnswers get() = listOfNotNull(
         if (element != null) {
             AnswerItem(R.string.lane_narrowing_traffic_calming_none) {
@@ -84,7 +79,7 @@ class LaneNarrowingTrafficCalmingForm :
 
     @Composable
     override fun LastPickedItemContent(item: LaneNarrowingTrafficCalming) {
-        Image(painterResource(item.icon), stringResource(item.title))
+        Image(painterResource(item.icon), stringResource(item.title), Modifier.height(36.dp))
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -144,17 +139,15 @@ class LaneNarrowingTrafficCalmingForm :
     override fun hasChanges(): Boolean =
         selectedItem.value != originalLaneNarrowingTrafficCalming
 
-    override fun onClickOk() {
-        prefs.addLastPicked(this::class.simpleName!!, selectedItem.value!!.name)
-        val answer = selectedItem.value!!
+    override fun onClickOk(selectedItem: LaneNarrowingTrafficCalming) {
         val element = element
         val positionOnWay = positionOnWay
         if (element != null) {
             val tagChanges = StringMapChangesBuilder(element.tags)
-            answer.applyTo(tagChanges)
+            selectedItem.applyTo(tagChanges)
             applyEdit(UpdateElementTagsAction(element, tagChanges.create()))
         } else if (positionOnWay != null) {
-            val action = createNodeAction(positionOnWay, mapDataWithEditsSource) { answer.applyTo(it) } ?: return
+            val action = createNodeAction(positionOnWay, mapDataWithEditsSource) { selectedItem.applyTo(it) } ?: return
             val geometry = ElementPointGeometry(positionOnWay.position)
             applyEdit(action, geometry)
         }

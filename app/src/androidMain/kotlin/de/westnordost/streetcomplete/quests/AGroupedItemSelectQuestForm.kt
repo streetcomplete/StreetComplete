@@ -96,7 +96,7 @@ abstract class AGroupedItemSelectQuestForm<G: Group<I>, I, T> : AbstractOsmQuest
     private fun getInitialItems(): List<I> =
         prefs.getLastPicked(this::class.simpleName!!)
             .map { itemsByString[it] }
-            .takeFavorites(n = 6, history = 50, first = 1, pad = topItems)
+            .takeFavorites(n = 6, first = 1, pad = topItems)
 
     override fun onClickOk() {
         val group = selectedGroup.value

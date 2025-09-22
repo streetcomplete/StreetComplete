@@ -31,7 +31,7 @@ fun <I> LastPickedChipsRow(
         if (state.maxValue != Int.MAX_VALUE) min(fadeWidth, state.maxValue - state.value).pxToDp()
         else 0.dp
 
-    Box(modifier.fadingEdges(start = fadeStart, end = fadeEnd,)) {
+    Box(modifier.fadingEdges(start = fadeStart, end = fadeEnd)) {
         Row(
             modifier = Modifier.horizontalScroll(state),
             horizontalArrangement = Arrangement.spacedBy(4.dp)

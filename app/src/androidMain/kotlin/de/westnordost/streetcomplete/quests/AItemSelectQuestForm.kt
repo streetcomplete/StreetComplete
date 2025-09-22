@@ -100,8 +100,8 @@ abstract class AItemSelectQuestForm<I, T> : AbstractOsmQuestForm<T>() {
 
     private fun moveFavouritesToFront(originalList: List<I>): List<I> {
         val favourites = prefs.getLastPicked(this::class.simpleName!!)
-            .map { itemsByString[it] }
-            .takeFavorites(n = itemsPerRow, history = 50)
+            .mapNotNull { itemsByString[it] }
+            .takeFavorites(n = itemsPerRow)
         return (favourites + originalList).distinct()
     }
 }

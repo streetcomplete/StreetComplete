@@ -2,10 +2,12 @@ package de.westnordost.streetcomplete.overlays.cycleway
 
 import android.os.Bundle
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.height
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
-import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.osm.cycleway_separate.SeparateCycleway
 import de.westnordost.streetcomplete.osm.cycleway_separate.applyTo
 import de.westnordost.streetcomplete.osm.cycleway_separate.getIcon
@@ -13,22 +15,13 @@ import de.westnordost.streetcomplete.osm.cycleway_separate.parseSeparateCycleway
 import de.westnordost.streetcomplete.osm.cycleway_separate.title
 import de.westnordost.streetcomplete.overlays.AItemSelectOverlayForm
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithDescription
-import de.westnordost.streetcomplete.util.ktx.valueOfOrNull
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
-import org.koin.android.ext.android.inject
 
 class SeparateCyclewayForm : AItemSelectOverlayForm<SeparateCycleway>() {
 
     override val items = SeparateCycleway.entries
     override val itemsPerRow = 1
-
-    private val prefs: Preferences by inject()
-
-    override val lastPickedItem: SeparateCycleway? get() =
-        prefs.getLastPicked(this::class.simpleName!!)
-            .map { valueOfOrNull<SeparateCycleway>(it) }
-            .firstOrNull()
 
     @Composable override fun ItemContent(item: SeparateCycleway) {
         ImageWithDescription(
@@ -39,7 +32,8 @@ class SeparateCyclewayForm : AItemSelectOverlayForm<SeparateCycleway>() {
     }
 
     @Composable override fun LastPickedItemContent(item: SeparateCycleway) {
-        Image(painterResource(item.getIcon(countryInfo.isLeftHandTraffic)), stringResource(item.title))
+        val icon = item.getIcon(countryInfo.isLeftHandTraffic)
+        Image(painterResource(icon), stringResource(item.title), Modifier.height(36.dp))
     }
 
     private var originalCycleway: SeparateCycleway? = null
@@ -52,10 +46,9 @@ class SeparateCyclewayForm : AItemSelectOverlayForm<SeparateCycleway>() {
 
     override fun hasChanges(): Boolean = selectedItem.value != originalCycleway
 
-    override fun onClickOk() {
-        prefs.addLastPicked(this::class.simpleName!!, selectedItem.value!!.name)
+    override fun onClickOk(selectedItem: SeparateCycleway) {
         val tagChanges = StringMapChangesBuilder(element!!.tags)
-        selectedItem.value!!.applyTo(tagChanges)
+        selectedItem.applyTo(tagChanges)
         applyEdit(UpdateElementTagsAction(element!!, tagChanges.create()))
     }
 }
