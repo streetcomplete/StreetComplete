@@ -22,7 +22,7 @@ class AddMopedAccess : OsmFilterQuestType<MopedAccessAnswer>(), AndroidQuest {
         and !moped:signed
         and (motor_vehicle != no or !motor_vehicle)
     """
-    override val enabledInCountries = NoCountriesExcept("BE")
+    override val enabledInCountries = NoCountriesExcept("BE", "SE")
     override val defaultDisabledMessage = Res.string.default_disabled_msg_visible_sign_moped
     override val changesetComment = "Specify if a moped is allowed on the cycleway"
     override val wikiLink = "Key:moped"
