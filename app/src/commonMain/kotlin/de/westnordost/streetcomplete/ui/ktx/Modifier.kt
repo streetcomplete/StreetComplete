@@ -13,7 +13,10 @@ import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.draw.drawWithContent
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
+import androidx.compose.ui.graphics.BlendMode
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.CompositingStrategy
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.graphics.Shape
@@ -25,6 +28,7 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.layout
 import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 
 fun Modifier.conditional(
@@ -103,6 +107,7 @@ fun Modifier.innerBorder(
         }
     }
 
+/** Draw a background that is inset by the given padding values */
 fun Modifier.backgroundWithPadding(
     color: Color,
     padding: PaddingValues,
@@ -127,6 +132,7 @@ fun Modifier.backgroundWithPadding(
     drawPath(path, color = color)
 }
 
+/** Styles the element as selected */
 fun Modifier.selectionFrame(
     isSelected: Boolean,
     color: Color = Color.Unspecified,
@@ -144,3 +150,69 @@ fun Modifier.selectionFrame(
             scaleY = 1f - selected * 0.075f,
             alpha = 1f - selected * 0.2f)
 }
+
+/** Adds fading edges to the element */
+fun Modifier.fadingEdges(
+    start: Dp = 0.dp,
+    top: Dp = 0.dp,
+    end: Dp = 0.dp,
+    bottom: Dp = 0.dp
+): Modifier = this
+    .graphicsLayer(compositingStrategy = CompositingStrategy.Offscreen)
+    .drawWithContent {
+        drawContent()
+        val left = if (layoutDirection == LayoutDirection.Ltr) start else end
+        val right = if (layoutDirection == LayoutDirection.Ltr) end else start
+
+        if (top != 0.dp) {
+            drawRect(
+                brush = Brush.verticalGradient(
+                    colors = listOf(Color.Transparent, Color.Black),
+                    startY = 0f,
+                    endY = top.toPx()
+                ),
+                topLeft = Offset.Zero,
+                size = size.copy(height = top.toPx()),
+                blendMode = BlendMode.DstIn
+            )
+        }
+
+        if (bottom != 0.dp) {
+            drawRect(
+                brush = Brush.verticalGradient(
+                    colors = listOf(Color.Black, Color.Transparent),
+                    startY = size.height - bottom.toPx(),
+                    endY = size.height
+                ),
+                topLeft = Offset(0f, size.height - bottom.toPx()),
+                size = size.copy(height = bottom.toPx()),
+                blendMode = BlendMode.DstIn
+            )
+        }
+
+        if (left != 0.dp) {
+            drawRect(
+                brush = Brush.horizontalGradient(
+                    colors = listOf(Color.Transparent, Color.Black),
+                    startX = 0f,
+                    endX = left.toPx()
+                ),
+                topLeft = Offset.Zero,
+                size = size.copy(width = left.toPx()),
+                blendMode = BlendMode.DstIn
+            )
+        }
+
+        if (right != 0.dp) {
+            drawRect(
+                brush = Brush.horizontalGradient(
+                    colors = listOf(Color.Black, Color.Transparent),
+                    startX = size.width - right.toPx(),
+                    endX = size.width
+                ),
+                topLeft = Offset(size.width - right.toPx(), 0f),
+                size = size.copy(width = right.toPx()),
+                blendMode = BlendMode.DstIn
+            )
+        }
+    }
