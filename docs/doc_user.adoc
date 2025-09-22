@@ -10,7 +10,7 @@
 
 toc::[]
 
-Date : 04/09/2025 +
+Date : 05/10/2025 +
 Equipe : 1A-1 +
 Client : Yahn Formanczak +
 Projet : Street Complete +
@@ -28,41 +28,60 @@ L'équipe était composée de cinq membres avec les rôles suivants :
 - *Nicolas* : Développeur
 
 === Contexte du projet
-A REMPLIR
+Street Complete est une application Android ayant pour but d’améliorer la qualité des données d’Open Street Map avec des enquêtes sur le terrain. L’application fonctionne avec une partie de gamification et invite aux modifications sous forme de quêtes thématiques.
 
 === Objectifs du projet
+Monter en compétence sur :
+- Le modèle de données OSM
+- Kotlin et Kotlin Multiplatform
+- Android Studio et l’environnement mobile
 
-**Problématique :**  
-A REMPLIR
+Réaliser des contributions au projet open source StreetComplete :
 
-**Objectif :**  
-
-Validation technique :
-A REMPLIR
-
-Expérience utilisateur :
-A REMPLIR
-
-Affichage et contenu :
-A REMPLIR
-
-Fonctionnalités clés :
-A REMPLIR
-
-Robustesse et sécurité :
-A REMPLIR
-
-Alignement avec les objectifs de la communauté :
-A REMPLIR
+- Ajout ou amélioration de quêtes simples
+- Début de migration d’éléments de l’UI vers *Compose Multiplatform*
+- Participation non-code : documentation, traduction, collecte de données
 
 == Fonctionnement du projet 
-A REMPLIR
+
+=== Langage et plateforme
+- Plateforme principale : Android, iOS (en cours)
+- Langage de programmation : Kotlin
+
+=== Cartographie
+StreetComplete utilise MapLibre, une collection de cartes SDKs open-source pour du développement web et mobile.
+
+=== Communication entre les serveurs OSM (OpenStreetMap)
+- Téléchargement des données OSM via API officielle OpenStreetMap
+- Upload des requêtes utilisateurs (ajout, modification et suppression des données OSM à l'aide de tags) dans la base OSM 
 
 == Fonctionnalités 
+
+=== Quêtes (« quests »)
+- Les quêtes sont des questions ciblées sur des objets OSM manquants ou incomplets dans votre zone (route, bâtiment, équipement).
+- Exemples de questions types : « Le trottoir existe-t-il ? », « Quel type de surface a cette route ? », « Ce parking à vélos est-il couvert ? », « Heures d’ouverture ? », etc. 
+
+=== Overlays (couches d’affichage interactives)
+Les overlays permettent de visualiser/éditer directement certains tags OSM :
+- Éclairage des rues
+- Trottoirs 
+- Parking à vélos, voies cyclables  
+- Stationnement rue 
+- Adresses 
+- Points d’intérêt / commerces, bâtiments
+- Mobilier urbain 
+- Type de bâtiment 
+
+=== Suivi des contributions & gamification
+- Lorsqu’une quête est terminée, l’utilisateur gagne des points, suivi de son positionnement national et global sur un leaderboard 
+- Statistiques personnelles et comparatives motivent le contributeur néophyte à progresser
+
+== Interface de l'application
 A REMPLIR
 
 == Support et Contact
-A REMPLIR
+Pour toute question ou assistance, veuillez contacter notre Product Owner à l'adresse suivante : naria.savary@etu.univ-tlse2.fr
 
 == Conclusion
-A REMPLIR
+Nous espérons que cette documentation vous guidera dans votre utilisation de l'appli CompleteStreetMap.
+
