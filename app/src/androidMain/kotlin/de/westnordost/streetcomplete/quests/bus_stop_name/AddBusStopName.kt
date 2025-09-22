@@ -23,6 +23,7 @@ class AddBusStopName : OsmFilterQuestType<BusStopNameAnswer>(), AndroidQuest {
         and !name and noname != yes and name:signed != no
     """
 
+    // In most of sweden, bus stop names are applied to the stop position.
     override val enabledInCountries = AllCountriesExcept("US", "CA", "SE")
     override val changesetComment = "Determine public transport stop names"
     override val wikiLink = "Tag:public_transport=platform"
