@@ -58,11 +58,18 @@ StreetComplete utilise MapLibre, une collection de cartes SDKs open-source pour 
 == Fonctionnalités 
 
 === Quêtes (« quests »)
-- Les quêtes sont des questions ciblées sur des objets OSM manquants ou incomplets dans votre zone (route, bâtiment, équipement).
-- Exemples de questions types : « Le trottoir existe-t-il ? », « Quel type de surface a cette route ? », « Ce parking à vélos est-il couvert ? », « Heures d’ouverture ? », etc. 
+Les quêtes sont des questions ciblées sur des objets OSM manquants ou incomplets dans votre zone (route, bâtiment, équipement).
+Exemples de questions types : 
+
+- Le trottoir existe-t-il ? 
+- Quel type de surface a cette route ? 
+- Ce parking à vélos est-il couvert ? 
+- Heures d’ouverture ?  
+- etc. 
 
 === Overlays (couches d’affichage interactives)
 Les overlays permettent de visualiser/éditer directement certains tags OSM :
+
 - Éclairage des rues
 - Trottoirs 
 - Parking à vélos, voies cyclables  
@@ -84,4 +91,5 @@ Pour toute question ou assistance, veuillez contacter notre Product Owner à l'a
 
 == Conclusion
 Nous espérons que cette documentation vous guidera dans votre utilisation de l'appli CompleteStreetMap.
+
 
