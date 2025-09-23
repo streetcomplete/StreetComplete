@@ -6,6 +6,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.height
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
@@ -48,7 +49,8 @@ class BuildingsOverlayForm : AGroupedItemSelectOverlayForm<BuildingTypeCategory,
         ImageWithDescription(
             painter = painterResource(item.icon),
             title = stringResource(item.title),
-            description = item.description?.let { stringResource(it) }
+            description = item.description?.let { stringResource(it) },
+            imageSize = DpSize(48.dp, 48.dp)
         )
     }
 
@@ -56,7 +58,8 @@ class BuildingsOverlayForm : AGroupedItemSelectOverlayForm<BuildingTypeCategory,
         ImageWithDescription(
             painter = painterResource(item.icon),
             title = stringResource(item.title),
-            description = item.description?.let { stringResource(it) }
+            description = item.description?.let { stringResource(it) },
+            imageSize = DpSize(48.dp, 48.dp)
         )
     }
 
