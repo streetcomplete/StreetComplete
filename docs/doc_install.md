@@ -22,10 +22,6 @@ Vous pouvez utilisez les liens si dessous pour accéder aux APK de chaque sprint
 
 Malheureusement StreetComplete n'est pas encore compatible avec d'autres appareils. Si vous ne pouvez pas vous procurez un appareil android voici la marche à suivre pour tester la release sur votre ordinateur.
 
-- Cloner ce repo github et se placer sur la branche correspondante à la release. Voir à la fin de ce document si besoin d'aide pour cette étape.
-- Ouvrir le projet dans android studio et s'assurer dans l'icône de branche github en haut à gauche que vous êtes sur la branche de la release souhaitée.
-- Executer l'application et explorer la release dans l'émulateur.
-
 ### Cloner le repo ###
 
 Si vous avez besoin de consulter la release vous savez probablement cloner un repo, mais pour fournir le lien et juste au cas où, voici un petit rappel.
@@ -40,7 +36,16 @@ Si vous avez besoin de consulter la release vous savez probablement cloner un re
   ```bash
   git clone [le lien du repo]
   ```
-- Puis déplacez vous sur la bonne branche (probablement quelque chose comme "Release0")
+- Puis déplacez vous sur la bonne branche (probablement quelque chose comme "Sprint1")
   ```bash
   git checkout [branche]
   ```
+
+### Lancez l'émulateur ### 
+
+- Installer Android Studio (de préférence Narval 3, étant notre environnement de dev nous pouvons garantir qu'il fonctionne)
+- Lancer le projet sous Android Studio.
+- Si vous avez placer votre repo local sous la bonne branche, Android Studio doit-y être aussi. Vous pouvez vérifier en haut à gauche que le bouton à droite inscrive bien le bon Sprint. Si il affiche "master", cliquez dessus pour changer la branche.
+- Lancez l'application avec la flèche verte en haut à droite ou en appuyant sur Maj + F10.
+(Si la flèche est grisée, une bannière bleue doit être visible en haut de l'interface de dev. Cliquez sur synchroniser. Après quelques minutes la flèche devrait devenir verte et permettre de lancer l'application.)
+- Le premier démarrage peut prendre quelques minutes le temps du build. Prenez un café en attendant que l'émulateur lance l'application.
