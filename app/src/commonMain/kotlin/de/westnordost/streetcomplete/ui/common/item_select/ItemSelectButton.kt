@@ -1,5 +1,11 @@
 package de.westnordost.streetcomplete.ui.common.item_select
 
+import androidx.compose.animation.AnimatedContent
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.scaleIn
+import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
@@ -37,8 +43,8 @@ fun <I> ItemSelectButton(
     modifier: Modifier = Modifier,
     selectedItem: I? = null,
     itemContent: @Composable ((item: I) -> Unit),
-    content: @Composable (() -> Unit) = {
-        if (selectedItem != null) itemContent(selectedItem)
+    content: @Composable ((item: I?) -> Unit) = { item ->
+        if (item != null) itemContent(item)
         else Text(stringResource(Res.string.quest_select_hint))
     }
 ) {
@@ -54,7 +60,22 @@ fun <I> ItemSelectButton(
             verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier.padding(ButtonDefaults.ContentPadding - PaddingValues(end = 8.dp))
         ) {
-            content()
+            AnimatedContent(
+                targetState = selectedItem,
+                modifier = Modifier.weight(1f, fill = false),
+                contentAlignment = Alignment.Center,
+                transitionSpec = {
+                    // the new value "falls down" (from the dialog :-)) into the box
+                    (
+                        fadeIn(animationSpec = tween(220, delayMillis = 90)) +
+                        scaleIn(initialScale = 2f, animationSpec = tween(220, delayMillis = 90))
+                    ).togetherWith(
+                        fadeOut(animationSpec = tween(90))
+                    )
+                }
+            ) {
+                content(it)
+            }
             Icon(
                 painter = painterResource(Res.drawable.ic_arrow_drop_down_24),
                 contentDescription = null,
