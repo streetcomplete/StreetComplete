@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.ui.common.item_select
+package de.westnordost.streetcomplete.overlays
 
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.core.tween
@@ -15,43 +15,29 @@ import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.unit.dp
-import com.cheonjaeung.compose.grid.SimpleGridCells
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.ic_arrow_drop_down_24
 import de.westnordost.streetcomplete.resources.quest_select_hint
-import de.westnordost.streetcomplete.ui.common.dialogs.SimpleItemSelectDialog
 import de.westnordost.streetcomplete.ui.ktx.minus
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
-/** Similar to the DropdownButton, only that it opens a SimpleItemSelectDialog instead of a dropdown
- *  menu */
+/** A card that displays one item, styled like a selector */
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
-fun <I> ItemSelectButton(
-    columns: SimpleGridCells,
-    items: List<I>,
-    onSelected: (I) -> Unit,
+fun <I> ItemCard(
+    item: I? = null,
+    expanded: Boolean,
+    onExpandChange: (Boolean) -> Unit,
     modifier: Modifier = Modifier,
-    selectedItem: I? = null,
-    itemContent: @Composable ((item: I) -> Unit),
-    content: @Composable ((item: I?) -> Unit) = { item ->
-        if (item != null) itemContent(item)
-        else Text(stringResource(Res.string.quest_select_hint))
-    }
+    content: @Composable (item: I) -> Unit
 ) {
-    var expanded by remember { mutableStateOf(false) }
-
     Card(
-        onClick = { expanded = !expanded },
+        onClick = { onExpandChange(!expanded) },
         modifier = modifier,
         border = ButtonDefaults.outlinedBorder,
         elevation = 0.dp,
@@ -61,20 +47,24 @@ fun <I> ItemSelectButton(
             modifier = Modifier.padding(ButtonDefaults.ContentPadding - PaddingValues(end = 8.dp))
         ) {
             AnimatedContent(
-                targetState = selectedItem,
+                targetState = item,
                 modifier = Modifier.weight(1f, fill = false),
                 contentAlignment = Alignment.Center,
                 transitionSpec = {
                     // the new value "falls down" (from the dialog :-)) into the box
                     (
                         fadeIn(tween(220, delayMillis = 90)) +
-                        scaleIn(tween(220, delayMillis = 90), initialScale = 2f)
-                    ).togetherWith(
-                        fadeOut(tween(90))
-                    )
+                            scaleIn(tween(220, delayMillis = 90), initialScale = 2f)
+                        ).togetherWith(
+                            fadeOut(tween(90))
+                        )
                 }
             ) {
-                content(it)
+                if (it == null) {
+                    Text(stringResource(Res.string.quest_select_hint))
+                } else {
+                    content(it)
+                }
             }
             Icon(
                 painter = painterResource(Res.drawable.ic_arrow_drop_down_24),
@@ -84,15 +74,5 @@ fun <I> ItemSelectButton(
                     .rotate(if (expanded) 180f else 0f)
             )
         }
-
-    }
-    if (expanded) {
-        SimpleItemSelectDialog(
-            onDismissRequest = { expanded = false },
-            columns = columns,
-            items = items,
-            onSelected = { onSelected(it) },
-            itemContent = itemContent
-        )
     }
 }

@@ -33,7 +33,7 @@ class SeparateCyclewayForm : AItemSelectOverlayForm<SeparateCycleway>() {
 
     @Composable override fun LastPickedItemContent(item: SeparateCycleway) {
         val icon = item.getIcon(countryInfo.isLeftHandTraffic)
-        Image(painterResource(icon), stringResource(item.title), Modifier.height(36.dp))
+        Image(painterResource(icon), stringResource(item.title), Modifier.height(32.dp))
     }
 
     private var originalCycleway: SeparateCycleway? = null

@@ -39,7 +39,7 @@ abstract class AItemSelectOverlayForm<I> : AbstractOverlayForm() {
 
     @Composable protected abstract fun ItemContent(item: I)
 
-    @Composable protected open fun LastPickedItemContent(item: I) {}
+    @Composable protected abstract fun LastPickedItemContent(item: I)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -63,6 +63,7 @@ abstract class AItemSelectOverlayForm<I> : AbstractOverlayForm() {
                 },
             )
         } }
+        checkIsFormComplete()
     }
 
     override fun isFormComplete() =

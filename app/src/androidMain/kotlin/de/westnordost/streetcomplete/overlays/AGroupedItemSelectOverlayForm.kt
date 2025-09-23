@@ -1,136 +1,68 @@
 package de.westnordost.streetcomplete.overlays
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.compose.foundation.layout.BoxScope
+import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
-import androidx.recyclerview.widget.RecyclerView
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateOf
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.databinding.CellLastPickedButtonBinding
-import de.westnordost.streetcomplete.databinding.FragmentGroupedOverlayImageSelectBinding
+import de.westnordost.streetcomplete.databinding.ComposeViewBinding
 import de.westnordost.streetcomplete.ui.common.item_select.Group
+import de.westnordost.streetcomplete.ui.util.content
 
 /** Abstract base class for any overlay form in which the user selects a grouped item */
 abstract class AGroupedItemSelectOverlayForm<G: Group<I>, I> : AbstractOverlayForm() {
-    // mostly copy-pasta from AItemSelectOverlayForm / AGroupedItemSelectQuestForm :-(
 
-    final override val contentLayoutResId = R.layout.fragment_grouped_overlay_image_select
-    private val binding by contentViewBinding(FragmentGroupedOverlayImageSelectBinding::bind)
-
-    protected open val itemsPerRow = 1
+    final override val contentLayoutResId = R.layout.compose_view
+    private val binding by contentViewBinding(ComposeViewBinding::bind)
 
     /** all items to display. May not be accessed before onCreate */
-    protected abstract val allItems: List<G>
+    protected abstract val groups: List<G>
     /** items to display that are shown as last picked answers. May not be accessed before onCreate */
     protected open val lastPickedItems: List<I> = emptyList()
 
     private lateinit var itemsByString: Map<String, I>
 
-    var selectedItem: I? = null
-        set(value) {
-            field = value
-            updateSelectedCell()
-        }
+    protected val selectedItem: MutableState<I?> = mutableStateOf(null)
 
-    @Composable protected abstract fun BoxScope.GroupContent(item: G)
+    @Composable protected abstract fun GroupContent(item: G)
 
-    @Composable protected abstract fun BoxScope.ItemContent(item: I)
+    @Composable protected abstract fun ItemContent(item: I)
+
+    @Composable protected abstract fun LastPickedItemContent(item: I)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        itemsByString = allItems.flatMap { it.children }.associateBy { it.toString() }
+        itemsByString = groups.flatMap { it.children }.associateBy { it.toString() }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.selectButton.root.setOnClickListener {
-            GroupedImageListPickerDialog(requireContext(), allItems, groupCellLayoutId, cellLayoutId, itemsPerRow) { item ->
-                if (item != selectedItem) {
-                    selectedItem = item
+        binding.composeViewBase.content { Surface {
+            GroupedItemSelectOverlayForm(
+                groups = groups,
+                groupContent = { GroupContent(it) },
+                itemContent = { ItemContent(it) },
+                selectedItem = selectedItem.value,
+                lastPickedItems = lastPickedItems,
+                lastPickedItemContent = { LastPickedItemContent(it) },
+                onSelectItem = {
+                    selectedItem.value = it
                     checkIsFormComplete()
                 }
-            }.show()
-        }
-
-        if (savedInstanceState != null) onLoadInstanceState(savedInstanceState)
-
-        LayoutInflater.from(requireContext()).inflate(cellLayoutId, binding.selectButton.selectedCellView, true)
-        binding.selectButton.selectedCellView.children.first().background = null
-
-        binding.lastPickedButtons.isGone = lastPickedItems.isEmpty()
-        binding.lastPickedButtons.adapter = LastPickedAdapter(lastPickedItems, ::onLastPickedButtonClicked)
-
-        updateSelectedCell()
-    }
-
-    private fun updateSelectedCell() {
-        val item = selectedItem
-        binding.selectButton.selectTextView.isGone = item != null
-        binding.selectButton.selectedCellView.isGone = item == null
-        if (item != null) {
-            ItemViewHolder(binding.selectButton.selectedCellView).bind(item)
-        }
-    }
-
-    /* ------------------------------------- instance state ------------------------------------- */
-
-    private fun onLoadInstanceState(inState: Bundle) {
-        selectedItem = inState.getString(SELECTED)?.let { itemsByString[it] }
-    }
-
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-        outState.putString(SELECTED, selectedItem?.toString())
-    }
-
-    /* -------------------------------------- apply answer -------------------------------------- */
-
-    override fun isFormComplete() = selectedItem != null
-
-    /* --------------------------------------- fav items ---------------------------------------- */
-
-    private fun onLastPickedButtonClicked(position: Int) {
-        val item = lastPickedItems[position]
-        selectedItem = item
+            )
+        } }
         checkIsFormComplete()
     }
 
-    companion object {
-        private const val SELECTED = "selected"
-    }
-}
+    override fun isFormComplete() = selectedItem.value != null
 
-private class LastPickedAdapter<I>(
-    private val items: List<I>,
-    private val onItemClicked: (position: Int) -> Unit
-) : RecyclerView.Adapter<LastPickedAdapter<I>.ViewHolder>() {
-
-    inner class ViewHolder(
-        private val binding: CellLastPickedButtonBinding,
-        private val onItemClicked: (position: Int) -> Unit
-    ) : RecyclerView.ViewHolder(binding.root) {
-
-        init {
-            itemView.setOnClickListener { onItemClicked(bindingAdapterPosition) }
-        }
-
-        fun onBind(item: I) {
-            binding.root.setImage(item.image)
-        }
+    override fun onClickOk() {
+        val value = selectedItem.value ?: return
+        onClickOk(value)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val inflater = LayoutInflater.from(parent.context)
-        val binding = CellLastPickedButtonBinding.inflate(inflater, parent, false)
-        return ViewHolder(binding, onItemClicked)
-    }
-
-    override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
-        viewHolder.onBind(items[position])
-    }
-
-    override fun getItemCount() = items.size
+    protected abstract fun onClickOk(selectedItem: I)
 }

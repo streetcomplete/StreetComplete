@@ -2,8 +2,11 @@ package de.westnordost.streetcomplete.overlays.buildings
 
 import android.os.Bundle
 import android.view.View
-import androidx.compose.foundation.layout.BoxScope
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.height
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
 import de.westnordost.streetcomplete.data.preferences.Preferences
@@ -27,16 +30,13 @@ class BuildingsOverlayForm : AGroupedItemSelectOverlayForm<BuildingTypeCategory,
 
     private val prefs: Preferences by inject()
 
-    override val allItems = BuildingTypeCategory.entries
-
-    override val itemsPerRow = 1
+    override val groups = BuildingTypeCategory.entries
 
     override val lastPickedItems by lazy {
         prefs.getLastPicked(this::class.simpleName!!)
             .map { valueOfOrNull<BuildingType>(it) }
             .takeFavorites(
                 n = 6,
-                history = 50,
                 first = 1,
                 pad = BuildingType.topSelectableValues
             )
@@ -44,7 +44,7 @@ class BuildingsOverlayForm : AGroupedItemSelectOverlayForm<BuildingTypeCategory,
 
     private var originalBuilding: BuildingType? = null
 
-    @Composable override fun BoxScope.GroupContent(item: BuildingTypeCategory) {
+    @Composable override fun GroupContent(item: BuildingTypeCategory) {
         ImageWithDescription(
             painter = painterResource(item.icon),
             title = stringResource(item.title),
@@ -52,30 +52,37 @@ class BuildingsOverlayForm : AGroupedItemSelectOverlayForm<BuildingTypeCategory,
         )
     }
 
-    @Composable override fun BoxScope.ItemContent(item: BuildingType) {
+    @Composable override fun ItemContent(item: BuildingType) {
         ImageWithDescription(
             painter = painterResource(item.icon),
             title = stringResource(item.title),
             description = item.description?.let { stringResource(it) }
         )
+    }
+
+    @Composable override fun LastPickedItemContent(item: BuildingType) {
+        Image(painterResource(item.icon), stringResource(item.title), Modifier.height(24.dp))
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        originalBuilding = createBuildingType(element!!.tags)
+        selectedItem.value = originalBuilding
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        originalBuilding = createBuildingType(element!!.tags)
-        selectedItem = originalBuilding
-
         setTitleHintLabel(getNameAndLocationSpanned(element!!, resources, null, true))
     }
 
     override fun hasChanges(): Boolean =
-        selectedItem != originalBuilding
+        selectedItem.value != originalBuilding
 
-    override fun onClickOk() {
-        prefs.addLastPicked(this::class.simpleName!!, selectedItem!!.name)
+    override fun onClickOk(selectedItem: BuildingType) {
+        prefs.addLastPicked(this::class.simpleName!!, selectedItem.name)
         val tagChanges = StringMapChangesBuilder(element!!.tags)
-        selectedItem!!.applyTo(tagChanges)
+        selectedItem.applyTo(tagChanges)
         applyEdit(UpdateElementTagsAction(element!!, tagChanges.create()))
     }
 }

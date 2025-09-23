@@ -79,7 +79,7 @@ class LaneNarrowingTrafficCalmingForm :
 
     @Composable
     override fun LastPickedItemContent(item: LaneNarrowingTrafficCalming) {
-        Image(painterResource(item.icon), stringResource(item.title), Modifier.height(36.dp))
+        Image(painterResource(item.icon), stringResource(item.title), Modifier.height(32.dp))
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

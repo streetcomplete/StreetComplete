@@ -14,19 +14,19 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.cheonjaeung.compose.grid.SimpleGridCells
-import de.westnordost.streetcomplete.ui.common.dialogs.SimpleItemSelectDialog
+import de.westnordost.streetcomplete.ui.common.dialogs.GroupedItemSelectDialog
+import de.westnordost.streetcomplete.ui.common.item_select.Group
 import de.westnordost.streetcomplete.ui.common.last_picked.LastPickedChipsRow
 
-/** Overlay form to select an item from a list of [items].
+/** Overlay form to select an item from a list of items grouped by [groups].
  *  It displays the currently [selectedItem], clicking on it opens a dialog in which another item
  *  can be selected.
  *  Additionally, previously picked items (or suggestions) are displayed beneath that, as a sort of
  *  shortcut (to save one click). */
 @Composable
-fun <I> ItemSelectOverlayForm(
-    itemsPerRow: Int,
-    items: List<I>,
+fun <I, G : Group<I>> GroupedItemSelectOverlayForm(
+    groups: List<G>,
+    groupContent: @Composable (G) -> Unit,
     itemContent: @Composable (I) -> Unit,
     selectedItem: I?,
     lastPickedItems: List<I>,
@@ -53,16 +53,16 @@ fun <I> ItemSelectOverlayForm(
                 content = itemContent,
             )
             if (expanded) {
-                SimpleItemSelectDialog(
+                GroupedItemSelectDialog(
                     onDismissRequest = { expanded = false },
-                    columns = SimpleGridCells.Fixed(itemsPerRow),
-                    items = items,
+                    groups = groups,
                     onSelected = onSelectItem,
-                    itemContent = itemContent
+                    groupContent = groupContent,
+                    itemContent = itemContent,
                 )
             }
         }
-        if(lastPickedItems.isNotEmpty()) {
+        if (lastPickedItems.isNotEmpty()) {
             LastPickedChipsRow(
                 items = lastPickedItems,
                 onClick = onSelectItem,
