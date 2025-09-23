@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.Divider
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.TextButton
@@ -31,9 +30,7 @@ import org.jetbrains.compose.ui.tooling.preview.Preview
 //  example in the Material design guidelines).
 
 /** AlertDialog that can have scrollable content without bugging out and separates the scrollable
- *  content with a divider at the top and bottom.
- *
- *  Caveat: It always covers the maximum possible space unless a size is specified */
+ *  content with a divider at the top and bottom. */
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun ScrollableAlertDialog(
@@ -55,9 +52,7 @@ fun ScrollableAlertDialog(
             modifier = modifier,
             title = title,
             content = content?.let { {
-                Divider()
-                Column(Modifier.weight(1f)) { content() }
-                Divider()
+                Column(Modifier.weight(1f, fill = false)) { content() }
             } },
             buttons = buttons,
             shape = shape,
