@@ -68,12 +68,19 @@ fun Counter(
                 AnimatedContent(
                     targetState = digit,
                     transitionSpec = {
-                        val contentTransform = if (count > oldCount) {
-                            slideInVertically { -it } + fadeIn() togetherWith slideOutVertically { it } + fadeOut()
+                        if (count > oldCount) {
+                            (
+                                slideInVertically { -it } + fadeIn()
+                            ).togetherWith(
+                                slideOutVertically { it } + fadeOut()
+                            )
                         } else {
-                            slideInVertically { it } + fadeIn() togetherWith slideOutVertically { -it } + fadeOut()
-                        }
-                        contentTransform.using(SizeTransform(clip))
+                            (
+                                slideInVertically { it } + fadeIn()
+                            ).togetherWith(
+                                slideOutVertically { -it } + fadeOut()
+                            )
+                        }.using(SizeTransform(clip))
                     },
                     label = "CounterAnimation$index"
                 ) {

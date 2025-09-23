@@ -67,10 +67,10 @@ fun <I> ItemSelectButton(
                 transitionSpec = {
                     // the new value "falls down" (from the dialog :-)) into the box
                     (
-                        fadeIn(animationSpec = tween(220, delayMillis = 90)) +
-                        scaleIn(initialScale = 2f, animationSpec = tween(220, delayMillis = 90))
+                        fadeIn(tween(220, delayMillis = 90)) +
+                        scaleIn(tween(220, delayMillis = 90), initialScale = 2f)
                     ).togetherWith(
-                        fadeOut(animationSpec = tween(90))
+                        fadeOut(tween(90))
                     )
                 }
             ) {
