@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.ui.common.settings
 
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.DropdownMenu
 import androidx.compose.material.Icon
@@ -26,13 +26,15 @@ fun <T> Select(
     expanded: Boolean,
     onDismissRequest: () -> Unit,
     modifier: Modifier = Modifier,
-    itemContent: @Composable RowScope.(item: T) -> Unit,
+    itemContent: @Composable (item: T) -> Unit,
 ) {
     Row(
         modifier = modifier,
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        itemContent(selectedItem)
+        Box(Modifier.weight(1f, fill = false)) {
+            itemContent(selectedItem)
+        }
         Icon(
             painter = painterResource(Res.drawable.ic_arrow_drop_down_24),
             contentDescription = null,

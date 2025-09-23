@@ -119,8 +119,6 @@ fun SettingsScreen(
     var showAutosyncSelect by remember { mutableStateOf(false) }
     var showResurveyIntervalsSelect by remember { mutableStateOf(false) }
 
-    val presetNameOrDefault = selectedPresetName ?: stringResource(Res.string.quest_presets_default_name)
-
     Column(Modifier.fillMaxSize()) {
         TopAppBar(
             title = { Text(stringResource(Res.string.action_settings)) },
@@ -140,7 +138,10 @@ fun SettingsScreen(
                     onClick = onClickPresetSelection,
                     description = stringResource(Res.string.action_manage_presets_summary)
                 ) {
-                    Text(presetNameOrDefault)
+                    Text(
+                        text = selectedPresetName ?: stringResource(Res.string.quest_presets_default_name),
+                        modifier = Modifier.weight(1f, fill = false),
+                    )
                     NextScreenIcon()
                 }
 
@@ -218,8 +219,9 @@ fun SettingsScreen(
                     onClick = onClickLanguageSelection,
                 ) {
                     Text(
-                        selectedLanguage?.let { getLanguageDisplayName(it) }
-                            ?: stringResource(Res.string.language_default)
+                        text = selectedLanguage?.let { getLanguageDisplayName(it) }
+                            ?: stringResource(Res.string.language_default),
+                        modifier = Modifier.weight(1f, fill = false)
                     )
                     NextScreenIcon()
                 }
