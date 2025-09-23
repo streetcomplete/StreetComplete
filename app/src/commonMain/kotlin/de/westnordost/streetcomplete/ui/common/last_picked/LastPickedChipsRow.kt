@@ -11,9 +11,7 @@ import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import de.westnordost.streetcomplete.ui.ktx.fadingEdges
-import de.westnordost.streetcomplete.ui.ktx.pxToDp
-import kotlin.math.min
+import de.westnordost.streetcomplete.ui.ktx.fadingHorizontalScrollEdges
 
 /** Row of chips for items previously picked */
 @OptIn(ExperimentalMaterialApi::class)
@@ -25,22 +23,16 @@ fun <I> LastPickedChipsRow(
     itemContent: @Composable (I) -> Unit,
 ) {
     val state = rememberScrollState()
-    val fadeWidth = 80
-    val fadeStart = min(fadeWidth, state.value).pxToDp()
-    val fadeEnd =
-        if (state.maxValue != Int.MAX_VALUE) min(fadeWidth, state.maxValue - state.value).pxToDp()
-        else 0.dp
-
-    Box(modifier.fadingEdges(start = fadeStart, end = fadeEnd)) {
-        Row(
-            modifier = Modifier.horizontalScroll(state),
-            horizontalArrangement = Arrangement.spacedBy(4.dp)
-        ) {
-            for (item in items) {
-                Chip(onClick = { onClick(item) }) {
-                    Box(Modifier.padding(vertical = 4.dp)) {
-                        itemContent(item)
-                    }
+    Row(
+        modifier = modifier
+            .fadingHorizontalScrollEdges(state, 32.dp)
+            .horizontalScroll(state),
+        horizontalArrangement = Arrangement.spacedBy(4.dp)
+    ) {
+        for (item in items) {
+            Chip(onClick = { onClick(item) }) {
+                Box(Modifier.padding(vertical = 4.dp)) {
+                    itemContent(item)
                 }
             }
         }

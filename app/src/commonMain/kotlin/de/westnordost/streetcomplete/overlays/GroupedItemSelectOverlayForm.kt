@@ -40,7 +40,7 @@ fun <I, G : Group<I>> GroupedItemSelectOverlayForm(
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
         Box(
-            modifier = Modifier.defaultMinSize(minHeight = 128.dp),
+            modifier = Modifier.defaultMinSize(minHeight = 96.dp),
             contentAlignment = Alignment.Center,
         ) {
             var expanded by remember { mutableStateOf(false) }

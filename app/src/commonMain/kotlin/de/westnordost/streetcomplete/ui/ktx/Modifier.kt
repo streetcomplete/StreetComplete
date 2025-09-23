@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.ui.ktx
 
 import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.PaddingValues
@@ -22,6 +23,7 @@ import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.graphics.addOutline
 import androidx.compose.ui.graphics.drawOutline
+import androidx.compose.ui.graphics.drawscope.ContentDrawScope
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.drawscope.inset
 import androidx.compose.ui.graphics.graphicsLayer
@@ -30,6 +32,7 @@ import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
+import kotlin.math.min
 
 fun Modifier.conditional(
     condition: Boolean,
@@ -151,6 +154,40 @@ fun Modifier.selectionFrame(
             alpha = 1f - selected * 0.2f)
 }
 
+/** Adds fading edges of [maxWidth] to a horizontal scroll to indicate that one can continue
+ *  scrolling in a direction */
+fun Modifier.fadingHorizontalScrollEdges(
+    scrollState: ScrollState,
+    maxWidth: Dp,
+): Modifier = this
+    .graphicsLayer(compositingStrategy = CompositingStrategy.Offscreen)
+    .drawWithContent {
+        drawContent()
+        drawFadingEdges(
+            start = min(maxWidth.toPx(), scrollState.value.toFloat()),
+            end =
+                if (scrollState.maxValue == Int.MAX_VALUE) 0f
+                else min(maxWidth.toPx(), (scrollState.maxValue - scrollState.value).toFloat()),
+        )
+    }
+
+/** Adds fading edges of [maxHeight] to a vertical scroll to indicate that one can continue
+ *  scrolling in a direction */
+fun Modifier.fadingVerticalScrollEdges(
+    scrollState: ScrollState,
+    maxHeight: Dp,
+): Modifier = this
+    .graphicsLayer(compositingStrategy = CompositingStrategy.Offscreen)
+    .drawWithContent {
+        drawContent()
+        drawFadingEdges(
+            top = min(maxHeight.toPx(), scrollState.value.toFloat()),
+            bottom =
+                if (scrollState.maxValue == Int.MAX_VALUE) 0f
+                else min(maxHeight.toPx(), (scrollState.maxValue - scrollState.value).toFloat()),
+        )
+    }
+
 /** Adds fading edges to the element */
 fun Modifier.fadingEdges(
     start: Dp = 0.dp,
@@ -161,58 +198,72 @@ fun Modifier.fadingEdges(
     .graphicsLayer(compositingStrategy = CompositingStrategy.Offscreen)
     .drawWithContent {
         drawContent()
-        val left = if (layoutDirection == LayoutDirection.Ltr) start else end
-        val right = if (layoutDirection == LayoutDirection.Ltr) end else start
-
-        if (top != 0.dp) {
-            drawRect(
-                brush = Brush.verticalGradient(
-                    colors = listOf(Color.Transparent, Color.Black),
-                    startY = 0f,
-                    endY = top.toPx()
-                ),
-                topLeft = Offset.Zero,
-                size = size.copy(height = top.toPx()),
-                blendMode = BlendMode.DstIn
-            )
-        }
-
-        if (bottom != 0.dp) {
-            drawRect(
-                brush = Brush.verticalGradient(
-                    colors = listOf(Color.Black, Color.Transparent),
-                    startY = size.height - bottom.toPx(),
-                    endY = size.height
-                ),
-                topLeft = Offset(0f, size.height - bottom.toPx()),
-                size = size.copy(height = bottom.toPx()),
-                blendMode = BlendMode.DstIn
-            )
-        }
-
-        if (left != 0.dp) {
-            drawRect(
-                brush = Brush.horizontalGradient(
-                    colors = listOf(Color.Transparent, Color.Black),
-                    startX = 0f,
-                    endX = left.toPx()
-                ),
-                topLeft = Offset.Zero,
-                size = size.copy(width = left.toPx()),
-                blendMode = BlendMode.DstIn
-            )
-        }
-
-        if (right != 0.dp) {
-            drawRect(
-                brush = Brush.horizontalGradient(
-                    colors = listOf(Color.Black, Color.Transparent),
-                    startX = size.width - right.toPx(),
-                    endX = size.width
-                ),
-                topLeft = Offset(size.width - right.toPx(), 0f),
-                size = size.copy(width = right.toPx()),
-                blendMode = BlendMode.DstIn
-            )
-        }
+        drawFadingEdges(
+            start = start.toPx(),
+            top = top.toPx(),
+            end = end.toPx(),
+            bottom = bottom.toPx(),
+        )
     }
+
+private fun ContentDrawScope.drawFadingEdges(
+    start: Float = 0f,
+    top: Float = 0f,
+    end: Float = 0f,
+    bottom: Float = 0f
+) {
+    val left = if (layoutDirection == LayoutDirection.Ltr) start else end
+    val right = if (layoutDirection == LayoutDirection.Ltr) end else start
+
+    if (top != 0f) {
+        drawRect(
+            brush = Brush.verticalGradient(
+                colors = listOf(Color.Transparent, Color.Black),
+                startY = 0f,
+                endY = top
+            ),
+            topLeft = Offset.Zero,
+            size = size.copy(height = top),
+            blendMode = BlendMode.DstIn
+        )
+    }
+
+    if (bottom != 0f) {
+        drawRect(
+            brush = Brush.verticalGradient(
+                colors = listOf(Color.Black, Color.Transparent),
+                startY = size.height - bottom,
+                endY = size.height
+            ),
+            topLeft = Offset(0f, size.height - bottom),
+            size = size.copy(height = bottom),
+            blendMode = BlendMode.DstIn
+        )
+    }
+
+    if (left != 0f) {
+        drawRect(
+            brush = Brush.horizontalGradient(
+                colors = listOf(Color.Transparent, Color.Black),
+                startX = 0f,
+                endX = left
+            ),
+            topLeft = Offset.Zero,
+            size = size.copy(width = left),
+            blendMode = BlendMode.DstIn
+        )
+    }
+
+    if (right != 0f) {
+        drawRect(
+            brush = Brush.horizontalGradient(
+                colors = listOf(Color.Black, Color.Transparent),
+                startX = size.width - right,
+                endX = size.width
+            ),
+            topLeft = Offset(size.width - right, 0f),
+            size = size.copy(width = right),
+            blendMode = BlendMode.DstIn
+        )
+    }
+}

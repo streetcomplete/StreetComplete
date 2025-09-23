@@ -18,6 +18,7 @@ import com.cheonjaeung.compose.grid.SimpleGridCells
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.quest_select_hint
 import de.westnordost.streetcomplete.ui.common.item_select.ItemSelectGrid
+import de.westnordost.streetcomplete.ui.ktx.fadingVerticalScrollEdges
 import org.jetbrains.compose.resources.stringResource
 
 /** Simple item select dialog, somewhat similar to SimpleListPickerDialog only that we have a grid
@@ -51,6 +52,7 @@ fun <I> SimpleItemSelectDialog(
             title = { Text(stringResource(Res.string.quest_select_hint)) },
             content = {
                 Column(Modifier
+                    .fadingVerticalScrollEdges(scrollState, 96.dp)
                     .verticalScroll(scrollState)
                     .padding(horizontal = 24.dp),
                 ) {

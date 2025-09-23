@@ -1,10 +1,8 @@
 package de.westnordost.streetcomplete.ui.common.dialogs
 
-import androidx.compose.foundation.gestures.Orientation
-import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.material.Divider
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.TextButton
@@ -25,6 +23,8 @@ import de.westnordost.streetcomplete.resources.ok
 import de.westnordost.streetcomplete.resources.quest_select_hint_most_specific
 import de.westnordost.streetcomplete.ui.common.item_select.Group
 import de.westnordost.streetcomplete.ui.common.item_select.GroupedItemSelectColumn
+import de.westnordost.streetcomplete.ui.ktx.fadingEdges
+import de.westnordost.streetcomplete.ui.ktx.fadingVerticalScrollEdges
 import org.jetbrains.compose.resources.stringResource
 
 /** Grouped item select dialog, somewhat similar to ItemSelectDialog only that we have a have a
@@ -44,7 +44,7 @@ fun <I, G: Group<I>> GroupedItemSelectDialog(
 ) {
     var selectedGroup by remember { mutableStateOf<G?>(null) }
     var selectedItem by remember { mutableStateOf<I?>(null) }
-    val selected = selectedGroup?.item ?: selectedItem
+    val selected = selectedItem ?: selectedGroup?.item
 
     val scrollState = rememberScrollState()
 
@@ -53,7 +53,6 @@ fun <I, G: Group<I>> GroupedItemSelectDialog(
         modifier = modifier,
         title = { Text(stringResource(Res.string.quest_select_hint_most_specific)) },
         content = {
-            if (scrollState.canScrollBackward) Divider()
             GroupedItemSelectColumn(
                 groups = groups,
                 topItems = emptyList(),
@@ -66,10 +65,10 @@ fun <I, G: Group<I>> GroupedItemSelectDialog(
                 groupContent = groupContent,
                 itemContent = itemContent,
                 modifier = Modifier
+                    .fadingVerticalScrollEdges(scrollState, 96.dp)
                     .padding(horizontal = 24.dp)
-                    .scrollable(scrollState, Orientation.Vertical)
+                    .verticalScroll(scrollState)
             )
-            if (scrollState.canScrollForward) Divider()
         },
         buttons = {
             TextButton(onClick = onDismissRequest) {
