@@ -80,6 +80,7 @@ Cette section regroupe tous les documents liés au projet :
 
 - link:docs/doc_tech.adoc[Documentation technique]
 - link:docs/doc_user.adoc[Guide utilisateur]
+- link:docs/doc_install.md[Guide d'installation]
 - link:docs/Devis.pdf[Chiffrage du projet]
 - link:https://github.com/users/HugoTHOLLON/projects/4/views/1[Backlog produit et board GitHub]
 
@@ -97,7 +98,9 @@ Cette section regroupe tous les documents liés au projet :
                 https://github.com/HugoTHOLLON/StreetCompleteSAE_S5/tree/master/docs/ODJ-CR/ODJ-Sprint-1-15-09-25.pdf[Lien vers l'ODJ 2]
 
                 https://github.com/HugoTHOLLON/StreetCompleteSAE_S5/tree/master/docs/ODJ-CR/CR-Sprint-1-15-09-25.pdf[Lien vers le CR 2] | [A remplir] | [A remplir]
-| N°2 - Semaine 39 à 40  | [A remplir] | [A remplir] | [A remplir]
+| N°2 - Semaine 39 à 40  | https://github.com/HugoTHOLLON/StreetCompleteSAE_S5/tree/master/docs/ODJ-CR/ODJ-Sprint-1-22-09-25.pdf[Lien vers l'ODJ]
+
+                https://github.com/HugoTHOLLON/StreetCompleteSAE_S5/tree/master/docs/ODJ-CR/CR-Sprint-1-22-09-25.pdf[Lien vers le CR] | [A remplir] | [A remplir]
 | N°3 - Semaine 41 à 43  | [A remplir] | [A remplir] | [A remplir]
 | N°4 - Semaine 44 à 48  | [A remplir] | [A remplir] | [A remplir]
 | N°5 - Semaine 2 à 4  | [A remplir] | [A remplir] | [A remplir]
@@ -108,3 +111,6 @@ Cette section regroupe tous les documents liés au projet :
 - **04/09/2024** : de 9h30 à 12h30 → https://github.com/HugoTHOLLON/StreetCompleteSAE_S5/tree/master/docs/ODJ-CR/CR-TT-04-09-25.pdf[Lien vers le CR]
 - **10/09/2024** : de 9h30 à 17h15 → Pas de réunion, avancement de chacun de son côté
 - **18/09/2024** : de 9h30 à 12h30 → Pas de réunion car réunion de sprint à venir très bientôt
+- **23/09/2024** : de 14h15 à 17h15 ↴
+- **24/09/2024** : de 9h30 à 17h15 ↴
+- **25/09/2024** : de 9h30 à 12h30 → https://github.com/HugoTHOLLON/StreetCompleteSAE_S5/tree/master/docs/ODJ-CR/CR-TT-25-09-25.pdf[Lien vers le CR - A VENIR]
