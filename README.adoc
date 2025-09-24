@@ -98,9 +98,9 @@ Cette section regroupe tous les documents liés au projet :
                 https://github.com/HugoTHOLLON/StreetCompleteSAE_S5/tree/master/docs/ODJ-CR/ODJ-Sprint-1-15-09-25.pdf[Lien vers l'ODJ 2]
 
                 https://github.com/HugoTHOLLON/StreetCompleteSAE_S5/tree/master/docs/ODJ-CR/CR-Sprint-1-15-09-25.pdf[Lien vers le CR 2] | [A remplir] | [A remplir]
-| N°2 - Semaine 39 à 40  | https://github.com/HugoTHOLLON/StreetCompleteSAE_S5/tree/master/docs/ODJ-CR/ODJ-Sprint-1-22-09-25.pdf[Lien vers l'ODJ]
+| N°2 - Semaine 39 à 40  | https://github.com/HugoTHOLLON/StreetCompleteSAE_S5/tree/master/docs/ODJ-CR/ODJ-Sprint-2-22-09-25.pdf[Lien vers l'ODJ]
 
-                https://github.com/HugoTHOLLON/StreetCompleteSAE_S5/tree/master/docs/ODJ-CR/CR-Sprint-1-22-09-25.pdf[Lien vers le CR] | [A remplir] | [A remplir]
+                https://github.com/HugoTHOLLON/StreetCompleteSAE_S5/tree/master/docs/ODJ-CR/CR-Sprint-2-22-09-25.pdf[Lien vers le CR] | [A remplir] | [A remplir]
 | N°3 - Semaine 41 à 43  | [A remplir] | [A remplir] | [A remplir]
 | N°4 - Semaine 44 à 48  | [A remplir] | [A remplir] | [A remplir]
 | N°5 - Semaine 2 à 4  | [A remplir] | [A remplir] | [A remplir]
