@@ -31,7 +31,7 @@ endif::[]
 // /!\ A MODIFIER !!!
 :baseURL: github.com/HugoTHOLLON/StreetCompleteSAE_S5
 
-_Last Update: 19/09/2025_
+_Last Update: 24/09/2025_
 
 // Tags
 image:https://img.shields.io/badge/License-GPLv3-blue.svg[License: GPL-3.0, link="https://www.gnu.org/licenses/gpl-3.0"]
