@@ -7,7 +7,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.AndroidQuest
-import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.quests.bothway.AerialBothWayAnswer.BOTHWAY
 import de.westnordost.streetcomplete.quests.bothway.AerialBothWayAnswer.UPWARD
@@ -24,7 +24,7 @@ class AddAerialBothWay : OsmElementQuestType<AerialBothWayAnswer>, AndroidQuest 
     override val wikiLink = "Key:bothway"
     override val icon = R.drawable.ic_quest_oneway
     override val hasMarkersAtEnds = true
-    override val achievements = listOf(CAR)
+    override val achievements = listOf(PEDESTRIAN)
 
     override val hint = R.string.quest_arrow_tutorial
 
