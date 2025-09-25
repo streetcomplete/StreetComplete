@@ -3,9 +3,11 @@ package de.westnordost.streetcomplete.overlays
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -68,6 +70,8 @@ fun <I, G : Group<I>> GroupedItemSelectOverlayForm(
                 modifier = Modifier.padding(start = 48.dp, end = 56.dp),
                 itemContent = lastPickedItemContent
             )
+        } else {
+            Spacer(Modifier.size(48.dp))
         }
     }
 }
