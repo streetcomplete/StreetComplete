@@ -49,7 +49,6 @@ fun <I> ItemSelectOverlayForm(
                 item = selectedItem,
                 expanded = expanded,
                 onExpandChange = { expanded = it },
-                modifier = modifier,
                 content = itemContent,
             )
             if (expanded) {

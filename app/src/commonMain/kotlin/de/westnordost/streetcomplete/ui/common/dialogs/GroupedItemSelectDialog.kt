@@ -76,8 +76,8 @@ fun <I, G: Group<I>> GroupedItemSelectDialog(
             }
             TextButton(
                 onClick = {
-                    onDismissRequest()
                     selected?.let { onSelected(it) }
+                    onDismissRequest()
                 },
                 enabled = selected != null,
             ) {

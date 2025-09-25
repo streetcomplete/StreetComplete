@@ -39,8 +39,8 @@ fun <I> SimpleItemSelectDialog(
     val scrollState = rememberScrollState()
 
     fun select(item: I) {
-        onDismissRequest()
         onSelected(item)
+        onDismissRequest()
     }
 
     Dialog(
