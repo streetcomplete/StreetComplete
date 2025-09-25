@@ -18,6 +18,7 @@ class AddInternetAccess : OsmFilterQuestType<InternetAccess>(), AndroidQuest {
           amenity ~ library|community_centre|youth_centre
           or tourism ~ hotel|guest_house|motel|hostel|alpine_hut|apartment|resort|caravan_site|chalet|wilderness_hut
           or tourism = camp_site and backcountry != yes and camp_site != basic
+          or aeroway = terminal
         )
         and access !~ no|private
         and (
