@@ -102,12 +102,9 @@ class SurfaceOverlayForm : AbstractOverlayForm() {
         selectedItem = mutableStateOf(originalItem)
     }
 
-    private fun updateSelectedCell(cellBinding: ViewImageSelectBinding, item: Surface?) {
-        cellBinding.selectTextView.isGone = item != null
-        cellBinding.selectedCellView.isGone = item == null
-        if (item != null) {
-            ItemViewHolder(cellBinding.selectedCellView).bind(item.asItem())
-        }
+    @Composable private fun ItemContent(item: Surface) {
+        val icon = item.icon?.let { painterResource(it) }
+        ImageWithLabel(icon, stringResource(item.title))
     }
 
     @Composable private fun LastPickedItemContent(item: Surface) {
