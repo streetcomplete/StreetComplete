@@ -79,10 +79,12 @@ class AddRecyclingContainerMaterialsForm : AbstractOsmQuestForm<RecyclingContain
                             } else {
                                 currentSelectedItems.add(item)
                                 selectedItems.value = currentSelectedItems.toSet()
+                                checkIsFormComplete()
                             }
                         } else {
                             currentSelectedItems.remove(item)
                             selectedItems.value = currentSelectedItems.toSet()
+                            checkIsFormComplete()
                         }
                     },
                     modifier = Modifier.fillMaxWidth()
@@ -101,6 +103,7 @@ class AddRecyclingContainerMaterialsForm : AbstractOsmQuestForm<RecyclingContain
                         val currentSelectedItems = selectedItems.value.toMutableList()
                         currentSelectedItems.add(item)
                         selectedItems.value = currentSelectedItems.toSet()
+                        checkIsFormComplete()
                     },
                     itemContent = { item ->
                         ImageWithLabel(painterResource(item.icon), stringResource(item.title))
