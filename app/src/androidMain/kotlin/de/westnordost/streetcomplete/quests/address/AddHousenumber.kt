@@ -29,7 +29,7 @@ class AddHousenumber(
 
     override val changesetComment = "Survey housenumbers"
     override val wikiLink = "Key:addr"
-    override val icon = R.drawable.ic_quest_housenumber
+    override val icon = R.drawable.quest_housenumber
     override val achievements = listOf(POSTMAN)
     override val enabledInCountries = AllCountriesExcept(
         "LU", // https://github.com/streetcomplete/StreetComplete/pull/1943

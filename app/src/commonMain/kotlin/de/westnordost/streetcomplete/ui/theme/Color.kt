@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.ui.theme
 
 import androidx.compose.material.Colors
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material.darkColors
 import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
@@ -65,9 +64,6 @@ val DarkColors = darkColors(
     onPrimary = Color.White,
     onSecondary = Color.White
 )
-
-val Colors.selectionBackground @ReadOnlyComposable @Composable get() =
-    MaterialTheme.colors.secondary.copy(alpha = 0.5f)
 
 val Colors.surfaceContainer @ReadOnlyComposable @Composable get() =
     if (isLight) Color(0xffdddddd) else Color(0xff222222)

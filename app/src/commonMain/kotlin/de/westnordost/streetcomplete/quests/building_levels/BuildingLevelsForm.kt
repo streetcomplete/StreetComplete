@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -25,14 +26,15 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.Hyphens
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.quest_buildingLevels_levelsLabel2
 import de.westnordost.streetcomplete.resources.quest_buildingLevels_roofLevelsLabel2
 import de.westnordost.streetcomplete.ui.common.TextField2
+import de.westnordost.streetcomplete.ui.common.last_picked.LastPickedChipsRow
 import de.westnordost.streetcomplete.ui.theme.largeInput
 import org.jetbrains.compose.resources.stringResource
+import org.jetbrains.compose.ui.tooling.preview.Preview
 
 /** Form to input building levels and roof levels, with quick-select buttons */
 @Composable
@@ -73,9 +75,7 @@ fun BuildingLevelsForm(
                             imeAction = ImeAction.Next
                         ),
                         singleLine = true,
-                        textStyle = MaterialTheme.typography.largeInput.copy(
-                            textAlign = TextAlign.Center
-                        ),
+                        textStyle = MaterialTheme.typography.largeInput,
                     )
                 }
                 // same height as BuildingLevelsIllustration
@@ -97,9 +97,7 @@ fun BuildingLevelsForm(
                             imeAction = ImeAction.Done
                         ),
                         singleLine = true,
-                        textStyle = MaterialTheme.typography.largeInput.copy(
-                            textAlign = TextAlign.Center
-                        ),
+                        textStyle = MaterialTheme.typography.largeInput,
                     )
                     Text(
                         text = stringResource(Res.string.quest_buildingLevels_roofLevelsLabel2),
@@ -110,13 +108,16 @@ fun BuildingLevelsForm(
                 }
             }
         }
-        BuildingLevelsButtons(
-            buildingLevels = previousBuildingLevels,
-            onSelect = { levels, roofLevels ->
-                onLevelsChange(levels.toString())
-                onRoofLevelsChange(roofLevels?.toString() ?: "")
-            }
-        )
+        LastPickedChipsRow(
+            items = previousBuildingLevels,
+            onClick = {
+                onLevelsChange(it.levels.toString())
+                onRoofLevelsChange(it.roofLevels?.toString() ?: "")
+            },
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            BuildingLevelsButtonContent(it.levels, it.roofLevels)
+        }
     }
 }
 
@@ -124,8 +125,7 @@ private fun String.isValidLevel(): Boolean =
     toIntOrNull()?.takeIf { it >= 0 } != null
 
 @Composable
-@Preview(showBackground = true, locale = "de", widthDp = 320)
-@Preview(showBackground = true, locale = "ar")
+@Preview
 private fun BuildingLevelsFormPreview() {
     val levels = remember { mutableStateOf("55") }
     val roofLevels = remember { mutableStateOf("55") }
@@ -137,7 +137,8 @@ private fun BuildingLevelsFormPreview() {
         previousBuildingLevels = listOf(
             BuildingLevels(5, 2),
             BuildingLevels(4, 1),
-            BuildingLevels(3, 0)
+            BuildingLevels(3, 0),
+            BuildingLevels(13, 0),
         ),
     )
 }

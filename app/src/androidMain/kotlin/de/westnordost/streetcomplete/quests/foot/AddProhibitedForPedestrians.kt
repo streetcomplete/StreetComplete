@@ -45,7 +45,7 @@ class AddProhibitedForPedestrians : OsmFilterQuestType<ProhibitedForPedestriansA
 
     override val changesetComment = "Specify whether roads are prohibited for pedestrians"
     override val wikiLink = "Key:foot"
-    override val icon = R.drawable.ic_quest_no_pedestrians
+    override val icon = R.drawable.quest_no_pedestrians
     override val achievements = listOf(PEDESTRIAN)
     override val enabledInCountries = AllCountriesExcept(
         "GB" // see https://community.openstreetmap.org/t/poll-should-streetcomplete-disable-the-are-pedestrians-forbidden-to-walk-on-this-road-without-sidewalk-here-quest-in-the-uk/118387

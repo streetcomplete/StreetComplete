@@ -35,7 +35,7 @@ class SpecifyShopType : OsmFilterQuestType<ShopTypeAnswer>(), AndroidQuest {
     """
     override val changesetComment = "Survey shop types"
     override val wikiLink = "Key:shop"
-    override val icon = R.drawable.ic_quest_shop
+    override val icon = R.drawable.quest_shop
     override val isReplacePlaceEnabled = true
     override val achievements = listOf(CITIZEN)
 

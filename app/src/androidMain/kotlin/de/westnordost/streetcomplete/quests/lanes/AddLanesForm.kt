@@ -7,7 +7,6 @@ import androidx.annotation.AnyThread
 import androidx.core.view.isGone
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
-import de.westnordost.streetcomplete.databinding.QuestLanesSelectTypeBinding
 import de.westnordost.streetcomplete.databinding.QuestStreetLanesPuzzleBinding
 import de.westnordost.streetcomplete.osm.oneway.isForwardOneway
 import de.westnordost.streetcomplete.osm.oneway.isOneway
@@ -306,10 +305,4 @@ class AddLanesForm : AbstractOsmQuestForm<LanesAnswer>() {
         private const val LANES_RIGHT = "lanes_right"
         private const val CENTER_LEFT_TURN_LANE = "center_left_turn_lane"
     }
-}
-
-private enum class LanesType {
-    MARKED,
-    MARKED_SIDES,
-    UNMARKED
 }

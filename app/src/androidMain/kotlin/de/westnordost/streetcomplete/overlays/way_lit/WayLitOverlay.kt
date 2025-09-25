@@ -19,7 +19,7 @@ import de.westnordost.streetcomplete.quests.way_lit.AddWayLit
 class WayLitOverlay : Overlay, AndroidOverlay {
 
     override val title = R.string.overlay_lit
-    override val icon = R.drawable.ic_quest_lantern
+    override val icon = R.drawable.quest_lantern
     override val changesetComment = "Specify whether ways are lit"
     override val wikiLink: String = "Key:lit"
     override val achievements = listOf(PEDESTRIAN)

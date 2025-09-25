@@ -10,7 +10,7 @@ package de.westnordost.streetcomplete.util
  * It is guaranteed that the resulting sequence is not longer than [n] and only consists of non-null
  * distinct items.
  */
-fun <T : Any> List<T?>.takeFavorites(
+fun <T> List<T?>.takeFavorites(
     n: Int,
     history: Int = 50,
     first: Int = 0,

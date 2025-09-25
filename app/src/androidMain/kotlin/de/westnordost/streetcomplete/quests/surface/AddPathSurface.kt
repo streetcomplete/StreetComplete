@@ -37,7 +37,7 @@ class AddPathSurface : OsmFilterQuestType<SurfaceOrIsStepsAnswer>(), AndroidQues
 
     override val changesetComment = "Specify path surfaces"
     override val wikiLink = "Key:surface"
-    override val icon = R.drawable.ic_quest_way_surface
+    override val icon = R.drawable.quest_way_surface
     override val achievements = listOf(PEDESTRIAN, WHEELCHAIR, BICYCLIST, OUTDOORS)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_surface_title

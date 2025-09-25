@@ -34,7 +34,7 @@ class AddCrossingIsland : OsmElementQuestType<Boolean>, AndroidQuest {
 
     override val changesetComment = "Specify whether pedestrian crossings have islands"
     override val wikiLink = "Key:crossing:island"
-    override val icon = R.drawable.ic_quest_pedestrian_crossing_island
+    override val icon = R.drawable.quest_pedestrian_crossing_island
     override val achievements = listOf(PEDESTRIAN, BLIND)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_pedestrian_crossing_island

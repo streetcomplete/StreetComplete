@@ -12,7 +12,7 @@ class AddPlaygroundAccess : OsmFilterQuestType<PlaygroundAccess>(), AndroidQuest
     override val elementFilter = "nodes, ways, relations with leisure = playground and (!access or access = unknown)"
     override val changesetComment = "Specify access to playgrounds"
     override val wikiLink = "Tag:leisure=playground"
-    override val icon = R.drawable.ic_quest_playground
+    override val icon = R.drawable.quest_playground
     override val achievements = listOf(CITIZEN)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_playground_access_title2

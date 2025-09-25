@@ -28,7 +28,7 @@ class AddShelterCapacity : OsmFilterQuestType<Int>(), AndroidQuest {
     """
     override val changesetComment = "Specify shelter capacities"
     override val wikiLink = "Tag:amenity=shelter"
-    override val icon = R.drawable.ic_quest_shelter_capacity
+    override val icon = R.drawable.quest_shelter_capacity
     override val isDeleteElementEnabled = true
     override val achievements = listOf(OUTDOORS)
 

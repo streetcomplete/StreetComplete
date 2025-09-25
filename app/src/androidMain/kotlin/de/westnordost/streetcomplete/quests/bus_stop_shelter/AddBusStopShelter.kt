@@ -33,7 +33,7 @@ class AddBusStopShelter : OsmFilterQuestType<BusStopShelterAnswer>(), AndroidQue
 
     override val changesetComment = "Specify whether public transport stops have shelters"
     override val wikiLink = "Key:shelter"
-    override val icon = R.drawable.ic_quest_bus_stop_shelter
+    override val icon = R.drawable.quest_bus_stop_shelter
     override val achievements = listOf(PEDESTRIAN)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_busStopShelter_title2

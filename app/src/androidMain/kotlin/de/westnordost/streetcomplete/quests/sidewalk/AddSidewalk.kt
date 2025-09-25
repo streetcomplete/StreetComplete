@@ -23,7 +23,7 @@ import de.westnordost.streetcomplete.resources.default_disabled_msg_overlay
 class AddSidewalk : OsmElementQuestType<LeftAndRightSidewalk>, AndroidQuest {
     override val changesetComment = "Specify whether roads have sidewalks"
     override val wikiLink = "Key:sidewalk"
-    override val icon = R.drawable.ic_quest_sidewalk
+    override val icon = R.drawable.quest_sidewalk
     override val achievements = listOf(PEDESTRIAN)
     override val defaultDisabledMessage = Res.string.default_disabled_msg_overlay
 

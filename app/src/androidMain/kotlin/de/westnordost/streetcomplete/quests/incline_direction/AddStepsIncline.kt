@@ -18,7 +18,7 @@ class AddStepsIncline : OsmFilterQuestType<Incline>(), AndroidQuest {
     """
     override val changesetComment = "Specify which way leads up for steps"
     override val wikiLink = "Key:incline"
-    override val icon = R.drawable.ic_quest_steps
+    override val icon = R.drawable.quest_steps
     override val achievements = listOf(PEDESTRIAN)
 
     override val hint = R.string.quest_arrow_tutorial

@@ -23,7 +23,7 @@ class AddBoardType : OsmFilterQuestType<BoardTypeAnswer>(), AndroidQuest {
     """
     override val changesetComment = "Specify board types"
     override val wikiLink = "Key:board_type"
-    override val icon = R.drawable.ic_quest_board_type
+    override val icon = R.drawable.quest_board_type
     override val isDeleteElementEnabled = true
     override val achievements = listOf(RARE, CITIZEN, OUTDOORS)
 

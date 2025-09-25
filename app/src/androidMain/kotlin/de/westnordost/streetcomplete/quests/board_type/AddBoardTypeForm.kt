@@ -5,11 +5,11 @@ import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.AListQuestForm
+import de.westnordost.streetcomplete.quests.ARadioGroupQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import org.jetbrains.compose.resources.stringResource
 
-class AddBoardTypeForm : AListQuestForm<BoardTypeAnswer, BoardType>() {
+class AddBoardTypeForm : ARadioGroupQuestForm<BoardTypeAnswer, BoardType>() {
 
     override val otherAnswers = listOf(
         AnswerItem(R.string.quest_board_type_map) { confirmOnMap() }
