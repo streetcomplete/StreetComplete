@@ -186,6 +186,7 @@ The info you enter is directly added to OpenStreetMap in your name, without the 
     <string name="quest_source_dialog_note">Only information that was verified in-person should be entered.</string>
     <string name="dialog_session_dont_show_again">Don’t show again for this session</string>
 
+    <string name="quest_firewood_WoodProvidedStatus_title">Is firewood provided here?</string>
 
     <!-- Tutorial screen -->
 

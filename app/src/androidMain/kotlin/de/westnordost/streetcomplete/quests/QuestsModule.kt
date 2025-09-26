@@ -87,6 +87,7 @@ import de.westnordost.streetcomplete.quests.fire_hydrant.AddFireHydrantType
 import de.westnordost.streetcomplete.quests.fire_hydrant_diameter.AddFireHydrantDiameter
 import de.westnordost.streetcomplete.quests.fire_hydrant_position.AddFireHydrantPosition
 import de.westnordost.streetcomplete.quests.fire_hydrant_ref.AddFireHydrantRef
+import de.westnordost.streetcomplete.quests.firewood.AddFirewood
 import de.westnordost.streetcomplete.quests.first_aid_kit.AddFirstAidKitLocation
 import de.westnordost.streetcomplete.quests.foot.AddProhibitedForPedestrians
 import de.westnordost.streetcomplete.quests.fuel_service.AddFuelSelfService
@@ -474,6 +475,7 @@ fun questTypeRegistry(
     116 to AddCampShower(),
     117 to AddCampPower(),
     162 to AddSanitaryDumpStation(),
+    185 to AddFirewood(),
 
     177 to AddShelterCapacity(),
 
