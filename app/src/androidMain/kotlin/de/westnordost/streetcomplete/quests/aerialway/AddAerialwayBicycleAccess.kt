@@ -19,11 +19,11 @@ import de.westnordost.streetcomplete.quests.aerialway.AerialwayBicycleAccessAnsw
 class AddAerialwayBicycleAccess : OsmElementQuestType<AerialwayBicycleAccessAnswer>, AndroidQuest {
 
     private val filter by lazy {
-        "ways, relations with aerialway and !bicycle".toElementFilterExpression()
+        "ways, relations with aerialway and !aerialway:bicycle and !bicycle".toElementFilterExpression()
     }
     override val changesetComment = "Specify aerialway access for bicycles"
     override val wikiLink = "Tag:aerialway"
-    override val icon = R.drawable.ic_quest_ferry_pedestrian
+    override val icon = R.drawable.ic_quest_aerialway_bicycle
     override val hasMarkersAtEnds = true
     override val achievements = listOf(RARE, BICYCLIST)
 
@@ -32,7 +32,7 @@ class AddAerialwayBicycleAccess : OsmElementQuestType<AerialwayBicycleAccessAnsw
     override fun createForm() = AddAerialwayBicycleAccessForm()
 
     override fun applyAnswerTo(answer: AerialwayBicycleAccessAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
-        tags["bicycle"] = when (answer) {
+        tags["aerialway:bicycle"] = when (answer) {
             YES -> "yes"
             SUMMER -> "-1"
             NO -> "no"

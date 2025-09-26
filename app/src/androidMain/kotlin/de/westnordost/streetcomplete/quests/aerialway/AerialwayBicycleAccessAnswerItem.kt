@@ -20,7 +20,7 @@ private val AerialwayBicycleAccessAnswer.titleResId: Int get() = when (this) {
 }
 
 private val AerialwayBicycleAccessAnswer.iconResId: Int get() = when (this) {
-    AerialwayBicycleAccessAnswer.YES -> R.drawable.ic_oneway_yes
-    AerialwayBicycleAccessAnswer.SUMMER -> R.drawable.ic_oneway_yes_reverse
-    AerialwayBicycleAccessAnswer.NO -> R.drawable.ic_oneway_no
+    AerialwayBicycleAccessAnswer.YES -> R.drawable.ic_yes_answer
+    AerialwayBicycleAccessAnswer.SUMMER -> R.drawable.ic_bicycle_during_summer
+    AerialwayBicycleAccessAnswer.NO -> R.drawable.ic_no_answer
 }
