@@ -44,6 +44,7 @@ import de.westnordost.streetcomplete.quests.board_name.AddBoardName
 import de.westnordost.streetcomplete.quests.board_type.AddBoardType
 import de.westnordost.streetcomplete.quests.boat_rental.AddBoatRental
 import de.westnordost.streetcomplete.quests.bollard_type.AddBollardType
+import de.westnordost.streetcomplete.quests.bothway.AddAerialBothWay
 import de.westnordost.streetcomplete.quests.bridge_structure.AddBridgeStructure
 import de.westnordost.streetcomplete.quests.building_entrance.AddEntrance
 import de.westnordost.streetcomplete.quests.building_entrance_reference.AddEntranceReference
@@ -432,14 +433,15 @@ fun questTypeRegistry(
 
     166 to AddMopedAccess(),
 
+    182 to AddAerialBothWay(),
     /* ↓ 3.quests that may need some exploration / walking around --------------------------- */
 
     // ferry: usually visible from looking at the boat, but not always...
     101 to AddFerryAccessPedestrian(),
     102 to AddFerryAccessMotorVehicle(),
 
-    //aerialway: usually visible from looking at the aerialway, but not always...
-    181 to AddAerialwayBicycleAccess(),
+    //aerial way: usually visible from looking at the aerial way, but not always...
+    184 to AddAerialwayBicycleAccess(),
 
     103 to AddProhibitedForPedestrians(), // need to understand the pedestrian situation
 

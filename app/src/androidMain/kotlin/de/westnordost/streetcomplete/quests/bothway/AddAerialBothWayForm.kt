@@ -6,10 +6,10 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.quests.AImageListQuestForm
 import de.westnordost.streetcomplete.util.math.getOrientationAtCenterLineInDegrees
 
-class AddBothwayForm : AImageListQuestForm<BothwayAnswer, BothwayAnswer>() {
+class AddAerialBothWayForm : AImageListQuestForm<AerialBothWayAnswer, AerialBothWayAnswer>() {
 
     override val items get() =
-        BothwayAnswer.entries.map { it.asItem(requireContext(), wayRotation - mapRotation) }
+        AerialBothWayAnswer.entries.map { it.asItem(requireContext(), wayRotation - mapRotation) }
 
     override val itemsPerRow = 3
 
@@ -27,7 +27,7 @@ class AddBothwayForm : AImageListQuestForm<BothwayAnswer, BothwayAnswer>() {
         imageSelector.items = items
     }
 
-    override fun onClickOk(selectedItems: List<BothwayAnswer>) {
+    override fun onClickOk(selectedItems: List<AerialBothWayAnswer>) {
         applyAnswer(selectedItems.first())
     }
 }
