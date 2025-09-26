@@ -301,7 +301,7 @@ fun questTypeRegistry(
 
     // motorcycle parking
     30 to AddMotorcycleParkingCover(),
-    31 to AddMotorcycleParkingCapacity(), // counting + number input required but usually well visible
+    31 to AddMotorcycleParkingCapacity(), // counting + number input required but usually well visible*
 
     // air pump, may require some checking within a garage forecourt
     32 to AddAirCompressor(),

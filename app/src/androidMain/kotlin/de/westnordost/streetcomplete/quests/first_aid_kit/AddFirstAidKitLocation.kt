@@ -15,7 +15,7 @@ class AddFirstAidKitLocation : OsmFilterQuestType<String>(), AndroidQuest {
     override val elementFilter = """
         nodes with
         emergency = first_aid_kit
-        and !location and !first_aid_kit:location
+        and !description and !first_aid_kit:description
         and access !~ private|no
     """
     override val changesetComment = "Specify first aid kit location"
@@ -33,6 +33,6 @@ class AddFirstAidKitLocation : OsmFilterQuestType<String>(), AndroidQuest {
     override fun createForm() = AddFirstAidKitLocationForm()
 
     override fun applyAnswerTo(answer: String, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
-        tags["first_aid_kit:location"] = answer
+        tags["first_aid_kit:description"] = answer
     }
 }
