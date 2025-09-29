@@ -207,15 +207,15 @@ class AddOpeningHoursTest {
         )))
     }
 
-    @Test fun `isApplicableTo returns false for unnamed places`() {
-        assertFalse(questType.isApplicableTo(node(
-            tags = mapOf("shop" to "sports")
-        )))
-    }
-
     @Test fun `isApplicableTo returns true for named places`() {
         assertTrue(questType.isApplicableTo(node(
             tags = mapOf("shop" to "sports", "name" to "Atze's Angelladen")
+        )))
+    }
+
+    @Test fun `isApplicableTo returns false for unnamed places`() {
+        assertFalse(questType.isApplicableTo(node(
+            tags = mapOf("shop" to "sports")
         )))
     }
 
