@@ -16,7 +16,15 @@ object PolygonAlgorithms {
 
     /* Core of the problem : visual center (within the polygon) */
     fun polylabel(polygon: Polygon, precision: Double = 1.0): Point {
-        // TODO: Implement polylabel algorithm
-        return centroid(polygon)
+        var minX = polygon.shape.first().x
+        var maxX = polygon.shape.first().x
+        var minY = polygon.shape.first().y
+        var maxY = polygon.shape.first().y
+        for (pts in polygon.shape) {
+            if (pts.x < minX) minX = pts.x
+            if (pts.x > maxX) maxX = pts.x
+            if (pts.y < minY) minY = pts.y
+            if (pts.y > maxY) maxY = pts.y
+        }
     }
 }
