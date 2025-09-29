@@ -217,6 +217,10 @@ class AddOpeningHoursTest {
         assertFalse(questType.isApplicableTo(node(
             tags = mapOf("shop" to "sports")
         )))
+
+        assertFalse(questType.isApplicableTo(node(
+            tags = mapOf("barrier" to "unknown_type_of_barrier")
+        )))
     }
 
     @Test fun `isApplicableTo returns true for places with brands`() {
