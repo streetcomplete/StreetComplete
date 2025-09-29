@@ -217,9 +217,11 @@ class AddOpeningHoursTest {
         assertFalse(questType.isApplicableTo(node(
             tags = mapOf("shop" to "sports")
         )))
+    }
 
+    @Test fun `isApplicableTo returns false for places unsupported by idtagging`() {
         assertFalse(questType.isApplicableTo(node(
-            tags = mapOf("barrier" to "block")
+            tags = mapOf("barrier" to "unsupported", "opening_hours" to "Mo-Fr 10:00-20:00")
         )))
     }
 
