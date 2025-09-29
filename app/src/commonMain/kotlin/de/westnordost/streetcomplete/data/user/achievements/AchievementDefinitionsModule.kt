@@ -56,6 +56,7 @@ import de.westnordost.streetcomplete.resources.link_brouter_description
 import de.westnordost.streetcomplete.resources.link_calendar_description
 import de.westnordost.streetcomplete.resources.link_city_roads
 import de.westnordost.streetcomplete.resources.link_city_roads_description
+import de.westnordost.streetcomplete.resources.link_co_maps
 import de.westnordost.streetcomplete.resources.link_cyclosm
 import de.westnordost.streetcomplete.resources.link_cyclosm_description
 import de.westnordost.streetcomplete.resources.link_disaster_ninja_description
@@ -111,7 +112,6 @@ import de.westnordost.streetcomplete.resources.link_openstreetmap
 import de.westnordost.streetcomplete.resources.link_openvegemap_description
 import de.westnordost.streetcomplete.resources.link_opnvkarte
 import de.westnordost.streetcomplete.resources.link_opnvkarte_description
-import de.westnordost.streetcomplete.resources.link_organic_maps
 import de.westnordost.streetcomplete.resources.link_organic_maps_description
 import de.westnordost.streetcomplete.resources.link_osm_buildings
 import de.westnordost.streetcomplete.resources.link_osm_buildings_description
