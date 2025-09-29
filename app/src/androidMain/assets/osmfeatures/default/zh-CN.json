@@ -257,6 +257,10 @@
           "name": "咖啡馆",
           "terms": "咖啡屋,咖啡,摩卡,拿铁,馥芮白,玛奇朵,卡布奇诺,美式,意式,浓缩,饮品,饮料"
         },
+        "amenity/cafe/teahouse": {
+          "name": "茶馆",
+          "terms": "茶馆,茶楼,茶室,茶社,茶舍"
+        },
         "amenity/car_pooling": {
           "name": "拼车站",
           "terms": "拼车站"
@@ -1895,6 +1899,18 @@
           "name": "墓地分区",
           "terms": "墓地,坟地,墓园,陵园,区块,分区"
         },
+        "climbing/crag": {
+          "name": "攀岩点",
+          "terms": "攀岩,峭壁,攀爬"
+        },
+        "climbing/route": {
+          "name": "攀爬路线",
+          "terms": "攀岩,攀爬,攀爬路线"
+        },
+        "climbing/route_bottom": {
+          "name": "攀岩路线起点",
+          "terms": "攀岩,攀登,路线,起点"
+        },
         "club": {
           "name": "俱乐部",
           "terms": "俱乐部,社团,夜总会,会所,可乐部,社交,组织,娱乐,社区,会议,驿站,平台,会,汇,社会,文化,团体,会员"
@@ -2805,6 +2821,10 @@
           "name": "历史地点",
           "terms": "历史遗迹,史迹"
         },
+        "historic/aircraft": {
+          "name": "旧飞机",
+          "terms": "古代,古,旧,老,历史,飞机,客机,军机,货机,固定翼"
+        },
         "historic/archaeological_site": {
           "name": "考古地点",
           "terms": "考古,遗址"
@@ -2843,7 +2863,7 @@
         },
         "historic/fort": {
           "name": "古营盘",
-          "terms": "古代,古,旧,老,营盘.堡垒,营区,军营,据点,军事"
+          "terms": "古代,古,旧,老,历史,营盘,堡垒,营区,军营,据点,军事"
         },
         "historic/manor": {
           "name": "古代庄园住宅",
@@ -2852,6 +2872,10 @@
         "historic/memorial": {
           "name": "纪念物",
           "terms": "纪念,纪念碑,纪念物,碑,墓碑,墓志铭,墓石,绊脚石,绊脚坎,奠基石,奠基,牌匾,蓝色牌匾,雕像,石刻,纪念堂,战争纪念,回忆"
+        },
+        "historic/memorial/blue_plaque-GB-IE": {
+          "name": "蓝色牌匾",
+          "terms": "蓝色,牌匾,蓝牌"
         },
         "historic/memorial/plaque": {
           "name": "纪念牌匾",
@@ -5361,7 +5385,7 @@
         },
         "shop/brewing_supplies": {
           "name": "酿酒用品店",
-          "terms": "釀酒用品店"
+          "terms": "酿酒用品店"
         },
         "shop/butcher": {
           "name": "肉店",
@@ -5492,8 +5516,8 @@
           "terms": "乳品,牛奶,奶酪,酸奶,羊奶,水牛奶,早餐奶,鲜奶,巴氏奶,常温奶,牛奶店,奶店"
         },
         "shop/deli": {
-          "name": "高级食材店",
-          "terms": "高级食材店"
+          "name": "熟食店",
+          "terms": "熟食,高级,食品,火腿,烧味,烧腊,腊味,奶酪,鱼子酱"
         },
         "shop/department_store": {
           "name": "百货商场",
@@ -5544,7 +5568,7 @@
         },
         "shop/fashion_accessories": {
           "name": "饰品店",
-          "terms": "流行飾品店"
+          "terms": "流行饰品店"
         },
         "shop/fireplace": {
           "name": "壁炉用品店",
@@ -5819,7 +5843,7 @@
         },
         "shop/psychic": {
           "name": "特异功能(看相等)",
-          "terms": "命相館"
+          "terms": "占卜,看命,看相,面相,命相"
         },
         "shop/pyrotechnics": {
           "name": "烟花爆竹店",
@@ -5835,7 +5859,7 @@
         },
         "shop/rental": {
           "name": "设备租赁",
-          "terms": "出租店,租賃店"
+          "terms": "出租店,租赁店"
         },
         "shop/repair": {
           "name": "修理店",
@@ -5895,7 +5919,7 @@
         },
         "shop/swimming_pool": {
           "name": "泳池设备店",
-          "terms": "游泳池設施行"
+          "terms": "游泳池,设施"
         },
         "shop/tailor": {
           "name": "裁缝店",
@@ -6235,15 +6259,15 @@
         },
         "traffic_sign/city_limit": {
           "name": "城市限制标志",
-          "terms": "地名標示,地名"
+          "terms": "地名,标识,城市"
         },
         "traffic_sign/maxspeed": {
           "name": "限速标志",
           "terms": "速限標誌,速限"
         },
         "traffic_sign/variable_message": {
-          "name": "動態訊息標示",
-          "terms": "動態訊息標示"
+          "name": "动态信息标识",
+          "terms": "动态,可变,信息,消息,标识"
         },
         "type/boundary": {
           "name": "边界",
@@ -6329,6 +6353,10 @@
           "name": "公共汽车线路",
           "terms": "公交线路,路线,线路,公交路线,公共汽车路线"
         },
+        "type/route/climbing": {
+          "name": "攀爬路线",
+          "terms": "攀岩,攀爬,攀爬路线"
+        },
         "type/route/detour": {
           "name": "绕行线路",
           "terms": "迂回线路,绕道线路,绕路线路,路线,线路"
@@ -6347,7 +6375,7 @@
         },
         "type/route/horse": {
           "name": "骑马路线",
-          "terms": "騎馬路線"
+          "terms": "骑马路线"
         },
         "type/route/light_rail": {
           "name": "轻轨线路",
@@ -6404,6 +6432,14 @@
         "type/site": {
           "name": "场址",
           "terms": "场址,地点,场地"
+        },
+        "type/site/climbing/area": {
+          "name": "攀爬区域",
+          "terms": "攀爬区域"
+        },
+        "type/site/climbing/crag": {
+          "name": "攀岩区域",
+          "terms": "攀岩,峭壁,攀爬"
         },
         "type/waterway": {
           "name": "水路",

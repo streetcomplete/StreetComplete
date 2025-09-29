@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.screens.main.edithistory
 
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.ReadOnlyComposable
 import androidx.compose.ui.res.stringResource
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.edithistory.Edit
@@ -17,11 +16,15 @@ import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestHidden
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.quests.getTitle
 import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.commented_note_action_title
+import de.westnordost.streetcomplete.resources.created_note_action_title
+import de.westnordost.streetcomplete.resources.quest_noteDiscussion_title
 import de.westnordost.streetcomplete.resources.undo_delete
 import de.westnordost.streetcomplete.resources.undo_move_node
 import de.westnordost.streetcomplete.resources.undo_split
 import de.westnordost.streetcomplete.resources.undo_visibility
 import org.jetbrains.compose.resources.DrawableResource
+import org.jetbrains.compose.resources.stringResource
 
 val Edit.icon: Int get() = when (this) {
     is ElementEdit -> type.icon
@@ -50,8 +53,8 @@ val Edit.overlayIcon: DrawableResource? get() = when (this) {
     else -> null
 }
 
+// TODO compose should convert to returning StringResource when migrated to compose
 @Composable
-@ReadOnlyComposable
 fun Edit.getTitle(elementTags: Map<String, String>?): String = when (this) {
     is ElementEdit -> {
         if (type is QuestType) {
@@ -62,15 +65,15 @@ fun Edit.getTitle(elementTags: Map<String, String>?): String = when (this) {
     }
     is NoteEdit -> {
         stringResource(when (action) {
-            CREATE -> R.string.created_note_action_title
-            COMMENT -> R.string.commented_note_action_title
+            CREATE -> Res.string.created_note_action_title
+            COMMENT -> Res.string.commented_note_action_title
         })
     }
     is OsmQuestHidden -> {
         stringResource(questType.getTitle(elementTags.orEmpty()))
     }
     is OsmNoteQuestHidden -> {
-        stringResource(R.string.quest_noteDiscussion_title)
+        stringResource(Res.string.quest_noteDiscussion_title)
     }
     else -> throw IllegalArgumentException()
 }

@@ -11,7 +11,7 @@ import de.westnordost.streetcomplete.osm.localized_name.applyTo
 
 class AddBusStopName : OsmFilterQuestType<BusStopNameAnswer>(), AndroidQuest {
 
-    // this filter needs to be kept somewhat in sync with the filter in AddBusStopNameForm
+    // this filter needs to be kept somewhat in sync with the filter in AddBusStopNameForm https://github.com/streetcomplete/StreetComplete/issues/6390#issuecomment-3057235984
     override val elementFilter = """
         nodes, ways, relations with
         (
@@ -23,11 +23,17 @@ class AddBusStopName : OsmFilterQuestType<BusStopNameAnswer>(), AndroidQuest {
         and !name and noname != yes and name:signed != no
     """
 
-    override val enabledInCountries = AllCountriesExcept("US", "CA")
+    override val enabledInCountries = AllCountriesExcept(
+        "US", // https://github.com/streetcomplete/StreetComplete/issues/2126
+        "CA", // https://github.com/streetcomplete/StreetComplete/issues/2126
+        "SE" // https://github.com/streetcomplete/StreetComplete/issues/6390#issuecomment-3057235984
+    )
     override val changesetComment = "Determine public transport stop names"
     override val wikiLink = "Tag:public_transport=platform"
     override val icon = R.drawable.ic_quest_bus_stop_name
     override val achievements = listOf(PEDESTRIAN)
+
+    override val hint = R.string.quest_stopName_hint
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_busStopName_title2
 
@@ -35,7 +41,7 @@ class AddBusStopName : OsmFilterQuestType<BusStopNameAnswer>(), AndroidQuest {
 
     override fun applyAnswerTo(answer: BusStopNameAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {
-            is NoBusStopName -> {
+            BusStopNameAnswer.NoName -> {
                 tags["name:signed"] = "no"
             }
             is BusStopName -> {

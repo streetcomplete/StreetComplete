@@ -1706,6 +1706,13 @@
           "name": "Paso de peóns",
           "terms": "paso peonil,paso peatonal,paso de cebra"
         },
+        "highway/crossing/traffic_signals": {
+          "name": "Paso de peóns con semáforo",
+          "terms": "paso peonil con semáforo,paso con semáforos para peóns"
+        },
+        "highway/crossing/uncontrolled": {
+          "name": "Paso de peóns marcado"
+        },
         "highway/crossing/unmarked": {
           "name": "Paso de peóns sen marcar",
           "terms": "paso de peóns sen marcar,peonil,peonal"
@@ -1723,6 +1730,9 @@
         "highway/cycleway/crossing/bicycle_foot": {
           "name": "Paso de peóns e de pista de ciclismo",
           "terms": "peonil,peonal,ciclista,ciclismo,bicicleta"
+        },
+        "highway/cycleway/crossing/traffic_signals": {
+          "name": "Paso de bicicletas con semáforo"
         },
         "highway/cycleway/crossing/uncontrolled": {
           "name": "Paso de bicicletas marcado",
@@ -1755,7 +1765,16 @@
           "name": "Pasarela móbil"
         },
         "highway/footway/crossing": {
-          "name": "Paso de peóns"
+          "name": "Paso de peóns",
+          "terms": "paso peonil,paso peonal"
+        },
+        "highway/footway/crossing/traffic_signals": {
+          "name": "Paso de peóns con semáforo",
+          "terms": "paso peonil con semáforo,paso con semáforos para peóns"
+        },
+        "highway/footway/crossing/uncontrolled": {
+          "name": "Paso peonil marcado",
+          "terms": "paso de peóns marcado,peonil,peonal"
         },
         "highway/footway/crossing/unmarked": {
           "name": "Paso peonil sen marcar",
@@ -1809,6 +1828,15 @@
         },
         "highway/path/crossing": {
           "name": "Paso de peóns e de pista de ciclismo"
+        },
+        "highway/path/crossing/traffic_signals": {
+          "name": "Paso de peóns e bicicletas con semáforos"
+        },
+        "highway/path/crossing/uncontrolled": {
+          "name": "Paso marcado para peóns e bicicletas"
+        },
+        "highway/path/crossing/unmarked": {
+          "name": "Paso sen marcar para peóns e bicicletas"
         },
         "highway/path/informal": {
           "name": "Camiño informal"
@@ -3459,7 +3487,7 @@
           "name": "Ferrovía en construción"
         },
         "railway/crossing": {
-          "name": "Ferrovía - Cruce de camiño",
+          "name": "Paso a nivel (camiño)",
           "terms": "ferrocarril,tren,peonil,peonal"
         },
         "railway/derail": {
@@ -3476,7 +3504,7 @@
           "name": "Estación de trens (Halt / Request)"
         },
         "railway/level_crossing": {
-          "name": "Ferrovía - Cruce de estrada",
+          "name": "Paso a nivel (estrada)",
           "terms": "ferrocarril,tren,estrada"
         },
         "railway/light_rail": {
@@ -3514,7 +3542,7 @@
           "terms": "raíl,carril,camiño de ferro,ferrocarril,ferrovía,liña férrea,riel,tren,rail,vía,vía permanente,vía férrea,via,tren bala,tren rápido,tren de alta velocidade,hsr,velocidade alta,lav,ave,avant"
         },
         "railway/railway_crossing": {
-          "name": "Ferrovía - Cruce de ferrovía",
+          "name": "Ferrovía - Cruzamento de ferrovía",
           "terms": "ferrocarril,tren"
         },
         "railway/signal": {

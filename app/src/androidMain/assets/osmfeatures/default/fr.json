@@ -257,6 +257,9 @@
           "name": "Café",
           "terms": "café,américano,café moulu,cappuccino,expresso,thé,boisson chaude"
         },
+        "amenity/cafe/teahouse": {
+          "name": "Salon de thé"
+        },
         "amenity/car_pooling": {
           "name": "Aire de covoiturage",
           "terms": "covoiturage,co-voiturage,autopartage"
@@ -1897,6 +1900,12 @@
           "name": "Section de cimetière",
           "terms": "tombe,enterrement,cimetière,mausolée"
         },
+        "climbing/route": {
+          "name": "Voie d'escalade"
+        },
+        "climbing/route_bottom": {
+          "name": "Départ d'une voie d'escalade"
+        },
         "club": {
           "name": "Club",
           "terms": "club,association,mouvement de jeunesse,scout,guide"
@@ -2809,6 +2818,9 @@
           "name": "Site historique",
           "terms": "site historique"
         },
+        "historic/aircraft": {
+          "name": "Avion historique"
+        },
         "historic/archaeological_site": {
           "name": "Site archéologique",
           "terms": "site archéologique"
@@ -2856,6 +2868,9 @@
         "historic/memorial": {
           "name": "Mémorial",
           "terms": "mémorial,monument aux morts,statue,buste,stèle,plaque"
+        },
+        "historic/memorial/blue_plaque-GB-IE": {
+          "name": "Plaque bleue"
         },
         "historic/memorial/plaque": {
           "name": "Plaque commémorative",
@@ -6321,6 +6336,9 @@
         "type/route/bus": {
           "name": "Itinéraire de bus",
           "terms": "trajet d'autobus"
+        },
+        "type/route/climbing": {
+          "name": "Voie d'escalade"
         },
         "type/route/detour": {
           "name": "Itinéraire de délestage",

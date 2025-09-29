@@ -257,6 +257,10 @@
           "name": "Cafeteria",
           "terms": "cafeteria"
         },
+        "amenity/cafe/teahouse": {
+          "name": "Salão de chá",
+          "terms": "tea,estabelecimento,loja,té,ervas,chás"
+        },
         "amenity/car_pooling": {
           "name": "Estação de carona solidária",
           "terms": "estação de carona solidária"
@@ -1885,6 +1889,18 @@
           "name": "Seção/Quadra de cemitério",
           "terms": "burial ground,cemetary,cemetery,churchyard,columbarium,grave yard,graveyard,mausoleum,tomb,sector,túmulo,mausoléu,sepultura,gavetas,jazigo"
         },
+        "climbing/crag": {
+          "name": "Escalada de rochedo escarpado",
+          "terms": "crag,rocha,rochedo,escalar,subida,cordas,rapel,rappel,climb,climbing"
+        },
+        "climbing/route": {
+          "name": "Rota de escalada",
+          "terms": "route,percurso,climbing,escalar,rappel,rapel"
+        },
+        "climbing/route_bottom": {
+          "name": "Início da rota de escalada",
+          "terms": "climbing,route,trajeto,percurso,começo,princípio"
+        },
         "club": {
           "name": "Clube",
           "terms": "aeromodelismo,radioamador,filatelia,xadrez,astronomia,automobilismo,associação,fã-clube,fã,templo maçônico,maçonaria,maçom,caça,motociclismo,moto clube,nudismo,fotografia,escoteiro,escotismo,hobby,sociedade"
@@ -2265,7 +2281,8 @@
           "terms": "entrada principal"
         },
         "entrance/shop": {
-          "name": "Entrada de loja"
+          "name": "Entrada de loja",
+          "terms": "entrance,entrada,porta,principal,shop,loja,estabelecimento"
         },
         "entrance/staircase": {
           "name": "Entrada com escadaria",
@@ -2808,6 +2825,10 @@
           "name": "Local histórico",
           "terms": "lugar histórico,local histórico,patrimônio,monumento,turismo,ponto turístico"
         },
+        "historic/aircraft": {
+          "name": "Avião histórico",
+          "terms": "plane,aircraft,aviões,avião,antigo,memorial,aparelho voador,voar,voo"
+        },
         "historic/archaeological_site": {
           "name": "Sítio arqueológico",
           "terms": "sítio arqueológico,arqueologia"
@@ -2855,6 +2876,9 @@
         "historic/memorial": {
           "name": "Memorial",
           "terms": "memorial,monumento comemorativo"
+        },
+        "historic/memorial/blue_plaque-GB-IE": {
+          "name": "Placa azul (UK)"
         },
         "historic/memorial/plaque": {
           "name": "Placa comemorativa",
@@ -4189,8 +4213,8 @@
           "terms": "moita,arbusto,matagal,vegetação"
         },
         "natural/shingle": {
-          "name": "Telha",
-          "terms": "telha"
+          "name": "Seixos",
+          "terms": "shingle,encosta seixosa,encosta de seixos,seixos,margem de rio,praia de seixos,praia com seixos,praia,fragmentos,cascalho,pedritas,pedras"
         },
         "natural/shrub": {
           "name": "Arbusto",
@@ -6124,8 +6148,8 @@
           "aliases": "Exposição artística"
         },
         "tourism/guest_house": {
-          "name": "Guesthouse",
-          "terms": "guesthouse"
+          "name": "Pousada",
+          "terms": "pousada,bed and breakfast,cama,café da manhã,pensão"
         },
         "tourism/hostel": {
           "name": "Hostel",
@@ -6360,6 +6384,10 @@
           "name": "Rota de Ônibus",
           "terms": "rota de ônibus,transporte público"
         },
+        "type/route/climbing": {
+          "name": "Rota de escalada",
+          "terms": "route,percurso,climbing,escalar,rappel,rapel"
+        },
         "type/route/detour": {
           "name": "Rota de Desvio",
           "terms": "rota de desvio"
@@ -6435,6 +6463,14 @@
         "type/site": {
           "name": "Grupo de elementos",
           "terms": "grupo de prédios,cadeia de lojas,elementos"
+        },
+        "type/site/climbing/area": {
+          "name": "Área de escalada",
+          "terms": "zona,espaço,area,escalar,climb,climbing,rapel,rappel"
+        },
+        "type/site/climbing/crag": {
+          "name": "Escalada de rochedo escarpado",
+          "terms": "crag,rocha,rochedo,escalar,subida,cordas,rapel,rappel,climb,climbing"
         },
         "type/waterway": {
           "name": "Hidrovia",

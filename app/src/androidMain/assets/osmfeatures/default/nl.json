@@ -1023,7 +1023,7 @@
           "terms": "kampeerauto,beerput,camper,kampeerwagen,mobilhome,zwerfwagen,motorhome,uitwerpselen,urine,toilet"
         },
         "amenity/school": {
-          "name": "Schoolgebied",
+          "name": "School",
           "terms": "school,onderwijs,secundair onderwijs,lager onderwijs,basisschool,middelbaar,voortgezet onderwijs"
         },
         "amenity/shelter": {
@@ -2788,6 +2788,9 @@
         "historic/memorial": {
           "name": "Gedenkteken",
           "terms": "gedenkteken,herdenkingsmonument,gedenkplaats"
+        },
+        "historic/memorial/blue_plaque-GB-IE": {
+          "name": "Blue plaque"
         },
         "historic/memorial/plaque": {
           "name": "Gedenkplaat",

@@ -258,6 +258,14 @@
         "type/boundary": {
           "name": "Boundary"
         },
+        "type/site/climbing/crag": {
+          "name": "Climbing Crag",
+          "aliases": "Climbing Cliff"
+        },
+        "type/site/climbing/area": {
+          "name": "Climbing Area",
+          "aliases": "Climbing Region"
+        },
         "type/route/trolleybus": {
           "name": "Trolleybus Route"
         },
@@ -310,6 +318,11 @@
         },
         "type/route/detour": {
           "name": "Detour Route"
+        },
+        "type/route/climbing": {
+          "name": "Climbing Route",
+          "aliases": "Climb\nMountaineering Route",
+          "terms": "climbing,rock climbing,rock climbing route,mountain climbing"
         },
         "type/route/bus": {
           "name": "Bus Route"
@@ -684,7 +697,7 @@
         "shop/stationery": {
           "name": "Stationery Store",
           "aliases": "Office Supply Store",
-          "terms": "card,paper"
+          "terms": "card,paper,stationary"
         },
         "shop/sports": {
           "name": "Sporting Goods Store",
@@ -1017,7 +1030,7 @@
         },
         "shop/fabric": {
           "name": "Fabric Store",
-          "terms": "sew"
+          "terms": "sew,textile,textiles"
         },
         "shop/erotic": {
           "name": "Erotic Store",
@@ -1101,7 +1114,7 @@
         },
         "shop/clothes": {
           "name": "Clothing Store",
-          "terms": "blouses,boutique,bras,clothes,dresses,fashion,outfits,pants,shirts,shorts,skirts,slacks,socks,suits,underwear"
+          "terms": "apparel,blouses,boutique,bras,clothes,dresses,fashion,outfits,pants,shirts,shorts,skirts,slacks,socks,suits,underwear"
         },
         "shop/chocolate": {
           "name": "Chocolate Store",
@@ -2019,7 +2032,7 @@
         },
         "office/lawyer": {
           "name": "Law Office",
-          "terms": "advocate,attorney,barrister,counsellor,counselor,defender,lawyer,legal,prosecutor"
+          "terms": "advocate,attorney,barrister,counsellor,counselor,defender,lawyer,legal,prosecutor,solicitor"
         },
         "office/it": {
           "name": "Information Technology Office",
@@ -3621,12 +3634,19 @@
         "historic/archaeological_site": {
           "name": "Archaeological Site"
         },
+        "historic/aircraft": {
+          "name": "Historic Aircraft",
+          "terms": "gate guardian"
+        },
         "historic/memorial/stolperstein-EU": {
           "name": "Memorial Plaque Stolperstein"
         },
         "historic/memorial/plaque": {
           "name": "Commemorative Plaque",
           "terms": "dedicatory,epitaph,historical marker,remember,remembrance,memory"
+        },
+        "historic/memorial/blue_plaque-GB-IE": {
+          "name": "Blue Plaque"
         },
         "historic/castle/stately": {
           "name": "Château",
@@ -4489,6 +4509,19 @@
           "name": "Scout Group",
           "terms": "guide,pathfinder,scouting"
         },
+        "climbing/route_bottom": {
+          "name": "Climbing Route Start",
+          "terms": "rock climbing route,sport climbing,route bottom,climbing point,route start,climbing area,climbing crag"
+        },
+        "climbing/route": {
+          "name": "Climbing Route",
+          "aliases": "Boulder Problem\nClimb",
+          "terms": "climbing,rock climbing,rock climbing route,sport climbing"
+        },
+        "climbing/crag": {
+          "name": "Climbing Crag",
+          "aliases": "Climbing Cliff"
+        },
         "cemetery/sector": {
           "name": "Cemetery Section",
           "terms": "burial ground,cemetary,cemetery,churchyard,columbarium,grave yard,graveyard,mausoleum,tomb"
@@ -5035,7 +5068,7 @@
         "amenity/toilets": {
           "name": "Restroom",
           "aliases": "Toilets\nBathroom\nLavatory\nWater Closet",
-          "terms": "outhouse,privy,head,latrine,wc,w.c."
+          "terms": "outhouse,privy,head,latrine,public toilet,public restroom,wc,w.c."
         },
         "amenity/ticket_validator": {
           "name": "Ticket Validator",
@@ -5048,7 +5081,7 @@
         },
         "amenity/telephone": {
           "name": "Telephone",
-          "terms": "payphone,pay phone,phone booth,phone"
+          "terms": "payphone,pay phone,phone booth,phone,public phone,public telephone"
         },
         "amenity/taxi": {
           "name": "Taxi Stand",
@@ -5069,7 +5102,7 @@
         },
         "amenity/social_facility": {
           "name": "Social Facility",
-          "terms": "community,nonprofit,social services"
+          "terms": "community,group home,halfway house,nonprofit,social services"
         },
         "amenity/social_centre": {
           "name": "Social Center",
@@ -6156,6 +6189,10 @@
         "amenity/clinic/abortion": {
           "name": "Abortion Clinic",
           "terms": "women's healthcare"
+        },
+        "amenity/cafe/teahouse": {
+          "name": "Teahouse",
+          "terms": "tea house,tearoom,tea room,tea,tea drink,black tea,green tea,yellow tea,white tea,oolong tea,hot drinks"
         },
         "amenity/cafe/coffee_shop": {
           "name": "Coffeehouse",

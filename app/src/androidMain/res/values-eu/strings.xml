@@ -362,7 +362,6 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
     <string name="quest_fee_answer_hours">"Eguna eta orduaren arabera…"</string>
     <string name="quest_fee_add_times">"Gehitu ordutegia"</string>
     <string name="quest_housenumber_multiple_numbers">"Etxe zenbaki bat baino gehiago dauka"</string>
-    <string name="quest_housenumber_multiple_numbers_description">"Zenbakiak komaz bananduta edo barrutia adieraziz sartu ditzakezu. Esaterako 1,3 edo 2–6"</string>
     <string name="quest_bicycle_parking_type_stand">"Tente (koadroa lotu daiteke)"</string>
     <string name="quest_bicycle_parking_type_wheelbender">"Gurpil-zirrikitua"</string>
     <string name="quest_bicycle_parking_type_shed">"Estalpea"</string>
@@ -795,9 +794,7 @@ Ikus itzazu aukera posible guztiak: batzuetan ez da oso argia, adibidez errepide
     <string name="quest_bicycle_parking_fee_title">"Ordaindu behar al da bizikleta bat hemen aparkatzeko?"</string>
     <string name="quest_buildingType_house_description2">"bereizi gabeko familia bakarrarentzako etxea"</string>
     <string name="quest_drinking_water_potable_signed">"Ur edangarria (seinaleztatua)"</string>
-    <string name="quest_drinking_water_potable_unsigned">"Ur edangarria (oharrik gabe)"</string>
     <string name="quest_drinking_water_not_potable_signed">"Ur ez edangarria (seinaleztatua)"</string>
-    <string name="quest_drinking_water_not_potable_unsigned">"Ur ez edangarria (seinaleztatu gabea)"</string>
     <string name="quest_postboxRoyalCypher_title">"Zein da postontzi honetako errege-zenbakia?"</string>
     <string name="quest_postboxRoyalCypher_type_none">"Ez da errege-zenbakirik ikusten"</string>
     <string name="quest_postboxRoyalCypher_type_scottish_crown">"Eskoziako Koroa"</string>
@@ -1445,4 +1442,28 @@ Maila bat sabai maila da leihoak sabaian dituenean. Beraz, sabai mailarik ez dut
 
 "</string>
     <string name="team_mode_description_overlay_hint">"Gainjartzeak erabilita, bakoitzak bat behar duzue, erronkak bakarrik partekatzen direlako"</string>
+    <string name="quest_dietType_glutenfree_name_title">"Eskaintzen al da glutenik gabeko produkturik?"</string>
+    <string name="quest_dietType_explanation_glutenfree">"Glutenik gabeko produktuak prestatzeak ezagutzak behar ditu, espeziak eta saltsak gluten izan ditzakeelako. Glutenik gabeko janaria modu esplizituki etiketatuko litzateke horrela"</string>
+    <string name="quest_construction_minor_title">"Amaitu al da errepide txikia?"</string>
+    <string name="map_attribution">"Maparen egiletza"</string>
+    <string name="link_panoramax_description">"Software librea eta irabazi asmorik gabeko zerbitzua lankidetza bidez kale-mailako argazkiak partekatzeko"</string>
+    <string name="link_opengeofiction_description">"Errealitatea mapeatzen nekatuta? Lankidetzan sortu fikziozko mapak!"</string>
+    <string name="link_openclimbing_description">"Eskalada lekuen mapa"</string>
+    <string name="pref_title_zoom_buttons">"Erakutsi zoom botoiak"</string>
+    <string name="overlay_mtb_scale">"MTB zailtasuna"</string>
+    <string name="overlay_mtb_scale_0">"0. gradu"</string>
+    <string name="overlay_mtb_scale_0_description">"Gainazal trinkotua; oztoporik ez; aldapa leunak; kurba zabalak."</string>
+    <string name="overlay_mtb_scale_1">"1. gradua"</string>
+    <string name="overlay_mtb_scale_1_description">"Lur partzialki solteak, sustrai txikiak, harriak, higadura edo ur-arteziak dituena; ≤%40 aldapak; oztopoak; oinarrizko teknika behar da."</string>
+    <string name="overlay_mtb_scale_2">"2. gradua"</string>
+    <string name="overlay_mtb_scale_2_description">"Sustrai eta harkaitz handiagoak dituzten lur solteak, jaitsiera/eskailera txikiak, % 70erainoko gradientea; biratze errazak; balaztatze handiak eta pisu-aldaketa beharrezkoak."</string>
+    <string name="overlay_mtb_scale_3">"3. gradua"</string>
+    <string name="overlay_mtb_scale_3_description">"Lur labainkorra, harri solte, arroka, sustrai eta haitz handiekin, maila altuekin eta zeharkaldi zailarekin; bira estuakk, &gt; % 70eko desnibela; oreka oso ona eta balaztatze zehatza behar dira."</string>
+    <string name="overlay_mtb_scale_4">"4. gradua"</string>
+    <string name="overlay_mtb_scale_5">"5. gradua"</string>
+    <string name="overlay_mtb_scale_6">"6. gradua"</string>
+    <string name="overlay_mtb_scale_6_description">"Lur arriskutsu eta ezinezkoa, ez da mendiko bizikletentzat egokia."</string>
+    <string name="compass">"Iparorratza"</string>
+    <string name="quest_tracktype_grade2">"Gehien bat solidoa"</string>
+    <string name="quest_tracktype_grade3">"Nahasketa"</string>
 </resources>

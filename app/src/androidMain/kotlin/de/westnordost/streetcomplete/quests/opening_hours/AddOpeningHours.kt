@@ -39,6 +39,8 @@ class AddOpeningHours(
               or tourism = information and information = office
               or natural = cave_entrance and fee = yes
               or tower:type = observation and fee = yes
+              or leisure = garden and fee = yes
+              or leisure = park and fee = yes
               or """ +
 
         // The common list is shared by the name quest, the opening hours quest and the wheelchair quest.
@@ -63,7 +65,7 @@ class AddOpeningHours(
                 "coworking_space",                                                                  // work
 
                 // name & opening hours
-                "boat_rental"
+                "boat_rental", "vehicle_inspection", "motorcycle_rental", "crematorium",
 
                 // not ATM because too often it's simply 24/7 and too often it is confused with
                 // a bank that might be just next door because the app does not tell the user what
@@ -130,6 +132,12 @@ class AddOpeningHours(
         )
         and opening_hours:signed != no
     """).toElementFilterExpression() }
+    // name filter is there to ensure that place name quest triggers first, so that object is identified if possible
+    // Otherwise, in situation of two shops of the similar type with names A and B following may happen
+    // (1) mapper answers for one object with opening hours for shop A 
+    // (2) this or different mapper may answer that it is named B
+    // what would result in bad opening hours
+    // this filter reduces risk of this happening and also makes this quest less confusing to answer
 
     override val changesetComment = "Survey opening hours"
     override val wikiLink = "Key:opening_hours"

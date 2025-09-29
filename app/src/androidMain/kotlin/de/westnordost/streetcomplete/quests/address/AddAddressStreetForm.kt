@@ -2,42 +2,46 @@ package de.westnordost.streetcomplete.quests.address
 
 import android.os.Bundle
 import android.view.View
-import androidx.core.view.isGone
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.material.Surface
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.ui.Modifier
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.meta.AbbreviationsByLanguage
+import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.meta.NameSuggestionsSource
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
-import de.westnordost.streetcomplete.databinding.ViewStreetOrPlaceNameInputBinding
+import de.westnordost.streetcomplete.databinding.ComposeViewBinding
+import de.westnordost.streetcomplete.osm.ALL_PATHS
+import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.osm.address.PlaceName
+import de.westnordost.streetcomplete.osm.address.StreetName
 import de.westnordost.streetcomplete.osm.address.StreetOrPlaceName
-import de.westnordost.streetcomplete.osm.address.StreetOrPlaceNameViewController
+import de.westnordost.streetcomplete.osm.address.StreetOrPlaceNameForm
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
+import de.westnordost.streetcomplete.ui.util.content
+import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import de.westnordost.streetcomplete.util.getNameAndLocationSpanned
-import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import org.koin.android.ext.android.inject
-import java.util.Locale
 
 class AddAddressStreetForm : AbstractOsmQuestForm<StreetOrPlaceName>() {
-    override val contentLayoutResId = R.layout.view_street_or_place_name_input
-    private val binding by contentViewBinding(ViewStreetOrPlaceNameInputBinding::bind)
+    override val contentLayoutResId = R.layout.compose_view
+    private val binding by contentViewBinding(ComposeViewBinding::bind)
 
-    private val abbreviationsByLanguage: AbbreviationsByLanguage by inject()
     private val nameSuggestionsSource: NameSuggestionsSource by inject()
 
-    private lateinit var streetOrPlaceCtrl: StreetOrPlaceNameViewController
+    private val roadsWithNamesFilter =
+        "ways with highway ~ ${(ALL_ROADS + ALL_PATHS).joinToString("|")} and name"
+            .toElementFilterExpression()
 
-    private var isShowingPlaceName = lastWasPlaceName
+    private lateinit var streetOrPlaceName: MutableState<StreetOrPlaceName>
+    private lateinit var showSelect: MutableState<Boolean>
 
     override val otherAnswers = listOf(
         AnswerItem(R.string.quest_address_street_no_named_streets) { showPlaceName() }
     )
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        isShowingPlaceName = savedInstanceState?.getBoolean(IS_PLACE_NAME) ?: lastWasPlaceName
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -47,52 +51,55 @@ class AddAddressStreetForm : AbstractOsmQuestForm<StreetOrPlaceName>() {
             showHouseNumber = true
         ))
 
-        streetOrPlaceCtrl = StreetOrPlaceNameViewController(
-            select = binding.streetOrPlaceSelect,
-            placeNameInputContainer = binding.placeNameInputContainer,
-            placeNameInput = binding.placeNameInput,
-            streetNameInputContainer = binding.streetNameInputContainer,
-            streetNameInput = binding.streetNameInput,
-            nameSuggestionsSource = nameSuggestionsSource,
-            abbreviationsByLanguage = abbreviationsByLanguage,
-            countryLocale = Locale.forLanguageTag(countryInfo.languageTag.orEmpty()),
-            startWithPlace = isShowingPlaceName,
-            viewLifecycleScope = viewLifecycleScope
-        )
-        streetOrPlaceCtrl.onInputChanged = { checkIsFormComplete() }
+        binding.composeViewBase.content { Surface {
+            streetOrPlaceName = rememberSerializable { mutableStateOf(
+                if (lastWasPlaceName) PlaceName("") else StreetName("")
+            ) }
+            showSelect = rememberSaveable { mutableStateOf(lastWasPlaceName) }
 
-        // initially do not show the select for place name
-        if (!isShowingPlaceName) {
-            binding.streetOrPlaceSelect.isGone = true
-        }
+            StreetOrPlaceNameForm(
+                value = streetOrPlaceName.value,
+                onValueChange = {
+                    streetOrPlaceName.value = it
+                    checkIsFormComplete()
+                },
+                modifier = Modifier.fillMaxWidth(),
+                showSelect = showSelect.value
+            )
+        } }
     }
 
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-        outState.putBoolean(IS_PLACE_NAME, isShowingPlaceName)
-    }
 
-    override fun onClickMapAt(position: LatLon, clickAreaSizeInMeters: Double): Boolean =
-        streetOrPlaceCtrl.selectStreetAt(position, clickAreaSizeInMeters)
+    override fun onClickMapAt(position: LatLon, clickAreaSizeInMeters: Double): Boolean {
+        if (streetOrPlaceName.value !is StreetName) return false
+
+        val name = nameSuggestionsSource
+            .getNames(position, clickAreaSizeInMeters, roadsWithNamesFilter)
+            .firstOrNull()
+            ?.find { it.languageTag.isEmpty() }
+            ?.name
+            ?: return false
+
+        streetOrPlaceName.value = StreetName(name)
+        checkIsFormComplete()
+        return true
+    }
 
     override fun onClickOk() {
-        val streetOrPlaceName = streetOrPlaceCtrl.streetOrPlaceName!!
-        lastWasPlaceName = streetOrPlaceName is PlaceName
-        applyAnswer(streetOrPlaceName)
+        lastWasPlaceName = streetOrPlaceName.value is PlaceName
+        applyAnswer(streetOrPlaceName.value)
     }
 
     override fun isFormComplete(): Boolean =
-        streetOrPlaceCtrl.streetOrPlaceName != null
+        streetOrPlaceName.value.name.isNotEmpty()
 
     private fun showPlaceName() {
-        isShowingPlaceName = true
-        binding.streetOrPlaceSelect.isGone = false
-        streetOrPlaceCtrl.selectPlaceName()
+        streetOrPlaceName.value = PlaceName("")
+        showSelect.value = true
+        checkIsFormComplete()
     }
 
     companion object {
         private var lastWasPlaceName = false
-
-        private const val IS_PLACE_NAME = "is_place_name"
     }
 }

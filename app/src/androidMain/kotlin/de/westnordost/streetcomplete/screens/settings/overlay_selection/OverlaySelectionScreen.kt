@@ -12,8 +12,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
-import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.quest_presets_default_name
+import org.jetbrains.compose.resources.stringResource
 
 /** Shows a screen in which the user can enable and disable overlays */
 @Composable
@@ -27,7 +28,7 @@ fun OverlaySelectionScreen(
 
     Column(Modifier.fillMaxSize()) {
         OverlaySelectionTopAppBar(
-            currentPresetName = currentPresetName ?: stringResource(R.string.quest_presets_default_name),
+            currentPresetName = currentPresetName ?: stringResource(Res.string.quest_presets_default_name),
             onClickBack = onClickBack,
             onReset = { viewModel.resetAll() }
         )
