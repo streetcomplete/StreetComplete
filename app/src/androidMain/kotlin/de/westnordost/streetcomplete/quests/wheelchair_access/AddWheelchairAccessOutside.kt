@@ -15,7 +15,7 @@ class AddWheelchairAccessOutside : OsmFilterQuestType<WheelchairAccess>(), Andro
         nodes, ways, relations with
          (
           leisure = dog_park
-          or tower:type = observation
+          or man_made = tower and tower:type = observation and !emergency and building != fire_lookout
          )
          and access !~ no|private
          and (!wheelchair or wheelchair older today -8 years)
