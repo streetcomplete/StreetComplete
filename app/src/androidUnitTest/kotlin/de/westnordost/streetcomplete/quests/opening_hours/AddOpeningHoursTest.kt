@@ -23,7 +23,7 @@ import kotlin.test.assertTrue
 
 class AddOpeningHoursTest {
 
-    private val questType = AddOpeningHours(mock())
+    private val questType = AddOpeningHours()
 
     @Test fun `apply description answer`() {
         assertEquals(
@@ -219,7 +219,7 @@ class AddOpeningHoursTest {
         )))
 
         assertFalse(questType.isApplicableTo(node(
-            tags = mapOf("barrier" to "unknown_type_of_barrier")
+            tags = mapOf("barrier" to "block")
         )))
     }
 

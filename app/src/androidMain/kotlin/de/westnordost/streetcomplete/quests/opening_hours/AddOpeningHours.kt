@@ -18,9 +18,7 @@ import de.westnordost.streetcomplete.osm.opening_hours.parser.isSupportedOpening
 import de.westnordost.streetcomplete.osm.updateCheckDateForKey
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 
-class AddOpeningHours(
-    private val getFeature: (Element) -> Feature?
-) : OsmElementQuestType<OpeningHoursAnswer>, AndroidQuest {
+class AddOpeningHours() : OsmElementQuestType<OpeningHoursAnswer>, AndroidQuest {
 
     /* See also AddWheelchairAccessBusiness and AddPlaceName, which has a similar list and is/should
        be ordered in the same way for better overview */
