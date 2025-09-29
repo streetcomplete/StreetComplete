@@ -840,6 +840,11 @@ Before uploading your changes, the app checks with a &lt;a href="https://www.wes
     <string name="quest_board_type_map_title">Is it just a map and only a map?</string>
     <string name="quest_board_type_map_description">If the board is about a particular topic, please specify it, regardless of whether it also includes a map. For example a public transport board may have a bus route map. If the topic is not listed among the available answers, please consider leaving a note instead.</string>
 
+    <string name="quest_boat_lock_type_title">What kind of lock is this?</string>
+    <string name="quest_boat_lock_type_automated">Automated</string>
+    <string name="quest_boat_lock_type_self_service">Self-service</string>
+    <string name="quest_boat_lock_type_manual">Manual</string>
+
     <string name="quest_boat_rental_title">Which type of boats are for rent here?</string>
     <string name="quest_boat_rental_motorboat">Motorboat</string>
     <string name="quest_boat_rental_jetski">Jetski</string>
