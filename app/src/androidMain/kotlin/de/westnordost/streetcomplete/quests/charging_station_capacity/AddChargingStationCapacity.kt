@@ -17,8 +17,7 @@ class AddChargingStationCapacity : OsmFilterQuestType<Int>(), AndroidQuest {
         nodes, ways with
           amenity = charging_station
           and !capacity
-          and bicycle !~ yes|designated
-          and scooter !~ yes|designated
+          and !capacity:motorcar
           and motorcar != no
           and motor_vehicle != no
           and access !~ private|no
@@ -37,6 +36,10 @@ class AddChargingStationCapacity : OsmFilterQuestType<Int>(), AndroidQuest {
     override fun createForm() = AddChargingStationCapacityForm()
 
     override fun applyAnswerTo(answer: Int, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
-        tags.updateWithCheckDate("capacity", answer.toString())
+        if (countAccessTags(tags) == 1) {
+            tags.updateWithCheckDate("capacity", answer.toString())
+        } else {
+            tags.updateWithCheckDate("capacity:motorcar", answer.toString())
+        }
     }
 }
