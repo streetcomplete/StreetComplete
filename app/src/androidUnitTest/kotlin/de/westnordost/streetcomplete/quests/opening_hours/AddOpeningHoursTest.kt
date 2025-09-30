@@ -23,7 +23,7 @@ import kotlin.test.assertTrue
 
 class AddOpeningHoursTest {
 
-    private val questType = AddOpeningHours(mock())
+    private val questType = AddOpeningHours()
 
     @Test fun `apply description answer`() {
         assertEquals(
@@ -207,9 +207,45 @@ class AddOpeningHoursTest {
         )))
     }
 
-    @Test fun `isApplicableTo returns true for known places`() {
+    @Test fun `isApplicableTo returns true for named places`() {
         assertTrue(questType.isApplicableTo(node(
             tags = mapOf("shop" to "sports", "name" to "Atze's Angelladen")
+        )))
+    }
+
+    @Test fun `isApplicableTo returns false for unnamed places`() {
+        assertFalse(questType.isApplicableTo(node(
+            tags = mapOf("shop" to "sports")
+        )))
+    }
+
+    @Test fun `isApplicableTo returns false for places unsupported by idtagging`() {
+        assertFalse(questType.isApplicableTo(node(
+            tags = mapOf("barrier" to "unsupported", "opening_hours" to "Mo-Fr 10:00-20:00")
+        )))
+    }
+
+    @Test fun `isApplicableTo returns true for places with brands`() {
+        assertTrue(questType.isApplicableTo(node(
+            tags = mapOf("shop" to "sports", "brand" to "Atze's Angelladen")
+        )))
+    }
+
+    @Test fun `isApplicableTo returns true for places noname=yes`() {
+        assertTrue(questType.isApplicableTo(node(
+            tags = mapOf("shop" to "sports", "noname" to "yes")
+        )))
+    }
+
+    @Test fun `isApplicableTo returns true for places namesigned=no`() {
+        assertTrue(questType.isApplicableTo(node(
+            tags = mapOf("shop" to "sports", "name:signed" to "no")
+        )))
+    }
+
+    @Test fun `isApplicableTo returns true for unnamed parking`() {
+        assertTrue(questType.isApplicableTo(node(
+            tags = mapOf("amenity" to "bicycle_parking", "bicycle_parking" to "building")
         )))
     }
 
@@ -236,13 +272,19 @@ class AddOpeningHoursTest {
     @Test fun `isApplicableTo returns true for parks with old opening hours`() {
         val millisecondsFor400Days: Long = 1000L * 60 * 60 * 24 * 400
         assertTrue(questType.isApplicableTo(
-            node(tags = mapOf("leisure" to "park", "name" to "Trolololo", "opening_hours" to "Mo-Fr 10:00-20:00"), timestamp = nowAsEpochMilliseconds() - millisecondsFor400Days)
+            node(tags = mapOf("leisure" to "park", "opening_hours" to "Mo-Fr 10:00-20:00"), timestamp = nowAsEpochMilliseconds() - millisecondsFor400Days)
         ))
     }
 
-    @Test fun `isApplicableTo returns false for toilets without opening hours`() {
+    @Test fun `isApplicableTo returns false for toilets without opening hours or fee`() {
         assertFalse(questType.isApplicableTo(
             node(tags = mapOf("amenity" to "toilets"), timestamp = nowAsEpochMilliseconds())
+        ))
+    }
+
+    @Test fun `isApplicableTo returns true for toilets with fee=yes`() {
+        assertTrue(questType.isApplicableTo(
+            node(tags = mapOf("amenity" to "toilets", "fee" to "yes"), timestamp = nowAsEpochMilliseconds())
         ))
     }
 
