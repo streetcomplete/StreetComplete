@@ -24,7 +24,7 @@ class AddWheelchairAccessBusiness : OsmFilterQuestType<WheelchairAccess>(), Andr
             or amenity = parking and parking ~ multi-storey|underground|rooftop
             or amenity = recycling and recycling_type = centre
             or amenity = social_facility and social_facility ~ food_bank|clothing_bank|soup_kitchen|dairy_kitchen
-            or tourism = information and information = office
+            or tourism = information and information ~ office|visitor_center
             or natural = cave_entrance and fee=yes
             or """ +
 

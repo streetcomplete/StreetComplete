@@ -131,7 +131,7 @@ mapOf(
                     or amenity = recycling and recycling_type = centre
                     or amenity = toilets and (fee = yes or toilets:disposal = flush)
                     or amenity = shower and (fee = yes or indoor = yes or location = indoor)
-                    or tourism = information and information = office
+                    or tourism = information and information ~ office|visitor_center
                     or tower:type = observation and fee = yes
                     or leisure = garden and fee = yes
                     or leisure = park and fee = yes
