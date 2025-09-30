@@ -837,7 +837,7 @@ val achievements = listOf(
         mapOf(
             1 to links("openstreetbrowser"),
             2 to links("osmapp"),
-            3 to links("organic_maps"),
+            3 to links("co_maps"),
             4 to links("indoorequal"),
             5 to links("osmand"),
             6 to links("sunders"),
