@@ -36,7 +36,11 @@ class AddChargingStationCapacity : OsmFilterQuestType<Int>(), AndroidQuest {
     override fun createForm() = AddChargingStationCapacityForm()
 
     override fun applyAnswerTo(answer: Int, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
-        if (otherAccessTag(tags, "motorcar")) {
+        /*
+        use capacity:motorcar if this charging station can be used my multiple vehicles
+        otherwise use capacity
+         */
+        if (canBeAccessedByOtherVehicle(tags, "motorcar")) {
             tags.updateWithCheckDate("capacity:motorcar", answer.toString())
         } else {
             tags.updateWithCheckDate("capacity", answer.toString())
