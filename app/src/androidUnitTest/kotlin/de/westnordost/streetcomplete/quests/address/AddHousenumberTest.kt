@@ -115,6 +115,66 @@ class AddHousenumberTest {
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
     }
 
+    @Test fun `does create quest for building that is inside an area with an address on its outline that is however associated to another building`() {
+        val houseWithAddressNode = Pair(
+            Way(1L, listOf(1, 2, 3, 4, 1), mapOf("building" to "detached"), 1),
+            ElementPolygonsGeometry(listOf(listOf(P1, P2, P3, P4, P1)), PC),
+        )
+        val areaWithAddressNode = Pair(
+            Way(2L, listOf(1, 5, 6, 7, 8, 1), mapOf("landuse" to "residential"), 1),
+            ElementPolygonsGeometry(listOf(listOf(P1, P5, P6, P7, P8, P1)), PC),
+        )
+        // address is part of both of the above
+        val addressNode = Pair(
+            Node(1L, P1, mapOf("addr:housenumber" to "123"), 1),
+            ElementPointGeometry(P1)
+        )
+
+        val house = Pair(
+            Way(3L, listOf(4, 3, 7, 8, 4), mapOf("building" to "detached"), 1),
+            ElementPolygonsGeometry(listOf(listOf(P4, P3, P7, P8, P4)), PC),
+        )
+
+        val mapData = createMapData(mapOf(
+            houseWithAddressNode,
+            areaWithAddressNode,
+            addressNode,
+            house,
+        ))
+        assertEquals(house.first, questType.getApplicableElements(mapData).toList().single())
+    }
+
+    // this test is identical to the above, but buildings and other areas are treated differently,
+    // so this should be tested both with buildings and other areas
+    @Test fun `does create quest for building that is inside an area with an address on its outline that is however associated to another area`() {
+        val smallerAreaWithAddressNode = Pair(
+            Way(1L, listOf(1, 2, 3, 4, 1), mapOf("amenity" to "school"), 1),
+            ElementPolygonsGeometry(listOf(listOf(P1, P2, P3, P4, P1)), PC),
+        )
+        val largerAreaWithAddressNode = Pair(
+            Way(2L, listOf(1, 5, 6, 7, 8, 1), mapOf("landuse" to "residential"), 1),
+            ElementPolygonsGeometry(listOf(listOf(P1, P5, P6, P7, P8, P1)), PC),
+        )
+        // address is part of both of the above
+        val addressNode = Pair(
+            Node(1L, P1, mapOf("addr:housenumber" to "123"), 1),
+            ElementPointGeometry(P1)
+        )
+
+        val house = Pair(
+            Way(3L, listOf(4, 3, 7, 8, 4), mapOf("building" to "detached"), 1),
+            ElementPolygonsGeometry(listOf(listOf(P4, P3, P7, P8, P4)), PC),
+        )
+
+        val mapData = createMapData(mapOf(
+            smallerAreaWithAddressNode,
+            largerAreaWithAddressNode,
+            addressNode,
+            house,
+        ))
+        assertEquals(house.first, questType.getApplicableElements(mapData).toList().single())
+    }
+
     @Test fun `does not create quest for building that contains an address node`() {
         val building = way(1L, NODES1, mapOf(
             "building" to "detached"
