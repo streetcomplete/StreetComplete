@@ -402,7 +402,7 @@ fun questTypeRegistry(
     79 to CheckShopType(),
     80 to AddPlaceName(getFeature),
     77 to CheckOpeningHoursSigned(getFeature),
-    81 to AddOpeningHours(getFeature),
+    81 to AddOpeningHours(),
     83 to AddBicyclePump(), // visible from the outside, but only during opening hours
 
     84 to AddAtmOperator(),
