@@ -65,7 +65,7 @@ fun <I, G: Group<I>> GroupedItemSelectDialog(
                 groupContent = groupContent,
                 itemContent = itemContent,
                 modifier = Modifier
-                    .fadingVerticalScrollEdges(scrollState, 96.dp)
+                    .fadingVerticalScrollEdges(scrollState, 64.dp)
                     .padding(horizontal = 24.dp)
                     .verticalScroll(scrollState)
             )

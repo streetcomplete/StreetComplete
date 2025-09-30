@@ -52,7 +52,7 @@ fun <I> SimpleItemSelectDialog(
             title = { Text(stringResource(Res.string.quest_select_hint)) },
             content = {
                 Column(Modifier
-                    .fadingVerticalScrollEdges(scrollState, 96.dp)
+                    .fadingVerticalScrollEdges(scrollState, 64.dp)
                     .verticalScroll(scrollState)
                     .padding(horizontal = 24.dp),
                 ) {
