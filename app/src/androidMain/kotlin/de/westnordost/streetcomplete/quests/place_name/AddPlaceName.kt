@@ -25,7 +25,7 @@ class AddPlaceName(
           or craft
           or amenity = recycling and recycling_type = centre
           or amenity = shelter and shelter_type = basic_hut
-          or tourism = information and information ~ office|visitor_center
+          or tourism = information and information ~ office|visitor_centre
           or natural = cave_entrance and fee = yes
           or """ +
 
