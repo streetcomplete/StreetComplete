@@ -120,7 +120,8 @@ class AddHousenumber(
             .filter { it.isArea() }
             .sortedBy {
                 // we check small areas first, because smaller areas should "consume" address nodes,
-                // or in
+                // or in other words, address nodes on outlines are associated to the smallest area
+                // they are part of
                 val geom = mapData.getGeometry(it.type, it.id) as? ElementPolygonsGeometry
                 val size = geom?.polygons?.measuredMultiPolygonArea() ?: 0.0
                 size
