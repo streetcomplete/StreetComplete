@@ -115,6 +115,7 @@ class AddHousenumberTest {
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
     }
 
+    // https://github.com/streetcomplete/StreetComplete/issues/6500#issuecomment-3353073272
     @Test fun `does create quest for building that is inside an area with an address on its outline that is however associated to another building`() {
         val houseWithAddressNode = Pair(
             Way(1L, listOf(1, 2, 3, 4, 1), mapOf("building" to "detached"), 1),
