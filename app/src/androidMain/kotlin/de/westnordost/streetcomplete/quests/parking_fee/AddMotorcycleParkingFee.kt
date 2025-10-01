@@ -11,7 +11,6 @@ import de.westnordost.streetcomplete.osm.maxstay.applyTo
 
 class AddMotorcycleParkingFee : OsmFilterQuestType<ParkingFeeAnswer>(), AndroidQuest {
 
-    // element selection logic by @DerDings in #2507
     override val elementFilter = """
         nodes, ways, relations with amenity = motorcycle_parking
         and access ~ yes|customers|public
