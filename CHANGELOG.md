@@ -1,5 +1,29 @@
 # Changelog
 
+## vNext
+
+### New quests
+- _"Can you wash your hands here?"_, asked for toilets (#6394), by @paulklie
+- _"How many people can sleep here?"_ asked for wilderness huts etc. (#6442), by @paulklie
+- _"On which level number is this thing located?"_ asked for things in malls (#6433), by @paulklie
+- _"Do you have to pay to park here?" asked for motorbike parkings (#6532), by @ElPoraz
+
+### General
+- Address and name quests looks different now, with a few improvements (#6403, #5479)
+- Replace app suggestion Organic Maps with CoMaps (#6451)
+
+### Quest improvements
+- Refine which quests to ask for the different places and things (#6481, #6475, #6428, #6474, #6463, #6402, #6498, #6499, #6523, #6522, #6521, #6520, #6529, #6519, #6492, #6534…), by @paulklie
+- Postbox collection times: Disable in Denmark (#6455), by @matkoniecz
+- Bus stop name: Disable in Sweden (#6515), by @paulklie
+- Mopeds on bike paths: Enable in Sweden (#6516), by @paulklie
+- Other small refinements (#6445, #6511…)
+- Housenumbers: Ask for some buildings that were previously excluded (#6533)
+
+### Overlay improvements
+- Places: don't show "it's vacant" option for already vacant places (#6462), by @paulklie
+- Addresses: Allow omitting the street name (#6528)
+
 ## v61.3
 
 ### Quest improvements
