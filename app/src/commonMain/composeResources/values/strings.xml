@@ -340,7 +340,7 @@ If you are overwhelmed by the number of quests, you can always fine-tune which q
 You can find donation information on our website or project home, the app store policies do not allow us to provide the link within the app.</string>
 
     <string name="about_title_translate">Translate this app</string>
-    <string name="about_description_translate">%1$s is translated %2$d%%</string>
+    <string name="about_description_translate">%1$s is translated %2$d%</string>
 
     <string name="about_title_privacy_statement">Privacy</string>
 
