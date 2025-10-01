@@ -24,7 +24,7 @@ class AddMotorcycleParkingFee : OsmFilterQuestType<ParkingFeeAnswer>(), AndroidQ
     override val icon = R.drawable.ic_quest_motorcycle_parking_fee
     override val achievements = listOf(CAR)
 
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_motorcycle_parking_fee_title
+    override fun getTitle(tags: Map<String, String>) = R.string.quest_parking_fee_title
 
     override fun createForm() = AddParkingFeeForm()
 
