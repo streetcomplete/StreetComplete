@@ -3,16 +3,19 @@
 ## vNext
 
 ### New quests
+
 - _"Can you wash your hands here?"_, asked for toilets (#6394), by @paulklie
 - _"How many people can sleep here?"_ asked for wilderness huts etc. (#6442), by @paulklie
 - _"On which level number is this thing located?"_ asked for things in malls (#6433), by @paulklie
-- _"Do you have to pay to park here?" asked for motorbike parkings (#6532), by @ElPoraz
+- _"Do you have to pay to park here?"_ asked for motorbike parkings (#6532), by @ElPoraz
 
 ### General
+
 - Address and name quests looks different now, with a few improvements (#6403, #5479)
 - Replace app suggestion Organic Maps with CoMaps (#6451)
 
 ### Quest improvements
+
 - Refine which quests to ask for the different places and things (#6481, #6475, #6428, #6474, #6463, #6402, #6498, #6499, #6523, #6522, #6521, #6520, #6529, #6519, #6492, #6534…), by @paulklie
 - Postbox collection times: Disable in Denmark (#6455), by @matkoniecz
 - Bus stop name: Disable in Sweden (#6515), by @paulklie
@@ -21,28 +24,32 @@
 - Housenumbers: Ask for some buildings that were previously excluded (#6533)
 
 ### Overlay improvements
+
 - Places: don't show "it's vacant" option for already vacant places (#6462), by @paulklie
 - Addresses: Allow omitting the street name (#6528)
 
 ## v61.3
 
 ### Quest improvements
+
 - Ask some quests (fee, opening hours, name, indoor, step count…) for more places and things (#5316, #5318, #5319, #6402, #6429, #6430, #6432 …), thanks @matkoniecz, @paulklie
 - Potable water: Don't force user to answer whether a water source without any sign is potable or not (#6421)
 - Other small refinements (#6410, #6418, #6408, #6422 …), thanks @mnalis, @burrscurr
 
 ### Fixes
-- Don't show achievements the user hasn't unlock yet (#6435)
-- Show text about no unlocked links/achievements yet correctly
+
+- Don't show achievements the user hasn't unlocked yet (#6435)
+- Show "no unlocked links/achievements yet" text correctly
 - Max height: Fix text was white on white in dark mode (#6409)
 - Opening hours: Fix times were not displayed correctly around the hour clocks are put forward/backward (DST) (#6188)
-- Surface smoothness: Fix crash when encountering concrete plates (#6424) 
+- Surface smoothness: Fix crash when encountering concrete plates (#6424)
 - Bike parking capacity: Don't show previous value on re-survey (#6443)
-- Places overlay: Don't auto-replace a feature if the new one is a subtype of the previous one or the other way round but ask user (#6406)
+- Places overlay: Don't auto-replace a feature if the new one is a subtype of the previous one or the other way round, but ask user (#6406)
 
 ## v61.2
 
 ### Quest improvements
+
 - Ask many quests (Fee, lit, name, internet access, opening hours, wheelchair access, …) for many more shops and amenities (#6345, #6349, #6353, #6357, #6358, #6359, #6365, #6368, #6374, #6382, #6383, #6386, #6396, #6397), by @paulklie, a few more by @matkoniecz
 - Max physical height: Clarify wording, don't ask for highways (#6367, #6362, #6363), by @kmpoppe
 - Motorcycle parking capacity: Don't ask if there are no markings at all (#6299), by @matkoniecz
@@ -52,6 +59,7 @@
 - Traffic signals vibration: Don't ask in Czech Republic (#6224), by @matkoniecz
 
 ### Fixes
+
 - Charging station car capacity: Don't ask for charging stations designated for bicycles etc. (#6388), by @paulklie
 - Fix a number of issues that may potentially cause bugs (#6307, #6311, #6315, #6317, #6321, #6332, #6322), by @RubenKelevra
 - Ferry routes: Only ask for actual ferry lines, not just connections (#6387, #6375), by @paulklie
@@ -59,13 +67,15 @@
 ## v61.1
 
 ### Fixes
-- Fix map attribution was shown in front of Next-button in tutorial 😬 (#6255)
+
+- Fix map attribution was shown in front of "Next" button in tutorial 😬 (#6255)
 - Fix opening the app at certain location would open it always at that location (#6264)
 - Wheelchair accessible toilets: Fix "no" answer shouldn't imply that there are toilets at all (#6257)
 - Places overlay: Fix some brand features were not selectable (#6267)
 - Building levels: Fix keyboard popped up automatically (#6284)
 
-### Improvements 
+### Improvements
+
 - Halal: Also ask for vegan-only places (#6280), by @mnalis
 - Road width: Disable by default (#6256)
 - Track type: Use better pictures (#6242), by @Caerbannog
