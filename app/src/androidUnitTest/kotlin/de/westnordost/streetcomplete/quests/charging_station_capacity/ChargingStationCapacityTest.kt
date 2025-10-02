@@ -22,12 +22,6 @@ class ChargingStationCapacityTest {
         ))))
     }
 
-    @Test fun `applicable to charging station without vehicle`() {
-        assertTrue(questType.isApplicableTo(node(tags = mapOf(
-            "amenity" to "charging_station"
-        ))))
-    }
-
     @Test fun `not applicable to charging station with only other vehicle set`() {
         assertFalse(questType.isApplicableTo(node(tags = mapOf(
             "amenity" to "charging_station",

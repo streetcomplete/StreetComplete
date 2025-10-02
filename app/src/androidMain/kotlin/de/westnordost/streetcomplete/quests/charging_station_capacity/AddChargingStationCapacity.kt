@@ -22,14 +22,6 @@ class AddChargingStationCapacity : OsmFilterQuestType<Int>(), AndroidQuest {
           (
             motorcar ~ yes|designated
             or motor_vehicle ~ yes|designated
-            or
-            (
-              !motorcar
-              and !motor_vehicle
-              and bicycle !~ yes|designated
-              and hgv !~ yes|designated
-              and scooter !~ yes|designated
-            )
           )
           and access !~ private|no
     """
