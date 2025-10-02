@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests.scooter_charging_station_capacity
+package de.westnordost.streetcomplete.quests.charging_station_capacity
 
 import de.westnordost.streetcomplete.quests.AAddCountInput
 import de.westnordost.streetcomplete.resources.Res
