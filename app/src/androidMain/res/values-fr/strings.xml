@@ -176,7 +176,6 @@ Les informations que vous saisissez sont ensuite directement ajoutées à OpenSt
     <string name="quest_source_dialog_note">"Seules des informations vérifiées sur place devraient être saisies."</string>
     <string name="quest_bicycleParkingCoveredStatus_title">"Ce parking à vélos est-il couvert (protégé de la pluie) ?"</string>
     <string name="dialog_session_dont_show_again">"Ne plus afficher pour cette session"</string>
-    <string name="quest_firewood_WoodProvidedStatus_title">Le bois à brûler est-il fourni ici?</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"Cette limitation de vitesse semble peu plausible."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"Êtes-vous sûr·e qu’aucune limite n’est indiquée ?"</string>
     <string name="quest_maxspeed_answer_noSign_confirmation">"Avez-vous vérifié aux extrémités de la voie ?
@@ -1305,8 +1304,6 @@ De plus, certaines surcouches vous permettent d’ajouter de nouvelles données 
     <string name="quest_recycling_type_food_waste">"Déchets alimentaires"</string>
     <string name="quest_defibrillator_location">"Où se trouve ce défibrillateur ?"</string>
     <string name="quest_defibrillator_location_description">"Veuillez fournir une description concise de son emplacement (ex. « dans la bagagerie »)."</string>
-    <string name="quest_first_aid_kit_location">"Où se trouve cette trousse de secours?"</string>
-    <string name="quest_first_aid_kit_location_description">"Veuillez fournir une description concise de son emplacement (ex. « dans la bagagerie »)."</string>
     <string name="quest_sanitary_dump_station_title">"Y a-t-il une station de vidange ?"</string>
     <string name="quest_sanitary_dump_station_description">"Installation permettant de déverser des déchets organiques provenant du réservoir des toilettes d’un camping-car, d’une camionnette, etc. Généralement indiqué par un panneau comme celui-ci :"</string>
     <string name="quest_generalFee_title">"Doit-on payer pour l’utiliser ?"</string>
