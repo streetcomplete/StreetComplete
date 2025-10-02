@@ -4,7 +4,6 @@ import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import androidx.annotation.AnyThread
-import androidx.core.view.isGone
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.databinding.QuestStreetLanesPuzzleBinding
@@ -207,9 +206,9 @@ class AddLanesForm : AbstractOsmQuestForm<LanesAnswer>() {
         puzzleView.edgeLineColor =
             if (edgeLine.contains("yellow")) Color.YELLOW else Color.WHITE
         puzzleView.edgeLineStyle = when {
-            !edgeLine.contains("dashes") -> LineStyle.CONTINUOUS
-            edgeLine.contains("short") -> LineStyle.SHORT_DASHES
-            else -> LineStyle.DASHES
+            !edgeLine.contains("dashes") -> LineStyle2.CONTINUOUS
+            edgeLine.contains("short") -> LineStyle2.SHORT_DASHES
+            else -> LineStyle2.DASHES
         }
 
         puzzleView.centerLineColor = if (countryInfo.centerLineStyle.contains("yellow")) Color.YELLOW else Color.WHITE

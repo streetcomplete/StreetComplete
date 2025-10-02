@@ -19,9 +19,9 @@ import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.ViewLanesSelectPuzzleBinding
-import de.westnordost.streetcomplete.quests.lanes.LineStyle.CONTINUOUS
-import de.westnordost.streetcomplete.quests.lanes.LineStyle.DASHES
-import de.westnordost.streetcomplete.quests.lanes.LineStyle.SHORT_DASHES
+import de.westnordost.streetcomplete.quests.lanes.LineStyle2.CONTINUOUS
+import de.westnordost.streetcomplete.quests.lanes.LineStyle2.DASHES
+import de.westnordost.streetcomplete.quests.lanes.LineStyle2.SHORT_DASHES
 import de.westnordost.streetcomplete.util.ktx.getBitmapDrawable
 import de.westnordost.streetcomplete.util.ktx.isApril1st
 import de.westnordost.streetcomplete.util.ktx.showTapHint
@@ -116,7 +116,7 @@ class LanesSelectPuzzle @JvmOverloads constructor(
         }
         get() = edgeLinePaint.color
 
-    var edgeLineStyle: LineStyle = CONTINUOUS
+    var edgeLineStyle: LineStyle2 = CONTINUOUS
         set(value) {
             field = value
             invalidate()
@@ -456,4 +456,4 @@ private fun Canvas.drawVerticallyRepeating(drawable: Drawable, left: Int, size: 
     }
 }
 
-enum class LineStyle { CONTINUOUS, DASHES, SHORT_DASHES }
+enum class LineStyle2 { CONTINUOUS, DASHES, SHORT_DASHES }
