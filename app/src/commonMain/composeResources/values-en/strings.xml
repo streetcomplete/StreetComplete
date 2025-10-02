@@ -340,7 +340,7 @@ If you are overwhelmed by the number of quests, you can always fine-tune which q
 You can find donation information on our website or project home, the app store policies do not allow us to provide the link within the app.</string>
 
     <string name="about_title_translate">Translate this app</string>
-    <string name="about_description_translate">%1$s is translated %2$d%%</string>
+    <string name="about_description_translate">%1$s is translated %2$d%</string>
 
     <string name="about_title_privacy_statement">Privacy</string>
 
@@ -996,7 +996,7 @@ A level counts as a roof level when its windows are in the roof. Subsequently, r
     <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
     <string name="quest_busStopName_title2">What’s the name of this stop?</string>
     <!-- very similar naming as "quest_streetName_hint" -->
-    <string name="quest_stopName_hint">You can apply the same name as another stop by tapping on it on the map. </string>
+    <string name="quest_stopName_hint">"You can apply the same name as another stop by tapping on it on the map."</string>
     <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
     <string name="quest_busStopRef_title2">What number or code identifies this stop?</string>
     <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
@@ -1196,6 +1196,7 @@ If any lanes are reserved for buses, please leave a note instead.</string>
     <string name="quest_leafType_tree_is_just_a_stump">It’s just a tree stump</string>
 
     <string name="quest_level_title2">On which level number is this place located?</string>
+    <string name="quest_level_thing_title">On which level number is this thing located?</string>
 
     <string name="quest_lit_title">Is it lit here?</string>
 

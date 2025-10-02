@@ -55,6 +55,7 @@ fun AnAddressNumberInput(
         // to avoid the size of the text changing when going from e.g. "123j" to "123k"
         fontFamily = FontFamily.Monospace,
     )) {
+        val textStyle = LocalTextStyle.current
         AutoFitTextFieldFontSize(
             value = valueState.text,
             modifier = modifier
@@ -66,7 +67,7 @@ fun AnAddressNumberInput(
                     onValueChange(valueState.text)
                 },
                 placeholder = if (!suggestion.isNullOrEmpty()) { {
-                    val textStyle = LocalTextStyle.current
+
                     BasicText(
                         text = suggestion,
                         style = textStyle.copy(color = textStyle.color.copy(alpha = 0.2f)),
