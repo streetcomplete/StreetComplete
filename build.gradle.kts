@@ -92,6 +92,7 @@ tasks.register("updateStreetCompleteData") {
         "app:generateMetadataByCountry",
         "app:updateTranslatorCredits",
         "app:updateAvailableLanguages",
-        "app:downloadAndConvertPresetIcons"
+        "app:downloadAndConvertPresetIcons",
+        "app:copyDefaultStringsToEnStrings"
     )
 }

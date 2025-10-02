@@ -456,6 +456,7 @@ tasks.register<GenerateMetadataByCountryTask>("generateMetadataByCountry") {
 }
 
 tasks.register("copyDefaultStringsToEnStrings") {
+    group = "streetcomplete"
     doLast {
         val sourceStrings = File("$projectDir/src/androidMain/res/values/strings.xml")
 
