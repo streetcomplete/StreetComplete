@@ -176,6 +176,7 @@ Les informations que vous saisissez sont ensuite directement ajoutées à OpenSt
     <string name="quest_source_dialog_note">"Seules des informations vérifiées sur place devraient être saisies."</string>
     <string name="quest_bicycleParkingCoveredStatus_title">"Ce parking à vélos est-il couvert (protégé de la pluie) ?"</string>
     <string name="dialog_session_dont_show_again">"Ne plus afficher pour cette session"</string>
+    <string name="quest_firewood_WoodProvidedStatus_title">Le bois à brûler est-il fourni ici?</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"Cette limitation de vitesse semble peu plausible."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"Êtes-vous sûr·e qu’aucune limite n’est indiquée ?"</string>
     <string name="quest_maxspeed_answer_noSign_confirmation">"Avez-vous vérifié aux extrémités de la voie ?
