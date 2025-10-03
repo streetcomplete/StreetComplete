@@ -21,7 +21,8 @@
 - Housenumbers: Ask for some buildings that were previously excluded (#6533)
 
 ### Overlay improvements
-- Places: don't show "it's vacant" option for already vacant places (#6462), by @paulklie
+- Things: Added Exersize Equipment, Seamarks, Disc Golf, Tomb, Grave, Pillory and Aerialway Pylon as things
+- Places: Don't show "it's vacant" option for already vacant places (#6462), by @paulklie
 - Addresses: Allow omitting the street name (#6528)
 
 ## v61.3

@@ -42,6 +42,9 @@ private val IS_THING_EXPRESSION by lazy {
             "windsock",
             "gate",
         ),
+        "aerialway" to listOf(
+            "pylon"
+        ),
         "amenity" to listOf(
             // grouped by subcategory, sorted by alphabet
 
@@ -168,6 +171,8 @@ private val IS_THING_EXPRESSION by lazy {
             // "ship" - too big, more like a structure/building
             "stone",
             "tank",
+            "pillory",
+            "tomb",
             "vehicle",
             // "wreck" - too big, and usually quite off-shore anyway
             "wayside_cross",
@@ -248,6 +253,8 @@ private val IS_THING_EXPRESSION by lazy {
         or amenity = recycling and recycling_type = container
         or attraction
         or boundary = marker
+        or cemetery = grave
+        or disc_golf
         or fitness_station
         or leisure = pitch and sport ~ chess|table_soccer|table_tennis|teqball
         or playground
@@ -256,6 +263,7 @@ private val IS_THING_EXPRESSION by lazy {
           or trolleybus = yes
           or tram = yes
         )
+        or seamark:type
         or highway = bus_stop and public_transport != stop_position
         or tourism = information and information !~ office|visitor_centre
     """.toElementFilterExpression()
