@@ -33,7 +33,7 @@ class AddFirewood : OsmFilterQuestType<Boolean>(), AndroidQuest {
         "NO",
         "CH"
     )
-    override val changesetComment = "Specify yes or no the firewood is provided"
+    override val changesetComment = "Specified if firewood is provided"
     override val wikiLink = "Tag:leisure=firepit"
     override val icon = R.drawable.ic_quest_firewood
     override val isDeleteElementEnabled = true
