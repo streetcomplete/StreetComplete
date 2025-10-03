@@ -9,12 +9,22 @@
         android:fillColor="#9BBE55"/>
 
     <path
+        android:pathData="M32,42h64a4,4 0 0 1 4,4v40a4,4 0 0 1 -4,4H32a4,4 0 0 1 -4,-4V46a4,4 0 0 1 4,-4z"
+        android:fillColor="#000000"
+        android:fillAlpha="0.2"/>
+
+    <path
         android:pathData="M32,40h64a4,4 0 0 1 4,4v40a4,4 0 0 1 -4,4H32a4,4 0 0 1 -4,-4V44a4,4 0 0 1 4,-4z"
         android:fillColor="#EF4444"/>
 
     <path
         android:pathData="M48,32h32a4,4 0 0 1 4,4v4h-8v-4H52v4h-8v-4a4,4 0 0 1 4,-4z"
         android:fillColor="#D1D5DB"/>
+
+    <path
+        android:pathData="M68,54h-8v8h-8v8h8v8h8v-8h8v-8h-8z"
+        android:fillColor="#000000"
+        android:fillAlpha="0.2"/>
 
     <path
         android:pathData="M64,48a16,16 0 1,0 0,32a16,16 0 1,0 0,-32z"
