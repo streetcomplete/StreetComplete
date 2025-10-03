@@ -88,7 +88,6 @@ import de.westnordost.streetcomplete.quests.fire_hydrant_diameter.AddFireHydrant
 import de.westnordost.streetcomplete.quests.fire_hydrant_position.AddFireHydrantPosition
 import de.westnordost.streetcomplete.quests.fire_hydrant_ref.AddFireHydrantRef
 import de.westnordost.streetcomplete.quests.firewood.AddFirewood
-import de.westnordost.streetcomplete.quests.first_aid_kit.AddFirstAidKitLocation
 import de.westnordost.streetcomplete.quests.foot.AddProhibitedForPedestrians
 import de.westnordost.streetcomplete.quests.fuel_service.AddFuelSelfService
 import de.westnordost.streetcomplete.quests.general_fee.AddGeneralFee
@@ -377,6 +376,8 @@ fun questTypeRegistry(
     67 to AddFireHydrantRef(),
 
     160 to AddBbqFuel(),
+    185 to AddFirewood(),
+
     /* ↓ 2.solvable when right in front of it but takes longer to input --------------------- */
 
     // bike parking/rental: would be higher up if not for bike parking/rental capacity which is usually not solvable when moving past
@@ -467,15 +468,12 @@ fun questTypeRegistry(
     113 to AddIsAmenityIndoor(getFeature), // need to go inside in case it is inside (or gone)
     161 to AddDefibrillatorLocation(), // need to go inside in case it is inside (or gone)
 
-    183 to AddFirstAidKitLocation(), // need to go inside in case it is inside (or gone)
-
     // inside camping sites
     114 to AddCampType(),
     115 to AddCampDrinkingWater(),
     116 to AddCampShower(),
     117 to AddCampPower(),
     162 to AddSanitaryDumpStation(),
-    185 to AddFirewood(),
 
     177 to AddShelterCapacity(),
 
