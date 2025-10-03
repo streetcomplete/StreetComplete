@@ -181,15 +181,14 @@ private fun TeamModeColorSelect(
         modifier = Modifier.padding(top = 24.dp)
     ) {
         for (index in 0..<teamSize) {
+            val selectionBackground = MaterialTheme.colors.selectionBackground
+            val selectionShape = MaterialTheme.shapes.small
             TeamModeColorCircle(
                 index = index,
                 modifier = Modifier
                     .clickable { onSelectedIndex(index) }
                     .conditional(selectedIndex == index) {
-                        background(
-                            color = MaterialTheme.colors.selectionBackground,
-                            shape = MaterialTheme.shapes.small
-                        )
+                        background(selectionBackground, selectionShape)
                     }
                     .padding(8.dp)
                     .width(56.dp)

@@ -25,8 +25,8 @@ class AddPlaceName(
           or craft
           or amenity = recycling and recycling_type = centre
           or amenity = shelter and shelter_type = basic_hut
-          or tourism = information and information = office
-          or natural = cave_entrance and fee=yes
+          or tourism = information and information ~ office|visitor_centre
+          or natural = cave_entrance and fee = yes
           or """ +
 
         // The common list is shared by the opening hours quest and the wheelchair quest.
@@ -52,7 +52,7 @@ class AddPlaceName(
                 "coworking_space",                                                                  // work
 
                 // name & opening hours
-                "boat_rental", "vehicle_inspection",
+                "boat_rental", "vehicle_inspection", "motorcycle_rental", "crematorium",
 
                 // name & wheelchair
                 "theatre",                                        // culture
@@ -65,8 +65,8 @@ class AddPlaceName(
 
                 // name only
                 "studio",                                                                // culture
-                "events_venue", "exhibition_centre", "music_venue",                      // events
-                "prison", "fire_station",                                                // civic
+                "events_venue", "exhibition_centre", "music_venue", "funeral_hall",      // events
+                "prison", "fire_station", "bus_station",                                 // civic
                 "social_facility", "nursing_home", "childcare", "retirement_home", "social_centre", // social
                 "monastery",                                                             // religious
                 "kindergarten", "school", "college", "university", "research_institute", // education
