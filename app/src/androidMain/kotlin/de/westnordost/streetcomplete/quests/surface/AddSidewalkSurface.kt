@@ -32,7 +32,7 @@ class AddSidewalkSurface : OsmFilterQuestType<SidewalkSurfaceAnswer>(), AndroidQ
     """
     override val changesetComment = "Specify sidewalk surfaces"
     override val wikiLink = "Key:sidewalk"
-    override val icon = R.drawable.ic_quest_sidewalk_surface
+    override val icon = R.drawable.quest_sidewalk_surface
     override val achievements = listOf(PEDESTRIAN, WHEELCHAIR)
     override val defaultDisabledMessage = Res.string.default_disabled_msg_difficult_and_time_consuming
 

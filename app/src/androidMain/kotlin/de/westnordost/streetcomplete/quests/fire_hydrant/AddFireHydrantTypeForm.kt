@@ -1,13 +1,21 @@
 package de.westnordost.streetcomplete.quests.fire_hydrant
 
-import de.westnordost.streetcomplete.quests.AImageListQuestForm
+import androidx.compose.runtime.Composable
+import de.westnordost.streetcomplete.quests.AItemSelectQuestForm
+import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 
-class AddFireHydrantTypeForm : AImageListQuestForm<FireHydrantType, FireHydrantType>() {
+class AddFireHydrantTypeForm : AItemSelectQuestForm<FireHydrantType, FireHydrantType>() {
 
-    override val items = FireHydrantType.entries.map { it.asItem() }
+    override val items = FireHydrantType.entries
     override val itemsPerRow = 2
 
-    override fun onClickOk(selectedItems: List<FireHydrantType>) {
-        applyAnswer(selectedItems.single())
+    @Composable override fun ItemContent(item: FireHydrantType) {
+        ImageWithLabel(painterResource(item.icon), stringResource(item.title))
+    }
+
+    override fun onClickOk(selectedItem: FireHydrantType) {
+        applyAnswer(selectedItem)
     }
 }

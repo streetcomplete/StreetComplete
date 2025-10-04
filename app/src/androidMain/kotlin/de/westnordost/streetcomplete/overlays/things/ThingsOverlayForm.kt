@@ -87,7 +87,7 @@ class ThingsOverlayForm : AbstractOverlayForm() {
 
         // title hint label with name is a duplication, it is displayed in the UI already
         setTitleHintLabel(element?.let { getNameAndLocationSpanned(it, resources, null) })
-        setMarkerIcon(R.drawable.ic_quest_dot)
+        setMarkerIcon(R.drawable.quest_dot)
 
         featureCtrl = FeatureViewController(featureDictionary, binding.featureTextView, binding.featureIconView)
         featureCtrl.countryOrSubdivisionCode = countryOrSubdivisionCode

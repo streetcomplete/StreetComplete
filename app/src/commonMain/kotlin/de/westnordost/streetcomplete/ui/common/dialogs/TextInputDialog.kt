@@ -3,9 +3,9 @@ package de.westnordost.streetcomplete.ui.common.dialogs
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.AlertDialog
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Text
 import androidx.compose.material.TextButton
+import androidx.compose.material.TextField
 import androidx.compose.material.contentColorFor
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -64,7 +64,7 @@ fun TextInputDialog(
         modifier = modifier,
         title = title,
         text = {
-            OutlinedTextField(
+            TextField(
                 value = value,
                 onValueChange = { value = it },
                 modifier = Modifier.fillMaxWidth().focusRequester(focusRequester),

@@ -19,7 +19,7 @@ class AddBikeParkingAccess : OsmFilterQuestType<ParkingAccess>(), AndroidQuest {
 
     override val changesetComment = "Specify bicycle parking access"
     override val wikiLink = "Tag:amenity=bicycle_parking"
-    override val icon = R.drawable.ic_quest_bicycle_parking_access
+    override val icon = R.drawable.quest_bicycle_parking_access
     override val achievements = listOf(BICYCLIST)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_bicycle_parking_access_title2

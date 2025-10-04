@@ -40,7 +40,7 @@ class AddStepCountStile : OsmElementQuestType<Int>, AndroidQuest {
 
     override val changesetComment = "Specify stiles step count"
     override val wikiLink = "Key:step_count"
-    override val icon = R.drawable.ic_quest_steps_count_brown
+    override val icon = R.drawable.quest_steps_count_brown
     override val achievements = listOf(OUTDOORS)
     override val isDeleteElementEnabled = true
 

@@ -21,7 +21,7 @@ class AddToiletsFee : OsmFilterQuestType<Boolean>(), AndroidQuest {
     """
     override val changesetComment = "Specify toilet fees"
     override val wikiLink = "Key:fee"
-    override val icon = R.drawable.ic_quest_toilet_fee
+    override val icon = R.drawable.quest_toilet_fee
     override val enabledInCountries = AllCountriesExcept("US", "CA")
     override val isDeleteElementEnabled = true
     override val achievements = listOf(CITIZEN)

@@ -19,7 +19,7 @@ class AddPowerPolesMaterial : OsmFilterQuestType<PowerPolesMaterialAnswer>(), An
     """
     override val changesetComment = "Specify power poles material type"
     override val wikiLink = "Tag:power=pole"
-    override val icon = R.drawable.ic_quest_power
+    override val icon = R.drawable.quest_power
     override val achievements = listOf(BUILDING)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_powerPolesMaterial_title

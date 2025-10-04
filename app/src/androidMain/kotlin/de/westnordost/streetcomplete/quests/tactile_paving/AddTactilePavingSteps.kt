@@ -27,7 +27,7 @@ class AddTactilePavingSteps : OsmFilterQuestType<TactilePavingStepsAnswer>(), An
 
     override val changesetComment = "Survey tactile paving on steps"
     override val wikiLink = "Key:tactile_paving"
-    override val icon = R.drawable.ic_quest_steps_tactile_paving
+    override val icon = R.drawable.quest_steps_tactile_paving
     override val enabledInCountries = COUNTRIES_WHERE_TACTILE_PAVING_IS_COMMON
     override val achievements = listOf(BLIND)
 

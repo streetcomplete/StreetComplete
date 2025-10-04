@@ -32,7 +32,7 @@ class AddCycleway(
 
     override val changesetComment = "Specify whether there are cycleways"
     override val wikiLink = "Key:cycleway"
-    override val icon = R.drawable.ic_quest_bicycleway
+    override val icon = R.drawable.quest_bicycleway
     override val achievements = listOf(BICYCLIST)
     override val defaultDisabledMessage = Res.string.default_disabled_msg_overlay
 

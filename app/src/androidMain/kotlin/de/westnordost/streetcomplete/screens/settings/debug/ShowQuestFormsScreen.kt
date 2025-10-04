@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.screens.settings.debug
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -17,17 +18,12 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.AppBarDefaults
-import androidx.compose.material.Divider
 import androidx.compose.material.IconButton
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.material.TextFieldDefaults
-import androidx.compose.material.TopAppBar
-import androidx.compose.material.primarySurface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -47,6 +43,7 @@ import de.westnordost.streetcomplete.ui.common.BackIcon
 import de.westnordost.streetcomplete.ui.common.CenteredLargeTitleHint
 import de.westnordost.streetcomplete.ui.common.ExpandableSearchField
 import de.westnordost.streetcomplete.ui.common.SearchIcon
+import de.westnordost.streetcomplete.ui.common.TopAppBarWithContent
 import org.jetbrains.compose.resources.stringResource
 
 /** Searchable and clickable quest list as a full screen */
@@ -57,7 +54,6 @@ fun ShowQuestFormsScreen(
     onClickBack: () -> Unit,
 ) {
     val searchText by viewModel.searchText.collectAsState()
-
     val filteredQuests by viewModel.filteredQuests.collectAsState()
 
     Column(Modifier.fillMaxSize()) {
@@ -97,34 +93,26 @@ private fun ShowQuestFormsTopAppBar(
         if (!value) onSearchChange("")
     }
 
-    Surface(
+    TopAppBarWithContent(
+        title = { Text("Show Quest Forms") },
         modifier = modifier,
-        color = MaterialTheme.colors.primarySurface,
-        elevation = AppBarDefaults.TopAppBarElevation,
+        navigationIcon = { IconButton(onClick = onClickBack) { BackIcon() } },
+        actions = { IconButton(onClick = { setShowSearch(!showSearch) }) { SearchIcon() } },
     ) {
-        Column {
-            TopAppBar(
-                title = { Text("Show Quest Forms") },
-                windowInsets = AppBarDefaults.topAppBarWindowInsets,
-                navigationIcon = { IconButton(onClick = onClickBack) { BackIcon() } },
-                actions = { IconButton(onClick = { setShowSearch(!showSearch) }) { SearchIcon() } },
-                elevation = 0.dp
-            )
-            ExpandableSearchField(
-                expanded = showSearch,
-                onDismiss = { setShowSearch(false) },
-                search = search,
-                onSearchChange = onSearchChange,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 16.dp, vertical = 8.dp),
-                colors = TextFieldDefaults.textFieldColors(
-                    textColor = MaterialTheme.colors.onSurface,
-                    backgroundColor = MaterialTheme.colors.surface
-                ),
-                keyboardOptions = KeyboardOptions(hintLocales = LocaleList.current),
-            )
-        }
+        ExpandableSearchField(
+            expanded = showSearch,
+            onDismiss = { setShowSearch(false) },
+            search = search,
+            onSearchChange = onSearchChange,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 16.dp, vertical = 8.dp),
+            colors = TextFieldDefaults.textFieldColors(
+                textColor = MaterialTheme.colors.onSurface,
+                backgroundColor = MaterialTheme.colors.surface
+            ),
+            keyboardOptions = KeyboardOptions(hintLocales = LocaleList.current),
+        )
     }
 }
 
@@ -139,9 +127,13 @@ private fun QuestList(
         modifier = modifier,
         contentPadding = contentPadding,
     ) {
-        itemsIndexed(items, key = { _, it -> it.name }) { index, item ->
-            Column(Modifier.clickable { onClickQuestType(item) }) {
-                if (index > 0) Divider()
+        items(items, key = { it -> it.name }) { item ->
+            Column(Modifier
+                .fillMaxWidth()
+                .background(MaterialTheme.colors.background)
+                .animateItem()
+                .clickable { onClickQuestType(item) }
+            ) {
                 Row(
                     modifier = Modifier.padding(8.dp),
                     horizontalArrangement = Arrangement.spacedBy(8.dp),

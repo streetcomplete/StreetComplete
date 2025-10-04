@@ -19,7 +19,7 @@ class AddPowerAttachment : OsmFilterQuestType<PowerAttachment>(), AndroidQuest {
     """
     override val changesetComment = "Specify line_attachment power support"
     override val wikiLink = "Key:line_attachment"
-    override val icon = R.drawable.ic_quest_power
+    override val icon = R.drawable.quest_power
     override val achievements = listOf(BUILDING)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_powerAttachment_title

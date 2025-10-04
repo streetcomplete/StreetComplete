@@ -41,7 +41,7 @@ class AddFootwayPartSurface : OsmFilterQuestType<Surface>(), AndroidQuest {
     """
     override val changesetComment = "Add footway path surfaces"
     override val wikiLink = "Key:surface"
-    override val icon = R.drawable.ic_quest_footway_surface
+    override val icon = R.drawable.quest_footway_surface
     override val achievements = listOf(PEDESTRIAN, WHEELCHAIR, OUTDOORS)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_footwayPartSurface_title

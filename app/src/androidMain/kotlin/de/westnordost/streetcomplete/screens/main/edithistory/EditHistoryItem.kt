@@ -26,7 +26,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestHidden
 import de.westnordost.streetcomplete.quests.recycling.AddRecyclingType
 import de.westnordost.streetcomplete.screens.main.controls.MapButton
 import de.westnordost.streetcomplete.ui.common.UndoIcon
-import de.westnordost.streetcomplete.ui.theme.selectionBackground
+import de.westnordost.streetcomplete.ui.ktx.selectionFrame
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
 /** One item in the edit history sidebar list. Selectable and when selected, an undo button is
@@ -40,7 +40,6 @@ fun EditHistoryItem(
     modifier: Modifier = Modifier,
 ) {
     val backgroundColor = when {
-        selected -> MaterialTheme.colors.selectionBackground
         edit.isSynced == true -> MaterialTheme.colors.onSurface.copy(alpha = 0.1f)
         else -> MaterialTheme.colors.surface
     }
@@ -48,6 +47,7 @@ fun EditHistoryItem(
         contentAlignment = Alignment.Center,
         modifier = modifier
             .background(backgroundColor)
+            .selectionFrame(selected)
             .selectable(
                 selected = selected,
                 onClick = onSelect

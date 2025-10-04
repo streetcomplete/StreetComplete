@@ -13,7 +13,7 @@ class AddTrafficCalmingType : OsmFilterQuestType<TrafficCalmingType>(), AndroidQ
     override val elementFilter = "nodes with traffic_calming = yes"
     override val changesetComment = "Specify traffic calming types"
     override val wikiLink = "Key:traffic_calming"
-    override val icon = R.drawable.ic_quest_car_bumpy
+    override val icon = R.drawable.quest_car_bumpy
     override val isDeleteElementEnabled = true
     override val achievements = listOf(PEDESTRIAN, CAR)
 

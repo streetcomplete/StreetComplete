@@ -38,7 +38,7 @@ import de.westnordost.streetcomplete.resources.quest_streetName_menuItem_languag
 import de.westnordost.streetcomplete.resources.quest_streetName_menuItem_international
 import de.westnordost.streetcomplete.resources.quest_streetName_menuItem_nolanguage
 import de.westnordost.streetcomplete.ui.common.ButtonStyle
-import de.westnordost.streetcomplete.ui.common.SelectButton
+import de.westnordost.streetcomplete.ui.common.DropdownButton
 import de.westnordost.streetcomplete.util.ktx.displayName
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
@@ -97,7 +97,7 @@ fun LocalizedNamesForm(
         }
 
         if (selectableLanguageTags.isNotEmpty()) {
-            SelectButton(
+            DropdownButton(
                 items = selectableLanguageTags,
                 onSelectedItem = { languageTag ->
                     val result = localizedNames.toMutableList()
@@ -139,7 +139,7 @@ private fun LocalizedNameRow(
         horizontalArrangement = Arrangement.spacedBy(8.dp),
         modifier = modifier,
     ) {
-        SelectButton(
+        DropdownButton(
             items = languageTags,
             selectedItem = languageTag,
             onSelectedItem = { onChange(localizedName.copy(languageTag = it)) },

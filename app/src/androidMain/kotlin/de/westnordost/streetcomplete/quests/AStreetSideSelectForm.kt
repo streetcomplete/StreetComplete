@@ -2,13 +2,15 @@ package de.westnordost.streetcomplete.quests
 
 import android.os.Bundle
 import android.view.View
+import androidx.compose.foundation.layout.BoxScope
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.databinding.QuestStreetSidePuzzleWithLastAnswerButtonBinding
+import de.westnordost.streetcomplete.ui.common.street_side_select.StreetSideItem
 import de.westnordost.streetcomplete.util.math.getOrientationAtCenterLineInDegrees
 import de.westnordost.streetcomplete.view.ResImage
-import de.westnordost.streetcomplete.view.controller.StreetSideDisplayItem
 import de.westnordost.streetcomplete.view.controller.StreetSideSelectWithLastAnswerButtonViewController
 import org.koin.android.ext.android.inject
 
@@ -32,6 +34,10 @@ abstract class AStreetSideSelectForm<I, T> : AbstractOsmQuestForm<T>() {
             updateButtonPanel()
         }
 
+    @Composable abstract fun BoxScope.DialogItemContent(item: I, isRight: Boolean)
+
+    @Composable abstract fun getStreetSideItem(item: I, isRight: Boolean): StreetSideItem
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -49,7 +55,7 @@ abstract class AStreetSideSelectForm<I, T> : AbstractOsmQuestForm<T>() {
         streetSideSelect.isEnabled = !isDisplayingPrevious
         streetSideSelect.onClickSide = ::onClickSide
         streetSideSelect.offsetPuzzleRotation = (geometry as ElementPolylinesGeometry).getOrientationAtCenterLineInDegrees()
-        val defaultPuzzleImage = ResImage(if (countryInfo.isLeftHandTraffic) R.drawable.ic_street_side_unknown_l else R.drawable.ic_street_side_unknown)
+        val defaultPuzzleImage = ResImage(if (countryInfo.isLeftHandTraffic) R.drawable.street_side_unknown_l else R.drawable.street_side_unknown)
         streetSideSelect.defaultPuzzleImageLeft = defaultPuzzleImage
         streetSideSelect.defaultPuzzleImageRight = defaultPuzzleImage
         streetSideSelect.updateLastSelectionButton()
@@ -92,7 +98,6 @@ abstract class AStreetSideSelectForm<I, T> : AbstractOsmQuestForm<T>() {
 
     protected abstract fun serialize(item: I): String
     protected abstract fun deserialize(str: String): I
-    protected abstract fun asStreetSideItem(item: I, isRight: Boolean): StreetSideDisplayItem<I>
 
     /* --------------------------------------- apply answer ------------------------------------- */
 

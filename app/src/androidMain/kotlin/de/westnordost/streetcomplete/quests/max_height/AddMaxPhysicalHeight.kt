@@ -61,7 +61,7 @@ class AddMaxPhysicalHeight(
 
     override val changesetComment = "Specify maximum physical heights"
     override val wikiLink = "Key:maxheight"
-    override val icon = R.drawable.ic_quest_max_height_measure
+    override val icon = R.drawable.quest_max_height_measure
     override val achievements = listOf(EditTypeAchievement.CAR)
     override val defaultDisabledMessage: StringResource?
         get() = if (!checkArSupport()) Res.string.default_disabled_msg_no_ar else null
