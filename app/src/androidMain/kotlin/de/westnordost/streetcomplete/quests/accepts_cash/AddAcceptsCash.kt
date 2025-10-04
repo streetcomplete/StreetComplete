@@ -21,7 +21,7 @@ class AddAcceptsCash : OsmFilterQuestType<Boolean>(), AndroidQuest {
         val amenities = listOf(
             "bar", "cafe", "fast_food", "ice_cream", "pub", "biergarten", "restaurant", "fuel",
             "cinema", "nightclub", "planetarium", "theatre", "internet_cafe", "car_wash",
-            "pharmacy", "telephone", "vending_machine"
+            "pharmacy", "telephone", "vending_machine", "luggage_locker"
         )
         val tourismsWithImpliedFees = listOf(
             "theme_park", "hotel", "hostel", "motel", "guest_house",
