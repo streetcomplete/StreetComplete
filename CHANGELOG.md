@@ -25,7 +25,7 @@
 
 ### Overlay improvements
 
-- Things: Added Exersize Equipment, Seamarks, Disc Golf, Tomb, Grave and Pillory as things
+- Things: Added exercise equipment, moorings, buoys, disc golf, graves and pillory as things
 - Places: don't show "it's vacant" option for already vacant places (#6462), by @paulklie
 - Addresses: Allow omitting the street name (#6528)
 
