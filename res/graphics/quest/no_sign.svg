@@ -1,0 +1,7 @@
+<svg version="1.1" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+ <path class="si-glyph-fill" d="m86.885 46.997 17.115-6.8154-17.115-7.5834h-17.74v-4.5979h-4.5877v4.5979h-20.121v14.399h20.121v10.971h-22.842l-17.715 7.4868 17.715 7.1816h22.842v30.675h4.5877v-30.675h15.345v-14.668h-15.345v-10.971z" fill-rule="evenodd"/>
+ <g transform="matrix(5.9535 0 0 5.9535 -7.4428 -7.4409)" fill="none" stroke="#f00" stroke-width="1.5">
+  <path d="m18.5 5.5-13 13" stroke-linecap="round"/>
+  <circle cx="12" cy="12" r="10"/>
+ </g>
+</svg>

@@ -14,6 +14,7 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.quests.aerialway.AerialwayBicycleAccessAnswer.YES
 import de.westnordost.streetcomplete.quests.aerialway.AerialwayBicycleAccessAnswer.SUMMER
+import de.westnordost.streetcomplete.quests.aerialway.AerialwayBicycleAccessAnswer.NO_SIGN
 import de.westnordost.streetcomplete.quests.aerialway.AerialwayBicycleAccessAnswer.NO
 
 class AddAerialwayBicycleAccess : OsmElementQuestType<AerialwayBicycleAccessAnswer>, AndroidQuest {
@@ -35,6 +36,7 @@ class AddAerialwayBicycleAccess : OsmElementQuestType<AerialwayBicycleAccessAnsw
         tags["aerialway:bicycle"] = when (answer) {
             YES -> "yes"
             SUMMER -> "summer"
+            NO_SIGN -> ":signed=no"
             NO -> "no"
         }
     }

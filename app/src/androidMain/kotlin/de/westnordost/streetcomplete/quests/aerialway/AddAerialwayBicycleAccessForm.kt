@@ -8,7 +8,7 @@ class AddAerialwayBicycleAccessForm : AImageListQuestForm<AerialwayBicycleAccess
     override val items get() =
         AerialwayBicycleAccessAnswer.entries.map { it.asItem(requireContext()) }
 
-    override val itemsPerRow = 3
+    override val itemsPerRow = 4
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
