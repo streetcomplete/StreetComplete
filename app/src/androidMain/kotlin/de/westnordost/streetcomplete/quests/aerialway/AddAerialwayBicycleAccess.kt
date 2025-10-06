@@ -34,7 +34,7 @@ class AddAerialwayBicycleAccess : OsmElementQuestType<AerialwayBicycleAccessAnsw
     override fun applyAnswerTo(answer: AerialwayBicycleAccessAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags["aerialway:bicycle"] = when (answer) {
             YES -> "yes"
-            SUMMER -> "-1"
+            SUMMER -> "summer"
             NO -> "no"
         }
     }
