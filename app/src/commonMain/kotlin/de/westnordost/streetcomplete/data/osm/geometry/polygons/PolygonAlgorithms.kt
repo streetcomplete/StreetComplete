@@ -26,5 +26,11 @@ object PolygonAlgorithms {
             if (pts.y < minY) minY = pts.y
             if (pts.y > maxY) maxY = pts.y
         }
+        val length = maxX - minX
+        val height = maxY - minY
+        val cellSize = minOf(length, height)
+        val h = cellSize / 2.0
+
+        val queue = PriorityQueue<Cell>()
     }
 }
