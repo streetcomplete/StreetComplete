@@ -19,7 +19,7 @@ import de.westnordost.streetcomplete.quests.aerialway.AerialwayBicycleAccessAnsw
 class AddAerialwayBicycleAccess : OsmElementQuestType<AerialwayBicycleAccessAnswer>, AndroidQuest {
 
     private val filter by lazy {
-        "ways, relations with aerialway and !aerialway:bicycle and !bicycle".toElementFilterExpression()
+        "ways, relations with aerialway~cable_car|gondola|chair_lift and !aerialway:bicycle and !bicycle".toElementFilterExpression()
     }
     override val changesetComment = "Specify aerialway access for bicycles"
     override val wikiLink = "Tag:aerialway"
