@@ -47,6 +47,6 @@ class AddFirewood : OsmFilterQuestType<Boolean>(), AndroidQuest {
     override fun createForm() = YesNoQuestForm()
 
     override fun applyAnswerTo(answer: Boolean, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
-        tags["firepit:wood_provided"] = answer.toYesNo()
+        tags["wood_provided"] = answer.toYesNo()
     }
 }
