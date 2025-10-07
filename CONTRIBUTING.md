@@ -102,7 +102,7 @@ See also [this far more detailed guide to making a new quest](CONTRIBUTING_A_NEW
 
 ### Code style
 
-Inheritance and class hierarchy should be avoided if possible. It is preferable to extract shared code to helper file such as [KerbUtil.kt](app/src/main/java/de/westnordost/streetcomplete/osm/kerb/KerbUtil.kt).
+Inheritance and class hierarchy should be avoided if possible. It is preferable to extract shared code to helper file such as [KerbUtil.kt](app/src/commonMain/kotlin/de/westnordost/streetcomplete/osm/kerb/KerbUtil.kt).
 
 It is recommended to install the [*Ktlint* Android Studio plugin](https://plugins.jetbrains.com/plugin/15057-ktlint) which highlights lint issues (e.g. inconsistent spacing) directly inline while writing code.
 
@@ -146,4 +146,3 @@ You may find more projects under [the StreetComplete tag](https://github.com/top
 
 * [oneway-data-api](https://github.com/streetcomplete/oneway-data-api) by [@ENT8R](https://github.com/ENT8R) for getting oneway data from improveosm.org
 * [parser](https://github.com/matkoniecz/Zazolc/tree/taginfo) by [@matkoniecz](https://github.com/matkoniecz) listing tags added by StreetComplete for [taginfo](https://taginfo.openstreetmap.org/projects/streetcomplete#tags)
-
