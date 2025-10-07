@@ -236,7 +236,7 @@ See [this step](https://github.com/matkoniecz/StreetComplete_quest_creation_tuto
 override val achievements = listOf(LIFESAVER)
 ```
 
-In quest achievements, list what is relevant to the given quest, see the full list of available ones in [AchievementsModule.kt](app/src/androidMain/kotlin/de/westnordost/streetcomplete/data/user/achievements/AchievementsModule.kt)
+In quest achievements, list what is relevant to the given quest, see the full list of available ones in [AchievementsModule.kt](app/src/commonMain/kotlin/de/westnordost/streetcomplete/data/user/achievements/AchievementsModule.kt)
 
 See [this step](https://github.com/matkoniecz/StreetComplete_quest_creation_tutorial/commit/f043440b43ad84d321c7aae4fd03095c34af8eb4) in the example repository.
 
