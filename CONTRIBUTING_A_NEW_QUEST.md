@@ -179,7 +179,7 @@ This query will be limited to objects which fulfill some requirements.
 - `and !indoor`
   - and `indoor` key must not be present at all, to show only ones where this tag is still missing
 
-See the documentation of [`ElementFilterExpression`](app/src/androidMain/kotlin/de/westnordost/streetcomplete/data/elementfilter/ElementFilterExpression.kt) for a complete documentation of the syntax. You can look around some quests to see more examples of such element filter expressions.
+See the documentation of [`ElementFilterExpression`](app/src/commonMain/kotlin/de/westnordost/streetcomplete/data/elementfilter/ElementFilterExpression.kt) for a complete documentation of the syntax. You can look around some quests to see more examples of such element filter expressions.
 
 
 See [this step](https://github.com/matkoniecz/StreetComplete_quest_creation_tutorial/commit/2726ff1c7b3121825e808c4566e6e534392121b3) in the example repository.
