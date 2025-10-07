@@ -309,7 +309,7 @@ override fun getHighlightedElements(element: Element, getMapData: () -> MapDataW
 
 which causes nearby `emergency = defibrillator` nodes to be shown.
 
-Also [see other optional properties](app/src/androidMain/kotlin/de/westnordost/streetcomplete/data/osm/osmquests/OsmElementQuestType.kt).
+Also [see other optional properties](app/src/commonMain/kotlin/de/westnordost/streetcomplete/data/osm/osmquests/OsmElementQuestType.kt).
 
 See [this step](https://github.com/matkoniecz/StreetComplete_quest_creation_tutorial/commit/1d648e56562d16a5dc3588ca7de8558f97d5919a) in the example repository.
 
