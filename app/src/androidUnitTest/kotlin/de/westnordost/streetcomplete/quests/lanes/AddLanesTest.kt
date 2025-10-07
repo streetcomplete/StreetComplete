@@ -106,13 +106,6 @@ class AddLanesTest {
         )
     }
 
-    @Test fun `answering marked lanes`() {
-        assertEquals(
-            setOf(StringMapEntryAdd("lanes", "4")),
-            questType.answerApplied(MarkedLanes(4))
-        )
-    }
-
     @Test fun `answering marked lanes with previous unmarked answer`() {
         assertEquals(
             setOf(
@@ -120,7 +113,7 @@ class AddLanesTest {
                 StringMapEntryModify("lane_markings", "no", "yes"),
             ),
             questType.answerAppliedTo(
-                MarkedLanes(4),
+                MarkedLanes(2, 2),
                 mapOf(
                     "lanes" to "5",
                     "lane_markings" to "no"
@@ -137,7 +130,7 @@ class AddLanesTest {
                 StringMapEntryModify("lanes:backward", "3", "2")
             ),
             questType.answerAppliedTo(
-                MarkedLanes(4),
+                MarkedLanes(2, 2),
                 mapOf(
                     "lanes" to "5",
                     "lanes:forward" to "2",
@@ -154,7 +147,7 @@ class AddLanesTest {
                 StringMapEntryAdd("lanes:forward", "2"),
                 StringMapEntryAdd("lanes:backward", "3")
             ),
-            questType.answerApplied(MarkedLanesSides(2, 3, false))
+            questType.answerApplied(MarkedLanes(2, 3, false))
         )
     }
 
@@ -167,7 +160,7 @@ class AddLanesTest {
                 StringMapEntryAdd("lanes:backward", "3")
             ),
             questType.answerAppliedTo(
-                MarkedLanesSides(2, 3, false),
+                MarkedLanes(2, 3, false),
                 mapOf(
                     "lanes" to "4",
                     "lane_markings" to "no"
@@ -184,7 +177,7 @@ class AddLanesTest {
                 StringMapEntryModify("lanes:backward", "2", "3")
             ),
             questType.answerAppliedTo(
-                MarkedLanesSides(2, 3, false),
+                MarkedLanes(2, 3, false),
                 mapOf(
                     "lanes" to "4",
                     "lanes:forward" to "2",
@@ -204,7 +197,7 @@ class AddLanesTest {
                 StringMapEntryDelete("turn:lanes:both_ways", "left"),
             ),
             questType.answerAppliedTo(
-                MarkedLanesSides(2, 3, false),
+                MarkedLanes(2, 3, false),
                 mapOf(
                     "lanes:both_ways" to "1",
                     "turn:lanes:both_ways" to "left"
@@ -230,33 +223,16 @@ class AddLanesTest {
         )
     }
 
-    @Test fun `answering marked lanes deletes center lane tagging`() {
-        assertEquals(
-            setOf(
-                StringMapEntryAdd("lanes", "2"),
-                StringMapEntryDelete("lanes:both_ways", "1"),
-                StringMapEntryDelete("turn:lanes:both_ways", "left"),
-            ),
-            questType.answerAppliedTo(
-                MarkedLanes(2),
-                mapOf(
-                    "lanes:both_ways" to "1",
-                    "turn:lanes:both_ways" to "left"
-                )
-            )
-        )
-    }
-
     @Test fun `answering marked lanes with center left turn lane`() {
         assertEquals(
             setOf(
-                StringMapEntryAdd("lanes", "3"),
+                StringMapEntryAdd("lanes", "4"),
                 StringMapEntryAdd("lanes:forward", "1"),
-                StringMapEntryAdd("lanes:backward", "1"),
+                StringMapEntryAdd("lanes:backward", "2"),
                 StringMapEntryAdd("lanes:both_ways", "1"),
                 StringMapEntryAdd("turn:lanes:both_ways", "left")
             ),
-            questType.answerApplied(MarkedLanesSides(1, 1, true))
+            questType.answerApplied(MarkedLanes(1, 2, true))
         )
     }
 }

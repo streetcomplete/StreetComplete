@@ -214,7 +214,7 @@ abstract class AbstractQuestForm :
         binding.glassPane.isGone = !locked
     }
 
-    private fun updateContentPadding() {
+    protected fun updateContentPadding() {
         if (!contentPadding) {
             binding.content.setPadding(0, 0, 0, 0)
         } else {

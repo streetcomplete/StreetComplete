@@ -13,7 +13,7 @@ import de.westnordost.streetcomplete.ui.ktx.selectionFrame
 
 /** Vertical grid of items that can each be selected */
 @Composable
-fun <I> ItemsSelect(
+fun <I> ItemsSelectGrid(
     columns: SimpleGridCells,
     items: List<I>,
     selectedItems: Set<I>,

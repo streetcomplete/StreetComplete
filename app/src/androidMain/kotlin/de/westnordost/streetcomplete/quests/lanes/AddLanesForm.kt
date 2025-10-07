@@ -1,45 +1,47 @@
 package de.westnordost.streetcomplete.quests.lanes
 
-import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import androidx.annotation.AnyThread
+import androidx.compose.material.Surface
+import androidx.compose.runtime.MutableFloatState
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableFloatStateOf
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.snapshotFlow
+import androidx.compose.ui.graphics.Color
+import androidx.lifecycle.lifecycleScope
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
-import de.westnordost.streetcomplete.databinding.QuestStreetLanesPuzzleBinding
+import de.westnordost.streetcomplete.databinding.ComposeViewBinding
 import de.westnordost.streetcomplete.osm.oneway.isForwardOneway
 import de.westnordost.streetcomplete.osm.oneway.isOneway
 import de.westnordost.streetcomplete.osm.oneway.isReversedOneway
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
-import de.westnordost.streetcomplete.quests.lanes.LanesType.MARKED
-import de.westnordost.streetcomplete.quests.lanes.LanesType.MARKED_SIDES
-import de.westnordost.streetcomplete.quests.lanes.LanesType.UNMARKED
-import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
+import de.westnordost.streetcomplete.ui.util.content
 import de.westnordost.streetcomplete.util.math.getOrientationAtCenterLineInDegrees
-import de.westnordost.streetcomplete.view.dialogs.ValuePickerDialog
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.suspendCancellableCoroutine
-import kotlin.coroutines.resume
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 
 class AddLanesForm : AbstractOsmQuestForm<LanesAnswer>() {
 
-    private var selectedLanesType: LanesType? = null
-    private var leftSide: Int = 0
-    private var rightSide: Int = 0
-    private var hasCenterLeftTurnLane: Boolean = false
+    override val contentLayoutResId = R.layout.compose_view
+    private val binding by contentViewBinding(ComposeViewBinding::bind)
 
-    private var mapRotation: Float = 0f
-    private var mapTilt: Float = 0f
-    private var wayRotation: Float = 0f
+    private val answer: MutableState<LanesAnswer?> = mutableStateOf(null)
 
-    override val contentPadding get() = selectedLanesType == null
+    private var mapRotation: MutableFloatState = mutableFloatStateOf(0f)
+    private var wayRotation: MutableFloatState = mutableFloatStateOf(0f)
+    private var mapTilt: MutableFloatState = mutableFloatStateOf(0f)
 
-    private var streetLanesPuzzleBinding: QuestStreetLanesPuzzleBinding? = null
+    override val contentPadding get() = answer.value !is MarkedLanes
 
     // just some shortcuts
 
     private val isLeftHandTraffic get() = countryInfo.isLeftHandTraffic
+    private val edgeLine get() = countryInfo.edgeLineStyle
+    private val centerLine get() = countryInfo.centerLineStyle
 
     private val isOneway get() = isOneway(element.tags)
 
@@ -51,257 +53,67 @@ class AddLanesForm : AbstractOsmQuestForm<LanesAnswer>() {
 
         if (!isOneway && countryInfo.hasCenterLeftTurnLane) {
             answers.add(AnswerItem(R.string.quest_lanes_answer_lanes_center_left_turn_lane) {
-                selectedLanesType = MARKED_SIDES
-                hasCenterLeftTurnLane = true
-                setStreetSideLayout()
+                val previous = answer.value as? MarkedLanes
+                answer.value = MarkedLanes(
+                    backward = previous?.backward,
+                    forward = previous?.forward,
+                    centerLeftTurnLane = true
+                )
+                checkIsFormComplete()
             })
         }
         return answers
     }
 
-    //region Lifecycle
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        wayRotation = (geometry as ElementPolylinesGeometry).getOrientationAtCenterLineInDegrees()
+        wayRotation.floatValue = (geometry as ElementPolylinesGeometry).getOrientationAtCenterLineInDegrees()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        if (savedInstanceState != null) {
-            selectedLanesType = savedInstanceState.getString(LANES_TYPE)?.let { LanesType.valueOf(it) }
-            leftSide = savedInstanceState.getInt(LANES_LEFT, 0)
-            rightSide = savedInstanceState.getInt(LANES_RIGHT, 0)
-            hasCenterLeftTurnLane = savedInstanceState.getBoolean(CENTER_LEFT_TURN_LANE)
-        }
+        setHint(requireContext().getString(R.string.quest_street_side_puzzle_tutorial))
 
-        if (selectedLanesType == null || selectedLanesType == UNMARKED) {
-            setSelectLanesTypeLayout()
-        } else {
-            setStreetSideLayout()
-        }
+        snapshotFlow { answer.value }.onEach { updateContentPadding() }.launchIn(lifecycleScope)
+
+        binding.composeViewBase.content { Surface {
+            // not possible right now due to interaction Android view <-> compose
+            //answer = rememberSerializable { mutableStateOf(null) }
+
+            LanesForm(
+                value = answer.value,
+                onValueChanged = {
+                    answer.value = it
+                    checkIsFormComplete()
+                },
+                rotation = wayRotation.floatValue - mapRotation.floatValue,
+                tilt = mapTilt.floatValue,
+                isOneway = isOneway,
+                isLeftHandTraffic = isLeftHandTraffic,
+                centerLineColor = if (centerLine.contains("yellow")) Color.Yellow else Color.White,
+                edgeLineColor = if (edgeLine.contains("yellow")) Color.Yellow else Color.White,
+                edgeLineStyle = when {
+                    edgeLine.contains("short dashes") -> LineStyle.SHORT_DASHES
+                    edgeLine.contains("dashes") -> LineStyle.DASHES
+                    else -> LineStyle.CONTINUOUS
+                },
+            )
+        } }
     }
 
     @AnyThread override fun onMapOrientation(rotation: Double, tilt: Double) {
-        mapRotation = rotation.toFloat()
-        mapTilt = tilt.toFloat()
-        updateStreetOrientation()
+        mapRotation.floatValue = rotation.toFloat()
+        mapTilt.floatValue = tilt.toFloat()
     }
 
-    private fun updateStreetOrientation() {
-        val streetLanesPuzzleBinding = streetLanesPuzzleBinding ?: return
-
-        streetLanesPuzzleBinding.puzzleViewRotateContainer.streetRotation = wayRotation - mapRotation
-        streetLanesPuzzleBinding.littleCompass.root.rotation = -mapRotation
-        streetLanesPuzzleBinding.littleCompass.root.rotationX = mapTilt
-    }
-
-    override fun isFormComplete(): Boolean = when (selectedLanesType) {
+    override fun isFormComplete(): Boolean = when (val answer = answer.value) {
         null -> false
-        UNMARKED -> true
-        MARKED_SIDES -> leftSide > 0 && rightSide > 0
-        else -> leftSide > 0 || rightSide > 0
+        UnmarkedLanes -> true
+        is MarkedLanes -> answer.forward != null && answer.backward != null
     }
 
-    override fun isRejectingClose() = leftSide > 0 || rightSide > 0
+    override fun isRejectingClose() = answer.value != null
 
-    override fun onClickOk() {
-        val totalLanes = leftSide + rightSide
-        when (selectedLanesType) {
-            MARKED -> applyAnswer(MarkedLanes(totalLanes))
-            UNMARKED -> applyAnswer(UnmarkedLanes)
-            MARKED_SIDES -> {
-                val forwardLanes = if (isLeftHandTraffic) leftSide else rightSide
-                val backwardLanes = if (isLeftHandTraffic) rightSide else leftSide
-                applyAnswer(MarkedLanesSides(forwardLanes, backwardLanes, hasCenterLeftTurnLane))
-            }
-            null -> {}
-        }
-    }
-
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-        outState.putString(LANES_TYPE, selectedLanesType?.name)
-        outState.putInt(LANES_LEFT, leftSide)
-        outState.putInt(LANES_RIGHT, rightSide)
-        outState.putBoolean(CENTER_LEFT_TURN_LANE, hasCenterLeftTurnLane)
-    }
-
-    //endregion
-
-    //region Select lanes type
-
-    private fun setSelectLanesTypeLayout() {
-        val view = setContentView(R.layout.quest_lanes_select_type)
-        val laneSelectBinding = QuestLanesSelectTypeBinding.bind(view)
-
-        val unmarkedLanesButton = laneSelectBinding.unmarkedLanesButton
-
-        unmarkedLanesButton.isSelected = selectedLanesType == UNMARKED
-
-        unmarkedLanesButton.setOnClickListener {
-            val wasSelected = unmarkedLanesButton.isSelected
-            unmarkedLanesButton.isSelected = !wasSelected
-            selectedLanesType = if (wasSelected) null else UNMARKED
-            checkIsFormComplete()
-        }
-        laneSelectBinding.markedLanesButton.setOnClickListener {
-            selectedLanesType = MARKED
-            unmarkedLanesButton.isSelected = false
-            checkIsFormComplete()
-            askLanesAndSwitchToStreetSideLayout()
-        }
-        laneSelectBinding.markedLanesOddButton.isGone = isOneway
-
-        laneSelectBinding.markedLanesOddButton.setOnClickListener {
-            selectedLanesType = MARKED_SIDES
-            unmarkedLanesButton.isSelected = false
-            setStreetSideLayout()
-        }
-    }
-
-    private fun askLanesAndSwitchToStreetSideLayout() {
-        viewLifecycleScope.launch {
-            val lanes = askForTotalNumberOfLanes()
-            setTotalLanesCount(lanes)
-            setStreetSideLayout()
-        }
-    }
-
-    //endregion
-
-    //region Street side layout
-
-    private fun setStreetSideLayout() {
-        streetLanesPuzzleBinding?.let {
-            it.puzzleView.onPause(this)
-            lifecycle.removeObserver(it.puzzleView)
-        }
-
-        setHint(requireContext().getString(R.string.quest_street_side_puzzle_tutorial))
-        val view = setContentView(R.layout.quest_street_lanes_puzzle)
-        val streetLanesPuzzleBinding = QuestStreetLanesPuzzleBinding.bind(view)
-        this.streetLanesPuzzleBinding = streetLanesPuzzleBinding
-        val puzzleView = streetLanesPuzzleBinding.puzzleView
-        lifecycle.addObserver(puzzleView)
-
-        when (selectedLanesType) {
-            MARKED -> {
-                puzzleView.onClickListener = this::selectTotalNumberOfLanes
-                puzzleView.onClickSideListener = null
-            }
-            MARKED_SIDES -> {
-                puzzleView.onClickListener = null
-                puzzleView.onClickSideListener = this::selectNumberOfLanesOnOneSide
-            }
-            else -> {}
-        }
-        puzzleView.isShowingLaneMarkings = selectedLanesType in listOf(MARKED, MARKED_SIDES)
-        puzzleView.isShowingBothSides = !isOneway
-        puzzleView.isForwardTraffic = if (isOneway) isForwardOneway else !isLeftHandTraffic
-
-        val edgeLine = countryInfo.edgeLineStyle
-
-        puzzleView.edgeLineColor =
-            if (edgeLine.contains("yellow")) Color.YELLOW else Color.WHITE
-        puzzleView.edgeLineStyle = when {
-            !edgeLine.contains("dashes") -> LineStyle2.CONTINUOUS
-            edgeLine.contains("short") -> LineStyle2.SHORT_DASHES
-            else -> LineStyle2.DASHES
-        }
-
-        puzzleView.centerLineColor = if (countryInfo.centerLineStyle.contains("yellow")) Color.YELLOW else Color.WHITE
-
-        updateStreetOrientation()
-        updatePuzzleView()
-    }
-
-    private fun updatePuzzleView() {
-        streetLanesPuzzleBinding?.puzzleView?.setLaneCounts(leftSide, rightSide, hasCenterLeftTurnLane)
-        checkIsFormComplete()
-    }
-
-    //endregion
-
-    //region Lane selection dialog
-
-    private fun selectNumberOfLanesOnOneSide(isRight: Boolean) {
-        viewLifecycleScope.launch {
-            setLanesCount(askForNumberOfLanesOnOneSide(isRight), isRight)
-        }
-    }
-
-    private suspend fun askForNumberOfLanesOnOneSide(isRight: Boolean): Int {
-        val currentLaneCount = if (isRight) rightSide else leftSide
-        return showSelectMarkedLanesDialogForOneSide(currentLaneCount)
-    }
-
-    private fun setLanesCount(lanes: Int, isRightSide: Boolean) {
-        if (isRightSide) {
-            rightSide = lanes
-        } else {
-            leftSide = lanes
-        }
-        updatePuzzleView()
-    }
-
-    private fun selectTotalNumberOfLanes() {
-        viewLifecycleScope.launch {
-            setTotalLanesCount(askForTotalNumberOfLanes())
-        }
-    }
-
-    private suspend fun askForTotalNumberOfLanes(): Int {
-        val currentLaneCount = rightSide + leftSide
-        return if (selectedLanesType == MARKED) {
-            if (isOneway) {
-                showSelectMarkedLanesDialogForOneSide(currentLaneCount.takeIf { it > 0 })
-            } else {
-                showSelectMarkedLanesDialogForBothSides(currentLaneCount.takeIf { it > 0 })
-            }
-        } else {
-            throw IllegalStateException()
-        }
-    }
-
-    private fun setTotalLanesCount(lanes: Int) {
-        if (isOneway) {
-            leftSide = 0
-            rightSide = lanes
-        } else {
-            leftSide = lanes / 2
-            rightSide = lanes - lanes / 2
-        }
-        updatePuzzleView()
-    }
-
-    private suspend fun showSelectMarkedLanesDialogForBothSides(selectedValue: Int?): Int =
-        suspendCancellableCoroutine { cont ->
-            ValuePickerDialog(requireContext(),
-                listOf(2, 4, 6, 8, 10, 12, 14),
-                selectedValue, null,
-                R.layout.quest_lanes_select_lanes,
-                { cont.resume(it) }
-            ).show()
-        }
-
-    private suspend fun showSelectMarkedLanesDialogForOneSide(selectedValue: Int?): Int =
-        suspendCancellableCoroutine { cont ->
-            ValuePickerDialog(requireContext(),
-                listOf(1, 2, 3, 4, 5, 6, 7, 8),
-                selectedValue, null,
-                R.layout.quest_lanes_select_lanes_one_side_only,
-                { cont.resume(it) }
-            ).show()
-        }
-
-    // endregion
-
-    companion object {
-        private const val LANES_TYPE = "lanes_type"
-        private const val LANES_LEFT = "lanes_left"
-        private const val LANES_RIGHT = "lanes_right"
-        private const val CENTER_LEFT_TURN_LANE = "center_left_turn_lane"
-    }
+    override fun onClickOk() { answer.value?.let { applyAnswer(it) } }
 }

@@ -29,7 +29,7 @@ import de.westnordost.streetcomplete.resources.quest_multiselect_hint
 import de.westnordost.streetcomplete.resources.quest_recycling_materials_note
 import de.westnordost.streetcomplete.ui.common.dialogs.SimpleItemSelectDialog
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
-import de.westnordost.streetcomplete.ui.common.item_select.ItemsSelect
+import de.westnordost.streetcomplete.ui.common.item_select.ItemsSelectGrid
 import de.westnordost.streetcomplete.ui.util.content
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
@@ -65,7 +65,7 @@ class AddRecyclingContainerMaterialsForm : AbstractOsmQuestForm<RecyclingContain
                     Text(stringResource(Res.string.quest_recycling_materials_note))
                     Text(stringResource(Res.string.quest_multiselect_hint))
                 }
-                ItemsSelect(
+                ItemsSelectGrid(
                     columns = SimpleGridCells.Fixed(4),
                     items = items.value,
                     selectedItems = selectedItems.value,
