@@ -98,6 +98,7 @@ import de.westnordost.streetcomplete.quests.incline_direction.AddBicycleIncline
 import de.westnordost.streetcomplete.quests.incline_direction.AddStepsIncline
 import de.westnordost.streetcomplete.quests.internet_access.AddInternetAccess
 import de.westnordost.streetcomplete.quests.kerb_height.AddKerbHeight
+import de.westnordost.streetcomplete.quests.lane_markings.AddLaneMarkings
 import de.westnordost.streetcomplete.quests.lanes.AddLanes
 import de.westnordost.streetcomplete.quests.leaf_detail.AddForestLeafType
 import de.westnordost.streetcomplete.quests.leaf_detail.AddTreeLeafType
@@ -509,6 +510,7 @@ fun questTypeRegistry(
     135 to AddRoadSurface(), // used by BRouter, OsmAnd, OSRM, graphhopper, HOT map style... - sometimes requires way to be split
     136 to AddTracktype(), // widely used in map rendering - OSM Carto, OsmAnd...
     137 to AddCycleway(getCountryInfoByLocation), // for any cyclist routers (and cyclist maps)
+    181 to AddLaneMarkings(),
     138 to AddLanes(), // abstreet, certainly most routing engines - often requires way to be split
 
     140 to AddRoadWidth(arSupportChecker),
