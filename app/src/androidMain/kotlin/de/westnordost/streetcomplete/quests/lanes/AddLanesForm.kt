@@ -35,13 +35,25 @@ class AddLanesForm : AbstractOsmQuestForm<LanesAnswer>() {
 
     // just some shortcuts
 
-    private val isLeftHandTraffic get() = countryInfo.isLeftHandTraffic
-    private val edgeLine get() = countryInfo.edgeLineStyle
-    private val centerLine get() = countryInfo.centerLineStyle
+    private val edgeLineStyle by lazy {
+        when {
+            countryInfo.edgeLineStyle.contains("short dashes") -> LineStyle.SHORT_DASHES
+            countryInfo.edgeLineStyle.contains("dashes") -> LineStyle.DASHES
+            else -> LineStyle.CONTINUOUS
+        }
+    }
 
-    private val isOneway get() = isOneway(element.tags)
+    private val edgeLineColor by lazy {
+        if (countryInfo.edgeLineStyle.contains("yellow")) Color.Yellow else Color.White
+    }
 
-    private val isReversedOneway get() = isReversedOneway(element.tags)
+    private val centerLineColor by lazy {
+        if (countryInfo.centerLineStyle.contains("yellow")) Color.Yellow else Color.White
+    }
+
+    private val isOneway by lazy { isOneway(element.tags) }
+
+    private val isReversedOneway by lazy { isReversedOneway(element.tags) }
 
     override val otherAnswers: List<AnswerItem> get() = buildList {
         if (!isOneway && countryInfo.hasCenterLeftTurnLane) {
@@ -77,14 +89,10 @@ class AddLanesForm : AbstractOsmQuestForm<LanesAnswer>() {
                 mapTilt = mapTilt.floatValue,
                 isOneway = isOneway,
                 isReversedOneway = isReversedOneway,
-                isLeftHandTraffic = isLeftHandTraffic,
-                centerLineColor = if (centerLine.contains("yellow")) Color.Yellow else Color.White,
-                edgeLineColor = if (edgeLine.contains("yellow")) Color.Yellow else Color.White,
-                edgeLineStyle = when {
-                    edgeLine.contains("short dashes") -> LineStyle.SHORT_DASHES
-                    edgeLine.contains("dashes") -> LineStyle.DASHES
-                    else -> LineStyle.CONTINUOUS
-                },
+                isLeftHandTraffic = countryInfo.isLeftHandTraffic,
+                centerLineColor = centerLineColor,
+                edgeLineColor = edgeLineColor,
+                edgeLineStyle = edgeLineStyle,
             )
         } }
     }

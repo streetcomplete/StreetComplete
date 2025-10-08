@@ -69,6 +69,7 @@ fun LanesForm(
     var showPickerForDirection by remember { mutableStateOf<Direction?>(null) }
 
     val rotation = wayRotation - mapRotation
+    val scale = 1f + abs(cos(rotation * PI / 180)).toFloat() * 0.67f
 
     BoxWithConstraints(
         modifier = modifier
@@ -82,7 +83,7 @@ fun LanesForm(
                 .requiredWidth(min(maxWidth, maxHeight))
                 .requiredHeight(max(maxWidth, maxHeight))
                 .rotate(rotation)
-                .scale(1f + abs(cos(rotation * PI / 180)).toFloat() * 0.67f),
+                .scale(scale),
             transitionSpec = {
                 (fadeIn(tween(220)) + scaleIn(tween(220), initialScale = 2f))
                     .togetherWith(fadeOut(tween(90)))
