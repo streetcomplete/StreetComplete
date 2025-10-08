@@ -1,5 +1,11 @@
 package de.westnordost.streetcomplete.quests.lanes
 
+import androidx.compose.animation.AnimatedContent
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.scaleIn
+import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -62,32 +68,42 @@ fun LanesForm(
 ) {
     var showPickerForDirection by remember { mutableStateOf<Direction?>(null) }
 
-    val laneCountForward = if (!isReversedOneway) value.forward else 0
-    val laneCountBackward = if (!isOneway || isReversedOneway) value.backward else 0
+    val rotation = wayRotation - mapRotation
 
     BoxWithConstraints(
         modifier = modifier
             .fillMaxWidth()
             .height(160.dp),
     ) {
-        val rotation = wayRotation - mapRotation
-        LanesSelectPuzzle(
-            laneCountForward = laneCountForward,
-            laneCountBackward = laneCountBackward,
-            onClickForwardSide = { showPickerForDirection = FORWARD },
-            onClickBackwardSide = { showPickerForDirection = BACKWARD },
+        AnimatedContent(
+            targetState = value,
             modifier = Modifier
                 .align(Alignment.Center)
                 .requiredWidth(min(maxWidth, maxHeight))
                 .requiredHeight(max(maxWidth, maxHeight))
                 .rotate(rotation)
                 .scale(1f + abs(cos(rotation * PI / 180)).toFloat() * 0.67f),
-            centerLineColor = centerLineColor,
-            edgeLineColor = edgeLineColor,
-            edgeLineStyle = edgeLineStyle,
-            hasCenterLeftTurnLane = value.centerLeftTurnLane,
-            isLeftHandTraffic = isLeftHandTraffic,
-        )
+            transitionSpec = {
+                (fadeIn(tween(220)) + scaleIn(tween(220), initialScale = 2f))
+                    .togetherWith(fadeOut(tween(90)))
+            },
+            contentAlignment = Alignment.Center,
+        ) { targetValue ->
+            val laneCountForward = if (!isReversedOneway) targetValue.forward else 0
+            val laneCountBackward = if (!isOneway || isReversedOneway) targetValue.backward else 0
+
+            LanesSelectPuzzle(
+                laneCountForward = laneCountForward,
+                laneCountBackward = laneCountBackward,
+                onClickForwardSide = { showPickerForDirection = FORWARD },
+                onClickBackwardSide = { showPickerForDirection = BACKWARD },
+                centerLineColor = centerLineColor,
+                edgeLineColor = edgeLineColor,
+                edgeLineStyle = edgeLineStyle,
+                hasCenterLeftTurnLane = targetValue.centerLeftTurnLane,
+                isLeftHandTraffic = isLeftHandTraffic,
+            )
+        }
 
         Image(
             painter = painterResource(Res.drawable.compass_needle_48),
@@ -106,11 +122,14 @@ fun LanesForm(
         )
 
         // just one quick-select button: 2 lanes covers most
-        if (!isOneway) {
+        if (!isOneway && value.forward == null && value.backward == null) {
             LastPickedChipsRow(
                 items = listOf(1),
                 onClick = { onValueChanged(Lanes(it, it)) },
-                modifier = Modifier.fillMaxWidth().align(Alignment.BottomStart),
+                modifier = Modifier
+                    .padding(horizontal = 8.dp)
+                    .fillMaxWidth()
+                    .align(Alignment.BottomStart),
                 chipBorder = BorderStroke(1.dp, MaterialTheme.colors.onSurface.copy(alpha = 0.12f)),
             ) {
                 LanesButtonContent(lanes = it, rotation = rotation)
