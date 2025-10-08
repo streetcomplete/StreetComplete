@@ -72,8 +72,9 @@ class AddLanesForm : AbstractOsmQuestForm<LanesAnswer>() {
                     answer.value = it
                     checkIsFormComplete()
                 },
-                rotation = wayRotation.floatValue - mapRotation.floatValue,
-                tilt = mapTilt.floatValue,
+                wayRotation = wayRotation.floatValue,
+                mapRotation = mapRotation.floatValue,
+                mapTilt = mapTilt.floatValue,
                 isOneway = isOneway,
                 isReversedOneway = isReversedOneway,
                 isLeftHandTraffic = isLeftHandTraffic,
@@ -103,5 +104,7 @@ class AddLanesForm : AbstractOsmQuestForm<LanesAnswer>() {
     override fun isRejectingClose(): Boolean =
         answer.value.forward != null || answer.value.backward != null
 
-    override fun onClickOk() { answer.value?.let { applyAnswer(it) } }
+    override fun onClickOk() {
+        applyAnswer(answer.value)
+    }
 }

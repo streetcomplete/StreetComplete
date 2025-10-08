@@ -116,7 +116,7 @@ import kotlin.random.Random
             withFrameMillis { newFrameTime ->
                 val elapsedMillis = (newFrameTime - lastFrameTime)
                 lastFrameTime = newFrameTime
-                val delta = elapsedMillis / 5000f
+                val delta = elapsedMillis / 7500f
 
                 carsLeft = carsLeft.map { car ->
                     if (car.progress <= 1) car.copy(progress = car.progress + car.speed * delta)
@@ -383,7 +383,7 @@ private const val LANE_MARKING_WIDTH = 0.0625f // as fraction of lane width
 private const val CAR_LANE_PADDING = 0.10f // how much space there is between car and lane markings, as fraction of lane width
 private const val CAR_SPEED = 4f // in "lane graphic squares per second"
 private const val CAR_SPEED_VARIATION = 0.2f // as fraction: 1 = 100% variation
-private const val CAR_SPARSITY = 3.0f
+private const val CAR_SPARSITY = 2.0f
 
 private val CAR_DRAWABLES = listOf(
     Res.drawable.car1,

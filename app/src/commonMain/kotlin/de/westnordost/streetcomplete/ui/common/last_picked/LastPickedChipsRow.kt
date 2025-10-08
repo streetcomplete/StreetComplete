@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.ui.common.last_picked
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -20,6 +21,7 @@ fun <I> LastPickedChipsRow(
     items: List<I>,
     onClick: (I) -> Unit,
     modifier: Modifier = Modifier,
+    chipBorder: BorderStroke? = null,
     itemContent: @Composable (I) -> Unit,
 ) {
     val state = rememberScrollState()
@@ -30,7 +32,10 @@ fun <I> LastPickedChipsRow(
         horizontalArrangement = Arrangement.spacedBy(4.dp)
     ) {
         for (item in items) {
-            Chip(onClick = { onClick(item) }) {
+            Chip(
+                onClick = { onClick(item) },
+                border = chipBorder,
+            ) {
                 Box(Modifier.padding(vertical = 4.dp)) {
                     itemContent(item)
                 }
