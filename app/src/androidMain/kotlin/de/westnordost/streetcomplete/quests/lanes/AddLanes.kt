@@ -12,7 +12,7 @@ class AddLanes : OsmFilterQuestType<LanesAnswer>(), AndroidQuest {
 
     override val elementFilter = """
         ways with
-          highway ~ $ALL_ROADS
+          highway ~ ${ALL_ROADS.joinToString("|")}
           and lane_markings = yes
           and (!lanes or lanes = 0)
           and (!lanes:backward or !lanes:forward)
