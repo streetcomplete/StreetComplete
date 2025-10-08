@@ -1,20 +1,17 @@
 package de.westnordost.streetcomplete.quests.aerialway
 
-import android.os.Bundle
-import de.westnordost.streetcomplete.quests.AImageListQuestForm
+import androidx.compose.foundation.layout.BoxScope
+import androidx.compose.material.Text
+import androidx.compose.runtime.Composable
+import de.westnordost.streetcomplete.quests.AListQuestForm
+import org.jetbrains.compose.resources.stringResource
 
-class AddAerialwayBicycleAccessForm : AImageListQuestForm<AerialwayBicycleAccessAnswer, AerialwayBicycleAccessAnswer>() {
+class AddAerialwayBicycleAccessForm : AListQuestForm<AerialwayBicycleAccessAnswer, AerialwayBicycleAccessAnswer>() {
 
-    override val items get() =
-        AerialwayBicycleAccessAnswer.entries.map { it.asItem(requireContext()) }
+    override val items = AerialwayBicycleAccessAnswer.entries
 
-    override val itemsPerRow = 4
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
-    override fun onClickOk(selectedItems: List<AerialwayBicycleAccessAnswer>) {
-        applyAnswer(selectedItems.first())
+    @Composable
+    override fun BoxScope.ItemContent(item: AerialwayBicycleAccessAnswer) {
+        Text(stringResource(item.text))
     }
 }
