@@ -9,9 +9,10 @@ class Cell(
     val distance: Double, // distance between cell center and polygon. Positive if inside
 ) : Comparable<Cell> {
 
-    /* max distance to expect */
+    /* max distance to expect, optimistic bound */
     val max: Double = distance + half * SQRT2
 
+    /* Looking for the most promising cell */
     override fun compareTo(other: Cell): Int = other.max.compareTo(this.max)
 
     companion object {
