@@ -20,7 +20,7 @@ class AddCameraType : OsmFilterQuestType<CameraType>(), AndroidQuest {
     """
     override val changesetComment = "Specify camera types"
     override val wikiLink = "Tag:surveillance:type"
-    override val icon = R.drawable.ic_quest_surveillance_camera
+    override val icon = R.drawable.quest_surveillance_camera
     override val achievements = listOf(CITIZEN)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_camera_type_title

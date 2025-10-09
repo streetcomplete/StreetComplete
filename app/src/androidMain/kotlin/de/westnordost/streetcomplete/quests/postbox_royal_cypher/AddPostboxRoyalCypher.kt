@@ -13,10 +13,12 @@ import de.westnordost.streetcomplete.osm.Tags
 
 class AddPostboxRoyalCypher : OsmFilterQuestType<PostboxRoyalCypher>(), AndroidQuest {
 
-    override val elementFilter = "nodes with amenity = post_box and !royal_cypher"
+    override val elementFilter = """
+        nodes with amenity = post_box and (!royal_cypher or royal_cypher = yes)
+    """
     override val changesetComment = "Specify postbox royal cyphers"
     override val wikiLink = "Key:royal_cypher"
-    override val icon = R.drawable.ic_quest_crown
+    override val icon = R.drawable.quest_crown
     override val isDeleteElementEnabled = true
     override val achievements = listOf(POSTMAN)
     override val enabledInCountries = NoCountriesExcept(

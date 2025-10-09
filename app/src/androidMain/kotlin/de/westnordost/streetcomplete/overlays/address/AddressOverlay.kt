@@ -18,7 +18,7 @@ class AddressOverlay(
 ) : Overlay, AndroidOverlay {
 
     override val title = R.string.overlay_addresses
-    override val icon = R.drawable.ic_quest_housenumber
+    override val icon = R.drawable.quest_housenumber
     override val changesetComment = "Survey housenumbers"
     override val wikiLink: String = "Key:addr"
     override val achievements = listOf(POSTMAN)

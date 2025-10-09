@@ -28,7 +28,7 @@ class AddBabyChangingTable : OsmFilterQuestType<Boolean>(), AndroidQuest {
     """
     override val changesetComment = "Survey availability of baby changing tables"
     override val wikiLink = "Key:changing_table"
-    override val icon = R.drawable.ic_quest_baby
+    override val icon = R.drawable.quest_baby
     override val isReplacePlaceEnabled = true
     override val achievements = listOf(CITIZEN)
     override val defaultDisabledMessage = Res.string.default_disabled_msg_go_inside

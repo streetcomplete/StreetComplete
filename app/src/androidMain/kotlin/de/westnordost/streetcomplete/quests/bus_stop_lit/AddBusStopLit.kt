@@ -31,7 +31,7 @@ class AddBusStopLit : OsmFilterQuestType<Boolean>(), AndroidQuest {
     """
     override val changesetComment = "Add whether public transport stops are lit"
     override val wikiLink = "Key:lit"
-    override val icon = R.drawable.ic_quest_bus_stop_lit
+    override val icon = R.drawable.quest_bus_stop_lit
     override val achievements = listOf(PEDESTRIAN)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_busStopLit_title2

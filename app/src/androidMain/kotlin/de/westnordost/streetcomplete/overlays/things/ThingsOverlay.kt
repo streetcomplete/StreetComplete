@@ -17,7 +17,7 @@ import de.westnordost.streetcomplete.view.presetIconIndex
 class ThingsOverlay(private val getFeature: (Element) -> Feature?) : Overlay, AndroidOverlay {
 
     override val title = R.string.overlay_things
-    override val icon = R.drawable.ic_quest_dot
+    override val icon = R.drawable.quest_dot
     override val changesetComment = "Survey small map features"
     override val wikiLink = "StreetComplete/Overlays#Things"
     override val achievements = listOf(EditTypeAchievement.CITIZEN)

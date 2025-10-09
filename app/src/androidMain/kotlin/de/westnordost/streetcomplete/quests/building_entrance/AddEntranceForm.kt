@@ -3,10 +3,10 @@ package de.westnordost.streetcomplete.quests.building_entrance
 import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import de.westnordost.streetcomplete.quests.AListQuestForm
+import de.westnordost.streetcomplete.quests.ARadioGroupQuestForm
 import org.jetbrains.compose.resources.stringResource
 
-class AddEntranceForm : AListQuestForm<EntranceAnswer, EntranceAnswer>() {
+class AddEntranceForm : ARadioGroupQuestForm<EntranceAnswer, EntranceAnswer>() {
 
     override val items = EntranceType.entries + EntranceAnswer.IsDeadEnd
 

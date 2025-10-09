@@ -31,7 +31,7 @@ class AddAddressStreet : OsmElementQuestType<StreetOrPlaceName>, AndroidQuest {
     """.toElementFilterExpression() }
 
     override val changesetComment = "Specify street/place names to addresses"
-    override val icon = R.drawable.ic_quest_housenumber_street
+    override val icon = R.drawable.quest_housenumber_street
     override val wikiLink = "Key:addr"
     // In Japan, housenumbers usually have block numbers, not streets
     override val enabledInCountries = AllCountriesExcept("JP")

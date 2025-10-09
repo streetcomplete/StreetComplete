@@ -126,7 +126,7 @@ class PlacesOverlayForm : AbstractOverlayForm() {
 
         // title hint label with name is a duplication, it is displayed in the UI already
         setTitleHintLabel(element?.tags?.let { getLocationSpanned(it, resources) })
-        setMarkerIcon(R.drawable.ic_quest_shop)
+        setMarkerIcon(R.drawable.quest_shop)
 
         featureCtrl = FeatureViewController(featureDictionary, binding.featureTextView, binding.featureIconView)
         featureCtrl.countryOrSubdivisionCode = countryOrSubdivisionCode

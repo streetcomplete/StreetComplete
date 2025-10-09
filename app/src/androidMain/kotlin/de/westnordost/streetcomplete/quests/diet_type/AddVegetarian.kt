@@ -30,7 +30,7 @@ class AddVegetarian : OsmFilterQuestType<DietAvailabilityAnswer>(), AndroidQuest
     """
     override val changesetComment = "Survey whether places have vegetarian food"
     override val wikiLink = "Key:diet"
-    override val icon = R.drawable.ic_quest_restaurant_vegetarian
+    override val icon = R.drawable.quest_restaurant_vegetarian
     override val isReplacePlaceEnabled = true
     override val achievements = listOf(VEG, CITIZEN)
     override val defaultDisabledMessage = Res.string.default_disabled_msg_go_inside

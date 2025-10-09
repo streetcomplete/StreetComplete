@@ -33,7 +33,7 @@ class AddCrossingSignals : OsmElementQuestType<Boolean>, AndroidQuest {
 
     override val changesetComment = "Specify whether pedestrian crossings have traffic signals"
     override val wikiLink = "Key:crossing:signals"
-    override val icon = R.drawable.ic_quest_traffic_lights
+    override val icon = R.drawable.quest_traffic_lights
     override val achievements = listOf(PEDESTRIAN)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_pedestrian_crossing_signals2

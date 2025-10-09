@@ -26,17 +26,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawWithContent
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.graphics.BlendMode
-import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.CompositingStrategy
 import androidx.compose.ui.graphics.drawscope.inset
-import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.input.pointer.pointerInput
-import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.util.fastFirstOrNull
+import de.westnordost.streetcomplete.ui.ktx.fadingEdges
 import de.westnordost.streetcomplete.ui.ktx.pxToDp
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.ui.tooling.preview.Preview
@@ -113,8 +109,11 @@ fun <T> WheelPicker(
     LazyColumn(
         modifier = modifier
             .height(selectedItemHeight * visibleItemsCount)
-            .fadingEdges(selectedItemHeight)
-            .pickerIndicator(selectedItemHeight),
+            .fadingEdges(
+                top = selectedItemHeight * visibleAdjacentItems,
+                bottom = selectedItemHeight * visibleAdjacentItems,
+            )
+            .pickerIndicator(selectedItemHeight, color = MaterialTheme.colors.onSurface),
         state = state.lazyListState,
         contentPadding = paddingValues,
         horizontalAlignment = horizontalAlignment,
@@ -141,51 +140,12 @@ fun <T> WheelPicker(
     }
 }
 
-/** the selected item is at full opacity, the items then fade off towards the edges */
-@Composable
-private fun Modifier.fadingEdges(selectedItemHeight: Dp): Modifier {
-    val topGradient = remember {
-        Brush.verticalGradient(
-            0f to Color.Transparent,
-            1f to Color.Black
-        )
-    }
-    val bottomGradient = remember {
-        Brush.verticalGradient(
-            0f to Color.Black,
-            1f to Color.Transparent
-        )
-    }
-
-    return this
-        .graphicsLayer(compositingStrategy = CompositingStrategy.Offscreen)
-        .drawWithContent {
-            drawContent()
-
-            val height = (size.height - selectedItemHeight.toPx()) / 2
-
-            drawRect(
-                topLeft = Offset.Zero,
-                size = size.copy(height = height),
-                brush = topGradient,
-                blendMode = BlendMode.DstIn
-            )
-            drawRect(
-                topLeft = Offset(0f, size.height - height),
-                size = size.copy(height = height),
-                brush = bottomGradient,
-                blendMode = BlendMode.DstIn
-            )
-        }
-}
-
 /** frame drawn around selected value */
-@Composable
-private fun Modifier.pickerIndicator(selectedItemHeight: Dp): Modifier {
-    val density = LocalDensity.current.density
-    val color = MaterialTheme.colors.onSurface
-
-    return drawWithContent {
+private fun Modifier.pickerIndicator(
+    selectedItemHeight: Dp,
+    color: Color,
+): Modifier =
+    drawWithContent {
         drawContent()
 
         val strokeWidth = 2f  * density
@@ -206,7 +166,6 @@ private fun Modifier.pickerIndicator(selectedItemHeight: Dp): Modifier {
             )
         }
     }
-}
 
 private fun LazyListLayoutInfo.findCenterItem(): LazyListItemInfo? =
     visibleItemsInfo.fastFirstOrNull {

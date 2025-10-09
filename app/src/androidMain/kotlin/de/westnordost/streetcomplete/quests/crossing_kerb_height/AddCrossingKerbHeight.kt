@@ -50,7 +50,7 @@ class AddCrossingKerbHeight : OsmElementQuestType<KerbHeight>, AndroidQuest {
 
     override val changesetComment = "Determine the heights of kerbs at crossings"
     override val wikiLink = "Key:kerb"
-    override val icon = R.drawable.ic_quest_wheelchair_crossing
+    override val icon = R.drawable.quest_wheelchair_crossing
     override val achievements = listOf(BLIND, WHEELCHAIR, BICYCLIST)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_crossing_kerb_height_title

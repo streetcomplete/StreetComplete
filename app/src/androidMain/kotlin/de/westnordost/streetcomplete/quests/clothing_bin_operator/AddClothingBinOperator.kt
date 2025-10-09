@@ -26,7 +26,7 @@ class AddClothingBinOperator : OsmElementQuestType<ClothingBinOperatorAnswer>, A
 
     override val changesetComment = "Specify clothing bin operators"
     override val wikiLink = "Tag:amenity=recycling"
-    override val icon = R.drawable.ic_quest_recycling_clothes
+    override val icon = R.drawable.quest_recycling_clothes
     override val isDeleteElementEnabled = true
     override val achievements = listOf(CITIZEN)
 

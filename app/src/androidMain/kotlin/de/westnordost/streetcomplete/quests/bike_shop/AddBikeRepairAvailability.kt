@@ -28,7 +28,7 @@ class AddBikeRepairAvailability : OsmFilterQuestType<Boolean>(), AndroidQuest {
 
     override val changesetComment = "Specify whether bicycle shops offer repairs"
     override val wikiLink = "Key:service:bicycle:repair"
-    override val icon = R.drawable.ic_quest_bicycle_repair
+    override val icon = R.drawable.quest_bicycle_repair
     override val achievements = listOf(BICYCLIST)
     override val defaultDisabledMessage = Res.string.default_disabled_msg_go_inside
 

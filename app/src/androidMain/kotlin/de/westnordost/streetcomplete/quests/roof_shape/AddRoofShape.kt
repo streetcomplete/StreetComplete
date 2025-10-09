@@ -31,7 +31,7 @@ class AddRoofShape(
 
     override val changesetComment = "Specify roof shapes"
     override val wikiLink = "Key:roof:shape"
-    override val icon = R.drawable.ic_quest_roof_shape
+    override val icon = R.drawable.quest_roof_shape
     override val achievements = listOf(BUILDING)
     override val defaultDisabledMessage = Res.string.default_disabled_msg_roofShape
 

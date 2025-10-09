@@ -9,6 +9,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.screens.settings.debug.ShowQuestFormsScreen
+import de.westnordost.streetcomplete.screens.settings.language_selection.LanguageSelectionScreen
 import de.westnordost.streetcomplete.screens.settings.overlay_selection.OverlaySelectionScreen
 import de.westnordost.streetcomplete.screens.settings.presets.EditTypePresetsScreen
 import de.westnordost.streetcomplete.screens.settings.quest_selection.QuestSelectionScreen
@@ -42,6 +43,7 @@ import org.koin.androidx.compose.koinViewModel
                 onClickPresetSelection = { navController.navigate(SettingsDestination.EditTypePresets) },
                 onClickQuestSelection = { navController.navigate(SettingsDestination.QuestSelection) },
                 onClickOverlaySelection = { navController.navigate(SettingsDestination.OverlaySelection) },
+                onClickLanguageSelection = { navController.navigate(SettingsDestination.LanguageSelection) },
                 onClickBack = ::goBack
             )
         }
@@ -63,6 +65,12 @@ import org.koin.androidx.compose.koinViewModel
                 onClickBack = ::goBack
             )
         }
+        composable(SettingsDestination.LanguageSelection) {
+            LanguageSelectionScreen(
+                viewModel = koinViewModel(),
+                onClickBack = ::goBack
+            )
+        }
         composable(SettingsDestination.ShowQuestForms) {
             ShowQuestFormsScreen(
                 viewModel = koinViewModel(),
@@ -78,5 +86,6 @@ object SettingsDestination {
     const val EditTypePresets = "edit_type_presets"
     const val QuestSelection = "quest_selection"
     const val OverlaySelection = "overlay_selection"
+    const val LanguageSelection = "language_selection"
     const val ShowQuestForms = "show_quest_forms"
 }

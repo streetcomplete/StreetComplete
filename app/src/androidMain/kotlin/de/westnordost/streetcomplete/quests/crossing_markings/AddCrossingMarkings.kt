@@ -38,7 +38,7 @@ class AddCrossingMarkings : OsmElementQuestType<Boolean>, AndroidQuest {
 
     override val changesetComment = "Specify whether pedestrian crossings have markings"
     override val wikiLink = "Key:crossing:markings"
-    override val icon = R.drawable.ic_quest_pedestrian_crossing
+    override val icon = R.drawable.quest_pedestrian_crossing
     override val achievements = listOf(PEDESTRIAN)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_pedestrian_crossing_markings
