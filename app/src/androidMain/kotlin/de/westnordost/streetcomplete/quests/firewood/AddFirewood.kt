@@ -22,7 +22,7 @@ class AddFirewood : OsmFilterQuestType<Boolean>(), AndroidQuest {
                 or (amenity=bbq and fuel=wood)
                 or (tourism=wilderness_hut and fireplace=yes)
             )
-            and access!=no or private
+            and access !~ private|no
             and !wood_provided
     """
 
