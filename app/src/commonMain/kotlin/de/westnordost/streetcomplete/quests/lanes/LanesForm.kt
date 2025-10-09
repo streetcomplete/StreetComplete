@@ -89,9 +89,9 @@ fun LanesForm(
                     .togetherWith(fadeOut(tween(90)))
             },
             contentAlignment = Alignment.Center,
-        ) { targetValue ->
-            val laneCountForward = if (!isReversedOneway) targetValue.forward else 0
-            val laneCountBackward = if (!isOneway || isReversedOneway) targetValue.backward else 0
+        ) { value ->
+            val laneCountForward = if (!isReversedOneway) value.forward else 0
+            val laneCountBackward = if (!isOneway || isReversedOneway) value.backward else 0
 
             LanesSelectPuzzle(
                 laneCountForward = laneCountForward,
@@ -101,7 +101,7 @@ fun LanesForm(
                 centerLineColor = centerLineColor,
                 edgeLineColor = edgeLineColor,
                 edgeLineStyle = edgeLineStyle,
-                hasCenterLeftTurnLane = targetValue.centerLeftTurnLane,
+                hasCenterLeftTurnLane = value.centerLeftTurnLane,
                 isLeftHandTraffic = isLeftHandTraffic,
             )
         }

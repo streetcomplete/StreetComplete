@@ -51,19 +51,14 @@ fun <I> ItemCard(
                 modifier = Modifier.weight(1f, fill = false),
                 contentAlignment = Alignment.Center,
                 transitionSpec = {
-                    // the new value "falls down" (from the dialog :-)) into the box
-                    (
-                        fadeIn(tween(220, delayMillis = 90)) +
-                            scaleIn(tween(220, delayMillis = 90), initialScale = 2f)
-                        ).togetherWith(
-                            fadeOut(tween(90))
-                        )
-                }
-            ) {
-                if (it == null) {
+                    (fadeIn(tween(220)) + scaleIn(tween(220), initialScale = 2f))
+                        .togetherWith(fadeOut(tween(90)))
+                },
+            ) { item ->
+                if (item == null) {
                     Text(stringResource(Res.string.quest_select_hint))
                 } else {
-                    content(it)
+                    content(item)
                 }
             }
             Icon(

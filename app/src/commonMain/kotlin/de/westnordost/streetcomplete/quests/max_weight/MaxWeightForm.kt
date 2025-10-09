@@ -1,5 +1,11 @@
 package de.westnordost.streetcomplete.quests.max_weight
 
+import androidx.compose.animation.AnimatedContent
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.scaleIn
+import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.material.Text
@@ -36,22 +42,29 @@ fun MaxWeightForm(
         modifier = modifier,
         contentAlignment = Alignment.Center
     ) {
-        if (type == null) {
-            Button2(
-                onClick = { showSelectionDialog = true },
-                modifier = modifier,
-            ) {
-                Text(stringResource(Res.string.quest_maxweight_select_sign))
+        AnimatedContent(
+            targetState = type,
+            transitionSpec = {
+                (fadeIn(tween(220)) + scaleIn(tween(220), initialScale = 2f))
+                    .togetherWith(fadeOut(tween(90)))
+            },
+            contentAlignment = Alignment.Center,
+        ) { type ->
+            if (type == null) {
+                Button2(
+                    onClick = { showSelectionDialog = true },
+                ) {
+                    Text(stringResource(Res.string.quest_maxweight_select_sign))
+                }
+            } else {
+                MaxWeightSignForm(
+                    type = type,
+                    weight = weight,
+                    onWeightChange = onChangeWeight,
+                    countryCode = countryCode,
+                    selectableUnits = selectableUnits,
+                )
             }
-        } else {
-            MaxWeightSignForm(
-                type = type,
-                weight = weight,
-                onWeightChange = onChangeWeight,
-                countryCode = countryCode,
-                selectableUnits = selectableUnits,
-                modifier = modifier,
-            )
         }
     }
 
