@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.quests.lanes
 
-import androidx.compose.animation.AnimatedContent
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -38,13 +37,11 @@ import de.westnordost.streetcomplete.resources.compass_needle_48
 import de.westnordost.streetcomplete.resources.quest_lanes_answer_lanes_description_one_side2
 import de.westnordost.streetcomplete.ui.common.dialogs.WheelPickerDialog
 import de.westnordost.streetcomplete.ui.common.last_picked.LastPickedChipsRow
-import de.westnordost.streetcomplete.ui.util.FallDownTransitionSpec
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import kotlin.math.PI
 import kotlin.math.abs
 import kotlin.math.cos
-
 
 
 /** Form to input how many lanes a road has */
@@ -74,32 +71,23 @@ fun LanesForm(
             .fillMaxWidth()
             .height(160.dp),
     ) {
-        AnimatedContent(
-            targetState = value,
+        LanesSelect(
+            value = value,
+            onClickForwardSide = { showPickerForDirection = FORWARD },
+            onClickBackwardSide = { showPickerForDirection = BACKWARD },
             modifier = Modifier
                 .align(Alignment.Center)
                 .requiredWidth(min(maxWidth, maxHeight))
                 .requiredHeight(max(maxWidth, maxHeight))
                 .rotate(rotation)
                 .scale(scale),
-            transitionSpec = FallDownTransitionSpec,
-            contentAlignment = Alignment.Center,
-        ) { value ->
-            val laneCountForward = if (!isReversedOneway) value.forward else 0
-            val laneCountBackward = if (!isOneway || isReversedOneway) value.backward else 0
-
-            LanesSelectPuzzle(
-                laneCountForward = laneCountForward,
-                laneCountBackward = laneCountBackward,
-                onClickForwardSide = { showPickerForDirection = FORWARD },
-                onClickBackwardSide = { showPickerForDirection = BACKWARD },
-                centerLineColor = centerLineColor,
-                edgeLineColor = edgeLineColor,
-                edgeLineStyle = edgeLineStyle,
-                hasCenterLeftTurnLane = value.centerLeftTurnLane,
-                isLeftHandTraffic = isLeftHandTraffic,
-            )
-        }
+            centerLineColor = centerLineColor,
+            edgeLineColor = edgeLineColor,
+            edgeLineStyle = edgeLineStyle,
+            isLeftHandTraffic = isLeftHandTraffic,
+            isOneway = isOneway,
+            isReversedOneway = isReversedOneway
+        )
 
         Image(
             painter = painterResource(Res.drawable.compass_needle_48),
