@@ -1,11 +1,6 @@
 package de.westnordost.streetcomplete.overlays
 
 import androidx.compose.animation.AnimatedContent
-import androidx.compose.animation.core.tween
-import androidx.compose.animation.fadeIn
-import androidx.compose.animation.fadeOut
-import androidx.compose.animation.scaleIn
-import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
@@ -23,6 +18,7 @@ import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.ic_arrow_drop_down_24
 import de.westnordost.streetcomplete.resources.quest_select_hint
 import de.westnordost.streetcomplete.ui.ktx.minus
+import de.westnordost.streetcomplete.ui.util.FallDownTransitionSpec
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
@@ -50,10 +46,7 @@ fun <I> ItemCard(
                 targetState = item,
                 modifier = Modifier.weight(1f, fill = false),
                 contentAlignment = Alignment.Center,
-                transitionSpec = {
-                    (fadeIn(tween(220)) + scaleIn(tween(220), initialScale = 2f))
-                        .togetherWith(fadeOut(tween(90)))
-                },
+                transitionSpec = FallDownTransitionSpec,
             ) { item ->
                 if (item == null) {
                     Text(stringResource(Res.string.quest_select_hint))

@@ -1,11 +1,6 @@
 package de.westnordost.streetcomplete.quests.max_weight
 
 import androidx.compose.animation.AnimatedContent
-import androidx.compose.animation.core.tween
-import androidx.compose.animation.fadeIn
-import androidx.compose.animation.fadeOut
-import androidx.compose.animation.scaleIn
-import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.material.Text
@@ -22,6 +17,7 @@ import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.quest_maxweight_select_sign
 import de.westnordost.streetcomplete.ui.common.Button2
 import de.westnordost.streetcomplete.ui.common.dialogs.SimpleItemSelectDialog
+import de.westnordost.streetcomplete.ui.util.FallDownTransitionSpec
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
@@ -44,10 +40,7 @@ fun MaxWeightForm(
     ) {
         AnimatedContent(
             targetState = type,
-            transitionSpec = {
-                (fadeIn(tween(220)) + scaleIn(tween(220), initialScale = 2f))
-                    .togetherWith(fadeOut(tween(90)))
-            },
+            transitionSpec = FallDownTransitionSpec,
             contentAlignment = Alignment.Center,
         ) { type ->
             if (type == null) {

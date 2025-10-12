@@ -1,11 +1,6 @@
 package de.westnordost.streetcomplete.quests.lanes
 
 import androidx.compose.animation.AnimatedContent
-import androidx.compose.animation.core.tween
-import androidx.compose.animation.fadeIn
-import androidx.compose.animation.fadeOut
-import androidx.compose.animation.scaleIn
-import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -43,11 +38,14 @@ import de.westnordost.streetcomplete.resources.compass_needle_48
 import de.westnordost.streetcomplete.resources.quest_lanes_answer_lanes_description_one_side2
 import de.westnordost.streetcomplete.ui.common.dialogs.WheelPickerDialog
 import de.westnordost.streetcomplete.ui.common.last_picked.LastPickedChipsRow
+import de.westnordost.streetcomplete.ui.util.FallDownTransitionSpec
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import kotlin.math.PI
 import kotlin.math.abs
 import kotlin.math.cos
+
+
 
 /** Form to input how many lanes a road has */
 @OptIn(ExperimentalMaterialApi::class)
@@ -84,10 +82,7 @@ fun LanesForm(
                 .requiredHeight(max(maxWidth, maxHeight))
                 .rotate(rotation)
                 .scale(scale),
-            transitionSpec = {
-                (fadeIn(tween(220)) + scaleIn(tween(220), initialScale = 2f))
-                    .togetherWith(fadeOut(tween(90)))
-            },
+            transitionSpec = FallDownTransitionSpec,
             contentAlignment = Alignment.Center,
         ) { value ->
             val laneCountForward = if (!isReversedOneway) value.forward else 0
