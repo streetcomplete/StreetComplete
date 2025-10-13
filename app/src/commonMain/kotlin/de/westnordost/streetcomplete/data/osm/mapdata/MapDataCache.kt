@@ -453,6 +453,18 @@ class MapDataCache(
         if (spatialCache.size >= maxTiles && tilesToFetch.isNotEmpty()) {
             trim((maxTiles * 2) / 3)
         }
+
+        val ferryWays = HashSet<Long>()
+        for (relation in result.relations) {
+            if (relation.tags["route"] != "ferry") continue
+            for (member in relation.members) {
+                if (member.type != ElementType.WAY) continue
+                ferryWays.add(member.ref)
+            }
+        }
+
+        result.filter { it !is Way || it.id !in ferryWays }.asIterable()
+
         return result
     }
 

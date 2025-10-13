@@ -34,14 +34,9 @@ class AddFerryAccessPedestrian : OsmElementQuestType<Boolean>, AndroidQuest {
         tags["foot"] = answer.toYesNo()
     }
 
-    override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
-        // see comment in AddFerryAccessMotorVehicle
-        val wayIdsInFerryRoutes = wayIdsInFerryRoutes(mapData.relations)
-        return mapData
+    override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> = mapData
             .filter(filter)
-            .filter { it !is Way || it.id !in wayIdsInFerryRoutes }
             .asIterable()
-    }
 
     override fun isApplicableTo(element: Element): Boolean? {
         if (!filter.matches(element)) return false

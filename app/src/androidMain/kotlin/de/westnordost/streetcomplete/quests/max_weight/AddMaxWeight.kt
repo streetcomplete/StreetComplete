@@ -12,7 +12,6 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.quests.ferry.wayIdsInFerryRoutes
 import de.westnordost.streetcomplete.quests.max_weight.MaxWeightSign.MAX_AXLE_LOAD
 import de.westnordost.streetcomplete.quests.max_weight.MaxWeightSign.MAX_GROSS_VEHICLE_MASS
 import de.westnordost.streetcomplete.quests.max_weight.MaxWeightSign.MAX_TANDEM_AXLE_LOAD
@@ -70,15 +69,10 @@ class AddMaxWeight : OsmElementQuestType<MaxWeightAnswer>, AndroidQuest {
         }
     }
 
-    override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
-        // copied from AddFerryAccessMotorVehicle - see comment there why this filtering is necessary
-        val wayIdsInFerryRoutes = wayIdsInFerryRoutes(mapData.relations)
-        return mapData
+    override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> = mapData
             .filter(generalFilter)
             .filter { ferryFilter.matches(it) || highwayFilter.matches(it) }
-            .filter { it !is Way || it.id !in wayIdsInFerryRoutes }
             .asIterable()
-    }
 
     override fun isApplicableTo(element: Element): Boolean? {
         if (!generalFilter.matches(element)) return false
