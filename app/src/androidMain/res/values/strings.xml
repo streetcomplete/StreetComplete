@@ -161,7 +161,6 @@ The info you enter is directly added to OpenStreetMap in your name, without the 
     <string name="quest_generic_otherAnswers2">Uh…</string>
     <!-- aka "not applicable", "not answerable" -->
     <string name="quest_generic_answer_notApplicable">Can’t say…</string>
-    <string name="quest_generic_ItsPrivate">It\'s private</string>
 
     <string name="quest_generic_answer_does_not_exist">It does not exist…</string>
     <string name="osm_element_gone_description">Are you sure that it does not exist, not even at a slightly different location? If you’re not sure, leave a note instead.</string>
