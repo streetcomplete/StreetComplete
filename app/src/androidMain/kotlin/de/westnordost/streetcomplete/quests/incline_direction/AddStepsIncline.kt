@@ -35,10 +35,8 @@ class AddStepsIncline : OsmElementQuestType<Incline>, AndroidQuest {
         .filter { it is Way && !it.isClosed }
         .asIterable()
 
-    override fun isApplicableTo(element: Element): Boolean? {
-        if (!filter.matches(element)) return false
-        return null
-    }
+    override fun isApplicableTo(element: Element) =
+        if (!filter.matches(element)) false else null
 
     override fun createForm() = AddInclineForm()
 
