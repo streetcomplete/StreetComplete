@@ -302,10 +302,8 @@ fun MainScreen(
                     ) {
                         CompassButton(
                             onClick = onClickCompass,
-                            modifier = Modifier.graphicsLayer(
-                                rotationZ = -mapRotation.toFloat(),
-                                rotationX = mapTilt.toFloat()
-                            )
+                            rotation = -mapRotation.toFloat(),
+                            tilt = mapTilt.toFloat(),
                         )
                         if (showZoomButtons) {
                             ZoomButtons(
