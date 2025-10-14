@@ -1,13 +1,15 @@
 package de.westnordost.streetcomplete.quests.lanes
 
-import androidx.compose.animation.AnimatedContent
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.requiredHeight
+import androidx.compose.foundation.layout.requiredWidth
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -18,6 +20,8 @@ import androidx.compose.runtime.withFrameMillis
 import androidx.compose.ui.AbsoluteAlignment
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.rotate
+import androidx.compose.ui.draw.scale
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
@@ -27,6 +31,8 @@ import androidx.compose.ui.graphics.drawscope.clipRect
 import androidx.compose.ui.graphics.drawscope.rotate
 import androidx.compose.ui.graphics.drawscope.translate
 import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.unit.max
+import androidx.compose.ui.unit.min
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.car1
 import de.westnordost.streetcomplete.resources.car1a
@@ -40,10 +46,12 @@ import de.westnordost.streetcomplete.resources.car4
 import de.westnordost.streetcomplete.resources.car5
 import de.westnordost.streetcomplete.resources.car_nyan
 import de.westnordost.streetcomplete.resources.street_side_unknown
-import de.westnordost.streetcomplete.ui.util.FallDownTransitionSpec
 import de.westnordost.streetcomplete.util.ktx.isApril1st
 import kotlinx.coroutines.isActive
 import org.jetbrains.compose.resources.painterResource
+import kotlin.math.PI
+import kotlin.math.abs
+import kotlin.math.cos
 import kotlin.random.Random
 
 /**
@@ -61,6 +69,7 @@ import kotlin.random.Random
     onClickForwardSide: () -> Unit,
     onClickBackwardSide: () -> Unit,
     modifier: Modifier = Modifier,
+    rotation: Float = 0f,
     centerLineColor: Color = Color.White,
     edgeLineColor: Color = Color.White,
     edgeLineStyle: LineStyle = LineStyle.CONTINUOUS,
@@ -71,49 +80,48 @@ import kotlin.random.Random
     isOneway: Boolean = false,
     isReversedOneway: Boolean = false,
 ) {
-    AnimatedContent(
-        targetState = value,
+    val questionMark = painterResource(Res.drawable.street_side_unknown)
+
+    val carPainters =
+        if (isApril1st()) listOf(painterResource(Res.drawable.car_nyan))
+        else CAR_DRAWABLES.map { painterResource(it) }
+
+    val scale = 1f + abs(cos(rotation * PI / 180)).toFloat() * 0.67f
+
+    // don't show the other side for one-ways
+    val laneCountForward = if (!isReversedOneway) value.forward else 0
+    val laneCountBackward = if (!isOneway || isReversedOneway) value.backward else 0
+    val hasCenterLeftTurnLane = value.centerLeftTurnLane
+
+    val laneCountLeft = if (isLeftHandTraffic) laneCountForward else laneCountBackward
+    val laneCountRight = if (isLeftHandTraffic) laneCountBackward else laneCountForward
+
+    val laneCountCenter = if (hasCenterLeftTurnLane) 1 else 0
+    // when one side is not defined, it takes the same width as the other side
+    val displayLaneCountLeft = laneCountLeft
+        ?: (if (laneCountRight != null && laneCountRight > 0) laneCountRight else 1)
+    val displayLaneCountRight = laneCountRight
+        ?: (if (laneCountLeft != null && laneCountLeft > 0) laneCountLeft else 1)
+
+    val lanesSpace = laneCountCenter + displayLaneCountLeft + displayLaneCountRight
+
+    val leftLanesStart = SHOULDER_WIDTH
+    val leftLanesEnd = leftLanesStart + displayLaneCountLeft
+    val rightLanesStart = leftLanesEnd + laneCountCenter
+    val rightLanesEnd = rightLanesStart + displayLaneCountRight
+
+    val totalLaneWidth = lanesSpace + SHOULDER_WIDTH * 2
+
+    var carsLeft by remember(laneCountLeft) { mutableStateOf(
+        List(laneCountLeft ?: 0) { createCar(carPainters, Random.nextFloat()) }
+    ) }
+    var carsRight by remember(laneCountRight) { mutableStateOf(
+        List(laneCountRight ?: 0) { createCar(carPainters, Random.nextFloat()) }
+    ) }
+
+    BoxWithConstraints(
         modifier = modifier,
-        transitionSpec = FallDownTransitionSpec,
-        contentAlignment = Alignment.Center,
     ) {
-        val questionMark = painterResource(Res.drawable.street_side_unknown)
-
-        // don't show the other side for one-ways
-        val laneCountForward = if (!isReversedOneway) value.forward else 0
-        val laneCountBackward = if (!isOneway || isReversedOneway) value.backward else 0
-        val hasCenterLeftTurnLane = value.centerLeftTurnLane
-
-        val laneCountLeft = if (isLeftHandTraffic) laneCountForward else laneCountBackward
-        val laneCountRight = if (isLeftHandTraffic) laneCountBackward else laneCountForward
-
-        val laneCountCenter = if (hasCenterLeftTurnLane) 1 else 0
-        // when one side is not defined, it takes the same width as the other side
-        val displayLaneCountLeft = laneCountLeft
-            ?: (if (laneCountRight != null && laneCountRight > 0) laneCountRight else 1)
-        val displayLaneCountRight = laneCountRight
-            ?: (if (laneCountLeft != null && laneCountLeft > 0) laneCountLeft else 1)
-
-        val lanesSpace = laneCountCenter + displayLaneCountLeft + displayLaneCountRight
-
-        val leftLanesStart = SHOULDER_WIDTH
-        val leftLanesEnd = leftLanesStart + displayLaneCountLeft
-        val rightLanesStart = leftLanesEnd + laneCountCenter
-        val rightLanesEnd = rightLanesStart + displayLaneCountRight
-
-        val totalLaneWidth = lanesSpace + SHOULDER_WIDTH * 2
-
-        val carPainters =
-            if (isApril1st()) listOf(painterResource(Res.drawable.car_nyan))
-            else CAR_DRAWABLES.map { painterResource(it) }
-
-        var carsLeft by remember(laneCountLeft) { mutableStateOf(
-            List(laneCountLeft ?: 0) { createCar(carPainters, Random.nextFloat()) }
-        ) }
-        var carsRight by remember(laneCountRight) { mutableStateOf(
-            List(laneCountRight ?: 0) { createCar(carPainters, Random.nextFloat()) }
-        ) }
-
         LaunchedEffect(laneCountLeft, laneCountRight) {
             var lastFrameTime = withFrameMillis { it }
             while (isActive) {
@@ -134,7 +142,12 @@ import kotlin.random.Random
             }
         }
 
-        Box {
+        Box(Modifier
+            .requiredWidth(min(maxWidth, maxHeight))
+            .requiredHeight(max(maxWidth, maxHeight))
+            .rotate(rotation)
+            .scale(scale)
+        ) {
             Canvas(Modifier.fillMaxSize()) {
                 drawRect(color = Color(0x33666666), size = size)
 

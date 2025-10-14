@@ -19,7 +19,7 @@ import de.westnordost.streetcomplete.ui.common.VerticalDivider
 /** Content for the last picked chip for the lanes */
 @Composable
 fun LanesButtonContent(
-    lanes: Int,
+    laneCount: Int,
     modifier: Modifier = Modifier,
     rotation: Float = 0f,
 ) {
@@ -34,12 +34,12 @@ fun LanesButtonContent(
             ProvideTextStyle(MaterialTheme.typography.body2.copy(fontWeight = FontWeight.Bold)) {
 
             Text(
-                text = lanes.toString(),
+                text = laneCount.toString(),
                 modifier = Modifier.rotate(-rotation)
             )
             VerticalDivider()
             Text(
-                text = lanes.toString(),
+                text = laneCount.toString(),
                 modifier = Modifier.rotate(-rotation)
             )
             }
