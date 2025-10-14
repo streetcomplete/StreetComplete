@@ -27,9 +27,9 @@ class AddLanesForm : AbstractOsmQuestForm<LanesAnswer>() {
 
     private lateinit var answer: MutableState<Lanes>
 
-    private var mapRotation: MutableFloatState = mutableFloatStateOf(0f)
-    private var wayRotation: MutableFloatState = mutableFloatStateOf(0f)
-    private var mapTilt: MutableFloatState = mutableFloatStateOf(0f)
+    private val mapRotation: MutableFloatState = mutableFloatStateOf(0f)
+    private val wayRotation: MutableFloatState = mutableFloatStateOf(0f)
+    private val mapTilt: MutableFloatState = mutableFloatStateOf(0f)
 
     override val contentPadding = false
 
