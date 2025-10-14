@@ -300,20 +300,13 @@ fun MainScreen(
                         verticalArrangement = Arrangement.spacedBy(8.dp),
                         horizontalAlignment = Alignment.End,
                     ) {
-                        val isCompassVisible = abs(mapRotation) >= 1.0 || abs(mapTilt) >= 1.0
-                        AnimatedVisibility(
-                            visible = isCompassVisible,
-                            enter = fadeIn(),
-                            exit = fadeOut()
-                        ) {
-                            CompassButton(
-                                onClick = onClickCompass,
-                                modifier = Modifier.graphicsLayer(
-                                    rotationZ = -mapRotation.toFloat(),
-                                    rotationX = mapTilt.toFloat()
-                                )
+                        CompassButton(
+                            onClick = onClickCompass,
+                            modifier = Modifier.graphicsLayer(
+                                rotationZ = -mapRotation.toFloat(),
+                                rotationX = mapTilt.toFloat()
                             )
-                        }
+                        )
                         if (showZoomButtons) {
                             ZoomButtons(
                                 onZoomIn = onClickZoomIn,
