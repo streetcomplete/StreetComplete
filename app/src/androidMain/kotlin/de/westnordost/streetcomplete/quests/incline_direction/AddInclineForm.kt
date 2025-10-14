@@ -17,7 +17,10 @@ class AddInclineForm : AImageListQuestForm<Incline, Incline>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        wayRotation = (geometry as ElementPolylinesGeometry).getOrientationAtCenterLineInDegrees()
+        // Avoid crash when geometry is a ElementPolygonsGeometry
+        wayRotation = (geometry as? ElementPolylinesGeometry)
+            ?.getOrientationAtCenterLineInDegrees()
+            ?: 0f
         imageSelector.cellLayoutId = R.layout.cell_icon_select_with_label_below
     }
 
