@@ -1169,7 +1169,7 @@ A level counts as a roof level when its windows are in the roof. Subsequently, r
     <string name="quest_defibrillator_location">Where is this defibrillator located?</string>
     <string name="quest_defibrillator_location_description">Please provide a concise description of its position (e.g. “in the porter’s lounge”).</string>
 
-    <string name="quest_first_aid_kit_location">Where is the first aid kit located?</string>
+    <string name="quest_first_aid_kit_location">Where is this first aid kit located?</string>
 
     <string name="quest_kerb_height_title">What’s the height of this curb?</string>
     <string name="quest_kerb_height_flush">Same level as road surface</string>
