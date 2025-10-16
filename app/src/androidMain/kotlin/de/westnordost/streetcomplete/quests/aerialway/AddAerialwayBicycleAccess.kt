@@ -15,7 +15,7 @@ import de.westnordost.streetcomplete.quests.aerialway.AerialwayBicycleAccessAnsw
 class AddAerialwayBicycleAccess : OsmFilterQuestType<AerialwayBicycleAccessAnswer>(), AndroidQuest {
 
     override val elementFilter = """ways, relations with
-        aerialway~cable_car|gondola|chair_lift
+        aerialway ~ cable_car|gondola|chair_lift
         and !aerialway:bicycle and !bicycle
     """
 
