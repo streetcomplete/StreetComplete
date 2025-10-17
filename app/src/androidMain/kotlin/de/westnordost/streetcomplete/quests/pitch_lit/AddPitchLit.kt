@@ -15,7 +15,7 @@ class AddPitchLit : OsmFilterQuestType<Boolean>(), AndroidQuest {
     override val elementFilter = """
         ways with (
             leisure ~ pitch|track|fitness_station
-            or piste:type
+            or piste:type and !highway
         )
         and (access !~ private|no)
         and indoor != yes and (!building or building = no)
