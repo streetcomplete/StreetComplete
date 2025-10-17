@@ -13,7 +13,10 @@ import de.westnordost.streetcomplete.util.ktx.toYesNo
 class AddPitchLit : OsmFilterQuestType<Boolean>(), AndroidQuest {
 
     override val elementFilter = """
-        ways with (leisure ~ pitch|track|fitness_station)
+        ways with (
+            leisure ~ pitch|track|fitness_station
+            or piste:type
+        )
         and (access !~ private|no)
         and indoor != yes and (!building or building = no)
         and (
@@ -21,6 +24,7 @@ class AddPitchLit : OsmFilterQuestType<Boolean>(), AndroidQuest {
           or lit = no and lit older today -8 years
           or lit older today -16 years
         )
+        and !piste:lit
     """
     override val changesetComment = "Specify whether pitches are lit"
     override val wikiLink = "Key:lit"
@@ -32,6 +36,11 @@ class AddPitchLit : OsmFilterQuestType<Boolean>(), AndroidQuest {
     override fun createForm() = YesNoQuestForm()
 
     override fun applyAnswerTo(answer: Boolean, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
-        tags.updateWithCheckDate("lit", answer.toYesNo())
+        // Pistes more commonly use the piste:lit tag, while other leisure activities use lit.
+        if (tags.contains("piste:type")) {
+            tags["piste:lit"] = answer.toYesNo()
+        } else {
+            tags.updateWithCheckDate("lit", answer.toYesNo())
+        }
     }
 }
