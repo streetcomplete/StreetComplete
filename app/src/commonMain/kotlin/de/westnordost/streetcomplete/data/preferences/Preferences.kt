@@ -153,30 +153,6 @@ class Preferences(private val prefs: ObservableSettings) {
         prefs.putString(LAST_PICKED_PREFIX + key, values.joinToString(","))
     }
 
-    fun getLastPickedLeft(key: String): String? =
-        prefs.getStringOrNull(getLastPickedSideKey(key, "left"))
-
-    fun setLastPickedLeft(key: String, value: String?) {
-        prefs.putStringOrNull(getLastPickedSideKey(key, "left"), value)
-    }
-
-    fun getLastPickedRight(key: String): String? =
-        prefs.getStringOrNull(getLastPickedSideKey(key, "right"))
-
-    fun setLastPickedRight(key: String, value: String?) {
-        prefs.putStringOrNull(getLastPickedSideKey(key, "right"), value)
-    }
-
-    fun getLastPickedOneSide(key: String): String? =
-        prefs.getStringOrNull(getLastPickedSideKey(key, "oneSide"))
-
-    fun setLastPickedOneSide(key: String, value: String?) {
-        prefs.putStringOrNull(getLastPickedSideKey(key, "oneSide"), value)
-    }
-
-    private fun getLastPickedSideKey(key: String, side: String): String =
-        "$LAST_PICKED_PREFIX$key.$side"
-
     // profile & statistics screen UI
     var userGlobalRank: Int by prefs.int(USER_GLOBAL_RANK, -1)
     var userGlobalRankCurrentWeek: Int by prefs.int(USER_GLOBAL_RANK_CURRENT_WEEK, -1)

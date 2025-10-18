@@ -40,6 +40,12 @@ fun Modifier.conditional(
 ): Modifier =
     if (condition) then(modifier(Modifier)) else this
 
+fun <T> Modifier.conditional(
+    value: T?,
+    modifier: Modifier.(T) -> Modifier
+): Modifier =
+    if (value != null) then(modifier(Modifier, value)) else this
+
 /** set padding proportional to the composable's size */
 fun Modifier.proportionalPadding(
     start: Float = 0f,

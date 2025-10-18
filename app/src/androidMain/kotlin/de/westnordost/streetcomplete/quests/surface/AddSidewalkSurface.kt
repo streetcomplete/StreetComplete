@@ -44,7 +44,7 @@ class AddSidewalkSurface : OsmFilterQuestType<SidewalkSurfaceAnswer>(), AndroidQ
 
     override fun applyAnswerTo(answer: SidewalkSurfaceAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {
-            is SidewalkIsDifferent -> {
+            is SidewalkSurfaceAnswer.DifferentSidewalk -> {
                 for (side in listOf(":left", ":right", ":both", "")) {
                     tags.remove("sidewalk$side:surface")
                     tags.remove("sidewalk$side:surface:note")
@@ -55,7 +55,7 @@ class AddSidewalkSurface : OsmFilterQuestType<SidewalkSurfaceAnswer>(), AndroidQ
                 tags.removeCheckDatesForKey("sidewalk:surface")
                 tags.removeCheckDatesForKey("sidewalk:smoothness")
             }
-            is SidewalkSurface -> {
+            is SidewalkSurfaceAnswer.Surfaces -> {
                 answer.value.applyTo(tags)
             }
         }

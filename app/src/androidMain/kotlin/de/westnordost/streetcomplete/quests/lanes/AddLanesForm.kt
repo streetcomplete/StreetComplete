@@ -27,10 +27,6 @@ class AddLanesForm : AbstractOsmQuestForm<LanesAnswer>() {
 
     private lateinit var answer: MutableState<Lanes>
 
-    private val mapRotation: MutableFloatState = mutableFloatStateOf(0f)
-    private val wayRotation: MutableFloatState = mutableFloatStateOf(0f)
-    private val mapTilt: MutableFloatState = mutableFloatStateOf(0f)
-
     override val contentPadding = false
 
     // just some shortcuts
@@ -67,11 +63,6 @@ class AddLanesForm : AbstractOsmQuestForm<LanesAnswer>() {
         })
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        wayRotation.floatValue = (geometry as ElementPolylinesGeometry).getOrientationAtCenterLineInDegrees()
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -84,7 +75,7 @@ class AddLanesForm : AbstractOsmQuestForm<LanesAnswer>() {
                     answer.value = it
                     checkIsFormComplete()
                 },
-                wayRotation = wayRotation.floatValue,
+                wayRotation = geometryRotation.floatValue,
                 mapRotation = mapRotation.floatValue,
                 mapTilt = mapTilt.floatValue,
                 isOneway = isOneway,
@@ -95,11 +86,6 @@ class AddLanesForm : AbstractOsmQuestForm<LanesAnswer>() {
                 edgeLineStyle = edgeLineStyle,
             )
         } }
-    }
-
-    @AnyThread override fun onMapOrientation(rotation: Double, tilt: Double) {
-        mapRotation.floatValue = rotation.toFloat()
-        mapTilt.floatValue = tilt.toFloat()
     }
 
     override fun isFormComplete(): Boolean =

@@ -1,10 +1,9 @@
 package de.westnordost.streetcomplete.osm.street_parking
 
+import de.westnordost.streetcomplete.osm.Sides
 import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation.*
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.*
 import kotlinx.serialization.Serializable
-
-data class LeftAndRightStreetParking(val left: StreetParking?, val right: StreetParking?)
 
 @Serializable sealed interface StreetParking {
     /** When street parking is either forbidden or not possible */
@@ -52,9 +51,9 @@ enum class ParkingPosition {
     }
 }
 
-fun LeftAndRightStreetParking.validOrNullValues(): LeftAndRightStreetParking {
+fun Sides<StreetParking>.validOrNullValues(): Sides<StreetParking> {
     if (left?.isValid != false && right?.isValid != false) return this
-    return LeftAndRightStreetParking(left?.takeIf { it.isValid }, right?.takeIf { it.isValid })
+    return Sides(left?.takeIf { it.isValid }, right?.takeIf { it.isValid })
 }
 
 private val StreetParking.isValid: Boolean get() = when (this) {

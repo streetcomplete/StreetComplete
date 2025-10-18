@@ -7,7 +7,7 @@ import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
-import de.westnordost.streetcomplete.osm.sidewalk.LeftAndRightSidewalk
+import de.westnordost.streetcomplete.osm.Sides
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.NO
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.SEPARATE
@@ -19,15 +19,13 @@ import de.westnordost.streetcomplete.osm.sidewalk.image
 import de.westnordost.streetcomplete.osm.sidewalk.parseSidewalkSides
 import de.westnordost.streetcomplete.osm.sidewalk.title
 import de.westnordost.streetcomplete.osm.sidewalk.validOrNullValues
-import de.westnordost.streetcomplete.overlays.AStreetSideSelectOverlayForm
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
-import de.westnordost.streetcomplete.ui.common.street_side_select.StreetSideItem
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
 class SidewalkOverlayForm : AStreetSideSelectOverlayForm<Sidewalk>() {
 
-    private var originalSidewalk: LeftAndRightSidewalk? = null
+    private var originalSidewalk: Sides<Sidewalk>? = null
 
     @Composable override fun BoxScope.DialogItemContent(item: Sidewalk, isRight: Boolean) {
         val icon = item.icon
@@ -65,7 +63,7 @@ class SidewalkOverlayForm : AStreetSideSelectOverlayForm<Sidewalk>() {
 
     override fun onClickOk() {
         streetSideSelect.saveLastSelection()
-        val sidewalks = LeftAndRightSidewalk(streetSideSelect.left?.value, streetSideSelect.right?.value)
+        val sidewalks = Sides(streetSideSelect.left?.value, streetSideSelect.right?.value)
         val tagChanges = StringMapChangesBuilder(element!!.tags)
         sidewalks.applyTo(tagChanges)
         applyEdit(UpdateElementTagsAction(element!!, tagChanges.create()))

@@ -9,18 +9,19 @@ import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
+import de.westnordost.streetcomplete.osm.Sides
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.osm.any
 import de.westnordost.streetcomplete.osm.maxspeed.MAX_SPEED_TYPE_KEYS
-import de.westnordost.streetcomplete.osm.sidewalk.LeftAndRightSidewalk
+import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.INVALID
-import de.westnordost.streetcomplete.osm.sidewalk.any
 import de.westnordost.streetcomplete.osm.sidewalk.applyTo
 import de.westnordost.streetcomplete.osm.sidewalk.parseSidewalkSides
 import de.westnordost.streetcomplete.osm.surface.UNPAVED_SURFACES
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.default_disabled_msg_overlay
 
-class AddSidewalk : OsmElementQuestType<LeftAndRightSidewalk>, AndroidQuest {
+class AddSidewalk : OsmElementQuestType<Sides<Sidewalk>>, AndroidQuest {
     override val changesetComment = "Specify whether roads have sidewalks"
     override val wikiLink = "Key:sidewalk"
     override val icon = R.drawable.quest_sidewalk
@@ -50,7 +51,7 @@ class AddSidewalk : OsmElementQuestType<LeftAndRightSidewalk>, AndroidQuest {
 
     override fun createForm() = AddSidewalkForm()
 
-    override fun applyAnswerTo(answer: LeftAndRightSidewalk, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: Sides<Sidewalk>, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         answer.applyTo(tags)
     }
 }

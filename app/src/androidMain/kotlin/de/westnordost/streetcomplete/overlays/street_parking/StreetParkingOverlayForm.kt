@@ -8,9 +8,9 @@ import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
+import de.westnordost.streetcomplete.osm.Sides
 import de.westnordost.streetcomplete.osm.oneway.isForwardOneway
 import de.westnordost.streetcomplete.osm.oneway.isReversedOneway
-import de.westnordost.streetcomplete.osm.street_parking.LeftAndRightStreetParking
 import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition
 import de.westnordost.streetcomplete.osm.street_parking.StreetParking
@@ -32,7 +32,7 @@ import org.jetbrains.compose.resources.stringResource
 
 class StreetParkingOverlayForm : AStreetSideSelectOverlayForm<StreetParking>() {
 
-    private var originalParking: LeftAndRightStreetParking? = null
+    private var originalParking: Sides<StreetParking>? = null
 
     private val isRightSideUpsideDown get() =
         !isForwardOneway && (isReversedOneway || isLeftHandTraffic)
@@ -140,7 +140,7 @@ class StreetParkingOverlayForm : AStreetSideSelectOverlayForm<StreetParking>() {
 
     override fun onClickOk() {
         streetSideSelect.saveLastSelection()
-        val parking = LeftAndRightStreetParking(streetSideSelect.left?.value, streetSideSelect.right?.value)
+        val parking = Sides(streetSideSelect.left?.value, streetSideSelect.right?.value)
         val tagChanges = StringMapChangesBuilder(element!!.tags)
         parking.applyTo(tagChanges)
         applyEdit(UpdateElementTagsAction(element!!, tagChanges.create()))

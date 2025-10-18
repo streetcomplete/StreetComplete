@@ -17,7 +17,7 @@ internal class SidewalkSurfaceCreatorKtTest {
             setOf(
                 StringMapEntryAdd("sidewalk:both:surface", "asphalt")
             ),
-            LeftAndRightSidewalkSurface(ASPHALT, ASPHALT).appliedTo(
+            SidewalkSurface(ASPHALT, ASPHALT).appliedTo(
                 mapOf()
             ),
         )
@@ -29,7 +29,7 @@ internal class SidewalkSurfaceCreatorKtTest {
                 StringMapEntryAdd("sidewalk:left:surface", "asphalt"),
                 StringMapEntryAdd("sidewalk:right:surface", "paving_stones")
             ),
-            LeftAndRightSidewalkSurface(ASPHALT, PAVING_STONES).appliedTo(
+            SidewalkSurface(ASPHALT, PAVING_STONES).appliedTo(
                 mapOf()
             ),
         )
@@ -41,7 +41,7 @@ internal class SidewalkSurfaceCreatorKtTest {
                 StringMapEntryModify("sidewalk:both:surface", "asphalt", "asphalt"),
                 StringMapEntryModify("check_date:sidewalk:surface", "2000-10-10", nowAsCheckDateString()),
             ),
-            LeftAndRightSidewalkSurface(ASPHALT, ASPHALT).appliedTo(mapOf(
+            SidewalkSurface(ASPHALT, ASPHALT).appliedTo(mapOf(
                 "sidewalk:both:surface" to "asphalt",
                 "check_date:sidewalk:surface" to "2000-10-10"
             ))
@@ -55,7 +55,7 @@ internal class SidewalkSurfaceCreatorKtTest {
                 StringMapEntryDelete("sidewalk:right:surface", "paving_stones"),
                 StringMapEntryAdd("sidewalk:both:surface", "concrete")
             ),
-            LeftAndRightSidewalkSurface(CONCRETE, CONCRETE).appliedTo(mapOf(
+            SidewalkSurface(CONCRETE, CONCRETE).appliedTo(mapOf(
                 "sidewalk:left:surface" to "asphalt",
                 "sidewalk:right:surface" to "paving_stones"
             ))
@@ -68,7 +68,7 @@ internal class SidewalkSurfaceCreatorKtTest {
                 StringMapEntryModify("sidewalk:left:surface", "asphalt", "concrete"),
                 StringMapEntryModify("sidewalk:right:surface", "paving_stones", "gravel"),
             ),
-            LeftAndRightSidewalkSurface(CONCRETE, GRAVEL).appliedTo(mapOf(
+            SidewalkSurface(CONCRETE, GRAVEL).appliedTo(mapOf(
                 "sidewalk:left:surface" to "asphalt",
                 "sidewalk:right:surface" to "paving_stones"
             ))
@@ -81,7 +81,7 @@ internal class SidewalkSurfaceCreatorKtTest {
                 StringMapEntryDelete("sidewalk:both:smoothness", "excellent"),
                 StringMapEntryModify("sidewalk:both:surface", "asphalt", "paving_stones")
             ),
-            LeftAndRightSidewalkSurface(PAVING_STONES, PAVING_STONES).appliedTo(mapOf(
+            SidewalkSurface(PAVING_STONES, PAVING_STONES).appliedTo(mapOf(
                 "sidewalk:both:surface" to "asphalt",
                 "sidewalk:both:smoothness" to "excellent"
             ))
@@ -97,7 +97,7 @@ internal class SidewalkSurfaceCreatorKtTest {
                 StringMapEntryDelete("sidewalk:right:smoothness", "good"),
                 StringMapEntryAdd("sidewalk:both:surface", "paving_stones")
             ),
-            LeftAndRightSidewalkSurface(PAVING_STONES, PAVING_STONES).appliedTo(mapOf(
+            SidewalkSurface(PAVING_STONES, PAVING_STONES).appliedTo(mapOf(
                 "sidewalk:left:surface" to "asphalt",
                 "sidewalk:right:surface" to "concrete",
                 "sidewalk:left:smoothness" to "excellent",
@@ -111,7 +111,7 @@ internal class SidewalkSurfaceCreatorKtTest {
             setOf(
                 StringMapEntryAdd("sidewalk:both:surface", "paving_stones")
             ),
-            LeftAndRightSidewalkSurface(PAVING_STONES, PAVING_STONES).appliedTo(mapOf(
+            SidewalkSurface(PAVING_STONES, PAVING_STONES).appliedTo(mapOf(
                 "sidewalk" to "both",
                 "surface" to "concrete",
                 "smoothness" to "excellent",
@@ -120,7 +120,7 @@ internal class SidewalkSurfaceCreatorKtTest {
     }
 }
 
-private fun LeftAndRightSidewalkSurface.appliedTo(tags: Map<String, String>): Set<StringMapEntryChange> {
+private fun SidewalkSurface.appliedTo(tags: Map<String, String>): Set<StringMapEntryChange> {
     val cb = StringMapChangesBuilder(tags)
     applyTo(cb)
     return cb.create().changes

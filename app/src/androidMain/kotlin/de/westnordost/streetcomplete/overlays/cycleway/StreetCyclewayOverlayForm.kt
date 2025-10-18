@@ -16,7 +16,6 @@ import de.westnordost.streetcomplete.osm.bicycle_in_pedestrian_street.BicycleInP
 import de.westnordost.streetcomplete.osm.bicycle_in_pedestrian_street.applyTo
 import de.westnordost.streetcomplete.osm.bicycle_in_pedestrian_street.parseBicycleInPedestrianStreet
 import de.westnordost.streetcomplete.osm.cycleway.CyclewayAndDirection
-import de.westnordost.streetcomplete.osm.cycleway.LeftAndRightCycleway
 import de.westnordost.streetcomplete.osm.cycleway.applyTo
 import de.westnordost.streetcomplete.osm.cycleway.getDialogIcon
 import de.westnordost.streetcomplete.osm.cycleway.getFloatingIcon
@@ -51,7 +50,7 @@ class StreetCyclewayOverlayForm : AStreetSideSelectOverlayForm<CyclewayAndDirect
             createReverseCyclewayDirectionAnswer()
         )
 
-    private var originalCycleway: LeftAndRightCycleway? = null
+    private var originalCycleway: Sides<CyclewayAndDirection>? = null
     private var originalBicycleBoulevard: BicycleBoulevard = BicycleBoulevard.NO
     private var originalBicycleInPedestrianStreet: BicycleInPedestrianStreet? = null
     private var bicycleBoulevard: BicycleBoulevard = BicycleBoulevard.NO
@@ -249,7 +248,7 @@ class StreetCyclewayOverlayForm : AStreetSideSelectOverlayForm<CyclewayAndDirect
     }
 
     override fun onClickOk() {
-        val cycleways = LeftAndRightCycleway(streetSideSelect.left?.value, streetSideSelect.right?.value)
+        val cycleways = Sides(streetSideSelect.left?.value, streetSideSelect.right?.value)
         if (cycleways.wasNoOnewayForCyclistsButNowItIs(element!!.tags, isLeftHandTraffic)) {
             confirmNotOnewayForCyclists { saveAndApplyCycleway(cycleways) }
         } else {
@@ -265,7 +264,7 @@ class StreetCyclewayOverlayForm : AStreetSideSelectOverlayForm<CyclewayAndDirect
             .show()
     }
 
-    private fun saveAndApplyCycleway(cycleways: LeftAndRightCycleway) {
+    private fun saveAndApplyCycleway(cycleways: Sides<CyclewayAndDirection>) {
         streetSideSelect.saveLastSelection()
         val tags = StringMapChangesBuilder(element!!.tags)
         cycleways.applyTo(tags, countryInfo.isLeftHandTraffic)

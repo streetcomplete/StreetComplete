@@ -1,18 +1,13 @@
 package de.westnordost.streetcomplete.quests.incline_direction
 
-import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableFloatState
-import androidx.compose.runtime.mutableFloatStateOf
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.quests.AItemSelectQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.quest_steps_incline_up
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
-import de.westnordost.streetcomplete.util.math.getOrientationAtCenterLineInDegrees
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
@@ -23,18 +18,6 @@ class AddBicycleInclineForm : AItemSelectQuestForm<Incline, BicycleInclineAnswer
 
     override val items = Incline.entries
     override val itemsPerRow = 2
-
-    private var mapRotation: MutableFloatState = mutableFloatStateOf(0f)
-    private var wayRotation: MutableFloatState = mutableFloatStateOf(0f)
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        wayRotation.floatValue = (geometry as ElementPolylinesGeometry).getOrientationAtCenterLineInDegrees()
-    }
-
-    override fun onMapOrientation(rotation: Double, tilt: Double) {
-        mapRotation.floatValue = rotation.toFloat()
-    }
 
     private fun confirmUpAndDown() {
         val ctx = context ?: return
@@ -49,7 +32,7 @@ class AddBicycleInclineForm : AItemSelectQuestForm<Incline, BicycleInclineAnswer
         ImageWithLabel(
             painter = painterResource(item.icon),
             label = stringResource(Res.string.quest_steps_incline_up),
-            imageRotation = wayRotation.floatValue - mapRotation.floatValue
+            imageRotation = geometryRotation.floatValue - mapRotation.floatValue
         )
     }
 

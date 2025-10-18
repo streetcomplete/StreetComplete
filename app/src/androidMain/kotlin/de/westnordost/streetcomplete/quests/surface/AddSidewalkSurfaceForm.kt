@@ -3,93 +3,107 @@ package de.westnordost.streetcomplete.quests.surface
 import android.os.Bundle
 import android.view.View
 import androidx.compose.foundation.layout.BoxScope
+import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.preferences.Preferences
+import de.westnordost.streetcomplete.databinding.ComposeViewBinding
+import de.westnordost.streetcomplete.osm.Sides
+import de.westnordost.streetcomplete.osm.all
+import de.westnordost.streetcomplete.osm.any
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk
 import de.westnordost.streetcomplete.osm.sidewalk.parseSidewalkSides
-import de.westnordost.streetcomplete.osm.sidewalk_surface.LeftAndRightSidewalkSurface
+import de.westnordost.streetcomplete.osm.sidewalk_surface.SidewalkSurface
 import de.westnordost.streetcomplete.osm.surface.Surface
 import de.westnordost.streetcomplete.osm.surface.icon
 import de.westnordost.streetcomplete.osm.surface.title
-import de.westnordost.streetcomplete.quests.AStreetSideSelectForm
+import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.sidewalk_illustration_yes
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
-import de.westnordost.streetcomplete.ui.common.street_side_select.StreetSideItem
 import de.westnordost.streetcomplete.ui.util.ClipCirclePainter
-import de.westnordost.streetcomplete.view.controller.StreetSideSelectWithLastAnswerButtonViewController.Sides.BOTH
-import de.westnordost.streetcomplete.view.controller.StreetSideSelectWithLastAnswerButtonViewController.Sides.LEFT
-import de.westnordost.streetcomplete.view.controller.StreetSideSelectWithLastAnswerButtonViewController.Sides.RIGHT
+import de.westnordost.streetcomplete.ui.util.content
+import de.westnordost.streetcomplete.ui.util.rememberSerializable
+import kotlinx.serialization.json.Json
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
+import org.koin.android.ext.android.inject
+import kotlin.getValue
 
-class AddSidewalkSurfaceForm : AStreetSideSelectForm<Surface, SidewalkSurfaceAnswer>() {
+class AddSidewalkSurfaceForm : AbstractOsmQuestForm<SidewalkSurfaceAnswer>() {
 
-    private val items: List<Surface> = Surface.selectableValuesForWays
+    override val contentLayoutResId = R.layout.compose_view
+    private val binding by contentViewBinding(ComposeViewBinding::bind)
+
+    private val prefs: Preferences by inject()
+
+    override val contentPadding = false
 
     override val otherAnswers = listOf(
-        AnswerItem(R.string.quest_sidewalk_answer_different) { applyAnswer(SidewalkIsDifferent) }
+        AnswerItem(R.string.quest_sidewalk_answer_different) {
+            applyAnswer(SidewalkSurfaceAnswer.DifferentSidewalk)
+        }
     )
 
-    @Composable override fun BoxScope.DialogItemContent(item: Surface, isRight: Boolean) {
-        val icon = item.icon
-        if (icon != null) {
-            ImageWithLabel(painterResource(icon), stringResource(item.title))
-        }
-    }
+    private lateinit var sidewalkSurfaces: MutableState<Sides<Surface>>
+    private var hasSidewalkLeft: Boolean = false
+    private var hasSidewalkRight: Boolean = false
 
-    @Composable override fun getStreetSideItem(item: Surface, isRight: Boolean): StreetSideItem {
-        val icon = item.icon?.let { painterResource(it) }
-        return StreetSideItem(
-            image = painterResource(Res.drawable.sidewalk_illustration_yes),
-            title = stringResource(item.title),
-            floatingIcon = remember(icon) { icon?.let { ClipCirclePainter(it) } }
-        )
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        val sides = parseSidewalkSides(element.tags)
+        hasSidewalkLeft = sides?.left == Sidewalk.YES
+        hasSidewalkRight = sides?.right == Sidewalk.YES
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        if (savedInstanceState == null) {
-            initStateFromTags()
-        }
+
+        binding.composeViewBase.content { Surface {
+            sidewalkSurfaces = rememberSerializable { mutableStateOf(Sides(null, null)) }
+
+            val lastPicked = if (hasSidewalkLeft && hasSidewalkRight) {
+                prefs
+                    .getLastPicked(this::class.simpleName!!)
+                    .map { Json.decodeFromString<Sides<Surface>>(it) }
+            } else {
+                emptyList()
+            }
+
+            SidewalkSurfaceForm(
+                value = sidewalkSurfaces.value,
+                onValueChanged = {
+                    sidewalkSurfaces.value = it
+                    checkIsFormComplete()
+                },
+                geometryRotation = geometryRotation.floatValue,
+                mapRotation = mapRotation.floatValue,
+                mapTilt = mapTilt.floatValue,
+                isLeftHandTraffic = countryInfo.isLeftHandTraffic,
+                lastPicked = lastPicked,
+                isLeftSideVisible = hasSidewalkLeft,
+                isRightSideVisible = hasSidewalkRight,
+            )
+            checkIsFormComplete()
+        } }
     }
 
-    private fun initStateFromTags() {
-        val sides = parseSidewalkSides(element.tags)
-        val hasLeft = sides?.left == Sidewalk.YES
-        val hasRight = sides?.right == Sidewalk.YES
+    override fun isFormComplete() =
+        (!hasSidewalkLeft || sidewalkSurfaces.value.left != null) &&
+        (!hasSidewalkRight || sidewalkSurfaces.value.right != null)
 
-        streetSideSelect.showSides = when {
-            hasLeft && hasRight -> BOTH
-            hasLeft -> LEFT
-            hasRight -> RIGHT
-            else -> return
-        }
-    }
-
-    override fun onClickSide(isRight: Boolean) {
-        ImageListPickerDialog(requireContext(), items, R.layout.cell_labeled_icon_select, 2) {
-            val surface = it.value!!
-            replaceSurfaceSide(isRight, surface)
-        }.show()
-    }
-
-    private fun replaceSurfaceSide(isRight: Boolean, surface: Surface) {
-        val streetSideItem = surface.asStreetSideItem(requireContext().resources)
-        streetSideSelect.replacePuzzleSide(streetSideItem, isRight)
-    }
+    override fun isRejectingClose() =
+        sidewalkSurfaces.value.any { it != null }
 
     override fun onClickOk() {
-        val left = streetSideSelect.left?.value
-        val right = streetSideSelect.right?.value
-        streetSideSelect.saveLastSelection()
-        applyAnswer(SidewalkSurface(LeftAndRightSidewalkSurface(left, right)))
+        applyAnswer(SidewalkSurfaceAnswer.Surfaces(SidewalkSurface(sidewalkSurfaces.value)))
+        if (hasSidewalkLeft && hasSidewalkRight) {
+            prefs.setLastPicked(this::class.simpleName!!, listOf(Json.encodeToString(sidewalkSurfaces.value)))
+        }
     }
-
-    /* ------------------------------------------------------------------------------------------ */
-
-    override fun serialize(item: Surface) = item.name
-    override fun deserialize(str: String) = Surface.valueOf(str)
 }
