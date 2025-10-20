@@ -49,13 +49,16 @@ class AddRoadName : OsmFilterQuestType<RoadNameAnswer>(), AndroidQuest {
                 // than what the highway=service tagging covers. For example, certain traffic-calmed
                 // driveways / service roads may be tagged as highway=living_street. We do not want
                 // to overwrite this, so let's keep it a living street in that case (see #2431)
-                if (tags["highway"] == "living_street") {
+                // see also #6511
+                if (tags["highway"] == "living_street" || tags["highway"] == "pedestrian") {
                     tags["noname"] = "yes"
                 } else {
                     tags["highway"] = "service"
                 }
             }
-            RoadNameAnswer.IsTrack -> tags["highway"] = "track"
+            RoadNameAnswer.IsTrack -> {
+                tags["highway"] = "track"
+            }
             RoadNameAnswer.IsLinkRoad -> {
                 if (tags["highway"]?.matches("primary|secondary|tertiary".toRegex()) == true) {
                     tags["highway"] += "_link"

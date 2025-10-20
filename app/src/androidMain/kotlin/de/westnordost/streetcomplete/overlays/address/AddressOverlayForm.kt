@@ -264,7 +264,8 @@ class AddressOverlayForm : AbstractOverlayForm(), IsMapPositionAware {
 
     override fun isFormComplete(): Boolean =
         addressNumberAndName.value.isComplete()
-        && streetOrPlaceName.value.name.isNotEmpty()
+        // street is optional as in new developments sometimes the street names are not posted yet,
+        // or it is not clear on-site, see #6528
 
     override fun onClickOk() {
         val number = addressNumberAndName.value.number

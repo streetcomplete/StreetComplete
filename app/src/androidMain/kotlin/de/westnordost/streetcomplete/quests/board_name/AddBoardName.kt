@@ -17,7 +17,7 @@ class AddBoardName : OsmFilterQuestType<BoardNameAnswer>(), AndroidQuest {
         nodes, ways, relations with
         (
           tourism = information and information = board
-          and board_type != notice
+          and board_type !~ notice|public_transport
           and !board:title
         )
         and !name and noname != yes and name:signed != no
@@ -25,7 +25,7 @@ class AddBoardName : OsmFilterQuestType<BoardNameAnswer>(), AndroidQuest {
 
     override val changesetComment = "Determine information board names"
     override val wikiLink = "Tag:information=board"
-    override val icon = R.drawable.ic_quest_label
+    override val icon = R.drawable.ic_quest_label_thing
     override val achievements = listOf(OUTDOORS)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_board_name_title
