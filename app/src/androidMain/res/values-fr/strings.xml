@@ -119,7 +119,7 @@ Toutefois, avant de télécharger vos modifications, l’application vérifie, �
     <string name="store_listing_short_description">"Application d’arpentage OpenStreetMap"</string>
     <string name="store_listing_full_description">"Aidez à améliorer OpenStreetMap avec StreetComplete !
 
-Cette application recense les informations incomplètes autour de vous et les affiche sur une carte sous forme de quêtes. Résolvez chaque quête en vous rendant sur place et en répondant à une question simple pour mettre à jour la carte. 
+Cette application recense les informations incomplètes autour de vous et les affiche sur une carte sous forme de quêtes. Résolvez chaque quête en vous rendant sur place et en répondant à une question simple pour mettre à jour la carte.
 
 Les informations que vous saisissez sont ensuite directement ajoutées à OpenStreetMap en votre nom, sans qu’il soit nécessaire d’utiliser un autre éditeur de carte."</string>
     <string name="quest_name_answer_noName">"Il n’y a pas de nom…"</string>
@@ -513,7 +513,7 @@ Sinon, vous pouvez télécharger un autre clavier dans l’app store. Les clavie
     <string name="quest_leaf_type_mixed">"Les deux sont présents"</string>
     <string name="quest_cyclewayPartSurface_title">"Quel est le revêtement de la piste cyclable ici ?"</string>
     <string name="quest_generic_answer_differs_along_the_way">"Cela varie en cours de route"</string>
-    <string name="quest_split_way_description">"S’il varie en cours de route, la première étape consiste à découper la piste en plusieurs tronçons. Ensuite, il est possible de répondre à la quête séparément pour chaque tronçon. 
+    <string name="quest_split_way_description">"S’il varie en cours de route, la première étape consiste à découper la piste en plusieurs tronçons. Ensuite, il est possible de répondre à la quête séparément pour chaque tronçon.
 Découper maintenant ?"</string>
     <string name="quest_split_way_tutorial">"Appuyez sur le chemin pour le découper au(x) point(s) où la réponse diffère. Utilisez la fonction zoom et essayez d’être aussi précis que possible."</string>
     <string name="quest_split_way_too_imprecise">"Veuillez zoomer"</string>
@@ -572,7 +572,7 @@ Découper maintenant ?"</string>
     <string name="tutorial_welcome_to_osm_subtitle">"la carte mondiale gratuite et collaborative"</string>
     <string name="tutorial_intro">"StreetComplete permet de contribuer facilement à OpenStreetMap.
 L’application recherche automatiquement les détails manquants autour de vous : pistes cyclables, numéros de rue, horaires d’ouverture et plus encore…"</string>
-    <string name="tutorial_solving_quests">"Une fois trouvés, ces détails manquants apparaîtront sur la carte sous forme de quêtes. 
+    <string name="tutorial_solving_quests">"Une fois trouvés, ces détails manquants apparaîtront sur la carte sous forme de quêtes.
 
 Vous pouvez d’ores et déjà commencer à les résoudre, mais vous devrez vous connecter pour que vos réponses soient publiées."</string>
     <string name="tutorial_stay_safe">"En cas de doute, vous pouvez toujours répondre « Je ne sais pas » et laisser une note.
