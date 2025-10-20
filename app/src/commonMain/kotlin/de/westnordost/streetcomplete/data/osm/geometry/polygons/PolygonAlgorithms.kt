@@ -31,6 +31,7 @@ object PolygonAlgorithms {
         }
         var width = maxX - minX
         var height = maxY - minY
+        val precision = (min(width, height) / 100.0).coerceAtLeast(0.5)
 
         val cellSize = minOf(width, height)
         val halfCellSize = cellSize / 2
@@ -81,24 +82,24 @@ object PolygonAlgorithms {
     }
 
     fun pointToPolygonDist(pointToObserve: Point, polygon: Polygon): Double {
-        var inside = false
-        var minDistSq = Double.POSITIVE_INFINITY
+        // Distance and inside state for the outer ring
+        var inside = isPointInRing(pointToObserve, polygon.shape)
+        var minDistSq = ringDistanceSq(pointToObserve, polygon.shape)
 
-        val ring = polygon.shape
-        for (i in ring.indices) {
-            val pointA = ring[i]
-            val pointB = ring[(i + 1) % ring.size]
+        // Check holes (inner rings)
+        for (hole in polygon.holes) {
+            // If point is inside a hole, it's considered outside overall
+            if (isPointInRing(pointToObserve, hole)) inside = false
 
-            val distSq = pointToSegmentDistSq(pointToObserve, pointA, pointB)
+            // Still check the distance — holes can affect nearest boundary
+            val distSq = ringDistanceSq(pointToObserve, hole)
             if (distSq < minDistSq) minDistSq = distSq
-
-            val interesects = ((pointA.y > pointToObserve.y) != (pointB.y > pointToObserve.y)) && (pointToObserve.x < (pointB.x - pointA.x) * (pointToObserve.y - pointA.y) / (pointB.y - pointA.y) + pointA.x)
-            if (interesects) inside = !inside
         }
 
         val dist = kotlin.math.sqrt(minDistSq)
         return if (inside) dist else -dist
     }
+
 
     private fun pointToSegmentDistSq(pointToObserve: Point, pointA: Point, pointB: Point): Double {
         var x = pointA.x
@@ -117,5 +118,30 @@ object PolygonAlgorithms {
         dx = pointToObserve.x - x
         dy = pointToObserve.y - y
         return dx * dx + dy * dy
+    }
+
+    private fun isPointInRing(point: Point, ring: List<Point>): Boolean {
+        var inside = false
+        for (i in ring.indices) {
+            val pointA = ring[i]
+            val pointB = ring[(i + 1) % ring.size]
+
+            val intersects = ((pointA.y > point.y) != (pointB.y > point.y)) &&
+                (point.x < (pointB.x - pointA.x) * (point.y - pointA.y) / (pointB.y - pointA.y) + pointA.x)
+
+            if (intersects) inside = !inside
+        }
+        return inside
+    }
+
+    private fun ringDistanceSq(point: Point, ring: List<Point>): Double {
+        var minDistSq = Double.POSITIVE_INFINITY
+        for (i in ring.indices) {
+            val pointA = ring[i]
+            val pointB = ring[(i + 1) % ring.size]
+            val distSq = pointToSegmentDistSq(point, pointA, pointB)
+            if (distSq < minDistSq) minDistSq = distSq
+        }
+        return minDistSq
     }
 }
