@@ -480,7 +480,6 @@ Sinon, vous pouvez télécharger un autre clavier dans l’app store. Les clavie
     <string name="quest_tracktype_grade1">"Pavé"</string>
     <string name="quest_tracktype_grade4">"Plutôt mou, essentiellement terre"</string>
     <string name="quest_tracktype_grade5">"Sol quasi naturel avec marques de passages"</string>
-    <string name="quest_tower_access_title">Qui peut accéder à cette tour ?</string>
     <string name="quest_building_underground_title">"Ce bâtiment est-il complètement souterrain ?"</string>
     <string name="quest_wheelchairAccess_limited_description_outside">"« En partie » signifie qu’il n’y a qu’une seule marche pour y accéder."</string>
     <string name="quest_wheelchairAccess_outside_title">"Cet endroit est-il accessible en fauteuil roulant ?"</string>
