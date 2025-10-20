@@ -15,8 +15,7 @@ class AddTowerAccess : OsmFilterQuestType<TowerAccess>(), AndroidQuest {
             and disused != yes
             and !emergency
             and !military
-            and (!access or access = unknown)
-            and historic = yes
+            and !access
         """
     override val changesetComment = "Specify access to observation towers"
     override val wikiLink = "Tag:man_made=tower"
