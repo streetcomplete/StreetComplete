@@ -4,7 +4,6 @@ import de.westnordost.streetcomplete.osm.Sides
 import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation.*
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.*
 import kotlin.test.Test
-import kotlin.test.assertEquals
 
 class StreetParkingParserKtTest {
 
@@ -474,3 +473,6 @@ class StreetParkingParserKtTest {
 
     //endregion
 }
+
+private fun assertEquals(expected: Sides<StreetParking>?, actual: Sides<StreetParking>?) =
+    kotlin.test.assertEquals(expected, actual)

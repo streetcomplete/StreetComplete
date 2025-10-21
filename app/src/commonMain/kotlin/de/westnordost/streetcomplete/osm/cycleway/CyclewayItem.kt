@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.osm.cycleway
 
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway.*
+import de.westnordost.streetcomplete.osm.oneway.Direction
 import de.westnordost.streetcomplete.osm.oneway.Direction.*
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.cycleway_bus_lane
@@ -53,20 +54,20 @@ import org.jetbrains.compose.resources.StringResource
 fun CyclewayAndDirection.getDialogIcon(
     isRight: Boolean,
     countryInfo: CountryInfo,
-    isContraflowInOneway: Boolean,
+    roadDirection: Direction,
 ): DrawableResource? =
     when (cycleway) {
         NONE ->     Res.drawable.cycleway_none_in_selection
         SEPARATE -> Res.drawable.cycleway_separate
-        else ->     getIcon(isRight, countryInfo, isContraflowInOneway)
+        else ->     getIcon(isRight, countryInfo, roadDirection)
     }
 
-fun Cycleway.getFloatingIcon(
-    isContraflowInOneway: Boolean,
+fun CyclewayAndDirection.getFloatingIcon(
+    roadDirection: Direction,
     noEntrySignDrawable: DrawableResource
 ): DrawableResource? =
-    when (this) {
-        NONE ->     if (isContraflowInOneway) noEntrySignDrawable else null
+    when (cycleway) {
+        NONE ->     if (direction.isReverseOf(roadDirection)) noEntrySignDrawable else null
         SEPARATE -> Res.drawable.floating_separate
         else ->     null
     }
@@ -74,13 +75,14 @@ fun Cycleway.getFloatingIcon(
 fun CyclewayAndDirection.getIcon(
     isRight: Boolean,
     countryInfo: CountryInfo,
-    isContraflowInOneway: Boolean
+    roadDirection: Direction,
 ): DrawableResource? =
     when (direction) {
         BOTH -> cycleway.getDualTrafficIcon(countryInfo)
         else -> {
             val isForward = (direction == FORWARD)
             val showMirrored = isForward xor isRight
+            val isContraflowInOneway = direction.isReverseOf(roadDirection)
             if (showMirrored) {
                 cycleway.getLeftHandTrafficIcon(countryInfo, isContraflowInOneway)
             } else {
@@ -162,7 +164,7 @@ private fun Cycleway.getLeftHandTrafficIcon(
         else -> null
     }
 
-fun CyclewayAndDirection.getTitle(isContraflowInOneway: Boolean): StringResource? =
+fun CyclewayAndDirection.getTitle(roadDirection: Direction): StringResource? =
     when (cycleway) {
         UNSPECIFIED_LANE, EXCLUSIVE_LANE -> {
             if (direction == BOTH) {
@@ -186,7 +188,7 @@ fun CyclewayAndDirection.getTitle(isContraflowInOneway: Boolean): StringResource
             }
         }
         NONE -> {
-            if (isContraflowInOneway) {
+            if (direction.isReverseOf(roadDirection)) {
                 Res.string.quest_cycleway_value_none_and_oneway
             } else {
                 Res.string.quest_cycleway_value_none
@@ -195,7 +197,7 @@ fun CyclewayAndDirection.getTitle(isContraflowInOneway: Boolean): StringResource
         ADVISORY_LANE,
         SUGGESTION_LANE ->   Res.string.quest_cycleway_value_advisory_lane
         NONE_NO_ONEWAY -> {
-            if (isContraflowInOneway) {
+            if (direction.isReverseOf(roadDirection)) {
                 Res.string.quest_cycleway_value_none_but_no_oneway
             } else {
                 Res.string.quest_cycleway_value_none

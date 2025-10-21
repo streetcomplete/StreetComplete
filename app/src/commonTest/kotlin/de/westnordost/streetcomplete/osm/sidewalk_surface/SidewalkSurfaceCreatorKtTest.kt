@@ -5,6 +5,7 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryChange
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
+import de.westnordost.streetcomplete.osm.Sides
 import de.westnordost.streetcomplete.osm.nowAsCheckDateString
 import de.westnordost.streetcomplete.osm.surface.Surface.*
 import kotlin.test.Test
@@ -17,7 +18,7 @@ internal class SidewalkSurfaceCreatorKtTest {
             setOf(
                 StringMapEntryAdd("sidewalk:both:surface", "asphalt")
             ),
-            SidewalkSurface(ASPHALT, ASPHALT).appliedTo(
+            SidewalkSurface(Sides(ASPHALT, ASPHALT)).appliedTo(
                 mapOf()
             ),
         )
@@ -29,7 +30,7 @@ internal class SidewalkSurfaceCreatorKtTest {
                 StringMapEntryAdd("sidewalk:left:surface", "asphalt"),
                 StringMapEntryAdd("sidewalk:right:surface", "paving_stones")
             ),
-            SidewalkSurface(ASPHALT, PAVING_STONES).appliedTo(
+            SidewalkSurface(Sides(ASPHALT, PAVING_STONES)).appliedTo(
                 mapOf()
             ),
         )
@@ -41,7 +42,7 @@ internal class SidewalkSurfaceCreatorKtTest {
                 StringMapEntryModify("sidewalk:both:surface", "asphalt", "asphalt"),
                 StringMapEntryModify("check_date:sidewalk:surface", "2000-10-10", nowAsCheckDateString()),
             ),
-            SidewalkSurface(ASPHALT, ASPHALT).appliedTo(mapOf(
+            SidewalkSurface(Sides(ASPHALT, ASPHALT)).appliedTo(mapOf(
                 "sidewalk:both:surface" to "asphalt",
                 "check_date:sidewalk:surface" to "2000-10-10"
             ))
@@ -55,7 +56,7 @@ internal class SidewalkSurfaceCreatorKtTest {
                 StringMapEntryDelete("sidewalk:right:surface", "paving_stones"),
                 StringMapEntryAdd("sidewalk:both:surface", "concrete")
             ),
-            SidewalkSurface(CONCRETE, CONCRETE).appliedTo(mapOf(
+            SidewalkSurface(Sides(CONCRETE, CONCRETE)).appliedTo(mapOf(
                 "sidewalk:left:surface" to "asphalt",
                 "sidewalk:right:surface" to "paving_stones"
             ))
@@ -68,7 +69,7 @@ internal class SidewalkSurfaceCreatorKtTest {
                 StringMapEntryModify("sidewalk:left:surface", "asphalt", "concrete"),
                 StringMapEntryModify("sidewalk:right:surface", "paving_stones", "gravel"),
             ),
-            SidewalkSurface(CONCRETE, GRAVEL).appliedTo(mapOf(
+            SidewalkSurface(Sides(CONCRETE, GRAVEL)).appliedTo(mapOf(
                 "sidewalk:left:surface" to "asphalt",
                 "sidewalk:right:surface" to "paving_stones"
             ))
@@ -81,7 +82,7 @@ internal class SidewalkSurfaceCreatorKtTest {
                 StringMapEntryDelete("sidewalk:both:smoothness", "excellent"),
                 StringMapEntryModify("sidewalk:both:surface", "asphalt", "paving_stones")
             ),
-            SidewalkSurface(PAVING_STONES, PAVING_STONES).appliedTo(mapOf(
+            SidewalkSurface(Sides(PAVING_STONES, PAVING_STONES)).appliedTo(mapOf(
                 "sidewalk:both:surface" to "asphalt",
                 "sidewalk:both:smoothness" to "excellent"
             ))
@@ -97,7 +98,7 @@ internal class SidewalkSurfaceCreatorKtTest {
                 StringMapEntryDelete("sidewalk:right:smoothness", "good"),
                 StringMapEntryAdd("sidewalk:both:surface", "paving_stones")
             ),
-            SidewalkSurface(PAVING_STONES, PAVING_STONES).appliedTo(mapOf(
+            SidewalkSurface(Sides(PAVING_STONES, PAVING_STONES)).appliedTo(mapOf(
                 "sidewalk:left:surface" to "asphalt",
                 "sidewalk:right:surface" to "concrete",
                 "sidewalk:left:smoothness" to "excellent",
@@ -111,7 +112,7 @@ internal class SidewalkSurfaceCreatorKtTest {
             setOf(
                 StringMapEntryAdd("sidewalk:both:surface", "paving_stones")
             ),
-            SidewalkSurface(PAVING_STONES, PAVING_STONES).appliedTo(mapOf(
+            SidewalkSurface(Sides(PAVING_STONES, PAVING_STONES)).appliedTo(mapOf(
                 "sidewalk" to "both",
                 "surface" to "concrete",
                 "smoothness" to "excellent",

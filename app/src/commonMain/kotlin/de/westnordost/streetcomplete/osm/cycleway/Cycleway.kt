@@ -6,7 +6,6 @@ import de.westnordost.streetcomplete.osm.cycleway.Cycleway.*
 import de.westnordost.streetcomplete.osm.oneway.Direction
 import de.westnordost.streetcomplete.osm.oneway.Direction.*
 import de.westnordost.streetcomplete.osm.oneway.isForwardOneway
-import de.westnordost.streetcomplete.osm.oneway.isInContraflowOfOneway
 import de.westnordost.streetcomplete.osm.oneway.isNotOnewayForCyclists
 import de.westnordost.streetcomplete.osm.oneway.isOneway
 import de.westnordost.streetcomplete.osm.oneway.isReversedOneway
@@ -165,12 +164,12 @@ fun Sides<Cycleway>.withDefaultDirection(isLeftHandTraffic: Boolean): Sides<Cycl
 
 fun getSelectableCycleways(
     countryInfo: CountryInfo,
-    roadTags: Map<String, String>,
     isRightSide: Boolean,
     isLeftHandTraffic: Boolean,
-    direction: Direction?
+    direction: Direction?,
+    roadDirection: Direction,
 ): List<CyclewayAndDirection> {
-    val dir = direction?.takeUnless { it == BOTH } ?: Direction.getDefault(isRightSide, isLeftHandTraffic)
+    val direction = direction?.takeUnless { it == BOTH } ?: Direction.getDefault(isRightSide, isLeftHandTraffic)
     val cycleways = mutableListOf(
         NONE, SEPARATE,
         EXCLUSIVE_LANE, ADVISORY_LANE, UNSPECIFIED_LANE, SUGGESTION_LANE,
@@ -199,10 +198,10 @@ fun getSelectableCycleways(
         cycleways.remove(SUGGESTION_LANE)
     }
     // different wording for a contraflow lane that is marked like a "shared" lane (just bicycle pictogram)
-    if (isInContraflowOfOneway(roadTags, dir)) {
+    if (direction.isReverseOf(roadDirection)) {
         cycleways.add(cycleways.indexOf(NONE) + 1, NONE_NO_ONEWAY)
     }
-    return cycleways.map { CyclewayAndDirection(it, dir) } + dualCycleways
+    return cycleways.map { CyclewayAndDirection(it, direction) } + dualCycleways
 }
 
 val CyclewayAndDirection.estimatedWidth: Float get() = when (cycleway) {

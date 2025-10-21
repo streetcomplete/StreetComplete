@@ -8,7 +8,6 @@ import de.westnordost.streetcomplete.osm.hasCheckDateForKey
 import de.westnordost.streetcomplete.osm.mergeSides
 import de.westnordost.streetcomplete.osm.oneway.Direction
 import de.westnordost.streetcomplete.osm.oneway.Direction.*
-import de.westnordost.streetcomplete.osm.oneway.isInContraflowOfOneway
 import de.westnordost.streetcomplete.osm.oneway.isNotOnewayForCyclists
 import de.westnordost.streetcomplete.osm.oneway.isOneway
 import de.westnordost.streetcomplete.osm.oneway.isReversedOneway
@@ -182,7 +181,8 @@ private fun CyclewayAndDirection.applyTo(tags: Tags, isRight: Boolean, isLeftHan
          */
         val defaultDirection = Direction.getDefault(isRight, isLeftHandTraffic)
         val isDefaultDirection = defaultDirection == direction
-        val isInContraflowOfOneway = isInContraflowOfOneway(tags, direction)
+        val roadDirection = Direction.from(tags)
+        val isInContraflowOfOneway = roadDirection.isReverseOf(direction)
         if (!isDefaultDirection || isInContraflowOfOneway || tags.containsKey("$cyclewayKey:oneway")) {
             if (cycleway == SIDEWALK_OK) {
                 tags["sidewalk:$side:oneway:bicycle"] = direction.onewayValue

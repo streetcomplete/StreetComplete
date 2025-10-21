@@ -2,77 +2,79 @@ package de.westnordost.streetcomplete.overlays.sidewalk
 
 import android.os.Bundle
 import android.view.View
-import androidx.compose.foundation.layout.BoxScope
-import androidx.compose.runtime.Composable
+import androidx.compose.material.Surface
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateOf
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
+import de.westnordost.streetcomplete.data.preferences.Preferences
+import de.westnordost.streetcomplete.databinding.ComposeViewBinding
 import de.westnordost.streetcomplete.osm.Sides
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk
-import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.NO
-import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.SEPARATE
-import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.YES
 import de.westnordost.streetcomplete.osm.sidewalk.applyTo
-import de.westnordost.streetcomplete.osm.sidewalk.floatingIcon
-import de.westnordost.streetcomplete.osm.sidewalk.icon
-import de.westnordost.streetcomplete.osm.sidewalk.image
 import de.westnordost.streetcomplete.osm.sidewalk.parseSidewalkSides
-import de.westnordost.streetcomplete.osm.sidewalk.title
 import de.westnordost.streetcomplete.osm.sidewalk.validOrNullValues
-import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
-import org.jetbrains.compose.resources.painterResource
-import org.jetbrains.compose.resources.stringResource
+import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
+import de.westnordost.streetcomplete.quests.sidewalk.SidewalkForm
+import de.westnordost.streetcomplete.ui.util.content
+import kotlinx.serialization.json.Json
+import org.koin.android.ext.android.inject
+import kotlin.getValue
 
-class SidewalkOverlayForm : AStreetSideSelectOverlayForm<Sidewalk>() {
+class SidewalkOverlayForm : AbstractOverlayForm() {
 
-    private var originalSidewalk: Sides<Sidewalk>? = null
+    override val contentLayoutResId = R.layout.compose_view
+    private val binding by contentViewBinding(ComposeViewBinding::bind)
 
-    @Composable override fun BoxScope.DialogItemContent(item: Sidewalk, isRight: Boolean) {
-        val icon = item.icon
-        val title = item.title
-        if (icon != null && title != null) {
-            ImageWithLabel(painterResource(icon), stringResource(title))
+    private val prefs: Preferences by inject()
+
+    override val contentPadding = false
+
+    private var originalSidewalks: Sides<Sidewalk>? = null
+    private val sidewalks: MutableState<Sides<Sidewalk>> = mutableStateOf(Sides(null, null))
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        originalSidewalks = parseSidewalkSides(element!!.tags)?.validOrNullValues()
+        if (savedInstanceState == null) {
+            sidewalks.value = originalSidewalks ?: Sides(null, null)
         }
     }
-
-    @Composable override fun getStreetSideItem(item: Sidewalk, isRight: Boolean) = StreetSideItem(
-        image = item.image?.let { painterResource(it) },
-        title = item.title?.let { stringResource(it) },
-        floatingIcon = item.floatingIcon?.let { painterResource(it) }
-    )
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        originalSidewalk = parseSidewalkSides(element!!.tags)?.validOrNullValues()
-        if (savedInstanceState == null) {
-            initStateFromTags()
-        }
-    }
+        binding.composeViewBase.content { Surface {
+            SidewalkForm(
+                value = sidewalks.value,
+                onValueChanged = {
+                    sidewalks.value = it
+                    checkIsFormComplete()
+                },
+                geometryRotation = geometryRotation.floatValue,
+                mapRotation = mapRotation.floatValue,
+                mapTilt = mapTilt.floatValue,
+                isLeftHandTraffic = countryInfo.isLeftHandTraffic,
+                lastPicked = prefs
+                    .getLastPicked(this::class.simpleName!!)
+                    .map { Json.decodeFromString(it) }
+            )
+        } }
 
-    private fun initStateFromTags() {
-        streetSideSelect.setPuzzleSide(originalSidewalk?.left?.asStreetSideItem(), false)
-        streetSideSelect.setPuzzleSide(originalSidewalk?.right?.asStreetSideItem(), true)
-    }
-
-    override fun onClickSide(isRight: Boolean) {
-        val items = listOf(YES, NO, SEPARATE).mapNotNull { it.asItem() }
-        ImageListPickerDialog(requireContext(), items, R.layout.cell_icon_select_with_label_below, 2) { item ->
-            streetSideSelect.replacePuzzleSide(item.value!!.asStreetSideItem()!!, isRight)
-        }.show()
-    }
-
-    override fun onClickOk() {
-        streetSideSelect.saveLastSelection()
-        val sidewalks = Sides(streetSideSelect.left?.value, streetSideSelect.right?.value)
-        val tagChanges = StringMapChangesBuilder(element!!.tags)
-        sidewalks.applyTo(tagChanges)
-        applyEdit(UpdateElementTagsAction(element!!, tagChanges.create()))
+        checkIsFormComplete()
     }
 
     override fun hasChanges(): Boolean =
-        streetSideSelect.left?.value != originalSidewalk?.left ||
-        streetSideSelect.right?.value != originalSidewalk?.right
+        sidewalks.value != originalSidewalks
 
-    override fun serialize(item: Sidewalk) = item.name
-    override fun deserialize(str: String) = Sidewalk.valueOf(str)
+    override fun isFormComplete(): Boolean =
+        sidewalks.value.left != null && sidewalks.value.right != null
+
+    override fun onClickOk() {
+        prefs.setLastPicked(this::class.simpleName!!, listOf(Json.encodeToString(sidewalks.value)))
+
+        val tagChanges = StringMapChangesBuilder(element!!.tags)
+        sidewalks.value.applyTo(tagChanges)
+        applyEdit(UpdateElementTagsAction(element!!, tagChanges.create()))
+    }
 }

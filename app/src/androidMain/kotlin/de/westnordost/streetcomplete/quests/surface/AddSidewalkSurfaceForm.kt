@@ -2,35 +2,23 @@ package de.westnordost.streetcomplete.quests.surface
 
 import android.os.Bundle
 import android.view.View
-import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.material.Surface
-import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.databinding.ComposeViewBinding
 import de.westnordost.streetcomplete.osm.Sides
-import de.westnordost.streetcomplete.osm.all
 import de.westnordost.streetcomplete.osm.any
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk
 import de.westnordost.streetcomplete.osm.sidewalk.parseSidewalkSides
 import de.westnordost.streetcomplete.osm.sidewalk_surface.SidewalkSurface
 import de.westnordost.streetcomplete.osm.surface.Surface
-import de.westnordost.streetcomplete.osm.surface.icon
-import de.westnordost.streetcomplete.osm.surface.title
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.sidewalk_illustration_yes
-import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
-import de.westnordost.streetcomplete.ui.util.ClipCirclePainter
 import de.westnordost.streetcomplete.ui.util.content
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import kotlinx.serialization.json.Json
-import org.jetbrains.compose.resources.painterResource
-import org.jetbrains.compose.resources.stringResource
 import org.koin.android.ext.android.inject
 import kotlin.getValue
 
@@ -45,7 +33,7 @@ class AddSidewalkSurfaceForm : AbstractOsmQuestForm<SidewalkSurfaceAnswer>() {
 
     override val otherAnswers = listOf(
         AnswerItem(R.string.quest_sidewalk_answer_different) {
-            applyAnswer(SidewalkSurfaceAnswer.DifferentSidewalk)
+            applyAnswer(SidewalkSurfaceAnswer.SidewalkIsDifferent)
         }
     )
 

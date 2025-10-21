@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.osm.cycleway_separate
 
+import de.westnordost.streetcomplete.osm.any
 import de.westnordost.streetcomplete.osm.cycleway_separate.SeparateCycleway.*
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk
-import de.westnordost.streetcomplete.osm.sidewalk.any
 import de.westnordost.streetcomplete.osm.sidewalk.parseSidewalkSides
 
 /** Returns the situation for a separately mapped cycleway */

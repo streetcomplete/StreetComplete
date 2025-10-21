@@ -2,13 +2,12 @@ package de.westnordost.streetcomplete.osm.street_parking
 
 import de.westnordost.streetcomplete.osm.Sides
 import kotlin.test.Test
-import kotlin.test.assertEquals
 
 class StreetParkingKtTest {
     @Test fun validOrNullValues() {
         for (invalidParking in listOf(StreetParking.Incomplete, StreetParking.Unknown)) {
             assertEquals(
-                Sides<StreetParking>(null, null),
+                Sides(null, null),
                 Sides(invalidParking, invalidParking).validOrNullValues()
             )
             assertEquals(
@@ -22,3 +21,6 @@ class StreetParkingKtTest {
         }
     }
 }
+
+private fun assertEquals(expected: Sides<StreetParking>?, actual: Sides<StreetParking>?) =
+    kotlin.test.assertEquals(expected, actual)

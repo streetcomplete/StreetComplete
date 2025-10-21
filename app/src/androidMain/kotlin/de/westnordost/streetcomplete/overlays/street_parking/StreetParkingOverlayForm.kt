@@ -1,148 +1,84 @@
 package de.westnordost.streetcomplete.overlays.street_parking
 
-import android.R.attr.entries
 import android.os.Bundle
 import android.view.View
-import androidx.compose.foundation.layout.BoxScope
-import androidx.compose.runtime.Composable
+import androidx.compose.material.Surface
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateOf
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
+import de.westnordost.streetcomplete.data.preferences.Preferences
+import de.westnordost.streetcomplete.databinding.ComposeViewBinding
 import de.westnordost.streetcomplete.osm.Sides
 import de.westnordost.streetcomplete.osm.oneway.isForwardOneway
 import de.westnordost.streetcomplete.osm.oneway.isReversedOneway
-import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation
-import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition
 import de.westnordost.streetcomplete.osm.street_parking.StreetParking
-import de.westnordost.streetcomplete.osm.street_parking.StreetParkingSelection
 import de.westnordost.streetcomplete.osm.street_parking.applyTo
-import de.westnordost.streetcomplete.osm.street_parking.dialogPainter
-import de.westnordost.streetcomplete.osm.street_parking.floatingIcon
-import de.westnordost.streetcomplete.osm.street_parking.painter
 import de.westnordost.streetcomplete.osm.street_parking.parseStreetParkingSides
-import de.westnordost.streetcomplete.osm.street_parking.title
 import de.westnordost.streetcomplete.osm.street_parking.validOrNullValues
-import de.westnordost.streetcomplete.overlays.AStreetSideSelectOverlayForm
-import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
-import de.westnordost.streetcomplete.ui.common.street_side_select.StreetSideItem
-import de.westnordost.streetcomplete.view.ResImage
+import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
+import de.westnordost.streetcomplete.ui.util.content
 import kotlinx.serialization.json.Json
-import org.jetbrains.compose.resources.painterResource
-import org.jetbrains.compose.resources.stringResource
+import org.koin.android.ext.android.inject
+import kotlin.getValue
 
-class StreetParkingOverlayForm : AStreetSideSelectOverlayForm<StreetParking>() {
+class StreetParkingOverlayForm : AbstractOverlayForm() {
+
+    override val contentLayoutResId = R.layout.compose_view
+    private val binding by contentViewBinding(ComposeViewBinding::bind)
+
+    private val prefs: Preferences by inject()
+
+    override val contentPadding = false
 
     private var originalParking: Sides<StreetParking>? = null
+    private val parking: MutableState<Sides<StreetParking>> = mutableStateOf(Sides(null, null))
 
-    private val isRightSideUpsideDown get() =
-        !isForwardOneway && (isReversedOneway || isLeftHandTraffic)
-
-    private val isLeftSideUpsideDown get() =
-        !isReversedOneway && (isForwardOneway || isLeftHandTraffic)
-
-    private val isForwardOneway get() = isForwardOneway(element!!.tags)
-    private val isReversedOneway get() = isReversedOneway(element!!.tags)
-
-    // just a shortcut
-    private val isLeftHandTraffic get() = countryInfo.isLeftHandTraffic
-
-    @Composable override fun BoxScope.DialogItemContent(item: StreetParking, isRight: Boolean) {
-        val title = item.title
-        val isUpsideDown = isUpsideDown(isRight)
-        if (title != null) {
-            ImageWithLabel(
-                item.dialogPainter(isUpsideDown),
-                stringResource(title)
-            )
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        originalParking = parseStreetParkingSides(element!!.tags)?.validOrNullValues()
+        if (savedInstanceState == null) {
+            parking.value = originalParking ?: Sides(null, null)
         }
-    }
-
-    @Composable
-    override fun getStreetSideItem(item: StreetParking, isRight: Boolean): StreetSideItem {
-        val isUpsideDown = isUpsideDown(isRight)
-        return StreetSideItem(
-            image = item.painter(isUpsideDown, isRight),
-            title = item.title?.let { stringResource(it) },
-            floatingIcon = item.floatingIcon?.let { painterResource(it) }
-        )
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        streetSideSelect.defaultPuzzleImageLeft = ResImage(if (isLeftSideUpsideDown) R.drawable.street_side_unknown_l else R.drawable.street_side_unknown)
-        streetSideSelect.defaultPuzzleImageRight = ResImage(if (isRightSideUpsideDown) R.drawable.street_side_unknown_l else R.drawable.street_side_unknown)
-
-        val width = element!!.tags["width"]
-        binding.hintTextView.text = if (width != null) {
-            val widthFormatted = if (width.toFloatOrNull() != null) width + "m" else width
-            getString(R.string.street_parking_street_width, widthFormatted)
-        } else {
-            null
-        }
-
-        originalParking = parseStreetParkingSides(element!!.tags)?.validOrNullValues()
-        if (savedInstanceState == null) {
-            initStateFromTags()
-        }
+        binding.composeViewBase.content { Surface {
+            StreetParkingForm(
+                value = parking.value,
+                onValueChanged = {
+                    parking.value = it
+                    checkIsFormComplete()
+                },
+                width = element?.tags?.get("width"),
+                geometryRotation = geometryRotation.floatValue,
+                mapRotation = mapRotation.floatValue,
+                mapTilt = mapTilt.floatValue,
+                isLeftHandTraffic = countryInfo.isLeftHandTraffic,
+                isForwardOneway = isForwardOneway(element!!.tags),
+                isReversedOneway = isReversedOneway(element!!.tags),
+                lastPicked = prefs
+                    .getLastPicked(this::class.simpleName!!)
+                    .map { Json.decodeFromString(it) }
+            )
+        } }
+        checkIsFormComplete()
     }
-
-    private fun initStateFromTags() {
-        streetSideSelect.setPuzzleSide(originalParking?.left?.asStreetSideItem(requireContext(), isUpsideDown(false), false), false)
-        streetSideSelect.setPuzzleSide(originalParking?.right?.asStreetSideItem(requireContext(), isUpsideDown(true), true), true)
-    }
-
-    override fun hasChanges(): Boolean =
-        streetSideSelect.left?.value != originalParking?.left ||
-        streetSideSelect.right?.value != originalParking?.right
-
-    override fun serialize(item: StreetParking) = Json.encodeToString(item)
-    override fun deserialize(str: String) = Json.decodeFromString<StreetParking>(str)
-
-    private fun isUpsideDown(isRight: Boolean) =
-        if (isRight) isRightSideUpsideDown else isLeftSideUpsideDown
-
-    /* ---------------------------------- selection dialog -------------------------------------- */
-
-    override fun onClickSide(isRight: Boolean) {
-        val ctx = context ?: return
-        val items = getParkingItems()
-        ImageListPickerDialog(ctx, items, R.layout.cell_icon_select_with_label_below, 2, R.string.select_street_parking_orientation) {
-            when (it.value!!) {
-                NO -> onSelectedSide(StreetParking.None, isRight)
-                SEPARATE -> onSelectedSide(StreetParking.Separate, isRight)
-                PARALLEL -> showParkingPositionDialog(ParkingOrientation.PARALLEL, isRight)
-                DIAGONAL -> showParkingPositionDialog(ParkingOrientation.DIAGONAL, isRight)
-                PERPENDICULAR -> showParkingPositionDialog(ParkingOrientation.PERPENDICULAR, isRight)
-            }
-        }.show()
-    }
-
-    private fun showParkingPositionDialog(orientation: ParkingOrientation, isRight: Boolean) {
-        val ctx = context ?: return
-        val items = getParkingPositionItems(orientation)
-        ImageListPickerDialog(ctx, items, R.layout.labeled_icon_button_cell, 2, R.string.select_street_parking_position) {
-            onSelectedSide(it.value!!, isRight)
-        }.show()
-    }
-
-    private fun onSelectedSide(parking: StreetParking, isRight: Boolean) {
-        val ctx = context ?: return
-        streetSideSelect.replacePuzzleSide(parking.asStreetSideItem(ctx, isUpsideDown(isRight), isRight), isRight)
-    }
-
-    private fun getParkingItems(): List<StreetParkingSelection> = entries
-
-    private fun getParkingPositionItems(orientation: ParkingOrientation) =
-        ParkingPosition.displayedValues.map { StreetParking.PositionAndOrientation(orientation, it) }
 
     /* --------------------------------------- apply answer ------------------------------------- */
 
+    override fun hasChanges(): Boolean =
+        parking.value != originalParking
+
+    override fun isFormComplete(): Boolean =
+        parking.value.left != null && parking.value.right != null
+
     override fun onClickOk() {
-        streetSideSelect.saveLastSelection()
-        val parking = Sides(streetSideSelect.left?.value, streetSideSelect.right?.value)
+        prefs.setLastPicked(this::class.simpleName!!, listOf(Json.encodeToString(parking.value)))
         val tagChanges = StringMapChangesBuilder(element!!.tags)
-        parking.applyTo(tagChanges)
+        parking.value.applyTo(tagChanges)
         applyEdit(UpdateElementTagsAction(element!!, tagChanges.create()))
     }
 }

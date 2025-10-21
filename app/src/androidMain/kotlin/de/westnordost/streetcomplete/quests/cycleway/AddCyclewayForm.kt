@@ -21,7 +21,6 @@ import de.westnordost.streetcomplete.osm.cycleway.selectableOrNullValues
 import de.westnordost.streetcomplete.osm.cycleway.wasNoOnewayForCyclistsButNowItIs
 import de.westnordost.streetcomplete.osm.cycleway.withDefaultDirection
 import de.westnordost.streetcomplete.osm.oneway.Direction
-import de.westnordost.streetcomplete.osm.oneway.isInContraflowOfOneway
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.IAnswerItem
@@ -73,13 +72,6 @@ class AddCyclewayForm : AbstractOsmQuestForm<Sides<CyclewayAndDirection>>() {
         }
     }
 
-    private fun isContraflowInOneway(isRight: Boolean): Boolean {
-        val cycleway = if (isRight) cycleways.value.right else cycleways.value.left
-        val direction = cycleway?.direction
-            ?: Direction.getDefault(isRight, countryInfo.isLeftHandTraffic)
-        return isInContraflowOfOneway(element.tags, direction)
-    }
-
     /* ---------------------------------------- lifecycle --------------------------------------- */
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -118,6 +110,7 @@ class AddCyclewayForm : AbstractOsmQuestForm<Sides<CyclewayAndDirection>>() {
                 mapRotation = mapRotation.floatValue,
                 mapTilt = mapTilt.floatValue,
                 countryInfo = countryInfo,
+                roadDirection = Direction.from(element.tags),
                 lastPicked = lastPicked,
                 enabled = !isDisplayingPrevious.value,
                 isLeftSideVisible = isLeftSideVisible.value,
@@ -187,12 +180,11 @@ class AddCyclewayForm : AbstractOsmQuestForm<Sides<CyclewayAndDirection>>() {
             .show()
     }
 
-    /* --------------------------------- select & apply answer ---------------------------------- */
-
-    // TODO what if only one side is shown
+    /* -------------------------------------- apply answer -------------------------------------- */
 
     override fun isFormComplete() =
-        cycleways.value.left != null && cycleways.value.right != null
+        (cycleways.value.left != null || !isLeftSideVisible.value) &&
+        (cycleways.value.right != null || !isRightSideVisible.value)
 
     override fun isRejectingClose() =
         !isDisplayingPrevious.value &&

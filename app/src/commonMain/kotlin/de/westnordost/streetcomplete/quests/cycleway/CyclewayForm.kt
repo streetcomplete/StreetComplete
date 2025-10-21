@@ -15,6 +15,7 @@ import de.westnordost.streetcomplete.osm.cycleway.getFloatingIcon
 import de.westnordost.streetcomplete.osm.cycleway.getIcon
 import de.westnordost.streetcomplete.osm.cycleway.getSelectableCycleways
 import de.westnordost.streetcomplete.osm.cycleway.getTitle
+import de.westnordost.streetcomplete.osm.oneway.Direction
 import de.westnordost.streetcomplete.ui.common.dialogs.SimpleItemSelectDialog
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
 import de.westnordost.streetcomplete.ui.common.street_side_select.OverlayedImageWithLabel
@@ -33,6 +34,7 @@ import org.jetbrains.compose.resources.stringResource
     mapRotation: Float,
     mapTilt: Float,
     countryInfo: CountryInfo,
+    roadDirection: Direction,
     modifier: Modifier = Modifier,
     lastPicked: List<Sides<CyclewayAndDirection>> = emptyList(),
     enabled: Boolean = true,
@@ -44,9 +46,10 @@ import org.jetbrains.compose.resources.stringResource
     StreetSideForm(
         value = value,
         onValueChanged = onValueChanged,
-        getItemIllustration = { cycleway, side ->
-            val isRight = side == Side.RIGHT
-            cycleway?.getIcon(isRight, countryInfo, isContraflowInOneway)?.let { painterResource(it) }
+        getItemIllustration = { cyclewayAndDirection, side ->
+            cyclewayAndDirection
+                ?.getIcon(side == Side.RIGHT, countryInfo, roadDirection)
+                ?.let { painterResource(it) }
         },
         onClickSide = { side ->
             when (selectionMode) {
@@ -58,16 +61,20 @@ import org.jetbrains.compose.resources.stringResource
                 }
             }
         },
+        modifier = modifier,
         geometryRotation = geometryRotation,
         mapRotation = mapRotation,
         mapTilt = mapTilt,
         isLeftHandTraffic = countryInfo.isLeftHandTraffic,
-        modifier = modifier,
-        itemContent = { cycleway, side ->
-            OverlayedImageWithLabel(
-                image = cycleway?.cycleway?.getFloatingIcon(isContraflowInOneway, countryInfo.noEntrySignDrawable)?.let { painterResource(it) },
-                label = cycleway?.getTitle(isContraflowInOneway)?.let { stringResource(it) }
-            )
+        itemContent = { cyclewayAndDirection, side ->
+            if (cyclewayAndDirection != null) {
+                OverlayedImageWithLabel(
+                    image = cyclewayAndDirection
+                        .getFloatingIcon(roadDirection, countryInfo.noEntrySignDrawable)
+                        ?.let { painterResource(it) },
+                    label = cyclewayAndDirection.getTitle(roadDirection)?.let { stringResource(it) }
+                )
+            }
         },
         lastPicked = lastPicked,
         enabled = enabled,
@@ -77,8 +84,8 @@ import org.jetbrains.compose.resources.stringResource
 
     showPickerForSide?.let { side ->
         val isRight = side == Side.RIGHT
-        val direction = value.get(side)?.direction
-        val selectableCycleways = getSelectableCycleways(countryInfo, element.tags, isRight, countryInfo.isLeftHandTraffic, direction)
+        val direction = value.get(side)?.direction ?: Direction.getDefault(isRight, countryInfo.isLeftHandTraffic)
+        val selectableCycleways = getSelectableCycleways(countryInfo, isRight, countryInfo.isLeftHandTraffic, direction, roadDirection)
 
         SimpleItemSelectDialog(
             onDismissRequest = { showPickerForSide = null},
@@ -91,9 +98,8 @@ import org.jetbrains.compose.resources.stringResource
                 })
             },
             itemContent = { cycleway ->
-                val isContraflowInOneway = isContraflowInOneway(isRight)
-                val icon = cycleway.getDialogIcon(isRight, countryInfo, isContraflowInOneway)
-                val title = cycleway.getTitle(isContraflowInOneway)
+                val icon = cycleway.getDialogIcon(isRight, countryInfo, roadDirection)
+                val title = cycleway.getTitle(roadDirection)
                 if (icon != null && title != null) {
                     ImageWithLabel(
                         painter = painterResource(icon),
