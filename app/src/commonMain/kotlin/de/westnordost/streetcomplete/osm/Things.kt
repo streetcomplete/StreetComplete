@@ -168,6 +168,7 @@ private val IS_THING_EXPRESSION by lazy {
             // "ship" - too big, more like a structure/building
             "stone",
             "tank",
+            "pillory",
             "vehicle",
             // "wreck" - too big, and usually quite off-shore anyway
             "wayside_cross",
@@ -229,6 +230,12 @@ private val IS_THING_EXPRESSION by lazy {
             "tree",
             "tree_stump",
         ),
+        "seamark:type" to listOf(
+            "buoy_isolated_danger",
+            "buoy_lateral",
+            "mooring",
+            "buoy_safe_water",
+        ),
         "power" to listOf(
             "pole",
         ),
@@ -248,6 +255,8 @@ private val IS_THING_EXPRESSION by lazy {
         or amenity = recycling and recycling_type = container
         or attraction
         or boundary = marker
+        or cemetery = grave
+        or disc_golf
         or fitness_station
         or leisure = pitch and sport ~ chess|table_soccer|table_tennis|teqball
         or playground

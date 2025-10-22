@@ -17,8 +17,9 @@ class AddAcceptsCards : OsmFilterQuestType<CardAcceptance>(), AndroidQuest {
 
     override val elementFilter = """
         nodes, ways with (
-          amenity ~ restaurant|cafe|fast_food|ice_cream|food_court|pub|bar
+          amenity ~ restaurant|cafe|fast_food|ice_cream|pub|bar|luggage_locker
           or (shop and shop !~ no|vacant|mall)
+          or tourism = alpine_hut
         )
         and !payment:credit_cards and !payment:debit_cards and payment:others != no
         and !brand and !wikipedia:brand and !wikidata:brand
