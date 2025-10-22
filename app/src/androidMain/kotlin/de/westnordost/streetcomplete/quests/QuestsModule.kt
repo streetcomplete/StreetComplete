@@ -119,6 +119,8 @@ import de.westnordost.streetcomplete.quests.orchard_produce.AddOrchardProduce
 import de.westnordost.streetcomplete.quests.parcel_locker_brand.AddParcelLockerBrand
 import de.westnordost.streetcomplete.quests.parking_access.AddBikeParkingAccess
 import de.westnordost.streetcomplete.quests.parking_access.AddParkingAccess
+import de.westnordost.streetcomplete.quests.parking_fee.AddBikeParkingFee
+import de.westnordost.streetcomplete.quests.parking_fee.AddParkingFee
 import de.westnordost.streetcomplete.quests.parking_type.AddParkingType
 import de.westnordost.streetcomplete.quests.pitch_lit.AddPitchLit
 import de.westnordost.streetcomplete.quests.place_name.AddPlaceName
@@ -274,6 +276,7 @@ fun questTypeRegistry(
     // parking
     17 to AddParkingType(),
     18 to AddParkingAccess(), // used by OSM Carto, mapy.cz, OSMand, Sputnik etc
+    19 to AddParkingFee(), // used by OsmAnd
 
     20 to AddTrafficCalmingType(),
 
@@ -379,6 +382,7 @@ fun questTypeRegistry(
     69 to AddBikeRentalType(), // generally less overlap of possible types/fewer choices/simpler to answer
     70 to AddBikeParkingType(), // used by OsmAnd
     71 to AddBikeParkingAccess(),
+    72 to AddBikeParkingFee(),
     73 to AddBikeRentalCapacity(), // less ambiguous than bike parking
     74 to AddBikeParkingCapacity(), // used by cycle map layer on osm.org, OsmAnd
 
