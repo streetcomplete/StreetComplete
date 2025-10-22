@@ -64,7 +64,7 @@ class AddOneway : OsmElementQuestType<OnewayAnswer>, AndroidQuest {
              */
             // check if the way has connections to other roads at both ends
             (connectionCountByNodeIds[it.nodeIds.first()] ?: 0) > 1 &&
-                (connectionCountByNodeIds[it.nodeIds.last()] ?: 0) > 1
+            (connectionCountByNodeIds[it.nodeIds.last()] ?: 0) > 1
         }
     }
 
