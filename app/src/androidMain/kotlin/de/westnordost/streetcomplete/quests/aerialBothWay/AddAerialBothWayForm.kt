@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests.bothway
+package de.westnordost.streetcomplete.quests.aerialBothWay
 
 import android.os.Bundle
 import de.westnordost.streetcomplete.R

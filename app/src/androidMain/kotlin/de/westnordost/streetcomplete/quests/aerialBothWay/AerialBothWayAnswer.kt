@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests.bothway
+package de.westnordost.streetcomplete.quests.aerialBothWay
 
 enum class AerialBothWayAnswer {
     UPWARD,

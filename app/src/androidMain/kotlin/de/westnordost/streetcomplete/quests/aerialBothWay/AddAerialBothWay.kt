@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests.bothway
+package de.westnordost.streetcomplete.quests.aerialBothWay
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
@@ -9,10 +9,9 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.quests.bothway.AerialBothWayAnswer.BOTHWAY
-import de.westnordost.streetcomplete.quests.bothway.AerialBothWayAnswer.UPWARD
-import de.westnordost.streetcomplete.quests.bothway.AerialBothWayAnswer.DOWNWARD
-
+import de.westnordost.streetcomplete.quests.aerialBothWay.AerialBothWayAnswer.BOTHWAY
+import de.westnordost.streetcomplete.quests.aerialBothWay.AerialBothWayAnswer.DOWNWARD
+import de.westnordost.streetcomplete.quests.aerialBothWay.AerialBothWayAnswer.UPWARD
 
 class AddAerialBothWay : OsmElementQuestType<AerialBothWayAnswer>, AndroidQuest {
 
@@ -30,13 +29,9 @@ class AddAerialBothWay : OsmElementQuestType<AerialBothWayAnswer>, AndroidQuest 
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_bothway_title
 
-    override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
-        return mapData.ways.filter { elementFilter.matches(it) }
-    }
+    override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> = mapData.ways.filter { elementFilter.matches(it) }
 
-    override fun isApplicableTo(element: Element): Boolean? {
-        return elementFilter.matches(element)
-    }
+    override fun isApplicableTo(element: Element): Boolean? = elementFilter.matches(element)
 
     override fun createForm() = AddAerialBothWayForm()
 

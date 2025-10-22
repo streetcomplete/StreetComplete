@@ -14,6 +14,7 @@ import de.westnordost.streetcomplete.quests.accepts_cash.AddAcceptsCash
 import de.westnordost.streetcomplete.quests.access_point_ref.AddAccessPointRef
 import de.westnordost.streetcomplete.quests.address.AddAddressStreet
 import de.westnordost.streetcomplete.quests.address.AddHousenumber
+import de.westnordost.streetcomplete.quests.aerialBothWay.AddAerialBothWay
 import de.westnordost.streetcomplete.quests.aerialway.AddAerialwayBicycleAccess
 import de.westnordost.streetcomplete.quests.air_conditioning.AddAirConditioning
 import de.westnordost.streetcomplete.quests.air_pump.AddAirCompressor
@@ -44,7 +45,6 @@ import de.westnordost.streetcomplete.quests.board_name.AddBoardName
 import de.westnordost.streetcomplete.quests.board_type.AddBoardType
 import de.westnordost.streetcomplete.quests.boat_rental.AddBoatRental
 import de.westnordost.streetcomplete.quests.bollard_type.AddBollardType
-import de.westnordost.streetcomplete.quests.bothway.AddAerialBothWay
 import de.westnordost.streetcomplete.quests.bridge_structure.AddBridgeStructure
 import de.westnordost.streetcomplete.quests.building_entrance.AddEntrance
 import de.westnordost.streetcomplete.quests.building_entrance_reference.AddEntranceReference
@@ -440,7 +440,7 @@ fun questTypeRegistry(
     101 to AddFerryAccessPedestrian(),
     102 to AddFerryAccessMotorVehicle(),
 
-    //aerial way: usually visible from looking at the aerial way, but not always...
+    // aerial way: usually visible from looking at the aerial way, but not always...
     184 to AddAerialwayBicycleAccess(),
 
     103 to AddProhibitedForPedestrians(), // need to understand the pedestrian situation

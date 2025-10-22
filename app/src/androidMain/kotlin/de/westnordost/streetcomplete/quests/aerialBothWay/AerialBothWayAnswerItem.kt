@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests.bothway
+package de.westnordost.streetcomplete.quests.aerialBothWay
 
 import android.content.Context
 import de.westnordost.streetcomplete.R
@@ -20,7 +20,7 @@ private val AerialBothWayAnswer.titleResId: Int get() = when (this) {
     AerialBothWayAnswer.BOTHWAY -> R.string.quest_bothway_answer_bothway
 }
 
-//kept oneway icons, feel free to update it
+// kept oneway icons, feel free to update it
 private val AerialBothWayAnswer.iconResId: Int get() = when (this) {
     AerialBothWayAnswer.UPWARD -> R.drawable.ic_oneway_yes
     AerialBothWayAnswer.DOWNWARD -> R.drawable.ic_oneway_yes_reverse
