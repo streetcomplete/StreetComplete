@@ -836,7 +836,6 @@ Before uploading your changes, the app checks with a &lt;a href="https://www.wes
     <string name="quest_board_type_notice_board">It is a notice board</string>
     <string name="quest_board_type_public_transport">Public transport</string>
     <string name="quest_board_type_sport">Sport, Exercises</string>
-    <string name="quest_board_type_rules">Rules</string>
     <string name="quest_board_type_map">It is a map</string>
     <string name="quest_board_type_map_title">Is it just a map and only a map?</string>
     <string name="quest_board_type_map_description">If the board is about a particular topic, please specify it, regardless of whether it also includes a map. For example a public transport board may have a bus route map. If the topic is not listed among the available answers, please consider leaving a note instead.</string>
