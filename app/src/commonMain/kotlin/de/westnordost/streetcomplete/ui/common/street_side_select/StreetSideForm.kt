@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.ui.common.street_side_select
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -76,12 +77,13 @@ import org.jetbrains.compose.resources.painterResource
                     .fillMaxWidth()
                     .align(Alignment.BottomStart),
                 chipBorder = BorderStroke(1.dp, MaterialTheme.colors.onSurface.copy(alpha = 0.12f)),
+                chipContentPadding = PaddingValues.Zero,
             ) { value ->
                 StreetSideIllustration(
                     leftPainter = getItemIllustration(value.left, Side.LEFT)?: unknownPainter,
                     rightPainter = getItemIllustration(value.right, Side.RIGHT) ?: unknownPainter,
                     rotation = rotation,
-                    modifier = Modifier.size(40.dp),
+                    modifier = Modifier.size(56.dp, 40.dp),
                     isLeftSideVisible = isLeftSideVisible,
                     isRightSideVisible = isRightSideVisible,
                 )
