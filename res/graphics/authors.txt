@@ -73,6 +73,9 @@ app icon/
     ic_launcher.png             https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free (GPL 2.0) with trivial changes by Mateusz Konieczny (recolour)
     ic_launcher_round.png       https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free (GPL 2.0) with trivial changes by Mateusz Konieczny (recolour)
 
+aerialway/
+    aerialway_bicycle.svg    SVG Repo, License: Public domain; https://www.svgrepo.com/svg/393413/aerialway
+
 assembly point/
     assembly_point.svg          Epop, License: Public domain; https://commons.wikimedia.org/wiki/File:E011.svg
 
