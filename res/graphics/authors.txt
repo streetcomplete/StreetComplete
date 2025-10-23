@@ -368,6 +368,7 @@ quest/
     max_weight.svg
     memorial.svg
     money.svg                        modified from EmojiOne 2: U+1F4B8
+    monument.svg						 based on memorial.svg - modified by Hugo Thollon
     motorcycle.svg
     motorcycle_parking.svg
     motorcycle_parking_capacity.svg

@@ -1147,6 +1147,13 @@ A level counts as a roof level when its windows are in the roof. Subsequently, r
 
     <string name="quest_gritBinSeasonal_title">Is this also here outside of winter?</string>
 
+    <string name="quest_is_monument_or_memorial_title">Is this a monument or a memorial?</string>
+    <string name="quest_is_monument_or_memorial_hint">A memorial is a small structure or statue established to remind people of a person or event. A monument has the same purpose but is a especially large or tall structure (one can go inside, walk on or through it).</string>
+    <string name="quest_is_monument_or_memorial_option_monument">Monument</string>
+    <string name="quest_is_monument_or_memorial_option_memorial">Memorial</string>
+
+   <string name="quest_monument_name_title">What’s the name of this monument?</string>
+
     <string name="quest_hairdresser_title">Which customers visit this hairdresser?</string>
     <string name="quest_hairdresser_male_and_female">Anyone</string>
     <string name="quest_hairdresser_female_only">Women</string>
