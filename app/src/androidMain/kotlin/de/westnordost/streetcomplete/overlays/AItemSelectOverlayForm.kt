@@ -11,6 +11,8 @@ import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.databinding.ComposeViewBinding
 import de.westnordost.streetcomplete.ui.util.content
 import de.westnordost.streetcomplete.util.takeFavorites
+import kotlinx.serialization.KSerializer
+import kotlinx.serialization.builtins.ListSerializer
 import org.koin.android.ext.android.inject
 import kotlin.getValue
 
@@ -28,23 +30,17 @@ abstract class AItemSelectOverlayForm<I> : AbstractOverlayForm() {
     /** items to that are selectable. May not be accessed before onCreate */
     protected open val selectableItems: List<I> get() = items
     /** items to display as last picked answer. May not be accessed before onCreate */
-    protected open val lastPickedItems: List<I> get() =
-        prefs.getLastPicked(this::class.simpleName!!)
-            .mapNotNull { itemsByString[it] }
+    protected open val lastPickedItems: List<I> by lazy {
+        prefs.getLastPicked(ListSerializer(serializer), this::class.simpleName!!)
             .takeFavorites(n = 5, first = 1)
-
-    private lateinit var itemsByString: Map<String, I>
+    }
+    protected abstract val serializer: KSerializer<I>
 
     protected val selectedItem: MutableState<I?> = mutableStateOf(null)
 
     @Composable protected abstract fun ItemContent(item: I)
 
     @Composable protected abstract fun LastPickedItemContent(item: I)
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        itemsByString = items.associateBy { it.toString() }
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -71,7 +67,7 @@ abstract class AItemSelectOverlayForm<I> : AbstractOverlayForm() {
 
     override fun onClickOk() {
         val value = selectedItem.value ?: return
-        prefs.addLastPicked(this::class.simpleName!!, value.toString())
+        prefs.addLastPicked(ListSerializer(serializer), this::class.simpleName!!, value)
         onClickOk(value)
     }
 

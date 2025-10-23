@@ -28,7 +28,6 @@ import de.westnordost.streetcomplete.ui.util.content
 import de.westnordost.streetcomplete.util.ktx.toast
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
-import kotlinx.serialization.json.Json
 import org.koin.android.ext.android.inject
 import kotlin.getValue
 
@@ -88,13 +87,14 @@ class AddCyclewayForm : AbstractOsmQuestForm<Sides<CyclewayAndDirection>>() {
             .onEach { updateButtonPanel() }
             .launchIn(lifecycleScope)
 
-        val lastPicked = if (isLeftSideVisible.value && isRightSideVisible.value) {
-            prefs
-                .getLastPicked(this::class.simpleName!!)
-                .map { Json.decodeFromString<Sides<Cycleway>>(it) }
-                .map { it.withDefaultDirection(countryInfo.isLeftHandTraffic) }
-        } else {
-            emptyList()
+        val lastPicked by lazy {
+            if (isLeftSideVisible.value && isRightSideVisible.value) {
+                prefs
+                    .getLastPicked<Sides<Cycleway>>(this::class.simpleName!!)
+                    .map { it.withDefaultDirection(countryInfo.isLeftHandTraffic) }
+            } else {
+                emptyList()
+            }
         }
 
         binding.composeViewBase.content { Surface {
@@ -213,7 +213,7 @@ class AddCyclewayForm : AbstractOsmQuestForm<Sides<CyclewayAndDirection>>() {
             // the default, the user should select this specifically. Simply carrying over the
             // non-default direction to the next answer might result in mistakes
             val cycleways = Sides(left = sides.left.cycleway, right = sides.right.cycleway)
-            prefs.setLastPicked(this::class.simpleName!!, listOf(Json.encodeToString(cycleways)))
+            prefs.setLastPicked(this::class.simpleName!!, listOf(cycleways))
         }
     }
 }

@@ -5,6 +5,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AItemSelectQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
+import kotlinx.serialization.serializer
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
@@ -14,6 +15,7 @@ class AddBicycleBarrierInstallationForm :
     override val items = BicycleBarrierInstallation.entries
     override val itemsPerRow = 3
     override val moveFavoritesToFront = false
+    override val serializer = serializer<BicycleBarrierInstallation>()
 
     override val otherAnswers = listOf(
         AnswerItem(R.string.quest_barrier_bicycle_type_not_cycle_barrier) {

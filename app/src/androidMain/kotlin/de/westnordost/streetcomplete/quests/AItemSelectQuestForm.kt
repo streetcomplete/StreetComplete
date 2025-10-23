@@ -27,6 +27,8 @@ import de.westnordost.streetcomplete.resources.quest_roofShape_select_one
 import de.westnordost.streetcomplete.ui.common.item_select.ItemSelectGrid
 import de.westnordost.streetcomplete.ui.util.content
 import de.westnordost.streetcomplete.util.takeFavorites
+import kotlinx.serialization.KSerializer
+import kotlinx.serialization.builtins.ListSerializer
 import org.jetbrains.compose.resources.stringResource
 import org.koin.android.ext.android.inject
 
@@ -50,11 +52,10 @@ abstract class AItemSelectQuestForm<I, T> : AbstractOsmQuestForm<T>() {
     private lateinit var actualItems: List<I>
     protected lateinit var selectedItem: MutableState<I?>
 
-    private lateinit var itemsByString: Map<String, I>
+    protected abstract val serializer: KSerializer<I>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        itemsByString = items.associateBy { it.toString() }
         actualItems = if (items.size > itemsPerRow && moveFavoritesToFront) {
             moveFavouritesToFront(items)
         } else items
@@ -90,7 +91,7 @@ abstract class AItemSelectQuestForm<I, T> : AbstractOsmQuestForm<T>() {
 
     override fun onClickOk() {
         val value = selectedItem.value ?: return
-        prefs.addLastPicked(this::class.simpleName!!, value.toString())
+        prefs.addLastPicked(ListSerializer(serializer), this::class.simpleName!!, value)
         onClickOk(value)
     }
 
@@ -99,8 +100,7 @@ abstract class AItemSelectQuestForm<I, T> : AbstractOsmQuestForm<T>() {
     override fun isFormComplete() = selectedItem.value != null
 
     private fun moveFavouritesToFront(originalList: List<I>): List<I> {
-        val favourites = prefs.getLastPicked(this::class.simpleName!!)
-            .mapNotNull { itemsByString[it] }
+        val favourites = prefs.getLastPicked(ListSerializer(serializer), this::class.simpleName!!)
             .takeFavorites(n = itemsPerRow)
         return (favourites + originalList).distinct()
     }

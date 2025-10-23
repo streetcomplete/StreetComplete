@@ -8,16 +8,19 @@ import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.quest_steps_incline_up
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
+import kotlinx.serialization.serializer
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
 class AddBicycleInclineForm : AItemSelectQuestForm<Incline, BicycleInclineAnswer>() {
-    override val otherAnswers = listOf(
-        AnswerItem(R.string.quest_bicycle_incline_up_and_down) { confirmUpAndDown() }
-    )
 
     override val items = Incline.entries
     override val itemsPerRow = 2
+    override val serializer = serializer<Incline>()
+
+    override val otherAnswers = listOf(
+        AnswerItem(R.string.quest_bicycle_incline_up_and_down) { confirmUpAndDown() }
+    )
 
     private fun confirmUpAndDown() {
         val ctx = context ?: return

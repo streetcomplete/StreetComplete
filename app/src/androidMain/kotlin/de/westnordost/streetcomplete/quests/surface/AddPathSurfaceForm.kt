@@ -10,18 +10,19 @@ import de.westnordost.streetcomplete.quests.AItemSelectQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
 import de.westnordost.streetcomplete.util.ktx.couldBeSteps
+import kotlinx.serialization.serializer
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
 class AddPathSurfaceForm : AItemSelectQuestForm<Surface, SurfaceOrIsStepsAnswer>() {
     override val items get() = Surface.selectableValuesForWays
+    override val itemsPerRow = 3
+    override val serializer = serializer<Surface>()
 
     override val otherAnswers get() = listOfNotNull(
         createConvertToStepsAnswer(),
         createMarkAsIndoorsAnswer(),
     )
-
-    override val itemsPerRow = 3
 
     @Composable override fun ItemContent(item: Surface) {
         ImageWithLabel(item.icon?.let { painterResource(it) }, stringResource(item.title))

@@ -15,7 +15,6 @@ import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.ui.util.content
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
-import kotlinx.serialization.json.Json
 import org.koin.android.ext.android.inject
 import kotlin.getValue
 
@@ -36,6 +35,9 @@ class AddSidewalkForm : AbstractOsmQuestForm<Sides<Sidewalk>>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val lastPicked by lazy { prefs.getLastPicked<Sides<Sidewalk>>(this::class.simpleName!!) }
+
         binding.composeViewBase.content { Surface {
             sidewalks = rememberSerializable { mutableStateOf(Sides(null, null)) }
 
@@ -49,9 +51,7 @@ class AddSidewalkForm : AbstractOsmQuestForm<Sides<Sidewalk>>() {
                 mapRotation = mapRotation.floatValue,
                 mapTilt = mapTilt.floatValue,
                 isLeftHandTraffic = countryInfo.isLeftHandTraffic,
-                lastPicked = prefs
-                    .getLastPicked(this::class.simpleName!!)
-                    .map { Json.decodeFromString(it) }
+                lastPicked = lastPicked
             )
 
             checkIsFormComplete()
@@ -75,6 +75,6 @@ class AddSidewalkForm : AbstractOsmQuestForm<Sides<Sidewalk>>() {
 
     override fun onClickOk() {
         applyAnswer(sidewalks.value)
-        prefs.setLastPicked(this::class.simpleName!!, listOf(Json.encodeToString(sidewalks.value)))
+        prefs.setLastPicked(this::class.simpleName!!, listOf(sidewalks.value))
     }
 }

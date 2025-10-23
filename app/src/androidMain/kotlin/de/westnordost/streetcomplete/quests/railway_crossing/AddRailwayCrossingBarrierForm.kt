@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests.railway_crossing
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.quests.AItemSelectQuestForm
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
+import kotlinx.serialization.serializer
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
@@ -12,8 +13,8 @@ class AddRailwayCrossingBarrierForm : AItemSelectQuestForm<RailwayCrossingBarrie
         val isPedestrian = element.tags["railway"] == "crossing"
         return RailwayCrossingBarrier.getSelectableValues(isPedestrian)
     }
-
     override val itemsPerRow = 2
+    override val serializer = serializer<RailwayCrossingBarrier>()
 
     @Composable override fun ItemContent(item: RailwayCrossingBarrier) {
         ImageWithLabel(

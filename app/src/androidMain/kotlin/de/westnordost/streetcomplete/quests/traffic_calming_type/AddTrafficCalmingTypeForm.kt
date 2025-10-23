@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests.traffic_calming_type
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.quests.AItemSelectQuestForm
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
+import kotlinx.serialization.serializer
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
@@ -10,6 +11,7 @@ class AddTrafficCalmingTypeForm : AItemSelectQuestForm<TrafficCalmingType, Traff
 
     override val items = TrafficCalmingType.entries
     override val itemsPerRow = 3
+    override val serializer = serializer<TrafficCalmingType>()
 
     @Composable override fun ItemContent(item: TrafficCalmingType) {
         ImageWithLabel(painterResource(item.icon), stringResource(item.title))

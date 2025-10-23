@@ -26,6 +26,7 @@ import de.westnordost.streetcomplete.ui.common.item_select.ImageWithDescription
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
 import de.westnordost.streetcomplete.ui.util.content
 import de.westnordost.streetcomplete.util.ktx.couldBeSteps
+import kotlinx.serialization.serializer
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
@@ -36,6 +37,7 @@ class AddSmoothnessForm : AItemSelectQuestForm<Smoothness, SmoothnessAnswer>() {
 
     override val itemsPerRow = 1
     override val moveFavoritesToFront = false
+    override val serializer = serializer<Smoothness>()
 
     override val otherAnswers get() = listOfNotNull(
         AnswerItem(R.string.quest_smoothness_wrong_surface) { surfaceWrong() },

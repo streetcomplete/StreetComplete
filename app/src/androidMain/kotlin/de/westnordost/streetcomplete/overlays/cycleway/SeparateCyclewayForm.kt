@@ -15,6 +15,7 @@ import de.westnordost.streetcomplete.osm.cycleway_separate.parseSeparateCycleway
 import de.westnordost.streetcomplete.osm.cycleway_separate.title
 import de.westnordost.streetcomplete.overlays.AItemSelectOverlayForm
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithDescription
+import kotlinx.serialization.serializer
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
@@ -22,6 +23,7 @@ class SeparateCyclewayForm : AItemSelectOverlayForm<SeparateCycleway>() {
 
     override val items = SeparateCycleway.entries
     override val itemsPerRow = 1
+    override val serializer = serializer<SeparateCycleway>()
 
     @Composable override fun ItemContent(item: SeparateCycleway) {
         ImageWithDescription(

@@ -27,6 +27,8 @@ import de.westnordost.streetcomplete.ui.common.item_select.Group
 import de.westnordost.streetcomplete.ui.common.item_select.GroupedItemSelectColumn
 import de.westnordost.streetcomplete.ui.util.content
 import de.westnordost.streetcomplete.util.takeFavorites
+import kotlinx.serialization.KSerializer
+import kotlinx.serialization.builtins.ListSerializer
 import org.jetbrains.compose.resources.stringResource
 import org.koin.android.ext.android.inject
 
@@ -52,7 +54,7 @@ abstract class AGroupedItemSelectQuestForm<G: Group<I>, I, T> : AbstractOsmQuest
     protected val selectedGroup: MutableState<G?> = mutableStateOf(null)
     protected val selectedItem: MutableState<I?> = mutableStateOf(null)
 
-    private lateinit var itemsByString: Map<String, I>
+    protected abstract val serializer: KSerializer<I>
 
     @Composable protected abstract fun GroupContent(item: G)
 
@@ -60,7 +62,6 @@ abstract class AGroupedItemSelectQuestForm<G: Group<I>, I, T> : AbstractOsmQuest
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        itemsByString = groups.flatMap { it.children }.associateBy { it.toString() }
         actualTopItems = getInitialItems()
     }
 
@@ -94,8 +95,7 @@ abstract class AGroupedItemSelectQuestForm<G: Group<I>, I, T> : AbstractOsmQuest
     }
 
     private fun getInitialItems(): List<I> =
-        prefs.getLastPicked(this::class.simpleName!!)
-            .map { itemsByString[it] }
+        prefs.getLastPicked(ListSerializer(serializer), this::class.simpleName!!)
             .takeFavorites(n = 6, first = 1, pad = topItems)
 
     override fun onClickOk() {
@@ -108,13 +108,13 @@ abstract class AGroupedItemSelectQuestForm<G: Group<I>, I, T> : AbstractOsmQuest
                     .setMessage(R.string.quest_generic_item_confirmation)
                     .setNegativeButton(R.string.quest_generic_confirmation_no, null)
                     .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ ->
-                        prefs.addLastPicked(this::class.simpleName!!, groupItem.toString())
+                        prefs.addLastPicked(ListSerializer(serializer), this::class.simpleName!!, groupItem)
                         onClickOk(groupItem)
                     }
                     .show()
             }
         } else if (item != null) {
-            prefs.addLastPicked(this::class.simpleName!!, item.toString())
+            prefs.addLastPicked(ListSerializer(serializer), this::class.simpleName!!, item)
             onClickOk(item)
         }
     }

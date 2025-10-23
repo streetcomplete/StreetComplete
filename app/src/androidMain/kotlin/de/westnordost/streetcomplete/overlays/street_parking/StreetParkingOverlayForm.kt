@@ -19,7 +19,6 @@ import de.westnordost.streetcomplete.osm.street_parking.parseStreetParkingSides
 import de.westnordost.streetcomplete.osm.street_parking.validOrNullValues
 import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 import de.westnordost.streetcomplete.ui.util.content
-import kotlinx.serialization.json.Json
 import org.koin.android.ext.android.inject
 import kotlin.getValue
 
@@ -45,6 +44,9 @@ class StreetParkingOverlayForm : AbstractOverlayForm() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val lastPicked by lazy { prefs.getLastPicked<Sides<StreetParking>>(this::class.simpleName!!) }
+
         binding.composeViewBase.content { Surface {
             StreetParkingForm(
                 value = parking.value,
@@ -59,9 +61,7 @@ class StreetParkingOverlayForm : AbstractOverlayForm() {
                 isLeftHandTraffic = countryInfo.isLeftHandTraffic,
                 isForwardOneway = isForwardOneway(element!!.tags),
                 isReversedOneway = isReversedOneway(element!!.tags),
-                lastPicked = prefs
-                    .getLastPicked(this::class.simpleName!!)
-                    .map { Json.decodeFromString(it) }
+                lastPicked = lastPicked
             )
         } }
         checkIsFormComplete()
@@ -76,7 +76,7 @@ class StreetParkingOverlayForm : AbstractOverlayForm() {
         parking.value.left != null && parking.value.right != null
 
     override fun onClickOk() {
-        prefs.setLastPicked(this::class.simpleName!!, listOf(Json.encodeToString(parking.value)))
+        prefs.setLastPicked(this::class.simpleName!!, listOf(parking.value))
         val tagChanges = StringMapChangesBuilder(element!!.tags)
         parking.value.applyTo(tagChanges)
         applyEdit(UpdateElementTagsAction(element!!, tagChanges.create()))

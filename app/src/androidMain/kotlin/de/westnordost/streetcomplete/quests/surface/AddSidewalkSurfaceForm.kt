@@ -18,7 +18,6 @@ import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.ui.util.content
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
-import kotlinx.serialization.json.Json
 import org.koin.android.ext.android.inject
 import kotlin.getValue
 
@@ -52,16 +51,16 @@ class AddSidewalkSurfaceForm : AbstractOsmQuestForm<SidewalkSurfaceAnswer>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.composeViewBase.content { Surface {
-            sidewalkSurfaces = rememberSerializable { mutableStateOf(Sides(null, null)) }
-
-            val lastPicked = if (hasSidewalkLeft && hasSidewalkRight) {
-                prefs
-                    .getLastPicked(this::class.simpleName!!)
-                    .map { Json.decodeFromString<Sides<Surface>>(it) }
+        val lastPicked by lazy {
+            if (hasSidewalkLeft && hasSidewalkRight) {
+                prefs.getLastPicked<Sides<Surface>>(this::class.simpleName!!)
             } else {
                 emptyList()
             }
+        }
+
+        binding.composeViewBase.content { Surface {
+            sidewalkSurfaces = rememberSerializable { mutableStateOf(Sides(null, null)) }
 
             SidewalkSurfaceForm(
                 value = sidewalkSurfaces.value,
@@ -91,7 +90,7 @@ class AddSidewalkSurfaceForm : AbstractOsmQuestForm<SidewalkSurfaceAnswer>() {
     override fun onClickOk() {
         applyAnswer(SidewalkSurfaceAnswer.Surfaces(SidewalkSurface(sidewalkSurfaces.value)))
         if (hasSidewalkLeft && hasSidewalkRight) {
-            prefs.setLastPicked(this::class.simpleName!!, listOf(Json.encodeToString(sidewalkSurfaces.value)))
+            prefs.setLastPicked(this::class.simpleName!!, listOf(sidewalkSurfaces.value))
         }
     }
 }

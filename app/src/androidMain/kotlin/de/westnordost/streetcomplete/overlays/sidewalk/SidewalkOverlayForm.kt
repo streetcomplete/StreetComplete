@@ -18,7 +18,6 @@ import de.westnordost.streetcomplete.osm.sidewalk.validOrNullValues
 import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 import de.westnordost.streetcomplete.quests.sidewalk.SidewalkForm
 import de.westnordost.streetcomplete.ui.util.content
-import kotlinx.serialization.json.Json
 import org.koin.android.ext.android.inject
 import kotlin.getValue
 
@@ -44,6 +43,9 @@ class SidewalkOverlayForm : AbstractOverlayForm() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val lastPicked by lazy { prefs.getLastPicked<Sides<Sidewalk>>(this::class.simpleName!!) }
+
         binding.composeViewBase.content { Surface {
             SidewalkForm(
                 value = sidewalks.value,
@@ -55,9 +57,7 @@ class SidewalkOverlayForm : AbstractOverlayForm() {
                 mapRotation = mapRotation.floatValue,
                 mapTilt = mapTilt.floatValue,
                 isLeftHandTraffic = countryInfo.isLeftHandTraffic,
-                lastPicked = prefs
-                    .getLastPicked(this::class.simpleName!!)
-                    .map { Json.decodeFromString(it) }
+                lastPicked = lastPicked
             )
         } }
 
@@ -71,7 +71,7 @@ class SidewalkOverlayForm : AbstractOverlayForm() {
         sidewalks.value.left != null && sidewalks.value.right != null
 
     override fun onClickOk() {
-        prefs.setLastPicked(this::class.simpleName!!, listOf(Json.encodeToString(sidewalks.value)))
+        prefs.setLastPicked(this::class.simpleName!!, listOf(sidewalks.value))
 
         val tagChanges = StringMapChangesBuilder(element!!.tags)
         sidewalks.value.applyTo(tagChanges)

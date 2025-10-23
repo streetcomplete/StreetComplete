@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.overlays.cycleway
 
 import android.os.Bundle
 import android.view.View
-import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.compose.foundation.layout.Box
 import androidx.compose.material.Surface
@@ -26,7 +25,6 @@ import de.westnordost.streetcomplete.osm.bicycle_in_pedestrian_street.parseBicyc
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway
 import de.westnordost.streetcomplete.osm.cycleway.CyclewayAndDirection
 import de.westnordost.streetcomplete.osm.cycleway.applyTo
-import de.westnordost.streetcomplete.osm.cycleway.getSelectableCycleways
 import de.westnordost.streetcomplete.osm.cycleway.parseCyclewaySides
 import de.westnordost.streetcomplete.osm.cycleway.selectableOrNullValues
 import de.westnordost.streetcomplete.osm.cycleway.wasNoOnewayForCyclistsButNowItIs
@@ -43,7 +41,6 @@ import de.westnordost.streetcomplete.quests.cycleway.CyclewayForm
 import de.westnordost.streetcomplete.quests.cycleway.CyclewayFormSelectionMode
 import de.westnordost.streetcomplete.ui.util.content
 import de.westnordost.streetcomplete.util.ktx.toast
-import kotlinx.serialization.json.Json
 import org.koin.android.ext.android.inject
 import kotlin.getValue
 
@@ -93,11 +90,11 @@ class StreetCyclewayOverlayForm : AbstractOverlayForm() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val lastPicked = prefs
-            .getLastPicked(this::class.simpleName!!)
-            .map { Json.decodeFromString<Sides<Cycleway>>(it) }
-            .map { it.withDefaultDirection(countryInfo.isLeftHandTraffic) }
-
+        val lastPicked by lazy {
+            prefs
+                .getLastPicked<Sides<Cycleway>>(this::class.simpleName!!)
+                .map { it.withDefaultDirection(countryInfo.isLeftHandTraffic) }
+        }
 
         binding.composeViewBase.content { Surface {
             Box(contentAlignment = Alignment.Center) {
@@ -223,7 +220,7 @@ class StreetCyclewayOverlayForm : AbstractOverlayForm() {
             // the default, the user should select this specifically. Simply carrying over the
             // non-default direction to the next answer might result in mistakes
             val cycleways = Sides(left = sides.left.cycleway, right = sides.right.cycleway)
-            prefs.setLastPicked(this::class.simpleName!!, listOf(Json.encodeToString(cycleways)))
+            prefs.setLastPicked(this::class.simpleName!!, listOf(cycleways))
         }
     }
 

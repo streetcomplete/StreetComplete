@@ -6,17 +6,20 @@ import de.westnordost.streetcomplete.quests.AItemSelectQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.religion.Religion.MULTIFAITH
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
+import kotlinx.serialization.serializer
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
 class AddReligionForm : AItemSelectQuestForm<Religion, Religion>() {
 
-    override val otherAnswers = listOf(
-        AnswerItem(R.string.quest_religion_for_place_of_worship_answer_multi) { applyAnswer(MULTIFAITH) }
-    )
+    override val serializer = serializer<Religion>()
 
     override val items get() = (Religion.entries - MULTIFAITH)
         .sortedBy { religionPosition(it.osmValue) }
+
+    override val otherAnswers = listOf(
+        AnswerItem(R.string.quest_religion_for_place_of_worship_answer_multi) { applyAnswer(MULTIFAITH) }
+    )
 
     fun religionPosition(osmValue: String): Int {
         val position = countryInfo.popularReligions.indexOf(osmValue)

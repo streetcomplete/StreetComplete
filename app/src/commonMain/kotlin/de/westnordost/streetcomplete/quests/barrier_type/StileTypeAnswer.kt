@@ -1,5 +1,8 @@
 package de.westnordost.streetcomplete.quests.barrier_type
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 sealed interface StileTypeAnswer
 
 enum class ConvertedStile(val newBarrier: String) : StileTypeAnswer {

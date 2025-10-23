@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests.bike_parking_type
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.quests.AItemSelectQuestForm
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
+import kotlinx.serialization.serializer
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
@@ -10,6 +11,7 @@ class AddBikeParkingTypeForm : AItemSelectQuestForm<BikeParkingType, BikeParking
 
     override val items = BikeParkingType.entries
     override val itemsPerRow = 3
+    override val serializer = serializer<BikeParkingType>()
 
     @Composable override fun ItemContent(item: BikeParkingType) {
         ImageWithLabel(painterResource(item.icon), stringResource(item.title))

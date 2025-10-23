@@ -29,11 +29,7 @@ class AddBuildingLevelsForm : AbstractOsmQuestForm<BuildingLevels>() {
     )
 
     private val lastPickedAnswers by lazy {
-        prefs.getLastPicked(this::class.simpleName!!)
-            .map { value ->
-                value.split("#")
-                    .let { BuildingLevels(it[0].toInt(), it.getOrNull(1)?.toInt()) }
-            }
+        prefs.getLastPicked<BuildingLevels>(this::class.simpleName!!)
             .takeFavorites(n = 5, history = 15, first = 1)
             .sortedWith(compareBy<BuildingLevels> { it.levels }.thenBy { it.roofLevels })
     }
@@ -66,10 +62,7 @@ class AddBuildingLevelsForm : AbstractOsmQuestForm<BuildingLevels>() {
             levels.value.toInt(),
             roofLevels.value.takeIf { it.isNotEmpty() }?.toInt()
         )
-        prefs.addLastPicked(
-            this::class.simpleName!!,
-            listOfNotNull(answer.levels, answer.roofLevels).joinToString("#")
-        )
+        prefs.addLastPicked(this::class.simpleName!!, answer)
         applyAnswer(answer)
     }
 

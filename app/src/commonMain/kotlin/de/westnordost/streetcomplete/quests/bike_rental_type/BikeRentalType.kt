@@ -1,5 +1,8 @@
 package de.westnordost.streetcomplete.quests.bike_rental_type
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 sealed interface BikeRentalTypeAnswer {
     data object BikeShopWithRental : BikeRentalTypeAnswer
 }

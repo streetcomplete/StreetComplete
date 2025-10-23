@@ -27,6 +27,8 @@ import de.westnordost.streetcomplete.resources.quest_multiselect_hint
 import de.westnordost.streetcomplete.ui.common.item_select.ItemsSelectGrid
 import de.westnordost.streetcomplete.ui.util.content
 import de.westnordost.streetcomplete.util.takeFavorites
+import kotlinx.serialization.KSerializer
+import kotlinx.serialization.builtins.ListSerializer
 import org.jetbrains.compose.resources.stringResource
 import org.koin.android.ext.android.inject
 
@@ -50,11 +52,10 @@ abstract class AItemsSelectQuestForm<I, T> : AbstractOsmQuestForm<T>() {
     private lateinit var reorderedItems: List<I>
     protected lateinit var selectedItems: MutableState<Set<I>>
 
-    private lateinit var itemsByString: Map<String, I>
+    protected abstract val serializer: KSerializer<I>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        itemsByString = items.associateBy { it.toString() }
         reorderedItems = if (items.size > itemsPerRow && moveFavoritesToFront) {
             moveFavouritesToFront(items)
         } else items
@@ -95,7 +96,7 @@ abstract class AItemsSelectQuestForm<I, T> : AbstractOsmQuestForm<T>() {
     override fun onClickOk() {
         val values = selectedItems.value
         if (values.isNotEmpty()) {
-            prefs.addLastPicked(this::class.simpleName!!, values.map { it.toString() })
+            prefs.addLastPicked(ListSerializer(serializer), this::class.simpleName!!, values.toList())
             onClickOk(values)
         }
     }
@@ -105,8 +106,7 @@ abstract class AItemsSelectQuestForm<I, T> : AbstractOsmQuestForm<T>() {
     override fun isFormComplete() = selectedItems.value.isNotEmpty()
 
     private fun moveFavouritesToFront(originalList: List<I>): List<I> {
-        val favourites = prefs.getLastPicked(this::class.simpleName!!)
-            .map { itemsByString[it] }
+        val favourites = prefs.getLastPicked(ListSerializer(serializer), this::class.simpleName!!)
             .takeFavorites(n = itemsPerRow)
         return (favourites + originalList).distinct()
     }

@@ -13,6 +13,7 @@ import de.westnordost.streetcomplete.osm.building.title
 import de.westnordost.streetcomplete.quests.AGroupedItemSelectQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithDescription
+import kotlinx.serialization.serializer
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
@@ -26,6 +27,8 @@ class AddBuildingTypeForm : AGroupedItemSelectQuestForm<BuildingTypeCategory, Bu
     override val topItems = BuildingType.topSelectableValues
 
     override val groups = BuildingTypeCategory.entries
+
+    override val serializer = serializer<BuildingType>()
 
     @Composable override fun GroupContent(item: BuildingTypeCategory) {
         ImageWithDescription(

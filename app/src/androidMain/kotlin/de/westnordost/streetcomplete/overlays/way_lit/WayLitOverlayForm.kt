@@ -23,12 +23,15 @@ import de.westnordost.streetcomplete.overlays.AItemSelectOverlayForm
 import de.westnordost.streetcomplete.overlays.AnswerItem
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
 import de.westnordost.streetcomplete.util.ktx.couldBeSteps
+import kotlinx.serialization.serializer
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
 class WayLitOverlayForm : AItemSelectOverlayForm<LitStatus>() {
 
     override val items: List<LitStatus> = LitStatus.entries
+
+    override val serializer = serializer<LitStatus>()
 
     override val selectableItems: List<LitStatus> =
         listOf(YES, NO, AUTOMATIC, NIGHT_AND_DAY)

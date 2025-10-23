@@ -13,6 +13,7 @@ import de.westnordost.streetcomplete.osm.mtb_scale.parseMtbScale
 import de.westnordost.streetcomplete.osm.mtb_scale.title
 import de.westnordost.streetcomplete.overlays.AItemSelectOverlayForm
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithDescription
+import kotlinx.serialization.serializer
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
@@ -20,6 +21,7 @@ class MtbScaleOverlayForm : AItemSelectOverlayForm<MtbScale.Value>() {
 
     override val items = MtbScale.Value.entries
     override val itemsPerRow = 1
+    override val serializer = serializer<MtbScale.Value>()
 
     private var originalMtbScale: MtbScale.Value? = null
 

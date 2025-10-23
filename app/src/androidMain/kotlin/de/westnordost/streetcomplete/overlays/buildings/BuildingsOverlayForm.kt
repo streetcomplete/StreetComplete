@@ -21,7 +21,6 @@ import de.westnordost.streetcomplete.osm.building.title
 import de.westnordost.streetcomplete.overlays.AGroupedItemSelectOverlayForm
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithDescription
 import de.westnordost.streetcomplete.util.getNameAndLocationSpanned
-import de.westnordost.streetcomplete.util.ktx.valueOfOrNull
 import de.westnordost.streetcomplete.util.takeFavorites
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
@@ -34,8 +33,7 @@ class BuildingsOverlayForm : AGroupedItemSelectOverlayForm<BuildingTypeCategory,
     override val groups = BuildingTypeCategory.entries
 
     override val lastPickedItems by lazy {
-        prefs.getLastPicked(this::class.simpleName!!)
-            .map { valueOfOrNull<BuildingType>(it) }
+        prefs.getLastPicked<BuildingType>(this::class.simpleName!!)
             .takeFavorites(
                 n = 6,
                 first = 1,
@@ -83,7 +81,7 @@ class BuildingsOverlayForm : AGroupedItemSelectOverlayForm<BuildingTypeCategory,
         selectedItem.value != originalBuilding
 
     override fun onClickOk(selectedItem: BuildingType) {
-        prefs.addLastPicked(this::class.simpleName!!, selectedItem.name)
+        prefs.addLastPicked(this::class.simpleName!!, selectedItem)
         val tagChanges = StringMapChangesBuilder(element!!.tags)
         selectedItem.applyTo(tagChanges)
         applyEdit(UpdateElementTagsAction(element!!, tagChanges.create()))

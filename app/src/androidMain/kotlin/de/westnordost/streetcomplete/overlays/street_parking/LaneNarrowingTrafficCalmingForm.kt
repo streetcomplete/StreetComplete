@@ -34,6 +34,7 @@ import de.westnordost.streetcomplete.util.ktx.dpToPx
 import de.westnordost.streetcomplete.util.math.PositionOnWay
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import de.westnordost.streetcomplete.util.math.getPositionOnWays
+import kotlinx.serialization.serializer
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import org.koin.android.ext.android.inject
@@ -44,6 +45,8 @@ class LaneNarrowingTrafficCalmingForm :
     private val mapDataWithEditsSource: MapDataWithEditsSource by inject()
 
     override val items get() = LaneNarrowingTrafficCalming.entries
+
+    override val serializer = serializer<LaneNarrowingTrafficCalming>()
 
     private var originalLaneNarrowingTrafficCalming: LaneNarrowingTrafficCalming? = null
 

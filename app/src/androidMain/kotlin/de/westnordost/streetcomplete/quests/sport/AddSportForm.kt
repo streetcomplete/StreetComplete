@@ -7,16 +7,18 @@ import de.westnordost.streetcomplete.quests.AItemsSelectQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.sport.Sport.MULTI
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
+import kotlinx.serialization.serializer
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
 class AddSportForm : AItemsSelectQuestForm<Sport, Set<Sport>>() {
 
+    override val items get() = (Sport.entries - MULTI).sortedBy { sportPosition(it.osmValue) }
+    override val serializer = serializer<Sport>()
+
     override val otherAnswers = listOf(
         AnswerItem(R.string.quest_sport_answer_multi) { applyMultiAnswer() }
     )
-
-    override val items get() = (Sport.entries - MULTI).sortedBy { sportPosition(it.osmValue) }
 
     @Composable override fun ItemContent(item: Sport) {
         ImageWithLabel(painterResource(item.icon), stringResource(item.title))

@@ -5,6 +5,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AItemSelectQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
+import kotlinx.serialization.serializer
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
@@ -12,6 +13,7 @@ class AddBollardTypeForm : AItemSelectQuestForm<BollardType, BollardTypeAnswer>(
 
     override val items = BollardType.entries
     override val itemsPerRow = 3
+    override val serializer = serializer<BollardType>()
 
     override val otherAnswers = listOf(
         AnswerItem(R.string.quest_bollard_type_not_bollard) {

@@ -5,6 +5,7 @@ import androidx.compose.runtime.remember
 import de.westnordost.streetcomplete.quests.AItemSelectQuestForm
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
 import de.westnordost.streetcomplete.ui.util.ClipCirclePainter
+import kotlinx.serialization.serializer
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
@@ -12,6 +13,7 @@ class AddOnewayForm : AItemSelectQuestForm<OnewayAnswer, OnewayAnswer>() {
 
     override val items = OnewayAnswer.entries
     override val itemsPerRow = 3
+    override val serializer = serializer<OnewayAnswer>()
 
     @Composable override fun ItemContent(item: OnewayAnswer) {
         val painter = painterResource(item.icon)

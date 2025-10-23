@@ -8,6 +8,7 @@ import de.westnordost.streetcomplete.quests.steps_ramp.StepsRamp.BICYCLE
 import de.westnordost.streetcomplete.quests.steps_ramp.StepsRamp.STROLLER
 import de.westnordost.streetcomplete.quests.steps_ramp.StepsRamp.WHEELCHAIR
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
+import kotlinx.serialization.serializer
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
@@ -16,6 +17,7 @@ class AddStepsRampForm : AItemsSelectQuestForm<StepsRamp, StepsRampAnswer>() {
     override val items = StepsRamp.entries
     override val itemsPerRow = 2
     override val moveFavoritesToFront = false
+    override val serializer = serializer<StepsRamp>()
 
     @Composable override fun ItemContent(item: StepsRamp) {
         ImageWithLabel(painterResource(item.icon), stringResource(item.title))

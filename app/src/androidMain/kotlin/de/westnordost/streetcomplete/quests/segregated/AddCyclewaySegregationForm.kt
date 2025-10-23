@@ -11,6 +11,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.quests.AItemSelectQuestForm
+import kotlinx.serialization.serializer
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
@@ -18,6 +19,7 @@ class AddCyclewaySegregationForm : AItemSelectQuestForm<CyclewaySegregation, Cyc
 
     override val items = CyclewaySegregation.entries
     override val itemsPerRow = 1
+    override val serializer = serializer<CyclewaySegregation>()
 
     @Composable override fun ItemContent(item: CyclewaySegregation) {
         Row(

@@ -49,19 +49,16 @@ class SurfaceOverlayForm : AbstractOverlayForm() {
 
     private val selectableItems: List<Surface> get() = Surface.selectableValuesForWays
 
-    private val lastPickedItems: List<SurfaceOverlayAnswer> get() =
-        prefs.getLastPicked(this::class.simpleName!!)
-            .mapNotNull { SurfaceOverlayAnswer.deserializeFromString(it) }
-
     private val lastPickedSingleSurfaces: List<Surface> get() =
-        lastPickedItems
+        prefs.getLastPicked<SurfaceOverlayAnswer>(this::class.simpleName!!)
             .filterIsInstance<SingleSurface>()
             .takeFavorites(n = 5, first = 1)
             .map { it.value!! }
 
     private val lastPickedSegregatedSurfaces: List<Pair<Surface, Surface>> get() =
-        lastPickedItems
+        prefs.getLastPicked<SurfaceOverlayAnswer>(this::class.simpleName!!)
             .filterIsInstance<SegregatedSurface>()
+            .filter { it.isComplete() }
             .takeFavorites(n = 3, first = 1)
             .map { Pair(it.footway!!, it.cycleway!!) }
 
@@ -178,7 +175,7 @@ class SurfaceOverlayForm : AbstractOverlayForm() {
 
     override fun onClickOk() {
         val changesBuilder = StringMapChangesBuilder(element!!.tags)
-        selectedItem.value.serializeToString()?.let { prefs.addLastPicked(this::class.simpleName!!, it) }
+        prefs.addLastPicked(this::class.simpleName!!, selectedItem.value)
         selectedItem.value.applyTo(changesBuilder)
         applyEdit(UpdateElementTagsAction(element!!, changesBuilder.create()))
     }

@@ -8,7 +8,10 @@ import com.russhwolf.settings.int
 import com.russhwolf.settings.long
 import com.russhwolf.settings.nullableString
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
-import de.westnordost.streetcomplete.util.ktx.putStringOrNull
+import kotlinx.serialization.KSerializer
+import kotlinx.serialization.json.Json
+import kotlinx.serialization.serializer
+import kotlin.collections.List
 
 class Preferences(private val prefs: ObservableSettings) {
     // application settings
@@ -137,20 +140,26 @@ class Preferences(private val prefs: ObservableSettings) {
 
     var lastEditTime: Long by prefs.long(LAST_EDIT_TIME, 0L)
 
-    fun getLastPicked(key: String): List<String> =
-        prefs.getStringOrNull(LAST_PICKED_PREFIX + key)?.split(',') ?: listOf()
+    inline fun <reified T> getLastPicked(key: String): List<T> = getLastPicked(serializer(), key)
+    inline fun <reified T> setLastPicked(key: String, values: List<T>) = setLastPicked(serializer(), key, values)
+    inline fun <reified T> addLastPicked(key: String, value: T) = addLastPicked(serializer(), key, value)
 
-    fun addLastPicked(key: String, value: String, maxValueCount: Int = 100) {
-        addLastPicked(key, listOf(value), maxValueCount)
+    fun <T> getLastPicked(serializer: KSerializer<List<T>>, key: String): List<T> =
+        try {
+            prefs.getStringOrNull(LAST_PICKED_PREFIX + key)?.let { Json.decodeFromString(serializer, it) } ?: emptyList()
+        } catch (_: Exception) { emptyList() }
+
+    fun <T> addLastPicked(serializer: KSerializer<List<T>>, key: String, value: T, maxValueCount: Int = 100) {
+        addLastPicked(serializer, key, listOf(value), maxValueCount)
     }
 
-    fun addLastPicked(key: String, values: List<String>, maxValueCount: Int = 100) {
-        val lastValues = values + getLastPicked(key)
-        setLastPicked(key, lastValues.take(maxValueCount))
+    fun <T> addLastPicked(serializer: KSerializer<List<T>>, key: String, values: List<T>, maxValueCount: Int = 100) {
+        val lastValues = values + getLastPicked(serializer, key)
+        setLastPicked(serializer, key, lastValues.take(maxValueCount))
     }
 
-    fun setLastPicked(key: String, values: List<String>) {
-        prefs.putString(LAST_PICKED_PREFIX + key, values.joinToString(","))
+    fun <T> setLastPicked(serializer: KSerializer<List<T>>, key: String, values: List<T>) {
+        prefs.putString(LAST_PICKED_PREFIX + key, Json.encodeToString(serializer, values))
     }
 
     // profile & statistics screen UI
