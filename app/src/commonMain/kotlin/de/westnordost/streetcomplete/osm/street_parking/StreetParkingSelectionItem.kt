@@ -18,6 +18,7 @@ import de.westnordost.streetcomplete.resources.street_parking_separate
 import de.westnordost.streetcomplete.util.ktx.isApril1st
 import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.painterResource
+import kotlin.random.Random
 
 val StreetParkingSelection.title: StringResource get() = when (this) {
     PARALLEL -> Res.string.street_parking_parallel
@@ -44,6 +45,7 @@ private fun parkingOrientationPainter(
     val carPainter =
         if (isApril1st()) painterResource(Res.drawable.car_nyan)
         else painterResource(Res.drawable.car1)
+    val random = remember { Random(Random.Default.nextInt()) }
     return remember(parkingOrientation, isUpsideDown) {
         StreetParkingPainter(
             intrinsicSize = Size(128f, 128f),
@@ -52,6 +54,7 @@ private fun parkingOrientationPainter(
             carPainters = listOf(carPainter),
             backgroundPainter = null,
             isUpsideDown = isUpsideDown,
+            random = random,
         )
     }
 }

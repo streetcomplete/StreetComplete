@@ -51,6 +51,8 @@ class StreetCyclewayOverlayForm : AbstractOverlayForm() {
 
     private val prefs: Preferences by inject()
 
+    override val contentPadding = false
+
     override val otherAnswers: List<IAnswerItem> get() =
         createSwitchBicycleInPedestrianZoneAnswers() +
         listOfNotNull(
@@ -58,7 +60,7 @@ class StreetCyclewayOverlayForm : AbstractOverlayForm() {
             createSwitchBicycleBoulevardAnswer(),
         )
 
-    private var originalCycleway: Sides<CyclewayAndDirection>? = null
+    private var originalCycleway: Sides<CyclewayAndDirection> = Sides(null, null)
     private var originalBicycleBoulevard: BicycleBoulevard = BicycleBoulevard.NO
     private var originalBicycleInPedestrianStreet: BicycleInPedestrianStreet? = null
 
@@ -76,14 +78,16 @@ class StreetCyclewayOverlayForm : AbstractOverlayForm() {
         super.onCreate(savedInstanceState)
 
         val tags = element!!.tags
-        originalCycleway = parseCyclewaySides(tags, isLeftHandTraffic)?.selectableOrNullValues(countryInfo)
+        originalCycleway = parseCyclewaySides(tags, isLeftHandTraffic)
+            ?.selectableOrNullValues(countryInfo)
+            ?: Sides(null, null)
         originalBicycleBoulevard = parseBicycleBoulevard(tags)
         originalBicycleInPedestrianStreet = parseBicycleInPedestrianStreet(tags)
 
         if (savedInstanceState == null) {
             bicycleBoulevard.value = originalBicycleBoulevard
             bicycleInPedestrianStreet.value = originalBicycleInPedestrianStreet
-            cycleways.value = originalCycleway ?: Sides(null, null)
+            cycleways.value = originalCycleway
         }
     }
 
@@ -231,8 +235,8 @@ class StreetCyclewayOverlayForm : AbstractOverlayForm() {
         originalBicycleInPedestrianStreet != bicycleInPedestrianStreet.value
 
     override fun hasChanges(): Boolean =
-        cycleways.value.left != originalCycleway?.left ||
-        cycleways.value.right != originalCycleway?.right ||
+        cycleways.value.left != originalCycleway.left ||
+        cycleways.value.right != originalCycleway.right ||
         originalBicycleBoulevard != bicycleBoulevard.value ||
         originalBicycleInPedestrianStreet != bicycleInPedestrianStreet.value
 }

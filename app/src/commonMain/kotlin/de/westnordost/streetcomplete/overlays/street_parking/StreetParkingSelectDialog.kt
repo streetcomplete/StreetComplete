@@ -55,13 +55,18 @@ fun StreetParkingSelectionDialog(
     var parkingOrientation by remember { mutableStateOf<ParkingOrientation?>(null) }
     val hasParkingOrientation by remember { derivedStateOf { parkingOrientation != null } }
 
+    fun select(item: StreetParking) {
+        onSelect(item)
+        onDismissRequest()
+    }
+
     fun selectStreetParkingSelection(selection: StreetParkingSelection) {
         when (selection) {
             StreetParkingSelection.PARALLEL -> parkingOrientation = ParkingOrientation.PARALLEL
             StreetParkingSelection.DIAGONAL -> parkingOrientation = ParkingOrientation.DIAGONAL
             StreetParkingSelection.PERPENDICULAR -> parkingOrientation = ParkingOrientation.PERPENDICULAR
-            StreetParkingSelection.SEPARATE -> onSelect(StreetParking.Separate)
-            StreetParkingSelection.NO -> onSelect(StreetParking.None)
+            StreetParkingSelection.SEPARATE -> select(StreetParking.Separate)
+            StreetParkingSelection.NO -> select(StreetParking.None)
         }
     }
 
@@ -92,7 +97,7 @@ fun StreetParkingSelectionDialog(
                     if (hasParkingOrientation) {
                         val scrollState = rememberScrollState()
                         Box(Modifier
-                            .fadingVerticalScrollEdges(scrollState, 64.dp)
+                            .fadingVerticalScrollEdges(scrollState, 32.dp)
                             .verticalScroll(scrollState)
                             .padding(horizontal = 24.dp),
                         ) {
@@ -100,14 +105,14 @@ fun StreetParkingSelectionDialog(
                                 orientation = parkingOrientation,
                                 isUpsideDown = isUpsideDown,
                                 isRightSide = side == Side.RIGHT,
-                                onSelect = onSelect,
+                                onSelect = ::select,
                                 modifier = Modifier.padding(bottom = 24.dp)
                             )
                         }
                     } else {
                         val scrollState = rememberScrollState()
                         Box(Modifier
-                            .fadingVerticalScrollEdges(scrollState, 64.dp)
+                            .fadingVerticalScrollEdges(scrollState, 32.dp)
                             .verticalScroll(scrollState)
                             .padding(horizontal = 24.dp),
                         ) {
@@ -133,7 +138,7 @@ fun StreetParkingSelectionDialog(
     modifier: Modifier = Modifier,
 ) {
     ItemSelectGrid(
-        columns = SimpleGridCells.Fixed(2),
+        columns = SimpleGridCells.Fixed(3),
         items = StreetParkingSelection.entries,
         selectedItem = null,
         onSelect = { if (it != null) onSelect(it) },
@@ -161,7 +166,7 @@ fun StreetParkingSelectionDialog(
     }
 
     ItemSelectGrid(
-        columns = SimpleGridCells.Fixed(2),
+        columns = SimpleGridCells.Fixed(3),
         items = parkingPositionAndOrientations,
         selectedItem = null,
         onSelect = { if (it != null) onSelect(it) },

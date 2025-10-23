@@ -31,14 +31,16 @@ class StreetParkingOverlayForm : AbstractOverlayForm() {
 
     override val contentPadding = false
 
-    private var originalParking: Sides<StreetParking>? = null
+    private var originalParking: Sides<StreetParking> = Sides(null, null)
     private val parking: MutableState<Sides<StreetParking>> = mutableStateOf(Sides(null, null))
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        originalParking = parseStreetParkingSides(element!!.tags)?.validOrNullValues()
+        originalParking = parseStreetParkingSides(element!!.tags)
+            ?.validOrNullValues()
+            ?: Sides(null, null)
         if (savedInstanceState == null) {
-            parking.value = originalParking ?: Sides(null, null)
+            parking.value = originalParking
         }
     }
 

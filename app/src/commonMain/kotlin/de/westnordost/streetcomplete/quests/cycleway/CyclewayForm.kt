@@ -83,8 +83,9 @@ import org.jetbrains.compose.resources.stringResource
     )
 
     showPickerForSide?.let { side ->
+        val current = value.get(side)
         val isRight = side == Side.RIGHT
-        val direction = value.get(side)?.direction ?: Direction.getDefault(isRight, countryInfo.isLeftHandTraffic)
+        val direction = current?.direction ?: Direction.getDefault(isRight, countryInfo.isLeftHandTraffic)
         val selectableCycleways = getSelectableCycleways(countryInfo, isRight, countryInfo.isLeftHandTraffic, direction, roadDirection)
 
         SimpleItemSelectDialog(
@@ -107,7 +108,7 @@ import org.jetbrains.compose.resources.stringResource
                         imageRotation = if (countryInfo.isLeftHandTraffic) 180f else 0f
                     )
                 }
-            }
+            },
         )
     }
 }

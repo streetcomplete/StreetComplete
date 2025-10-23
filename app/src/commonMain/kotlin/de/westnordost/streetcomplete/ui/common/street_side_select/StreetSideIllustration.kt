@@ -103,7 +103,7 @@ private fun StreetSideIllustrationSide(
         targetState = painter,
         transitionSpec = FallDownTransitionSpec,
         modifier = modifier
-    ) { rightPainter ->
+    ) { painter ->
         Box(
             modifier = Modifier
                 .fillMaxSize()

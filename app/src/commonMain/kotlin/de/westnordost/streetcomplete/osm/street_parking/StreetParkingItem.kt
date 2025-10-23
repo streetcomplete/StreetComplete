@@ -42,6 +42,7 @@ import de.westnordost.streetcomplete.util.ktx.isApril1st
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.painterResource
+import kotlin.random.Random
 
 /** Functions to display a (parsed) street parking in the UI */
 
@@ -94,6 +95,7 @@ private fun StreetParking.PositionAndOrientation.dialogPainter(isUpsideDown: Boo
         if (isApril1st()) painterResource(Res.drawable.car_nyan)
         else painterResource(Res.drawable.car1)
     val backgroundPainter = painterResource(background)
+    val random = remember { Random(Random.Default.nextInt()) }
     return remember(this, isUpsideDown) {
         StreetParkingPainter(
             intrinsicSize = Size(128f, 128f),
@@ -102,6 +104,7 @@ private fun StreetParking.PositionAndOrientation.dialogPainter(isUpsideDown: Boo
             backgroundPainter = backgroundPainter,
             carPainters = listOf(carPainter),
             isUpsideDown = isUpsideDown,
+            random = random,
         )
     }
 }
@@ -114,6 +117,7 @@ private fun StreetParking.PositionAndOrientation.painter(isUpsideDown: Boolean, 
         if (isApril1st()) listOf(painterResource(Res.drawable.car_nyan))
         else CAR_DRAWABLES.map { painterResource(it) }
     val backgroundPainter = painterResource(background)
+    val random = remember { Random(Random.Default.nextInt()) }
     return remember(this, isUpsideDown, isRightSide) {
         StreetParkingPainter(
             intrinsicSize = Size(128f, 512f),
@@ -122,6 +126,7 @@ private fun StreetParking.PositionAndOrientation.painter(isUpsideDown: Boolean, 
             backgroundPainter = backgroundPainter,
             carPainters = carPainters,
             isUpsideDown = isUpsideDown,
+            random = random,
             // show left and right side staggered to each other
             phase = if (isRightSide) 0.5f else 0f,
         )

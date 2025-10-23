@@ -72,16 +72,16 @@ import org.jetbrains.compose.resources.painterResource
                 items = lastPicked,
                 onClick = { onValueChanged(it) },
                 modifier = Modifier
-                    .padding(horizontal = 8.dp)
+                    .padding(8.dp)
                     .fillMaxWidth()
                     .align(Alignment.BottomStart),
                 chipBorder = BorderStroke(1.dp, MaterialTheme.colors.onSurface.copy(alpha = 0.12f)),
-            ) { sidewalks ->
+            ) { value ->
                 StreetSideIllustration(
                     leftPainter = getItemIllustration(value.left, Side.LEFT)?: unknownPainter,
                     rightPainter = getItemIllustration(value.right, Side.RIGHT) ?: unknownPainter,
                     rotation = rotation,
-                    modifier = Modifier.size(48.dp),
+                    modifier = Modifier.size(40.dp),
                     isLeftSideVisible = isLeftSideVisible,
                     isRightSideVisible = isRightSideVisible,
                 )

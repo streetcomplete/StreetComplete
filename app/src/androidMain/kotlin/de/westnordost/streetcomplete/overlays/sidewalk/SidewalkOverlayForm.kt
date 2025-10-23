@@ -30,14 +30,14 @@ class SidewalkOverlayForm : AbstractOverlayForm() {
 
     override val contentPadding = false
 
-    private var originalSidewalks: Sides<Sidewalk>? = null
+    private var originalSidewalks: Sides<Sidewalk> = Sides(null, null)
     private val sidewalks: MutableState<Sides<Sidewalk>> = mutableStateOf(Sides(null, null))
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        originalSidewalks = parseSidewalkSides(element!!.tags)?.validOrNullValues()
+        originalSidewalks = parseSidewalkSides(element!!.tags)?.validOrNullValues() ?: Sides(null, null)
         if (savedInstanceState == null) {
-            sidewalks.value = originalSidewalks ?: Sides(null, null)
+            sidewalks.value = originalSidewalks
         }
     }
 

@@ -20,10 +20,9 @@ class StreetParkingPainter(
     private val carPainters: List<Painter>,
     private val backgroundPainter: Painter?,
     private val isUpsideDown: Boolean,
+    private val random: Random,
     private val phase: Float = 0f,
 ) : Painter() {
-    private val seed = Random.nextInt()
-
     override fun DrawScope.onDraw() {
         val width = size.width
         val height = size.height
@@ -54,7 +53,7 @@ class StreetParkingPainter(
             // drawing the cars
             for (i in 0 until carCount * repeats) {
                 if (i % carCount in omittedCarIndices) continue
-                val carPainter = carPainters[Random(seed).nextInt(carPainters.size)]
+                val carPainter = carPainters[random.nextInt(carPainters.size)]
                 val carHeight = carPainter.intrinsicSize.height * carWidth / carPainter.intrinsicSize.width
                 val paddingY = (height / carCount - carHeight) / 2
                 val carY = (height / carCount * i + paddingY + phase * height) % (height * repeats)

@@ -23,7 +23,6 @@ import de.westnordost.streetcomplete.resources.ok
 import de.westnordost.streetcomplete.resources.quest_select_hint_most_specific
 import de.westnordost.streetcomplete.ui.common.item_select.Group
 import de.westnordost.streetcomplete.ui.common.item_select.GroupedItemSelectColumn
-import de.westnordost.streetcomplete.ui.ktx.fadingEdges
 import de.westnordost.streetcomplete.ui.ktx.fadingVerticalScrollEdges
 import org.jetbrains.compose.resources.stringResource
 
@@ -65,7 +64,7 @@ fun <I, G: Group<I>> GroupedItemSelectDialog(
                 groupContent = groupContent,
                 itemContent = itemContent,
                 modifier = Modifier
-                    .fadingVerticalScrollEdges(scrollState, 64.dp)
+                    .fadingVerticalScrollEdges(scrollState, 32.dp)
                     .padding(horizontal = 24.dp)
                     .verticalScroll(scrollState)
             )

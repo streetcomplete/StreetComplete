@@ -56,7 +56,7 @@ class AddCyclewayForm : AbstractOsmQuestForm<Sides<CyclewayAndDirection>>() {
         AnswerItem(R.string.cycleway_reverse_direction, ::selectReverseCyclewayDirection)
     )
 
-    private lateinit var cycleways: MutableState<Sides<CyclewayAndDirection>>
+    private var cycleways = mutableStateOf(Sides<CyclewayAndDirection>(null, null))
     private val isLeftSideVisible = mutableStateOf(true)
     private val isRightSideVisible = mutableStateOf(true)
     private val isDisplayingPrevious = mutableStateOf(false)
