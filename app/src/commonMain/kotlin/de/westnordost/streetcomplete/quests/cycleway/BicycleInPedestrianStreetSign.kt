@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.cycleway
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -25,7 +26,8 @@ import org.jetbrains.compose.resources.stringResource
     RectangularSign(modifier = modifier) {
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.spacedBy(8.dp)
+            verticalArrangement = Arrangement.spacedBy(8.dp),
+            modifier = Modifier.padding(8.dp),
         ) {
             Icon(painterResource(Res.drawable.sign_icon_bicycle), null)
             Text(
@@ -39,9 +41,13 @@ import org.jetbrains.compose.resources.stringResource
 @Composable fun BicycleInPedestrianStreetDesignatedSign(modifier: Modifier = Modifier) {
     RectangularSign(
         modifier = modifier,
-        color = TrafficSignColor.Blue
+        color = TrafficSignColor.Blue,
     ) {
-        Icon(painterResource(Res.drawable.sign_icon_pedestrian_and_bicycle), null)
+        Icon(
+            painter = painterResource(Res.drawable.sign_icon_pedestrian_and_bicycle),
+            contentDescription = null,
+            modifier = Modifier.padding(8.dp)
+        )
     }
 }
 
@@ -52,7 +58,8 @@ import org.jetbrains.compose.resources.stringResource
     ) {
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.spacedBy(8.dp)
+            verticalArrangement = Arrangement.spacedBy(8.dp),
+            modifier = Modifier.padding(8.dp),
         ) {
             Icon(painterResource(Res.drawable.sign_icon_bicycle), null)
             Text(

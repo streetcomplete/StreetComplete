@@ -133,6 +133,9 @@ class StreetCyclewayOverlayForm : AbstractOverlayForm() {
     /* ------------------------- pedestrian zone and bicycle boulevards ------------------------- */
 
     private fun createSwitchBicycleInPedestrianZoneAnswers(): List<IAnswerItem> = buildList {
+        // only offer answers in pedestrian zones
+        if (bicycleInPedestrianStreet.value == null) return@buildList
+
         if (bicycleInPedestrianStreet.value != BicycleInPedestrianStreet.DESIGNATED) {
             add(
                 AnswerItem(R.string.pedestrian_zone_designated) {
