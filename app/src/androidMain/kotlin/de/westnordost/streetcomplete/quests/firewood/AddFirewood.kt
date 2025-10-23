@@ -16,7 +16,7 @@ import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 class AddFirewood : OsmFilterQuestType<Boolean>(), AndroidQuest {
 
     override val elementFilter = """
-        nodes with
+        nodes, ways with
             (
                 leisure=firepit
                 or (amenity=bbq and fuel=wood)
