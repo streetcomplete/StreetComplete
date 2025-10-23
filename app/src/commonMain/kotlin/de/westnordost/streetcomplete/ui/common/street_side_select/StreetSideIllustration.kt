@@ -133,7 +133,8 @@ private fun DrawScope.drawVerticallyRepeatingImage(painter: Painter) {
     val h = painter.intrinsicSize.height / painter.intrinsicSize.width * size.width
     val repetitions = ceil(size.height / h).toInt()
     for (i in 0 until repetitions) {
-        translate(top = i * h) {
+        // -1f so that they rather overlap than not on rounding imprecision
+        translate(top = i * ceil(h - 1f)) {
             with(painter) { draw(Size(w, h)) }
         }
     }
