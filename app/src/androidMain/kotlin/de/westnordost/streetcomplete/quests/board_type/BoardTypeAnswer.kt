@@ -21,7 +21,6 @@ sealed interface BoardTypeAnswer {
 enum class BoardType(val osmValue: String) : BoardTypeAnswer {
     HISTORY("history"),
     GEOLOGY("geology"),
-
     PLANTS("plants"),
     WILDLIFE("wildlife"),
     NATURE("nature"),
