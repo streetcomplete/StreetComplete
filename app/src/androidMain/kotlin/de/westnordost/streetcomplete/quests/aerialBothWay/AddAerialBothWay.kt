@@ -16,7 +16,9 @@ import de.westnordost.streetcomplete.quests.aerialBothWay.AerialBothWayAnswer.UP
 class AddAerialBothWay : OsmElementQuestType<AerialBothWayAnswer>, AndroidQuest {
 
     private val elementFilter by lazy { """
-        ways with aerialway and aerialway !~ cable_car|zipline and !oneway
+        ways with
+        aerialway ~ gondola|mixed_lift|chair_lift|t-bar|j-bar|platter
+        and !oneway
     """.toElementFilterExpression() }
 
     override val changesetComment = "Specify whether aerial ways can be used both ways"
