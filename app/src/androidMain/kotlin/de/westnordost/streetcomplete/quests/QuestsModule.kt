@@ -15,7 +15,6 @@ import de.westnordost.streetcomplete.quests.access_point_ref.AddAccessPointRef
 import de.westnordost.streetcomplete.quests.address.AddAddressStreet
 import de.westnordost.streetcomplete.quests.address.AddHousenumber
 import de.westnordost.streetcomplete.quests.aerialBothWay.AddAerialBothWay
-import de.westnordost.streetcomplete.quests.aerialway.AddAerialwayBicycleAccess
 import de.westnordost.streetcomplete.quests.air_conditioning.AddAirConditioning
 import de.westnordost.streetcomplete.quests.air_pump.AddAirCompressor
 import de.westnordost.streetcomplete.quests.amenity_cover.AddAmenityCover
