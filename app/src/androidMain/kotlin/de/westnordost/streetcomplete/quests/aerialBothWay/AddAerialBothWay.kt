@@ -20,7 +20,7 @@ class AddAerialBothWay : OsmElementQuestType<AerialBothWayAnswer>, AndroidQuest 
     """.toElementFilterExpression() }
 
     override val changesetComment = "Specify whether aerial ways can be used both ways"
-    override val wikiLink = "Key:bothway"
+    override val wikiLink = "Key:oneway"
     override val icon = R.drawable.ic_quest_oneway
     override val hasMarkersAtEnds = true
     override val achievements = listOf(PEDESTRIAN)
