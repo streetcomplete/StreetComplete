@@ -31,7 +31,7 @@ import org.jetbrains.compose.resources.stringResource
         ) {
             Icon(painterResource(Res.drawable.sign_icon_bicycle), null)
             Text(
-                text = stringResource(Res.string.ok),
+                text = "OK",
                 style = MaterialTheme.typography.titleLarge
             )
         }

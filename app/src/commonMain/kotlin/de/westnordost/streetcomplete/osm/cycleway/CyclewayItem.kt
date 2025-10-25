@@ -13,12 +13,14 @@ import de.westnordost.streetcomplete.resources.cycleway_none_no_oneway
 import de.westnordost.streetcomplete.resources.cycleway_none_no_oneway_l
 import de.westnordost.streetcomplete.resources.cycleway_separate
 import de.westnordost.streetcomplete.resources.cycleway_shoulder
+import de.westnordost.streetcomplete.resources.cycleway_sidewalk
 import de.westnordost.streetcomplete.resources.cycleway_sidewalk_explicit
 import de.westnordost.streetcomplete.resources.cycleway_sidewalk_explicit_dual
 import de.westnordost.streetcomplete.resources.cycleway_sidewalk_explicit_l
-import de.westnordost.streetcomplete.resources.cycleway_sidewalk_ok
-import de.westnordost.streetcomplete.resources.cycleway_sidewalk_ok_both
-import de.westnordost.streetcomplete.resources.cycleway_sidewalk_ok_l
+import de.westnordost.streetcomplete.resources.cycleway_sidewalk_ok_dual_in_selection
+import de.westnordost.streetcomplete.resources.cycleway_sidewalk_ok_in_selection
+import de.westnordost.streetcomplete.resources.cycleway_sign_sidewalk_ok
+import de.westnordost.streetcomplete.resources.cycleway_sign_sidewalk_ok_dual
 import de.westnordost.streetcomplete.resources.cycleway_track
 import de.westnordost.streetcomplete.resources.cycleway_track_dual
 import de.westnordost.streetcomplete.resources.cycleway_track_dual_l
@@ -59,6 +61,9 @@ fun CyclewayAndDirection.getDialogIcon(
     when (cycleway) {
         NONE ->     Res.drawable.cycleway_none_in_selection
         SEPARATE -> Res.drawable.cycleway_separate
+        SIDEWALK_OK ->
+            if (direction == BOTH) Res.drawable.cycleway_sidewalk_ok_dual_in_selection
+            else Res.drawable.cycleway_sidewalk_ok_in_selection
         else ->     getIcon(isRight, countryInfo, roadDirection)
     }
 
@@ -69,6 +74,9 @@ fun CyclewayAndDirection.getFloatingIcon(
     when (cycleway) {
         NONE ->     if (direction.isReverseOf(roadDirection)) noEntrySignDrawable else null
         SEPARATE -> Res.drawable.floating_separate
+        SIDEWALK_OK ->
+            if (direction == BOTH) Res.drawable.cycleway_sign_sidewalk_ok_dual
+            else Res.drawable.cycleway_sign_sidewalk_ok
         else ->     null
     }
 
@@ -106,7 +114,7 @@ private fun Cycleway.getDualTrafficIcon(countryInfo: CountryInfo): DrawableResou
                 Res.drawable.cycleway_track_dual
             }
         SIDEWALK_EXPLICIT -> Res.drawable.cycleway_sidewalk_explicit_dual
-        SIDEWALK_OK ->       Res.drawable.cycleway_sidewalk_ok_both
+        SIDEWALK_OK ->       Res.drawable.cycleway_sidewalk
         else ->              null
     }
 
@@ -130,7 +138,7 @@ private fun Cycleway.getRightHandTrafficIcon(
         }
         PICTOGRAMS ->        countryInfo.pictogramCycleLaneDrawable
         SIDEWALK_EXPLICIT -> Res.drawable.cycleway_sidewalk_explicit
-        SIDEWALK_OK ->       Res.drawable.cycleway_sidewalk_ok
+        SIDEWALK_OK ->       Res.drawable.cycleway_sidewalk
         BUSWAY ->            Res.drawable.cycleway_bus_lane
         SEPARATE ->          Res.drawable.cycleway_none
         SHOULDER ->          Res.drawable.cycleway_shoulder
@@ -157,7 +165,7 @@ private fun Cycleway.getLeftHandTrafficIcon(
         }
         PICTOGRAMS ->        countryInfo.pictogramCycleLaneMirroredDrawable
         SIDEWALK_EXPLICIT -> Res.drawable.cycleway_sidewalk_explicit_l
-        SIDEWALK_OK ->       Res.drawable.cycleway_sidewalk_ok_l
+        SIDEWALK_OK ->       Res.drawable.cycleway_sidewalk
         BUSWAY ->            Res.drawable.cycleway_bus_lane_l
         SEPARATE ->          Res.drawable.cycleway_none
         SHOULDER ->          Res.drawable.cycleway_shoulder
