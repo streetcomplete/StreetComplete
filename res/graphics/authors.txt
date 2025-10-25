@@ -354,6 +354,7 @@ quest/
     kerb_type.svg
     kosher.svg                       Mateusz Konieczny (CC0, if even qualifies for copyright)
     label.svg
+    label_thing.svg
     lantern.svg
     laundry.svg
     leaf.svg

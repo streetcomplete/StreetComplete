@@ -202,7 +202,7 @@ The info you enter is directly added to OpenStreetMap in your name, without the 
     <!-- Overlay tutorial screen -->
     <string name="overlays_tutorial_title">Overlays</string>
     <string name="overlays_tutorial_intro">You found a new way to edit data!</string>
-    <string name="overlays_tutorial_display">Each overlay displays one kind of data, for example “places“ or “street surfaces“.
+    <string name="overlays_tutorial_display">Each overlay displays one kind of data, for example “places” or “street surfaces”.
 
 The data is highlighted in different colors to give you a good overview of what has been recorded so far.
 Missing data is always shown in red.</string>
@@ -472,7 +472,7 @@ Before uploading your changes, the app checks with a &lt;a href="https://www.wes
     <string name="link_category_goodies_description">Interesting map-related stuff for you to try out</string>
 
     <string name="link_cyclosm_description">A map for cyclists</string>
-    <string name="link_indoorequal_description">Discover indoor maps of malls, railway stations etc.</string>
+    <string name="link_indoorequal_description">Discover indoor maps of malls, train stations etc.</string>
     <string name="link_wheelmap_description">A map for finding wheelchair-accessible places</string>
     <string name="link_osm_buildings_description">A map that shows buildings in 3D</string>
     <string name="link_openvegemap_description">Discover vegetarian and vegan restaurants in your city</string>
@@ -688,7 +688,7 @@ Before uploading your changes, the app checks with a &lt;a href="https://www.wes
     <string name="quest_accessPointRef_answer_assembly_point">It’s an Assembly Point</string>
     <string name="quest_accessPointRef_detailed_answer_impossible_confirmation">An Assembly Point is where people assemble in case of an emergency. It usually looks similar to this:</string>
 
-    <string name="quest_accessible_for_pedestrians_title_prohibited">Are pedestrians forbidden to walk on this road without sidewalk here?</string>
+    <string name="quest_accessible_for_pedestrians_title_prohibited">Are pedestrians forbidden to walk on this road without a sidewalk here?</string>
     <string name="quest_accessible_for_pedestrians_prohibited">It is forbidden.</string>
     <string name="quest_accessible_for_pedestrians_allowed">It is allowed.</string>
     <string name="quest_accessible_for_pedestrians_sidewalk">Actually, there is a sidewalk.</string>
@@ -935,7 +935,7 @@ A level counts as a roof level when its windows are in the roof. Subsequently, r
     <string name="quest_buildingType_school">School building</string>
     <string name="quest_buildingType_college">College building</string>
     <string name="quest_buildingType_hospital">Hospital building</string>
-    <string name="quest_buildingType_sports_centre">Sports centre</string>
+    <string name="quest_buildingType_sports_centre">Sports complex</string>
     <string name="quest_buildingType_stadium">Stadium</string>
     <string name="quest_buildingType_train_station">Train station</string>
     <string name="quest_buildingType_transportation">Public transportation building</string>
@@ -1436,7 +1436,7 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_bbq_fuel_not_a_bbq">It’s a fire enclosure</string>
     <string name="quest_bbq_fuel_not_a_bbq_confirmation">If there is no cooking surface (e.g. grate/plate), it’s a fire enclosure.</string>
 
-    <string name="quest_railway_crossing_barrier_title2">What barriers are used at this railway crossing?</string>
+    <string name="quest_railway_crossing_barrier_title2">What barriers are used at this railroad crossing?</string>
     <string name="quest_railway_crossing_barrier_none2">No barriers</string>
 
     <string name="quest_recycling_glass_title">Can only glass bottles and jars be recycled here, or any type of glass?</string>

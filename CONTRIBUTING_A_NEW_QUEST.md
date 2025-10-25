@@ -345,6 +345,7 @@ Once the quest icon is ready:
 - Select new → vector asset
 - Select your SVG file
 - Name with `ic_quest_` prefix (something like `ic_quest_traffic_calming`) - it should be the same name as used in the Quest file (e.g. `R.drawable.ic_quest_traffic_calming`)
+- Press "Next" and ensure the Source set is set to `src/androidMain/res`
 - Press "Finish" button to generate drawable
 - Add an entry in the [attribution file](res/graphics/authors.txt)
 - Modify `icon` property in the quest definition to use the new drawable
