@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.ui.common.street_side_select
 
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -31,7 +32,7 @@ import org.jetbrains.compose.resources.painterResource
     mapTilt: Float,
     isLeftHandTraffic: Boolean,
     modifier: Modifier = Modifier,
-    itemContent: (@Composable (T?, Side) -> Unit)? = null,
+    getItemFloatingIcon: (@Composable (T?, Side) -> Painter?)? = null,
     lastPicked: List<Sides<T>> = emptyList(),
     enabled: Boolean = true,
     isLeftSideVisible: Boolean = true,
@@ -55,8 +56,12 @@ import org.jetbrains.compose.resources.painterResource
             onClickRight = { onClickSide(Side.RIGHT) },
             rotation = rotation,
             modifier = Modifier.align(Alignment.Center),
-            itemContentLeft = itemContent?.let { { it(value.left, Side.LEFT) } },
-            itemContentRight = itemContent?.let { { it(value.right, Side.RIGHT) } },
+            itemContentLeft = getItemFloatingIcon?.let { getIcon ->
+                { getIcon(value.left, Side.LEFT)?.let { Image(it, null) } }
+            },
+            itemContentRight = getItemFloatingIcon?.let { getIcon ->
+                { getIcon(value.right, Side.RIGHT)?.let { Image(it, null) } }
+            },
             enabled = enabled,
             isLeftSideVisible = isLeftSideVisible,
             isRightSideVisible = isRightSideVisible,
@@ -84,6 +89,12 @@ import org.jetbrains.compose.resources.painterResource
                     rightPainter = getItemIllustration(value.right, Side.RIGHT) ?: unknownPainter,
                     rotation = rotation,
                     modifier = Modifier.size(56.dp, 40.dp),
+                    itemContentLeft = getItemFloatingIcon?.let { getIcon ->
+                        { getIcon(value.left, Side.LEFT)?.let { Image(it, null) } }
+                    },
+                    itemContentRight = getItemFloatingIcon?.let { getIcon ->
+                        { getIcon(value.right, Side.RIGHT)?.let { Image(it, null) } }
+                    },
                     isLeftSideVisible = isLeftSideVisible,
                     isRightSideVisible = isRightSideVisible,
                 )

@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.overlays.street_parking
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -13,7 +12,6 @@ import de.westnordost.streetcomplete.osm.Sides
 import de.westnordost.streetcomplete.osm.street_parking.StreetParking
 import de.westnordost.streetcomplete.osm.street_parking.floatingIcon
 import de.westnordost.streetcomplete.osm.street_parking.painter
-import de.westnordost.streetcomplete.osm.street_parking.title
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.street_parking_street_width
 import de.westnordost.streetcomplete.resources.street_side_unknown
@@ -63,14 +61,8 @@ import org.jetbrains.compose.resources.stringResource
             mapTilt = mapTilt,
             isLeftHandTraffic = isLeftHandTraffic,
             modifier = modifier,
-            itemContent = { parking, side ->
-                val icon = parking?.floatingIcon
-                if (icon != null) {
-                    Image(
-                        painter = painterResource(icon),
-                        contentDescription = parking.title?.let { stringResource(it) }
-                    )
-                }
+            getItemFloatingIcon = { parking, side ->
+                parking?.floatingIcon?.let { painterResource(it) }
             },
             lastPicked = lastPicked,
         )

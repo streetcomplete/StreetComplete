@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.quests.cycleway
 
-import androidx.compose.foundation.Image
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -66,15 +65,10 @@ import org.jetbrains.compose.resources.stringResource
         mapRotation = mapRotation,
         mapTilt = mapTilt,
         isLeftHandTraffic = countryInfo.isLeftHandTraffic,
-        itemContent = { cyclewayAndDirection, side ->
-            val icon = cyclewayAndDirection
+        getItemFloatingIcon = { cyclewayAndDirection, side ->
+            cyclewayAndDirection
                 ?.getFloatingIcon(roadDirection, countryInfo.noEntrySignDrawable)
-            if (icon != null) {
-                Image(
-                    painter = painterResource(icon),
-                    contentDescription = cyclewayAndDirection.getTitle(roadDirection)?.let { stringResource(it) }
-                )
-            }
+                ?.let { painterResource(it) }
         },
         lastPicked = lastPicked,
         enabled = enabled,

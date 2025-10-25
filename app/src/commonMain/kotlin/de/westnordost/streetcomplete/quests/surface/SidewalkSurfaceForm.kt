@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.quests.surface
 
-import androidx.compose.foundation.Image
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -49,14 +48,8 @@ import org.jetbrains.compose.resources.stringResource
         mapTilt = mapTilt,
         isLeftHandTraffic = isLeftHandTraffic,
         modifier = modifier,
-        itemContent = { surface, side ->
-            val icon = surface?.icon
-            if (icon != null) {
-                Image(
-                    painter = ClipCirclePainter(painterResource(icon)),
-                    contentDescription = stringResource(surface.title)
-                )
-            }
+        getItemFloatingIcon = { surface, side ->
+            surface?.icon?.let { ClipCirclePainter(painterResource(it)) }
         },
         lastPicked = lastPicked,
         isLeftSideVisible = isLeftSideVisible,
