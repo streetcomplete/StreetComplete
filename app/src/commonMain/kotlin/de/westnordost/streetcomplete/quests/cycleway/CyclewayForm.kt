@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.quests.cycleway
 
+import androidx.compose.foundation.Image
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -18,7 +19,6 @@ import de.westnordost.streetcomplete.osm.cycleway.getTitle
 import de.westnordost.streetcomplete.osm.oneway.Direction
 import de.westnordost.streetcomplete.ui.common.dialogs.SimpleItemSelectDialog
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
-import de.westnordost.streetcomplete.ui.common.street_side_select.OverlayedImageWithLabel
 import de.westnordost.streetcomplete.ui.common.street_side_select.Side
 import de.westnordost.streetcomplete.ui.common.street_side_select.StreetSideForm
 import de.westnordost.streetcomplete.util.ktx.noEntrySignDrawable
@@ -67,12 +67,12 @@ import org.jetbrains.compose.resources.stringResource
         mapTilt = mapTilt,
         isLeftHandTraffic = countryInfo.isLeftHandTraffic,
         itemContent = { cyclewayAndDirection, side ->
-            if (cyclewayAndDirection != null) {
-                OverlayedImageWithLabel(
-                    image = cyclewayAndDirection
-                        .getFloatingIcon(roadDirection, countryInfo.noEntrySignDrawable)
-                        ?.let { painterResource(it) },
-                    label = cyclewayAndDirection.getTitle(roadDirection)?.let { stringResource(it) }
+            val icon = cyclewayAndDirection
+                ?.getFloatingIcon(roadDirection, countryInfo.noEntrySignDrawable)
+            if (icon != null) {
+                Image(
+                    painter = painterResource(icon),
+                    contentDescription = cyclewayAndDirection.getTitle(roadDirection)?.let { stringResource(it) }
                 )
             }
         },

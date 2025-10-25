@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.quests.sidewalk
 
+import androidx.compose.foundation.Image
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -18,9 +19,9 @@ import de.westnordost.streetcomplete.osm.sidewalk.image
 import de.westnordost.streetcomplete.osm.sidewalk.title
 import de.westnordost.streetcomplete.ui.common.dialogs.SimpleItemSelectDialog
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
-import de.westnordost.streetcomplete.ui.common.street_side_select.OverlayedImageWithLabel
 import de.westnordost.streetcomplete.ui.common.street_side_select.Side
 import de.westnordost.streetcomplete.ui.common.street_side_select.StreetSideForm
+import de.westnordost.streetcomplete.ui.util.ClipCirclePainter
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
@@ -50,10 +51,13 @@ import org.jetbrains.compose.resources.stringResource
         isLeftHandTraffic = isLeftHandTraffic,
         modifier = modifier,
         itemContent = { sidewalk, side ->
-            OverlayedImageWithLabel(
-                image = sidewalk?.floatingIcon?.let { painterResource(it) },
-                label = sidewalk?.title?.let { stringResource(it) }
-            )
+            val icon = sidewalk?.floatingIcon
+            if (icon != null) {
+                Image(
+                    painter = ClipCirclePainter(painterResource(icon)),
+                    contentDescription = sidewalk.title?.let { stringResource(it) }
+                )
+            }
         },
         lastPicked = lastPicked,
     )
