@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.overlays.street_parking
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -74,7 +75,7 @@ import org.jetbrains.compose.resources.stringResource
             val widthFormatted = if (width.toFloatOrNull() != null) width + "m" else width
             TextWithHalo(
                 text = stringResource(Res.string.street_parking_street_width, widthFormatted),
-                modifier = Modifier.align(Alignment.BottomCenter)
+                modifier = Modifier.align(Alignment.BottomCenter).padding(8.dp)
             )
         }
     }
