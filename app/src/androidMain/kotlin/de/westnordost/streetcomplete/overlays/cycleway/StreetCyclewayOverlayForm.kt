@@ -167,6 +167,7 @@ class StreetCyclewayOverlayForm : AbstractOverlayForm() {
             BicycleBoulevard.YES ->
                 AnswerItem2(getString(R.string.bicycle_boulevard_is_not_a, getString(R.string.bicycle_boulevard))) {
                     bicycleBoulevard.value = BicycleBoulevard.NO
+                    checkIsFormComplete()
                 }
             BicycleBoulevard.NO ->
                 // don't allow pedestrian roads to be tagged as bicycle roads (should rather be
@@ -174,6 +175,7 @@ class StreetCyclewayOverlayForm : AbstractOverlayForm() {
                 if (element!!.tags["highway"] != "pedestrian") {
                     AnswerItem2(getString(R.string.bicycle_boulevard_is_a, getString(R.string.bicycle_boulevard))) {
                         bicycleBoulevard.value = BicycleBoulevard.YES
+                        checkIsFormComplete()
                     }
                 } else {
                     null
