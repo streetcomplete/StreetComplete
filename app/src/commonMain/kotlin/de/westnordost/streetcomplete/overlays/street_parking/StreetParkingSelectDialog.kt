@@ -1,21 +1,33 @@
 package de.westnordost.streetcomplete.overlays.street_parking
 
 import androidx.compose.animation.AnimatedContent
+import androidx.compose.animation.slideInHorizontally
+import androidx.compose.animation.slideOutHorizontally
+import androidx.compose.animation.togetherWith
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.defaultMinSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.ContentAlpha
 import androidx.compose.material.IconButton
+import androidx.compose.material.LocalContentAlpha
+import androidx.compose.material.LocalTextStyle
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.material.contentColorFor
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.derivedStateOf
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
@@ -33,13 +45,13 @@ import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.select_street_parking_orientation
 import de.westnordost.streetcomplete.resources.select_street_parking_position
 import de.westnordost.streetcomplete.ui.common.BackIcon
-import de.westnordost.streetcomplete.ui.common.dialogs.AlertDialogLayout
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
 import de.westnordost.streetcomplete.ui.common.item_select.ItemSelectGrid
 import de.westnordost.streetcomplete.ui.common.street_side_select.Side
 import de.westnordost.streetcomplete.ui.ktx.fadingVerticalScrollEdges
 import org.jetbrains.compose.resources.stringResource
 
+/** Dialog in which both the parking orientation and parking position is selected in two steps. */
 @Composable
 fun StreetParkingSelectionDialog(
     side: Side,
@@ -53,7 +65,6 @@ fun StreetParkingSelectionDialog(
     properties: DialogProperties = DialogProperties(),
 ) {
     var parkingOrientation by remember { mutableStateOf<ParkingOrientation?>(null) }
-    val hasParkingOrientation by remember { derivedStateOf { parkingOrientation != null } }
 
     fun select(item: StreetParking) {
         onSelect(item)
@@ -74,64 +85,65 @@ fun StreetParkingSelectionDialog(
         onDismissRequest = onDismissRequest,
         properties = properties
     ) {
-        AlertDialogLayout(
+        Surface(
             modifier = modifier,
-            title = {
-                AnimatedContent(
-                    targetState = hasParkingOrientation,
-                ) { hasParkingOrientation ->
-                    if (hasParkingOrientation) {
-                        Row {
-                            IconButton(onClick = { parkingOrientation = null }) { BackIcon() }
-                            Text(stringResource(Res.string.select_street_parking_position))
-                        }
-                    } else {
-                        Text(stringResource(Res.string.select_street_parking_orientation))
-                    }
+            shape = shape,
+            color = backgroundColor,
+            contentColor = contentColor,
+        ) {
+            AnimatedContent(
+                modifier = Modifier.padding(24.dp),
+                targetState = parkingOrientation,
+                transitionSpec = {
+                    val dir = if (parkingOrientation != null) 1 else - 1
+                    slideInHorizontally { it * dir } togetherWith slideOutHorizontally { -it * dir }
                 }
-            },
-            content = {
-                AnimatedContent(
-                    targetState = hasParkingOrientation,
-                ) { hasParkingOrientation ->
-                    if (hasParkingOrientation) {
-                        val scrollState = rememberScrollState()
-                        Box(Modifier
-                            .fadingVerticalScrollEdges(scrollState, 32.dp)
-                            .verticalScroll(scrollState)
-                            .padding(horizontal = 24.dp),
+            ) { orientation ->
+                Column(verticalArrangement = Arrangement.spacedBy(16.dp)) {
+                    // title
+                    CompositionLocalProvider(
+                        LocalContentAlpha provides ContentAlpha.high,
+                        LocalTextStyle provides MaterialTheme.typography.subtitle1
+                    ) {
+                        Row(
+                            verticalAlignment = Alignment.CenterVertically,
+                            modifier = Modifier.fillMaxWidth().defaultMinSize(minHeight = 48.dp)
                         ) {
+                            if (orientation != null) {
+                                IconButton(onClick = { parkingOrientation = null }) { BackIcon() }
+                                Text(stringResource(Res.string.select_street_parking_position))
+                            } else {
+                                Text(stringResource(Res.string.select_street_parking_orientation))
+                            }
+                        }
+                    }
+                    // select grid
+                    val scrollState = rememberScrollState()
+                    Box(Modifier
+                        .fadingVerticalScrollEdges(scrollState, 32.dp)
+                        .verticalScroll(scrollState),
+                    ) {
+                        if (orientation != null) {
                             StreetParkingPositionSelectGrid(
-                                orientation = parkingOrientation,
+                                orientation = orientation,
                                 isUpsideDown = isUpsideDown,
                                 isRightSide = side == Side.RIGHT,
                                 onSelect = ::select,
-                                modifier = Modifier.padding(bottom = 24.dp)
                             )
-                        }
-                    } else {
-                        val scrollState = rememberScrollState()
-                        Box(Modifier
-                            .fadingVerticalScrollEdges(scrollState, 32.dp)
-                            .verticalScroll(scrollState)
-                            .padding(horizontal = 24.dp),
-                        ) {
+                        } else {
                             StreetParkingSelectionSelectGrid(
                                 isUpsideDown = isUpsideDown,
                                 onSelect = ::selectStreetParkingSelection,
-                                modifier = Modifier.padding(bottom = 24.dp)
                             )
                         }
                     }
                 }
-            },
-            shape = shape,
-            backgroundColor = backgroundColor,
-            contentColor = contentColor
-        )
+            }
+        }
     }
 }
 
+/** Select the parking position */
 @Composable private fun StreetParkingSelectionSelectGrid(
     isUpsideDown: Boolean,
     onSelect: (StreetParkingSelection) -> Unit,
@@ -152,6 +164,7 @@ fun StreetParkingSelectionDialog(
     )
 }
 
+/** Given a parking orientation, select the parking position */
 @Composable private fun StreetParkingPositionSelectGrid(
     orientation: ParkingOrientation?,
     isUpsideDown: Boolean,
