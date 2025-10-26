@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.quests.sidewalk
 
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -33,6 +34,7 @@ import org.jetbrains.compose.resources.stringResource
     isLeftHandTraffic: Boolean,
     modifier: Modifier = Modifier,
     lastPicked: List<Sides<Sidewalk>> = emptyList(),
+    lastPickedContentPadding: PaddingValues = PaddingValues.Zero,
 ) {
     var showPickerForSide by remember { mutableStateOf<Side?>(null) }
 
@@ -52,6 +54,7 @@ import org.jetbrains.compose.resources.stringResource
             sidewalk?.floatingIcon?.let { painterResource(it) }
         },
         lastPicked = lastPicked,
+        lastPickedContentPadding = lastPickedContentPadding,
     )
 
     showPickerForSide?.let { side ->

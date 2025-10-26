@@ -4,12 +4,14 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.material.Surface
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.scale
+import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
@@ -116,6 +118,7 @@ class StreetCyclewayOverlayForm : AbstractOverlayForm() {
                     countryInfo = countryInfo,
                     roadDirection = Direction.from(element!!.tags),
                     lastPicked = lastPicked,
+                    lastPickedContentPadding = PaddingValues(start = 48.dp, end = 56.dp),
                 )
                 Box(Modifier.scale(0.5f).alpha(0.75f)) {
                     if (bicycleInPedestrianStreet.value == BicycleInPedestrianStreet.ALLOWED) {

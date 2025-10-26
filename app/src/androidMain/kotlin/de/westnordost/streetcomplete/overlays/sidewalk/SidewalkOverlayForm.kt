@@ -2,9 +2,11 @@ package de.westnordost.streetcomplete.overlays.sidewalk
 
 import android.os.Bundle
 import android.view.View
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.material.Surface
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
@@ -57,7 +59,8 @@ class SidewalkOverlayForm : AbstractOverlayForm() {
                 mapRotation = mapRotation.floatValue,
                 mapTilt = mapTilt.floatValue,
                 isLeftHandTraffic = countryInfo.isLeftHandTraffic,
-                lastPicked = lastPicked
+                lastPicked = lastPicked,
+                lastPickedContentPadding = PaddingValues(start = 48.dp, end = 56.dp),
             )
         } }
 

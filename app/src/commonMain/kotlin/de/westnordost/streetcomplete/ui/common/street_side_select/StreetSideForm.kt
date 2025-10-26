@@ -14,7 +14,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.osm.Sides
-import de.westnordost.streetcomplete.osm.get
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.street_side_unknown
 import de.westnordost.streetcomplete.resources.street_side_unknown_l
@@ -34,6 +33,7 @@ import org.jetbrains.compose.resources.painterResource
     modifier: Modifier = Modifier,
     getFloatingPainter: @Composable (T?, Side) -> Painter? = { _, _ -> null },
     lastPicked: List<Sides<T>> = emptyList(),
+    lastPickedContentPadding: PaddingValues = PaddingValues.Zero,
     enabled: Boolean = true,
     isLeftSideVisible: Boolean = true,
     isRightSideVisible: Boolean = true,
@@ -75,7 +75,8 @@ import org.jetbrains.compose.resources.painterResource
                 modifier = Modifier
                     .padding(8.dp)
                     .fillMaxWidth()
-                    .align(Alignment.BottomStart),
+                    .align(Alignment.BottomStart)
+                    .padding(lastPickedContentPadding),
                 chipBorder = BorderStroke(1.dp, MaterialTheme.colors.onSurface.copy(alpha = 0.12f)),
                 chipContentPadding = PaddingValues.Zero,
             ) { value ->

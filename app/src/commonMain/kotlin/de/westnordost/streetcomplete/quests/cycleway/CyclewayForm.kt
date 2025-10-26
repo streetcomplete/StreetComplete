@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.quests.cycleway
 
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -36,6 +37,7 @@ import org.jetbrains.compose.resources.stringResource
     roadDirection: Direction,
     modifier: Modifier = Modifier,
     lastPicked: List<Sides<CyclewayAndDirection>> = emptyList(),
+    lastPickedContentPadding: PaddingValues = PaddingValues.Zero,
     enabled: Boolean = true,
     isLeftSideVisible: Boolean = true,
     isRightSideVisible: Boolean = true,
@@ -71,6 +73,7 @@ import org.jetbrains.compose.resources.stringResource
                 ?.let { painterResource(it) }
         },
         lastPicked = lastPicked,
+        lastPickedContentPadding = lastPickedContentPadding,
         enabled = enabled,
         isLeftSideVisible = isLeftSideVisible,
         isRightSideVisible = isRightSideVisible,
