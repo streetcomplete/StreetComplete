@@ -7,7 +7,7 @@ import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.osm.Tags
 
-class AddSport : OsmFilterQuestType<List<Sport>>(), AndroidQuest {
+class AddSport : OsmFilterQuestType<Set<Sport>>(), AndroidQuest {
 
     override val elementFilter = """
         ways with
@@ -25,7 +25,7 @@ class AddSport : OsmFilterQuestType<List<Sport>>(), AndroidQuest {
 
     override fun createForm() = AddSportForm()
 
-    override fun applyAnswerTo(answer: List<Sport>, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: Set<Sport>, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags["sport"] = answer.joinToString(";") { it.osmValue }
     }
 }
