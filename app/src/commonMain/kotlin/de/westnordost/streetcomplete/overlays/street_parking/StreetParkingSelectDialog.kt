@@ -92,14 +92,16 @@ fun StreetParkingSelectionDialog(
             contentColor = contentColor,
         ) {
             AnimatedContent(
-                modifier = Modifier.padding(24.dp),
                 targetState = parkingOrientation,
                 transitionSpec = {
                     val dir = if (parkingOrientation != null) 1 else - 1
                     slideInHorizontally { it * dir } togetherWith slideOutHorizontally { -it * dir }
                 }
             ) { orientation ->
-                Column(verticalArrangement = Arrangement.spacedBy(16.dp)) {
+                Column(
+                    modifier = Modifier.padding(24.dp),
+                    verticalArrangement = Arrangement.spacedBy(16.dp)
+                ) {
                     // title
                     CompositionLocalProvider(
                         LocalContentAlpha provides ContentAlpha.high,
