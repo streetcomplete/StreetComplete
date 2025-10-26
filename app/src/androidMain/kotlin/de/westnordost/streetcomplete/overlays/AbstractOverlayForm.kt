@@ -181,9 +181,6 @@ abstract class AbstractOverlayForm :
         initialMapRotation = args.getDouble(ARG_MAP_ROTATION)
         initialMapTilt = args.getDouble(ARG_MAP_TILT)
         _countryInfo = null // reset lazy field
-
-        geometryRotation.floatValue =
-            (geometry as? ElementPolylinesGeometry)?.getOrientationAtCenterLineInDegrees() ?: 0f
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -194,6 +191,9 @@ abstract class AbstractOverlayForm :
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        geometryRotation.floatValue =
+            (geometry as? ElementPolylinesGeometry)?.getOrientationAtCenterLineInDegrees() ?: 0f
 
         setMarkerVisibility(_geometry == null)
         binding.pin.root.doOnLayout { setMarkerPosition(null) }
