@@ -45,7 +45,7 @@ import org.jetbrains.compose.resources.stringResource
     StreetSideForm(
         value = value,
         onValueChanged = onValueChanged,
-        getItemIllustration = { cyclewayAndDirection, side ->
+        getIllustrationPainter = { cyclewayAndDirection, side ->
             cyclewayAndDirection
                 ?.getIcon(side == Side.RIGHT, countryInfo, roadDirection)
                 ?.let { painterResource(it) }
@@ -65,7 +65,7 @@ import org.jetbrains.compose.resources.stringResource
         mapRotation = mapRotation,
         mapTilt = mapTilt,
         isLeftHandTraffic = countryInfo.isLeftHandTraffic,
-        getItemFloatingIcon = { cyclewayAndDirection, side ->
+        getFloatingPainter = { cyclewayAndDirection, side ->
             cyclewayAndDirection
                 ?.getFloatingIcon(roadDirection, countryInfo.noEntrySignDrawable)
                 ?.let { painterResource(it) }

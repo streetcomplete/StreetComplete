@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.ui.common.street_side_select
 
 import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -15,6 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.osm.Sides
+import de.westnordost.streetcomplete.osm.get
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.street_side_unknown
 import de.westnordost.streetcomplete.resources.street_side_unknown_l
@@ -25,14 +25,14 @@ import org.jetbrains.compose.resources.painterResource
 @Composable  fun <T> StreetSideForm(
     value: Sides<T>,
     onValueChanged: (Sides<T>) -> Unit,
-    getItemIllustration: @Composable (T?, Side) -> Painter?,
+    getIllustrationPainter: @Composable (T?, Side) -> Painter?,
     onClickSide: (Side) -> Unit,
     geometryRotation: Float,
     mapRotation: Float,
     mapTilt: Float,
     isLeftHandTraffic: Boolean,
     modifier: Modifier = Modifier,
-    getItemFloatingIcon: (@Composable (T?, Side) -> Painter?)? = null,
+    getFloatingPainter: @Composable (T?, Side) -> Painter? = { _, _ -> null },
     lastPicked: List<Sides<T>> = emptyList(),
     enabled: Boolean = true,
     isLeftSideVisible: Boolean = true,
@@ -50,21 +50,16 @@ import org.jetbrains.compose.resources.painterResource
         .height(160.dp)
     ) {
         StreetSideIllustration(
-            leftPainter = getItemIllustration(value.left, Side.LEFT) ?: unknownPainter,
-            rightPainter = getItemIllustration(value.right, Side.RIGHT) ?: unknownPainter,
-            onClickLeft = { onClickSide(Side.LEFT) },
-            onClickRight = { onClickSide(Side.RIGHT) },
+            value = value,
+            getIllustrationPainter = { v, side ->
+                getIllustrationPainter(v, side) ?: unknownPainter
+            },
+            onClickSide = onClickSide,
             rotation = rotation,
             modifier = Modifier.align(Alignment.Center),
-            itemContentLeft = getItemFloatingIcon?.let { getIcon ->
-                { getIcon(value.left, Side.LEFT)?.let { Image(it, null) } }
-            },
-            itemContentRight = getItemFloatingIcon?.let { getIcon ->
-                { getIcon(value.right, Side.RIGHT)?.let { Image(it, null) } }
-            },
+            getFloatingPainter = getFloatingPainter,
             enabled = enabled,
             isLeftSideVisible = isLeftSideVisible,
-            isRightSideVisible = isRightSideVisible,
         )
 
         MiniCompass(
@@ -85,22 +80,16 @@ import org.jetbrains.compose.resources.painterResource
                 chipContentPadding = PaddingValues.Zero,
             ) { value ->
                 StreetSideIllustration(
-                    leftPainter = getItemIllustration(value.left, Side.LEFT)?: unknownPainter,
-                    rightPainter = getItemIllustration(value.right, Side.RIGHT) ?: unknownPainter,
+                    value = value,
+                    getIllustrationPainter = { v, side ->
+                        getIllustrationPainter(v, side) ?: unknownPainter
+                    },
                     rotation = rotation,
                     modifier = Modifier.size(56.dp, 40.dp),
-                    itemContentLeft = getItemFloatingIcon?.let { getIcon ->
-                        { getIcon(value.left, Side.LEFT)?.let { Image(it, null) } }
-                    },
-                    itemContentRight = getItemFloatingIcon?.let { getIcon ->
-                        { getIcon(value.right, Side.RIGHT)?.let { Image(it, null) } }
-                    },
-                    isLeftSideVisible = isLeftSideVisible,
+                    getFloatingPainter = getFloatingPainter,
                     isRightSideVisible = isRightSideVisible,
                 )
             }
         }
     }
 }
-
-enum class Side { LEFT, RIGHT }

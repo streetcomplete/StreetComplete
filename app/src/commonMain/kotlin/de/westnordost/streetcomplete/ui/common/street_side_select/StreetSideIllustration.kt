@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.ui.common.street_side_select
 
 import androidx.compose.animation.AnimatedContent
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
@@ -23,6 +24,8 @@ import androidx.compose.ui.graphics.drawscope.translate
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.unit.max
 import androidx.compose.ui.unit.min
+import de.westnordost.streetcomplete.osm.Sides
+import de.westnordost.streetcomplete.osm.get
 import de.westnordost.streetcomplete.ui.ktx.conditional
 import de.westnordost.streetcomplete.ui.util.FallDownTransitionSpec
 import kotlin.math.PI
@@ -38,15 +41,13 @@ import kotlin.math.cos
  *  side is also possible
  *  The whole displayed street can be rotated and it is possible to only show the right side, for
  *  example for one-way streets. */
-@Composable fun StreetSideIllustration(
-    leftPainter: Painter?,
-    rightPainter: Painter?,
+@Composable fun <T> StreetSideIllustration(
+    value: Sides<T>,
+    getIllustrationPainter: (@Composable (T?, Side) -> Painter?),
     rotation: Float,
     modifier: Modifier = Modifier,
-    onClickLeft: (() -> Unit)? = null,
-    onClickRight: (() -> Unit)? = null,
-    itemContentLeft:  (@Composable () -> Unit)? = null,
-    itemContentRight: (@Composable () -> Unit)? = null,
+    getFloatingPainter: @Composable (T?, Side) -> Painter? = { _, _ -> null },
+    onClickSide: ((Side) -> Unit)? = null,
     enabled: Boolean = true,
     isLeftSideVisible: Boolean = true,
     isRightSideVisible: Boolean = true,
@@ -64,23 +65,25 @@ import kotlin.math.cos
         ) {
             if (isLeftSideVisible) {
                 StreetSideIllustrationSide(
-                    painter = leftPainter,
+                    value = value[Side.LEFT],
+                    side = Side.LEFT,
+                    getIllustrationPainter = getIllustrationPainter,
+                    getFloatingPainter = getFloatingPainter,
                     rotation = rotation,
-                    onClick = onClickLeft,
+                    onClickSide = onClickSide,
                     enabled = enabled,
-                    content = itemContentLeft,
-                    isRightSide = false,
                     modifier = Modifier.weight(1f).fillMaxHeight()
                 )
             }
             if (isRightSideVisible) {
                 StreetSideIllustrationSide(
-                    painter = rightPainter,
+                    value = value[Side.RIGHT],
+                    side = Side.RIGHT,
+                    getIllustrationPainter = getIllustrationPainter,
+                    getFloatingPainter = getFloatingPainter,
                     rotation = rotation,
-                    onClick = onClickRight,
+                    onClickSide = onClickSide,
                     enabled = enabled,
-                    content = itemContentRight,
-                    isRightSide = true,
                     modifier = Modifier.weight(1f).fillMaxHeight()
                 )
             }
@@ -89,39 +92,42 @@ import kotlin.math.cos
 }
 
 @Composable
-private fun StreetSideIllustrationSide(
-    painter: Painter?,
+private fun <T> StreetSideIllustrationSide(
+    value: T?,
+    side: Side,
+    getIllustrationPainter: (@Composable (T?, Side) -> Painter?),
+    getFloatingPainter: @Composable (T?, Side) -> Painter?,
     rotation: Float,
-    onClick: (() -> Unit)?,
+    onClickSide: ((Side) -> Unit)?,
     enabled: Boolean,
-    content: (@Composable () -> Unit)?,
-    isRightSide: Boolean,
     modifier: Modifier = Modifier,
 ) {
     val scale = 1f + abs(cos(rotation * PI / 180)).toFloat() * 0.67f
     AnimatedContent(
-        targetState = painter,
+        targetState = value,
         transitionSpec = FallDownTransitionSpec,
         modifier = modifier
-    ) { painter ->
+    ) { value ->
+        val painter = getIllustrationPainter(value, side)
+        val floatingPainter = getFloatingPainter(value, side)
         Box(
             modifier = Modifier
                 .fillMaxSize()
                 .drawBehind {
                     drawRect(Color(0x33666666))
                     if (painter != null) {
-                        val flip = if (isRightSide) 0f else 180f
+                        val flip = if (side == Side.RIGHT) 0f else 180f
                         rotate(flip) {
                             drawVerticallyRepeatingImage(painter)
                         }
                     }
                 }
-                .conditional(onClick) { clickable(onClick = it, enabled = enabled) },
+                .conditional(onClickSide) { clickable(onClick = { it(side) }, enabled = enabled) },
             contentAlignment = Alignment.Center,
         ) {
-            if (content != null) {
+            if (floatingPainter != null) {
                 Box(Modifier.rotate(-rotation).scale(1f / scale)) {
-                    content()
+                    Image(floatingPainter, null)
                 }
             }
         }
@@ -139,3 +145,5 @@ private fun DrawScope.drawVerticallyRepeatingImage(painter: Painter) {
         }
     }
 }
+
+enum class Side { LEFT, RIGHT }

@@ -39,7 +39,7 @@ import org.jetbrains.compose.resources.stringResource
     StreetSideForm(
         value = value,
         onValueChanged = onValueChanged,
-        getItemIllustration = { surface, side ->
+        getIllustrationPainter = { surface, side ->
             painterResource(Res.drawable.sidewalk_illustration_yes)
         },
         onClickSide = { showPickerForSide = it },
@@ -48,7 +48,7 @@ import org.jetbrains.compose.resources.stringResource
         mapTilt = mapTilt,
         isLeftHandTraffic = isLeftHandTraffic,
         modifier = modifier,
-        getItemFloatingIcon = { surface, side ->
+        getFloatingPainter = { surface, side ->
             surface?.icon?.let { ClipCirclePainter(painterResource(it)) }
         },
         lastPicked = lastPicked,

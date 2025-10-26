@@ -47,7 +47,7 @@ import org.jetbrains.compose.resources.stringResource
         StreetSideForm(
             value = value,
             onValueChanged = onValueChanged,
-            getItemIllustration = { parking, side ->
+            getIllustrationPainter = { parking, side ->
                 val isUpsideDown = isUpsideDown(side)
                 val defaultPainter = painterResource(
                     if (isUpsideDown) Res.drawable.street_side_unknown_l
@@ -61,7 +61,7 @@ import org.jetbrains.compose.resources.stringResource
             mapTilt = mapTilt,
             isLeftHandTraffic = isLeftHandTraffic,
             modifier = modifier,
-            getItemFloatingIcon = { parking, side ->
+            getFloatingPainter = { parking, side ->
                 parking?.floatingIcon?.let { painterResource(it) }
             },
             lastPicked = lastPicked,
