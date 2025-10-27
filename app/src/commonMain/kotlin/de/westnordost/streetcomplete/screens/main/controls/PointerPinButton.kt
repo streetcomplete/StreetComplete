@@ -26,6 +26,7 @@ import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.graphics.vector.toPath
 import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.Dp.Companion.Hairline
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.resources.Res
@@ -69,7 +70,7 @@ fun PointerPinButton(
         shape = pointerPinShape,
         color = colors.backgroundColor(enabled).value,
         contentColor = colors.contentColor(enabled).value,
-        border = BorderStroke(1.dp, colors.contentColor(enabled).value),
+        border = BorderStroke(1.dp, MaterialTheme.colors.onSurface.copy(alpha = 0.12f)),
         elevation = 4.dp
     ) {
         Box(Modifier
