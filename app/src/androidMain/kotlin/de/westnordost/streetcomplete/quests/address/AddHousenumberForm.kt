@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests.address
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AlertDialog
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -112,7 +113,9 @@ class AddHousenumberForm : AbstractOsmQuestForm<HouseNumberAnswer>() {
     private fun showNoHouseNumberDialog(buildingType: BuildingType) {
         val dialogBinding = ComposeViewBinding.inflate(layoutInflater)
         dialogBinding.composeViewBase.content { Surface(Modifier.padding(24.dp)) {
-            Column {
+            Column(
+                verticalArrangement = Arrangement.spacedBy(16.dp)
+            ) {
                 Text(stringResource(Res.string.quest_address_answer_no_housenumber_message1))
                 ImageWithDescription(
                     painter = painterResource(buildingType.icon),
