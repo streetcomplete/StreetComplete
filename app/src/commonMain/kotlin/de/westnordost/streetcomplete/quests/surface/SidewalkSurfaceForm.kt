@@ -59,7 +59,7 @@ import org.jetbrains.compose.resources.stringResource
     showPickerForSide?.let { side ->
         SimpleItemSelectDialog(
             onDismissRequest = { showPickerForSide = null },
-            columns = SimpleGridCells.Fixed(2),
+            columns = SimpleGridCells.Fixed(3),
             items = Surface.selectableValuesForWays,
             onSelected = { surface ->
                 onValueChanged(when (side) {
