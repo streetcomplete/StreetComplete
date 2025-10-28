@@ -7,9 +7,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.databinding.ComposeViewBinding
 import de.westnordost.streetcomplete.ui.common.item_select.Group
 import de.westnordost.streetcomplete.ui.util.content
+import de.westnordost.streetcomplete.util.takeFavorites
+import kotlinx.serialization.KSerializer
+import kotlinx.serialization.builtins.ListSerializer
+import org.koin.android.ext.android.inject
+import kotlin.getValue
 
 /** Abstract base class for any overlay form in which the user selects a grouped item */
 abstract class AGroupedItemSelectOverlayForm<G: Group<I>, I> : AbstractOverlayForm() {
@@ -17,14 +23,21 @@ abstract class AGroupedItemSelectOverlayForm<G: Group<I>, I> : AbstractOverlayFo
     final override val contentLayoutResId = R.layout.compose_view
     private val binding by contentViewBinding(ComposeViewBinding::bind)
 
+    private val prefs: Preferences by inject()
+
     /** all items to display. May not be accessed before onCreate */
     protected abstract val groups: List<G>
     /** items to display that are shown as last picked answers. May not be accessed before onCreate */
-    protected open val lastPickedItems: List<I> = emptyList()
+    protected open val lastPickedItems: List<I> by lazy {
+        prefs.getLastPicked(ListSerializer(serializer), this::class.simpleName!!)
+            .takeFavorites(n = 6, first = 1)
+    }
 
     private lateinit var itemsByString: Map<String, I>
 
     protected val selectedItem: MutableState<I?> = mutableStateOf(null)
+
+    protected abstract val serializer: KSerializer<I>
 
     @Composable protected abstract fun GroupContent(item: G)
 
@@ -61,6 +74,7 @@ abstract class AGroupedItemSelectOverlayForm<G: Group<I>, I> : AbstractOverlayFo
 
     override fun onClickOk() {
         val value = selectedItem.value ?: return
+        prefs.addLastPicked(ListSerializer(serializer), this::class.simpleName!!, value)
         onClickOk(value)
     }
 

@@ -22,6 +22,7 @@ import de.westnordost.streetcomplete.overlays.AGroupedItemSelectOverlayForm
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithDescription
 import de.westnordost.streetcomplete.util.getNameAndLocationSpanned
 import de.westnordost.streetcomplete.util.takeFavorites
+import kotlinx.serialization.serializer
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import org.koin.android.ext.android.inject
@@ -34,12 +35,10 @@ class BuildingsOverlayForm : AGroupedItemSelectOverlayForm<BuildingTypeCategory,
 
     override val lastPickedItems by lazy {
         prefs.getLastPicked<BuildingType>(this::class.simpleName!!)
-            .takeFavorites(
-                n = 6,
-                first = 1,
-                pad = BuildingType.topSelectableValues
-            )
+            .takeFavorites(n = 6, first = 1, pad = BuildingType.topSelectableValues)
     }
+
+    override val serializer = serializer<BuildingType>()
 
     private var originalBuilding: BuildingType? = null
 
@@ -81,7 +80,6 @@ class BuildingsOverlayForm : AGroupedItemSelectOverlayForm<BuildingTypeCategory,
         selectedItem.value != originalBuilding
 
     override fun onClickOk(selectedItem: BuildingType) {
-        prefs.addLastPicked(this::class.simpleName!!, selectedItem)
         val tagChanges = StringMapChangesBuilder(element!!.tags)
         selectedItem.applyTo(tagChanges)
         applyEdit(UpdateElementTagsAction(element!!, tagChanges.create()))
