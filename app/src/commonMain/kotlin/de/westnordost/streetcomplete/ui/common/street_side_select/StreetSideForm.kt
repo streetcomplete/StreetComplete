@@ -74,7 +74,6 @@ import org.jetbrains.compose.resources.painterResource
                 onClick = { onValueChanged(it) },
                 modifier = Modifier
                     .padding(8.dp)
-                    .fillMaxWidth()
                     .align(Alignment.BottomStart)
                     .padding(lastPickedContentPadding),
                 chipBorder = BorderStroke(1.dp, MaterialTheme.colors.onSurface.copy(alpha = 0.12f)),

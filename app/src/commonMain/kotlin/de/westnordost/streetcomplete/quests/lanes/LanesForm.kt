@@ -81,7 +81,6 @@ fun LanesForm(
                 onClick = { onValueChanged(Lanes(it, it)) },
                 modifier = Modifier
                     .padding(horizontal = 8.dp)
-                    .fillMaxWidth()
                     .align(Alignment.BottomStart),
                 chipBorder = BorderStroke(1.dp, MaterialTheme.colors.onSurface.copy(alpha = 0.12f)),
             ) { laneCount ->
