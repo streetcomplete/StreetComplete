@@ -22,7 +22,6 @@ import androidx.compose.ui.unit.sp
 import de.westnordost.streetcomplete.ui.ktx.toDp
 import de.westnordost.streetcomplete.ui.theme.GrassGray
 import de.westnordost.streetcomplete.ui.theme.GrassGreen
-import de.westnordost.streetcomplete.ui.theme.White
 import de.westnordost.streetcomplete.ui.theme.titleLarge
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
@@ -34,8 +33,8 @@ fun LaurelWreathBadge(
     modifier: Modifier = Modifier,
     animationDuration: Int = 2000,
     animationDelay: Int = 0,
-    startBackgroundColor: Color = GrassGray,
-    finalBackgroundColor: Color = GrassGreen,
+    startBackgroundColor: Color = Color.GrassGray,
+    finalBackgroundColor: Color = Color.GrassGreen,
 ) {
     Column(
         modifier = modifier.padding(8.dp),
@@ -63,7 +62,7 @@ fun LaurelWreathBadge(
             LaurelWreath(progress = animation.value)
             Text(
                 text = value,
-                color = White,
+                color = Color.White,
                 style = MaterialTheme.typography.titleLarge
             )
         }

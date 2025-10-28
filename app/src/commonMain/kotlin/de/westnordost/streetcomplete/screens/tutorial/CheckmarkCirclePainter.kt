@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.screens.tutorial
 
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.graphics.vector.Path
 import androidx.compose.ui.graphics.vector.VectorPainter
@@ -20,13 +21,13 @@ fun checkmarkCirclePainter(progress: Float): VectorPainter = rememberVectorPaint
     Path(
         pathData = circlePath,
         strokeLineWidth = 12f,
-        stroke = SolidColor(LeafGreen),
+        stroke = SolidColor(Color.LeafGreen),
         trimPathEnd = (progress * 3f / 2).coerceIn(0f, 1f)
     )
     Path(
         pathData = checkmarkPath,
         strokeLineWidth = 12f,
-        stroke = SolidColor(LeafGreen),
+        stroke = SolidColor(Color.LeafGreen),
         trimPathEnd = ((progress - 2f / 3) * 3f).coerceIn(0f, 1f)
     )
 }

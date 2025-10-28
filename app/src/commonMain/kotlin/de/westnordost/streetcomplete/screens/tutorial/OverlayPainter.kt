@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.screens.tutorial
 
+import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
@@ -60,7 +61,7 @@ fun overlayEditHighlightedPainter(progress: Float): VectorPainter = rememberMapO
         strokeLineJoin = StrokeJoin.Round,
         strokeLineCap = StrokeCap.Round,
         strokeLineWidth = ((breathing + 1) * 8).toFloat(), // 8..16
-        stroke = SolidColor(Color(0xffD14000)),
+        stroke = SolidColor(MaterialTheme.colors.secondary),
         strokeAlpha = ((1 - breathing) * 0.5 + 0.5).toFloat() // 1 .. 0.5
     )
 }

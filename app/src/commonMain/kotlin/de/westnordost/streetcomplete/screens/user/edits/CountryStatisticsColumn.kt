@@ -15,6 +15,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.flags.FlagAlignment
 import de.westnordost.streetcomplete.data.flags.FlagAlignments
@@ -57,7 +58,7 @@ fun CountryStatisticsColumn(
                 modifier = Modifier
                     .clickable { showInfo = item }
                     .padding(horizontal = 16.dp, vertical = 4.dp),
-                color = GrassGreen,
+                color = Color.GrassGreen,
             )
         }
     }
