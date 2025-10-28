@@ -13,7 +13,6 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.Dp.Companion.Hairline
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.ui.common.ZoomInIcon
 import de.westnordost.streetcomplete.ui.common.ZoomOutIcon

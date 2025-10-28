@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.screens.main.controls
 
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable

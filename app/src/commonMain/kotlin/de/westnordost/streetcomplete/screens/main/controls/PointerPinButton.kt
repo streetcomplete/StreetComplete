@@ -26,7 +26,6 @@ import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.graphics.vector.toPath
 import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.Dp
-import androidx.compose.ui.unit.Dp.Companion.Hairline
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.resources.Res
