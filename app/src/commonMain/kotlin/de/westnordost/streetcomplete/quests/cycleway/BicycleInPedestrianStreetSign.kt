@@ -21,7 +21,7 @@ import de.westnordost.streetcomplete.ui.theme.titleLarge
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
-
+/** Composable that represents a sign that allows bicycles in a pedestrian zone */
 @Composable fun BicycleInPedestrianStreetAllowedSign(modifier: Modifier = Modifier) {
     RectangularSign(modifier = modifier) {
         Column(
@@ -38,6 +38,7 @@ import org.jetbrains.compose.resources.stringResource
     }
 }
 
+/** Composable that represents a sign that designates a pedestrian zone as for cyclists, too  */
 @Composable fun BicycleInPedestrianStreetDesignatedSign(modifier: Modifier = Modifier) {
     RectangularSign(
         modifier = modifier,
@@ -51,6 +52,8 @@ import org.jetbrains.compose.resources.stringResource
     }
 }
 
+/** Composable that represents a sign designating this street as a "bicycle boulevard": A road
+ *  that is designated for bicyclists where other road users are (sometimes) also allowed */
 @Composable fun BicycleBoulevardSign(modifier: Modifier = Modifier, ) {
     RectangularSign(
         modifier = modifier,
