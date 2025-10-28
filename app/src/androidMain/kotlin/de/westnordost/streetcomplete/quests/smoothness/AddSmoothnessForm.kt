@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.smoothness
 
 import androidx.appcompat.app.AlertDialog
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
@@ -80,7 +81,10 @@ class AddSmoothnessForm : AItemSelectQuestForm<Smoothness, SmoothnessAnswer>() {
     private fun showWrongSurfaceDialog(surface: Surface) {
         val dialogBinding = ComposeViewBinding.inflate(layoutInflater)
         dialogBinding.composeViewBase.content { Surface(Modifier.padding(24.dp)) {
-            Column(horizontalAlignment = Alignment.CenterHorizontally) {
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.spacedBy(16.dp),
+            ) {
                 Text(stringResource(Res.string.quest_smoothness_surface_value))
                 ImageWithLabel(
                     painter = surface.icon?.let { painterResource(it) },
