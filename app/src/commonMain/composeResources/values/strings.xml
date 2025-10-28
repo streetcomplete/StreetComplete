@@ -1229,7 +1229,8 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="default_disabled_msg_maxspeed">This quest type is disabled by default because you are usually required to check the whole street for speed limit signs, not just the highlighted section. This can sometimes be a lot of work just to solve a single quest.</string>
 
     <string name="quest_maxweight_title">What’s the weight limit here?</string>
-    <string name="quest_maxweight_select_sign">Select sign</string>
+    <string name="quest_maxweight_select_sign">Add sign</string>
+    <string name="quest_maxweight_remove_sign">Remove sign</string>
     <string name="quest_maxweight_unusualInput_confirmation_description">This weight looks implausible. Are you sure that it is correct?</string>
     <string name="quest_maxweight_answer_other_sign">Sign looks different…</string>
     <string name="quest_maxweight_unsupported_sign_request_photo">Would you like to leave a note? A note with a photo will enable other mappers to take care of it.</string>

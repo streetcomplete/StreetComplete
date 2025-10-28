@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.max_weight
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Icon
@@ -62,7 +63,7 @@ fun MaxWeightSignForm(
 
     val unitTextStyle = MaterialTheme.typography.largeInput
 
-    Box(modifier) {
+    Box(modifier.aspectRatio(1f)) {
         when (type) {
             MAX_WEIGHT -> when (countryCode) {
                 "AU", "CA", "US" ->
