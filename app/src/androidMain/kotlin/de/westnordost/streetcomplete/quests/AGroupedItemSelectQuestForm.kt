@@ -34,8 +34,6 @@ import org.koin.android.ext.android.inject
 
 /**
  * Abstract class for quests with a grouped list of images and one to select.
- *
- * Saving and restoring state is not implemented
  */
 abstract class AGroupedItemSelectQuestForm<G: Group<I>, I, T> : AbstractOsmQuestForm<T>() {
 
