@@ -82,7 +82,6 @@ import org.jetbrains.compose.resources.stringResource
 
     showPickerForSide?.let { side ->
         StreetParkingSelectionDialog(
-            side = side,
             isUpsideDown = isUpsideDown(side),
             onDismissRequest = { showPickerForSide = null },
             onSelect = { parking ->

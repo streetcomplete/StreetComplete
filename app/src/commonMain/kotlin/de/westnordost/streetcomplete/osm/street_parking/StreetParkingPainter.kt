@@ -20,50 +20,54 @@ class StreetParkingPainter(
     private val carPainters: List<Painter>,
     private val backgroundPainter: Painter?,
     private val isUpsideDown: Boolean,
-    private val random: Random,
+    private val randomSeed: Int,
     private val phase: Float = 0f,
 ) : Painter() {
+    private val omittedCarIndices = getOmittedCarIndices(parkingOrientation, parkingPosition)
+
     override fun DrawScope.onDraw() {
         val width = size.width
         val height = size.height
-        val repeats = ceil(height / width).toInt()
+        val startY = (if (phase <= 0f) 0f else phase - 1f) * height
+        val random = Random(randomSeed)
 
         scale(scaleX = 1f, scaleY = if (isUpsideDown) -1f else +1f) {
             // drawing the street background
             if (backgroundPainter != null) {
                 val backgroundHeight = backgroundPainter.intrinsicSize.height / backgroundPainter.intrinsicSize.width * width
-                val offsetY = phase * height
-                val start = if (offsetY == 0f) 0 else -1
-                for (i in start until repeats) {
-                    val y = i * height + offsetY
+                var y = startY
+                while (y < height) {
+                    if (backgroundHeight <= 0f) break
                     translate(top = y) {
-                        with(backgroundPainter) {
-                            draw(Size(width, backgroundHeight))
-                        }
+                        with(backgroundPainter) { draw(Size(width, backgroundHeight)) }
                     }
+                    y += backgroundHeight
                 }
             }
 
-            val omittedCarIndices = getOmittedCarIndices(parkingOrientation, parkingPosition)
             val carWidth = 0.23f * width
             val carX = parkingOrientation.carsX * width - carWidth / 2
             val carRotation = parkingOrientation.carsRotation
             val carCount = parkingOrientation.carCount
+            val carSpacingY = (2 * width / carCount)
 
             // drawing the cars
-            for (i in 0 until carCount * repeats) {
-                if (i % carCount in omittedCarIndices) continue
-                val carPainter = carPainters[random.nextInt(carPainters.size)]
-                val carHeight = carPainter.intrinsicSize.height * carWidth / carPainter.intrinsicSize.width
-                val paddingY = (height / carCount - carHeight) / 2
-                val carY = (height / carCount * i + paddingY + phase * height) % (height * repeats)
-                translate(left = carX, top = carY) {
-                    rotate(degrees = carRotation, pivot = Offset(carWidth / 2, carHeight / 2)) {
-                        with(carPainter) {
-                            draw(Size(carWidth, carHeight))
+            var carY = startY
+            var i = 0
+            while (carY < height) {
+                if (i % carCount !in omittedCarIndices) {
+                    val carPainter = carPainters[random.nextInt(carPainters.size)]
+                    val carIntrinsicSize = carPainter.intrinsicSize
+                    val carHeight = carIntrinsicSize.height * carWidth / carIntrinsicSize.width
+                    val carPadding = (carSpacingY - carHeight) / 2f
+                    translate(left = carX, top = carY + carPadding) {
+                        rotate(degrees = carRotation, pivot = Offset(carWidth / 2, carHeight / 2)) {
+                            with(carPainter) { draw(Size(carWidth, carHeight)) }
                         }
                     }
                 }
+                carY += carSpacingY
+                i++
             }
         }
     }

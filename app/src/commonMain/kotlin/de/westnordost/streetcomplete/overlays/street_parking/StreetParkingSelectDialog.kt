@@ -28,7 +28,9 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.backhandler.BackHandler
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.unit.dp
@@ -39,6 +41,7 @@ import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition
 import de.westnordost.streetcomplete.osm.street_parking.StreetParking
 import de.westnordost.streetcomplete.osm.street_parking.StreetParkingSelection
+import de.westnordost.streetcomplete.osm.street_parking.dialogPainter
 import de.westnordost.streetcomplete.osm.street_parking.painter
 import de.westnordost.streetcomplete.osm.street_parking.title
 import de.westnordost.streetcomplete.resources.Res
@@ -47,14 +50,14 @@ import de.westnordost.streetcomplete.resources.select_street_parking_position
 import de.westnordost.streetcomplete.ui.common.BackIcon
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
 import de.westnordost.streetcomplete.ui.common.item_select.ItemSelectGrid
-import de.westnordost.streetcomplete.ui.common.street_side_select.Side
 import de.westnordost.streetcomplete.ui.ktx.fadingVerticalScrollEdges
+import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.stringResource
 
 /** Dialog in which both the parking orientation and parking position is selected in two steps. */
+@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun StreetParkingSelectionDialog(
-    side: Side,
     isUpsideDown: Boolean,
     onDismissRequest: () -> Unit,
     onSelect: (item: StreetParking) -> Unit,
@@ -85,6 +88,10 @@ fun StreetParkingSelectionDialog(
         onDismissRequest = onDismissRequest,
         properties = properties
     ) {
+        BackHandler(parkingOrientation != null) {
+            parkingOrientation = null
+        }
+
         Surface(
             modifier = modifier,
             shape = shape,
@@ -129,7 +136,6 @@ fun StreetParkingSelectionDialog(
                             StreetParkingPositionSelectGrid(
                                 orientation = orientation,
                                 isUpsideDown = isUpsideDown,
-                                isRightSide = side == Side.RIGHT,
                                 onSelect = ::select,
                             )
                         } else {
@@ -152,7 +158,7 @@ fun StreetParkingSelectionDialog(
     modifier: Modifier = Modifier,
 ) {
     ItemSelectGrid(
-        columns = SimpleGridCells.Fixed(3),
+        columns = SimpleGridCells.Fixed(2),
         items = StreetParkingSelection.entries,
         selectedItem = null,
         onSelect = { if (it != null) onSelect(it) },
@@ -170,7 +176,6 @@ fun StreetParkingSelectionDialog(
 @Composable private fun StreetParkingPositionSelectGrid(
     orientation: ParkingOrientation?,
     isUpsideDown: Boolean,
-    isRightSide: Boolean,
     onSelect: (StreetParking.PositionAndOrientation) -> Unit,
     modifier: Modifier = Modifier,
 ) {
@@ -181,13 +186,13 @@ fun StreetParkingSelectionDialog(
     }
 
     ItemSelectGrid(
-        columns = SimpleGridCells.Fixed(3),
+        columns = SimpleGridCells.Fixed(2),
         items = parkingPositionAndOrientations,
         selectedItem = null,
         onSelect = { if (it != null) onSelect(it) },
         itemContent = { selection ->
             ImageWithLabel(
-                painter = selection.painter(isUpsideDown, isRightSide),
+                painter = selection.dialogPainter(isUpsideDown),
                 label = selection.title?.let { stringResource(it) },
             )
         },

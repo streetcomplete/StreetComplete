@@ -95,16 +95,15 @@ private fun StreetParking.PositionAndOrientation.dialogPainter(isUpsideDown: Boo
         if (isApril1st()) painterResource(Res.drawable.car_nyan)
         else painterResource(Res.drawable.car1)
     val backgroundPainter = painterResource(background)
-    val random = remember { Random(Random.Default.nextInt()) }
     return remember(this, isUpsideDown) {
         StreetParkingPainter(
-            intrinsicSize = Size(128f, 128f),
+            intrinsicSize = Size(256f, 256f),
             parkingOrientation = orientation,
             parkingPosition = position,
             backgroundPainter = backgroundPainter,
             carPainters = listOf(carPainter),
             isUpsideDown = isUpsideDown,
-            random = random,
+            randomSeed = 0,
         )
     }
 }
@@ -117,16 +116,16 @@ private fun StreetParking.PositionAndOrientation.painter(isUpsideDown: Boolean, 
         if (isApril1st()) listOf(painterResource(Res.drawable.car_nyan))
         else CAR_DRAWABLES.map { painterResource(it) }
     val backgroundPainter = painterResource(background)
-    val random = remember { Random(Random.Default.nextInt()) }
+    val randomSeed = remember { Random.Default.nextInt() }
     return remember(this, isUpsideDown, isRightSide) {
         StreetParkingPainter(
-            intrinsicSize = Size(128f, 512f),
+            intrinsicSize = Size(128f, 256f),
             parkingOrientation = orientation,
             parkingPosition = position,
             backgroundPainter = backgroundPainter,
             carPainters = carPainters,
             isUpsideDown = isUpsideDown,
-            random = random,
+            randomSeed = randomSeed,
             // show left and right side staggered to each other
             phase = if (isRightSide) 0.5f else 0f,
         )

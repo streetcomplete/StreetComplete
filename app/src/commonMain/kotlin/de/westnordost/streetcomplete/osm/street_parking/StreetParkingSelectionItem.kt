@@ -45,16 +45,16 @@ private fun parkingOrientationPainter(
     val carPainter =
         if (isApril1st()) painterResource(Res.drawable.car_nyan)
         else painterResource(Res.drawable.car1)
-    val random = remember { Random(Random.Default.nextInt()) }
+    val randomSeed = remember { Random.Default.nextInt() }
     return remember(parkingOrientation, isUpsideDown) {
         StreetParkingPainter(
-            intrinsicSize = Size(128f, 128f),
+            intrinsicSize = Size(256f, 256f),
             parkingOrientation = parkingOrientation,
             parkingPosition = null,
             carPainters = listOf(carPainter),
             backgroundPainter = null,
             isUpsideDown = isUpsideDown,
-            random = random,
+            randomSeed = randomSeed,
         )
     }
 }
