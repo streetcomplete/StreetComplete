@@ -32,16 +32,15 @@ fun LanesButtonContent(
             modifier = Modifier.height(IntrinsicSize.Min)
         ) {
             ProvideTextStyle(MaterialTheme.typography.body2.copy(fontWeight = FontWeight.Bold)) {
-
-            Text(
-                text = laneCount.toString(),
-                modifier = Modifier.rotate(-rotation)
-            )
-            VerticalDivider()
-            Text(
-                text = laneCount.toString(),
-                modifier = Modifier.rotate(-rotation)
-            )
+                Text(
+                    text = laneCount.toString(),
+                    modifier = Modifier.rotate(-rotation)
+                )
+                VerticalDivider()
+                Text(
+                    text = laneCount.toString(),
+                    modifier = Modifier.rotate(-rotation)
+                )
             }
         }
     }
