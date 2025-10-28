@@ -19,6 +19,7 @@ import de.westnordost.streetcomplete.resources.cycleway_sidewalk_explicit_dual
 import de.westnordost.streetcomplete.resources.cycleway_sidewalk_explicit_l
 import de.westnordost.streetcomplete.resources.cycleway_sidewalk_ok_dual_in_selection
 import de.westnordost.streetcomplete.resources.cycleway_sidewalk_ok_in_selection
+import de.westnordost.streetcomplete.resources.cycleway_sidewalk_ok_in_selection_l
 import de.westnordost.streetcomplete.resources.cycleway_sign_sidewalk_ok
 import de.westnordost.streetcomplete.resources.cycleway_sign_sidewalk_ok_dual
 import de.westnordost.streetcomplete.resources.cycleway_track
@@ -62,8 +63,16 @@ fun CyclewayAndDirection.getDialogIcon(
         NONE ->     Res.drawable.cycleway_none_in_selection
         SEPARATE -> Res.drawable.cycleway_separate
         SIDEWALK_OK ->
-            if (direction == BOTH) Res.drawable.cycleway_sidewalk_ok_dual_in_selection
-            else Res.drawable.cycleway_sidewalk_ok_in_selection
+            if (direction == BOTH) {
+                Res.drawable.cycleway_sidewalk_ok_dual_in_selection
+            }
+            else {
+                val isForward = (direction == FORWARD)
+                val showMirrored = isForward xor isRight
+
+                if (showMirrored) Res.drawable.cycleway_sidewalk_ok_in_selection_l
+                else Res.drawable.cycleway_sidewalk_ok_in_selection
+            }
         else ->     getIcon(isRight, countryInfo, roadDirection)
     }
 
