@@ -86,7 +86,6 @@ tasks.register("updateStreetCompleteData") {
         "app:updateNsiPresets",
         "app:updateTranslations",
         "app:updateTranslationCompleteness",
-        "app:copyDefaultStringsToEnStrings",
         "app:updateMapStyle",
         "app:updateChangelog",
         "app:generateMetadataByCountry",
