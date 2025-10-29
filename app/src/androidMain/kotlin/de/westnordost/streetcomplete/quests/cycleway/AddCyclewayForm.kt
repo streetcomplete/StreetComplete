@@ -82,7 +82,10 @@ class AddCyclewayForm : AbstractOsmQuestForm<Sides<CyclewayAndDirection>>() {
         super.onViewCreated(view, savedInstanceState)
 
         snapshotFlow { isDisplayingPrevious.value }
-            .onEach { updateButtonPanel() }
+            .onEach {
+                updateButtonPanel()
+                checkIsFormComplete()
+            }
             .launchIn(lifecycleScope)
 
         val lastPicked by lazy {
@@ -181,6 +184,7 @@ class AddCyclewayForm : AbstractOsmQuestForm<Sides<CyclewayAndDirection>>() {
     /* -------------------------------------- apply answer -------------------------------------- */
 
     override fun isFormComplete() =
+        !isDisplayingPrevious.value &&
         (cycleways.value.left != null || !isLeftSideVisible.value) &&
         (cycleways.value.right != null || !isRightSideVisible.value)
 
