@@ -12,7 +12,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.bicycle_boulevard
-import de.westnordost.streetcomplete.resources.ok
 import de.westnordost.streetcomplete.resources.sign_icon_bicycle
 import de.westnordost.streetcomplete.resources.sign_icon_pedestrian_and_bicycle
 import de.westnordost.streetcomplete.ui.common.RectangularSign

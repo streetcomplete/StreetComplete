@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.quests.bridge_structure
 import androidx.compose.foundation.Image
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.quests.AItemSelectQuestForm
-import kotlinx.serialization.KSerializer
 import kotlinx.serialization.serializer
 import org.jetbrains.compose.resources.painterResource
 

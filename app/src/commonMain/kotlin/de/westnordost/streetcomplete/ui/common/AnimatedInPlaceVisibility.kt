@@ -15,7 +15,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.layout.onSizeChanged
-import androidx.compose.ui.unit.IntSize
 import de.westnordost.streetcomplete.ui.ktx.pxToDp
 
 /** Animate in and out child composables in-place, i.e. when they become invisible, the space they

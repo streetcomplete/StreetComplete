@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.compose.material.Surface
-import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.snapshotFlow
 import androidx.lifecycle.lifecycleScope
@@ -29,7 +28,6 @@ import de.westnordost.streetcomplete.util.ktx.toast
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import org.koin.android.ext.android.inject
-import kotlin.getValue
 
 class AddCyclewayForm : AbstractOsmQuestForm<Sides<CyclewayAndDirection>>() {
 

@@ -44,7 +44,6 @@ import de.westnordost.streetcomplete.quests.cycleway.CyclewayFormSelectionMode
 import de.westnordost.streetcomplete.ui.util.content
 import de.westnordost.streetcomplete.util.ktx.toast
 import org.koin.android.ext.android.inject
-import kotlin.getValue
 
 class StreetCyclewayOverlayForm : AbstractOverlayForm() {
 

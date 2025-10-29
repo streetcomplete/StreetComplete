@@ -11,7 +11,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.serializer
-import kotlin.collections.List
 
 class Preferences(private val prefs: ObservableSettings) {
     // application settings

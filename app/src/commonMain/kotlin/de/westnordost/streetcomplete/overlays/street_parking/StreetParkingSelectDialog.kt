@@ -51,7 +51,6 @@ import de.westnordost.streetcomplete.ui.common.BackIcon
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
 import de.westnordost.streetcomplete.ui.common.item_select.ItemSelectGrid
 import de.westnordost.streetcomplete.ui.ktx.fadingVerticalScrollEdges
-import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.stringResource
 
 /** Dialog in which both the parking orientation and parking position is selected in two steps. */
