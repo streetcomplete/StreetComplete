@@ -18,7 +18,7 @@ class AddRecyclingType : OsmFilterQuestType<RecyclingType>(), AndroidQuest {
     override val elementFilter = "nodes, ways with amenity = recycling and !recycling_type"
     override val changesetComment = "Specify type of recycling amenities"
     override val wikiLink = "Key:recycling_type"
-    override val icon = R.drawable.ic_quest_recycling
+    override val icon = R.drawable.quest_recycling
     override val isDeleteElementEnabled = true
     override val achievements = listOf(CITIZEN)
 

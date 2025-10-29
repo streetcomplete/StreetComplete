@@ -15,7 +15,7 @@ class AddAtmOperator : OsmFilterQuestType<String>(), AndroidQuest {
     override val elementFilter = "nodes with amenity = atm and !operator and !name and !brand"
     override val changesetComment = "Specify ATM operator"
     override val wikiLink = "Tag:amenity=atm"
-    override val icon = R.drawable.ic_quest_money
+    override val icon = R.drawable.quest_money
     override val isDeleteElementEnabled = true
     override val achievements = listOf(CITIZEN)
 

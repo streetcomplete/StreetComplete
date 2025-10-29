@@ -1,13 +1,23 @@
 package de.westnordost.streetcomplete.quests.bike_parking_type
 
-import de.westnordost.streetcomplete.quests.AImageListQuestForm
+import androidx.compose.runtime.Composable
+import de.westnordost.streetcomplete.quests.AItemSelectQuestForm
+import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
+import kotlinx.serialization.serializer
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 
-class AddBikeParkingTypeForm : AImageListQuestForm<BikeParkingType, BikeParkingType>() {
+class AddBikeParkingTypeForm : AItemSelectQuestForm<BikeParkingType, BikeParkingType>() {
 
-    override val items = BikeParkingType.entries.map { it.asItem() }
+    override val items = BikeParkingType.entries
     override val itemsPerRow = 3
+    override val serializer = serializer<BikeParkingType>()
 
-    override fun onClickOk(selectedItems: List<BikeParkingType>) {
-        applyAnswer(selectedItems.single())
+    @Composable override fun ItemContent(item: BikeParkingType) {
+        ImageWithLabel(painterResource(item.icon), stringResource(item.title))
+    }
+
+    override fun onClickOk(selectedItem: BikeParkingType) {
+        applyAnswer(selectedItem)
     }
 }

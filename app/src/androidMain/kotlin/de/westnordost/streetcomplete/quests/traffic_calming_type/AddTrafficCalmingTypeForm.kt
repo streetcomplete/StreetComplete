@@ -1,14 +1,23 @@
 package de.westnordost.streetcomplete.quests.traffic_calming_type
 
-import de.westnordost.streetcomplete.quests.AImageListQuestForm
+import androidx.compose.runtime.Composable
+import de.westnordost.streetcomplete.quests.AItemSelectQuestForm
+import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
+import kotlinx.serialization.serializer
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 
-class AddTrafficCalmingTypeForm : AImageListQuestForm<TrafficCalmingType, TrafficCalmingType>() {
+class AddTrafficCalmingTypeForm : AItemSelectQuestForm<TrafficCalmingType, TrafficCalmingType>() {
 
-    override val items = TrafficCalmingType.entries.map { it.asItem() }
-
+    override val items = TrafficCalmingType.entries
     override val itemsPerRow = 3
+    override val serializer = serializer<TrafficCalmingType>()
 
-    override fun onClickOk(selectedItems: List<TrafficCalmingType>) {
-        applyAnswer(selectedItems.single())
+    @Composable override fun ItemContent(item: TrafficCalmingType) {
+        ImageWithLabel(painterResource(item.icon), stringResource(item.title))
+    }
+
+    override fun onClickOk(selectedItem: TrafficCalmingType) {
+        applyAnswer(selectedItem)
     }
 }

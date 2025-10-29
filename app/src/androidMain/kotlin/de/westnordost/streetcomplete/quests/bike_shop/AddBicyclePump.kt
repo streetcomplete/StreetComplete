@@ -26,7 +26,7 @@ class AddBicyclePump : OsmFilterQuestType<Boolean>(), AndroidQuest {
     """
     override val changesetComment = "Survey whether shop offers public pump"
     override val wikiLink = "Key:service:bicycle:pump"
-    override val icon = R.drawable.ic_quest_bicycle_pump
+    override val icon = R.drawable.quest_bicycle_pump
     override val achievements = listOf(BICYCLIST)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_air_pump_bicycle_shop_title

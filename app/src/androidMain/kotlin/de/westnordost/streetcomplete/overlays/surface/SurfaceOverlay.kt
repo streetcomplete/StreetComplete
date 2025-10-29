@@ -24,7 +24,7 @@ import de.westnordost.streetcomplete.quests.surface.AddRoadSurface
 class SurfaceOverlay : Overlay, AndroidOverlay {
 
     override val title = R.string.overlay_surface
-    override val icon = R.drawable.ic_quest_street_surface
+    override val icon = R.drawable.quest_street_surface
     override val changesetComment = "Specify surfaces"
     override val wikiLink: String = "Key:surface"
     override val achievements = listOf(CAR, PEDESTRIAN, WHEELCHAIR, BICYCLIST, OUTDOORS)

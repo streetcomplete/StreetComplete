@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.osm.cycleway
 
+import de.westnordost.streetcomplete.osm.Sides
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway.*
 import de.westnordost.streetcomplete.osm.expandSides
@@ -7,16 +8,14 @@ import de.westnordost.streetcomplete.osm.hasCheckDateForKey
 import de.westnordost.streetcomplete.osm.mergeSides
 import de.westnordost.streetcomplete.osm.oneway.Direction
 import de.westnordost.streetcomplete.osm.oneway.Direction.*
-import de.westnordost.streetcomplete.osm.oneway.isInContraflowOfOneway
 import de.westnordost.streetcomplete.osm.oneway.isNotOnewayForCyclists
 import de.westnordost.streetcomplete.osm.oneway.isOneway
 import de.westnordost.streetcomplete.osm.oneway.isReversedOneway
-import de.westnordost.streetcomplete.osm.sidewalk.LeftAndRightSidewalk
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk
 import de.westnordost.streetcomplete.osm.sidewalk.applyTo
 import de.westnordost.streetcomplete.osm.updateCheckDateForKey
 
-fun LeftAndRightCycleway.applyTo(tags: Tags, isLeftHandTraffic: Boolean) {
+fun Sides<CyclewayAndDirection>.applyTo(tags: Tags, isLeftHandTraffic: Boolean) {
     if (left == null && right == null) return
     /* for being able to modify only one side (e.g. `left` is null while `right` is not null),
        the sides conflated in `:both` keys need to be separated first. E.g. `cycleway=no`
@@ -54,7 +53,7 @@ fun LeftAndRightCycleway.applyTo(tags: Tags, isLeftHandTraffic: Boolean) {
 
     // tag sidewalk after setting the check date because we want to primarily set the check date
     // of the cycleway, not of the sidewalk, if there are no changes
-    LeftAndRightSidewalk(
+    Sides(
         if (left?.cycleway == SIDEWALK_EXPLICIT) Sidewalk.YES else null,
         if (right?.cycleway == SIDEWALK_EXPLICIT) Sidewalk.YES else null,
     ).applyTo(tags)
@@ -97,7 +96,7 @@ private fun Tags.expandBareTagIntoSide(key: String, suffix: String = "", side: S
     remove("$key$post")
 }
 
-private fun LeftAndRightCycleway.applyOnewayNotForCyclists(tags: Tags) {
+private fun Sides<CyclewayAndDirection>.applyOnewayNotForCyclists(tags: Tags) {
     val isNotOnewayForCyclistsNow = isNotOnewayForCyclistsNow(tags)
     if (!isOneway(tags) || isNotOnewayForCyclistsNow == false) {
         if (tags["oneway:bicycle"] == "no") {
@@ -182,7 +181,8 @@ private fun CyclewayAndDirection.applyTo(tags: Tags, isRight: Boolean, isLeftHan
          */
         val defaultDirection = Direction.getDefault(isRight, isLeftHandTraffic)
         val isDefaultDirection = defaultDirection == direction
-        val isInContraflowOfOneway = isInContraflowOfOneway(tags, direction)
+        val roadDirection = Direction.from(tags)
+        val isInContraflowOfOneway = roadDirection.isReverseOf(direction)
         if (!isDefaultDirection || isInContraflowOfOneway || tags.containsKey("$cyclewayKey:oneway")) {
             if (cycleway == SIDEWALK_OK) {
                 tags["sidewalk:$side:oneway:bicycle"] = direction.onewayValue

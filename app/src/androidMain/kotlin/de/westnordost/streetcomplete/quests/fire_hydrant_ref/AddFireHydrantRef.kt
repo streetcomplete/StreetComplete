@@ -17,7 +17,7 @@ class AddFireHydrantRef : OsmFilterQuestType<FireHydrantRefAnswer>(), AndroidQue
     """
     override val changesetComment = "Determine fire hydrant refs"
     override val wikiLink = "Key:ref"
-    override val icon = R.drawable.ic_quest_fire_hydrant_ref
+    override val icon = R.drawable.quest_fire_hydrant_ref
     override val achievements = listOf(EditTypeAchievement.LIFESAVER)
     override val isDeleteElementEnabled = true
     override val enabledInCountries = NoCountriesExcept(

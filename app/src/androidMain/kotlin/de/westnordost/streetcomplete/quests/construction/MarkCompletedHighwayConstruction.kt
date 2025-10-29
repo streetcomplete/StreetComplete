@@ -20,7 +20,7 @@ class MarkCompletedHighwayConstruction : OsmFilterQuestType<CompletedConstructio
     """
     override val changesetComment = "Determine whether road construction is now completed"
     override val wikiLink = "Tag:highway=construction"
-    override val icon = R.drawable.ic_quest_road_construction
+    override val icon = R.drawable.quest_road_construction
     override val hasMarkersAtEnds = true
     override val achievements = listOf(CAR)
 

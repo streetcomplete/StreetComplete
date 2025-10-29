@@ -159,6 +159,9 @@ kotlin {
 
                 // UI widgets
 
+                // non-lazy grid
+                implementation("com.cheonjaeung.compose.grid:grid:2.4.0")
+
                 // reorderable lists (raw Compose API is pretty complicated)
                 implementation("sh.calvin.reorderable:reorderable:2.5.1")
 

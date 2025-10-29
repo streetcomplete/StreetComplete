@@ -26,7 +26,7 @@ class AddBuildingType : OsmFilterQuestType<BuildingType>(), AndroidQuest {
     """
     override val changesetComment = "Specify building types"
     override val wikiLink = "Key:building"
-    override val icon = R.drawable.ic_quest_building
+    override val icon = R.drawable.quest_building
     override val achievements = listOf(BUILDING)
     override val defaultDisabledMessage = Res.string.default_disabled_msg_overlay
 

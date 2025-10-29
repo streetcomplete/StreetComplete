@@ -36,7 +36,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.BiasAlignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Rect
-import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.boundsInRoot
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalContext
@@ -87,7 +86,6 @@ import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import kotlin.math.PI
-import kotlin.math.abs
 
 /** Map controls shown on top of the map. */
 @Composable
@@ -300,20 +298,11 @@ fun MainScreen(
                         verticalArrangement = Arrangement.spacedBy(8.dp),
                         horizontalAlignment = Alignment.End,
                     ) {
-                        val isCompassVisible = abs(mapRotation) >= 1.0 || abs(mapTilt) >= 1.0
-                        AnimatedVisibility(
-                            visible = isCompassVisible,
-                            enter = fadeIn(),
-                            exit = fadeOut()
-                        ) {
-                            CompassButton(
-                                onClick = onClickCompass,
-                                modifier = Modifier.graphicsLayer(
-                                    rotationZ = -mapRotation.toFloat(),
-                                    rotationX = mapTilt.toFloat()
-                                )
-                            )
-                        }
+                        CompassButton(
+                            onClick = onClickCompass,
+                            rotation = -mapRotation.toFloat(),
+                            tilt = mapTilt.toFloat(),
+                        )
                         if (showZoomButtons) {
                             ZoomButtons(
                                 onZoomIn = onClickZoomIn,

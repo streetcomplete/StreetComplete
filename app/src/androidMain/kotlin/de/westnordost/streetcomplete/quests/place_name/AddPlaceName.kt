@@ -124,7 +124,7 @@ class AddPlaceName(
 
     override val changesetComment = "Determine place names"
     override val wikiLink = "Key:name"
-    override val icon = R.drawable.ic_quest_label
+    override val icon = R.drawable.quest_label
     override val isReplacePlaceEnabled = true
     override val achievements = listOf(CITIZEN)
 

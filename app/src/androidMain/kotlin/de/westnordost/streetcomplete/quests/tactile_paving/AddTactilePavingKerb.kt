@@ -27,7 +27,7 @@ class AddTactilePavingKerb : OsmElementQuestType<Boolean>, AndroidQuest {
 
     override val changesetComment = "Specify whether kerbs have tactile paving"
     override val wikiLink = "Key:tactile_paving"
-    override val icon = R.drawable.ic_quest_kerb_tactile_paving
+    override val icon = R.drawable.quest_kerb_tactile_paving
     override val enabledInCountries = COUNTRIES_WHERE_TACTILE_PAVING_IS_COMMON
     override val achievements = listOf(BLIND)
 

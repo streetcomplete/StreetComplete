@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.osm.cycleway
 
+import de.westnordost.streetcomplete.osm.Sides
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway.*
 import de.westnordost.streetcomplete.osm.expandSidesTags
 import de.westnordost.streetcomplete.osm.oneway.Direction
@@ -9,7 +10,7 @@ import de.westnordost.streetcomplete.osm.oneway.isReversedOneway
 import de.westnordost.streetcomplete.util.ktx.containsAny
 
 /** Returns the Cycleway values for the left and right side using the given tags */
-fun parseCyclewaySides(tags: Map<String, String>, isLeftHandTraffic: Boolean): LeftAndRightCycleway? {
+fun parseCyclewaySides(tags: Map<String, String>, isLeftHandTraffic: Boolean): Sides<CyclewayAndDirection>? {
     if (!tags.keys.containsAny(KNOWN_CYCLEWAY_AND_RELATED_KEYS)) return null
 
     val isForwardOneway = isForwardOneway(tags)
@@ -67,7 +68,7 @@ fun parseCyclewaySides(tags: Map<String, String>, isLeftHandTraffic: Boolean): L
         return null
     }
 
-    return LeftAndRightCycleway(
+    return Sides(
         left?.let { CyclewayAndDirection(it, leftDir) },
         right?.let { CyclewayAndDirection(it, rightDir) }
     )
