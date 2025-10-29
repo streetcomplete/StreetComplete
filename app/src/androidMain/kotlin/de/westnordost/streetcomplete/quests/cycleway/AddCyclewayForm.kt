@@ -73,9 +73,25 @@ class AddCyclewayForm : AbstractOsmQuestForm<Sides<CyclewayAndDirection>>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        if (savedInstanceState == null) {
-            initStateFromTags()
-        }
+
+        val originalCycleway = parseCyclewaySides(element.tags, countryInfo.isLeftHandTraffic)
+            ?.selectableOrNullValues(countryInfo)
+            ?: Sides<CyclewayAndDirection>(null, null)
+
+        val contraflowSide =
+            if (countryInfo.isLeftHandTraffic) originalCycleway.right
+            else originalCycleway.left
+        val contraflowSideWasDefinedBefore = contraflowSide != null
+        val bicycleTrafficOnBothSidesIsLikely = !likelyNoBicycleContraflow.matches(element)
+        val showBothSides = contraflowSideWasDefinedBefore || bicycleTrafficOnBothSidesIsLikely
+
+        isLeftSideVisible.value = showBothSides || countryInfo.isLeftHandTraffic
+        isRightSideVisible.value = showBothSides || !countryInfo.isLeftHandTraffic
+
+        cycleways.value = originalCycleway
+
+        // only show as re-survey (yes/no button) if the previous tagging was complete
+        isDisplayingPrevious.value = cycleways.value.all { it != null }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -120,25 +136,6 @@ class AddCyclewayForm : AbstractOsmQuestForm<Sides<CyclewayAndDirection>>() {
         } }
 
         checkIsFormComplete()
-    }
-
-    private fun initStateFromTags() {
-        val sides = parseCyclewaySides(element.tags, countryInfo.isLeftHandTraffic)
-
-        val contraflowSide = if (countryInfo.isLeftHandTraffic) sides?.right else sides?.left
-        val contraflowSideWasDefinedBefore = contraflowSide != null
-        val bicycleTrafficOnBothSidesIsLikely = !likelyNoBicycleContraflow.matches(element)
-        val showBothSides = contraflowSideWasDefinedBefore || bicycleTrafficOnBothSidesIsLikely
-
-        isLeftSideVisible.value = showBothSides || countryInfo.isLeftHandTraffic
-        isRightSideVisible.value = showBothSides || !countryInfo.isLeftHandTraffic
-
-        val onlyValidSides = sides?.selectableOrNullValues(countryInfo)
-
-        cycleways.value = onlyValidSides ?: Sides(null, null)
-
-        // only show as re-survey (yes/no button) if the previous tagging was complete
-        isDisplayingPrevious.value = cycleways.value.all { it != null }
     }
 
     /* --------------------------------- showing only one side ---------------------------------- */

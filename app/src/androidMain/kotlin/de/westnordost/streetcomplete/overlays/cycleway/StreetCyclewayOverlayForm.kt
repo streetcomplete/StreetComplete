@@ -225,7 +225,6 @@ class StreetCyclewayOverlayForm : AbstractOverlayForm() {
         sides.applyTo(tags, countryInfo.isLeftHandTraffic)
         bicycleBoulevard.value.applyTo(tags, countryInfo.countryCode)
         bicycleInPedestrianStreet.value?.applyTo(tags)
-        applyEdit(UpdateElementTagsAction(element!!, tags.create()))
         if (sides.left != null && sides.right != null) {
             // only persist the cycleway selection, not the direction. For any road that deviates from
             // the default, the user should select this specifically. Simply carrying over the
@@ -233,6 +232,7 @@ class StreetCyclewayOverlayForm : AbstractOverlayForm() {
             val cycleways = Sides(left = sides.left.cycleway, right = sides.right.cycleway)
             prefs.setLastPicked(this::class.simpleName!!, listOf(cycleways))
         }
+        applyEdit(UpdateElementTagsAction(element!!, tags.create()))
     }
 
     override fun isFormComplete() =
