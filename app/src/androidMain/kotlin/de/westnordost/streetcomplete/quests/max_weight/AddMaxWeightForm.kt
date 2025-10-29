@@ -22,6 +22,7 @@ import de.westnordost.streetcomplete.databinding.ComposeViewBinding
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.quest_maxweight_add_sign
 import de.westnordost.streetcomplete.resources.quest_maxweight_remove_sign
 import de.westnordost.streetcomplete.resources.quest_maxweight_select_sign
 import de.westnordost.streetcomplete.ui.common.Button2
