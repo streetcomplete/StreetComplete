@@ -71,20 +71,26 @@ class AddMaxWeightForm : AbstractOsmQuestForm<MaxWeightAnswer>() {
                                 },
                                 countryCode = countryInfo.countryCode,
                                 selectableUnits = weightLimitUnits,
-                                modifier = Modifier.weight(1f)
+                                modifier = Modifier.weight(1f),
+                                selectedTypes = types.map { it.value } as List<MaxWeightType>
                             )
                         }
                     }
                     Spacer(Modifier.height(8.dp))
                 }
-                Button2(
-                    onClick = {
-                        types.add(mutableStateOf(null))
-                        weights.add(mutableStateOf(null))
-                              },
-                    modifier = Modifier.fillMaxWidth(),
-                ) {
-                    Text(stringResource(Res.string.quest_maxweight_select_sign))
+                if (types.size < 4) {
+                    Button2(
+                        onClick = {
+                            types.add(mutableStateOf(null))
+                            weights.add(mutableStateOf(null))
+                                  },
+                        modifier = Modifier.fillMaxWidth(),
+                    ) {
+                        if (types.isEmpty())
+                            Text(stringResource(Res.string.quest_maxweight_select_sign))
+                        else
+                            Text(stringResource(Res.string.quest_maxweight_add_sign))
+                    }
                 }
             }
         } }
@@ -107,10 +113,10 @@ class AddMaxWeightForm : AbstractOsmQuestForm<MaxWeightAnswer>() {
     }
 
     private fun applyAnswers() {
-        /*val maxWeights = weights.mapIndexed { i, weight ->
-            MaxWeight(types.value!!, weight.value!!)
-        }
-        applyAnswer(MaxWeights(maxWeights))*/
+        val typesList = types.map { it.value }
+        val weightsList = weights.map { it.value }
+
+        applyAnswer(MaxWeight(typesList as List<MaxWeightType>, weightsList as List<Weight>))
     }
 
     private fun onUnsupportedSign() {

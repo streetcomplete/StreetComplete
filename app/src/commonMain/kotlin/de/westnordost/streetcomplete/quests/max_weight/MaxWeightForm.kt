@@ -33,6 +33,7 @@ fun MaxWeightForm(
     countryCode: String,
     selectableUnits: List<WeightMeasurementUnit>,
     modifier: Modifier = Modifier,
+    selectedTypes: List<MaxWeightType>
 ) {
     var showSelectionDialog by remember { mutableStateOf(false) }
 
@@ -70,8 +71,8 @@ fun MaxWeightForm(
         SimpleItemSelectDialog(
             onDismissRequest = { showSelectionDialog = false },
             columns = SimpleGridCells.Fixed(2),
-            items = MaxWeightType.entries.filter { it.getIcon(countryCode) != null },
-            onSelected = { onSelectType(it) },
+            items = MaxWeightType.entries.filter { it !in selectedTypes && it.getIcon(countryCode) != null },
+            onSelected = { onSelectType(it); showSelectionDialog = false },
             itemContent = {
                 val icon = it.getIcon(countryCode)
                 if (icon != null) Image(painterResource(icon), null)
