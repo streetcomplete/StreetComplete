@@ -18,6 +18,7 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTag
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.databinding.ComposeViewBinding
 import de.westnordost.streetcomplete.osm.Sides
+import de.westnordost.streetcomplete.osm.all
 import de.westnordost.streetcomplete.osm.bicycle_boulevard.BicycleBoulevard
 import de.westnordost.streetcomplete.osm.bicycle_boulevard.applyTo
 import de.westnordost.streetcomplete.osm.bicycle_boulevard.parseBicycleBoulevard
@@ -27,6 +28,7 @@ import de.westnordost.streetcomplete.osm.bicycle_in_pedestrian_street.parseBicyc
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway
 import de.westnordost.streetcomplete.osm.cycleway.CyclewayAndDirection
 import de.westnordost.streetcomplete.osm.cycleway.applyTo
+import de.westnordost.streetcomplete.osm.cycleway.isSelectable
 import de.westnordost.streetcomplete.osm.cycleway.parseCyclewaySides
 import de.westnordost.streetcomplete.osm.cycleway.selectableOrNullValues
 import de.westnordost.streetcomplete.osm.cycleway.wasNoOnewayForCyclistsButNowItIs
@@ -99,6 +101,7 @@ class StreetCyclewayOverlayForm : AbstractOverlayForm() {
             prefs
                 .getLastPicked<Sides<Cycleway>>(this::class.simpleName!!)
                 .map { it.withDefaultDirection(countryInfo.isLeftHandTraffic) }
+                .filter { sides -> sides.all { it?.isSelectable(countryInfo) != false } }
         }
 
         binding.composeViewBase.content { Surface {

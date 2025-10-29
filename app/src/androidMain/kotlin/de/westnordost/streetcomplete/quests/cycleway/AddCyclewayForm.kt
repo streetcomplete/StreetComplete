@@ -15,6 +15,7 @@ import de.westnordost.streetcomplete.osm.Sides
 import de.westnordost.streetcomplete.osm.all
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway
 import de.westnordost.streetcomplete.osm.cycleway.CyclewayAndDirection
+import de.westnordost.streetcomplete.osm.cycleway.isSelectable
 import de.westnordost.streetcomplete.osm.cycleway.parseCyclewaySides
 import de.westnordost.streetcomplete.osm.cycleway.selectableOrNullValues
 import de.westnordost.streetcomplete.osm.cycleway.wasNoOnewayForCyclistsButNowItIs
@@ -109,6 +110,7 @@ class AddCyclewayForm : AbstractOsmQuestForm<Sides<CyclewayAndDirection>>() {
                 prefs
                     .getLastPicked<Sides<Cycleway>>(this::class.simpleName!!)
                     .map { it.withDefaultDirection(countryInfo.isLeftHandTraffic) }
+                    .filter { sides -> sides.all { it?.isSelectable(countryInfo) != false } }
             } else {
                 emptyList()
             }
