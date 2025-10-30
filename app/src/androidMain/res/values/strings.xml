@@ -722,6 +722,9 @@ Before uploading your changes, the app checks with a &lt;a href="https://www.wes
     <string name="quest_address_street_street_name_label">Street name:</string>
     <string name="quest_address_street_hint2">Tap street on map to select it</string>
 
+    <string name="quest_aerialway_bicycle_title">Does this aerialway transport bicycles?</string>
+    <string name="quest_aerialway_bicycle_summer">Only in summer</string>
+
     <string name="quest_airConditioning_title">Is this place air-conditioned?</string>
 
     <string name="quest_atm_cashin_title">Can you deposit cash at this ATM?</string>
