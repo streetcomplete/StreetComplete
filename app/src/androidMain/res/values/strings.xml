@@ -186,7 +186,6 @@ The info you enter is directly added to OpenStreetMap in your name, without the 
     <string name="quest_source_dialog_note">Only information that was verified in-person should be entered.</string>
     <string name="dialog_session_dont_show_again">Don’t show again for this session</string>
 
-
     <!-- Tutorial screen -->
 
     <string name="tutorial_welcome_to_osm">Welcome to OpenStreetMap</string>
@@ -1136,6 +1135,8 @@ A level counts as a roof level when its windows are in the roof. Subsequently, r
     <string name="quest_fireHydrant_type_underground">Underground</string>
     <string name="quest_fireHydrant_type_wall">Wall</string>
     <string name="quest_fireHydrant_type_pipe">Pipe</string>
+
+    <string name="quest_firewood_provided_title">Is firewood provided here?</string>
 
     <string name="quest_footwayPartSurface_title">What’s the surface of the footpath here?</string>
     <!-- "Self-service" refers to a situation where patrons can pump gas for themselves -->
