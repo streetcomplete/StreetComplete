@@ -18,14 +18,15 @@ class AddFirewood : OsmFilterQuestType<Boolean>(), AndroidQuest {
     override val elementFilter = """
         nodes, ways with
             (
-                leisure=firepit
-                or (amenity=bbq and fuel=wood)
-                or (tourism=wilderness_hut and fireplace=yes)
+                leisure = firepit
+                or (amenity = bbq and fuel = wood)
+                or (tourism = wilderness_hut and fireplace = yes)
             )
             and access !~ private|no
             and !wood_provided
     """
 
+    // for now only enabled in the nordics / high-trust societies
     override val enabledInCountries = NoCountriesExcept(
         "SE",
         "DK",
@@ -35,14 +36,14 @@ class AddFirewood : OsmFilterQuestType<Boolean>(), AndroidQuest {
     )
     override val changesetComment = "Specified if firewood is provided"
     override val wikiLink = "Tag:leisure=firepit"
-    override val icon = R.drawable.ic_quest_firewood
+    override val icon = R.drawable.quest_firewood
     override val isDeleteElementEnabled = true
     override val achievements = listOf(OUTDOORS)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_firewood_provided_title
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter("nodes, ways with leisure=firepit or amenity=bbq or tourism=wilderness_hut")
+        getMapData().filter("nodes, ways with leisure = firepit or amenity = bbq or tourism = wilderness_hut")
 
     override fun createForm() = YesNoQuestForm()
 
