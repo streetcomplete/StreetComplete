@@ -22,7 +22,7 @@ class AddAerialwayBicycleAccess : OsmFilterQuestType<AerialwayBicycleAccessAnswe
 
     override val changesetComment = "Specify whether bicycles can be taken on aerialway"
     override val wikiLink = "Tag:aerialway"
-    override val icon = R.drawable.ic_quest_aerialway_bicycle
+    override val icon = R.drawable.quest_aerialway_bicycle
     override val achievements = listOf(RARE, BICYCLIST)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_aerialway_bicycle_title
