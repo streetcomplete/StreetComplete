@@ -1,13 +1,23 @@
 package de.westnordost.streetcomplete.quests.memorial_type
 
-import de.westnordost.streetcomplete.quests.AImageListQuestForm
+import androidx.compose.runtime.Composable
+import de.westnordost.streetcomplete.quests.AItemSelectQuestForm
+import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
+import kotlinx.serialization.serializer
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 
-class AddMemorialTypeForm : AImageListQuestForm<MemorialType, MemorialType>() {
+class AddMemorialTypeForm : AItemSelectQuestForm<MemorialType, MemorialType>() {
 
-    override val items = MemorialType.entries.map { it.asItem() }
+    override val items = MemorialType.entries
     override val itemsPerRow = 3
+    override val serializer = serializer<MemorialType>()
 
-    override fun onClickOk(selectedItems: List<MemorialType>) {
-        applyAnswer(selectedItems.single())
+    @Composable override fun ItemContent(item: MemorialType) {
+        ImageWithLabel(painterResource(item.icon), stringResource(item.title))
+    }
+
+    override fun onClickOk(selectedItem: MemorialType) {
+        applyAnswer(selectedItem)
     }
 }

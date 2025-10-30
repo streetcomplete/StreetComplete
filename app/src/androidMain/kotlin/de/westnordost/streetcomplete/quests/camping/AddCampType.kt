@@ -21,7 +21,7 @@ class AddCampType : OsmFilterQuestType<CampTypeAnswer>(), AndroidQuest {
     """
     override val changesetComment = "Survey who may camp here"
     override val wikiLink = "Key:caravans"
-    override val icon = R.drawable.ic_quest_tent
+    override val icon = R.drawable.quest_tent
     // you can often see caravans and/or tents from the outside, so usually there is no need for this quest to be disabled by default
     // override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside
     override val achievements = listOf(OUTDOORS)

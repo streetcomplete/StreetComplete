@@ -43,7 +43,7 @@ class AddBarrierOpening(
 
     override val changesetComment = "Specify width of opening"
     override val wikiLink = "Key:barrier"
-    override val icon = R.drawable.ic_quest_wheelchair_width
+    override val icon = R.drawable.quest_wheelchair_width
     override val achievements = listOf(BICYCLIST, WHEELCHAIR)
     override val isDeleteElementEnabled = true
     override val defaultDisabledMessage: StringResource?

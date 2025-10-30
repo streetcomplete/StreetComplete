@@ -10,6 +10,7 @@ import androidx.compose.material.LocalContentColor
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.Dp
@@ -32,7 +33,8 @@ fun RectangularSign(
             .background(color, RoundedCornerShape(10.dp))
             .padding(4.dp)
             .border(4.dp, contentColor, RoundedCornerShape(6.dp))
-            .padding(4.dp)
+            .padding(4.dp),
+        contentAlignment = Alignment.Center,
     ) {
         CompositionLocalProvider(LocalContentColor provides contentColor) {
             content()

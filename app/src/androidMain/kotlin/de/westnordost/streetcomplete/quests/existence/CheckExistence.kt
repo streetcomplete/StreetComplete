@@ -95,7 +95,7 @@ class CheckExistence(
 
     override val changesetComment = "Survey if places still exist"
     override val wikiLink: String? = null
-    override val icon = R.drawable.ic_quest_check
+    override val icon = R.drawable.quest_check
     override val achievements = listOf(CITIZEN, OUTDOORS)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_existence_title2

@@ -78,9 +78,9 @@ import de.westnordost.streetcomplete.ui.common.BackIcon
 import de.westnordost.streetcomplete.ui.common.NextScreenIcon
 import de.westnordost.streetcomplete.ui.common.dialogs.ConfirmationDialog
 import de.westnordost.streetcomplete.ui.common.dialogs.InfoDialog
-import de.westnordost.streetcomplete.ui.common.dialogs.SimpleListPickerDialog
 import de.westnordost.streetcomplete.ui.common.settings.Preference
 import de.westnordost.streetcomplete.ui.common.settings.PreferenceCategory
+import de.westnordost.streetcomplete.ui.common.settings.Select
 import de.westnordost.streetcomplete.util.ktx.getDisplayName
 import de.westnordost.streetcomplete.util.locale.NumberFormatter
 import org.jetbrains.compose.resources.StringResource
@@ -95,13 +95,13 @@ fun SettingsScreen(
     onClickPresetSelection: () -> Unit,
     onClickQuestSelection: () -> Unit,
     onClickOverlaySelection: () -> Unit,
+    onClickLanguageSelection: () -> Unit,
     onClickBack: () -> Unit,
 ) {
     val hiddenQuestCount by viewModel.hiddenQuestCount.collectAsState()
     val questTypeCount by viewModel.questTypeCount.collectAsState()
     val overlayCount by viewModel.overlayCount.collectAsState()
     val selectedPresetName by viewModel.selectedEditTypePresetName.collectAsState()
-    val selectableLanguageCodes by viewModel.selectableLanguageCodes.collectAsState()
 
     val resurveyIntervals by viewModel.resurveyIntervals.collectAsState()
     val showAllNotes by viewModel.showAllNotes.collectAsState()
@@ -116,11 +116,8 @@ fun SettingsScreen(
     var showUploadTutorialInfo by remember { mutableStateOf(false) }
 
     var showThemeSelect by remember { mutableStateOf(false) }
-    var showLanguageSelect by remember { mutableStateOf(false) }
     var showAutosyncSelect by remember { mutableStateOf(false) }
     var showResurveyIntervalsSelect by remember { mutableStateOf(false) }
-
-    val presetNameOrDefault = selectedPresetName ?: stringResource(Res.string.quest_presets_default_name)
 
     Column(Modifier.fillMaxSize()) {
         TopAppBar(
@@ -141,7 +138,10 @@ fun SettingsScreen(
                     onClick = onClickPresetSelection,
                     description = stringResource(Res.string.action_manage_presets_summary)
                 ) {
-                    Text(presetNameOrDefault)
+                    Text(
+                        text = selectedPresetName ?: stringResource(Res.string.quest_presets_default_name),
+                        modifier = Modifier.weight(1f, fill = false),
+                    )
                     NextScreenIcon()
                 }
 
@@ -166,7 +166,15 @@ fun SettingsScreen(
                     onClick = { showResurveyIntervalsSelect = true },
                     description = stringResource(Res.string.pref_title_resurvey_intervals_summary)
                 ) {
-                    Text(stringResource(resurveyIntervals.title))
+                    Select(
+                        items = ResurveyIntervals.entries,
+                        selectedItem = resurveyIntervals,
+                        onSelected = { viewModel.setResurveyIntervals(it) },
+                        expanded = showResurveyIntervalsSelect,
+                        onDismissRequest = { showResurveyIntervalsSelect = false }
+                    ) {
+                        Text(stringResource(it.title))
+                    }
                 }
 
                 Preference(
@@ -189,7 +197,18 @@ fun SettingsScreen(
                     name = stringResource(Res.string.pref_title_sync2),
                     onClick = { showAutosyncSelect = true }
                 ) {
-                    Text(stringResource(autosync.title))
+                    Select(
+                        items = Autosync.entries,
+                        selectedItem = autosync,
+                        onSelected = {
+                            viewModel.setAutosync(it)
+                            if (it != Autosync.ON) {
+                                showUploadTutorialInfo = true
+                            }
+                        },
+                        expanded = showAutosyncSelect,
+                        onDismissRequest = { showAutosyncSelect = false },
+                    ) { Text(stringResource(it.title)) }
                 }
             }
 
@@ -197,19 +216,27 @@ fun SettingsScreen(
 
                 Preference(
                     name = stringResource(Res.string.pref_title_language_select2),
-                    onClick = { showLanguageSelect = true },
+                    onClick = onClickLanguageSelection,
                 ) {
                     Text(
-                        selectedLanguage?.let { getLanguageDisplayName(it) }
-                            ?: stringResource(Res.string.language_default)
+                        text = selectedLanguage?.let { getLanguageDisplayName(it) }
+                            ?: stringResource(Res.string.language_default),
+                        modifier = Modifier.weight(1f, fill = false)
                     )
+                    NextScreenIcon()
                 }
 
                 Preference(
                     name = stringResource(Res.string.pref_title_theme_select),
                     onClick = { showThemeSelect = true },
                 ) {
-                    Text(stringResource(theme.title))
+                    Select(
+                        items = Theme.entries,
+                        selectedItem = theme,
+                        onSelected = { viewModel.setTheme(it) },
+                        expanded = showThemeSelect,
+                        onDismissRequest = { showThemeSelect = false }
+                    ) { Text(stringResource(it.title)) }
                 }
 
                 Preference(
@@ -291,57 +318,6 @@ fun SettingsScreen(
                     Text(stringResource(Res.string.dialog_tutorial_upload))
                 }
             },
-        )
-    }
-    if (showThemeSelect) {
-        SimpleListPickerDialog(
-            onDismissRequest = { showThemeSelect = false },
-            items = Theme.entries,
-            onItemSelected = { viewModel.setTheme(it) },
-            title = { Text(stringResource(Res.string.pref_title_theme_select)) },
-            selectedItem = theme,
-            getItemName = { stringResource(it.title) }
-        )
-    }
-    if (showAutosyncSelect) {
-        SimpleListPickerDialog(
-            onDismissRequest = { showAutosyncSelect = false },
-            items = Autosync.entries,
-            onItemSelected = {
-                viewModel.setAutosync(it)
-                if (it != Autosync.ON) {
-                    showUploadTutorialInfo = true
-                }
-            },
-            title = { Text(stringResource(Res.string.pref_title_sync2)) },
-            selectedItem = autosync,
-            getItemName = { stringResource(it.title) }
-        )
-    }
-    if (showResurveyIntervalsSelect) {
-        SimpleListPickerDialog(
-            onDismissRequest = { showResurveyIntervalsSelect = false },
-            items = ResurveyIntervals.entries,
-            onItemSelected = { viewModel.setResurveyIntervals(it) },
-            title = { Text(stringResource(Res.string.pref_title_resurvey_intervals)) },
-            selectedItem = resurveyIntervals,
-            getItemName = { stringResource(it.title) }
-        )
-    }
-    val codes = selectableLanguageCodes
-    if (showLanguageSelect && codes != null) {
-        val namesByCode = remember(codes) { codes.associateWith { getLanguageDisplayName(it) } }
-        val sortedCodes = listOf(null) + codes.sortedBy { namesByCode[it]?.lowercase() }
-        SimpleListPickerDialog(
-            onDismissRequest = { showLanguageSelect = false },
-            items = sortedCodes,
-            onItemSelected = { viewModel.setSelectedLanguage(it) },
-            title = { Text(stringResource(Res.string.pref_title_language_select2)) },
-            selectedItem = selectedLanguage,
-            getItemName = { item ->
-                item?.let { getLanguageDisplayName(it) }
-                    ?: stringResource(Res.string.language_default)
-            }
         )
     }
 }

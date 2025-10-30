@@ -1,21 +1,23 @@
 package de.westnordost.streetcomplete.quests.tourism_information
 
-import android.os.Bundle
-import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.AImageListQuestForm
+import androidx.compose.runtime.Composable
+import de.westnordost.streetcomplete.quests.AItemSelectQuestForm
+import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
+import kotlinx.serialization.serializer
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 
-class AddInformationForm : AImageListQuestForm<TourismInformation, TourismInformation>() {
+class AddInformationForm : AItemSelectQuestForm<TourismInformation, TourismInformation>() {
 
+    override val items = TourismInformation.entries
     override val itemsPerRow = 2
+    override val serializer = serializer<TourismInformation>()
 
-    override val items = TourismInformation.entries.map { it.asItem() }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        imageSelector.cellLayoutId = R.layout.cell_icon_select_with_label_below
+    @Composable override fun ItemContent(item: TourismInformation) {
+        ImageWithLabel(painterResource(item.icon), stringResource(item.title))
     }
 
-    override fun onClickOk(selectedItems: List<TourismInformation>) {
-        applyAnswer(selectedItems.single())
+    override fun onClickOk(selectedItem: TourismInformation) {
+        applyAnswer(selectedItem)
     }
 }

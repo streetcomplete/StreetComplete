@@ -27,7 +27,7 @@ class AddAirCompressor : OsmFilterQuestType<Boolean>(), AndroidQuest {
 
     override val changesetComment = "Survey availability of air compressors"
     override val wikiLink = "Key:compressed_air"
-    override val icon = R.drawable.ic_quest_car_air_compressor
+    override val icon = R.drawable.quest_car_air_compressor
     override val achievements = listOf(CAR, BICYCLIST)
     override val isReplacePlaceEnabled = true
 

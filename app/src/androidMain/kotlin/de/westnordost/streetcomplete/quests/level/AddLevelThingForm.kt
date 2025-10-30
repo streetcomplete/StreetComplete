@@ -4,7 +4,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.osm.isPlaceOrDisusedPlace
 import de.westnordost.streetcomplete.osm.isThing
-import de.westnordost.streetcomplete.quests.level.AddLevelForm
 
 class AddLevelThingForm : AddLevelForm() {
 

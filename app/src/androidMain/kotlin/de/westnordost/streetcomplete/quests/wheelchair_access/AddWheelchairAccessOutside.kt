@@ -14,15 +14,16 @@ class AddWheelchairAccessOutside : OsmFilterQuestType<WheelchairAccess>(), Andro
     override val elementFilter = """
         nodes, ways, relations with
          (
-          leisure = dog_park
-          or man_made = tower and tower:type = observation and !emergency and building != fire_lookout
+           leisure = dog_park
+           or man_made = tower and tower:type = observation and !emergency and building != fire_lookout
+           or natural = cave_entrance and fee=yes
          )
          and access !~ no|private
          and (!wheelchair or wheelchair older today -8 years)
     """
     override val changesetComment = "Survey wheelchair accessibility of outside places"
     override val wikiLink = "Key:wheelchair"
-    override val icon = R.drawable.ic_quest_toilets_wheelchair
+    override val icon = R.drawable.quest_toilets_wheelchair
     override val achievements = listOf(RARE, WHEELCHAIR)
 
     override val hint = R.string.quest_wheelchairAccess_limited_description_outside

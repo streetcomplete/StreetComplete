@@ -1,18 +1,24 @@
 package de.westnordost.streetcomplete.quests.fire_hydrant_position
 
-import de.westnordost.streetcomplete.quests.AImageListQuestForm
-import de.westnordost.streetcomplete.view.image_select.DisplayItem
+import androidx.compose.runtime.Composable
+import de.westnordost.streetcomplete.quests.AItemSelectQuestForm
+import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
+import kotlinx.serialization.serializer
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 
-class AddFireHydrantPositionForm : AImageListQuestForm<FireHydrantPosition, FireHydrantPosition>() {
+class AddFireHydrantPositionForm : AItemSelectQuestForm<FireHydrantPosition, FireHydrantPosition>() {
 
-    override val items: List<DisplayItem<FireHydrantPosition>> get() {
+    override val items = FireHydrantPosition.entries
+    override val itemsPerRow = 2
+    override val serializer = serializer<FireHydrantPosition>()
+
+    @Composable override fun ItemContent(item: FireHydrantPosition) {
         val isPillar = element.tags["fire_hydrant:type"] == "pillar"
-        return FireHydrantPosition.entries.map { it.asItem(isPillar) }
+        ImageWithLabel(painterResource(item.getIcon(isPillar)), stringResource(item.title))
     }
 
-    override val itemsPerRow = 2
-
-    override fun onClickOk(selectedItems: List<FireHydrantPosition>) {
-        applyAnswer(selectedItems.single())
+    override fun onClickOk(selectedItem: FireHydrantPosition) {
+        applyAnswer(selectedItem)
     }
 }

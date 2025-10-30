@@ -3,28 +3,39 @@ package de.westnordost.streetcomplete.quests.address
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AlertDialog
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Surface
+import androidx.compose.material.Text
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.DpSize
+import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.ComposeViewBinding
-import de.westnordost.streetcomplete.databinding.DialogQuestAddressNoHousenumberBinding
 import de.westnordost.streetcomplete.osm.address.BlockAndHouseNumber
 import de.westnordost.streetcomplete.osm.address.HouseNumber
 import de.westnordost.streetcomplete.osm.address.looksInvalid
 import de.westnordost.streetcomplete.osm.address.streetHouseNumber
 import de.westnordost.streetcomplete.osm.building.BuildingType
-import de.westnordost.streetcomplete.osm.building.asItem
 import de.westnordost.streetcomplete.osm.building.createBuildingType
+import de.westnordost.streetcomplete.osm.building.description
+import de.westnordost.streetcomplete.osm.building.icon
+import de.westnordost.streetcomplete.osm.building.title
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.IAnswerItem
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.quest_address_answer_no_housenumber_message1
+import de.westnordost.streetcomplete.resources.quest_address_answer_no_housenumber_message2b
+import de.westnordost.streetcomplete.ui.common.item_select.ImageWithDescription
 import de.westnordost.streetcomplete.ui.util.content
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
-import de.westnordost.streetcomplete.view.image_select.DisplayItem
-import de.westnordost.streetcomplete.view.image_select.ItemViewHolder
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 
 class AddHousenumberForm : AbstractOsmQuestForm<HouseNumberAnswer>() {
 
@@ -91,7 +102,7 @@ class AddHousenumberForm : AbstractOsmQuestForm<HouseNumberAnswer>() {
     private fun onNoHouseNumber() {
         val buildingType = createBuildingType(element.tags)
         if (buildingType != null) {
-            showNoHouseNumberDialog(buildingType.asItem())
+            showNoHouseNumberDialog(buildingType)
         } else {
             // fallback in case the type of building is known by Housenumber quest but not by
             // building type quest
@@ -99,9 +110,22 @@ class AddHousenumberForm : AbstractOsmQuestForm<HouseNumberAnswer>() {
         }
     }
 
-    private fun showNoHouseNumberDialog(buildingType: DisplayItem<BuildingType>) {
-        val dialogBinding = DialogQuestAddressNoHousenumberBinding.inflate(layoutInflater)
-        ItemViewHolder(dialogBinding.root).bind(buildingType)
+    private fun showNoHouseNumberDialog(buildingType: BuildingType) {
+        val dialogBinding = ComposeViewBinding.inflate(layoutInflater)
+        dialogBinding.composeViewBase.content { Surface(Modifier.padding(24.dp)) {
+            Column(
+                verticalArrangement = Arrangement.spacedBy(16.dp)
+            ) {
+                Text(stringResource(Res.string.quest_address_answer_no_housenumber_message1))
+                ImageWithDescription(
+                    painter = painterResource(buildingType.icon),
+                    title = stringResource(buildingType.title),
+                    description = buildingType.description?.let { stringResource(it) },
+                    imageSize = DpSize(48.dp, 48.dp),
+                )
+                Text(stringResource(Res.string.quest_address_answer_no_housenumber_message2b))
+            }
+        } }
 
         AlertDialog.Builder(requireContext())
             .setView(dialogBinding.root)
