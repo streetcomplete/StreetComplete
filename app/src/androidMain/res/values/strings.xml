@@ -722,6 +722,11 @@ Before uploading your changes, the app checks with a &lt;a href="https://www.wes
     <string name="quest_address_street_street_name_label">Street name:</string>
     <string name="quest_address_street_hint2">Tap street on map to select it</string>
 
+    <string name="quest_aerialway_bicycle_title">Does this aerialway transport bicycles?</string>
+    <string name="quest_aerialway_bicycle_yes">Yes</string>
+    <string name="quest_aerialway_bicycle_summer">During summer</string>
+    <string name="quest_aerialway_bicycle_no">No</string>
+
     <string name="quest_airConditioning_title">Is this place air-conditioned?</string>
 
     <string name="quest_atm_cashin_title">Can you deposit cash at this ATM?</string>
@@ -861,6 +866,11 @@ Before uploading your changes, the app checks with a &lt;a href="https://www.wes
     <string name="quest_bollard_type_flexible">Flexible</string>
     <string name="quest_bollard_type_fixed">Fixed (not removable)</string>
     <string name="quest_bollard_type_not_bollard">Not a bollard, but some other barrier</string>
+
+    <string name="quest_bothway_title">In what direction can you ride this ?</string>
+    <string name="quest_bothway_answer_bothway">This can be used bothway.</string>
+    <string name="quest_bothway_answer_upwards">This can only lead upwards.</string>
+    <string name="quest_bothway_answer_downwards">This can only lead downwards.</string>
 
     <string name="quest_bridge_structure_title">What’s the structure of this bridge?</string>
 
