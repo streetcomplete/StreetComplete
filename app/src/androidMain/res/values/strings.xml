@@ -186,7 +186,6 @@ The info you enter is directly added to OpenStreetMap in your name, without the 
     <string name="quest_source_dialog_note">Only information that was verified in-person should be entered.</string>
     <string name="dialog_session_dont_show_again">Don’t show again for this session</string>
 
-
     <!-- Tutorial screen -->
 
     <string name="tutorial_welcome_to_osm">Welcome to OpenStreetMap</string>
@@ -723,6 +722,9 @@ Before uploading your changes, the app checks with a &lt;a href="https://www.wes
     <string name="quest_address_street_street_name_label">Street name:</string>
     <string name="quest_address_street_hint2">Tap street on map to select it</string>
 
+    <string name="quest_aerialway_bicycle_title">Does this aerialway transport bicycles?</string>
+    <string name="quest_aerialway_bicycle_summer">Only in summer</string>
+
     <string name="quest_airConditioning_title">Is this place air-conditioned?</string>
 
     <string name="quest_atm_cashin_title">Can you deposit cash at this ATM?</string>
@@ -836,6 +838,7 @@ Before uploading your changes, the app checks with a &lt;a href="https://www.wes
     <string name="quest_board_type_notice_board">It is a notice board</string>
     <string name="quest_board_type_public_transport">Public transport</string>
     <string name="quest_board_type_sport">Sport, Exercises</string>
+    <string name="quest_board_type_rules">Rules</string>
     <string name="quest_board_type_map">It is a map</string>
     <string name="quest_board_type_map_title">Is it just a map and only a map?</string>
     <string name="quest_board_type_map_description">If the board is about a particular topic, please specify it, regardless of whether it also includes a map. For example a public transport board may have a bus route map. If the topic is not listed among the available answers, please consider leaving a note instead.</string>
@@ -1137,6 +1140,8 @@ A level counts as a roof level when its windows are in the roof. Subsequently, r
     <string name="quest_fireHydrant_type_wall">Wall</string>
     <string name="quest_fireHydrant_type_pipe">Pipe</string>
 
+    <string name="quest_firewood_provided_title">Is firewood provided here?</string>
+
     <string name="quest_footwayPartSurface_title">What’s the surface of the footpath here?</string>
     <!-- "Self-service" refers to a situation where patrons can pump gas for themselves -->
     <string name="quest_fuelSelfService_title">Does this gas station allow self-service?</string>
@@ -1168,6 +1173,8 @@ A level counts as a roof level when its windows are in the roof. Subsequently, r
 
     <string name="quest_defibrillator_location">Where is this defibrillator located?</string>
     <string name="quest_defibrillator_location_description">Please provide a concise description of its position (e.g. “in the porter’s lounge”).</string>
+
+    <string name="quest_first_aid_kit_location">Where is this first aid kit located?</string>
 
     <string name="quest_kerb_height_title">What’s the height of this curb?</string>
     <string name="quest_kerb_height_flush">Same level as road surface</string>

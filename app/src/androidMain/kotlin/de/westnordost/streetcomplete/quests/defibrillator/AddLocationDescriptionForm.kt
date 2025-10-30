@@ -8,7 +8,7 @@ import de.westnordost.streetcomplete.databinding.QuestLocationBinding
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.util.ktx.nonBlankTextOrNull
 
-class AddDefibrillatorLocationForm : AbstractOsmQuestForm<String>() {
+class AddLocationDescriptionForm : AbstractOsmQuestForm<String>() {
 
     override val contentLayoutResId = R.layout.quest_location
     private val binding by contentViewBinding(QuestLocationBinding::bind)
