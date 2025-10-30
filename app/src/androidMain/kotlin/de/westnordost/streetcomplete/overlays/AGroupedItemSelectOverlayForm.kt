@@ -15,6 +15,7 @@ import de.westnordost.streetcomplete.util.takeFavorites
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.builtins.ListSerializer
 import org.koin.android.ext.android.inject
+import kotlin.getValue
 
 /** Abstract base class for any overlay form in which the user selects a grouped item */
 abstract class AGroupedItemSelectOverlayForm<G: Group<I>, I> : AbstractOverlayForm() {

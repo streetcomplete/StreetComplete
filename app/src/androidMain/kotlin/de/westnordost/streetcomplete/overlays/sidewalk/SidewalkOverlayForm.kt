@@ -21,6 +21,7 @@ import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 import de.westnordost.streetcomplete.quests.sidewalk.SidewalkForm
 import de.westnordost.streetcomplete.ui.util.content
 import org.koin.android.ext.android.inject
+import kotlin.getValue
 
 class SidewalkOverlayForm : AbstractOverlayForm() {
 

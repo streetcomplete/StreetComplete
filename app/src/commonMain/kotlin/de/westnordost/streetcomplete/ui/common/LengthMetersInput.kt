@@ -16,6 +16,7 @@ import de.westnordost.streetcomplete.osm.Length
 import de.westnordost.streetcomplete.ui.common.input.DecimalInput
 import de.westnordost.streetcomplete.util.ktx.toShortString
 import org.jetbrains.compose.ui.tooling.preview.Preview
+import de.westnordost.streetcomplete.util.ktx.toShortString
 
 /** Input field to input a length in meters */
 @Composable

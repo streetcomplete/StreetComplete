@@ -14,6 +14,7 @@ import de.westnordost.streetcomplete.util.takeFavorites
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.builtins.ListSerializer
 import org.koin.android.ext.android.inject
+import kotlin.getValue
 
 /** Abstract base class for any overlay form in which the user selects an image item */
 abstract class AItemSelectOverlayForm<I> : AbstractOverlayForm() {
