@@ -29,7 +29,7 @@ class AddDefibrillatorLocation : OsmFilterQuestType<String>(), AndroidQuest {
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
         getMapData().filter("nodes with emergency = defibrillator")
 
-    override fun createForm() = AddDefibrillatorLocationForm()
+    override fun createForm() = AddLocationDescriptionForm()
 
     override fun applyAnswerTo(answer: String, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags["defibrillator:location"] = answer

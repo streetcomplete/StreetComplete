@@ -1,17 +1,2 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg version="1.1" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
-    <path d="M64 0a64 64 0 1 0 0 128A64 64 0 1 0 64 0z" fill="#9bbe55" stroke-width=".2"/>
-
-    <g fill="#000" fill-opacity=".2" transform="translate(0,2)">
-        <path d="M32 40h64a4 4 0 0 1 4 4v40a4 4 0 0 1-4 4H32a4 4 0 0 1-4-4V44a4 4 0 0 1 4-4z"/>
-        <path d="M68 52h-8v8h-8v8h8v8h8v-8h8v-8h-8z"/>
-    </g>
-
-    <path d="M32 40h64a4 4 0 0 1 4 4v40a4 4 0 0 1-4 4H32a4 4 0 0 1-4-4V44a4 4 0 0 1 4-4z" fill="#ef4444"/>
-
-    <path d="M48 32h32a4 4 0 0 1 4 4v4h-8v-4H52v4h-8v-4a4 4 0 0 1 4-4z" fill="#d1d5db"/>
-
-    <path d="M64 48a16 16 0 1 0 0 32 16 16 0 1 0 0-32z" fill="#e5e7eb"/>
-
-    <path d="M68 52h-8v8h-8v8h8v8h8v-8h8v-8h-8z" fill="#ef4444"/>
-</svg>
+<svg version="1.1" viewBox="0 0 128 128" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"><path d="M64 0a64 64 0 1 0 0 128A64 64 0 1 0 64 0z" fill="#9bbe55" stroke-width=".2"/><path d="m44 20c-2.2091 0-4 1.7909-4 4v12h-16c-4.432 0-8 3.568-8 8v48c0 4.432 3.568 8 8 8h80c4.432 0 8-3.568 8-8v-48c0-4.432-3.568-8-8-8h-16v-12c0-2.2091-1.7909-4-4-4zm4 8h32v8h-32z" fill-opacity=".2"/><path d="m44 16c-2.2091 0-4 1.7909-4 4v12h-16c-4.432 0-8 3.568-8 8v48c0 4.432 3.568 8 8 8h80c4.432 0 8-3.568 8-8v-48c0-4.432-3.568-8-8-8h-16v-12c0-2.2091-1.7909-4-4-4zm4 8h32v8h-32z" fill="#5a8049"/><path d="m70 44h-12v14h-14v12h14v14h12v-14h14v-12h-14z" fill="#fff"/></svg>

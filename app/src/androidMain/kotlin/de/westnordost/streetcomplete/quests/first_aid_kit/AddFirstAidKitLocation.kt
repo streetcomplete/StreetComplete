@@ -9,7 +9,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.LIFESAVER
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.quests.defibrillator.AddDefibrillatorLocationForm
+import de.westnordost.streetcomplete.quests.defibrillator.AddLocationDescriptionForm
 
 class AddFirstAidKitLocation : OsmFilterQuestType<String>(), AndroidQuest {
 
@@ -21,7 +21,7 @@ class AddFirstAidKitLocation : OsmFilterQuestType<String>(), AndroidQuest {
     """
     override val changesetComment = "Specify first aid kit location"
     override val wikiLink = "Tag:emergency=first_aid_kit"
-    override val icon = R.drawable.ic_quest_first_aid_kit
+    override val icon = R.drawable.quest_first_aid_kit
     override val isDeleteElementEnabled = false
     override val achievements = listOf(LIFESAVER)
 
@@ -30,7 +30,7 @@ class AddFirstAidKitLocation : OsmFilterQuestType<String>(), AndroidQuest {
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
         getMapData().filter("nodes with emergency = first_aid_kit")
 
-    override fun createForm() = AddDefibrillatorLocationForm()
+    override fun createForm() = AddLocationDescriptionForm()
 
     override fun applyAnswerTo(answer: String, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags["first_aid_kit:location"] = answer
