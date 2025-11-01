@@ -326,13 +326,13 @@ Note that there are some graphics which haven't been used yet, created for propo
 A new icon can reuse the content of [other quest icons](res/graphics/quest), it can also be based on openly licensed graphics such as ones from [svgrepo.com](https://www.svgrepo.com/). See [the attribution file](res/graphics/authors.txt) for what has been used so far.
 
 Keep similar style to existing ones and the app in general. Note that the background color of the icon marks its relation group:
-- magenta: bicycle traffic
-- blue: pedestrian traffic
-- yellow: motor vehicles (car, motorcycles)
-- grey: constructions (building type/height/entrances/roof/address, power poles, bridges, fire hydrants...)
-- light orange: shop related (opening hours, shop types/seating, shop/atm names, shop level, air conditioning, smoking, internet access, payment, surveillance) 
-- green: amenities (nature, picnic, sport, religion, recycling, police, postbox, wheelchair, objects on summits, AED, toilets, backrest, is entrance paid...)
-- brown: nature-related (stile type/steps, trees/orchards)
+- magenta(#ca72e2): bicycle traffic
+- blue(#529add): pedestrian traffic,
+- yellow(#ffdd55): motor vehicles (car, motorcycles)
+- grey(#c8c4b7): constructions (building type/height/entrances/roof/address, power poles, bridges, fire hydrants...)
+- light orange(#e9a76f): shop related (opening hours, shop types/seating, shop/atm names, shop level, air conditioning, smoking, internet access, payment, surveillance) 
+- green(#9bbe55): amenities (nature, picnic, sport, religion, recycling, police, postbox, wheelchair, objects on summits, AED, toilets, backrest, is entrance paid...)
+- brown(#b9a065): nature-related (stile type/steps, trees/orchards)
 
 Once the quest icon is ready:
 
