@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests.max_weight
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -14,6 +15,7 @@ import androidx.compose.ui.Modifier
 import com.cheonjaeung.compose.grid.SimpleGridCells
 import de.westnordost.streetcomplete.data.meta.WeightMeasurementUnit
 import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.quest_maxweight_remove_sign
 import de.westnordost.streetcomplete.resources.quest_maxweight_select_sign
 import de.westnordost.streetcomplete.ui.common.Button2
 import de.westnordost.streetcomplete.ui.common.dialogs.SimpleItemSelectDialog
@@ -31,6 +33,7 @@ fun MaxWeightForm(
     countryCode: String,
     selectableUnits: List<WeightMeasurementUnit>,
     modifier: Modifier = Modifier,
+    selectedTypes: List<MaxWeightType>
 ) {
     var showSelectionDialog by remember { mutableStateOf(false) }
 
@@ -38,25 +41,28 @@ fun MaxWeightForm(
         modifier = modifier,
         contentAlignment = Alignment.Center
     ) {
-        AnimatedContent(
-            targetState = type,
-            transitionSpec = FallDownTransitionSpec,
-            contentAlignment = Alignment.Center,
-        ) { type ->
-            if (type == null) {
-                Button2(
-                    onClick = { showSelectionDialog = true },
-                ) {
-                    Text(stringResource(Res.string.quest_maxweight_select_sign))
+        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+            AnimatedContent(
+                targetState = type,
+                transitionSpec = FallDownTransitionSpec,
+                contentAlignment = Alignment.Center,
+            ) { type ->
+                if (type != null) {
+                    MaxWeightSignForm(
+                        type = type,
+                        weight = weight,
+                        onWeightChange = onChangeWeight,
+                        countryCode = countryCode,
+                        selectableUnits = selectableUnits,
+                    )
+                } else {
+                    showSelectionDialog = true
                 }
-            } else {
-                MaxWeightSignForm(
-                    type = type,
-                    weight = weight,
-                    onWeightChange = onChangeWeight,
-                    countryCode = countryCode,
-                    selectableUnits = selectableUnits,
-                )
+            }
+            Button2(
+                onClick = { onSelectType(null) },
+            ) {
+                Text(stringResource(Res.string.quest_maxweight_remove_sign))
             }
         }
     }
@@ -65,8 +71,8 @@ fun MaxWeightForm(
         SimpleItemSelectDialog(
             onDismissRequest = { showSelectionDialog = false },
             columns = SimpleGridCells.Fixed(2),
-            items = MaxWeightType.entries.filter { it.getIcon(countryCode) != null },
-            onSelected = { onSelectType(it) },
+            items = MaxWeightType.entries.filter { it !in selectedTypes && it.getIcon(countryCode) != null },
+            onSelected = { onSelectType(it); showSelectionDialog = false },
             itemContent = {
                 val icon = it.getIcon(countryCode)
                 if (icon != null) Image(painterResource(icon), null)

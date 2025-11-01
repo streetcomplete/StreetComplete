@@ -11,10 +11,12 @@ sealed interface MaxWeightAnswer {
     data object NoSign : MaxWeightAnswer
 }
 
-data class MaxWeight(val sign: MaxWeightType, val weight: Weight) : MaxWeightAnswer
+data class MaxWeight(val signs: List<MaxWeightType>, val weights: List<Weight>) : MaxWeightAnswer
 
 fun MaxWeight.applyTo(tags: Tags) {
-    tags[sign.osmKey] = weight.toOsmString()
+    for ((sign, weight) in signs.zip(weights)) {
+        tags[sign.osmKey] = weight.toOsmString()
+    }
 }
 
 private val MaxWeightType.osmKey get() = when (this) {
