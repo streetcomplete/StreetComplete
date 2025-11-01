@@ -112,6 +112,8 @@ import de.westnordost.streetcomplete.quests.max_height.AddMaxPhysicalHeight
 import de.westnordost.streetcomplete.quests.max_speed.AddMaxSpeed
 import de.westnordost.streetcomplete.quests.max_weight.AddMaxWeight
 import de.westnordost.streetcomplete.quests.memorial_type.AddMemorialType
+import de.westnordost.streetcomplete.quests.monument_memorial_name.AddMonumentName
+import de.westnordost.streetcomplete.quests.monument_memorial_name.IsMonumentOrMemorial
 import de.westnordost.streetcomplete.quests.moped.AddMopedAccess
 import de.westnordost.streetcomplete.quests.motorcycle_parking_capacity.AddMotorcycleParkingCapacity
 import de.westnordost.streetcomplete.quests.motorcycle_parking_cover.AddMotorcycleParkingCover
@@ -351,6 +353,8 @@ fun questTypeRegistry(
     49 to CheckExistence(getFeature),
     155 to AddGritBinSeasonal(),
 
+    189 to IsMonumentOrMemorial(),
+
     50 to AddBoardType(),
     171 to AddBoardName(),
 
@@ -410,6 +414,8 @@ fun questTypeRegistry(
     77 to CheckOpeningHoursSigned(getFeature),
     81 to AddOpeningHours(),
     83 to AddBicyclePump(), // visible from the outside, but only during opening hours
+
+    190 to AddMonumentName(),
 
     84 to AddAtmOperator(),
     85 to AddAtmCashIn(),

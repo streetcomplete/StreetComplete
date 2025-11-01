@@ -1,0 +1,17 @@
+<svg id="vector" version="1.1" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+ <path id="path" d="m128 64c0 35.35-28.65 64-64 64s-64-28.65-64-64 28.65-64 64-64 64 28.65 64 64" fill="#9bbe55"/>
+ <path d="m23.012 100h82.844l4.6024 8h-92.049z" fill-opacity=".2" stroke-width="1.0727" style="paint-order:stroke markers fill"/>
+ <g fill="#d9d9d9">
+  <path d="m23.601 95.911h80.844l4.4913 8.1783h-89.826z" stroke="#adadad" stroke-width="4" style="paint-order:stroke markers fill"/>
+  <g stroke="#aeaeae">
+   <rect x="27.99" y="88.953" width="17.407" height="5.7569" stroke-width="1.7062"/>
+   <path d="m32.539 31.326 8.5973 0.03184 1.7012 57.618h-11.733z" stroke-width="1.5581"/>
+   <rect x="55.466" y="89.069" width="17.407" height="5.7569" stroke-width="1.7062"/>
+   <path d="m60.015 31.442 8.5973 0.03184 1.7012 57.618h-11.733z" stroke-width="1.5581"/>
+   <rect x="83.756" y="89.018" width="17.407" height="5.7569" stroke-width="1.7062"/>
+   <path d="m88.305 31.391 8.5973 0.03184 1.7012 57.618h-11.733z" stroke-width="1.5581"/>
+  </g>
+  <path d="m19.969 22.082 86.881-0.0426 8e-3 8.179-86.883 0.01994z" stroke="#adadad" stroke-width="4" style="paint-order:stroke markers fill"/>
+  <path transform="matrix(4.2545 0 0 .67257 -180.92 14.497)" d="m65.559 8.7246-15.761 0.22024 7.6899-13.76z" stroke="#adadad" stroke-width="1.1823"/>
+ </g>
+</svg>
