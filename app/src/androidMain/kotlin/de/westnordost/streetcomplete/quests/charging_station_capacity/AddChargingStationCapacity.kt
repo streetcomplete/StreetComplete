@@ -17,10 +17,12 @@ class AddChargingStationCapacity : OsmFilterQuestType<Int>(), AndroidQuest {
         nodes, ways with
           amenity = charging_station
           and !capacity
-          and bicycle !~ yes|designated
-          and scooter !~ yes|designated
-          and motorcar != no
-          and motor_vehicle != no
+          and !capacity:motorcar
+          and
+          (
+            motorcar ~ yes|designated
+            or motor_vehicle ~ yes|designated
+          )
           and access !~ private|no
     """
     override val changesetComment = "Specify charging stations capacities"
@@ -37,6 +39,14 @@ class AddChargingStationCapacity : OsmFilterQuestType<Int>(), AndroidQuest {
     override fun createForm() = AddChargingStationCapacityForm()
 
     override fun applyAnswerTo(answer: Int, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
-        tags.updateWithCheckDate("capacity", answer.toString())
+        /*
+        use capacity:motorcar if this charging station can be used my multiple vehicles
+        otherwise use capacity
+         */
+        if (canBeAccessedByOtherVehicle(tags, "motorcar")) {
+            tags.updateWithCheckDate("capacity:motorcar", answer.toString())
+        } else {
+            tags.updateWithCheckDate("capacity", answer.toString())
+        }
     }
 }
