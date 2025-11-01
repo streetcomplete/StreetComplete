@@ -6,6 +6,7 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryEntry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.util.SpatialCache
+import de.westnordost.streetcomplete.util.ktx.geometryType
 import de.westnordost.streetcomplete.util.math.contains
 import de.westnordost.streetcomplete.util.math.isCompletelyInside
 import kotlinx.atomicfu.locks.ReentrantLock
@@ -454,16 +455,19 @@ class MapDataCache(
             trim((maxTiles * 2) / 3)
         }
 
-        val ferryWays = HashSet<Long>()
+        // Remove all ferry ways that are part of a ferry relation
         for (relation in result.relations) {
             if (relation.tags["route"] != "ferry") continue
             for (member in relation.members) {
                 if (member.type != ElementType.WAY) continue
-                ferryWays.add(member.ref)
+                val way = result.getWay(member.ref) ?: continue
+                val newTags = way.tags.toMutableMap()
+                newTags.remove("route")
+                result.putElement(
+                    way.copy(tags = newTags)
+                )
             }
         }
-
-        result.filter { it !is Way || it.id !in ferryWays }.asIterable()
 
         return result
     }
