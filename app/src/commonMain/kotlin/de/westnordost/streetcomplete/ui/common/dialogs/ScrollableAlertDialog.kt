@@ -4,12 +4,10 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.FlowRowScope
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.Divider
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.TextButton
@@ -19,11 +17,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
-import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
-import de.westnordost.streetcomplete.ui.ktx.conditional
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
 // TODO Compose
@@ -34,9 +30,7 @@ import org.jetbrains.compose.ui.tooling.preview.Preview
 //  example in the Material design guidelines).
 
 /** AlertDialog that can have scrollable content without bugging out and separates the scrollable
- *  content with a divider at the top and bottom.
- *
- *  Caveat: It always covers the maximum possible space unless a size is specified */
+ *  content with a divider at the top and bottom. */
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun ScrollableAlertDialog(
@@ -45,8 +39,6 @@ fun ScrollableAlertDialog(
     title: (@Composable () -> Unit)? = null,
     content: (@Composable ColumnScope.() -> Unit)? = null,
     buttons: (@Composable FlowRowScope.() -> Unit)? = null,
-    width: Dp? = null,
-    height: Dp? = null,
     shape: Shape = MaterialTheme.shapes.medium,
     backgroundColor: Color = MaterialTheme.colors.surface,
     contentColor: Color = contentColorFor(backgroundColor),
@@ -57,14 +49,10 @@ fun ScrollableAlertDialog(
         properties = properties
     ) {
         AlertDialogLayout(
-            modifier = modifier
-                .conditional(width != null) { width(width!!) }
-                .conditional(height != null) { height(height!!) },
+            modifier = modifier,
             title = title,
             content = content?.let { {
-                Divider()
-                Column(Modifier.weight(1f)) { content() }
-                Divider()
+                Column(Modifier.weight(1f, fill = false)) { content() }
             } },
             buttons = buttons,
             shape = shape,
@@ -100,6 +88,6 @@ Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie co
             TextButton(onClick = {}) { Text("Cancel") }
             TextButton(onClick = {}) { Text("OK") }
         },
-        width = 260.dp
+        modifier = Modifier.width(260.dp)
     )
 }

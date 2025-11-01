@@ -16,21 +16,21 @@ class AddSportTest {
     @Test fun `replace previous sport answer`() {
         assertEquals(
             setOf(StringMapEntryModify("sport", "football", "soccer")),
-            questType.answerAppliedTo(listOf(SOCCER), mapOf("sport" to "football"))
+            questType.answerAppliedTo(setOf(SOCCER), mapOf("sport" to "football"))
         )
     }
 
     @Test fun `apply sport answer`() {
         assertEquals(
             setOf(StringMapEntryAdd("sport", "soccer")),
-            questType.answerApplied(listOf(SOCCER))
+            questType.answerApplied(setOf(SOCCER))
         )
     }
 
     @Test fun `apply multiple sports answer`() {
         assertEquals(
             setOf(StringMapEntryAdd("sport", "soccer;tennis")),
-            questType.answerApplied(listOf(SOCCER, TENNIS))
+            questType.answerApplied(setOf(SOCCER, TENNIS))
         )
     }
 }

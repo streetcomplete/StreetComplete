@@ -23,7 +23,6 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.intl.Locale
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.ui.common.TextField2
 import de.westnordost.streetcomplete.ui.common.TextFieldStyle
@@ -164,7 +163,6 @@ private fun DecimalInputPreview() {
             onValueChange = { number = it },
             maxIntegerDigits = 2,
             maxFractionDigits = 2,
-            textStyle = LocalTextStyle.current.copy(textAlign = TextAlign.Center),
             modifier = Modifier.width(80.dp),
         )
         Text(number?.toString().orEmpty(), Modifier.padding(16.dp))

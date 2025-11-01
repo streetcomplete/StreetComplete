@@ -20,7 +20,7 @@ class AddFireHydrantPosition : OsmFilterQuestType<FireHydrantPosition>(), Androi
     """
     override val changesetComment = "Specify fire hydrant positions"
     override val wikiLink = "Tag:emergency=fire_hydrant"
-    override val icon = R.drawable.ic_quest_fire_hydrant_grass
+    override val icon = R.drawable.quest_fire_hydrant_grass
     override val isDeleteElementEnabled = true
     override val achievements = listOf(LIFESAVER)
 

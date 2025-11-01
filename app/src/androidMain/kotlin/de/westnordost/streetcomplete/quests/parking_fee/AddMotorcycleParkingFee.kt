@@ -21,7 +21,7 @@ class AddMotorcycleParkingFee : OsmFilterQuestType<ParkingFeeAnswer>(), AndroidQ
     """
     override val changesetComment = "Specify motorcycle parking fees"
     override val wikiLink = "Tag:amenity=motorcycle_parking"
-    override val icon = R.drawable.ic_quest_motorcycle_parking_fee
+    override val icon = R.drawable.quest_motorcycle_parking_fee
     override val achievements = listOf(CAR)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_parking_fee_title

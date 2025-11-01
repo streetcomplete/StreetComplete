@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.osm.cycleway
 
+import de.westnordost.streetcomplete.osm.Sides
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway.*
 import de.westnordost.streetcomplete.osm.oneway.Direction
 import de.westnordost.streetcomplete.osm.oneway.Direction.*
@@ -2416,13 +2417,13 @@ class CyclewayParserKtTest {
 }
 
 private fun cycleway(left: Pair<Cycleway, Direction>?, right: Pair<Cycleway, Direction>?) =
-    LeftAndRightCycleway(
+    Sides(
         left?.let { CyclewayAndDirection(it.first, it.second) },
         right?.let { CyclewayAndDirection(it.first, it.second) },
     )
 
 private fun cycleway(left: Cycleway?, right: Cycleway?, isLeftHandTraffic: Boolean = false) =
-    LeftAndRightCycleway(
+    Sides(
         left?.let { CyclewayAndDirection(it, if (isLeftHandTraffic) FORWARD else BACKWARD) },
         right?.let { CyclewayAndDirection(it, if (isLeftHandTraffic) BACKWARD else FORWARD) },
     )

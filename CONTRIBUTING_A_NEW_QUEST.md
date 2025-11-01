@@ -179,7 +179,7 @@ This query will be limited to objects which fulfill some requirements.
 - `and !indoor`
   - and `indoor` key must not be present at all, to show only ones where this tag is still missing
 
-See the documentation of [`ElementFilterExpression`](app/src/androidMain/kotlin/de/westnordost/streetcomplete/data/elementfilter/ElementFilterExpression.kt) for a complete documentation of the syntax. You can look around some quests to see more examples of such element filter expressions.
+See the documentation of [`ElementFilterExpression`](app/src/commonMain/kotlin/de/westnordost/streetcomplete/data/elementfilter/ElementFilterExpression.kt) for a complete documentation of the syntax. You can look around some quests to see more examples of such element filter expressions.
 
 
 See [this step](https://github.com/matkoniecz/StreetComplete_quest_creation_tutorial/commit/2726ff1c7b3121825e808c4566e6e534392121b3) in the example repository.
@@ -219,7 +219,7 @@ See [this step](https://github.com/matkoniecz/StreetComplete_quest_creation_tuto
 ## icon
 
 ```kotlin
-override val icon = R.drawable.ic_quest_defibrillator
+override val icon = R.drawable.quest_defibrillator
 ```
 
 icon drawable, you can initially use any icon.
@@ -236,7 +236,7 @@ See [this step](https://github.com/matkoniecz/StreetComplete_quest_creation_tuto
 override val achievements = listOf(LIFESAVER)
 ```
 
-In quest achievements, list what is relevant to the given quest, see the full list of available ones in [AchievementsModule.kt](app/src/androidMain/kotlin/de/westnordost/streetcomplete/data/user/achievements/AchievementsModule.kt)
+In quest achievements, list what is relevant to the given quest, see the full list of available ones in [AchievementsModule.kt](app/src/commonMain/kotlin/de/westnordost/streetcomplete/data/user/achievements/AchievementsModule.kt)
 
 See [this step](https://github.com/matkoniecz/StreetComplete_quest_creation_tutorial/commit/f043440b43ad84d321c7aae4fd03095c34af8eb4) in the example repository.
 
@@ -309,7 +309,7 @@ override fun getHighlightedElements(element: Element, getMapData: () -> MapDataW
 
 which causes nearby `emergency = defibrillator` nodes to be shown.
 
-Also [see other optional properties](app/src/androidMain/kotlin/de/westnordost/streetcomplete/data/osm/osmquests/OsmElementQuestType.kt).
+Also [see other optional properties](app/src/commonMain/kotlin/de/westnordost/streetcomplete/data/osm/osmquests/OsmElementQuestType.kt).
 
 See [this step](https://github.com/matkoniecz/StreetComplete_quest_creation_tutorial/commit/1d648e56562d16a5dc3588ca7de8558f97d5919a) in the example repository.
 
@@ -339,12 +339,13 @@ Once the quest icon is ready:
 - when using Inkscape, save as "Optimized SVG" to remove unnecessary cruft or use another tool for that, like [svgo](https://github.com/svg/svgo) or online [SVGOMG](https://svgomg.net/)
 - Put SVG into [`res/graphics/quest`](res/graphics/quest) folder
   - SVG is a standard format editable in various software, unlike internal Android Studio XML that will be produced in the next steps.
-  - take care to name the SVG file just like the XML but without `ic_quest_` prefix, as some tools expect that.
+  - take care to name the SVG file just like the XML but without `quest_` prefix, as some tools expect that.
 - Open Android Studio (if you don't use it, there are also online tools to convert from SVG to Android XML)
 - Right click on the "app" folder in the Project tool window (top left)
 - Select new → vector asset
 - Select your SVG file
-- Name with `ic_quest_` prefix (something like `ic_quest_traffic_calming`) - it should be the same name as used in the Quest file (e.g. `R.drawable.ic_quest_traffic_calming`)
+- Name with `quest_` prefix (something like `quest_traffic_calming`) - it should be the same name as used in the Quest file (e.g. `R.drawable.quest_traffic_calming`)
+- Press "Next" and ensure the Source set is set to `src/androidMain/res`
 - Press "Finish" button to generate drawable
 - Add an entry in the [attribution file](res/graphics/authors.txt)
 - Modify `icon` property in the quest definition to use the new drawable

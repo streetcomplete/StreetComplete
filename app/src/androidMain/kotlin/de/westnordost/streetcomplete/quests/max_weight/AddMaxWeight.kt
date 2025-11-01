@@ -12,10 +12,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.quests.max_weight.MaxWeightSign.MAX_AXLE_LOAD
-import de.westnordost.streetcomplete.quests.max_weight.MaxWeightSign.MAX_GROSS_VEHICLE_MASS
-import de.westnordost.streetcomplete.quests.max_weight.MaxWeightSign.MAX_TANDEM_AXLE_LOAD
-import de.westnordost.streetcomplete.quests.max_weight.MaxWeightSign.MAX_WEIGHT
+import de.westnordost.streetcomplete.quests.ferry.wayIdsInFerryRoutes
 
 class AddMaxWeight : OsmElementQuestType<MaxWeightAnswer>, AndroidQuest {
 
@@ -50,7 +47,7 @@ class AddMaxWeight : OsmElementQuestType<MaxWeightAnswer>, AndroidQuest {
 
     override val changesetComment = "Specify maximum allowed weights"
     override val wikiLink = "Key:maxweight"
-    override val icon = R.drawable.ic_quest_max_weight
+    override val icon = R.drawable.quest_max_weight
     override val hasMarkersAtEnds = true
     override val achievements = listOf(CAR)
 
@@ -61,18 +58,23 @@ class AddMaxWeight : OsmElementQuestType<MaxWeightAnswer>, AndroidQuest {
     override fun applyAnswerTo(answer: MaxWeightAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {
             is MaxWeight -> {
-                tags[answer.sign.osmKey] = answer.weight.toString()
+                answer.applyTo(tags)
             }
-            is NoMaxWeightSign -> {
+            is MaxWeightAnswer.NoSign -> {
                 tags["maxweight:signed"] = "no"
             }
         }
     }
 
-    override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> = mapData
+    override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
+        // copied from AddFerryAccessMotorVehicle - see comment there why this filtering is necessary
+        val wayIdsInFerryRoutes = wayIdsInFerryRoutes(mapData.relations)
+        return mapData
             .filter(generalFilter)
             .filter { ferryFilter.matches(it) || highwayFilter.matches(it) }
+            .filter { it !is Way || it.id !in wayIdsInFerryRoutes }
             .asIterable()
+    }
 
     override fun isApplicableTo(element: Element): Boolean? {
         if (!generalFilter.matches(element)) return false
@@ -88,11 +90,4 @@ class AddMaxWeight : OsmElementQuestType<MaxWeightAnswer>, AndroidQuest {
         }
         return false
     }
-}
-
-private val MaxWeightSign.osmKey get() = when (this) {
-    MAX_WEIGHT             -> "maxweight"
-    MAX_GROSS_VEHICLE_MASS -> "maxweightrating"
-    MAX_AXLE_LOAD          -> "maxaxleload"
-    MAX_TANDEM_AXLE_LOAD   -> "maxbogieweight"
 }

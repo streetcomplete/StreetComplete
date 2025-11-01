@@ -21,7 +21,7 @@ class AddBikeRentalType : OsmFilterQuestType<BikeRentalTypeAnswer>(), AndroidQue
     """
     override val changesetComment = "Specify bicycle rental types"
     override val wikiLink = "Key:bicycle_rental"
-    override val icon = R.drawable.ic_quest_bicycle_rental
+    override val icon = R.drawable.quest_bicycle_rental
     override val isDeleteElementEnabled = true
     override val achievements = listOf(BICYCLIST)
 
@@ -40,7 +40,7 @@ class AddBikeRentalType : OsmFilterQuestType<BikeRentalTypeAnswer>(), AndroidQue
                     tags["shop"] = "rental"
                 }
             }
-            is BikeShopWithRental -> {
+            is BikeRentalTypeAnswer.BikeShopWithRental -> {
                 tags.remove("amenity")
                 tags["shop"] = "bicycle"
                 tags["service:bicycle:rental"] = "yes"

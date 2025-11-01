@@ -6,12 +6,12 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
-import de.westnordost.streetcomplete.quests.AListQuestForm
+import de.westnordost.streetcomplete.quests.ARadioGroupQuestForm
 import de.westnordost.streetcomplete.quests.crossing.CrossingAnswer.*
 import org.jetbrains.compose.resources.stringResource
 import org.koin.android.ext.android.inject
 
-class AddCrossingForm : AListQuestForm<CrossingAnswer, CrossingAnswer>() {
+class AddCrossingForm : ARadioGroupQuestForm<CrossingAnswer, CrossingAnswer>() {
     private val mapDataSource: MapDataWithEditsSource by inject()
 
     override val items = CrossingAnswer.entries

@@ -37,21 +37,4 @@ class OnewayUtilsTest {
             assertTrue(isNotOnewayForCyclists(mapOf("oneway:bicycle" to "no"), isLeftHandTraffic))
         }
     }
-
-    @Test fun `is in contraflow of oneway`() {
-        val oneway = mapOf("oneway" to "yes")
-        val reverseOneway = mapOf("oneway" to "-1")
-
-        // not in oneway
-        assertFalse(isInContraflowOfOneway(mapOf(), Direction.FORWARD))
-        assertFalse(isInContraflowOfOneway(mapOf(), Direction.BACKWARD))
-
-        // forward oneway
-        assertTrue(isInContraflowOfOneway(oneway, Direction.BACKWARD))
-        assertFalse(isInContraflowOfOneway(oneway, Direction.FORWARD))
-
-        // reverse oneway
-        assertTrue(isInContraflowOfOneway(reverseOneway, Direction.FORWARD))
-        assertFalse(isInContraflowOfOneway(reverseOneway, Direction.BACKWARD))
-    }
 }

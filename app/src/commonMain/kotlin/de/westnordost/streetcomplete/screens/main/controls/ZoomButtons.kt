@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.screens.main.controls
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.width
@@ -33,6 +34,7 @@ fun ZoomButtons(
         shape = CircleShape,
         color = colors.backgroundColor(enabled).value,
         contentColor = colors.contentColor(enabled).value,
+        border = BorderStroke(1.dp, MaterialTheme.colors.onSurface.copy(alpha = 0.12f)),
         elevation = 4.dp
     ) {
         Column(Modifier.width(IntrinsicSize.Min)) {

@@ -1,23 +1,41 @@
 package de.westnordost.streetcomplete.quests.segregated
 
-import android.os.Bundle
-import android.view.View
-import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.AImageListQuestForm
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
+import de.westnordost.streetcomplete.quests.AItemSelectQuestForm
+import kotlinx.serialization.serializer
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 
-class AddCyclewaySegregationForm : AImageListQuestForm<CyclewaySegregation, CyclewaySegregation>() {
+class AddCyclewaySegregationForm : AItemSelectQuestForm<CyclewaySegregation, CyclewaySegregation>() {
 
-    override val items get() =
-        CyclewaySegregation.entries.map { it.asItem(countryInfo.isLeftHandTraffic) }
-
+    override val items = CyclewaySegregation.entries
     override val itemsPerRow = 1
+    override val serializer = serializer<CyclewaySegregation>()
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        imageSelector.cellLayoutId = R.layout.cell_labeled_icon_select_right
+    @Composable override fun ItemContent(item: CyclewaySegregation) {
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(4.dp)
+        ) {
+            Image(painterResource(item.getIcon(countryInfo.isLeftHandTraffic)), null)
+            Text(
+                text = stringResource(item.title),
+                style = MaterialTheme.typography.body2,
+                modifier = Modifier.weight(1f).padding(4.dp)
+            )
+        }
     }
 
-    override fun onClickOk(selectedItems: List<CyclewaySegregation>) {
-        applyAnswer(selectedItems.single())
+    override fun onClickOk(selectedItem: CyclewaySegregation) {
+        applyAnswer(selectedItem)
     }
 }

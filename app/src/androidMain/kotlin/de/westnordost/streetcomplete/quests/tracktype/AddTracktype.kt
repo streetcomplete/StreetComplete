@@ -26,7 +26,7 @@ class AddTracktype : OsmFilterQuestType<Tracktype>(), AndroidQuest {
     // ~paved tracks are less likely to change the surface type
     override val changesetComment = "Specify tracktypes"
     override val wikiLink = "Key:tracktype"
-    override val icon = R.drawable.ic_quest_tractor
+    override val icon = R.drawable.quest_tractor
     override val achievements = listOf(CAR, BICYCLIST)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_tracktype_title

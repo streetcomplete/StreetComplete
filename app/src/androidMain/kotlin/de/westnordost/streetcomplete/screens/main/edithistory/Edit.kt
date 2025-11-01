@@ -30,11 +30,11 @@ val Edit.icon: Int get() = when (this) {
     is ElementEdit -> type.icon
     is NoteEdit -> {
         when (action) {
-            CREATE -> R.drawable.ic_quest_create_note
-            COMMENT -> R.drawable.ic_quest_notes
+            CREATE -> R.drawable.quest_create_note
+            COMMENT -> R.drawable.quest_notes
         }
     }
-    is OsmNoteQuestHidden -> R.drawable.ic_quest_notes
+    is OsmNoteQuestHidden -> R.drawable.quest_notes
     is OsmQuestHidden -> questType.icon
     else -> 0
 }

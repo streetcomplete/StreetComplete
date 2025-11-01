@@ -18,6 +18,7 @@ import de.westnordost.streetcomplete.resources.undo_confirm_negative
 import de.westnordost.streetcomplete.resources.undo_confirm_positive
 import de.westnordost.streetcomplete.resources.undo_confirm_title2
 import de.westnordost.streetcomplete.ui.common.dialogs.ScrollableAlertDialog
+import de.westnordost.streetcomplete.ui.ktx.fadingVerticalScrollEdges
 import org.jetbrains.compose.resources.stringResource
 
 /** Confirmation dialog for undoing an edit. Shows details about an edit */
@@ -30,12 +31,14 @@ fun UndoDialog(
     onDismissRequest: () -> Unit,
     onConfirmed: () -> Unit,
 ) {
+    val state = rememberScrollState()
     ScrollableAlertDialog(
         onDismissRequest = onDismissRequest,
         title = { Text(stringResource(Res.string.undo_confirm_title2)) },
         content = {
             Box(Modifier
-                .verticalScroll(rememberScrollState())
+                .fadingVerticalScrollEdges(state, 32.dp)
+                .verticalScroll(state)
                 .padding(horizontal = 24.dp, vertical = 16.dp)
             ) {
                 EditDetails(edit, element, featureDictionaryLazy)
@@ -49,6 +52,5 @@ fun UndoDialog(
                 Text(stringResource(Res.string.undo_confirm_positive))
             }
         },
-        height = 360.dp
     )
 }

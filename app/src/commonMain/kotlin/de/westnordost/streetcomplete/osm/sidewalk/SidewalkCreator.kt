@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.osm.sidewalk
 
+import de.westnordost.streetcomplete.osm.Sides
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.expandSides
 import de.westnordost.streetcomplete.osm.hasCheckDateForKey
@@ -7,7 +8,7 @@ import de.westnordost.streetcomplete.osm.mergeSides
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.*
 import de.westnordost.streetcomplete.osm.updateCheckDateForKey
 
-fun LeftAndRightSidewalk.applyTo(tags: Tags) {
+fun Sides<Sidewalk>.applyTo(tags: Tags) {
     if (left == null && right == null) return
     /*
         for being able to modify only one side (e.g. `left` is null while `right` is not null),
