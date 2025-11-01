@@ -455,7 +455,9 @@ class MapDataCache(
             trim((maxTiles * 2) / 3)
         }
 
-        // Remove all ferry ways that are part of a ferry relation
+        // Remove all ways tagged with route=ferry that are part of a relation
+        // also tagged with route=ferry because that makes the former not actually a "real" ferry
+        // route (╯°□°）╯︵ ┻━┻. Tagging mistake or not, it is very common tagging (#6373)
         for (relation in result.relations) {
             if (relation.tags["route"] != "ferry") continue
             for (member in relation.members) {
