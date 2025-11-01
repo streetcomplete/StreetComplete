@@ -98,14 +98,14 @@ class AddMaxWeightForm : AbstractOsmQuestForm<MaxWeightAnswer>() {
     }
 
     override fun onClickOk() {
-        if (anyUnrealisticWeight()) {
-            confirmUnusualInput { applyAnswers() }
+        if (userSelectedUnrealisticWeight()) {
+            confirmUnusualInput { applyMaxWeightFormAnswer() }
         } else {
-            applyAnswers()
+            applyMaxWeightFormAnswer()
         }
     }
 
-    private fun anyUnrealisticWeight(): Boolean {
+    private fun userSelectedUnrealisticWeight(): Boolean {
         for (weight in weights) {
             val w = weight.value?.toMetricTons()
             if (w != null && (w > 30 || w < 2)) return true
@@ -113,7 +113,7 @@ class AddMaxWeightForm : AbstractOsmQuestForm<MaxWeightAnswer>() {
         return false
     }
 
-    private fun applyAnswers() {
+    private fun applyMaxWeightFormAnswer() {
         val typesList = types.map { it.value }
         val weightsList = weights.map { it.value }
 
