@@ -79,7 +79,7 @@ class AddMaxWeightForm : AbstractOsmQuestForm<MaxWeightAnswer>() {
                     }
                     Spacer(Modifier.height(8.dp))
                 }
-                if (types.size < 4) {
+                if (types.size < maxSupportedSigns(countryInfo.countryCode)) {
                     Button2(
                         onClick = {
                             types.add(mutableStateOf(null))
@@ -147,6 +147,11 @@ class AddMaxWeightForm : AbstractOsmQuestForm<MaxWeightAnswer>() {
             .show()
         }
     }
+
+    private fun maxSupportedSigns(countryCode: String): Int = when (countryCode) {
+            "AU", "CA", "US", "DE" -> 5
+            else -> 4
+        }
 
     override fun isFormComplete(): Boolean {
         for (i in types.indices) {

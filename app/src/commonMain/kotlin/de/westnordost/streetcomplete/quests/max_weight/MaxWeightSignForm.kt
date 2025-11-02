@@ -63,7 +63,7 @@ fun MaxWeightSignForm(
 
     val unitTextStyle = MaterialTheme.typography.largeInput
 
-    Box(modifier.aspectRatio(1f)) {
+    Box {
         when (type) {
             MAX_WEIGHT -> when (countryCode) {
                 "AU", "CA", "US" ->
