@@ -26,13 +26,13 @@
 ### Quest improvements
 
 - Refine which quests to ask for the different places and things (#6481, #6475, #6428, #6474, #6463, #6402, #6498, #6499, #6523, #6522, #6521, #6520, #6529, #6519, #6492, #6534, #6549, #6576…), by @paulklie
+- Housenumbers: Ask for some buildings that were previously excluded (#6533)
 - Postbox collection times: Disable in Denmark (#6455), by @matkoniecz
-- Postbox royal cypher: Show "None" as normal answer option (#6490)
 - Bus stop name: Disable in Sweden (#6515), by @paulklie
 - Mopeds on bike paths: Enable in Sweden (#6516), by @paulklie
-- Other small refinements (#6445, #6511…)
-- Housenumbers: Ask for some buildings that were previously excluded (#6533)
 _ Information board topics: Add "rules" (#6580), by @NicodeH
+- Postbox royal cypher: Show "None" as normal answer option (#6490)
+- Other small refinements (#6445, #6511…)
 
 ### Overlay improvements
 
