@@ -19,7 +19,7 @@
 - Max weight form quest looks different now, with a few improvements (#6490)
 - Any quest or overlay that shows an image picker or an illustration of a street looks different now, with many improvements (#6490, #6239, #6560) such as showing several apply last-picked buttons like in the building levels quest (#5605)
 - Replace app suggestion Organic Maps with CoMaps (#6451)
-- Language selection is now in an own screen, with search function
+- Language selection is now in a separate screen, with search function
 - Map buttons are now better visible in dark mode (#6587), by @paulklie
 - Fix StreetComplete has been removing newlines from tag values it touches (#6466)
 
