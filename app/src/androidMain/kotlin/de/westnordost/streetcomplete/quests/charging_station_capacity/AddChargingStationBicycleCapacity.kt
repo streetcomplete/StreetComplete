@@ -9,7 +9,6 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.osm.updateWithCheckDate
 
 class AddChargingStationBicycleCapacity : OsmFilterQuestType<Int>(), AndroidQuest {
     override val elementFilter = """
@@ -34,6 +33,6 @@ class AddChargingStationBicycleCapacity : OsmFilterQuestType<Int>(), AndroidQues
     override fun createForm() = AddChargingStationBicycleCapacityForm()
 
     override fun applyAnswerTo(answer: Int, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
-        tags.updateWithCheckDate("capacity:bicycle", answer.toString())
+        tags["capacity:bicycle"] = answer.toString()
     }
 }
