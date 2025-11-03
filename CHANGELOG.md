@@ -19,7 +19,7 @@
 - Max weight form quest looks different now, with a few improvements (#6490)
 - Any quest or overlay that shows an image picker or an illustration of a street looks different now, with many improvements (#6490, #6239, #6560) such as showing several apply last-picked buttons like in the building levels quest (#5605)
 - Replace app suggestion Organic Maps with CoMaps (#6451)
-- Language selection is now in a separate screen, with search function
+- Language selection is now in a separate screen, with search function (#6490)
 - Map buttons are now better visible in dark mode (#6587), by @paulklie
 - Fix StreetComplete has been removing newlines from tag values it touches (#6466)
 
@@ -27,7 +27,7 @@
 
 - Refine which quests to ask for the different places and things (#6481, #6475, #6428, #6474, #6463, #6402, #6498, #6499, #6523, #6522, #6521, #6520, #6529, #6519, #6492, #6534, #6549, #6576…), by @paulklie
 - Postbox collection times: Disable in Denmark (#6455), by @matkoniecz
-- Postbox royal cypher: Show "None" as normal answer option
+- Postbox royal cypher: Show "None" as normal answer option (#6490)
 - Bus stop name: Disable in Sweden (#6515), by @paulklie
 - Mopeds on bike paths: Enable in Sweden (#6516), by @paulklie
 - Other small refinements (#6445, #6511…)
