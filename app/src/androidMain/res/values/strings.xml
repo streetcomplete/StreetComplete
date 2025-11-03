@@ -779,6 +779,8 @@ Before uploading your changes, the app checks with a &lt;a href="https://www.wes
     <string name="quest_barrier_bicycle_installation_openable">Openable</string>
     <string name="quest_barrier_bicycle_installation_removable">Removable</string>
 
+    <string name="quest_bicycle_charging_station_capacity_title">How many bicycles can be charged here at the same time?</string>
+
     <string name="quest_bicycle_incline_title">Which direction leads upwards here?</string>
     <string name="quest_bicycle_incline_up_and_down">It’s up and down hops</string>
 
@@ -1032,6 +1034,9 @@ A level counts as a roof level when its windows are in the roof. Subsequently, r
     <string name="quest_carWashType_automated">Automated</string>
     <string name="quest_carWashType_selfService">Self-service</string>
     <string name="quest_carWashType_service">Staff cleans car</string>
+
+    <string name="quest_charging_station_bicycles_title">Can bicycles be charged here, too?</string>
+    <string name="quest_charging_station_bicycles_hint">Bicycle charger power adapters plug into normal household sockets.</string>
 
     <string name="quest_charging_station_capacity_title">How many cars can be charged here at the same time?</string>
 
