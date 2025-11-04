@@ -7,36 +7,32 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.quest.AndroidQuest
-import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.osm.updateWithCheckDate
 
-// capacity for cars, actually
-class AddChargingStationCapacity : OsmFilterQuestType<Int>(), AndroidQuest {
-
+class AddChargingStationBicycleCapacity : OsmFilterQuestType<Int>(), AndroidQuest {
     override val elementFilter = """
         nodes, ways with
           amenity = charging_station
-          and !capacity
-          and !capacity:motorcar
-          and motorcar != no
-          and motor_vehicle != no
+          and bicycle ~ yes|designated
+          and !capacity:bicycle
           and access !~ private|no
     """
-    override val changesetComment = "Specify charging stations capacities"
-    override val wikiLink = "Tag:amenity=charging_station"
-    override val icon = R.drawable.quest_charger_capacity
-    override val isDeleteElementEnabled = true
-    override val achievements = listOf(CAR)
 
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_charging_station_capacity_title
+    override val changesetComment = "Specify bicycle charging stations capacities"
+    override val wikiLink = "Tag:amenity=charging_station"
+    override val icon = R.drawable.quest_charger_bicycle_capacity
+    override val isDeleteElementEnabled = true
+    override val achievements = listOf(BICYCLIST)
+
+    override fun getTitle(tags: Map<String, String>) = R.string.quest_bicycle_charging_station_capacity_title
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter("nodes, ways with amenity = charging_station and motorcar != no")
+        getMapData().filter("nodes, ways with amenity = charging_station and bicycle ~ yes|designated")
 
-    override fun createForm() = AddChargingStationCapacityForm()
+    override fun createForm() = AddChargingStationBicycleCapacityForm()
 
     override fun applyAnswerTo(answer: Int, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
-        tags.updateWithCheckDate("capacity:motorcar", answer.toString())
+        tags["capacity:bicycle"] = answer.toString()
     }
 }
