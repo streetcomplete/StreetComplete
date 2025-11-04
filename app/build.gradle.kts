@@ -8,8 +8,8 @@ import java.util.Properties
 
 
 /** App version name, code and flavor */
-val appVersionName = "61.3"
-val appVersionCode = 6104
+val appVersionName = "62.0-beta1"
+val appVersionCode = 6200
 
 /** Localizations the app should be available in */
 val bcp47ExportLanguages = setOf(
