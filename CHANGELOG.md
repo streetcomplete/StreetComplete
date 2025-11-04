@@ -34,7 +34,7 @@
 - Postbox collection times: Disable in Denmark (#6455), by @matkoniecz
 - Bus stop name: Disable in Sweden (#6515), by @paulklie
 - Mopeds on bike paths: Enable in Sweden (#6516), by @paulklie
-_ Information board topics: Add "rules" (#6580), by @NicodeH
+- Information board topics: Add "rules" (#6580), by @NicodeH
 - Postbox royal cypher: Show "None" as normal answer option (#6490)
 - Other small refinements (#6445, #6511…)
 

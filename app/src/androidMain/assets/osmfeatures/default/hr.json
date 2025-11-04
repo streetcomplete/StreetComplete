@@ -224,9 +224,6 @@
         "amenity/clock/sundial": {
           "name": "Sunčani sat"
         },
-        "amenity/college": {
-          "name": "Fakultetsko zemljište"
-        },
         "amenity/community_centre": {
           "name": "Društveni centar"
         },
@@ -364,9 +361,6 @@
         "amenity/driver_training": {
           "name": "Poligon za obuku vozača"
         },
-        "amenity/driving_school": {
-          "name": "Autoškola"
-        },
         "amenity/embassy": {
           "name": "Ambasada"
         },
@@ -427,13 +421,6 @@
         "amenity/ice_cream": {
           "name": "Sladoledarnica"
         },
-        "amenity/kindergarten": {
-          "name": "Zemljište dječjeg vrtića",
-          "terms": "dječji vrtić,vrtić"
-        },
-        "amenity/language_school": {
-          "name": "Škola stranih jezika"
-        },
         "amenity/letter_box": {
           "name": "Privatni poštanski sandučić"
         },
@@ -462,9 +449,6 @@
         },
         "amenity/motorcycle_rental": {
           "name": "Iznajmljivanje motocikala"
-        },
-        "amenity/music_school": {
-          "name": "Glazbena škola"
         },
         "amenity/nightclub": {
           "name": "Noćni klub"
@@ -651,10 +635,6 @@
         "amenity/sanitary_dump_station": {
           "name": "Pražnjenje toaleta za kamp kućice"
         },
-        "amenity/school": {
-          "name": "Škola i teren oko škole",
-          "terms": "škola,školsko područje"
-        },
         "amenity/shelter": {
           "name": "Sklonište"
         },
@@ -712,9 +692,6 @@
         },
         "amenity/townhall/city": {
           "name": "Gradska vijećnica"
-        },
-        "amenity/university": {
-          "name": "Sveučilišno zemljište"
         },
         "amenity/vacuum_cleaner": {
           "name": "Usisavač"
@@ -1945,9 +1922,6 @@
         },
         "leisure/dance": {
           "name": "Plesna dvorana"
-        },
-        "leisure/dancing_school": {
-          "name": "Plesna škola"
         },
         "leisure/disc_golf_course": {
           "name": "Disk golf teren"

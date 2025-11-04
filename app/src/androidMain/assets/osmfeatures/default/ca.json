@@ -140,7 +140,7 @@
           "terms": "banc peatonal,banc per a asseure's,banc de carrer"
         },
         "amenity/bicycle_parking": {
-          "name": "Aparcament per a  bicicletes",
+          "name": "Aparcament per a bicicletes",
           "terms": "aparcament per a bicicletes,àrea d'aparcament de bicicletes,estació de bicicletes públiques,parking de bicis,pàrquing de bicicletes,parking de bicicletes,pàrquing de bicis"
         },
         "amenity/bicycle_parking/building": {
@@ -219,10 +219,6 @@
         },
         "amenity/clock/sundial": {
           "name": "Rellotge solar"
-        },
-        "amenity/college": {
-          "name": "Escola professional",
-          "terms": "universitat,estudis de grau"
         },
         "amenity/community_centre": {
           "name": "Centre Comunitari"
@@ -391,10 +387,6 @@
           "name": "Circuit de pràctiques per a conduir",
           "terms": "autoescola,carnet,am,b,a1,cotxe,moto"
         },
-        "amenity/driving_school": {
-          "name": "Autoescola",
-          "terms": "autoescola,escola de conduir,escola de conducció"
-        },
         "amenity/embassy": {
           "name": "Ambaixada"
         },
@@ -474,14 +466,6 @@
           "name": "Cibercafè",
           "terms": "cifercafè,cafè d'internet,xatfeteria,cibercafè,cafè"
         },
-        "amenity/kindergarten": {
-          "name": "Centre preescolar",
-          "terms": "preescolar,jardí d'infància,guarderia"
-        },
-        "amenity/language_school": {
-          "name": "Escola d'idiomes",
-          "terms": "acadèmia d'idiomes,escola de llengües,acadèmia de llengües"
-        },
         "amenity/lavoir": {
           "name": "Safareig",
           "terms": "llavador"
@@ -521,9 +505,6 @@
           "name": "Lloguer de motocicletes",
           "aliases": "Lloguer de motos"
         },
-        "amenity/music_school": {
-          "name": "Escola de música"
-        },
         "amenity/nightclub": {
           "name": "Club nocturn",
           "terms": "discoteca,oci nocturn,club de ball,club nocturn"
@@ -557,7 +538,7 @@
           "name": "Espai d'aparcament"
         },
         "amenity/parking_space/disabled": {
-          "name": "Espai d'aparcament accesible"
+          "name": "Espai d'aparcament accessible"
         },
         "amenity/payment_terminal": {
           "name": "Terminal de pagament"
@@ -630,9 +611,6 @@
           "name": "Oficina de correus",
           "terms": "oficina de correus,correus,edifici de correus,cartes,carters"
         },
-        "amenity/prep_school": {
-          "name": "Classes de preparació / Classes de repàs"
-        },
         "amenity/prison": {
           "name": "Terrenys d'una presó"
         },
@@ -656,7 +634,8 @@
           "terms": "banys públic,bany públic,banys,bany"
         },
         "amenity/public_bookcase": {
-          "name": "Prestageria pública"
+          "name": "Prestatgeria pública",
+          "terms": "llibre,intercanvi,passallibres"
         },
         "amenity/ranger_station": {
           "name": "Base d'Agents Rurals"
@@ -742,10 +721,6 @@
         },
         "amenity/sanitary_dump_station": {
           "name": "Estació de buidatge de lavabos"
-        },
-        "amenity/school": {
-          "name": "Escola - Institut",
-          "terms": "escola,ceip,ies,col·legi,institut,centre educatiu,guarderia"
         },
         "amenity/shelter": {
           "name": "Refugi"
@@ -845,10 +820,6 @@
         "amenity/townhall/city": {
           "name": "Ajuntament",
           "aliases": "Casa consistorial\nCasa de la ciutat\nCasa de la vila\nPaeria\nAlcaldia\nCasa del comú\nBatllia\nBatlia"
-        },
-        "amenity/university": {
-          "name": "Campus universitari",
-          "terms": "universitat,campus universitàri,grau,facultat,llicenciatura,càtedra,seminari"
         },
         "amenity/vehicle_inspection": {
           "name": "Inspecció de vehicles",
@@ -952,6 +923,9 @@
         "area": {
           "name": "Àrea",
           "terms": "àrea"
+        },
+        "area/footway": {
+          "name": "Àrea de vianants"
         },
         "area/highway": {
           "name": "Àrea de la carretera"
@@ -1109,6 +1083,9 @@
           "name": "Porta giratòria",
           "terms": "porta giratòria,porta sense retorn,accés giratori,porta de no retorn"
         },
+        "barrier/log": {
+          "name": "Obstrucció per arbre caigut"
+        },
         "barrier/motorcycle_barrier": {
           "name": "Barrera per a motocicletes"
         },
@@ -1163,6 +1140,9 @@
         "building/apartments": {
           "name": "Edifici d'apartaments",
           "terms": "edifici d'apartaments,apartaments,pisos,bloc de pisos,bloc"
+        },
+        "building/bakehouse": {
+          "name": "Forn de pa"
         },
         "building/barn": {
           "name": "Graner"
@@ -1367,8 +1347,23 @@
         "building_point": {
           "name": "Edifici"
         },
+        "cemetery/grave": {
+          "name": "Tomba"
+        },
+        "cemetery/sector": {
+          "name": "Secció de cementiri"
+        },
+        "climbing/route": {
+          "name": "Ruta d'escalada"
+        },
+        "climbing/route_bottom": {
+          "name": "Inici de ruta d'escalada"
+        },
         "club": {
           "name": "Club"
+        },
+        "club/scout": {
+          "name": "Grup d'Scout"
         },
         "club/sport": {
           "name": "Club d'esports",
@@ -1559,6 +1554,27 @@
         "disused/shop": {
           "name": "Botiga en desús"
         },
+        "education/dancing_school": {
+          "name": "Escola de dança"
+        },
+        "education/driving_school": {
+          "name": "Autoescola"
+        },
+        "education/kindergarten": {
+          "name": "Parc de guarderia"
+        },
+        "education/language_school": {
+          "name": "Escola d'idiomes"
+        },
+        "education/music_school": {
+          "name": "Escola de música"
+        },
+        "education/school": {
+          "name": "Recinte escolar"
+        },
+        "education/university": {
+          "name": "Campus universitari"
+        },
         "embankment": {
           "name": "Terraplè"
         },
@@ -1576,11 +1592,8 @@
         "emergency/defibrillator": {
           "name": "Desfibril·lador"
         },
-        "emergency/designated": {
-          "name": "Accés per a emergències designat"
-        },
-        "emergency/destination": {
-          "name": "Accés per a emergències només a destí"
+        "emergency/disaster_response": {
+          "name": "Estació de resposta a desastres"
         },
         "emergency/fire_extinguisher": {
           "name": "Extintor"
@@ -1610,31 +1623,22 @@
         "emergency/mountain_rescue": {
           "name": "Rescat de muntanya"
         },
-        "emergency/no": {
-          "name": "Accés per a emergències prohibit"
-        },
-        "emergency/official": {
-          "name": "Accés per a emergències oficial"
-        },
         "emergency/phone": {
           "name": "Telèfon per a emergències",
           "terms": "telèfon d'emergències,sos,s.o.s"
         },
-        "emergency/private": {
-          "name": "Accés per a emergències privat"
-        },
         "emergency/siren": {
           "name": "Sirena"
         },
+        "emergency/water_reservoir": {
+          "name": "Aigua reservada per a emergències"
+        },
         "emergency/water_reservoir_covered": {
-          "name": "Dipòsit d'aigua d'emergència (subterrani)"
+          "name": "Aigua reservada per a emergències (subterrani)"
         },
         "emergency/water_tank": {
           "name": "Dipòsit d'aigua d'emergència",
           "terms": "tanc d'aigua,cisterna,dipòsit"
-        },
-        "emergency/yes": {
-          "name": "Accés per a emergències permès"
         },
         "entrance": {
           "name": "Entrada / Sortida",
@@ -1648,6 +1652,9 @@
         },
         "entrance/main": {
           "name": "Entrada principal"
+        },
+        "entrance/shop": {
+          "name": "Entrada a tenda"
         },
         "ford": {
           "name": "Ford",
@@ -1672,6 +1679,9 @@
         "golf/lateral_water_hazard": {
           "name": "Obstacle d'aigua lateral"
         },
+        "golf/path": {
+          "name": "Camí per a vianants de Golf"
+        },
         "golf/rough": {
           "name": "Rough"
         },
@@ -1687,6 +1697,9 @@
         "healthcare/alternative": {
           "name": "Medicina alternativa"
         },
+        "healthcare/alternative/acupuncture": {
+          "name": "Practicant d'acupuntura"
+        },
         "healthcare/alternative/chiropractic": {
           "name": "Quiropràctic"
         },
@@ -1698,6 +1711,9 @@
         },
         "healthcare/blood_donation": {
           "name": "Centre de donació de sang"
+        },
+        "healthcare/counselling": {
+          "name": "Centre d'assessorament"
         },
         "healthcare/dentist/orthodontics": {
           "name": "Ortodontista",
@@ -1749,9 +1765,15 @@
           "name": "Camí de ferradura",
           "terms": "camí de ferradura,cavall,camí eqüestre,via eqüestre,ferradura,via de ferradura"
         },
+        "highway/bus_guideway": {
+          "name": "Via d'autobús"
+        },
         "highway/bus_stop": {
           "name": "Parada d'autobús",
           "aliases": "Parada de bus"
+        },
+        "highway/busway": {
+          "name": "Camí d'autobús"
         },
         "highway/construction": {
           "name": "Carretera en construcció"
@@ -1763,6 +1785,9 @@
           "name": "Pas de vianants",
           "terms": "travessera,cruïlla,pas de vianants,pas zebra,pas de peatons,pas de transeünts"
         },
+        "highway/crossing/informal": {
+          "name": "Camí informal"
+        },
         "highway/crossing/traffic_signals": {
           "name": "Pas de vianants controlat per semàfors"
         },
@@ -1770,7 +1795,7 @@
           "name": "Pas de vianants senyalitzat"
         },
         "highway/crossing/unmarked": {
-          "name": "Creuament sense senyalització horitzontal"
+          "name": "Pas de vianants sense senyalització horitzontal"
         },
         "highway/cycleway": {
           "name": "Carril Bici",
@@ -1795,8 +1820,20 @@
         "highway/cycleway/crossing/unmarked": {
           "name": "Pas de bicicletes sense senyalització horitzontal"
         },
+        "highway/cycleway/traffic_island": {
+          "name": "Illa de refugi per a ciclistes"
+        },
+        "highway/cycleway/traffic_island_shared": {
+          "name": "Illa de refugi per a ciclistes i vianants"
+        },
         "highway/elevator": {
           "name": "Ascensor"
+        },
+        "highway/elevator_line": {
+          "name": "Ascensor inclinat"
+        },
+        "highway/emergency_access_point": {
+          "name": "Punt d'accés d'emergència"
         },
         "highway/emergency_bay": {
           "name": "Lloc d'aturada d'emergència",
@@ -1809,6 +1846,9 @@
         "highway/footway/access_aisle": {
           "name": "Corredor d'accés"
         },
+        "highway/footway/conveying": {
+          "name": "Camí per a vianants mòbil"
+        },
         "highway/footway/crossing": {
           "name": "Pas de vianants"
         },
@@ -1816,10 +1856,10 @@
           "name": "Pas de vianants controlat per semàfors"
         },
         "highway/footway/crossing/uncontrolled": {
-          "name": "Pas de vianants uncontrolat"
+          "name": "Pas de vianants senyalitzat"
         },
         "highway/footway/crossing/unmarked": {
-          "name": "Creuament sense senyalització horitzontal"
+          "name": "Pas de vianants sense senyalització horitzontal"
         },
         "highway/footway/informal": {
           "name": "Camí de vianants informal"
@@ -1863,6 +1903,15 @@
         },
         "highway/path/crossing": {
           "name": "Pas per a vianants i bicicletes"
+        },
+        "highway/path/crossing/traffic_signals": {
+          "name": "Pas per a vianants i bicicletes amb senyals per a vianants"
+        },
+        "highway/path/crossing/uncontrolled": {
+          "name": "Pas per a vianants i bicicletes senyalitzat"
+        },
+        "highway/path/crossing/unmarked": {
+          "name": "Pas per a vianants i bicicletes sense senyalització"
         },
         "highway/path/informal": {
           "name": "Camí informal",
@@ -2274,9 +2323,6 @@
           "name": "Pista de ball",
           "terms": "zona de ball"
         },
-        "leisure/dancing_school": {
-          "name": "Escola de dansa"
-        },
         "leisure/dog_park": {
           "name": "Parc Caní",
           "terms": "pipi-can,parc per gossos"
@@ -2415,6 +2461,9 @@
         "leisure/pitch/cricket": {
           "name": "Camp de criquet"
         },
+        "leisure/pitch/field_hockey": {
+          "name": "Camp d'hoquei"
+        },
         "leisure/pitch/netball": {
           "name": "Pista de netbol"
         },
@@ -2446,12 +2495,15 @@
           "terms": "camp de tennis,pista de tennis"
         },
         "leisure/pitch/volleyball": {
-          "name": "Camp de vòleibol",
+          "name": "Camp de voleibol",
           "terms": "pista de voleibol,camp de voleibol"
         },
         "leisure/playground": {
           "name": "Zona de jocs infantils",
           "terms": "parc infantil"
+        },
+        "leisure/playground/indoor": {
+          "name": "Parc infantil interior"
         },
         "leisure/resort": {
           "name": "Complex turístic",
@@ -2594,15 +2646,31 @@
         },
         "man_made/manhole": {
           "name": "Pou de registre",
-          "terms": "arqueta,pou,forat,telecomunicacions"
+          "terms": "arqueta,pou,forat,telecomunicacions,tapa de registre"
         },
         "man_made/manhole/drain": {
-          "name": "Desguàs",
-          "terms": "pluja,plutja,forat,aigua,desaigüe,tormenta,drenatge"
+          "name": "Embornal",
+          "terms": "albelló,pluja,forat,aigua,desaigüe,desaigüe pluvial,tempesta,drenatge,desguàs,claveguera,tapa de claveguera"
+        },
+        "man_made/manhole/gas": {
+          "name": "Pou de registre de gas",
+          "terms": "gas,arqueta,tapa"
+        },
+        "man_made/manhole/power": {
+          "name": "Pou de registre de la xarxa elèctrica",
+          "terms": "elèctric,electricitat,arqueta,tapa"
         },
         "man_made/manhole/sewer": {
           "name": "Tapa de claveguera",
           "terms": "arqueta de claveguera,claveguera,forat,aigües residuals,aigües brutes"
+        },
+        "man_made/mast/communication/radio": {
+          "name": "Màstil de comunicació de ràdio",
+          "terms": "antena de ràdio,torre de ràdio,màstil de ràdio,ràdio"
+        },
+        "man_made/mast/communication/television": {
+          "name": "Màstil de comunicació de televisió",
+          "terms": "màstil de televisió,televisió,antena de televisió"
         },
         "man_made/monitoring_station": {
           "name": "Estació de seguiment"
@@ -2672,9 +2740,6 @@
         },
         "man_made/telescope/radio": {
           "name": "Radiotelescopi"
-        },
-        "man_made/torii": {
-          "name": "Torii"
         },
         "man_made/tower": {
           "name": "Torre",
@@ -2851,6 +2916,17 @@
         "natural/tree": {
           "name": "Arbre",
           "terms": "arbre"
+        },
+        "natural/tree/broadleaved": {
+          "name": "Arbre planifoli"
+        },
+        "natural/tree/broadleaved/deciduous": {
+          "name": "Arbre planifoli (caducifoli)",
+          "terms": "caducifoli"
+        },
+        "natural/tree/broadleaved/evergreen": {
+          "name": "Arbre planifoli (fulla perenne)",
+          "terms": "perenne,perennifoli"
         },
         "natural/tree_row": {
           "name": "Fila d'arbres"
@@ -3234,6 +3310,9 @@
         "playground/bridge": {
           "name": "Pont penjant (Parc Infantil)",
           "terms": "esbarjo,parc,parc infantil,pont"
+        },
+        "playground/climbingwall": {
+          "name": "Mur d'Escalada per a Jugar"
         },
         "playground/horizontal_bar": {
           "name": "Barra horitzontal infantil"
@@ -4430,6 +4509,9 @@
           "name": "Ruta d'autobús",
           "terms": "ruta de bus,línia de bus"
         },
+        "type/route/climbing": {
+          "name": "Ruta d'Escalada"
+        },
         "type/route/detour": {
           "name": "Desviació"
         },
@@ -4499,6 +4581,9 @@
           "name": "Lloc",
           "terms": "pusto,lloc,zona,emplaçament,terreny,instal·lació,espai,àrea"
         },
+        "type/site/climbing/area": {
+          "name": "Àrea d'Escalada"
+        },
         "type/waterway": {
           "name": "Curs d'aigua",
           "terms": "via pluvial,pluvial,aquàtic,fluvial,aquàtica,via fluvial,cauce,marítim,marina,navegable"
@@ -4531,8 +4616,8 @@
           "terms": "bot,vaixell,veler,marina seca,marina"
         },
         "waterway/drain": {
-          "name": "Torrent",
-          "terms": "torrentera,rambla"
+          "name": "Canal de desguàs",
+          "terms": "canal,desguàs,pluja,aigua,desaigüe,drenatge,claveguera"
         },
         "waterway/fish_pass": {
           "name": "Pas per a peixos",

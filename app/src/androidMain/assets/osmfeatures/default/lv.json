@@ -163,10 +163,6 @@
         "amenity/drinking_water": {
           "name": "Dzeramūdens"
         },
-        "amenity/driving_school": {
-          "name": "Autoskola",
-          "terms": "braukšana,apmācība"
-        },
         "amenity/embassy": {
           "name": "Vēstniecība"
         },
@@ -229,10 +225,6 @@
         },
         "amenity/motorcycle_parking": {
           "name": "Motociklu stāvvieta"
-        },
-        "amenity/music_school": {
-          "name": "Mūzikas skola",
-          "terms": "dziedāšanas skola,mūzikas instrumenti"
         },
         "amenity/nightclub": {
           "name": "Naktsklubs",
@@ -316,9 +308,6 @@
         "amenity/restaurant/pizza": {
           "name": "Picērija"
         },
-        "amenity/school": {
-          "name": "Skolas Zeme"
-        },
         "amenity/shelter": {
           "name": "Pajumte"
         },
@@ -360,9 +349,6 @@
         },
         "amenity/townhall": {
           "name": "Pilsētas dome"
-        },
-        "amenity/university": {
-          "name": "Universitātes teritorija"
         },
         "amenity/vending_machine": {
           "name": "Tirdzniecības automāts"
@@ -1134,10 +1120,6 @@
         },
         "leisure/dance": {
           "name": "Deju zāle"
-        },
-        "leisure/dancing_school": {
-          "name": "Deju skola",
-          "terms": "valsis,tango,deju apmācības,dejošana,svings"
         },
         "leisure/dog_park": {
           "name": "Suņu parks"

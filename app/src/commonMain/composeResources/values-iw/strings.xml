@@ -20,10 +20,7 @@
     <string name="quest_leave_new_note_yes">השאר הערה</string>
     <string name="quest_leave_new_note_no">הסתר</string>
     <string name="quest_streetName_title">מהו השם של הרחוב הזה?</string>
-    <string name="quest_streetName_description">כמו שרשום בשלט הרחוב, ובלי שימוש בראשי תיבות:</string>
     <string name="quest_streetName_answer_noName_confirmation_description">לפעמים שלט רחוב קיים רק בקצה אחד של הרחוב. בנוסף שימו לב שלפעמים לא יהיה שלטי רחוב לרחובות קטנים ששייכים לרחוב גדול יותר. בדרך כלל לכל רחוב עם בתים יהיה שם.</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_description">אם אפשר לרשום את שם בלי קיצורים, אז עדיף לרשום בלי. הרבה קיצורים נפוצים מתרחבים באופן אוטומטי בזמן הכתיבה, אבל לא כולם.</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">אין ראשי תיבות</string>
     <string name="quest_openingHours_start_time">שעת פתיחה</string>
     <string name="quest_openingHours_end_time">שעת סגירה</string>
     <string name="quest_openingHours_add_months">הוספת חודשים</string>
@@ -57,7 +54,6 @@
     <string name="version_banned_message">גרסה זו של StreetComplete מיושנת מדי. אנא עדכנ/י!</string>
     <string name="no_gps_no_quests">כדי למצוא באופן אוטומטי משימות סביבך, יש להפעיל מיקום</string>
     <string name="later">מאוחר יותר</string>
-    <string name="quest_streetName_answer_noProperStreet_link">הוא רק מחבר שני כבישים</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">משהו אחר (השאר הערה)</string>
     <string name="about_title_privacy_statement">הצהרת פרטיות</string>
     <string name="quest_openingHours_public_holidays">חגים ומועדים</string>
@@ -196,7 +192,6 @@
     <string name="quest_sport_roller_skating">החלקה על גלגיליות</string>
     <string name="quest_wheelchairAccess_limited_description_business">הכוונה בחלקית היא שאין צורך לעבור מדרגה גבוהה יותר מגובה הקרסול כדי לגשת למקום ורוב החדרים נגישים באמצעות כסא גלגלים.</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">הכוונה בחלקית היא שאין צורך לעבור מדרגה גבוהה יותר מגובה הקרסול כדי לגשת לשם.</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">האם יש ראשי תיבות בשם %1$s?</string>
     <string name="quest_recycling_type_title">איזה סוג של מתקן מחזור זה?</string>
     <string name="recycling_centre">מרכז מחזור</string>
     <string name="overground_recycling_container">מיכל</string>
@@ -321,10 +316,6 @@
     <string name="quest_cycleway_answer_contraflow_cycleway">בנוסף יש שביל אופניים בצד השני...</string>
     <string name="quest_openingHours_emptyAnswer">תאר מה נמצא על השלט. אם אין שלט, צריך להכנס למקום ולשאול מהן שעות פתיחה.</string>
     <string name="quest_cycleway_value_none_but_no_oneway">אין, אבל רוכבי אופניים יכולים לנסוע בשני הכיוונים</string>
-    <string name="quest_streetName_answer_noName_question">מדוע אין לו שם?</string>
-    <string name="quest_streetName_answer_noProperStreet_service2">זה משהו כמו דרך גישה לחניה או נתיב חניה</string>
-    <string name="quest_streetName_answer_noProperStreet_track2">זו דרך חקלאית או יער</string>
-    <string name="quest_streetName_answer_noName_noname">אף אחד מהנ"ל, פשוט אין לו שם</string>
     <string name="quest_wheelchairAccess_description_toilets">שלט כסא גלגלים כזה עשוי להיות מוצג אם השירותים מונגשים.
 חלקית פירושו שניתן להיכנס עם כסא גלגלים ולהשתמש בשירותים, אבל אין מעקה או כיור מותאם.</string>
     <string name="map_btn_create_note">צר/י הערה חדשה</string>
@@ -735,7 +726,6 @@
     <string name="quest_charging_station_capacity_title">כמה מכוניות ניתן להטעין כאן בעת אחת?</string>
     <string name="link_disaster_ninja_description">מפה שמציגה אסונות טבע שאירעו לאחרונה, שמעניינים ממפים הומניטריים. בנוסף, מציגה מידע סטטיסטי רב לניתוח עד כמה מקומות הם ממופים ומעודכנים.</string>
     <string name="quest_lanes_title">כמה נתיבים למכוניות יש בכביש זה?</string>
-    <string name="quest_lanes_answer_lanes">נתיבים מסומנים</string>
     <string name="quest_lanes_answer_noLanes">אין נתיבים מסומנים</string>
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">יש נתיב פניה שמאלה דו-סטרי</string>
     <string name="quest_address_answer_no_housenumber_message2b">האם זה נכון?</string>
@@ -747,8 +737,6 @@
     <string name="quest_kerb_height_lowered">מעט גבוה יותר מפני הדרך</string>
     <string name="quest_kerb_height_raised">שפת מדרכה גבוהה</string>
     <string name="quest_kerb_height_lowered_ramp">שפת מדרכה עם רמפה</string>
-    <string name="quest_lanes_answer_lanes_description2">נא לציין את מספר הנתיבים המסומנים (לשני הכיוונים) שמשמשים לתנועת רכבים. נתיבי אופניים ונתיבים שמיועדים לחנייה אינם נכללים בספירה.
-אם חלק מהנתיבים שמורים לתחבורה ציבורית, נא להשאיר הערה במקום.</string>
     <string name="quest_lanes_answer_lanes_description_one_side2">נא לציין את מספר הנתיבים המסומנים שמשמשים לתנועת רכבים. נתיבי אופניים ונתיבים שמיועדים לחנייה אינם נכללים בספירה.
 אם חלק מהנתיבים שמורים לתחבורה ציבורית, נא להשאיר הערה במקום.</string>
     <string name="quest_surface_value_rock">אבן</string>
@@ -763,7 +751,6 @@
     <string name="quest_shop_gone_replaced_answer">...</string>
     <string name="quest_shop_gone_replaced_answer_hint">נא להקליד את סוג המקום כאן</string>
     <string name="quest_shop_vacant_type_title">החנות הזאת פונתה. מה יש כאן עכשיו?</string>
-    <string name="quest_lanes_answer_lanes_odd2">יש מספר שונה של נתיבים בכל כיוון</string>
     <string name="default_disabled_msg_go_inside_regional_warning">סוג משימת המחקר נוטרלה כברירת מחדל מכיוון שהיא לא שימושית בחלק מהאזורים וככל הנראה יהיה צורך להיכנס למקום בכדי לענות על משימת מחקר מסוג זה.</string>
     <string name="quest_dietType_explanation_kosher">מוצרים כשרים נדרשים להיות מיוצרים על פי חוקים מיוחדים, עם ציון של תעודת כשרות מטעם גורמים מוסמכים.</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">אין נתיב או שביל אופניים כלל</string>

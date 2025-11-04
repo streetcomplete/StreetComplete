@@ -20,10 +20,7 @@
     <string name="quest_leave_new_note_yes">"Legg att ein merknad"</string>
     <string name="quest_leave_new_note_no">"Gøym"</string>
     <string name="quest_streetName_title">"Kva heiter denne vegen?"</string>
-    <string name="quest_streetName_description">"som skriven på gateskiltet, med forkortingar skrivne heilt ut:"</string>
     <string name="quest_streetName_answer_noName_confirmation_description">"Nokre gongar står gateskiltet berre ved starten eller enden av gata. Merk òg at det gjerne ikkje finst gateskilt for sidegater som høyrer inn under ei hovudgate. Vanlegvis har alle gater med hus eit namn."</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"Viss du kan skriva gatenamnet utan forkortingar, bør du gjera dette. Mange vanlege forkortingar vert automatisk utvida, men det gjeld ikkje alle."</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"Inga forkorting"</string>
     <string name="quest_openingHours_start_time">"opningstid"</string>
     <string name="quest_openingHours_end_time">"stengjetid"</string>
     <string name="quest_openingHours_add_months">"Legg til månadar"</string>
@@ -57,7 +54,6 @@
     <string name="version_banned_message">"Denne versjonen av StreetComplete er for gammal. Du må oppdatera til nyaste versjon."</string>
     <string name="no_gps_no_quests">"Du må slå på posisjons­innhenting for å kunna søkja etter oppdrag i nærleiken."</string>
     <string name="later">"Seinare"</string>
-    <string name="quest_streetName_answer_noProperStreet_link">"Han koplar berre saman to vegar"</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">"Noko anna (legg att ein merknad)"</string>
     <string name="about_title_privacy_statement">"Personvernerklæring"</string>
     <string name="quest_openingHours_public_holidays">"Offentlege fridagar"</string>
@@ -189,7 +185,6 @@ Appen kommuniserer direkte med OSM-tenarane.&lt;br/&gt;Før appen lastar opp end
     <string name="quest_sport_roller_skating">"Rulleskeiser"</string>
     <string name="quest_wheelchairAccess_limited_description_business">"«Delvis» vil seia at det ikkje er meir enn eitt trappetrinn ved inngangen og at inne er dei fleste romma tilgjengelege med rullestol."</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">"«Delvis» vil seia at det ikkje er meir enn eitt trappetrinn ved inngangen."</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"Er det ei forkorting i namnet %s?"</string>
     <string name="quest_recycling_type_title">"Kva slags returpunkt er dette?"</string>
     <string name="recycling_centre">"Gjenvinningsstasjon"</string>
     <string name="overground_recycling_container">"Konteinar"</string>
@@ -314,10 +309,6 @@ Appen kommuniserer direkte med OSM-tenarane.&lt;br/&gt;Før appen lastar opp end
     <string name="quest_cycleway_answer_contraflow_cycleway">"Òg sykkelveg på motsett side …"</string>
     <string name="quest_openingHours_emptyAnswer">"Du må skildra kva som står på skiltet. Viss det ikkje finst noko skilt, kan du prøva å spørja om opningstidene inne."</string>
     <string name="quest_cycleway_value_none_but_no_oneway">"ingen, men syklistar kan bruka vegen i begge retningar"</string>
-    <string name="quest_streetName_answer_noName_question">"Korfor har han ikkje noko namn?"</string>
-    <string name="quest_streetName_answer_noProperStreet_service2">"Det er ein innkøyrsel, eit parkeringsfelt e.l."</string>
-    <string name="quest_streetName_answer_noProperStreet_track2">"Det er ein traktor- eller skogsveg"</string>
-    <string name="quest_streetName_answer_noName_noname">"Ingen av grunnane – han manglar rett og slett namn"</string>
     <string name="quest_wheelchairAccess_description_toilets">"Viss toaletta er tilgjengelege for rullestolbrukarar, står det gjerne eit slikt skilt. Delvis tyder at ein rullestolbrukar kan komma seg inn på og bruka toalettet men at det ikkje er tilrettelagt med støttehandtak eller tilpassa handvask."</string>
     <string name="map_btn_create_note">"Legg til ny merknad"</string>
     <string name="create_new_note_unprecise">"Zoom lenger inn for å leggja til ein merknad"</string>
@@ -566,8 +557,8 @@ Appen kommuniserer direkte med OSM-tenarane.&lt;br/&gt;Før appen lastar opp end
     <string name="achievements_empty">"Du har ikkje nokon bragder enno"</string>
     <string name="links_empty">"Du har ikkje nokon lenkjer enno"</string>
     <string name="quests_empty">"Du har ikkje offentleg­gjort nokon svar på oppdrag enno"</string>
-    <string name="unsynced_quests_description">"pluss %d ikkje offentleg­gjorde endringar."</string>
-    <string name="unsynced_quests_not_logged_in_description">"Du har %d endringar som du ikkje har offentleg­gjort enno. Du må logga inn for å offentleg­gjera dei."</string>
+    <string name="unsynced_quests_description">"pluss %1$d ikkje offentleg­gjorde endringar."</string>
+    <string name="unsynced_quests_not_logged_in_description">"Du har %1$d endringar som du ikkje har offentleg­gjort enno. Du må logga inn for å offentleg­gjera dei."</string>
     <string name="user_quests_title">"Løyste oppdrag"</string>
     <string name="user_achievements_title">"Bragder"</string>
     <string name="user_links_title">"Lenkjesamling"</string>
@@ -638,7 +629,7 @@ Appen kommuniserer direkte med OSM-tenarane.&lt;br/&gt;Før appen lastar opp end
     <string name="achievement_veg_solved_X">"Du har løyst %d oppdrag som er interessante for dei som ikkje et kjøt!"</string>
     <string name="achievement_car_title">"På vegen"</string>
     <string name="achievement_car_solved_X">"Du har løyst %d oppdrag som forbetrar detalj­nivået på gate­informasjonen – slik at OpenStreetMap lever opp til namnet sitt!"</string>
-    <string name="unread_messages_message">"Du har %d ulesne meldingar i innboksen"</string>
+    <string name="unread_messages_message">"Du har %1$d ulesne meldingar i innboksen"</string>
     <string name="unread_messages_button">"Opna innboks"</string>
     <string name="action_about2">"Om"</string>
     <string name="map_btn_menu">"Meny"</string>
@@ -687,7 +678,7 @@ Appen kommuniserer direkte med OSM-tenarane.&lt;br/&gt;Før appen lastar opp end
     <string name="resurvey_intervals_default">"Standard"</string>
     <string name="resurvey_intervals_more_often">"Spør oftare"</string>
     <string name="about_title_translate">"Hjelp til med å omsetja appen"</string>
-    <string name="about_description_translate">"Appen er omsett %2$d %% til %1$s"</string>
+    <string name="about_description_translate">"Appen er omsett %2$d % til %1$s"</string>
     <string name="quest_oneway2_title">"Er dette ei einvegskøyrd gate? I kva retning?"</string>
     <string name="quest_oneway2_dir">"Einvegskøyrd i denne retninga"</string>
     <string name="quest_oneway2_no_oneway">"Ikkje einvegskøyrd"</string>
@@ -733,7 +724,6 @@ Appen kommuniserer direkte med OSM-tenarane.&lt;br/&gt;Før appen lastar opp end
     <string name="quest_charging_station_capacity_title">"Kor mange bilar kan ladast samtidig her?"</string>
     <string name="link_disaster_ninja_description">"Kart som viser nyleg hende natur­katastrofar, som er nyttig for kartlegging for humanitære formål. Viser òg mykje interessant statistikk om kor godt kartlagd stadar er og kort oppdaterte karta er."</string>
     <string name="quest_lanes_title">"Kor mange køyrefelt har denne vegen?"</string>
-    <string name="quest_lanes_answer_lanes">"Oppmerkte køyrefelt"</string>
     <string name="quest_lanes_answer_noLanes">"Ingen oppmerkte køyrefelt"</string>
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">"Han har eit venstresvinge­felt med tovegskøyring"</string>
     <string name="quest_address_answer_no_housenumber_message2b">"Er dette rett?"</string>
@@ -745,7 +735,6 @@ Appen kommuniserer direkte med OSM-tenarane.&lt;br/&gt;Før appen lastar opp end
     <string name="quest_kerb_height_lowered">"Litt høgare enn vegen"</string>
     <string name="quest_kerb_height_raised">"Høg fortauskant"</string>
     <string name="quest_kerb_height_lowered_ramp">"Rampe til fortauskant"</string>
-    <string name="quest_lanes_answer_lanes_description2">"Skriv inn talet på oppmerkte køyrefelt (i begge retningar) som kan brukast av bilar. Sykkel- og parkerings­felt tel altså ikkje. Viss nokre av felta er reine bussfelt, legg heller att ein merknad."</string>
     <string name="quest_lanes_answer_lanes_description_one_side2">"Skriv inn talet på oppmerkte køyrefelt som kan brukast av bilar. Sykkel- og parkerings­felt tel altså ikkje. Viss nokre av felta er reine bussfelt, legg heller att ein merknad."</string>
     <string name="quest_surface_value_rock">"Stein"</string>
     <string name="quest_parkingType_street_side">"Parkering i grøftekanten"</string>
@@ -759,7 +748,6 @@ Appen kommuniserer direkte med OSM-tenarane.&lt;br/&gt;Før appen lastar opp end
     <string name="quest_shop_gone_replaced_answer">"Ein/ei/eit …"</string>
     <string name="quest_shop_gone_replaced_answer_hint">"Type plass som er her"</string>
     <string name="quest_shop_vacant_type_title">"Dette butikk­lokalet har stått tomt. Kva er her no?"</string>
-    <string name="quest_lanes_answer_lanes_odd2">"Talet på felt er forskjellig på kvar side"</string>
     <string name="default_disabled_msg_go_inside_regional_warning">"Denne oppdragstypen vert som standard ikkje vist, då han ikkje er nyttig alle stadar og du vanlegvis må gå inn på staden for å kunna svara på spørsmålet."</string>
     <string name="quest_dietType_explanation_kosher">"Koscher­produkt må lagast etter særskilde religiøse reglar, og det finst eigne sertifiserings­instansar som godkjenner produkta."</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">"Ingen sykkelfelt / ingen sykkelveg"</string>
@@ -1010,7 +998,7 @@ Appen kommuniserer direkte med OSM-tenarane.&lt;br/&gt;Før appen lastar opp end
     <string name="quest_camp_type_caravans_only">"Berre bobil, campingvogner, …"</string>
     <string name="quest_camp_type_tents_only">"Berre telt"</string>
     <string name="quest_recycling_type_pet">"Berre PET"</string>
-    <string name="street_parking_street_width">"Vegbreidde: %s"</string>
+    <string name="street_parking_street_width">"Vegbreidde: %1$s"</string>
     <string name="quest_drinking_water_type_tap">"Vasskran"</string>
     <string name="quest_drinking_water_type_hand_pump">"Handpumpe"</string>
     <string name="quest_drinking_water_type_spring">"Kjelde"</string>

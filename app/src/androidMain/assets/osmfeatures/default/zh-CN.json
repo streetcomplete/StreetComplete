@@ -112,8 +112,8 @@
           "terms": "直升机,直升机坪,停机坪"
         },
         "aeroway/holding_position": {
-          "name": "跑道等待位置",
-          "terms": "跑道,滑行道,飞机等待"
+          "name": "飞行器等待位置",
+          "terms": "跑道,滑行道,中间,飞机,等待,等待位置"
         },
         "aeroway/jet_bridge": {
           "name": "登机廊桥",
@@ -183,7 +183,7 @@
           "terms": "酒吧"
         },
         "amenity/bar/lgbtq": {
-          "name": "LGBTQ+ 酒吧",
+          "name": "性少数群体酒吧",
           "terms": "lgb,lgbt,lgbtq,同性恋,双性恋,双性,跨性别,酷儿,同性恋酒吧"
         },
         "amenity/bbq": {
@@ -317,10 +317,6 @@
           "name": "日晷",
           "terms": "日晷,日晷钟,晷影,晷影器,影子,晷针,日规"
         },
-        "amenity/college": {
-          "name": "学院",
-          "terms": "学院,大学,院校,大专,校园,学校,学习"
-        },
         "amenity/community_centre": {
           "name": "社区活动中心",
           "terms": "活动室"
@@ -342,7 +338,7 @@
           "terms": "亲子,家庭,父子,母子,亲属,中心,交流,活动,娱乐"
         },
         "amenity/community_centre/lgbtq": {
-          "name": "LGBTQ+ 社区中心",
+          "name": "性少数群体社区中心",
           "terms": "lgb,lgbt,lgbtq,同性恋,双性恋,双性,跨性别,酷儿,同性恋活动,同性恋大厅"
         },
         "amenity/community_centre/parish_hall": {
@@ -379,6 +375,10 @@
         "amenity/dentist": {
           "name": "牙科医院",
           "terms": "牙科,医院,牙医,牙,牙齿,治疗,医疗,医生"
+        },
+        "amenity/device_charging_station": {
+          "name": "充电插座",
+          "terms": "手机,设备,耳机,电子,电器,充电,充电站,插座,充电口"
         },
         "amenity/dive_centre": {
           "name": "潜水中心",
@@ -519,10 +519,6 @@
         "amenity/driver_training": {
           "name": "驾驶训练场",
           "terms": "驾校,训练,培训,场,汽车,车,教练,驾驶,驾照,学校,交通,运输,学习,驾培"
-        },
-        "amenity/driving_school": {
-          "name": "驾培机构",
-          "terms": "驾校,汽车,车,教练,驾驶,驾照,学校,交通,运输,培训,学习,驾培"
         },
         "amenity/embassy": {
           "name": "大使馆"
@@ -665,17 +661,9 @@
           "name": "KTV",
           "terms": "卡拉ok,卡拉,ktv,迷你ktv,迷你卡拉ok,k歌,点唱,唱歌,唱吧,点唱亭,唱"
         },
-        "amenity/kindergarten": {
-          "name": "幼儿园场地",
-          "terms": "幼儿园,幼稚园,学前班,学龄前,托儿所,学校,校园"
-        },
         "amenity/kneipp_water_cure": {
           "name": "克奈圃水疗",
           "terms": "克奈圃,水疗,kneipp,克奈普"
-        },
-        "amenity/language_school": {
-          "name": "语言学校",
-          "terms": "语言,学校,语校,外语学校,外文学校,外语,外文,语文"
         },
         "amenity/lavoir": {
           "name": "公共洗衣池",
@@ -702,8 +690,8 @@
           "terms": "躺椅,躺椅区"
         },
         "amenity/love_hotel": {
-          "name": "爱情宾馆",
-          "terms": "爱情,情趣,性爱,寻欢,爱情宾馆"
+          "name": "情侣酒店",
+          "terms": "爱情,情趣,性爱,寻欢,酒店,宾馆"
         },
         "amenity/luggage_locker": {
           "name": "行李柜",
@@ -732,10 +720,6 @@
         "amenity/motorcycle_rental": {
           "name": "摩托车租赁处",
           "terms": "摩托车租赁处,摩托车出租点,租赁,出租,摩托车"
-        },
-        "amenity/music_school": {
-          "name": "音乐学校",
-          "terms": "音乐,乐曲,歌唱,唱歌,合唱,学校,学院,培训,艺术,学习"
         },
         "amenity/nightclub": {
           "name": "夜总会",
@@ -872,10 +856,6 @@
           "name": "邮局",
           "terms": "邮局,邮政局"
         },
-        "amenity/prep_school": {
-          "name": "辅导学校",
-          "terms": "补习班,培训班,辅导班"
-        },
         "amenity/prison": {
           "name": "监狱/看守所",
           "terms": "监狱,看守所,戒毒所,强戒所,强制,戒毒,拘留,管制,劳改"
@@ -889,7 +869,7 @@
           "terms": "爱尔兰,酒吧"
         },
         "amenity/pub/lgbtq": {
-          "name": "LGBTQ+ 酒吧",
+          "name": "性少数群体清吧",
           "terms": "lgb,lgbt,lgbtq,同性恋,双性恋,双性,跨性别,酷儿,同性恋酒吧,gay吧,拉吧,清吧,酒吧"
         },
         "amenity/pub/microbrewery": {
@@ -905,8 +885,8 @@
           "terms": "公共书架,公共书籍"
         },
         "amenity/ranger_station": {
-          "name": "野郊访客处",
-          "terms": "野郊访客处"
+          "name": "森林管护站",
+          "terms": "护林,管护,管养,森林,树林,林业,公园,自然"
         },
         "amenity/recycling": {
           "name": "资源回收设施"
@@ -1038,10 +1018,6 @@
         "amenity/sanitary_dump_station": {
           "name": "厕所卸污处",
           "terms": "厕所卸污处"
-        },
-        "amenity/school": {
-          "name": "学校",
-          "terms": "学校,高中,初中,中学,小学,校园,中专,学习"
         },
         "amenity/shelter": {
           "name": "庇护所",
@@ -1198,10 +1174,6 @@
         "amenity/trolley_bay": {
           "name": "手推车停放区",
           "terms": "手推车,购物车,停放区"
-        },
-        "amenity/university": {
-          "name": "大学",
-          "terms": "大学,学院,院校,大专,校园,学校,学习"
         },
         "amenity/vacuum_cleaner": {
           "name": "洗车吸尘",
@@ -1757,7 +1729,7 @@
         },
         "building/hotel": {
           "name": "酒店建筑",
-          "terms": "宾馆建筑,酒店"
+          "terms": "宾馆建筑,酒店,宾馆"
         },
         "building/house": {
           "name": "别墅楼",
@@ -2161,6 +2133,49 @@
         "disused/shop": {
           "name": "废弃商店"
         },
+        "education": {
+          "name": "教育机构",
+          "terms": "教育,教学,学习,学校,培训,学院,学园,大学"
+        },
+        "education/college": {
+          "name": "学院",
+          "terms": "学院,大学,院校,大专,高职,校园,学校,学习"
+        },
+        "education/dancing_school": {
+          "name": "舞蹈学校",
+          "terms": "舞蹈,跳舞,舞,芭蕾,探戈,爵士,学校,学院,培训,拉丁舞,艺术,学习"
+        },
+        "education/driving_school": {
+          "name": "驾培机构",
+          "terms": "驾校,汽车,车,教练,驾驶,驾照,学校,交通,运输,培训,学习,驾培"
+        },
+        "education/kindergarten": {
+          "name": "幼儿园场地",
+          "terms": "幼儿园,幼稚园,学前班,学龄前,托儿所,学校,校园"
+        },
+        "education/language_school": {
+          "name": "语言学校",
+          "terms": "语言,学校,语校,外语学校,外文学校,外语,外文,语文"
+        },
+        "education/music_school": {
+          "name": "音乐学校",
+          "terms": "音乐,乐曲,歌唱,唱歌,合唱,学校,学院,培训,艺术,学习"
+        },
+        "education/prep_school": {
+          "name": "辅导学校",
+          "terms": "补习班,培训班,辅导班"
+        },
+        "education/school": {
+          "name": "学校",
+          "terms": "学校,高中,初中,中学,小学,校园,中专,学习"
+        },
+        "education/university": {
+          "name": "大学",
+          "terms": "大学,学院,院校,校园,学校,学习"
+        },
+        "education/yes": {
+          "name": "教育机构（未指定类型）"
+        },
         "embankment": {
           "name": "路堤"
         },
@@ -2178,12 +2193,6 @@
         "emergency/defibrillator": {
           "name": "除颤器",
           "terms": "除颤器,心脏,电复律机,体外,急救,抢救,除颤仪,心电图,心律,心率,电击,窦性,aed"
-        },
-        "emergency/designated": {
-          "name": "指定紧急通道"
-        },
-        "emergency/destination": {
-          "name": "紧急通道目的地"
         },
         "emergency/disaster_response": {
           "name": "灾情响应中心",
@@ -2241,18 +2250,9 @@
           "name": "山区救援站",
           "terms": "山地,山区.救援,急救"
         },
-        "emergency/no": {
-          "name": "非紧急通道"
-        },
-        "emergency/official": {
-          "name": "官方紧急通道"
-        },
         "emergency/phone": {
           "name": "应急电话",
           "terms": "紧急电话"
-        },
-        "emergency/private": {
-          "name": "紧急设施：仅私人"
         },
         "emergency/siren": {
           "name": "风螺",
@@ -2269,9 +2269,6 @@
         "emergency/water_tank": {
           "name": "应急水箱",
           "terms": "应急,紧急,水箱,水柜"
-        },
-        "emergency/yes": {
-          "name": "开放紧急通道"
         },
         "entrance": {
           "name": "入口/出口",
@@ -2486,7 +2483,7 @@
           "terms": "交叉口,道口,交道口,岔路口"
         },
         "highway/crossing/informal": {
-          "name": "非正式行人穿越道"
+          "name": "非正式行人过街点"
         },
         "highway/crossing/traffic_signals": {
           "name": "有交通信号人行横道",
@@ -2966,6 +2963,10 @@
           "name": "水产养殖",
           "terms": "水产养殖,水产业"
         },
+        "landuse/aquaculture/fish": {
+          "name": "孵/养鱼场",
+          "terms": "鱼塘,养鱼场,孵鱼场,鱼场,鱼"
+        },
         "landuse/basin": {
           "name": "水池"
         },
@@ -3199,10 +3200,6 @@
         "leisure/dance": {
           "name": "舞厅",
           "terms": "舞厅,舞蹈,舞蹈房,舞池,跳舞"
-        },
-        "leisure/dancing_school": {
-          "name": "舞蹈学校",
-          "terms": "舞蹈,跳舞,舞,芭蕾,探戈,爵士,学校,学院,培训,拉丁舞,艺术,学习"
         },
         "leisure/disc_golf_course": {
           "name": "飞盘高尔夫场",
@@ -3704,6 +3701,18 @@
           "name": "地毯挂架",
           "terms": "地毯,毛毯.毯子,挂架"
         },
+        "man_made/ceremonial_gate": {
+          "name": "礼仪性门",
+          "terms": "拱门,拱,门,礼仪,仪式,牌坊,鸟居"
+        },
+        "man_made/ceremonial_gate/paifang": {
+          "name": "牌坊",
+          "terms": "牌坊,牌楼,坊,山门,门"
+        },
+        "man_made/ceremonial_gate/torii": {
+          "name": "鸟居",
+          "terms": "鸟居,日式大门,神社,寺庙"
+        },
         "man_made/charge_point": {
           "name": "汽车充电桩",
           "terms": "充电桩,充电站"
@@ -3792,8 +3801,8 @@
           "terms": "防波堤,拦沙坝,防浪堤"
         },
         "man_made/insect_hotel": {
-          "name": "昆虫屋",
-          "terms": "昆虫屋,昆虫,虫子,旅馆,房屋,避难所"
+          "name": "人工虫穴",
+          "terms": "昆虫屋,昆虫,虫子,虫巢,虫箱,虫穴,巢穴"
         },
         "man_made/lighthouse": {
           "name": "灯塔",
@@ -3978,10 +3987,6 @@
         "man_made/telescope/radio": {
           "name": "射电望远镜",
           "terms": "望远镜,射电,电波,雷达"
-        },
-        "man_made/torii": {
-          "name": "鸟居",
-          "terms": "鸟居,日式大门,神社,寺庙"
         },
         "man_made/tower": {
           "name": "塔",
@@ -4869,7 +4874,7 @@
         },
         "power/generator/source/hydro": {
           "name": "水轮机",
-          "terms": "水轮机,水力机,水轮,水力,水力电,水电站,水电,水坝,大坝,坝,发电,涡轮机,珀尔顿,卡普兰,水能"
+          "terms": "水轮机,水力机,水轮,水力,水力电,水电站,水电,水坝,大坝,坝,发电,涡轮机,水能"
         },
         "power/generator/source/nuclear": {
           "name": "核反应堆",
@@ -5572,7 +5577,7 @@
         },
         "shop/fireplace": {
           "name": "壁炉用品店",
-          "terms": "壁爐店"
+          "terms": "壁炉,火炉,商店"
         },
         "shop/fishing": {
           "name": "钓鱼店",
@@ -5620,7 +5625,7 @@
         },
         "shop/general": {
           "name": "杂货店",
-          "terms": "一般商店"
+          "terms": "一般,杂货,百货,商店"
         },
         "shop/gift": {
           "name": "礼品店",
@@ -5687,7 +5692,7 @@
         },
         "shop/hunting": {
           "name": "狩猎店",
-          "terms": "打獵用品店"
+          "terms": "打猎,狩猎,用品,商店"
         },
         "shop/interior_decoration": {
           "name": "室内装饰店",
@@ -5748,6 +5753,10 @@
         "shop/mobile_phone": {
           "name": "手机店",
           "terms": "手机店"
+        },
+        "shop/mobile_phone_accessories": {
+          "name": "手机配件商店",
+          "terms": "手机,手机配件,配件,充电器,保护膜,充电宝,移动电源,数据线,耳机"
         },
         "shop/model": {
           "name": "模型店",
@@ -5842,7 +5851,7 @@
           "terms": "打印机,打印,墨盒,碳粉,耗材"
         },
         "shop/psychic": {
-          "name": "特异功能(看相等)",
+          "name": "占卜店",
           "terms": "占卜,看命,看相,面相,命相"
         },
         "shop/pyrotechnics": {
@@ -6123,7 +6132,7 @@
           "terms": "旅舍,招待所"
         },
         "tourism/hotel": {
-          "name": "宾馆",
+          "name": "酒店",
           "terms": "宾馆,酒店,旅馆"
         },
         "tourism/information": {
@@ -6279,7 +6288,7 @@
         },
         "type/connectivity": {
           "name": "车道连接性",
-          "terms": "車道連通"
+          "terms": "车道,联络,连接,关系"
         },
         "type/destination_sign": {
           "name": "目的地标识",
@@ -6473,7 +6482,7 @@
           "terms": "干船坞,湿船坞,干坞,湿坞"
         },
         "waterway/drain": {
-          "name": "排水渠",
+          "name": "泄洪渠",
           "terms": "排水,渠,沟"
         },
         "waterway/fish_pass": {
@@ -6485,7 +6494,7 @@
           "terms": "船舶加油站,加油,船,航海"
         },
         "waterway/lock_gate": {
-          "name": "船闸闸门",
+          "name": "水道闸门",
           "terms": "闸门,闸首,水闸,船闸,运河"
         },
         "waterway/milestone": {

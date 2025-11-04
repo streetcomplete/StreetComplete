@@ -20,10 +20,7 @@
     <string name="quest_leave_new_note_yes">Pusti opombo</string>
     <string name="quest_leave_new_note_no">Samo skrij</string>
     <string name="quest_streetName_title">Kakšno je ime te ceste?</string>
-    <string name="quest_streetName_description">kot je napisano na tabli, okrajšave so razširjene:</string>
     <string name="quest_streetName_answer_noName_confirmation_description">V nekaterih primerih je tabla z imenom ulice ali ceste na njenem koncu. Ponekod ni tabel še za stranske ulice, ki so del glavne ceste. Ponavadi ima vsaka ulica s hišami ime.</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_description">Odstranite okrajšave, če se ime da zapisati brez. Mnoge pogostejše okrajšave bodo avtomatsko razširjene med tipkanjem.</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">Brez okrajšav</string>
     <string name="quest_openingHours_start_time">Odpiralni čas</string>
     <string name="quest_openingHours_end_time">Zapiralni čas</string>
     <string name="quest_openingHours_add_months">Dodaj mesece</string>
@@ -57,7 +54,6 @@
     <string name="version_banned_message">Ta različica programa StreetComplete je preveč zastarela. Posodobite jo!</string>
     <string name="no_gps_no_quests">Za samodejno iskanje nalog v vaši okolici vklopite lokacijo</string>
     <string name="later">Kasneje</string>
-    <string name="quest_streetName_answer_noProperStreet_link">Le povezuje dve cesti</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">Nekaj drugega (vpiši opombo)</string>
     <string name="about_title_privacy_statement">Izjava o zasebnosti</string>
     <string name="quest_openingHours_public_holidays">Državni prazniki</string>
@@ -196,7 +192,6 @@ Veljajo splošne omejitve hitrosti, če ob celotni dolžini tega odseka ulice ni
     <string name="quest_sport_roller_skating">Rolanje</string>
     <string name="quest_wheelchairAccess_limited_description_business">Delno pomeni, da dostop preprečuje največ ena stopnica in da je večina prostorov v notranjosti dostopnih z invalidskim vozičkom.</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">Delno pomeni, da dostop preprečuje največ ena stopnica.</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">Okrajšava v imenu %1$s?</string>
     <string name="quest_recycling_type_title">Kakšne vrste je ta zbiralnica odpadkov?</string>
     <string name="recycling_centre">Zbirni center</string>
     <string name="overground_recycling_container">Zabojniki</string>
@@ -323,10 +318,6 @@ V nasprotnem primeru lahko prenesete drugačno tipkovnico iz trgovine za aplikac
     <string name="quest_cycleway_answer_contraflow_cycleway">Kolesarska steza je tudi na drugi strani …</string>
     <string name="quest_openingHours_emptyAnswer">Opišite kaj je na napisu. Če napisa ni, vprašajte znotraj.</string>
     <string name="quest_cycleway_value_none_but_no_oneway">brez, kolesarji smejo voziti po cesti v obe smeri</string>
-    <string name="quest_streetName_answer_noName_question">Zakaj nima imena?</string>
-    <string name="quest_streetName_answer_noProperStreet_service2">Je dovozna pot ali parkirišče</string>
-    <string name="quest_streetName_answer_noProperStreet_track2">Je poljska ali gozdna cesta</string>
-    <string name="quest_streetName_answer_noName_noname">Nič od naštetega, pač nima imena</string>
     <string name="quest_wheelchairAccess_description_toilets">Če je stranišče dostopno z invalidskim vozičkom, bo morda viden tak znak. Delno pomeni, da voziček ima dostop, stranišče pa nima ročajev ali prilagojenega umivalnika.</string>
     <string name="map_btn_create_note">Ustvari novo opombo</string>
     <string name="create_new_note_unprecise">Za novo opombo morate bolj približati pogled</string>
@@ -708,7 +699,7 @@ novoji</string>
     <string name="resurvey_intervals_default">Osnovno</string>
     <string name="resurvey_intervals_more_often">Vprašaj bolj pogosto</string>
     <string name="about_title_translate">Pomagaj prevesti to aplikacijo</string>
-    <string name="about_description_translate">%1$s se prevede v %2$d%%</string>
+    <string name="about_description_translate">%1$s se prevede v %2$d%</string>
     <string name="quest_oneway2_title">Ali je to enosmerna ulica? V katero smer? </string>
     <string name="quest_oneway2_dir">Enosmerna v to smer</string>
     <string name="quest_oneway2_no_oneway">Ni enosmerna</string>
@@ -754,7 +745,6 @@ novoji</string>
     <string name="quest_charging_station_capacity_title">Koliko avtomobilov se lahko tukaj polni sočasno?</string>
     <string name="link_disaster_ninja_description">Zemljevid, ki prikazuje nedavne naravne nesreče, zanimive za humanitarne kartografe. Prikazije tudi zanimive statistike, ki prikazujejo kako dobro so kraji kartografirani.</string>
     <string name="quest_lanes_title">Koliko pasov ima ta cesta?</string>
-    <string name="quest_lanes_answer_lanes">Označeni pasovi</string>
     <string name="quest_lanes_answer_noLanes">Ni označenih pasov</string>
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">Ima dvosmerni pas za zavijanje na levo</string>
     <string name="quest_address_answer_no_housenumber_message2b">Ali je to pravilno?</string>
@@ -767,8 +757,6 @@ Razmislite tudi o odgovoru, če ne velja za celoten označeni del  “%1$s”.</
     <string name="quest_kerb_height_lowered">Malo višje od površine ceste</string>
     <string name="quest_kerb_height_raised">Visok robnik</string>
     <string name="quest_kerb_height_lowered_ramp">Klančina</string>
-    <string name="quest_lanes_answer_lanes_description2">Določi število vseh označenih pasov v obe smeri na tej cesti. Kolesarske proge in parkirišča ne štejejo.
-Če je kateriloli pas rezerviran za avtobuse, namesto tega prosim pusti opombo.</string>
     <string name="quest_lanes_answer_lanes_description_one_side2">Določi število vseh označenih pasov v obe smeri na tej cesti. Kolesarske proge in parkirišča ne štejejo.
 Če je kateriloli pas rezerviran za avtobuse, namesto tega prosim pusti opombo.označenih</string>
     <string name="quest_surface_value_rock">Kamen</string>
@@ -783,7 +771,6 @@ Razmislite tudi o odgovoru, če ne velja za celoten označeni del  “%1$s”.</
     <string name="quest_shop_gone_replaced_answer">En(a) …</string>
     <string name="quest_shop_gone_replaced_answer_hint">Vpišite vrsto prostora</string>
     <string name="quest_shop_vacant_type_title">Ta trgovina je bila prazna. Kaj je zdaj tam?</string>
-    <string name="quest_lanes_answer_lanes_odd2">Vsaka stran ceste ima različno število pasov</string>
     <string name="default_disabled_msg_go_inside_regional_warning">Ta naloga je privzeto onemogočena, ker v nekaterih regijah ni zrlo uporabna, poleg tega pa boš moral verjetno vstopiti v notranjost zgradbe da bi lahko nalogo rešil.</string>
     <string name="quest_dietType_explanation_kosher">Košer izdelki morajo biti pripravljeni v skladu s posebnimi pravili, pri čemer certifikacijske agencije za kashrut označujejo izdelke, ki so v skladu s temi pravili.</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">Kolesarske poti sploh ni</string>

@@ -307,7 +307,7 @@
         },
         "amenity/charging_station": {
           "name": "Ladestation für Elektrofahrzeuge",
-          "terms": "ladestation für elektrofahrzeuge,ladestation,e-tankstelle,stromtankstelle,ladestation für elektroautos,plug-in hybridfahrzeuge,pedelecs und e-bikes."
+          "terms": "ladestation für elektrofahrzeuge,ladestation,e-tankstelle,stromtankstelle,ladestation für elektroautos,plug-in hybridfahrzeuge,pedelecs und e-bikes,normalladepunkt,schnellladepunkt,ladesäule,normalladesäule,schnellladesäule,ladestelle,normalladestelle,schnellladestelle"
         },
         "amenity/childcare": {
           "name": "Kinderkrippenbetreuung, Kindertagesstätte",
@@ -341,10 +341,6 @@
         "amenity/clock/sundial": {
           "name": "Sonnenuhr",
           "terms": "sonneuhr"
-        },
-        "amenity/college": {
-          "name": "Hochschulgelände",
-          "terms": "schulgelände,collegegelände,universitätsgelände"
         },
         "amenity/community_centre": {
           "name": "Gemeindezentrum",
@@ -405,6 +401,10 @@
           "name": "Zahnarzt",
           "terms": "zahnarzt,dentist,stomatologe",
           "aliases": "Zahnärztin"
+        },
+        "amenity/device_charging_station": {
+          "name": "Ladestation für Elektrogeräte",
+          "terms": "usb,ladestation,ladegerät,steckdose,stecker,aufladen,laden"
         },
         "amenity/dive_centre": {
           "name": "Tauchschule",
@@ -552,10 +552,6 @@
           "terms": "fahrschulgelände,verkehrsübungsplatz,fahrsicherheitstraining,fahrsicherheitszentrum,fahrsicherheit,fahrertraining,sht,fahrtechnikzentrum,fahrsicherheitsanlage",
           "aliases": "Fahrsicherheitszentrum"
         },
-        "amenity/driving_school": {
-          "name": "Fahrschule",
-          "terms": "fahrschule"
-        },
         "amenity/embassy": {
           "name": "Botschaft"
         },
@@ -697,17 +693,9 @@
           "name": "Karaoke-Box",
           "terms": "karaoke club,karaoke raum,karaoke tv"
         },
-        "amenity/kindergarten": {
-          "name": "Kindergarten, Kindergartengelände",
-          "terms": "kindergarten,vorschule,kindertagesstätte,kinderkrippe,hort"
-        },
         "amenity/kneipp_water_cure": {
           "name": "Kneipp-Anlage",
           "terms": "kneipp,kneippbecken,kneipp-therapie,wassertreten,wassertretanlage,wassertretstelle,wassertretbecken,hydrotherapie,fußbad,barfuß,barfußlaufen,armbecken,kneipp-einrichtung,wasserkur,kneippkur"
-        },
-        "amenity/language_school": {
-          "name": "Sprachschule",
-          "terms": "sprachschule"
         },
         "amenity/lavoir": {
           "name": "Waschhaus",
@@ -765,10 +753,6 @@
         "amenity/motorcycle_rental": {
           "name": "Motorradverleih",
           "terms": "chopper,cruiser,moped,motorrad,motorroller,beiwagen"
-        },
-        "amenity/music_school": {
-          "name": "Musikschule",
-          "terms": "musikschule,gitarre,klavier,geige,schlagzeug,musikunterricht"
         },
         "amenity/nightclub": {
           "name": "Diskothek",
@@ -905,10 +889,6 @@
         "amenity/post_office": {
           "name": "Postfiliale",
           "terms": "post,postamt,poststelle"
-        },
-        "amenity/prep_school": {
-          "name": "Nachhilfeanbieter",
-          "terms": "vorbereitungsschule,schülerhilfe,hausaufgaben,studienkreis,repetitorium,nachhilfe,lernhilfe"
         },
         "amenity/prison": {
           "name": "Gefängnisanlage",
@@ -1073,10 +1053,6 @@
           "name": "Campingtoiletten-Entsorgungsanlage",
           "terms": "campingtoilette,toilettenentsorgungsanlage"
         },
-        "amenity/school": {
-          "name": "Schule, Schulgelände",
-          "terms": "schulhof,schule,realschule,mittelschule,grundschule,gymnasium,ganztagsschule,förderschule,gesamtschule,gemeinschaftsschule"
-        },
         "amenity/shelter": {
           "name": "Wetterschutz",
           "terms": "unterstand,wetterschutz,schutzdach,wetterpilz"
@@ -1233,10 +1209,6 @@
         "amenity/trolley_bay": {
           "name": "Abstellplatz für Einkaufswagen",
           "terms": "einkaufswagenabstellplatz,einkaufswagen,einkaufswagenhaus,einkaufswagenhäuschen,rückgabe,abstellplatz,stellplatz"
-        },
-        "amenity/university": {
-          "name": "Universitätsgelände",
-          "terms": "universitätsgelände,universitätscampus,hochschule"
         },
         "amenity/vacuum_cleaner": {
           "name": "Auto-Staubsauganlage",
@@ -1888,7 +1860,7 @@
           "terms": "stadiongebäude"
         },
         "building/static_caravan": {
-          "name": "Dauercamper",
+          "name": "Mobilheim",
           "terms": "wohnwagen,wohnmobil,saisoncamping,wohnwagensiedlung,mobilheim,mobile home"
         },
         "building/sty": {
@@ -2203,6 +2175,49 @@
         "disused/shop": {
           "name": "geschlossener Laden"
         },
+        "education": {
+          "name": "Bildungseinrichtung",
+          "terms": "bildung,ausbildung,lernen,klasse,kurse,lehre,training,übung"
+        },
+        "education/college": {
+          "name": "Hochschulgelände",
+          "terms": "hochschule,fachhochschule,berufsschule"
+        },
+        "education/dancing_school": {
+          "name": "Tanzschule",
+          "terms": "tanzschule,tanzunterricht,tanzstudio,ballettschule,ballettunterricht,ballettstudio,gesellschaftstanz,walzer,tanzkurs,paartanz,tanzsport"
+        },
+        "education/driving_school": {
+          "name": "Fahrschule",
+          "terms": "fahrschule,fahrunterricht,führerschein,fahrkurs"
+        },
+        "education/kindergarten": {
+          "name": "Kindergartengelände",
+          "terms": "kindergarten,vorschule,kindertagesstätte,kinderkrippe,hort"
+        },
+        "education/language_school": {
+          "name": "Sprachschule",
+          "terms": "sprachschule,sprachunterricht,sprachkurs,fremdsprache,sprachtest"
+        },
+        "education/music_school": {
+          "name": "Musikschule",
+          "terms": "musikschule,gitarre,klavier,geige,schlagzeug,musikunterricht,instrument"
+        },
+        "education/prep_school": {
+          "name": "Nachhilfeanbieter",
+          "terms": "vorbereitungsschule,schülerhilfe,hausaufgaben,studienkreis,repetitorium,nachhilfe,lernhilfe"
+        },
+        "education/school": {
+          "name": "Schulgelände",
+          "terms": "schulhof,schule,realschule,mittelschule,grundschule,gymnasium,ganztagsschule,förderschule,gesamtschule,gemeinschaftsschule"
+        },
+        "education/university": {
+          "name": "Universitätsgelände",
+          "terms": "uni,universitätsgelände,universitätscampus,hochschule,hochschulgelände,hochschulcampus,campus"
+        },
+        "education/yes": {
+          "name": "Bildungseinrichtung (unbestimmter Typ)"
+        },
         "embankment": {
           "name": "künstliche Böschung"
         },
@@ -2220,12 +2235,6 @@
         "emergency/defibrillator": {
           "name": "Defibrillator",
           "terms": "defibrillator,defi,schockgeber,aed"
-        },
-        "emergency/designated": {
-          "name": "Rettungsweg"
-        },
-        "emergency/destination": {
-          "name": "Notzufahrt ohne Notdurchfahrt"
         },
         "emergency/disaster_response": {
           "name": "Technisches Hilfswerk",
@@ -2284,18 +2293,9 @@
           "name": "Bergrettung",
           "terms": "bergrettung,rettung am berg"
         },
-        "emergency/no": {
-          "name": "keine Notzufahrt"
-        },
-        "emergency/official": {
-          "name": "offizielle Notzufahrt"
-        },
         "emergency/phone": {
           "name": "Notruftelefon",
           "terms": "notruf-telefon,notrufsäule,notfallsäule"
-        },
-        "emergency/private": {
-          "name": "private Notzufahrt"
         },
         "emergency/siren": {
           "name": "Sirene",
@@ -2312,9 +2312,6 @@
         "emergency/water_tank": {
           "name": "Löschwasser",
           "terms": "löschwasser,löschteich,löschreservoir"
-        },
-        "emergency/yes": {
-          "name": "Notzufahrt erlaubt"
         },
         "entrance": {
           "name": "Eingang / Ausgang",
@@ -3020,6 +3017,10 @@
           "name": "Aquakultur",
           "terms": "aquakultur,wasserkultur,gewässerbewirtschaftung,fischzucht,forellenzucht,fischteich,austernzucht,muscheln,algen,garnelen"
         },
+        "landuse/aquaculture/fish": {
+          "name": "Fischzucht",
+          "terms": "fischteich,barsch,karpfen,fischzucht,fischbrutanstalt,lachs,stör,tilapia,forelle,fischteichanlage,fischfarm,fischaufzucht,karpfenteichwirtschaft,forellenteichwirtschaft,ktw,ftw,teichwirtschaft"
+        },
         "landuse/basin": {
           "name": "Becken"
         },
@@ -3186,14 +3187,14 @@
         },
         "landuse/residential": {
           "name": "Wohngebiet",
-          "terms": "wohngebiet,wohngegend,wohnregion,siedlungsfläche,ortslage,siedlungsraum"
+          "terms": "wohnfläche,wohngebiet,wohnsiedlungsfläche,landnutzung wohnen,wohngegend,wohnregion,siedlungsfläche,ortslage,siedlungsraum"
         },
         "landuse/residential/apartments": {
           "name": "Wohnblockanlage",
           "terms": "wohnsiedlung,wohnkomplex"
         },
         "landuse/residential/trailer_park": {
-          "name": "Wohnwagenpark",
+          "name": "Wohnwagensiedlung",
           "terms": "wohnwagenpark"
         },
         "landuse/retail": {
@@ -3254,10 +3255,6 @@
         "leisure/dance": {
           "name": "Tanzsaal",
           "terms": "tanzcafé,tanzlokal,tanzhalle,tanzboden,tanzdiele,tanzpalast,tanzsaal,tanzhaus,ballsaal,ballettstudio"
-        },
-        "leisure/dancing_school": {
-          "name": "Tanzschule",
-          "terms": "tanzschule,ballettstudio"
         },
         "leisure/disc_golf_course": {
           "name": "Discgolfanlage",
@@ -3763,6 +3760,18 @@
           "terms": "teppichklopfer,teppichreinigung",
           "aliases": "Klopfstange"
         },
+        "man_made/ceremonial_gate": {
+          "name": "Zeremonientor",
+          "terms": "ehrentor,triumphtor,tor,tempeltor,eingangstor,pailou,paifang,torii"
+        },
+        "man_made/ceremonial_gate/paifang": {
+          "name": "Paifang",
+          "terms": "pailou,pinyin,chinesisches tor"
+        },
+        "man_made/ceremonial_gate/torii": {
+          "name": "Torii",
+          "terms": "japanisches tor,shinto schrein"
+        },
         "man_made/charge_point": {
           "name": "Ladepunkt",
           "terms": "normalladepunkt,schnellladepunkt,ladesäule,normalladesäule,schnellladesäule,ladestelle,normalladestelle,schnellladestelle"
@@ -4043,10 +4052,6 @@
         "man_made/telescope/radio": {
           "name": "Radioteleskop",
           "terms": "radioteleskop"
-        },
-        "man_made/torii": {
-          "name": "Torii",
-          "terms": "japanisches tor,shinto schrein"
         },
         "man_made/tower": {
           "name": "Turm",
@@ -5820,6 +5825,10 @@
           "name": "Mobiltelefonladen",
           "terms": "handygeschäft,handyladen"
         },
+        "shop/mobile_phone_accessories": {
+          "name": "Geschäft für Handyzubehör",
+          "terms": "schutzhülle,displayschutzfolie,powerbank,ladegerät,kopfhörer,speicherkarte"
+        },
         "shop/model": {
           "name": "Modellbaugeschäft",
           "terms": "spielzeug,spiele,handwerk"
@@ -6340,6 +6349,9 @@
         "traffic_sign/variable_message": {
           "name": "Wechselverkehrszeichen",
           "terms": "wechselverkehrszeichen"
+        },
+        "type/associatedStreet": {
+          "name": "Zugeordnete Straße"
         },
         "type/boundary": {
           "name": "Grenze",

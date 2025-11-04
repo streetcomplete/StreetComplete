@@ -318,10 +318,6 @@
           "name": "Relógio de sol",
           "terms": "relógio,sol,solar,relógio solar,relógios solares"
         },
-        "amenity/college": {
-          "name": "Centro de formação tecnológica",
-          "terms": "educação,escolar,instituto,colégio,especialização,cet,superior,cursos,tecnológicos,qualificações,educar,escola"
-        },
         "amenity/community_centre": {
           "name": "Centro comunitário",
           "terms": "community center,espaço social,centro social"
@@ -504,10 +500,6 @@
           "name": "Pista de aulas de condução",
           "terms": "escola,condução,conduzir,treino,treinar"
         },
-        "amenity/driving_school": {
-          "name": "Escola de condução",
-          "terms": "escolas de condução,autoescola,centro de formação de condutores,tirar a carta,carta de condução,escola,condução"
-        },
         "amenity/embassy": {
           "name": "Embaixada"
         },
@@ -649,17 +641,9 @@
           "name": "Caixa de karaoke",
           "terms": "máquina,caraoque,sala,cantar,música,karaoke"
         },
-        "amenity/kindergarten": {
-          "name": "Infantário / pré-escola",
-          "terms": "preschool,kindergarten,grounds,pré-escola,pré escola,creche,jardim de infância,jardim-de-infância,jardim infantil,pré-escolar,infantário"
-        },
         "amenity/kneipp_water_cure": {
           "name": "Espaço de terapia Kneipp",
           "terms": "kneipp,hidroterapia,kneippismo,banho"
-        },
-        "amenity/language_school": {
-          "name": "Escola de línguas",
-          "terms": "escola,idiomas,línguas"
         },
         "amenity/lavoir": {
           "name": "Lavadouro",
@@ -716,10 +700,6 @@
         "amenity/motorcycle_rental": {
           "name": "Aluguer de motas",
           "terms": "motas,motociclos,motocicletas,sidecar,chopper,motos"
-        },
-        "amenity/music_school": {
-          "name": "Escola de música",
-          "terms": "conservatório,música,escola,orfeão"
         },
         "amenity/nightclub": {
           "name": "Discoteca",
@@ -855,10 +835,6 @@
         "amenity/post_office": {
           "name": "Estação de correios",
           "terms": "central de correio,ctt,c.t.t.,correio,cartas,correspondência,postal,posto de correios"
-        },
-        "amenity/prep_school": {
-          "name": "Centro de explicações",
-          "terms": "exames,tutoring,escola,escola de preparação,matemática,tpc,trabalhos de casa,leitura,explicações,testes,ensino,estudos,estudo,estudar"
         },
         "amenity/prison": {
           "name": "Prisão",
@@ -1023,10 +999,6 @@
           "name": "Escoamento sanitário para autocaravanas",
           "terms": "escoamento de águas residuais de autocaravanas,dejetos,estação de serviço para autocaravanas,águas residuais,resíduos,esgotos,autocaravana,caravana,trailer,motocasa,auto-caravana,caravanismo,rulote,rolote,motorhome"
         },
-        "amenity/school": {
-          "name": "Escola",
-          "terms": "academia,colégio,departamento,externato,liceu,seminário,secundária,primária,ensino,educação,aluno,aluna,alunos"
-        },
         "amenity/shelter": {
           "name": "Abrigo",
           "terms": "shelter,gazebo,telheiro,alpendre"
@@ -1178,10 +1150,6 @@
         "amenity/trolley_bay": {
           "name": "Parque de carrinhos de compras",
           "terms": "abrigo,shopping,carrinhos,trolley,supermercado,hipermercado,compras,transporte"
-        },
-        "amenity/university": {
-          "name": "Universidade",
-          "terms": "university grounds,faculdade,escola superior,centro universitário,politécnico,instituto politécnico,instituto,instituto universitário,colégio,academia,escola"
         },
         "amenity/vacuum_cleaner": {
           "name": "Posto de aspiração",
@@ -2139,6 +2107,49 @@
         "disused/shop": {
           "name": "Loja desativada"
         },
+        "education": {
+          "name": "Estabelecimento de ensino",
+          "terms": "educação,educar,escolar,aprendizagem,aprender,treino,formação,formar,teaching,training,aulas,estudar,estudo,alunos,estudantes"
+        },
+        "education/college": {
+          "name": "Instituto pós-secundário e não superior",
+          "terms": "escola técnica,formação profissional,ensino,escola,instituto"
+        },
+        "education/dancing_school": {
+          "name": "Escola de dança",
+          "terms": "dança,dançar,bailado,bailarina,bailarino,valsa,tango,salsa,samba,bailar,balé,ballet,dance"
+        },
+        "education/driving_school": {
+          "name": "Escola de condução",
+          "terms": "escolas de condução,autoescola,centro de formação de condutores,tirar a carta,carta de condução,escola,condução,carro,conduzir,veículo"
+        },
+        "education/kindergarten": {
+          "name": "Infantário / pré-escola",
+          "terms": "preschool,kindergarten,grounds,pré-escola,pré escola,creche,jardim de infância,jardim-de-infância,jardim infantil,pré-escolar,infantário"
+        },
+        "education/language_school": {
+          "name": "Escola de línguas",
+          "terms": "escola,idiomas,línguas,language,idiom"
+        },
+        "education/music_school": {
+          "name": "Escola de música",
+          "terms": "conservatório,música,escola,orfeão,music"
+        },
+        "education/prep_school": {
+          "name": "Centro de explicações",
+          "terms": "exames,tutoring,escola,escola de preparação,matemática,tpc,trabalhos de casa,leitura,explicações,testes,ensino,estudos,estudo,estudar"
+        },
+        "education/school": {
+          "name": "Escola",
+          "terms": "academia,colégio,departamento,externato,liceu,seminário,secundária,primária,ensino,educação,aluno,aluna,alunos"
+        },
+        "education/university": {
+          "name": "Universidade",
+          "terms": "university grounds,faculdade,escola superior,centro universitário,politécnico,instituto politécnico,instituto,instituto universitário,colégio,academia,escola"
+        },
+        "education/yes": {
+          "name": "Estabelecimento de ensino"
+        },
         "embankment": {
           "name": "Elevação no terreno"
         },
@@ -2156,12 +2167,6 @@
         "emergency/defibrillator": {
           "name": "Desfibrilhador",
           "terms": "defibrillator,desfibrilador,desfibrilhação,desfibrilação,dae,aed"
-        },
-        "emergency/designated": {
-          "name": "Acesso de emergência indicado"
-        },
-        "emergency/destination": {
-          "name": "Acesso de emergência, destino"
         },
         "emergency/disaster_response": {
           "name": "Centro de proteção civil",
@@ -2219,18 +2224,9 @@
           "name": "Posto de resgate de montanha",
           "terms": "ems,inem,estação de resgate,salvamento,sos"
         },
-        "emergency/no": {
-          "name": "Acesso de emergência, não"
-        },
-        "emergency/official": {
-          "name": "Acesso de emergência, oficial"
-        },
         "emergency/phone": {
           "name": "Telefone de emergência",
           "terms": "telefone,emergências,112,sos"
-        },
-        "emergency/private": {
-          "name": "Acesso de emergência, privado"
         },
         "emergency/siren": {
           "name": "Sirene",
@@ -2247,9 +2243,6 @@
         "emergency/water_tank": {
           "name": "Tanque de água de emergência",
           "terms": "reservatório de água de emergência,tanque de água,reservatório de água,cisterna,reservatório,emergência"
-        },
-        "emergency/yes": {
-          "name": "Acesso de emergência, sim"
         },
         "entrance": {
           "name": "Entrada / Saída",
@@ -2566,7 +2559,7 @@
           "terms": "passadeira,peões,pedestres,estrada,trânsito,travessia,faixa de segurança"
         },
         "highway/footway/crossing/unmarked": {
-          "name": "Passadeira sem marcações",
+          "name": "Travessia sem marcações",
           "terms": "passadeira,peões,pedestres,estrada,trânsito,travessia,faixa de segurança"
         },
         "highway/footway/informal": {
@@ -2852,7 +2845,8 @@
           "terms": "memorial,homenagem,dedicatória,memória,guerra"
         },
         "historic/memorial/blue_plaque-GB-IE": {
-          "name": "Placa azul (UK)"
+          "name": "Placa azul (UK)",
+          "terms": "placa,azul,blue,plaque"
         },
         "historic/memorial/plaque": {
           "name": "Placa comemorativa",
@@ -3176,10 +3170,6 @@
         "leisure/dance": {
           "name": "Salão de dança",
           "terms": "dance hall,espaço para dança,danceteria,espaço de bailar,bailes,dancetaria,música,bailarico"
-        },
-        "leisure/dancing_school": {
-          "name": "Escola de dança",
-          "terms": "dança,dançar,bailado,bailarina,bailarino,valsa,tango,salsa,samba,bailar"
         },
         "leisure/disc_golf_course": {
           "name": "Campo de golfe de disco",
@@ -3677,6 +3667,10 @@
           "name": "Estendal de tapetes",
           "terms": "rack,stand,tapete,carpete,tecido,lavagem,secar,secagem,pendurar"
         },
+        "man_made/ceremonial_gate/torii": {
+          "name": "Torii",
+          "terms": "torii,tori,tóri,kasagi,portão,japão,japonês,xintoísta,xinto,xintoísmo,xintoismo"
+        },
         "man_made/charge_point": {
           "name": "Ponto de carregamento VE",
           "terms": "ev,uve,carros elétricos,veículos elétricos,elétrico,eletrico,eletricidade,carregar,posto,estação,carga,carro,veículos,motor,motorizado,pcr,híbrido,hibrido,charging,charge"
@@ -3951,10 +3945,6 @@
         "man_made/telescope/radio": {
           "name": "Radiotelescópio",
           "terms": "telescope,estrelas,estelar,céu,planetas,planetário,telescopio,rádio,radio"
-        },
-        "man_made/torii": {
-          "name": "Torii",
-          "terms": "torii,tori,tóri,kasagi,portão,japão,japonês,xintoísta,xinto,xintoísmo,xintoismo"
         },
         "man_made/tower": {
           "name": "Torre",
@@ -5453,7 +5443,7 @@
         },
         "shop/copyshop": {
           "name": "Loja de fotocópias",
-          "terms": "copy store,fotocópias,fotocopiadora,cópia,máquina de fotocopiar,fotocopiar,reprografia,encadernação,encadernações"
+          "terms": "copy store,fotocópias,fotocopiadora,cópia,máquina de fotocopiar,fotocopiar,reprografia,encadernação,encadernações,impressão,print,scan,impressões,imprimir"
         },
         "shop/cosmetics": {
           "name": "Loja de cosmética",
