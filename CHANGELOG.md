@@ -1,6 +1,6 @@
 # Changelog
 
-## vNext
+## v62.0-beta1
 
 ### New quests
 
@@ -12,6 +12,9 @@
 - _"Where is this first aid kit located?"_ (#6539), by @NicodeH
 - _"Does this aerial lift transport bicycles?"_ (#6544), by @RaphaLLamothe
 - _"Are the lanes here marked?"_ (#6490)
+- _"Can bicycles be charged here, too?"_ (#6595)
+- _"How many bicycles can be charged here at the same time?"_ (#6595), thanks @HugoTHOLLON
+- _"Who may access this tower? It may be free or paid."_ (#6581), thanks @ElPoraz
 
 ### General
 
@@ -27,6 +30,7 @@
 
 - Refine which quests to ask for the different places and things (#6481, #6475, #6428, #6474, #6463, #6402, #6498, #6499, #6523, #6522, #6521, #6520, #6529, #6519, #6492, #6534, #6549, #6576…), by @paulklie
 - Housenumbers: Ask for some buildings that were previously excluded (#6533)
+- Place name: Ask for some historic things, such as monuments (#6042)
 - Postbox collection times: Disable in Denmark (#6455), by @matkoniecz
 - Bus stop name: Disable in Sweden (#6515), by @paulklie
 - Mopeds on bike paths: Enable in Sweden (#6516), by @paulklie
