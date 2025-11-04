@@ -27,7 +27,7 @@ class AddGeneralFee : OsmFilterQuestType<Boolean>(), AndroidQuest {
            or leisure ~ beach_resort|disc_golf_course
            or amenity ~ sanitary_dump_station|shower|water_point|public_bath|bicycle_wash|binoculars
            or natural = cave_entrance and access=yes
-           or man_made = tower and tower:type = observation and !emergency and building != fire_lookout
+           or man_made = tower and tower:type = observation and access=yes
          )
          and access !~ private|no
          and !fee

@@ -832,6 +832,7 @@ Before uploading your changes, the app checks with a &lt;a href="https://www.wes
     <string name="quest_board_type_geology">Geology</string>
     <string name="quest_board_type_plants">Plants</string>
     <string name="quest_board_type_wildlife">Wildlife</string>
+    <string name="quest_board_type_rules">Rules</string>
     <string name="quest_board_type_nature">Nature (multiple topics)</string>
     <string name="quest_board_type_notice_board">It is a notice board</string>
     <string name="quest_board_type_public_transport">Public transport</string>

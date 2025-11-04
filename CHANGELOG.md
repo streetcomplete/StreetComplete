@@ -1,6 +1,6 @@
 # Changelog
 
-## vNext
+## v62.0-beta1
 
 ### New quests
 
@@ -8,24 +8,39 @@
 - _"How many people can sleep here?"_ asked for wilderness huts etc. (#6442), by @paulklie
 - _"On which level number is this thing located?"_ asked for things in malls (#6433), by @paulklie
 - _"Do you have to pay to park here?"_ asked for motorbike parkings (#6532), by @ElPoraz
+- _"Is firewood provided here?"_ (#6538) asked for firepits etc., by @NicodeH
+- _"Where is this first aid kit located?"_ (#6539), by @NicodeH
+- _"Does this aerial lift transport bicycles?"_ (#6544), by @RaphaLLamothe
+- _"Are the lanes here marked?"_ (#6490)
+- _"Can bicycles be charged here, too?"_ (#6595)
+- _"How many bicycles can be charged here at the same time?"_ (#6595), thanks @HugoTHOLLON
+- _"Who may access this tower? It may be free or paid."_ (#6581), thanks @ElPoraz
 
 ### General
 
-- Address and name quests looks different now, with a few improvements (#6403, #5479)
+- Address and name quests and overlay look different now, with a few improvements (#6403, #5479)
+- Max weight form quest looks different now, with a few improvements (#6490)
+- Any quest or overlay that shows an image picker or an illustration of a street looks different now, with many improvements (#6490, #6239, #6560) such as showing several apply last-picked buttons like in the building levels quest (#5605)
 - Replace app suggestion Organic Maps with CoMaps (#6451)
+- Language selection is now in a separate screen, with search function (#6490)
+- Map buttons are now better visible in dark mode (#6587), by @paulklie
+- Fix StreetComplete has been removing newlines from tag values it touches (#6466)
 
 ### Quest improvements
 
-- Refine which quests to ask for the different places and things (#6481, #6475, #6428, #6474, #6463, #6402, #6498, #6499, #6523, #6522, #6521, #6520, #6529, #6519, #6492, #6534…), by @paulklie
+- Refine which quests to ask for the different places and things (#6481, #6475, #6428, #6474, #6463, #6402, #6498, #6499, #6523, #6522, #6521, #6520, #6529, #6519, #6492, #6534, #6549, #6576…), by @paulklie
+- Housenumbers: Ask for some buildings that were previously excluded (#6533)
+- Place name: Ask for some historic things, such as monuments (#6042)
 - Postbox collection times: Disable in Denmark (#6455), by @matkoniecz
 - Bus stop name: Disable in Sweden (#6515), by @paulklie
 - Mopeds on bike paths: Enable in Sweden (#6516), by @paulklie
+_ Information board topics: Add "rules" (#6580), by @NicodeH
+- Postbox royal cypher: Show "None" as normal answer option (#6490)
 - Other small refinements (#6445, #6511…)
-- Housenumbers: Ask for some buildings that were previously excluded (#6533)
 
 ### Overlay improvements
 
-- Things: Added exercise equipment, moorings, buoys, disc golf, graves and pillory as things
+- Things: Added exercise equipment, moorings, buoys, disc golf, graves and pillory as things (#6546), by @paulklie
 - Places: don't show "it's vacant" option for already vacant places (#6462), by @paulklie
 - Addresses: Allow omitting the street name (#6528)
 

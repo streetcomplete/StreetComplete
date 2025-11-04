@@ -117,6 +117,11 @@ class AddPlaceName(
                 // name & wheelchair
                 "rehabilitation", "hospice", "midwife", "birthing_centre"
             ),
+            "historic" to arrayOf(
+                // name only
+                "castle", "church", "farm", "fort", "manor", "monument", "mosque", "temple",
+                "ship",
+            ),
         ).map { it.key + " ~ " + it.value.joinToString("|") }.joinToString("\n  or ") + "\n" + """
         )
         and !name and !brand and noname != yes and name:signed != no

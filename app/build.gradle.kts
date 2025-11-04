@@ -8,8 +8,8 @@ import java.util.Properties
 
 
 /** App version name, code and flavor */
-val appVersionName = "61.3"
-val appVersionCode = 6104
+val appVersionName = "62.0-beta1"
+val appVersionCode = 6200
 
 /** Localizations the app should be available in */
 val bcp47ExportLanguages = setOf(
@@ -23,21 +23,21 @@ val bcp47ExportLanguages = setOf(
 
 /** Version of the iD presets to use
  *  see https://github.com/openstreetmap/id-tagging-schema/releases for latest version */
-val presetsVersion = "v6.12.0"
+val presetsVersion = "v6.13.2"
 
 /** Version of the Name Suggestion Index to use
  *  see https://github.com/osmlab/name-suggestion-index/tags for latest version */
-val nsiVersion = "v6.0.20250817"
+val nsiVersion = "7.0.20251101"
 
 /** Project ID of the crowdsource translation platform (from where to pull translations from) */
 val poEditorProjectId = "97843"
 
 plugins {
-    id("org.jetbrains.kotlin.multiplatform") version "2.2.20"
-    id("org.jetbrains.kotlin.plugin.serialization") version "2.2.20"
-    id("org.jetbrains.kotlin.plugin.compose") version "2.2.20"
+    id("org.jetbrains.kotlin.multiplatform") version "2.2.21"
+    id("org.jetbrains.kotlin.plugin.serialization") version "2.2.21"
+    id("org.jetbrains.kotlin.plugin.compose") version "2.2.21"
     id("com.android.application") version "8.11.2"
-    id("org.jetbrains.compose") version "1.9.0"
+    id("org.jetbrains.compose") version "1.9.2"
     id("org.jetbrains.kotlinx.atomicfu") version "0.29.0"
     id("com.codingfeline.buildkonfig") version "0.17.1"
 }
@@ -114,8 +114,8 @@ kotlin {
                 implementation("org.jetbrains.kotlinx:kotlinx-io-core:0.8.0")
 
                 // HTTP client
-                implementation("io.ktor:ktor-client-core:3.3.0")
-                implementation("io.ktor:ktor-client-encoding:3.3.0")
+                implementation("io.ktor:ktor-client-core:3.3.1")
+                implementation("io.ktor:ktor-client-encoding:3.3.1")
                 // SHA256 hashing, used during OAuth authentication
                 implementation("org.kotlincrypto.hash:sha2:0.8.0")
 
@@ -124,7 +124,7 @@ kotlin {
                 implementation("io.github.pdvrieze.xmlutil:core-io:0.91.3")
 
                 // YAML
-                implementation("com.charleskorn.kaml:kaml:0.97.0")
+                implementation("com.charleskorn.kaml:kaml:0.102.0")
 
                 // JSON
                 implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.9.0")
@@ -140,7 +140,7 @@ kotlin {
                 implementation("de.westnordost:osmfeatures:7.0")
 
                 // opening hours parser
-                implementation("de.westnordost:osm-opening-hours:0.2.0")
+                implementation("de.westnordost:osm-opening-hours:0.3.0")
 
                 // UI (Compose)
                 implementation(compose.runtime)
@@ -151,16 +151,16 @@ kotlin {
                 implementation(compose.components.uiToolingPreview)
 
                 // UI Navigation
-                implementation("org.jetbrains.compose.ui:ui-backhandler:1.9.0")
-                implementation("org.jetbrains.androidx.navigation:navigation-compose:2.9.0")
+                implementation("org.jetbrains.compose.ui:ui-backhandler:1.9.2")
+                implementation("org.jetbrains.androidx.navigation:navigation-compose:2.9.1")
 
                 // UI ViewModel
-                implementation("org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-compose:2.9.4")
+                implementation("org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-compose:2.9.5")
 
                 // UI widgets
 
                 // non-lazy grid
-                implementation("com.cheonjaeung.compose.grid:grid:2.4.0")
+                implementation("com.cheonjaeung.compose.grid:grid:2.5.2")
 
                 // reorderable lists (raw Compose API is pretty complicated)
                 implementation("sh.calvin.reorderable:reorderable:2.5.1")
@@ -201,10 +201,10 @@ kotlin {
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.10.2")
 
                 // scheduling background jobs
-                implementation("androidx.work:work-runtime-ktx:2.10.5")
+                implementation("androidx.work:work-runtime-ktx:2.11.0")
 
                 // HTTP Client
-                implementation("io.ktor:ktor-client-android:3.3.0")
+                implementation("io.ktor:ktor-client-android:3.3.1")
 
                 // widgets
                 implementation("androidx.viewpager2:viewpager2:1.1.0")
@@ -213,20 +213,20 @@ kotlin {
                 implementation("com.github.chrisbanes:PhotoView:2.3.0")
 
                 // map and location
-                implementation("org.maplibre.gl:android-sdk:11.13.5")
+                implementation("org.maplibre.gl:android-sdk:12.0.1")
             }
         }
         iosMain {
             dependencies {
                 // HTTP client
-                implementation("io.ktor:ktor-client-darwin:3.3.0")
+                implementation("io.ktor:ktor-client-darwin:3.3.1")
             }
         }
         commonTest {
             dependencies {
                 implementation(kotlin("test"))
 
-                implementation("io.ktor:ktor-client-mock:3.3.0")
+                implementation("io.ktor:ktor-client-mock:3.3.1")
             }
         }
         androidUnitTest {
@@ -318,7 +318,7 @@ android {
     }
 
     dependencies {
-        debugImplementation("androidx.compose.ui:ui-tooling:1.9.2")
+        debugImplementation("androidx.compose.ui:ui-tooling:1.9.4")
     }
 }
 
