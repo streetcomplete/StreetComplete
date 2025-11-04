@@ -15,7 +15,7 @@ class AddParcelLockerBrand : OsmFilterQuestType<String>(), AndroidQuest {
     override val elementFilter = "nodes with amenity = parcel_locker and !brand and !name and !operator"
     override val changesetComment = "Specify parcel locker brand"
     override val wikiLink = "Tag:amenity=parcel_locker"
-    override val icon = R.drawable.ic_quest_parcel_locker_brand
+    override val icon = R.drawable.quest_parcel_locker_brand
     override val isDeleteElementEnabled = true
     override val achievements = listOf(POSTMAN)
 

@@ -14,7 +14,7 @@ class AddBicycleBarrierType : OsmFilterQuestType<BicycleBarrierTypeAnswer>(), An
     override val elementFilter = "nodes with barrier = cycle_barrier and !cycle_barrier"
     override val changesetComment = "Specify cycle barrier types"
     override val wikiLink = "Key:cycle_barrier"
-    override val icon = R.drawable.ic_quest_no_bicycles
+    override val icon = R.drawable.quest_no_bicycles
     override val isDeleteElementEnabled = true
 
     override val achievements = listOf(BLIND, WHEELCHAIR, BICYCLIST)

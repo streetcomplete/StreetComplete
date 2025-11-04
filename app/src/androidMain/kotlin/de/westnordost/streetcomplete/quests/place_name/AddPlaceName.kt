@@ -117,6 +117,11 @@ class AddPlaceName(
                 // name & wheelchair
                 "rehabilitation", "hospice", "midwife", "birthing_centre"
             ),
+            "historic" to arrayOf(
+                // name only
+                "castle", "church", "farm", "fort", "manor", "monument", "mosque", "temple",
+                "ship",
+            ),
         ).map { it.key + " ~ " + it.value.joinToString("|") }.joinToString("\n  or ") + "\n" + """
         )
         and !name and !brand and noname != yes and name:signed != no
@@ -124,7 +129,7 @@ class AddPlaceName(
 
     override val changesetComment = "Determine place names"
     override val wikiLink = "Key:name"
-    override val icon = R.drawable.ic_quest_label
+    override val icon = R.drawable.quest_label
     override val isReplacePlaceEnabled = true
     override val achievements = listOf(CITIZEN)
 

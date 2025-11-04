@@ -28,7 +28,7 @@ class AddKerbHeight : OsmElementQuestType<KerbHeight>, AndroidQuest {
 
     override val changesetComment = "Determine the heights of kerbs"
     override val wikiLink = "Key:kerb"
-    override val icon = R.drawable.ic_quest_kerb_type
+    override val icon = R.drawable.quest_kerb_type
     override val achievements = listOf(BLIND, WHEELCHAIR, BICYCLIST)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_kerb_height_title

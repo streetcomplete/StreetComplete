@@ -25,7 +25,7 @@ class AddBenchStatusOnBusStop : OsmFilterQuestType<Boolean>(), AndroidQuest {
     """
     override val changesetComment = "Specify whether public transport stops have benches"
     override val wikiLink = "Key:bench"
-    override val icon = R.drawable.ic_quest_bench_public_transport
+    override val icon = R.drawable.quest_bench_public_transport
     override val achievements = listOf(PEDESTRIAN)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_busStopBench_title2

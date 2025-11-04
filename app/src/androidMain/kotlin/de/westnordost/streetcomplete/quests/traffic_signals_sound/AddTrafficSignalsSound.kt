@@ -36,7 +36,7 @@ class AddTrafficSignalsSound : OsmElementQuestType<Boolean>, AndroidQuest {
 
     override val changesetComment = "Specify whether traffic signals have sound signals"
     override val wikiLink = "Key:$SOUND_SIGNALS"
-    override val icon = R.drawable.ic_quest_blind_traffic_lights_sound
+    override val icon = R.drawable.quest_blind_traffic_lights_sound
     override val achievements = listOf(BLIND)
 
     override val hint = R.string.quest_traffic_signals_sound_description

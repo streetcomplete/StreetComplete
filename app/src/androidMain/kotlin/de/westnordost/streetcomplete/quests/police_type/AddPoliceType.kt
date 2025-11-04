@@ -13,7 +13,7 @@ class AddPoliceType : OsmFilterQuestType<PoliceType>(), AndroidQuest {
     override val elementFilter = "nodes, ways with amenity = police and !operator"
     override val changesetComment = "Specify Italian police types"
     override val wikiLink = "Tag:amenity=police"
-    override val icon = R.drawable.ic_quest_police
+    override val icon = R.drawable.quest_police
     override val enabledInCountries = NoCountriesExcept("IT")
     override val achievements = listOf(CITIZEN)
 

@@ -22,7 +22,7 @@ class AddWheelchairAccessPublicTransport : OsmFilterQuestType<WheelchairAccess>(
     """
     override val changesetComment = "Survey wheelchair accessibility of public transport platforms"
     override val wikiLink = "Key:wheelchair"
-    override val icon = R.drawable.ic_quest_wheelchair
+    override val icon = R.drawable.quest_wheelchair
     override val achievements = listOf(WHEELCHAIR)
 
     override val hint = R.string.quest_wheelchairAccess_limited_description_public_transport

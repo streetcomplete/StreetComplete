@@ -41,7 +41,7 @@ class AddCyclewayPartSurface : OsmFilterQuestType<Surface>(), AndroidQuest {
     """
     override val changesetComment = "Specify cycleway path surfaces"
     override val wikiLink = "Key:surface"
-    override val icon = R.drawable.ic_quest_bicycleway_surface
+    override val icon = R.drawable.quest_bicycleway_surface
     override val achievements = listOf(BICYCLIST, OUTDOORS)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_cyclewayPartSurface_title

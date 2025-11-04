@@ -14,6 +14,7 @@ import de.westnordost.streetcomplete.quests.accepts_cash.AddAcceptsCash
 import de.westnordost.streetcomplete.quests.access_point_ref.AddAccessPointRef
 import de.westnordost.streetcomplete.quests.address.AddAddressStreet
 import de.westnordost.streetcomplete.quests.address.AddHousenumber
+import de.westnordost.streetcomplete.quests.aerialway.AddAerialwayBicycleAccess
 import de.westnordost.streetcomplete.quests.air_conditioning.AddAirConditioning
 import de.westnordost.streetcomplete.quests.air_pump.AddAirCompressor
 import de.westnordost.streetcomplete.quests.amenity_cover.AddAmenityCover
@@ -87,6 +88,8 @@ import de.westnordost.streetcomplete.quests.fire_hydrant.AddFireHydrantType
 import de.westnordost.streetcomplete.quests.fire_hydrant_diameter.AddFireHydrantDiameter
 import de.westnordost.streetcomplete.quests.fire_hydrant_position.AddFireHydrantPosition
 import de.westnordost.streetcomplete.quests.fire_hydrant_ref.AddFireHydrantRef
+import de.westnordost.streetcomplete.quests.first_aid_kit.AddFirstAidKitLocation
+import de.westnordost.streetcomplete.quests.firewood.AddFirewood
 import de.westnordost.streetcomplete.quests.foot.AddProhibitedForPedestrians
 import de.westnordost.streetcomplete.quests.fuel_service.AddFuelSelfService
 import de.westnordost.streetcomplete.quests.general_fee.AddGeneralFee
@@ -98,6 +101,7 @@ import de.westnordost.streetcomplete.quests.incline_direction.AddBicycleIncline
 import de.westnordost.streetcomplete.quests.incline_direction.AddStepsIncline
 import de.westnordost.streetcomplete.quests.internet_access.AddInternetAccess
 import de.westnordost.streetcomplete.quests.kerb_height.AddKerbHeight
+import de.westnordost.streetcomplete.quests.lane_markings.AddLaneMarkings
 import de.westnordost.streetcomplete.quests.lanes.AddLanes
 import de.westnordost.streetcomplete.quests.leaf_detail.AddForestLeafType
 import de.westnordost.streetcomplete.quests.leaf_detail.AddTreeLeafType
@@ -171,6 +175,7 @@ import de.westnordost.streetcomplete.quests.tactile_paving.AddTactilePavingSteps
 import de.westnordost.streetcomplete.quests.toilet_availability.AddToiletAvailability
 import de.westnordost.streetcomplete.quests.toilets_fee.AddToiletsFee
 import de.westnordost.streetcomplete.quests.tourism_information.AddInformationToTourism
+import de.westnordost.streetcomplete.quests.tower_access.AddTowerAccess
 import de.westnordost.streetcomplete.quests.tracktype.AddTracktype
 import de.westnordost.streetcomplete.quests.traffic_calming_type.AddTrafficCalmingType
 import de.westnordost.streetcomplete.quests.traffic_signals_button.AddTrafficSignalsButton
@@ -377,6 +382,8 @@ fun questTypeRegistry(
     67 to AddFireHydrantRef(),
 
     160 to AddBbqFuel(),
+    182 to AddTowerAccess(),
+    185 to AddFirewood(),
     /* ↓ 2.solvable when right in front of it but takes longer to input --------------------- */
 
     // bike parking/rental: would be higher up if not for bike parking/rental capacity which is usually not solvable when moving past
@@ -439,6 +446,9 @@ fun questTypeRegistry(
     101 to AddFerryAccessPedestrian(),
     102 to AddFerryAccessMotorVehicle(),
 
+    //aerial way: usually visible from looking at the aerial way, but not always...
+    184 to AddAerialwayBicycleAccess(),
+
     103 to AddProhibitedForPedestrians(), // need to understand the pedestrian situation
 
     104 to MarkCompletedHighwayConstruction(), // need to look the whole way
@@ -466,6 +476,8 @@ fun questTypeRegistry(
 
     113 to AddIsAmenityIndoor(getFeature), // need to go inside in case it is inside (or gone)
     161 to AddDefibrillatorLocation(), // need to go inside in case it is inside (or gone)
+
+    183 to AddFirstAidKitLocation(), // need to go inside in case it is inside (or gone)
 
     // inside camping sites
     114 to AddCampType(),
@@ -509,6 +521,7 @@ fun questTypeRegistry(
     135 to AddRoadSurface(), // used by BRouter, OsmAnd, OSRM, graphhopper, HOT map style... - sometimes requires way to be split
     136 to AddTracktype(), // widely used in map rendering - OSM Carto, OsmAnd...
     137 to AddCycleway(getCountryInfoByLocation), // for any cyclist routers (and cyclist maps)
+    181 to AddLaneMarkings(),
     138 to AddLanes(), // abstreet, certainly most routing engines - often requires way to be split
 
     140 to AddRoadWidth(arSupportChecker),
