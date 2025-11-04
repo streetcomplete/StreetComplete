@@ -20,7 +20,7 @@ class AddTowerAccess : OsmFilterQuestType<TowerAccess>(), AndroidQuest {
         """
     override val changesetComment = "Specify access to observation towers"
     override val wikiLink = "Tag:man_made=tower"
-    override val icon = R.drawable.ic_quest_tower_access
+    override val icon = R.drawable.quest_tower_access
     override val achievements = listOf(BUILDING)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_tower_access_title
