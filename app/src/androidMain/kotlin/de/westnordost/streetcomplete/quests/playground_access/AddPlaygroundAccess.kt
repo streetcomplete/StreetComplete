@@ -9,7 +9,11 @@ import de.westnordost.streetcomplete.osm.Tags
 
 class AddPlaygroundAccess : OsmFilterQuestType<PlaygroundAccess>(), AndroidQuest {
 
-    override val elementFilter = "nodes, ways, relations with leisure = playground and (!access or access = unknown)"
+    override val elementFilter = """
+        nodes, ways, relations with
+          leisure = playground
+          and (!access or access = unknown)
+    """
     override val changesetComment = "Specify access to playgrounds"
     override val wikiLink = "Tag:leisure=playground"
     override val icon = R.drawable.ic_quest_playground
