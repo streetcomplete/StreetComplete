@@ -20,10 +20,7 @@
     <string name="quest_leave_new_note_yes">Lasi noton</string>
     <string name="quest_leave_new_note_no">Ne, nur kaŝi</string>
     <string name="quest_streetName_title">Kiu estas la nomo de ĉi tiu vojo?</string>
-    <string name="quest_streetName_description">kiel skribite je la startoŝildo, mallongigoj estos elvolvitaj:</string>
     <string name="quest_streetName_answer_noName_confirmation_description">Foje stratoŝildo estas nur en unu fino de strato. Ankaŭ rimarku, ke povas ne esti ŝildoj de stratoj ligitaj al pli grandaj stratoj. Ordinare ajna strato kun domoj havas nomon.</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_description">Se la nomo povas esti tajpita den mallongigo, ĝi devas esti elvolvata. Multaj komunaj mallongigoj estas devolvataj aŭtomate dum vi tajpas, sed probable ne ĉiuj.</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">Sen mallongigoj</string>
     <string name="quest_openingHours_start_time">tempo de malfermo</string>
     <string name="quest_openingHours_end_time">tempo de fermo</string>
     <string name="quest_openingHours_add_months">Aldoni monatojn</string>
@@ -57,7 +54,6 @@
     <string name="version_banned_message">Ĉi tiu versio de StreetComplete estas tro malnova. Bonvolu ĝisdatigi!</string>
     <string name="no_gps_no_quests">Por aŭtomate serĉi taskojn ĉirkaŭ vi, ŝaltu loktrovilon</string>
     <string name="later">Poste</string>
-    <string name="quest_streetName_answer_noProperStreet_link">Ĝi nur ligas du vojojn</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">Io alia (lasu noton)</string>
     <string name="about_title_privacy_statement">Deklaracio pri privateco</string>
     <string name="quest_openingHours_public_holidays">Feriaj tagoj</string>
@@ -196,7 +192,6 @@ Se nenia indikilo kiu aplikiĝus por la ĉi-montrita parto aperas en la tuta str
     <string name="quest_sport_roller_skating">Rulŝuado</string>
     <string name="quest_wheelchairAccess_limited_description_business">Parte signifas, ke estas ne pli ol unu ŝtupo por atingi la lokon kaj la plejmulto de ĉambroj ene estas atingeblaj por rulseĝoj.</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">“Parte” signifas, ke nur unu ŝtupeto bezonas esti transirita.</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">Ĉu estas mallongigoj en la nomo %1$s?</string>
     <string name="quest_recycling_type_title">Kia reciklaĵo estas ĉi tio?</string>
     <string name="recycling_centre">Reciklejo</string>
     <string name="overground_recycling_container">Reciklujo</string>
@@ -323,10 +318,6 @@ Alie, vi povas alŝuti alian klavaron de aplikaĵvendejo. Popularaj klavaroj, ki
     <string name="quest_cycleway_answer_contraflow_cycleway">Ankaŭ biciklovojo aliflanke…</string>
     <string name="quest_openingHours_emptyAnswer">Vi devas priskribi kio estas sur la signo. Se ne estas signo, vi devus peti la malfermajn horojn ene.</string>
     <string name="quest_cycleway_value_none_but_no_oneway">Neniu, sed biciklantoj povas uzi vojon en ambaŭ direktoj</string>
-    <string name="quest_streetName_answer_noName_question">Kial ĝi ne havas nomon?</string>
-    <string name="quest_streetName_answer_noProperStreet_service2">Estas alira vojo aŭ parkumeja vojo</string>
-    <string name="quest_streetName_answer_noProperStreet_track2">Ĝi estas agrikultura aŭ arbara vojo</string>
-    <string name="quest_streetName_answer_noName_noname">Neniu el ĉi-supraj, ĝi simple ne havas nomon</string>
     <string name="quest_wheelchairAccess_description_toilets">Rulseĝa signo kiel ĉi tio povus esti videbla se la ripozejo estas alirebla.
 Parte signifas, ke rulseĝo povas eniri kaj uzi la ripozejon, sed neniu manplato aŭ adaptita manbaseno ĉeestas.</string>
     <string name="map_btn_create_note">Krei novan noton</string>
@@ -702,7 +693,7 @@ aktiva</string>
     <string name="resurvey_intervals_default">Defaŭlte</string>
     <string name="resurvey_intervals_more_often">Demandu pli ofte</string>
     <string name="about_title_translate">Helpi traduki ĉi tiun apon</string>
-    <string name="about_description_translate">%1$s estas tradukita %2$d%%</string>
+    <string name="about_description_translate">%1$s estas tradukita %2$d%</string>
     <string name="quest_oneway2_title">Ĉu ĉi tio estas unudirekta strato? En kiu direkto?</string>
     <string name="quest_oneway2_dir">Unudirekte en ĉi tiu direkto</string>
     <string name="quest_oneway2_no_oneway">Ne unudirekte</string>
@@ -747,7 +738,6 @@ aktiva</string>
     <string name="quest_buildingType_ruins_description">forlasita, ruinigita kaj neidentigebla konstruaĵo</string>
     <string name="quest_charging_station_capacity_title">Kiom da aŭtoj povas ŝargi ĉi tie samtempe?</string>
     <string name="quest_lanes_title">Kiom da veturkoridoroj estas en tiu vojo?</string>
-    <string name="quest_lanes_answer_lanes">Markitaj koridoroj</string>
     <string name="quest_lanes_answer_noLanes">Neniu markita koridoro</string>
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">Ĝi havas duflankan maldekstran turnan vojeron</string>
     <string name="quest_address_answer_no_housenumber_message2b">Ĉu ĉi tio estas ĝusta?</string>
@@ -759,8 +749,6 @@ aktiva</string>
     <string name="quest_kerb_height_lowered">Iom pli alta ol vojsurfaco</string>
     <string name="quest_kerb_height_raised">Alta trotuarrando</string>
     <string name="quest_kerb_height_lowered_ramp">Malaltigita trotuarrando</string>
-    <string name="quest_lanes_answer_lanes_description2">Specifu la tutan nombron de markitaj vojeroj (ambaŭ direktoj) uzeblaj per aŭta trafiko. Biciklaj kaj diligentaj parkumaj vojeroj ne kalkulas.
-Se iuj vojeroj estas rezervitaj al busoj, bonvolu lasi noton anstataŭe.</string>
     <string name="quest_lanes_answer_lanes_description_one_side2">Specifu la tutan nombron de markitaj vojeroj uzeblaj per aŭta trafiko. Biciklaj kaj diligentaj parkumaj vojeroj ne kalkulas.
 Se iuj vojeroj estas rezervitaj al busoj, bonvolu lasi noton anstataŭe.</string>
     <string name="quest_surface_value_rock">Roko</string>
@@ -775,7 +763,6 @@ Se iuj vojeroj estas rezervitaj al busoj, bonvolu lasi noton anstataŭe.</string
     <string name="quest_shop_gone_replaced_answer">Ĝi estas…</string>
     <string name="quest_shop_gone_replaced_answer_hint">Tajpu specon de loko ĉi tie</string>
     <string name="quest_shop_vacant_type_title">Ĉi tiu butiko estis vaka. Kio estas ĉi tie nun?</string>
-    <string name="quest_lanes_answer_lanes_odd2">Ne estas samkvante da koridoroj ambaŭflanke</string>
     <string name="default_disabled_msg_go_inside_regional_warning">Ĉi tia tasko estas malebiligita defaŭlte ĉar ĝi ne estas utila en kelkaj regionoj kaj vi probable devas eniri la lokon por plenigi tian taskon.</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">Tute neniu biciklovojo</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">Kiel kutime, alklaku iaflanke de la ilustraĵo, elektu akuratan respondon, kaj faru same aliflanke.

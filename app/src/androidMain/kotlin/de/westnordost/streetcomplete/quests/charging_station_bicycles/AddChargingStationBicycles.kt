@@ -25,7 +25,7 @@ class AddChargingStationBicycles : OsmFilterQuestType<ChargingStationBicycles>()
     override val achievements = listOf(BICYCLIST)
     override val hint = R.string.quest_charging_station_bicycles_hint
 
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_charging_station_capacity_title
+    override fun getTitle(tags: Map<String, String>) = R.string.quest_charging_station_bicycles_title
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
         getMapData().filter("nodes, ways with amenity = charging_station")

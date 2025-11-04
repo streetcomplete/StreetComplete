@@ -19,7 +19,7 @@
         },
         "advertising/board": {
           "name": "Plakátová plocha",
-          "terms": "reklama,reklamní,tabule,vývěska,nástěnka,deska,úřední deska,vitrýnka,vitrýna,prezentace,prezentační,oznámení,oznamovací,letáčky,plakáty"
+          "terms": "reklama,reklamní,tabule,nástěnka,deska,vitrýnka,vitrýna,prezentace,prezentační,oznámení,oznamovací,letáčky,plakáty,reklamní plocha,reklamni plocha,plakatova plocha"
         },
         "advertising/column": {
           "name": "Reklamní sloup",
@@ -108,8 +108,8 @@
           "terms": "garáž,letadlo,letiště"
         },
         "aeroway/helipad": {
-          "name": "Přistávací plocha",
-          "terms": "vrtulník,heliport"
+          "name": "Helipad",
+          "terms": "přistávací plocha,pristavaci plocha,vrtulník,vrtulnik,helikoptéra,helikoptera"
         },
         "aeroway/holding_position": {
           "name": "Vyčkávací místo letadla",
@@ -317,29 +317,25 @@
           "name": "Sluneční hodiny",
           "terms": "gnómón,stín"
         },
-        "amenity/college": {
-          "name": "Prostor vyšší odborné školy/college",
-          "terms": "univerzita,vysokoškolské studium"
-        },
         "amenity/community_centre": {
           "name": "Komunitní centrum",
-          "terms": "událost,hala"
+          "terms": "komunitni centrum,společenské centrum,spolecenske centrum,společenský sál,spolecensky sal,událost,udalost,hala"
         },
         "amenity/community_centre/club_home": {
-          "name": "Domácí klub",
-          "terms": "klubovna,klubová místnost,klubové centrum"
+          "name": "Klubovna",
+          "terms": "klubová místnost,klubova mistnost,klubové centrum,klubove centrum"
         },
         "amenity/community_centre/community_hall": {
           "name": "Společenský sál",
-          "terms": "komunitní sál"
+          "terms": "spolecensky sal,komunitní sál,komunitni sal"
         },
         "amenity/community_centre/cultural_centre": {
-          "name": "Kulturní středisko",
-          "terms": "centrum kultury"
+          "name": "Kulturní centrum",
+          "terms": "kulturni centrum,kulturní středisko,kulturni stredisko,centrum kultury,kulturní sál,kulturni sal"
         },
         "amenity/community_centre/family_centre": {
-          "name": "Rodinné středisko",
-          "terms": "centrum pro rodinu"
+          "name": "Rodinné centrum",
+          "terms": "rodinne centrum,centrum pro rodinu,rodinné středisko,rodinne stredisko"
         },
         "amenity/community_centre/lgbtq": {
           "name": "Komunitní centrum LGBTQ+",
@@ -347,15 +343,15 @@
         },
         "amenity/community_centre/parish_hall": {
           "name": "Farní sál",
-          "terms": "sál fary"
+          "terms": "farni sal,náboženský sál,nabozensky sal,sál fary"
         },
         "amenity/community_centre/village_hall": {
-          "name": "Obecní úřad",
-          "terms": "obecní sál"
+          "name": "Obecní sál",
+          "terms": "obecni sal,obecni hala,obecní středisko,obecni stredisko"
         },
         "amenity/community_centre/youth_centre": {
           "name": "Centrum mládeže",
-          "terms": "centrum pro mládež,klub mládeže"
+          "terms": "centrum mladeze,centrum pro mládež,centrum pro mladez,klub mládeže,klub mladeze,mládežnické centrum,mladeznicke centrum"
         },
         "amenity/compressed_air": {
           "name": "Stlačený vzduch",
@@ -379,6 +375,10 @@
         "amenity/dentist": {
           "name": "Zubař",
           "terms": "dentista,zubař,zubní ordinace"
+        },
+        "amenity/device_charging_station": {
+          "name": "Nabíječka mobilních zařízení",
+          "terms": "nabíjecí stanice,nabíjecí místo,nabíjecí místo pro telefon,nabíjení zařízení,nabíječka pro zařízení,nabíječka telefonu,místo pro nabíjení,nabíjecí stanoviště,nabíjecí stanice pro mobilní zařízení,nabíjecí kiosek,dobíječka"
         },
         "amenity/dive_centre": {
           "name": "Centrum potápění",
@@ -465,8 +465,8 @@
           "terms": "estetická chirurgie,kosmetická chirurgie,plastika,rekonstrukční chirurgie,plastická chirurgie"
         },
         "amenity/doctors/podiatry": {
-          "name": "Pedikér",
-          "terms": "kotník,nohy,noha,chodidlo,chodidla,pedikúra"
+          "name": "Podiatr",
+          "terms": "kotník,nohy,noha,chodidlo,chodidla,podiatrie"
         },
         "amenity/doctors/proctology": {
           "name": "Kolorektální chirurg",
@@ -520,16 +520,12 @@
           "name": "Cvičná plocha pro řidiče",
           "terms": "autoškola"
         },
-        "amenity/driving_school": {
-          "name": "Autoškola",
-          "terms": "dopravní škola,řízení,auto"
-        },
         "amenity/embassy": {
           "name": "Velvyslanectví"
         },
         "amenity/events_venue": {
-          "name": "Kulturní sál",
-          "terms": "hodovní síň,křest,bar micva,bat micva,narozeniny,oslavy,konference,potvrzení,schůzky,večírky,party,quinceañera,setkání,svatby"
+          "name": "Místo konání akcí",
+          "terms": "misto konani akci,hodovní síň,hodovni sin,křest,krest,bar micva,bat micva,narozeniny,oslavy,oslava,konference,schůzky,schuzky,schuzka,večírky,vecirky,večírek,vecirek,party,quinceañera,setkání,setkani,svatby,svatba,eventy,event,firemní akce,firemni akce,společenské akce,spolecenske akce"
         },
         "amenity/exhibition_centre": {
           "name": "Veletržní palác",
@@ -665,17 +661,9 @@
           "name": "Karaoke kabinka",
           "terms": "karaoke klub,karaoke místnost,karaoke televize,ktv"
         },
-        "amenity/kindergarten": {
-          "name": "Prostor školky / předškolního zařízení",
-          "terms": "mateřská škola,školka,předškolní"
-        },
         "amenity/kneipp_water_cure": {
           "name": "Kneippova lázeň",
           "terms": "lázeň nohou,hydroterapie,kneippova péče,kneippova hydroterapie,kneippismus"
-        },
-        "amenity/language_school": {
-          "name": "Jazyková škola",
-          "terms": "jazykovka"
         },
         "amenity/lavoir": {
           "name": "Lavor",
@@ -706,8 +694,8 @@
           "terms": "hotel lásky,hotel pro zamilované,hotel pro páry"
         },
         "amenity/luggage_locker": {
-          "name": "Úschovna zavazadel",
-          "terms": "zavazadla,tašky,skříňka,skříňky,zavazadlo,skladování,cestování"
+          "name": "Schránka na zavazadla",
+          "terms": "schranka na zavazadla,úschovna zavazadel,uschovna zavazadel,zavazadla,tašky,tasky,skříňka,skrinka,skříňky,skrinky,zavazadlo"
         },
         "amenity/marketplace": {
           "name": "Tržiště",
@@ -733,13 +721,9 @@
           "name": "Půjčovna motocyklů",
           "terms": "vrtulník,cruiser,dirt bike,hog,minibike,moped,motorka,motorový skútr,sajdkára,sportovní kolo"
         },
-        "amenity/music_school": {
-          "name": "Hudební škola",
-          "terms": "hudebka"
-        },
         "amenity/nightclub": {
-          "name": "Diskotéka",
-          "terms": "disco*,noční klub,tancování,taneční klub"
+          "name": "Noční klub",
+          "terms": "nocni klub,diskotéka,diskoteka,disco,tancování,tancovani,taneční klub,tanecni klub"
         },
         "amenity/nightclub/lgbtq": {
           "name": "Noční klub LGBTQ+",
@@ -801,8 +785,8 @@
           "terms": "fotobudka,foto,stánek,kiosek,kamera"
         },
         "amenity/place_of_worship": {
-          "name": "Chrám",
-          "terms": "opatství,bazilika,betel,katedrála,kancléř,kostelík,kaple,kostel,mše,boží dům,modlitebna,dům uctívání,kazatel,misie,mešita,oratoř,farnost,sacellum,svaté místo,svatyně,synagoga,svatostánek,chrám"
+          "name": "Místo náboženských obřadů",
+          "terms": "misto nabozenskych obradu,bohoslužba,bohosluzba,mše,mse,opatství,opatstvi,bazilika,betel,katedrála,katedrala,kancléř,kostelík,kostelik,kostel,boží dům,bozi dum,modlitebna,dům uctívání,dum uctivani,kazatel,misie,mešita,mesita,oratoř,orator,farnost,sacellum,svaté místo,svate misto,svatyně,svatyne,synagoga,svatostánek,svatostanek,chrám,chram"
         },
         "amenity/place_of_worship/buddhist": {
           "name": "Buddhistický chrám",
@@ -872,10 +856,6 @@
           "name": "Pošta",
           "terms": "dopis,poštovní"
         },
-        "amenity/prep_school": {
-          "name": "Doučovací škola",
-          "terms": "akademik,akt,příprava,domácí úkol,matematika,čtení,příprava na zkoušku,doučování,psaní"
-        },
         "amenity/prison": {
           "name": "Prostor věznice",
           "terms": "cela,vězení,náprava"
@@ -932,8 +912,8 @@
           "terms": "vysídlení lidé,evakuovaní,migranti,nevládní organizace,místo pro uprchlíky"
         },
         "amenity/research_institute": {
-          "name": "Prostor výzkumného ústavu",
-          "terms": "aplikovaný výzkum,experimentace,výzkum a vývoj,výzkum i vývoj,výzkumná instituce,výzkumná laboratoř,výzkumné laboratoře"
+          "name": "Výzkumný ústav",
+          "terms": "vyzkumny ustav,aplikovaný výzkum,aplikovany vyzkum,experimentace,výzkum a vývoj,vyzkum a vyvoj,výzkumná instituce,vyzkumna instituce,výzkumná laboratoř,vyzkumna laborator,výzkumné laboratoře,vyzkumne laboratore,akademie věd,akademie ved,akademie,ústav,vustav,ědecký ústav,vedecky ustav,vědecká instituce,vedecka instituce,věda,veda,výzkum,vyzkum,vývoj,vyvoj,vědecké pracoviště,vedecke pracoviste,výzkumné pracoviště,vyzkumne pracoviste,výzkumný institut,vyzkumny institut,vědecký institut,vedecky institut"
         },
         "amenity/restaurant": {
           "name": "Restaurace",
@@ -1039,10 +1019,6 @@
           "name": "Výlevka pro karavany",
           "terms": "obytný vůz,karavan,sanitární,skládka,elsan,výlevka,žumpa,mobilní záchod"
         },
-        "amenity/school": {
-          "name": "Prostor školy",
-          "terms": "akademie,základní škola,štřední škola,vysoká škola"
-        },
         "amenity/shelter": {
           "name": "Přístřešek",
           "terms": "pristresek"
@@ -1092,16 +1068,16 @@
           "terms": "potravinová spíž,vývařovna"
         },
         "amenity/social_facility/group_home": {
-          "name": "Domov pro seniory či jiné skupiny obyvatel",
-          "terms": "starý,senior,bydlení,pečovatelský dům,asistované bydlení"
+          "name": "Domov pro seniory",
+          "terms": "domov seniorů,domov senioru,domov důchodců,domov duchodcu,starý,senior"
         },
         "amenity/social_facility/homeless_shelter": {
           "name": "Noclehárna pro bezdomovce",
           "terms": "bezdomovci,neubytovaní,vysídlení"
         },
         "amenity/social_facility/nursing_home": {
-          "name": "Domov pro seniory",
-          "terms": "senioři,bydlení,ošetřovatelství,staří,asistované bydlení"
+          "name": "Dům s pečovatelskou službou pro seniory",
+          "terms": "dum s osetrovatelskou sluzbou pro seniory,ošetřovateslká služba,osetrovatelska sluzba,senioři,seniori,bydlení,ošetřovatelství,staří"
         },
         "amenity/stripclub": {
           "name": "Striptýzový klub",
@@ -1180,16 +1156,16 @@
           "terms": "toaleta,hajzl,johnny servis,toi-toi,toitoika,mobilní záchod"
         },
         "amenity/townhall": {
-          "name": "Radnice",
-          "terms": "obecní,městský,vláda,soud,magistrát"
+          "name": "Obecní / Městský úřad",
+          "terms": "obecní úřad,obecni urad,městský úřad,mestsky urad,samospráva,samosprava,radnice,městská radnice,mestska radnice"
         },
         "amenity/townhall/barangay-PH": {
           "name": "Úřad barangaye",
           "terms": "úřad barria"
         },
         "amenity/townhall/city": {
-          "name": "Městská radnice",
-          "terms": "rada,soud,vlád,starosta,magistrát"
+          "name": "Radnice velkoměsta",
+          "terms": "radnice velkomesta,městský úřad,mestsky urad,městská radnice,mestska radnice,radnice města,radnice mesta,magistrát,magistrat"
         },
         "amenity/toy_library": {
           "name": "Půjčovna hraček",
@@ -1199,17 +1175,13 @@
           "name": "Stojan na vozíky",
           "terms": "vrácení vozíku,vrácení košíku,nákupní košík,vozík"
         },
-        "amenity/university": {
-          "name": "Prostor vysoké školy",
-          "terms": "vysoká škola,vysokoškolské studium,doktorský studijní program,magisterský studijní program"
-        },
         "amenity/vacuum_cleaner": {
           "name": "Vysavač",
           "terms": "vysavač na auta,myčka,auto vysavač,vysávání"
         },
         "amenity/vehicle_inspection": {
-          "name": "Kontrola vozidel",
-          "terms": "kontrola vozu"
+          "name": "Stanice technické/emisní kontroly",
+          "terms": "stanice technické kontroly,stanice technicke kontroly,stk,technická kontrola,technicka kontrola,stanice emisní kontroly,stanice emisni kontroly,ek,emisní kontrola,emisni kontrola,stanice měření emisí,stanice mereni emisi,měření emisí,mereni emisi,kontrola vozidla,kontrola vozu,kontrola originality"
         },
         "amenity/vending_machine": {
           "name": "Prodejní automat",
@@ -1764,8 +1736,8 @@
           "terms": "domov,rodina,bydliště,obydlí"
         },
         "building/house/terraced": {
-          "name": "Městský dům",
-          "terms": "brownstone,obydlí,rodina,domov,bydliště,řada domů,terasa,měšťanský dům"
+          "name": "Jednotlivý řadový dům",
+          "terms": "jednotlivy radovy dum,dům v řadové zástavbě,dum v radove zastavbe,řadový dům,radovy dum,řada domů,rada domu,řadová zástavba,radova zastavba,řadovka,radovka"
         },
         "building/houseboat": {
           "name": "Hausbót",
@@ -1819,7 +1791,7 @@
         },
         "building/roof": {
           "name": "Střecha",
-          "terms": "přístřešek,čekárna,pumpa,benzinka,benzínka"
+          "terms": "strecha,přístřešek,pristresek"
         },
         "building/ruins": {
           "name": "Zřícená budova",
@@ -1866,8 +1838,8 @@
           "terms": "chrám,dům uctívání,posvátné místo,dům boží,kostel,křesťanský,církev"
         },
         "building/terrace": {
-          "name": "Řada městských domů",
-          "terms": "brownstone,obydlí,rodina,domov,bydliště,řadový dům,terasa,měšťanský dům"
+          "name": "Řad domů v řadové zástavbě",
+          "terms": "rad domu v radove zastavbe,radovy dum,řada domů,rada domu,řadová zástavba,radova zastavba,řadovka,radovka"
         },
         "building/train_station": {
           "name": "Nádražní budova"
@@ -1900,7 +1872,7 @@
           "terms": "pohřebiště,hřbitov,krchov,kostel,kolumbárium,hřbitovy,krchovy,mauzoleum,hrobka"
         },
         "climbing/crag": {
-          "name": "Skalní stěna",
+          "name": "Lezecký sektor/skála",
           "terms": "lezecká stěna,horolezecká stěna,lezecké místo,místo pro lezení,skály,skála,lezecké cesty,lezecká cesta,horolezení,lezení,boulder,lezecký sektor,věž,skalní věž"
         },
         "climbing/route": {
@@ -2161,6 +2133,49 @@
         "disused/shop": {
           "name": "Uzavřený obchod"
         },
+        "education": {
+          "name": "Vzdělávací zařízení",
+          "terms": "výuka,třída,učení,školení,školicí středisko,školicí místnost"
+        },
+        "education/college": {
+          "name": "Areál vyšší odborné školy/college",
+          "terms": "území vyšší odborné školy,území koleje,území vysoké školy,prostor vyšší odborné školy,areál vysoké školy,areál koleje"
+        },
+        "education/dancing_school": {
+          "name": "Taneční škola",
+          "terms": "škola tance,tanec,balet,baletní studio,taneční lekce,výuka tance,jive,swing,tango,walz,rumba,salsa,samba"
+        },
+        "education/driving_school": {
+          "name": "Autoškola",
+          "terms": "škola řízení motorových vozidel,škola řízení,školení řidičů,automoto škola"
+        },
+        "education/kindergarten": {
+          "name": "Areál mateřské školy / předškolního zařízení",
+          "terms": "prostor školky,prostor mateřské školy,předškolní zařízení,školka,jesle,přípravka"
+        },
+        "education/language_school": {
+          "name": "Jazyková škola",
+          "terms": "jazykovka,cizí jazyky"
+        },
+        "education/music_school": {
+          "name": "Hudební škola",
+          "terms": "škola hudby,škola múzických umění,umělecká škola,hudebka,zuš"
+        },
+        "education/prep_school": {
+          "name": "Doučovací škola / přípravka",
+          "terms": "doučování,lekce,domácí úkoly,příprava na testy,testování,mentoring,kurzy,soukromý učitel,akademie"
+        },
+        "education/school": {
+          "name": "Areál školy",
+          "terms": "prostor školy,území školy,akademie,základní škola,střední škola,učiliště,integrovaná škola"
+        },
+        "education/university": {
+          "name": "Areál univerzity",
+          "terms": "prostor univerzity,území univerzity,kolej,koleje,aula"
+        },
+        "education/yes": {
+          "name": "Vzdělávací zařízení (nespecifikovaný druh)"
+        },
         "embankment": {
           "name": "Násyp"
         },
@@ -2178,12 +2193,6 @@
         "emergency/defibrillator": {
           "name": "Defibrilátor",
           "terms": "defibrilátor,aed,resuscitace"
-        },
-        "emergency/designated": {
-          "name": "Vyhrazeno pro záchranná vozidla"
-        },
-        "emergency/destination": {
-          "name": "Vjezd záchranným vozidlům jen do místa"
         },
         "emergency/disaster_response": {
           "name": "Stanice reakce na katastrofy",
@@ -2226,33 +2235,24 @@
           "terms": "vrtulník,přistávací plocha,heliport"
         },
         "emergency/life_ring": {
-          "name": "Kruh života",
-          "terms": "záchranný kruh,záchranářský kruh,záchranné kolo,kobliha"
+          "name": "Záchranný kruh",
+          "terms": "záchranný kruh,zachranny kruh,záchranářský kruh,zahranarsky kruh,záchranné kolo,zachranne kolo,kobliha"
         },
         "emergency/lifeboat_station": {
           "name": "Stanice záchranného člunu",
           "terms": "záchranný člun,záchrana,záchranáři,záchranářský člun,záchrana z lodi,plavba,loď"
         },
         "emergency/lifeguard": {
-          "name": "Záchranný kruh",
-          "terms": "cpr,záchrana"
+          "name": "Plavčík",
+          "terms": "plavcik,cpr,záchrana,zachrana"
         },
         "emergency/mountain_rescue": {
           "name": "Horská služba",
           "terms": "horská služba,horská záchranná služba,záchranáři,vysokohorská,pomoc,rychlá pomoc,hzs,záchranka"
         },
-        "emergency/no": {
-          "name": "Vjezd záchranných vozidel zakázán"
-        },
-        "emergency/official": {
-          "name": "Vjezd záchranných vozidel oficiálně povolen"
-        },
         "emergency/phone": {
           "name": "Tísňový telefon",
           "terms": "nouzový telefon,sos,tísňová linka"
-        },
-        "emergency/private": {
-          "name": "Vjezd záchranným vozidlům jen s povolením"
         },
         "emergency/siren": {
           "name": "Siréna",
@@ -2269,9 +2269,6 @@
         "emergency/water_tank": {
           "name": "Nouzový zásobník vody",
           "terms": "nádrž na vodu,cisterna,hašení,hasit"
-        },
-        "emergency/yes": {
-          "name": "Vjezd záchranných vozidel povolen"
         },
         "entrance": {
           "name": "Vchod / Východ",
@@ -2433,8 +2430,8 @@
           "terms": "fyzikální,terapeut,terapie"
         },
         "healthcare/podiatrist": {
-          "name": "Pedikér",
-          "terms": "noha,nohy,nehty"
+          "name": "Podiatr",
+          "terms": "noha,nohy,chodidla,kotník,kotnik,podiatrie"
         },
         "healthcare/psychotherapist": {
           "name": "Psychoterapeut",
@@ -2489,7 +2486,7 @@
           "name": "Neformální přechod"
         },
         "highway/crossing/traffic_signals": {
-          "name": "Přechod se semaforem pro chodce",
+          "name": "Přechod pro chodce se semaforem",
           "terms": "přechod pro cyklisty (semafor),přechod (semafor),přechod pro chodce (semafor),semafor pro chodce,světelná signalizace pro chodce"
         },
         "highway/crossing/uncontrolled": {
@@ -2580,7 +2577,7 @@
           "terms": "přecházení,přechod pro chodce"
         },
         "highway/footway/crossing/traffic_signals": {
-          "name": "Přechod se semaforem pro chodce",
+          "name": "Přechod pro chodce se semaforem",
           "terms": "přechod pro chodce (semafor),semafory pro chodce,světelná signalizace pro chodce,přechod pro pěší (semafor)"
         },
         "highway/footway/crossing/uncontrolled": {
@@ -2631,8 +2628,8 @@
           "terms": "dálniční nájezd,dálniční výjezd,dálniční exit,dálniční křižovatka,křížení dálnic,nájezd,exit"
         },
         "highway/motorway_link": {
-          "name": "Dálnice – nájezd",
-          "terms": "nájezd,sjezd,výjezd,příjezd,rampa,exit"
+          "name": "Nájezd/sjezd na/z dálnice",
+          "terms": "nájezd,najezd,sjezd,výjezd,vyjezd,příjezd,prijezd,rampa,exit,dálniční nájezd,dalnicni najezd,dálniční sjezd,dalnicni sjezd"
         },
         "highway/passing_place": {
           "name": "Místo k vyhýbání",
@@ -2640,7 +2637,7 @@
         },
         "highway/path": {
           "name": "Pěšina",
-          "terms": "cesta,pěšina,stezka,chodci,pro chodce,polní,lesní,vychozená,prošlapaná"
+          "terms": "pesina,cesta,cestička,cesticka,stezka,chodník,chodnik,chodníček,chodnicek,chodci,pro chodce,polní,lesní,vychozená,prošlapaná"
         },
         "highway/path/boardwalk": {
           "name": "Chodník z prken",
@@ -2966,6 +2963,10 @@
           "name": "Akvakultura",
           "terms": "rybí farma,pěstování ryb,řasa,korýš,kreveta,krevety,ústřice"
         },
+        "landuse/aquaculture/fish": {
+          "name": "Sádky",
+          "terms": "rybí farma,rybí hospodářství,rybárna,rybářství,prodejna ryb,chov ryb"
+        },
         "landuse/basin": {
           "name": "Umělá vodní plocha"
         },
@@ -3017,7 +3018,7 @@
         },
         "landuse/grass": {
           "name": "Tráva",
-          "terms": "pole,zeleň,trávník,obhospodařovaná tráva,posekaná tráva,rašelina"
+          "terms": "zeleň,zelen,trávník,travnik,obhospodařovaná tráva,obhospodarovana trava,posekaná tráva,posekana trava,travnatá plocha,travnata plocha"
         },
         "landuse/greenfield": {
           "name": "Zelená louka",
@@ -3146,8 +3147,8 @@
           "terms": "maloobchodni oblast,maloobchodní zóna,maloobchodni zona,nákupní,nakupni,obchod,nákup"
         },
         "landuse/salt_pond": {
-          "name": "Jezírko pro odpařování soli",
-          "terms": "odpařování,solný roztok,sůl,solnice,solná pánev"
+          "name": "Salina",
+          "terms": "odpařování,odparovani,solný roztok,solny roztok,sůl,sul,solná pánev,solna panev,jezírko pro odpařování soli"
         },
         "landuse/vineyard": {
           "name": "Vinice",
@@ -3200,10 +3201,6 @@
           "name": "Tančírna",
           "terms": "taneční sál,tančírna,jive,džajv,swing,tango,waltz,valčík,polka"
         },
-        "leisure/dancing_school": {
-          "name": "Taneční škola",
-          "terms": "jive,swing,tango,valčík,výuka tance"
-        },
         "leisure/disc_golf_course": {
           "name": "Hřiště pro disc golf",
           "terms": "disk golf,frisbee golf,létající discgolf,frolf,ultimátum"
@@ -3225,8 +3222,8 @@
           "terms": "rybář"
         },
         "leisure/fitness_centre": {
-          "name": "Tělocvična / Fitness centrum",
-          "terms": "tělocvična,posilovna,fitness,fitness centrum,fitko"
+          "name": "Fitness centrum / Posilovna",
+          "terms": "tělocvična,telocvicna,fitness,fitness centrum,fitko,cvičení,cviceni"
         },
         "leisure/fitness_centre/yoga": {
           "name": "Yoga studio",
@@ -3234,7 +3231,7 @@
         },
         "leisure/fitness_station": {
           "name": "Venkovní tělocvična",
-          "terms": "fitko,fitness,tělocvična"
+          "terms": "venkovni telocvicna,fitko,fitness,tělocvična,telocvicna,posilovna,fitness stanice,cvičení,cviceni"
         },
         "leisure/fitness_station/balance_beam": {
           "name": "Kladina",
@@ -3373,7 +3370,7 @@
           "terms": "luk a šíp,kuše"
         },
         "leisure/pitch/athletics": {
-          "name": "Atletický stadion"
+          "name": "Atletický sektor"
         },
         "leisure/pitch/athletics/discus_throw": {
           "name": "Sektor pro hod diskem",
@@ -3627,7 +3624,7 @@
           "terms": "dráha skoku o tyči"
         },
         "leisure/track/athletics/running": {
-          "name": "Bežecká atletická dráha"
+          "name": "Běžecká atletická dráha"
         },
         "leisure/track/athletics/sprint": {
           "name": "Sprinterská dráha",
@@ -3704,6 +3701,18 @@
           "name": "Klepadlo na koberce",
           "terms": "věšák,klepat,stojan"
         },
+        "man_made/ceremonial_gate": {
+          "name": "Slavnostní brána",
+          "terms": "ceremoniální brána,náboženská brána,brána do svatyně,historická brána,brána,oblouk,paifang,torii"
+        },
+        "man_made/ceremonial_gate/paifang": {
+          "name": "Paifang",
+          "terms": "brána,oblouk,architektonický styl z číny,čínský architektonický styl,čínská brána,paifong,pailau,pailou"
+        },
+        "man_made/ceremonial_gate/torii": {
+          "name": "Torii",
+          "terms": "japonská brána,brána,oblouk,šintoistická brána,šintoistická svatyně"
+        },
         "man_made/charge_point": {
           "name": "Dobíjecí bod EV",
           "terms": "ev,elektrické vozidlo,dobíjecí stanoviště,nabíjecí stanice,dobíjecí bod"
@@ -3713,8 +3722,8 @@
           "terms": "komín,kouř,dým"
         },
         "man_made/clarifier": {
-          "name": "Čistič odpadních vod",
-          "terms": "sedimentační nádrž,čistička,čistička odpadních vod"
+          "name": "Dosazovací nádrž",
+          "terms": "dosazovaci nadrz,sedimentační nádrž,sedimentacni nadrz,nádrž,nadrz,čov,cov,čistička,cisticka,čistírna,cistirna,čistírna odpadních vod,cistirna odpadnich vod"
         },
         "man_made/clearcut": {
           "name": "Paseka",
@@ -3979,10 +3988,6 @@
           "name": "Radiový teleskop",
           "terms": "pozemní stanice,rádiová parabola,rádiová anténa"
         },
-        "man_made/torii": {
-          "name": "Torii (šintoistická brána)",
-          "terms": "japonská brána,šintoistická svatyně"
-        },
         "man_made/tower": {
           "name": "Věž",
           "terms": "věž,sloup,stožár,bašta,pevnost,hrad"
@@ -4154,8 +4159,8 @@
           "terms": "led,ledový,sníh"
         },
         "natural/grassland": {
-          "name": "Travnatá plocha",
-          "terms": "travnatá plocha,louka,traviny,travina,trávník"
+          "name": "Travnatá plocha (neudržovaná)",
+          "terms": "travnata plocha,traviny,travina,tráva,trava"
         },
         "natural/heath": {
           "name": "Vřesoviště",
@@ -4199,7 +4204,7 @@
         },
         "natural/scree": {
           "name": "Suťoviště",
-          "terms": "suť,suťoviště,kámen,kameny"
+          "terms": "sutoviste,osyp,suť,sut,kámen,kamen,kameny"
         },
         "natural/scrub": {
           "name": "Křoví",
@@ -4297,11 +4302,11 @@
         },
         "natural/water/pond": {
           "name": "Rybník",
-          "terms": "jezero,mlýnský,rybníček,pleso,bazén,vodní plocha"
+          "terms": "jezero,mlýnský,rybníček,rybnicek,pleso,vodní plocha,vodni plocha"
         },
         "natural/water/reservoir": {
           "name": "Přehrada",
-          "terms": "nádrž,vodní nádrž,tank,rezervoár,jímka"
+          "terms": "prehrada,přehradní nádrž,prehradni nadrz,nádrž,nadrz,vodní nádrž,vodni nadrz,rezervoár,rezervoar"
         },
         "natural/water/river": {
           "name": "Plocha řeky",
@@ -4407,8 +4412,8 @@
           "terms": "charitativní organizace"
         },
         "office/company": {
-          "name": "Kancelář korporace",
-          "terms": "korporace,kancelářský park"
+          "name": "Kancelář soukromé společnosti",
+          "terms": "kancelar soukrome spolecnosti,soukromá společnost,soukroma spolecnost,společnost,spolecnost,firma,korporace,firemní kancelář,firemne kancelar,privátní kancelář,privatni kancelar"
         },
         "office/consulting": {
           "name": "Poradenská kancelář",
@@ -4537,8 +4542,8 @@
           "terms": "pi,soukromé očko,soukromý detektiv"
         },
         "office/property_management": {
-          "name": "Správa nemovitostí / Leasingová kancelář",
-          "terms": "pronájem nemovitosti"
+          "name": "Správa nemovitostí",
+          "terms": "sprava nemovitosti,bytová správa,bytova sprava,správa bytů,sprava bytu"
         },
         "office/quango": {
           "name": "Kancelář kvaziautonomní nevládní organizace",
@@ -4549,8 +4554,8 @@
           "terms": "kněz,farář"
         },
         "office/research": {
-          "name": "Výzkumný ústav",
-          "terms": "výzkumný ústav,akademie věd,akademie,ústav,vědecký ústav,vědecká instituce,věda,výzkum,vývoj,vědecké pracoviště,výzkumné pracoviště"
+          "name": "Kancelář výzkumu a vývoje",
+          "terms": "kancelar vyzkumu a vyvoje,výzkumný ústav,vyzkumny ustav,akademie věd,akademie ved,akademie,ústav,vustav,ědecký ústav,vedecky ustav,vědecká instituce,vedecka instituce,věda,veda,výzkum,vyzkum,vývoj,vyvoj,vědecké pracoviště,vedecke pracoviste,výzkumné pracoviště,vyzkumne pracoviste,výzkumný institut,vyzkumny institut,vědecký institut,vedecky institut"
         },
         "office/security": {
           "name": "Kancelář hlídače",
@@ -5082,7 +5087,7 @@
           "terms": "plocha zastávky,plocha železniční stanice,plocha vlakové stanice,plocha stanice hromadné dopravy,oblast stanice,oblast zastávkyí,mhd,hromadná doprava,veřejná doprava,oblast zastávky"
         },
         "public_transport/stop_position": {
-          "name": "Zastávka veřejné dopravy",
+          "name": "Místo zastavení veřejné dopravy",
           "terms": "místo zastavení hromadné dopravy,metro,bus,trolejbus,tramvaj,tram,autobus,lanovka,lanová dráha,podzemní dráha,podzemka,mhd,vhd,hd,hromadná doprava,městská hromadná doprava,stanice,pozice zastavení vlaku,zastavení autobusu,zastavení linky"
         },
         "public_transport/stop_position_aerialway": {
@@ -5090,8 +5095,8 @@
           "terms": "místo zastavení lanovky,místo zastavení lanové dráhy,místo zastavení kabiny,lanovka,lanová dráha,mhd,městská hromadná doprava,stanice,pozice zastavení lanové dráhy,zastavení kabiny lanovky"
         },
         "public_transport/stop_position_bus": {
-          "name": "Autobusová zastávka",
-          "terms": "místo zastavení autobusu,místo zastavení busu,autobus,bus,mhd,vhd,hd,hromadná doprava,městská hromadná doprava,zastávka,pozice zastavení autobusu,zastavení busu"
+          "name": "Místo zastavení autobusu",
+          "terms": "misto zastaveni autobusu,místo zastavení autobusu,zastaveni autobusu,autobus,bus,pozice zastavení autobusu,pozice zastaveni autobusu,zastavení busu,zastaveni busu"
         },
         "public_transport/stop_position_ferry": {
           "name": "Místo zastavení trajektu/přívozu",
@@ -5106,12 +5111,12 @@
           "terms": "místo zastavení monorailu,místo zastavení jednokolejky,místo zastavení vlaku monorailu,monorail,jednokolejná dráha,jednokolejka,mhd,vhd,hd,hromadná doprava,městská hromadná doprava,stanice,místo zastavení nadzemky,pozice zastavení jednokolejky,zastavení vlaku monorailu"
         },
         "public_transport/stop_position_subway": {
-          "name": "Zastávka metra",
-          "terms": "místo zastavení metra,metro,podzemní dráha,podzemka,mhd,vhd,hd,hromadná doprava,městská hromadná doprava,stanice,pozice zastavení metra,zastavení vlaku metra"
+          "name": "Místo zastavení metra",
+          "terms": "misto zastaveni metra,zastavení metra,zastaveni metra,metro,pozice zastavení metra,pozice zastaveni metra"
         },
         "public_transport/stop_position_train": {
-          "name": "Vlaková zastávka",
-          "terms": "místo zastavení vlaku,železniční stanice,zastavení vlaku,vlak,kolej"
+          "name": "Místo zastavení vlaku",
+          "terms": "misto zastaveni vlaku,zastavení vlaku,zastaveni vlaku"
         },
         "public_transport/stop_position_tram": {
           "name": "Tramvajová zastávka",
@@ -5316,16 +5321,16 @@
           "terms": "starožitnost,starožitnosti,antikvář,antikvity,antikvita,antikvariát"
         },
         "shop/appliance": {
-          "name": "Prodejna spotřební elektroniky",
-          "terms": "klimatizace,spotřebič,myčka,sušička,mraznička,lednička,gril,kuchyně,trouba,lednice,sporák,pračka,prací stroj"
+          "name": "Prodejna domácích spotřebičů",
+          "terms": "prodejna domacich spotrebicu,prodejna s domácími spotřebici,prodejna s domacimi spotrebici,obchod s domácími spotřebiči,obchod s domacimi spotrebici,domáci elektrospotřebiče,domaci elektrospotrebice,domácí spotrebice,domaci spotrebice,klimatizace,spotřebič,myčka,sušička,mraznička,lednička,gril,kuchyně,trouba,lednice,sporák,pračka,prací stroj"
         },
         "shop/art": {
           "name": "Obchod s uměním",
           "terms": "obchod s uměním,umění,galerie,umělecká galerie,prodejní galerie"
         },
         "shop/baby_goods": {
-          "name": "Potřeby pro děti",
-          "terms": "děti,dítě,miminko,mimino,plína,plíny,plínka,plínky,kojenecké potřeby,dětská výživa"
+          "name": "Obchod s potřebami pro děti",
+          "terms": "obchod s potrebami pro deti,potřeby pro děti,potreby pro deti,dětské potřeby,detske potreby,děti,deti,dítě,dite,miminko,mimino,plína,plíny,plínka,plínky,kojenecké potřeby,kojenecke potreby,dětská výživa,detksa vyziva"
         },
         "shop/bag": {
           "name": "Obchod se zavazadly",
@@ -5336,8 +5341,8 @@
           "terms": "chleba,dorty,rohlíky"
         },
         "shop/bathroom_furnishing": {
-          "name": "Vybavení koupelen",
-          "terms": "koupelna,koupelny,vybavení koupelen"
+          "name": "Obchod s vybavením do koupelny",
+          "terms": "obchod s vybavenim do koupelny,koupelna,koupelny,vybavení koupelny,vybaveni koupelny,obchod s koupelnami"
         },
         "shop/bbq": {
           "name": "Potřeby na grilování",
@@ -5356,8 +5361,8 @@
           "terms": "solární studio,solárka,opalovací studio,opalovačka,opalování"
         },
         "shop/bed": {
-          "name": "Prodejna postelí",
-          "terms": "postel,postele,matrace,lůžko,lůžka,spaní,spánek"
+          "name": "Prodejna postelí/matrací",
+          "terms": "prodejna posteli,prodejna s postelemi,obchod s postelemi,postel,postele,matrace,lůžko,lluzko,ůžka,luzka,spaní,spani,spánek,spanek"
         },
         "shop/beverages": {
           "name": "Prodejna nápojů",
@@ -5377,14 +5382,14 @@
         },
         "shop/books": {
           "name": "Knihkupectví",
-          "terms": "koníček"
+          "terms": "knihkupectvi,knihy,obchod s knihami"
         },
         "shop/boutique": {
           "name": "Módní butik"
         },
         "shop/brewing_supplies": {
-          "name": "Pivovarnický obchod",
-          "terms": "pivovar,obchod s domácími potřebami"
+          "name": "Obchod s potřebami pro výrobu piva/vína",
+          "terms": "pivovarnické potřeby,pivovarnicke potreby,pivovar,vinařské potřeby,vinarske potreby"
         },
         "shop/butcher": {
           "name": "Řeznictví",
@@ -5411,8 +5416,8 @@
           "terms": "automobil,automobilový průmysl"
         },
         "shop/car_parts": {
-          "name": "Náhradní díly pro auta",
-          "terms": "prodejna autodílů,autodíly,automobilový,auto"
+          "name": "Obchod s náhradními díly pro auta",
+          "terms": "obchod s nahradnimi dily,náhradní díly,nahradni dily,prodejna autodílů,autodíly,autodily,automobilový,auto"
         },
         "shop/car_repair": {
           "name": "Autoopravna",
@@ -5447,16 +5452,16 @@
           "terms": "čokoláda,čokolády,čokoládovna,cukrářství,cukrář"
         },
         "shop/clothes": {
-          "name": "Oblečení",
-          "terms": "oděvy,oděv,šaty,oblečení,obchod s oblečením,móda,módní"
+          "name": "Obchod s oblečením",
+          "terms": "obchod s oblecenim,oděvy,odevy,oděv,odev,šaty,saty,oblečení,obleceni,móda,moda,módní,modni,butik"
         },
         "shop/clothes/second_hand": {
           "name": "Second-hand oblečení",
           "terms": "halenky,oděvy,zásilka,šaty,kalhoty,second hand,košile,šortky,sukně,obleky,použité"
         },
         "shop/clothes/suits": {
-          "name": "Obleky",
-          "terms": "byznysmen,vázanka,kravata"
+          "name": "Obchod s pánským společenským oblečením",
+          "terms": "obchod s panskym spolecenskym oblecenim,společenské oblečení,spolecenske obleceni,společenské oděvy,spolecenske odevy,oblečení,obleceni,oděvy,odevy,byznysmen,vázanka,kravata"
         },
         "shop/clothes/underwear": {
           "name": "Prodejna spodního prádla",
@@ -5467,8 +5472,8 @@
           "terms": "butik,nevěsta,nevěsty,ženich,družička,ženichové,družičky,manželské oblečení,smoking,svatební šaty,svatební oblek"
         },
         "shop/clothes/workwear": {
-          "name": "Pracovní oděvy",
-          "terms": "řemeslník,bezpečná obuv"
+          "name": "Obchod s pracovními oděvy",
+          "terms": "obchod s pracovnimi odevy,pracovní oděvy,pracovni odevy,řemeslník,remeslnik,bezpečná obuv,bezpecna odev,bezpečnostní obuv,bezpecnostni obuv"
         },
         "shop/coffee": {
           "name": "Obchod prodávající kávu",
@@ -5483,12 +5488,12 @@
           "terms": "obchod s výpočetní technikou,počítače,elektro,elektronika,výpočetní technika"
         },
         "shop/confectionery": {
-          "name": "Cukrovinky",
-          "terms": "cukrovinky,cukrovinka,cukrář,cukrářství"
+          "name": "Obchod s cukrovinkami",
+          "terms": "cukrovinky,cukrovinka,bonbóny,bonbony"
         },
         "shop/convenience": {
-          "name": "Obchod se smíšeným zbožím",
-          "terms": "smíšené zboží,krám,obchod,potraviny,večerka"
+          "name": "Obchod se smíšeným zbožím / Potraviny",
+          "terms": "obchod se smisenym zbozim,smíšené zboží,smisene zbozi,krám,kram,obchod,obchod s potravinami,potraviny,večerka,vecerka"
         },
         "shop/copyshop": {
           "name": "Kopírování",
@@ -5539,12 +5544,12 @@
           "terms": "elektronické,cigarety,kouřit,kouř"
         },
         "shop/electrical": {
-          "name": "Prodejna elektoniky",
-          "terms": "kabel,elektrický,ventilátor,vedení,osvětlení,napájení,drát"
+          "name": "Obchod s elektrotechnickými potřebami",
+          "terms": "obchod s elektrotechnickymi potrebami,elektrotechnické potřeby,elektrotechnicke potreby,kabel,elektrický,vedení,vedeni,napájení,napajeni,drát,drat"
         },
         "shop/electronics": {
-          "name": "Elektro",
-          "terms": "spotřebič,audio,blueray,fotoaparát,počítač,dvd,domácí kino,rádio,reproduktor,televize,video"
+          "name": "Obchod s elektronikou",
+          "terms": "elektronika,spotřebič,audio,blueray,fotoaparát,počítač,dvd,domácí kino,rádio,reproduktor,televize,video"
         },
         "shop/erotic": {
           "name": "Sex shop",
@@ -5555,8 +5560,8 @@
           "terms": "sex,porno"
         },
         "shop/fabric": {
-          "name": "Obchod s textilem",
-          "terms": "textil,textilní,látka,látky,bytový textil,metrový textil"
+          "name": "Obchod s metrovým textilem",
+          "terms": "obchod s metrovym textilem,textil,textilní,látka,latka,látky,bytový textil,bytovy textil,metrový textil,metrovy textil"
         },
         "shop/farm": {
           "name": "Stánek s ovocem, zeleninou",
@@ -5618,8 +5623,8 @@
           "terms": "cng,lpg,svítiplyn,zemní plyn,propan,butan,doplnit,zásobník"
         },
         "shop/general": {
-          "name": "Smíšené zboží",
-          "terms": "maloměstský obchod,vesnický obchod"
+          "name": "Obchod se smíšeným zbožím",
+          "terms": "obchod se smisenym zbozim,smíšené zboží,smisene zbozi,maloměstský obchod,vesnický obchod,vesnicky obchod,obchod s různým zbožím,obchod s ruznym zbozim,různé zboží,ruzne zbozi"
         },
         "shop/gift": {
           "name": "Dárky, suvenýry",
@@ -5713,8 +5718,8 @@
           "terms": "samoobslužná prádelna,automatická prádelna"
         },
         "shop/leather": {
-          "name": "Kožené zboží",
-          "terms": "kožený,kožená,kožené,kůže,useň,usňový,usňová,usňové"
+          "name": "Obchod s koženým zbožím",
+          "terms": "obchod s kozenym zbozim,kožené zboží,kozene zbozi,kožený,kožená,kůže,useň,usňový,usňová,usňové"
         },
         "shop/lighting": {
           "name": "Prodejna osvětlení",
@@ -5737,8 +5742,8 @@
           "terms": "masáž,masáže,masér,masérka,masírování,masírovat,massage"
         },
         "shop/medical_supply": {
-          "name": "Zdravotnické potřeby",
-          "terms": "zdravotnické potřeby,zdravotní potřeby,ortopedické pomůcky"
+          "name": "Obchod se zdravotnickými potřebami",
+          "terms": "obchod se zdravotnickymi potrebami,zdravotnické potřeby,zdravotnicke potreby,zdravotní potřeby,zdravotni potreby,ortopedické pomůckyortopedicke pomucky"
         },
         "shop/military_surplus": {
           "name": "Armádní výprodej",
@@ -5747,6 +5752,10 @@
         "shop/mobile_phone": {
           "name": "Obchod s mobily",
           "terms": "obchod s mobilními telefony,přenosné telefony,mobil,telefon"
+        },
+        "shop/mobile_phone_accessories": {
+          "name": "Obchod s příslušenstvím pro mobilní telefony",
+          "terms": "obchod s mobilními telefony,obchod s mobily,obchod s telefony,obchod s věcmi pro telefony,telefony,mobily,příslušenství k telefonům,příslušenství k mobilům,obaly na mobil,pouzdra na mobil,sluchátka k mobilu,nabíječky na mobil"
         },
         "shop/model": {
           "name": "Modelářský obchod",
@@ -5789,8 +5798,8 @@
           "terms": "optik,optika,brýle,zrak,kontaktní čočky,čočky"
         },
         "shop/outdoor": {
-          "name": "Outdoorové zboží",
-          "terms": "outdoor,outdoorový,outdoorová,outdoorové,kempování,kempingové,horolezecký,horolezecké,sport,sportovní,příroda,přírody"
+          "name": "Obchod s outdoorovým zbožím",
+          "terms": "obchod s outdoorovym zbozim,outdoorové zboží,outdoorove zbozi,outdoor,outdoorový,outdoorová,kempování,kempingové,horolezecký,horolezecké,sport,sportovní,příroda,přírody"
         },
         "shop/outpost": {
           "name": "Výdejna e-shopu",
@@ -5837,8 +5846,8 @@
           "terms": "keramika,hrnec,váza"
         },
         "shop/printer_ink": {
-          "name": "Barvy do tiskáren",
-          "terms": "inkoust do kopírek,inkoust pro fax,inkoustové kazety,toner"
+          "name": "Obchod s barvami do tiskáren",
+          "terms": "tiskařské barvy,tiskarské barvy,inkoust do kopírek,inkoust do kopirek,inkoust pro fax,inkoustové kazety,inkoustove kazety,toner,cartridge,náplně do tiskáren,naplne do tiskaren"
         },
         "shop/psychic": {
           "name": "Věštírna",
@@ -5853,8 +5862,8 @@
           "terms": "elektrotechnika,elektronický,elektrický,elektro,radiotechnika,radioamatér"
         },
         "shop/religion": {
-          "name": "Náboženské předměty",
-          "terms": "náboženství,náboženský,duchovní,křesťanský,katolický"
+          "name": "Obchod s náboženskými předměty",
+          "terms": "obchod s nabozenskymi predmety,náboženství,nabozenstvi,náboženský,nabozensky,duchovní,duchovni,křesťanský,krestansky,katolický,katolicky,náboženské předměty,nabozenske predmety"
         },
         "shop/rental": {
           "name": "půjčovna",
@@ -5878,7 +5887,7 @@
         },
         "shop/second_hand": {
           "name": "Second hand",
-          "terms": "bazarové,přeprodej,použité"
+          "terms": "bazar,přeprodej,preprodej,použité zboží,pouzite zbozi"
         },
         "shop/sewing": {
           "name": "Šicí potřeby, galanterie",
@@ -5890,19 +5899,19 @@
         },
         "shop/shoes": {
           "name": "Obuvnictví",
-          "terms": "dům obuvi,boty,obuvnictví,obuvník,švec"
+          "terms": "obuvnictvi,obchod s obuví,obchod s obuvi,dům obuvi,dum obuvi,boty"
         },
         "shop/spices": {
           "name": "Koření, bylinky",
           "terms": "chilli,skořice,kari,zázvor,bylinky,pepř,šafrán,sůl,obchod s kořením,koření,kurkuma,wasabi"
         },
         "shop/sports": {
-          "name": "Sportovní potřeby",
-          "terms": "sport,obchod se sportovními potřebami,sportovní potřeby,vybavení pro sport"
+          "name": "Obchod se sportovními potřebami",
+          "terms": "sport,obchod se sportovnimi potrebami,sportovní potřeby,sportovni potreby,vybavení pro sport,vybaveni pro sport"
         },
         "shop/stationery": {
-          "name": "Kancelářské potřeby",
-          "terms": "papírnictví,papír,kancelářské potřeby,papírnické zboží,psací potřeby"
+          "name": "Obchod s kancelářskými potřebami",
+          "terms": "obchod s kancelarskymi potrebami,papírnictví,papirnictvi,papír,papir,kancelářské potřeby,kancelarske potreby,papírnické zboží,papirnicke zbozi,psací potřeby,psaci potreby"
         },
         "shop/storage_rental": {
           "name": "Skladovací prostor",
@@ -5954,11 +5963,11 @@
         },
         "shop/toys": {
           "name": "Hračkářství",
-          "terms": "hračky,hry"
+          "terms": "hračky,hracky,hry,obchod s hračkami,obchod s hrackami,prodejna hraček,prodejna hracek"
         },
         "shop/trade": {
-          "name": "Stavebniny",
-          "terms": "obchod s materiálem,velkoobchod s materiálem,stavebniny,obchod - stavebniny či řezivo či hutní materiál či jiný typ materiálu"
+          "name": "Obchodník",
+          "terms": "obchodnik,obchod s materiálem,obchod s materialem,velkoobchod s materiálem,velkoobchod s materialem,stavebniny,řezivo,rezivo,hutní materiál,hutni material,stavební materiál,stavebni material"
         },
         "shop/travel_agency": {
           "name": "Cestovní kancelář",
@@ -5978,15 +5987,15 @@
         },
         "shop/vacuum_cleaner": {
           "name": "Obchod s vysavači",
-          "terms": "vysavač,vysavače,vysávat,lux,luxovat"
+          "terms": "vysavač,vysavac,vysavače,vysavace,vysávat,vysavat,lux,luxovat"
         },
         "shop/variety_store": {
           "name": "Obchod s levným zbožím",
-          "terms": "obchod s levnym zbozim,všechno za dolar,vsechno za dolar,za pár babek,za bura"
+          "terms": "obchod s levnym zbozim,všechno za dolar,vsechno za dolar,za pár babek,za par babek,za bura,levné zboží,levne zbozi,prodejna s levným zbožím,prodejna s levnym zbozim"
         },
         "shop/video": {
-          "name": "Video obchod",
-          "terms": "videopůjčovna,videokazety,videokazeta,dvd"
+          "name": "Obchod s videi / Videopůjčovna",
+          "terms": "videopůjčovna,videopujcovna,videokazety,videokazeta,dvd"
         },
         "shop/video_games": {
           "name": "Obchod s videohrami",
@@ -6009,8 +6018,8 @@
           "terms": "zbraně,střelivo,pistole,pušky,puška,nůž,nože,army"
         },
         "shop/wholesale": {
-          "name": "Velkoobchodní sklad",
-          "terms": "skladiště,zaplať a odvez"
+          "name": "Velkoobchod",
+          "terms": "zaplať a odvez,zaplat a odvez,cash and carry,cash & carry"
         },
         "shop/wigs": {
           "name": "Paruky",
@@ -6139,15 +6148,15 @@
         },
         "tourism/information/guidepost": {
           "name": "Rozcestník",
-          "terms": "rozcestí"
+          "terms": "rozcestnik,rozcestí,rozcesti"
         },
         "tourism/information/map": {
           "name": "Mapa",
           "terms": "mapa,tabule s mapou,plán,turistická mapa,cykloturistická mapa"
         },
         "tourism/information/office": {
-          "name": "Návštěvnické centrum",
-          "terms": "turistické informační centrum,turistické středisko,informace,turismus,turista,návštěvník,návštěvníci,návštěvnické středisko"
+          "name": "Turistické informační centrum",
+          "terms": "turisticke informacni centrum,turisticko-informační centrum,turisticko-informacni centrum,tic,tik,turistická informační kancelář,turisticka informacni kancelar,informační centrum,informacni centrum,informace,turismus,turista"
         },
         "tourism/information/route_marker": {
           "name": "Turistická značka",
@@ -6202,8 +6211,8 @@
           "terms": "průjezdná zoo,průjezd zoo"
         },
         "tourism/zoo/wildlife": {
-          "name": "Obora s divokými zvířaty",
-          "terms": "domorodá zvířata"
+          "name": "Park s divokými zvířaty",
+          "terms": "park s divokymi zviraty,domorodá zvířata"
         },
         "traffic_calming": {
           "name": "Zklidňování dopravy",
@@ -6267,6 +6276,9 @@
         "traffic_sign/variable_message": {
           "name": "Proměnlivé dopravní značení",
           "terms": "měnící se nápis,značka dynamické zprávy"
+        },
+        "type/associatedStreet": {
+          "name": "Přidružená ulice"
         },
         "type/boundary": {
           "name": "Hranice",

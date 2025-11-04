@@ -20,10 +20,7 @@
     <string name="quest_leave_new_note_yes">ตกลง</string>
     <string name="quest_leave_new_note_no">ไม่ต้อง ซ่อนไปเลย</string>
     <string name="quest_streetName_title">ถนนเส้นนี้ชื่ออะไร?</string>
-    <string name="quest_streetName_description">ชื่อตามที่ระบุบนป้ายบอกชื่อทาง ใช้คำเต็มแทนตัวย่อ:</string>
     <string name="quest_streetName_answer_noName_confirmation_description">บางครั้งป้ายบอกชื่อทางก็มีแต่ที่ปากทางที่เดียว และอาจไม่มีป้ายบอกชื่อทางปักไว้บนเส้นย่อยที่เป็นส่วนหนึ่งของถนนใหญ่ โดยปกติแล้ว ถนนที่มีอาคารบ้านเรือนมักจะมีชื่อโดยเสมอ</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_description">ถ้าชื่อถนนสามารถสะกดโดยไม่ใช้อักษรย่อได้ ก็ควรใช้คำเต็ม อักษรย่อที่พบบ่อยจะถูกขยายโดยอัตโนมัติขณะพิมพ์ แต่ก็ไม่ทุกตัว</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">ไม่มีอักษรย่อ</string>
     <string name="quest_openingHours_start_time">เวลาเปิด</string>
     <string name="quest_openingHours_end_time">เวลาปิด</string>
     <string name="quest_openingHours_add_months">เพิ่มเดือน</string>
@@ -57,7 +54,6 @@
     <string name="version_banned_message">StreetComplete เวอร์ชั่นนี้เก่าเกินไป โปรดอัปเดต</string>
     <string name="no_gps_no_quests">เปิดตำแหน่งที่ตั้งเพื่อสแกนภารกิจรอบตัวคุณโดยอัตโนมัติ</string>
     <string name="later">ไว้ภายหลัง</string>
-    <string name="quest_streetName_answer_noProperStreet_link">มันแค่เชื่อมถนนสองเส้น</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">อื่น ๆ (ใส่หมายเหตุ)</string>
     <string name="about_title_privacy_statement">ประกาศความเป็นส่วนตัว</string>
     <string name="quest_openingHours_public_holidays">วันหยุดนักขัตฤกษ์</string>
@@ -194,7 +190,6 @@
     <string name="quest_sport_roller_skating">โรเลอร์สเก็ต</string>
     <string name="quest_wheelchairAccess_limited_description_business">บางส่วน หมายถึงไม่เกินหนึ่งขั้นบันไดสำหรับการเข้าถึง และห้องส่วนใหญ่สามารถใช้รถเข็นเข้าถึงได้</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">บางส่วน หมายถึงไม่เกินหนึ่งขั้นบันไดสำหรับการเข้าถึง</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">ตัวอักษรย่อในชื่อ %1$s?</string>
     <string name="quest_recycling_type_title">นี่คือสถานที่รีไซเคิลประเภทใด</string>
     <string name="recycling_centre">กึ่งกลาง</string>
     <string name="overground_recycling_container">บรรจุภัณฑ์</string>
@@ -321,10 +316,6 @@
     <string name="quest_cycleway_answer_contraflow_cycleway">และมีทางจักรยานอีกฝั่ง…</string>
     <string name="quest_openingHours_emptyAnswer">คุณต้องบรรยายสิ่งที่อยู่บนป้าย หากไม่มีป้ายให้ถามเวลาทำการด้านใน</string>
     <string name="quest_cycleway_value_none_but_no_oneway">ไม่มี แต่นักปั่นใช้ถนนได้ทั้งสองทิศทาง</string>
-    <string name="quest_streetName_answer_noName_question">ทำไมถึงไม่มีชื่อ?</string>
-    <string name="quest_streetName_answer_noProperStreet_service2">มีลักษณะเหมือนถนนโครงการหรือถนนในลานจอดรถ</string>
-    <string name="quest_streetName_answer_noProperStreet_track2">เป็นเส้นทางการเกษตรหรือป่าไม้</string>
-    <string name="quest_streetName_answer_noName_noname">ไม่มีคำตอบที่ถูกต้อง มันแค่ไม่มีชื่อเฉย ๆ</string>
     <string name="quest_wheelchairAccess_description_toilets">อาจมีป้ายรถเข็นแบบนี้ถ้าห้องน้ำสามารถใช้รถเข็นเข้าถึงได้
 บางส่วน หมายถึงรถเข็นสามารถเข้าถึงและใช้ห้องน้ำได้ แต่ไม่มีราวจับหรืออ่างล้างพิเศษ</string>
     <string name="map_btn_create_note">สร้างหมายเหตุใหม่</string>
@@ -703,7 +694,7 @@
     <string name="resurvey_intervals_default">ค่าเริ่มต้น</string>
     <string name="resurvey_intervals_more_often">ถามถี่ขึ้น</string>
     <string name="about_title_translate">ช่วยแปลแอปนี้</string>
-    <string name="about_description_translate">%1$s แปลแล้ว %2$d%%</string>
+    <string name="about_description_translate">%1$s แปลแล้ว %2$d%</string>
     <string name="quest_oneway2_title">นี่คือถนนทางเดียวหรือไม่? โปรดระบุทิศทาง</string>
     <string name="quest_oneway2_dir">ทางเดียวในทิศทางนี้</string>
     <string name="quest_oneway2_no_oneway">ไม่ใช่ทางเดียว</string>
@@ -749,7 +740,6 @@
     <string name="quest_charging_station_capacity_title">จุดชาร์จนี้สามารถชาร์จได้กี่คันพร้อมๆ กัน?</string>
     <string name="link_disaster_ninja_description">แผนที่ที่แสดงภัยพิบัติล่าสุด ซึ่งน่าสนใจสำหรับคนทำแผนที่เชิงมนุษยธรรม และมีการแสดงสถิติที่น่าสนใจที่วิเคราะห์ว่าพื้นที่นั้นๆมีข้อมูลแผนที่ที่ครอบคลุมและล่าสุดแค่ไหน</string>
     <string name="quest_lanes_title">ถนนนี้มีช่องทางสำหรับรถยนต์กี่ช่อง?</string>
-    <string name="quest_lanes_answer_lanes">ช่องทางที่มีสัญลักษณ์ระบุช่อง</string>
     <string name="quest_lanes_answer_noLanes">ไม่มีช่องจราจรที่มีสัญลักษณ์</string>
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">มีช่องทางเลี้ยวซ้ายที่รถวิ่งสองทาง</string>
     <string name="quest_address_answer_no_housenumber_message2b">ถูกต้องไหม</string>
@@ -761,8 +751,6 @@
     <string name="quest_kerb_height_lowered">สูงกว่าผิวถนนนิดหน่อย</string>
     <string name="quest_kerb_height_raised">ขอบทางมีระดับสูง</string>
     <string name="quest_kerb_height_lowered_ramp">ทางลาดไปขอบทาง</string>
-    <string name="quest_lanes_answer_lanes_description2">ระบุจำนวนช่องจราจรที่รถยนต์ใช้สัญจรได้ ที่ระบุสัญลักษณ์บนพื้นถนนทั้งหมด (ทั้งสองทิศทาง)  โดยไม่นับช่องทางจักรยานและช่องสำหรับการจอดรถโดยเฉพาะ
-หากมีช่องทางใดที่สงวนไว้สำหรับรถโดยสาร โปรดระบุหมายเหตุแทน</string>
     <string name="quest_lanes_answer_lanes_description_one_side2">ระบุจำนวนช่องจราจรที่รถยนต์ใช้ได้ที่นี่ โดยไม่นับช่องทางจักรยานและช่องสำหรับการจอดรถโดยเฉพาะ
 หากมีช่องทางใดที่สงวนไว้สำหรับรถโดยสาร โปรดระบุเป็นหมายเหตุแทน</string>
     <string name="quest_surface_value_rock">หิน</string>
@@ -777,7 +765,6 @@
     <string name="quest_shop_gone_replaced_answer">เป็น…</string>
     <string name="quest_shop_gone_replaced_answer_hint">พิมพ์ประเภทของสถานที่ในนี้</string>
     <string name="quest_shop_vacant_type_title">ร้านนี้ย้ายออกไปแล้ว มีอะไรอยู่ที่นี่?</string>
-    <string name="quest_lanes_answer_lanes_odd2">จำนวนช่องจราจรต่างกันระหว่างสองฝั่ง</string>
     <string name="default_disabled_msg_go_inside_regional_warning">ภารกิจประเภทนี้ถูกปิดการใช้งานโดยค่าเริ่มต้นเพราะมันไม่มีประโยชน์ในบางพื้นที่ และคุณน่าจะต้องเข้าไปในสถานที่เพื่อที่จะตอบคำถามสำหรับภารกิจประเภทนี้</string>
     <string name="quest_dietType_explanation_kosher">ผลิตภัณฑ์โคเชอร์ต้องจัดทำขึ้นตามกฎพิเศษ โดยหน่วยงานรับรองของ kashrut จะทำเครื่องหมายผลิตภัณฑ์ว่าเป็นไปตามข้อกำหนด</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">ไม่มีช่องสำหรับจักรยานเลย</string>

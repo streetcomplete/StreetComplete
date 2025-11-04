@@ -20,10 +20,7 @@
     <string name="quest_leave_new_note_yes">"ตกลง"</string>
     <string name="quest_leave_new_note_no">"ไม่ต้อง ซ่อนไปเลย"</string>
     <string name="quest_streetName_title">"ถนนเส้นนี้ชื่ออะไร?"</string>
-    <string name="quest_streetName_description">"ชื่อตามที่ระบุบนป้ายบอกชื่อทาง ใช้คำเต็มแทนตัวย่อ:"</string>
     <string name="quest_streetName_answer_noName_confirmation_description">"บางครั้งป้ายบอกชื่อทางก็มีแต่ที่ปากทางที่เดียว และอาจไม่มีป้ายบอกชื่อทางปักไว้บนเส้นย่อยที่เป็นส่วนหนึ่งของถนนใหญ่ โดยปกติแล้ว ถนนที่มีอาคารบ้านเรือนมักจะมีชื่อโดยเสมอ"</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"ถ้าชื่อถนนสามารถสะกดโดยไม่ใช้อักษรย่อได้ ก็ควรใช้คำเต็ม อักษรย่อที่พบบ่อยจะถูกขยายโดยอัตโนมัติขณะพิมพ์ แต่ก็ไม่ทุกตัว"</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"ไม่มีอักษรย่อ"</string>
     <string name="quest_openingHours_start_time">"เวลาเปิด"</string>
     <string name="quest_openingHours_end_time">"เวลาปิด"</string>
     <string name="quest_openingHours_add_months">"เพิ่มเดือน"</string>
@@ -57,7 +54,6 @@
     <string name="version_banned_message">"StreetComplete เวอร์ชั่นนี้เก่าเกินไป โปรดอัปเดต"</string>
     <string name="no_gps_no_quests">"เปิดตำแหน่งที่ตั้งเพื่อสแกนภารกิจรอบตัวคุณโดยอัตโนมัติ"</string>
     <string name="later">"ไว้ภายหลัง"</string>
-    <string name="quest_streetName_answer_noProperStreet_link">"มันแค่เชื่อมถนนสองเส้น"</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">"อื่น ๆ (ใส่หมายเหตุ)"</string>
     <string name="about_title_privacy_statement">"ประกาศความเป็นส่วนตัว"</string>
     <string name="quest_openingHours_public_holidays">"วันหยุดนักขัตฤกษ์"</string>
@@ -194,7 +190,6 @@
     <string name="quest_sport_roller_skating">"โรเลอร์สเก็ต"</string>
     <string name="quest_wheelchairAccess_limited_description_business">"บางส่วน หมายถึงไม่เกินหนึ่งขั้นบันไดสำหรับการเข้าถึง และห้องส่วนใหญ่สามารถใช้รถเข็นเข้าถึงได้"</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">"บางส่วน หมายถึงไม่เกินหนึ่งขั้นบันไดสำหรับการเข้าถึง"</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"ตัวอักษรย่อในชื่อ %s?"</string>
     <string name="quest_recycling_type_title">"นี่คือสถานที่รีไซเคิลประเภทใด"</string>
     <string name="recycling_centre">"กึ่งกลาง"</string>
     <string name="overground_recycling_container">"บรรจุภัณฑ์"</string>
@@ -321,10 +316,6 @@
     <string name="quest_cycleway_answer_contraflow_cycleway">"และมีทางจักรยานอีกฝั่ง…"</string>
     <string name="quest_openingHours_emptyAnswer">"คุณต้องบรรยายสิ่งที่อยู่บนป้าย หากไม่มีป้ายให้ถามเวลาทำการด้านใน"</string>
     <string name="quest_cycleway_value_none_but_no_oneway">"ไม่มี แต่นักปั่นใช้ถนนได้ทั้งสองทิศทาง"</string>
-    <string name="quest_streetName_answer_noName_question">"ทำไมถึงไม่มีชื่อ?"</string>
-    <string name="quest_streetName_answer_noProperStreet_service2">"มีลักษณะเหมือนถนนโครงการหรือถนนในลานจอดรถ"</string>
-    <string name="quest_streetName_answer_noProperStreet_track2">"เป็นเส้นทางการเกษตรหรือป่าไม้"</string>
-    <string name="quest_streetName_answer_noName_noname">"ไม่มีคำตอบที่ถูกต้อง มันแค่ไม่มีชื่อเฉย ๆ"</string>
     <string name="quest_wheelchairAccess_description_toilets">"อาจมีป้ายรถเข็นแบบนี้ถ้าห้องน้ำสามารถใช้รถเข็นเข้าถึงได้
 บางส่วน หมายถึงรถเข็นสามารถเข้าถึงและใช้ห้องน้ำได้ แต่ไม่มีราวจับหรืออ่างล้างพิเศษ"</string>
     <string name="map_btn_create_note">"สร้างหมายเหตุใหม่"</string>
@@ -579,8 +570,8 @@
     <string name="achievements_empty">"คุณยังไม่มีความสำเร็จ"</string>
     <string name="links_empty">"คุณยังไม่มีลิงก์"</string>
     <string name="quests_empty">"คุณยังไม่ได้เผยแพร่คำตอบจากภารกิจ"</string>
-    <string name="unsynced_quests_description">"บวกกับ %d การเปลี่ยนแปลงที่ยังไม่ถูกเผยแพร่"</string>
-    <string name="unsynced_quests_not_logged_in_description">"คุณมีการเปลี่ยนแปลง %d รายการที่ยังไม่ได้เผยแพร่ คุณต้องเข้าสู่ระบบก่อนที่จะอัพโหลดได้"</string>
+    <string name="unsynced_quests_description">"บวกกับ %1$d การเปลี่ยนแปลงที่ยังไม่ถูกเผยแพร่"</string>
+    <string name="unsynced_quests_not_logged_in_description">"คุณมีการเปลี่ยนแปลง %1$d รายการที่ยังไม่ได้เผยแพร่ คุณต้องเข้าสู่ระบบก่อนที่จะอัพโหลดได้"</string>
     <string name="user_quests_title">"ภารกิจที่สำเร็จแล้ว"</string>
     <string name="user_achievements_title">"ความสำเร็จ"</string>
     <string name="user_links_title">"รวบรวมลิ้งค์"</string>
@@ -653,7 +644,7 @@
     <string name="achievement_veg_solved_X">"คุณได้บรรลุ %d ภารกิจที่น่าสนใจสำรับคนที่ไม่บริโภคเนื้อสัตว์!"</string>
     <string name="achievement_car_title">"บนถนน"</string>
     <string name="achievement_car_solved_X">"คุณได้บรรลุ %d ภารกิจที่ใช้ปรับปรุงรายละเอียดข้อมูลของถนน ทำให้ถนนเส้นนี้อยู่ใน OpenStreetMap!"</string>
-    <string name="unread_messages_message">"คุณมี %d ข้อความที่ยังไม่ได้อ่านในกล่องข้อความ"</string>
+    <string name="unread_messages_message">"คุณมี %1$d ข้อความที่ยังไม่ได้อ่านในกล่องข้อความ"</string>
     <string name="unread_messages_button">"เปิดกล่องข้อความ"</string>
     <string name="action_about2">"เกี่ยวกับ"</string>
     <string name="map_btn_menu">"เมนู"</string>
@@ -703,7 +694,7 @@
     <string name="resurvey_intervals_default">"ค่าเริ่มต้น"</string>
     <string name="resurvey_intervals_more_often">"ถามถี่ขึ้น"</string>
     <string name="about_title_translate">"ช่วยแปลแอปนี้"</string>
-    <string name="about_description_translate">"%1$s แปลแล้ว %2$d%%"</string>
+    <string name="about_description_translate">"%1$s แปลแล้ว %2$d%"</string>
     <string name="quest_oneway2_title">"นี่คือถนนทางเดียวหรือไม่? โปรดระบุทิศทาง"</string>
     <string name="quest_oneway2_dir">"ทางเดียวในทิศทางนี้"</string>
     <string name="quest_oneway2_no_oneway">"ไม่ใช่ทางเดียว"</string>
@@ -749,7 +740,6 @@
     <string name="quest_charging_station_capacity_title">"จุดชาร์จนี้สามารถชาร์จได้กี่คันพร้อมๆ กัน?"</string>
     <string name="link_disaster_ninja_description">"แผนที่ที่แสดงภัยพิบัติล่าสุด ซึ่งน่าสนใจสำหรับคนทำแผนที่เชิงมนุษยธรรม และมีการแสดงสถิติที่น่าสนใจที่วิเคราะห์ว่าพื้นที่นั้นๆมีข้อมูลแผนที่ที่ครอบคลุมและล่าสุดแค่ไหน"</string>
     <string name="quest_lanes_title">"ถนนนี้มีช่องทางสำหรับรถยนต์กี่ช่อง?"</string>
-    <string name="quest_lanes_answer_lanes">"ช่องทางที่มีสัญลักษณ์ระบุช่อง"</string>
     <string name="quest_lanes_answer_noLanes">"ไม่มีช่องจราจรที่มีสัญลักษณ์"</string>
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">"มีช่องทางเลี้ยวซ้ายที่รถวิ่งสองทาง"</string>
     <string name="quest_address_answer_no_housenumber_message2b">"ถูกต้องไหม"</string>
@@ -761,8 +751,6 @@
     <string name="quest_kerb_height_lowered">"สูงกว่าผิวถนนนิดหน่อย"</string>
     <string name="quest_kerb_height_raised">"ขอบทางมีระดับสูง"</string>
     <string name="quest_kerb_height_lowered_ramp">"ทางลาดไปขอบทาง"</string>
-    <string name="quest_lanes_answer_lanes_description2">"ระบุจำนวนช่องจราจรที่รถยนต์ใช้สัญจรได้ ที่ระบุสัญลักษณ์บนพื้นถนนทั้งหมด (ทั้งสองทิศทาง)  โดยไม่นับช่องทางจักรยานและช่องสำหรับการจอดรถโดยเฉพาะ
-หากมีช่องทางใดที่สงวนไว้สำหรับรถโดยสาร โปรดระบุหมายเหตุแทน"</string>
     <string name="quest_lanes_answer_lanes_description_one_side2">"ระบุจำนวนช่องจราจรที่รถยนต์ใช้ได้ที่นี่ โดยไม่นับช่องทางจักรยานและช่องสำหรับการจอดรถโดยเฉพาะ
 หากมีช่องทางใดที่สงวนไว้สำหรับรถโดยสาร โปรดระบุเป็นหมายเหตุแทน"</string>
     <string name="quest_surface_value_rock">"หิน"</string>
@@ -777,7 +765,6 @@
     <string name="quest_shop_gone_replaced_answer">"เป็น…"</string>
     <string name="quest_shop_gone_replaced_answer_hint">"พิมพ์ประเภทของสถานที่ในนี้"</string>
     <string name="quest_shop_vacant_type_title">"ร้านนี้ย้ายออกไปแล้ว มีอะไรอยู่ที่นี่?"</string>
-    <string name="quest_lanes_answer_lanes_odd2">"จำนวนช่องจราจรต่างกันระหว่างสองฝั่ง"</string>
     <string name="default_disabled_msg_go_inside_regional_warning">"ภารกิจประเภทนี้ถูกปิดการใช้งานโดยค่าเริ่มต้นเพราะมันไม่มีประโยชน์ในบางพื้นที่ และคุณน่าจะต้องเข้าไปในสถานที่เพื่อที่จะตอบคำถามสำหรับภารกิจประเภทนี้"</string>
     <string name="quest_dietType_explanation_kosher">"ผลิตภัณฑ์โคเชอร์ต้องจัดทำขึ้นตามกฎพิเศษ โดยหน่วยงานรับรองของ kashrut จะทำเครื่องหมายผลิตภัณฑ์ว่าเป็นไปตามข้อกำหนด"</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">"ไม่มีช่องสำหรับจักรยานเลย"</string>
@@ -925,7 +912,7 @@
     <string name="quest_barrier_bicycle_type_double">"ซิกแซก มีรั้วสองชั้น"</string>
     <string name="quest_barrier_bicycle_type_multiple">"ซิกแซก มีรั้วมากกว่าสองชั้น"</string>
     <string name="language_default">"ค่าเริ่มต้นของระบบ"</string>
-    <string name="on_floor">"บนชั้น %s"</string>
+    <string name="on_floor">"บนชั้น %1$s"</string>
     <string name="select_street_parking_orientation">"เลือกทิศทางไปยังถนน:"</string>
     <string name="select_street_parking_position">"เลือกตำแหน่ง:"</string>
     <string name="select_street_parking_no">"มีป้ายหรือสัญลักษณ์บนถนนรึเปล่า?"</string>
@@ -1153,7 +1140,7 @@
     <string name="quest_camp_type_backcountry">"การตั้งแคมป์แบบไร้สิ่งอำนวยความสะดวก (ที่กันดาร)"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"เส้นผ่านศูนย์กลางนี้ดูไม่น่าเชื่อ โดยปกติแล้วจะอยู่ระหว่าง %1$d ถึง %2$d"</string>
     <string name="quest_recycling_type_pet">"PET เท่านั้น"</string>
-    <string name="street_parking_street_width">"ความกว้างถนน: %s"</string>
+    <string name="street_parking_street_width">"ความกว้างถนน: %1$s"</string>
     <string name="overlay_street_parking">"ที่จอดรถริมถนน"</string>
     <string name="link_ohsomehex_description">"สำรวจข้อมูล OSM ในสเกลต่าง ๆ ตั้งแต่ภาพรวมไปจนถึงวัตถุแต่ละชิ้นในพื้นที่และเวลา"</string>
     <string name="link_opencampingmap_description">"แผนที่จุดตั้งแคมป์"</string>
@@ -1200,7 +1187,7 @@
     <string name="user_profile_current_week_title">"7 วันที่ผ่านมา"</string>
     <string name="user_profile_dates_mapped">"วันที่คุณได้ทำแผนที่ในช่วงที่ผ่านมา"</string>
     <string name="quest_cycleway_value_advisory_lane">"เลนจักรยานแบบแนะนำ"</string>
-    <string name="urlconfig_scan_qr_code_again2">"หลังจากติดตั้งแอปแล้ว ให้สแกน QR code อีกครั้ง หรือคลิก&lt;a href=\"%s\"&gt;ลิงก์นี้&lt;/a&gt;เพื่อใช้งานค่าที่ตั้งไว้"</string>
+    <string name="urlconfig_scan_qr_code_again2">"หลังจากติดตั้งแอปแล้ว ให้สแกน QR code อีกครั้ง หรือคลิก&lt;a href=\"%1$s\"&gt;ลิงก์นี้&lt;/a&gt;เพื่อใช้งานค่าที่ตั้งไว้"</string>
     <string name="confirmation_replace_shop_title">"ที่นี่เป็นร้านอื่นหรือยัง?"</string>
     <string name="confirmation_replace_shop_message">"หากเปลี่ยนเป็นร้านอื่นแล้ว เวลาทำการ ข้อมูลติดต่อ ฯลฯ จะเปลี่ยนไปด้วยเช่นกัน"</string>
     <string name="confirmation_replace_shop_yes">"เป็นร้านอื่นแล้ว"</string>

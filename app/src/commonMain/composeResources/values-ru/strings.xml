@@ -20,10 +20,7 @@
     <string name="quest_leave_new_note_yes">Оставить заметку</string>
     <string name="quest_leave_new_note_no">Нет, просто скрыть</string>
     <string name="quest_streetName_title">Как называется эта дорога?</string>
-    <string name="quest_streetName_description">как написано на дорожных знаках, сокращения должны быть раскрыты:</string>
     <string name="quest_streetName_answer_noName_confirmation_description">Иногда табличка с названием может быть только на одном конце улицы. Также, в переулках, относящихся к более крупной улице, может не быть таблички. Обычно любая улица с домами имеет название.</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_description">Если название может быть написано без сокращений, так и следует его писать. Многие распространённые аббревиатуры уже раскрываются в процессе ввода, но не все.</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">Нет сокращений</string>
     <string name="quest_openingHours_start_time">Время открытия</string>
     <string name="quest_openingHours_end_time">Время закрытия</string>
     <string name="quest_openingHours_add_months">Добавить месяцы</string>
@@ -57,7 +54,6 @@
     <string name="version_banned_message">Эта версия StreetComplete устарела. Пожалуйста, обновите её!</string>
     <string name="no_gps_no_quests">Для автоматического поиска квестов поблизости включите определение местоположения</string>
     <string name="later">Не сейчас</string>
-    <string name="quest_streetName_answer_noProperStreet_link">Это просто соединение двух дорог</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">Что-то ещё (оставить заметку)</string>
     <string name="about_title_privacy_statement">Заявление о конфиденциальности</string>
     <string name="quest_openingHours_public_holidays">Праздничные дни</string>
@@ -197,7 +193,6 @@
     <string name="quest_sport_roller_skating">Катание на роликах</string>
     <string name="quest_wheelchairAccess_limited_description_business">«Частично» означает, что нужно преодолеть не более одной ступеньки для доступа в заведение и что все комнаты внутри доступны для инвалидных колясок.</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">«Частично» значит, что нужно преодолеть не более одной ступеньки.</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">В названии %1$s есть сокращение?</string>
     <string name="quest_recycling_type_title">Какого типа этот пункт переработки отходов?</string>
     <string name="recycling_centre">Центр</string>
     <string name="overground_recycling_container">Контейнер</string>
@@ -324,10 +319,6 @@
     <string name="quest_cycleway_answer_contraflow_cycleway">Также велосипедная дорожка на встречной полосе…</string>
     <string name="quest_openingHours_emptyAnswer">Вам надо описать, что на вывеске. Если нет вывески, вы должны спросить о режиме работы внутри.</string>
     <string name="quest_cycleway_value_none_but_no_oneway">никаких, но велосипедисты могут ехать во всех направлениях</string>
-    <string name="quest_streetName_answer_noName_question">Почему у неё нет названия?</string>
-    <string name="quest_streetName_answer_noProperStreet_service2">Это дворовой или парковочный проезд</string>
-    <string name="quest_streetName_answer_noProperStreet_track2">Это полевая или лесная дорога</string>
-    <string name="quest_streetName_answer_noName_noname">Ничего из выше перечисленного, просто у неё нет названия</string>
     <string name="quest_wheelchairAccess_description_toilets">Подобный знак инвалидной коляски означает, что туалет доступен для инвалидов-колясочников.
 "Частично" означает, что инвалид может заехать и воспользоваться туалетом, но туалет не оборудован поручнями и пониженной раковиной.</string>
     <string name="map_btn_create_note">Создать новую заметку</string>
@@ -710,7 +701,7 @@
     <string name="resurvey_intervals_default">По умолчанию</string>
     <string name="resurvey_intervals_more_often">Спрашивать чаще</string>
     <string name="about_title_translate">Помогите перевести это приложение</string>
-    <string name="about_description_translate">%1$s переведён на %2$d%%</string>
+    <string name="about_description_translate">%1$s переведён на %2$d%</string>
     <string name="quest_oneway2_title">Это улица с односторонним движением? Если да, то в каком направлении?</string>
     <string name="quest_oneway2_dir">Одностороннее в этом направлении</string>
     <string name="quest_oneway2_no_oneway">Не одностороннее</string>
@@ -756,7 +747,6 @@
     <string name="quest_charging_station_capacity_title">Сколько автомобилей можно заряжать на этой зарядной станции одновременно?</string>
     <string name="link_disaster_ninja_description">Карта показывающая недавние стихийные бедствия, полезно для гуманитарных картографов. Также отображает много интересной статистики о том насколько хорошо некоторые места картографированы.</string>
     <string name="quest_lanes_title">Сколько полос имеет эта дорога?</string>
-    <string name="quest_lanes_answer_lanes">Размеченная полоса</string>
     <string name="quest_lanes_answer_noLanes">Нет размеченных полос движения</string>
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">Двусторонняя полоса левого поворота</string>
     <string name="quest_address_answer_no_housenumber_message2b">Это правильно?</string>
@@ -768,8 +758,6 @@
     <string name="quest_kerb_height_lowered">Немного выше поверхности дороги</string>
     <string name="quest_kerb_height_raised">Высокий бордюр</string>
     <string name="quest_kerb_height_lowered_ramp">Рампа для въезда</string>
-    <string name="quest_lanes_answer_lanes_description2">Укажите общее количество размеченных полос движения (в обоих направлениях), используемых автомобильным движением. Велосипедные дорожки и выделенные полосы для парковки не в счёт.
-Если какие-либо полосы используются для общественного транспорта, пожалуйста, оставьте комментарий.</string>
     <string name="quest_lanes_answer_lanes_description_one_side2">Укажите здесь количество размеченных полос движения, используемых автомобильным движением. Велосипедные дорожки и выделенные полосы для парковки не в счёт.
 Если какие-либо полосы используются для общественного транспорта, пожалуйста, оставьте комментарий.</string>
     <string name="quest_surface_value_rock">Камень</string>
@@ -784,7 +772,6 @@
     <string name="quest_shop_gone_replaced_answer">…</string>
     <string name="quest_shop_gone_replaced_answer_hint">Введите категорию точки здесь</string>
     <string name="quest_shop_vacant_type_title">Магазин выехал. Что здесь сейчас расположено?</string>
-    <string name="quest_lanes_answer_lanes_odd2">Количество полос различно у сторон</string>
     <string name="default_disabled_msg_go_inside_regional_warning">Данный тип заданий отключён по умолчанию, ибо он бесполезен в некоторых регионах и, скорее всего, требуется зайти в это место, чтобы решить задания этого типа.</string>
     <string name="quest_dietType_explanation_kosher">Кошерные продукты должны быть приготовлены по специальным правилам, с маркировкой агентства по сертификации кашрута.</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">Велосипедная дорожка отсутствует</string>
@@ -934,7 +921,7 @@
     <string name="quest_barrier_bicycle_type_double">Шикана - барьер на каждой стороне</string>
     <string name="quest_barrier_bicycle_type_multiple">Шикана - больше двух барьеров</string>
     <string name="language_default">Системный по умолчанию</string>
-    <string name="on_floor">на этаже %1$s:</string>
+    <string name="on_floor">на этаже %1$s</string>
     <string name="select_street_parking_orientation">Выберите ориентацию по отношению к проезжей части:</string>
     <string name="select_street_parking_position">Выберите позицию:</string>
     <string name="select_street_parking_no">Здесь есть какой-нибудь знак или дорожная разметка?</string>

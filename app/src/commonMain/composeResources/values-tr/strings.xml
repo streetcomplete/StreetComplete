@@ -20,10 +20,7 @@
     <string name="quest_leave_new_note_yes">Not bırak</string>
     <string name="quest_leave_new_note_no">Gizle</string>
     <string name="quest_streetName_title">Bu sokağın adı ne?</string>
-    <string name="quest_streetName_description">sokak tabelasında yazdığı gibi, kısaltma olmayacak şekilde:</string>
     <string name="quest_streetName_answer_noName_confirmation_description">Bazen sokak tabelası yalnızca sokağın bir ucundadır. Ayrıca, daha büyük bir sokağa ait yan sokaklar için fazladan sokak işaretleri olmayabileceğini unutmayın. Genellikle evlerin bulunduğu sokakların bir adı vardır.</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_description">Ad, kısaltma olmadan yazılabilirse genişletilmelidir.  Çoğu yaygın kısaltmalar siz yazarken genişletilir.</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">Kısaltma yok</string>
     <string name="quest_openingHours_start_time">açılış saati</string>
     <string name="quest_openingHours_end_time">kapanış saati</string>
     <string name="quest_openingHours_add_months">Ayları ekle</string>
@@ -57,7 +54,6 @@
     <string name="version_banned_message">StreetComplete’in bu sürümü çok eski. Lütfen güncelleyin!</string>
     <string name="no_gps_no_quests">Çevrenizdeki verilerin otomatik olarak indirilmesi için lütfen konum iznini açın</string>
     <string name="later">Sonra</string>
-    <string name="quest_streetName_answer_noProperStreet_link">Sadece iki yolu birbirine bağlıyor</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">Başka bir şey (not bırak)</string>
     <string name="about_title_privacy_statement">Gizlilik beyanı</string>
     <string name="quest_openingHours_public_holidays">Resmi tatiller</string>
@@ -196,7 +192,6 @@ Vurgulu alandaki cadde boyunca hiçbir işaret yoksa varsayılan hız sınırlar
     <string name="quest_sport_roller_skating">Tekerlekli paten</string>
     <string name="quest_wheelchairAccess_limited_description_business">Kısmen, yere erişmek için tek bir adımdan daha fazlası olmadığı ve içerideki odaların çoğunun tekerlekli sandalye erişimine uygun olduğu anlamına gelir.</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">Kısmen, erişmek için bilek yükseliğinden daha yüksek bir engel olmadığı anlamına gelir.</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">%1$s isminin kısaltması nedir?</string>
     <string name="quest_recycling_type_title">Bu ne tür bir geri dönüşüm tesisi?</string>
     <string name="recycling_centre">Merkez</string>
     <string name="overground_recycling_container">Konteyner</string>
@@ -323,10 +318,6 @@ Vurgulu alandaki cadde boyunca hiçbir işaret yoksa varsayılan hız sınırlar
     <string name="quest_cycleway_answer_contraflow_cycleway">Ayrıca karşı tarafta bisiklet yolu var…</string>
     <string name="quest_openingHours_emptyAnswer">Tabelada ne olduğunu açıklaman gerekiyor.  İşareti yoksa, içerideki açılış saatlerini sormalısınız.</string>
     <string name="quest_cycleway_value_none_but_no_oneway">Yok ama bisikletliler bu yolu çift yönlü kullanabilir</string>
-    <string name="quest_streetName_answer_noName_question">Neden ismi yok?</string>
-    <string name="quest_streetName_answer_noProperStreet_service2">Bir araba yolu veya park koridoru gibi bir şey</string>
-    <string name="quest_streetName_answer_noProperStreet_track2">Bir tarım veya orman yolu</string>
-    <string name="quest_streetName_answer_noName_noname">Hiçbiri, sadece ismi yok</string>
     <string name="quest_wheelchairAccess_description_toilets">Tuvalet erişilebilir ise, bunun gibi bir tekerlekli sandalye işareti görülebilir.
      Kısmen tekerlekli sandalyenin tuvalete girip kullanabileceği anlamına gelir, ancak parmaklık veya adapte edilmiş el havzası yoktur.</string>
     <string name="map_btn_create_note">Yeni not oluştur</string>
@@ -708,7 +699,7 @@ seviyeleri</string>
     <string name="resurvey_intervals_default">Varsayılan</string>
     <string name="resurvey_intervals_more_often">Daha sık</string>
     <string name="about_title_translate">Bu uygulamayı çevirmemize yardımcı olun</string>
-    <string name="about_description_translate">%1$s, %2$d%% çevrildi</string>
+    <string name="about_description_translate">%1$s, %2$d% çevrildi</string>
     <string name="quest_oneway2_title">Bu tek yönlü bir yol mu? Hangi yönde?</string>
     <string name="quest_oneway2_dir">Bu yönde tek yön</string>
     <string name="quest_oneway2_no_oneway">Tek yön değil</string>
@@ -754,7 +745,6 @@ seviyeleri</string>
     <string name="quest_charging_station_capacity_title">Bu şarj istasyonunda aynı anda kaç araba şarj edilebilir?</string>
     <string name="link_disaster_ninja_description">Doğal afetleri gösteren bir harita, insanlara yardım etmek isteyenler için faydalı. Ayrıca bölgelerin ne kadar iyi ve güncel olduğunu gösteren bir sürü ilginç veriyi de gösterir.</string>
     <string name="quest_lanes_title">Bu yolda arabalar için kaç şerit var?</string>
-    <string name="quest_lanes_answer_lanes">İşaretli şeritler</string>
     <string name="quest_lanes_answer_noLanes">İşaretli şerit yok</string>
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">Çift yön sola dönüş şeridi var</string>
     <string name="quest_address_answer_no_housenumber_message2b">Bu doğru mu?</string>
@@ -766,8 +756,6 @@ seviyeleri</string>
     <string name="quest_kerb_height_lowered">Yol yüzeyinden biraz daha yüksek</string>
     <string name="quest_kerb_height_raised">Yüksek kenar</string>
     <string name="quest_kerb_height_lowered_ramp">Kaldırım rampası</string>
-    <string name="quest_lanes_answer_lanes_description2">Araba trafiği için işaretli şeritlerin (her iki yönde) toplam sayısını belirtin. Yani bisiklet ve özel park şeritleri sayılmaz.
-Herhangi bir şerit otobüs için ayrılmışsa, lütfen bunun yerine bir not bırakın.</string>
     <string name="quest_lanes_answer_lanes_description_one_side2">Burada araba trafiği için kullanılabilen işaretli şeritlerin sayısını belirtin. Yani bisiklet ve özel park şeritleri sayılmaz.
 Herhangi bir şerit otobüs için ayrılmışsa, lütfen bunun yerine bir not bırakın.</string>
     <string name="quest_surface_value_rock">Kaya</string>
@@ -782,7 +770,6 @@ Herhangi bir şerit otobüs için ayrılmışsa, lütfen bunun yerine bir not b�
     <string name="quest_shop_gone_replaced_answer">Bir…</string>
     <string name="quest_shop_gone_replaced_answer_hint">Buraya bir tür yer yazın</string>
     <string name="quest_shop_vacant_type_title">Bu dükkân boştu. Şimdi burada ne var?</string>
-    <string name="quest_lanes_answer_lanes_odd2">Şerit sayısı iki taraf için farklı</string>
     <string name="default_disabled_msg_go_inside_regional_warning">Bu görev türü varsayılan olarak devre dışı bırakılmıştır çünkü bazı bölgelerde kullanışlı değildir ve bu türden bir görevi cevaplayabilmek için büyük olasılıkla bir yere girmeniz gerekecektir.</string>
     <string name="quest_dietType_explanation_kosher">Kaşar ürünler kaşrut sertifika ajanslarının ürünleri uygun işaretlemek için kabul ettiği özel koşullara göre hazırlanmalıdır.</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">Hiç bisiklet yolu yok</string>

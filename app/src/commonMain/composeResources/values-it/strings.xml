@@ -20,10 +20,7 @@
     <string name="quest_leave_new_note_yes">Scrivi nota</string>
     <string name="quest_leave_new_note_no">Nascondi</string>
     <string name="quest_streetName_title">Qual è il nome di questa strada?</string>
-    <string name="quest_streetName_description">come riportato sul cartello stradale, le abbreviazioni vanno scritte per esteso:</string>
     <string name="quest_streetName_answer_noName_confirmation_description">Spesso il segnale stradale si trova soltanto ad un'estremità della strada. Potrebbero inoltre non essere presenti ulteriori cartelli stradali nelle vie laterali che fanno parte di una strada più grande. In generale tutte le strade con abitazioni hanno un nome.</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_description">Se il nome può essere scritto senza un'abbreviazione, allora andrebbe scritto per intero. Molte abbreviazioni comuni vengono automaticamente rese per esteso durante la digitazione, ma probabilmente non tutte.</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">Nessuna abbreviazione</string>
     <string name="quest_openingHours_start_time">orario di apertura</string>
     <string name="quest_openingHours_end_time">orario di chiusura</string>
     <string name="quest_openingHours_add_months">Aggiungi mesi</string>
@@ -57,7 +54,6 @@
     <string name="version_banned_message">Stai usando una versione di StreetComplete troppo vecchia. È necessario aggiornarla!</string>
     <string name="no_gps_no_quests">Per individuare le missioni da svolgere in zona è necessario abilitare la localizzazione</string>
     <string name="later">Più tardi</string>
-    <string name="quest_streetName_answer_noProperStreet_link">È solo un collegamento tra due strade</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">Qualcos'altro (lascia una nota)</string>
     <string name="about_title_privacy_statement">Privacy</string>
     <string name="quest_openingHours_public_holidays">Feste pubbliche</string>
@@ -196,7 +192,6 @@ Se non ci sono cartelli lungo tutta la strada nel tratto evidenziato allora si a
     <string name="quest_sport_roller_skating">Pattinaggio a rotelle</string>
     <string name="quest_wheelchairAccess_limited_description_business">Parzialmente significa che c'è al massimo un gradino (e non troppo alto) per entrare nel locale e che si può accedere con la sedia a rotelle alla maggior parte delle stanze.</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">"Parzialmente" significa che c'è al massimo un solo gradino di accesso.</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">Il nome %1$s contiene un'abbreviazione?</string>
     <string name="quest_recycling_type_title">Che tipo di differenziata si applica?</string>
     <string name="recycling_centre">Centro</string>
     <string name="overground_recycling_container">Contenitore</string>
@@ -323,10 +318,6 @@ Altrimenti, è possibile scaricare un'altra tastiera. Le tastiere popolari che s
     <string name="quest_cycleway_answer_contraflow_cycleway">Corsia ciclabile anche sull'altro lato…</string>
     <string name="quest_openingHours_emptyAnswer">Devi descrivere cosa c'è sul cartello. Se non trovi nulla, dovresti chiedere gli orari di apertura all'interno.</string>
     <string name="quest_cycleway_value_none_but_no_oneway">nessuna, ma i ciclisti possono usare la strada in entrambe le direzioni</string>
-    <string name="quest_streetName_answer_noName_question">Perché non ha un nome?</string>
-    <string name="quest_streetName_answer_noProperStreet_service2">Sembra un vialetto d'accesso o la corsia di un parcheggio</string>
-    <string name="quest_streetName_answer_noProperStreet_track2">È una strada agricola o forestale</string>
-    <string name="quest_streetName_answer_noName_noname">Nessuna delle precedenti, semplicemente non ha nome</string>
     <string name="quest_wheelchairAccess_description_toilets">Se i servizi igienici sono accessibili con la sedia a rotelle potrebbe esserci un simbolo come questo.
 "Parzialmente" significa che con la sedia a rotelle si può entrare e utilizzare i servizi igienici, ma non ci sono barre d'appoggio o sanitari per disabili.</string>
     <string name="map_btn_create_note">Crea una nuova nota</string>
@@ -708,7 +699,7 @@ riconoscimento</string>
     <string name="resurvey_intervals_default">Predefinito</string>
     <string name="resurvey_intervals_more_often">Più spesso</string>
     <string name="about_title_translate">Traduci questa app</string>
-    <string name="about_description_translate">%1$s è tradotto %2$d%%</string>
+    <string name="about_description_translate">%1$s è tradotto %2$d%</string>
     <string name="quest_oneway2_title">È una strada a senso unico? In quale direzione?</string>
     <string name="quest_oneway2_dir">Senso unico in questa direzione</string>
     <string name="quest_oneway2_no_oneway">Non è a senso unico</string>
@@ -754,7 +745,6 @@ riconoscimento</string>
     <string name="quest_charging_station_capacity_title">Quante automobili possono essere ricaricate contemporaneamente?</string>
     <string name="link_disaster_ninja_description">Mappe che mostrano disastri naturali recenti, interessanti per i mappatori umanitari. Inoltre, mostrano molte statistiche interessanti per analizzare quanto i luoghi sono ben mappati o aggiornati.</string>
     <string name="quest_lanes_title">Quante corsie per automobili ha questa strada?</string>
-    <string name="quest_lanes_answer_lanes">Corsie indicate</string>
     <string name="quest_lanes_answer_noLanes">Nessuna corsia indicata</string>
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">Ha una corsia a doppio senso a sinistra</string>
     <string name="quest_address_answer_no_housenumber_message2b">È corretto?</string>
@@ -766,7 +756,6 @@ riconoscimento</string>
     <string name="quest_kerb_height_lowered">Un po' più alto del manto stradale</string>
     <string name="quest_kerb_height_raised">Cordolo alto</string>
     <string name="quest_kerb_height_lowered_ramp">Cordolo a rampa</string>
-    <string name="quest_lanes_answer_lanes_description2">Specifica il numero totale di corsie segnate (entrambe le direzioni) utilizzabili dal traffico automobilistico. Le corsie ciclabili e quelle dei parcheggi non vengono contate. Se invece qualche corsia è riservata ai bus per favore lascia un commento.</string>
     <string name="quest_lanes_answer_lanes_description_one_side2">Specifica il numero totale di corsie segnate in questo tratto utilizzabili dal traffico automobilistico. Le corsie ciclabili e quelle dei parcheggi non vanno contate. Se invece qualche corsia è riservata ai bus per favore lascia un commento.</string>
     <string name="quest_surface_value_rock">Rocce</string>
     <string name="quest_parkingType_street_side">Parcheggio poco fuori dalla carreggiata</string>
@@ -780,7 +769,6 @@ riconoscimento</string>
     <string name="quest_shop_gone_replaced_answer">Un(a)…</string>
     <string name="quest_shop_gone_replaced_answer_hint">Inserisci il tipo di attività</string>
     <string name="quest_shop_vacant_type_title">Questo negozio era libero. Cosa c'è ora?</string>
-    <string name="quest_lanes_answer_lanes_odd2">Il numero di corsie è differente su ogni lato</string>
     <string name="default_disabled_msg_go_inside_regional_warning">Questo tipo di missione non è attivo normalmente perché in alcune regioni non è utile e perché, per rispondere, probabilmente è necessario entrare nel luogo.</string>
     <string name="quest_dietType_explanation_kosher">I prodotti kosher devono essere preparati seguendo metodi particolari e vengono controllati da agenzie di certificazione kashrut.</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">Nessuna corsia ciclabile</string>
@@ -1445,6 +1433,7 @@ Un piano del tetto va contato quando ci sono finestre nel tetto. Quindi, un tett
     <string name="overlay_mtb_scale_4">Grado 4</string>
     <string name="overlay_mtb_scale_4_description">Ostacoli difficili e tecnici: grandi massi, radici, arbusti, gradoni; tornanti pivot, sbalzi con colpi ai pedali; richiesti equilibrio perfetto, frenate precise e riposizionamenti di ruota.</string>
     <string name="overlay_mtb_scale_5">Grado 5</string>
+    <string name="overlay_mtb_scale_5_description">Terreno a blocchi estremamente ripido con contropendenze, massi, frane, tornanti con ostacoli, dislivelli elevati consecutivi e alberi caduti. Impossibile trasportare la bici attorno agli ostacoli; pedalare è inevitabile. È richiesta padronanza del trial.</string>
     <string name="overlay_mtb_scale_6">Grado 6</string>
     <string name="overlay_mtb_scale_6_description">Terreno pericoloso e impassabile, non adatto alle mountain-bike.</string>
     <string name="default_disabled_overlay_domain_expert">Questo livello è disabilitato perché devi essere esperto nel settore per registrare accuratamente questi dati.</string>
@@ -1452,7 +1441,28 @@ Un piano del tetto va contato quando ci sono finestre nel tetto. Quindi, un tett
     <string name="pref_overlays_reset">Ripristinare l'abilitazione del livello?</string>
     <string name="overlay">Livello</string>
     <string name="enable_overlay_confirmation_title">Abilitare questo livello?</string>
+    <string name="link_transitous_description">Percorsi di trasporto pubblico indipendenti dal fornitore, gratuiti e open source.</string>
     <string name="compass">Bussola</string>
     <string name="quest_tracktype_grade2">Prevalentemente solido</string>
     <string name="quest_tracktype_grade3">Miscela</string>
+    <string name="quest_housenumber_multiple_numbers_description2">Puoi inserire civic separati da una virgola.\nAd esempio 1,3 o 2b,4,6.</string>
+    <string name="quest_drinking_water_potable_unsigned2">Nessun cartello</string>
+    <string name="or">o</string>
+    <string name="action_copy">Copia</string>
+    <string name="quest_stopName_hint">Puoi applicare lo stesso nome di un’altra fermata premendo su di essa sulla mappa.</string>
+    <string name="quest_shelter_capacity_title">Quante persone possono dormire qui?</string>
+    <string name="quest_handwashing_title">Puoi lavarti le mani qui?</string>
+    <string name="quest_openingHours_delete">Elimina</string>
+    <string name="quest_streetName_hint">Puoi applicare lo stesso nome di una sezione adiacente premendo su di essa sulla mappa.</string>
+    <string name="quest_streetName_abbreviation_instruction">Le abbreviazioni come ad es. “Rd” dovrebbero essere ampliate.</string>
+    <string name="quest_streetName_add_language">Aggiungi lingua</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Annulla</string>
+    <string name="quest_aerialway_bicycle_title">Questa piattaforma aerea trasporta biciclette?</string>
+    <string name="quest_aerialway_bicycle_summer">Solo in estate</string>
+    <string name="quest_board_type_rules">Regole</string>
+    <string name="quest_firewood_provided_title">Viene fornita legna da ardere?</string>
+    <string name="quest_first_aid_kit_location">Dove si trova questo kit di pronto soccorso?</string>
+    <string name="quest_lane_markings_title">Questa strada è dotata di segnaletica orizzontale?</string>
+    <string name="quest_level_thing_title">A quale livello numerico si trova questa cosa?</string>
 </resources>

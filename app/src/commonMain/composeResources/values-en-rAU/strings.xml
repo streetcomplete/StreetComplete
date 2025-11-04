@@ -20,10 +20,7 @@
     <string name="quest_leave_new_note_yes">Leave a note</string>
     <string name="quest_leave_new_note_no">Hide</string>
     <string name="quest_streetName_title">What is the name of this street?</string>
-    <string name="quest_streetName_description">as written on the street sign, abbreviations are expanded:</string>
     <string name="quest_streetName_answer_noName_confirmation_description">Sometimes the street sign is only at one end of the street. Also note that there may not be extra street signs for side streets that belong to a bigger street. Usually, any street with houses has a name.</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_description">If the name can be spelled without an abbreviation, then it should be expanded. Many common abbreviations are expanded automatically while you type, but probably not all.</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">No abbreviation</string>
     <string name="quest_openingHours_start_time">opening time</string>
     <string name="quest_openingHours_end_time">closing time</string>
     <string name="quest_openingHours_add_months">Add months</string>
@@ -47,7 +44,7 @@
     <string name="turn_on_location_request">Location is off. Open settings to turn it on now?</string>
     <string name="no_location_permission_warning">Location permission is needed to show your position on the map and download data your vicinity.</string>
     <string name="about_title_authors">Credits</string>
-    <string name="about_title_repository">Project Home</string>
+    <string name="about_title_repository">Project home</string>
     <string name="about_title_report_error">Report Error</string>
     <string name="about_title_feedback">Give Feedback</string>
     <string name="about_title_license">Licence</string>
@@ -57,7 +54,6 @@
     <string name="version_banned_message">This version of StreetComplete is too old. Please update!</string>
     <string name="no_gps_no_quests">To download data around you automatically, turn on location</string>
     <string name="later">Later</string>
-    <string name="quest_streetName_answer_noProperStreet_link">It just links two roads</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">Something else (leave note)</string>
     <string name="about_title_privacy_statement">Privacy Statement</string>
     <string name="quest_openingHours_public_holidays">Public holidays</string>
@@ -196,7 +192,6 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_sport_roller_skating">Roller skating</string>
     <string name="quest_wheelchairAccess_limited_description_business">Partially means that there is no more than an ankle-high step to access the place and that most rooms inside are wheelchair accessible.</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">Partially means that there is no more than an ankle-high step to access it.</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">Abbreviation in the name %1$s?</string>
     <string name="quest_recycling_type_title">What type of recycling facility is this?</string>
     <string name="recycling_centre">Centre</string>
     <string name="overground_recycling_container">Container</string>
@@ -205,8 +200,7 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_streetName_cantType_title">Missing keyboard layout?</string>
     <string name="quest_streetName_cantType_open_settings">Open Settings</string>
     <string name="quest_streetName_cantType_open_store">Visit App Store</string>
-    <string name="quest_streetName_cantType_description">If you use a default keyboard, chances are that you can simply enable the keyboard layout for the language you need in the input method settings.
-
+    <string name="quest_streetName_cantType_description">If you use a default keyboard, chances are that you can simply enable the keyboard layout for the language you need in the input method settings. 
 Otherwise you can download another keyboard in the app store. Popular keyboards that support many languages are Google Gboard, SwiftKey Keyboard, and Multiling O Keyboard.</string>
     <string name="quest_streetName_menuItem_nolanguage">(unspecified)</string>
     <string name="quest_fireHydrant_type_title">What kind of fire hydrant is this?</string>
@@ -295,7 +289,7 @@ Otherwise you can download another keyboard in the app store. Popular keyboards 
     <string name="quest_leave_new_note_photo">Attach photo</string>
     <string name="quest_leave_new_note_photo_delete_title">Do you want to delete this image?</string>
     <string name="quest_cycleway_value_track">sidepath or protected bike lane</string>
-    <string name="quest_cycleway_value_lane">bike lane</string>
+    <string name="quest_cycleway_value_lane">bicycle lane</string>
     <string name="quest_cycleway_value_none">none</string>
     <string name="quest_cycleway_value_shared">lane shared explicitly with other traffic</string>
     <string name="quest_cycleway_value_bus_lane">on bus lane</string>
@@ -323,10 +317,6 @@ Otherwise you can download another keyboard in the app store. Popular keyboards 
     <string name="quest_cycleway_answer_contraflow_cycleway">Also bike path on the other side…</string>
     <string name="quest_openingHours_emptyAnswer">You need to describe what is on the sign. If there is no sign you should ask for the opening hours inside.</string>
     <string name="quest_cycleway_value_none_but_no_oneway">none, but cyclists may use road in both directions</string>
-    <string name="quest_streetName_answer_noName_question">Why does it have no name?</string>
-    <string name="quest_streetName_answer_noProperStreet_service2">It is something like a driveway or parking aisle</string>
-    <string name="quest_streetName_answer_noProperStreet_track2">It is an agricultural road, forest road, or fire trail</string>
-    <string name="quest_streetName_answer_noName_noname">None of the above, it simply has no name</string>
     <string name="quest_wheelchairAccess_description_toilets">A wheelchair sign like this might be visible if the toilet is accessible.
 Partially means that a wheelchair can enter and use the toilet but no handrail or adapted hand basin is present.</string>
     <string name="map_btn_create_note">Create a new note</string>
@@ -337,12 +327,12 @@ Partially means that a wheelchair can enter and use the toilet but no handrail o
     <string name="quest_cycleway_title2">Is there a bike lane or path here? What type?</string>
     <string name="quest_bridge_structure_title">What is the structure of this bridge?</string>
     <string name="quest_internet_access_wlan">Wi-Fi</string>
-    <string name="quest_internet_access_wired">Wired (LAN)</string>
-    <string name="quest_internet_access_terminal">Computer with Internet access</string>
+    <string name="quest_internet_access_wired">Wired (Ethernet)</string>
+    <string name="quest_internet_access_terminal">Computer with internet access</string>
     <string name="quest_internet_access_no">No connection</string>
     <string name="quest_bench_backrest_title">Does this seat have a backrest?</string>
     <string name="quest_bench_answer_picnic_table">It’s a picnic table</string>
-    <string name="quest_religion_for_place_of_worship_title">What religion is practiced at this place?</string>
+    <string name="quest_religion_for_place_of_worship_title">What religion is practised at this place?</string>
     <string name="quest_religion_christian">Christianity</string>
     <string name="quest_religion_muslim">Islam</string>
     <string name="quest_religion_hindu">Hinduism</string>
@@ -477,11 +467,11 @@ Partially means that a wheelchair can enter and use the toilet but no handrail o
     <string name="quest_buildingType_retail_description">including buildings for restaurants, cafés, stores, etc…</string>
     <string name="quest_openingHours_timeSelect_next">Next</string>
     <string name="quest_tracktype_title">What is the surface firmness of this track?</string>
-    <string name="quest_tracktype_grade1">Paved</string>
+    <string name="quest_tracktype_grade1">Hard</string>
     <string name="quest_tracktype_grade4">Mostly soft</string>
     <string name="quest_tracktype_grade5">Soft</string>
     <string name="quest_building_underground_title">Is this building completely underground?</string>
-    <string name="quest_wheelchairAccess_limited_description_outside">Partially means that there is no more than an ankle-high step to access it.</string>
+    <string name="quest_wheelchairAccess_limited_description_outside">Partially means that there is no more than an ankle high step to access it.</string>
     <string name="quest_wheelchairAccess_outside_title">Is this place wheelchair accessible?</string>
     <string name="quest_traffic_signals_button_title">Do these traffic lights have a button to request a walk signal?</string>
     <string name="quest_motorcycleParkingCapacity_title">How many motorcycles can be parked here?</string>
@@ -494,7 +484,7 @@ Partially means that a wheelchair can enter and use the toilet but no handrail o
     <string name="quest_sidewalk_value_no">no footpath</string>
     <string name="quest_accessible_for_pedestrians_title_prohibited">Are pedestrians prohibited to walk on this road here?</string>
     <string name="quest_buildingType_title">What kind of building is this?</string>
-    <string name="pref_title_theme_select">Select theme</string>
+    <string name="pref_title_theme_select">Theme</string>
     <string name="theme_light">Light</string>
     <string name="theme_dark">Dark</string>
     <string name="theme_system_default">System default</string>
@@ -545,7 +535,7 @@ Split it now?</string>
     <string name="quest_recycling_type_any_glass">Any glass</string>
     <string name="quest_recycling_glass_title">Can only glass bottles and jars be recycled here or any type of glass?</string>
     <string name="quest_determineRecyclingGlass_description_any_glass">Types of glass that are often not accepted: tempered glass, window panes, glassware, light bulbs, or mirrors.</string>
-    <string name="about_title_changelog">Version history</string>
+    <string name="about_title_changelog">Version</string>
     <string name="title_whats_new">What’s New?</string>
     <string name="about_title_rate">Rate this application</string>
     <string name="about_title_donate">Donate</string>
@@ -583,7 +573,7 @@ Finally, remember to stay safe: be aware of your surroundings and don’t enter 
     <string name="links_empty">You have no links yet</string>
     <string name="quests_empty">You published no edits yet</string>
     <string name="unsynced_quests_description">plus %1$d not yet published changes.</string>
-    <string name="unsynced_quests_not_logged_in_description">You have %1$d not yet published changes. You need to log in to have them uploaded.</string>
+    <string name="unsynced_quests_not_logged_in_description">You have %1$d not yet published changes. You need to login to have them uploaded.</string>
     <string name="user_quests_title">Edits</string>
     <string name="user_achievements_title">Achievements</string>
     <string name="user_links_title">Link Collection</string>
@@ -596,18 +586,18 @@ Finally, remember to stay safe: be aware of your surroundings and don’t enter 
     <string name="link_category_editors_title">Contributing</string>
     <string name="link_category_editors_description">Editors and other ways to contribute to OpenStreetMap</string>
     <string name="link_category_maps_title">Maps</string>
-    <string name="link_category_maps_description">OpenStreetMap-based maps</string>
+    <string name="link_category_maps_description">OpenStreetMap based maps</string>
     <string name="link_category_showcase_title">Showcase</string>
-    <string name="link_category_showcase_description">OpenStreetMap-based services and applications</string>
+    <string name="link_category_showcase_description">OpenStreetMap based services and applications</string>
     <string name="link_category_goodies_title">Goodies</string>
-    <string name="link_category_goodies_description">Interesting map-related stuff for you to try out</string>
+    <string name="link_category_goodies_description">Interesting map related stuff for you to try out</string>
     <string name="link_cyclosm_description">A map for cyclists</string>
-    <string name="link_wheelmap_description">A map for finding wheelchair-accessible places</string>
+    <string name="link_wheelmap_description">A map for finding wheelchair accessible places</string>
     <string name="link_osm_buildings_description">A map that shows buildings in 3D</string>
     <string name="link_openvegemap_description">Discover vegetarian and vegan restaurants in your city</string>
     <string name="link_touch_mapper_description">Create tactile maps easily for any address</string>
     <string name="link_mapy_tactile_description">Tactile maps for the visually impaired in various scales</string>
-    <string name="link_josm_description">Fully-featured OpenStreetMap editor for the desktop. This is the power tool for regular contributors.</string>
+    <string name="link_josm_description">Fully featured OpenStreetMap editor for the desktop. This is the power tool for regular contributors.</string>
     <string name="link_vespucci_description">Advanced OpenStreetMap editor for Android</string>
     <string name="link_ideditor_description">Simple OpenStreetMap editor for the browser. Optimised for the desktop or large tablets</string>
     <string name="link_umap_description">Create maps with custom data quickly and embed them in your site</string>
@@ -635,13 +625,13 @@ Finally, remember to stay safe: be aware of your surroundings and don’t enter 
     <string name="achievement_first_edit_title">First Quest Solved</string>
     <string name="achievement_first_edit_description">Welcome to the OpenStreetMap community! In your profile screen you can see more about each type of quest you’ve solved.</string>
     <string name="achievement_surveyor_title">Surveyor</string>
-    <string name="achievement_surveyor_solved_X">You solved %1$d quests! Keep going to unlock more achievements that contain links to OpenStreetMap and other map-related applications and projects!</string>
+    <string name="achievement_surveyor_solved_X">You solved %1$d quests! Keep going to unlock more achievements that contain links to OpenStreetMap and other map related applications and projects!</string>
     <string name="achievement_regular_title">Regular</string>
     <string name="achievement_regular_description">You contributed %1$d days to OpenStreetMap with this application! Regular contributors are the backbone of OpenStreetMap, thanks for your dedication! ❤</string>
     <string name="achievement_bicyclist_title">Cyclist</string>
     <string name="achievement_bicyclist_solved_X">You solved %1$d quests that help cyclists!</string>
     <string name="achievement_wheelchair_title">Mobility</string>
-    <string name="achievement_wheelchair_solved_X">You solved %1$d quests that help wheelchair users get around town!</string>
+    <string name="achievement_wheelchair_solved_X">You solved %1$d quests that help wheelchair users get around!</string>
     <string name="achievement_postman_title">Postman</string>
     <string name="achievement_postman_solved_X">You helped to locate %1$d addresses!
 This data is essential not only for the postie but also for any navigation system.</string>
@@ -653,7 +643,7 @@ Note that this application asks for the address number of a building only after 
     <string name="achievement_pedestrian_title">Runner</string>
     <string name="achievement_pedestrian_solved_X">You solved %1$d quests that are interesting for people on foot!</string>
     <string name="achievement_veg_title">Kind to Animals</string>
-    <string name="achievement_veg_solved_X">You solved %1$d quests that are interesting for people living on a no-meat diet!</string>
+    <string name="achievement_veg_solved_X">You solved %1$d quests that are interesting for people living on a no meat diet!</string>
     <string name="achievement_car_title">On the Road</string>
     <string name="achievement_car_solved_X">You solved %1$d quests that improve detail on the street infrastructure, putting the “street” in OpenStreetMap!</string>
     <string name="unread_messages_message">You have %1$d unread messages in your inbox</string>
@@ -709,8 +699,8 @@ levels</string>
     <string name="resurvey_intervals_default">Default</string>
     <string name="resurvey_intervals_more_often">More often</string>
     <string name="about_title_translate">Help translate this application</string>
-    <string name="about_description_translate">%1$s is translated %2$d%%</string>
-    <string name="quest_oneway2_title">Is this a one-way street? In which direction?</string>
+    <string name="about_description_translate">%1$s is translated %2$d%</string>
+    <string name="quest_oneway2_title">Is this a one way street? In which direction?</string>
     <string name="quest_oneway2_dir">One way in this direction</string>
     <string name="quest_oneway2_no_oneway">Not a one way</string>
     <string name="quest_maxweight_select_sign">Select sign</string>
@@ -755,7 +745,6 @@ levels</string>
     <string name="quest_charging_station_capacity_title">How many vehicles can be charged here at the same time?</string>
     <string name="link_disaster_ninja_description">Map that shows recent natural disasters, interesting for humanitarian mappers. Also, shows many interesting statistics to analyse how well-mapped and up-to-date places are.</string>
     <string name="quest_lanes_title">How many car lanes does this road have?</string>
-    <string name="quest_lanes_answer_lanes">Marked lanes</string>
     <string name="quest_lanes_answer_noLanes">No marked lanes</string>
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">It has a two-way left turn lane</string>
     <string name="quest_address_answer_no_housenumber_message2b">Is this correct?</string>
@@ -768,8 +757,6 @@ Also, if it doesn’t apply for the whole highlighted section, consider answerin
     <string name="quest_kerb_height_lowered">A bit higher than road surface</string>
     <string name="quest_kerb_height_raised">Raised kerb</string>
     <string name="quest_kerb_height_lowered_ramp">Kerb ramp (lowered)</string>
-    <string name="quest_lanes_answer_lanes_description2">Specify the total number of marked lanes (both directions) usable by motor vehicles. Bike and dedicated parking lanes don’t count.
-If any lanes are reserved for buses please leave a note instead.</string>
     <string name="quest_lanes_answer_lanes_description_one_side2">Specify the number of marked lanes usable by motor vehicles here. Bicycle and dedicated parking lanes don’t count.
 If any lanes are reserved for buses, please leave a note instead.</string>
     <string name="quest_surface_value_rock">Rock</string>
@@ -784,7 +771,6 @@ If any lanes are reserved for buses, please leave a note instead.</string>
     <string name="quest_shop_gone_replaced_answer">A(n)…</string>
     <string name="quest_shop_gone_replaced_answer_hint">Type kind of place here</string>
     <string name="quest_shop_vacant_type_title">This shop has been vacant. What is here now?</string>
-    <string name="quest_lanes_answer_lanes_odd2">Each side has a different number of lanes</string>
     <string name="default_disabled_msg_go_inside_regional_warning">This quest type is disabled by default because it is not useful in some regions and you will likely have to enter the place to be able to answer a quest of this type.</string>
     <string name="quest_dietType_explanation_kosher">Kosher products must be prepared according to special rules with kashrut certification agencies marking products in compliance.</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">No bicycle lane or path at all</string>
@@ -891,7 +877,7 @@ Data is refreshed after %1$s days and unused data is deleted after %2$s days aut
     <string name="quest_bollard_type_foldable2">Foldable (with or without key)</string>
     <string name="no_search_results">Nothing found</string>
     <string name="quest_selection_hint_title">Too much to do?</string>
-    <string name="quest_selection_hint_message">Contributing should primarily be fun! If you are overwhelmed by the number of quests you can always fine-tune which quests are displayed to you and in what order in the settings.</string>
+    <string name="quest_selection_hint_message">Contributing should primarily be fun! If you are overwhelmed by the number of quests you can always fine tune which quests are displayed to you and in what order in the settings.</string>
     <string name="quest_presets_preset_add">Add preset</string>
     <string name="quest_presets_preset_name">Preset name</string>
     <string name="quest_presets_default_name">Default</string>
@@ -1021,7 +1007,7 @@ Alternatively, you can leave a note (with a photo).</string>
     <string name="quest_sidewalk_answer_none_title">Selecting that footpaths are missing</string>
     <string name="quest_side_select_interface_explanation">Tap one side and select the matching answer.
 Do the same for the other side if present.</string>
-    <string name="ar_measure">Measure</string>
+    <string name="ar_measure">Take Measurement</string>
     <string name="ar_core_tracking_error_too_steep_angle">Too steep of an angle, step away a bit</string>
     <string name="default_disabled_msg_no_ar">You need a tape measure to solve this quest because measuring with the camera is not supported on this device.</string>
     <string name="quest_cycleway_width_title">How wide is the bicycle path here?</string>
@@ -1260,6 +1246,7 @@ Move it now?</string>
     <string name="overlay_surface">Surfaces</string>
     <string name="overlay_path_surface_segregated">Split into cycling and walking parts</string>
     <string name="quest_crossing_title2">Can you cross here?</string>
+    <string name="quest_crossing_yes">Yes, intended as crossing</string>
     <string name="quest_crossing_no">Not intended as a crossing, still possible to cross (e.g. informal trails)</string>
     <string name="quest_crossing_prohibited">No, crossing is prohibited or impossible</string>
     <string name="quest_hairdresser_title">Which customers visit this hairdresser?</string>
@@ -1322,7 +1309,7 @@ Additionally, some overlays allow you to add new data at the position of a displ
     <string name="link_mapcomplete_description">Collection of thematic OpenStreetMap maps that each show and let you edit one kind of feature</string>
     <string name="link_forum_description">Need help? Want to read what’s going on? Come and mingle, it’s bustling with activity from communities all over the globe!</string>
     <string name="link_calendar_description">Are OpenStreetMap events or community meetings near you? (If not, you could add your own!)</string>
-    <string name="link_prettymapp_description">Create pretty multi-coloured map posters of neighbourhoods</string>
+    <string name="link_prettymapp_description">Create pretty multicoloured map posters of neighbourhoods</string>
     <string name="quest_disable_action">Disable</string>
     <string name="quest_disable_title">Disable this quest type?</string>
     <string name="quest_disable_message_not_installed">StreetMeasure is not installed (yet).</string>
@@ -1346,7 +1333,7 @@ Additionally, some overlays allow you to add new data at the position of a displ
     <string name="quest_leafType_tree_title">Does this tree have needles or leaves?</string>
     <string name="quest_bbq_fuel_gas">Gas</string>
     <string name="about_description_donate_google_play3">Thank you for considering supporting this application!
-You can find donation information on our website or project home, Google Play does not allow us to provide the link within the app.</string>
+You can find donation information on our web site, Google Play does not allow us to provide the link within the app.</string>
     <string name="quest_isAmenityIndoor_outside_covered">Not inside, but covered</string>
     <string name="lit_value_unsupported">Specific lit status that can't be selected in this application</string>
     <string name="quest_generic_otherAnswers2">Other answer...</string>
@@ -1355,7 +1342,7 @@ You can find donation information on our website or project home, Google Play do
     <string name="quest_moped_access_allowed">There is no sign</string>
     <string name="quest_moped_access_designated">There is a sign that designates this bike path for mopeds</string>
     <string name="quest_moped_access_forbidden">There is a sign that prohibits mopeds</string>
-    <string name="default_disabled_msg_visible_sign_moped">This quest type is disabled by default because moped access is only indicated by a specific signs at start/end of a cycleway.</string>
+    <string name="default_disabled_msg_visible_sign_moped">This quest type is disabled by default because motorcycle access is only indicated by a specific signs at start/end of a cycle way.</string>
     <string name="quest_arrow_tutorial">The arrows in the illustration point towards the directions in which the way runs on the map at its centre pin location. Try rotating the map and you’ll get it.</string>
     <string name="info">More information</string>
     <string name="quest_accessible_for_pedestrians_prohibited">It is prohibited.</string>
@@ -1428,4 +1415,50 @@ A level counts as a roof level when its windows are in the roof. Subsequently, r
     <string name="pedestrian_zone_allowed_sign">A sign allows cycling here</string>
     <string name="pedestrian_zone_no_sign">No explicit sign about cycling here</string>
     <string name="team_mode_description_overlay_hint">If you use overlays, each of you should use a different one, as only quests are split up.</string>
+    <string name="quest_dietType_glutenfree_name_title">Are gluten free products offered here?</string>
+    <string name="quest_dietType_explanation_glutenfree">Preparing gluten free products requires knowledge, as common spices and sauces may contain gluten. Gluten-free food would be explicitly labelled as such.</string>
+    <string name="quest_construction_minor_title">Is the minor roadwork here completed?</string>
+    <string name="map_attribution">Map Attribution</string>
+    <string name="link_panoramax_description">A free and open source software and nonprofit service for sharing crowd sourced street level photos</string>
+    <string name="link_opengeofiction_description">Tired of mapping reality? Collaboratively create fictional maps!</string>
+    <string name="link_openclimbing_description">A map of climbing spots</string>
+    <string name="pref_title_zoom_buttons">Show map zoom buttons</string>
+    <string name="overlay_mtb_scale">Mountain biking difficulty</string>
+    <string name="overlay_mtb_scale_0">Grade 0</string>
+    <string name="overlay_mtb_scale_0_description">Firm, grippy compacted or natural surface; no obstacles; gentle gradient; wide turns.</string>
+    <string name="overlay_mtb_scale_1">Grade 1</string>
+    <string name="overlay_mtb_scale_1_description">Partially loose terrain with small roots, stones, erosion or water ruts; ≤ 40 % gradient; rollable obstacles; basic riding technique required.</string>
+    <string name="overlay_mtb_scale_2">Grade 2</string>
+    <string name="overlay_mtb_scale_2_description">Loose terrain with larger roots and rocks, flat drops/small stairs, up to 70 % gradient; easy hairpin turns; advanced braking and weight shifting required.</string>
+    <string name="overlay_mtb_scale_3">Grade 3</string>
+    <string name="overlay_mtb_scale_3_description">Slippery, loose terrain with scree, boulders, large roots and rocks, high steps and tricky traverses; tight hairpin turns, &gt; 70 % gradient; very good balance and precise braking required.</string>
+    <string name="overlay_mtb_scale_4">Grade 4</string>
+    <string name="overlay_mtb_scale_4_description">Challenging and technical obstacles: big boulders, roots, scree, steep ramps; pivot switchbacks, flat drops with pedal strikes; perfect balance, precise braking, and rear-wheel repositioning required.</string>
+    <string name="overlay_mtb_scale_5">Grade 5</string>
+    <string name="overlay_mtb_scale_5_description">Ultra-steep blocky terrain with counter‑uphills, boulder fields, landslides, pivot switchbacks with obstacles, back‑to‑back high drops and fallen trees. Bike carrying around obstacles impossible; riding unavoidable. Trial mastery required.</string>
+    <string name="overlay_mtb_scale_6">Grade 6</string>
+    <string name="overlay_mtb_scale_6_description">Dangerous and impassable terrain, not suitable for mountain biking.</string>
+    <string name="default_disabled_overlay_domain_expert">This overlay is disabled by default because you need to be a domain expert to accurately record this data.</string>
+    <string name="pref_title_overlays">Overlay selection</string>
+    <string name="pref_overlays_reset">Reset overlay enablement to the default?</string>
+    <string name="overlay">Overlay</string>
+    <string name="enable_overlay_confirmation_title">Enable this overlay?</string>
+    <string name="link_transitous_description">Provider neutral free and open source public transport routing</string>
+    <string name="compass">Compass</string>
+    <string name="quest_tracktype_grade2">Mostly solid</string>
+    <string name="quest_tracktype_grade3">Mixture</string>
+    <string name="quest_housenumber_multiple_numbers_description2">You can enter comma separated house numbers. 
+For example 1,3 or 2b,4,6.</string>
+    <string name="quest_drinking_water_potable_unsigned2">No sign</string>
+    <string name="or">or</string>
+    <string name="action_copy">Copy</string>
+    <string name="quest_stopName_hint">You can apply the same name as another stop by tapping on it on the map.</string>
+    <string name="quest_shelter_capacity_title">How many people can sleep here?</string>
+    <string name="quest_handwashing_title">Can you wash your hands here?</string>
+    <string name="quest_openingHours_delete">Delete</string>
+    <string name="quest_streetName_hint">You can apply the same name as an adjacent section by tapping on it on the map.</string>
+    <string name="quest_streetName_abbreviation_instruction">Abbreviations like “Rd” should be expanded.</string>
+    <string name="quest_streetName_add_language">Add language</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
 </resources>

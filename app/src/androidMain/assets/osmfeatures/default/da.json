@@ -284,10 +284,6 @@
           "name": "Solur",
           "terms": "ur,sol,ude"
         },
-        "amenity/college": {
-          "name": "Område med videregående uddannelse",
-          "terms": "område med videregående uddannelse,college,skole,erhvervsakademi,cvu,professionshøjskole,university college,mellemlang"
-        },
         "amenity/community_centre": {
           "name": "Medborgerhus",
           "terms": "medborgerhus,forsamlingshus,aktivitetshus,kulturhus,kulturcenter,multihus,borgerhus,sognegård,menighedshus,loge,festsal"
@@ -443,10 +439,6 @@
         "amenity/driver_training": {
           "name": "Køreteknisk anlæg"
         },
-        "amenity/driving_school": {
-          "name": "Køreskole",
-          "terms": "køreskole,trafikskole"
-        },
         "amenity/embassy": {
           "name": "Ambassade"
         },
@@ -552,16 +544,8 @@
           "name": "Karaokebar",
           "terms": "karaokebar,karaoke box"
         },
-        "amenity/kindergarten": {
-          "name": "Børnehave/vuggestue-grund",
-          "terms": "børnehave,vuggestue,pasning,børnepasning,børn,institution"
-        },
         "amenity/kneipp_water_cure": {
           "name": "Kneipp-facilitet"
-        },
-        "amenity/language_school": {
-          "name": "Sprogskole",
-          "terms": "sprog,lingvistik,skole,uddannelse"
         },
         "amenity/lavoir": {
           "name": "Vaskehus",
@@ -614,10 +598,6 @@
         },
         "amenity/motorcycle_rental": {
           "name": "Motorcykeludlejning"
-        },
-        "amenity/music_school": {
-          "name": "Musikskole",
-          "terms": "musik,skole,undervisning"
         },
         "amenity/nightclub": {
           "name": "Natklub",
@@ -857,10 +837,6 @@
           "name": "Bortskaffelse af sanitært affald",
           "terms": "tørcloset,toilet,kloak,affald,lort,kemisk toilet,closet,campingvogn,autocamper,campingtoilet,camping"
         },
-        "amenity/school": {
-          "name": "Skoleområde",
-          "terms": "skoleområde,skolegrund,gymnasie,gymnasium"
-        },
         "amenity/shelter": {
           "name": "Ly",
           "terms": "ly,shelter,bivuak,hytte,læ,læskur,skur,halvtag,lejr"
@@ -983,10 +959,6 @@
         "amenity/trolley_bay": {
           "name": "Bås til indkøbsvogne",
           "terms": "indkøbsvognsbås,kundevognshus,kundevognsterminaler,indkøbsvognsterminal"
-        },
-        "amenity/university": {
-          "name": "Universitetsområde",
-          "terms": "universitetsområde"
         },
         "amenity/vacuum_cleaner": {
           "name": "Støvsugerstation",
@@ -1837,6 +1809,30 @@
         "disused/shop": {
           "name": "Lukket forretning"
         },
+        "education": {
+          "name": "Uddannelsesfacilitet"
+        },
+        "education/dancing_school": {
+          "name": "Danseskole"
+        },
+        "education/driving_school": {
+          "name": "Køreskole"
+        },
+        "education/kindergarten": {
+          "name": "Børnehaveområde"
+        },
+        "education/language_school": {
+          "name": "Sprogskole"
+        },
+        "education/music_school": {
+          "name": "Musikskole"
+        },
+        "education/school": {
+          "name": "Skoleområde"
+        },
+        "education/university": {
+          "name": "Universitetsområde"
+        },
         "embankment": {
           "name": "Forhøjning / vejdæmning"
         },
@@ -1854,12 +1850,6 @@
         "emergency/defibrillator": {
           "name": "Hjertestarter",
           "terms": "hjertestarter,aed"
-        },
-        "emergency/designated": {
-          "name": "Udrykningskørsel forbeholdt"
-        },
-        "emergency/destination": {
-          "name": "Udrykningskørsel destination"
         },
         "emergency/fire_alarm": {
           "name": "Tilkaldeboks til brandalarm",
@@ -1905,18 +1895,9 @@
           "name": "Livredder",
           "terms": "redning,kyst,svømning,førstehjælp,nødhjælp"
         },
-        "emergency/no": {
-          "name": "Udrykningskørsel Nej"
-        },
-        "emergency/official": {
-          "name": "Udrykningskørsel officielt"
-        },
         "emergency/phone": {
           "name": "Nødtelefon",
           "terms": "nødtelefon,nødopkaldstelefon"
-        },
-        "emergency/private": {
-          "name": "Udrykningkørsel Privat"
         },
         "emergency/siren": {
           "name": "Sirene",
@@ -1925,9 +1906,6 @@
         "emergency/water_tank": {
           "name": "Branddam",
           "terms": "brand,dam,beredskab,reservoir"
-        },
-        "emergency/yes": {
-          "name": "Udrykningskørsel Ja"
         },
         "entrance": {
           "name": "Indgang/Udgang"
@@ -2510,6 +2488,10 @@
           "name": "Akvakultur",
           "terms": "akvakultur"
         },
+        "landuse/aquaculture/fish": {
+          "name": "Fiskeopdræt",
+          "terms": "fiskeopdræt,akvakultur,lakseopdræt,dambrug"
+        },
         "landuse/basin": {
           "name": "Bassin"
         },
@@ -2723,9 +2705,6 @@
         "leisure/dance": {
           "name": "Dansehal",
           "terms": "dansehal,dansested"
-        },
-        "leisure/dancing_school": {
-          "name": "Danseskole"
         },
         "leisure/disc_golf_course": {
           "name": "Discgolfbane"
@@ -3304,7 +3283,7 @@
         },
         "man_made/surveillance/camera": {
           "name": "Overvågningskamera",
-          "terms": "overvågningskamera,videoovervågning"
+          "terms": "overvågningskamera,videoovervågning,kamera,cctv"
         },
         "man_made/survey_point": {
           "name": "Geografisk fikspunkt",
@@ -4386,6 +4365,9 @@
           "name": "Stearinlysforhandler",
           "terms": "stearinlysforhandler,stearinlysbutik,lysstøberi"
         },
+        "shop/cannabis": {
+          "name": "Cannabis-butik"
+        },
         "shop/car": {
           "name": "Bilforhandler",
           "terms": "bilforhandler,autoforhandler,bil,køretøj"
@@ -4409,6 +4391,9 @@
         "shop/carpet": {
           "name": "Tæppeforhandler",
           "terms": "tæppeforhandler,tæppeforretning"
+        },
+        "shop/catalogue": {
+          "name": "Katalogbutik"
         },
         "shop/charity": {
           "name": "Velgørenhedsbutik",
@@ -4449,6 +4434,9 @@
           "name": "Kaffebutik",
           "terms": "kaffebutik,kaffeforretning"
         },
+        "shop/collector": {
+          "name": "Butik med samlerobjekter"
+        },
         "shop/computer": {
           "name": "Computerforhandler",
           "terms": "computerbutik,pc-butik,computerforretning"
@@ -4468,6 +4456,9 @@
         "shop/cosmetics": {
           "name": "Kosmetikbutik",
           "terms": "kosmetikbutik,kosmetikforretning"
+        },
+        "shop/country_store": {
+          "name": "Landbutik"
         },
         "shop/craft": {
           "name": "Kunst & hobbybutik",
@@ -4538,6 +4529,9 @@
           "name": "Fiskebutik",
           "terms": "fiskeforretning,lystfiskerbutik"
         },
+        "shop/flooring": {
+          "name": "Gulvbelægningsbutik"
+        },
         "shop/florist": {
           "name": "Blomsterbutik",
           "terms": "blomsterbutik,blomsterforretning"
@@ -4545,6 +4539,9 @@
         "shop/frame": {
           "name": "Rammebutik",
           "terms": "rammebutik,billedrammer"
+        },
+        "shop/frozen_food": {
+          "name": "Frostvarebutik"
         },
         "shop/fuel": {
           "name": "Brændstofbutik"
@@ -4614,6 +4611,9 @@
           "name": "Honningbutik",
           "terms": "honningbutik,honningsalg"
         },
+        "shop/household_linen": {
+          "name": "Butik med husholdningsartikler"
+        },
         "shop/houseware": {
           "name": "Køkkenudstyr",
           "terms": "køkkenudstyr"
@@ -4679,6 +4679,9 @@
           "name": "Mobiltelefonforhandler",
           "terms": "mobiltelefonforhandler"
         },
+        "shop/mobile_phone_accessories": {
+          "name": "Mobiltilbehørbutik"
+        },
         "shop/money_lender": {
           "name": "Pengeudlåner",
           "terms": "pengeudlåner,långiver,kreditor,panthaver"
@@ -4725,6 +4728,9 @@
           "name": "Farvehandel",
           "terms": "farvehandel,malerforretning,malerbutik,maling"
         },
+        "shop/party": {
+          "name": "Butik med festartikler"
+        },
         "shop/pastry": {
           "name": "Konditori",
           "terms": "konditori"
@@ -4750,6 +4756,9 @@
         },
         "shop/pottery": {
           "name": "Keramikbutik"
+        },
+        "shop/psychic": {
+          "name": "Synsk"
         },
         "shop/pyrotechnics": {
           "name": "Fyrværkeributik",
@@ -4813,7 +4822,7 @@
         },
         "shop/storage_rental": {
           "name": "Lagerhotel",
-          "terms": "lagerhotel,opbevaringshotel"
+          "terms": "lagerhotel,opbevaringshotel,depot,opmagasinering"
         },
         "shop/supermarket": {
           "name": "Supermarked",
