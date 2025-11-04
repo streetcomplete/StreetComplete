@@ -14,7 +14,7 @@ class AddMaxWeightTest {
         assertEquals(
             setOf(StringMapEntryAdd("maxweight", "3.5")),
             questType.answerApplied(
-                MaxWeight(MaxWeightType.MAX_WEIGHT, Weight(3.5, METRIC_TON))
+                MaxWeight(listOf(MaxWeightType.MAX_WEIGHT), listOf(Weight(3.5, METRIC_TON)))
             )
         )
     }
@@ -23,7 +23,7 @@ class AddMaxWeightTest {
         assertEquals(
             setOf(StringMapEntryAdd("maxweight", "3.5 st")),
             questType.answerApplied(
-                MaxWeight(MaxWeightType.MAX_WEIGHT, Weight(3.5, SHORT_TON))
+                MaxWeight(listOf(MaxWeightType.MAX_WEIGHT), listOf(Weight(3.5, SHORT_TON)))
             )
         )
     }
@@ -31,28 +31,28 @@ class AddMaxWeightTest {
     @Test fun `apply imperial pounds answer`() {
         assertEquals(
             setOf(StringMapEntryAdd("maxweight", "500 lbs")),
-            questType.answerApplied(MaxWeight(MaxWeightType.MAX_WEIGHT, Weight(500.0, POUND)))
+            questType.answerApplied(MaxWeight(listOf(MaxWeightType.MAX_WEIGHT), listOf(Weight(500.0, POUND))))
         )
     }
 
     @Test fun `apply gvm weight answer`() {
         assertEquals(
             setOf(StringMapEntryAdd("maxweightrating", "3.5")),
-            questType.answerApplied(MaxWeight(MaxWeightType.MAX_WEIGHT_RATING, Weight(3.5, METRIC_TON)))
+            questType.answerApplied(MaxWeight(listOf(MaxWeightType.MAX_WEIGHT_RATING), listOf(Weight(3.5, METRIC_TON))))
         )
     }
 
     @Test fun `apply axle load answer`() {
         assertEquals(
             setOf(StringMapEntryAdd("maxaxleload", "7.5")),
-            questType.answerApplied(MaxWeight(MaxWeightType.MAX_AXLE_LOAD, Weight(7.5, METRIC_TON)))
+            questType.answerApplied(MaxWeight(listOf(MaxWeightType.MAX_AXLE_LOAD), listOf(Weight(7.5, METRIC_TON))))
         )
     }
 
     @Test fun `apply tandem axle load answer`() {
         assertEquals(
             setOf(StringMapEntryAdd("maxbogieweight", "4")),
-            questType.answerApplied(MaxWeight(MaxWeightType.MAX_TANDEM_AXLE_LOAD, Weight(4.0, METRIC_TON)))
+            questType.answerApplied(MaxWeight(listOf(MaxWeightType.MAX_TANDEM_AXLE_LOAD), listOf(Weight(4.0, METRIC_TON))))
         )
     }
 
