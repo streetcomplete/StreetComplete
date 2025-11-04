@@ -379,7 +379,7 @@ fun questTypeRegistry(
 
     160 to AddBbqFuel(),
 
-    187 to AddTowerAccess(),
+    182 to AddTowerAccess(),
     /* ↓ 2.solvable when right in front of it but takes longer to input --------------------- */
 
     // bike parking/rental: would be higher up if not for bike parking/rental capacity which is usually not solvable when moving past
