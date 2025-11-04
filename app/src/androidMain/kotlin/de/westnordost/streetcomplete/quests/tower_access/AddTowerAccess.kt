@@ -10,12 +10,13 @@ import de.westnordost.streetcomplete.osm.Tags
 class AddTowerAccess : OsmFilterQuestType<TowerAccess>(), AndroidQuest {
 
     override val elementFilter = """
-        nodes, ways, relations with man_made = tower
+        nodes, ways, relations with
+            man_made = tower
             and tower:type = observation
             and disused != yes
             and !emergency
             and !military
-            and !access
+            and (!access or access = unknown)
         """
     override val changesetComment = "Specify access to observation towers"
     override val wikiLink = "Tag:man_made=tower"
