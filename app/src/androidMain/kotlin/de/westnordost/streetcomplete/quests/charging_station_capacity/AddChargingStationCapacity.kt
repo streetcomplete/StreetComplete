@@ -18,6 +18,7 @@ class AddChargingStationCapacity : OsmFilterQuestType<Int>(), AndroidQuest {
         nodes, ways with
           amenity = charging_station
           and !capacity
+          and !capacity:motorcar
           and motorcar != no
           and motor_vehicle != no
           and access !~ private|no
