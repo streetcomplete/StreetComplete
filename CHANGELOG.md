@@ -1,6 +1,6 @@
 # Changelog
 
-## vNext
+## v62.0-beta1
 
 ### New quests
 
@@ -12,6 +12,9 @@
 - _"Where is this first aid kit located?"_ (#6539), by @NicodeH
 - _"Does this aerial lift transport bicycles?"_ (#6544), by @RaphaLLamothe
 - _"Are the lanes here marked?"_ (#6490)
+- _"Can bicycles be charged here, too?"_ (#6595)
+- _"How many bicycles can be charged here at the same time?"_ (#6595), thanks @HugoTHOLLON
+- _"Who may access this tower? It may be free or paid."_ (#6581), thanks @ElPoraz
 
 ### General
 
@@ -32,6 +35,7 @@
 - Mopeds on bike paths: Enable in Sweden (#6516), by @paulklie
 _ Information board topics: Add "rules" (#6580), by @NicodeH
 - Postbox royal cypher: Show "None" as normal answer option (#6490)
+- Place name: Ask for some historic things, such as monuments (#6042)
 - Other small refinements (#6445, #6511…)
 
 ### Overlay improvements
