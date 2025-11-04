@@ -28,6 +28,6 @@
         android:layout_height="48dp"
         android:layout_marginTop="7dp"
         android:layout_centerHorizontal="true"
-        app:srcCompat="@drawable/ic_quest_create_note" />
+        app:srcCompat="@drawable/quest_create_note" />
 
 </RelativeLayout>

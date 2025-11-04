@@ -31,7 +31,7 @@ import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 class StreetParkingOverlay : Overlay, AndroidOverlay {
 
     override val title = R.string.overlay_street_parking
-    override val icon = R.drawable.ic_quest_parking_lane
+    override val icon = R.drawable.quest_parking_lane
     override val changesetComment = "Specify whether there is street parking and what kind"
     override val wikiLink: String = "Key:parking:lane"
     override val achievements = listOf(CAR)

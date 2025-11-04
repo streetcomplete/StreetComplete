@@ -22,7 +22,7 @@ class AddChargingStationOperator : OsmFilterQuestType<String>(), AndroidQuest {
     """
     override val changesetComment = "Specify charging station operators"
     override val wikiLink = "Tag:amenity=charging_station"
-    override val icon = R.drawable.ic_quest_car_charger
+    override val icon = R.drawable.quest_car_charger
     override val isDeleteElementEnabled = true
     override val achievements = listOf(CAR)
 

@@ -1,10 +1,11 @@
 package de.westnordost.streetcomplete.osm.street_parking
 
+import de.westnordost.streetcomplete.osm.Sides
 import de.westnordost.streetcomplete.osm.expandSidesTags
 import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation.*
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.*
 
-fun parseStreetParkingSides(tags: Map<String, String>): LeftAndRightStreetParking? {
+fun parseStreetParkingSides(tags: Map<String, String>): Sides<StreetParking>? {
     // expand tags first so we do not need to deal with :both and naked tags
     val expandedTags = expandRelevantSidesTags(tags)
     // first try to parse new schema
@@ -18,7 +19,7 @@ fun parseStreetParkingSides(tags: Map<String, String>): LeftAndRightStreetParkin
 
     if (left == null && right == null) return null
 
-    return LeftAndRightStreetParking(left, right)
+    return Sides(left, right)
 }
 
 /** Parsing new schema:

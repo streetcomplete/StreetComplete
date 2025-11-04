@@ -150,7 +150,7 @@ mapOf(
 
     override val changesetComment = "Survey opening hours"
     override val wikiLink = "Key:opening_hours"
-    override val icon = R.drawable.ic_quest_opening_hours
+    override val icon = R.drawable.quest_opening_hours
     override val isReplacePlaceEnabled = true
     override val achievements = listOf(CITIZEN)
 

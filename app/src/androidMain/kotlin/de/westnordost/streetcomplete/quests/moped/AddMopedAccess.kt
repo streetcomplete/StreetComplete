@@ -29,7 +29,7 @@ class AddMopedAccess : OsmFilterQuestType<MopedAccessAnswer>(), AndroidQuest {
     override val defaultDisabledMessage = Res.string.default_disabled_msg_visible_sign_moped
     override val changesetComment = "Specify if a moped is allowed on the cycleway"
     override val wikiLink = "Key:moped"
-    override val icon = R.drawable.ic_quest_moped_access
+    override val icon = R.drawable.quest_moped_access
 
     override val achievements = listOf(EditTypeAchievement.BICYCLIST)
 

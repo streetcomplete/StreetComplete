@@ -120,8 +120,8 @@ kotlin {
                 implementation("org.kotlincrypto.hash:sha2:0.8.0")
 
                 // XML
-                implementation("io.github.pdvrieze.xmlutil:core:0.91.2")
-                implementation("io.github.pdvrieze.xmlutil:core-io:0.91.2")
+                implementation("io.github.pdvrieze.xmlutil:core:0.91.3")
+                implementation("io.github.pdvrieze.xmlutil:core-io:0.91.3")
 
                 // YAML
                 implementation("com.charleskorn.kaml:kaml:0.97.0")
@@ -158,6 +158,9 @@ kotlin {
                 implementation("org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-compose:2.9.4")
 
                 // UI widgets
+
+                // non-lazy grid
+                implementation("com.cheonjaeung.compose.grid:grid:2.4.0")
 
                 // reorderable lists (raw Compose API is pretty complicated)
                 implementation("sh.calvin.reorderable:reorderable:2.5.1")

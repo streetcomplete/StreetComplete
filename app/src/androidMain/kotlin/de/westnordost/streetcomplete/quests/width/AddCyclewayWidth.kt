@@ -40,7 +40,7 @@ class AddCyclewayWidth(
     """
     override val changesetComment = "Specify cycleways width"
     override val wikiLink = "Key:width"
-    override val icon = R.drawable.ic_quest_bicycleway_width
+    override val icon = R.drawable.quest_bicycleway_width
     override val achievements = listOf(BICYCLIST)
     override val defaultDisabledMessage: StringResource?
         get() = if (!checkArSupport()) Res.string.default_disabled_msg_no_ar else null

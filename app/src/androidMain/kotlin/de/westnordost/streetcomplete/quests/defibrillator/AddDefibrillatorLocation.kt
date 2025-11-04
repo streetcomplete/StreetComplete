@@ -20,7 +20,7 @@ class AddDefibrillatorLocation : OsmFilterQuestType<String>(), AndroidQuest {
     """
     override val changesetComment = "Specify defibrillator location"
     override val wikiLink = "Tag:emergency=defibrillator"
-    override val icon = R.drawable.ic_quest_defibrillator
+    override val icon = R.drawable.quest_defibrillator
     override val isDeleteElementEnabled = false
     override val achievements = listOf(LIFESAVER)
 
@@ -29,7 +29,7 @@ class AddDefibrillatorLocation : OsmFilterQuestType<String>(), AndroidQuest {
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
         getMapData().filter("nodes with emergency = defibrillator")
 
-    override fun createForm() = AddDefibrillatorLocationForm()
+    override fun createForm() = AddLocationDescriptionForm()
 
     override fun applyAnswerTo(answer: String, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags["defibrillator:location"] = answer

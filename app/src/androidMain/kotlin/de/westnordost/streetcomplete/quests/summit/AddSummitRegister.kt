@@ -27,7 +27,7 @@ class AddSummitRegister : OsmElementQuestType<Boolean>, AndroidQuest {
 
     override val changesetComment = "Specify whether summit registers are present"
     override val wikiLink = "Key:summit:register"
-    override val icon = R.drawable.ic_quest_peak
+    override val icon = R.drawable.quest_peak
     override val achievements = listOf(RARE, OUTDOORS)
     override val enabledInCountries = NoCountriesExcept(
         // regions gathered in

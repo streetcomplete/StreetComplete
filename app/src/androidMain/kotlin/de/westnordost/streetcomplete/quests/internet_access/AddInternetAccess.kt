@@ -32,7 +32,7 @@ class AddInternetAccess : OsmFilterQuestType<InternetAccess>(), AndroidQuest {
 
     override val changesetComment = "Specify whether place provides internet access"
     override val wikiLink = "Key:internet_access"
-    override val icon = R.drawable.ic_quest_wifi
+    override val icon = R.drawable.quest_wifi
     override val achievements = listOf(CITIZEN)
     override val defaultDisabledMessage = Res.string.default_disabled_msg_go_inside
 
