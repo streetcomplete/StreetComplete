@@ -90,8 +90,8 @@ import de.westnordost.streetcomplete.quests.fire_hydrant.AddFireHydrantType
 import de.westnordost.streetcomplete.quests.fire_hydrant_diameter.AddFireHydrantDiameter
 import de.westnordost.streetcomplete.quests.fire_hydrant_position.AddFireHydrantPosition
 import de.westnordost.streetcomplete.quests.fire_hydrant_ref.AddFireHydrantRef
-import de.westnordost.streetcomplete.quests.first_aid_kit.AddFirstAidKitLocation
 import de.westnordost.streetcomplete.quests.firewood.AddFirewood
+import de.westnordost.streetcomplete.quests.first_aid_kit.AddFirstAidKitLocation
 import de.westnordost.streetcomplete.quests.foot.AddProhibitedForPedestrians
 import de.westnordost.streetcomplete.quests.fuel_service.AddFuelSelfService
 import de.westnordost.streetcomplete.quests.general_fee.AddGeneralFee
@@ -419,7 +419,7 @@ fun questTypeRegistry(
 
     86 to AddClothingBinOperator(),
 
-    182 to AddChargingStationBicycles(),
+    186 to AddChargingStationBicycles(),
     87 to AddChargingStationCapacity(),  // after question for bicycles because user has possibility to answer that it is only for bicycles
     179 to AddChargingStationBicycleCapacity(),
     88 to AddChargingStationOperator(),
@@ -450,7 +450,7 @@ fun questTypeRegistry(
     101 to AddFerryAccessPedestrian(),
     102 to AddFerryAccessMotorVehicle(),
 
-    //aerial way: usually visible from looking at the aerial way, but not always...
+    // aerial way: usually visible from looking at the aerial way, but not always...
     184 to AddAerialwayBicycleAccess(),
 
     103 to AddProhibitedForPedestrians(), // need to understand the pedestrian situation
