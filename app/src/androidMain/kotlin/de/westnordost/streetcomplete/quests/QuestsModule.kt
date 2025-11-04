@@ -175,6 +175,7 @@ import de.westnordost.streetcomplete.quests.tactile_paving.AddTactilePavingSteps
 import de.westnordost.streetcomplete.quests.toilet_availability.AddToiletAvailability
 import de.westnordost.streetcomplete.quests.toilets_fee.AddToiletsFee
 import de.westnordost.streetcomplete.quests.tourism_information.AddInformationToTourism
+import de.westnordost.streetcomplete.quests.tower_access.AddTowerAccess
 import de.westnordost.streetcomplete.quests.tracktype.AddTracktype
 import de.westnordost.streetcomplete.quests.traffic_calming_type.AddTrafficCalmingType
 import de.westnordost.streetcomplete.quests.traffic_signals_button.AddTrafficSignalsButton
@@ -381,8 +382,8 @@ fun questTypeRegistry(
     67 to AddFireHydrantRef(),
 
     160 to AddBbqFuel(),
+    182 to AddTowerAccess(),
     185 to AddFirewood(),
-
     /* ↓ 2.solvable when right in front of it but takes longer to input --------------------- */
 
     // bike parking/rental: would be higher up if not for bike parking/rental capacity which is usually not solvable when moving past
