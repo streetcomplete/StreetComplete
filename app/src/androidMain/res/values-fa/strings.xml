@@ -20,10 +20,7 @@
     <string name="quest_leave_new_note_yes">"یادداشت‌گذاری"</string>
     <string name="quest_leave_new_note_no">"پنهان سازی"</string>
     <string name="quest_streetName_title">"نام این مسیر چیست؟"</string>
-    <string name="quest_streetName_description">"به همان‌شکل که روی تابلوی خیابان نوشته شده، کلمات اختصاری را کامل بنویسید:"</string>
     <string name="quest_streetName_answer_noName_confirmation_description">"گاهی تابلوی خیابان تنها در یک سوی خیابان است. همچنین توجه داشته باشید که ممکن است برای معابر فرعی که به خیابان اصلی متصل هستند، تابلویی وجود نداشته باشد. معمولاً هر خیابانِ دارای منازل مسکونی، نامی دارد."</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"اگر می‌توان نام را بدون اختصار نوشت، می‌بایست آن را کامل بنویسید. هنگام ورود بسیاری از کلمات اختصاری، صفحه‌کلید هوشمند به‌طور خودکار آنها را به شکل کامل تبدیل می‌کند، البته نه همگی را."</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"بدون اختصار"</string>
     <string name="quest_openingHours_start_time">"ساعت شروع کار"</string>
     <string name="quest_openingHours_end_time">"زمان پایان کار"</string>
     <string name="quest_openingHours_add_months">"افزودن ماه"</string>
@@ -57,7 +54,6 @@
     <string name="version_banned_message">"این نسخه از برنامه بسیار قدیمی است. لطفاً به‌روز کنید!"</string>
     <string name="no_gps_no_quests">"جهت مرور خودکار جُستارهای اطراف، ردیاب مکان‌ (GPS) را روشن کنید"</string>
     <string name="later">"بعداً"</string>
-    <string name="quest_streetName_answer_noProperStreet_link">"صرفاً این دو مسیر را به هم وصل می‌نماید"</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">"مورد دیگری است (یادداشت بگذارید)"</string>
     <string name="about_title_privacy_statement">"بیانیهٔ حریم شخصی"</string>
     <string name="quest_openingHours_public_holidays">"تعطیلات رسمی"</string>
@@ -195,7 +191,6 @@
     <string name="quest_sport_roller_skating">"اسکیت"</string>
     <string name="quest_wheelchairAccess_limited_description_business">"تا اندازه‌ای یعنی نهایتاً یک پله به ارتفاع قوزک پا برای دسترسی به مکان وجود دارد و همچنین بیشتر اتاق‌های داخلی دسترسی ویلچر دارند."</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">"تا اندازه‌ای یعنی نهایتاً یک پله به ارتفاع قوزک پا برای دسترسی به آن وجود دارد."</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"در نام %s مخفف هست؟"</string>
     <string name="quest_recycling_type_title">"این تأسیسات بازیافت از چه نوعی است؟"</string>
     <string name="recycling_centre">"مرکز بازیافت"</string>
     <string name="overground_recycling_container">"مخزن"</string>
@@ -322,10 +317,6 @@
     <string name="quest_cycleway_answer_contraflow_cycleway">"مسیر رفت و برگشت دوچرخه سواری مجزا است…"</string>
     <string name="quest_openingHours_emptyAnswer">"آنچه را که روی علائم نگاشته شده درج کنید. اگر علائمی وجود ندارد، ساعت کاری را از داخل بپرسید."</string>
     <string name="quest_cycleway_value_none_but_no_oneway">"هیچ‌کدام، اما دوچرخه‌سواران می‌توانند از جاده در هر دو جهت استفاده کنند"</string>
-    <string name="quest_streetName_answer_noName_question">"چرا نام ندارد؟"</string>
-    <string name="quest_streetName_answer_noProperStreet_service2">"چیزی شبیه به راه اختصاصی یا مسیر پارکینگ است"</string>
-    <string name="quest_streetName_answer_noProperStreet_track2">"جادهٔ کشاورزی یا جنگلی است"</string>
-    <string name="quest_streetName_answer_noName_noname">"هیچ یک از موارد فوق؛ واقعا نامی ندارد"</string>
     <string name="quest_wheelchairAccess_description_toilets">"اگر سرویس‌بهداشتی برای صندلی چرخدار قابل دسترسی است، علائمی مانند این شاید نصب شده باشد.
 تا اندازه‌ای یعنی صندلی چرخدار می‌تواند وارد سرویس بهداشتی شود و از آن استفاده کند، اما دست‌نرده ندارد یا دست‌شویی مناسب‌سازی نشده است."</string>
     <string name="map_btn_create_note">"ایجاد یادداشت جدید"</string>
@@ -748,7 +739,6 @@
     <string name="quest_charging_station_capacity_title">"چند خودرو در این ایستگاه شارژ می‌تواند به طور همزمان شارژ شود؟"</string>
     <string name="link_disaster_ninja_description">"نقشه‌ای که بلایای طبیعی اخیر را نشان می‌دهد که برای نقشه‌برداران بشردوستانه جالب است. همچنین، بسیاری از آمارهای متنوع را برای تجزیه و تحلیل چگونگی نقشه‌کشی و به‌روز بودن مکان‌ها نشان می‌دهد."</string>
     <string name="quest_lanes_title">"این مسیر چند خط عبور برای خودروها دارد؟"</string>
-    <string name="quest_lanes_answer_lanes">"با خط‌کشی خطوط عبور"</string>
     <string name="quest_lanes_answer_noLanes">"بدون خط‌کشی خطوط عبور"</string>
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">"دارای دوربرگردان برای چرخش به چپ دو طرفه می‌باشد
 "</string>
@@ -762,8 +752,6 @@
     <string name="quest_kerb_height_raised">"جدول برجسته"</string>
     <string name="quest_kerb_height_lowered_ramp">"جدول شیب‌دار
 "</string>
-    <string name="quest_lanes_answer_lanes_description2">"تعداد کل خطوط تردد (هر دو جهت) قابل استفاده خودروها را مشخص کنید. پس، خطوط دوچرخه و خطوط اختصاصی پارکینگ حساب نمی‌شوند.
-اگر خط ویژه اتوبوس در میان این خطوط وجود دارد، لطفاً در عوض یادداشت بگذارید."</string>
     <string name="quest_lanes_answer_lanes_description_one_side2">"تعداد خطوط تردد قابل استفاده خودروها در اینجا را مشخص کنید. پس، خطوط دوچرخه و خطوط اختصاصی پارکینگ حساب نمی‌شوند.
 اگر خط ویژه اتوبوس در میان این خطوط وجود دارد، لطفاً در عوض یادداشت بگذارید."</string>
     <string name="quest_surface_value_rock">"سنگ"</string>
@@ -778,7 +766,6 @@
     <string name="quest_shop_gone_replaced_answer">"یک…"</string>
     <string name="quest_shop_gone_replaced_answer_hint">"نوع مکان اینجا را وارد کنید"</string>
     <string name="quest_shop_vacant_type_title">"این فروشگاه متروکه است. اکنون چه عارضه‌ای اینجاست؟"</string>
-    <string name="quest_lanes_answer_lanes_odd2">"تعداد خطوط برای هر سمت متفاوت است"</string>
     <string name="default_disabled_msg_go_inside_regional_warning">"این نوع جُستار به صورت پیشفرض غیرفعال است زیرا در برخی مناطق مفید نیست و احتمالاً مجبور خواهید بود که وارد مکان شوید تا به جُستاری از این نوع پاسخ دهید."</string>
     <string name="quest_dietType_explanation_kosher">"محصولات کوشر مطابق با قوانین خاص تهیه می‌شود و مراکز صدور گواهینامه کوشر، محصولات را مطابق با آن نشانه‌گذاری می‌کنند."</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">"اصلاً مسیر دوچرخه‌سواری وجود ندارد"</string>
@@ -1205,7 +1192,7 @@
     <string name="user_profile_current_week_title">"در 7 روز گذشته"</string>
     <string name="user_profile_dates_mapped">"روزهایی که اخیراً نقشه‌‌کشی کرده‌اید"</string>
     <string name="quest_cycleway_value_advisory_lane">"خط دوچرخه پیشنهادی"</string>
-    <string name="urlconfig_scan_qr_code_again2">"بعد از نصب برنامه، کد QR را اسکن کنید یا روی &lt;a href=\"%s\"&gt;این لینک&lt;/a&gt; کلیک کنید تا پیش‌تنظیم اعمال گردد."</string>
+    <string name="urlconfig_scan_qr_code_again2">"بعد از نصب برنامه، کد QR را اسکن کنید یا روی &lt;a href=\"%1$s\"&gt;این لینک&lt;/a&gt; کلیک کنید تا پیش‌تنظیم اعمال گردد."</string>
     <string name="confirmation_replace_shop_title">"حالا مکان دیگری است؟"</string>
     <string name="confirmation_replace_shop_message">"در این صورت، ساعات کار، اطلاعات تماس و غیره هم تغییر می‌کند."</string>
     <string name="confirmation_replace_shop_yes">"الان مکان دیگری است"</string>
@@ -1462,4 +1449,14 @@
     <string name="quest_housenumber_multiple_numbers_description2">"می‌توانید شماره خانه‌ها را با کاما از هم جدا کنید.\nبرای مثال ۱،۳ یا ۲ب،۴،۶."</string>
     <string name="quest_drinking_water_potable_unsigned2">"بدون علامت"</string>
     <string name="or">"یا"</string>
+    <string name="action_copy">"کپی"</string>
+    <string name="quest_stopName_hint">"با ضربه زدن روی یک نام روی نقشه، می‌توانید همان نام را برای ایستگاه دیگری انتخاب کنید."</string>
+    <string name="quest_shelter_capacity_title">"چند نفر می‌توانند اینجا بخوابند؟"</string>
+    <string name="quest_handwashing_title">"آیا در اینجا می‌توانید دست‌هایتان را بشویید؟"</string>
+    <string name="quest_openingHours_delete">"حذف کردن"</string>
+    <string name="quest_streetName_hint">"می‌توانید با ضربه زدن روی یک بخش مجاور در نقشه، همان نام را برای آن اعمال کنید."</string>
+    <string name="quest_streetName_abbreviation_instruction">"مخفف‌هایی مانند \"Rd\" (مخفف Road) باید به صورت کامل نوشته شوند. (مثلاً: \"جاده\")"</string>
+    <string name="quest_streetName_add_language">"اضافه کردن زبان"</string>
+    <string name="ok">"خوب"</string>
+    <string name="cancel">"لغو کردن"</string>
 </resources>

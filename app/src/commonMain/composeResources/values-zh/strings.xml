@@ -20,10 +20,7 @@
     <string name="quest_leave_new_note_yes">留下注记</string>
     <string name="quest_leave_new_note_no">隐藏它</string>
     <string name="quest_streetName_title">这条街叫什么名字？</string>
-    <string name="quest_streetName_description">正如街道标志上所写，缩写可展开为：</string>
     <string name="quest_streetName_answer_noName_confirmation_description">有时，街道标志只会立在街道的两端。而且，请注意，隶属于更大的街道的分支街道常常没有标志。通常，两边有房子的街道才有街名。</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_description">如果名称无需缩写就能拼写出，那么就应该展开。许多常见的缩写会在你打字时自动展开，但可能不是全部。</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">没有缩写</string>
     <string name="quest_openingHours_start_time">开门时间</string>
     <string name="quest_openingHours_end_time">关门时间</string>
     <string name="quest_openingHours_add_months">添加月</string>
@@ -57,7 +54,6 @@
     <string name="version_banned_message">当前版本的 StreetComplete 过旧。请更新！</string>
     <string name="no_gps_no_quests">如果要自动下载您周围的数据，请启用“定位服务”</string>
     <string name="later">稍后</string>
-    <string name="quest_streetName_answer_noProperStreet_link">它只连接两条道路</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">其它（留下注记）</string>
     <string name="about_title_privacy_statement">隐私声明</string>
     <string name="quest_openingHours_public_holidays">公共假期</string>
@@ -197,7 +193,6 @@
     <string name="quest_sport_roller_skating">轮滑</string>
     <string name="quest_wheelchairAccess_limited_description_business">部分是指进入该场所的台阶不超过脚踝，内部大部分房间可供轮椅进出。</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">部分是指进入这里的台阶不能超过脚踝高。</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">%1$s 的简称或缩写是？</string>
     <string name="quest_recycling_type_title">这是哪一种资源回收设施？</string>
     <string name="recycling_centre">资源回收中心</string>
     <string name="overground_recycling_container">资源回收容器</string>
@@ -324,10 +319,6 @@
     <string name="quest_cycleway_answer_contraflow_cycleway">对面也有自行车专用道……</string>
     <string name="quest_openingHours_emptyAnswer">您需要描述标识上的内容。如果没有标识，就应当尝试进入场所，主动询问营业时间。</string>
     <string name="quest_cycleway_value_none_but_no_oneway">没有，但骑自行车的人可以双向使用道路</string>
-    <string name="quest_streetName_answer_noName_question">这条路为何没有名称？</string>
-    <string name="quest_streetName_answer_noProperStreet_service2">看起来像是行车道或是停车场通道（服务道路）</string>
-    <string name="quest_streetName_answer_noProperStreet_track2">这是一条农业或林区道路（车辙路）</string>
-    <string name="quest_streetName_answer_noName_noname">上述答案都不是，它只是没有名字（无名路）</string>
     <string name="quest_wheelchairAccess_description_toilets">如果洗手间是无障碍的，这样的轮椅标志可能会很明显。
 部分表示轮椅可以进入并使用洗手间，但缺少扶手或合适的洗手盆。</string>
     <string name="map_btn_create_note">创建新注记</string>
@@ -513,7 +504,7 @@
     <string name="quest_leaf_type_broadleaved">阔叶</string>
     <string name="quest_leaf_type_mixed">两种都存在</string>
     <string name="quest_cyclewayPartSurface_title">这条自行车道的路面是什么材质的？</string>
-    <string name="quest_generic_answer_differs_along_the_way">一路走来，不同的是…</string>
+    <string name="quest_generic_answer_differs_along_the_way">一路上有不一样的…</string>
     <string name="quest_split_way_description">如果情况沿途发生变化，请先分割该路径（way）。之后，便可分别为各段路径（way）解答任务。
 是否现在进行分割？</string>
     <string name="quest_split_way_tutorial">点击道路上答案不一致的点来分割。使用缩放功能，并尽可能地精确。</string>
@@ -706,7 +697,7 @@
     <string name="resurvey_intervals_default">默认</string>
     <string name="resurvey_intervals_more_often">增加询问次数</string>
     <string name="about_title_translate">帮助翻译本应用</string>
-    <string name="about_description_translate">%1$s 已翻译 %2$d%%</string>
+    <string name="about_description_translate">%1$s 已翻译 %2$d%</string>
     <string name="quest_oneway2_title">这是条单行道吗？沿哪个方向？</string>
     <string name="quest_oneway2_dir">朝此方向的单行道</string>
     <string name="quest_oneway2_no_oneway">不是单行道</string>
@@ -752,7 +743,6 @@
     <string name="quest_charging_station_capacity_title">这座充电站能给几台车同时充电？</string>
     <string name="link_disaster_ninja_description">显示近期自然灾害的地图，对人道主义地图绘制者来说很有意思。此外，还显示了许多有趣的统计数据，以分析各地方的地图绘制情况和最新的情况。</string>
     <string name="quest_lanes_title">这条路有几条车道？</string>
-    <string name="quest_lanes_answer_lanes">有标线车道</string>
     <string name="quest_lanes_answer_noLanes">无标线车道</string>
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">有双向左转车道</string>
     <string name="quest_address_answer_no_housenumber_message2b">这是正确的吗？</string>
@@ -765,8 +755,6 @@
     <string name="quest_kerb_height_lowered">略高于路面</string>
     <string name="quest_kerb_height_raised">高路缘</string>
     <string name="quest_kerb_height_lowered_ramp">路缘斜坡</string>
-    <string name="quest_lanes_answer_lanes_description2">列出可供车辆通行的标线车道总数（所有方向），自行车道和专用停车位不算。
-如果有公交专用车道，请留一条注记。</string>
     <string name="quest_lanes_answer_lanes_description_one_side2">明确所有可通行汽车的车道（所有方向）。但自行车和停车道不包括在内。
 如果有公交专用道，请在注记中说明。</string>
     <string name="quest_surface_value_rock">岩石</string>
@@ -781,7 +769,6 @@
     <string name="quest_shop_gone_replaced_answer">一个…</string>
     <string name="quest_shop_gone_replaced_answer_hint">输入该场所的类型</string>
     <string name="quest_shop_vacant_type_title">这家商店已经空置。现在又是什么？</string>
-    <string name="quest_lanes_answer_lanes_odd2">两侧的车道数不同</string>
     <string name="default_disabled_msg_go_inside_regional_warning">此任务类型默认禁用，因为它在某些地区可能用途不大，并且您可能需要进入场所内部才能回答此类任务。</string>
     <string name="quest_dietType_explanation_kosher">犹太教的洁食食品必须依规矩制作，并附上饮食教规认证机构标章以确保其饮食从教。</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">没有任何自行车道或车径</string>
@@ -1461,4 +1448,18 @@
     <string name="compass">指南针</string>
     <string name="quest_tracktype_grade2">基本坚实</string>
     <string name="quest_tracktype_grade3">软硬混合</string>
+    <string name="quest_housenumber_multiple_numbers_description2">您可以使用英文逗号来分隔建筑物编号。
+如1,3或2b,4,6。</string>
+    <string name="quest_drinking_water_potable_unsigned2">没有标识</string>
+    <string name="or">或</string>
+    <string name="action_copy">复制</string>
+    <string name="quest_stopName_hint">您可以点击地图上的其他车站以复制名称。</string>
+    <string name="quest_shelter_capacity_title">这里可以安置多少人？</string>
+    <string name="quest_handwashing_title">可以在这里洗手吗？</string>
+    <string name="quest_openingHours_delete">删除</string>
+    <string name="quest_streetName_hint">您可以点击地图上的邻近部分以复制名称。</string>
+    <string name="quest_streetName_abbreviation_instruction">外文名词缩写需要被展开。</string>
+    <string name="quest_streetName_add_language">添加语言</string>
+    <string name="ok">确定</string>
+    <string name="cancel">取消</string>
 </resources>

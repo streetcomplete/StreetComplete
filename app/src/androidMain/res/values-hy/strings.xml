@@ -20,10 +20,7 @@
     <string name="quest_leave_new_note_yes">"լավ"</string>
     <string name="quest_leave_new_note_no">"Ոչ, պարզապես թաքցնել"</string>
     <string name="quest_streetName_title">"Ի՞նչ է կոչվում այս փողոցը։"</string>
-    <string name="quest_streetName_description">"ինչպես գրված է փողոցի նշանի վրա, հապավումները պետք է բացահայտել"</string>
     <string name="quest_streetName_answer_noName_confirmation_description">"Երբեմն փողոցի նշանը միայն փողոցի մի ծայրում է։ Նաև ուշադրություն դարձրեք, որ ավելի մեծ փողոցին պատկանող կողմնակի փողոցների համար կարող են չլինել լրացուցիչ փողոցային նշաններ: Սովորաբար տներով ցանկացած փողոց անուն ունի։"</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"Եթե ​​անունը կարող է գրված լինել առանց հապավումների, ապա այն պետք է այդպես գրել։ Շատ տարածված հապավումներ արդեն բացահայտվում  են մուտքագրելիս, բայց հավանաբար ոչ բոլորը:"</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"Հապավումներ չկան"</string>
     <string name="quest_openingHours_start_time">"բացման ժամը"</string>
     <string name="quest_openingHours_end_time">"փակման ժամ"</string>
     <string name="quest_openingHours_add_months">"Ավելացնել ամիսներ"</string>
@@ -56,7 +53,6 @@
     <string name="version_banned_message">"Streetcomplete- ի այս տարբերակը չափազանց հին է: Խնդրում ենք թարմացնել:"</string>
     <string name="no_gps_no_quests">"Ձեր շուրջը կատարվող որոնումների ավտոմատ սկանավորման համար միացրեք տեղադրությունը"</string>
     <string name="later">"Ավելի ուշ"</string>
-    <string name="quest_streetName_answer_noProperStreet_link">"Այն ուղղակի կապում է երկու ճանապարհ"</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">"Այլ բան (թողնել նշում)"</string>
     <string name="about_title_privacy_statement">"Գաղտնիության քաղաքականությունը"</string>
     <string name="quest_openingHours_public_holidays">"Հասարակական տոներ"</string>
@@ -176,7 +172,6 @@
     <string name="quest_sport_roller_skating">"Գլորաչմուշկ"</string>
     <string name="quest_wheelchairAccess_limited_description_business">"Մասնակիորեն նշանակում է, որ չկա ավելի շատ, քան կոճ-բարձր քայլը տեղ մուտք ունենալու համար, եւ որ սենյակների մեծ մասը մատչելի է սայլակով:"</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">"Մասնակիորեն նշանակում է, որ այն չկա, քան կոճ `դրա մուտքը:"</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"Հիասթափություն %s անունով:"</string>
     <string name="quest_recycling_type_title">"Ինչ տեսակի վերամշակման օբյեկտ է սա:"</string>
     <string name="recycling_centre">"Կենտրոն"</string>
     <string name="overground_recycling_container">"Բեռնարկղ"</string>
@@ -301,10 +296,6 @@
     <string name="quest_cycleway_answer_contraflow_cycleway">"Նաեւ ցիկլը մյուս կողմից…"</string>
     <string name="quest_openingHours_emptyAnswer">"Դուք պետք է նկարագրեք, թե ինչ է նշանը: Եթե ​​նշան չկա, ապա ներսից պետք է խնդրեք բացման ժամեր:"</string>
     <string name="quest_cycleway_value_none_but_no_oneway">"ոչ մեկը, բայց հեծանվորդները կարող են ճանապարհային ճանապարհ օգտագործել երկու ուղղություններով"</string>
-    <string name="quest_streetName_answer_noName_question">"Ինչու անուն չունի:"</string>
-    <string name="quest_streetName_answer_noProperStreet_service2">"Դա ավտոճանապարհի կամ կայանման միջանցքի նման բան է"</string>
-    <string name="quest_streetName_answer_noProperStreet_track2">"Այն գյուղատնտեսական կամ անտառային ճանապարհ է"</string>
-    <string name="quest_streetName_answer_noName_noname">"Վերոհիշյալներից ոչ մեկը պարզապես անուն չունի"</string>
     <string name="quest_wheelchairAccess_description_toilets">"Նման սայլակով նշան կարող է երեւում, եթե զուգարանը հասանելի է:
 Մասամբ նշանակում է, որ սայլակը կարող է մուտք գործել եւ օգտագործել զուգարանը, բայց առկա է ձեռքի կամ հարմարեցված ձեռքի ավազան:"</string>
     <string name="map_btn_create_note">"Ստեղծեք նոր նոտա"</string>
@@ -555,8 +546,8 @@
     <string name="achievements_empty">"Դուք դեռ ձեռքբերումներ չունեք"</string>
     <string name="links_empty">"Դուք դեռ հղումներ չունեք"</string>
     <string name="quests_empty">"Դուք դեռ չեք հրապարակել որոնման պատասխաններ"</string>
-    <string name="unsynced_quests_description">"Գումարած %d -ը դեռ հրապարակված փոփոխություններ չի հրապարակվում:"</string>
-    <string name="unsynced_quests_not_logged_in_description">"Դուք ունեք %d դեռ հրապարակված փոփոխություններ: Դուք պետք է մուտք գործեք, որպեսզի դրանք վերբեռնվեն:"</string>
+    <string name="unsynced_quests_description">"Գումարած %1$d -ը դեռ հրապարակված փոփոխություններ չի հրապարակվում:"</string>
+    <string name="unsynced_quests_not_logged_in_description">"Դուք ունեք %1$d դեռ հրապարակված փոփոխություններ: Դուք պետք է մուտք գործեք, որպեսզի դրանք վերբեռնվեն:"</string>
     <string name="user_quests_title">"Լուծված որոնումներից"</string>
     <string name="user_achievements_title">"Ձեռքբերումներ"</string>
     <string name="user_links_title">"Հղումների հավաքածու"</string>
@@ -629,7 +620,7 @@
     <string name="achievement_veg_solved_X">"Դուք լուծում եք %d -ի որոնումներից, որոնք հետաքրքիր են ոչ մսի դիետայի վրա ապրող մարդկանց համար:"</string>
     <string name="achievement_car_title">"Ճանապարհին"</string>
     <string name="achievement_car_solved_X">"Դուք լուծել եք %d որոնում, որոնք մանրուքներ են բարելավում փողոցային ենթակառուցվածքների վրա։"</string>
-    <string name="unread_messages_message">"Դուք ունեք %d Race Race հաղորդագրություններ ձեր մուտքի արկղում"</string>
+    <string name="unread_messages_message">"Դուք ունեք %1$d Race Race հաղորդագրություններ ձեր մուտքի արկղում"</string>
     <string name="unread_messages_button">"Բացեք ներարկղ"</string>
     <string name="action_about2">"Մասին"</string>
     <string name="map_btn_menu">"Մենյու"</string>
@@ -682,7 +673,7 @@
     <string name="resurvey_intervals_default">"Լռելյայն"</string>
     <string name="resurvey_intervals_more_often">"Ավելի հաճախ հարցրեք"</string>
     <string name="about_title_translate">"Օգնեք թարգմանել այս ծրագիրը"</string>
-    <string name="about_description_translate">"%1$s թարգմանել %2$d%%"</string>
+    <string name="about_description_translate">"%1$s թարգմանել %2$d%"</string>
     <string name="quest_oneway2_title">"Սա միակողմանի փողոց է: Որ ուղղությամբ:"</string>
     <string name="quest_oneway2_dir">"Մի ճանապարհ այս ուղղությամբ"</string>
     <string name="quest_oneway2_no_oneway">"Ոչ մի քայլ"</string>
@@ -728,7 +719,6 @@
     <string name="quest_charging_station_capacity_title">"Քանի մեքենա կարող է միաժամանակ գանձվել այստեղ:"</string>
     <string name="link_disaster_ninja_description">"Քարտեզ, որը ցույց է տալիս վերջին բնական աղետները, հետաքրքիր է հումանիտար mappers: Նաեւ ցույց է տալիս շատ հետաքրքիր վիճակագրություն, վերլուծելու, թե որքանով են լավ քարտեզավորված եւ արդի տեղերը:"</string>
     <string name="quest_lanes_title">"Քանի երթեւեկություն է մեքենաների համար այս ճանապարհը:"</string>
-    <string name="quest_lanes_answer_lanes">"Նշված գծեր"</string>
     <string name="quest_lanes_answer_noLanes">"Նշված գծեր չկա"</string>
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">"Այն ունի երկկողմանի ձախ շրջադարձուղի"</string>
     <string name="quest_address_answer_no_housenumber_message2b">"Սա ճիշտ է:"</string>
@@ -740,8 +730,6 @@
     <string name="quest_kerb_height_lowered">"Մի փոքր ավելի բարձր, քան ճանապարհային մակերեսը"</string>
     <string name="quest_kerb_height_raised">"Բարձր եզրագիծ"</string>
     <string name="quest_kerb_height_lowered_ramp">"Զսպել թեքահարթակ"</string>
-    <string name="quest_lanes_answer_lanes_description2">"Նշեք նշված գծերի (երկու ուղղությունների) ընդհանուր քանակը, որն օգտագործվում է մեքենայով երթեւեկությամբ: Այսպիսով, հեծանիվը եւ նվիրված ավտոկանգառ գոտիները չեն հաշվում:
-Եթե ​​որեւէ գոտի վերապահված է ավտոբուսներին, փոխարենը թողեք գրությունը:"</string>
     <string name="quest_lanes_answer_lanes_description_one_side2">"Նշեք այստեղ մեքենաների երթեւեկությամբ օգտագործվող նշված գծերի քանակը: Այսպիսով, հեծանիվը եւ նվիրված ավտոկանգառ գոտիները չեն հաշվում:
 Եթե ​​որեւէ գոտի վերապահված է ավտոբուսներին, փոխարենը թողեք գրությունը:"</string>
     <string name="quest_surface_value_rock">"Ժայռ"</string>
@@ -756,7 +744,6 @@
     <string name="quest_shop_gone_replaced_answer">" "</string>
     <string name="quest_shop_gone_replaced_answer_hint">"Տեսակը մի տեսակ տեղ այստեղ"</string>
     <string name="quest_shop_vacant_type_title">"Այս խանութը թափուր է եղել: Հիմա ինչ է այստեղ:"</string>
-    <string name="quest_lanes_answer_lanes_odd2">"Lane Count- ը տարբերվում է յուրաքանչյուր կողմի համար"</string>
     <string name="default_disabled_msg_go_inside_regional_warning">"Այս որոնման տեսակը անջատված է լռելյայն, քանի որ այն օգտակար չէ որոշ շրջաններում եւ, ամենայն հավանականությամբ, պետք է մուտք գործեք տեղ, որպեսզի կարողանաք պատասխանել այս տեսակի որոնմանը:"</string>
     <string name="quest_dietType_explanation_kosher">"Կոշերի արտադրանքը պետք է պատրաստվի հատուկ կանոնների համաձայն, Կաշրուտի սերտիֆիկացման գործակալությունները `նշելով արտադրանքը համապատասխանության մեջ:"</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">"Ոչ մի ցիկլով"</string>
@@ -906,7 +893,7 @@
     <string name="quest_barrier_bicycle_type_double">"Chicane - պատնեշ յուրաքանչյուր կողմում"</string>
     <string name="quest_barrier_bicycle_type_multiple">"Chicane - ավելի քան երկու խոչընդոտ"</string>
     <string name="language_default">"Համակարգի լռելյայն"</string>
-    <string name="on_floor">"Հատակի վրա %s"</string>
+    <string name="on_floor">"Հատակի վրա %1$s"</string>
     <string name="select_street_parking_orientation">"Ընտրեք կողմնորոշումը դեպի ճանապարհը."</string>
     <string name="select_street_parking_position">"Ընտրեք դիրքը."</string>
     <string name="select_street_parking_no">"Ցանկացած նշան կամ ճանապարհի նշում այստեղ:"</string>
@@ -1101,7 +1088,7 @@
     <string name="quest_camp_type_tents_only">"Միայն վրաններ"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Տրամագիծը սովորաբար լինում է %1$d-ի և %2$d-ի միջև։"</string>
     <string name="quest_recycling_type_pet">"Միայն PET"</string>
-    <string name="street_parking_street_width">"Փողոցի լայնություն` %s"</string>
+    <string name="street_parking_street_width">"Փողոցի լայնություն` %1$s"</string>
     <string name="overlay_street_parking">"Կայանատեղիներ"</string>
     <string name="link_opencampingmap_description">"Ճամբարների քարտեզ"</string>
     <string name="quest_address_street_street_name_label">"Փողոցի անուն`"</string>

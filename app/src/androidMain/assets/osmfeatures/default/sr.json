@@ -237,9 +237,6 @@
         "amenity/clock/sundial": {
           "name": "Сунчани сат"
         },
-        "amenity/college": {
-          "name": "Колеџ кампус"
-        },
         "amenity/community_centre": {
           "name": "Дом културе"
         },
@@ -391,9 +388,6 @@
           "name": "Полигон за обуку возача",
           "terms": "терен за обуку возача,центар за обуку возача"
         },
-        "amenity/driving_school": {
-          "name": "Ауто школа"
-        },
         "amenity/embassy": {
           "name": "Амбасада"
         },
@@ -494,12 +488,6 @@
         "amenity/karaoke_box": {
           "name": "Караоке кабина"
         },
-        "amenity/kindergarten": {
-          "name": "Предшколско двориште"
-        },
-        "amenity/language_school": {
-          "name": "Језичка школа"
-        },
         "amenity/letter_box": {
           "name": "Кућно сандуче",
           "terms": "кућни сандучић"
@@ -539,9 +527,6 @@
         },
         "amenity/motorcycle_rental": {
           "name": "Изнајмљивање мотоцикла"
-        },
-        "amenity/music_school": {
-          "name": "Музичка школа"
         },
         "amenity/nightclub": {
           "name": "Ноћни клуб"
@@ -765,9 +750,6 @@
         "amenity/restaurant/vietnamese": {
           "name": "Вијетнамски ресторан"
         },
-        "amenity/school": {
-          "name": "Школа"
-        },
         "amenity/shelter": {
           "name": "Склониште"
         },
@@ -854,9 +836,6 @@
         },
         "amenity/trolley_bay": {
           "name": "Место за колица"
-        },
-        "amenity/university": {
-          "name": "Универзитетски кампус"
         },
         "amenity/vehicle_inspection": {
           "name": "Технички преглед возила"
@@ -1330,7 +1309,7 @@
           "name": "Јавна зграда"
         },
         "building/residential": {
-          "name": "Резиденцијална зграда"
+          "name": "Стамбена зграда"
         },
         "building/retail": {
           "name": "Малопродајна зграда"
@@ -1596,12 +1575,6 @@
         },
         "emergency/defibrillator": {
           "name": "Дефибрилатор"
-        },
-        "emergency/designated": {
-          "name": "Означен приступ за хитне случајеве"
-        },
-        "emergency/destination": {
-          "name": "Одредиште за хитне случајеве"
         },
         "emergency/fire_alarm": {
           "name": "Противпожарни аларм"
@@ -1912,8 +1885,8 @@
           "terms": "излаз са аутопута"
         },
         "highway/motorway_link": {
-          "name": "Прилаз аутопуту",
-          "terms": "прилаз аутопуту"
+          "name": "Укључење на аутопут",
+          "terms": "прилаз аутопуту,укључење на аутопут"
         },
         "highway/passing_place": {
           "name": "Место за заобилажење"
@@ -1942,7 +1915,7 @@
           "name": "Примарни пут"
         },
         "highway/primary_link": {
-          "name": "Прилаз примарном путу"
+          "name": "Укључење на примарни пут"
         },
         "highway/raceway": {
           "name": "Тркачка стаза"
@@ -1966,7 +1939,7 @@
           "name": "Секундарни пут"
         },
         "highway/secondary_link": {
-          "name": "Прилаз секундарном путу"
+          "name": "Укључење на секундарни пут"
         },
         "highway/service": {
           "name": "Сервисни пут"
@@ -2014,13 +1987,13 @@
           "name": "Терцијални пут"
         },
         "highway/tertiary_link": {
-          "name": "Прилаз терцијалном путу"
+          "name": "Укључење на терцијални пут"
         },
         "highway/toll_gantry": {
           "name": "Отворена путарина"
         },
         "highway/track": {
-          "name": "Пољски/шумски пут",
+          "name": "Пољски / шумски пут",
           "terms": "пољски пут,шумски пут,колски пут"
         },
         "highway/traffic_mirror": {
@@ -2037,7 +2010,7 @@
           "terms": "пут резервисани за саобраћај моторних возила,брза саобраћајница"
         },
         "highway/trunk_link": {
-          "name": "Прилаз брзом путу"
+          "name": "Укључење на брзи пут"
         },
         "highway/turning_circle": {
           "name": "Окретница"
@@ -2046,7 +2019,7 @@
           "name": "Окретница (с острвом)"
         },
         "highway/unclassified": {
-          "name": "Секундарни / некласификовани пут"
+          "name": "Мањи / некласификовани пут"
         },
         "historic": {
           "name": "Историјско место"
@@ -2180,7 +2153,7 @@
           "name": "Црквено двориште"
         },
         "landuse/commercial": {
-          "name": "Пословна зона"
+          "name": "Пословна област"
         },
         "landuse/construction": {
           "name": "Градилиште"
@@ -2218,7 +2191,7 @@
           "name": "Лука"
         },
         "landuse/industrial": {
-          "name": "Индустријска зона"
+          "name": "Индустријска област"
         },
         "landuse/industrial/depot": {
           "name": "Депо"
@@ -2294,7 +2267,7 @@
           "name": "Резервоар"
         },
         "landuse/residential": {
-          "name": "Резиденцијална зона"
+          "name": "Стамбена област"
         },
         "landuse/residential/apartments": {
           "name": "Стамбени комплекс"
@@ -2347,9 +2320,6 @@
         },
         "leisure/dance": {
           "name": "Плесна сала"
-        },
-        "leisure/dancing_school": {
-          "name": "Плесна школа"
         },
         "leisure/disc_golf_course": {
           "name": "Диск голф терен",
@@ -2878,7 +2848,7 @@
           "terms": "надзорна камера,видео-надзор,сигурносна камера"
         },
         "man_made/survey_point": {
-          "name": "Извиђачница"
+          "name": "Геодетска основа"
         },
         "man_made/tailings_pond": {
           "name": "Јаловиште"
@@ -2891,9 +2861,6 @@
         },
         "man_made/telescope/radio": {
           "name": "Радио-телескоп"
-        },
-        "man_made/torii": {
-          "name": "Торил"
         },
         "man_made/tower": {
           "name": "Кула"
@@ -3646,7 +3613,7 @@
           "name": "Мнорејл перон"
         },
         "public_transport/platform/monorail_point": {
-          "name": "Монорејл стајалиште"
+          "name": "Једношинско стајалиште"
         },
         "public_transport/platform/subway": {
           "name": "Метро платформа"
@@ -3691,7 +3658,7 @@
           "name": "Станица лаке железнице"
         },
         "public_transport/station_monorail": {
-          "name": "Монорејл станица"
+          "name": "Једношинска станица"
         },
         "public_transport/station_subway": {
           "name": "Метро станица"
@@ -3724,7 +3691,7 @@
           "name": "Место стајања лаке железнице"
         },
         "public_transport/stop_position_monorail": {
-          "name": "Место стајања монорејла"
+          "name": "Једношинско место стајања"
         },
         "public_transport/stop_position_subway": {
           "name": "Место стајања метроа"
@@ -3779,7 +3746,7 @@
           "name": "Висећа једноколосечна пруга"
         },
         "railway/monorail": {
-          "name": "Монорејлска пруга"
+          "name": "Једношинска пруга"
         },
         "railway/monorail/hanging": {
           "name": "Пруга висеће железнице"
@@ -4662,7 +4629,7 @@
           "name": "Линија лаке железнице"
         },
         "type/route/monorail": {
-          "name": "Монорејл линија"
+          "name": "Једношинска линија"
         },
         "type/route/pipeline": {
           "name": "Цевоводна путања"

@@ -316,10 +316,6 @@
           "name": "해시계",
           "terms": "해시계"
         },
-        "amenity/college": {
-          "name": "전문대학 부지",
-          "terms": "직업전문학교 부지"
-        },
         "amenity/community_centre": {
           "name": "커뮤니티 센터",
           "terms": "커뮤니티 센터"
@@ -498,10 +494,6 @@
           "name": "운전 연습장",
           "terms": "운전 연습장"
         },
-        "amenity/driving_school": {
-          "name": "운전학원",
-          "terms": "운전학원"
-        },
         "amenity/embassy": {
           "name": "대사관"
         },
@@ -639,17 +631,9 @@
           "name": "노래방",
           "terms": "가라오케"
         },
-        "amenity/kindergarten": {
-          "name": "유치원 부지",
-          "terms": "유치원 부지"
-        },
         "amenity/kneipp_water_cure": {
           "name": "Kneipp 시설",
           "terms": "kneipp 시설"
-        },
-        "amenity/language_school": {
-          "name": "언어 학원",
-          "terms": "언어 학원,국어 학원,영어 학원"
         },
         "amenity/lavoir": {
           "name": "세탁장",
@@ -706,10 +690,6 @@
         "amenity/motorcycle_rental": {
           "name": "오토바이 대여소",
           "terms": "오토바이 대여소"
-        },
-        "amenity/music_school": {
-          "name": "음악 학교",
-          "terms": "음악 학교"
         },
         "amenity/nightclub": {
           "name": "나이트클럽",
@@ -845,10 +825,6 @@
         "amenity/post_office": {
           "name": "우체국",
           "terms": "우체국,우편취급국"
-        },
-        "amenity/prep_school": {
-          "name": "학원",
-          "terms": "교습소,보습학원,국어,수학,영어,논술"
         },
         "amenity/prison": {
           "name": "교도소 부지",
@@ -1013,10 +989,6 @@
           "name": "RV 화장실 처리장",
           "terms": "rv 화장실 처리"
         },
-        "amenity/school": {
-          "name": "학교 부지",
-          "terms": "학교 부지"
-        },
         "amenity/shelter": {
           "name": "대피소",
           "terms": "대피소,피난소"
@@ -1165,10 +1137,6 @@
           "name": "카트 보관소",
           "terms": "카트 보관소"
         },
-        "amenity/university": {
-          "name": "대학 부지",
-          "terms": "대학교 부지"
-        },
         "amenity/vacuum_cleaner": {
           "name": "진공청소 스테이션",
           "terms": "진공청소 스테이션"
@@ -1276,6 +1244,9 @@
         "amenity/veterinary": {
           "name": "동물병원",
           "terms": "수의사"
+        },
+        "amenity/veterinary_pharmacy": {
+          "name": "동물 약국"
         },
         "amenity/waste/dog_excrement": {
           "name": "개 배설물 쓰레기통",
@@ -1389,7 +1360,7 @@
           "terms": "하늘 그네"
         },
         "attraction/train": {
-          "name": "관광 기차",
+          "name": "관광 열차",
           "terms": "관광 기차"
         },
         "attraction/water_slide": {
@@ -1861,6 +1832,12 @@
           "name": "묘역 (묘지 내부)",
           "terms": "묘소,묘역"
         },
+        "climbing/route": {
+          "name": "등산로"
+        },
+        "climbing/route_bottom": {
+          "name": "등산로 시점"
+        },
         "club": {
           "name": "클럽",
           "terms": "클럽"
@@ -2111,6 +2088,36 @@
         "disused/shop": {
           "name": "폐점한 가게"
         },
+        "education": {
+          "name": "교육 시설"
+        },
+        "education/dancing_school": {
+          "name": "무용 학원"
+        },
+        "education/driving_school": {
+          "name": "운전 학원"
+        },
+        "education/kindergarten": {
+          "name": "유치원"
+        },
+        "education/language_school": {
+          "name": "어학원"
+        },
+        "education/music_school": {
+          "name": "음악 학원"
+        },
+        "education/prep_school": {
+          "name": "보습 학원"
+        },
+        "education/school": {
+          "name": "학교 부지"
+        },
+        "education/university": {
+          "name": "대학교 부지"
+        },
+        "education/yes": {
+          "name": "교육 시설 (알 수 없는 유형)"
+        },
         "embankment": {
           "name": "둑"
         },
@@ -2128,12 +2135,6 @@
         "emergency/defibrillator": {
           "name": "제세동기",
           "terms": "aed"
-        },
-        "emergency/designated": {
-          "name": "비상시 접근으로 지정됨"
-        },
-        "emergency/destination": {
-          "name": "비상시 접근 도착지"
         },
         "emergency/disaster_response": {
           "name": "재난대응소",
@@ -2191,18 +2192,9 @@
           "name": "산악 구조소",
           "terms": "산악 구조소,산악 구조대"
         },
-        "emergency/no": {
-          "name": "비상시 접근 금지"
-        },
-        "emergency/official": {
-          "name": "공공 비상시설"
-        },
         "emergency/phone": {
           "name": "긴급 전화",
           "terms": "긴급 전화,비상 전화"
-        },
-        "emergency/private": {
-          "name": "사유 비상시설"
         },
         "emergency/siren": {
           "name": "사이렌",
@@ -2219,9 +2211,6 @@
         "emergency/water_tank": {
           "name": "비상 물탱크",
           "terms": "비상 물탱크,비상용 물탱크"
-        },
-        "emergency/yes": {
-          "name": "비상시 접근 가능"
         },
         "entrance": {
           "name": "입구/출구",
@@ -2553,8 +2542,8 @@
           "terms": "보행자 교통섬,보행자 대기섬,보행섬"
         },
         "highway/give_way": {
-          "name": "양보 표지판",
-          "terms": "양보 표지"
+          "name": "양보 표시",
+          "terms": "양보"
         },
         "highway/ladder": {
           "name": "사다리",
@@ -2658,7 +2647,7 @@
         },
         "highway/secondary": {
           "name": "2차 도로",
-          "terms": "지방도,보조 도로,보조간선도로"
+          "terms": "특별시도,광역시도,지방도,보조간선도로"
         },
         "highway/secondary_link": {
           "name": "2차 도로 연결로",
@@ -2712,7 +2701,7 @@
           "terms": "에스컬레이터"
         },
         "highway/stop": {
-          "name": "정지 표지판",
+          "name": "정지 표시",
           "terms": "정지 표지,멈춤 표지"
         },
         "highway/street_lamp": {
@@ -2721,7 +2710,7 @@
         },
         "highway/tertiary": {
           "name": "3차 도로",
-          "terms": "시도,군도,구도,시·군·구도,집산도로"
+          "terms": "시도,군도,구도,시군구도,집산도로"
         },
         "highway/tertiary_link": {
           "name": "3차 도로 연결로",
@@ -3136,10 +3125,6 @@
         "leisure/dance": {
           "name": "댄스 홀",
           "terms": "댄스 홀"
-        },
-        "leisure/dancing_school": {
-          "name": "댄스 학원",
-          "terms": "댄스 학원"
         },
         "leisure/disc_golf_course": {
           "name": "디스크 골프 코스",
@@ -3848,6 +3833,9 @@
           "name": "저장탑",
           "terms": "사일로"
         },
+        "man_made/ski_jump": {
+          "name": "스키 점프대"
+        },
         "man_made/storage_tank": {
           "name": "저장 창고",
           "terms": "저장 창고"
@@ -3907,10 +3895,6 @@
         "man_made/telescope/radio": {
           "name": "전파 망원경",
           "terms": "전파 망원경"
-        },
-        "man_made/torii": {
-          "name": "토리이, 홍살문, 일주문",
-          "terms": "토리이,홍살문,일주문"
         },
         "man_made/tower": {
           "name": "탑",
@@ -4037,6 +4021,9 @@
         },
         "natural": {
           "name": "자연 지물"
+        },
+        "natural/arch": {
+          "name": "자연 아치"
         },
         "natural/bare_rock": {
           "name": "노출된 암반",
@@ -4545,6 +4532,9 @@
           "name": "크로스 컨트리 스키",
           "terms": "크로스 컨트리 스키"
         },
+        "piste/ski_jump": {
+          "name": "스키 점프 주행대"
+        },
         "piste/skitour": {
           "name": "스키 관광",
           "terms": "스키 관광"
@@ -4556,6 +4546,9 @@
         "piste/sleigh": {
           "name": "썰매 경로",
           "terms": "썰매 경로"
+        },
+        "piste/take_off": {
+          "name": "스키 점프 도약대"
         },
         "place": {
           "name": "장소"
@@ -4979,8 +4972,8 @@
           "terms": "대중교통,철도,선로,역,터미널,기차"
         },
         "public_transport/station_train_halt": {
-          "name": "기차역 (간이역)",
-          "terms": "기차역 (간이역)"
+          "name": "기차역 (하차 요청식)",
+          "terms": "request stop,하차 요청,선택 정차"
         },
         "public_transport/station_tram": {
           "name": "트램역",
@@ -5066,7 +5059,7 @@
           "terms": "강삭 철도"
         },
         "railway/halt": {
-          "name": "기차역 (간이역)"
+          "name": "기차역 (하차 요청식)"
         },
         "railway/level_crossing": {
           "name": "철도-도로 건널목",
@@ -5131,8 +5124,8 @@
           "terms": "지하철역 입구"
         },
         "railway/switch": {
-          "name": "철도 분기기",
-          "terms": "스위치,분기기,선로변환기,선로전환기"
+          "name": "선로 분기기",
+          "terms": "스위치,분기기,선로변환기,선로전환기,철도 분기기"
         },
         "railway/train_wash": {
           "name": "기차 세차장",
@@ -5251,6 +5244,9 @@
         "shop/bathroom_furnishing": {
           "name": "화장실 기구 가게",
           "terms": "화장실 기구 상점"
+        },
+        "shop/bbq": {
+          "name": "바베큐 상점"
         },
         "shop/beauty": {
           "name": "뷰티 샵",
@@ -6157,8 +6153,8 @@
           "terms": "교통 표지판"
         },
         "traffic_sign/city_limit": {
-          "name": "시 경계 표지판",
-          "terms": "시 경계 표지판"
+          "name": "도시부 표지판",
+          "terms": "속도관리구역,도심부"
         },
         "traffic_sign/maxspeed": {
           "name": "제한 속도 표지판",

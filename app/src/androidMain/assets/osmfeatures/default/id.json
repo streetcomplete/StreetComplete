@@ -149,10 +149,6 @@
         "amenity/clock/sundial": {
           "name": "Jam bayangan matahari"
         },
-        "amenity/college": {
-          "name": "Lingkungan Kampus",
-          "terms": "ptn,pts,kuliah,perkuliahan,sekolah tinggi,universitas"
-        },
         "amenity/community_centre/community_hall": {
           "name": "Balai Warga"
         },
@@ -201,9 +197,6 @@
         },
         "amenity/drinking_water": {
           "name": "Air Minum"
-        },
-        "amenity/driving_school": {
-          "name": "Sekolah Mengemudi"
         },
         "amenity/embassy": {
           "name": "Kedutaan besar"
@@ -266,14 +259,6 @@
           "name": "Warung Internet",
           "terms": "warnet"
         },
-        "amenity/kindergarten": {
-          "name": "Prasekolah / Taman Kanak-Kanak",
-          "aliases": "TK\nPAUD\npenitipan anak"
-        },
-        "amenity/language_school": {
-          "name": "Tempat Les Bahasa",
-          "terms": "les bahasa,bimbel bahasa,bahasa asing"
-        },
         "amenity/library": {
           "name": "Perpustakaan",
           "terms": "perpustakaan"
@@ -287,9 +272,6 @@
         "amenity/motorcycle_rental": {
           "name": "Sewa Sepeda Bermotor",
           "terms": "rental motor,rental moped"
-        },
-        "amenity/music_school": {
-          "name": "Sekolah Musik"
         },
         "amenity/nightclub": {
           "name": "Kelab Malam"
@@ -347,10 +329,6 @@
         "amenity/post_office": {
           "name": "Kantor Pos",
           "terms": "surat"
-        },
-        "amenity/prep_school": {
-          "name": "Tempat Bimbel",
-          "terms": "bimbel,bimbingan belajar,tutor,les,tempat les"
         },
         "amenity/prison": {
           "name": "Rutan",
@@ -434,10 +412,6 @@
         "amenity/restaurant/turkish": {
           "name": "Restoran Masakan Turki"
         },
-        "amenity/school": {
-          "name": "Lingkungan Sekolah",
-          "terms": "sekolah,akademi,pendidikan,edukasi,tk,taman kanak kanak,sd,sekolah dasar,smp,sekolah menengah pertama,sma,sekolah menengah atas,smk,sekolah menengah kejuruan,mts,ma,kuliah,kampus,universitas,politeknik,institut,ptn,perguruan tinggi,sekolah tinggi,kedinasan,playground,playgroup,paud,aliyah,madrasah"
-        },
         "amenity/shelter": {
           "name": "Saung",
           "terms": "gazebo,pondok,lesehan"
@@ -486,10 +460,6 @@
         },
         "amenity/townhall/city": {
           "name": "Kantor Pusat Pemerintahan Kota"
-        },
-        "amenity/university": {
-          "name": "Lingkungan Universitas",
-          "terms": "universitas,kampus"
         },
         "amenity/vending_machine": {
           "name": "Mesin Minuman"
@@ -598,13 +568,15 @@
           "name": "Palang"
         },
         "barrier/retaining_wall": {
-          "name": "Dinding Penahan / Turap"
+          "name": "Dinding Penahan / Turap",
+          "terms": "dinding penahan,turap"
         },
         "barrier/toll_booth": {
           "name": "Gerbang Tol"
         },
         "barrier/wall": {
-          "name": "Dinding"
+          "name": "Dinding",
+          "terms": "tembok,pagar"
         },
         "boundary": {
           "name": "Batas"
@@ -794,6 +766,9 @@
         "cemetery/sector": {
           "name": "Sektor Makam"
         },
+        "climbing/crag": {
+          "name": "Panjat Tebing"
+        },
         "craft": {
           "name": "Pengrajin"
         },
@@ -906,6 +881,36 @@
           "name": "Penghasil Anggur",
           "terms": "minuman keras,miras,alkohol"
         },
+        "education": {
+          "name": "Sarana Pendidikan"
+        },
+        "education/dancing_school": {
+          "name": "Sekolah Seni Tari"
+        },
+        "education/driving_school": {
+          "name": "Sekolah Mengemudi"
+        },
+        "education/kindergarten": {
+          "name": "TK",
+          "terms": "prasekolah,taman kanak-kanak,tk,paud,penitipan anak,tpq"
+        },
+        "education/language_school": {
+          "name": "Tempat Les Bahasa",
+          "terms": "kursus bahasa"
+        },
+        "education/music_school": {
+          "name": "Sekolah Musik"
+        },
+        "education/prep_school": {
+          "name": "Les Bimbel",
+          "terms": "bimbel,bimbingan belajar,tutor,les,tempat les"
+        },
+        "education/school": {
+          "name": "Lingkungan Sekolah"
+        },
+        "education/university": {
+          "name": "Lingkungan Universitas"
+        },
         "embankment": {
           "name": "Bidang lebih tinggi daripada sekeliling",
           "aliases": "Tanggul\nGundukan\nEmbarau"
@@ -922,12 +927,6 @@
           "terms": "titik kumpul darurat,titik pertemuan,titik kumpul gempa,titik kumpul tsunami",
           "aliases": "Titik Kumpul Gempa\nTitik Kumpul Tsunami"
         },
-        "emergency/designated": {
-          "name": "Akses Darurat Khusus"
-        },
-        "emergency/destination": {
-          "name": "Destinasi Akses Darurat"
-        },
         "emergency/fire_hydrant": {
           "name": "Keran Pemadam Kebakaran",
           "terms": "hidran,pompa air"
@@ -939,17 +938,8 @@
         "emergency/lifeguard": {
           "name": "Ada Penjaga Pantai/Kolam"
         },
-        "emergency/no": {
-          "name": "Tak Ada Akses Darurat"
-        },
-        "emergency/official": {
-          "name": "Akses Darurat Resmi"
-        },
         "emergency/phone": {
           "name": "Telepon Darurat"
-        },
-        "emergency/private": {
-          "name": "Akses Darurat Pribadi"
         },
         "emergency/water_reservoir": {
           "name": "Waduk Darurat",
@@ -962,9 +952,6 @@
         "emergency/water_tank": {
           "name": "Tangki Air Darurat",
           "terms": "tangki air darurat,pemadam kebakaran,pemadam api"
-        },
-        "emergency/yes": {
-          "name": "Terdapat Akses Darurat"
         },
         "entrance": {
           "name": "Pintu Masuk / Keluar"
@@ -1182,8 +1169,8 @@
           "name": "Jalur Motorcross"
         },
         "highway/residential": {
-          "name": "Jalan Perumahan",
-          "terms": "jalan permukiman,jalan pemukiman"
+          "name": "Jalan Permukiman",
+          "terms": "jalan permukiman,jalan perumahan"
         },
         "highway/rest_area": {
           "name": "Tempat Peristirahatan",
@@ -1342,8 +1329,8 @@
           "terms": "salib pinggir jalan"
         },
         "historic/wayside_shrine": {
-          "name": "Kuil Pinggir Jalan",
-          "terms": "kuil pinggir jalan"
+          "name": "Pelinggih",
+          "terms": "kuil pinggir jalan,padmasana,kemulan,meru,banten,sanggah,pamerajan,mrajan"
         },
         "historic/wreck": {
           "name": "Bangkai Kapal"
@@ -1535,10 +1522,6 @@
         },
         "leisure/common": {
           "name": "Perintah"
-        },
-        "leisure/dancing_school": {
-          "name": "Sekolah Menari",
-          "terms": "sekolah tari,sekolah dansa,seni tari"
         },
         "leisure/dog_park": {
           "name": "Taman Anjing"

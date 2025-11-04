@@ -1,3 +1,4 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [Santander Totta, Euronet, Multibanco, Santander, Banco Santander, Millennium bcp, Caixa Geral de Depósitos, Montepio, Novobanco, Novo Banco, MB Multibanco]
+atmOperators: [Santander Totta, Euronet, Multibanco, Millennium bcp, Banco Santander, Santander, Caixa Geral de Depósitos, Novo Banco, Montepio, Novobanco, MB Multibanco]
 chargingStationOperators: [Factor Energia, Emacom, EcoInside, Powerdot, Repsol, EDP, Charging Together, Mobiletric, Município de Santa Cruz, Galp Power, Galp Geste]
+parcelLockerBrand: [Locky.pt]

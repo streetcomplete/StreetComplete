@@ -20,10 +20,7 @@
     <string name="quest_leave_new_note_yes">Val</string>
     <string name="quest_leave_new_note_no">Non, tapecer</string>
     <string name="quest_streetName_title">¿Cuál ye'l nome d'esta vía?</string>
-    <string name="quest_streetName_description">como ta escrito nel lletreru, pero ensin abreviatures:</string>
     <string name="quest_streetName_answer_noName_confirmation_description">Dacuando, el lletreru namás ta nun estremu de la cai. Repara tamién en que les víes llaterales que pertenecen a otra mayor pueden nun tener lletreros. Lo habitual ye que toles cais con cases tengan nome.</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_description">Si'l nome puede escribise ensin abreviatura, has d'escribilu enteru. Munches abreviatures habituales complétense de manera automática mientres escribes, pero ye probable que non toes.</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">Ensin abreviatures</string>
     <string name="quest_openingHours_start_time">hora d'apertura</string>
     <string name="quest_openingHours_end_time">hora de pieslle</string>
     <string name="quest_openingHours_add_months">Añader meses</string>
@@ -57,7 +54,6 @@
     <string name="version_banned_message">Esta versión de StreetComplete ye bien antigua. ¡Anuévala!</string>
     <string name="no_gps_no_quests">Pa buscar xeres cercanes de manera automática, activa l'allugamientu</string>
     <string name="later">Depués</string>
-    <string name="quest_streetName_answer_noProperStreet_link">Namás une dos víes</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">Otra cosa (dexar nota)</string>
     <string name="about_title_privacy_statement">Declaración de privacidá</string>
     <string name="quest_openingHours_public_holidays">Díes festivos</string>
@@ -196,7 +192,6 @@ Si nun hai señales na parte seleccionada va aplicase la velocidá máxima prede
     <string name="quest_sport_roller_skating">Patinaxe sobre ruedes</string>
     <string name="quest_wheelchairAccess_limited_description_business">Parcialmente significa que nun hai más d'un pasu en tol percorríu y que se puede acceder a la mayor parte de les sales en siella de ruedes.</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">Parcialmente significa que nun hai más d'un pasu en tol percorríu.</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">¿%1$s tien dalguna abreviatura?</string>
     <string name="quest_recycling_type_title">¿Qué tipu d'instalación de reciclaxe ye?</string>
     <string name="recycling_centre">Puntu de reciclaxe</string>
     <string name="overground_recycling_container">Contenedor</string>
@@ -323,10 +318,6 @@ Pero recuerda que siempre puedes descargar aplicaciones de tecláu alternatives 
     <string name="quest_cycleway_answer_contraflow_cycleway">Tamién carril bici al otru llau…</string>
     <string name="quest_openingHours_emptyAnswer">Describi lo que pon na rotulación. Si nun ves nada puedes preguntar dientro los horarios.</string>
     <string name="quest_cycleway_value_none_but_no_oneway">nun hai nada, pero los ciclistes pueden dir per dambos sentíos de la vía</string>
-    <string name="quest_streetName_answer_noName_question">¿Por qué nun tien nome?</string>
-    <string name="quest_streetName_answer_noProperStreet_service2">Ye una entrada privada o aparcaderu</string>
-    <string name="quest_streetName_answer_noProperStreet_track2">Ye una vía agropecuaria o forestal</string>
-    <string name="quest_streetName_answer_noName_noname">Nun lo sé, ye que nun tien nome</string>
     <string name="quest_wheelchairAccess_description_toilets">Una señal con una siella de ruedes como la que ves puede dar a entender que los llavabos tán adaptaos de manera especial. Parcial ye que se pueda entrar cola siella y usar los llavabos, pero ensin pasamanes o llavabos específicos.</string>
     <string name="map_btn_create_note">Crear una nota</string>
     <string name="create_new_note_unprecise">Acerca'l mapa un poco más pa crear notes</string>
@@ -703,7 +694,7 @@ Repara en qu'esta aplicación solo pide'l númberu de portal d'un edificiu en sa
     <string name="resurvey_intervals_default">Frecuencia normal</string>
     <string name="resurvey_intervals_more_often">Repreguntar más a menudo</string>
     <string name="about_title_translate">Ayuda cola traducción</string>
-    <string name="about_description_translate">%1$s ta traducío al %2$d%%</string>
+    <string name="about_description_translate">%1$s ta traducío al %2$d%</string>
     <string name="quest_oneway2_title">¿Ye una cai de sentíu únicu? ¿En qué dirección?</string>
     <string name="quest_oneway2_dir">Dirección única nesta dirección</string>
     <string name="quest_oneway2_no_oneway">Nun ye d'una sola dirección</string>
@@ -749,7 +740,6 @@ Repara en qu'esta aplicación solo pide'l númberu de portal d'un edificiu en sa
     <string name="quest_charging_station_capacity_title">¿Cuántos coches se pueden cargar nesta estación de carga al tiempu?</string>
     <string name="link_disaster_ninja_description">Mapa que muestra desastres naturales de recién, interesante pa quien fai cartografía humanitaria. Amás, muestra munches estadístiques interesantes p'analizar la calidá y el nivel d'actualización de los datos.</string>
     <string name="quest_lanes_title">¿Cuántos carriles de tráficu rodáu tien esta vía?</string>
-    <string name="quest_lanes_answer_lanes">Los carriles tán marcaos</string>
     <string name="quest_lanes_answer_noLanes">Los carriles tán ensin marcar</string>
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">Tien un carril central d'espera en dambes direcciones</string>
     <string name="quest_address_answer_no_housenumber_message2b">¿Esto ye correcto?</string>
@@ -761,7 +751,6 @@ Repara en qu'esta aplicación solo pide'l númberu de portal d'un edificiu en sa
     <string name="quest_kerb_height_lowered">Un poco más alto que la superficie del pisu</string>
     <string name="quest_kerb_height_raised">Bordiyu altu</string>
     <string name="quest_kerb_height_lowered_ramp">Rampla de cera</string>
-    <string name="quest_lanes_answer_lanes_description2">Pon el númberu de carriles (en dambos sentíos) pa tráficu rodáu. Los carriles pa bicicletes y aparcaderu nun cuenten. Si hai carriles namás p'autobuses dexa una nota en cuenta de responder.</string>
     <string name="quest_lanes_answer_lanes_description_one_side2">Pon el númberu de carriles pa tráficu rodáu. Los carriles pa bicicletes y aparcaderu nun cuenten. Si hai carriles namás p'autobuses dexa una nota en cuenta de responder.</string>
     <string name="quest_surface_value_rock">Piedra</string>
     <string name="quest_parkingType_street_side">Aparcaderu al llau de la vía</string>
@@ -775,7 +764,6 @@ Repara en qu'esta aplicación solo pide'l númberu de portal d'un edificiu en sa
     <string name="quest_shop_gone_replaced_answer">Ye un/una...</string>
     <string name="quest_shop_gone_replaced_answer_hint">Pon el tipu equí</string>
     <string name="quest_shop_vacant_type_title">Esti llocal tuvo vacíu. ¿Qué hai equí agora?</string>
-    <string name="quest_lanes_answer_lanes_odd2">Cada sentíu o llau de la vía tien un númberu de carriles distintu</string>
     <string name="default_disabled_msg_go_inside_regional_warning">Esti tipu de xera ta desactivada de serie porque nun ye útil en dalgunes rexones y seguramente tengas d'entrar nel sitiu p'alcontrar la información y responder bien a les preguntes.</string>
     <string name="quest_dietType_explanation_kosher">Los productos kosher han preparase d'una manera especial, hai axencias que los certifiquen denomaes "kashrut".</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">Nun hai carril bici nengún equí.</string>
@@ -925,7 +913,7 @@ Los datos actualícense cada %1$s díes y los datos ensin usar elimínense autom
     <string name="quest_barrier_bicycle_type_double">Chicane; un bloque a cada llau</string>
     <string name="quest_barrier_bicycle_type_multiple">Chicane; más de dos bloques</string>
     <string name="language_default">Idioma del sistema</string>
-    <string name="on_floor">Nel firme %1$s:</string>
+    <string name="on_floor">Nel firme %1$s</string>
     <string name="select_street_parking_orientation">Elixi la modalidá d'aparcamientu:</string>
     <string name="select_street_parking_position">Elixi la posición:</string>
     <string name="select_street_parking_no">¿Ves dalguna señal o marca nel suelu?</string>

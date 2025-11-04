@@ -30,7 +30,7 @@ import java.net.HttpURLConnection
 import java.net.URL
 import java.net.URLEncoder
 
-private const val qleverBaseUrl = "https://qlever.cs.uni-freiburg.de/api/osm-planet"
+private const val qleverBaseUrl = "https://qlever.dev/api/osm-planet"
 
 private val qleverQuery = """
     PREFIX osmkey: <https://www.openstreetmap.org/wiki/Key:>
