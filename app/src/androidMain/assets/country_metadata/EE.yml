@@ -1,7 +1,7 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 additionalStreetsignLanguages: [ru]
-atmOperators: [Swedbank, SEB, LHV, LHV | Luminor, Luminor | LHV, LHV; Luminor, LHV;Luminor, brand=Swedbank, Luminor, Nordea, brand=LHV, Sampo/Nordea, LHV/Luminor, LHV / Luminor, Euronet]
-chargingStationOperators: [Enefit Volt, ABB, Eleport, Eesti Energia AS, Enefit, Enefit VOLT, Elmo, ELMO, Circle K, Alexela, ABB AS, eleport, Ionity, Elelevi]
+atmOperators: [Swedbank, SEB, LHV, LHV | Luminor, Luminor | LHV, LHV;Luminor, LHV; Luminor, Luminor, brand=Swedbank, brand=LHV, Sampo/Nordea, Nordea, LHV/Luminor, LHV / Luminor, Euronet]
+chargingStationOperators: [Enefit Volt, Eleport, ABB, Eesti Energia AS, Enefit, Enefit VOLT, Elmo, Alexela, ELMO, Circle K, ABB AS, eleport, Ionity, Ignitis, Elelevi]
 clothesContainerOperators: [Riidepunkt, Tallinna Jäätmekeskus, TJT, Riidepunkt MTÜ]
 defaultSpeedLimitHasUrbanOrRural: true
 exclusiveCycleLaneStyle: white
@@ -17,7 +17,7 @@ noParkingLineStyle: dashed yellow
 noStoppingLineStyle: yellow
 officialLanguages: [et]
 orchardProduces: [strawberry, apple, raspberry, plum, tomato]
-parcelLockerBrand: [Omniva, DPD Pickup Station, Venipak, DPD, Smartpost, DHL, Smartpost Itella, UPS, Unisend, SmartPosti]
+parcelLockerBrand: [Omniva, DPD Pickup Station, Venipak, DPD, Smartpost, DHL, Smartpost Itella, Unisend, UPS, SmartPosti, uDrop]
 postboxesHaveCollectionTimes: true
 slowZoneLabelPosition: top
 slowZoneLabelText: ALA

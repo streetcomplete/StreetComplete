@@ -319,10 +319,6 @@
           "name": "Zegar słoneczny",
           "terms": "zegar słoneczny,solarium,gnomon"
         },
-        "amenity/college": {
-          "name": "Teren koledżu / szkoły policealnej",
-          "terms": "koledż,college,szkoła policealna,szkoła pomaturalna"
-        },
         "amenity/community_centre": {
           "name": "Centrum społecznościowe",
           "terms": "centrum społecznościowe,centrum społeczności,ośrodek kultury,centrum kultury,dom kultury,świetlica wiejska,świetlica środowiskowa,świetlica"
@@ -381,6 +377,10 @@
         "amenity/dentist": {
           "name": "Dentysta",
           "terms": "dentysta,stomatolog,gabinet stomatologiczny,ortodonta"
+        },
+        "amenity/device_charging_station": {
+          "name": "Punkt ładowania urządzeń mobilnych",
+          "terms": "punkt ładowania urządzeń mobilnych,punkt ładowania urządzeń elektronicznych,ładowarka,usb"
         },
         "amenity/dive_centre": {
           "name": "Centrum nurkowe",
@@ -527,16 +527,12 @@
           "terms": "plac do nauki jazdy,autodrom,plac manewrowy,ośrodek doskonalenia techniki jazdy",
           "aliases": "Autodrom"
         },
-        "amenity/driving_school": {
-          "name": "Szkoła nauki jazdy",
-          "terms": "szkoła nauki jazdy,nauka jazdy,szkolenia kierowców,prawo jazdy"
-        },
         "amenity/embassy": {
           "name": "Ambasada/konsulat"
         },
         "amenity/events_venue": {
-          "name": "Sala bankietowa",
-          "terms": "sala bankietowa,bankiety,sala weselna,wesela,przyjęcia,imprezy,uroczystości,stypy,komunie,chrzciny,catering,restauracja"
+          "name": "Miejsce imprez",
+          "terms": "miejsce imprez,sala bankietowa,bankiety,sala weselna,wesela,przyjęcia,imprezy,uroczystości,stypy,komunie,chrzciny,catering,restauracja"
         },
         "amenity/exhibition_centre": {
           "name": "Centrum targowo-wystawiennicze",
@@ -672,17 +668,9 @@
           "name": "Budka karaoke",
           "terms": "budka karaoke,pokój karaoke,klub karaoke"
         },
-        "amenity/kindergarten": {
-          "name": "Teren przedszkola/żłobka",
-          "terms": "teren przedszkola,teren żłobka,przedszkole,żłobek,dzieci"
-        },
         "amenity/kneipp_water_cure": {
           "name": "Basen Kneippa",
           "terms": "basen kneippa,brodzik kneippa,hydroterapia kneippa"
-        },
-        "amenity/language_school": {
-          "name": "Szkoła językowa",
-          "terms": "szkoła językowa,szkoła języków obcych,esl"
         },
         "amenity/lavoir": {
           "name": "Pralnia (przy rzece)",
@@ -739,10 +727,6 @@
         "amenity/motorcycle_rental": {
           "name": "Wypożyczalnia motocykli",
           "terms": "wypożyczalnia motocykli,wynajem motocykli,motocykle"
-        },
-        "amenity/music_school": {
-          "name": "Szkoła muzyczna",
-          "terms": "szkoła muzyczna,nauka gry na instrumentach,szkoła gry na instrumentach,kursy muzyczne,lekcje muzyki"
         },
         "amenity/nightclub": {
           "name": "Klub nocny / dyskoteka",
@@ -882,10 +866,6 @@
         "amenity/post_office": {
           "name": "Poczta/agencja pocztowa",
           "terms": "poczta,urząd pocztowy,agencja pocztowa,listy,paczki,przesyłki,kurier,poczta polska,dpd,dhl,inpost"
-        },
-        "amenity/prep_school": {
-          "name": "Kursy przygotowawcze",
-          "terms": "kursy przygotowawcze,korepetycje,egzaminy"
         },
         "amenity/prison": {
           "name": "Teren więzienia",
@@ -1051,10 +1031,6 @@
           "name": "Miejsce opróżniania toalety (dla kamperów)",
           "terms": "miejsce opróżniania toalety,kemping"
         },
-        "amenity/school": {
-          "name": "Teren szkoły podstawowej / średniej",
-          "terms": "teren szkoły,szkoła podstawowa,gimnazjum,liceum,szkoła średnia,szkoła ponadpodstawowa,szkoła ponadgimnazjalna,technikum,szkoła branżowa,szkoła zawodowa,szkoła specjalna"
-        },
         "amenity/shelter": {
           "name": "Wiata (schronienie)",
           "terms": "wiata,schronienie"
@@ -1210,10 +1186,6 @@
         "amenity/trolley_bay": {
           "name": "Boks na wózki sklepowe",
           "terms": "boks na wózki sklepowe,wiata na wózki sklepowe,parking dla wózków sklepowych,wózki sklepowe"
-        },
-        "amenity/university": {
-          "name": "Teren uczelni",
-          "terms": "teren uczelni,teren uniwersytetu,teren akademii,teren politechniki,uniwersytet,akademia,politechnika,uczelnia"
         },
         "amenity/vacuum_cleaner": {
           "name": "Odkurzacz samochodowy",
@@ -1789,7 +1761,7 @@
         },
         "building/house/terraced": {
           "name": "Dom szeregowy",
-          "terms": "dom szeregowy,domek szeregowy,dom w zabudowie szeregowej,szeregówka"
+          "terms": "dom szeregowy,domek szeregowy,dom w zabudowie szeregowej,szeregowiec,szeregówka"
         },
         "building/houseboat": {
           "name": "Łódź mieszkalna",
@@ -1891,7 +1863,7 @@
         },
         "building/terrace": {
           "name": "Domy szeregowe",
-          "terms": "domy szeregowe,domki szeregowe,domy w zabudowie szeregowej,szeregówki,szeregówka"
+          "terms": "domy szeregowe,domki szeregowe,domy w zabudowie szeregowej,szeregowce,szeregówki,szeregówka"
         },
         "building/train_station": {
           "name": "Budynek dworca kolejowego"
@@ -2191,6 +2163,49 @@
           "name": "Nieczynny sklep",
           "aliases": "Zamknięty sklep"
         },
+        "education": {
+          "name": "Placówka edukacyjna",
+          "terms": "placówka edukacyjna,instytucja edukacyjna,szkoła"
+        },
+        "education/college": {
+          "name": "Teren koledżu / szkoły policealnej",
+          "terms": "teren koledżu,teren szkoły policealnej,koledż,szkoła policelna"
+        },
+        "education/dancing_school": {
+          "name": "Szkoła tańca",
+          "terms": "szkoła tańca,szkoła baletowa"
+        },
+        "education/driving_school": {
+          "name": "Szkoła nauki jazdy",
+          "terms": "szkoła nauki jazdy,szkoła jazdy"
+        },
+        "education/kindergarten": {
+          "name": "Teren przedszkola/żłobka",
+          "terms": "teren przedszkola,teren żłobka"
+        },
+        "education/language_school": {
+          "name": "Szkoła językowa",
+          "terms": "szkoła językowa,szkoła języków obcych"
+        },
+        "education/music_school": {
+          "name": "Szkoła muzyczna",
+          "terms": "szkoła muzyczna"
+        },
+        "education/prep_school": {
+          "name": "Kursy przygotowawcze",
+          "terms": "kursy przygotowawcze"
+        },
+        "education/school": {
+          "name": "Teren szkoły podstawowej / średniej",
+          "terms": "teren szkoły podstawowej,teren szkoły średniej,teren liceum,teren technikum,teren szkoły branżowej,szkoła podstawowa,szkoła średnia,liceum,technikum,szkoła branżowa"
+        },
+        "education/university": {
+          "name": "Teren uczelni",
+          "terms": "teren uczelni,teren uniwersytetu,teren politechniki,teren akademii,uniwersytet,politechnika,akademia"
+        },
+        "education/yes": {
+          "name": "Placówka edukacyjna (nieokreślona)"
+        },
         "embankment": {
           "name": "Nasyp"
         },
@@ -2209,12 +2224,6 @@
         "emergency/defibrillator": {
           "name": "Defibrylator",
           "terms": "defibrylator,aed"
-        },
-        "emergency/designated": {
-          "name": "Wyznaczony dojazd dla służb ratowniczych"
-        },
-        "emergency/destination": {
-          "name": "Docelowy dojazd dla służb ratowniczych"
         },
         "emergency/disaster_response": {
           "name": "Baza formacji obrony cywilnej",
@@ -2272,18 +2281,9 @@
           "name": "Stacja ratownictwa górskiego",
           "terms": "stacja ratownictwa górskiego,górskie ochotniczne pogotowie ratunkowe,gopr,topr,góry,pomoc"
         },
-        "emergency/no": {
-          "name": "Brak dojazdu dla służb ratowniczych"
-        },
-        "emergency/official": {
-          "name": "Oficjalny dojazd dla służb ratowniczych"
-        },
         "emergency/phone": {
           "name": "Telefon alarmowy",
           "terms": "telefon,alarmowy"
-        },
-        "emergency/private": {
-          "name": "Prywatny dojazd dla służb ratowniczych"
         },
         "emergency/siren": {
           "name": "Syrena alarmowa",
@@ -2300,9 +2300,6 @@
         "emergency/water_tank": {
           "name": "Zbiornik przeciwpożarowy",
           "terms": "zbiornik przeciwpożarowy,p-poż"
-        },
-        "emergency/yes": {
-          "name": "Istniejący dojazd dla służb ratowniczych"
         },
         "entrance": {
           "name": "Wejście / Wyjście",
@@ -2541,14 +2538,14 @@
         },
         "highway/cycleway/bicycle_foot": {
           "name": "Ciąg pieszo-rowerowy",
-          "terms": "ciąg pieszo-rowerowy,droga dla pieszych i rowerów"
+          "terms": "ciąg pieszo-rowerowy,droga dla pieszych i rowerów,cpr,ddrip"
         },
         "highway/cycleway/crossing": {
           "name": "Przejazd rowerowy"
         },
         "highway/cycleway/crossing/bicycle_foot": {
           "name": "Przejazd pieszo-rowerowy",
-          "terms": "przejazd pieszo-rowerowy,przejście pieszo-rowerowe",
+          "terms": "przejazd pieszo-rowerowy,przejście pieszo-rowerowe,przejście dla pieszych i przejazd dla rowerzystów,cpr,ddrip",
           "aliases": "Przejście pieszo-rowerowe"
         },
         "highway/cycleway/crossing/traffic_signals": {
@@ -2663,8 +2660,8 @@
           "terms": "droga autostradowa,dwujezdniowa droga ekspresowa"
         },
         "highway/motorway_junction": {
-          "name": "Węzeł dróg autostradowych",
-          "terms": "węzeł dróg autostradowych,wjazd na drogę autostradową,wyjazd z drogi autostradowej,zjazd z drogi autostradowej,droga autostradowa"
+          "name": "Węzeł drogowy (wyjazd)",
+          "terms": "węzeł drogowy,węzeł dróg autostradowych,wjazd na drogę autostradową,wyjazd z drogi autostradowej,zjazd z drogi autostradowej,droga autostradowa"
         },
         "highway/motorway_link": {
           "name": "Droga autostradowa – wjazd/wyjazd",
@@ -2733,7 +2730,7 @@
         },
         "highway/residential": {
           "name": "Droga mieszkaniowa",
-          "terms": "droga mieszkaniowa,droga osiedlowa,droga lokalna"
+          "terms": "droga lokalna,droga osiedlowa,droga mieszkaniowa"
         },
         "highway/rest_area": {
           "name": "Miejsce odpoczynku dla kierowców",
@@ -2840,11 +2837,11 @@
           "terms": "początek szlaku,koniec szlaku,szlak,góry,trekking"
         },
         "highway/trunk": {
-          "name": "Droga magistralna",
-          "terms": "droga magistralna,droga główna,droga szybkiego ruchu,droga ekspresowa"
+          "name": "Droga główna",
+          "terms": "droga główna,droga magistralna,droga szybkiego ruchu,droga ekspresowa"
         },
         "highway/trunk_link": {
-          "name": "Droga magistralna – wjazd/wyjazd",
+          "name": "Droga główna – wjazd/wyjazd",
           "terms": "wjazd,wyjazd,zjazd,łącznik,rampa"
         },
         "highway/turning_circle": {
@@ -2856,8 +2853,8 @@
           "terms": "pętla do zawracania,zawracanie"
         },
         "highway/unclassified": {
-          "name": "Droga lokalna",
-          "terms": "droga lokalna,droga niesklasyfikowana,droga czwartorzędna"
+          "name": "Droga czwartorzędna",
+          "terms": "droga czwartorzędna,droga lokalna,droga niesklasyfikowana"
         },
         "historic": {
           "name": "Obiekt historyczny",
@@ -3006,7 +3003,11 @@
         },
         "landuse/aquaculture": {
           "name": "Akwakultura",
-          "terms": "akwakultura,hodowla ryb,ryby"
+          "terms": "akwakultura,hodowla krewetek,hodowla ostryg,hodowla skorupiaków"
+        },
+        "landuse/aquaculture/fish": {
+          "name": "Hodowla ryb",
+          "terms": "hodowla ryb,gospodarstwo rybackie,ryby"
         },
         "landuse/basin": {
           "name": "Sztuczny zbiornik wodny"
@@ -3023,12 +3024,12 @@
           "name": "Dziedziniec kościelny"
         },
         "landuse/commercial": {
-          "name": "Obszar biurowo-biznesowy",
-          "terms": "obszar biurowy,biura,biznes,obszar biznesowy,obszar komercyjny,teren komercyjny,usługi,usługowy"
+          "name": "Teren biurowo-biznesowy",
+          "terms": "teren biurowo-biznesowy,obszar biurowo-biznesowy,obszar biurowy,biura,biznes,obszar biznesowy,obszar komercyjny,teren komercyjny,usługi,usługowy"
         },
         "landuse/construction": {
-          "name": "Plac budowy",
-          "terms": "plac budowy,teren budowy,budowa,obszar budowy"
+          "name": "Teren budowy",
+          "terms": "teren budowy,plac budowy,budowa,obszar budowy"
         },
         "landuse/education": {
           "name": "Obszar usług edukacyjnych",
@@ -3042,8 +3043,8 @@
           "terms": "grunty orne,pole uprawne,pola uprawne,uprawa,uprawy,pole,zboże,zboża"
         },
         "landuse/farmyard": {
-          "name": "Teren z zabudowaniami rolniczymi",
-          "terms": "teren z zabudowaniami rolniczymi,podwórze gospodarskie"
+          "name": "Teren zabudowy rolniczej",
+          "terms": "teren zabudowy rolniczej,teren z zabudowaniami rolniczymi,podwórze gospodarskie,gospodarstwo rolne"
         },
         "landuse/flowerbed": {
           "name": "Kwietnik",
@@ -3074,8 +3075,8 @@
           "terms": "port morski,port"
         },
         "landuse/industrial": {
-          "name": "Obszar przemysłowy",
-          "terms": "obszar przemysłowy,teren przemysłowy,teren magazynowy,magazyny,teren składowy,składy,kopalnia,huta,przemysł"
+          "name": "Teren przemysłowy",
+          "terms": "teren przemysłowy,obszar przemysłowy,teren magazynowy,magazyny,teren składowy,składy,kopalnia,huta,przemysł"
         },
         "landuse/industrial/depot": {
           "name": "Zajezdnia",
@@ -3157,8 +3158,8 @@
           "terms": "kopalnia odkrywkowa,kamieniołom,żwirownia,kruszywo,kopalnia piasku,piaskarnia,kopalnia,odkrywka"
         },
         "landuse/railway": {
-          "name": "Teren kolejowy",
-          "terms": "teren kolejowy,tereny kolejowe,kolejowy,pkp,obszar torów,bocznice,stacja rozrządowa"
+          "name": "Teren transportu szynowego",
+          "terms": "teren transportu szynowego,teren kolejowy,tereny kolejowe,kolejowy,pkp,obszar torów,bocznice,stacja rozrządowa"
         },
         "landuse/recreation_ground": {
           "name": "Teren rekreacyjno-sportowy",
@@ -3172,12 +3173,12 @@
           "name": "Zbiornik retencyjny"
         },
         "landuse/residential": {
-          "name": "Obszar mieszkalny",
-          "terms": "obszar mieszkalny,zabudowa mieszkaniowa,teren zamieszkały"
+          "name": "Teren zabudowy mieszkaniowej",
+          "terms": "teren zabudowy mieszkaniowej,zabudowa mieszkaniowa,teren zamieszkały,obszar mieszkalny"
         },
         "landuse/residential/apartments": {
-          "name": "Osiedle mieszkaniowe",
-          "terms": "osiedle mieszkaniowe,mieszkania,bloki"
+          "name": "Osiedle domów wielorodzinnych",
+          "terms": "osiedle domów wielorodzinnych,osiedle mieszkaniowe,mieszkania,bloki,blokowisko"
         },
         "landuse/residential/trailer_park": {
           "name": "Osiedle domków holenderskich / przyczep",
@@ -3196,8 +3197,8 @@
           "terms": "winnica"
         },
         "landuse/winter_sports": {
-          "name": "Obszar uprawiania sportów zimowych",
-          "terms": "miejsce na sporty zimowe,obszar sportów zimowych,teren narciarski,ośrodek narciarski,stok narciarski,narciarstwo,narty,teren snowboardowy,snowboard"
+          "name": "Teren sportów zimowych",
+          "terms": "teren sportów zimowych,obszar uprawiania sportów zimowych,miejsce na sporty zimowe,obszar sportów zimowych,teren narciarski,ośrodek narciarski,stok narciarski,narciarstwo,narty,teren snowboardowy,snowboard"
         },
         "leisure": {
           "name": "Obiekt rozrywkowy lub wypoczynkowy"
@@ -3241,10 +3242,6 @@
         "leisure/dance": {
           "name": "Sala taneczna",
           "terms": "sala taneczna,dyskoteka"
-        },
-        "leisure/dancing_school": {
-          "name": "Szkoła tańca",
-          "terms": "szkoła tańca,nauka tańca,tańce,tańczenie,taniec"
         },
         "leisure/disc_golf_course": {
           "name": "Pole do gry w disc golfa",
@@ -3759,6 +3756,18 @@
           "name": "Trzepak",
           "terms": "trzepak"
         },
+        "man_made/ceremonial_gate": {
+          "name": "Brama ceremonialna",
+          "terms": "brama ceremonialna,brama symboliczna,brama świątynna,brama obrzędowa"
+        },
+        "man_made/ceremonial_gate/paifang": {
+          "name": "Paifang",
+          "terms": "paifang,pailau,pailou,shanmen,brama chińska"
+        },
+        "man_made/ceremonial_gate/torii": {
+          "name": "Torii",
+          "terms": "torii,brama japońska,brama szintoistyczna"
+        },
         "man_made/charge_point": {
           "name": "Ładowarka pojazdów elektrycznych",
           "terms": "ładowarka pojazdów elektrycznych,ładowanie pojazdów,ładowanie samochodów,samochody elektryczne,pojazdy elektryczne"
@@ -4041,10 +4050,6 @@
         "man_made/telescope/radio": {
           "name": "Radioteleskop",
           "terms": "radioteleskop"
-        },
-        "man_made/torii": {
-          "name": "Torii",
-          "terms": "torii,brama,świątynia,shinto"
         },
         "man_made/tower": {
           "name": "Wieża",
@@ -4826,7 +4831,7 @@
           "terms": "gra w klasy"
         },
         "playground/horizontal_bar": {
-          "name": "Drążek",
+          "name": "Drążek do zwisania",
           "terms": "drążek,podciąganie"
         },
         "playground/map": {
@@ -5822,6 +5827,10 @@
           "name": "Sklep z telefonami komórkowymi",
           "terms": "sklep z telefonami komórkowymi,salon telefonii komórkowej,telefony,telefony komórkowe,komórki,gsm"
         },
+        "shop/mobile_phone_accessories": {
+          "name": "Sklep z akcesoriami do telefonów komórkowych",
+          "terms": "sklep z akcesoriami do telefonów komórkowych,obudowy do telefonów,pokrowce do telefonów,etui do telefonów"
+        },
         "shop/model": {
           "name": "Sklep modelarski",
           "terms": "sklep modelarski,sklep z modelami,modelarstwo,modele,hobby,gry,zabawki"
@@ -6343,6 +6352,9 @@
           "name": "Znak drogowy o zmiennej treści",
           "terms": "znak drogowy o zmiennej treści"
         },
+        "type/associatedStreet": {
+          "name": "Powiązanie z ulicą"
+        },
         "type/boundary": {
           "name": "Granica",
           "terms": "granica"
@@ -6412,8 +6424,8 @@
           "terms": "nakaz zawracania,tylko zawracanie"
         },
         "type/route": {
-          "name": "Trasa / linia",
-          "terms": "trasa,linia"
+          "name": "Trasa / linia / relacja",
+          "terms": "trasa,linia,relacja"
         },
         "type/route/aerialway": {
           "name": "Trasa wyciągu / kolei linowej",
@@ -6476,8 +6488,8 @@
           "terms": "trasa linii elektrycznej"
         },
         "type/route/railway": {
-          "name": "Trasa kolejowa",
-          "terms": "trasa kolejowa"
+          "name": "Trasa (droga) kolejowa",
+          "terms": "trasa kolejowa,linia kolejowa,droga kolejowa"
         },
         "type/route/road": {
           "name": "Trasa drogowa",
@@ -6488,8 +6500,8 @@
           "terms": "linia metra,trasa metra,metro"
         },
         "type/route/train": {
-          "name": "Linia kolejowa",
-          "terms": "linia kolejowa,trasa pociągu,pociągi"
+          "name": "Linia (relacja) kolejowa",
+          "terms": "linia kolejowa,trasa pociągu,relacja kolejowa,relacja pociągu,pociągi"
         },
         "type/route/tram": {
           "name": "Linia tramwajowa",

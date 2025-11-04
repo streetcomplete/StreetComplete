@@ -317,10 +317,6 @@
           "name": "Solur",
           "terms": "solur,solklocka,skugga,skuggklocka,soltid,gnomon,solvisare"
         },
-        "amenity/college": {
-          "name": "Collegeområde",
-          "terms": "gymnasium,gymnasie,college,vidareutbildning,gymnasiumområde,gymnasieområde"
-        },
         "amenity/community_centre": {
           "name": "Samlingslokal",
           "terms": "samlingslokal,folkets hus,folkets park,festlokal,bygdegård,hembygdsgård,sockenstuga,bystuga,byalag,byförening,evenemang"
@@ -379,6 +375,10 @@
         "amenity/dentist": {
           "name": "Tandläkare",
           "terms": "tandläkare,tanddoktor,odontolog,tandhygienist,tänder,tandborstning,tand,tandhygien"
+        },
+        "amenity/device_charging_station": {
+          "name": "Laddstation för mobila enheter",
+          "terms": "laddstation för mobila enheter,laddstation för enheter,laddstation,laddningsstation,enhetsladdare,usb-laddare,laddpunkt,laddplats"
         },
         "amenity/dive_centre": {
           "name": "Dykcenter",
@@ -519,10 +519,6 @@
         "amenity/driver_training": {
           "name": "Förarutbildningsplats",
           "terms": "förarutbildningsplats,förautbildning,körskola,halkbana,trafikövningsplats,körkortsutbildning,riskutbildning"
-        },
-        "amenity/driving_school": {
-          "name": "Trafikskola",
-          "terms": "trafikskola,körskola,bilskola,körkort,uppkörning,lastbilskort,övningskörning"
         },
         "amenity/embassy": {
           "name": "Ambassad"
@@ -665,17 +661,9 @@
           "name": "Karaoke Box",
           "terms": "karaoke box,karaoke lounge,karaoke-klubb,karaoke-rum,karaoke-tv,ktv"
         },
-        "amenity/kindergarten": {
-          "name": "Förskoleområde",
-          "terms": "förskola,dagis,daghem,lekskola,kindergarten,lekis,lekplats"
-        },
         "amenity/kneipp_water_cure": {
           "name": "Kneippanläggning",
           "terms": "fotbad,hydroterapi,kneippkur,kneipphydroterapi,kneippism"
-        },
-        "amenity/language_school": {
-          "name": "Språkskola",
-          "terms": "språkskola,språkutbildning,språkkurs,esl,språk"
         },
         "amenity/lavoir": {
           "name": "Tvättbrygga",
@@ -732,10 +720,6 @@
         "amenity/motorcycle_rental": {
           "name": "Motorcykeluthyrning",
           "terms": "motorcykeluthyrning,motorcykel,dirt bike,minibike,moped,motorscooter,scooter,sidovagn,motorcykellån,motorcykelleasing,hyrmotorcykel"
-        },
-        "amenity/music_school": {
-          "name": "Musikskola",
-          "terms": "musikskola,musik,kultur,kulturskola,sångskola,instrumentskola,instrument,musikinstrument,kör,sång"
         },
         "amenity/nightclub": {
           "name": "Nattklubb",
@@ -871,10 +855,6 @@
         "amenity/post_office": {
           "name": "Postkontor",
           "terms": "postkontor,post,posten,postverk,postväsende,brev,paket,försändelser,postgång,kort,frimärke"
-        },
-        "amenity/prep_school": {
-          "name": "Pluggskola",
-          "terms": "kvälsskola,pluggskola,läxhjälp,akademisk,läxa,matematik,läsning,testförberedelse,handledning,skrivning"
         },
         "amenity/prison": {
           "name": "Fängelseområde",
@@ -1039,10 +1019,6 @@
           "name": "Latrintömning för campingfordon",
           "terms": "latrintömning,sanitet,campingplats,torrtoalett,toalettömning,campingtoalett,gråvatten,tömningsplats"
         },
-        "amenity/school": {
-          "name": "Skolområde",
-          "terms": "skolgård,skolområde,campus,universitetsområde,högskoleområde,universitet,högskola,grundskola,mellanstadium,lågstadium,högstadium,gymnasium"
-        },
         "amenity/shelter": {
           "name": "Skydd",
           "terms": "skydd,tak över huvudet,hydda,vindskydd,koja,väntkur,grotta,väderskydd,lusthus,picknick,skyddsrum,kur,busskur"
@@ -1198,10 +1174,6 @@
         "amenity/trolley_bay": {
           "name": "Kundvagnsgarage",
           "terms": "kundvagnsgarage,kundvagn,hus för kundvagnar,kundvagnshus,kundvagnsförvaring,förvaring av kundvagnar"
-        },
-        "amenity/university": {
-          "name": "Universitetsområde",
-          "terms": "universitet,universitetsområde,högskola,högskoleområde,college,akademi,universitetsbyggnad,lärosäte"
         },
         "amenity/vacuum_cleaner": {
           "name": "Dammsugarstation",
@@ -2161,6 +2133,49 @@
         "disused/shop": {
           "name": "Nedlagd affär"
         },
+        "education": {
+          "name": "Utbildningsverksamhet",
+          "terms": "utbildning,skola,undervisning,kurser,träning,lärande,studier,läroanstalt"
+        },
+        "education/college": {
+          "name": "Högskoleområde",
+          "terms": "högskola,universitet,campus,studieområde,lärosäte,studentområde"
+        },
+        "education/dancing_school": {
+          "name": "Dansskola",
+          "terms": "dansskola,balettskola,dansstudio,dansundervisning,jazzdans,swing,tango,vals,bugg,foxtrot,salsa"
+        },
+        "education/driving_school": {
+          "name": "Trafikskola",
+          "terms": "trafikskola,körskola,körlektioner,körutbildning,förarutbildning,bilskola,körkort"
+        },
+        "education/kindergarten": {
+          "name": "Förskoleområde",
+          "terms": "förskola,förskoleområde,dagis,barnomsorg,förskoleverksamhet,förskoleklass,daghem"
+        },
+        "education/language_school": {
+          "name": "Språkskola",
+          "terms": "språkskola,språkutbildning,språkinstitut,språkkurser,språkkurscenter,sfi,svenska för invandrare,språkundervisning,språkträning"
+        },
+        "education/music_school": {
+          "name": "Musikskola",
+          "terms": "musikskola,musikutbildning,kulturskola,musikinstitut,musikkurser,musikundervisning,musikträning,musiklärare,musiklektioner"
+        },
+        "education/prep_school": {
+          "name": "Stödundervisning",
+          "terms": "läxhjälp,studiehjälp,privatundervisning,förberedande undervisning,provförberedelse,stödundervisning,matematikundervisning,lästräning,skrivträning,studieteknik"
+        },
+        "education/school": {
+          "name": "Skolområde",
+          "terms": "skola,skolområde,grundskola,högstadium,mellanstadium,lågstadium,skolbyggnad,utbildning,akademi"
+        },
+        "education/university": {
+          "name": "Universitetsområde",
+          "terms": "universitet,universitetsområde,högskola,högskoleområde,högre utbildning,campus,masterprogram,doktorandprogram,magisterutbildning,forskarutbildning"
+        },
+        "education/yes": {
+          "name": "Utbildningsverksamhet (ospecificerad typ)"
+        },
         "embankment": {
           "name": "Vägbank"
         },
@@ -2178,12 +2193,6 @@
         "emergency/defibrillator": {
           "name": "Defibrillator",
           "terms": "defibrillator,hjärtstartare,hjärthjälp"
-        },
-        "emergency/designated": {
-          "name": "Åtkomst för utryckningsfordon – Avsedd för"
-        },
-        "emergency/destination": {
-          "name": "Åtkomst för utryckningsfordon – Destination"
         },
         "emergency/disaster_response": {
           "name": "Katastrofinsatsstation",
@@ -2241,18 +2250,9 @@
           "name": "Fjällräddning",
           "terms": "fjällräddning,bergsräddning,räddning"
         },
-        "emergency/no": {
-          "name": "Åtkomst för utryckningsfordon – Nej"
-        },
-        "emergency/official": {
-          "name": "Åtkomst för utryckningsfordon – Officiellt"
-        },
         "emergency/phone": {
           "name": "Nödtelefon",
           "terms": "nödtelefon,alarmeringscentral,nödnummer,larmtelefon,alarmtelefon"
-        },
-        "emergency/private": {
-          "name": "Åtkomst för utryckningsfordon – Privat"
         },
         "emergency/siren": {
           "name": "Siren",
@@ -2269,9 +2269,6 @@
         "emergency/water_tank": {
           "name": "Vattentank för brandsläckning",
           "terms": "vattentank för brandsläckning,vattentank,nödtank,brandsläckningstank,brand,brandsläckning,nöd,vatten,tank,kris,reservoar,räddning,vattensamling,lagringstank,cistern,vattentorn"
-        },
-        "emergency/yes": {
-          "name": "Åtkomst för utryckningsfordon – Ja"
         },
         "entrance": {
           "name": "Entré / utgång",
@@ -2966,6 +2963,10 @@
           "name": "Akvakultur",
           "terms": "fiskodling,vattenbruk,akvakultur,fisk,skaldjur,alger,vattenväxter,utplantering av fisk,ostronodling,musselodling,pärlodling,räkor"
         },
+        "landuse/aquaculture/fish": {
+          "name": "Fiskodling",
+          "terms": "fiskodling,fiskfarm,fiskkläckeri,fiskuppfödning,fiskproduktion,fiskanläggning,abborre,karp,lax,stör,tilapia,öring"
+        },
         "landuse/basin": {
           "name": "Avrinningsområde"
         },
@@ -3199,10 +3200,6 @@
         "leisure/dance": {
           "name": "Dansbana",
           "terms": "dansbana,danshus,rotunda,folkets park,bal,balsal,bugg,foxtrot,salsa,jive,swing,tango,valls,gammaldans"
-        },
-        "leisure/dancing_school": {
-          "name": "Dansskola",
-          "terms": "dansskola,bugg,foxtrot,gamaldans,swing,jive,vals,dans,danskurs,dansutbildning,tiodans,salsa,tango"
         },
         "leisure/disc_golf_course": {
           "name": "Frisbeegolfbana",
@@ -3704,6 +3701,18 @@
           "name": "Matthängare",
           "terms": "matthängare,mattställning,piskställning,mattpiska,piska"
         },
+        "man_made/ceremonial_gate": {
+          "name": "Ceremoniell port",
+          "terms": "ceremoniell port,ceremoniport,högtidsport,båge,port,paifang,torii"
+        },
+        "man_made/ceremonial_gate/paifang": {
+          "name": "Paifang",
+          "terms": "paifang,kinesisk port,kinesisk båge,paifong,pailau,pailou,shanmen"
+        },
+        "man_made/ceremonial_gate/torii": {
+          "name": "Torii",
+          "terms": "torii,japansk port,japansk båge,shintoport,shintohelgedom"
+        },
         "man_made/charge_point": {
           "name": "Laddpunkt för elektriskt fordon",
           "terms": "elbil,elektriskt fordon,elfordon,laddningsplats,laddplats,laddstation,laddningsstation,laddställe,billaddare,elbilsladdare,ladduttag,elbilsuttag,laddstolpe,laddningspunkt,laddbås"
@@ -3979,10 +3988,6 @@
         "man_made/telescope/radio": {
           "name": "Radioteleskop",
           "terms": "teleskop,kikare,astronomisk kikare,stjärnkikare,astronomiskt teleskop,rymdteleskop,radioteleskop,radio,markstation,radioanten,parabolanten,parabol,anten,parabolantenn,radioparabol,radiokikare"
-        },
-        "man_made/torii": {
-          "name": "Torii",
-          "terms": "torii,japansk port,shinto shrine,shintohelgedom,jinja,fågelsittpinne"
         },
         "man_made/tower": {
           "name": "Torn",
@@ -5749,6 +5754,10 @@
           "name": "Mobiltelefoner",
           "terms": "mobiltelefoner,mobiltelefon,mobiltelefoni,telefon,telefonbutik,mobiltelefonbutik"
         },
+        "shop/mobile_phone_accessories": {
+          "name": "Butik med mobiltelefontillbehör",
+          "terms": "mobiltelefontillbehörsbutik,mobiltelefontillbehör,mobilaccessoarer,mobilbutik,telefonaccessoarer,mobilfodral,mobilskal,mobiltillbehör,mobil,mobiltelefon"
+        },
         "shop/model": {
           "name": "Affär för byggmodeller",
           "terms": "hobby,modellbyggnad,modellfigurer,modellpaket,modellbutik,skalmodeller,modellflyg,modellbåtar,modellbygge"
@@ -6268,6 +6277,10 @@
         "traffic_sign/variable_message": {
           "name": "Variabel meddelandeskylt",
           "terms": "variabel meddelandeskylt,dynamisk meddelandeskylt,vms,körfältssignal,dynamisk hastighetsbegränsning,kövarning,omledningsskylt,trafikinformationstavla,trafikminformationsskylt,dynamiskt vägmärke,tunnelinformationsskylt,digital skylt,dynamisk skylt,pendlingsinsinformation"
+        },
+        "type/associatedStreet": {
+          "name": "Associerad gata",
+          "aliases": "Associerad väg\nRelaterad gata\nRelaterad väg\nTillhörande gata\nTillhörande väg"
         },
         "type/boundary": {
           "name": "Gräns",

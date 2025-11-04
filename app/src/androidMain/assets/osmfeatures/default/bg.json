@@ -83,10 +83,6 @@
           "name": "Учебен полигон",
           "terms": "мото полигон,полигон за начинаещи шофьори"
         },
-        "amenity/driving_school": {
-          "name": "Автошкола",
-          "terms": "шофьорско училище,авто курсове,мото курсове,категория b,шофьорска книжка"
-        },
         "amenity/embassy": {
           "name": "Посолство"
         },
@@ -108,20 +104,11 @@
         "amenity/hospital": {
           "name": "Болница"
         },
-        "amenity/kindergarten": {
-          "name": "Предучилищна / детска градина"
-        },
-        "amenity/language_school": {
-          "name": "Езиково училище"
-        },
         "amenity/library": {
           "name": "Библиотека"
         },
         "amenity/marketplace": {
           "name": "Пазар"
-        },
-        "amenity/music_school": {
-          "name": "Музикално училище"
         },
         "amenity/nursing_home": {
           "name": "Старчески дом"
@@ -229,9 +216,6 @@
         "amenity/restaurant/vietnamese": {
           "name": "Виетнамски ресторант"
         },
-        "amenity/school": {
-          "name": "Училище"
-        },
         "amenity/shelter": {
           "name": "Навес"
         },
@@ -271,9 +255,6 @@
         },
         "amenity/townhall/city": {
           "name": "Кметство"
-        },
-        "amenity/university": {
-          "name": "Университет"
         },
         "amenity/vehicle_inspection": {
           "name": "ГТП",

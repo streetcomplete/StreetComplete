@@ -317,10 +317,6 @@
           "name": "日時計",
           "terms": "日時計,時計"
         },
-        "amenity/college": {
-          "name": "短大・高専・専門学校（代表点または敷地）",
-          "terms": "キャンパス,短大,高専,専門学校,教育,学校"
-        },
         "amenity/community_centre": {
           "name": "コミュニティセンター",
           "terms": "公民館,市民センター,市民活動,コミュニティセンター,集会所,自治会館,町内会館,区民センター,地区センター"
@@ -521,10 +517,6 @@
           "name": "自動車教習コース",
           "terms": "運転手訓練場,自動車教習コース,運転,自動車学校"
         },
-        "amenity/driving_school": {
-          "name": "自動車教習所",
-          "terms": "driving school,ドライビングスクール,教習所,自動車,自動車教習所,車,学校,教育,稽古,練習,訓練,トレーニング,教室"
-        },
         "amenity/embassy": {
           "name": "大使館"
         },
@@ -666,17 +658,9 @@
           "name": "カラオケボックス",
           "terms": "カラオケボックス,カラオケ"
         },
-        "amenity/kindergarten": {
-          "name": "幼稚園/保育園（代表点または敷地）",
-          "terms": "幼稚園の敷地,保育園の敷地,保育園,幼稚園,教育,学校,育児"
-        },
         "amenity/kneipp_water_cure": {
           "name": "クナイプ療法施設",
           "terms": "歩行プール,水中ウォーキング,水中歩行療法施設,水治療法,歩行浴,足浴場,足浴,水浴"
-        },
-        "amenity/language_school": {
-          "name": "外国語教室",
-          "terms": "外国語教室,外国語学校,英会話,英会話教室,英会話スクール,外国語,学習,語学,語学教室,教室,英語,ドイツ語,フランス語,ロシア語,中国語,韓国語,スペイン語,ポルトガル語"
         },
         "amenity/lavoir": {
           "name": "共同洗い場",
@@ -733,10 +717,6 @@
         "amenity/motorcycle_rental": {
           "name": "レンタルバイク",
           "terms": "レンタルバイク,オートバイ,バイク,自動二輪,バイク店"
-        },
-        "amenity/music_school": {
-          "name": "音楽学校",
-          "terms": "音楽学校,ミュージック・スクール,教習所,カラオケ教室,音楽教室,学校,教育,教室,訓練,練習,稽古,習い事,トレーニング,ギター教室,ピアノ教室,音楽"
         },
         "amenity/nightclub": {
           "name": "ナイトクラブ",
@@ -873,10 +853,6 @@
         "amenity/post_office": {
           "name": "郵便局",
           "terms": "郵便局"
-        },
-        "amenity/prep_school": {
-          "name": "進学予備校",
-          "terms": "予備校,プレップスクール,進学予備校,受験,私立学校,塾,教室,学習塾,学習"
         },
         "amenity/prison": {
           "name": "刑務所（代表点または敷地）",
@@ -1041,10 +1017,6 @@
           "name": "キャンピングカー用汚物廃棄所",
           "terms": "汚物廃棄所"
         },
-        "amenity/school": {
-          "name": "学校（代表点または敷地）",
-          "terms": "学校の敷地,学校,小学校,中学校,高校,教育"
-        },
         "amenity/shelter": {
           "name": "シェルター全般（休憩所、避難所）",
           "terms": "避難所,シェルター,逃げ場,雨宿り,東屋,あずまや,四阿,しあ,休憩所,屋根,アウトドア,小屋,保護施設"
@@ -1200,10 +1172,6 @@
         "amenity/trolley_bay": {
           "name": "カート置き場",
           "terms": "カートゲート,カート収納庫,カート返却所,ショッピングカート,買い物カート"
-        },
-        "amenity/university": {
-          "name": "大学（代表点または敷地）",
-          "terms": "大学の敷地,キャンパス,大学,教育,学校"
         },
         "amenity/vacuum_cleaner": {
           "name": "ゴミ吸取機",
@@ -2152,6 +2120,46 @@
         "disused/shop": {
           "name": "閉鎖店舗"
         },
+        "education": {
+          "name": "教育機関",
+          "terms": "学校,大学,高等学校,高校,中学校,小学校,幼稚園,キャンパス"
+        },
+        "education/college": {
+          "name": "短大・高専・専門学校（代表点または敷地）",
+          "terms": "キャンパス,短大,高専,専門学校,教育,学校"
+        },
+        "education/dancing_school": {
+          "name": "ダンススクール",
+          "terms": "ダンススクール,舞踏,日本舞踊,タンゴ,社交ダンス,ワルツ,ダンス教室,稽古,練習,習い事,学校,教室,踊り,ダンス,学習"
+        },
+        "education/driving_school": {
+          "name": "自動車教習所",
+          "terms": "driving school,ドライビングスクール,教習所,自動車,自動車教習所,車,学校,教育,稽古,練習,訓練,トレーニング,教室"
+        },
+        "education/kindergarten": {
+          "name": "幼稚園/保育園（代表点または敷地）",
+          "terms": "幼稚園の敷地,保育園の敷地,保育園,幼稚園,教育,学校,育児"
+        },
+        "education/language_school": {
+          "name": "外国語教室",
+          "terms": "外国語教室,外国語学校,英会話,英会話教室,英会話スクール,外国語,学習,語学,語学教室,教室,英語,ドイツ語,フランス語,ロシア語,中国語,韓国語,スペイン語,ポルトガル語"
+        },
+        "education/music_school": {
+          "name": "音楽学校",
+          "terms": "音楽学校,ミュージック・スクール,教習所,カラオケ教室,音楽教室,学校,教育,教室,訓練,練習,稽古,習い事,トレーニング,ギター教室,ピアノ教室,音楽"
+        },
+        "education/prep_school": {
+          "name": "進学予備校",
+          "terms": "予備校,プレップスクール,進学予備校,受験,私立学校,塾,教室,学習塾,学習"
+        },
+        "education/school": {
+          "name": "学校（代表点または敷地）",
+          "terms": "学校,高等学校,高校,中学校,小学校"
+        },
+        "education/university": {
+          "name": "大学（代表点または敷地）",
+          "terms": "大学の敷地,キャンパス,大学,教育,学校"
+        },
         "embankment": {
           "name": "土手"
         },
@@ -2169,12 +2177,6 @@
         "emergency/defibrillator": {
           "name": "AED",
           "terms": "自動体外式除細動器,救命"
-        },
-        "emergency/designated": {
-          "name": "緊急車両の通行指定"
-        },
-        "emergency/destination": {
-          "name": "行き先に用事がある緊急車両, 救命"
         },
         "emergency/disaster_response": {
           "name": "防災組織の拠点",
@@ -2232,18 +2234,9 @@
           "name": "山岳救助",
           "terms": "山岳救助,緊急,遭難"
         },
-        "emergency/no": {
-          "name": "緊急車両の利用不可"
-        },
-        "emergency/official": {
-          "name": "公的な緊急車両"
-        },
         "emergency/phone": {
           "name": "緊急電話",
           "terms": "緊急電話,救命"
-        },
-        "emergency/private": {
-          "name": "私有の緊急車両"
         },
         "emergency/siren": {
           "name": "サイレン",
@@ -2260,9 +2253,6 @@
         "emergency/water_tank": {
           "name": "防火水槽",
           "terms": "貯水槽,貯水タンク,緊急,火災,消防水利,防火槽,天水桶"
-        },
-        "emergency/yes": {
-          "name": "緊急時の利用可"
         },
         "entrance": {
           "name": "出入口（全般）",
@@ -3190,10 +3180,6 @@
           "name": "ダンスホール",
           "terms": "ダンスホール,娯楽"
         },
-        "leisure/dancing_school": {
-          "name": "ダンススクール",
-          "terms": "ダンススクール,舞踏,日本舞踊,タンゴ,社交ダンス,ワルツ,ダンス教室,稽古,練習,習い事,学校,教室,踊り,ダンス,学習"
-        },
         "leisure/disc_golf_course": {
           "name": "ディスクゴルフコース",
           "terms": "ディスクゴルフコース,ディスクゴルフ,スポーツ"
@@ -3969,10 +3955,6 @@
         "man_made/telescope/radio": {
           "name": "電波望遠鏡",
           "terms": "電波望遠鏡,天体望遠鏡,望遠鏡,パラボラアンテナ,アンテナ"
-        },
-        "man_made/torii": {
-          "name": "鳥居",
-          "terms": "鳥居,神社"
         },
         "man_made/tower": {
           "name": "塔",

@@ -1,3 +1,11 @@
 {
-  "en-US": {}
+  "en-US": {
+    "presets": {
+      "presets": {
+        "amenity/stripclub": {
+          "name": "Strip Club"
+        }
+      }
+    }
+  }
 }

@@ -21,10 +21,7 @@
     <string name="quest_leave_new_note_yes">Deixeu una nota</string>
     <string name="quest_leave_new_note_no">No, només amaga-la</string>
     <string name="quest_streetName_title">Quin nom té aquesta via?</string>
-    <string name="quest_streetName_description">com està escrita en el senyal del carrer, les abreviatures s'amplien:</string>
     <string name="quest_streetName_answer_noName_confirmation_description">De vegades, el senyal només es troba en un extrem del carrer. També, tingueu present que potser no hi ha senyals addicionals per a costats de carrer que pertanyen a altres carrers més grans. Habitualment, qualsevol carrer amb cases té un nom.</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_description">Si el nom es pot escriure sense cap abreviatures, aleshores s'hauria d'expandir. Moltes abreviatures comunes s'expandeixen automàticament mentre escriviu, però potser no totes.</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">Sense abreviatures</string>
     <string name="quest_openingHours_start_time">hora d'obertura</string>
     <string name="quest_openingHours_end_time">hora de tancament</string>
     <string name="quest_openingHours_add_months">Afegeix mesos</string>
@@ -58,7 +55,6 @@
     <string name="version_banned_message">Aquesta versió de l'StreetComplet és massa antiga. Actualitzeu-la!</string>
     <string name="no_gps_no_quests">Per a cercar automàticament missions prop teu, activa la geolocalització</string>
     <string name="later">Després</string>
-    <string name="quest_streetName_answer_noProperStreet_link">Només enllaça dues vies</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">Una altra cosa (deixa una nota)</string>
     <string name="about_title_privacy_statement">Declaració de privadesa</string>
     <string name="quest_openingHours_public_holidays">Festius públics</string>
@@ -197,7 +193,6 @@ Si no hi ha cap senyal en tot el carrer que s'apliqui en l'àrea realçada, s'ap
     <string name="quest_sport_roller_skating">Patinatge sobre rodes</string>
     <string name="quest_wheelchairAccess_limited_description_business">Parcialment significa que no hi ha més d'un esglaó per accedir al negoci i que la major part d'estances interiors són accessibles amb cadira de rodes.</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">Parcialment significa que no hi ha més d'un esglaó per accedir-hi.</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">Abreviatura amb el nom %1$s?</string>
     <string name="quest_recycling_type_title">Quin tipus d’instal·lació de reciclatge és aquesta?</string>
     <string name="recycling_centre">Centre</string>
     <string name="overground_recycling_container">Contenidor</string>
@@ -324,10 +319,6 @@ En cas contrari, podeu baixar un altre teclat al magatzem d'aplicacions. Els tec
     <string name="quest_cycleway_answer_contraflow_cycleway">També hi ha carril bici a l'altre costat…</string>
     <string name="quest_openingHours_emptyAnswer">Cal que descriviu què hi ha al cartell. Si no hi ha cap cartell, hauríeu de demanar l'horari d'obertura en l'interior.</string>
     <string name="quest_cycleway_value_none_but_no_oneway">cap, però els ciclistes poden usar la via en ambdós sentits</string>
-    <string name="quest_streetName_answer_noName_question">Per què no té nom?</string>
-    <string name="quest_streetName_answer_noProperStreet_service2">És una mena de via d'entrada o d'aparcament</string>
-    <string name="quest_streetName_answer_noProperStreet_track2">És una via per a ús agrícola o forestal</string>
-    <string name="quest_streetName_answer_noName_noname">Cap de les anteriors, simplement, no té nom</string>
     <string name="quest_wheelchairAccess_description_toilets">Pot ser que un senyal de cadira de rodes com aquest sigui visible si el lavabo és accessible.
 Parcialment significa que una cadira de rodes pot entrar i utilitzar els lavabos, però no hi ha barana o un rentamans adaptat.</string>
     <string name="map_btn_create_note">Crea una nota nova</string>
@@ -706,7 +697,7 @@ d'acompliment</string>
     <string name="resurvey_intervals_default">Per defecte</string>
     <string name="resurvey_intervals_more_often">Demana-ho més sovint</string>
     <string name="about_title_translate">Ajudeu a traduir aquesta aplicació</string>
-    <string name="about_description_translate">%1$s està traduït al %2$d%%</string>
+    <string name="about_description_translate">%1$s està traduït al %2$d%</string>
     <string name="quest_oneway2_title">Aquest és un carrer de sentit únic? En quin sentit?</string>
     <string name="quest_oneway2_dir">Sentit únic en aquesta direcció</string>
     <string name="quest_oneway2_no_oneway">No és de sentit únic</string>
@@ -752,7 +743,6 @@ d'acompliment</string>
     <string name="quest_charging_station_capacity_title">Quants cotxes es poden carregar en aquesta estació de forma simultània?</string>
     <string name="link_disaster_ninja_description">Mapa que mostra desastres naturals recents, interessant per als cartògrafs humanitaris. A més, mostra moltes estadístiques interessants per analitzar com de ben mapejats i actualitzats són els llocs.</string>
     <string name="quest_lanes_title">Quants carrils per cotxes té aquesta carretera?</string>
-    <string name="quest_lanes_answer_lanes">Carrils marcats</string>
     <string name="quest_lanes_answer_noLanes">Sense carrils marcats</string>
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">Té un carril de gir esquerre de doble sentit</string>
     <string name="quest_address_answer_no_housenumber_message2b">És això correcte?</string>
@@ -764,8 +754,6 @@ d'acompliment</string>
     <string name="quest_kerb_height_lowered">Una mica més alta que la superfície de la via</string>
     <string name="quest_kerb_height_raised">Vorera alta</string>
     <string name="quest_kerb_height_lowered_ramp">Rampa a la vorera</string>
-    <string name="quest_lanes_answer_lanes_description2">Especifiqueu el nombre total de carrils marcats (en ambdues direccions) utilitzables pel trànsit de cotxes. Per tant, els carrils bici o dedicats a aparcaments no conten.
-Si algun dels carrils estan reservats per busos, deixeu una nota com a alternativa.</string>
     <string name="quest_lanes_answer_lanes_description_one_side2">Especifiqueu el nombre de carrils marcats utilitzables pel trànsit de cotxes. Per tant, els carrils bici o dedicats a aparcaments no conten.
 Si algun dels carrils estan reservats per busos, deixeu una nota com a alternativa.</string>
     <string name="quest_surface_value_rock">Roca</string>
@@ -780,7 +768,6 @@ Si algun dels carrils estan reservats per busos, deixeu una nota com a alternati
     <string name="quest_shop_gone_replaced_answer">Un(a)…</string>
     <string name="quest_shop_gone_replaced_answer_hint">Escriviu el tipus de lloc aquí</string>
     <string name="quest_shop_vacant_type_title">Aquesta botiga ha estat vacant. Què hi ha aquí ara?</string>
-    <string name="quest_lanes_answer_lanes_odd2">El nombre de carrils difereix a cada costat</string>
     <string name="default_disabled_msg_go_inside_regional_warning">Aquest tipus de missió està desactivada per defecte perquè no és útil en algunes regions i probablement haureu d'entrar al lloc per poder respondre a una cerca d'aquest tipus.</string>
     <string name="quest_dietType_explanation_kosher">Els productes de Kosher han d'estar preparats d'acord amb normes especials, i les agències de certificació de kaixrut han de marcar els productes de conformitat.</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">Sense carril bici</string>
@@ -921,7 +908,7 @@ Les dades s'actualitzen després de %1$s dies i les dades no utilitzades s'elimi
     <string name="restore_dialog_message">Voleu recuperar totes les missions que heu ocultat?</string>
     <string name="quest_parking_access_title2">Qui pot aparcar aquí? L'aparcament pot ser gratuït o de pagament.</string>
     <string name="quest_access_yes">Qualsevol persona del públic general</string>
-    <string name="quest_access_customers">Qualsevol persona visitat un lloc en específic (ex. només clients)</string>
+    <string name="quest_access_customers">Qualsevol persona que visita un lloc en específic (ex. només clients)</string>
     <string name="quest_access_private">Només les persones autoritzades</string>
     <string name="quest_postboxCollectionTimes_resurvey_title">Encara són correctes els temps d'arreplega d'aquesta bústia?</string>
     <string name="quest_bicycle_barrier_type_title">Quin tipus de barrera per a bicicleta és aquesta?</string>
@@ -1450,9 +1437,13 @@ Un pis compta com a teulada quan les seves finestres són a la teulada. En conse
     <string name="overlay_mtb_scale_1">Grau 1</string>
     <string name="overlay_mtb_scale_1_description">Terreny parcialment solt amb arrels petites, pedres, erosió o regueres d’aigua; pendent ≤ 40 %; obstacles rodables; es requereix una tècnica bàsica de conducció.</string>
     <string name="overlay_mtb_scale_2">Grau 2</string>
+    <string name="overlay_mtb_scale_2_description">Terreny solt amb arrels i roques grans, pendents planes/escales petites, pendent de fins al 70%; girs tancats fàcils; cal frenada i canvi de pes avançats.</string>
     <string name="overlay_mtb_scale_3">Grau 3</string>
+    <string name="overlay_mtb_scale_3_description">Terreny relliscós i solt amb tarteres, rocs, grans arrels i roques, esglaons alts i travesses complicades; girs tancats difícils, pendent superior al 70%; cal molt bon equilibri i una frenada precisa.</string>
     <string name="overlay_mtb_scale_4">Grau 4</string>
+    <string name="overlay_mtb_scale_4_description">Obstacles tècnics i desafiants: grans roques, arrels, tarteres, rampes pronunciades; corbes tancades, desnivells plans amb cops de pedal; es requereix un equilibri perfecte, frenada precisa i reposicionament de les rodes del darrere.</string>
     <string name="overlay_mtb_scale_5">Grau 5</string>
+    <string name="overlay_mtb_scale_5_description">Terreny de blocs ultracosterut amb contrapujades, camps de roques, esllavissades, ziga-zagues amb obstacles, caigudes altes consecutives i arbres caiguts. És impossible transportar la bicicleta per superar els obstacles; és inevitable anar sobre la bicicleta. Cal domini de trial.</string>
     <string name="overlay_mtb_scale_6">Grau 6</string>
     <string name="overlay_mtb_scale_6_description">Terreny perillós i impracticable, no apte per a la BTT.</string>
     <string name="default_disabled_overlay_domain_expert">Aquesta capa està desactivada per defecte perquè cal ser una persona experta en la matèria per registrar aquestes dades amb precisió.</string>
@@ -1467,4 +1458,14 @@ Un pis compta com a teulada quan les seves finestres són a la teulada. En conse
     <string name="quest_housenumber_multiple_numbers_description2">Podeu introduir números de casa separats per comes.\nPer exemple, 1, 3 o 2b, 4, 6.</string>
     <string name="quest_drinking_water_potable_unsigned2">Sense senyals</string>
     <string name="or">o</string>
+    <string name="action_copy">Copieu</string>
+    <string name="quest_stopName_hint">Podeu aplicar el mateix nom a una altra parada tocant-la al mapa.</string>
+    <string name="quest_shelter_capacity_title">Quanta gent pot dormir aquí?</string>
+    <string name="quest_handwashing_title">Podeu netejar-vos les mans aquí?</string>
+    <string name="quest_openingHours_delete">Suprimiu</string>
+    <string name="quest_streetName_hint">Podeu aplicar el mateix nom a una secció adjacent tocant-la al mapa.</string>
+    <string name="quest_streetName_abbreviation_instruction">Les abreviatures del tipus "Rd" cal que s'ampliïn</string>
+    <string name="quest_streetName_add_language">Afegiu idioma</string>
+    <string name="ok">D'acord</string>
+    <string name="cancel">Cancel·lar</string>
 </resources>

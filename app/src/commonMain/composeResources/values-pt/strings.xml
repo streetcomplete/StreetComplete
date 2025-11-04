@@ -20,10 +20,7 @@
     <string name="quest_leave_new_note_yes">Deixar uma nota</string>
     <string name="quest_leave_new_note_no">Ocultar</string>
     <string name="quest_streetName_title">Qual é o nome desta rua?</string>
-    <string name="quest_streetName_description">Escrever como está escrito na placa toponímica. As abreviaturas são expandidas automaticamente:</string>
     <string name="quest_streetName_answer_noName_confirmation_description">Por vezes o sinal com o nome da rua está apenas disponível numa das extremidades. Além disso, em ruas compridas pode não existir sinalética em todos os cruzamentos. Normalmente as ruas com casas têm nome.</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_description">Se o nome puder ser pronunciado sem abreviatura, então deve ser expandido. As abreviaturas mais comuns são expandidas automaticamente ao escrever, mas nem todas.</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">Sem abreviatura</string>
     <string name="quest_openingHours_start_time">hora de abertura</string>
     <string name="quest_openingHours_end_time">hora de fecho</string>
     <string name="quest_openingHours_add_months">Adicionar meses</string>
@@ -57,7 +54,6 @@
     <string name="version_banned_message">Esta versão do StreetComplete é muito antiga. Faça a atualização!</string>
     <string name="no_gps_no_quests">Para descarregar automaticamente os dados à sua volta, ative a localização precisa</string>
     <string name="later">Mais tarde</string>
-    <string name="quest_streetName_answer_noProperStreet_link">É apenas uma ligação entre 2 estradas</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">Outra coisa qualquer (deixar uma nota)</string>
     <string name="about_title_privacy_statement">Privacidade</string>
     <string name="quest_openingHours_public_holidays">Feriados</string>
@@ -74,25 +70,7 @@
     <string name="quest_roofShape_answer_many">Tem várias formas diferentes</string>
     <string name="map_btn_zoom_out">Afastar</string>
     <string name="map_btn_zoom_in">Aproximar</string>
-    <string name="privacy_html">&lt;p&gt;Ah, alguém que se preocupa com a privacidade, ótimo! Acho que tenho apenas boas notícias para si:&lt;/p&gt;
-&lt;h2&gt;Contribuições diretas&lt;/h2&gt;
-&lt;p&gt;
-Antes de mais, compreenda que com esta aplicação, está a contribuir diretamente para o OpenStreetMap (OSM).&lt;br/&gt;
-Qualquer contribuição que faça com esta aplicação é diretamente adicionada ao mapa do OpenStreetMap e não há intermediários entre a aplicação e a infraestrutura do OpenStreetMap.
-&lt;/p&gt;
-&lt;p&gt;
-Não é possível editar de forma anónima no OpenStreetMap. Qualquer alteração que faça (incluindo a data de alteração e a localização do objeto alterado) são vinculados à sua conta de utilizador do OpenStreetMap e são visíveis publicamente no site openstreetmap.org. Como o StreetComplete deve ser utilizado geralmente quando se está no local fisicamente, isto revela onde e quando usou a aplicação.
-&lt;/p&gt;
-
-&lt;h2&gt;Localização&lt;/h2&gt;
-&lt;p&gt;
-A aplicação não partilha a sua localização GPS com ninguém. Esta é utilizada apenas para descarregar automaticamente dados à sua volta e posicionar o mapa na sua localização.
-&lt;/p&gt;
-
-&lt;h2&gt;Utilização dos dados&lt;/h2&gt;
-&lt;p&gt;
-A aplicação comunica diretamente com os servidores do OpenStreetMap.&lt;br/&gt;
-Antes de enviar as suas alterações, a aplicação confirma com &lt;a href="https://www.westnordost.de/streetcomplete/banned_versions.txt"&gt;um ficheiro de texto simples&lt;/a&gt; no meu servidor para averiguar se a versão do StreetComplete que usa não foi bloqueada de forma a impedir o envio de alterações. Isto é uma medida preventiva, para impedir que certas versões da aplicação, com erros graves detetados entretanto, possam corromper os dados do OpenStreetMap.&lt;/p&gt;</string>
+    <string name="privacy_html">&lt;p&gt;Ah, alguém que se preocupa com a privacidade, ótimo! Acho que tenho apenas boas notícias para si:&lt;/p&gt; &lt;h2&gt;Contribuições diretas&lt;/h2&gt;&lt;p&gt; Antes de mais, compreenda que com esta aplicação, está a contribuir diretamente para o OpenStreetMap (OSM).&lt;br/&gt; Qualquer contribuição que faça com esta aplicação é diretamente adicionada ao mapa do OpenStreetMap e não há intermediários entre a aplicação e a infraestrutura do OpenStreetMap. &lt;/p&gt; &lt;p&gt; Não é possível editar de forma anónima no OpenStreetMap. Qualquer alteração que faça (incluindo a data de alteração e a localização do objeto alterado) são vinculados à sua conta de utilizador do OpenStreetMap e são visíveis publicamente no site openstreetmap.org. Como o StreetComplete deve ser utilizado geralmente quando se está no local fisicamente, isto revela onde e quando usou a aplicação. &lt;/p&gt; &lt;h2&gt;Localização&lt;/h2&gt; &lt;p&gt; A aplicação não partilha a sua localização GPS com ninguém. Esta é utilizada apenas para descarregar automaticamente dados à sua volta e posicionar o mapa na sua localização. &lt;/p&gt; &lt;h2&gt;Utilização dos dados&lt;/h2&gt; &lt;p&gt; A aplicação comunica diretamente com os servidores do OpenStreetMap.&lt;br/&gt; Antes de enviar as suas alterações, a aplicação confirma com &lt;a href="https://www.westnordost.de/streetcomplete/banned_versions.txt"&gt;um ficheiro de texto simples&lt;/a&gt; no meu servidor para averiguar se a versão do StreetComplete que usa não foi bloqueada de forma a impedir o envio de alterações. Isto é uma medida preventiva, para impedir que certas versões da aplicação, com erros graves detetados entretanto, possam corromper os dados do OpenStreetMap.&lt;/p&gt;</string>
     <string name="autosync_on">Ativado</string>
     <string name="autosync_only_on_wifi">Apenas em Wi-Fi</string>
     <string name="autosync_off">Desativado</string>
@@ -117,11 +95,7 @@ Antes de enviar as suas alterações, a aplicação confirma com &lt;a href="htt
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">Onde fica esta rua?</string>
     <string name="quest_address_title">Qual é o número de porta deste edifício?</string>
     <string name="store_listing_short_description">Aplicação de mapeamento no OpenStreetMap</string>
-    <string name="store_listing_full_description">Ajude a melhorar o OpenStreetMap com o StreetComplete!
-
-Esta aplicação, muito fácil de utilizar, procura dados que faltam num dado local e mostra-os no mapa como missões. Resolva cada uma destas missões respondendo a questões simples para adicionar ao mapa mais informação útil.
-
-A informação que submeter nesta aplicação é enviada diretamente para o OpenStreetMap com a sua conta de utilizador, sem ser necessário utilizar outro programa.</string>
+    <string name="store_listing_full_description">Ajude a melhorar o OpenStreetMap com o StreetComplete! Esta aplicação encontra dados cartográficos em falta na sua vizinhança e mostra-os num mapa como missões. Resolva cada missão visitando o local e responda a uma pergunta simples para atualizar o mapa. As informações que introduzir são adicionadas diretamente ao OpenStreetMap em seu nome, sem necessidade de utilizar outro editor.</string>
     <string name="quest_name_answer_noName">Não tem nome…</string>
     <string name="quest_name_answer_noName_confirmation_title">Decerteza que não tem nome?</string>
     <string name="quest_name_noName_confirmation_positive">Sim, não tem</string>
@@ -178,8 +152,7 @@ A informação que submeter nesta aplicação é enviada diretamente para o Open
     <string name="dialog_session_dont_show_again">Não mostrar mais nesta sessão</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">Este limite de velocidade parece implausível.</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">Não existem mesmo nenhum sinal?</string>
-    <string name="quest_maxspeed_answer_noSign_confirmation">Verificou nas extremidades da rua?
-Se não existir sinalização ao longo da estrada selecionada, por omissão é aplicado o limite geral de velocidade.</string>
+    <string name="quest_maxspeed_answer_noSign_confirmation">Verificou nas extremidades da rua? Se não existir sinalização ao longo da estrada selecionada, por omissão é aplicado o limite geral de velocidade.</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">Sim, sem sinal de limite de velocidade</string>
     <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">Dentro das localidades, os limites de velocidade são inferiores aos limites de fora das localidades.</string>
     <string name="quest_maxspeed_answer_noSign_urbanOk">Dentro de uma localidade</string>
@@ -196,7 +169,6 @@ Se não existir sinalização ao longo da estrada selecionada, por omissão é a
     <string name="quest_sport_roller_skating">Patins em linha</string>
     <string name="quest_wheelchairAccess_limited_description_business">Parcialmente significa que não existe mais do que um pequeno degrau com alguns centímetros para aceder ao local e que a maioria das divisões interiores são acessíveis a cadeira de rodas.</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">Parcialmente significa que não existe mais do que um pequeno degrau para aceder ao local.</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">Abreviatura no nome %1$s?</string>
     <string name="quest_recycling_type_title">Que tipo de infraestrutura de reciclagem é esta?</string>
     <string name="recycling_centre">Centro de reciclagem (ecocentro)</string>
     <string name="overground_recycling_container">Contentor (ecoponto)</string>
@@ -205,9 +177,7 @@ Se não existir sinalização ao longo da estrada selecionada, por omissão é a
     <string name="quest_streetName_cantType_title">Falta o layout do teclado?</string>
     <string name="quest_streetName_cantType_open_settings">Abrir configurações</string>
     <string name="quest_streetName_cantType_open_store">Visitar a loja de aplicações</string>
-    <string name="quest_streetName_cantType_description">Se utiliza um teclado padrão, é provável que tenha de configurar o layout do teclado, nas opções de métodos de entrada, para o idioma que necessita.
-
-Caso contrário, pode descarregar outro teclado na loja de aplicações. Alguns dos teclados mais populares e que suportam vários idiomas são o Google Gboard, SwiftKey Keyboard e Multiling O Keyboard.</string>
+    <string name="quest_streetName_cantType_description">Se utiliza um teclado padrão, é provável que tenha de configurar o layout do teclado, nas opções de métodos de entrada, para o idioma que necessita. Caso contrário, pode descarregar outro teclado na loja de aplicações. Alguns dos teclados mais populares e que suportam vários idiomas são o Google Gboard, SwiftKey Keyboard e Multiling O Keyboard.</string>
     <string name="quest_streetName_menuItem_nolanguage">(não especificado)</string>
     <string name="quest_fireHydrant_type_title">Que tipo de boca de incêndio é esta?</string>
     <string name="quest_fireHydrant_type_pillar">Pilar</string>
@@ -323,12 +293,7 @@ Caso contrário, pode descarregar outro teclado na loja de aplicações. Alguns 
     <string name="quest_cycleway_answer_contraflow_cycleway">Também tem ciclovia do outro lado…</string>
     <string name="quest_openingHours_emptyAnswer">Tem de descrever o horário que está afixado. Se não estiver afixado, pergunte a um funcionário.</string>
     <string name="quest_cycleway_value_none_but_no_oneway">nenhuma, mas os ciclistas podem utilizar a estrada em ambos os sentidos</string>
-    <string name="quest_streetName_answer_noName_question">Qual é a razão para não ter nome?</string>
-    <string name="quest_streetName_answer_noProperStreet_service2">É algo como uma via de acesso ou via de estacionamento</string>
-    <string name="quest_streetName_answer_noProperStreet_track2">É um caminho agrícola ou florestal</string>
-    <string name="quest_streetName_answer_noName_noname">Nenhum dos anteriores, simplesmente não tem nome</string>
-    <string name="quest_wheelchairAccess_description_toilets">Se a casa de banho for acessível pode estar visível um sinal de acessibilidade a cadeira de rodas como este.
-"Parcialmente" significa que uma pessoa de cadeira de rodas pode entrar e usar a casa de banho mas não existe sanita com corrimão e lavatório rebaixado adaptado.</string>
+    <string name="quest_wheelchairAccess_description_toilets">Se a casa de banho for acessível pode estar visível um sinal de acessibilidade a cadeira de rodas como este. "Parcialmente" significa que uma pessoa de cadeira de rodas pode entrar e usar a casa de banho mas não existe sanita com corrimão de apoio e lavatório rebaixado adaptado.</string>
     <string name="map_btn_create_note">Criar nova nota</string>
     <string name="create_new_note_unprecise">Aproxime a visualização para deixar uma nota</string>
     <string name="create_new_note_description">Pode deixar uma nota para informar outros mapeadores que existe um problema aqui. Ajuste a posição da nota movendo o mapa.</string>
@@ -644,7 +609,7 @@ Mantenha-se em segurança: preste atenção ao que se passa em seu redor ao usar
     <string name="achievement_wheelchair_solved_X">Resolveu %1$d missões que ajudam utilizadores de cadeiras de rodas a deslocarem-se na cidade!</string>
     <string name="achievement_postman_title">Carteiro</string>
     <string name="achievement_postman_solved_X">Ajudou a localizar %1$d endereços e outros elementos postais!
-Estes dados são essenciais não só para o transportador de correio, mas também para qualquer sistema de navegação.</string>
+Estes dados são essenciais não só para o carteiro, mas também para qualquer sistema de navegação.</string>
     <string name="achievement_building_title">Arranha-céus</string>
     <string name="achievement_building_solved_X">Resolveu %1$d missões relacionados com edifícios.
 Note que esta aplicação apenas pergunta pelo número de porta de um edifício só depois de estar definido o seu tipo.</string>
@@ -653,10 +618,10 @@ Note que esta aplicação apenas pergunta pelo número de porta de um edifício 
     <string name="achievement_pedestrian_title">Corredor</string>
     <string name="achievement_pedestrian_solved_X">Resolveu %1$d missões interessantes para quem anda a pé!</string>
     <string name="achievement_veg_title">Amigo dos animais</string>
-    <string name="achievement_veg_solved_X">Resolveu %1$d missões que são interessantes para quem é vegetariano!</string>
+    <string name="achievement_veg_solved_X">Resolveu %1$d missões que são interessantes para pessoas que seguem uma dieta sem carne!</string>
     <string name="achievement_car_title">Na estrada</string>
-    <string name="achievement_car_solved_X">Resolveu %1$d missões que melhoram os detalhes das infraestruturas das ruas. Rua a rua, aos poucos o OpenStreetMap é cada vez melhor!</string>
-    <string name="unread_messages_message">Tem %1$d mensagens por ler</string>
+    <string name="achievement_car_solved_X">Resolveu %1$d missões que melhoram os detalhes da infraestrutura das ruas, colocando a “rua” no OpenStreetMap!</string>
+    <string name="unread_messages_message">Tem %1$d mensagens não lidas na sua caixa de entrada.</string>
     <string name="unread_messages_button">Abrir caixa de correio</string>
     <string name="action_about2">Sobre</string>
     <string name="map_btn_menu">Menu</string>
@@ -755,7 +720,6 @@ conquista</string>
     <string name="quest_charging_station_capacity_title">Quantos carros podem ser carregados em simultâneo neste posto de carregamento?</string>
     <string name="link_disaster_ninja_description">Mapa que mostra desastres naturais recentes, interessante para mapeadores humanitários. Além disso, mostra muitas estatísticas interessantes para analisar o quão bem mapeados e atualizados são os lugares.</string>
     <string name="quest_lanes_title">Quantas vias de trânsito para veículos esta estrada tem?</string>
-    <string name="quest_lanes_answer_lanes">Vias com marcação</string>
     <string name="quest_lanes_answer_noLanes">Vias sem marcação</string>
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">Tem 1 via de trânsito para virar à esquerda em cada sentido</string>
     <string name="quest_address_answer_no_housenumber_message2b">Está correto?</string>
@@ -768,8 +732,7 @@ Caso não se aplique a toda a secção destacada, pode responder “%1$s”.</st
     <string name="quest_kerb_height_lowered">Um pouco mais alto que a superfície da estrada</string>
     <string name="quest_kerb_height_raised">Lancil alto</string>
     <string name="quest_kerb_height_lowered_ramp">Rampa de lancil</string>
-    <string name="quest_lanes_answer_lanes_description2">Indique o número total de vias de trânsito marcadas (incluindo ambas as direções) que podem ser utilizadas pelo tráfego de veículos. Excluir desse no total: ciclovias, vias exclusivas para estacionamento, bermas e vias só para autocarros (BUS). Se for o caso, deixe uma nota a descrever o lado e o número de vias para autocarros.</string>
-    <string name="quest_lanes_answer_lanes_description_one_side2">Indique o número total de vias de trânsito marcadas que podem ser utilizadas pelo tráfego de veículos. Excluir desse no total: ciclovias, vias exclusivas para estacionamento, bermas e vias só para autocarros (BUS). Se for o caso, deixe uma nota a descrever o lado e o número de vias para autocarros.</string>
+    <string name="quest_lanes_answer_lanes_description_one_side2">Especifique aqui o número de vias demarcadas utilizáveis pelo tráfego automóvel. As vias para bicicletas e as vias de estacionamento exclusivas não contam. Se houver vias reservadas para autocarros, por favor, deixe uma nota.</string>
     <string name="quest_surface_value_rock">Pedras toscas amontoadas (trilhos montanhosos)</string>
     <string name="quest_parkingType_street_side">Estacionamento ao lado, fora da estrada</string>
     <string name="quest_parkingType_lane">Estacionamento dentro da estrada</string>
@@ -782,7 +745,6 @@ Caso não se aplique a toda a secção destacada, pode responder “%1$s”.</st
     <string name="quest_shop_gone_replaced_answer">É…</string>
     <string name="quest_shop_gone_replaced_answer_hint">Digite o tipo de lugar aqui</string>
     <string name="quest_shop_vacant_type_title">Esta loja esteve desocupada. O que se encontra aqui agora?</string>
-    <string name="quest_lanes_answer_lanes_odd2">O número de vias de trânsito é diferente nos 2 sentidos</string>
     <string name="default_disabled_msg_go_inside_regional_warning">Este tipo de missão está desativada de origem porque não é útil em algumas regiões e provavelmente terá que entrar no local para poder responder a uma missão deste tipo.</string>
     <string name="quest_dietType_explanation_kosher">Produtos Kosher devem ser preparados de acordo com regras especiais, com agências de certificação kashrut marcando os produtos em conformidade.</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">Sem nenhuma ciclovia separada nem corredor na estrada</string>
@@ -889,9 +851,7 @@ Os dados são atualizados após %1$s dias e os dados não utilizados são elimin
     <string name="quest_bollard_type_foldable2">Reclinável (com ou sem chave)</string>
     <string name="no_search_results">Nada encontrado</string>
     <string name="quest_selection_hint_title">Demasiadas coisas para fazer?</string>
-    <string name="quest_selection_hint_message">Contribuir tem de ser divertido!
-
-Se ficar sobrecarregado com o número de missões, pode sempre ajustar as missões que lhe são apresentadas e a sua ordem nas definições.</string>
+    <string name="quest_selection_hint_message">Contribuir tem de ser divertido! Se ficar sobrecarregado com o número de missões, pode sempre ajustar as missões que lhe são apresentadas e a sua ordem nas definições.</string>
     <string name="quest_presets_preset_add">Adicionar conjunto de missões</string>
     <string name="quest_presets_preset_name">Nome do conjunto de missões</string>
     <string name="quest_presets_default_name">Base</string>
@@ -953,9 +913,7 @@ Se ficar sobrecarregado com o número de missões, pode sempre ajustar as missõ
     <string name="street_standing_prohibited">Proibido ficar à espera (não utilizado em países lusófonos)</string>
     <string name="street_parking_conditional_restrictions">Estacionamento / paragem restritos condicionalmente</string>
     <string name="street_parking_no_other_reasons">Sem sinal explícito / não é possível estacionar</string>
-    <string name="street_parking_conditional_restrictions_hint">Se é possível estacionar ou parar aqui. Indique o tipo de estacionamento na estrada ou fora da estrada. As restrições adicionais podem ser especificadas mais tarde.
-
-Como alternativa, pode deixar uma nota (com uma fotografia).</string>
+    <string name="street_parking_conditional_restrictions_hint">Se for possível estacionar ou parar aqui, responda como é que quem quiser estacionar aqui pode fazê-lo. As restrições exatas podem ser especificadas mais tarde. Em alternativa, pode deixar uma nota (com uma foto).</string>
     <string name="quest_address_house_number_label">Número de porta:</string>
     <string name="quest_fireHydrant_position_title">Em que posição está esta boca de incêndio?</string>
     <string name="quest_fireHydrant_position_green">Na relva, terra ou jardim</string>
@@ -1241,9 +1199,7 @@ Faça o mesmo para o outro lado, se existir.</string>
     <string name="separate_cycleway_path">Caminho ou trilho (não se destina a ninguém em particular)</string>
     <string name="quest_fireHydrant_type_pipe">Tubo</string>
     <string name="measure_info_title">Atingir a precisão ideal</string>
-    <string name="measure_info_html_description">&lt;p&gt;O ARCore por vezes (inicialmente) presume que o solo é um pouco mais baixo ou mais alto do que realmente é. Isto introduz um erro de medição que se torna maior quanto mais se inclina o telemóvel para o horizonte.&lt;/p&gt;
-&lt;p&gt;Defina cada ponto inicial e final enquanto aponta o telemóvel diretamente para baixo (para que se veja a seta branca de cima) para evitar completamente este problema para medições horizontais.&lt;/p&gt;
-&lt;p&gt;Para medições verticais, é necessário verificar se o ponto de partida não está em paralaxe ao solo, olhando para ele a partir de diferentes direções.&lt;/p&gt;</string>
+    <string name="measure_info_html_description">&lt;p&gt;O ARCore, por vezes, presume (inicialmente) que o solo está um pouco mais baixo ou mais alto do que realmente está. Isso introduz um erro de medição que aumenta quanto mais inclina o telemóvel em direção ao horizonte.&lt;/p&gt; &lt;p&gt;Defina os pontos inicial e final enquanto aponta o telemóvel diretamente para baixo (de modo a ver a seta branca de cima) para evitar completamente este problema nas medições horizontais.&lt;/p&gt; &lt;p&gt;Para medições verticais, é necessário verificar se o ponto inicial não parece mover-se em relação ao solo, observando-o de diferentes ângulos.&lt;/p&gt;</string>
     <string name="privacy_html_arcore">Esta aplicação funciona em &lt;a href="https://play.google.com/store/apps/details?id=com.google.ar.core"&gt;Google Play Services para AR&lt;/a&gt; (ARCore), que é fornecida pelo Google e governada pela &lt;a href="https://policies.google.com/privacy"&gt;Política de Privacidade Google&lt;/a&gt;.</string>
     <string name="default_disabled_msg_seasonal">Este tipo de missão está desativado por defeito porque pode exigir uma nova verificação da situação em diferentes alturas do ano.</string>
     <string name="quest_gritBinSeasonal_title">Isto também se encontra aqui fora nas outras estações para além do Inverno?</string>
@@ -1282,13 +1238,8 @@ Faça o mesmo para o outro lado, se existir.</string>
     <string name="quest_cycleway_value_sidewalk_dual2">passeio de utilização partilhada, em ambas as direções</string>
     <string name="overlays_tutorial_title">Camadas</string>
     <string name="overlays_tutorial_intro">Encontrou uma nova forma de editar dados!</string>
-    <string name="overlays_tutorial_display">Cada camada apresenta um tipo de dados, por exemplo, “lojas“ ou “superfícies de ruas“.
-
-Os dados são destacados em cores diferentes para ter uma boa visão geral do que foi registado até agora.
-Os dados em falta são sempre apresentados a vermelho.</string>
-    <string name="overlays_tutorial_edit">Toque em qualquer dado realçado para o visualizar ou editar. Também pode dividir caminhos ou comunicar notas, como nas missões.
-
-Além disso, algumas camadas, como a camada de endereços, permitem adicionar novos dados na posição da mira.</string>
+    <string name="overlays_tutorial_display">Cada camada apresenta um tipo de dados, por exemplo, “lojas“ ou “superfícies de ruas“. Os dados são destacados em cores diferentes para ter uma boa visão geral do que foi registado até agora. Os dados em falta são sempre apresentados a vermelho.</string>
+    <string name="overlays_tutorial_edit">Toque em qualquer dado realçado para o visualizar ou editar. Também pode dividir caminhos ou comunicar notas, como nas missões. Além disso, algumas camadas, como a camada de endereços, permitem adicionar novos dados na posição da mira.</string>
     <string name="quest_crossing_kerb_height_title">Qual é a altura dos passeios neste cruzamento?</string>
     <string name="quest_maxheight_sign_title">Qual é o limite de altura indicado aqui?</string>
     <string name="quest_leave_new_note_as_answer">Neste caso, é necessário que deixe uma nota a explicar a situação.</string>
@@ -1346,8 +1297,7 @@ Além disso, algumas camadas, como a camada de endereços, permitem adicionar no
     <string name="unknown_object">Objeto desconhecido</string>
     <string name="quest_leafType_tree_title">Esta árvore tem agulhas ou folhas?</string>
     <string name="quest_bbq_fuel_gas">Gás</string>
-    <string name="about_description_donate_google_play3">Obrigado por considerar apoiar esta aplicação!
-Pode encontrar informações sobre donativos no nosso site ou na página inicial do projeto. As políticas da loja de aplicações não nos permitem disponibilizar a hiperligação na aplicação.</string>
+    <string name="about_description_donate_google_play3">Obrigado por considerar apoiar esta aplicação! Pode encontrar informações sobre donativos no nosso site ou na página de desenvolvimento do projeto. As políticas da loja de aplicações não nos permitem disponibilizar a hiperligação na aplicação.</string>
     <string name="quest_isAmenityIndoor_outside_covered">Não no interior, mas coberto</string>
     <string name="lit_value_unsupported">Estado específico de iluminado que não é selecionável nesta aplicação</string>
     <string name="quest_generic_otherAnswers2">Outra…</string>
@@ -1361,9 +1311,7 @@ Pode encontrar informações sobre donativos no nosso site ou na página inicial
     <string name="info">Mais informações</string>
     <string name="quest_accessible_for_pedestrians_prohibited">É proibido.</string>
     <string name="quest_accessible_for_pedestrians_allowed">É permitido.</string>
-    <string name="quest_buildingLevels_hint">Para edifícios num declive, a contagem de andares começa a partir do nível do solo do lado mais baixo.
-
-Um andar conta como um andar de telhado quando as suas janelas estão no telhado. Por conseguinte, os telhados com zero andares de telhado não são necessariamente planos, apenas não têm altura suficiente para um andar inteiro.</string>
+    <string name="quest_buildingLevels_hint">Para edifícios num declive, a contagem de andares começa a partir do nível do solo do lado mais baixo. Um andar conta como um andar de telhado quando as suas janelas estão no telhado. Por conseguinte, os telhados com zero andares de telhado não são necessariamente planos, apenas não têm altura suficiente para um andar inteiro.</string>
     <string name="quest_parcel_locker_brand">Qual é a marca deste cacifo de encomendas?</string>
     <string name="quest_powerPolesMaterial_is_terminal">A linha elétrica está ancorada ao edifício</string>
     <string name="quest_cycleway_value_sidewalk_ok">nenhum, mas o sinal permite andar de bicicleta no passeio</string>
@@ -1461,7 +1409,18 @@ Um andar conta como um andar de telhado quando as suas janelas estão no telhado
     <string name="compass">Bússola</string>
     <string name="quest_tracktype_grade2">Maioritariamente sólido</string>
     <string name="quest_tracktype_grade3">Mistura</string>
-    <string name="quest_housenumber_multiple_numbers_description2">Pode introduzir números de portas separados por vírgulas.\nPor exemplo 1,3 ou 2b,4,6.</string>
+    <string name="quest_housenumber_multiple_numbers_description2">Pode introduzir números de portas separados por vírgulas.
+Por exemplo 1,3 ou 2b,4,6.</string>
     <string name="quest_drinking_water_potable_unsigned2">Sem placa</string>
     <string name="or">ou</string>
+    <string name="action_copy">Copiar</string>
+    <string name="quest_stopName_hint">Pode aplicar o mesmo nome de outra paragem tocando nela no mapa.</string>
+    <string name="quest_shelter_capacity_title">Quantas pessoas podem dormir aqui?</string>
+    <string name="quest_handwashing_title">Pode lavar as mãos aqui?</string>
+    <string name="quest_openingHours_delete">Eliminar</string>
+    <string name="quest_streetName_hint">Pode aplicar o mesmo nome de uma via adjacente tocando nela no mapa.</string>
+    <string name="quest_streetName_abbreviation_instruction">Abreviaturas como, por exemplo, “Av.” devem ser escritas por extenso.</string>
+    <string name="quest_streetName_add_language">Adicionar idioma</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancelar</string>
 </resources>

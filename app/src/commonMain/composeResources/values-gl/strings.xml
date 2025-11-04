@@ -20,10 +20,7 @@
     <string name="quest_leave_new_note_yes">Deixar nota</string>
     <string name="quest_leave_new_note_no">Agochar</string>
     <string name="quest_streetName_title">Cal é o nome desta estrada?</string>
-    <string name="quest_streetName_description">tal e como está no letreiro da rúa (as abreviacións amplíanse):</string>
     <string name="quest_streetName_answer_noName_confirmation_description">Algunhas veces o letreiro só está nun extremo da rúa. Pensa tamén que pode que non haxa letreiros en rúas pequenas se pertenecen a unha rúa máis grande adxacente. O normal é que calquera rúa con casas teña nome.</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_description">Se podes dici-lo nome sen abrevialo, telo que escribir enteiro. Moitas abreviacións comúns esténdense de xeito automático ó escribir, pero non todas.</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">Sen abreviacións</string>
     <string name="quest_openingHours_start_time">hora da apertura</string>
     <string name="quest_openingHours_end_time">hora do peche</string>
     <string name="quest_openingHours_add_months">Engadir meses</string>
@@ -57,7 +54,6 @@
     <string name="version_banned_message">Esta versión do StreetComplete é demasiado vella. Por favor, actualizaa!</string>
     <string name="no_gps_no_quests">Para descargar datos ó teu arredor de xeito automático, activa a ubicación</string>
     <string name="later">Despois</string>
-    <string name="quest_streetName_answer_noProperStreet_link">Só enlaza dúas estradas</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">Outra cousa (deixar nota)</string>
     <string name="about_title_privacy_statement">Privacidade</string>
     <string name="quest_openingHours_public_holidays">festivos</string>
@@ -196,7 +192,6 @@ Se non hai sinais ó longo de toda a rúa á que pertence o treito escollido, em
     <string name="quest_sport_roller_skating">Patinaxe sobre rodas</string>
     <string name="quest_wheelchairAccess_limited_description_business">"De xeito parcial" significa que hai como moito un chanzo pequeno para acceder ó lugar e que se pode acceder á meirande parte das salas nunha cadeira de rodas.</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">"De xeito parcial" significa que hai como moito un chanzo pequeno para acceder ó lugar.</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">%1$s contén algunha abreviación?</string>
     <string name="quest_recycling_type_title">Que tipo de instalación de reciclaxe é?</string>
     <string name="recycling_centre">Centro de reciclaxe</string>
     <string name="overground_recycling_container">Contedor</string>
@@ -323,10 +318,6 @@ Se iso non é posíbel, podes descarregar outro teclado na tenda de aplicacións
     <string name="quest_cycleway_answer_contraflow_cycleway">Tamén carril bici na outra beira…</string>
     <string name="quest_openingHours_emptyAnswer">Tes que describir o que pon no cartel. Se non hai cartel, terías que entrar a pregunta-los horarios.</string>
     <string name="quest_cycleway_value_none_but_no_oneway">non hai ren, pero os ciclistas poden circular en ámbolos sentidos</string>
-    <string name="quest_streetName_answer_noName_question">Por que non ten nome?</string>
-    <string name="quest_streetName_answer_noProperStreet_service2">É unha entrada privada ou un corredor do aparcadoiro</string>
-    <string name="quest_streetName_answer_noProperStreet_track2">É unha vía agrogandeira ou forestal</string>
-    <string name="quest_streetName_answer_noName_noname">Nin idea, é que non ten nome</string>
     <string name="quest_wheelchairAccess_description_toilets">Pode que vexas un sinal coma este, co debuxo dunha cadeira de rodas, se os servizos están adaptados de xeito especial.
 "De xeito parcial" quere dicir que é posíbel entrar cunha cadeira e emprega-los servizos, pero sen pasamáns ou lavabos adaptados.</string>
     <string name="map_btn_create_note">Crear unha nota</string>
@@ -707,7 +698,7 @@ logros</string>
     <string name="resurvey_intervals_default">Predeterminado</string>
     <string name="resurvey_intervals_more_often">Máis a miúdo</string>
     <string name="about_title_translate">Traducir esta app</string>
-    <string name="about_description_translate">%1$s está traducido ao %2$d%%</string>
+    <string name="about_description_translate">%1$s está traducido ao %2$d%</string>
     <string name="quest_oneway2_title">Esta é unha rúa dun só sentido? En que dirección?</string>
     <string name="quest_oneway2_dir">Nesta dirección</string>
     <string name="quest_oneway2_no_oneway">Non é dun só sentido</string>
@@ -753,7 +744,6 @@ logros</string>
     <string name="quest_charging_station_capacity_title">Cantos coches se poden cargar aquí ó mesmo tempo?</string>
     <string name="link_disaster_ninja_description">Mapa que amosa desastres naturais recentes, interesante para os cartógrafos humanitarios. Tamén amosa moitas estatísticas interesantes para analizar que tan ben cartografados e actualizados están os lugares.</string>
     <string name="quest_lanes_title">Cantos carrís para vehículos ten esta estrada?</string>
-    <string name="quest_lanes_answer_lanes">Carrís marcados</string>
     <string name="quest_lanes_answer_noLanes">Carrís sen marcar</string>
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">Ten un carril central bidireccional para xirar á esquerda</string>
     <string name="quest_address_answer_no_housenumber_message2b">Isto é correcto?</string>
@@ -766,8 +756,6 @@ Ademáis, se non se aplica para toda a vía marcada, considera responder “%1$s
     <string name="quest_kerb_height_lowered">Un pouco máis alto que a estrada</string>
     <string name="quest_kerb_height_raised">Bordo alto</string>
     <string name="quest_kerb_height_lowered_ramp">Bordo rebaixado (rampla)</string>
-    <string name="quest_lanes_answer_lanes_description2">Especifica o número total de carrís marcados (en ambas direccións) utilizables para a circulación de coches. Os carrís para bicicletas e os de aparcamento non contan.
-Se hai carrís reservados para buses, deixa unha nota no seu lugar.</string>
     <string name="quest_lanes_answer_lanes_description_one_side2">Especifica aquí o número de carrís marcados utilizables para a circulación de coches. Os carrís para bicicletas e os de aparcamento non contan.
 Se hai carrís reservados para buses, deixa unha nota no seu lugar.</string>
     <string name="quest_surface_value_rock">Rocha</string>
@@ -782,7 +770,6 @@ Se hai carrís reservados para buses, deixa unha nota no seu lugar.</string>
     <string name="quest_shop_gone_replaced_answer">Un…</string>
     <string name="quest_shop_gone_replaced_answer_hint">Escribe o tipo de lugar aquí</string>
     <string name="quest_shop_vacant_type_title">Este comercio estivo baleiro. Que hai aquí agora?</string>
-    <string name="quest_lanes_answer_lanes_odd2">O número de carrís difire en cada sentido</string>
     <string name="default_disabled_msg_go_inside_regional_warning">Este tipo de tarefa está desactivada de xeito predeterminado porque non é útil nalgunhas rexións e é probábel que teñas que entrar no lugar para poder responder a unha tarefa deste tipo.</string>
     <string name="quest_dietType_explanation_kosher">Os produtos kosher teñen que prepararse dacordo coas regras especiais do xudaísmo, e as axencias de certificación kashrut deben marcar os produtos en cumprimento.</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">Non hai carril bici de ningún tipo</string>
