@@ -43,6 +43,7 @@ fun LengthMetersInput(
                 modifier = Modifier.fillMaxWidth(),
                 maxIntegerDigits = maxMeterDigits.first,
                 maxFractionDigits = maxMeterDigits.second,
+                isUnsigned = true,
                 style = style,
             )
         }
