@@ -38,7 +38,8 @@ actual class NumberFormatter actual constructor(
         if (!text.all {
             it == symbols.decimalSeparator ||
             it == symbols.groupingSeparator && format.isGroupingUsed ||
-            it.isDigit()
+            it.isDigit() ||
+            it == '-' || it == '+'
         }) return null
 
         return format.parseOrNull(text)
