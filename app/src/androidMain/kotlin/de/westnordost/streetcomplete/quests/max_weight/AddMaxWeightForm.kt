@@ -27,14 +27,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.cheonjaeung.compose.grid.SimpleGridCells
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.meta.WeightMeasurementUnit.METRIC_TON
 import de.westnordost.streetcomplete.databinding.ComposeViewBinding
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.ic_delete_24
 import de.westnordost.streetcomplete.resources.quest_maxweight_add_sign
-import de.westnordost.streetcomplete.resources.quest_maxweight_remove_sign
 import de.westnordost.streetcomplete.resources.quest_maxweight_select_sign
 import de.westnordost.streetcomplete.ui.common.Button2
 import de.westnordost.streetcomplete.ui.common.dialogs.SimpleItemSelectDialog
@@ -85,7 +83,7 @@ class AddMaxWeightForm : AbstractOsmQuestForm<MaxWeightAnswer>() {
                             onClick = { types.removeAt(i); weights.removeAt(i) },
                             modifier = Modifier.align(Alignment.TopEnd).padding(4.dp)
                         ) {
-                            Icon(painterResource(Res.drawable.ic_delete_24), contentDescription = stringResource(Res.string.quest_maxweight_remove_sign))
+                            Icon(painterResource(Res.drawable.ic_delete_24), null)
                         }
                     }
                     Spacer(Modifier.height(6.dp))
