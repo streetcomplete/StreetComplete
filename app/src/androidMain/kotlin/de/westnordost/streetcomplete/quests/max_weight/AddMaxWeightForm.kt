@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests.max_weight
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AlertDialog
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -16,13 +17,17 @@ import androidx.compose.material.IconButton
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.cheonjaeung.compose.grid.SimpleGridCells
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.WeightMeasurementUnit.METRIC_TON
 import de.westnordost.streetcomplete.databinding.ComposeViewBinding
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
@@ -32,6 +37,7 @@ import de.westnordost.streetcomplete.resources.quest_maxweight_add_sign
 import de.westnordost.streetcomplete.resources.quest_maxweight_remove_sign
 import de.westnordost.streetcomplete.resources.quest_maxweight_select_sign
 import de.westnordost.streetcomplete.ui.common.Button2
+import de.westnordost.streetcomplete.ui.common.dialogs.SimpleItemSelectDialog
 import de.westnordost.streetcomplete.ui.util.content
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
@@ -46,7 +52,7 @@ class AddMaxWeightForm : AbstractOsmQuestForm<MaxWeightAnswer>() {
         AnswerItem(R.string.quest_generic_answer_noSign) { confirmNoSign() }
     )
 
-    private lateinit var types: SnapshotStateList<MutableState<MaxWeightType?>> private set
+    private lateinit var types: SnapshotStateList<MutableState<MaxWeightType>> private set
     private lateinit var weights: SnapshotStateList<MutableState<Weight?>> private set
 
     private val weightLimitUnits get() = countryInfo.weightLimitUnits
@@ -58,24 +64,21 @@ class AddMaxWeightForm : AbstractOsmQuestForm<MaxWeightAnswer>() {
             Surface {
                 types = remember { SnapshotStateList() }
                 weights = remember { SnapshotStateList() }
+                var showSelectionDialog by remember { mutableStateOf(false) }
+
             Column {
                 types.forEachIndexed { i, _ ->
                     Box(modifier = Modifier.fillMaxWidth()) {
                         Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {
                             MaxWeightForm(
                                 type = types[i].value,
-                                onSelectType = {
-                                    types[i].value = it
-                                    checkIsFormComplete()
-                                },
                                 weight = weights[i].value,
                                 onChangeWeight = {
                                     weights[i].value = it
                                     checkIsFormComplete()
                                 },
                                 countryCode = countryInfo.countryCode,
-                                selectableUnits = weightLimitUnits,
-                                selectedTypes = types.map { it.value } as List<MaxWeightType>
+                                selectableUnits = weightLimitUnits
                             )
                         }
                         IconButton(
@@ -91,9 +94,7 @@ class AddMaxWeightForm : AbstractOsmQuestForm<MaxWeightAnswer>() {
                 if (types.size < maxSupportedSigns(countryInfo.countryCode)) {
                     Button2(
                         onClick = {
-                            types.add(mutableStateOf(null))
-                            weights.add(mutableStateOf(null))
-                                  },
+                                  showSelectionDialog = true },
                         modifier = Modifier.fillMaxWidth(),
                     ) {
                         if (types.isEmpty())
@@ -102,9 +103,27 @@ class AddMaxWeightForm : AbstractOsmQuestForm<MaxWeightAnswer>() {
                             Text(stringResource(Res.string.quest_maxweight_add_sign))
                     }
                 }
+
+                if (showSelectionDialog) {
+                    SimpleItemSelectDialog(
+                        onDismissRequest = { showSelectionDialog = false },
+                        columns = SimpleGridCells.Fixed(2),
+                        items = MaxWeightType.entries.filter { it !in types.map { it.value } as List<MaxWeightType> && it.getIcon(countryInfo.countryCode) != null },
+                        onSelected = {
+                            types.add(mutableStateOf(it))
+                            weights.add(mutableStateOf(null))
+                            checkIsFormComplete()
+                            showSelectionDialog = false
+                        },
+                        itemContent = {
+                            val icon = it.getIcon(countryInfo.countryCode)
+                            if (icon != null) Image(painterResource(icon), null)
+                        }
+                    )
+                }
             }
-        } }
-    }
+        }
+    } }
 
     override fun onClickOk() {
         if (userSelectedUnrealisticWeight()) {
