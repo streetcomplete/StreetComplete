@@ -41,7 +41,10 @@ fun ImageWithDescription(
                     .clip(MaterialTheme.shapes.medium)
             )
         }
-        Column(modifier = Modifier.weight(1f).padding(4.dp)) {
+        Column(
+            modifier = Modifier.weight(1f).padding(4.dp),
+            verticalArrangement = Arrangement.spacedBy(4.dp),
+        ) {
             if (title != null) {
                 Text(
                     text = title,
