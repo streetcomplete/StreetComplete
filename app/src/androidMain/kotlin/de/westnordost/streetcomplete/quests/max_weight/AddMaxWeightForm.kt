@@ -80,7 +80,10 @@ class AddMaxWeightForm : AbstractOsmQuestForm<MaxWeightAnswer>() {
                             )
                         }
                         IconButton(
-                            onClick = { types.removeAt(i); weights.removeAt(i) },
+                            onClick = {
+                                types.removeAt(i)
+                                weights.removeAt(i)
+                                checkIsFormComplete() },
                             modifier = Modifier.align(Alignment.TopEnd).padding(4.dp)
                         ) {
                             Icon(painterResource(Res.drawable.ic_delete_24), null)
