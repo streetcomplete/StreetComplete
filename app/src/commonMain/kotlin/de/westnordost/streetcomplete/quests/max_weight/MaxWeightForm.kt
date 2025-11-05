@@ -4,7 +4,8 @@ import androidx.compose.animation.AnimatedContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.material.Text
+import androidx.compose.foundation.layout.Row
+import androidx.compose.material.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -14,7 +15,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import com.cheonjaeung.compose.grid.SimpleGridCells
 import de.westnordost.streetcomplete.data.meta.WeightMeasurementUnit
-import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.resources.quest_maxweight_remove_sign
 import de.westnordost.streetcomplete.resources.quest_maxweight_select_sign
 import de.westnordost.streetcomplete.ui.common.Button2
@@ -41,7 +42,7 @@ fun MaxWeightForm(
         modifier = modifier,
         contentAlignment = Alignment.Center
     ) {
-        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+        Box {
             AnimatedContent(
                 targetState = type,
                 transitionSpec = FallDownTransitionSpec,
@@ -58,11 +59,6 @@ fun MaxWeightForm(
                 } else {
                     showSelectionDialog = true
                 }
-            }
-            Button2(
-                onClick = { onSelectType(null) },
-            ) {
-                Text(stringResource(Res.string.quest_maxweight_remove_sign))
             }
         }
     }

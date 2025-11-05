@@ -4,17 +4,22 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.snapshots.SnapshotStateList
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.R
@@ -22,11 +27,13 @@ import de.westnordost.streetcomplete.databinding.ComposeViewBinding
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.ic_delete_24
 import de.westnordost.streetcomplete.resources.quest_maxweight_add_sign
 import de.westnordost.streetcomplete.resources.quest_maxweight_remove_sign
 import de.westnordost.streetcomplete.resources.quest_maxweight_select_sign
 import de.westnordost.streetcomplete.ui.common.Button2
 import de.westnordost.streetcomplete.ui.util.content
+import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
 class AddMaxWeightForm : AbstractOsmQuestForm<MaxWeightAnswer>() {
@@ -52,13 +59,9 @@ class AddMaxWeightForm : AbstractOsmQuestForm<MaxWeightAnswer>() {
                 types = remember { SnapshotStateList() }
                 weights = remember { SnapshotStateList() }
             Column {
-                types.chunked(2).forEachIndexed { rowIndex, rowItems ->
-                    Row(
-                        horizontalArrangement = Arrangement.spacedBy(8.dp),
-                        modifier = Modifier.fillMaxWidth()
-                    ) {
-                        rowItems.forEachIndexed { colIndex, _ ->
-                            val i = rowIndex * 2 + colIndex
+                types.forEachIndexed { i, _ ->
+                    Box(modifier = Modifier.fillMaxWidth()) {
+                        Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {
                             MaxWeightForm(
                                 type = types[i].value,
                                 onSelectType = {
@@ -72,13 +75,19 @@ class AddMaxWeightForm : AbstractOsmQuestForm<MaxWeightAnswer>() {
                                 },
                                 countryCode = countryInfo.countryCode,
                                 selectableUnits = weightLimitUnits,
-                                modifier = Modifier.weight(1f),
                                 selectedTypes = types.map { it.value } as List<MaxWeightType>
                             )
                         }
+                        IconButton(
+                            onClick = { types.removeAt(i); weights.removeAt(i) },
+                            modifier = Modifier.align(Alignment.TopEnd).padding(4.dp)
+                        ) {
+                            Icon(painterResource(Res.drawable.ic_delete_24), contentDescription = stringResource(Res.string.quest_maxweight_remove_sign))
+                        }
                     }
-                    Spacer(Modifier.height(8.dp))
+                    Spacer(Modifier.height(6.dp))
                 }
+
                 if (types.size < maxSupportedSigns(countryInfo.countryCode)) {
                     Button2(
                         onClick = {
