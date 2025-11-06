@@ -7,6 +7,6 @@ class AddParcelLockerBrandForm : ANameWithSuggestionsForm<String>() {
     override val suggestions: List<String>? get() = countryInfo.parcelLockerBrand
 
     override fun onClickOk() {
-        applyAnswer(name!!)
+        applyAnswer(name)
     }
 }

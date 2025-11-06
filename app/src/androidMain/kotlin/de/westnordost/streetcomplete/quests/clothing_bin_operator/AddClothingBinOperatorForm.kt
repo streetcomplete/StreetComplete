@@ -14,13 +14,13 @@ class AddClothingBinOperatorForm : ANameWithSuggestionsForm<ClothingBinOperatorA
     )
 
     override fun onClickOk() {
-        applyAnswer(ClothingBinOperator(name!!))
+        applyAnswer(ClothingBinOperator(name))
     }
 
     private fun confirmNoSign() {
         activity?.let { AlertDialog.Builder(it)
             .setMessage(R.string.quest_generic_confirmation_title)
-            .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ -> applyAnswer(NoClothingBinOperatorSigned) }
+            .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ -> applyAnswer(ClothingBinOperatorAnswer.NoneSigned) }
             .setNegativeButton(R.string.quest_generic_confirmation_no, null)
             .show()
         }
