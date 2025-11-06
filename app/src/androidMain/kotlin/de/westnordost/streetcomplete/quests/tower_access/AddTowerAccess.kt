@@ -12,7 +12,10 @@ class AddTowerAccess : OsmFilterQuestType<TowerAccess>(), AndroidQuest {
     override val elementFilter = """
         nodes, ways, relations with
             man_made = tower
-            and tower:type = observation
+            and (
+                tower:type = observation
+                or tower:type = watchtower and historic=yes
+            )
             and disused != yes
             and !emergency
             and !military
