@@ -1,9 +1,6 @@
 package de.westnordost.streetcomplete.quests.artwork
 
 import androidx.compose.runtime.Composable
-import de.westnordost.streetcomplete.osm.surface.Surface
-import de.westnordost.streetcomplete.osm.surface.icon
-import de.westnordost.streetcomplete.osm.surface.title
 import de.westnordost.streetcomplete.quests.AItemSelectQuestForm
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
 import kotlinx.serialization.serializer
