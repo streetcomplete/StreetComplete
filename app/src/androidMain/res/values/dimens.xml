@@ -31,8 +31,6 @@
 
     <dimen name="speech_bubble_elevation">16dp</dimen>
 
-    <dimen name="street_side_puzzle_height">112dp</dimen>
-
     <!-- Tables -->
     <dimen name="horizontal_speech_bubble_margin">4dp</dimen>
 
@@ -43,18 +41,7 @@
 
     <dimen name="rounded_selection_radius">10dp</dimen>
 
-    <dimen name="map_button_size">60dp</dimen>
-
     <dimen name="ok_button_size">72dp</dimen>
-
-    <!-- user screen -->
-
-    <dimen name="statistics_edit_type_icon_size">192dp</dimen>
-    <dimen name="quest_statistics_quest_type_icon_offset">96dp</dimen>
-
-    <dimen name="quest_statistics_country_icon_width">320dp</dimen>
-    <dimen name="quest_statistics_country_icon_height">220dp</dimen>
-    <dimen name="quest_statistics_country_icon_offset">120dp</dimen>
 
     <!-- forms -->
 
