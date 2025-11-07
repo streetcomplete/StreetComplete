@@ -76,6 +76,19 @@ app icon/
 assembly point/
     assembly_point.svg          Epop, License: Public domain; https://commons.wikimedia.org/wiki/File:E011.svg
 
+artwork/
+    sculpture.png               David Castor, License: PD
+    statue.jpg                  Hansjorn, License: CC-BY-SA 3.0
+    mural.jpg                   MOs810, License: CC-BY-SA 4.0
+    graffiti.jpg                Chrisi1964, License: CC-BY-SA 4.0
+    bust.JPG                    Steffenheilfort, License: CC-BY-SA 3.0
+    painting.jpg                Dcoetzee, License: PD
+    architecture.png            Enfo, License: CC-BY-SA 4.0
+    mosaic.jpg                  Marie-Lan Nguyen, License: PD
+    relief.jpg                  Andy Hay, License: PD
+    stone.jpg                   Petr Štefek, License: CC-BY-SA 3.0
+
+
 boat_rental/
     canoe.svg                   mashup of different images from Australian Water Safety Council, License: PD
     houseboat.svg               parts taken from Twemoji: U+26F4
