@@ -730,6 +730,22 @@ Before uploading your changes, the app checks with a &lt;a href="https://www.wes
     <string name="quest_atm_cashin_title">Can you deposit cash at this ATM?</string>
     <string name="quest_atm_operator_title">Which bank operates this ATM?</string>
 
+    <!-- artwork type -->
+    <string name="quest_artwork_title">What kind of artwork is this?</string>
+    <string name="quest_artwork_sculpture">Sculpture</string>
+    <string name="quest_artwork_statue">Statue</string>
+    <string name="quest_artwork_mural">Mural</string>
+    <string name="quest_artwork_graffiti">Graffiti</string>
+    <string name="quest_artwork_installation">Installation</string>
+    <string name="quest_artwork_bust">Bust</string>
+    <string name="quest_artwork_stone">Stone</string>
+    <string name="quest_artwork_painting">Painting</string>
+    <string name="quest_artwork_architecture">Architecture</string>
+    <string name="quest_artwork_mosaic">Mosaic</string>
+    <string name="quest_artwork_relief">Relief</string>
+    <string name="quest_artwork_fountain">Fountain</string>
+    <string name="quest_artwork_land_art">Land art</string>
+
     <string name="quest_baby_changing_table_title2">Does this place have a baby changing table?</string>
 
     <string name="quest_barrier_type_title">What type of barrier is this?</string>
