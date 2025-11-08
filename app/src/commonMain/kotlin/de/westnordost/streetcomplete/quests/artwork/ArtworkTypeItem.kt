@@ -5,7 +5,6 @@ import de.westnordost.streetcomplete.quests.artwork.ArtworkType.BUST
 import de.westnordost.streetcomplete.quests.artwork.ArtworkType.FOUNTAIN
 import de.westnordost.streetcomplete.quests.artwork.ArtworkType.GRAFFITI
 import de.westnordost.streetcomplete.quests.artwork.ArtworkType.INSTALLATION
-import de.westnordost.streetcomplete.quests.artwork.ArtworkType.LAND_ART
 import de.westnordost.streetcomplete.quests.artwork.ArtworkType.MOSAIC
 import de.westnordost.streetcomplete.quests.artwork.ArtworkType.MURAL
 import de.westnordost.streetcomplete.quests.artwork.ArtworkType.PAINTING
@@ -31,7 +30,6 @@ val ArtworkType.title: StringResource get() = when (this) {
     MOSAIC -> Res.string.quest_artwork_mosaic
     GRAFFITI -> Res.string.quest_artwork_graffiti
     PAINTING -> Res.string.quest_artwork_painting
-    LAND_ART -> Res.string.quest_artwork_land_art
 }
 
 val ArtworkType.icon: DrawableResource get() = when (this) {
@@ -47,5 +45,4 @@ val ArtworkType.icon: DrawableResource get() = when (this) {
     MOSAIC -> Res.drawable.artwork_mosaic
     GRAFFITI -> Res.drawable.artwork_graffiti
     PAINTING -> Res.drawable.artwork_painting
-    LAND_ART -> Res.drawable.artwork_painting
 }
