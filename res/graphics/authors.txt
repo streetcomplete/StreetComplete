@@ -87,6 +87,8 @@ artwork/
     mosaic.jpg                  Marie-Lan Nguyen, License: PD
     relief.jpg                  Andy Hay, License: PD
     stone.jpg                   Petr Štefek, License: CC-BY-SA 3.0
+    fountain.jpg                Pierre-Louis FERRER, License: CC-BY-SA 3.0
+    installation.jpg            Lienhard Schulz, License: CC-BY-SA 3.0
 
 
 boat_rental/
