@@ -35,17 +35,17 @@ val ArtworkType.title: StringResource get() = when (this) {
 }
 
 val ArtworkType.icon: DrawableResource get() = when (this) {
-    SCULPTURE -> Res.drawable.artwork_type_sculpture
-    STATUE -> Res.drawable.artwork_type_statue
-    BUST -> Res.drawable.memorial_type_bust
-    ARCHITECTURE -> Res.drawable.artwork_type_architecture
-    RELIEF -> Res.drawable.artwork_type_relief
-    MURAL -> Res.drawable.artwork_type_mural
-    FOUNTAIN -> Res.drawable.artwork_type_fountain
-    INSTALLATION -> Res.drawable.artwork_type_installation
-    STONE -> Res.drawable.artwork_type_stone
-    MOSAIC -> Res.drawable.artwork_type_mosaic
-    GRAFFITI -> Res.drawable.artwork_type_graffiti
-    PAINTING -> Res.drawable.artwork_type_painting
-    LAND_ART -> Res.drawable.artwork_type_land_art
+    SCULPTURE -> Res.drawable.artwork_sculpture
+    STATUE -> Res.drawable.artwork_statue
+    BUST -> Res.drawable.artwork_bust
+    ARCHITECTURE -> Res.drawable.artwork_architecture
+    RELIEF -> Res.drawable.artwork_relief
+    MURAL -> Res.drawable.artwork_mural
+    FOUNTAIN -> Res.drawable.artwork_fountain
+    INSTALLATION -> Res.drawable.artwork_installation
+    STONE -> Res.drawable.artwork_stone
+    MOSAIC -> Res.drawable.artwork_mosaic
+    GRAFFITI -> Res.drawable.artwork_graffiti
+    PAINTING -> Res.drawable.artwork_painting
+    LAND_ART -> Res.drawable.artwork_painting
 }
