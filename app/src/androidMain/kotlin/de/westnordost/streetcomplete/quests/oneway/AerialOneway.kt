@@ -1,19 +1,21 @@
-package de.westnordost.streetcomplete.quests.aerialBothWay
+package de.westnordost.streetcomplete.quests.oneway
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.AndroidQuest
-import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.quests.aerialBothWay.AerialBothWayAnswer.BOTHWAY
-import de.westnordost.streetcomplete.quests.aerialBothWay.AerialBothWayAnswer.DOWNWARD
-import de.westnordost.streetcomplete.quests.aerialBothWay.AerialBothWayAnswer.UPWARD
+import de.westnordost.streetcomplete.quests.oneway.OnewayAnswer
+import de.westnordost.streetcomplete.quests.oneway.OnewayAnswer.BACKWARD
+import de.westnordost.streetcomplete.quests.oneway.OnewayAnswer.FORWARD
+import de.westnordost.streetcomplete.quests.oneway.OnewayAnswer.NO_ONEWAY
 
-class AddAerialBothWay : OsmElementQuestType<AerialBothWayAnswer>, AndroidQuest {
+class AerialOneway : OsmElementQuestType<OnewayAnswer>, AndroidQuest {
 
     private val elementFilter by lazy { """
         ways with
@@ -25,7 +27,7 @@ class AddAerialBothWay : OsmElementQuestType<AerialBothWayAnswer>, AndroidQuest 
     override val wikiLink = "Key:oneway"
     override val icon = R.drawable.quest_oneway
     override val hasMarkersAtEnds = true
-    override val achievements = listOf(PEDESTRIAN)
+    override val achievements = listOf(EditTypeAchievement.PEDESTRIAN)
 
     override val hint = R.string.quest_arrow_tutorial
 
@@ -35,13 +37,18 @@ class AddAerialBothWay : OsmElementQuestType<AerialBothWayAnswer>, AndroidQuest 
 
     override fun isApplicableTo(element: Element): Boolean? = elementFilter.matches(element)
 
-    override fun createForm() = AddAerialBothWayForm()
+    override fun createForm() = AddOnewayForm()
 
-    override fun applyAnswerTo(answer: AerialBothWayAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: OnewayAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags["oneway"] = when (answer) {
-            UPWARD -> "yes"
-            DOWNWARD -> "-1"
-            BOTHWAY -> "no"
+            FORWARD -> "yes"
+            BACKWARD -> "-1"
+            NO_ONEWAY -> "no"
         }
     }
+
+    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
+        getMapData().filter("""
+            nodes, ways with aerialway
+        """.toElementFilterExpression())
 }
