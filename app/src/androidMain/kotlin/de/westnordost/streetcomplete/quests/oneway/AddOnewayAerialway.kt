@@ -10,12 +10,11 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.quests.oneway.OnewayAnswer
 import de.westnordost.streetcomplete.quests.oneway.OnewayAnswer.BACKWARD
 import de.westnordost.streetcomplete.quests.oneway.OnewayAnswer.FORWARD
 import de.westnordost.streetcomplete.quests.oneway.OnewayAnswer.NO_ONEWAY
 
-class AerialOneway : OsmElementQuestType<OnewayAnswer>, AndroidQuest {
+class AddOnewayAerialway : OsmElementQuestType<OnewayAnswer>, AndroidQuest {
 
     private val elementFilter by lazy { """
         ways with
