@@ -100,7 +100,11 @@ abstract class AGroupedItemSelectQuestForm<G: Group<I>, I, T> : AbstractOsmQuest
         val group = selectedGroup.value
         val groupItem = group?.item
         val item = selectedItem.value
-        if (groupItem != null) {
+        if (item != null) {
+            prefs.addLastPicked(ListSerializer(serializer), this::class.simpleName!!, item)
+            onClickOk(item)
+        }
+        else if (groupItem != null) {
             context?.let {
                 AlertDialog.Builder(it)
                     .setMessage(R.string.quest_generic_item_confirmation)
@@ -111,9 +115,6 @@ abstract class AGroupedItemSelectQuestForm<G: Group<I>, I, T> : AbstractOsmQuest
                     }
                     .show()
             }
-        } else if (item != null) {
-            prefs.addLastPicked(ListSerializer(serializer), this::class.simpleName!!, item)
-            onClickOk(item)
         }
     }
 
