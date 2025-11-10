@@ -20,7 +20,6 @@ import androidx.compose.ui.text.TextRange
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.TextFieldValue
-import androidx.compose.ui.text.style.TextAlign
 import de.westnordost.streetcomplete.ui.common.AutoFitTextFieldFontSize
 import de.westnordost.streetcomplete.ui.common.SwitchKeyboardPopupButton
 import de.westnordost.streetcomplete.ui.common.TextField2
@@ -53,10 +52,10 @@ fun AnAddressNumberInput(
     val showSwitchKeyboardPopup = isFocused && WindowInsets.isImeVisible
 
     ProvideTextStyle(LocalTextStyle.current.copy(
-        textAlign = TextAlign.Center,
         // to avoid the size of the text changing when going from e.g. "123j" to "123k"
         fontFamily = FontFamily.Monospace,
     )) {
+        val textStyle = LocalTextStyle.current
         AutoFitTextFieldFontSize(
             value = valueState.text,
             modifier = modifier
@@ -68,7 +67,7 @@ fun AnAddressNumberInput(
                     onValueChange(valueState.text)
                 },
                 placeholder = if (!suggestion.isNullOrEmpty()) { {
-                    val textStyle = LocalTextStyle.current
+
                     BasicText(
                         text = suggestion,
                         style = textStyle.copy(color = textStyle.color.copy(alpha = 0.2f)),

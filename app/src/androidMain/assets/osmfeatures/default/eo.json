@@ -297,10 +297,6 @@
           "name": "Sunhorloĝo",
           "terms": "horloĝo suna"
         },
-        "amenity/college": {
-          "name": "Postmezgrada lernejo (ISCED 4)",
-          "terms": "kolegio,mezlernejo,mezgrada lernejo,studejo"
-        },
         "amenity/community_centre": {
           "name": "Komunuma centro",
           "terms": "kulturdomo"
@@ -365,10 +361,6 @@
         "amenity/drinking_water": {
           "name": "Trinkakvejo",
           "terms": "ŝprucakvo,shprucakvo,sxprucakvo,trinkejo,akvokrano,krano"
-        },
-        "amenity/driving_school": {
-          "name": "Stirlernejo",
-          "terms": "stirado,aŭtado,autado,auxtado,aŭtlernejo,autlernejo,auxtlernejo,kondukpermesilo,ŝofor,veturila lernejo"
         },
         "amenity/embassy": {
           "name": "Ambasadejo"
@@ -483,14 +475,6 @@
           "name": "Karaokeejo",
           "terms": "karaokeo,kantado"
         },
-        "amenity/kindergarten": {
-          "name": "Infanvartejo (ISCED 0)",
-          "terms": "infanoghardeno,infanogxardeno,antaŭlernejo,kindergarteno,infanĝardeno,infanghardeno,infangxardeno,infanvartejo,lernludejo"
-        },
-        "amenity/language_school": {
-          "name": "Lingva lernejo",
-          "terms": "lingvolernejo"
-        },
         "amenity/lavoir": {
           "name": "Vestaĵ-lavejo (ĉe rivero)",
           "terms": "eksterdoma lavejo,lavejo,vestaĵlavejo"
@@ -538,10 +522,6 @@
         "amenity/motorcycle_rental": {
           "name": "Motorcikl-pruntejo",
           "terms": "motocikla pruntejo,motorciklpruntejo"
-        },
-        "amenity/music_school": {
-          "name": "Muzika lernejo",
-          "terms": "muziklernejo"
         },
         "amenity/nightclub": {
           "name": "Noktoklubejo",
@@ -678,10 +658,6 @@
           "name": "Poŝtoficejo",
           "terms": "poshtoficejo,posxtoficejo,poŝtejo,poshtejo,posxtejo,poŝto"
         },
-        "amenity/prep_school": {
-          "name": "Lernejo pretiganta (al ekzameno/universitato)",
-          "terms": "kursoj"
-        },
         "amenity/prison": {
           "name": "Mallibereja tereno",
           "terms": "malliberejo,arestejo,pundomo,prizono,karcero"
@@ -817,10 +793,6 @@
           "name": "Stacio de forigo de fekaĵoj (kampado)",
           "terms": "kampadejo,malpruaĵo"
         },
-        "amenity/school": {
-          "name": "Lernejo (ISCED 1-3)",
-          "terms": "lernejo,edukejo,instruejo"
-        },
         "amenity/shelter": {
           "name": "Ŝirmejo",
           "terms": "shirmejo,sxirmejo,ŝedo,budo,ŝirmo"
@@ -936,10 +908,6 @@
         "amenity/toy_library": {
           "name": "Ludil‑biblioteko",
           "terms": "ludila biblioteko,amuzila biblioteko"
-        },
-        "amenity/university": {
-          "name": "Altgrada lernejo (ISCED 5-7)",
-          "terms": "universitato,altgrada lernejo,instruejo,politeĥniko,politekniko,altlernejo,studejo"
         },
         "amenity/vacuum_cleaner": {
           "name": "Polvosuĉilo",
@@ -1765,12 +1733,6 @@
           "name": "Defibrililo",
           "terms": "defibrilatoro"
         },
-        "emergency/designated": {
-          "name": "Vivsav-serva aliro: adaptita"
-        },
-        "emergency/destination": {
-          "name": "Vivsav-serva aliro: nur al celloko"
-        },
         "emergency/fire_alarm": {
           "name": "Alarmilo kontraŭfajra",
           "terms": "fajro,alarmbudo,budo"
@@ -1811,18 +1773,9 @@
           "name": "Stacio de montara savservo",
           "terms": "savisto,savanto,vivsavisto,montara savservo"
         },
-        "emergency/no": {
-          "name": "Vivsav-serva aliro: ne"
-        },
-        "emergency/official": {
-          "name": "Vivsav-serva aliro: oficiala"
-        },
         "emergency/phone": {
           "name": "Alarma telefono",
           "terms": "alarmo,vivsava telefono,telefono"
-        },
-        "emergency/private": {
-          "name": "Vivsav-serva aliro: privata"
         },
         "emergency/siren": {
           "name": "Alarmsireno",
@@ -1839,9 +1792,6 @@
         "emergency/water_tank": {
           "name": "Kontraŭbrulega akvujo",
           "terms": "akvujo,rezervujo,krizokaza akvujo,fajrobrigada akvujo"
-        },
-        "emergency/yes": {
-          "name": "Vivsav-serva aliro: jes"
         },
         "entrance": {
           "name": "Enirejo/elirejo",
@@ -2614,10 +2564,6 @@
           "name": "Dancejo",
           "terms": "diskoteko,diskejo"
         },
-        "leisure/dancing_school": {
-          "name": "Danca lernejo",
-          "terms": "danclernejo,dancolernejo"
-        },
         "leisure/disc_golf_course": {
           "name": "Ludkampo por golfdisko",
           "terms": "golfdisko,frisbee,flugdisko,frisbeo"
@@ -3166,10 +3112,6 @@
         "man_made/survey_point": {
           "name": "Geodezia vertico",
           "terms": "geodezio,termezurado,referencpunkto"
-        },
-        "man_made/torii": {
-          "name": "Torijo",
-          "terms": "ŝintoo,sanktejo,templo,torii"
         },
         "man_made/tower": {
           "name": "Turo",

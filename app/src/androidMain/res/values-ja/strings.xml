@@ -20,10 +20,7 @@
     <string name="quest_leave_new_note_yes">"メモを残す"</string>
     <string name="quest_leave_new_note_no">"非表示にする"</string>
     <string name="quest_streetName_title">"この通りの名前は何ですか?"</string>
-    <string name="quest_streetName_description">"通りの標識に書かれているように、略語が展開されます:"</string>
     <string name="quest_streetName_answer_noName_confirmation_description">"ときどき標識は通りの片方の端にしかないことがあります。また、大きな通りに属する側は追加の標識がないことがあることに注意してください。ふつう、住宅のある通りには名前があります。"</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"名前を略語で綴ることができない場合は、展開する必要があります。 入力時に一般的な略語の多くは自動的に展開されますが、すべてではありません。"</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"略語はありません"</string>
     <string name="quest_openingHours_start_time">"開店時間"</string>
     <string name="quest_openingHours_end_time">"閉店時間"</string>
     <string name="quest_openingHours_add_months">"月を追加"</string>
@@ -57,7 +54,6 @@
     <string name="version_banned_message">"このバージョンの StreetComplete は古すぎます。 更新してください!"</string>
     <string name="no_gps_no_quests">"周囲のクエストを自動的にスキャンするには、位置情報をオンにしてください"</string>
     <string name="later">"後で"</string>
-    <string name="quest_streetName_answer_noProperStreet_link">"2 つの道路を結ぶだけです"</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">"他の何か (メモを残す)"</string>
     <string name="about_title_privacy_statement">"プライバシーに関する声明"</string>
     <string name="quest_openingHours_public_holidays">"祝日"</string>
@@ -198,7 +194,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_sport_roller_skating">"ローラースケート"</string>
     <string name="quest_wheelchairAccess_limited_description_business">"部分的とは、アクセスするためにの 2 つ以上の階段がなく、ほとんどの部屋に車椅子でアクセスできることを意味します。"</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">"部分的とは、アクセスするためにの 2 つ以上の階段がないことを意味します。"</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"名前 %s の略語は?"</string>
     <string name="quest_recycling_type_title">"これはどのようなリサイクル施設ですか?"</string>
     <string name="recycling_centre">"センター"</string>
     <string name="overground_recycling_container">"コンテナ"</string>
@@ -325,10 +320,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_cycleway_answer_contraflow_cycleway">"反対側も自転車道…"</string>
     <string name="quest_openingHours_emptyAnswer">"看板に何があるか説明してください。看板がない場合は中で開店時間を訪ねてください。"</string>
     <string name="quest_cycleway_value_none_but_no_oneway">"なし。ただし、サイクリストは両方向を使用する可能性があります"</string>
-    <string name="quest_streetName_answer_noName_question">"その名前がない理由は?"</string>
-    <string name="quest_streetName_answer_noProperStreet_service2">"それは道路または駐車の通路のようです"</string>
-    <string name="quest_streetName_answer_noProperStreet_track2">"農道または林道です"</string>
-    <string name="quest_streetName_answer_noName_noname">"上記以外。単に名前がないだけです"</string>
     <string name="quest_wheelchairAccess_description_toilets">"トイレがアクセス可能な場合、このような車いすサインが見えることがあります。
  車椅子がトイレに入り、使用することができるが、手すりや適合した洗面台が存在しないことがあります。"</string>
     <string name="map_btn_create_note">"新しいメモを作成"</string>
@@ -584,8 +575,8 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="achievements_empty">"まだ実績がありません"</string>
     <string name="links_empty">"まだリンクがありません"</string>
     <string name="quests_empty">"まだ編集を公開していません"</string>
-    <string name="unsynced_quests_description">"さらに、%d はまだ変更を公開していません。"</string>
-    <string name="unsynced_quests_not_logged_in_description">"まだ公開していない変更が %d 件あります。アップロードするには、ログインする必要があります。"</string>
+    <string name="unsynced_quests_description">"さらに、%1$d はまだ変更を公開していません。"</string>
+    <string name="unsynced_quests_not_logged_in_description">"まだ公開していない変更が %1$d 件あります。アップロードするには、ログインする必要があります。"</string>
     <string name="user_quests_title">"解決済みのクエスト"</string>
     <string name="user_achievements_title">"実績"</string>
     <string name="user_links_title">"リンク集"</string>
@@ -657,7 +648,7 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="achievement_veg_solved_X">"肉なしの食事で生活している人のためのクエストを %d 件解決しました！"</string>
     <string name="achievement_car_title">"路上"</string>
     <string name="achievement_car_solved_X">"通りのインフラの詳細を改善するクエストを%d 件解決し、OpenStreetMap に「通り」を掲載しました！"</string>
-    <string name="unread_messages_message">"受信トレイに %d 件の未読メッセージがあります"</string>
+    <string name="unread_messages_message">"受信トレイに %1$d 件の未読メッセージがあります"</string>
     <string name="unread_messages_button">"受信トレイを開く"</string>
     <string name="action_about2">"アプリについて"</string>
     <string name="map_btn_menu">"メニュー"</string>
@@ -710,7 +701,7 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="resurvey_intervals_default">"デフォルト"</string>
     <string name="resurvey_intervals_more_often">"質問頻度を増やす"</string>
     <string name="about_title_translate">"アプリの翻訳を手伝う"</string>
-    <string name="about_description_translate">"%2$d%% が %1$s に翻訳されました"</string>
+    <string name="about_description_translate">"%2$d% が %1$s に翻訳されました"</string>
     <string name="quest_oneway2_title">"これは一方通行路ですか? 方向は?"</string>
     <string name="quest_oneway2_dir">"この向きで一方通行"</string>
     <string name="quest_oneway2_no_oneway">"一方通行ではない"</string>
@@ -756,7 +747,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_charging_station_capacity_title">"この充電ステーションでは一度に何台の車を充電できますか?"</string>
     <string name="link_disaster_ninja_description">"最近の自然災害を示す地図で、人道支援マッパーにとって興味深いものです。また、 は、場所がどの程度適切にマッピングされ、最新のものであるかを分析するための多くの興味深い統計を示しています。"</string>
     <string name="quest_lanes_title">"この道路は何車線ありますか？"</string>
-    <string name="quest_lanes_answer_lanes">"車線分けあり"</string>
     <string name="quest_lanes_answer_noLanes">"車線分けなし"</string>
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">"双方向の左折車線があります"</string>
     <string name="quest_address_answer_no_housenumber_message2b">"これは正しいですか？"</string>
@@ -768,8 +758,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_kerb_height_lowered">"路面より少し高い"</string>
     <string name="quest_kerb_height_raised">"路面より高い"</string>
     <string name="quest_kerb_height_lowered_ramp">"傾斜した縁石"</string>
-    <string name="quest_lanes_answer_lanes_description2">"自動車が通行できる車線 (両方) の数を指定してください。自転車や駐車専用の区画は数えません。
-バス専用車線がある場合は、代わりにノートを残してください。"</string>
     <string name="quest_lanes_answer_lanes_description_one_side2">"自動車が通行できる車線の数を指定してください。自転車や駐車専用の区画は数えません。
 バス専用車線がある場合は、代わりメモを残してください。"</string>
     <string name="quest_surface_value_rock">"岩"</string>
@@ -784,7 +772,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_shop_gone_replaced_answer">"A(n)…"</string>
     <string name="quest_shop_gone_replaced_answer_hint">"この場所の種類を入れて下さい。"</string>
     <string name="quest_shop_vacant_type_title">"以前は空き店舗でしたが、現在は何がありますか?"</string>
-    <string name="quest_lanes_answer_lanes_odd2">"レーンの数が反対方向と違います"</string>
     <string name="default_disabled_msg_go_inside_regional_warning">"このクエストタイプは、地域によっては役に立たず、質問に答えるためにはおそらくその場所に入る必要があるため、デフォルトで無効になっています。"</string>
     <string name="quest_dietType_explanation_kosher">"コーシャ製品は特別なルールに従って調理する必要があり、カシュルート認証機関が準拠していることを評価したものになります。"</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">"自転車専用レーンや自転車専用道路が全くない"</string>
@@ -934,7 +921,7 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_barrier_bicycle_type_double">"シケイン - 両側のバリア"</string>
     <string name="quest_barrier_bicycle_type_multiple">"シケイン - 2つ以上の障壁"</string>
     <string name="language_default">"システム既定値"</string>
-    <string name="on_floor">"フロア %s"</string>
+    <string name="on_floor">"フロア %1$s"</string>
     <string name="select_street_parking_orientation">"車道に面する方向を選択して下さい："</string>
     <string name="select_street_parking_position">"位置を選択："</string>
     <string name="select_street_parking_no">"ここに何らかの標識または路面標識がありますか？"</string>
@@ -1163,7 +1150,7 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_camp_type_backcountry">"バックカントリーキャンプ(施設なし)"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"この直径は信じがたいように見えます。通常は%1$dから%2$dの間です。"</string>
     <string name="quest_recycling_type_pet">"ペットのみ"</string>
-    <string name="street_parking_street_width">"通りの幅: %s"</string>
+    <string name="street_parking_street_width">"通りの幅: %1$s"</string>
     <string name="overlay_street_parking">"路上駐車"</string>
     <string name="link_ohsomehex_description">"全体像から個々の物体まで、空白や時間を超えたスケールでOSMデータを探索する"</string>
     <string name="link_opencampingmap_description">"キャンプ場の地図"</string>
@@ -1210,7 +1197,7 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="user_profile_current_week_title">"過去７日間"</string>
     <string name="user_profile_dates_mapped">"最近マップした日"</string>
     <string name="quest_cycleway_value_advisory_lane">"自転車専用レーン"</string>
-    <string name="urlconfig_scan_qr_code_again2">"アプリのインストール後、再度QRコードを読み取るか、&lt;a href=\"%s\"&gt;このリンク&lt;/a&gt;をクリックしてプリセットを適用して下さい。"</string>
+    <string name="urlconfig_scan_qr_code_again2">"アプリのインストール後、再度QRコードを読み取るか、&lt;a href=\"%1$s\"&gt;このリンク&lt;/a&gt;をクリックしてプリセットを適用して下さい。"</string>
     <string name="confirmation_replace_shop_title">"今は違う場所ですか?"</string>
     <string name="confirmation_replace_shop_message">"その場合、営業時間、連絡先なども変わっているでしょう。"</string>
     <string name="confirmation_replace_shop_yes">"今は違う場所"</string>
@@ -1220,7 +1207,7 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
 今すぐ移動しますか?"</string>
     <string name="node_moved_not_far_enough">"さらに移動してください"</string>
     <string name="node_moved_too_far">"遠すぎます。メモを残すことを検討してください"</string>
-    <string name="node_moved">"%s によって移動されました"</string>
+    <string name="node_moved">"%1$s によって移動されました"</string>
     <string name="move_node_description">"マップをドラッグして、フィーチャを正しい位置に配置します。ズーム機能を使用して、できるだけ正確にするようにしてください。表示された場所は、表示されている場所よりも正確でない場合があります。"</string>
     <string name="move_node_action_description">"ノードを移動しました"</string>
     <string name="quest_cycleway_value_shoulder">"ありませんが、サイクリストはショルダーを使用できます。"</string>
@@ -1313,7 +1300,7 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="label_log_newer_than">"から"</string>
     <string name="label_log_older_than">"まで"</string>
     <string name="label_log_message_contains">"メッセージに含まれる語"</string>
-    <string name="pref_title_quests_restore_hidden_summary">"非表示にしたクエストの数: %d"</string>
+    <string name="pref_title_quests_restore_hidden_summary">"非表示にしたクエストの数: %1$d"</string>
     <string name="link_every_door_description">"AndroidおよびiOS用のパワフルなPOIエディター"</string>
     <string name="link_forum_description">"助けが必要？最新の情報を知りたい？世界中のコミュニティが集う賑やかな場所で、あなたも交流してみよう！"</string>
     <string name="quest_disable_action">"無効にする"</string>

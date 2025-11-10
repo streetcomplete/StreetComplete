@@ -20,10 +20,7 @@
     <string name="quest_leave_new_note_yes">"Lag merknad"</string>
     <string name="quest_leave_new_note_no">"Skjul"</string>
     <string name="quest_streetName_title">"Hva heter denne veien?"</string>
-    <string name="quest_streetName_description">"som skrevet på gateskiltet, forkortelser blir skrevet fullt ut:"</string>
     <string name="quest_streetName_answer_noName_confirmation_description">"Noen ganger er gateskiltet kun på den ene siden av gaten. Merk også at det kan mangle gateskilt for sidegater som hører til en større gate. Vanligvis har alle gater med hus et navn."</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"Hvis navnet kan staves uten forkortelser bør det skrives fullt ut. Mange vanlige forkortelser blir automatisk skrevet fullt ut mens du skriver, men sannsynligvis ikke alle."</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"Ingen forkortelse"</string>
     <string name="quest_openingHours_start_time">"åpningstid"</string>
     <string name="quest_openingHours_end_time">"stengetid"</string>
     <string name="quest_openingHours_add_months">"Legg til måneder"</string>
@@ -57,7 +54,6 @@
     <string name="version_banned_message">"StreetComplete er utdatert. Vennligst oppdater!"</string>
     <string name="no_gps_no_quests">"Skru på nøyaktig posisjonsdeling for å laste ned oppdrag der du er"</string>
     <string name="later">"Senere"</string>
-    <string name="quest_streetName_answer_noProperStreet_link">"Den kobler bare sammen to veier"</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">"Noe annet (legg igjen merknad)"</string>
     <string name="about_title_privacy_statement">"Personvernerklæring"</string>
     <string name="quest_openingHours_public_holidays">"Offentlige høytidsdager"</string>
@@ -196,7 +192,6 @@ Hvis det ikke fins noe fartsgrenseskilt for veien som den markerte strekningen e
     <string name="quest_sport_roller_skating">"Rulleskøyter"</string>
     <string name="quest_wheelchairAccess_limited_description_business">"Delvis betyr at det ikke er mer enn ett trappetrinn inn til stedet og at de fleste rom på innsiden er tilgjengelige med rullestol."</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">"Delvis betyr at det ikke er mer enn ett trappetrinn inn til stedet."</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"Forkortelse i navnet %s?"</string>
     <string name="quest_recycling_type_title">"Hva slags returpunkt er dette?"</string>
     <string name="recycling_centre">"Gjenvinningsstasjon"</string>
     <string name="overground_recycling_container">"Konteiner"</string>
@@ -323,10 +318,6 @@ Hvis ikke kan du laste ned et tastatur med støtte for flere språk i app-butikk
     <string name="quest_cycleway_answer_contraflow_cycleway">"Også sykkelvei på motsatt side…"</string>
     <string name="quest_openingHours_emptyAnswer">"Du må gjengi det som står på skiltet. Hvis det ikke fins noe skilt kan du spørre betjeningen."</string>
     <string name="quest_cycleway_value_none_but_no_oneway">"ingen, men man kan sykle i begge retninger"</string>
-    <string name="quest_streetName_answer_noName_question">"Hvorfor har den ikke noe navn?"</string>
-    <string name="quest_streetName_answer_noProperStreet_service2">"Det er en innkjørsel eller en parkeringsvei"</string>
-    <string name="quest_streetName_answer_noProperStreet_track2">"Det er en traktor- eller skogsbilvei"</string>
-    <string name="quest_streetName_answer_noName_noname">"Ingen av alternativene, den har rett og slett ikke navn"</string>
     <string name="quest_wheelchairAccess_description_toilets">"Hvis toalettene er tilgjengelige for rullestolbrukere er det gjerne merket med et slikt skilt.
 «Delvis» betyr at en rullestolbruker kan komme seg inn på og bruke toalettet, men at det ikke er tilrettelagt med støttehåndtak eller tilpasset håndvask."</string>
     <string name="map_btn_create_note">"Lag en ny merknad"</string>
@@ -582,8 +573,8 @@ Sist, men ikke minst, ta vare på din egen sikkerhet: Vær oppmerksom på omgive
     <string name="achievements_empty">"Du har ingen bragder enda"</string>
     <string name="links_empty">"Du har ikke noen lenker enda"</string>
     <string name="quests_empty">"Du har ikke offentliggjort noen svar på oppdrag enda"</string>
-    <string name="unsynced_quests_description">"og %d endringer som ikke er offentliggjort."</string>
-    <string name="unsynced_quests_not_logged_in_description">"Du har %d endringer som du ikke har offentliggjort enda. Du må logge inn for å offentliggjøre dem."</string>
+    <string name="unsynced_quests_description">"og %1$d endringer som ikke er offentliggjort."</string>
+    <string name="unsynced_quests_not_logged_in_description">"Du har %1$d endringer som du ikke har offentliggjort enda. Du må logge inn for å offentliggjøre dem."</string>
     <string name="user_quests_title">"Løste oppdrag"</string>
     <string name="user_achievements_title">"Bradger"</string>
     <string name="user_links_title">"Lenkesamling"</string>
@@ -656,7 +647,7 @@ Merk at appen bare ber om husnummeret etter at hustypen er angitt."</string>
     <string name="achievement_veg_solved_X">"Du har løst %d oppdrag som er interessante for de som ikke spiser kjøtt!"</string>
     <string name="achievement_car_title">"På veien"</string>
     <string name="achievement_car_solved_X">"Du har løst %d oppdrag som forbedrer detaljnivået på gateinformasjonen - slik at OpenStreetMap lever opp til navnet sitt!"</string>
-    <string name="unread_messages_message">"Du har %d uleste meldinger i innboksen"</string>
+    <string name="unread_messages_message">"Du har %1$d uleste meldinger i innboksen"</string>
     <string name="unread_messages_button">"Åpne innboks"</string>
     <string name="action_about2">"Om"</string>
     <string name="map_btn_menu">"Meny"</string>
@@ -709,7 +700,7 @@ nivåer"</string>
     <string name="resurvey_intervals_default">"Standard"</string>
     <string name="resurvey_intervals_more_often">"Spør oftere"</string>
     <string name="about_title_translate">"Hjelp til å oversette denne appen"</string>
-    <string name="about_description_translate">"%1$s er %2$d%% oversatt"</string>
+    <string name="about_description_translate">"%1$s er %2$d% oversatt"</string>
     <string name="quest_oneway2_title">"Er dette en enveiskjøring? I hvilken retning?"</string>
     <string name="quest_oneway2_dir">"Enveiskjøring denne retningen"</string>
     <string name="quest_oneway2_no_oneway">"Ikke enveiskjøring"</string>
@@ -755,7 +746,6 @@ nivåer"</string>
     <string name="quest_charging_station_capacity_title">"Hvor mange biler kan lades samtidig ved denne ladestasjonen?"</string>
     <string name="link_disaster_ninja_description">"Kart som viser naturkatastrofer som nettopp har skjedd, som er nyttig for humanitære formål. Viser også mye interessant statistikk om hvor god kartlagt steder er og hvor godt oppdaterte kartene er."</string>
     <string name="quest_lanes_title">"Hvor mange felt for biler har denne veien?"</string>
-    <string name="quest_lanes_answer_lanes">"Oppmerkede kjørefelt"</string>
     <string name="quest_lanes_answer_noLanes">"Ingen oppmerkede kjørefelt"</string>
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">"Den har en toveis venstrefelt"</string>
     <string name="quest_address_answer_no_housenumber_message2b">"Er dette korrekt?"</string>
@@ -768,8 +758,6 @@ Og, hvis det ikke gjelder hele strekningen bør du svare «%s»."</string>
     <string name="quest_kerb_height_lowered">"Litt høyere enn veien"</string>
     <string name="quest_kerb_height_raised">"Høy fortauskant"</string>
     <string name="quest_kerb_height_lowered_ramp">"Rampe til fortauskant"</string>
-    <string name="quest_lanes_answer_lanes_description2">"Skriv inn antall oppmerkede kjørefelt (i begge regninger) som kan brukes av biler. Sykkelfelt og gateparkering skal ikke telles med.
-Hvis noen av feltene er kollektivfelt er det bedre å legge inn en merknad."</string>
     <string name="quest_lanes_answer_lanes_description_one_side2">"Skriv inn antall oppmerkede kjørefelt som kan brukes av biler. Sykkelfelt og gateparkering skal ikke telles med.
 Hvis noen av feltene er kollektivfelt er det bedre å legge inn en merknad."</string>
     <string name="quest_surface_value_rock">"Stein"</string>
@@ -784,7 +772,6 @@ Hvis noen av feltene er kollektivfelt er det bedre å legge inn en merknad."</st
     <string name="quest_shop_gone_replaced_answer">"En/ei/et…"</string>
     <string name="quest_shop_gone_replaced_answer_hint">"Hva slags sted er dette?"</string>
     <string name="quest_shop_vacant_type_title">"Denne butikken er tom. Hva er her nå?"</string>
-    <string name="quest_lanes_answer_lanes_odd2">"Antall felt varierer for hver side"</string>
     <string name="default_disabled_msg_go_inside_regional_warning">"Denne oppdragstypen er deaktivert som standard, fordi den ikke er nyttig i noen områder og du vanligvis må gå inn på stedet for å kunne svare."</string>
     <string name="quest_dietType_explanation_kosher">"Koscherprodukt må lages etter bestemte religiøse regler, og det fins egne sertifiseringsinstanser som godkjenner produktene."</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">"Verken sykkelfelt eller sykkelvei"</string>
@@ -1163,7 +1150,7 @@ Om mulig, gjør det samme for den andre siden."</string>
     <string name="quest_camp_type_backcountry">"Friluftscamping (ingen fasiliteter)"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Diameteren virker usannsynlig da den vanligvis er mellom %1$d og %2$d."</string>
     <string name="quest_recycling_type_pet">"Kun PET"</string>
-    <string name="street_parking_street_width">"Gatebredde: %s"</string>
+    <string name="street_parking_street_width">"Gatebredde: %1$s"</string>
     <string name="overlay_street_parking">"Gateparkering"</string>
     <string name="link_ohsomehex_description">"Utforsk OSM data fra det store bildet og ned til detaljene gjennom rom og tid"</string>
     <string name="link_opencampingmap_description">"Et kart over campingsteder"</string>
@@ -1210,7 +1197,7 @@ Om mulig, gjør det samme for den andre siden."</string>
     <string name="user_profile_current_week_title">"Denne uka"</string>
     <string name="user_profile_dates_mapped">"Dine nylige kartleggingsdager"</string>
     <string name="quest_cycleway_value_advisory_lane">"anbefalt sykkelfelt"</string>
-    <string name="urlconfig_scan_qr_code_again2">"Etter å ha installert appen, skann QR-koden igjen eller klikk &lt;a href=\"%s\"&gt;denne linken&lt;/a&gt; for bruke oppdragssettet."</string>
+    <string name="urlconfig_scan_qr_code_again2">"Etter å ha installert appen, skann QR-koden igjen eller klikk &lt;a href=\"%1$s\"&gt;denne linken&lt;/a&gt; for bruke oppdragssettet."</string>
     <string name="confirmation_replace_shop_title">"Er det en annen butikk nå?"</string>
     <string name="confirmation_replace_shop_message">"I så fall har åpningstid, kontaktinformasjon osv. også endret seg."</string>
     <string name="confirmation_replace_shop_yes">"En annen butikk nå"</string>
@@ -1220,7 +1207,7 @@ Om mulig, gjør det samme for den andre siden."</string>
 Vil du flytte den nå?"</string>
     <string name="node_moved_not_far_enough">"Vennligst flytt den litt til"</string>
     <string name="node_moved_too_far">"Flyttet for langt. Legg gjerne igjen en merknad"</string>
-    <string name="node_moved">"Flyttet av %s"</string>
+    <string name="node_moved">"Flyttet av %1$s"</string>
     <string name="move_node_description">"Dra kartet for å finne riktig posisjon. Forstørr kartutsnittet og prøv å være så nøyaktig som mulig. Vær oppmerksom på at indikatoren for din posisjon i kartet ikke alltid er 100 % nøyaktig."</string>
     <string name="move_node_action_description">"Du flyttet noden"</string>
     <string name="quest_cycleway_value_shoulder">"ingen, men veiskulderen kan brukes av syklister"</string>
@@ -1318,7 +1305,7 @@ I tillegg tillater noen typer kartlag at du legger til nye data der trådkorset 
     <string name="label_log_older_than">"Til"</string>
     <string name="label_log_message_contains">"Meldingen inneholder"</string>
     <string name="title_logs_filters">"Filtrer meldingene"</string>
-    <string name="pref_title_quests_restore_hidden_summary">"Antall skjulte oppdrags: %d"</string>
+    <string name="pref_title_quests_restore_hidden_summary">"Antall skjulte oppdrags: %1$d"</string>
     <string name="link_every_door_description">"Kraftig POI-redigeringsverktøy for Android og iOS"</string>
     <string name="link_mapcomplete_description">"Samling av tematiske OSM-kart som hver for seg viser og lar deg redigere én type egenskap"</string>
     <string name="link_forum_description">"Trenger du hjelp? Vil du få med deg hva som skjer? Bli med og solialiser deg, det yrer av aktivitet fra lokalsamfunn over hele kloden!"</string>
@@ -1388,7 +1375,7 @@ En etasje regnes som taketasje når vinduene er i taket. Deretter er tak med nul
     <string name="quest_camp_power_supply_hint">"Dette kan være kontakter ved teltplassen, inne i fasilitets-bygninger eller dedikerte ladesteder for elektronisk utstyr."</string>
     <string name="quest_barrier_opening_width_bollard">"Hvor bred er den største åpningen her?"</string>
     <string name="user_profile_all_time_title">"Totalt"</string>
-    <string name="user_statistics_country_rank2">"Rangering i %s"</string>
+    <string name="user_statistics_country_rank2">"Rangering i %1$s"</string>
     <string name="quest_leafType_tree_is_just_a_stump">"Kun en stubbe"</string>
     <string name="quest_board_name_title">"Hva er overskriften på dette infomasjonsskiltet?"</string>
     <string name="quest_crossing_hint">"En sti som krysser en vei:"</string>

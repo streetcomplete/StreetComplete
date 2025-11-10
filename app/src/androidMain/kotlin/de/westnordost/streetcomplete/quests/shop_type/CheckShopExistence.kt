@@ -40,7 +40,7 @@ class CheckShopExistence(
 
     override val changesetComment = "Survey if places still exist"
     override val wikiLink = "Key:disused:"
-    override val icon = R.drawable.ic_quest_check_shop
+    override val icon = R.drawable.quest_check_shop
     override val achievements = listOf(CITIZEN)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_existence_title2

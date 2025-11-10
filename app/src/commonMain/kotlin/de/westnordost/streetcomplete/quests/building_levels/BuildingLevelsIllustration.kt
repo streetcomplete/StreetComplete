@@ -14,7 +14,7 @@ import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.building_levels_illustration
+import de.westnordost.streetcomplete.resources.illustration_building_levels
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
@@ -35,7 +35,7 @@ fun BuildingLevelsIllustration(modifier: Modifier = Modifier) {
             LayoutDirection.Rtl -> -1f
         }
         Image(
-            painter = painterResource(Res.drawable.building_levels_illustration),
+            painter = painterResource(Res.drawable.illustration_building_levels),
             contentDescription = "Illustration for building Levels",
             modifier = Modifier.scale(illustrationScale, 1f)
         )

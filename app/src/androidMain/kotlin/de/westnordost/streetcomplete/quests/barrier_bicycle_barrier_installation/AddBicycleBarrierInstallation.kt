@@ -21,7 +21,7 @@ class AddBicycleBarrierInstallation : OsmFilterQuestType<BicycleBarrierInstallat
     """
     override val changesetComment = "Specify cycle barrier installation"
     override val wikiLink = "Key:cycle_barrier:installation"
-    override val icon = R.drawable.ic_quest_no_bicycles
+    override val icon = R.drawable.quest_no_bicycles
     override val isDeleteElementEnabled = true
 
     override val achievements = listOf(BICYCLIST, LIFESAVER)

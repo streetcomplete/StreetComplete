@@ -20,10 +20,7 @@
     <string name="quest_leave_new_note_yes">Palikti pastabą</string>
     <string name="quest_leave_new_note_no">Ne, tik paslėpti</string>
     <string name="quest_streetName_title">Koks šio kelio pavadinimas?</string>
-    <string name="quest_streetName_description">kaip parašyta ant gatvės ženklo, sutrumpinimai išplėsti:</string>
     <string name="quest_streetName_answer_noName_confirmation_description">Kartais gatvės pavadinimas būna tik viename gatvės gale. Taip pat pastebėtina, kad gali nebūti ženklų šalutinėms gatvėms, kurios priklauso didesnei gatvei. Paprastai bet kokia gatvė su namais turi pavadinimą.</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_description">Jei pavadinimą galima rašyti be santrumpos, jį reikėtų išplėsti. Daugelis įprastų santrumpų išplečiamos automatiškai, kol rašote, bet tikriausiai ne visos.</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">Nėra sutrumpinimo</string>
     <string name="quest_openingHours_start_time">atsidaro</string>
     <string name="quest_openingHours_end_time">užsidaro</string>
     <string name="quest_openingHours_add_months">Pridėti mėnesius</string>
@@ -57,7 +54,6 @@
     <string name="version_banned_message">Ši StreetComplete versija yra per sena. Prašome atnaujinti!</string>
     <string name="no_gps_no_quests">Kad automatiškai ieškotumėte užduočių apie jus - įjunkite vietos nustatymą</string>
     <string name="later">Vėliau</string>
-    <string name="quest_streetName_answer_noProperStreet_link">jis tiesios sujungia dvi gatves</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">Kažkas kitas (palikti pastabą)</string>
     <string name="about_title_privacy_statement">Privatumas</string>
     <string name="quest_openingHours_public_holidays">Valstybinės šventės</string>
@@ -197,7 +193,6 @@ Jei visoje gatvėje nėra ženklų, kurie galioja pažymėtoje dalyje, taikomas 
     <string name="quest_sport_roller_skating">Riedučiai</string>
     <string name="quest_wheelchairAccess_limited_description_business">Dalinai reiškia, kad yra ne daugiau vieno laiptelio patenkant į vietą ir kad dauguma kambarių viduje pasiekiami vežimėlyje.</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">Dalinai reiškia, kad yra ne daugiau vieno laiptelio įeinant.</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">Sutrumpinimas pavadinime %1$s?</string>
     <string name="quest_recycling_type_title">Koks šio atliekų surinkimo įrenginio tipas?</string>
     <string name="recycling_centre">Centras</string>
     <string name="overground_recycling_container">Konteineris</string>
@@ -324,10 +319,6 @@ Priešingu atveju galite atsisiųsti kitą klaviatūrą programėlių parduotuv�
     <string name="quest_cycleway_answer_contraflow_cycleway">Taip pat dviračių takas kitoje pusėje…</string>
     <string name="quest_openingHours_emptyAnswer">Turite aprašyti, kas yra ženkle. Jei ženklo nėra, darbo laiko turėtumėte paklausti viduje.</string>
     <string name="quest_cycleway_value_none_but_no_oneway">nėra, bet dviratininkai gali važiuoti į abi puses</string>
-    <string name="quest_streetName_answer_noName_question">Kodėl neturi pavadinimo?</string>
-    <string name="quest_streetName_answer_noProperStreet_service2">Kažkas panašaus į privažiavimą ar stovėjimo aikštelės kelią</string>
-    <string name="quest_streetName_answer_noProperStreet_track2">Tai žemdirbystės ar miškininkystės kelias</string>
-    <string name="quest_streetName_answer_noName_noname">Niekas iš paminėtų, tiesiog neturi pavadinimo</string>
     <string name="quest_wheelchairAccess_description_toilets">Neįgaliųjų vežimėlio ženklas panašus į šį gali būti matomas, jei tualetai prieinami.
 Dalinai reiškia, kad vežimėlis gali įvažiuoti ir naudotis tualetu, bet nėra turėklų.</string>
     <string name="map_btn_create_note">Sukurti naują pastabą</string>
@@ -707,7 +698,7 @@ dienų</string>
     <string name="resurvey_intervals_default">Numatytasis</string>
     <string name="resurvey_intervals_more_often">Klausti dažniau</string>
     <string name="about_title_translate">Padėkite išversti šią programėlę</string>
-    <string name="about_description_translate">%1$s išversta %2$d%%</string>
+    <string name="about_description_translate">%1$s išversta %2$d%</string>
     <string name="quest_oneway2_title">Ar ši gatvė vienpusė? Į kurią kryptį?</string>
     <string name="quest_oneway2_dir">Vienpusė į šia kryptį</string>
     <string name="quest_oneway2_no_oneway">Ne vienpusė</string>
@@ -753,7 +744,6 @@ dienų</string>
     <string name="quest_charging_station_capacity_title">Kiek automobilių gali būti kraunama tuo pačiu metu?</string>
     <string name="link_disaster_ninja_description">Žemėlapis, kuriame rodomos neseniai įvykusios stichinės nelaimės, įdomus humanitarinių žemėlapių sudarytojams. Taip pat pateikiama daug įdomios statistikos, leidžiančios išanalizuoti, kaip gerai žemėlapiuose pažymėtos ir atnaujintos vietovės.</string>
     <string name="quest_lanes_title">Kiek šiame kelyje yra automobilių eismo juostų?</string>
-    <string name="quest_lanes_answer_lanes">Pažymėtos eismo juostos</string>
     <string name="quest_lanes_answer_noLanes">Nėra pažymėtų eismo juostų</string>
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">Čia yra dviejų krypčių kairiojo posūkio juosta</string>
     <string name="quest_address_answer_no_housenumber_message2b">Ar tai teisinga?</string>
@@ -765,8 +755,6 @@ dienų</string>
     <string name="quest_kerb_height_lowered">Šiek tiek aukščiau nei kelio danga</string>
     <string name="quest_kerb_height_raised">Aukštas bortelis</string>
     <string name="quest_kerb_height_lowered_ramp">Rampa prie šaligatvio</string>
-    <string name="quest_lanes_answer_lanes_description2">Nurodykite bendrą pažymėtų eismo juostų (abiem kryptimis), kuriomis gali važiuoti automobiliai, skaičių. Dviračių ir specialios automobilių stovėjimo juostos neskaičiuojamos.
-Jei kuri nors juosta skirta autobusams, palikite pastabą.</string>
     <string name="quest_lanes_answer_lanes_description_one_side2">Nurodykite pažymėtų eismo juostų, kuriomis gali važiuoti automobiliai, skaičių. Dviračių ir specialios automobilių stovėjimo juostos neskaičiuojamos.
 Jei kuri nors juosta skirta autobusams, palikite pastabą.</string>
     <string name="quest_surface_value_rock">Akmuo</string>
@@ -781,7 +769,6 @@ Jei kuri nors juosta skirta autobusams, palikite pastabą.</string>
     <string name="quest_shop_gone_replaced_answer">A(n)...</string>
     <string name="quest_shop_gone_replaced_answer_hint">Įveskite čia vietą</string>
     <string name="quest_shop_vacant_type_title">Ši parduotuvė buvo laisva. Kas čia yra dabar?</string>
-    <string name="quest_lanes_answer_lanes_odd2">Kiekvienoje pusėje yra skirtingas eismo juostų skaičius</string>
     <string name="default_disabled_msg_go_inside_regional_warning">Šis užduočių tipas yra išjungtas pagal numatytuosius nustatymus, nes kai kuriuose regionuose jis yra nenaudingas, o tam, kad galėtumėte atsakyti į tokio tipo užduotį, greičiausiai turėsite patekti į tą vietą.</string>
     <string name="quest_dietType_explanation_kosher">Košeriniai produktai turi būti ruošiami pagal specialias taisykles, o kašruto sertifikavimo agentūros pažymi, kad produktai atitinka reikalavimus.</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">Nėra dviračių juostos ar tako</string>

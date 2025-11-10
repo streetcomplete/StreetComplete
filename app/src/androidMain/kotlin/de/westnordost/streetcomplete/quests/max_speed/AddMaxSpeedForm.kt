@@ -34,7 +34,6 @@ import de.westnordost.streetcomplete.util.ktx.advisorySpeedLimitSignLayoutResId
 import de.westnordost.streetcomplete.util.ktx.intOrNull
 import de.westnordost.streetcomplete.util.ktx.livingStreetSignDrawableResId
 import de.westnordost.streetcomplete.util.ktx.showKeyboard
-import kotlin.text.split
 
 class AddMaxSpeedForm : AbstractOsmQuestForm<MaxSpeedAnswer>() {
 

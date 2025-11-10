@@ -20,10 +20,7 @@
     <string name="quest_leave_new_note_yes">Оставите напомену</string>
     <string name="quest_leave_new_note_no">Сакриј</string>
     <string name="quest_streetName_title">Који назив носи овај пут?</string>
-    <string name="quest_streetName_description">како је написано на знаку, скраћенице се уписују у пуном облику:</string>
     <string name="quest_streetName_answer_noName_confirmation_description">Понекад је улични знак само на једном крају улице. Имајте на уму да можда неће бити додатних знакова за споредне улице које припадају већој. Обично свака улица са кућама има име.</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_description">Ако назив може бити написан без скраћеница, онда га треба проширити. Многе уобичајене скраћенице се аутоматски проширују док куцате, али вероватно не све.</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">Без скраћеница</string>
     <string name="quest_openingHours_start_time">време отварања</string>
     <string name="quest_openingHours_end_time">време затварања</string>
     <string name="quest_openingHours_add_months">Додај месеце</string>
@@ -57,7 +54,6 @@
     <string name="version_banned_message">Ова StreetComplet верзија је престара. Ажурирајте је!</string>
     <string name="no_gps_no_quests">Укључите локацију да би аутоматски тражили задатке око вас</string>
     <string name="later">Касније</string>
-    <string name="quest_streetName_answer_noProperStreet_link">Само повезује два пута</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">Нешто друго (оставите напомену)</string>
     <string name="about_title_privacy_statement">Изјава о приватности</string>
     <string name="quest_openingHours_public_holidays">Државним празницима</string>
@@ -196,7 +192,6 @@
     <string name="quest_sport_roller_skating">Ролери</string>
     <string name="quest_wheelchairAccess_limited_description_business">„Делимично“ значи да има мање од једног степеника висине за приступ, и да је већина просторија унутар доступна инвалидским колицима.</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">„Делимично“ значи да има мање од једног степеника висине за приступ.</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">Да ли је то скраћеница у називу %1$s?</string>
     <string name="quest_recycling_type_title">О каквој врсти рециклаже се ради?</string>
     <string name="recycling_centre">Рециклажни центар</string>
     <string name="overground_recycling_container">Контејнер</string>
@@ -323,10 +318,6 @@
     <string name="quest_cycleway_answer_contraflow_cycleway">И са друге стране је бициклистичка стаза…</string>
     <string name="quest_openingHours_emptyAnswer">Морате описати шта је на знаку. Ако га нема, питајте унутра за радно време.</string>
     <string name="quest_cycleway_value_none_but_no_oneway">не постоји, али бициклисти могу користити пут у оба смера</string>
-    <string name="quest_streetName_answer_noName_question">Зашто нема име?</string>
-    <string name="quest_streetName_answer_noProperStreet_service2">То је нешто попут прилазног пута или пролаза за паркинг</string>
-    <string name="quest_streetName_answer_noProperStreet_track2">То је пољски или шумски пут</string>
-    <string name="quest_streetName_answer_noName_noname">Ниједно од наведеног, једноставно нема име</string>
     <string name="quest_wheelchairAccess_description_toilets">Овакав знак може бити видљив уколико је тоалет доступан за инвалидска колица.
 „Делимично“ значи да инвалидска колица могу ући и користити тоалет, али да нема рукохвата или прилагођеног лавабоа.</string>
     <string name="map_btn_create_note">Оставите напомену</string>
@@ -708,7 +699,7 @@
     <string name="resurvey_intervals_default">Уобичајено</string>
     <string name="resurvey_intervals_more_often">Питај чешће</string>
     <string name="about_title_translate">Помозите у преводу овог програма</string>
-    <string name="about_description_translate">%1$s је преведен %2$d%%</string>
+    <string name="about_description_translate">%1$s је преведен %2$d%</string>
     <string name="quest_oneway2_title">Да ли је ово једносмерна улица? У ком смеру?</string>
     <string name="quest_oneway2_dir">Једносмерна у овом смеру</string>
     <string name="quest_oneway2_no_oneway">Није једносмерна</string>
@@ -754,7 +745,6 @@
     <string name="quest_charging_station_capacity_title">Колико се аутомобила може пунити истовремено на овој станици за пуњење?</string>
     <string name="link_disaster_ninja_description">Карта која показује недавне природне катастрофе, занимљива картографима хуманитарних организација. Такође, показује мноштво статистичких података за анализу колико су добро картирана и ажурирана места.</string>
     <string name="quest_lanes_title">Колико трака за аутомобиле има овај пут?</string>
-    <string name="quest_lanes_answer_lanes">Означене траке</string>
     <string name="quest_lanes_answer_noLanes">Нема означених трака</string>
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">Има двосмерну траку за скретање лево</string>
     <string name="quest_address_answer_no_housenumber_message2b">Да ли је ово тачно?</string>
@@ -766,8 +756,6 @@
     <string name="quest_kerb_height_lowered">Нешто виши од пута</string>
     <string name="quest_kerb_height_raised">Високи ивичњак</string>
     <string name="quest_kerb_height_lowered_ramp">Спуштени ивичњак</string>
-    <string name="quest_lanes_answer_lanes_description2">Наведите укупан број означених трака (у оба смера) које се користе у саобраћају. Дакле, бициклистичке стазе и паркиралишта се не рачунају.
-Ако су неке траке за јавни превоз, оставите напомену.</string>
     <string name="quest_lanes_answer_lanes_description_one_side2">Наведите број означених трака које се овде користе у саобраћају. Дакле, бициклистичке стазе и паркиралишта се не рачунају.
 Ако су неке траке за јавни превоз, оставите напомену.</string>
     <string name="quest_surface_value_rock">Камење</string>
@@ -782,7 +770,6 @@
     <string name="quest_shop_gone_replaced_answer">То је…</string>
     <string name="quest_shop_gone_replaced_answer_hint">Упишите врсту радње и сл.</string>
     <string name="quest_shop_vacant_type_title">Ова продавница је напуштена. Шта је сада овде?</string>
-    <string name="quest_lanes_answer_lanes_odd2">Број трака се разликује по смеровима</string>
     <string name="default_disabled_msg_go_inside_regional_warning">Ова врста задатка је онемогућена јер у неким регијама није корисна. Вероватно бисте морали ући унутра како би могли да одговорите на овакав задатак.</string>
     <string name="quest_dietType_explanation_kosher">Кошер производи се морају припремати према посебним правилима, а производи у складу са кашрутом су означени сертификатом.</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">Уопште нема бициклистичке стазе</string>

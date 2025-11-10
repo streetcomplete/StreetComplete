@@ -32,7 +32,7 @@ class AddBarrierOnPath : OsmElementQuestType<BarrierType>, AndroidQuest {
 
     override val changesetComment = "Specify how paths and barriers intersect"
     override val wikiLink = "Key:barrier"
-    override val icon = R.drawable.ic_quest_barrier_on_path
+    override val icon = R.drawable.quest_barrier_on_path
     override val achievements = listOf(PEDESTRIAN, WHEELCHAIR, OUTDOORS)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_barrier_path_intersection

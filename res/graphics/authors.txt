@@ -321,8 +321,9 @@ quest/
     car_bumpy.svg                    modified from Twemoji: U+1F698
     car_wash.svg                     modified from Twemoji: U+1F698
     car_air_compressor.svg
-    car_charger.svg                  parts taken from Twemoji: U+1F698 and U+1F50C
-    car_charger_capacity.svg         parts taken from Twemoji: U+1F50C
+    charger_operator.svg             parts taken from Twemoji: U+1FAF4
+    car_charger_capacity.svg         parts taken from Twemoji: U+1F698 and U+1F50C
+    charger.svg                      parts taken from Twemoji: U+1F50C
     caravan.svg
     card.svg
     cash.svg
@@ -354,6 +355,7 @@ quest/
     kerb_type.svg
     kosher.svg                       Mateusz Konieczny (CC0, if even qualifies for copyright)
     label.svg
+    label_thing.svg
     lantern.svg
     laundry.svg
     leaf.svg
@@ -599,7 +601,7 @@ smoothness/
     scooter.svg                      Twemoji: U+1F6F4
     skateboard.svg                   Twemoji: U+1F6F9
     suv.svg                          modified from Twemoji: U+1F699
-    tractor.svg                      Twemoji: U+1F69C
+    tractor.svg
 
 speech bubbles/
     speech_bubble_left.9.svg

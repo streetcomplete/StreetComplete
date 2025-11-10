@@ -20,10 +20,7 @@
     <string name="quest_leave_new_note_yes">اترك ملاحظة</string>
     <string name="quest_leave_new_note_no">لا، فقط قم بالإخفاء</string>
     <string name="quest_streetName_title">ما اسم هذا الطريق؟</string>
-    <string name="quest_streetName_description">كما هو مكتوب على لافتة الشارع، اختصارات الاسم مشمولة:</string>
     <string name="quest_streetName_answer_noName_confirmation_description">في بعض الأحيان تكون لافتة الشارع في أحد نهايتي الشارع. لاحظ أيضًا أنه قد لا توجد لافتات شوارع إضافية للشوارع الجانبية التي تنتمي إلى شارع أكبر. وفي العادة فإن أي شارع به منازل له اسم.</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_description">إذا كان بالامكان كتابة الاسم بدون اختصاره فهذا أفضل، كما أن العديد من اختصارات الأسماء الشائعة يتم إكمالها تلقائياً عندما تكتبها، وهذا لا ينطبق على كل الاختصارات.</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">لا يوجد اختصار للاسم</string>
     <string name="quest_openingHours_start_time">وقت الافتتاح</string>
     <string name="quest_openingHours_end_time">وقت الإغلاق</string>
     <string name="quest_openingHours_add_months">إضافة الأشهر</string>
@@ -57,7 +54,6 @@
     <string name="version_banned_message">هذا الإصدار من StreetComplete قديم جدا. حدثه رجاءً!</string>
     <string name="no_gps_no_quests">للبحث عن أسئلة حول مكانك الحالي بشكل تلقائيا، قم بتشغيل خدمة المواقع من الإعدادات</string>
     <string name="later">في وقت لاحق</string>
-    <string name="quest_streetName_answer_noProperStreet_link">إنها وصلة بين طريقين</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">شيء آخر (ترك ملاحظة)</string>
     <string name="about_title_privacy_statement">بيان الخصوصية</string>
     <string name="quest_openingHours_public_holidays">الإجازات رسمية</string>
@@ -199,7 +195,6 @@
     <string name="quest_sport_roller_skating">التزلج بحذاء العجلات</string>
     <string name="quest_wheelchairAccess_limited_description_business">يعني جزئيًا أنه لا يوجد أكثر من عتبة واحدة للوصول إلى المكان وأن معظم الغرف بالداخل يمكن الوصول إليها بواسطة الكراسي المتحركة.</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">تعني جزئيًا أنه لا يوجد أكثر من عتبة واحدة للوصول إليه.</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">اختصار في الاسم %1$s؟</string>
     <string name="quest_recycling_type_title">ما نوع مرفق إعادة التدوير هذا؟</string>
     <string name="recycling_centre">مركز</string>
     <string name="overground_recycling_container">حاوية - وعاء</string>
@@ -326,10 +321,6 @@
     <string name="quest_cycleway_answer_contraflow_cycleway">مسار دراجات على الجانب الآخر أيضًا…</string>
     <string name="quest_openingHours_emptyAnswer">يجب أن تصف ما هو على اللافتة. إذا لم تكن هناك لافتة، يجب أن تسأل عن ساعات العمل في الداخل.</string>
     <string name="quest_cycleway_value_none_but_no_oneway">لا شيء، ولكن يمكن لراكبي الدراجات استخدام الطريق في كلا الاتجاهين</string>
-    <string name="quest_streetName_answer_noName_question">لماذا هذا الطريق ليس له اسم؟</string>
-    <string name="quest_streetName_answer_noProperStreet_service2">يبدو مثل ممر أو زقاق لوقوف السيارات</string>
-    <string name="quest_streetName_answer_noProperStreet_track2">إنه مسار زراعي أو غابات</string>
-    <string name="quest_streetName_answer_noName_noname">لا شيء مما سبق، ببساطة ليس له اسم</string>
     <string name="quest_wheelchairAccess_description_toilets">قد يكون الرسم التخطيطي لمستخدم الكرسي المتحرك مثل هذا مرئيًا إذا كان من الممكن الوصول إلى الحمامات.
 تعني كلمة "جزئيًا" أن الكرسي المتحرك يمكنه دخول المرحاض واستخدامه، ولكن لا يوجد درابزين أو حوض مناسب.</string>
     <string name="map_btn_create_note">أنشئ ملاحظة جديدة</string>
@@ -756,7 +747,6 @@
     <string name="quest_charging_station_capacity_title">كم عدد السيارات التي يمكن شحنها في محطة الشحن هذه في نفس الوقت؟</string>
     <string name="link_disaster_ninja_description">الخريطة التي تظهر الكوارث الطبيعية الأخيرة، مثيرة للاهتمام لواضعي الخرائط الإنسانية. يعرض أيضًا العديد من الإحصائيات الشيقة لتحليل مدى دقة وحداثة الأماكن.</string>
     <string name="quest_lanes_title">كم عدد مسارات الطريق الواحد للسيارات في هذا الطريق؟</string>
-    <string name="quest_lanes_answer_lanes">المسارات التي بعلامات ولافتات مرورية</string>
     <string name="quest_lanes_answer_noLanes">لا توجد مسارات بعلامات ولافتات مرورية</string>
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">يوجد مسار ذو اتجاهين للانعطاف إلى اليسار</string>
     <string name="quest_address_answer_no_housenumber_message2b">هل هذا صحيح؟</string>
@@ -768,8 +758,6 @@
     <string name="quest_kerb_height_lowered">أعلى قليلاً من سطح الطريق</string>
     <string name="quest_kerb_height_raised">رصيف مرتفع</string>
     <string name="quest_kerb_height_lowered_ramp">منحدر الرصيف</string>
-    <string name="quest_lanes_answer_lanes_description2">حدد العدد الإجمالي للمسارات المحددة (كلا الاتجاهين) التي يمكن استخدامها من خلال حركة مرور السيارات. لذلك، لا يتم احتساب مسارات الدراجات والمسارات المخصصة لوقوف السيارات.
-إذا كانت هناك أي مسارات محجوزة للحافلات، فيرجى ترك ملاحظة بدلاً من ذلك.</string>
     <string name="quest_lanes_answer_lanes_description_one_side2">حدد عدد المسارات المحددة التي يمكن استخدامها من قبل حركة مرور السيارات هنا. لذلك، لا يتم احتساب مسارات الدراجات والمسارات المخصصة لوقوف السيارات.
 إذا كانت أي مسارات محجوزة للحافلات، فيرجى ترك ملاحظة بدلاً من ذلك.</string>
     <string name="quest_surface_value_rock">صخر</string>
@@ -784,7 +772,6 @@
     <string name="quest_shop_gone_replaced_answer"> </string>
     <string name="quest_shop_gone_replaced_answer_hint">اكتب نوع المكان هنا</string>
     <string name="quest_shop_vacant_type_title">هذا المتجر كان فارغًا. ماذا يوجد هنا الآن؟</string>
-    <string name="quest_lanes_answer_lanes_odd2">يختلف عدد المسارات لكل جانب</string>
     <string name="default_disabled_msg_go_inside_regional_warning">يتم تعطيل نوع المهمة هذا افتراضيًا لأنه غير مفيد في بعض المناطق ومن المحتمل أن تضطر إلى دخول المكان لتتمكن من الإجابة على مهمة من هذا النوع.</string>
     <string name="quest_dietType_explanation_kosher">يجب تحضير منتجات الكوشير وفقًا لقواعد خاصة، مع قيام وكالات اعتماد الكشروت بوضع علامة على المنتجات وفقًا للامتثال.</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">لا يوجد مسار دراجات على الإطلاق</string>

@@ -21,11 +21,10 @@ class AddWheelchairAccessBusiness : OsmFilterQuestType<WheelchairAccess>(), Andr
           and (name or brand or noname = yes or name:signed = no)
           and (
             shop and shop !~ no|vacant
-            or amenity = parking and parking = multi-storey
+            or amenity = parking and parking ~ multi-storey|underground|rooftop
             or amenity = recycling and recycling_type = centre
             or amenity = social_facility and social_facility ~ food_bank|clothing_bank|soup_kitchen|dairy_kitchen
-            or tourism = information and information = office
-            or natural = cave_entrance and fee=yes
+            or tourism = information and information ~ office|visitor_centre
             or """ +
 
         // The common list is shared by the opening hours quest and the wheelchair quest.
@@ -118,7 +117,7 @@ class AddWheelchairAccessBusiness : OsmFilterQuestType<WheelchairAccess>(), Andr
 
     override val changesetComment = "Survey wheelchair accessibility of places"
     override val wikiLink = "Key:wheelchair"
-    override val icon = R.drawable.ic_quest_wheelchair_shop
+    override val icon = R.drawable.quest_wheelchair_shop
     override val isReplacePlaceEnabled = true
     override val achievements = listOf(WHEELCHAIR)
     override val defaultDisabledMessage = Res.string.default_disabled_msg_go_inside

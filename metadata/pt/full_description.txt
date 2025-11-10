@@ -1,5 +1,1 @@
-Ajude a melhorar o OpenStreetMap com o StreetComplete!
-
-Esta aplicação, muito fácil de utilizar, procura dados que faltam num dado local e mostra-os no mapa como missões. Resolva cada uma destas missões respondendo a questões simples para adicionar ao mapa mais informação útil.
-
-A informação que submeter nesta aplicação é enviada diretamente para o OpenStreetMap com a sua conta de utilizador, sem ser necessário utilizar outro programa.
+Ajude a melhorar o OpenStreetMap com o StreetComplete! Esta aplicação encontra dados cartográficos em falta na sua vizinhança e mostra-os num mapa como missões. Resolva cada missão visitando o local e responda a uma pergunta simples para atualizar o mapa. As informações que introduzir são adicionadas diretamente ao OpenStreetMap em seu nome, sem necessidade de utilizar outro editor.

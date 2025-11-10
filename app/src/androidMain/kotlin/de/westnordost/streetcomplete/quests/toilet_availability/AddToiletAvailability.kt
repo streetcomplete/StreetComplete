@@ -25,7 +25,7 @@ class AddToiletAvailability : OsmFilterQuestType<Boolean>(), AndroidQuest {
     """
     override val changesetComment = "Survey toilet availabilities"
     override val wikiLink = "Key:toilets"
-    override val icon = R.drawable.ic_quest_toilets
+    override val icon = R.drawable.quest_toilets
     override val achievements = listOf(CITIZEN)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_toiletAvailability_title

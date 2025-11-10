@@ -20,10 +20,7 @@
     <string name="quest_leave_new_note_yes">Lasă notă</string>
     <string name="quest_leave_new_note_no">Ascunde</string>
     <string name="quest_streetName_title">Care este numele străzii?</string>
-    <string name="quest_streetName_description">cum este scris pe indicator, abrevierile sunt extinse:</string>
     <string name="quest_streetName_answer_noName_confirmation_description">Uneori indicatorul rutier este doar la un capăt al străzii. Indicatoarele pot lipsi pentru străzile lăturalnice care fac parte dintr-o stradă mai mare. De obicei, orice stradă cu case are un nume.</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_description">Dacă numele poate fi scris fără abrevieri, atunci ar trebui extins. Multe dintre abrevierile comune sunt extinse automat pe măsură ce introduci text, dar probabil nu toate.</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">Nicio abreviere</string>
     <string name="quest_openingHours_start_time">ora de deschidere</string>
     <string name="quest_openingHours_end_time">ora de închidere</string>
     <string name="quest_openingHours_add_months">Adaugă luni</string>
@@ -57,7 +54,6 @@
     <string name="version_banned_message">Versiunea StreetComplete este prea veche. Vă rugăm actualizați!</string>
     <string name="no_gps_no_quests">Pentru a căuta automat noi misiuni în jurul dumneavoastră, porniți serviciul de localizare</string>
     <string name="later">Mai târziu</string>
-    <string name="quest_streetName_answer_noProperStreet_link">Doar face conexiunea între două drumuri</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">Altceva (lăsați un comentariu)</string>
     <string name="about_title_privacy_statement">Declarație de confidențialitate</string>
     <string name="quest_openingHours_public_holidays">Sărbători legale</string>
@@ -196,7 +192,6 @@ Dacă nu există indicatoare de-a lungul întregii străzi care se aplică pentr
     <string name="quest_sport_roller_skating">Patine cu rotile</string>
     <string name="quest_wheelchairAccess_limited_description_business">Parțial înseamnă că nu este mai mult de o treaptă înaltă până la gleznă pentru a intra în locație și că majoritatea spațiilor din interior sunt accesibile unui scaun cu rotile.</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">Parțial înseamnă că nu este mai mult de o treaptă înaltă până la gleznă pentru a-l accesa.</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">Există abrevieri în numele %1$s?</string>
     <string name="quest_recycling_type_title">Ce tip de unitate pentru reciclare este?</string>
     <string name="recycling_centre">Centru de reciclare</string>
     <string name="overground_recycling_container">Container</string>
@@ -323,10 +318,6 @@ Dacă nu există indicatoare de-a lungul întregii străzi care se aplică pentr
     <string name="quest_cycleway_answer_contraflow_cycleway">De asemenea, bandă pentru ciclism pe cealaltă parte …</string>
     <string name="quest_openingHours_emptyAnswer">Trebuie să descrieți ce este pe semn. Dacă nu este un semn, ar trebui să întrebați înăuntru care este programul.</string>
     <string name="quest_cycleway_value_none_but_no_oneway">niciuna, dar cicliștii pot utiliza drumul în ambele direcții</string>
-    <string name="quest_streetName_answer_noName_question">De ce nu are nume?</string>
-    <string name="quest_streetName_answer_noProperStreet_service2">Este ceva asemănător cu o alee sau un culoar de parcare</string>
-    <string name="quest_streetName_answer_noProperStreet_track2">Este un drum agricol sau forestier</string>
-    <string name="quest_streetName_answer_noName_noname">Niciuna din cele de mai sus, pur și simplu nu are nume</string>
     <string name="quest_wheelchairAccess_description_toilets">Un indicator ce afișează un scaun cu rotile, ca acesta, ar putea exista dacă toaleta este accesibilă.
 Parțial înseamnă că o persoană cu scaun cu rotile poate intra și folosi toaleta, dar nu este prezentă nici o bară de susținere sau vas de wc adaptat.</string>
     <string name="map_btn_create_note">Crează o notă nouă</string>
@@ -707,7 +698,7 @@ activitate</string>
     <string name="resurvey_intervals_default">Standard</string>
     <string name="resurvey_intervals_more_often">Mai des</string>
     <string name="about_title_translate">Ajută la traducerea acestei aplicații</string>
-    <string name="about_description_translate">%1$s este tradusă %2$d%%</string>
+    <string name="about_description_translate">%1$s este tradusă %2$d%</string>
     <string name="quest_oneway2_title">Este o stradă cu sens unic? În ce direcție?</string>
     <string name="quest_oneway2_dir">Sens unic în această direcție</string>
     <string name="quest_oneway2_no_oneway">Nu este sens unic</string>
@@ -753,7 +744,6 @@ activitate</string>
     <string name="quest_charging_station_capacity_title">Câte mașini pot fi încărcate simultan?</string>
     <string name="link_disaster_ninja_description">Hartă ce prezintă dezastre naturale recente, de interes pentru cartografii umanitari. De asemenea, arată multe statistici interesante pentru a analiza cât de bine sunt cartografiate și actualizate locurile.</string>
     <string name="quest_lanes_title">Câte benzi destinate autovehiculelor are drumul?</string>
-    <string name="quest_lanes_answer_lanes">Benzi marcate</string>
     <string name="quest_lanes_answer_noLanes">Fără benzi marcate</string>
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">Este un viraj la stânga cu două benzi</string>
     <string name="quest_address_answer_no_housenumber_message2b">Este corect?</string>
@@ -765,8 +755,6 @@ activitate</string>
     <string name="quest_kerb_height_lowered">Un pic mai sus decât suprafața drumului</string>
     <string name="quest_kerb_height_raised">Bordură înaltă</string>
     <string name="quest_kerb_height_lowered_ramp">Bordură înclinată</string>
-    <string name="quest_lanes_answer_lanes_description2">Specificați numărul total de benzi marcate (în ambele sensuri) ce pot fi utilizate de traficul auto. Benzile de bicicletă și benzile de parcare nu se numără.
-Dacă există benzi rezervate autobuzelor, vă rugăm să lăsați o notă.</string>
     <string name="quest_lanes_answer_lanes_description_one_side2">Specificați numărul total de benzi marcate ce pot fi utilizate de traficul auto. Benzile de bicicletă și benzile de parcare nu se numără.
 Dacă există benzi rezervate autobuzelor, vă rugăm să lăsați o notă.</string>
     <string name="quest_surface_value_rock">Piatră</string>
@@ -781,7 +769,6 @@ Dacă există benzi rezervate autobuzelor, vă rugăm să lăsați o notă.</str
     <string name="quest_shop_gone_replaced_answer">Un/O...</string>
     <string name="quest_shop_gone_replaced_answer_hint">Ce fel de loc este aici</string>
     <string name="quest_shop_vacant_type_title">Magazinul era neocupat. Ce se află acum aici?</string>
-    <string name="quest_lanes_answer_lanes_odd2">Numărul de benzi diferă pe fiecare parte</string>
     <string name="default_disabled_msg_go_inside_regional_warning">Acest tip de misiune este dezactivat implicit, fiindcă nu este utilă în unele regiuni și probabil va trebui să intrați în locație pentru a o rezolva.</string>
     <string name="quest_dietType_explanation_kosher">Produsele Kosher trebuie să fie pregătite în conformitate cu reguli speciale, agențiile de certificare kashrut marcând produsele conforme.</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">Nu există bandă de biciclete sau pistă</string>

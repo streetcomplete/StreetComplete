@@ -23,7 +23,6 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.intl.Locale
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.ui.common.TextField2
 import de.westnordost.streetcomplete.ui.common.TextFieldStyle
@@ -35,7 +34,7 @@ import org.jetbrains.compose.ui.tooling.preview.Preview
 import kotlin.math.absoluteValue
 
 /**
- * Input single-line [TextField][androidx.compose.material.TextField] for unsigned decimal numbers.
+ * Input single-line [TextField][androidx.compose.material.TextField] for decimal numbers.
  *
  * Specify [maxIntegerDigits] and [maxFractionDigits] to limit the maximum input length.
  * */
@@ -46,6 +45,7 @@ fun DecimalInput(
     modifier: Modifier = Modifier,
     maxIntegerDigits: Int = Int.MAX_VALUE,
     maxFractionDigits: Int = Int.MAX_VALUE,
+    isUnsigned: Boolean = false,
     style: TextFieldStyle = TextFieldStyle.Filled,
     enabled: Boolean = true,
     readOnly: Boolean = false,
@@ -72,7 +72,11 @@ fun DecimalInput(
         )
     }
     // number value as text
-    val textValue = value?.let { formatter.format(it.absoluteValue) }.orEmpty()
+    val textValue = if (value != null) {
+        formatter.format(if (isUnsigned) value.absoluteValue else value)
+    } else {
+        ""
+    }
 
     // initialize the text state once, then on number text change, change only the text (not the
     // caret position etc.).
@@ -105,7 +109,8 @@ fun DecimalInput(
             else if (newTextFieldValueState.text.isOnlyDecimalDigits(
                     decimalSeparator = formatter.decimalSeparator,
                     maxIntegerDigits = maxIntegerDigits,
-                    maxFractionDigits = maxFractionDigits
+                    maxFractionDigits = maxFractionDigits,
+                    isUnsigned = isUnsigned,
                 )) {
                 textFieldValueState = newTextFieldValueState
                 // only report new value if it actually changed. E.g. "0" -> "0." -> "0.0" both are
@@ -143,13 +148,33 @@ fun DecimalInput(
 private fun String.isOnlyDecimalDigits(
     decimalSeparator: Char,
     maxIntegerDigits: Int,
-    maxFractionDigits: Int
+    maxFractionDigits: Int,
+    isUnsigned: Boolean,
 ): Boolean {
-    if (!all { it.isDigit() || it == decimalSeparator }) return false
-    val texts = split(decimalSeparator)
-    if (texts.size > 2 || texts.isEmpty()) return false
-    if (texts[0].length > maxIntegerDigits) return false
-    if (texts.size > 1 && texts[1].length > maxFractionDigits) return false
+    var hasSeparator = false
+    var integerDigits = 0
+    var fractionDigits = 0
+    for ((i, char) in this.withIndex()) {
+        if (char == '-' || char == '+') {
+            // allowed only at the very front. E.g. 12-3 not allowed
+            if (i != 0) return false
+            // not allowed if unsigned
+            if (isUnsigned) return false
+        }
+        else if (char.isDigit()) {
+            if (hasSeparator) fractionDigits++
+            else integerDigits++
+
+            if (integerDigits > maxIntegerDigits) return false
+            if (fractionDigits > maxFractionDigits) return false
+        }
+        else if (char == decimalSeparator) {
+            // several decimal separators not allowed, e.g. 12.3.4
+            if (hasSeparator) return false
+
+            hasSeparator = true
+        }
+    }
     return true
 }
 
@@ -164,7 +189,6 @@ private fun DecimalInputPreview() {
             onValueChange = { number = it },
             maxIntegerDigits = 2,
             maxFractionDigits = 2,
-            textStyle = LocalTextStyle.current.copy(textAlign = TextAlign.Center),
             modifier = Modifier.width(80.dp),
         )
         Text(number?.toString().orEmpty(), Modifier.padding(16.dp))

@@ -147,9 +147,6 @@
         "amenity/clock": {
           "name": "Reló"
         },
-        "amenity/college": {
-          "name": "Terrén de colexu universitariu"
-        },
         "amenity/community_centre": {
           "name": "Centru comunitariu",
           "terms": "centru social,atenéu"
@@ -186,10 +183,6 @@
         "amenity/drinking_water": {
           "name": "Agua potable",
           "terms": "fonte,bebederu"
-        },
-        "amenity/driving_school": {
-          "name": "Autoescuela",
-          "terms": "carné,permisu,llicencia,conducir,conducción,escuela"
         },
         "amenity/embassy": {
           "name": "Embaxada"
@@ -234,10 +227,6 @@
         },
         "amenity/motorcycle_parking": {
           "name": "Aparcaderu de motos"
-        },
-        "amenity/music_school": {
-          "name": "Academia de música",
-          "terms": "conservatoriu,escuela de música"
         },
         "amenity/nightclub": {
           "name": "Discoteca",
@@ -310,10 +299,6 @@
           "name": "Vertíu de depósitos d'autocaravanes",
           "terms": "depósitu caravanes,saneamientru caravanes"
         },
-        "amenity/school": {
-          "name": "Antoxana d'escuela",
-          "terms": "terrén d'escuela,zona escolar"
-        },
         "amenity/shelter": {
           "name": "Abellugu"
         },
@@ -352,10 +337,6 @@
         "amenity/townhall": {
           "name": "Edificiu municipal",
           "terms": "casa del conceyu,ayuntamientu"
-        },
-        "amenity/university": {
-          "name": "Campus universitariu",
-          "terms": "terrén universitariu"
         },
         "amenity/vending_machine": {
           "name": "Máquina de venta automática",
@@ -733,31 +714,13 @@
           "name": "Desfibrilador",
           "terms": "emerxencia,corazón,ataque cardiacu"
         },
-        "emergency/designated": {
-          "name": "Accesu d'emerxencia designáu"
-        },
-        "emergency/destination": {
-          "name": "Accesu d'emerxencia a destín"
-        },
         "emergency/fire_hydrant": {
           "name": "Toma de mangueres",
           "terms": "apagafueos,fueu,boca de riegu"
         },
-        "emergency/no": {
-          "name": "Accesu d'emerxencia Non"
-        },
-        "emergency/official": {
-          "name": "Accesu d'emerxencia oficial"
-        },
         "emergency/phone": {
           "name": "Teléfonu d'emerxencia",
           "terms": "s.o.s.,teléfonu d'ayuda,teléfonu de socorru"
-        },
-        "emergency/private": {
-          "name": "Accesu d'emerxencia priváu"
-        },
-        "emergency/yes": {
-          "name": "Accesu d'emerxencia Si"
         },
         "ford": {
           "name": "Vau"

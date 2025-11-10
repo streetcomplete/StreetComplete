@@ -43,7 +43,7 @@ class AddSmoking : OsmFilterQuestType<SmokingAllowed>(), AndroidQuest {
     """
     override val changesetComment = "Survey whether smoking is allowed or prohibited"
     override val wikiLink = "Key:smoking"
-    override val icon = R.drawable.ic_quest_smoking
+    override val icon = R.drawable.quest_smoking
     override val isReplacePlaceEnabled = true
     override val achievements = listOf(CITIZEN)
     override val defaultDisabledMessage = Res.string.default_disabled_msg_go_inside_regional_warning

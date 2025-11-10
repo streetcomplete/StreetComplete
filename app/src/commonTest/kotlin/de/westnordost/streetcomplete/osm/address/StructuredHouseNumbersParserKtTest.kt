@@ -2,9 +2,7 @@ package de.westnordost.streetcomplete.osm.address
 
 import kotlin.test.Test
 import kotlin.test.assertEquals
-import kotlin.test.assertFalse
 import kotlin.test.assertNull
-import kotlin.test.assertTrue
 
 class StructuredHouseNumbersParserKtTest {
 

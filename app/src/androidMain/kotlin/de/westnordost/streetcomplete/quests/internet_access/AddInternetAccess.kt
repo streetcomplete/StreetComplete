@@ -18,6 +18,7 @@ class AddInternetAccess : OsmFilterQuestType<InternetAccess>(), AndroidQuest {
           amenity ~ library|community_centre|youth_centre
           or tourism ~ hotel|guest_house|motel|hostel|alpine_hut|apartment|resort|caravan_site|chalet|wilderness_hut
           or tourism = camp_site and backcountry != yes and camp_site != basic
+          or aeroway = terminal
         )
         and access !~ no|private
         and (
@@ -31,7 +32,7 @@ class AddInternetAccess : OsmFilterQuestType<InternetAccess>(), AndroidQuest {
 
     override val changesetComment = "Specify whether place provides internet access"
     override val wikiLink = "Key:internet_access"
-    override val icon = R.drawable.ic_quest_wifi
+    override val icon = R.drawable.quest_wifi
     override val achievements = listOf(CITIZEN)
     override val defaultDisabledMessage = Res.string.default_disabled_msg_go_inside
 

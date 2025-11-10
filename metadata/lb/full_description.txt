@@ -1,5 +1,1 @@
-Hëlleft OpenStreetMap mat StreetComplete ze verbesseren!
-
-Dës App fënnt onkomplett an erweiterbar Daten an Ärer Regioun a weist se op enger Kaart als Marker un. Jiddwer vun dësen ass léistbar duerch eng einfach Fro ze beäntweren fir d'Info op der Plaz ze kompletéieren.
-
-D'Info, déi Dir agitt, gëtt dann direkt op den OpenStreetMap an Ärem Numm bäigefüügt, ouni datt Dir eng aaner app benotze musst.
+Hëlleft fir OpenStreetMap mat StreetComplete besser ze maachen! Dës App fënnt Kaartendonnéeën an Ärer Ëmgéigend, déi feelen, a weist se op enger Kaart als Aufgaben un. Jiddwer Aufgab kann doduerch geléist ginn, datt Dir op d'Plaz gitt an eng einfach Fro beäntwert fir d'Kaart ze aktualiséieren. D'Informatioun, déi Dir agitt, gëtt dann direkt ënner Ärem Numm op OpenStreetMap gesat, ouni datt Dir en aneren Editeur benotze musst.
