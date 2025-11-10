@@ -84,6 +84,7 @@ fun StreetParking.dialogPainter(isUpsideDown: Boolean): Painter = when (this) {
 /** Icon that should be shown as the floating icon in the street side select puzzle */
 val StreetParking.floatingIcon: DrawableResource? get() = when (this) {
     StreetParking.Separate -> Res.drawable.floating_separate
+    StreetParking.None -> Res.drawable.floating_no
     else -> null
 }
 
