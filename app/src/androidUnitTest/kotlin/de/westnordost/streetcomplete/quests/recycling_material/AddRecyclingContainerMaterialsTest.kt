@@ -69,7 +69,7 @@ class AddRecyclingContainerMaterialsTest {
                 StringMapEntryAdd("recycling:shoes", "yes"),
                 StringMapEntryAdd("recycling:paper", "yes")
             ),
-            questType.answerApplied(RecyclingMaterials(listOf(SHOES, PAPER)))
+            questType.answerApplied(RecyclingMaterials(setOf(SHOES, PAPER)))
         )
     }
 
@@ -81,7 +81,7 @@ class AddRecyclingContainerMaterialsTest {
                 StringMapEntryAdd("check_date:recycling", nowAsCheckDateString())
             ),
             questType.answerAppliedTo(
-                RecyclingMaterials(listOf(CLOTHES, PAPER)),
+                RecyclingMaterials(setOf(CLOTHES, PAPER)),
                 mapOf(
                     "recycling:paper" to "yes",
                     "recycling:clothes" to "yes"
@@ -99,7 +99,7 @@ class AddRecyclingContainerMaterialsTest {
                 StringMapEntryDelete("recycling:green_waste", "yes")
             ),
             questType.answerAppliedTo(
-                RecyclingMaterials(listOf(SHOES, PAPER)),
+                RecyclingMaterials(setOf(SHOES, PAPER)),
                 mapOf(
                     "recycling:paper" to "yes",
                     "recycling:cooking_oil" to "yes",
@@ -109,7 +109,7 @@ class AddRecyclingContainerMaterialsTest {
         )
     }
 
-    @Test fun `apply answer removes previoujs no-answers of children`() {
+    @Test fun `apply answer removes previous no-answers of children`() {
         assertEquals(
             setOf(
 
@@ -117,7 +117,7 @@ class AddRecyclingContainerMaterialsTest {
                 StringMapEntryAdd("recycling:plastic_packaging", "yes")
             ),
             questType.answerAppliedTo(
-                RecyclingMaterials(listOf(PLASTIC_PACKAGING)),
+                RecyclingMaterials(setOf(PLASTIC_PACKAGING)),
                 mapOf(
                     "recycling:plastic_bottles" to "no",
                     "recycling:plastic" to "no",
@@ -138,7 +138,7 @@ class AddRecyclingContainerMaterialsTest {
                 StringMapEntryDelete("last_checked:recycling", "2000-11-06")
             ),
             questType.answerAppliedTo(
-                RecyclingMaterials(listOf(PAPER)),
+                RecyclingMaterials(setOf(PAPER)),
                 mapOf(
                     "recycling:paper" to "no",
                     "recycling:check_date" to "2000-11-01",
@@ -156,7 +156,7 @@ class AddRecyclingContainerMaterialsTest {
         assertEquals(
             setOf(StringMapEntryAdd("recycling:paper", "yes")),
             questType.answerAppliedTo(
-                RecyclingMaterials(listOf(PAPER)),
+                RecyclingMaterials(setOf(PAPER)),
                 mapOf(
                     "recycling:cooking_oil" to "no",
                     "recycling:green_waste" to "no"
@@ -216,7 +216,7 @@ class AddRecyclingContainerMaterialsTest {
                 StringMapEntryAdd("recycling:paper", "yes")
             ),
             questType.answerAppliedTo(
-                RecyclingMaterials(listOf(PAPER)),
+                RecyclingMaterials(setOf(PAPER)),
                 mapOf("amenity" to "recycling", "access" to "yes")
             )
         )
