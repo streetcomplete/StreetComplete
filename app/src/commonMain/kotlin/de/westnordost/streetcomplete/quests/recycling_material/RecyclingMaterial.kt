@@ -24,7 +24,7 @@ enum class RecyclingMaterial(val value: String) {
     ENGINE_OIL("engine_oil");
 
     companion object {
-        val tree = buildTree<RecyclingMaterial> {
+        val tree by lazy { buildTree<RecyclingMaterial> {
             nd(GLASS) {
                 nd(GLASS_BOTTLES)
             }
@@ -47,6 +47,6 @@ enum class RecyclingMaterial(val value: String) {
             nd(FOOD_WASTE)
             nd(COOKING_OIL)
             nd(ENGINE_OIL)
-        }
+        } }
     }
 }

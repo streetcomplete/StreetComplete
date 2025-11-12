@@ -27,19 +27,9 @@ class AddRecyclingContainerMaterialsForm : AbstractOsmQuestForm<RecyclingContain
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // don't even show glass as an option in countries where this is not common
-        val tree = if (!countryInfo.isUsuallyAnyGlassRecyclableInContainers) {
-            val items = RecyclingMaterial.tree.children.toMutableList()
-            val i = items.indexOfFirst { it.value == RecyclingMaterial.GLASS }
-            if (i != -1) items[i] = Node(RecyclingMaterial.GLASS_BOTTLES)
-            RecyclingMaterial.tree.copy(children = items)
-        } else {
-            RecyclingMaterial.tree
-        }
-
         binding.composeViewBase.content { Surface {
             RecyclingContainerMaterialsForm(
-                tree = tree,
+                tree = RecyclingMaterial.tree,
                 selectedItems = selectedItems.value,
                 onSelectedItems = {
                     selectedItems.value = it
