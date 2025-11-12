@@ -4,16 +4,19 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.compose.material.Surface
-import androidx.compose.runtime.MutableState
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.snapshotFlow
 import androidx.compose.runtime.snapshots.SnapshotStateList
+import androidx.lifecycle.lifecycleScope
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.ComposeViewBinding
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.ui.util.content
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 
-class AddMaxWeightForm : AbstractOsmQuestForm<MaxWeightAnswer>() {
+class AddMaxWeightForm : AbstractOsmQuestForm<List<MaxWeight>>() {
 
     override val contentLayoutResId = R.layout.compose_view
     private val binding by contentViewBinding(ComposeViewBinding::bind)
@@ -23,50 +26,49 @@ class AddMaxWeightForm : AbstractOsmQuestForm<MaxWeightAnswer>() {
         AnswerItem(R.string.quest_generic_answer_noSign) { confirmNoSign() }
     )
 
-    private lateinit var types: SnapshotStateList<MutableState<MaxWeightType>> private set
-    private lateinit var weights: SnapshotStateList<MutableState<Weight?>> private set
+    private var signs: SnapshotStateList<MaxWeight> = mutableStateListOf()
 
     private val weightLimitUnits get() = countryInfo.weightLimitUnits
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.composeViewBase.content {
-            Surface {
-                types = remember { SnapshotStateList() }
-                weights = remember { SnapshotStateList() }
+        snapshotFlow { signs.toList() }
+            .onEach { checkIsFormComplete() }
+            .launchIn(lifecycleScope)
 
-                MaxWeightForm(
-                    types = types,
-                    weights = weights,
-                    countryCode = countryInfo.countryCode,
-                    selectableUnits = weightLimitUnits,
-                    checkIsFormComplete = { checkIsFormComplete() }
-                )
-        }
-    } }
+        binding.composeViewBase.content { Surface {
+            MaxWeightForm(
+                signs = signs,
+                countryCode = countryInfo.countryCode,
+                selectableUnits = weightLimitUnits,
+                onSignAdded = { maxweight ->
+                    signs.add(maxweight)
+                },
+                onSignRemoved = { index ->
+                    signs.removeAt(index)
+                },
+                onSignChanged = { index, maxweight ->
+                    signs[index] = maxweight
+                },
+            )
+        } }
+    }
 
     override fun onClickOk() {
         if (userSelectedUnrealisticWeight()) {
-            confirmUnusualInput { applyMaxWeightFormAnswer() }
+            confirmUnusualInput { applyAnswer(signs) }
         } else {
-            applyMaxWeightFormAnswer()
+            applyAnswer(signs)
         }
     }
 
     private fun userSelectedUnrealisticWeight(): Boolean {
-        for (weight in weights) {
-            val w = weight.value?.toMetricTons()
-            if (w != null && (w > 30 || w < 2)) return true
+        for (sign in signs) {
+            val w = sign.weight?.toMetricTons() ?: continue
+            if (w > 30 || w < 2) return true
         }
         return false
-    }
-
-    private fun applyMaxWeightFormAnswer() {
-        val typesList = types.map { it.value }
-        val weightsList = weights.map { it.value }
-
-        applyAnswer(MaxWeight(typesList as List<MaxWeightType>, weightsList as List<Weight>))
     }
 
     private fun onUnsupportedSign() {
@@ -81,7 +83,7 @@ class AddMaxWeightForm : AbstractOsmQuestForm<MaxWeightAnswer>() {
     private fun confirmNoSign() {
         activity?.let { AlertDialog.Builder(it)
             .setTitle(R.string.quest_generic_confirmation_title)
-            .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ -> applyAnswer(MaxWeightAnswer.NoSign) }
+            .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ -> applyAnswer(emptyList()) }
             .setNegativeButton(R.string.quest_generic_confirmation_no, null)
             .show()
         }
@@ -97,17 +99,9 @@ class AddMaxWeightForm : AbstractOsmQuestForm<MaxWeightAnswer>() {
         }
     }
 
-    override fun isFormComplete(): Boolean {
-        for (i in types.indices) {
-            if (types[i].value == null || weights[i].value == null) return false
-        }
-        return true
-    }
+    override fun isFormComplete(): Boolean =
+        signs.isNotEmpty() && signs.all { it.weight != null }
 
-    override fun isRejectingClose(): Boolean {
-        for (i in types.indices) {
-            if (types[i].value != null || weights[i].value != null) return true
-        }
-        return false
-    }
+    override fun isRejectingClose(): Boolean =
+        signs.isNotEmpty()
 }
