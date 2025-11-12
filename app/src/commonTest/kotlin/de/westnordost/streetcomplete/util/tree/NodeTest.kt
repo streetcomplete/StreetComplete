@@ -70,12 +70,12 @@ class NodeTest {
         // no children
         assertEquals(
             listOf(),
-            tree.yieldParentValues("2")?.toList()
+            tree.yieldChildValues("2")?.toList()
         )
         // recursive children
         assertEquals(
             listOf("1a", "1b", "1b1"),
-            tree.yieldParentValues("1")?.toList()
+            tree.yieldChildValues("1")?.toList()
         )
     }
 

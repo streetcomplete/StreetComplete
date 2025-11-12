@@ -65,22 +65,12 @@ class AddRecyclingContainerMaterials : OsmElementQuestType<RecyclingContainerMat
                 tags.remove(key)
             }
         }
-
-        // if the user chose deliberately not "all plastic", also tag it explicitly
-        val selectedPlastics = materials.filter { it in RecyclingMaterial.allPlastics }
-        if (selectedPlastics.isNotEmpty()) {
-            for (plastic in RecyclingMaterial.allPlastics) {
-                tags.remove("recycling:${plastic.value}")
-            }
-
-            val selectedAndIndirectlySelectedPlastics =
-                selectedPlastics + selectedPlastics.flatMapTo(HashSet()) { it.subValues }
-
-            val notSelectedPlastics =
-                RecyclingMaterialValue.allPlastics - selectedAndIndirectlySelectedPlastics.toSet()
-
-            for (notSelectedPlastic in notSelectedPlastics) {
-                tags["recycling:${notSelectedPlastic.value}"] = "no"
+        // if any parent value is now "yes" all child values may not be "no". E.g. if "Any plastic"
+        // was selected, "plastic bottles" may not be "no".
+        for (material in materials) {
+            for (childMaterial in RecyclingMaterial.tree.yieldChildValues(material).orEmpty()) {
+                val key = "recycling:${childMaterial.value}"
+                if (tags[key] == "no") tags.remove(key)
             }
         }
 
@@ -88,6 +78,7 @@ class AddRecyclingContainerMaterials : OsmElementQuestType<RecyclingContainerMat
         for (material in materials) {
             tags["recycling:${material.value}"] = "yes"
         }
+
 
         // only set the check date if nothing was changed
         if (!tags.hasChanges || tags.hasCheckDateForKey("recycling")) {

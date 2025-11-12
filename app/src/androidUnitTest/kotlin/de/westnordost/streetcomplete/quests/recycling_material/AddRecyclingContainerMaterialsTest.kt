@@ -73,150 +73,6 @@ class AddRecyclingContainerMaterialsTest {
         )
     }
 
-    @Test fun `apply answer with plastic`() {
-        assertEquals(
-            setOf(
-                StringMapEntryAdd("recycling:plastic", "yes")
-            ),
-            questType.answerApplied(RecyclingMaterials(listOf(PLASTIC)))
-        )
-    }
-
-    @Test fun `apply answer with plastic packaging`() {
-        assertEquals(
-            setOf(
-                StringMapEntryAdd("recycling:plastic_packaging", "yes"),
-                StringMapEntryAdd("recycling:plastic", "no")
-            ),
-            questType.answerApplied(RecyclingMaterials(listOf(PLASTIC_PACKAGING)))
-        )
-    }
-
-    @Test fun `apply answer with plastic bottles`() {
-        assertEquals(
-            setOf(
-                StringMapEntryAdd("recycling:plastic_bottles", "yes"),
-                StringMapEntryAdd("recycling:plastic_packaging", "no"),
-                StringMapEntryAdd("recycling:beverage_cartons", "no"),
-                StringMapEntryAdd("recycling:plastic", "no")
-            ),
-            questType.answerApplied(RecyclingMaterials(listOf(PLASTIC_BOTTLES)))
-        )
-    }
-
-    @Test fun `apply answer with PET`() {
-        assertEquals(
-            setOf(
-                StringMapEntryAdd("recycling:PET", "yes"),
-                StringMapEntryAdd("recycling:plastic_bottles", "no"),
-                StringMapEntryAdd("recycling:plastic_packaging", "no"),
-                StringMapEntryAdd("recycling:beverage_cartons", "no"),
-                StringMapEntryAdd("recycling:plastic", "no")
-            ),
-            questType.answerApplied(RecyclingMaterials(listOf(PET)))
-        )
-    }
-
-    @Test fun `apply answer with plastic bottles and previous plastic answer`() {
-        assertEquals(
-            setOf(
-                StringMapEntryAdd("recycling:plastic_bottles", "yes"),
-                StringMapEntryAdd("recycling:plastic_packaging", "no"),
-                StringMapEntryAdd("recycling:beverage_cartons", "no"),
-                StringMapEntryModify("recycling:plastic", "yes", "no")
-            ),
-            questType.answerAppliedTo(
-                RecyclingMaterials(listOf(PLASTIC_BOTTLES)),
-                mapOf("recycling:plastic" to "yes")
-            )
-        )
-    }
-
-    @Test fun `apply answer with plastic bottles and previous plastic packaging answer`() {
-        assertEquals(
-            setOf(
-                StringMapEntryModify("recycling:plastic", "no", "no"),
-                StringMapEntryAdd("recycling:plastic_bottles", "yes"),
-                StringMapEntryAdd("recycling:beverage_cartons", "no"),
-                StringMapEntryModify("recycling:plastic_packaging", "yes", "no")
-            ),
-            questType.answerAppliedTo(
-                RecyclingMaterials(listOf(PLASTIC_BOTTLES)),
-                mapOf(
-                    "recycling:plastic" to "no",
-                    "recycling:plastic_packaging" to "yes"
-                )
-            )
-        )
-    }
-
-    @Test fun `apply answer with plastic packaging and previous plastic answer`() {
-        assertEquals(
-            setOf(
-                StringMapEntryAdd("recycling:plastic_packaging", "yes"),
-                StringMapEntryModify("recycling:plastic", "yes", "no")
-            ),
-            questType.answerAppliedTo(
-                RecyclingMaterials(listOf(PLASTIC_PACKAGING)),
-                mapOf(
-                    "recycling:plastic" to "yes"
-                )
-            )
-        )
-    }
-
-    @Test fun `apply answer with plastic packaging and previous plastic bottles answer`() {
-        assertEquals(
-            setOf(
-                StringMapEntryModify("recycling:plastic_packaging", "no", "yes"),
-                StringMapEntryDelete("recycling:plastic_bottles", "yes"),
-                StringMapEntryModify("recycling:plastic", "no", "no")
-            ),
-            questType.answerAppliedTo(
-                RecyclingMaterials(listOf(PLASTIC_PACKAGING)),
-                mapOf(
-                    "recycling:plastic_bottles" to "yes",
-                    "recycling:plastic_packaging" to "no",
-                    "recycling:plastic" to "no"
-                )
-            )
-        )
-    }
-
-    @Test fun `apply answer with plastic and previous plastic bottles answer`() {
-        assertEquals(
-            setOf(
-                StringMapEntryModify("recycling:plastic", "no", "yes"),
-                StringMapEntryDelete("recycling:plastic_bottles", "yes"),
-                StringMapEntryDelete("recycling:plastic_packaging", "no")
-            ),
-            questType.answerAppliedTo(
-                RecyclingMaterials(listOf(PLASTIC)),
-                mapOf(
-                    "recycling:plastic_bottles" to "yes",
-                    "recycling:plastic_packaging" to "no",
-                    "recycling:plastic" to "no"
-                )
-            )
-        )
-    }
-
-    @Test fun `apply answer with plastic and previous plastic packaging answer`() {
-        assertEquals(
-            setOf(
-                StringMapEntryModify("recycling:plastic", "no", "yes"),
-                StringMapEntryDelete("recycling:plastic_packaging", "yes")
-            ),
-            questType.answerAppliedTo(
-                RecyclingMaterials(listOf(PLASTIC)),
-                mapOf(
-                    "recycling:plastic" to "no",
-                    "recycling:plastic_packaging" to "yes"
-                )
-            )
-        )
-    }
-
     @Test fun `apply answer with same answers as before`() {
         assertEquals(
             setOf(
@@ -248,6 +104,23 @@ class AddRecyclingContainerMaterialsTest {
                     "recycling:paper" to "yes",
                     "recycling:cooking_oil" to "yes",
                     "recycling:green_waste" to "yes"
+                )
+            )
+        )
+    }
+
+    @Test fun `apply answer removes previoujs no-answers of children`() {
+        assertEquals(
+            setOf(
+
+                StringMapEntryDelete("recycling:plastic_bottles", "no"),
+                StringMapEntryAdd("recycling:plastic_packaging", "yes")
+            ),
+            questType.answerAppliedTo(
+                RecyclingMaterials(listOf(PLASTIC_PACKAGING)),
+                mapOf(
+                    "recycling:plastic_bottles" to "no",
+                    "recycling:plastic" to "no",
                 )
             )
         )
