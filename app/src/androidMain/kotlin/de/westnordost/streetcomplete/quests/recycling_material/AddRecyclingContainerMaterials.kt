@@ -58,7 +58,7 @@ class AddRecyclingContainerMaterials : OsmElementQuestType<RecyclingContainerMat
         }
     }
 
-    private fun applyRecyclingMaterialsAnswer(materials: List<RecyclingMaterial>, tags: Tags) {
+    private fun applyRecyclingMaterialsAnswer(materials: Iterable<RecyclingMaterial>, tags: Tags) {
         // first clear recycling:* taggings previously "yes"
         for ((key, value) in tags.entries) {
             if (key.startsWith("recycling:") && value == "yes") {

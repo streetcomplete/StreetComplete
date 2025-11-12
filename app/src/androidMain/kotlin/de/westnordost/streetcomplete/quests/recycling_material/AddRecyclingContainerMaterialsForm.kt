@@ -10,7 +10,6 @@ import de.westnordost.streetcomplete.databinding.ComposeViewBinding
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.ui.util.content
-import de.westnordost.streetcomplete.util.tree.Node
 
 class AddRecyclingContainerMaterialsForm : AbstractOsmQuestForm<RecyclingContainerMaterialsAnswer>() {
 
@@ -40,7 +39,7 @@ class AddRecyclingContainerMaterialsForm : AbstractOsmQuestForm<RecyclingContain
     }
 
     override fun onClickOk() {
-        applyAnswer(RecyclingMaterials(selectedItems.value.toList()))
+        applyAnswer(RecyclingMaterials(selectedItems.value))
     }
 
     override fun isFormComplete() = selectedItems.value.isNotEmpty()
