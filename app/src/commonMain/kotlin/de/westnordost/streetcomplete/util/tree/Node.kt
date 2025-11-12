@@ -10,12 +10,12 @@ data class Node<T>(val value: T?, val children: List<Node<T>> = emptyList()) {
         }
     }
 
-    /** Return the breadcrumb list to find the given [v] or null if the given value is not
+    /** Return a breadcrumb sequence to find the given [v] or null if the given value is not
      *  contained in this tree. */
-    fun yieldBreadcrumbs(v: T): Sequence<T>? {
+    fun yieldParentValues(v: T): Sequence<T>? {
         if (v == value) return emptySequence()
         for (child in children) {
-            val parents = child.yieldBreadcrumbs(v)
+            val parents = child.yieldParentValues(v)
             if (parents != null) {
                 return sequence {
                     if (value != null) yield(value)
@@ -26,8 +26,19 @@ data class Node<T>(val value: T?, val children: List<Node<T>> = emptyList()) {
         return null
     }
 
+    /** Return all values that are children (indirect or direct) of the given [v] or null if the
+     *  given value is not contained in this tree */
+    fun yieldChildValues(v: T): Sequence<T>? {
+        val node = findFirst(v) ?: return null
+        return sequence {
+            for (child in node.children) {
+                yieldAll(child.yieldAll())
+            }
+        }
+    }
+
     /** Find node with the given [v] */
-    fun findFirst(v: T?): Node<T>? {
+    fun findFirst(v: T): Node<T>? {
         if (v == value) return this
         for (child in children) {
             val n = child.findFirst(v)

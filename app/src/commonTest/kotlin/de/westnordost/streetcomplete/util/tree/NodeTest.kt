@@ -44,30 +44,43 @@ class NodeTest {
     }
 
     @Test
-    fun yieldBreadcrumbs() {
+    fun yieldParentValues() {
         assertEquals(
             null,
-            tree.yieldBreadcrumbs("not found")
+            tree.yieldParentValues("not found")
         )
         // top level
         assertEquals(
             listOf(),
-            tree.yieldBreadcrumbs("2")?.toList()
+            tree.yieldParentValues("2")?.toList()
         )
         // very nested
         assertEquals(
             listOf("1", "1b"),
-            tree.yieldBreadcrumbs("1b1")?.toList()
+            tree.yieldParentValues("1b1")?.toList()
         )
     }
 
     @Test
-    fun find() {
-        // root element
+    fun yieldChildValues() {
         assertEquals(
-            tree,
-            tree.findFirst(null)
+            null,
+            tree.yieldChildValues("not found")
         )
+        // no children
+        assertEquals(
+            listOf(),
+            tree.yieldParentValues("2")?.toList()
+        )
+        // recursive children
+        assertEquals(
+            listOf("1a", "1b", "1b1"),
+            tree.yieldParentValues("1")?.toList()
+        )
+    }
+
+    @Test
+    fun findFirst() {
         // not found
         assertEquals(
             null,

@@ -10,7 +10,7 @@ import de.westnordost.streetcomplete.databinding.ComposeViewBinding
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.ui.util.content
-
+import de.westnordost.streetcomplete.util.tree.Node
 
 class AddRecyclingContainerMaterialsForm : AbstractOsmQuestForm<RecyclingContainerMaterialsAnswer>() {
 
@@ -22,27 +22,35 @@ class AddRecyclingContainerMaterialsForm : AbstractOsmQuestForm<RecyclingContain
         AnswerItem(R.string.quest_recycling_materials_answer_waste) { confirmJustTrash() }
     )
 
-    private val items = RecyclingMaterial.selectableValues.map { listOf(it) }
-    private val selectedItems = mutableStateOf(emptySet<RecyclingMaterialsItem>())
+    private val selectedItems = mutableStateOf(emptySet<RecyclingMaterial>())
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // don't even show glass as an option in countries where this is not common
+        val tree = if (!countryInfo.isUsuallyAnyGlassRecyclableInContainers) {
+            val items = RecyclingMaterial.tree.children.toMutableList()
+            val i = items.indexOfFirst { it.value == RecyclingMaterial.GLASS }
+            if (i != -1) items[i] = Node(RecyclingMaterial.GLASS_BOTTLES)
+            RecyclingMaterial.tree.copy(children = items)
+        } else {
+            RecyclingMaterial.tree
+        }
+
         binding.composeViewBase.content { Surface {
             RecyclingContainerMaterialsForm(
-                items = items,
+                tree = tree,
                 selectedItems = selectedItems.value,
                 onSelectedItems = {
                     selectedItems.value = it
                     checkIsFormComplete()
                 },
-                isAnyGlassRecyclable = countryInfo.isUsuallyAnyGlassRecyclableInContainers,
             )
         } }
     }
 
     override fun onClickOk() {
-        applyAnswer(RecyclingMaterials(selectedItems.value.flatten()))
+        applyAnswer(RecyclingMaterials(selectedItems.value.toList()))
     }
 
     override fun isFormComplete() = selectedItems.value.isNotEmpty()

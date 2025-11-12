@@ -77,7 +77,7 @@ class AddRecyclingContainerMaterials : OsmElementQuestType<RecyclingContainerMat
                 selectedPlastics + selectedPlastics.flatMapTo(HashSet()) { it.subValues }
 
             val notSelectedPlastics =
-                RecyclingMaterial.allPlastics - selectedAndIndirectlySelectedPlastics.toSet()
+                RecyclingMaterialValue.allPlastics - selectedAndIndirectlySelectedPlastics.toSet()
 
             for (notSelectedPlastic in notSelectedPlastics) {
                 tags["recycling:${notSelectedPlastic.value}"] = "no"
