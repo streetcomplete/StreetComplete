@@ -4,18 +4,28 @@ import de.westnordost.streetcomplete.util.tree.buildTree
 
 /** All recycling:* keys known to StreetComplete */
 enum class RecyclingMaterial(val value: String) {
+    // sorted how they should appear in the UI, roughly by how common they are
+
+    // most common (paper, glass, plastic packaging)
     GLASS_BOTTLES("glass_bottles"),
-    GLASS("glass"),
     PAPER("paper"),
-    PLASTIC("plastic"),
     PLASTIC_PACKAGING("plastic_packaging"),
+    CANS("cans"),
+
+    // sometimes additionally accepted at normal recycling containers (scrap metal, any plastic, any glass)
+    // or sometimes less than usual accepted at recycling containers
+    BEVERAGE_CARTONS("beverage_cartons"),
     PLASTIC_BOTTLES("plastic_bottles"),
     PET_BOTTLES("pet_drink_bottles"),
-    BEVERAGE_CARTONS("beverage_cartons"),
-    CANS("cans"),
+    PLASTIC("plastic"),
+    GLASS("glass"),
     SCRAP_METAL("scrap_metal"),
+
+    // specific containers but very common
     CLOTHES("clothes"),
     SHOES("shoes"),
+
+    // specific stuff usually not present at normal recycling containers
     SMALL_ELECTRICAL_APPLIANCES("small_electrical_appliances"),
     BATTERIES("batteries"),
     GREEN_WASTE("green_waste"),

@@ -10,7 +10,6 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.cheonjaeung.compose.grid.SimpleGridCells
@@ -27,13 +26,12 @@ import org.jetbrains.compose.resources.stringResource
  *  certain values are actually sub-categories of other values. */
 @Composable
 fun RecyclingContainerMaterialsForm(
+    items: List<RecyclingMaterial>,
     tree: Node<RecyclingMaterial>,
     selectedItems: Set<RecyclingMaterial>,
     onSelectedItems: (Set<RecyclingMaterial>) -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    val flattenedItems = remember(tree) { tree.yieldAll().toList() }
-
     Column(
         modifier = modifier,
         verticalArrangement = Arrangement.spacedBy(8.dp)
@@ -47,7 +45,7 @@ fun RecyclingContainerMaterialsForm(
         }
         ItemsSelectGrid(
             columns = SimpleGridCells.Fixed(4),
-            items = flattenedItems,
+            items = items,
             selectedItems = selectedItems,
             onSelect = { item, selected ->
                 if (!selected) {
