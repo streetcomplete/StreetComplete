@@ -1036,6 +1036,7 @@ A level counts as a roof level when its windows are in the roof. Subsequently, r
     <string name="quest_carWashType_service">Staff cleans car</string>
 
     <string name="quest_charging_station_bicycles_title">Can bicycles be charged here, too?</string>
+    <string name="quest_charging_station_bicycles_answer_only">It’s only for bicycles</string>
     <string name="quest_charging_station_bicycles_hint">Bicycle charger power adapters plug into normal household sockets.</string>
 
     <string name="quest_charging_station_capacity_title">How many cars can be charged here at the same time?</string>
@@ -1455,15 +1456,13 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_recycling_type_glass_bottles">Glass bottles and jars</string>
     <string name="quest_recycling_type_glass_bottles_short">Bottles and jars</string>
     <string name="quest_recycling_type_paper">Paper</string>
-    <string name="quest_recycling_type_plastic_generic">Plastic</string>
     <string name="quest_recycling_type_plastic">Any plastic</string>
     <string name="quest_recycling_type_shoes">Shoes</string>
     <string name="quest_recycling_type_electric_appliances">Electric appliances</string>
-    <string name="quest_recycling_type_plastic_bottles">Plastic bottles only</string>
-    <string name="quest_recycling_type_beverage_cartons">Beverage cartons only</string>
-    <string name="quest_recycling_type_pet">PET only</string>
-    <string name="quest_recycling_type_plastic_packaging">Plastic packaging only</string>
-    <string name="quest_recycling_type_plastic_bottles_and_cartons">Plastic bottles and cartons only</string>
+    <string name="quest_recycling_type_plastic_bottles">Plastic bottles</string>
+    <string name="quest_recycling_type_beverage_cartons">Beverage cartons</string>
+    <string name="quest_recycling_type_pet_bottles">PET bottles</string>
+    <string name="quest_recycling_type_plastic_packaging">Any plastic packaging</string>
     <string name="quest_recycling_type_scrap_metal">Scrap metal</string>
     <string name="quest_recycling_type_any_glass">Any glass</string>
     <string name="quest_recycling_type_cooking_oil">Cooking Oil</string>

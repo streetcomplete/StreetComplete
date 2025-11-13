@@ -512,7 +512,6 @@ recycling/
     plastic.svg
     plastic_bottles.svg
     plastic_packaging.svg
-    plastic_bottles_and_cartons.svg
     scrap_metal.svg
     shoes.svg                        modified from EmojiOne 2: U+1F45F
     small_electrical_appliances.svg  EmojiOne 2: U+1F50C
