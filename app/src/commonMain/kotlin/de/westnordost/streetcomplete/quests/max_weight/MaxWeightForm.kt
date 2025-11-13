@@ -21,6 +21,7 @@ import de.westnordost.streetcomplete.data.meta.WeightMeasurementUnit
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.ic_delete_24
 import de.westnordost.streetcomplete.resources.quest_maxweight_add_sign
+import de.westnordost.streetcomplete.resources.quest_maxweight_remove_sign
 import de.westnordost.streetcomplete.ui.common.Button2
 import de.westnordost.streetcomplete.ui.common.dialogs.SimpleItemSelectDialog
 import org.jetbrains.compose.resources.painterResource
@@ -63,7 +64,10 @@ fun MaxWeightForm(
                     modifier = Modifier.weight(1f)
                 )
                 IconButton(onClick = { onSignRemoved(index) }) {
-                    Icon(painterResource(Res.drawable.ic_delete_24), null)
+                    Icon(
+                        painter = painterResource(Res.drawable.ic_delete_24),
+                        contentDescription = stringResource(Res.string.quest_maxweight_remove_sign)
+                    )
                 }
             }
         }
