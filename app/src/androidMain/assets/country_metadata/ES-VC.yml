@@ -3,4 +3,4 @@ atmOperators: [Euronet, Caixabank, Banco Sabadell, Cash Zone, Banco Santander, B
 chargingStationOperators: [Iberdrola, Repsol, Endesa X, 'Tesla, Inc.', Endesa, Tesla, Zunder, Mercadona, Ionity, myRecarga, Wenea, Porsche, Carrefour, Ayuntamiento de Vallibona, Ayuntamiento de Segorbe, ALDI, 10-22h]
 clothesContainerOperators: [Fovasa, Cáritas, Urbarser, Proyecto Lázaro]
 officialLanguages: [ca, es]
-parcelLockerBrand: [Amazon Locker, Amazon Hub, InPost, CityPaq, pudo, Leroy Merlin]
+parcelLockerBrand: [Amazon Locker, InPost, Amazon Hub, CityPaq, pudo, Leroy Merlin]

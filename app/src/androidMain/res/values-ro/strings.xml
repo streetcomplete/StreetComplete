@@ -527,7 +527,6 @@ la parter"</string>
     <string name="quest_recycling_type_glass_bottles">"Sticle și borcane din sticlă"</string>
     <string name="quest_recycling_type_glass_bottles_short">"Sticle și borcane"</string>
     <string name="quest_recycling_type_paper">"Hârtie"</string>
-    <string name="quest_recycling_type_plastic_generic">"Plastic"</string>
     <string name="quest_recycling_type_plastic">"Orice fel de plastic"</string>
     <string name="quest_recycling_type_shoes">"Încălțăminte"</string>
     <string name="quest_recycling_type_electric_appliances">"Electrocasnice"</string>
@@ -702,7 +701,6 @@ activitate"</string>
     <string name="quest_oneway2_title">"Este o stradă cu sens unic? În ce direcție?"</string>
     <string name="quest_oneway2_dir">"Sens unic în această direcție"</string>
     <string name="quest_oneway2_no_oneway">"Nu este sens unic"</string>
-    <string name="quest_maxweight_select_sign">"Selectați indicatorul"</string>
     <string name="quest_steps_incline_title">"Ce direcție duce în sus pentru aceste scări?"</string>
     <string name="quest_steps_incline_up">"Pe aici în sus"</string>
     <string name="quest_step_count_title">"Câte trepte sunt?"</string>
@@ -787,7 +785,6 @@ Dacă există benzi rezervate autobuzelor, vă rugăm să lăsați o notă."</st
     <string name="quest_postboxRoyalCypher_type_scottish_crown">"Coroana Scoției"</string>
     <string name="quest_buildingType_fire_station">"Statie de pompieri"</string>
     <string name="quest_recycling_type_beverage_cartons">"Doar ambalaje din carton pentru lichide"</string>
-    <string name="quest_recycling_type_plastic_bottles_and_cartons">"Doar sticle de plastic si carton"</string>
     <string name="team_mode">"Intră în modul echipă"</string>
     <string name="team_mode_exit">"Ieși din modul echipă"</string>
     <string name="team_mode_description">"Atunci când cartografiați aceeași zonă ca un grup, puteți intra în modul echipă pentru a împărți misiunile între toți membrii echipei."</string>
@@ -1144,7 +1141,6 @@ Faceți același lucru și pentru partea cealaltă, dacă este prezentă."</stri
     <string name="quest_camp_type_tents_only">"Doar corturi"</string>
     <string name="quest_camp_type_backcountry">"Campare (fără facilități)"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Acest diametru pare implauzibil, este de obicei între %1$d și %2$d."</string>
-    <string name="quest_recycling_type_pet">"Doar PET"</string>
     <string name="street_parking_street_width">"Lățimea străzii: %1$s"</string>
     <string name="overlay_street_parking">"Parcare pe stradă"</string>
     <string name="link_ohsomehex_description">"Explorați datele OSM, de la vederea de ansamblu până la obiecte individuale, în spațiu și timp"</string>

@@ -526,7 +526,6 @@
     <string name="quest_recycling_type_glass_bottles">玻璃瓶罐</string>
     <string name="quest_recycling_type_glass_bottles_short">瓶瓶罐罐</string>
     <string name="quest_recycling_type_paper">紙張</string>
-    <string name="quest_recycling_type_plastic_generic">塑膠</string>
     <string name="quest_recycling_type_plastic">任何塑膠類</string>
     <string name="quest_recycling_type_shoes">鞋子</string>
     <string name="quest_recycling_type_electric_appliances">電子產品</string>
@@ -701,7 +700,6 @@
     <string name="quest_oneway2_title">這是單行道嗎？哪個方向呢？</string>
     <string name="quest_oneway2_dir">單行道是這個方向</string>
     <string name="quest_oneway2_no_oneway">不是單行道</string>
-    <string name="quest_maxweight_select_sign">選擇指標</string>
     <string name="quest_steps_incline_title">這階梯的方向是？</string>
     <string name="quest_steps_incline_up">這個方向往上</string>
     <string name="quest_step_count_title">這裡有幾階？</string>
@@ -788,7 +786,6 @@
     <string name="quest_postboxRoyalCypher_type_scottish_crown">蘇格蘭皇冠</string>
     <string name="quest_buildingType_fire_station">消防局</string>
     <string name="quest_recycling_type_beverage_cartons">僅限飲料紙盒</string>
-    <string name="quest_recycling_type_plastic_bottles_and_cartons">僅限塑膠瓶罐與盒子</string>
     <string name="team_mode">協作模式</string>
     <string name="team_mode_exit">離開協作模式</string>
     <string name="team_mode_description">當一群人在同一地點mapping時，您可以開啟協作模式來分配任務。</string>
@@ -1145,7 +1142,6 @@
     <string name="quest_camp_type_tents_only">只有帳篷</string>
     <string name="quest_camp_type_backcountry">野外露營 (沒有設施)</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">這個直徑看起來不可能，通常是 %1$d 與 %2$d 之間。</string>
-    <string name="quest_recycling_type_pet">只有 PET</string>
     <string name="street_parking_street_width">道路寬度：%1$s</string>
     <string name="overlay_street_parking">路邊停車</string>
     <string name="link_ohsomehex_description">跨越時空，大尺度到單一物件探就 OSM 資料</string>

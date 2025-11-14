@@ -525,7 +525,6 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
     <string name="quest_recycling_type_glass_bottles">Sklo</string>
     <string name="quest_recycling_type_glass_bottles_short">Fľaše a tégliky</string>
     <string name="quest_recycling_type_paper">Papier</string>
-    <string name="quest_recycling_type_plastic_generic">Plasty</string>
     <string name="quest_recycling_type_plastic">Akékoľvek plasty</string>
     <string name="quest_recycling_type_shoes">Topánky</string>
     <string name="quest_recycling_type_electric_appliances">Elektrické zariadenia</string>
@@ -699,7 +698,6 @@ Pamätajte, že táto aplikácia sa pýta na súpisné číslo budovy až po ur�
     <string name="quest_oneway2_title">Je toto jednosmerná ulica? V akom smere?</string>
     <string name="quest_oneway2_dir">Je jednosmerná v tomto smere</string>
     <string name="quest_oneway2_no_oneway">Nie je jednosmerná</string>
-    <string name="quest_maxweight_select_sign">Vyberte značku</string>
     <string name="quest_steps_incline_title">Ktorý smer vedie na týchto schodoch nahor?</string>
     <string name="quest_steps_incline_up">Toto je smer nahor</string>
     <string name="quest_step_count_title">Koľko je tu schodov</string>
@@ -785,7 +783,6 @@ Všimnite si všetkých možností: v niektorých prípadoch nemusí byť zrejm�
     <string name="quest_postboxRoyalCypher_type_scottish_crown">Škótska koruna</string>
     <string name="quest_buildingType_fire_station">Hasičská stanica</string>
     <string name="quest_recycling_type_beverage_cartons">Iba kartóny od nápojov</string>
-    <string name="quest_recycling_type_plastic_bottles_and_cartons">Iba plastové fľaše a kartóny</string>
     <string name="team_mode">Tímový režim</string>
     <string name="team_mode_exit">Ukončiť tímový režim</string>
     <string name="team_mode_description">Keď mapujete v skupine jednu oblasť, požite tímový režim a rozdeľte si úlohy.</string>
@@ -1142,7 +1139,6 @@ To isté urobte pre druhú stranu, ak tu je.</string>
     <string name="quest_camp_type_tents_only">Iba stany</string>
     <string name="quest_camp_type_backcountry">Kempovanie v prírode (bez zázemia)</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">Tento priemer vyzerá nepravdepodobne, obvykle sa pohybuje medzi %1$d a %2$d.</string>
-    <string name="quest_recycling_type_pet">Len PET</string>
     <string name="street_parking_street_width">Šírka ulice: %1$s</string>
     <string name="overlay_street_parking">Parkovanie na ulici</string>
     <string name="link_ohsomehex_description">Preskúmajte údaje OSM v rôznych mierkach od veľkého celku až po jednotlivé objekty v priestore a čase</string>

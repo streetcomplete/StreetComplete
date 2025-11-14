@@ -527,7 +527,6 @@ Pisah sekarang?</string>
     <string name="quest_recycling_type_glass_bottles">Botol kaca dan toples</string>
     <string name="quest_recycling_type_glass_bottles_short">Botol dan toples</string>
     <string name="quest_recycling_type_paper">Kertas</string>
-    <string name="quest_recycling_type_plastic_generic">Plastik</string>
     <string name="quest_recycling_type_plastic">Plastik apa saja</string>
     <string name="quest_recycling_type_shoes">Sepatu</string>
     <string name="quest_recycling_type_electric_appliances">Alat elektronik</string>
@@ -700,7 +699,6 @@ Data ini tidak hanya berguna untuk pengirim pos tapi juga untuk sistem navigasi 
     <string name="quest_oneway2_title">Apakah jalan ini satu arah? Ke arah mana?</string>
     <string name="quest_oneway2_dir">Satu arah di jalan ini</string>
     <string name="quest_oneway2_no_oneway">Bukan satu-arah</string>
-    <string name="quest_maxweight_select_sign">Pilih tanda</string>
     <string name="quest_steps_incline_title">Arah mana yang naik ke atas pada tangga ini?</string>
     <string name="quest_steps_incline_up">Ini arah ke atas</string>
     <string name="quest_step_count_title">Ada berapa anak tangga di sini?</string>
@@ -788,7 +786,6 @@ Lihat semua opsi yang tersedia: beberapa kasus tidak terlihat jelas, seperti jal
     <string name="quest_postboxRoyalCypher_type_scottish_crown">Mahkota Skotlandia</string>
     <string name="quest_buildingType_fire_station">Stasiun damkar</string>
     <string name="quest_recycling_type_beverage_cartons">Hanya karton minuman</string>
-    <string name="quest_recycling_type_plastic_bottles_and_cartons">Hanya botol plastik dan karton</string>
     <string name="team_mode">Masuk ke Mode Kelompok</string>
     <string name="team_mode_exit">Tinggalkan Mode Kelompok</string>
     <string name="team_mode_description">Ketika memetakan daerah yang sama bersama-sama dalam sebuah kelompok, kamu bisa masuk ke mode kelompok untuk membagi pencarian ke semua anggota kelompok. Masing-masing akan melihat misi yang berbeda.</string>
@@ -1143,7 +1140,6 @@ Sebagai alternatif, kamu bisa menambahkan catatan (dengan foto).</string>
     <string name="quest_camp_type_tents_only">Hanya tenda</string>
     <string name="quest_camp_type_backcountry">Berkemah di pedalaman (tidak ada fasilitas)</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">Diameter ini terlihat tidak mungkin, biasanya antara %1$d hingga %2$d.</string>
-    <string name="quest_recycling_type_pet">Hanya PET</string>
     <string name="street_parking_street_width">Lebar jalan: %1$s</string>
     <string name="overlay_street_parking">Parkir jalanan</string>
     <string name="link_ohsomehex_description">Jelajahi data OSM lintas skala dari gambaran besar hingga objek individual melintasi ruang dan waktu</string>

@@ -1,5 +1,5 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 atmOperators: [Chase, Bank of America, Wells Fargo, Truist, Publix, Citibank, Fifth Third Bank, SunTrust, PNC Bank, Presto!, ATM, Regions Bank, MoneyPass, Community First Credit Union, Athena Bitcoin, iTHINK Financial, VyStar, Tyndall Federal Credit Union, Tampa Bay Federal Credit Union, TD Bank, Suncoast Credit Union, Centennial Bank, Cash Depot, Arco Globus Vending LLC, Allpoint, Synovus, Rosen Centre Hotel, PenFed Credit Union, Partners Federal Credit Union, Navy Federal Credit Union, FNBT, City National Bank]
-chargingStationOperators: ['Tesla, Inc.', ChargePoint, Electrify America, Tesla, Blink, Shell Recharge Solutions, EVgo, Duke Energy, Publix, Mercedes-Benz, Florida Power & Light, BP, 7-Eleven]
+chargingStationOperators: ['Tesla, Inc.', ChargePoint, Tesla, Electrify America, Blink, Shell Recharge Solutions, EVgo, Duke Energy, Publix, Mercedes-Benz, Florida Power & Light, BP, 7-Eleven]
 defaultSpeedLimitHasUrbanOrRural: true
 parcelLockerBrand: [Amazon Hub, Amazon Locker]

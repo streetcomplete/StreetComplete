@@ -532,7 +532,6 @@ StreetComplete 서버에 있는 &lt;a href=\"https://www.westnordost.de/streetco
     <string name="quest_recycling_type_glass_bottles">"유리병과 유리 용기"</string>
     <string name="quest_recycling_type_glass_bottles_short">"병/용기"</string>
     <string name="quest_recycling_type_paper">"종이"</string>
-    <string name="quest_recycling_type_plastic_generic">"플라스틱"</string>
     <string name="quest_recycling_type_plastic">"모든 플라스틱"</string>
     <string name="quest_recycling_type_shoes">"신발"</string>
     <string name="quest_recycling_type_electric_appliances">"전자제품"</string>
@@ -709,7 +708,6 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="quest_oneway2_title">"일방통행 도로인가요? 통행 방향은 어느 쪽인가요?"</string>
     <string name="quest_oneway2_dir">"이 방향으로 일방통행"</string>
     <string name="quest_oneway2_no_oneway">"일방통행이 아님"</string>
-    <string name="quest_maxweight_select_sign">"표지판 선택"</string>
     <string name="quest_steps_incline_title">"이 계단은 올라가는 방향이 어느 쪽인가요?"</string>
     <string name="quest_steps_incline_up">"이 방향"</string>
     <string name="quest_step_count_title">"계단이 몇 칸인가요?"</string>
@@ -795,7 +793,6 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="quest_postboxRoyalCypher_type_scottish_crown">"스코틀랜드 왕관"</string>
     <string name="quest_buildingType_fire_station">"소방서 건물"</string>
     <string name="quest_recycling_type_beverage_cartons">"종이팩만 취급"</string>
-    <string name="quest_recycling_type_plastic_bottles_and_cartons">"플라스틱 병 (페트병 등)과 종이팩만 취급"</string>
     <string name="team_mode">"팀 모드"</string>
     <string name="team_mode_exit">"팀 모드 종료"</string>
     <string name="team_mode_description">"여러 명이 그룹이 지어 동시에 한 장소를 조사하고 싶다면, 팀 모드를 활성화해 자료를 팀원들과 나눠 가지세요."</string>
@@ -1152,7 +1149,6 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="quest_camp_type_tents_only">"텐트만"</string>
     <string name="quest_camp_type_backcountry">"야외 캠핑 (시설 없음)"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"이 직경은 적절하지 않은 것 같습니다. 일반적으로 %1$d에서 %2$d 사이입니다."</string>
-    <string name="quest_recycling_type_pet">"페트병만"</string>
     <string name="street_parking_street_width">"거리 폭: %1$s"</string>
     <string name="overlay_street_parking">"거리 주차"</string>
     <string name="link_ohsomehex_description">"큰 그림에서 공간과 시간에 따른 개별 개체에 이르는 다양한 규모의 OSM 데이터를 탐색합니다."</string>
@@ -1472,4 +1468,9 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="quest_first_aid_kit_location">"이 구급함은 어디에 있나요?"</string>
     <string name="quest_lane_markings_title">"이 도로에 차선이 그려져 있나요?"</string>
     <string name="quest_level_thing_title">"이 지물은 몇 층에 있나요?"</string>
+    <string name="quest_bicycle_charging_station_capacity_title">"이 충전소에서 최대 몇 대의 자전거가 동시에 충전할 수 있나요?"</string>
+    <string name="quest_charging_station_bicycles_title">"이곳에서 자전거도 충전할 수 있나요?"</string>
+    <string name="quest_charging_station_bicycles_hint">"자전거 충전기 어댑터는 일반 가정용 콘센트에 꽂습니다."</string>
+    <string name="quest_tower_access_title">"누가 이 타워에 출입할 수 있나요? 무료일 수도, 유료일 수도 있습니다."</string>
+    <string name="quest_charging_station_bicycles_answer_only">"자전거 전용"</string>
 </resources>

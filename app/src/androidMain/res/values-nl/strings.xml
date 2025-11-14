@@ -523,7 +523,6 @@ Anders kan je een ander toetsenbord downloaden in de App Store. Populaire toetse
     <string name="quest_recycling_type_glass_bottles">"Glazen flessen en potten"</string>
     <string name="quest_recycling_type_glass_bottles_short">"Flessen en potten"</string>
     <string name="quest_recycling_type_paper">"Papier"</string>
-    <string name="quest_recycling_type_plastic_generic">"Plastic"</string>
     <string name="quest_recycling_type_plastic">"Elk type plastic"</string>
     <string name="quest_recycling_type_shoes">"Schoenen"</string>
     <string name="quest_recycling_type_electric_appliances">"Elektrische apparaten"</string>
@@ -697,7 +696,6 @@ Let op dat deze app pas naar het huisnummer van een gebouw vraagt nadat het gebo
     <string name="quest_oneway2_title">"Is hier eenrichtingsverkeer? In welke richting?"</string>
     <string name="quest_oneway2_dir">"Eenrichtingsverkeer in deze richting"</string>
     <string name="quest_oneway2_no_oneway">"Geen eenrichtingsverkeer"</string>
-    <string name="quest_maxweight_select_sign">"Kies een bord"</string>
     <string name="quest_steps_incline_title">"In welke richting gaat deze trap naar boven?"</string>
     <string name="quest_steps_incline_up">"Naar boven in deze richting"</string>
     <string name="quest_step_count_title">"Hoeveel treden zijn hier?"</string>
@@ -783,7 +781,6 @@ Let op alle beschikbare opties: sommige gevallen liggen niet voor de hand, zoals
     <string name="quest_postboxRoyalCypher_type_scottish_crown">"De kroon van Schotland"</string>
     <string name="quest_buildingType_fire_station">"Brandweerpost"</string>
     <string name="quest_recycling_type_beverage_cartons">"Alleen drankverpakkingen"</string>
-    <string name="quest_recycling_type_plastic_bottles_and_cartons">"Alleen plastic flessen en kartonverpakkingen"</string>
     <string name="team_mode">"Team modus"</string>
     <string name="team_mode_exit">"Uit Team modus"</string>
     <string name="team_mode_description">"Als je hetzelfde gebied samen in een groep in kaart brengt, kun je de team modus activeren om vragen tussen alle teamleden te verdelen."</string>
@@ -1140,7 +1137,6 @@ Doe hetzelfde voor de andere zijde, als aanwezig."</string>
     <string name="quest_camp_type_tents_only">"Alleen tenten"</string>
     <string name="quest_camp_type_backcountry">"Wildkamperen (geen faciliteiten)"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Deze diameter lijkt onwaarschijnlijk, deze ligt meestal tussen %1$d en %2$d."</string>
-    <string name="quest_recycling_type_pet">"Alleen PET"</string>
     <string name="street_parking_street_width">"Straatbreedte: %1$s"</string>
     <string name="overlay_street_parking">"Parkeren op straat."</string>
     <string name="link_ohsomehex_description">"Verken OSM data op verschillende schalen, van het grote geheel tot individuele objecten in ruimte en tijd"</string>
@@ -1454,4 +1450,15 @@ Bijvoorbeeld 1,3 of 2b,4,6."</string>
     <string name="quest_streetName_add_language">"Taal toevoegen"</string>
     <string name="ok">"OK"</string>
     <string name="cancel">"Annuleren"</string>
+    <string name="quest_aerialway_bicycle_summer">"Enkel in de zomer"</string>
+    <string name="quest_board_type_rules">"Regels"</string>
+    <string name="quest_firewood_provided_title">"Is er brandhout voorzien hier?"</string>
+    <string name="quest_first_aid_kit_location">"Waar bevindt deze eerste hulp kit zich?"</string>
+    <string name="quest_lane_markings_title">"Heeft deze straat markeringen voor rijvakken?"</string>
+    <string name="quest_level_thing_title">"Op welke verdieping bevindt dit object zich?"</string>
+    <string name="quest_bicycle_charging_station_capacity_title">"Hoeveel fietsen kunnen er hier tegelijk opladen?"</string>
+    <string name="quest_charging_station_bicycles_title">"Kunnen fietsen hier ook opgeladen worden?"</string>
+    <string name="quest_charging_station_bicycles_hint">"Vermogensomvormers voor fietsen kunnen in een normaal huishoudelijk stopcontact."</string>
+    <string name="quest_tower_access_title">"Wie heeft toegang tot deze toren? Het mag gratis of betalend zijn."</string>
+    <string name="quest_charging_station_bicycles_answer_only">"Het is enkel voor fietsen"</string>
 </resources>

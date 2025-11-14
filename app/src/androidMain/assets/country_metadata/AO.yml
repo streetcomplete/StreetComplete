@@ -1,5 +1,5 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [Multicaixa, BAI, Banco de Poupança e Credito (BPC), Banco de Fomento Angola (BFA), Banco de Fomento Angola, Banco Keve, Banco BIC Angola, BPC, BFA]
+atmOperators: [Multicaixa, BAI, Banco de Fomento Angola, Banco de Poupança e Credito (BPC), Banco de Fomento Angola (BFA), Banco Keve, Banco BIC Angola, BPC, BFA]
 centerLineStyle: white
 defaultSpeedLimitHasUrbanOrRural: true
 edgeLineStyle: yellow

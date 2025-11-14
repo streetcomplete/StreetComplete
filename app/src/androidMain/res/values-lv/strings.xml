@@ -524,7 +524,6 @@ Ja tādu opciju nav, jūs varat instalēt citu tastatūras lietotni caur lietot�
     <string name="quest_recycling_type_glass_bottles">"Stikla pudeles un burkas"</string>
     <string name="quest_recycling_type_glass_bottles_short">"Pudeles un burkas"</string>
     <string name="quest_recycling_type_paper">"Papīru"</string>
-    <string name="quest_recycling_type_plastic_generic">"Plastmasu"</string>
     <string name="quest_recycling_type_plastic">"Jebkāda veida plastmasu"</string>
     <string name="quest_recycling_type_shoes">"Kurpes"</string>
     <string name="quest_recycling_type_electric_appliances">"Elektroierīces"</string>
@@ -701,7 +700,6 @@ līmeņi"</string>
     <string name="quest_oneway2_title">"Vai šī ir vienvirziena iela? Kurā virzienā?"</string>
     <string name="quest_oneway2_dir">"Vienvirziena šajā virzienā"</string>
     <string name="quest_oneway2_no_oneway">"Nav vienvirziena"</string>
-    <string name="quest_maxweight_select_sign">"Izvēlieties zīmi"</string>
     <string name="quest_steps_incline_title">"Šīm kāpnēm, kurš virziens ir augšup?"</string>
     <string name="quest_steps_incline_up">"Šajā virzienā iet augšup"</string>
     <string name="quest_step_count_title">"Cik šeit ir soļu?"</string>
@@ -788,7 +786,6 @@ Ja kādas joslas ir rezervētas autobusiem, lūdzu, atstājiet piezīmi."</strin
     <string name="quest_postboxRoyalCypher_type_scottish_crown">"Skotijas kronis"</string>
     <string name="quest_buildingType_fire_station">"Ugunsdzēsēju depo ēka"</string>
     <string name="quest_recycling_type_beverage_cartons">"Tikai dzērienu kartona iepakojumi"</string>
-    <string name="quest_recycling_type_plastic_bottles_and_cartons">"Tikai plastmasas pudeles un kartona iepakojumi"</string>
     <string name="team_mode">"Pāriet uz komandas režīmu"</string>
     <string name="team_mode_exit">"Iziet ko komandas režīma"</string>
     <string name="team_mode_description">"Kad grupa kopā kartē vienu un to pašu apgabalu, jūs varat sadalīt uzdevumus starp komandas biedriem."</string>
@@ -1145,7 +1142,6 @@ Dariet to arī otrai pusei, ja tāda ir."</string>
     <string name="quest_camp_type_tents_only">"Tikai teltis"</string>
     <string name="quest_camp_type_backcountry">"Nomaļš kempings (nav labiekārtots)"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Šis diametrs izskatās neticams, tas parasti ir starp %1$d un %2$d."</string>
-    <string name="quest_recycling_type_pet">"Tikai PET"</string>
     <string name="street_parking_street_width">"Ielas platums: %1$s"</string>
     <string name="overlay_street_parking">"Stāvvieta pie ielas"</string>
     <string name="link_ohsomehex_description">"Izpētiet OSM datus dažādos mērogos — no lielās ainas līdz atsevišķiem objektiem telpā un laikā"</string>

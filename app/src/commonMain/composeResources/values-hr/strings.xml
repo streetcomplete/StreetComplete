@@ -526,7 +526,6 @@ Razdvojiti put sada?</string>
     <string name="quest_recycling_type_glass_bottles">Staklene tegle i boce</string>
     <string name="quest_recycling_type_glass_bottles_short">Staklenke</string>
     <string name="quest_recycling_type_paper">Papir</string>
-    <string name="quest_recycling_type_plastic_generic">Plastika</string>
     <string name="quest_recycling_type_plastic">Bilo koja plastika</string>
     <string name="quest_recycling_type_shoes">Stare cipele</string>
     <string name="quest_recycling_type_electric_appliances">Mali kućanski aparati</string>
@@ -704,7 +703,6 @@ postignuća</string>
     <string name="quest_oneway2_title">Je li ovo jednosmjerna ulica? U kojem smjeru?</string>
     <string name="quest_oneway2_dir">Jednosmjerna u ovom smjeru</string>
     <string name="quest_oneway2_no_oneway">Nije jednosmjerna</string>
-    <string name="quest_maxweight_select_sign">Odaberi znak</string>
     <string name="quest_steps_incline_title">Koji smjer vodi prema gore za ove stepenice?</string>
     <string name="quest_steps_incline_up">Ovaj smjer uzbrdo</string>
     <string name="quest_step_count_title">Koliko stepenica tu ima?</string>
@@ -791,7 +789,6 @@ Pripazite na sve dostupne opcije: neki slučajevi nisu očigledni, poput jednosm
     <string name="quest_postboxRoyalCypher_type_scottish_crown">Škotska Kruna</string>
     <string name="quest_buildingType_fire_station">Vatrogasna postaja</string>
     <string name="quest_recycling_type_beverage_cartons">Samo tetrapak</string>
-    <string name="quest_recycling_type_plastic_bottles_and_cartons">Plastične boce i tetrapak</string>
     <string name="team_mode">Aktiviraj timski način rada</string>
     <string name="team_mode_exit">Ugasi timski način rada</string>
     <string name="team_mode_description">Kada kartirate isto područje zajedno u grupi, možete ući u timski način rada da podijelite zadatke između svih članova tima.
@@ -1149,7 +1146,6 @@ Učinite isto za drugu stranu ako je prikazana na ekranu.</string>
     <string name="quest_camp_type_tents_only">Samo šatori</string>
     <string name="quest_camp_type_backcountry">Zabačeno kampiranje (bez objekata)</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">Toliki promjer izgleda nerealno; obično je između %1$d i %2$d.</string>
-    <string name="quest_recycling_type_pet">Samo PET</string>
     <string name="street_parking_street_width">Širina ulice: %1$s</string>
     <string name="overlay_street_parking">Ulični parking</string>
     <string name="link_ohsomehex_description">Istražite OSM podatke kroz prostor i vrijeme u različitim mjerilima, od velike slike do pojedinačnih objekata</string>
@@ -1261,7 +1257,7 @@ Pomaknuti sada?</string>
     <string name="lane_narrowing_traffic_calming_chicane">Namjerna krivulja (šikana)</string>
     <string name="lane_narrowing_traffic_calming_choked_island">Produžetak rubnika  +  pješački otok</string>
     <string name="lane_narrowing_traffic_calming_none">Ovdje nema sužene trake</string>
-    <string name="quest_tactilePaving_title_steps">Imaju li ove stepenice trake vodilje za slijepe?</string>
+    <string name="quest_tactilePaving_title_steps">Postoje li trake vodilje za slijepe na vrhu i dnu ovih stepenica?</string>
     <string name="quest_tactilePaving_steps_top">Samo na vrhu</string>
     <string name="quest_tactilePaving_steps_bottom">Samo na dnu</string>
     <string name="overlay_addresses_no_entrance">To nije ulaz…</string>
@@ -1468,4 +1464,10 @@ Kat se računa kao kat u potkrovlju samo kada ima prozore unutar krova. Stoga, k
     <string name="quest_first_aid_kit_location">Gdje se nalazi ovaj pribor za prvu pomoć?</string>
     <string name="quest_lane_markings_title">Jesu li trake označene na ovoj cesti?</string>
     <string name="quest_level_thing_title">Na kojem se katu to nalazi?</string>
+    <string name="quest_bicycle_charging_station_capacity_title">Koliko se električnih bicikala ovdje može puniti istovremeno?</string>
+    <string name="quest_charging_station_bicycles_title">Mogu li se ovdje puniti i električni bicikli?</string>
+    <string name="quest_charging_station_bicycles_hint">Punjači za električne bicikle mogu imati ugrađene priključke specifične za bicikl ili mogu imati obične kućne utičnice za spajanje adaptera za napajanje.</string>
+    <string name="quest_tower_access_title">Tko ima pristup ovom tornju? Ulaz može biti besplatan ili naplatni.</string>
+    <string name="quest_charging_station_bicycles_answer_only">To je samo za bicikle</string>
+    <string name="quest_recycling_type_pet_bottles">PET boce</string>
 </resources>

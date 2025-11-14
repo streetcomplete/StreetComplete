@@ -2,7 +2,7 @@
 <resources>
     <string name="action_settings">"Indstillinger"</string>
     <string name="oauth_communication_error">"Kan ikke tilgå godkendelsesserveren"</string>
-    <string name="oauth_failed_permissions">"Godkendelse mislykkedes: alle de angivne tilladelser skal gives"</string>
+    <string name="oauth_failed_permissions">"Godkendelse mislykkedes: Alle de anførte tilladelser skal gives"</string>
     <string name="pref_category_communication">"Kommunikation"</string>
     <string name="pref_category_display">"Visning"</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">"Vis alle bemærkninger"</string>
@@ -501,12 +501,11 @@ Opdel den nu?"</string>
     <string name="quest_recycling_type_glass_bottles">"Glasflasker og -krukker"</string>
     <string name="quest_recycling_type_glass_bottles_short">"Flasker og krukker"</string>
     <string name="quest_recycling_type_paper">"Papir"</string>
-    <string name="quest_recycling_type_plastic_generic">"Plastik"</string>
     <string name="quest_recycling_type_plastic">"Alle typer plastik"</string>
     <string name="quest_recycling_type_shoes">"Sko"</string>
     <string name="quest_recycling_type_electric_appliances">"Elektriske apparater"</string>
-    <string name="quest_recycling_type_plastic_bottles">"Kun plastikflasker"</string>
-    <string name="quest_recycling_type_plastic_packaging">"Kun plastikemballage"</string>
+    <string name="quest_recycling_type_plastic_bottles">"Plastikflasker"</string>
+    <string name="quest_recycling_type_plastic_packaging">"Enhver plastikemballage"</string>
     <string name="quest_recycling_type_scrap_metal">"Skrotmetal"</string>
     <string name="quest_recycling_type_any_glass">"Alt glas"</string>
     <string name="quest_recycling_glass_title">"Kan kun glasflasker og glaskrukker afleveres til genbrug her, eller er det alle typer af glas?"</string>
@@ -677,7 +676,6 @@ aktiv"</string>
     <string name="quest_oneway2_title">"Er denne vej ensrettet? I hvilken retning?"</string>
     <string name="quest_oneway2_dir">"Ensrettet i denne retning"</string>
     <string name="quest_oneway2_no_oneway">"Ikke ensrettet"</string>
-    <string name="quest_maxweight_select_sign">"Vælg skilt"</string>
     <string name="quest_steps_incline_title">"Hvilken retning er opad?"</string>
     <string name="quest_steps_incline_up">"Denne vej op"</string>
     <string name="quest_step_count_title">"Hvor mange trin er der her?"</string>
@@ -763,8 +761,7 @@ Bemærk alle svarmuligheder: nogle situationer er ikke åbenlyse, som f.eks. en 
     <string name="quest_postboxRoyalCypher_type_none">"Ingen er synlige"</string>
     <string name="quest_postboxRoyalCypher_type_scottish_crown">"Skotlands krone"</string>
     <string name="quest_buildingType_fire_station">"Brandstation"</string>
-    <string name="quest_recycling_type_beverage_cartons">"Kun kartoner til drikkevarer"</string>
-    <string name="quest_recycling_type_plastic_bottles_and_cartons">"Kun plastflasker og kartoner"</string>
+    <string name="quest_recycling_type_beverage_cartons">"Kartoner til drikkevarer"</string>
     <string name="team_mode">"Skift til holdtilstand"</string>
     <string name="team_mode_exit">"Afslut holdtilstand"</string>
     <string name="team_mode_description">"Når I kortlægger det samme område sammen i en gruppe, kan I skifte til holdtilstand for at dele opgaverne op mellem alle holdmedlemmerne.
@@ -1120,7 +1117,6 @@ Gør det samme med den anden side, hvis den findes."</string>
     <string name="quest_camp_type_tents_only">"Kun telte"</string>
     <string name="quest_camp_type_backcountry">"Primitiv lejrplads (ingen faciliteter)"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Denne diameter ser usandsynlig ud, den er normalt mellem %1$d og %2$d."</string>
-    <string name="quest_recycling_type_pet">"Kun PET"</string>
     <string name="street_parking_street_width">"Vejbredde: %1$s"</string>
     <string name="overlay_street_parking">"Gadeparkering"</string>
     <string name="link_ohsomehex_description">"Udforsk OSM-data på alle niveauer lige fra det store overblik til individuelle objekter fordelt over rum og tid"</string>
@@ -1429,5 +1425,13 @@ For eksempel 1,3 eller 2b,4,6."</string>
     <string name="quest_firewood_provided_title">"Er der brænde til rådighed her?"</string>
     <string name="quest_first_aid_kit_location">"Hvor befinder førstehjælpskassen sig?"</string>
     <string name="quest_lane_markings_title">"Er der markeret vognbaner på denne vej?"</string>
-    <string name="quest_level_thing_title">"På hvilket niveau er denne ting placeret?"</string>
+    <string name="quest_level_thing_title">"På hvilken etage er denne ting placeret?"</string>
+    <string name="quest_bicycle_charging_station_capacity_title">"Hvor mange cykler kan der oplades her på samme tid?"</string>
+    <string name="quest_charging_station_bicycles_title">"Kan cykler også oplades her?"</string>
+    <string name="quest_charging_station_bicycles_hint">"Cykelopladerens strømadaptere tilsluttes almindelige stikkontakter."</string>
+    <string name="quest_tower_access_title">"Hvem har adgang til dette tårn? Det kan være gratis eller mod betaling."</string>
+    <string name="quest_charging_station_bicycles_answer_only">"Det er kun til cykler"</string>
+    <string name="quest_recycling_type_pet_bottles">"PET-flasker"</string>
+    <string name="quest_maxweight_add_sign">"Tilføj skilt"</string>
+    <string name="quest_maxweight_remove_sign">"Fjern skilt"</string>
 </resources>

@@ -524,7 +524,6 @@
     <string name="quest_recycling_type_glass_bottles">بطری‌ها و ظروف شیشه‌ای</string>
     <string name="quest_recycling_type_glass_bottles_short">بطری و شیشه</string>
     <string name="quest_recycling_type_paper">کاغذ</string>
-    <string name="quest_recycling_type_plastic_generic">پلاستیک</string>
     <string name="quest_recycling_type_plastic">هر نوع پلاستیکی</string>
     <string name="quest_recycling_type_shoes">کفش</string>
     <string name="quest_recycling_type_electric_appliances">لوازم برقی</string>
@@ -697,7 +696,6 @@
     <string name="quest_oneway2_title">آیا این خیابان یک طرفه است؟ به کدام سو؟</string>
     <string name="quest_oneway2_dir">یک طرفه در این مسیر</string>
     <string name="quest_oneway2_no_oneway">یک طرفه نیست</string>
-    <string name="quest_maxweight_select_sign">علامت را انتخاب کنید</string>
     <string name="quest_steps_incline_title">این پله‌ها از کدام سو به سمت بالا می‌روند؟</string>
     <string name="quest_steps_incline_up">این راه بالا</string>
     <string name="quest_step_count_title">چند پله در اینجا وجود دارد؟</string>
@@ -785,7 +783,6 @@
     <string name="quest_postboxRoyalCypher_type_scottish_crown">تاج اسکاتلند</string>
     <string name="quest_buildingType_fire_station">ایستگاه آتش‌نشانی</string>
     <string name="quest_recycling_type_beverage_cartons">فقط جعبه‌های نوشیدنی</string>
-    <string name="quest_recycling_type_plastic_bottles_and_cartons">فقط بطری و جعبه پلاستیکی</string>
     <string name="team_mode">حالت گروهی</string>
     <string name="team_mode_exit">خروج از حالت گروهی</string>
     <string name="team_mode_description">هنگامی که یک منطقه را به‌طور گروهی نقشه‌برداری می‌کنید، برای تقسیم جُستارها بین همهٔ اعضای گروه می‌توانید وارد حالت گروهی شوید.</string>
@@ -1144,7 +1141,6 @@
     <string name="quest_camp_type_tents_only">فقط چادر</string>
     <string name="quest_camp_type_backcountry">چادر زنی در خارج شهر (بدون امکانات)</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">به نظر می‌رسد این قطر درست نباشد، معمولاً اندازهٔ آن بین %1$d و %2$d است.</string>
-    <string name="quest_recycling_type_pet">فقط حیوان‌خانگی</string>
     <string name="street_parking_street_width">پهنای‌ خیابان: %1$s</string>
     <string name="overlay_street_parking">پارکینگ خیابانی</string>
     <string name="link_ohsomehex_description">داده‌های OSM را در محتوایی از تصاویر بزرگ گرفته تا مناظر منحصر بفرد در مکان و زمان جستجو نمایید.</string>
@@ -1459,4 +1455,19 @@
     <string name="quest_streetName_add_language">اضافه کردن زبان</string>
     <string name="ok">خوب</string>
     <string name="cancel">لغو کردن</string>
+    <string name="quest_aerialway_bicycle_title">آیا این بالابر هوایی دوچرخه هم حمل می‌کند؟</string>
+    <string name="quest_aerialway_bicycle_summer">فقط در تابستان</string>
+    <string name="quest_board_type_rules">قوانین</string>
+    <string name="quest_firewood_provided_title">آیا اینجا هیزم برای روشن کردن آتش فراهم می‌شود؟</string>
+    <string name="quest_first_aid_kit_location">این جعبه کمک‌های اولیه کجا قرار دارد؟</string>
+    <string name="quest_lane_markings_title">آیا این جاده خطکشی دارد؟</string>
+    <string name="quest_level_thing_title">این چیز در کدام شماره سطح قرار دارد؟</string>
+    <string name="quest_bicycle_charging_station_capacity_title">چند دوچرخه را می‌توان همزمان در اینجا شارژ کرد؟</string>
+    <string name="quest_charging_station_bicycles_title">دوچرخه‌ها را می‌توان در اینجا شارژ کرد؟</string>
+    <string name="quest_charging_station_bicycles_hint">آداپتورهای برق شارژر دوچرخه به پریزهای برق معمولی خانگی وصل می‌شوند.</string>
+    <string name="quest_tower_access_title">چه کسی می‌تواند به این برج دسترسی داشته باشد؟ ممکن است رایگان یا پولی باشد.</string>
+    <string name="quest_charging_station_bicycles_answer_only">فقط برای دوچرخه است</string>
+    <string name="quest_recycling_type_pet_bottles">بطری‌های PET</string>
+    <string name="quest_maxweight_add_sign">اضافه‌کردن علامت</string>
+    <string name="quest_maxweight_remove_sign">حذف‌کردن علامت</string>
 </resources>

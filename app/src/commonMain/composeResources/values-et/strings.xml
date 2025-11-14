@@ -525,7 +525,6 @@ Osaline juurdepääs tähendab, et ratastooliga on võimalik tualettruumi sisse 
     <string name="quest_recycling_type_glass_bottles">Klaaspudelid ja purgid</string>
     <string name="quest_recycling_type_glass_bottles_short">Pudelid ja purgid</string>
     <string name="quest_recycling_type_paper">Paber</string>
-    <string name="quest_recycling_type_plastic_generic">Plastik</string>
     <string name="quest_recycling_type_plastic">Igasugune plastik</string>
     <string name="quest_recycling_type_shoes">Kingad</string>
     <string name="quest_recycling_type_electric_appliances">Elektriseadmed</string>
@@ -702,7 +701,6 @@ tasemeid</string>
     <string name="quest_oneway2_title">Kas see on ühesuunaline tänav? Kui jah, siis mis suunas?</string>
     <string name="quest_oneway2_dir">Ühesuunaline selles suunas</string>
     <string name="quest_oneway2_no_oneway">Pole ühesuunaline</string>
-    <string name="quest_maxweight_select_sign">Vali märk</string>
     <string name="quest_steps_incline_title">Mis suund viib sellel trepil ülespoole?</string>
     <string name="quest_steps_incline_up">See suund viib üles</string>
     <string name="quest_step_count_title">Mitu trepiastet siin leidub?</string>
@@ -790,7 +788,6 @@ Palub vaata hoolega kõiki valikuid: mõned neist pole esimesel pilgul ilmselged
     <string name="quest_postboxRoyalCypher_type_scottish_crown">Šoti kroon</string>
     <string name="quest_buildingType_fire_station">Päästeteenistuse depoo</string>
     <string name="quest_recycling_type_beverage_cartons">Vaid joogipakid</string>
-    <string name="quest_recycling_type_plastic_bottles_and_cartons">Vaid plastikpudeli ja joogipakid</string>
     <string name="team_mode">Sisene tiimitöö režiimi</string>
     <string name="team_mode_exit">Välju tiimitöö režiimist</string>
     <string name="team_mode_description">Kui rühmaga kaardistate sama piirkonda, siis sa võid avada tiimitöö režiimi, mispuhul ülesanded jagatakse tiimi vahel.
@@ -1148,7 +1145,6 @@ Kui sama on ka teisel teepoolel, siis korda tegevust.</string>
     <string name="quest_camp_type_tents_only">Vaid telkijad</string>
     <string name="quest_camp_type_backcountry">Kämping kõnnumaal (teenused puuduvad)</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">Diameeter tundub ebaloogiline, tavaliselt see jääb %1$d ja %2$d vahele.</string>
-    <string name="quest_recycling_type_pet">Vaid PET-plastikust pudelid ja pakid</string>
     <string name="street_parking_street_width">Tänava laius: %1$s</string>
     <string name="overlay_street_parking">Parkimine tänaval</string>
     <string name="link_ohsomehex_description">Uuri OSMi andmeid ajas ja ruumis alates väga suurest üldpildist kuni üksikute objektideni</string>
@@ -1470,4 +1466,9 @@ Näiteks 1,3 või 2b,4,6.</string>
     <string name="quest_first_aid_kit_location">Kus asub esmaabikomplekt?</string>
     <string name="quest_lane_markings_title">Kas sellel teel on sõiduread märgitud?</string>
     <string name="quest_level_thing_title">Mis korrusel see objekt asub?</string>
+    <string name="quest_bicycle_charging_station_capacity_title">Kui mitut jalgratast saab siin samaaegselt laadida?</string>
+    <string name="quest_charging_station_bicycles_title">Kas siin saab ka laadida jalgrattaid?</string>
+    <string name="quest_charging_station_bicycles_hint">Jalgratta laadimiskaabli pistikuid saab ühendada tavalistesse soklitesse.</string>
+    <string name="quest_tower_access_title">Kes võivad siia torni siseneda? Pääs võib olla tasuta või tasuline.</string>
+    <string name="quest_charging_station_bicycles_answer_only">See on vaid jalgrataste jaoks</string>
 </resources>

@@ -528,7 +528,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_recycling_type_glass_bottles">"ガラス瓶"</string>
     <string name="quest_recycling_type_glass_bottles_short">"ガラス瓶"</string>
     <string name="quest_recycling_type_paper">"紙"</string>
-    <string name="quest_recycling_type_plastic_generic">"プラスチック"</string>
     <string name="quest_recycling_type_plastic">"あらゆるプラスチック"</string>
     <string name="quest_recycling_type_shoes">"靴"</string>
     <string name="quest_recycling_type_electric_appliances">"電気製品"</string>
@@ -705,7 +704,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_oneway2_title">"これは一方通行路ですか? 方向は?"</string>
     <string name="quest_oneway2_dir">"この向きで一方通行"</string>
     <string name="quest_oneway2_no_oneway">"一方通行ではない"</string>
-    <string name="quest_maxweight_select_sign">"標識を選ぶ"</string>
     <string name="quest_steps_incline_title">"階段はどの方向に上っていますか?"</string>
     <string name="quest_steps_incline_up">"この方向に上る"</string>
     <string name="quest_step_count_title">"階段は何段ありますか?"</string>
@@ -792,7 +790,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_postboxRoyalCypher_type_scottish_crown">"スコットランドの王冠"</string>
     <string name="quest_buildingType_fire_station">"消防署"</string>
     <string name="quest_recycling_type_beverage_cartons">"飲料用パックのみ"</string>
-    <string name="quest_recycling_type_plastic_bottles_and_cartons">"プラスチックボトル・紙パックのみ"</string>
     <string name="team_mode">"チームモード"</string>
     <string name="team_mode_exit">"チームモードを終了"</string>
     <string name="team_mode_description">"同じ範囲を複数人で一緒にマッピングする場合、チームモードを使うことでクエストを参加者全員で分担できます。"</string>
@@ -1149,7 +1146,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_camp_type_tents_only">"テントのみ"</string>
     <string name="quest_camp_type_backcountry">"バックカントリーキャンプ(施設なし)"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"この直径は信じがたいように見えます。通常は%1$dから%2$dの間です。"</string>
-    <string name="quest_recycling_type_pet">"ペットのみ"</string>
     <string name="street_parking_street_width">"通りの幅: %1$s"</string>
     <string name="overlay_street_parking">"路上駐車"</string>
     <string name="link_ohsomehex_description">"全体像から個々の物体まで、空白や時間を超えたスケールでOSMデータを探索する"</string>

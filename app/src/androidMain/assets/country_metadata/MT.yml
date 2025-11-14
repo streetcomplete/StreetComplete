@@ -12,6 +12,7 @@ noParkingLineStyle: yellow
 noStoppingLineStyle: double yellow
 officialLanguages: [mt, en]
 orchardProduces: [grape]
+parcelLockerBrand: [DHL]
 postboxesHaveCollectionTimes: true
 postboxesHaveRef: true
 postboxesHaveRoyalCypher: true

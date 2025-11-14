@@ -1,4 +1,4 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 atmOperators: [Poste Italiane, Banca di Credito Cooperativo Valdostana, Banca Sella, UniCredit Bank]
-chargingStationOperators: [Duferco, Repower, Be Charge, Ionity, Plenitude, Enel X, Pradella Sistemi srl, Enel]
+chargingStationOperators: [Duferco, Repower, Be Charge, Ionity, Plenitude, Enel X, Enel, Pradella Sistemi srl]
 officialLanguages: [it, fr, frp]

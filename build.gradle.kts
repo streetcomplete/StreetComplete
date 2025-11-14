@@ -5,7 +5,7 @@ plugins {
     id("org.jetbrains.kotlin.plugin.compose") version "2.2.21"  apply false
     id("com.android.application") version "8.11.2" apply false
     id("com.android.library") version "8.11.2" apply false
-    id("org.jetbrains.compose") version "1.9.2" apply false
+    id("org.jetbrains.compose") version "1.9.3" apply false
     id("org.jetbrains.kotlinx.atomicfu") version "0.29.0" apply false
 }
 

@@ -526,12 +526,11 @@ Jetzt aufspalten?"</string>
     <string name="quest_recycling_type_glass_bottles">"Glasflaschen und -gläser"</string>
     <string name="quest_recycling_type_glass_bottles_short">"Flaschen und Gläser"</string>
     <string name="quest_recycling_type_paper">"Papier"</string>
-    <string name="quest_recycling_type_plastic_generic">"Plastik"</string>
     <string name="quest_recycling_type_plastic">"Jede Art von Plastik"</string>
     <string name="quest_recycling_type_shoes">"Schuhe"</string>
     <string name="quest_recycling_type_electric_appliances">"Elektrogeräte"</string>
-    <string name="quest_recycling_type_plastic_bottles">"Nur Plastikflaschen"</string>
-    <string name="quest_recycling_type_plastic_packaging">"Nur Plastikverpackungen"</string>
+    <string name="quest_recycling_type_plastic_bottles">"Plastikflaschen"</string>
+    <string name="quest_recycling_type_plastic_packaging">"Alle Plastikverpackungen"</string>
     <string name="quest_recycling_type_scrap_metal">"Altmetall"</string>
     <string name="quest_recycling_type_any_glass">"Jede Art von Glas"</string>
     <string name="quest_recycling_glass_title">"Können hier nur Glasflaschen und -gläser entsorgt werden, oder jede Art von Glas?"</string>
@@ -704,7 +703,6 @@ Erfolge"</string>
     <string name="quest_oneway2_title">"Ist dies eine Einbahnstraße? In welche Richtung?"</string>
     <string name="quest_oneway2_dir">"Einbahn­straße in diese Richtung"</string>
     <string name="quest_oneway2_no_oneway">"Keine Einbahn­straße"</string>
-    <string name="quest_maxweight_select_sign">"Wähle das Schild"</string>
     <string name="quest_steps_incline_title">"Welche Richtung führt hier nach oben?"</string>
     <string name="quest_steps_incline_up">"Hier nach oben"</string>
     <string name="quest_step_count_title">"Wie viele Stufen gibt es hier?"</string>
@@ -791,8 +789,7 @@ Beachte alle Auswahlmöglichkeiten: manche Kombinationen sind nicht offensichtli
     <string name="quest_postboxRoyalCypher_type_none">"Kein Monogramm sichtbar"</string>
     <string name="quest_postboxRoyalCypher_type_scottish_crown">"Die Krone von Schottland"</string>
     <string name="quest_buildingType_fire_station">"Feuerwehrhaus"</string>
-    <string name="quest_recycling_type_beverage_cartons">"Nur Getränkekartons"</string>
-    <string name="quest_recycling_type_plastic_bottles_and_cartons">"Nur Plastikflaschen und Getränkekartons"</string>
+    <string name="quest_recycling_type_beverage_cartons">"Getränkekartons"</string>
     <string name="team_mode">"Team-Modus starten"</string>
     <string name="team_mode_exit">"Team-Modus beenden"</string>
     <string name="team_mode_description">"Wenn ihr als Gruppe zusammen in der gleichen Gegend mappen wollt, könnt ihr den Team-Modus nutzen, um die Aufgaben untereinander aufzuteilen. Jeder von euch sieht dann unterschiedliche Aufgaben."</string>
@@ -986,7 +983,7 @@ Alternativ kann auch ein Hinweis (mit Foto) hinterlassen werden."</string>
     <string name="quest_smoothness_surface_value">"Die Oberfläche wurde bestimmt als:"</string>
     <string name="quest_smoothness_obstacle">"Da ist ein Hindernis"</string>
     <string name="quest_smoothness_obstacle_hint">"Bitte gib eine allgemeine Antwort für die Glätte der Oberfläche. Einzelne Hindernisse wie Bordsteinkanten, Schwellen zur Geschwindigkeitsbegrenzung oder Weideroste können ignoriert werden. Mehrfache oder unerwartete Hindernisse sollten in die Antwort miteinbezogen werden."</string>
-    <string name="quest_smoothness_hint">"Die Icons zeigen an, für welche Fahrzeuge die Fläche nutzbar sein soll. Was zählt, ist das Gesamtbild und nicht vereinzelte Schäden."</string>
+    <string name="quest_smoothness_hint">"Die Symbole zeigen an, für welche Fahrzeuge die Fläche nutzbar sein soll. Was zählt, ist das Gesamtbild, nicht vereinzelte Schäden."</string>
     <string name="link_osmhydrant_description">"Finde, erstelle und bearbeite Feuerwehrhäuser und Hydranten"</string>
     <string name="achievement_lifesaver_title">"Lebensretter"</string>
     <string name="achievement_lifesaver_solved_X">"Du hast %1$d Aufgaben gelöst, die Rettungskräften und Ersthelfern die Arbeit erleichtern!"</string>
@@ -1151,7 +1148,6 @@ Wiederhole dies für die andere Seite, wenn sie existiert."</string>
     <string name="quest_camp_type_tents_only">"Nur Zelte"</string>
     <string name="quest_camp_type_backcountry">"Wildcamping (keine Sanitäreinrichtungen)"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Dieser Durchmesser sieht ungewöhnlich aus, er liegt normalerweise zwischen %1$d und %2$d."</string>
-    <string name="quest_recycling_type_pet">"Nur PET"</string>
     <string name="street_parking_street_width">"Fahrbahnbreite: %1$s"</string>
     <string name="overlay_street_parking">"Parkstreifen"</string>
     <string name="link_ohsomehex_description">"Erkunde OSM-Daten in verschiedenen Maßstäben, vom Gesamtbild bis hin zu einzelnen Objekten in Raum und Zeit"</string>
@@ -1471,4 +1467,12 @@ Zum Beispiel 1,3 oder 2b,4,6."</string>
     <string name="quest_first_aid_kit_location">"Wo befindet sich dieser Erste-Hilfe-Kasten?"</string>
     <string name="quest_lane_markings_title">"Hat diese Straße Fahrbahnmarkierungen?"</string>
     <string name="quest_level_thing_title">"Auf welcher Etage befindet sich dieses Objekt?"</string>
+    <string name="quest_bicycle_charging_station_capacity_title">"Wie viele Fahrräder können hier gleichzeitig geladen werden?"</string>
+    <string name="quest_charging_station_bicycles_title">"Können hier auch Fahrräder geladen werden?"</string>
+    <string name="quest_charging_station_bicycles_hint">"Fahrrad-Ladeadapter können in normale Haushaltssteckdosen eingesteckt werden."</string>
+    <string name="quest_tower_access_title">"Für wen ist dieser Turm zugänglich? Der Zugang kann kostenlos oder kostenpflichtig sein."</string>
+    <string name="quest_charging_station_bicycles_answer_only">"Ausschließlich Fahrräder"</string>
+    <string name="quest_recycling_type_pet_bottles">"PET-Flaschen"</string>
+    <string name="quest_maxweight_add_sign">"Schild hinzufügen"</string>
+    <string name="quest_maxweight_remove_sign">"Schild entfernen"</string>
 </resources>

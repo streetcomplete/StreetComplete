@@ -526,7 +526,6 @@ Dividi ĝin nun?</string>
     <string name="quest_recycling_type_glass_bottles">Vitraj boteloj kaj bokaloj</string>
     <string name="quest_recycling_type_glass_bottles_short">Boteloj kaj bokaloj</string>
     <string name="quest_recycling_type_paper">Papero</string>
-    <string name="quest_recycling_type_plastic_generic">Plasto</string>
     <string name="quest_recycling_type_plastic">Ajna plasto</string>
     <string name="quest_recycling_type_shoes">Ŝuoj</string>
     <string name="quest_recycling_type_electric_appliances">Elektraj aparatoj</string>
@@ -697,7 +696,6 @@ aktiva</string>
     <string name="quest_oneway2_title">Ĉu ĉi tio estas unudirekta strato? En kiu direkto?</string>
     <string name="quest_oneway2_dir">Unudirekte en ĉi tiu direkto</string>
     <string name="quest_oneway2_no_oneway">Ne unudirekte</string>
-    <string name="quest_maxweight_select_sign">Elektu signon</string>
     <string name="quest_steps_incline_title">Kiu direkto kondukas supren por ĉi tiuj ŝtuparoj?</string>
     <string name="quest_steps_incline_up">Ĉi direkte supren</string>
     <string name="quest_step_count_title">Kiom da paŝoj estas ĉi tie?</string>
@@ -782,7 +780,6 @@ Kontrolu ĉiujn opciojn: kelkaj kazoj ne estas evidentaj, kiel unudirekta vojo k
     <string name="quest_postboxRoyalCypher_type_scottish_crown">La krono de Skotlando</string>
     <string name="quest_buildingType_fire_station">Fajrobrigadejo</string>
     <string name="quest_recycling_type_beverage_cartons">Nur trinkaĵa kartonoj</string>
-    <string name="quest_recycling_type_plastic_bottles_and_cartons">Nur plastaj boteloj kaj kartonoj</string>
     <string name="team_mode">Teama Reĝimo</string>
     <string name="team_mode_exit">Eliri Teama Reĝimo</string>
     <string name="team_mode_description">Kiam vi mapas la saman areon kune en grupo, vi povas eniri teamreĝimon por dividi taskojn inter ĉiuj grupanoj.</string>
@@ -1132,7 +1129,6 @@ Faru la samon por la alia flanko, se ĝi ĉeestas.</string>
     <string name="quest_camp_type_tents_only">Nur tendoj</string>
     <string name="quest_camp_type_backcountry">Sovaĝa tendaro (sen servejoj)</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">Ĉi tiu diametro aspektas neplaĉebla, ĝi kutime estas inter %1$d kaj %2$d.</string>
-    <string name="quest_recycling_type_pet">Nur PET</string>
     <string name="street_parking_street_width">Strata larĝo: %1$s</string>
     <string name="overlay_street_parking">Strata parkado</string>
     <string name="link_opencampingmap_description">Monda mapo de kampadejoj</string>

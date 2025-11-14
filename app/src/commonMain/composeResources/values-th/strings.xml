@@ -524,7 +524,6 @@
     <string name="quest_recycling_type_glass_bottles">ขวดแก้วและขวดโหล</string>
     <string name="quest_recycling_type_glass_bottles_short">ขวดน้ำและขวดโหล</string>
     <string name="quest_recycling_type_paper">กระดาษ</string>
-    <string name="quest_recycling_type_plastic_generic">พลาสติก</string>
     <string name="quest_recycling_type_plastic">พลาสติกทุกประเภท</string>
     <string name="quest_recycling_type_shoes">รองเท้า</string>
     <string name="quest_recycling_type_electric_appliances">เครื่องใช้ไฟฟ้า</string>
@@ -698,7 +697,6 @@
     <string name="quest_oneway2_title">นี่คือถนนทางเดียวหรือไม่? โปรดระบุทิศทาง</string>
     <string name="quest_oneway2_dir">ทางเดียวในทิศทางนี้</string>
     <string name="quest_oneway2_no_oneway">ไม่ใช่ทางเดียว</string>
-    <string name="quest_maxweight_select_sign">เลือกป้าย</string>
     <string name="quest_steps_incline_title">ทิศทางไหนเป็นทางขึ้นสำหรับบันไดที่นี่?</string>
     <string name="quest_steps_incline_up">ขึ้นทางนี้</string>
     <string name="quest_step_count_title">ที่นี่มีกี่ขั้น</string>
@@ -783,7 +781,6 @@
     <string name="quest_postboxRoyalCypher_type_scottish_crown">มงกุฎแห่งสกอตแลนด์</string>
     <string name="quest_buildingType_fire_station">สถานีดับเพลิง</string>
     <string name="quest_recycling_type_beverage_cartons">กล่องเครื่องดื่มเท่านั้น</string>
-    <string name="quest_recycling_type_plastic_bottles_and_cartons">ขวดพลาสติกและกล่องเครื่องดื่มเท่านั้น</string>
     <string name="team_mode">โหมดทีม</string>
     <string name="team_mode_exit">ออกจากโหมดทีม</string>
     <string name="team_mode_description">ถ้าตั้งกลุ่มทำแผนที่ในบริเวณเดียวกัน คุณสามารถเข้าทีมโหมดเพื่อที่จะแบ่งภารกิจให้กับสมาชิกกลุ่มทุกคนได้</string>
@@ -1139,7 +1136,6 @@
     <string name="quest_camp_type_tents_only">เต็นท์เท่านั้น</string>
     <string name="quest_camp_type_backcountry">การตั้งแคมป์แบบไร้สิ่งอำนวยความสะดวก (ที่กันดาร)</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">เส้นผ่านศูนย์กลางนี้ดูไม่น่าเชื่อ โดยปกติแล้วจะอยู่ระหว่าง %1$d ถึง %2$d</string>
-    <string name="quest_recycling_type_pet">PET เท่านั้น</string>
     <string name="street_parking_street_width">ความกว้างถนน: %1$s</string>
     <string name="overlay_street_parking">ที่จอดรถริมถนน</string>
     <string name="link_ohsomehex_description">สำรวจข้อมูล OSM ในสเกลต่าง ๆ ตั้งแต่ภาพรวมไปจนถึงวัตถุแต่ละชิ้นในพื้นที่และเวลา</string>

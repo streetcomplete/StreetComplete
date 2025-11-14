@@ -8,8 +8,8 @@ import java.util.Properties
 
 
 /** App version name, code and flavor */
-val appVersionName = "62.0-beta1"
-val appVersionCode = 6200
+val appVersionName = "62.0"
+val appVersionCode = 6201
 
 /** Localizations the app should be available in */
 val bcp47ExportLanguages = setOf(
@@ -37,7 +37,7 @@ plugins {
     id("org.jetbrains.kotlin.plugin.serialization") version "2.2.21"
     id("org.jetbrains.kotlin.plugin.compose") version "2.2.21"
     id("com.android.application") version "8.11.2"
-    id("org.jetbrains.compose") version "1.9.2"
+    id("org.jetbrains.compose") version "1.9.3"
     id("org.jetbrains.kotlinx.atomicfu") version "0.29.0"
     id("com.codingfeline.buildkonfig") version "0.17.1"
 }

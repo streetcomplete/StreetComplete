@@ -1,5 +1,5 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 atmOperators: [Cash Points, Bank of America, Wells Fargo, State Employees Credit Union, CashPoints® ATM, Pay Depot, PNC Bank, Cashpoints, Truist, State Employees' Credit Union, Cash Points ATM, Cash Points (ATM), SunTrust, State Employee's Credit Union (ATM), Local Government Federal Credit Union, First Citizens Bank, Allpoint, State Employees Credit Union (ATM), Fifth Third Bank, Chase, BB&T, State Employee's Credit Union, State Employee Credit Union (ATM), Allegacy, USAA, State Employees' Credit Union (ATM), SECU, NCSECU, NC State Employees' Credit Union, NC State Employees Credit Union, First National Bank, Cashpoint, CashPoints, Bitstop]
-chargingStationOperators: ['Tesla, Inc.', ChargePoint, SAS, Electrify America, EVgo, Circle K, Blink, Tesla, North Carolina Division of Parks & Recreation, IONNA, City of Raleigh]
+chargingStationOperators: ['Tesla, Inc.', ChargePoint, SAS, Electrify America, EVgo, Circle K, Blink, Tesla, North Carolina Division of Parks & Recreation, IONNA, EV Connect, City of Raleigh]
 defaultSpeedLimitHasUrbanOrRural: true
 parcelLockerBrand: [Amazon Locker, Amazon Hub]

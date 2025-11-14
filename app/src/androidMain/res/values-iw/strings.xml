@@ -521,7 +521,6 @@
     <string name="quest_recycling_type_glass_bottles">"בקבוקי זכוכית וצנצנות"</string>
     <string name="quest_recycling_type_glass_bottles_short">"בקבוקים וצנצנות"</string>
     <string name="quest_recycling_type_paper">"נייר"</string>
-    <string name="quest_recycling_type_plastic_generic">"פלסטיק"</string>
     <string name="quest_recycling_type_plastic">"פלסטיק מכל הסוגים"</string>
     <string name="quest_recycling_type_shoes">"נעליים"</string>
     <string name="quest_recycling_type_electric_appliances">"מכשירי אלקטרוניקה"</string>
@@ -685,7 +684,6 @@
     <string name="quest_oneway2_title">"האם זה רחוב חד-סטרי? באיזה כיוון?"</string>
     <string name="quest_oneway2_dir">"חד-סטרי בכיוון זה"</string>
     <string name="quest_oneway2_no_oneway">"לא חד-סטרי"</string>
-    <string name="quest_maxweight_select_sign">"בחר/י תמרור"</string>
     <string name="quest_steps_incline_title">"באיזה כיוון עולות המדרגות?"</string>
     <string name="quest_steps_incline_up">"כיוון זה לעלייה"</string>
     <string name="quest_step_count_title">"כמה מדרגות יש כאן?"</string>
@@ -768,7 +766,6 @@
     <string name="quest_drinking_water_not_potable_signed">"לא בטוח לשתייה (עם שילוט)"</string>
     <string name="quest_buildingType_fire_station">"תחנת כיבוי אש"</string>
     <string name="quest_recycling_type_beverage_cartons">"קרטוני משקה בלבד"</string>
-    <string name="quest_recycling_type_plastic_bottles_and_cartons">"בקבוקי פלסטיק וקרטון בלבד"</string>
     <string name="team_mode">"כניסה למוד קבוצתי"</string>
     <string name="team_mode_exit">"יציאה ממוד קבוצתי"</string>
     <string name="team_mode_description">"כאשר מבצעים מיפוי של אותו אזור ביחד כקבוצה, ניתן להיכנס למוד קבוצתי על מנת לחלק את משימות המחקר בין חברי הקבוצה."</string>

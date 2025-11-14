@@ -528,7 +528,6 @@ Razdvojiti put sada?</string>
     <string name="quest_recycling_type_glass_bottles">Staklene tegle i boce</string>
     <string name="quest_recycling_type_glass_bottles_short">Staklenke</string>
     <string name="quest_recycling_type_paper">Papir</string>
-    <string name="quest_recycling_type_plastic_generic">Plastika</string>
     <string name="quest_recycling_type_plastic">Bilo koja plastika</string>
     <string name="quest_recycling_type_shoes">Stare cipele</string>
     <string name="quest_recycling_type_electric_appliances">Mali kućanski aparati</string>
@@ -702,7 +701,6 @@ Imajte na umu da ova aplikacija pita za kućni broj zgrade tek nakon što se utv
     <string name="quest_oneway2_title">Je li ovo jednosmjerna ulica? U kojem smjeru?</string>
     <string name="quest_oneway2_dir">Jednosmjerna u ovom smjeru</string>
     <string name="quest_oneway2_no_oneway">Nije jednosmjerna</string>
-    <string name="quest_maxweight_select_sign">Odaberi znak</string>
     <string name="quest_steps_incline_title">Koji smjer vodi prema gore za ove stepenice?</string>
     <string name="quest_steps_incline_up">Ovaj smjer uzbrdo</string>
     <string name="quest_step_count_title">Koliko stepenica tu ima?</string>
@@ -787,7 +785,6 @@ Ako su neke trake rezervirane za autobuse, umjesto toga ostavite bilješku.</str
     <string name="quest_postboxRoyalCypher_type_scottish_crown">Škotska Kruna</string>
     <string name="quest_buildingType_fire_station">Vatrogasna postaja</string>
     <string name="quest_recycling_type_beverage_cartons">Samo tetrapak</string>
-    <string name="quest_recycling_type_plastic_bottles_and_cartons">Plastične voce i tetrapak</string>
     <string name="team_mode">Timski način rada</string>
     <string name="team_mode_exit">Ugasi timski način rada</string>
     <string name="team_mode_description">Kada kartirate isto područje zajedno u grupi, možete ući u timski način rada da podijelite zadatke između svih članova tima.</string>

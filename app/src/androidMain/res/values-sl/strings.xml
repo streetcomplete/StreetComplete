@@ -525,7 +525,6 @@ Ali želiš nadaljevati?"</string>
     <string name="quest_recycling_type_glass_bottles">"Steklenice in kozarci"</string>
     <string name="quest_recycling_type_glass_bottles_short">"Plastenke in kozarci"</string>
     <string name="quest_recycling_type_paper">"Papir"</string>
-    <string name="quest_recycling_type_plastic_generic">"Plastika"</string>
     <string name="quest_recycling_type_plastic">"Katerakoli plastika"</string>
     <string name="quest_recycling_type_shoes">"Čevlji"</string>
     <string name="quest_recycling_type_electric_appliances">"Bela tehnika"</string>
@@ -703,7 +702,6 @@ novoji"</string>
     <string name="quest_oneway2_title">"Ali je to enosmerna ulica? V katero smer? "</string>
     <string name="quest_oneway2_dir">"Enosmerna v to smer"</string>
     <string name="quest_oneway2_no_oneway">"Ni enosmerna"</string>
-    <string name="quest_maxweight_select_sign">"Izberi znak"</string>
     <string name="quest_steps_incline_title">"Katera smer vodi navzgor po teh stopnicah?"</string>
     <string name="quest_steps_incline_up">"Ta smer gre gor"</string>
     <string name="quest_step_count_title">"Koliko stopnic je tukaj?"</string>
@@ -791,7 +789,6 @@ Pazi na vse razpoložljive možnosti: nekateri primeri niso očitni, kot na prim
     <string name="quest_postboxRoyalCypher_type_scottish_crown">"Škotska krona"</string>
     <string name="quest_buildingType_fire_station">"Gasilska postaja"</string>
     <string name="quest_recycling_type_beverage_cartons">"Samo tetrapaki"</string>
-    <string name="quest_recycling_type_plastic_bottles_and_cartons">"Samo plastenke in tetrapaki"</string>
     <string name="team_mode">"Ekipni način"</string>
     <string name="team_mode_exit">"Prekini ekipni način"</string>
     <string name="team_mode_description">"Ko v skupini popisujete isto področje, lahko vklopite ekipni način in naloge bodo razdeljene med vse sodelujoče.
@@ -1149,7 +1146,6 @@ Naredi enako za drugo stran, če ta obstaja."</string>
     <string name="quest_camp_type_tents_only">"Samo šotori"</string>
     <string name="quest_camp_type_backcountry">"Naturalistično kampiranje (ni objektov, elektrike, ...)"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Ta premer se zdi malo verjeten, ponavadi je med %1$d in %2$d."</string>
-    <string name="quest_recycling_type_pet">"Samo PET"</string>
     <string name="street_parking_street_width">"Širina ceste: %1$s"</string>
     <string name="overlay_street_parking">"Ulična parkirišča"</string>
     <string name="link_ohsomehex_description">"Oglej si zgodovinski razvoj OSM od velike slike vse do individualnih objektov v prostoru in času"</string>

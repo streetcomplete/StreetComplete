@@ -526,7 +526,6 @@ Vurgulu alandaki cadde boyunca hiçbir işaret yoksa varsayılan hız sınırlar
     <string name="quest_recycling_type_glass_bottles">Cam şişe ve kavanozlar</string>
     <string name="quest_recycling_type_glass_bottles_short">Şişe ve kavanozlar</string>
     <string name="quest_recycling_type_paper">Kâğıt</string>
-    <string name="quest_recycling_type_plastic_generic">Plastik</string>
     <string name="quest_recycling_type_plastic">Herhangi plastik</string>
     <string name="quest_recycling_type_shoes">Ayakkabı</string>
     <string name="quest_recycling_type_electric_appliances">Elektronik</string>
@@ -703,7 +702,6 @@ seviyeleri</string>
     <string name="quest_oneway2_title">Bu tek yönlü bir yol mu? Hangi yönde?</string>
     <string name="quest_oneway2_dir">Bu yönde tek yön</string>
     <string name="quest_oneway2_no_oneway">Tek yön değil</string>
-    <string name="quest_maxweight_select_sign">Tabela seç</string>
     <string name="quest_steps_incline_title">Hangi taraftaki basamaklarla yukarı çıkılıyor?</string>
     <string name="quest_steps_incline_up">Bu tarafla</string>
     <string name="quest_step_count_title">Burada kaç basamak var?</string>
@@ -790,7 +788,6 @@ Tüm seçenekleri değerlendir! Bazı durumlar net olmayabilir. Çift yönde bis
     <string name="quest_postboxRoyalCypher_type_scottish_crown">İskoçya Tacı</string>
     <string name="quest_buildingType_fire_station">İtfaiye</string>
     <string name="quest_recycling_type_beverage_cartons">Sadece içecek kartonları</string>
-    <string name="quest_recycling_type_plastic_bottles_and_cartons">Sadece karton ve pet şişeler</string>
     <string name="team_mode">Takım Modu</string>
     <string name="team_mode_exit">Takım Kipinden Çık</string>
     <string name="team_mode_description">Aynı bölgenin haritasını bir grupla beraber oluştururken görevleri grup üyelerine dağıtmak için takım modunu aktive edebilirsiniz. Bu durumda her biriniz farklı görevler görür.</string>
@@ -1145,7 +1142,6 @@ Alternatif olarak, bir not bırakabilirsin (fotoğrafla beraber).</string>
     <string name="quest_camp_type_tents_only">Yalnızca çadırlar</string>
     <string name="quest_camp_type_backcountry">Dağ kampı (tesis yok)</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">Bu çap değeri mantıksız gibi, genelde %1$d ile %2$d arasında olur.</string>
-    <string name="quest_recycling_type_pet">Sadece pet şişeler</string>
     <string name="street_parking_street_width">Sokak genişliği: %1$s</string>
     <string name="overlay_street_parking">Sokağa park</string>
     <string name="link_ohsomehex_description">Büyük ölçekli resimlerden tekli objelere kadar OSM tarihini keşfedin</string>
