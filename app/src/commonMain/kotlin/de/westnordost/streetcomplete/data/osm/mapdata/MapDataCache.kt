@@ -6,6 +6,7 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryEntry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.util.SpatialCache
+import de.westnordost.streetcomplete.util.ktx.geometryType
 import de.westnordost.streetcomplete.util.math.contains
 import de.westnordost.streetcomplete.util.math.isCompletelyInside
 import kotlinx.atomicfu.locks.ReentrantLock
@@ -453,6 +454,23 @@ class MapDataCache(
         if (spatialCache.size >= maxTiles && tilesToFetch.isNotEmpty()) {
             trim((maxTiles * 2) / 3)
         }
+
+        // Remove all ways tagged with route=ferry that are part of a relation
+        // also tagged with route=ferry because that makes the former not actually a "real" ferry
+        // route (╯°□°）╯︵ ┻━┻. Tagging mistake or not, it is very common tagging (#6373)
+        for (relation in result.relations) {
+            if (relation.tags["route"] != "ferry") continue
+            for (member in relation.members) {
+                if (member.type != ElementType.WAY) continue
+                val way = result.getWay(member.ref) ?: continue
+                val newTags = way.tags.toMutableMap()
+                newTags.remove("route")
+                result.putElement(
+                    way.copy(tags = newTags)
+                )
+            }
+        }
+
         return result
     }
 
