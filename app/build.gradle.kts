@@ -114,8 +114,8 @@ kotlin {
                 implementation("org.jetbrains.kotlinx:kotlinx-io-core:0.8.0")
 
                 // HTTP client
-                implementation("io.ktor:ktor-client-core:3.3.1")
-                implementation("io.ktor:ktor-client-encoding:3.3.1")
+                implementation("io.ktor:ktor-client-core:3.3.2")
+                implementation("io.ktor:ktor-client-encoding:3.3.2")
                 // SHA256 hashing, used during OAuth authentication
                 implementation("org.kotlincrypto.hash:sha2:0.8.0")
 
@@ -137,7 +137,7 @@ kotlin {
                 implementation("de.westnordost:countryboundaries:3.0.0")
 
                 // finding OSM features
-                implementation("de.westnordost:osmfeatures:7.0")
+                implementation("de.westnordost:osmfeatures:7.1.0")
 
                 // opening hours parser
                 implementation("de.westnordost:osm-opening-hours:0.3.0")
@@ -151,11 +151,11 @@ kotlin {
                 implementation(compose.components.uiToolingPreview)
 
                 // UI Navigation
-                implementation("org.jetbrains.compose.ui:ui-backhandler:1.9.2")
+                implementation("org.jetbrains.compose.ui:ui-backhandler:1.9.3")
                 implementation("org.jetbrains.androidx.navigation:navigation-compose:2.9.1")
 
                 // UI ViewModel
-                implementation("org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-compose:2.9.5")
+                implementation("org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-compose:2.9.6")
 
                 // UI widgets
 
@@ -204,7 +204,7 @@ kotlin {
                 implementation("androidx.work:work-runtime-ktx:2.11.0")
 
                 // HTTP Client
-                implementation("io.ktor:ktor-client-android:3.3.1")
+                implementation("io.ktor:ktor-client-android:3.3.2")
 
                 // widgets
                 implementation("androidx.viewpager2:viewpager2:1.1.0")
@@ -213,20 +213,20 @@ kotlin {
                 implementation("com.github.chrisbanes:PhotoView:2.3.0")
 
                 // map and location
-                implementation("org.maplibre.gl:android-sdk:12.0.1")
+                implementation("org.maplibre.gl:android-sdk:12.1.0")
             }
         }
         iosMain {
             dependencies {
                 // HTTP client
-                implementation("io.ktor:ktor-client-darwin:3.3.1")
+                implementation("io.ktor:ktor-client-darwin:3.3.2")
             }
         }
         commonTest {
             dependencies {
                 implementation(kotlin("test"))
 
-                implementation("io.ktor:ktor-client-mock:3.3.1")
+                implementation("io.ktor:ktor-client-mock:3.3.2")
             }
         }
         androidUnitTest {
