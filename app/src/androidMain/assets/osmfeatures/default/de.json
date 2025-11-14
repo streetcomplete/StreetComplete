@@ -340,7 +340,7 @@
         },
         "amenity/clock/sundial": {
           "name": "Sonnenuhr",
-          "terms": "sonneuhr"
+          "terms": "sonnenuhr"
         },
         "amenity/community_centre": {
           "name": "Gemeindezentrum",
@@ -1175,7 +1175,7 @@
         },
         "amenity/toilets": {
           "name": "Toilette",
-          "terms": "toiletten,wc,klo,klosett,urinal",
+          "terms": "toiletten,wc,klo,klosett,urinal,latrine",
           "aliases": "WC"
         },
         "amenity/toilets/disposal/flush": {
@@ -1253,7 +1253,7 @@
         },
         "amenity/vending_machine/eggs": {
           "name": "Eiverkaufsautomat",
-          "terms": "ei"
+          "terms": "ei,eierverkauf"
         },
         "amenity/vending_machine/electronics": {
           "name": "Elektro-Zubehör-Automat",
@@ -1277,7 +1277,7 @@
         },
         "amenity/vending_machine/food/snacks": {
           "name": "Snackautomat",
-          "terms": "snack,snacks,häppchen,salziges"
+          "terms": "snack,snacks,häppchen,salziges,kabberzeug"
         },
         "amenity/vending_machine/fuel": {
           "name": "Tankautomat",
@@ -1452,7 +1452,7 @@
         },
         "barrier/bollard": {
           "name": "Poller",
-          "terms": "poller,pfosten"
+          "terms": "poller,pfosten,stickel"
         },
         "barrier/bollard_line": {
           "name": "Pollerreihe",
@@ -1539,7 +1539,7 @@
         },
         "barrier/kerb": {
           "name": "Bordstein",
-          "terms": "bordstein,kantstein"
+          "terms": "bordstein,kantstein,randstein"
         },
         "barrier/kerb/flush": {
           "name": "Stufenfrei abgesenkter Bordstein",
@@ -1661,7 +1661,7 @@
         },
         "building/barn": {
           "name": "Scheune",
-          "terms": "scheune,stadl"
+          "terms": "scheune,stadl,scheuer"
         },
         "building/boathouse": {
           "name": "Bootshaus",
