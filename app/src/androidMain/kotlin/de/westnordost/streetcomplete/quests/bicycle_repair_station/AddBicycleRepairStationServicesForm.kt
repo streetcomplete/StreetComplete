@@ -1,5 +1,7 @@
 package de.westnordost.streetcomplete.quests.bicycle_repair_station
 
+import android.os.Bundle
+import android.view.View
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.quests.AItemsSelectQuestForm
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
@@ -19,5 +21,12 @@ class AddBicycleRepairStationServicesForm : AItemsSelectQuestForm<BicycleRepairS
 
     override fun onClickOk(selectedItems: Set<BicycleRepairStationService>) {
         applyAnswer(selectedItems)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        preselectedItems =  items.filter {
+            element.tags["service:bicycle:" + it.value] == "yes"
+        }.toSet()
     }
 }
