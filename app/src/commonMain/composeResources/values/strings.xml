@@ -744,7 +744,6 @@ Before uploading your changes, the app checks with a &lt;a href="https://www.wes
     <string name="quest_artwork_mosaic">Mosaic</string>
     <string name="quest_artwork_relief">Relief</string>
     <string name="quest_artwork_fountain">Fountain</string>
-    <string name="quest_artwork_land_art">Land art</string>
 
     <string name="quest_baby_changing_table_title2">Does this place have a baby changing table?</string>
 

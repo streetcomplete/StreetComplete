@@ -19,7 +19,4 @@ enum class ArtworkType(val osmValue: String, val osmArtworkTypeValue: String? = 
 
 fun ArtworkType.applyTo(tags: Tags) {
     tags["artwork_type"] = this.osmValue
-    if (this.osmArtworkTypeValue != null) {
-        tags["artwork_type"] = this.osmArtworkTypeValue
-    }
 }
