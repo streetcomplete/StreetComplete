@@ -55,7 +55,13 @@ class AddMaxHeight : OsmElementQuestType<MaxHeightAnswer>, AndroidQuest {
     """.toElementFilterExpression() }
 
     private val tunnelFilter by lazy { """
-        ways with highway and (covered = yes or tunnel ~ yes|building_passage|avalanche_protector)
+        ways with
+          highway
+          and (
+            covered = yes
+            or tunnel ~ yes|building_passage|avalanche_protector
+            or bridge = covered
+          )
     """.toElementFilterExpression() }
 
     private val bridgeFilter by lazy { """
