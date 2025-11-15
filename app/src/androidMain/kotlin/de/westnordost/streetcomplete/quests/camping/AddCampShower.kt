@@ -21,6 +21,7 @@ class AddCampShower : OsmFilterQuestType<Boolean>(), AndroidQuest {
           (
             tourism ~ camp_site|alpine_hut|wilderness_hut
             or leisure = bathing_place
+            or highway = services and toilets = yes
           ) and (
             !shower
             or shower older today -4 years and shower ~ yes|no
