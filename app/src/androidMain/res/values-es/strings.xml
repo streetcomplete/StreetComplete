@@ -522,7 +522,6 @@ Parcial es que se pueda entrar con la silla y utilizar los baños, pero sin pasa
     <string name="quest_recycling_type_glass_bottles">"Botellas y frascos de vidrio"</string>
     <string name="quest_recycling_type_glass_bottles_short">"Botellas y frascos"</string>
     <string name="quest_recycling_type_paper">"Papel"</string>
-    <string name="quest_recycling_type_plastic_generic">"Plástico"</string>
     <string name="quest_recycling_type_plastic">"Cualquier plástico"</string>
     <string name="quest_recycling_type_shoes">"Zapatos"</string>
     <string name="quest_recycling_type_electric_appliances">"Aparatos eléctricos"</string>
@@ -696,7 +695,6 @@ Ten en cuenta que esta aplicación solo pide el número de portal de un edificio
     <string name="quest_oneway2_title">"¿Es una calle de sentido único? ¿En qué dirección?"</string>
     <string name="quest_oneway2_dir">"Dirección única en esta dirección"</string>
     <string name="quest_oneway2_no_oneway">"No es de una sola dirección"</string>
-    <string name="quest_maxweight_select_sign">"Elige una señal"</string>
     <string name="quest_steps_incline_title">"¿En qué dirección asciende la escalera?"</string>
     <string name="quest_steps_incline_up">"Sube en esta dirección"</string>
     <string name="quest_step_count_title">"¿Cuántos escalones hay?"</string>
@@ -781,7 +779,6 @@ Ten en cuenta que esta aplicación solo pide el número de portal de un edificio
     <string name="quest_postboxRoyalCypher_type_scottish_crown">"La corona de Escocia"</string>
     <string name="quest_buildingType_fire_station">"Estación de bomberos"</string>
     <string name="quest_recycling_type_beverage_cartons">"Solo cajas de bebidas"</string>
-    <string name="quest_recycling_type_plastic_bottles_and_cartons">"Solo botellas y cajas de plástico"</string>
     <string name="team_mode">"Modo equipo"</string>
     <string name="team_mode_exit">"Salir del modo equipo"</string>
     <string name="team_mode_description">"Cuando estéis varios mejorando una zona a la vez podéis utilizar el modo «en equipo» y así dividir las tareas entre los miembros. Cada uno de vosotros entonces verá diferentes tareas."</string>
@@ -1137,7 +1134,6 @@ También puedes dejar una nota (con foto)."</string>
     <string name="quest_camp_type_tents_only">"Solo tiendas de campaña"</string>
     <string name="quest_camp_type_backcountry">"Campamento al aire libre (sin instalaciones)"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Este diámetro no parece muy realista, suele estar entre %1$d y %2$d."</string>
-    <string name="quest_recycling_type_pet">"Solo polietileno"</string>
     <string name="street_parking_street_width">"Anchura de la calle: %1$s"</string>
     <string name="overlay_street_parking">"Aparcamiento/Estacionamiento"</string>
     <string name="link_ohsomehex_description">"Explora los datos de OSM en todas las categorías, desde la perspectiva general hasta los objetos individuales en el espacio y el tiempo"</string>

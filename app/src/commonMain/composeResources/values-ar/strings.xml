@@ -529,7 +529,6 @@
     <string name="quest_recycling_type_glass_bottles">قوارير زجاجية ومرطبانات</string>
     <string name="quest_recycling_type_glass_bottles_short">الزجاجات والجرار</string>
     <string name="quest_recycling_type_paper">ورق</string>
-    <string name="quest_recycling_type_plastic_generic">بلاستيك</string>
     <string name="quest_recycling_type_plastic">أي مادة بلاستيكية</string>
     <string name="quest_recycling_type_shoes">أحذية</string>
     <string name="quest_recycling_type_electric_appliances">الأجهزة الكهربائية</string>
@@ -705,7 +704,6 @@
     <string name="quest_oneway2_title">هل هذا شارع ذو اتجاه واحد؟ وفي أي اتجاه؟</string>
     <string name="quest_oneway2_dir">باتجاه واحد ومن هذا الاتجاه</string>
     <string name="quest_oneway2_no_oneway">ليست طريقا باتجاه واحد</string>
-    <string name="quest_maxweight_select_sign">حدد علامة أو لافتة</string>
     <string name="quest_steps_incline_title">أي اتجاه يقود إلى الأعلى لهذه السلالم أو الدرج؟</string>
     <string name="quest_steps_incline_up">هذا الاتجاه صعودا</string>
     <string name="quest_step_count_title">كم عدد الدرجات/العتبات هنا؟</string>
@@ -790,7 +788,6 @@
     <string name="quest_postboxRoyalCypher_type_scottish_crown">تاج اسكتلندا</string>
     <string name="quest_buildingType_fire_station">محطة الاطفاء</string>
     <string name="quest_recycling_type_beverage_cartons">كرتون المشروبات فقط</string>
-    <string name="quest_recycling_type_plastic_bottles_and_cartons">العبوات البلاستيكية والكرتون فقط</string>
     <string name="team_mode">وضع الفريق</string>
     <string name="team_mode_exit">الخروج من وضع الفريق</string>
     <string name="team_mode_description">عند تعيين نفس المنطقة معًا في مجموعة، يمكنك الدخول في وضع الفريق لتقسيم المهام بين جميع أعضاء الفريق.</string>
@@ -1152,7 +1149,6 @@
     <string name="quest_camp_type_tents_only">خيام فقط</string>
     <string name="quest_camp_type_backcountry">التخييم في Backcountry (لا توجد مرافق)</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">هذا القطر يبدو غير صحيح، إنه عادةً بين %1$d و %2$d.</string>
-    <string name="quest_recycling_type_pet">PET فقط</string>
     <string name="street_parking_street_width">عرض الشارع: %1$s</string>
     <string name="overlay_street_parking">وقوف السيارات في الشارع</string>
     <string name="link_ohsomehex_description">استكشف بيانات OSM عبر المقاييس بدءًا من الصورة الكبيرة وحتى الكائنات الفردية عبر المكان والزمان</string>

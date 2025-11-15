@@ -499,7 +499,6 @@
     <string name="quest_recycling_type_glass_bottles">"Ապակե շշեր եւ բանկաներ"</string>
     <string name="quest_recycling_type_glass_bottles_short">"Շշեր եւ բանկաներ"</string>
     <string name="quest_recycling_type_paper">"Թուղթ"</string>
-    <string name="quest_recycling_type_plastic_generic">"Պլաստիկ"</string>
     <string name="quest_recycling_type_plastic">"Ցանկացած պլաստիկ"</string>
     <string name="quest_recycling_type_shoes">"Կոշիկներ"</string>
     <string name="quest_recycling_type_electric_appliances">"Էլեկտրական սարքեր"</string>
@@ -677,7 +676,6 @@
     <string name="quest_oneway2_title">"Սա միակողմանի փողոց է: Որ ուղղությամբ:"</string>
     <string name="quest_oneway2_dir">"Մի ճանապարհ այս ուղղությամբ"</string>
     <string name="quest_oneway2_no_oneway">"Ոչ մի քայլ"</string>
-    <string name="quest_maxweight_select_sign">"Ընտրեք նշան"</string>
     <string name="quest_steps_incline_title">"Որ ուղղությամբ է տանում դեպի վեր, այս քայլերի համար:"</string>
     <string name="quest_steps_incline_up">"Այս ճանապարհը"</string>
     <string name="quest_step_count_title">"Քանի քայլ կա այստեղ:"</string>
@@ -764,7 +762,6 @@
     <string name="quest_postboxRoyalCypher_type_scottish_crown">"Շոտլանդիայի պսակը"</string>
     <string name="quest_buildingType_fire_station">"Հրշեջ ծառայություն"</string>
     <string name="quest_recycling_type_beverage_cartons">"Նյուրակի ստվարաթուղթը միայն"</string>
-    <string name="quest_recycling_type_plastic_bottles_and_cartons">"Միայն պլաստիկ շշեր եւ ստվարաթուղթ"</string>
     <string name="team_mode">"Թիմային ռեժիմ"</string>
     <string name="team_mode_exit">"Ելքի թիմային ռեժիմ"</string>
     <string name="team_mode_description">"Միեւնույն տարածքը խմբով քարտեզագրելու համար կարող եք մուտքագրել թիմային ռեժիմ` թիմի բոլոր անդամների միջեւ որոնումները բաժանելու համար:"</string>
@@ -1087,7 +1084,6 @@
     <string name="quest_camp_power_supply_title">"Այստեղ կարելի՞ է լիցքավորել հեռախոս կամ այլ բաներ։"</string>
     <string name="quest_camp_type_tents_only">"Միայն վրաններ"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Տրամագիծը սովորաբար լինում է %1$d-ի և %2$d-ի միջև։"</string>
-    <string name="quest_recycling_type_pet">"Միայն PET"</string>
     <string name="street_parking_street_width">"Փողոցի լայնություն` %1$s"</string>
     <string name="overlay_street_parking">"Կայանատեղիներ"</string>
     <string name="link_opencampingmap_description">"Ճամբարների քարտեզ"</string>

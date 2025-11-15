@@ -369,7 +369,7 @@ Parcialment significa que una cadira de rodes pot entrar i utilitzar els lavabos
     <string name="quest_construction_footway_title">"Aquest camí de vianants està finalitzat?"</string>
     <string name="quest_construction_generic_title">"Aquesta via està finalitzada?"</string>
     <string name="quest_construction_building_title">"Aquest edifici està finalitzat?"</string>
-    <string name="questList_disabled_in_country">"Mai es mostra a %s"</string>
+    <string name="questList_disabled_in_country">"Mai es mostra a %1$s"</string>
     <string name="quest_select_hint_most_specific">"Indiqueu-ne el més específic que hi encaixi:"</string>
     <string name="quest_generic_item_confirmation">"Esteu segur que no podeu determinar-ho de forma més concreta?"</string>
     <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;Per a algunes missions, es baixen dades addicionals de tercers.&lt;/p&gt;"</string>
@@ -480,7 +480,7 @@ Parcialment significa que una cadira de rodes pot entrar i utilitzar els lavabos
     <string name="quest_motorcycleParkingCoveredStatus_title">"Aquest aparcament de motos és cobert (protegit de la pluja)?"</string>
     <string name="default_disabled_msg_maxspeed">"Aquest tipus de missió està desactivada per defecte perquè habitualment cal revisar els senyals de límit de velocitat en tot el carrer, no només de la secció ressaltada. De vegades això pot ser massa per només resoldre una única missió."</string>
     <string name="pref_title_quests_restore_hidden">"Restaura les missions ocultes"</string>
-    <string name="on_level">"en la planta %s"</string>
+    <string name="on_level">"en la planta %1$s"</string>
     <string name="underground">"subterrani"</string>
     <string name="quest_sidewalk_value_yes">"amb vorera"</string>
     <string name="quest_sidewalk_value_no">"sense vorera"</string>
@@ -526,7 +526,6 @@ Parcialment significa que una cadira de rodes pot entrar i utilitzar els lavabos
     <string name="quest_recycling_type_glass_bottles">"Ampolles i gerres de vidre"</string>
     <string name="quest_recycling_type_glass_bottles_short">"Ampolles i gerres"</string>
     <string name="quest_recycling_type_paper">"Paper"</string>
-    <string name="quest_recycling_type_plastic_generic">"Plàstic"</string>
     <string name="quest_recycling_type_plastic">"Qualsevol tipus de plàstic"</string>
     <string name="quest_recycling_type_shoes">"Calçat"</string>
     <string name="quest_recycling_type_electric_appliances">"Aparells elèctrics"</string>
@@ -626,26 +625,27 @@ Finalment, ves amb compte: para atenció al que t'envolta i no entris en propiet
     <string name="achievement_first_edit_title">"Primera missió resolta"</string>
     <string name="achievement_first_edit_description">"Benvingut a la comunitat d'OpenStreetMap! A la pantalla del vostre perfil, podeu veure més informació per cada tipus de missió que resolgueu."</string>
     <string name="achievement_surveyor_title">"Topògraf"</string>
-    <string name="achievement_surveyor_solved_X">"Heu resolt %d missions! Seguiu avançant per desbloquejar altres assoliments que contenen enllaços a OSM i altres aplicacions i projectes relacionats amb mapes!"</string>
+    <string name="achievement_surveyor_solved_X">"Heu resolt %1$d missions! Seguiu avançant per desbloquejar altres assoliments que contenen enllaços a OSM i altres aplicacions i projectes relacionats amb mapes!"</string>
     <string name="achievement_regular_title">"Habitual"</string>
-    <string name="achievement_regular_description">"Heu contribuït %d dies a OSM amb aquesta aplicació! Els contribuïdors habituals sou la columna vertebral d'OSM, gràcies per la teva dedicació! ❤"</string>
+    <string name="achievement_regular_description">"Heu contribuït %1$d dies a OSM amb aquesta aplicació! Els contribuïdors habituals sou la columna vertebral d'OSM, gràcies per la teva dedicació! ❤"</string>
     <string name="achievement_bicyclist_title">"Ciclista"</string>
-    <string name="achievement_bicyclist_solved_X">"Heu resolt %d missions que ajuden els ciclistes!"</string>
+    <string name="achievement_bicyclist_solved_X">"Heu resolt %1$d missions que ajuden els ciclistes!"</string>
     <string name="achievement_wheelchair_title">"Mobilitat"</string>
-    <string name="achievement_wheelchair_solved_X">"Heu resolt %d missions que ajuden usuaris amb cadira de rodes a anar pel poble!"</string>
+    <string name="achievement_wheelchair_solved_X">"Heu resolt %1$d missions que ajuden usuaris amb cadira de rodes a anar pel poble!"</string>
     <string name="achievement_postman_title">"Carter"</string>
-    <string name="achievement_postman_solved_X">"Heu ajudat a ubicar %d adreces! Aquests dades són essencials, no només per al carter sinó també per a qualsevol sistema de navegació."</string>
+    <string name="achievement_postman_solved_X">"Heu ajudat a localitzar %1$d adreces i altres serveis postals!
+Aquestes dades són essencials no només per al transportista de correu, sinó també per a qualsevol sistema de navegació."</string>
     <string name="achievement_building_title">"Alçades"</string>
-    <string name="achievement_building_solved_X">"Heu resolt %d missions relacionades amb edificis.
+    <string name="achievement_building_solved_X">"Heu resolt %1$d missions relacionades amb edificis.
 Tingueu en compte que aquesta aplicació només pregunta pel número de l'edifici sols després que el tipus hagi sigut determinat."</string>
     <string name="achievement_blind_title">"Sisè sentit"</string>
-    <string name="achievement_blind_solved_X">"Heu resolt %d missions que són interessants per a invidents."</string>
+    <string name="achievement_blind_solved_X">"Heu resolt %1$d missions que són interessants per a invidents."</string>
     <string name="achievement_pedestrian_title">"Corredor"</string>
-    <string name="achievement_pedestrian_solved_X">"Heu resolt %d missions que són interessants per a vianants!"</string>
+    <string name="achievement_pedestrian_solved_X">"Heu resolt %1$d missions que són interessants per a vianants!"</string>
     <string name="achievement_veg_title">"Animalista"</string>
-    <string name="achievement_veg_solved_X">"Heu resolt %d missions que són interessants per a persones que no consumeixen carn!"</string>
+    <string name="achievement_veg_solved_X">"Heu resolt %1$d missions que són interessants per a persones que no consumeixen carn!"</string>
     <string name="achievement_car_title">"En ruta"</string>
-    <string name="achievement_car_solved_X">"Has resolt %d missions que milloren els detalls de les infraestructures viàries, posant els carrers a OpenStreetMap!"</string>
+    <string name="achievement_car_solved_X">"Has resolt %1$d missions que milloren els detalls de les infraestructures viàries, posant els carrers a OpenStreetMap!"</string>
     <string name="unread_messages_message">"Teniu %1$d missatges per llegir en la vostra bústia"</string>
     <string name="unread_messages_button">"Obre la bústia"</string>
     <string name="action_about2">"Quant a"</string>
@@ -656,12 +656,12 @@ Tingueu en compte que aquesta aplicació només pregunta pel número de l'edific
     <string name="credits_projects_contributors_title">"Projectes fets per a StreetComplete"</string>
     <string name="credits_main_contributors_title">"Contribuïdors principals"</string>
     <string name="stats_are_syncing">"Les vostres estadístiques encara s'estan sincronitzant. Comproveu aquesta pantalla més tard."</string>
-    <string name="user_statistics_country_wiki_link">"Mapejant Portal %s"</string>
+    <string name="user_statistics_country_wiki_link">"Mapejant Portal %1$s"</string>
     <string name="user_statistics_filter_by_country">"per país"</string>
     <string name="user_statistics_filter_by_quest_type">"per tipus de missió"</string>
     <string name="user_profile_global_rank">"Global"</string>
     <string name="user_profile_local_rank">"Rang a
-%s"</string>
+%1$s"</string>
     <string name="user_profile_days_active">"Dies actiu"</string>
     <string name="user_profile_achievement_levels">"Nivells
 d'acompliment"</string>
@@ -686,8 +686,8 @@ d'acompliment"</string>
     <string name="quest_board_type_map_description">"Si el tauler tracta sobre un tema en particular, especifiqueu-ho, independentment de si també inclou un mapa. Per exemple, un consell de transport públic pot tenir un mapa de ruta d'autobús. Si el tema no està llistat entre les respostes disponibles, considereu deixar una nota en el seu lloc."</string>
     <string name="quest_streetName_menuItem_international">"internacional"</string>
     <string name="quest_buildingType_terrace2">"Files de cases"</string>
-    <string name="at_housename">"Nom de la casa %s"</string>
-    <string name="at_housenumber">"número de casa %s"</string>
+    <string name="at_housename">"nom de la casa %1$s"</string>
+    <string name="at_housenumber">"número de casa %1$s"</string>
     <string name="quest_openingHours_add_off_days">"Afegeix els dies de descans"</string>
     <string name="quest_openingHours_off_day">"Dia de descans"</string>
     <string name="quest_openingHours_unspecified_range">"Sense especificar"</string>
@@ -701,7 +701,6 @@ d'acompliment"</string>
     <string name="quest_oneway2_title">"Aquest és un carrer de sentit únic? En quin sentit?"</string>
     <string name="quest_oneway2_dir">"Sentit únic en aquesta direcció"</string>
     <string name="quest_oneway2_no_oneway">"No és de sentit únic"</string>
-    <string name="quest_maxweight_select_sign">"Seleccioneu un senyal"</string>
     <string name="quest_steps_incline_title">"Quin sentit porta cap amunt per aquestes escales?"</string>
     <string name="quest_steps_incline_up">"Puja en aquest sentit"</string>
     <string name="quest_step_count_title">"Quants graons hi ha aquí?"</string>
@@ -721,11 +720,11 @@ d'acompliment"</string>
     <string name="quest_charging_station_operator_title">"Quin és l'operador d'aquesta estació de càrrega?"</string>
     <string name="link_indoorequal_description">"Descobriu mapes interiors de centres comercials, estacions de ferrocarril, etc"</string>
     <string name="achievement_rare_title">"Caçatresors"</string>
-    <string name="achievement_rare_solved_X">"Heu trobat i resolt %d missions que rarament es completen, enhorabona!"</string>
+    <string name="achievement_rare_solved_X">"Heu trobat i resolt %1$d missions que rarament es completen, enhorabona!"</string>
     <string name="achievement_citizen_title">"Ciutadà"</string>
-    <string name="achievement_citizen_solved_X">"Heu resolt %d missions que són útils per la vida diaria al poble!"</string>
+    <string name="achievement_citizen_solved_X">"Heu resolt %1$d missions que són útils per la vida diaria al poble!"</string>
     <string name="achievement_outdoors_title">"Aire lliure"</string>
-    <string name="achievement_outdoors_solved_X">"Heu resolt %d missions que són útils per les persones que surten a l'aire lliure!"</string>
+    <string name="achievement_outdoors_solved_X">"Heu resolt %1$d missions que són útils per les persones que surten a l'aire lliure!"</string>
     <string name="quest_pedestrian_crossing_island">"Aquest pas de vianants té una illeta?"</string>
     <string name="quest_generic_answer_noSign">"No hi ha cap senyal"</string>
     <string name="quest_steps_ramp_separate_wheelchair">"La rampa per cadires de rodes es mostra com a via separada al mapa?"</string>
@@ -788,7 +787,6 @@ Fixeu-vos en totes les opcions disponibles: alguns  casos no són obvis, com una
     <string name="quest_postboxRoyalCypher_type_scottish_crown">"Corona d'Escòcia"</string>
     <string name="quest_buildingType_fire_station">"Parc de bombers"</string>
     <string name="quest_recycling_type_beverage_cartons">"Només cartons de beguda"</string>
-    <string name="quest_recycling_type_plastic_bottles_and_cartons">"Només ampolles i cartons plàstics"</string>
     <string name="team_mode">"Mode d'equip"</string>
     <string name="team_mode_exit">"Sortir del mode d'equip"</string>
     <string name="team_mode_description">"Quan mapegeu la mateixa àrea en un grup, podeu entrar en el mode equip per dividir les cerques entre tots els membres de l'equip."</string>
@@ -802,9 +800,9 @@ Fixeu-vos en totes les opcions disponibles: alguns  casos no són obvis, com una
     <string name="hid_action_description">"L'has amagat"</string>
     <string name="split_way_action_description">"Heu partit la via"</string>
     <string name="deleted_poi_action_description">"Ho heu esborrat"</string>
-    <string name="added_tag_action_title">"S'ha afegit %s"</string>
-    <string name="removed_tag_action_title">"S'ha eliminat %s"</string>
-    <string name="changed_tag_action_title">"Actualitzat a %s"</string>
+    <string name="added_tag_action_title">"S'ha afegit %1$s"</string>
+    <string name="removed_tag_action_title">"S'ha eliminat %1$s"</string>
+    <string name="changed_tag_action_title">"Actualitzat a %1$s"</string>
     <string name="pref_title_delete_cache">"Esborra la memòria cau"</string>
     <string name="pref_title_delete_cache_summary">"Si creieu que algunes dades estan antiquades"</string>
     <string name="delete_confirmation">"Esborra"</string>
@@ -855,7 +853,7 @@ Les dades s'actualitzen després de %1$s dies i les dades no utilitzades s'elimi
     <string name="about_title_faq">"PMF"</string>
     <string name="quest_buildingLevels_title2">"Quants nivells per sobre del soterrani té aquest edifici?"</string>
     <string name="quest_buildingLevels_title_buildingPart2">"Quants nivells per sobre del soterrani té aquesta part de l'edifici?"</string>
-    <string name="pref_subtitle_quests_preset_name">"Predefinit: %s"</string>
+    <string name="pref_subtitle_quests_preset_name">"Predefinit: %1$s"</string>
     <string name="default_disabled_msg_roofShape">"Aquest tipus de missió està desactivada per defecte perquè les formes del sostre sovint no són fàcilment visibles des del carrer. Aquest tipus de missió també consumeix molt temps; en la majoria dels casos és més fàcil i eficient traçar-ho a partir d'imatges aèries a casa."</string>
     <string name="quest_religion_animist">"Animista"</string>
     <string name="quest_construction_steps_title">"Aquests graons estan finalitzats?"</string>
@@ -987,7 +985,7 @@ Alternativament, pots deixar una nota (amb foto)."</string>
     <string name="quest_smoothness_hint">"🚲, 🚗, 🚙, … indica quin vehicle pot utilitzar bé la superfície. El que importa és el panorama general en lloc de danys individuals."</string>
     <string name="link_osmhydrant_description">"Cerca, afegeix i edita estacions de bombers i hidrants"</string>
     <string name="achievement_lifesaver_title">"Salvavides"</string>
-    <string name="achievement_lifesaver_solved_X">"Has resolt %d missions que ajuden als serveis d'emergència!"</string>
+    <string name="achievement_lifesaver_solved_X">"Heu resolt %1$d missions que ajuden als serveis d'emergència!"</string>
     <string name="quest_fuelSelfService_title">"A aquesta benzinera pots repostar tu mateix?"</string>
     <string name="default_disabled_msg_difficult_and_time_consuming">"Aquest tipus de missió està desactivada per defecte perquè consumeix temps i a vegades és difícil de triar l’opció correcta. Només hauríeu d’activar-la si realment esteu compromès a afegir aquest tipus de dades."</string>
     <string name="quest_smoothness_description_good_compacted_gravel">"Molt compactat, poca grava o sorra solta"</string>
@@ -1150,7 +1148,6 @@ Feu el mateix per a l'altre costat."</string>
     <string name="quest_camp_type_tents_only">"Només tendes"</string>
     <string name="quest_camp_type_backcountry">"Zona d'acampada lliure (sense instal·lacions)"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Aquest diàmetre sembla inversemblant, normalment es troba entre %1$d i %2$d."</string>
-    <string name="quest_recycling_type_pet">"Només PET"</string>
     <string name="street_parking_street_width">"Amplada del carrer: %1$s"</string>
     <string name="overlay_street_parking">"Aparcament al carrer
 "</string>
@@ -1468,4 +1465,16 @@ Un pis compta com a teulada quan les seves finestres són a la teulada. En conse
     <string name="quest_streetName_add_language">"Afegiu idioma"</string>
     <string name="ok">"D'acord"</string>
     <string name="cancel">"Cancel·lar"</string>
+    <string name="quest_aerialway_bicycle_title">"Aquest ascensor aeri transporta bicicletes?"</string>
+    <string name="quest_aerialway_bicycle_summer">"Només l'estiu"</string>
+    <string name="quest_board_type_rules">"Regles"</string>
+    <string name="quest_firewood_provided_title">"Es proporciona llenya aquí?"</string>
+    <string name="quest_first_aid_kit_location">"On es troba aquest kit de primers auxilis?"</string>
+    <string name="quest_lane_markings_title">"Aquesta carretera té marques de carril?"</string>
+    <string name="quest_level_thing_title">"En quin número de nivell es troba això?"</string>
+    <string name="quest_bicycle_charging_station_capacity_title">"Quantes bicicletes es poden carregar aquí alhora?"</string>
+    <string name="quest_charging_station_bicycles_title">"També es poden carregar bicicletes aquí?"</string>
+    <string name="quest_charging_station_bicycles_hint">"Els adaptadors de carregador de bicicletes es connecten a endolls domèstics normals."</string>
+    <string name="quest_tower_access_title">"Qui pot accedir a aquesta torre? Pot ser gratuït o de pagament."</string>
+    <string name="quest_charging_station_bicycles_answer_only">"És només per a bicicletes"</string>
 </resources>

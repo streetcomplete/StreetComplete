@@ -526,7 +526,6 @@ Vil du dele opp nå?"</string>
     <string name="quest_recycling_type_glass_bottles">"Glassflasker og syltetøyglass"</string>
     <string name="quest_recycling_type_glass_bottles_short">"Glassembalasje"</string>
     <string name="quest_recycling_type_paper">"Papir"</string>
-    <string name="quest_recycling_type_plastic_generic">"Plast"</string>
     <string name="quest_recycling_type_plastic">"Alle typer plast"</string>
     <string name="quest_recycling_type_shoes">"Sko"</string>
     <string name="quest_recycling_type_electric_appliances">"EE-avfall"</string>
@@ -704,7 +703,6 @@ nivåer"</string>
     <string name="quest_oneway2_title">"Er dette en enveiskjøring? I hvilken retning?"</string>
     <string name="quest_oneway2_dir">"Enveiskjøring denne retningen"</string>
     <string name="quest_oneway2_no_oneway">"Ikke enveiskjøring"</string>
-    <string name="quest_maxweight_select_sign">"Velg skilt"</string>
     <string name="quest_steps_incline_title">"Hvilken vei leder oppover for disse trappene?"</string>
     <string name="quest_steps_incline_up">"Denne veien er oppover"</string>
     <string name="quest_step_count_title">"Hvor mange trappetrinn er det her?"</string>
@@ -792,7 +790,6 @@ Legg merke til alle tilgjengelige alternativer! Noen tilfeller er ikke åpenbare
     <string name="quest_postboxRoyalCypher_type_scottish_crown">"Skottlands krone"</string>
     <string name="quest_buildingType_fire_station">"Brannstasjon"</string>
     <string name="quest_recycling_type_beverage_cartons">"Kun drikkekartonger"</string>
-    <string name="quest_recycling_type_plastic_bottles_and_cartons">"Kun plastflasker og kartonger"</string>
     <string name="team_mode">"Gruppemodus"</string>
     <string name="team_mode_exit">"Avslutt gruppemodus"</string>
     <string name="team_mode_description">"Når du kartlegger det samme området sammen med en gruppe kan du starte gruppemodus for å dele oppgavene mellom dere."</string>
@@ -1149,7 +1146,6 @@ Om mulig, gjør det samme for den andre siden."</string>
     <string name="quest_camp_type_tents_only">"Kun telt"</string>
     <string name="quest_camp_type_backcountry">"Friluftscamping (ingen fasiliteter)"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Diameteren virker usannsynlig da den vanligvis er mellom %1$d og %2$d."</string>
-    <string name="quest_recycling_type_pet">"Kun PET"</string>
     <string name="street_parking_street_width">"Gatebredde: %1$s"</string>
     <string name="overlay_street_parking">"Gateparkering"</string>
     <string name="link_ohsomehex_description">"Utforsk OSM data fra det store bildet og ned til detaljene gjennom rom og tid"</string>

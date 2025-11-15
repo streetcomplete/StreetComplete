@@ -1,9 +1,9 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 additionalStreetsignLanguages: [international, en]
 additionalValidHousenumberRegex: ((бл\.\s?)?\p{N}{1,4}[\s-]?\p{InCyrillic}?)|((\p{N}{1,4}-){0,2}\p{N}{1,4})
-atmOperators: [UniCredit Bulbank, ОББ, Банка ДСК, Fibank, Пощенска банка, Централна Кооперативна Банка, Euronet, Общинска банка, Shitcoins.club, Инвестбанк, Allianz, EasyPay, International Asset Bank, Централна кооперативна Банка, БАКБ, DBank, Texim Bank, Postbank, DigitalAssist, FiBank, CryptoDesk]
+atmOperators: [UniCredit Bulbank, ОББ, Банка ДСК, Fibank, Пощенска банка, Централна Кооперативна Банка, Euronet, Общинска банка, Shitcoins.club, Allianz, Инвестбанк, EasyPay, International Asset Bank, Централна кооперативна Банка, БАКБ, DBank, Texim Bank, Postbank, DigitalAssist, FiBank, CryptoDesk]
 chargingStationOperators: [Финес Енерджи ООД, Столичен електротранспорт, Eldrive, ОП „Общински паркинги и синя зона“ - Варна, Финес Енерджи ЕООД, Kaufland, Гигачарджър ЕООД, Столичен автотранспорт, Община Варна, Фермер 2016 ООД, Gigacharger, Evpoint, Екарс БГ ЕООД, Tesla, Renault, ProCredit Bank, Kia, GigaCharger, Fines Charging]
-clothesContainerOperators: [TexCycle, БЧК, TEXAID Bulgaria, M-Texx, Екопак]
+clothesContainerOperators: [TexCycle, БЧК, TEXAID Bulgaria, M-Texx]
 defaultSpeedLimitHasUrbanOrRural: true
 hasDailyAlternateSideParkingSign: true
 hasLivingStreet: true

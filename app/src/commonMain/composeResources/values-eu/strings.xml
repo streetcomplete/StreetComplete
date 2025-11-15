@@ -524,7 +524,6 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
     <string name="quest_recycling_type_glass_bottles">Beirazko botilak eta ontziak</string>
     <string name="quest_recycling_type_glass_bottles_short">Botilak eta ontziak</string>
     <string name="quest_recycling_type_paper">Papera</string>
-    <string name="quest_recycling_type_plastic_generic">Plastikoa</string>
     <string name="quest_recycling_type_plastic">Edozein plastiko</string>
     <string name="quest_recycling_type_shoes">Zapatak</string>
     <string name="quest_recycling_type_electric_appliances">Elektragailuak</string>
@@ -700,7 +699,6 @@ mailak</string>
     <string name="quest_oneway2_title">Kale hau norabide bakarrekoa da? Zein norabidekoa?</string>
     <string name="quest_oneway2_dir">Norabide bakar hau</string>
     <string name="quest_oneway2_no_oneway">Ez da norabide bakarrekoa</string>
-    <string name="quest_maxweight_select_sign">Hautatu ikurra</string>
     <string name="quest_steps_incline_title">Zein da gorako norabidea?</string>
     <string name="quest_steps_incline_up">Hemendik gora</string>
     <string name="quest_step_count_title">Zenbat urrats daude hemen?</string>
@@ -787,7 +785,6 @@ Ikus itzazu aukera posible guztiak: batzuetan ez da oso argia, adibidez errepide
     <string name="quest_postboxRoyalCypher_type_scottish_crown">Eskoziako Koroa</string>
     <string name="quest_buildingType_fire_station">Suhiltzaileak</string>
     <string name="quest_recycling_type_beverage_cartons">Edarien brikak bakarrik</string>
-    <string name="quest_recycling_type_plastic_bottles_and_cartons">Plastikozko botilak eta kartoiak bakarrik</string>
     <string name="team_mode">Talde Modua</string>
     <string name="team_mode_exit">Talde Modutik atera</string>
     <string name="team_mode_description">Talde gisa eremu berdina mapeatzen ari bazarete, talde moduan sar zaitezke eta guztien artean lana banatu.</string>
@@ -1146,7 +1143,6 @@ Egin gauza bera beste aldean egonez gero.</string>
     <string name="quest_camp_type_tents_only">Bakarrik kanpin-dendak</string>
     <string name="quest_camp_type_backcountry">Kanpina (instalaziorik gabe)</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">Diametro honek sinesgaitza dirudi, %1$d eta %2$d artean egon ohi da.</string>
-    <string name="quest_recycling_type_pet">PET bakarrik</string>
     <string name="street_parking_street_width">Kalearen zabalera: %1$s</string>
     <string name="overlay_street_parking">Kaleko aparkalekua</string>
     <string name="link_ohsomehex_description">Arakatu OSM datuak eskaletan zehar, irudi handitik hasi eta objektu indibidualetaraino espazioan eta denboran zehar</string>

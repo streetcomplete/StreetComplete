@@ -522,7 +522,6 @@ Parcial significa que se puede entrar con la silla y usar los baños, pero sin b
     <string name="quest_recycling_type_glass_bottles">"Botellas y frascos de vidrio"</string>
     <string name="quest_recycling_type_glass_bottles_short">"Botellas y frascos"</string>
     <string name="quest_recycling_type_paper">"Papel"</string>
-    <string name="quest_recycling_type_plastic_generic">"Plástico"</string>
     <string name="quest_recycling_type_plastic">"Cualquier plástico"</string>
     <string name="quest_recycling_type_shoes">"Zapatos"</string>
     <string name="quest_recycling_type_electric_appliances">"Electrodomésticos"</string>
@@ -696,7 +695,6 @@ Tené en cuenta que esta aplicación solo pide el número de puerta de un edific
     <string name="quest_oneway2_title">"¿Es una calle de un solo sentido? ¿En qué dirección?"</string>
     <string name="quest_oneway2_dir">"Dirección única en esta dirección"</string>
     <string name="quest_oneway2_no_oneway">"No es de una sola dirección"</string>
-    <string name="quest_maxweight_select_sign">"Elegí un cartel"</string>
     <string name="quest_steps_incline_title">"¿En qué dirección sube la escalera?"</string>
     <string name="quest_steps_incline_up">"Sube en esta dirección"</string>
     <string name="quest_step_count_title">"¿Cuántos escalones hay?"</string>
@@ -781,7 +779,6 @@ Tené en cuenta que esta aplicación solo pide el número de puerta de un edific
     <string name="quest_postboxRoyalCypher_type_scottish_crown">"La corona de Escocia"</string>
     <string name="quest_buildingType_fire_station">"Estación de bomberos"</string>
     <string name="quest_recycling_type_beverage_cartons">"Solo cajas de bebidas"</string>
-    <string name="quest_recycling_type_plastic_bottles_and_cartons">"Solo botellas y cajas de plástico"</string>
     <string name="team_mode">"Modo equipo"</string>
     <string name="team_mode_exit">"Salir del modo equipo"</string>
     <string name="team_mode_description">"Al mapear una zona en grupo, pueden usar el modo equipo para repartir las misiones. Así, cada miembro verá misiones diferentes."</string>
@@ -1137,7 +1134,6 @@ También podés dejar una nota (con foto)."</string>
     <string name="quest_camp_type_tents_only">"Solo carpas"</string>
     <string name="quest_camp_type_backcountry">"Campamento al aire libre (sin instalaciones)"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Este diámetro no parece muy realista, suele estar entre %1$d y %2$d."</string>
-    <string name="quest_recycling_type_pet">"Solo polietileno"</string>
     <string name="street_parking_street_width">"Ancho de la calle: %1$s"</string>
     <string name="overlay_street_parking">"Estacionamiento"</string>
     <string name="link_ohsomehex_description">"Explorá datos de OSM a distintas escalas: desde el panorama general hasta objetos individuales."</string>

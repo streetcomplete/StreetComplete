@@ -21,23 +21,23 @@ AR:
   - Shell Recharge Solutions # 3
 AT:
   - illwerke vkw # 544
-  - Wien Energie GmbH # 423
-  - EVN # 316
-  - Wien Energie # 254
-  - SMATRICS # 155
+  - Wien Energie GmbH # 421
+  - EVN # 317
+  - Wien Energie # 257
+  - SMATRICS # 156
   - Energie Steiermark # 145
   - Energie AG # 132
-  - Salzburg AG # 115
-  - bike-energy # 113
+  - Salzburg AG # 116
+  - bike-energy # 114
   - Linz AG # 99
-  - da emobil # 57
+  - da emobil # 58
   - Lidl # 55
   - Bosch eBike Systems # 51
   - Kelag # 44
   - TIWAG # 40
   - Tesla, Inc. # 34
   - Tesla # 34
-  - ÖAMTC # 30
+  - ÖAMTC # 31
   - Burgenland Energie AG # 29
   - Ionity # 27
   - ChargePoint # 25
@@ -56,18 +56,18 @@ AT:
   - OMV # 12
   - Moon # 12
   - Eni # 12
-  - Mer # 10
+  - Mer # 11
   - Linz AG Strom # 10
   - Energie Graz # 10
   - Tesla Motors Austria GmbH # 9
   - SMATRICS GmbH & Co KG # 9
   - Lidl Österreich GmbH # 9
-  - Lebensland Kärnten # 9
   - Stadtwerke Wörgl # 8
   - Stadtwerke Kufstein # 8
   - Spar # 8
   - Smartrics # 8
   - MOON POWER # 8
+  - Lebensland Kärnten # 8
   - IAM – Institut für Technologie und alternative Mobilität # 8
   - Evn # 8
   - Energie Burgenland # 8
@@ -100,28 +100,30 @@ AT:
 AU-ACT:
   - Evie Networks # 4
 AU-NSW:
-  - NRMA # 57
-  - Tesla # 51
+  - NRMA # 58
+  - Tesla # 55
   - Evie Networks # 50
-  - Chargefox # 45
+  - Chargefox # 48
   - Jolt # 34
-  - Exploren # 27
+  - Exploren # 31
+  - AmpCharge # 21
   - bp pulse # 20
-  - AmpCharge # 19
   - BP Pulse # 10
-  - Tesla, Inc. # 6
   - Plus ES # 6
   - ChargePoint # 4
+  - Tesla, Inc. # 3
   - EVlink # 3
   - EVSE # 3
+  - Ampol # 2
+  - AGL # 2
 AU-NT:
   - NRMA # 6
   - Evie Networks # 2
   - Chargefox # 2
 AU-QLD:
   - Yurika # 44
-  - Evie Networks # 31
-  - Tesla # 7
+  - Evie Networks # 32
+  - Tesla # 8
   - BP Pulse # 7
   - Tesla, Inc. # 6
   - Chargefox # 6
@@ -139,22 +141,23 @@ AU-SA:
 AU-TAS:
   - Electric Highway Tasmania # 15
   - Chargefox # 13
-  - Evie Networks # 5
+  - Evie Networks # 6
+  - Tesla # 2
   - TasPorts # 2
   - Meander Valley Council # 2
   - Huon Valley Council # 2
   - Electrona Pty Ltd # 2
 AU-VIC:
-  - Evie Networks # 103
+  - Evie Networks # 106
   - Chargefox # 86
-  - Tesla # 35
+  - Tesla # 41
   - Central Victorian Greenhouse Alliance # 34
   - Exploren # 22
   - AmpCharge # 19
   - Jolt # 13
   - BP Pulse # 11
-  - Tesla, Inc. # 9
-  - NRMA # 6
+  - Tesla, Inc. # 5
+  - NRMA # 5
   - ChargePoint # 5
   - Toyota # 2
   - The District Docklands # 2
@@ -179,7 +182,7 @@ BA-SRP:
   - Porsche # 2
   - City # 2
 BE-BRU:
-  - EnergyDrive # 122
+  - EnergyDrive # 123
   - PitPoint # 76
   - TotalEnergies # 55
   - charge.brussels # 27
@@ -188,14 +191,14 @@ BE-BRU:
   - Blue Corner # 9
   - Luminus # 6
   - Lidl # 5
+  - TotalEnergie # 4
   - Tesla # 4
   - Electra # 4
+  - Total Energies # 3
   - Equans # 3
   - EnergyVision # 3
   - totalenergies # 2
   - charge.Brussels # 2
-  - TotalEnergie # 2
-  - Total Energies # 2
   - Pitpoint Brussels # 2
   - Optimile # 2
   - Interparking # 2
@@ -205,17 +208,17 @@ BE-BRU:
   - Allego # 2
 BE-VLG:
   - Allego # 869
-  - TotalEnergies # 200
+  - TotalEnergies # 201
   - Blue Corner # 96
-  - Engie # 78
+  - Engie # 80
   - DATS 24 # 57
   - Lidl # 54
   - Last Mile Solutions # 34
+  - Fastned # 31
   - EVBox # 31
-  - Fastned # 30
   - EVBOX # 25
   - Total # 23
-  - Smappee # 20
+  - Smappee # 21
   - Ionity # 20
   - Shell Recharge Solutions # 18
   - Mobility Plus # 18
@@ -235,13 +238,13 @@ BE-VLG:
   - Aldi # 6
   - TotalEnergies Waregem # 5
   - Smoov # 5
+  - Q8 # 5
   - MobilityPlus # 5
   - Luminus # 5
   - Bluecorner # 5
   - smoov # 4
   - ecotap # 4
   - Stad Halle # 4
-  - Q8 # 4
   - ORANGE Charging # 4
   - Hypercharger # 4
   - Gabriëls # 4
@@ -333,9 +336,9 @@ BR:
   - Copel # 2
   - BR # 2
 BY:
-  - Белоруснефть # 253
-  - РУП "Белоруснефть-Минскавтозаправка" # 75
-  - Белтелеком # 27
+  - Белоруснефть # 254
+  - РУП "Белоруснефть-Минскавтозаправка" # 74
+  - Белтелеком # 28
   - РУП «Белтелеком» # 13
   - ПО «Белоруснефть» # 7
   - ОАО «Витязь» # 7
@@ -359,16 +362,16 @@ CA-AB:
   - Shell # 2
   - Flo # 2
 CA-BC:
-  - ChargePoint # 114
-  - BC Hydro # 97
+  - ChargePoint # 115
+  - BC Hydro # 99
   - FLO # 85
   - Tesla, Inc. # 38
   - Tesla # 14
   - Flo # 10
   - WesGroup # 5
+  - ON the RUN # 4
   - flo # 3
   - Petro-Canada # 3
-  - ON the RUN # 3
   - Ministry of Transportation and Infrastructure # 3
   - Chevron # 3
   - TD Canada Trust # 2
@@ -397,7 +400,7 @@ CA-NS:
   - Nova Scotia Power # 2
   - EVLink # 2
 CA-ON:
-  - FLO # 78
+  - FLO # 79
   - Tesla, Inc. # 27
   - ChargePoint # 25
   - Tesla # 17
@@ -426,19 +429,20 @@ CA-PE:
   - Flo # 2
   - Delta Prince Edward # 2
 CA-QC:
-  - Circuit électrique # 1013
-  - FLO # 96
+  - Circuit électrique # 1015
+  - FLO # 98
   - Le Circuit Électrique # 81
   - Tesla, Inc. # 16
   - ChargePoint # 10
   - Flo # 9
+  - Circuit Électrique # 8
   - Borne de recharge VÉ/EV Charging station # 8
-  - Le Circuit électrique # 7
-  - Circuit Électrique # 7
+  - Le Circuit électrique # 6
   - Tesla # 4
   - Circuit Electrique # 4
   - Le circuit électrique # 3
   - Véloasis # 2
+  - Université de Sherbrooke # 2
   - Marché Famille Mondor inc. # 2
   - Le Circuite Électrique # 2
   - Hydro-Québec # 2
@@ -462,15 +466,15 @@ CH:
   - Lidl # 44
   - Tesla # 41
   - Swisscharge # 35
-  - Migrol # 29
+  - Migrol # 31
   - Groupe E # 26
   - eCarUp # 24
   - Energie 360° # 24
   - Agrola # 23
   - emotì # 20
   - Green Motion SA # 20
+  - Ionity # 19
   - SAK # 18
-  - Ionity # 18
   - EKZ # 18
   - Shell # 17
   - Green Motion # 16
@@ -635,10 +639,11 @@ CH:
   - Avia # 2
   - Autel # 2
   - Aare Energie AG # 2
+  - AIM # 2
   - AEK # 2
 CL:
-  - Enel X # 54
-  - Copec # 50
+  - Enel X # 55
+  - Copec # 51
   - CGE # 8
   - Shell # 4
   - Tesla, Inc. # 2
@@ -662,6 +667,7 @@ CN-GD:
   - 肇庆市恒通新能源有限公司 # 4
   - 中国南方电网有限公司 # 3
   - Tesla, Inc. # 3
+  - Tesla # 2
   - Potevio # 2
   - CSG # 2
   - 10 # 2
@@ -700,14 +706,14 @@ CN-SC:
   - 特来电 # 3
   - 国家电网有限公司 # 2
 CN-SD:
-  - 国家电网有限公司 # 50
+  - 国家电网有限公司 # 51
 CN-SH:
   - Tesla, Inc. # 4
   - 上海依威能源科技有限公司 # 2
 CN-SN:
   - 国家电网有限公司 # 22
 CN-SX:
-  - 国家电网有限公司 # 26
+  - 国家电网有限公司 # 27
 CN-TJ:
   - 国家电网有限公司 # 17
 CN-YN:
@@ -733,11 +739,11 @@ CY:
   - Electricity Authority of Cyprus # 6
   - Lidl # 4
 CZ:
-  - ČEZ # 333
-  - PRE # 277
+  - ČEZ # 334
+  - PRE # 279
   - E.ON # 142
   - Teplárny Brno # 94
-  - Lidl # 38
+  - Lidl # 39
   - E.ON Energie # 37
   - MOL # 26
   - EVMAPA # 16
@@ -789,78 +795,78 @@ CZ:
   - Hať # 2
   - Chvaletice # 2
 DE:
-  - EnBW Energie Baden-Württemberg AG # 1435
-  - Stromnetz Hamburg # 650
+  - EnBW Energie Baden-Württemberg AG # 1446
+  - Stromnetz Hamburg # 651
   - Stadtwerke München # 518
-  - Allego # 494
-  - EWE Go GmbH # 445
-  - Innogy # 425
-  - EnBW # 418
-  - Lidl # 348
+  - Allego # 493
+  - EWE Go GmbH # 444
+  - Innogy # 424
+  - EnBW # 421
+  - Lidl # 350
   - Aral # 307
-  - EWE Go # 257
-  - Westfalen Weser Ladeservice GmbH # 244
-  - E.ON # 244
-  - Stadtwerke Düsseldorf # 221
-  - Aldi # 219
-  - Pfalzwerke # 203
-  - enercity # 197
-  - Shell Recharge Solutions # 195
-  - N-ERGIE # 195
-  - SachsenEnergie # 184
+  - EWE Go # 262
+  - Westfalen Weser Ladeservice GmbH # 242
+  - E.ON # 242
+  - Aldi # 226
+  - Stadtwerke Düsseldorf # 224
+  - Pfalzwerke # 209
+  - N-ERGIE # 201
+  - enercity # 200
+  - Shell Recharge Solutions # 196
+  - SachsenEnergie # 188
   - Tesla # 182
-  - Berliner Stadtwerke # 171
-  - EZE # 167
-  - Qwello # 164
-  - Kaufland # 162
+  - Qwello # 174
+  - Berliner Stadtwerke # 172
+  - EZE # 169
+  - Kaufland # 163
+  - Entega # 158
   - Tesla, Inc. # 157
-  - Entega # 157
   - RheinEnergie # 155
   - SWB Energie und Wasser # 154
   - Ionity # 152
   - Stadtwerke Leipzig # 145
+  - Mennekes # 142
   - ubitricity # 141
-  - Mennekes # 140
-  - Wirelane # 126
+  - NEW # 130
+  - Wirelane # 129
+  - EnBW mobility+ AG und Co.KG # 128
   - Stadtwerke Stuttgart # 125
-  - NEW # 123
   - RWE # 119
-  - EnBW mobility+ AG und Co.KG # 117
-  - ChargePoint # 117
+  - ChargePoint # 119
+  - ALDI Süd # 118
+  - innogy # 115
   - Rewag # 115
-  - ALDI Süd # 115
-  - innogy # 114
-  - bike-energy # 110
+  - bike-energy # 113
   - Lechwerke AG # 109
-  - Westenergie Metering GmbH # 99
+  - SWU Stadtwerke Ulm/Neu-Ulm GmbH # 101
+  - Westenergie Metering GmbH # 100
+  - TEAG Mobil # 96
   - Stadtwerke Göttingen # 96
-  - TEAG Mobil # 94
-  - Shell # 92
+  - Shell # 93
   - EDEKA # 91
   - Stadtwerke Heidelberg # 85
   - Stadtwerke Bielefeld GmbH # 85
   - DEW21 # 85
-  - SWU Stadtwerke Ulm/Neu-Ulm GmbH # 83
   - Allego GmbH # 82
-  - Vattenfall # 80
-  - BS Energy # 79
-  - TotalEnergies # 74
+  - Vattenfall # 81
+  - BS Energy # 80
+  - TotalEnergies # 75
   - TankE # 72
   - IKEA # 70
   - Stadtwerke Rüsselsheim # 65
   - Mainova # 64
   - ChargePoint Network B.V. # 62
+  - deer GmbH # 61
   - enviaM # 60
   - be emobil # 60
   - Westfalen AG # 60
+  - STAWAG # 60
   - RWE-Effizienz # 60
   - Mer # 60
+  - Compleo Charging Technologies GmbH # 59
   - Stadtwerke Münster GmbH # 58
-  - Compleo Charging Technologies GmbH # 58
   - eins energie in sachsen # 57
-  - deer GmbH # 57
-  - STAWAG # 57
-  - IONITY # 56
+  - IONITY # 57
   - Süwag # 55
   - MVV Energie # 55
   - Stadtwerke Goch GmbH # 54
@@ -872,19 +878,19 @@ DE:
   - Charge-ON GmbH # 52
   - Porsche # 51
   - Emscher Lippe Energie GmbH # 51
+  - EAM # 50
   - eze.network GmbH # 49
   - Stadtwerke Neuss # 49
-  - EAM # 49
   - reev # 48
   - E-Werk Mittelbaden # 48
   - OVAG # 46
+  - Citywatt # 46
   - westenergie # 45
-  - Stadtwerke Gütersloh GmbH # 45
-  - Citywatt # 45
   - BMW # 45
   - Stadtwerke Tübingen # 44
   - Bayernwerk # 44
   - e-regio GmbH & Co. KG # 43
+  - Stadtwerke Gütersloh GmbH # 43
   - Robert Bosch GmbH # 42
   - E-WALD # 42
   - Cut! Energy GmbH # 42
@@ -893,30 +899,30 @@ DE:
   - Energie Südbayern # 41
   - EWV # 41
   - IONITY GmbH # 40
+  - HEnW Mobil # 40
   - Fastned # 40
   - regionalwerk Bodensee # 39
   - Stadtwerke Speyer GmbH # 39
-  - SachsenEnergie AG # 39
-  - HEnW Mobil # 39
   - EVlink # 39
   - Comfortcharge # 39
   - 123energie # 39
   - allego # 38
+  - WVV # 38
   - Stadtwerke Pforzheim # 38
   - Stadtwerke Bochum # 38
   - ESWE # 38
-  - WVV # 37
   - Vereinigte Stadtwerke GmbH # 37
   - Stadtwerke Tecklenburger Land GmbH & Co. KG # 37
+  - SachsenEnergie AG # 37
   - Ladeverbund+ # 37
   - Energie Calw GmbH # 37
+  - EVO # 37
   - Stadtwerke Soest Energiedienstleistungs GmbH # 36
-  - EVO # 36
+  - Elli # 36
+  - EMERGY Führungs- und Servicegesellschaft mbH # 36
   - Deutsche Telekom # 36
   - Stadtwerke Norderstedt # 35
-  - Elli # 35
   - Tank & Rast # 34
-  - EMERGY Führungs- und Servicegesellschaft mbH # 34
   - Comfortcharge GmbH # 34
   - Stadtwerke Witten # 33
   - Stadtwerke Konstanz # 33
@@ -931,24 +937,19 @@ DE:
   - eze.network # 31
   - GGEW # 31
   - Bocholter Energie- und Wasserversorgung # 31
-  - mer # 30
-  - Mer Germany GmbH # 30
-  - EnBw # 30
-  - E-WALD GmbH # 30
-  - Audi AG # 30
 DK:
-  - Clever # 752
-  - E.ON # 382
-  - OK # 198
-  - Norlys # 155
+  - Clever # 757
+  - E.ON # 384
+  - OK # 199
+  - Norlys # 153
   - Circle K # 80
   - Spirii # 77
-  - EWII # 54
+  - EWII # 55
   - Monta # 46
   - Allego # 32
-  - Shell Recharge Solutions # 26
+  - Shell Recharge Solutions # 27
   - Q8 # 24
-  - Tesla # 22
+  - Tesla # 23
   - Sperto # 20
   - Tesla, Inc. # 19
   - Uno-X # 18
@@ -973,6 +974,7 @@ DK:
   - Københavns Kommune # 5
   - EON # 5
   - Drivee # 5
+  - Électricité de France # 4
   - eon # 4
   - e on # 4
   - ViggoEnergy # 4
@@ -981,7 +983,6 @@ DK:
   - EVlink # 4
   - E-on # 4
   - Clever & E-on # 4
-  - Électricité de France # 3
   - Spar Nord # 3
   - SEF # 3
   - PowerGo # 3
@@ -995,22 +996,23 @@ EC:
   - Centro Sur # 4
 EE:
   - Enefit Volt # 33
-  - Eleport # 18
+  - Eleport # 19
   - ABB # 17
   - Eesti Energia AS # 15
   - Enefit # 14
   - Enefit VOLT # 9
   - Elmo # 8
-  - Alexela # 8
+  - Alexela # 7
   - ELMO # 5
   - Circle K # 5
   - ABB AS # 5
   - eleport # 4
+  - Neste # 2
   - Ionity # 2
   - Ignitis # 2
   - Elelevi # 2
 ES-AN:
-  - Iberdrola # 78
+  - Iberdrola # 79
   - Endesa # 61
   - Repsol # 29
   - Tesla, Inc. # 11
@@ -1054,7 +1056,7 @@ ES-AR:
   - Ayuntamiento de Huesca # 2
   - Acciona Energía # 2
 ES-AS:
-  - EDP # 93
+  - EDP # 94
   - Iberdrola # 67
   - Eranovum # 23
   - Zunder # 14
@@ -1093,7 +1095,7 @@ ES-CL:
   - Endesa # 20
   - Wenea # 13
   - Tesla, Inc. # 8
-  - Tesla # 6
+  - Tesla # 7
   - Ionity # 6
   - BMW # 6
   - Acciona Energía # 6
@@ -1106,6 +1108,7 @@ ES-CL:
   - Parkmusa # 2
   - Iberdrola SAU # 2
   - Fenie Energía # 2
+  - Circutor # 2
   - Cargacoches # 2
   - Bridgestone # 2
   - BP # 2
@@ -1118,47 +1121,45 @@ ES-CM:
   - Endesa # 14
   - Zunder # 8
   - Tesla, Inc. # 7
-  - Repsol # 4
-  - Acciona # 4
+  - Repsol # 5
+  - Acciona # 5
   - Tesla # 3
   - Mercadona # 2
   - Ionity # 2
 ES-CT:
   - Etecnic # 84
-  - Endesa # 55
-  - Iberdrola # 35
-  - Repsol # 31
-  - Endolla Barcelona # 19
-  - Endesa X # 18
+  - Endesa # 54
+  - Iberdrola # 36
+  - Repsol # 30
+  - Endesa X # 24
+  - Tesla # 21
+  - Endolla Barcelona # 21
   - AMB # 17
-  - Tesla, Inc. # 12
   - Acciona Energía # 11
   - Zunder # 10
-  - Tesla # 10
   - ETECNIC # 10
   - Àrea Metropolitana de Barcelona # 9
   - Wenea # 8
   - Ionity # 8
   - Lidl # 7
-  - Atlante # 6
+  - Atlante # 7
   - Ajuntament de Barcelona # 6
   - estebanell # 5
   - ChargePoint # 4
-  - Bauhaus # 4
+  - TMB # 3
+  - Eranovum # 3
   - Ajuntament de Mataró # 3
   - guixesenergia # 2
   - etecnic # 2
   - endesa x enelway # 2
   - Wallbox # 2
   - VNG Aparcaments # 2
-  - TMB # 2
   - Pradella Sistemi srl # 2
   - Port de Mataró # 2
   - Mercadona # 2
   - Iberdola # 2
   - Fastned # 2
   - Estabanell # 2
-  - Eranovum # 2
   - Electric Vehicle Charging Station # 2
   - EVcharge # 2
   - Carrefour # 2
@@ -1195,6 +1196,7 @@ ES-IB:
   - eMallorca # 5
   - Endesa X # 4
   - Endesa # 4
+  - Iberdrola # 2
   - Feníe Energía # 2
 ES-MC:
   - Iberdrola # 30
@@ -1253,7 +1255,7 @@ ES-PV:
   - IBIL # 8
   - Endesa X # 7
   - Endesa # 7
-  - Tesla, Inc. # 4
+  - Tesla, Inc. # 3
   - Ibil # 2
   - Circutor # 2
 ES-RI:
@@ -1277,17 +1279,17 @@ ES-VC:
   - ALDI # 2
   - 10-22h # 2
 FI:
-  - Helen # 131
-  - VIRTA # 104
-  - K-Lataus # 78
-  - Recharge # 47
-  - ABC-lataus # 43
+  - Helen # 133
+  - VIRTA # 105
+  - K-Lataus # 82
+  - Recharge # 48
+  - ABC-lataus # 47
   - ABC # 35
-  - Lidl # 27
-  - K-lataus # 23
+  - Lidl # 26
   - Virta # 22
   - Tesla, Inc. # 20
-  - Tesla # 19
+  - Tesla # 20
+  - K-lataus # 19
   - Plugit # 18
   - Ionity # 17
   - eParking # 11
@@ -1299,12 +1301,12 @@ FI:
   - Korttelilataus # 7
   - KSSe # 7
   - Fortum # 6
-  - Recharge Infra # 4
   - Kotkan energia # 4
   - Fortum Charge & Drive # 4
   - ABC Lataus # 4
   - Väre # 3
   - S-ryhmä # 3
+  - Recharge Infra # 3
   - PlugIt # 3
   - McDonald's # 3
   - Fortum Charge&Drive # 3
@@ -1322,88 +1324,90 @@ FI:
   - Alva # 2
   - Aimo Park # 2
   - ABC latauspiste # 2
+  - ABB # 2
 FO:
   - SEV # 6
 FR:
-  - Izivia # 1584
-  - Bouygues Énergies et Services # 955
-  - SPBR1 # 856
-  - Freshmile # 738
+  - Izivia # 1599
+  - Bouygues Énergies et Services # 947
+  - SPBR1 # 855
+  - Freshmile # 739
   - Freshmile SAS # 489
   - SDEC Énergie # 392
-  - Bouygues Energies & Services # 310
-  - Ionity # 289
-  - TotalEnergies # 235
+  - Bouygues Energies & Services # 316
+  - Ionity # 291
+  - TotalEnergies # 240
   - Lidl # 196
-  - EVzen (SMEG Développement) # 186
+  - EVzen (SMEG Développement) # 188
+  - DRIVECO # 171
   - Sodetrel # 166
-  - DRIVECO # 160
-  - Power Dot France # 150
-  - Freshmile | FR*FR1 # 149
+  - Power Dot France # 166
+  - Freshmile | FR*FR1 # 154
   - SDEM50 # 146
-  - Tesla, Inc. # 129
+  - Tesla # 131
   - UEM # 124
+  - Electra # 124
   - Clem # 123
-  - Tesla # 117
-  - Electra # 107
-  - Sorégies # 102
-  - Powerdot # 97
+  - Tesla, Inc. # 116
+  - Sorégies # 103
+  - Allego # 98
   - ENERGIE Eure-et-Loir | FR*S28 # 93
+  - Powerdot # 92
   - EneRSIEIL # 92
-  - Allego # 91
-  - Mobive # 90
+  - Mobive # 91
   - MODULO | FR*S41 # 90
   - ChargePoint # 83
+  - Bouygues E&S # 76
   - IECharge # 75
-  - Bouygues E&S # 74
   - SDEY # 73
   - Mouv Élec Var # 73
   - Morbihan énergies # 69
   - Séolis # 67
-  - Sodetrel Mobilité # 67
   - Morbihan Énergies # 67
+  - Sodetrel Mobilité # 66
   - sas e-motum # 64
   - Shell Recharge Solutions # 62
   - Fédération Départementale d'Énergie de la Somme (FDE80) | FR*S80 # 62
   - SIEGE 27 # 59
   - SEY 78 # 56
-  - Ouest Charge # 53
-  - SPIE CityNetworks # 52
-  - Engie # 52
-  - IZIVIA # 50
+  - SPIE CityNetworks # 54
+  - Ouest Charge # 54
+  - E-TOTEM # 52
+  - Engie # 51
+  - ELECTRIC 55 CHARGING # 51
+  - IZIVIA # 49
   - Belib' # 49
   - Renault # 48
   - SDEI36 # 47
-  - ELECTRIC 55 CHARGING # 47
-  - E-TOTEM # 47
   - Syndicat Départemental d'Énergie de Loire-Atlantique (SYDELA) | FR*S44 # 46
   - SDE35 # 45
-  - Total Marketing France # 43
+  - Total Marketing France # 44
+  - Carrefour # 41
   - STATIONS-E # 40
   - SIPLEC # 40
-  - Carrefour # 40
   - PowerDot # 38
   - Révéo # 36
   - Sigeif # 34
-  - eborn # 33
   - SYDELA # 33
   - SEDI # 33
   - Fastned # 33
+  - Effia # 33
   - E.Leclerc # 33
-  - Effia # 32
-  - R3 # 31
+  - eborn # 32
+  - R3 # 32
+  - Greenflux # 31
   - EVlink # 31
+  - REVEO SYADEN | FR*RVE # 30
+  - e-Totem # 29
   - Last Mile Solutions # 29
-  - Greenflux # 29
   - Syndicat de l'Énergie de l'Orne (TE61) | FR*S61 # 28
   - LIDL France # 28
   - Electric 55 Charging # 28
   - EVBox # 28
+  - E.Leclerc | FR*LE2 # 28
   - Alizé # 28
-  - e-Totem # 27
-  - InEnergies # 27
-  - E.Leclerc | FR*LE2 # 27
   - Clem' # 27
+  - InEnergies # 26
   - Bouygues (1-OUEST) # 26
   - WAAT SAS | FR*WA4 # 25
   - freshmile # 24
@@ -1413,6 +1417,7 @@ FR:
   - Aldi # 23
   - Shell Recharge # 21
   - SIEML # 21
+  - Power dot # 21
   - ubitricity # 20
   - Ubeeqo # 20
   - Schneider Electric # 20
@@ -1420,57 +1425,59 @@ FR:
   - Driveco # 20
   - TotalEnergies Charging Services # 19
   - SDEV # 19
-  - Power dot # 19
   - UBITRICITY GMBH # 18
   - SYDER # 18
+  - Modulo # 18
   - Airbus # 18
+  - SPBR1 | FR*EBN # 17
   - SDED # 17
   - Plus de Bornes # 17
   - Paris-Saclay Innovation Playground # 17
-  - Modulo # 17
   - Leclerc # 17
   - Bump # 17
   - Syndicat d’Energie des Yvelines # 16
   - Shell # 16
   - Saint-Louis # 16
   - Mobilize Power Solutions # 16
+  - Griffon Branché # 16
+  - ChargePoint Austria GmbH | FR*CG0 # 16
   - 2_AM0001_SMOYS # 16
   - ZEBORNE # 15
+  - WAAT SAS | FR*WAT # 15
   - SDE07 # 15
   - Mairie de Paris # 15
-  - ChargePoint Austria GmbH | FR*CG0 # 15
   - TESLA France SARL # 14
   - SIEEEN # 14
-  - REVEO SYADEN | FR*RVE # 14
   - Mota # 14
   - Easy Charge # 14
+  - Atlante | FR*ATL # 14
 GB-ENG:
   - Pod Point # 440
-  - BP Pulse # 249
-  - Source London # 218
-  - Gridserve # 174
-  - InstaVolt # 168
-  - GeniePoint # 111
-  - Connected Kerb # 109
+  - BP Pulse # 248
+  - Source London # 217
+  - Gridserve # 175
+  - InstaVolt # 170
+  - GeniePoint # 112
+  - Connected Kerb # 111
   - Tesla # 87
   - Tesla, Inc. # 84
   - ubitricity # 79
-  - Osprey # 71
-  - ChargePoint # 53
-  - Zest # 47
+  - Osprey # 74
+  - ChargePoint # 54
+  - Zest # 51
   - Be Ev # 46
-  - Believ # 43
+  - Believ # 44
+  - bp pulse # 40
   - Shell Recharge Solutions # 40
-  - bp pulse # 39
   - Lancaster City Council # 37
   - Char.gy # 36
   - Allego # 33
   - Wenea # 32
   - Swarco # 32
   - Rolec # 32
-  - Blink # 31
-  - Shell # 30
-  - Mer # 30
+  - Blink # 32
+  - Shell # 31
+  - Mer # 31
   - Iduna # 25
   - South Lakeland District Council # 24
   - eVolt # 23
@@ -1481,25 +1488,25 @@ GB-ENG:
   - Charge Your Car # 21
   - Sainsbury's # 19
   - Booths # 18
+  - Alfen # 18
+  - Roam # 17
   - Fastned # 17
-  - Alfen # 17
   - mer # 16
   - Shell Recharge # 16
+  - TotalEnergies # 15
   - Ionity # 14
   - EO # 14
   - evolt # 13
   - VendElectric # 13
+  - Motor Fuel Group # 13
   - Lidl # 13
-  - Chargemaster # 13
-  - TotalEnergies # 12
   - Sevadis # 12
   - PodPoint # 12
-  - Motor Fuel Group # 12
   - MFG # 12
+  - Chargemaster # 12
   - Birmingham City Council # 12
   - BP # 12
   - The EV Network # 11
-  - Roam # 11
   - Project EV # 11
   - Lancaster University # 11
   - ElectRoad # 11
@@ -1528,6 +1535,8 @@ GB-ENG:
   - Shell Recharge Solutions (UK) # 6
   - Northumberland County Council # 6
   - Monta # 6
+  - EVpower # 6
+  - EVopen # 6
   - EVC # 6
   - EVBox # 6
   - E.ON # 6
@@ -1544,7 +1553,6 @@ GB-ENG:
   - Jolt # 5
   - Geniepoint # 5
   - Evolt # 5
-  - EVpower # 5
   - ESB EV Solutions # 5
   - EB Charging Ltd # 5
   - Applegreen Electric # 5
@@ -1560,11 +1568,9 @@ GB-ENG:
   - Monta Charge # 4
   - Lancashire County Council # 4
   - Keswick Convention Centre # 4
-  - EVopen # 4
   - EVBOX # 4
   - EV Driver # 4
   - EV Charge # 4
-  - Be.EV # 4
   - Anglia Car Charging # 4
   - ABB # 4
 GB-NIR:
@@ -1586,7 +1592,7 @@ GB-SCT:
   - evolt # 36
   - Pod Point # 23
   - Gridserve # 18
-  - BP Pulse # 15
+  - BP Pulse # 16
   - Evolt # 11
   - Tesla, Inc. # 10
   - Osprey # 9
@@ -1607,6 +1613,7 @@ GB-SCT:
   - RAW Charging # 3
   - Fife Council # 3
   - Circontrol # 3
+  - ChargePoint # 3
   - efacec # 2
   - bp pulse # 2
   - VendElectric # 2
@@ -1667,34 +1674,34 @@ GP:
   - Freshmile # 4
   - EZdrive # 2
 GR:
-  - Σκλαβενίτης # 123
-  - ΑΒ Βασιλόπουλος # 107
-  - My Market # 65
+  - Σκλαβενίτης # 131
+  - ΑΒ Βασιλόπουλος # 114
+  - My Market # 74
   - Μασούτης # 63
-  - Lidl # 40
-  - Γαλαξίας supermarket # 37
-  - METRO Cash & Carry # 35
-  - AVIN # 20
+  - Lidl # 43
+  - METRO Cash & Carry # 36
+  - Γαλαξίας supermarket # 33
+  - AVIN # 19
+  - Γαλαξίας # 17
+  - Κωτσόβολος # 15
   - Ενεργειακή Κοινότητα Λοκρών Π.Ε. # 15
-  - Κωτσόβολος # 13
   - Δήμος Ξυλόκαστρου # 13
-  - Γαλαξίας # 11
   - Protergia # 11
   - Χαλκιαδάκης Max supermarket # 10
   - ΔΕΗ # 10
   - Δήμος Αστυπάλαιας # 9
   - Γ. ΚΑΨΙΩΧΑΣ ΑΕΒΕ # 8
-  - blink # 7
+  - Avin # 8
+  - The Mart # 7
   - ENA FOOD Cash & Carry # 7
   - EKO Καλυψώ # 7
   - Chargespot # 7
   - Χαλκιαδάκης supermarket # 6
-  - The Mart # 6
+  - Κρητικός Supermarket # 6
+  - Δήμος Κύθνου # 6
+  - blink # 6
   - Shell # 6
-  - Avin # 6
   - ΣYN.KA Σούπερ Μάρκετ # 5
-  - Κρητικός Supermarket # 5
-  - Δήμος Κύθνου # 5
   - Δήμος Βέλου Βόχας # 5
   - Peugeot # 5
   - EKO ΔΕΛΗΓΙΑΝΝΗΣ # 5
@@ -1708,12 +1715,14 @@ GR:
   - Tesla # 4
   - Igoumenitsa Port Authority # 4
   - Grecotel Olympia Riviera # 4
+  - Costa Navarino # 4
   - Μασούτης cash & carry # 3
   - Μασούτης Cash & Carry # 3
   - Καύσιμα Κολοκυθάς # 3
+  - Δήμος Χάλκης # 3
   - Δήμος Σκοπέλου # 3
   - Δήμος Πτολεμαϊδας # 3
-  - ΔΕΗ blue # 3
+  - Γυμναστήριο Alterlife # 3
   - Γαβανάς bakery - cafe - patisserie # 3
   - Super Market Κουτελιέρης # 3
   - Shell Coral gas # 3
@@ -1725,15 +1734,16 @@ GR:
   - Electronet # 3
   - BP ΚΑΛΥΨΩ # 3
 HK:
-  - Tesla, Inc. # 7
+  - Tesla, Inc. # 6
   - HKEV # 5
   - HK Electric # 3
   - Cornerstone Technologies # 3
+  - Tesla # 2
 HR:
-  - ELEN # 107
+  - ELEN # 108
   - Petrol # 20
-  - Qelo # 17
-  - Elen # 10
+  - Qelo # 18
+  - Elen # 11
   - Tesla, Inc. # 9
   - Tesla # 6
   - Lidl # 6
@@ -1752,29 +1762,28 @@ HR:
   - Eurokod # 2
 HU:
   - e-Mobi Elektromobilitás Nonprofit Kft. # 323
-  - NKM Mobilitás Kft. # 77
+  - NKM Mobilitás Kft. # 76
+  - Mobiliti # 48
   - MOL Nyrt. # 48
   - Lidl # 47
-  - Mobiliti # 46
-  - E.ON # 37
+  - E.ON # 39
   - ELMŰ # 34
+  - Tesla # 11
   - Penny Market # 11
   - Shell # 10
   - Lidl Magyarország Kereskedelmi Bt. # 10
-  - E-On # 9
   - Ionity # 8
+  - E-On # 8
   - TEA # 7
   - MOL # 7
   - e.on # 6
-  - Tesla # 6
+  - Shell Recharge Solutions # 6
   - Penny # 6
   - Parkl # 6
-  - Shell Recharge Solutions # 5
   - ALDI # 5
-  - Tesla, Inc. # 4
   - Teapont # 4
   - OMV # 4
-  - Nissan # 3
+  - Nissan # 4
   - MVM Partner # 3
   - MVM Mobiliti Kft # 3
   - MVM Mobiliti # 3
@@ -1786,13 +1795,11 @@ HU:
   - eTank # 2
   - e.on Drive # 2
   - e-on # 2
-  - e-Mobi # 2
   - XVIII. kerület # 2
   - Szekszárd Város Önkormányzata # 2
   - Szalontai Rendszerintegrátor Kft # 2
   - Sarkcsillag Invest Kft. # 2
   - Porsche Hungária Kft # 2
-  - NISSAN # 2
   - Lidl Magyarország Kereskedelmi Betéti Társaság # 2
   - LUKOIL Magyarország Kft. # 2
   - Emobility Solutions Kft. # 2
@@ -1817,9 +1824,9 @@ ID-JW:
 ID-KA:
   - PLN # 8
 IE:
-  - ESB ecars # 239
+  - ESB ecars # 237
   - EasyGo # 200
-  - ESB Group # 188
+  - ESB Group # 190
   - EVBox # 29
   - Applegreen Electric # 28
   - Go Platform Limited # 23
@@ -1828,8 +1835,8 @@ IE:
   - ubitricity # 9
   - Clenergy EV # 8
   - Tesla, Inc. # 7
+  - Ionity # 7
   - EO # 7
-  - Ionity # 6
   - Circle K # 6
   - Aldi Stores (Ireland) Limited # 6
   - Stillorgan Village # 4
@@ -1855,8 +1862,8 @@ IE:
 IL:
   - Tesla # 23
   - מילגם # 11
+  - Afcon # 6
   - אפקון # 5
-  - Afcon # 5
   - סונול EV # 2
   - Kfar Hanokdim # 2
   - EV Edge # 2
@@ -1905,41 +1912,41 @@ IS:
   - ON # 2
   - Isorka # 2
 IT:
-  - Enel X # 1133
-  - Be Charge # 557
-  - Enel # 414
+  - Enel X # 1132
+  - Be Charge # 556
+  - Enel # 417
   - Pradella Sistemi srl # 280
-  - Repower # 239
-  - Enel X Way # 152
-  - Plenitude # 112
-  - a2a # 84
+  - Repower # 251
+  - Enel X Way # 153
+  - Plenitude # 120
+  - a2a # 85
   - Ionity # 65
   - Lidl # 63
-  - GaraGeeks # 56
+  - GaraGeeks # 55
   - Tesla, Inc. # 44
+  - Ewiva # 43
   - Tesla # 41
   - Duferco Energia # 41
-  - Ewiva # 39
   - Umbria Energy # 38
+  - Free To X # 30
   - Duferco # 30
-  - Free To X # 27
-  - Enel-X # 24
   - A2A # 24
+  - Enel-X # 23
   - Agsm Verona Spa # 21
-  - Atlante # 19
-  - Hera # 18
+  - Hera # 20
+  - Atlante # 20
   - Electrip # 17
   - enel x # 16
+  - Eni Plenitude # 16
   - Poste Italiane # 15
   - Evway # 15
+  - Drivalia # 15
   - Free to X # 14
-  - Drivalia # 14
   - Italia Vento Power Corporation # 13
   - ABB # 13
   - Leasys # 12
-  - Eni Plenitude # 12
+  - BeCharge # 12
   - EnelX # 11
-  - BeCharge # 11
   - Acea energia # 11
   - https://www.ecospazio.it # 10
   - e-distribuzione S.p.A. # 10
@@ -1954,11 +1961,11 @@ IT:
   - Iren # 8
   - BlueTorino # 8
   - bike-energy # 7
+  - EuroSpin # 7
   - Etraction # 7
   - E-corner # 7
   - ALDI # 7
   - SEMM # 6
-  - EuroSpin # 6
   - Enel Distribuzione # 6
   - ENEL drive # 6
   - ENEL # 6
@@ -1966,7 +1973,7 @@ IT:
   - Bikef - Enjoy your Energy # 6
   - Becharge # 6
   - Be Charge S.r.l. # 6
-  - eviso # 5
+  - Ressolar # 5
   - Emobitaly # 5
   - Electra # 5
   - Comune di Torre di Mosto # 5
@@ -1979,26 +1986,26 @@ IT-23:
   - Ionity # 7
   - Plenitude # 6
   - Enel X # 5
+  - Enel # 5
   - Pradella Sistemi srl # 4
-  - Enel # 4
 IT-32:
   - Alperia # 67
   - Neogy # 43
   - Enel # 14
-  - NEOGY # 10
   - EnBW HyperNet # 10
   - Alperia Smart Mobility # 10
+  - NEOGY # 9
   - Zeus # 7
   - A22 # 7
   - bike-energy # 6
   - alperia # 6
   - Tesla # 6
+  - Repower # 6
   - Be Charge # 6
-  - Repower # 4
+  - plenitude # 4
   - Poste Italiane # 4
   - Alperia Smart Mobility Charging Station # 4
   - Alperia - Dolomiti Energia # 4
-  - plenitude # 3
   - Tesla, Inc. # 3
   - Gemeinde Schlanders # 3
   - Dolomiti Energia # 3
@@ -2015,8 +2022,9 @@ IT-32:
   - ChargePoint # 2
   - BikeBreak # 2
 IT-36:
-  - Repower # 30
-  - Be Charge # 20
+  - Repower # 31
+  - Be Charge # 23
+  - Plenitude # 19
   - Enel X # 17
   - Enel # 8
   - AcegasApsAmga # 7
@@ -2025,13 +2033,13 @@ IT-36:
   - Hera # 4
   - Comune di Faedis # 4
   - Tesla, Inc. # 3
-  - Plenitude # 3
+  - Poste Italiane # 3
   - Emobitaly # 3
   - EVAD # 3
   - Weelo # 2
   - Tesla Motors (Destination Charging) # 2
   - Tesla # 2
-  - Poste Italiane # 2
+  - Ristorante al Fiume Stella # 2
   - Là di Anselmi # 2
   - Hera / AcegasApsAmga (EnelX) # 2
   - Gas Gas Community Charging # 2
@@ -2057,9 +2065,9 @@ IT-82:
   - Eni # 2
   - Circontrol # 2
 IT-88:
-  - Enel X # 29
+  - Enel X # 30
   - GaraGeeks # 8
-  - Repower # 5
+  - Repower # 6
   - Enel # 4
   - DriWe # 3
   - evWay # 2
@@ -2086,14 +2094,15 @@ KE:
 KH:
   - Green E-Bike # 3
 KR:
-  - Tesla # 35
-  - 환경부 # 10
-  - Tesla, Inc. # 10
+  - Tesla # 38
+  - 환경부 # 11
   - (주)신세계아이앤씨 # 8
+  - Tesla, Inc. # 7
+  - SK일렉링크 # 7
   - 이마트 광교점(야외1층 주차장) # 6
   - 대영채비 # 5
-  - SK일렉링크 # 5
   - SK V1 모터스 # 5
+  - 현대자동차 # 4
   - 성균관대학교 자연과학캠퍼스 # 4
   - 경기도 체육회관 # 4
   - 한전 KDN 경기지역본부 # 3
@@ -2103,7 +2112,6 @@ KR:
   - 경기전력관리처 # 3
   - 경기도경제과학진흥원 # 3
   - 환경부(한국자동차환경협회) # 2
-  - 현대자동차 # 2
   - 한국전기안전공사 경기지역본부 # 2
   - 중부지방국세청 # 2
   - 이마트 서수원점 # 2
@@ -2139,15 +2147,16 @@ LI:
 LK:
   - Spark EV # 2
 LT:
-  - UAB Ignitis # 62
+  - UAB Ignitis # 63
   - Elinta # 18
   - IgnitisON # 12
-  - Elinta Charge # 11
+  - Elinta Charge # 12
   - Spark # 7
   - Elektrum # 7
   - Eldrive # 7
   - Ignitis ON # 6
   - Ignitis # 6
+  - UAB Vilniaus apšvietimas # 4
   - LAKD # 3
   - Ionity # 3
   - Enefit # 3
@@ -2167,7 +2176,7 @@ LU:
   - Camping Bleesbruck # 2
 LV:
   - CSDD # 44
-  - Elektrum # 17
+  - Elektrum # 18
   - Ignitis # 10
   - ChargePoint # 10
   - e-mobi # 8
@@ -2206,7 +2215,7 @@ MX:
 MY:
   - chargEV # 27
   - Gentari # 25
-  - JomCharge # 19
+  - JomCharge # 20
   - ChargeSini # 11
   - Tesla, Inc. # 8
   - Shell Recharge Solutions # 7
@@ -2222,22 +2231,22 @@ NC:
 NE:
   - Bluezone # 2
 NL:
-  - Samenwerkende Gemeenten Zuid-Holland # 2699
+  - Samenwerkende Gemeenten Zuid-Holland # 2737
   - Gemeente Den Haag # 2447
-  - Allego # 1647
-  - Vattenfall InCharge # 967
-  - TotalEnergies # 773
-  - Park&Charge # 373
-  - Equans # 283
+  - Allego # 1650
+  - Vattenfall InCharge # 977
+  - TotalEnergies # 775
+  - Park&Charge # 374
+  - Equans # 285
   - EVBox # 233
   - Ecotap # 191
   - NUON # 184
-  - Shell Recharge Solutions # 175
-  - Rotterdam elektrisch # 171
+  - Shell Recharge Solutions # 176
+  - Rotterdam elektrisch # 175
   - Fastned # 170
   - PowerGo # 146
-  - Vattenfall # 134
-  - Opcharge # 121
+  - Vattenfall # 133
+  - Opcharge # 124
   - EVnetNL # 96
   - City Charging # 82
   - We Drive Solar # 77
@@ -2248,8 +2257,8 @@ NL:
   - Gemeente Utrecht # 40
   - ChargePoint # 38
   - Eneco # 37
+  - Shell # 33
   - Engie # 33
-  - Shell # 32
   - Alfen # 31
   - GreenFlux # 29
   - PNB # 28
@@ -2257,15 +2266,15 @@ NL:
   - Equans;Samenwerkende Gemeenten Zuid-Holland;RotterdamsElectrisch.nl;Samenwerkende gemeenten Zuid Holland.
    Equans # 28
   - AgriSnellaad # 28
+  - PitPoint # 26
   - E-Flux # 26
-  - PitPoint # 25
   - Park n Charge # 24
   - Gemeente Rotterdam # 24
   - Shell Recharge # 22
   - Park 'n Charge # 22
+  - Smoov # 20
+  - Qbuzz # 20
   - Joulz # 20
-  - Smoov # 19
-  - Qbuzz # 19
   - Tesla # 17
   - SMOOV # 15
   - evnetnl # 14
@@ -2274,15 +2283,14 @@ NL:
   - Qwello # 14
   - Pitpoint # 14
   - IKEA Delft # 14
-  - Aers Energy # 14
 NO:
   - Oslo kommune # 113
   - Kople # 110
-  - Recharge # 57
+  - Recharge # 58
   - Tesla # 52
   - Circle K # 39
   - Lade i Norge # 36
-  - Mer # 32
+  - Mer # 34
   - Ionity # 20
   - Q-Park # 13
   - Stavanger Parkering # 12
@@ -2352,7 +2360,7 @@ NO:
   - Avinor AS # 2
 NZ:
   - ChargeNet NZ # 174
-  - Meridian Energy # 25
+  - Meridian Energy # 27
   - Jolt # 25
   - BP # 16
   - Z Energy # 14
@@ -2384,10 +2392,10 @@ PL:
   - GreenWay # 286
   - Energa # 262
   - Orlen # 129
-  - Tauron # 120
-  - Lidl # 77
-  - Elocity # 42
-  - Powerdot # 39
+  - Tauron # 121
+  - Lidl # 78
+  - Elocity # 44
+  - Powerdot # 41
   - PGE Nowa Energia # 38
   - EV+ # 37
   - NOXO. # 35
@@ -2416,6 +2424,7 @@ PL:
   - PGE # 6
   - MZK Gorzów Wlkp. # 6
   - Gmina Zakrzew&Enika # 6
+  - Eleport # 6
   - ABB # 6
   - PKM Jaworzno # 5
   - MPK Radom # 5
@@ -2429,8 +2438,10 @@ PL:
   - Greenway # 4
   - Equay # 4
   - Copernic GO # 4
+  - elocity # 3
   - SPA Klonowica # 3
   - PKP S.A. # 3
+  - Noxo Energy # 3
   - Nissan # 3
   - Nexity # 3
   - NOXO.Energy # 3
@@ -2440,16 +2451,16 @@ PL:
   - Lellek Group # 3
   - Inbalance grid # 3
   - Horyzont EV # 3
-  - Eleport # 3
   - EVPlus # 3
   - EVBox # 3
+  - EKOEN # 3
   - ChargeIn # 3
   - Budimex Mobility # 3
   - AutoTim # 3
   - Żabka # 2
   - Świtoń-Paczkowski sp. z o.o. # 2
   - i-charging # 2
-  - elocity # 2
+  - eTAURON # 2
   - Zdrojowa Hotels # 2
   - Zamek Janów Podlaski # 2
   - ZTP Kraków # 2
@@ -2465,10 +2476,8 @@ PL:
   - PRE Edward Biel # 2
   - PKN Orlen # 2
   - Orlen Charge # 2
-  - Noxo Energy # 2
   - Metropolia GZM # 2
   - MCER # 2
-  - Lasy Państwowe # 2
   - IKEA # 2
   - Hotel Jantar # 2
   - Grupa Cichy-Zasada # 2
@@ -2481,7 +2490,6 @@ PL:
   - Ecotap # 2
   - EVplus Sp. z o.o. # 2
   - EVlink # 2
-  - EKOEN # 2
   - Dan Cake Polonia # 2
   - DBT # 2
   - Charge Polska Sp. z o.o. # 2
@@ -2490,44 +2498,44 @@ PR:
 PS:
   - אפקון # 2
 PT:
-  - Galp Power # 1089
-  - EDP # 1075
-  - Powerdot # 582
-  - True Kare # 472
-  - Atlante # 466
-  - Tesla # 156
+  - Galp Power # 1072
+  - EDP # 1045
+  - Powerdot # 587
+  - True Kare # 496
+  - Atlante # 464
+  - Continente # 155
+  - Tesla # 154
   - Iberdrola # 152
-  - Continente # 146
-  - Galp Geste # 139
-  - Repsol # 134
-  - Prio.E # 129
-  - Helexia II # 111
-  - Charging Together # 105
-  - Mobiletric # 75
-  - Mota Engil II # 73
+  - Galp Geste # 137
+  - Repsol # 135
+  - Prio.E # 128
+  - Helexia II # 121
+  - Charging Together # 104
+  - Mota Engil II # 76
+  - Mobiletric # 76
   - Maksu Services # 52
   - DTE # 41
   - EVCE # 37
-  - Moon # 36
   - Hexagonal Ocean # 36
-  - KLC Serviços # 33
-  - EcoInside # 31
-  - Porsche # 26
+  - Moon # 34
+  - KLC Serviços # 32
+  - EcoInside # 30
+  - Loulé Concelho Global # 27
+  - EMEL # 26
   - Cepsa # 26
-  - Loulé Concelho Global # 25
-  - EV Power # 25
+  - Porsche # 25
+  - EV Power # 23
   - Logical Gravity # 21
-  - EMEL # 21
   - Generation Journey # 19
-  - Plug # 17
+  - Plug # 16
   - IONITY # 16
   - Veimonte # 15
   - Evio # 15
   - High Green Power # 13
   - Luzigás # 12
-  - Alfa Energia # 12
   - GreenCharge # 11
   - CapWatt # 11
+  - Alfa Energia # 11
   - Renault # 10
   - Nissan # 10
   - Bluecharge # 9
@@ -2538,14 +2546,14 @@ PT:
   - InstaVolt # 7
   - Circuitos Energy Solutions # 7
   - Cascais Proxima # 7
-  - NRG # 6
   - Image4all # 6
+  - EZ-Charg3 # 6
   - Cargga Inteligente # 6
 PT-20:
-  - SEGMA # 59
+  - SEGMA # 61
   - Galp Geste # 10
-  - Mobiletric # 6
   - EDP # 6
+  - Mobiletric # 5
 PT-30:
   - Factor Energia # 41
   - Emacom # 24
@@ -2567,14 +2575,15 @@ RE:
   - Leclerc # 2
   - Freshmile # 2
 RO:
-  - Lidl # 30
+  - Lidl # 31
   - Renovatio e-charge # 26
   - Enel X # 22
   - Kaufland # 14
   - STPT # 11
   - Tesla, Inc. # 8
+  - E.ON # 7
   - Eldrive # 6
-  - E.ON # 6
+  - Petrom # 5
   - Tesla # 4
   - Primăria Timișoara # 4
   - Polyfazer # 4
@@ -2598,7 +2607,7 @@ RS-VO:
 RU:
   - Пункт Е # 49
   - Энергия Москвы # 44
-  - РусГидро # 31
+  - РусГидро # 42
   - ПАО "Ленэнерго" # 30
   - Vолна # 27
   - Мосэнерго # 22
@@ -2607,8 +2616,8 @@ RU:
   - МРСК Волги # 8
   - EV-Time # 8
   - ПАО "МРСК Волги" # 5
-  - ПАО "Калужская сбытовая компания" # 5
   - Сбер # 4
+  - ПАО "Калужская сбытовая компания" # 4
   - НЭСК # 4
   - it.charge # 4
   - E-PROM # 4
@@ -2629,6 +2638,8 @@ RU:
   - ПАО «Россети Ленэнерго» # 2
   - ПАО "Россети Волга" # 2
   - ООО «Пункт Е» # 2
+  - ООО «Оператор электродвижения» # 2
+  - ООО «Комета» # 2
   - ОАО «МРСК Урала» # 2
   - Мособлэнерго # 2
   - Авилон # 2
@@ -2663,15 +2674,15 @@ SA:
   - Electromin # 96
 SE:
   - Mer # 109
-  - E.ON # 82
+  - E.ON # 83
   - Göteborgs Stads Parkerings AB # 65
   - Vattenfall InCharge # 57
-  - Recharge # 36
+  - Recharge # 38
   - Fortum Charge & Drive # 31
+  - Virta # 24
   - Sandviken Energi AB # 24
   - InCharge # 24
   - Aimo Park # 24
-  - Virta # 23
   - Mälarenergi # 22
   - Circle K # 21
   - Ionity # 20
@@ -2750,6 +2761,7 @@ SE:
   - Bärkehus AB # 6
   - Bilbolaget Nord # 6
   - BRF Norra Guldheden # 6
+  - Waybler # 5
   - Vännäs kommun # 5
   - Volvo Cars # 5
   - Vasakronan # 5
@@ -2780,7 +2792,6 @@ SE:
   - kWatt AB # 4
   - eleqtroPoint # 4
   - Wihlborgs # 4
-  - Waybler # 4
   - Västerås Stad # 4
   - Västervik Miljö och Energi AB # 4
   - Vikon Consulting AB # 4
@@ -2857,30 +2868,31 @@ SG:
   - Greenlots # 6
   - Tesla, Inc. # 5
   - Singapore Power # 5
+  - Shell # 5
   - Charge+ # 5
   - BlueSG # 4
-  - Shell # 3
   - TotalEnergies # 2
   - SP Mobility # 2
   - CDG Engie # 2
 SI:
   - SODO # 26
-  - Petrol # 23
+  - Petrol # 25
+  - Lidl # 12
   - Gremo na elektriko # 11
-  - Lidl # 10
   - Ionity # 10
+  - Porsche # 8
+  - Gremo Na Elektriko # 8
   - Elektro Ljubljana # 7
+  - Energija+ # 6
   - Elevat # 6
-  - Gremo Na Elektriko # 5
-  - Elektro Maribor # 5
   - Elektro Ljubljana d.d. # 5
   - unknovn # 4
   - Tesla # 4
-  - Porsche # 4
   - Tesla, Inc. # 3
   - Shell Recharge Solutions # 3
   - Petrol d.d. # 3
   - Mega M d.o.o. # 3
+  - Elektro Maribor # 3
   - EM # 3
   - elektro Celje # 2
   - Renault # 2
@@ -2888,20 +2900,20 @@ SI:
   - Občina Ajdovščina # 2
   - Iskratel # 2
   - Gremo na Elektriko # 2
-  - Energija+ # 2
   - Elektro Gorenjska # 2
   - Easypark # 2
   - Avant2Go # 2
   - Abat2Go # 2
 SK:
   - Západoslovenská energetika # 126
-  - GreenWay # 109
+  - GreenWay # 110
   - ejoin # 70
   - Lidl # 39
   - GreenWay Infrastructure # 20
   - econec.eu # 17
   - ZSE Drive # 8
   - Specialized # 8
+  - Tesla # 6
   - Sharengo/4 SALE,s.r.o # 6
   - MOL # 6
   - VSE # 5
@@ -2909,8 +2921,6 @@ SK:
   - OMV # 4
   - LEDEOS # 4
   - Billa # 4
-  - Tesla, Inc. # 3
-  - Tesla # 3
   - Slovnaft # 3
   - NabiBajk # 3
   - Ionity # 3
@@ -2925,6 +2935,7 @@ SK:
   - Shell Recharge Solutions # 2
   - OMV Slovensko # 2
   - Ledeos # 2
+  - Kaufland # 2
   - GreenWay Infrastructure s.r.o. # 2
   - Farmárska reštaurácia # 2
   - EVlink # 2
@@ -2943,7 +2954,7 @@ TR:
   - ZES # 61
   - Astor Enerji # 31
   - VOLTRUN # 26
-  - Tesla # 14
+  - Tesla # 19
   - Sharz # 11
   - Eşarj # 10
   - TOGG # 8
@@ -2958,7 +2969,7 @@ TR:
   - Sharz.net # 2
   - Neva Şarj # 2
 TW:
-  - Gogoro 電池交換站 # 107
+  - Gogoro 電池交換站 # 108
   - 英屬開曼群島商睿能新動力股份有限公司台灣分公司 # 23
   - Gogoro Inc. # 10
   - 睿能創意股份有限公司 # 9
@@ -2976,41 +2987,41 @@ UA:
   - Перша національна мережа електрозаправних комплексів Тока # 111
   - Toka # 59
   - AutoEnterprise # 43
-  - EVA Chargers # 21
+  - EVA Chargers # 22
   - Одеська міська рада # 12
   - ЕлектроДрайв # 9
+  - EcoFactor # 9
   - Ionity # 8
   - ElectroUA # 8
-  - EcoFactor # 8
   - Yasno # 6
   - Перша національна мережа електрозаправних комплексів "Тока" # 5
   - Автоэнтерпрайз # 5
   - Автоентерпрайз # 5
   - АвтоЭнтерпрайз # 5
   - UGV Chargers # 5
+  - GO TO-U # 5
   - Electro UA # 5
-  - Ecofactor # 5
   - Autoenterprise # 5
   - Go To-U # 4
   - Get-Charging # 4
-  - GO TO-U # 4
   - Faster # 4
+  - Ecofactor # 4
   - Тока # 3
   - ionity.ua # 3
   - ionity # 3
   - Silver Fox Energy # 3
-  - IONITY # 3
   - FLASH # 3
   - WOG # 2
   - Tesla Club Ukraine # 2
   - Infinite Charge # 2
   - Infinite Chage # 2
+  - IONITY # 2
   - ECOFACTOR # 2
   - AutoVolt # 2
   - AutoEnterprise 201 # 2
 US-AK:
   - ChargePoint # 8
-  - Tesla, Inc. # 3
+  - Tesla, Inc. # 4
 US-AL:
   - Tesla, Inc. # 37
   - ChargePoint # 13
@@ -3034,19 +3045,19 @@ US-AZ:
   - Lowell Observatory # 2
   - APS # 2
 US-CA:
-  - Tesla, Inc. # 572
-  - ChargePoint # 448
-  - EVgo # 126
+  - Tesla, Inc. # 573
+  - ChargePoint # 450
+  - EVgo # 127
   - Electrify America # 111
-  - Tesla # 59
+  - Tesla # 61
   - Blink # 45
   - Volta # 41
   - eVgo # 34
   - Shell Recharge Solutions # 24
   - NRG Energy # 22
   - Intel Corporation # 19
-  - FLO # 13
-  - EVCS # 9
+  - FLO # 14
+  - EVCS # 10
   - EV Connect # 7
   - Electric Era # 5
   - Caltrans # 5
@@ -3069,14 +3080,14 @@ US-CA:
   - 7-Eleven # 2
 US-CO:
   - ChargePoint # 163
-  - Tesla, Inc. # 57
+  - Tesla, Inc. # 56
   - Electrify America # 36
   - Volta # 19
   - Blink # 16
   - EVgo # 14
   - Hampton Inn # 8
   - eVgo # 6
-  - Tesla # 4
+  - Tesla # 5
   - Regis University # 3
   - EVCS # 3
   - rivian # 2
@@ -3095,7 +3106,7 @@ US-CT:
   - Electrify America # 2
 US-DC:
   - ChargePoint # 12
-  - Tesla, Inc. # 4
+  - Tesla # 3
   - EVgo # 2
 US-DE:
   - Tesla, Inc. # 21
@@ -3103,10 +3114,10 @@ US-DE:
   - SemaConnect # 2
   - Electrify America # 2
 US-FL:
-  - Tesla, Inc. # 186
+  - Tesla, Inc. # 180
   - ChargePoint # 48
+  - Tesla # 22
   - Electrify America # 18
-  - Tesla # 16
   - Blink # 14
   - Shell Recharge Solutions # 5
   - EVgo # 4
@@ -3117,13 +3128,13 @@ US-FL:
   - BP # 2
   - 7-Eleven # 2
 US-GA:
-  - Tesla, Inc. # 71
+  - Tesla, Inc. # 70
   - ChargePoint # 34
   - Electrify America # 16
   - Georgia Power # 12
+  - Tesla # 5
   - eVgo # 4
   - Volta # 4
-  - Tesla # 4
   - Blink # 4
   - Circle K # 3
   - NRG Energy # 2
@@ -3153,9 +3164,9 @@ US-ID:
   - Volta # 2
   - ChargePoint # 2
 US-IL:
+  - Tesla # 45
   - Volta # 43
-  - Tesla # 42
-  - Tesla, Inc. # 37
+  - Tesla, Inc. # 34
   - ChargePoint # 33
   - Electrify America # 21
   - EVgo # 16
@@ -3163,9 +3174,9 @@ US-IL:
   - iGo # 2
   - Bradley University # 2
 US-IN:
-  - Tesla, Inc. # 38
+  - Tesla, Inc. # 36
   - ChargePoint # 21
-  - Tesla # 13
+  - Tesla # 15
   - Indiana Power & Light # 4
   - Electrify America # 3
 US-KS:
@@ -3202,14 +3213,14 @@ US-MA:
   - ABB # 2
 US-MD:
   - ChargePoint # 91
-  - Tesla, Inc. # 58
+  - Tesla, Inc. # 56
   - Volta # 31
   - Blink # 29
   - EVgo # 21
   - Shell Recharge Solutions # 18
+  - Tesla # 9
   - SWTCH # 8
   - BGE # 8
-  - Tesla # 7
   - Baltimore Gas and Electric # 7
   - EVSmart # 6
   - Electric Vehicle Institute # 5
@@ -3251,9 +3262,9 @@ US-MI:
   - Ann Arbor Downtown Development Authority # 2
 US-MN:
   - ChargePoint # 28
-  - Tesla, Inc. # 27
+  - Tesla, Inc. # 26
+  - Tesla # 10
   - Electrify America # 10
-  - Tesla # 9
   - Evie Carshare # 6
   - City of Saint Paul # 4
   - ZEF Energy # 3
@@ -3292,6 +3303,7 @@ US-NC:
   - Tesla # 2
   - North Carolina Division of Parks & Recreation # 2
   - IONNA # 2
+  - EV Connect # 2
   - City of Raleigh # 2
 US-ND:
   - Tesla, Inc. # 6
@@ -3307,8 +3319,8 @@ US-NH:
   - Tesla, Inc # 2
   - Tesla # 2
 US-NJ:
-  - Tesla, Inc. # 77
-  - Tesla # 26
+  - Tesla, Inc. # 76
+  - Tesla # 28
   - ChargePoint # 19
   - EVgo # 5
   - Blink # 5
@@ -3318,12 +3330,12 @@ US-NJ:
   - Glen Rock # 2
   - Applegreen Electric # 2
 US-NM:
-  - Tesla, Inc. # 21
+  - Tesla, Inc. # 22
   - ChargePoint # 9
   - Electrify America # 4
   - EVgo # 2
 US-NV:
-  - Tesla, Inc. # 44
+  - Tesla, Inc. # 45
   - Tesla # 24
   - ChargePoint # 19
   - Electrify America # 6
@@ -3332,7 +3344,7 @@ US-NV:
 US-NY:
   - Tesla, Inc. # 102
   - ChargePoint # 91
-  - Tesla # 16
+  - Tesla # 17
   - EV Connect # 12
   - Electrify America # 9
   - EvolveNY # 7
@@ -3351,16 +3363,16 @@ US-NY:
   - Holiday Inn Express # 2
   - Griffiss Utilities # 2
 US-OH:
-  - Tesla, Inc. # 53
+  - Tesla, Inc. # 52
   - ChargePoint # 25
   - Shell # 4
   - Electrify America # 4
   - Bowling Green State University # 4
+  - Tesla # 3
   - Kent State University # 3
   - FLO # 3
   - Wickliffe City School District # 2
   - University of Cincinnati # 2
-  - Tesla # 2
   - Miami University # 2
   - IONNA # 2
   - Easton Town Center # 2
@@ -3368,17 +3380,18 @@ US-OH:
 US-OK:
   - Tesla, Inc. # 12
   - Electrify America # 4
+  - Tesla # 2
 US-OR:
-  - ChargePoint # 78
-  - Blink # 62
+  - ChargePoint # 80
+  - Blink # 63
   - Tesla, Inc. # 54
   - Electrify America # 33
   - Volta # 28
   - EVCS # 19
   - Portland General Electric # 7
   - EVgo # 6
+  - Tesla # 4
   - Rivian # 4
-  - Tesla # 3
   - FLO # 3
   - BP # 3
   - AeroVironment # 3
@@ -3388,9 +3401,9 @@ US-OR:
   - Chargepoint # 2
 US-PA:
   - ChargePoint # 88
-  - Tesla, Inc. # 80
+  - Tesla, Inc. # 79
   - Volta # 47
-  - Tesla # 24
+  - Tesla # 25
   - Blink # 23
   - Electrify America # 10
   - EVgo # 8
@@ -3407,8 +3420,8 @@ US-SC:
   - Tesla, Inc. # 37
   - ChargePoint # 10
   - Blink # 4
+  - Tesla # 3
   - EV Connect # 3
-  - Tesla # 2
   - EVgo # 2
   - City of Greenville # 2
 US-SD:
@@ -3426,9 +3439,9 @@ US-TX:
   - Tesla, Inc. # 212
   - Volta # 32
   - EVgo # 23
-  - Blink # 21
+  - Blink # 22
   - Austin Energy # 21
-  - Tesla # 13
+  - Tesla # 14
   - NRG Energy # 7
   - Electrify America # 5
   - Schneider Electric # 4
@@ -3447,7 +3460,7 @@ US-TX:
   - Cinemark Allen 16 & XD # 2
 US-UT:
   - ChargePoint # 50
-  - Tesla, Inc. # 33
+  - Tesla, Inc. # 34
   - Electrify America # 8
   - brand=ChargePoint # 6
   - EVgo # 3
@@ -3456,10 +3469,10 @@ US-UT:
   - Utah State University # 2
   - Tesla # 2
 US-VA:
-  - Tesla, Inc. # 91
+  - Tesla, Inc. # 90
   - ChargePoint # 41
   - EVgo # 32
-  - Tesla # 24
+  - Tesla # 25
   - Volta # 22
   - Electrify America # 14
   - Blink # 7
@@ -3477,9 +3490,9 @@ US-VT:
   - Champlain College # 3
   - FLO # 2
 US-WA:
-  - ChargePoint # 89
-  - Tesla, Inc. # 78
-  - Blink # 47
+  - ChargePoint # 94
+  - Tesla, Inc. # 79
+  - Blink # 48
   - Volta # 46
   - Electrify America # 45
   - Shell Recharge Solutions # 20
@@ -3502,8 +3515,8 @@ US-WA:
   - AV aerovironment # 2
   - 7-Eleven # 2
 US-WI:
+  - ChargePoint # 34
   - Tesla, Inc. # 29
-  - ChargePoint # 27
   - Electrify America # 14
   - Tesla # 8
   - Blink # 5
@@ -3536,9 +3549,10 @@ UZ:
 UZ-QR:
   - OOO "TOK BOR" # 8
 VA:
-  - Enel X # 2
+  - Enel X # 3
 VE:
   - Swing Energy # 6
   - Vencharger # 5
 VN:
-  - VinFast # 258
+  - VinFast # 259
+  - Vinfast # 2

@@ -526,7 +526,6 @@ Queres dividila agora?"</string>
     <string name="quest_recycling_type_glass_bottles">"Botellas e frascos de vidro"</string>
     <string name="quest_recycling_type_glass_bottles_short">"Só vidro"</string>
     <string name="quest_recycling_type_paper">"Papel"</string>
-    <string name="quest_recycling_type_plastic_generic">"Plástico"</string>
     <string name="quest_recycling_type_plastic">"Calquera plástico"</string>
     <string name="quest_recycling_type_shoes">"Zapatos"</string>
     <string name="quest_recycling_type_electric_appliances">"Aparellos eléctricos"</string>
@@ -702,7 +701,6 @@ logros"</string>
     <string name="quest_oneway2_title">"Esta é unha rúa dun só sentido? En que dirección?"</string>
     <string name="quest_oneway2_dir">"Nesta dirección"</string>
     <string name="quest_oneway2_no_oneway">"Non é dun só sentido"</string>
-    <string name="quest_maxweight_select_sign">"Escoller sinal"</string>
     <string name="quest_steps_incline_title">"Que dirección conduce cara arriba nestas escaleiras?"</string>
     <string name="quest_steps_incline_up">"Neste sentido sobe"</string>
     <string name="quest_step_count_title">"Cantos chanzos hai aquí?"</string>
@@ -790,7 +788,6 @@ Ten en conta tódalas opcións dispoñíbeis: algúns casos non son obvios, como
     <string name="quest_postboxRoyalCypher_type_scottish_crown">"A Coroa de Escocia"</string>
     <string name="quest_buildingType_fire_station">"Estación de bombeiros"</string>
     <string name="quest_recycling_type_beverage_cartons">"Só cartóns de bebidas"</string>
-    <string name="quest_recycling_type_plastic_bottles_and_cartons">"Só botellas de plástico e cartóns"</string>
     <string name="team_mode">"Entrar no Modo Equipo"</string>
     <string name="team_mode_exit">"Saír do Modo Equipo"</string>
     <string name="team_mode_description">"Se estades un grupo a mapear un área, podedes entrar no modo equipo para repartir as tarefas entre todos os membros do equipo. Cada un de vós veredes tarefas distintas."</string>
@@ -1146,7 +1143,6 @@ Senón tamén podes deixar unha nota (acompañada dunha foto)."</string>
     <string name="quest_camp_type_tents_only">"Só tendas de campaña"</string>
     <string name="quest_camp_type_backcountry">"Cámping nunha zona remota (sen instalacións)"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Este diámetro non parece estar ben, normalmente está entre os %1$d e os %2$d."</string>
-    <string name="quest_recycling_type_pet">"Só PET"</string>
     <string name="street_parking_street_width">"Anchura da rúa: %1$s"</string>
     <string name="overlay_street_parking">"Aparcamento na rúa"</string>
     <string name="link_ohsomehex_description">"Explora os datos de OSM en todas as escalas do espacio e do tempo, desde a perspectiva xeral ata obxectos individuais."</string>

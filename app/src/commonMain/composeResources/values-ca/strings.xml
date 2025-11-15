@@ -526,7 +526,6 @@ Parcialment significa que una cadira de rodes pot entrar i utilitzar els lavabos
     <string name="quest_recycling_type_glass_bottles">Ampolles i gerres de vidre</string>
     <string name="quest_recycling_type_glass_bottles_short">Ampolles i gerres</string>
     <string name="quest_recycling_type_paper">Paper</string>
-    <string name="quest_recycling_type_plastic_generic">Plàstic</string>
     <string name="quest_recycling_type_plastic">Qualsevol tipus de plàstic</string>
     <string name="quest_recycling_type_shoes">Calçat</string>
     <string name="quest_recycling_type_electric_appliances">Aparells elèctrics</string>
@@ -634,7 +633,8 @@ Finalment, ves amb compte: para atenció al que t'envolta i no entris en propiet
     <string name="achievement_wheelchair_title">Mobilitat</string>
     <string name="achievement_wheelchair_solved_X">Heu resolt %1$d missions que ajuden usuaris amb cadira de rodes a anar pel poble!</string>
     <string name="achievement_postman_title">Carter</string>
-    <string name="achievement_postman_solved_X">Heu ajudat a ubicar %1$d adreces! Aquests dades són essencials, no només per al carter sinó també per a qualsevol sistema de navegació.</string>
+    <string name="achievement_postman_solved_X">Heu ajudat a localitzar %1$d adreces i altres serveis postals!
+Aquestes dades són essencials no només per al transportista de correu, sinó també per a qualsevol sistema de navegació.</string>
     <string name="achievement_building_title">Alçades</string>
     <string name="achievement_building_solved_X">Heu resolt %1$d missions relacionades amb edificis.
 Tingueu en compte que aquesta aplicació només pregunta pel número de l'edifici sols després que el tipus hagi sigut determinat.</string>
@@ -686,7 +686,7 @@ d'acompliment</string>
     <string name="quest_board_type_map_description">Si el tauler tracta sobre un tema en particular, especifiqueu-ho, independentment de si també inclou un mapa. Per exemple, un consell de transport públic pot tenir un mapa de ruta d'autobús. Si el tema no està llistat entre les respostes disponibles, considereu deixar una nota en el seu lloc.</string>
     <string name="quest_streetName_menuItem_international">internacional</string>
     <string name="quest_buildingType_terrace2">Files de cases</string>
-    <string name="at_housename">Nom de la casa %1$s</string>
+    <string name="at_housename">nom de la casa %1$s</string>
     <string name="at_housenumber">número de casa %1$s</string>
     <string name="quest_openingHours_add_off_days">Afegeix els dies de descans</string>
     <string name="quest_openingHours_off_day">Dia de descans</string>
@@ -701,7 +701,6 @@ d'acompliment</string>
     <string name="quest_oneway2_title">Aquest és un carrer de sentit únic? En quin sentit?</string>
     <string name="quest_oneway2_dir">Sentit únic en aquesta direcció</string>
     <string name="quest_oneway2_no_oneway">No és de sentit únic</string>
-    <string name="quest_maxweight_select_sign">Seleccioneu un senyal</string>
     <string name="quest_steps_incline_title">Quin sentit porta cap amunt per aquestes escales?</string>
     <string name="quest_steps_incline_up">Puja en aquest sentit</string>
     <string name="quest_step_count_title">Quants graons hi ha aquí?</string>
@@ -788,7 +787,6 @@ Fixeu-vos en totes les opcions disponibles: alguns  casos no són obvis, com una
     <string name="quest_postboxRoyalCypher_type_scottish_crown">Corona d'Escòcia</string>
     <string name="quest_buildingType_fire_station">Parc de bombers</string>
     <string name="quest_recycling_type_beverage_cartons">Només cartons de beguda</string>
-    <string name="quest_recycling_type_plastic_bottles_and_cartons">Només ampolles i cartons plàstics</string>
     <string name="team_mode">Mode d'equip</string>
     <string name="team_mode_exit">Sortir del mode d'equip</string>
     <string name="team_mode_description">Quan mapegeu la mateixa àrea en un grup, podeu entrar en el mode equip per dividir les cerques entre tots els membres de l'equip.</string>
@@ -987,7 +985,7 @@ Alternativament, pots deixar una nota (amb foto).</string>
     <string name="quest_smoothness_hint">🚲, 🚗, 🚙, … indica quin vehicle pot utilitzar bé la superfície. El que importa és el panorama general en lloc de danys individuals.</string>
     <string name="link_osmhydrant_description">Cerca, afegeix i edita estacions de bombers i hidrants</string>
     <string name="achievement_lifesaver_title">Salvavides</string>
-    <string name="achievement_lifesaver_solved_X">Has resolt %1$d missions que ajuden als serveis d'emergència!</string>
+    <string name="achievement_lifesaver_solved_X">Heu resolt %1$d missions que ajuden als serveis d'emergència!</string>
     <string name="quest_fuelSelfService_title">A aquesta benzinera pots repostar tu mateix?</string>
     <string name="default_disabled_msg_difficult_and_time_consuming">Aquest tipus de missió està desactivada per defecte perquè consumeix temps i a vegades és difícil de triar l’opció correcta. Només hauríeu d’activar-la si realment esteu compromès a afegir aquest tipus de dades.</string>
     <string name="quest_smoothness_description_good_compacted_gravel">Molt compactat, poca grava o sorra solta</string>
@@ -1150,7 +1148,6 @@ Feu el mateix per a l'altre costat.</string>
     <string name="quest_camp_type_tents_only">Només tendes</string>
     <string name="quest_camp_type_backcountry">Zona d'acampada lliure (sense instal·lacions)</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">Aquest diàmetre sembla inversemblant, normalment es troba entre %1$d i %2$d.</string>
-    <string name="quest_recycling_type_pet">Només PET</string>
     <string name="street_parking_street_width">Amplada del carrer: %1$s</string>
     <string name="overlay_street_parking">Aparcament al carrer
 </string>
@@ -1468,4 +1465,16 @@ Un pis compta com a teulada quan les seves finestres són a la teulada. En conse
     <string name="quest_streetName_add_language">Afegiu idioma</string>
     <string name="ok">D'acord</string>
     <string name="cancel">Cancel·lar</string>
+    <string name="quest_aerialway_bicycle_title">Aquest ascensor aeri transporta bicicletes?</string>
+    <string name="quest_aerialway_bicycle_summer">Només l'estiu</string>
+    <string name="quest_board_type_rules">Regles</string>
+    <string name="quest_firewood_provided_title">Es proporciona llenya aquí?</string>
+    <string name="quest_first_aid_kit_location">On es troba aquest kit de primers auxilis?</string>
+    <string name="quest_lane_markings_title">Aquesta carretera té marques de carril?</string>
+    <string name="quest_level_thing_title">En quin número de nivell es troba això?</string>
+    <string name="quest_bicycle_charging_station_capacity_title">Quantes bicicletes es poden carregar aquí alhora?</string>
+    <string name="quest_charging_station_bicycles_title">També es poden carregar bicicletes aquí?</string>
+    <string name="quest_charging_station_bicycles_hint">Els adaptadors de carregador de bicicletes es connecten a endolls domèstics normals.</string>
+    <string name="quest_tower_access_title">Qui pot accedir a aquesta torre? Pot ser gratuït o de pagament.</string>
+    <string name="quest_charging_station_bicycles_answer_only">És només per a bicicletes</string>
 </resources>

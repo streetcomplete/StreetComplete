@@ -526,7 +526,6 @@ Dividir agora?</string>
     <string name="quest_recycling_type_glass_bottles">Garrafas e potes de vidro</string>
     <string name="quest_recycling_type_glass_bottles_short">Garrafas e jarros</string>
     <string name="quest_recycling_type_paper">Papel</string>
-    <string name="quest_recycling_type_plastic_generic">Plástico</string>
     <string name="quest_recycling_type_plastic">Qualquer plástico</string>
     <string name="quest_recycling_type_shoes">Calçados</string>
     <string name="quest_recycling_type_electric_appliances">Eletrodomésticos</string>
@@ -704,7 +703,6 @@ conquista</string>
     <string name="quest_oneway2_title">Esta é uma rua de mão única? Em que direção?</string>
     <string name="quest_oneway2_dir">Direção única nesta direção</string>
     <string name="quest_oneway2_no_oneway">Não é uma direção única</string>
-    <string name="quest_maxweight_select_sign">Selecione o sinal</string>
     <string name="quest_steps_incline_title">Qual direção dos degraus leva para cima?</string>
     <string name="quest_steps_incline_up">Dessa forma</string>
     <string name="quest_step_count_title">Quantos degraus possui aqui?</string>
@@ -791,7 +789,6 @@ Observe todas as opções disponíveis: alguns casos não são óbvios, como uma
     <string name="quest_postboxRoyalCypher_type_scottish_crown">A coroa da Escócia</string>
     <string name="quest_buildingType_fire_station">Prédio de bombeiros</string>
     <string name="quest_recycling_type_beverage_cartons">Apenas embalagens para bebidas</string>
-    <string name="quest_recycling_type_plastic_bottles_and_cartons">Apenas garrafas de plástico e caixas</string>
     <string name="team_mode">Entrar no Modo de Equipe</string>
     <string name="team_mode_exit">Sair do modo de equipe</string>
     <string name="team_mode_description">Ao mapear a mesma área juntos em um grupo, você pode entrar no modo de equipe para dividir as missões entre todos os membros da equipe.</string>
@@ -1148,7 +1145,6 @@ Faça o mesmo para o outro lado, se houver.</string>
     <string name="quest_camp_type_tents_only">Apenas barracas</string>
     <string name="quest_camp_type_backcountry">Camping no interior (sem instalações)</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">Este diâmetro parece implausível, geralmente está entre %1$d e %2$d.</string>
-    <string name="quest_recycling_type_pet">Apenas PET</string>
     <string name="street_parking_street_width">Largura da rua: %1$s</string>
     <string name="overlay_street_parking">Estacionamento na rua</string>
     <string name="link_ohsomehex_description">Explore os dados do OSM em escalas desde o panorama geral até objetos individuais no espaço e no tempo</string>

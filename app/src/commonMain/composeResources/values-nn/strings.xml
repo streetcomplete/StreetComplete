@@ -515,7 +515,6 @@ Appen kommuniserer direkte med OSM-tenarane.&lt;br/&gt;Før appen lastar opp end
     <string name="quest_recycling_type_glass_bottles">Glas­flasker og syltetøy­glas</string>
     <string name="quest_recycling_type_glass_bottles_short">Flasker og syltetøyglas</string>
     <string name="quest_recycling_type_paper">Papir</string>
-    <string name="quest_recycling_type_plastic_generic">Plast</string>
     <string name="quest_recycling_type_plastic">Alle typar plast</string>
     <string name="quest_recycling_type_shoes">Sko</string>
     <string name="quest_recycling_type_electric_appliances">EE-avfall</string>
@@ -682,7 +681,6 @@ Appen kommuniserer direkte med OSM-tenarane.&lt;br/&gt;Før appen lastar opp end
     <string name="quest_oneway2_title">Er dette ei einvegskøyrd gate? I kva retning?</string>
     <string name="quest_oneway2_dir">Einvegskøyrd i denne retninga</string>
     <string name="quest_oneway2_no_oneway">Ikkje einvegskøyrd</string>
-    <string name="quest_maxweight_select_sign">Vel skilt</string>
     <string name="quest_steps_incline_title">Kva retning leier oppover i denne trappa?</string>
     <string name="quest_steps_incline_up">Denne vegen leier oppover</string>
     <string name="quest_step_count_title">Kor mange trappesteg har trappa?</string>
@@ -766,7 +764,6 @@ Appen kommuniserer direkte med OSM-tenarane.&lt;br/&gt;Før appen lastar opp end
     <string name="quest_postboxRoyalCypher_type_scottish_crown">Skottlands krone</string>
     <string name="quest_buildingType_fire_station">Brannstasjon</string>
     <string name="quest_recycling_type_beverage_cartons">Berre drikkekartong</string>
-    <string name="quest_recycling_type_plastic_bottles_and_cartons">Berre plastflasker og kartongar</string>
     <string name="team_mode">Lag­modus</string>
     <string name="team_mode_exit">Avslutt lagmodus</string>
     <string name="team_mode_description">Når fleire kartleggjer eit område saman, kan de bruka lagmodus for å fordela oppdraga mellom dykk.</string>
@@ -997,7 +994,6 @@ Appen kommuniserer direkte med OSM-tenarane.&lt;br/&gt;Før appen lastar opp end
     <string name="quest_camp_shower_title">Er det dusj her?</string>
     <string name="quest_camp_type_caravans_only">Berre bobil, campingvogner, …</string>
     <string name="quest_camp_type_tents_only">Berre telt</string>
-    <string name="quest_recycling_type_pet">Berre PET</string>
     <string name="street_parking_street_width">Vegbreidde: %1$s</string>
     <string name="quest_drinking_water_type_tap">Vasskran</string>
     <string name="quest_drinking_water_type_hand_pump">Handpumpe</string>

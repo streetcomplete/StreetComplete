@@ -526,7 +526,6 @@ Jaetaanko nyt?"</string>
     <string name="quest_recycling_type_glass_bottles">"Lasipulloja ja -purkkeja"</string>
     <string name="quest_recycling_type_glass_bottles_short">"Pulloja ja purkkeja"</string>
     <string name="quest_recycling_type_paper">"Paperia"</string>
-    <string name="quest_recycling_type_plastic_generic">"Muovia"</string>
     <string name="quest_recycling_type_plastic">"Mitä tahansa muovia"</string>
     <string name="quest_recycling_type_shoes">"Kenkiä"</string>
     <string name="quest_recycling_type_electric_appliances">"Elektroniikka"</string>
@@ -704,7 +703,6 @@ taso"</string>
     <string name="quest_oneway2_title">"Onko tämä yksisuuntainen tie? Mihin suuntaan?"</string>
     <string name="quest_oneway2_dir">"Yksisuuntainen tähän suuntaan"</string>
     <string name="quest_oneway2_no_oneway">"Ei yksisuuntainen"</string>
-    <string name="quest_maxweight_select_sign">"Valitse merkki"</string>
     <string name="quest_steps_incline_title">"Kumpi suunta johtaa ylöspäin täällä?"</string>
     <string name="quest_steps_incline_up">"Tähän suuntaan ylös"</string>
     <string name="quest_step_count_title">"Kuinka monta askelmaa tässä on?"</string>
@@ -791,7 +789,6 @@ Huomioi kaikki vaihtoehdot: jotkut tapaukset eivät ole ilmiselviä, kuten yksis
     <string name="quest_postboxRoyalCypher_type_scottish_crown">"Skotlannin kruunu"</string>
     <string name="quest_buildingType_fire_station">"Paloasema"</string>
     <string name="quest_recycling_type_beverage_cartons">"Vain juomakartongit"</string>
-    <string name="quest_recycling_type_plastic_bottles_and_cartons">"Vain muovipullot ja kartongit"</string>
     <string name="team_mode">"Siirry Työryhmätilaan"</string>
     <string name="team_mode_exit">"Poistu työryhmätilasta"</string>
     <string name="team_mode_description">"Kun kartoitatte samaa aluetta yhtenä ryhmänä, voitte mennä työryhmätilaan ja jakaa tehtävät ryhmän jäsenten kesken.
@@ -1149,7 +1146,6 @@ Tee sama toiselle puolelle mikäli tarpeellista."</string>
     <string name="quest_camp_type_tents_only">"Vain teltat"</string>
     <string name="quest_camp_type_backcountry">"Erämaatelttailu (ei palveluja)"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Tämä halkaisija vaikuttaa epätodennäköiseltä, se on yleensä välillä %1$d - %2$d."</string>
-    <string name="quest_recycling_type_pet">"Vain PET-muovi"</string>
     <string name="street_parking_street_width">"Kadun leveys: %1$s"</string>
     <string name="overlay_street_parking">"Katupysäköinti"</string>
     <string name="link_ohsomehex_description">"Tutki OSM-tietoja eri mittakaavassa kokonaisuudesta yksittäisiin objekteihin tilan ja ajan yli"</string>

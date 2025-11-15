@@ -526,7 +526,6 @@ Suddividere ora?</string>
     <string name="quest_recycling_type_glass_bottles">Bottiglie e vasetti in vetro</string>
     <string name="quest_recycling_type_glass_bottles_short">Bottiglie e vasetti</string>
     <string name="quest_recycling_type_paper">Carta</string>
-    <string name="quest_recycling_type_plastic_generic">Plastica</string>
     <string name="quest_recycling_type_plastic">Qualsiasi tipo di plastica</string>
     <string name="quest_recycling_type_shoes">Scarpe</string>
     <string name="quest_recycling_type_electric_appliances">Elettrodomestici</string>
@@ -703,7 +702,6 @@ riconoscimento</string>
     <string name="quest_oneway2_title">È una strada a senso unico? In quale direzione?</string>
     <string name="quest_oneway2_dir">Senso unico in questa direzione</string>
     <string name="quest_oneway2_no_oneway">Non è a senso unico</string>
-    <string name="quest_maxweight_select_sign">Seleziona cartello</string>
     <string name="quest_steps_incline_title">Quale direzione porta verso l'alto?</string>
     <string name="quest_steps_incline_up">Da questo lato</string>
     <string name="quest_step_count_title">Quanti gradini ci sono?</string>
@@ -789,7 +787,6 @@ Considera tutte le opzioni disponibili: alcuni casi non sono ovvi, ad esempio un
     <string name="quest_postboxRoyalCypher_type_scottish_crown">La Corona di Scozia</string>
     <string name="quest_buildingType_fire_station">Centrale dei vigili del fuoco</string>
     <string name="quest_recycling_type_beverage_cartons">Solo cartoni per bevande</string>
-    <string name="quest_recycling_type_plastic_bottles_and_cartons">Solo bottiglie di plastica e cartoni per bevande</string>
     <string name="team_mode">Imposta Modalità squadra</string>
     <string name="team_mode_exit">Abbandona la modalità squadra</string>
     <string name="team_mode_description">Quando mappi una stessa area insieme ad altre persone, puoi attivare la modalità squadra per suddividere le missioni tra tutte le persone.</string>
@@ -1146,7 +1143,6 @@ Fai la stessa cosa per l'altro lato, se presente.</string>
     <string name="quest_camp_type_tents_only">Solo tende</string>
     <string name="quest_camp_type_backcountry">Campeggio fuoripista (niente strutture)</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">Questo diametro non sembra plausibile, è solitamente tra %1$d e %2$d.</string>
-    <string name="quest_recycling_type_pet">Solo PET</string>
     <string name="street_parking_street_width">Larghezza strada: %1$s</string>
     <string name="overlay_street_parking">Parcheggio in strada</string>
     <string name="link_ohsomehex_description">Esplora i dati OSM dai singoli oggetti all’intera mappa spostandoti nello spazio e nel tempo</string>

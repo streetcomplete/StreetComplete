@@ -524,7 +524,6 @@ Pero recuerda que siempre puedes descargar aplicaciones de tecláu alternatives 
     <string name="quest_recycling_type_glass_bottles">Botelles de cristal y vidru</string>
     <string name="quest_recycling_type_glass_bottles_short">Botelles y frascos</string>
     <string name="quest_recycling_type_paper">Papel</string>
-    <string name="quest_recycling_type_plastic_generic">Plásticu</string>
     <string name="quest_recycling_type_plastic">Cualquier plásticu</string>
     <string name="quest_recycling_type_shoes">Zapatos</string>
     <string name="quest_recycling_type_electric_appliances">Aparatos eléctricos</string>
@@ -698,7 +697,6 @@ Repara en qu'esta aplicación solo pide'l númberu de portal d'un edificiu en sa
     <string name="quest_oneway2_title">¿Ye una cai de sentíu únicu? ¿En qué dirección?</string>
     <string name="quest_oneway2_dir">Dirección única nesta dirección</string>
     <string name="quest_oneway2_no_oneway">Nun ye d'una sola dirección</string>
-    <string name="quest_maxweight_select_sign">Escueyi una señal</string>
     <string name="quest_steps_incline_title">¿En qué dirección xube la escalera?</string>
     <string name="quest_steps_incline_up">Xube nesta dirección</string>
     <string name="quest_step_count_title">¿Cuántos pasos hai?</string>
@@ -784,7 +782,6 @@ Repara en toles opciones disponibles: a veces nun ye tan obvio, como en víes d'
     <string name="quest_postboxRoyalCypher_type_scottish_crown">La corona d'Escocia</string>
     <string name="quest_buildingType_fire_station">Estación de bomberos</string>
     <string name="quest_recycling_type_beverage_cartons">Namás caxes de bebíes</string>
-    <string name="quest_recycling_type_plastic_bottles_and_cartons">Namás botelles y caxes de plásticu</string>
     <string name="team_mode">Mou equipu</string>
     <string name="team_mode_exit">Salir del mou equipu</string>
     <string name="team_mode_description">Cuando teais dellos meyorando una zona a la vez podéis usar el mou «n'equipu» y dividir asina les xeres ente los miembros.</string>
@@ -1140,7 +1137,6 @@ Tamién puedes dexar una nota (con foto).</string>
     <string name="quest_camp_type_tents_only">Namás tiendes de campaña</string>
     <string name="quest_camp_type_backcountry">Campamentu al aire llibre (ensin instalaciones)</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">Esti diámetru nun paez mui realista, suel tar ente %1$d y %2$d.</string>
-    <string name="quest_recycling_type_pet">Namás polietilenu</string>
     <string name="street_parking_street_width">Anchor de la cai: %1$s</string>
     <string name="overlay_street_parking">Aparcaderu</string>
     <string name="link_ohsomehex_description">Esplora los datos d'OSM en toles categoríes, dende la perspectiva xeneral hasta los oxetos individuales nel espaciu y el tiempu</string>

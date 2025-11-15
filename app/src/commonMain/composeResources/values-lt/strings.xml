@@ -526,7 +526,6 @@ Dalinai reiškia, kad vežimėlis gali įvažiuoti ir naudotis tualetu, bet nėr
     <string name="quest_recycling_type_glass_bottles">Stikliniai buteliai ir stiklainiai</string>
     <string name="quest_recycling_type_glass_bottles_short">Buteliai ir stiklainiai</string>
     <string name="quest_recycling_type_paper">Popierius</string>
-    <string name="quest_recycling_type_plastic_generic">Plastikas</string>
     <string name="quest_recycling_type_plastic">Bet koks plastikas</string>
     <string name="quest_recycling_type_shoes">Batai</string>
     <string name="quest_recycling_type_electric_appliances">Elektros įrenginiai</string>
@@ -702,7 +701,6 @@ dienų</string>
     <string name="quest_oneway2_title">Ar ši gatvė vienpusė? Į kurią kryptį?</string>
     <string name="quest_oneway2_dir">Vienpusė į šia kryptį</string>
     <string name="quest_oneway2_no_oneway">Ne vienpusė</string>
-    <string name="quest_maxweight_select_sign">Parinkti ženklą</string>
     <string name="quest_steps_incline_title">Kuri kryptis veda aukštyn šiais laiptais?</string>
     <string name="quest_steps_incline_up">Šia kryptimi aukšyn</string>
     <string name="quest_step_count_title">Kiek pakopų čia yra?</string>
@@ -789,7 +787,6 @@ Atkreipkite dėmesį į visas galimas parinktis: kai kurie atvejai nėra akivaiz
     <string name="quest_postboxRoyalCypher_type_scottish_crown">Škotijos karūna</string>
     <string name="quest_buildingType_fire_station">Gaisrinės pastatas</string>
     <string name="quest_recycling_type_beverage_cartons">Tik gėrimų dėžutės</string>
-    <string name="quest_recycling_type_plastic_bottles_and_cartons">Tik plastikiniai buteliai ir kartoninės dėžutės</string>
     <string name="team_mode">Komandinis režimas</string>
     <string name="team_mode_exit">Palikti komandinį režimą</string>
     <string name="team_mode_description">Kai kartu su grupe kartografuojate tą pačią vietovę, galite įjungti komandinį režimą, kad užduotys būtų padalytos visiems komandos nariams.</string>
@@ -1141,7 +1138,6 @@ Tą patį padarykite ir kitoje pusėje, jei yra.</string>
     <string name="quest_camp_shower_title">Ar čia yra dušų?</string>
     <string name="quest_camp_power_supply_title">Ar yra galimybė klientams pasikrauti savo telefoną, kompiuterį ar kt.?</string>
     <string name="quest_camp_type_title">Kas galėtų čia stovyklauti?</string>
-    <string name="quest_recycling_type_pet">Tik PET plastikas</string>
     <string name="street_parking_street_width">Gatvės plotis: %1$s</string>
     <string name="overlay_street_parking">Parkavimas gatvėje</string>
     <string name="link_opencampingmap_description">Stovyklaviečių žemėlapis</string>

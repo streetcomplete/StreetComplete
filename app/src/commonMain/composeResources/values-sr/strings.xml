@@ -526,7 +526,6 @@
     <string name="quest_recycling_type_glass_bottles">Стаклене флаше и тегле</string>
     <string name="quest_recycling_type_glass_bottles_short">Флаше и тегле</string>
     <string name="quest_recycling_type_paper">Папир</string>
-    <string name="quest_recycling_type_plastic_generic">Пластика</string>
     <string name="quest_recycling_type_plastic">Било која пластика</string>
     <string name="quest_recycling_type_shoes">Ципеле</string>
     <string name="quest_recycling_type_electric_appliances">Електрични уређаји</string>
@@ -703,7 +702,6 @@
     <string name="quest_oneway2_title">Да ли је ово једносмерна улица? У ком смеру?</string>
     <string name="quest_oneway2_dir">Једносмерна у овом смеру</string>
     <string name="quest_oneway2_no_oneway">Није једносмерна</string>
-    <string name="quest_maxweight_select_sign">Одаберите знак</string>
     <string name="quest_steps_incline_title">Који смер води узбрдо за ове степенице?</string>
     <string name="quest_steps_incline_up">Овај смер је узбрдо</string>
     <string name="quest_step_count_title">Колико овде има степеника?</string>
@@ -788,7 +786,6 @@
     <string name="quest_postboxRoyalCypher_type_scottish_crown">Шкотска Круна</string>
     <string name="quest_buildingType_fire_station">Ватрогасна станица</string>
     <string name="quest_recycling_type_beverage_cartons">Само картонска амбалажа (тетрапак)</string>
-    <string name="quest_recycling_type_plastic_bottles_and_cartons">Само пластичне флаше и картон</string>
     <string name="team_mode">Рад у тиму</string>
     <string name="team_mode_exit">Излаз из рада у тиму</string>
     <string name="team_mode_description">Када картирате исту регију у групи, можете да уђете у Рад у тиму и да поделите задатке међусобно.</string>
@@ -1145,7 +1142,6 @@
     <string name="quest_camp_type_tents_only">Само шатори</string>
     <string name="quest_camp_type_backcountry">Забачено камповање (без објеката)</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">Овај промер изгледа нереално, обично је између %1$d и %2$d.</string>
-    <string name="quest_recycling_type_pet">Само PET амбалажа</string>
     <string name="street_parking_street_width">Ширина улице: %1$s</string>
     <string name="overlay_street_parking">Паркинг на улици</string>
     <string name="link_ohsomehex_description">Истражите OSM податке кроз простор из даљине, од велике слике до појединачних објеката</string>

@@ -530,7 +530,6 @@ Chcete cestu rozdělit?</string>
     <string name="quest_recycling_type_glass_bottles">Skleněné láhve a jiné nádoby</string>
     <string name="quest_recycling_type_glass_bottles_short">Láhve a nádoby</string>
     <string name="quest_recycling_type_paper">Papír</string>
-    <string name="quest_recycling_type_plastic_generic">Plasty</string>
     <string name="quest_recycling_type_plastic">Jakékoliv plasty</string>
     <string name="quest_recycling_type_shoes">Obuv</string>
     <string name="quest_recycling_type_electric_appliances">Elektrické spotřebiče</string>
@@ -707,7 +706,6 @@ Pamatujte, že tato aplikace se zeptá na číslo budovy až po určení jejího
     <string name="quest_oneway2_title">Je tohle jednosměrná ulice? V jakém směru?</string>
     <string name="quest_oneway2_dir">Je jednosměrná v tomto směru</string>
     <string name="quest_oneway2_no_oneway">Není jednosměrná</string>
-    <string name="quest_maxweight_select_sign">Vyberte značku</string>
     <string name="quest_steps_incline_title">Který směr vede na těchto schodech nahoru?</string>
     <string name="quest_steps_incline_up">Toto je směr nahoru</string>
     <string name="quest_step_count_title">Kolik je tu schodů</string>
@@ -792,7 +790,6 @@ Pokud jsou tu pruhy pro autobusy, napište to prosím do poznámky.</string>
     <string name="quest_postboxRoyalCypher_type_scottish_crown">The Crown of Scotland</string>
     <string name="quest_buildingType_fire_station">Hasičská stanice</string>
     <string name="quest_recycling_type_beverage_cartons">Pouze kartonové obaly od nápojů</string>
-    <string name="quest_recycling_type_plastic_bottles_and_cartons">Pouze plastové láhve a kartonové obaly</string>
     <string name="team_mode">Týmový režim</string>
     <string name="team_mode_exit">Opustit týmový režim</string>
     <string name="team_mode_description">Pokud mapujete tutéž oblast společně ve skupině, můžete si zapnout týmový režim a rozdělit úkoly mezi všechny členy týmu.</string>
@@ -1152,7 +1149,6 @@ Totéž udělejte i pro druhou stranu, pokud je přítomna.</string>
     <string name="quest_camp_type_tents_only">Pouze stany</string>
     <string name="quest_camp_type_backcountry">Táboření v přírodě (bez zázemí)</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">Tento průměr vypadá nepravděpodobně, obvykle se pohybuje mezi %1$d a %2$d.</string>
-    <string name="quest_recycling_type_pet">Jen PET</string>
     <string name="street_parking_street_width">Šířka ulice: %1$s</string>
     <string name="overlay_street_parking">Parkování na ulici</string>
     <string name="link_ohsomehex_description">Objevujte data OSM napříč měřítky, od velkého obrázku po jednotlivé objekty, v prostoru a čase</string>
@@ -1465,4 +1461,19 @@ Podlaží se počítají jako střešní, pokud jejich okna jsou ve střeše. Te
     <string name="quest_streetName_add_language">Přidat jazyk</string>
     <string name="ok">OK</string>
     <string name="cancel">Zrušit</string>
+    <string name="quest_aerialway_bicycle_title">Přepravuje tato lanovka jízdní kola?</string>
+    <string name="quest_aerialway_bicycle_summer">Jen v létě</string>
+    <string name="quest_board_type_rules">Pravidla</string>
+    <string name="quest_firewood_provided_title">Je tu k dispozici palivové dřevo?</string>
+    <string name="quest_first_aid_kit_location">Kde se nachází tato lékárnička?</string>
+    <string name="quest_lane_markings_title">Má tato cesta značení jízdních pruhů?</string>
+    <string name="quest_level_thing_title">Na kterém podlaží se nachází tato věc?</string>
+    <string name="quest_bicycle_charging_station_capacity_title">Kolik jízdních kol tu lze současně nabíjet?</string>
+    <string name="quest_charging_station_bicycles_title">Lze tu nabíjet i jízdní kola?</string>
+    <string name="quest_charging_station_bicycles_hint">Adaptéry pro nabíjení jízdních kol se zapojují do běžné zásuvky jako v domácnosti.</string>
+    <string name="quest_tower_access_title">Kdo má přístup na tuto věž? Může být zdarma nebo placený.</string>
+    <string name="quest_charging_station_bicycles_answer_only">Je to jen pro jízdní kola</string>
+    <string name="quest_recycling_type_pet_bottles">Láhve PET</string>
+    <string name="quest_maxweight_add_sign">Přidat značku</string>
+    <string name="quest_maxweight_remove_sign">Odebrat značku</string>
 </resources>

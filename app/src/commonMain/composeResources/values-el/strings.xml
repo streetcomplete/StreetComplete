@@ -525,7 +525,6 @@
     <string name="quest_recycling_type_glass_bottles">Γυάλινα μπουκάλια και βάζα</string>
     <string name="quest_recycling_type_glass_bottles_short">Μπουκάλια και βάζα</string>
     <string name="quest_recycling_type_paper">Χαρτί</string>
-    <string name="quest_recycling_type_plastic_generic">Πλαστικό</string>
     <string name="quest_recycling_type_plastic">Οποιοδήποτε πλαστικό</string>
     <string name="quest_recycling_type_shoes">Παπούτσια</string>
     <string name="quest_recycling_type_electric_appliances">Ηλεκτρικές συσκευές</string>
@@ -693,7 +692,6 @@
     <string name="quest_oneway2_title">Είναι αυτός μονόδρομος; Προς ποια κατεύθυνση;</string>
     <string name="quest_oneway2_dir">Μονόδρομος προς αυτήν την κατεύθυνση</string>
     <string name="quest_oneway2_no_oneway">Όχι μονόδρομος</string>
-    <string name="quest_maxweight_select_sign">Επιλέξτε πινακίδα</string>
     <string name="quest_steps_incline_title">Ποια κατεύθυνση οδηγεί προς τα πάνω για αυτά τα βήματα;</string>
     <string name="quest_steps_incline_up">Με αυτόν τον τρόπο</string>
     <string name="quest_step_count_title">Πόσα βήματα είναι εδώ;</string>
@@ -778,7 +776,6 @@
     <string name="quest_postboxRoyalCypher_type_scottish_crown">Το Στέμμα της Σκωτίας</string>
     <string name="quest_buildingType_fire_station">Πυροσβεστικός Σταθμός</string>
     <string name="quest_recycling_type_beverage_cartons">Μόνο χαρτόκουτα ποτών</string>
-    <string name="quest_recycling_type_plastic_bottles_and_cartons">Μόνο πλαστικά μπουκάλια και χαρτόκουτα</string>
     <string name="team_mode">Λειτουργία ομάδας</string>
     <string name="team_mode_exit">Έξοδος από τη Λειτουργία Ομάδας</string>
     <string name="team_mode_description">Όταν χαρτογραφείτε την ίδια περιοχή μαζί σε μια ομάδα, μπορείτε να εισέλθετε σε λειτουργία ομάδας για να χωρίσετε τις αποστολές μεταξύ όλων των μελών της ομάδας.</string>
@@ -1134,7 +1131,6 @@
     <string name="quest_camp_type_tents_only">Μόνο σκηνές</string>
     <string name="quest_camp_type_backcountry">Υπαίθριο κάμπινγκ (χωρίς εγκαταστάσεις)</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">Αυτή η διάμετρος φαίνεται απίθανη, είναι συνήθως μεταξύ %1$d και %2$d.</string>
-    <string name="quest_recycling_type_pet">PET μόνο</string>
     <string name="street_parking_street_width">Πλάτος δρόμου: %1$s</string>
     <string name="overlay_street_parking">Πάρκινγκ στο δρόμο</string>
     <string name="link_ohsomehex_description">Εξερευνήστε OSM δεδομένα σε κλίμακες από τη μεγάλη εικόνα έως μεμονωμένα αντικείμενα στο χώρο και στο χρόνο</string>
@@ -1453,4 +1449,10 @@
     <string name="quest_first_aid_kit_location">Πού βρίσκεται αυτό το κουτί πρώτων βοηθειών;</string>
     <string name="quest_lane_markings_title">Έχει ο δρόμος διαγραμμίσεις λωρίδων;</string>
     <string name="quest_level_thing_title">Σε ποιό επίπεδο αριθμητικά βρίσκεται αυτό;</string>
+    <string name="quest_bicycle_charging_station_capacity_title">Πόσα ποδήλατα μπορούν να φορτιστούν εδώ ταυτόχρονα;</string>
+    <string name="quest_charging_station_bicycles_title">Μπορεί να φορτιστούν και ποδήλατα εδώ;</string>
+    <string name="quest_charging_station_bicycles_hint">Τα φις ρεύματος των ποδηλάτων μπορούν να συνδεθούν σε κανονικές οικιακές πρίζες.</string>
+    <string name="quest_tower_access_title">Ποιός έχει πρόσβαση στον πύργο; Μπορεί να είναι δωρεάν ή με πληρωμή.</string>
+    <string name="quest_charging_station_bicycles_answer_only">Είναι μόνο για ποδήλατα</string>
+    <string name="quest_recycling_type_pet_bottles">Φιάλες PET</string>
 </resources>

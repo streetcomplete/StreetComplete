@@ -525,7 +525,6 @@ Split it now?"</string>
     <string name="quest_recycling_type_glass_bottles">"Glass bottles and jars"</string>
     <string name="quest_recycling_type_glass_bottles_short">"Bottles and jars"</string>
     <string name="quest_recycling_type_paper">"Paper"</string>
-    <string name="quest_recycling_type_plastic_generic">"Plastic"</string>
     <string name="quest_recycling_type_plastic">"Any plastic"</string>
     <string name="quest_recycling_type_shoes">"Shoes"</string>
     <string name="quest_recycling_type_electric_appliances">"Electric appliances"</string>
@@ -703,7 +702,6 @@ levels"</string>
     <string name="quest_oneway2_title">"Is this a one way street? In which direction?"</string>
     <string name="quest_oneway2_dir">"One way in this direction"</string>
     <string name="quest_oneway2_no_oneway">"Not a one way"</string>
-    <string name="quest_maxweight_select_sign">"Select sign"</string>
     <string name="quest_steps_incline_title">"Which direction leads upwards for these steps?"</string>
     <string name="quest_steps_incline_up">"This way up"</string>
     <string name="quest_step_count_title">"How many steps are here?"</string>
@@ -791,7 +789,6 @@ Note all the available options: some cases are not obvious, like a one way road 
     <string name="quest_postboxRoyalCypher_type_scottish_crown">"The Crown of Scotland"</string>
     <string name="quest_buildingType_fire_station">"Fire station building"</string>
     <string name="quest_recycling_type_beverage_cartons">"Beverage cartons only"</string>
-    <string name="quest_recycling_type_plastic_bottles_and_cartons">"Plastic bottles and cartons only"</string>
     <string name="team_mode">"Enter Team Mode"</string>
     <string name="team_mode_exit">"Exit Team Mode"</string>
     <string name="team_mode_description">"When mapping the same area together in a group, you can enter team mode to split up quests between all team members. Each of you will then see different quests."</string>
@@ -1148,7 +1145,6 @@ Do the same for the other side if present."</string>
     <string name="quest_camp_type_tents_only">"Tents only"</string>
     <string name="quest_camp_type_backcountry">"Bush camping (no facilities)"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"This diameter looks implausible, it is usually between %1$d and %2$d."</string>
-    <string name="quest_recycling_type_pet">"PET/PETE (polyethylene terephthalate) only"</string>
     <string name="street_parking_street_width">"Street width: %1$s"</string>
     <string name="overlay_street_parking">"Street parking"</string>
     <string name="link_ohsomehex_description">"Explore OpenStreetMap data across scales from the big picture up to individual objects over space and time"</string>

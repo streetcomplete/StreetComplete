@@ -527,7 +527,6 @@
     <string name="quest_recycling_type_glass_bottles">"玻璃瓶罐"</string>
     <string name="quest_recycling_type_glass_bottles_short">"瓶罐"</string>
     <string name="quest_recycling_type_paper">"纸张"</string>
-    <string name="quest_recycling_type_plastic_generic">"塑料"</string>
     <string name="quest_recycling_type_plastic">"各种塑料"</string>
     <string name="quest_recycling_type_shoes">"鞋子"</string>
     <string name="quest_recycling_type_electric_appliances">"电器"</string>
@@ -701,7 +700,6 @@
     <string name="quest_oneway2_title">"这是条单行道吗？沿哪个方向？"</string>
     <string name="quest_oneway2_dir">"朝此方向的单行道"</string>
     <string name="quest_oneway2_no_oneway">"不是单行道"</string>
-    <string name="quest_maxweight_select_sign">"选择标识"</string>
     <string name="quest_steps_incline_title">"这段阶梯哪头朝上？"</string>
     <string name="quest_steps_incline_up">"这边朝上"</string>
     <string name="quest_step_count_title">"有多少台阶？"</string>
@@ -789,7 +787,6 @@
     <string name="quest_postboxRoyalCypher_type_scottish_crown">"苏格兰皇冠"</string>
     <string name="quest_buildingType_fire_station">"消防站建筑"</string>
     <string name="quest_recycling_type_beverage_cartons">"仅限饮料纸盒"</string>
-    <string name="quest_recycling_type_plastic_bottles_and_cartons">"仅限塑料瓶与盒子"</string>
     <string name="team_mode">"进入团队模式"</string>
     <string name="team_mode_exit">"退出团队模式"</string>
     <string name="team_mode_description">"当一起以小组绘制同一区域时，可以进入团队模式，将任务分配给所有团队成员。这样，每个人都会看到不同的任务。"</string>
@@ -1149,7 +1146,6 @@
     <string name="quest_camp_type_tents_only">"仅帐篷"</string>
     <string name="quest_camp_type_backcountry">"偏远地区露营（无基础设施）"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"这个直径看起来难以置信，它通常介于 %1$d 和 %2$d 之间。"</string>
-    <string name="quest_recycling_type_pet">"仅限PET塑料瓶"</string>
     <string name="street_parking_street_width">"街道宽度：%1$s"</string>
     <string name="overlay_street_parking">"路边停车"</string>
     <string name="link_ohsomehex_description">"在空间和时间上探索从大图景到单个物体的各种尺度的OSM数据"</string>

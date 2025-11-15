@@ -526,7 +526,6 @@
     <string name="quest_recycling_type_glass_bottles">Шкляныя бутэлькі і слоікі</string>
     <string name="quest_recycling_type_glass_bottles_short">Бутэлькі і слоікі</string>
     <string name="quest_recycling_type_paper">Папера</string>
-    <string name="quest_recycling_type_plastic_generic">Пластык</string>
     <string name="quest_recycling_type_plastic">Любы пластык</string>
     <string name="quest_recycling_type_shoes">Абутак</string>
     <string name="quest_recycling_type_electric_appliances">Электрапрыборы</string>
@@ -704,7 +703,6 @@
     <string name="quest_oneway2_title">Гэта вуліца з аднабаковым рухам? Калі так, то ў якім напрамку?</string>
     <string name="quest_oneway2_dir">Аднабаковы ў гэтым кірунку</string>
     <string name="quest_oneway2_no_oneway">Не аднабаковы</string>
-    <string name="quest_maxweight_select_sign">Абярыце знак</string>
     <string name="quest_steps_incline_title">Які напрамак вядзе ўверх па гэтых прыступках?</string>
     <string name="quest_steps_incline_up">Пад’ём у гэты бок</string>
     <string name="quest_step_count_title">Колькі тут прыступак?</string>
@@ -790,7 +788,6 @@
     <string name="quest_postboxRoyalCypher_type_scottish_crown">Карона Шатландыі</string>
     <string name="quest_buildingType_fire_station">Пажарная частка</string>
     <string name="quest_recycling_type_beverage_cartons">Толькі кардонныя ўпакоўкі ад напояў</string>
-    <string name="quest_recycling_type_plastic_bottles_and_cartons">Толькі пластыкавыя бутэлькі і кардон</string>
     <string name="team_mode">Камандны рэжым</string>
     <string name="team_mode_exit">Адключыць камандны рэжым</string>
     <string name="team_mode_description">Калі вы абследуеце мясцовасць групай, вы можаце ўключыць камандны рэжым, каб размеркаваць заданні паміж усімі ўдзельнікамі.
@@ -1149,7 +1146,6 @@
     <string name="quest_camp_type_tents_only">Толькi намёты</string>
     <string name="quest_camp_type_backcountry">Кемпінг у сельскай мясцовасці (без камфорту)</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">Гэты дыяметр выглядае непраўдападобным, звычайна ён знаходзіцца паміж %1$d і %2$d.</string>
-    <string name="quest_recycling_type_pet">толькi  ПЭТ</string>
     <string name="street_parking_street_width">Шырыня вуліцы: %1$s</string>
     <string name="overlay_street_parking">Вулiчная стаянка</string>
     <string name="link_ohsomehex_description">Вывучайце даныя OSM на розных маштабах: ад агульнай карціны да асобных аб’ектаў у прасторы і часе</string>

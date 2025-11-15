@@ -526,7 +526,6 @@
     <string name="quest_recycling_type_glass_bottles">Скляні пляшки і банки</string>
     <string name="quest_recycling_type_glass_bottles_short">Пляшки і банки</string>
     <string name="quest_recycling_type_paper">Папір</string>
-    <string name="quest_recycling_type_plastic_generic">Пластик</string>
     <string name="quest_recycling_type_plastic">Будь який пластик</string>
     <string name="quest_recycling_type_shoes">Взуття</string>
     <string name="quest_recycling_type_electric_appliances">Електричні прилади</string>
@@ -699,7 +698,6 @@
     <string name="quest_oneway2_title">Це вулиця з одностороннім рухом? В якому напрямку?</string>
     <string name="quest_oneway2_dir">Одностороння в цьому напрямку</string>
     <string name="quest_oneway2_no_oneway">Не одностороння</string>
-    <string name="quest_maxweight_select_sign">Виберіть знак</string>
     <string name="quest_steps_incline_title">Який напрямок веде вгору для цих сходинок?</string>
     <string name="quest_steps_incline_up">Сюди вгору</string>
     <string name="quest_step_count_title">Скільки тут сходинок?</string>
@@ -784,7 +782,6 @@
     <string name="quest_postboxRoyalCypher_type_scottish_crown">Корона Шотландії</string>
     <string name="quest_buildingType_fire_station">Пожежна станція</string>
     <string name="quest_recycling_type_beverage_cartons">Лише упаковки до напоїв</string>
-    <string name="quest_recycling_type_plastic_bottles_and_cartons">Лише пластикові пляшки і картон</string>
     <string name="team_mode">Командний режим</string>
     <string name="team_mode_exit">Вийти з командного режиму</string>
     <string name="team_mode_description">При картографуванні однієї місцевості у групі, ви можете увійти в командний режим, щоб поділити квести між усіма членами команди.</string>
@@ -1140,7 +1137,6 @@
     <string name="quest_camp_type_tents_only">Лише намети</string>
     <string name="quest_camp_type_backcountry">Кемпінг без облаштунків</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">Діаметр виглядає помилковим, зазвичай він від %1$d до %2$d.</string>
-    <string name="quest_recycling_type_pet">Лише ПЕТ</string>
     <string name="street_parking_street_width">Ширина дороги: %1$s</string>
     <string name="overlay_street_parking">Вуличне паркування</string>
     <string name="link_ohsomehex_description">Досліджуйте дані OSM у масштабах від великої картини до окремих об’єктів у просторі та часі</string>
@@ -1454,4 +1450,9 @@
     <string name="quest_first_aid_kit_location">Де знаходиться ця аптечка першої допомоги?</string>
     <string name="quest_lane_markings_title">Чи є на цій дорозі розмітка смуг?</string>
     <string name="quest_level_thing_title">На якому поверсі знаходиться ця річ?</string>
+    <string name="quest_bicycle_charging_station_capacity_title">Скільки велосипедів можна заряджати тут одночасно?</string>
+    <string name="quest_charging_station_bicycles_title">Чи можна тут також заряджати велосипеди?</string>
+    <string name="quest_charging_station_bicycles_hint">Адаптери живлення для велозарядок підключаються до звичайних розеток.</string>
+    <string name="quest_tower_access_title">Хто може відвідати цю вежу? Це може бути безкоштовно або платно.</string>
+    <string name="quest_charging_station_bicycles_answer_only">Це лише для велосипедів</string>
 </resources>
