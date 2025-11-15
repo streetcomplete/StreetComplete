@@ -1,17 +1,6 @@
 package de.westnordost.streetcomplete.quests.artwork
 
-import de.westnordost.streetcomplete.quests.artwork.ArtworkType.ARCHITECTURE
-import de.westnordost.streetcomplete.quests.artwork.ArtworkType.BUST
-import de.westnordost.streetcomplete.quests.artwork.ArtworkType.FOUNTAIN
-import de.westnordost.streetcomplete.quests.artwork.ArtworkType.GRAFFITI
-import de.westnordost.streetcomplete.quests.artwork.ArtworkType.INSTALLATION
-import de.westnordost.streetcomplete.quests.artwork.ArtworkType.MOSAIC
-import de.westnordost.streetcomplete.quests.artwork.ArtworkType.MURAL
-import de.westnordost.streetcomplete.quests.artwork.ArtworkType.PAINTING
-import de.westnordost.streetcomplete.quests.artwork.ArtworkType.RELIEF
-import de.westnordost.streetcomplete.quests.artwork.ArtworkType.SCULPTURE
-import de.westnordost.streetcomplete.quests.artwork.ArtworkType.STATUE
-import de.westnordost.streetcomplete.quests.artwork.ArtworkType.STONE
+import de.westnordost.streetcomplete.quests.artwork.ArtworkType.*
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.resources.Res
 import org.jetbrains.compose.resources.DrawableResource
