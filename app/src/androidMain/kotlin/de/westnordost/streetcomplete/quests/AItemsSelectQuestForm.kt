@@ -42,6 +42,8 @@ abstract class AItemsSelectQuestForm<I, T> : AbstractOsmQuestForm<T>() {
 
     private val prefs: Preferences by inject()
 
+    protected open var preselectedItems: Set<I> = emptySet()
+
     protected open val itemsPerRow = 4
 
     /** return true to move last picked items to the front. On by default. Only respected if the
@@ -67,7 +69,7 @@ abstract class AItemsSelectQuestForm<I, T> : AbstractOsmQuestForm<T>() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.composeViewBase.content { Surface {
-            selectedItems = remember { mutableStateOf(emptySet()) }
+            selectedItems = remember { mutableStateOf(preselectedItems) }
             Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                 CompositionLocalProvider(
                     LocalContentAlpha provides ContentAlpha.medium,
@@ -83,7 +85,9 @@ abstract class AItemsSelectQuestForm<I, T> : AbstractOsmQuestForm<T>() {
                     modifier = Modifier.fillMaxWidth()
                 ) { ItemContent(it) }
             }
-        } }
+        }
+            checkIsFormComplete()
+        }
     }
 
     open fun onSelect(item: I, selected: Boolean) {
