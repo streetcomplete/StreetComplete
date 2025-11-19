@@ -30,7 +30,6 @@ val appModule = module {
         }
         install(ContentEncoding) {
             gzip()
-            deflate()
             identity()
         }
     } }
