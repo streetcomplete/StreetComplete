@@ -29,9 +29,10 @@ class AddRoadNameForm : AAddLocalizedNameForm<RoadNameAnswer>() {
     override fun onClickMapAt(position: LatLon, clickAreaSizeInMeters: Double): Boolean {
         nameSuggestionsSource.getNames(position, clickAreaSizeInMeters, roadsWithNamesFilter)
             .firstOrNull()
-            ?.let { localizedNames.value = it }
-
-        checkIsFormComplete()
+            ?.let {
+                localizedNames.value = it
+                checkIsFormComplete()
+            }
         return true
     }
 
