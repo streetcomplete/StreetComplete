@@ -31,6 +31,7 @@ class AddRoadNameForm : AAddLocalizedNameForm<RoadNameAnswer>() {
             .firstOrNull()
             ?.let { localizedNames.value = it }
 
+        checkIsFormComplete()
         return true
     }
 
