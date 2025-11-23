@@ -24,9 +24,9 @@ class AddBicycleRepairStationServicesForm : AItemsSelectQuestForm<BicycleRepairS
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
         preselectedItems =  items.filter {
             element.tags["service:bicycle:" + it.value] == "yes"
         }.toSet()
+        super.onViewCreated(view, savedInstanceState)
     }
 }

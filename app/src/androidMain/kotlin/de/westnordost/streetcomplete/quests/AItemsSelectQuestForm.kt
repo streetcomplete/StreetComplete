@@ -42,6 +42,8 @@ abstract class AItemsSelectQuestForm<I, T> : AbstractOsmQuestForm<T>() {
 
     private val prefs: Preferences by inject()
 
+    private var isDisplayingPrevious = false
+
     protected open var preselectedItems: Set<I> = emptySet()
 
     protected open val itemsPerRow = 4
@@ -60,13 +62,19 @@ abstract class AItemsSelectQuestForm<I, T> : AbstractOsmQuestForm<T>() {
         super.onCreate(savedInstanceState)
         reorderedItems = if (items.size > itemsPerRow && moveFavoritesToFront) {
             moveFavouritesToFront(items)
-        } else items
+        } else {
+            items
+        }
     }
 
     @Composable protected abstract fun ItemContent(item: I)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        if (preselectedItems.isNotEmpty()) {
+            isDisplayingPrevious = true
+        }
 
         binding.composeViewBase.content { Surface {
             selectedItems = remember { mutableStateOf(preselectedItems) }
@@ -92,8 +100,7 @@ abstract class AItemsSelectQuestForm<I, T> : AbstractOsmQuestForm<T>() {
 
     open fun onSelect(item: I, selected: Boolean) {
         selectedItems.value =
-            if (selected) { selectedItems.value + item }
-            else { selectedItems.value - item }
+            if (selected) { selectedItems.value + item } else { selectedItems.value - item }
         checkIsFormComplete()
     }
 
@@ -107,11 +114,26 @@ abstract class AItemsSelectQuestForm<I, T> : AbstractOsmQuestForm<T>() {
 
     protected abstract fun onClickOk(selectedItems: Set<I>)
 
-    override fun isFormComplete() = selectedItems.value.isNotEmpty()
+    override fun isFormComplete() = !isDisplayingPrevious && selectedItems.value.isNotEmpty()
 
     private fun moveFavouritesToFront(originalList: List<I>): List<I> {
         val favourites = prefs.getLastPicked(ListSerializer(serializer), this::class.simpleName!!)
             .takeFavorites(n = itemsPerRow)
         return (favourites + originalList).distinct()
     }
+
+    override val buttonPanelAnswers get() =
+        if (isDisplayingPrevious) {
+            listOf(
+                AnswerItem(R.string.quest_generic_hasFeature_no) {
+                    isDisplayingPrevious = false
+                    updateButtonPanel()
+                },
+                AnswerItem(R.string.quest_generic_hasFeature_yes) {
+                    applyAnswer(preselectedItems as T)
+                }
+            )
+        } else {
+            emptyList()
+        }
 }

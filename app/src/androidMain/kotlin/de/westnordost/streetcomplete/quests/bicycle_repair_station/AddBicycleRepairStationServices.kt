@@ -34,7 +34,12 @@ class AddBicycleRepairStationServices : OsmFilterQuestType<Set<BicycleRepairStat
     override val isDeleteElementEnabled = true
     override val achievements = listOf(BICYCLIST)
 
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_bicycle_repair_station_services_title
+    override fun getTitle(tags: Map<String, String>): Int {
+        if (tags.keys.none { it.startsWith("service:bicycle:") }) {
+            return R.string.quest_bicycle_repair_station_services_title
+        }
+        return R.string.quest_still_correct
+    }
 
     override fun createForm() = AddBicycleRepairStationServicesForm()
 
