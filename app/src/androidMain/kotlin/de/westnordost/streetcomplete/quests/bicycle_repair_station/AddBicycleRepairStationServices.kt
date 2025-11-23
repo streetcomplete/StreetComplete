@@ -38,7 +38,7 @@ class AddBicycleRepairStationServices : OsmFilterQuestType<Set<BicycleRepairStat
         if (tags.keys.none { it.startsWith("service:bicycle:") }) {
             return R.string.quest_bicycle_repair_station_services_title
         }
-        return R.string.quest_still_correct
+        return R.string.quest_bicycle_repair_station_services_resurvey_title
     }
 
     override fun createForm() = AddBicycleRepairStationServicesForm()
