@@ -21,9 +21,7 @@ import de.westnordost.streetcomplete.osm.opening_hours.model.TimeRange
 import de.westnordost.streetcomplete.osm.opening_hours.model.Weekdays
 import de.westnordost.streetcomplete.osm.opening_hours.model.toLocalizedString
 import de.westnordost.streetcomplete.osm.opening_hours.parser.toOpeningHours
-import de.westnordost.streetcomplete.quests.opening_hours.MonthsPickerDialog
-import de.westnordost.streetcomplete.quests.opening_hours.TimeRangePickerDialog
-import de.westnordost.streetcomplete.quests.opening_hours.WeekdaysPickerDialog
+
 
 class OpeningHoursAdapter(private val context: Context) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -222,7 +220,7 @@ class OpeningHoursAdapter(private val context: Context) :
     }
 
     private fun openSetMonthsRangeDialog(months: Months, callback: (Months) -> Unit) {
-        MonthsPickerDialog.show(context, months, locale, callback)
+        //MonthsPickerDialog.show(context, months, locale, callback)
     }
 
     /* ------------------------------------ weekdays select --------------------------------------*/
@@ -318,14 +316,14 @@ class OpeningHoursAdapter(private val context: Context) :
     }
 
     private fun openSetWeekdaysDialog(weekdays: Weekdays?, callback: (Weekdays) -> Unit) {
-        WeekdaysPickerDialog.show(context, weekdays, locale, callback)
+        //WeekdaysPickerDialog.show(context, weekdays, locale, callback)
     }
 
     private fun openSetTimeRangeDialog(timeRange: TimeRange, callback: (TimeRange) -> Unit) {
         val startLabel = context.resources.getString(R.string.quest_openingHours_start_time)
         val endLabel = context.resources.getString(R.string.quest_openingHours_end_time)
 
-        TimeRangePickerDialog(context, startLabel, endLabel, timeRange, DateFormat.is24HourFormat(context), callback).show()
+        //TimeRangePickerDialog(context, startLabel, endLabel, timeRange, DateFormat.is24HourFormat(context), callback).show()
     }
 
     companion object {

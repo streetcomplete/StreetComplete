@@ -12,7 +12,6 @@ import de.westnordost.streetcomplete.osm.opening_hours.model.CollectionTimesRow
 import de.westnordost.streetcomplete.osm.opening_hours.model.Weekdays
 import de.westnordost.streetcomplete.osm.opening_hours.model.toLocalizedString
 import de.westnordost.streetcomplete.osm.opening_hours.parser.toOpeningHours
-import de.westnordost.streetcomplete.quests.opening_hours.WeekdaysPickerDialog
 import de.westnordost.streetcomplete.util.locale.DateTimeFormatStyle
 import de.westnordost.streetcomplete.util.locale.LocalTimeFormatter
 import de.westnordost.streetcomplete.view.dialogs.TimePickerDialog
@@ -143,7 +142,7 @@ class CollectionTimesAdapter(
 
     private fun openSetWeekdaysDialog(weekdays: Weekdays, callback: (weekdays: Weekdays) -> Unit) {
         val locale = countryInfo.userPreferredLocale
-        WeekdaysPickerDialog.show(context, weekdays, locale, callback)
+        //WeekdaysPickerDialog.show(context, weekdays, locale, callback)
     }
 
     private fun openSetTimeDialog(minutes: Int, callback: (minutes: Int) -> Unit) {
