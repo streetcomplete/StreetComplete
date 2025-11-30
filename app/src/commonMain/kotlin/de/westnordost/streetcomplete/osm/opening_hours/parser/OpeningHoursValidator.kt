@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.osm.opening_hours.parser
 
 import de.westnordost.osm_opening_hours.model.ClockTime
 import de.westnordost.osm_opening_hours.model.ExtendedClockTime
+import de.westnordost.osm_opening_hours.model.ExtendedTime
 import de.westnordost.osm_opening_hours.model.Holiday
 import de.westnordost.osm_opening_hours.model.HolidaySelector
 import de.westnordost.osm_opening_hours.model.MonthRange
@@ -15,10 +16,12 @@ import de.westnordost.osm_opening_hours.model.Selector
 import de.westnordost.osm_opening_hours.model.SingleMonth
 import de.westnordost.osm_opening_hours.model.SpecificWeekdays
 import de.westnordost.osm_opening_hours.model.StartingAtTime
+import de.westnordost.osm_opening_hours.model.Time
 import de.westnordost.osm_opening_hours.model.TimeIntervals
 import de.westnordost.osm_opening_hours.model.TimeSpan
 import de.westnordost.osm_opening_hours.model.TimesSelector
 import de.westnordost.osm_opening_hours.model.TwentyFourSeven
+import de.westnordost.osm_opening_hours.model.VariableTime
 import de.westnordost.osm_opening_hours.model.Weekday
 import de.westnordost.osm_opening_hours.model.WeekdayRange
 import de.westnordost.osm_opening_hours.model.WeekdaysSelector
@@ -92,9 +95,20 @@ internal fun HolidaySelector.isSupported(): Boolean =
 // only plain times and time spans with optional open end supported
 internal fun TimesSelector.isSupported(): Boolean = when (this) {
     is ClockTime -> true
-    is StartingAtTime -> start is ClockTime
-    is TimeSpan -> start is ClockTime && (end is ClockTime || end is ExtendedClockTime)
+    is StartingAtTime -> start.isSupported()
+    is TimeSpan -> start.isSupported() && end.isSupported()
     else -> false
+}
+
+internal fun Time.isSupported(): Boolean = when (this) {
+    is ClockTime -> true
+    is VariableTime -> timeOffset == null
+}
+
+internal fun ExtendedTime.isSupported(): Boolean = when(this) {
+    is ExtendedClockTime -> true
+    is ClockTime -> true
+    is VariableTime -> timeOffset == null
 }
 
 /** Returns true if supported by StreetComplete, i.e. can be displayed in the

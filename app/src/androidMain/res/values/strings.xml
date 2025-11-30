@@ -1290,7 +1290,6 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_openingHours_resurvey_title">Are these opening hours still correct?</string>
     <string name="quest_openingHours_start_time">opening time</string>
     <string name="quest_openingHours_end_time">closing time</string>
-    <string name="quest_openingHours_timeSelect_next">Next</string>
     <string name="quest_openingHours_add_months">Add months</string>
     <string name="quest_openingHours_add_hours">Add hours</string>
     <string name="quest_openingHours_add_weekdays">Add days of the week</string>
@@ -1302,9 +1301,21 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_openingHours_chooseWeekdaysTitle">Select days of the week</string>
     <string name="quest_openingHours_24_7_confirmation">In other words, is it open any time, every day?</string>
     <string name="quest_openingHours_add_times">Add opening hours</string>
+
     <string name="quest_openingHours_public_holidays">Public holidays</string>
     <string name="quest_openingHours_public_holidays_short">PH</string>
-    <string name="quest_openingHours_open_end">open end</string>
+
+    <string name="opening_hours_no_fixed_end">no fixed end time</string>
+    <!-- e.g. "from 12:00", end hour unknown or flexible ~= open end -->
+    <string name="opening_hours_from">from %1$s</string>
+    <!-- e.g. "16:00 to 20:00, until late" ~= open end -->
+    <string name="opening_hours_until_late">%1$s until late</string>
+    <string name="opening_hours_dawn">dawn</string>
+    <string name="opening_hours_sunrise">sunrise</string>
+    <string name="opening_hours_sunset">sunset</string>
+    <string name="opening_hours_dusk">dusk</string>
+
+
     <string name="quest_openingHours_answer_247">Open 24/7</string>
     <string name="quest_openingHours_answer_seasonal_opening_hours">Differs by month…</string>
     <string name="quest_openingHours_answer_no_regular_opening_hours">No regular opening hours…</string>
