@@ -4,24 +4,24 @@ import android.content.res.Resources
 import androidx.compose.ui.text.intl.Locale
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.util.ktx.getDisplayName
-import de.westnordost.streetcomplete.util.ktx.getShortDisplayName
-import de.westnordost.streetcomplete.util.locale.DateFormatStyle
+import de.westnordost.streetcomplete.util.locale.DateTimeFormatStyle
+import de.westnordost.streetcomplete.util.locale.DateTimeTextSymbolStyle
 import de.westnordost.streetcomplete.util.locale.LocalTimeFormatter
 import kotlinx.datetime.DayOfWeek
 import kotlinx.datetime.LocalTime
 import kotlinx.datetime.Month
 
 fun Months.Companion.getNames(locale: Locale? = null): Array<String> =
-    (1..12).map { Month(it).getDisplayName(locale) }.toTypedArray()
+    (1..12).map { Month(it).getDisplayName(DateTimeTextSymbolStyle.Full, locale) }.toTypedArray()
 
 fun Weekdays.Companion.getNames(r: Resources, locale: Locale? = null): Array<String> {
-    val weekdayNames = (1..7).map { DayOfWeek(it).getDisplayName(locale) }
+    val weekdayNames = (1..7).map { DayOfWeek(it).getDisplayName(DateTimeTextSymbolStyle.Full, locale) }
     val phName = r.getString(R.string.quest_openingHours_public_holidays)
     return (weekdayNames + phName).toTypedArray()
 }
 
 fun Weekdays.Companion.getShortNames(r: Resources, locale: Locale? = null): Array<String> {
-    val weekdayNames = (1..7).map { DayOfWeek(it).getShortDisplayName(locale) }
+    val weekdayNames = (1..7).map { DayOfWeek(it).getDisplayName(DateTimeTextSymbolStyle.Short,locale) }
     val phName = r.getString(R.string.quest_openingHours_public_holidays_short)
     return (weekdayNames + phName).toTypedArray()
 }
@@ -33,7 +33,7 @@ fun Weekdays.toLocalizedString(r: Resources, locale: Locale? = null) =
     toStringUsing(Weekdays.getShortNames(r, locale), ", ", "–")
 
 fun TimeRange.toLocalizedString(locale: Locale? = null): String {
-    val formatter = LocalTimeFormatter(locale, style = DateFormatStyle.Short)
+    val formatter = LocalTimeFormatter(locale, style = DateTimeFormatStyle.Short)
     val sb = StringBuilder()
     val startTime = LocalTime.fromSecondOfDay((start % (24 * 60)) * 60)
     sb.append(formatter.format(startTime))

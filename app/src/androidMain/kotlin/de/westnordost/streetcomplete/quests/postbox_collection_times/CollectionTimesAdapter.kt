@@ -13,7 +13,7 @@ import de.westnordost.streetcomplete.osm.opening_hours.model.Weekdays
 import de.westnordost.streetcomplete.osm.opening_hours.model.toLocalizedString
 import de.westnordost.streetcomplete.osm.opening_hours.parser.toOpeningHours
 import de.westnordost.streetcomplete.quests.opening_hours.WeekdaysPickerDialog
-import de.westnordost.streetcomplete.util.locale.DateFormatStyle
+import de.westnordost.streetcomplete.util.locale.DateTimeFormatStyle
 import de.westnordost.streetcomplete.util.locale.LocalTimeFormatter
 import de.westnordost.streetcomplete.view.dialogs.TimePickerDialog
 import kotlinx.datetime.LocalTime
@@ -35,7 +35,7 @@ class CollectionTimesAdapter(
             notifyDataSetChanged()
         }
 
-    private val timeFormatter = LocalTimeFormatter(style = DateFormatStyle.Short)
+    private val timeFormatter = LocalTimeFormatter(style = DateTimeFormatStyle.Short)
 
     fun createCollectionTimes() = collectionTimesRows.toOpeningHours()
 
