@@ -437,8 +437,6 @@ fun questTypeRegistry(
     101 to AddFerryAccessPedestrian(),
     102 to AddFerryAccessMotorVehicle(),
 
-    // aerial way: usually visible from looking at the aerial way, but not always...
-
     103 to AddProhibitedForPedestrians(), // need to understand the pedestrian situation
 
     104 to MarkCompletedHighwayConstruction(), // need to look the whole way
