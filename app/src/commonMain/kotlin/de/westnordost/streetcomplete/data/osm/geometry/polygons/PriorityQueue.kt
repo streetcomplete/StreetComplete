@@ -1,7 +1,12 @@
-package de.westnordost.streetcomplete.data.osm.geometry.polygons
-
-//Basic heap priorityQueue made to avoid java dependencies
-class PriorityQueue<T : Comparable<T>>() {
+/**
+ * A simple max-heap priority queue that stores elements implementing Comparable<T>.
+ *
+ * poll() returns and removes the largest element.
+ * add() inserts a new element in O(log n).
+ *
+ * Internally this uses a binary heap stored in a MutableList.
+ */
+class PriorityQueue<T : Comparable<T>> {
     private val items = mutableListOf<T>()
 
     val isEmpty: Boolean get() = items.isEmpty()
@@ -13,36 +18,49 @@ class PriorityQueue<T : Comparable<T>>() {
     }
 
     fun poll(): T {
-        if(items.isEmpty()) throw NoSuchElementException("empty queue")
+        if (items.isEmpty()) throw NoSuchElementException("empty queue")
         val root = items[0]
         val last = items.removeAt(items.lastIndex)
-        if(items.isNotEmpty()) {
+
+        if (items.isNotEmpty()) {
             items[0] = last
             siftDown(0)
         }
+
         return root
     }
 
-    private fun siftUp(index: Int){
+    private fun siftUp(index: Int) {
         var i = index
-        while(i > 0){
-            val parent = (i-1)/2
+        while (i > 0) {
+            val parent = (i - 1) / 2
             if (items[i] <= items[parent]) break
-            items[i] = items[parent].also { items[parent] = items[i] }
+
+            val tmp = items[i]
+            items[i] = items[parent]
+            items[parent] = tmp
+
             i = parent
         }
     }
 
     private fun siftDown(index: Int) {
         var i = index
-        while(true){
+        val size = items.size
+
+        while (true) {
             val left = 2 * i + 1
             val right = left + 1
             var largest = i
-            if (left < items.size && items[left] > items[largest]) largest = left
-            if (right < items.size && items[right] > items[largest]) largest = right
-            if(largest == i) break
-            items[i] = items[largest].also { items[largest] = items[i] }
+
+            if (left < size && items[left] > items[largest]) largest = left
+            if (right < size && items[right] > items[largest]) largest = right
+            if (largest == i) break
+
+            val tmp = items[i]
+            items[i] = items[largest]
+            items[largest] = tmp
+
             i = largest
         }
     }
