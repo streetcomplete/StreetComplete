@@ -1,7 +1,12 @@
 package de.westnordost.streetcomplete.data.osm.geometry.polygons
 
+import PriorityQueue
 import kotlin.math.min
 
+/*
+    Implementation of the polylabel algorithm inspired by mapbox's implementation in java.
+    See here : https://github.com/mapbox/polylabel
+ */
 object PolygonAlgorithms {
 
     /* Simple centroid algorithm */
@@ -99,7 +104,6 @@ object PolygonAlgorithms {
         val dist = kotlin.math.sqrt(minDistSq)
         return if (inside) dist else -dist
     }
-
 
     private fun pointToSegmentDistSq(pointToObserve: Point, pointA: Point, pointB: Point): Double {
         var x = pointA.x
