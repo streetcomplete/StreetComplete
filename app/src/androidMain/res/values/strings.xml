@@ -723,11 +723,6 @@ Before uploading your changes, the app checks with a &lt;a href="https://www.wes
     <string name="quest_address_street_street_name_label">Street name:</string>
     <string name="quest_address_street_hint2">Tap street on map to select it</string>
 
-    <string name="quest_aerialway_bicycle_title">Does this aerialway transport bicycles?</string>
-    <string name="quest_aerialway_bicycle_yes">Yes</string>
-    <string name="quest_aerialway_bicycle_summer">During summer</string>
-    <string name="quest_aerialway_bicycle_no">No</string>
-
     <string name="quest_airConditioning_title">Is this place air-conditioned?</string>
 
     <string name="quest_atm_cashin_title">Can you deposit cash at this ATM?</string>
@@ -781,8 +776,6 @@ Before uploading your changes, the app checks with a &lt;a href="https://www.wes
     <string name="quest_barrier_bicycle_installation_fixed">Fixed</string>
     <string name="quest_barrier_bicycle_installation_openable">Openable</string>
     <string name="quest_barrier_bicycle_installation_removable">Removable</string>
-
-    <string name="quest_bicycle_charging_station_capacity_title">How many bicycle can be charged here at the same time?</string>
 
     <string name="quest_bicycle_incline_title">Which direction leads upwards here?</string>
     <string name="quest_bicycle_incline_up_and_down">It’s up and down hops</string>
@@ -869,11 +862,6 @@ Before uploading your changes, the app checks with a &lt;a href="https://www.wes
     <string name="quest_bollard_type_flexible">Flexible</string>
     <string name="quest_bollard_type_fixed">Fixed (not removable)</string>
     <string name="quest_bollard_type_not_bollard">Not a bollard, but some other barrier</string>
-
-    <string name="quest_bothway_title">In what direction can you ride this ?</string>
-    <string name="quest_bothway_answer_bothway">This can be used bothway.</string>
-    <string name="quest_bothway_answer_upwards">This can only lead upwards.</string>
-    <string name="quest_bothway_answer_downwards">This can only lead downwards.</string>
 
     <string name="quest_bridge_structure_title">What’s the structure of this bridge?</string>
 
@@ -1181,9 +1169,6 @@ A level counts as a roof level when its windows are in the roof. Subsequently, r
     <string name="quest_defibrillator_location">Where is this defibrillator located?</string>
     <string name="quest_defibrillator_location_description">Please provide a concise description of its position (e.g. “in the porter’s lounge”).</string>
 
-    <string name="quest_first_aid_kit_location">Where is the first aid kit located?</string>
-    <string name="quest_first_aid_kit_location_description">Please provide a concise description of its position (e.g. “in the porter’s lounge”).</string>
-
     <string name="quest_kerb_height_title">What’s the height of this curb?</string>
     <string name="quest_kerb_height_flush">Same level as road surface</string>
     <string name="quest_kerb_height_lowered">A bit higher than road surface</string>
@@ -1271,8 +1256,6 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_motorcycleParkingCapacity_title">How many motorcycles can be parked here?</string>
 
     <string name="quest_motorcycleParkingCoveredStatus_title">Is this motorcycle parking covered (protected from rain)?</string>
-
-    <string name="quest_motorcycle_parking_fee_title">Do you have to pay to park your motorcycle here?</string>
 
     <string name="quest_noteDiscussion_title">Can you contribute anything to this note?</string>
     <string name="quest_noteDiscussion_no">No, hide</string>
@@ -1507,8 +1490,6 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_roofShape_title">What basic shape does this building’s roof have?</string>
     <string name="quest_roofShape_answer_many">It has several different shapes</string>
     <string name="default_disabled_msg_roofShape">This quest type is disabled by default because roof shapes are often not easily visible from the street. This quest type is also quite time-consuming; in most cases it is easier and more efficient to map this from aerial imagery at home.</string>
-
-    <string name="quest_scooter_charging_station_capacity_title">How many scooters can be charged here at the same time?</string>
 
     <string name="quest_seating_name_title">What kind of seating does this place have?</string>
     <string name="quest_seating_takeaway">No seating (takeout only)</string>
