@@ -30,6 +30,8 @@ class PriorityQueue<T : Comparable<T>> {
         return root
     }
 
+    fun isNotEmpty(): Boolean = items.size != 0
+
     private fun siftUp(index: Int) {
         var i = index
         while (i > 0) {

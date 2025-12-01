@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.data.osm.geometry.polygons
 
 import PriorityQueue
 import kotlin.math.min
+import kotlin.math.sqrt
 
 /*
     Implementation of the polylabel algorithm inspired by mapbox's implementation in java.
@@ -24,85 +25,84 @@ object PolygonAlgorithms {
     /* Core of the problem : visual center (within the polygon) */
     /* Set up of the variables */
     fun polylabel(polygon: Polygon, precision: Double = 1.0): Point {
-        var minX = polygon.shape.first().x
-        var maxX = polygon.shape.first().x
-        var minY = polygon.shape.first().y
-        var maxY = polygon.shape.first().y
-        for (pts in polygon.shape) {
-            if (pts.x < minX) minX = pts.x
-            if (pts.x > maxX) maxX = pts.x
-            if (pts.y < minY) minY = pts.y
-            if (pts.y > maxY) maxY = pts.y
-        }
-        var width = maxX - minX
-        var height = maxY - minY
-        val precision = (min(width, height) / 100.0).coerceAtLeast(0.5)
+        val minX = polygon.shape.minOf { it.x }
+        val maxX = polygon.shape.maxOf { it.x }
+        val minY = polygon.shape.minOf { it.y }
+        val maxY = polygon.shape.maxOf { it.y }
 
-        val cellSize = minOf(width, height)
-        val halfCellSize = cellSize / 2
+        val width = maxX - minX
+        val height = maxY - minY
+        val cellSize = (min(width, height) / 10.0)
+        val halfCell = cellSize / 2.0
+
         val queue = PriorityQueue<Cell>()
 
-        /* Set up of the initial working grid */
+        // Initialize grid, skip cells inside holes
         var x = minX
         while (x < maxX) {
             var y = minY
             while (y < maxY) {
-                val centerX = x + (halfCellSize)
-                val centerY = y + (halfCellSize)
-                val distance = pointToPolygonDist(Point(centerX, centerY), polygon)
-                queue.add(Cell(centerX, centerY, halfCellSize, distance))
+                val center = Point(x + halfCell, y + halfCell)
+                if (isPointInRing(center, polygon.shape) &&
+                    polygon.holes.none { isPointInRing(center, it) }) {
+                    val distance = pointToPolygonDist(center, polygon)
+                    queue.add(Cell(center.x, center.y, halfCell, distance))
+                }
                 y += cellSize
             }
             x += cellSize
         }
 
-        /* Heart of the beast : processing where is the visual center */
-        var best = queue.poll()!!
-        val centroid = centroid(polygon)
-        val centroidCell = Cell(centroid.x, centroid.y, 0.0, pointToPolygonDist(centroid, polygon))
-        if (centroidCell.distance > best.distance) best = centroidCell
+        var best: Cell? = null
 
-        while (!queue.isEmpty) {
+        while (queue.isNotEmpty()) {
             val cell = queue.poll()
 
-            if (cell.distance > best.distance) {
-                best = cell
-            }
+            if (best == null || cell.distance > best.distance) best = cell
 
-            if (cell.max - best.distance <= precision) continue
+            if (cell.max - (best?.distance ?: 0.0) <= precision) continue
 
-            val half = cell.half / 2
+            val h = cell.half / 2.0
             val children = listOf(
-                Cell(cell.centerX - half, cell.centerY - half, half, pointToPolygonDist(Point(cell.centerX - half, cell.centerY - half), polygon)),
-                Cell(cell.centerX + half, cell.centerY - half, half, pointToPolygonDist(Point(cell.centerX + half, cell.centerY - half), polygon)),
-                Cell(cell.centerX - half, cell.centerY + half, half, pointToPolygonDist(Point(cell.centerX - half, cell.centerY + half), polygon)),
-                Cell(cell.centerX + half, cell.centerY + half, half, pointToPolygonDist(Point(cell.centerX + half, cell.centerY + half), polygon))
+                Point(cell.centerX - h, cell.centerY - h),
+                Point(cell.centerX + h, cell.centerY - h),
+                Point(cell.centerX - h, cell.centerY + h),
+                Point(cell.centerX + h, cell.centerY + h)
             )
+
             for (c in children) {
-                queue.add(c)
+                if (isPointInRing(c, polygon.shape) &&
+                    polygon.holes.none { isPointInRing(c, it) }) {
+                    queue.add(Cell(c.x, c.y, h, pointToPolygonDist(c, polygon)))
+                }
             }
         }
 
-        return Point(best.centerX, best.centerY)
+        return Point(best!!.centerX, best.centerY)
     }
 
-    fun pointToPolygonDist(pointToObserve: Point, polygon: Polygon): Double {
-        // Distance and inside state for the outer ring
-        var inside = isPointInRing(pointToObserve, polygon.shape)
-        var minDistSq = ringDistanceSq(pointToObserve, polygon.shape)
+    fun pointToPolygonDist(point: Point, polygon: Polygon): Double {
+        // Is the point inside the outer shape?
+        val insideOuter = isPointInRing(point, polygon.shape)
 
-        // Check holes (inner rings)
+        // Distance to outer shape
+        var minDistSq = ringDistanceSq(point, polygon.shape)
+
+        // Distance to holes
         for (hole in polygon.holes) {
-            // If point is inside a hole, it's considered outside overall
-            if (isPointInRing(pointToObserve, hole)) inside = false
+            val insideHole = isPointInRing(point, hole)
+            val distSqHole = ringDistanceSq(point, hole)
 
-            // Still check the distance — holes can affect nearest boundary
-            val distSq = ringDistanceSq(pointToObserve, hole)
-            if (distSq < minDistSq) minDistSq = distSq
+            if (insideHole) {
+                // Inside a hole → consider outside polygon
+                return -sqrt(distSqHole)
+            }
+
+            // Outside hole, may be closer than outer
+            minDistSq = minOf(minDistSq, distSqHole)
         }
 
-        val dist = kotlin.math.sqrt(minDistSq)
-        return if (inside) dist else -dist
+        return if (insideOuter) sqrt(minDistSq) else -sqrt(minDistSq)
     }
 
     private fun pointToSegmentDistSq(pointToObserve: Point, pointA: Point, pointB: Point): Double {

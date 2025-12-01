@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.data.osm.geometry.polygons
 
 import kotlin.math.sqrt
 
-class Cell(
+data class Cell(
     val centerX: Double,
     val centerY: Double,
     val half: Double, // half of the cell size
@@ -13,7 +13,8 @@ class Cell(
     val max: Double = distance + half * SQRT2
 
     /* Looking for the most promising cell */
-    override fun compareTo(other: Cell): Int = other.max.compareTo(this.max)
+    override fun compareTo(other: Cell): Int =
+        this.max.compareTo(other.max)
 
     companion object {
         private val SQRT2 = sqrt(2.0)
