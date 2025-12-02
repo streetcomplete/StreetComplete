@@ -4,6 +4,16 @@ import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.LayoutDirection.Ltr
 import androidx.compose.ui.unit.LayoutDirection.Rtl
+import de.westnordost.osm_opening_hours.model.Holiday
+import de.westnordost.osm_opening_hours.model.Month
+import de.westnordost.osm_opening_hours.model.Weekday
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.quest_openingHours_public_holidays
+import de.westnordost.streetcomplete.resources.quest_openingHours_public_holidays_short
+import de.westnordost.streetcomplete.util.ktx.getDisplayName
+import de.westnordost.streetcomplete.util.locale.DateTimeTextSymbolStyle
+import kotlinx.datetime.DayOfWeek
+import org.jetbrains.compose.resources.StringResource
 
 fun List<CharSequence>.joinToLocalizedString(
     locale: Locale? = null,
@@ -56,3 +66,23 @@ private fun rangeSeparator(locale: Locale?): Char =
             else -> '–' // en-dash
         }
     }
+
+fun Month.getDisplayName(
+    style: DateTimeTextSymbolStyle = DateTimeTextSymbolStyle.Full,
+    locale: Locale? = null
+): String = kotlinx.datetime.Month(ordinal + 1).getDisplayName(style, locale)
+
+fun Weekday.getDisplayName(
+    style: DateTimeTextSymbolStyle = DateTimeTextSymbolStyle.Full,
+    locale: Locale? = null
+): String = DayOfWeek(ordinal + 1).getDisplayName(style, locale)
+
+fun Holiday.getDisplayNameResource(
+    style: DateTimeTextSymbolStyle = DateTimeTextSymbolStyle.Full
+): StringResource = when (this) {
+    Holiday.PublicHoliday -> when (style) {
+        DateTimeTextSymbolStyle.Full -> Res.string.quest_openingHours_public_holidays
+        else ->                              Res.string.quest_openingHours_public_holidays_short
+    }
+    Holiday.SchoolHoliday -> throw UnsupportedOperationException()
+}

@@ -102,13 +102,13 @@ internal fun TimesSelector.isSupported(): Boolean = when (this) {
 
 internal fun Time.isSupported(): Boolean = when (this) {
     is ClockTime -> true
-    is VariableTime -> timeOffset == null
+    is VariableTime -> false
 }
 
 internal fun ExtendedTime.isSupported(): Boolean = when(this) {
     is ExtendedClockTime -> true
     is ClockTime -> true
-    is VariableTime -> timeOffset == null
+    is VariableTime -> false
 }
 
 /** Returns true if supported by StreetComplete, i.e. can be displayed in the

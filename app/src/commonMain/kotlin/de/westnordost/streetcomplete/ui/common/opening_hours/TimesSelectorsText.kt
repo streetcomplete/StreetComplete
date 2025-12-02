@@ -6,7 +6,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.text.intl.Locale
 import de.westnordost.osm_opening_hours.model.ClockTime
-import de.westnordost.osm_opening_hours.model.EventTime
 import de.westnordost.osm_opening_hours.model.ExtendedClockTime
 import de.westnordost.osm_opening_hours.model.ExtendedTime
 import de.westnordost.osm_opening_hours.model.StartingAtTime
@@ -15,13 +14,11 @@ import de.westnordost.osm_opening_hours.model.TimeIntervals
 import de.westnordost.osm_opening_hours.model.TimePointsSelector
 import de.westnordost.osm_opening_hours.model.TimeSpan
 import de.westnordost.osm_opening_hours.model.TimeSpansSelector
-import de.westnordost.osm_opening_hours.model.VariableTime
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.util.locale.DateTimeFormatStyle
 import de.westnordost.streetcomplete.util.locale.LocalTimeFormatter
 import kotlinx.datetime.LocalTime
-import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.stringResource
 
 /** A text that shows a list of localized time points. E.g. 08:00, sunrise */
@@ -87,7 +84,7 @@ fun TimeSpansSelectorsText(
 private fun Time.toLocalizedString(timeFormatter: LocalTimeFormatter): String =
     when (this) {
         is ClockTime -> timeFormatter.format(toLocalTime())
-        is VariableTime -> toLocalizedString()
+        else -> throw UnsupportedOperationException()
     }
 
 @Composable
@@ -95,21 +92,8 @@ private fun ExtendedTime.toLocalizedString(timeFormatter: LocalTimeFormatter): S
     when (this) {
         is ClockTime -> timeFormatter.format(toLocalTime())
         is ExtendedClockTime -> timeFormatter.format(toLocalTime())
-        is VariableTime -> toLocalizedString()
+        else -> throw UnsupportedOperationException()
     }
-
-@Composable
-private fun VariableTime.toLocalizedString(): String {
-    if (timeOffset != null) throw UnsupportedOperationException()
-    return stringResource(dailyEvent.getDisplayNameResource())
-}
-
-private fun EventTime.getDisplayNameResource(): StringResource = when (this) {
-    EventTime.Dawn -> Res.string.opening_hours_dawn
-    EventTime.Sunrise -> Res.string.opening_hours_sunrise
-    EventTime.Sunset -> Res.string.opening_hours_sunset
-    EventTime.Dusk -> Res.string.opening_hours_dusk
-}
 
 private fun ClockTime.toLocalTime() = LocalTime(hour, minutes)
 

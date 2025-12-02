@@ -1310,10 +1310,6 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="opening_hours_from">from %1$s</string>
     <!-- e.g. "16:00 to 20:00, until late" ~= open end -->
     <string name="opening_hours_until_late">%1$s until late</string>
-    <string name="opening_hours_dawn">dawn</string>
-    <string name="opening_hours_sunrise">sunrise</string>
-    <string name="opening_hours_sunset">sunset</string>
-    <string name="opening_hours_dusk">dusk</string>
 
 
     <string name="quest_openingHours_answer_247">Open 24/7</string>

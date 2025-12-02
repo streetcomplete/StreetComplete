@@ -2,9 +2,8 @@ package de.westnordost.streetcomplete.osm.opening_hours.model
 
 import kotlinx.serialization.Serializable
 
-/** An integer range that defines a section in a circle. The range that is defined is actually
- * closed-open: [start,end+1). i.e Jun-Jul (= start:6 end:7) shall be both June and July. If start
- * is bigger than end, it means that the section crosses the upper boundary. Think degrees.
+/** An integer range that defines a section in a circle. If start is bigger than end, it means that
+ *  the section crosses the upper boundary. Think degrees.
  */
 @Serializable
 data class CircularSection(val start: Int, val end: Int) : Comparable<CircularSection> {
