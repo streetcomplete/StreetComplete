@@ -19,9 +19,9 @@ import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import de.westnordost.osm_opening_hours.model.Month
-import de.westnordost.osm_opening_hours.model.MonthRange
 import de.westnordost.osm_opening_hours.model.MonthsOrDateSelector
-import de.westnordost.osm_opening_hours.model.SingleMonth
+import de.westnordost.streetcomplete.osm.opening_hours.getMonths
+import de.westnordost.streetcomplete.osm.opening_hours.toMonthsSelectors
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.cancel
 import de.westnordost.streetcomplete.resources.ok
@@ -41,7 +41,7 @@ fun MonthsSelectDialog(
     val locale = Locale.current
     val scrollState = rememberScrollState()
     val monthsSelection = remember(selectedMonths) {
-        SnapshotStateSet<Month>().also { it.addAll(selectedMonths.getSelectedMonths()) }
+        SnapshotStateSet<Month>().also { it.addAll(selectedMonths.getMonths()) }
     }
 
     fun toggleMonth(checked: Boolean, month: Month) {
@@ -92,16 +92,3 @@ fun MonthsSelectDialog(
         )
     }
 }
-
-private fun Set<Month>.toMonthsSelectors(): List<MonthsOrDateSelector> =
-    toOrdinalRanges(Month.entries).flatMap {
-        val start = it.start
-        val end = it.endInclusive
-        if (start == end) {
-            listOf(SingleMonth(Month.entries[start]))
-        } else if (start + 1 == end) {
-            listOf(SingleMonth(Month.entries[start]), SingleMonth(Month.entries[end]))
-        } else {
-            listOf(MonthRange(Month.entries[start], Month.entries[end]))
-        }
-    }

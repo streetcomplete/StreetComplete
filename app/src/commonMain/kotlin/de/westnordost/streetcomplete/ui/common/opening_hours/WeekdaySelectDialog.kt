@@ -25,10 +25,10 @@ import androidx.compose.ui.window.Dialog
 import de.westnordost.osm_opening_hours.model.Holiday
 import de.westnordost.osm_opening_hours.model.HolidaySelector
 import de.westnordost.osm_opening_hours.model.HolidayWithOffset
-import de.westnordost.osm_opening_hours.model.SpecificWeekdays
 import de.westnordost.osm_opening_hours.model.Weekday
-import de.westnordost.osm_opening_hours.model.WeekdayRange
 import de.westnordost.osm_opening_hours.model.WeekdaysSelector
+import de.westnordost.streetcomplete.osm.opening_hours.getWeekdays
+import de.westnordost.streetcomplete.osm.opening_hours.toWeekdaysSelectors
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.cancel
 import de.westnordost.streetcomplete.resources.ok
@@ -49,7 +49,7 @@ fun WeekdaySelectDialog(
     val locale = Locale.current
     val scrollState = rememberScrollState()
     val weekdaysSelection = remember(selectedWeekdays) {
-        SnapshotStateSet<Weekday>().also { it.addAll(selectedWeekdays.getSelectedWeekdays()) }
+        SnapshotStateSet<Weekday>().also { it.addAll(selectedWeekdays.getWeekdays()) }
     }
     var isPublicHolidaySelected by remember(selectedHolidays) {
         mutableStateOf(selectedHolidays.isPublicHolidaySelected())
@@ -130,16 +130,3 @@ fun List<HolidaySelector>.isPublicHolidaySelected(): Boolean {
     }
     return false
 }
-
-private fun Set<Weekday>.toWeekdaysSelectors(): List<WeekdaysSelector> =
-    toOrdinalRanges(Weekday.entries).flatMap {
-        val start = it.start
-        val end = it.endInclusive
-        if (start == end) {
-            listOf(Weekday.entries[start])
-        } else if (start + 1 == end) {
-            listOf(Weekday.entries[start], Weekday.entries[end])
-        } else {
-            listOf(WeekdayRange(Weekday.entries[start], Weekday.entries[end]))
-        }
-    }
