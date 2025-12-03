@@ -9,7 +9,7 @@ import org.jetbrains.compose.resources.stringResource
 
 class AddBikeRentalTypeForm : AItemSelectQuestForm<BikeRentalTypeAnswer, BikeRentalTypeAnswer>() {
 
-    override val items = BikeRentalType.entries + BikeRentalTypeAnswer.BikeShopWithRental
+    override val items = BikeRentalTypeAnswer.entries
     override val itemsPerRow = 2
     override val moveFavoritesToFront = false
     override val serializer = serializer<BikeRentalTypeAnswer>()

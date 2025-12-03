@@ -62,7 +62,10 @@ fun Counter(
 
     val digits = count.toString().toCharArray().reversed()
 
-    CompositionLocalProvider(LocalLayoutDirection provides LocalLayoutDirection.current.reversed()) {
+    // numbers are always least-significant-digits-from-right, independent of locale. Or in other
+    // words, always from left to right. (We build the row from right-to-left, though, i.e. of
+    // the number 123, first the three, then 2, then 1 - for animation)
+    CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Rtl) {
         Row(modifier = modifier) {
             digits.forEachIndexed { index, digit ->
                 AnimatedContent(
@@ -106,11 +109,6 @@ fun Counter(
             }
         }
     }
-}
-
-private fun LayoutDirection.reversed() = when (this) {
-    LayoutDirection.Ltr -> LayoutDirection.Rtl
-    LayoutDirection.Rtl -> LayoutDirection.Ltr
 }
 
 @Preview
