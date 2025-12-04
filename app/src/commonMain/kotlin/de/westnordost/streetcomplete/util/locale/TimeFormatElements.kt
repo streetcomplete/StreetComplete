@@ -10,7 +10,7 @@ data class TimeFormatElements(
     /** most locales use ":" */
     val hourSeparator: String = ":",
     /** Zero character (for padding) */
-    val zero: String = "0",
+    val zero: Char = '0',
     /** Text before time */
     val before: String = "",
     /** Text after time */
@@ -31,14 +31,14 @@ data class TimeFormatElements(
             var afterPm = ""
             var is24HourClock = false
             var hourSeparator = ":"
-            var zero = "0"
+            var zero = '0'
             var clock12Elements: Clock12Elements? = null
 
             regex.matchEntire(early)?.let { matchResult ->
                 val values = matchResult.groupValues
                 beforeAm = values[1]
                 hourSeparator = values[3]
-                zero = values[4]
+                zero = values[4].firstOrNull() ?: '0'
                 afterAm = values[5]
             }
             regex.matchEntire(late)?.let { matchResult ->

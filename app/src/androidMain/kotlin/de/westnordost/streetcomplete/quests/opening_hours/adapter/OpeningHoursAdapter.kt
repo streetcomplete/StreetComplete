@@ -320,8 +320,8 @@ class OpeningHoursAdapter(private val context: Context) :
     }
 
     private fun openSetTimeRangeDialog(timeRange: TimeRange, callback: (TimeRange) -> Unit) {
-        val startLabel = context.resources.getString(R.string.quest_openingHours_start_time)
-        val endLabel = context.resources.getString(R.string.quest_openingHours_end_time)
+        //val startLabel = context.resources.getString(R.string.quest_openingHours_start_time)
+        //val endLabel = context.resources.getString(R.string.quest_openingHours_end_time)
 
         //TimeRangePickerDialog(context, startLabel, endLabel, timeRange, DateFormat.is24HourFormat(context), callback).show()
     }
