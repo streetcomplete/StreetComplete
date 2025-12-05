@@ -1,87 +1,125 @@
 package de.westnordost.streetcomplete.ui.common
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.derivedStateOf
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.util.locale.TimeFormatElements
+import org.jetbrains.compose.ui.tooling.preview.Preview
+
+@Composable
+fun rememberTimePickerState(
+    initialHour: Int = 0,
+    initialMinute: Int = 0,
+    is12Hour: Boolean = false,
+) = remember {
+    TimePickerState(initialHour, initialMinute, is12Hour)
+}
+
+class TimePickerState(
+    initialHour: Int = 0,
+    initialMinute: Int = 0,
+    val is12Hour: Boolean = false,
+) {
+    internal val hoursPickerState: WheelPickerState
+    internal val minutesPickerState: WheelPickerState
+    internal val amPmPickerState: WheelPickerState
+
+    val selectableHours: List<Int>
+    val selectableMinutes: List<Int>
+
+    val selectedHours: Int by derivedStateOf {
+        var selectedHours = selectableHours[hoursPickerState.selectedItemIndex]
+        if (is12Hour) {
+            if (selectedHours == 12) selectedHours = 0
+            if (amPmPickerState.selectedItemIndex == 1) selectedHours = selectedHours + 12
+        }
+        selectedHours
+    }
+
+    val selectedMinutes: Int by derivedStateOf {
+        selectableMinutes[minutesPickerState.selectedItemIndex]
+    }
+
+    init {
+        selectableHours = (if (is12Hour) (1..12) else (0..24)).toList()
+        selectableMinutes = ((0..45 step 15) + (0..59)).toList()
+
+        var displayHours = initialHour
+        if (is12Hour) {
+            displayHours = initialHour % 12
+            if (displayHours == 0) displayHours = 12
+        }
+        val selectedHoursIndex = selectableHours.indexOf(displayHours)
+        val selectedMinutesIndex = selectableMinutes.indexOf(initialMinute)
+        val selectedAmPmIndex = if (initialHour <= 12) 0 else 1
+
+        hoursPickerState = WheelPickerState(selectedHoursIndex)
+        minutesPickerState = WheelPickerState(selectedMinutesIndex)
+        amPmPickerState = WheelPickerState(selectedAmPmIndex)
+    }
+}
+
 
 @Composable
 fun TimePicker(
+    state: TimePickerState,
+    timeFormatElements: TimeFormatElements,
     modifier: Modifier = Modifier,
-    locale: Locale? = null,
-    selectedHours: Int = 0,
-    selectedMinutes: Int = 0,
 ) {
-    val elements = remember(locale) { TimeFormatElements.of(locale) }
-    val isClock12 = elements.clock12 != null
-
-    val selectableHours = remember(isClock12) {
-        if (elements.clock12 != null) (1..12).toList()
-        else (0..24).toList()
-    }
-    val selectableMinutes = remember { (0..59).toList() }
-
-    val selectedHoursIndex = remember(isClock12, selectedHours) {
-        var displayHours = selectedHours
-        if (isClock12) {
-            displayHours = selectedHours % 12
-            if (displayHours == 0) displayHours = 12
-        }
-        selectableHours.indexOf(displayHours)
-    }
-    val selectedAmPmIndex = remember(isClock12, selectedHours) {
-        if (selectedHours <= 12) 0 else 1
-    }
-
-    val hoursState = rememberWheelPickerState(selectedHoursIndex)
-    val minutesState = rememberWheelPickerState(selectedMinutes)
-    val amPmState = rememberWheelPickerState(selectedAmPmIndex)
-
     Row(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(4.dp),
         modifier = modifier,
     ) {
-        if (elements.before.isNotEmpty()) {
-            Text(elements.before)
+        if (timeFormatElements.before.isNotEmpty()) {
+            Text(timeFormatElements.before)
         }
-        if (elements.clock12 != null && elements.clock12.isInFront) {
+        if (timeFormatElements.clock12 != null && timeFormatElements.clock12.isInFront) {
             WheelPicker(
-                items = listOf(elements.clock12.am, elements.clock12.pm),
-                state = amPmState,
-                key = { it },
+                items = listOf(timeFormatElements.clock12.am, timeFormatElements.clock12.pm),
+                state = state.amPmPickerState,
                 content = { Text(it) }
             )
         }
         WheelPicker(
-            items = selectableHours,
-            state = hoursState,
-            key = { it },
-            content = { Text(it.toString().padStart(2, elements.zero)) }
+            items = state.selectableHours,
+            state = state.hoursPickerState,
+            content = { Text(it.toString().padStart(2, timeFormatElements.zero)) }
         )
-        Text(elements.hourSeparator)
+        Text(timeFormatElements.hourSeparator)
         WheelPicker(
-            items = selectableMinutes,
-            state = minutesState,
-            key = { it },
-            content = { Text(it.toString().padStart(2, elements.zero)) }
+            items = state.selectableMinutes,
+            state = state.minutesPickerState,
+            content = { Text(it.toString().padStart(2, timeFormatElements.zero)) }
         )
-        if (elements.clock12 != null && !elements.clock12.isInFront) {
+        if (timeFormatElements.clock12 != null && !timeFormatElements.clock12.isInFront) {
             WheelPicker(
-                items = listOf(elements.clock12.am, elements.clock12.pm),
-                state = amPmState,
-                key = { it },
+                items = listOf(timeFormatElements.clock12.am, timeFormatElements.clock12.pm),
+                state = state.amPmPickerState,
                 content = { Text(it) }
             )
         }
-        if (elements.after.isNotEmpty()) {
-            Text(elements.after)
+        if (timeFormatElements.after.isNotEmpty()) {
+            Text(timeFormatElements.after)
         }
+    }
+}
+
+@Composable @Preview
+fun TimePickerPreview() {
+    val elements = TimeFormatElements.of(Locale("de"))
+    val state = rememberTimePickerState(12, 30, elements.clock12 != null)
+    Column {
+        TimePicker(state, elements)
+        Text(state.selectedHours.toString() + " " + state.selectedMinutes.toString())
     }
 }
