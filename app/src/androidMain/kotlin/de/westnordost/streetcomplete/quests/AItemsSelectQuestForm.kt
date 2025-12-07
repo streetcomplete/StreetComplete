@@ -42,6 +42,10 @@ abstract class AItemsSelectQuestForm<I, T> : AbstractOsmQuestForm<T>() {
 
     private val prefs: Preferences by inject()
 
+    private var isDisplayingPrevious = false
+
+    protected open var preselectedItems: Set<I> = emptySet()
+
     protected open val itemsPerRow = 4
 
     /** return true to move last picked items to the front. On by default. Only respected if the
@@ -58,7 +62,9 @@ abstract class AItemsSelectQuestForm<I, T> : AbstractOsmQuestForm<T>() {
         super.onCreate(savedInstanceState)
         reorderedItems = if (items.size > itemsPerRow && moveFavoritesToFront) {
             moveFavouritesToFront(items)
-        } else items
+        } else {
+            items
+        }
     }
 
     @Composable protected abstract fun ItemContent(item: I)
@@ -66,8 +72,12 @@ abstract class AItemsSelectQuestForm<I, T> : AbstractOsmQuestForm<T>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        if (preselectedItems.isNotEmpty()) {
+            isDisplayingPrevious = true
+        }
+
         binding.composeViewBase.content { Surface {
-            selectedItems = remember { mutableStateOf(emptySet()) }
+            selectedItems = remember { mutableStateOf(preselectedItems) }
             Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                 CompositionLocalProvider(
                     LocalContentAlpha provides ContentAlpha.medium,
@@ -83,13 +93,14 @@ abstract class AItemsSelectQuestForm<I, T> : AbstractOsmQuestForm<T>() {
                     modifier = Modifier.fillMaxWidth()
                 ) { ItemContent(it) }
             }
-        } }
+        }
+            checkIsFormComplete()
+        }
     }
 
     open fun onSelect(item: I, selected: Boolean) {
         selectedItems.value =
-            if (selected) { selectedItems.value + item }
-            else { selectedItems.value - item }
+            if (selected) { selectedItems.value + item } else { selectedItems.value - item }
         checkIsFormComplete()
     }
 
@@ -103,11 +114,26 @@ abstract class AItemsSelectQuestForm<I, T> : AbstractOsmQuestForm<T>() {
 
     protected abstract fun onClickOk(selectedItems: Set<I>)
 
-    override fun isFormComplete() = selectedItems.value.isNotEmpty()
+    override fun isFormComplete() = !isDisplayingPrevious && selectedItems.value.isNotEmpty()
 
     private fun moveFavouritesToFront(originalList: List<I>): List<I> {
         val favourites = prefs.getLastPicked(ListSerializer(serializer), this::class.simpleName!!)
             .takeFavorites(n = itemsPerRow)
         return (favourites + originalList).distinct()
     }
+
+    override val buttonPanelAnswers get() =
+        if (isDisplayingPrevious) {
+            listOf(
+                AnswerItem(R.string.quest_generic_hasFeature_no) {
+                    isDisplayingPrevious = false
+                    updateButtonPanel()
+                },
+                AnswerItem(R.string.quest_generic_hasFeature_yes) {
+                    applyAnswer(preselectedItems as T)
+                }
+            )
+        } else {
+            emptyList()
+        }
 }
