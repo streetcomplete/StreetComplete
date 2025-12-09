@@ -1,6 +1,10 @@
 package de.westnordost.streetcomplete.ui.common.opening_hours
 
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.Divider
 import androidx.compose.material.Text
 import androidx.compose.material.TextButton
 import androidx.compose.runtime.Composable
@@ -8,6 +12,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.snapshots.SnapshotStateSet
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.intl.Locale
+import androidx.compose.ui.unit.dp
 import de.westnordost.osm_opening_hours.model.Holiday
 import de.westnordost.osm_opening_hours.model.HolidaySelector
 import de.westnordost.osm_opening_hours.model.Weekday
@@ -21,12 +26,12 @@ import de.westnordost.streetcomplete.resources.ok
 import de.westnordost.streetcomplete.resources.quest_openingHours_chooseWeekdaysTitle
 import de.westnordost.streetcomplete.ui.common.CheckboxList
 import de.westnordost.streetcomplete.ui.common.dialogs.ScrollableAlertDialog
+import de.westnordost.streetcomplete.ui.ktx.fadingVerticalScrollEdges
 import org.jetbrains.compose.resources.stringResource
-import kotlin.jvm.JvmInline
 
 /** Dialog in which to select a number of weekdays */
 @Composable
-fun WeekdaySelectDialog(
+fun WeekdayAndHolidaySelectDialog(
     onDismissRequest: () -> Unit,
     initialWeekdays: List<WeekdaysSelector>,
     initialHolidays: List<HolidaySelector>,
@@ -35,14 +40,13 @@ fun WeekdaySelectDialog(
 ) {
     val locale = Locale.current
     val scrollState = rememberScrollState()
-    val items =
-        Weekday.entries.map { WeekdayOrHoliday.Wd(it) } +
-        WeekdayOrHoliday.Hd(Holiday.PublicHoliday)
-    val selection = remember(initialWeekdays, initialHolidays) {
-        SnapshotStateSet<WeekdayOrHoliday>().also { set ->
-            set.addAll(initialWeekdays.getWeekdays().map { WeekdayOrHoliday.Wd(it) })
-            set.addAll(initialHolidays.getHolidays().map { WeekdayOrHoliday.Hd(it) })
-        }
+    val weekdayItems = Weekday.entries
+    val weekdaySelection = remember(initialWeekdays) {
+        SnapshotStateSet<Weekday>().also { it.addAll(initialWeekdays.getWeekdays()) }
+    }
+    val holidayItems = listOf(Holiday.PublicHoliday)
+    val holidaySelection = remember(initialHolidays) {
+        SnapshotStateSet<Holiday>().also { it.addAll(initialHolidays.getHolidays()) }
     }
 
     ScrollableAlertDialog(
@@ -50,49 +54,46 @@ fun WeekdaySelectDialog(
         modifier = modifier,
         title = { Text(stringResource(Res.string.quest_openingHours_chooseWeekdaysTitle)) },
         content = {
-            CheckboxList(
-                options = items,
-                onToggle = { w, checked ->
-                    if (checked) selection.add(w)
-                    else selection.remove(w)
-                },
-                selectedOptions = selection,
-                itemContent = { w ->
-                    val text = when (w) {
-                        is WeekdayOrHoliday.Hd ->
-                            stringResource(w.value.getDisplayNameResource())
-                        is WeekdayOrHoliday.Wd ->
-                            w.value.getDisplayName(locale = locale)
-                    }
-                    Text(text)
-                }
-            )
+            Column(
+                Modifier
+                    .fadingVerticalScrollEdges(scrollState, 32.dp)
+                    .padding(horizontal = 24.dp)
+                    .verticalScroll(scrollState)
+            ) {
+                CheckboxList(
+                    options = weekdayItems,
+                    onToggle = { weekday, checked ->
+                        if (checked) weekdaySelection.add(weekday)
+                        else weekdaySelection.remove(weekday)
+                    },
+                    selectedOptions = weekdaySelection,
+                    itemContent = { Text(it.getDisplayName(locale = locale)) }
+                )
+                Divider()
+                CheckboxList(
+                    options = holidayItems,
+                    onToggle = { holiday, checked ->
+                        if (checked) holidaySelection.add(holiday)
+                        else holidaySelection.remove(holiday)
+                    },
+                    selectedOptions = holidaySelection,
+                    itemContent = { Text(stringResource(it.getDisplayNameResource())) }
+                )
+            }
         },
         buttons = {
             TextButton(onClick = onDismissRequest) {
                 Text(stringResource(Res.string.cancel))
             }
             TextButton(onClick = {
-                val selectedWeekdays = selection
-                    .filterIsInstance<WeekdayOrHoliday.Wd>()
-                    .mapTo(HashSet()) { it.value }
-                val selectedHolidays = selection
-                    .filterIsInstance<WeekdayOrHoliday.Hd>()
-                    .map { it.value }
-
                 onDismissRequest()
                 onSelected(
-                    selectedWeekdays.toWeekdaysSelectors(),
-                    selectedHolidays
+                    weekdaySelection.toWeekdaysSelectors(),
+                    holidaySelection.toList()
                 )
             }) {
                 Text(stringResource(Res.string.ok))
             }
         }
     )
-}
-
-private sealed interface WeekdayOrHoliday {
-    @JvmInline value class Wd(val value: Weekday): WeekdayOrHoliday
-    @JvmInline value class Hd(val value: Holiday): WeekdayOrHoliday
 }
