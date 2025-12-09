@@ -1,5 +1,8 @@
 package de.westnordost.streetcomplete.osm.opening_hours
 
+import de.westnordost.osm_opening_hours.model.Holiday
+import de.westnordost.osm_opening_hours.model.HolidaySelector
+import de.westnordost.osm_opening_hours.model.HolidayWithOffset
 import de.westnordost.osm_opening_hours.model.Month
 import de.westnordost.osm_opening_hours.model.MonthRange
 import de.westnordost.osm_opening_hours.model.MonthsOrDateSelector
@@ -8,6 +11,17 @@ import de.westnordost.osm_opening_hours.model.SpecificWeekdays
 import de.westnordost.osm_opening_hours.model.Weekday
 import de.westnordost.osm_opening_hours.model.WeekdayRange
 import de.westnordost.osm_opening_hours.model.WeekdaysSelector
+
+fun Iterable<HolidaySelector>.getHolidays(): List<Holiday> {
+    val holidays = ArrayList<Holiday>()
+    for (selector in this) {
+        when (selector) {
+            is Holiday -> holidays.add(selector)
+            is HolidayWithOffset -> throw UnsupportedOperationException()
+        }
+    }
+    return holidays
+}
 
 fun Iterable<WeekdaysSelector>.getWeekdays(): Set<Weekday> {
     val weekdays = HashSet<Weekday>()
@@ -24,10 +38,10 @@ fun Iterable<WeekdaysSelector>.getWeekdays(): Set<Weekday> {
 private fun WeekdayRange.toWeekdays(): List<Weekday> {
     val start = start.ordinal
     val end = end.ordinal
-    val x =
+    val range =
         if (end >= start) start .. end
-        else (end ..< Weekday.entries.size) + (0 .. start)
-    return x.map { Weekday.entries[it] }
+        else (start ..< Weekday.entries.size) + (0 .. end)
+    return range.map { Weekday.entries[it] }
 }
 
 fun Set<Weekday>.toWeekdaysSelectors(): List<WeekdaysSelector> =
@@ -65,10 +79,10 @@ fun Iterable<MonthsOrDateSelector>.getMonths(): Set<Month> {
 private fun MonthRange.toMonths(): List<Month> {
     val start = start.ordinal
     val end = end.ordinal
-    val x =
+    val range =
         if (end >= start) start .. end
-        else (end ..< Month.entries.size) + (0 .. start)
-    return x.map { Month.entries[it] }
+        else (start ..< Month.entries.size) + (0 .. end)
+    return range.map { Month.entries[it] }
 }
 
 
