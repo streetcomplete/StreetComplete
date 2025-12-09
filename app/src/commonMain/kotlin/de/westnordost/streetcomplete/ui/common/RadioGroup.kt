@@ -69,7 +69,7 @@ fun <T> RadioGroup(
 
 @Composable
 @Preview
-private fun TextItemRadioGroupFormPreview() {
+private fun RadioGroupPreview() {
     var selectedOption by remember { mutableStateOf<Int?>(null) }
     RadioGroup(
         options = listOf(0,1,2,3),
