@@ -19,6 +19,7 @@ import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.cancel
 import de.westnordost.streetcomplete.resources.ok
 import de.westnordost.streetcomplete.resources.quest_openingHours_chooseWeekdaysTitle
+import de.westnordost.streetcomplete.resources.quest_opening_hours_two_languages
 import de.westnordost.streetcomplete.ui.common.CheckboxList
 import de.westnordost.streetcomplete.ui.common.dialogs.ScrollableAlertDialog
 import de.westnordost.streetcomplete.ui.ktx.fadingVerticalScrollEdges
@@ -26,13 +27,14 @@ import org.jetbrains.compose.resources.stringResource
 
 /** Dialog in which to select a number of months */
 @Composable
-fun MonthsSelectDialog(
+fun MonthsOrDateSelectorSelectDialog(
     onDismissRequest: () -> Unit,
     initialMonths: List<MonthsOrDateSelector>,
     onSelected: (months: List<MonthsOrDateSelector>) -> Unit,
     modifier: Modifier = Modifier,
+    locale: Locale = Locale.current,
+    userLocale: Locale = Locale.current,
 ) {
-    val locale = Locale.current
     val scrollState = rememberScrollState()
     val selection = remember(initialMonths) {
         SnapshotStateSet<Month>().also { it.addAll(initialMonths.getMonths()) }
@@ -50,7 +52,15 @@ fun MonthsSelectDialog(
                     else selection.remove(month)
                 },
                 selectedOptions = selection,
-                itemContent = { Text(it.getDisplayName(locale = locale)) },
+                itemContent = {
+                    val text = it.getDisplayName(locale = locale)
+                    val textInUserLocale = it.getDisplayName(locale = userLocale)
+                    if (text != textInUserLocale) {
+                        Text(stringResource(Res.string.quest_opening_hours_two_languages, text, textInUserLocale))
+                    } else {
+                        Text(text)
+                    }
+                },
                 modifier = Modifier
                     .fadingVerticalScrollEdges(scrollState, 32.dp)
                     .padding(horizontal = 24.dp)

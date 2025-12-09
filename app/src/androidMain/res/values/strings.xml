@@ -1299,6 +1299,7 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_openingHours_chooseWeekdaysTitle">Select days of the week</string>
     <string name="quest_openingHours_chooseStartTimeTitle">Select start time</string>
     <string name="quest_openingHours_chooseEndTimeTitle">Select end time</string>
+    <string name="quest_openingHours_chooseTimeTitle">Select time</string>
 
     <string name="quest_openingHours_24_7_confirmation">In other words, is it open any time, every day?</string>
     <string name="quest_openingHours_add_times">Add opening hours</string>

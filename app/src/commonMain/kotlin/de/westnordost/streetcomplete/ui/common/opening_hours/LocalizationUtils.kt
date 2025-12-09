@@ -4,15 +4,21 @@ import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.LayoutDirection.Ltr
 import androidx.compose.ui.unit.LayoutDirection.Rtl
+import de.westnordost.osm_opening_hours.model.ClockTime
+import de.westnordost.osm_opening_hours.model.ExtendedClockTime
+import de.westnordost.osm_opening_hours.model.ExtendedTime
 import de.westnordost.osm_opening_hours.model.Holiday
 import de.westnordost.osm_opening_hours.model.Month
+import de.westnordost.osm_opening_hours.model.Time
 import de.westnordost.osm_opening_hours.model.Weekday
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.quest_openingHours_public_holidays
 import de.westnordost.streetcomplete.resources.quest_openingHours_public_holidays_short
 import de.westnordost.streetcomplete.util.ktx.getDisplayName
 import de.westnordost.streetcomplete.util.locale.DateTimeTextSymbolStyle
+import de.westnordost.streetcomplete.util.locale.LocalTimeFormatter
 import kotlinx.datetime.DayOfWeek
+import kotlinx.datetime.LocalTime
 import org.jetbrains.compose.resources.StringResource
 
 fun List<CharSequence>.joinToLocalizedString(
@@ -86,3 +92,20 @@ fun Holiday.getDisplayNameResource(
     }
     Holiday.SchoolHoliday -> throw UnsupportedOperationException()
 }
+
+fun Time.toLocalizedString(timeFormatter: LocalTimeFormatter): String =
+    when (this) {
+        is ClockTime -> timeFormatter.format(toLocalTime())
+        else -> throw UnsupportedOperationException()
+    }
+
+fun ExtendedTime.toLocalizedString(timeFormatter: LocalTimeFormatter): String =
+    when (this) {
+        is ClockTime -> timeFormatter.format(toLocalTime())
+        is ExtendedClockTime -> timeFormatter.format(toLocalTime())
+        else -> throw UnsupportedOperationException()
+    }
+
+private fun ClockTime.toLocalTime() = LocalTime(hour, minutes)
+
+private fun ExtendedClockTime.toLocalTime() = LocalTime(hour % 24, minutes)

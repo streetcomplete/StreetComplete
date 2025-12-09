@@ -36,7 +36,7 @@ class TimePickerState(
     val selectableHours: List<Int>
     val selectableMinutes: List<Int>
 
-    val selectedHours: Int by derivedStateOf {
+    val selectedHour: Int by derivedStateOf {
         var selectedHours = selectableHours[hoursPickerState.selectedItemIndex]
         if (is12Hour) {
             if (selectedHours == 12) selectedHours = 0
@@ -45,7 +45,7 @@ class TimePickerState(
         selectedHours
     }
 
-    val selectedMinutes: Int by derivedStateOf {
+    val selectedMinute: Int by derivedStateOf {
         selectableMinutes[minutesPickerState.selectedItemIndex]
     }
 
@@ -120,6 +120,6 @@ fun TimePickerPreview() {
     val state = rememberTimePickerState(12, 30, elements.clock12 != null)
     Column {
         TimePicker(state, elements)
-        Text(state.selectedHours.toString() + " " + state.selectedMinutes.toString())
+        Text(state.selectedHour.toString() + " " + state.selectedMinute.toString())
     }
 }

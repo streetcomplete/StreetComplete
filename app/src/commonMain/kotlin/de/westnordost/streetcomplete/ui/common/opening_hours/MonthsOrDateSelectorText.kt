@@ -1,7 +1,12 @@
 package de.westnordost.streetcomplete.ui.common.opening_hours
 
+import androidx.compose.foundation.clickable
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.text.intl.Locale
@@ -14,26 +19,50 @@ import de.westnordost.streetcomplete.util.locale.DateTimeTextSymbolStyle
 
 /** A text that shows a list of localized months. E.g. Apr-Aug, Dec */
 @Composable
-fun MonthsOrDateSelectorsText(
+fun MonthsText(
     months: List<MonthsOrDateSelector>,
+    onChange: (List<MonthsOrDateSelector>) -> Unit,
     modifier: Modifier = Modifier,
+    enabled: Boolean = true,
+    locale: Locale = Locale.current,
+    userLocale: Locale = Locale.current,
 ) {
-    val locale = Locale.current
     val layoutDirection = LocalLayoutDirection.current
+    var showDialog by remember { mutableStateOf(false) }
+
+    Text(
+        text = getMonthsString(months, locale, layoutDirection),
+        modifier = modifier.clickable(enabled) { showDialog = true }
+    )
+
+    if (showDialog) {
+        MonthsOrDateSelectorSelectDialog(
+            onDismissRequest = { showDialog = false },
+            initialMonths = months,
+            onSelected = onChange,
+            locale = locale,
+            userLocale = userLocale,
+        )
+    }
+}
+
+private fun getMonthsString(
+    months: List<MonthsOrDateSelector>,
+    locale: Locale,
+    layoutDirection: LayoutDirection,
+): String {
     val style = DateTimeTextSymbolStyle.Short
 
-    val monthsStrings = months
+    return months
         .map { it.toLocalizedString(
-                style = style,
-                layoutDirection = layoutDirection,
-                locale = locale,
+            style = style,
+            layoutDirection = layoutDirection,
+            locale = locale,
         ) }
         .joinToLocalizedString(
             locale = locale,
             layoutDirection = layoutDirection,
         )
-
-    Text(monthsStrings, modifier)
 }
 
 private fun MonthsOrDateSelector.toLocalizedString(

@@ -1,54 +1,50 @@
 package de.westnordost.streetcomplete.ui.common.opening_hours
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.selection.toggleable
-import androidx.compose.material.Checkbox
-import androidx.compose.material.Divider
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
+import androidx.compose.ui.text.intl.Locale
+import de.westnordost.osm_opening_hours.model.ClockTime
+import de.westnordost.osm_opening_hours.model.Time
 import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.opening_hours_no_fixed_end
+import de.westnordost.streetcomplete.resources.quest_openingHours_chooseTimeTitle
+import de.westnordost.streetcomplete.ui.common.TimePicker
 import de.westnordost.streetcomplete.ui.common.dialogs.ConfirmationDialog
+import de.westnordost.streetcomplete.ui.common.rememberTimePickerState
+import de.westnordost.streetcomplete.util.locale.TimeFormatElements
 import org.jetbrains.compose.resources.stringResource
 
+/** Dialog in which to select a time */
 @Composable
 fun TimeSelectDialog(
     onDismissRequest: () -> Unit,
-    isOpenEnd: Boolean,
+    onSelect: (time: Time) -> Unit,
+    initialTime: Time,
     modifier: Modifier = Modifier,
-    title: (@Composable () -> Unit)? = null,
+    locale: Locale = Locale.current,
 ) {
-    var openEnd by remember(isOpenEnd) { mutableStateOf(isOpenEnd) }
+    val initialTime = (initialTime as? ClockTime) ?: throw UnsupportedOperationException()
+
+    val timeFormatElements = remember(locale) { TimeFormatElements.of(locale) }
+    val timePickerState = rememberTimePickerState(
+        initialHour = initialTime.hour,
+        initialMinute = initialTime.minutes,
+        is12Hour = timeFormatElements.clock12 != null
+    )
 
     ConfirmationDialog(
         onDismissRequest = onDismissRequest,
-        onConfirmed = {},
+        onConfirmed = {
+            onSelect(ClockTime(timePickerState.selectedHour, timePickerState.selectedMinute))
+        },
         modifier = modifier,
-        title = title,
+        title = { Text(stringResource(Res.string.quest_openingHours_chooseTimeTitle)) },
         text = {
-            // TODO
-
-            Divider()
-
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.spacedBy(4.dp),
-                modifier = Modifier.toggleable(openEnd) { openEnd = it }
-            ) {
-                Checkbox(
-                    checked = openEnd,
-                    onCheckedChange = { openEnd = it },
-                )
-                Text(stringResource(Res.string.opening_hours_no_fixed_end))
-            }
+            TimePicker(
+                state = timePickerState,
+                timeFormatElements = timeFormatElements,
+            )
         },
     )
 }

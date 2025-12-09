@@ -1288,8 +1288,6 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_openingHours_title">What are the opening hours here?</string>
     <string name="quest_openingHours_signed_title">Are the opening hours here signed?</string>
     <string name="quest_openingHours_resurvey_title">Are these opening hours still correct?</string>
-    <string name="quest_openingHours_start_time">opening time</string>
-    <string name="quest_openingHours_end_time">closing time</string>
     <string name="quest_openingHours_add_months">Add months</string>
     <string name="quest_openingHours_add_hours">Add hours</string>
     <string name="quest_openingHours_add_weekdays">Add days of the week</string>
@@ -1299,6 +1297,10 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_openingHours_unspecified_range">Not specified</string>
     <string name="quest_openingHours_chooseMonthsTitle">Select months</string>
     <string name="quest_openingHours_chooseWeekdaysTitle">Select days of the week</string>
+    <string name="quest_openingHours_chooseStartTimeTitle">Select start time</string>
+    <string name="quest_openingHours_chooseEndTimeTitle">Select end time</string>
+    <string name="quest_openingHours_chooseTimeTitle">Select time</string>
+
     <string name="quest_openingHours_24_7_confirmation">In other words, is it open any time, every day?</string>
     <string name="quest_openingHours_add_times">Add opening hours</string>
 
@@ -1310,10 +1312,6 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="opening_hours_from">from %1$s</string>
     <!-- e.g. "16:00 to 20:00, until late" ~= open end -->
     <string name="opening_hours_until_late">%1$s until late</string>
-    <string name="opening_hours_dawn">dawn</string>
-    <string name="opening_hours_sunrise">sunrise</string>
-    <string name="opening_hours_sunset">sunset</string>
-    <string name="opening_hours_dusk">dusk</string>
 
 
     <string name="quest_openingHours_answer_247">Open 24/7</string>

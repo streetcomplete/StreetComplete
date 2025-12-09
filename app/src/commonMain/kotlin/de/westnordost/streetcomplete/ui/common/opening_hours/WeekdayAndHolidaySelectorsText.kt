@@ -1,7 +1,12 @@
 package de.westnordost.streetcomplete.ui.common.opening_hours
 
+import androidx.compose.foundation.clickable
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.text.intl.Locale
@@ -15,18 +20,45 @@ import de.westnordost.osm_opening_hours.model.WeekdaysSelector
 import de.westnordost.streetcomplete.util.locale.DateTimeTextSymbolStyle
 import org.jetbrains.compose.resources.stringResource
 
-/** A text that shows a list of localized weekdays and holidays. E.g. Mon-Fri, Sun, PH */
+/** A text that shows a list of localized weekdays and holidays and lets the user change them.
+ *  E.g. Mon-Fri, Sun, PH */
 @Composable
-fun WeekAndHolidaysSelectorsText(
+fun WeekdayAndHolidaySelectorsText(
     weekdays: List<WeekdaysSelector>,
     holidays: List<HolidaySelector>,
-    isRestrictedByHolidays: Boolean,
+    onChange: (weekdays: List<WeekdaysSelector>, holidays: List<HolidaySelector>) -> Unit,
     modifier: Modifier = Modifier,
+    enabled: Boolean = true,
+    locale: Locale = Locale.current,
+    userLocale: Locale = Locale.current,
 ) {
-    if (isRestrictedByHolidays) throw UnsupportedOperationException()
-
-    val locale = Locale.current
     val layoutDirection = LocalLayoutDirection.current
+    var showDialog by remember { mutableStateOf(false) }
+
+    Text(
+        text = getWeekdaysAndHolidaysString(weekdays, holidays, locale, layoutDirection),
+        modifier = modifier.clickable(enabled) { showDialog = true }
+    )
+
+    if (showDialog) {
+        WeekdayAndHolidaySelectDialog(
+            onDismissRequest = { showDialog = false },
+            initialWeekdays = weekdays,
+            initialHolidays = holidays,
+            onSelected = onChange,
+            locale = locale,
+            userLocale = userLocale,
+        )
+    }
+}
+
+@Composable
+private fun getWeekdaysAndHolidaysString(
+    weekdays: List<WeekdaysSelector>,
+    holidays: List<HolidaySelector>,
+    locale: Locale,
+    layoutDirection: LayoutDirection,
+): String {
     val style = DateTimeTextSymbolStyle.Short
     val sb = StringBuilder()
 
@@ -55,7 +87,7 @@ fun WeekAndHolidaysSelectorsText(
             layoutDirection = layoutDirection,
         )
     }
-    Text(sb.toString(), modifier)
+    return sb.toString()
 }
 
 private fun WeekdaysSelector.toLocalizedString(
