@@ -58,7 +58,7 @@ fun localizedRange(
 }
 
 /** Character used for ranges, e.g. Monday–Friday */
-private fun rangeSeparator(locale: Locale?): Char =
+fun rangeSeparator(locale: Locale?): Char =
     when (locale?.script) {
         "Jpan" -> '～'
         else -> when (locale?.language) {
@@ -82,7 +82,7 @@ fun Holiday.getDisplayNameResource(
 ): StringResource = when (this) {
     Holiday.PublicHoliday -> when (style) {
         DateTimeTextSymbolStyle.Full -> Res.string.quest_openingHours_public_holidays
-        else ->                              Res.string.quest_openingHours_public_holidays_short
+        else ->                         Res.string.quest_openingHours_public_holidays_short
     }
     Holiday.SchoolHoliday -> throw UnsupportedOperationException()
 }
