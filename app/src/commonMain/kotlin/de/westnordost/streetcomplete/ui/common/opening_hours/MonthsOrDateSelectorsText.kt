@@ -16,7 +16,7 @@ import de.westnordost.streetcomplete.util.locale.DateTimeTextSymbolStyle
 @Composable
 fun MonthsOrDateSelectorsText(
     months: List<MonthsOrDateSelector>,
-    modifier: Modifier,
+    modifier: Modifier = Modifier,
 ) {
     val locale = Locale.current
     val layoutDirection = LocalLayoutDirection.current
