@@ -1,5 +1,7 @@
 package de.westnordost.streetcomplete.data.osm.geometry
 
+import de.westnordost.streetcomplete.data.osm.geometry.polygons.PolygonAlgorithms
+import de.westnordost.streetcomplete.data.osm.geometry.polygons.PolygonUtils
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
@@ -61,7 +63,13 @@ class ElementGeometryCreator {
             /* ElementGeometry considers polygons that are defined clockwise holes, so ensure that
                it is defined CCW here. */
             if (polyline.isRingDefinedClockwise()) polyline.reverse()
-            ElementPolygonsGeometry(arrayListOf(polyline), polyline.centerPointOfPolygon())
+            /* Current in progress conversion from centroid to visual center */
+            val outer = polyline
+            val holes = emptyList<List<LatLon>>() // Way as area has no explicit holes
+            val poly = PolygonUtils.fromLatLon(outer, holes)
+            val best = PolygonAlgorithms.polylabel(poly, precision = 0.0001) //Precision will be upgraded later to depend on zoom level
+            ElementPolygonsGeometry(arrayListOf(polyline), LatLon(best.y, best.x))
+            /* Current in progress conversion from centroid to visual center */
         } else {
             ElementPolylinesGeometry(arrayListOf(polyline), polyline.centerPointOfPolyline())
         }
@@ -97,7 +105,15 @@ class ElementGeometryCreator {
 
         /* only use first ring that is not a hole if there are multiple
            this is the same behavior as Leaflet or Tangram */
-        return ElementPolygonsGeometry(rings, outer.first().centerPointOfPolygon())
+        val outerRing = outer.first()
+
+        /* Current in progress conversion from centroid to visual center */
+        val holes = if (rings.size > 1) rings.drop(1) else emptyList()
+        val poly = PolygonUtils.fromLatLon(outerRing, holes)
+        val best = PolygonAlgorithms.polylabel(poly, precision = 0.0001) //Precision will be upgraded later to depend on zoom level
+        return ElementPolygonsGeometry(rings, LatLon(best.y, best.x))
+        /* Current in progress conversion from centroid to visual center */
+
     }
 
     private fun createPolylinesGeometry(
