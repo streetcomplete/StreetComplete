@@ -1,0 +1,186 @@
+package de.westnordost.streetcomplete.ui.common.opening_hours
+
+import androidx.compose.animation.AnimatedContent
+import androidx.compose.animation.slideInHorizontally
+import androidx.compose.animation.slideOutHorizontally
+import androidx.compose.animation.togetherWith
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.defaultMinSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.selection.toggleable
+import androidx.compose.material.AlertDialog
+import androidx.compose.material.Checkbox
+import androidx.compose.material.Divider
+import androidx.compose.material.IconButton
+import androidx.compose.material.Text
+import androidx.compose.material.TextButton
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.ExperimentalComposeUiApi
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.intl.Locale
+import androidx.compose.ui.unit.dp
+import de.westnordost.osm_opening_hours.model.ClockTime
+import de.westnordost.osm_opening_hours.model.ExtendedClockTime
+import de.westnordost.osm_opening_hours.model.ExtendedTime
+import de.westnordost.osm_opening_hours.model.StartingAtTime
+import de.westnordost.osm_opening_hours.model.TimeSpan
+import de.westnordost.osm_opening_hours.model.TimeSpansSelector
+import de.westnordost.osm_opening_hours.model.VariableTime
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.common.BackIcon
+import de.westnordost.streetcomplete.ui.common.TimePicker
+import de.westnordost.streetcomplete.ui.common.rememberTimePickerState
+import de.westnordost.streetcomplete.util.locale.TimeFormatElements
+import org.jetbrains.compose.resources.stringResource
+
+@OptIn(ExperimentalComposeUiApi::class)
+@Composable
+fun TimeSpansSelectorSelectDialog(
+    onDismissRequest: () -> Unit,
+    initialTimeSpansSelector: TimeSpansSelector?,
+    onSelect: (TimeSpansSelector) -> Unit,
+    modifier: Modifier = Modifier,
+    locale: Locale = Locale.current,
+) {
+    var step by remember { mutableIntStateOf(0) }
+
+    val timeFormatElements = remember(locale) { TimeFormatElements.of(locale) }
+    val startTimePickerState = rememberTimePickerState(
+        initialHour = initialTimeSpansSelector?.start?.hour ?: 0,
+        initialMinutes = initialTimeSpansSelector?.start?.minutes ?: 0,
+        is12Hour = timeFormatElements.clock12 != null
+    )
+    val endTimePickerState = rememberTimePickerState(
+        initialHour = initialTimeSpansSelector?.end?.hour ?: 0,
+        initialMinutes = initialTimeSpansSelector?.end?.minutes ?: 0,
+        is12Hour = timeFormatElements.clock12 != null
+    )
+    var openEnd by remember { mutableStateOf(initialTimeSpansSelector?.openEnd ?: false) }
+
+    fun confirm() {
+        val startTime = ClockTime(startTimePickerState.hour, startTimePickerState.minute)
+        val endTime = ClockTime(endTimePickerState.hour, endTimePickerState.minute)
+        val timeSpanSelector = if (startTime == endTime && openEnd) {
+            StartingAtTime(startTime)
+        } else {
+            TimeSpan(startTime, endTime, openEnd)
+        }
+        onSelect(timeSpanSelector)
+    }
+
+    AlertDialog(
+        onDismissRequest = onDismissRequest,
+        modifier = modifier,
+        title = {
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier.fillMaxWidth().defaultMinSize(minHeight = 48.dp)
+            ) {
+                if (step == 0) {
+                    Text(stringResource(Res.string.quest_openingHours_start_time))
+                } else {
+                    IconButton(onClick = { step = 0 }) { BackIcon() }
+                    Text(stringResource(Res.string.quest_openingHours_end_time))
+                }
+            }
+        },
+        text = {
+            Column {
+                AnimatedContent(
+                    targetState = step,
+                    transitionSpec = {
+                        val dir = if (step == 1) 1 else - 1
+                        slideInHorizontally { it * dir } togetherWith slideOutHorizontally { -it * dir }
+                    }
+                ) { step ->
+                    if (step == 0) {
+                        TimePicker(
+                            state = startTimePickerState,
+                            timeFormatElements = timeFormatElements,
+                            modifier = Modifier.align(Alignment.CenterHorizontally)
+                        )
+                    } else {
+                        Column {
+                            TimePicker(
+                                state = endTimePickerState,
+                                timeFormatElements = timeFormatElements,
+                                modifier = Modifier.align(Alignment.CenterHorizontally)
+                            )
+
+                            Divider()
+
+                            Row(
+                                verticalAlignment = Alignment.CenterVertically,
+                                horizontalArrangement = Arrangement.spacedBy(4.dp),
+                                modifier = Modifier.toggleable(openEnd) { openEnd = it }
+                            ) {
+                                Checkbox(
+                                    checked = openEnd,
+                                    onCheckedChange = { openEnd = it },
+                                )
+                                Text(stringResource(Res.string.opening_hours_no_fixed_end))
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        buttons = {
+            TextButton(onClick = onDismissRequest) {
+                Text(stringResource(Res.string.cancel))
+            }
+            if (step == 0) {
+                TextButton(
+                    onClick = { step = 1 }
+                ) {
+                    Text(stringResource(Res.string.next))
+                }
+            } else {
+                TextButton(
+                    onClick = {
+                        confirm()
+                        onDismissRequest()
+                    }
+                ) {
+                    Text(stringResource(Res.string.ok))
+                }
+            }
+        },
+    )
+}
+
+private val TimeSpansSelector.openEnd get() = when (this) {
+    is StartingAtTime -> true
+    is TimeSpan -> openEnd
+}
+
+private val TimeSpansSelector.start get() = when (this) {
+    is StartingAtTime -> start
+    is TimeSpan -> start
+}
+
+private val TimeSpansSelector.end get() = when (this) {
+    is StartingAtTime -> start
+    is TimeSpan -> end
+}
+
+private val ExtendedTime.hour get() = when (this) {
+    is ClockTime -> hour
+    is ExtendedClockTime -> hour
+    is VariableTime -> throw UnsupportedOperationException()
+}
+
+private val ExtendedTime.minutes get() = when (this) {
+    is ClockTime -> minutes
+    is ExtendedClockTime -> minutes
+    is VariableTime -> throw UnsupportedOperationException()
+}

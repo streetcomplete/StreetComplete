@@ -29,14 +29,14 @@ fun TimeSelectDialog(
     val timeFormatElements = remember(locale) { TimeFormatElements.of(locale) }
     val timePickerState = rememberTimePickerState(
         initialHour = initialTime.hour,
-        initialMinute = initialTime.minutes,
+        initialMinutes = initialTime.minutes,
         is12Hour = timeFormatElements.clock12 != null
     )
 
     ConfirmationDialog(
         onDismissRequest = onDismissRequest,
         onConfirmed = {
-            onSelect(ClockTime(timePickerState.selectedHour, timePickerState.selectedMinute))
+            onSelect(ClockTime(timePickerState.hour, timePickerState.minute))
         },
         modifier = modifier,
         title = { Text(stringResource(Res.string.quest_openingHours_chooseTimeTitle)) },

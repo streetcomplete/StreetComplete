@@ -34,10 +34,10 @@ import org.jetbrains.compose.resources.stringResource
 @Composable
 fun WeekdayAndHolidaySelectDialog(
     onDismissRequest: () -> Unit,
-    initialWeekdays: List<WeekdaysSelector>,
-    initialHolidays: List<HolidaySelector>,
     onSelected: (weekdays: List<WeekdaysSelector>, holidays: List<HolidaySelector>) -> Unit,
     modifier: Modifier = Modifier,
+    initialWeekdays: List<WeekdaysSelector> = emptyList(),
+    initialHolidays: List<HolidaySelector> = emptyList(),
     locale: Locale = Locale.current,
     userLocale: Locale = Locale.current,
 ) {

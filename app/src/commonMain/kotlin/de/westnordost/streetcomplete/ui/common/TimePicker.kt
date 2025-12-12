@@ -18,10 +18,10 @@ import org.jetbrains.compose.ui.tooling.preview.Preview
 @Composable
 fun rememberTimePickerState(
     initialHour: Int = 0,
-    initialMinute: Int = 0,
+    initialMinutes: Int = 0,
     is12Hour: Boolean = false,
 ) = remember {
-    TimePickerState(initialHour, initialMinute, is12Hour)
+    TimePickerState(initialHour, initialMinutes, is12Hour)
 }
 
 class TimePickerState(
@@ -36,7 +36,7 @@ class TimePickerState(
     val selectableHours: List<Int>
     val selectableMinutes: List<Int>
 
-    val selectedHour: Int by derivedStateOf {
+    val hour: Int by derivedStateOf {
         var selectedHours = selectableHours[hoursPickerState.selectedItemIndex]
         if (is12Hour) {
             if (selectedHours == 12) selectedHours = 0
@@ -45,7 +45,7 @@ class TimePickerState(
         selectedHours
     }
 
-    val selectedMinute: Int by derivedStateOf {
+    val minute: Int by derivedStateOf {
         selectableMinutes[minutesPickerState.selectedItemIndex]
     }
 
@@ -120,6 +120,6 @@ fun TimePickerPreview() {
     val state = rememberTimePickerState(12, 30, elements.clock12 != null)
     Column {
         TimePicker(state, elements)
-        Text(state.selectedHour.toString() + " " + state.selectedMinute.toString())
+        Text(state.hour.toString() + " " + state.minute.toString())
     }
 }

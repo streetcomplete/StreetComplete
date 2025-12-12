@@ -11,13 +11,13 @@ import de.westnordost.osm_opening_hours.model.WeekdaysSelector
  *
  * For example:
  * ```
- * January - February, November:
- *     Monday, Tuesday, Thursday:
+ * January - February, November
+ *     Monday, Tuesday, Thursday
  *         08:00 - 14:00
  *         14:30 - 18:00
  *     Saturday:
  *         off
- *     Sunday, Public Holidays:
+ *     Sunday, Public Holidays
  *         10:00 - 12:00
  * ```
  */
@@ -26,18 +26,18 @@ data class HierarchicOpeningHours(
 )
 
 data class Months(
-    val monthsSelector: List<MonthsOrDateSelector>,
+    val monthsSelectors: List<MonthsOrDateSelector>,
     val weekdaysList: List<Weekdays>,
     val offDaysList: List<OffWeekdays>
 )
 
 data class Weekdays(
-    val weekdaysSelector: List<WeekdaysSelector>,
-    val holidaysSelector: List<HolidaySelector>,
-    val timesList: List<TimesSelector>
+    val weekdaysSelectors: List<WeekdaysSelector>,
+    val holidaysSelectors: List<HolidaySelector>,
+    val timesSelectors: List<TimesSelector>
 )
 
 data class OffWeekdays(
-    val weekdaysSelector: List<WeekdaysSelector>,
-    val holidaysSelector: List<HolidaySelector>
+    val weekdaysSelectors: List<WeekdaysSelector>,
+    val holidaysSelectors: List<HolidaySelector>
 )

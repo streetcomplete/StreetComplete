@@ -64,7 +64,7 @@ fun localizedRange(
 }
 
 /** Character used for ranges, e.g. Monday–Friday */
-fun rangeSeparator(locale: Locale?): Char =
+private fun rangeSeparator(locale: Locale?): Char =
     when (locale?.script) {
         "Jpan" -> '～'
         else -> when (locale?.language) {
