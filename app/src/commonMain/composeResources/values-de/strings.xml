@@ -24,7 +24,7 @@
     <string name="quest_openingHours_start_time">öffnet um</string>
     <string name="quest_openingHours_end_time">schließt um</string>
     <string name="quest_openingHours_add_months">Monate hinzufügen</string>
-    <string name="quest_openingHours_add_hours">Öffnungszeiten hinzufügen</string>
+    <string name="quest_openingHours_add_hours">Stunden hinzufügen</string>
     <string name="quest_openingHours_add_weekdays">Wochentage hinzufügen</string>
     <string name="quest_openingHours_chooseMonthsTitle">Monate auswählen</string>
     <string name="quest_openingHours_chooseWeekdaysTitle">Wochentage auswählen</string>
@@ -50,7 +50,7 @@
     <string name="about_title_license">Lizenz</string>
     <string name="offline">Du bist offline</string>
     <string name="confirmation_authorize_now">Du musst dich mit deinem OSM-Konto einloggen, um deine Antworten zu veröffentlichen. Jetzt einloggen?</string>
-    <string name="not_authorized">Nicht eingeloggt</string>
+    <string name="not_authorized">Nicht autorisiert</string>
     <string name="version_banned_message">Diese Version von StreetComplete ist zu alt. Bitte aktualisiere deine Version!</string>
     <string name="no_gps_no_quests">Um automatisch Daten in deiner Nähe herunterzuladen, schalte den genauen Standort ein</string>
     <string name="later">Später</string>

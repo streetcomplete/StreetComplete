@@ -1445,4 +1445,20 @@ Egy szint akkor számít tetőszintnek, ha az ablakai a tetőben vannak. A nulla
     <string name="compass">"Iránytű"</string>
     <string name="quest_tracktype_grade2">"Többnyire szilárd"</string>
     <string name="quest_tracktype_grade3">"Keverék"</string>
+    <string name="quest_drinking_water_potable_unsigned2">"Nincs kitáblázva"</string>
+    <string name="or">"vagy"</string>
+    <string name="action_copy">"Másolás"</string>
+    <string name="quest_shelter_capacity_title">"Hány ember tud itt aludni?"</string>
+    <string name="quest_handwashing_title">"Van itt lehetőség kézmosásra?"</string>
+    <string name="quest_aerialway_bicycle_summer">"Csak nyáron"</string>
+    <string name="quest_board_type_rules">"Szabályok"</string>
+    <string name="quest_firewood_provided_title">"Biztosítanak itt tűzifát?"</string>
+    <string name="quest_first_aid_kit_location">"Hol található ez az elsősegély felszerelés?"</string>
+    <string name="quest_lane_markings_title">"Vannak az úton útburkolati jelek?"</string>
+    <string name="quest_level_thing_title">"Melyik szinten található ez a dolog?"</string>
+    <string name="quest_bicycle_charging_station_capacity_title">"Hány kerékpárt lehet itt egyszerre tölteni?"</string>
+    <string name="quest_charging_station_bicycles_title">"Kerékpárt is lehet itt tölteni?"</string>
+    <string name="quest_charging_station_bicycles_hint">"A kerékpártöltő adapterek normál háztartási aljzatokba csatlakoztathatók."</string>
+    <string name="quest_charging_station_bicycles_answer_only">"Csak kerékpárok számára"</string>
+    <string name="quest_recycling_type_pet_bottles">"PET palackok"</string>
 </resources>

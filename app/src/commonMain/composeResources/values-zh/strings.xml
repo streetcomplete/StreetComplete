@@ -167,7 +167,7 @@
     <string name="quest_manySports_confirmation_specific">专属场地</string>
     <string name="quest_manySports_confirmation_generic">通用场地</string>
     <string name="quest_sport_manySports_confirmation_title">您选择了很多种运动</string>
-    <string name="quest_toiletsFee_title">您需要为卫生间付费吗？</string>
+    <string name="quest_toiletsFee_title">这个卫生间是收费的吗？</string>
     <string name="quest_tactilePaving_title_crosswalk">这条人行横道两端有触觉铺装吗？</string>
     <string name="quest_source_dialog_title">您确定您已在现场检查过了吗？</string>
     <string name="quest_source_dialog_note">仅应输入经亲自验证的信息。</string>
@@ -175,8 +175,7 @@
     <string name="dialog_session_dont_show_again">本次会话不再显示</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">这个速度限制看起来令人难以置信。</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">您确定没有限速标志吗？</string>
-    <string name="quest_maxspeed_answer_noSign_confirmation">您检查过街道的尽头吗？
-如果整条街道上没有适用于高亮显示部分的标志，则将应用默认的速度限制。</string>
+    <string name="quest_maxspeed_answer_noSign_confirmation">您检查过街道的两端吗？如果整条街道上没有适用于高亮显示路段的限速标志，则将采用默认的速度限制。</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">是的，没有限速标志</string>
     <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">建成区道路的默认速度限制低于乡村道路。</string>
     <string name="quest_maxspeed_answer_noSign_urbanOk">建成区</string>
@@ -1458,4 +1457,7 @@
     <string name="quest_streetName_add_language">添加语言</string>
     <string name="ok">确定</string>
     <string name="cancel">取消</string>
+    <string name="quest_aerialway_bicycle_summer">仅夏季</string>
+    <string name="quest_lane_markings_title">这条道路是否有车道标线？</string>
+    <string name="quest_charging_station_bicycles_answer_only">仅供自行车使用</string>
 </resources>

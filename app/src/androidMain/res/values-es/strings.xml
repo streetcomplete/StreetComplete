@@ -1397,6 +1397,10 @@ La planta de arriba cuenta como «tejado» si el tejado tiene ventanas. Por lo q
     <string name="pedestrian_zone_allowed_sign">"Hay señales que permiten ir en bici"</string>
     <string name="pedestrian_zone_no_sign">"Sin señales sobre ir en bici"</string>
     <string name="team_mode_description_overlay_hint">"Si utilizáis superposiciones, cada persona debe utilizar una diferente, ya que sólo se dividen las misiones."</string>
+    <string name="quest_dietType_glutenfree_name_title">"¿Aquí se ofrecen productos sin gluten? "</string>
     <string name="map_attribution">"Atribución del mapa"</string>
+    <string name="pref_title_zoom_buttons">"Mostrar botones en mapa botones de zoom"</string>
+    <string name="overlay_mtb_scale_0">"Grado 0"</string>
+    <string name="overlay_mtb_scale_1">"Grado 1"</string>
     <string name="compass">"Brújula"</string>
 </resources>

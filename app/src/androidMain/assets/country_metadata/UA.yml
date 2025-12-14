@@ -1,6 +1,6 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 additionalStreetsignLanguages: [en]
-atmOperators: [ПриватБанк, Ukrsibbank, Альфа-Банк, Ощадбанк, Акціонерне товариство "Державний ощадний банк України", UkrSibbank, УкрСиббанк, Sense Bank, Райффайзен Банк, Raiffeisen Bank, Приватбанк, ПУМБ, Райффайзен Банк Аваль, Сенс Банк, Укрексімбанк, Euronet, Укргазбанк, KredoBank, Кредобанк, Crédit Agricole, ПСБ, Правекс-Банк, Аваль, UniCredit Bank, Райфайзен Банк Аваль, UGB, Credit Agricole, Полтава-Банк, Privatbank, ПАТ "Укрсоцбанк", Shitcoins.club, Укрсиббанк, Промінвестбанк, Банк Південний, MTB Bank, Райфайзен банк Аваль, PrivatBank, приватбанк, Індустріалбанк, OTP Bank, ЦРБ, Південний, Банк Форум, Акордбанк]
+atmOperators: [ПриватБанк, Ukrsibbank, Альфа-Банк, Ощадбанк, Акціонерне товариство "Державний ощадний банк України", UkrSibbank, Sense Bank, УкрСиббанк, Райффайзен Банк, Raiffeisen Bank, Приватбанк, ПУМБ, Райффайзен Банк Аваль, Сенс Банк, Укрексімбанк, Euronet, Укргазбанк, KredoBank, Crédit Agricole, Кредобанк, ПСБ, Правекс-Банк, Аваль, UniCredit Bank, Райфайзен Банк Аваль, UGB, Credit Agricole, Полтава-Банк, Privatbank, ПАТ "Укрсоцбанк", Shitcoins.club, Промінвестбанк, Укрсиббанк, Банк Південний, MTB Bank, Райфайзен банк Аваль, PrivatBank, приватбанк, Індустріалбанк, ЦРБ, Південний, Банк Форум, Акордбанк, Universal Bank, OTP Bank]
 centerLineStyle: white
 chargingStationOperators: [Перша національна мережа електрозаправних комплексів Тока, Toka, AutoEnterprise, EVA Chargers, Одеська міська рада, ЕлектроДрайв, EcoFactor, Ionity, ElectroUA, Yasno, Перша національна мережа електрозаправних комплексів "Тока", Автоэнтерпрайз, Автоентерпрайз, АвтоЭнтерпрайз, UGV Chargers, GO TO-U, Electro UA, Autoenterprise, Go To-U, Get-Charging, Faster, Ecofactor, Тока, ionity.ua, ionity, Silver Fox Energy, FLASH, WOG, Tesla Club Ukraine, Infinite Charge, Infinite Chage, IONITY, ECOFACTOR, AutoVolt, AutoEnterprise 201]
 clothesContainerOperators: [Зелений промінь, Кошик добра, Кошик Добра, Емаус-Оселя]
@@ -16,7 +16,7 @@ noParkingLineStyle: dashed yellow
 noStoppingLineStyle: yellow
 officialLanguages: [uk, ru]
 orchardProduces: [apple, tomato, grape, plum, chilli_pepper, sweet_pepper, walnut, pear, cherry, strawberry, apricot, raspberry, peach, hop, hazelnut, blueberry]
-parcelLockerBrand: [Нова Пошта, Епіцентр К, Meest, Rozetka, Нова пошта]
+parcelLockerBrand: [Нова Пошта, Епіцентр К, Meest, Нова пошта, Rozetka]
 popularReligions: [christian, muslim, jewish]
 postboxesHaveCollectionTimes: true
 slowZoneLabelPosition: top

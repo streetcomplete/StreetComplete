@@ -1429,4 +1429,33 @@ Un nivel cuenta como altura del techo cuando sus ventanas están en el techo. Po
     <string name="compass">"Brújula"</string>
     <string name="quest_tracktype_grade2">"Mayormente firme"</string>
     <string name="quest_tracktype_grade3">"Mixto"</string>
+    <string name="quest_housenumber_multiple_numbers_description2">"Podés ingresar números de casa separados por comas.
+Por ejemplo 1,3 o 2b,4,6."</string>
+    <string name="quest_drinking_water_potable_unsigned2">"Sin letrero"</string>
+    <string name="or">"o"</string>
+    <string name="action_copy">"Copiar"</string>
+    <string name="quest_stopName_hint">"Podés aplicar el mismo nombre que otra parada tocándola en el mapa."</string>
+    <string name="quest_shelter_capacity_title">"¿Cuántas personas pueden dormir acá?"</string>
+    <string name="quest_handwashing_title">"¿Podés lavarte las manos acá?"</string>
+    <string name="quest_openingHours_delete">"Eliminar"</string>
+    <string name="quest_streetName_hint">"Podés aplicar el mismo nombre que una sección adyacente tocándola en el mapa."</string>
+    <string name="quest_streetName_abbreviation_instruction">"Las abreviaturas, como por ejemplo “Av.”, deben escribirse completas."</string>
+    <string name="quest_streetName_add_language">"Agregar idioma"</string>
+    <string name="ok">"Aceptar"</string>
+    <string name="cancel">"Cancelar"</string>
+    <string name="quest_aerialway_bicycle_title">"¿Este teleférico transporta bicicletas?"</string>
+    <string name="quest_aerialway_bicycle_summer">"Solo en verano"</string>
+    <string name="quest_board_type_rules">"Reglas"</string>
+    <string name="quest_firewood_provided_title">"¿Se proporciona leña acá?"</string>
+    <string name="quest_first_aid_kit_location">"¿Dónde se encuentra este botiquín de primeros auxilios?"</string>
+    <string name="quest_lane_markings_title">"¿Esta vía tiene marcas de carriles?"</string>
+    <string name="quest_level_thing_title">"¿En qué número de nivel se encuentra esto?"</string>
+    <string name="quest_bicycle_charging_station_capacity_title">"¿Cuántas bicicletas se pueden cargar acá al mismo tiempo?"</string>
+    <string name="quest_charging_station_bicycles_title">"¿También se pueden cargar bicicletas acá?"</string>
+    <string name="quest_charging_station_bicycles_hint">"Los adaptadores de corriente para bicicletas se enchufan en tomas domésticas normales."</string>
+    <string name="quest_tower_access_title">"¿Quién puede acceder a esta torre? Puede ser gratis o de pago."</string>
+    <string name="quest_charging_station_bicycles_answer_only">"Es solo para bicicletas"</string>
+    <string name="quest_recycling_type_pet_bottles">"Botellas de PET"</string>
+    <string name="quest_maxweight_add_sign">"Agregar señal"</string>
+    <string name="quest_maxweight_remove_sign">"Eliminar señal"</string>
 </resources>

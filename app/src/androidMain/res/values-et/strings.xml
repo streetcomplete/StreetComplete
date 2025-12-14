@@ -1471,4 +1471,7 @@ Näiteks 1,3 või 2b,4,6."</string>
     <string name="quest_charging_station_bicycles_hint">"Jalgratta laadimiskaabli pistikuid saab ühendada tavalistesse soklitesse."</string>
     <string name="quest_tower_access_title">"Kes võivad siia torni siseneda? Pääs võib olla tasuta või tasuline."</string>
     <string name="quest_charging_station_bicycles_answer_only">"See on vaid jalgrataste jaoks"</string>
+    <string name="quest_recycling_type_pet_bottles">"Plastpudelid"</string>
+    <string name="quest_maxweight_add_sign">"Lisa silt"</string>
+    <string name="quest_maxweight_remove_sign">"Eemalda silt"</string>
 </resources>

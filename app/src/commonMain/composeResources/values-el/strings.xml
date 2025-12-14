@@ -1455,4 +1455,6 @@
     <string name="quest_tower_access_title">Ποιός έχει πρόσβαση στον πύργο; Μπορεί να είναι δωρεάν ή με πληρωμή.</string>
     <string name="quest_charging_station_bicycles_answer_only">Είναι μόνο για ποδήλατα</string>
     <string name="quest_recycling_type_pet_bottles">Φιάλες PET</string>
+    <string name="quest_maxweight_add_sign">Προσθήκη πινακίδας</string>
+    <string name="quest_maxweight_remove_sign">Αφαίρεση πινακίδας</string>
 </resources>
