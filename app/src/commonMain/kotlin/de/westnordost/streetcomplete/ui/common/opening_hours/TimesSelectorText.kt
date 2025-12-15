@@ -12,21 +12,30 @@ import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.LayoutDirection.Ltr
+import de.westnordost.osm_opening_hours.model.ClockTime
+import de.westnordost.osm_opening_hours.model.ExtendedClockTime
+import de.westnordost.osm_opening_hours.model.ExtendedTime
 import de.westnordost.osm_opening_hours.model.StartingAtTime
+import de.westnordost.osm_opening_hours.model.Time
+import de.westnordost.osm_opening_hours.model.TimeIntervals
 import de.westnordost.osm_opening_hours.model.TimeSpan
-import de.westnordost.osm_opening_hours.model.TimeSpansSelector
+import de.westnordost.osm_opening_hours.model.TimesSelector
 import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.resources.opening_hours_from
+import de.westnordost.streetcomplete.resources.opening_hours_until_late
 import de.westnordost.streetcomplete.util.locale.DateTimeFormatStyle
 import de.westnordost.streetcomplete.util.locale.LocalTimeFormatter
+import kotlinx.datetime.LocalTime
 import org.jetbrains.compose.resources.stringResource
 
-/** A text that shows a localized time span an lets you select another time span.
- *  E.g. "08:00-18:00" but also "from 12:00" or "16:00-22:00 until late" (i.e. open end) */
+/** A text that shows a localized time or time span and lets you select another time/time span.
+ *
+ *  E.g. "08:00-18:00" but also "from 12:00" or "16:00-22:00 until late" (i.e. open end), as well
+ *  as "08:00". */
 @Composable
-fun TimeSpansSelectorTexts(
-    time: TimeSpansSelector,
-    onChangeTime: (TimeSpansSelector) -> Unit,
+fun TimesSelectorText(
+    time: TimesSelector,
+    onChangeTime: (TimesSelector) -> Unit,
     modifier: Modifier = Modifier,
     locale: Locale = Locale.current,
     enabled: Boolean = true,
@@ -42,17 +51,17 @@ fun TimeSpansSelectorTexts(
     )
 
     if (showDialog) {
-        TimeSpansSelectorSelectDialog(
+        TimesSelectorDialog(
             onDismissRequest = { showDialog = false },
             onSelect = onChangeTime,
-            initialTimeSpansSelector = time,
+            initialTime = time,
             locale = locale,
         )
     }
 }
 
 @Composable
-private fun TimeSpansSelector.toLocalizedString(
+private fun TimesSelector.toLocalizedString(
     layoutDirection: LayoutDirection = Ltr,
     locale: Locale? = null,
 ): String {
@@ -79,5 +88,29 @@ private fun TimeSpansSelector.toLocalizedString(
                 layoutDirection = layoutDirection,
             )
         }
+        is Time -> {
+            toLocalizedString(timeFormatter)
+        }
+        is TimeIntervals -> {
+            throw UnsupportedOperationException()
+        }
     }
 }
+
+
+private fun Time.toLocalizedString(timeFormatter: LocalTimeFormatter): String =
+    when (this) {
+        is ClockTime -> timeFormatter.format(toLocalTime())
+        else -> throw UnsupportedOperationException()
+    }
+
+private fun ExtendedTime.toLocalizedString(timeFormatter: LocalTimeFormatter): String =
+    when (this) {
+        is ClockTime -> timeFormatter.format(toLocalTime())
+        is ExtendedClockTime -> timeFormatter.format(toLocalTime())
+        else -> throw UnsupportedOperationException()
+    }
+
+private fun ClockTime.toLocalTime() = LocalTime(hour, minutes)
+
+private fun ExtendedClockTime.toLocalTime() = LocalTime(hour % 24, minutes)

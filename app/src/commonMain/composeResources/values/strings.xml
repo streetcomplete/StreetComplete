@@ -1290,6 +1290,7 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_openingHours_resurvey_title">Are these opening hours still correct?</string>
     <string name="quest_openingHours_add_months">Add months</string>
     <string name="quest_openingHours_add_hours">Add hours</string>
+    <string name="quest_openingHours_add_time">Add time</string>
     <string name="quest_openingHours_add_weekdays">Add days of the week</string>
     <string name="quest_openingHours_add_off_days">Add off days</string>
     <string name="quest_openingHours_delete">Delete</string>
@@ -1421,7 +1422,6 @@ If there are no signs along the whole street which apply for the highlighted sec
 
     <string name="quest_postboxCollectionTimes_title">What are the pickup times of this collection box?</string>
     <string name="quest_postboxCollectionTimes_resurvey_title">Are the pickup times of this collection box still correct?</string>
-    <string name="quest_collectionTimes_add_times">Add collection time</string>
     <string name="quest_collectionTimes_answer_no_times_specified">No times specified</string>
 
     <string name="quest_ref_answer_noRef">No number or code visible…</string>

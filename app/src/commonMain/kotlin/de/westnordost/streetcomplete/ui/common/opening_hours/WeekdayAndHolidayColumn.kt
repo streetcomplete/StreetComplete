@@ -55,7 +55,7 @@ fun WeekdayAndHolidayColumn(
                     userLocale = userLocale,
                     enabled = enabled,
                 )
-                TimeSpansSelectorsColumn(
+                TimesSelectorsColumn(
                     times = weekdays.timesSelectors,
                     onChangeTimes = { newTimes ->
                         // when last time has been removed, entire column shall be removed

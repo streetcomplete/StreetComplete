@@ -92,20 +92,3 @@ fun Holiday.getDisplayNameResource(
     }
     Holiday.SchoolHoliday -> throw UnsupportedOperationException()
 }
-
-fun Time.toLocalizedString(timeFormatter: LocalTimeFormatter): String =
-    when (this) {
-        is ClockTime -> timeFormatter.format(toLocalTime())
-        else -> throw UnsupportedOperationException()
-    }
-
-fun ExtendedTime.toLocalizedString(timeFormatter: LocalTimeFormatter): String =
-    when (this) {
-        is ClockTime -> timeFormatter.format(toLocalTime())
-        is ExtendedClockTime -> timeFormatter.format(toLocalTime())
-        else -> throw UnsupportedOperationException()
-    }
-
-private fun ClockTime.toLocalTime() = LocalTime(hour, minutes)
-
-private fun ExtendedClockTime.toLocalTime() = LocalTime(hour % 24, minutes)
