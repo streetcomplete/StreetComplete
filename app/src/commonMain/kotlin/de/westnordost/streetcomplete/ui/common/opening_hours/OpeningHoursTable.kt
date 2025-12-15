@@ -51,9 +51,9 @@ fun OpeningHoursTable(
         modifier = modifier
     ) {
         for ((monthsIndex, months) in openingHours.monthsList.withIndex()) {
-            if (months.monthsSelectors.isNotEmpty()) {
+            if (months.selectors.isNotEmpty()) {
                 MonthsText(
-                    months = months.monthsSelectors,
+                    months = months.selectors,
                     modifier = Modifier
                         .fillMaxWidth()
                         .clickable(enabled) {
@@ -61,7 +61,7 @@ fun OpeningHoursTable(
                         }
                 )
             }
-            if (monthsIndex > 0 || months.monthsSelectors.isNotEmpty()) {
+            if (monthsIndex > 0 || months.selectors.isNotEmpty()) {
                 Divider()
             }
 

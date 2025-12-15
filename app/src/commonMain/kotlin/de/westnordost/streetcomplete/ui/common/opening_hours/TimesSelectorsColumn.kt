@@ -26,12 +26,19 @@ import de.westnordost.streetcomplete.resources.ic_delete_24
 import de.westnordost.streetcomplete.resources.quest_openingHours_add_hours
 import de.westnordost.streetcomplete.resources.quest_openingHours_delete
 import de.westnordost.streetcomplete.ui.common.DropdownMenuItem
-import de.westnordost.streetcomplete.ui.ktx.conditional
 import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
 /** A column of time spans and times which can each be changed, deleted and new ones added.
+ *
+ *  E.g.
+ *  ```
+ *  08:00-12:00      [x]
+ *  14:00-16:00      [x]
+ *  20:00 until late [x]
+ *  [+]
+ *  ```
  *
  *  [timeMode] decides whether only time points or only time spans may be added. null if both are
  *  allowed. */
@@ -40,8 +47,8 @@ fun TimesSelectorsColumn(
     times: List<TimesSelector>,
     onChangeTimes: (times: List<TimesSelector>) -> Unit,
     timeMode: TimeMode?,
+    timeTextWidth: Dp,
     modifier: Modifier = Modifier,
-    timeTextWidth: Dp? = null,
     locale: Locale = Locale.current,
     enabled: Boolean = true,
 ) {
@@ -59,7 +66,7 @@ fun TimesSelectorsColumn(
                     onChangeTime = { newTime ->
                         onChangeTimes(times.toMutableList().also { it[index] = newTime })
                     },
-                    modifier = Modifier.conditional(timeTextWidth) { width(it) },
+                    modifier = Modifier.width(timeTextWidth),
                     locale = locale,
                     enabled = enabled,
                 )
@@ -79,9 +86,7 @@ fun TimesSelectorsColumn(
         }
         if (enabled) {
             OutlinedButton(
-                onClick = {
-                    showDialog = true
-                }
+                onClick = { showDialog = true }
             ) {
                 Icon(
                     painter = painterResource(Res.drawable.ic_add_24),
@@ -92,26 +97,23 @@ fun TimesSelectorsColumn(
 
     val currentTimeMode = timeMode ?: selectedTimeMode
 
-    if (currentTimeMode == null) {
-        TimeModeDropdownMenu(
-            expanded = showDialog,
-            onDismissRequest = { showDialog = false },
-            onSelect = { selectedTimeMode = it }
+    TimeModeDropdownMenu(
+        expanded = showDialog && currentTimeMode == null,
+        onDismissRequest = { showDialog = false },
+        onSelect = { selectedTimeMode = it }
+    )
+    if (showDialog && currentTimeMode != null) {
+        TimesSelectorDialog(
+            onDismissRequest = {
+                showDialog = false
+                selectedTimeMode = null
+            },
+            mode = currentTimeMode,
+            onSelect = { newTime ->
+                onChangeTimes(times.toMutableList().also { it.add(newTime) })
+            },
+            locale = locale,
         )
-    } else {
-        if (showDialog) {
-            TimesSelectorDialog(
-                onDismissRequest = {
-                    showDialog = false
-                    selectedTimeMode = null
-                },
-                mode = currentTimeMode,
-                onSelect = { newTime ->
-                    onChangeTimes(times.toMutableList().also { it.add(newTime) })
-                },
-                locale = locale,
-            )
-        }
     }
 }
 
