@@ -1387,6 +1387,15 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_access_customers">Any person visiting a specific place (e.g. customers only)</string>
     <string name="quest_access_private">Only individual(s) with permission</string>
 
+    <string name="quest_parking_charge_title">How much do you have to pay to use this parking spot?</string>
+    <string name="quest_parking_charge_for_every">for every</string>
+    <string name="quest_parking_charge_minutes">minutes</string>
+
+    <string name="quest_charge_answer_hours">Depends on time and day…</string> // TODO REMOVE
+    <string name="quest_charge_answer_yes_but">Yes,…</string> // TODO REMOVE
+    <string name="quest_charge_answer_no_but_maxstay">No, but there is a max duration…</string> // TODO REMOVE
+    <string name="quest_charge_add_times">Add times</string> // TODO REMOVE
+
     <string name="quest_parking_fee_title">Do you have to pay to park here?</string>
     <string name="quest_fee_answer_hours">Depends on time and day…</string>
     <string name="quest_fee_answer_yes_but">Yes,…</string>
