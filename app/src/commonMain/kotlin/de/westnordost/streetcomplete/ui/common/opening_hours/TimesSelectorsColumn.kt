@@ -52,8 +52,7 @@ fun TimesSelectorsColumn(
     locale: Locale = Locale.current,
     enabled: Boolean = true,
 ) {
-    var showDialog by remember { mutableStateOf(false) }
-    var selectedTimeMode by remember { mutableStateOf<TimeMode?>(null) }
+    var addTimeState by remember { mutableStateOf<AddTimeState?>(null) }
 
     Column(modifier) {
         for ((index, time) in times.withIndex()) {
@@ -86,7 +85,11 @@ fun TimesSelectorsColumn(
         }
         if (enabled) {
             OutlinedButton(
-                onClick = { showDialog = true }
+                onClick = {
+                    addTimeState = timeMode
+                        ?.let { AddTimeState.SelectTime(it) }
+                        ?: AddTimeState.SelectTimeMode
+                }
             ) {
                 Icon(
                     painter = painterResource(Res.drawable.ic_add_24),
@@ -95,26 +98,34 @@ fun TimesSelectorsColumn(
         }
     }
 
-    val currentTimeMode = timeMode ?: selectedTimeMode
-
     TimeModeDropdownMenu(
-        expanded = showDialog && currentTimeMode == null,
-        onDismissRequest = { showDialog = false },
-        onSelect = { selectedTimeMode = it }
+        expanded = addTimeState == AddTimeState.SelectTimeMode,
+        onDismissRequest = { addTimeState = null },
+        onSelect = { addTimeState = AddTimeState.SelectTime(it) }
     )
-    if (showDialog && currentTimeMode != null) {
+    val addTimeState2 = addTimeState
+    if (addTimeState2 is AddTimeState.SelectTime) {
         TimesSelectorDialog(
-            onDismissRequest = {
-                showDialog = false
-                selectedTimeMode = null
-            },
-            mode = currentTimeMode,
+            onDismissRequest = { addTimeState = null },
+            mode = addTimeState2.timeMode,
             onSelect = { newTime ->
                 onChangeTimes(times.toMutableList().also { it.add(newTime) })
             },
             locale = locale,
         )
     }
+}
+
+private sealed interface AddTimeState {
+    object SelectTimeMode : AddTimeState
+    data class SelectTime(val timeMode: TimeMode) : AddTimeState
+}
+
+enum class TimeMode {
+    /** May only add time points, e.g. "08:00" */
+    Points,
+    /** May only add time spans, e.g. "08:00-12:00" */
+    Spans,
 }
 
 @Composable
@@ -142,9 +153,3 @@ private val TimeMode.titleResource: StringResource get() = when (this) {
     TimeMode.Spans -> Res.string.quest_openingHours_add_hours
 }
 
-enum class TimeMode {
-    /** May only add time points, e.g. "08:00" */
-    Points,
-    /** May only add time spans, e.g. "08:00-12:00" */
-    Spans,
-}
