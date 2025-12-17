@@ -4,11 +4,9 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.width
-import androidx.compose.material.DropdownMenu
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.OutlinedButton
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -25,7 +23,6 @@ import de.westnordost.streetcomplete.resources.ic_add_24
 import de.westnordost.streetcomplete.resources.ic_delete_24
 import de.westnordost.streetcomplete.resources.quest_openingHours_add_hours
 import de.westnordost.streetcomplete.resources.quest_openingHours_delete
-import de.westnordost.streetcomplete.ui.common.DropdownMenuItem
 import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
@@ -40,19 +37,18 @@ import org.jetbrains.compose.resources.stringResource
  *  [+]
  *  ```
  *
- *  [timeMode] decides whether only time points or only time spans may be added. null if both are
- *  allowed. */
+ *  [timeMode] decides whether only time points or only time spans may be added. */
 @Composable
 fun TimesSelectorsColumn(
     times: List<TimesSelector>,
-    onChangeTimes: (times: List<TimesSelector>) -> Unit,
-    timeMode: TimeMode?,
+    onChange: (times: List<TimesSelector>) -> Unit,
+    timeMode: TimeMode,
     timeTextWidth: Dp,
     modifier: Modifier = Modifier,
     locale: Locale = Locale.current,
     enabled: Boolean = true,
 ) {
-    var addTimeState by remember { mutableStateOf<AddTimeState?>(null) }
+    var showDialog by remember { mutableStateOf(false) }
 
     Column(modifier) {
         for ((index, time) in times.withIndex()) {
@@ -62,8 +58,8 @@ fun TimesSelectorsColumn(
             ) {
                 TimesSelectorText(
                     time = time,
-                    onChangeTime = { newTime ->
-                        onChangeTimes(times.toMutableList().also { it[index] = newTime })
+                    onChange = { newTime ->
+                        onChange(times.toMutableList().also { it[index] = newTime })
                     },
                     modifier = Modifier.width(timeTextWidth),
                     locale = locale,
@@ -72,7 +68,7 @@ fun TimesSelectorsColumn(
                 if (enabled) {
                     IconButton(
                         onClick = {
-                            onChangeTimes(times.toMutableList().also { it.removeAt(index) })
+                            onChange(times.toMutableList().also { it.removeAt(index) })
                         }
                     ) {
                         Icon(
@@ -85,40 +81,26 @@ fun TimesSelectorsColumn(
         }
         if (enabled) {
             OutlinedButton(
-                onClick = {
-                    addTimeState = timeMode
-                        ?.let { AddTimeState.SelectTime(it) }
-                        ?: AddTimeState.SelectTimeMode
-                }
+                onClick = { showDialog = true }
             ) {
                 Icon(
                     painter = painterResource(Res.drawable.ic_add_24),
-                    contentDescription = timeMode?.titleResource?.let { stringResource(it) })
+                    contentDescription = stringResource(timeMode.titleResource)
+                )
             }
         }
     }
 
-    TimeModeDropdownMenu(
-        expanded = addTimeState == AddTimeState.SelectTimeMode,
-        onDismissRequest = { addTimeState = null },
-        onSelect = { addTimeState = AddTimeState.SelectTime(it) }
-    )
-    val addTimeState2 = addTimeState
-    if (addTimeState2 is AddTimeState.SelectTime) {
+    if (showDialog) {
         TimesSelectorDialog(
-            onDismissRequest = { addTimeState = null },
-            mode = addTimeState2.timeMode,
+            onDismissRequest = { showDialog = false },
+            mode = timeMode,
             onSelect = { newTime ->
-                onChangeTimes(times.toMutableList().also { it.add(newTime) })
+                onChange(times.toMutableList().also { it.add(newTime) })
             },
             locale = locale,
         )
     }
-}
-
-private sealed interface AddTimeState {
-    object SelectTimeMode : AddTimeState
-    data class SelectTime(val timeMode: TimeMode) : AddTimeState
 }
 
 enum class TimeMode {
@@ -126,26 +108,6 @@ enum class TimeMode {
     Points,
     /** May only add time spans, e.g. "08:00-12:00" */
     Spans,
-}
-
-@Composable
-private fun TimeModeDropdownMenu(
-    expanded: Boolean,
-    onDismissRequest: () -> Unit,
-    onSelect: (TimeMode) -> Unit,
-    modifier: Modifier = Modifier
-) {
-    DropdownMenu(
-        expanded = expanded,
-        onDismissRequest = onDismissRequest,
-        modifier = modifier
-    ) {
-        for (timeMode in TimeMode.entries) {
-            DropdownMenuItem(onClick = { onSelect(timeMode) }) {
-                Text(stringResource(timeMode.titleResource))
-            }
-        }
-    }
 }
 
 private val TimeMode.titleResource: StringResource get() = when (this) {

@@ -25,7 +25,7 @@ import de.westnordost.streetcomplete.osm.opening_hours.parser.hasCollidingWeekda
 import de.westnordost.streetcomplete.osm.opening_hours.parser.isSupported
 import de.westnordost.streetcomplete.osm.opening_hours.parser.isSupportedOpeningHours
 import de.westnordost.streetcomplete.osm.opening_hours.parser.toOpeningHours
-import de.westnordost.streetcomplete.osm.opening_hours.parser.toOpeningHoursRows
+import de.westnordost.streetcomplete.osm.opening_hours.parser.toHierarchicOpeningHours
 import java.net.HttpURLConnection
 import java.net.URL
 import java.net.URLEncoder
@@ -85,7 +85,7 @@ fun main() {
         val rules = oh.toOpeningHoursOrNull(lenient = true)
         if (rules != null) {
             parsed += count
-            val rows = rules.toOpeningHoursRows()?.toOpeningHours()?.toString()
+            val rows = rules.toHierarchicOpeningHours()?.toOpeningHours()?.toString()
             if (rows != null) {
                 supported += count
             } else {

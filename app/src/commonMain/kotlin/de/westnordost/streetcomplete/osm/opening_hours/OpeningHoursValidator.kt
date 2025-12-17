@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.osm.opening_hours.parser
+package de.westnordost.streetcomplete.osm.opening_hours
 
 import de.westnordost.osm_opening_hours.model.ClockTime
 import de.westnordost.osm_opening_hours.model.ExtendedClockTime
@@ -25,7 +25,6 @@ import de.westnordost.osm_opening_hours.model.VariableTime
 import de.westnordost.osm_opening_hours.model.Weekday
 import de.westnordost.osm_opening_hours.model.WeekdayRange
 import de.westnordost.osm_opening_hours.model.WeekdaysSelector
-import de.westnordost.streetcomplete.osm.opening_hours.model.CircularSection
 import kotlin.jvm.JvmName
 
 /** Returns true if supported by StreetComplete, i.e. can be displayed in the
@@ -37,9 +36,9 @@ import kotlin.jvm.JvmName
  *  - "off" rules with exclusively weekdays, weekday ranges, PH
  *  - time spans, open end
  */
-fun OpeningHours.isSupportedOpeningHours(): Boolean =
+fun OpeningHours.isSupportedOpeningHours(allowTimePoints: Boolean = false): Boolean =
     rules.all { rule -> rule.isSupportedOpeningHours() } &&
-        !containsTimePoints() &&
+        (allowTimePoints || !containsTimePoints()) &&
         !rules.hasCollidingWeekdays()
 
 fun Rule.isSupportedOpeningHours(): Boolean =
@@ -110,41 +109,6 @@ internal fun ExtendedTime.isSupported(): Boolean = when(this) {
     is ClockTime -> true
     is VariableTime -> false
 }
-
-/** Returns true if supported by StreetComplete, i.e. can be displayed in the
- *  widget.
- *
- *  Supported are (plain)
- *  - weekdays, weekday ranges, PH
- *  - time points
- */
-fun OpeningHours.isSupportedCollectionTimes(): Boolean =
-    rules.all { rule -> rule.isSupportedCollectionTimes() } &&
-    containsTimePoints() &&
-    !rules.hasCollidingWeekdays()
-
-fun Rule.isSupportedCollectionTimes(): Boolean =
-    // comments not supported
-    comment == null &&
-    // fallback rules not supported
-    ruleOperator != RuleOperator.Fallback &&
-    // no rule types supported
-    ruleType == null &&
-    (selector as? Range)?.isSupportedCollectionTimes() == true
-
-// only weekdays+holidays and times are supported
-private fun Range.isSupportedCollectionTimes(): Boolean =
-    text == null &&
-    years.isNullOrEmpty() &&
-    weeks.isNullOrEmpty() &&
-    // months not supported for collection times
-    months.isNullOrEmpty() &&
-    weekdays.orEmpty().all { it.isSupported() } &&
-    holidays.orEmpty().all { it.isSupported() } &&
-    !isRestrictedByHolidays &&
-    !times.isNullOrEmpty() &&
-    times.orEmpty().all { it.isSupported() } &&
-    !isEmpty()
 
 /** For example, "Mo-Fr 10:00-12:00; We 14:00-16:00" self-collides: Wednesday is overwritten
  *  to only be open 14:00 to 16:00. A rule collides with another whenever the days overlap. When
@@ -221,36 +185,21 @@ private fun Range.collidesWith(other: Range): Boolean {
 }
 
 @JvmName("monthsOrDateSelectorsIntersectWith")
-private fun Collection<MonthsOrDateSelector>.intersectWith(other: Collection<MonthsOrDateSelector>): Boolean =
-    any { dates1 -> other.any { dates2 -> dates1.intersectsWith(dates2) } }
-
-private fun MonthsOrDateSelector.intersectsWith(other: MonthsOrDateSelector): Boolean =
-    toCircularSection().intersects(other.toCircularSection())
-
-private fun MonthsOrDateSelector.toCircularSection(): CircularSection =
-    when (this) {
-        is SingleMonth -> {
-            require(year == null)
-            CircularSection(month.ordinal, month.ordinal)
-        }
-        is MonthRange -> {
-            require(year == null)
-            CircularSection(start.ordinal, end.ordinal)
-        }
-        else -> throw IllegalArgumentException()
-    }
+private fun Collection<MonthsOrDateSelector>.intersectWith(
+    other: Collection<MonthsOrDateSelector>
+): Boolean {
+    val months = getMonths()
+    val otherMonths = other.getMonths()
+    return months.any { it in otherMonths } || otherMonths.any { it in months }
+}
 
 @JvmName("weekdaysSelectorsIntersectWith")
-private fun Collection<WeekdaysSelector>.intersectWith(other: Collection<WeekdaysSelector>): Boolean =
-    any { weekdays1 -> other.any { weekdays2 -> weekdays1.intersectsWith(weekdays2) } }
-
-private fun WeekdaysSelector.intersectsWith(other: WeekdaysSelector): Boolean =
-    toCircularSection().intersects(other.toCircularSection())
-
-private fun WeekdaysSelector.toCircularSection(): CircularSection = when (this) {
-    is Weekday -> CircularSection(ordinal, ordinal)
-    is WeekdayRange -> CircularSection(start.ordinal, end.ordinal)
-    is SpecificWeekdays -> throw IllegalArgumentException()
+private fun Collection<WeekdaysSelector>.intersectWith(
+    other: Collection<WeekdaysSelector>
+): Boolean {
+    val weekdays = getWeekdays()
+    val otherWeekdays = other.getWeekdays()
+    return weekdays.any { it in otherWeekdays } || otherWeekdays.any { it in weekdays }
 }
 
 @JvmName("holidaySelectorsIntersectWith")
@@ -307,4 +256,11 @@ private fun TimesSelector.expandsIntoNextDay(): Boolean {
         else -> return false
     }
     return e < s || e > 24 * 60
+}
+
+private fun ExtendedTime.toMinutesOfDay(): Int = when (this) {
+    is ClockTime -> hour * 60 + minutes
+    is ExtendedClockTime -> hour * 60 + minutes
+    is VariableTime -> throw IllegalArgumentException()
+
 }

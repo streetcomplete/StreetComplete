@@ -15,7 +15,7 @@ import de.westnordost.streetcomplete.databinding.QuestOpeningHoursBinding
 import de.westnordost.streetcomplete.databinding.QuestOpeningHoursCommentBinding
 import de.westnordost.streetcomplete.osm.opening_hours.model.OpeningMonthsRow
 import de.westnordost.streetcomplete.osm.opening_hours.model.OpeningWeekdaysRow
-import de.westnordost.streetcomplete.osm.opening_hours.parser.toOpeningHoursRows
+import de.westnordost.streetcomplete.osm.opening_hours.parser.toHierarchicOpeningHours
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.opening_hours.adapter.OpeningHoursAdapter
@@ -113,7 +113,7 @@ class AddOpeningHoursForm : AbstractOsmQuestForm<OpeningHoursAnswer>() {
 
     private fun initStateFromTags() {
         val oh = element.tags["opening_hours"]
-        val rows = oh?.toOpeningHoursOrNull(lenient = true)?.toOpeningHoursRows()
+        val rows = oh?.toOpeningHoursOrNull(lenient = true)?.toHierarchicOpeningHours()
         if (rows != null) {
             openingHoursAdapter.rows = rows.toMutableList()
             setAsResurvey(true)

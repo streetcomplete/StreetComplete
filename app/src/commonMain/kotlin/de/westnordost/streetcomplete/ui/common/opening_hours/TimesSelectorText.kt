@@ -35,7 +35,7 @@ import org.jetbrains.compose.resources.stringResource
 @Composable
 fun TimesSelectorText(
     time: TimesSelector,
-    onChangeTime: (TimesSelector) -> Unit,
+    onChange: (TimesSelector) -> Unit,
     modifier: Modifier = Modifier,
     locale: Locale = Locale.current,
     enabled: Boolean = true,
@@ -53,7 +53,7 @@ fun TimesSelectorText(
     if (showDialog) {
         TimesSelectorDialog(
             onDismissRequest = { showDialog = false },
-            onSelect = onChangeTime,
+            onSelect = onChange,
             initialTime = time,
             locale = locale,
         )

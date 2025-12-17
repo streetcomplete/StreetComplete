@@ -37,7 +37,6 @@ data class Weekdays(
 )
 
 sealed interface WeekdaysContent
-
 data object Off : WeekdaysContent
 data class Times(val selectors: List<TimesSelector>) : WeekdaysContent
 

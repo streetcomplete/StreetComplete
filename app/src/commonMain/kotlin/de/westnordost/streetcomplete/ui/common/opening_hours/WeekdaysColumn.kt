@@ -16,6 +16,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import de.westnordost.osm_opening_hours.model.HolidaySelector
+import de.westnordost.osm_opening_hours.model.WeekdaysSelector
 import de.westnordost.streetcomplete.osm.opening_hours.Off
 import de.westnordost.streetcomplete.osm.opening_hours.Times
 import de.westnordost.streetcomplete.osm.opening_hours.Weekdays
@@ -40,10 +42,10 @@ import org.jetbrains.compose.resources.stringResource
  *  ```
  * */
 @Composable
-fun WeekdayAndHolidayColumn(
+fun WeekdaysColumn(
     weekdaysList: List<Weekdays>,
-    onChangeWeekdaysList: (List<Weekdays>) -> Unit,
-    timeMode: TimeMode?,
+    onChange: (List<Weekdays>) -> Unit,
+    timeMode: TimeMode,
     timeTextWidth: Dp,
     modifier: Modifier,
     locale: Locale = Locale.current,
@@ -67,7 +69,7 @@ fun WeekdayAndHolidayColumn(
                             weekdaysSelectors = weekdaysSelectors,
                             holidaysSelectors = holidaysSelectors
                         )
-                        onChangeWeekdaysList(weekdaysList.toMutableList().also {
+                        onChange(weekdaysList.toMutableList().also {
                             it[index] = newWeekdays
                         })
                     },
@@ -83,7 +85,7 @@ fun WeekdayAndHolidayColumn(
                             onClickDelete = {
                                 val newWeekdaysList = weekdaysList.toMutableList()
                                 newWeekdaysList.removeAt(index)
-                                onChangeWeekdaysList(newWeekdaysList)
+                                onChange(newWeekdaysList)
                             },
                             enabled = enabled,
                         )
@@ -91,7 +93,7 @@ fun WeekdayAndHolidayColumn(
                     is Times -> {
                         TimesSelectorsColumn(
                             times = weekdays.times.selectors,
-                            onChangeTimes = { newTimes ->
+                            onChange = { newTimes ->
                                 val newWeekdaysList = weekdaysList.toMutableList()
                                 // when last time has been removed, entire column shall be removed
                                 if (newTimes.isEmpty()) {
@@ -99,7 +101,7 @@ fun WeekdayAndHolidayColumn(
                                 } else {
                                     newWeekdaysList[index] = weekdaysList[index].copy(times = Times(newTimes))
                                 }
-                                onChangeWeekdaysList(newWeekdaysList)
+                                onChange(newWeekdaysList)
                             },
                             timeMode = timeMode,
                             timeTextWidth = timeTextWidth,
@@ -128,29 +130,47 @@ fun WeekdayAndHolidayColumn(
         onDismissRequest = { addWeekdaysState = null },
         onSelect = { addWeekdaysState = AddWeekdaysState.SelectWeekdays(it) }
     )
-
-    val addWeekdaysState2 = addWeekdaysState
-    if (addWeekdaysState2 is AddWeekdaysState.SelectWeekdays) {
-        WeekdayAndHolidaySelectDialog(
-            onDismissRequest = { addWeekdaysState = null },
-            onSelected = { weekdaysSelectors, holidaysSelectors ->
-                val newTimes = when (addWeekdaysState2.weekaysType) {
-                    WeekdaysType.Times -> Times(emptyList())
-                    WeekdaysType.Off -> Off
-                }
-                val newWeekdays = Weekdays(weekdaysSelectors, holidaysSelectors, newTimes)
-                onChangeWeekdaysList(weekdaysList.toMutableList().also { it.add(newWeekdays) })
-            },
-            locale = locale,
-            userLocale = userLocale,
-        )
+    when (val state = addWeekdaysState) {
+        is AddWeekdaysState.SelectWeekdays -> {
+            WeekdayAndHolidaySelectDialog(
+                onDismissRequest = { addWeekdaysState = null },
+                onSelected = { weekdaysSelectors, holidaysSelectors ->
+                    when (state.weekaysType) {
+                        WeekdaysType.Off -> {
+                            val newWeekdays = Weekdays(weekdaysSelectors, holidaysSelectors, Off)
+                            onChange(weekdaysList.toMutableList().also { it.add(newWeekdays) })
+                        }
+                        WeekdaysType.Times -> {
+                            addWeekdaysState = AddWeekdaysState.SelectTime(weekdaysSelectors, holidaysSelectors)
+                        }
+                    }
+                },
+                locale = locale,
+                userLocale = userLocale,
+            )
+        }
+        is AddWeekdaysState.SelectTime -> {
+            TimesSelectorDialog(
+                onDismissRequest = { addWeekdaysState = null },
+                mode = timeMode,
+                onSelect = { newTime ->
+                    val newWeekdays = Weekdays(state.weekdays, state.holidays, Times(listOf(newTime)))
+                    onChange(weekdaysList.toMutableList().also { it.add(newWeekdays) })
+                },
+                locale = locale,
+            )
+        }
+        else -> {}
     }
-
 }
 
 private sealed interface AddWeekdaysState {
     object SelectWeekdaysType : AddWeekdaysState
     data class SelectWeekdays(val weekaysType: WeekdaysType) : AddWeekdaysState
+    data class SelectTime(
+        val weekdays: List<WeekdaysSelector>,
+        val holidays: List<HolidaySelector>
+    ) : AddWeekdaysState
 }
 
 private enum class WeekdaysType {
