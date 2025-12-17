@@ -1,6 +1,13 @@
 package de.westnordost.streetcomplete.quests.parking_charge
 
-import de.westnordost.streetcomplete.osm.fee.Fee
-import de.westnordost.streetcomplete.osm.maxstay.MaxStay
+sealed interface ParkingChargeAnswer
 
-data class ParkingChargeAnswer(val fee: Fee, val maxstay: MaxStay? = null)
+data class SimpleCharge(
+    val amount: String,  // z.B. "1.50"
+    val currency: String,  // z.B. "EUR"
+    val timeUnit: String  // z.B. "hour", "30 minutes"
+) : ParkingChargeAnswer
+
+data class ItVaries(
+    val description: String
+) : ParkingChargeAnswer

@@ -1387,9 +1387,18 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_access_customers">Any person visiting a specific place (e.g. customers only)</string>
     <string name="quest_access_private">Only individual(s) with permission</string>
 
+    <!-- Parking Charge Quest -->
+    <string name="quest_parking_charge_question">How much does parking cost?</string>
+    <string name="quest_parking_charge_amount_label">Amount</string>
+    <string name="quest_parking_charge_amount_hint">e.g. 1.50</string>
+    <string name="quest_parking_charge_time_label">Per</string>
+    <string name="quest_parking_charge_preview_label">Result:</string>
+    <string name="quest_parking_charge_varies_title">Variable pricing</string>
+    <string name="quest_parking_charge_varies_description">Please describe the pricing structure</string>
     <string name="quest_parking_charge_title">How much do you have to pay to use this parking spot?</string>
     <string name="quest_parking_charge_for_every">for every</string>
     <string name="quest_parking_charge_minutes">minutes</string>
+    <string name="quest_parking_charge_varies">It varies...</string>
 
     <string name="quest_charge_answer_hours">Depends on time and day…</string> // TODO REMOVE
     <string name="quest_charge_answer_yes_but">Yes,…</string> // TODO REMOVE

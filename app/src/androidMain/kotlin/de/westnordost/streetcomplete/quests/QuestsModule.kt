@@ -125,6 +125,7 @@ import de.westnordost.streetcomplete.quests.orchard_produce.AddOrchardProduce
 import de.westnordost.streetcomplete.quests.parcel_locker_brand.AddParcelLockerBrand
 import de.westnordost.streetcomplete.quests.parking_access.AddBikeParkingAccess
 import de.westnordost.streetcomplete.quests.parking_access.AddParkingAccess
+import de.westnordost.streetcomplete.quests.parking_charge.AddParkingCharge
 import de.westnordost.streetcomplete.quests.parking_fee.AddBikeParkingFee
 import de.westnordost.streetcomplete.quests.parking_fee.AddMotorcycleParkingFee
 import de.westnordost.streetcomplete.quests.parking_fee.AddParkingFee
@@ -285,6 +286,7 @@ fun questTypeRegistry(
     17 to AddParkingType(),
     18 to AddParkingAccess(), // used by OSM Carto, mapy.cz, OSMand, Sputnik etc
     19 to AddParkingFee(), // used by OsmAnd
+    187 to AddParkingCharge(),
 
     20 to AddTrafficCalmingType(),
 
