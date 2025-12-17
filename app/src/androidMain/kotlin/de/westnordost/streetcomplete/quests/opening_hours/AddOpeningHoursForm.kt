@@ -1,31 +1,23 @@
 package de.westnordost.streetcomplete.quests.opening_hours
 
 import android.os.Bundle
-import android.view.Menu.NONE
 import android.view.View
 import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.widget.PopupMenu
 import androidx.core.view.isGone
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.osm_opening_hours.parser.toOpeningHours
 import de.westnordost.osm_opening_hours.parser.toOpeningHoursOrNull
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.databinding.QuestOpeningHoursBinding
-import de.westnordost.streetcomplete.databinding.QuestOpeningHoursCommentBinding
-import de.westnordost.streetcomplete.osm.opening_hours.model.OpeningMonthsRow
-import de.westnordost.streetcomplete.osm.opening_hours.model.OpeningWeekdaysRow
-import de.westnordost.streetcomplete.osm.opening_hours.parser.toHierarchicOpeningHours
+import de.westnordost.streetcomplete.databinding.ComposeViewBinding
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
-import de.westnordost.streetcomplete.quests.opening_hours.adapter.OpeningHoursAdapter
 import de.westnordost.streetcomplete.view.AdapterDataChangedWatcher
-import kotlinx.serialization.json.Json
 
 class AddOpeningHoursForm : AbstractOsmQuestForm<OpeningHoursAnswer>() {
 
-    override val contentLayoutResId = R.layout.quest_opening_hours
-    private val binding by contentViewBinding(QuestOpeningHoursBinding::bind)
+    override val contentLayoutResId = R.layout.compose_view
+    private val binding by contentViewBinding(ComposeViewBinding::bind)
 
     override val buttonPanelAnswers get() =
         if (isDisplayingPreviousOpeningHours) {
@@ -50,8 +42,6 @@ class AddOpeningHoursForm : AbstractOsmQuestForm<OpeningHoursAnswer>() {
             openingHoursAdapter.changeToMonthsMode()
         }
     )
-
-    private lateinit var openingHoursAdapter: OpeningHoursAdapter
 
     private var isDisplayingPreviousOpeningHours: Boolean = false
 
@@ -83,34 +73,6 @@ class AddOpeningHoursForm : AbstractOsmQuestForm<OpeningHoursAnswer>() {
         binding.addTimesButton.setOnClickListener { onClickAddButton(it) }
     }
 
-    private fun onClickAddButton(v: View) {
-        val rows = openingHoursAdapter.rows
-
-        val addMonthAvailable = rows.any { it is OpeningMonthsRow }
-        val addTimeAvailable = rows.isNotEmpty() && rows.last() is OpeningWeekdaysRow
-        val addOffDayAvailable = rows.isNotEmpty() && rows.last() is OpeningWeekdaysRow
-
-        if (addMonthAvailable || addTimeAvailable || addOffDayAvailable) {
-            val popup = PopupMenu(requireContext(), v)
-            if (addTimeAvailable) popup.menu.add(NONE, 0, NONE, R.string.quest_openingHours_add_hours)
-            popup.menu.add(NONE, 1, NONE, R.string.quest_openingHours_add_weekdays)
-            if (addOffDayAvailable) popup.menu.add(NONE, 2, NONE, R.string.quest_openingHours_add_off_days)
-            if (addMonthAvailable) popup.menu.add(NONE, 3, NONE, R.string.quest_openingHours_add_months)
-            popup.setOnMenuItemClickListener { item ->
-                when (item.itemId) {
-                    0 -> openingHoursAdapter.addNewHours()
-                    1 -> openingHoursAdapter.addNewWeekdays()
-                    2 -> openingHoursAdapter.addNewOffDays()
-                    3 -> openingHoursAdapter.addNewMonths()
-                }
-                true
-            }
-            popup.show()
-        } else {
-            openingHoursAdapter.addNewWeekdays()
-        }
-    }
-
     private fun initStateFromTags() {
         val oh = element.tags["opening_hours"]
         val rows = oh?.toOpeningHoursOrNull(lenient = true)?.toHierarchicOpeningHours()
@@ -123,14 +85,12 @@ class AddOpeningHoursForm : AbstractOsmQuestForm<OpeningHoursAnswer>() {
     }
 
     private fun onLoadInstanceState(savedInstanceState: Bundle) {
-        openingHoursAdapter.rows = Json.decodeFromString(savedInstanceState.getString(OPENING_HOURS_DATA)!!)
         setAsResurvey(savedInstanceState.getBoolean(IS_DISPLAYING_PREVIOUS_HOURS))
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
 
-        outState.putString(OPENING_HOURS_DATA, Json.encodeToString(openingHoursAdapter.rows))
         outState.putBoolean(IS_DISPLAYING_PREVIOUS_HOURS, isDisplayingPreviousOpeningHours)
     }
 
@@ -185,9 +145,4 @@ class AddOpeningHoursForm : AbstractOsmQuestForm<OpeningHoursAnswer>() {
     }
 
     override fun isFormComplete() = openingHoursAdapter.rows.isNotEmpty() && !isDisplayingPreviousOpeningHours
-
-    companion object {
-        private const val OPENING_HOURS_DATA = "oh_data"
-        private const val IS_DISPLAYING_PREVIOUS_HOURS = "oh_is_displaying_previous_hours"
-    }
 }

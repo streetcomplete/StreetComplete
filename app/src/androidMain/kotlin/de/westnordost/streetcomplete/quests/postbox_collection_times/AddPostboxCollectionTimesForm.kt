@@ -11,6 +11,8 @@ import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.osm_opening_hours.parser.toOpeningHours
 import de.westnordost.osm_opening_hours.parser.toOpeningHoursOrNull
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.databinding.ComposeViewBinding
+import de.westnordost.streetcomplete.databinding.ComposeViewBinding.bind
 import de.westnordost.streetcomplete.databinding.QuestCollectionTimesBinding
 import de.westnordost.streetcomplete.osm.opening_hours.parser.toCollectionTimesRows
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
@@ -20,8 +22,8 @@ import kotlinx.serialization.json.Json
 
 class AddPostboxCollectionTimesForm : AbstractOsmQuestForm<CollectionTimesAnswer>() {
 
-    override val contentLayoutResId = R.layout.quest_collection_times
-    private val binding by contentViewBinding(QuestCollectionTimesBinding::bind)
+    override val contentLayoutResId = R.layout.compose_view
+    private val binding by contentViewBinding(ComposeViewBinding::bind)
 
     override val buttonPanelAnswers get() =
         if (isDisplayingPreviousCollectionTimes) {
