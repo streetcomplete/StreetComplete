@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:layout_width="match_parent">
+
+        <!-- Amount Input -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="8dp"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="8dp"
+                android:layout_weight="0">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/quest_parking_charge_amount_label"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="8dp" />
+
+                <!-- TODO: MAKE DYNAMIC -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="EUR"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="8dp"
+                    android:translationX="5dp"
+                    android:textAppearance="@style/TextAppearance.TitleMedium" />
+
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/chargeAmountInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#0fff"
+                android:inputType="number|numberDecimal"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textColor="@color/traffic_black"
+                android:textSize="32dp"
+                android:maxLength="6"
+                android:singleLine="true"
+                tools:text="1.30" />
+
+        </LinearLayout>
+
+        <!-- Amount Input -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="8dp"
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/quest_parking_charge_time_label"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp"
+                android:textAlignment="viewStart" />
+
+            <EditText
+                android:id="@+id/timeValueInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#0fff"
+                android:inputType="number"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textColor="@color/traffic_black"
+                android:textSize="32dp"
+                android:maxLength="6"
+                tools:text="60"
+                android:singleLine="true" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/quest_parking_charge_minutes"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp"
+                android:textAlignment="textEnd"
+                android:id="@+id/textView2" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- Vorschau -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/quest_parking_charge_preview_label"
+        android:textStyle="bold"
+        android:layout_marginBottom="8dp"/>
+
+    <TextView
+        android:id="@+id/chargePreview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textColor="?android:attr/textColorSecondary"
+        android:padding="12dp"
+        android:background="?android:attr/selectableItemBackground"
+        tools:text="1.50 EUR/hour"/>
+
+</LinearLayout>

@@ -3,9 +3,12 @@ package de.westnordost.streetcomplete.quests.parking_charge
 sealed interface ParkingChargeAnswer
 
 data class SimpleCharge(
-    val amount: String,  // z.B. "1.50"
-    val currency: String,  // z.B. "EUR"
-    val timeUnit: String  // z.B. "hour", "30 minutes"
+    // e.g. "1.50"
+    val amount: String,
+    // e.g. "EUR"
+    val currency: String,
+    // e.g. "hour", "30 minutes"
+    val timeUnit: String
 ) : ParkingChargeAnswer
 
 data class ItVaries(
