@@ -48,6 +48,7 @@ fun WeekdaysColumn(
     timeMode: TimeMode,
     timeTextWidth: Dp,
     modifier: Modifier,
+    initialWeekdaysSelectors: List<WeekdaysSelector> = emptyList(),
     locale: Locale = Locale.current,
     userLocale: Locale = Locale.current,
     enabled: Boolean = true,
@@ -145,6 +146,7 @@ fun WeekdaysColumn(
                         }
                     }
                 },
+                initialWeekdays = if (weekdaysList.isEmpty()) initialWeekdaysSelectors else emptyList(),
                 locale = locale,
                 userLocale = userLocale,
             )

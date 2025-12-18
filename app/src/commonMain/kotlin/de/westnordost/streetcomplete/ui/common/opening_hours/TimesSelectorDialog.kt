@@ -20,9 +20,10 @@ fun TimesSelectorDialog(
 ) {
     TimesSelectorDialog(
         onDismissRequest = onDismissRequest,
+        // typical opening hours, actually, according to taginfo, the most common ones
         initialTime = when (mode) {
-            TimeMode.Points -> ClockTime(0, 0)
-            TimeMode.Spans -> TimeSpan(ClockTime(0,0), ClockTime(0,0))
+            TimeMode.Points -> ClockTime(9, 0)
+            TimeMode.Spans -> TimeSpan(ClockTime(9,0), ClockTime(18,0))
         },
         onSelect = onSelect,
         modifier = modifier,

@@ -18,7 +18,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import de.westnordost.osm_opening_hours.model.Month
+import de.westnordost.osm_opening_hours.model.WeekdaysSelector
 import de.westnordost.streetcomplete.osm.opening_hours.Months
+import de.westnordost.streetcomplete.osm.opening_hours.getMonths
+import de.westnordost.streetcomplete.osm.opening_hours.toMonthsSelectors
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.ic_add_24
 import de.westnordost.streetcomplete.resources.ic_delete_24
@@ -35,6 +39,7 @@ fun MonthsColumn(
     timeMode: TimeMode,
     timeTextWidth: Dp,
     modifier: Modifier = Modifier,
+    initialWeekdaysSelectors: List<WeekdaysSelector> = emptyList(),
     locale: Locale = Locale.current,
     userLocale: Locale = Locale.current,
     enabled: Boolean = true,
@@ -94,6 +99,7 @@ fun MonthsColumn(
                 timeMode = timeMode,
                 timeTextWidth = timeTextWidth,
                 modifier = Modifier.fillMaxWidth(),
+                initialWeekdaysSelectors = initialWeekdaysSelectors,
                 locale = locale,
                 userLocale = userLocale,
                 enabled = enabled,
@@ -112,9 +118,15 @@ fun MonthsColumn(
         }
     }
     if (showDialog) {
+        val unmentionedMonthsSelectors = remember(monthsList) {
+            val mentioned = monthsList.flatMap { it.selectors }.getMonths()
+            val unmentioned = (Month.entries.toSet() - mentioned)
+            unmentioned.toMonthsSelectors()
+        }
+
         MonthsOrDateSelectorSelectDialog(
             onDismissRequest = { showDialog = false },
-            initialMonths = listOf(),
+            initialMonths = unmentionedMonthsSelectors,
             onSelected = { newMonthsSelectorList ->
                 onChange(
                     monthsList.toMutableList().also {

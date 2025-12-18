@@ -42,9 +42,6 @@ class AddPostboxCollectionTimesForm : AbstractOsmQuestForm<CollectionTimesAnswer
     override val otherAnswers = listOf(
         AnswerItem(R.string.quest_collectionTimes_answer_no_times_specified) { confirmNoTimes() }
     )
-
-    private lateinit var collectionTimesAdapter: CollectionTimesAdapter
-
     private var isDisplayingPreviousCollectionTimes: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -105,16 +102,6 @@ class AddPostboxCollectionTimesForm : AbstractOsmQuestForm<CollectionTimesAnswer
         }
     }
 
-    private fun onLoadInstanceState(savedInstanceState: Bundle) {
-        collectionTimesAdapter.collectionTimesRows = Json.decodeFromString(savedInstanceState.getString(TIMES_DATA)!!)
-        setAsResurvey(savedInstanceState.getBoolean(IS_DISPLAYING_PREVIOUS_TIMES))
-    }
-
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-        outState.putString(TIMES_DATA, Json.encodeToString(collectionTimesAdapter.collectionTimesRows))
-    }
-
     override fun onClickOk() {
         applyAnswer(CollectionTimes(collectionTimesAdapter.createCollectionTimes()))
     }
@@ -136,8 +123,4 @@ class AddPostboxCollectionTimesForm : AbstractOsmQuestForm<CollectionTimesAnswer
 
     override fun isFormComplete() = collectionTimesAdapter.collectionTimesRows.isNotEmpty() && !isDisplayingPreviousCollectionTimes
 
-    companion object {
-        private const val TIMES_DATA = "times_data"
-        private const val IS_DISPLAYING_PREVIOUS_TIMES = "ct_is_displaying_previous_times"
-    }
 }

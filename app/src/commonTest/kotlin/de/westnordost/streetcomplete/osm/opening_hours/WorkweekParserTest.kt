@@ -18,5 +18,8 @@ class WorkweekParserTest {
 
         assertEquals(listOf(Monday, Sunday), "Mo,Su".toWeekdaysSelectors())
         assertEquals(listOf(Monday..Thursday, Sunday), "Mo-Th,Su".toWeekdaysSelectors())
+
+        assertEquals(listOf(), "invalid".toWeekdaysSelectors())
+        assertEquals(listOf(), "Mo-".toWeekdaysSelectors())
     }
 }

@@ -2,14 +2,15 @@ package de.westnordost.streetcomplete.osm.opening_hours
 
 import de.westnordost.osm_opening_hours.model.Weekday
 import de.westnordost.osm_opening_hours.model.Weekday.*
-import de.westnordost.osm_opening_hours.model.WeekdayRange
 import de.westnordost.osm_opening_hours.model.WeekdaysSelector
 import de.westnordost.streetcomplete.util.StringWithCursor
 
-fun String.toWeekdaysSelectors(): List<WeekdaysSelector> {
-    val s = StringWithCursor(this)
-    return s.parseWeekdaySelectors()
-}
+fun String.toWeekdaysSelectors(): List<WeekdaysSelector> =
+    try {
+        StringWithCursor(this).parseWeekdaySelectors()
+    } catch (_: Exception) {
+        emptyList()
+    }
 
 private fun StringWithCursor.parseWeekdaySelectors(): List<WeekdaysSelector> {
     val result = ArrayList<WeekdaysSelector>()
