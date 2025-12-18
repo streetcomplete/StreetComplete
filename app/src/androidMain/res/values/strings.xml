@@ -1390,7 +1390,7 @@ If there are no signs along the whole street which apply for the highlighted sec
     <!-- Parking Charge Quest -->
     <string name="quest_parking_charge_amount_label">Amount in </string>
     <string name="quest_parking_charge_varies_title">Variable pricing</string>
-    <string name="quest_parking_charge_title">How much do you have to pay to use this parking spot?</string>
+    <string name="quest_parking_charge_title">How much do you need to pay to park here?</string>
     <string name="quest_parking_charge_varies">It varies…</string>
     <string name="quest_parking_charge_time_unit_label">Per:</string>
     <string name="quest_parking_charge_per_hour">Hour</string>
