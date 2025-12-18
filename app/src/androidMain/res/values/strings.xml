@@ -1389,20 +1389,14 @@ If there are no signs along the whole street which apply for the highlighted sec
 
     <!-- Parking Charge Quest -->
     <string name="quest_parking_charge_amount_label">Amount in </string>
-    <string name="quest_parking_charge_amount_hint">e.g. 1.50</string>
-    <string name="quest_parking_charge_time_label">for every</string>
-    <string name="quest_parking_charge_preview_label">Result:</string>
     <string name="quest_parking_charge_varies_title">Variable pricing</string>
-    <string name="quest_parking_charge_varies_description">Please describe the pricing structure</string>
     <string name="quest_parking_charge_title">How much do you have to pay to use this parking spot?</string>
-    <string name="quest_parking_charge_for_every">for every</string>
-    <string name="quest_parking_charge_minutes">minutes</string>
-    <string name="quest_parking_charge_varies">It varies...</string>
-
-    <string name="quest_charge_answer_hours">Depends on time and day…</string> // TODO REMOVE
-    <string name="quest_charge_answer_yes_but">Yes,…</string> // TODO REMOVE
-    <string name="quest_charge_answer_no_but_maxstay">No, but there is a max duration…</string> // TODO REMOVE
-    <string name="quest_charge_add_times">Add times</string> // TODO REMOVE
+    <string name="quest_parking_charge_varies">It varies…</string>
+    <string name="quest_parking_charge_time_unit_label">Per:</string>
+    <string name="quest_parking_charge_per_hour">Hour</string>
+    <string name="quest_parking_charge_per_day">Day</string>
+    <string name="quest_parking_charge_currency_info">Currency: %s (auto-detected)</string>
+    <string name="quest_parking_charge_varies_description">Describe how the parking charges vary (e.g. "1 EUR/h weekdays, 2 EUR/h weekends")</string>
 
     <string name="quest_parking_fee_title">Do you have to pay to park here?</string>
     <string name="quest_fee_answer_hours">Depends on time and day…</string>
