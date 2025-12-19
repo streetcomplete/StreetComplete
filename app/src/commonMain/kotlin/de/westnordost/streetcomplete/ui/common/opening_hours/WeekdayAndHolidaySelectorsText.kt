@@ -17,6 +17,8 @@ import de.westnordost.osm_opening_hours.model.HolidaySelector
 import de.westnordost.osm_opening_hours.model.Weekday
 import de.westnordost.osm_opening_hours.model.WeekdayRange
 import de.westnordost.osm_opening_hours.model.WeekdaysSelector
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.quest_openingHours_unspecified_range
 import de.westnordost.streetcomplete.util.locale.DateTimeTextSymbolStyle
 import org.jetbrains.compose.resources.stringResource
 
@@ -59,6 +61,10 @@ private fun getWeekdaysAndHolidaysString(
     locale: Locale,
     layoutDirection: LayoutDirection,
 ): String {
+    if (weekdays.isEmpty() && holidays.isEmpty()) {
+        return "(" + stringResource(Res.string.quest_openingHours_unspecified_range) + ")"
+    }
+
     val style = DateTimeTextSymbolStyle.Short
     val sb = StringBuilder()
 

@@ -15,7 +15,10 @@ import androidx.compose.ui.unit.LayoutDirection.Ltr
 import de.westnordost.osm_opening_hours.model.MonthRange
 import de.westnordost.osm_opening_hours.model.MonthsOrDateSelector
 import de.westnordost.osm_opening_hours.model.SingleMonth
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.quest_openingHours_unspecified_range
 import de.westnordost.streetcomplete.util.locale.DateTimeTextSymbolStyle
+import org.jetbrains.compose.resources.stringResource
 
 /** A text that shows a list of localized months. E.g. Apr-Aug, Dec */
 @Composable
@@ -46,11 +49,15 @@ fun MonthsText(
     }
 }
 
+@Composable
 private fun getMonthsString(
     months: List<MonthsOrDateSelector>,
     locale: Locale,
     layoutDirection: LayoutDirection,
 ): String {
+    if (months.isEmpty()) {
+        return "(" + stringResource(Res.string.quest_openingHours_unspecified_range) + ")"
+    }
     val style = DateTimeTextSymbolStyle.Short
 
     return months
