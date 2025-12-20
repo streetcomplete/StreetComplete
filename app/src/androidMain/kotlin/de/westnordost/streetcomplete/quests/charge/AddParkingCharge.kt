@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests.parking_charge
+package de.westnordost.streetcomplete.quests.charge
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry

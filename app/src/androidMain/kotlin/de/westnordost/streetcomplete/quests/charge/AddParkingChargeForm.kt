@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests.parking_charge
+package de.westnordost.streetcomplete.quests.charge
 
 import android.os.Bundle
 import android.view.View
