@@ -12,5 +12,5 @@ data class SimpleCharge(
 ) : ParkingChargeAnswer
 
 data class ItVaries(
-    val description: String
+    val conditional: String
 ) : ParkingChargeAnswer

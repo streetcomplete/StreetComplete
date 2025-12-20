@@ -6,6 +6,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.osm.updateCheckDateForKey
 
 class AddParkingCharge : OsmFilterQuestType<ParkingChargeAnswer>(), AndroidQuest {
 
@@ -33,9 +34,11 @@ class AddParkingCharge : OsmFilterQuestType<ParkingChargeAnswer>(), AndroidQuest
             is SimpleCharge -> {
                 // Format: "1.50 EUR/hour"
                 tags["charge"] = "${answer.amount} ${answer.currency}/${answer.timeUnit}"
+                tags.updateCheckDateForKey("charge")
             }
             is ItVaries -> {
-                tags["charge:description"] = answer.description
+                tags["charge:conditional"] = answer.conditional
+                tags.updateCheckDateForKey("charge:conditional")
             }
         }
     }
