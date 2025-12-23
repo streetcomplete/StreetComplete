@@ -9,8 +9,6 @@ import androidx.compose.ui.text.intl.Locale
 import androidx.core.view.isGone
 import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.osm.opening_hours.model.OpeningHoursRow
-import de.westnordost.streetcomplete.quests.opening_hours.adapter.OpeningHoursAdapter
 import de.westnordost.streetcomplete.view.AdapterDataChangedWatcher
 import de.westnordost.streetcomplete.view.OnAdapterItemSelectedListener
 
@@ -20,6 +18,7 @@ import de.westnordost.streetcomplete.view.OnAdapterItemSelectedListener
  *  1. whether it applies all the time, only at specific times or always except at specific times
  *  2. specify the times like opening hours
  */
+/*
 class TimeRestrictionSelectViewController(
     private val timeRestrictionsSelect: Spinner,
     private val timesList: RecyclerView,
@@ -100,3 +99,4 @@ private fun TimeRestriction.toLocalizedString(resources: Resources) = when (this
     TimeRestriction.ONLY_AT_HOURS -> resources.getString(R.string.only_at_hours)
     TimeRestriction.EXCEPT_AT_HOURS -> resources.getString(R.string.except_at_hours)
 }
+*/

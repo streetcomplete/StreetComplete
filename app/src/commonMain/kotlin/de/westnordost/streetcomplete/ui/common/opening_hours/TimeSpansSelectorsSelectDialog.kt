@@ -127,7 +127,7 @@ fun TimeSpansSelectorSelectDialog(
                                     checked = openEnd,
                                     onCheckedChange = { openEnd = it },
                                 )
-                                Text(stringResource(Res.string.opening_hours_no_fixed_end))
+                                Text(stringResource(Res.string.quest_openingHours_no_fixed_end))
                             }
                         }
                     }

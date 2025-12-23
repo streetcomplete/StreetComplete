@@ -2,14 +2,17 @@ package de.westnordost.streetcomplete.osm.opening_hours
 
 import de.westnordost.osm_opening_hours.model.OpeningHours
 import de.westnordost.osm_opening_hours.model.Range
-import de.westnordost.osm_opening_hours.model.Rule
 import de.westnordost.osm_opening_hours.model.RuleType
 import de.westnordost.osm_opening_hours.model.TimesSelector
+import de.westnordost.streetcomplete.util.ktx.asSequenceOfPairs
 
 /** returns null if the list of rules cannot be displayed by the opening hours widget */
 fun OpeningHours.toHierarchicOpeningHours(
     allowTimePoints: Boolean = false
 ): HierarchicOpeningHours? {
+    if (rules.isEmpty()) {
+        return null
+    }
     if (!isSupportedOpeningHours(allowTimePoints)) {
         // parsable, but not supported by StreetComplete
         return null
@@ -18,47 +21,39 @@ fun OpeningHours.toHierarchicOpeningHours(
     var currentWeekdaysList = mutableListOf<Weekdays>()
     var currentTimeSelectors = mutableListOf<TimesSelector>()
 
-    // we add an empty rule at the end because the loop below only fills the result list with each
-    // the previous rule in relation to the current rule
-    var previousRule: Rule? = null
-    for (rule in rules + Rule(Range())) {
+    for ((rule, nextRule) in (rules + null).asSequenceOfPairs()) {
+        val nextRange = nextRule?.let { it.selector as Range }
+
+        checkNotNull(rule)
         val range = rule.selector as Range
-
-        val weekdays = range.weekdays.orEmpty()
-        val holidays = range.holidays.orEmpty()
-        val months = range.months.orEmpty()
-
-        if (previousRule != null) {
-            val previousRange = previousRule.selector as Range
-            val previousWeekdays = previousRange.weekdays.orEmpty()
-            val previousHolidays = previousRange.holidays.orEmpty()
-            val previousMonths = previousRange.months.orEmpty()
-            val previousIsClosed = previousRule.ruleType?.isClosed == true
-
-            if (
-                weekdays != previousWeekdays ||
-                holidays != previousHolidays ||
-                previousIsClosed
-            ) {
-                currentWeekdaysList.add(Weekdays(
-                    weekdaysSelectors = previousWeekdays,
-                    holidaysSelectors = previousHolidays,
-                    times = if (previousIsClosed) Off else Times(currentTimeSelectors)
-                ))
-                currentTimeSelectors = mutableListOf()
-            }
-            if (months != previousMonths) {
-                result.add(Months(
-                    selectors = previousRange.months.orEmpty(),
-                    weekdaysList = currentWeekdaysList
-                ))
-                currentWeekdaysList = mutableListOf()
-            }
-        }
+        val isClosed = rule.ruleType?.isClosed == true
 
         currentTimeSelectors.addAll(range.times.orEmpty())
 
-        previousRule = rule
+        if (
+            nextRange == null ||
+            nextRange.months != range.months ||
+            nextRange.weekdays != range.weekdays ||
+            nextRange.holidays != range.holidays ||
+            isClosed
+        ) {
+            currentWeekdaysList.add(Weekdays(
+                weekdaysSelectors = range.weekdays.orEmpty(),
+                holidaysSelectors = range.holidays.orEmpty(),
+                times = if (isClosed) Off else Times(currentTimeSelectors)
+            ))
+            currentTimeSelectors = mutableListOf()
+        }
+        if (
+            nextRange == null ||
+            nextRange.months != range.months
+        ) {
+            result.add(Months(
+                selectors = range.months.orEmpty(),
+                weekdaysList = currentWeekdaysList
+            ))
+            currentWeekdaysList = mutableListOf()
+        }
     }
 
     return HierarchicOpeningHours(result)

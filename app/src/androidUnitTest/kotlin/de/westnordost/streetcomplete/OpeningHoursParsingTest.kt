@@ -21,11 +21,11 @@ import de.westnordost.osm_opening_hours.model.TwentyFourSeven
 import de.westnordost.osm_opening_hours.model.VariableDate
 import de.westnordost.osm_opening_hours.model.VariableTime
 import de.westnordost.osm_opening_hours.parser.toOpeningHoursOrNull
-import de.westnordost.streetcomplete.osm.opening_hours.parser.hasCollidingWeekdays
-import de.westnordost.streetcomplete.osm.opening_hours.parser.isSupported
-import de.westnordost.streetcomplete.osm.opening_hours.parser.isSupportedOpeningHours
-import de.westnordost.streetcomplete.osm.opening_hours.parser.toOpeningHours
-import de.westnordost.streetcomplete.osm.opening_hours.parser.toHierarchicOpeningHours
+import de.westnordost.streetcomplete.osm.opening_hours.hasCollidingWeekdays
+import de.westnordost.streetcomplete.osm.opening_hours.isSupported
+import de.westnordost.streetcomplete.osm.opening_hours.isSupportedOpeningHours
+import de.westnordost.streetcomplete.osm.opening_hours.toOpeningHours
+import de.westnordost.streetcomplete.osm.opening_hours.toHierarchicOpeningHours
 import java.net.HttpURLConnection
 import java.net.URL
 import java.net.URLEncoder

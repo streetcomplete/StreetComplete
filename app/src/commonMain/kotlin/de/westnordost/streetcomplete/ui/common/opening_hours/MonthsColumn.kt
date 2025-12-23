@@ -43,6 +43,7 @@ fun MonthsColumn(
     locale: Locale = Locale.current,
     userLocale: Locale = Locale.current,
     enabled: Boolean = true,
+    addEnabledWhenEmpty: Boolean = true,
 ) {
     var showDialog by remember { mutableStateOf(false) }
 
@@ -105,7 +106,7 @@ fun MonthsColumn(
                 enabled = enabled,
             )
         }
-        if (enabled) {
+        if (enabled && (addEnabledWhenEmpty || monthsList.any { it.selectors.isNotEmpty() })) {
             Divider()
             OutlinedButton(
                 onClick = { showDialog = true }

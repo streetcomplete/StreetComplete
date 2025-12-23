@@ -104,7 +104,7 @@ class OpeningHoursParserAndGeneratorTest {
         accept("Mo       09:00    -   20:00", "Mo 09:00-20:00")
         // time range with open end
         accept("Mo 06:00+")
-        accept("Mo 06:00-06:00+", "Mo 06:00+")
+        accept("Mo 06:00-06:00+")
         accept("Mo 06:00-18:00+")
         // multiple time ranges
         accept("Mo 08:00-12:00,13:00-14:00")
@@ -121,14 +121,9 @@ class OpeningHoursParserAndGeneratorTest {
         accept("Th-Tu 08:00-10:00")
         accept("Th    -     Tu 08:00   -   10:00", "Th-Tu 08:00-10:00")
         accept("Mo  ,   Tu   08:00  -  10:00", "Mo,Tu 08:00-10:00")
-        accept("Mo-Tu 08:00-10:00", "Mo,Tu 08:00-10:00")
+        accept("Mo-Tu 08:00-10:00")
         // multiple weekday ranges
-        accept("Mo-We,Tu 08:00-10:00", "Mo-We 08:00-10:00")
-        accept("Mo,Tu,We,Th,Fr,Sa,Su 08:00-10:00", "Mo-Su 08:00-10:00")
         accept("Mo,We,Fr,Sa 08:00-10:00")
-        accept("Mo,We,Fr,Sa-Su 08:00-10:00", "We,Fr-Mo 08:00-10:00")
-        accept("Mo-We,Fr-Su 08:00-10:00", "Fr-We 08:00-10:00")
-        accept("Mo-We,Fr-Sa 08:00-10:00", "Mo-We,Fr,Sa 08:00-10:00")
         // with date range
         accept("Jun Th 17:30-19:30", "Jun: Th 17:30-19:30")
         accept("Jun: Th 17:30-19:30")
@@ -137,13 +132,8 @@ class OpeningHoursParserAndGeneratorTest {
         accept("Jan-Feb: Mo 17:00-19:00")
         // multiple date ranges
         accept("Mar,Oct: Mo-Su 07:00-18:00")
-        accept("Mar,Oct-Feb: Mo-Su 7:00-18:00", "Oct-Mar: Mo-Su 07:00-18:00")
         accept("Apr,Oct-Feb: Mo-Su 07:00-18:00")
         accept("Jun-Jul,Nov-Dec: Mo 08:30-09:00")
-        accept("Jan-Jul,Nov-Dec: Mo 08:30-09:00", "Nov-Jul: Mo 08:30-09:00")
-        // partially month based
-        accept("Th 17:30-19:30; Jul-Sep: Mo 17:00-19:00")
-        accept("Jul-Sep: Mo 17:00-19:00; Th 17:30-19:30")
 
         // all together now
         accept("Jun,Sep-Feb: Mo-We,Fr,Sa,PH 15:00-18:00,20:00-02:00+")
@@ -160,49 +150,115 @@ class OpeningHoursParserAndGeneratorTest {
         // use ";" if weekdays don't collide
         accept("Su-Tu 09:00-12:00; We-Sa 10:10-10:11")
         accept("Sa-Tu 09:00-12:00; We-Fr 10:10-10:11")
-        accept("Mo-We 09:00-20:00, Th 08:00-16:00", "Mo-We 09:00-20:00; Th 08:00-16:00")
-        accept("Mo 09:00-20:00, Su 10:00-11:00, Tu 09:00-20:00", "Mo 09:00-20:00; Su 10:00-11:00; Tu 09:00-20:00")
-        accept("Mo-Fr 07:30-18:00, Sa-Su 9:00-18:00", "Mo-Fr 07:30-18:00; Sa,Su 09:00-18:00")
-        accept("Mo 17:30-19:30, Th 17:00-19:00", "Mo 17:30-19:30; Th 17:00-19:00")
+        accept(
+            "Mo-We 09:00-20:00, Th 08:00-16:00",
+            "Mo-We 09:00-20:00; Th 08:00-16:00"
+        )
+        accept(
+            "Mo 09:00-20:00, Su 10:00-11:00, Tu 09:00-20:00",
+            "Mo 09:00-20:00; Su 10:00-11:00; Tu 09:00-20:00"
+        )
+        accept(
+            "Mo-Fr 07:30-18:00, Sa-Su 09:00-18:00",
+            "Mo-Fr 07:30-18:00; Sa-Su 09:00-18:00"
+        )
+        accept(
+            "Mo 17:30-19:30, Th 17:00-19:00",
+            "Mo 17:30-19:30; Th 17:00-19:00"
+        )
         accept("Mo-Sa 07:00-20:00; PH 07:00-07:05")
         // use ";" if weekdays don't collide for months-rules
         accept("Jun: Mo 17:30-19:30; Jul-Sep: Mo 17:00-19:00")
-        accept("Jun Mo 17:30-19:30, Jul-Sep Mo 17:00-19:00", "Jun: Mo 17:30-19:30; Jul-Sep: Mo 17:00-19:00")
+        accept(
+            "Jun Mo 17:30-19:30, Jul-Sep Mo 17:00-19:00",
+            "Jun: Mo 17:30-19:30; Jul-Sep: Mo 17:00-19:00"
+        )
         accept("Jun: Th 17:30-19:30; Jun: Fr 10:30-20:30; Jul-Sep: Th 17:00-19:00")
-        accept("Jun Th 17:30-19:30, Jun Fr 10:30-20:30; Jul-Sep Th 17:00-19:00", "Jun: Th 17:30-19:30; Jun: Fr 10:30-20:30; Jul-Sep: Th 17:00-19:00")
+        accept(
+            "Jun Th 17:30-19:30, Jun Fr 10:30-20:30; Jul-Sep Th 17:00-19:00",
+            "Jun: Th 17:30-19:30; Jun: Fr 10:30-20:30; Jul-Sep: Th 17:00-19:00"
+        )
         // use "," if weekdays collide
         accept("Mo-We 09:00-12:00, Tu 16:00-18:00")
         accept("Mo-We 09:00-20:00, We-Fr 21:00-22:00")
-        accept("Mo-Sa 07:00-20:00, PH,Sa 22:00-23:00", "Mo-Sa 07:00-20:00, Sa,PH 22:00-23:00")
-        accept("Mo-We 09:00-12:00, Tu 16:00-18:00; Sa 12:00-18:00", "Mo-We 09:00-12:00, Tu 16:00-18:00, Sa 12:00-18:00")
+        accept(
+            "Mo-Sa 07:00-20:00, PH,Sa 22:00-23:00",
+            "Mo-Sa 07:00-20:00, Sa,PH 22:00-23:00"
+        )
+        accept(
+            "Mo-We 09:00-12:00, Tu 16:00-18:00; Sa 12:00-18:00",
+            "Mo-We 09:00-12:00, Tu 16:00-18:00, Sa 12:00-18:00"
+        )
         // use "," if weekdays collide for months-rules
         accept("Jun: Th 17:30-19:30, Jun-Aug: Th 10:30-14:30")
         accept("Dec-Jun: Th 17:30-19:30, Jun-Aug: Th 10:30-14:30")
-        accept("Jun Th 17:30-19:30; Jun Fr 10:30-20:30; Jul-Sep Mo 17:00-19:00, Jul-Sep Mo,Tu 22:00-23:00", "Jun: Th 17:30-19:30, Jun: Fr 10:30-20:30, Jul-Sep: Mo 17:00-19:00, Jul-Sep: Mo,Tu 22:00-23:00")
+        accept(
+            "Jun Th 17:30-19:30; Jun Fr 10:30-20:30; Jul-Sep Mo 17:00-19:00, Jul-Sep Mo,Tu 22:00-23:00",
+            "Jun: Th 17:30-19:30, Jun: Fr 10:30-20:30, Jul-Sep: Mo 17:00-19:00, Jul-Sep: Mo,Tu 22:00-23:00"
+        )
         // merging consecutive rules with same days
-        accept("Mo 09:00-20:00, Mo 21:00-22:00", "Mo 09:00-20:00,21:00-22:00")
-        accept("Mo-Fr 09:00-20:00, Mo-Fr 21:00-22:00", "Mo-Fr 09:00-20:00,21:00-22:00")
-        accept("Mo-Fr,Su,PH 09:00-20:00, Mo-Fr,Su,PH 21:00-22:00", "Su-Fr,PH 09:00-20:00,21:00-22:00")
-        accept("Jun Th 17:30-19:30, Jun Th 10:30-14:30", "Jun: Th 17:30-19:30,10:30-14:30")
-        accept("Jun Th 17:30-19:30, Jun Th 10:30-14:30; Jul Mo 08:30-11:00", "Jun: Th 17:30-19:30,10:30-14:30; Jul: Mo 08:30-11:00")
+        accept(
+            "Mo 09:00-20:00, Mo 21:00-22:00",
+            "Mo 09:00-20:00,21:00-22:00"
+        )
+        accept(
+            "Mo-Fr 09:00-20:00, Mo-Fr 21:00-22:00",
+            "Mo-Fr 09:00-20:00,21:00-22:00"
+        )
+        accept(
+            "Mo-Fr,Su,PH 09:00-20:00, Mo-Fr,Su,PH 21:00-22:00",
+            "Mo-Fr,Su,PH 09:00-20:00,21:00-22:00"
+        )
+        accept(
+            "Jun Th 17:30-19:30, Jun Th 10:30-14:30",
+            "Jun: Th 17:30-19:30,10:30-14:30"
+        )
+        accept(
+            "Jun Th 17:30-19:30, Jun Th 10:30-14:30; Jul Mo 08:30-11:00",
+            "Jun: Th 17:30-19:30,10:30-14:30; Jul: Mo 08:30-11:00"
+        )
         // looping into next day
         accept("Mo-We 20:00-02:00, Th 08:00-16:00")
         // off rules
         accept("Tu-Fr 08:00-10:00; Mo off")
         accept("Tu-Fr 08:00-10:00; Sa-Mo off")
-        accept("Tu-Fr 08:00-10:00; Mo closed", "Tu-Fr 08:00-10:00; Mo off")
+        accept(
+            "Tu-Fr 08:00-10:00; Mo closed",
+            "Tu-Fr 08:00-10:00; Mo off"
+        )
         accept("Mo-Fr 08:00-18:00; PH off")
-        accept("Tu-Fr 08:00-10:00; Mo closed", "Tu-Fr 08:00-10:00; Mo off")
+        accept(
+            "Tu-Fr 08:00-10:00; Mo closed",
+            "Tu-Fr 08:00-10:00; Mo off"
+        )
         accept("Tu-Fr 08:00-10:00, We 12:00-18:00; Mo off")
         accept("Tu-Fr 08:00-10:00; Sa 12:00-18:00; Mo,PH off")
-        accept("Tu-Fr 08:00-10:00; Mo off, We 12:00-18:00", "Tu-Fr 08:00-10:00, We 12:00-18:00; Mo off")
-        accept("Tu-Fr 08:00-10:00; Mo off, We 12:00-18:00; PH off", "Tu-Fr 08:00-10:00, We 12:00-18:00; Mo off; PH off")
+        accept(
+            "Tu-Fr 08:00-10:00; Mo off, We 12:00-18:00",
+            "Tu-Fr 08:00-10:00, We 12:00-18:00; Mo off"
+        )
+        accept(
+            "Tu-Fr 08:00-10:00; Mo off, We 12:00-18:00; PH off",
+            "Tu-Fr 08:00-10:00, We 12:00-18:00; Mo off; PH off"
+        )
         accept("Mo-Fr 08:00-10:00; We off") // off rules do not collide
         // off rules moved to back
-        accept("PH off; Mo-Fr 08:00-18:00", "Mo-Fr 08:00-18:00; PH off")
-        accept("PH off; Dec-Jun: Mo-Fr 08:00-18:00; Dec-Jun: Mo off", "Dec-Jun: Mo-Fr 08:00-18:00; PH off; Dec-Jun: Mo off")
+        accept(
+            "PH off; Mo-Fr 08:00-18:00",
+            "Mo-Fr 08:00-18:00; PH off"
+        )
+        accept(
+            "PH off; Dec-Jun: Mo-Fr 08:00-18:00; Dec-Jun: Mo off",
+            "Dec-Jun: Mo-Fr 08:00-18:00; PH off; Dec-Jun: Mo off"
+        )
         // off rules are always overwriting
-        accept("PH off, Mo-Fr 08:00-18:00", "Mo-Fr 08:00-18:00; PH off")
+        accept(
+            "PH off, Mo-Fr 08:00-18:00",
+            "Mo-Fr 08:00-18:00; PH off"
+        )
+        // partially month based
+        accept("Th 17:30-19:30; Jul-Sep: Mo 17:00-19:00")
+        accept("Jul-Sep: Mo 17:00-19:00; Th 17:30-19:30")
     }
 
     private fun parseAndGenerate(oh: String, allowTimePoints: Boolean): String? =

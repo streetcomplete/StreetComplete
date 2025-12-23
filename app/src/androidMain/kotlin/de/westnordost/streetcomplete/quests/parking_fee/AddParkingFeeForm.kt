@@ -5,7 +5,7 @@ import de.westnordost.streetcomplete.databinding.QuestFeeHoursBinding
 import de.westnordost.streetcomplete.databinding.QuestMaxstayBinding
 import de.westnordost.streetcomplete.osm.fee.Fee
 import de.westnordost.streetcomplete.osm.maxstay.MaxStay
-import de.westnordost.streetcomplete.osm.opening_hours.parser.toOpeningHours
+import de.westnordost.streetcomplete.osm.opening_hours.toOpeningHours
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.parking_fee.AddParkingFeeForm.Mode.FEE_AT_HOURS
@@ -13,17 +13,13 @@ import de.westnordost.streetcomplete.quests.parking_fee.AddParkingFeeForm.Mode.F
 import de.westnordost.streetcomplete.quests.parking_fee.AddParkingFeeForm.Mode.MAX_STAY
 import de.westnordost.streetcomplete.view.controller.DurationInputViewController
 import de.westnordost.streetcomplete.view.controller.DurationUnit
-import de.westnordost.streetcomplete.view.controller.TimeRestriction.AT_ANY_TIME
-import de.westnordost.streetcomplete.view.controller.TimeRestriction.EXCEPT_AT_HOURS
-import de.westnordost.streetcomplete.view.controller.TimeRestriction.ONLY_AT_HOURS
-import de.westnordost.streetcomplete.view.controller.TimeRestrictionSelectViewController
 
 class AddParkingFeeForm : AbstractOsmQuestForm<ParkingFeeAnswer>() {
 
-    private var feeAtHoursSelect: TimeRestrictionSelectViewController? = null
+    //private var feeAtHoursSelect: TimeRestrictionSelectViewController? = null
 
     private var maxstayDurationInput: DurationInputViewController? = null
-    private var maxstayAtHoursSelect: TimeRestrictionSelectViewController? = null
+    //private var maxstayAtHoursSelect: TimeRestrictionSelectViewController? = null
 
     override val buttonPanelAnswers get() =
         if (mode == FEE_YES_NO) {
@@ -53,7 +49,7 @@ class AddParkingFeeForm : AbstractOsmQuestForm<ParkingFeeAnswer>() {
 
         if (mode == FEE_AT_HOURS) {
             val binding = QuestFeeHoursBinding.bind(setContentView(R.layout.quest_fee_hours))
-
+/*
             feeAtHoursSelect = TimeRestrictionSelectViewController(
                 binding.timeRestrictionSelect.selectAtHours,
                 binding.timeRestrictionSelect.openingHoursList,
@@ -66,6 +62,8 @@ class AddParkingFeeForm : AbstractOsmQuestForm<ParkingFeeAnswer>() {
                 // user already answered that it depends on the time, so don't show the "at any time" option
                 it.selectableTimeRestrictions = listOf(ONLY_AT_HOURS, EXCEPT_AT_HOURS)
             }
+
+ */
         } else if (mode == MAX_STAY) {
             val binding = QuestMaxstayBinding.bind(setContentView(R.layout.quest_maxstay))
 
@@ -75,6 +73,7 @@ class AddParkingFeeForm : AbstractOsmQuestForm<ParkingFeeAnswer>() {
             ).also {
                 it.onInputChanged = { checkIsFormComplete() }
             }
+            /*
             maxstayAtHoursSelect = TimeRestrictionSelectViewController(
                 binding.timeRestrictionSelect.selectAtHours,
                 binding.timeRestrictionSelect.openingHoursList,
@@ -85,12 +84,17 @@ class AddParkingFeeForm : AbstractOsmQuestForm<ParkingFeeAnswer>() {
                 it.locale = countryInfo.userPreferredLocale
                 it.onInputChanged = { checkIsFormComplete() }
             }
+
+             */
         }
     }
 
     private fun clearViewControllers() {
+        /*
         feeAtHoursSelect = null
         maxstayAtHoursSelect = null
+
+         */
         maxstayDurationInput = null
     }
 
@@ -100,6 +104,7 @@ class AddParkingFeeForm : AbstractOsmQuestForm<ParkingFeeAnswer>() {
     }
 
     override fun onClickOk() {
+        /*
         when (mode) {
             FEE_AT_HOURS -> {
                 val hours = feeAtHoursSelect!!.times.toOpeningHours()
@@ -129,17 +134,25 @@ class AddParkingFeeForm : AbstractOsmQuestForm<ParkingFeeAnswer>() {
             }
             else -> {}
         }
+
+         */
     }
 
     override fun isRejectingClose() = when (mode) {
+        /*
         FEE_AT_HOURS -> feeAtHoursSelect!!.isComplete
         MAX_STAY -> maxstayAtHoursSelect!!.isComplete || maxstayDurationInput!!.durationValue > 0.0
+
+         */
         else -> false
     }
 
     override fun isFormComplete() = when (mode) {
+        /*
         FEE_AT_HOURS -> feeAtHoursSelect!!.isComplete
         MAX_STAY -> maxstayAtHoursSelect!!.isComplete && maxstayDurationInput!!.durationValue > 0.0
+
+         */
         else -> false
     }
 

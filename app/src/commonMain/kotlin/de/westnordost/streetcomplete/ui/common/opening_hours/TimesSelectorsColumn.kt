@@ -22,6 +22,7 @@ import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.ic_add_24
 import de.westnordost.streetcomplete.resources.ic_delete_24
 import de.westnordost.streetcomplete.resources.quest_openingHours_add_hours
+import de.westnordost.streetcomplete.resources.quest_openingHours_add_time
 import de.westnordost.streetcomplete.resources.quest_openingHours_delete
 import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.painterResource

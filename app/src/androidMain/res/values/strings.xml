@@ -1308,11 +1308,11 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_openingHours_public_holidays">Public holidays</string>
     <string name="quest_openingHours_public_holidays_short">PH</string>
 
-    <string name="opening_hours_no_fixed_end">no fixed end time</string>
+    <string name="quest_openingHours_no_fixed_end">no fixed end time</string>
     <!-- e.g. "from 12:00", end hour unknown or flexible ~= open end -->
-    <string name="opening_hours_from">from %1$s</string>
+    <string name="quest_openingHours_from">from %1$s</string>
     <!-- e.g. "16:00 to 20:00, until late" ~= open end -->
-    <string name="opening_hours_until_late">%1$s until late</string>
+    <string name="quest_openingHours_until_late">%1$s until late</string>
 
 
     <string name="quest_openingHours_answer_247">Open 24/7</string>
@@ -1320,7 +1320,6 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_openingHours_answer_no_regular_opening_hours">No regular opening hours…</string>
     <string name="quest_openingHours_comment_title">Describe opening hours</string>
     <string name="quest_openingHours_comment_description">Be concise, ideally use the wording from the sign, e.g. “by appointment”. The absence of a sign does not necessarily mean that there are no regular opening hours.</string>
-    <string name="quest_openingHours_emptyAnswer">You need to describe what is on the sign. If there is no sign, you should ask for the opening hours inside.</string>
     <string name="quest_openingHours_no_sign">No opening hours sign</string>
 
     <string name="quest_orchard_produce_title">What’s being grown here?</string>
@@ -1424,6 +1423,10 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_postboxCollectionTimes_resurvey_title">Are the pickup times of this collection box still correct?</string>
     <string name="quest_collectionTimes_add_times">Add collection time</string>
     <string name="quest_collectionTimes_answer_no_times_specified">No times specified</string>
+    <!-- In some places it is common that an hour range in which mail is collected is specified on the box instead of specific times -->
+    <string name="quest_collectionTimes_answer_time_spans">Within a time range…</string>
+    <!-- In most places it is common that specific times at which mail is collected are specified on the box instead of hour ranges -->
+    <string name="quest_collectionTimes_answer_time_points">At specific times…</string>
 
     <string name="quest_ref_answer_noRef">No number or code visible…</string>
 

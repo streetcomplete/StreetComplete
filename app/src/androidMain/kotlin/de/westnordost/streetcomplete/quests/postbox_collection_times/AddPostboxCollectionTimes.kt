@@ -12,7 +12,7 @@ import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.POSTMAN
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.osm.opening_hours.parser.isSupportedCollectionTimes
+import de.westnordost.streetcomplete.osm.opening_hours.isSupportedOpeningHours
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 
 class AddPostboxCollectionTimes : OsmElementQuestType<CollectionTimesAnswer>, AndroidQuest {
@@ -59,7 +59,7 @@ class AddPostboxCollectionTimes : OsmElementQuestType<CollectionTimesAnswer>, An
            legal tagging for collection times, even though they are not supported in
            this app, i.e. are never asked again */
         val oh = tags["collection_times"]?.toOpeningHoursOrNull(lenient = true)
-        val hasSupportedCollectionTimes = oh != null && oh.isSupportedCollectionTimes()
+        val hasSupportedCollectionTimes = oh != null && oh.isSupportedOpeningHours(allowTimePoints = true)
         return if (hasSupportedCollectionTimes) {
             R.string.quest_postboxCollectionTimes_resurvey_title
         } else {
@@ -80,7 +80,7 @@ class AddPostboxCollectionTimes : OsmElementQuestType<CollectionTimesAnswer>, An
         val oh = ct.toOpeningHoursOrNull(lenient = false) ?: return true
         // only display supported rules, however, those that are supported but have colliding
         // weekdays should be shown (->resurveyed), as they are likely mistakes
-        return oh.rules.all { rule -> rule.isSupportedCollectionTimes() } && oh.containsTimePoints()
+        return oh.rules.all { rule -> rule.isSupportedOpeningHours() }
     }
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =

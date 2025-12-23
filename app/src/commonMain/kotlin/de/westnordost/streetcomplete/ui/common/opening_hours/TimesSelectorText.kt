@@ -21,8 +21,8 @@ import de.westnordost.osm_opening_hours.model.TimeIntervals
 import de.westnordost.osm_opening_hours.model.TimeSpan
 import de.westnordost.osm_opening_hours.model.TimesSelector
 import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.opening_hours_from
-import de.westnordost.streetcomplete.resources.opening_hours_until_late
+import de.westnordost.streetcomplete.resources.quest_openingHours_from
+import de.westnordost.streetcomplete.resources.quest_openingHours_until_late
 import de.westnordost.streetcomplete.util.locale.DateTimeFormatStyle
 import de.westnordost.streetcomplete.util.locale.LocalTimeFormatter
 import kotlinx.datetime.LocalTime
@@ -71,13 +71,13 @@ private fun TimesSelector.toLocalizedString(
     return when (this) {
         is StartingAtTime -> {
             val startTimeText = start.toLocalizedString(timeFormatter)
-            stringResource(Res.string.opening_hours_from, startTimeText)
+            stringResource(Res.string.quest_openingHours_from, startTimeText)
         }
         is TimeSpan -> {
             val startTimeText = start.toLocalizedString(timeFormatter)
             val endTime = end.toLocalizedString(timeFormatter)
             val endText = if (openEnd) {
-                stringResource(Res.string.opening_hours_until_late, endTime)
+                stringResource(Res.string.quest_openingHours_until_late, endTime)
             } else {
                 endTime
             }

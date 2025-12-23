@@ -1,34 +1,47 @@
 package de.westnordost.streetcomplete.quests.postbox_collection_times
 
 import android.os.Bundle
-import android.view.Menu
 import android.view.View
 import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.widget.PopupMenu
-import androidx.core.view.isGone
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import androidx.compose.material.Surface
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.snapshotFlow
+import androidx.compose.ui.text.intl.Locale
+import androidx.lifecycle.lifecycleScope
 import de.westnordost.osm_opening_hours.parser.toOpeningHours
 import de.westnordost.osm_opening_hours.parser.toOpeningHoursOrNull
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.ComposeViewBinding
-import de.westnordost.streetcomplete.databinding.ComposeViewBinding.bind
-import de.westnordost.streetcomplete.databinding.QuestCollectionTimesBinding
-import de.westnordost.streetcomplete.osm.opening_hours.parser.toCollectionTimesRows
+import de.westnordost.streetcomplete.osm.opening_hours.HierarchicOpeningHours
+import de.westnordost.streetcomplete.osm.opening_hours.toHierarchicOpeningHours
+import de.westnordost.streetcomplete.osm.opening_hours.toOpeningHours
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
-import de.westnordost.streetcomplete.view.AdapterDataChangedWatcher
-import kotlinx.serialization.json.Json
+import de.westnordost.streetcomplete.ui.common.opening_hours.OpeningHoursTable
+import de.westnordost.streetcomplete.ui.common.opening_hours.TimeMode
+import de.westnordost.streetcomplete.ui.util.content
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 
 class AddPostboxCollectionTimesForm : AbstractOsmQuestForm<CollectionTimesAnswer>() {
 
     override val contentLayoutResId = R.layout.compose_view
     private val binding by contentViewBinding(ComposeViewBinding::bind)
 
+    private var originalOpeningHours: HierarchicOpeningHours? = null
+
+    private var isDisplayingPrevious: MutableState<Boolean> = mutableStateOf(false)
+
+    private var timeMode: MutableState<TimeMode> = mutableStateOf(TimeMode.Points)
+
+    private var openingHours: MutableState<HierarchicOpeningHours> =
+        mutableStateOf(HierarchicOpeningHours())
+
     override val buttonPanelAnswers get() =
-        if (isDisplayingPreviousCollectionTimes) {
+        if (isDisplayingPrevious.value) {
             listOf(
-                AnswerItem(R.string.quest_generic_hasFeature_no) { setAsResurvey(false) },
+                AnswerItem(R.string.quest_generic_hasFeature_no) { isDisplayingPrevious.value = false },
                 AnswerItem(R.string.quest_generic_hasFeature_yes) {
                     applyAnswer(CollectionTimes(
                         element.tags["collection_times"]!!.toOpeningHours(lenient = true)
@@ -40,77 +53,55 @@ class AddPostboxCollectionTimesForm : AbstractOsmQuestForm<CollectionTimesAnswer
         }
 
     override val otherAnswers = listOf(
-        AnswerItem(R.string.quest_collectionTimes_answer_no_times_specified) { confirmNoTimes() }
+        AnswerItem(R.string.quest_collectionTimes_answer_no_times_specified) { confirmNoTimes() },
+        when (timeMode.value) {
+            TimeMode.Points -> AnswerItem(R.string.quest_collectionTimes_answer_time_spans) {
+                timeMode.value = TimeMode.Spans
+            }
+            TimeMode.Spans -> AnswerItem(R.string.quest_collectionTimes_answer_time_points) {
+                timeMode.value = TimeMode.Points
+            }
+        }
     )
-    private var isDisplayingPreviousCollectionTimes: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        collectionTimesAdapter = CollectionTimesAdapter(requireContext(), countryInfo)
+        val oh = element.tags["collection_times"]?.toOpeningHoursOrNull(lenient = true)
+        originalOpeningHours = oh?.toHierarchicOpeningHours(allowTimePoints = true)
+        isDisplayingPrevious.value = originalOpeningHours != null
+        openingHours.value = originalOpeningHours ?: HierarchicOpeningHours()
+        timeMode.value = if (oh?.containsTimeSpans() == true) TimeMode.Spans else TimeMode.Points
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        if (savedInstanceState != null) {
-            onLoadInstanceState(savedInstanceState)
-        } else {
-            initStateFromTags()
-        }
-
-        collectionTimesAdapter.registerAdapterDataObserver(AdapterDataChangedWatcher { checkIsFormComplete() })
-
-        binding.collectionTimesList.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
-        binding.collectionTimesList.adapter = collectionTimesAdapter
-        binding.collectionTimesList.isNestedScrollingEnabled = false
-        checkIsFormComplete()
-
-        binding.addTimesButton.setOnClickListener { onClickAddButton(it) }
-    }
-
-    private fun onClickAddButton(v: View) {
-        val rows = collectionTimesAdapter.collectionTimesRows
-
-        val addTimeAvailable = rows.isNotEmpty()
-
-        if (addTimeAvailable) {
-            val popup = PopupMenu(requireContext(), v)
-            if (addTimeAvailable) popup.menu.add(Menu.NONE, 0, Menu.NONE, R.string.quest_openingHours_add_hours)
-            popup.menu.add(Menu.NONE, 1, Menu.NONE, R.string.quest_openingHours_add_weekdays)
-            popup.setOnMenuItemClickListener { item ->
-                when (item.itemId) {
-                    0 -> collectionTimesAdapter.addNewHours()
-                    1 -> collectionTimesAdapter.addNewWeekdays()
-                }
-                true
+        snapshotFlow { isDisplayingPrevious.value }
+            .onEach {
+                updateButtonPanel()
+                checkIsFormComplete()
             }
-            popup.show()
-        } else {
-            collectionTimesAdapter.addNewWeekdays()
-        }
-    }
+            .launchIn(lifecycleScope)
 
-    private fun initStateFromTags() {
-        val ct = element.tags["collection_times"]
-        val rows = ct?.toOpeningHoursOrNull(lenient = true)?.toCollectionTimesRows()
-        if (rows != null) {
-            collectionTimesAdapter.collectionTimesRows = rows.toMutableList()
-            setAsResurvey(true)
-        } else {
-            setAsResurvey(false)
-        }
+        binding.composeViewBase.content { Surface {
+            OpeningHoursTable(
+                openingHours = openingHours.value,
+                onChange = { openingHours.value = it },
+                timeMode = timeMode.value,
+                countryInfo = countryInfo,
+                locale = countryInfo.userPreferredLocale,
+                userLocale = Locale.current,
+                enabled = !isDisplayingPrevious.value,
+                addMonthsEnabledWhenEmpty = false,
+            )
+        } }
+
+        checkIsFormComplete()
     }
 
     override fun onClickOk() {
-        applyAnswer(CollectionTimes(collectionTimesAdapter.createCollectionTimes()))
-    }
-
-    private fun setAsResurvey(resurvey: Boolean) {
-        collectionTimesAdapter.isEnabled = !resurvey
-        isDisplayingPreviousCollectionTimes = resurvey
-        binding.addTimesButton.isGone = resurvey
-        updateButtonPanel()
+        applyAnswer(CollectionTimes(openingHours.value.toOpeningHours()))
     }
 
     private fun confirmNoTimes() {
@@ -121,6 +112,6 @@ class AddPostboxCollectionTimesForm : AbstractOsmQuestForm<CollectionTimesAnswer
             .show()
     }
 
-    override fun isFormComplete() = collectionTimesAdapter.collectionTimesRows.isNotEmpty() && !isDisplayingPreviousCollectionTimes
-
+    override fun isFormComplete() =
+        openingHours.value.isComplete() && !isDisplayingPrevious.value
 }

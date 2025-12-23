@@ -23,20 +23,36 @@ import de.westnordost.osm_opening_hours.model.WeekdaysSelector
  */
 data class HierarchicOpeningHours(
     val monthsList: List<Months>
-)
+) {
+    constructor() : this(listOf(Months(emptyList(), emptyList())))
+
+    fun isComplete(): Boolean =
+        monthsList.isNotEmpty() && monthsList.all { it.isComplete() }
+}
 
 data class Months(
     val selectors: List<MonthsOrDateSelector>,
     val weekdaysList: List<Weekdays>
-)
+) {
+    fun isComplete(): Boolean =
+        weekdaysList.isNotEmpty() && weekdaysList.all { it.isComplete() }
+}
 
 data class Weekdays(
     val weekdaysSelectors: List<WeekdaysSelector>,
     val holidaysSelectors: List<HolidaySelector>,
     val times: WeekdaysContent
-)
+) {
+    fun isComplete(): Boolean = times.isComplete()
+}
 
-sealed interface WeekdaysContent
-data object Off : WeekdaysContent
-data class Times(val selectors: List<TimesSelector>) : WeekdaysContent
+sealed interface WeekdaysContent {
+    fun isComplete(): Boolean
+}
+data object Off : WeekdaysContent {
+    override fun isComplete(): Boolean = true
+}
+data class Times(val selectors: List<TimesSelector>) : WeekdaysContent {
+    override fun isComplete(): Boolean = selectors.isNotEmpty()
+}
 

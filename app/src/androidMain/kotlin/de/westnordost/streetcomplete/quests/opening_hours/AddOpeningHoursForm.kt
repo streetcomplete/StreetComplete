@@ -1,28 +1,63 @@
 package de.westnordost.streetcomplete.quests.opening_hours
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.view.View
-import androidx.appcompat.app.AlertDialog
-import androidx.core.view.isGone
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material.ContentAlpha
+import androidx.compose.material.LocalContentAlpha
+import androidx.compose.material.LocalTextStyle
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Surface
+import androidx.compose.material.Text
+import androidx.compose.material.TextField
+import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.snapshotFlow
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.intl.Locale
+import androidx.compose.ui.unit.dp
+import androidx.lifecycle.lifecycleScope
 import de.westnordost.osm_opening_hours.parser.toOpeningHours
 import de.westnordost.osm_opening_hours.parser.toOpeningHoursOrNull
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.ComposeViewBinding
+import de.westnordost.streetcomplete.osm.opening_hours.HierarchicOpeningHours
+import de.westnordost.streetcomplete.osm.opening_hours.toHierarchicOpeningHours
+import de.westnordost.streetcomplete.osm.opening_hours.toOpeningHours
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
-import de.westnordost.streetcomplete.view.AdapterDataChangedWatcher
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.quest_openingHours_comment_description
+import de.westnordost.streetcomplete.ui.common.opening_hours.MonthsOrDateSelectorSelectDialog
+import de.westnordost.streetcomplete.ui.common.opening_hours.OpeningHoursTable
+import de.westnordost.streetcomplete.ui.common.opening_hours.TimeMode
+import de.westnordost.streetcomplete.ui.util.content
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
+import org.jetbrains.compose.resources.stringResource
 
 class AddOpeningHoursForm : AbstractOsmQuestForm<OpeningHoursAnswer>() {
 
     override val contentLayoutResId = R.layout.compose_view
     private val binding by contentViewBinding(ComposeViewBinding::bind)
 
+    private var originalOpeningHours: HierarchicOpeningHours? = null
+
+    private var isDisplayingPrevious: MutableState<Boolean> = mutableStateOf(false)
+
+    private var showFirstMonthsDialog: MutableState<Boolean> = mutableStateOf(false)
+
+    private var openingHours: MutableState<HierarchicOpeningHours> =
+        mutableStateOf(HierarchicOpeningHours())
+
     override val buttonPanelAnswers get() =
-        if (isDisplayingPreviousOpeningHours) {
+        if (isDisplayingPrevious.value) {
             listOf(
-                AnswerItem(R.string.quest_generic_hasFeature_no) { setAsResurvey(false) },
+                AnswerItem(R.string.quest_generic_hasFeature_no) { isDisplayingPrevious.value = false },
                 AnswerItem(R.string.quest_generic_hasFeature_yes) {
                     applyAnswer(RegularOpeningHours(
                         element.tags["opening_hours"]!!.toOpeningHours(lenient = true)
@@ -38,100 +73,105 @@ class AddOpeningHoursForm : AbstractOsmQuestForm<OpeningHoursAnswer>() {
         AnswerItem(R.string.quest_openingHours_answer_no_regular_opening_hours) { showInputCommentDialog() },
         AnswerItem(R.string.quest_openingHours_answer_247) { showConfirm24_7Dialog() },
         AnswerItem(R.string.quest_openingHours_answer_seasonal_opening_hours) {
-            setAsResurvey(false)
-            openingHoursAdapter.changeToMonthsMode()
+            isDisplayingPrevious.value = false
+            showFirstMonthsDialog.value = true
         }
     )
 
-    private var isDisplayingPreviousOpeningHours: Boolean = false
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        openingHoursAdapter = OpeningHoursAdapter(requireContext())
-        openingHoursAdapter.firstDayOfWorkweek = countryInfo.firstDayOfWorkweek
-        openingHoursAdapter.regularShoppingDays = countryInfo.regularShoppingDays
-        openingHoursAdapter.locale = countryInfo.userPreferredLocale
+        originalOpeningHours = element.tags["opening_hours"]
+            ?.toOpeningHoursOrNull(lenient = true)
+            ?.toHierarchicOpeningHours()
+        isDisplayingPrevious.value = originalOpeningHours != null
+        openingHours.value = originalOpeningHours ?: HierarchicOpeningHours()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        if (savedInstanceState != null) {
-            onLoadInstanceState(savedInstanceState)
-        } else {
-            initStateFromTags()
-        }
+        snapshotFlow { isDisplayingPrevious.value }
+            .onEach {
+                updateButtonPanel()
+                checkIsFormComplete()
+            }
+            .launchIn(lifecycleScope)
 
-        openingHoursAdapter.registerAdapterDataObserver(AdapterDataChangedWatcher { checkIsFormComplete() })
+        binding.composeViewBase.content { Surface {
+            OpeningHoursTable(
+                openingHours = openingHours.value,
+                onChange = { openingHours.value = it },
+                timeMode = TimeMode.Spans,
+                countryInfo = countryInfo,
+                locale = countryInfo.userPreferredLocale,
+                userLocale = Locale.current,
+                enabled = !isDisplayingPrevious.value,
+                addMonthsEnabledWhenEmpty = false,
+            )
 
-        binding.openingHoursList.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
-        binding.openingHoursList.adapter = openingHoursAdapter
-        binding.openingHoursList.isNestedScrollingEnabled = false
+            if (showFirstMonthsDialog.value) {
+                MonthsOrDateSelectorSelectDialog(
+                    onDismissRequest = { showFirstMonthsDialog.value = false },
+                    initialMonths = emptyList(),
+                    onSelected = { newMonthsSelectorList ->
+                        val oh = openingHours.value
+                        openingHours.value = oh.copy(
+                            monthsList = oh.monthsList.toMutableList().also {
+                                it[0] = oh.monthsList[0].copy(selectors = newMonthsSelectorList)
+                            }
+                        )
+                    },
+                    locale = countryInfo.userPreferredLocale,
+                    userLocale = Locale.current,
+                )
+            }
+        } }
         checkIsFormComplete()
-
-        binding.addTimesButton.setOnClickListener { onClickAddButton(it) }
-    }
-
-    private fun initStateFromTags() {
-        val oh = element.tags["opening_hours"]
-        val rows = oh?.toOpeningHoursOrNull(lenient = true)?.toHierarchicOpeningHours()
-        if (rows != null) {
-            openingHoursAdapter.rows = rows.toMutableList()
-            setAsResurvey(true)
-        } else {
-            setAsResurvey(false)
-        }
-    }
-
-    private fun onLoadInstanceState(savedInstanceState: Bundle) {
-        setAsResurvey(savedInstanceState.getBoolean(IS_DISPLAYING_PREVIOUS_HOURS))
-    }
-
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-
-        outState.putBoolean(IS_DISPLAYING_PREVIOUS_HOURS, isDisplayingPreviousOpeningHours)
     }
 
     override fun onClickOk() {
-        applyAnswer(RegularOpeningHours(openingHoursAdapter.createOpeningHours()))
+        applyAnswer(RegularOpeningHours(openingHours.value.toOpeningHours()))
     }
 
     private fun showInputCommentDialog() {
-        val dialogBinding = QuestOpeningHoursCommentBinding.inflate(layoutInflater)
+        val comment = mutableStateOf("")
+        val dialogBinding = ComposeViewBinding.inflate(layoutInflater)
+        dialogBinding.composeViewBase.content { Surface(Modifier.padding(24.dp)) {
+            Column(
+                verticalArrangement = Arrangement.spacedBy(4.dp)
+            ) {
+                CompositionLocalProvider(
+                    LocalContentAlpha provides ContentAlpha.medium,
+                    LocalTextStyle provides MaterialTheme.typography.body2
+                ) {
+                    Text(stringResource(Res.string.quest_openingHours_comment_description))
+                }
+                TextField(
+                    value = comment.value,
+                    onValueChange = {
+                        val noDoubleQuotes = it.replace("\"", "").trim()
+                        if (noDoubleQuotes.length < 253) comment.value = noDoubleQuotes
+                    }
+                )
+            }
+        } }
 
         AlertDialog.Builder(requireContext())
             .setTitle(R.string.quest_openingHours_comment_title)
             .setView(dialogBinding.root)
             .setPositiveButton(android.R.string.ok) { _, _ ->
-                val txt = dialogBinding.commentInput.text.toString().replace("\"", "").trim()
-                if (txt.isEmpty()) {
-                    AlertDialog.Builder(requireContext())
-                        .setMessage(R.string.quest_openingHours_emptyAnswer)
-                        .setPositiveButton(android.R.string.ok, null)
-                        .show()
-                } else {
-                    applyAnswer(DescribeOpeningHours(txt))
+                if (comment.value.isNotEmpty()) {
+                    applyAnswer(DescribeOpeningHours(comment.value))
                 }
             }
             .setNegativeButton(android.R.string.cancel, null)
             .show()
     }
 
-    private fun setAsResurvey(resurvey: Boolean) {
-        openingHoursAdapter.isEnabled = !resurvey
-        isDisplayingPreviousOpeningHours = resurvey
-        binding.addTimesButton.isGone = resurvey
-        updateButtonPanel()
-    }
-
     private fun showConfirm24_7Dialog() {
         AlertDialog.Builder(requireContext())
             .setMessage(R.string.quest_openingHours_24_7_confirmation)
-            .setPositiveButton(R.string.quest_generic_hasFeature_yes) { _, _ ->
-                applyAnswer(AlwaysOpen)
-            }
+            .setPositiveButton(R.string.quest_generic_hasFeature_yes) { _, _ -> applyAnswer(AlwaysOpen) }
             .setNegativeButton(R.string.quest_generic_hasFeature_no, null)
             .show()
     }
@@ -144,5 +184,6 @@ class AddOpeningHoursForm : AbstractOsmQuestForm<OpeningHoursAnswer>() {
             .show()
     }
 
-    override fun isFormComplete() = openingHoursAdapter.rows.isNotEmpty() && !isDisplayingPreviousOpeningHours
+    override fun isFormComplete() =
+        openingHours.value.isComplete() && !isDisplayingPrevious.value
 }

@@ -6,7 +6,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.text.rememberTextMeasurer
-import de.westnordost.osm_opening_hours.model.WeekdaysSelector
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.osm.opening_hours.HierarchicOpeningHours
 import de.westnordost.streetcomplete.osm.opening_hours.toWeekdaysSelectors
@@ -26,6 +25,7 @@ fun OpeningHoursTable(
     locale: Locale = Locale.current,
     userLocale: Locale = Locale.current,
     enabled: Boolean = true,
+    addMonthsEnabledWhenEmpty: Boolean = true,
 ) {
     val textStyle = LocalTextStyle.current
     val textMeasurer = rememberTextMeasurer(1)
@@ -52,5 +52,6 @@ fun OpeningHoursTable(
         locale = locale,
         userLocale = userLocale,
         enabled = enabled,
+        addEnabledWhenEmpty = addMonthsEnabledWhenEmpty,
     )
 }
