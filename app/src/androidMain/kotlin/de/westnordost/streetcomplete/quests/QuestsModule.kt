@@ -119,6 +119,7 @@ import de.westnordost.streetcomplete.quests.motorcycle_parking_capacity.AddMotor
 import de.westnordost.streetcomplete.quests.motorcycle_parking_cover.AddMotorcycleParkingCover
 import de.westnordost.streetcomplete.quests.note_discussion.OsmNoteQuestType
 import de.westnordost.streetcomplete.quests.oneway.AddOneway
+import de.westnordost.streetcomplete.quests.oneway.AddOnewayAerialway
 import de.westnordost.streetcomplete.quests.opening_hours.AddOpeningHours
 import de.westnordost.streetcomplete.quests.opening_hours_signed.CheckOpeningHoursSigned
 import de.westnordost.streetcomplete.quests.orchard_produce.AddOrchardProduce
@@ -452,6 +453,7 @@ fun questTypeRegistry(
 
     // aerial way: usually visible from looking at the aerial way, but not always...
     184 to AddAerialwayBicycleAccess(),
+    187 to AddOnewayAerialway(),
 
     103 to AddProhibitedForPedestrians(), // need to understand the pedestrian situation
 
