@@ -30,7 +30,7 @@ Before each [release](res/documentation/creating%20new%20release.md), translatio
 
 Once 100% or close to 100% of text is translated, the given language becomes enabled. Translations which are not maintained are removed. Typically languages which are less than 60% translated will be considered as not maintained and such translation will be disabled.
 
-The source translation is in US English (in [app/src/main/res/values/strings.xml](app/src/main/res/values/strings.xml)). POEditor has a list of modifications in dialects such as UK English and Australian English, listed as separate languages.
+The source translation is in US English (in [app/src/androidMain/res/values/strings.xml](app/src/androidMain/res/values/strings.xml)). POEditor has a list of modifications in dialects such as UK English and Australian English, listed as separate languages.
 
 ### iD presets
 
@@ -102,7 +102,7 @@ See also [this far more detailed guide to making a new quest](CONTRIBUTING_A_NEW
 
 ### Code style
 
-Inheritance and class hierarchy should be avoided if possible. It is preferable to extract shared code to helper file such as [KerbUtil.kt](app/src/main/java/de/westnordost/streetcomplete/osm/kerb/KerbUtil.kt).
+Inheritance and class hierarchy should be avoided if possible. It is preferable to extract shared code to helper file such as [KerbUtil.kt](app/src/commonMain/kotlin/de/westnordost/streetcomplete/osm/kerb/KerbUtil.kt).
 
 It is recommended to install the [*Ktlint* Android Studio plugin](https://plugins.jetbrains.com/plugin/15057-ktlint) which highlights lint issues (e.g. inconsistent spacing) directly inline while writing code.
 
@@ -147,4 +147,3 @@ You may find more projects under [the StreetComplete tag](https://github.com/top
 
 * [oneway-data-api](https://github.com/streetcomplete/oneway-data-api) by [@ENT8R](https://github.com/ENT8R) for getting oneway data from improveosm.org
 * [parser](https://github.com/matkoniecz/Zazolc/tree/taginfo) by [@matkoniecz](https://github.com/matkoniecz) listing tags added by StreetComplete for [taginfo](https://taginfo.openstreetmap.org/projects/streetcomplete#tags)
-

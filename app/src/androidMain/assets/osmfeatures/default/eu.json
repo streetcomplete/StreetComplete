@@ -97,9 +97,6 @@
         "amenity/clock": {
           "name": "Ordulari"
         },
-        "amenity/college": {
-          "name": "Unibertsitate Eremu"
-        },
         "amenity/community_centre": {
           "name": "Gizarte-etxea"
         },
@@ -128,9 +125,6 @@
         "amenity/drinking_water": {
           "name": "Edateko ur iturria",
           "terms": "iturria,ura,txorrota,edangarria"
-        },
-        "amenity/driving_school": {
-          "name": "Auto-eskola"
         },
         "amenity/embassy": {
           "name": "Enbaxada"
@@ -169,10 +163,6 @@
         "amenity/internet_cafe": {
           "name": "Internet kafetegi"
         },
-        "amenity/language_school": {
-          "name": "Hizkuntza-eskola",
-          "terms": "hizkuntza-eskola,akademia,hizkuntz"
-        },
         "amenity/library": {
           "name": "Liburutegi"
         },
@@ -184,9 +174,6 @@
         },
         "amenity/motorcycle_parking": {
           "name": "Motorren aparkalekua"
-        },
-        "amenity/music_school": {
-          "name": "Musika eskola"
         },
         "amenity/nightclub": {
           "name": "Klub"
@@ -270,9 +257,6 @@
           "name": "Arraina eta itsaski jatetxea",
           "terms": "arraina,itsaskiak,itxaskiak,mariskoa"
         },
-        "amenity/school": {
-          "name": "Eskola eremu"
-        },
         "amenity/shelter": {
           "name": "Aterpetxea"
         },
@@ -333,9 +317,6 @@
         },
         "amenity/townhall": {
           "name": "Udaletxea"
-        },
-        "amenity/university": {
-          "name": "Unibertsitatearen eremua"
         },
         "amenity/vending_machine": {
           "name": "Makina saltzaile"

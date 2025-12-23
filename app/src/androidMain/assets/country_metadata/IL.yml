@@ -1,8 +1,8 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 additionalStreetsignLanguages: [en]
-atmOperators: [בנק הפועלים, כספונט, בנק לאומי, כספומט, מזרחי טפחות, דיסקונט, בנק ירושלים, Leumi, Bitcoin Change, קרן התמר, הבנק הבינלאומי, הבינלאומי, בנק דיסקונט לישראל, Discount, Bank Hapoalim]
-chargingStationOperators: [Tesla, מילגם, אפקון, Afcon, Kfar Hanokdim]
-clothesContainerOperators: [WIZO]
+atmOperators: [בנק הפועלים, כספונט, בנק לאומי, כספומט, קרן התמר, מזרחי טפחות, דיסקונט, בנק ירושלים, Leumi, Bitcoin Change, הבנק הבינלאומי, הבינלאומי, בנק דיסקונט לישראל, Discount, Bank Hapoalim]
+chargingStationOperators: [Tesla, מילגם, Afcon, אפקון, סונול EV, Kfar Hanokdim, EV Edge]
+clothesContainerOperators: [Golden Recycling, שביל אמונה, WIZO]
 defaultSpeedLimitHasUrbanOrRural: true
 firstDayOfWorkweek: Su
 hasLivingStreet: true
@@ -13,6 +13,6 @@ noStoppingLineStyle: red-white on curb
 noStoppingSignStyle: israel
 officialLanguages: [he, ar]
 orchardProduces: [olive, avocado, grape, date, tomato, orange, peach, banana, apple, lemon, lime, chilli_pepper, sweet_pepper, guava, mango, mangosteen, grapefruit, plum, pear]
-parcelLockerBrand: [DONE]
+parcelLockerBrand: [E-post, DONE]
 popularReligions: [jewish, christian, muslim]
 postboxesHaveCollectionTimes: true

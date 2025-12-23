@@ -1,7 +1,7 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 additionalStreetsignLanguages: [en]
-atmOperators: [საქართველოს ბანკი, თიბისი ბანკი, ლიბერთი ბანკი, ბაზისბანკი, კრედო ბანკი, ტერაბანკი, BitXChange, ბანკი ქართუ, პროკრედიტ ბანკი, Cryptal, ხალიკ ბანკი საქართველო, ზირაათ ბანკი, TBC, Bank Republic, პაშა ბანკი საქართველო, ლიბერთი, Արարատբանկ, Cryptomat]
-chargingStationOperators: [E-Space, e-space]
+atmOperators: [საქართველოს ბანკი, თიბისი ბანკი, ლიბერთი ბანკი, ბაზისბანკი, კრედო ბანკი, ტერაბანკი, BitXChange, ბანკი ქართუ, პროკრედიტ ბანკი, Cryptal, ლიბერთი, ხალიკ ბანკი საქართველო, ზირაათ ბანკი, TBC, ხალიკ ბანკი, პაშა ბანკი საქართველო, Արարատբանկ, Cryptomat, Bank Republic]
+chargingStationOperators: [E-Space, e-space, EV Power]
 clothesContainerOperators: [Emmaus Geo, Caritas Georgia]
 defaultSpeedLimitHasUrbanOrRural: true
 hasDailyAlternateSideParkingSign: true

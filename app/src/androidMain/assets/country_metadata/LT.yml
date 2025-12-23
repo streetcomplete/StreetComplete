@@ -1,8 +1,8 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [SEB, Swedbank, DNB, Luminor, Luminor Bank, Medus, Euronet, UAB „Worldline Lietuva“, Worldline Lietuva, Nordea, 'SEB, DNB', AB SEB bankas, AB "Swedbank", swedbank, Perlas, Nordea/Parex/Danske/Ūkio, Luminor/Citadele, Citadele]
+atmOperators: [SEB, Swedbank, DNB, Luminor, Luminor Bank, Medus, Euronet, UAB „Worldline Lietuva“, Nordea, Worldline Lietuva, AB SEB bankas, AB "Swedbank", swedbank, 'SEB, DNB', Perlas, Nordea/Parex/Danske/Ūkio, Luminor/Citadele, Citadele]
 centerLineStyle: white
-chargingStationOperators: [UAB Ignitis, Elinta, IgnitisON, Elinta Charge, Spark, Ignitis ON, Ignitis, Eldrive, LAKD, Ionity, Elektrum, Vilniaus apšvietimas, UAB „Elinta“, Enefit]
-clothesContainerOperators: [Šiaulių regiono atliekų tvarkymo centras, Ecoservice, UAB „VAATC“]
+chargingStationOperators: [UAB Ignitis, Elinta, Elinta Charge, IgnitisON, Eldrive, Spark, Ignitis ON, Elektrum, Ignitis, UAB Vilniaus apšvietimas, LAKD, Ionity, Inbalance grid, Enefit, Vilniaus apšvietimas, UAB „Elinta“, ChargePoint, ABB]
+clothesContainerOperators: [Šiaulių regiono atliekų tvarkymo centras, Ecoservice, UAB „VAATC“, Vilniaus miesto savivaldybė, Vilniaus atliekų sistemos administratorius]
 defaultSpeedLimitHasUrbanOrRural: true
 edgeLineStyle: white
 hasAdvisoryCycleLane: false
@@ -15,5 +15,5 @@ noParkingLineStyle: dashed yellow
 noStoppingLineStyle: yellow
 officialLanguages: [lt]
 orchardProduces: [apple, raspberry, strawberry, pear, blueberry, plum, tomato, cherry]
-parcelLockerBrand: [Omniva, LP Express, Venipak, DPD Pickup Station, DPD, uDrop, Smartpost, ShareFreeze]
+parcelLockerBrand: [Omniva, LP Express, Venipak, DPD Pickup Station, DPD, SmartPosti, uDrop, ShareFreeze]
 postboxesHaveCollectionTimes: true

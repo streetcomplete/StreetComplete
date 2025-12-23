@@ -9,8 +9,6 @@ import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
@@ -19,6 +17,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.selection.selectable
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.ProvideTextStyle
 import androidx.compose.material.Text
@@ -35,26 +34,30 @@ import androidx.compose.ui.draw.scale
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.ColorMatrix
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.zIndex
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.allDrawableResources
+import de.westnordost.streetcomplete.resources.team_mode
+import de.westnordost.streetcomplete.resources.team_mode_choose_color2
+import de.westnordost.streetcomplete.resources.team_mode_description
+import de.westnordost.streetcomplete.resources.team_mode_description_overlay_hint
+import de.westnordost.streetcomplete.resources.team_mode_team_size_label2
 import de.westnordost.streetcomplete.screens.tutorial.TutorialScreen
 import de.westnordost.streetcomplete.ui.common.BubblePile
 import de.westnordost.streetcomplete.ui.common.WheelPicker
 import de.westnordost.streetcomplete.ui.common.WheelPickerState
 import de.westnordost.streetcomplete.ui.common.rememberWheelPickerState
-import de.westnordost.streetcomplete.ui.ktx.conditional
+import de.westnordost.streetcomplete.ui.ktx.selectionFrame
 import de.westnordost.streetcomplete.ui.ktx.toPx
 import de.westnordost.streetcomplete.ui.theme.TeamColors
 import de.westnordost.streetcomplete.ui.theme.headlineLarge
-import de.westnordost.streetcomplete.ui.theme.selectionBackground
 import kotlinx.coroutines.delay
 import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
+import org.jetbrains.compose.ui.tooling.preview.Preview
 
 /** Wizard which enables team mode */
 @Composable
@@ -117,18 +120,18 @@ fun TeamModeWizard(
 @Composable
 private fun TeamModeDescription() {
     Text(
-        text = stringResource(R.string.team_mode),
+        text = stringResource(Res.string.team_mode),
         style = MaterialTheme.typography.headlineLarge,
         textAlign = TextAlign.Center,
     )
     Text(
-        text = stringResource(R.string.team_mode_description),
+        text = stringResource(Res.string.team_mode_description),
         style = MaterialTheme.typography.body1,
         textAlign = TextAlign.Center,
         modifier = Modifier.padding(top = 24.dp)
     )
     Text(
-        text = stringResource(R.string.team_mode_description_overlay_hint),
+        text = stringResource(Res.string.team_mode_description_overlay_hint),
         style = MaterialTheme.typography.body1,
         textAlign = TextAlign.Center,
         modifier = Modifier.padding(top = 24.dp)
@@ -141,7 +144,7 @@ private fun TeamModeTeamSizeInput(
     teamSizeState: WheelPickerState
 ) {
     Text(
-        text = stringResource(R.string.team_mode_team_size_label2),
+        text = stringResource(Res.string.team_mode_team_size_label2),
         style = MaterialTheme.typography.body1,
         textAlign = TextAlign.Center
     )
@@ -167,25 +170,22 @@ private fun TeamModeColorSelect(
     onSelectedIndex: (Int) -> Unit,
 ) {
     Text(
-        text = stringResource(R.string.team_mode_choose_color2),
+        text = stringResource(Res.string.team_mode_choose_color2),
         style = MaterialTheme.typography.body1,
         textAlign = TextAlign.Center
     )
     FlowRow(
-        horizontalArrangement = Arrangement.Center,
+        horizontalArrangement = Arrangement.spacedBy(4.dp, Alignment.CenterHorizontally),
+        verticalArrangement = Arrangement.spacedBy(4.dp, Alignment.CenterVertically),
         modifier = Modifier.padding(top = 24.dp)
     ) {
         for (index in 0..<teamSize) {
+            val isSelected = selectedIndex == index
             TeamModeColorCircle(
                 index = index,
                 modifier = Modifier
-                    .clickable { onSelectedIndex(index) }
-                    .conditional(selectedIndex == index) {
-                        background(
-                            color = MaterialTheme.colors.selectionBackground,
-                            shape = MaterialTheme.shapes.small
-                        )
-                    }
+                    .selectionFrame(isSelected)
+                    .selectable(isSelected) { onSelectedIndex(index) }
                     .padding(8.dp)
                     .width(56.dp)
             )
@@ -298,12 +298,12 @@ private fun PreviewTeamModeWizard() {
         onDismissRequest = { },
         onFinished = { _, _ -> },
         allQuestIconIds = listOf(
-            R.drawable.ic_quest_bicycle_parking,
-            R.drawable.ic_quest_building,
-            R.drawable.ic_quest_drinking_water,
-            R.drawable.ic_quest_notes,
-            R.drawable.ic_quest_street_surface,
-            R.drawable.ic_quest_wheelchair,
+            R.drawable.quest_bicycle_parking,
+            R.drawable.quest_building,
+            R.drawable.quest_drinking_water,
+            R.drawable.quest_notes,
+            R.drawable.quest_street_surface,
+            R.drawable.quest_wheelchair,
         )
     )
 }

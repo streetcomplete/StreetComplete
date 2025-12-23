@@ -11,6 +11,8 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.isPlaceOrDisusedPlace
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.default_disabled_msg_go_inside
 
 class AddVegetarian : OsmFilterQuestType<DietAvailabilityAnswer>(), AndroidQuest {
 
@@ -28,10 +30,10 @@ class AddVegetarian : OsmFilterQuestType<DietAvailabilityAnswer>(), AndroidQuest
     """
     override val changesetComment = "Survey whether places have vegetarian food"
     override val wikiLink = "Key:diet"
-    override val icon = R.drawable.ic_quest_restaurant_vegetarian
+    override val icon = R.drawable.quest_restaurant_vegetarian
     override val isReplacePlaceEnabled = true
     override val achievements = listOf(VEG, CITIZEN)
-    override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside
+    override val defaultDisabledMessage = Res.string.default_disabled_msg_go_inside
 
     override val hint = R.string.quest_dietType_explanation_vegetarian
 

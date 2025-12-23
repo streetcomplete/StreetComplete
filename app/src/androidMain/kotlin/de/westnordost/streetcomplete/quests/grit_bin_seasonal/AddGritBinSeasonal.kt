@@ -8,6 +8,8 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 import de.westnordost.streetcomplete.quests.YesNoQuestForm
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.default_disabled_msg_seasonal
 
 class AddGritBinSeasonal : OsmFilterQuestType<Boolean>(), AndroidQuest {
 
@@ -18,9 +20,9 @@ class AddGritBinSeasonal : OsmFilterQuestType<Boolean>(), AndroidQuest {
     """
     override val changesetComment = "Specify whether grit bins are seasonal"
     override val wikiLink = "Key:seasonal"
-    override val icon = R.drawable.ic_quest_calendar
+    override val icon = R.drawable.quest_calendar
     override val achievements = listOf(CITIZEN)
-    override val defaultDisabledMessage = R.string.default_disabled_msg_seasonal
+    override val defaultDisabledMessage = Res.string.default_disabled_msg_seasonal
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_gritBinSeasonal_title
 

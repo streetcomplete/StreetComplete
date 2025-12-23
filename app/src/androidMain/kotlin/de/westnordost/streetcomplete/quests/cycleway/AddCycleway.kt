@@ -14,25 +14,28 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
+import de.westnordost.streetcomplete.osm.Sides
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.osm.any
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway
-import de.westnordost.streetcomplete.osm.cycleway.LeftAndRightCycleway
-import de.westnordost.streetcomplete.osm.cycleway.any
+import de.westnordost.streetcomplete.osm.cycleway.CyclewayAndDirection
 import de.westnordost.streetcomplete.osm.cycleway.applyTo
 import de.westnordost.streetcomplete.osm.cycleway.isAmbiguous
 import de.westnordost.streetcomplete.osm.cycleway.parseCyclewaySides
 import de.westnordost.streetcomplete.osm.maxspeed.FILTER_IS_IMPLICIT_MAX_SPEED_BUT_NOT_SLOW_ZONE
 import de.westnordost.streetcomplete.osm.surface.UNPAVED_SURFACES
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.default_disabled_msg_overlay
 
 class AddCycleway(
     private val getCountryInfoByLocation: (location: LatLon) -> CountryInfo,
-) : OsmElementQuestType<LeftAndRightCycleway>, AndroidQuest {
+) : OsmElementQuestType<Sides<CyclewayAndDirection>>, AndroidQuest {
 
     override val changesetComment = "Specify whether there are cycleways"
     override val wikiLink = "Key:cycleway"
-    override val icon = R.drawable.ic_quest_bicycleway
+    override val icon = R.drawable.quest_bicycleway
     override val achievements = listOf(BICYCLIST)
-    override val defaultDisabledMessage = R.string.default_disabled_msg_overlay
+    override val defaultDisabledMessage = Res.string.default_disabled_msg_overlay
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
         getMapData().filter("""
@@ -99,7 +102,7 @@ class AddCycleway(
 
     override fun createForm() = AddCyclewayForm()
 
-    override fun applyAnswerTo(answer: LeftAndRightCycleway, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: Sides<CyclewayAndDirection>, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         val countryInfo = getCountryInfoByLocation(geometry.center)
         answer.applyTo(tags, countryInfo.isLeftHandTraffic)
     }
@@ -159,21 +162,21 @@ private fun Element.hasOldInvalidOrAmbiguousCyclewayTags(countryInfo: CountryInf
     // has no cycleway tagging
     if (sides == null) return false
     // any cycleway tagging is not known: don't mess with that
-    if (sides.any { it.cycleway.isUnknown }) return false
+    if (sides.any { it?.cycleway?.isUnknown == true }) return false
     // has any invalid cycleway tags
-    if (sides.any { it.cycleway.isInvalid }) return true
+    if (sides.any { it?.cycleway?.isInvalid == true }) return true
     // cycleway:<side> = separate is never considered old, because the information about cycleways
     // has moved somewhere else -> to the separately mapped way
-    if (sides.any { it.cycleway == Cycleway.SEPARATE }) return false
+    if (sides.any { it?.cycleway == Cycleway.SEPARATE }) return false
     // or it is older than x years
     if (olderThan4Years.matches(this)) return true
     // has any ambiguous cycleway tags
     if (countryInfo != null) {
-        if (sides.any { it.cycleway.isAmbiguous(countryInfo) }) return true
+        if (sides.any { it?.cycleway?.isAmbiguous(countryInfo) == true}) return true
     } else {
-        if (sides.any { it.cycleway == Cycleway.UNSPECIFIED_SHARED_LANE }) return true
+        if (sides.any { it?.cycleway == Cycleway.UNSPECIFIED_SHARED_LANE }) return true
         // for this, a countryCode is necessary, thus return null if no country code is available
-        if (sides.any { it.cycleway == Cycleway.UNSPECIFIED_LANE }) return null
+        if (sides.any { it?.cycleway == Cycleway.UNSPECIFIED_LANE }) return null
     }
     return false
 }

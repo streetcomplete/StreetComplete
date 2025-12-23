@@ -19,7 +19,7 @@ class AddParkingAccess : OsmFilterQuestType<ParkingAccess>(), AndroidQuest {
     // Cf. #2408: Parking access might omit parking=street_side
     // Cf. #4538: should skip elements with more specific access tag already mapped
     override val elementFilter = """
-        nodes, ways, relations with amenity = parking
+        nodes, ways, relations with amenity ~ parking|motorcycle_parking
         and (
             access = unknown
             or (!access and parking !~ street_side|lane) and
@@ -34,7 +34,7 @@ class AddParkingAccess : OsmFilterQuestType<ParkingAccess>(), AndroidQuest {
     """
     override val changesetComment = "Specify parking access"
     override val wikiLink = "Tag:amenity=parking"
-    override val icon = R.drawable.ic_quest_parking_access
+    override val icon = R.drawable.quest_parking_access
     override val achievements = listOf(CAR)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_parking_access_title2

@@ -18,7 +18,7 @@ class AddCarWashTypeTest {
                 StringMapEntryAdd("self_service", "only"),
                 StringMapEntryAdd("automated", "no")
             ),
-            questType.answerApplied(listOf(SELF_SERVICE))
+            questType.answerApplied(setOf(SELF_SERVICE))
         )
     }
 
@@ -28,7 +28,7 @@ class AddCarWashTypeTest {
                 StringMapEntryAdd("self_service", "no"),
                 StringMapEntryAdd("automated", "yes")
             ),
-            questType.answerApplied(listOf(AUTOMATED))
+            questType.answerApplied(setOf(AUTOMATED))
         )
     }
 
@@ -38,7 +38,7 @@ class AddCarWashTypeTest {
                 StringMapEntryAdd("self_service", "no"),
                 StringMapEntryAdd("automated", "no")
             ),
-            questType.answerApplied(listOf(SERVICE))
+            questType.answerApplied(setOf(SERVICE))
         )
     }
 
@@ -48,7 +48,7 @@ class AddCarWashTypeTest {
                 StringMapEntryAdd("self_service", "yes"),
                 StringMapEntryAdd("automated", "yes")
             ),
-            questType.answerApplied(listOf(AUTOMATED, SELF_SERVICE))
+            questType.answerApplied(setOf(AUTOMATED, SELF_SERVICE))
         )
     }
 
@@ -58,7 +58,7 @@ class AddCarWashTypeTest {
                 StringMapEntryAdd("self_service", "no"),
                 StringMapEntryAdd("automated", "yes")
             ),
-            questType.answerApplied(listOf(AUTOMATED, SERVICE))
+            questType.answerApplied(setOf(AUTOMATED, SERVICE))
         )
     }
 
@@ -68,7 +68,7 @@ class AddCarWashTypeTest {
                 StringMapEntryAdd("self_service", "yes"),
                 StringMapEntryAdd("automated", "no")
             ),
-            questType.answerApplied(listOf(SELF_SERVICE, SERVICE))
+            questType.answerApplied(setOf(SELF_SERVICE, SERVICE))
         )
     }
 
@@ -78,7 +78,7 @@ class AddCarWashTypeTest {
                 StringMapEntryAdd("self_service", "yes"),
                 StringMapEntryAdd("automated", "yes")
             ),
-            questType.answerApplied(listOf(AUTOMATED, SELF_SERVICE, SERVICE))
+            questType.answerApplied(setOf(AUTOMATED, SELF_SERVICE, SERVICE))
         )
     }
 }

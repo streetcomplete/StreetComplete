@@ -25,16 +25,16 @@ class AddGeneralFee : OsmFilterQuestType<Boolean>(), AndroidQuest {
            )
            or tourism ~ museum|gallery|caravan_site|zoo|aquarium|wilderness_hut
            or leisure ~ beach_resort|disc_golf_course
-           or amenity ~ sanitary_dump_station|shower|water_point|public_bath|bicycle_wash
+           or amenity ~ sanitary_dump_station|shower|water_point|public_bath|bicycle_wash|binoculars|device_charging_station
            or natural = cave_entrance and access=yes
-           or tower:type = observation
+           or man_made = tower and tower:type = observation and access=yes
          )
          and access !~ private|no
          and !fee
     """
     override val changesetComment = "Specify whether places take fees to visit"
     override val wikiLink = "Key:fee"
-    override val icon = R.drawable.ic_quest_fee
+    override val icon = R.drawable.quest_fee
     override val achievements = listOf(CITIZEN)
 
     override fun getTitle(tags: Map<String, String>) =

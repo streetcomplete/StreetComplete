@@ -11,6 +11,8 @@ import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.isPlaceOrDisusedPlace
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 import de.westnordost.streetcomplete.quests.YesNoQuestForm
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.default_disabled_msg_go_inside
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
 class AddBikeRepairAvailability : OsmFilterQuestType<Boolean>(), AndroidQuest {
@@ -26,9 +28,9 @@ class AddBikeRepairAvailability : OsmFilterQuestType<Boolean>(), AndroidQuest {
 
     override val changesetComment = "Specify whether bicycle shops offer repairs"
     override val wikiLink = "Key:service:bicycle:repair"
-    override val icon = R.drawable.ic_quest_bicycle_repair
+    override val icon = R.drawable.quest_bicycle_repair
     override val achievements = listOf(BICYCLIST)
-    override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside
+    override val defaultDisabledMessage = Res.string.default_disabled_msg_go_inside
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_bicycle_shop_repair_title
 

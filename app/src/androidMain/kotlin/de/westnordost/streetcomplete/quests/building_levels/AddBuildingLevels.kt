@@ -7,6 +7,8 @@ import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BUILDING
 import de.westnordost.streetcomplete.osm.BUILDINGS_WITH_LEVELS
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.default_disabled_msg_difficult_and_time_consuming
 
 class AddBuildingLevels : OsmFilterQuestType<BuildingLevels>(), AndroidQuest {
 
@@ -25,9 +27,9 @@ class AddBuildingLevels : OsmFilterQuestType<BuildingLevels>(), AndroidQuest {
     """
     override val changesetComment = "Specify building and roof levels"
     override val wikiLink = "Key:building:levels"
-    override val icon = R.drawable.ic_quest_building_levels
+    override val icon = R.drawable.quest_building_levels
     override val achievements = listOf(BUILDING)
-    override val defaultDisabledMessage = R.string.default_disabled_msg_difficult_and_time_consuming
+    override val defaultDisabledMessage = Res.string.default_disabled_msg_difficult_and_time_consuming
 
     override val hint = R.string.quest_buildingLevels_hint
 

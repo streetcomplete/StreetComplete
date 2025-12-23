@@ -20,10 +20,7 @@
     <string name="quest_leave_new_note_yes">"Pusti opombo"</string>
     <string name="quest_leave_new_note_no">"Samo skrij"</string>
     <string name="quest_streetName_title">"Kakšno je ime te ceste?"</string>
-    <string name="quest_streetName_description">"kot je napisano na tabli, okrajšave so razširjene:"</string>
     <string name="quest_streetName_answer_noName_confirmation_description">"V nekaterih primerih je tabla z imenom ulice ali ceste na njenem koncu. Ponekod ni tabel še za stranske ulice, ki so del glavne ceste. Ponavadi ima vsaka ulica s hišami ime."</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"Odstranite okrajšave, če se ime da zapisati brez. Mnoge pogostejše okrajšave bodo avtomatsko razširjene med tipkanjem."</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"Brez okrajšav"</string>
     <string name="quest_openingHours_start_time">"Odpiralni čas"</string>
     <string name="quest_openingHours_end_time">"Zapiralni čas"</string>
     <string name="quest_openingHours_add_months">"Dodaj mesece"</string>
@@ -57,7 +54,6 @@
     <string name="version_banned_message">"Ta različica programa StreetComplete je preveč zastarela. Posodobite jo!"</string>
     <string name="no_gps_no_quests">"Za samodejno iskanje nalog v vaši okolici vklopite lokacijo"</string>
     <string name="later">"Kasneje"</string>
-    <string name="quest_streetName_answer_noProperStreet_link">"Le povezuje dve cesti"</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">"Nekaj drugega (vpiši opombo)"</string>
     <string name="about_title_privacy_statement">"Izjava o zasebnosti"</string>
     <string name="quest_openingHours_public_holidays">"Državni prazniki"</string>
@@ -196,7 +192,6 @@ Veljajo splošne omejitve hitrosti, če ob celotni dolžini tega odseka ulice ni
     <string name="quest_sport_roller_skating">"Rolanje"</string>
     <string name="quest_wheelchairAccess_limited_description_business">"Delno pomeni, da dostop preprečuje največ ena stopnica in da je večina prostorov v notranjosti dostopnih z invalidskim vozičkom."</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">"Delno pomeni, da dostop preprečuje največ ena stopnica."</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"Okrajšava v imenu %s?"</string>
     <string name="quest_recycling_type_title">"Kakšne vrste je ta zbiralnica odpadkov?"</string>
     <string name="recycling_centre">"Zbirni center"</string>
     <string name="overground_recycling_container">"Zabojniki"</string>
@@ -323,10 +318,6 @@ V nasprotnem primeru lahko prenesete drugačno tipkovnico iz trgovine za aplikac
     <string name="quest_cycleway_answer_contraflow_cycleway">"Kolesarska steza je tudi na drugi strani …"</string>
     <string name="quest_openingHours_emptyAnswer">"Opišite kaj je na napisu. Če napisa ni, vprašajte znotraj."</string>
     <string name="quest_cycleway_value_none_but_no_oneway">"brez, kolesarji smejo voziti po cesti v obe smeri"</string>
-    <string name="quest_streetName_answer_noName_question">"Zakaj nima imena?"</string>
-    <string name="quest_streetName_answer_noProperStreet_service2">"Je dovozna pot ali parkirišče"</string>
-    <string name="quest_streetName_answer_noProperStreet_track2">"Je poljska ali gozdna cesta"</string>
-    <string name="quest_streetName_answer_noName_noname">"Nič od naštetega, pač nima imena"</string>
     <string name="quest_wheelchairAccess_description_toilets">"Če je stranišče dostopno z invalidskim vozičkom, bo morda viden tak znak. Delno pomeni, da voziček ima dostop, stranišče pa nima ročajev ali prilagojenega umivalnika."</string>
     <string name="map_btn_create_note">"Ustvari novo opombo"</string>
     <string name="create_new_note_unprecise">"Za novo opombo morate bolj približati pogled"</string>
@@ -534,7 +525,6 @@ Ali želiš nadaljevati?"</string>
     <string name="quest_recycling_type_glass_bottles">"Steklenice in kozarci"</string>
     <string name="quest_recycling_type_glass_bottles_short">"Plastenke in kozarci"</string>
     <string name="quest_recycling_type_paper">"Papir"</string>
-    <string name="quest_recycling_type_plastic_generic">"Plastika"</string>
     <string name="quest_recycling_type_plastic">"Katerakoli plastika"</string>
     <string name="quest_recycling_type_shoes">"Čevlji"</string>
     <string name="quest_recycling_type_electric_appliances">"Bela tehnika"</string>
@@ -581,8 +571,8 @@ In ne pozabi ostati varen! Spremljaj okolico okrog sebe in ne vstopaj na zasebna
     <string name="achievements_empty">"Še nimate dosežkov"</string>
     <string name="links_empty">"Še nimate povezav"</string>
     <string name="quests_empty">"Nisi še objavil nobene spremembe"</string>
-    <string name="unsynced_quests_description">"plus %d še neobjavljenih sprememb."</string>
-    <string name="unsynced_quests_not_logged_in_description">"Imaš %d neobjavljenih sprememb. Da jih objaviš se moraš prijaviti!"</string>
+    <string name="unsynced_quests_description">"plus %1$d še neobjavljenih sprememb."</string>
+    <string name="unsynced_quests_not_logged_in_description">"Imaš %1$d neobjavljenih sprememb. Da jih objaviš se moraš prijaviti!"</string>
     <string name="user_quests_title">"Spremembe"</string>
     <string name="user_achievements_title">"Dosežki"</string>
     <string name="user_links_title">"Zbirka povezav"</string>
@@ -655,7 +645,7 @@ Upoštevaj da ta aplikacija vpraša po hišni številki šele takrat, ko je tip 
     <string name="achievement_veg_solved_X">"Rešil si %d nalog, ki so zanimive za ljudi na brezmesni dieti!"</string>
     <string name="achievement_car_title">"Na poti"</string>
     <string name="achievement_car_solved_X">"Rešil si %d nalog, ki izboljšujejo detajle ulične infrastrukture, kar tudi je \"street\" v OpenStreetMap! "</string>
-    <string name="unread_messages_message">"V nabiralniku imaš %d neprebranih sporočil"</string>
+    <string name="unread_messages_message">"V nabiralniku imaš %1$d neprebranih sporočil"</string>
     <string name="unread_messages_button">"Odpri nabiralnik"</string>
     <string name="action_about2">"O aplikaciji"</string>
     <string name="map_btn_menu">"Meni"</string>
@@ -708,11 +698,10 @@ novoji"</string>
     <string name="resurvey_intervals_default">"Osnovno"</string>
     <string name="resurvey_intervals_more_often">"Vprašaj bolj pogosto"</string>
     <string name="about_title_translate">"Pomagaj prevesti to aplikacijo"</string>
-    <string name="about_description_translate">"%1$s se prevede v %2$d%%"</string>
+    <string name="about_description_translate">"%1$s se prevede v %2$d%"</string>
     <string name="quest_oneway2_title">"Ali je to enosmerna ulica? V katero smer? "</string>
     <string name="quest_oneway2_dir">"Enosmerna v to smer"</string>
     <string name="quest_oneway2_no_oneway">"Ni enosmerna"</string>
-    <string name="quest_maxweight_select_sign">"Izberi znak"</string>
     <string name="quest_steps_incline_title">"Katera smer vodi navzgor po teh stopnicah?"</string>
     <string name="quest_steps_incline_up">"Ta smer gre gor"</string>
     <string name="quest_step_count_title">"Koliko stopnic je tukaj?"</string>
@@ -754,7 +743,6 @@ novoji"</string>
     <string name="quest_charging_station_capacity_title">"Koliko avtomobilov se lahko tukaj polni sočasno?"</string>
     <string name="link_disaster_ninja_description">"Zemljevid, ki prikazuje nedavne naravne nesreče, zanimive za humanitarne kartografe. Prikazije tudi zanimive statistike, ki prikazujejo kako dobro so kraji kartografirani."</string>
     <string name="quest_lanes_title">"Koliko pasov ima ta cesta?"</string>
-    <string name="quest_lanes_answer_lanes">"Označeni pasovi"</string>
     <string name="quest_lanes_answer_noLanes">"Ni označenih pasov"</string>
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">"Ima dvosmerni pas za zavijanje na levo"</string>
     <string name="quest_address_answer_no_housenumber_message2b">"Ali je to pravilno?"</string>
@@ -767,8 +755,6 @@ Razmislite tudi o odgovoru, če ne velja za celoten označeni del  “%s”."</s
     <string name="quest_kerb_height_lowered">"Malo višje od površine ceste"</string>
     <string name="quest_kerb_height_raised">"Visok robnik"</string>
     <string name="quest_kerb_height_lowered_ramp">"Klančina"</string>
-    <string name="quest_lanes_answer_lanes_description2">"Določi število vseh označenih pasov v obe smeri na tej cesti. Kolesarske proge in parkirišča ne štejejo.
-Če je kateriloli pas rezerviran za avtobuse, namesto tega prosim pusti opombo."</string>
     <string name="quest_lanes_answer_lanes_description_one_side2">"Določi število vseh označenih pasov v obe smeri na tej cesti. Kolesarske proge in parkirišča ne štejejo.
 Če je kateriloli pas rezerviran za avtobuse, namesto tega prosim pusti opombo.označenih"</string>
     <string name="quest_surface_value_rock">"Kamen"</string>
@@ -783,7 +769,6 @@ Razmislite tudi o odgovoru, če ne velja za celoten označeni del  “%s”."</s
     <string name="quest_shop_gone_replaced_answer">"En(a) …"</string>
     <string name="quest_shop_gone_replaced_answer_hint">"Vpišite vrsto prostora"</string>
     <string name="quest_shop_vacant_type_title">"Ta trgovina je bila prazna. Kaj je zdaj tam?"</string>
-    <string name="quest_lanes_answer_lanes_odd2">"Vsaka stran ceste ima različno število pasov"</string>
     <string name="default_disabled_msg_go_inside_regional_warning">"Ta naloga je privzeto onemogočena, ker v nekaterih regijah ni zrlo uporabna, poleg tega pa boš moral verjetno vstopiti v notranjost zgradbe da bi lahko nalogo rešil."</string>
     <string name="quest_dietType_explanation_kosher">"Košer izdelki morajo biti pripravljeni v skladu s posebnimi pravili, pri čemer certifikacijske agencije za kashrut označujejo izdelke, ki so v skladu s temi pravili."</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">"Kolesarske poti sploh ni"</string>
@@ -804,7 +789,6 @@ Pazi na vse razpoložljive možnosti: nekateri primeri niso očitni, kot na prim
     <string name="quest_postboxRoyalCypher_type_scottish_crown">"Škotska krona"</string>
     <string name="quest_buildingType_fire_station">"Gasilska postaja"</string>
     <string name="quest_recycling_type_beverage_cartons">"Samo tetrapaki"</string>
-    <string name="quest_recycling_type_plastic_bottles_and_cartons">"Samo plastenke in tetrapaki"</string>
     <string name="team_mode">"Ekipni način"</string>
     <string name="team_mode_exit">"Prekini ekipni način"</string>
     <string name="team_mode_description">"Ko v skupini popisujete isto področje, lahko vklopite ekipni način in naloge bodo razdeljene med vse sodelujoče.
@@ -934,7 +918,7 @@ Podatki se osvežijo vsakih %1$s dni, neuporabljeni podatki pa se samodejno izbr
     <string name="quest_barrier_bicycle_type_double">"Ovira na obeh straneh ceste"</string>
     <string name="quest_barrier_bicycle_type_multiple">"Več kot 2 oviri na obeh straneh ceste"</string>
     <string name="language_default">"Privzeto v sistemu"</string>
-    <string name="on_floor">"na nadstropju %s"</string>
+    <string name="on_floor">"na nadstropju %1$s"</string>
     <string name="select_street_parking_orientation">"Izberi orientacijo glede na cesto:"</string>
     <string name="select_street_parking_position">"Izberi položaj:"</string>
     <string name="select_street_parking_no">"Ali je tukaj kakšen znak ali cestna oznaka?"</string>
@@ -1162,8 +1146,7 @@ Naredi enako za drugo stran, če ta obstaja."</string>
     <string name="quest_camp_type_tents_only">"Samo šotori"</string>
     <string name="quest_camp_type_backcountry">"Naturalistično kampiranje (ni objektov, elektrike, ...)"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Ta premer se zdi malo verjeten, ponavadi je med %1$d in %2$d."</string>
-    <string name="quest_recycling_type_pet">"Samo PET"</string>
-    <string name="street_parking_street_width">"Širina ceste: %s"</string>
+    <string name="street_parking_street_width">"Širina ceste: %1$s"</string>
     <string name="overlay_street_parking">"Ulična parkirišča"</string>
     <string name="link_ohsomehex_description">"Oglej si zgodovinski razvoj OSM od velike slike vse do individualnih objektov v prostoru in času"</string>
     <string name="link_opencampingmap_description">"Zemljevid kampov"</string>
@@ -1210,7 +1193,7 @@ Naredi enako za drugo stran, če ta obstaja."</string>
     <string name="user_profile_current_week_title">"Zadnjih 7 dni"</string>
     <string name="user_profile_dates_mapped">"Nedavni dveni, ko si kartografiral"</string>
     <string name="quest_cycleway_value_advisory_lane">"pomožna kolesarska steza"</string>
-    <string name="urlconfig_scan_qr_code_again2">"Po namestitvi aplikacije, ponovno skeniraj QR kodo ali klikni na &lt;a href=\"%s\"&gt;to povezavo,&lt;/a&gt; da uveljaviš prednastavitev."</string>
+    <string name="urlconfig_scan_qr_code_again2">"Po namestitvi aplikacije, ponovno skeniraj QR kodo ali klikni na &lt;a href=\"%1$s\"&gt;to povezavo,&lt;/a&gt; da uveljaviš prednastavitev."</string>
     <string name="confirmation_replace_shop_title">"Ali je to sedaj drug kraj?"</string>
     <string name="confirmation_replace_shop_message">"V tem primeru so se spremenili tudi obratovalni časi, kontaktne informacije,..."</string>
     <string name="confirmation_replace_shop_yes">"To je sedaj drug kraj"</string>
@@ -1220,7 +1203,7 @@ Naredi enako za drugo stran, če ta obstaja."</string>
 Želite to storiti zdaj?"</string>
     <string name="node_moved_not_far_enough">"Prosim, premakni nekoliko dlje."</string>
     <string name="node_moved_too_far">"Premaknil si predaleč. Prosim, pusti opombo"</string>
-    <string name="node_moved">"Premaknjeno za %s"</string>
+    <string name="node_moved">"Premaknjeno za %1$s"</string>
     <string name="move_node_description">"Premakni zemljevid, da postaviš objekt na želeno mesto. Uporabi možnost približevanja zemljevida in bodi kar se le da precizen. Upoštevaj, da lahko tvoja lokacija odstopa bolj kot je to prikazano."</string>
     <string name="move_node_action_description">"To točko si premaknil"</string>
     <string name="quest_cycleway_value_shoulder">"ni odstavnega pasu, lahko pa ta prostor uporabljajo kolesarji"</string>
@@ -1315,7 +1298,7 @@ Poleg tega ti nekatere prekrivne plasti omogočajo dodajanje novih podatkov na p
     <string name="label_log_older_than">"Do"</string>
     <string name="label_log_message_contains">"Sporočilo vsebuje"</string>
     <string name="title_logs_filters">"Filtriraj sporočila"</string>
-    <string name="pref_title_quests_restore_hidden_summary">"Število skritih nalog: %d"</string>
+    <string name="pref_title_quests_restore_hidden_summary">"Število skritih nalog: %1$d"</string>
     <string name="link_every_door_description">"Sposoben urejevalnik interesantnih točk za mobilne naprave"</string>
     <string name="link_mapcomplete_description">"Zbirka tematskih OSM zemljevidov, od katerih ti vsak omogoča urejanje ene vrste podatkov"</string>
     <string name="link_forum_description">"Ali potrebuješ pomoč? Želiš vedeti kaj se dogaja? Pridite in se družite, polno je dejavnosti iz skupnosti po vsem svetu!"</string>
@@ -1386,7 +1369,7 @@ Nivo se šteje za nivo strehe, če so njegova okna v strehi. Posledično strehe 
     <string name="quest_camp_power_supply_hint">"To so lahko vtičnice neposredno na parcelah v kampu, vtičnice v servisnem objektu, ki je dostopen gostom, namenska polnilna postaja za telefone, prenosnike itd."</string>
     <string name="quest_barrier_opening_width_bollard">"Kakšna je največja vrzel, skozi katero lahko greste tukaj?"</string>
     <string name="user_profile_all_time_title">"Na splošno"</string>
-    <string name="user_statistics_country_rank2">"Uvrstitev v %s"</string>
+    <string name="user_statistics_country_rank2">"Uvrstitev v %1$s"</string>
     <string name="quest_leafType_tree_is_just_a_stump">"To je le štor"</string>
     <string name="quest_board_name_title">"Kakšen je naslov te informativne table?"</string>
     <string name="quest_crossing_hint">"Neuradna pot, ki prečka cesto:"</string>

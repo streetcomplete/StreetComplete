@@ -1,7 +1,7 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [HoneyBadger, RBC, CIBC, Scotiabank, BMO, Instacoin, TD Canada Trust, TD, Bitcoin Well, Servus Credit Union, BitNational, ATB Financial, PC Financial]
-chargingStationOperators: ['Tesla, Inc.', FLO, ChargePoint, Shell, Flo]
+atmOperators: [HoneyBadger, RBC, CIBC, BMO, TD, Scotiabank, Instacoin, TD Canada Trust, PC Financial, Bitcoin Well, ATB Financial, Servus Credit Union, BitNational]
+chargingStationOperators: [FLO, ChargePoint, 'Tesla, Inc.', Tesla, YYC Calgary International Airport, Swtch Energy, Shell, Flo]
 clothesContainerOperators: [Diabetes Canada]
 defaultSpeedLimitHasUrbanOrRural: true
 officialLanguages: [en]
-parcelLockerBrand: [Canada Post, Amazon Hub]
+parcelLockerBrand: [Canada Post, Amazon Hub, Amazon Locker]

@@ -1,8 +1,12 @@
 package de.westnordost.streetcomplete.osm.building
 
 import de.westnordost.streetcomplete.osm.building.BuildingType.*
+import de.westnordost.streetcomplete.ui.common.item_select.Group
 
-enum class BuildingTypeCategory(val type: BuildingType?, val subTypes: List<BuildingType>) {
+enum class BuildingTypeCategory(
+    override val item: BuildingType?,
+    override val children: List<BuildingType>
+) : Group<BuildingType> {
     RESIDENTIAL(
         BuildingType.RESIDENTIAL, listOf(
         DETACHED, APARTMENTS, SEMI_DETACHED, TERRACE, HOUSE, FARM, HUT, BUNGALOW, STATIC_CARAVAN,

@@ -9,10 +9,9 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.quests.camping.CampType.BACKCOUNTRY
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
-class AddCampType : OsmFilterQuestType<CampType>(), AndroidQuest {
+class AddCampType : OsmFilterQuestType<CampTypeAnswer>(), AndroidQuest {
 
     override val elementFilter = """
         nodes, ways with
@@ -22,7 +21,7 @@ class AddCampType : OsmFilterQuestType<CampType>(), AndroidQuest {
     """
     override val changesetComment = "Survey who may camp here"
     override val wikiLink = "Key:caravans"
-    override val icon = R.drawable.ic_quest_tent
+    override val icon = R.drawable.quest_tent
     // you can often see caravans and/or tents from the outside, so usually there is no need for this quest to be disabled by default
     // override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside
     override val achievements = listOf(OUTDOORS)
@@ -34,10 +33,10 @@ class AddCampType : OsmFilterQuestType<CampType>(), AndroidQuest {
 
     override fun createForm() = AddCampTypeForm()
 
-    override fun applyAnswerTo(answer: CampType, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: CampTypeAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {
-            BACKCOUNTRY -> tags["backcountry"] = "yes"
-            else -> {
+            CampTypeAnswer.IsBackcountry -> tags["backcountry"] = "yes"
+            is Campers -> {
                 tags["tents"] = answer.tents.toYesNo()
                 tags["caravans"] = answer.caravans.toYesNo()
             }

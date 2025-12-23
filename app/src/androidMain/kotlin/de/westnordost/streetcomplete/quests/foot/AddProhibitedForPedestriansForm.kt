@@ -1,17 +1,16 @@
 package de.westnordost.streetcomplete.quests.foot
 
-import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.AListQuestForm
-import de.westnordost.streetcomplete.quests.foot.ProhibitedForPedestriansAnswer.ACTUALLY_HAS_SIDEWALK
-import de.westnordost.streetcomplete.quests.foot.ProhibitedForPedestriansAnswer.NO
-import de.westnordost.streetcomplete.quests.foot.ProhibitedForPedestriansAnswer.YES
-import de.westnordost.streetcomplete.ui.common.TextItem
+import androidx.compose.foundation.layout.BoxScope
+import androidx.compose.material.Text
+import androidx.compose.runtime.Composable
+import de.westnordost.streetcomplete.quests.ARadioGroupQuestForm
+import org.jetbrains.compose.resources.stringResource
 
-class AddProhibitedForPedestriansForm : AListQuestForm<ProhibitedForPedestriansAnswer>() {
+class AddProhibitedForPedestriansForm : ARadioGroupQuestForm<ProhibitedForPedestriansAnswer, ProhibitedForPedestriansAnswer>() {
 
-    override val items = listOf(
-        TextItem(YES, R.string.quest_accessible_for_pedestrians_prohibited),
-        TextItem(NO, R.string.quest_accessible_for_pedestrians_allowed),
-        TextItem(ACTUALLY_HAS_SIDEWALK, R.string.quest_accessible_for_pedestrians_sidewalk),
-    )
+    override val items = ProhibitedForPedestriansAnswer.entries
+
+    @Composable override fun BoxScope.ItemContent(item: ProhibitedForPedestriansAnswer) {
+        Text(stringResource(item.text))
+    }
 }

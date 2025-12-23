@@ -1,12 +1,13 @@
 package de.westnordost.streetcomplete.data.quest
 
-import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.default_disabled_msg_go_inside
 
 open class TestQuestTypeA : OsmElementQuestType<String> {
 
@@ -26,5 +27,5 @@ class TestQuestTypeD : TestQuestTypeA()
 class TestQuestTypeE : TestQuestTypeA()
 
 class TestQuestTypeDisabled : TestQuestTypeA() {
-    override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside
+    override val defaultDisabledMessage = Res.string.default_disabled_msg_go_inside
 }

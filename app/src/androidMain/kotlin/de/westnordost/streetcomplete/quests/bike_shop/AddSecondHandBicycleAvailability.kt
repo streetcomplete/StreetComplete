@@ -10,6 +10,8 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.isPlaceOrDisusedPlace
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.default_disabled_msg_go_inside
 
 class AddSecondHandBicycleAvailability : OsmFilterQuestType<SecondHandBicycleAvailability>(), AndroidQuest {
     override val elementFilter = """
@@ -28,10 +30,10 @@ class AddSecondHandBicycleAvailability : OsmFilterQuestType<SecondHandBicycleAva
 
     override val changesetComment = "Survey whether bicycle shop sells second-hand bicycles"
     override val wikiLink = "Tag:service:bicycle:second_hand"
-    override val icon = R.drawable.ic_quest_bicycle_second_hand
+    override val icon = R.drawable.quest_bicycle_second_hand
     override val isReplacePlaceEnabled = true
     override val achievements = listOf(BICYCLIST)
-    override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside
+    override val defaultDisabledMessage = Res.string.default_disabled_msg_go_inside
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_bicycle_shop_second_hand_title
 

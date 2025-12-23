@@ -549,7 +549,7 @@ class MainActivity :
     /* ------------------------------- CreateNoteFragment.Listener ------------------------------ */
 
     override fun onCreatedNote(position: LatLon) {
-        showQuestSolvedAnimation(R.drawable.ic_quest_create_note, position)
+        showQuestSolvedAnimation(R.drawable.quest_create_note, position)
         closeBottomSheet()
     }
 

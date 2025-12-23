@@ -20,10 +20,7 @@
     <string name="quest_leave_new_note_yes">"Залишити нотатку"</string>
     <string name="quest_leave_new_note_no">"Сховати"</string>
     <string name="quest_streetName_title">"Яка назва у цієї дороги?"</string>
-    <string name="quest_streetName_description">"як на табличці з назвою (без скорочень):"</string>
     <string name="quest_streetName_answer_noName_confirmation_description">"Іноді табличка з назвою знаходиться лише з одного боку вулиці. Також зауважте, що таблички для дотичних вулиць можуть бути відсутні. Зазвичай будь-яка вулиця, на якій є будівлі, має назву."</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"Якщо назву можна записати без скорочення, робіть саме так. Багато загальних скорочень розгортаються під час набору, але не всі."</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"Без скорочень"</string>
     <string name="quest_openingHours_start_time">"початок роботи"</string>
     <string name="quest_openingHours_end_time">"кінець роботи"</string>
     <string name="quest_openingHours_add_months">"Додайте місяці"</string>
@@ -57,7 +54,6 @@
     <string name="version_banned_message">"Ція версія StreetComplete дуже застаріла. Оновіть версію!"</string>
     <string name="no_gps_no_quests">"Для автоматичного пошуку завдань поруч із вами увімкніть позиціювання"</string>
     <string name="later">"Пізніше"</string>
-    <string name="quest_streetName_answer_noProperStreet_link">"Це лише з'єднання двох доріг"</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">"Щось інше (залишити нотатку)"</string>
     <string name="about_title_privacy_statement">"Заява про конфіденційність"</string>
     <string name="quest_openingHours_public_holidays">"святкові дні"</string>
@@ -196,7 +192,6 @@
     <string name="quest_sport_roller_skating">"Катання на роликах"</string>
     <string name="quest_wheelchairAccess_limited_description_business">"«Частково» значить, що для доступу треба зробити не більше кроку і що більшість кімнат всередині обладнані для інвалідних візків."</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">"«Частково» значить, що для доступу треба зробити не більше кроку."</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"Скорочення в назві %s?"</string>
     <string name="quest_recycling_type_title">"Якого типу цей об'єкт переробки?"</string>
     <string name="recycling_centre">"Центр"</string>
     <string name="overground_recycling_container">"Контейнер"</string>
@@ -323,10 +318,6 @@
     <string name="quest_cycleway_answer_contraflow_cycleway">"Також велодоріжка з іншого боку…"</string>
     <string name="quest_openingHours_emptyAnswer">"Потрібно описати, що вказано у розкладі. Якщо він не вивішаний, дізнайтеся час роботи усередині."</string>
     <string name="quest_cycleway_value_none_but_no_oneway">"ніхто, але велосипедисти можуть їздити по дорозі в обох напрямках"</string>
-    <string name="quest_streetName_answer_noName_question">"Чому в неї немає назви?"</string>
-    <string name="quest_streetName_answer_noProperStreet_service2">"Це щось на зразок під'їзної дороги або стоянки"</string>
-    <string name="quest_streetName_answer_noProperStreet_track2">"Це сільськогосподарська чи лісогосподарська дорога"</string>
-    <string name="quest_streetName_answer_noName_noname">"Нічого з перерахованого, просто немає назви"</string>
     <string name="quest_wheelchairAccess_description_toilets">"Знак інвалідного візка, який може бути вказаний, якщо туалети доступні.
 «Частково» означає, що на інвалідному візку можна в'їхати та користуватись туалетом, але поручні та адаптований рукомийник відсутні."</string>
     <string name="map_btn_create_note">"Створити нову нотатку"</string>
@@ -481,7 +472,7 @@
     <string name="quest_tracktype_grade1">"Тверде"</string>
     <string name="quest_tracktype_grade4">"В основному м'яке"</string>
     <string name="quest_tracktype_grade5">"М'яке"</string>
-    <string name="quest_building_underground_title">"Чи є ця будівля повністю під землею?"</string>
+    <string name="quest_building_underground_title">"Ця будівля повністю під землею?"</string>
     <string name="quest_wheelchairAccess_limited_description_outside">"Частково означає що одного кроку достатньо для доступу"</string>
     <string name="quest_wheelchairAccess_outside_title">"Чи є доступ для людей у візках?"</string>
     <string name="quest_traffic_signals_button_title">"Чи вмикається пішохідний світлофор кнопкою?"</string>
@@ -535,7 +526,6 @@
     <string name="quest_recycling_type_glass_bottles">"Скляні пляшки і банки"</string>
     <string name="quest_recycling_type_glass_bottles_short">"Пляшки і банки"</string>
     <string name="quest_recycling_type_paper">"Папір"</string>
-    <string name="quest_recycling_type_plastic_generic">"Пластик"</string>
     <string name="quest_recycling_type_plastic">"Будь який пластик"</string>
     <string name="quest_recycling_type_shoes">"Взуття"</string>
     <string name="quest_recycling_type_electric_appliances">"Електричні прилади"</string>
@@ -581,8 +571,8 @@
     <string name="achievements_empty">"У вас ще немає досягнень"</string>
     <string name="links_empty">"У вас ще немає посилань"</string>
     <string name="quests_empty">"Ви ще не опублікували відповідей на квести"</string>
-    <string name="unsynced_quests_description">"і %d ще не опублікованих змін."</string>
-    <string name="unsynced_quests_not_logged_in_description">"Ви маєте %d ще не опублікованих змін. Вам потрібно увійти, щоб їх надіслати."</string>
+    <string name="unsynced_quests_description">"і %1$d ще не опублікованих змін."</string>
+    <string name="unsynced_quests_not_logged_in_description">"Ви маєте %1$d ще не опублікованих змін. Вам потрібно увійти, щоб їх надіслати."</string>
     <string name="user_quests_title">"Розв'язані квести"</string>
     <string name="user_achievements_title">"Досягнення"</string>
     <string name="user_links_title">"Колекція посилань"</string>
@@ -654,7 +644,7 @@
     <string name="achievement_veg_solved_X">"Ви розв'язали %d квестів, цікавих для людей, які не вживають м'яса!"</string>
     <string name="achievement_car_title">"В дорозі"</string>
     <string name="achievement_car_solved_X">"Ви розв'язали %d квестів, які покращують деталі вуличної інфраструктури, додавши вулицю в OpenStreetMap!"</string>
-    <string name="unread_messages_message">"У вашій поштовій скриньці є %d непрочитаних повідомлень"</string>
+    <string name="unread_messages_message">"У вашій поштовій скриньці є %1$d непрочитаних повідомлень"</string>
     <string name="unread_messages_button">"Відкрити Вхідні"</string>
     <string name="action_about2">"Про"</string>
     <string name="map_btn_menu">"Меню"</string>
@@ -704,11 +694,10 @@
     <string name="resurvey_intervals_default">"Типово"</string>
     <string name="resurvey_intervals_more_often">"Опитувати частіше"</string>
     <string name="about_title_translate">"Допоможіть перекласти"</string>
-    <string name="about_description_translate">"%1$s перекладено %2$d%%"</string>
+    <string name="about_description_translate">"%1$s перекладено %2$d%"</string>
     <string name="quest_oneway2_title">"Це вулиця з одностороннім рухом? В якому напрямку?"</string>
     <string name="quest_oneway2_dir">"Одностороння в цьому напрямку"</string>
     <string name="quest_oneway2_no_oneway">"Не одностороння"</string>
-    <string name="quest_maxweight_select_sign">"Виберіть знак"</string>
     <string name="quest_steps_incline_title">"Який напрямок веде вгору для цих сходинок?"</string>
     <string name="quest_steps_incline_up">"Сюди вгору"</string>
     <string name="quest_step_count_title">"Скільки тут сходинок?"</string>
@@ -750,7 +739,6 @@
     <string name="quest_charging_station_capacity_title">"Скільки автомобілів можна зарядити на цій зарядній станції одночасно?"</string>
     <string name="link_disaster_ninja_description">"Мапа, що показує нещодавні природні катастрофи, цікава для гуманітарних картографів. Також вона показує багато цікавої статистики, завдяки якій можна проаналізувати як добре замаплене місце або наскільки свіжі дані."</string>
     <string name="quest_lanes_title">"Скильки на цій дорозі смуг для авто?"</string>
-    <string name="quest_lanes_answer_lanes">"Розмічені смуги"</string>
     <string name="quest_lanes_answer_noLanes">"Немає розмічених смуг"</string>
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">"Він має подвійну смугу лівого повороту"</string>
     <string name="quest_address_answer_no_housenumber_message2b">"Це правильно?"</string>
@@ -762,8 +750,6 @@
     <string name="quest_kerb_height_lowered">"Трошки вищий за дорогу"</string>
     <string name="quest_kerb_height_raised">"Високий бордюр"</string>
     <string name="quest_kerb_height_lowered_ramp">"Бордюрний з'їзд"</string>
-    <string name="quest_lanes_answer_lanes_description2">"Вкажіть загальну кількість позначених смуг руху (в обох напрямках), які можна використовувати в автомобільному русі. Велосипедні та спеціальні паркувальні смуги не враховуються.
-Якщо будь-яка смуга зарезервована для автобусів, залиште нотатку."</string>
     <string name="quest_lanes_answer_lanes_description_one_side2">"Вкажіть тут кількість позначених смуг, які можна використовувати для автомобільного руху. Але велосипедні та спеціальні паркувальні смуги не враховуються.
 Якщо будь-яка смуга відведена для автобусів, залиште для цього примітку."</string>
     <string name="quest_surface_value_rock">"Каміння"</string>
@@ -778,7 +764,6 @@
     <string name="quest_shop_gone_replaced_answer">"На (n)"</string>
     <string name="quest_shop_gone_replaced_answer_hint">"Тип цього місця"</string>
     <string name="quest_shop_vacant_type_title">"Цей магазин незайнятий. Що тут тепер?"</string>
-    <string name="quest_lanes_answer_lanes_odd2">"Кількісь смуг різна на різних сторонах"</string>
     <string name="default_disabled_msg_go_inside_regional_warning">"Цей тип квесту за замовчуванням вимкнено, оскільки він не корисний у деяких регіонах, і вам, ймовірно, доведеться ввести місце, щоб мати можливість відповісти на квест цього типу."</string>
     <string name="quest_dietType_explanation_kosher">"Кошерна продукція повинна готуватися за спеціальними правилами, а сертифікаційні агенції Кашрут повинні маркувати продукцію відповідно."</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">"Немає велодоріжок"</string>
@@ -797,7 +782,6 @@
     <string name="quest_postboxRoyalCypher_type_scottish_crown">"Корона Шотландії"</string>
     <string name="quest_buildingType_fire_station">"Пожежна станція"</string>
     <string name="quest_recycling_type_beverage_cartons">"Лише упаковки до напоїв"</string>
-    <string name="quest_recycling_type_plastic_bottles_and_cartons">"Лише пластикові пляшки і картон"</string>
     <string name="team_mode">"Командний режим"</string>
     <string name="team_mode_exit">"Вийти з командного режиму"</string>
     <string name="team_mode_description">"При картографуванні однієї місцевості у групі, ви можете увійти в командний режим, щоб поділити квести між усіма членами команди."</string>
@@ -926,7 +910,7 @@
     <string name="quest_barrier_bicycle_type_double">"Шикана - бар'єр з кожної сторони"</string>
     <string name="quest_barrier_bicycle_type_multiple">"Шикана - більше, ніж два бар'єри"</string>
     <string name="language_default">"Визначається системою"</string>
-    <string name="on_floor">"на поверсі %s:"</string>
+    <string name="on_floor">"на поверсі %1$s"</string>
     <string name="select_street_parking_orientation">"Оберіть орієнтацію відносно дороги:"</string>
     <string name="select_street_parking_position">"Вибрати місце"</string>
     <string name="select_street_parking_no">"Чи є тут знак чи дорожня розмітка?"</string>
@@ -1015,8 +999,8 @@
     <string name="ar_measure">"Вимірювання"</string>
     <string name="ar_core_tracking_error_too_steep_angle">"Занадто гострий кут, відійдіть трохи назад"</string>
     <string name="default_disabled_msg_no_ar">"Щоб виконати цей квест, вам потрібна рулетка, оскільки вимірювання за допомогою камери не підтримується на цьому пристрої."</string>
-    <string name="quest_cycleway_width_title">"Яка тут ширина цієї велодоріжки?"</string>
-    <string name="quest_road_width_title">"Яка тут ширина цієї дороги?"</string>
+    <string name="quest_cycleway_width_title">"Яка ширина цієї велодоріжки?"</string>
+    <string name="quest_road_width_title">"Яка ширина цієї дороги?"</string>
     <string name="quest_road_width_explanation">"Дорожнє полотно від бордюру до бордюру: включно з усім, "</string>
     <string name="quest_sidewalk_answer_none">"Зовсім немає тротуару"</string>
     <string name="link_osmand_description">"Мобільний застосунок для перегляду та навігації онлайн та офлайн мапами"</string>
@@ -1153,8 +1137,7 @@
     <string name="quest_camp_type_tents_only">"Лише намети"</string>
     <string name="quest_camp_type_backcountry">"Кемпінг без облаштунків"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Діаметр виглядає помилковим, зазвичай він від %1$d до %2$d."</string>
-    <string name="quest_recycling_type_pet">"Лише ПЕТ"</string>
-    <string name="street_parking_street_width">"Ширина дороги: %s"</string>
+    <string name="street_parking_street_width">"Ширина дороги: %1$s"</string>
     <string name="overlay_street_parking">"Вуличне паркування"</string>
     <string name="link_ohsomehex_description">"Досліджуйте дані OSM у масштабах від великої картини до окремих об’єктів у просторі та часі"</string>
     <string name="link_opencampingmap_description">"Мапа кемпінгів"</string>
@@ -1201,7 +1184,7 @@
     <string name="user_profile_current_week_title">"Останні 7 днів"</string>
     <string name="user_profile_dates_mapped">"Дні, що ви займались картографуванням"</string>
     <string name="quest_cycleway_value_advisory_lane">"рекомеднована смуга для велосипедів"</string>
-    <string name="urlconfig_scan_qr_code_again2">"Після встановлення програми знову відскануйте QR-код або натисніть &lt;a href=\"%s\"&gt;це посилання&lt;/a&gt;, щоб застосувати попередні налаштування."</string>
+    <string name="urlconfig_scan_qr_code_again2">"Після встановлення програми знову відскануйте QR-код або натисніть &lt;a href=\"%1$s\"&gt;це посилання&lt;/a&gt;, щоб застосувати попередні налаштування."</string>
     <string name="confirmation_replace_shop_title">"Зараз тут інший заклад?"</string>
     <string name="confirmation_replace_shop_message">"У цьому випадку зміниться час роботи, контактна інформація тощо."</string>
     <string name="confirmation_replace_shop_yes">"Тепер тут інший заклад"</string>
@@ -1211,7 +1194,7 @@
 Спробувати зараз?"</string>
     <string name="node_moved_not_far_enough">"Перемістіть його далі"</string>
     <string name="node_moved_too_far">"Переїхав занадто далеко. Залиште записку"</string>
-    <string name="node_moved">"Переміщено %s"</string>
+    <string name="node_moved">"Переміщено %1$s"</string>
     <string name="move_node_description">"Перетягніть карту, щоб розмістити об’єкт у правильному місці. Використовуйте функцію масштабування та намагайтеся бути максимально точним. Майте на увазі, що ваше відображене місцезнаходження може бути менш точним, ніж показано."</string>
     <string name="move_node_action_description">"Ви пересунули точку"</string>
     <string name="quest_cycleway_value_shoulder">"немає, але можна їхати по узбіччі"</string>
@@ -1309,7 +1292,7 @@
     <string name="label_log_older_than">"До"</string>
     <string name="label_log_message_contains">"Запис з"</string>
     <string name="title_logs_filters">"Фільтрувати записи"</string>
-    <string name="pref_title_quests_restore_hidden_summary">"Кількість прихованих квестів: %d"</string>
+    <string name="pref_title_quests_restore_hidden_summary">"Кількість прихованих квестів: %1$d"</string>
     <string name="link_every_door_description">"Потужний редактор POI для Android та iOS"</string>
     <string name="link_mapcomplete_description">"Колекція тематичних карт OSM, кожна з яких показує та дозволяє редагувати один тип обʼєктів"</string>
     <string name="link_forum_description">"Потрібна допомога? Хочете почитати, що відбувається? Приходьте та спілкуйтеся, тут кипить активність спільнот з усього світу!"</string>
@@ -1381,7 +1364,7 @@
     <string name="quest_camp_power_supply_hint">"Це можуть бути розетки безпосередньо на території табору, розетки в службовій будівлі, доступній для гостей, спеціальна станція для зарядки телефонів, ноутбуків тощо."</string>
     <string name="quest_barrier_opening_width_bollard">"Яка тут найбільша ширина проміжку для проходу?"</string>
     <string name="user_profile_all_time_title">"Загалом"</string>
-    <string name="user_statistics_country_rank2">"Місце в %s"</string>
+    <string name="user_statistics_country_rank2">"Місце в %1$s"</string>
     <string name="quest_leafType_tree_is_just_a_stump">"Це просто пень"</string>
     <string name="quest_board_name_title">"Яка назва цієї інформаційної дошки?"</string>
     <string name="quest_crossing_hint">"Неформальна стежка, що перетинає дорогу:"</string>
@@ -1430,12 +1413,19 @@
     <string name="link_openclimbing_description">"Мапа місць для скелелазіння"</string>
     <string name="pref_title_zoom_buttons">"Показати кнопки масштабування мапи"</string>
     <string name="overlay_mtb_scale">"Складність MTB"</string>
+    <string name="overlay_mtb_scale_0">"Грейд 0"</string>
     <string name="overlay_mtb_scale_0_description">"Тверда, чіпка утрамбована або природна поверхня; відсутність перешкод; пологий схил; широкі повороти."</string>
+    <string name="overlay_mtb_scale_1">"Грейд 1"</string>
     <string name="overlay_mtb_scale_1_description">"Частково пухка місцевість з дрібним корінням, камінням, ерозією або водними борознами; ухил ≤40%; перешкоди, що піддаються перекочуванню; потрібна базова техніка їзди."</string>
+    <string name="overlay_mtb_scale_2">"Грейд 2"</string>
     <string name="overlay_mtb_scale_2_description">"Пухка місцевість з великим корінням та камінням, плоскі перепади/невеликі сходи, ухил до 70%; легкі круті повороти; потрібне розширене гальмування та перенесення ваги."</string>
+    <string name="overlay_mtb_scale_3">"Грейд 3"</string>
     <string name="overlay_mtb_scale_3_description">"Слизька, пухка місцевість з осипом, брилами, великим корінням та камінням, високими сходами та складними траверсами; круті повороти, ухил &gt;70%; потрібні дуже хороший баланс та точне гальмування."</string>
+    <string name="overlay_mtb_scale_4">"Грейд 4"</string>
     <string name="overlay_mtb_scale_4_description">"Складні та технічні перешкоди: великі брили, коріння, осип, круті пандуси; поворотні серпантини, плоскі спуски з натисканням на педалі; ідеальний баланс, точне гальмування та зміна положення заднього колеса."</string>
+    <string name="overlay_mtb_scale_5">"Грейд 5"</string>
     <string name="overlay_mtb_scale_5_description">"Надзвичайно крута кам'яна місцевість із зустрічними підйомами, брилами, зсувами, серпантином із перешкодами, високими перепадами один за одним та поваленими деревами. Перенесення велосипеда навколо перешкод неможливе; їзда неминуча. Потрібні навички триалу."</string>
+    <string name="overlay_mtb_scale_6">"Грейд 6"</string>
     <string name="overlay_mtb_scale_6_description">"Небезпечна та непрохідна місцевість, непридатна для катання на гірському велосипеді."</string>
     <string name="default_disabled_overlay_domain_expert">"Це накладання вимкнено за замовчуванням, оскільки вам потрібно бути експертом у предметній області, щоб точно записувати цю інформацію."</string>
     <string name="pref_title_overlays">"Вибір накладання"</string>
@@ -1446,4 +1436,33 @@
     <string name="compass">"Компас"</string>
     <string name="quest_tracktype_grade2">"Переважно тверде"</string>
     <string name="quest_tracktype_grade3">"Суміш"</string>
+    <string name="quest_housenumber_multiple_numbers_description2">"Ви можете вводити номери будинків, розділені комами.
+Наприклад, 1, 3 або 2-Б, 4, 6."</string>
+    <string name="quest_drinking_water_potable_unsigned2">"Жодних ознак"</string>
+    <string name="or">"або"</string>
+    <string name="action_copy">"Копіювати"</string>
+    <string name="quest_stopName_hint">"Ви можете застосувати ту саму назву до іншої зупинки, натиснувши на неї на карті."</string>
+    <string name="quest_shelter_capacity_title">"Скільки людей тут може спати?"</string>
+    <string name="quest_handwashing_title">"Чи можна тут помити руки?"</string>
+    <string name="quest_openingHours_delete">"Видалити"</string>
+    <string name="quest_streetName_hint">"Ви можете застосувати таку саму назву до сусідньої ділянки, натиснувши на неї на карті."</string>
+    <string name="quest_streetName_abbreviation_instruction">"Скорочення, такі як, наприклад, «вул.», слід розшифровувати."</string>
+    <string name="quest_streetName_add_language">"Додати мову"</string>
+    <string name="ok">"OK"</string>
+    <string name="cancel">"Скасувати"</string>
+    <string name="quest_aerialway_bicycle_title">"Чи перевозить цей підйомник велосипеди?"</string>
+    <string name="quest_aerialway_bicycle_summer">"Тільки влітку"</string>
+    <string name="quest_board_type_rules">"Правила"</string>
+    <string name="quest_firewood_provided_title">"Чи надаються тут дрова?"</string>
+    <string name="quest_first_aid_kit_location">"Де знаходиться ця аптечка першої допомоги?"</string>
+    <string name="quest_lane_markings_title">"Чи є на цій дорозі розмітка смуг?"</string>
+    <string name="quest_level_thing_title">"На якому поверсі знаходиться ця річ?"</string>
+    <string name="quest_bicycle_charging_station_capacity_title">"Скільки велосипедів можна заряджати тут одночасно?"</string>
+    <string name="quest_charging_station_bicycles_title">"Чи можна тут також заряджати велосипеди?"</string>
+    <string name="quest_charging_station_bicycles_hint">"Адаптери живлення для велозарядок підключаються до звичайних розеток."</string>
+    <string name="quest_tower_access_title">"Хто може відвідати цю вежу? Це може бути безкоштовно або платно."</string>
+    <string name="quest_charging_station_bicycles_answer_only">"Це лише для велосипедів"</string>
+    <string name="quest_recycling_type_pet_bottles">"ПЕТ пляшки"</string>
+    <string name="quest_maxweight_add_sign">"Додати знак"</string>
+    <string name="quest_maxweight_remove_sign">"Прибрати знак"</string>
 </resources>

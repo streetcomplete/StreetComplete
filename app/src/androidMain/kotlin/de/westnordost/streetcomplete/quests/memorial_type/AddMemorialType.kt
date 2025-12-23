@@ -17,7 +17,7 @@ class AddMemorialType : OsmFilterQuestType<MemorialType>(), AndroidQuest {
     """
     override val changesetComment = "Specify memorial types"
     override val wikiLink = "Key:memorial"
-    override val icon = R.drawable.ic_quest_memorial
+    override val icon = R.drawable.quest_memorial
     override val achievements = listOf(CITIZEN)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_memorialType_title

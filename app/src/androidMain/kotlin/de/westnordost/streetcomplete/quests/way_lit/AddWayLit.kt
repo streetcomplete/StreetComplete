@@ -9,6 +9,8 @@ import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.changeToSteps
 import de.westnordost.streetcomplete.osm.lit.applyTo
 import de.westnordost.streetcomplete.osm.maxspeed.MAX_SPEED_TYPE_KEYS
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.default_disabled_msg_overlay
 
 class AddWayLit : OsmFilterQuestType<WayLitOrIsStepsAnswer>(), AndroidQuest {
 
@@ -49,9 +51,9 @@ class AddWayLit : OsmFilterQuestType<WayLitOrIsStepsAnswer>(), AndroidQuest {
 
     override val changesetComment = "Specify whether ways are lit"
     override val wikiLink = "Key:lit"
-    override val icon = R.drawable.ic_quest_lantern
+    override val icon = R.drawable.quest_lantern
     override val achievements = listOf(PEDESTRIAN)
-    override val defaultDisabledMessage = R.string.default_disabled_msg_overlay
+    override val defaultDisabledMessage = Res.string.default_disabled_msg_overlay
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_lit_title
 

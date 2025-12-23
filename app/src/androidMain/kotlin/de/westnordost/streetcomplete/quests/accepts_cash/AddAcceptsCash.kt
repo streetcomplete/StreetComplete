@@ -11,22 +11,24 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.isPlaceOrDisusedPlace
 import de.westnordost.streetcomplete.quests.YesNoQuestForm
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.default_disabled_msg_go_inside
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
 class AddAcceptsCash : OsmFilterQuestType<Boolean>(), AndroidQuest {
 
     override val elementFilter: String get() {
         val amenities = listOf(
-            "bar", "cafe", "fast_food", "food_court", "ice_cream", "pub", "biergarten",
-            "restaurant", "cinema", "nightclub", "planetarium", "theatre", "marketplace",
-            "internet_cafe", "car_wash", "fuel", "pharmacy", "telephone", "vending_machine"
+            "bar", "cafe", "fast_food", "ice_cream", "pub", "biergarten", "restaurant", "fuel",
+            "cinema", "nightclub", "planetarium", "theatre", "internet_cafe", "car_wash",
+            "pharmacy", "telephone", "vending_machine", "luggage_locker"
         )
         val tourismsWithImpliedFees = listOf(
-            "zoo", "aquarium", "theme_park", "hotel", "hostel", "motel", "guest_house",
+            "theme_park", "hotel", "hostel", "motel", "guest_house",
             "apartment", "camp_site"
         )
         val tourismsWithoutImpliedFees = listOf(
-            "attraction", "museum", "gallery"
+            "attraction", "museum", "gallery", "zoo", "aquarium"
         )
         val leisures = listOf(
             "adult_gaming_centre", "amusement_arcade", "bowling_alley", "escape_game", "miniature_golf",
@@ -53,7 +55,7 @@ class AddAcceptsCash : OsmFilterQuestType<Boolean>(), AndroidQuest {
 
     override val changesetComment = "Survey whether payment with cash is accepted"
     override val wikiLink = "Key:payment"
-    override val icon = R.drawable.ic_quest_cash
+    override val icon = R.drawable.quest_cash
     override val isReplacePlaceEnabled = true
     override val enabledInCountries = NoCountriesExcept(
         "FI", // https://github.com/streetcomplete/StreetComplete/issues/5500
@@ -62,7 +64,7 @@ class AddAcceptsCash : OsmFilterQuestType<Boolean>(), AndroidQuest {
         "NL", // https://github.com/streetcomplete/StreetComplete/issues/4826
     )
     override val achievements = listOf(CITIZEN)
-    override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside
+    override val defaultDisabledMessage = Res.string.default_disabled_msg_go_inside
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_accepts_cash_title2
 

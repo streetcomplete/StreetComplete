@@ -317,10 +317,6 @@
           "name": "Reloj de sol",
           "terms": "gnomon,sombra,sol,solar"
         },
-        "amenity/college": {
-          "name": "Terreno de centro educativo superior no universitario",
-          "terms": "formación profesional,escuela profesional,educación terciaria,post-bachillerato,ciclo formativo de grado superior,fp,conservatorio,terciario,superior,no universitario,terreno,área,area,suelo,instituto"
-        },
         "amenity/community_centre": {
           "name": "Centro Comunitario",
           "terms": "centro de la comunidad,centro comunitario"
@@ -379,6 +375,10 @@
         "amenity/dentist": {
           "name": "Dentista",
           "terms": "dentista,odontólogo"
+        },
+        "amenity/device_charging_station": {
+          "name": "Estación de carga para dispositivos",
+          "terms": "estación de carga,punto de carga,terminal de carga"
         },
         "amenity/dive_centre": {
           "name": "Centro de buceo",
@@ -519,10 +519,6 @@
         "amenity/driver_training": {
           "name": "Terreno para preparación de conductores",
           "terms": "escuela de conducción,escuela de manejo,terreno de entrenamiento de conductores,terreno para la formación de conductores,práctica de manejo,practica de manejo,formación de conductores,entrenamiento de conductores,preparación de conductores"
-        },
-        "amenity/driving_school": {
-          "name": "Escuela de conducción",
-          "terms": "autoescuela,escuela de manejo,escuela de conducción,automóviles,motocicletas,camiones,vehículos"
         },
         "amenity/embassy": {
           "name": "Embajada"
@@ -665,17 +661,9 @@
           "name": "Karaoke Box",
           "terms": "club de karaoke,sala de karaoke,televisión de karaoke,ktv,karaoke"
         },
-        "amenity/kindergarten": {
-          "name": "Terreno de preescolar / jardín de infantes",
-          "terms": "preescolar,pre primaria,jardín de infancia,jardín de niños,kinder,parvulario,párvulos,educación inicial,jardín de infantes,jardín maternal"
-        },
         "amenity/kneipp_water_cure": {
           "name": "Instalación Kneipp",
           "terms": "baño de pies,hidroterapia,cura kneipp,hidroterapia kneipp,kneippismo"
-        },
-        "amenity/language_school": {
-          "name": "Escuela de idiomas",
-          "terms": "escuela,colegio,idiomas"
         },
         "amenity/lavoir": {
           "name": "Lavadero",
@@ -732,10 +720,6 @@
         "amenity/motorcycle_rental": {
           "name": "Alquiler de motos",
           "terms": "chopper,cruiser,dirt bike,motocross,minibike,ciclomotor,moto,scooter,sidecar,moto deportiva,alquiler,renta,arriendo"
-        },
-        "amenity/music_school": {
-          "name": "Escuela de música",
-          "terms": "conservatorio,academia,música,musica,musical,instrumentos musicales,escuela de música,academia de música,conservatorio de música"
         },
         "amenity/nightclub": {
           "name": "Discoteca",
@@ -871,10 +855,6 @@
         "amenity/post_office": {
           "name": "Oficina postal",
           "terms": "correo,oficina de correos,casa de correos,estafeta de correos"
-        },
-        "amenity/prep_school": {
-          "name": "Preparación para exámenes / Escuela de tutoría",
-          "terms": "académico,academico,act,sat,tarea,matemáticas,lectura,preparación para exámenes,tutoría,escritura"
         },
         "amenity/prison": {
           "name": "Terreno de prisión / cárcel",
@@ -1039,10 +1019,6 @@
           "name": "Desecho de inodoro de casa rodante",
           "terms": "desecho,inodoro,taza,letrina,baño,aseo,lavabo,casa rodante,autocaravana,motorhome"
         },
-        "amenity/school": {
-          "name": "Terreno de escuela / colegio",
-          "terms": "recinto escolar,escolar,escuela,colegio,centro educativo,unidad educativa,primaria,secundaria,secundario,instituto,institución educativa,academia,escuela elemental,preparatorio,liceo"
-        },
         "amenity/shelter": {
           "name": "Refugio",
           "terms": "albergue,abrigo,amparo,asilo,cobertizo,garita,refugio,templete,pabellón,gazebo,picnic"
@@ -1198,10 +1174,6 @@
         "amenity/trolley_bay": {
           "name": "Corral de carritos",
           "terms": "retorno de carro,retorno de carrito,carro,carrito,carrito de compras,carro de compras"
-        },
-        "amenity/university": {
-          "name": "Terreno de universidad",
-          "terms": "universidad,campus,colegio mayor,facultad,universitario,universitaria,claustro,postgrado,pregrado,educación profesional,educación superior"
         },
         "amenity/vacuum_cleaner": {
           "name": "Estación de limpieza con aspiradora",
@@ -2160,6 +2132,49 @@
         "disused/shop": {
           "name": "Tienda cerrada permanentemente"
         },
+        "education": {
+          "name": "Centro educativo",
+          "terms": "centro educativo,institución educativa,establecimiento educativo"
+        },
+        "education/college": {
+          "name": "Terreno de instituto terciario",
+          "terms": "campus de instituto terciario,predio de instituto terciario"
+        },
+        "education/dancing_school": {
+          "name": "Academia de danza",
+          "terms": "escuela de baile,academia de danza,centro de danza"
+        },
+        "education/driving_school": {
+          "name": "Escuela de manejo",
+          "terms": "academia de conducción,autoescuela,escuela de manejo"
+        },
+        "education/kindergarten": {
+          "name": "Terreno de jardín de infancia / preescolar",
+          "terms": "campus de preescolar,predio de jardín de infancia,terreno de guardería"
+        },
+        "education/language_school": {
+          "name": "Escuela de idiomas",
+          "terms": "academia de idiomas,centro de idiomas,escuela de lenguas"
+        },
+        "education/music_school": {
+          "name": "Escuela de música",
+          "terms": "academia de música,centro de música,instituto musical"
+        },
+        "education/prep_school": {
+          "name": "Centro de preparación para exámenes / Tutorías",
+          "terms": "centro de tutorías,academia de preparación,apoyo escolar"
+        },
+        "education/school": {
+          "name": "Terreno escolar",
+          "terms": "campus escolar,predio de escuela,terreno de colegio"
+        },
+        "education/university": {
+          "name": "Terreno universitario",
+          "terms": "campus universitario,predio universitario"
+        },
+        "education/yes": {
+          "name": "Centro educativo (tipo no especificado)"
+        },
         "embankment": {
           "name": "Terraplén"
         },
@@ -2177,12 +2192,6 @@
         "emergency/defibrillator": {
           "name": "Desfibrilador",
           "terms": "desfibrilador,resucitador,reanimador,restablecedor,ritmo cardíaco"
-        },
-        "emergency/designated": {
-          "name": "Acceso de emergencia designado"
-        },
-        "emergency/destination": {
-          "name": "Acceso de emergencia como destino"
         },
         "emergency/disaster_response": {
           "name": "Estación de respuesta a desastres",
@@ -2240,18 +2249,9 @@
           "name": "Rescate de montaña",
           "terms": "rescate,montaña,rescatista,alpinismo,senderismo,guardia forestal,greim,intervención,esquiadores,escaladores,emergencias"
         },
-        "emergency/no": {
-          "name": "Acceso de emergencia no permitido"
-        },
-        "emergency/official": {
-          "name": "Acceso de emergencia oficial"
-        },
         "emergency/phone": {
           "name": "Teléfono de emergencias",
           "terms": "teléfono de emergencia,telefono de emergencia,sos,emergencia,ayuda telefónica,servicio de emergencia,línea de emergencia,emergencias,rescate,socorro,ayuda,auxilio,número de emergencia,maltrato,drogas,suicidio,médico,asistencia,policía,bomberos"
-        },
-        "emergency/private": {
-          "name": "Acceso de emergencia privado"
         },
         "emergency/siren": {
           "name": "Sirena",
@@ -2268,9 +2268,6 @@
         "emergency/water_tank": {
           "name": "Depósito de agua de emergencia",
           "terms": "tanque de agua,cisterna,depósito,deposito,reserva,agua,pozo,copa de agua,bidón"
-        },
-        "emergency/yes": {
-          "name": "Acceso de emergencia permitido"
         },
         "entrance": {
           "name": "Entrada / Salida",
@@ -2965,6 +2962,10 @@
           "name": "Acuicultura",
           "terms": "acuacultura,piscicultura,maricultura,ostricultura,carpicultura,salmonicultura,pez,pescado,crustáceos,algas,granja de peces,cría de peces,cría camarones,granja de ostras,cría de ostras,cultivo de algas"
         },
+        "landuse/aquaculture/fish": {
+          "name": "Granja / criadero de peces",
+          "terms": "piscifactoría,criadero de peces,granja acuícola"
+        },
         "landuse/basin": {
           "name": "Cuenca"
         },
@@ -3198,10 +3199,6 @@
         "leisure/dance": {
           "name": "Salón de baile",
           "terms": "sala de baile,pista de baile,baile de salón,bolero,conga,cha-cha-chá,fox-trot,mambo,son cubano,meregue,milonga,pasodoble,polka,rock and roll,rumba,swing,tango,vals,jive"
-        },
-        "leisure/dancing_school": {
-          "name": "Escuela de baile",
-          "terms": "escuela de baile,escuela de danza,academia de danza,baile,danza,escuela,taller,academia"
         },
         "leisure/disc_golf_course": {
           "name": "Golf de disco",
@@ -3703,6 +3700,18 @@
           "name": "Colgador de alfombras",
           "terms": "colgador de alfombras,soporte para alfombras,estante para alfombras"
         },
+        "man_made/ceremonial_gate": {
+          "name": "Puerta ceremonial",
+          "terms": "arco ceremonial,puerta tradicional,entrada monumental"
+        },
+        "man_made/ceremonial_gate/paifang": {
+          "name": "Paifang",
+          "terms": "arco chino,puerta tradicional china,arco ornamental"
+        },
+        "man_made/ceremonial_gate/torii": {
+          "name": "Torii",
+          "terms": "puerta sintoísta,arco japonés,portal tradicional japonés"
+        },
         "man_made/charge_point": {
           "name": "Punto de recarga para vehículos eléctricos",
           "terms": "ev,ve,vehículo eléctrico,puesto de carga,estación de carga,punto de carga"
@@ -3977,10 +3986,6 @@
         "man_made/telescope/radio": {
           "name": "Telescopio de radio",
           "terms": "telescopio de radio,radiotelescopio,antena de radioastronomía"
-        },
-        "man_made/torii": {
-          "name": "Torii",
-          "terms": "puerta japonesa,santuario sintoísta"
         },
         "man_made/tower": {
           "name": "Torre",
@@ -5747,6 +5752,10 @@
           "name": "Tienda de telefonía móvil",
           "terms": "teléfono,celular,móvil,movil,smartphone,teléfono móvil,teléfono celular,telefonía móvil,telefonía celular"
         },
+        "shop/mobile_phone_accessories": {
+          "name": "Tienda de accesorios para móviles",
+          "terms": "tienda de accesorios para celulares,local de accesorios para teléfonos móviles,tienda de complementos para celular"
+        },
         "shop/model": {
           "name": "Tienda de modelismo",
           "terms": "modelismo,modelos a escala,escala,juguetes,juegos,manualidades"
@@ -6266,6 +6275,9 @@
         "traffic_sign/variable_message": {
           "name": "Señal de mensaje variable",
           "terms": "vms,señal de mensaje dinámico"
+        },
+        "type/associatedStreet": {
+          "name": "Calle asociada"
         },
         "type/boundary": {
           "name": "Límite",

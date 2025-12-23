@@ -1,32 +1,30 @@
 package de.westnordost.streetcomplete.osm.cycleway
 
 import de.westnordost.streetcomplete.data.meta.CountryInfo
+import de.westnordost.streetcomplete.osm.Sides
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway.*
 import de.westnordost.streetcomplete.osm.oneway.Direction
 import de.westnordost.streetcomplete.osm.oneway.Direction.*
 import de.westnordost.streetcomplete.osm.oneway.isForwardOneway
-import de.westnordost.streetcomplete.osm.oneway.isInContraflowOfOneway
 import de.westnordost.streetcomplete.osm.oneway.isNotOnewayForCyclists
 import de.westnordost.streetcomplete.osm.oneway.isOneway
 import de.westnordost.streetcomplete.osm.oneway.isReversedOneway
 import kotlinx.serialization.Serializable
 
-data class LeftAndRightCycleway(val left: CyclewayAndDirection?, val right: CyclewayAndDirection?)
-
-fun LeftAndRightCycleway.any(block: (cycleway: CyclewayAndDirection) -> Boolean): Boolean =
-    left?.let(block) == true || right?.let(block) == true
-
-fun LeftAndRightCycleway.selectableOrNullValues(countryInfo: CountryInfo): LeftAndRightCycleway {
+fun Sides<CyclewayAndDirection>.selectableOrNullValues(countryInfo: CountryInfo): Sides<CyclewayAndDirection> {
     val leftIsSelectable = left?.isSelectable(countryInfo) != false
     val rightIsSelectable = right?.isSelectable(countryInfo) != false
     if (leftIsSelectable && rightIsSelectable) return this
-    return LeftAndRightCycleway(
+    return Sides(
         if (leftIsSelectable) left else null,
         if (rightIsSelectable) right else null
     )
 }
 
-fun LeftAndRightCycleway.wasNoOnewayForCyclistsButNowItIs(tags: Map<String, String>, isLeftHandTraffic: Boolean): Boolean =
+fun Sides<CyclewayAndDirection>.wasNoOnewayForCyclistsButNowItIs(
+    tags: Map<String, String>,
+    isLeftHandTraffic: Boolean
+): Boolean =
     isOneway(tags)
     && isNotOnewayForCyclists(tags, isLeftHandTraffic)
     && isNotOnewayForCyclistsNow(tags) == false
@@ -34,7 +32,7 @@ fun LeftAndRightCycleway.wasNoOnewayForCyclistsButNowItIs(tags: Map<String, Stri
 /** Returns whether this is now not a oneway for cyclists. It returns null if any side
  *  is null because it is possible that the undefined side has a track in the contra-flow direction
  *  (e.g. either a normal track on the left side or a dual-track on the right side) */
-fun LeftAndRightCycleway.isNotOnewayForCyclistsNow(tags: Map<String, String>): Boolean? {
+fun Sides<CyclewayAndDirection>.isNotOnewayForCyclistsNow(tags: Map<String, String>): Boolean? {
     val onewayDir = when {
         isForwardOneway(tags) -> FORWARD
         isReversedOneway(tags) -> BACKWARD
@@ -158,14 +156,20 @@ fun Cycleway.isAmbiguous(countryInfo: CountryInfo) = when (this) {
         false
 }
 
+fun Sides<Cycleway>.withDefaultDirection(isLeftHandTraffic: Boolean): Sides<CyclewayAndDirection> =
+    Sides(
+        left = left?.let { CyclewayAndDirection(it, Direction.getDefault(false, isLeftHandTraffic)) },
+        right = right?.let { CyclewayAndDirection(it, Direction.getDefault(true, isLeftHandTraffic)) },
+    )
+
 fun getSelectableCycleways(
     countryInfo: CountryInfo,
-    roadTags: Map<String, String>,
     isRightSide: Boolean,
     isLeftHandTraffic: Boolean,
-    direction: Direction?
+    direction: Direction?,
+    roadDirection: Direction,
 ): List<CyclewayAndDirection> {
-    val dir = direction?.takeUnless { it == BOTH } ?: Direction.getDefault(isRightSide, isLeftHandTraffic)
+    val direction = direction?.takeUnless { it == BOTH } ?: Direction.getDefault(isRightSide, isLeftHandTraffic)
     val cycleways = mutableListOf(
         NONE, SEPARATE,
         EXCLUSIVE_LANE, ADVISORY_LANE, UNSPECIFIED_LANE, SUGGESTION_LANE,
@@ -194,10 +198,10 @@ fun getSelectableCycleways(
         cycleways.remove(SUGGESTION_LANE)
     }
     // different wording for a contraflow lane that is marked like a "shared" lane (just bicycle pictogram)
-    if (isInContraflowOfOneway(roadTags, dir)) {
+    if (direction.isReverseOf(roadDirection)) {
         cycleways.add(cycleways.indexOf(NONE) + 1, NONE_NO_ONEWAY)
     }
-    return cycleways.map { CyclewayAndDirection(it, dir) } + dualCycleways
+    return cycleways.map { CyclewayAndDirection(it, direction) } + dualCycleways
 }
 
 val CyclewayAndDirection.estimatedWidth: Float get() = when (cycleway) {

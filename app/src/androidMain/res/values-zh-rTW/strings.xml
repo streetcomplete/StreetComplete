@@ -20,10 +20,7 @@
     <string name="quest_leave_new_note_yes">"留下註記"</string>
     <string name="quest_leave_new_note_no">"不，僅隱藏"</string>
     <string name="quest_streetName_title">"這條路的名稱？"</string>
-    <string name="quest_streetName_description">"被寫在街道標示上，縮寫被展開為："</string>
     <string name="quest_streetName_answer_noName_confirmation_description">"有時街道標誌僅位於街道的一端。另請注意，較大街道的小街可能沒有額外的路牌。通常，任何有房屋的街道都有一個名字。"</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"假如此名稱可以不縮寫拼出，則它應該展開。許多常見的縮寫，在你輸入的時候會自動被展開，但並非全部。"</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"無縮寫"</string>
     <string name="quest_openingHours_start_time">"開放時間"</string>
     <string name="quest_openingHours_end_time">"關閉時間"</string>
     <string name="quest_openingHours_add_months">"新增月份"</string>
@@ -57,7 +54,6 @@
     <string name="version_banned_message">"此版本的 StreetComplete 已經被禁止上傳任何回答！ 請更新版本！"</string>
     <string name="no_gps_no_quests">"要自動下載你附近的資料的話，開啟定位"</string>
     <string name="later">"稍後"</string>
-    <string name="quest_streetName_answer_noProperStreet_link">"它只連接兩條道路"</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">"其他（留下註記）"</string>
     <string name="about_title_privacy_statement">"隱私聲明"</string>
     <string name="quest_openingHours_public_holidays">"國定假日"</string>
@@ -196,7 +192,6 @@
     <string name="quest_sport_roller_skating">"滾輪溜冰"</string>
     <string name="quest_wheelchairAccess_limited_description_business">"部分可通行意味不用跨過腳踝高的地方，就可以進到場所裡，並且裡面的房間是輪椅可通行的狀況。"</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">"部分可通行意味不用跨過腳踝高的地方，就可以進到場所裡。"</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"%s 的簡稱縮寫是？"</string>
     <string name="quest_recycling_type_title">"這是哪一種資源回收設施？"</string>
     <string name="recycling_centre">"資源回收中心"</string>
     <string name="overground_recycling_container">"資源回收箱"</string>
@@ -323,10 +318,6 @@
     <string name="quest_cycleway_answer_contraflow_cycleway">"另一側也有單車道…"</string>
     <string name="quest_openingHours_emptyAnswer">"你必須描述標示狀況。如果沒有標示，那麼你必須到店裡詢問。"</string>
     <string name="quest_cycleway_value_none_but_no_oneway">"無，但單車騎士可能兩個方向都能騎乘"</string>
-    <string name="quest_streetName_answer_noName_question">"為什麼這條路沒有名稱？"</string>
-    <string name="quest_streetName_answer_noProperStreet_service2">"看起來像是得來速或是停車道道"</string>
-    <string name="quest_streetName_answer_noProperStreet_track2">"這是一條產業道路"</string>
-    <string name="quest_streetName_answer_noName_noname">"上述答案都不是，就只是沒有名字"</string>
     <string name="quest_wheelchairAccess_description_toilets">"如果有無障礙廁所，則會看到無障礙指示牌。
 通常意味輪椅可以進入並使用該間廁所，但沒有手桿或是改良的洗手台。"</string>
     <string name="map_btn_create_note">"創建新註記"</string>
@@ -535,7 +526,6 @@
     <string name="quest_recycling_type_glass_bottles">"玻璃瓶罐"</string>
     <string name="quest_recycling_type_glass_bottles_short">"瓶瓶罐罐"</string>
     <string name="quest_recycling_type_paper">"紙張"</string>
-    <string name="quest_recycling_type_plastic_generic">"塑膠"</string>
     <string name="quest_recycling_type_plastic">"任何塑膠類"</string>
     <string name="quest_recycling_type_shoes">"鞋子"</string>
     <string name="quest_recycling_type_electric_appliances">"電子產品"</string>
@@ -582,8 +572,8 @@
     <string name="achievements_empty">"您尚未有任何的成就"</string>
     <string name="links_empty">"您尚未有任何連結"</string>
     <string name="quests_empty">"您尚未發佈任何編輯"</string>
-    <string name="unsynced_quests_description">"新增 %d 項尚未發佈的更改。"</string>
-    <string name="unsynced_quests_not_logged_in_description">"您尚未發佈 %d 項變更。您必須登入後才能上傳。"</string>
+    <string name="unsynced_quests_description">"新增 %1$d 項尚未發佈的更改。"</string>
+    <string name="unsynced_quests_not_logged_in_description">"您尚未發佈 %1$d 項變更。您必須登入後才能上傳。"</string>
     <string name="user_quests_title">"編輯"</string>
     <string name="user_achievements_title">"成就"</string>
     <string name="user_links_title">"連結集合"</string>
@@ -657,7 +647,7 @@
     <string name="achievement_veg_solved_X">"您解決了 %d 項不吃肉的人有興趣的任務！"</string>
     <string name="achievement_car_title">"在路上"</string>
     <string name="achievement_car_solved_X">"您解決了 %d 項改善放在街道上描述設施細節的任務！"</string>
-    <string name="unread_messages_message">"你在收件匣中有 %d 封未讀訊息"</string>
+    <string name="unread_messages_message">"你在收件匣中有 %1$d 封未讀訊息"</string>
     <string name="unread_messages_button">"開啟收信匣"</string>
     <string name="action_about2">"關於"</string>
     <string name="map_btn_menu">"選單"</string>
@@ -706,11 +696,10 @@
     <string name="resurvey_intervals_default">"預設"</string>
     <string name="resurvey_intervals_more_often">"詢問更多資訊"</string>
     <string name="about_title_translate">"幫忙翻譯這款 app"</string>
-    <string name="about_description_translate">"%1$s翻譯了 %2$d%%"</string>
+    <string name="about_description_translate">"%1$s翻譯了 %2$d%"</string>
     <string name="quest_oneway2_title">"這是單行道嗎？哪個方向呢？"</string>
     <string name="quest_oneway2_dir">"單行道是這個方向"</string>
     <string name="quest_oneway2_no_oneway">"不是單行道"</string>
-    <string name="quest_maxweight_select_sign">"選擇指標"</string>
     <string name="quest_steps_incline_title">"這階梯的方向是？"</string>
     <string name="quest_steps_incline_up">"這個方向往上"</string>
     <string name="quest_step_count_title">"這裡有幾階？"</string>
@@ -752,7 +741,6 @@
     <string name="quest_charging_station_capacity_title">"同一時間在這一充電站有幾台車能同時充電？"</string>
     <string name="link_disaster_ninja_description">"人道救援圖客感興趣，呈現最近自然災害下更新的地圖。另外，也會顯示分析關於這一帶畫得多完善，或是地圖夠新等有趣的統計數據。"</string>
     <string name="quest_lanes_title">"這條路允行車輛通行的車道數多少？"</string>
-    <string name="quest_lanes_answer_lanes">"標線車道"</string>
     <string name="quest_lanes_answer_noLanes">"無標線車道"</string>
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">"它有雙向左轉車道"</string>
     <string name="quest_address_answer_no_housenumber_message2b">"正確嗎？"</string>
@@ -764,8 +752,6 @@
     <string name="quest_kerb_height_lowered">"比路面材質高一些"</string>
     <string name="quest_kerb_height_raised">"高路緣"</string>
     <string name="quest_kerb_height_lowered_ramp">"路緣斜坡"</string>
-    <string name="quest_lanes_answer_lanes_description2">"具體說明所有汽車可通行標示車道 (所有方向)，所以，單車和停車場通道不算。
-如果有車道保留給公車，請留下註解。"</string>
     <string name="quest_lanes_answer_lanes_description_one_side2">"具體說明所有汽車可通行標示車道 (所有方向)，所以，單車和停車場通道不算。
 如果有車道保留給公車，請留下註解。 "</string>
     <string name="quest_surface_value_rock">"石頭"</string>
@@ -780,7 +766,6 @@
     <string name="quest_shop_gone_replaced_answer">"一個…"</string>
     <string name="quest_shop_gone_replaced_answer_hint">"在這裡輸入是那種場所資訊"</string>
     <string name="quest_shop_vacant_type_title">"這個商家已經不在，現在這邊是做什麼的？"</string>
-    <string name="quest_lanes_answer_lanes_odd2">"每一側的車道數不同"</string>
     <string name="default_disabled_msg_go_inside_regional_warning">"這類型任務預設是關閉的，因為在一些地方並沒有用，你可以要進入裡面才能回答這類型任務。"</string>
     <string name="quest_dietType_explanation_kosher">"猶太教潔食產品必須依猶太飲食教規嚴格準備，並附上猶太飲食教規認證機構標章確保其循從飲食教規。"</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">"完全沒有自行車道"</string>
@@ -801,7 +786,6 @@
     <string name="quest_postboxRoyalCypher_type_scottish_crown">"蘇格蘭皇冠"</string>
     <string name="quest_buildingType_fire_station">"消防局"</string>
     <string name="quest_recycling_type_beverage_cartons">"僅限飲料紙盒"</string>
-    <string name="quest_recycling_type_plastic_bottles_and_cartons">"僅限塑膠瓶罐與盒子"</string>
     <string name="team_mode">"協作模式"</string>
     <string name="team_mode_exit">"離開協作模式"</string>
     <string name="team_mode_description">"當一群人在同一地點mapping時，您可以開啟協作模式來分配任務。"</string>
@@ -930,7 +914,7 @@
     <string name="quest_barrier_bicycle_type_double">"雙急轉彎 - 每邊的障礙物"</string>
     <string name="quest_barrier_bicycle_type_multiple">"雙急轉彎 - 超過兩個障礙物"</string>
     <string name="language_default">"系統預設"</string>
-    <string name="on_floor">"在 %s 樓"</string>
+    <string name="on_floor">"在 %1$s 樓"</string>
     <string name="select_street_parking_orientation">"道路選擇朝向的方向："</string>
     <string name="select_street_parking_position">"選擇位置："</string>
     <string name="select_street_parking_no">"這裡有任何路牌或是道路標示嗎？"</string>
@@ -1158,8 +1142,7 @@
     <string name="quest_camp_type_tents_only">"只有帳篷"</string>
     <string name="quest_camp_type_backcountry">"野外露營 (沒有設施)"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"這個直徑看起來不可能，通常是 %1$d 與 %2$d 之間。"</string>
-    <string name="quest_recycling_type_pet">"只有 PET"</string>
-    <string name="street_parking_street_width">"道路寬度：%s"</string>
+    <string name="street_parking_street_width">"道路寬度：%1$s"</string>
     <string name="overlay_street_parking">"路邊停車"</string>
     <string name="link_ohsomehex_description">"跨越時空，大尺度到單一物件探就 OSM 資料"</string>
     <string name="link_opencampingmap_description">"露營場的地圖"</string>
@@ -1206,7 +1189,7 @@
     <string name="user_profile_current_week_title">"過去七天"</string>
     <string name="user_profile_dates_mapped">"最近你畫地圖的天數"</string>
     <string name="quest_cycleway_value_advisory_lane">"單車優先車道"</string>
-    <string name="urlconfig_scan_qr_code_again2">"在安裝 app 之後，再掃一次條碼或是點一下  &lt;a href=\"%s\"&gt;這個連結&lt;/a&gt; 來套用預設組合。"</string>
+    <string name="urlconfig_scan_qr_code_again2">"在安裝 app 之後，再掃一次條碼或是點一下  &lt;a href=\"%1$s\"&gt;這個連結&lt;/a&gt; 來套用預設組合。"</string>
     <string name="confirmation_replace_shop_title">"這裡現在是不同的地方嗎？"</string>
     <string name="confirmation_replace_shop_message">"在這個例子下，營運時間、聯絡資訊等都會變動。"</string>
     <string name="confirmation_replace_shop_yes">"現在是不同的地點了"</string>
@@ -1216,7 +1199,7 @@
 現在移動嗎？"</string>
     <string name="node_moved_not_far_enough">"請進一步移動它"</string>
     <string name="node_moved_too_far">"你移動的太遠了。請考慮留個便簽在此"</string>
-    <string name="node_moved">"由 %s 移動"</string>
+    <string name="node_moved">"由 %1$s 移動"</string>
     <string name="move_node_description">"拖拉地圖來將圖徵放置在正確位置，並且使用縮放功能來儘可能精確。注意你的顯示位置也許比顯示得還不精確。"</string>
     <string name="move_node_action_description">"你已經移動節點"</string>
     <string name="quest_cycleway_value_shoulder">"沒有，但單車騎士能使用路肩"</string>
@@ -1313,7 +1296,7 @@
     <string name="label_log_older_than">"到"</string>
     <string name="label_log_message_contains">"訊息含有"</string>
     <string name="title_logs_filters">"篩選訊息"</string>
-    <string name="pref_title_quests_restore_hidden_summary">"隱藏的任務數量：%d"</string>
+    <string name="pref_title_quests_restore_hidden_summary">"隱藏的任務數量：%1$d"</string>
     <string name="link_every_door_description">"Android 與 iOS 的強大 POI 編輯器"</string>
     <string name="link_mapcomplete_description">"顯示與讓你編輯特定圖徵的主題 OSM 地圖集合"</string>
     <string name="link_forum_description">"需要協助嗎？想要知道最近狀況嗎？來聊聊，與全球所有社群交流！"</string>
@@ -1385,7 +1368,7 @@
     <string name="quest_camp_power_supply_hint">"這可能是直接在露營地讓顧客能用的服務建築，像是手機、平板的充電站等。"</string>
     <string name="quest_barrier_opening_width_bollard">"這邊最寬的開口允許通過的寬度？"</string>
     <string name="user_profile_all_time_title">"整體"</string>
-    <string name="user_statistics_country_rank2">"在%s的排名"</string>
+    <string name="user_statistics_country_rank2">"在%1$s的排名"</string>
     <string name="quest_leafType_tree_is_just_a_stump">"這只是一個樹樁"</string>
     <string name="quest_board_name_title">"這個資訊看板的主題是什麼？"</string>
     <string name="quest_crossing_hint">"非正式的路徑穿越道路交叉："</string>
@@ -1449,12 +1432,40 @@
     <string name="overlay_mtb_scale_6">"第6級"</string>
     <string name="overlay_mtb_scale_6_description">"危險且無法通行的地形，不適合進行山地自行車活動。"</string>
     <string name="default_disabled_overlay_domain_expert">"此覆蓋圖層預設為關閉，因為需要具備領域專家知識才能準確記錄此資料。"</string>
-    <string name="pref_title_overlays">"選擇圖層"</string>
-    <string name="pref_overlays_reset">"將圖層啟用設定重置為預設值嗎？"</string>
-    <string name="overlay">"圖層"</string>
+    <string name="pref_title_overlays">"選擇套疊圖層"</string>
+    <string name="pref_overlays_reset">"將套疊圖層啟用設定重置為預設值嗎？"</string>
+    <string name="overlay">"套疊圖層"</string>
     <string name="enable_overlay_confirmation_title">"要啟用這個圖層嗎？"</string>
     <string name="link_transitous_description">"不依賴特定供應商的免費開源大眾運輸路線規劃"</string>
     <string name="compass">"羅盤"</string>
     <string name="quest_tracktype_grade2">"大多數量堅固的"</string>
     <string name="quest_tracktype_grade3">"混合"</string>
+    <string name="quest_housenumber_multiple_numbers_description2">"你可以輸入逗號分隔的門牌號碼，例如1,3或是2b,4,6。"</string>
+    <string name="quest_drinking_water_potable_unsigned2">"沒有指標"</string>
+    <string name="or">"或是"</string>
+    <string name="action_copy">"複製"</string>
+    <string name="quest_stopName_hint">"你可以透過長按地圖為其他站牌套用相同名稱。"</string>
+    <string name="quest_shelter_capacity_title">"這裡可以睡多少人？"</string>
+    <string name="quest_handwashing_title">"你能在這裡洗手嗎？"</string>
+    <string name="quest_openingHours_delete">"刪除"</string>
+    <string name="quest_streetName_hint">"你可以透過長按地圖為鄰近片段套用相同名稱。"</string>
+    <string name="quest_streetName_abbreviation_instruction">"“Rd” 的縮寫應當展開。"</string>
+    <string name="quest_streetName_add_language">"新增語言"</string>
+    <string name="ok">"確定"</string>
+    <string name="cancel">"取消"</string>
+    <string name="quest_aerialway_bicycle_title">"這個纜車是否能運輸單車？"</string>
+    <string name="quest_aerialway_bicycle_summer">"只有在夏天"</string>
+    <string name="quest_board_type_rules">"規則"</string>
+    <string name="quest_firewood_provided_title">"這裡有提供薪柴嗎？"</string>
+    <string name="quest_first_aid_kit_location">"這裡的急救包在那裡？"</string>
+    <string name="quest_lane_markings_title">"這條路有標線嗎？"</string>
+    <string name="quest_level_thing_title">"這東西位於那個樓層號碼？"</string>
+    <string name="quest_bicycle_charging_station_capacity_title">"這邊同一時間可以充幾台單車的電？"</string>
+    <string name="quest_charging_station_bicycles_title">"這裡是否也可以為單單充電嗎？"</string>
+    <string name="quest_charging_station_bicycles_hint">"單車充電座能夠插入一般家戶插座。"</string>
+    <string name="quest_tower_access_title">"誰可以進入這個塔？免費或是付費。"</string>
+    <string name="quest_charging_station_bicycles_answer_only">"只有為了單車"</string>
+    <string name="quest_recycling_type_pet_bottles">"PET瓶罐"</string>
+    <string name="quest_maxweight_add_sign">"新增告示牌"</string>
+    <string name="quest_maxweight_remove_sign">"移除告示牌"</string>
 </resources>

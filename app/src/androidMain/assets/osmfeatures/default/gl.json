@@ -283,10 +283,6 @@
           "name": "Reloxo de sol",
           "terms": "reloxo,sol,gnomon,sombra"
         },
-        "amenity/college": {
-          "name": "Área de educación superior",
-          "terms": "universidade,educación superior,facultade,colexio,escola,instituto"
-        },
         "amenity/community_centre": {
           "name": "Centro comunitario",
           "terms": "centro social,centro comunitario,local social"
@@ -340,10 +336,6 @@
         "amenity/drinking_water": {
           "name": "Fonte de auga potábel",
           "terms": "fonte,auga,potábel,bebíbel,beber,potable,bebible,manantial,manancial,fontana,fontanal,hontanar,venero,bebedero"
-        },
-        "amenity/driving_school": {
-          "name": "Autoescola",
-          "terms": "autoescola,escola de condución,carné de conducir"
         },
         "amenity/embassy": {
           "name": "Embaixada"
@@ -444,14 +436,6 @@
           "name": "Caixa de karaoke",
           "terms": "clube de karaoke,sala de karaoke,televisión karaoke,ktv,club de karaoke"
         },
-        "amenity/kindergarten": {
-          "name": "Área escolar infantil",
-          "terms": "preescolar,xardín de infancia,guardería,infantil,párvulos,garderia,gardería,gardaria,parvulos,gardaría,párvulo,xardin de infancia,xardín infantil,xardin infantil,zona,area,área,escola infantil"
-        },
-        "amenity/language_school": {
-          "name": "Escola de idiomas",
-          "terms": "escola,colexio,idiomas,linguas"
-        },
         "amenity/lavoir": {
           "name": "Lavadoiro",
           "terms": "roupa,lavandaría,lavandaria,lavandería,lavanderia,lavado,lavoir,lavadeiro,lavadura"
@@ -491,10 +475,6 @@
         "amenity/motorcycle_parking": {
           "name": "Aparcadoiro de motos",
           "terms": "aparcadoiro,parking,motos,motocicletas,ciclomotores,aparcamento,estacionamento"
-        },
-        "amenity/music_school": {
-          "name": "Escola de música",
-          "terms": "escola de música,conservatorio,academia,música,instrumentos"
         },
         "amenity/nightclub": {
           "name": "Clube nocturno ou discoteca",
@@ -606,9 +586,6 @@
         "amenity/post_office": {
           "name": "Oficina de correos",
           "terms": "oficina,correos,mensaxería,paquetería"
-        },
-        "amenity/prep_school": {
-          "name": "Preparación para exames / Escola de titoría"
         },
         "amenity/prison": {
           "name": "Área penitenciaria",
@@ -728,10 +705,6 @@
           "name": "Depósito sanitario para autocaravanas",
           "terms": "desaugue,caravanas,desaugue de caravanas,cisterna,estanque,autocaravanas,desacougo autocaravanas,refugallos autocaravanas"
         },
-        "amenity/school": {
-          "name": "Área escolar",
-          "terms": "escola,colexio,instituto,educación,ensinanza,primaria,secundaria,eso,bacharelato"
-        },
         "amenity/shelter": {
           "name": "Abeiro",
           "terms": "abeiro,abrigo,refuxio,cuberto,pavillón,gazebo"
@@ -840,10 +813,6 @@
         "amenity/toy_library": {
           "name": "Biblioteca de xoguetes",
           "terms": "xogo,xoguete"
-        },
-        "amenity/university": {
-          "name": "Área universitaria",
-          "terms": "campus,universidade"
         },
         "amenity/vehicle_inspection": {
           "name": "Inspección de vehículo"
@@ -1523,12 +1492,6 @@
         "emergency/defibrillator": {
           "name": "Desfibrilador"
         },
-        "emergency/designated": {
-          "name": "Acceso de emerxencia designado"
-        },
-        "emergency/destination": {
-          "name": "Acceso de emerxencia como destino"
-        },
         "emergency/fire_extinguisher": {
           "name": "Extintor"
         },
@@ -1557,18 +1520,9 @@
         "emergency/mountain_rescue": {
           "name": "Rescate de montaña"
         },
-        "emergency/no": {
-          "name": "Sen acceso de emerxencia"
-        },
-        "emergency/official": {
-          "name": "Acceso de emerxencia oficial"
-        },
         "emergency/phone": {
           "name": "Teléfono de emerxencia",
           "terms": "teléfono,emerxencias,sos"
-        },
-        "emergency/private": {
-          "name": "Acceso de emerxencia privado"
         },
         "emergency/siren": {
           "name": "Sirena"
@@ -1576,9 +1530,6 @@
         "emergency/water_tank": {
           "name": "Depósito de auga de emerxencia",
           "terms": "tanque de agua,cisterna,depósito,deposito,urxencia,bombeiros,lumes,incendios,fogos,fogueiras,lapas,cacharelas"
-        },
-        "emergency/yes": {
-          "name": "Acceso de emerxencia permitido"
         },
         "entrance": {
           "name": "Entrada / Saída",
@@ -2265,9 +2216,6 @@
         },
         "leisure/dance": {
           "name": "Sala de baile"
-        },
-        "leisure/dancing_school": {
-          "name": "Escola de danza"
         },
         "leisure/disc_golf_course": {
           "name": "Golf de disco"

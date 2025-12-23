@@ -32,7 +32,7 @@ class AddCrossing : OsmElementQuestType<CrossingAnswer>, AndroidQuest {
 
     override val changesetComment = "Specify whether there are crossings at intersections of paths and roads"
     override val wikiLink = "Tag:highway=crossing"
-    override val icon = R.drawable.ic_quest_pedestrian
+    override val icon = R.drawable.quest_pedestrian
     override val achievements = listOf(PEDESTRIAN)
 
     override val hint =  R.string.quest_crossing_hint

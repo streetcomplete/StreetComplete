@@ -26,7 +26,7 @@ class AddCampDrinkingWater : OsmFilterQuestType<Boolean>(), AndroidQuest {
     """
     override val changesetComment = "Specify whether there is drinking water"
     override val wikiLink = "Key:drinking_water"
-    override val icon = R.drawable.ic_quest_drinking_water
+    override val icon = R.drawable.quest_drinking_water
     override val achievements = listOf(OUTDOORS)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_camp_drinking_water_title

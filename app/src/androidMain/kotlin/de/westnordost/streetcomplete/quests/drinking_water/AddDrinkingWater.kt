@@ -17,6 +17,7 @@ class AddDrinkingWater : OsmFilterQuestType<DrinkingWater>(), AndroidQuest {
           man_made = water_tap
           or man_made = water_well
           or natural = spring
+          or amenity = fountain and fountain = stone_block
         )
         and access !~ private|no and indoor != yes
         and !drinking_water
@@ -31,7 +32,7 @@ class AddDrinkingWater : OsmFilterQuestType<DrinkingWater>(), AndroidQuest {
     """
     override val changesetComment = "Specify whether water is drinkable"
     override val wikiLink = "Key:drinking_water"
-    override val icon = R.drawable.ic_quest_drinking_water
+    override val icon = R.drawable.quest_drinking_water
     override val isDeleteElementEnabled = true
     override val achievements = listOf(OUTDOORS)
 

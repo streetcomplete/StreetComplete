@@ -1,8 +1,8 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 advisoryCycleLaneStyle: white dashes
-atmOperators: [NLB, NKBM, Nova KBM, Abanka, Gorenjska banka, SKB, Euronet, NovaKBM, OTP banka, Intesa Sanpaolo, Delavska hranilnica, Addiko Bank, NKBM d.d., OTP Bank, Banka Koper, ABanka, UniCredit Bank, SKB Banka, NLB d. d., Gorenjska Banka, OTP Banka, Shitcoins.club, OTP, Deželna Banka Slovenije, ATM, ABANKA, Sparkasse, Nova ljubljanska banka, Nova Ljubljanska Banka, NKMB, Intesa Sanpaolo Bank, Hypo Alpe-Adria-Bank d.d., DBS, Banka Celje, A banka]
-chargingStationOperators: [SODO, Petrol, Gremo na elektriko, Lidl, Ionity, Elektro Ljubljana, Elektro Maribor, Gremo Na Elektriko, Elevat, Elektro Ljubljana d.d., unknovn, Tesla, Porsche, 'Tesla, Inc.', Shell Recharge Solutions, Petrol d.d., Mega M d.o.o., EM, elektro Celje, Renault, Postojna, Občina Ajdovščina, Iskratel, Gremo na Elektriko, Energija Plus d.o.o., Elektro Gorenjska, Avant2Go, Abat2Go]
-clothesContainerOperators: [Humana]
+atmOperators: [NLB, NKBM, Nova KBM, Abanka, Gorenjska banka, Euronet, SKB, NovaKBM, OTP banka, Addiko Bank, Intesa Sanpaolo, Delavska hranilnica, NKBM d.d., OTP Bank, Gorenjska Banka, Banka Koper, ABanka, UniCredit Bank, OTP Banka, OTP, NLB d. d., SKB Banka, Intesa Sanpaolo Bank, Shitcoins.club, Deželna Banka Slovenije, ATM, ABANKA, Sparkasse, Nova ljubljanska banka, Nova Ljubljanska Banka, NKMB, Hypo Alpe-Adria-Bank d.d., DBS, Banka Celje, A banka]
+chargingStationOperators: [SODO, Petrol, Gremo na elektriko, Lidl, Ionity, Porsche, Gremo Na Elektriko, Elektro Ljubljana, Energija+, Elevat, Elektro Ljubljana d.d., unknovn, Tesla, 'Tesla, Inc.', Shell Recharge Solutions, Petrol d.d., Mega M d.o.o., Elektro Maribor, Easypark, EM, justCharge, elektro Celje, Renault, Postojna, Občina Ajdovščina, Iskratel, Gremo na Elektriko, Elektro Gorenjska, Avant2Go, Abat2Go]
+clothesContainerOperators: [Humana, Komunala Idrija]
 defaultSpeedLimitHasUrbanOrRural: true
 exclusiveCycleLaneStyle: white
 hasAdvisoryCycleLane: true
@@ -16,7 +16,7 @@ noParkingLineStyle: yellow zig-zags
 noStoppingLineStyle: yellow
 officialLanguages: [sl]
 orchardProduces: [grape, apple, hop, olive, walnut, peach, tomato, pear, chilli_pepper, sweet_pepper, hazelnut, strawberry, apricot, blueberry, plum, raspberry]
-parcelLockerBrand: [PS Paketomat, GLS, GLS Paketomat, DPD Pickup Station, DPD, Express one, Pošta Slovenije]
+parcelLockerBrand: [PS Paketomat, GLS Paketomat, GLS, DPD Pickup Station, DPD, Express one, Pošta Slovenije]
 popularReligions: [christian, muslim]
 popularSports: [soccer, basketball, tennis, golf, boules, equestrian]
 postboxesHaveCollectionTimes: true

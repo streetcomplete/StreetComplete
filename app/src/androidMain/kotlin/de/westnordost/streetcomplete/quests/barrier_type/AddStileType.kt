@@ -11,6 +11,8 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.hasCheckDate
 import de.westnordost.streetcomplete.osm.updateCheckDate
+import de.westnordost.streetcomplete.quests.barrier_type.StileTypeAnswer.*
+import kotlin.IllegalStateException
 
 class AddStileType : OsmElementQuestType<StileTypeAnswer>, AndroidQuest {
 
@@ -40,7 +42,7 @@ class AddStileType : OsmElementQuestType<StileTypeAnswer>, AndroidQuest {
 
     override val changesetComment = "Specify stile types"
     override val wikiLink = "Key:stile"
-    override val icon = R.drawable.ic_quest_no_cow
+    override val icon = R.drawable.quest_no_cow
     override val isDeleteElementEnabled = true
     override val achievements = listOf(OUTDOORS)
 
@@ -50,14 +52,24 @@ class AddStileType : OsmElementQuestType<StileTypeAnswer>, AndroidQuest {
 
     override fun applyAnswerTo(answer: StileTypeAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {
-            is StileType -> {
-                val newType = answer.osmValue
-                val newMaterial = answer.osmMaterialValue
+            SQUEEZER, LADDER, STEPOVER_WOODEN, STEPOVER_STONE -> {
+                val newType = when (answer) {
+                    SQUEEZER -> "squeezer"
+                    LADDER -> "ladder"
+                    STEPOVER_WOODEN -> "stepover"
+                    STEPOVER_STONE -> "stepover"
+                    else -> throw IllegalStateException()
+                }
+                val newMaterial = when (answer) {
+                    STEPOVER_STONE -> "stone"
+                    STEPOVER_WOODEN -> "wood"
+                    else -> null
+                }
                 val oldType = tags["stile"]
                 val oldMaterial = tags["material"]
                 val stileWasRebuilt =
-                    oldType != null && oldType != newType
-                    || newMaterial != null && oldMaterial != null && oldMaterial != newMaterial
+                    oldType != null && oldType != newType ||
+                    newMaterial != null && oldMaterial != null && oldMaterial != newMaterial
 
                 // => properties that refer to the old replaced stile should be removed
                 if (stileWasRebuilt) {
@@ -68,10 +80,15 @@ class AddStileType : OsmElementQuestType<StileTypeAnswer>, AndroidQuest {
                 }
                 tags["stile"] = newType
             }
-            is ConvertedStile -> {
-                STILE_PROPERTIES.forEach { tags.remove(it) }
+            KISSING_GATE, PASSAGE, GATE -> {
+                tags["barrier"] = when (answer) {
+                    KISSING_GATE -> "kissing_gate"
+                    PASSAGE -> "entrance"
+                    GATE -> "gate"
+                    else -> throw IllegalStateException()
+                }
                 tags.remove("stile")
-                tags["barrier"] = answer.newBarrier
+                STILE_PROPERTIES.forEach { tags.remove(it) }
             }
         }
         // policy is to not remove a check date if one is already there but update it instead

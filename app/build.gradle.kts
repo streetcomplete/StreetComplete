@@ -8,8 +8,8 @@ import java.util.Properties
 
 
 /** App version name, code and flavor */
-val appVersionName = "61.3"
-val appVersionCode = 6104
+val appVersionName = "62.1"
+val appVersionCode = 6202
 
 /** Localizations the app should be available in */
 val bcp47ExportLanguages = setOf(
@@ -23,21 +23,21 @@ val bcp47ExportLanguages = setOf(
 
 /** Version of the iD presets to use
  *  see https://github.com/openstreetmap/id-tagging-schema/releases for latest version */
-val presetsVersion = "v6.12.0"
+val presetsVersion = "v6.13.2"
 
 /** Version of the Name Suggestion Index to use
  *  see https://github.com/osmlab/name-suggestion-index/tags for latest version */
-val nsiVersion = "v6.0.20250817"
+val nsiVersion = "7.0.20251101"
 
 /** Project ID of the crowdsource translation platform (from where to pull translations from) */
 val poEditorProjectId = "97843"
 
 plugins {
-    id("org.jetbrains.kotlin.multiplatform") version "2.2.10"
-    id("org.jetbrains.kotlin.plugin.serialization") version "2.2.10"
-    id("org.jetbrains.kotlin.plugin.compose") version "2.2.10"
-    id("com.android.application") version "8.11.1"
-    id("org.jetbrains.compose") version "1.8.2"
+    id("org.jetbrains.kotlin.multiplatform") version "2.2.21"
+    id("org.jetbrains.kotlin.plugin.serialization") version "2.2.21"
+    id("org.jetbrains.kotlin.plugin.compose") version "2.2.21"
+    id("com.android.application") version "8.11.2"
+    id("org.jetbrains.compose") version "1.9.3"
     id("org.jetbrains.kotlinx.atomicfu") version "0.29.0"
     id("com.codingfeline.buildkonfig") version "0.17.1"
 }
@@ -114,17 +114,17 @@ kotlin {
                 implementation("org.jetbrains.kotlinx:kotlinx-io-core:0.8.0")
 
                 // HTTP client
-                implementation("io.ktor:ktor-client-core:3.2.3")
-                implementation("io.ktor:ktor-client-encoding:3.2.3")
+                implementation("io.ktor:ktor-client-core:3.3.2")
+                implementation("io.ktor:ktor-client-encoding:3.3.2")
                 // SHA256 hashing, used during OAuth authentication
-                implementation("org.kotlincrypto.hash:sha2:0.7.0")
+                implementation("org.kotlincrypto.hash:sha2:0.8.0")
 
                 // XML
-                implementation("io.github.pdvrieze.xmlutil:core:0.91.2")
-                implementation("io.github.pdvrieze.xmlutil:core-io:0.91.2")
+                implementation("io.github.pdvrieze.xmlutil:core:0.91.3")
+                implementation("io.github.pdvrieze.xmlutil:core-io:0.91.3")
 
                 // YAML
-                implementation("com.charleskorn.kaml:kaml:0.92.0")
+                implementation("com.charleskorn.kaml:kaml:0.102.0")
 
                 // JSON
                 implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.9.0")
@@ -137,10 +137,10 @@ kotlin {
                 implementation("de.westnordost:countryboundaries:3.0.0")
 
                 // finding OSM features
-                implementation("de.westnordost:osmfeatures:7.0")
+                implementation("de.westnordost:osmfeatures:7.1.0")
 
                 // opening hours parser
-                implementation("de.westnordost:osm-opening-hours:0.2.0")
+                implementation("de.westnordost:osm-opening-hours:0.3.0")
 
                 // UI (Compose)
                 implementation(compose.runtime)
@@ -151,18 +151,22 @@ kotlin {
                 implementation(compose.components.uiToolingPreview)
 
                 // UI Navigation
-                implementation("org.jetbrains.androidx.navigation:navigation-compose:2.9.0-beta05")
+                implementation("org.jetbrains.compose.ui:ui-backhandler:1.9.3")
+                implementation("org.jetbrains.androidx.navigation:navigation-compose:2.9.1")
 
                 // UI ViewModel
-                implementation("org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-compose:2.9.2")
+                implementation("org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-compose:2.9.6")
 
                 // UI widgets
+
+                // non-lazy grid
+                implementation("com.cheonjaeung.compose.grid:grid:2.5.2")
 
                 // reorderable lists (raw Compose API is pretty complicated)
                 implementation("sh.calvin.reorderable:reorderable:2.5.1")
 
                 // multiplatform webview (for login via OAuth)
-                implementation("io.github.kevinnzou:compose-webview-multiplatform:2.0.2")
+                implementation("io.github.kevinnzou:compose-webview-multiplatform:2.0.3")
 
                 // sharing presets/settings via QR Code
                 implementation("io.github.alexzhirkevich:qrose:1.0.1")
@@ -177,8 +181,8 @@ kotlin {
                 implementation("io.insert-koin:koin-androidx-workmanager")
 
                 // Android stuff
-                implementation("com.google.android.material:material:1.12.0")
-                implementation("androidx.core:core-ktx:1.16.0")
+                implementation("com.google.android.material:material:1.13.0")
+                implementation("androidx.core:core-ktx:1.17.0")
                 implementation("androidx.appcompat:appcompat:1.7.1")
                 implementation("androidx.constraintlayout:constraintlayout:2.2.1")
                 implementation("androidx.annotation:annotation:1.9.1")
@@ -188,7 +192,7 @@ kotlin {
 
                 // Compose
                 implementation(compose.preview)
-                implementation("androidx.activity:activity-compose:1.10.1")
+                implementation("androidx.activity:activity-compose:1.11.0")
 
                 // photos
                 implementation("androidx.exifinterface:exifinterface:1.4.1")
@@ -197,10 +201,10 @@ kotlin {
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.10.2")
 
                 // scheduling background jobs
-                implementation("androidx.work:work-runtime-ktx:2.10.3")
+                implementation("androidx.work:work-runtime-ktx:2.11.0")
 
                 // HTTP Client
-                implementation("io.ktor:ktor-client-android:3.2.3")
+                implementation("io.ktor:ktor-client-android:3.3.2")
 
                 // widgets
                 implementation("androidx.viewpager2:viewpager2:1.1.0")
@@ -209,25 +213,25 @@ kotlin {
                 implementation("com.github.chrisbanes:PhotoView:2.3.0")
 
                 // map and location
-                implementation("org.maplibre.gl:android-sdk:11.13.0")
+                implementation("org.maplibre.gl:android-sdk:12.1.0")
             }
         }
         iosMain {
             dependencies {
                 // HTTP client
-                implementation("io.ktor:ktor-client-darwin:3.2.3")
+                implementation("io.ktor:ktor-client-darwin:3.3.2")
             }
         }
         commonTest {
             dependencies {
                 implementation(kotlin("test"))
 
-                implementation("io.ktor:ktor-client-mock:3.2.3")
+                implementation("io.ktor:ktor-client-mock:3.3.2")
             }
         }
         androidUnitTest {
             dependencies {
-                implementation("org.mockito:mockito-core:5.19.0")
+                implementation("org.mockito:mockito-core:5.20.0")
                 implementation(kotlin("test"))
             }
         }
@@ -244,7 +248,7 @@ kotlin {
 
 android {
     namespace = "de.westnordost.streetcomplete"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "de.westnordost.streetcomplete"
@@ -314,7 +318,7 @@ android {
     }
 
     dependencies {
-        debugImplementation("androidx.compose.ui:ui-tooling:1.9.0")
+        debugImplementation("androidx.compose.ui:ui-tooling:1.9.4")
     }
 }
 
@@ -422,7 +426,8 @@ tasks.register<UpdateAppTranslationsTask>("updateTranslations") {
     languageCodes = bcp47ExportLanguages
     apiToken = properties["app.streetcomplete.POEditorAPIToken"] as String
     projectId = poEditorProjectId
-    targetFiles = { "$projectDir/src/androidMain/res/values-$it/strings.xml" }
+    targetFilesAndroid = { "$projectDir/src/androidMain/res/values-$it/strings.xml" }
+    targetFiles = { "$projectDir/src/commonMain/composeResources/values-$it/strings.xml" }
 }
 
 tasks.register<UpdateAppTranslationCompletenessTask>("updateTranslationCompleteness") {
@@ -431,7 +436,7 @@ tasks.register<UpdateAppTranslationCompletenessTask>("updateTranslationCompleten
     mustIncludeLanguagePercentage = 90
     apiToken = properties["app.streetcomplete.POEditorAPIToken"] as String
     projectId = poEditorProjectId
-    targetFiles = { "$projectDir/src/androidMain/res/values-$it/translation_info.xml" }
+    targetFiles = { "$projectDir/src/commonMain/composeResources/values-$it/translation_info.xml" }
 }
 
 tasks.register<UpdateChangelogTask>("updateChangelog") {
@@ -454,8 +459,12 @@ tasks.register<GenerateMetadataByCountryTask>("generateMetadataByCountry") {
 }
 
 tasks.register("copyDefaultStringsToEnStrings") {
+    group = "streetcomplete"
     doLast {
-        File("$projectDir/src/androidMain/res/values/strings.xml")
-            .copyTo(File("$projectDir/src/androidMain/res/values-en/strings.xml"), true)
+        val sourceStrings = File("$projectDir/src/androidMain/res/values/strings.xml")
+
+        sourceStrings.copyTo(File("$projectDir/src/androidMain/res/values-en/strings.xml"), true)
+        sourceStrings.copyTo(File("$projectDir/src/commonMain/composeResources/values-en/strings.xml"), true)
+        sourceStrings.copyTo(File("$projectDir/src/commonMain/composeResources/values/strings.xml"), true)
     }
 }

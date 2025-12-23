@@ -10,8 +10,8 @@ import de.westnordost.streetcomplete.osm.ROADS_ASSUMED_TO_BE_PAVED
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.surface.PAVED_SURFACES
 import de.westnordost.streetcomplete.quests.foot.ProhibitedForPedestriansAnswer.ACTUALLY_HAS_SIDEWALK
-import de.westnordost.streetcomplete.quests.foot.ProhibitedForPedestriansAnswer.NO
-import de.westnordost.streetcomplete.quests.foot.ProhibitedForPedestriansAnswer.YES
+import de.westnordost.streetcomplete.quests.foot.ProhibitedForPedestriansAnswer.ALLOWED
+import de.westnordost.streetcomplete.quests.foot.ProhibitedForPedestriansAnswer.PROHIBITED
 
 class AddProhibitedForPedestrians : OsmFilterQuestType<ProhibitedForPedestriansAnswer>(), AndroidQuest {
     override val elementFilter = """
@@ -45,7 +45,7 @@ class AddProhibitedForPedestrians : OsmFilterQuestType<ProhibitedForPedestriansA
 
     override val changesetComment = "Specify whether roads are prohibited for pedestrians"
     override val wikiLink = "Key:foot"
-    override val icon = R.drawable.ic_quest_no_pedestrians
+    override val icon = R.drawable.quest_no_pedestrians
     override val achievements = listOf(PEDESTRIAN)
     override val enabledInCountries = AllCountriesExcept(
         "GB" // see https://community.openstreetmap.org/t/poll-should-streetcomplete-disable-the-are-pedestrians-forbidden-to-walk-on-this-road-without-sidewalk-here-quest-in-the-uk/118387
@@ -58,8 +58,8 @@ class AddProhibitedForPedestrians : OsmFilterQuestType<ProhibitedForPedestriansA
     override fun applyAnswerTo(answer: ProhibitedForPedestriansAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {
             // the question is whether it is prohibited, so YES -> foot=no etc
-            YES -> tags["foot"] = "no"
-            NO -> tags["foot"] = "yes"
+            PROHIBITED -> tags["foot"] = "no"
+            ALLOWED -> tags["foot"] = "yes"
             // but we did not specify on which side. So, clear it, sidewalk is added separately
             ACTUALLY_HAS_SIDEWALK -> {
                 tags.remove("sidewalk:both")

@@ -21,7 +21,7 @@ class AddBbqFuel : OsmFilterQuestType<BbqFuelAnswer>(), AndroidQuest {
 
     override val changesetComment = "Specify barbecue fuel"
     override val wikiLink = "Key:amenity=bbq"
-    override val icon = R.drawable.ic_quest_fire
+    override val icon = R.drawable.quest_fire
     override val achievements = listOf(OUTDOORS)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_bbq_fuel_title
@@ -34,7 +34,7 @@ class AddBbqFuel : OsmFilterQuestType<BbqFuelAnswer>(), AndroidQuest {
     override fun applyAnswerTo(answer: BbqFuelAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {
             is BbqFuel -> tags["fuel"] = answer.osmValue
-            IsFirePitAnswer -> {
+            BbqFuelAnswer.IsFirePit -> {
                 tags.remove("amenity")
                 tags["leisure"] = "firepit"
             }

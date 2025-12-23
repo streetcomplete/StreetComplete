@@ -16,7 +16,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.core.view.isGone
@@ -45,6 +44,9 @@ import de.westnordost.streetcomplete.osm.toElement
 import de.westnordost.streetcomplete.osm.toPrefixedFeature
 import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 import de.westnordost.streetcomplete.overlays.AnswerItem
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.name_label
+import de.westnordost.streetcomplete.resources.quest_placeName_no_name_answer
 import de.westnordost.streetcomplete.ui.common.localized_name.LocalizedNamesForm
 import de.westnordost.streetcomplete.ui.util.content
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
@@ -56,6 +58,7 @@ import de.westnordost.streetcomplete.view.controller.FeatureViewController
 import de.westnordost.streetcomplete.view.dialogs.SearchFeaturesDialog
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.suspendCancellableCoroutine
+import org.jetbrains.compose.resources.stringResource
 import org.koin.android.ext.android.inject
 import kotlin.coroutines.resume
 
@@ -123,7 +126,7 @@ class PlacesOverlayForm : AbstractOverlayForm() {
 
         // title hint label with name is a duplication, it is displayed in the UI already
         setTitleHintLabel(element?.tags?.let { getLocationSpanned(it, resources) })
-        setMarkerIcon(R.drawable.ic_quest_shop)
+        setMarkerIcon(R.drawable.quest_shop)
 
         featureCtrl = FeatureViewController(featureDictionary, binding.featureTextView, binding.featureIconView)
         featureCtrl.countryOrSubdivisionCode = countryOrSubdivisionCode
@@ -161,14 +164,14 @@ class PlacesOverlayForm : AbstractOverlayForm() {
 
             Column {
                 Text(
-                    text = stringResource(R.string.name_label),
+                    text = stringResource(Res.string.name_label),
                     style = MaterialTheme.typography.caption.copy(
                         color = LocalContentColor.current.copy(alpha = ContentAlpha.medium)
                     )
                 )
                 if (isNoName.value && localizedNames.value.isEmpty()) {
                     Text(
-                        text = stringResource(R.string.quest_placeName_no_name_answer),
+                        text = stringResource(Res.string.quest_placeName_no_name_answer),
                         style = LocalTextStyle.current.copy(
                             fontWeight = FontWeight.Bold,
                             color = LocalContentColor.current.copy(alpha = ContentAlpha.medium)

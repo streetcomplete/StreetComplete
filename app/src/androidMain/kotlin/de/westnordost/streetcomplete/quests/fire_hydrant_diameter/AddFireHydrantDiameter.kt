@@ -23,7 +23,7 @@ class AddFireHydrantDiameter : OsmFilterQuestType<FireHydrantDiameterAnswer>(), 
     """
     override val changesetComment = "Specify fire hydrant diameters"
     override val wikiLink = "Tag:emergency=fire_hydrant"
-    override val icon = R.drawable.ic_quest_fire_hydrant_diameter
+    override val icon = R.drawable.quest_fire_hydrant_diameter
     override val isDeleteElementEnabled = true
     override val achievements = listOf(LIFESAVER)
 

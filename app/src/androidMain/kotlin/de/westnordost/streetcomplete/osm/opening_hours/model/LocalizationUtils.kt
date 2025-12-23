@@ -10,7 +10,6 @@ import de.westnordost.streetcomplete.util.locale.LocalTimeFormatter
 import kotlinx.datetime.DayOfWeek
 import kotlinx.datetime.LocalTime
 import kotlinx.datetime.Month
-import kotlin.text.StringBuilder
 
 fun Months.Companion.getNames(locale: Locale? = null): Array<String> =
     (1..12).map { Month(it).getDisplayName(locale) }.toTypedArray()

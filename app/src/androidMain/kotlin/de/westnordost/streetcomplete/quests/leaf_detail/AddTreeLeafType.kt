@@ -10,6 +10,8 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.default_disabled_msg_difficult_and_time_consuming
 
 class AddTreeLeafType : OsmFilterQuestType<TreeLeafTypeAnswer>(), AndroidQuest {
     override val elementFilter = """
@@ -20,10 +22,10 @@ class AddTreeLeafType : OsmFilterQuestType<TreeLeafTypeAnswer>(), AndroidQuest {
     """
     override val changesetComment = "Specify leaf types"
     override val wikiLink = "Key:leaf_type"
-    override val icon = R.drawable.ic_quest_leaf
+    override val icon = R.drawable.quest_leaf
     override val isDeleteElementEnabled = true
     override val achievements = listOf(OUTDOORS)
-    override val defaultDisabledMessage = R.string.default_disabled_msg_difficult_and_time_consuming
+    override val defaultDisabledMessage = Res.string.default_disabled_msg_difficult_and_time_consuming
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_leafType_tree_title
 
