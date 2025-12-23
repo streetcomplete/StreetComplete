@@ -9,3 +9,4 @@ officialLanguages: [ms, en]
 orchardProduces: [rubber, banana, coconut, pineapple, pepper, orange, chilli_pepper, sweet_pepper, lemon, lime, tomato]
 popularReligions: [muslim]
 postboxesHaveCollectionTimes: true
+workweek: Mo-Th,Sa

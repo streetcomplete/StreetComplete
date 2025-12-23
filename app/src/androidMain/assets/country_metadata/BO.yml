@@ -8,4 +8,3 @@ noParkingSignStyle: mutcd latin
 noStoppingSignStyle: mutcd latin
 officialLanguages: [es, qu, ay]
 orchardProduces: [chestnut, coffee, orange, banana, cacao, peach, pineapple, tomato, lemon, lime, chilli_pepper, sweet_pepper, grape, papaya, avocado, guava, mango, mangosteen, apple]
-workweekDays: 6

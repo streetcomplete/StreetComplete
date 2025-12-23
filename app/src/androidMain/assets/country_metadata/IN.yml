@@ -14,4 +14,3 @@ orchardProduces: [guava, mango, mangosteen, coconut, cashew_nut, banana, tomato,
 popularReligions: [hindu, muslim, christian, buddhist, jain, sikh, bahai, animist]
 popularSports: [tennis, basketball, soccer, cricket, field_hockey]
 postboxesHaveCollectionTimes: true
-workweekDays: 6
