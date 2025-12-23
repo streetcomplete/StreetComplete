@@ -64,7 +64,7 @@ class AddWheelchairAccessBusiness : OsmFilterQuestType<WheelchairAccess>(), Andr
 
                 // name & wheelchair
                 "attraction",
-                "hotel", "guest_house", "motel", "hostel", "alpine_hut", "apartment", "resort", "camp_site", "caravan_site", "chalet", // accommodations
+                "hotel", "motel", "hostel", "alpine_hut", "resort", "camp_site", "caravan_site", "chalet", // accommodations
 
                 // wheelchair only
                 "viewpoint"
