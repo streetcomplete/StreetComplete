@@ -62,6 +62,7 @@ import de.westnordost.streetcomplete.quests.camping.AddCampPower
 import de.westnordost.streetcomplete.quests.camping.AddCampShower
 import de.westnordost.streetcomplete.quests.camping.AddCampType
 import de.westnordost.streetcomplete.quests.car_wash_type.AddCarWashType
+import de.westnordost.streetcomplete.quests.charge.AddParkingCharge
 import de.westnordost.streetcomplete.quests.charging_station_bicycles.AddChargingStationBicycles
 import de.westnordost.streetcomplete.quests.charging_station_capacity.AddChargingStationBicycleCapacity
 import de.westnordost.streetcomplete.quests.charging_station_capacity.AddChargingStationCapacity
@@ -285,6 +286,7 @@ fun questTypeRegistry(
     17 to AddParkingType(),
     18 to AddParkingAccess(), // used by OSM Carto, mapy.cz, OSMand, Sputnik etc
     19 to AddParkingFee(), // used by OsmAnd
+    187 to AddParkingCharge(),
 
     20 to AddTrafficCalmingType(),
 
