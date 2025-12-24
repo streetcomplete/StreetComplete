@@ -1,17 +1,22 @@
 package de.westnordost.streetcomplete.ui.common.opening_hours
 
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.defaultMinSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.LayoutDirection.Ltr
+import androidx.compose.ui.unit.dp
 import de.westnordost.osm_opening_hours.model.ClockTime
 import de.westnordost.osm_opening_hours.model.ExtendedClockTime
 import de.westnordost.osm_opening_hours.model.ExtendedTime
@@ -42,13 +47,17 @@ fun TimesSelectorText(
 ) {
     var showDialog by remember { mutableStateOf(false) }
 
-    Text(
-        text = time.toLocalizedString(
-            layoutDirection = LocalLayoutDirection.current,
-            locale = locale,
-        ),
-        modifier = modifier.clickable(enabled) { showDialog = true }
-    )
+    Box(
+        modifier = modifier
+            .clickable(enabled) { showDialog = true }
+            .defaultMinSize(minHeight = 48.dp)
+            .padding(8.dp),
+        contentAlignment = Alignment.CenterStart
+    ) {
+        Text(
+            text = time.toLocalizedString(LocalLayoutDirection.current, locale)
+        )
+    }
 
     if (showDialog) {
         TimesSelectorDialog(

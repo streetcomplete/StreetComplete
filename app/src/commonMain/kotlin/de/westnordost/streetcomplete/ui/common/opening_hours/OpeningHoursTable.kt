@@ -6,6 +6,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.text.rememberTextMeasurer
+import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.osm.opening_hours.HierarchicOpeningHours
 import de.westnordost.streetcomplete.osm.opening_hours.toWeekdaysSelectors
@@ -27,26 +28,14 @@ fun OpeningHoursTable(
     enabled: Boolean = true,
     addMonthsEnabledWhenEmpty: Boolean = true,
 ) {
-    val textStyle = LocalTextStyle.current
-    val textMeasurer = rememberTextMeasurer(1)
-    val timeWidthPx = remember(locale) {
-        val timeFormatter = LocalTimeFormatter(locale = locale, style = DateTimeFormatStyle.Short)
-        val rangeText = localizedRange(
-            start = timeFormatter.format(LocalTime(13,59)),
-            end = timeFormatter.format(LocalTime(23,59)),
-            locale = locale,
-        )
-        textMeasurer.measure(text = rangeText, style = textStyle).size.width
+    val initialWeekdaysSelectors = remember(countryInfo) {
+        countryInfo.workweek.toWeekdaysSelectors()
     }
-    val timeWidth = timeWidthPx.pxToDp()
-
-    val initialWeekdaysSelectors = remember(countryInfo) { countryInfo.workweek.toWeekdaysSelectors() }
 
     MonthsColumn(
         monthsList = openingHours.monthsList,
         onChange = { onChange(HierarchicOpeningHours(it)) },
         timeMode = timeMode,
-        timeTextWidth = timeWidth,
         modifier = modifier,
         initialWeekdaysSelectors = initialWeekdaysSelectors,
         locale = locale,

@@ -3,7 +3,8 @@ package de.westnordost.streetcomplete.ui.common.opening_hours
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.size
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.OutlinedButton
@@ -15,7 +16,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.intl.Locale
-import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import de.westnordost.osm_opening_hours.model.TimesSelector
 import de.westnordost.streetcomplete.resources.Res
@@ -44,7 +44,6 @@ fun TimesSelectorsColumn(
     times: List<TimesSelector>,
     onChange: (times: List<TimesSelector>) -> Unit,
     timeMode: TimeMode,
-    timeTextWidth: Dp,
     modifier: Modifier = Modifier,
     locale: Locale = Locale.current,
     enabled: Boolean = true,
@@ -54,7 +53,6 @@ fun TimesSelectorsColumn(
     Column(modifier) {
         for ((index, time) in times.withIndex()) {
             Row(
-                horizontalArrangement = Arrangement.spacedBy(4.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 TimesSelectorText(
@@ -62,7 +60,7 @@ fun TimesSelectorsColumn(
                     onChange = { newTime ->
                         onChange(times.toMutableList().also { it[index] = newTime })
                     },
-                    modifier = Modifier.width(timeTextWidth),
+                    modifier = Modifier.weight(1f),
                     locale = locale,
                     enabled = enabled,
                 )
@@ -77,6 +75,8 @@ fun TimesSelectorsColumn(
                             contentDescription = stringResource(Res.string.quest_openingHours_delete)
                         )
                     }
+                } else {
+                    Spacer(Modifier.size(48.dp))
                 }
             }
         }

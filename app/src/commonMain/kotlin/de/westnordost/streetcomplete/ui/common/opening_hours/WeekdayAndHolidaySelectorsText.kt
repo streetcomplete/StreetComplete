@@ -1,17 +1,23 @@
 package de.westnordost.streetcomplete.ui.common.opening_hours
 
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.defaultMinSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.text.intl.Locale
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.LayoutDirection.Ltr
+import androidx.compose.ui.unit.dp
 import de.westnordost.osm_opening_hours.model.Holiday
 import de.westnordost.osm_opening_hours.model.HolidaySelector
 import de.westnordost.osm_opening_hours.model.Weekday
@@ -37,10 +43,20 @@ fun WeekdayAndHolidaySelectorsText(
     val layoutDirection = LocalLayoutDirection.current
     var showDialog by remember { mutableStateOf(false) }
 
-    Text(
-        text = getWeekdaysAndHolidaysString(weekdays, holidays, locale, layoutDirection),
-        modifier = modifier.clickable(enabled) { showDialog = true }
-    )
+    Box(
+        modifier = modifier
+            .clickable(enabled) { showDialog = true }
+            .defaultMinSize(minHeight = 48.dp)
+            .padding(8.dp),
+        contentAlignment = Alignment.CenterEnd
+    ) {
+        Text(
+            text = getWeekdaysAndHolidaysString(weekdays, holidays, locale, layoutDirection),
+            textAlign = TextAlign.End
+        )
+    }
+
+
 
     if (showDialog) {
         WeekdayAndHolidaySelectDialog(

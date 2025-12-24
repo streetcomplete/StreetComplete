@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.ui.common.opening_hours
 
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -12,6 +13,7 @@ import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.LayoutDirection.Ltr
+import androidx.compose.ui.unit.dp
 import de.westnordost.osm_opening_hours.model.MonthRange
 import de.westnordost.osm_opening_hours.model.MonthsOrDateSelector
 import de.westnordost.osm_opening_hours.model.SingleMonth
@@ -35,7 +37,9 @@ fun MonthsText(
 
     Text(
         text = getMonthsString(months, locale, layoutDirection),
-        modifier = modifier.clickable(enabled) { showDialog = true }
+        modifier = modifier
+            .clickable(enabled) { showDialog = true }
+            .padding(8.dp)
     )
 
     if (showDialog) {

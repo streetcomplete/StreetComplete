@@ -14,7 +14,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.intl.Locale
-import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import de.westnordost.osm_opening_hours.model.HolidaySelector
 import de.westnordost.osm_opening_hours.model.WeekdaysSelector
@@ -46,7 +45,6 @@ fun WeekdaysColumn(
     weekdaysList: List<Weekdays>,
     onChange: (List<Weekdays>) -> Unit,
     timeMode: TimeMode,
-    timeTextWidth: Dp,
     modifier: Modifier,
     initialWeekdaysSelectors: List<WeekdaysSelector> = emptyList(),
     locale: Locale = Locale.current,
@@ -74,7 +72,7 @@ fun WeekdaysColumn(
                             it[index] = newWeekdays
                         })
                     },
-                    modifier = Modifier.weight(1f),
+                    modifier = Modifier.weight(2f),
                     locale = locale,
                     userLocale = userLocale,
                     enabled = enabled,
@@ -82,12 +80,12 @@ fun WeekdaysColumn(
                 when (weekdays.times) {
                     Off -> {
                         OffDayRow(
-                            timeTextWidth = timeTextWidth,
                             onClickDelete = {
                                 val newWeekdaysList = weekdaysList.toMutableList()
                                 newWeekdaysList.removeAt(index)
                                 onChange(newWeekdaysList)
                             },
+                            modifier = Modifier.weight(3f),
                             enabled = enabled,
                         )
                     }
@@ -105,7 +103,7 @@ fun WeekdaysColumn(
                                 onChange(newWeekdaysList)
                             },
                             timeMode = timeMode,
-                            timeTextWidth = timeTextWidth,
+                            modifier = Modifier.weight(3f),
                             locale = locale,
                             enabled = enabled,
                         )

@@ -3,7 +3,9 @@ package de.westnordost.streetcomplete.ui.common.opening_hours
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.size
 import androidx.compose.material.Divider
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
@@ -16,7 +18,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.intl.Locale
-import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import de.westnordost.osm_opening_hours.model.Month
 import de.westnordost.osm_opening_hours.model.WeekdaysSelector
@@ -37,7 +38,6 @@ fun MonthsColumn(
     monthsList: List<Months>,
     onChange: (List<Months>) -> Unit,
     timeMode: TimeMode,
-    timeTextWidth: Dp,
     modifier: Modifier = Modifier,
     initialWeekdaysSelectors: List<WeekdaysSelector> = emptyList(),
     locale: Locale = Locale.current,
@@ -82,6 +82,8 @@ fun MonthsColumn(
                                 contentDescription = stringResource(Res.string.quest_openingHours_delete)
                             )
                         }
+                    } else {
+                        Spacer(Modifier.size(48.dp))
                     }
                 }
             }
@@ -98,7 +100,6 @@ fun MonthsColumn(
                     )
                 },
                 timeMode = timeMode,
-                timeTextWidth = timeTextWidth,
                 modifier = Modifier.fillMaxWidth(),
                 initialWeekdaysSelectors = initialWeekdaysSelectors,
                 locale = locale,

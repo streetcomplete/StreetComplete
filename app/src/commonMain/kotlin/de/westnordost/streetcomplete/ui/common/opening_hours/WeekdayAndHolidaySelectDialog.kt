@@ -4,10 +4,15 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.ContentAlpha
 import androidx.compose.material.Divider
+import androidx.compose.material.LocalContentAlpha
+import androidx.compose.material.LocalTextStyle
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.snapshots.SnapshotStateSet
 import androidx.compose.ui.Modifier
@@ -56,39 +61,44 @@ fun WeekdayAndHolidaySelectDialog(
         modifier = modifier,
         title = { Text(stringResource(Res.string.quest_openingHours_chooseWeekdaysTitle)) },
         content = {
-            Column(
-                Modifier
-                    .fadingVerticalScrollEdges(scrollState, 32.dp)
-                    .padding(horizontal = 24.dp)
-                    .verticalScroll(scrollState)
+            CompositionLocalProvider(
+                LocalContentAlpha provides ContentAlpha.high,
+                LocalTextStyle provides MaterialTheme.typography.body1
             ) {
-                CheckboxList(
-                    options = weekdayItems,
-                    onToggle = { weekday, checked ->
-                        if (checked) weekdaySelection.add(weekday)
-                        else weekdaySelection.remove(weekday)
-                    },
-                    selectedOptions = weekdaySelection,
-                    itemContent = {
-                        val text = it.getDisplayName(locale = locale)
-                        val textInUserLocale = it.getDisplayName(locale = userLocale)
-                        if (text != textInUserLocale) {
-                            Text(stringResource(Res.string.quest_opening_hours_two_languages, text, textInUserLocale))
-                        } else {
-                            Text(text)
+                Column(
+                    Modifier
+                        .fadingVerticalScrollEdges(scrollState, 32.dp)
+                        .padding(horizontal = 24.dp)
+                        .verticalScroll(scrollState)
+                ) {
+                    CheckboxList(
+                        options = weekdayItems,
+                        onToggle = { weekday, checked ->
+                            if (checked) weekdaySelection.add(weekday)
+                            else weekdaySelection.remove(weekday)
+                        },
+                        selectedOptions = weekdaySelection,
+                        itemContent = {
+                            val text = it.getDisplayName(locale = locale)
+                            val textInUserLocale = it.getDisplayName(locale = userLocale)
+                            if (text != textInUserLocale) {
+                                Text(stringResource(Res.string.quest_opening_hours_two_languages, text, textInUserLocale))
+                            } else {
+                                Text(text)
+                            }
                         }
-                    }
-                )
-                Divider()
-                CheckboxList(
-                    options = holidayItems,
-                    onToggle = { holiday, checked ->
-                        if (checked) holidaySelection.add(holiday)
-                        else holidaySelection.remove(holiday)
-                    },
-                    selectedOptions = holidaySelection,
-                    itemContent = { Text(stringResource(it.getDisplayNameResource())) }
-                )
+                    )
+                    Divider()
+                    CheckboxList(
+                        options = holidayItems,
+                        onToggle = { holiday, checked ->
+                            if (checked) holidaySelection.add(holiday)
+                            else holidaySelection.remove(holiday)
+                        },
+                        selectedOptions = holidaySelection,
+                        itemContent = { Text(stringResource(it.getDisplayNameResource())) }
+                    )
+                }
             }
         },
         buttons = {
