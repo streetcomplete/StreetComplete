@@ -255,6 +255,7 @@ class AddressOverlayForm : AbstractOverlayForm(), IsMapPositionAware {
             ?: return true
 
         streetOrPlaceName.value = StreetName(name)
+        checkIsFormComplete()
         return true
     }
 
