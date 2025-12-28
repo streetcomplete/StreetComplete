@@ -1461,4 +1461,12 @@ Un piano del tetto va contato quando ci sono finestre nel tetto. Quindi, un tett
     <string name="quest_first_aid_kit_location">Dove si trova questo kit di pronto soccorso?</string>
     <string name="quest_lane_markings_title">Questa strada è dotata di segnaletica orizzontale?</string>
     <string name="quest_level_thing_title">A quale livello numerico si trova questa cosa?</string>
+    <string name="quest_bicycle_charging_station_capacity_title">Quante biciclette possono essere caricate qui nello stesso momento?</string>
+    <string name="quest_charging_station_bicycles_title">Le biciclette possono essere caricate qui?</string>
+    <string name="quest_charging_station_bicycles_hint">Gli adattatori di alimentazione per caricabatterie per biciclette si collegano alle normali prese domestiche.</string>
+    <string name="quest_tower_access_title">Chi può accedere a questa torre? Può essere gratuita o a pagamento.</string>
+    <string name="quest_charging_station_bicycles_answer_only">Solo per biciclette</string>
+    <string name="quest_recycling_type_pet_bottles">Bottiglie PET</string>
+    <string name="quest_maxweight_add_sign">Aggiungi cartello</string>
+    <string name="quest_maxweight_remove_sign">Rimuovi cartello</string>
 </resources>

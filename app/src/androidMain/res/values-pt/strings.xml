@@ -423,7 +423,7 @@
     <string name="quest_maxspeed_answer_zone2">"Está dentro de uma zona de velocidade reduzida"</string>
     <string name="quest_maxspeed_answer_noSign2">"Sem sinal, aplica-se a velocidade padrão"</string>
     <string name="quest_openingHours_no_sign">"Não tem o horário de abertura afixado"</string>
-    <string name="quest_buildingType_sports_centre">"Centro desportivo"</string>
+    <string name="quest_buildingType_sports_centre">"Complexo desportivo"</string>
     <string name="quest_buildingType_toilets">"Casa de banho"</string>
     <string name="quest_maxspeed_sign_question">"O que define o limite de velocidade?"</string>
     <string name="quest_segregated_title">"Esta ciclovia e via pedonal são separadas?"</string>
@@ -503,8 +503,8 @@ Quer dividir agora?"</string>
     <string name="quest_recycling_type_plastic">"Qualquer plástico"</string>
     <string name="quest_recycling_type_shoes">"Calçado"</string>
     <string name="quest_recycling_type_electric_appliances">"Eletrodomésticos"</string>
-    <string name="quest_recycling_type_plastic_bottles">"Apenas garrafas de plástico"</string>
-    <string name="quest_recycling_type_plastic_packaging">"Apenas embalagens de plástico"</string>
+    <string name="quest_recycling_type_plastic_bottles">"Garrafas de plástico"</string>
+    <string name="quest_recycling_type_plastic_packaging">"Qualquer embalagem de plástico"</string>
     <string name="quest_recycling_type_scrap_metal">"Sucata metálica"</string>
     <string name="quest_recycling_type_any_glass">"Qualquer vidro"</string>
     <string name="quest_recycling_glass_title">"Só podem ser reciclados garrafas e frascos de vidro aqui, ou qualquer tipo de vidro?"</string>
@@ -684,7 +684,7 @@ conquista"</string>
     <string name="quest_traffic_signals_vibrate_title">"Este semáforo tem um sinal tátil para indicar a cegos quando é seguro atravessar?"</string>
     <string name="quest_traffic_signals_vibrate_description">"Dica: frequentemente trata-se de um botão vibratório ou cone giratório na parte inferior da caixa do botão do semáforo."</string>
     <string name="quest_buildingType_bungalow_description2">"pequena casa independente (casa de verão, casa de férias, cabana…)"</string>
-    <string name="quest_railway_crossing_barrier_title2">"Que tipo de barreiras existem nesta passagem de nível?"</string>
+    <string name="quest_railway_crossing_barrier_title2">"Que barreiras são utilizadas nesta passagem de nível?"</string>
     <string name="quest_railway_crossing_barrier_none2">"Sem barreiras"</string>
     <string name="quest_steps_ramp_title">"Estas escadas têm rampa? De que tipo?"</string>
     <string name="quest_steps_ramp_none">"Sem rampa (utilizável)"</string>
@@ -759,10 +759,10 @@ Veja todas as opções disponíveis: alguns casos não são óbvios, como uma es
     <string name="quest_drinking_water_potable_signed">"Potável (assinalado)"</string>
     <string name="quest_drinking_water_not_potable_signed">"Não potável (assinalado)"</string>
     <string name="quest_postboxRoyalCypher_title">"Qual é a cifra real desta caixa de correio?"</string>
-    <string name="quest_postboxRoyalCypher_type_none">"Não está visível nenhuma cifra real"</string>
+    <string name="quest_postboxRoyalCypher_type_none">"Nenhuma está visível"</string>
     <string name="quest_postboxRoyalCypher_type_scottish_crown">"A coroa da Escócia"</string>
     <string name="quest_buildingType_fire_station">"Edifício de quartel de bombeiros"</string>
-    <string name="quest_recycling_type_beverage_cartons">"Apenas embalagens para bebidas"</string>
+    <string name="quest_recycling_type_beverage_cartons">"Embalagens para bebidas"</string>
     <string name="team_mode">"Modo de equipa"</string>
     <string name="team_mode_exit">"Sair do modo de equipa"</string>
     <string name="team_mode_description">"Ao mapear a mesma área em grupo, pode entrar no modo de equipa para dividir as missões entre todos os membros da equipa. Cada um de vós verá missões diferentes."</string>
@@ -952,7 +952,7 @@ Os dados são atualizados após %1$s dias e os dados não utilizados são elimin
     <string name="quest_smoothness_surface_value">"A superfície foi etiquetada com:"</string>
     <string name="quest_smoothness_obstacle">"Existe um obstáculo"</string>
     <string name="quest_smoothness_obstacle_hint">"Dê uma resposta geral sobre a suavidade do piso. Obstáculos únicos como lancis ou lombas de velocidade podem ser ignorados. Os obstáculos repetidos ou inesperados devem contar para a resposta."</string>
-    <string name="quest_smoothness_hint">"🚲, 🚗, 🚙… indicar para que tipo de veículos a superfície está em condições de ser utilizada. O que importa é a qualidade geral e não pequenos trechos."</string>
+    <string name="quest_smoothness_hint">"Os ícones indicam para quais veículos a superfície está em condições de ser utilizada. O que importa é a qualidade geral e não pequenas secções."</string>
     <string name="link_osmhydrant_description">"Averiguar, adicionar e editar quartéis de bombeiros e bocas de incêndio"</string>
     <string name="achievement_lifesaver_title">"Salva-vidas"</string>
     <string name="achievement_lifesaver_solved_X">"Resolveu %1$d missões que ajudam os serviços de emergência e os socorristas!"</string>
@@ -1234,7 +1234,7 @@ Faça o mesmo para o outro lado, se existir."</string>
     <string name="quest_cycleway_value_sidewalk_dual2">"passeio de utilização partilhada, em ambas as direções"</string>
     <string name="overlays_tutorial_title">"Camadas"</string>
     <string name="overlays_tutorial_intro">"Encontrou uma nova forma de editar dados!"</string>
-    <string name="overlays_tutorial_display">"Cada camada apresenta um tipo de dados, por exemplo, “lojas“ ou “superfícies de ruas“. Os dados são destacados em cores diferentes para ter uma boa visão geral do que foi registado até agora. Os dados em falta são sempre apresentados a vermelho."</string>
+    <string name="overlays_tutorial_display">"Cada camada mostra um tipo de dados, por exemplo, ”lugares” ou “superfícies das ruas”. Os dados são destacados em cores diferentes para lhe dar uma boa visão geral do que foi registado até agora. Os dados em falta são sempre mostrados a vermelho."</string>
     <string name="overlays_tutorial_edit">"Toque em qualquer dado realçado para o visualizar ou editar. Também pode dividir caminhos ou comunicar notas, como nas missões. Além disso, algumas camadas, como a camada de endereços, permitem adicionar novos dados na posição da mira."</string>
     <string name="quest_crossing_kerb_height_title">"Qual é a altura dos passeios neste cruzamento?"</string>
     <string name="quest_maxheight_sign_title">"Qual é o limite de altura indicado aqui?"</string>
@@ -1401,7 +1401,7 @@ Faça o mesmo para o outro lado, se existir."</string>
     <string name="pref_overlays_reset">"Repor a ativação de sobreposição para o predefinido?"</string>
     <string name="overlay">"Sobreposição"</string>
     <string name="enable_overlay_confirmation_title">"Ativar esta sobreposição?"</string>
-    <string name="link_transitous_description">"Fornecedor de rotas de transportes públicos neutras, gratuitas e de fonte aberta"</string>
+    <string name="link_transitous_description">"Roteamento de transporte público neutro em relação ao fornecedor, gratuito e de código aberto."</string>
     <string name="compass">"Bússola"</string>
     <string name="quest_tracktype_grade2">"Maioritariamente sólido"</string>
     <string name="quest_tracktype_grade3">"Mistura"</string>
@@ -1419,4 +1419,19 @@ Por exemplo 1,3 ou 2b,4,6."</string>
     <string name="quest_streetName_add_language">"Adicionar idioma"</string>
     <string name="ok">"OK"</string>
     <string name="cancel">"Cancelar"</string>
+    <string name="quest_aerialway_bicycle_title">"Este teleférico transporta bicicletas?"</string>
+    <string name="quest_aerialway_bicycle_summer">"Apenas no verão"</string>
+    <string name="quest_board_type_rules">"Regras"</string>
+    <string name="quest_firewood_provided_title">"Aqui é fornecida lenha?"</string>
+    <string name="quest_first_aid_kit_location">"Onde está este kit de primeiros socorros?"</string>
+    <string name="quest_lane_markings_title">"Esta estrada tem marcações na faixa de rodagem?"</string>
+    <string name="quest_level_thing_title">"Em que andar fica essa coisa?"</string>
+    <string name="quest_bicycle_charging_station_capacity_title">"Quantas bicicletas podem ser carregadas aqui ao mesmo tempo?"</string>
+    <string name="quest_charging_station_bicycles_title">"As bicicletas também podem ser carregadas aqui?"</string>
+    <string name="quest_charging_station_bicycles_hint">"As fichas dos adaptadores de corrente para carregadores de bicicletas ligam-se a tomadas domésticas normais."</string>
+    <string name="quest_tower_access_title">"Quem pode aceder a esta torre? Pode ser gratuito ou pago."</string>
+    <string name="quest_charging_station_bicycles_answer_only">"É apenas para bicicletas"</string>
+    <string name="quest_recycling_type_pet_bottles">"Garrafas PET"</string>
+    <string name="quest_maxweight_add_sign">"Adicionar sinal"</string>
+    <string name="quest_maxweight_remove_sign">"Remover sinal"</string>
 </resources>

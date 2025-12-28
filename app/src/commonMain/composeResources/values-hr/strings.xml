@@ -522,7 +522,7 @@ Razdvojiti put sada?</string>
     <string name="quest_recycling_type_batteries">Baterije</string>
     <string name="quest_recycling_type_cans">Limenke</string>
     <string name="quest_recycling_type_clothes">Odjeća</string>
-    <string name="quest_recycling_type_green_waste">Biootpad</string>
+    <string name="quest_recycling_type_green_waste">Biootpad za kompost</string>
     <string name="quest_recycling_type_glass_bottles">Staklene tegle i boce</string>
     <string name="quest_recycling_type_glass_bottles_short">Staklenke</string>
     <string name="quest_recycling_type_paper">Papir</string>
@@ -531,7 +531,7 @@ Razdvojiti put sada?</string>
     <string name="quest_recycling_type_electric_appliances">Mali kućanski aparati</string>
     <string name="quest_recycling_type_plastic_bottles">Samo plastične boce</string>
     <string name="quest_recycling_type_plastic_packaging">Samo plastična ambalaža</string>
-    <string name="quest_recycling_type_scrap_metal">Metalna ambalaža</string>
+    <string name="quest_recycling_type_scrap_metal">Bilo koji metal</string>
     <string name="quest_recycling_type_any_glass">Bilo koje staklo</string>
     <string name="quest_recycling_glass_title">Mogu li se ovdje ostaviti samo staklene boce i tegle, ili bilo koja vrsta stakla?</string>
     <string name="quest_determineRecyclingGlass_description_any_glass">Primjeri stakla koje se često ne prihvaća: kaljeno staklo, prozorska stakla, stakleno posuđe, žarulje ili ogledala.</string>
@@ -842,7 +842,7 @@ Podaci se automatski osvježavaju nakon %1$s dana, a nekorišteni podaci brišu 
     <string name="pref_title_quests2">Odabir i prioriteti zadataka</string>
     <string name="pref_subtitle_quests">%1$d od %2$d omogućeno</string>
     <string name="no_location_permission_warning_title">Dopuštenje za lokaciju</string>
-    <string name="quest_surface_value_woodchips">Drvene Sječke</string>
+    <string name="quest_surface_value_woodchips">Drvene sječke</string>
     <string name="no_camera_app">Nije dostupna niti jedna aplikacija za kameru</string>
     <string name="quest_bollard_type_title">Kakva je ovo vrsta stupića?</string>
     <string name="quest_bollard_type_rising">Automatski podižući</string>
@@ -1470,4 +1470,6 @@ Kat se računa kao kat u potkrovlju samo kada ima prozore unutar krova. Stoga, k
     <string name="quest_tower_access_title">Tko ima pristup ovom tornju? Ulaz može biti besplatan ili naplatni.</string>
     <string name="quest_charging_station_bicycles_answer_only">To je samo za bicikle</string>
     <string name="quest_recycling_type_pet_bottles">PET boce</string>
+    <string name="quest_maxweight_add_sign">Dodaj znak</string>
+    <string name="quest_maxweight_remove_sign">Ukloni znak</string>
 </resources>

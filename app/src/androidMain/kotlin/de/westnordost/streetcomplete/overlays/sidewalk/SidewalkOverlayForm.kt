@@ -70,7 +70,7 @@ class SidewalkOverlayForm : AbstractOverlayForm() {
         sidewalks.value != originalSidewalks
 
     override fun isFormComplete(): Boolean =
-        sidewalks.value.left != null && sidewalks.value.right != null
+        sidewalks.value.left != null || sidewalks.value.right != null
 
     override fun onClickOk() {
         prefs.setLastPicked(this::class.simpleName!!, listOf(sidewalks.value))

@@ -1432,9 +1432,9 @@
     <string name="overlay_mtb_scale_6">第6級</string>
     <string name="overlay_mtb_scale_6_description">危險且無法通行的地形，不適合進行山地自行車活動。</string>
     <string name="default_disabled_overlay_domain_expert">此覆蓋圖層預設為關閉，因為需要具備領域專家知識才能準確記錄此資料。</string>
-    <string name="pref_title_overlays">選擇圖層</string>
-    <string name="pref_overlays_reset">將圖層啟用設定重置為預設值嗎？</string>
-    <string name="overlay">圖層</string>
+    <string name="pref_title_overlays">選擇套疊圖層</string>
+    <string name="pref_overlays_reset">將套疊圖層啟用設定重置為預設值嗎？</string>
+    <string name="overlay">套疊圖層</string>
     <string name="enable_overlay_confirmation_title">要啟用這個圖層嗎？</string>
     <string name="link_transitous_description">不依賴特定供應商的免費開源大眾運輸路線規劃</string>
     <string name="compass">羅盤</string>
@@ -1453,4 +1453,19 @@
     <string name="quest_streetName_add_language">新增語言</string>
     <string name="ok">確定</string>
     <string name="cancel">取消</string>
+    <string name="quest_aerialway_bicycle_title">這個纜車是否能運輸單車？</string>
+    <string name="quest_aerialway_bicycle_summer">只有在夏天</string>
+    <string name="quest_board_type_rules">規則</string>
+    <string name="quest_firewood_provided_title">這裡有提供薪柴嗎？</string>
+    <string name="quest_first_aid_kit_location">這裡的急救包在那裡？</string>
+    <string name="quest_lane_markings_title">這條路有標線嗎？</string>
+    <string name="quest_level_thing_title">這東西位於那個樓層號碼？</string>
+    <string name="quest_bicycle_charging_station_capacity_title">這邊同一時間可以充幾台單車的電？</string>
+    <string name="quest_charging_station_bicycles_title">這裡是否也可以為單單充電嗎？</string>
+    <string name="quest_charging_station_bicycles_hint">單車充電座能夠插入一般家戶插座。</string>
+    <string name="quest_tower_access_title">誰可以進入這個塔？免費或是付費。</string>
+    <string name="quest_charging_station_bicycles_answer_only">只有為了單車</string>
+    <string name="quest_recycling_type_pet_bottles">PET瓶罐</string>
+    <string name="quest_maxweight_add_sign">新增告示牌</string>
+    <string name="quest_maxweight_remove_sign">移除告示牌</string>
 </resources>

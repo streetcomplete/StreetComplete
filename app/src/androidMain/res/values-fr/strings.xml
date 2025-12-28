@@ -12,7 +12,7 @@
     <string name="map_attribution_osm">"© Contributeurs d’OpenStreetMap"</string>
     <string name="quest_generic_otherAnswers">"Autres réponses…"</string>
     <string name="quest_generic_answer_notApplicable">"Je ne sais pas"</string>
-    <string name="quest_generic_confirmation_title">"C’est votre dernier mot ?"</string>
+    <string name="quest_generic_confirmation_title">"Es-tu sûr ?"</string>
     <string name="quest_generic_confirmation_yes">"Oui, je confirme"</string>
     <string name="quest_generic_confirmation_no">"Je vais vérifier"</string>
     <string name="quest_leave_new_note_title">"Laisser une note à la place ?"</string>
@@ -622,9 +622,9 @@ Enfin, n’oubliez pas de rester prudent : soyez attentifs à votre environnemen
     <string name="link_openstreetbrowser_description">"Une carte pour parcourir les données OpenStreetMap par catégorie"</string>
     <string name="link_weeklyosm_description">"Blog de nouvelles hebdomadaires sur ce qui se passe dans la communauté d’OpenStreetMap"</string>
     <string name="link_figuregrounder_description">"Créer des affiches à partir des surfaces bâties d’une ville ou d’un quartier"</string>
-    <string name="achievement_first_edit_title">"Prem’s ! Première quête résolue"</string>
+    <string name="achievement_first_edit_title">"Première quête résolue"</string>
     <string name="achievement_first_edit_description">"Bienvenue dans la communauté OpenStreetMap ! Dans votre profil, vous pouvez en savoir plus sur chaque type de quête que vous avez résolue."</string>
-    <string name="achievement_surveyor_title">"Enquêteur"</string>
+    <string name="achievement_surveyor_title">"Détective"</string>
     <string name="achievement_surveyor_solved_X">"Vous avez résolu %1$d quêtes ! Continuez pour débloquer d’autres succès en lien avec OSM et d’autres projets et applications de cartographie !"</string>
     <string name="achievement_regular_title">"Habitué"</string>
     <string name="achievement_regular_description">"Vous avez contribué %1$d jours avec StreetComplete ! Les contributeurs réguliers sont les pierres angulaires d’OSM, merci de votre implication ! ❤"</string>
@@ -640,7 +640,7 @@ Ces données sont essentielles non seulement pour le facteur mais aussi pour tou
 Remarquez que cette appli ne vous demandera les numéros de rues qu’après avoir indiqué le type de bâtiment."</string>
     <string name="achievement_blind_title">"Sixième sens"</string>
     <string name="achievement_blind_solved_X">"Vous avez résolu %1$d quêtes utiles pour les déficients visuel."</string>
-    <string name="achievement_pedestrian_title">"Coureur"</string>
+    <string name="achievement_pedestrian_title">"Course à pied"</string>
     <string name="achievement_pedestrian_solved_X">"Vous avez résolu %1$d quêtes utiles pour les piétons !"</string>
     <string name="achievement_veg_title">"Bienveillance animale"</string>
     <string name="achievement_veg_solved_X">"Vous avez résolu %1$d quêtes utiles pour les personnes ne mangeant pas de viande !"</string>
@@ -1459,5 +1459,19 @@ Par exemple, 1,3 ou 2b,4,6."</string>
     <string name="quest_streetName_add_language">"Ajouter une langue"</string>
     <string name="ok">"OK"</string>
     <string name="cancel">"Annuler"</string>
+    <string name="quest_aerialway_bicycle_title">"Ce téléporté peut-il transporter des vélos ?"</string>
+    <string name="quest_aerialway_bicycle_summer">"Uniquement l’été"</string>
+    <string name="quest_board_type_rules">"Règles"</string>
+    <string name="quest_firewood_provided_title">"Le bois est-il fourni ici ?"</string>
+    <string name="quest_first_aid_kit_location">"Où se trouve ce kit de premier secours ?"</string>
+    <string name="quest_lane_markings_title">"Cette route a-t-elle des lignes peintes ?"</string>
+    <string name="quest_level_thing_title">"À quel étage se trouve cet objet ?"</string>
+    <string name="quest_bicycle_charging_station_capacity_title">"Combien de vélos peuvent être rechargés ici en même temps ?"</string>
+    <string name="quest_charging_station_bicycles_title">"Les vélos électriques peuvent-ils être également rechargés ici ?"</string>
+    <string name="quest_charging_station_bicycles_hint">"Les adaptateurs secteur pour chargeurs de vélo se branchent sur les prises domestiques standard."</string>
+    <string name="quest_tower_access_title">"Qui peut accéder à cette tour ? L’accès peut être gratuit ou payant."</string>
+    <string name="quest_charging_station_bicycles_answer_only">"C’est uniquement pour les vélos"</string>
     <string name="quest_recycling_type_pet_bottles">"Bouteilles en PET"</string>
+    <string name="quest_maxweight_add_sign">"Ajouter un panneau"</string>
+    <string name="quest_maxweight_remove_sign">"Supprimer un panneau"</string>
 </resources>
