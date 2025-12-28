@@ -740,6 +740,7 @@ Before uploading your changes, the app checks with a &lt;a href="https://www.wes
     <string name="quest_artwork_bust">Bust</string>
     <string name="quest_artwork_stone">Stone</string>
     <string name="quest_artwork_painting">Painting</string>
+    <string name="quest_artwork_street_art">Other Street Art</string>
     <string name="quest_artwork_architecture">Architecture</string>
     <string name="quest_artwork_mosaic">Mosaic</string>
     <string name="quest_artwork_relief">Relief</string>

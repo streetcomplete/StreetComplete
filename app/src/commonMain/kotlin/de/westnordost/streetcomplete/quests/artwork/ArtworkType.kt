@@ -14,7 +14,8 @@ enum class ArtworkType(val osmValue: String, val osmArtworkTypeValue: String? = 
     PAINTING("painting"),
     RELIEF("relief"),
     ARCHITECTURE("architecture"),
-    FOUNTAIN("fountain")
+    FOUNTAIN("fountain"),
+    STREET_ART("street_art")
 }
 
 fun ArtworkType.applyTo(tags: Tags) {

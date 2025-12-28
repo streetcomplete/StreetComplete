@@ -19,6 +19,7 @@ val ArtworkType.title: StringResource get() = when (this) {
     MOSAIC -> Res.string.quest_artwork_mosaic
     GRAFFITI -> Res.string.quest_artwork_graffiti
     PAINTING -> Res.string.quest_artwork_painting
+    STREET_ART -> Res.string.quest_artwork_street_art
 }
 
 val ArtworkType.icon: DrawableResource get() = when (this) {
@@ -34,4 +35,5 @@ val ArtworkType.icon: DrawableResource get() = when (this) {
     MOSAIC -> Res.drawable.artwork_mosaic
     GRAFFITI -> Res.drawable.artwork_graffiti
     PAINTING -> Res.drawable.artwork_painting
+    STREET_ART -> Res.drawable.artwork_street_art
 }

@@ -76,7 +76,6 @@ app icon/
 assembly point/
     assembly_point.svg          Epop, License: Public domain; https://commons.wikimedia.org/wiki/File:E011.svg
 
-
 boat_rental/
     canoe.svg                   mashup of different images from Australian Water Safety Council, License: PD
     houseboat.svg               parts taken from Twemoji: U+26F4
