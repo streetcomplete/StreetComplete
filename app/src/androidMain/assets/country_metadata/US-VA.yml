@@ -1,5 +1,5 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [Wells Fargo, Bank of America, Truist, Bitstop, PNC Bank, Navy Federal Credit Union, Capital One, MetaBank, Chase, Citibank, Venco, BB&T, USAA, SunTrust, Woodforest National Bank, Virginia Credit Union, First National Bank, Atlantic Union Bank, Allpoint, Wachovia, United Bank, Union Bank, First Citizens Bank, 'FCTI, Inc.', Euronet, DuPont Community, Cardtronics, Blue Eagle Credit Union, Athena Bitcoin]
+atmOperators: [Wells Fargo, Bank of America, Truist, Bitstop, PNC Bank, Navy Federal Credit Union, MetaBank, Capital One, Chase, Citibank, Venco, USAA, SunTrust, BB&T, Woodforest National Bank, Virginia Credit Union, First National Bank, Atlantic Union Bank, Allpoint, Wachovia, United Bank, Union Bank, First Citizens Bank, 'FCTI, Inc.', Euronet, DuPont Community, Cardtronics, Blue Eagle Credit Union, Athena Bitcoin]
 chargingStationOperators: ['Tesla, Inc.', ChargePoint, EVgo, Tesla, Volta, Electrify America, Blink, Shell Recharge Solutions, Greenspot, Corporate Research Center, 7-Eleven, Refuge Inn]
 clothesContainerOperators: [Better World Recycling, Planet Aid, Kiducation]
 defaultSpeedLimitHasUrbanOrRural: true

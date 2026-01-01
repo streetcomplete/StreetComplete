@@ -1,3 +1,4 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [State Bank of India, Axis Bank, HDFC Bank, ICICI Bank, Punjab National Bank, Bank of Baroda, Bank of India, Union Bank of India, SBI, Central Bank of India, Canara Bank, sbi, UCO Bank, Indian Overseas Bank, PNB, Kotak Mahindra Bank, IndusInd Bank, HDFC, Bandhan Bank, axis bank, United Bank of India, United Bank Of India ATM, Indian Bank, India Post Payments Bank, Corporation Bank ATM, Allahabad Bank]
+atmOperators: [State Bank of India, Axis Bank, HDFC Bank, ICICI Bank, Punjab National Bank, Bank of Baroda, Bank of India, Union Bank of India, SBI, Canara Bank, Central Bank of India, UCO Bank, sbi, Indian Overseas Bank, PNB, Kotak Mahindra Bank, IndusInd Bank, HDFC, Bandhan Bank, axis bank, United Bank of India, United Bank Of India ATM, Indian Bank, India Post Payments Bank, Corporation Bank ATM, Allahabad Bank]
 officialLanguages: [bn]
+parcelLockerBrand: [SafeCloak]

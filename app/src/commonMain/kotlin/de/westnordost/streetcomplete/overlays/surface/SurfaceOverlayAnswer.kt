@@ -13,7 +13,7 @@ sealed interface SurfaceOverlayAnswer {
 }
 
 @Serializable
-@JvmInline value class SingleSurface(val value: Surface?) : SurfaceOverlayAnswer {
+data class SingleSurface(val value: Surface?) : SurfaceOverlayAnswer {
     override fun isComplete(): Boolean =
         value != null
 }

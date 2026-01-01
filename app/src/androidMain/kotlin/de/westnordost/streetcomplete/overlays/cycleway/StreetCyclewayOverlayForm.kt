@@ -7,11 +7,13 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.material.Surface
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.lifecycleScope
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
@@ -45,6 +47,8 @@ import de.westnordost.streetcomplete.quests.cycleway.CyclewayForm
 import de.westnordost.streetcomplete.quests.cycleway.CyclewayFormSelectionMode
 import de.westnordost.streetcomplete.ui.util.content
 import de.westnordost.streetcomplete.util.ktx.toast
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 import org.koin.android.ext.android.inject
 
 class StreetCyclewayOverlayForm : AbstractOverlayForm() {
@@ -103,6 +107,14 @@ class StreetCyclewayOverlayForm : AbstractOverlayForm() {
                 .map { it.withDefaultDirection(countryInfo.isLeftHandTraffic) }
                 .filter { sides -> sides.all { it?.isSelectable(countryInfo) != false } }
         }
+
+        snapshotFlow { bicycleInPedestrianStreet }
+            .onEach { checkIsFormComplete() }
+            .launchIn(lifecycleScope)
+
+        snapshotFlow { bicycleBoulevard }
+            .onEach { checkIsFormComplete() }
+            .launchIn(lifecycleScope)
 
         binding.composeViewBase.content { Surface {
             Box(contentAlignment = Alignment.Center) {

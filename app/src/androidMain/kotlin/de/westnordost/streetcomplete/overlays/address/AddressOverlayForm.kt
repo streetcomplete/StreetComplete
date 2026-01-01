@@ -255,6 +255,7 @@ class AddressOverlayForm : AbstractOverlayForm(), IsMapPositionAware {
             ?: return true
 
         streetOrPlaceName.value = StreetName(name)
+        checkIsFormComplete()
         return true
     }
 
@@ -307,7 +308,9 @@ class AddressOverlayForm : AbstractOverlayForm(), IsMapPositionAware {
         streetOrPlaceName: StreetOrPlaceName?
     ) {
         number?.applyTo(tagChanges, countryInfo.countryCode)
-        name?.let { tagChanges["addr:housename"] = it }
+        if (!name.isNullOrEmpty()) {
+            tagChanges["addr:housename"] = name
+        }
         streetOrPlaceName?.applyTo(tagChanges)
         tagChanges.remove("noaddress")
         tagChanges.remove("nohousenumber")

@@ -73,8 +73,8 @@ class PlacesOverlayForm : AbstractOverlayForm() {
     private var originalNoName: Boolean = false
     private var originalNames: List<LocalizedName> = emptyList()
 
-    private lateinit var localizedNames: MutableState<List<LocalizedName>>
-    private lateinit var isNoName: MutableState<Boolean>
+    private var localizedNames: MutableState<List<LocalizedName>> = mutableStateOf(emptyList())
+    private var isNoName: MutableState<Boolean> = mutableStateOf(false)
 
     private lateinit var featureCtrl: FeatureViewController
 
@@ -251,7 +251,7 @@ class PlacesOverlayForm : AbstractOverlayForm() {
 
     override fun isFormComplete(): Boolean =
         featureCtrl.feature != null
-        && localizedNames.value.all { it.name.isNotBlank() }
+        && (localizedNames.value.all { it.name.isNotBlank() } || isNoName.value )
 
     override fun onClickOk() {
         val firstLanguage = localizedNames.value.firstOrNull()?.languageTag

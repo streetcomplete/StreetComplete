@@ -9,6 +9,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.quests.bike_rental_type.BikeRentalTypeAnswer.*
 
 class AddBikeRentalType : OsmFilterQuestType<BikeRentalTypeAnswer>(), AndroidQuest {
 
@@ -34,13 +35,17 @@ class AddBikeRentalType : OsmFilterQuestType<BikeRentalTypeAnswer>(), AndroidQue
 
     override fun applyAnswerTo(answer: BikeRentalTypeAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {
-            is BikeRentalType -> {
-                tags["bicycle_rental"] = answer.osmValue
-                if (answer == BikeRentalType.HUMAN) {
-                    tags["shop"] = "rental"
-                }
+            DOCKING_STATION -> {
+                tags["bicycle_rental"] = "docking_station"
             }
-            is BikeRentalTypeAnswer.BikeShopWithRental -> {
+            DROPOFF_POINT -> {
+                tags["bicycle_rental"] = "dropoff_point"
+            }
+            HUMAN -> {
+                tags["bicycle_rental"] = "shop"
+                tags["shop"] = "rental"
+            }
+            BIKE_SHOP_WITH_RENTAL -> {
                 tags.remove("amenity")
                 tags["shop"] = "bicycle"
                 tags["service:bicycle:rental"] = "yes"

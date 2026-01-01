@@ -20,7 +20,7 @@ class AddGlutenFree : OsmFilterQuestType<DietAvailabilityAnswer>(), AndroidQuest
         (
           amenity ~ restaurant|cafe|fast_food|food_court and food != no
           or amenity ~ pub|nightclub|biergarten|bar and food = yes
-          or shop ~ supermarket|convenience|deli
+          or shop ~ supermarket|convenience|deli|bakery|pastry
           or tourism ~ alpine_hut and food != no
         )
         and (
