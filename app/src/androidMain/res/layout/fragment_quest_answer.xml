@@ -30,42 +30,6 @@
             app:behavior_peekHeight="@dimen/quest_form_peekHeight">
 
             <LinearLayout
-                android:id="@+id/resurveySpeechBubbleTitleContainer"
-                android:background="@drawable/speech_bubble_none"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginStart="@dimen/horizontal_speech_bubble_margin"
-                android:layout_marginEnd="@dimen/horizontal_speech_bubble_margin"
-                android:layout_marginBottom="4dp"
-                android:showDividers="middle"
-                android:paddingStart="22dp"
-                android:paddingEnd="22dp"
-                android:paddingTop="16dp"
-                android:paddingBottom="16dp"
-                android:divider="@drawable/space_16dp"
-                android:elevation="@dimen/speech_bubble_elevation">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical"
-                    android:layoutDirection="locale">
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-                        <TextView
-                            android:id="@+id/resurveyLabel"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:textAppearance="@style/TextAppearance.TitleLarge"/>
-                    </LinearLayout>
-                </LinearLayout>
-            </LinearLayout>
-            <LinearLayout
                 android:id="@+id/speechBubbleTitleContainer"
                 android:background="@drawable/speech_bubble_top"
                 android:layout_width="match_parent"
@@ -95,10 +59,22 @@
                         android:layout_weight="1"
                         android:orientation="vertical">
                         <TextView
+                            android:id="@+id/resurveyLabel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="@style/TextAppearance.TitleLarge"
+                            android:visibility="gone"/>
+                        <TextView
                             android:id="@+id/titleLabel"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:textAppearance="@style/TextAppearance.TitleLarge"/>
+                        <TextView
+                            android:id="@+id/titleLabelResurvey"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="@style/TextAppearance.TitleLarge.Hint"
+                            android:visibility="gone"/>
 
                         <TextView
                             android:id="@+id/titleHintLabel"

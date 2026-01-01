@@ -168,11 +168,14 @@ abstract class AbstractQuestForm :
 
     protected fun setTitle(text: CharSequence?) {
         binding.titleLabel.text = text
+        binding.titleLabelResurvey.text = "For: $text"
     }
 
     protected fun setResurvey(resurvey: Boolean) {
         binding.resurveyLabel.text = "Is this still correct?"
-        binding.resurveySpeechBubbleTitleContainer.isVisible = resurvey
+        binding.resurveyLabel.isVisible = resurvey
+        binding.titleLabelResurvey.isVisible = resurvey
+        binding.titleLabel.isVisible =!resurvey
     }
 
     protected fun setTitleHintLabel(text: CharSequence?) {
