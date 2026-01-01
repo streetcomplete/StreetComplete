@@ -1,23 +1,16 @@
 package de.westnordost.streetcomplete.ui.common.opening_hours
 
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.Icon
-import androidx.compose.material.IconButton
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.ic_delete_24
-import de.westnordost.streetcomplete.resources.quest_openingHours_delete
 import de.westnordost.streetcomplete.resources.quest_openingHours_off_day
-import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
 /** Just a text "off day" with a delete button... */
@@ -28,12 +21,11 @@ fun OffDayRow(
     enabled: Boolean = true,
 ) {
     Row(
-        horizontalArrangement = Arrangement.spacedBy(4.dp),
         verticalAlignment = Alignment.CenterVertically,
         modifier = modifier
     ) {
         Box(
-            modifier = modifier
+            modifier = Modifier
                 .defaultMinSize(minHeight = 48.dp)
                 .padding(8.dp),
             contentAlignment = Alignment.CenterStart
@@ -42,15 +34,9 @@ fun OffDayRow(
                 text = stringResource(Res.string.quest_openingHours_off_day),
             )
         }
-        if (enabled) {
-            IconButton(
-                onClick = onClickDelete
-            ) {
-                Icon(
-                    painter = painterResource(Res.drawable.ic_delete_24),
-                    contentDescription = stringResource(Res.string.quest_openingHours_delete)
-                )
-            }
-        }
+        DeleteRowButton(
+            onClick = onClickDelete,
+            visible = enabled,
+        )
     }
 }

@@ -106,11 +106,11 @@ fun WeekdayAndHolidaySelectDialog(
                 Text(stringResource(Res.string.cancel))
             }
             TextButton(onClick = {
-                onDismissRequest()
                 onSelected(
                     weekdaySelection.toWeekdaysSelectors(),
                     holidaySelection.toList()
                 )
+                onDismissRequest()
             }) {
                 Text(stringResource(Res.string.ok))
             }
