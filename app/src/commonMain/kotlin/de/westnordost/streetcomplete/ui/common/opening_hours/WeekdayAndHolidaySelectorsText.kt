@@ -104,10 +104,10 @@ private fun getWeekdaysAndHolidaysString(
         if (sb.isNotEmpty()) {
             sb.append(enumerationSeparator(locale))
         }
-        holidaysStrings.joinToLocalizedString(
+        sb.append(holidaysStrings.joinToLocalizedString(
             locale = locale,
             layoutDirection = layoutDirection,
-        )
+        ))
     }
     return sb.toString()
 }

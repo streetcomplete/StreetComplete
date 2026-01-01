@@ -4,7 +4,6 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.material.DropdownMenu
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -51,7 +50,10 @@ fun AddOpeningHoursButton(
             timeMode = timeMode,
             addMonthsEnabledWhenEmpty = addMonthsEnabledWhenEmpty,
             onDismissRequest = { showAddDropdown = false },
-            onSelect = { addOpeningHoursRequest = it }
+            onSelect = {
+                showAddDropdown = false
+                addOpeningHoursRequest = it
+            }
         )
     }
 
@@ -82,13 +84,6 @@ private fun SelectOpeningHoursDropdown(
 ) {
     val showAddTimes = openingHours.monthsList.lastOrNull()?.weekdaysList?.lastOrNull()?.times is Times
     val showAddMonths = addMonthsEnabledWhenEmpty || openingHours.monthsList.any { it.selectors.isNotEmpty() }
-
-    // don't even show dropdown menu when one can only add weekdays
-    if (expanded && !showAddTimes && !showAddMonths) {
-        LaunchedEffect(expanded && !showAddTimes && !showAddMonths) {
-            onSelect(AddOpeningHoursRequest.SelectWeekdays)
-        }
-    }
 
     DropdownMenu(
         expanded = expanded,

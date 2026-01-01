@@ -115,11 +115,9 @@ class AddOpeningHoursForm : AbstractOsmQuestForm<OpeningHoursAnswer>() {
                     initialMonths = emptyList(),
                     onSelected = { newMonthsSelectorList ->
                         val oh = openingHours.value
-                        openingHours.value = oh.copy(
-                            monthsList = oh.monthsList.toMutableList().also {
-                                it[0] = oh.monthsList[0].copy(selectors = newMonthsSelectorList)
-                            }
-                        )
+                        val newMonthsList = oh.monthsList.toMutableList()
+                        newMonthsList[0] = newMonthsList[0].copy(selectors = newMonthsSelectorList)
+                        openingHours.value = oh.copy(monthsList = newMonthsList)
                     },
                     locale = countryInfo.userPreferredLocale,
                     userLocale = Locale.current,

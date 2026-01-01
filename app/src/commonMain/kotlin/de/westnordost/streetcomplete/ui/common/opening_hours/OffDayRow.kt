@@ -26,6 +26,7 @@ fun OffDayRow(
     ) {
         Box(
             modifier = Modifier
+                .weight(1f)
                 .defaultMinSize(minHeight = 48.dp)
                 .padding(8.dp),
             contentAlignment = Alignment.CenterStart

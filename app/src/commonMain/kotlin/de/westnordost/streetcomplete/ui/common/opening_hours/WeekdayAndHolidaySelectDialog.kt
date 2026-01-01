@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.ui.common.opening_hours
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
@@ -69,7 +70,8 @@ fun WeekdayAndHolidaySelectDialog(
                     Modifier
                         .fadingVerticalScrollEdges(scrollState, 32.dp)
                         .padding(horizontal = 24.dp)
-                        .verticalScroll(scrollState)
+                        .verticalScroll(scrollState),
+                    verticalArrangement = Arrangement.spacedBy(4.dp)
                 ) {
                     CheckboxList(
                         options = weekdayItems,
