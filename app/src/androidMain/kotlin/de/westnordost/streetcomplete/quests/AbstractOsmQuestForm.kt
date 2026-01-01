@@ -117,6 +117,10 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
         super.onViewCreated(view, savedInstanceState)
 
         setTitle(getString(osmElementQuestType.getTitle(element.tags)))
+        if (osmElementQuestType.isResurvey(element.tags)) {
+        }
+
+        setResurvey(osmElementQuestType.isResurvey(element.tags))
         setTitleHintLabel(getNameAndLocationSpanned(element, resources, featureDictionary))
         setObjNote(element.tags["note"])
     }

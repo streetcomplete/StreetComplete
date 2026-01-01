@@ -61,6 +61,8 @@ interface OsmElementQuestType<T> : QuestType, ElementEditType {
      *  specified [tags] */
     fun getTitle(tags: Map<String, String>): Int
 
+    fun isResurvey(tags: Map<String, String>): Boolean = false
+
     /** All elements within the given map data that are applicable to this quest type, i.e. for
      *  which a quest of this type should be created.
      *

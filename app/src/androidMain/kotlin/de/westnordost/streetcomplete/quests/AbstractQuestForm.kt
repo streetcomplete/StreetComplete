@@ -10,6 +10,7 @@ import androidx.compose.runtime.MutableFloatState
 import androidx.compose.runtime.mutableFloatStateOf
 import androidx.core.os.bundleOf
 import androidx.core.view.isGone
+import androidx.core.view.isVisible
 import androidx.core.widget.NestedScrollView
 import androidx.viewbinding.ViewBinding
 import de.westnordost.countryboundaries.CountryBoundaries
@@ -117,9 +118,7 @@ abstract class AbstractQuestForm :
 
         // reset lazy field
         _countryInfo = null
-
     }
-
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         _binding = FragmentQuestAnswerBinding.inflate(inflater, container, false)
@@ -169,6 +168,11 @@ abstract class AbstractQuestForm :
 
     protected fun setTitle(text: CharSequence?) {
         binding.titleLabel.text = text
+    }
+
+    protected fun setResurvey(resurvey: Boolean) {
+        binding.resurveyLabel.text = "Is this still correct?"
+        binding.resurveySpeechBubbleTitleContainer.isVisible = resurvey
     }
 
     protected fun setTitleHintLabel(text: CharSequence?) {

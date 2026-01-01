@@ -28,6 +28,10 @@ class AddBicycleRepairStationServices : OsmFilterQuestType<Set<BicycleRepairStat
         and access !~ private|no
     """
 
+    override fun isResurvey(tags: Map<String, String>): Boolean{
+        return tags.keys.any { it.startsWith("service:bicycle:") }
+    }
+
     override val changesetComment = "Specify features of bicycle repair stations"
     override val wikiLink = "Tag:amenity=bicycle_repair_station"
     override val icon = R.drawable.quest_bicycle_repair_amenity
@@ -35,10 +39,7 @@ class AddBicycleRepairStationServices : OsmFilterQuestType<Set<BicycleRepairStat
     override val achievements = listOf(BICYCLIST)
 
     override fun getTitle(tags: Map<String, String>): Int {
-        if (tags.keys.none { it.startsWith("service:bicycle:") }) {
-            return R.string.quest_bicycle_repair_station_services_title
-        }
-        return R.string.quest_bicycle_repair_station_services_resurvey_title
+        return R.string.quest_bicycle_repair_station_services_title
     }
 
     override fun createForm() = AddBicycleRepairStationServicesForm()
