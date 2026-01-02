@@ -1,22 +1,21 @@
 package de.westnordost.streetcomplete.ui.common.opening_hours
 
-import androidx.compose.animation.AnimatedContent
-import androidx.compose.animation.slideInHorizontally
-import androidx.compose.animation.slideOutHorizontally
-import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.selection.toggleable
-import androidx.compose.material.AlertDialog
 import androidx.compose.material.Checkbox
+import androidx.compose.material.ContentAlpha
 import androidx.compose.material.Divider
-import androidx.compose.material.IconButton
+import androidx.compose.material.LocalContentAlpha
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.ProvideTextStyle
 import androidx.compose.material.Text
 import androidx.compose.material.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
@@ -25,6 +24,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.unit.dp
 import de.westnordost.osm_opening_hours.model.ClockTime
@@ -36,9 +36,10 @@ import de.westnordost.osm_opening_hours.model.TimeSpansSelector
 import de.westnordost.osm_opening_hours.model.VariableTime
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.*
-import de.westnordost.streetcomplete.ui.common.BackIcon
 import de.westnordost.streetcomplete.ui.common.TimePicker
+import de.westnordost.streetcomplete.ui.common.dialogs.ScrollableAlertDialog
 import de.westnordost.streetcomplete.ui.common.rememberTimePickerState
+import de.westnordost.streetcomplete.ui.theme.largeInput
 import de.westnordost.streetcomplete.util.locale.TimeFormatElements
 import org.jetbrains.compose.resources.stringResource
 
@@ -77,58 +78,46 @@ fun TimeSpansSelectorSelectDialog(
         onSelect(timeSpanSelector)
     }
 
-    AlertDialog(
+    ScrollableAlertDialog(
         onDismissRequest = onDismissRequest,
         modifier = modifier,
         title = {
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier.fillMaxWidth().defaultMinSize(minHeight = 48.dp)
-            ) {
-                if (step == 0) {
-                    Text(stringResource(Res.string.quest_openingHours_start_time))
-                } else {
-                    IconButton(onClick = { step = 0 }) { BackIcon() }
-                    Text(stringResource(Res.string.quest_openingHours_end_time))
-                }
-            }
+            Text(stringResource(
+                if (step == 0) Res.string.quest_openingHours_start_time
+                else Res.string.quest_openingHours_end_time
+            ))
         },
-        text = {
-            Column {
-                AnimatedContent(
-                    targetState = step,
-                    transitionSpec = {
-                        val dir = if (step == 1) 1 else - 1
-                        slideInHorizontally { it * dir } togetherWith slideOutHorizontally { -it * dir }
-                    }
-                ) { step ->
-                    if (step == 0) {
+        content = {
+            CompositionLocalProvider(LocalContentAlpha provides ContentAlpha.high) {
+                Column(Modifier.padding(horizontal = 24.dp).fillMaxWidth()) {
+                    val timePickerState = if (step == 0) startTimePickerState else endTimePickerState
+
+                    ProvideTextStyle(MaterialTheme.typography.largeInput) {
                         TimePicker(
-                            state = startTimePickerState,
+                            state = timePickerState,
                             timeFormatElements = timeFormatElements,
-                            modifier = Modifier.align(Alignment.CenterHorizontally)
+                            modifier = Modifier.align(Alignment.CenterHorizontally),
+                            visibleAdjacentItems = 2,
                         )
-                    } else {
-                        Column {
-                            TimePicker(
-                                state = endTimePickerState,
-                                timeFormatElements = timeFormatElements,
-                                modifier = Modifier.align(Alignment.CenterHorizontally)
+                    }
+
+                    if (step > 0) {
+                        Divider()
+
+                        Row(
+                            verticalAlignment = Alignment.CenterVertically,
+                            modifier = Modifier
+                                .clip(MaterialTheme.shapes.small)
+                                .toggleable(openEnd) { openEnd = it }
+                        ) {
+                            Checkbox(
+                                checked = openEnd,
+                                onCheckedChange = { openEnd = it },
                             )
-
-                            Divider()
-
-                            Row(
-                                verticalAlignment = Alignment.CenterVertically,
-                                horizontalArrangement = Arrangement.spacedBy(4.dp),
-                                modifier = Modifier.toggleable(openEnd) { openEnd = it }
-                            ) {
-                                Checkbox(
-                                    checked = openEnd,
-                                    onCheckedChange = { openEnd = it },
-                                )
-                                Text(stringResource(Res.string.quest_openingHours_no_fixed_end))
-                            }
+                            Text(
+                                text = stringResource(Res.string.quest_openingHours_no_fixed_end),
+                                modifier = Modifier.fillMaxWidth()
+                            )
                         }
                     }
                 }
@@ -139,17 +128,14 @@ fun TimeSpansSelectorSelectDialog(
                 Text(stringResource(Res.string.cancel))
             }
             if (step == 0) {
-                TextButton(
-                    onClick = { step = 1 }
-                ) {
+                TextButton(onClick = { step = 1 }) {
                     Text(stringResource(Res.string.next))
                 }
             } else {
-                TextButton(
-                    onClick = {
-                        confirm()
-                        onDismissRequest()
-                    }
+                TextButton(onClick = { step = 0 }) {
+                    Text(stringResource(Res.string.action_back))
+                }
+                TextButton(onClick = { confirm(); onDismissRequest() }
                 ) {
                     Text(stringResource(Res.string.ok))
                 }

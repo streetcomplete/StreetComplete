@@ -50,7 +50,7 @@ fun WeekdaysColumn(
                             it[index] = newWeekdays
                         })
                     },
-                    modifier = Modifier.weight(2f),
+                    modifier = Modifier.weight(1f),
                     locale = locale,
                     userLocale = userLocale,
                     enabled = enabled,
@@ -63,7 +63,7 @@ fun WeekdaysColumn(
                                 newWeekdaysList.removeAt(index)
                                 onChange(newWeekdaysList)
                             },
-                            modifier = Modifier.weight(3f),
+                            modifier = Modifier.weight(2f),
                             enabled = enabled,
                         )
                     }
@@ -80,7 +80,7 @@ fun WeekdaysColumn(
                                 }
                                 onChange(newWeekdaysList)
                             },
-                            modifier = Modifier.weight(3f),
+                            modifier = Modifier.weight(2f),
                             locale = locale,
                             enabled = enabled,
                         )

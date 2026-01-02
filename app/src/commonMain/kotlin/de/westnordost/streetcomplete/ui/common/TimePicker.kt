@@ -74,6 +74,7 @@ fun TimePicker(
     state: TimePickerState,
     timeFormatElements: TimeFormatElements,
     modifier: Modifier = Modifier,
+    visibleAdjacentItems: Int = 1,
 ) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
@@ -87,25 +88,29 @@ fun TimePicker(
             WheelPicker(
                 items = listOf(timeFormatElements.clock12.am, timeFormatElements.clock12.pm),
                 state = state.amPmPickerState,
-                content = { Text(it) }
+                content = { Text(it) },
+                visibleAdjacentItems = visibleAdjacentItems
             )
         }
         WheelPicker(
             items = state.selectableHours,
             state = state.hoursPickerState,
-            content = { Text(it.toString().padStart(2, timeFormatElements.zero)) }
+            content = { Text(it.toString().padStart(2, ' ')) },
+            visibleAdjacentItems = visibleAdjacentItems
         )
         Text(timeFormatElements.hourSeparator)
         WheelPicker(
             items = state.selectableMinutes,
             state = state.minutesPickerState,
-            content = { Text(it.toString().padStart(2, timeFormatElements.zero)) }
+            content = { Text(it.toString().padStart(2, timeFormatElements.zero)) },
+            visibleAdjacentItems = visibleAdjacentItems
         )
         if (timeFormatElements.clock12 != null && !timeFormatElements.clock12.isInFront) {
             WheelPicker(
                 items = listOf(timeFormatElements.clock12.am, timeFormatElements.clock12.pm),
                 state = state.amPmPickerState,
-                content = { Text(it) }
+                content = { Text(it) },
+                visibleAdjacentItems = visibleAdjacentItems
             )
         }
         if (timeFormatElements.after.isNotEmpty()) {
