@@ -14,11 +14,7 @@ import de.westnordost.streetcomplete.resources.quest_board_type_rules
 
 import org.jetbrains.compose.resources.StringResource
 
-sealed interface BoardTypeAnswer {
-    data object NoBoardJustMap : BoardTypeAnswer
-}
-
-enum class BoardType(val osmValue: String) : BoardTypeAnswer {
+enum class BoardType(val osmValue: String) {
     HISTORY("history"),
     GEOLOGY("geology"),
     PLANTS("plants"),

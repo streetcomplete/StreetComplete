@@ -11,8 +11,10 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.RARE
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.osm.updateWithCheckDate
+import de.westnordost.streetcomplete.quests.board_type.BoardType.*
 
-class AddBoardType : OsmFilterQuestType<BoardTypeAnswer>(), AndroidQuest {
+class AddBoardType : OsmFilterQuestType<Set<BoardType>>(), AndroidQuest {
 
     override val elementFilter = """
         nodes with
@@ -34,11 +36,13 @@ class AddBoardType : OsmFilterQuestType<BoardTypeAnswer>(), AndroidQuest {
 
     override fun createForm() = AddBoardTypeForm()
 
-    override fun applyAnswerTo(answer: BoardTypeAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
-        if (answer is BoardTypeAnswer.NoBoardJustMap) {
+    override fun applyAnswerTo(answer: Set<BoardType>, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
+        if (answer.isEmpty()) {
+            // Quest cannot be closed with no type selected. This only gets called in confirmOnMap
             tags["information"] = "map"
-        } else if (answer is BoardType) {
-            tags["board_type"] = answer.osmValue
+        } else {
+            val osmValue = answer.joinToString(";") { it.osmValue }
+            tags.updateWithCheckDate("board_type", osmValue)
         }
     }
 }
