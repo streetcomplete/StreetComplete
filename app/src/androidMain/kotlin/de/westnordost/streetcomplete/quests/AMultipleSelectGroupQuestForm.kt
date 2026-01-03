@@ -59,6 +59,7 @@ abstract class AMultipleSelectGroupQuestForm<T, I : T> : AbstractOsmQuestForm<Se
                             selectedOptions.value + option
                         }
                         checkIsFormComplete()
+                        updateButtonPanel()
                     },
                     selectedOptions = selectedOptions.value,
                     itemContent = { ItemContent(it) }
@@ -71,9 +72,12 @@ abstract class AMultipleSelectGroupQuestForm<T, I : T> : AbstractOsmQuestForm<Se
         applyAnswer(selectedOptions.value)
     }
 
-    override val buttonPanelAnswers = listOf(
-        AnswerItem(R.string.overlay_none) { applyAnswer(emptySet()) }
-    )
+    override val buttonPanelAnswers: List<AnswerItem> get() =
+        if (selectedOptions.value.isEmpty()) {
+            listOf(AnswerItem(R.string.overlay_none) { applyAnswer(emptySet()) })
+        } else {
+            emptyList()
+        }
 
     override fun isFormComplete() = !selectedOptions.value.isEmpty()
 }
