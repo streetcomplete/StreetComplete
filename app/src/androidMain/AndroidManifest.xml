@@ -99,6 +99,12 @@
             android:parentActivityName="de.westnordost.streetcomplete.screens.main.MainActivity"
             android:configChanges="density|fontScale|keyboard|keyboardHidden|layoutDirection|locale|mcc|mnc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|touchscreen|uiMode"
             />
+        <activity
+            android:name="de.westnordost.streetcomplete.quests.opening_hours.ocr.OpeningHoursOcrActivity"
+            android:label="@string/quest_openingHours_scan_photo"
+            android:parentActivityName="de.westnordost.streetcomplete.screens.main.MainActivity"
+            android:configChanges="density|fontScale|keyboard|keyboardHidden|layoutDirection|locale|mcc|mnc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|touchscreen|uiMode"
+            />
         <!-- For WorkManager -->
         <service
             android:name="androidx.work.impl.foreground.SystemForegroundService"

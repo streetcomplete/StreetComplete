@@ -214,6 +214,9 @@ kotlin {
 
                 // map and location
                 implementation("org.maplibre.gl:android-sdk:12.1.0")
+
+                // OCR for opening hours photo scanning
+                implementation("com.google.mlkit:text-recognition:16.0.1")
             }
         }
         iosMain {
