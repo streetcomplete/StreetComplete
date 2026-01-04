@@ -10,8 +10,6 @@ import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.saveable.Saver
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalLayoutDirection
@@ -55,14 +53,8 @@ private fun OpeningHoursOcrNavHost(
     val navController = rememberNavController()
     val dir = LocalLayoutDirection.current.dir
 
-    // Custom saver for OcrFlowState (Parcelable)
-    val flowStateSaver = Saver<OcrFlowState, OcrFlowState>(
-        save = { it },
-        restore = { it }
-    )
-
-    // Shared state across screens
-    var flowState by rememberSaveable(saver = flowStateSaver) { mutableStateOf(OcrFlowState()) }
+    // Shared state across screens - OcrFlowState is Parcelable so rememberSaveable handles it automatically
+    var flowState by rememberSaveable { mutableStateOf(OcrFlowState()) }
     var capturedPhotoPath by rememberSaveable { mutableStateOf<String?>(null) }
 
     fun goBack() {

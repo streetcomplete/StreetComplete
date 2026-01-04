@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Opening Hours OCR -->
+    <string name="quest_openingHours_scan_photo">Scan from photo</string>
+    <string name="quest_openingHours_ocr_day_grouping_title">Select day grouping</string>
+    <string name="quest_openingHours_ocr_day_grouping_description">How are the days grouped on the sign? Select the option that best matches.</string>
+    <string name="quest_openingHours_ocr_preset_same_all_days">Same hours every day (Mon-Sun)</string>
+    <string name="quest_openingHours_ocr_preset_weekdays_weekend">Weekdays / Weekend (Mon-Fri, Sat-Sun)</string>
+    <string name="quest_openingHours_ocr_preset_weekdays_sat_sun">Weekdays / Sat / Sun (Mon-Fri, Sat, Sun)</string>
+    <string name="quest_openingHours_ocr_preset_custom">Custom grouping</string>
+    <string name="quest_openingHours_ocr_custom_grouping_instructions">Tap days to select, then tap Create Group to bundle them. Repeat until all days are assigned.</string>
+    <string name="quest_openingHours_ocr_create_group">Create Group</string>
+    <string name="quest_openingHours_ocr_created_groups">Created groups:</string>
+    <string name="quest_openingHours_ocr_remove">Remove</string>
+    <string name="quest_openingHours_ocr_remaining_days">Remaining: %s</string>
+    <string name="quest_openingHours_ocr_continue">Continue</string>
+    <string name="quest_openingHours_ocr_annotate_title">Highlight times</string>
+    <string name="quest_openingHours_ocr_retake">Retake photo</string>
+    <string name="quest_openingHours_ocr_highlight_mode">Highlight:</string>
+    <string name="quest_openingHours_ocr_open_time">Open</string>
+    <string name="quest_openingHours_ocr_close_time">Close</string>
+    <string name="quest_openingHours_ocr_clear">Clear</string>
+    <string name="quest_openingHours_ocr_next">Next</string>
+    <string name="quest_openingHours_ocr_done">Done</string>
+    <string name="quest_openingHours_ocr_long_press_hint">Or skip remaining:</string>
+    <string name="quest_openingHours_ocr_skip_remaining">Skip to review</string>
+    <string name="quest_openingHours_ocr_waiting_for_photo">Waiting for photo…</string>
+    <string name="quest_openingHours_ocr_verify_title">Verify hours</string>
+    <string name="quest_openingHours_ocr_verify_description">Check and correct the extracted hours below.</string>
+    <string name="quest_openingHours_ocr_12hr_mode">12-hour</string>
+    <string name="quest_openingHours_ocr_24hr_mode">24-hour</string>
+    <string name="quest_openingHours_ocr_closed">Closed</string>
+    <string name="quest_openingHours_ocr_open_label">Open:</string>
+    <string name="quest_openingHours_ocr_close_label">Close:</string>
+    <string name="quest_openingHours_ocr_apply">Apply</string>
+</resources>
