@@ -36,6 +36,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -365,8 +366,8 @@ private fun TimePickerRow(
             Button(
                 onClick = { onTimeChange(hour, minute, !isAm) },
                 colors = ButtonDefaults.buttonColors(
-                    backgroundColor = MaterialTheme.colors.surface,
-                    contentColor = MaterialTheme.colors.primary
+                    backgroundColor = MaterialTheme.colors.primary,
+                    contentColor = Color.White
                 ),
                 modifier = Modifier.width(60.dp)
             ) {
