@@ -78,7 +78,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.io.File
 
-private enum class AnnotationMode { OPEN, CLOSE }
+private enum class AnnotationMode { OPEN, CLOSE, CLOSED }
 
 private data class StrokePoint(val x: Float, val y: Float)
 
@@ -120,8 +120,11 @@ fun PhotoAnnotationScreen(
     var photoFile by remember { mutableStateOf<File?>(null) }
     var canvasSize by remember { mutableStateOf(IntSize.Zero) }
 
-    // Current annotation mode (open = green, close = red)
+    // Current annotation mode (open = green, close = red, closed = gray/marking day as closed)
     var annotationMode by rememberSaveable { mutableStateOf(AnnotationMode.OPEN) }
+
+    // Whether the current day group is marked as closed (no hours, just "off")
+    var isMarkedClosed by rememberSaveable { mutableStateOf(false) }
 
     // Current strokes for open and close regions
     val openStrokes = remember { mutableStateListOf<StrokePoint>() }
@@ -229,27 +232,37 @@ fun PhotoAnnotationScreen(
         val loadedBitmap = bitmap ?: return
         val currentGroup = currentDayGroup ?: return
 
-        val openRegion = calculateBoundingBox(openStrokes.toList(), loadedBitmap.width, loadedBitmap.height)
-        val closeRegion = calculateBoundingBox(closeStrokes.toList(), loadedBitmap.width, loadedBitmap.height)
-
         scope.launch {
-            // Run OCR on highlighted regions
-            val openTimeRaw = openRegion?.let {
-                ocrProcessor.extractNumbersFromRegion(loadedBitmap, it)
-            }
-            val closeTimeRaw = closeRegion?.let {
-                ocrProcessor.extractNumbersFromRegion(loadedBitmap, it)
+            val currentAnnotation = if (isMarkedClosed) {
+                // Day is marked as closed - no OCR needed
+                DayAnnotation(
+                    dayGroup = currentGroup,
+                    isClosed = true
+                )
+            } else {
+                // Run OCR on highlighted regions
+                val openRegion = calculateBoundingBox(openStrokes.toList(), loadedBitmap.width, loadedBitmap.height)
+                val closeRegion = calculateBoundingBox(closeStrokes.toList(), loadedBitmap.width, loadedBitmap.height)
+
+                val openTimeRaw = openRegion?.let {
+                    ocrProcessor.extractNumbersFromRegion(loadedBitmap, it)
+                }
+                val closeTimeRaw = closeRegion?.let {
+                    ocrProcessor.extractNumbersFromRegion(loadedBitmap, it)
+                }
+
+                DayAnnotation(
+                    dayGroup = currentGroup,
+                    openRegion = openRegion,
+                    closeRegion = closeRegion,
+                    openTimeRaw = openTimeRaw,
+                    closeTimeRaw = closeTimeRaw,
+                    isClosed = false
+                )
             }
 
             // Update annotation for current group
             val updatedAnnotations = state.annotations.toMutableList()
-            val currentAnnotation = DayAnnotation(
-                dayGroup = currentGroup,
-                openRegion = openRegion,
-                closeRegion = closeRegion,
-                openTimeRaw = openTimeRaw,
-                closeTimeRaw = closeTimeRaw
-            )
 
             if (state.currentGroupIndex < updatedAnnotations.size) {
                 updatedAnnotations[state.currentGroupIndex] = currentAnnotation
@@ -269,9 +282,10 @@ fun PhotoAnnotationScreen(
                         currentGroupIndex = state.currentGroupIndex + 1
                     )
                 )
-                // Clear strokes for next group
+                // Clear strokes for next group and reset closed state
                 openStrokes.clear()
                 closeStrokes.clear()
+                isMarkedClosed = false
                 annotationMode = AnnotationMode.OPEN
             }
         }
@@ -332,6 +346,7 @@ fun PhotoAnnotationScreen(
                                         when (annotationMode) {
                                             AnnotationMode.OPEN -> openStrokes.add(point)
                                             AnnotationMode.CLOSE -> closeStrokes.add(point)
+                                            AnnotationMode.CLOSED -> { /* No strokes in closed mode */ }
                                         }
                                     }
                                 )
@@ -415,22 +430,25 @@ fun PhotoAnnotationScreen(
 
                         Spacer(modifier = Modifier.height(8.dp))
 
-                        // Open/Close toggle and Clear buttons in a row
+                        // Open/Close/Closed toggle buttons in a row
                         Row(
                             modifier = Modifier.fillMaxWidth(),
                             horizontalArrangement = Arrangement.spacedBy(8.dp)
                         ) {
                             // Open time button (green)
                             Button(
-                                onClick = { annotationMode = AnnotationMode.OPEN },
+                                onClick = {
+                                    annotationMode = AnnotationMode.OPEN
+                                    isMarkedClosed = false
+                                },
                                 modifier = Modifier.weight(1f),
                                 colors = ButtonDefaults.buttonColors(
-                                    backgroundColor = if (annotationMode == AnnotationMode.OPEN) {
+                                    backgroundColor = if (annotationMode == AnnotationMode.OPEN && !isMarkedClosed) {
                                         TrafficSignColor.Green
                                     } else {
                                         MaterialTheme.colors.surface
                                     },
-                                    contentColor = if (annotationMode == AnnotationMode.OPEN) {
+                                    contentColor = if (annotationMode == AnnotationMode.OPEN && !isMarkedClosed) {
                                         Color.White
                                     } else {
                                         MaterialTheme.colors.onSurface
@@ -442,15 +460,18 @@ fun PhotoAnnotationScreen(
 
                             // Close time button (red)
                             Button(
-                                onClick = { annotationMode = AnnotationMode.CLOSE },
+                                onClick = {
+                                    annotationMode = AnnotationMode.CLOSE
+                                    isMarkedClosed = false
+                                },
                                 modifier = Modifier.weight(1f),
                                 colors = ButtonDefaults.buttonColors(
-                                    backgroundColor = if (annotationMode == AnnotationMode.CLOSE) {
+                                    backgroundColor = if (annotationMode == AnnotationMode.CLOSE && !isMarkedClosed) {
                                         TrafficSignColor.Red
                                     } else {
                                         MaterialTheme.colors.surface
                                     },
-                                    contentColor = if (annotationMode == AnnotationMode.CLOSE) {
+                                    contentColor = if (annotationMode == AnnotationMode.CLOSE && !isMarkedClosed) {
                                         Color.White
                                     } else {
                                         MaterialTheme.colors.onSurface
@@ -460,32 +481,61 @@ fun PhotoAnnotationScreen(
                                 Text(stringResource(R.string.quest_openingHours_ocr_close_time))
                             }
 
-                            // Clear button
+                            // Closed button (gray) - marks day as closed
                             Button(
                                 onClick = {
-                                    when (annotationMode) {
-                                        AnnotationMode.OPEN -> openStrokes.clear()
-                                        AnnotationMode.CLOSE -> closeStrokes.clear()
-                                    }
+                                    annotationMode = AnnotationMode.CLOSED
+                                    isMarkedClosed = true
+                                    // Clear any strokes since day is closed
+                                    openStrokes.clear()
+                                    closeStrokes.clear()
                                 },
-                                colors = ButtonDefaults.outlinedButtonColors()
+                                modifier = Modifier.weight(1f),
+                                colors = ButtonDefaults.buttonColors(
+                                    backgroundColor = if (isMarkedClosed) {
+                                        Color.DarkGray
+                                    } else {
+                                        MaterialTheme.colors.surface
+                                    },
+                                    contentColor = if (isMarkedClosed) {
+                                        Color.White
+                                    } else {
+                                        MaterialTheme.colors.onSurface
+                                    }
+                                )
                             ) {
-                                Text(stringResource(R.string.quest_openingHours_ocr_clear))
+                                Text(stringResource(R.string.quest_openingHours_ocr_closed))
                             }
                         }
 
                         Spacer(modifier = Modifier.height(8.dp))
 
-                        // Next/Done and Skip buttons
+                        // Clear and Next/Done buttons
                         Row(
                             modifier = Modifier.fillMaxWidth(),
                             horizontalArrangement = Arrangement.spacedBy(8.dp)
                         ) {
+                            // Clear button (only show when not in closed mode)
+                            if (!isMarkedClosed) {
+                                Button(
+                                    onClick = {
+                                        when (annotationMode) {
+                                            AnnotationMode.OPEN -> openStrokes.clear()
+                                            AnnotationMode.CLOSE -> closeStrokes.clear()
+                                            AnnotationMode.CLOSED -> { /* No strokes to clear */ }
+                                        }
+                                    },
+                                    colors = ButtonDefaults.outlinedButtonColors()
+                                ) {
+                                    Text(stringResource(R.string.quest_openingHours_ocr_clear))
+                                }
+                            }
+
                             // Next/Done button
                             Button(
                                 onClick = { confirmCurrentAnnotation(skipRemaining = false) },
                                 modifier = Modifier.weight(1f),
-                                enabled = openStrokes.isNotEmpty() || closeStrokes.isNotEmpty()
+                                enabled = isMarkedClosed || openStrokes.isNotEmpty() || closeStrokes.isNotEmpty()
                             ) {
                                 Icon(painterResource(Res.drawable.ic_check_circle_24), contentDescription = null)
                                 Spacer(modifier = Modifier.width(4.dp))

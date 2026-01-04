@@ -110,6 +110,8 @@ data class DayAnnotation(
     val openTimeRaw: String? = null,
     /** Raw OCR result for close time (numbers only) */
     val closeTimeRaw: String? = null,
+    /** Whether this day group is marked as closed (no hours) */
+    val isClosed: Boolean = false,
 ) : Parcelable
 
 /**

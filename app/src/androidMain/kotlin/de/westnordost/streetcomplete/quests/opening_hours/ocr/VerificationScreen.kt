@@ -71,13 +71,21 @@ fun VerificationScreen(
                 val annotation = state.annotations.find { it.dayGroup == dayGroup }
                 val ocrProcessor = OcrProcessor()
 
-                // Parse OCR results
-                val openParsed = annotation?.openTimeRaw?.let {
-                    ocrProcessor.parseTimeNumbers(it, isAm = true, is12HourMode = true)
-                }
-                val closeParsed = annotation?.closeTimeRaw?.let {
-                    ocrProcessor.parseTimeNumbers(it, isAm = false, is12HourMode = true)
-                }
+                // Check if annotation is marked as closed
+                val isClosed = annotation?.isClosed == true
+
+                // Parse OCR results (only if not closed)
+                val openParsed = if (!isClosed) {
+                    annotation?.openTimeRaw?.let {
+                        ocrProcessor.parseTimeNumbers(it, isAm = true, is12HourMode = true)
+                    }
+                } else null
+
+                val closeParsed = if (!isClosed) {
+                    annotation?.closeTimeRaw?.let {
+                        ocrProcessor.parseTimeNumbers(it, isAm = false, is12HourMode = true)
+                    }
+                } else null
 
                 EditableHours(
                     dayGroup = dayGroup,
@@ -87,7 +95,7 @@ fun VerificationScreen(
                     closeMinute = closeParsed?.second ?: 0,
                     isAm = true,
                     isClosePm = true,
-                    isClosed = annotation?.openTimeRaw == null && annotation?.closeTimeRaw == null
+                    isClosed = isClosed
                 )
             })
         }

@@ -30,6 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:padding="12dp"
+            android:backgroundTint="?colorPrimary"
             android:contentDescription="@string/quest_openingHours_scan_photo"
             style="@style/Widget.MaterialComponents.Button.UnelevatedButton"/>
 
