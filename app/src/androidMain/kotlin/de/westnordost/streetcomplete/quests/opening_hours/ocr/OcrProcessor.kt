@@ -5,26 +5,44 @@ import android.graphics.RectF
 import com.google.mlkit.vision.common.InputImage
 import com.google.mlkit.vision.text.TextRecognition
 import com.google.mlkit.vision.text.latin.TextRecognizerOptions
-import kotlinx.coroutines.tasks.await
+import kotlinx.coroutines.suspendCancellableCoroutine
+import kotlin.coroutines.resume
+import kotlin.coroutines.resumeWithException
 import kotlin.math.max
 import kotlin.math.min
 
 /**
- * Processes images using ML Kit OCR to extract text from highlighted regions.
- * Filters results to only return numeric characters.
+ * Processes images using ML Kit OCR to extract time text from highlighted regions.
+ * Parses various time formats commonly found on business hour signs.
  */
 class OcrProcessor {
 
     private val recognizer = TextRecognition.getClient(TextRecognizerOptions.DEFAULT_OPTIONS)
 
+    // Regex patterns for time formats
+    private val timePatterns = listOf(
+        // 9:00, 09:00, 9:30
+        Regex("""(\d{1,2}):(\d{2})"""),
+        // 9.00, 09.00
+        Regex("""(\d{1,2})\.(\d{2})"""),
+        // 9AM, 9PM, 9 AM, 9 PM, 9am, 9pm
+        Regex("""(\d{1,2})\s*([AaPp][Mm])"""),
+        // 9:00AM, 9:00 PM
+        Regex("""(\d{1,2}):(\d{2})\s*([AaPp][Mm])"""),
+        // Just digits like 900, 0900, 1730
+        Regex("""(\d{3,4})"""),
+        // Single or double digit hour
+        Regex("""(\d{1,2})""")
+    )
+
     /**
-     * Extracts only numeric characters from the specified region of the bitmap.
+     * Extracts time text from the specified region of the bitmap.
      *
      * @param bitmap The full image bitmap
      * @param region The bounding box region to scan (in image coordinates)
-     * @return String containing only the digits found in the region
+     * @return String containing the raw OCR text found in the region
      */
-    suspend fun extractNumbersFromRegion(bitmap: Bitmap, region: RectF): String {
+    suspend fun extractTextFromRegion(bitmap: Bitmap, region: RectF): String {
         // Ensure region is within bitmap bounds
         val left = max(0, region.left.toInt())
         val top = max(0, region.top.toInt())
@@ -43,13 +61,120 @@ class OcrProcessor {
 
         return try {
             val inputImage = InputImage.fromBitmap(croppedBitmap, 0)
-            val result = recognizer.process(inputImage).await()
-
-            // Extract only numeric characters from the OCR result
-            result.text.filter { it.isDigit() }
+            suspendCancellableCoroutine { cont ->
+                recognizer.process(inputImage)
+                    .addOnSuccessListener { result ->
+                        cont.resume(result.text)
+                    }
+                    .addOnFailureListener { e ->
+                        cont.resume("") // Return empty on failure
+                    }
+            }
         } catch (e: Exception) {
-            // Return empty string on any error
             ""
+        }
+    }
+
+    /**
+     * Legacy method for backwards compatibility - extracts only digits.
+     */
+    suspend fun extractNumbersFromRegion(bitmap: Bitmap, region: RectF): String {
+        val text = extractTextFromRegion(bitmap, region)
+        return parseTimeFromText(text)
+    }
+
+    /**
+     * Parses time from OCR text, handling various formats.
+     * Returns a normalized string like "0900" or "1730" for easier parsing.
+     */
+    fun parseTimeFromText(text: String): String {
+        if (text.isBlank()) return ""
+
+        val normalizedText = text.trim().uppercase()
+
+        // Try to match time patterns
+        for (pattern in timePatterns) {
+            val match = pattern.find(normalizedText)
+            if (match != null) {
+                return extractTimeFromMatch(match, normalizedText)
+            }
+        }
+
+        // Fallback: just extract digits
+        return text.filter { it.isDigit() }
+    }
+
+    private fun extractTimeFromMatch(match: MatchResult, fullText: String): String {
+        val groups = match.groupValues
+
+        return when {
+            // Pattern: HH:MM AM/PM or H:MM AM/PM
+            groups.size >= 4 && groups[3].isNotEmpty() -> {
+                val hour = groups[1].toIntOrNull() ?: return groups[0].filter { it.isDigit() }
+                val minute = groups[2].toIntOrNull() ?: 0
+                val isPm = groups[3].uppercase().startsWith("P")
+                val hour24 = convertTo24Hour(hour, isPm)
+                String.format("%02d%02d", hour24, minute)
+            }
+            // Pattern: H AM/PM or HH AM/PM
+            groups.size >= 3 && groups[2].matches(Regex("[AaPp][Mm]")) -> {
+                val hour = groups[1].toIntOrNull() ?: return groups[0].filter { it.isDigit() }
+                val isPm = groups[2].uppercase().startsWith("P")
+                val hour24 = convertTo24Hour(hour, isPm)
+                String.format("%02d00", hour24)
+            }
+            // Pattern: HH:MM or H:MM (check if AM/PM follows in text)
+            groups.size >= 3 && groups[2].length == 2 -> {
+                val hour = groups[1].toIntOrNull() ?: return groups[0].filter { it.isDigit() }
+                val minute = groups[2].toIntOrNull() ?: 0
+
+                // Check if AM/PM appears after the match
+                val afterMatch = fullText.substring(match.range.last + 1).trim()
+                val isPm = afterMatch.uppercase().startsWith("P")
+                val isAm = afterMatch.uppercase().startsWith("A")
+
+                val hour24 = when {
+                    isPm -> convertTo24Hour(hour, true)
+                    isAm -> convertTo24Hour(hour, false)
+                    else -> hour // Assume 24-hour if no AM/PM
+                }
+                String.format("%02d%02d", hour24, minute)
+            }
+            // Pattern: 3-4 digit number (like 900, 0900, 1730)
+            groups.size >= 2 && groups[1].length in 3..4 -> {
+                val digits = groups[1]
+                if (digits.length == 3) {
+                    // 900 -> 09:00
+                    "0${digits[0]}${digits.substring(1)}"
+                } else {
+                    digits
+                }
+            }
+            // Pattern: 1-2 digit number (hour only)
+            groups.size >= 2 && groups[1].length in 1..2 -> {
+                val hour = groups[1].toIntOrNull() ?: return groups[1]
+
+                // Check if AM/PM appears in full text
+                val isPm = fullText.contains(Regex("[Pp][Mm]"))
+                val isAm = fullText.contains(Regex("[Aa][Mm]"))
+
+                val hour24 = when {
+                    isPm && hour < 12 -> hour + 12
+                    isAm && hour == 12 -> 0
+                    else -> hour
+                }
+                String.format("%02d00", hour24)
+            }
+            else -> groups[0].filter { it.isDigit() }
+        }
+    }
+
+    private fun convertTo24Hour(hour: Int, isPm: Boolean): Int {
+        return when {
+            hour == 12 && !isPm -> 0      // 12 AM = 00:00
+            hour == 12 && isPm -> 12      // 12 PM = 12:00
+            isPm -> hour + 12             // PM: add 12
+            else -> hour                   // AM: keep as is
         }
     }
 
@@ -120,11 +245,7 @@ class OcrProcessor {
 
         if (hour24 !in 0..23) return null
 
-        // Round minutes to nearest 0 or 30
-        val roundedMinute = if (minute < 15) 0 else if (minute < 45) 30 else 0
-        val adjustedHour = if (minute >= 45) (hour24 + 1) % 24 else hour24
-
-        return adjustedHour to roundedMinute
+        return hour24 to minute
     }
 
     /**

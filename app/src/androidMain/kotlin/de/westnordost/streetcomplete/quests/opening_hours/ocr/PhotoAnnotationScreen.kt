@@ -36,9 +36,6 @@ import androidx.compose.material.IconButton
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Check
-import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -69,7 +66,11 @@ import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
 import androidx.core.content.FileProvider
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.ic_check_circle_24
+import de.westnordost.streetcomplete.resources.ic_undo_24
 import de.westnordost.streetcomplete.ui.common.BackIcon
+import org.jetbrains.compose.resources.painterResource
 import de.westnordost.streetcomplete.ui.theme.TrafficSignColor
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import kotlinx.coroutines.Dispatchers
@@ -172,6 +173,7 @@ fun PhotoAnnotationScreen(
     }
 
     // Function to calculate bounding box from strokes
+    // Accounts for ContentScale.Fit letterboxing
     fun calculateBoundingBox(strokes: List<StrokePoint>, imageWidth: Int, imageHeight: Int): RectF? {
         if (strokes.isEmpty() || canvasSize.width == 0 || canvasSize.height == 0) return null
 
@@ -180,15 +182,45 @@ fun PhotoAnnotationScreen(
         val minY = strokes.minOf { it.y }
         val maxY = strokes.maxOf { it.y }
 
+        // Calculate how ContentScale.Fit positions the image
+        val canvasAspect = canvasSize.width.toFloat() / canvasSize.height
+        val imageAspect = imageWidth.toFloat() / imageHeight
+
+        val displayedWidth: Float
+        val displayedHeight: Float
+        val offsetX: Float
+        val offsetY: Float
+
+        if (imageAspect > canvasAspect) {
+            // Image is wider than canvas - letterbox top/bottom
+            displayedWidth = canvasSize.width.toFloat()
+            displayedHeight = canvasSize.width.toFloat() / imageAspect
+            offsetX = 0f
+            offsetY = (canvasSize.height - displayedHeight) / 2
+        } else {
+            // Image is taller than canvas - letterbox left/right
+            displayedHeight = canvasSize.height.toFloat()
+            displayedWidth = canvasSize.height.toFloat() * imageAspect
+            offsetX = (canvasSize.width - displayedWidth) / 2
+            offsetY = 0f
+        }
+
         // Convert canvas coordinates to image coordinates
-        val scaleX = imageWidth.toFloat() / canvasSize.width
-        val scaleY = imageHeight.toFloat() / canvasSize.height
+        // First, adjust for the offset (letterboxing)
+        val adjustedMinX = minX - offsetX
+        val adjustedMaxX = maxX - offsetX
+        val adjustedMinY = minY - offsetY
+        val adjustedMaxY = maxY - offsetY
+
+        // Then scale from displayed size to actual image size
+        val scaleX = imageWidth.toFloat() / displayedWidth
+        val scaleY = imageHeight.toFloat() / displayedHeight
 
         return RectF(
-            (minX * scaleX).coerceIn(0f, imageWidth.toFloat()),
-            (minY * scaleY).coerceIn(0f, imageHeight.toFloat()),
-            (maxX * scaleX).coerceIn(0f, imageWidth.toFloat()),
-            (maxY * scaleY).coerceIn(0f, imageHeight.toFloat())
+            (adjustedMinX * scaleX).coerceIn(0f, imageWidth.toFloat()),
+            (adjustedMinY * scaleY).coerceIn(0f, imageHeight.toFloat()),
+            (adjustedMaxX * scaleX).coerceIn(0f, imageWidth.toFloat()),
+            (adjustedMaxY * scaleY).coerceIn(0f, imageHeight.toFloat())
         )
     }
 
@@ -258,7 +290,7 @@ fun PhotoAnnotationScreen(
                     openStrokes.clear()
                     closeStrokes.clear()
                 }) {
-                    Icon(Icons.Default.Refresh, contentDescription = stringResource(R.string.quest_openingHours_ocr_retake))
+                    Icon(painterResource(Res.drawable.ic_undo_24), contentDescription = stringResource(R.string.quest_openingHours_ocr_retake))
                 }
             }
         )
@@ -455,7 +487,7 @@ fun PhotoAnnotationScreen(
                                 modifier = Modifier.weight(1f),
                                 enabled = openStrokes.isNotEmpty() || closeStrokes.isNotEmpty()
                             ) {
-                                Icon(Icons.Default.Check, contentDescription = null)
+                                Icon(painterResource(Res.drawable.ic_check_circle_24), contentDescription = null)
                                 Spacer(modifier = Modifier.width(4.dp))
                                 Text(
                                     if (state.isLastGroup) {
