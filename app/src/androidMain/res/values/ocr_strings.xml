@@ -24,6 +24,7 @@
     <string name="quest_openingHours_ocr_done">Done</string>
     <string name="quest_openingHours_ocr_long_press_hint">Or skip remaining:</string>
     <string name="quest_openingHours_ocr_skip_remaining">Skip to review</string>
+    <string name="quest_openingHours_ocr_skip">Skip</string>
     <string name="quest_openingHours_ocr_waiting_for_photo">Waiting for photo…</string>
     <string name="quest_openingHours_ocr_verify_title">Verify hours</string>
     <string name="quest_openingHours_ocr_verify_description">Check and correct the extracted hours below.</string>

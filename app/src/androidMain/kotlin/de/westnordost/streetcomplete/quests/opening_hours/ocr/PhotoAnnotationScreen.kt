@@ -2,8 +2,10 @@ package de.westnordost.streetcomplete.quests.opening_hours.ocr
 
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.graphics.Matrix
 import android.graphics.RectF
 import android.os.Environment
+import androidx.exifinterface.media.ExifInterface
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.Canvas
@@ -79,6 +81,27 @@ private enum class AnnotationMode { OPEN, CLOSE }
 
 private data class StrokePoint(val x: Float, val y: Float)
 
+private fun loadBitmapWithRotation(path: String): Bitmap? {
+    val bitmap = BitmapFactory.decodeFile(path) ?: return null
+    val exif = ExifInterface(path)
+    val orientation = exif.getAttributeInt(
+        ExifInterface.TAG_ORIENTATION,
+        ExifInterface.ORIENTATION_NORMAL
+    )
+    val rotation = when (orientation) {
+        ExifInterface.ORIENTATION_ROTATE_90 -> 90f
+        ExifInterface.ORIENTATION_ROTATE_180 -> 180f
+        ExifInterface.ORIENTATION_ROTATE_270 -> 270f
+        else -> 0f
+    }
+    return if (rotation != 0f) {
+        val matrix = Matrix().apply { postRotate(rotation) }
+        Bitmap.createBitmap(bitmap, 0, 0, bitmap.width, bitmap.height, matrix, true)
+    } else {
+        bitmap
+    }
+}
+
 @Composable
 fun PhotoAnnotationScreen(
     state: OcrFlowState,
@@ -103,8 +126,8 @@ fun PhotoAnnotationScreen(
     val openStrokes = remember { mutableStateListOf<StrokePoint>() }
     val closeStrokes = remember { mutableStateListOf<StrokePoint>() }
 
-    // Brush width in dp, converted to pixels for drawing
-    val brushWidthDp = 48.dp
+    // Brush width in dp, converted to pixels for drawing (smaller for precision)
+    val brushWidthDp = 12.dp
     val brushWidthPx = with(density) { brushWidthDp.toPx() }
 
     val currentDayGroup = state.currentDayGroup
@@ -118,7 +141,7 @@ fun PhotoAnnotationScreen(
             onPhotoPathChange(photoFile!!.absolutePath)
             scope.launch {
                 bitmap = withContext(Dispatchers.IO) {
-                    BitmapFactory.decodeFile(photoFile!!.absolutePath)
+                    loadBitmapWithRotation(photoFile!!.absolutePath)
                 }
             }
         }
@@ -142,7 +165,7 @@ fun PhotoAnnotationScreen(
         } else {
             scope.launch {
                 bitmap = withContext(Dispatchers.IO) {
-                    BitmapFactory.decodeFile(photoPath)
+                    loadBitmapWithRotation(photoPath)
                 }
             }
         }
@@ -241,144 +264,134 @@ fun PhotoAnnotationScreen(
         )
 
         if (bitmap != null) {
-            Row(
+            Box(
                 modifier = Modifier
                     .weight(1f)
+                    .fillMaxWidth()
                     .windowInsetsPadding(WindowInsets.safeDrawing.only(WindowInsetsSides.Horizontal))
             ) {
-                // Photo with annotation canvas (70%)
+                val loadedBitmap = bitmap!!
+
+                // Full-screen photo with annotation canvas
                 Box(
                     modifier = Modifier
-                        .weight(0.7f)
-                        .fillMaxHeight()
-                        .padding(8.dp)
+                        .fillMaxSize()
+                        .onSizeChanged { canvasSize = it }
                 ) {
-                    val loadedBitmap = bitmap!!
+                    // Photo background
+                    androidx.compose.foundation.Image(
+                        bitmap = loadedBitmap.asImageBitmap(),
+                        contentDescription = null,
+                        modifier = Modifier.fillMaxSize(),
+                        contentScale = ContentScale.Fit
+                    )
 
-                    Box(
+                    // Annotation canvas overlay
+                    Canvas(
                         modifier = Modifier
                             .fillMaxSize()
-                            .clip(RoundedCornerShape(8.dp))
-                            .onSizeChanged { canvasSize = it }
+                            .pointerInput(annotationMode) {
+                                detectDragGestures(
+                                    onDrag = { change, _ ->
+                                        val point = StrokePoint(
+                                            change.position.x,
+                                            change.position.y
+                                        )
+                                        when (annotationMode) {
+                                            AnnotationMode.OPEN -> openStrokes.add(point)
+                                            AnnotationMode.CLOSE -> closeStrokes.add(point)
+                                        }
+                                    }
+                                )
+                            }
                     ) {
-                        // Photo background
-                        androidx.compose.foundation.Image(
-                            bitmap = loadedBitmap.asImageBitmap(),
-                            contentDescription = null,
-                            modifier = Modifier.fillMaxSize(),
-                            contentScale = ContentScale.Fit
-                        )
-
-                        // Annotation canvas overlay
-                        Canvas(
-                            modifier = Modifier
-                                .fillMaxSize()
-                                .pointerInput(annotationMode) {
-                                    detectDragGestures(
-                                        onDrag = { change, _ ->
-                                            val point = StrokePoint(
-                                                change.position.x,
-                                                change.position.y
-                                            )
-                                            when (annotationMode) {
-                                                AnnotationMode.OPEN -> openStrokes.add(point)
-                                                AnnotationMode.CLOSE -> closeStrokes.add(point)
-                                            }
-                                        }
-                                    )
-                                }
-                        ) {
-                            // Draw open strokes (green)
-                            if (openStrokes.isNotEmpty()) {
-                                val openPath = Path().apply {
-                                    openStrokes.forEachIndexed { index, point ->
-                                        if (index == 0) {
-                                            moveTo(point.x, point.y)
-                                        } else {
-                                            lineTo(point.x, point.y)
-                                        }
+                        // Draw open strokes (green)
+                        if (openStrokes.isNotEmpty()) {
+                            val openPath = Path().apply {
+                                openStrokes.forEachIndexed { index, point ->
+                                    if (index == 0) {
+                                        moveTo(point.x, point.y)
+                                    } else {
+                                        lineTo(point.x, point.y)
                                     }
                                 }
-                                drawPath(
-                                    path = openPath,
-                                    color = TrafficSignColor.Green.copy(alpha = 0.6f),
-                                    style = Stroke(
-                                        width = brushWidthPx,
-                                        cap = StrokeCap.Round,
-                                        join = StrokeJoin.Round
-                                    )
-                                )
                             }
+                            drawPath(
+                                path = openPath,
+                                color = TrafficSignColor.Green.copy(alpha = 0.6f),
+                                style = Stroke(
+                                    width = brushWidthPx,
+                                    cap = StrokeCap.Round,
+                                    join = StrokeJoin.Round
+                                )
+                            )
+                        }
 
-                            // Draw close strokes (red)
-                            if (closeStrokes.isNotEmpty()) {
-                                val closePath = Path().apply {
-                                    closeStrokes.forEachIndexed { index, point ->
-                                        if (index == 0) {
-                                            moveTo(point.x, point.y)
-                                        } else {
-                                            lineTo(point.x, point.y)
-                                        }
+                        // Draw close strokes (red)
+                        if (closeStrokes.isNotEmpty()) {
+                            val closePath = Path().apply {
+                                closeStrokes.forEachIndexed { index, point ->
+                                    if (index == 0) {
+                                        moveTo(point.x, point.y)
+                                    } else {
+                                        lineTo(point.x, point.y)
                                     }
                                 }
-                                drawPath(
-                                    path = closePath,
-                                    color = TrafficSignColor.Red.copy(alpha = 0.6f),
-                                    style = Stroke(
-                                        width = brushWidthPx,
-                                        cap = StrokeCap.Round,
-                                        join = StrokeJoin.Round
-                                    )
-                                )
                             }
+                            drawPath(
+                                path = closePath,
+                                color = TrafficSignColor.Red.copy(alpha = 0.6f),
+                                style = Stroke(
+                                    width = brushWidthPx,
+                                    cap = StrokeCap.Round,
+                                    join = StrokeJoin.Round
+                                )
+                            )
                         }
                     }
                 }
 
-                // Control panel (30%)
+                // Floating controls at bottom
                 Card(
                     modifier = Modifier
-                        .weight(0.3f)
-                        .fillMaxHeight()
+                        .align(Alignment.BottomCenter)
+                        .fillMaxWidth()
                         .padding(8.dp),
-                    elevation = 4.dp
+                    elevation = 8.dp,
+                    shape = RoundedCornerShape(12.dp)
                 ) {
                     Column(
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .padding(12.dp),
-                        verticalArrangement = Arrangement.SpaceBetween
+                        modifier = Modifier.padding(12.dp)
                     ) {
-                        Column {
-                            // Day group indicator
+                        // Day group indicator row
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.SpaceBetween,
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
                             Text(
                                 text = currentDayGroup?.toDisplayString() ?: "",
-                                style = MaterialTheme.typography.h6,
+                                style = MaterialTheme.typography.subtitle1,
                                 fontWeight = FontWeight.Bold
                             )
-
-                            Spacer(modifier = Modifier.height(4.dp))
-
                             Text(
                                 text = state.progress,
                                 style = MaterialTheme.typography.caption,
                                 color = MaterialTheme.colors.onSurface.copy(alpha = 0.6f)
                             )
+                        }
 
-                            Spacer(modifier = Modifier.height(16.dp))
+                        Spacer(modifier = Modifier.height(8.dp))
 
-                            // Mode toggle buttons
-                            Text(
-                                text = stringResource(R.string.quest_openingHours_ocr_highlight_mode),
-                                style = MaterialTheme.typography.caption
-                            )
-
-                            Spacer(modifier = Modifier.height(8.dp))
-
+                        // Open/Close toggle and Clear buttons in a row
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.spacedBy(8.dp)
+                        ) {
                             // Open time button (green)
                             Button(
                                 onClick = { annotationMode = AnnotationMode.OPEN },
-                                modifier = Modifier.fillMaxWidth(),
+                                modifier = Modifier.weight(1f),
                                 colors = ButtonDefaults.buttonColors(
                                     backgroundColor = if (annotationMode == AnnotationMode.OPEN) {
                                         TrafficSignColor.Green
@@ -395,12 +408,10 @@ fun PhotoAnnotationScreen(
                                 Text(stringResource(R.string.quest_openingHours_ocr_open_time))
                             }
 
-                            Spacer(modifier = Modifier.height(8.dp))
-
                             // Close time button (red)
                             Button(
                                 onClick = { annotationMode = AnnotationMode.CLOSE },
-                                modifier = Modifier.fillMaxWidth(),
+                                modifier = Modifier.weight(1f),
                                 colors = ButtonDefaults.buttonColors(
                                     backgroundColor = if (annotationMode == AnnotationMode.CLOSE) {
                                         TrafficSignColor.Red
@@ -417,9 +428,7 @@ fun PhotoAnnotationScreen(
                                 Text(stringResource(R.string.quest_openingHours_ocr_close_time))
                             }
 
-                            Spacer(modifier = Modifier.height(16.dp))
-
-                            // Clear current strokes
+                            // Clear button
                             Button(
                                 onClick = {
                                     when (annotationMode) {
@@ -427,22 +436,27 @@ fun PhotoAnnotationScreen(
                                         AnnotationMode.CLOSE -> closeStrokes.clear()
                                     }
                                 },
-                                modifier = Modifier.fillMaxWidth(),
                                 colors = ButtonDefaults.outlinedButtonColors()
                             ) {
                                 Text(stringResource(R.string.quest_openingHours_ocr_clear))
                             }
                         }
 
-                        // Confirm button
-                        Column {
+                        Spacer(modifier = Modifier.height(8.dp))
+
+                        // Next/Done and Skip buttons
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.spacedBy(8.dp)
+                        ) {
+                            // Next/Done button
                             Button(
                                 onClick = { confirmCurrentAnnotation(skipRemaining = false) },
-                                modifier = Modifier.fillMaxWidth(),
+                                modifier = Modifier.weight(1f),
                                 enabled = openStrokes.isNotEmpty() || closeStrokes.isNotEmpty()
                             ) {
                                 Icon(Icons.Default.Check, contentDescription = null)
-                                Spacer(modifier = Modifier.width(8.dp))
+                                Spacer(modifier = Modifier.width(4.dp))
                                 Text(
                                     if (state.isLastGroup) {
                                         stringResource(R.string.quest_openingHours_ocr_done)
@@ -452,20 +466,13 @@ fun PhotoAnnotationScreen(
                                 )
                             }
 
+                            // Skip button (only show if not last group)
                             if (!state.isLastGroup) {
-                                Spacer(modifier = Modifier.height(8.dp))
-                                Text(
-                                    text = stringResource(R.string.quest_openingHours_ocr_long_press_hint),
-                                    style = MaterialTheme.typography.caption,
-                                    color = MaterialTheme.colors.onSurface.copy(alpha = 0.6f)
-                                )
-
                                 Button(
                                     onClick = { confirmCurrentAnnotation(skipRemaining = true) },
-                                    modifier = Modifier.fillMaxWidth(),
                                     colors = ButtonDefaults.outlinedButtonColors()
                                 ) {
-                                    Text(stringResource(R.string.quest_openingHours_ocr_skip_remaining))
+                                    Text(stringResource(R.string.quest_openingHours_ocr_skip))
                                 }
                             }
                         }

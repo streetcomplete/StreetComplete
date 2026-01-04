@@ -46,7 +46,6 @@ class AddOpeningHoursForm : AbstractOsmQuestForm<OpeningHoursAnswer>() {
         }
 
     override val otherAnswers = listOf(
-        AnswerItem(R.string.quest_openingHours_scan_photo) { launchOcrFlow() },
         AnswerItem(R.string.quest_openingHours_no_sign) { confirmNoSign() },
         AnswerItem(R.string.quest_openingHours_answer_no_regular_opening_hours) { showInputCommentDialog() },
         AnswerItem(R.string.quest_openingHours_answer_247) { showConfirm24_7Dialog() },
@@ -92,6 +91,7 @@ class AddOpeningHoursForm : AbstractOsmQuestForm<OpeningHoursAnswer>() {
         checkIsFormComplete()
 
         binding.addTimesButton.setOnClickListener { onClickAddButton(it) }
+        binding.scanPhotoButton.setOnClickListener { launchOcrFlow() }
     }
 
     private fun onClickAddButton(v: View) {
@@ -173,7 +173,7 @@ class AddOpeningHoursForm : AbstractOsmQuestForm<OpeningHoursAnswer>() {
     private fun setAsResurvey(resurvey: Boolean) {
         openingHoursAdapter.isEnabled = !resurvey
         isDisplayingPreviousOpeningHours = resurvey
-        binding.addTimesButton.isGone = resurvey
+        binding.buttonsRow.isGone = resurvey
         updateButtonPanel()
     }
 
