@@ -89,6 +89,7 @@ private fun OpeningHoursOcrNavHost(
                 onStateChange = { flowState = it },
                 onDebugDataReady = { data -> debugDataList = data },
                 onContinueToDebug = { navController.navigate(OcrDestination.Debug) },
+                onContinueToVerification = { navController.navigate(OcrDestination.Verification) },
                 onBack = ::goBack
             )
         }

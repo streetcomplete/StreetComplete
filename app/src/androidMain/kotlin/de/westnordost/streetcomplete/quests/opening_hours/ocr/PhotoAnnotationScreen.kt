@@ -74,6 +74,8 @@ import org.jetbrains.compose.resources.painterResource
 import de.westnordost.streetcomplete.ui.theme.TrafficSignColor
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.io.File
@@ -111,6 +113,7 @@ fun PhotoAnnotationScreen(
     onStateChange: (OcrFlowState) -> Unit,
     onDebugDataReady: (List<OcrDebugData>) -> Unit,
     onContinueToDebug: () -> Unit,
+    onContinueToVerification: () -> Unit,
     onBack: () -> Unit
 ) {
     val context = LocalContext.current
@@ -197,7 +200,7 @@ fun PhotoAnnotationScreen(
     }
 
     // Function to process current annotation and move to next
-    fun confirmCurrentAnnotation(skipRemaining: Boolean) {
+    fun confirmCurrentAnnotation(skipRemaining: Boolean, showDebug: Boolean = false) {
         val loadedBitmap = bitmap ?: return
         val currentGroup = currentDayGroup ?: return
 
@@ -293,10 +296,14 @@ fun PhotoAnnotationScreen(
             }
 
             if (skipRemaining || state.isLastGroup) {
-                // Go to debug screen (which then goes to verification)
+                // Go to verification (or debug screen if long-pressed)
                 onStateChange(state.copy(annotations = updatedAnnotations))
                 onDebugDataReady(debugDataList.toList())
-                onContinueToDebug()
+                if (showDebug) {
+                    onContinueToDebug()
+                } else {
+                    onContinueToVerification()
+                }
             } else {
                 // Move to next group
                 onStateChange(
@@ -418,6 +425,23 @@ fun PhotoAnnotationScreen(
                                 )
                             )
                         }
+                    }
+
+                    // Debug button - small, positioned top-left
+                    Button(
+                        onClick = {
+                            val debugEnabled = isMarkedClosed || openStrokes.isNotEmpty() || closeStrokes.isNotEmpty()
+                            if (debugEnabled) {
+                                confirmCurrentAnnotation(skipRemaining = false, showDebug = true)
+                            }
+                        },
+                        modifier = Modifier
+                            .align(Alignment.TopStart)
+                            .padding(8.dp),
+                        enabled = isMarkedClosed || openStrokes.isNotEmpty() || closeStrokes.isNotEmpty(),
+                        colors = ButtonDefaults.outlinedButtonColors()
+                    ) {
+                        Text("Debug", style = MaterialTheme.typography.caption)
                     }
                 }
 
@@ -555,10 +579,16 @@ fun PhotoAnnotationScreen(
                             }
 
                             // Next/Done button
+                            val isButtonEnabled = isMarkedClosed || openStrokes.isNotEmpty() || closeStrokes.isNotEmpty()
+
                             Button(
-                                onClick = { confirmCurrentAnnotation(skipRemaining = false) },
+                                onClick = {
+                                    if (isButtonEnabled) {
+                                        confirmCurrentAnnotation(skipRemaining = false, showDebug = false)
+                                    }
+                                },
                                 modifier = Modifier.weight(1f),
-                                enabled = isMarkedClosed || openStrokes.isNotEmpty() || closeStrokes.isNotEmpty()
+                                enabled = isButtonEnabled
                             ) {
                                 Icon(painterResource(Res.drawable.ic_check_circle_24), contentDescription = null)
                                 Spacer(modifier = Modifier.width(4.dp))
