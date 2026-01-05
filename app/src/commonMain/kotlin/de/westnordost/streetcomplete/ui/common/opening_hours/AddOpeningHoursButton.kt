@@ -24,6 +24,7 @@ import de.westnordost.streetcomplete.ui.common.Button2
 import de.westnordost.streetcomplete.ui.common.DropdownMenuItem
 import org.jetbrains.compose.resources.stringResource
 
+/** Button for adding opening hours to the end / bottom of the given opening hours. */
 @Composable
 fun AddOpeningHoursButton(
     openingHours: HierarchicOpeningHours,
