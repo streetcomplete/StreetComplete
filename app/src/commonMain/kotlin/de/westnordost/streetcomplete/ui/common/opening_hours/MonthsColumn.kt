@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.ui.common.opening_hours
 
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -9,7 +8,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.intl.Locale
-import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.osm.opening_hours.Months
 
 /** Displays the given list of months */
@@ -21,13 +19,12 @@ fun MonthsColumn(
     locale: Locale = Locale.current,
     userLocale: Locale = Locale.current,
     enabled: Boolean = true,
+    alwaysDisplayMonths: Boolean = false,
 ) {
-    Column(
-        modifier = modifier,
-        verticalArrangement = Arrangement.spacedBy(4.dp),
-    ) {
+    val displayMonths = alwaysDisplayMonths || monthsList.size > 1 || monthsList.any { it.selectors.isNotEmpty() }
+    Column(modifier = modifier) {
         for ((index, months) in monthsList.withIndex()) {
-            if (months.selectors.isNotEmpty()) {
+            if (displayMonths) {
                 Row(
                     verticalAlignment = Alignment.CenterVertically,
                     modifier = Modifier.fillMaxWidth()
@@ -54,7 +51,7 @@ fun MonthsColumn(
                     )
                 }
             }
-            if (index > 0 || months.selectors.isNotEmpty()) {
+            if (index > 0 || displayMonths) {
                 Divider()
             }
             WeekdaysColumn(

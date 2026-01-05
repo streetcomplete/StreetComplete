@@ -93,7 +93,7 @@ class AddPostboxCollectionTimesForm : AbstractOsmQuestForm<CollectionTimesAnswer
                 locale = countryInfo.userPreferredLocale,
                 userLocale = Locale.current,
                 enabled = !isDisplayingPrevious.value,
-                addMonthsEnabledWhenEmpty = false,
+                displayMonths = false,
             )
         } }
 

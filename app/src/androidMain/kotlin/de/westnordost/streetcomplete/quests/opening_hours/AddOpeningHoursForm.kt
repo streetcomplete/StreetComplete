@@ -32,7 +32,6 @@ import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.quest_openingHours_comment_description
-import de.westnordost.streetcomplete.ui.common.opening_hours.MonthsOrDateSelectorSelectDialog
 import de.westnordost.streetcomplete.ui.common.opening_hours.OpeningHoursTable
 import de.westnordost.streetcomplete.ui.common.opening_hours.TimeMode
 import de.westnordost.streetcomplete.ui.util.content
@@ -49,7 +48,7 @@ class AddOpeningHoursForm : AbstractOsmQuestForm<OpeningHoursAnswer>() {
 
     private var isDisplayingPrevious: MutableState<Boolean> = mutableStateOf(false)
 
-    private var showFirstMonthsDialog: MutableState<Boolean> = mutableStateOf(false)
+    private var isAlwaysDisplayingMonths: MutableState<Boolean> = mutableStateOf(false)
 
     private var openingHours: MutableState<HierarchicOpeningHours> =
         mutableStateOf(HierarchicOpeningHours())
@@ -74,7 +73,7 @@ class AddOpeningHoursForm : AbstractOsmQuestForm<OpeningHoursAnswer>() {
         AnswerItem(R.string.quest_openingHours_answer_247) { showConfirm24_7Dialog() },
         AnswerItem(R.string.quest_openingHours_answer_seasonal_opening_hours) {
             isDisplayingPrevious.value = false
-            showFirstMonthsDialog.value = true
+            isAlwaysDisplayingMonths.value = true
         }
     )
 
@@ -100,29 +99,17 @@ class AddOpeningHoursForm : AbstractOsmQuestForm<OpeningHoursAnswer>() {
         binding.composeViewBase.content { Surface {
             OpeningHoursTable(
                 openingHours = openingHours.value,
-                onChange = { openingHours.value = it },
+                onChange = {
+                    openingHours.value = it
+                    checkIsFormComplete()
+                },
                 timeMode = TimeMode.Spans,
                 countryInfo = countryInfo,
                 locale = countryInfo.userPreferredLocale,
                 userLocale = Locale.current,
                 enabled = !isDisplayingPrevious.value,
-                addMonthsEnabledWhenEmpty = false,
+                displayMonths = isAlwaysDisplayingMonths.value,
             )
-
-            if (showFirstMonthsDialog.value) {
-                MonthsOrDateSelectorSelectDialog(
-                    onDismissRequest = { showFirstMonthsDialog.value = false },
-                    initialMonths = emptyList(),
-                    onSelected = { newMonthsSelectorList ->
-                        val oh = openingHours.value
-                        val newMonthsList = oh.monthsList.toMutableList()
-                        newMonthsList[0] = newMonthsList[0].copy(selectors = newMonthsSelectorList)
-                        openingHours.value = oh.copy(monthsList = newMonthsList)
-                    },
-                    locale = countryInfo.userPreferredLocale,
-                    userLocale = Locale.current,
-                )
-            }
         } }
         checkIsFormComplete()
     }
