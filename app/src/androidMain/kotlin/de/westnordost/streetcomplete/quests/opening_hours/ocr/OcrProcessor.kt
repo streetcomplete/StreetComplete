@@ -12,13 +12,10 @@ import kotlin.math.max
 import kotlin.math.min
 
 /**
- * Processes images using ML Kit OCR to extract time text from highlighted regions.
- * Parses various time formats commonly found on business hour signs.
+ * Pure Kotlin time parsing utilities that can be used without Android context.
+ * These functions are separated for testability.
  */
-class OcrProcessor {
-
-    private val recognizer = TextRecognition.getClient(TextRecognizerOptions.DEFAULT_OPTIONS)
-
+object TimeParser {
     // Regex patterns for time formats
     private val timePatterns = listOf(
         // 9:00, 09:00, 9:30
@@ -36,51 +33,18 @@ class OcrProcessor {
     )
 
     /**
-     * Extracts time text from the specified region of the bitmap.
+     * Detects AM/PM in the given text.
      *
-     * @param bitmap The full image bitmap
-     * @param region The bounding box region to scan (in image coordinates)
-     * @return String containing the raw OCR text found in the region
+     * @param text The OCR text to analyze
+     * @return true if AM is detected, false if PM is detected, null if neither
      */
-    suspend fun extractTextFromRegion(bitmap: Bitmap, region: RectF): String {
-        // Ensure region is within bitmap bounds
-        val left = max(0, region.left.toInt())
-        val top = max(0, region.top.toInt())
-        val right = min(bitmap.width, region.right.toInt())
-        val bottom = min(bitmap.height, region.bottom.toInt())
-
-        val width = right - left
-        val height = bottom - top
-
-        if (width <= 0 || height <= 0) {
-            return ""
+    fun detectAmPm(text: String): Boolean? {
+        val upper = text.uppercase()
+        return when {
+            upper.contains("AM") || upper.contains("A.M.") || upper.contains("A M") -> true
+            upper.contains("PM") || upper.contains("P.M.") || upper.contains("P M") -> false
+            else -> null
         }
-
-        // Crop the bitmap to the specified region
-        val croppedBitmap = Bitmap.createBitmap(bitmap, left, top, width, height)
-
-        return try {
-            val inputImage = InputImage.fromBitmap(croppedBitmap, 0)
-            suspendCancellableCoroutine { cont ->
-                recognizer.process(inputImage)
-                    .addOnSuccessListener { result ->
-                        cont.resume(result.text)
-                    }
-                    .addOnFailureListener { e ->
-                        cont.resume("") // Return empty on failure
-                    }
-            }
-        } catch (e: Exception) {
-            ""
-        }
-    }
-
-    /**
-     * Legacy method for backwards compatibility - extracts only digits.
-     */
-    suspend fun extractNumbersFromRegion(bitmap: Bitmap, region: RectF): String {
-        val text = extractTextFromRegion(bitmap, region)
-        return parseTimeFromText(text)
     }
 
     /**
@@ -247,6 +211,73 @@ class OcrProcessor {
 
         return hour24 to minute
     }
+}
+
+/**
+ * Processes images using ML Kit OCR to extract time text from highlighted regions.
+ * Delegates parsing logic to TimeParser for testability.
+ */
+class OcrProcessor {
+
+    private val recognizer = TextRecognition.getClient(TextRecognizerOptions.DEFAULT_OPTIONS)
+
+    /**
+     * Extracts time text from the specified region of the bitmap.
+     *
+     * @param bitmap The full image bitmap
+     * @param region The bounding box region to scan (in image coordinates)
+     * @return String containing the raw OCR text found in the region
+     */
+    suspend fun extractTextFromRegion(bitmap: Bitmap, region: RectF): String {
+        // Ensure region is within bitmap bounds
+        val left = max(0, region.left.toInt())
+        val top = max(0, region.top.toInt())
+        val right = min(bitmap.width, region.right.toInt())
+        val bottom = min(bitmap.height, region.bottom.toInt())
+
+        val width = right - left
+        val height = bottom - top
+
+        if (width <= 0 || height <= 0) {
+            return ""
+        }
+
+        // Crop the bitmap to the specified region
+        val croppedBitmap = Bitmap.createBitmap(bitmap, left, top, width, height)
+
+        return try {
+            val inputImage = InputImage.fromBitmap(croppedBitmap, 0)
+            suspendCancellableCoroutine { cont ->
+                recognizer.process(inputImage)
+                    .addOnSuccessListener { result ->
+                        cont.resume(result.text)
+                    }
+                    .addOnFailureListener { e ->
+                        cont.resume("") // Return empty on failure
+                    }
+            }
+        } catch (e: Exception) {
+            ""
+        }
+    }
+
+    /**
+     * Legacy method for backwards compatibility - extracts only digits.
+     */
+    suspend fun extractNumbersFromRegion(bitmap: Bitmap, region: RectF): String {
+        val text = extractTextFromRegion(bitmap, region)
+        return parseTimeFromText(text)
+    }
+
+    /** Delegates to TimeParser */
+    fun parseTimeFromText(text: String): String = TimeParser.parseTimeFromText(text)
+
+    /** Delegates to TimeParser */
+    fun parseTimeNumbers(raw: String, isAm: Boolean, is12HourMode: Boolean): Pair<Int, Int>? =
+        TimeParser.parseTimeNumbers(raw, isAm, is12HourMode)
+
+    /** Delegates to TimeParser */
+    fun detectAmPm(text: String): Boolean? = TimeParser.detectAmPm(text)
 
     /**
      * Releases resources when done.

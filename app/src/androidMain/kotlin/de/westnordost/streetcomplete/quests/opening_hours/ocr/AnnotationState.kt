@@ -112,6 +112,10 @@ data class DayAnnotation(
     val closeTimeRaw: String? = null,
     /** Whether this day group is marked as closed (no hours) */
     val isClosed: Boolean = false,
+    /** Detected AM/PM for open time: true = AM, false = PM, null = not detected */
+    val isOpenAm: Boolean? = null,
+    /** Detected AM/PM for close time: true = AM, false = PM, null = not detected */
+    val isCloseAm: Boolean? = null,
 ) : Parcelable
 
 /**

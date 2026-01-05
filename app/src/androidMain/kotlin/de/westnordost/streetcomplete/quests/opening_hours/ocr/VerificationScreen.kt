@@ -76,17 +76,24 @@ fun VerificationScreen(
                 val isClosed = annotation?.isClosed == true
 
                 // Parse OCR results (only if not closed)
+                // Use detected AM/PM from OCR, with defaults: AM for open, PM for close
                 val openParsed = if (!isClosed) {
                     annotation?.openTimeRaw?.let {
-                        ocrProcessor.parseTimeNumbers(it, isAm = true, is12HourMode = true)
+                        val detectedAm = annotation.isOpenAm ?: true  // default AM for open time
+                        ocrProcessor.parseTimeNumbers(it, isAm = detectedAm, is12HourMode = true)
                     }
                 } else null
 
                 val closeParsed = if (!isClosed) {
                     annotation?.closeTimeRaw?.let {
-                        ocrProcessor.parseTimeNumbers(it, isAm = false, is12HourMode = true)
+                        val detectedAm = annotation.isCloseAm ?: false  // default PM for close time
+                        ocrProcessor.parseTimeNumbers(it, isAm = detectedAm, is12HourMode = true)
                     }
                 } else null
+
+                // Determine AM/PM for UI display based on detected values with defaults
+                val openIsAm = annotation?.isOpenAm ?: true  // default AM for open
+                val closeIsPm = !(annotation?.isCloseAm ?: false)  // default PM for close (isCloseAm=false means PM)
 
                 EditableHours(
                     dayGroup = dayGroup,
@@ -94,8 +101,8 @@ fun VerificationScreen(
                     openMinute = openParsed?.second ?: 0,
                     closeHour = closeParsed?.first ?: 17,
                     closeMinute = closeParsed?.second ?: 0,
-                    isAm = true,
-                    isClosePm = true,
+                    isAm = openIsAm,
+                    isClosePm = closeIsPm,
                     isClosed = isClosed
                 )
             })

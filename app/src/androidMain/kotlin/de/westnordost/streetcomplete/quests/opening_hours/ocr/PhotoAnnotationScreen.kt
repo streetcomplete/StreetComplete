@@ -80,7 +80,7 @@ import java.io.File
 
 private enum class AnnotationMode { OPEN, CLOSE, CLOSED }
 
-private data class StrokePoint(val x: Float, val y: Float)
+private typealias StrokePoint = RegionCalculator.Point
 
 private fun loadBitmapWithRotation(path: String): Bitmap? {
     val bitmap = BitmapFactory.decodeFile(path) ?: return null
@@ -109,7 +109,8 @@ fun PhotoAnnotationScreen(
     photoPath: String?,
     onPhotoPathChange: (String?) -> Unit,
     onStateChange: (OcrFlowState) -> Unit,
-    onContinueToVerification: () -> Unit,
+    onDebugDataReady: (List<OcrDebugData>) -> Unit,
+    onContinueToDebug: () -> Unit,
     onBack: () -> Unit
 ) {
     val context = LocalContext.current
@@ -129,6 +130,9 @@ fun PhotoAnnotationScreen(
     // Current strokes for open and close regions
     val openStrokes = remember { mutableStateListOf<StrokePoint>() }
     val closeStrokes = remember { mutableStateListOf<StrokePoint>() }
+
+    // Accumulated debug data for all day groups
+    val debugDataList = remember { mutableStateListOf<OcrDebugData>() }
 
     // Brush width in dp, converted to pixels for drawing (smaller for precision)
     val brushWidthDp = 12.dp
@@ -175,56 +179,20 @@ fun PhotoAnnotationScreen(
         }
     }
 
-    // Function to calculate bounding box from strokes
-    // Accounts for ContentScale.Fit letterboxing
+    // Function to calculate bounding box from strokes using RegionCalculator
     fun calculateBoundingBox(strokes: List<StrokePoint>, imageWidth: Int, imageHeight: Int): RectF? {
-        if (strokes.isEmpty() || canvasSize.width == 0 || canvasSize.height == 0) return null
-
-        val minX = strokes.minOf { it.x }
-        val maxX = strokes.maxOf { it.x }
-        val minY = strokes.minOf { it.y }
-        val maxY = strokes.maxOf { it.y }
-
-        // Calculate how ContentScale.Fit positions the image
-        val canvasAspect = canvasSize.width.toFloat() / canvasSize.height
-        val imageAspect = imageWidth.toFloat() / imageHeight
-
-        val displayedWidth: Float
-        val displayedHeight: Float
-        val offsetX: Float
-        val offsetY: Float
-
-        if (imageAspect > canvasAspect) {
-            // Image is wider than canvas - letterbox top/bottom
-            displayedWidth = canvasSize.width.toFloat()
-            displayedHeight = canvasSize.width.toFloat() / imageAspect
-            offsetX = 0f
-            offsetY = (canvasSize.height - displayedHeight) / 2
-        } else {
-            // Image is taller than canvas - letterbox left/right
-            displayedHeight = canvasSize.height.toFloat()
-            displayedWidth = canvasSize.height.toFloat() * imageAspect
-            offsetX = (canvasSize.width - displayedWidth) / 2
-            offsetY = 0f
-        }
-
-        // Convert canvas coordinates to image coordinates
-        // First, adjust for the offset (letterboxing)
-        val adjustedMinX = minX - offsetX
-        val adjustedMaxX = maxX - offsetX
-        val adjustedMinY = minY - offsetY
-        val adjustedMaxY = maxY - offsetY
-
-        // Then scale from displayed size to actual image size
-        val scaleX = imageWidth.toFloat() / displayedWidth
-        val scaleY = imageHeight.toFloat() / displayedHeight
-
-        return RectF(
-            (adjustedMinX * scaleX).coerceIn(0f, imageWidth.toFloat()),
-            (adjustedMinY * scaleY).coerceIn(0f, imageHeight.toFloat()),
-            (adjustedMaxX * scaleX).coerceIn(0f, imageWidth.toFloat()),
-            (adjustedMaxY * scaleY).coerceIn(0f, imageHeight.toFloat())
+        return RegionCalculator.calculateBoundingBox(
+            points = strokes,
+            canvasWidth = canvasSize.width,
+            canvasHeight = canvasSize.height,
+            imageWidth = imageWidth,
+            imageHeight = imageHeight
         )
+    }
+
+    // Function to crop a bitmap to the specified region using RegionCalculator
+    fun cropBitmap(sourceBitmap: Bitmap, region: RectF): Bitmap? {
+        return RegionCalculator.cropBitmap(sourceBitmap, region)
     }
 
     // Function to process current annotation and move to next
@@ -233,6 +201,16 @@ fun PhotoAnnotationScreen(
         val currentGroup = currentDayGroup ?: return
 
         scope.launch {
+            // Variables to collect debug data
+            var openCroppedBitmap: Bitmap? = null
+            var closeCroppedBitmap: Bitmap? = null
+            var openRawText = ""
+            var closeRawText = ""
+            var openParsedText = ""
+            var closeParsedText = ""
+            var debugIsOpenAm: Boolean? = null
+            var debugIsCloseAm: Boolean? = null
+
             val currentAnnotation = if (isMarkedClosed) {
                 // Day is marked as closed - no OCR needed
                 DayAnnotation(
@@ -244,12 +222,37 @@ fun PhotoAnnotationScreen(
                 val openRegion = calculateBoundingBox(openStrokes.toList(), loadedBitmap.width, loadedBitmap.height)
                 val closeRegion = calculateBoundingBox(closeStrokes.toList(), loadedBitmap.width, loadedBitmap.height)
 
-                val openTimeRaw = openRegion?.let {
-                    ocrProcessor.extractNumbersFromRegion(loadedBitmap, it)
+                // Crop bitmaps for debug display
+                openCroppedBitmap = openRegion?.let { cropBitmap(loadedBitmap, it) }
+                closeCroppedBitmap = closeRegion?.let { cropBitmap(loadedBitmap, it) }
+
+                // Extract raw text (including AM/PM) for each region
+                val openTextRaw = openRegion?.let {
+                    ocrProcessor.extractTextFromRegion(loadedBitmap, it)
                 }
-                val closeTimeRaw = closeRegion?.let {
-                    ocrProcessor.extractNumbersFromRegion(loadedBitmap, it)
+                val closeTextRaw = closeRegion?.let {
+                    ocrProcessor.extractTextFromRegion(loadedBitmap, it)
                 }
+
+                // Store raw text for debug
+                openRawText = openTextRaw ?: ""
+                closeRawText = closeTextRaw ?: ""
+
+                // Detect AM/PM from raw text
+                val isOpenAm = openTextRaw?.let { ocrProcessor.detectAmPm(it) }
+                val isCloseAm = closeTextRaw?.let { ocrProcessor.detectAmPm(it) }
+
+                // Store for debug
+                debugIsOpenAm = isOpenAm
+                debugIsCloseAm = isCloseAm
+
+                // Parse time numbers from raw text
+                val openTimeRaw = openTextRaw?.let { ocrProcessor.parseTimeFromText(it) }
+                val closeTimeRaw = closeTextRaw?.let { ocrProcessor.parseTimeFromText(it) }
+
+                // Store parsed text for debug
+                openParsedText = openTimeRaw ?: ""
+                closeParsedText = closeTimeRaw ?: ""
 
                 DayAnnotation(
                     dayGroup = currentGroup,
@@ -257,9 +260,27 @@ fun PhotoAnnotationScreen(
                     closeRegion = closeRegion,
                     openTimeRaw = openTimeRaw,
                     closeTimeRaw = closeTimeRaw,
-                    isClosed = false
+                    isClosed = false,
+                    isOpenAm = isOpenAm,
+                    isCloseAm = isCloseAm
                 )
             }
+
+            // Add debug data for this group
+            debugDataList.add(
+                OcrDebugData(
+                    dayGroup = currentGroup,
+                    openCroppedBitmap = openCroppedBitmap,
+                    closeCroppedBitmap = closeCroppedBitmap,
+                    openRawText = openRawText,
+                    closeRawText = closeRawText,
+                    openParsedText = openParsedText,
+                    closeParsedText = closeParsedText,
+                    isOpenAm = debugIsOpenAm,
+                    isCloseAm = debugIsCloseAm,
+                    isClosed = isMarkedClosed
+                )
+            )
 
             // Update annotation for current group
             val updatedAnnotations = state.annotations.toMutableList()
@@ -271,9 +292,10 @@ fun PhotoAnnotationScreen(
             }
 
             if (skipRemaining || state.isLastGroup) {
-                // Go to verification
+                // Go to debug screen (which then goes to verification)
                 onStateChange(state.copy(annotations = updatedAnnotations))
-                onContinueToVerification()
+                onDebugDataReady(debugDataList.toList())
+                onContinueToDebug()
             } else {
                 // Move to next group
                 onStateChange(
