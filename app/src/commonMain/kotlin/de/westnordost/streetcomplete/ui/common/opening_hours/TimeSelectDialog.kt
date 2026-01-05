@@ -42,7 +42,8 @@ fun TimeSelectDialog(
     val timePickerState = rememberTimePickerState(
         initialHour = initialTime.hour,
         initialMinutes = initialTime.minutes,
-        is12Hour = timeFormatElements.clock12 != null
+        is12Hour = timeFormatElements.clock12 != null,
+        allowAfterMidnight = false,
     )
 
     ScrollableAlertDialog(

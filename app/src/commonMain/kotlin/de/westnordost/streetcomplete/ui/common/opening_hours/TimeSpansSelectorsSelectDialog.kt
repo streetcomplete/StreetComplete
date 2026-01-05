@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.ui.common.opening_hours
 
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -58,18 +57,20 @@ fun TimeSpansSelectorSelectDialog(
     val startTimePickerState = rememberTimePickerState(
         initialHour = initialTimeSpansSelector?.start?.hour ?: 0,
         initialMinutes = initialTimeSpansSelector?.start?.minutes ?: 0,
-        is12Hour = timeFormatElements.clock12 != null
+        is12Hour = timeFormatElements.clock12 != null,
+        allowAfterMidnight = false,
     )
     val endTimePickerState = rememberTimePickerState(
         initialHour = initialTimeSpansSelector?.end?.hour ?: 0,
         initialMinutes = initialTimeSpansSelector?.end?.minutes ?: 0,
-        is12Hour = timeFormatElements.clock12 != null
+        is12Hour = timeFormatElements.clock12 != null,
+        allowAfterMidnight = true,
     )
     var openEnd by remember { mutableStateOf(initialTimeSpansSelector?.openEnd ?: false) }
 
     fun confirm() {
         val startTime = ClockTime(startTimePickerState.hour, startTimePickerState.minute)
-        val endTime = ClockTime(endTimePickerState.hour, endTimePickerState.minute)
+        val endTime = ExtendedClockTime(endTimePickerState.hour, endTimePickerState.minute)
         val timeSpanSelector = if (startTime == endTime && openEnd) {
             StartingAtTime(startTime)
         } else {

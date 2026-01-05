@@ -20,14 +20,16 @@ fun rememberTimePickerState(
     initialHour: Int = 0,
     initialMinutes: Int = 0,
     is12Hour: Boolean = false,
+    allowAfterMidnight: Boolean = false,
 ) = remember {
-    TimePickerState(initialHour, initialMinutes, is12Hour)
+    TimePickerState(initialHour, initialMinutes, is12Hour, allowAfterMidnight)
 }
 
 class TimePickerState(
     initialHour: Int = 0,
     initialMinute: Int = 0,
     val is12Hour: Boolean = false,
+    val allowAfterMidnight: Boolean = false,
 ) {
     internal val hoursPickerState: WheelPickerState
     internal val minutesPickerState: WheelPickerState
@@ -50,7 +52,12 @@ class TimePickerState(
     }
 
     init {
-        selectableHours = (if (is12Hour) (1..12) else (0..24)).toList()
+
+        selectableHours = (
+            if (is12Hour) (1..12)
+            else if (allowAfterMidnight) (0..24)
+            else (0..23)
+        ).toList()
         selectableMinutes = ((0..45 step 15) + (0..59)).toList()
 
         var displayHours = initialHour
