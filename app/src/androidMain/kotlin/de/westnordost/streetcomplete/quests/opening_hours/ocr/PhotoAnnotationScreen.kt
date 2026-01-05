@@ -208,12 +208,16 @@ fun PhotoAnnotationScreen(
             // Variables to collect debug data
             var openCroppedBitmap: Bitmap? = null
             var closeCroppedBitmap: Bitmap? = null
+            var openPreprocessedBitmap: Bitmap? = null
+            var closePreprocessedBitmap: Bitmap? = null
             var openRawText = ""
             var closeRawText = ""
             var openParsedText = ""
             var closeParsedText = ""
             var debugIsOpenAm: Boolean? = null
             var debugIsCloseAm: Boolean? = null
+            var openConfidence: Float? = null
+            var closeConfidence: Float? = null
 
             val currentAnnotation = if (isMarkedClosed) {
                 // Day is marked as closed - no OCR needed
@@ -230,29 +234,33 @@ fun PhotoAnnotationScreen(
                 openCroppedBitmap = openRegion?.let { cropBitmap(loadedBitmap, it) }
                 closeCroppedBitmap = closeRegion?.let { cropBitmap(loadedBitmap, it) }
 
-                // Extract raw text (including AM/PM) for each region
-                val openTextRaw = openRegion?.let {
-                    ocrProcessor.extractTextFromRegion(loadedBitmap, it)
+                // Extract text with preprocessing and confidence from each region
+                val openResult = openRegion?.let {
+                    ocrProcessor.extractTextWithConfidence(loadedBitmap, it, usePreprocessing = true)
                 }
-                val closeTextRaw = closeRegion?.let {
-                    ocrProcessor.extractTextFromRegion(loadedBitmap, it)
+                val closeResult = closeRegion?.let {
+                    ocrProcessor.extractTextWithConfidence(loadedBitmap, it, usePreprocessing = true)
                 }
 
-                // Store raw text for debug
-                openRawText = openTextRaw ?: ""
-                closeRawText = closeTextRaw ?: ""
+                // Store raw text and preprocessed bitmaps for debug
+                openRawText = openResult?.text ?: ""
+                closeRawText = closeResult?.text ?: ""
+                openPreprocessedBitmap = openResult?.preprocessedBitmap
+                closePreprocessedBitmap = closeResult?.preprocessedBitmap
+                openConfidence = openResult?.confidence
+                closeConfidence = closeResult?.confidence
 
                 // Detect AM/PM from raw text
-                val isOpenAm = openTextRaw?.let { ocrProcessor.detectAmPm(it) }
-                val isCloseAm = closeTextRaw?.let { ocrProcessor.detectAmPm(it) }
+                val isOpenAm = openResult?.text?.let { ocrProcessor.detectAmPm(it) }
+                val isCloseAm = closeResult?.text?.let { ocrProcessor.detectAmPm(it) }
 
                 // Store for debug
                 debugIsOpenAm = isOpenAm
                 debugIsCloseAm = isCloseAm
 
                 // Parse time numbers from raw text
-                val openTimeRaw = openTextRaw?.let { ocrProcessor.parseTimeFromText(it) }
-                val closeTimeRaw = closeTextRaw?.let { ocrProcessor.parseTimeFromText(it) }
+                val openTimeRaw = openResult?.text?.let { ocrProcessor.parseTimeFromText(it) }
+                val closeTimeRaw = closeResult?.text?.let { ocrProcessor.parseTimeFromText(it) }
 
                 // Store parsed text for debug
                 openParsedText = openTimeRaw ?: ""
@@ -276,13 +284,17 @@ fun PhotoAnnotationScreen(
                     dayGroup = currentGroup,
                     openCroppedBitmap = openCroppedBitmap,
                     closeCroppedBitmap = closeCroppedBitmap,
+                    openPreprocessedBitmap = openPreprocessedBitmap,
+                    closePreprocessedBitmap = closePreprocessedBitmap,
                     openRawText = openRawText,
                     closeRawText = closeRawText,
                     openParsedText = openParsedText,
                     closeParsedText = closeParsedText,
                     isOpenAm = debugIsOpenAm,
                     isCloseAm = debugIsCloseAm,
-                    isClosed = isMarkedClosed
+                    isClosed = isMarkedClosed,
+                    openConfidence = openConfidence,
+                    closeConfidence = closeConfidence
                 )
             )
 

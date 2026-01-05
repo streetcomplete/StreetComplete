@@ -49,14 +49,42 @@ data class OcrDebugData(
     val dayGroup: DayGroup,
     val openCroppedBitmap: Bitmap? = null,
     val closeCroppedBitmap: Bitmap? = null,
+    val openPreprocessedBitmap: Bitmap? = null,
+    val closePreprocessedBitmap: Bitmap? = null,
     val openRawText: String = "",
     val closeRawText: String = "",
     val openParsedText: String = "",
     val closeParsedText: String = "",
     val isOpenAm: Boolean? = null,
     val isCloseAm: Boolean? = null,
-    val isClosed: Boolean = false
+    val isClosed: Boolean = false,
+    val openConfidence: Float? = null,
+    val closeConfidence: Float? = null
 )
+
+/**
+ * Returns a color based on the confidence level.
+ * Green for high confidence (>=80%), yellow for medium (>=60%), red for low (<60%).
+ */
+private fun getConfidenceColor(confidence: Float?): Color {
+    return when {
+        confidence == null -> Color.Gray
+        confidence >= 0.8f -> Color(0xFF4CAF50)  // Green
+        confidence >= 0.6f -> Color(0xFFFFC107)  // Yellow/Amber
+        else -> Color(0xFFF44336)  // Red
+    }
+}
+
+/**
+ * Formats confidence as a percentage string.
+ */
+private fun formatConfidence(confidence: Float?): String {
+    return if (confidence != null) {
+        "${(confidence * 100).toInt()}%"
+    } else {
+        "N/A"
+    }
+}
 
 /**
  * Debug screen that shows the cropped image regions and raw OCR text for each day group.
@@ -219,7 +247,35 @@ private fun DebugDayGroupCard(data: OcrDebugData) {
                             style = MaterialTheme.typography.caption,
                             color = MaterialTheme.colors.onSurface.copy(alpha = 0.6f)
                         )
+
+                        Spacer(modifier = Modifier.height(4.dp))
+
+                        Text(
+                            text = "Confidence: ${formatConfidence(data.openConfidence)}",
+                            style = MaterialTheme.typography.caption,
+                            fontWeight = FontWeight.Bold,
+                            color = getConfidenceColor(data.openConfidence)
+                        )
                     }
+                }
+
+                // Show preprocessed image if available
+                if (data.openPreprocessedBitmap != null) {
+                    Spacer(modifier = Modifier.height(8.dp))
+                    Text(
+                        text = "Preprocessed (Adaptive Threshold):",
+                        style = MaterialTheme.typography.caption
+                    )
+                    Image(
+                        bitmap = data.openPreprocessedBitmap.asImageBitmap(),
+                        contentDescription = "Preprocessed open time region",
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(50.dp)
+                            .border(1.dp, Color.Gray)
+                            .background(Color.White),
+                        contentScale = ContentScale.Fit
+                    )
                 }
 
                 Spacer(modifier = Modifier.height(16.dp))
@@ -296,7 +352,35 @@ private fun DebugDayGroupCard(data: OcrDebugData) {
                             style = MaterialTheme.typography.caption,
                             color = MaterialTheme.colors.onSurface.copy(alpha = 0.6f)
                         )
+
+                        Spacer(modifier = Modifier.height(4.dp))
+
+                        Text(
+                            text = "Confidence: ${formatConfidence(data.closeConfidence)}",
+                            style = MaterialTheme.typography.caption,
+                            fontWeight = FontWeight.Bold,
+                            color = getConfidenceColor(data.closeConfidence)
+                        )
                     }
+                }
+
+                // Show preprocessed image if available
+                if (data.closePreprocessedBitmap != null) {
+                    Spacer(modifier = Modifier.height(8.dp))
+                    Text(
+                        text = "Preprocessed (Adaptive Threshold):",
+                        style = MaterialTheme.typography.caption
+                    )
+                    Image(
+                        bitmap = data.closePreprocessedBitmap.asImageBitmap(),
+                        contentDescription = "Preprocessed close time region",
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(50.dp)
+                            .border(1.dp, Color.Gray)
+                            .background(Color.White),
+                        contentScale = ContentScale.Fit
+                    )
                 }
             }
         }

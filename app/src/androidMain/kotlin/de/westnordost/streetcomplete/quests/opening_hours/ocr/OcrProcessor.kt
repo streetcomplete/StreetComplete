@@ -5,11 +5,21 @@ import android.graphics.RectF
 import com.google.mlkit.vision.common.InputImage
 import com.google.mlkit.vision.text.TextRecognition
 import com.google.mlkit.vision.text.latin.TextRecognizerOptions
+import de.westnordost.streetcomplete.util.ktx.adaptiveThreshold
+import de.westnordost.streetcomplete.util.ktx.enhanceContrast
 import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlin.coroutines.resume
-import kotlin.coroutines.resumeWithException
 import kotlin.math.max
 import kotlin.math.min
+
+/**
+ * Result from OCR extraction including text and confidence information.
+ */
+data class OcrResult(
+    val text: String,
+    val confidence: Float?,
+    val preprocessedBitmap: Bitmap? = null
+)
 
 /**
  * Pure Kotlin time parsing utilities that can be used without Android context.
@@ -224,7 +234,79 @@ class OcrProcessor {
     private val recognizer = TextRecognition.getClient(TextRecognizerOptions.DEFAULT_OPTIONS)
 
     /**
+     * Extracts time text from the specified region of the bitmap with preprocessing
+     * and returns OCR result including confidence level.
+     *
+     * @param bitmap The full image bitmap
+     * @param region The bounding box region to scan (in image coordinates)
+     * @param usePreprocessing Whether to apply adaptive thresholding preprocessing
+     * @return OcrResult containing text, confidence, and preprocessed bitmap
+     */
+    suspend fun extractTextWithConfidence(
+        bitmap: Bitmap,
+        region: RectF,
+        usePreprocessing: Boolean = true
+    ): OcrResult {
+        // Ensure region is within bitmap bounds
+        val left = max(0, region.left.toInt())
+        val top = max(0, region.top.toInt())
+        val right = min(bitmap.width, region.right.toInt())
+        val bottom = min(bitmap.height, region.bottom.toInt())
+
+        val width = right - left
+        val height = bottom - top
+
+        if (width <= 0 || height <= 0) {
+            return OcrResult("", null, null)
+        }
+
+        // Crop the bitmap to the specified region
+        val croppedBitmap = Bitmap.createBitmap(bitmap, left, top, width, height)
+
+        // Apply preprocessing for better OCR on difficult images
+        val preprocessedBitmap = if (usePreprocessing) {
+            croppedBitmap
+                .enhanceContrast(1.5f)
+                .adaptiveThreshold(windowSize = 31, k = 0.3f, r = 128f)
+        } else {
+            null
+        }
+
+        // Use preprocessed image for OCR if available, otherwise use original crop
+        val imageForOcr = preprocessedBitmap ?: croppedBitmap
+
+        return try {
+            val inputImage = InputImage.fromBitmap(imageForOcr, 0)
+            suspendCancellableCoroutine { cont ->
+                recognizer.process(inputImage)
+                    .addOnSuccessListener { result ->
+                        // Calculate average confidence from all lines
+                        val confidences = mutableListOf<Float>()
+                        for (block in result.textBlocks) {
+                            for (line in block.lines) {
+                                confidences.add(line.confidence)
+                            }
+                        }
+                        val avgConfidence = if (confidences.isNotEmpty()) {
+                            confidences.average().toFloat()
+                        } else {
+                            null
+                        }
+
+                        cont.resume(OcrResult(result.text, avgConfidence, preprocessedBitmap))
+                    }
+                    .addOnFailureListener { e ->
+                        cont.resume(OcrResult("", null, preprocessedBitmap))
+                    }
+            }
+        } catch (e: Exception) {
+            OcrResult("", null, preprocessedBitmap)
+        }
+    }
+
+    /**
      * Extracts time text from the specified region of the bitmap.
+     * Legacy method for backwards compatibility.
      *
      * @param bitmap The full image bitmap
      * @param region The bounding box region to scan (in image coordinates)
