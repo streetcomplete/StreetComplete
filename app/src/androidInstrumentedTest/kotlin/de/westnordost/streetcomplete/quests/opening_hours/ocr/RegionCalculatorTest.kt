@@ -348,4 +348,87 @@ class RegionCalculatorTest {
         bitmap.recycle()
         result.recycle()
     }
+
+    // ==================== brushRadiusPx tests ====================
+
+    @Test
+    fun calculateBoundingBox_withBrushRadius_expandsBoundingBox() {
+        // Test that brush radius expands the bounding box correctly
+        val canvasWidth = 1000
+        val canvasHeight = 1000
+        val imageWidth = 2000
+        val imageHeight = 2000
+        val brushRadius = 20f
+
+        val points = listOf(
+            RegionCalculator.Point(250f, 250f),
+            RegionCalculator.Point(750f, 750f)
+        )
+
+        // Without brush radius
+        val resultNoBrush = RegionCalculator.calculateBoundingBox(
+            points = points,
+            canvasWidth = canvasWidth,
+            canvasHeight = canvasHeight,
+            imageWidth = imageWidth,
+            imageHeight = imageHeight,
+            brushRadiusPx = 0f
+        )
+
+        // With brush radius
+        val resultWithBrush = RegionCalculator.calculateBoundingBox(
+            points = points,
+            canvasWidth = canvasWidth,
+            canvasHeight = canvasHeight,
+            imageWidth = imageWidth,
+            imageHeight = imageHeight,
+            brushRadiusPx = brushRadius
+        )
+
+        assertNotNull(resultNoBrush)
+        assertNotNull(resultWithBrush)
+
+        // With brush radius, the bounding box should be larger
+        // Scale is 2x, so 20px brush radius becomes 40px in image coords
+        assertTrue(resultWithBrush.left < resultNoBrush.left)
+        assertTrue(resultWithBrush.top < resultNoBrush.top)
+        assertTrue(resultWithBrush.right > resultNoBrush.right)
+        assertTrue(resultWithBrush.bottom > resultNoBrush.bottom)
+
+        // The difference should be approximately 2 * brushRadius * scale = 2 * 20 * 2 = 80
+        val expectedExpansion = brushRadius * 2f  // Scale is 2x
+        assertEquals(expectedExpansion, resultNoBrush.left - resultWithBrush.left, 1f)
+        assertEquals(expectedExpansion, resultWithBrush.right - resultNoBrush.right, 1f)
+    }
+
+    @Test
+    fun calculateBoundingBox_defaultBrushRadius_isZero() {
+        // Verify default behavior is unchanged (brush radius = 0)
+        val canvasWidth = 1000
+        val canvasHeight = 1000
+        val imageWidth = 2000
+        val imageHeight = 2000
+
+        val points = listOf(
+            RegionCalculator.Point(250f, 250f),
+            RegionCalculator.Point(750f, 750f)
+        )
+
+        // Call without specifying brushRadiusPx
+        val result = RegionCalculator.calculateBoundingBox(
+            points = points,
+            canvasWidth = canvasWidth,
+            canvasHeight = canvasHeight,
+            imageWidth = imageWidth,
+            imageHeight = imageHeight
+        )
+
+        assertNotNull(result)
+
+        // Scale is 2x, so canvas (250, 250) -> image (500, 500)
+        assertEquals(500f, result.left, 1f)
+        assertEquals(500f, result.top, 1f)
+        assertEquals(1500f, result.right, 1f)
+        assertEquals(1500f, result.bottom, 1f)
+    }
 }

@@ -18,13 +18,14 @@ object RegionCalculator {
 
     /**
      * Calculates a bounding box in image coordinates from a list of canvas coordinate points.
-     * Accounts for ContentScale.Fit letterboxing.
+     * Accounts for ContentScale.Fit letterboxing and brush width.
      *
      * @param points List of points in canvas coordinates
      * @param canvasWidth Width of the canvas in pixels
      * @param canvasHeight Height of the canvas in pixels
      * @param imageWidth Width of the actual image in pixels
      * @param imageHeight Height of the actual image in pixels
+     * @param brushRadiusPx Radius of the brush stroke (half of brush width) to expand bounding box
      * @return RectF in image coordinates, or null if points list is empty or dimensions are invalid
      */
     fun calculateBoundingBox(
@@ -32,17 +33,19 @@ object RegionCalculator {
         canvasWidth: Int,
         canvasHeight: Int,
         imageWidth: Int,
-        imageHeight: Int
+        imageHeight: Int,
+        brushRadiusPx: Float = 0f
     ): RectF? {
         if (points.isEmpty() || canvasWidth <= 0 || canvasHeight <= 0 ||
             imageWidth <= 0 || imageHeight <= 0) {
             return null
         }
 
-        val minX = points.minOf { it.x }
-        val maxX = points.maxOf { it.x }
-        val minY = points.minOf { it.y }
-        val maxY = points.maxOf { it.y }
+        // Expand bounding box by brush radius to include full visible stroke
+        val minX = points.minOf { it.x } - brushRadiusPx
+        val maxX = points.maxOf { it.x } + brushRadiusPx
+        val minY = points.minOf { it.y } - brushRadiusPx
+        val maxY = points.maxOf { it.y } + brushRadiusPx
 
         // Calculate how ContentScale.Fit positions the image
         val canvasAspect = canvasWidth.toFloat() / canvasHeight

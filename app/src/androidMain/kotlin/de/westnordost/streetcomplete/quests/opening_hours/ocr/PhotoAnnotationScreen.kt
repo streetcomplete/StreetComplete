@@ -134,8 +134,8 @@ fun PhotoAnnotationScreen(
     // Accumulated debug data for all day groups
     val debugDataList = remember { mutableStateListOf<OcrDebugData>() }
 
-    // Brush width in dp, converted to pixels for drawing (smaller for precision)
-    val brushWidthDp = 12.dp
+    // Brush width in dp, converted to pixels for drawing
+    val brushWidthDp = 18.dp  // 50% larger for easier highlighting
     val brushWidthPx = with(density) { brushWidthDp.toPx() }
 
     val currentDayGroup = state.currentDayGroup
@@ -186,7 +186,8 @@ fun PhotoAnnotationScreen(
             canvasWidth = canvasSize.width,
             canvasHeight = canvasSize.height,
             imageWidth = imageWidth,
-            imageHeight = imageHeight
+            imageHeight = imageHeight,
+            brushRadiusPx = brushWidthPx / 2f  // Expand by brush radius to include full stroke
         )
     }
 

@@ -196,7 +196,8 @@ object TimeParser {
         if (minute !in 0..59) return null
 
         // Convert to 24-hour format if needed
-        val hour24 = if (is12HourMode) {
+        // If hour >= 13, it's already in 24-hour format, don't apply AM/PM conversion
+        val hour24 = if (is12HourMode && hour <= 12) {
             when {
                 hour == 12 && isAm -> 0      // 12 AM = 00:00
                 hour == 12 && !isAm -> 12   // 12 PM = 12:00
@@ -204,6 +205,7 @@ object TimeParser {
                 else -> hour                 // AM: keep as is
             }
         } else {
+            // Already 24-hour format (hour > 12) or not in 12-hour mode
             hour
         }
 

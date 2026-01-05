@@ -150,4 +150,13 @@ class OcrProcessorTest {
         assertEquals(18 to 30, parser.parseTimeNumbers("0630", isAm = false, is12HourMode = true)) // 6:30 PM
         assertEquals(21 to 0, parser.parseTimeNumbers("0900", isAm = false, is12HourMode = true)) // 9 PM
     }
+
+    @Test fun `parseTimeNumbers preserves 24-hour times even in 12-hour mode`() {
+        // Times with hour >= 13 are already in 24-hour format and should not be converted
+        assertEquals(15 to 0, parser.parseTimeNumbers("1500", isAm = false, is12HourMode = true)) // 15:00 stays 15:00
+        assertEquals(15 to 0, parser.parseTimeNumbers("1500", isAm = true, is12HourMode = true))  // 15:00 stays 15:00
+        assertEquals(17 to 30, parser.parseTimeNumbers("1730", isAm = false, is12HourMode = true)) // 17:30 stays 17:30
+        assertEquals(23 to 59, parser.parseTimeNumbers("2359", isAm = false, is12HourMode = true)) // 23:59 stays 23:59
+        assertEquals(13 to 0, parser.parseTimeNumbers("1300", isAm = false, is12HourMode = true))  // 13:00 stays 13:00
+    }
 }
