@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.ui.common.opening_hours
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.material.Divider
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.intl.Locale
@@ -30,10 +31,7 @@ fun WeekdaysColumn(
     userLocale: Locale = Locale.current,
     enabled: Boolean = true,
 ) {
-    Column(
-        modifier = modifier,
-        verticalArrangement = Arrangement.spacedBy(4.dp),
-    ) {
+    Column(modifier = modifier) {
         for ((index, weekdays) in weekdaysList.withIndex()) {
             Row(
                 horizontalArrangement = Arrangement.spacedBy(4.dp),
@@ -55,35 +53,37 @@ fun WeekdaysColumn(
                     userLocale = userLocale,
                     enabled = enabled,
                 )
-                when (weekdays.times) {
-                    Off -> {
-                        OffDayRow(
-                            onClickDelete = {
-                                val newWeekdaysList = weekdaysList.toMutableList()
-                                newWeekdaysList.removeAt(index)
-                                onChange(newWeekdaysList)
-                            },
-                            modifier = Modifier.weight(2f),
-                            enabled = enabled,
-                        )
-                    }
-                    is Times -> {
-                        TimesSelectorsColumn(
-                            times = weekdays.times.selectors,
-                            onChange = { newTimes ->
-                                val newWeekdaysList = weekdaysList.toMutableList()
-                                // when last time has been removed, entire column shall be removed
-                                if (newTimes.isEmpty()) {
+                Column(Modifier.weight(2f)) {
+                    if (index > 0) Divider()
+                    when (weekdays.times) {
+                        Off -> {
+                            OffDayRow(
+                                onClickDelete = {
+                                    val newWeekdaysList = weekdaysList.toMutableList()
                                     newWeekdaysList.removeAt(index)
-                                } else {
-                                    newWeekdaysList[index] = weekdaysList[index].copy(times = Times(newTimes))
-                                }
-                                onChange(newWeekdaysList)
-                            },
-                            modifier = Modifier.weight(2f),
-                            locale = locale,
-                            enabled = enabled,
-                        )
+                                    onChange(newWeekdaysList)
+                                },
+
+                                enabled = enabled,
+                            )
+                        }
+                        is Times -> {
+                            TimesSelectorsColumn(
+                                times = weekdays.times.selectors,
+                                onChange = { newTimes ->
+                                    val newWeekdaysList = weekdaysList.toMutableList()
+                                    // when last time has been removed, entire column shall be removed
+                                    if (newTimes.isEmpty()) {
+                                        newWeekdaysList.removeAt(index)
+                                    } else {
+                                        newWeekdaysList[index] = weekdaysList[index].copy(times = Times(newTimes))
+                                    }
+                                    onChange(newWeekdaysList)
+                                },
+                                locale = locale,
+                                enabled = enabled,
+                            )
+                        }
                     }
                 }
             }
