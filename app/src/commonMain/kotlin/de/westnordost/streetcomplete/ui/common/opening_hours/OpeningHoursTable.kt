@@ -22,7 +22,6 @@ fun OpeningHoursTable(
     locale: Locale = Locale.current,
     userLocale: Locale = Locale.current,
     enabled: Boolean = true,
-    displayMonths: Boolean = true,
 ) {
     val workweek = remember(countryInfo) {
         countryInfo.workweek.toWeekdaysSelectors()
@@ -38,7 +37,6 @@ fun OpeningHoursTable(
             locale = locale,
             userLocale = userLocale,
             enabled = enabled,
-            alwaysDisplayMonths = displayMonths,
         )
 
         if (enabled) {
@@ -49,7 +47,6 @@ fun OpeningHoursTable(
                 workweek = workweek,
                 locale = locale,
                 userLocale = userLocale,
-                addMonthsEnabledWhenEmpty = displayMonths,
             )
         }
     }

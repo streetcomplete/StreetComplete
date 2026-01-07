@@ -180,7 +180,8 @@ mapOf(
         // be strict
         val oh = ohStr.toOpeningHoursOrNull(lenient = false) ?: return true
         // only display supported rules, however, those that are supported but have colliding
-        // weekdays should be shown (->resurveyed), as they are likely mistakes
+        // weekdays or have only in parts months defined should be shown (->resurveyed), as they are
+        // likely mistakes or are at least prone to being ambiguous
         return oh.rules.all { rule -> rule.isSupportedOpeningHours() } && !oh.containsTimePoints()
     }
 

@@ -21,11 +21,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.lifecycleScope
+import de.westnordost.osm_opening_hours.model.Month
+import de.westnordost.osm_opening_hours.model.MonthRange
 import de.westnordost.osm_opening_hours.parser.toOpeningHours
 import de.westnordost.osm_opening_hours.parser.toOpeningHoursOrNull
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.ComposeViewBinding
 import de.westnordost.streetcomplete.osm.opening_hours.HierarchicOpeningHours
+import de.westnordost.streetcomplete.osm.opening_hours.Months
 import de.westnordost.streetcomplete.osm.opening_hours.toHierarchicOpeningHours
 import de.westnordost.streetcomplete.osm.opening_hours.toOpeningHours
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
@@ -47,8 +50,6 @@ class AddOpeningHoursForm : AbstractOsmQuestForm<OpeningHoursAnswer>() {
     private var originalOpeningHours: HierarchicOpeningHours? = null
 
     private var isDisplayingPrevious: MutableState<Boolean> = mutableStateOf(false)
-
-    private var isAlwaysDisplayingMonths: MutableState<Boolean> = mutableStateOf(false)
 
     private var openingHours: MutableState<HierarchicOpeningHours> =
         mutableStateOf(HierarchicOpeningHours())
@@ -73,7 +74,12 @@ class AddOpeningHoursForm : AbstractOsmQuestForm<OpeningHoursAnswer>() {
         AnswerItem(R.string.quest_openingHours_answer_247) { showConfirm24_7Dialog() },
         AnswerItem(R.string.quest_openingHours_answer_seasonal_opening_hours) {
             isDisplayingPrevious.value = false
-            isAlwaysDisplayingMonths.value = true
+            val allMonths = listOf(MonthRange(Month.January, Month.December))
+            openingHours.value = HierarchicOpeningHours(
+                openingHours.value.monthsList.map { months ->
+                    if (months.selectors.isEmpty()) months.copy(selectors = allMonths) else months
+                }
+            )
         }
     )
 
@@ -108,7 +114,6 @@ class AddOpeningHoursForm : AbstractOsmQuestForm<OpeningHoursAnswer>() {
                 locale = countryInfo.userPreferredLocale,
                 userLocale = Locale.current,
                 enabled = !isDisplayingPrevious.value,
-                displayMonths = isAlwaysDisplayingMonths.value,
             )
         } }
         checkIsFormComplete()

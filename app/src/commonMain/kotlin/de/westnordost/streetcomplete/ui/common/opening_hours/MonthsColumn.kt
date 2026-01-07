@@ -19,9 +19,8 @@ fun MonthsColumn(
     locale: Locale = Locale.current,
     userLocale: Locale = Locale.current,
     enabled: Boolean = true,
-    alwaysDisplayMonths: Boolean = false,
 ) {
-    val displayMonths = alwaysDisplayMonths || monthsList.size > 1 || monthsList.any { it.selectors.isNotEmpty() }
+    val displayMonths = monthsList.size > 1 || monthsList.any { it.selectors.isNotEmpty() }
     Column(modifier = modifier) {
         for ((index, months) in monthsList.withIndex()) {
             if (displayMonths) {

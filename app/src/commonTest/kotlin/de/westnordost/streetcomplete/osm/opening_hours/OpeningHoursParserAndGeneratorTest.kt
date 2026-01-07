@@ -72,6 +72,10 @@ class OpeningHoursParserAndGeneratorTest {
 
         // looping into next day
         reject("Mo-We 20:00-02:00; Th 08:00-16:00")
+
+        // partially month based
+        reject("Th 17:30-19:30; Jul-Sep: Mo 17:00-19:00")
+        reject("Jul-Sep: Mo 17:00-19:00; Th 17:30-19:30")
     }
 
     @Test fun `reject rules that are currently not supported but can be reasonably added`() {
@@ -247,18 +251,11 @@ class OpeningHoursParserAndGeneratorTest {
             "PH off; Mo-Fr 08:00-18:00",
             "Mo-Fr 08:00-18:00; PH off"
         )
-        accept(
-            "PH off; Dec-Jun: Mo-Fr 08:00-18:00; Dec-Jun: Mo off",
-            "Dec-Jun: Mo-Fr 08:00-18:00; PH off; Dec-Jun: Mo off"
-        )
         // off rules are always overwriting
         accept(
             "PH off, Mo-Fr 08:00-18:00",
             "Mo-Fr 08:00-18:00; PH off"
         )
-        // partially month based
-        accept("Th 17:30-19:30; Jul-Sep: Mo 17:00-19:00")
-        accept("Jul-Sep: Mo 17:00-19:00; Th 17:30-19:30")
     }
 
     private fun parseAndGenerate(oh: String, allowTimePoints: Boolean): String? =

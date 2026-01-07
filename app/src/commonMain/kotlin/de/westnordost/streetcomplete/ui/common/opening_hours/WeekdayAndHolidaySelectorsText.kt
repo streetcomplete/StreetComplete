@@ -52,11 +52,9 @@ fun WeekdayAndHolidaySelectorsText(
     ) {
         Text(
             text = getWeekdaysAndHolidaysString(weekdays, holidays, locale, layoutDirection),
-            textAlign = TextAlign.End
+            textAlign = TextAlign.End,
         )
     }
-
-
 
     if (showDialog) {
         WeekdayAndHolidaySelectDialog(

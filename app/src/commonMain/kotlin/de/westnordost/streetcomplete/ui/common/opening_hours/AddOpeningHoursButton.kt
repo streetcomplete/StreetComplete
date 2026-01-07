@@ -34,7 +34,6 @@ fun AddOpeningHoursButton(
     modifier: Modifier = Modifier,
     locale: Locale = Locale.current,
     userLocale: Locale = Locale.current,
-    addMonthsEnabledWhenEmpty: Boolean = true,
 ) {
     var showAddDropdown by remember { mutableStateOf(false) }
     var addOpeningHoursRequest by remember { mutableStateOf<AddOpeningHoursRequest?>(null) }
@@ -49,7 +48,6 @@ fun AddOpeningHoursButton(
             expanded = showAddDropdown,
             openingHours = openingHours,
             timeMode = timeMode,
-            addMonthsEnabledWhenEmpty = addMonthsEnabledWhenEmpty,
             onDismissRequest = { showAddDropdown = false },
             onSelect = {
                 showAddDropdown = false
@@ -78,13 +76,12 @@ private fun SelectOpeningHoursDropdown(
     expanded: Boolean,
     openingHours: HierarchicOpeningHours,
     timeMode: TimeMode,
-    addMonthsEnabledWhenEmpty: Boolean,
     onDismissRequest: () -> Unit,
     onSelect: (AddOpeningHoursRequest) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     val showAddTimes = openingHours.monthsList.lastOrNull()?.weekdaysList?.lastOrNull()?.times is Times
-    val showAddMonths = addMonthsEnabledWhenEmpty || openingHours.monthsList.any { it.selectors.isNotEmpty() }
+    val showAddMonths = openingHours.monthsList.any { it.selectors.isNotEmpty() }
 
     DropdownMenu(
         expanded = expanded,

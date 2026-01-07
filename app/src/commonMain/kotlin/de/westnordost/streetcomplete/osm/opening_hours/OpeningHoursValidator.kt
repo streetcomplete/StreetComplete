@@ -35,11 +35,16 @@ import kotlin.jvm.JvmName
  *  - weekdays, weekday ranges, PH
  *  - "off" rules with exclusively weekdays, weekday ranges, PH
  *  - time spans, open end
+ *
+ *  Weekdays that collide (Mo-Fr 8:30-12:30; We 14:00-18:00) are not supported - they are likely
+ *  tagging mistakes (Maybe user meant to use "," instead of ";"?).
+ *  Also, when any rule has months defined, all rules must have months defined, for clarity.
  */
 fun OpeningHours.isSupportedOpeningHours(allowTimePoints: Boolean = false): Boolean =
     rules.all { rule -> rule.isSupportedOpeningHours() } &&
         (allowTimePoints || !containsTimePoints()) &&
-        !rules.hasCollidingWeekdays()
+        !rules.hasCollidingWeekdays() &&
+        !rules.hasIncompleteMonths()
 
 fun Rule.isSupportedOpeningHours(): Boolean =
     // comments not supported
@@ -109,6 +114,22 @@ internal fun ExtendedTime.isSupported(): Boolean = when(this) {
     is ClockTime -> true
     is VariableTime -> false
 }
+
+/** False if no rules have months or all rules have months, true if some rules have months but
+ *  others not. */
+private fun List<Rule>.hasIncompleteMonths(): Boolean {
+    val rulesWithMonths = count { it.selector.hasMonths() }
+    return rulesWithMonths > 0 && rulesWithMonths < size
+}
+
+private fun Selector.hasMonths(): Boolean =
+    when (this) {
+        is Range -> hasMonths()
+        TwentyFourSeven -> false
+    }
+
+private fun Range.hasMonths(): Boolean =
+    months.orEmpty().any { it is SingleMonth || it is MonthRange }
 
 /** For example, "Mo-Fr 10:00-12:00; We 14:00-16:00" self-collides: Wednesday is overwritten
  *  to only be open 14:00 to 16:00. A rule collides with another whenever the days overlap. When

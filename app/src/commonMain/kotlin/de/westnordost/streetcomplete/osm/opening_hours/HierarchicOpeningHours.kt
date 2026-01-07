@@ -28,6 +28,9 @@ data class HierarchicOpeningHours(
 
     fun isComplete(): Boolean =
         monthsList.isNotEmpty() && monthsList.all { it.isComplete() }
+        // if any months are defined, it is required to specify months for all to
+        // remove ambiguity (#6175)
+        && (monthsList.all { it.selectors.isEmpty() } || monthsList.none { it.selectors.isEmpty() })
 }
 
 data class Months(
