@@ -23,9 +23,10 @@ class AddPostboxRef : OsmFilterQuestType<PostboxRefAnswer>(), AndroidQuest {
     override val icon = R.drawable.quest_mail_ref
     override val isDeleteElementEnabled = true
     override val achievements = listOf(POSTMAN)
-    // source: https://commons.wikimedia.org/wiki/Category:Post_boxes_by_country
     override val enabledInCountries = NoCountriesExcept(
-        "FR", "GB", "GG", "IM", "JE", "MT", "IE", "SG", "CZ", "SK", "CH", "US"
+        // source: https://commons.wikimedia.org/wiki/Category:Post_boxes_by_country
+        "FR", "GB", "GG", "IM", "JE", "MT", "IE", "SG", "CZ", "SK", "CH", "US",
+        "JP", // https://github.com/streetcomplete/StreetComplete/issues/6680
     )
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_genericRef_title
