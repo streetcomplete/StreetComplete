@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.ui.common.opening_hours
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.RowScope
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
@@ -18,6 +19,7 @@ fun OpeningHoursTable(
     onChange: (HierarchicOpeningHours) -> Unit,
     timeMode: TimeMode,
     countryInfo: CountryInfo,
+    addButtonContent: @Composable (RowScope.() -> Unit),
     modifier: Modifier = Modifier,
     locale: Locale = Locale.current,
     userLocale: Locale = Locale.current,
@@ -47,6 +49,7 @@ fun OpeningHoursTable(
                 workweek = workweek,
                 locale = locale,
                 userLocale = userLocale,
+                content = addButtonContent,
             )
         }
     }

@@ -1,28 +1,39 @@
 package de.westnordost.streetcomplete.quests.parking_fee
 
+import android.os.Bundle
+import android.view.View
+import androidx.compose.foundation.layout.Column
+import androidx.compose.material.Surface
+import androidx.compose.material.Text
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.snapshotFlow
+import androidx.compose.ui.text.intl.Locale
+import androidx.lifecycle.lifecycleScope
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.databinding.QuestFeeHoursBinding
-import de.westnordost.streetcomplete.databinding.QuestMaxstayBinding
+import de.westnordost.streetcomplete.databinding.ComposeViewBinding
+import de.westnordost.streetcomplete.osm.duration.DurationInput
 import de.westnordost.streetcomplete.osm.fee.Fee
-import de.westnordost.streetcomplete.osm.maxstay.MaxStay
-import de.westnordost.streetcomplete.osm.opening_hours.toOpeningHours
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.parking_fee.AddParkingFeeForm.Mode.FEE_AT_HOURS
 import de.westnordost.streetcomplete.quests.parking_fee.AddParkingFeeForm.Mode.FEE_YES_NO
 import de.westnordost.streetcomplete.quests.parking_fee.AddParkingFeeForm.Mode.MAX_STAY
-import de.westnordost.streetcomplete.view.controller.DurationInputViewController
-import de.westnordost.streetcomplete.view.controller.DurationUnit
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.quest_fee_answer_no_but_maxstay
+import de.westnordost.streetcomplete.resources.quest_fee_answer_yes_but
+import de.westnordost.streetcomplete.ui.util.content
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
+import org.jetbrains.compose.resources.stringResource
 
 class AddParkingFeeForm : AbstractOsmQuestForm<ParkingFeeAnswer>() {
 
-    //private var feeAtHoursSelect: TimeRestrictionSelectViewController? = null
-
-    private var maxstayDurationInput: DurationInputViewController? = null
-    //private var maxstayAtHoursSelect: TimeRestrictionSelectViewController? = null
+    override val contentLayoutResId = R.layout.compose_view
+    private val binding by contentViewBinding(ComposeViewBinding::bind)
 
     override val buttonPanelAnswers get() =
-        if (mode == FEE_YES_NO) {
+        if (mode.value == FEE_YES_NO) {
             listOf(
                 AnswerItem(R.string.quest_generic_hasFeature_no) { applyAnswer(ParkingFeeAnswer(Fee.No)) },
                 AnswerItem(R.string.quest_generic_hasFeature_yes) { applyAnswer(ParkingFeeAnswer(Fee.Yes)) }
@@ -32,75 +43,51 @@ class AddParkingFeeForm : AbstractOsmQuestForm<ParkingFeeAnswer>() {
         }
 
     override val otherAnswers = listOf(
-        AnswerItem(R.string.quest_fee_answer_hours) { mode = FEE_AT_HOURS },
-        AnswerItem(R.string.quest_fee_answer_no_but_maxstay) { mode = MAX_STAY },
+        AnswerItem(R.string.quest_fee_answer_hours) { mode.value = FEE_AT_HOURS },
+        AnswerItem(R.string.quest_fee_answer_no_but_maxstay) { mode.value = MAX_STAY },
     )
 
-    private var mode: Mode = FEE_YES_NO
-        set(value) {
-            if (field == value) return
-            field = value
-            updateContentView()
-            updateButtonPanel()
-        }
+    private enum class Mode { FEE_YES_NO, FEE_AT_HOURS, MAX_STAY }
+    private var mode: MutableState<Mode> = mutableStateOf(FEE_YES_NO)
 
-    private fun updateContentView() {
-        clearViewControllers()
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-        if (mode == FEE_AT_HOURS) {
-            val binding = QuestFeeHoursBinding.bind(setContentView(R.layout.quest_fee_hours))
-/*
-            feeAtHoursSelect = TimeRestrictionSelectViewController(
-                binding.timeRestrictionSelect.selectAtHours,
-                binding.timeRestrictionSelect.openingHoursList,
-                binding.timeRestrictionSelect.addTimesButton
-            ).also {
-                it.firstDayOfWorkweek = countryInfo.firstDayOfWorkweek
-                it.regularShoppingDays = countryInfo.regularShoppingDays
-                it.locale = countryInfo.userPreferredLocale
-                it.onInputChanged = { checkIsFormComplete() }
-                // user already answered that it depends on the time, so don't show the "at any time" option
-                it.selectableTimeRestrictions = listOf(ONLY_AT_HOURS, EXCEPT_AT_HOURS)
+        snapshotFlow { mode.value }
+            .onEach {
+                updateButtonPanel()
+                checkIsFormComplete()
             }
+            .launchIn(lifecycleScope)
 
- */
-        } else if (mode == MAX_STAY) {
-            val binding = QuestMaxstayBinding.bind(setContentView(R.layout.quest_maxstay))
+        binding.composeViewBase.content { Surface {
+            if (mode.value == FEE_AT_HOURS) {
+                Column {
+                    Text(stringResource(Res.string.quest_fee_answer_yes_but))
+                    TimeRestrictionInput(
 
-            maxstayDurationInput = DurationInputViewController(
-                binding.durationInput.unitSelect,
-                binding.durationInput.input
-            ).also {
-                it.onInputChanged = { checkIsFormComplete() }
+                        countryInfo = countryInfo,
+                        locale = countryInfo.userPreferredLocale,
+                        userLocale = Locale.current,
+                        showAtAnyTime = false,
+                    )
+                }
+            } else if (mode.value == MAX_STAY) {
+                Column {
+                    Text(stringResource(Res.string.quest_fee_answer_no_but_maxstay))
+                    DurationInput(
+
+                    )
+                    TimeRestrictionInput(
+
+                        countryInfo = countryInfo,
+                        locale = countryInfo.userPreferredLocale,
+                        userLocale = Locale.current,
+                        showAtAnyTime = true,
+                    )
+                }
             }
-            /*
-            maxstayAtHoursSelect = TimeRestrictionSelectViewController(
-                binding.timeRestrictionSelect.selectAtHours,
-                binding.timeRestrictionSelect.openingHoursList,
-                binding.timeRestrictionSelect.addTimesButton
-            ).also {
-                it.firstDayOfWorkweek = countryInfo.firstDayOfWorkweek
-                it.regularShoppingDays = countryInfo.regularShoppingDays
-                it.locale = countryInfo.userPreferredLocale
-                it.onInputChanged = { checkIsFormComplete() }
-            }
-
-             */
-        }
-    }
-
-    private fun clearViewControllers() {
-        /*
-        feeAtHoursSelect = null
-        maxstayAtHoursSelect = null
-
-         */
-        maxstayDurationInput = null
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        clearViewControllers()
+        } }
     }
 
     override fun onClickOk() {
@@ -156,5 +143,4 @@ class AddParkingFeeForm : AbstractOsmQuestForm<ParkingFeeAnswer>() {
         else -> false
     }
 
-    private enum class Mode { FEE_YES_NO, FEE_AT_HOURS, MAX_STAY }
 }

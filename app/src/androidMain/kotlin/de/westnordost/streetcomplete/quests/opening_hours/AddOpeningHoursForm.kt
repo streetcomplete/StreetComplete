@@ -28,12 +28,12 @@ import de.westnordost.osm_opening_hours.parser.toOpeningHoursOrNull
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.ComposeViewBinding
 import de.westnordost.streetcomplete.osm.opening_hours.HierarchicOpeningHours
-import de.westnordost.streetcomplete.osm.opening_hours.Months
 import de.westnordost.streetcomplete.osm.opening_hours.toHierarchicOpeningHours
 import de.westnordost.streetcomplete.osm.opening_hours.toOpeningHours
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.quest_openingHours_add_times
 import de.westnordost.streetcomplete.resources.quest_openingHours_comment_description
 import de.westnordost.streetcomplete.ui.common.opening_hours.OpeningHoursTable
 import de.westnordost.streetcomplete.ui.common.opening_hours.TimeMode
@@ -111,6 +111,7 @@ class AddOpeningHoursForm : AbstractOsmQuestForm<OpeningHoursAnswer>() {
                 },
                 timeMode = TimeMode.Spans,
                 countryInfo = countryInfo,
+                addButtonContent = { Text(stringResource(Res.string.quest_openingHours_add_times)) },
                 locale = countryInfo.userPreferredLocale,
                 userLocale = Locale.current,
                 enabled = !isDisplayingPrevious.value,

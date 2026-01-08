@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.compose.material.Surface
+import androidx.compose.material.Text
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.snapshotFlow
@@ -18,11 +19,14 @@ import de.westnordost.streetcomplete.osm.opening_hours.toHierarchicOpeningHours
 import de.westnordost.streetcomplete.osm.opening_hours.toOpeningHours
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.quest_collectionTimes_add_times
 import de.westnordost.streetcomplete.ui.common.opening_hours.OpeningHoursTable
 import de.westnordost.streetcomplete.ui.common.opening_hours.TimeMode
 import de.westnordost.streetcomplete.ui.util.content
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
+import org.jetbrains.compose.resources.stringResource
 
 class AddPostboxCollectionTimesForm : AbstractOsmQuestForm<CollectionTimesAnswer>() {
 
@@ -52,8 +56,8 @@ class AddPostboxCollectionTimesForm : AbstractOsmQuestForm<CollectionTimesAnswer
             emptyList()
         }
 
-    override val otherAnswers = listOf(
-        AnswerItem(R.string.quest_collectionTimes_answer_no_times_specified) { confirmNoTimes() },
+    override val otherAnswers get() = listOf(
+        AnswerItem(R.string.quest_collectionTimes_answer_no_times_specified) { confirmNoSign() },
         when (timeMode.value) {
             TimeMode.Points -> AnswerItem(R.string.quest_collectionTimes_answer_time_spans) {
                 timeMode.value = TimeMode.Spans
@@ -87,9 +91,13 @@ class AddPostboxCollectionTimesForm : AbstractOsmQuestForm<CollectionTimesAnswer
         binding.composeViewBase.content { Surface {
             OpeningHoursTable(
                 openingHours = openingHours.value,
-                onChange = { openingHours.value = it },
+                onChange = {
+                    openingHours.value = it
+                    checkIsFormComplete()
+                },
                 timeMode = timeMode.value,
                 countryInfo = countryInfo,
+                addButtonContent = { Text(stringResource(Res.string.quest_collectionTimes_add_times)) },
                 locale = countryInfo.userPreferredLocale,
                 userLocale = Locale.current,
                 enabled = !isDisplayingPrevious.value,
@@ -103,7 +111,7 @@ class AddPostboxCollectionTimesForm : AbstractOsmQuestForm<CollectionTimesAnswer
         applyAnswer(CollectionTimes(openingHours.value.toOpeningHours()))
     }
 
-    private fun confirmNoTimes() {
+    private fun confirmNoSign() {
         AlertDialog.Builder(requireContext())
             .setTitle(R.string.quest_generic_confirmation_title)
             .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ -> applyAnswer(NoCollectionTimesSign) }

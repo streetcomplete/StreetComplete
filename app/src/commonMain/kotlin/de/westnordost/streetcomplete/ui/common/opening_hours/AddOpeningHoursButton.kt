@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.ui.common.opening_hours
 
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.RowScope
 import androidx.compose.material.DropdownMenu
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -18,7 +19,6 @@ import de.westnordost.streetcomplete.resources.quest_openingHours_add_hours
 import de.westnordost.streetcomplete.resources.quest_openingHours_add_months
 import de.westnordost.streetcomplete.resources.quest_openingHours_add_off_days
 import de.westnordost.streetcomplete.resources.quest_openingHours_add_time
-import de.westnordost.streetcomplete.resources.quest_openingHours_add_times
 import de.westnordost.streetcomplete.resources.quest_openingHours_add_weekdays
 import de.westnordost.streetcomplete.ui.common.Button2
 import de.westnordost.streetcomplete.ui.common.DropdownMenuItem
@@ -34,16 +34,16 @@ fun AddOpeningHoursButton(
     modifier: Modifier = Modifier,
     locale: Locale = Locale.current,
     userLocale: Locale = Locale.current,
+    content: @Composable (RowScope.() -> Unit),
 ) {
     var showAddDropdown by remember { mutableStateOf(false) }
     var addOpeningHoursRequest by remember { mutableStateOf<AddOpeningHoursRequest?>(null) }
 
     Box(modifier) {
         Button2(
-            onClick = { showAddDropdown = true }
-        ) {
-            Text(stringResource(Res.string.quest_openingHours_add_times))
-        }
+            onClick = { showAddDropdown = true },
+            content = content
+        )
         SelectOpeningHoursDropdown(
             expanded = showAddDropdown,
             openingHours = openingHours,
