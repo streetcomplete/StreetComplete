@@ -36,13 +36,28 @@ abstract class AMultipleSelectGroupQuestForm<T, I : T> : AbstractOsmQuestForm<Se
     override val defaultExpanded = false
 
     protected abstract val items: List<I>
-    protected val selectedOptions: MutableState<Set<I>> = mutableSetOf(emptySet())
+    // This can be private now as its usage is fully encapsulated in this class
+    private lateinit var selectedOptions: MutableState<Set<I>>
     @Composable protected abstract fun BoxScope.ItemContent(item: I)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.composeViewBase.content { Surface {
+            // State is hoisted here
             selectedOptions = remember { mutableStateOf(emptySet()) }
+
+            // This function will be passed down to the composable
+            val onSelectionChange = { option: I, selected: Boolean ->
+                selectedOptions.value = if (selected) {
+                    selectedOptions.value + option
+                } else {
+                    selectedOptions.value - option
+                }
+                checkIsFormComplete()
+                updateButtonPanel()
+                println("selectedOptions = ${selectedOptions.value}")
+            }
+
             Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                 CompositionLocalProvider(
                     LocalContentAlpha provides ContentAlpha.medium,
@@ -52,15 +67,9 @@ abstract class AMultipleSelectGroupQuestForm<T, I : T> : AbstractOsmQuestForm<Se
                 }
                 MultipleSelectGroup(
                     options = items,
-                    onSelectionChange = { option: I ->
-                        selectedOptions.value = if (selectedOptions.value.contains(option)) {
-                            selectedOptions.value - option
-                        } else {
-                            selectedOptions.value + option
-                        }
-                        checkIsFormComplete()
-                        updateButtonPanel()
-                    },
+                    // Pass the function reference
+                    onSelectionChange = onSelectionChange,
+                    // The composable now correctly reads the state that is managed above it
                     selectedOptions = selectedOptions.value,
                     itemContent = { ItemContent(it) }
                 )

@@ -6,8 +6,8 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.selection.selectableGroup
+import androidx.compose.foundation.selection.toggleable
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Checkbox
 import androidx.compose.material.Text
@@ -16,7 +16,6 @@ import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.quest_accepts_cards_credit_only
@@ -30,7 +29,7 @@ import org.jetbrains.compose.ui.tooling.preview.Preview
 @Composable
 fun <T> MultipleSelectGroup(
     options: List<T>,
-    onSelectionChange: (item: T, selected: Boolean)) -> Unit,
+    onSelectionChange: (item: T, selected: Boolean) -> Unit,
     selectedOptions: Set<T>,
     itemContent: @Composable BoxScope.(T) -> Unit,
     modifier: Modifier = Modifier
@@ -39,10 +38,9 @@ fun <T> MultipleSelectGroup(
         options.forEach { option ->
             Row(Modifier
                 .clip(MaterialTheme.shapes.small)
-                .selectable(
-                    selected = selectedOptions.contains(option),
-                    onClick = { onSelectionChange(option) },
-                    role = Role.RadioButton
+                .toggleable(
+                    value = selectedOptions.contains(option),
+                    onValueChange = { onSelectionChange(option, selectedOptions.contains(option)) }
                 )
                 .selectableGroup()
                 .padding(8.dp)
@@ -71,11 +69,11 @@ private fun TextItemMultipleSelectGroupFormPreview() {
 
     MultipleSelectGroup(
         options = listOf(0,1,2,3),
-        onSelectionChange = { option ->
-            selectedOptions.value = if (selectedOptions.value.contains(option)) {
+        onSelectionChange = { option: Int, selected: Boolean ->
+            selectedOptions.value = if (selected) {
                 selectedOptions.value + option
             } else {
-                selectedOptions.value + option
+                selectedOptions.value - option
             }
         },
         selectedOptions = selectedOptions.value,

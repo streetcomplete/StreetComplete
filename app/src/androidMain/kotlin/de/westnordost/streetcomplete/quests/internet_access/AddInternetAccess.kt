@@ -15,10 +15,12 @@ class AddInternetAccess : OsmFilterQuestType<Set<InternetAccess>>(), AndroidQues
     override val elementFilter = """
         nodes, ways with
         (
-          amenity ~ library|community_centre|youth_centre
+          amenity ~ library|community_centre|youth_centre|hospital|ranger_station
           or tourism ~ hotel|guest_house|motel|hostel|alpine_hut|apartment|resort|caravan_site|chalet|wilderness_hut
-          or tourism = camp_site and backcountry != yes and camp_site != basic
+          or tourism ~ camp_site and backcountry != yes and camp_site != basic
           or aeroway = terminal
+          or shop ~ mall|department_store
+          or tourism = information and information ~ board|visitor_center
         )
         and access !~ no|private
         and (
