@@ -30,7 +30,7 @@ import org.jetbrains.compose.ui.tooling.preview.Preview
 @Composable
 fun <T> MultipleSelectGroup(
     options: List<T>,
-    onSelectionChange: (T) -> Unit,
+    onSelectionChange: (item: T, selected: Boolean)) -> Unit,
     selectedOptions: Set<T>,
     itemContent: @Composable BoxScope.(T) -> Unit,
     modifier: Modifier = Modifier
