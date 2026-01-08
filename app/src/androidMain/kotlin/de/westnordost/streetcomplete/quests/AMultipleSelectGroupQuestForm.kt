@@ -36,7 +36,7 @@ abstract class AMultipleSelectGroupQuestForm<T, I : T> : AbstractOsmQuestForm<Se
     override val defaultExpanded = false
 
     protected abstract val items: List<I>
-    protected lateinit var selectedOptions: MutableState<Set<I>>
+    protected val selectedOptions: MutableState<Set<I>> = mutableSetOf(emptySet())
     @Composable protected abstract fun BoxScope.ItemContent(item: I)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
