@@ -1,5 +1,18 @@
 # Changelog
 
+## v62.2
+
+### Fixes
+- Recycling type: Images were tiny (#6683)
+- Places overlay: OK button didn't show when selecting "no name" (#6657)
+- Address overlay: OK button didn't show when tapping on a road (#6669), by @paulklie
+
+### Quest improvements
+- Postbox ref: Enable for Japan (#6680)
+- Bus stop ref: Enable for Singapore (#6656), by @arrival-spring
+- Ask for some more things on some quests (#6670), by @paulklie
+- Other small refinements (#6672, #6677, …), thanks @mnalis, @matkoniecz
+
 ## v62.1
 
 ### Fixes
