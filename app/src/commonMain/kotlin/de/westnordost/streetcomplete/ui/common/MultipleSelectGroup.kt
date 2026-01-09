@@ -27,6 +27,9 @@ import de.westnordost.streetcomplete.resources.quest_accepts_cards_credit_only
 import de.westnordost.streetcomplete.resources.quest_accepts_cards_debit_and_credit
 import de.westnordost.streetcomplete.resources.quest_accepts_cards_dedit_only
 import de.westnordost.streetcomplete.resources.quest_accepts_cards_unavailable
+import de.westnordost.streetcomplete.resources.quest_internet_access_terminal
+import de.westnordost.streetcomplete.resources.quest_internet_access_wired
+import de.westnordost.streetcomplete.resources.quest_internet_access_wlan
 import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
@@ -75,7 +78,7 @@ private fun TextItemMultipleSelectGroupFormPreview() {
     var selectedOptions by remember { mutableStateOf(emptySet<Int>()) }
 
     MultipleSelectGroup(
-        options = listOf(0, 1, 2, 3),
+        options = listOf(0, 1, 2),
         onSelectionChange = { option: Int, selected: Boolean ->
             selectedOptions = if (selected) {
                 selectedOptions + option
@@ -86,10 +89,9 @@ private fun TextItemMultipleSelectGroupFormPreview() {
         selectedOptions = selectedOptions,
         itemContent = {
             val text = when (it) {
-                0 -> Res.string.quest_accepts_cards_debit_and_credit
-                1 -> Res.string.quest_accepts_cards_credit_only
-                2 -> Res.string.quest_accepts_cards_dedit_only
-                3 -> Res.string.quest_accepts_cards_unavailable
+                0 -> Res.string.quest_internet_access_wlan
+                1 -> Res.string.quest_internet_access_terminal
+                2 -> Res.string.quest_internet_access_wired
                 else -> null
             }
             text?.let { Text(stringResource(text)) }
