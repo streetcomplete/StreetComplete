@@ -40,7 +40,8 @@ fun <T> MultipleSelectGroup(
                 .clip(MaterialTheme.shapes.small)
                 .toggleable(
                     value = selectedOptions.contains(option),
-                    onValueChange = { onSelectionChange(option, selectedOptions.contains(option)) }
+                    onValueChange = { onSelectionChange(option, selectedOptions.contains(option)) },
+                    role = Role.Checkbox,
                 )
                 .selectableGroup()
                 .padding(8.dp)
