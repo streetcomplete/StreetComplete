@@ -12,7 +12,6 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Checkbox
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -23,10 +22,6 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.quest_accepts_cards_credit_only
-import de.westnordost.streetcomplete.resources.quest_accepts_cards_debit_and_credit
-import de.westnordost.streetcomplete.resources.quest_accepts_cards_dedit_only
-import de.westnordost.streetcomplete.resources.quest_accepts_cards_unavailable
 import de.westnordost.streetcomplete.resources.quest_internet_access_terminal
 import de.westnordost.streetcomplete.resources.quest_internet_access_wired
 import de.westnordost.streetcomplete.resources.quest_internet_access_wlan
@@ -51,7 +46,6 @@ fun <T> MultipleSelectGroup(
                     onValueChange = { onSelectionChange(option, selectedOptions.contains(option)) },
                     role = Role.Checkbox,
                 )
-                .selectableGroup()
                 .padding(8.dp)
             ) {
                 Checkbox(
