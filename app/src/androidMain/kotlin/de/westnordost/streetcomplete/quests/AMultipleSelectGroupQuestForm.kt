@@ -52,7 +52,6 @@ abstract class AMultipleSelectGroupQuestForm<T, I : T> : AbstractOsmQuestForm<Se
                 }
                 checkIsFormComplete()
                 updateButtonPanel()
-                println("selectedOptions = ${selectedOptions.value}")
             }
 
             Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
