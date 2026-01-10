@@ -42,7 +42,7 @@ fun <T> MultipleSelectGroup(
     itemContent: @Composable BoxScope.(T) -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    Column(modifier) {
+    Column(modifier.selectableGroup()) {
         options.forEach { option ->
             Row(Modifier
                 .clip(MaterialTheme.shapes.small)
