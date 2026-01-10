@@ -24,7 +24,11 @@ import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
@@ -93,8 +97,9 @@ fun LoginScreen(
                 modifier = Modifier.fillMaxSize()
             )
         } else if (state is RequestingAuthorization) {
+            val authUrl = viewModel.authorizationRequestUrl
             val webViewState = rememberWebViewState(
-                url = viewModel.authorizationRequestUrl,
+                url = authUrl,
                 additionalHttpHeaders = mapOf(
                     "Accept-Language" to Locale.current.toLanguageTag()
                 )
@@ -116,6 +121,34 @@ fun LoginScreen(
                 }
             )
 
+            // If the WebView drifts to the OSM homepage during auth reload the authorization URL
+            val retryCount = rememberSaveable { mutableStateOf(0) }
+
+            val lastUrl = webViewState.lastLoadedUrl?.toString().orEmpty()
+            val normalizedUrl = remember(lastUrl) {
+                lastUrl.trim().trimEnd('/')
+            }
+
+            val isOnOsmHome by remember(normalizedUrl) {
+                derivedStateOf {
+                    normalizedUrl == "https://www.openstreetmap.org"
+                }
+            }
+
+            val isOnAuthorizationPage by remember(normalizedUrl) {
+                derivedStateOf {
+                    normalizedUrl.contains("/oauth2/authorize")
+                }
+            }
+
+            LaunchedEffect(isOnOsmHome, isOnAuthorizationPage) {
+                if (isOnOsmHome && !isOnAuthorizationPage && retryCount.value < 3) {
+                    retryCount.value += 1
+                    webViewNavigator.loadUrl(authUrl)
+                }
+            }
+
+
             // handle error response
             LaunchedEffect(webViewState.errorsForCurrentRequest) {
                 val error = webViewState.errorsForCurrentRequest.firstOrNull()
@@ -128,11 +161,14 @@ fun LoginScreen(
                 }
             }
 
-            Box(Modifier
-                .fillMaxSize()
-                .windowInsetsPadding(WindowInsets.safeDrawing.only(
-                    WindowInsetsSides.Horizontal + WindowInsetsSides.Bottom
-                ))
+            Box(
+                Modifier
+                    .fillMaxSize()
+                    .windowInsetsPadding(
+                        WindowInsets.safeDrawing.only(
+                            WindowInsetsSides.Horizontal + WindowInsetsSides.Bottom
+                        )
+                    )
             ) {
                 if (webViewState.loadingState is LoadingState.Loading) {
                     LinearProgressIndicator(Modifier.fillMaxWidth())
