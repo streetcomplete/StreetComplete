@@ -19,7 +19,6 @@ class AddCaravans : OsmFilterQuestType<Boolean>(), AndroidQuest {
         nodes, ways with
           tourism = camp_site
           and !caravans
-          and !backcountry
     """
     override val changesetComment = "Survey who may camp here"
     override val wikiLink = "Key:caravans"
