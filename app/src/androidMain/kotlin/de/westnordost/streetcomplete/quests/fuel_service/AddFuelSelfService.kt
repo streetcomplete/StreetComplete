@@ -22,7 +22,7 @@ class AddFuelSelfService : OsmFilterQuestType<Boolean>(), AndroidQuest {
     override val wikiLink = "Key:self_service"
     override val icon = R.drawable.quest_fuel_self_service
     override val achievements = listOf(CAR)
-    override val enabledInCountries = NoCountriesExcept("IT", "UK")
+    override val enabledInCountries = NoCountriesExcept("IT", "GB")
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_fuelSelfService_title
 
