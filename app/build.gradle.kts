@@ -40,6 +40,7 @@ plugins {
     id("org.jetbrains.compose") version "1.9.3"
     id("org.jetbrains.kotlinx.atomicfu") version "0.29.0"
     id("com.codingfeline.buildkonfig") version "0.17.1"
+    id("kotlin-parcelize")
 }
 
 repositories {
@@ -214,6 +215,13 @@ kotlin {
 
                 // map and location
                 implementation("org.maplibre.gl:android-sdk:12.1.0")
+
+                // OCR for opening hours photo scanning
+                implementation("com.google.mlkit:text-recognition:16.0.1")
+                // Coroutines support for Google Play Services Tasks (for ML Kit await)
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.10.2")
+                // Material Icons for Compose
+                implementation("androidx.compose.material:material-icons-core:1.7.8")
             }
         }
         iosMain {

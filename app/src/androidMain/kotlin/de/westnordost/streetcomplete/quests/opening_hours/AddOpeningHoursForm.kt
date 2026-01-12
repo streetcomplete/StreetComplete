@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests.opening_hours
 import android.os.Bundle
 import android.view.Menu.NONE
 import android.view.View
+import androidx.activity.result.ActivityResultLauncher
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.PopupMenu
 import androidx.core.view.isGone
@@ -19,6 +20,9 @@ import de.westnordost.streetcomplete.osm.opening_hours.parser.toOpeningHoursRows
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.opening_hours.adapter.OpeningHoursAdapter
+import de.westnordost.streetcomplete.quests.opening_hours.ocr.OcrOpeningHoursResult
+import de.westnordost.streetcomplete.quests.opening_hours.ocr.OpeningHoursOcrContract
+import de.westnordost.streetcomplete.quests.opening_hours.ocr.toOpeningHoursRows
 import de.westnordost.streetcomplete.view.AdapterDataChangedWatcher
 import kotlinx.serialization.json.Json
 
@@ -55,8 +59,14 @@ class AddOpeningHoursForm : AbstractOsmQuestForm<OpeningHoursAnswer>() {
 
     private var isDisplayingPreviousOpeningHours: Boolean = false
 
+    private lateinit var ocrLauncher: ActivityResultLauncher<Unit>
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        ocrLauncher = registerForActivityResult(OpeningHoursOcrContract()) { result ->
+            result?.let { populateFromOcrResult(it) }
+        }
 
         openingHoursAdapter = OpeningHoursAdapter(requireContext())
         openingHoursAdapter.firstDayOfWorkweek = countryInfo.firstDayOfWorkweek
@@ -81,6 +91,7 @@ class AddOpeningHoursForm : AbstractOsmQuestForm<OpeningHoursAnswer>() {
         checkIsFormComplete()
 
         binding.addTimesButton.setOnClickListener { onClickAddButton(it) }
+        binding.scanPhotoButton.setOnClickListener { launchOcrFlow() }
     }
 
     private fun onClickAddButton(v: View) {
@@ -162,7 +173,7 @@ class AddOpeningHoursForm : AbstractOsmQuestForm<OpeningHoursAnswer>() {
     private fun setAsResurvey(resurvey: Boolean) {
         openingHoursAdapter.isEnabled = !resurvey
         isDisplayingPreviousOpeningHours = resurvey
-        binding.addTimesButton.isGone = resurvey
+        binding.buttonsRow.isGone = resurvey
         updateButtonPanel()
     }
 
@@ -182,6 +193,16 @@ class AddOpeningHoursForm : AbstractOsmQuestForm<OpeningHoursAnswer>() {
             .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ -> applyAnswer(NoOpeningHoursSign) }
             .setNegativeButton(R.string.quest_generic_confirmation_no, null)
             .show()
+    }
+
+    private fun launchOcrFlow() {
+        ocrLauncher.launch(Unit)
+    }
+
+    private fun populateFromOcrResult(result: OcrOpeningHoursResult) {
+        openingHoursAdapter.rows = result.toOpeningHoursRows().toMutableList()
+        setAsResurvey(false)
+        checkIsFormComplete()
     }
 
     override fun isFormComplete() = openingHoursAdapter.rows.isNotEmpty() && !isDisplayingPreviousOpeningHours
