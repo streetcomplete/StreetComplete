@@ -1,33 +1,43 @@
 package de.westnordost.streetcomplete.osm.fee
 
-import de.westnordost.osm_opening_hours.model.OpeningHours
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.osm.opening_hours.toOpeningHours
+import de.westnordost.streetcomplete.osm.time_restriction.TimeRestriction
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 
 sealed interface Fee {
-    data object Yes : Fee
-    data object No : Fee
-    data class During(val hours: OpeningHours) : Fee
-    data class ExceptDuring(val hours: OpeningHours) : Fee
+    fun isComplete(): Boolean
+
+    data class Yes(val timeRestriction: TimeRestriction? = null) : Fee {
+        override fun isComplete(): Boolean =
+            timeRestriction?.isComplete() != false
+    }
+    data object No : Fee {
+        override fun isComplete(): Boolean = true
+    }
 }
 
 fun Fee.applyTo(tags: Tags) {
     when (this) {
         is Fee.Yes -> {
-            tags.updateWithCheckDate("fee", "yes")
-            tags.remove("fee:conditional")
+            when (timeRestriction?.mode) {
+                TimeRestriction.Mode.ONLY_AT_HOURS -> {
+                    tags.updateWithCheckDate("fee", "no")
+                    tags["fee:conditional"] = "yes @ (${timeRestriction.hours.toOpeningHours()})"
+                }
+                TimeRestriction.Mode.EXCEPT_AT_HOURS -> {
+                    tags.updateWithCheckDate("fee", "yes")
+                    tags["fee:conditional"] = "no @ (${timeRestriction.hours.toOpeningHours()})"
+                }
+                null -> {
+                    tags.updateWithCheckDate("fee", "yes")
+                    tags.remove("fee:conditional")
+                }
+            }
         }
         is Fee.No -> {
             tags.updateWithCheckDate("fee", "no")
             tags.remove("fee:conditional")
-        }
-        is Fee.During -> {
-            tags.updateWithCheckDate("fee", "no")
-            tags["fee:conditional"] = "yes @ ($hours)"
-        }
-        is Fee.ExceptDuring -> {
-            tags.updateWithCheckDate("fee", "yes")
-            tags["fee:conditional"] = "no @ ($hours)"
         }
     }
 }

@@ -14,6 +14,7 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.isPlaceOrDisusedPlace
 import de.westnordost.streetcomplete.osm.opening_hours.isSupportedOpeningHours
+import de.westnordost.streetcomplete.osm.opening_hours.toOpeningHours
 import de.westnordost.streetcomplete.osm.updateCheckDateForKey
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 
@@ -197,7 +198,7 @@ mapOf(
             // don't delete current opening hours: these may be the correct hours, they are just not visible anywhere on the door
         } else {
             val openingHoursString = when (answer) {
-                is RegularOpeningHours  -> answer.hours.toString()
+                is RegularOpeningHours  -> answer.hours.toOpeningHours().toString()
                 is AlwaysOpen           -> "24/7"
                 is DescribeOpeningHours -> "\"" + answer.text.replace("\"", "") + "\""
                 NoOpeningHoursSign      -> throw IllegalStateException()

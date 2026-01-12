@@ -13,6 +13,7 @@ import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.POSTMAN
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.opening_hours.isSupportedOpeningHours
+import de.westnordost.streetcomplete.osm.opening_hours.toOpeningHours
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 
 class AddPostboxCollectionTimes : OsmElementQuestType<CollectionTimesAnswer>, AndroidQuest {
@@ -95,7 +96,7 @@ class AddPostboxCollectionTimes : OsmElementQuestType<CollectionTimesAnswer>, An
                 tags["collection_times:signed"] = "no"
             }
             is CollectionTimes -> {
-                tags.updateWithCheckDate("collection_times", answer.times.toString())
+                tags.updateWithCheckDate("collection_times", answer.times.toOpeningHours().toString())
             }
         }
     }

@@ -2,7 +2,10 @@ package de.westnordost.streetcomplete.osm.duration
 
 import de.westnordost.streetcomplete.osm.duration.DurationUnit.*
 import de.westnordost.streetcomplete.util.ktx.toShortString
+import kotlinx.serialization.Serializable
 
+/** A duration, as used in OSM for e.g. maxstay */
+@Serializable
 data class Duration(val value: Double, val unit: DurationUnit) {
     fun toOsmValue(): String =
         value.toShortString() + " " + when (unit) {
@@ -12,4 +15,8 @@ data class Duration(val value: Double, val unit: DurationUnit) {
         }
 }
 
-enum class DurationUnit { MINUTES, HOURS, DAYS }
+enum class DurationUnit {
+    MINUTES,
+    HOURS,
+    DAYS,
+}

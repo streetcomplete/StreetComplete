@@ -60,7 +60,7 @@ class AddOpeningHoursForm : AbstractOsmQuestForm<OpeningHoursAnswer>() {
                 AnswerItem(R.string.quest_generic_hasFeature_no) { isDisplayingPrevious.value = false },
                 AnswerItem(R.string.quest_generic_hasFeature_yes) {
                     applyAnswer(RegularOpeningHours(
-                        element.tags["opening_hours"]!!.toOpeningHours(lenient = true)
+                        element.tags["opening_hours"]!!.toOpeningHours(lenient = true).toHierarchicOpeningHours()!!
                     ))
                 }
             )
@@ -121,7 +121,7 @@ class AddOpeningHoursForm : AbstractOsmQuestForm<OpeningHoursAnswer>() {
     }
 
     override fun onClickOk() {
-        applyAnswer(RegularOpeningHours(openingHours.value.toOpeningHours()))
+        applyAnswer(RegularOpeningHours(openingHours.value))
     }
 
     private fun showInputCommentDialog() {

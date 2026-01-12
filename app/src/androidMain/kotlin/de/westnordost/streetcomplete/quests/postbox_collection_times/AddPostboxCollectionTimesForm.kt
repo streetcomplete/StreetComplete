@@ -48,7 +48,9 @@ class AddPostboxCollectionTimesForm : AbstractOsmQuestForm<CollectionTimesAnswer
                 AnswerItem(R.string.quest_generic_hasFeature_no) { isDisplayingPrevious.value = false },
                 AnswerItem(R.string.quest_generic_hasFeature_yes) {
                     applyAnswer(CollectionTimes(
-                        element.tags["collection_times"]!!.toOpeningHours(lenient = true)
+                        element.tags["collection_times"]!!
+                            .toOpeningHours(lenient = true)
+                            .toHierarchicOpeningHours(allowTimePoints = true)!!
                     ))
                 }
             )
@@ -108,7 +110,7 @@ class AddPostboxCollectionTimesForm : AbstractOsmQuestForm<CollectionTimesAnswer
     }
 
     override fun onClickOk() {
-        applyAnswer(CollectionTimes(openingHours.value.toOpeningHours()))
+        applyAnswer(CollectionTimes(openingHours.value))
     }
 
     private fun confirmNoSign() {

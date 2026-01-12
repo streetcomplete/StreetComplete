@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests.parking_fee
+package de.westnordost.streetcomplete.osm.time_restriction
 
 
 import androidx.compose.foundation.layout.Column
@@ -9,6 +9,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.intl.Locale
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.osm.opening_hours.HierarchicOpeningHours
+import de.westnordost.streetcomplete.osm.time_restriction.TimeRestriction.Mode.*
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.at_any_time
 import de.westnordost.streetcomplete.resources.except_at_hours
@@ -20,50 +21,52 @@ import de.westnordost.streetcomplete.ui.common.opening_hours.OpeningHoursTable
 import de.westnordost.streetcomplete.ui.common.opening_hours.TimeMode
 import org.jetbrains.compose.resources.stringResource
 
-/** Input field to enter a time restriction (i.e. only at hours..., except at hours... or at any time) */
+/** Input field to enter a time restriction (i.e. only at hours..., except at hours... or null for
+ *  no time restriction.) */
 @Composable
 fun TimeRestrictionInput(
-    timeRestriction: TimeRestriction,
-    onChangeTimeRestriction: (TimeRestriction) -> Unit,
-    hours: HierarchicOpeningHours,
-    onChangeHours: (HierarchicOpeningHours) -> Unit,
+    timeRestriction: TimeRestriction?,
+    onChange: (TimeRestriction?) -> Unit,
     countryInfo: CountryInfo,
     modifier: Modifier = Modifier,
-    locale: Locale = Locale.current,
-    userLocale: Locale = Locale.current,
-    showAtAnyTime: Boolean = true,
+    allowSelectNoRestriction: Boolean = true,
 ) {
-    val items = remember(showAtAnyTime) {
-        if (showAtAnyTime) TimeRestriction.entries
-        else listOf(TimeRestriction.ONLY_AT_HOURS, TimeRestriction.EXCEPT_AT_HOURS)
+    val modes = remember(allowSelectNoRestriction) {
+        buildList {
+            if (allowSelectNoRestriction) add(null)
+            addAll(TimeRestriction.Mode.entries)
+        }
     }
 
     Column(modifier) {
         DropdownButton(
-            items = items,
-            onSelectedItem = onChangeTimeRestriction,
-            selectedItem = timeRestriction,
+            items = modes,
+            onSelectedItem = { newMode ->
+                onChange(newMode?.let {
+                    TimeRestriction(timeRestriction?.hours ?: HierarchicOpeningHours(), it)
+                })
+            },
+            selectedItem = timeRestriction?.mode,
             style = ButtonStyle.Outlined,
             itemContent = { Text(stringResource(it.text)) }
         )
-        if (timeRestriction != TimeRestriction.AT_ANY_TIME) {
+
+        if (timeRestriction != null) {
             OpeningHoursTable(
-                openingHours = hours,
-                onChange = onChangeHours,
+                openingHours = timeRestriction.hours,
+                onChange = { onChange(timeRestriction.copy(hours = it)) },
                 timeMode = TimeMode.Spans,
                 countryInfo = countryInfo,
                 addButtonContent = { Text(stringResource(Res.string.quest_fee_add_times)) },
-                locale = locale,
-                userLocale = userLocale,
+                locale = countryInfo.userPreferredLocale,
+                userLocale = Locale.current,
             )
         }
     }
 }
 
-enum class TimeRestriction { AT_ANY_TIME, ONLY_AT_HOURS, EXCEPT_AT_HOURS }
-
-private val TimeRestriction.text get() = when (this) {
-    TimeRestriction.AT_ANY_TIME -> Res.string.at_any_time
-    TimeRestriction.ONLY_AT_HOURS -> Res.string.only_at_hours
-    TimeRestriction.EXCEPT_AT_HOURS -> Res.string.except_at_hours
+private val TimeRestriction.Mode?.text get() = when (this) {
+    null -> Res.string.at_any_time
+    ONLY_AT_HOURS -> Res.string.only_at_hours
+    EXCEPT_AT_HOURS -> Res.string.except_at_hours
 }
