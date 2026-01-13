@@ -47,11 +47,7 @@ class AddPostboxCollectionTimesForm : AbstractOsmQuestForm<CollectionTimesAnswer
             listOf(
                 AnswerItem(R.string.quest_generic_hasFeature_no) { isDisplayingPrevious.value = false },
                 AnswerItem(R.string.quest_generic_hasFeature_yes) {
-                    applyAnswer(CollectionTimes(
-                        element.tags["collection_times"]!!
-                            .toOpeningHours(lenient = true)
-                            .toHierarchicOpeningHours(allowTimePoints = true)!!
-                    ))
+                    applyAnswer(CollectionTimes(originalOpeningHours!!))
                 }
             )
         } else {

@@ -13,7 +13,8 @@ import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.isPlaceOrDisusedPlace
-import de.westnordost.streetcomplete.osm.opening_hours.isSupportedOpeningHours
+import de.westnordost.streetcomplete.osm.opening_hours.isLikelyIncorrect
+import de.westnordost.streetcomplete.osm.opening_hours.isSupported
 import de.westnordost.streetcomplete.osm.opening_hours.toOpeningHours
 import de.westnordost.streetcomplete.osm.updateCheckDateForKey
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
@@ -159,7 +160,7 @@ mapOf(
     override fun getTitle(tags: Map<String, String>): Int {
         // treat invalid opening hours like it is not set at all
         val oh = tags["opening_hours"]?.toOpeningHoursOrNull(lenient = true)
-        val hasSupportedOpeningHours = oh != null && oh.isSupportedOpeningHours()
+        val hasSupportedOpeningHours = oh != null && oh.isSupported()
         return if (hasSupportedOpeningHours) {
             R.string.quest_openingHours_resurvey_title
         } else {
@@ -180,10 +181,8 @@ mapOf(
         // invalid opening_hours rules -> applicable because we want to ask for opening hours again
         // be strict
         val oh = ohStr.toOpeningHoursOrNull(lenient = false) ?: return true
-        // only display supported rules, however, those that are supported but have colliding
-        // weekdays or have only in parts months defined should be shown (->resurveyed), as they are
-        // likely mistakes or are at least prone to being ambiguous
-        return oh.rules.all { rule -> rule.isSupportedOpeningHours() } && !oh.containsTimePoints()
+        // only display supported rules, or ambiguous rules that should be corrected
+        return oh.isSupported(allowTimePoints = false) || oh.isLikelyIncorrect()
     }
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =

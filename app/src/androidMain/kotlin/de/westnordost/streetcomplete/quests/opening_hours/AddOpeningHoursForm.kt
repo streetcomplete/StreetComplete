@@ -59,9 +59,7 @@ class AddOpeningHoursForm : AbstractOsmQuestForm<OpeningHoursAnswer>() {
             listOf(
                 AnswerItem(R.string.quest_generic_hasFeature_no) { isDisplayingPrevious.value = false },
                 AnswerItem(R.string.quest_generic_hasFeature_yes) {
-                    applyAnswer(RegularOpeningHours(
-                        element.tags["opening_hours"]!!.toOpeningHours(lenient = true).toHierarchicOpeningHours()!!
-                    ))
+                    applyAnswer(RegularOpeningHours(originalOpeningHours!!))
                 }
             )
         } else {

@@ -81,10 +81,13 @@ fun MonthsOrDateSelectorSelectDialog(
             TextButton(onClick = onDismissRequest) {
                 Text(stringResource(Res.string.cancel))
             }
-            TextButton(onClick = {
-                onSelected(selection.toMonthsSelectors())
-                onDismissRequest()
-            }) {
+            TextButton(
+                enabled = selection.isNotEmpty(),
+                onClick = {
+                    onSelected(selection.toMonthsSelectors())
+                    onDismissRequest()
+                }
+            ) {
                 Text(stringResource(Res.string.ok))
             }
         }

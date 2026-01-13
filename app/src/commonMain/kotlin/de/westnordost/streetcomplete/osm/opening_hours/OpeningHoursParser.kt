@@ -13,7 +13,7 @@ fun OpeningHours.toHierarchicOpeningHours(
     if (rules.isEmpty()) {
         return null
     }
-    if (!isSupportedOpeningHours(allowTimePoints)) {
+    if (!isSupported(allowTimePoints)) {
         // parsable, but not supported by StreetComplete
         return null
     }

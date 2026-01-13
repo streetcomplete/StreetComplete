@@ -30,23 +30,35 @@ import kotlin.jvm.JvmName
 /** Returns true if supported by StreetComplete, i.e. can be displayed in the
  *  widget.
  *
- *  Supported are (plain)
+ *  Supported are:
  *  - months, month ranges
  *  - weekdays, weekday ranges, PH
  *  - "off" rules with exclusively weekdays, weekday ranges, PH
- *  - time spans, open end
+ *  - clock time spans with optional open end, or clock time points
  *
  *  Weekdays that collide (Mo-Fr 8:30-12:30; We 14:00-18:00) are not supported - they are likely
  *  tagging mistakes (Maybe user meant to use "," instead of ";"?).
+ *
  *  Also, when any rule has months defined, all rules must have months defined, for clarity.
  */
-fun OpeningHours.isSupportedOpeningHours(allowTimePoints: Boolean = false): Boolean =
-    rules.all { rule -> rule.isSupportedOpeningHours() } &&
+fun OpeningHours.isSupported(allowTimePoints: Boolean = false): Boolean =
+    rules.all { rule -> rule.isSupported() } &&
         (allowTimePoints || !containsTimePoints()) &&
         !rules.hasCollidingWeekdays() &&
         !rules.hasIncompleteMonths()
 
-fun Rule.isSupportedOpeningHours(): Boolean =
+/** Return whether the given valid opening hours are however ambiguous and thus should be corrected.
+ *  */
+fun OpeningHours.isLikelyIncorrect(): Boolean =
+    // in #6175 we decided to not classify opening hours that have incomplete months as ambiguous
+    // (but just don't support them at all), mainly due to fears that if the previous opening hours
+    // like e.g. "12:00-18:00; Nov-Feb 12:00-14:00" are not shown in the opening hours widget, the
+    // user might input only the hours for summer or only for winter in case the opening hours
+    // plates are just swapped twice a year by the shop. (Showing those to the user would somewhat
+    // keep the user from overwriting, but they can't be shown because they are unsupported)
+    rules.hasCollidingWeekdays()
+
+fun Rule.isSupported(): Boolean =
     // comments not supported
     comment == null &&
     // fallback rules not supported
@@ -62,13 +74,13 @@ fun Rule.isSupportedOpeningHours(): Boolean =
             ruleOperator == RuleOperator.Normal &&
                 !selector.hasTimes()
     } &&
-    (selector as? Range)?.isSupportedOpeningHours() == true
+    (selector as? Range)?.isSupported() == true
 
 private fun Selector.hasTimes(): Boolean =
     this is Range && !times.isNullOrEmpty()
 
 // only months ranges, weekdays+holidays and times are supported
-private fun Range.isSupportedOpeningHours(): Boolean =
+private fun Range.isSupported(): Boolean =
     text == null &&
     years.isNullOrEmpty() &&
     weeks.isNullOrEmpty() &&

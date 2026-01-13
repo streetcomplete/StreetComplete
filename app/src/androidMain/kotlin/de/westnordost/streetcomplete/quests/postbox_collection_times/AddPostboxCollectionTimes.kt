@@ -12,7 +12,8 @@ import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.POSTMAN
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.osm.opening_hours.isSupportedOpeningHours
+import de.westnordost.streetcomplete.osm.opening_hours.isLikelyIncorrect
+import de.westnordost.streetcomplete.osm.opening_hours.isSupported
 import de.westnordost.streetcomplete.osm.opening_hours.toOpeningHours
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 
@@ -60,7 +61,7 @@ class AddPostboxCollectionTimes : OsmElementQuestType<CollectionTimesAnswer>, An
            legal tagging for collection times, even though they are not supported in
            this app, i.e. are never asked again */
         val oh = tags["collection_times"]?.toOpeningHoursOrNull(lenient = true)
-        val hasSupportedCollectionTimes = oh != null && oh.isSupportedOpeningHours(allowTimePoints = true)
+        val hasSupportedCollectionTimes = oh != null && oh.isSupported(allowTimePoints = true)
         return if (hasSupportedCollectionTimes) {
             R.string.quest_postboxCollectionTimes_resurvey_title
         } else {
@@ -79,10 +80,8 @@ class AddPostboxCollectionTimes : OsmElementQuestType<CollectionTimesAnswer>, An
         // invalid opening_hours rules -> applicable because we want to ask for opening hours again
         // be strict
         val oh = ct.toOpeningHoursOrNull(lenient = false) ?: return true
-        // only display supported rules, however, those that are supported but have colliding
-        // weekdays or have only in parts months defined should be shown (->resurveyed), as they are
-        // likely mistakes or are at least prone to being ambiguous
-        return oh.rules.all { rule -> rule.isSupportedOpeningHours() }
+        // only display supported rules, or ambiguous rules that should be corrected
+        return oh.isSupported(allowTimePoints = true) || oh.isLikelyIncorrect()
     }
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
