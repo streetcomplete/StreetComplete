@@ -48,7 +48,8 @@ fun TimeRestrictionInput(
             },
             selectedItem = timeRestriction?.mode,
             style = ButtonStyle.Outlined,
-            itemContent = { Text(stringResource(it.text)) }
+            itemContent = { Text(stringResource(it.text)) },
+            content = { Text(stringResource(timeRestriction?.mode.text)) }
         )
 
         if (timeRestriction != null) {

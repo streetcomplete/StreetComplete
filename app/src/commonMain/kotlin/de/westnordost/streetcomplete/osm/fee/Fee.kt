@@ -6,15 +6,13 @@ import de.westnordost.streetcomplete.osm.time_restriction.TimeRestriction
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 
 sealed interface Fee {
-    fun isComplete(): Boolean
+    fun isComplete(): Boolean = when (this) {
+        No -> true
+        is Yes ->  timeRestriction?.isComplete() != false
+    }
 
-    data class Yes(val timeRestriction: TimeRestriction? = null) : Fee {
-        override fun isComplete(): Boolean =
-            timeRestriction?.isComplete() != false
-    }
-    data object No : Fee {
-        override fun isComplete(): Boolean = true
-    }
+    data class Yes(val timeRestriction: TimeRestriction? = null) : Fee
+    data object No : Fee
 }
 
 fun Fee.applyTo(tags: Tags) {
