@@ -1,7 +1,7 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 additionalStreetsignLanguages: [sr-Latn, en]
-atmOperators: [AIK banka, Payten, Поштанска штедионица, Yettel bank, НЛБ Комерцијална банка, UniCredit Bank, Banca Intesa, OTP banka, Raiffeisen bank, Erste Bank, Halkbank, Eurobank, Beograd, Addiko Bank, 3 Банка, Poštanska štedionica, Čačak, Sopot, Sokobanja]
-chargingStationOperators: [Газпром, Tesla]
+atmOperators: [AIK banka, Payten, Поштанска штедионица, Yettel bank, НЛБ Комерцијална банка, UniCredit Bank, Banca Intesa, OTP banka, Raiffeisen bank, Erste Bank, Halkbank, Eurobank, Addiko Bank, Beograd, 3 Банка, Poštanska štedionica, Čačak, Sopot, Sokobanja]
+chargingStationOperators: [Putevi Srbije, Газпром, Tesla]
 defaultSpeedLimitHasUrbanOrRural: true
 hasDailyAlternateSideParkingSign: true
 hasLivingStreet: true

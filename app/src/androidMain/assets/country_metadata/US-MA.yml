@@ -1,6 +1,6 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [Bank of America, Santander, Citizens Bank, TD Bank, Chase, Cambridge Savings Bank, Florence Savings Bank, Watertown Savings Bank, Shrewsbury Federal Credit Union, Rockland Trust, Middlesex Savings Bank, MIT Federal Credit Union, Eastern Bank, Digital Credit Union, Adams Community Bank]
-chargingStationOperators: [ChargePoint, 'Tesla, Inc.', Tesla, EVgo, Electrify America, Guardian Energy Management Solutions, Shell Recharge Solutions, National Grid, Blink, AmpUp, ABB]
+atmOperators: [Bank of America, Santander, Citizens Bank, TD Bank, Chase, Cambridge Savings Bank, Rockland Trust, Florence Savings Bank, Watertown Savings Bank, Shrewsbury Federal Credit Union, Salem Five Bank, Middlesex Savings Bank, MIT Federal Credit Union, Eastern Bank, Digital Credit Union, Adams Community Bank]
+chargingStationOperators: [ChargePoint, 'Tesla, Inc.', Tesla, EVgo, Electrify America, FLO, Guardian Energy Management Solutions, Shell Recharge Solutions, National Grid, Blink, AmpUp, ABB]
 clothesContainerOperators: [City of Cambridge, Morgan Memorial Goodwill Industries]
 defaultSpeedLimitHasUrbanOrRural: true
 parcelLockerBrand: [Amazon Hub, Amazon Locker]

@@ -38,7 +38,7 @@ fun <T> RadioGroup(
     itemContent: @Composable BoxScope.(T) -> Unit,
     modifier: Modifier = Modifier
 ) {
-    Column(modifier) {
+    Column(modifier.selectableGroup()) {
         options.forEach { option ->
             Row(Modifier
                 .clip(MaterialTheme.shapes.small)
@@ -47,7 +47,6 @@ fun <T> RadioGroup(
                     onClick = { onSelectionChange(option) },
                     role = Role.RadioButton
                 )
-                .selectableGroup()
                 .padding(8.dp)
             ) {
                 RadioButton(

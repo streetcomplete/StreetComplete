@@ -31,6 +31,7 @@ class AddOpeningHours() : OsmElementQuestType<OpeningHoursAnswer>, AndroidQuest 
                     shop and shop !~ no|vacant
                     or amenity = social_facility and social_facility ~ food_bank|clothing_bank|soup_kitchen|dairy_kitchen
                     or natural = cave_entrance and fee = yes
+                    or historic = castle and fee = yes
                     or """ +
 
 // The common list is shared by the name quest, the opening hours quest and the wheelchair quest.
@@ -89,7 +90,7 @@ mapOf(
         // common
         "carpenter", "shoemaker", "tailor", "photographer", "dressmaker",
         "electronics_repair", "key_cutter", "stonemason", "bookbinder",
-        "jeweller", "sailmaker", "jeweller", "watchmaker", "clockmaker",
+        "jeweller", "sailmaker", "watchmaker", "clockmaker",
         "locksmith",  "window_construction", "signmaker", "upholsterer",
         "electrician", "boatbuilder",
     ),

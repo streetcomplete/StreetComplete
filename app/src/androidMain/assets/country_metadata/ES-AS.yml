@@ -1,5 +1,5 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [Banco Sabadell, Unicaja Banco, Banco Santander, Caja Rural, BBVA, Santander, Liberbank, ING, Caja Rural de Asturias]
+atmOperators: [Banco Sabadell, Unicaja Banco, Banco Santander, Caja Rural, ING, BBVA, Santander, Liberbank, Caja Rural de Asturias]
 chargingStationOperators: [EDP, Iberdrola, Eranovum, Zunder, Wenea, Repsol, Endesa, Acciona Energía, TotalEnergies, edp, Porsche, Ionity, Edison Next]
 clothesContainerOperators: [Cáritas, Cáritas Asturias-Koopera, Humana]
 officialLanguages: [es, ast]

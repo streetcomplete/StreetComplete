@@ -1,5 +1,36 @@
 # Changelog
 
+## v62.2
+
+### Fixes
+- Recycling type: Images were tiny (#6683)
+- Places overlay: OK button didn't show when selecting "no name" (#6657)
+- Address overlay: OK button didn't show when tapping on a road (#6669), by @paulklie
+
+### Quest improvements
+- Postbox ref: Enable for Japan (#6680)
+- Bus stop ref: Enable for Singapore (#6656), by @arrival-spring
+- Ask for some more things on some quests (#6670), by @paulklie
+- Other small refinements (#6672, #6677, …), thanks @mnalis, @matkoniecz
+
+## v62.1
+
+### Fixes
+
+- Fix crash in stile type and bike rental quest (#6629)
+- Bike paths overlay: OK button didn't always show (#6644)
+- Address overlay: Don't tag empty housename if user leaves input field empty (#6640)
+- Sidewalk overlay: Allow user to only specify one side (#6636)
+- Sidewalk surface: Only ask for sides that actually have a sidewalk (#6625)
+- Star counter display was incorrect in languages that are written from right to left (#6627)
+- Road names: OK button didn't show after selecting a name from the map (#6631), by @paulklie
+- Fix communication with OSM API (#6628), by @Firefishy
+- Surface overlay: Fix last-picked-button was not shown
+
+### Quest improvements
+
+- Ask for some more things on some quests (#6645, #6641, #6623, #6642, #6621, #6643, #6620), by @paulklie
+
 ## v62.0
 
 ### New quests

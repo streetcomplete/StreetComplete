@@ -1,5 +1,5 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [Chase, MidFirst Bank, Arvest Bank, IBC Bank, Bank of Oklahoma, Cash Depot, Bank of America, BancFirst, Kirby's World, Arvest]
+atmOperators: [Chase, MidFirst Bank, IBC Bank, Arvest Bank, Bank of Oklahoma, Cash Depot, Bank of America, BancFirst, Kirby's World, Arvest]
 chargingStationOperators: ['Tesla, Inc.', Electrify America, Tesla]
 defaultSpeedLimitHasUrbanOrRural: true
 parcelLockerBrand: [Amazon Locker, Amazon Hub]

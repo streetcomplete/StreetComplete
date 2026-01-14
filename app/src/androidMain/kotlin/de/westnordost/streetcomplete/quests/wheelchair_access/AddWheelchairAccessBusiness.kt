@@ -64,7 +64,7 @@ class AddWheelchairAccessBusiness : OsmFilterQuestType<WheelchairAccess>(), Andr
 
                 // name & wheelchair
                 "attraction",
-                "hotel", "guest_house", "motel", "hostel", "alpine_hut", "apartment", "resort", "camp_site", "caravan_site", "chalet", // accommodations
+                "hotel", "motel", "hostel", "alpine_hut", "resort", "camp_site", "caravan_site", "chalet", // accommodations
 
                 // wheelchair only
                 "viewpoint"
@@ -94,7 +94,7 @@ class AddWheelchairAccessBusiness : OsmFilterQuestType<WheelchairAccess>(), Andr
                 // common
                 "carpenter", "shoemaker", "tailor", "photographer", "dressmaker",
                 "electronics_repair", "key_cutter", "stonemason", "bookbinder",
-                "jeweller", "sailmaker", "jeweller", "watchmaker", "clockmaker",
+                "jeweller", "sailmaker", "watchmaker", "clockmaker",
                 "locksmith",  "window_construction", "signmaker", "upholsterer",
                 "electrician", "boatbuilder",
 

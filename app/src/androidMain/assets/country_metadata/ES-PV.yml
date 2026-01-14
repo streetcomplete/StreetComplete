@@ -1,6 +1,6 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [Kutxabank, Laboral Kutxa, BBVA, Telebanco 4B, Santander, Euro 6000, Banco Sabadell, BBK, Kutxa, Euro6000, Shitcoins.club, ING, Banco Santander, Sabadell Guipuzcoano, Sabadell, Rural Kutxa, La Caixa, Caja Laboral, Caixabank, BitBase]
+atmOperators: [Kutxabank, Laboral Kutxa, BBVA, Telebanco 4B, Santander, Euro 6000, Banco Sabadell, BBK, Rural Kutxa, Kutxa, ING, Euro6000, Caja Laboral, Shitcoins.club, Banco Santander, Sabadell Guipuzcoano, Sabadell, La Caixa, Caixabank]
 chargingStationOperators: [Iberdrola, Repsol, Zunder, EDP, Wenea, IBIL, Endesa X, Endesa, 'Tesla, Inc.', Ibil, Circutor]
-clothesContainerOperators: [UROLA ERDIKO MANKOMUNITATEA, Urola Erdiko Mankomunitatea]
+clothesContainerOperators: [UROLA ERDIKO MANKOMUNITATEA, Urola Erdiko Mankomunitatea, Caritas]
 officialLanguages: [eu, es]
 parcelLockerBrand: [Amazon Locker, Amazon Hub, InPost, CityPaq]

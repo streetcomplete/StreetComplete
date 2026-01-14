@@ -999,8 +999,8 @@
     <string name="ar_measure">Вимірювання</string>
     <string name="ar_core_tracking_error_too_steep_angle">Занадто гострий кут, відійдіть трохи назад</string>
     <string name="default_disabled_msg_no_ar">Щоб виконати цей квест, вам потрібна рулетка, оскільки вимірювання за допомогою камери не підтримується на цьому пристрої.</string>
-    <string name="quest_cycleway_width_title">Яка тут ширина цієї велодоріжки?</string>
-    <string name="quest_road_width_title">Яка тут ширина цієї дороги?</string>
+    <string name="quest_cycleway_width_title">Яка ширина цієї велодоріжки?</string>
+    <string name="quest_road_width_title">Яка ширина цієї дороги?</string>
     <string name="quest_road_width_explanation">Дорожнє полотно від бордюру до бордюру: включно з усім, </string>
     <string name="quest_sidewalk_answer_none">Зовсім немає тротуару</string>
     <string name="link_osmand_description">Мобільний застосунок для перегляду та навігації онлайн та офлайн мапами</string>
@@ -1413,12 +1413,19 @@
     <string name="link_openclimbing_description">Мапа місць для скелелазіння</string>
     <string name="pref_title_zoom_buttons">Показати кнопки масштабування мапи</string>
     <string name="overlay_mtb_scale">Складність MTB</string>
+    <string name="overlay_mtb_scale_0">Грейд 0</string>
     <string name="overlay_mtb_scale_0_description">Тверда, чіпка утрамбована або природна поверхня; відсутність перешкод; пологий схил; широкі повороти.</string>
+    <string name="overlay_mtb_scale_1">Грейд 1</string>
     <string name="overlay_mtb_scale_1_description">Частково пухка місцевість з дрібним корінням, камінням, ерозією або водними борознами; ухил ≤40%; перешкоди, що піддаються перекочуванню; потрібна базова техніка їзди.</string>
+    <string name="overlay_mtb_scale_2">Грейд 2</string>
     <string name="overlay_mtb_scale_2_description">Пухка місцевість з великим корінням та камінням, плоскі перепади/невеликі сходи, ухил до 70%; легкі круті повороти; потрібне розширене гальмування та перенесення ваги.</string>
+    <string name="overlay_mtb_scale_3">Грейд 3</string>
     <string name="overlay_mtb_scale_3_description">Слизька, пухка місцевість з осипом, брилами, великим корінням та камінням, високими сходами та складними траверсами; круті повороти, ухил &gt;70%; потрібні дуже хороший баланс та точне гальмування.</string>
+    <string name="overlay_mtb_scale_4">Грейд 4</string>
     <string name="overlay_mtb_scale_4_description">Складні та технічні перешкоди: великі брили, коріння, осип, круті пандуси; поворотні серпантини, плоскі спуски з натисканням на педалі; ідеальний баланс, точне гальмування та зміна положення заднього колеса.</string>
+    <string name="overlay_mtb_scale_5">Грейд 5</string>
     <string name="overlay_mtb_scale_5_description">Надзвичайно крута кам'яна місцевість із зустрічними підйомами, брилами, зсувами, серпантином із перешкодами, високими перепадами один за одним та поваленими деревами. Перенесення велосипеда навколо перешкод неможливе; їзда неминуча. Потрібні навички триалу.</string>
+    <string name="overlay_mtb_scale_6">Грейд 6</string>
     <string name="overlay_mtb_scale_6_description">Небезпечна та непрохідна місцевість, непридатна для катання на гірському велосипеді.</string>
     <string name="default_disabled_overlay_domain_expert">Це накладання вимкнено за замовчуванням, оскільки вам потрібно бути експертом у предметній області, щоб точно записувати цю інформацію.</string>
     <string name="pref_title_overlays">Вибір накладання</string>
@@ -1439,7 +1446,7 @@
     <string name="quest_handwashing_title">Чи можна тут помити руки?</string>
     <string name="quest_openingHours_delete">Видалити</string>
     <string name="quest_streetName_hint">Ви можете застосувати таку саму назву до сусідньої ділянки, натиснувши на неї на карті.</string>
-    <string name="quest_streetName_abbreviation_instruction">Скорочення, такі як, наприклад, «Rd», слід розшифровувати.</string>
+    <string name="quest_streetName_abbreviation_instruction">Скорочення, такі як, наприклад, «вул.», слід розшифровувати.</string>
     <string name="quest_streetName_add_language">Додати мову</string>
     <string name="ok">OK</string>
     <string name="cancel">Скасувати</string>
@@ -1455,4 +1462,7 @@
     <string name="quest_charging_station_bicycles_hint">Адаптери живлення для велозарядок підключаються до звичайних розеток.</string>
     <string name="quest_tower_access_title">Хто може відвідати цю вежу? Це може бути безкоштовно або платно.</string>
     <string name="quest_charging_station_bicycles_answer_only">Це лише для велосипедів</string>
+    <string name="quest_recycling_type_pet_bottles">ПЕТ пляшки</string>
+    <string name="quest_maxweight_add_sign">Додати знак</string>
+    <string name="quest_maxweight_remove_sign">Прибрати знак</string>
 </resources>

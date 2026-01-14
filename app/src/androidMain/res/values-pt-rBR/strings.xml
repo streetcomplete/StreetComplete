@@ -317,7 +317,7 @@ Caso contrário, pode baixar outro teclado na loja de aplicativos. Teclados popu
     <string name="quest_housenumber_street_number_optional">"Número de orientação (opcional)"</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">"Ciclovia presente do outro lado…"</string>
     <string name="quest_openingHours_emptyAnswer">"Você precisa descrever o que está na placa. Se não houver placa, deveria perguntar dentro do local pelos horários de funcionamento."</string>
-    <string name="quest_cycleway_value_none_but_no_oneway">"nenhum, mas ciclistas podem usar a fia em ambos sentidos"</string>
+    <string name="quest_cycleway_value_none_but_no_oneway">"nenhum, mas ciclistas podem usar a via em ambos sentidos"</string>
     <string name="quest_wheelchairAccess_description_toilets">"Um símbolo de cadeirante como esse pode estar visível se o banheiro é acessível.
 Parcialmente significa que um cadeirante pode entrar e usar o banheiro, mas não há barras ou cubas adaptadas."</string>
     <string name="map_btn_create_note">"Criar nova nota"</string>
