@@ -27,7 +27,7 @@ import de.westnordost.streetcomplete.quests.recycling.AddRecyclingType
 import de.westnordost.streetcomplete.screens.main.controls.MapButton
 import de.westnordost.streetcomplete.ui.common.UndoIcon
 import de.westnordost.streetcomplete.ui.ktx.selectionFrame
-import org.jetbrains.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.Preview
 
 /** One item in the edit history sidebar list. Selectable and when selected, an undo button is
  *  clickable. */

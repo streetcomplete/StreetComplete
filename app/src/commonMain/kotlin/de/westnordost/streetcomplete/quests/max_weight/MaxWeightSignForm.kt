@@ -25,7 +25,7 @@ import de.westnordost.streetcomplete.ui.common.DropdownButton
 import de.westnordost.streetcomplete.ui.theme.TrafficSignColor
 import de.westnordost.streetcomplete.ui.theme.largeInput
 import org.jetbrains.compose.resources.painterResource
-import org.jetbrains.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.Preview
 
 /** A form to input the [weight] for a single max weight sign [type]. The signs shown
  *  should look similar to how the signs actually look in the country with the given [countryCode]

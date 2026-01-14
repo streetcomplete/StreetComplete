@@ -14,7 +14,7 @@ import de.westnordost.streetcomplete.resources.compass
 import de.westnordost.streetcomplete.resources.compass_needle_48
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
-import org.jetbrains.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.Preview
 
 /** Map button showing current compass orientation in relation to the map. Invisible if north-up and
  *  no tilt */
