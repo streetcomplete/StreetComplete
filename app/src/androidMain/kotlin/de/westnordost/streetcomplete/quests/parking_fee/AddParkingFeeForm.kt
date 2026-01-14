@@ -2,18 +2,20 @@ package de.westnordost.streetcomplete.quests.parking_fee
 
 import android.os.Bundle
 import android.view.View
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.snapshotFlow
+import androidx.compose.ui.unit.dp
 import androidx.lifecycle.lifecycleScope
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.ComposeViewBinding
 import de.westnordost.streetcomplete.osm.fee.Fee
 import de.westnordost.streetcomplete.osm.maxstay.MaxStay
-import de.westnordost.streetcomplete.osm.maxstay.MaxStayForm
+import de.westnordost.streetcomplete.osm.maxstay.MaxStayInput
 import de.westnordost.streetcomplete.osm.opening_hours.HierarchicOpeningHours
 import de.westnordost.streetcomplete.osm.time_restriction.TimeRestriction
 import de.westnordost.streetcomplete.osm.time_restriction.TimeRestrictionInput
@@ -68,9 +70,9 @@ class AddParkingFeeForm : AbstractOsmQuestForm<ParkingFeeAnswer>() {
         binding.composeViewBase.content { Surface {
             when (val answer2 = answer.value) {
                 is ParkingFeeAnswer.NoFeeButMaxStay -> {
-                    Column {
+                    Column(verticalArrangement = Arrangement.spacedBy(16.dp)) {
                         Text(stringResource(Res.string.quest_fee_answer_no_but_maxstay))
-                        MaxStayForm(
+                        MaxStayInput(
                             maxStay = answer2.maxstay,
                             onChange = { answer.value = ParkingFeeAnswer.NoFeeButMaxStay(it) },
                             countryInfo = countryInfo,
@@ -79,7 +81,7 @@ class AddParkingFeeForm : AbstractOsmQuestForm<ParkingFeeAnswer>() {
                 }
                 is ParkingFee -> {
                     if (answer2.fee is Fee.Yes) {
-                        Column {
+                        Column(verticalArrangement = Arrangement.spacedBy(16.dp)) {
                             Text(stringResource(Res.string.quest_fee_answer_yes_but))
                             TimeRestrictionInput(
                                 timeRestriction = answer2.fee.timeRestriction,

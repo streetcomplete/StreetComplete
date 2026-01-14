@@ -1,6 +1,10 @@
 package de.westnordost.streetcomplete.osm.duration
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.width
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -9,6 +13,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.unit_days
 import de.westnordost.streetcomplete.resources.unit_hours
@@ -16,6 +21,8 @@ import de.westnordost.streetcomplete.resources.unit_minutes
 import de.westnordost.streetcomplete.ui.common.ButtonStyle
 import de.westnordost.streetcomplete.ui.common.DropdownButton
 import de.westnordost.streetcomplete.ui.common.input.DecimalInput
+import de.westnordost.streetcomplete.ui.theme.extraLargeInput
+import de.westnordost.streetcomplete.ui.theme.largeInput
 import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.stringResource
 
@@ -36,6 +43,7 @@ fun DurationInput(
     Row(
         modifier = modifier,
         verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.spacedBy(8.dp)
     ) {
         DecimalInput(
             value = value,
@@ -46,7 +54,8 @@ fun DurationInput(
             maxIntegerDigits = 3,
             maxFractionDigits = 1,
             isUnsigned = true,
-            modifier = Modifier.weight(1f),
+            textStyle = MaterialTheme.typography.largeInput,
+            modifier = Modifier.width(96.dp),
         )
         DropdownButton(
             items = DurationUnit.entries,
