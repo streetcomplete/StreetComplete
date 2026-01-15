@@ -10,7 +10,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.ComposeViewBinding
-import de.westnordost.streetcomplete.ui.common.MultipleSelectGroup
+import de.westnordost.streetcomplete.ui.common.CheckboxGroup
 import de.westnordost.streetcomplete.ui.util.content
 import kotlin.collections.plus
 import androidx.compose.foundation.layout.Arrangement
@@ -26,7 +26,7 @@ import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.quest_multiselect_hint
 import org.jetbrains.compose.resources.stringResource
 
-abstract class AMultipleSelectGroupQuestForm<T, I : T> : AbstractOsmQuestForm<Set<T>>() {
+abstract class ACheckboxGroupQuestForm<T, I : T> : AbstractOsmQuestForm<Set<T>>() {
     final override val contentLayoutResId = R.layout.compose_view
     private val binding by contentViewBinding(ComposeViewBinding::bind)
     override val defaultExpanded = false
@@ -57,7 +57,7 @@ abstract class AMultipleSelectGroupQuestForm<T, I : T> : AbstractOsmQuestForm<Se
                 ) {
                     Text(stringResource(Res.string.quest_multiselect_hint))
                 }
-                MultipleSelectGroup(
+                CheckboxGroup(
                     options = items,
                     onSelectionChange = onSelectionChange,
                     selectedOptions = selectedOptions.value,

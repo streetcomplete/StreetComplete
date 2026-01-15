@@ -25,7 +25,7 @@ import de.westnordost.streetcomplete.resources.cancel
 import de.westnordost.streetcomplete.resources.ok
 import de.westnordost.streetcomplete.resources.quest_openingHours_chooseWeekdaysTitle
 import de.westnordost.streetcomplete.resources.quest_opening_hours_two_languages
-import de.westnordost.streetcomplete.ui.common.CheckboxList
+import de.westnordost.streetcomplete.ui.common.CheckboxGroup
 import de.westnordost.streetcomplete.ui.common.dialogs.ScrollableAlertDialog
 import de.westnordost.streetcomplete.ui.ktx.fadingVerticalScrollEdges
 import org.jetbrains.compose.resources.stringResource
@@ -54,9 +54,9 @@ fun MonthsOrDateSelectorSelectDialog(
                 LocalContentAlpha provides ContentAlpha.high,
                 LocalTextStyle provides MaterialTheme.typography.body1
             ) {
-                CheckboxList(
+                CheckboxGroup(
                     options = Month.entries,
-                    onToggle = { month, checked ->
+                    onSelectionChange = { month, checked ->
                         if (checked) selection.add(month)
                         else selection.remove(month)
                     },

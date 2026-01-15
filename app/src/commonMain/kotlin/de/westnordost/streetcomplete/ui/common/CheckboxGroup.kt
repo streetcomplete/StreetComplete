@@ -12,25 +12,18 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Checkbox
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.mutableStateSetOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.unit.dp
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.quest_internet_access_terminal
-import de.westnordost.streetcomplete.resources.quest_internet_access_wired
-import de.westnordost.streetcomplete.resources.quest_internet_access_wlan
-import org.jetbrains.compose.resources.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 
 /** A group composed of a list of [options]. Multiple can be selected. */
 @Composable
-fun <T> MultipleSelectGroup(
+fun <T> CheckboxGroup(
     options: List<T>,
     onSelectionChange: (item: T, selected: Boolean) -> Unit,
     selectedOptions: Set<T>,
@@ -43,7 +36,7 @@ fun <T> MultipleSelectGroup(
                 .clip(MaterialTheme.shapes.small)
                 .toggleable(
                     value = selectedOptions.contains(option),
-                    onValueChange = { onSelectionChange(option, selectedOptions.contains(option)) },
+                    onValueChange = { onSelectionChange(option, it) },
                     role = Role.Checkbox,
                 )
                 .padding(8.dp)
@@ -69,26 +62,16 @@ fun <T> MultipleSelectGroup(
 @Composable
 @Preview
 private fun TextItemMultipleSelectGroupFormPreview() {
-    var selectedOptions by remember { mutableStateOf(emptySet<Int>()) }
+    val items = (1..10).toList()
+    val selection = remember { mutableStateSetOf<Int>() }
 
-    MultipleSelectGroup(
-        options = listOf(0, 1, 2),
+    CheckboxGroup(
+        options = items,
         onSelectionChange = { option: Int, selected: Boolean ->
-            selectedOptions = if (selected) {
-                selectedOptions + option
-            } else {
-                selectedOptions - option
-            }
+            if (selected) selection.add(option)
+            else selection.remove(option)
         },
-        selectedOptions = selectedOptions,
-        itemContent = {
-            val text = when (it) {
-                0 -> Res.string.quest_internet_access_wlan
-                1 -> Res.string.quest_internet_access_terminal
-                2 -> Res.string.quest_internet_access_wired
-                else -> null
-            }
-            text?.let { Text(stringResource(text)) }
-        }
+        selectedOptions = selection,
+        itemContent = { Text(it.toString()) }
     )
 }

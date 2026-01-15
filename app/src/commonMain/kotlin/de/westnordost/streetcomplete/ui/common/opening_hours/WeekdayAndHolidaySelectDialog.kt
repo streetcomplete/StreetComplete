@@ -31,7 +31,7 @@ import de.westnordost.streetcomplete.resources.cancel
 import de.westnordost.streetcomplete.resources.ok
 import de.westnordost.streetcomplete.resources.quest_openingHours_chooseWeekdaysTitle
 import de.westnordost.streetcomplete.resources.quest_opening_hours_two_languages
-import de.westnordost.streetcomplete.ui.common.CheckboxList
+import de.westnordost.streetcomplete.ui.common.CheckboxGroup
 import de.westnordost.streetcomplete.ui.common.dialogs.ScrollableAlertDialog
 import de.westnordost.streetcomplete.ui.ktx.fadingVerticalScrollEdges
 import org.jetbrains.compose.resources.stringResource
@@ -73,9 +73,9 @@ fun WeekdayAndHolidaySelectDialog(
                         .verticalScroll(scrollState),
                     verticalArrangement = Arrangement.spacedBy(4.dp)
                 ) {
-                    CheckboxList(
+                    CheckboxGroup(
                         options = weekdayItems,
-                        onToggle = { weekday, checked ->
+                        onSelectionChange = { weekday, checked ->
                             if (checked) weekdaySelection.add(weekday)
                             else weekdaySelection.remove(weekday)
                         },
@@ -91,9 +91,9 @@ fun WeekdayAndHolidaySelectDialog(
                         }
                     )
                     Divider()
-                    CheckboxList(
+                    CheckboxGroup(
                         options = holidayItems,
-                        onToggle = { holiday, checked ->
+                        onSelectionChange = { holiday, checked ->
                             if (checked) holidaySelection.add(holiday)
                             else holidaySelection.remove(holiday)
                         },
