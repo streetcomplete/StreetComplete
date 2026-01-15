@@ -90,6 +90,11 @@ fun MaxWeightSignForm(
                         WeightInput(value, onValueChange)
                         Text("m g w")
                     }
+                // French max weight sign is actually a max weight rating sign
+                "FR" ->
+                    MaxWeightSign(color = color) {
+                        WeightInput(value, onValueChange)
+                    }
             }
             MAX_WEIGHT_RATING_HGV -> when (countryCode) {
                 "AU", "CA", "US" ->
