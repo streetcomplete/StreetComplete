@@ -5,6 +5,7 @@ import de.westnordost.osm_opening_hours.model.Weekday.*
 import de.westnordost.osm_opening_hours.model.WeekdaysSelector
 import de.westnordost.streetcomplete.util.StringWithCursor
 
+/** Parse this string into a list of Weekday or WeekdaySpan, e.g. "Mo,We-Fr" */
 fun String.toWeekdaysSelectors(): List<WeekdaysSelector> =
     try {
         StringWithCursor(this).parseWeekdaySelectors()
