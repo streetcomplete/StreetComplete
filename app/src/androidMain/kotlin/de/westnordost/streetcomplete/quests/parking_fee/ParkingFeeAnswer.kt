@@ -21,6 +21,9 @@ data class ParkingFee(val fee: Fee) : ParkingFeeAnswer {
 fun ParkingFeeAnswer.applyTo(tags: Tags) {
     when (this) {
         is ParkingFee -> fee.applyTo(tags)
-        is ParkingFeeAnswer.NoFeeButMaxStay -> maxstay.applyTo(tags)
+        is ParkingFeeAnswer.NoFeeButMaxStay -> {
+            Fee.No.applyTo(tags)
+            maxstay.applyTo(tags)
+        }
     }
 }
