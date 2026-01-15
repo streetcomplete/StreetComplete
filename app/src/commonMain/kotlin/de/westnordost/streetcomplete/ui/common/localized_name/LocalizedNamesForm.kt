@@ -42,7 +42,7 @@ import de.westnordost.streetcomplete.ui.common.DropdownButton
 import de.westnordost.streetcomplete.util.ktx.displayName
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
-import org.jetbrains.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.Preview
 
 /** Edit a list of [localizedNames] of at most [languageTags] different languages.*/
 @Composable

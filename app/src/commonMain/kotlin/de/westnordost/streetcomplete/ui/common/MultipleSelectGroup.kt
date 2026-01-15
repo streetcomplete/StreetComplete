@@ -26,7 +26,7 @@ import de.westnordost.streetcomplete.resources.quest_internet_access_terminal
 import de.westnordost.streetcomplete.resources.quest_internet_access_wired
 import de.westnordost.streetcomplete.resources.quest_internet_access_wlan
 import org.jetbrains.compose.resources.stringResource
-import org.jetbrains.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.Preview
 
 /** A group composed of a list of [options]. Multiple can be selected. */
 @Composable

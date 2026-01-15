@@ -46,7 +46,7 @@ import de.westnordost.streetcomplete.ui.common.TeamModeIcon
 import de.westnordost.streetcomplete.ui.common.UploadIcon
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
-import org.jetbrains.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.Preview
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
