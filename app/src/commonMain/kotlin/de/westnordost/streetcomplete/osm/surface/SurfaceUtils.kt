@@ -69,7 +69,7 @@ val INVALID_SURFACES_FOR_TRACKTYPES = mapOf(
     "grade1" to SOFT_NATURAL_SURFACES, // could be compacted, as long as it is "solid"
     // "mostly solid" can mean a lot of things, including natural surfaces that happen to be quite solid
     // Allowing any surface for grade2 tracktype is a compromise from #6611
-    "grade2" to setOf(),
+    //"grade2" to SOFT_NATURAL_SURFACES,
     "grade3" to FULLY_PAVED_SURFACES,
     "grade4" to FULLY_PAVED_SURFACES,
     "grade5" to FULLY_PAVED_SURFACES,
