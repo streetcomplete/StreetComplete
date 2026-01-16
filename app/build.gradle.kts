@@ -214,6 +214,9 @@ kotlin {
 
                 // map and location
                 implementation("org.maplibre.gl:android-sdk:12.1.0")
+
+                // Chrome Custom Tabs for OAuth flow
+                implementation("androidx.browser:browser:1.9.0")
             }
         }
         iosMain {

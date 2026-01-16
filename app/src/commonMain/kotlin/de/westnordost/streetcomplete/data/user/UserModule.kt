@@ -54,4 +54,6 @@ val userModule = module {
     single { UserUpdater(get(), get(), get(), get(), get(), get()) }
 
     single { OAuthApiClient(get()) }
+    single { OAuthCallbackHandler() }
+    single { OAuthLoginCompleter(get(), get(), get()) }
 }

@@ -9,6 +9,7 @@ import de.westnordost.streetcomplete.data.user.OAUTH2_REDIRECT_URI
 import de.westnordost.streetcomplete.data.user.OAUTH2_REQUESTED_SCOPES
 import de.westnordost.streetcomplete.data.user.OAUTH2_REQUIRED_SCOPES
 import de.westnordost.streetcomplete.data.user.OAUTH2_TOKEN_URL
+import de.westnordost.streetcomplete.data.user.OAuthCallbackHandler
 import de.westnordost.streetcomplete.data.user.UserLoginController
 import de.westnordost.streetcomplete.data.user.UserLoginSource
 import de.westnordost.streetcomplete.data.user.oauth.OAuthApiClient
@@ -60,7 +61,8 @@ data object LoggedIn : LoginState
 class LoginViewModelImpl(
     private val unsyncedChangesCountSource: UnsyncedChangesCountSource,
     private val userLoginController: UserLoginController,
-    private val oAuthApiClient: OAuthApiClient
+    private val oAuthApiClient: OAuthApiClient,
+    private val oAuthCallbackHandler: OAuthCallbackHandler
 ) : LoginViewModel() {
     override val loginState = MutableStateFlow<LoginState>(LoggedOut)
     override val unsyncedChangesCount = MutableStateFlow(0)
@@ -85,6 +87,19 @@ class LoginViewModelImpl(
             unsyncedChangesCount.update { unsyncedChangesCountSource.getCount() }
         }
         userLoginController.addListener(loginStatusListener)
+
+        // Monitor for the oauth callbacks
+        launch {
+            oAuthCallbackHandler.oAuthCallbackUri.collect { callbackUri ->
+                if (callbackUri != null) {
+                    // if state was reset (e.g. activity recreated) we should be in the requesting state
+                    if (loginState.value !is RequestingAuthorization && loginState.value !is RetrievingAccessToken && loginState.value !is LoggedIn) {
+                        loginState.value = RequestingAuthorization
+                    }
+                    finishAuthorization(callbackUri)
+                }
+            }
+        }
     }
 
     override fun onCleared() {
@@ -92,6 +107,7 @@ class LoginViewModelImpl(
     }
 
     override fun startLogin() {
+        oAuthCallbackHandler.storeOAuthParams(oAuth)
         loginState.compareAndSet(LoggedOut, RequestingAuthorization)
     }
 

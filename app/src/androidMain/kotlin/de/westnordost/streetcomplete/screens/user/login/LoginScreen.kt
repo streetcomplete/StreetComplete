@@ -4,14 +4,9 @@ import android.widget.Toast
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.WindowInsets
-import androidx.compose.foundation.layout.WindowInsetsSides
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.safeDrawing
-import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.material.AppBarDefaults
 import androidx.compose.material.Button
 import androidx.compose.material.ContentAlpha
@@ -24,26 +19,12 @@ import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import com.multiplatform.webview.request.RequestInterceptor
-import com.multiplatform.webview.request.WebRequest
-import com.multiplatform.webview.request.WebRequestInterceptResult
-import com.multiplatform.webview.web.LoadingState
-import com.multiplatform.webview.web.WebView
-import com.multiplatform.webview.web.WebViewNavigator
-import com.multiplatform.webview.web.rememberWebViewNavigator
-import com.multiplatform.webview.web.rememberWebViewState
-import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.unsynced_quests_not_logged_in_description
@@ -55,7 +36,10 @@ import de.westnordost.streetcomplete.ui.theme.titleLarge
 import de.westnordost.streetcomplete.util.ktx.toast
 import org.jetbrains.compose.resources.stringResource
 
-/** Leads user through the OAuth 2 auth flow to login */
+// Import OAUTH2_CALLBACK_SCHEME
+import de.westnordost.streetcomplete.data.user.OAUTH2_CALLBACK_SCHEME
+
+/** Leads user through the OAuth 2 auth flow to login using Chrome Custom Tabs */
 @Composable
 fun LoginScreen(
     viewModel: LoginViewModel,
@@ -83,6 +67,15 @@ fun LoginScreen(
         }
     }
 
+    // Launch Custom Tab for OAuth when requesting authorization
+    LaunchedEffect(state) {
+        if (state is RequestingAuthorization) {
+            val authUrl = viewModel.authorizationRequestUrl
+            // Launch OAuth flow in Chrome Custom Tab
+            ChromeCustomTabLauncher.launchOAuthFlow(context, authUrl, OAUTH2_CALLBACK_SCHEME)
+        }
+    }
+
     Column(Modifier.fillMaxSize()) {
         TopAppBar(
             title = { Text(stringResource(Res.string.user_login)) },
@@ -97,94 +90,9 @@ fun LoginScreen(
                 modifier = Modifier.fillMaxSize()
             )
         } else if (state is RequestingAuthorization) {
-            val authUrl = viewModel.authorizationRequestUrl
-            val webViewState = rememberWebViewState(
-                url = authUrl,
-                additionalHttpHeaders = mapOf(
-                    "Accept-Language" to Locale.current.toLanguageTag()
-                )
-            )
-
-            val webViewNavigator = rememberWebViewNavigator(
-                // handle authorization url response
-                requestInterceptor = object : RequestInterceptor {
-                    override fun onInterceptUrlRequest(
-                        request: WebRequest,
-                        navigator: WebViewNavigator
-                    ): WebRequestInterceptResult {
-                        if (viewModel.isAuthorizationResponseUrl(request.url)) {
-                            viewModel.finishAuthorization(request.url)
-                            return WebRequestInterceptResult.Reject
-                        }
-                        return WebRequestInterceptResult.Allow
-                    }
-                }
-            )
-
-            // If the WebView drifts to the OSM homepage during auth reload the authorization URL
-            val retryCount = rememberSaveable { mutableStateOf(0) }
-
-            val lastUrl = webViewState.lastLoadedUrl?.toString().orEmpty()
-            val normalizedUrl = remember(lastUrl) {
-                lastUrl.trim().trimEnd('/')
-            }
-
-            val isOnOsmHome by remember(normalizedUrl) {
-                derivedStateOf {
-                    normalizedUrl == "https://www.openstreetmap.org"
-                }
-            }
-
-            val isOnAuthorizationPage by remember(normalizedUrl) {
-                derivedStateOf {
-                    normalizedUrl.contains("/oauth2/authorize")
-                }
-            }
-
-            LaunchedEffect(isOnOsmHome, isOnAuthorizationPage) {
-                if (isOnOsmHome && !isOnAuthorizationPage && retryCount.value < 3) {
-                    retryCount.value += 1
-                    webViewNavigator.loadUrl(authUrl)
-                }
-            }
-
-
-            // handle error response
-            LaunchedEffect(webViewState.errorsForCurrentRequest) {
-                val error = webViewState.errorsForCurrentRequest.firstOrNull()
-                if (error != null) {
-                    viewModel.failAuthorization(
-                        url = webViewState.lastLoadedUrl.toString(),
-                        errorCode = error.code,
-                        description = error.description
-                    )
-                }
-            }
-
-            Box(
-                Modifier
-                    .fillMaxSize()
-                    .windowInsetsPadding(
-                        WindowInsets.safeDrawing.only(
-                            WindowInsetsSides.Horizontal + WindowInsetsSides.Bottom
-                        )
-                    )
-            ) {
-                if (webViewState.loadingState is LoadingState.Loading) {
-                    LinearProgressIndicator(Modifier.fillMaxWidth())
-                }
-                WebView(
-                    state = webViewState,
-                    modifier = Modifier.fillMaxSize(),
-                    captureBackPresses = true,
-                    navigator = webViewNavigator,
-                    onCreated = {
-                        val settings = webViewState.webSettings
-                        settings.isJavaScriptEnabled = true
-                        settings.customUserAgentString = ApplicationConstants.USER_AGENT
-                        settings.supportZoom = false
-                    } as () -> Unit,
-                )
+            // Show the loading state while Custom Tab is handling authorization
+            Box(Modifier.fillMaxSize()) {
+                LinearProgressIndicator(Modifier.fillMaxWidth())
             }
         } else if (state is RetrievingAccessToken || state is LoggedIn) {
             Box(Modifier.fillMaxSize()) {
