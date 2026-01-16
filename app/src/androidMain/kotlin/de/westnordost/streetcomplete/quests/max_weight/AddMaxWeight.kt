@@ -9,7 +9,9 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Relation
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
 import de.westnordost.streetcomplete.data.quest.AndroidQuest
+import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.quests.ferry.wayIdsInFerryRoutes
@@ -89,4 +91,8 @@ class AddMaxWeight : OsmElementQuestType<List<MaxWeight>>, AndroidQuest {
         }
         return false
     }
+
+    override val enabledInCountries = AllCountriesExcept(
+        "SE" // https://github.com/streetcomplete/StreetComplete/issues/6586
+    )
 }
