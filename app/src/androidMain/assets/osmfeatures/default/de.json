@@ -340,11 +340,15 @@
         },
         "amenity/clock/sundial": {
           "name": "Sonnenuhr",
-          "terms": "sonneuhr"
+          "terms": "sonnenuhr"
         },
         "amenity/community_centre": {
           "name": "Gemeindezentrum",
           "terms": "gemeindezentrum,stadteilzentrum,sozialzentrum,gemeinschaftszentrum,bürgerhaus,stadthalle"
+        },
+        "amenity/community_centre/chitalishte_BG": {
+          "name": "Chitalishte",
+          "terms": "lesezimmer,kulturzentrum,kulturhaus,gemeindezentrum,bürgerzentrum,soziokulturelles zentrum"
         },
         "amenity/community_centre/club_home": {
           "name": "Vereinshaus",
@@ -984,6 +988,10 @@
         "amenity/restaurant/greek": {
           "name": "Griechisches Restaurant",
           "terms": "griechisches restaurant"
+        },
+        "amenity/restaurant/hotpot": {
+          "name": "Hot Pot Restaurant",
+          "terms": "eintop,schmortopf,peking,budae jjigae,kanton,chhnang pleurng,china,fondue,guangdong,hotpot,jeongol,jjigae,kimchi jjigae,lau,mu kratha,nabemono,shabu shabu,sichaun,sin jum,sukiyaki,teochew,teoswa,yao hon"
         },
         "amenity/restaurant/indian": {
           "name": "Indisches Restaurant",
@@ -1880,7 +1888,8 @@
           "terms": "hausreihe,hausgruppe,häusergruppe,hauszeile,häuserzeile"
         },
         "building/train_station": {
-          "name": "Bahnhofsgebäude"
+          "name": "Bahnhofsgebäude",
+          "terms": "bahnhofgebäude,bahnhof,hauptbahnhof"
         },
         "building/transportation": {
           "name": "Gebäude für den öffentlichen Verkehr",
@@ -2678,8 +2687,8 @@
           "terms": "autobahn,expressweg"
         },
         "highway/motorway_junction": {
-          "name": "Autobahnkreuzungspunkt",
-          "terms": "autobahnkreuz,autobahnanschluss,autobahnzubringer,autobahnabfahrt (kreuzungspunkt),abfahrt,ausfahrt,anschlussstelle"
+          "name": "Autobahnausfahrt",
+          "terms": "autobahnabfahrt,abfahrt,ausfahrt"
         },
         "highway/motorway_link": {
           "name": "Autobahnauffahrt, Autobahnabfahrt",
@@ -3044,8 +3053,8 @@
           "terms": "baugebiet,baufeld,bulldozer,baustelle,bauzone,kran,abbruch,entwicklung,infrastruktur"
         },
         "landuse/education": {
-          "name": "Gelände für Bildungseinrichtungen",
-          "terms": "campus,bildungszentrum,bildungscampus,bildungskomplex,schulzentrum,schulcampus,schulkomplex,ausbildungscampus,ausbildungszentrum,ausbildungskomplex,lernzentrum,lerncampus,lernkomplex,berufsschulzentrum,berufsschulcampus,berufsschulkomplex"
+          "name": "Bildungsbereich",
+          "terms": "campus,bildungscampus,bildungseinrichtungen,schulcampus,schulzentrum,schulgelände"
         },
         "landuse/farm": {
           "name": "Ackerland"
@@ -3154,6 +3163,10 @@
         "landuse/military/training_area": {
           "name": "Militärisches Trainingsgebiet",
           "terms": "luftwaffen,armee,basis,kampf,feuer,wache,gewehr,marine,schuss,training,krieg,militärisches trainingsgebiet,truppenübungsplatz"
+        },
+        "landuse/olive_grove": {
+          "name": "Olivenhain",
+          "terms": "olivenanbau,olivenöl,olivenproduktion,olivenhof"
         },
         "landuse/orchard": {
           "name": "Obstplantage",
@@ -4840,6 +4853,10 @@
           "name": "Spielhaus",
           "terms": "kinderhaus,spielhaus"
         },
+        "playground/pump": {
+          "name": "Spielplatzwasserpumpe",
+          "terms": "wasserspiel,wasserpumpe,pumpe,wasserspielanlage,wasserspielgerät"
+        },
         "playground/roundabout": {
           "name": "Kinderkarussell",
           "terms": "ringelspiel,kinderkarussell"
@@ -4894,7 +4911,7 @@
           "terms": "kriechtunnel,spielröhre,kriechröhre,tunnelröhre"
         },
         "playground/water": {
-          "name": "Wasserspielgerät",
+          "name": "Wasserspielgerät (nicht spezifiziert)",
           "terms": "wasserspiel,wasserpumpe,pumpe,wasserspielanlage,matschen,matschanlage,wasserspielgerät,wasserbahn"
         },
         "playground/zipwire": {
@@ -5282,6 +5299,10 @@
           "name": "Eisenbahnsignal",
           "terms": "eisenbahnsignal,signalisierung"
         },
+        "railway/signal_box": {
+          "name": "Stellwerk",
+          "terms": "signalstellwerk,blockstelle"
+        },
         "railway/station": {
           "name": "Eisenbahnhaltestelle"
         },
@@ -5630,6 +5651,10 @@
         "shop/erotic/lgbtq": {
           "name": "LGBTQ+ Erotikgeschäft",
           "terms": "lgbtq+ erotikgeschäft"
+        },
+        "shop/esoteric": {
+          "name": "Esoterischer Laden",
+          "terms": "kristall,ätherisches öl,anhänger,woo"
         },
         "shop/fabric": {
           "name": "Stoffgeschäft",
@@ -6228,8 +6253,8 @@
           "terms": "landkarte,touristeninformationskarte,sehenswürdigkeitenkarte"
         },
         "tourism/information/office": {
-          "name": "Besucherzentrum",
-          "terms": "informationsbüro,reiseleiter,tourismusbüro,touristeninformationszentrum,besucherzentrum,besucherinformationszentrum,begrüßungszentrum"
+          "name": "Touristeninformation",
+          "terms": "touristeninformation,tourismusbüro,touristeninformationszentrum,informationsbüro"
         },
         "tourism/information/route_marker": {
           "name": "Wegmarkierung",
@@ -6238,6 +6263,10 @@
         "tourism/information/terminal": {
           "name": "Informationsterminal",
           "terms": "informationsterminal"
+        },
+        "tourism/information/visitor_centre": {
+          "name": "Besucherzentrum",
+          "terms": "besucherzentrum,besucherinformationszentrum,begrüßungszentrum"
         },
         "tourism/motel": {
           "name": "Motel",
@@ -6531,6 +6560,10 @@
         },
         "waterway": {
           "name": "Wasserstraßen..."
+        },
+        "waterway/access_point": {
+          "name": "Wasserstraßen-Zugangspunkt",
+          "terms": "boot,kanu,kajak,wasserung,paddelboard,portage,einbootung,ruderboot,ausbootung"
         },
         "waterway/boatyard": {
           "name": "Werft",

@@ -1172,6 +1172,7 @@ A level counts as a roof level when its windows are in the roof. Subsequently, r
     <string name="quest_internet_access_wlan">Wi-Fi</string>
     <string name="quest_internet_access_wired">Wired (LAN)</string>
     <string name="quest_internet_access_terminal">Computer with Internet access</string>
+    <string name="quest_internet_access_no">No connection</string>
 
     <string name="quest_is_amenity_inside_title">Is this inside a building?</string>
     <string name="quest_isAmenityIndoor_outside_covered">Not inside, but covered</string>

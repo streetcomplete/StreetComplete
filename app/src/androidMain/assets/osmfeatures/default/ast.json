@@ -830,9 +830,6 @@
         "highway/motorway": {
           "name": "Autoestrada"
         },
-        "highway/motorway_junction": {
-          "name": "Entrada/salida d'autoestrada"
-        },
         "highway/motorway_link": {
           "name": "Enllaz d'autoestrada",
           "terms": "salida,accesu,enllaz,autoestrada"
