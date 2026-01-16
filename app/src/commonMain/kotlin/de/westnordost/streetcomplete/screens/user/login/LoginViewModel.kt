@@ -45,6 +45,12 @@ abstract class LoginViewModel : ViewModel() {
 
     /** Resets the login state to LoggedOut. Only works if current state is LoginError */
     abstract fun resetLogin()
+
+    /** Marks that the Custom Tab has been launched to prevent re-launching on recomposition */
+    abstract fun markCustomTabLaunched()
+
+    /** Check if Custom Tab was already launched */
+    abstract fun hasCustomTabLaunched(): Boolean
 }
 
 sealed interface LoginState
@@ -77,9 +83,17 @@ class LoginViewModelImpl(
         OAUTH2_REDIRECT_URI
     )
 
+    private var customTabLaunched = false
+
     private val loginStatusListener = object : UserLoginSource.Listener {
-        override fun onLoggedIn() { loginState.value = LoggedIn }
-        override fun onLoggedOut() { loginState.value = LoggedOut }
+        override fun onLoggedIn() {
+            loginState.value = LoggedIn
+            customTabLaunched = false
+        }
+        override fun onLoggedOut() {
+            loginState.value = LoggedOut
+            customTabLaunched = false
+        }
     }
 
     init {
@@ -109,6 +123,7 @@ class LoginViewModelImpl(
     override fun startLogin() {
         oAuthCallbackHandler.storeOAuthParams(oAuth)
         loginState.compareAndSet(LoggedOut, RequestingAuthorization)
+        customTabLaunched = false
     }
 
     override fun failAuthorization(url: String, errorCode: Int, description: String?) {
@@ -153,8 +168,18 @@ class LoginViewModelImpl(
     }
 
     override fun resetLogin() {
-        if (loginState.value is LoginError) loginState.value = LoggedOut
+        // This handles the case where user closes the Custom Tab without completing auth
+        if (loginState.value is LoginError || loginState.value is RequestingAuthorization) {
+            loginState.value = LoggedOut
+            customTabLaunched = false
+        }
     }
+
+    override fun markCustomTabLaunched() {
+        customTabLaunched = true
+    }
+
+    override fun hasCustomTabLaunched(): Boolean = customTabLaunched
 
     companion object {
         private const val TAG = "Login"

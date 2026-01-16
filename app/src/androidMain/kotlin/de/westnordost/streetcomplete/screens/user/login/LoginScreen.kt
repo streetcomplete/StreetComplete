@@ -34,10 +34,8 @@ import de.westnordost.streetcomplete.screens.user.login.LoginError.RequiredPermi
 import de.westnordost.streetcomplete.ui.common.BackIcon
 import de.westnordost.streetcomplete.ui.theme.titleLarge
 import de.westnordost.streetcomplete.util.ktx.toast
+import kotlinx.coroutines.delay
 import org.jetbrains.compose.resources.stringResource
-
-// Import OAUTH2_CALLBACK_SCHEME
-import de.westnordost.streetcomplete.data.user.OAUTH2_CALLBACK_SCHEME
 
 /** Leads user through the OAuth 2 auth flow to login using Chrome Custom Tabs */
 @Composable
@@ -50,7 +48,9 @@ fun LoginScreen(
     val unsyncedChangesCount by viewModel.unsyncedChangesCount.collectAsState()
 
     LaunchedEffect(launchAuth) {
-        if (launchAuth) viewModel.startLogin()
+        if (launchAuth) {
+            viewModel.startLogin()
+        }
     }
 
     // handle error state: just show message once and return to login state
@@ -69,10 +69,20 @@ fun LoginScreen(
 
     // Launch Custom Tab for OAuth when requesting authorization
     LaunchedEffect(state) {
-        if (state is RequestingAuthorization) {
+        if (state is RequestingAuthorization && !viewModel.hasCustomTabLaunched()) {
+            viewModel.markCustomTabLaunched()
             val authUrl = viewModel.authorizationRequestUrl
             // Launch OAuth flow in Chrome Custom Tab
-            ChromeCustomTabLauncher.launchOAuthFlow(context, authUrl, OAUTH2_CALLBACK_SCHEME)
+            ChromeCustomTabLauncher.launchUrl(context, authUrl)
+        }
+    }
+
+    LaunchedEffect(state) {
+        if (state is RequestingAuthorization) {
+            delay(2000)
+            if (viewModel.loginState.value is RequestingAuthorization) {
+                viewModel.resetLogin()
+            }
         }
     }
 
@@ -80,7 +90,17 @@ fun LoginScreen(
         TopAppBar(
             title = { Text(stringResource(Res.string.user_login)) },
             windowInsets = AppBarDefaults.topAppBarWindowInsets,
-            navigationIcon = { IconButton(onClick = onClickBack) { BackIcon() } },
+            navigationIcon = {
+                IconButton(onClick = {
+                    // If user closes Custom Tab and returns, pressing back resets the loading state
+                    if (state is RequestingAuthorization) {
+                        viewModel.resetLogin()
+                    }
+                    onClickBack()
+                }) {
+                    BackIcon()
+                }
+            },
         )
 
         if (state is LoggedOut) {
