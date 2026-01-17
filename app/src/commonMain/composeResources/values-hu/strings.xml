@@ -561,7 +561,7 @@ A „részben” azt jelenti, hogy kerekesszékkel ugyan be lehet menni és lehe
     <string name="tutorial_welcome_to_osm_subtitle">a szabad, szerkeszthető világtérképen</string>
     <string name="tutorial_intro">A StreetComplete-tel könnyedén közreműködhetsz az OpenStreetMaphez.
 Automatikusan megkeresi a hiányzó információkat környékeden: kerékpársávokat, házszámokat, nyitvatartási időket és még sok mást…</string>
-    <string name="tutorial_solving_quests">Ha talál valamit, a hiányzó információt küldetésként jeleníti meg a térképen.
+    <string name="tutorial_solving_quests">Ha talál valamit, a hiányzó információ küldetésként megjelenik a térképen.
 
 Egyből elkezdheted megoldani őket, és majd később bejelentkezhetsz, hogy fel tudd tölteni a válaszaidat.</string>
     <string name="tutorial_stay_safe">Amennyiben bizonytalan vagy, mindig válaszolhatod azt, hogy „Nem tudom”, és írhatsz egy jegyzetet.
@@ -1450,15 +1450,20 @@ Egy szint akkor számít tetőszintnek, ha az ablakai a tetőben vannak. A nulla
     <string name="action_copy">Másolás</string>
     <string name="quest_shelter_capacity_title">Hány ember tud itt aludni?</string>
     <string name="quest_handwashing_title">Van itt lehetőség kézmosásra?</string>
+    <string name="quest_openingHours_delete">Töröl</string>
+    <string name="quest_streetName_abbreviation_instruction">A rövidítések, mint pl. „u.”, legyenek kiírva.</string>
+    <string name="quest_streetName_add_language">Nyelv hozzáadása</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Mégsem</string>
     <string name="quest_aerialway_bicycle_summer">Csak nyáron</string>
     <string name="quest_board_type_rules">Szabályok</string>
     <string name="quest_firewood_provided_title">Biztosítanak itt tűzifát?</string>
-    <string name="quest_first_aid_kit_location">Hol található ez az elsősegély felszerelés?</string>
+    <string name="quest_first_aid_kit_location">Hol található ez az elsősegély-felszerelés?</string>
     <string name="quest_lane_markings_title">Vannak az úton útburkolati jelek?</string>
     <string name="quest_level_thing_title">Melyik szinten található ez a dolog?</string>
     <string name="quest_bicycle_charging_station_capacity_title">Hány kerékpárt lehet itt egyszerre tölteni?</string>
     <string name="quest_charging_station_bicycles_title">Kerékpárt is lehet itt tölteni?</string>
     <string name="quest_charging_station_bicycles_hint">A kerékpártöltő adapterek normál háztartási aljzatokba csatlakoztathatók.</string>
     <string name="quest_charging_station_bicycles_answer_only">Csak kerékpárok számára</string>
-    <string name="quest_recycling_type_pet_bottles">PET palackok</string>
+    <string name="quest_recycling_type_pet_bottles">PET-palackok</string>
 </resources>

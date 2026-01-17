@@ -377,6 +377,10 @@
           "name": "歯医者",
           "terms": "歯科,歯医者,歯科医,病院,医療,医者,歯,矯正歯科,インプラント"
         },
+        "amenity/device_charging_station": {
+          "name": "デバイス充電スポット",
+          "terms": "携帯充電スポット"
+        },
         "amenity/dive_centre": {
           "name": "ダイブセンター",
           "terms": "ダイブセンター,スキューバダイビングセンター,ダイビングセンター,海,潜水"
@@ -1473,7 +1477,7 @@
         },
         "barrier/gate": {
           "name": "門",
-          "terms": "門,ゲート,鳥居,障害物,バリア"
+          "terms": "門,ゲート,障害物,バリア"
         },
         "barrier/guard_rail": {
           "name": "ガードレール（車両用、方向あり）",
@@ -1870,6 +1874,18 @@
           "name": "霊園区画",
           "terms": "霊園区画,墓地区画,霊園,墓地"
         },
+        "climbing/crag": {
+          "name": "クラッグ",
+          "terms": "岩場"
+        },
+        "climbing/route": {
+          "name": "クライミングルート",
+          "terms": "クライミングルート,ロッククライミング"
+        },
+        "climbing/route_bottom": {
+          "name": "クライミングルートの始点",
+          "terms": "始点,開始点,起点,クライミングルート"
+        },
         "club": {
           "name": "クラブ",
           "terms": "クラブ"
@@ -2159,6 +2175,9 @@
         "education/university": {
           "name": "大学（代表点または敷地）",
           "terms": "大学の敷地,キャンパス,大学,教育,学校"
+        },
+        "education/yes": {
+          "name": "教育機関(全般)"
         },
         "embankment": {
           "name": "土手"
@@ -2607,10 +2626,6 @@
           "name": "自動車専用道路",
           "terms": "自動車専用道路,高速道路,車道,幹線,公道"
         },
-        "highway/motorway_junction": {
-          "name": "自動車道のIC/JCT",
-          "terms": "自動車道のic/jct,インターチェンジ,ジャンクション,ic,jct"
-        },
         "highway/motorway_link": {
           "name": "自動車専用道路の接続路",
           "terms": "自動車専用道路,接続路,車道,幹線,公道"
@@ -2946,6 +2961,9 @@
           "name": "養殖場（水域）",
           "terms": "養殖場,養魚場,いけす,生簀"
         },
+        "landuse/aquaculture/fish": {
+          "name": "養殖場"
+        },
         "landuse/basin": {
           "name": "遊水地"
         },
@@ -2967,10 +2985,6 @@
         "landuse/construction": {
           "name": "建設用地",
           "terms": "工事中用地,建設用地,工事現場,建設予定地"
-        },
-        "landuse/education": {
-          "name": "教育機関の敷地",
-          "terms": "学校,大学,高等学校,高校,中学校,小学校,幼稚園,キャンパス"
         },
         "landuse/farm": {
           "name": "農地（非推奨）"
@@ -3679,6 +3693,18 @@
         "man_made/carpet_hanger": {
           "name": "カーペットハンガー",
           "terms": "カーペットハンガー,カーペット干し台,カーペット台,カーペットラック"
+        },
+        "man_made/ceremonial_gate": {
+          "name": "象徴的な門",
+          "terms": "門,ゲート"
+        },
+        "man_made/ceremonial_gate/paifang": {
+          "name": "牌坊",
+          "terms": "牌坊,牌楼,門"
+        },
+        "man_made/ceremonial_gate/torii": {
+          "name": "鳥居",
+          "terms": "鳥居,神社,門"
         },
         "man_made/charge_point": {
           "name": "自動車用充電器",
@@ -4787,10 +4813,6 @@
           "name": "トンネル(遊具)",
           "terms": "トンネル(遊具),遊具,トンネル,子供,児童,公園,子ども,児童遊園,児童公園,遊び,キッズ"
         },
-        "playground/water": {
-          "name": "アルキメディアン・スクリュー遊具",
-          "terms": "アルキメディアン・スクリュー 遊具,遊具,アルキメディアン・スクリュー,公園,児童,子供,水遊び,泥遊び,児童公園,児童遊園,子ども,キッズ"
-        },
         "playground/zipwire": {
           "name": "ジップライン",
           "terms": "ジップライン,ロープ,アウトドア,遊具,児童,子供,子ども,児童遊園,児童公園,遊び,キッズ"
@@ -5718,6 +5740,10 @@
           "name": "携帯電話店",
           "terms": "携帯電話店,ケータイショップ,携帯ショップ,携帯,電話"
         },
+        "shop/mobile_phone_accessories": {
+          "name": "スマートフォンアクセサリー店",
+          "terms": "携帯電話アクセサリー店,携帯アクセサリー店"
+        },
         "shop/model": {
           "name": "模型店",
           "terms": "模型店,プラモデル,プラモ,店舗,お店,ショッピング,小売,趣味,ホビー"
@@ -6115,10 +6141,6 @@
           "name": "地図板",
           "terms": "地図板,案内地図"
         },
-        "tourism/information/office": {
-          "name": "観光案内所",
-          "terms": "観光案内所,ビジターセンター"
-        },
         "tourism/information/route_marker": {
           "name": "経路マーカー",
           "terms": "経路マーカー,マーカー,目印,ハイキング"
@@ -6322,6 +6344,10 @@
           "name": "バスルート",
           "terms": "バスルート,バス路線,バス系統"
         },
+        "type/route/climbing": {
+          "name": "クライミングルート",
+          "terms": "クライミングルート,ロッククライミング"
+        },
         "type/route/detour": {
           "name": "迂回ルート",
           "terms": "迂回ルート"
@@ -6397,6 +6423,10 @@
         "type/site": {
           "name": "区域",
           "terms": "区域"
+        },
+        "type/site/climbing/crag": {
+          "name": "クラッグ",
+          "terms": "岩場"
         },
         "type/waterway": {
           "name": "水路",

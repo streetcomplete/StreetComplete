@@ -1409,4 +1409,21 @@ Stāvs tiek uzskatīts par jumta stāvu, ja tā logi atrodas jumtā. Attiecīgi,
     <string name="pedestrian_zone_no_sign">Nav zīmes par riteņbraukšanu</string>
     <string name="team_mode_description_overlay_hint">Ja izmantojat pārklājumus, katram no jums vajadzētu izmantot citu, jo tikai uzdevumi tiek sadalīti.</string>
     <string name="quest_dietType_glutenfree_name_title">Vai šeit piedāvā bezglutēna produktus?</string>
+    <string name="quest_construction_minor_title">Vai ceļu remontdarbi šeit ir pabeigti?</string>
+    <string name="map_attribution">MTB grūtības pakāpe</string>
+    <string name="pref_title_zoom_buttons">Rādīt kartes tālummaiņas pogas</string>
+    <string name="overlay_mtb_scale">MTB grūtības pakāpe</string>
+    <string name="pref_overlays_reset">Atiestatīt pārklājumu iespējošanu uz noklusējumu?</string>
+    <string name="overlay">Pārklājums</string>
+    <string name="compass">Kompass</string>
+    <string name="quest_tracktype_grade3">Vienmērīgs ciets un mīksts zemes ceļš.</string>
+    <string name="or">vai</string>
+    <string name="action_copy">Kopēt</string>
+    <string name="quest_shelter_capacity_title">Cik cilvēku šeit var nakšņot?</string>
+    <string name="quest_openingHours_delete">Dzēst darba laiku</string>
+    <string name="quest_streetName_add_language">Pievienot ielas nosaukumu izvēlētajā valodā</string>
+    <string name="ok">Labi</string>
+    <string name="cancel">Atcelt</string>
+    <string name="quest_lane_markings_title">Vai šim ceļam ir joslu marķējums?</string>
+    <string name="quest_level_thing_title">Kurā stāvā šī lieta atrodas?</string>
 </resources>

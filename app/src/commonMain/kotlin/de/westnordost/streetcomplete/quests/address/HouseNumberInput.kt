@@ -18,7 +18,7 @@ import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.osm.address.parseHouseNumbers
 import de.westnordost.streetcomplete.ui.ktx.pxToDp
 import de.westnordost.streetcomplete.ui.theme.extraLargeInput
-import org.jetbrains.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.Preview
 
 /** Input field for inputting housenumbers.
  *

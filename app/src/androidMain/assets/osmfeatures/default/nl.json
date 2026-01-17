@@ -247,6 +247,9 @@
           "name": "Koffiehuis",
           "terms": "koffie,bistro"
         },
+        "amenity/cafe/teahouse": {
+          "name": "Theehuisje"
+        },
         "amenity/car_pooling": {
           "name": "Carpoolparking",
           "terms": "autodelen,carpoolen"
@@ -362,6 +365,9 @@
         "amenity/dentist": {
           "name": "Tandarts",
           "terms": "tandheelkundige,mond,tanden"
+        },
+        "amenity/device_charging_station": {
+          "name": "Apparaatoplader"
         },
         "amenity/dive_centre": {
           "name": "Duikcentrum",
@@ -2075,6 +2081,33 @@
         "disused/shop": {
           "name": "Ongebruikte winkel"
         },
+        "education/dancing_school": {
+          "name": "Dansschool"
+        },
+        "education/driving_school": {
+          "name": "Rijschool"
+        },
+        "education/kindergarten": {
+          "name": "Kleuterschool"
+        },
+        "education/language_school": {
+          "name": "Taalschool"
+        },
+        "education/music_school": {
+          "name": "Muziekschool"
+        },
+        "education/prep_school": {
+          "name": "Bijlesinstituut"
+        },
+        "education/school": {
+          "name": "Schoolgebied"
+        },
+        "education/university": {
+          "name": "Gebied van universiteit of hogeschool"
+        },
+        "education/yes": {
+          "name": "Educatieve instelling (ongespecificeerd)"
+        },
         "embankment": {
           "name": "Dijk"
         },
@@ -2369,6 +2402,9 @@
           "name": "Oversteekplaats",
           "terms": "kruispunt,oversteken"
         },
+        "highway/crossing/informal": {
+          "name": "Informele oversteekplaats"
+        },
         "highway/crossing/traffic_signals": {
           "name": "Oversteekplaats met voetgangersverkeerslichten",
           "terms": "verkeerslichten,zebra,oversteekplaats,zebrapad,stoplicht"
@@ -2497,10 +2533,6 @@
         "highway/motorway": {
           "name": "Autosnelweg",
           "terms": "autostrade,snelweg"
-        },
-        "highway/motorway_junction": {
-          "name": "Op-/Afrit van autosnelweg",
-          "terms": "afslag,afrit,kruispunt,autostrade,snelweg,autosnelweg"
         },
         "highway/motorway_link": {
           "name": "Verbindingsweg van autosnelweg",
@@ -2693,6 +2725,9 @@
           "name": "Geschiedskundige plaats",
           "terms": "historische site,geschiedkundige site,historische plaats"
         },
+        "historic/aircraft": {
+          "name": "Historisch luchtvaartuig"
+        },
         "historic/archaeological_site": {
           "name": "Archeologische opgraving",
           "terms": "archeologische site,archeologische plaats"
@@ -2853,10 +2888,6 @@
         "landuse/construction": {
           "name": "Bouwterrein",
           "terms": "werfzone,werf"
-        },
-        "landuse/education": {
-          "name": "Gebied van een onderwijsinstelling",
-          "terms": "campus,schoolgebied,kindcentrum,educatie"
         },
         "landuse/farm": {
           "name": "Landbouwgrond"
@@ -4478,9 +4509,6 @@
         "playground/tunnel_tube": {
           "name": "Speeltunnel"
         },
-        "playground/water": {
-          "name": "Speelwaterpomp/schroef"
-        },
         "playground/zipwire": {
           "name": "Tokkelbaan",
           "terms": "ziplijn"
@@ -5787,10 +5815,6 @@
           "name": "Kaart",
           "terms": "plan,plattegrond,informatie"
         },
-        "tourism/information/office": {
-          "name": "Toerismekantoor",
-          "terms": "bezoekerscentrum"
-        },
         "tourism/information/route_marker": {
           "name": "Routemarkering",
           "terms": "routebordje"
@@ -6069,6 +6093,9 @@
         "type/site": {
           "name": "Site",
           "terms": "terrein"
+        },
+        "type/site/climbing/area": {
+          "name": "Klimgebied"
         },
         "type/waterway": {
           "name": "Waterloop",

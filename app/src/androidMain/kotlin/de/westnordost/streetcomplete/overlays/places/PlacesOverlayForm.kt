@@ -246,21 +246,22 @@ class PlacesOverlayForm : AbstractOverlayForm() {
 
     override fun hasChanges(): Boolean =
         originalFeature != featureCtrl.feature
-        || originalNames != localizedNames.value
+        || originalNames != localizedNames.value.filter { it.name.isNotEmpty() }
         || originalNoName != isNoName.value
 
     override fun isFormComplete(): Boolean =
         featureCtrl.feature != null
-        && (localizedNames.value.all { it.name.isNotBlank() } || isNoName.value )
+        // name is not necessary
 
     override fun onClickOk() {
-        val firstLanguage = localizedNames.value.firstOrNull()?.languageTag
+        val inputNames = localizedNames.value.filter { it.name.isNotEmpty() }
+        val firstLanguage = inputNames.firstOrNull()?.languageTag
         if (!firstLanguage.isNullOrEmpty()) prefs.preferredLanguageForNames = firstLanguage
 
         viewLifecycleScope.launch {
             applyEdit(createEditAction(
                 element, geometry,
-                localizedNames.value, originalNames,
+                inputNames, originalNames,
                 featureCtrl.feature!!, originalFeature,
                 isNoName.value,
                 ::confirmReplaceShop

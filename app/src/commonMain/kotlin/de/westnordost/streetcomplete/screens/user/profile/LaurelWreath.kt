@@ -17,7 +17,7 @@ import de.westnordost.streetcomplete.resources.laurel_leaf_ending
 import de.westnordost.streetcomplete.resources.laurel_leaf_pair
 import de.westnordost.streetcomplete.ui.theme.LeafGreen
 import org.jetbrains.compose.resources.painterResource
-import org.jetbrains.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.Preview
 
 @Composable
 fun LaurelWreath(

@@ -15,7 +15,7 @@ import de.westnordost.streetcomplete.resources.crosshair
 import de.westnordost.streetcomplete.ui.theme.AppTheme
 import de.westnordost.streetcomplete.ui.theme.getOpenQuestFormMapPadding
 import org.jetbrains.compose.resources.painterResource
-import org.jetbrains.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.Preview
 
 /** A crosshair at the position at which a new POI should be created */
 @Composable

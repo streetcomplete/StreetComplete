@@ -29,7 +29,7 @@ import de.westnordost.streetcomplete.resources.label_housenumber
 import de.westnordost.streetcomplete.ui.ktx.pxToDp
 import de.westnordost.streetcomplete.ui.theme.largeInput
 import org.jetbrains.compose.resources.stringResource
-import org.jetbrains.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.Preview
 
 /** Form to input a block + housenumber. Since there is no uniform look, there's no custom styling.
  *

@@ -2617,10 +2617,6 @@
           "name": "Autoestrada",
           "terms": "autoestrada,via expressa,via rápida"
         },
-        "highway/motorway_junction": {
-          "name": "Entroncamento/Saída de autoestrada",
-          "terms": "acesso de autoestrada,saída de autoestrada,junção de autoestrada,acesso de via expressa,junção de via expressa,saída de via expressa,acesso à autoestrada,acesso à via expressa,ligação de via expressa,saída,acesso"
-        },
         "highway/motorway_link": {
           "name": "Ligação de autoestrada",
           "terms": "acesso à autoestrada,acesso à via expressa,ligação de via expressa,saída de autoestrada,saída,acesso"
@@ -2983,10 +2979,6 @@
         "landuse/construction": {
           "name": "Área de construção",
           "terms": "área de construção"
-        },
-        "landuse/education": {
-          "name": "Complexo Educativo",
-          "terms": "campus,escola,colégio,área educacional,faculdade,universidade"
         },
         "landuse/farm": {
           "name": "Área de lavoura",
@@ -4814,10 +4806,6 @@
           "name": "Túnel de parquinho",
           "terms": "tubo"
         },
-        "playground/water": {
-          "name": "Brinquedo bomba d'água",
-          "terms": "água,broca,parafuso,lama"
-        },
         "playground/zipwire": {
           "name": "Tirolesa",
           "terms": "tirolesa"
@@ -6160,10 +6148,6 @@
         "tourism/information/map": {
           "name": "Mapa",
           "terms": "mapa turístico"
-        },
-        "tourism/information/office": {
-          "name": "Centro de visitantes",
-          "terms": "centro de visitantes"
         },
         "tourism/information/route_marker": {
           "name": "Marcador de trilha",
