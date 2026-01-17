@@ -81,7 +81,7 @@ class AddWheelchairAccessBusiness : OsmFilterQuestType<WheelchairAccess>(), Andr
                 "sports_centre", "stadium"
             ),
             "office" to arrayOf(
-                // common
+                // common (AddPlaceName has catchall)
                 "insurance", "government", "travel_agent", "tax_advisor", "religion",
                 "employment_agency", "diplomatic", "coworking", "energy_supplier",
                 "estate_agent", "lawyer", "telecommunication", "educational_institution",

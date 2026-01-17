@@ -79,7 +79,7 @@ mapOf(
         // walk-in opening hours but training times
     ),
     "office" to arrayOf(
-        // common
+        // common (AddPlaceName has catchall)
         "insurance", "government", "travel_agent", "tax_advisor", "religion",
         "employment_agency", "diplomatic", "coworking", "energy_supplier",
         "estate_agent", "lawyer", "telecommunication", "educational_institution",
