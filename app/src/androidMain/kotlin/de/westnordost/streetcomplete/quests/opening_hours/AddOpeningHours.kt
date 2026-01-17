@@ -85,7 +85,7 @@ mapOf(
         "estate_agent", "lawyer", "telecommunication", "educational_institution",
         "association", "ngo", "it", "accountant", "property_management",
         "bail_bond_agent", "financial_advisor", "political_party",
-        "private_investigator",
+        "private_investigator", "adoption_agency",
     ),
     "craft" to arrayOf(
         // common
