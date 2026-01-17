@@ -67,6 +67,7 @@ import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.VisibleQuestsSource
 import de.westnordost.streetcomplete.data.user.OAuthCallbackHandler
 import de.westnordost.streetcomplete.data.user.OAuthLoginCompleter
+import de.westnordost.streetcomplete.data.user.UserLoginSource
 import de.westnordost.streetcomplete.data.visiblequests.QuestsHiddenSource
 import de.westnordost.streetcomplete.databinding.ActivityMainBinding
 import de.westnordost.streetcomplete.databinding.EffectQuestPlopBinding
@@ -173,6 +174,7 @@ class MainActivity :
     private val soundFx: SoundFx by inject()
     private val oAuthCallbackHandler: OAuthCallbackHandler by inject()
     private val oAuthLoginCompleter: OAuthLoginCompleter by inject()
+    private val userLoginSource: UserLoginSource by inject()
 
     private lateinit var locationManager: FineLocationManager
 
@@ -317,7 +319,14 @@ class MainActivity :
                         val userIntent = Intent(this@MainActivity, de.westnordost.streetcomplete.screens.user.UserActivity::class.java)
                         startActivity(userIntent)
                     } else {
-                        toast(R.string.oauth_communication_error, Toast.LENGTH_LONG)
+                        // In some flows the user may already be logged in (e.g. external browser finished auth)
+                        val isLoggedIn = userLoginSource.isLoggedIn
+                        if (isLoggedIn) {
+                            val userIntent = Intent(this@MainActivity, de.westnordost.streetcomplete.screens.user.UserActivity::class.java)
+                            startActivity(userIntent)
+                        } else {
+                            toast(R.string.oauth_communication_error, Toast.LENGTH_LONG)
+                        }
                     }
                 }
             }

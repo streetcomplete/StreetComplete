@@ -111,6 +111,7 @@ class LoginViewModelImpl(
                         loginState.value = RequestingAuthorization
                     }
                     finishAuthorization(callbackUri)
+                    oAuthCallbackHandler.consumeCallback()
                 }
             }
         }
@@ -157,13 +158,14 @@ class LoginViewModelImpl(
                 loginState.value = LoginError.RequiredPermissionsNotGranted
             } else {
                 Log.e(TAG, "Error during authorization", e)
-                loginState.value = LoginError.CommunicationError
+                // If a previous session is already valid (e.g., fallback browser completed auth) and mark as logged in
+                loginState.value = if (userLoginController.isLoggedIn) LoggedIn else LoginError.CommunicationError
             }
             return null
         }
     }
 
-    private suspend fun login(accessToken: String) {
+    private fun login(accessToken: String) {
         userLoginController.logIn(accessToken)
     }
 

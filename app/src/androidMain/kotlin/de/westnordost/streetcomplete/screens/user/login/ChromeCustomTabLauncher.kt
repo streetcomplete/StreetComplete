@@ -33,9 +33,5 @@ object ChromeCustomTabLauncher {
             }
         }
     }
-
-    fun launchOAuthFlow(context: Context, authUrl: String, redirectScheme: String): Boolean {
-        return launchUrl(context, authUrl)
-    }
 }
 
