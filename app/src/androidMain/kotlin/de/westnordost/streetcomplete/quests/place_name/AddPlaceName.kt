@@ -105,7 +105,7 @@ class AddPlaceName(
                 "cemetery", "allotments"
             ),
             "military" to arrayOf(
-                "airfield", "barracks", "training_area"
+                "airfield", "barracks", "training_area", "base",
             ),
             "healthcare" to arrayOf(
                 // common
