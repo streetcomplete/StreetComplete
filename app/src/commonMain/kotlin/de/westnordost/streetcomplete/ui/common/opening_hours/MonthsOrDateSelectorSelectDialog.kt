@@ -23,6 +23,7 @@ import de.westnordost.streetcomplete.osm.opening_hours.toMonthsSelectors
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.cancel
 import de.westnordost.streetcomplete.resources.ok
+import de.westnordost.streetcomplete.resources.quest_openingHours_chooseMonthsTitle
 import de.westnordost.streetcomplete.resources.quest_openingHours_chooseWeekdaysTitle
 import de.westnordost.streetcomplete.resources.quest_opening_hours_two_languages
 import de.westnordost.streetcomplete.ui.common.CheckboxGroup
@@ -48,7 +49,7 @@ fun MonthsOrDateSelectorSelectDialog(
     ScrollableAlertDialog(
         onDismissRequest = onDismissRequest,
         modifier = modifier,
-        title = { Text(stringResource(Res.string.quest_openingHours_chooseWeekdaysTitle)) },
+        title = { Text(stringResource(Res.string.quest_openingHours_chooseMonthsTitle)) },
         content = {
             CompositionLocalProvider(
                 LocalContentAlpha provides ContentAlpha.high,
