@@ -23,6 +23,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.R
@@ -37,7 +38,7 @@ import de.westnordost.streetcomplete.util.ktx.toast
 import kotlinx.coroutines.delay
 import org.jetbrains.compose.resources.stringResource
 
-/** Leads user through the OAuth 2 auth flow to login using Chrome Custom Tabs */
+/** Leads user through the OAuth 2 auth flow to login using the external browser */
 @Composable
 fun LoginScreen(
     viewModel: LoginViewModel,
@@ -67,13 +68,13 @@ fun LoginScreen(
         }
     }
 
-    // Launch Custom Tab for OAuth when requesting authorization
+    // Launch external browser for OAuth when requesting authorization
+    val uriHandler = LocalUriHandler.current
     LaunchedEffect(state) {
         if (state is RequestingAuthorization && !viewModel.hasCustomTabLaunched()) {
             viewModel.markCustomTabLaunched()
             val authUrl = viewModel.authorizationRequestUrl
-            // Launch OAuth flow in Chrome Custom Tab
-            ChromeCustomTabLauncher.launchUrl(context, authUrl)
+            uriHandler.openUri(authUrl)
         }
     }
 
@@ -92,7 +93,7 @@ fun LoginScreen(
             windowInsets = AppBarDefaults.topAppBarWindowInsets,
             navigationIcon = {
                 IconButton(onClick = {
-                    // If user closes Custom Tab and returns, pressing back resets the loading state
+                    // If user closes browser and returns, pressing back resets the loading state
                     if (state is RequestingAuthorization) {
                         viewModel.resetLogin()
                     }
@@ -110,7 +111,7 @@ fun LoginScreen(
                 modifier = Modifier.fillMaxSize()
             )
         } else if (state is RequestingAuthorization) {
-            // Show the loading state while Custom Tab is handling authorization
+            // Show the loading state while browser is handling authorization
             Box(Modifier.fillMaxSize()) {
                 LinearProgressIndicator(Modifier.fillMaxWidth())
             }

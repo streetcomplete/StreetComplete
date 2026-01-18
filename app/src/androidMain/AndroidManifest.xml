@@ -34,12 +34,6 @@
         <package android:name="com.android.vending"/>
     </queries>
 
-    <queries>
-        <!--discovers browsers that support custom tabs-->
-        <intent>
-            <action android:name="androidx.browser.customtabs.action.CustomTabsService" />
-        </intent>
-    </queries>
 
     <application
         android:name="de.westnordost.streetcomplete.StreetCompleteApplication"
