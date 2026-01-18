@@ -2,34 +2,24 @@ package de.westnordost.streetcomplete.quests.charge
 
 import android.os.Bundle
 import android.view.View
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.ProvideTextStyle
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
-import androidx.compose.material.TextField
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.ComposeViewBinding
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
-import de.westnordost.streetcomplete.ui.common.DropdownButton
+import de.westnordost.streetcomplete.ui.common.ChargeInput
+import de.westnordost.streetcomplete.ui.common.TimeUnit
 import de.westnordost.streetcomplete.ui.common.dialogs.TextInputDialog
 import de.westnordost.streetcomplete.ui.theme.extraLargeInput
-import de.westnordost.streetcomplete.ui.theme.largeInput
 import de.westnordost.streetcomplete.ui.util.content
 
 class AddParkingChargeForm : AbstractOsmQuestForm<ParkingChargeAnswer>() {
@@ -56,62 +46,25 @@ class AddParkingChargeForm : AbstractOsmQuestForm<ParkingChargeAnswer>() {
                 timeUnitState = rememberSaveable { mutableStateOf(TimeUnit.HOUR) }
                 showDialogState = rememberSaveable { mutableStateOf(false) }
 
-                Column(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(16.dp),
-                    verticalArrangement = Arrangement.spacedBy(16.dp)
-                ) {
-                    // Amount input with currency
-                    Row(
-                        modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.spacedBy(8.dp),
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        ProvideTextStyle(MaterialTheme.typography.extraLargeInput) {
-                            TextField(
-                                value = amountState.value,
-                                onValueChange = {
-                                    amountState.value = it
-                                    checkIsFormComplete()
-                                },
-                                placeholder = { Text("1.50") },
-                                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
-                                modifier = Modifier.width(150.dp),
-                                singleLine = true,
-                            )
-                        }
-
-                        Text(
-                            text = getCurrencySymbol(getCurrencyForCountry()),
-                            style = MaterialTheme.typography.h5,
-                            color = MaterialTheme.colors.onSurface.copy(alpha = 0.6f),
-                            modifier = Modifier.padding(start = 8.dp)
-                        )
-                        Text(
-                            text = getString(R.string.quest_parking_charge_time_unit_label),
-                            style = MaterialTheme.typography.body1
-                        )
-                        Column(
-                            verticalArrangement = Arrangement.spacedBy(4.dp)
-                        ) {
-                            // Time unit selection
-
-                            DropdownButton(
-                                items = TimeUnit.entries,
-                                selectedItem = timeUnitState.value,
-                                onSelectedItem = { unit ->
-                                    timeUnitState.value = unit
-                                    checkIsFormComplete()
-                                },
-                                itemContent = { unit ->
-                                    Text(unit.getDisplayName(this@AddParkingChargeForm))
-                                },
-                                // modifier = Modifier.fillMaxWidth()
-                            )
-                        }
-                    }
+                ProvideTextStyle(MaterialTheme.typography.extraLargeInput) {
+                    ChargeInput(
+                        amount = amountState.value,
+                        onAmountChange = {
+                            amountState.value = it
+                            checkIsFormComplete()
+                        },
+                        currencySymbol = getCurrencySymbol(getCurrencyForCountry()),
+                        timeUnit = timeUnitState.value,
+                        onTimeUnitChange = { unit ->
+                            timeUnitState.value = unit
+                            checkIsFormComplete()
+                        },
+                        perLabel = getString(R.string.quest_parking_charge_time_unit_label),
+                        timeUnitDisplayNames = { unit -> unit.getDisplayName(this@AddParkingChargeForm) },
+                        modifier = Modifier.padding(16.dp)
+                    )
                 }
+
                 if (showDialogState.value) {
                     TextInputDialog(
                         onDismissRequest = { showDialogState.value = false },
@@ -167,26 +120,12 @@ private fun getCurrencySymbol(currency: String): String = when (currency) {
     "USD" -> "$"
     "GBP" -> "£"
     "JPY" -> "¥"
-    else -> currency // otherwise just print out the letters
+    else -> currency
 }
 
-private enum class TimeUnit {
-    HOUR,
-    DAY,
-    MINUTES_30,
-    MINUTES_15;
-
-    fun getDisplayName(form: AddParkingChargeForm): String = when (this) {
-        HOUR -> form.getString(R.string.quest_parking_charge_per_hour)
-        DAY -> form.getString(R.string.quest_parking_charge_per_day)
-        MINUTES_30 -> form.getString(R.string.quest_parking_charge_per_30min)
-        MINUTES_15 -> form.getString(R.string.quest_parking_charge_per_15min)
-    }
-
-    fun toOsmValue(): String = when (this) {
-        HOUR -> "hour"
-        DAY -> "day"
-        MINUTES_30 -> "30 minutes"
-        MINUTES_15 -> "15 minutes"
-    }
+fun TimeUnit.getDisplayName(form: AddParkingChargeForm): String = when (this) {
+    TimeUnit.HOUR -> form.getString(R.string.quest_parking_charge_per_hour)
+    TimeUnit.DAY -> form.getString(R.string.quest_parking_charge_per_day)
+    TimeUnit.MINUTES_30 -> form.getString(R.string.quest_parking_charge_per_30min)
+    TimeUnit.MINUTES_15 -> form.getString(R.string.quest_parking_charge_per_15min)
 }
