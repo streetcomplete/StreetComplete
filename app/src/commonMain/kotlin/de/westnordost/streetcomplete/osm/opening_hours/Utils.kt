@@ -1,5 +1,7 @@
 package de.westnordost.streetcomplete.osm.opening_hours
 
+import de.westnordost.osm_opening_hours.model.ClockTime
+import de.westnordost.osm_opening_hours.model.ExtendedClockTime
 import de.westnordost.osm_opening_hours.model.Holiday
 import de.westnordost.osm_opening_hours.model.HolidaySelector
 import de.westnordost.osm_opening_hours.model.HolidayWithOffset
@@ -8,6 +10,10 @@ import de.westnordost.osm_opening_hours.model.MonthRange
 import de.westnordost.osm_opening_hours.model.MonthsOrDateSelector
 import de.westnordost.osm_opening_hours.model.SingleMonth
 import de.westnordost.osm_opening_hours.model.SpecificWeekdays
+import de.westnordost.osm_opening_hours.model.StartingAtTime
+import de.westnordost.osm_opening_hours.model.TimeIntervals
+import de.westnordost.osm_opening_hours.model.TimeSpan
+import de.westnordost.osm_opening_hours.model.VariableTime
 import de.westnordost.osm_opening_hours.model.Weekday
 import de.westnordost.osm_opening_hours.model.WeekdayRange
 import de.westnordost.osm_opening_hours.model.WeekdaysSelector
@@ -138,3 +144,27 @@ internal fun <T> Set<T>.toOrdinalRanges(entries: List<T>): List<IntRange> {
     return ranges
 }
 
+/** Return last clock time of the very last time in this opening hours, if available */
+internal fun HierarchicOpeningHours.getLastClockTime(): ClockTime? {
+    val lastTimeSelector = (
+        monthsList.lastOrNull()
+            ?.weekdaysList?.lastOrNull()
+            ?.times as? Times
+        )?.selectors?.lastOrNull()
+        ?: return null
+
+    val lastTime = when (lastTimeSelector) {
+        is ClockTime -> lastTimeSelector
+        is VariableTime -> null
+        is TimeIntervals -> lastTimeSelector.end
+        is StartingAtTime -> null
+        is TimeSpan -> lastTimeSelector.end
+    } ?: return null
+
+    val lastClockTime = when (lastTime) {
+        is ExtendedClockTime -> ClockTime(lastTime.hour % 24, lastTime.minutes)
+        is ClockTime -> lastTime
+        is VariableTime -> null
+    }
+    return lastClockTime
+}

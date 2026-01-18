@@ -6,9 +6,12 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.text.intl.Locale
+import de.westnordost.osm_opening_hours.model.ClockTime
+import de.westnordost.osm_opening_hours.model.ExtendedClockTime
 import de.westnordost.osm_opening_hours.model.HolidaySelector
 import de.westnordost.osm_opening_hours.model.Month
 import de.westnordost.osm_opening_hours.model.MonthsOrDateSelector
+import de.westnordost.osm_opening_hours.model.TimeSpan
 import de.westnordost.osm_opening_hours.model.TimesSelector
 import de.westnordost.osm_opening_hours.model.WeekdaysSelector
 import de.westnordost.streetcomplete.osm.opening_hours.HierarchicOpeningHours
@@ -16,6 +19,7 @@ import de.westnordost.streetcomplete.osm.opening_hours.Months
 import de.westnordost.streetcomplete.osm.opening_hours.Off
 import de.westnordost.streetcomplete.osm.opening_hours.Times
 import de.westnordost.streetcomplete.osm.opening_hours.Weekdays
+import de.westnordost.streetcomplete.osm.opening_hours.getLastClockTime
 import de.westnordost.streetcomplete.osm.opening_hours.getMonths
 import de.westnordost.streetcomplete.osm.opening_hours.toMonthsSelectors
 import de.westnordost.streetcomplete.ui.common.opening_hours.AddOpeningHoursRequest.*
@@ -133,9 +137,30 @@ fun AddOpeningHoursDialogCascade(
             )
         }
         SelectTimes -> {
+            val addsTimesToExistingWeekdays = data.weekdays == null && data.holidays == null && data.months == null
+            val lastClockTime = openingHours.getLastClockTime()
+            val initialTime = if (addsTimesToExistingWeekdays && lastClockTime != null) {
+                // when adding another time to weekdays, start the picker at 1 hour after the last
+                // time (i.e. after lunch break)
+                val newStartTime = lastClockTime.copy((lastClockTime.hour + 1) % 24)
+                when (timeMode) {
+                    TimeMode.Points -> newStartTime
+                    TimeMode.Spans -> {
+                        val newEndTime = ExtendedClockTime(newStartTime.hour + 4, 0)
+                        TimeSpan(newStartTime, newEndTime)
+                    }
+                }
+            } else {
+                // typical opening hours, actually, according to taginfo, the most common ones
+                when (timeMode) {
+                    TimeMode.Points -> ClockTime(9, 0)
+                    TimeMode.Spans -> TimeSpan(ClockTime(9, 0), ClockTime(18, 0))
+                }
+            }
+
             TimesSelectorDialog(
                 onDismissRequest = { if (step == SelectTimes) onDismissRequest() },
-                mode = timeMode,
+                initialTime = initialTime,
                 onSelect = { newTime ->
                     data.time = newTime
                     selectComplete()
