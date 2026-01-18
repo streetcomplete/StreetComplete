@@ -923,6 +923,7 @@ Falls du von der Flut der Aufgaben überwältigt bist, kannst du in den Einstell
     <string name="quest_parking_charge_varies_description">Beschreibe, wie sich die Parkgebühren unterscheiden (z.B. "1 EUR/h weekdays, 2 EUR/h weekends")</string>
     <string name="quest_parking_charge_per_30min">30min</string>
     <string name="quest_parking_charge_per_15min">15min</string>
+    <string name="quest_parking_charge_hint">"Bei dieser Aufgabe wird der Einfachheit halber zunächst empfohlen, bei unterschiedlichen Beträgen den Standardbetrag anzugeben. Wenn ein Parkplatz beispielsweise tagsüber 3 € pro Stunde und nachts 1 € pro Stunde kostet, werden 3 € pro Stunde eingegeben. Das erleichtert später den Vergleich der Preise anhand der Daten."</string>
 
     <string name="quest_postboxCollectionTimes_resurvey_title">"Stimmen die Leerungszeiten für diesen Postkasten noch?"</string>
     <string name="quest_bicycle_barrier_type_title">"Was für ein Fahrradhindernis ist das?"</string>

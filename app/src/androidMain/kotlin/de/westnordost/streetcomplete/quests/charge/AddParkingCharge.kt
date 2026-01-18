@@ -24,6 +24,8 @@ class AddParkingCharge : OsmFilterQuestType<ParkingChargeAnswer>(), AndroidQuest
     override val wikiLink = "Key:charge"
     override val icon = R.drawable.quest_parking_charge
     override val achievements = listOf(CAR)
+    // for now, this hint is just a proposal
+    override val hint = R.string.quest_parking_charge_hint
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_parking_charge_title
 
