@@ -42,6 +42,7 @@ import de.westnordost.streetcomplete.ui.theme.largeInput
 import de.westnordost.streetcomplete.util.locale.TimeFormatElements
 import org.jetbrains.compose.resources.stringResource
 
+/** Dialog in which the user can select a (clock) time span */
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun TimeSpansSelectorSelectDialog(

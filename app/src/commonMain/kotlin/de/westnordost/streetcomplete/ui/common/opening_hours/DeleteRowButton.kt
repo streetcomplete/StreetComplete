@@ -13,6 +13,7 @@ import de.westnordost.streetcomplete.resources.quest_openingHours_delete
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
+/** An icon button for deleting a(n opening hours) row, can be invisible (still takes the same space) */
 @Composable
 fun DeleteRowButton(
     onClick: () -> Unit,
