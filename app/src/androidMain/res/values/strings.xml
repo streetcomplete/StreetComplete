@@ -1388,19 +1388,15 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_access_private">Only individual(s) with permission</string>
 
     <!-- Parking Charge Quest -->
-    <string name="quest_parking_charge_amount_label">Amount</string>
     <string name="quest_parking_charge_varies_title">Variable pricing</string>
     <string name="quest_parking_charge_title">How much do you need to pay to park here?</string>
     <string name="quest_parking_charge_varies">It varies…</string>
     <string name="quest_parking_charge_time_unit_label">per</string>
     <string name="quest_parking_charge_per_hour">Hour</string>
     <string name="quest_parking_charge_per_day">Day</string>
-    <string name="quest_parking_charge_currency_info">%s / </string>
     <string name="quest_parking_charge_varies_description">Describe how the parking charges vary (e.g. "1 EUR/h weekdays, 2 EUR/h weekends")</string>
-    <string name="quest_parking_charge_question">How much does parking cost?</string>
     <string name="quest_parking_charge_per_30min">30min</string>
     <string name="quest_parking_charge_per_15min">15min</string>
-    <string name="quest_parking_charge_preview_label">Preview:</string>
 
     <string name="quest_parking_fee_title">Do you have to pay to park here?</string>
     <string name="quest_fee_answer_hours">Depends on time and day…</string>

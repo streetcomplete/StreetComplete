@@ -7,11 +7,14 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.OutlinedTextField
+import androidx.compose.material.ProvideTextStyle
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
+import androidx.compose.material.TextField
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -25,6 +28,8 @@ import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.ui.common.DropdownButton
 import de.westnordost.streetcomplete.ui.common.dialogs.TextInputDialog
+import de.westnordost.streetcomplete.ui.theme.extraLargeInput
+import de.westnordost.streetcomplete.ui.theme.largeInput
 import de.westnordost.streetcomplete.ui.util.content
 
 class AddParkingChargeForm : AbstractOsmQuestForm<ParkingChargeAnswer>() {
@@ -57,29 +62,25 @@ class AddParkingChargeForm : AbstractOsmQuestForm<ParkingChargeAnswer>() {
                         .padding(16.dp),
                     verticalArrangement = Arrangement.spacedBy(16.dp)
                 ) {
-                    Text(
-                        text = getString(R.string.quest_parking_charge_question),
-                        style = MaterialTheme.typography.h6
-                    )
-
                     // Amount input with currency
                     Row(
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.spacedBy(8.dp),
                         verticalAlignment = Alignment.CenterVertically
                     ) {
-                        OutlinedTextField(
-                            value = amountState.value,
-                            onValueChange = {
-                                amountState.value = it
-                                checkIsFormComplete()
-                            },
-                            label = { Text(getString(R.string.quest_parking_charge_amount_label)) },
-                            placeholder = { Text("1.50") },
-                            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
-                            modifier = Modifier.weight(4f),
-                            singleLine = true
-                        )
+                        ProvideTextStyle(MaterialTheme.typography.extraLargeInput) {
+                            TextField(
+                                value = amountState.value,
+                                onValueChange = {
+                                    amountState.value = it
+                                    checkIsFormComplete()
+                                },
+                                placeholder = { Text("1.50") },
+                                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
+                                modifier = Modifier.width(150.dp),
+                                singleLine = true,
+                            )
+                        }
 
                         Text(
                             text = getCurrencySymbol(getCurrencyForCountry()),
