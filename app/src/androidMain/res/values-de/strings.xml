@@ -912,6 +912,18 @@ Falls du von der Flut der Aufgaben überwältigt bist, kannst du in den Einstell
     <string name="quest_access_yes">"Alle Personen der Öffentlichkeit"</string>
     <string name="quest_access_customers">"Jede Person, die einen bestimmten Ort besucht (z. B. nur Kunden)"</string>
     <string name="quest_access_private">"Nur Einzelne mit Erlaubnis"</string>
+
+    <!-- Parking Charge Quest -->
+    <string name="quest_parking_charge_title">Wie viel muss man bezahlen, um hier zu parken?</string>
+    <string name="quest_parking_charge_varies_title">Variable Preise</string>
+    <string name="quest_parking_charge_varies">Es variiert je nach Stunde, Tag, …</string>
+    <string name="quest_parking_charge_time_unit_label">pro</string>
+    <string name="quest_parking_charge_per_hour">Stunde</string>
+    <string name="quest_parking_charge_per_day">Tag</string>
+    <string name="quest_parking_charge_varies_description">Beschreibe, wie sich die Parkgebühren unterscheiden (z.B. "1 EUR/h weekdays, 2 EUR/h weekends")</string>
+    <string name="quest_parking_charge_per_30min">30min</string>
+    <string name="quest_parking_charge_per_15min">15min</string>
+
     <string name="quest_postboxCollectionTimes_resurvey_title">"Stimmen die Leerungszeiten für diesen Postkasten noch?"</string>
     <string name="quest_bicycle_barrier_type_title">"Was für ein Fahrradhindernis ist das?"</string>
     <string name="quest_barrier_bicycle_type_diagonal">"Diagonal zum Weg"</string>
