@@ -113,7 +113,6 @@ import de.westnordost.streetcomplete.util.ktx.truncateTo6Decimals
 import de.westnordost.streetcomplete.util.location.FineLocationManager
 import de.westnordost.streetcomplete.util.location.LocationAvailabilityReceiver
 import de.westnordost.streetcomplete.util.location.LocationRequestFragment
-import de.westnordost.streetcomplete.util.logs.Log
 import de.westnordost.streetcomplete.util.math.area
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import de.westnordost.streetcomplete.util.math.enlargedBy

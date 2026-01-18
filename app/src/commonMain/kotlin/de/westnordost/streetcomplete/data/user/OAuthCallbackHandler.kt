@@ -44,7 +44,6 @@ class OAuthCallbackHandler {
     }
 
     fun clearStoredParams() {
-        Log.i(TAG, "Clearing stored OAuth params")
         storedOAuthParams = null
     }
 

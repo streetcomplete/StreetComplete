@@ -25,19 +25,17 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.dp
-import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.unsynced_quests_not_logged_in_description
 import de.westnordost.streetcomplete.resources.user_login
+import androidx.compose.ui.unit.dp
+import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.screens.user.login.LoginError.CommunicationError
 import de.westnordost.streetcomplete.screens.user.login.LoginError.RequiredPermissionsNotGranted
 import de.westnordost.streetcomplete.ui.common.BackIcon
 import de.westnordost.streetcomplete.ui.theme.titleLarge
 import de.westnordost.streetcomplete.util.ktx.toast
-import kotlinx.coroutines.delay
 import org.jetbrains.compose.resources.stringResource
-
 /** Leads user through the OAuth 2 auth flow to login using the external browser */
 @Composable
 fun LoginScreen(
@@ -71,19 +69,16 @@ fun LoginScreen(
     // Launch external browser for OAuth when requesting authorization
     val uriHandler = LocalUriHandler.current
     LaunchedEffect(state) {
-        if (state is RequestingAuthorization && !viewModel.hasCustomTabLaunched()) {
-            viewModel.markCustomTabLaunched()
+        if (state is RequestingAuthorization && !viewModel.hasAuthUrlLaunched()) {
+            viewModel.markAuthUrlLaunched()
             val authUrl = viewModel.authorizationRequestUrl
             uriHandler.openUri(authUrl)
         }
     }
 
     LaunchedEffect(state) {
-        if (state is RequestingAuthorization) {
-            delay(2000)
-            if (viewModel.loginState.value is RequestingAuthorization) {
-                viewModel.resetLogin()
-            }
+        if(state is RequestingAuthorization && viewModel.loginState.value is RequestingAuthorization){
+            viewModel.resetLogin()
         }
     }
 
@@ -93,7 +88,7 @@ fun LoginScreen(
             windowInsets = AppBarDefaults.topAppBarWindowInsets,
             navigationIcon = {
                 IconButton(onClick = {
-                    // If user closes browser and returns, pressing back resets the loading state
+                    // If user navigates back while waiting for browser auth, reset loading state
                     if (state is RequestingAuthorization) {
                         viewModel.resetLogin()
                     }
