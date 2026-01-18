@@ -26,7 +26,7 @@ import de.westnordost.streetcomplete.osm.opening_hours.Weekdays
 fun WeekdaysColumn(
     weekdaysList: List<Weekdays>,
     onChange: (List<Weekdays>) -> Unit,
-    modifier: Modifier,
+    modifier: Modifier = Modifier,
     locale: Locale = Locale.current,
     userLocale: Locale = Locale.current,
     enabled: Boolean = true,
@@ -44,15 +44,16 @@ fun WeekdaysColumn(
                             weekdaysSelectors = weekdaysSelectors,
                             holidaysSelectors = holidaysSelectors
                         )
-                        onChange(weekdaysList.toMutableList().also {
-                            it[index] = newWeekdays
-                        })
+                        val newWeekdaysList = weekdaysList.toMutableList()
+                        newWeekdaysList[index] = newWeekdays
+                        onChange(newWeekdaysList)
                     },
                     modifier = Modifier.weight(1f),
                     locale = locale,
                     userLocale = userLocale,
                     enabled = enabled,
                 )
+                // times should have about double the width as the weekdays (abbreviations)
                 Column(Modifier.weight(2f)) {
                     if (index > 0) Divider()
                     when (weekdays.times) {
@@ -63,7 +64,6 @@ fun WeekdaysColumn(
                                     newWeekdaysList.removeAt(index)
                                     onChange(newWeekdaysList)
                                 },
-
                                 enabled = enabled,
                             )
                         }
