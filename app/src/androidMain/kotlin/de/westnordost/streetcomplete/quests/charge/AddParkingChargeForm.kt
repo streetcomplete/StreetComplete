@@ -9,6 +9,7 @@ import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -21,6 +22,9 @@ import de.westnordost.streetcomplete.ui.common.TimeUnit
 import de.westnordost.streetcomplete.ui.common.dialogs.TextInputDialog
 import de.westnordost.streetcomplete.ui.theme.extraLargeInput
 import de.westnordost.streetcomplete.ui.util.content
+import de.westnordost.streetcomplete.util.locale.CurrencyFormatter
+import java.util.Currency
+import java.util.Locale
 
 class AddParkingChargeForm : AbstractOsmQuestForm<ParkingChargeAnswer>() {
 
@@ -30,6 +34,8 @@ class AddParkingChargeForm : AbstractOsmQuestForm<ParkingChargeAnswer>() {
     private lateinit var amountState: MutableState<String>
     private lateinit var timeUnitState: MutableState<TimeUnit>
     private lateinit var showDialogState: MutableState<Boolean>
+
+    private val currencyFormatter = CurrencyFormatter()
 
     override val otherAnswers: List<AnswerItem> get() = listOf(
         AnswerItem(R.string.quest_parking_charge_varies) {
@@ -46,6 +52,11 @@ class AddParkingChargeForm : AbstractOsmQuestForm<ParkingChargeAnswer>() {
                 timeUnitState = rememberSaveable { mutableStateOf(TimeUnit.HOUR) }
                 showDialogState = rememberSaveable { mutableStateOf(false) }
 
+                val currencyCode = getCurrencyForCountry()
+                val currencyFormatInfo = remember(currencyCode) {
+                    currencyFormatter.getFormatInfo(currencyCode)
+                }
+
                 ProvideTextStyle(MaterialTheme.typography.extraLargeInput) {
                     ChargeInput(
                         amount = amountState.value,
@@ -53,7 +64,7 @@ class AddParkingChargeForm : AbstractOsmQuestForm<ParkingChargeAnswer>() {
                             amountState.value = it
                             checkIsFormComplete()
                         },
-                        currencySymbol = getCurrencySymbol(getCurrencyForCountry()),
+                        currencyFormatInfo = currencyFormatInfo,
                         timeUnit = timeUnitState.value,
                         onTimeUnitChange = { unit ->
                             timeUnitState.value = unit
@@ -92,35 +103,13 @@ class AddParkingChargeForm : AbstractOsmQuestForm<ParkingChargeAnswer>() {
         applyAnswer(SimpleCharge(amount, currency, timeUnit))
     }
 
-    private fun getCurrencyForCountry(): String = when (countryInfo.countryCode) {
-        "AT", "BE", "CY", "DE", "EE", "ES", "FI", "FR", "GR", "IE",
-        "IT", "LT", "LU", "LV", "MT", "NL", "PT", "SI", "SK", "HR" -> "EUR"
-        "GB" -> "GBP"
-        "US" -> "USD"
-        "CH" -> "CHF"
-        "DK" -> "DKK"
-        "SE" -> "SEK"
-        "NO" -> "NOK"
-        "PL" -> "PLN"
-        "CZ" -> "CZK"
-        "HU" -> "HUF"
-        "RO" -> "RON"
-        "BG" -> "BGN"
-        "JP" -> "JPY"
-        "CN" -> "CNY"
-        "IN" -> "INR"
-        "AU" -> "AUD"
-        "CA" -> "CAD"
-        else -> "EUR"
+    private fun getCurrencyForCountry(): String = try {
+        val locale = Locale.Builder().setRegion(countryInfo.countryCode).build()
+        val currency = Currency.getInstance(locale)
+        currency.currencyCode
+    } catch (e: Exception) {
+        "EUR"
     }
-}
-
-private fun getCurrencySymbol(currency: String): String = when (currency) {
-    "EUR" -> "€"
-    "USD" -> "$"
-    "GBP" -> "£"
-    "JPY" -> "¥"
-    else -> currency
 }
 
 fun TimeUnit.getDisplayName(form: AddParkingChargeForm): String = when (this) {

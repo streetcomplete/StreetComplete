@@ -17,14 +17,15 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
+import de.westnordost.streetcomplete.util.locale.CurrencyFormatInfo
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
-/** Composable for inputting a charge amount with currency symbol and a time unit selector */
+/** A composable for inputting a charge amount with currency symbol and time unit selector */
 @Composable
 fun ChargeInput(
     amount: String,
     onAmountChange: (String) -> Unit,
-    currencySymbol: String,
+    currencyFormatInfo: CurrencyFormatInfo,
     timeUnit: TimeUnit,
     onTimeUnitChange: (TimeUnit) -> Unit,
     perLabel: String,
@@ -36,21 +37,46 @@ fun ChargeInput(
         horizontalArrangement = Arrangement.spacedBy(8.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
+        if (currencyFormatInfo.symbolBeforeAmount) {
+            Text(
+                text = currencyFormatInfo.symbol,
+                style = MaterialTheme.typography.h5,
+                color = MaterialTheme.colors.onSurface.copy(alpha = 0.6f),
+                modifier = Modifier.padding(end = 8.dp)
+            )
+        }
+
         TextField(
             value = amount,
             onValueChange = onAmountChange,
-            placeholder = { Text("1.50") },
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
+            placeholder = {
+                // Generate placeholder based on decimal places
+                val placeholderValue = when (currencyFormatInfo.decimalPlaces) {
+                    0 -> "150"
+                    1 -> "15.0"
+                    else -> "1.50"
+                }
+                Text(placeholderValue)
+            },
+            keyboardOptions = KeyboardOptions(
+                keyboardType = if (currencyFormatInfo.decimalPlaces > 0) {
+                    KeyboardType.Decimal
+                } else {
+                    KeyboardType.Number
+                }
+            ),
             modifier = Modifier.width(150.dp),
             singleLine = true,
         )
 
-        Text(
-            text = currencySymbol,
-            style = MaterialTheme.typography.h5,
-            color = MaterialTheme.colors.onSurface.copy(alpha = 0.6f),
-            modifier = Modifier.padding(start = 8.dp)
-        )
+        if (!currencyFormatInfo.symbolBeforeAmount) {
+            Text(
+                text = currencyFormatInfo.symbol,
+                style = MaterialTheme.typography.h5,
+                color = MaterialTheme.colors.onSurface.copy(alpha = 0.6f),
+                modifier = Modifier.padding(start = 8.dp)
+            )
+        }
 
         Text(
             text = perLabel,
@@ -95,7 +121,11 @@ private fun ChargeInputPreview() {
     ChargeInput(
         amount = amount.value,
         onAmountChange = { amount.value = it },
-        currencySymbol = "€",
+        currencyFormatInfo = CurrencyFormatInfo(
+            symbol = "€",
+            symbolBeforeAmount = false,
+            decimalPlaces = 2
+        ),
         timeUnit = timeUnit.value,
         onTimeUnitChange = { timeUnit.value = it },
         perLabel = "per",
