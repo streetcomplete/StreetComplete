@@ -42,9 +42,14 @@ fun MonthsColumn(
                     )
                     DeleteRowButton(
                         onClick = {
-                            val newMonthsList = monthsList.toMutableList()
-                            newMonthsList.removeAt(index)
-                            onChange(newMonthsList)
+                            if (monthsList.size <= 1) {
+                                // last entry? -> reset months
+                                onChange(listOf(Months(emptyList(), emptyList())))
+                            } else {
+                                val newMonthsList = monthsList.toMutableList()
+                                newMonthsList.removeAt(index)
+                                onChange(newMonthsList)
+                            }
                         },
                         visible = enabled
                     )
