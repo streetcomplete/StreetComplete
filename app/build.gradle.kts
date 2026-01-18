@@ -166,8 +166,6 @@ kotlin {
                 // reorderable lists (raw Compose API is pretty complicated)
                 implementation("sh.calvin.reorderable:reorderable:2.5.1")
 
-                // multiplatform webview (for login via OAuth)
-                implementation("io.github.kevinnzou:compose-webview-multiplatform:2.0.3")
 
                 // sharing presets/settings via QR Code
                 implementation("io.github.alexzhirkevich:qrose:1.0.1")

@@ -34,14 +34,6 @@ abstract class LoginViewModel : ViewModel() {
     /** Starts the OAuth2 based login flow. */
     abstract fun startLogin()
 
-    /** Call when the web view / browser received an error when loading the (authorization) page */
-    abstract fun failAuthorization(url: String, errorCode: Int, description: String?)
-
-    /** Returns whether the url is a redirect url destined for this OAuth authorization flow */
-    abstract fun isAuthorizationResponseUrl(url: String): Boolean
-
-    /** Continues OAuth authorization flow with given redirect url */
-    abstract fun finishAuthorization(authorizationResponseUrl: String)
 
     /** Resets the login state to LoggedOut. Only works if current state is LoginError */
     abstract fun resetLogin()
@@ -127,46 +119,25 @@ class LoginViewModelImpl(
         authUrlLaunched = false
     }
 
-    override fun failAuthorization(url: String, errorCode: Int, description: String?) {
-        Log.e(TAG, "Error for URL " + url + if (description != null) ": $description" else "")
-        loginState.compareAndSet(RequestingAuthorization, LoginError.CommunicationError)
-    }
-
-    override fun isAuthorizationResponseUrl(url: String): Boolean =
-        oAuth.itsForMe(url)
-
-    override fun finishAuthorization(authorizationResponseUrl: String) {
+    private fun finishAuthorization(authorizationResponseUrl: String) {
         launch {
-            val accessToken = retrieveAccessToken(authorizationResponseUrl)
-            if (accessToken != null) {
-                login(accessToken)
+            try {
+                loginState.value = RetrievingAccessToken
+                val accessTokenResponse = oAuthApiClient.getAccessToken(oAuth, authorizationResponseUrl)
+                if (accessTokenResponse.grantedScopes?.containsAll(OAUTH2_REQUIRED_SCOPES) == false) {
+                    loginState.value = LoginError.RequiredPermissionsNotGranted
+                    return@launch
+                }
+                userLoginController.logIn(accessTokenResponse.accessToken)
+            } catch (e: Exception) {
+                if (e is OAuthException && e.error == "access_denied") {
+                    loginState.value = LoginError.RequiredPermissionsNotGranted
+                } else {
+                    Log.e(TAG, "Error during authorization", e)
+                    loginState.value = if (userLoginController.isLoggedIn) LoggedIn else LoginError.CommunicationError
+                }
             }
         }
-    }
-
-    private suspend fun retrieveAccessToken(authorizationResponseUrl: String): String? {
-        try {
-            loginState.value = RetrievingAccessToken
-            val accessTokenResponse = oAuthApiClient.getAccessToken(oAuth, authorizationResponseUrl)
-            if (accessTokenResponse.grantedScopes?.containsAll(OAUTH2_REQUIRED_SCOPES) == false) {
-                loginState.value = LoginError.RequiredPermissionsNotGranted
-                return null
-            }
-            return accessTokenResponse.accessToken
-        } catch (e: Exception) {
-            if (e is OAuthException && e.error == "access_denied") {
-                loginState.value = LoginError.RequiredPermissionsNotGranted
-            } else {
-                Log.e(TAG, "Error during authorization", e)
-                // If a previous session is already valid (e.g., fallback browser completed auth) and mark as logged in
-                loginState.value = if (userLoginController.isLoggedIn) LoggedIn else LoginError.CommunicationError
-            }
-            return null
-        }
-    }
-
-    private fun login(accessToken: String) {
-        userLoginController.logIn(accessToken)
     }
 
     override fun resetLogin() {
