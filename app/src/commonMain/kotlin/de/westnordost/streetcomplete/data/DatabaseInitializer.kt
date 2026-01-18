@@ -1,5 +1,7 @@
 package de.westnordost.streetcomplete.data
 
+import de.westnordost.streetcomplete.data.atp.AtpQuestsHiddenTable
+import de.westnordost.streetcomplete.data.atp.AtpTable
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesTable
 import de.westnordost.streetcomplete.data.logs.LogsTable
 import de.westnordost.streetcomplete.data.osm.created_elements.CreatedElementsTable
@@ -29,7 +31,7 @@ import de.westnordost.streetcomplete.util.logs.Log
 
 /** Creates the database and upgrades it */
 object DatabaseInitializer {
-    const val DB_VERSION = 19
+    const val DB_VERSION = 20
 
     fun onCreate(db: Database) {
         // OSM notes
@@ -99,6 +101,12 @@ object DatabaseInitializer {
         // logs
         db.exec(LogsTable.CREATE)
         db.exec(LogsTable.INDEX_CREATE)
+
+        // ATP data
+        db.exec(AtpTable.CREATE)
+        db.exec(AtpTable.INDEX_CREATE)
+        db.exec(AtpTable.SPATIAL_INDEX_CREATE)
+        db.exec(AtpQuestsHiddenTable.CREATE)
     }
 
     fun onUpgrade(db: Database, oldVersion: Int, newVersion: Int) {
@@ -253,6 +261,12 @@ object DatabaseInitializer {
             db.deleteQuest("AddParcelLockerMailIn")
             db.deleteQuest("AddParcelLockerPickup")
             db.deleteQuest("AddShoulder")
+        }
+        if (oldVersion <= 19 && newVersion > 19) {
+            db.exec(AtpTable.CREATE)
+            db.exec(AtpTable.INDEX_CREATE)
+            db.exec(AtpTable.SPATIAL_INDEX_CREATE)
+            db.exec(AtpQuestsHiddenTable.CREATE)
         }
     }
 }

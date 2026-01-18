@@ -82,15 +82,16 @@ interface OsmElementQuestType<T> : QuestType, ElementEditType {
      * not (this is slow). */
     fun isApplicableTo(element: Element): Boolean?
 
-    /** Elements that should be highlighted on the map alongside the selected one because they
-     *  provide context for the given element. For example, nearby benches should be shown when
-     *  answering a question for a bench so the user knows which of the benches is meant. */
-    fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry): Sequence<Element> = emptySequence()
-
     /** The radius in which certain elements should be shown (see getHighlightedElements).
      *  30m is the default because this is about "across this large street". There shouldn't be
      *  any misunderstandings which element is meant that far apart. */
     val highlightedElementsRadius: Double get() = 30.0
+
+    override fun getHighlightedElementsGeneric(element: Element?, getMapData: () -> MapDataWithGeometry): Sequence<Element> {
+        return getHighlightedElements(element!!, getMapData)
+    }
+
+    fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) : Sequence<Element> = emptySequence()
 
     /** Applies the data from [answer] to the element that has last been edited at [timestampEdited]
      * with the given [tags] and the given [geometry].

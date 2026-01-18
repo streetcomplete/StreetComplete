@@ -727,6 +727,11 @@ Before uploading your changes, the app checks with a &lt;a href="https://www.wes
 
     <string name="quest_airConditioning_title">Is this place air-conditioned?</string>
 
+    <string name="quest_atp_add_missing_poi_title">This place may be in this area - where exactly it is located?</string>
+    <string name="quest_atp_add_missing_poi_interface_explanation">Tap on its exact location on the map to mark its real location.</string>
+    <string name="quest_atp_add_missing_poi_mapped_already">"It's already displayed on the map"</string>
+    <string name="quest_atp_add_missing_poi_does_not_exist">"No such place here"</string>
+
     <string name="quest_atm_cashin_title">Can you deposit cash at this ATM?</string>
     <string name="quest_atm_operator_title">Which bank operates this ATM?</string>
 

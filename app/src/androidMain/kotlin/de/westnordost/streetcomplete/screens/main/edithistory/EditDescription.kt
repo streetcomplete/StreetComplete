@@ -5,6 +5,9 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.ReadOnlyComposable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
+import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.atp.atpquests.AtpQuestHidden
 import de.westnordost.streetcomplete.data.edithistory.Edit
 import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
 import de.westnordost.streetcomplete.data.osm.edits.create.CreateNodeAction
@@ -65,6 +68,8 @@ fun EditDescription(
         is OsmQuestHidden ->
             Text(stringResource(Res.string.hid_action_description), modifier)
         is OsmNoteQuestHidden ->
+            Text(stringResource(Res.string.hid_action_description), modifier)
+        is AtpQuestHidden ->
             Text(stringResource(Res.string.hid_action_description), modifier)
     }
 }

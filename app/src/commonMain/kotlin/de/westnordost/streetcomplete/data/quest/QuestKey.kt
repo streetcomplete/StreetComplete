@@ -12,6 +12,10 @@ sealed class QuestKey
 data class OsmNoteQuestKey(val noteId: Long) : QuestKey()
 
 @Serializable
+@SerialName("atpquest")
+data class AtpQuestKey(val atpEntryId: Long) : QuestKey()
+
+@Serializable
 @SerialName("osm")
 data class OsmQuestKey(
     val elementType: ElementType,

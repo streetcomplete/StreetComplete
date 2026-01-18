@@ -1,16 +1,20 @@
 package de.westnordost.streetcomplete.data.edithistory
 
+import de.westnordost.streetcomplete.data.atp.AtpEditsController
+import de.westnordost.streetcomplete.data.atp.atpquests.edits.AtpDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsController
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsSource
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsController
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsSource
 import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
+import de.westnordost.streetcomplete.data.quest.AtpQuestKey
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.visiblequests.QuestsHiddenController
 import de.westnordost.streetcomplete.data.visiblequests.QuestsHiddenSource
 import de.westnordost.streetcomplete.testutils.QUEST_TYPE
 import de.westnordost.streetcomplete.testutils.any
+import de.westnordost.streetcomplete.testutils.atpQuestHidden
 import de.westnordost.streetcomplete.testutils.edit
 import de.westnordost.streetcomplete.testutils.eq
 import de.westnordost.streetcomplete.testutils.mock
@@ -28,9 +32,11 @@ class EditHistoryControllerTest {
 
     private lateinit var elementEditsController: ElementEditsController
     private lateinit var noteEditsController: NoteEditsController
+    private lateinit var atpEditsController: AtpEditsController
     private lateinit var hiddenQuestsController: QuestsHiddenController
     private lateinit var notesSource: NotesWithEditsSource
     private lateinit var mapDataSource: MapDataWithEditsSource
+    private lateinit var atpDataSource: AtpDataWithEditsSource
     private lateinit var questTypeRegistry: QuestTypeRegistry
     private lateinit var listener: EditHistorySource.Listener
     private lateinit var ctrl: EditHistoryController
@@ -42,9 +48,11 @@ class EditHistoryControllerTest {
     @BeforeTest fun setUp() {
         elementEditsController = mock()
         noteEditsController = mock()
+        atpEditsController = mock()
         hiddenQuestsController = mock()
         notesSource = mock()
         mapDataSource = mock()
+        atpDataSource = mock()
         questTypeRegistry = QuestTypeRegistry(listOf(
             0 to QUEST_TYPE,
         ))
@@ -68,8 +76,8 @@ class EditHistoryControllerTest {
         }
 
         ctrl = EditHistoryController(
-            elementEditsController, noteEditsController, hiddenQuestsController, notesSource,
-            mapDataSource, questTypeRegistry
+            elementEditsController, noteEditsController, atpEditsController, hiddenQuestsController, notesSource,
+            mapDataSource, atpDataSource, questTypeRegistry
         )
         ctrl.addListener(listener)
     }
@@ -126,6 +134,15 @@ class EditHistoryControllerTest {
         on(notesSource.get(e.note.id)).thenReturn(e.note)
         on(hiddenQuestsController.get(e.questKey)).thenReturn(e.createdTimestamp)
         ctrl.undo(e.key)
+        verify(hiddenQuestsController).unhide(e.questKey)
+    }
+
+    @Test fun `undo hid atp quest`() {
+        val e = atpQuestHidden()
+        val editKey = QuestHiddenKey(questKey = e.questKey)
+        on(atpDataSource.get(e.questKey.atpEntryId)).thenReturn(e.atpEntry)
+        on(hiddenQuestsController.get(e.questKey)).thenReturn(e.createdTimestamp)
+        ctrl.undo(editKey)
         verify(hiddenQuestsController).unhide(e.questKey)
     }
 
