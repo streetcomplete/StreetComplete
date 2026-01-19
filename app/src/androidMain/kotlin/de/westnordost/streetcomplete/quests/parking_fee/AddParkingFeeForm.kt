@@ -92,7 +92,11 @@ class AddParkingFeeForm : AbstractOsmQuestForm<ParkingFeeAnswer>() {
                         }
                     }
                 }
-                else -> {}
+                else -> {
+                    // nothing. Note that this still leads to the display of an empty view (padding
+                    // plus horizontal bar), this might be solved when the form is migrated to
+                    // compose completely
+                }
             }
         } }
     }
