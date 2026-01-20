@@ -32,7 +32,6 @@ import de.westnordost.streetcomplete.view.CharSequenceText
 import de.westnordost.streetcomplete.view.ResText
 import de.westnordost.streetcomplete.view.Text
 import de.westnordost.streetcomplete.view.setText
-import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import org.koin.android.ext.android.inject
 import org.koin.core.qualifier.named
@@ -130,7 +129,9 @@ abstract class AbstractQuestForm :
             }
         }
 
-        infoIsExpanded = false
+        infoIsExpanded = true
+        updateInfoAreaVisibility()
+
         binding.infoButton.setOnClickListener { toggleInfoArea() }
         binding.infoArea.setOnClickListener { toggleInfoArea() }
 
@@ -152,6 +153,15 @@ abstract class AbstractQuestForm :
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun updateInfoAreaVisibility() {
+        binding.infoArea.isGone = !infoIsExpanded
+        binding.infoButton.setImageResource(
+            if (infoIsExpanded) R.drawable.ic_info_filled_24dp
+            else R.drawable.ic_info_outline_24dp
+        )
+        binding.infoButton.isActivated = infoIsExpanded
     }
 
     protected fun setTitle(text: CharSequence?) {
@@ -187,12 +197,7 @@ abstract class AbstractQuestForm :
 
     private fun toggleInfoArea() {
         infoIsExpanded = !infoIsExpanded
-        binding.infoButton.setImageResource(
-            if (infoIsExpanded) R.drawable.ic_info_filled_24dp
-            else R.drawable.ic_info_outline_24dp
-        )
-        binding.infoButton.isActivated = infoIsExpanded
-        binding.infoArea.isGone = !infoIsExpanded
+        updateInfoAreaVisibility()
     }
 
     private fun updateInfoButtonVisibility() {
