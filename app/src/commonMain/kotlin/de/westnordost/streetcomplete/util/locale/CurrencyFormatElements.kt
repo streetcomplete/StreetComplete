@@ -59,31 +59,23 @@ data class CurrencyFormatElements(
             // Matches non-digit, non-whitespace, non-punctuation characters (except comma/period)
             val symbolRegex = Regex("[^\\d\\s.,]+")
             val symbol = symbolRegex.find(formattedString)?.value ?: currencyCode
-            if (symbol != null) {
-                // Determine if symbol comes before amount
-                val digitRegex = Regex("\\d")
+            // Determine if symbol comes before amount
+            val digitRegex = Regex("\\d")
 
-                val symbolIndex = formattedString.indexOf(symbol)
-                val firstDigitIndex = digitRegex.find(formattedString)?.range?.first ?: 0
-                val symbolBeforeAmount = symbolIndex < firstDigitIndex
+            val symbolIndex = formattedString.indexOf(symbol)
+            val firstDigitIndex = digitRegex.find(formattedString)?.range?.first ?: 0
+            val symbolBeforeAmount = symbolIndex < firstDigitIndex
 
-                // Determine decimal places from formatted string
-                val decimalSeparatorRegex = Regex("[.,](\\d+)")
-                val decimalMatch = decimalSeparatorRegex.find(formattedString)
-                val decimalPlaces = decimalMatch?.groupValues?.get(1)?.length ?: 0
+            // Determine decimal places from formatted string
+            val decimalSeparatorRegex = Regex("[.,](\\d+)")
+            val decimalMatch = decimalSeparatorRegex.find(formattedString)
+            val decimalPlaces = decimalMatch?.groupValues?.get(1)?.length ?: 0
 
-                return CurrencyFormatElements(
-                    symbol = symbol,
-                    symbolBeforeAmount = symbolBeforeAmount,
-                    decimalPlaces = decimalPlaces
-                )
-            } else {
-                return CurrencyFormatElements(
-                    symbol = currencyCode,
-                    symbolBeforeAmount = true,
-                    decimalPlaces = 2
-                )
-            }
+            return CurrencyFormatElements(
+                symbol = symbol,
+                symbolBeforeAmount = symbolBeforeAmount,
+                decimalPlaces = decimalPlaces
+            )
         }
     }
 }

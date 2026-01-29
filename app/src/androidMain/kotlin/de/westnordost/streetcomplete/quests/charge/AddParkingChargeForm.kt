@@ -23,7 +23,6 @@ import de.westnordost.streetcomplete.ui.common.dialogs.TextInputDialog
 import de.westnordost.streetcomplete.ui.theme.extraLargeInput
 import de.westnordost.streetcomplete.ui.util.content
 import de.westnordost.streetcomplete.util.locale.CurrencyFormatElements
-import de.westnordost.streetcomplete.util.locale.CurrencyFormatter
 import java.util.Currency
 import java.util.Locale
 
