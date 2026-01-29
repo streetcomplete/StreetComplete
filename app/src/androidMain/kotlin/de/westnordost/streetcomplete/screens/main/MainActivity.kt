@@ -65,6 +65,9 @@ import de.westnordost.streetcomplete.data.quest.QuestAutoSyncer
 import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.VisibleQuestsSource
+import de.westnordost.streetcomplete.data.user.OAuthCallbackHandler
+import de.westnordost.streetcomplete.data.user.OAuthLoginCompleter
+import de.westnordost.streetcomplete.data.user.UserLoginSource
 import de.westnordost.streetcomplete.data.visiblequests.QuestsHiddenSource
 import de.westnordost.streetcomplete.databinding.ActivityMainBinding
 import de.westnordost.streetcomplete.databinding.EffectQuestPlopBinding
@@ -168,6 +171,9 @@ class MainActivity :
     private val questsHiddenSource: QuestsHiddenSource by inject()
     private val featureDictionary: Lazy<FeatureDictionary> by inject(named("FeatureDictionaryLazy"))
     private val soundFx: SoundFx by inject()
+    private val oAuthCallbackHandler: OAuthCallbackHandler by inject()
+    private val oAuthLoginCompleter: OAuthLoginCompleter by inject()
+    private val userLoginSource: UserLoginSource by inject()
 
     private lateinit var locationManager: FineLocationManager
 
@@ -302,8 +308,31 @@ class MainActivity :
 
     private fun handleIntent(intent: Intent) {
         if (intent.action != Intent.ACTION_VIEW) return
-        val data = intent.data?.toString() ?: return
-        viewModel.setUri(data)
+        val data = intent.data ?: return
+        val dataString = data.toString()
+        if (oAuthCallbackHandler.handleUri(dataString)) {
+            lifecycleScope.launch {
+                val success = oAuthLoginCompleter.processCallback(dataString)
+                withContext(Dispatchers.Main) {
+                    if (success) {
+                        val userIntent = Intent(this@MainActivity, de.westnordost.streetcomplete.screens.user.UserActivity::class.java)
+                        startActivity(userIntent)
+                    } else {
+                        // In some flows the user may already be logged in (e.g. external browser finished auth)
+                        val isLoggedIn = userLoginSource.isLoggedIn
+                        if (isLoggedIn) {
+                            val userIntent = Intent(this@MainActivity, de.westnordost.streetcomplete.screens.user.UserActivity::class.java)
+                            startActivity(userIntent)
+                        } else {
+                            toast(R.string.oauth_communication_error, Toast.LENGTH_LONG)
+                        }
+                    }
+                }
+            }
+            return
+        }
+
+        viewModel.setUri(dataString)
     }
 
     override fun onConfigurationChanged(newConfig: Configuration) {
