@@ -60,7 +60,9 @@ import de.westnordost.streetcomplete.quests.camera_type.AddCameraType
 import de.westnordost.streetcomplete.quests.camping.AddCampDrinkingWater
 import de.westnordost.streetcomplete.quests.camping.AddCampPower
 import de.westnordost.streetcomplete.quests.camping.AddCampShower
-import de.westnordost.streetcomplete.quests.camping.AddCampType
+import de.westnordost.streetcomplete.quests.camping.AddTents
+import de.westnordost.streetcomplete.quests.camping.AddCabins
+import de.westnordost.streetcomplete.quests.camping.AddCaravans
 import de.westnordost.streetcomplete.quests.car_wash_type.AddCarWashType
 import de.westnordost.streetcomplete.quests.charging_station_bicycles.AddChargingStationBicycles
 import de.westnordost.streetcomplete.quests.charging_station_capacity.AddChargingStationBicycleCapacity
@@ -484,7 +486,9 @@ fun questTypeRegistry(
     183 to AddFirstAidKitLocation(), // need to go inside in case it is inside (or gone)
 
     // inside camping sites
-    114 to AddCampType(),
+    114 to AddCaravans(),
+    189 to AddTents(),
+    190 to AddCabins(),
     115 to AddCampDrinkingWater(),
     116 to AddCampShower(),
     117 to AddCampPower(),

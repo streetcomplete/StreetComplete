@@ -1022,10 +1022,9 @@ A level counts as a roof level when its windows are in the roof. Subsequently, r
     <string name="quest_camp_shower_title">Are there showers here?</string>
     <string name="quest_camp_power_supply_title">Are there any power outlets available for guests?</string>
     <string name="quest_camp_power_supply_hint">This could be outlets directly at the camp pitches, outlets in a service building accessible by guests, a dedicated charging station for phones, laptops, etc.</string>
-    <string name="quest_camp_type_title">Who may camp here?</string>
-    <string name="quest_camp_type_tents_and_caravans">Both tents and motor homes, travel trailers, …</string>
-    <string name="quest_camp_type_caravans_only">Only motor homes, travel trailers, …</string>
-    <string name="quest_camp_type_tents_only">Only tents</string>
+    <string name="quest_camp_tent_title">Can you camp here in a tent?</string>
+    <string name="quest_camp_cabin_title">Are there cabins that you can stay in here?</string>
+    <string name="quest_camp_caravan_title">Can you camp here in a motor home or travel trailer?</string>
     <string name="quest_camp_type_backcountry">Backcountry camping (no facilities)</string>
     <string name="quest_sanitary_dump_station_title">Is there a sanitary dump station?</string>
     <string name="quest_sanitary_dump_station_description">A sanitary dump station is a facility for depositing human waste from a toilet holding tank of a motorhome, long haul truck, etc. Usually indicated by a sign like this:</string>
