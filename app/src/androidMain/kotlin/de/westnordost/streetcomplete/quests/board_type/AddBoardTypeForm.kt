@@ -5,11 +5,11 @@ import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.ARadioGroupQuestForm
+import de.westnordost.streetcomplete.quests.AMultipleSelectGroupQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import org.jetbrains.compose.resources.stringResource
 
-class AddBoardTypeForm : ARadioGroupQuestForm<BoardTypeAnswer, BoardType>() {
+class AddBoardTypeForm : AMultipleSelectGroupQuestForm<BoardType, BoardType>() {
 
     override val otherAnswers = listOf(
         AnswerItem(R.string.quest_board_type_map) { confirmOnMap() }
@@ -25,8 +25,10 @@ class AddBoardTypeForm : ARadioGroupQuestForm<BoardTypeAnswer, BoardType>() {
         AlertDialog.Builder(requireContext())
             .setTitle(R.string.quest_board_type_map_title)
             .setMessage(R.string.quest_board_type_map_description)
-            .setPositiveButton(R.string.quest_generic_hasFeature_yes) { _, _ -> applyAnswer(BoardTypeAnswer.NoBoardJustMap) }
+            .setPositiveButton(R.string.quest_generic_hasFeature_yes) { _, _ -> applyAnswer(setOf()) }
             .setNegativeButton(android.R.string.cancel, null)
             .show()
     }
+
+    override val buttonPanelAnswers: List<AnswerItem> get() = emptyList()
 }
