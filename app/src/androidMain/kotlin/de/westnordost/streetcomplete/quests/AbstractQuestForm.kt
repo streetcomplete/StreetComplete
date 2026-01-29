@@ -143,7 +143,9 @@ abstract class AbstractQuestForm :
             }
         }
 
-        infoIsExpanded = false
+        infoIsExpanded = true
+        updateInfoAreaVisibility()
+
         binding.infoButton.setOnClickListener { toggleInfoArea() }
         binding.infoArea.setOnClickListener { toggleInfoArea() }
 
@@ -165,6 +167,15 @@ abstract class AbstractQuestForm :
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun updateInfoAreaVisibility() {
+        binding.infoArea.isGone = !infoIsExpanded
+        binding.infoButton.setImageResource(
+            if (infoIsExpanded) R.drawable.ic_info_filled_24dp
+            else R.drawable.ic_info_outline_24dp
+        )
+        binding.infoButton.isActivated = infoIsExpanded
     }
 
     protected fun setTitle(text: CharSequence?) {
@@ -200,12 +211,7 @@ abstract class AbstractQuestForm :
 
     private fun toggleInfoArea() {
         infoIsExpanded = !infoIsExpanded
-        binding.infoButton.setImageResource(
-            if (infoIsExpanded) R.drawable.ic_info_filled_24dp
-            else R.drawable.ic_info_outline_24dp
-        )
-        binding.infoButton.isActivated = infoIsExpanded
-        binding.infoArea.isGone = !infoIsExpanded
+        updateInfoAreaVisibility()
     }
 
     private fun updateInfoButtonVisibility() {
