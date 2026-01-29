@@ -17,7 +17,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
-import de.westnordost.streetcomplete.util.locale.CurrencyFormatInfo
+import de.westnordost.streetcomplete.util.locale.CurrencyFormatElements
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
 /** A composable for inputting a charge amount with currency symbol and time unit selector */
@@ -25,7 +25,7 @@ import org.jetbrains.compose.ui.tooling.preview.Preview
 fun ChargeInput(
     amount: String,
     onAmountChange: (String) -> Unit,
-    currencyFormatInfo: CurrencyFormatInfo,
+    currencyFormatInfo: CurrencyFormatElements,
     timeUnit: TimeUnit,
     onTimeUnitChange: (TimeUnit) -> Unit,
     perLabel: String,
@@ -121,7 +121,7 @@ private fun ChargeInputPreview() {
     ChargeInput(
         amount = amount.value,
         onAmountChange = { amount.value = it },
-        currencyFormatInfo = CurrencyFormatInfo(
+        currencyFormatInfo = CurrencyFormatElements(
             symbol = "€",
             symbolBeforeAmount = false,
             decimalPlaces = 2

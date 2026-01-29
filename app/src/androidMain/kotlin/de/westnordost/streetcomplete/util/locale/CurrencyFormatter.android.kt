@@ -4,14 +4,15 @@ import java.text.NumberFormat
 import java.util.Currency
 import java.util.Locale
 
-actual class CurrencyFormatter {
-    actual fun getFormatInfo(currencyCode: String): CurrencyFormatInfo {
+actual class CurrencyFormatter actual constructor(currencyCode: String?) {
+    actual val currencyCode: String? = currencyCode
+    actual fun format(sampleValue: Double): String {
         val currency = Currency.getInstance(currencyCode)
 
         val locale = Locale.getAvailableLocales().firstOrNull {
             try {
                 Currency.getInstance(it)?.currencyCode == currencyCode
-            } catch (e: Exception) {
+            } catch (_: Exception) {
                 false
             }
         } ?: Locale.getDefault()
@@ -19,21 +20,15 @@ actual class CurrencyFormatter {
         val formatter = NumberFormat.getCurrencyInstance(locale)
         formatter.currency = currency
 
-        val testValue = 9.0
-        val formatted = formatter.format(testValue)
+        val formatted = formatter.format(sampleValue)
 
-        val symbol = currency.getSymbol(locale)
-
-        val numberIndex = formatted.indexOf('9')
-        val symbolIndex = formatted.indexOf(symbol)
-        val symbolBeforeAmount = symbolIndex < numberIndex
-
-        val decimalPlaces = currency.defaultFractionDigits
-
-        return CurrencyFormatInfo(
-            symbol = symbol,
-            symbolBeforeAmount = symbolBeforeAmount,
-            decimalPlaces = decimalPlaces
-        )
+        return formatted
     }
+    actual fun getCurrencyCodeFromLocale(countryCode: androidx.compose.ui.text.intl.Locale?): String? = try {
+            val locale = Locale.Builder().setRegion(countryCode as String?).build()
+            val currency = Currency.getInstance(locale)
+            currency.currencyCode
+        } catch (_: Exception) {
+            null
+        }
 }

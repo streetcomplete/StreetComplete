@@ -22,6 +22,7 @@ import de.westnordost.streetcomplete.ui.common.TimeUnit
 import de.westnordost.streetcomplete.ui.common.dialogs.TextInputDialog
 import de.westnordost.streetcomplete.ui.theme.extraLargeInput
 import de.westnordost.streetcomplete.ui.util.content
+import de.westnordost.streetcomplete.util.locale.CurrencyFormatElements
 import de.westnordost.streetcomplete.util.locale.CurrencyFormatter
 import java.util.Currency
 import java.util.Locale
@@ -34,8 +35,6 @@ class AddParkingChargeForm : AbstractOsmQuestForm<ParkingChargeAnswer>() {
     private lateinit var amountState: MutableState<String>
     private lateinit var timeUnitState: MutableState<TimeUnit>
     private lateinit var showDialogState: MutableState<Boolean>
-
-    private val currencyFormatter = CurrencyFormatter()
 
     override val otherAnswers: List<AnswerItem> get() = listOf(
         AnswerItem(R.string.quest_parking_charge_varies) {
@@ -54,7 +53,7 @@ class AddParkingChargeForm : AbstractOsmQuestForm<ParkingChargeAnswer>() {
 
                 val currencyCode = getCurrencyForCountry()
                 val currencyFormatInfo = remember(currencyCode) {
-                    currencyFormatter.getFormatInfo(currencyCode)
+                    CurrencyFormatElements.of(currencyCode)
                 }
 
                 ProvideTextStyle(MaterialTheme.typography.extraLargeInput) {
@@ -107,7 +106,7 @@ class AddParkingChargeForm : AbstractOsmQuestForm<ParkingChargeAnswer>() {
         val locale = Locale.Builder().setRegion(countryInfo.countryCode).build()
         val currency = Currency.getInstance(locale)
         currency.currencyCode
-    } catch (e: Exception) {
+    } catch (_: Exception) {
         "EUR"
     }
 }
