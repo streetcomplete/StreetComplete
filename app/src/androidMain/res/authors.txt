@@ -1,6 +1,19 @@
 File                           License / Source (if not given, follow link for license info)
 ===============================================================================
 
+artwork_sculpture.png          PD                David Castor https://commons.wikimedia.org/wiki/File:Begynnelse-4.jpg
+artwork_statue.jpg             CC-BY-SA 3.0      Hansjorn https://commons.wikimedia.org/wiki/File:Auguste_Rodin_-_Grubleren_2005-02.jpg
+artwork_mural.jpg              CC-BY-SA 4.0      MOs810 https://commons.wikimedia.org/wiki/File:Hotel_DeSilva_Poznan.jpg
+artwork_graffiti.jpg           CC-BY-SA 4.0      Chrisi1964 https://commons.wikimedia.org/wiki/File:Graffiti_aus_der_Hall_of_Fame_in_Ingolstadt.jpg
+artwork_bust.JPG               CC-BY-SA 3.0      Steffenheilfort https://commons.wikimedia.org/wiki/File:1a_B%C3%BCste_einer_Mohrin_Mohrenrondell_Sanssouci_Steffen_Heilfort.JPG
+artwork_painting.jpg           PD                Dcoetzee https://commons.wikimedia.org/wiki/File:Mona_Lisa,_by_Leonardo_da_Vinci,_from_C2RMF_retouched.jpg
+artwork_architecture.png       CC-BY-SA 4.0      Enfo https://commons.wikimedia.org/wiki/File:110_Casa_Batll%C3%B3.jpg
+artwork_street_art.png         CC BY-SA 3.0      Mnalis https://commons.wikimedia.org/wiki/File:Painted_hand_water_pump_in_Zagreb,_Stubi%C4%8Dka.jpg
+artwork_mosaic.jpg             PD                Marie-Lan Nguyen https://commons.wikimedia.org/wiki/File:Cave_canem_MAN_Napoli_Inv110666.jpg
+artwork_relief.jpg             PD                Andy Hay https://commons.wikimedia.org/wiki/File:Panel_of_Tellus,_Ara_Pacis,_Rome.jpg
+artwork_stone.jpg              CC-BY-SA 3.0      Petr Štefek https://commons.wikimedia.org/wiki/File:Kuncicky_bludny_balvan.jpg
+artwork_fountain.jpg           CC-BY-SA 3.0      Pierre-Louis FERRER https://commons.wikimedia.org/wiki/File:Fontaine_des_Fleuves.jpg
+artwork_installation.jpg       CC-BY-SA 3.0      Lienhard Schulz https://commons.wikimedia.org/wiki/File:Soccer1_Walk_of_Ideas_Berlin.JPG
 barrier_passage.jpg            CC-BY-SA 2.0      Meirion https://www.geograph.org.uk/photo/5401039
 barrier_gate.jpg               CC-BY-SA 4.0      Acabashi https://commons.wikimedia.org/wiki/File:Abbess_Roding_-_roadside_white_gate_-_Essex_England.jpg
 barrier_gate_pedestrian.jpg    CC-BY-SA 2.0      Eric Jones https://www.geograph.org.uk/photo/5858269
