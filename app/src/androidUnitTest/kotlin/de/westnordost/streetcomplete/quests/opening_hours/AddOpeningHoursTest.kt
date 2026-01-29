@@ -9,6 +9,10 @@ import de.westnordost.osm_opening_hours.model.Weekday
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
 import de.westnordost.streetcomplete.osm.nowAsCheckDateString
+import de.westnordost.streetcomplete.osm.opening_hours.HierarchicOpeningHours
+import de.westnordost.streetcomplete.osm.opening_hours.Months
+import de.westnordost.streetcomplete.osm.opening_hours.Times
+import de.westnordost.streetcomplete.osm.opening_hours.Weekdays
 import de.westnordost.streetcomplete.osm.toCheckDate
 import de.westnordost.streetcomplete.quests.answerApplied
 import de.westnordost.streetcomplete.quests.answerAppliedTo
@@ -158,10 +162,11 @@ class AddOpeningHoursTest {
         assertEquals(
             setOf(StringMapEntryAdd("opening_hours", "Mo 10:00-12:00")),
             questType.answerApplied(
-                RegularOpeningHours(OpeningHours(listOf(
-                    Rule(Range(
-                        weekdays = listOf(Weekday.Monday),
-                        times = listOf(TimeSpan(ClockTime(10), ClockTime(12)))
+                RegularOpeningHours(HierarchicOpeningHours(listOf(
+                    Months(emptyList(), listOf(
+                        Weekdays(listOf(Weekday.Monday), emptyList(),
+                            Times(listOf(TimeSpan(ClockTime(10), ClockTime(12))))
+                        )
                     ))
                 )))
             )
@@ -172,10 +177,11 @@ class AddOpeningHoursTest {
         assertEquals(
             setOf(StringMapEntryModify("opening_hours", "hohoho", "Mo 10:00-12:00")),
             questType.answerAppliedTo(
-                RegularOpeningHours(OpeningHours(listOf(
-                    Rule(Range(
-                        weekdays = listOf(Weekday.Monday),
-                        times = listOf(TimeSpan(ClockTime(10), ClockTime(12)))
+                RegularOpeningHours(HierarchicOpeningHours(listOf(
+                    Months(emptyList(), listOf(
+                        Weekdays(listOf(Weekday.Monday), emptyList(),
+                            Times(listOf(TimeSpan(ClockTime(10), ClockTime(12))))
+                        )
                     ))
                 ))),
                 mapOf("opening_hours" to "hohoho")
@@ -190,10 +196,11 @@ class AddOpeningHoursTest {
                 StringMapEntryAdd("check_date:opening_hours", nowAsCheckDateString())
             ),
             questType.answerAppliedTo(
-                RegularOpeningHours(OpeningHours(listOf(
-                    Rule(Range(
-                        weekdays = listOf(Weekday.Monday),
-                        times = listOf(TimeSpan(ClockTime(10), ClockTime(12)))
+                RegularOpeningHours(HierarchicOpeningHours(listOf(
+                    Months(emptyList(), listOf(
+                        Weekdays(listOf(Weekday.Monday), emptyList(),
+                            Times(listOf(TimeSpan(ClockTime(10), ClockTime(12))))
+                        )
                     ))
                 ))),
                 mapOf("opening_hours" to "Mo 10:00-12:00")

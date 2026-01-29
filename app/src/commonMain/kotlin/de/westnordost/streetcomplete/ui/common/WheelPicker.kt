@@ -112,6 +112,7 @@ fun <T> WheelPicker(
             .fadingEdges(
                 top = selectedItemHeight * visibleAdjacentItems,
                 bottom = selectedItemHeight * visibleAdjacentItems,
+                startAlpha = 0.67f,
             )
             .pickerIndicator(selectedItemHeight, color = MaterialTheme.colors.onSurface),
         state = state.lazyListState,

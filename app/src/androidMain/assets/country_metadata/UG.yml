@@ -7,4 +7,4 @@ isLeftHandTraffic: true
 mobileCountryCode: 641
 officialLanguages: [sw, en]
 orchardProduces: [coffee, cacao, tea, tomato, chilli_pepper, sweet_pepper, pepper, pineapple, vanilla, sisal]
-workweekDays: 6
+workweek: Mo-Sa

@@ -4,7 +4,6 @@ atmOperators: [בנק הפועלים, כספונט, בנק לאומי, כספו�
 chargingStationOperators: [Tesla, מילגם, Afcon, אפקון, סונול EV, Kfar Hanokdim, EV Edge]
 clothesContainerOperators: [Golden Recycling, שביל אמונה, WIZO]
 defaultSpeedLimitHasUrbanOrRural: true
-firstDayOfWorkweek: Su
 hasLivingStreet: true
 hasSlowZone: true
 livingStreetSignStyle: vienna
@@ -16,3 +15,4 @@ orchardProduces: [olive, avocado, grape, date, tomato, orange, peach, banana, ap
 parcelLockerBrand: [E-post, DONE]
 popularReligions: [jewish, christian, muslim]
 postboxesHaveCollectionTimes: true
+workweek: Su-Th

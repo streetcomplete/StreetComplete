@@ -1,9 +1,8 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 additionalStreetsignLanguages: [en]
 defaultSpeedLimitHasUrbanOrRural: true
-firstDayOfWorkweek: Sa
 mobileCountryCode: 637
 officialLanguages: [so, ar]
 orchardProduces: [tomato, coconut, date, orange, banana, lemon, lime, grapefruit, guava, mango, mangosteen]
 popularReligions: [muslim]
-workweekDays: 6
+workweek: Sa-Th

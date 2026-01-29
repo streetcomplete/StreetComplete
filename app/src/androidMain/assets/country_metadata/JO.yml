@@ -3,7 +3,6 @@ additionalStreetsignLanguages: [en]
 atmOperators: [Arab Bank, Cairo Amman Bank, Jordan Kuwait Bank, Housing Bank, Jordan Islamic Bank, Capital Bank, دائرة الجمارك الأردنية, Salwa Islamic Bank, Islamic International Arab Bank, Bank of Jordan, Bank al Etihad]
 centerLineStyle: yellow
 chargingStationOperators: [Tesla, JoPetrol]
-firstDayOfWorkweek: Su
 mobileCountryCode: 416
 noParkingSignStyle: vienna
 noStoppingSignStyle: vienna
@@ -11,3 +10,4 @@ officialLanguages: [ar]
 orchardProduces: [olive, tomato, peach, date, grape, chilli_pepper, sweet_pepper, lemon, lime, apricot, orange, apple, banana, grapefruit, almond, plum, pear]
 popularReligions: [muslim]
 roofsAreUsuallyFlat: true
+workweek: Su-Th

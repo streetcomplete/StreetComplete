@@ -13,3 +13,4 @@ orchardProduces: [rubber, coconut, banana, pineapple, pepper, cashew_nut, guava,
 popularReligions: [muslim, buddhist, christian, hindu, chinese_folk, taoist]
 popularSports: [soccer, tennis, basketball, volleyball, badminton, sepak_takraw]
 postboxesHaveCollectionTimes: true
+workweek: Su-Th

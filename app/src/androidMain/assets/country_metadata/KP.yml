@@ -5,4 +5,4 @@ mobileCountryCode: 467
 officialLanguages: [ko]
 orchardProduces: [apple, chilli_pepper, sweet_pepper, peach, pear, tomato, chestnut, hop]
 postboxesHaveCollectionTimes: true
-workweekDays: 6
+workweek: Mo-Sa

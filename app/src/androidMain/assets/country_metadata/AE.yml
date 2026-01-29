@@ -5,7 +5,6 @@ centerLineStyle: yellow
 chargingStationOperators: [DEWA, Wifi UAE, 'Tesla, Inc.']
 defaultSpeedLimitHasUrbanOrRural: true
 edgeLineStyle: yellow
-firstDayOfWorkweek: Su
 mobileCountryCode: 424
 officialLanguages: [ar]
 orchardProduces: [date, tomato, guava, mango, mangosteen, lemon, lime, fig, chilli_pepper, sweet_pepper, almond, grape, banana]

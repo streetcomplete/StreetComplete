@@ -1,10 +1,9 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 additionalStreetsignLanguages: [en]
 atmOperators: [بانک ملی, بانک ملت, بانک سپه, بانک صادرات, بانک شهر, بانک تجارت, بانک رفاه, بانک مسکن, بانک سامان, بانک کشاورزی, بانک پاسارگاد, بانک انصار, پست بانک, بانک سینا, بانک دی, بانک قوامین, بانک اقتصاد نوین, بانک آینده, بانک پارسیان, خودپرداز بانک ملی, بانک رفاه کارگران, بانک ملی ایران, بانک توسعه تعاون, خودپرداز بانک سپه, خودپرداز, بانک ایران زمین, بانک حکمت ایرانیان, بانک گردشگری, بانک قرض الحسنه مهر ایران, خودپرداز بانک کشاورزی, خودپرداز بانک پاسارگاد, خودپرداز بانک صادرات, خودپرداز بانک تجارت, Mellat Bank, ملی, خودپرداز بانک ملت, خودپرداز بانک شهر, بانک صادرات ایران, بانک حکمت, صادرات, شهرنت بانک شهر, حکمت ایرانیان, بانک کارآفرین, بانک سرمایه, پست بانک ایران, موسسه اعتباری کوثر, موسسه اعتباری ملل, عابربانک, خودپرداز بانک مسکن, بانک رسالت, اقتصاد نوین, پاسارگاد, قوامین, عابر بانک, خودپرداز بانک سامان, خودپرداز بانک رفاه, باجه پاساژ قائم, Tejarat Bank, ویلا, ملت, شعبه بیمارستان خاتم الانبیا, شتاب, سپه, رفاه کارگران, خودپرداز بانک قوامین, خودپرداز بانک انصار, خودپرداز بانک آینده, خود پرداز بانک ملت, خود پرداز, خانه, بانک مهر اقتصاد, بانک ملى, بانک صنعت و معدن, بانک, باجه ساختمان سایه, shahr bank, sepah, Saderat Bank, Refah, Melli Bank, Ansar Bank, ATM]
-firstDayOfWorkweek: Sa
 mobileCountryCode: 432
 officialLanguages: [fa]
 orchardProduces: [pistachio, date, grape, tomato, apple, almond, apricot, walnut, olive, peach, lemon, lime, cherry, hazelnut, orange, fig]
 popularReligions: [muslim, bahai]
 roofsAreUsuallyFlat: true
-workweekDays: 6
+workweek: Sa-Th

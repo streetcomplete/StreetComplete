@@ -4,7 +4,6 @@ centerLineStyle: white
 defaultSpeedLimitHasUrbanOrRural: true
 edgeLineStyle: white
 exclusiveCycleLaneStyle: white
-firstDayOfWorkweek: Mo
 hasAdvisoryCycleLane: false
 hasAdvisorySpeedLimitSign: false
 hasBiWeeklyAlternateSideParkingSign: false
@@ -32,4 +31,4 @@ regularShoppingDays: 6
 roofsAreUsuallyFlat: false
 speedUnits: [kilometers per hour]
 weightLimitUnits: [ton]
-workweekDays: 5
+workweek: Mo-Fr

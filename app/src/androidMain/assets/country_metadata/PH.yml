@@ -14,4 +14,4 @@ officialLanguages: [en, fil, es, ceb, ilo, hil]
 orchardProduces: [coconut, rubber, guava, mango, mangosteen, banana, coffee, pineapple, cacao, cashew_nut, tomato, papaya, chilli_pepper, sweet_pepper, avocado, grapefruit, agave, pepper]
 popularSports: [basketball, tennis, soccer, volleyball]
 postboxesHaveCollectionTimes: true
-workweekDays: 6
+workweek: Mo-Sa

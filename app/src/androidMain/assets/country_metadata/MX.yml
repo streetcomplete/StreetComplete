@@ -14,4 +14,4 @@ officialLanguages: [es]
 orchardProduces: [coffee, orange, avocado, guava, mango, mangosteen, lemon, lime, chilli_pepper, sweet_pepper, coconut, walnut, tomato, banana, cacao, apple, grape, rubber, peach]
 parcelLockerBrand: [Amazon Hub]
 popularSports: [soccer, basketball, baseball, tennis]
-workweekDays: 6
+workweek: Mo-Sa
