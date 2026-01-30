@@ -7,7 +7,7 @@ data class SimpleCharge(
     val amount: String,
     // e.g. "EUR"
     val currency: String,
-    // e.g. "hour", "30 minutes"
+    // either "day", "hour" or "minute"
     val timeUnit: String
 ) : ParkingChargeAnswer
 

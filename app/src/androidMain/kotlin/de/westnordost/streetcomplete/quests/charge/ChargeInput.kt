@@ -11,14 +11,13 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.TextField
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
+import de.westnordost.streetcomplete.osm.duration.DurationUnit
 import de.westnordost.streetcomplete.util.locale.CurrencyFormatElements
-import org.jetbrains.compose.ui.tooling.preview.Preview
+// import org.jetbrains.compose.ui.tooling.preview.Preview
 
 /** A composable for inputting a charge amount with currency symbol and time unit selector */
 @Composable
@@ -26,11 +25,11 @@ fun ChargeInput(
     amount: String,
     onAmountChange: (String) -> Unit,
     currencyFormatInfo: CurrencyFormatElements,
-    timeUnit: TimeUnit,
-    onTimeUnitChange: (TimeUnit) -> Unit,
+    durationUnit: DurationUnit,
+    onDurationUnitChange: (DurationUnit) -> Unit,
     perLabel: String,
     modifier: Modifier = Modifier,
-    timeUnitDisplayNames: (TimeUnit) -> String
+    durationUnitDisplayNames: (DurationUnit) -> String
 ) {
     Row(
         modifier = modifier.fillMaxWidth(),
@@ -86,37 +85,29 @@ fun ChargeInput(
         Column(
             verticalArrangement = Arrangement.spacedBy(4.dp)
         ) {
+            /*
+            DurationUnitDropdown(
+                selectedDuration = durationUnit,
+                onSelectedDuration = onDurationUnitChange,
+            )*/
             DropdownButton(
-                items = TimeUnit.entries,
-                selectedItem = timeUnit,
-                onSelectedItem = onTimeUnitChange,
+                items = DurationUnit.entries,
+                onSelectedItem = onDurationUnitChange,
                 itemContent = { unit ->
-                    Text(timeUnitDisplayNames(unit))
+                    Text(durationUnitDisplayNames(unit))
                 },
+                selectedItem = durationUnit,
+                style = ButtonStyle.Outlined,
             )
         }
     }
 }
-
-enum class TimeUnit {
-    HOUR,
-    DAY,
-    MINUTES_30,
-    MINUTES_15;
-
-    fun toOsmValue(): String = when (this) {
-        HOUR -> "hour"
-        DAY -> "day"
-        MINUTES_30 -> "30 minutes"
-        MINUTES_15 -> "15 minutes"
-    }
-}
-
+/*
 @Composable
 @Preview
 private fun ChargeInputPreview() {
     val amount = remember { mutableStateOf("1.50") }
-    val timeUnit = remember { mutableStateOf(TimeUnit.HOUR) }
+    val durationUnit = remember { mutableStateOf(DurationUnit.HOURS) }
 
     ChargeInput(
         amount = amount.value,
@@ -126,16 +117,16 @@ private fun ChargeInputPreview() {
             symbolBeforeAmount = false,
             decimalPlaces = 2
         ),
-        timeUnit = timeUnit.value,
-        onTimeUnitChange = { timeUnit.value = it },
+        durationUnit = durationUnit.value,
+        onDurationUnitChange = { durationUnit.value = it },
         perLabel = "per",
-        timeUnitDisplayNames = { unit ->
+        durationUnitDisplayNames = { unit ->
             when (unit) {
-                TimeUnit.HOUR -> "hour"
-                TimeUnit.DAY -> "day"
-                TimeUnit.MINUTES_30 -> "30 min"
-                TimeUnit.MINUTES_15 -> "15 min"
-            }
+                DurationUnit.MINUTES -> Res.string.unit_minutes
+                DurationUnit.HOURS -> Res.string.unit_hours
+                DurationUnit.DAYS -> Res.string.unit_days
+            } as String
         }
     )
 }
+*/

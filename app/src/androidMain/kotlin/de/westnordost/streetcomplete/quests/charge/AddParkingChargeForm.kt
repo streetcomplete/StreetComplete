@@ -15,10 +15,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.ComposeViewBinding
+import de.westnordost.streetcomplete.osm.duration.DurationUnit
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.ui.common.ChargeInput
-import de.westnordost.streetcomplete.ui.common.TimeUnit
 import de.westnordost.streetcomplete.ui.common.dialogs.TextInputDialog
 import de.westnordost.streetcomplete.ui.theme.extraLargeInput
 import de.westnordost.streetcomplete.ui.util.content
@@ -32,7 +32,8 @@ class AddParkingChargeForm : AbstractOsmQuestForm<ParkingChargeAnswer>() {
     private val binding by contentViewBinding(ComposeViewBinding::bind)
 
     private lateinit var amountState: MutableState<String>
-    private lateinit var timeUnitState: MutableState<TimeUnit>
+    private lateinit var durationUnitState: MutableState<DurationUnit>
+
     private lateinit var showDialogState: MutableState<Boolean>
 
     override val otherAnswers: List<AnswerItem> get() = listOf(
@@ -47,7 +48,7 @@ class AddParkingChargeForm : AbstractOsmQuestForm<ParkingChargeAnswer>() {
         binding.composeViewBase.content {
             Surface {
                 amountState = rememberSaveable { mutableStateOf("") }
-                timeUnitState = rememberSaveable { mutableStateOf(TimeUnit.HOUR) }
+                durationUnitState = rememberSaveable { mutableStateOf(DurationUnit.HOURS) }
                 showDialogState = rememberSaveable { mutableStateOf(false) }
 
                 val currencyCode = getCurrencyForCountry()
@@ -63,13 +64,13 @@ class AddParkingChargeForm : AbstractOsmQuestForm<ParkingChargeAnswer>() {
                             checkIsFormComplete()
                         },
                         currencyFormatInfo = currencyFormatInfo,
-                        timeUnit = timeUnitState.value,
-                        onTimeUnitChange = { unit ->
-                            timeUnitState.value = unit
+                        durationUnit = durationUnitState.value,
+                        onDurationUnitChange = { unit ->
+                            durationUnitState.value = unit
                             checkIsFormComplete()
                         },
                         perLabel = getString(R.string.quest_parking_charge_time_unit_label),
-                        timeUnitDisplayNames = { unit -> unit.getDisplayName(this@AddParkingChargeForm) },
+                        durationUnitDisplayNames = { unit -> unit.getDisplayName(this@AddParkingChargeForm) },
                         modifier = Modifier.padding(16.dp)
                     )
                 }
@@ -96,8 +97,11 @@ class AddParkingChargeForm : AbstractOsmQuestForm<ParkingChargeAnswer>() {
     override fun onClickOk() {
         val amount = amountState.value.replace(',', '.')
         val currency = getCurrencyForCountry()
-        val timeUnit = timeUnitState.value.toOsmValue()
-
+        val timeUnit = when (durationUnitState.value) { // TODO: This could be removed if DurationUnit implements toOSMValue().
+            DurationUnit.HOURS -> "hour"
+            DurationUnit.DAYS -> "day"
+            DurationUnit.MINUTES -> "minute"
+        }
         applyAnswer(SimpleCharge(amount, currency, timeUnit))
     }
 
@@ -110,9 +114,8 @@ class AddParkingChargeForm : AbstractOsmQuestForm<ParkingChargeAnswer>() {
     }
 }
 
-fun TimeUnit.getDisplayName(form: AddParkingChargeForm): String = when (this) {
-    TimeUnit.HOUR -> form.getString(R.string.quest_parking_charge_per_hour)
-    TimeUnit.DAY -> form.getString(R.string.quest_parking_charge_per_day)
-    TimeUnit.MINUTES_30 -> form.getString(R.string.quest_parking_charge_per_30min)
-    TimeUnit.MINUTES_15 -> form.getString(R.string.quest_parking_charge_per_15min)
+fun DurationUnit.getDisplayName(form: AddParkingChargeForm): String = when (this) {
+    DurationUnit.HOURS -> form.getString(R.string.quest_parking_charge_hour)
+    DurationUnit.DAYS -> form.getString(R.string.quest_parking_charge_day)
+    DurationUnit.MINUTES -> form.getString(R.string.quest_parking_charge_minute_short)
 }
