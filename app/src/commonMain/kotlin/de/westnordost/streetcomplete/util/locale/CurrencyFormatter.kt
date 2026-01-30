@@ -13,5 +13,9 @@ expect class CurrencyFormatter (currencyCode: String?) {
      */
     fun format(sampleValue: Double): String
     val currencyCode: String?
-    fun getCurrencyCodeFromLocale(countryCode: Locale?): String?
+    /**
+     * @param countryCode the ISO 3166-1 alpha-2 code of the country
+     * @return the ISO 4217 code of the currency in the given country
+     */
+    fun getCurrencyCodeFromLocale(countryCode: Locale?): String? // TODO the input could be a string
 }

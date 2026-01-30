@@ -4,8 +4,15 @@ import java.text.NumberFormat
 import java.util.Currency
 import java.util.Locale
 
+/**
+ * @param currencyCode the ISO 4217 code of the currency
+ * */
 actual class CurrencyFormatter actual constructor(currencyCode: String?) {
     actual val currencyCode: String? = currencyCode
+    /**
+     * @param sampleValue the value to format
+     * @return the formatted input value
+     */
     actual fun format(sampleValue: Double): String {
         val currency = Currency.getInstance(currencyCode)
 
@@ -25,8 +32,9 @@ actual class CurrencyFormatter actual constructor(currencyCode: String?) {
         return formatted
     }
     actual fun getCurrencyCodeFromLocale(countryCode: androidx.compose.ui.text.intl.Locale?): String? = try {
-            val locale = Locale.Builder().setRegion(countryCode as String?).build()
-            val currency = Currency.getInstance(locale)
+            val countryCode = countryCode?.region ?: return null
+            val locale = Locale.Builder().setRegion(countryCode).build()
+            val currency = java.util.Currency.getInstance(locale)
             currency.currencyCode
         } catch (_: Exception) {
             null
