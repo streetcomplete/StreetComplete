@@ -67,17 +67,12 @@ fun TimeSpansSelectorSelectDialog(
         is12Hour = timeFormatElements.clock12 != null,
         allowAfterMidnight = true,
     )
-    var openEnd by remember { mutableStateOf(initialTimeSpansSelector?.openEnd ?: false) }
+    var startOpenEnd by remember { mutableStateOf(initialTimeSpansSelector is StartingAtTime) }
+    var endOpenEnd by remember { mutableStateOf((initialTimeSpansSelector as? TimeSpan)?.openEnd ?: false) }
 
-    fun confirm() {
-        val startTime = ClockTime(startTimePickerState.hour, startTimePickerState.minute)
-        val endTime = ExtendedClockTime(endTimePickerState.hour, endTimePickerState.minute)
-        val timeSpanSelector = if (startTime == endTime && openEnd) {
-            StartingAtTime(startTime)
-        } else {
-            TimeSpan(startTime, endTime, openEnd)
-        }
-        onSelect(timeSpanSelector)
+    fun toggleOpenEnd(value: Boolean) {
+        if (step == 0) startOpenEnd = value
+        else endOpenEnd = value
     }
 
     ScrollableAlertDialog(
@@ -93,6 +88,7 @@ fun TimeSpansSelectorSelectDialog(
             CompositionLocalProvider(LocalContentAlpha provides ContentAlpha.high) {
                 Column(Modifier.padding(horizontal = 24.dp).fillMaxWidth()) {
                     val timePickerState = if (step == 0) startTimePickerState else endTimePickerState
+                    val openEnd = if (step == 0) startOpenEnd else endOpenEnd
 
                     ProvideTextStyle(MaterialTheme.typography.largeInput) {
                         TimePicker(
@@ -103,24 +99,22 @@ fun TimeSpansSelectorSelectDialog(
                         )
                     }
 
-                    if (step > 0) {
-                        Divider()
+                    Divider()
 
-                        Row(
-                            verticalAlignment = Alignment.CenterVertically,
-                            modifier = Modifier
-                                .clip(MaterialTheme.shapes.small)
-                                .toggleable(openEnd) { openEnd = it }
-                        ) {
-                            Checkbox(
-                                checked = openEnd,
-                                onCheckedChange = { openEnd = it },
-                            )
-                            Text(
-                                text = stringResource(Res.string.quest_openingHours_no_fixed_end),
-                                modifier = Modifier.fillMaxWidth()
-                            )
-                        }
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        modifier = Modifier
+                            .clip(MaterialTheme.shapes.small)
+                            .toggleable(openEnd) { toggleOpenEnd(it) }
+                    ) {
+                        Checkbox(
+                            checked = openEnd,
+                            onCheckedChange = { toggleOpenEnd(it) },
+                        )
+                        Text(
+                            text = stringResource(Res.string.quest_openingHours_no_fixed_end),
+                            modifier = Modifier.fillMaxWidth()
+                        )
                     }
                 }
             }
@@ -130,25 +124,34 @@ fun TimeSpansSelectorSelectDialog(
                 Text(stringResource(Res.string.cancel))
             }
             if (step == 0) {
-                TextButton(onClick = { step = 1 }) {
-                    Text(stringResource(Res.string.next))
+                if (startOpenEnd) {
+                    TextButton(onClick = {
+                        val time = ClockTime(startTimePickerState.hour, startTimePickerState.minute)
+                        onSelect(StartingAtTime(time))
+                        onDismissRequest()
+                    }) {
+                        Text(stringResource(Res.string.ok))
+                    }
+                } else {
+                    TextButton(onClick = { step = 1 }) {
+                        Text(stringResource(Res.string.next))
+                    }
                 }
             } else {
                 TextButton(onClick = { step = 0 }) {
                     Text(stringResource(Res.string.action_back))
                 }
-                TextButton(onClick = { confirm(); onDismissRequest() }
-                ) {
+                TextButton(onClick = {
+                    val start = ClockTime(startTimePickerState.hour, startTimePickerState.minute)
+                    val end = ExtendedClockTime(endTimePickerState.hour, endTimePickerState.minute)
+                    onSelect(TimeSpan(start, end, endOpenEnd))
+                    onDismissRequest()
+                }) {
                     Text(stringResource(Res.string.ok))
                 }
             }
         },
     )
-}
-
-private val TimeSpansSelector.openEnd get() = when (this) {
-    is StartingAtTime -> true
-    is TimeSpan -> openEnd
 }
 
 private val TimeSpansSelector.start get() = when (this) {
