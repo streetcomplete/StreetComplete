@@ -13,7 +13,7 @@ import kotlinx.datetime.LocalDate
  * */
 expect class LocalDateFormatter(
     locale: Locale? = null,
-    style: DateFormatStyle = DateFormatStyle.Medium,
+    style: DateTimeFormatStyle = DateTimeFormatStyle.Medium,
 ) {
     fun format(date: LocalDate): String
 }

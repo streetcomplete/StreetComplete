@@ -6,8 +6,6 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.osm.fee.applyTo
-import de.westnordost.streetcomplete.osm.maxstay.applyTo
 
 class AddBikeParkingFee : OsmFilterQuestType<ParkingFeeAnswer>(), AndroidQuest {
 
@@ -35,7 +33,6 @@ class AddBikeParkingFee : OsmFilterQuestType<ParkingFeeAnswer>(), AndroidQuest {
     override fun createForm() = AddParkingFeeForm()
 
     override fun applyAnswerTo(answer: ParkingFeeAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
-        answer.fee.applyTo(tags)
-        answer.maxstay?.applyTo(tags)
+        answer.applyTo(tags)
     }
 }
