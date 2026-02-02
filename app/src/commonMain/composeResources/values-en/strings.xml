@@ -695,12 +695,9 @@ Before uploading your changes, the app checks with a &lt;a href="https://www.wes
     <string name="quest_address_title">What’s the house number of this building?</string>
     <string name="quest_address_house_number_label">House number:</string>
     <string name="quest_address_house_name_label">House name:</string>
-    <!-- In Japan, addresses are chiefly house number + block number (because most streets don’t have a name) -->
     <string name="label_housenumber">house number</string>
-    <!-- In Japan, addresses are chiefly house number + block number (because most streets don’t have a name) -->
-    <string name="label_blocknumber">block number</string>
     <!-- In some countries, addresses may have a house number and a block (number or letters) -->
-    <string name="label_block">block</string>
+    <string name="label_block2">city block</string>
     <!-- a unique house number within one place, only (still) used in Czechia, Slovakia https://de.wikipedia.org/wiki/Konskriptionsnummer -->
     <string name="quest_housenumber_conscription_number">Conscription number</string>
     <!-- an (optional) number that is unique within one street like a normal housenumber but used sometimes in addition to conscription numbers in Czechia, Slovakia -->
@@ -710,8 +707,8 @@ Before uploading your changes, the app checks with a &lt;a href="https://www.wes
     <string name="quest_housenumber_multiple_numbers_description2" tools:ignore="TypographyDashes">You can enter comma-separated house numbers.\nFor example 1,3 or 2b,4,6.</string>
     <string name="quest_address_answer_no_housenumber">It has no house number…</string>
     <string name="quest_address_answer_no_address">No address here</string>
-    <string name="quest_address_answer_block">It’s within a block…</string>
-    <string name="quest_address_answer_no_block">It isn’t within a block…</string>
+    <string name="quest_address_answer_block2">It’s within a city block…</string>
+    <string name="quest_address_answer_no_block2">It isn’t within a city block…</string>
     <string name="quest_address_answer_no_housenumber_message1">The building was tagged as:</string>
     <string name="quest_address_answer_no_housenumber_message2b">Is this correct?</string>
     <string name="quest_address_unusualHousenumber_confirmation_description">This house number looks very unusual.</string>
@@ -1288,8 +1285,8 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_openingHours_title">What are the opening hours here?</string>
     <string name="quest_openingHours_signed_title">Are the opening hours here signed?</string>
     <string name="quest_openingHours_resurvey_title">Are these opening hours still correct?</string>
-    <string name="quest_openingHours_start_time">opening time</string>
-    <string name="quest_openingHours_end_time">closing time</string>
+    <string name="quest_openingHours_start_time">Start time</string>
+    <string name="quest_openingHours_end_time">End time</string>
     <string name="quest_openingHours_add_months">Add months</string>
     <string name="quest_openingHours_add_hours">Add hours</string>
     <string name="quest_openingHours_add_time">Add time</string>
