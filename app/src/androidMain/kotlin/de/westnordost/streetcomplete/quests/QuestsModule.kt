@@ -19,6 +19,7 @@ import de.westnordost.streetcomplete.quests.air_conditioning.AddAirConditioning
 import de.westnordost.streetcomplete.quests.air_pump.AddAirCompressor
 import de.westnordost.streetcomplete.quests.amenity_cover.AddAmenityCover
 import de.westnordost.streetcomplete.quests.amenity_indoor.AddIsAmenityIndoor
+import de.westnordost.streetcomplete.quests.artwork.AddArtworkType
 import de.westnordost.streetcomplete.quests.atm_cashin.AddAtmCashIn
 import de.westnordost.streetcomplete.quests.atm_operator.AddAtmOperator
 import de.westnordost.streetcomplete.quests.baby_changing_table.AddBabyChangingTable
@@ -354,6 +355,8 @@ fun questTypeRegistry(
     48 to AddPostboxCollectionTimes(),
     49 to CheckExistence(getFeature),
     155 to AddGritBinSeasonal(),
+
+    187 to AddArtworkType(),
 
     50 to AddBoardType(),
     171 to AddBoardName(),
