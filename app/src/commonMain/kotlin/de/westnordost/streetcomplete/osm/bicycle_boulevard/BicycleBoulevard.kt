@@ -16,8 +16,8 @@ fun BicycleBoulevard.applyTo(tags: Tags, countryCode: String) {
             val useBicycleRoad = when {
                 tags.containsKey("bicycle_road") -> true
                 tags.containsKey("cyclestreet") -> false
-                // in BeNeLux countries, cyclestreet established itself instead
-                countryCode in listOf("BE", "NL", "LU") -> false
+                // in BeNeLux countries (and Lithuania), cyclestreet established itself instead
+                countryCode in listOf("BE", "NL", "LU", "LT") -> false
                 else -> true
             }
             if (useBicycleRoad) {
