@@ -272,6 +272,7 @@ italian police type/
 quest/
     access_point.svg
     apple.svg
+    artwork.svg
     baby.svg                         modified from Twemoji: U+1F6BC
     barrier.svg                      Tobias Zwick (CC-BY-SA 4.0) (based on road_construction.svg)
     barrier_on_path.svg              Tobias Zwick (CC-BY-SA 4.0), adding road line by Mateusz Konieczny
