@@ -14,7 +14,7 @@ import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 import de.westnordost.streetcomplete.quests.board_type.BoardType.*
 
-class AddBoardType : OsmFilterQuestType<Set<BoardType>>(), AndroidQuest {
+class AddBoardType : OsmFilterQuestType<Set<BoardTypeAnswer>>(), AndroidQuest {
 
     override val elementFilter = """
         nodes with
@@ -36,12 +36,12 @@ class AddBoardType : OsmFilterQuestType<Set<BoardType>>(), AndroidQuest {
 
     override fun createForm() = AddBoardTypeForm()
 
-    override fun applyAnswerTo(answer: Set<BoardType>, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
-        if (answer.isEmpty()) {
+    override fun applyAnswerTo(answer: Set<BoardTypeAnswer>, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
+        if (answer == setOf(BoardTypeAnswer.NoBoardJustMap)) {
             // Quest cannot be closed with no type selected. This only gets called in confirmOnMap
             tags["information"] = "map"
         } else {
-            val osmValue = answer.joinToString(";") { it.osmValue }
+            val osmValue = answer.joinToString(";") { (it as BoardType).osmValue }
             tags.updateWithCheckDate("board_type", osmValue)
         }
     }

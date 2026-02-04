@@ -9,7 +9,7 @@ import de.westnordost.streetcomplete.quests.AMultipleSelectGroupQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import org.jetbrains.compose.resources.stringResource
 
-class AddBoardTypeForm : AMultipleSelectGroupQuestForm<BoardType, BoardType>() {
+class AddBoardTypeForm : AMultipleSelectGroupQuestForm<BoardTypeAnswer, BoardType>() {
 
     override val otherAnswers = listOf(
         AnswerItem(R.string.quest_board_type_map) { confirmOnMap() }
@@ -17,7 +17,7 @@ class AddBoardTypeForm : AMultipleSelectGroupQuestForm<BoardType, BoardType>() {
 
     override val items = BoardType.entries
 
-    @Composable override fun BoxScope.ItemContent(item: BoardType) {
+    @Composable override fun BoxScope.ItemContent(item: BoardTypeAnswer) {
         Text(stringResource(item.text))
     }
 
@@ -25,7 +25,9 @@ class AddBoardTypeForm : AMultipleSelectGroupQuestForm<BoardType, BoardType>() {
         AlertDialog.Builder(requireContext())
             .setTitle(R.string.quest_board_type_map_title)
             .setMessage(R.string.quest_board_type_map_description)
-            .setPositiveButton(R.string.quest_generic_hasFeature_yes) { _, _ -> applyAnswer(setOf()) }
+            .setPositiveButton(R.string.quest_generic_hasFeature_yes) { _, _ -> applyAnswer(setOf(
+                BoardTypeAnswer.NoBoardJustMap
+            )) }
             .setNegativeButton(android.R.string.cancel, null)
             .show()
     }
