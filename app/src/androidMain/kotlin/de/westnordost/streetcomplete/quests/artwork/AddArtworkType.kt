@@ -16,7 +16,7 @@ class AddArtworkType : OsmFilterQuestType<ArtworkType>(), AndroidQuest {
 
     override val changesetComment = "Survey artwork type"
     override val wikiLink = "Key:artwork_type"
-    override val icon = R.drawable.quest_memorial
+    override val icon = R.drawable.quest_artwork
     override val achievements = listOf(CITIZEN)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_artwork_title
