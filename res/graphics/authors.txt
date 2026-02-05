@@ -316,6 +316,7 @@ quest/
     bus_stop_lit.svg                 parts taken from Twemoji: U+1F68D
     bus_stop_shelter.svg             parts taken from Twemoji: U+1F68D
     bus_stop_name.svg                parts taken from Twemoji: U+1F68D
+    cabin.svg
     calendar.svg                     Flo Edelmann (CC0)
     camp_power.svg
     car.svg                          modified from Twemoji: U+1F698
