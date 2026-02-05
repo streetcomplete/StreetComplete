@@ -23,7 +23,7 @@ class AddCabins : OsmFilterQuestType<Boolean>(), AndroidQuest {
     """
     override val changesetComment = "Survey whether this site has cabins"
     override val wikiLink = "Key:cabins"
-    override val icon = R.drawable.quest_building_inside
+    override val icon = R.drawable.quest_cabin
     override val achievements = listOf(OUTDOORS)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_camp_cabin_title
