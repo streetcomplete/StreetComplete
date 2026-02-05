@@ -23,7 +23,6 @@ class AddCaravans : OsmFilterQuestType<Boolean>(), AndroidQuest {
     override val changesetComment = "Survey whether one can camp with caravans here"
     override val wikiLink = "Key:caravans"
     override val icon = R.drawable.quest_caravan
-    // you can often see caravans from the outside, so usually there is no need for this quest to be disabled by default
     override val achievements = listOf(OUTDOORS)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_camp_caravan_title
