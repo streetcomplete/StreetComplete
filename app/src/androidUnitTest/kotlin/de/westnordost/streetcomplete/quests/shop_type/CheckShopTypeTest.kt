@@ -87,7 +87,7 @@ class CheckShopTypeTest {
                 tags = mapOf("a" to "b", "c" to "d"),
                 names = listOf(),
                 geometry = listOf(GeometryType.POINT),
-            )))
+            ), isStillSamePlace = false))
         )
     }
 }
