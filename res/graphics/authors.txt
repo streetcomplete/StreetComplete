@@ -404,6 +404,7 @@ quest/
     pitch_lantern.svg
     pitch_surface.svg
     playground.svg
+    poo.svg                          modified from Twemoji: U+1f4a9
     power.svg
     quest.svg
     railway.svg
