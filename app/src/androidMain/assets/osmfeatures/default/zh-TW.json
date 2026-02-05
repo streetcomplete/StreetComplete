@@ -321,6 +321,10 @@
           "name": "社區中心",
           "terms": "社區中心,活動中心,社區發展協會"
         },
+        "amenity/community_centre/chitalishte_BG": {
+          "name": "Chitalishte",
+          "terms": "chitalishte"
+        },
         "amenity/community_centre/club_home": {
           "name": "俱樂部會所",
           "terms": "俱樂部會所"
@@ -950,6 +954,10 @@
         "amenity/restaurant/greek": {
           "name": "希臘餐廳",
           "terms": "希臘餐廳,希臘菜,希臘料理"
+        },
+        "amenity/restaurant/hotpot": {
+          "name": "火鍋餐廳",
+          "terms": "火鍋店,小火鍋"
         },
         "amenity/restaurant/indian": {
           "name": "印度餐廳",
@@ -1842,7 +1850,8 @@
           "terms": "連棟透天厝"
         },
         "building/train_station": {
-          "name": "鐵路車站建築"
+          "name": "鐵路車站建築",
+          "terms": "火車站建築,火車站大樓"
         },
         "building/transportation": {
           "name": "轉運站建築",
@@ -2624,8 +2633,8 @@
           "terms": "高速公路"
         },
         "highway/motorway_junction": {
-          "name": "高速公路交流道 / 出口",
-          "terms": "高速公路交流道 / 出口"
+          "name": "高速公路出口",
+          "terms": "匝道"
         },
         "highway/motorway_link": {
           "name": "高速公路匝道",
@@ -2990,8 +2999,8 @@
           "terms": "施工用地"
         },
         "landuse/education": {
-          "name": "教育用地",
-          "terms": "教育用地,學校用地,校地"
+          "name": "教育區域",
+          "terms": "教育區域"
         },
         "landuse/farm": {
           "name": "農地"
@@ -3099,6 +3108,10 @@
         "landuse/military/training_area": {
           "name": "軍事訓練區域",
           "terms": "軍事訓練區域"
+        },
+        "landuse/olive_grove": {
+          "name": "橄欖園",
+          "terms": "橄欖園"
         },
         "landuse/orchard": {
           "name": "果園",
@@ -4768,6 +4781,10 @@
           "name": "遊戲小屋",
           "terms": "遊戲小屋"
         },
+        "playground/pump": {
+          "name": "玩水幫浦",
+          "terms": "戲水幫浦"
+        },
         "playground/roundabout": {
           "name": "旋轉盤",
           "terms": "旋轉盤"
@@ -4821,8 +4838,8 @@
           "terms": "兒童,鑽爬,隧道"
         },
         "playground/water": {
-          "name": "戲水設施",
-          "terms": "戲水設施"
+          "name": "玩水裝置（未指定）",
+          "terms": "戲水裝置（未指定）"
         },
         "playground/zipwire": {
           "name": "滑降台",
@@ -5209,6 +5226,10 @@
           "name": "鐵路號誌",
           "terms": "鐵路號誌"
         },
+        "railway/signal_box": {
+          "name": "訊號箱",
+          "terms": "號誌箱,號誌盒,訊號盒"
+        },
         "railway/station": {
           "name": "鐵路車站"
         },
@@ -5556,6 +5577,10 @@
         "shop/erotic/lgbtq": {
           "name": "LGBTQ+ 情趣用品店",
           "terms": "lgbtq+ 情趣用品店"
+        },
+        "shop/esoteric": {
+          "name": "神秘學商店",
+          "terms": "靈性商店,靈學商店"
         },
         "shop/fabric": {
           "name": "布料行",
@@ -6153,8 +6178,8 @@
           "terms": "旅遊景點圖,景點圖,位置圖,示意圖"
         },
         "tourism/information/office": {
-          "name": "遊客中心",
-          "terms": "旅遊中心,資訊服務站,旅遊服務中心"
+          "name": "旅遊服務中心",
+          "terms": "旅遊服務中心"
         },
         "tourism/information/route_marker": {
           "name": "路徑標記",
@@ -6163,6 +6188,10 @@
         "tourism/information/terminal": {
           "name": "資訊站",
           "terms": "資訊終端機,公共資訊站"
+        },
+        "tourism/information/visitor_centre": {
+          "name": "遊客中心",
+          "terms": "旅遊中心,資訊服務站,旅遊服務中心"
         },
         "tourism/motel": {
           "name": "汽車旅館",
@@ -6457,6 +6486,10 @@
         "waterway": {
           "name": "水路圖徵"
         },
+        "waterway/access_point": {
+          "name": "水道進入點",
+          "terms": "水道進入點"
+        },
         "waterway/boatyard": {
           "name": "船塢",
           "terms": "船廠"
@@ -6495,7 +6528,7 @@
         },
         "waterway/lock_gate": {
           "name": "船閘閘門",
-          "terms": "船閘門"
+          "terms": "船閘,船閘門"
         },
         "waterway/milestone": {
           "name": "水道里程碑",

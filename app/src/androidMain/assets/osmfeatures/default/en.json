@@ -228,6 +228,10 @@
         "waterway/boatyard": {
           "name": "Boatyard"
         },
+        "waterway/access_point": {
+          "name": "Waterway Access Point",
+          "terms": "boat,canoe,kayak,launch,paddleboard,portage,put-in,rowboat,take-out"
+        },
         "waterway/canal/lock": {
           "name": "Canal Lock"
         },
@@ -479,7 +483,7 @@
         },
         "tourism/gallery": {
           "name": "Art Gallery",
-          "terms": "art,exhibition,painting,photogaph,sculpture"
+          "terms": "art,exhibition,painting,photograph,sculpture"
         },
         "tourism/chalet": {
           "name": "Holiday Cottage",
@@ -533,6 +537,10 @@
           "name": "History Museum",
           "terms": "artifacts,dioramas,exhibitions,exhibits,foundation,hall,institution"
         },
+        "tourism/information/visitor_centre": {
+          "name": "Visitor Center",
+          "terms": "visitors center,visitors information center,welcome center"
+        },
         "tourism/information/terminal": {
           "name": "Information Terminal"
         },
@@ -541,8 +549,8 @@
           "terms": "cairn,painted blaze,route flag,route marker,stone pile,trail blaze,trail post,way marker"
         },
         "tourism/information/office": {
-          "name": "Visitor Center",
-          "terms": "information office,tour guide,tourism office,tourist information center,visitors center,visitors information center,welcome center"
+          "name": "Tourist Information Office",
+          "terms": "information office,tour guide,tourism office,tourist office,tourist information center,visitors center,visitors information center,welcome center"
         },
         "tourism/information/map": {
           "name": "Map"
@@ -1044,6 +1052,10 @@
           "name": "Fabric Store",
           "terms": "sew,textile,textiles"
         },
+        "shop/esoteric": {
+          "name": "Esoteric Store",
+          "terms": "acupuncture,alternative,aromatherapy,crystal,essential oil,meditation,new age,pendant,psychic,woo"
+        },
         "shop/erotic": {
           "name": "Erotic Store",
           "terms": "porn,sex"
@@ -1058,7 +1070,7 @@
         },
         "shop/e-cigarette": {
           "name": "E-Cigarette Shop",
-          "terms": "electronic,vape,vaping,vapor"
+          "terms": "ecigarette,electronic,vape,vaping,vapor"
         },
         "shop/dry_cleaning": {
           "name": "Dry Cleaner"
@@ -1402,6 +1414,10 @@
         "railway/subway": {
           "name": "Subway Track",
           "terms": "metro,transit,underground railway"
+        },
+        "railway/signal_box": {
+          "name": "Signal Box",
+          "terms": "interlock tower,interlocking tower,lever frame,radio block center,radio block centre,signal cab,signalling box,signalling cab"
         },
         "railway/signal": {
           "name": "Railway Signal",
@@ -1772,7 +1788,7 @@
           "terms": "zip wire,zipline,zipwire"
         },
         "playground/water": {
-          "name": "Play Water Pump/Screw"
+          "name": "Play Water Device (unspecified)"
         },
         "playground/tunnel_tube": {
           "name": "Play Tunnel"
@@ -1819,6 +1835,9 @@
         "playground/roundabout": {
           "name": "Play Roundabout",
           "terms": "carousel,merry-go-round"
+        },
+        "playground/pump": {
+          "name": "Play Water Pump"
         },
         "playground/playhouse": {
           "name": "Play House",
@@ -2488,7 +2507,8 @@
           "terms": "mill,water,water wheel,waterwheel,wheel"
         },
         "man_made/water_works": {
-          "name": "Water Works"
+          "name": "Water Works",
+          "terms": "water treatment plant"
         },
         "man_made/water_well": {
           "name": "Water Well",
@@ -2752,7 +2772,7 @@
         },
         "man_made/tower/defensive": {
           "name": "Fortified Tower",
-          "terms": "castle tower,defensive tower"
+          "terms": "castle tower,defensive tower,guard tower"
         },
         "man_made/tower/cooling": {
           "name": "Cooling Tower",
@@ -3401,6 +3421,10 @@
           "name": "Orchard",
           "terms": "fruit"
         },
+        "landuse/olive_grove": {
+          "name": "Olive Grove",
+          "terms": "olive culture,olive oil,olive orchard,olive production,olive yard"
+        },
         "landuse/military": {
           "name": "Military Area",
           "terms": "air force,army,base,coast guard,depot,marines,navy,security"
@@ -3454,8 +3478,8 @@
           "terms": "crop,grow,plant"
         },
         "landuse/education": {
-          "name": "Educational Campus",
-          "terms": "campus,educational facilities,school center,school grounds"
+          "name": "Educational Area",
+          "terms": "campus,educational campus,educational facilities,school campus,school center,school grounds"
         },
         "landuse/construction": {
           "name": "Construction Area",
@@ -3815,7 +3839,7 @@
         },
         "highway/motorway_link-US-CA": {},
         "highway/motorway_junction": {
-          "name": "Motorway Junction / Exit",
+          "name": "Motorway Exit",
           "terms": "exit"
         },
         "highway/motorway": {
@@ -4057,7 +4081,7 @@
         },
         "healthcare/sample_collection": {
           "name": "Sample Collection Facility",
-          "terms": "blood sample collection,laboratory,medical,urine sample collection"
+          "terms": "blood sample collection,diagnostic,laboratory,medical,urine sample collection"
         },
         "healthcare/rehabilitation": {
           "name": "Rehabilitation Facility",
@@ -4090,7 +4114,7 @@
         },
         "healthcare/laboratory": {
           "name": "Medical Laboratory",
-          "terms": "blood_check,medical_lab,medical_laboratory"
+          "terms": "blood check,diagnostic,medical lab"
         },
         "healthcare/hospice": {
           "name": "Hospice",
@@ -4290,12 +4314,6 @@
           "name": "Ambulance Station",
           "terms": "ems,emt,rescue"
         },
-        "emergency/yes": {},
-        "emergency/private": {},
-        "emergency/official": {},
-        "emergency/no": {},
-        "emergency/destination": {},
-        "emergency/designated": {},
         "emergency/fire_hydrant/underground": {
           "name": "Underground Fire Hydrant",
           "terms": "fire plug,fire water well,underground hydrant"
@@ -4586,6 +4604,10 @@
         "building/transportation": {
           "name": "Transportation Building"
         },
+        "building/train_station": {
+          "name": "Train Station Building",
+          "terms": "halt,railway station,terminal"
+        },
         "building/terrace": {
           "name": "Row of Townhouses",
           "terms": "brownstone,dwelling,family,home,residence,row home,row house,terrace,townhome"
@@ -4771,9 +4793,6 @@
         },
         "building/allotment_house": {
           "name": "Allotment House"
-        },
-        "building/train_station": {
-          "name": "Train Station Building"
         },
         "building/outbuilding": {
           "name": "Outbuilding"
@@ -5095,7 +5114,6 @@
           "name": "Vacuum Cleaning Station",
           "terms": "car vacuum cleaner,car wash,carvac,suction"
         },
-        "amenity/university": {},
         "amenity/trolley_bay": {
           "name": "Cart Corral",
           "terms": "carriage return,cart return,shopping cart,trolley bay"
@@ -5110,8 +5128,8 @@
         },
         "amenity/toilets": {
           "name": "Restroom",
-          "aliases": "Toilets\nBathroom\nLavatory\nWater Closet",
-          "terms": "head,latrine,outhouse,privy,public restroom,public toilet,w.c.,wc"
+          "aliases": "Toilets\nBathroom\nLavatory",
+          "terms": "head,latrine,outhouse,privy,public restroom,public toilet,water closet,w.c.,wc"
         },
         "amenity/ticket_validator": {
           "name": "Ticket Validator",
@@ -5163,7 +5181,6 @@
           "name": "Shelter",
           "terms": "gazebo,lean-to,picnic"
         },
-        "amenity/school": {},
         "amenity/sanitary_dump_station": {
           "name": "RV Toilet Disposal",
           "terms": "camper,cdp,chemical toilet,ctdp,dump station,elsan,motor home,sanitary"
@@ -5209,7 +5226,6 @@
           "name": "Prison Grounds",
           "terms": "cell,correction,jail"
         },
-        "amenity/prep_school": {},
         "amenity/post_office": {
           "name": "Post Office",
           "terms": "letter,mail"
@@ -5273,7 +5289,6 @@
           "name": "Nightclub",
           "terms": "club,dance club,dancing,disco,discotheque,night club"
         },
-        "amenity/music_school": {},
         "amenity/motorcycle_rental": {
           "name": "Motorcycle Rental",
           "terms": "chopper,cruiser,dirt bike,hog,minibike,moped,motor scooter,motorbike,sidecar,sportbike"
@@ -5328,13 +5343,11 @@
           "name": "Lavoir",
           "terms": "clothing,laundry,washing"
         },
-        "amenity/language_school": {},
         "amenity/kneipp_water_cure": {
           "name": "Kneipp Facility",
           "aliases": "Kneipp Water Cure",
           "terms": "foot bath,hydrotherapy,kneipp cure,kneipp hydrotherapy,kneippism"
         },
-        "amenity/kindergarten": {},
         "amenity/karaoke_box": {
           "name": "Karaoke Box",
           "terms": "karaoke club,karaoke room,karaoke television,ktv"
@@ -5411,7 +5424,6 @@
           "name": "Events Venue",
           "terms": "banquet hall,baptism,bar mitzvah,bat mitzvah,birthdays,celebrations,conferences,confirmation,meetings,parties,party,quinceañera,reunions,weddings"
         },
-        "amenity/driving_school": {},
         "amenity/driver_training": {
           "name": "Driver Training Grounds",
           "aliases": "Driving Safety Center",
@@ -5449,7 +5461,6 @@
           "name": "Dentist",
           "terms": "teeth,tooth"
         },
-        "amenity/dancing_school": {},
         "amenity/crematorium": {
           "name": "Crematorium",
           "terms": "cemetery,funeral"
@@ -5470,7 +5481,6 @@
           "name": "Community Center",
           "terms": "event,hall"
         },
-        "amenity/college": {},
         "amenity/clock": {
           "name": "Clock",
           "terms": "time"
@@ -5591,21 +5601,30 @@
           "name": "Animal Boarding Facility",
           "terms": "boarding,cat,cattery,dog,horse,kennel,kitten,pet,pet boarding,pet care,pet hotel,puppy,reptile"
         },
+        "amenity/university": {},
+        "amenity/school": {},
         "amenity/recycling": {
           "name": "Recycling"
         },
+        "amenity/prep_school": {},
         "amenity/nursing_home": {
           "name": "Nursing Home"
         },
+        "amenity/music_school": {},
+        "amenity/language_school": {},
+        "amenity/kindergarten": {},
         "amenity/ferry_terminal": {
           "name": "Ferry Terminal"
         },
         "amenity/embassy": {
           "name": "Embassy"
         },
+        "amenity/driving_school": {},
+        "amenity/dancing_school": {},
         "amenity/coworking_space": {
           "name": "Coworking Space"
         },
+        "amenity/college": {},
         "amenity/bus_station": {
           "name": "Bus Station / Terminal"
         },
@@ -5864,6 +5883,10 @@
           "name": "Indian Restaurant",
           "terms": "bar,breakfast,curry,dine,dining,dinner,drive-in,eat,grill,lunch,table"
         },
+        "amenity/restaurant/hotpot": {
+          "name": "Hot Pot Restaurant",
+          "terms": "beijing,budae jjigae,canton,chhnang pleurng,china,fondue,guangdong,hotpot,jeongol,jjigae,kimchi jjigae,lau,mu kratha,nabemono,peking,shabu shabu,sichaun,sin jum,sukiyaki,teochew,teoswa,yao hon"
+        },
         "amenity/restaurant/greek": {
           "name": "Greek Restaurant",
           "terms": "bar,breakfast,cafe,café,canteen,dine,dining,dinner,drive-in,eat,grill,gyros,lunch,olives,pitas,table"
@@ -6067,7 +6090,7 @@
         },
         "amenity/doctors/radiology": {
           "name": "Radiologist",
-          "aliases": "Rontegenologist",
+          "aliases": "Roentgenologist",
           "terms": "computed tomography,ct,magnetic resonance imaging,medical ultrasonography,medical ultrasound,mri,radiology,sonography,ultrasonography"
         },
         "amenity/doctors/pulmonology": {
@@ -6201,6 +6224,10 @@
         },
         "amenity/community_centre/club_home": {
           "name": "Club Home"
+        },
+        "amenity/community_centre/chitalishte_BG": {
+          "name": "Chitalishte",
+          "terms": "community center"
         },
         "amenity/clock/sundial": {
           "name": "Sundial",

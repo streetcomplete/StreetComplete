@@ -1,5 +1,24 @@
 # Changelog
 
+## v62.2
+
+### Fixes
+
+- Recycling type: Images were tiny (#6683)
+- Places overlay: OK button didn't show when selecting "no name" (#6657)
+- Address overlay: OK button didn't show when tapping on a road (#6669), by @paulklie
+
+### Quest improvements
+
+- Postbox ref: Enable for Japan (#6680)
+- Internet access: Allow selecting multiple values (#6676), by @paulklie
+- Bus stop ref: Enable for Singapore (#6656), by @arrival-spring
+- Max weight: Weight limit signs in France need special handling (#6686)
+- Self-service at fuel stations: Ask in a few more countries (#6690)
+- Specify shop type: Only clear previous information about shop if we can't say whether it is still the same shop (#6675)
+- Ask for some more things on some quests (#6670), by @paulklie
+- Other small refinements (#6672, #6677, #6657, #6611…), thanks @mnalis, @matkoniecz
+
 ## v62.1
 
 ### Fixes

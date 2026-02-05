@@ -37,7 +37,7 @@ import de.westnordost.streetcomplete.resources.questList_disabled_by_default
 import de.westnordost.streetcomplete.resources.questList_disabled_in_country
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
-import org.jetbrains.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.Preview
 
 /** Single item in the quest selection list. Shows icon + title, whether it is enabled and whether
  *  it is disabled by default / disabled in the country one is in */

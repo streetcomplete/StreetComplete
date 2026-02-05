@@ -4,7 +4,6 @@ atmOperators: [Global IME Bank, Nabil Bank, NIC Asia Bank, Nepal Investment Bank
 defaultSpeedLimitHasUrbanOrRural: true
 edgeLineStyle: yellow dashes
 exclusiveCycleLaneStyle: white
-firstDayOfWorkweek: Su
 hasAdvisoryCycleLane: false
 isLeftHandTraffic: true
 mobileCountryCode: 429
@@ -15,4 +14,4 @@ officialLanguages: [ne]
 orchardProduces: [guava, mango, mangosteen, tea, banana, orange, nutmeg, chilli_pepper, sweet_pepper, lemon, lime, apple, pear, coffee, areca_nut, walnut, peach, plum, papaya]
 popularReligions: [hindu, buddhist]
 postboxesHaveCollectionTimes: true
-workweekDays: 6
+workweek: Su-Fr

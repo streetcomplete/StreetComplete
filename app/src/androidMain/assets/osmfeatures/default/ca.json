@@ -236,7 +236,8 @@
           "name": "Ajuntament pedani"
         },
         "amenity/community_centre/village_hall": {
-          "name": "Ajuntament"
+          "name": "Ajuntament",
+          "terms": "casa consistorial,casa del poble"
         },
         "amenity/community_centre/youth_centre": {
           "name": "Centre Juvenil"
@@ -807,6 +808,9 @@
           "name": "lavabo",
           "terms": "lavabos,serveis,lavabos públics,w.c"
         },
+        "amenity/toilets/disposal/flush": {
+          "name": "Vàters amb cisterna"
+        },
         "amenity/toilets/disposal/pitlatrine": {
           "name": "Latrina de Fossa"
         },
@@ -925,7 +929,7 @@
           "terms": "àrea"
         },
         "area/footway": {
-          "name": "Àrea de vianants"
+          "name": "Àrea de vorera"
         },
         "area/highway": {
           "name": "Àrea de la carretera"
@@ -1038,6 +1042,10 @@
         "barrier/fence": {
           "name": "Tanca",
           "terms": "valla,tanca,tancament,barrera,reixa"
+        },
+        "barrier/fence/railing": {
+          "name": "Reixa",
+          "terms": "barrots,reixat"
         },
         "barrier/gate": {
           "name": "Porta",
@@ -1245,13 +1253,16 @@
           "name": "Casa",
           "terms": "casa"
         },
+        "building/house/terraced": {
+          "name": "Casa en filera"
+        },
         "building/houseboat": {
           "name": "Casa flotant",
           "terms": "casa,familia,residència,habitatge"
         },
         "building/hut": {
           "name": "Cabana",
-          "terms": "barraca"
+          "terms": "barraca,cabanya"
         },
         "building/industrial": {
           "name": "Edifici industrial",
@@ -1645,7 +1656,8 @@
           "terms": "entrada,eixida,ixida,porta"
         },
         "entrance/emergency": {
-          "name": "Sortida d'emergència"
+          "name": "Sortida d'emergència",
+          "terms": "eixida d'emergència"
         },
         "entrance/emergency_ward_entrance": {
           "name": "Entrada a la sala d'urgències"
@@ -1886,10 +1898,6 @@
           "name": "Autopista",
           "terms": "autopista,autovia"
         },
-        "highway/motorway_junction": {
-          "name": "Intersecció d'autopista / Sortida",
-          "terms": "eixida,ixida"
-        },
         "highway/motorway_link": {
           "name": "Enllaç d'autopista",
           "terms": "rampa,entrada,incorporació,baixada,addició,autopista,autovia,eix"
@@ -1921,7 +1929,8 @@
           "name": "Àrea de vianants"
         },
         "highway/pedestrian_line": {
-          "name": "Carrer per vianants"
+          "name": "Carrer per a vianants",
+          "terms": "pedestre,peatonal"
         },
         "highway/primary": {
           "name": "Carretera primària",
@@ -2056,6 +2065,9 @@
         "historic/building": {
           "name": "Edifici històric"
         },
+        "historic/cannon": {
+          "name": "Canó"
+        },
         "historic/castle": {
           "name": "Castell",
           "terms": "castell"
@@ -2147,7 +2159,7 @@
           "name": "Bassa"
         },
         "landuse/brownfield": {
-          "name": "Sòl urbanitzable ja urbanitzat",
+          "name": "Sòl reurbanitzable",
           "terms": "desenvolupament,industrial"
         },
         "landuse/cemetery": {
@@ -2672,6 +2684,10 @@
           "name": "Màstil de comunicació de televisió",
           "terms": "màstil de televisió,televisió,antena de televisió"
         },
+        "man_made/mast/lighting": {
+          "name": "Màstil d'il·luminació",
+          "terms": "farola,farell,llum,llanterna"
+        },
         "man_made/monitoring_station": {
           "name": "Estació de seguiment"
         },
@@ -3022,7 +3038,8 @@
           "aliases": "Bosc no gestionat"
         },
         "noexit/yes": {
-          "name": "Sense sortida"
+          "name": "Sense sortida",
+          "terms": "sense eixida"
         },
         "office": {
           "name": "Oficines",
@@ -3234,7 +3251,7 @@
         },
         "place/city": {
           "name": "Ciutat",
-          "terms": "ciutat,municipi"
+          "terms": "ciutat gran,municipi"
         },
         "place/city_block": {
           "name": "Illa urbana",
@@ -3279,10 +3296,13 @@
           "name": "Districte / Suburbi"
         },
         "place/town": {
-          "name": "Ciutat"
+          "name": "Vila",
+          "terms": "ciutat,poble,municipi",
+          "aliases": "Ciutat petita"
         },
         "place/village": {
-          "name": "Poble"
+          "name": "Poble",
+          "terms": "població,vila"
         },
         "playground": {
           "name": "Equipament de parcs infantils"
@@ -3496,7 +3516,7 @@
           "name": "Parada / andana de tren"
         },
         "public_transport/platform/tram": {
-          "name": "Andana de tranvia"
+          "name": "Andana de tramvia"
         },
         "public_transport/platform/tram_point": {
           "name": "Parada / andana de tramvia"
@@ -3613,6 +3633,9 @@
         },
         "railway/milestone": {
           "name": "Fita quilomètrica ferroviaria"
+        },
+        "railway/miniature": {
+          "name": "Vies de tren en miniatura"
         },
         "railway/monorail": {
           "name": "Via de monoraïl"
@@ -4354,10 +4377,6 @@
         },
         "tourism/information/map": {
           "name": "Mapa"
-        },
-        "tourism/information/office": {
-          "name": "Centre de visitants",
-          "terms": "oficina de turisme,turisme,tourist info"
         },
         "tourism/information/terminal": {
           "name": "Terminal d'informació"

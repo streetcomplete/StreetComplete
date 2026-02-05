@@ -44,7 +44,7 @@ data class IncompleteCountryInfo(
     val clothesContainerOperators: List<String>? = null,
     val edgeLineStyle: String? = null,
     val exclusiveCycleLaneStyle: String? = null,
-    val firstDayOfWorkweek: String? = null,
+    val workweek: String? = null,
     val hasAdvisorySpeedLimitSign: Boolean? = null,
     val hasBiWeeklyAlternateSideParkingSign: Boolean? = null,
     val hasCenterLeftTurnLane: Boolean? = null,
@@ -81,7 +81,6 @@ data class IncompleteCountryInfo(
     val slowZoneLabelText: String? = null,
     val speedUnits: List<SpeedMeasurementUnit>? = null,
     val weightLimitUnits: List<WeightMeasurementUnit>? = null,
-    val workweekDays: Int? = null,
 )
 
 data class CountryInfo(private val infos: List<IncompleteCountryInfo>) {
@@ -96,8 +95,8 @@ data class CountryInfo(private val infos: List<IncompleteCountryInfo>) {
         get() = infos.firstNotNullOf { it.edgeLineStyle }
     val exclusiveCycleLaneStyle: String
         get() = infos.firstNotNullOf { it.exclusiveCycleLaneStyle }
-    val firstDayOfWorkweek: String
-        get() = infos.firstNotNullOf { it.firstDayOfWorkweek }
+    val workweek: String
+        get() = infos.firstNotNullOf { it.workweek }
     val hasAdvisoryCycleLane: Boolean
         get() = infos.firstNotNullOf { it.hasAdvisoryCycleLane }
     val hasAdvisorySpeedLimitSign: Boolean
@@ -148,8 +147,6 @@ data class CountryInfo(private val infos: List<IncompleteCountryInfo>) {
         get() = infos.firstNotNullOf { it.speedUnits }
     val weightLimitUnits: List<WeightMeasurementUnit>
         get() = infos.firstNotNullOf { it.weightLimitUnits }
-    val workweekDays: Int
-        get() = infos.firstNotNullOf { it.workweekDays }
 
     // may be null
     val additionalStreetsignLanguages: List<String>

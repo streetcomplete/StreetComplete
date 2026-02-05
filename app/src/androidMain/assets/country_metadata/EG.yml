@@ -2,7 +2,6 @@
 additionalStreetsignLanguages: [en]
 atmOperators: [البنك الأهلي المصري, بنك مصر, Banque Misr, National Bank of Egypt, CIB, NBE, HSBC, Crédit Agricole, بنك فيصل الإسلامي المصري, QNB, بنك القاهرة, البنك التجاري الدولي CIB, The United Bank, Commercial International Bank, Bank of Egypt, بنك الاسكندرية, بنك الإسكندرية, البريد المصري, Fab Misr, Egypt Post, Credit Agricole, CiB, Banque du Caire, Arab African International Bank]
 defaultSpeedLimitHasUrbanOrRural: true
-firstDayOfWorkweek: Su
 mobileCountryCode: 602
 noParkingSignStyle: vienna
 noStoppingSignStyle: vienna
@@ -10,3 +9,4 @@ officialLanguages: [ar]
 orchardProduces: [tomato, guava, mango, mangosteen, orange, olive, grape, date, banana, apple, fig, chilli_pepper, sweet_pepper, peach, strawberry, lemon, lime, apricot, walnut]
 popularReligions: [muslim]
 roofsAreUsuallyFlat: true
+workweek: Su-Th

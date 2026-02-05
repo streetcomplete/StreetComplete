@@ -3,9 +3,8 @@ additionalStreetsignLanguages: [en]
 atmOperators: [Arab Bank, Bank of Palestine, البنك العربي, بنك فلسطين, Cairo Amman Bank, בנק אוצר החייל, Palestine Islamic Bank, Arab Islamic Bank]
 chargingStationOperators: [אפקון]
 defaultSpeedLimitHasUrbanOrRural: true
-firstDayOfWorkweek: Sa
 mobileCountryCode: 425
 officialLanguages: [ar]
 orchardProduces: [olive, grape, almond, tomato, date, plum, apricot, chilli_pepper, sweet_pepper, lemon, lime, peach, fig, cherry, orange, apple, strawberry]
 popularReligions: [muslim, jewish]
-workweekDays: 6
+workweek: Sa-Th

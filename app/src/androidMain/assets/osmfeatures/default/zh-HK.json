@@ -2576,10 +2576,6 @@
           "name": "快速公路",
           "terms": "motorway,高速公路"
         },
-        "highway/motorway_junction": {
-          "name": "快速公路交滙處/出口",
-          "terms": "快速公路交滙處/出口"
-        },
         "highway/motorway_link": {
           "name": "快速公路連接路",
           "terms": "motorway link,高速公路匝道,高速公路引道,高速公路駁路,高速公路連接路"
@@ -2937,10 +2933,6 @@
         "landuse/construction": {
           "name": "建设区域",
           "terms": "建设区域,建设,建造,在建,施工,工地,承建"
-        },
-        "landuse/education": {
-          "name": "教育用地",
-          "terms": "教育,教学,学校,校园,校园用地,高中园,园区"
         },
         "landuse/farm": {
           "name": "農地"
@@ -4759,10 +4751,6 @@
           "name": "爬行隧道",
           "terms": "兒童,鑽爬,隧道"
         },
-        "playground/water": {
-          "name": "戲水設施",
-          "terms": "戲水設施"
-        },
         "playground/zipwire": {
           "name": "滑降台",
           "terms": "滑降台"
@@ -6086,10 +6074,6 @@
         "tourism/information/map": {
           "name": "地圖",
           "terms": "map,地圖"
-        },
-        "tourism/information/office": {
-          "name": "遊客中心",
-          "terms": "遊客中心,旅遊中心,資訊服務站"
         },
         "tourism/information/route_marker": {
           "name": "路線標記",

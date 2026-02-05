@@ -2249,10 +2249,6 @@
           "name": "Autópálya",
           "terms": "gyorsforgalmi út,autópálya,államközi út,parkolóút,út"
         },
-        "highway/motorway_junction": {
-          "name": "Autópálya-csomópont / -kijárat",
-          "terms": "autópálya lehajtó,autópálya felhajtó,elágazás,leágazás,kijárat"
-        },
         "highway/motorway_link": {
           "name": "Autópálya fel- vagy lehajtó",
           "terms": "kijárat,lehajtás,felhajtás"
@@ -2571,10 +2567,6 @@
         "landuse/construction": {
           "name": "Építési terület",
           "terms": "épület,buldózer,építkezés,építési terület,építési övezet,daru,bontás,fejlesztés,infrastruktúra"
-        },
-        "landuse/education": {
-          "name": "Oktatási intézmény területe",
-          "aliases": "Kampusz\nEgyetemváros"
         },
         "landuse/farm": {
           "name": "Mezőgazdasági terület"
@@ -4100,9 +4092,6 @@
         "playground/tunnel_tube": {
           "name": "Játszóalagút"
         },
-        "playground/water": {
-          "name": "Játék vízszivattyú vagy -csavar"
-        },
         "playground/zipwire": {
           "name": "Kötélpálya",
           "terms": "drótkötél,csúszka"
@@ -5299,10 +5288,6 @@
         "tourism/information/map": {
           "name": "Térkép",
           "terms": "térkép"
-        },
-        "tourism/information/office": {
-          "name": "Látogatóközpont",
-          "terms": "látogatóközpont,információs iroda"
         },
         "tourism/information/route_marker": {
           "name": "Turistaútjelzés",

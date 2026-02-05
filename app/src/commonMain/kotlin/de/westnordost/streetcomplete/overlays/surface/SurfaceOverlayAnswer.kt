@@ -5,7 +5,6 @@ import de.westnordost.streetcomplete.osm.surface.Surface
 import de.westnordost.streetcomplete.osm.surface.applyTo
 import de.westnordost.streetcomplete.osm.surface.updateCommonSurfaceFromFootAndCyclewaySurface
 import kotlinx.serialization.Serializable
-import kotlin.jvm.JvmInline
 
 @Serializable
 sealed interface SurfaceOverlayAnswer {

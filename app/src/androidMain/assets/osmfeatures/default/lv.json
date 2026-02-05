@@ -98,7 +98,7 @@
           "name": "Autonoma"
         },
         "amenity/car_wash": {
-          "name": "Automazgātuve"
+          "name": "Automazgātava"
         },
         "amenity/casino": {
           "name": "Kazino"
@@ -246,6 +246,9 @@
         },
         "amenity/parking/underground": {
           "name": "Pazemes stāvvieta"
+        },
+        "amenity/parking_space": {
+          "name": "Autostāvvietas vieta"
         },
         "amenity/parking_space/disabled": {
           "name": "Autostāvvietas vieta invalīdiem"
@@ -469,11 +472,11 @@
           "terms": "klucis,gabals"
         },
         "barrier/bollard": {
-          "name": "Stabs",
+          "name": "Norobežojošais stabs (bolards)",
           "terms": "stabi,stabiņi"
         },
         "barrier/bollard_line": {
-          "name": "Stabiņu rinda"
+          "name": "Norobežojošo stabu (bolardu) rinda"
         },
         "barrier/border_control": {
           "name": "Robežu Kontrole",
@@ -607,6 +610,9 @@
           "name": "Siltumnīca",
           "terms": "augi,stikls"
         },
+        "building/hangar": {
+          "name": "Angāra ēka"
+        },
         "building/hospital": {
           "name": "Slīmnīcas Ēka"
         },
@@ -618,6 +624,9 @@
         },
         "building/industrial": {
           "name": "Rūpnieciskā ēka"
+        },
+        "building/kindergarten": {
+          "name": "Bērnudārza ēka"
         },
         "building/mosque": {
           "name": "Mošejas Ēka"
@@ -765,6 +774,18 @@
         "disused/shop": {
           "name": "Neizmantots veikals"
         },
+        "education/dancing_school": {
+          "name": "Deju skola"
+        },
+        "education/driving_school": {
+          "name": "Autoskola"
+        },
+        "education/kindergarten": {
+          "name": "Bērnudārza teritorija"
+        },
+        "education/school": {
+          "name": "Skolas teritorija"
+        },
         "embankment": {
           "name": "Uzbērums"
         },
@@ -873,7 +894,7 @@
           "name": "Lifts"
         },
         "highway/footway": {
-          "name": "Gājēju ceļš",
+          "name": "Celiņš",
           "terms": "taka,gājēju,kājāmgājēju,celiņš"
         },
         "highway/footway/crossing/traffic_signals": {
@@ -885,6 +906,9 @@
         "highway/footway/crossing/unmarked": {
           "name": "Nemarķēta šķērsošanas vieta"
         },
+        "highway/footway/informal": {
+          "name": "Neformāls celiņš"
+        },
         "highway/footway/sidewalk": {
           "name": "Ietve"
         },
@@ -895,7 +919,7 @@
           "name": "Dodiet ceļu zīme"
         },
         "highway/living_street": {
-          "name": "Dzīvojamā iela"
+          "name": "Dzīvojamās zonas iela"
         },
         "highway/motorway": {
           "name": "Ātrgaitas šoseja"
@@ -973,7 +997,7 @@
           "name": "Stop Zīme"
         },
         "highway/street_lamp": {
-          "name": "Ielas lampa"
+          "name": "Apgaismojuma stabs"
         },
         "highway/tertiary": {
           "name": "Trešās šķiras ceļš"
@@ -1057,18 +1081,27 @@
         "landuse/construction": {
           "name": "Būvlaukums"
         },
+        "landuse/farm": {
+          "name": "Lauksaimniecības teritorija"
+        },
+        "landuse/farmland": {
+          "name": "Lauksaimniecības zeme / aramzeme"
+        },
         "landuse/farmyard": {
-          "name": "Lauku sēta"
+          "name": "Lauksaimniecības sēta"
         },
         "landuse/flowerbed": {
           "name": "Ziedu dobe",
           "terms": "puķu dobe"
         },
+        "landuse/forest": {
+          "name": "Mežsaimniecības mežs"
+        },
         "landuse/garages": {
           "name": "Garāžu zeme"
         },
         "landuse/grass": {
-          "name": "Zāle"
+          "name": "Zālājs"
         },
         "landuse/harbour": {
           "name": "Osta"
@@ -1083,7 +1116,7 @@
           "name": "Izgāztuve"
         },
         "landuse/meadow": {
-          "name": "Pļava"
+          "name": "Pļava (apstrādāta)"
         },
         "landuse/military": {
           "name": "Militārā zona"
@@ -1107,7 +1140,7 @@
           "name": "Ūdenstilpne"
         },
         "landuse/residential": {
-          "name": "Dzīvojamā zona"
+          "name": "Dzīvojamā apbūve"
         },
         "landuse/vineyard": {
           "name": "Vīnogu lauks"
@@ -1185,7 +1218,7 @@
           "name": "Volejbola laukums"
         },
         "leisure/playground": {
-          "name": "Spēļlaukums"
+          "name": "Rotaļu laukums"
         },
         "leisure/sauna": {
           "name": "Sauna"
@@ -1217,8 +1250,14 @@
         "man_made/chimney": {
           "name": "Skurstenis"
         },
+        "man_made/clearcut": {
+          "name": "Meža cirte"
+        },
         "man_made/crane": {
           "name": "Celtnis"
+        },
+        "man_made/cutline": {
+          "name": "Stiga"
         },
         "man_made/embankment": {
           "name": "Uzbērums"
@@ -1328,7 +1367,7 @@
           "name": "Ledājs"
         },
         "natural/grassland": {
-          "name": "Neapstrādāta zeme"
+          "name": "Pļava (dabīga)"
         },
         "natural/heath": {
           "name": "Tīrelis",
@@ -1348,6 +1387,9 @@
         },
         "natural/sand": {
           "name": "Smiltis"
+        },
+        "natural/scrub": {
+          "name": "Sīkaugi / krūmāji"
         },
         "natural/spring": {
           "name": "Avots"
@@ -1534,6 +1576,9 @@
         },
         "public_transport/platform/train_point": {
           "name": "Vilciena Pietura / Platforma"
+        },
+        "public_transport/platform/tram_point": {
+          "name": "Tramvaju pietura"
         },
         "public_transport/platform/trolleybus_point": {
           "name": "Trolejbusu pietura"
@@ -1983,7 +2028,7 @@
           "name": "Piknika vieta"
         },
         "tourism/theme_park": {
-          "name": "Tematiskais parks"
+          "name": "Atrakciju parks"
         },
         "tourism/viewpoint": {
           "name": "Skatu punkts"
@@ -1996,16 +2041,16 @@
           "name": "Satiksmes mierināšana"
         },
         "traffic_calming/bump": {
-          "name": "Guļošais Policists"
+          "name": "Ātrumvalnis (pacēlums)"
         },
         "traffic_calming/hump": {
-          "name": "Guļošais Policists"
+          "name": "Ātrumvalnis (izliekts)"
         },
         "traffic_calming/island": {
           "name": "Satiksmes mierināšanas sala"
         },
         "traffic_calming/table": {
-          "name": "Ātrumvalnis"
+          "name": "Ātrumvalnis (ceļu krustojuma)"
         },
         "type/boundary": {
           "name": "Robeža"

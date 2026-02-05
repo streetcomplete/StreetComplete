@@ -7,7 +7,7 @@ import java.time.format.DateTimeFormatter
 
 actual class LocalDateFormatter actual constructor(
     locale: Locale?,
-    style: DateFormatStyle,
+    style: DateTimeFormatStyle,
 ) {
     private val formatter = DateTimeFormatter
         .ofLocalizedDate(style.toFormatStyle())

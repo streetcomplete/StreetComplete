@@ -34,7 +34,7 @@ import de.westnordost.streetcomplete.ui.common.TextField2
 import de.westnordost.streetcomplete.ui.common.last_picked.LastPickedChipsRow
 import de.westnordost.streetcomplete.ui.theme.largeInput
 import org.jetbrains.compose.resources.stringResource
-import org.jetbrains.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.Preview
 
 /** Form to input building levels and roof levels, with quick-select buttons */
 @Composable

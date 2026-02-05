@@ -31,7 +31,7 @@ import de.westnordost.streetcomplete.resources.quest_enabled
 import de.westnordost.streetcomplete.ui.common.dialogs.ConfirmationDialog
 import de.westnordost.streetcomplete.ui.theme.titleMedium
 import org.jetbrains.compose.resources.stringResource
-import org.jetbrains.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.Preview
 
 /** List of overlays to individually enable or disable */
 @Composable

@@ -66,7 +66,7 @@ class AddPlaceName(
                 // name only
                 "studio",                                                                // culture
                 "events_venue", "exhibition_centre", "music_venue", "funeral_hall",      // events
-                "prison", "fire_station", "bus_station",                                 // civic
+                "prison", "fire_station", "bus_station", "refugee_site",                 // civic
                 "social_facility", "nursing_home", "childcare", "retirement_home", "social_centre", // social
                 "monastery",                                                             // religious
                 "kindergarten", "school", "college", "university", "research_institute", // education
@@ -89,6 +89,7 @@ class AddPlaceName(
                 // common
                 "fitness_centre", "golf_course", "water_park", "miniature_golf", "bowling_alley",
                 "amusement_arcade", "adult_gaming_centre", "tanning_salon", "sauna",
+                "indoor_play",
 
                 // name & wheelchair
                 "sports_centre", "stadium",
@@ -97,14 +98,14 @@ class AddPlaceName(
                 "trampoline_park",
 
                 // name only
-                "dance", "nature_reserve", "marina", "horse_riding", "trampoline_park",
+                "dance", "nature_reserve", "marina", "horse_riding",
                 "bathing_place", "escape_game",
             ),
             "landuse" to arrayOf(
                 "cemetery", "allotments"
             ),
             "military" to arrayOf(
-                "airfield", "barracks", "training_area"
+                "airfield", "barracks", "training_area", "base",
             ),
             "healthcare" to arrayOf(
                 // common

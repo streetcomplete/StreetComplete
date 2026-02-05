@@ -19,6 +19,7 @@ import de.westnordost.streetcomplete.quests.air_conditioning.AddAirConditioning
 import de.westnordost.streetcomplete.quests.air_pump.AddAirCompressor
 import de.westnordost.streetcomplete.quests.amenity_cover.AddAmenityCover
 import de.westnordost.streetcomplete.quests.amenity_indoor.AddIsAmenityIndoor
+import de.westnordost.streetcomplete.quests.artwork.AddArtworkType
 import de.westnordost.streetcomplete.quests.atm_cashin.AddAtmCashIn
 import de.westnordost.streetcomplete.quests.atm_operator.AddAtmOperator
 import de.westnordost.streetcomplete.quests.baby_changing_table.AddBabyChangingTable
@@ -121,6 +122,7 @@ import de.westnordost.streetcomplete.quests.motorcycle_parking_capacity.AddMotor
 import de.westnordost.streetcomplete.quests.motorcycle_parking_cover.AddMotorcycleParkingCover
 import de.westnordost.streetcomplete.quests.note_discussion.OsmNoteQuestType
 import de.westnordost.streetcomplete.quests.oneway.AddOneway
+import de.westnordost.streetcomplete.quests.oneway.AddOnewayAerialway
 import de.westnordost.streetcomplete.quests.opening_hours.AddOpeningHours
 import de.westnordost.streetcomplete.quests.opening_hours_signed.CheckOpeningHoursSigned
 import de.westnordost.streetcomplete.quests.orchard_produce.AddOrchardProduce
@@ -356,6 +358,8 @@ fun questTypeRegistry(
     49 to CheckExistence(getFeature),
     155 to AddGritBinSeasonal(),
 
+    187 to AddArtworkType(),
+
     50 to AddBoardType(),
     171 to AddBoardName(),
 
@@ -454,6 +458,7 @@ fun questTypeRegistry(
 
     // aerial way: usually visible from looking at the aerial way, but not always...
     184 to AddAerialwayBicycleAccess(),
+    187 to AddOnewayAerialway(),
 
     103 to AddProhibitedForPedestrians(), // need to understand the pedestrian situation
 

@@ -695,12 +695,9 @@ Before uploading your changes, the app checks with a &lt;a href="https://www.wes
     <string name="quest_address_title">What’s the house number of this building?</string>
     <string name="quest_address_house_number_label">House number:</string>
     <string name="quest_address_house_name_label">House name:</string>
-    <!-- In Japan, addresses are chiefly house number + block number (because most streets don’t have a name) -->
     <string name="label_housenumber">house number</string>
-    <!-- In Japan, addresses are chiefly house number + block number (because most streets don’t have a name) -->
-    <string name="label_blocknumber">block number</string>
     <!-- In some countries, addresses may have a house number and a block (number or letters) -->
-    <string name="label_block">block</string>
+    <string name="label_block2">city block</string>
     <!-- a unique house number within one place, only (still) used in Czechia, Slovakia https://de.wikipedia.org/wiki/Konskriptionsnummer -->
     <string name="quest_housenumber_conscription_number">Conscription number</string>
     <!-- an (optional) number that is unique within one street like a normal housenumber but used sometimes in addition to conscription numbers in Czechia, Slovakia -->
@@ -710,8 +707,8 @@ Before uploading your changes, the app checks with a &lt;a href="https://www.wes
     <string name="quest_housenumber_multiple_numbers_description2" tools:ignore="TypographyDashes">You can enter comma-separated house numbers.\nFor example 1,3 or 2b,4,6.</string>
     <string name="quest_address_answer_no_housenumber">It has no house number…</string>
     <string name="quest_address_answer_no_address">No address here</string>
-    <string name="quest_address_answer_block">It’s within a block…</string>
-    <string name="quest_address_answer_no_block">It isn’t within a block…</string>
+    <string name="quest_address_answer_block2">It’s within a city block…</string>
+    <string name="quest_address_answer_no_block2">It isn’t within a city block…</string>
     <string name="quest_address_answer_no_housenumber_message1">The building was tagged as:</string>
     <string name="quest_address_answer_no_housenumber_message2b">Is this correct?</string>
     <string name="quest_address_unusualHousenumber_confirmation_description">This house number looks very unusual.</string>
@@ -729,6 +726,22 @@ Before uploading your changes, the app checks with a &lt;a href="https://www.wes
 
     <string name="quest_atm_cashin_title">Can you deposit cash at this ATM?</string>
     <string name="quest_atm_operator_title">Which bank operates this ATM?</string>
+
+    <!-- artwork type -->
+    <string name="quest_artwork_title">What kind of artwork is this?</string>
+    <string name="quest_artwork_sculpture">Sculpture</string>
+    <string name="quest_artwork_statue">Statue</string>
+    <string name="quest_artwork_mural">Mural</string>
+    <string name="quest_artwork_graffiti">Graffiti</string>
+    <string name="quest_artwork_installation">Installation</string>
+    <string name="quest_artwork_bust">Bust</string>
+    <string name="quest_artwork_stone">Stone</string>
+    <string name="quest_artwork_painting">Painting</string>
+    <string name="quest_artwork_street_art">Other Street Art</string>
+    <string name="quest_artwork_architecture">Architecture</string>
+    <string name="quest_artwork_mosaic">Mosaic</string>
+    <string name="quest_artwork_relief">Relief</string>
+    <string name="quest_artwork_fountain">Fountain</string>
 
     <string name="quest_baby_changing_table_title2">Does this place have a baby changing table?</string>
 
@@ -1288,11 +1301,11 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_openingHours_title">What are the opening hours here?</string>
     <string name="quest_openingHours_signed_title">Are the opening hours here signed?</string>
     <string name="quest_openingHours_resurvey_title">Are these opening hours still correct?</string>
-    <string name="quest_openingHours_start_time">opening time</string>
-    <string name="quest_openingHours_end_time">closing time</string>
-    <string name="quest_openingHours_timeSelect_next">Next</string>
+    <string name="quest_openingHours_start_time">Start time</string>
+    <string name="quest_openingHours_end_time">End time</string>
     <string name="quest_openingHours_add_months">Add months</string>
     <string name="quest_openingHours_add_hours">Add hours</string>
+    <string name="quest_openingHours_add_time">Add time</string>
     <string name="quest_openingHours_add_weekdays">Add days of the week</string>
     <string name="quest_openingHours_add_off_days">Add off days</string>
     <string name="quest_openingHours_delete">Delete</string>
@@ -1300,17 +1313,28 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_openingHours_unspecified_range">Not specified</string>
     <string name="quest_openingHours_chooseMonthsTitle">Select months</string>
     <string name="quest_openingHours_chooseWeekdaysTitle">Select days of the week</string>
+    <string name="quest_openingHours_chooseStartTimeTitle">Select start time</string>
+    <string name="quest_openingHours_chooseEndTimeTitle">Select end time</string>
+    <string name="quest_openingHours_chooseTimeTitle">Select time</string>
+
     <string name="quest_openingHours_24_7_confirmation">In other words, is it open any time, every day?</string>
     <string name="quest_openingHours_add_times">Add opening hours</string>
+
     <string name="quest_openingHours_public_holidays">Public holidays</string>
     <string name="quest_openingHours_public_holidays_short">PH</string>
-    <string name="quest_openingHours_open_end">open end</string>
+
+    <string name="quest_openingHours_no_fixed_end">no fixed end time</string>
+    <!-- e.g. "from 12:00", end hour unknown or flexible ~= open end -->
+    <string name="quest_openingHours_from">from %1$s</string>
+    <!-- e.g. "16:00 to 20:00, until late" ~= open end -->
+    <string name="quest_openingHours_until_late">%1$s until late</string>
+
+
     <string name="quest_openingHours_answer_247">Open 24/7</string>
     <string name="quest_openingHours_answer_seasonal_opening_hours">Differs by month…</string>
     <string name="quest_openingHours_answer_no_regular_opening_hours">No regular opening hours…</string>
     <string name="quest_openingHours_comment_title">Describe opening hours</string>
     <string name="quest_openingHours_comment_description">Be concise, ideally use the wording from the sign, e.g. “by appointment”. The absence of a sign does not necessarily mean that there are no regular opening hours.</string>
-    <string name="quest_openingHours_emptyAnswer">You need to describe what is on the sign. If there is no sign, you should ask for the opening hours inside.</string>
     <string name="quest_openingHours_no_sign">No opening hours sign</string>
 
     <string name="quest_orchard_produce_title">What’s being grown here?</string>
@@ -1414,6 +1438,10 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_postboxCollectionTimes_resurvey_title">Are the pickup times of this collection box still correct?</string>
     <string name="quest_collectionTimes_add_times">Add collection time</string>
     <string name="quest_collectionTimes_answer_no_times_specified">No times specified</string>
+    <!-- In some places it is common that an hour range in which mail is collected is specified on the box instead of specific times -->
+    <string name="quest_collectionTimes_answer_time_spans">Within a time range…</string>
+    <!-- In most places it is common that specific times at which mail is collected are specified on the box instead of hour ranges -->
+    <string name="quest_collectionTimes_answer_time_points">At specific times…</string>
 
     <string name="quest_ref_answer_noRef">No number or code visible…</string>
 

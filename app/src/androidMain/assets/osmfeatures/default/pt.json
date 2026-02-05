@@ -164,7 +164,7 @@
         },
         "amenity/arts_centre": {
           "name": "Centro de artes",
-          "terms": "galeria,atelier,centro artístico,artes,arte,artistas,artista"
+          "terms": "galeria,atelier,centro artístico,artes,arte,artistas,artista,cultura,cultural,música,teatro,cinema,exposição,exposições"
         },
         "amenity/atm": {
           "name": "Terminal bancário",
@@ -323,6 +323,7 @@
           "terms": "community center,espaço social,centro social"
         },
         "amenity/community_centre/cultural_centre": {
+          "name": "Centro cultural",
           "terms": "cultura,centre,center,comunidade,culturais,atividades,actividades,comunitário"
         },
         "amenity/community_centre/lgbtq": {
@@ -930,6 +931,10 @@
         "amenity/restaurant/greek": {
           "name": "Restaurante grego",
           "terms": "restaurante de comida grega,restaurante,comida grega,grega,cozinha grega,grego"
+        },
+        "amenity/restaurant/hotpot": {
+          "name": "Restaurante hot pot",
+          "terms": "beijing,budae jjigae,canton,chhnang pleurng,china,fondue,guangdong,hotpot,jeongol,jjigae,kimchi jjigae,lau,mu kratha,nabemono,peking,shabu shabu,sichaun,sin jum,sukiyaki,teochew,teoswa,yao hon"
         },
         "amenity/restaurant/indian": {
           "name": "Restaurante indiano",
@@ -1816,7 +1821,8 @@
           "terms": "geminado,geminada,germinada,linha de casas,habitação,house,casa,residência,residence,dwelling,brownstone"
         },
         "building/train_station": {
-          "name": "Edifício de estação de comboios"
+          "name": "Edifício de estação de comboios",
+          "terms": "edifício,terminal,estação,ferrovia,ferroviária,ferroviário,station"
         },
         "building/transportation": {
           "name": "Edifício de transporte público",
@@ -2598,8 +2604,7 @@
           "terms": "auto-estrada,auto estrada"
         },
         "highway/motorway_junction": {
-          "name": "Saída de autoestrada/via rápida",
-          "terms": "junção,saída,autoestrada,auto-estrada,nó,entrada,sair,mudança,mudar,estrada,rodovia"
+          "name": "Saída de autoestrada/via rápida"
         },
         "highway/motorway_link": {
           "name": "Ligação a autoestrada",
@@ -2937,6 +2942,10 @@
           "name": "Aquacultura",
           "terms": "algicultura,aquicultura,carcinicultura,malacocultura,maricultura,mitilicultura,ostreicultura,pectinicultura,piscicultura,ranicultura,viveiro de peixes"
         },
+        "landuse/aquaculture/fish": {
+          "name": "Viveiro de peixes",
+          "terms": "fish,peixe,piscicultura,perca,carpa,salmão,tilápia,truta"
+        },
         "landuse/basin": {
           "name": "Bacia hidrográfica"
         },
@@ -2958,10 +2967,6 @@
         "landuse/construction": {
           "name": "Área de construção",
           "terms": "obras,em curso,construir,reconstrução,renovações,renovação,construção civil,demolição"
-        },
-        "landuse/education": {
-          "name": "Complexo educativo",
-          "terms": "campus,escolas,educacional,educação,centro,área"
         },
         "landuse/farm": {
           "name": "Terreno agrícola"
@@ -3069,6 +3074,10 @@
         "landuse/military/training_area": {
           "name": "Área de testes militares",
           "terms": "local de ensaio militar,ensaios militares,local de testes militar,local de treino,soldados,tropas,forças armadas,tática,combate,guerra"
+        },
+        "landuse/olive_grove": {
+          "name": "Olival",
+          "terms": "olive,olivocultura,azeitonas,oliveiras"
         },
         "landuse/orchard": {
           "name": "Pomar",
@@ -3666,6 +3675,14 @@
         "man_made/carpet_hanger": {
           "name": "Estendal de tapetes",
           "terms": "rack,stand,tapete,carpete,tecido,lavagem,secar,secagem,pendurar"
+        },
+        "man_made/ceremonial_gate": {
+          "name": "Porta cerimonial",
+          "terms": "portas da cidade,portas da vila,porta da cidade,porta da vila,portão da cidade,portão da vila,portas,monumento"
+        },
+        "man_made/ceremonial_gate/paifang": {
+          "name": "Paifang",
+          "terms": "arco,portal,chinês,paifong,pailau,pailou,shanmen"
         },
         "man_made/ceremonial_gate/torii": {
           "name": "Torii",
@@ -4768,10 +4785,6 @@
           "name": "Túnel de brincar",
           "terms": "tubo"
         },
-        "playground/water": {
-          "name": "Parafuso de Arquimedes",
-          "terms": "água,broca,parafuso,lama"
-        },
         "playground/zipwire": {
           "name": "Corda suspensa",
           "terms": "brincar,recreio,exercício,brincadeira,suspenso"
@@ -5505,6 +5518,10 @@
           "name": "Sex shop LGBTQ+",
           "terms": "gay,lésbico,lésbica,lgbt,lgbtq,lgb,homosexual,homossexual,loja,eróticos,artigos eróticos"
         },
+        "shop/esoteric": {
+          "name": "Loja esotérica",
+          "terms": "esoterismo,misticismo,cristais,óleos essenciais,incenso,esoteric"
+        },
         "shop/fabric": {
           "name": "Loja de tecidos",
           "terms": "tecido,tecidos"
@@ -5698,6 +5715,10 @@
         "shop/mobile_phone": {
           "name": "Loja de telemóveis",
           "terms": "mobile phone,celular,telemóveis,telemóvel,smartphone"
+        },
+        "shop/mobile_phone_accessories": {
+          "name": "Loja de acessórios para telemóveis",
+          "terms": "mobile phone,celular,telemóveis,telemóvel,smartphone,cases,protective screens,batteries,ac adaptor,baterias,película,ecrã,carregadores,adaptadores"
         },
         "shop/model": {
           "name": "Loja de modelismo",
@@ -6098,7 +6119,7 @@
         },
         "tourism/information/office": {
           "name": "Posto de turismo",
-          "terms": "posto turístico,posto de informação,informações,centro de informações,turistas,visitantes,viajantes,recepção,receção"
+          "terms": "posto turístico,posto de informação,informações,centro de informações,turistas,visitantes,viajantes,recepção,receção,tourism,tourist"
         },
         "tourism/information/route_marker": {
           "name": "Marco de trilho pedestre",
@@ -6107,6 +6128,10 @@
         "tourism/information/terminal": {
           "name": "Painel informativo eletrónico",
           "terms": "information,terminal de informação,painel de informação eletrónico,painel de informação digital,painel de informação,painel digital,painel eletrónico,painel táctil,painel tátil,terminal de informação eletrónico"
+        },
+        "tourism/information/visitor_centre": {
+          "name": "Centro de interpretação",
+          "terms": "visitors center,visitors information center,welcome center,visitação,visitas,turismo,turistas,cultural,cultura,interpretar"
         },
         "tourism/motel": {
           "name": "Motel",
@@ -6218,6 +6243,9 @@
         "traffic_sign/variable_message": {
           "name": "Painel de mensagem variável",
           "terms": "painel de avisos,painel digital,painel de leds,leds,painel eletrónico,rodoviário,estrada,rodovia,alternado,alternável,aviso,informação,informações,acidentes,tempo"
+        },
+        "type/associatedStreet": {
+          "name": "Rua associada"
         },
         "type/boundary": {
           "name": "Fronteira",
@@ -6397,6 +6425,10 @@
         },
         "waterway": {
           "name": "Curso de água"
+        },
+        "waterway/access_point": {
+          "name": "Ponto de acesso a curso de água",
+          "terms": "access,barco,canoa,caiaque,kayak,rio,ribeiro,ribeira,lago,lagoa"
         },
         "waterway/boatyard": {
           "name": "Estaleiro",
