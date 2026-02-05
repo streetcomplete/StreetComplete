@@ -9,7 +9,7 @@ import de.westnordost.streetcomplete.quests.ARadioGroupQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import org.jetbrains.compose.resources.stringResource
 
-class AddBbqFuelForm : ARadioGroupQuestForm<BbqFuelAnswer, BbqFuel>() {
+class AddBbqFuelForm : ARadioGroupQuestForm<BbqFuel, BbqFuelAnswer>() {
     override val items = BbqFuel.entries
 
     @Composable override fun BoxScope.ItemContent(item: BbqFuel) {

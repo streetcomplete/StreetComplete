@@ -25,7 +25,7 @@ import de.westnordost.streetcomplete.ui.theme.titleLarge
 import de.westnordost.streetcomplete.ui.theme.titleSmall
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
-import org.jetbrains.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.Preview
 
 /** View that displays the user's quest answer counter */
 @Composable

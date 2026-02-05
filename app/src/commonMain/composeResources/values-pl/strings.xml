@@ -20,10 +20,7 @@
     <string name="quest_leave_new_note_yes">Dodaj notatkę</string>
     <string name="quest_leave_new_note_no">Ukryj</string>
     <string name="quest_streetName_title">Jaka jest nazwa tej drogi?</string>
-    <string name="quest_streetName_description">Tak jak napisane na znaku, skróty są rozwijane:</string>
     <string name="quest_streetName_answer_noName_confirmation_description">Czasami tablica z nazwą ulicy znajduje się tylko na jednym jej końcu. Zdarza się także, że boczne uliczki odchodzące od ulicy glównej nie są wyraźnie oznakowane. Zwykle każda ulica, przy której stoją budynki, ma jakąś nazwę, z wyjątkiem części wiosek.</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_description">Jeśli się da, nazwa powinna być podana w całości, bez skrótów. Wiele powszechnych skrótów jest rozwijanych automatycznie podczas pisania, ale nie wszystkie.</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">Nie użyto skrótów</string>
     <string name="quest_openingHours_start_time">otwarte od</string>
     <string name="quest_openingHours_end_time">do</string>
     <string name="quest_openingHours_add_months">Dodaj miesiące</string>
@@ -57,7 +54,6 @@
     <string name="version_banned_message">Ta wersja StreetComplete jest przestarzała! Zaktualizuj aplikację.</string>
     <string name="no_gps_no_quests">Aby automatycznie szukać zadań wokół ciebie, włącz lokalizację.</string>
     <string name="later">Później</string>
-    <string name="quest_streetName_answer_noProperStreet_link">Po prostu łączy dwie drogi</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">Inne (zostaw notatkę)</string>
     <string name="about_title_privacy_statement">Polityka prywatności</string>
     <string name="quest_openingHours_public_holidays">święta i dni wolne</string>
@@ -197,7 +193,6 @@ Jeśli na całej ulicy nie ma znaków dotyczących podświetlonej sekcji, obowi�
     <string name="quest_sport_roller_skating">Wrotkarstwo</string>
     <string name="quest_wheelchairAccess_limited_description_business">Częściowo oznacza, że trzeba pokonać co najwyżej jeden stopień, aby wejść i większość pomieszczeń w środku jest dostępna dla osób na wózku.</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">Częściowo oznacza, że trzeba pokonać co najwyżej jeden stopień, aby wejść.</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">Czy są skróty w nazwie  %1$s?</string>
     <string name="quest_recycling_type_title">Jakiego typu jest ten obiekt związany z odpadami?</string>
     <string name="recycling_centre">Punkt zbiórki</string>
     <string name="overground_recycling_container">Kontener</string>
@@ -324,10 +319,6 @@ W przeciwnym wypadku możesz ściągnąć dodatkowe aplikacje klawiatury ze skle
     <string name="quest_cycleway_answer_contraflow_cycleway">Również ścieżka rowerowa po drugiej stronie…</string>
     <string name="quest_openingHours_emptyAnswer">Opisz co jest na znaku. Jeśli nie ma znaku, zapytaj na miejscu o godziny otwarcia.</string>
     <string name="quest_cycleway_value_none_but_no_oneway">brak, ale rowerzyści mogą się poruszać na jezdni w obu kierunkach</string>
-    <string name="quest_streetName_answer_noName_question">Dlaczego ta droga nie ma nazwy?</string>
-    <string name="quest_streetName_answer_noProperStreet_service2">To coś w rodzaju podjazdu lub alejki parkingowej</string>
-    <string name="quest_streetName_answer_noProperStreet_track2">Jest to droga polna lub leśna</string>
-    <string name="quest_streetName_answer_noName_noname">Żadne z powyższych, po prostu nie ma nazwy</string>
     <string name="quest_wheelchairAccess_description_toilets">Znak z wózkiem inwalidzkim jak ten może być widoczny, jeśli toalety są przystosowane.
 Oznacza to, że osoba na wózku jest w stanie z niej skorzystać, ale nie ma poręczy lub umywalki na odpowiedniej wysokości.</string>
     <string name="map_btn_create_note">Utwórz nowe zgłoszenie o problemie</string>
@@ -536,7 +527,6 @@ Podzielić?</string>
     <string name="quest_recycling_type_glass_bottles">Szklane butelki i słoiki</string>
     <string name="quest_recycling_type_glass_bottles_short">Butelki i słoiki</string>
     <string name="quest_recycling_type_paper">Papier</string>
-    <string name="quest_recycling_type_plastic_generic">Plastik</string>
     <string name="quest_recycling_type_plastic">Jakikolwiek plastik</string>
     <string name="quest_recycling_type_shoes">Buty</string>
     <string name="quest_recycling_type_electric_appliances">Urządzenia elektryczne</string>
@@ -708,11 +698,10 @@ osiągnięć</string>
     <string name="resurvey_intervals_default">Domyślny</string>
     <string name="resurvey_intervals_more_often">Pytaj częściej</string>
     <string name="about_title_translate">Pomóż w tłumaczeniu</string>
-    <string name="about_description_translate">%1$s przetłumaczono w %2$d%%</string>
+    <string name="about_description_translate">%1$s przetłumaczono w %2$d%</string>
     <string name="quest_oneway2_title">Czy ta droga jest jednokierunkowa? W którą stronę?</string>
     <string name="quest_oneway2_dir">Jednokierunkowa w tę stronę</string>
     <string name="quest_oneway2_no_oneway">Jest dwukierunkowa</string>
-    <string name="quest_maxweight_select_sign">Wybierz znak</string>
     <string name="quest_steps_incline_title">W którą stronę wznoszą się te schody?</string>
     <string name="quest_steps_incline_up">W tę stronę</string>
     <string name="quest_step_count_title">Ile tu jest schodków?</string>
@@ -754,7 +743,6 @@ osiągnięć</string>
     <string name="quest_charging_station_capacity_title">Ile samochodów elektrycznych może się tu równocześnie ładować?</string>
     <string name="link_disaster_ninja_description">Mapa pokazująca niedawne klęski żywiołowe, interesujące dla osób wspomagających pomoc humanitarną przez tworzenie map. Pokazuje też statystyki jak wiele jest zmapowane w danym miejscu i jak bardzo aktualne są dane OSM. </string>
     <string name="quest_lanes_title">Ile pasów drogowych ma ta droga?</string>
-    <string name="quest_lanes_answer_lanes">Wyznaczone pasy</string>
     <string name="quest_lanes_answer_noLanes">Brak wyznaczonych pasów</string>
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">Ma pas dwukierunkowy do skrętu w lewo</string>
     <string name="quest_address_answer_no_housenumber_message2b">Czy jest to poprawne?</string>
@@ -767,8 +755,6 @@ osiągnięć</string>
     <string name="quest_kerb_height_lowered">Trochę wyżej niż nawierzchnia drogi</string>
     <string name="quest_kerb_height_raised">Wysoki krawężnik</string>
     <string name="quest_kerb_height_lowered_ramp">Krawężnik-podjazd</string>
-    <string name="quest_lanes_answer_lanes_description2">Podaj całkowitą liczbę oznaczonych pasów (w obu kierunkach), które mogą być wykorzystywane przez ruch samochodowy. Pasy dla rowerów i wydzielone pasy parkingowe się nie liczą.
-Jeśli jakieś pasy są zarezerwowane dla autobusów, utwórz notatkę.</string>
     <string name="quest_lanes_answer_lanes_description_one_side2">Określ liczbę oznaczonych pasów, na których mogą poruszać się samochody. Pasy dla rowerów i wydzielone pasy parkingowe się nie liczą.
 Jeśli jakieś pasy są zarezerwowane dla autobusów, utwórz notatkę.</string>
     <string name="quest_surface_value_rock">Kamień</string>
@@ -783,7 +769,6 @@ Jeśli jakieś pasy są zarezerwowane dla autobusów, utwórz notatkę.</string>
     <string name="quest_shop_gone_replaced_answer">To</string>
     <string name="quest_shop_gone_replaced_answer_hint">Wpisz jaki rodzaj obiektu jest teraz tutaj</string>
     <string name="quest_shop_vacant_type_title">Ten sklep został zlikwidowany. Co tu teraz jest?</string>
-    <string name="quest_lanes_answer_lanes_odd2">Liczba pasów nie jest ta sama po obu stronach</string>
     <string name="default_disabled_msg_go_inside_regional_warning">To zadanie jest domyślnie nieaktywne, ponieważ nie w każdym miejscu jest to przydatna informacja, a odpowiedź jest często niemożliwa bez wejścia do danego miejsca.</string>
     <string name="quest_dietType_explanation_kosher">Produkty koszerne są przygotowane według specjalnych zasad, z specjalnym proces certyfikacji potwierdzającego ich zachowanie.</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">Brak drogi rowerowej</string>
@@ -804,7 +789,6 @@ Zwróć uwagę na wszystkie opcje: nie wszystkie przypadki są oczywiste, na prz
     <string name="quest_postboxRoyalCypher_type_scottish_crown">Korona Szkocji</string>
     <string name="quest_buildingType_fire_station">Straż pożarna</string>
     <string name="quest_recycling_type_beverage_cartons">Tylko kartony po napojach</string>
-    <string name="quest_recycling_type_plastic_bottles_and_cartons">Tylko plastikowe butelki i kartony</string>
     <string name="team_mode">Tryb drużynowy</string>
     <string name="team_mode_exit">Wyjdź z trybu drużynowego</string>
     <string name="team_mode_description">W trybie drużynowym możesz podzielić się zadaniami z grupą osób i wspólnie pracować na jednym obszarze.</string>
@@ -933,7 +917,7 @@ Dane są odświeżane automatycznie po %1$s dniach a nieużyte kasowane automaty
     <string name="quest_barrier_bicycle_type_double">Szykana - barierka z każdej strony</string>
     <string name="quest_barrier_bicycle_type_multiple">Szykana - więcej niż dwie barierki</string>
     <string name="language_default">Domyślny urządzenia</string>
-    <string name="on_floor">na %1$s piętrze:</string>
+    <string name="on_floor">na %1$s piętrze</string>
     <string name="select_street_parking_orientation">Wybierz orientację na jezdnię:</string>
     <string name="select_street_parking_position">Wybierz pozycję:</string>
     <string name="select_street_parking_no">Czy jest tu jakiś znak lub oznaczenie drogowe?</string>
@@ -1161,7 +1145,6 @@ Zrób to samo dla drugiej strony, jeśli jest obecna.</string>
     <string name="quest_camp_type_tents_only">Tylko namioty</string>
     <string name="quest_camp_type_backcountry">Kemping bez udogodnień</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">Ta średnica wygląda nieprawdopodobnie, zwykle wynosi od %1$d do %2$d.</string>
-    <string name="quest_recycling_type_pet">Tylko PET</string>
     <string name="street_parking_street_width">Szerokość ulicy: %1$s</string>
     <string name="overlay_street_parking">Parkowanie na ulicy</string>
     <string name="link_ohsomehex_description">Przeglądaj dane OSM w różnych skalach, od dużego obrazu po pojedyncze obiekty w przestrzeni i czasie</string>
@@ -1462,4 +1445,15 @@ Poziom liczy się jako poziom dachu, gdy jego okna znajdują się w dachu, w zwi
     <string name="quest_tracktype_grade3">Droga częściowo utwardzona</string>
     <string name="quest_housenumber_multiple_numbers_description2">Nie możesz wprowadzić numeru domu z przecinkiem. \n Na przykład 1,3 lub 2b, 4,6</string>
     <string name="quest_drinking_water_potable_unsigned2">Brak znaku</string>
+    <string name="or">albo</string>
+    <string name="action_copy">Kopiuj</string>
+    <string name="quest_stopName_hint">Możesz zaaplikować tę samą nazwę dla innego przystanku klikając na niego na mapie.</string>
+    <string name="quest_shelter_capacity_title">Ile osób może tu spać?</string>
+    <string name="quest_handwashing_title">Czy możesz tu umyć ręce?</string>
+    <string name="quest_openingHours_delete">Usuń</string>
+    <string name="quest_streetName_hint">Możesz zaaplikować tę samą nazwę dla innej sekcji klikając ją na mapie.</string>
+    <string name="quest_streetName_abbreviation_instruction">Skróty jak "ul." powinny być rozwinięte.</string>
+    <string name="quest_streetName_add_language">Dodaj język</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Anuluj</string>
 </resources>

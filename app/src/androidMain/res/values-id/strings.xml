@@ -20,10 +20,7 @@
     <string name="quest_leave_new_note_yes">"Tinggalkan catatan"</string>
     <string name="quest_leave_new_note_no">"Sembunyikan"</string>
     <string name="quest_streetName_title">"Apa nama jalan ini?"</string>
-    <string name="quest_streetName_description">"Seperti yang tertulis di rambu jalan, singkatan dipanjangkan:"</string>
     <string name="quest_streetName_answer_noName_confirmation_description">"Terkadang rambu nama jalan hanya ada di salah satu ujung jalan. Perhatikan bahwa mungkin tidak ada rambu jalan tambahan untuk jalan-jalan kecil dari jalan yang lebih besar. Biasanya, setiap jalan yang ada rumah memiliki nama."</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"Jika nama dapat dieja tanpa singkatan, maka tidak perlu disingkat. Banyak singkatan umum dipanjangkan secara otomatis saat kamu mengetik, tapi mungkin tidak semuanya."</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"Tak ada singkatan"</string>
     <string name="quest_openingHours_start_time">"jam buka"</string>
     <string name="quest_openingHours_end_time">"jam tutup"</string>
     <string name="quest_openingHours_add_months">"Tambahkan bulan"</string>
@@ -57,7 +54,6 @@
     <string name="version_banned_message">"Versi StreetComplete terlalu tua. Harap memperbarui!"</string>
     <string name="no_gps_no_quests">"Untuk mengunduh data sekitar secara otomatis, aktifkan lokasi"</string>
     <string name="later">"Nanti"</string>
-    <string name="quest_streetName_answer_noProperStreet_link">"Ini hanya penghubung dua jalan"</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">"Lainnya (tinggalkan catatan)"</string>
     <string name="about_title_privacy_statement">"Privasi"</string>
     <string name="quest_openingHours_public_holidays">"Hari libur nasional"</string>
@@ -197,7 +193,6 @@ Jika tidak ada tanda di sepanjang jalan yang berlaku untuk bagian yang disorot, 
     <string name="quest_sport_roller_skating">"Sepatu roda"</string>
     <string name="quest_wheelchairAccess_limited_description_business">"Sebagian berarti tidak ada lebih dari satu anak tangga untuk mengakses tempat dan kebanyakan ruangan di dalam ramah kursi roda."</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">"Sebagian berarti tidak ada lebih dari satu anak tangga untuk mengakses"</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"Singkatan %s di nama?"</string>
     <string name="quest_recycling_type_title">"Apa jenis fasilitas daur ulang ini?"</string>
     <string name="recycling_centre">"Pusat"</string>
     <string name="overground_recycling_container">"Wadah"</string>
@@ -324,10 +319,6 @@ Jika tidak, kamu dapat mengunduh papan ketik lain di app store. Papan ketik popu
     <string name="quest_cycleway_answer_contraflow_cycleway">"Jalur sepeda di sisi lain juga…"</string>
     <string name="quest_openingHours_emptyAnswer">"Kamu perlu menjelaskan apa yang ada di tanda. Jika tidak ada tanda, kamu harus bertanya jam bukanya ke dalam."</string>
     <string name="quest_cycleway_value_none_but_no_oneway">"tidak ada, tetapi pesepeda boleh menggunakan jalan di dua arah"</string>
-    <string name="quest_streetName_answer_noName_question">"Mengapa tidak ada namanya?"</string>
-    <string name="quest_streetName_answer_noProperStreet_service2">"Ini semacam jalan akses atau jalan parkir"</string>
-    <string name="quest_streetName_answer_noProperStreet_track2">"Ini jalan agrikultural atau jalan hutan"</string>
-    <string name="quest_streetName_answer_noName_noname">"Bukan semuanya, hanya tidak ada namanya"</string>
     <string name="quest_wheelchairAccess_description_toilets">"Tanda kursi roda seperti ini mungkin terlihat apabila toilet dapat diakses.
 Sebagian berarti kursi roda dapat masuk dan menggunakannya, tapi tidak ada pegangan tangan atau cuci tangan khusus."</string>
     <string name="map_btn_create_note">"Buat catatan baru"</string>
@@ -536,7 +527,6 @@ Pisah sekarang?"</string>
     <string name="quest_recycling_type_glass_bottles">"Botol kaca dan toples"</string>
     <string name="quest_recycling_type_glass_bottles_short">"Botol dan toples"</string>
     <string name="quest_recycling_type_paper">"Kertas"</string>
-    <string name="quest_recycling_type_plastic_generic">"Plastik"</string>
     <string name="quest_recycling_type_plastic">"Plastik apa saja"</string>
     <string name="quest_recycling_type_shoes">"Sepatu"</string>
     <string name="quest_recycling_type_electric_appliances">"Alat elektronik"</string>
@@ -582,8 +572,8 @@ Jangan lupa hati-hati: Sadar terhadap lingkungan sekitar dan jangan masuk proper
     <string name="achievements_empty">"Kamu belum punya pencapaian"</string>
     <string name="links_empty">"Kamu belum ada link"</string>
     <string name="quests_empty">"Kamu belum mengedit apa pun"</string>
-    <string name="unsynced_quests_description">"tambah %d perubahan yang belum diterbitkan"</string>
-    <string name="unsynced_quests_not_logged_in_description">"Kamu belum mengunggah %d perubahan. Kamu perlu masuk untuk mengunggahnya"</string>
+    <string name="unsynced_quests_description">"tambah %1$d perubahan yang belum diterbitkan"</string>
+    <string name="unsynced_quests_not_logged_in_description">"Kamu belum mengunggah %1$d perubahan. Kamu perlu masuk untuk mengunggahnya"</string>
     <string name="user_quests_title">"Edit"</string>
     <string name="user_achievements_title">"Pencapaian"</string>
     <string name="user_links_title">"Koleksi Link"</string>
@@ -656,7 +646,7 @@ Data ini tidak hanya berguna untuk pengirim pos tapi juga untuk sistem navigasi 
     <string name="achievement_veg_solved_X">"Kamu telah menyelesaikan %d misi yang berguna untuk orang yang melakukan diet tanpa daging!"</string>
     <string name="achievement_car_title">"Di Jalan"</string>
     <string name="achievement_car_solved_X">"Kamu telah menyelesaikan %d misi yang menyempurnakan detail infrastruktur jalan, menambah \"street\" (jalan) ke OpenStreetMap!"</string>
-    <string name="unread_messages_message">"Kamu memiliki %d pesan tak terbaca di inbox"</string>
+    <string name="unread_messages_message">"Kamu memiliki %1$d pesan tak terbaca di inbox"</string>
     <string name="unread_messages_button">"Buka Inbox"</string>
     <string name="action_about2">"Tentang"</string>
     <string name="map_btn_menu">"Menu"</string>
@@ -705,11 +695,10 @@ Data ini tidak hanya berguna untuk pengirim pos tapi juga untuk sistem navigasi 
     <string name="resurvey_intervals_default">"Default"</string>
     <string name="resurvey_intervals_more_often">"Tanyakan lebih sering"</string>
     <string name="about_title_translate">"Bantu menerjemahkan aplikasi ini"</string>
-    <string name="about_description_translate">"%1$s telah diterjemahkan %2$d%%"</string>
+    <string name="about_description_translate">"%1$s telah diterjemahkan %2$d%"</string>
     <string name="quest_oneway2_title">"Apakah jalan ini satu arah? Ke arah mana?"</string>
     <string name="quest_oneway2_dir">"Satu arah di jalan ini"</string>
     <string name="quest_oneway2_no_oneway">"Bukan satu-arah"</string>
-    <string name="quest_maxweight_select_sign">"Pilih tanda"</string>
     <string name="quest_steps_incline_title">"Arah mana yang naik ke atas pada tangga ini?"</string>
     <string name="quest_steps_incline_up">"Ini arah ke atas"</string>
     <string name="quest_step_count_title">"Ada berapa anak tangga di sini?"</string>
@@ -751,7 +740,6 @@ Data ini tidak hanya berguna untuk pengirim pos tapi juga untuk sistem navigasi 
     <string name="quest_charging_station_capacity_title">"Berapa mobil yang dapat diisi dayanya pada waktu yang sama?"</string>
     <string name="link_disaster_ninja_description">"Peta yang menunjukkan bencana alam baru-baru ini, menarik bagi para pembuat peta kemanusiaan. Juga, tunjukkan banyak statistik menarik untuk menganalisis seberapa baik tempat yang dipetakan dan terkini."</string>
     <string name="quest_lanes_title">"Ada berapa lajur mobil pada jalan ini?"</string>
-    <string name="quest_lanes_answer_lanes">"Lajur tertanda"</string>
     <string name="quest_lanes_answer_noLanes">"Jalur tak ditandai"</string>
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">"Ada lajur belok kiri dua arah"</string>
     <string name="quest_address_answer_no_housenumber_message2b">"Apakah ini benar?"</string>
@@ -764,8 +752,6 @@ Jika tidak sama sepanjang jalan yang disorot, silakan jawab “%s”."</string>
     <string name="quest_kerb_height_lowered">"Sedikit lebih tinggi daripada permukaan jalan"</string>
     <string name="quest_kerb_height_raised">"Trotoar tinggi"</string>
     <string name="quest_kerb_height_lowered_ramp">"Rampa trotoar"</string>
-    <string name="quest_lanes_answer_lanes_description2">"Tentukan jumlah lajur yang tertanda untuk lalu lintas mobil (pada kedua arah). Lajur sepeda dan lajur khusus parkir tidak termasuk.
-Jika ada lajur yang digunakan khusus untuk bus, harap tinggalkan catatan saja."</string>
     <string name="quest_lanes_answer_lanes_description_one_side2">"Tentukan jumlah lajur yang tertanda untuk lalu lintas mobil di sini. Lajur sepeda dan lajur khusus parkir tidak termasuk.
 Jika ada lajur yang digunakan khusus untuk bus, harap meninggalkan catatan saja."</string>
     <string name="quest_surface_value_rock">"Batu"</string>
@@ -780,7 +766,6 @@ Jika ada lajur yang digunakan khusus untuk bus, harap meninggalkan catatan saja.
     <string name="quest_shop_gone_replaced_answer">"Sebuah…"</string>
     <string name="quest_shop_gone_replaced_answer_hint">"Ketik jenis tempat di sini"</string>
     <string name="quest_shop_vacant_type_title">"Toko ini sudah lama kosong. Ada apa di sini sekarang?"</string>
-    <string name="quest_lanes_answer_lanes_odd2">"Setiap sisi memiliki jumlah lajur yang berbeda"</string>
     <string name="default_disabled_msg_go_inside_regional_warning">"Jenis misi ini nonaktif secara bawaan karena tidak berguna di beberapa wilayah dan kamu mungkin harus masuk ke tempat tersebut untuk dapat menjawab misi jenis ini."</string>
     <string name="quest_dietType_explanation_kosher">"Produk kosher harus disiapkan sesuai peraturan khusus, dengan persetujuan dari agensi sertifikasi kashrut."</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">"Tidak ada lajur atau jalur sepeda sama sekali"</string>
@@ -801,7 +786,6 @@ Lihat semua opsi yang tersedia: beberapa kasus tidak terlihat jelas, seperti jal
     <string name="quest_postboxRoyalCypher_type_scottish_crown">"Mahkota Skotlandia"</string>
     <string name="quest_buildingType_fire_station">"Stasiun damkar"</string>
     <string name="quest_recycling_type_beverage_cartons">"Hanya karton minuman"</string>
-    <string name="quest_recycling_type_plastic_bottles_and_cartons">"Hanya botol plastik dan karton"</string>
     <string name="team_mode">"Masuk ke Mode Kelompok"</string>
     <string name="team_mode_exit">"Tinggalkan Mode Kelompok"</string>
     <string name="team_mode_description">"Ketika memetakan daerah yang sama bersama-sama dalam sebuah kelompok, kamu bisa masuk ke mode kelompok untuk membagi pencarian ke semua anggota kelompok. Masing-masing akan melihat misi yang berbeda."</string>
@@ -929,7 +913,7 @@ Data disegarkan setelah %1$s hari dan data yang tidak digunakan dihapus setelah 
     <string name="quest_barrier_bicycle_type_double">"Chicane - penghalang di setiap sisi"</string>
     <string name="quest_barrier_bicycle_type_multiple">"Chicane - lebih dari dua penghalang"</string>
     <string name="language_default">"Default Sistem"</string>
-    <string name="on_floor">"pada lantai %s"</string>
+    <string name="on_floor">"pada lantai %1$s"</string>
     <string name="select_street_parking_orientation">"Pilih arah menuju jalan:"</string>
     <string name="select_street_parking_position">"Pilih posisi:"</string>
     <string name="select_street_parking_no">"Apakah ada rambu atau tanda pada jalan di sini?"</string>
@@ -1156,8 +1140,7 @@ Sebagai alternatif, kamu bisa menambahkan catatan (dengan foto)."</string>
     <string name="quest_camp_type_tents_only">"Hanya tenda"</string>
     <string name="quest_camp_type_backcountry">"Berkemah di pedalaman (tidak ada fasilitas)"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Diameter ini terlihat tidak mungkin, biasanya antara %1$d hingga %2$d."</string>
-    <string name="quest_recycling_type_pet">"Hanya PET"</string>
-    <string name="street_parking_street_width">"Lebar jalan: %s"</string>
+    <string name="street_parking_street_width">"Lebar jalan: %1$s"</string>
     <string name="overlay_street_parking">"Parkir jalanan"</string>
     <string name="link_ohsomehex_description">"Jelajahi data OSM lintas skala dari gambaran besar hingga objek individual melintasi ruang dan waktu"</string>
     <string name="link_opencampingmap_description">"Peta tempat perkemahan"</string>
@@ -1204,7 +1187,7 @@ Sebagai alternatif, kamu bisa menambahkan catatan (dengan foto)."</string>
     <string name="user_profile_current_week_title">"7 hari terakhir"</string>
     <string name="user_profile_dates_mapped">"Hari kamu menyunting peta baru-baru ini"</string>
     <string name="quest_cycleway_value_advisory_lane">"lajur sepeda anjuran"</string>
-    <string name="urlconfig_scan_qr_code_again2">"Setelah memasang aplikasi, pindai kode QR lagi atau klik &lt;a href=\"%s\"&gt;tautan ini&lt;/a&gt; untuk menerapkan preset."</string>
+    <string name="urlconfig_scan_qr_code_again2">"Setelah memasang aplikasi, pindai kode QR lagi atau klik &lt;a href=\"%1$s\"&gt;tautan ini&lt;/a&gt; untuk menerapkan preset."</string>
     <string name="confirmation_replace_shop_title">"Apakah ini tempat yang berbeda sekarang?"</string>
     <string name="confirmation_replace_shop_message">"Dalam hal ini, jam buka, informasi kontak, dll. juga akan berubah."</string>
     <string name="confirmation_replace_shop_yes">"Different place now"</string>
@@ -1213,7 +1196,7 @@ Sebagai alternatif, kamu bisa menambahkan catatan (dengan foto)."</string>
     <string name="quest_move_node_message">"Kamu dapat memperbaiki posisinya dengan memindahkannya. Pindahkan sekarang?"</string>
     <string name="node_moved_not_far_enough">"Pindahkan lebih jauh"</string>
     <string name="node_moved_too_far">"Pindahnya terlalu jauh. Coba tinggalkan catatan saja"</string>
-    <string name="node_moved">"Dipindah sejauh %s"</string>
+    <string name="node_moved">"Dipindah sejauh %1$s"</string>
     <string name="move_node_description">"Geser peta untuk menempatkan fitur pada posisi yang benar. Gunakan fungsi zoom dan usahakan untuk seakurat mungkin. Perlu diketahui bahwa lokasi kamu yang ditampilkan tidak seakurat kelihatannya."</string>
     <string name="move_node_action_description">"Kamu memindahkan titik"</string>
     <string name="quest_cycleway_value_shoulder">"tidak ada, tetapi bahu jalan bisa digunakan oleh pesepeda"</string>
@@ -1253,6 +1236,8 @@ Sebagai alternatif, kamu bisa menambahkan catatan (dengan foto)."</string>
     <string name="overlay_surface">"Permukaan"</string>
     <string name="overlay_path_surface_segregated">"Dibagi menjadi bagian bersepeda dan berjalan kaki"</string>
     <string name="quest_crossing_title2">"Apakah ada penyeberangan di sini?"</string>
+    <string name="quest_crossing_yes">"Ya, diniatkan sebagai penyebrangan"</string>
+    <string name="quest_crossing_no">"Tidak diniatkan sebagai penyebrangan, tetapi bisa digunakan untuk menyebrang (jalur tidak resmi)"</string>
     <string name="quest_crossing_prohibited">"Tidak, penyeberangan dilarang atau tidak mungkin"</string>
     <string name="quest_hairdresser_title">"Siapa yang bisa mengunjungi penata rambut ini?"</string>
     <string name="quest_hairdresser_male_and_female">"Siapa saja"</string>
@@ -1308,7 +1293,7 @@ Selain itu, beberapa overlay memungkinkan kamu untuk menambahkan data baru pada 
     <string name="label_log_older_than">"Sampai"</string>
     <string name="label_log_message_contains">"Pesan berisi"</string>
     <string name="title_logs_filters">"Filter Pesan"</string>
-    <string name="pref_title_quests_restore_hidden_summary">"Jumlah misi tersembunyi: %d"</string>
+    <string name="pref_title_quests_restore_hidden_summary">"Jumlah misi tersembunyi: %1$d"</string>
     <string name="link_every_door_description">"Editor POI yang tangguh untuk Android dan iOS"</string>
     <string name="link_mapcomplete_description">"Koleksi peta OSM tematik yang masing-masing ditampilkan dan memungkinkan kamu mengedit satu jenis fitur"</string>
     <string name="link_forum_description">"Butuh bantuan? Ingin tahu apa yang sedang terjadi? Datang dan berbaurlah, tempat ini ramai dengan aktivitas dari berbagai komunitas di seluruh dunia!"</string>
@@ -1379,19 +1364,61 @@ Level dihitung sebagai level atap jika jendelanya berada di atap. Selanjutnya, a
     <string name="quest_camp_power_supply_hint">"Ini bisa berupa stopkontak langsung di tempat perkemahan, stopkontak di gedung layanan yang dapat diakses oleh tamu, stasiun pengisian daya khusus untuk ponsel, laptop, dll."</string>
     <string name="quest_barrier_opening_width_bollard">"Berapa celah terlebar yang dapat dilewati di sini?"</string>
     <string name="user_profile_all_time_title">"Keseluruhan"</string>
-    <string name="user_statistics_country_rank2">"Peringkat dalam %s"</string>
+    <string name="user_statistics_country_rank2">"Peringkat dalam %1$s"</string>
     <string name="quest_leafType_tree_is_just_a_stump">"Itu hanya tunggul pohon"</string>
     <string name="quest_board_name_title">"Apa judul papan informasi ini?"</string>
+    <string name="quest_crossing_hint">"Sebuah jalur penyebrangan jalan yang tidak resmi"</string>
     <string name="note_for_object">"Orang lain menulis catatan:"</string>
     <string name="quest_cycleway_value_sidewalk_ok_dual">"tidak ada, tetapi rambu mengizinkan bersepeda di trotoar, kedua arah"</string>
+    <string name="quest_surface_value_acrylic">"Resin sintetik"</string>
+    <string name="action_messages">"Tunjukkan pesan-pesan"</string>
     <string name="action_create_new_poi">"Buat baru"</string>
     <string name="auth_error">"Kesalahan autorisasi. Coba masuk akun lagi."</string>
     <string name="quest_accessible_for_pedestrians_sidewalk">"Sebenarnya, ada trotoar."</string>
     <string name="quest_bicycle_repair_station_services_title">"Apa peralatan sepeda yang tersedia di sini?"</string>
     <string name="quest_bicycle_repair_station_pump">"Pompa"</string>
+    <string name="quest_bicycle_repair_station_tools">"Beragam alat"</string>
     <string name="quest_boat_rental_title">"Perahu jenis apa yang disewakan di sini?"</string>
+    <string name="quest_boat_rental_jetski">"Jetski"</string>
+    <string name="quest_boat_rental_kayak">"Perahu kayak"</string>
+    <string name="quest_boat_rental_canoe">"Kano"</string>
+    <string name="quest_boat_rental_raft">"Rakit"</string>
+    <string name="quest_boat_rental_yacht">"Kapal layar"</string>
+    <string name="quest_powerAttachment_title">"Bagaimana kabel listrik ini digantungkan?"</string>
+    <string name="quest_powerAttachment_suspension">"Digantung dari atas"</string>
+    <string name="quest_powerAttachment_anchor">"Diletakkan secara horizontal dan permanen"</string>
+    <string name="quest_powerAttachment_pin">"Disokong dari bawah"</string>
     <string name="pedestrian_zone_designated">"Dikhususkan untuk bersepeda di sini"</string>
     <string name="pedestrian_zone_allowed_sign">"Rambu mengizinkan bersepeda di sini"</string>
     <string name="pedestrian_zone_no_sign">"Tidak ada rambu khusus mengenai bersepeda di sini"</string>
     <string name="team_mode_description_overlay_hint">"Jika menggunakan overlay, masing-masing harus menggunakan yang berbeda, karena hanya misi yang terbagi."</string>
+    <string name="quest_dietType_glutenfree_name_title">"Apakah produk bebas gluten ditawarkan di sini?"</string>
+    <string name="quest_dietType_explanation_glutenfree">"Mempersiapkan produk-produk bebas gluten memerlukan pengetahuan karena bumbu dan saus yang umum digunakan mungkin bisa mengandung gluten. Makanan bebas gluten akan dilabeli secara eksplisit."</string>
+    <string name="quest_construction_minor_title">"Apakah pengerjaan jalan minor di sini sudah selesai?"</string>
+    <string name="map_attribution">"Atribusi peta"</string>
+    <string name="link_panoramax_description">"Sebuah perangkat lunak gratis dan sumber terbuka serta layanan nirlaba untuk membagikan foto secara urun daya hingga tingkat jalan"</string>
+    <string name="link_opengeofiction_description">"Capek memetakan kenyataan? Mari berkolaborasi membuat peta fiksi!"</string>
+    <string name="link_openclimbing_description">"Peta lokasi memanjat"</string>
+    <string name="pref_title_zoom_buttons">"Tunjukkan tombol perbesar/perkecil peta"</string>
+    <string name="overlay_mtb_scale">"Tingkat kesulitan MTB (Mountain Bike/Sepeda gunung)"</string>
+    <string name="overlay_mtb_scale_0">"Tingkat 0"</string>
+    <string name="overlay_mtb_scale_1">"Tingkat 1"</string>
+    <string name="overlay_mtb_scale_2">"Tingkat 2"</string>
+    <string name="overlay_mtb_scale_3">"Tingkat 3"</string>
+    <string name="overlay_mtb_scale_4">"Tingkat 4"</string>
+    <string name="overlay_mtb_scale_5">"Tingkat 5"</string>
+    <string name="overlay_mtb_scale_6">"Tingkat 6"</string>
+    <string name="overlay_mtb_scale_6_description">"Berbahaya dan tidak dapat dilalui, tidak cocok untuk bersepeda gunung."</string>
+    <string name="compass">"Kompas"</string>
+    <string name="quest_tracktype_grade2">"Umumnya padat"</string>
+    <string name="quest_tracktype_grade3">"Campuran"</string>
+    <string name="quest_drinking_water_potable_unsigned2">"Tidak ada tanda/rambu"</string>
+    <string name="or">"atau"</string>
+    <string name="action_copy">"Salin"</string>
+    <string name="quest_shelter_capacity_title">"Berapa orang yang dapat tidur di sini?"</string>
+    <string name="quest_handwashing_title">"Dapatkan kamu mencuci tangan di sini?"</string>
+    <string name="quest_openingHours_delete">"Hapus"</string>
+    <string name="quest_streetName_add_language">"Tambah bahasa baru"</string>
+    <string name="ok">"Oke"</string>
+    <string name="cancel">"Batal"</string>
 </resources>

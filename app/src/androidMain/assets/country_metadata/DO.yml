@@ -1,6 +1,7 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 atmOperators: [Banco Popular, BitcoinRD, Popular, Banreservas, BHD leon, BanReservas, BHD, Scotiabank, Banco BHD Leon, Banco de Reservas, Banco BHD León, Banco BHD, Banca Popular, BPD]
 centerLineStyle: yellow
+chargingStationOperators: [Evergo]
 defaultSpeedLimitHasUrbanOrRural: true
 mobileCountryCode: 370
 noParkingSignStyle: mutcd latin

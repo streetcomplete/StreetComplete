@@ -19,6 +19,7 @@ import de.westnordost.streetcomplete.quests.air_conditioning.AddAirConditioning
 import de.westnordost.streetcomplete.quests.air_pump.AddAirCompressor
 import de.westnordost.streetcomplete.quests.amenity_cover.AddAmenityCover
 import de.westnordost.streetcomplete.quests.amenity_indoor.AddIsAmenityIndoor
+import de.westnordost.streetcomplete.quests.artwork.AddArtworkType
 import de.westnordost.streetcomplete.quests.atm_cashin.AddAtmCashIn
 import de.westnordost.streetcomplete.quests.atm_operator.AddAtmOperator
 import de.westnordost.streetcomplete.quests.baby_changing_table.AddBabyChangingTable
@@ -60,8 +61,12 @@ import de.westnordost.streetcomplete.quests.camera_type.AddCameraType
 import de.westnordost.streetcomplete.quests.camping.AddCampDrinkingWater
 import de.westnordost.streetcomplete.quests.camping.AddCampPower
 import de.westnordost.streetcomplete.quests.camping.AddCampShower
-import de.westnordost.streetcomplete.quests.camping.AddCampType
+import de.westnordost.streetcomplete.quests.camping.AddTents
+import de.westnordost.streetcomplete.quests.camping.AddCabins
+import de.westnordost.streetcomplete.quests.camping.AddCaravans
 import de.westnordost.streetcomplete.quests.car_wash_type.AddCarWashType
+import de.westnordost.streetcomplete.quests.charging_station_bicycles.AddChargingStationBicycles
+import de.westnordost.streetcomplete.quests.charging_station_capacity.AddChargingStationBicycleCapacity
 import de.westnordost.streetcomplete.quests.charging_station_capacity.AddChargingStationCapacity
 import de.westnordost.streetcomplete.quests.charging_station_operator.AddChargingStationOperator
 import de.westnordost.streetcomplete.quests.clothing_bin_operator.AddClothingBinOperator
@@ -88,8 +93,8 @@ import de.westnordost.streetcomplete.quests.fire_hydrant.AddFireHydrantType
 import de.westnordost.streetcomplete.quests.fire_hydrant_diameter.AddFireHydrantDiameter
 import de.westnordost.streetcomplete.quests.fire_hydrant_position.AddFireHydrantPosition
 import de.westnordost.streetcomplete.quests.fire_hydrant_ref.AddFireHydrantRef
-import de.westnordost.streetcomplete.quests.first_aid_kit.AddFirstAidKitLocation
 import de.westnordost.streetcomplete.quests.firewood.AddFirewood
+import de.westnordost.streetcomplete.quests.first_aid_kit.AddFirstAidKitLocation
 import de.westnordost.streetcomplete.quests.foot.AddProhibitedForPedestrians
 import de.westnordost.streetcomplete.quests.fuel_service.AddFuelSelfService
 import de.westnordost.streetcomplete.quests.general_fee.AddGeneralFee
@@ -117,6 +122,7 @@ import de.westnordost.streetcomplete.quests.motorcycle_parking_capacity.AddMotor
 import de.westnordost.streetcomplete.quests.motorcycle_parking_cover.AddMotorcycleParkingCover
 import de.westnordost.streetcomplete.quests.note_discussion.OsmNoteQuestType
 import de.westnordost.streetcomplete.quests.oneway.AddOneway
+import de.westnordost.streetcomplete.quests.oneway.AddOnewayAerialway
 import de.westnordost.streetcomplete.quests.opening_hours.AddOpeningHours
 import de.westnordost.streetcomplete.quests.opening_hours_signed.CheckOpeningHoursSigned
 import de.westnordost.streetcomplete.quests.orchard_produce.AddOrchardProduce
@@ -175,6 +181,7 @@ import de.westnordost.streetcomplete.quests.tactile_paving.AddTactilePavingSteps
 import de.westnordost.streetcomplete.quests.toilet_availability.AddToiletAvailability
 import de.westnordost.streetcomplete.quests.toilets_fee.AddToiletsFee
 import de.westnordost.streetcomplete.quests.tourism_information.AddInformationToTourism
+import de.westnordost.streetcomplete.quests.tower_access.AddTowerAccess
 import de.westnordost.streetcomplete.quests.tracktype.AddTracktype
 import de.westnordost.streetcomplete.quests.traffic_calming_type.AddTrafficCalmingType
 import de.westnordost.streetcomplete.quests.traffic_signals_button.AddTrafficSignalsButton
@@ -351,6 +358,8 @@ fun questTypeRegistry(
     49 to CheckExistence(getFeature),
     155 to AddGritBinSeasonal(),
 
+    187 to AddArtworkType(),
+
     50 to AddBoardType(),
     171 to AddBoardName(),
 
@@ -381,8 +390,8 @@ fun questTypeRegistry(
     67 to AddFireHydrantRef(),
 
     160 to AddBbqFuel(),
+    182 to AddTowerAccess(),
     185 to AddFirewood(),
-
     /* ↓ 2.solvable when right in front of it but takes longer to input --------------------- */
 
     // bike parking/rental: would be higher up if not for bike parking/rental capacity which is usually not solvable when moving past
@@ -416,7 +425,9 @@ fun questTypeRegistry(
 
     86 to AddClothingBinOperator(),
 
-    87 to AddChargingStationCapacity(),
+    186 to AddChargingStationBicycles(),
+    87 to AddChargingStationCapacity(),  // after question for bicycles because user has possibility to answer that it is only for bicycles
+    179 to AddChargingStationBicycleCapacity(),
     88 to AddChargingStationOperator(),
 
     // postboxes (collection times are further up, see comment)
@@ -445,8 +456,9 @@ fun questTypeRegistry(
     101 to AddFerryAccessPedestrian(),
     102 to AddFerryAccessMotorVehicle(),
 
-    //aerial way: usually visible from looking at the aerial way, but not always...
+    // aerial way: usually visible from looking at the aerial way, but not always...
     184 to AddAerialwayBicycleAccess(),
+    187 to AddOnewayAerialway(),
 
     103 to AddProhibitedForPedestrians(), // need to understand the pedestrian situation
 
@@ -479,7 +491,9 @@ fun questTypeRegistry(
     183 to AddFirstAidKitLocation(), // need to go inside in case it is inside (or gone)
 
     // inside camping sites
-    114 to AddCampType(),
+    114 to AddCaravans(),
+    188 to AddTents(),
+    189 to AddCabins(),
     115 to AddCampDrinkingWater(),
     116 to AddCampShower(),
     117 to AddCampPower(),

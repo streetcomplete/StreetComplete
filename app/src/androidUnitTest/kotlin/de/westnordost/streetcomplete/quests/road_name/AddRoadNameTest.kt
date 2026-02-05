@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.quests.road_name
 
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
 import de.westnordost.streetcomplete.osm.localized_name.LocalizedName
 import de.westnordost.streetcomplete.quests.answerAppliedTo
 import kotlin.test.Test
@@ -63,38 +62,6 @@ class AddRoadNameTest {
                 LocalizedName("en", "All-Too-Close")
             ), tags)
         )
-    }
-
-    @Test fun `apply is service road answer`() {
-        assertEquals(
-            setOf(
-                StringMapEntryModify("highway", tags.getValue("highway"), "service")
-            ),
-            questType.answerAppliedTo(RoadNameAnswer.IsServiceRoad, tags)
-        )
-    }
-
-    @Test fun `apply is service road answer with prior living street`() {
-        assertEquals(
-            setOf(StringMapEntryAdd("noname", "yes")),
-            questType.answerAppliedTo(RoadNameAnswer.IsServiceRoad, mapOf("highway" to "living_street"))
-        )
-    }
-
-    @Test fun `apply is track answer`() {
-        assertEquals(
-            setOf(StringMapEntryModify("highway", tags.getValue("highway"), "track")),
-            questType.answerAppliedTo(RoadNameAnswer.IsTrack, tags)
-        )
-    }
-
-    @Test fun `apply is link answer`() {
-        for (highway in sequenceOf("primary", "secondary", "tertiary")) {
-            assertEquals(
-                setOf(StringMapEntryModify("highway", highway, "${highway}_link")),
-                questType.answerAppliedTo(RoadNameAnswer.IsLinkRoad, mapOf("highway" to highway))
-            )
-        }
     }
 
     // convenience method

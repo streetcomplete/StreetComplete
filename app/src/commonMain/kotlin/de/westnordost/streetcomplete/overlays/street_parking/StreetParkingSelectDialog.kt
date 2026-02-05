@@ -117,11 +117,11 @@ fun StreetParkingSelectionDialog(
                             verticalAlignment = Alignment.CenterVertically,
                             modifier = Modifier.fillMaxWidth().defaultMinSize(minHeight = 48.dp)
                         ) {
-                            if (orientation != null) {
+                            if (orientation == null) {
+                                Text(stringResource(Res.string.select_street_parking_orientation))
+                            } else {
                                 IconButton(onClick = { parkingOrientation = null }) { BackIcon() }
                                 Text(stringResource(Res.string.select_street_parking_position))
-                            } else {
-                                Text(stringResource(Res.string.select_street_parking_orientation))
                             }
                         }
                     }
@@ -131,16 +131,16 @@ fun StreetParkingSelectionDialog(
                         .fadingVerticalScrollEdges(scrollState, 32.dp)
                         .verticalScroll(scrollState),
                     ) {
-                        if (orientation != null) {
+                        if (orientation == null) {
+                            StreetParkingSelectionSelectGrid(
+                                isUpsideDown = isUpsideDown,
+                                onSelect = ::selectStreetParkingSelection,
+                            )
+                        } else {
                             StreetParkingPositionSelectGrid(
                                 orientation = orientation,
                                 isUpsideDown = isUpsideDown,
                                 onSelect = ::select,
-                            )
-                        } else {
-                            StreetParkingSelectionSelectGrid(
-                                isUpsideDown = isUpsideDown,
-                                onSelect = ::selectStreetParkingSelection,
                             )
                         }
                     }

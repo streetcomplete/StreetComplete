@@ -13,6 +13,7 @@ import de.westnordost.streetcomplete.osm.surface.icon
 import de.westnordost.streetcomplete.osm.surface.title
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.sidewalk_illustration_yes
+import de.westnordost.streetcomplete.resources.floating_question
 import de.westnordost.streetcomplete.ui.common.dialogs.SimpleItemSelectDialog
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
 import de.westnordost.streetcomplete.ui.common.street_side_select.Side
@@ -50,6 +51,7 @@ import org.jetbrains.compose.resources.stringResource
         modifier = modifier,
         getFloatingPainter = { surface, side ->
             surface?.icon?.let { ClipCirclePainter(painterResource(it)) }
+                ?: painterResource(Res.drawable.floating_question)
         },
         lastPicked = lastPicked,
         isLeftSideVisible = isLeftSideVisible,

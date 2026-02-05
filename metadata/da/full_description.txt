@@ -1,5 +1,1 @@
-Gør OpenStreetMap bedre med StreetComplete!
-
-Denne app finder manglende kortdata i dit nærområde og viser dem på et kort som opgaver. Løs hver opgave ved at besøge stedet og svare på et enkelt spørgsmål for at opdatere kortet.
-
-De oplysninger, du indsender, tilføjes direkte til OpenStreetMap i dit navn, uden at du behøver at bruge en anden editor.
+Gør OpenStreetMap bedre med StreetComplete! Denne app finder manglende kortdata i dit nærområde og viser dem på et kort som opgaver. Løs hver opgave ved at besøge stedet og svare på et enkelt spørgsmål for at opdatere kortet. De oplysninger, du indsender, tilføjes direkte til OpenStreetMap i dit navn, uden at du behøver at bruge en anden editor.

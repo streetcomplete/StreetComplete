@@ -40,6 +40,7 @@ fun WeightInputMutcd(
                 onValueChange = onValueChange,
                 maxIntegerDigits = 6,
                 maxFractionDigits = 1,
+                isUnsigned = true,
                 modifier = Modifier.fillMaxWidth()
             )
         }
@@ -87,6 +88,7 @@ fun WeightInput(
                 onValueChange = onValueChange,
                 maxIntegerDigits = 3,
                 maxFractionDigits = 1,
+                isUnsigned = true,
                 modifier = Modifier.fillMaxWidth()
             )
         }

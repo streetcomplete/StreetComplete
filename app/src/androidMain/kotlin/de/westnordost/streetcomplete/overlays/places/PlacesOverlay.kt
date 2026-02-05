@@ -27,7 +27,6 @@ class PlacesOverlay(private val getFeature: (Element) -> Feature?) : Overlay, An
     override val wikiLink = "StreetComplete/Overlays#Places"
     override val achievements = listOf(EditTypeAchievement.CITIZEN)
     override val hidesQuestTypes = setOf(
-        AddPlaceName::class.simpleName!!,
         SpecifyShopType::class.simpleName!!,
         CheckShopType::class.simpleName!!
     )
@@ -40,7 +39,7 @@ class PlacesOverlay(private val getFeature: (Element) -> Feature?) : Overlay, An
             .map { element ->
                 // show disused places always with the icon for "disused shop" icon
                 val icon = getFeature(element)?.icon?.let { presetIconIndex[it] }
-                    ?: if (element.isDisusedPlace()) R.drawable.preset_fas_store_alt_slash else null
+                    ?: (if (element.isDisusedPlace()) R.drawable.preset_fas_store_alt_slash else null)
                     ?: R.drawable.preset_maki_shop
 
                 val label = getNameLabel(element.tags)

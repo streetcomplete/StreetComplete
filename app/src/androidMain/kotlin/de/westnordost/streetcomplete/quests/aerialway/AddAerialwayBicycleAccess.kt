@@ -1,17 +1,20 @@
 package de.westnordost.streetcomplete.quests.aerialway
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.RARE
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.quests.aerialway.AerialwayBicycleAccessAnswer.YES
-import de.westnordost.streetcomplete.quests.aerialway.AerialwayBicycleAccessAnswer.SUMMER
-import de.westnordost.streetcomplete.quests.aerialway.AerialwayBicycleAccessAnswer.NO_SIGN
 import de.westnordost.streetcomplete.quests.aerialway.AerialwayBicycleAccessAnswer.NO
-
+import de.westnordost.streetcomplete.quests.aerialway.AerialwayBicycleAccessAnswer.NO_SIGN
+import de.westnordost.streetcomplete.quests.aerialway.AerialwayBicycleAccessAnswer.SUMMER
+import de.westnordost.streetcomplete.quests.aerialway.AerialwayBicycleAccessAnswer.YES
 class AddAerialwayBicycleAccess : OsmFilterQuestType<AerialwayBicycleAccessAnswer>(), AndroidQuest {
 
     override val elementFilter = """
@@ -37,4 +40,9 @@ class AddAerialwayBicycleAccess : OsmFilterQuestType<AerialwayBicycleAccessAnswe
             NO_SIGN -> tags["aerialway:bicycle:signed"] = "no"
         }
     }
-}
+
+    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
+        getMapData().filter("""
+            nodes, ways with aerialway
+        """.toElementFilterExpression())
+    }

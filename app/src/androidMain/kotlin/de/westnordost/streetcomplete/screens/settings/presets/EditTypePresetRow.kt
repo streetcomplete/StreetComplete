@@ -30,7 +30,7 @@ import de.westnordost.streetcomplete.ui.common.MoreIcon
 import de.westnordost.streetcomplete.ui.common.dialogs.ConfirmationDialog
 import de.westnordost.streetcomplete.ui.common.dialogs.TextInputDialog
 import org.jetbrains.compose.resources.stringResource
-import org.jetbrains.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.Preview
 
 @Composable
 fun EditTypePresetRow(

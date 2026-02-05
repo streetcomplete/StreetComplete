@@ -18,6 +18,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.coerceAtMost
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.max
 import androidx.compose.ui.unit.min
 import de.westnordost.streetcomplete.ui.ktx.backgroundWithPadding
 
@@ -35,7 +36,8 @@ fun DialogContentWithIconLayout(
         val isLandscape = maxWidth > maxHeight
 
         // scale down icon to fit small devices
-        val iconSize = (min(maxWidth, maxHeight) * 0.67f).coerceAtMost(320.dp)
+        val biggestSize = max(maxWidth, maxHeight)
+        val iconSize = (biggestSize * 0.33f).coerceAtMost(320.dp)
 
         val backgroundPadding =
             if (isLandscape) PaddingValues(start = iconSize * 0.75f)

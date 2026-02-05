@@ -27,7 +27,7 @@ import de.westnordost.streetcomplete.resources.quest_select_hint
 import de.westnordost.streetcomplete.ui.ktx.minus
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
-import org.jetbrains.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.Preview
 
 /** A simple selector button to select from a couple of values.
  *

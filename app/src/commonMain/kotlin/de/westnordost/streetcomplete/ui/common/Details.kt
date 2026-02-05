@@ -27,7 +27,7 @@ import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.ic_arrow_drop_down_24
 import org.jetbrains.compose.resources.painterResource
-import org.jetbrains.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.Preview
 
 /** Like the HTML &lt;details&gt; element or a section controlled by
  *  [disclosure controls](https://developer.apple.com/design/human-interface-guidelines/disclosure-controls)

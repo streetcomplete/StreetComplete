@@ -9,7 +9,7 @@ import org.jetbrains.compose.resources.stringResource
 
 class AddStileTypeForm : AItemSelectQuestForm<StileTypeAnswer, StileTypeAnswer>() {
 
-    override val items: List<StileTypeAnswer> = StileType.entries + ConvertedStile.entries
+    override val items: List<StileTypeAnswer> = StileTypeAnswer.entries
     override val itemsPerRow = 2
     override val serializer = serializer<StileTypeAnswer>()
 

@@ -9,6 +9,7 @@ import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.applyReplacePlaceTo
+import de.westnordost.streetcomplete.osm.applyTo
 import de.westnordost.streetcomplete.osm.isPlaceOrDisusedPlace
 import de.westnordost.streetcomplete.osm.removeCheckDates
 import de.westnordost.streetcomplete.osm.removePlaceRelatedTags
@@ -55,7 +56,11 @@ class SpecifyShopType : OsmFilterQuestType<ShopTypeAnswer>(), AndroidQuest {
                 tags["disused:shop"] = shopTag ?: "yes"
             }
             is ShopType -> {
-                answer.feature.applyReplacePlaceTo(tags)
+                if (answer.isStillSamePlace) {
+                    answer.feature.applyTo(tags)
+                } else {
+                    answer.feature.applyReplacePlaceTo(tags)
+                }
             }
         }
     }

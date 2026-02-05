@@ -1,13 +1,13 @@
 File                      License / Source (if not given, follow link for license info)
 ===============================================================================
 
-boundaries.ser              ODbL-1.0        from https://josm.openstreetmap.de/browser/josm/trunk/data/boundaries.osm
+boundaries.ser              ODbL-1.0        from https://josm.openstreetmap.de/browser/josm/trunk/resources/data/boundaries.osm
                                             which is traced from the OpenStreetMap
 
 country_metadata/*.*        CC-0 1.0        from https://github.com/streetcomplete/countrymetadata
 
 map_theme/*.*               GPL-3.0-only    from https://github.com/streetcomplete/streetcomplete-mapstyle
 
-osmfeatures/brands/*.*      BSD-3-Clause    from https://github.com/osmlab/name-suggestion-index/tree/main/dist/presets
+osmfeatures/brands/*.*      BSD-3-Clause    from https://github.com/osmlab/name-suggestion-index/ downloaded at https://cdn.jsdelivr.net/npm/name-suggestion-index@latest/dist/presets/nsi-id-presets.min.json
 
 osmfeatures/default/*.*     ISC             from https://github.com/openstreetmap/id-tagging-schema/tree/main/dist

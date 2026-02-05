@@ -20,10 +20,7 @@
     <string name="quest_leave_new_note_yes">Nechať poznámku</string>
     <string name="quest_leave_new_note_no">Schovať</string>
     <string name="quest_streetName_title">Aký je názov tejto ulice?</string>
-    <string name="quest_streetName_description">ako je napísané na značke, skratky rozpísané:</string>
     <string name="quest_streetName_answer_noName_confirmation_description">Ceduľa s názvom ulice niekedy môžu byť iba na jednom konci ulice. Pamätajte, že bočné ulice patriace k väčšej ulici nemusia mať separátnu ceduľu s jej názovm. Ulice s domami sú obvykle pomenované.</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_description">Ak je možné napísať názov bez skratky, tak by mal byť rozpísany. Veľa bežných skratiek bude rozpísaných počas písania, ale asi nie všetky.</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">Neobsahuje skratku</string>
     <string name="quest_openingHours_start_time">čas otvorenia</string>
     <string name="quest_openingHours_end_time">čas zatvorenia</string>
     <string name="quest_openingHours_add_months">Pridať mesiace</string>
@@ -57,7 +54,6 @@
     <string name="version_banned_message">Táto verzia StreetComplete je príliš stará. Prosím aktualizujte aplikáciu!</string>
     <string name="no_gps_no_quests">Ak chcete hľadať úlohy vo vašom okolí automaticky, zapnite lokalizáciu</string>
     <string name="later">Neskôr</string>
-    <string name="quest_streetName_answer_noProperStreet_link">Iba spája dve cesty</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">Niečo iné (nechať poznámku)</string>
     <string name="about_title_privacy_statement">Vyhlásenie o ochrane súkromia</string>
     <string name="quest_openingHours_public_holidays">Sviatky</string>
@@ -196,7 +192,6 @@ Ak pozdĺž cesty nie je žiadna značka obmedzujúca rýchlosť na zvýraznenej
     <string name="quest_sport_roller_skating">Kolieskové korčuľovanie</string>
     <string name="quest_wheelchairAccess_limited_description_business">Čiastočne znamená, že pri vchode nie je väčší schod ako výška členku a väčšina izieb vo vnútri je bezbariérová.</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">Čiastočne znamená, že tu nie je väčší schod ako výška členku brániaci prístupu.</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">Je v názve %1$s skratka?</string>
     <string name="quest_recycling_type_title">Aký je toto typ recyklačného zariadenia?</string>
     <string name="recycling_centre">Zberný dvor</string>
     <string name="overground_recycling_container">Kontajner</string>
@@ -323,10 +318,6 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
     <string name="quest_cycleway_answer_contraflow_cycleway">Cyklocestička je aj na druhej strane…</string>
     <string name="quest_openingHours_emptyAnswer">Je potrebné aby ste opísali čo je na označení otváracích hodín. Ak tam nie je označenie, mali by ste sa opýtať vo vnútri.</string>
     <string name="quest_cycleway_value_none_but_no_oneway">žiadne, ale cyklisti môžu využívať cestu v oboch smeroch</string>
-    <string name="quest_streetName_answer_noName_question">Prečo nemá názov?</string>
-    <string name="quest_streetName_answer_noProperStreet_service2">Je to niečo ako príjazdová cesta alebo cesta po parkovisku</string>
-    <string name="quest_streetName_answer_noProperStreet_track2">Je to poľná alebo lesná cesta</string>
-    <string name="quest_streetName_answer_noName_noname">Žiadne z uvedených, jednoducho nemá názov</string>
     <string name="quest_wheelchairAccess_description_toilets">Ak sú toalety bezbariérové, malo by byť vidno značku podobnú tejto.
     Čiastočne znamená, že sa do toalety dá vojsť na vozíku a použiť ju, ale nemá držiaky alebo upravené umývadlo.</string>
     <string name="map_btn_create_note">Vytvoriť novú poznámku</string>
@@ -534,7 +525,6 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
     <string name="quest_recycling_type_glass_bottles">Sklo</string>
     <string name="quest_recycling_type_glass_bottles_short">Fľaše a tégliky</string>
     <string name="quest_recycling_type_paper">Papier</string>
-    <string name="quest_recycling_type_plastic_generic">Plasty</string>
     <string name="quest_recycling_type_plastic">Akékoľvek plasty</string>
     <string name="quest_recycling_type_shoes">Topánky</string>
     <string name="quest_recycling_type_electric_appliances">Elektrické zariadenia</string>
@@ -704,11 +694,10 @@ Pamätajte, že táto aplikácia sa pýta na súpisné číslo budovy až po ur�
     <string name="resurvey_intervals_default">Predvolené</string>
     <string name="resurvey_intervals_more_often">Pýtať sa častejšie</string>
     <string name="about_title_translate">Pomôžte preložiť túto aplikáciu</string>
-    <string name="about_description_translate">%1$s je preložené %2$d%%</string>
+    <string name="about_description_translate">%1$s je preložené %2$d%</string>
     <string name="quest_oneway2_title">Je toto jednosmerná ulica? V akom smere?</string>
     <string name="quest_oneway2_dir">Je jednosmerná v tomto smere</string>
     <string name="quest_oneway2_no_oneway">Nie je jednosmerná</string>
-    <string name="quest_maxweight_select_sign">Vyberte značku</string>
     <string name="quest_steps_incline_title">Ktorý smer vedie na týchto schodoch nahor?</string>
     <string name="quest_steps_incline_up">Toto je smer nahor</string>
     <string name="quest_step_count_title">Koľko je tu schodov</string>
@@ -750,7 +739,6 @@ Pamätajte, že táto aplikácia sa pýta na súpisné číslo budovy až po ur�
     <string name="quest_charging_station_capacity_title">Koľko vozidiel môže byť na tejto dobíjacej stanici naraz dobíjaných?</string>
     <string name="link_disaster_ninja_description">Mapa, ktorá zobrazuje aktuálne prírodné katastrofy, zaujímavá pre humanitárnych maperov. Ďalej sú tu zaujímavé štatistiky, podľa ktorých je možné analyzovať, ako sú miesta dobre zmapovaná a aktuálne.</string>
     <string name="quest_lanes_title">Koľko jazdných pruhov pre autá má táto cesta?</string>
-    <string name="quest_lanes_answer_lanes">Vyznačené pruhy</string>
     <string name="quest_lanes_answer_noLanes">Bez vyznačených pruhov</string>
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">Má obojsmerný pruh pre odbočenie vľavo</string>
     <string name="quest_address_answer_no_housenumber_message2b">Je to správne?</string>
@@ -762,7 +750,6 @@ Pamätajte, že táto aplikácia sa pýta na súpisné číslo budovy až po ur�
     <string name="quest_kerb_height_lowered">Trochu vyššie ako povrch cesty</string>
     <string name="quest_kerb_height_raised">Vysoký obrubník (ako schod)</string>
     <string name="quest_kerb_height_lowered_ramp">Obrubník s nájazdom</string>
-    <string name="quest_lanes_answer_lanes_description2">Určte celkový počet vyznačených jazdných pruhov (v oboch smeroch), na ktorých môžu jazdiť autá. Pruhy pre bicykle a parkovanie nepočítajte.</string>
     <string name="quest_lanes_answer_lanes_description_one_side2">Určite tu celkový počet vyznačených jazdných pruhov, na ktorých môžu jazdiť autá. Pruhy pre bicykle a parkovanie nepočítajte.</string>
     <string name="quest_surface_value_rock">Skala</string>
     <string name="quest_parkingType_street_side">Parkuje sa priamo vedľa cesty</string>
@@ -776,7 +763,6 @@ Pamätajte, že táto aplikácia sa pýta na súpisné číslo budovy až po ur�
     <string name="quest_shop_gone_replaced_answer">…</string>
     <string name="quest_shop_gone_replaced_answer_hint">Napíšte druh miesta/obchodu</string>
     <string name="quest_shop_vacant_type_title">Tento obchod bol prázdny. Čo tu je teraz?</string>
-    <string name="quest_lanes_answer_lanes_odd2">Počet pruhov je na každej strane iný</string>
     <string name="default_disabled_msg_go_inside_regional_warning">Tento typ úloh je v predvolenom nastavení zakázaný, pretože v niektorých regiónoch nemá použitie, a pretože pravdepodobne budete musieť na miesto vstúpiť, aby ste na otázku mohli odpovedať.</string>
     <string name="quest_dietType_explanation_kosher">Kóšer produkty sa musia pripravovať podľa osobitných pravidiel s označením kašrut od certifikačnej agentúry.</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">Nie je tu žiadna cyklotrasa</string>
@@ -797,7 +783,6 @@ Všimnite si všetkých možností: v niektorých prípadoch nemusí byť zrejm�
     <string name="quest_postboxRoyalCypher_type_scottish_crown">Škótska koruna</string>
     <string name="quest_buildingType_fire_station">Hasičská stanica</string>
     <string name="quest_recycling_type_beverage_cartons">Iba kartóny od nápojov</string>
-    <string name="quest_recycling_type_plastic_bottles_and_cartons">Iba plastové fľaše a kartóny</string>
     <string name="team_mode">Tímový režim</string>
     <string name="team_mode_exit">Ukončiť tímový režim</string>
     <string name="team_mode_description">Keď mapujete v skupine jednu oblasť, požite tímový režim a rozdeľte si úlohy.</string>
@@ -926,7 +911,7 @@ Všimnite si všetkých možností: v niektorých prípadoch nemusí byť zrejm�
     <string name="quest_barrier_bicycle_type_double">Šikana - prekážka na každej strane</string>
     <string name="quest_barrier_bicycle_type_multiple">Šikana - viac ako dve prekážky</string>
     <string name="language_default">Jazyk systému</string>
-    <string name="on_floor">na poschodí %1$s:</string>
+    <string name="on_floor">na poschodí %1$s</string>
     <string name="select_street_parking_orientation">Vyberte orientáciu vzhľadom na cestu:</string>
     <string name="select_street_parking_position">Vyberte pozíciu:</string>
     <string name="select_street_parking_no">Sú tu nejaké dopravné značky alebo značenie?</string>
@@ -1154,7 +1139,6 @@ To isté urobte pre druhú stranu, ak tu je.</string>
     <string name="quest_camp_type_tents_only">Iba stany</string>
     <string name="quest_camp_type_backcountry">Kempovanie v prírode (bez zázemia)</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">Tento priemer vyzerá nepravdepodobne, obvykle sa pohybuje medzi %1$d a %2$d.</string>
-    <string name="quest_recycling_type_pet">Len PET</string>
     <string name="street_parking_street_width">Šírka ulice: %1$s</string>
     <string name="overlay_street_parking">Parkovanie na ulici</string>
     <string name="link_ohsomehex_description">Preskúmajte údaje OSM v rôznych mierkach od veľkého celku až po jednotlivé objekty v priestore a čase</string>
@@ -1456,4 +1440,11 @@ Poschodie sa počíta ako strešné, ak má okna v streche. Podobne, strechy bez
     <string name="quest_housenumber_multiple_numbers_description2">Môžete zadať aj čísla domu oddelené čiarkami. Napríklad 1,3 alebo 2b,4,6.</string>
     <string name="quest_drinking_water_potable_unsigned2">Bez označenia</string>
     <string name="or">alebo</string>
+    <string name="action_copy">Skopírovať</string>
+    <string name="quest_shelter_capacity_title">Koľko ľudí tu môže spať?</string>
+    <string name="quest_handwashing_title">Môžte si tu umyť ruky?</string>
+    <string name="quest_openingHours_delete">Vymazať</string>
+    <string name="quest_streetName_add_language">Pridať jazyk</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Zrušiť</string>
 </resources>

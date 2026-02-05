@@ -60,6 +60,7 @@ import org.jetbrains.compose.resources.painterResource
             getFloatingPainter = getFloatingPainter,
             enabled = enabled,
             isLeftSideVisible = isLeftSideVisible,
+            isRightSideVisible = isRightSideVisible,
         )
 
         MiniCompass(
@@ -87,6 +88,7 @@ import org.jetbrains.compose.resources.painterResource
                     rotation = rotation,
                     modifier = Modifier.size(56.dp, 40.dp),
                     getFloatingPainter = getFloatingPainter,
+                    isLeftSideVisible = isLeftSideVisible,
                     isRightSideVisible = isRightSideVisible,
                 )
             }

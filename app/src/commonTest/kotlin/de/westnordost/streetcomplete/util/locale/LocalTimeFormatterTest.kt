@@ -13,19 +13,19 @@ class LocalTimeFormatterTest {
 
         assertEquals(
             "12:23",
-            LocalTimeFormatter(german, style = DateFormatStyle.Short).format(time)
+            LocalTimeFormatter(german, style = DateTimeFormatStyle.Short).format(time)
         )
         assertEquals(
             "12:23:40",
-            LocalTimeFormatter(german, style = DateFormatStyle.Medium).format(time)
+            LocalTimeFormatter(german, style = DateTimeFormatStyle.Medium).format(time)
         )
         assertEquals(
             "12:23:40 MEZ",
-            LocalTimeFormatter(german, timeZone = TimeZone.of("CET"), style = DateFormatStyle.Long).format(time)
+            LocalTimeFormatter(german, timeZone = TimeZone.of("CET"), style = DateTimeFormatStyle.Long).format(time)
         )
         assertEquals(
             "12:23:40 Mitteleuropäische Zeit",
-            LocalTimeFormatter(german, timeZone = TimeZone.of("CET"), style = DateFormatStyle.Full).format(time)
+            LocalTimeFormatter(german, timeZone = TimeZone.of("CET"), style = DateTimeFormatStyle.Full).format(time)
         )
     }
 }

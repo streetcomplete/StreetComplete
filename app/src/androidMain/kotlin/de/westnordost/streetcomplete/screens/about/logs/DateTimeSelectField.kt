@@ -15,7 +15,7 @@ import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.ic_calendar_month_24
 import de.westnordost.streetcomplete.ui.common.ClearIcon
 import de.westnordost.streetcomplete.util.ktx.now
-import de.westnordost.streetcomplete.util.locale.DateFormatStyle
+import de.westnordost.streetcomplete.util.locale.DateTimeFormatStyle
 import de.westnordost.streetcomplete.util.locale.LocalDateTimeFormatter
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.suspendCancellableCoroutine
@@ -34,8 +34,8 @@ fun DateTimeSelectField(
 ) {
     val scope = rememberCoroutineScope()
     val dateFormatter = LocalDateTimeFormatter(
-        dateStyle = DateFormatStyle.Medium,
-        timeStyle = DateFormatStyle.Short
+        dateStyle = DateTimeFormatStyle.Medium,
+        timeStyle = DateTimeFormatStyle.Short
     )
     val context = LocalContext.current
     OutlinedTextField(

@@ -26,6 +26,7 @@ import de.westnordost.streetcomplete.resources.cycleway_track
 import de.westnordost.streetcomplete.resources.cycleway_track_dual
 import de.westnordost.streetcomplete.resources.cycleway_track_dual_l
 import de.westnordost.streetcomplete.resources.cycleway_track_l
+import de.westnordost.streetcomplete.resources.floating_no
 import de.westnordost.streetcomplete.resources.floating_separate
 import de.westnordost.streetcomplete.resources.quest_cycleway_value_advisory_lane
 import de.westnordost.streetcomplete.resources.quest_cycleway_value_bus_lane
@@ -81,7 +82,9 @@ fun CyclewayAndDirection.getFloatingIcon(
     noEntrySignDrawable: DrawableResource
 ): DrawableResource? =
     when (cycleway) {
-        NONE ->     if (direction.isReverseOf(roadDirection)) noEntrySignDrawable else null
+        NONE ->
+            if (direction.isReverseOf(roadDirection)) noEntrySignDrawable
+            else Res.drawable.floating_no
         SEPARATE -> Res.drawable.floating_separate
         SIDEWALK_OK ->
             if (direction == BOTH) Res.drawable.cycleway_sign_sidewalk_ok_dual

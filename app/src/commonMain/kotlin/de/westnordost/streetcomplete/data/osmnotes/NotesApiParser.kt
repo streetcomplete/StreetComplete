@@ -34,8 +34,7 @@ private fun XmlReader.parseNotes(): List<Note> = try {
             }
             string = ""
         }
-        // regarding IGNORABLE_WHITESPACE: https://github.com/pdvrieze/xmlutil/issues/241
-        TEXT, ENTITY_REF, CDSECT, IGNORABLE_WHITESPACE -> {
+        TEXT, ENTITY_REF, CDSECT -> {
             string += text
         }
         END_ELEMENT -> when (localName) {

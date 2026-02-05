@@ -1,0 +1,14 @@
+{
+  "be@tarask": {
+    "presets": {
+      "presets": {
+        "area": {
+          "name": "Зона"
+        },
+        "relation": {
+          "name": "Зьвязак"
+        }
+      }
+    }
+  }
+}

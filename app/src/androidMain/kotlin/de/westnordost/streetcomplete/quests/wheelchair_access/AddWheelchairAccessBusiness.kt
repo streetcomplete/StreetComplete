@@ -64,7 +64,7 @@ class AddWheelchairAccessBusiness : OsmFilterQuestType<WheelchairAccess>(), Andr
 
                 // name & wheelchair
                 "attraction",
-                "hotel", "guest_house", "motel", "hostel", "alpine_hut", "apartment", "resort", "camp_site", "caravan_site", "chalet", // accommodations
+                "hotel", "motel", "hostel", "alpine_hut", "resort", "camp_site", "caravan_site", "chalet", // accommodations
 
                 // wheelchair only
                 "viewpoint"
@@ -75,17 +75,19 @@ class AddWheelchairAccessBusiness : OsmFilterQuestType<WheelchairAccess>(), Andr
                 // common
                 "fitness_centre", "golf_course", "water_park", "miniature_golf", "bowling_alley",
                 "amusement_arcade", "adult_gaming_centre", "tanning_salon", "sauna",
+                "indoor_play",
 
                 // name & wheelchair
                 "sports_centre", "stadium"
             ),
             "office" to arrayOf(
-                // common
+                // common (AddPlaceName has catchall)
                 "insurance", "government", "travel_agent", "tax_advisor", "religion",
                 "employment_agency", "diplomatic", "coworking", "energy_supplier",
                 "estate_agent", "lawyer", "telecommunication", "educational_institution",
                 "association", "ngo", "it", "accountant", "property_management",
-                "bail_bond_agent", "financial_advisor",
+                "bail_bond_agent", "financial_advisor", "political_party",
+                "private_investigator", "adoption_agency",
 
                 // name & wheelchair
                 "political_party", "therapist"
@@ -94,7 +96,7 @@ class AddWheelchairAccessBusiness : OsmFilterQuestType<WheelchairAccess>(), Andr
                 // common
                 "carpenter", "shoemaker", "tailor", "photographer", "dressmaker",
                 "electronics_repair", "key_cutter", "stonemason", "bookbinder",
-                "jeweller", "sailmaker", "jeweller", "watchmaker", "clockmaker",
+                "jeweller", "sailmaker", "watchmaker", "clockmaker",
                 "locksmith",  "window_construction", "signmaker", "upholsterer",
                 "electrician", "boatbuilder",
 

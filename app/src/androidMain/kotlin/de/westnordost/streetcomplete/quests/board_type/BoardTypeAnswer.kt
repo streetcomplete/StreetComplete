@@ -16,9 +16,10 @@ import org.jetbrains.compose.resources.StringResource
 
 sealed interface BoardTypeAnswer {
     data object NoBoardJustMap : BoardTypeAnswer
+    data class BoardTypes(val boardTypes: Set<BoardType>) : BoardTypeAnswer
 }
 
-enum class BoardType(val osmValue: String) : BoardTypeAnswer {
+enum class BoardType(val osmValue: String) {
     HISTORY("history"),
     GEOLOGY("geology"),
     PLANTS("plants"),

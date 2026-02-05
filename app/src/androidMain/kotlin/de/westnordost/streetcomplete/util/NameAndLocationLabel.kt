@@ -171,6 +171,7 @@ private fun getHouseNumberHtml(tags: Map<String, String>, resources: Resources):
     val conscriptionNumber = tags["addr:conscriptionnumber"]
     val streetNumber = tags["addr:streetnumber"]
     val houseNumber = tags["addr:housenumber"]
+    val subHouseNumber = tags["addr:unit"] ?: tags["addr:flats"]
 
     if (houseName != null) {
         return resources.getString(R.string.at_housename, houseName.inItalics())
@@ -180,22 +181,25 @@ private fun getHouseNumberHtml(tags: Map<String, String>, resources: Resources):
         return resources.getString(R.string.at_housenumber, number)
     }
     if (houseNumber != null) {
-        return resources.getString(R.string.at_housenumber, houseNumber)
+        val houseNumberEx = if (subHouseNumber != null) "$houseNumber $subHouseNumber" else houseNumber
+        return resources.getString(R.string.at_housenumber, houseNumberEx)
     }
     return null
 }
 
 /** Returns just the house number as it would be signed if set, e.g. "123" */
-fun getShortHouseNumber(map: Map<String, String>): String? {
-    val houseName = map["addr:housename"]
-    val conscriptionNumber = map["addr:conscriptionnumber"]
-    val streetNumber = map["addr:streetnumber"]
-    val houseNumber = map["addr:housenumber"]
+fun getShortHouseNumber(tags: Map<String, String>): String? {
+    val houseName = tags["addr:housename"]
+    val conscriptionNumber = tags["addr:conscriptionnumber"]
+    val streetNumber = tags["addr:streetnumber"]
+    val houseNumber = tags["addr:housenumber"]
+    val subHouseNumber = tags["addr:unit"] ?: tags["addr:flats"]
 
     return when {
         houseName != null -> houseName
         conscriptionNumber != null && streetNumber != null -> "$conscriptionNumber / $streetNumber"
         conscriptionNumber != null -> conscriptionNumber
+        houseNumber != null && subHouseNumber != null -> "$houseNumber $subHouseNumber"
         houseNumber != null -> houseNumber
         else -> null
     }

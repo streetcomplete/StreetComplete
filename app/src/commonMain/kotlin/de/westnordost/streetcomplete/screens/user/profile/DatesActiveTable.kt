@@ -23,9 +23,9 @@ import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.ui.ktx.pxToDp
 import de.westnordost.streetcomplete.ui.theme.GrassGreen
 import de.westnordost.streetcomplete.ui.theme.surfaceContainer
-import de.westnordost.streetcomplete.util.ktx.getNarrowDisplayName
-import de.westnordost.streetcomplete.util.ktx.getShortDisplayName
+import de.westnordost.streetcomplete.util.ktx.getDisplayName
 import de.westnordost.streetcomplete.util.ktx.systemTimeNow
+import de.westnordost.streetcomplete.util.locale.DateTimeTextSymbolStyle
 import kotlinx.datetime.DateTimeUnit
 import kotlinx.datetime.DayOfWeek
 import kotlinx.datetime.LocalDate
@@ -34,7 +34,7 @@ import kotlinx.datetime.TimeZone
 import kotlinx.datetime.isoDayNumber
 import kotlinx.datetime.minus
 import kotlinx.datetime.toLocalDateTime
-import org.jetbrains.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.Preview
 import kotlin.math.ceil
 
 /** Draws a github-style like days-active graphic */
@@ -50,8 +50,12 @@ fun DatesActiveTable(
     cellCornerRadius: Dp = 6.dp,
 ) {
     val locale = Locale.current
-    val weekdays = remember(locale) { DayOfWeek.entries.map { it.getNarrowDisplayName(locale) } }
-    val months = remember(locale) { Month.entries.map { it.getShortDisplayName(locale) } }
+    val weekdays = remember(locale) {
+        DayOfWeek.entries.map { it.getDisplayName(DateTimeTextSymbolStyle.Narrow, locale) }
+    }
+    val months = remember(locale) {
+        Month.entries.map { it.getDisplayName(DateTimeTextSymbolStyle.Short, locale) }
+    }
 
     BoxWithConstraints(modifier) {
         // no data, no table

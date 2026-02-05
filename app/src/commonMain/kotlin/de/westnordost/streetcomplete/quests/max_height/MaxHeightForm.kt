@@ -24,7 +24,7 @@ import de.westnordost.streetcomplete.ui.common.DropdownButton
 import de.westnordost.streetcomplete.ui.theme.extraLargeInput
 import de.westnordost.streetcomplete.ui.theme.largeInput
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
-import org.jetbrains.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.Preview
 
 /** Displays a form to input the max height, as specified on the sign. For clarity and fun, the
  *  input fields are shown on a sign background that resembles a maxheight sign in the given

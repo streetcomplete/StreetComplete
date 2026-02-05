@@ -32,7 +32,7 @@ import de.westnordost.streetcomplete.screens.user.DialogContentWithIconLayout
 import de.westnordost.streetcomplete.ui.common.OpenInBrowserIcon
 import de.westnordost.streetcomplete.ui.theme.headlineSmall
 import org.jetbrains.compose.resources.stringResource
-import org.jetbrains.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.Preview
 
 /** Shows the details for a certain quest type in a custom dialog. */
 @Composable

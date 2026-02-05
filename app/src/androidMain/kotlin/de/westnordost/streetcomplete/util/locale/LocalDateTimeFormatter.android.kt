@@ -10,8 +10,8 @@ import java.time.format.DateTimeFormatter
 actual class LocalDateTimeFormatter actual constructor(
     locale: Locale?,
     timeZone: TimeZone,
-    dateStyle: DateFormatStyle,
-    timeStyle: DateFormatStyle,
+    dateStyle: DateTimeFormatStyle,
+    timeStyle: DateTimeFormatStyle,
 ) {
     private val formatter = DateTimeFormatter
         .ofLocalizedDateTime(dateStyle.toFormatStyle(), timeStyle.toFormatStyle())

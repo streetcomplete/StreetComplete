@@ -8,7 +8,7 @@ import platform.Foundation.NSDateFormatter
 
 actual class LocalDateFormatter actual constructor(
     locale: Locale?,
-    style: DateFormatStyle,
+    style: DateTimeFormatStyle,
 ) {
     private val formatter = NSDateFormatter().also {
         if (locale != null) it.locale = locale.platformLocale

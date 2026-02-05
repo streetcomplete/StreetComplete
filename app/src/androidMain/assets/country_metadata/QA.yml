@@ -3,7 +3,6 @@ additionalStreetsignLanguages: [en]
 advisorySpeedLimitSignStyle: white
 atmOperators: [QNB, Doha Bank, بنك الدوحة, QIB, Commercial Bank of Qatar]
 centerLineStyle: yellow
-firstDayOfWorkweek: Su
 mobileCountryCode: 427
 noParkingSignStyle: vienna
 noStoppingSignStyle: vienna
@@ -11,3 +10,4 @@ officialLanguages: [ar]
 orchardProduces: [date, tomato, chilli_pepper, sweet_pepper, fig]
 popularReligions: [muslim]
 roofsAreUsuallyFlat: true
+workweek: Su-Th

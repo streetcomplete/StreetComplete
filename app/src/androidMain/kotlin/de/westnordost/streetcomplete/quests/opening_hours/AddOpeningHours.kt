@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.quests.opening_hours
 
 import de.westnordost.osm_opening_hours.parser.toOpeningHoursOrNull
-import de.westnordost.osmfeatures.Feature
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.filters.RelativeDate
 import de.westnordost.streetcomplete.data.elementfilter.filters.TagOlderThan
@@ -14,7 +13,9 @@ import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.isPlaceOrDisusedPlace
-import de.westnordost.streetcomplete.osm.opening_hours.parser.isSupportedOpeningHours
+import de.westnordost.streetcomplete.osm.opening_hours.isLikelyIncorrect
+import de.westnordost.streetcomplete.osm.opening_hours.isSupported
+import de.westnordost.streetcomplete.osm.opening_hours.toOpeningHours
 import de.westnordost.streetcomplete.osm.updateCheckDateForKey
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 
@@ -30,6 +31,7 @@ class AddOpeningHours() : OsmElementQuestType<OpeningHoursAnswer>, AndroidQuest 
                     shop and shop !~ no|vacant
                     or amenity = social_facility and social_facility ~ food_bank|clothing_bank|soup_kitchen|dairy_kitchen
                     or natural = cave_entrance and fee = yes
+                    or historic = castle and fee = yes
                     or """ +
 
 // The common list is shared by the name quest, the opening hours quest and the wheelchair quest.
@@ -69,6 +71,7 @@ mapOf(
         // common
         "fitness_centre", "golf_course", "water_park", "miniature_golf", "bowling_alley",
         "amusement_arcade", "adult_gaming_centre", "tanning_salon", "sauna",
+        "indoor_play",
 
         // name & opening hours
         "trampoline_park",
@@ -77,18 +80,19 @@ mapOf(
         // walk-in opening hours but training times
     ),
     "office" to arrayOf(
-        // common
+        // common (AddPlaceName has catchall)
         "insurance", "government", "travel_agent", "tax_advisor", "religion",
         "employment_agency", "diplomatic", "coworking", "energy_supplier",
         "estate_agent", "lawyer", "telecommunication", "educational_institution",
         "association", "ngo", "it", "accountant", "property_management",
-        "bail_bond_agent", "financial_advisor",
+        "bail_bond_agent", "financial_advisor", "political_party",
+        "private_investigator", "adoption_agency",
     ),
     "craft" to arrayOf(
         // common
         "carpenter", "shoemaker", "tailor", "photographer", "dressmaker",
         "electronics_repair", "key_cutter", "stonemason", "bookbinder",
-        "jeweller", "sailmaker", "jeweller", "watchmaker", "clockmaker",
+        "jeweller", "sailmaker", "watchmaker", "clockmaker",
         "locksmith",  "window_construction", "signmaker", "upholsterer",
         "electrician", "boatbuilder",
     ),
@@ -159,7 +163,7 @@ mapOf(
     override fun getTitle(tags: Map<String, String>): Int {
         // treat invalid opening hours like it is not set at all
         val oh = tags["opening_hours"]?.toOpeningHoursOrNull(lenient = true)
-        val hasSupportedOpeningHours = oh != null && oh.isSupportedOpeningHours()
+        val hasSupportedOpeningHours = oh != null && oh.isSupported()
         return if (hasSupportedOpeningHours) {
             R.string.quest_openingHours_resurvey_title
         } else {
@@ -180,9 +184,8 @@ mapOf(
         // invalid opening_hours rules -> applicable because we want to ask for opening hours again
         // be strict
         val oh = ohStr.toOpeningHoursOrNull(lenient = false) ?: return true
-        // only display supported rules, however, those that are supported but have colliding
-        // weekdays should be shown (->resurveyed), as they are likely mistakes
-        return oh.rules.all { rule -> rule.isSupportedOpeningHours() } && !oh.containsTimePoints()
+        // only display supported rules, or ambiguous rules that should be corrected
+        return oh.isSupported(allowTimePoints = false) || oh.isLikelyIncorrect()
     }
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
@@ -197,7 +200,7 @@ mapOf(
             // don't delete current opening hours: these may be the correct hours, they are just not visible anywhere on the door
         } else {
             val openingHoursString = when (answer) {
-                is RegularOpeningHours  -> answer.hours.toString()
+                is RegularOpeningHours  -> answer.hours.toOpeningHours().toString()
                 is AlwaysOpen           -> "24/7"
                 is DescribeOpeningHours -> "\"" + answer.text.replace("\"", "") + "\""
                 NoOpeningHoursSign      -> throw IllegalStateException()

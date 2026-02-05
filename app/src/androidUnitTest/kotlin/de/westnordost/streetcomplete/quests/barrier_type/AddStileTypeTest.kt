@@ -15,7 +15,7 @@ class AddStileTypeTest {
     fun `set stile as squeezer`() {
         assertEquals(
             setOf(StringMapEntryAdd("stile", "squeezer")),
-            questType.answerAppliedTo(StileType.SQUEEZER, mapOf("barrier" to "stile"))
+            questType.answerAppliedTo(StileTypeAnswer.SQUEEZER, mapOf("barrier" to "stile"))
         )
     }
 
@@ -27,7 +27,7 @@ class AddStileTypeTest {
                 StringMapEntryModify("stile", "squeezer", "squeezer"),
             ),
             questType.answerAppliedTo(
-                StileType.SQUEEZER,
+                StileTypeAnswer.SQUEEZER,
                 mapOf(
                     "barrier" to "stile",
                     "stile" to "squeezer",
@@ -45,7 +45,7 @@ class AddStileTypeTest {
                 StringMapEntryModify("stile", "stepover", "stepover"),
             ),
             questType.answerAppliedTo(
-                StileType.STEPOVER_STONE,
+                StileTypeAnswer.STEPOVER_STONE,
                 mapOf(
                     "barrier" to "stile",
                     "stile" to "stepover",
@@ -66,7 +66,7 @@ class AddStileTypeTest {
                 StringMapEntryDelete("material", "wood"),
             ),
             questType.answerAppliedTo(
-                StileType.SQUEEZER,
+                StileTypeAnswer.SQUEEZER,
                 mapOf(
                     "barrier" to "stile",
                     "stile" to "stepover",
@@ -83,7 +83,7 @@ class AddStileTypeTest {
         assertEquals(
             setOf(StringMapEntryAdd("stile", "squeezer")),
             questType.answerAppliedTo(
-                StileType.SQUEEZER,
+                StileTypeAnswer.SQUEEZER,
                 mapOf(
                     "barrier" to "stile",
                     "material" to "stone",
@@ -101,7 +101,7 @@ class AddStileTypeTest {
                 StringMapEntryModify("material", "wood", "wood")
             ),
             questType.answerAppliedTo(
-                StileType.STEPOVER_WOODEN,
+                StileTypeAnswer.STEPOVER_WOODEN,
                 mapOf(
                     "barrier" to "stile",
                     "material" to "wood",
@@ -116,7 +116,7 @@ class AddStileTypeTest {
         assertEquals(
             setOf(StringMapEntryAdd("stile", "squeezer")),
             questType.answerAppliedTo(
-                StileType.SQUEEZER,
+                StileTypeAnswer.SQUEEZER,
                 mapOf(
                     "barrier" to "stile",
                     "material" to "stone",
@@ -136,7 +136,7 @@ class AddStileTypeTest {
                 StringMapEntryModify("material", "wood", "wood"),
             ),
             questType.answerAppliedTo(
-                StileType.STEPOVER_WOODEN,
+                StileTypeAnswer.STEPOVER_WOODEN,
                 mapOf(
                     "barrier" to "stile",
                     "stile" to "stepover",
@@ -156,7 +156,7 @@ class AddStileTypeTest {
                 StringMapEntryModify("stile", "stepover", "stepover"),
             ),
             questType.answerAppliedTo(
-                StileType.STEPOVER_WOODEN,
+                StileTypeAnswer.STEPOVER_WOODEN,
                 mapOf(
                     "barrier" to "stile",
                     "stile" to "stepover",
@@ -172,7 +172,7 @@ class AddStileTypeTest {
                 StringMapEntryModify("barrier", "stile", "kissing_gate"),
             ),
             questType.answerAppliedTo(
-                ConvertedStile.KISSING_GATE,
+                StileTypeAnswer.KISSING_GATE,
                 mapOf("barrier" to "stile")
             )
         )
@@ -187,7 +187,7 @@ class AddStileTypeTest {
                 StringMapEntryDelete("material", "something else"),
             ),
             questType.answerAppliedTo(
-                ConvertedStile.KISSING_GATE,
+                StileTypeAnswer.KISSING_GATE,
                 mapOf(
                     "barrier" to "stile",
                     "stile" to "something",
@@ -208,7 +208,7 @@ class AddStileTypeTest {
                 StringMapEntryModify("barrier", "stile", "entrance"),
             ),
             questType.answerAppliedTo(
-                ConvertedStile.PASSAGE,
+                StileTypeAnswer.PASSAGE,
                 mapOf(
                     "barrier" to "stile",
                     "stile" to "stepover",

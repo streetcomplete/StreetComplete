@@ -1,4 +1,4 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [Wells Fargo, U.S. Bank, Bank of America, Huntington Bank, Think Bank, Wells Fargo ATM, US Bank, Wings Financial Credit Union, Shazam Atm, Pioneer Bank, First National Bank, Community Resource Bank, Bremer Bank, Altra Federal Credit Union, 'ATM Network, Inc.']
-chargingStationOperators: ['Tesla, Inc.', ChargePoint, Tesla, Electrify America, Evie Carshare, City of Saint Paul, ZEF Energy, Nissan, EV Spot, Volta, Minnesota Department of Natural Resources, Evie, Chargepoint, ChargePoint Network, Blink]
+atmOperators: [Wells Fargo, U.S. Bank, Bank of America, Huntington Bank, Think Bank, US Bank, First National Bank of Walker, Wells Fargo ATM, Wings Financial Credit Union, Shazam Atm, Pioneer Bank, First National Bank, Community Resource Bank, Bremer Bank, Altra Federal Credit Union, 'ATM Network, Inc.']
+chargingStationOperators: [ChargePoint, 'Tesla, Inc.', Tesla, Electrify America, Evie Carshare, City of Saint Paul, ZEF Energy, Nissan, Evie, EV Spot, Volta, Minnesota Department of Natural Resources, EVgo, City of Coon Rapids, Chargepoint, ChargePoint Network, Blink]
 defaultSpeedLimitHasUrbanOrRural: true

@@ -44,26 +44,6 @@ class AddRoadName : OsmFilterQuestType<RoadNameAnswer>(), AndroidQuest {
     override fun applyAnswerTo(answer: RoadNameAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {
             RoadNameAnswer.NoName -> tags["noname"] = "yes"
-            RoadNameAnswer.IsServiceRoad -> {
-                // The understanding of what is a service road is much broader in common language
-                // than what the highway=service tagging covers. For example, certain traffic-calmed
-                // driveways / service roads may be tagged as highway=living_street. We do not want
-                // to overwrite this, so let's keep it a living street in that case (see #2431)
-                // see also #6511
-                if (tags["highway"] == "living_street" || tags["highway"] == "pedestrian") {
-                    tags["noname"] = "yes"
-                } else {
-                    tags["highway"] = "service"
-                }
-            }
-            RoadNameAnswer.IsTrack -> {
-                tags["highway"] = "track"
-            }
-            RoadNameAnswer.IsLinkRoad -> {
-                if (tags["highway"]?.matches("primary|secondary|tertiary".toRegex()) == true) {
-                    tags["highway"] += "_link"
-                }
-            }
             is RoadName -> {
                 val singleName = answer.localizedNames.singleOrNull()
                 if (singleName?.isRef() == true) {

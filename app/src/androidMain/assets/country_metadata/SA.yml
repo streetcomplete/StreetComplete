@@ -4,9 +4,9 @@ atmOperators: [مصرف الراجحي, البنك الأهلي السعودي, 
 centerLineStyle: yellow
 chargingStationOperators: [Electromin]
 defaultSpeedLimitHasUrbanOrRural: true
-firstDayOfWorkweek: Su
 mobileCountryCode: 420
 officialLanguages: [ar]
 orchardProduces: [date, olive, tomato, grape, guava, mango, mangosteen, lemon, lime, chilli_pepper, sweet_pepper]
 popularReligions: [muslim]
 roofsAreUsuallyFlat: true
+workweek: Su-Th

@@ -9,6 +9,8 @@
     <!-- e.g. "Eastern white pine - Coniferous Tree" -->
     <string name="label_feature_taxon">%2$s - %1$s</string>
 
+    <string name="quest_opening_hours_two_languages">(%2$s) %1$s</string>
+
     <string name="quest_streetName_menuItem_language">%2$s – %1$s</string>
 </resources>
 

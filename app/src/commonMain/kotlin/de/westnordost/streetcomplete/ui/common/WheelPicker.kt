@@ -35,7 +35,7 @@ import androidx.compose.ui.util.fastFirstOrNull
 import de.westnordost.streetcomplete.ui.ktx.fadingEdges
 import de.westnordost.streetcomplete.ui.ktx.pxToDp
 import kotlinx.coroutines.launch
-import org.jetbrains.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.Preview
 
 @Composable
 fun rememberWheelPickerState(selectedItemIndex: Int = 0) =
@@ -112,6 +112,7 @@ fun <T> WheelPicker(
             .fadingEdges(
                 top = selectedItemHeight * visibleAdjacentItems,
                 bottom = selectedItemHeight * visibleAdjacentItems,
+                startAlpha = 0.67f,
             )
             .pickerIndicator(selectedItemHeight, color = MaterialTheme.colors.onSurface),
         state = state.lazyListState,

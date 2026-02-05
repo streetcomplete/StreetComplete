@@ -57,7 +57,7 @@ import de.westnordost.streetcomplete.ui.theme.headlineLarge
 import kotlinx.coroutines.delay
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
-import org.jetbrains.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.Preview
 
 /** Wizard which enables team mode */
 @Composable

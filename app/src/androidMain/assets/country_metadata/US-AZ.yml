@@ -1,5 +1,5 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 atmOperators: [Wells Fargo, Bank of America, Chase, Athena Bitcoin, Bitstop, U.S. Bank, Western Bank, RockItCoin, PNC Bank, MetaBank, Desert Financial, Bank of America ATM, BMO, Arizona Central Credit Union, Allpoint, AZ Federal Credit Union]
-chargingStationOperators: [Blink, 'Tesla, Inc.', ChargePoint, Electrify America, Tesla, Volta, EVgo, Lowell Observatory, APS]
+chargingStationOperators: [Blink, 'Tesla, Inc.', ChargePoint, Tesla, Electrify America, Volta, EVgo, Rivian, Lowell Observatory, APS]
 defaultSpeedLimitHasUrbanOrRural: true
-parcelLockerBrand: [Amazon Locker, Amazon Hub]
+parcelLockerBrand: [Amazon Locker, Amazon Hub, Parcel Pending]

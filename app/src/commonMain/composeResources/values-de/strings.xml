@@ -20,14 +20,11 @@
     <string name="quest_leave_new_note_yes">Hinweis hinterlassen</string>
     <string name="quest_leave_new_note_no">Verbergen</string>
     <string name="quest_streetName_title">Wie heißt diese Straße?</string>
-    <string name="quest_streetName_description">Wie es auf dem Straßenschild steht, Abkürzungen bitte ausschreiben:</string>
     <string name="quest_streetName_answer_noName_confirmation_description">Manchmal steht nur an einem Ende der Straße ein Straßenschild. Außerdem kann es für Seitenstraßen, die zu einer größeren Straße gehören, keine extra Straßenschilder geben. Normalerweise hat jede Straße, an der Häuser stehen, einen Namen.</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_description">Abkürzungen in Straßennamen sollten immer ausgeschrieben werden. Für übliche Abkürzungen passiert das automatisch beim Schreiben, aber eventuell nicht für alle.</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">Keine Abkürzung</string>
     <string name="quest_openingHours_start_time">öffnet um</string>
     <string name="quest_openingHours_end_time">schließt um</string>
     <string name="quest_openingHours_add_months">Monate hinzufügen</string>
-    <string name="quest_openingHours_add_hours">Zeiten hinzufügen</string>
+    <string name="quest_openingHours_add_hours">Stunden hinzufügen</string>
     <string name="quest_openingHours_add_weekdays">Wochentage hinzufügen</string>
     <string name="quest_openingHours_chooseMonthsTitle">Monate auswählen</string>
     <string name="quest_openingHours_chooseWeekdaysTitle">Wochentage auswählen</string>
@@ -53,11 +50,10 @@
     <string name="about_title_license">Lizenz</string>
     <string name="offline">Du bist offline</string>
     <string name="confirmation_authorize_now">Du musst dich mit deinem OSM-Konto einloggen, um deine Antworten zu veröffentlichen. Jetzt einloggen?</string>
-    <string name="not_authorized">Nicht eingeloggt</string>
+    <string name="not_authorized">Nicht autorisiert</string>
     <string name="version_banned_message">Diese Version von StreetComplete ist zu alt. Bitte aktualisiere deine Version!</string>
     <string name="no_gps_no_quests">Um automatisch Daten in deiner Nähe herunterzuladen, schalte den genauen Standort ein</string>
     <string name="later">Später</string>
-    <string name="quest_streetName_answer_noProperStreet_link">Sie ist eine Verbindung zwischen zwei Straßen</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">Etwas anderes (Hinweis hinterlassen)</string>
     <string name="about_title_privacy_statement">Datenschutzerklärung</string>
     <string name="quest_openingHours_public_holidays">Feiertage</string>
@@ -196,7 +192,6 @@ Wenn es keine Schilder entlang der gesamten Straße gibt, die für den hervorgeh
     <string name="quest_sport_roller_skating">Rollschuh­laufen</string>
     <string name="quest_wheelchairAccess_limited_description_business">Teilweise bedeutet, dass es nicht mehr als eine knöchelhohe Stufe zu überwinden gilt, um das Gebäude zu betreten, und die meisten Räume darin zugänglich für Rollstuhlfahrer sind.</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">Teilweise bedeutet, dass es nicht mehr als eine knöchelhohe Stufe zu überwinden gilt.</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">Ist der Name %1$s abgekürzt?</string>
     <string name="quest_recycling_type_title">Was für eine Recycling-Einrichtung ist das?</string>
     <string name="recycling_centre">Wertstoffhof</string>
     <string name="overground_recycling_container">Container</string>
@@ -323,14 +318,10 @@ Andernfalls kannst du eine alternative Tastatur im App Store herunterladen. Beli
     <string name="quest_cycleway_answer_contraflow_cycleway">Radweg auch auf der anderen Seite …</string>
     <string name="quest_openingHours_emptyAnswer">Du musst schreiben, was auf dem Schild steht. Wenn es kein Schild gibt, solltest du drinnen nach den Öffnungszeiten fragen.</string>
     <string name="quest_cycleway_value_none_but_no_oneway">kein, aber Radfahrer dürfen in beide Richtungen fahren</string>
-    <string name="quest_streetName_answer_noName_question">Warum hat sie keinen Namen?</string>
-    <string name="quest_streetName_answer_noProperStreet_service2">Ist bloß so etwas wie eine Zufahrt</string>
-    <string name="quest_streetName_answer_noProperStreet_track2">Ist nur ein Feld- oder Waldweg</string>
-    <string name="quest_streetName_answer_noName_noname">Nichts davon, sie hat ganz einfach keinen Namen</string>
     <string name="quest_wheelchairAccess_description_toilets">Ein Symbol wie dieses ist oft zu sehen, wenn es eine spezielle Toilette für Rollstuhlfahrer gibt.
 Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber sie nicht speziell für Rollstuhlfahrer angepasst ist.</string>
     <string name="map_btn_create_note">Neuen Hinweis erstellen</string>
-    <string name="create_new_note_unprecise">Zoome weiter herein, um einen Hinweis zu erstellen</string>
+    <string name="create_new_note_unprecise">Zoome weiter hinein, um einen Hinweis zu erstellen</string>
     <string name="create_new_note_description">Erstelle hier einen Hinweis, um anderen Kartierenden ein Problem zu melden. Bewege die Karte, um die Position des Hinweises anzupassen.</string>
     <string name="quest_generic_looks_like_this">Sieht normalerweise so aus:</string>
     <string name="quest_surface_value_metal">Metall</string>
@@ -535,12 +526,11 @@ Jetzt aufspalten?</string>
     <string name="quest_recycling_type_glass_bottles">Glasflaschen und -gläser</string>
     <string name="quest_recycling_type_glass_bottles_short">Flaschen und Gläser</string>
     <string name="quest_recycling_type_paper">Papier</string>
-    <string name="quest_recycling_type_plastic_generic">Plastik</string>
     <string name="quest_recycling_type_plastic">Jede Art von Plastik</string>
     <string name="quest_recycling_type_shoes">Schuhe</string>
     <string name="quest_recycling_type_electric_appliances">Elektrogeräte</string>
-    <string name="quest_recycling_type_plastic_bottles">Nur Plastikflaschen</string>
-    <string name="quest_recycling_type_plastic_packaging">Nur Plastikverpackungen</string>
+    <string name="quest_recycling_type_plastic_bottles">Plastikflaschen</string>
+    <string name="quest_recycling_type_plastic_packaging">Alle Plastikverpackungen</string>
     <string name="quest_recycling_type_scrap_metal">Altmetall</string>
     <string name="quest_recycling_type_any_glass">Jede Art von Glas</string>
     <string name="quest_recycling_glass_title">Können hier nur Glasflaschen und -gläser entsorgt werden, oder jede Art von Glas?</string>
@@ -697,7 +687,7 @@ Erfolge</string>
     <string name="quest_board_type_map_title">Ist es einzig eine Karte?</string>
     <string name="quest_board_type_map_description">Wenn es auf der Tafel um ein bestimmtes Thema geht, bitte gib es an, egal ob da auch eine Karte mit dabei ist. Zum Beispiel mag eine Tafel zum öffentlichen Nahverkehr auch eine Verkehrsnetzkarte beinhalten. Wenn das Thema nicht bei den zur Verfügung stehenden Antworten dabei ist, hinterlasse bitte stattdessen einen Hinweis.</string>
     <string name="quest_streetName_menuItem_international">international</string>
-    <string name="quest_buildingType_terrace2">Mehrere Reihenhäuser</string>
+    <string name="quest_buildingType_terrace2">Häuserreihe (mehrere Reihenhäuser)</string>
     <string name="at_housename">Hausname %1$s</string>
     <string name="at_housenumber">Hausnummer %1$s</string>
     <string name="quest_openingHours_add_off_days">Ruhetage hinzufügen</string>
@@ -709,11 +699,10 @@ Erfolge</string>
     <string name="resurvey_intervals_default">Standard</string>
     <string name="resurvey_intervals_more_often">Öfter</string>
     <string name="about_title_translate">App übersetzen</string>
-    <string name="about_description_translate">%1$s ist zu %2$d%% übersetzt</string>
+    <string name="about_description_translate">%1$s ist zu %2$d% übersetzt</string>
     <string name="quest_oneway2_title">Ist dies eine Einbahnstraße? In welche Richtung?</string>
     <string name="quest_oneway2_dir">Einbahn­straße in diese Richtung</string>
     <string name="quest_oneway2_no_oneway">Keine Einbahn­straße</string>
-    <string name="quest_maxweight_select_sign">Wähle das Schild</string>
     <string name="quest_steps_incline_title">Welche Richtung führt hier nach oben?</string>
     <string name="quest_steps_incline_up">Hier nach oben</string>
     <string name="quest_step_count_title">Wie viele Stufen gibt es hier?</string>
@@ -755,7 +744,6 @@ Erfolge</string>
     <string name="quest_charging_station_capacity_title">Wie viele Autos können hier gleichzeitig aufgeladen werden?</string>
     <string name="link_disaster_ninja_description">Karte, die jüngste Naturkatastrophen zeigt. Interessant für humanitäre Mapper. Zeigt außerdem viele weitere interessante Statistiken, um zu analysieren, wie vollständig und aktuell Orte kartiert sind.</string>
     <string name="quest_lanes_title">Wie viele Fahrstreifen für Autos hat diese Fahrbahn?</string>
-    <string name="quest_lanes_answer_lanes">Markierte Fahrstreifen</string>
     <string name="quest_lanes_answer_noLanes">Keine markierten Fahrstreifen</string>
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">Hat eine gemeinsame Linksabbiegerspur für beide Richtungen</string>
     <string name="quest_address_answer_no_housenumber_message2b">Ist das korrekt?</string>
@@ -768,8 +756,6 @@ Wenn die Maximalhöhe nicht für die gesamte Strecke gilt, kannst du auch mit �
     <string name="quest_kerb_height_lowered">etwas höher als die Fahrbahn</string>
     <string name="quest_kerb_height_raised">hoher Bordstein</string>
     <string name="quest_kerb_height_lowered_ramp">Bordsteinrampe</string>
-    <string name="quest_lanes_answer_lanes_description2">Gib hier die Gesamtzahl (beide Richtungen) aller markierten Fahrstreifen an, die für den Autoverkehr nutzbar sind. Rad- und dedizierte Parkstreifen zählen also nicht mit.
-Wenn es eine Busspur gibt, hinterlasse bitte stattdessen einen Hinweis.</string>
     <string name="quest_lanes_answer_lanes_description_one_side2">Gib hier die Anzahl aller markierten Fahrstreifen an, die für den Autoverkehr nutzbar sind. Rad- und dedizierte Parkstreifen zählen also nicht mit.
 Wenn es eine Busspur gibt, hinterlasse bitte stattdessen einen Hinweis.</string>
     <string name="quest_surface_value_rock">Fels</string>
@@ -784,7 +770,6 @@ Wenn es eine Busspur gibt, hinterlasse bitte stattdessen einen Hinweis.</string>
     <string name="quest_shop_gone_replaced_answer">Ein(e) …</string>
     <string name="quest_shop_gone_replaced_answer_hint">Hier Art des Ortes eingeben</string>
     <string name="quest_shop_vacant_type_title">Dieser Laden stand leer. Was ist jetzt hier?</string>
-    <string name="quest_lanes_answer_lanes_odd2">Jede Seite hat unterschiedliche Anzahl von Fahrstreifen</string>
     <string name="default_disabled_msg_go_inside_regional_warning">Dieser Aufgabentyp ist standardmäßig deaktiviert, weil er in manchen Regionen nicht sinnvoll ist und du wahrscheinlich den Ort betreten musst, um die Aufgabe lösen zu können.</string>
     <string name="quest_dietType_explanation_kosher">Koschere Produkte werden nach den jüdischen Speisegesetzen hergestellt, wobei spezielle Kashrut-Zertifizierungsagenturen diese Produkte überprüfen.</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">Kein Radweg vorhanden</string>
@@ -804,8 +789,7 @@ Beachte alle Auswahlmöglichkeiten: manche Kombinationen sind nicht offensichtli
     <string name="quest_postboxRoyalCypher_type_none">Kein Monogramm sichtbar</string>
     <string name="quest_postboxRoyalCypher_type_scottish_crown">Die Krone von Schottland</string>
     <string name="quest_buildingType_fire_station">Feuerwehrhaus</string>
-    <string name="quest_recycling_type_beverage_cartons">Nur Getränkekartons</string>
-    <string name="quest_recycling_type_plastic_bottles_and_cartons">Nur Plastikflaschen und Getränkekartons</string>
+    <string name="quest_recycling_type_beverage_cartons">Getränkekartons</string>
     <string name="team_mode">Team-Modus starten</string>
     <string name="team_mode_exit">Team-Modus beenden</string>
     <string name="team_mode_description">Wenn ihr als Gruppe zusammen in der gleichen Gegend mappen wollt, könnt ihr den Team-Modus nutzen, um die Aufgaben untereinander aufzuteilen. Jeder von euch sieht dann unterschiedliche Aufgaben.</string>
@@ -999,7 +983,7 @@ Alternativ kann auch ein Hinweis (mit Foto) hinterlassen werden.</string>
     <string name="quest_smoothness_surface_value">Die Oberfläche wurde bestimmt als:</string>
     <string name="quest_smoothness_obstacle">Da ist ein Hindernis</string>
     <string name="quest_smoothness_obstacle_hint">Bitte gib eine allgemeine Antwort für die Glätte der Oberfläche. Einzelne Hindernisse wie Bordsteinkanten, Schwellen zur Geschwindigkeitsbegrenzung oder Weideroste können ignoriert werden. Mehrfache oder unerwartete Hindernisse sollten in die Antwort miteinbezogen werden.</string>
-    <string name="quest_smoothness_hint">🚲, 🚗, 🚙 … zeigen an, für welche Fahrzeuge die Fläche nutzbar sein soll. Was zählt, ist das Gesamtbild und nicht vereinzelte Schäden.</string>
+    <string name="quest_smoothness_hint">Die Symbole zeigen an, für welche Fahrzeuge die Fläche nutzbar sein soll. Was zählt, ist das Gesamtbild, nicht vereinzelte Schäden.</string>
     <string name="link_osmhydrant_description">Finde, erstelle und bearbeite Feuerwehrhäuser und Hydranten</string>
     <string name="achievement_lifesaver_title">Lebensretter</string>
     <string name="achievement_lifesaver_solved_X">Du hast %1$d Aufgaben gelöst, die Rettungskräften und Ersthelfern die Arbeit erleichtern!</string>
@@ -1008,7 +992,7 @@ Alternativ kann auch ein Hinweis (mit Foto) hinterlassen werden.</string>
     <string name="quest_smoothness_description_good_compacted_gravel">Festgetreten, sehr wenig loser Kies oder Sand</string>
     <string name="quest_barrier_path_intersection">Wie kreuzt dieser Weg die Barriere hier?</string>
     <string name="quest_barrier_road_intersection">Wie kreuzt diese Straße die Barriere hier?</string>
-    <string name="quest_sidewalk_value_separate">Bürgersteig, aber separat auf Karte eingezeichnet</string>
+    <string name="quest_sidewalk_value_separate">Bürgersteig separat auf Karte eingezeichnet</string>
     <string name="no_camera_permission_warning_title">Kamerazugriff</string>
     <string name="no_camera_permission_warning">Die Berechtigung wird benötigt, um Abstände mit der Kamera zu messen.</string>
     <string name="ar_core_error_sdk_too_old">Die App ist zu alt, versuche, sie zu aktualisieren.</string>
@@ -1164,7 +1148,6 @@ Wiederhole dies für die andere Seite, wenn sie existiert.</string>
     <string name="quest_camp_type_tents_only">Nur Zelte</string>
     <string name="quest_camp_type_backcountry">Wildcamping (keine Sanitäreinrichtungen)</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">Dieser Durchmesser sieht ungewöhnlich aus, er liegt normalerweise zwischen %1$d und %2$d.</string>
-    <string name="quest_recycling_type_pet">Nur PET</string>
     <string name="street_parking_street_width">Fahrbahnbreite: %1$s</string>
     <string name="overlay_street_parking">Parkstreifen</string>
     <string name="link_ohsomehex_description">Erkunde OSM-Daten in verschiedenen Maßstäben, vom Gesamtbild bis hin zu einzelnen Objekten in Raum und Zeit</string>
@@ -1380,7 +1363,7 @@ Eine Ebene zählt als Dachebene, wenn sich die Fenster im Dach befinden. Dächer
     <string name="about_category_contribute">Beitragen</string>
     <string name="pref_category_quests">Aufgaben</string>
     <string name="pref_title_language_select2">Sprache</string>
-    <string name="pref_title_resurvey_intervals_summary">Wie oft du aufgefordert wirst, zu bestätigen, ob die zuvor zugeordneten Daten noch korrekt sind.</string>
+    <string name="pref_title_resurvey_intervals_summary">Wie oft du aufgefordert wirst, zu bestätigen, ob die zuvor erfassten Daten noch korrekt sind.</string>
     <string name="questList_disabled_by_default">Standardmäßig deaktiviert</string>
     <string name="action_manage_presets_summary">Unter diesem Namen wird die unten stehende Aufgabenauswahl gespeichert.</string>
     <string name="quest_multiselect_hint">Alles Zutreffende auswählen:</string>
@@ -1463,7 +1446,8 @@ Eine Ebene zählt als Dachebene, wenn sich die Fenster im Dach befinden. Dächer
     <string name="compass">Kompass</string>
     <string name="quest_tracktype_grade2">Größtenteils fest</string>
     <string name="quest_tracktype_grade3">Gemischt</string>
-    <string name="quest_housenumber_multiple_numbers_description2">Du kannst Hausnummern durch Kommas getrennt eingeben.\nZum Beispiel 1,3 oder 2b,4,6.</string>
+    <string name="quest_housenumber_multiple_numbers_description2">Du kannst Hausnummern durch Kommas getrennt eingeben.
+Zum Beispiel 1,3 oder 2b,4,6.</string>
     <string name="quest_drinking_water_potable_unsigned2">Kein Schild</string>
     <string name="or">oder</string>
     <string name="action_copy">Kopieren</string>
@@ -1476,4 +1460,19 @@ Eine Ebene zählt als Dachebene, wenn sich die Fenster im Dach befinden. Dächer
     <string name="quest_streetName_add_language">Sprache hinzufügen</string>
     <string name="ok">OK</string>
     <string name="cancel">Abbrechen</string>
+    <string name="quest_aerialway_bicycle_title">Werden in dieser Seilbahn Fahrräder transportiert?</string>
+    <string name="quest_aerialway_bicycle_summer">Nur im Sommer</string>
+    <string name="quest_board_type_rules">Regeln</string>
+    <string name="quest_firewood_provided_title">Wird hier Brennholz bereitgestellt?</string>
+    <string name="quest_first_aid_kit_location">Wo befindet sich dieser Erste-Hilfe-Kasten?</string>
+    <string name="quest_lane_markings_title">Hat diese Straße Fahrspurmarkierungen?</string>
+    <string name="quest_level_thing_title">Auf welcher Etage befindet sich dieses Objekt?</string>
+    <string name="quest_bicycle_charging_station_capacity_title">Wie viele Fahrräder können hier gleichzeitig geladen werden?</string>
+    <string name="quest_charging_station_bicycles_title">Können hier auch Fahrräder geladen werden?</string>
+    <string name="quest_charging_station_bicycles_hint">Fahrrad-Ladeadapter können in normale Haushaltssteckdosen eingesteckt werden.</string>
+    <string name="quest_tower_access_title">Für wen ist dieser Turm zugänglich? Der Zugang kann kostenlos oder kostenpflichtig sein.</string>
+    <string name="quest_charging_station_bicycles_answer_only">Ausschließlich Fahrräder</string>
+    <string name="quest_recycling_type_pet_bottles">PET-Flaschen</string>
+    <string name="quest_maxweight_add_sign">Schild hinzufügen</string>
+    <string name="quest_maxweight_remove_sign">Schild entfernen</string>
 </resources>

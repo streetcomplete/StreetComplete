@@ -2,13 +2,19 @@ package de.westnordost.streetcomplete.quests.level
 
 import android.os.Bundle
 import android.view.View
-import androidx.core.widget.doAfterTextChanged
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material.Surface
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
-import de.westnordost.streetcomplete.databinding.QuestLevelBinding
+import de.westnordost.streetcomplete.databinding.ComposeViewBinding
 import de.westnordost.streetcomplete.osm.level.Level
 import de.westnordost.streetcomplete.osm.level.levelsIntersect
 import de.westnordost.streetcomplete.osm.level.parseLevelsOrNull
@@ -18,6 +24,7 @@ import de.westnordost.streetcomplete.screens.main.map.Marker
 import de.westnordost.streetcomplete.screens.main.map.ShowsGeometryMarkers
 import de.westnordost.streetcomplete.screens.main.map.getIcon
 import de.westnordost.streetcomplete.screens.main.map.getTitle
+import de.westnordost.streetcomplete.ui.util.content
 import de.westnordost.streetcomplete.util.ktx.toShortString
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
@@ -25,81 +32,64 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.koin.android.ext.android.inject
-import kotlin.math.ceil
-import kotlin.math.floor
 
 abstract class AAddLevelForm : AbstractOsmQuestForm<String>() {
+
+    override val contentLayoutResId = R.layout.compose_view
+    private val binding by contentViewBinding(ComposeViewBinding::bind)
 
     abstract fun filter(mapData: MapDataWithGeometry): List<Element>
 
     private val mapDataSource: MapDataWithEditsSource by inject()
 
-    override val contentLayoutResId = R.layout.quest_level
-    private val binding by contentViewBinding(QuestLevelBinding::bind)
-
-    private lateinit var shopElementsAndGeometry: List<Pair<Element, ElementGeometry>>
-
     private val showsGeometryMarkersListener: ShowsGeometryMarkers? get() =
         parentFragment as? ShowsGeometryMarkers ?: activity as? ShowsGeometryMarkers
 
-    private var selectedLevel: Double?
-        get() = binding.levelInput.text.toString().trim().toDoubleOrNull()
-        set(value) { binding.levelInput.setText(value?.toShortString() ?: "") }
+    private var elementsAndGeometry: List<Pair<Element, ElementGeometry>> = listOf()
+
+    private val level: MutableState<Double?> = mutableStateOf(null)
+    private val selectableLevels: MutableState<List<Double>> = mutableStateOf(emptyList())
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.levelInput.doAfterTextChanged { onSelectedLevel() }
 
-        viewLifecycleScope.launch { initializeButtons() }
-    }
+        viewLifecycleScope.launch {
+            val bbox = geometry.center.enclosingBoundingBox(50.0)
+            val mapData = withContext(Dispatchers.IO) { mapDataSource.getMapDataWithGeometry(bbox) }
 
-    private suspend fun initializeButtons() {
-        val bbox = geometry.center.enclosingBoundingBox(50.0)
-        val mapData = withContext(Dispatchers.IO) { mapDataSource.getMapDataWithGeometry(bbox) }
+            val elementsWithLevels = filter(mapData)
 
-        val shopsWithLevels = filter(mapData)
-
-        shopElementsAndGeometry = shopsWithLevels.mapNotNull { e ->
-            mapData.getGeometry(e.type, e.id)?.let { geometry -> e to geometry }
-        }
-        if (selectedLevel != null) {
-            updateMarkers(selectedLevel)
-        }
-
-        val selectableLevels = parseSelectableLevels(shopsWithLevels.map { it.tags })
-        binding.plusMinusContainer.addButton.setOnClickListener {
-            val level = selectedLevel
-            selectedLevel = if (level != null) {
-                /* usually +1, but if the selectable levels contain any intermediate floors
-                   (e.g. 0.5), step to these instead */
-                val nextInt = floor(level + 1.0)
-                selectableLevels.find { it > level && it < nextInt } ?: nextInt
-            } else {
-                selectableLevels.find { it >= 0 } ?: selectableLevels.firstOrNull() ?: 0.0
+            elementsAndGeometry = elementsWithLevels.mapNotNull { e ->
+                mapData.getGeometry(e.type, e.id)?.let { geometry -> e to geometry }
             }
+            updateMarkers(level.value)
+
+            selectableLevels.value = parseSelectableLevels(elementsWithLevels.map { it.tags })
         }
 
-        binding.plusMinusContainer.subtractButton.setOnClickListener {
-            val level = selectedLevel
-            selectedLevel = if (level != null) {
-                val prevInt = ceil(level - 1.0)
-                selectableLevels.findLast { it < level && it > prevInt } ?: prevInt
-            } else {
-                selectableLevels.findLast { it <= 0 } ?: selectableLevels.firstOrNull() ?: 0.0
+        binding.composeViewBase.content { Surface {
+            Box(
+                modifier = Modifier.fillMaxSize(),
+                contentAlignment = Alignment.Center,
+            ) {
+                LevelForm(
+                    level = level.value,
+                    onLevelChange = {
+                        level.value = it
+                        checkIsFormComplete()
+                        updateMarkers(level.value)
+                    },
+                    selectableLevels = selectableLevels.value,
+                )
             }
-        }
-    }
-
-    private fun onSelectedLevel() {
-        checkIsFormComplete()
-        updateMarkers(selectedLevel)
+        } }
     }
 
     private fun updateMarkers(level: Double?) {
         showsGeometryMarkersListener?.clearMarkersForCurrentHighlighting()
         if (level == null) return
         val levels = listOf(Level.Single(level))
-        val markers = shopElementsAndGeometry.mapNotNull { (element, geometry) ->
+        val markers = elementsAndGeometry.mapNotNull { (element, geometry) ->
             if (!parseLevelsOrNull(element.tags).levelsIntersect(levels)) return@mapNotNull null
             val icon = getIcon(featureDictionary, element)
             val title = getTitle(element.tags)
@@ -109,8 +99,8 @@ abstract class AAddLevelForm : AbstractOsmQuestForm<String>() {
     }
 
     override fun onClickOk() {
-        applyAnswer(selectedLevel!!.toShortString())
+        applyAnswer(level.value!!.toShortString())
     }
 
-    override fun isFormComplete() = selectedLevel != null
+    override fun isFormComplete() = level.value != null
 }

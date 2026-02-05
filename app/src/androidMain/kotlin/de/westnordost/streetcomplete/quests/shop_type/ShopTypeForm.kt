@@ -10,6 +10,7 @@ import de.westnordost.streetcomplete.osm.POPULAR_PLACE_FEATURE_IDS
 import de.westnordost.streetcomplete.osm.isPlace
 import de.westnordost.streetcomplete.osm.toElement
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
+import de.westnordost.streetcomplete.util.getNameLabel
 import de.westnordost.streetcomplete.util.ktx.geometryType
 import de.westnordost.streetcomplete.view.controller.FeatureViewController
 import de.westnordost.streetcomplete.view.dialogs.SearchFeaturesDialog
@@ -60,7 +61,20 @@ class ShopTypeForm : AbstractOsmQuestForm<ShopTypeAnswer>() {
         when (selectedRadioButtonId) {
             R.id.vacantRadioButton    -> applyAnswer(IsShopVacant)
             R.id.leaveNoteRadioButton -> composeNote()
-            R.id.replaceRadioButton   -> applyAnswer(ShopType(featureCtrl.feature!!))
+            R.id.replaceRadioButton   -> {
+                // if the shop has **some** name (that is displayed to the user), we just want to
+                // update the shop, not replace it. The train of thought is:
+                // 1. when the user is asked about what kind of shop <named thing> is, but doesn't
+                //    see any shop by that name, he will just answer that it doesn't exist via
+                //    Uh.. -> Doesn't exist.
+                // 2. When on the other hand he *does* see a shop by that name, it is quite clear
+                //    that it is still the same shop, so we only update it, not replace it.
+                // 3. On the other hand, if the place has no name, the user will also not be able
+                //    to answer whether the place is now a different one than before, so we rather
+                //    replace it. (#6675)
+                val hasSomeName = getNameLabel(element.tags) != null
+                applyAnswer(ShopType(featureCtrl.feature!!, hasSomeName))
+            }
         }
     }
 

@@ -14,7 +14,7 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.quests.ferry.wayIdsInFerryRoutes
 
-class AddMaxWeight : OsmElementQuestType<MaxWeightAnswer>, AndroidQuest {
+class AddMaxWeight : OsmElementQuestType<List<MaxWeight>>, AndroidQuest {
 
     // We ask for the maximum weight of bridges and ferries.
     // The general filter is used for both:
@@ -55,14 +55,13 @@ class AddMaxWeight : OsmElementQuestType<MaxWeightAnswer>, AndroidQuest {
 
     override fun createForm() = AddMaxWeightForm()
 
-    override fun applyAnswerTo(answer: MaxWeightAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
-        when (answer) {
-            is MaxWeight -> {
-                answer.applyTo(tags)
+    override fun applyAnswerTo(answer: List<MaxWeight>, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
+        if (answer.isNotEmpty()) {
+            for (maxweight in answer) {
+                maxweight.applyTo(tags)
             }
-            is MaxWeightAnswer.NoSign -> {
-                tags["maxweight:signed"] = "no"
-            }
+        } else {
+            tags["maxweight:signed"] = "no"
         }
     }
 
