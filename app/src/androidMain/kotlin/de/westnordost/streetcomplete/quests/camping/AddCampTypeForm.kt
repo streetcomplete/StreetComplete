@@ -8,7 +8,7 @@ import de.westnordost.streetcomplete.quests.ARadioGroupQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import org.jetbrains.compose.resources.stringResource
 
-class AddCampTypeForm : ARadioGroupQuestForm<CampTypeAnswer, Campers>() {
+class AddCampTypeForm : ARadioGroupQuestForm<Campers, CampTypeAnswer>() {
 
     override val items = Campers.entries
 
