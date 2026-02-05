@@ -20,7 +20,7 @@ class AddTents : OsmFilterQuestType<Boolean>(), AndroidQuest {
           tourism ~ caravan_site|camp_site
           and !tents
     """
-    override val changesetComment = "Survey who may camp here"
+    override val changesetComment = "Survey whether tents may be used here"
     override val wikiLink = "Key:tents"
     override val icon = R.drawable.quest_tent
     override val achievements = listOf(OUTDOORS)
