@@ -21,7 +21,7 @@ class AddTents : OsmFilterQuestType<Boolean>(), AndroidQuest {
           and !tents
     """
     override val changesetComment = "Survey who may camp here"
-    override val wikiLink = "Key:caravans"
+    override val wikiLink = "Key:tents"
     override val icon = R.drawable.quest_tent
     // you can often see tents from the outside, so usually there is no need for this quest to be disabled by default
     override val achievements = listOf(OUTDOORS)
