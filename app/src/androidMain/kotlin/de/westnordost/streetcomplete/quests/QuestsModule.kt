@@ -487,8 +487,8 @@ fun questTypeRegistry(
 
     // inside camping sites
     114 to AddCaravans(),
-    189 to AddTents(),
-    190 to AddCabins(),
+    188 to AddTents(),
+    189 to AddCabins(),
     115 to AddCampDrinkingWater(),
     116 to AddCampShower(),
     117 to AddCampPower(),
