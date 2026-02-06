@@ -47,6 +47,7 @@ import de.westnordost.streetcomplete.data.user.achievements.editTypeAliasesModul
 import de.westnordost.streetcomplete.data.user.statistics.statisticsModule
 import de.westnordost.streetcomplete.data.user.userModule
 import de.westnordost.streetcomplete.data.visiblequests.visibleQuestsModule
+import de.westnordost.streetcomplete.data.weeklyosm.weeklyOsmModule
 import de.westnordost.streetcomplete.overlays.overlaysModule
 import de.westnordost.streetcomplete.quests.questsModule
 import de.westnordost.streetcomplete.screens.about.aboutScreenModule
@@ -138,6 +139,7 @@ class StreetCompleteApplication : Application() {
                 overlayModule,
                 urlConfigModule,
                 urlConfigModule,
+                weeklyOsmModule,
                 androidModule
             )
         }

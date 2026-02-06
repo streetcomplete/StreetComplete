@@ -12,7 +12,7 @@ import nl.adaptivity.xmlutil.xmlStreaming
 
 /** This cannot really be called an RSS parser. It actually only checks the time the last article
  *  has been published :-D */
-class WeeklyOsmRssFeedParser {
+class WeeklyOsmRssFeedParser() {
     /** Parse at what time the last edition of weekly OSM has been released */
     fun parseLastPublishDate(source: Source): Instant? {
         val reader = xmlStreaming.newReader(source)
