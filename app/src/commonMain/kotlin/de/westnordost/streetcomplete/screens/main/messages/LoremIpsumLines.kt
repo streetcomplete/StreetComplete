@@ -1,15 +1,25 @@
 package de.westnordost.streetcomplete.screens.main.messages
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
+import androidx.compose.material.LocalContentAlpha
+import androidx.compose.material.LocalContentColor
 import androidx.compose.material.LocalTextStyle
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.isSpecified
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
@@ -21,21 +31,28 @@ import kotlin.random.Random
 /**
  * Paints something like this
  *
+ * ```
  * ▉▉▉▉▉ ▉▉▉▉ ▉▉ ▉▉▉▉ ▉▉ ▉▉▉
  * ▉▉▉ ▉▉▉▉▉▉▉▉ ▉▉ ▉▉ ▉▉▉▉▉
  * ▉▉ ▉▉▉▉▉▉▉ ▉▉
  * ▉▉▉▉▉ ▉▉ ▉▉ ▉▉▉▉ ▉▉ ▉▉▉▉▉
  * ▉▉▉ ▉▉ ▉▉▉▉ ▉▉▉ ▉▉▉▉
+ * ```
  * */
 @Composable
 fun LoremIpsumLines(
     modifier: Modifier = Modifier,
-    color: Color = LocalTextStyle.current.color,
-    fontSize: TextUnit = LocalTextStyle.current.fontSize
+    textStyle: TextStyle = LocalTextStyle.current,
 ) {
     val random = remember { Random(Random.Default.nextInt()) }
-    val lineHeight = fontSize.toDp().toPx()
-    val fontHeight = lineHeight * 0.67f // characters usually don't fill the whole line
+    val color =
+        if (textStyle.color.isSpecified) {
+            textStyle.color
+        } else {
+            LocalContentColor.current.copy(LocalContentAlpha.current)
+        }
+    val lineHeight = textStyle.lineHeight.toDp().toPx()
+    val fontHeight = textStyle.fontSize.toDp().toPx()
     val fontWidth = fontHeight * 0.67f // characters are usually higher than wide
 
     Box(modifier.drawBehind {
@@ -45,7 +62,7 @@ fun LoremIpsumLines(
         while (y + lineHeight < size.height) { // the line must fit in full
             while (x + fontWidth * 2 < size.width) { // a two-letter word must fit
                 val length = random.nextInt(2, 10) * fontWidth
-                val yCenter = y + lineHeight - fontHeight / 2f
+                val yCenter = y + lineHeight / 2f
                 val xEnd = min(x + length, size.width) // don't draw out of bounds
                 drawLine(
                     color = color,
@@ -55,7 +72,8 @@ fun LoremIpsumLines(
                 )
                 w++
                 // random paragraphs
-                if (w > random.nextInt(10, 50)) {
+                if (w > random.nextInt(10, 40)) {
+                    w = 0
                     break
                 }
                 x += length + fontWidth // add space
@@ -64,10 +82,4 @@ fun LoremIpsumLines(
             x = 0f
         }
     })
-}
-
-@Preview
-@Composable
-private fun LoremIpsumLinesPreview() {
-    LoremIpsumLines(Modifier.width(240.dp).height(600.dp))
 }

@@ -186,6 +186,8 @@ The info you enter is directly added to OpenStreetMap in your name, without the 
     <string name="quest_source_dialog_note">Only information that was verified in-person should be entered.</string>
     <string name="dialog_session_dont_show_again">Don’t show again for this session</string>
 
+    <string name="dialog_dont_notify_again">Don’t notify again</string>
+
     <!-- Tutorial screen -->
 
     <string name="tutorial_welcome_to_osm">Welcome to OpenStreetMap</string>
@@ -273,7 +275,7 @@ Additionally, some overlays allow you to add new data at the position of a displ
 
 If you are overwhelmed by the number of quests, you can always fine-tune which quests are displayed to you and in what order in the settings.</string>
 
-    <string name="weekly_osm_button">Open WeeklyOSM</string>
+    <string name="weekly_osm_new_edition_title">New Edition!</string>
 
     <!-- Team mode -->
 
@@ -729,6 +731,19 @@ Before uploading your changes, the app checks with a &lt;a href="https://www.wes
     <string name="quest_atm_operator_title">Which bank operates this ATM?</string>
 
     <string name="quest_artwork_title">What kind of artwork is this?</string>
+    <string name="quest_artwork_sculpture">Sculpture</string>
+    <string name="quest_artwork_statue">Statue</string>
+    <string name="quest_artwork_mural">Mural</string>
+    <string name="quest_artwork_graffiti">Graffiti</string>
+    <string name="quest_artwork_installation">Installation</string>
+    <string name="quest_artwork_bust">Bust</string>
+    <string name="quest_artwork_stone">Stone</string>
+    <string name="quest_artwork_painting">Painting</string>
+    <string name="quest_artwork_street_art">Other Street Art</string>
+    <string name="quest_artwork_architecture">Architecture</string>
+    <string name="quest_artwork_mosaic">Mosaic</string>
+    <string name="quest_artwork_relief">Relief</string>
+    <string name="quest_artwork_fountain">Fountain</string>
 
     <string name="quest_baby_changing_table_title2">Does this place have a baby changing table?</string>
 

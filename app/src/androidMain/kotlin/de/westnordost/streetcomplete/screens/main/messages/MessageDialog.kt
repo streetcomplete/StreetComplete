@@ -58,6 +58,9 @@ fun MessageDialog(
                     // note that weeklyOSM website is smart enough to show the site in the user
                     // preferred language
                     uriHandler.openUri("https://www.weeklyosm.eu")
+                },
+                onToggleDontShowAgain = { dontShowAgain ->
+                    // TODO
                 }
             )
         }
