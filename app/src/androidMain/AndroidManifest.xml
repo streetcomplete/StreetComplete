@@ -34,6 +34,7 @@
         <package android:name="com.android.vending"/>
     </queries>
 
+
     <application
         android:name="de.westnordost.streetcomplete.StreetCompleteApplication"
         android:allowBackup="false"
