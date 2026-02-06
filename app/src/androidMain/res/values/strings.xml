@@ -273,6 +273,8 @@ Additionally, some overlays allow you to add new data at the position of a displ
 
 If you are overwhelmed by the number of quests, you can always fine-tune which quests are displayed to you and in what order in the settings.</string>
 
+    <string name="weekly_osm_button">Open weeklyOSM</string>
+    <string name="weekly_osm_new_edition_title">New Edition!</string>
 
     <!-- Team mode -->
 

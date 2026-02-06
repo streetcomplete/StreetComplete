@@ -33,36 +33,3 @@ class WeeklyOsmRssFeedParser {
         return null
     }
 }
-
-/**
-  Return the directory name for the edition of weekly OSM in the given locale or null if
-  and edition in that language doesn't exist.
- */
-fun getWeeklyOsmLanguage(locale: Locale): String? {
-    if (locale.language == "pt") {
-        if (locale.region == "BR") return "br"
-        else "pt"
-    }
-    if (locale.language == "cs") {
-        return "cz"
-    }
-
-    val weeklyOsmLanguages = listOf(
-        "cs",
-        "de",
-        "en",
-        "es",
-        "fr",
-        "it",
-        "ja",
-        "ko",
-        "pt",
-        "ru",
-        "uk",
-        "zh",
-    )
-    if (locale.language in weeklyOsmLanguages) {
-        return locale.language
-    }
-    return null
-}

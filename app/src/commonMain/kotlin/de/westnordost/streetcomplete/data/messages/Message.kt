@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.data.messages
 import de.westnordost.streetcomplete.data.changelog.Changelog
 import de.westnordost.streetcomplete.data.user.achievements.Achievement
 import de.westnordost.streetcomplete.data.user.achievements.Link
+import kotlinx.datetime.LocalDate
 
 sealed interface Message {
     /** User has unread messages in his OSM inbox */
@@ -20,4 +21,7 @@ sealed interface Message {
 
     /** The user is informed about being able to select which quests he wants to solve */
     data object QuestSelectionHint : Message
+
+    /** New edition of weekly OSM */
+    data class NewWeeklyOSM(val date: LocalDate) : Message
 }

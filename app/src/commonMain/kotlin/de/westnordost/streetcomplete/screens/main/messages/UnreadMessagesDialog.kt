@@ -102,6 +102,7 @@ fun UnreadMessagesDialog(
         }
     }
 }
+
 @Composable
 private fun Envelope(
     opening: Float,

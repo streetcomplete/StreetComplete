@@ -49,5 +49,17 @@ fun MessageDialog(
                 }
             )
         }
+        is Message.NewWeeklyOSM -> {
+            val uriHandler = LocalUriHandler.current
+            WeeklyOsmDialog(
+                date = message.date,
+                onDismissRequest = onDismissRequest,
+                onClickOpenWeeklyOsm = {
+                    // note that weeklyOSM website is smart enough to show the site in the user
+                    // preferred language
+                    uriHandler.openUri("https://www.weeklyosm.eu")
+                }
+            )
+        }
     }
 }
