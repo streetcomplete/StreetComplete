@@ -39,7 +39,7 @@ import kotlin.text.replace
             TextButton(
                 onClick = {
                     if (comment.isNotEmpty()) {
-                        onConfirm(comment)
+                        onConfirm(comment.trim())
                         onDismissRequest()
                     }
                 },
@@ -68,7 +68,7 @@ import kotlin.text.replace
                 TextField(
                     value = comment,
                     onValueChange = {
-                        val noDoubleQuotes = it.replace("\"", "").trim()
+                        val noDoubleQuotes = it.replace("\"", "")
                         if (noDoubleQuotes.length < 253) comment = noDoubleQuotes
                     }
                 )
