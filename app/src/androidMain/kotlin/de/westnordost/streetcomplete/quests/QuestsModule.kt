@@ -358,7 +358,7 @@ fun questTypeRegistry(
     49 to CheckExistence(getFeature),
     155 to AddGritBinSeasonal(),
 
-    187 to AddArtworkType(),
+    190 to AddArtworkType(),
 
     50 to AddBoardType(),
     171 to AddBoardName(),
