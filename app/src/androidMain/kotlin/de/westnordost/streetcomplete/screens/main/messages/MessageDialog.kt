@@ -49,7 +49,7 @@ fun MessageDialog(
                 }
             )
         }
-        is Message.NewWeeklyOSM -> {
+        is Message.NewWeeklyOsm -> {
             val uriHandler = LocalUriHandler.current
             WeeklyOsmDialog(
                 date = message.date,

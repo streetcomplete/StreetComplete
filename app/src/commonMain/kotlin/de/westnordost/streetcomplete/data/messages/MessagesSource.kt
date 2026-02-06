@@ -70,6 +70,9 @@ class MessagesSource(
 
         // must hold a reference because the listener is a weak reference
         settingsListeners += prefs.onQuestSelectionHintStateChanged { onNumberOfMessagesUpdated() }
+
+        settingsListeners += prefs.onOsmWeeklyLastPublishDateChanged { onNumberOfMessagesUpdated() }
+        settingsListeners += prefs.onOsmWeeklyLastNotifiedPublishDateChanged { onNumberOfMessagesUpdated() }
     }
 
     fun addListener(listener: UpdateListener) {
@@ -84,6 +87,9 @@ class MessagesSource(
         val hasUnreadMessages = userDataController.unreadMessagesCount > 0
         val lastVersion = prefs.lastChangelogVersion
         val hasNewVersion = lastVersion != null && BuildConfig.VERSION_NAME != lastVersion
+        val hasNewWeeklyOsm =
+            prefs.osmWeeklyLastPublishDate != null &&
+            prefs.osmWeeklyLastPublishDate != prefs.osmWeeklyLastNotifiedPublishDate
         if (lastVersion == null) {
             prefs.lastChangelogVersion = BuildConfig.VERSION_NAME
         }
@@ -92,6 +98,7 @@ class MessagesSource(
         if (shouldShowQuestSelectionHint) messages++
         if (hasUnreadMessages) messages++
         if (hasNewVersion) messages++
+        if (hasNewWeeklyOsm) messages++
         messages += newAchievements.size
         return messages
     }
@@ -113,16 +120,22 @@ class MessagesSource(
             return Message.QuestSelectionHint
         }
 
+        val unreadOsmMessages = userDataController.unreadMessagesCount
+        if (unreadOsmMessages > 0) {
+            userDataController.unreadMessagesCount = 0
+            return Message.OsmUnreadMessages(unreadOsmMessages)
+        }
+
         val newAchievement = newAchievements.removeFirstOrNull()
         if (newAchievement != null) {
             onNumberOfMessagesUpdated()
             return newAchievement
         }
 
-        val unreadOsmMessages = userDataController.unreadMessagesCount
-        if (unreadOsmMessages > 0) {
-            userDataController.unreadMessagesCount = 0
-            return Message.OsmUnreadMessages(unreadOsmMessages)
+        val weeklyOsmPublishDate = prefs.osmWeeklyLastPublishDate
+        if (weeklyOsmPublishDate != null && weeklyOsmPublishDate != prefs.osmWeeklyLastNotifiedPublishDate) {
+            prefs.osmWeeklyLastNotifiedPublishDate = weeklyOsmPublishDate
+            return Message.NewWeeklyOsm(weeklyOsmPublishDate)
         }
 
         return null

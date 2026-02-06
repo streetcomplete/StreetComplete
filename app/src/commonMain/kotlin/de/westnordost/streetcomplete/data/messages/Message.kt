@@ -23,5 +23,5 @@ sealed interface Message {
     data object QuestSelectionHint : Message
 
     /** New edition of weekly OSM */
-    data class NewWeeklyOSM(val date: LocalDate) : Message
+    data class NewWeeklyOsm(val date: LocalDate) : Message
 }

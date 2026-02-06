@@ -8,6 +8,8 @@ import com.russhwolf.settings.int
 import com.russhwolf.settings.long
 import com.russhwolf.settings.nullableString
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.util.ktx.putStringOrNull
+import kotlinx.datetime.LocalDate
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.serializer
@@ -126,6 +128,21 @@ class Preferences(private val prefs: ObservableSettings) {
             callback(it?.let { QuestSelectionHintState.valueOf(it) } ?: QuestSelectionHintState.NOT_SHOWN)
         }
 
+    // messages
+    var osmWeeklyLastPublishDate: LocalDate?
+        set(value) { prefs.putStringOrNull(OSM_WEEKLY_LAST_PUB_DATE, value?.toString()) }
+        get() = prefs.getStringOrNull(OSM_WEEKLY_LAST_PUB_DATE)?.let { LocalDate.parse(it) }
+
+    fun onOsmWeeklyLastPublishDateChanged(callback: () -> Unit): SettingsListener =
+        prefs.addStringOrNullListener(OSM_WEEKLY_LAST_PUB_DATE) { callback() }
+
+    var osmWeeklyLastNotifiedPublishDate: LocalDate?
+        set(value) { prefs.putStringOrNull(OSM_WEEKLY_LAST_NOTIFIED_PUB_DATE, value?.toString()) }
+        get() = prefs.getStringOrNull(OSM_WEEKLY_LAST_NOTIFIED_PUB_DATE)?.let { LocalDate.parse(it) }
+
+    fun onOsmWeeklyLastNotifiedPublishDateChanged(callback: () -> Unit): SettingsListener =
+        prefs.addStringOrNullListener(OSM_WEEKLY_LAST_NOTIFIED_PUB_DATE) { callback() }
+
     // quest & overlay UI
     var preferredLanguageForNames: String? by prefs.nullableString(PREFERRED_LANGUAGE_FOR_NAMES)
     var selectedEditTypePreset: Long by prefs.long(SELECTED_EDIT_TYPE_PRESET, 0L)
@@ -220,7 +237,11 @@ class Preferences(private val prefs: ObservableSettings) {
         // main screen UI
         private const val HAS_SHOWN_TUTORIAL = "hasShownTutorial"
         private const val HAS_SHOWN_OVERLAYS_TUTORIAL = "hasShownOverlaysTutorial"
+
+        // messages
         private const val QUEST_SELECTION_HINT_STATE = "questSelectionHintState"
+        private const val OSM_WEEKLY_LAST_PUB_DATE = "osmWeeklyLastPubDate"
+        private const val OSM_WEEKLY_LAST_NOTIFIED_PUB_DATE = "osmWeeklyLastNotifiedPubDate"
 
         // map state
         private const val MAP_LATITUDE = "map.latitude"
