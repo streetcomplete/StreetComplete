@@ -19,6 +19,7 @@ import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.ui.common.ZoomInIcon
 import de.westnordost.streetcomplete.ui.common.ZoomOutIcon
 import androidx.compose.ui.tooling.preview.Preview
+import de.westnordost.streetcomplete.ui.ktx.pxToDp
 
 /** Combined control for zooming in and out */
 @Composable
@@ -32,6 +33,7 @@ fun ZoomButtons(
         backgroundColor = MaterialTheme.colors.surface,
     ),
 ) {
+    val pxToDp = 1.pxToDp().value
     Surface(
         modifier = modifier,
         shape = CircleShape,
@@ -45,7 +47,7 @@ fun ZoomButtons(
             .pointerInput(Unit) {
                 detectVerticalDragGestures { change, dragAmount ->
                     change.consume()
-                    onZoomDrag(-dragAmount.dp.value) // dragAmount is pixels, we want dp
+                    onZoomDrag(-dragAmount * pxToDp) // dragAmount is pixels, we want dp
                 }
             }
         ) {
