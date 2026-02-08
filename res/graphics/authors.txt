@@ -423,6 +423,7 @@ quest/
     seating.svg
     shelter_capacity.svg
     shower.svg
+    shower_hot_water.svg             modified from shower.svg
     sidewalk.svg
     sidewalk_surface.svg             @krisdoodle45 (based on way_surface.svg)
     smoking.svg
