@@ -104,11 +104,11 @@ private val recyclingOlderThan2Years =
 private val allKnownMaterials = RecyclingMaterial.entries.map { "recycling:" + it.value }
 
 private fun Element.hasAnyRecyclingMaterials(): Boolean =
-    tags.any { it.key.startsWith("recycling:") && it.value == "yes" }
+    tags.any { it.key.startsWith("recycling:") && (it.value == "yes" || it.value == "only") }
 
 private fun Element.hasUnknownRecyclingMaterials(): Boolean =
     tags.any {
         it.key.startsWith("recycling:")
         && it.key !in allKnownMaterials
-        && it.value == "yes"
+        && (it.value == "yes" || it.value == "only")
     }
