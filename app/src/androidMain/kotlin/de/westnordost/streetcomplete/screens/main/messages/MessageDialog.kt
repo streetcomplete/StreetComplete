@@ -6,6 +6,7 @@ import androidx.compose.ui.platform.LocalUriHandler
 import de.westnordost.streetcomplete.data.messages.Message
 import de.westnordost.streetcomplete.screens.settings.SettingsActivity
 import de.westnordost.streetcomplete.screens.user.achievements.AchievementDialog
+import kotlin.reflect.KClass
 
 /** Dialog that shows a Message */
 @Composable
@@ -13,6 +14,7 @@ fun MessageDialog(
     message: Message,
     allQuestIconIds: List<Int>,
     onDismissRequest: () -> Unit,
+    onToggleDontNotifyAgain: (KClass<out Message>, Boolean) -> Unit,
 ) {
     when (message) {
         is Message.NewAchievement -> {
@@ -59,8 +61,8 @@ fun MessageDialog(
                     // preferred language
                     uriHandler.openUri("https://www.weeklyosm.eu")
                 },
-                onToggleDontShowAgain = { dontShowAgain ->
-                    // TODO
+                onToggleDontNotifyAgain = { dontNotifyAgain ->
+                    onToggleDontNotifyAgain(Message.NewWeeklyOsm::class, dontNotifyAgain)
                 }
             )
         }

@@ -71,7 +71,7 @@ fun WeeklyOsmDialog(
     date: LocalDate,
     onDismissRequest: () -> Unit,
     onClickOpenWeeklyOsm: () -> Unit,
-    onToggleDontShowAgain: (Boolean) -> Unit,
+    onToggleDontNotifyAgain: (Boolean) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     val appear = remember { Animatable(0f) }
@@ -112,7 +112,7 @@ fun WeeklyOsmDialog(
                 WeeklyOsmNewspaperContent(
                     date = date,
                     onClickOpenWeeklyOsm = onClickOpenWeeklyOsm,
-                    onToggleDontShowAgain = onToggleDontShowAgain,
+                    onToggleDontShowAgain = onToggleDontNotifyAgain,
                     modifier = Modifier.rotate(-3f)
                 )
             }
