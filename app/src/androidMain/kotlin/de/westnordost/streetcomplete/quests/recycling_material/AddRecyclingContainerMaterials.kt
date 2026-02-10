@@ -42,8 +42,9 @@ class AddRecyclingContainerMaterials : OsmElementQuestType<RecyclingContainerMat
          * StreetComplete. */
         filter.matches(element) && (
             !element.hasAnyRecyclingMaterials()
-            || recyclingOlderThan2Years.matches(element) && !element.hasUnknownRecyclingMaterials()
-        )
+                || (recyclingOlderThan2Years.matches(element) && !element.hasUnknownRecyclingMaterials())
+                || element.hasInconsistentRecyclingMaterials()
+            )
 
     override fun createForm() = AddRecyclingContainerMaterialsForm()
 
@@ -61,7 +62,7 @@ class AddRecyclingContainerMaterials : OsmElementQuestType<RecyclingContainerMat
     private fun applyRecyclingMaterialsAnswer(materials: Iterable<RecyclingMaterial>, tags: Tags) {
         // first clear recycling:* taggings previously "yes"
         for ((key, value) in tags.entries) {
-            if (key.startsWith("recycling:") && value == "yes") {
+            if (key.startsWith("recycling:") && (value == "yes" || value == "only")) {
                 tags.remove(key)
             }
         }
@@ -109,6 +110,17 @@ private fun Element.hasAnyRecyclingMaterials(): Boolean =
 private fun Element.hasUnknownRecyclingMaterials(): Boolean =
     tags.any {
         it.key.startsWith("recycling:")
-        && it.key !in allKnownMaterials
-        && (it.value == "yes" || it.value == "only")
+            && it.key !in allKnownMaterials
+            && (it.value == "yes" || it.value == "only")
     }
+
+private fun Element.hasInconsistentRecyclingMaterials(): Boolean {
+    val recyclingTags = tags
+        .filter { it.key.startsWith("recycling:") }
+        .map { it.value }
+
+    val hasOnly = recyclingTags.any { it == "only" }
+    val hasYes = recyclingTags.any { it == "yes" }
+
+    return hasOnly && hasYes
+}
