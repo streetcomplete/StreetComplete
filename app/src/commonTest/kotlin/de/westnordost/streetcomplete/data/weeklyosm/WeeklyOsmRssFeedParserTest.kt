@@ -12,7 +12,7 @@ import kotlin.test.assertNotNull
 
 class WeeklyOsmRssFeedParserTest {
     @Test fun parse() {
-        // snippt from actual RSS feed
+        // snippet from actual RSS feed
         val buffer = Buffer()
         buffer.writeString("""
             <?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
