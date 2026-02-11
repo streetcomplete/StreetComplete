@@ -22,8 +22,6 @@ class AddFerryToll : OsmElementQuestType<Boolean>, AndroidQuest {
           route = ferry
           and !toll
           and !fee
-          and toll !~ ".+"
-          and fee !~ ".+"
         """.toElementFilterExpression()
     }
 
