@@ -627,7 +627,6 @@ Before uploading your changes, the app checks with a &lt;a href="https://www.wes
 
     <string name="pref_title_message_achievements">Unlocked achievements</string>
     <string name="pref_title_message_weekly_osm">New editions of weeklyOSM</string>
-    <string name="pref_title_message_osm_messages">Messages from other users</string>
     <string name="pref_title_message_changelog">New app releases</string>
 
 

@@ -59,14 +59,6 @@ fun MessageSelectionScreen(
                 Switch(checked = showNewAchievements, onCheckedChange = null)
             }
 
-            val showUnreadOsmMessages = Message.OsmUnreadMessages::class !in disabledMessageTypes
-            Preference(
-                name = stringResource(Res.string.pref_title_message_osm_messages),
-                onClick = { viewModel.toggleDisableMessageType(Message.OsmUnreadMessages::class, showUnreadOsmMessages) },
-            ) {
-                Switch(checked = showUnreadOsmMessages, onCheckedChange = null)
-            }
-
             val showChangelog = Message.NewVersion::class !in disabledMessageTypes
             Preference(
                 name = stringResource(Res.string.pref_title_message_changelog),
