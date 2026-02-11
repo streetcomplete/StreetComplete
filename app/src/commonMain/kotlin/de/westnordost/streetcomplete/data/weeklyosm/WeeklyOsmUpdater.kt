@@ -9,6 +9,7 @@ import kotlinx.coroutines.IO
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
 
+/** Updates the last publish date of weeklyOSM */
 class WeeklyOsmUpdater(
     private val apiClient: WeeklyOsmApiClient,
     private val prefs: Preferences,
@@ -22,7 +23,7 @@ class WeeklyOsmUpdater(
                 prefs.osmWeeklyLastPublishDate = publishDate.toLocalDate()
             }
         } catch (e: Exception) {
-            Log.w(TAG, "Unable to download user details", e)
+            Log.w(TAG, "Unable to download the last weeklyOSM publish date", e)
         }
     }
 

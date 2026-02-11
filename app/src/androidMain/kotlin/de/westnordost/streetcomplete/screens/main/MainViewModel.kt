@@ -42,7 +42,7 @@ abstract class MainViewModel : ViewModel() {
     abstract val allQuestTypes: List<QuestType>
     abstract fun toggleDisableMessageType(messageType: KClass<out Message>, disable: Boolean)
 
-        /* overlays */
+    /* overlays */
     abstract val selectedOverlay: StateFlow<Overlay?>
     abstract val overlays: StateFlow<List<Overlay>>
 

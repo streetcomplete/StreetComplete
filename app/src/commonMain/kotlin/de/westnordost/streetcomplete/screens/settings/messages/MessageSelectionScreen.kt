@@ -31,6 +31,8 @@ import de.westnordost.streetcomplete.ui.common.BackIcon
 import de.westnordost.streetcomplete.ui.common.settings.Preference
 import org.jetbrains.compose.resources.stringResource
 
+/** Screen in which to select which message types should be shown to the user / which are supressed
+ * */
 @Composable
 fun MessageSelectionScreen(
     viewModel: MessageSelectionViewModel,
