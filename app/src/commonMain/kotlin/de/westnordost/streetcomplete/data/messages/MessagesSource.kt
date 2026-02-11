@@ -71,8 +71,8 @@ class MessagesSource(
         // must hold a reference because the listener is a weak reference
         settingsListeners += prefs.onDisabledMessageTypesChanged { onNumberOfMessagesUpdated() }
         settingsListeners += prefs.onQuestSelectionHintStateChanged { onNumberOfMessagesUpdated() }
-        settingsListeners += prefs.onOsmWeeklyLastPublishDateChanged { onNumberOfMessagesUpdated() }
-        settingsListeners += prefs.onOsmWeeklyLastNotifiedPublishDateChanged { onNumberOfMessagesUpdated() }
+        settingsListeners += prefs.onWeeklyOsmLastPublishDateChanged { onNumberOfMessagesUpdated() }
+        settingsListeners += prefs.onWeeklyOsmLastNotifiedPublishDateChanged { onNumberOfMessagesUpdated() }
     }
 
     fun addListener(listener: UpdateListener) {
@@ -95,8 +95,8 @@ class MessagesSource(
 
         val showNewWeeklyOsm =
             Message.NewWeeklyOsm::class !in disabled &&
-            prefs.osmWeeklyLastPublishDate != null &&
-            prefs.osmWeeklyLastPublishDate != prefs.osmWeeklyLastNotifiedPublishDate
+            prefs.weeklyOsmLastPublishDate != null &&
+            prefs.weeklyOsmLastPublishDate != prefs.weeklyOsmLastNotifiedPublishDate
 
         val showNewAchievements = Message.NewAchievement::class !in disabled
 
@@ -160,9 +160,9 @@ class MessagesSource(
         }
 
         if (Message.NewWeeklyOsm::class !in disabled) {
-            val weeklyOsmPublishDate = prefs.osmWeeklyLastPublishDate
-            if (weeklyOsmPublishDate != null && weeklyOsmPublishDate != prefs.osmWeeklyLastNotifiedPublishDate) {
-                prefs.osmWeeklyLastNotifiedPublishDate = weeklyOsmPublishDate
+            val weeklyOsmPublishDate = prefs.weeklyOsmLastPublishDate
+            if (weeklyOsmPublishDate != null && weeklyOsmPublishDate != prefs.weeklyOsmLastNotifiedPublishDate) {
+                prefs.weeklyOsmLastNotifiedPublishDate = weeklyOsmPublishDate
                 return Message.NewWeeklyOsm(weeklyOsmPublishDate)
             }
         }

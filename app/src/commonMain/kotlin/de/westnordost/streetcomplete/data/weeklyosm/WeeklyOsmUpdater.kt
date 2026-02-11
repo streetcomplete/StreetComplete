@@ -20,7 +20,7 @@ class WeeklyOsmUpdater(
         try {
             val publishDate = apiClient.getLastPublishDate()
             if (publishDate != null) {
-                prefs.osmWeeklyLastPublishDate = publishDate.toLocalDate()
+                prefs.weeklyOsmLastPublishDate = publishDate.toLocalDate()
             }
         } catch (e: Exception) {
             Log.w(TAG, "Unable to download the last weeklyOSM publish date", e)

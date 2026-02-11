@@ -151,19 +151,19 @@ class Preferences(private val prefs: ObservableSettings) {
             callback(it?.let { QuestSelectionHintState.valueOf(it) } ?: QuestSelectionHintState.NOT_SHOWN)
         }
 
-    var osmWeeklyLastPublishDate: LocalDate?
-        set(value) { prefs.putStringOrNull(OSM_WEEKLY_LAST_PUB_DATE, value?.toString()) }
-        get() = prefs.getStringOrNull(OSM_WEEKLY_LAST_PUB_DATE)?.let { LocalDate.parse(it) }
+    var weeklyOsmLastPublishDate: LocalDate?
+        set(value) { prefs.putStringOrNull(WEEKLY_OSM_LAST_PUB_DATE, value?.toString()) }
+        get() = prefs.getStringOrNull(WEEKLY_OSM_LAST_PUB_DATE)?.let { LocalDate.parse(it) }
 
-    fun onOsmWeeklyLastPublishDateChanged(callback: () -> Unit): SettingsListener =
-        prefs.addStringOrNullListener(OSM_WEEKLY_LAST_PUB_DATE) { callback() }
+    fun onWeeklyOsmLastPublishDateChanged(callback: () -> Unit): SettingsListener =
+        prefs.addStringOrNullListener(WEEKLY_OSM_LAST_PUB_DATE) { callback() }
 
-    var osmWeeklyLastNotifiedPublishDate: LocalDate?
-        set(value) { prefs.putStringOrNull(OSM_WEEKLY_LAST_NOTIFIED_PUB_DATE, value?.toString()) }
-        get() = prefs.getStringOrNull(OSM_WEEKLY_LAST_NOTIFIED_PUB_DATE)?.let { LocalDate.parse(it) }
+    var weeklyOsmLastNotifiedPublishDate: LocalDate?
+        set(value) { prefs.putStringOrNull(WEEKLY_OSM_LAST_NOTIFIED_PUB_DATE, value?.toString()) }
+        get() = prefs.getStringOrNull(WEEKLY_OSM_LAST_NOTIFIED_PUB_DATE)?.let { LocalDate.parse(it) }
 
-    fun onOsmWeeklyLastNotifiedPublishDateChanged(callback: () -> Unit): SettingsListener =
-        prefs.addStringOrNullListener(OSM_WEEKLY_LAST_NOTIFIED_PUB_DATE) { callback() }
+    fun onWeeklyOsmLastNotifiedPublishDateChanged(callback: () -> Unit): SettingsListener =
+        prefs.addStringOrNullListener(WEEKLY_OSM_LAST_NOTIFIED_PUB_DATE) { callback() }
 
     // quest & overlay UI
     var preferredLanguageForNames: String? by prefs.nullableString(PREFERRED_LANGUAGE_FOR_NAMES)
@@ -266,8 +266,8 @@ class Preferences(private val prefs: ObservableSettings) {
         // messages
         private const val DISABLED_MESSAGE_TYPES = "disabledMessageTypes"
         private const val QUEST_SELECTION_HINT_STATE = "questSelectionHintState"
-        private const val OSM_WEEKLY_LAST_PUB_DATE = "osmWeeklyLastPubDate"
-        private const val OSM_WEEKLY_LAST_NOTIFIED_PUB_DATE = "osmWeeklyLastNotifiedPubDate"
+        private const val WEEKLY_OSM_LAST_PUB_DATE = "weeklyOsmLastPubDate"
+        private const val WEEKLY_OSM_LAST_NOTIFIED_PUB_DATE = "weeklyOsmLastNotifiedPubDate"
 
         // map state
         private const val MAP_LATITUDE = "map.latitude"
