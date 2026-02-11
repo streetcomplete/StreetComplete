@@ -27,8 +27,6 @@ class AddShowerHotWater : OsmFilterQuestType<Boolean>(), AndroidQuest {
     override val icon = R.drawable.quest_shower_hot_water
     override val achievements = listOf(OUTDOORS)
 
-    override val hint = R.string.quest_shower_hot_water_hint
-
     override fun getTitle(tags: Map<String, String>) =
         R.string.quest_shower_hot_water_title
 
