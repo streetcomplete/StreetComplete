@@ -7,7 +7,7 @@ import de.westnordost.streetcomplete.data.weeklyosm.WeeklyOsmUpdater
 import de.westnordost.streetcomplete.util.ktx.now
 import kotlinx.datetime.LocalDate
 
-/** Updates user data and from feeds, i.e. checks for new weeklyOsm, events, ... */
+/** Updates user data and from feeds, i.e. checks for new weeklyOSM, events, ... */
 class FeedsUpdater(
     private val userUpdater: UserUpdater,
     private val weeklyOsmUpdater: WeeklyOsmUpdater,
