@@ -137,7 +137,7 @@ private fun Newspaper(
                     rotate(-6f) { drawRect(Color(0xffd9cec3)) }
                     rotate(3f) { drawRect(Color(0xffc7bbb4)) }
                 }
-                // gradient towards the for a folded-newspaper look
+                // gradient towards the bottom for a folded-newspaper look
                 drawRect(Brush.verticalGradient(0.8f to Color(0xffe0e0e0), 1.0f to Color(0xffb0a199)))
             }
         }
