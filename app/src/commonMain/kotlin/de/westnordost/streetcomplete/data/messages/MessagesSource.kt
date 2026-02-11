@@ -162,11 +162,13 @@ class MessagesSource(
 
         if (Message.NewWeeklyOsm::class !in disabled) {
             val weeklyOsmPublishDate = prefs.weeklyOsmLastPublishDate
-            if (weeklyOsmPublishDate != null && weeklyOsmPublishDate != prefs.weeklyOsmLastNotifiedPublishDate) {
-                if (achievementsSource.getLinks().any { it.id == "weeklyosm" }) {
-                    prefs.weeklyOsmLastNotifiedPublishDate = weeklyOsmPublishDate
-                    return Message.NewWeeklyOsm(weeklyOsmPublishDate)
-                }
+            if (
+                weeklyOsmPublishDate != null
+                && weeklyOsmPublishDate != prefs.weeklyOsmLastNotifiedPublishDate
+                && achievementsSource.getLinks().any { it.id == "weeklyosm" }
+            ) {
+                prefs.weeklyOsmLastNotifiedPublishDate = weeklyOsmPublishDate
+                return Message.NewWeeklyOsm(weeklyOsmPublishDate)
             }
         }
 
