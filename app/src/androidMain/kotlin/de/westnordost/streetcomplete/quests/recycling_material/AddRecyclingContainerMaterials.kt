@@ -60,7 +60,7 @@ class AddRecyclingContainerMaterials : OsmElementQuestType<RecyclingContainerMat
     }
 
     private fun applyRecyclingMaterialsAnswer(materials: Iterable<RecyclingMaterial>, tags: Tags) {
-        // first clear recycling:* taggings previously "yes"
+        // first clear recycling:* taggings previously "yes" or "only"
         for ((key, value) in tags.entries) {
             if (key.startsWith("recycling:") && (value == "yes" || value == "only")) {
                 tags.remove(key)
@@ -115,12 +115,13 @@ private fun Element.hasUnknownRecyclingMaterials(): Boolean =
     }
 
 private fun Element.hasInconsistentRecyclingMaterials(): Boolean {
-    val recyclingTags = tags
+    val recyclingValues = tags
         .filter { it.key.startsWith("recycling:") }
         .map { it.value }
 
-    val hasOnly = recyclingTags.any { it == "only" }
-    val hasYes = recyclingTags.any { it == "yes" }
+    val hasOnly = recyclingValues.any { it == "only" }
+    val hasYes = recyclingValues.any { it == "yes" }
+    val onlyCount = recyclingValues.count { it == "only" }
 
-    return hasOnly && hasYes
+    return (hasOnly && hasYes) || onlyCount > 1
 }
