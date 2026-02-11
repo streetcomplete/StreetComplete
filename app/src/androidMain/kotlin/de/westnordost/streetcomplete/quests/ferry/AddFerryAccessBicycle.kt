@@ -9,36 +9,37 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.AndroidQuest
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.RARE
 import de.westnordost.streetcomplete.osm.Tags
 
-class AddFerryAccessBicycle : OsmElementQuestType<FerryBicycleAccess>, AndroidQuest {
+class AddFerryAccessBicycle : OsmElementQuestType<FerryBicycleAccessAnswer>, AndroidQuest {
 
     private val filter by lazy {
-        "ways, relations with route = ferry and !bicycle".toElementFilterExpression()
+        "ways, relations with route = ferry and !bicycle and !bicycle:signed"
+            .toElementFilterExpression()
     }
+
     override val changesetComment = "Specify ferry access for bicycles"
     override val wikiLink = "Tag:route=ferry"
     override val icon = R.drawable.ic_quest_ferry_bicycle
     override val hasMarkersAtEnds = true
-    override val achievements = listOf(RARE, BICYCLIST)
+    override val achievements = listOf(RARE, EditTypeAchievement.BICYCLIST)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_ferry_bicycle_title
 
     override fun createForm() = AddFerryAccessBicycleForm()
 
-    override fun applyAnswerTo(answer: FerryBicycleAccess, tags: Tags, geometry: ElementGeometry, timestampEdited: Long)
-    {
+    override fun applyAnswerTo(
+        answer: FerryBicycleAccessAnswer,
+        tags: Tags,
+        geometry: ElementGeometry,
+        timestampEdited: Long
+    ) {
         when (answer) {
-            FerryBicycleAccess.ALLOWED -> {
-                tags["bicycle"] = "yes"
-            }
-            FerryBicycleAccess.NOT_ALLOWED -> {
-                tags["bicycle"] = "no"
-            }
-            FerryBicycleAccess.NOT_SIGNED -> {
-                tags["bicycle:signed"] = "no"
-            }
+            BicycleAllowed -> tags["bicycle"] = "yes"
+            BicycleNotAllowed -> tags["bicycle"] = "no"
+            BicycleNotSigned -> tags["bicycle:signed"] = "no"
         }
     }
 

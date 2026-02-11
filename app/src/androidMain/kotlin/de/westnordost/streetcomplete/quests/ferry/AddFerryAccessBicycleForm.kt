@@ -1,19 +1,19 @@
 package de.westnordost.streetcomplete.quests.ferry
 
-import androidx.compose.foundation.layout.BoxScope
-import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.res.stringResource
-import de.westnordost.streetcomplete.quests.ARadioGroupQuestForm
+import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
+import de.westnordost.streetcomplete.quests.AnswerItem
 
-class AddFerryAccessBicycleForm :
-    ARadioGroupQuestForm<FerryBicycleAccess, FerryBicycleAccess>() {
+class AddFerryAccessBicycleForm : AbstractOsmQuestForm<FerryBicycleAccessAnswer>() {
 
-    override val items = FerryBicycleAccess.entries
+    override val buttonPanelAnswers = listOf(
+        AnswerItem(R.string.quest_generic_hasFeature_no) { applyAnswer(BicycleNotAllowed) },
+        AnswerItem(R.string.quest_generic_hasFeature_yes) { applyAnswer(BicycleAllowed) }
+    )
 
-    @Composable
-    override fun BoxScope.ItemContent(item: FerryBicycleAccess) {
-        Text(stringResource(item.text))
-    }
-
+    override val otherAnswers = listOf(
+        AnswerItem(R.string.quest_generic_answer_noSign) {
+            applyAnswer(BicycleNotSigned)
+        }
+    )
 }
