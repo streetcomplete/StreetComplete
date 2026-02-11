@@ -121,6 +121,10 @@ class Preferences(private val prefs: ObservableSettings) {
     var hasShownTutorial: Boolean by prefs.boolean(HAS_SHOWN_TUTORIAL, false)
     var hasShownOverlaysTutorial: Boolean by prefs.boolean(HAS_SHOWN_OVERLAYS_TUTORIAL, false)
 
+    // update feed
+    var lastFeedUpdate: LocalDate?
+        set(value) { prefs.putStringOrNull(LAST_FEED_UPDATE, value?.toString()) }
+        get() = prefs.getStringOrNull(LAST_FEED_UPDATE)?.let { LocalDate.parse(it) }
 
     // messages
     var disabledMessageTypes: Set<KClass<out Message>>
@@ -255,6 +259,9 @@ class Preferences(private val prefs: ObservableSettings) {
         // main screen UI
         private const val HAS_SHOWN_TUTORIAL = "hasShownTutorial"
         private const val HAS_SHOWN_OVERLAYS_TUTORIAL = "hasShownOverlaysTutorial"
+
+        // update feed
+        private const val LAST_FEED_UPDATE = "lastFeedUpdate"
 
         // messages
         private const val DISABLED_MESSAGE_TYPES = "disabledMessageTypes"
