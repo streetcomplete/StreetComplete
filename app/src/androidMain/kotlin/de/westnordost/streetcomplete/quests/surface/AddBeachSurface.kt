@@ -19,7 +19,7 @@ class AddBeachSurface : OsmFilterQuestType<Surface>(), AndroidQuest {
 
     override val changesetComment = "Specify beach surface"
     override val wikiLink = "Key:surface"
-    override val icon = R.drawable.quest_way_surface
+    override val icon = R.drawable.quest_beach
     override val achievements = listOf(OUTDOORS)
 
     override fun getTitle(tags: Map<String, String>) =
