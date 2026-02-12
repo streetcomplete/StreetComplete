@@ -26,7 +26,7 @@ class AddFerryToll : OsmElementQuestType<Boolean>, AndroidQuest {
     }
 
     override val changesetComment = "Specify whether a ferry requires payment"
-    override val wikiLink = "Key:toll"
+    override val wikiLink = "Tag:route=ferry"
     override val icon = R.drawable.ic_quest_ferry_fee
     override val hasMarkersAtEnds = true
     override val achievements = listOf(RARE)
