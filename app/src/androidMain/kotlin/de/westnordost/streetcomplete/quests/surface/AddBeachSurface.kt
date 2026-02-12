@@ -12,9 +12,8 @@ import de.westnordost.streetcomplete.osm.surface.applyTo
 class AddBeachSurface : OsmFilterQuestType<Surface>(), AndroidQuest {
 
     override val elementFilter = """
-        ways with
+        ways, relations with
           natural = beach
-          and area = yes
           and !surface
     """
 
