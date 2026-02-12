@@ -11,9 +11,11 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.RARE
-import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 
-class AddFerryAccessBicycle : OsmElementQuestType<FerryBicycleAccessAnswer>, AndroidQuest {
+class AddFerryAccessBicycle :
+    OsmElementQuestType<FerryBicycleAccess>,
+    AndroidQuest {
 
     private val filter by lazy {
         "ways, relations with route = ferry and !bicycle and !bicycle:signed"
@@ -26,27 +28,32 @@ class AddFerryAccessBicycle : OsmElementQuestType<FerryBicycleAccessAnswer>, And
     override val hasMarkersAtEnds = true
     override val achievements = listOf(RARE, EditTypeAchievement.BICYCLIST)
 
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_ferry_bicycle_title
+    override fun getTitle(tags: Map<String, String>) =
+        R.string.quest_ferry_bicycle_title
 
     override fun createForm() = AddFerryAccessBicycleForm()
 
     override fun applyAnswerTo(
-        answer: FerryBicycleAccessAnswer,
-        tags: Tags,
+        answer: FerryBicycleAccess,
+        tags: StringMapChangesBuilder,
         geometry: ElementGeometry,
         timestampEdited: Long
     ) {
         when (answer) {
-            BicycleAllowed -> tags["bicycle"] = "yes"
-            BicycleNotAllowed -> tags["bicycle"] = "no"
-            BicycleNotSigned -> tags["bicycle:signed"] = "no"
+            FerryBicycleAccess.YES ->
+                tags["bicycle"] = "yes"
+
+            FerryBicycleAccess.NO ->
+                tags["bicycle"] = "no"
+
+            FerryBicycleAccess.NOT_SIGNED ->
+                tags["bicycle:signed"] = "no"
         }
     }
 
     override fun getApplicableElements(
         mapData: MapDataWithGeometry
     ): Iterable<Element> {
-        // adapted from AddFerryAccessPedestrian / AddMaxWeight
         val wayIdsInFerryRoutes = wayIdsInFerryRoutes(mapData.relations)
         return mapData
             .filter(filter)
@@ -56,7 +63,6 @@ class AddFerryAccessBicycle : OsmElementQuestType<FerryBicycleAccessAnswer>, And
 
     override fun isApplicableTo(element: Element): Boolean? {
         if (!filter.matches(element)) return false
-        // defer ways that may be part of a ferry relation
         if (element is Way) return null
         return true
     }

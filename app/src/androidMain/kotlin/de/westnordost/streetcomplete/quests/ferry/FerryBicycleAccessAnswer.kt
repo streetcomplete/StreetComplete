@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.ferry
 
-sealed interface FerryBicycleAccessAnswer
-object BicycleAllowed : FerryBicycleAccessAnswer
-object BicycleNotAllowed : FerryBicycleAccessAnswer
-object BicycleNotSigned : FerryBicycleAccessAnswer
+enum class FerryBicycleAccess {
+    YES,
+    NO,
+    NOT_SIGNED
+}
