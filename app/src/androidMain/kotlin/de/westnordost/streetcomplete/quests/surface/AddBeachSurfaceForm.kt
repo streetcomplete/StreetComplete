@@ -10,7 +10,7 @@ import kotlinx.serialization.serializer
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
-class AddBeachSurfaceForm :AItemSelectQuestForm<Surface, Surface>() {
+class AddBeachSurfaceForm : AItemSelectQuestForm<Surface, Surface>() {
 
     override val items get() = listOf(
         Surface.SAND,
