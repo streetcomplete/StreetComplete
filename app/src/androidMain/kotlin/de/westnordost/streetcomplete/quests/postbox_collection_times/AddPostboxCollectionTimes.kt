@@ -12,7 +12,6 @@ import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.POSTMAN
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.osm.opening_hours.isLikelyIncorrect
 import de.westnordost.streetcomplete.osm.opening_hours.isSupported
 import de.westnordost.streetcomplete.osm.opening_hours.toOpeningHours
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
@@ -81,7 +80,7 @@ class AddPostboxCollectionTimes : OsmElementQuestType<CollectionTimesAnswer>, An
         // be strict
         val oh = ct.toOpeningHoursOrNull(lenient = false) ?: return true
         // only display supported rules, or ambiguous rules that should be corrected
-        return oh.isSupported(allowTimePoints = true) || oh.isLikelyIncorrect()
+        return oh.isSupported(allowTimePoints = true, allowAmbiguity = true)
     }
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =

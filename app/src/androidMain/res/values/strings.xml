@@ -186,6 +186,8 @@ The info you enter is directly added to OpenStreetMap in your name, without the 
     <string name="quest_source_dialog_note">Only information that was verified in-person should be entered.</string>
     <string name="dialog_session_dont_show_again">Don’t show again for this session</string>
 
+    <string name="dialog_dont_notify_again">Don’t notify again</string>
+
     <!-- Tutorial screen -->
 
     <string name="tutorial_welcome_to_osm">Welcome to OpenStreetMap</string>
@@ -273,6 +275,7 @@ Additionally, some overlays allow you to add new data at the position of a displ
 
 If you are overwhelmed by the number of quests, you can always fine-tune which quests are displayed to you and in what order in the settings.</string>
 
+    <string name="weekly_osm_new_edition_title">New Edition!</string>
 
     <!-- Team mode -->
 
@@ -619,6 +622,12 @@ Before uploading your changes, the app checks with a &lt;a href="https://www.wes
 
     <string name="pref_title_delete_cache">Delete cache</string>
     <string name="pref_title_delete_cache_summary">If you think some data is outdated</string>
+
+    <string name="pref_title_messages">In-App Messages</string>
+
+    <string name="pref_title_message_achievements">Unlocked achievements</string>
+    <string name="pref_title_message_weekly_osm">New editions of weeklyOSM</string>
+    <string name="pref_title_message_changelog">New app releases</string>
 
 
     <!-- Quest & overlay selection screen -->
@@ -1145,6 +1154,8 @@ A level counts as a roof level when its windows are in the roof. Subsequently, r
     <string name="quest_ferry_motor_vehicle_title">Does this ferry route transport motor vehicles?</string>
     <string name="quest_ferry_toll_title">Do you generally have to pay to use this ferry?</string>
 
+    <string name="quest_ferry_bicycle_title">Are bicycles allowed on this ferry?</string>
+
     <string name="quest_fireHydrant_diameter_title">What diameter is specified on the sign for this fire hydrant?</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">This diameter looks implausible, it is usually between %1$d and %2$d.</string>
 
@@ -1547,6 +1558,8 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_shop_gone_vacant_answer">It’s vacant…</string>
     <string name="quest_shop_gone_replaced_answer">A(n)…</string>
     <string name="quest_shop_gone_replaced_answer_hint">Type kind of place here</string>
+
+    <string name="quest_shower_hot_water_title">Is there hot water here?</string>
 
     <string name="quest_sidewalk_surface_title">What’s the surface of the sidewalk here?</string>
 

@@ -17,6 +17,7 @@ import de.westnordost.streetcomplete.quests.address.AddHousenumber
 import de.westnordost.streetcomplete.quests.aerialway.AddAerialwayBicycleAccess
 import de.westnordost.streetcomplete.quests.air_conditioning.AddAirConditioning
 import de.westnordost.streetcomplete.quests.air_pump.AddAirCompressor
+import de.westnordost.streetcomplete.quests.amenities.AddHotWater
 import de.westnordost.streetcomplete.quests.amenity_cover.AddAmenityCover
 import de.westnordost.streetcomplete.quests.amenity_indoor.AddIsAmenityIndoor
 import de.westnordost.streetcomplete.quests.artwork.AddArtworkType
@@ -87,6 +88,7 @@ import de.westnordost.streetcomplete.quests.diet_type.AddVegetarian
 import de.westnordost.streetcomplete.quests.drinking_water.AddDrinkingWater
 import de.westnordost.streetcomplete.quests.drinking_water_type.AddDrinkingWaterType
 import de.westnordost.streetcomplete.quests.existence.CheckExistence
+import de.westnordost.streetcomplete.quests.ferry.AddFerryAccessBicycle
 import de.westnordost.streetcomplete.quests.ferry.AddFerryAccessMotorVehicle
 import de.westnordost.streetcomplete.quests.ferry.AddFerryAccessPedestrian
 import de.westnordost.streetcomplete.quests.ferry.AddFerryToll
@@ -169,6 +171,7 @@ import de.westnordost.streetcomplete.quests.step_count.AddStepCountStile
 import de.westnordost.streetcomplete.quests.steps_ramp.AddStepsRamp
 import de.westnordost.streetcomplete.quests.summit.AddSummitCross
 import de.westnordost.streetcomplete.quests.summit.AddSummitRegister
+import de.westnordost.streetcomplete.quests.surface.AddBeachSurface
 import de.westnordost.streetcomplete.quests.surface.AddCyclewayPartSurface
 import de.westnordost.streetcomplete.quests.surface.AddFootwayPartSurface
 import de.westnordost.streetcomplete.quests.surface.AddPathSurface
@@ -353,6 +356,8 @@ fun questTypeRegistry(
 
     47 to AddPlaygroundAccess(),
 
+    191 to AddBeachSurface(),
+
     /* pulled up in priority to be before CheckExistence because this is basically the check
        whether the postbox is still there in countries in which it is enabled */
     48 to AddPostboxCollectionTimes(),
@@ -457,6 +462,7 @@ fun questTypeRegistry(
     101 to AddFerryAccessPedestrian(),
     102 to AddFerryAccessMotorVehicle(),
     195 to AddFerryToll(),
+    196 to AddFerryAccessBicycle(),
 
     // aerial way: usually visible from looking at the aerial way, but not always...
     184 to AddAerialwayBicycleAccess(),
@@ -500,6 +506,8 @@ fun questTypeRegistry(
     116 to AddCampShower(),
     117 to AddCampPower(),
     162 to AddSanitaryDumpStation(),
+
+    191 to AddHotWater(),
 
     177 to AddShelterCapacity(),
 

@@ -4,6 +4,8 @@ import de.westnordost.streetcomplete.screens.settings.debug.ShowQuestFormsViewMo
 import de.westnordost.streetcomplete.screens.settings.debug.ShowQuestFormsViewModelImpl
 import de.westnordost.streetcomplete.screens.settings.language_selection.LanguageSelectionViewModel
 import de.westnordost.streetcomplete.screens.settings.language_selection.LanguageSelectionViewModelImpl
+import de.westnordost.streetcomplete.screens.settings.messages.MessageSelectionViewModel
+import de.westnordost.streetcomplete.screens.settings.messages.MessageSelectionViewModelImpl
 import de.westnordost.streetcomplete.screens.settings.overlay_selection.OverlaySelectionViewModel
 import de.westnordost.streetcomplete.screens.settings.overlay_selection.OverlaySelectionViewModelImpl
 import de.westnordost.streetcomplete.screens.settings.presets.EditTypePresetsViewModel
@@ -21,4 +23,5 @@ val settingsModule = module {
     viewModel<LanguageSelectionViewModel> { LanguageSelectionViewModelImpl(get(), get()) }
     viewModel<EditTypePresetsViewModel> { EditTypePresetsViewModelImpl(get(), get(), get(), get()) }
     viewModel<ShowQuestFormsViewModel> { ShowQuestFormsViewModelImpl(get(), get()) }
+    viewModel<MessageSelectionViewModel> { MessageSelectionViewModelImpl(get()) }
 }

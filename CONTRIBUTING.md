@@ -145,4 +145,4 @@ You may find more projects under [the StreetComplete tag](https://github.com/top
 #### Retired
 
 * [oneway-data-api](https://github.com/streetcomplete/oneway-data-api) by [@ENT8R](https://github.com/ENT8R) for getting oneway data from improveosm.org
-* [parser](https://github.com/matkoniecz/Zazolc/tree/taginfo) by [@matkoniecz](https://github.com/matkoniecz) listing tags added by StreetComplete for taginfo
+* [parser](https://github.com/matkoniecz/abandoned-StreetComplete-branches/tree/taginfo) by [@matkoniecz](https://github.com/matkoniecz) listing tags added by StreetComplete for taginfo

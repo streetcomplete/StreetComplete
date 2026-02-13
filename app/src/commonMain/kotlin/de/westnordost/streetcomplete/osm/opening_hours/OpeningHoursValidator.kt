@@ -36,27 +36,42 @@ import kotlin.jvm.JvmName
  *  - "off" rules with exclusively weekdays, weekday ranges, PH
  *  - clock time spans with optional open end, or clock time points
  *
- *  Weekdays that collide (Mo-Fr 8:30-12:30; We 14:00-18:00) are not supported - they are likely
- *  tagging mistakes (Maybe user meant to use "," instead of ";"?).
+ *  Weekdays that collide (Mo-Fr 8:30-12:30; We 14:00-18:00) are considered ambiguous - they are
+ *  likely tagging mistakes (Maybe user meant to use "," instead of ";"?).
  *
- *  Also, when any rule has months defined, all rules must have months defined, for clarity.
+ *  Also, when any rule has months defined, all rules must have months defined, for clarity,
+ *  otherwise they are not supported at all (not even considered ambiguous, see code comment below)
  */
-fun OpeningHours.isSupported(allowTimePoints: Boolean = false): Boolean =
+fun OpeningHours.isSupported(
+    allowTimePoints: Boolean = false,
+    allowAmbiguity: Boolean = false,
+): Boolean =
     rules.all { rule -> rule.isSupported() } &&
         (allowTimePoints || !containsTimePoints()) &&
-        !rules.hasCollidingWeekdays() &&
-        !rules.hasIncompleteMonths()
+        (allowAmbiguity || !rules.hasCollidingWeekdays()) &&
+        /*
+          in #6175 we decided to not classify opening hours that have incomplete months as
+          ambiguous (=> ask user to clarify) and instead just don't support them at all. Reason:
 
-/** Return whether the given valid opening hours are however ambiguous and thus should be corrected.
- *  */
-fun OpeningHours.isLikelyIncorrect(): Boolean =
-    // in #6175 we decided to not classify opening hours that have incomplete months as ambiguous
-    // (but just don't support them at all), mainly due to fears that if the previous opening hours
-    // like e.g. "12:00-18:00; Nov-Feb 12:00-14:00" are not shown in the opening hours widget, the
-    // user might input only the hours for summer or only for winter in case the opening hours
-    // plates are just swapped twice a year by the shop. (Showing those to the user would somewhat
-    // keep the user from overwriting, but they can't be shown because they are unsupported)
-    rules.hasCollidingWeekdays()
+          Ambiguous opening hours are treated the same as invalid opening hours: they are not shown
+          to the user in the widget, as if they haven't been defined at all yet. Apart from
+          implementation effort, the reason for not displaying those at all is that the widget
+          doesn't show the difference between ";" (overwriting) and "," (additive) rules which are
+          usually the cause for the ambiguity. So, users would be unable to detect that something is
+          wrong with the currently mapped opening hours if they were displayed.
+
+          E.g.
+          `Mo-We 10:00-12:00; Tu 14:00-18:00` would be displayed the same as
+          `Mo-We 10:00-12:00, Tu 14:00-18:00` while the first is likely a mistake (and if it is not,
+          writing `Mo,We 10:00-12:00; Tu 14:00-18:00` would be not ambiguous)
+
+          For ambiguous opening hours with incomplete months like
+          `10:00-12:00; Apr-Sep 14:00-18:00` in particular, the concern has been that the user might
+          input only the hours for summer or only for winter in case the opening hours plates are
+          just swapped twice a year by the shop since he is unable to see in the app what was
+          already mapped.
+        */
+        !rules.hasIncompleteMonths()
 
 fun Rule.isSupported(): Boolean =
     // comments not supported
@@ -145,7 +160,10 @@ private fun Range.hasMonths(): Boolean =
 
 /** For example, "Mo-Fr 10:00-12:00; We 14:00-16:00" self-collides: Wednesday is overwritten
  *  to only be open 14:00 to 16:00. A rule collides with another whenever the days overlap. When
- *  non-additive rules and additive rules mix, it becomes a bit difficult to find it out */
+ *  non-additive rules and additive rules mix, it becomes a bit difficult to find it out
+ *
+ *  @throws IllegalArgumentException if any of the rules is not supported
+ *  */
 fun List<Rule>.hasCollidingWeekdays(): Boolean {
     for (i in indices) {
         val rule1 = get(i)

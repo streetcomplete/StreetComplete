@@ -12,12 +12,14 @@ import androidx.work.WorkManager
 import com.russhwolf.settings.SettingsListener
 import de.westnordost.streetcomplete.data.CacheTrimmer
 import de.westnordost.streetcomplete.data.CleanerWorker
+import de.westnordost.streetcomplete.data.FeedsUpdater
 import de.westnordost.streetcomplete.data.Preloader
 import de.westnordost.streetcomplete.data.allEditTypesModule
 import de.westnordost.streetcomplete.data.download.downloadModule
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesController
 import de.westnordost.streetcomplete.data.edithistory.EditHistoryController
 import de.westnordost.streetcomplete.data.edithistory.editHistoryModule
+import de.westnordost.streetcomplete.data.feedsModule
 import de.westnordost.streetcomplete.data.logs.logsModule
 import de.westnordost.streetcomplete.data.messages.messagesModule
 import de.westnordost.streetcomplete.data.meta.metadataModule
@@ -47,6 +49,7 @@ import de.westnordost.streetcomplete.data.user.achievements.editTypeAliasesModul
 import de.westnordost.streetcomplete.data.user.statistics.statisticsModule
 import de.westnordost.streetcomplete.data.user.userModule
 import de.westnordost.streetcomplete.data.visiblequests.visibleQuestsModule
+import de.westnordost.streetcomplete.data.weeklyosm.weeklyOsmModule
 import de.westnordost.streetcomplete.overlays.overlaysModule
 import de.westnordost.streetcomplete.quests.questsModule
 import de.westnordost.streetcomplete.screens.about.aboutScreenModule
@@ -86,7 +89,7 @@ class StreetCompleteApplication : Application() {
     private val editHistoryController: EditHistoryController by inject()
     private val userLoginController: UserLoginController by inject()
     private val cacheTrimmer: CacheTrimmer by inject()
-    private val userUpdater: UserUpdater by inject()
+    private val feedsUpdater: FeedsUpdater by inject()
     private val fileSystem: FileSystem by inject()
 
     private val applicationScope = CoroutineScope(SupervisorJob() + CoroutineName("Application"))
@@ -138,6 +141,8 @@ class StreetCompleteApplication : Application() {
                 overlayModule,
                 urlConfigModule,
                 urlConfigModule,
+                weeklyOsmModule,
+                feedsModule,
                 androidModule
             )
         }
@@ -158,7 +163,7 @@ class StreetCompleteApplication : Application() {
             editHistoryController.deleteSyncedOlderThan(nowAsEpochMilliseconds() - ApplicationConstants.MAX_UNDO_HISTORY_AGE)
         }
 
-        if (isConnected) userUpdater.update()
+        feedsUpdater.updateDaily()
 
         enqueuePeriodicCleanupWork()
 
@@ -227,9 +232,6 @@ class StreetCompleteApplication : Application() {
             ).setInitialDelay(1, TimeUnit.HOURS).build()
         )
     }
-
-    private val isConnected: Boolean
-        get() = getSystemService<ConnectivityManager>()?.activeNetworkInfo?.isConnected == true
 
     private fun clearTangramCache() {
         if (prefs.clearedTangramCache) return

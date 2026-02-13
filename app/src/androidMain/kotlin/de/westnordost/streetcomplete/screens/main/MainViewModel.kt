@@ -11,6 +11,7 @@ import de.westnordost.streetcomplete.screens.main.controls.LocationState
 import de.westnordost.streetcomplete.screens.main.map.maplibre.CameraPosition
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlin.reflect.KClass
 
 // not @Stable, as not all fields are StateFlows or immutable
 abstract class MainViewModel : ViewModel() {
@@ -39,6 +40,7 @@ abstract class MainViewModel : ViewModel() {
     abstract val messagesCount: StateFlow<Int>
     abstract suspend fun popMessage(): Message?
     abstract val allQuestTypes: List<QuestType>
+    abstract fun toggleDisableMessageType(messageType: KClass<out Message>, disable: Boolean)
 
     /* overlays */
     abstract val selectedOverlay: StateFlow<Overlay?>
