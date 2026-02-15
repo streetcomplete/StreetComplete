@@ -22,7 +22,7 @@ class AddFerryAccessBicycle : OsmElementQuestType<FerryBicycleAccess>, AndroidQu
 
     override val changesetComment = "Specify ferry access for bicycles"
     override val wikiLink = "Tag:route=ferry"
-    override val icon = R.drawable.ic_quest_ferry_bicycle
+    override val icon = R.drawable.quest_ferry_bicycle
     override val hasMarkersAtEnds = true
     override val achievements = listOf(RARE, EditTypeAchievement.BICYCLIST)
 
