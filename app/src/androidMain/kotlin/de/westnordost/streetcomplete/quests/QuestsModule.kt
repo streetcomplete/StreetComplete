@@ -89,6 +89,7 @@ import de.westnordost.streetcomplete.quests.drinking_water.AddDrinkingWater
 import de.westnordost.streetcomplete.quests.drinking_water_type.AddDrinkingWaterType
 import de.westnordost.streetcomplete.quests.existence.CheckExistence
 import de.westnordost.streetcomplete.quests.ferry.AddFerryAccessBicycle
+import de.westnordost.streetcomplete.quests.ferry.AddFerryAccessHgv
 import de.westnordost.streetcomplete.quests.ferry.AddFerryAccessMotorVehicle
 import de.westnordost.streetcomplete.quests.ferry.AddFerryAccessPedestrian
 import de.westnordost.streetcomplete.quests.fire_hydrant.AddFireHydrantType
@@ -461,6 +462,7 @@ fun questTypeRegistry(
     101 to AddFerryAccessPedestrian(),
     102 to AddFerryAccessMotorVehicle(),
     196 to AddFerryAccessBicycle(),
+    197 to AddFerryAccessHgv(),
 
     // aerial way: usually visible from looking at the aerial way, but not always...
     184 to AddAerialwayBicycleAccess(),
