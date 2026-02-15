@@ -1,5 +1,8 @@
 package de.westnordost.streetcomplete.quests.charging_station_socket
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 enum class SocketType(val osmKey: String) {
     TYPE2("type2"),
     TYPE2_CABLE("type2_cable"),
@@ -8,12 +11,6 @@ enum class SocketType(val osmKey: String) {
     DOMESTIC("domestic");
 
     companion object {
-        val selectableValues = listOf(
-            TYPE2,
-            TYPE2_CABLE,
-            TYPE2_COMBO,
-            CHADEMO,
-            DOMESTIC
-        )
+        val selectableValues = entries
     }
 }

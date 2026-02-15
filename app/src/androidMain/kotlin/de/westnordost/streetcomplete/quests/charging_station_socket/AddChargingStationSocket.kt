@@ -8,11 +8,11 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
-import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 import de.westnordost.streetcomplete.osm.Tags
 
 class AddChargingStationSocket :
-    OsmElementQuestType<Set<SocketType>>,
+    OsmElementQuestType<List<SocketCount>>,
     AndroidQuest {
 
     private val filter by lazy {
@@ -30,40 +30,30 @@ class AddChargingStationSocket :
         "PL","PT","RO","SE","SI","SK"
     )
 
-    override val changesetComment = "Add charging station sockets"
+    override val changesetComment = "Specify charging station sockets"
     override val wikiLink = "Key:socket"
     override val icon = R.drawable.quest_charger_socket
-    override val achievements = listOf(EditTypeAchievement.CAR)
+    override val achievements = listOf(CAR)
 
     override fun getTitle(tags: Map<String, String>) =
         R.string.quest_charging_station_socket_title
 
     override fun createForm() = AddChargingStationSocketForm()
 
-    override fun isApplicableTo(element: Element): Boolean {
-        if (!filter.matches(element)) return false
-
-        // skip if any socket:* tag already exists
-        if (element.tags.keys.any { it.startsWith("socket:") }) return false
-
-        return true
-    }
-
-    override fun getApplicableElements(
-        mapData: MapDataWithGeometry
-    ): Iterable<Element> =
-        mapData.filter { element ->
-            isApplicableTo(element)
-        }
-
     override fun applyAnswerTo(
-        answer: Set<SocketType>,
+        answer: List<SocketCount>,
         tags: Tags,
         geometry: ElementGeometry,
         timestampEdited: Long
     ) {
-        answer.forEach {
-            tags["socket:${it.osmKey}"] = "yes"
-        }
+        answer.forEach { it.applyTo(tags) }
+    }
+
+    override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> =
+        mapData.filter { isApplicableTo(it) }
+
+    override fun isApplicableTo(element: Element): Boolean {
+        if (!filter.matches(element)) return false
+        return true
     }
 }

@@ -2,79 +2,82 @@ package de.westnordost.streetcomplete.quests.charging_station_socket
 
 import android.os.Bundle
 import android.view.View
-import androidx.compose.material.ContentAlpha
-import androidx.compose.material.LocalContentAlpha
-import androidx.compose.material.LocalTextStyle
-import androidx.compose.material.MaterialTheme
+import androidx.appcompat.app.AlertDialog
 import androidx.compose.material.Surface
-import androidx.compose.material.Text
+import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.CompositionLocalProvider
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.unit.dp
+import androidx.compose.runtime.snapshotFlow
+import androidx.lifecycle.lifecycleScope
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.ComposeViewBinding
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
-import de.westnordost.streetcomplete.ui.common.item_select.ItemsSelectGrid
-import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
 import de.westnordost.streetcomplete.ui.util.content
-import org.jetbrains.compose.resources.painterResource
-import org.jetbrains.compose.resources.stringResource
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 
 class AddChargingStationSocketForm :
-    AbstractOsmQuestForm<Set<SocketType>>() {
+    AbstractOsmQuestForm<List<SocketCount>>() {
 
     override val contentLayoutResId = R.layout.compose_view
     private val binding by contentViewBinding(ComposeViewBinding::bind)
-    override val defaultExpanded = false
 
-    private val selectedItems = mutableStateOf(emptySet<SocketType>())
+    private var selectedTypes = mutableStateListOf<SocketType>()
+    private var socketCounts = mutableStateListOf<SocketCount>()
+
+    private val maxSockets = 50
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.composeViewBase.content { Surface {
+        snapshotFlow { socketCounts.toList() }
+            .onEach { checkIsFormComplete() }
+            .launchIn(lifecycleScope)
 
-            Column(
-                verticalArrangement = Arrangement.spacedBy(8.dp)
-            ) {
-
-                CompositionLocalProvider(
-                    LocalContentAlpha provides ContentAlpha.medium,
-                    LocalTextStyle provides MaterialTheme.typography.body2
-                ) {
-                    Text(stringResource(R.string.quest_multiselect_hint))
-                }
-
-                ItemsSelectGrid(
-                    columns = com.cheonjaeung.compose.grid.SimpleGridCells.Fixed(3),
-                    items = SocketType.selectableValues,
-                    selectedItems = selectedItems.value,
-                    onSelect = { item, selected ->
-                        if (!selected) {
-                            selectedItems.value = selectedItems.value - item
-                        } else {
-                            selectedItems.value = selectedItems.value + item
+        binding.composeViewBase.content {
+            Surface {
+                ChargingSocketMultiStepForm(
+                    selectedTypes = selectedTypes,
+                    socketCounts = socketCounts,
+                    onTypeSelected = { type ->
+                        if (!selectedTypes.contains(type)) {
+                            selectedTypes.add(type)
                         }
-                        checkIsFormComplete()
                     },
-                    modifier = androidx.compose.ui.Modifier.fillMaxWidth()
-                ) {
-                    ImageWithLabel(
-                        painterResource(it.icon),
-                        stringResource(it.title)
-                    )
-                }
+                    onTypeDeselected = { type ->
+                        selectedTypes.remove(type)
+                        socketCounts.removeAll { it.type == type }
+                    },
+                    onCountChanged = { type, count ->
+                        socketCounts.removeAll { it.type == type }
+                        socketCounts.add(SocketCount(type, count))
+                    }
+                )
             }
-        }}
+        }
     }
 
     override fun onClickOk() {
-        applyAnswer(selectedItems.value)
+        if (socketCounts.any { it.count <= 0 || it.count > maxSockets }) {
+            confirmUnusualInput {
+                applyAnswer(socketCounts)
+            }
+        } else {
+            applyAnswer(socketCounts)
+        }
     }
 
-    override fun isFormComplete() = selectedItems.value.isNotEmpty()
+    override fun isFormComplete(): Boolean =
+        socketCounts.isNotEmpty() &&
+            socketCounts.all { it.count > 0 }
+
+    private fun confirmUnusualInput(callback: () -> Unit) {
+        activity?.let {
+            AlertDialog.Builder(it)
+                .setTitle(R.string.quest_generic_confirmation_title)
+                .setMessage(R.string.quest_maxweight_unusualInput_confirmation_description)
+                .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ -> callback() }
+                .setNegativeButton(R.string.quest_generic_confirmation_no, null)
+                .show()
+        }
+    }
 }
