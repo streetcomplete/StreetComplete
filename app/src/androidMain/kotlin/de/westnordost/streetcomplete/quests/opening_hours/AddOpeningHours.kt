@@ -103,6 +103,10 @@ mapOf(
         "occupational_therapist", "dialysis", "vaccination_centre", "audiologist",
         "blood_bank", "nutrition_counselling",
     ),
+    "waterway" to arrayOf(
+        // name & opening hours
+        "fuel",
+    ),
 ).map { it.key + " ~ " + it.value.joinToString("|") }.joinToString("\n or ") + "\n" + """
                 )
                 and (!opening_hours or opening_hours older today -1 years)

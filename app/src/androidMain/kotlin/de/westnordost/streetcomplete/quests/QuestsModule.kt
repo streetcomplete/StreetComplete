@@ -505,7 +505,7 @@ fun questTypeRegistry(
     117 to AddCampPower(),
     162 to AddSanitaryDumpStation(),
 
-    191 to AddHotWater(),
+    192 to AddHotWater(),
 
     177 to AddShelterCapacity(),
 
