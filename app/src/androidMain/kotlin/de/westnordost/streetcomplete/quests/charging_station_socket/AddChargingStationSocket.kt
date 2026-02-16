@@ -12,7 +12,7 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.osm.Tags
 
 class AddChargingStationSocket :
-    OsmElementQuestType<List<SocketCount>>,
+    OsmElementQuestType<Map<SocketType, Int>>,
     AndroidQuest {
 
     private val filter by lazy {
@@ -40,20 +40,40 @@ class AddChargingStationSocket :
 
     override fun createForm() = AddChargingStationSocketForm()
 
-    override fun applyAnswerTo(
-        answer: List<SocketCount>,
-        tags: Tags,
-        geometry: ElementGeometry,
-        timestampEdited: Long
-    ) {
-        answer.forEach { it.applyTo(tags) }
-    }
-
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> =
         mapData.filter { isApplicableTo(it) }
 
     override fun isApplicableTo(element: Element): Boolean {
         if (!filter.matches(element)) return false
+
+        // Only show if NO socket:* exists
+        if (element.tags.keys.any { it.startsWith("socket:") }) {
+            return false
+        }
+
         return true
+    }
+
+    override fun applyAnswerTo(
+        answer: Map<SocketType, Int>,
+        tags: Tags,
+        geometry: ElementGeometry,
+        timestampEdited: Long
+    ) {
+
+        answer.forEach { (type, count) ->
+            if (count > 0) {
+                tags["socket:${type.osmKey}"] = count.toString()
+            }
+        }
+
+        // Special rule:
+        // If type2 > 0 AND type2_cable == 0 → explicitly tag no
+        val type2 = answer[SocketType.TYPE2] ?: 0
+        val cable = answer[SocketType.TYPE2_CABLE] ?: 0
+
+        if (type2 > 0 && cable == 0) {
+            tags["socket:type2_cable"] = "no"
+        }
     }
 }

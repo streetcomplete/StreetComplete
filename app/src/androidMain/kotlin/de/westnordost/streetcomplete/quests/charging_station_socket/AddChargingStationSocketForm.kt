@@ -3,10 +3,16 @@ package de.westnordost.streetcomplete.quests.charging_station_socket
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AlertDialog
+import androidx.compose.foundation.layout.*
+import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
 import androidx.compose.material.Surface
-import androidx.compose.runtime.mutableStateListOf
-import androidx.compose.runtime.mutableStateOf
+import androidx.compose.material.Text
+import androidx.compose.runtime.mutableStateMapOf
 import androidx.compose.runtime.snapshotFlow
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import androidx.lifecycle.lifecycleScope
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.ComposeViewBinding
@@ -14,42 +20,42 @@ import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.ui.util.content
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 
 class AddChargingStationSocketForm :
-    AbstractOsmQuestForm<List<SocketCount>>() {
+    AbstractOsmQuestForm<Map<SocketType, Int>>() {
 
     override val contentLayoutResId = R.layout.compose_view
     private val binding by contentViewBinding(ComposeViewBinding::bind)
 
-    private var selectedTypes = mutableStateListOf<SocketType>()
-    private var socketCounts = mutableStateListOf<SocketCount>()
+    private val socketCounts = mutableStateMapOf<SocketType, Int>()
 
-    private val maxSockets = 50
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        SocketType.selectableValues.forEach {
+            socketCounts[it] = 0
+        }
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        snapshotFlow { socketCounts.toList() }
+        snapshotFlow { socketCounts.values.sum() }
             .onEach { checkIsFormComplete() }
             .launchIn(lifecycleScope)
 
         binding.composeViewBase.content {
             Surface {
-                ChargingSocketMultiStepForm(
-                    selectedTypes = selectedTypes,
-                    socketCounts = socketCounts,
-                    onTypeSelected = { type ->
-                        if (!selectedTypes.contains(type)) {
-                            selectedTypes.add(type)
-                        }
+                SocketTypeAndCountForm(
+                    counts = socketCounts,
+                    onIncrement = { type ->
+                        val current = socketCounts[type] ?: 0
+                        if (current < 50) socketCounts[type] = current + 1
                     },
-                    onTypeDeselected = { type ->
-                        selectedTypes.remove(type)
-                        socketCounts.removeAll { it.type == type }
-                    },
-                    onCountChanged = { type, count ->
-                        socketCounts.removeAll { it.type == type }
-                        socketCounts.add(SocketCount(type, count))
+                    onDecrement = { type ->
+                        val current = socketCounts[type] ?: 0
+                        if (current > 0) socketCounts[type] = current - 1
                     }
                 )
             }
@@ -57,18 +63,16 @@ class AddChargingStationSocketForm :
     }
 
     override fun onClickOk() {
-        if (socketCounts.any { it.count <= 0 || it.count > maxSockets }) {
-            confirmUnusualInput {
-                applyAnswer(socketCounts)
-            }
+        if (hasUnusualInput()) {
+            confirmUnusualInput { applyAnswer(socketCounts.toMap()) }
         } else {
-            applyAnswer(socketCounts)
+            applyAnswer(socketCounts.toMap())
         }
     }
 
-    override fun isFormComplete(): Boolean =
-        socketCounts.isNotEmpty() &&
-            socketCounts.all { it.count > 0 }
+    private fun hasUnusualInput(): Boolean {
+        return socketCounts.values.any { it == 0 || it > 50 }
+    }
 
     private fun confirmUnusualInput(callback: () -> Unit) {
         activity?.let {
@@ -80,4 +84,10 @@ class AddChargingStationSocketForm :
                 .show()
         }
     }
+
+    override fun isFormComplete(): Boolean =
+        socketCounts.values.any { it > 0 }
+
+    override fun isRejectingClose(): Boolean =
+        socketCounts.values.any { it > 0 }
 }
