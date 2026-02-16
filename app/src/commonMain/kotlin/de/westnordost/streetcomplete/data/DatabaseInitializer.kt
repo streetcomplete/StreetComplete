@@ -14,6 +14,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.RelationTables
 import de.westnordost.streetcomplete.data.osm.mapdata.WayTables
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestTable
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestsHiddenTable
+import de.westnordost.streetcomplete.data.osmcal.CalendarEventsTable
 import de.westnordost.streetcomplete.data.osmnotes.NoteTable
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsTable
 import de.westnordost.streetcomplete.data.osmnotes.notequests.NoteQuestsHiddenTable
@@ -99,6 +100,9 @@ object DatabaseInitializer {
         // logs
         db.exec(LogsTable.CREATE)
         db.exec(LogsTable.INDEX_CREATE)
+
+        // OSM calendar events
+        db.exec(CalendarEventsTable.CREATE)
     }
 
     fun onUpgrade(db: Database, oldVersion: Int, newVersion: Int) {
