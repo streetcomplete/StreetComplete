@@ -22,6 +22,7 @@ import androidx.compose.ui.Modifier
 import de.westnordost.streetcomplete.data.messages.Message
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.pref_title_message_achievements
+import de.westnordost.streetcomplete.resources.pref_title_message_calendar
 import de.westnordost.streetcomplete.resources.pref_title_message_changelog
 import de.westnordost.streetcomplete.resources.pref_title_message_weekly_osm
 import de.westnordost.streetcomplete.resources.pref_title_messages
@@ -66,6 +67,14 @@ fun MessageSelectionScreen(
                 onClick = { viewModel.toggleDisableMessageType(Message.NewVersion::class, showChangelog) },
             ) {
                 Switch(checked = showChangelog, onCheckedChange = null)
+            }
+
+            val showNewCalendarEvent = Message.NewCalendarEvent::class !in disabledMessageTypes
+            Preference(
+                name = stringResource(Res.string.pref_title_message_calendar),
+                onClick = { viewModel.toggleDisableMessageType(Message.NewCalendarEvent::class, showNewCalendarEvent) },
+            ) {
+                Switch(checked = showNewCalendarEvent, onCheckedChange = null)
             }
 
             val showNewWeeklyOsm = Message.NewWeeklyOsm::class !in disabledMessageTypes

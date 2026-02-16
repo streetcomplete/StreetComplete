@@ -29,6 +29,7 @@ import de.westnordost.streetcomplete.data.osm.geometry.elementGeometryModule
 import de.westnordost.streetcomplete.data.osm.mapdata.mapDataModule
 import de.westnordost.streetcomplete.data.osm.osmquests.osmQuestModule
 import de.westnordost.streetcomplete.data.osmApiModule
+import de.westnordost.streetcomplete.data.osmcal.calendarEventsModule
 import de.westnordost.streetcomplete.data.osmnotes.edits.noteEditsModule
 import de.westnordost.streetcomplete.data.osmnotes.notequests.osmNoteQuestModule
 import de.westnordost.streetcomplete.data.osmnotes.notesModule
@@ -142,6 +143,7 @@ class StreetCompleteApplication : Application() {
                 urlConfigModule,
                 urlConfigModule,
                 weeklyOsmModule,
+                calendarEventsModule,
                 feedsModule,
                 androidModule
             )

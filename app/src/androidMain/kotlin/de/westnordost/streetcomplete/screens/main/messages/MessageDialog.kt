@@ -66,5 +66,9 @@ fun MessageDialog(
                 }
             )
         }
+        is Message.NewCalendarEvent -> {
+            val uriHandler = LocalUriHandler.current
+            // TODO
+        }
     }
 }
