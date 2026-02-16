@@ -30,7 +30,7 @@ import de.westnordost.streetcomplete.util.logs.Log
 
 /** Creates the database and upgrades it */
 object DatabaseInitializer {
-    const val DB_VERSION = 19
+    const val DB_VERSION = 20
 
     fun onCreate(db: Database) {
         // OSM notes
@@ -257,6 +257,9 @@ object DatabaseInitializer {
             db.deleteQuest("AddParcelLockerMailIn")
             db.deleteQuest("AddParcelLockerPickup")
             db.deleteQuest("AddShoulder")
+        }
+        if (oldVersion <= 19 && newVersion > 19) {
+            db.exec(CalendarEventsTable.CREATE)
         }
     }
 }

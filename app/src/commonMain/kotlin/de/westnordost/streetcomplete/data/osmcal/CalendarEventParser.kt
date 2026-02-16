@@ -6,6 +6,7 @@ import kotlinx.io.Source
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.SerializationException
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.io.decodeFromSource
 
@@ -22,7 +23,7 @@ class CalendarEventParser() {
         if (cancelled == true) return null
 
         // fish the id out of the url string
-        val match = idRegex.matchEntire(url) ?: return null
+        val match = idRegex.matchEntire(url) ?: throw SerializationException("Url $url didn't match expected scheme")
         val id = match.groupValues[1].toLong()
 
         // no location? ignore!

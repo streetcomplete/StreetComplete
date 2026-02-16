@@ -6,8 +6,11 @@ import kotlinx.datetime.UtcOffset
 import kotlinx.datetime.toInstant
 import kotlinx.io.Buffer
 import kotlinx.io.writeString
+import kotlinx.serialization.SerializationException
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertFails
+import kotlin.test.assertFailsWith
 import kotlin.test.assertTrue
 
 class CalendarEventParserTest {
@@ -102,19 +105,6 @@ class CalendarEventParserTest {
                     }
                 },
                 {
-                    "name": "unknown url schema",
-                    "url": "https://otherwebsite.org/event/2/",
-                    "date": {
-                        "start": "2020-05-24T12:00:00+09:00",
-                        "human": "24th May 12:00–14:00",
-                        "human_short": "24th May",
-                        "whole_day": false
-                    },
-                    "location": {
-                        "coords": [135.5023, 34.6931]
-                    }
-                },
-                {
                     "name": "cancelled",
                     "url": "https://osmcal.org/event/3/",
                     "date": {
@@ -131,5 +121,29 @@ class CalendarEventParserTest {
             ]
         """.trimIndent())
         assertTrue(CalendarEventParser().parse(buffer).isEmpty())
+    }
+
+    @Test fun `parse error`() {
+        val buffer = Buffer()
+        buffer.writeString("""
+            [
+                {
+                    "name": "unknown url schema",
+                    "url": "https://otherwebsite.org/event/2/",
+                    "date": {
+                        "start": "2020-05-24T12:00:00+09:00",
+                        "human": "24th May 12:00–14:00",
+                        "human_short": "24th May",
+                        "whole_day": false
+                    },
+                    "location": {
+                        "coords": [135.5023, 34.6931]
+                    }
+                }
+            ]
+        """.trimIndent())
+        assertFailsWith(SerializationException::class) {
+            CalendarEventParser().parse(buffer)
+        }
     }
 }

@@ -19,13 +19,13 @@ class CalendarEventsDaoTest : ApplicationDbTestCase() {
     }
 
     @Test
-    fun `put and get`() {
+    fun putAndGet() {
         val tomorrow = Clock.System.now() + 1.days
         val multiDayEventTomorrow = CalendarEvent(
             id = 123L,
             name = "multi day event",
             startDate = tomorrow,
-            endDate = tomorrow.plus(1.days),
+            endDate = tomorrow + 1.days,
             wholeDay = true,
             position = LatLon(5.0, 1.5),
             venue = "House",
@@ -35,7 +35,7 @@ class CalendarEventsDaoTest : ApplicationDbTestCase() {
         val eventSoon = CalendarEvent(
             id = 124L,
             name = "soon event",
-            startDate = tomorrow + 1.hours,
+            startDate = tomorrow - 23.hours,
             endDate = null,
             wholeDay = false,
             position = LatLon(-5.0, 2.5),

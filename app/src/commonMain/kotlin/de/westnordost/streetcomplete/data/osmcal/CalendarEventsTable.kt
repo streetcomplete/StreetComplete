@@ -19,7 +19,7 @@ object CalendarEventsTable {
 
     const val CREATE = """
         CREATE TABLE $TABLE (
-            ${Columns.ID} LONG PRIMARY KEY
+            ${Columns.ID} LONG PRIMARY KEY,
             ${Columns.NAME} TEXT NOT NULL,
             ${Columns.START_DATE} INTEGER NOT NULL,
             ${Columns.END_DATE} INTEGER,
@@ -28,7 +28,7 @@ object CalendarEventsTable {
             ${Columns.LONGITUDE} DOUBLE NOT NULL,
             ${Columns.VENUE} TEXT,
             ${Columns.ADDRESS} TEXT,
-            ${Columns.READ} INTEGER NOT NULL,
+            ${Columns.READ} INTEGER NOT NULL
         );
     """
 }
