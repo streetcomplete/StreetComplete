@@ -46,12 +46,12 @@ class AddChargingStationSocket :
     override fun isApplicableTo(element: Element): Boolean {
         if (!filter.matches(element)) return false
 
-        // Only show if NO socket:* exists
-        if (element.tags.keys.any { it.startsWith("socket:") }) {
-            return false
+        // Exclude if any valid socket:* with numeric value exists
+        val hasValidSocket = element.tags.any {
+            it.key.startsWith("socket:") && it.value.toIntOrNull() != null
         }
 
-        return true
+        return !hasValidSocket
     }
 
     override fun applyAnswerTo(
@@ -61,18 +61,25 @@ class AddChargingStationSocket :
         timestampEdited: Long
     ) {
 
-        answer.forEach { (type, count) ->
-            if (count > 0) {
-                tags["socket:${type.osmKey}"] = count.toString()
-            }
+        // Cleanup deprecated keys
+        tags.keys
+            .filter { it.startsWith("socket:tesla") || it == "socket:css" }
+            .forEach { tags.remove(it) }
+
+        // Remove old supported socket keys
+        SocketType.selectableValues.forEach {
+            tags.remove("socket:${it.osmKey}")
         }
 
-        // Special rule:
-        // If type2 > 0 AND type2_cable == 0 → explicitly tag no
-        val type2 = answer[SocketType.TYPE2] ?: 0
-        val cable = answer[SocketType.TYPE2_CABLE] ?: 0
+        // Apply new values
+        answer.forEach { (type, count) ->
+            tags["socket:${type.osmKey}"] = count.toString()
+        }
 
-        if (type2 > 0 && cable == 0) {
+        // type2_cable=no logic
+        if (answer.containsKey(SocketType.TYPE2) &&
+            !answer.containsKey(SocketType.TYPE2_CABLE)
+        ) {
             tags["socket:type2_cable"] = "no"
         }
     }
