@@ -5,11 +5,13 @@ import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpressio
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.util.math.contains
 
 class AddChargingStationSocket :
     OsmElementQuestType<Map<SocketType, Int>>,
@@ -40,18 +42,57 @@ class AddChargingStationSocket :
 
     override fun createForm() = AddChargingStationSocketForm()
 
-    override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> =
-        mapData.filter { isApplicableTo(it) }
+    override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
+        return mapData
+            .filter { element -> filter.matches(element) }
+            .filter { element -> isApplicableTo(element, mapData) }
+            .asIterable()
+    }
 
-    override fun isApplicableTo(element: Element): Boolean {
+    override fun isApplicableTo(element: Element): Boolean? {
+        // This variant must exist because OsmElementQuestType requires it.
+        // But we delegate real logic to the overloaded version.
+        return null
+    }
+
+    private fun isApplicableTo(
+        element: Element,
+        mapData: MapDataWithGeometry
+    ): Boolean {
+
         if (!filter.matches(element)) return false
 
-        // Exclude if any valid socket:* with numeric value exists
-        val hasValidSocket = element.tags.any {
-            it.key.startsWith("socket:") && it.value.toIntOrNull() != null
+        // Skip charge_point nodes completely
+        if (element.tags["man_made"] == "charge_point") return false
+
+        // Skip charging_station areas that contain charge_points
+        if (element is Way) {
+
+            val geometry = mapData.getGeometry(element.type, element.id)
+                ?: return true
+
+            val bounds = geometry.bounds
+
+            val hasChargePointsInside = mapData
+                .filter { it.tags["man_made"] == "charge_point" }
+                .any { cp ->
+                    val cpGeometry = mapData.getGeometry(cp.type, cp.id)
+                        ?: return@any false
+
+                    bounds.contains(cpGeometry.center)
+                }
+
+            if (hasChargePointsInside) return false
         }
 
-        return !hasValidSocket
+        val socketTags = element.tags
+            .filterKeys { it.startsWith("socket:") }
+
+        if (socketTags.isEmpty()) return true
+        if (socketTags.keys.any { isDeprecatedSocketKey(it) }) return true
+        if (socketTags.values.any { it == "yes" }) return true
+
+        return false
     }
 
     override fun applyAnswerTo(
@@ -63,24 +104,32 @@ class AddChargingStationSocket :
 
         // Cleanup deprecated keys
         tags.keys
-            .filter { it.startsWith("socket:tesla") || it == "socket:css" }
+            .filter { isDeprecatedSocketKey(it) }
+            .toList()
             .forEach { tags.remove(it) }
 
-        // Remove old supported socket keys
-        SocketType.selectableValues.forEach {
-            tags.remove("socket:${it.osmKey}")
-        }
+        // Remove old socket:* keys
+        tags.keys
+            .filter { it.startsWith("socket:") }
+            .toList()
+            .forEach { tags.remove(it) }
 
         // Apply new values
         answer.forEach { (type, count) ->
             tags["socket:${type.osmKey}"] = count.toString()
         }
 
-        // type2_cable=no logic
-        if (answer.containsKey(SocketType.TYPE2) &&
-            !answer.containsKey(SocketType.TYPE2_CABLE)
+        // type2/type2_cable=no logic
+        if (answer.containsKey(SocketType.TYPE2)
+            && !answer.containsKey(SocketType.TYPE2_CABLE)
         ) {
             tags["socket:type2_cable"] = "no"
         }
     }
+
+    private fun isDeprecatedSocketKey(key: String): Boolean =
+        key.startsWith("socket:tesla") ||
+            key == "socket:css" ||
+            key == "socket:unknown" ||
+            key == "socket:type"
 }

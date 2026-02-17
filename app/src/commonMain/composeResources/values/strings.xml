@@ -1056,7 +1056,7 @@ A level counts as a roof level when its windows are in the roof. Subsequently, r
 
     <string name="quest_charging_station_operator_title">Who is the operator of this charging station?</string>
 
-    <string name="quest_charging_station_socket_title">Which sockets does this charging station have?</string>
+    <string name="quest_charging_station_socket_title">How many sockets does this charging station have?</string>
     <string name="quest_charging_station_socket_type2">Type 2 (Mennekes)</string>
     <string name="quest_charging_station_socket_type2_cable">Type 2 (Mennekes) Cable</string>
     <string name="quest_charging_station_socket_type2_combo">Type 2 Combo (CCS)</string>
