@@ -123,6 +123,10 @@ class AddPlaceName(
                 "castle", "church", "farm", "fort", "manor", "monument", "mosque", "temple",
                 "ship",
             ),
+            "waterway" to arrayOf(
+                // name & opening hours
+                "fuel",
+            ),
         ).map { it.key + " ~ " + it.value.joinToString("|") }.joinToString("\n  or ") + "\n" + """
         )
         and !name and !brand and noname != yes and name:signed != no

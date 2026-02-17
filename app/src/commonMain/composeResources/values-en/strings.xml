@@ -1558,6 +1558,8 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_shop_gone_replaced_answer">A(n)…</string>
     <string name="quest_shop_gone_replaced_answer_hint">Type kind of place here</string>
 
+    <string name="quest_shower_hot_water_title">Is there hot water here?</string>
+
     <string name="quest_sidewalk_surface_title">What’s the surface of the sidewalk here?</string>
 
     <string name="quest_sidewalk_title">Does this street have a sidewalk?</string>

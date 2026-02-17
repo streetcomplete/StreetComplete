@@ -23,7 +23,6 @@ import de.westnordost.streetcomplete.data.messages.Message
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.pref_title_message_achievements
 import de.westnordost.streetcomplete.resources.pref_title_message_changelog
-import de.westnordost.streetcomplete.resources.pref_title_message_osm_messages
 import de.westnordost.streetcomplete.resources.pref_title_message_weekly_osm
 import de.westnordost.streetcomplete.resources.pref_title_messages
 import de.westnordost.streetcomplete.resources.pref_title_zoom_buttons
