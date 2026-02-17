@@ -13,4 +13,6 @@ data class CalendarEvent(
     val venue: String?,
     val address: String?,
     val notified: Boolean,
-)
+) {
+    val url: String get() = "https://osmcal.org/event/$id/"
+}

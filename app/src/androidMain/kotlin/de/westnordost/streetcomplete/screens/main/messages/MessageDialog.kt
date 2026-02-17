@@ -68,7 +68,14 @@ fun MessageDialog(
         }
         is Message.NewCalendarEvent -> {
             val uriHandler = LocalUriHandler.current
-            // TODO
+            CalendarEventDialog(
+                event = message.event,
+                onDismissRequest = onDismissRequest,
+                onClickOpenEvent = { uriHandler.openUri(message.event.url) },
+                onToggleDontNotifyAgain = { dontNotifyAgain ->
+                    onToggleDontNotifyAgain(Message.NewCalendarEvent::class, dontNotifyAgain)
+                }
+            )
         }
     }
 }
