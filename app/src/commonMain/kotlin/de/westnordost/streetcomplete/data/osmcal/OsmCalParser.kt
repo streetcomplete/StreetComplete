@@ -10,7 +10,7 @@ import kotlinx.serialization.SerializationException
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.io.decodeFromSource
 
-class CalendarEventParser() {
+class OsmCalParser() {
     private val jsonParser = Json { ignoreUnknownKeys = true }
     private val idRegex = Regex("https:\\/\\/osmcal\\.org\\/event\\/([0-9]+)\\/?")
 

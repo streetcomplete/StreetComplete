@@ -9,11 +9,10 @@ import kotlinx.io.writeString
 import kotlinx.serialization.SerializationException
 import kotlin.test.Test
 import kotlin.test.assertEquals
-import kotlin.test.assertFails
 import kotlin.test.assertFailsWith
 import kotlin.test.assertTrue
 
-class CalendarEventParserTest {
+class OsmCalParserTest {
 
     @Test fun `parse minimal`() {
         val buffer = Buffer()
@@ -46,7 +45,7 @@ class CalendarEventParserTest {
                 address = null,
                 notified = false
             )),
-            CalendarEventParser().parse(buffer)
+            OsmCalParser().parse(buffer)
         )
     }
 
@@ -86,7 +85,7 @@ class CalendarEventParserTest {
                 address = "Tosabori-dori, Chuo, Osaka, Japan",
                 notified = false
             )),
-            CalendarEventParser().parse(buffer)
+            OsmCalParser().parse(buffer)
         )
     }
 
@@ -120,7 +119,7 @@ class CalendarEventParserTest {
                 }
             ]
         """.trimIndent())
-        assertTrue(CalendarEventParser().parse(buffer).isEmpty())
+        assertTrue(OsmCalParser().parse(buffer).isEmpty())
     }
 
     @Test fun `parse error`() {
@@ -143,7 +142,7 @@ class CalendarEventParserTest {
             ]
         """.trimIndent())
         assertFailsWith(SerializationException::class) {
-            CalendarEventParser().parse(buffer)
+            OsmCalParser().parse(buffer)
         }
     }
 }
