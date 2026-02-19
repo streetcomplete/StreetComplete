@@ -1453,16 +1453,19 @@
     <string name="quest_shelter_capacity_title">Сколько людей могут спать здесь?</string>
     <string name="quest_handwashing_title">Можно ли здесь помыть руки?</string>
     <string name="quest_openingHours_delete">Удалить</string>
+    <string name="quest_streetName_hint">Вы можете присвоить соседнему участку то же имя, нажав на него на карте.</string>
     <string name="quest_streetName_add_language">Добавить язык</string>
     <string name="ok">ОК</string>
     <string name="cancel">Отмена</string>
     <string name="quest_aerialway_bicycle_summer">Только летом</string>
     <string name="quest_board_type_rules">Правила</string>
     <string name="quest_first_aid_kit_location">Где находится эта аптечка?</string>
+    <string name="quest_lane_markings_title">Есть ли у этой дороги разметка?</string>
     <string name="quest_level_thing_title">На каком уровне это расположено?</string>
     <string name="quest_bicycle_charging_station_capacity_title">Сколько велосипедов можно заряжать здесь одновременно?</string>
     <string name="quest_charging_station_bicycles_title">Можно ли здесь также заряжать велосипеды?</string>
     <string name="quest_charging_station_bicycles_answer_only">Только для велосипедов</string>
+    <string name="quest_recycling_type_pet_bottles">Пластиковые бутылки</string>
     <string name="quest_maxweight_add_sign">Добавить знак</string>
     <string name="quest_maxweight_remove_sign">Убрать знак</string>
 </resources>

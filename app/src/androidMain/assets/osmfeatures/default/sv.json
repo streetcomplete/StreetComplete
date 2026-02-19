@@ -321,6 +321,10 @@
           "name": "Samlingslokal",
           "terms": "samlingslokal,folkets hus,folkets park,festlokal,bygdegård,hembygdsgård,sockenstuga,bystuga,byalag,byförening,evenemang"
         },
+        "amenity/community_centre/chitalishte_BG": {
+          "name": "Chitalishte",
+          "terms": "chitalishte,kulturhus,samhällscenter,allaktivitetshus,aktivitetshus,kulturcenter,medborgarhus,folkets hus"
+        },
         "amenity/community_centre/club_home": {
           "name": "Föreningslokal, klubbstuga",
           "terms": "klubblokal,klubbhus,föreningslokal,föreningshus,klubbcenter,klubbmötesplats,klubbanläggning,föreningshem,klubbgård,samlingslokal,klubbens hem,klubbstuga,klubbens mötesplats,klubbens samlingsplats,föreningscenter,klubbens högkvarter"
@@ -950,6 +954,10 @@
         "amenity/restaurant/greek": {
           "name": "Grekisk restaurang",
           "terms": "restaurang,matservering,matställe,servering,restauration,näringsställe,grillbar,bar,krog,värdshus,pub,bodega,brasserie,rotisseri,pizzeria,kafé,cafeteria,sylta,café,matsal,kaffe,lunch,frukost,middag,drive-in,äta,grekisk restaurang,grekisk mat,grekland,gyros,pitas,oliver"
+        },
+        "amenity/restaurant/hotpot": {
+          "name": "Hot pot-restaurang",
+          "terms": "hot pot,hotpot,fondue,kinesisk fondue,kinesisk gryta,kinesisk hot pot,asiatisk fondue,asiatisk gryta,shabu shabu,sukiyaki,kimchi jjigae,jjigae,jeongol,budae jjigae,mu kratha,nabemono,yao hon,chhnang pleurng,pekinggryta,sichuan hot pot,teochew,teoswa,kantonesisk hot pot,kantonesisk gryta,kinesisk mat,asiatisk mat,koreansk gryta,koreansk hot pot,japansk hot pot,japansk gryta,mongolisk hot pot,mongolisk gryta,spicy hot pot,kryddig gryta,kryddig fondue,köttfondue,grönsaksfondue,asiatisk soppa,wokgryta"
         },
         "amenity/restaurant/indian": {
           "name": "Indisk restaurang",
@@ -1842,7 +1850,8 @@
           "terms": "radhus,kedjehus,parhus,hus,bostad,boende,länga,flerbostadshus,flerfamiljshus,terrass,terrasserat,bostadstyp,hustyp,lägenhet,huskropp"
         },
         "building/train_station": {
-          "name": "Stationshus"
+          "name": "Stationshus",
+          "terms": "järnvägsstation,stationsbyggnad,tågstation,järnvägsbyggnad,station,terminal,järnvägsterminal,resecentrum,stationshus,järnvägshus,järnvägsanläggning,halt,hållplats,järnvägshållplats,tågterminal,railway station,train station,station building,vänthall,väntsal"
         },
         "building/transportation": {
           "name": "Byggnad för kollektivtrafik",
@@ -2624,8 +2633,8 @@
           "terms": "motorväg,snabbled,stadsmotorväg"
         },
         "highway/motorway_junction": {
-          "name": "Motorvägspåfart / -avfart",
-          "terms": "påfart,avfart,motorvägspåfart,motorvägsavfart,mot,trafikplats,vägkorsning"
+          "name": "Motorvägsavfart",
+          "terms": "motorvägsavfart,avfart,utfart,avfartsramp,trafikplats,motorvägsutfart,motorvägskorsning,motorvägsanslutning,avfartsanslutning,avfartsområde,exit,mot,motorvägsmot"
         },
         "highway/motorway_link": {
           "name": "Anslutning, motorväg",
@@ -2991,7 +3000,7 @@
         },
         "landuse/education": {
           "name": "Utbildningscampus",
-          "terms": "utbildningscampus,utbildningslokaler,campus,skolområde,skolcentrum,högskola,universitet,högskoleområde,universitetsområde"
+          "terms": "utbildningscampus,utbildningslokaler,campus,skolområde,skolcentrum,högskola,universitet,högskoleområde,universitetsområde,utbildningsområde,utbildningsanläggning,skola,skolcampus,skolgård"
         },
         "landuse/farm": {
           "name": "Åkermark"
@@ -3099,6 +3108,10 @@
         "landuse/military/training_area": {
           "name": "Militärt övningsfält",
           "terms": "militärt övningsfält,övningsfällt,skjutbana,övningsområde,luftförsvar,armé,militärbas,träning,övning,trupp,krig,skjutfält,avlyst,terrängträning"
+        },
+        "landuse/olive_grove": {
+          "name": "Olivlund",
+          "terms": "olivodling,olivlund,olivdunge,olivträdslund,olivträdgård,olivproduktion,olivkultur,olivolja,olivplantage,olivfält,olivgård,olivträd,olivskog,olivfrukt,olivfarm"
         },
         "landuse/orchard": {
           "name": "Fruktodling",
@@ -4212,11 +4225,11 @@
           "terms": "busksnår,buskskog,snår,sly"
         },
         "natural/shingle": {
-          "name": "Grus (singel)",
+          "name": "Klappersten",
           "terms": "grus,singel,strand,småsten,flodbädd,rundade stenfragment,klapperstensfält,klappersten"
         },
         "natural/shrub": {
-          "name": "Buskmark",
+          "name": "Buske",
           "terms": "buskmark,buskar,buskage"
         },
         "natural/sinkhole": {
@@ -4771,6 +4784,10 @@
           "name": "Lekhus",
           "terms": "lekslott,lekhus,lekstuga,lekplats,lekområde,lekpark,lek,lekplatshus"
         },
+        "playground/pump": {
+          "name": "Vattenpump för lek",
+          "terms": "lekvattenpump,vattenpump för lek,lekpump,vattenlekspump,vattenlek,vattenlekställning,vattenlekplats,pump,handpump,vattenlekredskap,vattenlekutrustning,vattenlekbrunn,vattenlekfontän,vattenlekstation,vattenskruv"
+        },
         "playground/roundabout": {
           "name": "Karusell (lekplats)",
           "terms": "karusell,lekplats,lekområde,lekpark,lek"
@@ -4824,8 +4841,8 @@
           "terms": "lektunnel,tunnel,rör,lekrör,lekplats,lekområde,lek"
         },
         "playground/water": {
-          "name": "Vattenpump/skruv (lekplats)",
-          "terms": "vattenpump,vattenskruv,vattenlek,lekplats,lek,lekområde"
+          "name": "Vattenlek (ospecificerad)",
+          "terms": "vattenlek,vattenlekplats,vattenlekställning,vattenlekredskap,vattenlekutrustning,vattenlekstation,vattenlekbrunn,vattenlekfontän,vattenlekpool,vattenlekbana,vattenlekområde,vattenlekpark,vattenlekzon,vattenlekland,vattenlekdamm,vattenlekbassäng,vattenlekspel,vattenlekmodul,vattenlekdel,vattenlekattraktion,vattenlekaktivitet,vattenleklekplats,vattenlekbyggnad,vattenlekstruktur,vattenskruv"
         },
         "playground/zipwire": {
           "name": "Linbana (lekplats)",
@@ -5212,6 +5229,10 @@
           "name": "Järnvägssignal",
           "terms": "järnvägssignal,signal,ljus,järnvägsljus,semafor,försignal,huvudsignal,dvärgsignal"
         },
+        "railway/signal_box": {
+          "name": "Ställverk",
+          "terms": "ställverk,signalställverk,signalkabin,signalkur,ställverksbyggnad,ställverkskabin,ställverkskur,signalhus,signalbyggnad,styrhus,styrkabin,styrkur,kontrollhus,kontrollbyggnad,kontrollkabin,kontrollkur"
+        },
         "railway/station": {
           "name": "Järnvägsstation"
         },
@@ -5559,6 +5580,10 @@
         "shop/erotic/lgbtq": {
           "name": "HBTQ-sexshop",
           "terms": "sex,sexshop,sexaffär,erotik,erotikaffär,erotisk,sexfilmer,porr,porrfilmer,sexleksaker,underkläder,kondomer,pornografi,porrtidningar,hbtq-sexshop,hbtq,gay,lesbisk"
+        },
+        "shop/esoteric": {
+          "name": "Esoterisk butik (mystik/New Age)",
+          "terms": "esoterisk butik,esoterisk affär,mystikbutik,new age-butik,spirituell butik,kristaller,kristallbutik,tarot,tarotkort,pendel,pendelbutik,meditation,meditationstillbehör,rökelse,rökelser,eteriska oljor,essential oils,aromaterapi,healing,energihealing,chakrabalansering,chakra,aura,spådom,spåkort,ockult,ockultism,magi,magibutik,wicca,wiccabutik,pagan,paganism,woo,alternativandlighet,alternativ butik,spiritism,pendelsten,kristallstenar,stenar,mineraler,mineralbutik,kristallhealing,kristallterapi,runor,runstenar,numerologi,astrologi,horoskop,feng shui,shamansk butik,shamansk praktik"
         },
         "shop/fabric": {
           "name": "Tygaffär",
@@ -6156,8 +6181,7 @@
           "terms": "karta,navigering,industrikarta,vägkarta,*karta,informationstavla,information,cykelkarta,stadskarta"
         },
         "tourism/information/office": {
-          "name": "Turistbyrå",
-          "terms": "turistbyrå,turistinformation,resebyrå,turistkontor,turist,turism,informationskontor,reseguide,turistinformationscenter,besökscenter,besöksinformationscenter,välkomstcenter"
+          "name": "Turistinformationskontor"
         },
         "tourism/information/route_marker": {
           "name": "Spårmarkör",
@@ -6166,6 +6190,9 @@
         "tourism/information/terminal": {
           "name": "Informationsterminal",
           "terms": "informationsterminal,terminal,information,informationskälla,turistbyrå,turistkartor,karta,informationskarta,infokarta"
+        },
+        "tourism/information/visitor_centre": {
+          "name": "Besökscenter"
         },
         "tourism/motel": {
           "name": "Motel",
@@ -6460,6 +6487,10 @@
         },
         "waterway": {
           "name": "Vattenvägobjekt"
+        },
+        "waterway/access_point": {
+          "name": "Åtkomst till vattenväg",
+          "terms": "vattenvägsåtkomst,åtkomstpunkt för vattenväg,iläggningsplats,sjösättningsplats,båtiläggning,kanotplats,kajakplats,roddbåt,iläggning,upptagning,portage,båt,kanot,kajak,paddling,rodd"
         },
         "waterway/boatyard": {
           "name": "Båtvarv",

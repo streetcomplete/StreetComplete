@@ -8,8 +8,8 @@ import java.util.Properties
 
 
 /** App version name, code and flavor */
-val appVersionName = "62.1"
-val appVersionCode = 6202
+val appVersionName = "62.2"
+val appVersionCode = 6203
 
 /** Localizations the app should be available in */
 val bcp47ExportLanguages = setOf(
@@ -462,10 +462,10 @@ tasks.register<GenerateMetadataByCountryTask>("generateMetadataByCountry") {
 tasks.register("copyDefaultStringsToEnStrings") {
     group = "streetcomplete"
     doLast {
-        val sourceStrings = File("$projectDir/src/androidMain/res/values/strings.xml")
+        val sourceStrings = File("$projectDir/src/commonMain/composeResources/values/strings.xml")
 
         sourceStrings.copyTo(File("$projectDir/src/androidMain/res/values-en/strings.xml"), true)
         sourceStrings.copyTo(File("$projectDir/src/commonMain/composeResources/values-en/strings.xml"), true)
-        sourceStrings.copyTo(File("$projectDir/src/commonMain/composeResources/values/strings.xml"), true)
+        sourceStrings.copyTo(File("$projectDir/src/androidMain/res/values/strings.xml"), true)
     }
 }

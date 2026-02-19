@@ -320,6 +320,9 @@
           "name": "커뮤니티 센터",
           "terms": "커뮤니티 센터"
         },
+        "amenity/community_centre/community_hall": {
+          "name": "지역회관"
+        },
         "amenity/community_centre/cultural_centre": {
           "name": "문화 센터"
         },
@@ -524,6 +527,9 @@
         "amenity/fast_food/chicken": {
           "name": "치킨 패스트푸드",
           "terms": "치킨 패스트푸드"
+        },
+        "amenity/fast_food/chinese": {
+          "name": "중식 패스트푸드"
         },
         "amenity/fast_food/donut": {
           "name": "도넛 패스트푸드",
@@ -920,6 +926,9 @@
         "amenity/restaurant/greek": {
           "name": "그리스 음식점",
           "terms": "그리스 식당"
+        },
+        "amenity/restaurant/hotpot": {
+          "name": "훠궈 가게"
         },
         "amenity/restaurant/indian": {
           "name": "인도 음식점",
@@ -1454,8 +1463,9 @@
           "terms": "산울타리,산울"
         },
         "barrier/height_restrictor": {
-          "name": "높이 제한기",
-          "terms": "높이 제한기"
+          "name": "통과높이 제한시설",
+          "terms": "높이 제한기",
+          "aliases": "차량한계틀,높이제한기"
         },
         "barrier/jersey_barrier": {
           "name": "저지 방벽",
@@ -1803,7 +1813,8 @@
           "terms": "테라스 연립 주택"
         },
         "building/train_station": {
-          "name": "기차역 건물"
+          "name": "기차역 건물",
+          "terms": "철도역 건물,기차역 건물,역사,역 건물"
         },
         "building/transportation": {
           "name": "대중교통 건물",
@@ -2083,7 +2094,7 @@
           "name": "버려진 지물"
         },
         "disused/railway": {
-          "name": "폐선된 철도 지물"
+          "name": "사용되지 않는 철도 지물"
         },
         "disused/shop": {
           "name": "폐점한 가게"
@@ -2495,8 +2506,8 @@
           "terms": "비상 신고 지점,비상 전화 지점,비상 접근 지점,비상 구조 지점"
         },
         "highway/emergency_bay": {
-          "name": "비상 정차대",
-          "terms": "비상 정차대,비상 대피 구역,긴급 정차 지점,긴급 정차 공간"
+          "name": "비상주차대",
+          "terms": "비상정차대,비상주차대,비상 대피 구역,긴급 정차 지점,긴급 정차 공간"
         },
         "highway/escape": {
           "name": "긴급제동시설",
@@ -2566,8 +2577,8 @@
           "terms": "고속국도"
         },
         "highway/motorway_junction": {
-          "name": "고속도로 분기점 / 출구",
-          "terms": "고속도로 분기점 / 출구,고속도로 ic / jc"
+          "name": "고속도로 출구",
+          "terms": "나들목,출구,출입구,ic,분기점,jc"
         },
         "highway/motorway_link": {
           "name": "고속도로 연결로",
@@ -2760,6 +2771,9 @@
           "name": "사적지",
           "terms": "사적지"
         },
+        "historic/aircraft": {
+          "name": "역사적 항공기"
+        },
         "historic/archaeological_site": {
           "name": "유적",
           "terms": "유적"
@@ -2900,6 +2914,10 @@
           "name": "양식장",
           "terms": "양어장,갑각류,조류,새우,굴"
         },
+        "landuse/aquaculture/fish": {
+          "name": "어장 / 부화장",
+          "terms": "어장,양식장,부화장"
+        },
         "landuse/basin": {
           "name": "웅덩이"
         },
@@ -2921,10 +2939,6 @@
         "landuse/construction": {
           "name": "공사 중인 지역",
           "terms": "공사 중인 지역"
-        },
-        "landuse/education": {
-          "name": "교육 시설(학교 이외)",
-          "terms": "교육원,연수원"
         },
         "landuse/farm": {
           "name": "농지"
@@ -2988,6 +3002,9 @@
         "landuse/meadow": {
           "name": "목초지",
           "terms": "목초지"
+        },
+        "landuse/meadow_orchard/meadow": {
+          "name": "과일나무가 있는 초원"
         },
         "landuse/military": {
           "name": "군사 지역",
@@ -3625,6 +3642,12 @@
         "man_made/carpet_hanger": {
           "name": "카펫 걸이",
           "terms": "카펫 걸이"
+        },
+        "man_made/ceremonial_gate/paifang": {
+          "name": "패방"
+        },
+        "man_made/ceremonial_gate/torii": {
+          "name": "도리이"
         },
         "man_made/charge_point": {
           "name": "전기차 충전소",
@@ -4723,10 +4746,6 @@
           "name": "놀이터 터널",
           "terms": "놀이터 터널"
         },
-        "playground/water": {
-          "name": "놀이용 나선형 물펌프",
-          "terms": "놀이용 나선형 물펌프"
-        },
         "playground/zipwire": {
           "name": "놀이용 집라인",
           "terms": "놀이용 집라인"
@@ -4754,7 +4773,7 @@
           "terms": "지하 전력 케이블"
         },
         "power/catenary_mast": {
-          "name": "가공 전차선",
+          "name": "가공전차선 지지대",
           "terms": "가공 전차선"
         },
         "power/generator": {
@@ -4882,7 +4901,7 @@
         },
         "public_transport/platform/bus_tram_point": {
           "name": "트램 & 버스 정류소",
-          "terms": "트램 & 버스 정류소"
+          "terms": "트램,버스,노면전차"
         },
         "public_transport/platform/ferry": {
           "name": "페리 승강장",
@@ -4921,11 +4940,11 @@
         },
         "public_transport/platform/tram": {
           "name": "트램 승강장",
-          "terms": "트램 승강장"
+          "terms": "트램,노면전차"
         },
         "public_transport/platform/tram_point": {
           "name": "트램 정거장 / 승강장",
-          "terms": "트램 정거장 / 승강장"
+          "terms": "트램,노면전차"
         },
         "public_transport/platform/trolleybus": {
           "name": "트롤리버스 승강장",
@@ -4972,12 +4991,12 @@
           "terms": "대중교통,철도,선로,역,터미널,기차"
         },
         "public_transport/station_train_halt": {
-          "name": "기차역 (하차 요청식)",
+          "name": "기차역 (하차 요청식 / 간이역)",
           "terms": "request stop,하차 요청,선택 정차"
         },
         "public_transport/station_tram": {
-          "name": "트램역",
-          "terms": "트램,전기,대중교통,철도,선로,역,터미널,전차,트롤리"
+          "name": "트램 정거장",
+          "terms": "트램,전기,대중교통,철도,선로,역,터미널,전차,트롤리,노면전차"
         },
         "public_transport/station_trolleybus": {
           "name": "트롤리버스 터미널",
@@ -5021,7 +5040,7 @@
         },
         "public_transport/stop_position_tram": {
           "name": "트램 정차 위치",
-          "terms": "트램,전기,대중교통,철도,선로,전차,트롤리"
+          "terms": "트램,전기,대중교통,철도,선로,전차,노면전차"
         },
         "public_transport/stop_position_trolleybus": {
           "name": "트롤리버스 정차 위치",
@@ -5031,15 +5050,15 @@
           "name": "철도 지물"
         },
         "railway/abandoned": {
-          "name": "버려진 철도",
-          "terms": "버려진 철도"
+          "name": "폐지된 선로",
+          "terms": "폐선된 철도"
         },
         "railway/buffer_stop": {
           "name": "차막이",
           "terms": "차막이"
         },
         "railway/construction": {
-          "name": "공사 중인 철도",
+          "name": "공사 중인 선로",
           "terms": "공사 중인 철도"
         },
         "railway/crossing": {
@@ -5051,15 +5070,15 @@
           "terms": "철도 탈선기"
         },
         "railway/disused": {
-          "name": "폐선된 철도",
-          "terms": "폐선된 철도"
+          "name": "사용되지 않는 선로",
+          "terms": "사용되지 않는 철도"
         },
         "railway/funicular": {
           "name": "강삭 철도",
           "terms": "강삭 철도"
         },
         "railway/halt": {
-          "name": "기차역 (하차 요청식)"
+          "name": "기차역 (하차 요청식 / 간이역)"
         },
         "railway/level_crossing": {
           "name": "철도-도로 건널목",
@@ -5093,34 +5112,38 @@
           "name": "기차 승강장"
         },
         "railway/preserved": {
-          "name": "역사적 철도",
+          "name": "역사적 선로",
           "terms": "역사적 철도"
         },
         "railway/rail": {
-          "name": "철도",
+          "name": "일반철도 선로",
           "terms": "철도"
         },
         "railway/rail/highspeed": {
-          "name": "고속철 철도",
-          "terms": "고속철 철도,고속철도"
+          "name": "고속철도 선로",
+          "terms": "고속철 철도,고속철도,고속선"
         },
         "railway/railway_crossing": {
           "name": "철도-철도 건널목",
           "terms": "철도-철도 건널목"
         },
         "railway/signal": {
-          "name": "철도 신호",
+          "name": "철도 신호기",
           "terms": "철도 신호"
+        },
+        "railway/signal_box": {
+          "name": "신호소",
+          "terms": "신호소,신호장"
         },
         "railway/station": {
           "name": "기차역"
         },
         "railway/subway": {
           "name": "지하철 선로",
-          "terms": "지하철 선로"
+          "terms": "지하철 선로,도시철도"
         },
         "railway/subway_entrance": {
-          "name": "지하철 입구",
+          "name": "지하철역 출입구",
           "terms": "지하철역 입구"
         },
         "railway/switch": {
@@ -5128,12 +5151,12 @@
           "terms": "스위치,분기기,선로변환기,선로전환기,철도 분기기"
         },
         "railway/train_wash": {
-          "name": "기차 세차장",
+          "name": "열차 세척고",
           "terms": "기차 세차장"
         },
         "railway/tram": {
           "name": "트램 선로",
-          "terms": "트램 선로,트램 철도"
+          "terms": "트램 선로,트램 철도,노면전차 궤도,궤도전차"
         },
         "railway/tram_crossing": {
           "name": "트램-보도 건널목",
@@ -5147,7 +5170,7 @@
           "name": "트램 정차 위치"
         },
         "railway/turntable": {
-          "name": "기차 턴 테이블",
+          "name": "전차대",
           "terms": "기차 턴 테이블"
         },
         "railway/yard": {
@@ -5172,7 +5195,7 @@
         },
         "route/ferry": {
           "name": "페리 노선",
-          "terms": "페리 노선,페리 경로"
+          "terms": "페리 노선,페리 경로,항로"
         },
         "seamark": {
           "name": "항해 표지"
@@ -5352,12 +5375,12 @@
           "terms": "초콜릿 상점"
         },
         "shop/clothes": {
-          "name": "옷 가게",
-          "terms": "옷 상점"
+          "name": "옷가게",
+          "terms": "옷 가게,옷가게,의류점"
         },
         "shop/clothes/second_hand": {
-          "name": "중고 옷 가게",
-          "terms": "중고 옷 상점"
+          "name": "중고 옷가게",
+          "terms": "헌옷가게,헌옷상점,중고 옷 가게,헌옷집"
         },
         "shop/clothes/suits": {
           "name": "슈트 가게",
@@ -5365,7 +5388,7 @@
         },
         "shop/clothes/underwear": {
           "name": "속옷 가게",
-          "terms": "속옷 상점"
+          "terms": "속옷가게,속옷집"
         },
         "shop/clothes/wedding": {
           "name": "혼례복 가게",
@@ -5534,6 +5557,9 @@
           "name": "청과상",
           "terms": "과일,채소,야채"
         },
+        "shop/groundskeeping": {
+          "name": "잔디 및 정원용품점"
+        },
         "shop/hairdresser": {
           "name": "미용실",
           "terms": "이발소,미장원"
@@ -5643,6 +5669,9 @@
         "shop/mobile_phone": {
           "name": "휴대폰 가게",
           "terms": "휴대폰 가게,휴대폰 대리점"
+        },
+        "shop/mobile_phone_accessories": {
+          "name": "휴대폰 악세서리 가게"
         },
         "shop/model": {
           "name": "모형 가게",
@@ -6042,8 +6071,7 @@
           "terms": "지도"
         },
         "tourism/information/office": {
-          "name": "관광 안내소",
-          "terms": "관광 안내소"
+          "name": "관광 안내소"
         },
         "tourism/information/route_marker": {
           "name": "트레일 마커",
@@ -6052,6 +6080,9 @@
         "tourism/information/terminal": {
           "name": "안내 단말기",
           "terms": "안내 단말기"
+        },
+        "tourism/information/visitor_centre": {
+          "name": "방문자 센터"
         },
         "tourism/motel": {
           "name": "모텔",
@@ -6238,7 +6269,7 @@
         },
         "type/route/aerialway": {
           "name": "항공 노선",
-          "terms": "항공 노선,운항 노선"
+          "terms": "항공 노선,운항 노선,항로"
         },
         "type/route/bicycle": {
           "name": "자전거 노선",
@@ -6254,10 +6285,10 @@
         },
         "type/route/ferry": {
           "name": "페리 노선",
-          "terms": "페리 노선,페리 경로"
+          "terms": "페리 노선,페리 경로,항로"
         },
         "type/route/foot": {
-          "name": "도보 노선",
+          "name": "걷기 코스",
           "terms": "도보 노선,도보 경로"
         },
         "type/route/hiking": {
@@ -6269,7 +6300,7 @@
           "terms": "승마 노선,승마 경로"
         },
         "type/route/light_rail": {
-          "name": "경전철 노선",
+          "name": "경전철 운행 경로",
           "terms": "경전철 노선,경전철 경로"
         },
         "type/route/monorail": {
@@ -6293,7 +6324,7 @@
           "terms": "송전 노선,전력 노선,송전 경로,전력 경로"
         },
         "type/route/railway": {
-          "name": "철도 노선",
+          "name": "철도 영업 노선",
           "terms": "철도 노선,철도 경로"
         },
         "type/route/road": {
@@ -6301,15 +6332,15 @@
           "terms": "도로 노선,도로 경로"
         },
         "type/route/subway": {
-          "name": "지하철 노선",
+          "name": "지하철 운행 경로",
           "terms": "지하철 노선,지하철 경로"
         },
         "type/route/train": {
-          "name": "기차 노선",
+          "name": "열차 운행 경로",
           "terms": "기차 노선,기차 경로"
         },
         "type/route/tram": {
-          "name": "트램 노선",
+          "name": "트램 운행 경로",
           "terms": "트램 노선,트램 경로"
         },
         "type/route/trolleybus": {

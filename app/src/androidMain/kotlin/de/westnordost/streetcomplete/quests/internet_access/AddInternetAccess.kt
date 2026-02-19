@@ -20,7 +20,7 @@ class AddInternetAccess : OsmFilterQuestType<Set<InternetAccess>>(), AndroidQues
           or tourism = camp_site and backcountry != yes and camp_site != basic
           or aeroway = terminal
           or shop ~ mall|department_store
-          or tourism = information and information ~ board|visitor_center
+          or tourism = information and information ~ office|visitor_center
         )
         and access !~ no|private
         and (

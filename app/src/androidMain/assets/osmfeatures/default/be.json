@@ -11,11 +11,65 @@
         "area": {
           "name": "Мясцовасць"
         },
+        "highway/bridleway": {
+          "name": "Шлях для вершнікаў"
+        },
+        "highway/crossing": {
+          "name": "Пераход"
+        },
+        "highway/crossing/traffic_signals": {
+          "name": "Пераход зь сьвятлафорам"
+        },
+        "highway/crossing/uncontrolled": {
+          "name": "Пазначаны пераход"
+        },
+        "highway/crossing/unmarked": {
+          "name": "Непазначаны пераход"
+        },
+        "highway/cycleway": {
+          "name": "Роварны шлях"
+        },
+        "highway/cycleway/bicycle_foot": {
+          "name": "Роварны і пешаходны шлях"
+        },
+        "highway/cycleway/crossing": {
+          "name": "Роварны пераезд"
+        },
+        "highway/cycleway/crossing/bicycle_foot": {
+          "name": "Роварны і пешаходны пераход"
+        },
+        "highway/cycleway/crossing/traffic_signals": {
+          "name": "Роварны пераезд зь сьвятлафорам"
+        },
+        "highway/cycleway/crossing/uncontrolled": {
+          "name": "Пазначаны роварны пераезд"
+        },
+        "highway/cycleway/crossing/unmarked": {
+          "name": "Не пазначаны роварны пераезд"
+        },
+        "highway/cycleway/traffic_island": {
+          "name": "Роварны астравок бяспекі"
+        },
+        "highway/cycleway/traffic_island_shared": {
+          "name": "Роварны і пешаходны астравок бяспекі"
+        },
+        "highway/footway": {
+          "name": "Пешаходны шлях"
+        },
+        "highway/footway/traffic_island": {
+          "name": "Астравок бяспекі"
+        },
+        "highway/path": {
+          "name": "Шлях"
+        },
         "line": {
           "name": "Лінія"
         },
         "place/city": {
           "name": "Горад"
+        },
+        "place/island": {
+          "name": "Выспа"
         },
         "place/square": {
           "name": "Выраўняць вуглы"

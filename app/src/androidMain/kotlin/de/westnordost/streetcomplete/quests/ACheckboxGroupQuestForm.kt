@@ -26,7 +26,7 @@ import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.quest_multiselect_hint
 import org.jetbrains.compose.resources.stringResource
 
-abstract class ACheckboxGroupQuestForm<T, I : T> : AbstractOsmQuestForm<Set<T>>() {
+abstract class ACheckboxGroupQuestForm<I, T> : AbstractOsmQuestForm<T>() {
     final override val contentLayoutResId = R.layout.compose_view
     private val binding by contentViewBinding(ComposeViewBinding::bind)
     override val defaultExpanded = false
@@ -67,13 +67,15 @@ abstract class ACheckboxGroupQuestForm<T, I : T> : AbstractOsmQuestForm<Set<T>>(
         } }
     }
 
+    abstract fun onClickOk(items: Set<I>)
+
     override fun onClickOk() {
-        applyAnswer(selectedOptions.value)
+        onClickOk(selectedOptions.value)
     }
 
     override val buttonPanelAnswers: List<AnswerItem> get() =
         if (selectedOptions.value.isEmpty()) {
-            listOf(AnswerItem(R.string.overlay_none) { applyAnswer(emptySet()) })
+            listOf(AnswerItem(R.string.overlay_none) { onClickOk(emptySet<I>()) })
         } else {
             emptyList()
         }

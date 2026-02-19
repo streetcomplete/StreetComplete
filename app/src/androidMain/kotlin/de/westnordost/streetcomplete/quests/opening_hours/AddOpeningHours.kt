@@ -13,7 +13,6 @@ import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.isPlaceOrDisusedPlace
-import de.westnordost.streetcomplete.osm.opening_hours.isLikelyIncorrect
 import de.westnordost.streetcomplete.osm.opening_hours.isSupported
 import de.westnordost.streetcomplete.osm.opening_hours.toOpeningHours
 import de.westnordost.streetcomplete.osm.updateCheckDateForKey
@@ -71,6 +70,7 @@ mapOf(
         // common
         "fitness_centre", "golf_course", "water_park", "miniature_golf", "bowling_alley",
         "amusement_arcade", "adult_gaming_centre", "tanning_salon", "sauna",
+        "indoor_play",
 
         // name & opening hours
         "trampoline_park",
@@ -79,12 +79,13 @@ mapOf(
         // walk-in opening hours but training times
     ),
     "office" to arrayOf(
-        // common
+        // common (AddPlaceName has catchall)
         "insurance", "government", "travel_agent", "tax_advisor", "religion",
         "employment_agency", "diplomatic", "coworking", "energy_supplier",
         "estate_agent", "lawyer", "telecommunication", "educational_institution",
         "association", "ngo", "it", "accountant", "property_management",
-        "bail_bond_agent", "financial_advisor",
+        "bail_bond_agent", "financial_advisor", "political_party",
+        "private_investigator", "adoption_agency",
     ),
     "craft" to arrayOf(
         // common
@@ -101,6 +102,10 @@ mapOf(
         "nurse", "counselling", "speech_therapist", "blood_donation", "sample_collection",
         "occupational_therapist", "dialysis", "vaccination_centre", "audiologist",
         "blood_bank", "nutrition_counselling",
+    ),
+    "waterway" to arrayOf(
+        // name & opening hours
+        "fuel",
     ),
 ).map { it.key + " ~ " + it.value.joinToString("|") }.joinToString("\n or ") + "\n" + """
                 )
@@ -182,8 +187,7 @@ mapOf(
         // invalid opening_hours rules -> applicable because we want to ask for opening hours again
         // be strict
         val oh = ohStr.toOpeningHoursOrNull(lenient = false) ?: return true
-        // only display supported rules, or ambiguous rules that should be corrected
-        return oh.isSupported(allowTimePoints = false) || oh.isLikelyIncorrect()
+        return oh.isSupported(allowTimePoints = false, allowAmbiguity = true)
     }
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =

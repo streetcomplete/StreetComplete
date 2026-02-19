@@ -323,6 +323,10 @@
           "name": "Centrum społecznościowe",
           "terms": "centrum społecznościowe,centrum społeczności,ośrodek kultury,centrum kultury,dom kultury,świetlica wiejska,świetlica środowiskowa,świetlica"
         },
+        "amenity/community_centre/chitalishte_BG": {
+          "name": "Czitaliszte",
+          "terms": "czitaliszte,czytaliszcze"
+        },
         "amenity/community_centre/club_home": {
           "name": "Świetlica klubowa",
           "terms": "świetlica klubowa,świetlica stowarzyszenia"
@@ -963,6 +967,10 @@
           "name": "Restauracja grecka",
           "terms": "restauracja grecka,kuchnia grecka"
         },
+        "amenity/restaurant/hotpot": {
+          "name": "Restauracja hot pot",
+          "terms": "restauracja hot pot,hotpot,huoguo,chińska"
+        },
         "amenity/restaurant/indian": {
           "name": "Restauracja indyjska",
           "terms": "restauracja hinduska,kuchnia indyjska"
@@ -977,7 +985,7 @@
         },
         "amenity/restaurant/korean": {
           "name": "Restauracja koreańska",
-          "terms": "restauracja koreańska,korea"
+          "terms": "restauracja koreańska,kuchnia koreańska"
         },
         "amenity/restaurant/mexican": {
           "name": "Restauracja meksykańska",
@@ -1866,7 +1874,8 @@
           "terms": "domy szeregowe,domki szeregowe,domy w zabudowie szeregowej,szeregowce,szeregówki,szeregówka"
         },
         "building/train_station": {
-          "name": "Budynek dworca kolejowego"
+          "name": "Budynek dworca kolejowego",
+          "terms": "budynek dworca kolejowego,dworzec kolejowy,budynek stacji kolejowej,stacja kolejowa"
         },
         "building/transportation": {
           "name": "Budynek transportu publicznego",
@@ -2660,8 +2669,8 @@
           "terms": "droga autostradowa,dwujezdniowa droga ekspresowa"
         },
         "highway/motorway_junction": {
-          "name": "Węzeł drogowy (wyjazd)",
-          "terms": "węzeł drogowy,węzeł dróg autostradowych,wjazd na drogę autostradową,wyjazd z drogi autostradowej,zjazd z drogi autostradowej,droga autostradowa"
+          "name": "Węzeł autostradowy (zjazd)",
+          "terms": "węzeł autostradowy,węzeł drogowy,zjazd z autostrady,wyjazd z autostrady"
         },
         "highway/motorway_link": {
           "name": "Droga autostradowa – wjazd/wyjazd",
@@ -3141,6 +3150,10 @@
         "landuse/military/training_area": {
           "name": "Poligon wojskowy",
           "terms": "poligon wojskowy"
+        },
+        "landuse/olive_grove": {
+          "name": "Gaj oliwny",
+          "terms": "gaj oliwny"
         },
         "landuse/orchard": {
           "name": "Sad",
@@ -3782,7 +3795,7 @@
         },
         "man_made/clearcut": {
           "name": "Poręba",
-          "terms": "poręba,wyręba,obszar wycinki,wycinka,las,drewno,drzewo"
+          "terms": "poręba,zrąb,wyręba,obszar wycinki,wycinka,las,drewno,drzewo"
         },
         "man_made/compass_rose": {
           "name": "Róża wiatrów",
@@ -4842,6 +4855,10 @@
           "name": "Domek (na placu zabaw)",
           "terms": "domek,domeczek"
         },
+        "playground/pump": {
+          "name": "Pompa (na placu zabaw)",
+          "terms": "pompa"
+        },
         "playground/roundabout": {
           "name": "Karuzela (na placu zabaw)",
           "terms": "karuzela"
@@ -5283,6 +5300,10 @@
           "name": "Semafor",
           "terms": "semafor"
         },
+        "railway/signal_box": {
+          "name": "Nastawnia",
+          "terms": "nastawnia"
+        },
         "railway/station": {
           "name": "Stacja kolejowa (osobowa lub osobowo-towarowa)"
         },
@@ -5632,6 +5653,10 @@
         "shop/erotic/lgbtq": {
           "name": "Sex shop LGBT",
           "terms": "sex shop dla homoseksualistów,gejów,lesbijek,sex-shop,sklep erotyczny"
+        },
+        "shop/esoteric": {
+          "name": "Sklep magiczny",
+          "terms": "sklep magiczny,sklep ezoteryczny,magia"
         },
         "shop/fabric": {
           "name": "Sklep z tkaninami",
@@ -6231,7 +6256,7 @@
         },
         "tourism/information/office": {
           "name": "Biuro informacji turystycznej",
-          "terms": "biuro informacji turystycznej,biuro turystyczne,centrum informacji turystycznej,informacja turystyczna,turystyka"
+          "terms": "biuro informacji turystycznej,biuro turystyczne,centrum informacji turystycznej,punkt informacji turystycznej,informacja turystyczna,turystyka"
         },
         "tourism/information/route_marker": {
           "name": "Znacznik szlaku",
@@ -6240,6 +6265,10 @@
         "tourism/information/terminal": {
           "name": "Terminal informacyjny",
           "terms": "terminal informacyjny,informacja,punkt info,informacja miejska,infokiosk"
+        },
+        "tourism/information/visitor_centre": {
+          "name": "Centrum obsługi zwiedzających",
+          "terms": "centrum obsługi zwiedzających,centrum obsługi odwiedzających,centrum informacji dla zwiedzających,centrum informacji dla odwiedzających,punkt informacji dla zwiedzających,punkt informacji dla odwiedzających"
         },
         "tourism/motel": {
           "name": "Motel",
@@ -6533,6 +6562,10 @@
         },
         "waterway": {
           "name": "Ciek"
+        },
+        "waterway/access_point": {
+          "name": "Dostęp do wody",
+          "terms": "dostęp do wody,dostęp do brzegu,dostęp do wód powierzchniowych"
         },
         "waterway/boatyard": {
           "name": "Stocznia jachtowa",

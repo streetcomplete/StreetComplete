@@ -946,6 +946,9 @@
           "name": "Restaurant grec",
           "terms": "restaurant grec,café,bar,gyros,pita,souvlaki"
         },
+        "amenity/restaurant/hotpot": {
+          "name": "Fondue chinoise"
+        },
         "amenity/restaurant/indian": {
           "name": "Restaurant indien",
           "terms": "restaurant indien,café,bar"
@@ -1868,6 +1871,9 @@
           "name": "Section de cimetière",
           "terms": "tombe,enterrement,cimetière,mausolée"
         },
+        "climbing/crag": {
+          "name": "Rocher de grimpe"
+        },
         "climbing/route": {
           "name": "Voie d'escalade"
         },
@@ -2124,6 +2130,9 @@
         "disused/shop": {
           "name": "Magasin désaffecté"
         },
+        "education": {
+          "name": "Structure éducative"
+        },
         "education/college": {
           "name": "Enseignement supérieur (non universitaire) - institution ou campus (terrain)"
         },
@@ -2142,11 +2151,17 @@
         "education/music_school": {
           "name": "École de musique"
         },
+        "education/prep_school": {
+          "name": "École préparatoire"
+        },
         "education/school": {
           "name": "École élémentaire ou secondaire (terrain)"
         },
         "education/university": {
           "name": "Université, établissement d'enseignement supérieur, campus (terrain)"
+        },
+        "education/yes": {
+          "name": "Structure éducative (non spécifiée)"
         },
         "embankment": {
           "name": "Terre-plein",
@@ -2595,10 +2610,6 @@
           "name": "Autoroute",
           "terms": "autoroute,voie rapide"
         },
-        "highway/motorway_junction": {
-          "name": "Sortie / Échangeur",
-          "terms": "sortie,échangeur,échangeur autoroutier,croisement d'autoroutes,intersection d'autoroutes"
-        },
         "highway/motorway_link": {
           "name": "Bretelle d'autoroute",
           "terms": "bretelle,accès,entrée,sortie,voie,autoroute"
@@ -2936,6 +2947,10 @@
           "name": "Aquaculture",
           "terms": "halieuculture,aquiculture,mariculture,pisciculture,conchyliculture,astaciculture,pénéiculture,coraliculture,algoculture"
         },
+        "landuse/aquaculture/fish": {
+          "name": "Ferme piscicole",
+          "terms": "élevage de poissons"
+        },
         "landuse/basin": {
           "name": "Bassin"
         },
@@ -2958,10 +2973,6 @@
         "landuse/construction": {
           "name": "Site en construction",
           "terms": "zone de construction,construction,démolition,développement,infrastructure,grue"
-        },
-        "landuse/education": {
-          "name": "Zone dédiée à l'éducation",
-          "terms": "zone,groupe,aire,campus,éducation,école,scolaire"
         },
         "landuse/farm": {
           "name": "Zone agricole"
@@ -3027,10 +3038,12 @@
           "terms": "prairie"
         },
         "landuse/meadow_orchard/meadow": {
-          "name": "Prairie avec arbres fruitiers"
+          "name": "Prairie avec arbres fruitiers",
+          "terms": "pré avec des arbres fruitiers"
         },
         "landuse/meadow_orchard/orchard": {
-          "name": "Verger planté dans une prairie"
+          "name": "Verger planté dans une prairie",
+          "terms": "verger planté dans un pré"
         },
         "landuse/military": {
           "name": "Zone militaire",
@@ -3666,6 +3679,12 @@
         "man_made/carpet_hanger": {
           "name": "Cintre à tapis",
           "terms": "cintre à tapis,support de tapis,râtelier à tapis"
+        },
+        "man_made/ceremonial_gate/paifang": {
+          "name": "Païfang"
+        },
+        "man_made/ceremonial_gate/torii": {
+          "name": "Torii"
         },
         "man_made/charge_point": {
           "name": "Borne de recharge pour véhicules électriques",
@@ -4770,10 +4789,6 @@
           "name": "Tunnel",
           "terms": "tunnel,jeux"
         },
-        "playground/water": {
-          "name": "Appareils pour jouer avec de l'eau",
-          "terms": "appareils,jeux,pompe,vis,eau"
-        },
         "playground/zipwire": {
           "name": "Tyrolienne (jeu pour enfants)",
           "terms": "tyrolienne"
@@ -5505,6 +5520,9 @@
           "name": "Sex-shop LGBTQ+",
           "terms": "sex-shop,lgbtq,gay,lesbien"
         },
+        "shop/esoteric": {
+          "name": "Ésotérique"
+        },
         "shop/fabric": {
           "name": "Magasin de tissus",
           "terms": "mercerie"
@@ -5696,6 +5714,9 @@
         "shop/mobile_phone": {
           "name": "Magasin de téléphonie mobile",
           "terms": "vente de téléphone portable,magasin de téléphones portables,cellulaires"
+        },
+        "shop/mobile_phone_accessories": {
+          "name": "Boutique d'accessoires pour téléphone"
         },
         "shop/model": {
           "name": "Magasin de modélisme",
@@ -6096,8 +6117,7 @@
           "aliases": "Plan\nTable d'orientation"
         },
         "tourism/information/office": {
-          "name": "Centre d'accueil des visiteurs",
-          "terms": "office de tourisme,centre d'informations touristique,agence de tourisme"
+          "name": "Office de tourisme"
         },
         "tourism/information/route_marker": {
           "name": "Repère",
@@ -6106,6 +6126,9 @@
         "tourism/information/terminal": {
           "name": "Terminal d'information",
           "terms": "terminal d'information"
+        },
+        "tourism/information/visitor_centre": {
+          "name": "Centre d'accueil des visiteurs"
         },
         "tourism/motel": {
           "name": "Motel",
@@ -6218,6 +6241,9 @@
         "traffic_sign/variable_message": {
           "name": "Panneau à messages variables",
           "terms": "panneau,signalisation,pmv,message,lumineux"
+        },
+        "type/associatedStreet": {
+          "name": "Rue associée"
         },
         "type/boundary": {
           "name": "Frontière",
@@ -6381,6 +6407,12 @@
         "type/site": {
           "name": "Site",
           "terms": "site"
+        },
+        "type/site/climbing/area": {
+          "name": "Zone de grimpe"
+        },
+        "type/site/climbing/crag": {
+          "name": "Rocher de grimpe"
         },
         "type/waterway": {
           "name": "Cours d'eau",

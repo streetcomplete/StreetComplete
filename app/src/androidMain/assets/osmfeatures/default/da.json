@@ -343,6 +343,10 @@
           "name": "Tandlæge",
           "terms": "tandlæge"
         },
+        "amenity/device_charging_station": {
+          "name": "Ladestation for mobilenheder",
+          "terms": "ladestation for mobilenheder,mobilopladning,opladning,lader,usb,stik"
+        },
         "amenity/dive_centre": {
           "name": "Dykkercenter"
         },
@@ -437,7 +441,8 @@
           "terms": "vand,vandhane,fontæne,drik,drikke"
         },
         "amenity/driver_training": {
-          "name": "Køreteknisk anlæg"
+          "name": "Køreteknisk anlæg",
+          "terms": "køreteknisk anlæg,manøvrebane,øvelsesbane,kravlegård,glatbane,glatførebane"
         },
         "amenity/embassy": {
           "name": "Ambassade"
@@ -654,8 +659,8 @@
           "name": "Apotek"
         },
         "amenity/photo_booth": {
-          "name": "Pasfotoautomat",
-          "terms": "maskine,automat,foto,billede,pas,kørekort,portræt"
+          "name": "Fotoautomat",
+          "terms": "fotoautomat,pasfotoautomat,fotomaskine,automat,foto,billede,pas,kørekort,portræt,fotostation"
         },
         "amenity/place_of_worship": {
           "name": "Tilbedelsessted",
@@ -713,7 +718,7 @@
         },
         "amenity/post_office": {
           "name": "Postkontor",
-          "terms": "posthus,postkontor"
+          "terms": "postkontor,posthus,pakkeshop"
         },
         "amenity/prison": {
           "name": "Fængselsområde",
@@ -736,7 +741,7 @@
         },
         "amenity/public_bookcase": {
           "name": "Bogbytteskab",
-          "terms": "bogbytteskab,bogkasse,bogbørs,bogsøjle,delebøger,bytteboks,genbrugsbøger,little library"
+          "terms": "bogbytteskab,bogkasse,bogbørs,bogsøjle,delebøger,bytteboks,genbrugsbøger,little library,offentlig bogskab,bogreol,brugt"
         },
         "amenity/ranger_station": {
           "name": "Rangerstation",
@@ -935,7 +940,7 @@
         },
         "amenity/toilets/disposal/flush": {
           "name": "Vandskyllende toiletter",
-          "terms": "vandskyllende toiletter,wc,water closet,træk og slip,træk,slip"
+          "terms": "vandskyllende toiletter,wc,water closet,træk og slip,træk,slip,vandkloset"
         },
         "amenity/toilets/disposal/pitlatrine": {
           "name": "Latrin",
@@ -958,7 +963,7 @@
         },
         "amenity/trolley_bay": {
           "name": "Bås til indkøbsvogne",
-          "terms": "indkøbsvognsbås,kundevognshus,kundevognsterminaler,indkøbsvognsterminal"
+          "terms": "indkøbsvognsbås,kundevognshus,kundevognsterminaler,indkøbsvognsterminal,indkøbsvogn"
         },
         "amenity/vacuum_cleaner": {
           "name": "Støvsugerstation",
@@ -1369,8 +1374,8 @@
           "terms": "bygning til videregående uddannelse,skole,college,erhvervsakademi,cvu,professionshøjskole,university college,mellemlang"
         },
         "building/commercial": {
-          "name": "Erhvervsbyggeri",
-          "terms": "erhvervsbyggeri,erhvervsejendom"
+          "name": "Erhvervsbygning",
+          "terms": "erhvervsbyggeri,erhvervsejendom,kommerciel,erhverv,kontor"
         },
         "building/construction": {
           "name": "Bygning under konstruktion",
@@ -2169,7 +2174,7 @@
         },
         "highway/give_way": {
           "name": "Vigepligtsmarkering",
-          "terms": "vigepligtsmarkering,vigepligtstavle,hajtænder,advarselsskilt,stopskilt"
+          "terms": "vigepligtsmarkering,vigepligtstavle,hajtænder,advarselsskilt,stopskilt,vigepligt,ubetinget vigepligt"
         },
         "highway/ladder": {
           "name": "Stige"
@@ -2189,10 +2194,6 @@
         "highway/motorway": {
           "name": "Motorvej",
           "terms": "motorvej"
-        },
-        "highway/motorway_junction": {
-          "name": "Motorvejsafkørsel/ Udkørsel",
-          "terms": "motorvejsafkørsel/ udkørsel"
         },
         "highway/motorway_link": {
           "name": "Motorvejsafkørsel",
@@ -2303,7 +2304,7 @@
         },
         "highway/speed_camera": {
           "name": "Fartkontrolkamera",
-          "terms": "fartkontrolkamera"
+          "terms": "fartkontrolkamera,stærekasse,hastighedskontrol,kamerafælde,atk-stander,trafikkontrol,fotofælde"
         },
         "highway/steps": {
           "name": "Trappe",
@@ -2318,7 +2319,7 @@
         },
         "highway/street_lamp": {
           "name": "Gadelampe",
-          "terms": "gadelampe,gadebelysning"
+          "terms": "gadelampe,gadebelysning,belysning,lys,lampe"
         },
         "highway/tertiary": {
           "name": "Tertiær vej",
@@ -2507,15 +2508,15 @@
         },
         "landuse/commercial": {
           "name": "Erhvervsområde",
-          "terms": "erhvervsområde,kontorer,handelsområde,depot"
+          "terms": "erhvervsområde,kontorer,handelsområde,depot,kontor,kommerciel"
         },
         "landuse/construction": {
           "name": "Byggeplads",
           "terms": "opførsel,konstruktion,nedrivning,udvikling"
         },
         "landuse/education": {
-          "name": "Uddannelsescampus",
-          "terms": "uddannelsescampus,højskole,efterskole,professionshøjskole,ungdomsskole,skole"
+          "name": "Uddannelsesområde",
+          "terms": "uddannelsesområde,undervisning,skole,gymnasium,universitet,undervisningsområde,uddannelse"
         },
         "landuse/farm": {
           "name": "Landbrugsjord"
@@ -2611,6 +2612,9 @@
         "landuse/military/training_area": {
           "name": "Militært træningsområde"
         },
+        "landuse/olive_grove": {
+          "name": "Olivenlund"
+        },
         "landuse/orchard": {
           "name": "Frugtplantage",
           "terms": "frugtplantage,æbleplantage"
@@ -2660,8 +2664,8 @@
           "name": "Saltsyderi"
         },
         "landuse/vineyard": {
-          "name": "Vingård",
-          "terms": "vingård,vinmark"
+          "name": "Vinmark",
+          "terms": "vinmark,vingård,druer"
         },
         "landuse/winter_sports": {
           "name": "Vintersportsområde",
@@ -2692,7 +2696,7 @@
         },
         "leisure/bleachers": {
           "name": "Lægtepladser",
-          "terms": "lægtepladser,lægter,stadion,siddeplads,fodbold,tilskuerrækker"
+          "terms": "lægtepladser,lægter,stadion,siddeplads,fodbold,tilskuerrækker,sæder"
         },
         "leisure/bowling_alley": {
           "name": "Bowlingbaner",
@@ -3283,7 +3287,7 @@
         },
         "man_made/surveillance/camera": {
           "name": "Overvågningskamera",
-          "terms": "overvågningskamera,videoovervågning,kamera,cctv"
+          "terms": "overvågningskamera,videoovervågning,kamera,cctv,tryghedskamera"
         },
         "man_made/survey_point": {
           "name": "Geografisk fikspunkt",
@@ -3660,8 +3664,8 @@
           "terms": "arkitekt,tegning,bygning"
         },
         "office/association": {
-          "name": "Almennyttigt kontor",
-          "terms": "non-profit,forening,organisation,frivillig"
+          "name": "Kontor for nonprofitorganisation",
+          "terms": "kontor for nonprofitorganisation,non-profit,forening,organisation,frivillig,almennyttigt kontor"
         },
         "office/charity": {
           "name": "Velgørenhedskontor",
@@ -4506,6 +4510,10 @@
           "name": "Erotikbutik",
           "terms": "erotikbutik,sexlegetøjsbutik,erotiklegetøjsforretning"
         },
+        "shop/esoteric": {
+          "name": "Esoterisk butik",
+          "terms": "esoterisk butik,new age,healing,spirituel,alternativ,krystalbutik"
+        },
         "shop/fabric": {
           "name": "Stofforretning",
           "terms": "stofforretning"
@@ -4665,8 +4673,8 @@
           "terms": "indkøbscenter"
         },
         "shop/massage": {
-          "name": "Massagebutik",
-          "terms": "massagebutik,massør"
+          "name": "Massagebehandler",
+          "terms": "massagebutik,massør,massage"
         },
         "shop/medical_supply": {
           "name": "Håndkøbsmedicinforhandler",
@@ -5034,7 +5042,8 @@
           "terms": "kort"
         },
         "tourism/information/office": {
-          "name": "Besøgscenter"
+          "name": "Turistkontor",
+          "terms": "turistkontor,turistbureau,turistinformation,besøgscenter"
         },
         "tourism/information/route_marker": {
           "name": "Rutemarkør",
@@ -5093,7 +5102,7 @@
         },
         "traffic_calming/bump": {
           "name": "Vejbump",
-          "terms": "bump,vejbump"
+          "terms": "bump,vejbump,fartbump"
         },
         "traffic_calming/chicane": {
           "name": "Trafikchikane",
@@ -5156,6 +5165,10 @@
         "type/destination_sign": {
           "name": "Destinationsskilt",
           "terms": "destinationsskilt,endepunktskilt"
+        },
+        "type/enforcement": {
+          "name": "Håndhævelse",
+          "terms": "håndhævelse,justits"
         },
         "type/enforcement/maxspeed": {
           "name": "Håndhævelse af hastighedsbegrænsning"

@@ -2491,10 +2491,6 @@
           "name": "Autosnelweg",
           "terms": "autostrade,snelweg"
         },
-        "highway/motorway_junction": {
-          "name": "Op-/Afrit van autosnelweg",
-          "terms": "afslag,afrit,kruispunt,autostrade,snelweg,autosnelweg"
-        },
         "highway/motorway_link": {
           "name": "Verbindingsweg van autosnelweg",
           "terms": "autostrade,snelweg,autosnelweg,link,invoegstrook,afslag"
@@ -2845,10 +2841,6 @@
         "landuse/construction": {
           "name": "Bouwterrein",
           "terms": "werfzone,werf"
-        },
-        "landuse/education": {
-          "name": "Gebied van een onderwijsinstelling",
-          "terms": "campus,schoolgebied,kindcentrum,educatie"
         },
         "landuse/farm": {
           "name": "Landbouwgrond"
@@ -4467,9 +4459,6 @@
         "playground/tunnel_tube": {
           "name": "Speeltunnel"
         },
-        "playground/water": {
-          "name": "Speelwaterpomp/schroef"
-        },
         "playground/zipwire": {
           "name": "Tokkelbaan",
           "terms": "ziplijn"
@@ -5773,10 +5762,6 @@
         "tourism/information/map": {
           "name": "Kaart",
           "terms": "plan,plattegrond,informatie"
-        },
-        "tourism/information/office": {
-          "name": "Toerismekantoor",
-          "terms": "bezoekerscentrum"
         },
         "tourism/information/route_marker": {
           "name": "Routemarkering",

@@ -6,6 +6,7 @@ import androidx.compose.ui.platform.LocalUriHandler
 import de.westnordost.streetcomplete.data.messages.Message
 import de.westnordost.streetcomplete.screens.settings.SettingsActivity
 import de.westnordost.streetcomplete.screens.user.achievements.AchievementDialog
+import kotlin.reflect.KClass
 
 /** Dialog that shows a Message */
 @Composable
@@ -13,6 +14,7 @@ fun MessageDialog(
     message: Message,
     allQuestIconIds: List<Int>,
     onDismissRequest: () -> Unit,
+    onToggleDontNotifyAgain: (KClass<out Message>, Boolean) -> Unit,
 ) {
     when (message) {
         is Message.NewAchievement -> {
@@ -46,6 +48,21 @@ fun MessageDialog(
                 onDismissRequest = onDismissRequest,
                 onClickOpenMessages = {
                     uriHandler.openUri("https://www.openstreetmap.org/messages/inbox")
+                }
+            )
+        }
+        is Message.NewWeeklyOsm -> {
+            val uriHandler = LocalUriHandler.current
+            WeeklyOsmDialog(
+                date = message.date,
+                onDismissRequest = onDismissRequest,
+                onClickOpenWeeklyOsm = {
+                    // note that weeklyOSM website is smart enough to show the site in the user
+                    // preferred language
+                    uriHandler.openUri("https://www.weeklyosm.eu")
+                },
+                onToggleDontNotifyAgain = { dontNotifyAgain ->
+                    onToggleDontNotifyAgain(Message.NewWeeklyOsm::class, dontNotifyAgain)
                 }
             )
         }

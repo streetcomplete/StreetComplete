@@ -2074,10 +2074,6 @@
           "name": "Moottoritie",
           "terms": "autobaana"
         },
-        "highway/motorway_junction": {
-          "name": "Moottoritien liittymä",
-          "terms": "ramppi,eritasoliittymä,monitasoliittymä,moottoritie,poistumisliittymä,poistumisramppi"
-        },
         "highway/motorway_link": {
           "name": "Moottoritien ramppi"
         },
@@ -2371,9 +2367,6 @@
         },
         "landuse/construction": {
           "name": "Työmaa-alue"
-        },
-        "landuse/education": {
-          "name": "Kampusalue"
         },
         "landuse/farm": {
           "name": "Viljelysmaa"
@@ -4872,9 +4865,6 @@
         "tourism/information/map": {
           "name": "Kartta",
           "terms": "opaskartta,maastokartta,topografia,katukartta,karttataulu,pohjapiirros,opastaulu,reittiohje,havainnekuva,kuva,grafiikka,taulu"
-        },
-        "tourism/information/office": {
-          "name": "Matkailuneuvonta"
         },
         "tourism/information/route_marker": {
           "name": "Polkumerkki",

@@ -81,11 +81,11 @@ class AddHousenumberForm : AbstractOsmQuestForm<HouseNumberAnswer>() {
         if (countryInfo.countryCode in listOf("JP", "CZ", "SK")) return null
         return when (addressNumberAndName.value.number) {
             is BlockAndHouseNumber ->
-                AnswerItem(R.string.quest_address_answer_no_block) {
+                AnswerItem(R.string.quest_address_answer_no_block2) {
                     addressNumberAndName.value = addressNumberAndName.value.copy(number = HouseNumber(""))
                 }
             else ->
-                AnswerItem(R.string.quest_address_answer_block) {
+                AnswerItem(R.string.quest_address_answer_block2) {
                     addressNumberAndName.value = addressNumberAndName.value.copy(number = BlockAndHouseNumber("", ""))
                 }
         }

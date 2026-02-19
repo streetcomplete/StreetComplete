@@ -75,17 +75,19 @@ class AddWheelchairAccessBusiness : OsmFilterQuestType<WheelchairAccess>(), Andr
                 // common
                 "fitness_centre", "golf_course", "water_park", "miniature_golf", "bowling_alley",
                 "amusement_arcade", "adult_gaming_centre", "tanning_salon", "sauna",
+                "indoor_play",
 
                 // name & wheelchair
                 "sports_centre", "stadium"
             ),
             "office" to arrayOf(
-                // common
+                // common (AddPlaceName has catchall)
                 "insurance", "government", "travel_agent", "tax_advisor", "religion",
                 "employment_agency", "diplomatic", "coworking", "energy_supplier",
                 "estate_agent", "lawyer", "telecommunication", "educational_institution",
                 "association", "ngo", "it", "accountant", "property_management",
-                "bail_bond_agent", "financial_advisor",
+                "bail_bond_agent", "financial_advisor", "political_party",
+                "private_investigator", "adoption_agency",
 
                 // name & wheelchair
                 "political_party", "therapist"

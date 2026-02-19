@@ -187,6 +187,9 @@ private val IS_PLACE_EXPRESSION by lazy {
             "trail_riding_station", // motel for riders
             "wilderness_hut"
         ),
+        "waterway" to listOf(
+            "fuel"
+        ),
     )
     .map { it.key + " ~ " + it.value.joinToString("|") }
     .joinToString("\n    or ")

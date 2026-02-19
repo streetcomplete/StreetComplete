@@ -1,11 +1,11 @@
 - name: "Tobias Zwick"
   githubUsername: "westnordost"
-  linesOfCodeChanged: 550039
-  linesOfInterfaceMarkupChanged: 170149
+  linesOfCodeChanged: 550308
+  linesOfInterfaceMarkupChanged: 170152
   assetFilesChanged: 2245
 - name: "Mateusz Konieczny"
   githubUsername: "matkoniecz"
-  linesOfCodeChanged: 22311
+  linesOfCodeChanged: 22320
   linesOfInterfaceMarkupChanged: 5233
   assetFilesChanged: 636
 - name: "Flo Edelmann"
@@ -30,12 +30,12 @@
   assetFilesChanged: 4
 - name: "Matija Nalis"
   githubUsername: "mnalis"
-  linesOfCodeChanged: 3685
+  linesOfCodeChanged: 3738
   linesOfInterfaceMarkupChanged: 607
   assetFilesChanged: 72
 - name: "arrival-spring"
   githubUsername: "arrival-spring"
-  linesOfCodeChanged: 3305
+  linesOfCodeChanged: 3308
   linesOfInterfaceMarkupChanged: 2280
   assetFilesChanged: 7
 - name: "Krzysztof Zbudniewek"
@@ -59,16 +59,16 @@
   githubUsername: "tapetis"
   linesOfCodeChanged: 1864
   linesOfInterfaceMarkupChanged: 1429
+- name: "arthedain"
+  githubUsername: "paulklie"
+  linesOfCodeChanged: 1815
+  linesOfInterfaceMarkupChanged: 159
+  assetFilesChanged: 5
 - name: "Adrien Pavie"
   githubUsername: "PanierAvide"
   linesOfCodeChanged: 1639
   linesOfInterfaceMarkupChanged: 262
   assetFilesChanged: 48
-- name: "paukli"
-  githubUsername: "paulklie"
-  linesOfCodeChanged: 1613
-  linesOfInterfaceMarkupChanged: 159
-  assetFilesChanged: 5
 - name: "smichel17"
   githubUsername: "smichel17"
   linesOfCodeChanged: 1332
@@ -284,13 +284,13 @@
 - name: "Nils Rokita"
   githubUsername: "Akasch"
   linesOfCodeChanged: 16
+- name: "Holger Jeromin"
+  githubUsername: "HolgerJeromin"
+  linesOfCodeChanged: 15
+  assetFilesChanged: 4
 - name: "tiptoptom"
   githubUsername: "tiptoptom"
   linesOfCodeChanged: 15
-- name: "Holger Jeromin"
-  githubUsername: "HolgerJeromin"
-  linesOfCodeChanged: 13
-  assetFilesChanged: 4
 - name: "Finn"
   githubUsername: "catdogmat"
   linesOfCodeChanged: 13
@@ -354,7 +354,7 @@
   githubUsername: "Firefishy"
   linesOfCodeChanged: 3
 - name: "Bruno Pezer"
-  githubUsername: "RiffLord"
+  githubUsername: "bpezer"
   linesOfCodeChanged: 3
 - name: "Guillaume Rischard"
   githubUsername: "grischard"

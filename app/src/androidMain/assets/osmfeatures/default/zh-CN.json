@@ -321,6 +321,10 @@
           "name": "社区活动中心",
           "terms": "活动室"
         },
+        "amenity/community_centre/chitalishte_BG": {
+          "name": "社区文化中心",
+          "terms": "保加利亚社区,文化中心,社区文化中心,chitalishte,奇塔利什特"
+        },
         "amenity/community_centre/club_home": {
           "name": "俱乐部会所",
           "terms": "俱乐部,社团,夜总会,会所,可乐部,社交,组织,娱乐,社区,会议,驿站,平台,会,汇,社会,文化,团体,会员,家,之家,俱乐部之家"
@@ -951,6 +955,10 @@
           "name": "希腊餐馆",
           "terms": "餐馆,餐厅,希腊,饭店,烧烤,橄榄,酒吧,早餐,早点,早饭,午餐,午饭,下午茶,晚餐,晚饭,食物,食堂"
         },
+        "amenity/restaurant/hotpot": {
+          "name": "火锅餐馆",
+          "terms": "火锅,涮涮锅,寿喜锅,牛肉锅,涮羊肉,海底捞,小龙坎"
+        },
         "amenity/restaurant/indian": {
           "name": "印度餐馆",
           "terms": "餐馆,餐厅,印式,印度,咖喱,飞饼,饭店,烧烤,酒吧,早餐,早点,早饭,午餐,午饭,下午茶,晚餐,晚饭,食物,食堂"
@@ -1157,7 +1165,7 @@
         },
         "amenity/townhall": {
           "name": "地方政府/村礼堂",
-          "terms": "市政府,县政府,区政府,乡政府,镇政府,村礼堂,村委会,市政厅,大会堂,市政中心"
+          "terms": "市政府,县政府,区政府,乡政府,镇政府,村礼堂,村委会,市政厅,大会堂,市政中心,政府"
         },
         "amenity/townhall/barangay-PH": {
           "name": "描笼涯镇厅",
@@ -1424,7 +1432,7 @@
         },
         "barrier/border_control": {
           "name": "边境检查站",
-          "terms": "边境检查站,边境,边防,海关,检查"
+          "terms": "边境检查站,边境,边防,海关,检查,边界,国界,边检"
         },
         "barrier/bump_gate": {
           "name": "防撞门",
@@ -1842,7 +1850,8 @@
           "terms": "联排住宅,天地楼,联排单元"
         },
         "building/train_station": {
-          "name": "铁路车站建筑"
+          "name": "铁路车站建筑",
+          "terms": "火车站,火车站建筑,火车站大楼,站房,铁路"
         },
         "building/transportation": {
           "name": "公共交通建筑",
@@ -2625,7 +2634,7 @@
         },
         "highway/motorway_junction": {
           "name": "高速公路出口",
-          "terms": "高速,公路,出口,岔道,匝道,分流"
+          "terms": "互通,匝道,出口"
         },
         "highway/motorway_link": {
           "name": "高速公路匝道",
@@ -3099,6 +3108,10 @@
         "landuse/military/training_area": {
           "name": "军事训练场",
           "terms": "军事,军队,部队,军用,训练,锻炼,练习,演练,演习,场地,综合"
+        },
+        "landuse/olive_grove": {
+          "name": "橄榄树园",
+          "terms": "橄榄树丛,橄榄园"
         },
         "landuse/orchard": {
           "name": "园地",
@@ -4770,6 +4783,10 @@
           "name": "游戏小屋",
           "terms": "游戏小屋"
         },
+        "playground/pump": {
+          "name": "戏水水泵",
+          "terms": "戏水,水泵,水井"
+        },
         "playground/roundabout": {
           "name": "游乐旋转陀螺",
           "terms": "旋转,旋转陀螺,氹氹转,团团转,转圈圈,儿童,小孩,游乐,游乐设施,游乐园,游乐场,乐园,儿童乐园"
@@ -4823,8 +4840,8 @@
           "terms": "儿童,爬行,隧道"
         },
         "playground/water": {
-          "name": "戏水设施",
-          "terms": "戏水设施"
+          "name": "戏水设施（不特定类型）",
+          "terms": "戏水,设施,装置,设备"
         },
         "playground/zipwire": {
           "name": "游乐场滑索",
@@ -5211,6 +5228,10 @@
           "name": "铁路信号机",
           "terms": "色灯,信号机,信号,灯,信号灯,红绿灯,表示器,轨道,股道,铁轨,铁路,路轨,火车,列车,调车,进站,出站"
         },
+        "railway/signal_box": {
+          "name": "信号机",
+          "terms": "信号机,信号箱,信号"
+        },
         "railway/station": {
           "name": "铁路车站"
         },
@@ -5271,15 +5292,14 @@
         },
         "route/ferry": {
           "name": "航线",
-          "terms": "航线,轮渡,渡轮,渡船,渡口,摆渡"
+          "terms": "航线,轮渡,渡轮,渡船,渡口,摆渡,水上公交,水上的士,水上快线,摆渡船,邮轮,游轮,滚装船"
         },
         "seamark": {
           "name": "航标"
         },
         "seamark/beacon_isolated_danger": {
-          "name": "危险警号信号",
-          "terms": "危险警告信标",
-          "aliases": "警告信号灯"
+          "name": "警告信号灯",
+          "terms": "危险警告信标"
         },
         "seamark/beacon_lateral": {
           "name": "航道标志",
@@ -5287,14 +5307,14 @@
         },
         "seamark/buoy_lateral": {
           "name": "航道浮标",
-          "terms": "航道浮标"
+          "terms": "航道浮标,浮标,标志,航道"
         },
         "seamark/buoy_lateral/green": {
           "name": "绿色浮标",
           "terms": "绿色浮标"
         },
         "seamark/buoy_lateral/red": {
-          "name": "Red Buoy",
+          "name": "红色浮标",
           "terms": "红色浮标"
         },
         "seamark/mooring": {
@@ -5518,7 +5538,7 @@
         },
         "shop/dairy": {
           "name": "乳品店",
-          "terms": "乳品,牛奶,奶酪,酸奶,羊奶,水牛奶,早餐奶,鲜奶,巴氏奶,常温奶,牛奶店,奶店"
+          "terms": "乳品,牛奶,奶酪,酸奶,羊奶,水牛奶,早餐奶,鲜奶,巴氏奶,常温奶,牛奶店,奶店,奶,奶业"
         },
         "shop/deli": {
           "name": "熟食店",
@@ -5559,6 +5579,10 @@
         "shop/erotic/lgbtq": {
           "name": "性少数群体成人用品店",
           "terms": "性,色情"
+        },
+        "shop/esoteric": {
+          "name": "神秘学商店",
+          "terms": "灵性用品店"
         },
         "shop/fabric": {
           "name": "布店",
@@ -6156,8 +6180,8 @@
           "terms": "地图"
         },
         "tourism/information/office": {
-          "name": "游客中心",
-          "terms": "游客中心,旅游中心,景点中心,景区中心,集散中心,问询点,集散点,集散,游客,旅游,游玩,导游,景点"
+          "name": "旅游咨询处",
+          "terms": "旅游咨询处,旅游问询处,旅游问询中心,旅游咨询中心,旅游咨询服务中心,旅游信息咨询处"
         },
         "tourism/information/route_marker": {
           "name": "步道标记",
@@ -6166,6 +6190,10 @@
         "tourism/information/terminal": {
           "name": "自助信息终端机",
           "terms": "自助终端机,信息终端机,终端机,咨询终端,自助服务"
+        },
+        "tourism/information/visitor_centre": {
+          "name": "游客中心",
+          "terms": "游客中心,旅游中心,景点中心,景区中心,集散中心,问询点,集散点,集散,游客,旅游,游玩,导游,景点"
         },
         "tourism/motel": {
           "name": "汽车旅馆",
@@ -6272,11 +6300,14 @@
         },
         "traffic_sign/maxspeed": {
           "name": "限速标志",
-          "terms": "速限標誌,速限"
+          "terms": "限速,速度,超速"
         },
         "traffic_sign/variable_message": {
           "name": "动态信息标识",
           "terms": "动态,可变,信息,消息,标识"
+        },
+        "type/associatedStreet": {
+          "name": "街道关联"
         },
         "type/boundary": {
           "name": "边界",
@@ -6457,6 +6488,10 @@
         "waterway": {
           "name": "水道要素"
         },
+        "waterway/access_point": {
+          "name": "水域通行点",
+          "terms": "水域,水道,通行,点"
+        },
         "waterway/boatyard": {
           "name": "船舶库",
           "terms": "船舶库"
@@ -6494,7 +6529,7 @@
           "terms": "船舶加油站,加油,船,航海"
         },
         "waterway/lock_gate": {
-          "name": "水道闸门",
+          "name": "船闸闸门",
           "terms": "闸门,闸首,水闸,船闸,运河"
         },
         "waterway/milestone": {

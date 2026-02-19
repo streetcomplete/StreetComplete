@@ -1803,9 +1803,6 @@
         "highway/motorway": {
           "name": "Motorway"
         },
-        "highway/motorway_junction": {
-          "name": "Motorway Junction / Exit"
-        },
         "highway/motorway_link": {
           "name": "Motorway Link"
         },
@@ -2048,9 +2045,6 @@
         },
         "landuse/construction": {
           "name": "Construction Area"
-        },
-        "landuse/education": {
-          "name": "Educational Campus"
         },
         "landuse/farm": {
           "name": "Farmland"
@@ -4290,9 +4284,6 @@
         },
         "tourism/information/map": {
           "name": "Map"
-        },
-        "tourism/information/office": {
-          "name": "Visitor Centre"
         },
         "tourism/information/route_marker": {
           "name": "Trail Marker"

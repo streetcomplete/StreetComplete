@@ -500,7 +500,8 @@
           "terms": "fontana,fontanella,acqua potabile,nasone"
         },
         "amenity/driver_training": {
-          "name": "Campi di addestramento dei conducenti"
+          "name": "Scuola guida",
+          "terms": "patente,patenti,cqc"
         },
         "amenity/embassy": {
           "name": "Ambasciata"
@@ -615,8 +616,8 @@
           "name": "Sala Narghilè"
         },
         "amenity/hospital": {
-          "name": "Area ospedaliera",
-          "terms": "ospedale,clinica,pronto soccorso,servizio sanitario,salute,hospice,ospizio,infermeria,istituzione,casa di cura,casa di riposo,sanatorio,ambulatorio,chirurgia,reparto"
+          "name": "Ospedale",
+          "terms": "area ospedaliera,clinica,pronto soccorso,servizio sanitario,salute,hospice,ospizio,infermeria,istituzione,casa di cura,casa di riposo,sanatorio,ambulatorio,chirurgia,reparto"
         },
         "amenity/hunting_stand": {
           "name": "Postazione da caccia",
@@ -817,8 +818,8 @@
           "terms": "ufficio postale,lettere,spedizione,pacco,poste"
         },
         "amenity/prison": {
-          "name": "Area carceraria",
-          "terms": "carcere,prigione,penitenziario,galera,gattabuia,casa circondariale,casa di reclusione,riformatorio"
+          "name": "Carcere",
+          "terms": "area carceraria,prigione,penitenziario,galera,gattabuia,casa circondariale,casa di reclusione,riformatorio"
         },
         "amenity/pub": {
           "name": "Pub",
@@ -870,7 +871,8 @@
           "name": "Campo profughi"
         },
         "amenity/research_institute": {
-          "name": "Istituto di ricerca"
+          "name": "Istituto di ricerca",
+          "terms": "ente di ricerca"
         },
         "amenity/restaurant": {
           "name": "Ristorante",
@@ -1037,6 +1039,9 @@
         "amenity/studio/video": {
           "name": "Studio di produzione video"
         },
+        "amenity/swingerclub": {
+          "name": "Club per scambisti"
+        },
         "amenity/taxi": {
           "name": "Posteggio taxi",
           "terms": "taxi"
@@ -1190,6 +1195,9 @@
           "name": "Veterinario",
           "terms": "animali,dottore,medicina,farmacia"
         },
+        "amenity/veterinary_pharmacy": {
+          "name": "Farmacia veterinaria"
+        },
         "amenity/waste/dog_excrement": {
           "name": "Cestino per escrementi animali",
           "terms": "cestino deiezioni canine,cacca,popò,cane,cani,deiezioni,sacchetti"
@@ -1226,6 +1234,10 @@
         },
         "area/highway": {
           "name": "Area stradale"
+        },
+        "area/highway/traffic_island": {
+          "name": "Isola spartitraffico",
+          "terms": "area spartitraffico"
         },
         "attraction": {
           "name": "Attrazione"
@@ -1485,7 +1497,7 @@
           "name": "Casa di riparto"
         },
         "building/apartments": {
-          "name": "Condominio",
+          "name": "Edificio di appartamenti",
           "terms": "appartamenti,condomini,condominio,palazzi,palazzo,palazzoni,casermoni,case popolari,abitazioni,abitazione,residenza,case,edilizia popolare,peep,iacp,terreno,lotto,terreno condominiale,area condominiale"
         },
         "building/bakehouse": {
@@ -1963,6 +1975,13 @@
           "name": "Negozio in disuso",
           "aliases": "Negozio chiuso\nNegozio sfitto"
         },
+        "education": {
+          "name": "Ente educativo"
+        },
+        "education/college": {
+          "name": "Accademia",
+          "terms": "conservatorio,scuola superiore,afam"
+        },
         "education/dancing_school": {
           "name": "Scuola di danza"
         },
@@ -1970,13 +1989,27 @@
           "name": "Scuola guida"
         },
         "education/kindergarten": {
-          "name": "Asilo o scuola per l'infanzia"
+          "name": "Scuola dell'infanzia",
+          "terms": "asilo,infanzia"
         },
         "education/language_school": {
           "name": "Scuola di lingue"
         },
         "education/music_school": {
           "name": "Scuola di musica"
+        },
+        "education/prep_school": {
+          "name": "Scuola professionale"
+        },
+        "education/school": {
+          "name": "Scuola",
+          "terms": "area scolastica,scuola elementare,scuola media,liceo,scuola superiore"
+        },
+        "education/university": {
+          "name": "Università"
+        },
+        "education/yes": {
+          "name": "Formazione"
         },
         "embankment": {
           "name": "Terrapieno"
@@ -2371,10 +2404,6 @@
           "name": "Autostrada",
           "terms": "autostrada"
         },
-        "highway/motorway_junction": {
-          "name": "Uscita autostradale",
-          "terms": "uscita autostradale"
-        },
         "highway/motorway_link": {
           "name": "Svincolo autostradale",
           "terms": "svincolo,rampa,uscita,autostrada,ingresso"
@@ -2548,6 +2577,9 @@
           "name": "Sito storico",
           "terms": "luogo storico"
         },
+        "historic/aircraft": {
+          "name": "Aereo storico"
+        },
         "historic/archaeological_site": {
           "name": "Sito archeologico",
           "terms": "sito archeologico"
@@ -2557,7 +2589,10 @@
           "terms": "perimetro di pietra"
         },
         "historic/building": {
-          "name": "Edificio Storico"
+          "name": "Edificio storico"
+        },
+        "historic/cannon": {
+          "name": "Cannone"
         },
         "historic/castle": {
           "name": "Castello",
@@ -2692,10 +2727,6 @@
         "landuse/construction": {
           "name": "Cantiere",
           "terms": "scavo,cantiere,construction,costruzione"
-        },
-        "landuse/education": {
-          "name": "Polo educativo",
-          "terms": "campus scolastico,campus educativo,scuola,educazione"
         },
         "landuse/farm": {
           "name": "Terreno agricolo"
@@ -3108,18 +3139,22 @@
           "terms": "netball,terreno,campo,pallacanestro,basket"
         },
         "leisure/pitch/padel": {
-          "name": "Campo da paddle"
+          "name": "Campo da padel",
+          "terms": "padel"
         },
         "leisure/pitch/paintball": {
-          "name": "Campo di paintball"
+          "name": "Campo da paintball"
+        },
+        "leisure/pitch/pickleball": {
+          "name": "Campo da pickleball"
         },
         "leisure/pitch/rugby_league": {
           "name": "Campo di rugby a 13",
-          "terms": "campo regolamentare lega rugbistica"
+          "terms": "campo regolamentare lega rugbistica,rugby a 13"
         },
         "leisure/pitch/rugby_union": {
           "name": "Campo di rugby",
-          "terms": "campo regolamentare unione rugbistica"
+          "terms": "campo regolamentare unione rugbistica,rugby"
         },
         "leisure/pitch/shooting": {
           "name": "Campo di tiro a volo"
@@ -3129,7 +3164,7 @@
         },
         "leisure/pitch/skateboard": {
           "name": "Skate Park",
-          "terms": "skate park,skateboard,pista"
+          "terms": "skate,skateboard,pista"
         },
         "leisure/pitch/soccer": {
           "name": "Campo di calcio",
@@ -3177,7 +3212,13 @@
           "terms": "arrampicata,alpinismo,calarsi,corda,corde,cordata,roccia,rock wall,parete,palestra da roccia"
         },
         "leisure/sports_centre/climbing_adventure": {
-          "name": "Parco Avventura"
+          "name": "Parco avventura"
+        },
+        "leisure/sports_centre/horse_racing": {
+          "name": "Percorso per equitazione"
+        },
+        "leisure/sports_centre/karting": {
+          "name": "Circuito per Go kart"
         },
         "leisure/sports_centre/shooting": {
           "name": "Poligono di tiro"
@@ -4024,6 +4065,9 @@
         "office/therapist": {
           "name": "Studio psichiatrico"
         },
+        "office/translator": {
+          "name": "Ufficio traduzioni"
+        },
         "office/travel_agent": {
           "name": "Agenzia di viaggi"
         },
@@ -4196,7 +4240,8 @@
           "terms": "punto"
         },
         "police/checkpoint": {
-          "name": "Posto di blocco della Polizia"
+          "name": "Posto di blocco della polizia",
+          "terms": "pattuglia,punto di controllo,checkpoint"
         },
         "polling_station": {
           "name": "Seggio elettorale temporaneo"
@@ -4638,12 +4683,12 @@
         },
         "shop/beauty": {
           "name": "Salone di bellezza",
-          "terms": "salone,bellezza,spa,abbronzatura,solare,unghie,smalto,sopracciglia,ciglia,shiatsu,trattamento,viso,corpo,depilazione,epilazione,laser,tatoo,peeling,tatuaggio"
+          "terms": "salone,bellezza,spa,abbronzatura,solare,unghie,smalto,sopracciglia,ciglia,shiatsu,trattamento,viso,corpo,depilazione,epilazione,laser,tatoo,peeling,tatuaggio,estetista"
         },
         "shop/beauty/nails": {
           "name": "Onicotecnica",
           "terms": "unghie,salone per unghie,manicure,pedicure",
-          "aliases": "Cura delle Unghie\nManicure"
+          "aliases": "Cura delle unghie\nManicure"
         },
         "shop/beauty/tanning": {
           "name": "Centro abbronzatura",
@@ -4721,7 +4766,7 @@
           "name": "Produzione di cataloghi"
         },
         "shop/charity": {
-          "name": "Mercatino dell'usato",
+          "name": "Mercatino di beneficenza",
           "terms": "usato,robivecchi,seconda mano"
         },
         "shop/cheese": {
@@ -4905,9 +4950,17 @@
           "name": "Negozio souvenir",
           "terms": "negozio di articoli da regalo"
         },
+        "shop/gold_buyer": {
+          "name": "Compro oro",
+          "terms": "oro"
+        },
         "shop/greengrocer": {
           "name": "Fruttivendolo",
           "terms": "fruttivendolo"
+        },
+        "shop/groundskeeping": {
+          "name": "Negozio di articoli per il giardinaggio",
+          "terms": "giardinaggio,prato,cortile,giardino"
         },
         "shop/hairdresser": {
           "name": "Parrucchiere",
@@ -5013,6 +5066,10 @@
         "shop/mobile_phone": {
           "name": "Negozio di telefonia mobile",
           "terms": "negozio di cellulari"
+        },
+        "shop/mobile_phone_accessories": {
+          "name": "Negozio di accessori per cellulari",
+          "terms": "negozio di accessori per telefoni cellulari,negozio di accessori per smartphone"
         },
         "shop/model": {
           "name": "Negozio di modellistica"
@@ -5383,9 +5440,6 @@
           "name": "Cartina",
           "terms": "mappa,carta,turismo,turistica"
         },
-        "tourism/information/office": {
-          "name": "Centro visitatori"
-        },
         "tourism/information/route_marker": {
           "name": "Segnavia"
         },
@@ -5487,6 +5541,9 @@
         },
         "traffic_sign/variable_message": {
           "name": "Segnale a messaggio variabile"
+        },
+        "type/associatedStreet": {
+          "name": "Strada associata"
         },
         "type/boundary": {
           "name": "Confine",

@@ -197,6 +197,9 @@
         "amenity/cafe/coffee_shop": {
           "name": "Кафеџиница"
         },
+        "amenity/cafe/teahouse": {
+          "name": "Чајџиница"
+        },
         "amenity/car_rental": {
           "name": "Изнајмљивање возила"
         },
@@ -487,6 +490,9 @@
         },
         "amenity/karaoke_box": {
           "name": "Караоке кабина"
+        },
+        "amenity/kneipp_water_cure": {
+          "name": "Кнајпово купатило"
         },
         "amenity/letter_box": {
           "name": "Кућно сандуче",
@@ -1880,10 +1886,6 @@
         "highway/motorway": {
           "name": "Аутопут"
         },
-        "highway/motorway_junction": {
-          "name": "Искључење са аутопута",
-          "terms": "излаз са аутопута"
-        },
         "highway/motorway_link": {
           "name": "Укључење на аутопут",
           "terms": "прилаз аутопуту,укључење на аутопут"
@@ -2157,9 +2159,6 @@
         },
         "landuse/construction": {
           "name": "Градилиште"
-        },
-        "landuse/education": {
-          "name": "Кампус"
         },
         "landuse/farm": {
           "name": "Пољопривредно земљиште"
@@ -3480,9 +3479,6 @@
         "playground/tunnel_tube": {
           "name": "Тунел на дечијем игралишту"
         },
-        "playground/water": {
-          "name": "Опрема за игру у води"
-        },
         "playground/zipwire": {
           "name": "Зип-лајн на игралишту"
         },
@@ -4102,6 +4098,9 @@
         "shop/honey": {
           "name": "Продавница меда"
         },
+        "shop/household_linen": {
+          "name": "Продавница кућног текстила"
+        },
         "shop/houseware": {
           "name": "Позамантерија"
         },
@@ -4457,9 +4456,6 @@
         },
         "tourism/information/map": {
           "name": "Мапа"
-        },
-        "tourism/information/office": {
-          "name": "Туристички инфо центар"
         },
         "tourism/information/route_marker": {
           "name": "Ознака стазе"

@@ -2113,10 +2113,6 @@
           "name": "طريق سريع",
           "terms": "طريق سريع"
         },
-        "highway/motorway_junction": {
-          "name": "مخرج / مفرق طريق سريع",
-          "terms": "مفرق طريق سريع,مخرج طريق سريع"
-        },
         "highway/motorway_link": {
           "name": "وصلة لطريق سريع",
           "terms": "رابط لطريق سريع,وصلة طريق سريع,طرق مرتبطة بالطريق السريع"
@@ -2444,10 +2440,6 @@
         "landuse/construction": {
           "name": "منطقة بناء تحت الإنشاء",
           "terms": "تحت الإنشاء"
-        },
-        "landuse/education": {
-          "name": "الحرم الجامعي التعليمي",
-          "terms": "الحرم الجامعي"
         },
         "landuse/farm": {
           "name": "أرض زراعية"
@@ -3973,10 +3965,6 @@
           "name": "لعبة النفق",
           "terms": "لعبة النفق"
         },
-        "playground/water": {
-          "name": "لعبة تشغيل المضخة",
-          "terms": "لعبة تشغيل المضخة"
-        },
         "playground/zipwire": {
           "name": "الانزلاق على حبل",
           "terms": "الانزلاق على حبل"
@@ -5219,10 +5207,6 @@
         "tourism/information/map": {
           "name": "خريطة",
           "terms": "خريطة"
-        },
-        "tourism/information/office": {
-          "name": "مركز الزوار",
-          "terms": "مركز الزوار"
         },
         "tourism/information/route_marker": {
           "name": "لافتة مسار سياحي",

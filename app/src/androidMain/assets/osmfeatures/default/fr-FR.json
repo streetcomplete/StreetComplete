@@ -1864,11 +1864,15 @@
           "name": "Section de cimetière",
           "terms": "tombe,enterrement,cimetière,mausolée"
         },
+        "climbing/crag": {
+          "name": "Site d'escalade"
+        },
         "climbing/route": {
           "name": "Voie d'escalade"
         },
         "climbing/route_bottom": {
-          "name": "Début d'une voie d'escalade"
+          "name": "Début d'une voie d'escalade",
+          "terms": "départ de la voie d'escalade"
         },
         "club": {
           "name": "Club",
@@ -2596,10 +2600,6 @@
           "name": "Autoroute",
           "terms": "autoroute,voie rapide"
         },
-        "highway/motorway_junction": {
-          "name": "Sortie / Échangeur",
-          "terms": "sortie,échangeur,échangeur autoroutier,croisement d'autoroutes,intersection d'autoroutes"
-        },
         "highway/motorway_link": {
           "name": "Bretelle d'autoroute",
           "terms": "bretelle,accès,entrée,sortie,voie,autoroute"
@@ -2955,10 +2955,6 @@
         "landuse/construction": {
           "name": "Site en construction",
           "terms": "zone de construction,construction,démolition,développement,infrastructure,grue"
-        },
-        "landuse/education": {
-          "name": "Zone dédiée à l'éducation",
-          "terms": "zone,groupe,aire,campus,éducation,école,scolaire"
         },
         "landuse/farm": {
           "name": "Terre cultivée"
@@ -4772,10 +4768,6 @@
           "name": "Tunnel",
           "terms": "tunnel,jeux"
         },
-        "playground/water": {
-          "name": "Appareils pour jouer avec de l'eau",
-          "terms": "appareils,jeux,pompe,vis,eau"
-        },
         "playground/zipwire": {
           "name": "Tyrolienne (jeu)",
           "terms": "tyrolienne"
@@ -6094,10 +6086,6 @@
           "name": "Carte",
           "terms": "plan"
         },
-        "tourism/information/office": {
-          "name": "Centre d'accueil des visiteurs",
-          "terms": "office de tourisme,centre d'informations touristique,agence de tourisme"
-        },
         "tourism/information/route_marker": {
           "name": "Repère",
           "terms": "repère,piste,chemin,gr,pr,marqueur,randonnée"
@@ -6216,6 +6204,9 @@
         "traffic_sign/variable_message": {
           "name": "Panneau à messages variables",
           "terms": "panneau,signalisation,pmv,message,lumineux"
+        },
+        "type/associatedStreet": {
+          "name": "Rue associée"
         },
         "type/boundary": {
           "name": "Type de frontière",

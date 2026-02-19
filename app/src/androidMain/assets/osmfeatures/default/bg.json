@@ -1683,10 +1683,6 @@
         "tourism/information": {
           "name": "Информация"
         },
-        "tourism/information/office": {
-          "name": "Посетителски център",
-          "terms": "туристически информационен център"
-        },
         "tourism/motel": {
           "name": "Мотел"
         },

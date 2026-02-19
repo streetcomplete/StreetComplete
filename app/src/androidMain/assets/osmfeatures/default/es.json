@@ -321,6 +321,10 @@
           "name": "Centro Comunitario",
           "terms": "centro de la comunidad,centro comunitario"
         },
+        "amenity/community_centre/chitalishte_BG": {
+          "name": "Chitalishte",
+          "terms": "chitalishte,centro cultural búlgaro,casa de cultura comunitaria,centro cultural local"
+        },
         "amenity/community_centre/club_home": {
           "name": "Sede del club",
           "terms": "sede del club,casa del club,local del club,club"
@@ -950,6 +954,10 @@
         "amenity/restaurant/greek": {
           "name": "Restaurante griego",
           "terms": "desayuno,cena,comedor,comer,parrilla,almuerzo,mesa,café,cafe,pitas,aceitunas"
+        },
+        "amenity/restaurant/hotpot": {
+          "name": "Restaurante de hot pot",
+          "terms": "restaurante de hot pot,restaurante de olla caliente,restaurante de fondue asiática,restaurante de cocina china estilo hot pot"
         },
         "amenity/restaurant/indian": {
           "name": "Restaurante indio",
@@ -1841,7 +1849,8 @@
           "terms": "hilera de casas adosadas,fila de casas de pueblo,fila de casas unifamiliares"
         },
         "building/train_station": {
-          "name": "Edificio de la estación de tren"
+          "name": "Edificio de la estación de tren",
+          "terms": "edificio de estación de tren,edificio de la estación ferroviaria,estructura de estación de tren,edificio principal de la estación"
         },
         "building/transportation": {
           "name": "Edificio de transporte público",
@@ -2623,8 +2632,8 @@
           "terms": "autopista,autovía,vía rápida"
         },
         "highway/motorway_junction": {
-          "name": "Cruce de autopista / Salida",
-          "terms": "rampa de acceso,rampa de ingreso,rampa de salida,acceso,ingreso,salida,enlace,autopista,autovía"
+          "name": "Salida de autopista",
+          "terms": "salida de autopista,salida de autovía,rampa de salida,empalme de salida"
         },
         "highway/motorway_link": {
           "name": "Enlace de autopista",
@@ -2989,8 +2998,8 @@
           "terms": "edificio,excavadora,sitio de construcción,zona de construcción,grúa,demolición,desarrollo,infraestructura,construcción"
         },
         "landuse/education": {
-          "name": "Campus educativo",
-          "terms": "instalaciones educativas,campus,terrenos escolares,centro escolar,escolar,educativo,educación"
+          "name": "Área educativa",
+          "terms": "zona educativa,área escolar,zona escolar,campus,campus educativo,instalaciones educativas,campus escolar,centro educativo,predio escolar"
         },
         "landuse/farm": {
           "name": "Tierra de labranza"
@@ -3098,6 +3107,10 @@
         "landuse/military/training_area": {
           "name": "Área de entrenamiento militar",
           "terms": "fuerza aérea,ejército,base,lucha,fuego,fuerza,guardia,arma,marina,rifle,disparar,entrenar,entrenamiento,tropa,guerra"
+        },
+        "landuse/olive_grove": {
+          "name": "Olival",
+          "terms": "huerto de olivos,plantación de olivos,cultivo de oliva"
         },
         "landuse/orchard": {
           "name": "Huerta frutal",
@@ -4769,6 +4782,10 @@
           "name": "Casita para jugar",
           "terms": "casa de niños,casa de niñas,casa de juegos,jugar a la casita,casa de wendy"
         },
+        "playground/pump": {
+          "name": "Bomba de agua de juego",
+          "terms": "bomba de agua infantil,bomba de agua de plaza,bomba de agua recreativa"
+        },
         "playground/roundabout": {
           "name": "Carrusel / Calesita",
           "terms": "carrusel,calesita,tiovivo"
@@ -4822,8 +4839,8 @@
           "terms": "túnel,tunel,juego"
         },
         "playground/water": {
-          "name": "Bomba de agua/tornillo para jugar",
-          "terms": "bomba de agua,tornillo de arquímedes,tornillo"
+          "name": "Dispositivo de agua para juego (no especificado)",
+          "terms": "dispositivo de agua para juego,elemento acuático de juego,equipo de agua recreativo"
         },
         "playground/zipwire": {
           "name": "Tirolesa para jugar",
@@ -5210,6 +5227,10 @@
           "name": "Señal ferroviaria",
           "terms": "señal,señalización,luces,vía,via,férrea,ferroviaria,ferroviario,ferrocarril,tren"
         },
+        "railway/signal_box": {
+          "name": "Cabina de señales",
+          "terms": "caja de señales,cabina de señalización,puesto de señales"
+        },
         "railway/station": {
           "name": "Estación de tren"
         },
@@ -5557,6 +5578,10 @@
         "shop/erotic/lgbtq": {
           "name": "Tienda erótica LGBTQ+",
           "terms": "sexo,porno"
+        },
+        "shop/esoteric": {
+          "name": "Tienda esotérica",
+          "terms": "tienda de esoterismo,tienda espiritual,tienda de productos místicos"
         },
         "shop/fabric": {
           "name": "Tienda textil",
@@ -6154,8 +6179,8 @@
           "terms": "plano,croquis,cartel,información,indicación"
         },
         "tourism/information/office": {
-          "name": "Centro de informaciones",
-          "terms": "oficina de información,guía turístico,oficina de turismo,centro de información turística,información turística,centro de visitantes,centro de información para visitantes,centro de bienvenida,centro de informaciones"
+          "name": "Oficina de información turística",
+          "terms": "oficina de información turística,oficina turística,centro de información turística"
         },
         "tourism/information/route_marker": {
           "name": "Marcador de sendero",
@@ -6164,6 +6189,10 @@
         "tourism/information/terminal": {
           "name": "Terminal de información",
           "terms": "terminal,información"
+        },
+        "tourism/information/visitor_centre": {
+          "name": "Centro de visitantes",
+          "terms": "centro de visitantes,centro de atención a visitantes,centro turístico para visitantes"
         },
         "tourism/motel": {
           "name": "Motel",
@@ -6458,6 +6487,10 @@
         "waterway": {
           "name": "Elemento fluvial"
         },
+        "waterway/access_point": {
+          "name": "Punto de acceso a vía navegable",
+          "terms": "punto de acceso a vía navegable,acceso a vía acuática,punto de acceso al agua"
+        },
         "waterway/boatyard": {
           "name": "Astillero",
           "terms": "astillero,varadero,bote,lancha,embarcación"
@@ -6531,7 +6564,7 @@
           "terms": "catarata,caída de agua,salto de agua,torrente"
         },
         "waterway/weir": {
-          "name": "Vertedero hidráulico",
+          "name": "Vertedero hidráulico / Dique / Azud",
           "terms": "vertedero,desagüe,hidráulico,vertedero hidráulico,aliviadero hidráulico,dique,pequeña represa,presa de baja altura,presa de poca altura,presa,represa"
         }
       }

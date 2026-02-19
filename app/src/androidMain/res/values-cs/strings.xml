@@ -1343,7 +1343,7 @@ Informace o dárcovství najdete na našem webu nebo na stránce projektu, Googl
     <string name="quest_moped_access_designated">"Je tu značka, která povoluje přístup mopedů na tuto cyklostezku"</string>
     <string name="quest_moped_access_forbidden">"Je tu značka zakazující mopedy"</string>
     <string name="default_disabled_msg_visible_sign_moped">"Tento typ úkolů je ve výchozím stavu zakázán, protože přístup mopedů je indikován jen specifickými značkami na začátku/konci cyklostezky."</string>
-    <string name="quest_arrow_tutorial">"Šipky v ilustraci ukazují do směrů, kam cesta na mapě vede od centrální pozice. Zkuste otočit mapu a dostanete to."</string>
+    <string name="quest_arrow_tutorial">"Šipky v ilustraci ukazují do směrů, kam cesta na mapě vede od centrální pozice. Zkuste otočit mapu a pochopíte to."</string>
     <string name="info">"Více informací"</string>
     <string name="quest_accessible_for_pedestrians_prohibited">"Je zakázán."</string>
     <string name="quest_accessible_for_pedestrians_allowed">"Je povolen."</string>

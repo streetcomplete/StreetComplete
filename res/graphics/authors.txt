@@ -272,6 +272,7 @@ italian police type/
 quest/
     access_point.svg
     apple.svg
+    artwork.svg
     baby.svg                         modified from Twemoji: U+1F6BC
     barrier.svg                      Tobias Zwick (CC-BY-SA 4.0) (based on road_construction.svg)
     barrier_on_path.svg              Tobias Zwick (CC-BY-SA 4.0), adding road line by Mateusz Konieczny
@@ -315,6 +316,7 @@ quest/
     bus_stop_lit.svg                 parts taken from Twemoji: U+1F68D
     bus_stop_shelter.svg             parts taken from Twemoji: U+1F68D
     bus_stop_name.svg                parts taken from Twemoji: U+1F68D
+    cabin.svg
     calendar.svg                     Flo Edelmann (CC0)
     camp_power.svg
     car.svg                          modified from Twemoji: U+1F698
@@ -403,6 +405,7 @@ quest/
     pitch_lantern.svg
     pitch_surface.svg
     playground.svg
+    poo.svg                          modified from Twemoji: U+1f4a9
     power.svg
     quest.svg
     railway.svg
@@ -443,6 +446,7 @@ quest/
     surveillance.svg
     surveillance_camera.svg
     tent.svg
+    thermometer.svg
     toilets.svg
     toilet_fee.svg
     toilets_wheelchair.svg

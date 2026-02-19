@@ -186,6 +186,8 @@ The info you enter is directly added to OpenStreetMap in your name, without the 
     <string name="quest_source_dialog_note">Only information that was verified in-person should be entered.</string>
     <string name="dialog_session_dont_show_again">Don’t show again for this session</string>
 
+    <string name="dialog_dont_notify_again">Don’t notify again</string>
+
     <!-- Tutorial screen -->
 
     <string name="tutorial_welcome_to_osm">Welcome to OpenStreetMap</string>
@@ -273,6 +275,7 @@ Additionally, some overlays allow you to add new data at the position of a displ
 
 If you are overwhelmed by the number of quests, you can always fine-tune which quests are displayed to you and in what order in the settings.</string>
 
+    <string name="weekly_osm_new_edition_title">New Edition!</string>
 
     <!-- Team mode -->
 
@@ -620,6 +623,12 @@ Before uploading your changes, the app checks with a &lt;a href="https://www.wes
     <string name="pref_title_delete_cache">Delete cache</string>
     <string name="pref_title_delete_cache_summary">If you think some data is outdated</string>
 
+    <string name="pref_title_messages">In-App Messages</string>
+
+    <string name="pref_title_message_achievements">Unlocked achievements</string>
+    <string name="pref_title_message_weekly_osm">New editions of weeklyOSM</string>
+    <string name="pref_title_message_changelog">New app releases</string>
+
 
     <!-- Quest & overlay selection screen -->
 
@@ -695,12 +704,9 @@ Before uploading your changes, the app checks with a &lt;a href="https://www.wes
     <string name="quest_address_title">What’s the house number of this building?</string>
     <string name="quest_address_house_number_label">House number:</string>
     <string name="quest_address_house_name_label">House name:</string>
-    <!-- In Japan, addresses are chiefly house number + block number (because most streets don’t have a name) -->
     <string name="label_housenumber">house number</string>
-    <!-- In Japan, addresses are chiefly house number + block number (because most streets don’t have a name) -->
-    <string name="label_blocknumber">block number</string>
     <!-- In some countries, addresses may have a house number and a block (number or letters) -->
-    <string name="label_block">block</string>
+    <string name="label_block2">city block</string>
     <!-- a unique house number within one place, only (still) used in Czechia, Slovakia https://de.wikipedia.org/wiki/Konskriptionsnummer -->
     <string name="quest_housenumber_conscription_number">Conscription number</string>
     <!-- an (optional) number that is unique within one street like a normal housenumber but used sometimes in addition to conscription numbers in Czechia, Slovakia -->
@@ -710,8 +716,8 @@ Before uploading your changes, the app checks with a &lt;a href="https://www.wes
     <string name="quest_housenumber_multiple_numbers_description2" tools:ignore="TypographyDashes">You can enter comma-separated house numbers.\nFor example 1,3 or 2b,4,6.</string>
     <string name="quest_address_answer_no_housenumber">It has no house number…</string>
     <string name="quest_address_answer_no_address">No address here</string>
-    <string name="quest_address_answer_block">It’s within a block…</string>
-    <string name="quest_address_answer_no_block">It isn’t within a block…</string>
+    <string name="quest_address_answer_block2">It’s within a city block…</string>
+    <string name="quest_address_answer_no_block2">It isn’t within a city block…</string>
     <string name="quest_address_answer_no_housenumber_message1">The building was tagged as:</string>
     <string name="quest_address_answer_no_housenumber_message2b">Is this correct?</string>
     <string name="quest_address_unusualHousenumber_confirmation_description">This house number looks very unusual.</string>
@@ -729,6 +735,21 @@ Before uploading your changes, the app checks with a &lt;a href="https://www.wes
 
     <string name="quest_atm_cashin_title">Can you deposit cash at this ATM?</string>
     <string name="quest_atm_operator_title">Which bank operates this ATM?</string>
+
+    <string name="quest_artwork_title">What kind of artwork is this?</string>
+    <string name="quest_artwork_sculpture">Sculpture</string>
+    <string name="quest_artwork_statue">Statue</string>
+    <string name="quest_artwork_mural">Mural</string>
+    <string name="quest_artwork_graffiti">Graffiti</string>
+    <string name="quest_artwork_installation">Installation</string>
+    <string name="quest_artwork_bust">Bust</string>
+    <string name="quest_artwork_stone">Stone</string>
+    <string name="quest_artwork_painting">Painting</string>
+    <string name="quest_artwork_street_art">Other Street Art</string>
+    <string name="quest_artwork_architecture">Architecture</string>
+    <string name="quest_artwork_mosaic">Mosaic</string>
+    <string name="quest_artwork_relief">Relief</string>
+    <string name="quest_artwork_fountain">Fountain</string>
 
     <string name="quest_baby_changing_table_title2">Does this place have a baby changing table?</string>
 
@@ -867,6 +888,8 @@ Before uploading your changes, the app checks with a &lt;a href="https://www.wes
     <string name="quest_bollard_type_flexible">Flexible</string>
     <string name="quest_bollard_type_fixed">Fixed (not removable)</string>
     <string name="quest_bollard_type_not_bollard">Not a bollard, but some other barrier</string>
+
+    <string name="quest_bothway_title">In what direction can you ride this?</string>
 
     <string name="quest_bridge_structure_title">What’s the structure of this bridge?</string>
 
@@ -1022,10 +1045,9 @@ A level counts as a roof level when its windows are in the roof. Subsequently, r
     <string name="quest_camp_shower_title">Are there showers here?</string>
     <string name="quest_camp_power_supply_title">Are there any power outlets available for guests?</string>
     <string name="quest_camp_power_supply_hint">This could be outlets directly at the camp pitches, outlets in a service building accessible by guests, a dedicated charging station for phones, laptops, etc.</string>
-    <string name="quest_camp_type_title">Who may camp here?</string>
-    <string name="quest_camp_type_tents_and_caravans">Both tents and motor homes, travel trailers, …</string>
-    <string name="quest_camp_type_caravans_only">Only motor homes, travel trailers, …</string>
-    <string name="quest_camp_type_tents_only">Only tents</string>
+    <string name="quest_camp_tent_title">May you camp here in a tent?</string>
+    <string name="quest_camp_cabin_title">Are there cabins that you may stay in here?</string>
+    <string name="quest_camp_caravan_title">May you camp here in a motor home or travel trailer?</string>
     <string name="quest_camp_type_backcountry">Backcountry camping (no facilities)</string>
     <string name="quest_sanitary_dump_station_title">Is there a sanitary dump station?</string>
     <string name="quest_sanitary_dump_station_description">A sanitary dump station is a facility for depositing human waste from a toilet holding tank of a motorhome, long haul truck, etc. Usually indicated by a sign like this:</string>
@@ -1130,6 +1152,8 @@ A level counts as a roof level when its windows are in the roof. Subsequently, r
     <string name="quest_ferry_pedestrian_title">Does this ferry route transport pedestrians?</string>
 
     <string name="quest_ferry_motor_vehicle_title">Does this ferry route transport motor vehicles?</string>
+
+    <string name="quest_ferry_bicycle_title">Are bicycles allowed on this ferry?</string>
 
     <string name="quest_fireHydrant_diameter_title">What diameter is specified on the sign for this fire hydrant?</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">This diameter looks implausible, it is usually between %1$d and %2$d.</string>
@@ -1288,8 +1312,8 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_openingHours_title">What are the opening hours here?</string>
     <string name="quest_openingHours_signed_title">Are the opening hours here signed?</string>
     <string name="quest_openingHours_resurvey_title">Are these opening hours still correct?</string>
-    <string name="quest_openingHours_start_time">opening time</string>
-    <string name="quest_openingHours_end_time">closing time</string>
+    <string name="quest_openingHours_start_time">Start time</string>
+    <string name="quest_openingHours_end_time">End time</string>
     <string name="quest_openingHours_add_months">Add months</string>
     <string name="quest_openingHours_add_hours">Add hours</string>
     <string name="quest_openingHours_add_time">Add time</string>
@@ -1533,6 +1557,8 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_shop_gone_vacant_answer">It’s vacant…</string>
     <string name="quest_shop_gone_replaced_answer">A(n)…</string>
     <string name="quest_shop_gone_replaced_answer_hint">Type kind of place here</string>
+
+    <string name="quest_shower_hot_water_title">Is there hot water here?</string>
 
     <string name="quest_sidewalk_surface_title">What’s the surface of the sidewalk here?</string>
 

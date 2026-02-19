@@ -461,6 +461,10 @@
         "amenity/townhall/city": {
           "name": "Kantor Pusat Pemerintahan Kota"
         },
+        "amenity/vehicle_inspection": {
+          "name": "Perawatan Kendaraan",
+          "terms": "depot,bengkel"
+        },
         "amenity/vending_machine": {
           "name": "Mesin Minuman"
         },
@@ -1123,10 +1127,6 @@
           "name": "Jalan Tol",
           "terms": "jalan bebas hambatan"
         },
-        "highway/motorway_junction": {
-          "name": "Jalan Keluar Tol",
-          "terms": "simpang susun / jalan keluar"
-        },
         "highway/motorway_link": {
           "name": "Jalan Penghubung Tol",
           "terms": "jalan penghubung bebas hambatan"
@@ -1402,10 +1402,6 @@
         "landuse/construction": {
           "name": "Area Konstruksi",
           "terms": "pembangunan,bangun,konstruksi"
-        },
-        "landuse/education": {
-          "name": "Kawasan Pendidikan",
-          "terms": "fasilitas pendidikan,kampus,sekolah"
         },
         "landuse/farm": {
           "name": "Pertanian"

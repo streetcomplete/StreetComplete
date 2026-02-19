@@ -962,10 +962,6 @@
           "name": "Avtocesta",
           "terms": "ac"
         },
-        "highway/motorway_junction": {
-          "name": "Avtocestno križišče / Izvoz",
-          "terms": "uvoz,izvoz,priključek"
-        },
         "highway/motorway_link": {
           "name": "Avtocestni priključek",
           "terms": "priključek,priključna rampa"

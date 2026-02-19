@@ -496,6 +496,13 @@
       "waterway": "boatyard"
     }
   },
+  "waterway/access_point": {
+    "icon": "temaki-beach",
+    "geometry": ["vertex"],
+    "tags": {
+      "waterway": "access_point"
+    }
+  },
   "waterway/canal/lock": {
     "icon": "iD-waterway-canal",
     "geometry": ["line"],
@@ -1090,7 +1097,7 @@
   },
   "tourism/camp_pitch": {
     "icon": "maki-campsite",
-    "geometry": ["point", "area"],
+    "geometry": ["point", "vertex", "area"],
     "tags": {
       "tourism": "camp_pitch"
     }
@@ -1161,6 +1168,14 @@
     "tags": {
       "tourism": "museum",
       "museum": "history"
+    }
+  },
+  "tourism/information/visitor_centre": {
+    "icon": "maki-information",
+    "geometry": ["point", "area"],
+    "tags": {
+      "tourism": "information",
+      "information": "visitor_centre"
     }
   },
   "tourism/information/terminal": {
@@ -2090,6 +2105,13 @@
       "shop": "fabric"
     }
   },
+  "shop/esoteric": {
+    "icon": "maki-shop",
+    "geometry": ["point", "area"],
+    "tags": {
+      "shop": "esoteric"
+    }
+  },
   "shop/erotic": {
     "icon": "maki-shop",
     "geometry": ["point", "area"],
@@ -2737,6 +2759,13 @@
       "railway": "subway"
     }
   },
+  "railway/signal_box": {
+    "icon": "temaki-power_shutoff",
+    "geometry": ["point", "area"],
+    "tags": {
+      "railway": "signal_box"
+    }
+  },
   "railway/signal": {
     "icon": "temaki-railway_signals",
     "geometry": ["point", "vertex"],
@@ -2835,7 +2864,7 @@
     }
   },
   "railway/crossing": {
-    "icon": "temaki-pedestrian",
+    "icon": "temaki-crossing_rail_striped",
     "geometry": ["vertex"],
     "tags": {
       "railway": "crossing"
@@ -3825,6 +3854,13 @@
     "geometry": ["point", "area"],
     "tags": {
       "playground": "roundabout"
+    }
+  },
+  "playground/pump": {
+    "icon": "temaki-water",
+    "geometry": ["point"],
+    "tags": {
+      "playground": "pump"
     }
   },
   "playground/playhouse": {
@@ -6941,10 +6977,6 @@
     "tags": {
       "landuse": "vineyard"
     },
-    "addTags": {
-      "landuse": "vineyard",
-      "crop": "grape"
-    },
     "removeTags": {
       "landuse": "vineyard",
       "crop": "grape",
@@ -7014,6 +7046,14 @@
     "geometry": ["area"],
     "tags": {
       "landuse": "orchard"
+    }
+  },
+  "landuse/olive_grove": {
+    "icon": "maki-park",
+    "geometry": ["area"],
+    "tags": {
+      "landuse": "orchard",
+      "trees": "olive_trees"
     }
   },
   "landuse/military": {
@@ -9010,60 +9050,6 @@
       "emergency": "ambulance_station"
     }
   },
-  "emergency/yes": {
-    "geometry": ["line"],
-    "tags": {
-      "emergency": "yes"
-    },
-    "name": "{emergency}",
-    "searchable": false,
-    "matchScore": 0.01
-  },
-  "emergency/private": {
-    "geometry": ["line"],
-    "tags": {
-      "emergency": "private"
-    },
-    "name": "{emergency}",
-    "searchable": false,
-    "matchScore": 0.01
-  },
-  "emergency/official": {
-    "geometry": ["line"],
-    "tags": {
-      "emergency": "official"
-    },
-    "name": "{emergency}",
-    "searchable": false,
-    "matchScore": 0.01
-  },
-  "emergency/no": {
-    "geometry": ["line"],
-    "tags": {
-      "emergency": "no"
-    },
-    "name": "{emergency}",
-    "searchable": false,
-    "matchScore": 0.01
-  },
-  "emergency/destination": {
-    "geometry": ["line"],
-    "tags": {
-      "emergency": "destination"
-    },
-    "name": "{emergency}",
-    "searchable": false,
-    "matchScore": 0.01
-  },
-  "emergency/designated": {
-    "geometry": ["line"],
-    "tags": {
-      "emergency": "designated"
-    },
-    "name": "{emergency}",
-    "searchable": false,
-    "matchScore": 0.01
-  },
   "emergency/fire_hydrant/underground": {
     "icon": "temaki-fire_hydrant_underground",
     "geometry": ["point", "vertex"],
@@ -9084,7 +9070,7 @@
     "icon": "maki-college",
     "geometry": ["area", "point"],
     "tags": {
-      "amenity": "university"
+      "education": "university"
     },
     "addTags": {
       "amenity": "university",
@@ -9095,7 +9081,7 @@
     "icon": "temaki-school",
     "geometry": ["area", "point"],
     "tags": {
-      "amenity": "school"
+      "education": "school"
     },
     "addTags": {
       "amenity": "school",
@@ -9106,7 +9092,7 @@
     "icon": "temaki-school",
     "geometry": ["point", "area"],
     "tags": {
-      "amenity": "prep_school"
+      "education": "prep_school"
     },
     "addTags": {
       "amenity": "prep_school",
@@ -9117,7 +9103,7 @@
     "icon": "fas-music",
     "geometry": ["point", "area"],
     "tags": {
-      "amenity": "music_school"
+      "education": "music_school"
     },
     "addTags": {
       "amenity": "music_school",
@@ -9128,7 +9114,7 @@
     "icon": "temaki-school",
     "geometry": ["point", "area"],
     "tags": {
-      "amenity": "language_school"
+      "education": "language_school"
     },
     "addTags": {
       "amenity": "language_school",
@@ -9139,7 +9125,7 @@
     "icon": "temaki-school",
     "geometry": ["area", "point"],
     "tags": {
-      "amenity": "kindergarten"
+      "education": "kindergarten"
     },
     "addTags": {
       "amenity": "kindergarten",
@@ -9150,7 +9136,7 @@
     "icon": "temaki-car_pool",
     "geometry": ["point", "area"],
     "tags": {
-      "amenity": "driving_school"
+      "education": "driving_school"
     },
     "addTags": {
       "amenity": "driving_school",
@@ -9161,7 +9147,7 @@
     "icon": "fas-music",
     "geometry": ["point", "area"],
     "tags": {
-      "amenity": "dancing_school"
+      "education": "dancing_school"
     },
     "addTags": {
       "amenity": "dancing_school",
@@ -9172,7 +9158,7 @@
     "icon": "maki-college",
     "geometry": ["area", "point"],
     "tags": {
-      "amenity": "college"
+      "education": "college"
     },
     "addTags": {
       "amenity": "college",
@@ -9330,7 +9316,7 @@
     }
   },
   "craft/rigger": {
-    "icon": "temaki-tools",
+    "icon": "temaki-rigging",
     "geometry": ["point", "area"],
     "tags": {
       "craft": "rigger"
@@ -9673,6 +9659,14 @@
     "geometry": ["area"],
     "tags": {
       "building": "transportation"
+    },
+    "matchScore": 0.5
+  },
+  "building/train_station": {
+    "icon": "maki-building",
+    "geometry": ["area"],
+    "tags": {
+      "building": "train_station"
     },
     "matchScore": 0.5
   },
@@ -10111,15 +10105,6 @@
     },
     "matchScore": 0.5
   },
-  "building/train_station": {
-    "icon": "maki-building",
-    "geometry": ["point", "vertex", "area"],
-    "tags": {
-      "building": "train_station"
-    },
-    "matchScore": 0.5,
-    "searchable": false
-  },
   "building/outbuilding": {
     "icon": "maki-building",
     "geometry": ["area"],
@@ -10266,6 +10251,10 @@
     "geometry": ["vertex"],
     "tags": {
       "barrier": "stile"
+    },
+    "removeTags": {
+      "barrier": "stile",
+      "stile": "*"
     }
   },
   "barrier/spikes": {
@@ -10787,19 +10776,6 @@
       "amenity": "vacuum_cleaner"
     }
   },
-  "amenity/university": {
-    "icon": "maki-college",
-    "geometry": ["area", "point"],
-    "tags": {
-      "amenity": "university"
-    },
-    "addTags": {
-      "amenity": "university",
-      "education": "university"
-    },
-    "name": "{education/university}",
-    "matchScore": 0.01
-  },
   "amenity/trolley_bay": {
     "icon": "fas-shopping-cart",
     "geometry": ["point", "area"],
@@ -10912,19 +10888,6 @@
       "amenity": "shelter"
     }
   },
-  "amenity/school": {
-    "icon": "temaki-school",
-    "geometry": ["area", "point"],
-    "tags": {
-      "amenity": "school"
-    },
-    "addTags": {
-      "amenity": "school",
-      "education": "school"
-    },
-    "name": "{education/school}",
-    "matchScore": 0.01
-  },
   "amenity/sanitary_dump_station": {
     "icon": "temaki-camper_trailer_dump",
     "geometry": ["point", "vertex", "area"],
@@ -11003,19 +10966,6 @@
     "tags": {
       "amenity": "prison"
     }
-  },
-  "amenity/prep_school": {
-    "icon": "temaki-school",
-    "geometry": ["point", "area"],
-    "tags": {
-      "amenity": "prep_school"
-    },
-    "addTags": {
-      "amenity": "prep_school",
-      "education": "prep_school"
-    },
-    "name": "{education/prep_school}",
-    "matchScore": 0.01
   },
   "amenity/post_office": {
     "icon": "maki-post",
@@ -11138,19 +11088,6 @@
       "amenity": "nightclub"
     }
   },
-  "amenity/music_school": {
-    "icon": "fas-music",
-    "geometry": ["point", "area"],
-    "tags": {
-      "amenity": "music_school"
-    },
-    "addTags": {
-      "amenity": "music_school",
-      "education": "music_school"
-    },
-    "name": "{education/music_school}",
-    "matchScore": 0.01
-  },
   "amenity/motorcycle_rental": {
     "icon": "temaki-motorcycle_rental",
     "geometry": ["point", "area"],
@@ -11249,38 +11186,12 @@
       "amenity": "lavoir"
     }
   },
-  "amenity/language_school": {
-    "icon": "temaki-school",
-    "geometry": ["point", "area"],
-    "tags": {
-      "amenity": "language_school"
-    },
-    "addTags": {
-      "amenity": "language_school",
-      "education": "language_school"
-    },
-    "name": "{education/language_school}",
-    "matchScore": 0.01
-  },
   "amenity/kneipp_water_cure": {
     "icon": "maki-hospital",
     "geometry": ["point", "area"],
     "tags": {
       "amenity": "kneipp_water_cure"
     }
-  },
-  "amenity/kindergarten": {
-    "icon": "temaki-school",
-    "geometry": ["area", "point"],
-    "tags": {
-      "amenity": "kindergarten"
-    },
-    "addTags": {
-      "amenity": "kindergarten",
-      "education": "kindergarten"
-    },
-    "name": "{education/kindergarten}",
-    "matchScore": 0.01
   },
   "amenity/karaoke_box": {
     "icon": "maki-karaoke",
@@ -11412,19 +11323,6 @@
       "amenity": "events_venue"
     }
   },
-  "amenity/driving_school": {
-    "icon": "temaki-car_pool",
-    "geometry": ["point", "area"],
-    "tags": {
-      "amenity": "driving_school"
-    },
-    "addTags": {
-      "amenity": "driving_school",
-      "education": "driving_school"
-    },
-    "name": "{education/driving_school}",
-    "matchScore": 0.01
-  },
   "amenity/driver_training": {
     "icon": "maki-car",
     "geometry": ["point", "area"],
@@ -11496,19 +11394,6 @@
       "healthcare": "dentist"
     }
   },
-  "amenity/dancing_school": {
-    "icon": "fas-music",
-    "geometry": ["point", "area"],
-    "tags": {
-      "amenity": "dancing_school"
-    },
-    "addTags": {
-      "amenity": "dancing_school",
-      "education": "dancing_school"
-    },
-    "name": "{education/dancing_school}",
-    "matchScore": 0.01
-  },
   "amenity/crematorium": {
     "icon": "maki-cemetery",
     "geometry": ["point", "area"],
@@ -11543,19 +11428,6 @@
     "tags": {
       "amenity": "community_centre"
     }
-  },
-  "amenity/college": {
-    "icon": "maki-college",
-    "geometry": ["area", "point"],
-    "tags": {
-      "amenity": "college"
-    },
-    "addTags": {
-      "amenity": "college",
-      "education": "college"
-    },
-    "name": "{education/college}",
-    "matchScore": 0.01
   },
   "amenity/clock": {
     "icon": "temaki-clock",
@@ -11771,6 +11643,24 @@
       "amenity": "animal_boarding"
     }
   },
+  "amenity/university": {
+    "icon": "maki-college",
+    "geometry": ["area", "point"],
+    "tags": {
+      "amenity": "university"
+    },
+    "name": "{education/university}",
+    "searchable": false
+  },
+  "amenity/school": {
+    "icon": "temaki-school",
+    "geometry": ["area", "point"],
+    "tags": {
+      "amenity": "school"
+    },
+    "name": "{education/school}",
+    "searchable": false
+  },
   "amenity/recycling": {
     "icon": "maki-recycling",
     "geometry": ["point", "area"],
@@ -11779,12 +11669,48 @@
     },
     "searchable": false
   },
+  "amenity/prep_school": {
+    "icon": "temaki-school",
+    "geometry": ["point", "area"],
+    "tags": {
+      "amenity": "prep_school"
+    },
+    "name": "{education/prep_school}",
+    "searchable": false
+  },
   "amenity/nursing_home": {
     "icon": "maki-wheelchair",
     "geometry": ["point", "area"],
     "tags": {
       "amenity": "nursing_home"
     },
+    "searchable": false
+  },
+  "amenity/music_school": {
+    "icon": "fas-music",
+    "geometry": ["point", "area"],
+    "tags": {
+      "amenity": "music_school"
+    },
+    "name": "{education/music_school}",
+    "searchable": false
+  },
+  "amenity/language_school": {
+    "icon": "temaki-school",
+    "geometry": ["point", "area"],
+    "tags": {
+      "amenity": "language_school"
+    },
+    "name": "{education/language_school}",
+    "searchable": false
+  },
+  "amenity/kindergarten": {
+    "icon": "temaki-school",
+    "geometry": ["area", "point"],
+    "tags": {
+      "amenity": "kindergarten"
+    },
+    "name": "{education/kindergarten}",
     "searchable": false
   },
   "amenity/ferry_terminal": {
@@ -11805,12 +11731,39 @@
     },
     "searchable": false
   },
+  "amenity/driving_school": {
+    "icon": "temaki-car_pool",
+    "geometry": ["point", "area"],
+    "tags": {
+      "amenity": "driving_school"
+    },
+    "name": "{education/driving_school}",
+    "searchable": false
+  },
+  "amenity/dancing_school": {
+    "icon": "fas-music",
+    "geometry": ["point", "area"],
+    "tags": {
+      "amenity": "dancing_school"
+    },
+    "name": "{education/dancing_school}",
+    "searchable": false
+  },
   "amenity/coworking_space": {
     "icon": "maki-commercial",
     "geometry": ["point", "area"],
     "tags": {
       "amenity": "coworking_space"
     },
+    "searchable": false
+  },
+  "amenity/college": {
+    "icon": "maki-college",
+    "geometry": ["area", "point"],
+    "tags": {
+      "amenity": "college"
+    },
+    "name": "{education/college}",
     "searchable": false
   },
   "amenity/bus_station": {
@@ -12323,6 +12276,14 @@
     "tags": {
       "amenity": "restaurant",
       "cuisine": "indian"
+    }
+  },
+  "amenity/restaurant/hotpot": {
+    "icon": "maki-restaurant-noodle",
+    "geometry": ["point", "area"],
+    "tags": {
+      "amenity": "restaurant",
+      "cuisine": "hotpot"
     }
   },
   "amenity/restaurant/greek": {
@@ -13434,6 +13395,7 @@
     }
   },
   "advertising/totem": {
+    "icon": "temaki-billboard",
     "geometry": ["point", "line"],
     "tags": {
       "advertising": "totem"

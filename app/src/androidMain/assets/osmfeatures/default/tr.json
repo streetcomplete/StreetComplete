@@ -220,10 +220,15 @@
           "terms": "kafe,kafeterya"
         },
         "amenity/cafe/bubble_tea": {
-          "name": "Bubble Tea Kafe"
+          "name": "İnci Çayı Kafesi"
         },
         "amenity/cafe/coffee_shop": {
           "name": "Kahve Evi"
+        },
+        "amenity/cafe/teahouse": {
+          "name": "Kahvehane",
+          "terms": "kahvehane,çay ocağı",
+          "aliases": "Çay Ocağı"
         },
         "amenity/car_pooling": {
           "name": "Araç Havuzlama İstasyonu"
@@ -296,7 +301,7 @@
         },
         "amenity/courthouse": {
           "name": "Mahkeme",
-          "terms": "mahkeme,adalet sarayı"
+          "terms": "mahkeme,adalet sarayı,adliye"
         },
         "amenity/coworking_space": {
           "name": "Ortak Çalışma Alanı"
@@ -578,7 +583,8 @@
           "name": "Bakım Evi"
         },
         "amenity/parcel_locker": {
-          "name": "Parcel Locker"
+          "name": "Kargo Dolabı",
+          "terms": "kargo dolabı,kargomat,gel al,teslimat dolabı,paket"
         },
         "amenity/parking": {
           "name": "Otopark"
@@ -748,7 +754,7 @@
           "name": "Fransız Restoranı"
         },
         "amenity/restaurant/georgian": {
-          "name": "Georgian Restaurant"
+          "name": "Gürcü Restoranı"
         },
         "amenity/restaurant/german": {
           "name": "Alman Restoranı"
@@ -766,7 +772,7 @@
           "name": "Japon Restoranı"
         },
         "amenity/restaurant/korean": {
-          "name": "Korean Restaurant"
+          "name": "Kore Restoranı"
         },
         "amenity/restaurant/mexican": {
           "name": "Meksika Restoranı"
@@ -778,28 +784,29 @@
           "name": "Pizza Restoranı"
         },
         "amenity/restaurant/ramen": {
-          "name": "Ramen Restaurant"
+          "name": "Ramen Restoranı"
         },
         "amenity/restaurant/seafood": {
           "name": "Deniz Yiyecekleri Restoranı"
         },
         "amenity/restaurant/spanish": {
-          "name": "Spanish Restaurant"
+          "name": "İspanyol Restoranı"
         },
         "amenity/restaurant/steakhouse": {
           "name": "Et Lokantası"
         },
         "amenity/restaurant/sushi": {
-          "name": "Sushi Restoranı"
+          "name": "Suşi Restoranı"
         },
         "amenity/restaurant/thai": {
           "name": "Tayland Restoranı"
         },
         "amenity/restaurant/turkish": {
-          "name": "Türk Restoranı"
+          "name": "Türk Restoranı",
+          "terms": "türk,türk mutfağı,türk restaurantı"
         },
         "amenity/restaurant/ukrainian": {
-          "name": "Ukrainian Restaurant"
+          "name": "Ukrayn Restoranı"
         },
         "amenity/restaurant/vietnamese": {
           "name": "Vietnam Restoranı"
@@ -896,7 +903,7 @@
           "name": "Ticket Validator"
         },
         "amenity/toilets": {
-          "name": "Restroom",
+          "name": "Tuvalet",
           "terms": "tuvalet"
         },
         "amenity/toilets/disposal/flush": {
@@ -1179,7 +1186,8 @@
           "terms": "koruma duvarı"
         },
         "barrier/height_restrictor": {
-          "name": "Yükseklik Kısıtlayıcı"
+          "name": "Yükseklik Kısıtlayıcı",
+          "terms": "yükseklik kısıtlayıcı"
         },
         "barrier/jersey_barrier": {
           "name": "Jersey Barrier"
@@ -1350,7 +1358,8 @@
           "name": "Çiftlik Binası"
         },
         "building/fire_station": {
-          "name": "Fire Station Building"
+          "name": "İtfaiye Binası",
+          "terms": "i̇tfaiye,i̇tfaiye i̇stasyonu"
         },
         "building/garage": {
           "name": "Garaj",
@@ -1371,14 +1380,14 @@
           "terms": "sera"
         },
         "building/hangar": {
-          "name": "Hangar"
+          "name": "Hangar Binası"
         },
         "building/hospital": {
           "name": "Hastane",
           "terms": "hastane"
         },
         "building/hotel": {
-          "name": "Otel",
+          "name": "Otel Binası",
           "terms": "otel"
         },
         "building/house": {
@@ -1394,13 +1403,14 @@
         },
         "building/industrial": {
           "name": "Endüstriyel Bina",
-          "terms": "sanayi binası"
+          "terms": "sanayi binası,sınai bina,endüstriyel bina"
         },
         "building/kindergarten": {
-          "name": "Anaokulu Bina"
+          "name": "Kreş / Anaokulu Binası",
+          "terms": "anaokulu binası,kreş binası"
         },
         "building/manufacture": {
-          "name": "Industrial Production Building"
+          "name": "Endüstriyel Üretim Binası"
         },
         "building/mosque": {
           "name": "Cami",
@@ -1421,7 +1431,7 @@
         },
         "building/residential": {
           "name": "Konut",
-          "terms": "konut"
+          "terms": "konut,mesken,ev"
         },
         "building/retail": {
           "name": "Satış Mağazası",
@@ -1436,8 +1446,8 @@
           "terms": "bina kalıntısı"
         },
         "building/school": {
-          "name": "Okul",
-          "terms": "okul"
+          "name": "Okul Binası",
+          "terms": "okul,okul binası,okul yapısı,i̇lkokul,ortaokul,lise"
         },
         "building/semidetached_house": {
           "name": "Bitişik Nizam Ev",
@@ -1466,7 +1476,8 @@
           "name": "Domuz Ahırı"
         },
         "building/synagogue": {
-          "name": "Synagogue Building"
+          "name": "Sinagog Binası",
+          "terms": "sinagog,havra"
         },
         "building/temple": {
           "name": "Tapınak",
@@ -1492,7 +1503,8 @@
           "terms": "ambar"
         },
         "building_part": {
-          "name": "Yapı bölümü"
+          "name": "Yapı bölümü",
+          "terms": "yapı parçası"
         },
         "building_point": {
           "name": "Bina"
@@ -1732,6 +1744,34 @@
         },
         "disused/shop": {
           "name": "Kullanılmayanlar Dükkanı"
+        },
+        "education/dancing_school": {
+          "name": "Dans Kursu",
+          "terms": "dans kursu,dans okulu,bale,jive,tango,vals"
+        },
+        "education/driving_school": {
+          "name": "Sürücü Kursu",
+          "terms": "sürücü kursu,ehliyet kursu"
+        },
+        "education/kindergarten": {
+          "name": "Kreş / Anaokulu Alanı",
+          "terms": "kreş,anaokulu,okul öncesi"
+        },
+        "education/language_school": {
+          "name": "Dil Kursu",
+          "terms": "dil okulu,dil kursu,yabancı dil kursu"
+        },
+        "education/music_school": {
+          "name": "Müzik Kursu",
+          "terms": "müzik okulu,müzik kursu,konservatuar"
+        },
+        "education/prep_school": {
+          "name": "Dershane / Özel Öğretim Kursu",
+          "terms": "dershane,özel öğretim kursu"
+        },
+        "education/school": {
+          "name": "Okul Alanı",
+          "terms": "okul,okul alanı,okul sahası,i̇lkokul,ortaokul,lise"
         },
         "embankment": {
           "name": "Toprak Dolgu"
@@ -2090,10 +2130,6 @@
           "name": "Otoyol",
           "terms": "otoyol,otoban"
         },
-        "highway/motorway_junction": {
-          "name": "Otoyol Sapağı",
-          "terms": "otoyol sapağı,otoyol çıkışı,araç yolu çıkışı"
-        },
         "highway/motorway_link": {
           "name": "Otoyol Bağlantı Yolu",
           "terms": "otoyol bağlantı yolu,otoyola bağlanan yol"
@@ -2272,7 +2308,8 @@
           "terms": "sınır i̇şareti,sınır taşı"
         },
         "historic/building": {
-          "name": "Tarihi Bina"
+          "name": "Tarihi Bina",
+          "terms": "tarihî bina"
         },
         "historic/castle": {
           "name": "Kale",
@@ -2396,9 +2433,6 @@
         "landuse/construction": {
           "name": "İnşaat Alanı"
         },
-        "landuse/education": {
-          "name": "Eğitim kurumları yerleşkesi"
-        },
         "landuse/farm": {
           "name": "Tarım Alanı"
         },
@@ -2427,7 +2461,8 @@
           "name": "Yeşil alan"
         },
         "landuse/greenhouse_horticulture": {
-          "name": "Sera çiçeçiliği"
+          "name": "Sera Alanı",
+          "terms": "sera,seracılık"
         },
         "landuse/harbour": {
           "name": "Liman",
@@ -2444,7 +2479,8 @@
           "name": "Hurdalık"
         },
         "landuse/industrial/slaughterhouse": {
-          "name": "Kesimevi"
+          "name": "Kesimevi",
+          "terms": "kesimevi,kesimhane,mezbaha,kasaphane,salhane"
         },
         "landuse/landfill": {
           "name": "Çöp Sahası",
@@ -3069,7 +3105,8 @@
           "name": "İletişim Direği"
         },
         "man_made/mast/communication/mobile_phone": {
-          "name": "Cep Telefonu Direği"
+          "name": "Cep Telefonu Direği",
+          "terms": "baz i̇stasyonu,cep telefonu direği,cep telefonu anteni"
         },
         "man_made/mast/communication/radio": {
           "name": "Radyo Yayın Direği"
@@ -3128,8 +3165,8 @@
           "terms": "silo,depo"
         },
         "man_made/storage_tank": {
-          "name": "Depo",
-          "terms": "depo"
+          "name": "Depolama Tankı",
+          "terms": "depolama tankı"
         },
         "man_made/storage_tank/water": {
           "name": "Su Tankı"
@@ -3846,9 +3883,6 @@
         "playground/tunnel_tube": {
           "name": "Play Tunnel"
         },
-        "playground/water": {
-          "name": "Play Water Pump/Screw"
-        },
         "playground/zipwire": {
           "name": "Zipline"
         },
@@ -3885,7 +3919,8 @@
           "name": "Solar Panel Canopy"
         },
         "power/generator/method/photovoltaic/location/roof": {
-          "name": "Rooftop Solar Panel"
+          "name": "Çatı Üstü Güneş Paneli",
+          "terms": "çatı üstü güneş paneli,çatı ges,çatı üstü fotovoltaik panel"
         },
         "power/generator/source/hydro": {
           "name": "Su Türbini"
@@ -4253,7 +4288,8 @@
           "name": "Anime / Manga Dükkanı"
         },
         "shop/antiques": {
-          "name": "Antique Shop"
+          "name": "Antika Dükkanı",
+          "terms": "antikacı,antika dükkanı"
         },
         "shop/appliance": {
           "name": "Beyaz Eşya Mağazası",
@@ -4383,7 +4419,8 @@
           "name": "İkinci El Kıyafet Mağazası"
         },
         "shop/clothes/suits": {
-          "name": "Suits Store"
+          "name": "Takım Elbise Mağazası",
+          "terms": "takım elbise,kravat,kemer"
         },
         "shop/clothes/underwear": {
           "name": "İç Çamaşırı Mağazası"
@@ -4547,8 +4584,8 @@
           "name": "Kuaför Malzemeleri Mağazası"
         },
         "shop/hardware": {
-          "name": "Donanım Mağazası",
-          "terms": "donanım mağazası"
+          "name": "Hırdavatçı",
+          "terms": "hırdavatçı,nalbur"
         },
         "shop/health_food": {
           "name": "Health Food Store"
@@ -4635,6 +4672,10 @@
         "shop/mobile_phone": {
           "name": "Cep Telefonu Mağazası",
           "terms": "cep telefonu mağazası"
+        },
+        "shop/mobile_phone_accessories": {
+          "name": "Cep Telefonu Aksesuarları Mağazası",
+          "terms": "cep telefonu aksesuarları mağazası,telefon kılıfı"
         },
         "shop/model": {
           "name": "Manken Dükkanı"
@@ -4986,9 +5027,6 @@
           "name": "Harita",
           "terms": "harita"
         },
-        "tourism/information/office": {
-          "name": "Misafir Merkezi"
-        },
         "tourism/information/route_marker": {
           "name": "Patika İşaretçisi"
         },
@@ -5129,22 +5167,28 @@
           "terms": "sağa dönüş yasak"
         },
         "type/restriction/no_straight_on": {
-          "name": "No Straight Ahead"
+          "name": "Düz Devam Etmek Yasak",
+          "terms": "düz devam etmek yasak"
         },
         "type/restriction/no_u_turn": {
-          "name": "No U-Turn"
+          "name": "U Dönüşü Yasak",
+          "terms": "u dönüşü yasak"
         },
         "type/restriction/only_left_turn": {
-          "name": "Left Turn Only"
+          "name": "Sadece Sola Dönülebilir",
+          "terms": "sadece sola dönülebilir"
         },
         "type/restriction/only_right_turn": {
-          "name": "Right Turn Only"
+          "name": "Sadece Sağa Dönülebilir",
+          "terms": "sadece sağa dönülebilir"
         },
         "type/restriction/only_straight_on": {
-          "name": "Straight Ahead Only"
+          "name": "Sadece Düz Devam Edilebilir",
+          "terms": "sadece düz devam edilebilir"
         },
         "type/restriction/only_u_turn": {
-          "name": "U-Turn Only"
+          "name": "Sadece U Dönüşü",
+          "terms": "sadece u dönüşü"
         },
         "type/route": {
           "name": "Güzergah",
