@@ -59,12 +59,12 @@ import de.westnordost.streetcomplete.quests.bus_stop_name.AddBusStopName
 import de.westnordost.streetcomplete.quests.bus_stop_ref.AddBusStopRef
 import de.westnordost.streetcomplete.quests.bus_stop_shelter.AddBusStopShelter
 import de.westnordost.streetcomplete.quests.camera_type.AddCameraType
+import de.westnordost.streetcomplete.quests.camping.AddCabins
 import de.westnordost.streetcomplete.quests.camping.AddCampDrinkingWater
 import de.westnordost.streetcomplete.quests.camping.AddCampPower
 import de.westnordost.streetcomplete.quests.camping.AddCampShower
-import de.westnordost.streetcomplete.quests.camping.AddTents
-import de.westnordost.streetcomplete.quests.camping.AddCabins
 import de.westnordost.streetcomplete.quests.camping.AddCaravans
+import de.westnordost.streetcomplete.quests.camping.AddTents
 import de.westnordost.streetcomplete.quests.car_wash_type.AddCarWashType
 import de.westnordost.streetcomplete.quests.charge.AddParkingCharge
 import de.westnordost.streetcomplete.quests.charging_station_bicycles.AddChargingStationBicycles
@@ -294,7 +294,7 @@ fun questTypeRegistry(
     17 to AddParkingType(),
     18 to AddParkingAccess(), // used by OSM Carto, mapy.cz, OSMand, Sputnik etc
     19 to AddParkingFee(), // used by OsmAnd
-    187 to AddParkingCharge(),
+    199 to AddParkingCharge(),
 
     20 to AddTrafficCalmingType(),
 
