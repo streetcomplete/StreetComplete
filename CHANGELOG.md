@@ -4,9 +4,9 @@
 
 ### General Improvements
 
-- You’ll now get in-app notifications when a new issue of weeklyOSM is out, the news blog about what’s happening in the OpenStreetMap world. (#1796, #6728, #5977)
+- You’ll now get in-app notifications when a new issue of weeklyOSM is out, the news blog about what’s happening in the OpenStreetMap world (#1796, #6728, #5977)
 - You’ll also get in-app notifications about local OSM community events in your area (#6743, #1798)
-- You can now change settings which in-app notifications you want to receive (#6493)
+- You can now change in settings which in-app notifications you want to receive (#6493)
 - You can now also zoom by dragging the zoom button up or down (#6719, #6716), by @Helium314
 - Redid the UI for opening hours, postbox collection times and parking fee quests with slight improvements, especially in regards to localization (#6691, #6175)
 
@@ -28,9 +28,9 @@
 
 ### Fixes
 
-- Parking overlay: Specify only one side is enabled again (#6721)
+- Parking overlay: Specifying only one side is enabled again (#6721)
 - Achievement dialog now displays well on square screen (#6702)
-- Fix in dark mode, some icons were black on black background (#6453, #6717), by @Helium314
+- Fix that some icons were black on black background in dark mode (#6453, #6717), by @Helium314
 
 ## v62.2
 
