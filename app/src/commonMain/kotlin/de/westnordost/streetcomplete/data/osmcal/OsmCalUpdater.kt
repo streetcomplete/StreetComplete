@@ -22,12 +22,12 @@ class OsmCalUpdater(
 
     fun update() = coroutineScope.launch(Dispatchers.IO) {
         try {
-            val now = Clock.System.now()
+            val nextMonth = Clock.System.now() + 31.days
             val events = apiClient
                 .getEvents()
                 // only events that start in less than one month. Some local communities add
                 // events on OsmCal for the whole year in advance.
-                .filter { it.startDate <= now + 31.days }
+                .filter { it.startDate <= nextMonth }
                 // only nearby events, less than 25km away as the bird flies (~distance of city
                 // center to outer suburbs / about 1 hour drive)
                 .filter { it.position.distanceTo(prefs.mapPosition) < 25000 }
