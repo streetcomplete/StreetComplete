@@ -1,5 +1,37 @@
 # Changelog
 
+## v63.0
+
+### General Improvements
+
+- You’ll now get in-app notifications when a new issue of weeklyOSM is out, the news blog about what’s happening in the OpenStreetMap world. (#1796, #6728, #5977)
+- You’ll also get in-app notifications about local OSM community events in your area (#6743, #1798)
+- You can now change settings which in-app notifications you want to receive (#6493)
+- You can now also zoom by dragging the zoom button up or down (#6719, #6716), by @Helium314
+- Redid the UI for opening hours, postbox collection times and parking fee quests with slight improvements, especially in regards to localization (#6691, #6175)
+
+### New Quests
+
+- _"In what direction can you ride this?"_, asked for lifts (#6583), by @NariaReynhard
+- _"What kind of artwork is this?"_ (#6605, #2125), by @paulklie and @vfosnar
+- _"Are there cabins that you may stay in here?"_ asked for campsites (#6685, #6447), by @paulklie
+- _"What’s the surface here?"_, asked for beaches (#6729, #1098), by @mcliquid
+- _"Are bicycles allowed on this ferry?"_ (#6718, #6509), by @mcliquid
+- _"Does this ferry route transport heavy goods vehicles?"_ (#6734, #6737), by @mcliquid
+
+### Quest improvements
+
+- Postbox collection times: Allow input of time ranges (#6646)
+- Information board topics: Allow to select multiple topics (#6148), thanks @paulklie
+- Campsite type: Split the quest up into several quests (#6685, #6447), by @paulklie
+- Other small improvements on quests (#6704, …), thanks @matkoniecz, @paulklie, @mcliquid
+
+### Fixes
+
+- Parking overlay: Specify only one side is enabled again (#6721)
+- Achievement dialog now displays well on square screen (#6702)
+- Fix in dark mode, some icons were black on black background (#6453, #6717), by @Helium314
+
 ## v62.2
 
 ### Fixes
