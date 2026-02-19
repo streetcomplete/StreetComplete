@@ -29,13 +29,13 @@ class FeedsUpdater(
         val disabledMessageTypes = prefs.disabledMessageTypes
         if (
             Message.NewWeeklyOsm::class !in disabledMessageTypes &&
-            achievementsSource.getLinks().any { it.id == "weeklyosm" }
+            achievementsSource.hasLink("weeklyosm")
         ) {
             weeklyOsmUpdater.update()
         }
         if (
             Message.NewCalendarEvent::class !in disabledMessageTypes &&
-            achievementsSource.getLinks().any { it.id == "calendar" }
+            achievementsSource.hasLink("calendar")
         ) {
             osmCalUpdater.update()
         }

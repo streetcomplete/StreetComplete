@@ -105,11 +105,11 @@ class MessagesSource(
             Message.NewWeeklyOsm::class !in disabled &&
             prefs.weeklyOsmLastPublishDate != null &&
             prefs.weeklyOsmLastPublishDate != prefs.weeklyOsmLastNotifiedPublishDate &&
-            achievementsSource.getLinks().any { it.id == "weeklyosm" }
+            achievementsSource.hasLink("weeklyosm")
 
         val showCalendarEvents =
             Message.NewCalendarEvent::class !in disabled &&
-            achievementsSource.getLinks().any { it.id == "calendar" }
+            achievementsSource.hasLink("calendar")
 
         val showNewAchievements = Message.NewAchievement::class !in disabled
 
@@ -177,7 +177,7 @@ class MessagesSource(
             val unreadEvent = calendarEventsController.getFirstUnread()
             if (
                 unreadEvent != null &&
-                achievementsSource.getLinks().any { it.id == "calendar" }
+                achievementsSource.hasLink("calendar")
             ) {
                 calendarEventsController.markRead(unreadEvent.id)
                 return Message.NewCalendarEvent(unreadEvent)
@@ -189,7 +189,7 @@ class MessagesSource(
             if (
                 weeklyOsmPublishDate != null
                 && weeklyOsmPublishDate != prefs.weeklyOsmLastNotifiedPublishDate
-                && achievementsSource.getLinks().any { it.id == "weeklyosm" }
+                && achievementsSource.hasLink("weeklyosm")
             ) {
                 prefs.weeklyOsmLastNotifiedPublishDate = weeklyOsmPublishDate
                 return Message.NewWeeklyOsm(weeklyOsmPublishDate)
