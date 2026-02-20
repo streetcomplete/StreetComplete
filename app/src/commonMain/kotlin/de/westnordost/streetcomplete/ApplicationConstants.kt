@@ -84,6 +84,7 @@ object ApplicationConstants {
     // where to send the error reports to
     const val ERROR_REPORTS_EMAIL = "streetcomplete_errors@westnordost.de"
 
+    // ~distance of city center to outer suburbs / about 1 hour drive
     const val CALENDAR_EVENT_MAX_DISTANCE = 35000 // m
 
     val CALENDAR_EVENT_MAX_IN_ADVANCE_NOTIFICATION = 31.days
