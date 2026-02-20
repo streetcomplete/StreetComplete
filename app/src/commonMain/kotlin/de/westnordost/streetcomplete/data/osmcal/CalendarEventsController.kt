@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.data.osmcal
 
 import de.westnordost.streetcomplete.util.Listeners
 
-/** Controls calendar events pulled from osmcal.org*/
+/** Controls calendar events pulled from osmcal.org */
 class CalendarEventsController(
     private val dao: CalendarEventsDao
 ): CalendarEventsSource {
