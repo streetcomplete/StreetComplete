@@ -5,24 +5,42 @@ import kotlin.test.Test
 import kotlin.test.assertEquals
 
 internal class CurrencyFormatterTest {
-    @Test fun `format from currency code de-DE`() {
-        val currencyFormatter = CurrencyFormatter("EUR")
-        val locale = Locale("de-DE")
-        assertEquals("EUR", currencyFormatter.getCurrencyCodeFromLocale(locale))
+    @Test fun `euro in Germany`() {
+        val f = formatter("de-DE")
+        assertEquals("1.538,00\u00A0€", f.format(1538.0))
+        assertEquals("EUR", f.currencyCode)
     }
-    @Test fun `format from currency code ja-JP`() {
-        val currencyFormatter = CurrencyFormatter("EUR")
-        val locale = Locale("ja-JP")
-        assertEquals("JPY", currencyFormatter.getCurrencyCodeFromLocale(locale))
+
+    @Test fun `Ireland euro in Ireland`() {
+        val f = formatter("en-IE")
+        assertEquals("€1,538.00", f.format(1538.0))
+        assertEquals("EUR", f.currencyCode)
     }
-    @Test fun `format from currency code en-US`() {
-        val currencyFormatter = CurrencyFormatter("USD")
-        val locale = Locale("en-US")
-        assertEquals("USD", currencyFormatter.getCurrencyCodeFromLocale(locale))
+
+    @Test fun `yen in Japan`() {
+        val f = formatter("ja-JP")
+        assertEquals("￥1,538", f.format(1538.00))
+        assertEquals("JPY", f.currencyCode)
     }
-    @Test fun `format from currency code no-NO`() {
-        val currencyFormatter = CurrencyFormatter("NOK")
-        val locale = Locale("no-NO")
-        assertEquals("NOK", currencyFormatter.getCurrencyCodeFromLocale(locale))
+
+    @Test fun `dollar in US`() {
+        val f = formatter("en-US")
+        assertEquals("$1,538.00", f.format(1538.00))
+        assertEquals("USD", f.currencyCode)
     }
+
+    @Test fun `krona in Norway`() {
+        val f = formatter("nb-NO")
+        assertEquals("kr\u00A01\u00A0538,00", f.format(1538.00))
+        assertEquals("NOK", f.currencyCode)
+    }
+
+    @Test fun `riyal in Saudi Arabia`() {
+        val f = formatter("ar-SA")
+        assertEquals("\u200F١٬٥٣٨٫٠٠\u00A0ر.س.\u200F", f.format(1538.00))
+        assertEquals("SAR", f.currencyCode)
+    }
+
+    private fun formatter(localeTag: String) =
+        CurrencyFormatter(Locale(localeTag))
 }

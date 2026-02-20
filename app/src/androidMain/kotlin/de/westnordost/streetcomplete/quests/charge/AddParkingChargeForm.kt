@@ -23,6 +23,7 @@ import de.westnordost.streetcomplete.ui.common.dialogs.TextInputDialog
 import de.westnordost.streetcomplete.ui.theme.extraLargeInput
 import de.westnordost.streetcomplete.ui.util.content
 import de.westnordost.streetcomplete.util.locale.CurrencyFormatElements
+import de.westnordost.streetcomplete.util.locale.CurrencyFormatter
 import java.util.Currency
 import java.util.Locale
 
@@ -51,9 +52,8 @@ class AddParkingChargeForm : AbstractOsmQuestForm<ParkingChargeAnswer>() {
                 durationUnitState = rememberSaveable { mutableStateOf(DurationUnit.HOURS) }
                 showDialogState = rememberSaveable { mutableStateOf(false) }
 
-                val currencyCode = getCurrencyForCountry()
-                val currencyFormatInfo = remember(currencyCode) {
-                    CurrencyFormatElements.of(currencyCode)
+                val currencyFormatInfo = remember(countryInfo) {
+                    CurrencyFormatElements.of(countryInfo.userPreferredLocale)
                 }
 
                 ProvideTextStyle(MaterialTheme.typography.extraLargeInput) {
@@ -96,21 +96,13 @@ class AddParkingChargeForm : AbstractOsmQuestForm<ParkingChargeAnswer>() {
 
     override fun onClickOk() {
         val amount = amountState.value.replace(',', '.')
-        val currency = getCurrencyForCountry()
+        val currency = CurrencyFormatter(countryInfo.userPreferredLocale).currencyCode ?: "???"
         val timeUnit = when (durationUnitState.value) { // TODO: This could be removed if DurationUnit implements toOSMValue().
             DurationUnit.HOURS -> "hour"
             DurationUnit.DAYS -> "day"
             DurationUnit.MINUTES -> "minute"
         }
         applyAnswer(SimpleCharge(amount, currency, timeUnit))
-    }
-
-    private fun getCurrencyForCountry(): String = try {
-        val locale = Locale.Builder().setRegion(countryInfo.countryCode).build()
-        val currency = Currency.getInstance(locale)
-        currency.currencyCode
-    } catch (_: Exception) {
-        "EUR"
     }
 }
 

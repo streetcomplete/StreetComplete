@@ -36,7 +36,7 @@ fun ChargeInput(
         horizontalArrangement = Arrangement.spacedBy(8.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        if (currencyFormatInfo.symbolBeforeAmount) {
+        if (currencyFormatInfo.isSymbolBeforeAmount) {
             Text(
                 text = currencyFormatInfo.symbol,
                 style = MaterialTheme.typography.h5,
@@ -50,7 +50,7 @@ fun ChargeInput(
             onValueChange = onAmountChange,
             placeholder = {
                 // Generate placeholder based on decimal places
-                val placeholderValue = when (currencyFormatInfo.decimalPlaces) {
+                val placeholderValue = when (currencyFormatInfo.decimalDigits) {
                     0 -> "150"
                     1 -> "15.0"
                     else -> "1.50"
@@ -58,7 +58,7 @@ fun ChargeInput(
                 Text(placeholderValue)
             },
             keyboardOptions = KeyboardOptions(
-                keyboardType = if (currencyFormatInfo.decimalPlaces > 0) {
+                keyboardType = if (currencyFormatInfo.decimalDigits > 0) {
                     KeyboardType.Decimal
                 } else {
                     KeyboardType.Number
@@ -68,7 +68,7 @@ fun ChargeInput(
             singleLine = true,
         )
 
-        if (!currencyFormatInfo.symbolBeforeAmount) {
+        if (!currencyFormatInfo.isSymbolBeforeAmount) {
             Text(
                 text = currencyFormatInfo.symbol,
                 style = MaterialTheme.typography.h5,

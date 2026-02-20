@@ -3,19 +3,19 @@ package de.westnordost.streetcomplete.util.locale
 import androidx.compose.ui.text.intl.Locale
 
 /**
- * Platform-specific currency formatter
+ * Locale-aware formatting of currencies
+ *
+ * @param locale Locale to use. If [locale] is `null`, the default locale (for formatting) will be
+ *   used. Note that the region **must** be specified in the locale for this formatter to format
+ *   correctly, otherwise it doesn't know which currency to use
  */
-expect class CurrencyFormatter (currencyCode: String?) {
+expect class CurrencyFormatter(locale: Locale? = null) {
     /**
-     * Get formatting information for a given currency code
-     * @param currencyCode ISO 4217 currency code (e.g. "EUR", "USD", "JPY")
-     * @return formatting information for this currency in the current locale
+     * @param value the value to format, e.g. 3.0
+     * @return the formatted input value, e.g. € 3.00
      */
-    fun format(sampleValue: Double): String
+    fun format(value: Double): String
+
+    /** ISO 4217 currency code */
     val currencyCode: String?
-    /**
-     * @param countryCode the ISO 3166-1 alpha-2 code of the country
-     * @return the ISO 4217 code of the currency in the given country
-     */
-    fun getCurrencyCodeFromLocale(countryCode: Locale?): String? // TODO the input could be a string
 }

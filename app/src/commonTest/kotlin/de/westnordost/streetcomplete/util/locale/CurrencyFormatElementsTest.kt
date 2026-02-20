@@ -5,66 +5,74 @@ import kotlin.test.Test
 import kotlin.test.assertEquals
 
 class CurrencyFormatElementsTest {
-    @Test fun `of de-DE euro`() {
-        val german = Locale("de-DE")
-        val eurFormatElements = CurrencyFormatElements(
-            " €",
-            symbolBeforeAmount = false,
-            decimalPlaces = 2
-        )
-        val actualFormatElement = CurrencyFormatElements.of(german)
+
+    @Test fun `of Germany Euro`() {
         assertEquals(
-            eurFormatElements.symbolBeforeAmount,
-            actualFormatElement.symbolBeforeAmount
-        )
-        assertEquals(
-            eurFormatElements.symbol.trim(),
-            actualFormatElement.symbol.trim()
-        )
-        assertEquals(
-            eurFormatElements.decimalPlaces,
-            actualFormatElement.decimalPlaces
+            CurrencyFormatElements(
+                symbol = "€",
+                isSymbolBeforeAmount = false,
+                hasWhitespace = true,
+                decimalDigits = 2,
+                decimalSeparator = ',',
+                groupingSeparator = '.',
+            ),
+            CurrencyFormatElements.of(Locale("de-DE"))
         )
     }
-    @Test fun `of ja-JP yen`() {
-        val japanese = Locale("ja-JP")
-        val expected = CurrencyFormatElements(
-            "￥",
-            symbolBeforeAmount = true,
-            decimalPlaces = 0
+
+    @Test fun `of Ireland Euro`() {
+        assertEquals(
+            CurrencyFormatElements(
+                symbol = "€",
+                isSymbolBeforeAmount = true,
+                hasWhitespace = false,
+                decimalDigits = 2,
+                decimalSeparator = '.',
+                groupingSeparator = ',',
+            ),
+            CurrencyFormatElements.of(Locale("en-IE"))
         )
-        val actual = CurrencyFormatElements.of(japanese)
-        assertEquals(expected, actual)
     }
-    @Test fun `of en-US USD`() {
-        val usa = Locale("en-US")
-        val expected = CurrencyFormatElements(
-            "US$",
-            symbolBeforeAmount = true,
-            decimalPlaces = 2
+
+    @Test fun `of Japan Yen`() {
+        assertEquals(
+            CurrencyFormatElements(
+                symbol = "￥",
+                isSymbolBeforeAmount = true,
+                hasWhitespace = false,
+                decimalDigits = 0,
+                decimalSeparator = null,
+                groupingSeparator = ',',
+            ),
+            CurrencyFormatElements.of(Locale("ja-JP"))
         )
-        val actual = CurrencyFormatElements.of(usa)
-        assertEquals(expected, actual)
     }
-    @Test fun `of no-NO NOK`() {
-        val norwegian = Locale("no-NO")
-        val nokFormatElements = CurrencyFormatElements(
-            " kr",
-            symbolBeforeAmount = false,
-            decimalPlaces = 2
-        )
-        val actualFormatElement = CurrencyFormatElements.of(norwegian)
+
+    @Test fun `of US Dollar`() {
         assertEquals(
-            nokFormatElements.symbolBeforeAmount,
-            actualFormatElement.symbolBeforeAmount
+            CurrencyFormatElements(
+                symbol = "$",
+                isSymbolBeforeAmount = true,
+                hasWhitespace = false,
+                decimalDigits = 2,
+                decimalSeparator = '.',
+                groupingSeparator = ',',
+            ),
+            CurrencyFormatElements.of(Locale("en-US"))
         )
+    }
+
+    @Test fun `of Norway Krona`() {
         assertEquals(
-            nokFormatElements.symbol.trim(),
-            actualFormatElement.symbol.trim()
-        )
-        assertEquals(
-            nokFormatElements.decimalPlaces,
-            actualFormatElement.decimalPlaces
+            CurrencyFormatElements(
+                symbol = "kr",
+                isSymbolBeforeAmount = true,
+                hasWhitespace = true,
+                decimalDigits = 2,
+                decimalSeparator = ',',
+                groupingSeparator = '\u00A0',
+            ),
+            CurrencyFormatElements.of(Locale("nb-NO"))
         )
     }
 }
