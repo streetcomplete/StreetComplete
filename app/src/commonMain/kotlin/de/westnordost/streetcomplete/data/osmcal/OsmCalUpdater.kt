@@ -1,5 +1,7 @@
 package de.westnordost.streetcomplete.data.osmcal
 
+import de.westnordost.streetcomplete.ApplicationConstants.CALENDAR_EVENT_MAX_DISTANCE
+import de.westnordost.streetcomplete.ApplicationConstants.CALENDAR_EVENT_MAX_IN_ADVANCE_NOTIFICATION
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.util.logs.Log
 import de.westnordost.streetcomplete.util.math.distanceTo
@@ -22,15 +24,14 @@ class OsmCalUpdater(
 
     fun update() = coroutineScope.launch(Dispatchers.IO) {
         try {
-            val nextMonth = Clock.System.now() + 31.days
+            val nextMonth = Clock.System.now() + CALENDAR_EVENT_MAX_IN_ADVANCE_NOTIFICATION
             val events = apiClient
                 .getEvents()
                 // only events that start in less than one month. Some local communities add
                 // events on OsmCal for the whole year in advance.
                 .filter { it.startDate <= nextMonth }
-                // only nearby events, less than 25km away as the bird flies (~distance of city
-                // center to outer suburbs / about 1 hour drive)
-                .filter { it.position.distanceTo(prefs.mapPosition) < 25000 }
+                // only nearby events (~distance of city center to outer suburbs / about 1 hour drive)
+                .filter { it.position.distanceTo(prefs.mapPosition) < CALENDAR_EVENT_MAX_DISTANCE }
             controller.putAll(events)
         } catch (e: Exception) {
             Log.w(TAG, "Unable to download the OSM events from OsmCal", e)

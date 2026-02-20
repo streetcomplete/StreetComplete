@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete
 
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitWayAction
+import kotlin.time.Duration.Companion.days
 import kotlin.time.Duration.Companion.minutes
 
 object ApplicationConstants {
@@ -82,6 +83,10 @@ object ApplicationConstants {
 
     // where to send the error reports to
     const val ERROR_REPORTS_EMAIL = "streetcomplete_errors@westnordost.de"
+
+    const val CALENDAR_EVENT_MAX_DISTANCE = 35000 // m
+
+    val CALENDAR_EVENT_MAX_IN_ADVANCE_NOTIFICATION = 31.days
 
     /** Which relation types to drop already during download, before persisting. This is a
      *  performance improvement. Working properly with relations means we have to have it as
