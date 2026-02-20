@@ -680,8 +680,8 @@ val achievements = listOf(
                user to the community and other editors. Introducing editors should be delayed
                because users should not get sidetracked too early - best first show community
                intro links */
-            1 to links("weeklyosm"), // newspaper first
-            2 to links("calendar"),
+            1 to links("calendar"), // means to connect with others first
+            2 to links("weeklyosm"),
             3 to links("neis-one"), // who-is-around-me, leaderboards etc fits into "community intro"
             4 to links("ideditor"),
             5 to links("learnosm"), // learnosm mostly concerns itself with tutorials about how to use editors

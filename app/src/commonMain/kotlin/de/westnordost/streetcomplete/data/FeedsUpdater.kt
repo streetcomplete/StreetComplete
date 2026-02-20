@@ -1,8 +1,10 @@
 package de.westnordost.streetcomplete.data
 
 import de.westnordost.streetcomplete.data.messages.Message
+import de.westnordost.streetcomplete.data.osmcal.OsmCalUpdater
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.data.user.UserUpdater
+import de.westnordost.streetcomplete.data.user.achievements.AchievementsSource
 import de.westnordost.streetcomplete.data.weeklyosm.WeeklyOsmUpdater
 import de.westnordost.streetcomplete.util.ktx.now
 import kotlinx.datetime.LocalDate
@@ -11,7 +13,9 @@ import kotlinx.datetime.LocalDate
 class FeedsUpdater(
     private val userUpdater: UserUpdater,
     private val weeklyOsmUpdater: WeeklyOsmUpdater,
+    private val osmCalUpdater: OsmCalUpdater,
     private val prefs: Preferences,
+    private val achievementsSource: AchievementsSource,
 ) {
     /** update at most daily */
     fun updateDaily() {
@@ -23,8 +27,17 @@ class FeedsUpdater(
 
         userUpdater.update()
         val disabledMessageTypes = prefs.disabledMessageTypes
-        if (Message.NewWeeklyOsm::class !in disabledMessageTypes) {
+        if (
+            Message.NewWeeklyOsm::class !in disabledMessageTypes &&
+            achievementsSource.hasLink("weeklyosm")
+        ) {
             weeklyOsmUpdater.update()
+        }
+        if (
+            Message.NewCalendarEvent::class !in disabledMessageTypes &&
+            achievementsSource.hasLink("calendar")
+        ) {
+            osmCalUpdater.update()
         }
     }
 }
