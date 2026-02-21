@@ -8,8 +8,8 @@ import java.util.Properties
 
 
 /** App version name, code and flavor */
-val appVersionName = "62.2"
-val appVersionCode = 6203
+val appVersionName = "63.0-beta1"
+val appVersionCode = 6300
 
 /** Localizations the app should be available in */
 val bcp47ExportLanguages = setOf(
@@ -28,7 +28,7 @@ val presetsVersion = "v6.14.0"
 /** Version of the Name Suggestion Index to use
  *  see https://github.com/osmlab/name-suggestion-index/tags for latest version (without leading "v"
  *  */
-val nsiVersion = "7.0.20251229"
+val nsiVersion = "7.0.20260126"
 
 /** Project ID of the crowdsource translation platform (from where to pull translations from) */
 val poEditorProjectId = "97843"
@@ -39,7 +39,7 @@ plugins {
     id("org.jetbrains.kotlin.plugin.compose") version "2.3.0"
     id("com.android.application") version "8.11.2"
     id("org.jetbrains.compose") version "1.10.0"
-    id("org.jetbrains.kotlinx.atomicfu") version "0.29.0"
+    id("org.jetbrains.kotlinx.atomicfu") version "0.31.0"
     id("com.codingfeline.buildkonfig") version "0.17.1"
 }
 
@@ -99,7 +99,7 @@ kotlin {
 
                 // Atomics, Locks, Synchronization
                 // Aparently only necessary as long as https://github.com/Kotlin/kotlinx-atomicfu/issues/145 is not solved
-                implementation("org.jetbrains.kotlinx:atomicfu:0.29.0")
+                implementation("org.jetbrains.kotlinx:atomicfu:0.31.0")
 
                 // Dependency injection
                 implementation(project.dependencies.platform("io.insert-koin:koin-bom:4.1.1"))
@@ -112,11 +112,11 @@ kotlin {
                 implementation("com.russhwolf:multiplatform-settings:1.3.0")
 
                 // I/O
-                implementation("org.jetbrains.kotlinx:kotlinx-io-core:0.8.1")
+                implementation("org.jetbrains.kotlinx:kotlinx-io-core:0.9.0")
 
                 // HTTP client
-                implementation("io.ktor:ktor-client-core:3.3.3")
-                implementation("io.ktor:ktor-client-encoding:3.3.3")
+                implementation("io.ktor:ktor-client-core:3.4.0")
+                implementation("io.ktor:ktor-client-encoding:3.4.0")
                 // SHA256 hashing, used during OAuth authentication
                 implementation("org.kotlincrypto.hash:sha2:0.8.0")
 
@@ -128,8 +128,8 @@ kotlin {
                 implementation("com.charleskorn.kaml:kaml:0.104.0")
 
                 // JSON
-                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.9.0")
-                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json-io:1.9.0")
+                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.10.0")
+                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json-io:1.10.0")
 
                 // Date / time
                 implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.6.2")
@@ -153,7 +153,7 @@ kotlin {
 
                 // UI Navigation
                 implementation("org.jetbrains.compose.ui:ui-backhandler:1.10.0")
-                implementation("org.jetbrains.androidx.navigation:navigation-compose:2.9.1")
+                implementation("org.jetbrains.androidx.navigation:navigation-compose:2.9.2")
 
                 // UI ViewModel
                 implementation("org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-compose:2.9.6")
@@ -170,7 +170,7 @@ kotlin {
                 implementation("io.github.kevinnzou:compose-webview-multiplatform:2.0.3")
 
                 // sharing presets/settings via QR Code
-                implementation("io.github.alexzhirkevich:qrose:1.0.1")
+                implementation("io.github.alexzhirkevich:qrose:1.1.2")
                 // for encoding information for the URL configuration (QR code)
                 implementation("com.ionspin.kotlin:bignum:0.3.10")
             }
@@ -193,23 +193,23 @@ kotlin {
 
                 // Compose
                 implementation("org.jetbrains.compose.ui:ui-tooling-preview:1.10.0")
-                implementation("androidx.activity:activity-compose:1.12.2")
+                implementation("androidx.activity:activity-compose:1.12.4")
 
                 // photos
-                implementation("androidx.exifinterface:exifinterface:1.4.1")
+                implementation("androidx.exifinterface:exifinterface:1.4.2")
 
                 // Kotlin
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.10.2")
 
                 // scheduling background jobs
-                implementation("androidx.work:work-runtime-ktx:2.11.0")
+                implementation("androidx.work:work-runtime-ktx:2.11.1")
 
                 // HTTP Client
-                implementation("io.ktor:ktor-client-android:3.3.3")
+                implementation("io.ktor:ktor-client-android:3.4.0")
 
                 // widgets
-                implementation("androidx.viewpager2:viewpager2:1.1.0")
-                implementation("me.grantland:autofittextview:0.2.1")
+                // TODO implementation("androidx.viewpager2:viewpager2:1.1.0")
+                // TODO implementation("me.grantland:autofittextview:0.2.1")
                 implementation("com.google.android.flexbox:flexbox:3.0.0")
                 implementation("com.github.chrisbanes:PhotoView:2.3.0")
 
@@ -220,19 +220,19 @@ kotlin {
         iosMain {
             dependencies {
                 // HTTP client
-                implementation("io.ktor:ktor-client-darwin:3.3.3")
+                implementation("io.ktor:ktor-client-darwin:3.4.0")
             }
         }
         commonTest {
             dependencies {
                 implementation(kotlin("test"))
 
-                implementation("io.ktor:ktor-client-mock:3.3.2")
+                implementation("io.ktor:ktor-client-mock:3.4.0")
             }
         }
         androidUnitTest {
             dependencies {
-                implementation("org.mockito:mockito-core:5.20.0")
+                implementation("org.mockito:mockito-core:5.21.0")
                 implementation(kotlin("test"))
             }
         }

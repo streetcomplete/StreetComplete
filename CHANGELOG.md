@@ -24,7 +24,7 @@
 - Postbox collection times: Allow input of time ranges (#6646)
 - Information board topics: Allow to select multiple topics (#6148), thanks @paulklie
 - Campsite type: Split the quest up into several quests (#6685, #6447), by @paulklie
-- Other small improvements on quests (#6704, …), thanks @matkoniecz, @paulklie, @mcliquid
+- Other small improvements on quests (#6704, #6705, #6696, #6710, #6598…), thanks @matkoniecz, @paulklie, @mcliquid
 
 ### Fixes
 
