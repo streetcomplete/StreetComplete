@@ -14,6 +14,7 @@ import de.westnordost.streetcomplete.osm.surface.title
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.sidewalk_illustration_yes
 import de.westnordost.streetcomplete.resources.floating_question
+import de.westnordost.streetcomplete.resources.sidewalk_illustration_no
 import de.westnordost.streetcomplete.ui.common.dialogs.SimpleItemSelectDialog
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
 import de.westnordost.streetcomplete.ui.common.street_side_select.Side
@@ -32,8 +33,8 @@ import org.jetbrains.compose.resources.stringResource
     isLeftHandTraffic: Boolean,
     modifier: Modifier = Modifier,
     lastPicked: List<Sides<Surface>> = emptyList(),
-    isLeftSideVisible: Boolean = true,
-    isRightSideVisible: Boolean = true,
+    hasSidewalkLeft: Boolean = true,
+    hasSidewalkRight: Boolean = true,
 ) {
     var showPickerForSide by remember { mutableStateOf<Side?>(null) }
 
@@ -41,7 +42,14 @@ import org.jetbrains.compose.resources.stringResource
         value = value,
         onValueChanged = onValueChanged,
         getIllustrationPainter = { surface, side ->
-            painterResource(Res.drawable.sidewalk_illustration_yes)
+            val hasSidewalk =
+                side == Side.LEFT && hasSidewalkLeft ||
+                side == Side.RIGHT && hasSidewalkRight
+
+            painterResource(
+                if (hasSidewalk) Res.drawable.sidewalk_illustration_yes
+                else Res.drawable.sidewalk_illustration_no
+            )
         },
         onClickSide = { showPickerForSide = it },
         geometryRotation = geometryRotation,
@@ -50,12 +58,18 @@ import org.jetbrains.compose.resources.stringResource
         isLeftHandTraffic = isLeftHandTraffic,
         modifier = modifier,
         getFloatingPainter = { surface, side ->
-            surface?.icon?.let { ClipCirclePainter(painterResource(it)) }
-                ?: painterResource(Res.drawable.floating_question)
+            val hasSidewalk =
+                side == Side.LEFT && hasSidewalkLeft ||
+                side == Side.RIGHT && hasSidewalkRight
+
+            if (hasSidewalk) {
+                surface?.icon?.let { ClipCirclePainter(painterResource(it)) }
+                    ?: painterResource(Res.drawable.floating_question)
+            } else null
         },
         lastPicked = lastPicked,
-        isLeftSideVisible = isLeftSideVisible,
-        isRightSideVisible = isRightSideVisible,
+        isLeftSideEnabled = hasSidewalkLeft,
+        isRightSideEnabled = hasSidewalkRight,
     )
 
     showPickerForSide?.let { side ->

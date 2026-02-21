@@ -37,6 +37,8 @@ import org.jetbrains.compose.resources.painterResource
     enabled: Boolean = true,
     isLeftSideVisible: Boolean = true,
     isRightSideVisible: Boolean = true,
+    isLeftSideEnabled: Boolean = true,
+    isRightSideEnabled: Boolean = true,
 ) {
     val rotation = geometryRotation - mapRotation
 
@@ -58,7 +60,8 @@ import org.jetbrains.compose.resources.painterResource
             rotation = rotation,
             modifier = Modifier.align(Alignment.Center),
             getFloatingPainter = getFloatingPainter,
-            enabled = enabled,
+            isLeftSideEnabled = isLeftSideEnabled && enabled,
+            isRightSideEnabled = isRightSideEnabled && enabled,
             isLeftSideVisible = isLeftSideVisible,
             isRightSideVisible = isRightSideVisible,
         )
