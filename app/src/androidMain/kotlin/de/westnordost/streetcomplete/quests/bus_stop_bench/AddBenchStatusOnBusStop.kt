@@ -17,6 +17,7 @@ class AddBenchStatusOnBusStop : OsmFilterQuestType<Boolean>(), AndroidQuest {
         (
           public_transport = platform
           or (highway = bus_stop and public_transport != stop_position)
+          or highway = hitchhiking
         )
         and physically_present != no and naptan:BusStopType != HAR
         and access !~ no|private
