@@ -58,7 +58,6 @@
     <string name="about_title_privacy_statement">Declaración de privacidá</string>
     <string name="quest_openingHours_public_holidays">Díes festivos</string>
     <string name="quest_openingHours_public_holidays_short">Festivos</string>
-    <string name="quest_openingHours_open_end">Hora de pieslle flexible</string>
     <string name="quest_openingHours_answer_247">Abierto 24/7</string>
     <string name="quest_openingHours_answer_seasonal_opening_hours">Según el mes…</string>
     <string name="quest_openingHours_answer_no_regular_opening_hours">Nun tien horariu d'apertura fixu…</string>
@@ -316,7 +315,6 @@ Pero recuerda que siempre puedes descargar aplicaciones de tecláu alternatives 
     <string name="quest_housenumber_conscription_number">Númberu de «conscripción»</string>
     <string name="quest_housenumber_street_number_optional">Númberu d'«orientación» (opcional)</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">Tamién carril bici al otru llau…</string>
-    <string name="quest_openingHours_emptyAnswer">Describi lo que pon na rotulación. Si nun ves nada puedes preguntar dientro los horarios.</string>
     <string name="quest_cycleway_value_none_but_no_oneway">nun hai nada, pero los ciclistes pueden dir per dambos sentíos de la vía</string>
     <string name="quest_wheelchairAccess_description_toilets">Una señal con una siella de ruedes como la que ves puede dar a entender que los llavabos tán adaptaos de manera especial. Parcial ye que se pueda entrar cola siella y usar los llavabos, pero ensin pasamanes o llavabos específicos.</string>
     <string name="map_btn_create_note">Crear una nota</string>
@@ -465,7 +463,6 @@ Pero recuerda que siempre puedes descargar aplicaciones de tecláu alternatives 
     <string name="privacy_html_image_upload2">&lt;p&gt;Les fotos qu'axuntes a una nota xúbense al mio sirvidor y desaníciense unos díes depués de que la nota se resuelva. Los metadatos esbórrense primero de xubila.&lt;p&gt;</string>
     <string name="action_deselect_all">Quitar la selección a too</string>
     <string name="quest_buildingType_retail_description">incluyendo edificios pa restoranes, cafés…</string>
-    <string name="quest_openingHours_timeSelect_next">Siguiente</string>
     <string name="quest_tracktype_title">¿Cómo ye'l pisu d'esta vía?</string>
     <string name="quest_tracktype_grade1">Sólido y firme</string>
     <string name="quest_tracktype_grade4">Suave bastante, un poco suelto</string>
@@ -491,7 +488,6 @@ Pero recuerda que siempre puedes descargar aplicaciones de tecláu alternatives 
     <string name="action_open_location">Abrir llugar n'otra app</string>
     <string name="map_application_missing">Nun hai otra aplicación pa mapes instalada</string>
     <string name="label_housenumber">númberu de casa</string>
-    <string name="label_blocknumber">númberu de bloque</string>
     <string name="quest_busStopShelter_covered">Tola parada ta sotechada</string>
     <string name="quest_ferry_pedestrian_title">¿Tresporta persones?</string>
     <string name="quest_ferry_motor_vehicle_title">¿Tresporta vehículos motorizaos?</string>
@@ -1131,10 +1127,6 @@ Tamién puedes dexar una nota (con foto).</string>
     <string name="quest_camp_drinking_water_title">¿Hai agua potable de baldre pa campistes?</string>
     <string name="quest_camp_shower_title">¿Hai duches?</string>
     <string name="quest_camp_power_supply_title">¿Hai manera de cargar teléfonos o dispositivos?</string>
-    <string name="quest_camp_type_title">¿Quién puede acampar equí?</string>
-    <string name="quest_camp_type_tents_and_caravans">Mesmo tiendes de campaña qu'autocaravanes o caravanes</string>
-    <string name="quest_camp_type_caravans_only">Namás autocaravanes o caravanes</string>
-    <string name="quest_camp_type_tents_only">Namás tiendes de campaña</string>
     <string name="quest_camp_type_backcountry">Campamentu al aire llibre (ensin instalaciones)</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">Esti diámetru nun paez mui realista, suel tar ente %1$d y %2$d.</string>
     <string name="street_parking_street_width">Anchor de la cai: %1$s</string>
@@ -1225,9 +1217,6 @@ Tamién puedes dexar una nota (con foto).</string>
     <string name="street_parking_staggered_half_on_kerb">Parcialmente na cai en llaos alternos</string>
     <string name="quest_traffic_signals_sound_description">Pista: Busca altavoces (pueden ser grandes o pequeños). Non siempre suenen permanentemente.</string>
     <string name="quest_presets_duplicate">Duplicao</string>
-    <string name="label_block">Bloque</string>
-    <string name="quest_address_answer_block">Ta a un bloque</string>
-    <string name="quest_address_answer_no_block">Nun ta a un bloque</string>
     <string name="quest_surface_value_mud">Barru permanente</string>
     <string name="quest_wheelchairAccessPat_noToilet">Equí nun hai bañu</string>
     <string name="unknown_surface_title">Otru tipu de superficie</string>

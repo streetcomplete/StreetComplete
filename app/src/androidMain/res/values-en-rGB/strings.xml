@@ -58,7 +58,6 @@
     <string name="about_title_privacy_statement">"Privacy"</string>
     <string name="quest_openingHours_public_holidays">"Public holidays"</string>
     <string name="quest_openingHours_public_holidays_short">"PH"</string>
-    <string name="quest_openingHours_open_end">"open end"</string>
     <string name="quest_openingHours_answer_247">"Open 24/7"</string>
     <string name="quest_openingHours_answer_seasonal_opening_hours">"Differs by month…"</string>
     <string name="quest_openingHours_answer_no_regular_opening_hours">"No regular opening hours…"</string>
@@ -291,7 +290,6 @@
     <string name="quest_housenumber_conscription_number">"Conscription number"</string>
     <string name="quest_housenumber_street_number_optional">"Orientation number (optional)"</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">"Also cycle path on the other side…"</string>
-    <string name="quest_openingHours_emptyAnswer">"You need to describe what is on the sign. If there is no sign, you should ask for the opening hours inside."</string>
     <string name="quest_cycleway_value_none_but_no_oneway">"none, but cyclists may use road in both directions"</string>
     <string name="quest_wheelchairAccess_description_toilets">"A wheelchair sign like this might be visible if the toilet is accessible. Partially means that a wheelchair can enter and use the toilet, but no handrail or adapted hand basin is present."</string>
     <string name="map_btn_create_note">"Create new note"</string>
@@ -440,7 +438,6 @@
     <string name="privacy_html_image_upload2">"&lt;p&gt;Photos you attach to a note are uploaded to my server and deleted some days after that note has been resolved. Their meta-data is stripped before upload.&lt;/p&gt;"</string>
     <string name="action_deselect_all">"Deselect all"</string>
     <string name="quest_buildingType_retail_description">"including buildings for restaurants, cafés, supermarkets, shops…"</string>
-    <string name="quest_openingHours_timeSelect_next">"Next"</string>
     <string name="quest_tracktype_title">"What’s the surface firmness of this track?"</string>
     <string name="quest_tracktype_grade1">"Solid"</string>
     <string name="quest_tracktype_grade4">"Mostly soft"</string>
@@ -466,7 +463,6 @@
     <string name="action_open_location">"Open location in another app"</string>
     <string name="map_application_missing">"No other map application installed"</string>
     <string name="label_housenumber">"house number"</string>
-    <string name="label_blocknumber">"block number"</string>
     <string name="quest_busStopShelter_covered">"Whole stop is covered"</string>
     <string name="quest_ferry_pedestrian_title">"Does this ferry route transport pedestrians?"</string>
     <string name="quest_ferry_motor_vehicle_title">"Does this ferry route transport motor vehicles?"</string>
@@ -1111,10 +1107,6 @@ Do the same for the other side if present."</string>
     <string name="quest_camp_drinking_water_title">"Is drinking water freely available for guests here?"</string>
     <string name="quest_camp_shower_title">"Are there showers here?"</string>
     <string name="quest_camp_power_supply_title">"Are there any power outlets available for guests?"</string>
-    <string name="quest_camp_type_title">"Who may camp here?"</string>
-    <string name="quest_camp_type_tents_and_caravans">"Both tents and motor homes, caravans, …"</string>
-    <string name="quest_camp_type_caravans_only">"Only motor homes, caravans, …"</string>
-    <string name="quest_camp_type_tents_only">"Only tents"</string>
     <string name="quest_camp_type_backcountry">"Backcountry camping (no facilities)"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"This diameter looks implausible, it is usually between %1$d and %2$d."</string>
     <string name="street_parking_street_width">"Street width: %1$s"</string>
@@ -1203,9 +1195,6 @@ Move it now?"</string>
     <string name="street_parking_staggered_half_on_kerb">"Partially on street on alternating sides"</string>
     <string name="quest_traffic_signals_sound_description">"Hint: Look out for speakers. Not all sound signals can be activated through a button."</string>
     <string name="quest_presets_duplicate">"Duplicate"</string>
-    <string name="label_block">"block"</string>
-    <string name="quest_address_answer_block">"It’s within a block…"</string>
-    <string name="quest_address_answer_no_block">"It isn’t within a block…"</string>
     <string name="quest_surface_value_mud">"Persistent mud"</string>
     <string name="quest_wheelchairAccessPat_noToilet">"There is no toilet here"</string>
     <string name="unknown_surface_title">"Other kind of surface"</string>

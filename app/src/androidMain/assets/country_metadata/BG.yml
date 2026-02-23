@@ -1,9 +1,10 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 additionalStreetsignLanguages: [international, en]
 additionalValidHousenumberRegex: ((бл\.\s?)?\p{N}{1,4}[\s-]?\p{InCyrillic}?)|((\p{N}{1,4}-){0,2}\p{N}{1,4})
-atmOperators: [UniCredit Bulbank, ОББ, Банка ДСК, Fibank, Централна Кооперативна Банка, Пощенска банка, Euronet, Общинска банка, Shitcoins.club, Allianz, Инвестбанк, EasyPay, International Asset Bank, DBank, Централна кооперативна Банка, БАКБ, Texim Bank, Postbank, DigitalAssist, FiBank, CryptoDesk]
-chargingStationOperators: [Финес Енерджи ООД, Столичен електротранспорт, ОП „Общински паркинги и синя зона“ - Варна, Финес Енерджи ЕООД, Eldrive, Kaufland, Столичен автотранспорт, Община Варна, Фермер 2016 ООД, Gigacharger, Evpoint, Екарс БГ ЕООД, Гигачарджър ЕООД, Tesla, Renault, ProCredit Bank, Kia, GigaCharger, Fines Charging]
-clothesContainerOperators: [TexCycle, БЧК, TEXAID Bulgaria, M-Texx]
+atmOperators: [UniCredit Bulbank, Банка ДСК, ОББ, Fibank, Пощенска банка, Централна Кооперативна Банка, Euronet, Общинска банка, Shitcoins.club, Allianz, Инвестбанк, EasyPay, International Asset Bank, Texim Bank, DBank, Централна кооперативна Банка, БАКБ, Postbank, DigitalAssist, CryptoDesk]
+chargingStationOperators: [Финес Енерджи ООД, Столичен електротранспорт, Финес Енерджи ЕООД, Eldrive, ОП „Общински паркинги и синя зона“ - Варна, Kaufland, Столичен автотранспорт, Община Варна, Гигачарджър ЕООД, Фермер 2016 ООД, Evpoint, Екарс БГ ЕООД, Tesla, Renault, ProCredit Bank, Kia, Gigacharger, GigaCharger, Fines Charging]
+chargingStationSocketTypes: [type2, type2_cable, type2_combo, chademo]
+clothesContainerOperators: [TexCycle, БЧК, M-Texx, TEXAID Bulgaria]
 defaultSpeedLimitHasUrbanOrRural: true
 hasDailyAlternateSideParkingSign: true
 hasLivingStreet: true

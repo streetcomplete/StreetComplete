@@ -1,6 +1,6 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 additionalStreetsignLanguages: [en]
-atmOperators: [Bank Muscat, بنك مسقط, NBO, HSBC, Bank Dhofar, صراف بنك مسقط, bank muscat, Bank Muscat ATM, بنك ظفار, National Bank of Oman, Muscat bank]
+atmOperators: [Bank Muscat, بنك مسقط, NBO, بنك ظفار, HSBC, Bank Dhofar, bank muscat, صراف بنك مسقط, بنك عمان العربي, البنك الوطني العماني, Muscat bank, Bank Muscat ATM]
 centerLineStyle: yellow
 edgeLineStyle: yellow
 mobileCountryCode: 422

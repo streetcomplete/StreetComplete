@@ -3,6 +3,7 @@ additionalStreetsignLanguages: [lij]
 advisoryCycleLaneStyle: white dashes without pictogram
 atmOperators: [BNP Paribas]
 chargingStationOperators: [EVBox]
+chargingStationSocketTypes: [type2, type2_cable, type2_combo, chademo]
 defaultSpeedLimitHasUrbanOrRural: false
 exclusiveCycleLaneStyle: white dashes
 hasAdvisoryCycleLane: true

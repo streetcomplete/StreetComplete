@@ -2,6 +2,7 @@
 advisoryCycleLaneStyle: white dashes without pictogram
 atmOperators: [POST Luxembourg, BCEE, BIL, BGL BNP Paribas, Raiffeisen, Banque Raiffeisen, Banque Internationale à Luxembourg, BNP Paribas]
 chargingStationOperators: [Chargy, Aral, SWIO, ABB, Shell, Q8, Enovos, Commune de Weiler-la-Tour, Camping Bleesbruck]
+chargingStationSocketTypes: [type2, type2_cable, type2_combo, chademo]
 clothesContainerOperators: [Kolping]
 defaultSpeedLimitHasUrbanOrRural: true
 exclusiveCycleLaneStyle: white

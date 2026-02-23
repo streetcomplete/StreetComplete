@@ -3,6 +3,7 @@ additionalValidHousenumberRegex: ([\p{N}\p{L}]{1,2}\s?/\s?|\p{L}{1,2}\s?)?\p{N}{
 advisoryCycleLaneStyle: white dashes
 advisorySpeedLimitSignStyle: yellow
 centerLineStyle: white
+chargingStationSocketTypes: [type2, type2_cable, type2_combo, chademo]
 defaultSpeedLimitHasUrbanOrRural: true
 hasAdvisoryCycleLane: true
 hasAdvisorySpeedLimitSign: true

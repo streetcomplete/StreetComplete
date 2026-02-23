@@ -2,6 +2,7 @@
 additionalStreetsignLanguages: [en, international]
 advisorySpeedLimitSignStyle: yellow
 centerLineStyle: white
+chargingStationSocketTypes: [gb_ac, gb_dc, chaoji]
 defaultSpeedLimitHasUrbanOrRural: true
 hasAdvisorySpeedLimitSign: true
 hasSlowZone: true

@@ -59,7 +59,6 @@
     <string name="about_title_privacy_statement">Declaració de privadesa</string>
     <string name="quest_openingHours_public_holidays">Festius públics</string>
     <string name="quest_openingHours_public_holidays_short">FP</string>
-    <string name="quest_openingHours_open_end">final de l'obertura</string>
     <string name="quest_openingHours_answer_247">Obert 24/7</string>
     <string name="quest_openingHours_answer_seasonal_opening_hours">Depèn del mes…</string>
     <string name="quest_openingHours_answer_no_regular_opening_hours">No té horari d'obertura habitual…</string>
@@ -317,7 +316,6 @@ En cas contrari, podeu baixar un altre teclat al magatzem d'aplicacions. Els tec
     <string name="quest_housenumber_conscription_number">Número de circumscripció</string>
     <string name="quest_housenumber_street_number_optional">Número d'orientació (opcional)</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">També hi ha carril bici a l'altre costat…</string>
-    <string name="quest_openingHours_emptyAnswer">Cal que descriviu què hi ha al cartell. Si no hi ha cap cartell, hauríeu de demanar l'horari d'obertura en l'interior.</string>
     <string name="quest_cycleway_value_none_but_no_oneway">cap, però els ciclistes poden usar la via en ambdós sentits</string>
     <string name="quest_wheelchairAccess_description_toilets">Pot ser que un senyal de cadira de rodes com aquest sigui visible si el lavabo és accessible.
 Parcialment significa que una cadira de rodes pot entrar i utilitzar els lavabos, però no hi ha barana o un rentamans adaptat.</string>
@@ -467,7 +465,6 @@ Parcialment significa que una cadira de rodes pot entrar i utilitzar els lavabos
     <string name="privacy_html_image_upload2">&lt;p&gt;Les fotografies que adjunteu a una nota es carreguen al meu servidor i se suprimeixen uns dies després que la nota s'hagi resolt. Les metadades dels fitxers s'eliminen abans de pujar-los.&lt;/p&gt;</string>
     <string name="action_deselect_all">Desselecciona-ho tot</string>
     <string name="quest_buildingType_retail_description">incloent-hi els edificis de restaurants, cafès, botigues grans…</string>
-    <string name="quest_openingHours_timeSelect_next">Següent</string>
     <string name="quest_tracktype_title">Quina fermesa té la superfície d'aquesta pista?</string>
     <string name="quest_tracktype_grade1">Sòlida</string>
     <string name="quest_tracktype_grade4">Principalment tova</string>
@@ -493,7 +490,6 @@ Parcialment significa que una cadira de rodes pot entrar i utilitzar els lavabos
     <string name="action_open_location">Obre la ubicació en una altra aplicació</string>
     <string name="map_application_missing">No hi ha cap altra aplicació de mapes instal·lada</string>
     <string name="label_housenumber">número de casa</string>
-    <string name="label_blocknumber">número de bloc</string>
     <string name="quest_busStopShelter_covered">Cobreix tota la parada</string>
     <string name="quest_ferry_pedestrian_title">Aquesta ruta de ferri transporta vianants?</string>
     <string name="quest_ferry_motor_vehicle_title">Aquest ferri transporta vehicles a motor?</string>
@@ -1142,10 +1138,6 @@ Feu el mateix per a l'altre costat.</string>
     <string name="quest_camp_drinking_water_title">Els campistes poden beure aigua debades?</string>
     <string name="quest_camp_shower_title">Hi ha dutxes aquí?</string>
     <string name="quest_camp_power_supply_title">Els clients poden carregar ací el seu mòbil, portàtil, etc.?</string>
-    <string name="quest_camp_type_title">Qui hi pot acampar aquí?</string>
-    <string name="quest_camp_type_tents_and_caravans">Tant tendes com autocaravanes, caravanes, ...</string>
-    <string name="quest_camp_type_caravans_only">Només autocaravanes, caravanes, ...</string>
-    <string name="quest_camp_type_tents_only">Només tendes</string>
     <string name="quest_camp_type_backcountry">Zona d'acampada lliure (sense instal·lacions)</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">Aquest diàmetre sembla inversemblant, normalment es troba entre %1$d i %2$d.</string>
     <string name="street_parking_street_width">Amplada del carrer: %1$s</string>
@@ -1241,9 +1233,6 @@ Menejar ara?</string>
     <string name="street_parking_staggered_half_on_kerb">Parcialment al carrer alternant el costat</string>
     <string name="quest_traffic_signals_sound_description">Pista: Busca altaveus (poden ser grans o menuts). No sempre el so sona permanentment.</string>
     <string name="quest_presets_duplicate">Duplicat</string>
-    <string name="label_block">Bloc</string>
-    <string name="quest_address_answer_block">Es troba a un bloc...</string>
-    <string name="quest_address_answer_no_block">No és a un bloc...</string>
     <string name="quest_surface_value_mud">Fang persistent</string>
     <string name="quest_wheelchairAccessPat_noToilet">Aquí no hi ha lavabo</string>
     <string name="unknown_surface_title">Un altre tipus de superfície</string>

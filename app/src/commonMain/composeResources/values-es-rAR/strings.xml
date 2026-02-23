@@ -58,7 +58,6 @@
     <string name="about_title_privacy_statement">Declaración de privacidad</string>
     <string name="quest_openingHours_public_holidays">Feriados</string>
     <string name="quest_openingHours_public_holidays_short">Feriados</string>
-    <string name="quest_openingHours_open_end">Hora de cierre flexible</string>
     <string name="quest_openingHours_answer_247">Abierto todo el día</string>
     <string name="quest_openingHours_answer_seasonal_opening_hours">Depende del mes…</string>
     <string name="quest_openingHours_answer_no_regular_opening_hours">Sin horario de apertura fijo…</string>
@@ -313,7 +312,6 @@ Pero recordá que siempre podés descargar aplicaciones de teclado alternativas 
     <string name="quest_housenumber_conscription_number">Número de «conscripción»</string>
     <string name="quest_housenumber_street_number_optional">Número de «orientación» (opcional)</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">El carril bici va en ambos sentidos…</string>
-    <string name="quest_openingHours_emptyAnswer">Describí lo que dice el cartel. Si no ves nada podés preguntar los horarios adentro.</string>
     <string name="quest_cycleway_value_none_but_no_oneway">no hay nada, pero los ciclistas pueden ir por ambos sentidos del camino</string>
     <string name="quest_wheelchairAccess_description_toilets">Un cartel con una silla de ruedas como el que ves puede indicar que los baños están adaptados.
 Parcial significa que se puede entrar con la silla y usar los baños, pero sin barrales ni lavabos especiales.</string>
@@ -463,7 +461,6 @@ Parcial significa que se puede entrar con la silla y usar los baños, pero sin b
     <string name="privacy_html_image_upload2">&lt;p&gt;Las fotos que adjuntes a una nota se suben a mi servidor y se borran en cuestión de días tras su resolución. No se incluye ningún metadato en las fotos subidas.&lt;/p&gt;</string>
     <string name="action_deselect_all">Deseleccionar todo</string>
     <string name="quest_buildingType_retail_description">incluyendo edificios para restaurantes, cafés…</string>
-    <string name="quest_openingHours_timeSelect_next">Siguiente</string>
     <string name="quest_tracktype_title">¿Cuál es el nivel de rugosidad de este camino?</string>
     <string name="quest_tracktype_grade1">Firme</string>
     <string name="quest_tracktype_grade4">Bastante suave, un poco suelto</string>
@@ -489,7 +486,6 @@ Parcial significa que se puede entrar con la silla y usar los baños, pero sin b
     <string name="action_open_location">Abrir lugar en otra app</string>
     <string name="map_application_missing">No hay otra aplicación para mapas instalada</string>
     <string name="label_housenumber">número de casa</string>
-    <string name="label_blocknumber">número de manzana</string>
     <string name="quest_busStopShelter_covered">Toda la parada está cubierta</string>
     <string name="quest_ferry_pedestrian_title">¿Transporta personas?</string>
     <string name="quest_ferry_motor_vehicle_title">¿Transporta vehículos motorizados?</string>
@@ -1128,10 +1124,6 @@ También podés dejar una nota (con foto).</string>
     <string name="quest_camp_drinking_water_title">¿Hay agua potable gratuita para los huéspedes aquí?</string>
     <string name="quest_camp_shower_title">¿Tienen duchas?</string>
     <string name="quest_camp_power_supply_title">¿Los clientes pueden cargar sus celulares y dispositivos electrónicos?</string>
-    <string name="quest_camp_type_title">¿Quién puede acampar acá?</string>
-    <string name="quest_camp_type_tents_and_caravans">Tanto carpas como casas rodantes, motorhomes, …</string>
-    <string name="quest_camp_type_caravans_only">Solo casas rodantes, motorhomes, ...</string>
-    <string name="quest_camp_type_tents_only">Solo carpas</string>
     <string name="quest_camp_type_backcountry">Campamento al aire libre (sin instalaciones)</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">Este diámetro no parece muy realista, suele estar entre %1$d y %2$d.</string>
     <string name="street_parking_street_width">Ancho de la calle: %1$s</string>
@@ -1221,9 +1213,6 @@ También podés dejar una nota (con foto).</string>
     <string name="street_parking_staggered_half_on_kerb">Alternándose a ambos lados de la calzada, ocupando solo parte del camino</string>
     <string name="quest_traffic_signals_sound_description">Consejo: Buscá altavoces, tené en cuenta que hay otras señales auditivas más allá de las de apretar un botón.</string>
     <string name="quest_presets_duplicate">Duplicar</string>
-    <string name="label_block">manzana</string>
-    <string name="quest_address_answer_block">Está en una manzana</string>
-    <string name="quest_address_answer_no_block">No está en una manzana</string>
     <string name="quest_surface_value_mud">Embarrado todo el año</string>
     <string name="quest_wheelchairAccessPat_noToilet">Acá no hay ningún baño</string>
     <string name="unknown_surface_title">Otro tipo de superficie</string>

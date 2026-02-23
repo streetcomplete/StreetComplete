@@ -2,3 +2,4 @@
 atmOperators: [Wells Fargo, Zions Bank, U.S. Bank, Mountain America Credit Union, America First Credit Union, Chase, USU Credit Union, Bank of America]
 chargingStationOperators: [ChargePoint, 'Tesla, Inc.', Electrify America, brand=ChargePoint, Tesla, EVgo, Blink, brand=Tesla, Utah State University]
 defaultSpeedLimitHasUrbanOrRural: true
+parcelLockerBrand: [Parcel Pending]

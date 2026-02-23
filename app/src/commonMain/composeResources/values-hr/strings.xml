@@ -58,7 +58,6 @@
     <string name="about_title_privacy_statement">Politika privatnosti</string>
     <string name="quest_openingHours_public_holidays">Državnim praznicima</string>
     <string name="quest_openingHours_public_holidays_short">Praznik</string>
-    <string name="quest_openingHours_open_end">fleksibilan kraj</string>
     <string name="quest_openingHours_answer_247">Otvoreno 24/7</string>
     <string name="quest_openingHours_answer_seasonal_opening_hours">Ovisi o mjesecu…</string>
     <string name="quest_openingHours_answer_no_regular_opening_hours">Nema redovno radno vrijeme…</string>
@@ -315,7 +314,6 @@ U suprotnom možete preuzeti drugu tipkovnicu u trgovini aplikacija. Popularne t
     <string name="quest_housenumber_conscription_number">Konskripcijski broj</string>
     <string name="quest_housenumber_street_number_optional">Orijentacijski broj (neobavezno)</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">I s druge strane je biciklistička staza…</string>
-    <string name="quest_openingHours_emptyAnswer">Trebate opisati što je na znaku. Ako nema oznake, pitajte za radno vrijeme unutra.</string>
     <string name="quest_cycleway_value_none_but_no_oneway">ne postoji, ali biciklisti smiju koristiti cestu u oba smjera</string>
     <string name="quest_wheelchairAccess_description_toilets">Ovakav znak za invalidska kolica bi mogao biti vidljiv ako je toalet pristupačan za invalidska kolica.
 "Djelomično" znači da invalidska kolica mogu ući i koristiti toalet, ali da nema rukohvata ili prilagođenog umivaonika.</string>
@@ -465,7 +463,6 @@ U suprotnom možete preuzeti drugu tipkovnicu u trgovini aplikacija. Popularne t
     <string name="privacy_html_image_upload2">&lt;p&gt;Slike koje priložite bilješci prenose se na moj poslužitelj i brišu nekoliko dana nakon što je bilješka riješena. Njihovi se metapodaci uklanjaju prije prijenosa.&lt;/p&gt;</string>
     <string name="action_deselect_all">Isključi sve odabire</string>
     <string name="quest_buildingType_retail_description">uključujući zgrade za restorane, kafiće, trgovine…</string>
-    <string name="quest_openingHours_timeSelect_next">Dalje</string>
     <string name="quest_tracktype_title">Kakva je čvrstoća podloge ove staze?</string>
     <string name="quest_tracktype_grade1">Popločana/Asfaltirana</string>
     <string name="quest_tracktype_grade4">Uglavnom mekana</string>
@@ -491,7 +488,6 @@ U suprotnom možete preuzeti drugu tipkovnicu u trgovini aplikacija. Popularne t
     <string name="action_open_location">Otvori lokaciju u drugom programu</string>
     <string name="map_application_missing">Nije instalirana nijedna druga aplikacija za karte</string>
     <string name="label_housenumber">kućni broj</string>
-    <string name="label_blocknumber">broj bloka</string>
     <string name="quest_busStopShelter_covered">Cijela stanica je natkrivena</string>
     <string name="quest_ferry_pedestrian_title">Prevozi li ova brodska linija ruta pješake?</string>
     <string name="quest_ferry_motor_vehicle_title">Prevozi li ova trajektna linija motorna vozila?</string>
@@ -1140,10 +1136,6 @@ Učinite isto za drugu stranu ako je prikazana na ekranu.</string>
     <string name="quest_camp_drinking_water_title">Je li pitka voda ovdje besplatno dostupna kamperima?</string>
     <string name="quest_camp_shower_title">Ima li ovdje tuševa?</string>
     <string name="quest_camp_power_supply_title">Postoji li način da korisnici ovdje napune svoj telefon, prijenosno računalo itd.?</string>
-    <string name="quest_camp_type_title">Tko ovdje može kampirati?</string>
-    <string name="quest_camp_type_tents_and_caravans">I šatori i motorne kuće/prikolice/…</string>
-    <string name="quest_camp_type_caravans_only">Samo motorne kuće/prikolice/…</string>
-    <string name="quest_camp_type_tents_only">Samo šatori</string>
     <string name="quest_camp_type_backcountry">Zabačeno kampiranje (bez objekata)</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">Toliki promjer izgleda nerealno; obično je između %1$d i %2$d.</string>
     <string name="street_parking_street_width">Širina ulice: %1$s</string>
@@ -1234,9 +1226,6 @@ Pomaknuti sada?</string>
     <string name="street_parking_staggered_half_on_kerb">Djelomično na cesti (naizmjence na jednoj pa na drugoj strani ceste)</string>
     <string name="quest_traffic_signals_sound_description">Savjet: potražite zvučnike. Ne aktiviraju se svi zvučni signali pritiskom na gumb.</string>
     <string name="quest_presets_duplicate">Dupliciraj</string>
-    <string name="label_block">blok</string>
-    <string name="quest_address_answer_block">Nalazi se unutar bloka…</string>
-    <string name="quest_address_answer_no_block">Nije unutar bloka…</string>
     <string name="quest_surface_value_mud">Postojano blato</string>
     <string name="quest_wheelchairAccessPat_noToilet">Ovdje nema toaleta</string>
     <string name="unknown_surface_title">Nepoznata vrsta površine</string>

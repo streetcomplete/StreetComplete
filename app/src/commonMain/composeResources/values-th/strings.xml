@@ -58,7 +58,6 @@
     <string name="about_title_privacy_statement">ประกาศความเป็นส่วนตัว</string>
     <string name="quest_openingHours_public_holidays">วันหยุดนักขัตฤกษ์</string>
     <string name="quest_openingHours_public_holidays_short">วันหยุด</string>
-    <string name="quest_openingHours_open_end">ปลายเปิด</string>
     <string name="quest_openingHours_answer_247">เปิด 24 ชั่วโมง</string>
     <string name="quest_openingHours_answer_seasonal_opening_hours">ต่างกันในแต่ละเดือน…</string>
     <string name="quest_openingHours_answer_no_regular_opening_hours">ไม่มีเวลาเปิด-ปิด ที่แน่นอน…</string>
@@ -314,7 +313,6 @@
     <string name="quest_housenumber_conscription_number">หมายเลข conscription</string>
     <string name="quest_housenumber_street_number_optional">หมายเลข orientation (ไม่บังคับ)</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">และมีทางจักรยานอีกฝั่ง…</string>
-    <string name="quest_openingHours_emptyAnswer">คุณต้องบรรยายสิ่งที่อยู่บนป้าย หากไม่มีป้ายให้ถามเวลาทำการด้านใน</string>
     <string name="quest_cycleway_value_none_but_no_oneway">ไม่มี แต่นักปั่นใช้ถนนได้ทั้งสองทิศทาง</string>
     <string name="quest_wheelchairAccess_description_toilets">อาจมีป้ายรถเข็นแบบนี้ถ้าห้องน้ำสามารถใช้รถเข็นเข้าถึงได้
 บางส่วน หมายถึงรถเข็นสามารถเข้าถึงและใช้ห้องน้ำได้ แต่ไม่มีราวจับหรืออ่างล้างพิเศษ</string>
@@ -464,7 +462,6 @@
     <string name="privacy_html_image_upload2">&lt;p&gt;รูปภาพที่คุณแนบไปกับหมายเหตุจะถูกอัปโหลดไปยังเซิร์ฟเวอร์ของฉันและจะถูกลบหลังจากแก้ไขบันทึกดังกล่าวในไม่กี่วัน ข้อมูลเมตาจะถูกตัดออกก่อนที่จะทำการอัปโหลด&lt;/p&gt;</string>
     <string name="action_deselect_all">ยกเลิกการเลือกทั้งหมด</string>
     <string name="quest_buildingType_retail_description">รวมถึงอาคารร้านอาหาร ร้านกาแฟ …</string>
-    <string name="quest_openingHours_timeSelect_next">ถัดไป</string>
     <string name="quest_tracktype_title">ความแน่นของพื้นผิวของแทร็กนี้คืออะไร?</string>
     <string name="quest_tracktype_grade1">แข็ง</string>
     <string name="quest_tracktype_grade4">อ่อนโดยรวม</string>
@@ -490,7 +487,6 @@
     <string name="action_open_location">เปิดตำแหน่งในแอปอื่น</string>
     <string name="map_application_missing">ไม่มีโปรแกรมแผนที่อื่นๆในระบบ</string>
     <string name="label_housenumber">หมายเลขบ้าน</string>
-    <string name="label_blocknumber">หมายเลขช่วงตึก</string>
     <string name="quest_busStopShelter_covered">มีหลังคาคลุมพื้นที่ป้ายทั้งหมด</string>
     <string name="quest_ferry_pedestrian_title">เรือข้ามฟากนี้ขนส่งคนเดินเท้าหรือไม่?</string>
     <string name="quest_ferry_motor_vehicle_title">เรือข้ามฟากนี้ขนส่งยานยนต์หรือไม่?</string>
@@ -1130,10 +1126,6 @@
     <string name="quest_camp_drinking_water_title">น้ำดื่มสามารถใช้ได้ฟรีสำหรับผู้ที่ตั้งแคมป์ที่นี่หรือไม่?</string>
     <string name="quest_camp_shower_title">ที่นี่มีที่อาบน้ำหรือไม่?</string>
     <string name="quest_camp_power_supply_title">ลูกค้าสามารถชาร์จโทรศัพท์, โน้ตบุ๊ก หรืออุปกรณ์ต่างๆ ที่นี่หรือไม่?</string>
-    <string name="quest_camp_type_title">ใครสามารถตั้งแคมป์ที่นี่ได้?</string>
-    <string name="quest_camp_type_tents_and_caravans">ทั้งเต็นท์และรถบ้าน, รถพ่วงท่องเที่ยว, ...</string>
-    <string name="quest_camp_type_caravans_only">เฉพาะบ้านเคลื่อนที่, รถพาหนะท่องเที่ยว, ...</string>
-    <string name="quest_camp_type_tents_only">เต็นท์เท่านั้น</string>
     <string name="quest_camp_type_backcountry">การตั้งแคมป์แบบไร้สิ่งอำนวยความสะดวก (ที่กันดาร)</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">เส้นผ่านศูนย์กลางนี้ดูไม่น่าเชื่อ โดยปกติแล้วจะอยู่ระหว่าง %1$d ถึง %2$d</string>
     <string name="street_parking_street_width">ความกว้างถนน: %1$s</string>
@@ -1224,9 +1216,6 @@
     <string name="street_parking_staggered_half_on_kerb">บางส่วนบนถนนในทางสลับด้าน</string>
     <string name="quest_traffic_signals_sound_description">คำแนะนำ: มองหาลำโพง สัญญาณเสียงทั้งหมดไม่สามารถเปิดใช้งานผ่านปุ่มได้</string>
     <string name="quest_presets_duplicate">ทำสำเนา</string>
-    <string name="label_block">บล็อก</string>
-    <string name="quest_address_answer_block">อยู่ภายในบล็อก...</string>
-    <string name="quest_address_answer_no_block">ไม่อยู่ภายในบล็อก...</string>
     <string name="quest_surface_value_mud">เป็นโคลนตลอดเวลา</string>
     <string name="quest_wheelchairAccessPat_noToilet">ที่นี่ไม่มีห้องน้ำ</string>
     <string name="unknown_surface_title">พื้นผิวประเภทอื่น</string>

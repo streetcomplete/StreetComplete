@@ -58,7 +58,6 @@
     <string name="about_title_privacy_statement">Politika privatnosti</string>
     <string name="quest_openingHours_public_holidays">Državni praznici</string>
     <string name="quest_openingHours_public_holidays_short">Praznik</string>
-    <string name="quest_openingHours_open_end">otvoreni kraj</string>
     <string name="quest_openingHours_answer_247">Otvoreno 24/7</string>
     <string name="quest_openingHours_answer_seasonal_opening_hours">Zavisi od mjeseca…</string>
     <string name="quest_openingHours_answer_no_regular_opening_hours">Nema standardno otvoreno vrijeme</string>
@@ -316,7 +315,6 @@ U suprotnom možete preuzeti drugu tipkovnicu u trgovini aplikacija. Popularne t
     <string name="quest_housenumber_conscription_number">Konskripcijski broj</string>
     <string name="quest_housenumber_street_number_optional">Orijentacijski broj (neobavezno)</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">I s druge strane je biciklistička staza…</string>
-    <string name="quest_openingHours_emptyAnswer">Trebate opisati što je na znaku. Ako nema oznake, pitajte za radno vrijeme unutra.</string>
     <string name="quest_cycleway_value_none_but_no_oneway">ne postoji, ali biciklisti smiju koristiti cestu u oba smjera</string>
     <string name="quest_wheelchairAccess_description_toilets">Ovakav znak za invalidska kolica bi mogao biti vidljiv ako je toalet pristupačan za invalidska kolica.
 "Djelimično" znači da invalidska kolica mogu ući i koristiti toalet, ali da nema rukohvata ili prilagođenog umivaonika.</string>
@@ -468,7 +466,6 @@ U suprotnom možete preuzeti drugu tipkovnicu u trgovini aplikacija. Popularne t
     <string name="privacy_html_image_upload2">&lt;p&gt;Slike koje priložite bilješci prenose se na moj serverj i brišu nekoliko dana nakon što je bilješka riješena. Njihovi se metapodaci uklanjaju prije prijenosa.&lt;/p&gt;</string>
     <string name="action_deselect_all">Isključi sve odabire</string>
     <string name="quest_buildingType_retail_description">uključujući zgrade za restorane, kafiće, …</string>
-    <string name="quest_openingHours_timeSelect_next">Dalje</string>
     <string name="quest_tracktype_title">Kakva je čvrstoća podloge ove staze?</string>
     <string name="quest_tracktype_grade1">Popločana</string>
     <string name="quest_tracktype_grade4">Uglavnom mekana</string>
@@ -494,7 +491,6 @@ U suprotnom možete preuzeti drugu tipkovnicu u trgovini aplikacija. Popularne t
     <string name="action_open_location">Otvori lokaciju u drugom programu</string>
     <string name="map_application_missing">Nije instalirana nijedna druga aplikacija za karte</string>
     <string name="label_housenumber">kućni broj</string>
-    <string name="label_blocknumber">broj bloka</string>
     <string name="quest_busStopShelter_covered">Cijela stanica je natkrivena</string>
     <string name="quest_ferry_pedestrian_title">Prevozi li ova trajektna ruta pješake?</string>
     <string name="quest_ferry_motor_vehicle_title">Prevozi li ova trajektna ruta motorna vozila?</string>

@@ -58,7 +58,6 @@
     <string name="about_title_privacy_statement">Изјава о приватности</string>
     <string name="quest_openingHours_public_holidays">Државним празницима</string>
     <string name="quest_openingHours_public_holidays_short">Празник</string>
-    <string name="quest_openingHours_open_end">флексибилан крај</string>
     <string name="quest_openingHours_answer_247">Отворено 24 ч.</string>
     <string name="quest_openingHours_answer_seasonal_opening_hours">Зависи од месеца…</string>
     <string name="quest_openingHours_answer_no_regular_opening_hours">Нема редовно радно време…</string>
@@ -316,7 +315,6 @@
     <string name="quest_housenumber_conscription_number">Број у насељу</string>
     <string name="quest_housenumber_street_number_optional">Оријентациони број (необавезно)</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">И са друге стране је бициклистичка стаза…</string>
-    <string name="quest_openingHours_emptyAnswer">Морате описати шта је на знаку. Ако га нема, питајте унутра за радно време.</string>
     <string name="quest_cycleway_value_none_but_no_oneway">не постоји, али бициклисти могу користити пут у оба смера</string>
     <string name="quest_wheelchairAccess_description_toilets">Овакав знак може бити видљив уколико је тоалет доступан за инвалидска колица.
 „Делимично“ значи да инвалидска колица могу ући и користити тоалет, али да нема рукохвата или прилагођеног лавабоа.</string>
@@ -466,7 +464,6 @@
     <string name="privacy_html_image_upload2">&lt;p&gt;Приложене фотографије уз напомену се шаљу на мој сервер и бришу пар дана након што се напомена реши. Метаподаци из њих се бришу пре слања.&lt;/p&gt;</string>
     <string name="action_deselect_all">Поништи сав избор</string>
     <string name="quest_buildingType_retail_description">обухвата објекте ресторана, кафића…</string>
-    <string name="quest_openingHours_timeSelect_next">Даље</string>
     <string name="quest_tracktype_title">Каква је чврстоћа површине ове стазе?</string>
     <string name="quest_tracktype_grade1">Чврста</string>
     <string name="quest_tracktype_grade4">Углавном мекана</string>
@@ -492,7 +489,6 @@
     <string name="action_open_location">Отвори локацију у другом програму</string>
     <string name="map_application_missing">Ниједан програм за карте није инсталиран</string>
     <string name="label_housenumber">кућни број</string>
-    <string name="label_blocknumber">број блока</string>
     <string name="quest_busStopShelter_covered">Цело стајалиште је наткривено</string>
     <string name="quest_ferry_pedestrian_title">Да ли ова линија трајекта превози пешаке?</string>
     <string name="quest_ferry_motor_vehicle_title">Да ли ова линија трајекта превози моторна возила?</string>
@@ -1136,10 +1132,6 @@
     <string name="quest_camp_drinking_water_title">Да ли је пијаћа вода бесплатно доступна камперима?</string>
     <string name="quest_camp_shower_title">Постоје ли тушеви?</string>
     <string name="quest_camp_power_supply_title">Постоји ли начин да корисници овде допуне свој телефон, лаптоп и сл.?</string>
-    <string name="quest_camp_type_title">Ко овде може да кампује?</string>
-    <string name="quest_camp_type_tents_and_caravans">И шатори и кампери, камп приколице, …</string>
-    <string name="quest_camp_type_caravans_only">Само кампери, камп приколице, …</string>
-    <string name="quest_camp_type_tents_only">Само шатори</string>
     <string name="quest_camp_type_backcountry">Забачено камповање (без објеката)</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">Овај промер изгледа нереално, обично је између %1$d и %2$d.</string>
     <string name="street_parking_street_width">Ширина улице: %1$s</string>
@@ -1229,9 +1221,6 @@
     <string name="street_parking_staggered_half_on_kerb">Делимично на улици са супротне стране</string>
     <string name="quest_traffic_signals_sound_description">Савет: Потражите звучнике. Не могу се сви звучни сигнали активирати на дугме.</string>
     <string name="quest_presets_duplicate">Направи дупликат</string>
-    <string name="label_block">блок</string>
-    <string name="quest_address_answer_block">У кругу блока…</string>
-    <string name="quest_address_answer_no_block">Није у кругу блока…</string>
     <string name="quest_surface_value_mud">Постојано блато</string>
     <string name="quest_wheelchairAccessPat_noToilet">Овде нема тоалета</string>
     <string name="unknown_surface_title">Други тип подлоге</string>

@@ -58,7 +58,6 @@
     <string name="about_title_privacy_statement">"Deklaracio pri privateco"</string>
     <string name="quest_openingHours_public_holidays">"Feriaj tagoj"</string>
     <string name="quest_openingHours_public_holidays_short">"Feria tago"</string>
-    <string name="quest_openingHours_open_end">"kiam lasta homo eliras"</string>
     <string name="quest_openingHours_answer_247">"Ĉiam malfermas"</string>
     <string name="quest_openingHours_answer_seasonal_opening_hours">"Ŝanĝiĝas laŭ monato…"</string>
     <string name="quest_openingHours_answer_no_regular_opening_hours">"Ne estas fiksaj malfermohoroj…"</string>
@@ -316,7 +315,6 @@ Alie, vi povas alŝuti alian klavaron de aplikaĵvendejo. Popularaj klavaroj, ki
     <string name="quest_housenumber_conscription_number">"Konsskriba Numero"</string>
     <string name="quest_housenumber_street_number_optional">"Orientiĝa numero (nedeviga)"</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">"Ankaŭ biciklovojo aliflanke…"</string>
-    <string name="quest_openingHours_emptyAnswer">"Vi devas priskribi kio estas sur la signo. Se ne estas signo, vi devus peti la malfermajn horojn ene."</string>
     <string name="quest_cycleway_value_none_but_no_oneway">"Neniu, sed biciklantoj povas uzi vojon en ambaŭ direktoj"</string>
     <string name="quest_wheelchairAccess_description_toilets">"Rulseĝa signo kiel ĉi tio povus esti videbla se la ripozejo estas alirebla.
 Parte signifas, ke rulseĝo povas eniri kaj uzi la ripozejon, sed neniu manplato aŭ adaptita manbaseno ĉeestas."</string>
@@ -466,7 +464,6 @@ Parte signifas, ke rulseĝo povas eniri kaj uzi la ripozejon, sed neniu manplato
     <string name="privacy_html_image_upload2">"&lt;p&gt; Fotoj, kiujn vi ligas al noto, estas alŝutitaj al mia servilo kaj forigitaj kelkajn tagojn post kiam tiu noto estis solvita. Iliaj meta-datumoj estas senvestigitaj antaŭ alŝuto. &lt;/p&gt;"</string>
     <string name="action_deselect_all">"Malelekti ĉiujn"</string>
     <string name="quest_buildingType_retail_description">"Inkludante konstruaĵojn por restoracioj, kafejoj, grandaj butikoj …"</string>
-    <string name="quest_openingHours_timeSelect_next">"Sekva"</string>
     <string name="quest_tracktype_title">"Kio estas la surfaca firmeco de ĉi tiu trako?"</string>
     <string name="quest_tracktype_grade1">"Firma"</string>
     <string name="quest_tracktype_grade4">"Plejparte malfirma"</string>
@@ -492,7 +489,6 @@ Parte signifas, ke rulseĝo povas eniri kaj uzi la ripozejon, sed neniu manplato
     <string name="action_open_location">"Malfermi lokon en alia aplikaĵo"</string>
     <string name="map_application_missing">"Neniu alia mapo-aplikaĵo instalita"</string>
     <string name="label_housenumber">"domnumero"</string>
-    <string name="label_blocknumber">"dombloknumero"</string>
     <string name="quest_busStopShelter_covered">"La tuta haltejo estas kovrita"</string>
     <string name="quest_ferry_pedestrian_title">"Ĉu ĉi tiu pramvojo transportas piedirantojn?"</string>
     <string name="quest_ferry_motor_vehicle_title">"Ĉu ĉi tiu pramvojo transportas motorveturilojn?"</string>
@@ -1123,10 +1119,6 @@ Faru la samon por la alia flanko, se ĝi ĉeestas."</string>
     <string name="quest_camp_drinking_water_title">"Ĉu trinkakvo estas libere havebla al kamploĝantoj ĉi tie?"</string>
     <string name="quest_camp_shower_title">"Ĉu estas duŝoj ĉi tie?"</string>
     <string name="quest_camp_power_supply_title">"Ĉu ekzistas iu maniero por klientoj ŝarĝi sian telefonon, tekkomputilon ktp ĉi tie?"</string>
-    <string name="quest_camp_type_title">"Kiu tendumus ĉi tie?"</string>
-    <string name="quest_camp_type_tents_and_caravans">"Kaj tendoj kaj kampadveturiloj, ruldomoj, …"</string>
-    <string name="quest_camp_type_caravans_only">"Nur kampadveturiloj, ruldomoj, …"</string>
-    <string name="quest_camp_type_tents_only">"Nur tendoj"</string>
     <string name="quest_camp_type_backcountry">"Sovaĝa tendaro (sen servejoj)"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Ĉi tiu diametro aspektas neplaĉebla, ĝi kutime estas inter %1$d kaj %2$d."</string>
     <string name="street_parking_street_width">"Strata larĝo: %1$s"</string>
@@ -1211,9 +1203,6 @@ Movu ĝin nun?"</string>
     <string name="street_parking_staggered_half_on_kerb">"Parte sur la vojo ĉe alternaj flankoj"</string>
     <string name="quest_traffic_signals_sound_description">"Avizo: Rigardu ĉu estas laŭtparoliloj ĉe la semaforo. Sona signalo ne ĉiam estas ŝaltebla per butono."</string>
     <string name="quest_presets_duplicate">"Kopii"</string>
-    <string name="label_block">"dombloko"</string>
-    <string name="quest_address_answer_block">"Ĝi estas parto de dombloko…"</string>
-    <string name="quest_address_answer_no_block">"Ĝi ne estas parto de dombloko…"</string>
     <string name="quest_surface_value_mud">"Ŝlimo"</string>
     <string name="quest_wheelchairAccessPat_noToilet">"Ne estas necesejo ĉi tie"</string>
     <string name="unknown_surface_title">"Alia tipo de surfaco"</string>

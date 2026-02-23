@@ -58,7 +58,6 @@
     <string name="about_title_privacy_statement">Gizlilik beyanı</string>
     <string name="quest_openingHours_public_holidays">Resmi tatiller</string>
     <string name="quest_openingHours_public_holidays_short">RT</string>
-    <string name="quest_openingHours_open_end">kapanış saati</string>
     <string name="quest_openingHours_answer_247">7/24 açık</string>
     <string name="quest_openingHours_answer_seasonal_opening_hours">Aydan aya değişiyor…</string>
     <string name="quest_openingHours_answer_no_regular_opening_hours">Düzenli açılış saatleri yok…</string>
@@ -316,7 +315,6 @@ Vurgulu alandaki cadde boyunca hiçbir işaret yoksa varsayılan hız sınırlar
     <string name="quest_housenumber_conscription_number">Kapı numarası</string>
     <string name="quest_housenumber_street_number_optional">Oryantasyon numarası (isteğe bağlı)</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">Ayrıca karşı tarafta bisiklet yolu var…</string>
-    <string name="quest_openingHours_emptyAnswer">Tabelada ne olduğunu açıklaman gerekiyor.  İşareti yoksa, içerideki açılış saatlerini sormalısınız.</string>
     <string name="quest_cycleway_value_none_but_no_oneway">Yok ama bisikletliler bu yolu çift yönlü kullanabilir</string>
     <string name="quest_wheelchairAccess_description_toilets">Tuvalet erişilebilir ise, bunun gibi bir tekerlekli sandalye işareti görülebilir.
      Kısmen tekerlekli sandalyenin tuvalete girip kullanabileceği anlamına gelir, ancak parmaklık veya adapte edilmiş el havzası yoktur.</string>
@@ -467,7 +465,6 @@ Vurgulu alandaki cadde boyunca hiçbir işaret yoksa varsayılan hız sınırlar
     <string name="privacy_html_image_upload2">&lt;p&gt;Bir nota eklediğiniz fotoğraflar sunucuma yüklenir ve bu not çözüldükten birkaç gün sonra silinir. Yüklemeden önce meta verileri silinir.&lt;/p&gt;</string>
     <string name="action_deselect_all">Hiçbirini seçme</string>
     <string name="quest_buildingType_retail_description">restoranlar, kafeler vb. binalar dahil</string>
-    <string name="quest_openingHours_timeSelect_next">İleri</string>
     <string name="quest_tracktype_title">Bu patikanın sertliğin nasıl?</string>
     <string name="quest_tracktype_grade1">Katı</string>
     <string name="quest_tracktype_grade4">Çoğunlukla yumuşak</string>
@@ -493,7 +490,6 @@ Vurgulu alandaki cadde boyunca hiçbir işaret yoksa varsayılan hız sınırlar
     <string name="action_open_location">Konumu başka bir uygulamada aç</string>
     <string name="map_application_missing">Yüklenmiş başka harita uygulaması yok</string>
     <string name="label_housenumber">ev numarası</string>
-    <string name="label_blocknumber">blok numarası</string>
     <string name="quest_busStopShelter_covered">Durağın üstü kapalı</string>
     <string name="quest_ferry_pedestrian_title">Bu feribot yayaları taşıyor mu?</string>
     <string name="quest_ferry_motor_vehicle_title">Bu feribot motorlu taşıtları taşıyor mu?</string>
@@ -1136,10 +1132,6 @@ Alternatif olarak, bir not bırakabilirsin (fotoğrafla beraber).</string>
     <string name="quest_camp_drinking_water_title">Bu içme suyu kampçılar için ücretsiz mi?</string>
     <string name="quest_camp_shower_title">Burada duş alma yeri var mı?</string>
     <string name="quest_camp_power_supply_title">Burada misafirlerin kullanabileceği elektrik prizleri var mı?</string>
-    <string name="quest_camp_type_title">Burada kim kamp yapabilir?</string>
-    <string name="quest_camp_type_tents_and_caravans">Çadırlar ve karavanlar</string>
-    <string name="quest_camp_type_caravans_only">Sadece karavanlar</string>
-    <string name="quest_camp_type_tents_only">Yalnızca çadırlar</string>
     <string name="quest_camp_type_backcountry">Dağ kampı (tesis yok)</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">Bu çap değeri mantıksız gibi, genelde %1$d ile %2$d arasında olur.</string>
     <string name="street_parking_street_width">Sokak genişliği: %1$s</string>
@@ -1229,9 +1221,6 @@ Alternatif olarak, bir not bırakabilirsin (fotoğrafla beraber).</string>
     <string name="street_parking_staggered_half_on_kerb">Yarı cadde üstü belirli yerlerde</string>
     <string name="quest_traffic_signals_sound_description">İpucu: Hoparlörlere dikkat edin. Bazı sesli yönergeler buton ile aktive edilemeyebilir.</string>
     <string name="quest_presets_duplicate">Kopyala</string>
-    <string name="label_block">engel</string>
-    <string name="quest_address_answer_block">Bir sitenin bloğu içerisinde</string>
-    <string name="quest_address_answer_no_block">Site içerisinde değil</string>
     <string name="quest_surface_value_mud">Kurumuş çamur</string>
     <string name="quest_wheelchairAccessPat_noToilet">Burada tuvalet yok</string>
     <string name="unknown_surface_title">Başka tür zemin</string>

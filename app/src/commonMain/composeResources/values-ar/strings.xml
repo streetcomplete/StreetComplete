@@ -58,7 +58,6 @@
     <string name="about_title_privacy_statement">بيان الخصوصية</string>
     <string name="quest_openingHours_public_holidays">الإجازات رسمية</string>
     <string name="quest_openingHours_public_holidays_short">الأجازات الرسمية</string>
-    <string name="quest_openingHours_open_end">الفتح والإغلاق</string>
     <string name="quest_openingHours_answer_247">مفتوح 24/7 (مفتوح دائما وخلال جميع أيام الأسبوع)</string>
     <string name="quest_openingHours_answer_seasonal_opening_hours">يختلف حسب الشهر…</string>
     <string name="quest_openingHours_answer_no_regular_opening_hours">ليست ساعات عمل معتادة…</string>
@@ -319,7 +318,6 @@
     <string name="quest_housenumber_conscription_number">رقم التجنيد</string>
     <string name="quest_housenumber_street_number_optional">رقم التوجيه (اختياري)</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">مسار دراجات على الجانب الآخر أيضًا…</string>
-    <string name="quest_openingHours_emptyAnswer">يجب أن تصف ما هو على اللافتة. إذا لم تكن هناك لافتة، يجب أن تسأل عن ساعات العمل في الداخل.</string>
     <string name="quest_cycleway_value_none_but_no_oneway">لا شيء، ولكن يمكن لراكبي الدراجات استخدام الطريق في كلا الاتجاهين</string>
     <string name="quest_wheelchairAccess_description_toilets">قد يكون الرسم التخطيطي لمستخدم الكرسي المتحرك مثل هذا مرئيًا إذا كان من الممكن الوصول إلى الحمامات.
 تعني كلمة "جزئيًا" أن الكرسي المتحرك يمكنه دخول المرحاض واستخدامه، ولكن لا يوجد درابزين أو حوض مناسب.</string>
@@ -469,7 +467,6 @@
     <string name="privacy_html_image_upload2">&lt;p&gt; يتم رفع الصور التي ترفقها بملاحظة إلى خادمي وحذفها بعد بضعة أيام من حل هذه الملاحظة. يتم تجريد البيانات الوصفية الخاصة بهم قبل الرفع. &lt;/ p&gt;</string>
     <string name="action_deselect_all">الغاء تحديد الكل</string>
     <string name="quest_buildingType_retail_description">بما في ذلك مباني المطاعم والمقاهي والمتاجر الكبرى …</string>
-    <string name="quest_openingHours_timeSelect_next">التالي</string>
     <string name="quest_tracktype_title">ما مدى صلابة سطح هذا المسار؟</string>
     <string name="quest_tracktype_grade1">مرصوف/معبد</string>
     <string name="quest_tracktype_grade4">مستوي في الغالب وهو مسار عبر الحصى/صخور المختلطة مع بعض المواد اللينة</string>
@@ -495,7 +492,6 @@
     <string name="action_open_location">افتح الموقع في تطبيق آخر</string>
     <string name="map_application_missing">لا يوجد تطبيق خرائط آخر مثبت</string>
     <string name="label_housenumber">رقم المنزل</string>
-    <string name="label_blocknumber">رقم المربع (البلوك)</string>
     <string name="quest_busStopShelter_covered">تم تغطية محطة الحافلات بالكامل</string>
     <string name="quest_ferry_pedestrian_title">هل هذه العَبارة تنقل المشاة؟</string>
     <string name="quest_ferry_motor_vehicle_title">هل هذه العَبارة تنقل السيارات؟</string>
@@ -1143,10 +1139,6 @@
 </string>
     <string name="quest_camp_shower_title">هل يوجد أدواش هنا؟</string>
     <string name="quest_camp_power_supply_title">هل يوجد طريقة ليقوم الزبائن بشحن هواتفهم أو حواسبهم المحمولة أو ... هنا؟</string>
-    <string name="quest_camp_type_title">من يسمح له التخييم هنا؟</string>
-    <string name="quest_camp_type_tents_and_caravans">كل من الخيام والبيوت المتنقلة ، ومقطورات السفر ، ...</string>
-    <string name="quest_camp_type_caravans_only">فقط بيوت المتنقلة ، مقطورات السفر ، ...</string>
-    <string name="quest_camp_type_tents_only">خيام فقط</string>
     <string name="quest_camp_type_backcountry">التخييم في Backcountry (لا توجد مرافق)</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">هذا القطر يبدو غير صحيح، إنه عادةً بين %1$d و %2$d.</string>
     <string name="street_parking_street_width">عرض الشارع: %1$s</string>
@@ -1237,9 +1229,6 @@
     <string name="street_parking_staggered_half_on_kerb">في الشارع على الجانبين بالتناوب بشكل جزئي</string>
     <string name="quest_traffic_signals_sound_description">تلميحة: ابحث عن مكبرات صوت، حيث أنه ليست كل الإشارات الصوتية تفعل عن طريق زر.</string>
     <string name="quest_presets_duplicate">استنسخ</string>
-    <string name="label_block">مربع سكني</string>
-    <string name="quest_address_answer_block">إنه على بعد مربع سكني...</string>
-    <string name="quest_address_answer_no_block">ليست ضمن مربع سكني...</string>
     <string name="quest_surface_value_mud">وحل متواصل</string>
     <string name="quest_wheelchairAccessPat_noToilet">لا توجد دورات مياه هنا</string>
     <string name="unknown_surface_title">نوع آخر من الأسطح</string>

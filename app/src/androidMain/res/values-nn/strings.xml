@@ -58,7 +58,6 @@
     <string name="about_title_privacy_statement">"Personvernerklæring"</string>
     <string name="quest_openingHours_public_holidays">"Offentlege fridagar"</string>
     <string name="quest_openingHours_public_holidays_short">"OF"</string>
-    <string name="quest_openingHours_open_end">"Ikkje fast stengjetid"</string>
     <string name="quest_openingHours_answer_247">"Open 24/7"</string>
     <string name="quest_openingHours_answer_seasonal_opening_hours">"Varierer frå månad til månad …"</string>
     <string name="quest_openingHours_answer_no_regular_opening_hours">"Ingen faste opningstider …"</string>
@@ -307,7 +306,6 @@ Appen kommuniserer direkte med OSM-tenarane.&lt;br/&gt;Før appen lastar opp end
     <string name="quest_housenumber_conscription_number">"Konskripsjons-nummer"</string>
     <string name="quest_housenumber_street_number_optional">"Orienterings-nummer (valfritt)"</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">"Òg sykkelveg på motsett side …"</string>
-    <string name="quest_openingHours_emptyAnswer">"Du må skildra kva som står på skiltet. Viss det ikkje finst noko skilt, kan du prøva å spørja om opningstidene inne."</string>
     <string name="quest_cycleway_value_none_but_no_oneway">"ingen, men syklistar kan bruka vegen i begge retningar"</string>
     <string name="quest_wheelchairAccess_description_toilets">"Viss toaletta er tilgjengelege for rullestolbrukarar, står det gjerne eit slikt skilt. Delvis tyder at ein rullestolbrukar kan komma seg inn på og bruka toalettet men at det ikkje er tilrettelagt med støttehandtak eller tilpassa handvask."</string>
     <string name="map_btn_create_note">"Legg til ny merknad"</string>
@@ -456,7 +454,6 @@ Appen kommuniserer direkte med OSM-tenarane.&lt;br/&gt;Før appen lastar opp end
     <string name="privacy_html_image_upload2">"&lt;p&gt;Eventuelle foto som du legg ved, vert lasta opp til tenaren min og sletta nokre dagar etter at merknaden vert lukka. Bilet­metadata vert sletta før opplasting.&lt;/p&gt;"</string>
     <string name="action_deselect_all">"Fjern merking"</string>
     <string name="quest_buildingType_retail_description">"omfattar òg restaurant- og kafébygningar, butikkar, …"</string>
-    <string name="quest_openingHours_timeSelect_next">"Neste"</string>
     <string name="quest_tracktype_title">"Kor fast er vegdekket her?"</string>
     <string name="quest_tracktype_grade1">"Fast"</string>
     <string name="quest_tracktype_grade4">"Stort sett mjukt"</string>
@@ -482,7 +479,6 @@ Appen kommuniserer direkte med OSM-tenarane.&lt;br/&gt;Før appen lastar opp end
     <string name="action_open_location">"Opna staden i ein annan app"</string>
     <string name="map_application_missing">"Du har ikkje noko anna kartprogram installert."</string>
     <string name="label_housenumber">"husnummer"</string>
-    <string name="label_blocknumber">"kvartalsnummer"</string>
     <string name="quest_busStopShelter_covered">"Heile stoppet har tak"</string>
     <string name="quest_ferry_pedestrian_title">"Tek denne ferjeruta fotgjengarar?"</string>
     <string name="quest_ferry_motor_vehicle_title">"Tek denne ferjeruta motorkøyretøy?"</string>
@@ -992,8 +988,6 @@ Appen kommuniserer direkte med OSM-tenarane.&lt;br/&gt;Før appen lastar opp end
     <string name="overlay_lit">"Gatelys"</string>
     <string name="quest_summit_cross_title">"Har toppen eit kross?"</string>
     <string name="quest_camp_shower_title">"Er det dusj her?"</string>
-    <string name="quest_camp_type_caravans_only">"Berre bobil, campingvogner, …"</string>
-    <string name="quest_camp_type_tents_only">"Berre telt"</string>
     <string name="street_parking_street_width">"Vegbreidde: %1$s"</string>
     <string name="quest_drinking_water_type_tap">"Vasskran"</string>
     <string name="quest_drinking_water_type_hand_pump">"Handpumpe"</string>
