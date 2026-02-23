@@ -107,36 +107,36 @@ ic_trophy.xml                  SIL OFL-1.1       Doug C. Hardester  (https://mat
 ic_notification.png            GPL-2.0-only      https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free
 ic_launcher.png                GPL-2.0-only      https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free
 ic_launcher_round.png          GPL-2.0-only      https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free
-ic_link_josm.png               CC0               Diamond00744 https://wiki.openstreetmap.org/wiki/File:JOSM_Logotype_2019.svg
-ic_link_ideditor.png           WTFPL             https://wiki.openstreetmap.org/wiki/File:ID.svg
-ic_link_pic4review.png         CC-BY-SA 4.0      PanierAvide https://wiki.openstreetmap.org/wiki/File:Pic4Review.png
-ic_link_brouter.png            fair use          used while linking and promoting this project
-ic_link_learnosm.png           fair use          used while linking and promoting this project
-ic_link_osmhydrant.png         fair use          used while linking and promoting this project
-ic_link_city_roads.png         fair use          used while linking and promoting this project
-ic_link_mapy_tactile.png       fair use          used while linking and promoting this project
-ic_link_osmlab.png             fair use          used while linking and promoting this project
-ic_link_sunders.png            fair use          used while linking and promoting this project
-ic_link_figuregrounder.png     fair use          used while linking and promoting this project
-ic_link_indoorequal.png        fair use          used while linking and promoting this project
-ic_link_myosmatic.png          fair use          used while linking and promoting this project
-ic_link_opnvkarte.png          fair use          used while linking and promoting this project
-ic_link_thenandnow.png         fair use          used while linking and promoting this project
-ic_link_openstreetbrowser.png  fair use          used while linking and promoting this project
-ic_link_photon.png             fair use          used while linking and promoting this project
-ic_link_valhalla.png           fair use          used while linking and promoting this project
-ic_link_ohsomehex.png          fair use          used while linking and promoting this project (also, this may be simple enough to be in a public domain)
-ic_link_cyclosm.xml            fair use          used while linking and promoting this project ( https://github.com/cyclosm/cyclosm-cartocss-style/issues/615#issuecomment-1152875875 )
-ic_link_weeklyosm.png          fair use          used while linking and promoting this project https://wiki.openstreetmap.org/wiki/File:Weeklyosm_red_cut.svg https://wiki.openstreetmap.org/wiki/File:Logo_weeklyOSM.svg https://wiki.openstreetmap.org/wiki/File:Weeklyosm_red_cut.svg
-ic_link_cyclosm.png            fair use          used while linking and promoting this project
-ic_link_heigit.png             fair use          used while linking and promoting this project https://wiki.openstreetmap.org/wiki/File:HeiGIT.svg
-ic_link_openstreetmap.png      fair use          used while linking and promoting this project https://wiki.openstreetmap.org/wiki/File:Public-images-osm_logo.svg
-ic_link_openvegemap.png        fair use          used while linking and promoting this project https://wiki.openstreetmap.org/wiki/OpenVegeMap
-ic_link_wheelmap.png           fair use          used while linking and promoting this project https://wiki.openstreetmap.org/wiki/File:Wheelmap.org_logo.svg
-ic_link_osrm.png               fair use          used while linking and promoting this project https://wiki.openstreetmap.org/wiki/File:OSRM-Logo.png
-ic_link_wiki.png               fair use          used while linking and promoting this project https://wiki.openstreetmap.org/wiki/File:Wikilogo.png
-ic_link_graphhopper.png        fair use          used while linking and promoting this project https://wiki.openstreetmap.org/wiki/GraphHopper
-ic_link_organic_maps.png       fair use          used while linking and promoting this project
+link_josm.png                  CC0               Diamond00744 https://wiki.openstreetmap.org/wiki/File:JOSM_Logotype_2019.svg
+link_ideditor.png              WTFPL             https://wiki.openstreetmap.org/wiki/File:ID.svg
+link_pic4review.png            CC-BY-SA 4.0      PanierAvide https://wiki.openstreetmap.org/wiki/File:Pic4Review.png
+link_brouter.png               fair use          used while linking and promoting this project
+link_learnosm.png              fair use          used while linking and promoting this project
+link_osmhydrant.png            fair use          used while linking and promoting this project
+link_city_roads.png            fair use          used while linking and promoting this project
+link_mapy_tactile.png          fair use          used while linking and promoting this project
+link_osmlab.png                fair use          used while linking and promoting this project
+link_sunders.png               fair use          used while linking and promoting this project
+link_figuregrounder.png        fair use          used while linking and promoting this project
+link_indoorequal.png           fair use          used while linking and promoting this project
+link_myosmatic.png             fair use          used while linking and promoting this project
+link_opnvkarte.png             fair use          used while linking and promoting this project
+link_thenandnow.png            fair use          used while linking and promoting this project
+link_openstreetbrowser.png     fair use          used while linking and promoting this project
+link_photon.png                fair use          used while linking and promoting this project
+link_valhalla.png              fair use          used while linking and promoting this project
+link_ohsomehex.png             fair use          used while linking and promoting this project (also, this may be simple enough to be in a public domain)
+link_cyclosm.xml               fair use          used while linking and promoting this project ( https://github.com/cyclosm/cyclosm-cartocss-style/issues/615#issuecomment-1152875875 )
+link_weeklyosm.png             fair use          used while linking and promoting this project https://wiki.openstreetmap.org/wiki/File:Weeklyosm_red_cut.svg https://wiki.openstreetmap.org/wiki/File:Logo_weeklyOSM.svg https://wiki.openstreetmap.org/wiki/File:Weeklyosm_red_cut.svg
+link_cyclosm.png               fair use          used while linking and promoting this project
+link_heigit.png                fair use          used while linking and promoting this project https://wiki.openstreetmap.org/wiki/File:HeiGIT.svg
+link_openstreetmap.png         fair use          used while linking and promoting this project https://wiki.openstreetmap.org/wiki/File:Public-images-osm_logo.svg
+link_openvegemap.png           fair use          used while linking and promoting this project https://wiki.openstreetmap.org/wiki/OpenVegeMap
+link_wheelmap.png              fair use          used while linking and promoting this project https://wiki.openstreetmap.org/wiki/File:Wheelmap.org_logo.svg
+link_osrm.png                  fair use          used while linking and promoting this project https://wiki.openstreetmap.org/wiki/File:OSRM-Logo.png
+link_wiki.png                  fair use          used while linking and promoting this project https://wiki.openstreetmap.org/wiki/File:Wikilogo.png
+link_graphhopper.png           fair use          used while linking and promoting this project https://wiki.openstreetmap.org/wiki/GraphHopper
+link_co_maps.png               fair use          used while linking and promoting this project
 
 preset_far-*                   CC-BY 4.0         from https://fontawesome.com/license/free
 preset_fas-*                     and             from https://fontawesome.com/license/free
