@@ -1,59 +1,32 @@
 package de.westnordost.streetcomplete.quests.max_speed
 
-import android.os.Bundle
-import android.view.View
-import android.view.inputmethod.EditorInfo
-import android.widget.ArrayAdapter
-import android.widget.EditText
-import android.widget.FrameLayout
-import android.widget.ImageView
-import android.widget.Spinner
-import android.widget.TextView
-import androidx.annotation.IdRes
 import androidx.appcompat.app.AlertDialog
-import androidx.core.view.children
-import androidx.core.view.isGone
-import androidx.core.widget.doAfterTextChanged
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.meta.SpeedMeasurementUnit
-import de.westnordost.streetcomplete.data.meta.SpeedMeasurementUnit.KILOMETERS_PER_HOUR
-import de.westnordost.streetcomplete.data.meta.SpeedMeasurementUnit.MILES_PER_HOUR
-import de.westnordost.streetcomplete.databinding.QuestMaxspeedBinding
+import de.westnordost.streetcomplete.databinding.ComposeViewBinding
 import de.westnordost.streetcomplete.databinding.QuestMaxspeedNoSignNoSlowZoneConfirmationBinding
 import de.westnordost.streetcomplete.osm.maxspeed.COUNTRY_SUBDIVISIONS_WITH_OWN_DEFAULT_MAX_SPEEDS
-import de.westnordost.streetcomplete.osm.maxspeed.Speed
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
-import de.westnordost.streetcomplete.quests.max_speed.SpeedType.ADVISORY
-import de.westnordost.streetcomplete.quests.max_speed.SpeedType.LIVING_STREET
-import de.westnordost.streetcomplete.quests.max_speed.SpeedType.NO_SIGN
-import de.westnordost.streetcomplete.quests.max_speed.SpeedType.NSL
-import de.westnordost.streetcomplete.quests.max_speed.SpeedType.SIGN
-import de.westnordost.streetcomplete.quests.max_speed.SpeedType.ZONE
-import de.westnordost.streetcomplete.util.ktx.advisorySpeedLimitSignLayoutResId
-import de.westnordost.streetcomplete.util.ktx.intOrNull
-import de.westnordost.streetcomplete.util.ktx.livingStreetSignDrawableResId
-import de.westnordost.streetcomplete.util.ktx.showKeyboard
 
 class AddMaxSpeedForm : AbstractOsmQuestForm<MaxSpeedAnswer>() {
 
-    override val contentLayoutResId = R.layout.quest_maxspeed
-    private val binding by contentViewBinding(QuestMaxspeedBinding::bind)
+    override val contentLayoutResId = R.layout.compose_view
+    private val binding by contentViewBinding(ComposeViewBinding::bind)
 
     override val otherAnswers: List<AnswerItem> get() {
+
         val result = mutableListOf<AnswerItem>()
+        /*
         if (countryInfo.hasAdvisorySpeedLimitSign) {
             result.add(AnswerItem(R.string.quest_maxspeed_answer_advisory_speed_limit) { switchToAdvisorySpeedLimit() })
         }
+        */
         return result
     }
 
-    private var speedInput: EditText? = null
-    private var speedUnitSelect: Spinner? = null
-    private var speedType: SpeedType? = null
-
     private val speedUnits get() = countryInfo.speedUnits
 
+    /*
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -135,15 +108,6 @@ class AddMaxSpeedForm : AbstractOsmQuestForm<MaxSpeedAnswer>() {
         checkIsFormComplete()
     }
 
-    private fun getSpeedType(@IdRes checkedId: Int) = when (checkedId) {
-        R.id.sign          -> SIGN
-        R.id.zone          -> ZONE
-        R.id.living_street -> LIVING_STREET
-        R.id.nsl           -> NSL
-        R.id.no_sign       -> NO_SIGN
-        else -> null
-    }
-
     private fun enableAppropriateLabelsForSlowZone(layoutWithSign: FrameLayout) {
         val position = countryInfo.slowZoneLabelPosition
         val text = countryInfo.slowZoneLabelText ?: return
@@ -217,7 +181,7 @@ class AddMaxSpeedForm : AbstractOsmQuestForm<MaxSpeedAnswer>() {
             MILES_PER_HOUR -> Speed.Mph(value)
         }
     }
-
+*/
     /* ----------------------------------------- No sign ---------------------------------------- */
 
     private fun confirmNoSign(onConfirmed: () -> Unit) {
@@ -234,16 +198,8 @@ class AddMaxSpeedForm : AbstractOsmQuestForm<MaxSpeedAnswer>() {
     private fun confirmNoSignSlowZone(onConfirmed: () -> Unit) {
         activity?.let {
             val dialogBinding = QuestMaxspeedNoSignNoSlowZoneConfirmationBinding.inflate(layoutInflater)
-            enableAppropriateLabelsForSlowZone(dialogBinding.slowZoneImage)
+            //enableAppropriateLabelsForSlowZone(dialogBinding.slowZoneImage)
             dialogBinding.slowZoneImage.removeAllViews()
-            layoutInflater.inflate(
-                getMaxSpeedZoneSignLayoutResId(countryInfo.countryCode),
-                dialogBinding.slowZoneImage,
-                true,
-            )
-            val dialogSpeedInput: EditText = dialogBinding.slowZoneImage.findViewById(R.id.maxSpeedInput)
-            dialogSpeedInput.setText("××")
-            dialogSpeedInput.inputType = EditorInfo.TYPE_NULL
 
             AlertDialog.Builder(it)
                 .setTitle(R.string.quest_maxspeed_answer_noSign_confirmation_title)
@@ -321,7 +277,7 @@ class AddMaxSpeedForm : AbstractOsmQuestForm<MaxSpeedAnswer>() {
         val useSubdivisionCode = COUNTRY_SUBDIVISIONS_WITH_OWN_DEFAULT_MAX_SPEEDS.any { it.matches(cc) }
         val maxspeedCountryCode = if (useSubdivisionCode) cc else cc.split("-").first()
 
-        applyAnswer(ImplicitMaxSpeed(maxspeedCountryCode, roadType, lit))
+        applyAnswer(DefaultMaxSpeed(maxspeedCountryCode, roadType, lit))
     }
 
     companion object {
@@ -336,26 +292,4 @@ class AddMaxSpeedForm : AbstractOsmQuestForm<MaxSpeedAnswer>() {
 
         private var LAST_INPUT_SLOW_ZONE: Int? = null
     }
-}
-
-private enum class SpeedType {
-    SIGN,
-    ZONE,
-    LIVING_STREET,
-    ADVISORY,
-    NO_SIGN,
-    NSL
-}
-
-private fun getMaxSpeedSignLayoutResId(countryCode: String): Int = when (countryCode) {
-    "FI", "IS", "SE" -> R.layout.quest_maxspeed_sign_fi
-    "CA" ->             R.layout.quest_maxspeed_sign_ca
-    "US" ->             R.layout.quest_maxspeed_sign_us
-    else ->             R.layout.quest_maxspeed_sign
-}
-
-private fun getMaxSpeedZoneSignLayoutResId(countryCode: String): Int = when (countryCode) {
-    "FI", "IS", "SE" -> R.layout.quest_maxspeed_zone_sign_fi
-    "IL" ->             R.layout.quest_maxspeed_zone_sign_il
-    else ->             R.layout.quest_maxspeed_zone_sign
 }

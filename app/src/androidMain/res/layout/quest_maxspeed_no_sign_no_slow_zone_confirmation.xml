@@ -39,9 +39,11 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
             >
+                <!--
                 <include
                     layout="@layout/quest_maxspeed_zone_sign"
                 />
+                -->
             </FrameLayout>
         </RelativeLayout>
 

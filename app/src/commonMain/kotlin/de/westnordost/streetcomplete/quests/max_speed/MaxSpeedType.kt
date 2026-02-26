@@ -1,12 +1,7 @@
 package de.westnordost.streetcomplete.quests.max_speed
 
 import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.quest_maxspeed_answer_advisory_speed_limit
-import de.westnordost.streetcomplete.resources.quest_maxspeed_answer_living_street
-import de.westnordost.streetcomplete.resources.quest_maxspeed_answer_noSign2
-import de.westnordost.streetcomplete.resources.quest_maxspeed_answer_nsl
-import de.westnordost.streetcomplete.resources.quest_maxspeed_answer_sign
-import de.westnordost.streetcomplete.resources.quest_maxspeed_answer_zone2
+import de.westnordost.streetcomplete.resources.*
 
 enum class MaxSpeedType {
     SIGN,
@@ -14,5 +9,12 @@ enum class MaxSpeedType {
     LIVING_STREET,
     ADVISORY,
     NO_SIGN,
-    NSL
+}
+
+val MaxSpeedType.text get() = when (this) {
+    MaxSpeedType.SIGN -> Res.string.quest_maxspeed_answer_sign
+    MaxSpeedType.ZONE -> Res.string.quest_maxspeed_answer_zone2
+    MaxSpeedType.LIVING_STREET -> Res.string.quest_maxspeed_answer_living_street
+    MaxSpeedType.ADVISORY -> Res.string.quest_maxspeed_answer_advisory_speed_limit
+    MaxSpeedType.NO_SIGN -> Res.string.quest_maxspeed_answer_noSign2
 }

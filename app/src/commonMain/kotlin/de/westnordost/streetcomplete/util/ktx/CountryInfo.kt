@@ -148,9 +148,8 @@ val CountryInfo.livingStreetSignDrawable: DrawableResource get() = when (livingS
     "vienna"    -> Res.drawable.living_street
     "sadc"      -> Res.drawable.living_street_sadc
     "russia"    -> Res.drawable.living_street_russia
-    "france"    -> Res.drawable.living_street_france
+    "shared"    -> Res.drawable.living_street_shared
     "australia" -> Res.drawable.living_street_australia
-    "mexico"    -> Res.drawable.living_street_mexico
     "columbia"  -> Res.drawable.living_street_columbia
     else        -> Res.drawable.living_street
 }
