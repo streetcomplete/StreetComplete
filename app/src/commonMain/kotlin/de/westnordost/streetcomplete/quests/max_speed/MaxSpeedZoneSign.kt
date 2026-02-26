@@ -38,9 +38,9 @@ import de.westnordost.streetcomplete.ui.theme.trafficSignContentColorFor
 fun MaxSpeedZoneSign(
     zoneLabel: String?,
     zoneIsAtTop: Boolean,
-    backgroundColor: Color,
-    color: Color,
     modifier: Modifier = Modifier,
+    backgroundColor: Color = TrafficSignColor.White,
+    color: Color = TrafficSignColor.White,
     content: @Composable BoxScope.() -> Unit,
 ) {
     RectangularSign(
