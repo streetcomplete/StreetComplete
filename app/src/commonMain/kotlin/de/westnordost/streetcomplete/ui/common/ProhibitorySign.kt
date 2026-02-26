@@ -4,6 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxScope
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
@@ -32,6 +33,7 @@ fun ProhibitorySign(
     val contentColor = trafficSignContentColorFor(color)
     Box(
         modifier = modifier
+            .aspectRatio(1f)
             .border(Dp.Hairline, Color.LightGray, CircleShape)
             .background(color, CircleShape)
             .padding(4.dp)
