@@ -8,7 +8,7 @@ enum class MaxSpeedType {
     ZONE,
     LIVING_STREET,
     ADVISORY,
-    NO_SIGN,
+    DEFAULT,
 }
 
 val MaxSpeedType.text get() = when (this) {
@@ -16,5 +16,5 @@ val MaxSpeedType.text get() = when (this) {
     MaxSpeedType.ZONE -> Res.string.quest_maxspeed_answer_zone2
     MaxSpeedType.LIVING_STREET -> Res.string.quest_maxspeed_answer_living_street
     MaxSpeedType.ADVISORY -> Res.string.quest_maxspeed_answer_advisory_speed_limit
-    MaxSpeedType.NO_SIGN -> Res.string.quest_maxspeed_answer_noSign2
+    MaxSpeedType.DEFAULT -> Res.string.quest_maxspeed_answer_noSign2
 }

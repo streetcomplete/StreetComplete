@@ -15,17 +15,50 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import de.westnordost.streetcomplete.data.meta.CountryInfo
+import de.westnordost.streetcomplete.data.meta.SpeedMeasurementUnit
 import de.westnordost.streetcomplete.ui.common.ProhibitorySign
 import de.westnordost.streetcomplete.ui.common.RectangularSign
 import de.westnordost.streetcomplete.ui.theme.TrafficSignColor
 import de.westnordost.streetcomplete.ui.theme.extraLargeInput
 import de.westnordost.streetcomplete.ui.theme.largeInput
 
+/** Max speed input, resembling (somewhat) the speed limit sign in the given country:
+ *
+ *  For US and Canada, we have these rectangular speed limit signs. Some countries use a yellow
+ *  background on the standard (speed limit) signs
+ * */
+@Composable
+fun MaxSpeedSignInput(
+    maxSpeedSign: MaxSpeedSign?,
+    onMaxSpeedSign: (MaxSpeedSign?) -> Unit,
+    countryInfo: CountryInfo,
+    modifier: Modifier = Modifier,
+) {
+    val speedInputComposable = @Composable {
+        SpeedInput(
+            speed = maxSpeedSign?.value,
+            onSpeedChange = { speed -> onMaxSpeedSign(speed?.let { MaxSpeedSign(it) }) },
+            selectableUnits = countryInfo.speedUnits,
+        )
+    }
+    when (countryInfo.countryCode) {
+        "CA" -> MaxSpeedSignMutcd("MAXIMUM", modifier = modifier) { speedInputComposable() }
+        "US" -> MaxSpeedSignMutcd("SPEED LIMIT", modifier = modifier) { speedInputComposable() }
+        else -> MaxSpeedSign(
+            modifier = modifier,
+            color = when (countryInfo.countryCode) {
+                "FI", "IS", "SE" -> TrafficSignColor.Yellow
+                else -> TrafficSignColor.White
+            },
+        ) { speedInputComposable() }
+    }
+}
+
 /** Surface that looks like a standard max speed sign (white circle with red border) */
 @Composable
-fun MaxSpeedSign(
+private fun MaxSpeedSign(
     modifier: Modifier = Modifier,
     color: Color = TrafficSignColor.White,
     content: @Composable BoxScope.() -> Unit,
@@ -41,7 +74,7 @@ fun MaxSpeedSign(
 
 /** Surface that looks like a max speed sign in (a few) MUTCD countries */
 @Composable
-fun MaxSpeedSignMutcd(
+private fun MaxSpeedSignMutcd(
     text: String,
     modifier: Modifier = Modifier,
     content: @Composable ColumnScope.() -> Unit,

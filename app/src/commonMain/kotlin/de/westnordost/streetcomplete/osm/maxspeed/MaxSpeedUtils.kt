@@ -63,3 +63,5 @@ val COUNTRY_SUBDIVISIONS_WITH_OWN_DEFAULT_MAX_SPEEDS: List<Regex> by lazy { list
 
     "RS-KM",           // Kosovo (aka "XK")
 ).map { it.toRegex() } }
+
+val ROADS_WITH_DEFINITE_SPEED_LIMIT = listOf("motorway", "living_street")

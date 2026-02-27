@@ -1257,12 +1257,14 @@ If any lanes are reserved for buses, please leave a note instead.</string>
 If there are no signs along the whole street which apply for the highlighted section, default speed limits apply.</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">Yes, no sign</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">This speed limit looks implausible.</string>
-    <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">Where is this street?</string>
-    <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">Roads in built-up areas have a lower default speed limit than rural roads.</string>
-    <string name="quest_maxspeed_answer_noSign_urbanOk">Built-up area</string>
-    <string name="quest_maxspeed_answer_noSign_ruralOk">Rural</string>
+
+    <string name="quest_maxspeed_answer_roadtype_description">Street is…</string>
+    <string name="quest_maxspeed_answer_roadtype_urban">in built-up area</string>
+    <string name="quest_maxspeed_answer_roadtype_rural">outside built-up area</string>
+    <string name="quest_maxspeed_answer_roadtype_lit">lit</string>
+    <string name="quest_maxspeed_answer_roadtype_not_lit">not lit</string>
+    <string name="quest_maxspeed_answer_roadtype_dual_carriageway">Not lit and dual carriageway</string>
     <string name="quest_maxspeed_answer_noSign_info_zone">If there is a sign like this at the intersection with the main road, you may not find individual signs within the zone, as the speed limit posted there applies to the whole zone.</string>
-    <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">Are opposite directions of traffic separated by a physical barrier or greenspace? The default speed limit depends on whether this is the case.</string>
     <string name="default_disabled_msg_maxspeed">This quest type is disabled by default because you are usually required to check the whole street for speed limit signs, not just the highlighted section. This can sometimes be a lot of work just to solve a single quest.</string>
 
     <string name="quest_maxweight_title">What’s the weight limit here?</string>
