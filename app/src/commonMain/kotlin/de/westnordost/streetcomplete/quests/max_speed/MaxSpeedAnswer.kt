@@ -43,6 +43,21 @@ fun MaxSpeedAnswer.applyTo(tags: Tags) {
         is DefaultMaxSpeed -> {
             val roadTypeString = roadType?.osmValue ?: tags["highway"]
             tags["maxspeed:type"] = countryCode + ":" + roadTypeString
+            // Special for United Kingdom: User implicitly answered whether road is lit or not
+            when (roadType) {
+                RoadType.RESTRICTED -> {
+                    tags["lit"] = "yes"
+                }
+                RoadType.SINGLE -> {
+                    tags["lit"] = "no"
+                    if (tags.containsKey("dual_carriageway")) tags["dual_carriageway"] = "no"
+                }
+                RoadType.DUAL -> {
+                    tags["lit"] = "no"
+                    tags["dual_carriageway"] = "yes"
+                }
+                else -> { /* nothing */ }
+            }
         }
     }
 }

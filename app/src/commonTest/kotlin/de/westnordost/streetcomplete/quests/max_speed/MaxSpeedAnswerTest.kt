@@ -95,16 +95,26 @@ class MaxSpeedAnswerTest {
 
     @Test fun `apply nsl answer`() {
         assertEquals(
-            setOf(StringMapEntryAdd("maxspeed:type", "GB:nsl_restricted")),
-            DefaultMaxSpeed("GB", RoadType.UnitedKingdom.RESTRICTED).appliedTo(mapOf())
+            setOf(
+                StringMapEntryAdd("maxspeed:type", "GB:nsl_restricted"),
+                StringMapEntryAdd("lit", "yes"),
+            ),
+            DefaultMaxSpeed("GB", RoadType.RESTRICTED).appliedTo(mapOf())
         )
         assertEquals(
-            setOf(StringMapEntryAdd("maxspeed:type", "GB:nsl_single")),
-            DefaultMaxSpeed("GB", RoadType.UnitedKingdom.SINGLE).appliedTo(mapOf())
+            setOf(
+                StringMapEntryAdd("maxspeed:type", "GB:nsl_single"),
+                StringMapEntryAdd("lit", "no"),
+            ),
+            DefaultMaxSpeed("GB", RoadType.SINGLE).appliedTo(mapOf())
         )
         assertEquals(
-            setOf(StringMapEntryAdd("maxspeed:type", "GB:nsl_dual")),
-            DefaultMaxSpeed("GB", RoadType.UnitedKingdom.DUAL).appliedTo(mapOf())
+            setOf(
+                StringMapEntryAdd("maxspeed:type", "GB:nsl_dual"),
+                StringMapEntryAdd("lit", "no"),
+                StringMapEntryAdd("dual_carriageway", "yes"),
+            ),
+            DefaultMaxSpeed("GB", RoadType.DUAL).appliedTo(mapOf())
         )
     }
 }

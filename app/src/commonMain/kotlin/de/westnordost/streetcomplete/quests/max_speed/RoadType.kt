@@ -19,13 +19,12 @@ enum class RoadType(val osmValue: String) {
     URBAN("urban"),
 
     // The only reason why this special case exists for United Kingdom are legacy reasons.
-    // In the UK, default speed limits have always been tagged with maxspeed:type =
-    // GB:nsl_restricted  - when the street is lit (i.e. considered in built-up area in regards to
-    //                      max speed)
-    // GB:nsl_single      - not lit (i.e. rural roads)
-    // GB:nsl_dual        - not lit (i.e. rural roads) but on a dual carriageway
+    // In the UK, default speed limits have always been tagged with maxspeed:type = ...
+    // on lit streets (i.e. considered in built-up area in regards to max speed)
     RESTRICTED("nsl_restricted"),
+    // when not lit (i.e. rural roads)
     SINGLE("nsl_single"),
+    // when not lit (i.e. rural roads) but on a dual carriageway
     DUAL("nsl_dual");
 
     companion object {
