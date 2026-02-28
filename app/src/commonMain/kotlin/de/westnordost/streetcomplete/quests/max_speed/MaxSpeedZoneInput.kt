@@ -14,7 +14,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.meta.CountryInfo
-import de.westnordost.streetcomplete.data.meta.SpeedMeasurementUnit
 import de.westnordost.streetcomplete.ui.common.ProhibitorySign
 import de.westnordost.streetcomplete.ui.common.RectangularSign
 import de.westnordost.streetcomplete.ui.theme.TrafficSignColor
@@ -59,7 +58,7 @@ fun MaxSpeedZoneInput(
         },
     ) {
         SpeedInput(
-            speed = maxSpeedZone?.value,
+            speed = maxSpeedZone?.speed,
             onSpeedChange = { speed ->
                 onMaxSpeedZone(speed?.let { MaxSpeedZone(it) })
             },

@@ -1,58 +1,59 @@
 package de.westnordost.streetcomplete.quests.max_speed
 
+import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AlertDialog
+import androidx.compose.material.Surface
+import androidx.compose.runtime.mutableStateOf
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.ComposeViewBinding
 import de.westnordost.streetcomplete.databinding.QuestMaxspeedNoSignNoSlowZoneConfirmationBinding
 import de.westnordost.streetcomplete.osm.maxspeed.COUNTRY_SUBDIVISIONS_WITH_OWN_DEFAULT_MAX_SPEEDS
+import de.westnordost.streetcomplete.osm.maxspeed.ROADS_WHERE_SLOW_ZONE_IS_LIKELY
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
+import de.westnordost.streetcomplete.ui.util.content
 
 class AddMaxSpeedForm : AbstractOsmQuestForm<MaxSpeedAnswer>() {
 
     override val contentLayoutResId = R.layout.compose_view
     private val binding by contentViewBinding(ComposeViewBinding::bind)
 
-    override val otherAnswers: List<AnswerItem> get() {
+    private var maxSpeedAnswer = mutableStateOf<MaxSpeedAnswer?>(null)
+    private var initialSelectedMaxSpeedType = mutableStateOf<MaxSpeedType?>(null)
 
-        val result = mutableListOf<AnswerItem>()
-        /*
+    override val otherAnswers: List<AnswerItem> get() = buildList {
         if (countryInfo.hasAdvisorySpeedLimitSign) {
-            result.add(AnswerItem(R.string.quest_maxspeed_answer_advisory_speed_limit) { switchToAdvisorySpeedLimit() })
+            add(AnswerItem(R.string.quest_maxspeed_answer_advisory_speed_limit) {
+                initialSelectedMaxSpeedType.value = MaxSpeedType.ADVISORY
+            })
         }
-        */
-        return result
     }
 
-    /*
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val highwayTag = element.tags["highway"]!!
-
-        val couldBeSlowZone = countryInfo.hasSlowZone && ROADS_WHERE_SLOW_ZONE_IS_POSSIBLE.contains(highwayTag)
-        binding.zone.isGone = !couldBeSlowZone
-
-        val couldBeLivingStreet = countryInfo.hasLivingStreet && MAYBE_LIVING_STREET.contains(highwayTag)
-        binding.livingStreet.isGone = !couldBeLivingStreet
+        binding.composeViewBase.content { Surface {
+            MaxSpeedForm(
+                initialSelectedMaxSpeedType = initialSelectedMaxSpeedType.value,
+                countryInfo = countryInfo,
+                highwayValue = element.tags["highway"]!!,
+                maxSpeed = maxSpeedAnswer.value,
+                onMaxSpeed = {
+                    maxSpeedAnswer.value = it
+                    checkIsFormComplete()
+                },
+            )
+        } }
     }
 
     override fun onClickOk() {
-        if (speedType == NO_SIGN) {
-            val slowZoneLikely = countryInfo.hasSlowZone && element.tags["highway"] == "residential"
-
-            if (slowZoneLikely) {
-                confirmNoSignSlowZone { determineImplicitMaxspeedType() }
+        if (maxSpeedAnswer.value is DefaultMaxSpeed) {
+            if (countryInfo.hasSlowZone && element.tags["highway"] in ROADS_WHERE_SLOW_ZONE_IS_LIKELY) {
+                confirmNoSignSlowZone { applySpeedLimitFormAnswer() }
             } else {
-                confirmNoSign { determineImplicitMaxspeedType() }
+                confirmNoSign { applySpeedLimitFormAnswer() }
             }
-        } else if (speedType == LIVING_STREET) {
-            applyAnswer(IsLivingStreet)
-        } else if (speedType == NSL) {
-            askIsDualCarriageway(
-                onYes = { applyNoSignAnswer("nsl_dual") },
-                onNo = { applyNoSignAnswer("nsl_single") }
-            )
         } else if (userSelectedUnusualSpeed()) {
             confirmUnusualInput { applySpeedLimitFormAnswer() }
         } else {
@@ -60,18 +61,16 @@ class AddMaxSpeedForm : AbstractOsmQuestForm<MaxSpeedAnswer>() {
         }
     }
 
-    override fun isFormComplete() =
-        speedType == NO_SIGN || speedType == LIVING_STREET || speedType == NSL || getSpeedFromInput() != null
-
-    /* ---------------------------------------- With sign --------------------------------------- */
+    override fun isFormComplete() = maxSpeedAnswer.value != null
 
     private fun userSelectedUnusualSpeed(): Boolean {
-        val speed = getSpeedFromInput() ?: return false
-        val isDividableByFive = speed.toValue() % 5 == 0
-        val kmh = speed.toKmh()
-        return when (speedType) {
-            SIGN -> kmh > 140 || kmh > 20 && !isDividableByFive || kmh < 5
-            ZONE -> kmh > 40 || kmh > 20 && !isDividableByFive || kmh < 5
+        val speed = maxSpeedAnswer.value?.getSpeedOrNull() ?: return false
+        val isDividableByFive = speed.value % 5 == 0
+        val kmh = speed.toKilometersPerHour()
+        return when (maxSpeedAnswer.value) {
+            is AdvisorySpeedSign,
+            is MaxSpeedSign -> kmh > 140 || kmh > 20 && !isDividableByFive || kmh < 5
+            is MaxSpeedZone -> kmh > 40 || kmh > 20 && !isDividableByFive || kmh < 5
             else -> false
         }
     }
@@ -87,20 +86,9 @@ class AddMaxSpeedForm : AbstractOsmQuestForm<MaxSpeedAnswer>() {
     }
 
     private fun applySpeedLimitFormAnswer() {
-        val speed = getSpeedFromInput()!!
-        when (speedType) {
-            ADVISORY      -> applyAnswer(AdvisorySpeedSign(speed))
-            ZONE          -> {
-                val zoneX = speed.toValue()
-                LAST_INPUT_SLOW_ZONE = zoneX
-                applyAnswer(MaxSpeedZone(speed, countryInfo.countryCode, "zone$zoneX"))
-            }
-            SIGN          -> applyAnswer(MaxSpeedSign(speed))
-            else          -> throw IllegalStateException()
-        }
+        applyAnswer(maxSpeedAnswer.value!!)
     }
 
-*/
     /* ----------------------------------------- No sign ---------------------------------------- */
 
     private fun confirmNoSign(onConfirmed: () -> Unit) {
@@ -115,6 +103,7 @@ class AddMaxSpeedForm : AbstractOsmQuestForm<MaxSpeedAnswer>() {
     }
 
     private fun confirmNoSignSlowZone(onConfirmed: () -> Unit) {
+        // TODO
         activity?.let {
             val dialogBinding = QuestMaxspeedNoSignNoSlowZoneConfirmationBinding.inflate(layoutInflater)
             //enableAppropriateLabelsForSlowZone(dialogBinding.slowZoneImage)
@@ -138,14 +127,7 @@ class AddMaxSpeedForm : AbstractOsmQuestForm<MaxSpeedAnswer>() {
     }
 
     companion object {
-        // i.e. where to offer the option to select it. See also #5771, 1133
-        // - sometimes also main roads have that sign
-        private val ROADS_WHERE_SLOW_ZONE_IS_POSSIBLE = listOf(
-            "residential", "unclassified",
-            "tertiary", "tertiary_link", "secondary", "secondary_link", "primary", "primary_link"
-        )
-        private val MAYBE_LIVING_STREET = listOf("residential", "unclassified")
-
+        // TODO
         private var LAST_INPUT_SLOW_ZONE: Int? = null
     }
 }

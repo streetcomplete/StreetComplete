@@ -18,6 +18,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.meta.CountryInfo
+import de.westnordost.streetcomplete.osm.maxspeed.ROADS_THAT_MAY_BE_LIVING_STREETS
+import de.westnordost.streetcomplete.osm.maxspeed.ROADS_WHERE_SLOW_ZONE_IS_NOT_POSSIBLE
 import de.westnordost.streetcomplete.osm.maxspeed.ROADS_WITH_DEFINITE_SPEED_LIMIT
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.quest_maxspeed_type_description
@@ -29,6 +31,7 @@ import org.jetbrains.compose.resources.stringResource
 /** Form to select the max speed and how it is defined */
 @Composable
 fun MaxSpeedForm(
+    initialSelectedMaxSpeedType: MaxSpeedType?,
     countryInfo: CountryInfo,
     highwayValue: String,
     maxSpeed: MaxSpeedAnswer?,
@@ -38,12 +41,23 @@ fun MaxSpeedForm(
     val selectableMaxSpeedTypes = remember(countryInfo) { buildList {
         add(MaxSpeedType.SIGN)
         add(MaxSpeedType.DEFAULT)
-        if (countryInfo.hasSlowZone) add(MaxSpeedType.ZONE) // TODO only if it could be a slow zone
-        if (countryInfo.hasLivingStreet) add(MaxSpeedType.LIVING_STREET)  // TODO only if it could be a slow zone
-        if (countryInfo.hasAdvisorySpeedLimitSign) add(MaxSpeedType.ADVISORY)
+        if (countryInfo.hasSlowZone && highwayValue !in ROADS_WHERE_SLOW_ZONE_IS_NOT_POSSIBLE) {
+            add(MaxSpeedType.ZONE)
+        }
+        if (countryInfo.hasLivingStreet && highwayValue in ROADS_THAT_MAY_BE_LIVING_STREETS) {
+            add(MaxSpeedType.LIVING_STREET)
+        }
+        // show only if initially selected (= from other answer)
+        if (countryInfo.hasAdvisorySpeedLimitSign &&
+            initialSelectedMaxSpeedType == MaxSpeedType.ADVISORY
+        ) {
+            add(MaxSpeedType.ADVISORY)
+        }
     } }
 
-    var selectedMaxSpeedType by remember { mutableStateOf<MaxSpeedType?>(null) }
+    var selectedMaxSpeedType by remember(initialSelectedMaxSpeedType) {
+        mutableStateOf<MaxSpeedType?>(initialSelectedMaxSpeedType)
+    }
 
     Column(
         modifier = modifier,

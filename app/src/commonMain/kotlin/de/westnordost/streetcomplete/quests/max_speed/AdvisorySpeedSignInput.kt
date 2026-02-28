@@ -36,7 +36,7 @@ fun AdvisorySpeedSignInput(
         modifier = modifier,
     ) {
         SpeedInput(
-            speed = advisorySpeedSign?.value,
+            speed = advisorySpeedSign?.speed,
             onSpeedChange = { speed ->
                 onAdvisorySpeedSign(speed?.let { AdvisorySpeedSign(it) })
             },

@@ -1,16 +1,16 @@
 package de.westnordost.streetcomplete.quests.max_speed
 
-import de.westnordost.streetcomplete.osm.ALL_PATHS
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.osm.maxspeed.ROADS_THAT_THAT_MAY_BE_CONVERTED_TO_LIVING_STREET
 import de.westnordost.streetcomplete.osm.maxspeed.Speed
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
 sealed interface MaxSpeedAnswer {
     data object IsLivingStreet : MaxSpeedAnswer
 }
-data class MaxSpeedSign(val value: Speed) : MaxSpeedAnswer
-data class AdvisorySpeedSign(val value: Speed) : MaxSpeedAnswer
-data class MaxSpeedZone(val value: Speed) : MaxSpeedAnswer
+data class MaxSpeedSign(val speed: Speed) : MaxSpeedAnswer
+data class AdvisorySpeedSign(val speed: Speed) : MaxSpeedAnswer
+data class MaxSpeedZone(val speed: Speed) : MaxSpeedAnswer
 data class DefaultMaxSpeed(val roadType: RoadType?) : MaxSpeedAnswer
 
 fun MaxSpeedAnswer.applyTo(tags: Tags) {
@@ -20,24 +20,24 @@ fun MaxSpeedAnswer.applyTo(tags: Tags) {
 
     when (this) {
         is MaxSpeedSign -> {
-            tags["maxspeed"] = value.toOsmString()
+            tags["maxspeed"] = speed.toOsmString()
             tags["maxspeed:type"] = "sign"
         }
         is MaxSpeedZone -> {
-            tags["maxspeed"] = value.toOsmString()
-            tags["maxspeed:type"] = countryCode + ":zone" + value.value.toString() // e.g. zone30
+            tags["maxspeed"] = speed.toOsmString()
+            tags["maxspeed:type"] = countryCode + ":zone" + speed.value.toString() // e.g. zone30
         }
         is AdvisorySpeedSign -> {
-            tags["maxspeed:advisory"] = value.toOsmString()
+            tags["maxspeed:advisory"] = speed.toOsmString()
             tags["maxspeed:type:advisory"] = "sign"
         }
         is MaxSpeedAnswer.IsLivingStreet -> {
             // according to wiki, if it is a service road like a parking lot or a footway etc,
             // living_street=yes should be used instead
-            if (tags["highway"] in ALL_PATHS || tags["highway"] == "service") {
-                tags["living_street"] = "yes"
-            } else {
+            if (tags["highway"] in ROADS_THAT_THAT_MAY_BE_CONVERTED_TO_LIVING_STREET) {
                 tags["highway"] = "living_street"
+            } else {
+                tags["living_street"] = "yes"
             }
         }
         is DefaultMaxSpeed -> {
@@ -60,4 +60,11 @@ fun MaxSpeedAnswer.applyTo(tags: Tags) {
             }
         }
     }
+}
+
+fun MaxSpeedAnswer.getSpeedOrNull(): Speed? = when (this) {
+    is AdvisorySpeedSign -> speed
+    is MaxSpeedSign -> speed
+    is MaxSpeedZone -> speed
+    else -> null
 }
