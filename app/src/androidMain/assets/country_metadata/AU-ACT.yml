@@ -2,5 +2,4 @@
 atmOperators: [Westpac, St.George, Commonwealth Bank, ANZ]
 chargingStationOperators: [Evie Networks, Tesla]
 defaultSpeedLimitHasUrbanOrRural: true
-hasSlowZone: false
 parcelLockerBrand: [Australia Post]

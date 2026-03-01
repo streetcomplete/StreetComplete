@@ -8,4 +8,4 @@ mobileCountryCode: 549
 officialLanguages: [sm, en]
 orchardProduces: [coconut, banana, cacao, papaya, pineapple, guava, mango, mangosteen, avocado, coffee, pepper]
 popularSports: [cricket]
-speedUnits: [miles per hour, kilometers per hour]
+speedUnits: [kilometers per hour, miles per hour]

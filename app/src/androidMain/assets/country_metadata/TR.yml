@@ -3,6 +3,7 @@ atmOperators: [Türkiye İş Bankası, Akbank, Ziraat Bankası, Yapı Kredi, Gar
 chargingStationOperators: [SHARZ, ZES, Astor Enerji, VOLTRUN, Tesla, Sharz, Eşarj, TOGG, EŞARJ, 'Tesla, Inc.', Trugo, Renault, WAT Mobilite, Tunçmatik, zes, Shell, Sharz.net, Neva Şarj, Lumicle]
 clothesContainerOperators: [Etimesgut Belediyesi, Maltepe Belediyesi, İlkadım Belediyesi, Sivas Belediyesi, Ümraniye Belediyesi, Yenimahalle Belediyesi, Ortaca Belediyesi, Çerkezköy Belediyesi, Kızılay, Kütahya Belediyesi]
 defaultSpeedLimitHasUrbanOrRural: true
+hasAdvisorySpeedLimitSign: false
 hasLivingStreet: true
 livingStreetSignStyle: vienna
 mobileCountryCode: 286

@@ -1497,4 +1497,6 @@
     <string name="quest_collectionTimes_answer_time_spans">در یک بازه زمانی…</string>
     <string name="quest_collectionTimes_answer_time_points">در زمان‌های مشخص…</string>
     <string name="quest_shower_hot_water_title">آیا آب گرم در اینجا وجود دارد؟</string>
+    <string name="calendar_new_event_title">رویداد جدید OSM در منطقه شما!</string>
+    <string name="pref_title_message_calendar">رویدادهای جدید OSM در منطقه شما</string>
 </resources>

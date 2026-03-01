@@ -6,7 +6,9 @@ chargingStationSocketTypes: [type2, type2_cable, type2_combo, chademo]
 clothesContainerOperators: [Red Cross, anakyklos.com, PASYKAF]
 defaultSpeedLimitHasUrbanOrRural: true
 hasDailyAlternateSideParkingSign: true
+hasLivingStreet: true
 isLeftHandTraffic: true
+livingStreetSignStyle: vienna
 mobileCountryCode: 280
 officialLanguages: [el, tr]
 orchardProduces: [olive, grape, almond, orange, lemon, lime, grapefruit, plum, apple, peach, tomato, cherry, walnut, banana, apricot, fig, avocado]

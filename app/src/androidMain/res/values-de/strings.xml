@@ -389,7 +389,7 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="quest_buildingType_dormitory">"Wohnheim-Gebäude"</string>
     <string name="quest_buildingType_houseboat">"Hausboot"</string>
     <string name="quest_buildingType_bungalow">"Bungalow-Gebäude"</string>
-    <string name="quest_buildingType_static_caravan">"Feststehender Wohnwagen"</string>
+    <string name="quest_buildingType_static_caravan">"Fest stehender Wohnwagen"</string>
     <string name="quest_buildingType_commercial">"Gewerbliches Gebäude"</string>
     <string name="quest_buildingType_commercial_generic_description">"Gebäude, in dem Leute arbeiten, einkaufen oder anderen gewerblichen Aktivitäten nachgehen"</string>
     <string name="quest_buildingType_industrial">"Industriegebäude"</string>
@@ -1471,8 +1471,8 @@ Zum Beispiel 1,3 oder 2b,4,6."</string>
     <string name="pref_title_message_weekly_osm">"Neue Ausgaben von weeklyOSM"</string>
     <string name="pref_title_message_changelog">"Neue Veröffentlichungen der App"</string>
     <string name="label_block2">"Stadtblock"</string>
-    <string name="quest_address_answer_block2">"Es befindet sich innerhalb eines Stadtblocks..."</string>
-    <string name="quest_address_answer_no_block2">"Es befindet sich nicht innerhalb eines Stadtblocks..."</string>
+    <string name="quest_address_answer_block2">"Es befindet sich innerhalb eines Stadtblocks…"</string>
+    <string name="quest_address_answer_no_block2">"Es befindet sich nicht innerhalb eines Stadtblocks…"</string>
     <string name="quest_artwork_title">"Was für ein Kunstwerk ist das?"</string>
     <string name="quest_artwork_sculpture">"Skulptur"</string>
     <string name="quest_artwork_statue">"Statue"</string>
@@ -1489,7 +1489,7 @@ Zum Beispiel 1,3 oder 2b,4,6."</string>
     <string name="quest_artwork_fountain">"Brunnen"</string>
     <string name="quest_bothway_title">"In welche Richtungen kann man fahren?"</string>
     <string name="quest_camp_tent_title">"Darf man hier im Zelt campen?"</string>
-    <string name="quest_camp_cabin_title">"Gibt es hier Hütten in denen man übernachten darf?"</string>
+    <string name="quest_camp_cabin_title">"Gibt es hier Hütten, in denen man übernachten darf?"</string>
     <string name="quest_camp_caravan_title">"Darf man hier im Wohnmobil oder -wagen campen?"</string>
     <string name="quest_ferry_bicycle_title">"Darf man auf diese Fähre Fahrräder mitnehmen?"</string>
     <string name="quest_openingHours_add_time">"Öffnungszeiten hinzufügen"</string>

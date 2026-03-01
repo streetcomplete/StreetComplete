@@ -1,5 +1,5 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 additionalStreetsignLanguages: [scn]
-atmOperators: [Poste Italiane, Euronet, Banca Agricola Popolare di Sicilia, Unicredit, Monte dei Paschi di Siena, UniCredit Bank, Crédit Agricole, Intesa Sanpaolo, Euronet Worldwide, CryptoLocalATM, Banca di Credito Cooperativo G. Toniolo di S. Cataldo, Postamat, Credem, Banco di Sicilia, BPER Banca, BNL]
+atmOperators: [Poste Italiane, Euronet, Banca Agricola Popolare di Sicilia, Unicredit, Monte dei Paschi di Siena, Crédit Agricole, UniCredit Bank, Intesa Sanpaolo, Euronet Worldwide, CryptoLocalATM, Banca di Credito Cooperativo G. Toniolo di S. Cataldo, Postamat, Credem, Banco di Sicilia, BPER Banca, BNL]
 chargingStationOperators: [Enel X Way, Enel X, Be Charge, Enel, Plenitude, Ewiva, Duferco, EuroSpin, Driwe, Scame, enel, Duferco Energia, Sagelio srl, Parco Corolla, Lidl, Ionity, Eniwa, Eni, Circontrol]
 parcelLockerBrand: [InPost, Amazon Hub, Amazon Locker]

@@ -4,7 +4,7 @@ chargingStationOperators: [GreenWay, Západoslovenská energetika, ejoin, Lidl, 
 chargingStationSocketTypes: [type2, type2_cable, type2_combo, chademo]
 clothesContainerOperators: [Ekocharita, HUMANA, EKOCHARITA, 'KOSIT, a.s.', Humana, Nadácia ECO, TextilEco, 'Marius Pedersen,a.s.', Marius Pedersen, ECO textil, Ekotextil]
 defaultSpeedLimitHasUrbanOrRural: true
-hasAdvisorySpeedLimitSign: true
+hasAdvisorySpeedLimitSign: false
 hasDailyAlternateSideParkingSign: true
 hasLivingStreet: true
 hasSlowZone: true

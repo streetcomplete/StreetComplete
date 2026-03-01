@@ -5,8 +5,11 @@ chargingStationSocketTypes: [type2, type2_cable, type2_combo, chademo]
 defaultSpeedLimitHasUrbanOrRural: true
 exclusiveCycleLaneStyle: yellow
 hasAdvisoryCycleLane: false
+hasAdvisorySpeedLimitSign: false
 hasBicycleBoulevard: true
+hasLivingStreet: true
 hasSlowZone: true
+livingStreetSignStyle: vienna
 mobileCountryCode: 295
 noParkingLineStyle: dashed yellow line with Xs
 noStoppingLineStyle: yellow

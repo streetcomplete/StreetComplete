@@ -7,6 +7,7 @@ clothesContainerOperators: [Čistoća]
 defaultSpeedLimitHasUrbanOrRural: true
 exclusiveCycleLaneStyle: yellow
 hasAdvisoryCycleLane: false
+hasAdvisorySpeedLimitSign: true
 hasDailyAlternateSideParkingSign: true
 hasLivingStreet: true
 hasSlowZone: true

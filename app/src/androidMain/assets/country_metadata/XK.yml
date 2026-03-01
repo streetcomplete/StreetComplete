@@ -5,7 +5,10 @@ chargingStationSocketTypes: [type2, type2_cable, type2_combo, chademo]
 defaultSpeedLimitHasUrbanOrRural: true
 hasDailyAlternateSideParkingSign: true
 hasLivingStreet: true
+hasSlowZone: true
 livingStreetSignStyle: vienna
 mobileCountryCode: 221
 officialLanguages: [sq, sr]
 popularReligions: [muslim]
+slowZoneLabelPosition: bottom
+slowZoneLabelText: ZONA

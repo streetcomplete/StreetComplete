@@ -7,10 +7,15 @@ chargingStationSocketTypes: [type2, type2_cable, type2_combo, chademo]
 defaultSpeedLimitHasUrbanOrRural: false
 exclusiveCycleLaneStyle: white dashes
 hasAdvisoryCycleLane: true
+hasAdvisorySpeedLimitSign: true
 hasBicycleBoulevard: true
+hasLivingStreet: true
 hasSlowZone: true
+livingStreetSignStyle: shared
 mobileCountryCode: 212
 noParkingLineStyle: dashed yellow
 noStoppingLineStyle: yellow
 officialLanguages: [fr]
 postboxesHaveCollectionTimes: true
+slowZoneLabelPosition: top
+slowZoneLabelText: ZONE

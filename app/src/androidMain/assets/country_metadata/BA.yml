@@ -4,6 +4,7 @@ chargingStationSocketTypes: [type2, type2_cable, type2_combo, chademo]
 defaultSpeedLimitHasUrbanOrRural: true
 exclusiveCycleLaneStyle: white
 hasAdvisoryCycleLane: false
+hasAdvisorySpeedLimitSign: true
 hasDailyAlternateSideParkingSign: true
 hasLivingStreet: true
 hasSlowZone: true
@@ -13,4 +14,6 @@ officialLanguages: [bs, hr, sr]
 orchardProduces: [plum, apple, pear, grape, tomato, chilli_pepper, sweet_pepper, raspberry, walnut, cherry, peach, chestnut, strawberry, apricot, fig, olive]
 postboxesHaveCollectionTimes: true
 slowZoneLabelPosition: bottom
-slowZoneLabelText: ЗОНА ZONA
+slowZoneLabelText: |-
+   ЗОНА
+   ZONA

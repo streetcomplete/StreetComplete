@@ -1,6 +1,6 @@
 # Changelog
 
-## v63.0-beta2
+## v63.0
 
 ### General Improvements
 
@@ -9,6 +9,8 @@
 - You can now change in settings which in-app notifications you want to receive (#6493)
 - You can now also zoom by dragging the zoom button up or down (#6719, #6716), by @Helium314
 - Redid the UI for opening hours, postbox collection times and parking fee quests with slight improvements, especially in regards to localization (#6691, #6175)
+- Other small improvements (#6748, …)
+- Added language Malayalam, translated by Rabah Assainar
 
 ### New Quests
 

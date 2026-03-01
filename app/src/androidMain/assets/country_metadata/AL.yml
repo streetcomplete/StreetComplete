@@ -3,10 +3,14 @@ atmOperators: [Banka Kombëtare Tregtare, Raiffeisen Bank, OTP Bank, Union Bank,
 chargingStationOperators: [Lux Taxi, eMobility Albania, Clean Taxi, King Taxi, EVBox, ena]
 chargingStationSocketTypes: [type2, type2_cable, type2_combo, chademo]
 defaultSpeedLimitHasUrbanOrRural: true
+hasAdvisorySpeedLimitSign: true
 hasDailyAlternateSideParkingSign: true
 hasLivingStreet: true
+hasSlowZone: true
 livingStreetSignStyle: vienna
 mobileCountryCode: 276
 officialLanguages: [sq]
 orchardProduces: [olive, grape, tomato, apple, chilli_pepper, sweet_pepper, plum, chestnut, hop, cherry, fig, peach, pear, lemon, lime, orange, date]
 postboxesHaveCollectionTimes: true
+slowZoneLabelPosition: bottom
+slowZoneLabelText: ZONA

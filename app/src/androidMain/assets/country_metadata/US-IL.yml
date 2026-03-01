@@ -1,5 +1,5 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [Bank of America, Chase, CEFCU, BMO, PNC Bank, Bitcoin Depot, U.S. Bank, Fifth Third Bank, Busey Bank, Citibank, Huntington Bank, CoinFlip, Bank of Springfield, Regions Bank, Old National Bank, Morton Community Bank, First Mid Bank & Trust, Triton, Old Second National Bank, INB, Hyde Park Bank, Heartland Bank, Fischer National Bank, Banterra Bank, BMO Harris, Athena Bitcoin Inc.]
+atmOperators: [Bank of America, Chase, CEFCU, BMO, PNC Bank, Bitcoin Depot, U.S. Bank, Fifth Third Bank, Busey Bank, Citibank, Huntington Bank, CoinFlip, Bank of Springfield, Regions Bank, Old National Bank, Morton Community Bank, First Mid Bank & Trust, Triton, Old Second National Bank, INB, Hyde Park Bank, Heartland Bank, Fischer National Bank, Banterra Bank, BMO Harris]
 chargingStationOperators: [Tesla, Volta, ChargePoint, 'Tesla, Inc.', Electrify America, EVgo, Blink, iGo, bp pulse, Bradley University]
 defaultSpeedLimitHasUrbanOrRural: true
 parcelLockerBrand: [Amazon Hub, Amazon Locker]
