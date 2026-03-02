@@ -13,17 +13,15 @@ class MaxSpeedAnswerTest {
     @Test fun `apply no sign answer`() {
         assertEquals(
             setOf(StringMapEntryAdd("maxspeed:type", "XX:urban")),
-            DefaultMaxSpeed("XX", RoadType.RuralOrUrban.URBAN).appliedTo(mapOf())
+            DefaultMaxSpeed(RoadType.URBAN).appliedTo(mapOf())
         )
         assertEquals(
-            setOf(StringMapEntryAdd("maxspeed:type", "YY:rural")),
-            DefaultMaxSpeed("YY", RoadType.RuralOrUrban.RURAL).appliedTo(mapOf())
+            setOf(StringMapEntryAdd("maxspeed:type", "XX:rural")),
+            DefaultMaxSpeed(RoadType.RURAL).appliedTo(mapOf())
         )
         assertEquals(
-            setOf(StringMapEntryAdd("maxspeed:type", "ZZ:motorway")),
-            DefaultMaxSpeed("ZZ", null).appliedTo(mapOf(
-                "highway" to "motorway"
-            ))
+            setOf(StringMapEntryAdd("maxspeed:type", "XX:motorway")),
+            DefaultMaxSpeed(null).appliedTo(mapOf("highway" to "motorway"))
         )
     }
 
@@ -65,16 +63,16 @@ class MaxSpeedAnswerTest {
         assertEquals(
             setOf(
                 StringMapEntryAdd("maxspeed", "123"),
-                StringMapEntryAdd("maxspeed:type", "AA:zone123")
+                StringMapEntryAdd("maxspeed:type", "XX:zone123")
             ),
-            MaxSpeedZone("AA", Speed(123, KILOMETERS_PER_HOUR)).appliedTo(mapOf())
+            MaxSpeedZone(Speed(123, KILOMETERS_PER_HOUR)).appliedTo(mapOf())
         )
         assertEquals(
             setOf(
                 StringMapEntryAdd("maxspeed", "15 mph"),
                 StringMapEntryAdd("maxspeed:type", "ZZ:zone15")
             ),
-            MaxSpeedZone("ZZ", Speed(15, MILES_PER_HOUR)).appliedTo(mapOf())
+            MaxSpeedZone(Speed(15, MILES_PER_HOUR)).appliedTo(mapOf())
         )
     }
 
@@ -96,31 +94,45 @@ class MaxSpeedAnswerTest {
     @Test fun `apply nsl answer`() {
         assertEquals(
             setOf(
-                StringMapEntryAdd("maxspeed:type", "GB:nsl_restricted"),
+                StringMapEntryAdd("maxspeed:type", "XX:nsl_restricted"),
                 StringMapEntryAdd("lit", "yes"),
             ),
-            DefaultMaxSpeed("GB", RoadType.RESTRICTED).appliedTo(mapOf())
+            DefaultMaxSpeed(RoadType.RESTRICTED).appliedTo(mapOf())
         )
         assertEquals(
             setOf(
-                StringMapEntryAdd("maxspeed:type", "GB:nsl_single"),
+                StringMapEntryAdd("maxspeed:type", "XX:nsl_single"),
                 StringMapEntryAdd("lit", "no"),
             ),
-            DefaultMaxSpeed("GB", RoadType.SINGLE).appliedTo(mapOf())
+            DefaultMaxSpeed(RoadType.SINGLE).appliedTo(mapOf())
         )
         assertEquals(
             setOf(
-                StringMapEntryAdd("maxspeed:type", "GB:nsl_dual"),
+                StringMapEntryAdd("maxspeed:type", "XX:nsl_dual"),
                 StringMapEntryAdd("lit", "no"),
                 StringMapEntryAdd("dual_carriageway", "yes"),
             ),
-            DefaultMaxSpeed("GB", RoadType.DUAL).appliedTo(mapOf())
+            DefaultMaxSpeed(RoadType.DUAL).appliedTo(mapOf())
+        )
+    }
+
+    @Test fun `use subdivision (only) in regions where it matters`() {
+        assertEquals(
+            setOf(StringMapEntryAdd("maxspeed:type", "BE-VLG:urban")),
+            DefaultMaxSpeed(RoadType.URBAN).appliedTo(mapOf(), "BE-VLG")
+        )
+        assertEquals(
+            setOf(StringMapEntryAdd("maxspeed:type", "DE:urban")),
+            DefaultMaxSpeed(RoadType.URBAN).appliedTo(mapOf(), "DE-HH")
         )
     }
 }
 
-private fun MaxSpeedAnswer.appliedTo(tags: Map<String, String>): Set<StringMapEntryChange> {
+private fun MaxSpeedAnswer.appliedTo(
+    tags: Map<String, String>,
+    countryCode: String = "XX"
+): Set<StringMapEntryChange> {
     val cb = StringMapChangesBuilder(tags)
-    applyTo(cb)
+    applyTo(cb, countryCode)
     return cb.create().changes
 }

@@ -118,14 +118,6 @@ class AddMaxSpeedForm : AbstractOsmQuestForm<MaxSpeedAnswer>() {
         }
     }
 
-    private fun applyNoSignAnswer(roadType: String, lit: Boolean? = null) {
-        val cc = countryOrSubdivisionCode.orEmpty()
-        val useSubdivisionCode = COUNTRY_SUBDIVISIONS_WITH_OWN_DEFAULT_MAX_SPEEDS.any { it.matches(cc) }
-        val maxspeedCountryCode = if (useSubdivisionCode) cc else cc.split("-").first()
-
-        applyAnswer(DefaultMaxSpeed(maxspeedCountryCode, roadType, lit))
-    }
-
     companion object {
         // TODO
         private var LAST_INPUT_SLOW_ZONE: Int? = null

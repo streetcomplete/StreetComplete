@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests.max_speed
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
@@ -15,7 +16,9 @@ import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.default_disabled_msg_maxspeed
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
-class AddMaxSpeed : OsmFilterQuestType<MaxSpeedAnswer>(), AndroidQuest {
+class AddMaxSpeed (
+    private val getCountryOrSubdivisionCode: (LatLon) -> String?
+) : OsmFilterQuestType<MaxSpeedAnswer>(), AndroidQuest {
 
     override val elementFilter = """
         ways with
@@ -45,6 +48,6 @@ class AddMaxSpeed : OsmFilterQuestType<MaxSpeedAnswer>(), AndroidQuest {
     override fun createForm() = AddMaxSpeedForm()
 
     override fun applyAnswerTo(answer: MaxSpeedAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
-        answer.applyTo(tags)
+        answer.applyTo(tags, getCountryOrSubdivisionCode(geometry.center) ?: "??")
     }
 }
