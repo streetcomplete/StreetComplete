@@ -38,7 +38,7 @@ fun MaxSpeedForm(
     onMaxSpeed: (MaxSpeedAnswer?) -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    val selectableMaxSpeedTypes = remember(countryInfo) { buildList {
+    val selectableMaxSpeedTypes = remember(initialSelectedMaxSpeedType, countryInfo) { buildList {
         add(MaxSpeedType.SIGN)
         add(MaxSpeedType.DEFAULT)
         if (countryInfo.hasSlowZone && highwayValue !in ROADS_WHERE_SLOW_ZONE_IS_NOT_POSSIBLE) {
@@ -71,7 +71,11 @@ fun MaxSpeedForm(
         )
         DropdownButton(
             items = selectableMaxSpeedTypes,
-            onSelectedItem = { selectedMaxSpeedType = it },
+            onSelectedItem = {
+                selectedMaxSpeedType = it
+                onMaxSpeed(null)
+            },
+            selectedItem = selectedMaxSpeedType,
             itemContent = { Text(stringResource(it.text)) }
         )
         selectedMaxSpeedType?.let { selectedMaxSpeedType ->

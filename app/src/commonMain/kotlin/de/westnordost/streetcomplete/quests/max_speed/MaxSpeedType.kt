@@ -15,6 +15,6 @@ val MaxSpeedType.text get() = when (this) {
     MaxSpeedType.SIGN -> Res.string.quest_maxspeed_answer_sign
     MaxSpeedType.ZONE -> Res.string.quest_maxspeed_answer_zone2
     MaxSpeedType.LIVING_STREET -> Res.string.quest_maxspeed_answer_living_street
-    MaxSpeedType.ADVISORY -> Res.string.quest_maxspeed_answer_advisory_speed_limit
+    MaxSpeedType.ADVISORY -> Res.string.quest_maxspeed_answer_advisory_speed_limit2
     MaxSpeedType.DEFAULT -> Res.string.quest_maxspeed_answer_noSign2
 }

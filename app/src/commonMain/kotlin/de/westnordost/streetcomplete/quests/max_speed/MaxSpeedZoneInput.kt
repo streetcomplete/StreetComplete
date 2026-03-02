@@ -1,25 +1,62 @@
 package de.westnordost.streetcomplete.quests.max_speed
 
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.LocalContentColor
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.ProvideTextStyle
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.meta.CountryInfo
-import de.westnordost.streetcomplete.ui.common.ProhibitorySign
 import de.westnordost.streetcomplete.ui.common.RectangularSign
+import de.westnordost.streetcomplete.ui.ktx.dpToSp
 import de.westnordost.streetcomplete.ui.theme.TrafficSignColor
+import de.westnordost.streetcomplete.ui.theme.extraLargeInput
 import de.westnordost.streetcomplete.ui.theme.headlineLarge
+import de.westnordost.streetcomplete.ui.theme.largeInput
+import de.westnordost.streetcomplete.ui.theme.trafficSignContentColorFor
 
 /** Max speed zone input, resembling (somewhat) the speed limit zone sign in the given country.
+ * */
+@Composable
+fun MaxSpeedZoneInput(
+    maxSpeedZone: MaxSpeedZone?,
+    onMaxSpeedZone: (MaxSpeedZone?) -> Unit,
+    countryInfo: CountryInfo,
+    modifier: Modifier = Modifier,
+) {
+    MaxSpeedZoneSign(
+        countryInfo = countryInfo,
+        modifier = modifier,
+    ) {
+        SpeedInput(
+            speed = maxSpeedZone?.speed,
+            onSpeedChange = { speed ->
+                onMaxSpeedZone(speed?.let { MaxSpeedZone(it) })
+            },
+            selectableUnits = countryInfo.speedUnits,
+        )
+    }
+}
+
+/** Surface that looks like generic a max speed zone sign (rectangle with a prohibitory sign in the
+ *  middle and a label above or below)
  *
  *  There is more variation here than for the max speed sign. We have quite a bit of customization
  *  here to make the sign look more alike how the actual sign looks like in that country:
@@ -33,68 +70,57 @@ import de.westnordost.streetcomplete.ui.theme.headlineLarge
  *
  *  (Fortunately,) US and Canada don't really have speed limit zones, so we don't need to worry yet
  *  yet another MUTCD-inspired speed zone layout
- * */
+ *  */
 @Composable
-fun MaxSpeedZoneInput(
-    maxSpeedZone: MaxSpeedZone?,
-    onMaxSpeedZone: (MaxSpeedZone?) -> Unit,
+fun MaxSpeedZoneSign(
     countryInfo: CountryInfo,
     modifier: Modifier = Modifier,
+    content: @Composable BoxScope.() -> Unit,
 ) {
-    MaxSpeedZoneSign(
-        zoneLabel = countryInfo.slowZoneLabelText ?: "ZONE",
-        zoneIsAtTop = countryInfo.slowZoneLabelPosition == "top",
-        modifier = modifier,
-        backgroundColor = when (countryInfo.countryCode) {
+    val zoneLabel = countryInfo.slowZoneLabelText
+    val zoneIsAtTop = countryInfo.slowZoneLabelPosition == "top"
+
+    RectangularSign(
+        modifier = modifier.size(192.dp),
+        color = when (countryInfo.countryCode) {
             "IL" ->                   TrafficSignColor.Blue
             "FI", "IS", "SE" ->       TrafficSignColor.Yellow
             // https://commons.wikimedia.org/wiki/File:Luxembourg_road_sign_H,1-1.svg
             "LU" ->                   TrafficSignColor.Yellow
             else ->                   TrafficSignColor.White
-        },
-        color = when (countryInfo.countryCode) {
-            "FI", "IS", "SE" -> TrafficSignColor.Yellow
-            else ->             TrafficSignColor.White
-        },
-    ) {
-        SpeedInput(
-            speed = maxSpeedZone?.speed,
-            onSpeedChange = { speed ->
-                onMaxSpeedZone(speed?.let { MaxSpeedZone(it) })
-            },
-            selectableUnits = countryInfo.speedUnits,
-        )
-    }
-}
-
-/** Surface that looks like generic a max speed zone sign (rectangle with a prohibitory sign in the
- *  middle and a label above or below) */
-@Composable
-private fun MaxSpeedZoneSign(
-    zoneLabel: String?,
-    zoneIsAtTop: Boolean,
-    modifier: Modifier = Modifier,
-    backgroundColor: Color = TrafficSignColor.White,
-    color: Color = TrafficSignColor.White,
-    content: @Composable BoxScope.() -> Unit,
-) {
-    RectangularSign(
-        modifier = modifier.size(256.dp),
-        color = backgroundColor
+        }
     ) {
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.spacedBy(4.dp),
-            modifier = Modifier.padding(8.dp)
+            modifier = Modifier.padding(4.dp)
         ) {
-            val textStyle = MaterialTheme.typography.headlineLarge.copy(fontWeight = FontWeight.Bold)
+            val textStyle = TextStyle.Default.copy(
+                fontWeight = FontWeight.Bold,
+                fontSize = 28.dp.dpToSp()
+            )
             if (zoneLabel != null && zoneIsAtTop) Text(zoneLabel, style = textStyle)
 
-            ProhibitorySign(
-                modifier = Modifier.weight(1f),
-                color = color,
-                content = content
-            )
+            val color = when (countryInfo.countryCode) {
+                "FI", "IS", "SE" -> TrafficSignColor.Yellow
+                else ->             TrafficSignColor.White
+            }
+            val contentColor = trafficSignContentColorFor(color)
+            Box(
+                modifier = Modifier
+                    .size(128.dp)
+                    .padding(4.dp)
+                    .background(TrafficSignColor.Red, CircleShape)
+                    .padding(20.dp)
+                    .background(color, CircleShape),
+                contentAlignment = Alignment.Center
+            ) {
+                ProvideTextStyle(MaterialTheme.typography.extraLargeInput.copy(fontWeight = FontWeight.Bold)) {
+                    CompositionLocalProvider(LocalContentColor provides contentColor) {
+                        content()
+                    }
+                }
+            }
 
             if (zoneLabel != null && !zoneIsAtTop) Text(zoneLabel, style = textStyle)
         }

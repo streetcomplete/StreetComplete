@@ -4,9 +4,12 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.text.BasicText
+import androidx.compose.foundation.text.TextAutoSize
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.ProvideTextStyle
 import androidx.compose.material.Text
@@ -14,11 +17,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.ui.common.ProhibitorySign
 import de.westnordost.streetcomplete.ui.common.RectangularSign
+import de.westnordost.streetcomplete.ui.ktx.dpToSp
 import de.westnordost.streetcomplete.ui.theme.TrafficSignColor
 import de.westnordost.streetcomplete.ui.theme.extraLargeInput
 import de.westnordost.streetcomplete.ui.theme.largeInput
@@ -44,7 +50,7 @@ fun MaxSpeedSignInput(
     }
     when (countryInfo.countryCode) {
         "CA" -> MaxSpeedSignMutcd("MAXIMUM", modifier = modifier) { speedInputComposable() }
-        "US" -> MaxSpeedSignMutcd("SPEED LIMIT", modifier = modifier) { speedInputComposable() }
+        "US" -> MaxSpeedSignMutcd("SPEED\nLIMIT", modifier = modifier) { speedInputComposable() }
         else -> MaxSpeedSign(
             modifier = modifier,
             color = when (countryInfo.countryCode) {
@@ -64,8 +70,9 @@ private fun MaxSpeedSign(
 ) {
     ProvideTextStyle(MaterialTheme.typography.extraLargeInput.copy(fontWeight = FontWeight.Bold)) {
         ProhibitorySign(
-            modifier = modifier.size(192.dp),
+            modifier = modifier.size(128.dp),
             color = color,
+            borderWidth = 20.dp,
             content = content
         )
     }
@@ -78,15 +85,22 @@ private fun MaxSpeedSignMutcd(
     modifier: Modifier = Modifier,
     content: @Composable ColumnScope.() -> Unit,
 ) {
-    RectangularSign(modifier.width(160.dp)) {
+    RectangularSign(modifier.width(128.dp)) {
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.spacedBy(4.dp),
             modifier = Modifier.padding(4.dp),
         ) {
-            ProvideTextStyle(MaterialTheme.typography.largeInput.copy(fontWeight = FontWeight.Bold)) {
-                Text(text)
-            }
+            BasicText(
+                text = text,
+                style = TextStyle.Default.copy(
+                    fontWeight = FontWeight.Bold,
+                    textAlign = TextAlign.Center
+                ),
+                autoSize = TextAutoSize.StepBased(maxFontSize = 28.dp.dpToSp()),
+                softWrap = false,
+                modifier = Modifier.fillMaxWidth(),
+            )
             ProvideTextStyle(MaterialTheme.typography.extraLargeInput.copy(
                 fontWeight = FontWeight.Bold
             )) {

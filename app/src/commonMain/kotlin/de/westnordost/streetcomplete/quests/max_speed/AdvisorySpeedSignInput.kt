@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.max_speed
 
 import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.ProvideTextStyle
 import androidx.compose.runtime.Composable
@@ -54,7 +55,7 @@ private fun AdvisorySpeedSign(
 ) {
     ProvideTextStyle(MaterialTheme.typography.extraLargeInput.copy(fontWeight = FontWeight.Bold)) {
         RectangularSign(
-            modifier = modifier.size(160.dp),
+            modifier = modifier.width(128.dp),
             color = color,
             content = content
         )

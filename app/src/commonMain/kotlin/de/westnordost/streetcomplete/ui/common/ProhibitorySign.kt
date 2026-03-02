@@ -28,6 +28,7 @@ import androidx.compose.ui.tooling.preview.Preview
 fun ProhibitorySign(
     modifier: Modifier = Modifier,
     color: Color = TrafficSignColor.White,
+    borderWidth: Dp = 32.dp,
     content: @Composable BoxScope.() -> Unit
 ) {
     val contentColor = trafficSignContentColorFor(color)
@@ -38,7 +39,7 @@ fun ProhibitorySign(
             .background(color, CircleShape)
             .padding(4.dp)
             .background(TrafficSignColor.Red, CircleShape)
-            .padding(32.dp)
+            .padding(borderWidth)
             .background(color, CircleShape),
         contentAlignment = Alignment.Center
     ) {

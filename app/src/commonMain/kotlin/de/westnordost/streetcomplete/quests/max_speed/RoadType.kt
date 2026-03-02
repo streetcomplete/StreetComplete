@@ -29,8 +29,8 @@ enum class RoadType(val osmValue: String) {
 
     companion object {
         fun getEntriesByCountryCode(countryCode: String) : List<RoadType> = when (countryCode) {
-            "GB" -> listOf(URBAN, RURAL)
-            else -> listOf(RESTRICTED, SINGLE, DUAL)
+            "GB" -> listOf(RESTRICTED, SINGLE, DUAL)
+            else -> listOf(URBAN, RURAL)
         }
     }
 }

@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -15,6 +16,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.meta.SpeedMeasurementUnit
@@ -54,8 +56,11 @@ fun SpeedInput(
             TextField2(
                 value = stringValue,
                 onValueChange = { newText: String ->
-                    value = newText.toIntOrNull()
-                    value?.let { onSpeedChange(Speed(it, unit)) }
+                    val newValue = newText.toIntOrNull()
+                    if (newText.isEmpty() || newValue != null && newValue <= 999 && newValue > 0) {
+                        value = newValue
+                        onSpeedChange(newValue?.let { Speed(it, unit) })
+                    }
                 },
                 singleLine = true,
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),

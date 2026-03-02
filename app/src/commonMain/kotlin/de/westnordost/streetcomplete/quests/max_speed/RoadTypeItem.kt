@@ -16,8 +16,8 @@ val RoadType.icon: DrawableResource get() = when (this) {
 }
 
 val RoadType.text: StringResource get() = when (this) {
-    RURAL -> Res.string.quest_maxspeed_answer_roadtype_urban
-    URBAN -> Res.string.quest_maxspeed_answer_roadtype_rural
+    RURAL -> Res.string.quest_maxspeed_answer_roadtype_rural
+    URBAN -> Res.string.quest_maxspeed_answer_roadtype_urban
 
     RESTRICTED -> Res.string.quest_maxspeed_answer_roadtype_lit
     SINGLE -> Res.string.quest_maxspeed_answer_roadtype_not_lit

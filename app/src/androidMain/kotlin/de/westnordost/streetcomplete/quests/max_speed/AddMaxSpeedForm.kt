@@ -3,16 +3,31 @@ package de.westnordost.streetcomplete.quests.max_speed
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AlertDialog
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.ProvideTextStyle
 import androidx.compose.material.Surface
+import androidx.compose.material.Text
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.scale
+import androidx.compose.ui.platform.ComposeView
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.ComposeViewBinding
-import de.westnordost.streetcomplete.databinding.QuestMaxspeedNoSignNoSlowZoneConfirmationBinding
 import de.westnordost.streetcomplete.osm.maxspeed.COUNTRY_SUBDIVISIONS_WITH_OWN_DEFAULT_MAX_SPEEDS
 import de.westnordost.streetcomplete.osm.maxspeed.ROADS_WHERE_SLOW_ZONE_IS_LIKELY
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.quest_maxspeed_answer_noSign_confirmation
+import de.westnordost.streetcomplete.resources.quest_maxspeed_answer_noSign_info_zone
 import de.westnordost.streetcomplete.ui.util.content
+import org.jetbrains.compose.resources.stringResource
 
 class AddMaxSpeedForm : AbstractOsmQuestForm<MaxSpeedAnswer>() {
 
@@ -92,34 +107,37 @@ class AddMaxSpeedForm : AbstractOsmQuestForm<MaxSpeedAnswer>() {
     /* ----------------------------------------- No sign ---------------------------------------- */
 
     private fun confirmNoSign(onConfirmed: () -> Unit) {
-        activity?.let {
-            AlertDialog.Builder(it)
-                .setTitle(R.string.quest_maxspeed_answer_noSign_confirmation_title)
-                .setMessage(R.string.quest_maxspeed_answer_noSign_confirmation)
-                .setPositiveButton(R.string.quest_maxspeed_answer_noSign_confirmation_positive) { _, _ -> onConfirmed() }
-                .setNegativeButton(R.string.quest_generic_confirmation_no, null)
-                .show()
+        activity?.let { AlertDialog.Builder(it)
+            .setTitle(R.string.quest_maxspeed_answer_noSign_confirmation_title)
+            .setMessage(R.string.quest_maxspeed_answer_noSign_confirmation)
+            .setPositiveButton(R.string.quest_maxspeed_answer_noSign_confirmation_positive) { _, _ -> onConfirmed() }
+            .setNegativeButton(R.string.quest_generic_confirmation_no, null)
+            .show()
         }
     }
 
     private fun confirmNoSignSlowZone(onConfirmed: () -> Unit) {
-        // TODO
+        val view = ComposeView(requireContext())
+        view.content {
+            Column(
+                verticalArrangement = Arrangement.spacedBy(8.dp),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                modifier = Modifier.padding(24.dp)
+            ) {
+                ProvideTextStyle(MaterialTheme.typography.body2) {
+                    Text(stringResource(Res.string.quest_maxspeed_answer_noSign_confirmation))
+                    Text(stringResource(Res.string.quest_maxspeed_answer_noSign_info_zone))
+                    MaxSpeedZoneSign(countryInfo = countryInfo) { Text("××") }
+                }
+            }
+        }
         activity?.let {
-            val dialogBinding = QuestMaxspeedNoSignNoSlowZoneConfirmationBinding.inflate(layoutInflater)
-            //enableAppropriateLabelsForSlowZone(dialogBinding.slowZoneImage)
-            dialogBinding.slowZoneImage.removeAllViews()
-
             AlertDialog.Builder(it)
                 .setTitle(R.string.quest_maxspeed_answer_noSign_confirmation_title)
-                .setView(dialogBinding.root)
+                .setView(view)
                 .setPositiveButton(R.string.quest_maxspeed_answer_noSign_confirmation_positive) { _, _ -> onConfirmed() }
                 .setNegativeButton(R.string.quest_generic_confirmation_no, null)
                 .show()
         }
-    }
-
-    companion object {
-        // TODO
-        private var LAST_INPUT_SLOW_ZONE: Int? = null
     }
 }
