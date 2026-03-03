@@ -23,6 +23,9 @@ sealed interface MaxSpeedAnswer {
         override fun isComplete() = roadType != null
     }
 }
+// grouped the three different maxspeed sign types like this instead of each their own data classes
+// because other than design of the sign, they all need the same input: integer number input plus
+// maybe a unit selector
 data class MaxSpeedSign(val speed: Speed, val type: Type) : MaxSpeedAnswer {
     override fun isComplete() = speed.isComplete()
 

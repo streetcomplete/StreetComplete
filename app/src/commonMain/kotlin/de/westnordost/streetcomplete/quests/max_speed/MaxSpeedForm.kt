@@ -89,7 +89,7 @@ fun MaxSpeedForm(
                         speed = answer.speed,
                         onChangeSpeed = { onAnswer(answer.copy(speed = it)) },
                         countryInfo = countryInfo,
-                        modifier = modifier.fillMaxWidth()
+                        modifier = Modifier.fillMaxWidth()
                     )
                 }
                 // literally every living street sign in every country looks different, however,
