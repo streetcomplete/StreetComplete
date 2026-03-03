@@ -40,7 +40,7 @@ fun RoadTypeSelect(
             style = MaterialTheme.typography.body2,
         )
         ItemSelectGrid(
-            columns = SimpleGridCells.Fixed(2),
+            columns = SimpleGridCells.Fixed(cells),
             items = selectable,
             selectedItem = roadType,
             onSelect = onRoadType,

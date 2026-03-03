@@ -16,6 +16,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -23,7 +24,6 @@ import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.ui.common.RectangularSign
 import de.westnordost.streetcomplete.ui.ktx.dpToSp
 import de.westnordost.streetcomplete.ui.theme.TrafficSignColor
-import de.westnordost.streetcomplete.ui.theme.extraLargeInput
 import de.westnordost.streetcomplete.ui.theme.trafficSignContentColorFor
 
 /** Surface that looks like generic a max speed zone sign (rectangle with a prohibitory sign in the
@@ -46,7 +46,7 @@ import de.westnordost.streetcomplete.ui.theme.trafficSignContentColorFor
 fun MaxSpeedZoneSign(
     countryInfo: CountryInfo,
     modifier: Modifier = Modifier,
-    content: @Composable BoxScope.() -> Unit,
+    content: @Composable (Shape) -> Unit,
 ) {
     val zoneLabel = countryInfo.slowZoneLabelText
     val zoneIsAtTop = countryInfo.slowZoneLabelPosition == "top"
@@ -80,16 +80,13 @@ fun MaxSpeedZoneSign(
             Box(
                 modifier = Modifier
                     .size(128.dp)
-                    .padding(4.dp)
                     .background(TrafficSignColor.Red, CircleShape)
-                    .padding(20.dp)
+                    .padding(18.dp)
                     .background(color, CircleShape),
                 contentAlignment = Alignment.Center
             ) {
-                ProvideTextStyle(MaterialTheme.typography.extraLargeInput.copy(fontWeight = FontWeight.Bold)) {
-                    CompositionLocalProvider(LocalContentColor provides contentColor) {
-                        content()
-                    }
+                CompositionLocalProvider(LocalContentColor provides contentColor) {
+                    content(CircleShape)
                 }
             }
 

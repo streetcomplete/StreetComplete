@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicText
 import androidx.compose.foundation.text.TextAutoSize
 import androidx.compose.material.MaterialTheme
@@ -16,6 +17,7 @@ import androidx.compose.material.ProvideTextStyle
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -37,11 +39,11 @@ import de.westnordost.streetcomplete.ui.theme.extraLargeInput
 fun MaxSpeedSign(
     countryCode: String,
     modifier: Modifier = Modifier,
-    content: @Composable () -> Unit,
+    content: @Composable (Shape) -> Unit,
 ) {
     when (countryCode) {
-        "CA", "US" -> MaxSpeedSignMutcd(countryCode, modifier) { content() }
-        else ->       MaxSpeedSignDefault(countryCode, modifier) { content() }
+        "CA", "US" -> MaxSpeedSignMutcd(countryCode, modifier) { content(RoundedCornerShape(4.dp)) }
+        else ->       MaxSpeedSignDefault(countryCode, modifier) { content(CircleShape) }
     }
 }
 
@@ -52,17 +54,15 @@ private fun MaxSpeedSignDefault(
     modifier: Modifier = Modifier,
     content: @Composable BoxScope.() -> Unit,
 ) {
-    ProvideTextStyle(MaterialTheme.typography.extraLargeInput.copy(fontWeight = FontWeight.Bold)) {
-        ProhibitorySign(
-            modifier = modifier.size(128.dp),
-            color = when (countryCode) {
-                "FI", "IS", "SE" -> TrafficSignColor.Yellow
-                else ->             TrafficSignColor.White
-            },
-            borderWidth = 20.dp,
-            content = content
-        )
-    }
+    ProhibitorySign(
+        modifier = modifier.size(144.dp),
+        color = when (countryCode) {
+            "FI", "IS", "SE" -> TrafficSignColor.Yellow
+            else ->             TrafficSignColor.White
+        },
+        borderWidth = 20.dp,
+        content = content
+    )
 }
 
 /** Surface that looks like a max speed sign in (a few) MUTCD countries */
@@ -92,11 +92,7 @@ private fun MaxSpeedSignMutcd(
                 softWrap = false,
                 modifier = Modifier.fillMaxWidth(),
             )
-            ProvideTextStyle(MaterialTheme.typography.extraLargeInput.copy(
-                fontWeight = FontWeight.Bold
-            )) {
-                content()
-            }
+            content()
         }
     }
 }

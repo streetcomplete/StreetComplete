@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.quests.max_speed
 
+import androidx.compose.animation.AnimatedContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -75,31 +76,38 @@ fun MaxSpeedForm(
             selectedItem = answer,
             itemContent = { Text(stringResource(it.text)) }
         )
-        when (answer) {
-            is MaxSpeedSign -> {
-                MaxSpeedInput(
-                    type = answer.type,
-                    speed = answer.speed,
-                    onChangeSpeed = { onAnswer(answer.copy(speed = it)) },
-                    countryInfo = countryInfo,
-                    modifier = modifier.fillMaxWidth()
+        AnimatedContent(
+            targetState = answer,
+            // only do any animation when the maxspeed type changes!
+            contentKey = { it?.let { it::class }},
+            contentAlignment = Alignment.TopCenter
+        ) { answer ->
+            when (answer) {
+                is MaxSpeedSign -> {
+                    MaxSpeedInput(
+                        type = answer.type,
+                        speed = answer.speed,
+                        onChangeSpeed = { onAnswer(answer.copy(speed = it)) },
+                        countryInfo = countryInfo,
+                        modifier = modifier.fillMaxWidth()
+                    )
+                }
+                // literally every living street sign in every country looks different, however,
+                // they look somewhat similar and can be grouped into different categories that look
+                // at least alike the actual sign. So, we do that here
+                MaxSpeedAnswer.IsLivingStreet -> Image(
+                    painter = painterResource(countryInfo.livingStreetSignDrawable),
+                    contentDescription = null,
                 )
+                is MaxSpeedAnswer.NoSignWithRoadType -> {
+                    RoadTypeSelect(
+                        roadType = answer.roadType,
+                        onRoadType = { onAnswer(it?.let { MaxSpeedAnswer.NoSignWithRoadType(it) }) },
+                        countryCode = countryInfo.countryCode,
+                    )
+                }
+                MaxSpeedAnswer.NoSign, null -> { /* nothing */ }
             }
-            // literally every living street sign in every country looks different, however,
-            // they look somewhat similar and can be grouped into different categories that look
-            // at least alike the actual sign. So, we do that here
-            MaxSpeedAnswer.IsLivingStreet -> Image(
-                painter = painterResource(countryInfo.livingStreetSignDrawable),
-                contentDescription = null,
-            )
-            is MaxSpeedAnswer.NoSignWithRoadType -> {
-                RoadTypeSelect(
-                    roadType = answer.roadType,
-                    onRoadType = { onAnswer(it?.let { MaxSpeedAnswer.NoSignWithRoadType(it) }) },
-                    countryCode = countryInfo.countryCode,
-                )
-            }
-            MaxSpeedAnswer.NoSign, null -> { /* nothing */ }
         }
     }
 }
