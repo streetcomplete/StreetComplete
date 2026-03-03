@@ -22,7 +22,7 @@ import androidx.compose.ui.tooling.preview.Preview
 @Composable
 fun LaurelWreath(
     modifier: Modifier = Modifier,
-    color: Color = LeafGreen,
+    color: Color = Color.LeafGreen,
     progress: Float = 1f
 ) {
     if (progress < 0.1f) return
