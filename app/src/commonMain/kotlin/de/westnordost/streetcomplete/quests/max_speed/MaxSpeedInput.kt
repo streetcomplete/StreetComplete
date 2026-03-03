@@ -8,8 +8,11 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.ProvideTextStyle
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
@@ -69,6 +72,10 @@ private fun SpeedValueInput(
     modifier: Modifier = Modifier,
     shape: Shape = MaterialTheme.shapes.small,
 ) {
+    // when this appears, it should directly open the IME unless a value is initially filled in
+    val focusRequester = FocusRequester()
+    LaunchedEffect(Unit) { if (value == null) focusRequester.requestFocus() }
+
     val stringValue = value?.toString().orEmpty()
     AutoFitTextFieldFontSize(value = stringValue, modifier = modifier) {
         TextField2(
@@ -82,7 +89,10 @@ private fun SpeedValueInput(
             singleLine = true,
             shape = shape,
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-            modifier = Modifier.fillMaxWidth().aspectRatio(1f)
+            modifier = Modifier
+                .fillMaxWidth()
+                .aspectRatio(1f)
+                .focusRequester(focusRequester)
         )
     }
 }
