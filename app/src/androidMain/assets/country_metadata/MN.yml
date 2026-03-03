@@ -4,6 +4,7 @@ atmOperators: [Хаан банк, Хаан, хаан банк, Хаанбанк,
 centerLineStyle: white
 defaultSpeedLimitHasUrbanOrRural: true
 edgeLineStyle: white
+hasAdvisorySpeedLimitSign: true
 hasLivingStreet: true
 livingStreetSignStyle: russia
 mobileCountryCode: 428

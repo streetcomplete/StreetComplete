@@ -7,6 +7,7 @@ clothesContainerOperators: [Šiaulių regiono atliekų tvarkymo centras, Ecoserv
 defaultSpeedLimitHasUrbanOrRural: true
 edgeLineStyle: white
 hasAdvisoryCycleLane: false
+hasAdvisorySpeedLimitSign: true
 hasDailyAlternateSideParkingSign: true
 hasLivingStreet: true
 hasSlowZone: true
@@ -18,3 +19,5 @@ officialLanguages: [lt]
 orchardProduces: [apple, raspberry, strawberry, pear, blueberry, plum, tomato, cherry]
 parcelLockerBrand: [Omniva, LP Express, Venipak, DPD Pickup Station, DPD, SmartPosti, uDrop, ShareFreeze]
 postboxesHaveCollectionTimes: true
+slowZoneLabelPosition: top
+slowZoneLabelText: ZONA

@@ -4,6 +4,7 @@ centerLineStyle: yellow
 chargingStationSocketTypes: [type1, type1_combo, chademo, nacs]
 hasAdvisorySpeedLimitSign: true
 hasCenterLeftTurnLane: true
+hasLivingStreet: false
 hasSlowZone: false
 lengthUnits: [meter, foot and inch]
 mobileCountryCode: 302

@@ -17,3 +17,5 @@ orchardProduces: [apple, strawberry, grape, plum, tomato, pear, walnut, hazelnut
 parcelLockerBrand: [Белпошта, Lamoda, CityPost]
 popularSports: [soccer, basketball, tennis, field_hockey, volleyball, ice_hockey]
 postboxesHaveCollectionTimes: true
+slowZoneLabelPosition: top
+slowZoneLabelText: ЗОНА

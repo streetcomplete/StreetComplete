@@ -3,5 +3,4 @@ atmOperators: [Commonwealth Bank, Westpac, ANZ, St.George, NAB, Bendigo Bank, at
 chargingStationOperators: [NRMA, Tesla, Chargefox, Evie Networks, Jolt, Exploren, AmpCharge, bp pulse, BP Pulse, Plus ES, EVlink, ChargePoint, EVX, EVSE, 'Tesla, Inc.', Ampol, AGL]
 clothesContainerOperators: [1-World Charity Shops, Dankha Pty Ltd, Anglicare Op Shop, Anglicare]
 defaultSpeedLimitHasUrbanOrRural: true
-hasSlowZone: false
 parcelLockerBrand: [Australia Post, Amazon Hub, Amazon Locker]

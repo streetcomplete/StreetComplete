@@ -468,8 +468,8 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_buildingType_retail_description">"レストランやカフェなどの建物を含む"</string>
     <string name="quest_tracktype_title">"この農道の路面の硬さは?"</string>
     <string name="quest_tracktype_grade1">"舗装"</string>
-    <string name="quest_tracktype_grade4">"ほとんどが柔らかい"</string>
-    <string name="quest_tracktype_grade5">"Soft"</string>
+    <string name="quest_tracktype_grade4">"やや柔らかい"</string>
+    <string name="quest_tracktype_grade5">"柔らかい"</string>
     <string name="quest_building_underground_title">"この建物は全体が地下にありますか?"</string>
     <string name="quest_wheelchairAccess_limited_description_outside">"部分的とは、アクセスするためにの 2 つ以上の階段がないことを意味します。"</string>
     <string name="quest_wheelchairAccess_outside_title">"この場所は車椅子でアクセスできますか?"</string>
@@ -1315,20 +1315,41 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_moped_access_designated">"この自転車道には原付の通行を認める標識があります"</string>
     <string name="quest_moped_access_forbidden">"原付を禁止する標識があります"</string>
     <string name="default_disabled_msg_visible_sign_moped">"このクエストタイプはデフォルトでは無効になっています。原付の通行可否は、通常自転車道の始点や終点に特定の標識でのみ示されるためです。"</string>
+    <string name="info">"詳細情報"</string>
+    <string name="quest_accessible_for_pedestrians_prohibited">"禁じられている。"</string>
     <string name="quest_buildingLevels_hint">"傾斜地に建つ建物の場合、階数は最も低い側の地面を基準に数えます。
 
 屋根部分に窓がある階は屋根の階数として扱われます。なお、屋根の階数が0でもその屋根が平らであるとは限らず、単に屋根の高さが1階分に満たないだけの場合もあります。"</string>
+    <string name="action_open_in_browser">"ブラウザで開く"</string>
+    <string name="pref_category_quests">"クエスト"</string>
+    <string name="pref_title_language_select2">"言語"</string>
+    <string name="bridge">"橋の上"</string>
     <string name="quest_leafType_tree_is_just_a_stump">"それはただの木の切り株です"</string>
     <string name="quest_board_name_title">"この掲示板のタイトルは何ですか？"</string>
+    <string name="auth_error">"認証エラー。再ログインして下さい。"</string>
+    <string name="quest_bicycle_repair_station_pump">"ポンプ"</string>
     <string name="quest_boat_rental_title">"ここではどのタイプのボートをレンタルできますか？"</string>
     <string name="quest_boat_rental_motorboat">"モーターボート"</string>
     <string name="quest_boat_rental_jetski">"ジェットスキー"</string>
+    <string name="quest_boat_rental_sailboat">"帆船"</string>
+    <string name="quest_boat_rental_pedalboat">"足漕ぎボート"</string>
     <string name="quest_boat_rental_kayak">"カヤック"</string>
     <string name="quest_boat_rental_canoe">"カヌー"</string>
+    <string name="quest_boat_rental_houseboat">"ハウスボート"</string>
+    <string name="quest_boat_rental_rowboat">"漕艇"</string>
+    <string name="quest_boat_rental_raft">"いかだ"</string>
     <string name="quest_boat_rental_surfboard">"サーフボード"</string>
+    <string name="quest_boat_rental_sailboard">"セイルボード"</string>
+    <string name="quest_boat_rental_yacht">"ヨット"</string>
+    <string name="quest_dietType_glutenfree_name_title">"ここでグルテンフリーの製品を頼めますか？"</string>
     <string name="pref_title_zoom_buttons">"マップ上にズームボタンを表示する"</string>
     <string name="pref_title_overlays">"オーバーレイの選択"</string>
     <string name="pref_overlays_reset">"オーバーレイの有効/無効を既定値にリセットしますか？"</string>
     <string name="overlay">"オーバーレイ"</string>
     <string name="enable_overlay_confirmation_title">"このオーバーレイを有効にしますか？"</string>
+    <string name="quest_tracktype_grade2">"やや硬い"</string>
+    <string name="quest_tracktype_grade3">"混合"</string>
+    <string name="quest_streetName_add_language">"言語を追加"</string>
+    <string name="cancel">"キャンセル"</string>
+    <string name="label_block2">"街区"</string>
 </resources>

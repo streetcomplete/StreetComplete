@@ -1,7 +1,11 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 chargingStationSocketTypes: [type2, type2_cable, type2_combo, chademo]
+hasAdvisorySpeedLimitSign: true
+hasLivingStreet: false
 hasSlowZone: true
 mobileCountryCode: 292
 noParkingLineStyle: yellow-black on curb
 officialLanguages: [it]
 postboxesHaveCollectionTimes: true
+slowZoneLabelPosition: top
+slowZoneLabelText: zona

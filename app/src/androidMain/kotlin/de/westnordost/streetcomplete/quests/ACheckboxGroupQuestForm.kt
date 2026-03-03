@@ -42,9 +42,9 @@ abstract class ACheckboxGroupQuestForm<I, T> : AbstractOsmQuestForm<T>() {
 
             val onSelectionChange = { option: I, selected: Boolean ->
                 selectedOptions.value = if (selected) {
-                    selectedOptions.value - option
-                } else {
                     selectedOptions.value + option
+                } else {
+                    selectedOptions.value - option
                 }
                 checkIsFormComplete()
                 updateButtonPanel()

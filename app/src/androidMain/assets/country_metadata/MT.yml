@@ -7,7 +7,6 @@ defaultSpeedLimitHasUrbanOrRural: true
 edgeLineStyle: white
 exclusiveCycleLaneStyle: white
 hasAdvisoryCycleLane: true
-hasSlowZone: true
 isLeftHandTraffic: true
 mobileCountryCode: 278
 noParkingLineStyle: yellow

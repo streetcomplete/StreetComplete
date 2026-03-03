@@ -1,12 +1,12 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 atmOperators: [Banorte, Banamex, HSBC, Santander, Banco Santander, BBVA, Bancomer, Scotiabank, Banco Azteca, BBVA Bancomer, Bansi, BTM, Banjercito, BBVA México, Interacciones, Inbursa, Afirme, Citibanamex, Multiva, CryptoFlamingo, BanCoppel, Coppel, BANCOMER, Cryptobox, CIBanco, Banregio, Bancoppel, Banco Multiva, 'BBVA Bancomer, S.A.', BANORTE, Intercam Banco, Citibank, Banca Afirme, BanBajío, Santander Serfin, 'Santander Consumo, S.A. de C.V.', RED, Euronet, CFE, Bitspot, Bancomer BBVA, Banco del Bajío, Banco Inbursa, BanBajio, BBVA BANCOMER, BANAMEX]
 centerLineStyle: yellow
-chargingStationOperators: ['Tesla, Inc.', Nissan, Servicio de Transportes Eléctricos de la Ciudad de México, Tesla]
+chargingStationOperators: ['Tesla, Inc.', Nissan, Servicio de Transportes Eléctricos de la Ciudad de México, Tren Maya, Tesla]
 chargingStationSocketTypes: [type1, type1_combo, nacs, chademo]
 defaultSpeedLimitHasUrbanOrRural: true
 hasLivingStreet: true
 hasSlowZone: true
-livingStreetSignStyle: mexico
+livingStreetSignStyle: shared
 mobileCountryCode: 334
 noEntrySignStyle: arrow
 noParkingSignStyle: mutcd latin
@@ -15,4 +15,6 @@ officialLanguages: [es]
 orchardProduces: [coffee, orange, avocado, guava, mango, mangosteen, lemon, lime, chilli_pepper, sweet_pepper, coconut, walnut, tomato, banana, cacao, apple, grape, rubber, peach]
 parcelLockerBrand: [Amazon Hub]
 popularSports: [soccer, basketball, baseball, tennis]
+slowZoneLabelPosition: top
+slowZoneLabelText: top
 workweek: Mo-Sa

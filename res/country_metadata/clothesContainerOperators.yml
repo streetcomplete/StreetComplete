@@ -28,10 +28,10 @@ AT:
   - Verein Wams # 4
   - Textil Verwertung GmbH # 4
   - GABL # 4
+  - Carla # 4
   - Pongauer ArbeitsProjekt # 3
   - GVU Melk # 3
   - GVA Baden # 3
-  - Carla # 3
   - ÖPULA # 2
   - Stadtbetriebe Steyr # 2
   - Stadt Wien # 2
@@ -174,22 +174,22 @@ CY:
   - anakyklos.com # 2
   - PASYKAF # 2
 CZ:
-  - KlokTex # 103
+  - KlokTex # 102
   - Kloktex # 38
-  - Textileco # 28
+  - Textileco # 27
   - Diakonie Broumov # 20
   - POTEX # 10
   - TextilEco a.s. # 9
-  - Potex # 8
+  - Potex # 9
   - Služby města Český Krumlov s.r.o. # 7
   - KLOK.TEX # 7
   - recyklujemetextil.cz # 6
   - TextilEco # 6
   - Dimatex CS spol. s r.o. # 6
   - Sova # 5
+  - SAKO # 5
   - Obec Tuchlovice # 5
   - Helptex # 5
-  - SAKO # 4
   - Obec Kamenný Přívoz # 4
   - Marius Pedersen a.s. # 4
   - EKOR # 4
@@ -214,8 +214,8 @@ CZ:
   - Diecézní charita Brno # 2
   - Charita # 2
 DE:
-  - Deutsches Rotes Kreuz # 1256
-  - Malteser # 435
+  - Deutsches Rotes Kreuz # 1254
+  - Malteser # 437
   - Loop # 340
   - DRK # 258
   - Aktion Hoffnung # 235
@@ -227,18 +227,18 @@ DE:
   - Bayerisches Rotes Kreuz # 137
   - ALBA Braunschweig GmbH # 121
   - Baliz Textilwerke # 119
-  - Deutsches Rotes Kreuz e.V. # 113
+  - Deutsches Rotes Kreuz e.V. # 116
   - TEXAID Collection GmbH # 99
   - AWISTA # 96
   - Abfallwirtschaftsbetrieb München # 95
   - Malteser Hilfsdienst e.V. # 93
+  - REMONDIS # 92
   - Göttinger Entsorgungsbetriebe # 92
-  - REMONDIS # 91
   - Abfallwirtschaftsbetriebe Köln # 85
-  - S.K.C. Textilrecycling KG # 81
+  - S.K.C. Textilrecycling KG # 82
   - Malteser Hilfsdienst # 81
-  - Baliz Textilrecycling # 75
-  - AWO # 74
+  - AWO # 75
+  - Baliz Textilrecycling # 74
   - USB Bochum # 73
   - Lorenz Wittmann GmbH # 71
   - SOEX Recycling Germany GmbH # 70
@@ -251,8 +251,8 @@ DE:
   - GSAK # 56
   - SOEX # 53
   - HUMANA # 51
+  - FWS Altkleider Container Service # 51
   - Zweckverband für Abfallwirtschaft Kempten # 50
-  - FWS Altkleider Container Service # 50
   - ZKE # 49
   - Wittmann # 46
   - Landkreis Prignitz # 46
@@ -269,33 +269,34 @@ DE:
   - ABV Kreis Viersen # 35
   - hoelp # 32
   - Kolpingwerk # 31
-  - Deutsches Rotes Kreuz Kreisverband Saarbrücken e.V. # 30
   - SP Textilverwertung # 29
   - RSAG # 29
+  - Deutsches Rotes Kreuz Kreisverband Saarbrücken e.V. # 29
   - BreEnt GmbH # 28
   - Stadtentsorgung Potsdam # 27
   - RegioEntsorgung AöR # 27
   - Profittex GmbH # 27
+  - Diakonie # 26
   - Diakonie Nord Nord Ost # 25
-  - Diakonie # 25
   - Darbo Recycling # 24
   - Zweckverband Abfallwirtschaft Straubing Stadt und Land # 23
   - Stadtreinigung Leipzig # 23
   - Stadt Karlsruhe Amt für Abfallwirtschaft # 23
   - Kolping Recycling GmbH # 23
   - AWG # 23
+  - Wirtschaftsbetriebe Duisburg # 22
   - Stadt Willich # 22
   - Stadt Kamp-Lintfort # 22
   - GOA # 22
   - GEB # 22
   - Evren Textil # 22
   - Zweckverband Abfallwirtschaft Region Trier # 21
-  - Wirtschaftsbetriebe Duisburg # 21
   - KuB GmbH # 21
   - BRK # 21
   - ASB # 21
   - Knettenbrech + Gurdulic Rhein-Neckar GmbH # 20
   - Fa. A. Hahn # 20
+  - AWS Stuttgart # 20
   - aktion hoffnung # 19
   - Versero GmbH # 19
   - S.K.C. # 19
@@ -304,7 +305,6 @@ DE:
   - DESWOS # 19
   - Cavtex # 19
   - Bethel # 19
-  - AWS Stuttgart # 19
   - Grotex Recycling GmbH # 18
   - Die Johanniter # 18
   - Diakoniewerk Essen # 18
@@ -344,6 +344,7 @@ DE:
   - Keine Angabe # 12
   - Deutsches Rotes Kreuz Kreisverband Chemnitz e.V. # 12
   - Brotex # 12
+  - AWS Augsburg # 12
   - ABV Kreis Viersen, Stadt Viersen # 12
   - Volkssolidarität # 11
   - Stadtreinigungs-, Transport- und Baubetrieb Lüdenscheid # 11
@@ -352,7 +353,6 @@ DE:
   - Deutsches Rotes Kreuz Kreisverband Jülich e. V. # 11
   - Brunner # 11
   - Abfall- und Wertstofflogistik Neuss # 11
-  - AWS Augsburg # 11
 DK:
   - Dansk Røde Kors # 50
   - Røde Kors # 17
@@ -429,6 +429,7 @@ ES-PV:
   - UROLA ERDIKO MANKOMUNITATEA # 4
   - Urola Erdiko Mankomunitatea # 3
   - Caritas # 3
+  - Cáritas Bizkaia # 2
 ES-VC:
   - Fovasa # 9
   - Cáritas # 7
@@ -450,9 +451,9 @@ FI:
   - Pelastusarmeija # 2
   - Emmy # 2
 FR:
-  - Le Relais # 1949
+  - Le Relais # 1952
   - Toulouse Métropole # 192
-  - La Chiffo # 68
+  - La Chiffo # 69
   - Le relais # 65
   - Le Foyer Notre-Dame des Sans-Abri # 64
   - Chrysalide # 45
@@ -535,7 +536,7 @@ FR:
 GB-ENG:
   - The Salvation Army # 118
   - Salvation Army # 58
-  - TRAID # 38
+  - TRAID # 39
   - The Fire Fighters Charity # 37
   - British Heart Foundation # 30
   - Scope # 23
@@ -651,7 +652,7 @@ IL:
 IS:
   - Sorpa # 42
 IT:
-  - Humana # 144
+  - Humana # 146
   - Caritas Ambrosiana # 44
   - SEA # 35
   - HERA # 23
@@ -692,6 +693,8 @@ IT-36:
   - Caritas # 2
 JE:
   - Government of Jersey # 3
+KR:
+  - 경남지체장애인협회 창원시마산지회 # 240
 LT:
   - Šiaulių regiono atliekų tvarkymo centras # 12
   - Ecoservice # 7
@@ -789,8 +792,8 @@ PL:
   - Fundacja z Sercem # 43
   - Fundacja Eco Textil # 33
   - Fundacja Podaruj Pomoc # 26
+  - Obywatelska Fundacja Pomocy Dzieciom # 25
   - Fundacja Pomocy Dzieciom DAR # 25
-  - Obywatelska Fundacja Pomocy Dzieciom # 24
   - Fundacja Uśmiechu # 19
   - Fundacja Pomocy Dzieciom Dar # 13
   - Texland PL # 9

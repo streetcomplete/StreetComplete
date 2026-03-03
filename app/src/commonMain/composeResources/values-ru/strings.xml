@@ -486,7 +486,7 @@
     <string name="pref_title_theme_select">Выбор темы</string>
     <string name="theme_light">Светлая</string>
     <string name="theme_dark">Тёмная</string>
-    <string name="theme_system_default">Согласно настройкам системы</string>
+    <string name="theme_system_default">Как в системе</string>
     <string name="action_open_location">Посмотреть местоположение в другом приложении</string>
     <string name="map_application_missing">Другие картографические приложения не установлены</string>
     <string name="label_housenumber">номер дома</string>
@@ -913,7 +913,7 @@
     <string name="quest_barrier_bicycle_type_single">Проход между двумя барьерами</string>
     <string name="quest_barrier_bicycle_type_double">Шикана - барьер на каждой стороне</string>
     <string name="quest_barrier_bicycle_type_multiple">Шикана - больше двух барьеров</string>
-    <string name="language_default">Системный по умолчанию</string>
+    <string name="language_default">Как в системе</string>
     <string name="on_floor">на этаже %1$s</string>
     <string name="select_street_parking_orientation">Выберите ориентацию по отношению к проезжей части:</string>
     <string name="select_street_parking_position">Выберите позицию:</string>
@@ -1466,7 +1466,7 @@
     <string name="weekly_osm_new_edition_title">Новое изменение!</string>
     <string name="pref_title_messages">Уведомления внутри приложения</string>
     <string name="pref_title_message_achievements">Разблокирование достижения</string>
-    <string name="pref_title_message_weekly_osm">Новые изменение от еженедельного OSM</string>
+    <string name="pref_title_message_weekly_osm">Новые выпуски еженедельника OSM</string>
     <string name="pref_title_message_changelog">Новые версии приложения</string>
     <string name="quest_artwork_sculpture">Скульптура</string>
     <string name="quest_artwork_statue">Статуя</string>

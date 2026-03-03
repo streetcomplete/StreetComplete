@@ -117,7 +117,7 @@ class MessagesSource(
         // lastVersion is null on a new install. We don't want to show a message in that case, but
         // we want to mark it as if a message has already been read.
         // The same with when the message type is disabled
-        if (lastVersion == null || Message.NewVersion::class !in disabled) {
+        if (lastVersion == null || Message.NewVersion::class in disabled) {
             prefs.lastChangelogVersion = BuildConfig.VERSION_NAME
         }
         val showNewVersion =

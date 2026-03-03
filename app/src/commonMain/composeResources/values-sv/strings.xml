@@ -1405,6 +1405,7 @@ En våning räknas som en takvåning när dess fönster finns i taket. Det följ
     <string name="quest_dietType_glutenfree_name_title">Erbjuds glutenfria produkter här?</string>
     <string name="quest_dietType_explanation_glutenfree">Att tillaga glutenfria produkter kräver kunskap, eftersom vanliga kryddor och såser kan innehålla gluten. Glutenfria livsmedel märks tydligt som sådana.</string>
     <string name="quest_construction_minor_title">Är de mindre vägarbetena här avslutade?</string>
+    <string name="map_attribution">Kartattribution</string>
     <string name="link_panoramax_description">En gratis och öppen källkodsprogramvara och ideell tjänst för delning av crowdsourcade street-level-foton</string>
     <string name="link_openclimbing_description">En karta över klättringsplatser</string>
     <string name="pref_title_zoom_buttons">Visa kartzoomknappar</string>
@@ -1441,4 +1442,29 @@ En våning räknas som en takvåning när dess fönster finns i taket. Det följ
     <string name="quest_charging_station_bicycles_title">Kan man ladda cyklar här också?</string>
     <string name="quest_charging_station_bicycles_answer_only">Det är bara för cyklar</string>
     <string name="quest_recycling_type_pet_bottles">PET flaska</string>
+    <string name="quest_maxweight_add_sign">Lägg till skylt</string>
+    <string name="quest_maxweight_remove_sign">Ta bort skylt</string>
+    <string name="dialog_dont_notify_again">Meddela inte igen</string>
+    <string name="pref_title_message_weekly_osm">Nya utgåvor av weeklyOSM</string>
+    <string name="quest_artwork_title">Vad är det här för slags konstverk?</string>
+    <string name="quest_artwork_sculpture">Skulptur</string>
+    <string name="quest_artwork_statue">Statyn</string>
+    <string name="quest_artwork_mural">Väggmålning</string>
+    <string name="quest_artwork_graffiti">Graffiti</string>
+    <string name="quest_artwork_installation">Konstinstallation</string>
+    <string name="quest_artwork_stone">Sten</string>
+    <string name="quest_artwork_painting">Målning</string>
+    <string name="quest_artwork_street_art">Annan gatukonst</string>
+    <string name="quest_artwork_architecture">Arkitektur</string>
+    <string name="quest_artwork_mosaic">Mosaik</string>
+    <string name="quest_artwork_relief">Relief</string>
+    <string name="quest_artwork_fountain">Fontän</string>
+    <string name="quest_bothway_title">I vilken riktning kan du åka med den här?</string>
+    <string name="quest_camp_tent_title">Får man campa här i tält?</string>
+    <string name="quest_camp_cabin_title">Finns det stugor som man kan bo i här?</string>
+    <string name="quest_openingHours_add_time">Lägg till tid</string>
+    <string name="quest_collectionTimes_answer_time_points">Vid specifika tidpunkter…</string>
+    <string name="quest_shower_hot_water_title">Finns det varmvatten här?</string>
+    <string name="calendar_new_event_title">Nytt OSM-evenemang i ditt område!</string>
+    <string name="pref_title_message_calendar">Nytt OSM-evenemang i ditt område</string>
 </resources>

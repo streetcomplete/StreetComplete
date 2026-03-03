@@ -8,7 +8,7 @@ defaultSpeedLimitHasUrbanOrRural: true
 edgeLineStyle: short white dashes
 hasAdvisorySpeedLimitSign: true
 hasLivingStreet: true
-hasSlowZone: false
+hasSlowZone: true
 livingStreetSignStyle: vienna
 mobileCountryCode: 240
 noEntrySignStyle: yellow

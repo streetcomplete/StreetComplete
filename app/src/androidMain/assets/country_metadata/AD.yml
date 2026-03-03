@@ -5,10 +5,11 @@ defaultSpeedLimitHasUrbanOrRural: true
 edgeLineStyle: white
 exclusiveCycleLaneStyle: white on green
 hasAdvisoryCycleLane: false
+hasAdvisorySpeedLimitSign: true
 hasBiWeeklyAlternateSideParkingSign: true
 hasDailyAlternateSideParkingSign: true
 hasLivingStreet: true
-hasSlowZone: true
+hasSlowZone: false
 livingStreetSignStyle: vienna
 mobileCountryCode: 213
 noEntrySignStyle: default

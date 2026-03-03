@@ -8,15 +8,15 @@ import java.util.Properties
 
 
 /** App version name, code and flavor */
-val appVersionName = "63.0-beta2"
-val appVersionCode = 6301
+val appVersionName = "63.0"
+val appVersionCode = 6302
 
 /** Localizations the app should be available in */
 val bcp47ExportLanguages = setOf(
     "ar", "ast", "be", "bg", "bs", "ca", "cs", "da", "de", "el",
     "en", "en-AU", "en-GB", "eo", "es", "es-AR", "et", "eu",
     "fa", "fi", "fr", "gl", "he", "hr", "hu", "hy",
-    "id", "it", "ja", "ko", "lt", "lv", "nb", "no", "nl", "nn", "pl", "pt", "pt-BR",
+    "id", "it", "ja", "ko", "lt", "lv", "ml", "nb", "no", "nl", "nn", "pl", "pt", "pt-BR",
     "ro", "ru", "sk", "sl", "sr-cyrl", "sr-latn", "sv", "sw", "th", "tr", "uk",
     "zh", "zh-CN", "zh-HK", "zh-TW"
 )

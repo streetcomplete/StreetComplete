@@ -5,6 +5,7 @@ centerLineStyle: white
 chargingStationOperators: ['Tesla, Inc.', 澳電 CEM]
 defaultSpeedLimitHasUrbanOrRural: false
 edgeLineStyle: yellow
+hasAdvisorySpeedLimitSign: true
 hasSlowZone: true
 isLeftHandTraffic: true
 mobileCountryCode: 455

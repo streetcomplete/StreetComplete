@@ -4,12 +4,16 @@ atmOperators: [საქართველოს ბანკი, თიბი�
 chargingStationOperators: [E-Space, mart ev, EV Power]
 clothesContainerOperators: [Emmaus Geo, Caritas Georgia]
 defaultSpeedLimitHasUrbanOrRural: true
+hasAdvisorySpeedLimitSign: true
 hasDailyAlternateSideParkingSign: true
 hasLivingStreet: true
-livingStreetSignStyle: russia
+hasSlowZone: true
+livingStreetSignStyle: vienna
 mobileCountryCode: 282
 officialLanguages: [ka]
 orchardProduces: [grape, apple, orange, hazelnut, peach, walnut, tomato, plum, tea, pear, apricot, cherry, almond, chilli_pepper, sweet_pepper, lemon, lime]
 parcelLockerBrand: [Locker.ge]
 popularSports: [rugby]
 postboxesHaveCollectionTimes: true
+slowZoneLabelPosition: top
+slowZoneLabelText: ZONE
