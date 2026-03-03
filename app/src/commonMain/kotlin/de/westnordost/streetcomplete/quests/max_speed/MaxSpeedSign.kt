@@ -12,8 +12,6 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicText
 import androidx.compose.foundation.text.TextAutoSize
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.ProvideTextStyle
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -22,13 +20,10 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import de.westnordost.streetcomplete.data.meta.CountryInfo
-import de.westnordost.streetcomplete.osm.maxspeed.Speed
 import de.westnordost.streetcomplete.ui.common.ProhibitorySign
 import de.westnordost.streetcomplete.ui.common.RectangularSign
 import de.westnordost.streetcomplete.ui.ktx.dpToSp
 import de.westnordost.streetcomplete.ui.theme.TrafficSignColor
-import de.westnordost.streetcomplete.ui.theme.extraLargeInput
 
 /** Surface resembling (somewhat) the speed limit sign in the given country:
  *
